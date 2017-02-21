@@ -16,8 +16,7 @@
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes",
-      "is_dynamic_rendering": false
+      "template_folder": "_themes"
     },
     {
       "docset_name": "aspnet-core-conceptual",
@@ -31,8 +30,7 @@
         "ManagedReference": "Content",
         "RestApi": "Content"
       },
-      "template_folder": "_themes",
-      "is_dynamic_rendering": false
+      "template_folder": "_themes"
     }
   ],
   "notification_subscribers": [],

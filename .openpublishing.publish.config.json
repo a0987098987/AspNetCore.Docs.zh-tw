@@ -8,7 +8,6 @@
       "build_source_folder": "aspnet",
       "build_output_subfolder": "aspnet",
       "locale": "zh-tw",
-      "version": 0,
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
@@ -16,25 +15,27 @@
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "version": 0
     },
     {
       "docset_name": "aspnet-core-conceptual",
       "build_source_folder": "aspnetcore",
       "build_output_subfolder": "aspnet/core",
       "locale": "zh-tw",
-      "version": 0,
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
         "RestApi": "Content"
       },
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "version": 0
     }
   ],
   "notification_subscribers": [],
   "branches_to_filter": [],
+  "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "dependent_repositories": [

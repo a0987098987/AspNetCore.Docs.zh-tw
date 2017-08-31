@@ -39,7 +39,10 @@
       "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "_navPath": "/foo",
       "_navRel": "/foo",
-      "searchScope": ["ASP.NET"]
+      "searchScope": [
+        "ASP.NET"
+      ],
+      "bilingual_type": "hover over"
     },
     "fileMetadata": {},
     "template": [],

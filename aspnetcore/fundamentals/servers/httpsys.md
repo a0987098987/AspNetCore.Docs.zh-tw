@@ -11,18 +11,18 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 4173a2ef539859031674fb613b25031e3b343c67
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: cff6f171432febac5ec3e7adf9cf77953e0ece2d
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
 由[Tom Dykstra](http://github.com/tdykstra)和[Chris Ross](https://github.com/Tratcher)
 
 > [!NOTE]
-> 本主題只適用於 ASP.NET Core 2.0 和更新版本。 在舊版的 ASP.NET Core，HTTP.sys 會命名為[WebListener](WebListener.md)。
+> 本主題只適用於 ASP.NET Core 2.0 和更新版本。 在舊版的 ASP.NET Core，HTTP.sys 會命名為[WebListener](xref:fundamentals/servers/weblistener)。
 
 HTTP.sys 是[適用於 ASP.NET Core web 伺服器](index.md)只能在 Windows 上執行。 此系統建置[Http.Sys 核心模式驅動程式](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)。 HTTP.sys 是替代[Kestrel](kestrel.md) ，提供了一些 Kestel 沒有的功能。 **HTTP.sys 不能與 IIS 或 IIS Express，並不相容於[ASP.NET 核心模組](aspnet-core-module.md)。**
 
@@ -80,7 +80,7 @@ HTTP.sys 可用於部署您要公開，直接向網際網路伺服器而不使�
 
 * 呼叫`UseHttpSys`上的擴充方法`WebHostBuilder`中您`Main`方法，並指定任何[HTTP.sys 選項](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs)，您需要如下列範例所示：
 
-  [!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
+  [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
 
 ### <a name="configure-httpsys-options"></a>設定 HTTP.sys 選項
 
@@ -90,7 +90,7 @@ HTTP.sys 可用於部署您要公開，直接向網際網路伺服器而不使�
 
 同時開啟的 TCP 連線的數目上限可以設定整個應用程式中的下列程式碼*Program.cs*:
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=5)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=5)]
 
 最大連接數目是無限制 (null) 的預設值。
 
@@ -107,7 +107,7 @@ public IActionResult MyActionMethod()
 
 以下是範例，示範如何設定整個應用程式的每個要求的條件約束：
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Options&highlight=6)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=6)]
 
 您可以覆寫中的特定要求上設定*Startup.cs*:
 
@@ -121,7 +121,7 @@ HTTP.sys 中的其他選項的相關資訊，請參閱[HttpSysOptions](https://g
 
 根據預設 ASP.NET Core 繫結至`http://localhost:5000`。 若要設定 URL 前置詞和連接埠，您可以使用`UseUrls`擴充方法，`urls`命令列引數、 ASPNETCORE_URLS 環境變數，或`UrlPrefixes`屬性[HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs)。 下列程式碼範例使用`UrlPrefixes`。
 
-[!code-csharp[](HttpSys/sample/Program.cs?name=snippet_Main&highlight=17)]
+[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=17)]
 
 優點`UrlPrefixes`會收到錯誤訊息立即如果您嘗試新增的格式錯誤的前置詞。 優點`UseUrls`(與共用`urls`和 ASPNETCORE_URLS) 是您可以更輕鬆地切換 Kestrel 和 HTTP.sys 之間。
 

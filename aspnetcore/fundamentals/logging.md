@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e5c97ce868e281310aa75c16e73298e2aaa0d9d
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 30e00e2a442225bbe04be0d343f7048efe484477
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>若要登入 ASP.NET Core 簡介
 
@@ -283,7 +283,7 @@ System.Exception: Item not found exception.
 
 設定資料指定最小的記錄層級提供者及類別，如下列範例所示：
 
-[!code-json[](logging/sample2/AppSettings.json)]
+[!code-json[](logging/sample2/appsettings.json)]
 
 此 JSON 建立六個篩選規則，一個用於偵錯提供者，四個主控台提供者，以及適用於所有提供者。 您會看到如何只是其中一個這些規則會選擇每個提供者時`ILogger`建立物件。
 

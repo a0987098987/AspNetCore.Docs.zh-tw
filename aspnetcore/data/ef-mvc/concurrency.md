@@ -11,8 +11,8 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 4c402aee195d6614733be71c9c422e33553ad646
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f44a4f842180b4001eb1428316c24fd9cacc39db
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/05/2017
@@ -176,8 +176,6 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 在*Views/Departments/Edit.cshtml*，進行下列變更：
 
-* 移除`<div>`項目，如已 scaffold`RowVersion`欄位。
-
 * 加入隱藏的欄位，以儲存`RowVersion`屬性值，緊接的隱藏的欄位`DepartmentID`屬性。
 
 * 下拉式清單中加入 「 選取系統管理員 」 選項。
@@ -251,7 +249,7 @@ public async Task<IActionResult> Delete(Department department)
 
 * 新增錯誤訊息之間`h2`和`h3`標題。
 
-* LastName 取代中的 FullName**管理員**欄位。
+* 取代中的 FullName FirstMidName**管理員**欄位。
 
 * 移除 RowVersion 的欄位。
 

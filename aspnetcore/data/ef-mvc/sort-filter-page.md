@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 1140f4916ca39cb454eaa41fdf6adfe7ad26cc31
-ms.sourcegitcommit: dfd6af48cf66813eaf04b011cb9341339a751254
+ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、 篩選、 分頁和群組-EF Core 與 ASP.NET Core MVC 教學課程 (10-3)
 
@@ -116,7 +116,7 @@ http://localhost:5813/Students?SearchString=an
 
 ![學生索引分頁連結的頁面](sort-filter-page/_static/paging.png)
 
-在專案資料夾中建立`PaginatedList.cs`，然後將範本程式碼取代下列程式碼。
+在專案資料夾中，建立`PaginatedList.cs`，然後將範本程式碼取代下列程式碼。
 
 [!code-csharp[Main](intro/samples/cu/PaginatedList.cs)]
 
@@ -213,7 +213,7 @@ Contoso 大學網站**有關** 頁面上，您要顯示多少學生已註冊的�
 
 建立*SchoolViewModels*資料夾中的*模型*資料夾。
 
-在新的資料夾中，將類別檔案 EnrollmentDateGroup.cs 和範本程式碼取代為下列程式碼：
+在新的資料夾中，將類別檔案加入*EnrollmentDateGroup.cs*和範本程式碼取代為下列程式碼：
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

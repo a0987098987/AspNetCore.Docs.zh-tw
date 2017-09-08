@@ -12,8 +12,8 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30e00e2a442225bbe04be0d343f7048efe484477
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/05/2017
@@ -306,7 +306,7 @@ System.Exception: Item not found exception.
 3|主控台|Microsoft.AspNetCore.Mvc.Razor.Razor|偵錯|
 4|主控台|Microsoft.AspNetCore.Mvc.Razor|錯誤|
 5|主控台|所有類別|資訊|
-6|所有提供者|所有類別|警告
+6|所有提供者|所有類別|偵錯
 7|所有提供者|系統|偵錯
 8|偵錯|Microsoft|追蹤
 

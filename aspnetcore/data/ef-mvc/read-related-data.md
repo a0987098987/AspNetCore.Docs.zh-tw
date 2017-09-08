@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: d04b740f1ded3fb41ef1c3edd0adad276d8fcef0
-ms.sourcegitcommit: d7e0df365a6112240b5560212759b1e3525850a2
+ms.openlocfilehash: a3badbfe365a99593b38fc3846a9984824438f16
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>讀取的相關資料的 EF Core 與 ASP.NET Core MVC 教學課程 (10-6)
 
@@ -91,7 +91,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 ## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>建立講師頁面，其中顯示 Courses 以及註冊項目
 
-本節中您會建立控制器和檢視 [Instructor] 實體，以顯示講師頁面：
+在本節中，您將建立控制器和檢視 [Instructor] 實體，以顯示講師頁面：
 
 ![講師索引頁](read-related-data/_static/instructors-index.png)
 
@@ -167,7 +167,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
 
 在*Views/Instructors/Index.cshtml*，範本程式碼取代為下列程式碼。 所做的變更會反白顯示。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,18-19,41-54,56)]
+[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
 您已對現有的程式碼進行下列變更：
 

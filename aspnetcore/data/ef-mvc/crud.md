@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: b99a58d77d4f1751753ae576ade4bd6dd981fbbf
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、 讀取、 更新和刪除-EF Core 與 ASP.NET Core MVC 教學課程 (2 / 10)
 
@@ -40,7 +40,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 ## <a name="customize-the-details-page"></a>自訂的詳細資料頁面
 
-學生索引頁面的 scaffold 程式碼中省略了`Enrollments`屬性，因為該屬性會保存集合。 在**詳細資料**您要顯示集合的內容以 HTML 表格的網頁。
+學生索引頁面的 scaffold 程式碼中省略了`Enrollments`屬性，因為該屬性會保存集合。 在**詳細資料** 頁面上，您要以 HTML 表格顯示集合的內容。
 
 在*Controllers/StudentsController.cs*，動作方法的詳細資料檢視會使用`SingleOrDefaultAsync`方法來擷取單一`Student`實體。 加入程式碼，呼叫`Include`。 `ThenInclude`與`AsNoTracking`方法，如下列反白顯示的程式碼所示。
 
@@ -274,7 +274,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 若要釋放出保留的資料庫連接的資源，當您在使用它，則必須儘速處置內容執行個體。 ASP.NET Core 內建[相依性插入](../../fundamentals/dependency-injection.md)會負責您該工作。
 
-在*Startup.cs*您呼叫[AddDbContext 擴充方法](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)佈建`DbContext`ASP.NET DI 容器中的類別。 方法會設定為服務的存留期`Scoped`預設。 `Scoped`表示內容物件存留期伴隨 web 要求存留時間，而`Dispose`方法將會自動呼叫 web 要求的結尾。
+在*Startup.cs*，您呼叫[AddDbContext 擴充方法](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)佈建`DbContext`ASP.NET DI 容器中的類別。 方法會設定為服務的存留期`Scoped`預設。 `Scoped`表示內容物件存留期伴隨 web 要求存留時間，而`Dispose`方法將會自動呼叫 web 要求的結尾。
 
 ## <a name="handling-transactions"></a>處理交易
 

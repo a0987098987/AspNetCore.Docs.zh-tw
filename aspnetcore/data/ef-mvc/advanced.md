@@ -11,8 +11,8 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: fa5e0a66f22cc14f34d05481ce2e4381085d122d
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: d1c6ece833672af3ef2003510ef96c4ff0d63fbf
+ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/05/2017
@@ -179,7 +179,7 @@ Entity Framework Core 的原始程式碼位於[https://github.com/aspnet/EntityF
 
 若要反向工程資料模型，包括實體類別，從現有的資料庫，使用[scaffold dbcontext](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext)命令。 請參閱[-快速入門教學課程](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)。
 
-<a id="dynamic-linq">
+<a id="dynamic-linq"></a>
 ## <a name="use-dynamic-linq-to-simplify-sort-selection-code"></a>使用動態的 LINQ 來簡化排序選取範圍的程式碼
 
 [本系列的第三個教學課程](sort-filter-page.md)示範以硬式編碼的資料行名稱來撰寫 LINQ 程式碼`switch`陳述式。 可從中選擇的兩個資料行，這可正常運作，但如果您有許多資料行的程式碼可以取得詳細資訊。 若要解決這個問題，您可以使用`EF.Property`方法，以指定的屬性名稱做為字串。 若要試用這種方法，取代`Index`方法中的`StudentsController`為下列程式碼。

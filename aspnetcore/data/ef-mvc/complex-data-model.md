@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: ad34a86c90c06dcddeeba7a0deba95f8057b4513
-ms.sourcegitcommit: def90564eff4adfeed0a8e511e4c201b040e9a5e
+ms.openlocfilehash: 7d216bc07d0a8d739f0cecbc5b571b6144c13e61
+ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>建立複雜的資料模型的 EF Core 與 ASP.NET Core MVC 教學課程 (10-5)
 
@@ -73,7 +73,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
-`StringLength`屬性將不會防止使用者輸入名稱的泛空白字元。 您可以使用`RegularExpression`將限制套用至輸入的屬性。 例如下列程式碼需要第一個字元是大寫，而其餘字元是依字母順序排列：
+`StringLength`屬性將不會防止使用者輸入名稱的泛空白字元。 您可以使用`RegularExpression`將限制套用至輸入的屬性。 例如，下列程式碼需要第一個字元是大寫，而其餘字元是依字母順序排列：
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
@@ -215,7 +215,7 @@ public int InstructorID { get; set; }
 
 您也可以使用`Key`屬性如果實體沒有自己的主索引鍵，但您想要的項目名稱屬性，非 classnameID 或識別碼。
 
-根據預設 EF 視為金鑰非產生資料庫因為資料行是識別的關聯性。
+根據預設，EF 視為金鑰非產生資料庫因為資料行是識別的關聯性。
 
 ### <a name="the-instructor-navigation-property"></a>講師導覽屬性
 
@@ -397,7 +397,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-在本教學課程使用 fluent API 僅適用於資料庫對應時，您無法以屬性。 不過，您也可以使用 fluent 應用程式開發的應用程式開發介面指定大部分的格式設定、 驗證和您可以使用屬性的對應規則。 某些屬性，例如`MinimumLength`fluent 應用程式開發的應用程式開發介面無法套用。 如前所述，`MinimumLength`並不會變更結構描述中，它只適用於用戶端和伺服器端驗證規則。
+在本教學課程中，您使用 fluent API 僅適用於資料庫對應時，您不能與屬性。 不過，您也可以使用 fluent 應用程式開發的應用程式開發介面指定大部分的格式設定、 驗證和您可以使用屬性的對應規則。 某些屬性，例如`MinimumLength`fluent 應用程式開發的應用程式開發介面無法套用。 如前所述，`MinimumLength`並不會變更結構描述中，它只適用於用戶端和伺服器端驗證規則。
 
 有些開發人員偏好使用 fluent 應用程式開發的應用程式開發介面，以獨佔方式，讓它們可保留他們的實體類別 「 清除 」。 您如果想要的話，且有少數自訂項目才可使用 fluent API，可以混合屬性和 fluent 應用程式開發的應用程式開發介面，但一般建議的作法是選擇其中一個這兩種方法，並使用，以一致的方式盡量。 如果您使用兩者，請注意，就會發生衝突，只要 Fluent API 會覆寫屬性。
 

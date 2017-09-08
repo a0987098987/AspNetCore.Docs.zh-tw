@@ -11,11 +11,11 @@ ms.assetid: 0db145cb-41a5-448a-b889-72e2d789ad7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/identity
-ms.openlocfilehash: 41682244cb9faa9a109661c09b6d7e67bca72534
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c86e9b98bcb43b383ac1077fe2749d0dfcd7392a
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="migrating-authentication-and-identity"></a>移轉的驗證和身分識別
 
@@ -68,8 +68,6 @@ namespace NewMvc6Project.Models
 
 ApplicationDbContext.cs:
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFramework;
 using Microsoft.Data.Entity;
@@ -83,7 +81,7 @@ namespace NewMvc6Project.Models
       Database.EnsureCreated();
     }
 
-    protected override void OnConfiguring(DbContextOptions options)
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
       options.UseSqlServer();
     }

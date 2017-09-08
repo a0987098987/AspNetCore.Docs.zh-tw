@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: dae7ac6e377d2c17bc8f86e5b6da98107366cc73
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 39e76b14af85de34b8443bf4e04d18d13ad2aa90
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 ---
 <a name=fundamentals-configuration></a>
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 09/05/2017
 
 下列主控台應用程式會使用 JSON 組態提供者：
 
-[!code-csharp[Main](configuration/sample/src/ConfigJson/Program.cs)]
+[!code-csharp[Main](configuration/sample/ConfigJson/Program.cs)]
 
 應用程式讀取，並顯示下列組態設定：
 
-[!code-json[Main](configuration/sample/src/ConfigJson/appsettings.json)]
+[!code-json[Main](configuration/sample/ConfigJson/appsettings.json)]
 
 設定包含在其中的節點以冒號分隔的名稱 / 值組的階層式清單。 若要擷取值，存取`Configuration`與對應的項目索引鍵的索引子：
 
@@ -63,13 +63,11 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 上述範例會使用設定索引子讀取的值。 外部存取組態`Startup`，使用[選項模式](xref:fundamentals/configuration#options-config-objects)。 *選項模式*本文稍後所示。
 
-這是通常會有不同的環境，例如開發、 測試和實際執行不同的組態設定。 下列反白顯示的程式碼會將兩個組態提供者加入至三個來源：
+這是通常會有不同的環境，例如開發、 測試和實際執行不同的組態設定。 `CreateDefaultBuilder` ASP.NET Core 2.x 應用程式中的擴充方法 (或使用`AddJsonFile`和`AddEnvironmentVariables`直接在 ASP.NET Core 1.x 應用程式中) 將讀取 JSON 檔案和系統設定來源的組態提供者：
 
-1. JSON 提供者，讀取*appsettings.json*
-2. JSON 提供者，讀取*appsettings。\<EnvironmentName >.json*
-3. 環境變數提供者
-
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Startup.cs?name=snippet2&highlight=7-9)]
+* *appsettings.json*
+* * appsettings。\<EnvironmentName >.json
+* 環境變數
 
 請參閱[AddJsonFile](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.jsonconfigurationextensions)取得參數的說明。 `reloadOnChange`僅適用於 ASP.NET Core 1.1 （含） 以上。 
 
@@ -96,21 +94,21 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 選項類別必須是抽象的公用的無參數建構函式。 例如: 
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MyOptions.cs)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Models/MyOptions.cs)]
 
 <a name=options-example></a>
 
 在下列程式碼，被啟用的 JSON 組態提供者。 `MyOptions`類別加入至服務容器，並繫結至組態。
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup.cs?name=snippet1&highlight=8,20-22)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup.cs?name=snippet1&highlight=8,20-21)]
 
 下列[控制器](../mvc/controllers/index.md)使用[建構函式相依性插入](xref:fundamentals/dependency-injection#what-is-dependency-injection)上[ `IOptions<TOptions>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.options.ioptions-1)以存取設定：
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Controllers/HomeController.cs?name=snippet1)]
 
 以下列*appsettings.json*檔案：
 
-[!code-json[Main](configuration/sample/src/UsingOptions/appsettings1.json)]
+[!code-json[Main](configuration/sample/UsingOptions/appsettings1.json)]
 
 `HomeController.Index`方法會傳回`option1 = value1_from_json, option2 = 2`。
 
@@ -118,7 +116,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 下列程式碼中，第二個`IConfigureOptions<TOptions>`服務新增至服務容器。 它使用委派來設定的繫結`MyOptions`。
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup2.cs?name=snippet1&highlight=9-13)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup2.cs?name=snippet1&highlight=9-13)]
 
 您可以加入多個組態提供者。 使用 NuGet 封裝中的組態提供者。 它們會套用順序註冊它們。
 
@@ -130,23 +128,27 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 下列程式碼，而第三個`IConfigureOptions<TOptions>`服務新增至服務容器。 它會繫結`MySubOptions`區段`subsection`的*appsettings.json*檔案：
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Startup3.cs?name=snippet1&highlight=16-17)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Startup3.cs?name=snippet1&highlight=16-17)]
 
 注意： 這個擴充方法需要`Microsoft.Extensions.Options.ConfigurationExtensions`NuGet 封裝。
 
 使用下列*appsettings.json*檔案：
 
-[!code-json[Main](configuration/sample/src/UsingOptions/appsettings.json)]
+[!code-json[Main](configuration/sample/UsingOptions/appsettings.json)]
 
 `MySubOptions`類別：
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MySubOptions.cs)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Models/MySubOptions.cs?name=snippet1)]
 
 以下列`Controller`:
 
-[!code-csharp[Main](configuration/sample/src/UsingOptions/Controllers/HomeController2.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/UsingOptions/Controllers/HomeController2.cs?name=snippet1)]
 
 `subOption1 = subvalue1_from_json, subOption2 = 200`會傳回。
+
+您也可以提供選項，檢視模型中的，或插入`IOptions<TOptions>`直接插入檢視：
+
+[!code-html[Main](configuration/sample/UsingOptions/Views/Home/Index.cshtml?highlight=3-4,16-17,20-21)]
 
 <a name=in-memory-provider></a>
 
@@ -174,27 +176,27 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 下列範例會示範如何使用記憶體中的提供者，並繫結至類別：
 
-[!code-csharp[Main](configuration/sample/src/InMemory/Program.cs)]
+[!code-csharp[Main](configuration/sample/InMemory/Program.cs)]
 
 組態值會以字串傳回，但繫結啟用了物件的建構。 繫結可讓您擷取 POCO 物件或甚至整個物件圖形。 下列範例示範如何將繫結至`MyWindow`，ASP.NET Core MVC 應用程式會使用選項模式：
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/MyWindow.cs)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/MyWindow.cs)]
 
-[!code-json[Main](configuration/sample/src/WebConfigBind/appsettings.json)]
+[!code-json[Main](configuration/sample/WebConfigBind/appsettings.json)]
 
-繫結中的自訂類別`ConfigureServices`中`Startup`類別：
+繫結中的自訂類別`ConfigureServices`建置主應用程式時：
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Startup.cs?name=snippet1&highlight=3,4)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/Program.cs?name=snippet1&highlight=3-4)]
 
 顯示從設定`HomeController`:
 
-[!code-csharp[Main](configuration/sample/src/WebConfigBind/Controllers/HomeController.cs)]
+[!code-csharp[Main](configuration/sample/WebConfigBind/Controllers/HomeController.cs)]
 
 ### <a name="getvalue"></a>GetValue
 
 下列範例會示範[GetValue<T> ](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationbinder#Microsoft_Extensions_Configuration_ConfigurationBinder_GetValue_Microsoft_Extensions_Configuration_IConfiguration_System_Type_System_String_System_Object_)擴充方法：
 
-[!code-csharp[Main](configuration/sample/src/InMemoryGetValue/Program.cs?highlight=27-29)]
+[!code-csharp[Main](configuration/sample/InMemoryGetValue/Program.cs?highlight=27-29)]
 
 ConfigurationBinder`GetValue<T>`方法可讓您指定的預設值 (在此範例中為 80)。 `GetValue<T>`適用於簡單的案例並不會連結到整個區段。 `GetValue<T>`取得純量值從`GetSection(key).Value`轉換為特定的型別。
 
@@ -202,11 +204,11 @@ ConfigurationBinder`GetValue<T>`方法可讓您指定的預設值 (在此範例�
 
 您可以對每個物件類別中的遞迴繫結。 請考慮下列`AppOptions`類別：
 
-[!code-csharp[Main](configuration/sample/src/ObjectGraph/AppOptions.cs)]
+[!code-csharp[Main](configuration/sample/ObjectGraph/AppOptions.cs)]
 
 下列範例會繫結至`AppOptions`類別：
 
-[!code-csharp[Main](configuration/sample/src/ObjectGraph/Program.cs?highlight=15-16)]
+[!code-csharp[Main](configuration/sample/ObjectGraph/Program.cs?highlight=15-16)]
 
 **ASP.NET Core 1.1**和更新版本可以使用`Get<T>`，這適用於整個區段。 `Get<T>`可以是比使用更多便利`Bind`。 下列程式碼示範如何使用`Get<T>`與上面的範例：
 
@@ -216,7 +218,7 @@ var appConfig = config.GetSection("App").Get<AppOptions>();
 
 使用下列*appsettings.json*檔案：
 
-[!code-json[Main](configuration/sample/src/ObjectGraph/appsettings.json)]
+[!code-json[Main](configuration/sample/ObjectGraph/appsettings.json)]
 
 程式會顯示`Height 11`。
 
@@ -255,35 +257,35 @@ public void CanBindObjectTree()
 
 定義`ConfigurationValue`將組態值儲存在資料庫中的實體：
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/ConfigurationValue.cs)]
 
 新增`ConfigurationContext`來儲存及存取設定的值：
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
 
 建立類別，實作[IConfigurationSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.iconfigurationsource):
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
 
 建立自訂組態提供者透過繼承自[ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider)。  當它是空的組態提供者會初始化資料庫：
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
 
 當執行範例時，會顯示資料庫 （「 value_from_ef_1"和"value_from_ef_2"） 中反白顯示的值。
 
 您可以加入`EFConfigSource`擴充方法新增組態來源：
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
 
 下列程式碼示範如何使用自訂`EFConfigProvider`:
 
-[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=20-25)]
+[!code-csharp[Main](configuration/sample/CustomConfigurationProvider/Program.cs?highlight=21-26)]
 
 請注意此範例會將自訂`EFConfigProvider`後的 JSON 提供者，因此資料庫的任何設定會覆寫設定從*appsettings.json*檔案。
 
 使用下列*appsettings.json*檔案：
 
-[!code-json[Main](configuration/sample/src/CustomConfigurationProvider/appsettings.json)]
+[!code-json[Main](configuration/sample/CustomConfigurationProvider/appsettings.json)]
 
 顯示下列項目：
 
@@ -297,7 +299,7 @@ key3=value_from_json_3
 
 下列範例會啟用最後 CommandLine 組態提供者：
 
-[!code-csharp[Main](configuration/sample/src/CommandLine/Program.cs)]
+[!code-csharp[Main](configuration/sample/CommandLine/Program.cs)]
 
 使用下列組態設定中傳遞：
 

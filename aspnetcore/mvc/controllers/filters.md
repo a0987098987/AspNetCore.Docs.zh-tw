@@ -11,11 +11,11 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: bf90698bbac850b1917cd93dbf0a5fc5b6792aa0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 6baeb472770daf1d54b2d9ea894fc710f4f40780
+ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="filters"></a>篩選條件
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 08/11/2017
 
 當管線的特定階段如有多個篩選條件時，範圍會決定執行篩選條件的預設順序。  全域篩選括住類別篩選，又圍繞方法篩選器。 這有時候稱為"俄文布偶 「 巢狀結構，因為每次加大範圍圍繞前一個範圍，例如[巢狀布偶](https://en.wikipedia.org/wiki/Matryoshka_doll)。 您通常不必明確地判斷順序取得想要覆寫的行為。
 
-此巢狀結構、 Asa 結果*之後*的篩選條件的程式碼會執行相反的順序*之前*程式碼。 順序看起來像這樣：
+因為這個巢狀結構、*之後*的篩選條件的程式碼會執行相反的順序*之前*程式碼。 順序看起來像這樣：
 
 * *之前*全域套用的篩選器的程式碼
   * *之前*套用至控制器的篩選條件的程式碼

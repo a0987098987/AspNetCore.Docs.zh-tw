@@ -11,11 +11,11 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: a93ee8165be52e33c2e7da4d3fee2c8225864db9
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 318d8832dadadd6946c7ffe58f9d89aaf68f54fc
+ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="rendering-html-with-views-in-aspnet-core-mvc"></a>將 HTML 呈現使用 ASP.NET Core MVC 中的檢視
 
@@ -39,7 +39,7 @@ ASP.NET Core MVC 檢視*.cshtml*預設會在儲存檔案*檢視*應用程式中�
 
 ## <a name="creating-a-view"></a>建立檢視
 
-檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*/檢視表/共用*資料夾。 檢視檔案與它關聯之的控制器的動作，相同的名稱，並加入*.cshtml*檔案副檔名。 例如，若要建立的檢視*有關*動作*首頁*控制站，您就必須建立*About.cshtml*檔案  */檢視表/首頁*資料夾。
+檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*/檢視表/共用*資料夾。 檢視檔案與它關聯之的控制器的動作，相同的名稱，並加入*.cshtml*檔案副檔名。 例如，若要建立的檢視*有關*動作*首頁*控制站，您就必須建立*About.cshtml*檔案 * /檢視表/首頁*資料夾。
 
 範例的檢視檔案 (*About.cshtml*):
 
@@ -69,14 +69,14 @@ ASP.NET Core MVC 檢視*.cshtml*預設會在儲存檔案*檢視*應用程式中�
 
 當動作傳回`View`方法，就像這樣`return View();`，動作名稱當做檢視表名稱。 例如，如果這從名為"Index"的動作方法呼叫，將相當於 「 索引 」 的檢視名稱傳入。 檢視名稱可以明確地傳遞給方法 (`return View("SomeView");`)。 在這兩種情況下，檢視探索會搜尋相符的檢視檔案中：
 
-   1. 檢視 /<ControllerName>/<ViewName>.cshtml
+   1. 檢視 /\<ControllerName > /\<ViewName >.cshtml
 
-   2. 檢視/共用/<ViewName>.cshtml
+   2. 檢視/共用/\<ViewName >.cshtml
 
 >[!TIP]
 > 我們建議您遵循的慣例只傳回`View()`從可能的因為它會造成更具彈性且更容易重構程式碼時的動作。
 
-可以提供的檢視檔案的路徑，而不是檢視表名稱。 在此情況下， *.cshtml*延伸模組必須指定檔案路徑的一部分。 路徑必須是相對於應用程式根目錄 (並可以選擇性地啟動與"/"或"~ /")。 例如：`return View("Views/Home/About.cshtml");`
+可以提供的檢視檔案的路徑，而不是檢視表名稱。 如果使用 啟動應用程式根目錄的絕對路徑 (選擇性地起始與"/"或"~ /")、 *.cshtml*延伸模組必須指定檔案路徑的一部分。 例如：`return View("Views/Home/About.cshtml");`。 或者，您可以使用相對路徑內的控制站的特定目錄從*檢視*目錄中，指定在不同的目錄檢視。 例如：`return View("../Manage/Index");`內*首頁*控制站。 同樣地，您便可以周遊的目前的控制器特定目錄： `return View("./About");`。 請注意，不要使用相對路徑*.cshtml*延伸模組。 如先前所述，請遵循組織檢視，以反映在控制器、 動作和可維護性和避免困擾的檢視之間的關聯性的檔案結構的最佳做法。
 
 > [!NOTE]
 > [部分檢視](partial.md)和[檢視元件](view-components.md)使用類似 （但不是完全相同） 的探索機制。

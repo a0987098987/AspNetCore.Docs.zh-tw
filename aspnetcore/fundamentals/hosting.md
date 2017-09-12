@@ -1,231 +1,524 @@
 ---
-title: "裝載於 ASP.NET Core |Microsoft 文件"
-author: ardalis
-description: "在 ASP.NET Core web 主機簡介。"
-keywords: "ASP.NET Core web 主機，IWebHost"
+title: "在 ASP.NET Core 中裝載"
+author: guardrex
+description: "深入了解 ASP.NET Core，負責啟動與存留期管理的應用程式中的 web 主機。"
+keywords: "ASP.NET Core web 主機 IWebHost、 WebHostBuilder、 IHostingEnvironment、 IApplicationLifetime"
 ms.author: riande
 manager: wpickett
-ms.date: 08/02/2017
+ms.date: 09/10/2017
 ms.topic: article
 ms.assetid: 4e45311d-8d56-46e2-b99d-6f65b648a277
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0725f3d2c130068094792e5ba9e17481155e4294
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: a1a789ff1bc6b3e3af99419e7d74d3fb46bb2345
+ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
-# <a name="introduction-to-hosting-in-aspnet-core"></a><span data-ttu-id="e30e6-104">在 ASP.NET Core 中裝載的簡介</span><span class="sxs-lookup"><span data-stu-id="e30e6-104">Introduction to hosting in ASP.NET Core</span></span>
+# <a name="hosting-in-aspnet-core"></a><span data-ttu-id="b2851-104">在 ASP.NET Core 中裝載</span><span class="sxs-lookup"><span data-stu-id="b2851-104">Hosting in ASP.NET Core</span></span>
 
-<span data-ttu-id="e30e6-105">由[Steve Smith](http://ardalis.com)</span><span class="sxs-lookup"><span data-stu-id="e30e6-105">By [Steve Smith](http://ardalis.com)</span></span>
+<span data-ttu-id="b2851-105">由[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="b2851-105">By [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="e30e6-106">若要執行 ASP.NET Core 應用程式，您必須設定並啟動使用主機`WebHostBuilder`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-106">To run an ASP.NET Core app, you need to configure and launch a host using `WebHostBuilder`.</span></span>
+<span data-ttu-id="b2851-106">ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程式啟動和存留期管理。</span><span class="sxs-lookup"><span data-stu-id="b2851-106">ASP.NET Core apps configure and launch a *host*, which is responsible for app startup and lifetime management.</span></span> <span data-ttu-id="b2851-107">至少一部伺服器和要求處理管線，會設定主應用程式。</span><span class="sxs-lookup"><span data-stu-id="b2851-107">At a minimum, the host configures a server and a request processing pipeline.</span></span>
 
-## <a name="what-is-a-host"></a><span data-ttu-id="e30e6-107">什麼是主應用程式？</span><span class="sxs-lookup"><span data-stu-id="e30e6-107">What is a Host?</span></span>
+## <a name="setting-up-a-host"></a><span data-ttu-id="b2851-108">設定主機</span><span class="sxs-lookup"><span data-stu-id="b2851-108">Setting up a host</span></span>
 
-<span data-ttu-id="e30e6-108">ASP.NET Core 應用程式需要*主機*要在其中執行。</span><span class="sxs-lookup"><span data-stu-id="e30e6-108">ASP.NET Core apps require a *host* in which to execute.</span></span> <span data-ttu-id="e30e6-109">主機必須實作`IWebHost`介面，以便公開的功能和服務的集合，而`Start`方法。</span><span class="sxs-lookup"><span data-stu-id="e30e6-109">A host must implement the `IWebHost` interface, which exposes collections of features and services, and a `Start` method.</span></span> <span data-ttu-id="e30e6-110">主機通常會建立使用的執行個體`WebHostBuilder`，會建立並傳回`WebHost`執行個體。</span><span class="sxs-lookup"><span data-stu-id="e30e6-110">The host is typically created using an instance of a `WebHostBuilder`, which builds and returns a  `WebHost` instance.</span></span> <span data-ttu-id="e30e6-111">`WebHost`參照的伺服器將會處理要求。</span><span class="sxs-lookup"><span data-stu-id="e30e6-111">The `WebHost` references the server that will handle requests.</span></span> <span data-ttu-id="e30e6-112">深入了解[伺服器](servers/index.md)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-112">Learn more about [servers](servers/index.md).</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-109">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-109">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-### <a name="what-is-the-difference-between-a-host-and-a-server"></a><span data-ttu-id="e30e6-113">在主機與伺服器之間的差異為何？</span><span class="sxs-lookup"><span data-stu-id="e30e6-113">What is the difference between a host and a server?</span></span>
+<span data-ttu-id="b2851-110">建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。</span><span class="sxs-lookup"><span data-stu-id="b2851-110">Create a host using an instance of [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder).</span></span> <span data-ttu-id="b2851-111">這通常在您的應用程式進入點，執行`Main`方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-111">This is typically performed in your app's entry point, the `Main` method.</span></span> <span data-ttu-id="b2851-112">在專案範本中，`Main`位於*Program.cs*。</span><span class="sxs-lookup"><span data-stu-id="b2851-112">In the project templates, `Main` is located in *Program.cs*.</span></span> <span data-ttu-id="b2851-113">一般*Program.cs*呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)啟動主機的設定：</span><span class="sxs-lookup"><span data-stu-id="b2851-113">A typical *Program.cs* calls [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) to start setting up a host:</span></span>
 
-<span data-ttu-id="e30e6-114">負責應用程式啟動和生命週期管理的主機。</span><span class="sxs-lookup"><span data-stu-id="e30e6-114">The host is responsible for application startup and lifetime management.</span></span> <span data-ttu-id="e30e6-115">伺服器是負責接受 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="e30e6-115">The server is responsible for accepting HTTP requests.</span></span> <span data-ttu-id="e30e6-116">主機負責的部分包括確保應用程式的服務和伺服器可供使用且已正確設定。</span><span class="sxs-lookup"><span data-stu-id="e30e6-116">Part of the host's responsibility includes ensuring the application's services and the server are available and properly configured.</span></span> <span data-ttu-id="e30e6-117">您可以將主機視為伺服器的包裝函式。</span><span class="sxs-lookup"><span data-stu-id="e30e6-117">You can think of the host as being a wrapper around the server.</span></span> <span data-ttu-id="e30e6-118">主機已設定為使用特定的伺服器。伺服器不會知道其主機。</span><span class="sxs-lookup"><span data-stu-id="e30e6-118">The host is configured to use a particular server; the server is unaware of its host.</span></span>
+[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main)]
 
-## <a name="setting-up-a-host"></a><span data-ttu-id="e30e6-119">設定主機</span><span class="sxs-lookup"><span data-stu-id="e30e6-119">Setting up a Host</span></span>
+<span data-ttu-id="b2851-114">`CreateDefaultBuilder`會執行下列工作：</span><span class="sxs-lookup"><span data-stu-id="b2851-114">`CreateDefaultBuilder` performs the following tasks:</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="e30e6-120">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="e30e6-120">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+* <span data-ttu-id="b2851-115">設定[Kestrel](servers/kestrel.md)做為 web 伺服器。</span><span class="sxs-lookup"><span data-stu-id="b2851-115">Configures [Kestrel](servers/kestrel.md) as the web server.</span></span>
+* <span data-ttu-id="b2851-116">若要設定內容的根[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。</span><span class="sxs-lookup"><span data-stu-id="b2851-116">Sets the content root to [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).</span></span>
+* <span data-ttu-id="b2851-117">從負載選擇性設定：</span><span class="sxs-lookup"><span data-stu-id="b2851-117">Loads optional configuration from:</span></span>
+  * <span data-ttu-id="b2851-118">*appsettings.json*。</span><span class="sxs-lookup"><span data-stu-id="b2851-118">*appsettings.json*.</span></span>
+  * <span data-ttu-id="b2851-119">*appsettings。{環境}.json*。</span><span class="sxs-lookup"><span data-stu-id="b2851-119">*appsettings.{Environment}.json*.</span></span>
+  * <span data-ttu-id="b2851-120">[使用者密碼](xref:security/app-secrets)的應用程式執行時`Development`環境。</span><span class="sxs-lookup"><span data-stu-id="b2851-120">[User secrets](xref:security/app-secrets) when the app runs in the `Development` environment.</span></span>
+  * <span data-ttu-id="b2851-121">環境變數。</span><span class="sxs-lookup"><span data-stu-id="b2851-121">Environment variables.</span></span>
+  * <span data-ttu-id="b2851-122">命令列引數。</span><span class="sxs-lookup"><span data-stu-id="b2851-122">Command-line arguments.</span></span>
+* <span data-ttu-id="b2851-123">設定[記錄](xref:fundamentals/logging)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="b2851-123">Configures [logging](xref:fundamentals/logging) for console and debug output with [log filtering](xref:fundamentals/logging#log-filtering) rules specified in a Logging configuration section of an *appsettings.json* or *appsettings.{Environment}.json* file.</span></span>
+* <span data-ttu-id="b2851-124">IIS 背景執行，可讓 IIS 整合所設定的基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。</span><span class="sxs-lookup"><span data-stu-id="b2851-124">When running behind IIS, enables IIS integration by configuring the base path and port the server should listen on when using the [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module).</span></span> <span data-ttu-id="b2851-125">此模組會建立 Kestrel 與 IIS 之間的反向 proxy。</span><span class="sxs-lookup"><span data-stu-id="b2851-125">The module creates a reverse-proxy between Kestrel and IIS.</span></span> <span data-ttu-id="b2851-126">也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。</span><span class="sxs-lookup"><span data-stu-id="b2851-126">Also configures the app to [capture startup errors](#capture-startup-errors).</span></span>
 
-<span data-ttu-id="e30e6-121">建立使用的執行個體的主機`WebHostBuilder`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-121">You create a host using an instance of `WebHostBuilder`.</span></span> <span data-ttu-id="e30e6-122">這通常是在您的應用程式進入點： `public static void Main` (在專案範本位於*Program.cs*檔案)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-122">This is typically done in your app's entry point: `public static void Main` (which in the project templates is located in a *Program.cs* file).</span></span> <span data-ttu-id="e30e6-123">一般*Program.cs*，所示，將示範如何使用`WebHostBuilder`建置主應用程式。</span><span class="sxs-lookup"><span data-stu-id="e30e6-123">A typical *Program.cs*, shown below, demonstrates how to use a `WebHostBuilder` to build a host.</span></span>
+<span data-ttu-id="b2851-127">*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。</span><span class="sxs-lookup"><span data-stu-id="b2851-127">The *content root* determines where the host searches for content files, such as MVC view files.</span></span> <span data-ttu-id="b2851-128">預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。</span><span class="sxs-lookup"><span data-stu-id="b2851-128">The default content root is [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).</span></span> <span data-ttu-id="b2851-129">這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。</span><span class="sxs-lookup"><span data-stu-id="b2851-129">This results in using the web project's root folder as the content root when the app is started from the root folder (for example, calling [dotnet run](/dotnet/core/tools/dotnet-run) from the project folder).</span></span> <span data-ttu-id="b2851-130">這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。</span><span class="sxs-lookup"><span data-stu-id="b2851-130">This is the default used in [Visual Studio](https://www.visualstudio.com/) and the [dotnet new templates](/dotnet/core/tools/dotnet-new).</span></span>
 
-<span data-ttu-id="e30e6-124">[!code-csharp[Main](../common/samples/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]</span><span class="sxs-lookup"><span data-stu-id="e30e6-124">[!code-csharp[Main](../common/samples/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]</span></span>
-
-<span data-ttu-id="e30e6-125">`WebHostBuilder`負責建立主機將啟動載入應用程式伺服器。</span><span class="sxs-lookup"><span data-stu-id="e30e6-125">The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app.</span></span> <span data-ttu-id="e30e6-126">`WebHostBuilder`需要您提供伺服器實作`IServer`(`UseKestrel`上述程式碼中)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-126">`WebHostBuilder` requires you provide a server that implements `IServer` (`UseKestrel` in the code above).</span></span> <span data-ttu-id="e30e6-127">`UseKestrel`指定應用程式會使用 Kestrel 伺服器。</span><span class="sxs-lookup"><span data-stu-id="e30e6-127">`UseKestrel` specifies the Kestrel server will be used by the app.</span></span>
-
-<span data-ttu-id="e30e6-128">伺服器的*內容的根*決定搜尋內容的檔案，就像 MVC 檢視檔案。</span><span class="sxs-lookup"><span data-stu-id="e30e6-128">The server's *content root* determines where it searches for content files, like MVC View files.</span></span> <span data-ttu-id="e30e6-129">預設內容的根是從中執行應用程式的資料夾。</span><span class="sxs-lookup"><span data-stu-id="e30e6-129">The default content root is the folder from which the application is run.</span></span>
+<span data-ttu-id="b2851-131">請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration)如需有關應用程式組態。</span><span class="sxs-lookup"><span data-stu-id="b2851-131">See [Configuration in ASP.NET Core](xref:fundamentals/configuration) for more information on app configuration.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="e30e6-130">指定`Directory.GetCurrentDirectory`為內容的根會用於 web 專案的根資料夾為應用程式的內容的根應用程式啟動時從這個資料夾 (例如，呼叫`dotnet run`web 專案資料夾中)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-130">Specifying `Directory.GetCurrentDirectory` as the content root will use the web project's root folder as the app's content root when the app is started from this folder (for example, calling `dotnet run` from the web project folder).</span></span> <span data-ttu-id="e30e6-131">這是使用 Visual Studio 中的預設值和`dotnet new`範本。</span><span class="sxs-lookup"><span data-stu-id="e30e6-131">This is the default used in Visual Studio and `dotnet new` templates.</span></span>
+> <span data-ttu-id="b2851-132">做為使用靜態替代`CreateDefaultBuilder`方法，建立從主機[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)是支援的方法與 ASP.NET Core 2.x。</span><span class="sxs-lookup"><span data-stu-id="b2851-132">As an alternative to using the static `CreateDefaultBuilder` method, creating a host from [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) is a supported approach with ASP.NET Core 2.x.</span></span> <span data-ttu-id="b2851-133">請參閱 ASP.NET Core 1.x 索引標籤的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="b2851-133">See the ASP.NET Core 1.x tab for more information.</span></span>
 
-<span data-ttu-id="e30e6-132">若要使用 IIS 做為反向 proxy，呼叫`UseIISIntegration`建置主應用程式的一部分。</span><span class="sxs-lookup"><span data-stu-id="e30e6-132">To use IIS as a reverse proxy, call `UseIISIntegration` as part of building the host.</span></span> 
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-134">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-134">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="e30e6-133">請注意，`UseIISIntegration`不設定*伺服器*、 like`UseKestrel`沒有。</span><span class="sxs-lookup"><span data-stu-id="e30e6-133">Note that `UseIISIntegration` doesn't configure a *server*, like `UseKestrel` does.</span></span> <span data-ttu-id="e30e6-134">若要使用 IIS 與 ASP.NET Core，您必須同時指定`UseKestrel`和`UseIISIntegration`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-134">To use IIS with ASP.NET Core, you must specify both `UseKestrel` and `UseIISIntegration`.</span></span> <span data-ttu-id="e30e6-135">`UseKestrel`建立網頁伺服器及裝載應用程式。</span><span class="sxs-lookup"><span data-stu-id="e30e6-135">`UseKestrel` creates the web server and hosts the app.</span></span> <span data-ttu-id="e30e6-136">`UseIISIntegration`檢查 IIS/iis Express 所使用的環境變數，並設定要接聽的連接埠等要使用的標頭的設定。</span><span class="sxs-lookup"><span data-stu-id="e30e6-136">`UseIISIntegration` examines environment variables used by IIS/IISExpress and configures settings such as the port to listen on and the headers to use.</span></span>
+<span data-ttu-id="b2851-135">建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。</span><span class="sxs-lookup"><span data-stu-id="b2851-135">Create a host using an instance of [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder).</span></span> <span data-ttu-id="b2851-136">這通常在您的應用程式進入點，執行`Main`方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-136">This is typically performed in your app's entry point, the `Main` method.</span></span> <span data-ttu-id="b2851-137">在專案範本中，`Main`位於*Program.cs*。</span><span class="sxs-lookup"><span data-stu-id="b2851-137">In the project templates, `Main` is located in *Program.cs*.</span></span> <span data-ttu-id="b2851-138">下列*Program.cs*示範如何使用`WebHostBuilder`建置主應用程式：</span><span class="sxs-lookup"><span data-stu-id="b2851-138">The following *Program.cs* demonstrates how to use `WebHostBuilder` to build the host:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="e30e6-137">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="e30e6-137">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+[!code-csharp[Main](../common/samples/WebApplication1/Program.cs)]
 
-<span data-ttu-id="e30e6-138">建立使用的執行個體的主機`WebHostBuilder`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-138">You create a host using an instance of `WebHostBuilder`.</span></span> <span data-ttu-id="e30e6-139">這通常是在您的應用程式進入點： `public static void Main` (在專案範本位於*Program.cs*檔案)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-139">This is typically done in your app's entry point: `public static void Main` (which in the project templates is located in a *Program.cs* file).</span></span> <span data-ttu-id="e30e6-140">一般*Program.cs*，如下所示，呼叫`CreateDefaultbuilder`建置主應用程式：</span><span class="sxs-lookup"><span data-stu-id="e30e6-140">A typical *Program.cs*, shown below, calls `CreateDefaultbuilder` to build a host:</span></span>
+<span data-ttu-id="b2851-139">`WebHostBuilder`需要[伺服器實作 IServer](servers/index.md)。</span><span class="sxs-lookup"><span data-stu-id="b2851-139">`WebHostBuilder` requires a [server that implements IServer](servers/index.md).</span></span> <span data-ttu-id="b2851-140">內建的伺服器是[Kestrel](servers/kestrel.md)和[HTTP.sys](servers/httpsys.md) (ASP.NET Core 2.0 版本中之前, 已呼叫 HTTP.sys [WebListener](xref:fundamentals/servers/weblistener))。</span><span class="sxs-lookup"><span data-stu-id="b2851-140">The built-in servers are [Kestrel](servers/kestrel.md) and [HTTP.sys](servers/httpsys.md) (prior to the release of ASP.NET Core 2.0, HTTP.sys was called [WebListener](xref:fundamentals/servers/weblistener)).</span></span> <span data-ttu-id="b2851-141">在此範例中， [UseKestrel 擴充方法](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)指定 Kestrel 伺服器。</span><span class="sxs-lookup"><span data-stu-id="b2851-141">In this example, the [UseKestrel extension method](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1) specifies the Kestrel server.</span></span>
 
-<span data-ttu-id="e30e6-141">[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]</span><span class="sxs-lookup"><span data-stu-id="e30e6-141">[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]</span></span>
+<span data-ttu-id="b2851-142">*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。</span><span class="sxs-lookup"><span data-stu-id="b2851-142">The *content root* determines where the host searches for content files, such as MVC view files.</span></span> <span data-ttu-id="b2851-143">預設內容根提供給`UseContentRoot`是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory?view=netcore-1.1)。</span><span class="sxs-lookup"><span data-stu-id="b2851-143">The default content root supplied to `UseContentRoot` is [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory?view=netcore-1.1).</span></span> <span data-ttu-id="b2851-144">這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。</span><span class="sxs-lookup"><span data-stu-id="b2851-144">This results in using the web project's root folder as the content root when the app is started from the root folder (for example, calling [dotnet run](/dotnet/core/tools/dotnet-run) from the project folder).</span></span> <span data-ttu-id="b2851-145">這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。</span><span class="sxs-lookup"><span data-stu-id="b2851-145">This is the default used in [Visual Studio](https://www.visualstudio.com/) and the [dotnet new templates](/dotnet/core/tools/dotnet-new).</span></span>
 
-<span data-ttu-id="e30e6-142">`CreateDefaultbuilder`建立的執行個體`WebHostBuilder`建置 bootstraps 應用程式伺服器的主機。</span><span class="sxs-lookup"><span data-stu-id="e30e6-142">`CreateDefaultbuilder` creates an instance of `WebHostBuilder` to build the host that bootstraps the server for the app.</span></span> <span data-ttu-id="e30e6-143">主應用程式需要[伺服器實作 IServer](servers/index.md)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-143">The host requires a [server that implements IServer](servers/index.md).</span></span> <span data-ttu-id="e30e6-144">內建的伺服器是[Kestrel](servers/kestrel.md)和[HTTP.sys](servers/httpsys.md);`CreateDefaultbuilder`預設都會使用 Kestrel。</span><span class="sxs-lookup"><span data-stu-id="e30e6-144">The built-in servers are [Kestrel](servers/kestrel.md) and [HTTP.sys](servers/httpsys.md); `CreateDefaultbuilder` use Kestrel by default.</span></span>
+<span data-ttu-id="b2851-146">若要使用 IIS 做為反向 proxy，呼叫[UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions)建置主應用程式的一部分。</span><span class="sxs-lookup"><span data-stu-id="b2851-146">To use IIS as a reverse proxy, call [UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions) as part of building the host.</span></span> <span data-ttu-id="b2851-147">`UseIISIntegration`未設定*伺服器*、 like [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)沒有。</span><span class="sxs-lookup"><span data-stu-id="b2851-147">`UseIISIntegration` doesn't configure a *server*, like [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1) does.</span></span> <span data-ttu-id="b2851-148">`UseIISIntegration`設定基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)建立 Kestrel 與 IIS 之間的反向 proxy。</span><span class="sxs-lookup"><span data-stu-id="b2851-148">`UseIISIntegration` configures the base path and port the server should listen on when using the [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) to create a reverse-proxy between Kestrel and IIS.</span></span> <span data-ttu-id="b2851-149">若要使用 IIS 與 ASP.NET Core，您必須同時指定`UseKestrel`和`UseIISIntegration`。</span><span class="sxs-lookup"><span data-stu-id="b2851-149">To use IIS with ASP.NET Core, you must specify both `UseKestrel` and `UseIISIntegration`.</span></span> <span data-ttu-id="b2851-150">`UseIISIntegration`只會啟動執行 IIS 或 IIS Express 後面時。</span><span class="sxs-lookup"><span data-stu-id="b2851-150">`UseIISIntegration` only activates when running behind IIS or IIS Express.</span></span> <span data-ttu-id="b2851-151">如需詳細資訊，請參閱[簡介 ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)和[ASP.NET 核心模組的組態參考](xref:hosting/aspnet-core-module)。</span><span class="sxs-lookup"><span data-stu-id="b2851-151">For more information, see [Introduction to ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) and [ASP.NET Core Module configuration reference](xref:hosting/aspnet-core-module).</span></span>
 
-<span data-ttu-id="e30e6-145">`CreateDefaultbuilder`會執行除了與網頁伺服器設定 Kestrel 安裝工作：</span><span class="sxs-lookup"><span data-stu-id="e30e6-145">`CreateDefaultbuilder` performs set-up tasks in addition to configuring Kestrel as the web server:</span></span>
-
-* <span data-ttu-id="e30e6-146">若要設定內容的根`Directory.GetCurrentDirectory`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-146">Sets the content root to `Directory.GetCurrentDirectory`.</span></span>
-* <span data-ttu-id="e30e6-147">載入組態：</span><span class="sxs-lookup"><span data-stu-id="e30e6-147">Loads configuration from:</span></span>
-  * <span data-ttu-id="e30e6-148">*appsettings.json*</span><span class="sxs-lookup"><span data-stu-id="e30e6-148">*appsettings.json*</span></span>
-  * <span data-ttu-id="e30e6-149">*appsettings。\<EnvironmentName >.json*。</span><span class="sxs-lookup"><span data-stu-id="e30e6-149">*appsettings.\<EnvironmentName>.json*.</span></span>
-  * <span data-ttu-id="e30e6-150">在開發環境中執行的應用程式時的使用者密碼</span><span class="sxs-lookup"><span data-stu-id="e30e6-150">user secrets when the app runs in the Development environment</span></span>
-  * <span data-ttu-id="e30e6-151">環境變數</span><span class="sxs-lookup"><span data-stu-id="e30e6-151">environment variables</span></span>
-  * <span data-ttu-id="e30e6-152">提供的命令列引數</span><span class="sxs-lookup"><span data-stu-id="e30e6-152">supplied command line args</span></span>
-* <span data-ttu-id="e30e6-153">使用篩選的記錄組態區段中指定的規則來設定主控台和偵錯輸出的記錄。</span><span class="sxs-lookup"><span data-stu-id="e30e6-153">Configures logging for console and debug output, with filtering rules specified in a Logging configuration section.</span></span>
-* <span data-ttu-id="e30e6-154">可讓 IIS 整合。</span><span class="sxs-lookup"><span data-stu-id="e30e6-154">Enables IIS integration.</span></span>
-* <span data-ttu-id="e30e6-155">在開發環境中執行的應用程式時，請新增 [開發人員的例外狀況] 頁面。</span><span class="sxs-lookup"><span data-stu-id="e30e6-155">Adds the developer exception page when the app runs in the Development environment.</span></span>
-
-<span data-ttu-id="e30e6-156">伺服器的*內容的根*決定搜尋內容的檔案，就像 MVC 檢視檔案。</span><span class="sxs-lookup"><span data-stu-id="e30e6-156">The server's *content root* determines where it searches for content files, like MVC View files.</span></span> <span data-ttu-id="e30e6-157">預設內容的根是從中執行應用程式的資料夾。</span><span class="sxs-lookup"><span data-stu-id="e30e6-157">The default content root is the folder from which the application is run.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="e30e6-158">指定`Directory.GetCurrentDirectory`為內容的根會用於 web 專案的根資料夾為應用程式的內容的根應用程式啟動時從這個資料夾 (例如，呼叫`dotnet run`web 專案資料夾中)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-158">Specifying `Directory.GetCurrentDirectory` as the content root will use the web project's root folder as the app's content root when the app is started from this folder (for example, calling `dotnet run` from the web project folder).</span></span> <span data-ttu-id="e30e6-159">這是使用 Visual Studio 中的預設值和`dotnet new`範本。</span><span class="sxs-lookup"><span data-stu-id="e30e6-159">This is the default used in Visual Studio and `dotnet new` templates.</span></span>
-
-<span data-ttu-id="e30e6-160">當您使用 IIS 的反向 proxy 時，ASP.NET Core 自動呼叫`UseIISIntegration`建置主應用程式的一部分。</span><span class="sxs-lookup"><span data-stu-id="e30e6-160">When you use IIS as a reverse proxy, ASP.NET Core automatically calls `UseIISIntegration` as part of building the host.</span></span> <span data-ttu-id="e30e6-161">如需詳細資訊，請參閱[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-161">For more information, see [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module).</span></span>
-
-<span data-ttu-id="e30e6-162">請注意，`UseIISIntegration`不設定*伺服器*、 like`UseKestrel`沒有。</span><span class="sxs-lookup"><span data-stu-id="e30e6-162">Note that `UseIISIntegration` doesn't configure a *server*, like `UseKestrel` does.</span></span> <span data-ttu-id="e30e6-163">`UseKestrel`建立網頁伺服器及裝載應用程式。</span><span class="sxs-lookup"><span data-stu-id="e30e6-163">`UseKestrel` creates the web server and hosts the app.</span></span> <span data-ttu-id="e30e6-164">`UseIISIntegration`檢查 IIS/iis Express 所使用的環境變數，並設定要接聽的連接埠等要使用的標頭的設定。</span><span class="sxs-lookup"><span data-stu-id="e30e6-164">`UseIISIntegration` examines environment variables used by IIS/IISExpress and configures settings such as the port to listen on and the headers to use.</span></span>
-
----
-
-<span data-ttu-id="e30e6-165">設定主機 （和 ASP.NET Core 應用程式） 的最簡單的實作會包含只伺服器和應用程式的要求管線的組態：</span><span class="sxs-lookup"><span data-stu-id="e30e6-165">A minimal implementation of configuring a host (and an ASP.NET Core app) would include just a server and configuration of the app's request pipeline:</span></span>
+<span data-ttu-id="b2851-152">最簡單的實作，以設定主應用程式 （和 ASP.NET Core 應用程式） 包含指定伺服器和應用程式的要求管線的組態：</span><span class="sxs-lookup"><span data-stu-id="b2851-152">A minimal implementation that configures a host (and an ASP.NET Core app) includes specifying a server and configuration of the app's request pipeline:</span></span>
 
 ```csharp
 var host = new WebHostBuilder()
     .UseKestrel()
     .Configure(app =>
     {
-        app.Run(async (context) => await context.Response.WriteAsync("Hi!"));
+        app.Run(context => context.Response.WriteAsync("Hello World!"));
     })
     .Build();
 
 host.Run();
 ```
 
-> [!NOTE]
-> <span data-ttu-id="e30e6-166">當設定主機，您可以提供`Configure`和`ConfigureServices`方法，而不是，或除了指定`Startup`類別 (其中也必須定義這些方法中-請參閱[應用程式啟動](startup.md))。</span><span class="sxs-lookup"><span data-stu-id="e30e6-166">When setting up a host, you can provide `Configure` and `ConfigureServices` methods, instead of or in addition to specifying a `Startup` class (which must also define these methods - see [Application Startup](startup.md)).</span></span> <span data-ttu-id="e30e6-167">多個呼叫`ConfigureServices`會將附加至另一個，則為呼叫`Configure`或`UseStartup`將會取代先前的設定。</span><span class="sxs-lookup"><span data-stu-id="e30e6-167">Multiple calls to `ConfigureServices` will append to one another; calls to `Configure` or `UseStartup` will replace previous settings.</span></span>
+---
 
-## <a name="configuring-a-host"></a><span data-ttu-id="e30e6-168">主控件設定</span><span class="sxs-lookup"><span data-stu-id="e30e6-168">Configuring a Host</span></span>
+<span data-ttu-id="b2851-153">當設定主機，您可以提供[設定](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1)和[ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1)方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-153">When setting up a host, you can provide [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1) and [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1) methods.</span></span> <span data-ttu-id="b2851-154">如果您指定`Startup`類別，則必須定義`Configure`方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-154">If you specify a `Startup` class, it must define a `Configure` method.</span></span> <span data-ttu-id="b2851-155">如需詳細資訊，請參閱[中 ASP.NET Core 應用程式啟動](startup.md)。</span><span class="sxs-lookup"><span data-stu-id="b2851-155">For more information, see [Application Startup in ASP.NET Core](startup.md).</span></span> <span data-ttu-id="b2851-156">多個呼叫`ConfigureServices`附加至另一個。</span><span class="sxs-lookup"><span data-stu-id="b2851-156">Multiple calls to `ConfigureServices` append to one another.</span></span> <span data-ttu-id="b2851-157">多個呼叫`Configure`或`UseStartup`上`WebHostBuilder`取代先前的設定。</span><span class="sxs-lookup"><span data-stu-id="b2851-157">Multiple calls to `Configure` or `UseStartup` on the `WebHostBuilder` replace previous settings.</span></span>
 
-<span data-ttu-id="e30e6-169">`WebHostBuilder`提供方法來設定大部分可用的設定值，這也可以設定直接使用主機`UseSetting`和相關聯的金鑰。</span><span class="sxs-lookup"><span data-stu-id="e30e6-169">The `WebHostBuilder` provides methods for setting most of the available configuration values for the host, which can also be set directly using `UseSetting` and associated key.</span></span>
+## <a name="host-configuration-values"></a><span data-ttu-id="b2851-158">主機組態值</span><span class="sxs-lookup"><span data-stu-id="b2851-158">Host configuration values</span></span>
 
-### <a name="host-configuration-values"></a><span data-ttu-id="e30e6-170">主機組態值</span><span class="sxs-lookup"><span data-stu-id="e30e6-170">Host Configuration Values</span></span>
+<span data-ttu-id="b2851-159">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)提供方法來設定大部分可用的設定值，主機也可以直接與設定[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting)和相關聯的金鑰。</span><span class="sxs-lookup"><span data-stu-id="b2851-159">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) provides methods for setting most of the available configuration values for the host, which can also be set directly with [UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) and the associated key.</span></span> <span data-ttu-id="b2851-160">設定的值時`UseSetting`，此值設定為字串 （以引號括住），不論類型為何。</span><span class="sxs-lookup"><span data-stu-id="b2851-160">When setting a value with `UseSetting`, the value is set as a string (in quotes) regardless of the type.</span></span>
 
-<span data-ttu-id="e30e6-171">**擷取啟動錯誤**`bool`</span><span class="sxs-lookup"><span data-stu-id="e30e6-171">**Capture Startup Errors** `bool`</span></span>
+### <a name="capture-startup-errors"></a><span data-ttu-id="b2851-161">擷取啟動錯誤</span><span class="sxs-lookup"><span data-stu-id="b2851-161">Capture Startup Errors</span></span>
 
-<span data-ttu-id="e30e6-172">索引鍵： `captureStartupErrors`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-172">Key: `captureStartupErrors`.</span></span> <span data-ttu-id="e30e6-173">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-173">Defaults to `false`.</span></span> <span data-ttu-id="e30e6-174">當`false`，啟動導致主機結束期間發生的錯誤。</span><span class="sxs-lookup"><span data-stu-id="e30e6-174">When `false`, errors during startup result in the host exiting.</span></span> <span data-ttu-id="e30e6-175">當`true`，主機會擷取任何例外狀況，從`Startup`類別，並嘗試啟動伺服器。</span><span class="sxs-lookup"><span data-stu-id="e30e6-175">When `true`, the host will capture any exceptions from the `Startup` class and attempt to start the server.</span></span> <span data-ttu-id="e30e6-176">它會顯示錯誤頁面 （泛型，或詳細，根據詳細的錯誤設定下, 面） 為每個要求。</span><span class="sxs-lookup"><span data-stu-id="e30e6-176">It will display an error page (generic, or detailed, based on the Detailed Errors setting, below) for every request.</span></span> <span data-ttu-id="e30e6-177">使用設定`CaptureStartupErrors`方法。</span><span class="sxs-lookup"><span data-stu-id="e30e6-177">Set using the `CaptureStartupErrors` method.</span></span>
+<span data-ttu-id="b2851-162">此設定會控制擷取的啟動錯誤。</span><span class="sxs-lookup"><span data-stu-id="b2851-162">This setting controls the capture of startup errors.</span></span>
 
-<span data-ttu-id="e30e6-178">注意： 您的應用程式執行時的 Kestrel 和 IIS，預設行為是以擷取啟動錯誤。</span><span class="sxs-lookup"><span data-stu-id="e30e6-178">Note: When your app runs with Kestrel and IIS, the default behavior is to capture startup errors.</span></span> 
+<span data-ttu-id="b2851-163">**索引鍵**: captureStartupErrors</span><span class="sxs-lookup"><span data-stu-id="b2851-163">**Key**: captureStartupErrors</span></span>  
+<span data-ttu-id="b2851-164">**型別**: *bool* (`true`或`1`)</span><span class="sxs-lookup"><span data-stu-id="b2851-164">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="b2851-165">**預設**： 預設為`false`Kestrel 背後 IIS，其中預設值是以執行應用程式除非`true`。</span><span class="sxs-lookup"><span data-stu-id="b2851-165">**Default**: Defaults to `false` unless the app runs with Kestrel behind IIS, where the default is `true`.</span></span>  
+<span data-ttu-id="b2851-166">**使用設定**:`CaptureStartupErrors`</span><span class="sxs-lookup"><span data-stu-id="b2851-166">**Set using**: `CaptureStartupErrors`</span></span>
+
+<span data-ttu-id="b2851-167">當`false`，啟動導致主機結束期間發生的錯誤。</span><span class="sxs-lookup"><span data-stu-id="b2851-167">When `false`, errors during startup result in the host exiting.</span></span> <span data-ttu-id="b2851-168">當`true`，主應用程式在啟動期間擷取例外狀況，並嘗試啟動伺服器。</span><span class="sxs-lookup"><span data-stu-id="b2851-168">When `true`, the host captures exceptions during startup and attempts to start the server.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-169">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-169">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
 ```csharp
-new WebHostBuilder()
+WebHost.CreateDefaultBuilder(args)
     .CaptureStartupErrors(true)
-   ```
+    ...
+```
 
-<span data-ttu-id="e30e6-179">**內容根**`string`</span><span class="sxs-lookup"><span data-stu-id="e30e6-179">**Content Root** `string`</span></span>
-
-<span data-ttu-id="e30e6-180">索引鍵： `contentRoot`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-180">Key: `contentRoot`.</span></span> <span data-ttu-id="e30e6-181">預設應用程式組件 （適用於 Kestrel; 所在的資料夾IIS 預設會使用 web 專案根目錄）。</span><span class="sxs-lookup"><span data-stu-id="e30e6-181">Defaults to the folder where the application assembly resides (for Kestrel; IIS will use the web project root by default).</span></span> <span data-ttu-id="e30e6-182">此設定可決定 ASP.NET Core 會開始搜尋的內容檔案，例如 MVC 檢視。</span><span class="sxs-lookup"><span data-stu-id="e30e6-182">This setting determines where ASP.NET Core will begin searching for content files, such as MVC Views.</span></span> <span data-ttu-id="e30e6-183">也做為基底路徑[Web 根目錄設定](#web-root-setting)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-183">Also used as the base path for the [Web Root Setting](#web-root-setting).</span></span> <span data-ttu-id="e30e6-184">使用設定`UseContentRoot`方法。</span><span class="sxs-lookup"><span data-stu-id="e30e6-184">Set using the `UseContentRoot` method.</span></span> <span data-ttu-id="e30e6-185">路徑必須存在，或主機將無法啟動。</span><span class="sxs-lookup"><span data-stu-id="e30e6-185">Path must exist, or host will fail to start.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-170">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-170">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .CaptureStartupErrors(true)
+    ...
+```
+
+---
+
+### <a name="content-root"></a><span data-ttu-id="b2851-171">內容的根</span><span class="sxs-lookup"><span data-stu-id="b2851-171">Content Root</span></span>
+
+<span data-ttu-id="b2851-172">此設定可決定 ASP.NET Core 開始搜尋的內容檔案，例如 MVC 檢視的位置。</span><span class="sxs-lookup"><span data-stu-id="b2851-172">This setting determines where ASP.NET Core begins searching for content files, such as MVC views.</span></span> 
+
+<span data-ttu-id="b2851-173">**索引鍵**: contentRoot</span><span class="sxs-lookup"><span data-stu-id="b2851-173">**Key**: contentRoot</span></span>  
+<span data-ttu-id="b2851-174">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-174">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-175">**預設**： 預設為應用程式組件所在的資料夾。</span><span class="sxs-lookup"><span data-stu-id="b2851-175">**Default**: Defaults to the folder where the app assembly resides.</span></span>  
+<span data-ttu-id="b2851-176">**使用設定**:`UseContentRoot`</span><span class="sxs-lookup"><span data-stu-id="b2851-176">**Set using**: `UseContentRoot`</span></span>
+
+<span data-ttu-id="b2851-177">內容的根也作為基底路徑[Web 根目錄下設定](#web-root)。</span><span class="sxs-lookup"><span data-stu-id="b2851-177">The content root is also used as the base path for the [Web Root setting](#web-root).</span></span> <span data-ttu-id="b2851-178">如果路徑不存在，就無法啟動主機。</span><span class="sxs-lookup"><span data-stu-id="b2851-178">If the path doesn't exist, the host fails to start.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-179">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-179">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\mywebsite")
-   ```
-
-<span data-ttu-id="e30e6-186">**詳細錯誤**`bool`</span><span class="sxs-lookup"><span data-stu-id="e30e6-186">**Detailed Errors** `bool`</span></span>
-
-<span data-ttu-id="e30e6-187">索引鍵： `detailedErrors`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-187">Key: `detailedErrors`.</span></span> <span data-ttu-id="e30e6-188">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-188">Defaults to `false`.</span></span> <span data-ttu-id="e30e6-189">當`true`（或當環境設定為 「 開發 」），應用程式會顯示啟動例外狀況，而不是一般錯誤網頁的詳細資料。</span><span class="sxs-lookup"><span data-stu-id="e30e6-189">When `true` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page.</span></span> <span data-ttu-id="e30e6-190">使用設定`UseSetting`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-190">Set using `UseSetting`.</span></span>
-
-```csharp
-new WebHostBuilder()
-    .UseSetting("detailedErrors", "true")
+    ...
 ```
 
-<span data-ttu-id="e30e6-191">當設定詳細的錯誤為`false`擷取啟動錯誤，且`true`，以伺服器的每個要求的回應會顯示一般錯誤頁面。</span><span class="sxs-lookup"><span data-stu-id="e30e6-191">When Detailed Errors is set to `false` and Capture Startup Errors is `true`, a generic error page is displayed in response to every request to the server.</span></span>
-
-![一般錯誤頁面](hosting/_static/generic-error-page.png)
-
-<span data-ttu-id="e30e6-193">當設定詳細的錯誤為`true`擷取啟動錯誤，且`true`，以伺服器的每個要求的回應會顯示詳細的錯誤頁面。</span><span class="sxs-lookup"><span data-stu-id="e30e6-193">When Detailed Errors is set to `true` and Capture Startup Errors is `true`, a detailed error page is displayed in response to every request to the server.</span></span>
-
-![詳細的錯誤頁面](hosting/_static/detailed-error-page.png)
-
-<span data-ttu-id="e30e6-195">**環境**`string`</span><span class="sxs-lookup"><span data-stu-id="e30e6-195">**Environment** `string`</span></span>
-
-<span data-ttu-id="e30e6-196">索引鍵： `environment`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-196">Key: `environment`.</span></span> <span data-ttu-id="e30e6-197">預設為 「 生產 」。</span><span class="sxs-lookup"><span data-stu-id="e30e6-197">Defaults to "Production".</span></span> <span data-ttu-id="e30e6-198">可能會設定為任何值。</span><span class="sxs-lookup"><span data-stu-id="e30e6-198">May be set to any value.</span></span> <span data-ttu-id="e30e6-199">架構定義的值包括 「 開發 」、 「 預備 」 及 「 生產 」。</span><span class="sxs-lookup"><span data-stu-id="e30e6-199">Framework-defined values include "Development", "Staging", and "Production".</span></span> <span data-ttu-id="e30e6-200">值不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="e30e6-200">Values are not case sensitive.</span></span> <span data-ttu-id="e30e6-201">請參閱[使用多個環境](environments.md)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-201">See [Working with Multiple Environments](environments.md).</span></span> <span data-ttu-id="e30e6-202">使用設定`UseEnvironment`方法。</span><span class="sxs-lookup"><span data-stu-id="e30e6-202">Set using the `UseEnvironment` method.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-180">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-180">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseContentRoot("c:\\mywebsite")
+    ...
+```
+
+---
+
+### <a name="detailed-errors"></a><span data-ttu-id="b2851-181">詳細的錯誤</span><span class="sxs-lookup"><span data-stu-id="b2851-181">Detailed Errors</span></span>
+
+<span data-ttu-id="b2851-182">判斷詳細的錯誤應該擷取。</span><span class="sxs-lookup"><span data-stu-id="b2851-182">Determines if detailed errors should be captured.</span></span>
+
+<span data-ttu-id="b2851-183">**索引鍵**: detailedErrors</span><span class="sxs-lookup"><span data-stu-id="b2851-183">**Key**: detailedErrors</span></span>  
+<span data-ttu-id="b2851-184">**型別**: *bool* (`true`或`1`)</span><span class="sxs-lookup"><span data-stu-id="b2851-184">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="b2851-185">**預設**: false</span><span class="sxs-lookup"><span data-stu-id="b2851-185">**Default**: false</span></span>  
+<span data-ttu-id="b2851-186">**使用設定**:`UseSetting`</span><span class="sxs-lookup"><span data-stu-id="b2851-186">**Set using**: `UseSetting`</span></span>
+
+<span data-ttu-id="b2851-187">當啟用 (或當<a href="#environment">環境</a>設`Development`)，應用程式會擷取詳細例外狀況。</span><span class="sxs-lookup"><span data-stu-id="b2851-187">When enabled (or when the <a href="#environment">Environment</a> is set to `Development`), the app captures detailed exceptions.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-188">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-188">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-189">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-189">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+```csharp
+var host = new WebHostBuilder()
+    .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+    ...
+```
+
+---
+
+### <a name="environment"></a><span data-ttu-id="b2851-190">環境</span><span class="sxs-lookup"><span data-stu-id="b2851-190">Environment</span></span>
+
+<span data-ttu-id="b2851-191">設定應用程式的環境。</span><span class="sxs-lookup"><span data-stu-id="b2851-191">Sets the app's environment.</span></span>
+
+<span data-ttu-id="b2851-192">**索引鍵**： 環境</span><span class="sxs-lookup"><span data-stu-id="b2851-192">**Key**: environment</span></span>  
+<span data-ttu-id="b2851-193">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-193">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-194">**預設**： 生產環境</span><span class="sxs-lookup"><span data-stu-id="b2851-194">**Default**: Production</span></span>  
+<span data-ttu-id="b2851-195">**使用設定**:`UseEnvironment`</span><span class="sxs-lookup"><span data-stu-id="b2851-195">**Set using**: `UseEnvironment`</span></span>
+
+<span data-ttu-id="b2851-196">您可以設定*環境*為任何值。</span><span class="sxs-lookup"><span data-stu-id="b2851-196">You can set the *Environment* to any value.</span></span> <span data-ttu-id="b2851-197">架構定義的值包括`Development`， `Staging`，和`Production`。</span><span class="sxs-lookup"><span data-stu-id="b2851-197">Framework-defined values include `Development`, `Staging`, and `Production`.</span></span> <span data-ttu-id="b2851-198">值不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="b2851-198">Values aren't case sensitive.</span></span> <span data-ttu-id="b2851-199">根據預設，*環境*讀取從`ASPNETCORE_ENVIRONMENT`環境變數。</span><span class="sxs-lookup"><span data-stu-id="b2851-199">By default, the *Environment* is read from the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="b2851-200">當使用[Visual Studio](https://www.visualstudio.com/)，可能會設定環境變數*launchSettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="b2851-200">When using [Visual Studio](https://www.visualstudio.com/), environment variables may be set in the *launchSettings.json* file.</span></span> <span data-ttu-id="b2851-201">如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。</span><span class="sxs-lookup"><span data-stu-id="b2851-201">For more information, see [Working with Multiple Environments](xref:fundamentals/environments).</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-202">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-202">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseEnvironment("Development")
+    ...
 ```
 
-> [!NOTE]
-> <span data-ttu-id="e30e6-203">根據預設，環境會從讀取`ASPNETCORE_ENVIRONMENT`環境變數。</span><span class="sxs-lookup"><span data-stu-id="e30e6-203">By default, the environment is read from the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="e30e6-204">當使用 Visual Studio，可能會設定環境變數*launchSettings.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="e30e6-204">When using Visual Studio, environment variables may be set in the *launchSettings.json* file.</span></span>
-
-<a id="server-urls"></a>
-
-<span data-ttu-id="e30e6-205">**伺服器 Url**`string`</span><span class="sxs-lookup"><span data-stu-id="e30e6-205">**Server URLs** `string`</span></span>
-
-<span data-ttu-id="e30e6-206">索引鍵： `urls`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-206">Key: `urls`.</span></span> <span data-ttu-id="e30e6-207">設定為分號 （;） 分隔清單的 URL 前置詞應該回應伺服器。</span><span class="sxs-lookup"><span data-stu-id="e30e6-207">Set to a semicolon (;) separated list of URL prefixes to which the server should respond.</span></span> <span data-ttu-id="e30e6-208">例如，`http://localhost:123`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-208">For example, `http://localhost:123`.</span></span> <span data-ttu-id="e30e6-209">網域/主機名稱可以取代"\*"，表示伺服器應接聽任何 IP 位址的要求，或裝載使用指定的連接埠和通訊協定 (例如，`http://*:5000`或`https://*:5001`)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-209">The domain/host name can be replaced with "\*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, `http://*:5000` or `https://*:5001`).</span></span> <span data-ttu-id="e30e6-210">通訊協定 (`http://`或`https://`) 必須包含以每個 URL。</span><span class="sxs-lookup"><span data-stu-id="e30e6-210">The protocol (`http://` or `https://`) must be included with each URL.</span></span> <span data-ttu-id="e30e6-211">前置詞解譯所設定的伺服器。支援的格式而異的伺服器之間。</span><span class="sxs-lookup"><span data-stu-id="e30e6-211">The prefixes are interpreted by the configured server; supported formats will vary between servers.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-203">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-203">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseEnvironment("Development")
+    ...
+```
+
+---
+
+### <a name="hosting-startup-assemblies"></a><span data-ttu-id="b2851-204">裝載啟動的組件</span><span class="sxs-lookup"><span data-stu-id="b2851-204">Hosting Startup Assemblies</span></span>
+
+<span data-ttu-id="b2851-205">設定應用程式的裝載啟動組件。</span><span class="sxs-lookup"><span data-stu-id="b2851-205">Sets the app's hosting startup assemblies.</span></span>
+
+<span data-ttu-id="b2851-206">**索引鍵**: hostingStartupAssemblies</span><span class="sxs-lookup"><span data-stu-id="b2851-206">**Key**: hostingStartupAssemblies</span></span>  
+<span data-ttu-id="b2851-207">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-207">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-208">**預設**： 空字串</span><span class="sxs-lookup"><span data-stu-id="b2851-208">**Default**: Empty string</span></span>  
+<span data-ttu-id="b2851-209">**使用設定**:`UseSetting`</span><span class="sxs-lookup"><span data-stu-id="b2851-209">**Set using**: `UseSetting`</span></span>
+
+<span data-ttu-id="b2851-210">裝載啟動在啟動時載入的組件的字串，以分號分隔。</span><span class="sxs-lookup"><span data-stu-id="b2851-210">A semicolon-delimited string of hosting startup assemblies to load on startup.</span></span> <span data-ttu-id="b2851-211">這項功能的新 ASP.NET Core 2.0。</span><span class="sxs-lookup"><span data-stu-id="b2851-211">This feature is new in ASP.NET Core 2.0.</span></span>
+
+<span data-ttu-id="b2851-212">雖然組態值會預設為空字串，則裝載的啟動組件永遠會包含應用程式的組件。</span><span class="sxs-lookup"><span data-stu-id="b2851-212">Although the configuration value defaults to an empty string, the hosting startup assemblies always include the app's assembly.</span></span> <span data-ttu-id="b2851-213">當您提供裝載啟動組件時，這些被加入至應用程式的組件載入應用程式在啟動時建置其常見的服務時。</span><span class="sxs-lookup"><span data-stu-id="b2851-213">When you provide hosting startup assemblies, they're added to the app's assembly for loading when the app builds its common services during startup.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-214">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-214">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-215">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-215">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-216">這項功能已無法在 ASP.NET Core 1.x。</span><span class="sxs-lookup"><span data-stu-id="b2851-216">This feature is unavailable in ASP.NET Core 1.x.</span></span>
+
+---
+
+### <a name="prefer-hosting-urls"></a><span data-ttu-id="b2851-217">偏好裝載 Url</span><span class="sxs-lookup"><span data-stu-id="b2851-217">Prefer Hosting URLs</span></span>
+
+<span data-ttu-id="b2851-218">表示主機是否應接聽設定的 Url`WebHostBuilder`而不是與`IServer`實作。</span><span class="sxs-lookup"><span data-stu-id="b2851-218">Indicates whether the host should listen on the URLs configured with the `WebHostBuilder` instead of those configured with the `IServer` implementation.</span></span>
+
+<span data-ttu-id="b2851-219">**索引鍵**: preferHostingUrls</span><span class="sxs-lookup"><span data-stu-id="b2851-219">**Key**: preferHostingUrls</span></span>  
+<span data-ttu-id="b2851-220">**型別**: *bool* (`true`或`1`)</span><span class="sxs-lookup"><span data-stu-id="b2851-220">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="b2851-221">**預設**: true</span><span class="sxs-lookup"><span data-stu-id="b2851-221">**Default**: true</span></span>  
+<span data-ttu-id="b2851-222">**使用設定**:`PreferHostingUrls`</span><span class="sxs-lookup"><span data-stu-id="b2851-222">**Set using**: `PreferHostingUrls`</span></span>
+
+<span data-ttu-id="b2851-223">這項功能的新 ASP.NET Core 2.0。</span><span class="sxs-lookup"><span data-stu-id="b2851-223">This feature is new in ASP.NET Core 2.0.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-224">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-224">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .PreferHostingUrls(false)
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-225">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-225">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-226">這項功能已無法在 ASP.NET Core 1.x。</span><span class="sxs-lookup"><span data-stu-id="b2851-226">This feature is unavailable in ASP.NET Core 1.x.</span></span>
+
+---
+
+### <a name="prevent-hosting-startup"></a><span data-ttu-id="b2851-227">防止裝載啟動</span><span class="sxs-lookup"><span data-stu-id="b2851-227">Prevent Hosting Startup</span></span>
+
+<span data-ttu-id="b2851-228">可防止自動載入裝載啟動的組件，包括應用程式的組件。</span><span class="sxs-lookup"><span data-stu-id="b2851-228">Prevents the automatic loading of hosting startup assemblies, including the app's assembly.</span></span>
+
+<span data-ttu-id="b2851-229">**索引鍵**: preventHostingStartup</span><span class="sxs-lookup"><span data-stu-id="b2851-229">**Key**: preventHostingStartup</span></span>  
+<span data-ttu-id="b2851-230">**型別**: *bool* (`true`或`1`)</span><span class="sxs-lookup"><span data-stu-id="b2851-230">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="b2851-231">**預設**: false</span><span class="sxs-lookup"><span data-stu-id="b2851-231">**Default**: false</span></span>  
+<span data-ttu-id="b2851-232">**使用設定**:`UseSetting`</span><span class="sxs-lookup"><span data-stu-id="b2851-232">**Set using**: `UseSetting`</span></span>
+
+<span data-ttu-id="b2851-233">這項功能的新 ASP.NET Core 2.0。</span><span class="sxs-lookup"><span data-stu-id="b2851-233">This feature is new in ASP.NET Core 2.0.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-234">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-234">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-235">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-235">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-236">這項功能已無法在 ASP.NET Core 1.x。</span><span class="sxs-lookup"><span data-stu-id="b2851-236">This feature is unavailable in ASP.NET Core 1.x.</span></span>
+
+---
+
+### <a name="server-urls"></a><span data-ttu-id="b2851-237">伺服器 Url</span><span class="sxs-lookup"><span data-stu-id="b2851-237">Server URLs</span></span>
+
+<span data-ttu-id="b2851-238">表示 IP 位址或連接埠和通訊協定，伺服器應該接聽之要求的主機位址。</span><span class="sxs-lookup"><span data-stu-id="b2851-238">Indicates the IP addresses or host addresses with ports and protocols that the server should listen on for requests.</span></span>
+
+<span data-ttu-id="b2851-239">**索引鍵**: url</span><span class="sxs-lookup"><span data-stu-id="b2851-239">**Key**: urls</span></span>  
+<span data-ttu-id="b2851-240">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-240">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-241">**預設**: http://localhost:5000/</span><span class="sxs-lookup"><span data-stu-id="b2851-241">**Default**: http://localhost:5000</span></span>  
+<span data-ttu-id="b2851-242">**使用設定**:`UseUrls`</span><span class="sxs-lookup"><span data-stu-id="b2851-242">**Set using**: `UseUrls`</span></span>
+
+<span data-ttu-id="b2851-243">設定為以分號分隔 （;） 應該回應伺服器的前置詞的 URL 清單。</span><span class="sxs-lookup"><span data-stu-id="b2851-243">Set to a semicolon-separated (;) list of URL prefixes to which the server should respond.</span></span> <span data-ttu-id="b2851-244">例如，`http://localhost:123`。</span><span class="sxs-lookup"><span data-stu-id="b2851-244">For example, `http://localhost:123`.</span></span> <span data-ttu-id="b2851-245">使用 「\*"，表示伺服器應接聽任何 IP 位址或主機名稱使用指定的連接埠和通訊協定上的要求 (例如， `http://*:5000`)。</span><span class="sxs-lookup"><span data-stu-id="b2851-245">Use "\*" to indicate that the server should listen for requests on any IP address or hostname using the specified port and protocol (for example, `http://*:5000`).</span></span> <span data-ttu-id="b2851-246">通訊協定 (`http://`或`https://`) 必須包含以每個 URL。</span><span class="sxs-lookup"><span data-stu-id="b2851-246">The protocol (`http://` or `https://`) must be included with each URL.</span></span> <span data-ttu-id="b2851-247">伺服器之間的不支援的格式。</span><span class="sxs-lookup"><span data-stu-id="b2851-247">Supported formats vary between servers.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-248">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-248">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
+    ...
 ```
 
-<span data-ttu-id="e30e6-212">在 ASP.NET Core 2.0 中，Kestrel 有它自己的端點設定應用程式開發介面，而且不支援`https://`中`urls`字串。</span><span class="sxs-lookup"><span data-stu-id="e30e6-212">In ASP.NET Core 2.0, Kestrel has its own endpoint configuration API and does not support `https://` in the `urls` string.</span></span> <span data-ttu-id="e30e6-213">如需詳細資訊，請參閱[簡介 Kestrel](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-213">For more information, see [Introduction to Kestrel](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration).</span></span>
+<span data-ttu-id="b2851-249">Kestrel 有它自己的端點設定應用程式開發介面。</span><span class="sxs-lookup"><span data-stu-id="b2851-249">Kestrel has its own endpoint configuration API.</span></span> <span data-ttu-id="b2851-250">如需詳細資訊，請參閱[在 ASP.NET Core 中實作 Kestrel 網頁伺服器](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration)。</span><span class="sxs-lookup"><span data-stu-id="b2851-250">For more information, see [Kestrel web server implementation in ASP.NET Core](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration).</span></span>
 
-<span data-ttu-id="e30e6-214">**啟動組件**`string`</span><span class="sxs-lookup"><span data-stu-id="e30e6-214">**Startup Assembly** `string`</span></span>
-
-<span data-ttu-id="e30e6-215">索引鍵： `startupAssembly`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-215">Key: `startupAssembly`.</span></span> <span data-ttu-id="e30e6-216">決定要搜尋的組件`Startup`類別。</span><span class="sxs-lookup"><span data-stu-id="e30e6-216">Determines the assembly to search for the `Startup` class.</span></span> <span data-ttu-id="e30e6-217">使用設定`UseStartup`方法。</span><span class="sxs-lookup"><span data-stu-id="e30e6-217">Set using the `UseStartup` method.</span></span> <span data-ttu-id="e30e6-218">可能會改為參照特定的型別使用`WebHostBuilder.UseStartup<StartupType>`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-218">May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`.</span></span> <span data-ttu-id="e30e6-219">若為多個`UseStartup`呼叫的方法，最後一個的優先順序。</span><span class="sxs-lookup"><span data-stu-id="e30e6-219">If multiple `UseStartup` methods are called, the last one takes precedence.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-251">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-251">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
+    ...
+```
+
+---
+
+### <a name="shutdown-timeout"></a><span data-ttu-id="b2851-252">關閉逾時</span><span class="sxs-lookup"><span data-stu-id="b2851-252">Shutdown Timeout</span></span>
+
+<span data-ttu-id="b2851-253">指定 web 主機關閉的時間量。</span><span class="sxs-lookup"><span data-stu-id="b2851-253">Specifies the amount of time to wait for the web host to shutdown.</span></span>
+
+<span data-ttu-id="b2851-254">**索引鍵**: shutdownTimeoutSeconds</span><span class="sxs-lookup"><span data-stu-id="b2851-254">**Key**: shutdownTimeoutSeconds</span></span>  
+<span data-ttu-id="b2851-255">**型別**: *int*</span><span class="sxs-lookup"><span data-stu-id="b2851-255">**Type**: *int*</span></span>  
+<span data-ttu-id="b2851-256">**預設**: 5</span><span class="sxs-lookup"><span data-stu-id="b2851-256">**Default**: 5</span></span>  
+<span data-ttu-id="b2851-257">**使用設定**:`UseShutdownTimeout`</span><span class="sxs-lookup"><span data-stu-id="b2851-257">**Set using**: `UseShutdownTimeout`</span></span>
+
+<span data-ttu-id="b2851-258">雖然索引鍵接受*int*與`UseSetting`(例如， `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`)、`UseShutdownTimeout`擴充方法會採用`TimeSpan`。</span><span class="sxs-lookup"><span data-stu-id="b2851-258">Although the key accepts an *int* with `UseSetting` (for example, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), the `UseShutdownTimeout` extension method takes a `TimeSpan`.</span></span> <span data-ttu-id="b2851-259">這項功能的新 ASP.NET Core 2.0。</span><span class="sxs-lookup"><span data-stu-id="b2851-259">This feature is new in ASP.NET Core 2.0.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-260">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-260">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseShutdownTimeout(TimeSpan.FromSeconds(10))
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-261">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-261">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-262">這項功能已無法在 ASP.NET Core 1.x。</span><span class="sxs-lookup"><span data-stu-id="b2851-262">This feature is unavailable in ASP.NET Core 1.x.</span></span>
+
+---
+
+### <a name="startup-assembly"></a><span data-ttu-id="b2851-263">啟動組件</span><span class="sxs-lookup"><span data-stu-id="b2851-263">Startup Assembly</span></span>
+
+<span data-ttu-id="b2851-264">決定要搜尋的組件`Startup`類別。</span><span class="sxs-lookup"><span data-stu-id="b2851-264">Determines the assembly to search for the `Startup` class.</span></span>
+
+<span data-ttu-id="b2851-265">**索引鍵**: startupAssembly</span><span class="sxs-lookup"><span data-stu-id="b2851-265">**Key**: startupAssembly</span></span>  
+<span data-ttu-id="b2851-266">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-266">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-267">**預設**： 應用程式的組件</span><span class="sxs-lookup"><span data-stu-id="b2851-267">**Default**: The app's assembly</span></span>  
+<span data-ttu-id="b2851-268">**使用設定**:`UseStartup`</span><span class="sxs-lookup"><span data-stu-id="b2851-268">**Set using**: `UseStartup`</span></span>
+
+<span data-ttu-id="b2851-269">您可以依名稱參考組件 (`string`) 或型別 (`TStartup`)。</span><span class="sxs-lookup"><span data-stu-id="b2851-269">You can reference the assembly by name (`string`) or type (`TStartup`).</span></span> <span data-ttu-id="b2851-270">若為多個`UseStartup`呼叫的方法，最後一個的優先順序。</span><span class="sxs-lookup"><span data-stu-id="b2851-270">If multiple `UseStartup` methods are called, the last one takes precedence.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-271">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-271">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseStartup("StartupAssemblyName")
+    ...
 ```
 
-<a name=web-root-setting></a>
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseStartup<TStartup>()
+    ...
+```
 
-<span data-ttu-id="e30e6-220">**Web 根目錄**`string`</span><span class="sxs-lookup"><span data-stu-id="e30e6-220">**Web Root** `string`</span></span>
-
-<span data-ttu-id="e30e6-221">索引鍵： `webroot`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-221">Key: `webroot`.</span></span> <span data-ttu-id="e30e6-222">如果未指定預設值是`(Content Root Path)\wwwroot`，如果它存在。</span><span class="sxs-lookup"><span data-stu-id="e30e6-222">If not specified the default is `(Content Root Path)\wwwroot`, if it exists.</span></span> <span data-ttu-id="e30e6-223">如果此路徑不存在，則會使用任何作業檔案提供者。</span><span class="sxs-lookup"><span data-stu-id="e30e6-223">If this path doesn't exist, then a no-op file provider is used.</span></span> <span data-ttu-id="e30e6-224">使用設定`UseWebRoot`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-224">Set using `UseWebRoot`.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-272">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-272">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseStartup("StartupAssemblyName")
+    ...
+```
+
+```csharp
+var host = new WebHostBuilder()
+    .UseStartup<TStartup>()
+    ...
+```
+
+---
+
+### <a name="web-root"></a><span data-ttu-id="b2851-273">Web 根目錄</span><span class="sxs-lookup"><span data-stu-id="b2851-273">Web Root</span></span>
+
+<span data-ttu-id="b2851-274">設定應用程式的靜態資產的相對路徑。</span><span class="sxs-lookup"><span data-stu-id="b2851-274">Sets the relative path to the app's static assets.</span></span>
+
+<span data-ttu-id="b2851-275">**索引鍵**: webroot</span><span class="sxs-lookup"><span data-stu-id="b2851-275">**Key**: webroot</span></span>  
+<span data-ttu-id="b2851-276">**型別**:*字串*</span><span class="sxs-lookup"><span data-stu-id="b2851-276">**Type**: *string*</span></span>  
+<span data-ttu-id="b2851-277">**預設**： 如果未指定，預設值是"(Content Root)/wwwroot"，則該路徑存在。</span><span class="sxs-lookup"><span data-stu-id="b2851-277">**Default**: If not specified, the default is "(Content Root)/wwwroot", if the path exists.</span></span> <span data-ttu-id="b2851-278">如果路徑不存在，則會使用任何作業檔案提供者。</span><span class="sxs-lookup"><span data-stu-id="b2851-278">If the path doesn't exist, then a no-op file provider is used.</span></span>  
+<span data-ttu-id="b2851-279">**使用設定**:`UseWebRoot`</span><span class="sxs-lookup"><span data-stu-id="b2851-279">**Set using**: `UseWebRoot`</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-280">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-280">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
+    ...
 ```
 
-### <a name="overriding-configuration"></a><span data-ttu-id="e30e6-225">覆寫設定</span><span class="sxs-lookup"><span data-stu-id="e30e6-225">Overriding Configuration</span></span>
-
-<span data-ttu-id="e30e6-226">使用[組態](configuration.md)設定主應用程式所使用的組態值。</span><span class="sxs-lookup"><span data-stu-id="e30e6-226">Use [Configuration](configuration.md) to set configuration values to be used by the host.</span></span> <span data-ttu-id="e30e6-227">這些值可能會隨後覆寫。</span><span class="sxs-lookup"><span data-stu-id="e30e6-227">These values may be subsequently overridden.</span></span> <span data-ttu-id="e30e6-228">這指定使用`UseConfiguration`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-228">This is specified using `UseConfiguration`.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-281">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-281">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
-public static void Main(string[] args)
+var host = new WebHostBuilder()
+    .UseWebRoot("public")
+    ...
+```
+
+---
+
+## <a name="overriding-configuration"></a><span data-ttu-id="b2851-282">覆寫設定</span><span class="sxs-lookup"><span data-stu-id="b2851-282">Overriding configuration</span></span>
+
+<span data-ttu-id="b2851-283">使用[組態](configuration.md)設定主控件。</span><span class="sxs-lookup"><span data-stu-id="b2851-283">Use [Configuration](configuration.md) to configure the host.</span></span> <span data-ttu-id="b2851-284">在下列範例中，主機設定 （選擇性） 指定於*hosting.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="b2851-284">In the following example, host configuration is optionally specified in a *hosting.json* file.</span></span> <span data-ttu-id="b2851-285">從載入任何組態*hosting.json*命令列引數可能會覆寫檔案。</span><span class="sxs-lookup"><span data-stu-id="b2851-285">Any configuration loaded from the *hosting.json* file may be overridden by command-line arguments.</span></span> <span data-ttu-id="b2851-286">內建的設定 (在`config`) 用來設定與主機`UseConfiguration`。</span><span class="sxs-lookup"><span data-stu-id="b2851-286">The built configuration (in `config`) is used to configure the host with `UseConfiguration`.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-287">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-287">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+<span data-ttu-id="b2851-288">*hosting.json*:</span><span class="sxs-lookup"><span data-stu-id="b2851-288">*hosting.json*:</span></span>
+
+```json
 {
-    var config = new ConfigurationBuilder()
-        .AddJsonFile("hosting.json", optional: true)
-        .AddCommandLine(args)
-        .Build();
-
-    var host = new WebHostBuilder()
-        .UseConfiguration(config)
-        .UseKestrel()
-        .Configure(app =>
-        {
-            app.Run(async (context) => await context.Response.WriteAsync("Hi!"));
-        })
-        .Build();
-
-    host.Run();
+    urls: "http://*:5005"
 }
 ```
 
-<span data-ttu-id="e30e6-229">在上述範例中，命令列引數可能會傳入設定主控件，或設定選擇性地指定在*hosting.json*檔案。</span><span class="sxs-lookup"><span data-stu-id="e30e6-229">In the example above, command-line arguments may be passed in to configure the host, or configuration settings may optionally be specified in a *hosting.json* file.</span></span> <span data-ttu-id="e30e6-230">若要指定特定 URL 上所執行的主機，您可以傳入所要的值從命令提示字元：</span><span class="sxs-lookup"><span data-stu-id="e30e6-230">To specify the host run on a particular URL, you could pass in the desired value from a command prompt:</span></span>
+<span data-ttu-id="b2851-289">覆寫所提供的組態`UseUrls`與*hosting.json*設定第一個命令列引數設定第二個：</span><span class="sxs-lookup"><span data-stu-id="b2851-289">Overriding the configuration provided by `UseUrls` with *hosting.json* config first, command-line argument config second:</span></span>
 
-```console
-dotnet run --urls "http://*:5000"
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        BuildWebHost(args).Run();
+    }
+
+    public static IWebHost BuildWebHost(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("hosting.json", optional: true)
+            .AddCommandLine(args)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseUrls("http://*:5000")
+            .UseConfiguration(config)
+            .Configure(app =>
+            {
+                app.Run(context => 
+                    context.Response.WriteAsync("Hello, World!"));
+            })
+            .Build();
+    }
+}
 ```
 
-<span data-ttu-id="e30e6-231">`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉。</span><span class="sxs-lookup"><span data-stu-id="e30e6-231">The `Run` method starts the web app and blocks the calling thread until the host is shutdown.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-290">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-290">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-291">*hosting.json*:</span><span class="sxs-lookup"><span data-stu-id="b2851-291">*hosting.json*:</span></span>
+
+```json
+{
+    urls: "http://*:5005"
+}
+```
+
+<span data-ttu-id="b2851-292">覆寫所提供的組態`UseUrls`與*hosting.json*設定第一個命令列引數設定第二個：</span><span class="sxs-lookup"><span data-stu-id="b2851-292">Overriding the configuration provided by `UseUrls` with *hosting.json* config first, command-line argument config second:</span></span>
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("hosting.json", optional: true)
+            .AddCommandLine(args)
+            .Build();
+
+        var host = new WebHostBuilder()
+            .UseUrls("http://*:5000")
+            .UseConfiguration(config)
+            .UseKestrel()
+            .Configure(app =>
+            {
+                app.Run(context => 
+                    context.Response.WriteAsync("Hello, World!"));
+            })
+            .Build();
+
+        host.Run();
+    }
+}
+```
+
+---
+
+> [!NOTE]
+> <span data-ttu-id="b2851-293">`UseConfiguration`擴充方法不是目前可以剖析所傳回的組態區段`GetSection`(例如， `.UseConfiguration(Configuration.GetSection("section"))`。</span><span class="sxs-lookup"><span data-stu-id="b2851-293">The `UseConfiguration` extension method isn't currently capable of parsing a configuration section returned by `GetSection` (for example, `.UseConfiguration(Configuration.GetSection("section"))`.</span></span> <span data-ttu-id="b2851-294">`GetSection`方法篩選到要求的區段之組態機碼，但會保留的區段名稱索引鍵 (例如， `section:urls`， `section:environment`)。</span><span class="sxs-lookup"><span data-stu-id="b2851-294">The `GetSection` method filters the configuration keys to the section requested but leaves the section name on the keys (for example, `section:urls`, `section:environment`).</span></span> <span data-ttu-id="b2851-295">`UseConfiguration`方法預期要比對的索引鍵`WebHostBuilder`索引鍵 (例如， `urls`， `environment`)。</span><span class="sxs-lookup"><span data-stu-id="b2851-295">The `UseConfiguration` method expects the keys to match the `WebHostBuilder` keys (for example, `urls`, `environment`).</span></span> <span data-ttu-id="b2851-296">索引鍵的區段名稱存在主控件設定防止區段的值。</span><span class="sxs-lookup"><span data-stu-id="b2851-296">The presence of the section name on the keys prevents the section's values from configuring the host.</span></span> <span data-ttu-id="b2851-297">這個問題將在近期的版本中解決。</span><span class="sxs-lookup"><span data-stu-id="b2851-297">This issue will be addressed in an upcoming release.</span></span> <span data-ttu-id="b2851-298">如需詳細資訊和因應措施，請參閱[傳遞到 WebHostBuilder.UseConfiguration 組態區段會使用完整金鑰](https://github.com/aspnet/Hosting/issues/839)。</span><span class="sxs-lookup"><span data-stu-id="b2851-298">For more information and workarounds, see [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span></span>
+
+<span data-ttu-id="b2851-299">若要指定特定 URL 上所執行的主機，您可以傳入所要的值從命令提示字元執行時`dotnet run`。</span><span class="sxs-lookup"><span data-stu-id="b2851-299">To specify the host run on a particular URL, you could pass in the desired value from a command prompt when executing `dotnet run`.</span></span> <span data-ttu-id="b2851-300">命令列引數會覆寫`urls`值*hosting.json*檔和伺服器會接聽連接埠 8080:</span><span class="sxs-lookup"><span data-stu-id="b2851-300">The command-line argument overrides the `urls` value from the *hosting.json* file, and the server listens on port 8080:</span></span>
+
+```console
+dotnet run --urls "http://*:8080"
+```
+
+## <a name="ordering-importance"></a><span data-ttu-id="b2851-301">排序重要性</span><span class="sxs-lookup"><span data-stu-id="b2851-301">Ordering importance</span></span>
+
+<span data-ttu-id="b2851-302">部分`WebHostBuilder`如果先設定讀取來自環境變數設定。</span><span class="sxs-lookup"><span data-stu-id="b2851-302">Some of the `WebHostBuilder` settings are first read from environment variables, if set.</span></span> <span data-ttu-id="b2851-303">這些環境變數使用格式`ASPNETCORE_{configurationKey}`。</span><span class="sxs-lookup"><span data-stu-id="b2851-303">These environment variables use the format `ASPNETCORE_{configurationKey}`.</span></span> <span data-ttu-id="b2851-304">若要設定伺服器接聽預設的 Url，您將設定`ASPNETCORE_URLS`。</span><span class="sxs-lookup"><span data-stu-id="b2851-304">To set the URLs that the server listens on by default, you set `ASPNETCORE_URLS`.</span></span>
+
+<span data-ttu-id="b2851-305">您可以指定覆寫這些環境變數值的任何組態 (使用`UseConfiguration`) 或明確地將此值設定 (使用`UseSetting`或其中一個明確的擴充方法，例如`UseUrls`)。</span><span class="sxs-lookup"><span data-stu-id="b2851-305">You can override any of these environment variable values by specifying configuration (using `UseConfiguration`) or by setting the value explicitly (using `UseSetting` or one of the explicit extension methods, such as `UseUrls`).</span></span> <span data-ttu-id="b2851-306">主機會使用任何選項設定的值上一次。</span><span class="sxs-lookup"><span data-stu-id="b2851-306">The host uses whichever option sets the value last.</span></span> <span data-ttu-id="b2851-307">如果您想要以程式設計方式設定的預設 URL 為一個值，但允許它會覆寫的組態，您可以使用命令列組態之後設定 URL。</span><span class="sxs-lookup"><span data-stu-id="b2851-307">If you want to programmatically set the default URL to one value but allow it to be overridden with configuration, you can use command-line configuration after setting the URL.</span></span> <span data-ttu-id="b2851-308">請參閱[正在覆寫組態](#overriding-configuration)。</span><span class="sxs-lookup"><span data-stu-id="b2851-308">See [Overriding configuration](#overriding-configuration).</span></span>
+
+## <a name="starting-the-host"></a><span data-ttu-id="b2851-309">正在啟動主機</span><span class="sxs-lookup"><span data-stu-id="b2851-309">Starting the host</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="b2851-310">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="b2851-310">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+<span data-ttu-id="b2851-311">**執行**</span><span class="sxs-lookup"><span data-stu-id="b2851-311">**Run**</span></span>
+
+<span data-ttu-id="b2851-312">`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉：</span><span class="sxs-lookup"><span data-stu-id="b2851-312">The `Run` method starts the web app and blocks the calling thread until the host is shutdown:</span></span>
 
 ```csharp
 host.Run();
 ```
 
-<span data-ttu-id="e30e6-232">您可以藉由呼叫非封鎖方式執行主機其`Start`方法：</span><span class="sxs-lookup"><span data-stu-id="e30e6-232">You can run the host in a non-blocking manner by calling its `Start` method:</span></span>
+<span data-ttu-id="b2851-313">**Start**</span><span class="sxs-lookup"><span data-stu-id="b2851-313">**Start**</span></span>
+
+<span data-ttu-id="b2851-314">您可以藉由呼叫非封鎖方式執行主機其`Start`方法：</span><span class="sxs-lookup"><span data-stu-id="b2851-314">You can run the host in a non-blocking manner by calling its `Start` method:</span></span>
 
 ```csharp
 using (host)
@@ -235,7 +528,7 @@ using (host)
 }
 ```
 
-<span data-ttu-id="e30e6-233">將 Url 的清單`Start`方法，它會接聽指定的 Url:</span><span class="sxs-lookup"><span data-stu-id="e30e6-233">Pass a list of URLs to the `Start` method and it will listen on the URLs specified:</span></span>
+<span data-ttu-id="b2851-315">如果您要傳入的 Url 清單`Start`方法，它會接聽指定的 Url:</span><span class="sxs-lookup"><span data-stu-id="b2851-315">If you pass a list of URLs to the `Start` method, it listens on the URLs specified:</span></span>
 
 ```csharp
 var urls = new List<string>()
@@ -255,33 +548,348 @@ using (host)
 }
 ```
 
-<span data-ttu-id="e30e6-234">以下是有效的 URL 格式取決於您要使用的伺服器。</span><span class="sxs-lookup"><span data-stu-id="e30e6-234">The URL formats that are valid here depend on the server you're using.</span></span> <span data-ttu-id="e30e6-235">如需詳細資訊，請參閱[伺服器 Url](#server-urls)稍早在本文章。</span><span class="sxs-lookup"><span data-stu-id="e30e6-235">For more information, see [Server URLs](#server-urls) earlier in this article.</span></span>
+<span data-ttu-id="b2851-316">您可以初始化並開始使用預先設定的預設值的新主控件`CreateDefaultBuilder`使用靜態便利的方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-316">You can initialize and start a new host using the pre-configured defaults of `CreateDefaultBuilder` using a static convenience method.</span></span> <span data-ttu-id="b2851-317">啟動伺服器未主控台輸出的情況下，這些方法[WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown)等候中斷 （Ctrl-C/SIGINT 或 SIGTERM）：</span><span class="sxs-lookup"><span data-stu-id="b2851-317">These methods start the server without console output and with [WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown) wait for a break (Ctrl-C/SIGINT or SIGTERM):</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="e30e6-236">`UseConfiguration`擴充方法不是目前可以剖析所傳回的組態區段`GetSection`(例如， `.UseConfiguration(Configuration.GetSection("section"))`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-236">The `UseConfiguration` extension method isn't currently capable of parsing a configuration section returned by `GetSection` (for example, `.UseConfiguration(Configuration.GetSection("section"))`.</span></span> <span data-ttu-id="e30e6-237">`GetSection`方法篩選到要求的區段之組態機碼，但會保留的區段名稱索引鍵 (例如， `section:urls`， `section:environment`)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-237">The `GetSection` method filters the configuration keys to the section requested but leaves the section name on the keys (for example, `section:urls`, `section:environment`).</span></span> <span data-ttu-id="e30e6-238">`UseConfiguration`方法預期要比對的索引鍵`WebHostBuilder`索引鍵 (例如， `urls`， `environment`)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-238">The `UseConfiguration` method expects the keys to match the `WebHostBuilder` keys (for example, `urls`, `environment`).</span></span> <span data-ttu-id="e30e6-239">索引鍵的區段名稱存在主控件設定防止區段的值。</span><span class="sxs-lookup"><span data-stu-id="e30e6-239">The presence of the section name on the keys prevents the section's values from configuring the host.</span></span> <span data-ttu-id="e30e6-240">這個問題將在近期的版本中解決。</span><span class="sxs-lookup"><span data-stu-id="e30e6-240">This issue will be addressed in an upcoming release.</span></span> <span data-ttu-id="e30e6-241">如需詳細資訊和因應措施，請參閱[傳遞到 WebHostBuilder.UseConfiguration 組態區段會使用完整金鑰](https://github.com/aspnet/Hosting/issues/839)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-241">For more information and workarounds, see [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span></span>
+<span data-ttu-id="b2851-318">**開始 （RequestDelegate 應用程式）**</span><span class="sxs-lookup"><span data-stu-id="b2851-318">**Start(RequestDelegate app)**</span></span>
 
-### <a name="ordering-importance"></a><span data-ttu-id="e30e6-242">排序重要性</span><span class="sxs-lookup"><span data-stu-id="e30e6-242">Ordering Importance</span></span>
-
-<span data-ttu-id="e30e6-243">`WebHostBuilder`如果設定第一次從某些環境變數，讀取設定。</span><span class="sxs-lookup"><span data-stu-id="e30e6-243">`WebHostBuilder` settings are first read from certain environment variables, if set.</span></span> <span data-ttu-id="e30e6-244">這些環境變數都必須使用格式`ASPNETCORE_{configurationKey}`，所以若要設定 Url 的範例則伺服器會接聽預設，會設定`ASPNETCORE_URLS`。</span><span class="sxs-lookup"><span data-stu-id="e30e6-244">These environment variables must use the format `ASPNETCORE_{configurationKey}`, so for example to set the URLs the server will listen on by default, you would set `ASPNETCORE_URLS`.</span></span>
-
-<span data-ttu-id="e30e6-245">您可以指定覆寫這些環境變數值的任何組態 (使用`UseConfiguration`) 或明確地將此值設定 (使用`UseUrls`執行個體)。</span><span class="sxs-lookup"><span data-stu-id="e30e6-245">You can override any of these environment variable values by specifying configuration (using `UseConfiguration`) or by setting the value explicitly (using `UseUrls` for instance).</span></span> <span data-ttu-id="e30e6-246">主機會使用任何選項設定的值上一次。</span><span class="sxs-lookup"><span data-stu-id="e30e6-246">The host will use whichever option sets the value last.</span></span> <span data-ttu-id="e30e6-247">基於這個理由，`UseIISIntegration`必須出現在之後`UseUrls`，因為它會取代 URL 動態 IIS 所提供的其中一個。</span><span class="sxs-lookup"><span data-stu-id="e30e6-247">For this reason, `UseIISIntegration` must appear after `UseUrls`, because it replaces the URL with one dynamically provided by IIS.</span></span> <span data-ttu-id="e30e6-248">如果您想要以程式設計方式設定一個值，預設 URL，但允許它會覆寫的組態，您可以設定主應用程式，如下所示：</span><span class="sxs-lookup"><span data-stu-id="e30e6-248">If you want to programmatically set the default URL to one value, but allow it to be overridden with configuration, you could configure the host as follows:</span></span>
+<span data-ttu-id="b2851-319">開頭`RequestDelegate`:</span><span class="sxs-lookup"><span data-stu-id="b2851-319">Start with a `RequestDelegate`:</span></span>
 
 ```csharp
-var config = new ConfigurationBuilder()
-    .AddCommandLine(args)
-    .Build();
-
-var host = new WebHostBuilder()
-    .UseUrls("http://*:1000") // default URL
-    .UseConfiguration(config) // override from command line
-    .UseKestrel()
-    .Build();
+using (var host = WebHost.Start(app => app.Response.WriteAsync("Hello, World!")))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="e30e6-249">其他資源</span><span class="sxs-lookup"><span data-stu-id="e30e6-249">Additional resources</span></span>
+<span data-ttu-id="b2851-320">若要在瀏覽器中提出要求`http://localhost:5000`接收"Hello World ！"的回應</span><span class="sxs-lookup"><span data-stu-id="b2851-320">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="b2851-321">`WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。</span><span class="sxs-lookup"><span data-stu-id="b2851-321">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="b2851-322">應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。</span><span class="sxs-lookup"><span data-stu-id="b2851-322">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
 
-* [<span data-ttu-id="e30e6-250">發行到使用 IIS 的 Windows</span><span class="sxs-lookup"><span data-stu-id="e30e6-250">Publish to Windows using IIS</span></span>](../publishing/iis.md)
-* [<span data-ttu-id="e30e6-251">發行至使用 Nginx Linux</span><span class="sxs-lookup"><span data-stu-id="e30e6-251">Publish to Linux using Nginx</span></span>](../publishing/linuxproduction.md)
-* [<span data-ttu-id="e30e6-252">若要使用 Apache 的 Linux 發行</span><span class="sxs-lookup"><span data-stu-id="e30e6-252">Publish to Linux using Apache</span></span>](../publishing/apache-proxy.md)
-* [<span data-ttu-id="e30e6-253">在 Windows 服務的主機</span><span class="sxs-lookup"><span data-stu-id="e30e6-253">Host in a Windows Service</span></span>](xref:hosting/windows-service)
+<span data-ttu-id="b2851-323">**開始 （以字串 url、 RequestDelegate 應用程式）**</span><span class="sxs-lookup"><span data-stu-id="b2851-323">**Start(string url, RequestDelegate app)**</span></span>
 
+<span data-ttu-id="b2851-324">URL 的開頭和`RequestDelegate`:</span><span class="sxs-lookup"><span data-stu-id="b2851-324">Start with a URL and `RequestDelegate`:</span></span>
+
+```csharp
+using (var host = WebHost.Start("http://localhost:8080", app => app.Response.WriteAsync("Hello, World!")))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+<span data-ttu-id="b2851-325">會產生相同結果**開始 （RequestDelegate 應用程式）**，除了應用程式回應`http://localhost:8080`。</span><span class="sxs-lookup"><span data-stu-id="b2851-325">Produces the same result as **Start(RequestDelegate app)**, except the app responds on `http://localhost:8080`.</span></span>
+
+<span data-ttu-id="b2851-326">**啟動 (動作<IRouteBuilder>routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="b2851-326">**Start(Action<IRouteBuilder> routeBuilder)**</span></span>
+
+<span data-ttu-id="b2851-327">使用的執行個體`IRouteBuilder`([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) 使用路由的中介軟體：</span><span class="sxs-lookup"><span data-stu-id="b2851-327">Use an instance of `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) to use routing middleware:</span></span>
+
+```csharp
+using (var host = WebHost.Start(router => router
+    .MapGet("hello/{name}", (req, res, data) => 
+        res.WriteAsync($"Hello, {data.Values["name"]}!"))
+    .MapGet("buenosdias/{name}", (req, res, data) => 
+        res.WriteAsync($"Buenos dias, {data.Values["name"]}!"))
+    .MapGet("throw/{message?}", (req, res, data) => 
+        throw new Exception((string)data.Values["message"] ?? "Uh oh!"))
+    .MapGet("{greeting}/{name}", (req, res, data) => 
+        res.WriteAsync($"{data.Values["greeting"]}, {data.Values["name"]}!"))
+    .MapGet("", (req, res, data) => res.WriteAsync("Hello, World!"))))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+<span data-ttu-id="b2851-328">使用下列瀏覽器要求範例：</span><span class="sxs-lookup"><span data-stu-id="b2851-328">Use the following browser requests with the example:</span></span>
+
+| <span data-ttu-id="b2851-329">要求</span><span class="sxs-lookup"><span data-stu-id="b2851-329">Request</span></span>                                    | <span data-ttu-id="b2851-330">回應</span><span class="sxs-lookup"><span data-stu-id="b2851-330">Response</span></span>                                 |
+| ------------------------------------------ | ---------------------------------------- |
+| `http://localhost:5000/hello/Martin`       | <span data-ttu-id="b2851-331">Hello，Martin ！</span><span class="sxs-lookup"><span data-stu-id="b2851-331">Hello, Martin!</span></span>                           |
+| `http://localhost:5000/buenosdias/Catrina` | <span data-ttu-id="b2851-332">Catrina 布宜諾 dias ！</span><span class="sxs-lookup"><span data-stu-id="b2851-332">Buenos dias, Catrina!</span></span>                    |
+| `http://localhost:5000/throw/ooops!`       | <span data-ttu-id="b2851-333">擲回例外狀況的字串"ooops ！ 」</span><span class="sxs-lookup"><span data-stu-id="b2851-333">Throws an exception with string "ooops!"</span></span> |
+| `http://localhost:5000/throw`              | <span data-ttu-id="b2851-334">擲回例外狀況的字串"Uh 喔 ！ 」</span><span class="sxs-lookup"><span data-stu-id="b2851-334">Throws an exception with string "Uh oh!"</span></span> |
+| `http://localhost:5000/Sante/Kevin`        | <span data-ttu-id="b2851-335">Sante，Kevin ！</span><span class="sxs-lookup"><span data-stu-id="b2851-335">Sante, Kevin!</span></span>                            |
+| `http://localhost:5000`                    | <span data-ttu-id="b2851-336">Hello World!</span><span class="sxs-lookup"><span data-stu-id="b2851-336">Hello World!</span></span>                             |
+
+<span data-ttu-id="b2851-337">`WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。</span><span class="sxs-lookup"><span data-stu-id="b2851-337">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="b2851-338">應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。</span><span class="sxs-lookup"><span data-stu-id="b2851-338">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
+
+<span data-ttu-id="b2851-339">**啟動 (string url，動作<IRouteBuilder>routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="b2851-339">**Start(string url, Action<IRouteBuilder> routeBuilder)**</span></span>
+
+<span data-ttu-id="b2851-340">使用 URL 和執行個體`IRouteBuilder`:</span><span class="sxs-lookup"><span data-stu-id="b2851-340">Use a URL and an instance of `IRouteBuilder`:</span></span>
+
+```csharp
+using (var host = WebHost.Start("http://localhost:8080", router => router
+    .MapGet("hello/{name}", (req, res, data) => 
+        res.WriteAsync($"Hello, {data.Values["name"]}!"))
+    .MapGet("buenosdias/{name}", (req, res, data) => 
+        res.WriteAsync($"Buenos dias, {data.Values["name"]}!"))
+    .MapGet("throw/{message?}", (req, res, data) => 
+        throw new Exception((string)data.Values["message"] ?? "Uh oh!"))
+    .MapGet("{greeting}/{name}", (req, res, data) => 
+        res.WriteAsync($"{data.Values["greeting"]}, {data.Values["name"]}!"))
+    .MapGet("", (req, res, data) => res.WriteAsync("Hello, World!"))))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+<span data-ttu-id="b2851-341">會產生相同結果**開始 (動作<IRouteBuilder>routeBuilder)**，除了應用程式會回應在`http://localhost:8080`。</span><span class="sxs-lookup"><span data-stu-id="b2851-341">Produces the same result as **Start(Action<IRouteBuilder> routeBuilder)**, except the app responds at `http://localhost:8080`.</span></span>
+
+<span data-ttu-id="b2851-342">**StartWith (動作<IApplicationBuilder>應用程式)**</span><span class="sxs-lookup"><span data-stu-id="b2851-342">**StartWith(Action<IApplicationBuilder> app)**</span></span>
+
+<span data-ttu-id="b2851-343">提供設定委派`IApplicationBuilder`:</span><span class="sxs-lookup"><span data-stu-id="b2851-343">Provide a delegate to configure an `IApplicationBuilder`:</span></span>
+
+```csharp
+using (var host = WebHost.StartWith(app => 
+    app.Use(next => 
+    {
+        return async context => 
+        {
+            await context.Response.WriteAsync("Hello World!");
+        };
+    })))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+<span data-ttu-id="b2851-344">若要在瀏覽器中提出要求`http://localhost:5000`接收"Hello World ！"的回應</span><span class="sxs-lookup"><span data-stu-id="b2851-344">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="b2851-345">`WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。</span><span class="sxs-lookup"><span data-stu-id="b2851-345">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="b2851-346">應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。</span><span class="sxs-lookup"><span data-stu-id="b2851-346">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
+
+<span data-ttu-id="b2851-347">**StartWith (string url，動作<IApplicationBuilder>應用程式)**</span><span class="sxs-lookup"><span data-stu-id="b2851-347">**StartWith(string url, Action<IApplicationBuilder> app)**</span></span>
+
+<span data-ttu-id="b2851-348">提供 URL，若要設定委派`IApplicationBuilder`:</span><span class="sxs-lookup"><span data-stu-id="b2851-348">Provide a URL and a delegate to configure an `IApplicationBuilder`:</span></span>
+
+```csharp
+using (var host = WebHost.StartWith("http://localhost:8080", app => 
+    app.Use(next => 
+    {
+        return async context => 
+        {
+            await context.Response.WriteAsync("Hello World!");
+        };
+    })))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+<span data-ttu-id="b2851-349">會產生相同結果**StartWith (動作<IApplicationBuilder>應用程式)**，除了應用程式回應`http://localhost:8080`。</span><span class="sxs-lookup"><span data-stu-id="b2851-349">Produces the same result as **StartWith(Action<IApplicationBuilder> app)**, except the app responds on `http://localhost:8080`.</span></span>
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="b2851-350">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="b2851-350">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="b2851-351">**執行**</span><span class="sxs-lookup"><span data-stu-id="b2851-351">**Run**</span></span>
+
+<span data-ttu-id="b2851-352">`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉：</span><span class="sxs-lookup"><span data-stu-id="b2851-352">The `Run` method starts the web app and blocks the calling thread until the host is shutdown:</span></span>
+
+```csharp
+host.Run();
+```
+
+<span data-ttu-id="b2851-353">**Start**</span><span class="sxs-lookup"><span data-stu-id="b2851-353">**Start**</span></span>
+
+<span data-ttu-id="b2851-354">您可以藉由呼叫非封鎖方式執行主機其`Start`方法：</span><span class="sxs-lookup"><span data-stu-id="b2851-354">You can run the host in a non-blocking manner by calling its `Start` method:</span></span>
+
+```csharp
+using (host)
+{
+    host.Start();
+    Console.ReadLine();
+}
+```
+
+<span data-ttu-id="b2851-355">如果您要傳入的 Url 清單`Start`方法，它會接聽指定的 Url:</span><span class="sxs-lookup"><span data-stu-id="b2851-355">If you pass a list of URLs to the `Start` method, it listens on the URLs specified:</span></span>
+
+
+```csharp
+var urls = new List<string>()
+{
+    "http://*:5000",
+    "http://localhost:5001"
+};
+
+var host = new WebHostBuilder()
+    .UseKestrel()
+    .UseStartup<Startup>()
+    .Start(urls.ToArray());
+
+using (host)
+{
+    Console.ReadLine();
+}
+```
+
+---
+
+## <a name="ihostingenvironment-interface"></a><span data-ttu-id="b2851-356">IHostingEnvironment 介面</span><span class="sxs-lookup"><span data-stu-id="b2851-356">IHostingEnvironment interface</span></span>
+
+<span data-ttu-id="b2851-357">[IHostingEnvironment 介面](/aspnet/core/api/microsoft.aspnetcore.hosting.ihostingenvironment)提供應用程式的 web 主機環境的相關資訊。</span><span class="sxs-lookup"><span data-stu-id="b2851-357">The [IHostingEnvironment interface](/aspnet/core/api/microsoft.aspnetcore.hosting.ihostingenvironment) provides information about the app's web hosting environment.</span></span> <span data-ttu-id="b2851-358">您可以使用[建構函式插入](xref:fundamentals/dependency-injection)取得`IHostingEnvironment`才能使用其屬性和擴充方法：</span><span class="sxs-lookup"><span data-stu-id="b2851-358">You can use [constructor injection](xref:fundamentals/dependency-injection) to obtain the `IHostingEnvironment` in order to use its properties and extension methods:</span></span>
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IHostingEnvironment _env;
+
+    public CustomFileReader(IHostingEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+<span data-ttu-id="b2851-359">您可以使用[慣例為基礎的方法](xref:fundamentals/environments#startup-conventions)根據環境的啟動時設定您的應用程式。</span><span class="sxs-lookup"><span data-stu-id="b2851-359">You can use a [convention-based approach](xref:fundamentals/environments#startup-conventions) to configure your app at startup based on the environment.</span></span> <span data-ttu-id="b2851-360">或者，您可以將插入`IHostingEnvironment`到`Startup`建構函式以用於`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="b2851-360">Alternatively, you can inject the `IHostingEnvironment` into the `Startup` constructor for use in `ConfigureServices`:</span></span>
+
+```csharp
+public class Startup
+{
+    public Startup(IHostingEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IHostingEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> <span data-ttu-id="b2851-361">除了`IsDevelopment`擴充方法，`IHostingEnvironment`提供`IsStaging`， `IsProduction`，和`IsEnvironment(string environmentName)`方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-361">In addition to the `IsDevelopment` extension method, `IHostingEnvironment` offers `IsStaging`, `IsProduction`, and `IsEnvironment(string environmentName)` methods.</span></span> <span data-ttu-id="b2851-362">請參閱[使用多個環境](xref:fundamentals/environments)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="b2851-362">See [Working with multiple environments](xref:fundamentals/environments) for details.</span></span>
+
+<span data-ttu-id="b2851-363">`IHostingEnvironment`服務也可直接插入`Configure`設定處理管線的方法：</span><span class="sxs-lookup"><span data-stu-id="b2851-363">The `IHostingEnvironment` service can also be injected directly into the `Configure` method for setting up your processing pipeline:</span></span>
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the developer exception page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+<span data-ttu-id="b2851-364">您可以將插入`IHostingEnvironment`到`Invoke`方法時建立自訂[中介軟體](xref:fundamentals/middleware#writing-middleware):</span><span class="sxs-lookup"><span data-stu-id="b2851-364">You can inject `IHostingEnvironment` into the `Invoke` method when creating custom [middleware](xref:fundamentals/middleware#writing-middleware):</span></span>
+
+```csharp
+public async Task Invoke(HttpContext context, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+## <a name="iapplicationlifetime-interface"></a><span data-ttu-id="b2851-365">IApplicationLifetime 介面</span><span class="sxs-lookup"><span data-stu-id="b2851-365">IApplicationLifetime interface</span></span>
+
+<span data-ttu-id="b2851-366">[IApplicationLifetime 介面](/aspnet/core/api/microsoft.aspnetcore.hosting.iapplicationlifetime)可讓您執行後啟動和關閉的活動。</span><span class="sxs-lookup"><span data-stu-id="b2851-366">The [IApplicationLifetime interface](/aspnet/core/api/microsoft.aspnetcore.hosting.iapplicationlifetime) allows you to perform post-startup and shutdown activities.</span></span> <span data-ttu-id="b2851-367">介面上的三個屬性都是您可以使用註冊的取消語彙基元`Action`定義啟動和關閉事件的方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-367">Three properties on the interface are cancellation tokens that you can register with `Action` methods to define startup and shutdown events.</span></span> <span data-ttu-id="b2851-368">另外還有`StopApplication`方法。</span><span class="sxs-lookup"><span data-stu-id="b2851-368">There's also a `StopApplication` method.</span></span>
+
+| <span data-ttu-id="b2851-369">取消語彙基元</span><span class="sxs-lookup"><span data-stu-id="b2851-369">Cancellation Token</span></span>    | <span data-ttu-id="b2851-370">觸發時 &#8230;</span><span class="sxs-lookup"><span data-stu-id="b2851-370">Triggered when&#8230;</span></span> |
+| --------------------- | --------------------- |
+| `ApplicationStarted`  | <span data-ttu-id="b2851-371">已完全啟動主機。</span><span class="sxs-lookup"><span data-stu-id="b2851-371">The host has fully started.</span></span> |
+| `ApplicationStopping` | <span data-ttu-id="b2851-372">主機正在執行正常關機程序。</span><span class="sxs-lookup"><span data-stu-id="b2851-372">The host is performing a graceful shutdown.</span></span> <span data-ttu-id="b2851-373">可能仍在處理要求。</span><span class="sxs-lookup"><span data-stu-id="b2851-373">Requests may still be processing.</span></span> <span data-ttu-id="b2851-374">關機封鎖，直到完成此事件。</span><span class="sxs-lookup"><span data-stu-id="b2851-374">Shutdown blocks until this event completes.</span></span> |
+| `ApplicationStopped`  | <span data-ttu-id="b2851-375">主應用程式即將完成正常關機程序。</span><span class="sxs-lookup"><span data-stu-id="b2851-375">The host is completing a graceful shutdown.</span></span> <span data-ttu-id="b2851-376">應該完全處理所有要求。</span><span class="sxs-lookup"><span data-stu-id="b2851-376">All requests should be completely processed.</span></span> <span data-ttu-id="b2851-377">關機封鎖，直到完成此事件。</span><span class="sxs-lookup"><span data-stu-id="b2851-377">Shutdown blocks until this event completes.</span></span> |
+
+| <span data-ttu-id="b2851-378">方法</span><span class="sxs-lookup"><span data-stu-id="b2851-378">Method</span></span>            | <span data-ttu-id="b2851-379">動作</span><span class="sxs-lookup"><span data-stu-id="b2851-379">Action</span></span>                                           |
+| ----------------- | ------------------------------------------------ |
+| `StopApplication` | <span data-ttu-id="b2851-380">目前的應用程式要求終止。</span><span class="sxs-lookup"><span data-stu-id="b2851-380">Requests termination of the current application.</span></span> |
+
+```csharp
+public class Startup 
+{
+    public void Configure(IApplicationBuilder app, IApplicationLifetime appLifetime) 
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+## <a name="troubleshooting-systemargumentexception"></a><span data-ttu-id="b2851-381">疑難排解 System.ArgumentException</span><span class="sxs-lookup"><span data-stu-id="b2851-381">Troubleshooting System.ArgumentException</span></span>
+
+<span data-ttu-id="b2851-382">**ASP.NET Core 2.0 只適用於**</span><span class="sxs-lookup"><span data-stu-id="b2851-382">**Applies to ASP.NET Core 2.0 Only**</span></span>
+
+<span data-ttu-id="b2851-383">如果您將，以便建置主機`IStartup`直接將相依性插入容器，而不是呼叫`UseStartup`或`Configure`，您可能會遇到下列錯誤： `Unhandled Exception: System.ArgumentException: A valid non-empty application name must be provided`。</span><span class="sxs-lookup"><span data-stu-id="b2851-383">If you build the host by injecting `IStartup` directly into the dependency injection container rather than calling `UseStartup` or `Configure`, you may encounter the following error: `Unhandled Exception: System.ArgumentException: A valid non-empty application name must be provided`.</span></span>
+
+<span data-ttu-id="b2851-384">這是因為[applicationName(ApplicationKey)](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostdefaults#Microsoft_AspNetCore_Hosting_WebHostDefaults_ApplicationKey) （目前的組件），才能掃描`HostingStartupAttributes`。</span><span class="sxs-lookup"><span data-stu-id="b2851-384">This occurs because the [applicationName(ApplicationKey)](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostdefaults#Microsoft_AspNetCore_Hosting_WebHostDefaults_ApplicationKey) (the current assembly) is required to scan for `HostingStartupAttributes`.</span></span> <span data-ttu-id="b2851-385">如果您手動插入`IStartup`到相依性插入容器中，加入下列呼叫您`WebHostBuilder`具有所指定的組件名稱：</span><span class="sxs-lookup"><span data-stu-id="b2851-385">If you manually inject `IStartup` into the dependency injection container, add the following call to your `WebHostBuilder` with the assembly name specified:</span></span>
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting("applicationName", "<Assembly Name>")
+    ...
+```
+
+<span data-ttu-id="b2851-386">或者，新增假`Configure`到您`WebHostBuilder`，將`applicationName`(`ApplicationKey`) 自動：</span><span class="sxs-lookup"><span data-stu-id="b2851-386">Alternatively, add a dummy `Configure` to your `WebHostBuilder`, which sets the `applicationName`(`ApplicationKey`) automatically:</span></span>
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .Configure(_ => { })
+    ...
+```
+
+<span data-ttu-id="b2851-387">**請注意**： 時，這只需要 ASP.NET Core 2.0 版，而且只在未呼叫`UseStartup`或`Configure`。</span><span class="sxs-lookup"><span data-stu-id="b2851-387">**NOTE**: This is only required with the ASP.NET Core 2.0 release and only when you don't call `UseStartup` or `Configure`.</span></span>
+
+<span data-ttu-id="b2851-388">如需詳細資訊，請參閱[公告： Microsoft.Extensions.PlatformAbstractions 已移除 （註解）](https://github.com/aspnet/Announcements/issues/237#issuecomment-323786938)和[StartupInjection 範例](https://github.com/aspnet/Hosting/blob/8377d226f1e6e1a97dabdb6769a845eeccc829ed/samples/SampleStartups/StartupInjection.cs)。</span><span class="sxs-lookup"><span data-stu-id="b2851-388">For more information, see [Announcements: Microsoft.Extensions.PlatformAbstractions has been removed (comment)](https://github.com/aspnet/Announcements/issues/237#issuecomment-323786938) and the [StartupInjection sample](https://github.com/aspnet/Hosting/blob/8377d226f1e6e1a97dabdb6769a845eeccc829ed/samples/SampleStartups/StartupInjection.cs).</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="b2851-389">其他資源</span><span class="sxs-lookup"><span data-stu-id="b2851-389">Additional resources</span></span>
+
+* [<span data-ttu-id="b2851-390">發行到使用 IIS 的 Windows</span><span class="sxs-lookup"><span data-stu-id="b2851-390">Publish to Windows using IIS</span></span>](../publishing/iis.md)
+* [<span data-ttu-id="b2851-391">發行至使用 Nginx Linux</span><span class="sxs-lookup"><span data-stu-id="b2851-391">Publish to Linux using Nginx</span></span>](../publishing/linuxproduction.md)
+* [<span data-ttu-id="b2851-392">若要使用 Apache 的 Linux 發行</span><span class="sxs-lookup"><span data-stu-id="b2851-392">Publish to Linux using Apache</span></span>](../publishing/apache-proxy.md)
+* [<span data-ttu-id="b2851-393">在 Windows 服務的主機</span><span class="sxs-lookup"><span data-stu-id="b2851-393">Host in a Windows Service</span></span>](xref:hosting/windows-service)

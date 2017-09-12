@@ -11,17 +11,17 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 1e6d0836f0da751fe433273b9a6896fcf259b69d
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 17124f1ef181a4f1572d9375ae8cd27ce8845016
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
-由 [Tom Dykstra](http://github.com/tdykstra)、[Steve Smith](http://ardalis.com)、[Stephen Halter](https://twitter.com/halter73) 和 [Chris Ross](https://github.com/Tratcher) 提供
+由 [Tom Dykstra](https://github.com/tdykstra)、[Steve Smith](https://ardalis.com/)、[Stephen Halter](https://twitter.com/halter73) 和 [Chris Ross](https://github.com/Tratcher) 提供
 
-ASP.NET Core 應用程式執行時，需使用同處理序 HTTP 伺服器實作。 伺服器實作會接聽 HTTP 要求，並以組成 `HttpContext` 的[要求功能](https://docs.asp.net/en/latest/fundamentals/request-features.html)集合形式，將它們呈現給應用程式。
+ASP.NET Core 應用程式執行時，需使用同處理序 HTTP 伺服器實作。 伺服器實作會接聽 HTTP 要求，並以組成 `HttpContext` 的[要求功能](https://docs.microsoft.com/aspnet/core/fundamentals/request-features)集合形式，將它們呈現給應用程式。
 
 ASP.NET Core 提供兩個伺服器實作：
 
@@ -115,13 +115,13 @@ HTTP.sys 在 ASP.NET Core 1.x 中名為 WebListener。 如果在 Windows 上執�
 
 ## <a name="notes-about-aspnet-core-server-infrastructure"></a>ASP.NET Core 伺服器基礎結構的相關注意事項
 
-`Startup` 類別 `Configure` 方法中提供的 [`IApplicationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html#Microsoft.AspNetCore.Builder.IApplicationBuilder.md) 會公開 [`IFeatureCollection`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html#Microsoft.AspNetCore.Http.Features.IFeatureCollection.md) 類型的 `ServerFeatures` 屬性。 Kestrel 和 WebListener 都只公開單一功能 [`IServerAddressesFeature`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/Features/IServerAddressesFeature/index.html#Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature.md)，但不同的伺服器實作可能會公開其他的功能。
+`Startup` 類別 `Configure` 方法中提供的 [`IApplicationBuilder`](https://docs.microsoft.com/aspnet/core/api) 會公開 [`IFeatureCollection`](https://docs.microsoft.com/aspnet/core/api) 類型的 `ServerFeatures` 屬性。 Kestrel 和 WebListener 都只公開單一功能 [`IServerAddressesFeature`](https://docs.microsoft.com/aspnet/core/api)，但不同的伺服器實作可能會公開其他的功能。
 
 `IServerAddressesFeature` 可用來找出伺服器實作在執行階段已繫結的連接埠。
 
 ## <a name="custom-servers"></a>自訂伺服器
 
-如果內建伺服器不符合您的需求，您可以建立自訂伺服器實作。 [Open Web Interface for .NET (OWIN) 指南](../owin.md)示範如何撰寫以 [Nowin](https://github.com/Bobris/Nowin) 為基礎的 [IServer](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.hosting.server.iserver) 實作。 您可以隨意實作應用程式所需的功能介面，但至少必須支援 [IHttpRequestFeature](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.features.ihttprequestfeature) 和 [IHttpResponseFeature](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpresponsefeature)。
+如果內建伺服器不符合您的需求，您可以建立自訂伺服器實作。 [Open Web Interface for .NET (OWIN) 指南](../owin.md)示範如何撰寫以 [Nowin](https://github.com/Bobris/Nowin) 為基礎的 [IServer](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.server.iserver) 實作。 您可以隨意實作應用程式所需的功能介面，但至少必須支援 [IHttpRequestFeature](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.ihttprequestfeature) 和 [IHttpResponseFeature](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpresponsefeature)。
 
 ## <a name="next-steps"></a>後續步驟
 

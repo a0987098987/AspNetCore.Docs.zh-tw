@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15abe93d881aed3b6950a859dc9445ec50ee9bb5
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: b9a4ae6e7d9b2fa998b91e643e63657239d4866b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>若要登入 ASP.NET Core 簡介
 
-由[Steve Smith](http://ardalis.com)和[Tom Dykstra](https://github.com/tdykstra)
+由[Steve Smith](https://ardalis.com/)和[Tom Dykstra](https://github.com/tdykstra)
 
 ASP.NET Core 支援的記錄 API，可搭配各種記錄提供者。 內建提供者可讓您將記錄檔傳送至一個或多個目的地，而您可以插入的第三方記錄架構。 本文示範如何在程式碼中使用的內建的記錄 API 和提供者。
 
@@ -244,7 +244,7 @@ _logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 Parameter values: parm1, parm2
 ```
 
-記錄架構執行訊息格式化以使記錄提供者來實作這種方式[語意的記錄，也稱為結構化記錄](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。 因為本身的引數會傳遞給記錄系統，而不只是格式化的訊息字串中，記錄提供者可以儲存的參數值做為欄位除了訊息字串。 例如，如果導向您的記錄檔輸出到 Azure 資料表儲存體，而記錄器方法呼叫看起來像這樣：
+記錄架構執行訊息格式化以使記錄提供者來實作這種方式[語意的記錄，也稱為結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。 因為本身的引數會傳遞給記錄系統，而不只是格式化的訊息字串中，記錄提供者可以儲存的參數值做為欄位除了訊息字串。 例如，如果導向您的記錄檔輸出到 Azure 資料表儲存體，而記錄器方法呼叫看起來像這樣：
 
 ```csharp
 _logger.LogInformation("Getting item {ID} at {RequestTime}", id, DateTime.Now);
@@ -514,7 +514,7 @@ loggerFactory.AddEventSourceLogger()
   New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
   ```
 
-* 新增 ETW 提供者[CLR](https://msdn.microsoft.com/library/ff357718)，ASP.NET Core 和其他人所需。 ASP.NET Core 提供者 GUID 是`3ac73b97-af73-50e9-0822-5da4367920d0`。 
+* 新增 ETW 提供者[CLR](https://docs.microsoft.com/dotnet/framework/performance/clr-etw-providers)，ASP.NET Core 和其他人所需。 ASP.NET Core 提供者 GUID 是`3ac73b97-af73-50e9-0822-5da4367920d0`。 
 
   ```powershell
   Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
@@ -555,7 +555,7 @@ loggerFactory.AddEventLog()
 <a id="tracesource"></a>
 ### <a name="the-tracesource-provider"></a>TraceSource 提供者
 
-[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource)封裝提供者使用[System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx)程式庫和提供者。
+[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource)封裝提供者使用[System.Diagnostics.TraceSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracesource)程式庫和提供者。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -573,7 +573,7 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [AddTraceSource 多載](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.tracesourcefactoryextensions)可讓您傳入來源參數和追蹤接聽項。
 
-若要使用此提供者，應用程式必須在.NET Framework （而非.NET Core） 上執行。 此提供者可讓您將訊息傳送至各種不同的[接聽程式](https://msdn.microsoft.com/library/4y5y10s7)，例如[TextWriterTraceListener](https://msdn.microsoft.com/library/system.diagnostics.textwritertracelistener)範例應用程式中使用。
+若要使用此提供者，應用程式必須在.NET Framework （而非.NET Core） 上執行。 此提供者可讓您將訊息傳送至各種不同的[接聽程式](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/trace-listeners)，例如[TextWriterTraceListener](https://docs.microsoft.com/dotnet/api/system.diagnostics.textwritertracelistenerr)範例應用程式中使用。
 
 下列範例會設定`TraceSource`記錄提供者`Warning`和更高的訊息至主控台視窗。
 
@@ -621,9 +621,9 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 * [NLog](https://github.com/NLog/NLog.Extensions.Logging) -NLog 程式庫提供者
 
-* [Serilog](https://github.com/serilog/serilog-framework-logging) -Serilog 程式庫提供者
+* [Serilog](https://github.com/serilog/serilog-extensions-logging) -Serilog 程式庫提供者
 
-可以執行一些協力廠商架構[語意的記錄，也稱為結構化記錄](http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+可以執行一些協力廠商架構[語意的記錄，也稱為結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
 使用協力廠商架構，類似於使用其中一個內建的提供者： 將 NuGet 封裝加入至您的專案和擴充方法呼叫上`ILoggerFactory`。 如需詳細資訊，請參閱每個架構的文件。
 

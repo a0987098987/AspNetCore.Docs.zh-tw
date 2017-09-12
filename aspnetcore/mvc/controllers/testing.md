@@ -11,15 +11,15 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: d5b2bd0200082000aeaf8015cfff9c8c1ec1bdd9
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: e8a464e75dea3a0ec08c13a11888884e6bb6a4c7
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>在 ASP.NET Core 中測試控制器邏輯
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 ASP.NET MVC 應用程式中的控制站應該小，並著重於使用者介面考量。 處理非 UI 考量的大型控制站會更難以測試及維護。
 
@@ -47,7 +47,7 @@ ASP.NET MVC 應用程式中的控制站應該小，並著重於使用者介面�
 如果您正在撰寫自訂篩選條件、 路由和其他內容，您應該將單元測試，但不是上特定控制器執行測試的一部分。 它們應該地接受獨立測試。
 
 > [!TIP]
-> [建立及執行單元測試使用 Visual Studio](https://www.visualstudio.com/get-started/code/create-and-run-unit-tests-vs)。
+> [建立及執行單元測試使用 Visual Studio](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs)。
 
 若要示範的單元測試，請檢閱下列控制站。 它會顯示一份腦力激盪工作，並可讓新腦力激盪使用 POST 來建立的工作階段：
 

@@ -11,15 +11,15 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 72802830660ddcf479e540de7cfc33a07c49dc23
-ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
+ms.openlocfilehash: 5a76cac1d64718b9dece3a3201db06c8192fb6f3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
-由[Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Tom Dykstra](https://github.com/tdykstra)，Jon Galloway [Erik Reitan](https://github.com/Erikre)，和[Steve Smith](http://ardalis.com)
+由[Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Tom Dykstra](https://github.com/tdykstra)，Jon Galloway [Erik Reitan](https://github.com/Erikre)，和[Steve Smith](https://ardalis.com/)
 
 ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成員資格系統。 使用者可以建立帳戶和登入的使用者名稱和密碼，或者也可以使用例如 Facebook、 Google、 Microsoft 帳戶、 Twitter 或其他外部登入提供者。
 
@@ -41,7 +41,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
     如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 這會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
  
-    建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，將身分資料和 SQL Server 使用的結構描述保存[Entity Framework Core](https://docs.efproject.net)。
+    建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，將身分資料和 SQL Server 使用的結構描述保存[Entity Framework Core](https://docs.microsoft.com/ef/)。
     
     ---
  

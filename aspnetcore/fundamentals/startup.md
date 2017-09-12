@@ -10,15 +10,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 16969386c55ae2fd2ab574c1799a765e74f59278
-ms.sourcegitcommit: 4147d2d29ea50e7e9b87879c572ac2a9fb51798c
+ms.openlocfilehash: 69af91de6d2c48af58bc10a32d8857af18a41b6a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
-由[Steve Smith](http://ardalis.com)和[Tom Dykstra](https://github.com/tdykstra/)
+由[Steve Smith](https://ardalis.com/)和[Tom Dykstra](https://github.com/tdykstra/)
 
 `Startup`類別來設定服務和應用程式的要求管線。 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/15/2017
 
 ASP.NET Core 應用程式需要`Startup`類別。 依照慣例，`Startup`類別的名稱為 「 啟動 」。 指定啟動類別名稱在`Main`程式的[WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_)方法。 請參閱[主控](xref:fundamentals/hosting)若要深入了解`WebHostBuilder`，執行之前`Startup`。
 
-您可以定義個別`Startup`不同環境中，並在執行階段會選取一個適當的類別。 如果您指定`startupAssembly`中[WebHost 設定](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host)或裝載的選項將會載入該啟動組件，並搜尋`Startup`或`Startup[Environment]`型別。 類別目前的環境來排列優先順序的名稱後置詞相符項目，因此如果在執行應用程式*開發*環境中，並同時包含`Startup`和`StartupDevelopment`類別`StartupDevelopment`類別將為使用。 請參閱[FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs)中`StartupLoader`和[使用多個環境](environments.md#startup-conventions)。
+您可以定義個別`Startup`不同環境中，並在執行階段會選取一個適當的類別。 如果您指定`startupAssembly`中[WebHost 設定](https://docs.microsoft.com/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host)或裝載的選項將會載入該啟動組件，並搜尋`Startup`或`Startup[Environment]`型別。 類別目前的環境來排列優先順序的名稱後置詞相符項目，因此如果在執行應用程式*開發*環境中，並同時包含`Startup`和`StartupDevelopment`類別`StartupDevelopment`類別將為使用。 請參閱[FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs)中`StartupLoader`和[使用多個環境](environments.md#startup-conventions)。
 
 或者，您可以定義固定`Startup`不論環境將使用藉由呼叫類別`UseStartup<TStartup>`。 這是建議的處理方式。
 
@@ -38,9 +38,9 @@ ASP.NET Core 應用程式需要`Startup`類別。 依照慣例，`Startup`類別
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
-[ConfigureServices](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_)方法是選擇項，但如果使用，它就稱為之前`Configure`web 主機的方法。 Web 主機可能會設定某些服務之前``Startup``呼叫的方法 (請參閱[裝載](xref:fundamentals/hosting))。 依照慣例，[組態選項](xref:fundamentals/configuration)中這個方法所設定。
+[ConfigureServices](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_)方法是選擇項，但如果使用，它就稱為之前`Configure`web 主機的方法。 Web 主機可能會設定某些服務之前``Startup``呼叫的方法 (請參閱[裝載](xref:fundamentals/hosting))。 依照慣例，[組態選項](xref:fundamentals/configuration)中這個方法所設定。
 
-對於需要大量的安裝程式的功能有`Add[Service]`的擴充方法[IServiceCollection](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection)。 這個範例來自預設的網站範本會設定應用程式使用 Entity Framework、 識別和 MVC 的服務：
+對於需要大量的安裝程式的功能有`Add[Service]`的擴充方法[IServiceCollection](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection)。 這個範例來自預設的網站範本會設定應用程式使用 Entity Framework、 識別和 MVC 的服務：
 
 [!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 

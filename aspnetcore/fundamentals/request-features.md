@@ -2,7 +2,7 @@
 title: "要求 ASP.NET 核心的功能"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: d1fbd23c-2ff9-4216-b908-0201ff3afb7c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/request-features
-ms.openlocfilehash: e8d04ef7df34fe1421b2c52f137511fc6baae674
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a10aefe3819fb03019575c36274dd164faf7086c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="request-features-in-aspnet-core"></a>要求 ASP.NET 核心的功能
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 Web 伺服器實作的介面中所定義的 HTTP 要求和回應相關的詳細資料。 伺服器實作和中介軟體會使用這些介面來建立及修改應用程式的裝載管線。
 
@@ -78,4 +78,4 @@ ASP.NET Core 定義 HTTP 功能介面數目`Microsoft.AspNetCore.Http.Features`�
 
 * [中介軟體](middleware.md)
 
-* [開啟 Web 介面 for.NET (OWIN)](owin.md)
+* [開啟 Web Interface for .NET (OWIN)](owin.md)

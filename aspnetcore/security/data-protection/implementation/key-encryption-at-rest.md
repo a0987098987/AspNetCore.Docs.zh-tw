@@ -2,7 +2,7 @@
 title: "金鑰加密在靜止"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: cef7644d29168e9560d1175885ea85a525fec435
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 16a9385630d88c4c9f33954f83fce2bbce5be719
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-encryption-at-rest"></a>金鑰加密在靜止
 
@@ -74,7 +74,7 @@ sc.AddDataProtection()
 
    雲端運算，不過，通常需要該內容的加密在一部電腦會在另一台解密。 因此，從 Windows 8 開始，Microsoft 擴充至涵蓋雲端案例使用相當簡單的應用程式開發介面的概念。 這個新的 API，稱為 DPAPI NG，可讓您安全地共用機密資料 （金鑰、 密碼、 金鑰內容） 和訊息，藉由一組可用來取消它們在不同電腦上保護之後適當的驗證和授權的主體來保護它們。
 
-   從[https://msdn.microsoft.com/library/windows/desktop/hh706794 (vs.85](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
+   從[CNG Dpapi](https://msdn.microsoft.com/library/windows/desktop/hh706794(v=vs.85).aspx)
 
 主體會編碼成保護描述項規則。 請考慮下列範例中，其加密金鑰內容，只有已加入網域的使用者具有指定 SID 可以解密金鑰資料。
 
@@ -97,7 +97,7 @@ sc.AddDataProtection()
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>憑證為基礎的加密與 Windows DPAPI-NG 中
 
-如果您執行 Windows 8.1 / Windows Server 2012 R2 或更新版本中，您可以使用 Windows DPAPI NG 執行憑證架構的加密，即使應用程式執行[.NET Core](https://microsoft.com/net/core)。 若要利用這一點，使用 規則描述項字串"憑證 = HashId:thumbprint"，其中的憑證指紋是要使用的憑證十六進位編碼 SHA1 指紋。 如需範例，請參閱下方內容。
+如果您執行 Windows 8.1 / Windows Server 2012 R2 或更新版本中，您可以使用 Windows DPAPI NG 執行憑證架構的加密，即使應用程式執行[.NET Core](https://www.microsoft.com/net/core)。 若要利用這一點，使用 規則描述項字串"憑證 = HashId:thumbprint"，其中的憑證指紋是要使用的憑證十六進位編碼 SHA1 指紋。 如需範例，請參閱下方內容。
 
 ```csharp
 sc.AddDataProtection()

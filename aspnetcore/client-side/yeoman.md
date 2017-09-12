@@ -11,11 +11,11 @@ ms.assetid: fda0c2a8-1743-4505-be1a-7f8ceeef8647
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/yeoman
-ms.openlocfilehash: 3a7cd83becc570d2f73014b356977fedb16f29bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 61561b55774faf375090c92b574a64f1a12f9647
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-building-projects-with-yeoman-in-aspnet-core"></a>簡介與 Yeoman 中 ASP.NET Core 建置專案
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 ### <a name="prerequisites"></a>必要條件
 
-Node.js 及 npm 所需的 Yeoman。 從下載[Node.js](https://nodejs.org/en/)。 安裝程式包含[Node.js](https://nodejs.org/en/)和[npm](https://www.npmjs.com/)。 Bower 也安裝是必要的 UI 架構，例如啟動程序。
+Node.js 及 npm 所需的 Yeoman。 從下載[Node.js](https://nodejs.org/)。 安裝程式包含[Node.js](https://nodejs.org/)和[npm](https://www.npmjs.com/)。 Bower 也安裝是必要的 UI 架構，例如啟動程序。
 
 若要安裝 Yeoman 和 Bower，執行下列命令：
 
@@ -135,7 +135,7 @@ dotnet run
 
 ## <a name="adding-to-your-project-with-sub-generators"></a>Sub 產生器加入至專案
 
-使用 Yeoman [sub 產生器](https://www.github.com/omnisharp/generator-aspnet#sub-generators)，您可以新增`nuget.config`或`web.config`建立專案之後。 比方說，從應該在其中建立檔案的目錄中執行下列命令：
+使用 Yeoman [sub 產生器](https://github.com/omnisharp/generator-aspnet)，您可以新增`nuget.config`或`web.config`建立專案之後。 比方說，從應該在其中建立檔案的目錄中執行下列命令：
 
 ```console
 yo aspnet:nugetconfig
@@ -156,4 +156,4 @@ yo aspnet:nugetconfig
 ## <a name="additional-resources"></a>其他資源
 
 * [伺服器 （Kestrel 和 WebListener）](xref:fundamentals/servers/index)
-* [基本概念](xref:fundamentals/index)
+* [基礎概念](xref:fundamentals/index)

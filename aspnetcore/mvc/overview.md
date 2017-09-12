@@ -2,7 +2,7 @@
 title: "ASP.NET Core MVC 概觀"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 3e95ccd8aeda54a050cd656ea0c831fd928f53a2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 建立 web 應用程式的豐富架構，而且應用程式開發介面使用模型檢視控制器設計模式。
 
@@ -153,7 +153,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 }
 ```
 
-架構會處理驗證要求資料在用戶端和伺服器上。 模型類型上指定的驗證邏輯加入至不顯眼的附註形式呈現的檢視，並強制執行瀏覽器中使用[jQuery 驗證](http://jqueryvalidation.org/)。
+架構會處理驗證要求資料在用戶端和伺服器上。 模型類型上指定的驗證邏輯加入至不顯眼的附註形式呈現的檢視，並強制執行瀏覽器中使用[jQuery 驗證](https://jqueryvalidation.org/)。
 
 ### <a name="dependency-injection"></a>相依性插入
 

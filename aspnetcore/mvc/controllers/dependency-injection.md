@@ -2,7 +2,7 @@
 title: "相依性插入控制器"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 371fb0f721797e4d8f7a26858ae0a709cb5cd39e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>相依性插入控制器
 
 <a name=dependency-injection-controllers></a>
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 控制器應該要求明確透過其建構函式及其相依性。 在某些情況下，個別的控制器動作可能需要一項服務，並不合理，要求在控制器層級。 在此情況下，您也可以選擇將做為參數，動作方法上的服務。
 
@@ -29,7 +29,7 @@ ASP.NET Core MVC 控制器應該要求明確透過其建構函式及其相依性
 
 ## <a name="dependency-injection"></a>相依性插入
 
-相依性插入是一種技術，遵循[相依性反向原則](http://deviq.com/dependency-inversion-principle)，以允許鬆散偶合的模組組成的應用程式。 ASP.NET Core 已內建支援[相依性插入](../../fundamentals/dependency-injection.md)，這讓您更輕鬆地測試和維護應用程式。
+相依性插入是一種技術，遵循[相依性反向原則](http://deviq.com/dependency-inversion-principle/)，以允許鬆散偶合的模組組成的應用程式。 ASP.NET Core 已內建支援[相依性插入](../../fundamentals/dependency-injection.md)，這讓您更輕鬆地測試和維護應用程式。
 
 ## <a name="constructor-injection"></a>建構函式插入
 
@@ -70,7 +70,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 ![伺服器問候語](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> 請參閱[測試控制器邏輯](testing.md)以了解如何明確地要求的相依性[http://deviq.com/explicit-dependencies-principle](http://deviq.com/explicit-dependencies-principle)控制站可以更輕鬆地測試的程式碼。
+> 請參閱[測試控制器邏輯](testing.md)以了解如何明確地要求的相依性[http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/)控制站可以更輕鬆地測試的程式碼。
 
 ASP.NET Core 內建的相依性插入支援只有單一建構函式類別要求服務。 如果您有一個以上的建構函式，您可能會收到例外狀況的說明：
 

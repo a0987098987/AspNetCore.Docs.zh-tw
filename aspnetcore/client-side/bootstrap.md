@@ -2,7 +2,7 @@
 title: "建置美麗、 可回應網站與啟動程序"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: ff734c884a60d51a1703f6444cf6d2d49e9bffb0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fc00bcce24d586865bf6a1d3f2f7e782a2f1c703
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
 
 <a name=bootstrap-index></a>
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 最熱門的 web 架構開發能繼續回應的 web 應用程式的目前啟動載入器。 無論您是在前端的設計和開發或專家的新手，它會提供數種功能可以改善您的網站，您的使用者經驗的優點。 啟動安裝程式會部署為一組 CSS 和 JavaScript 檔案，設計用來協助您網站或應用程式的標尺有效率地從手機到桌上型電腦的平板電腦。
 

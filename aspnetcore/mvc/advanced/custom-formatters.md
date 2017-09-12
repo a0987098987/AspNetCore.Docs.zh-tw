@@ -11,11 +11,11 @@ ms.assetid: 1fb6fdc2-e199-4469-9012-b909d1913422
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: 0285b40cfacb79745d3a6488401677130f55a95b
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 792e007232c751d3db9dc5e50adbedfb2bb1a7ae
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>ASP.NET Core MVC web 應用程式開發介面中的自訂格式器
 
@@ -29,7 +29,7 @@ ASP.NET Core MVC web 應用程式開發介面中有內建支援的資料交換�
 
 當您想使用自訂的格式器[內容交涉](xref:mvc/models/formatting)支援內容類型不支援的內建的格式器 （JSON、 XML 和純文字） 的程序。
 
-例如，如果您的 web API 的用戶端的部分可以處理[Protobuf](https://github.com/google/protobuf)格式，您可以使用 Protobuf 這些用戶端，因為它是更有效率。  您可能會想要傳送連絡人的姓名和地址中的 web API 或者[vCard](https://en.wikipedia.org/wiki/VCard) ，常用的格式來交換連絡人的資料格式。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
+例如，如果您的 web API 的用戶端的部分可以處理[Protobuf](https://github.com/google/protobuf)格式，您可以使用 Protobuf 這些用戶端，因為它是更有效率。  您可能會想要傳送連絡人的姓名和地址中的 web API 或者[vCard](https://wikipedia.org/wiki/VCard) ，常用的格式來交換連絡人的資料格式。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
 
 ## <a name="overview-of-how-to-use-a-custom-formatter"></a>如何使用自訂的格式器的概觀
 

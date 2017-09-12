@@ -11,15 +11,15 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: ccdceed927d90a1f3201be9d9f92ebb4f2f66e66
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2bd689626e867e0ea82fbebdf92447a6029aa35b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)， [Steve Smith](http://ardalis.com)，和[Scott Addie](https://scottaddie.com)
+由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)， [Steve Smith](https://ardalis.com/)，和[Scott Addie](https://scottaddie.com)
 
 本文將說明如何開始移轉至 ASP.NET MVC 專案[ASP.NET Core MVC](../mvc/overview.md)。 在過程中，它會反白顯示已從 ASP.NET MVC 的事項。 ASP.NET MVC 從移轉是多重步驟的程序，本文章涵蓋初始設定，基本的控制器和檢視、 靜態內容，與用戶端相依性。 其他文章涵蓋移轉設定和許多的 ASP.NET MVC 專案中的身分識別程式碼。
 
@@ -138,9 +138,9 @@ ms.lasthandoff: 08/11/2017
 
 舊的 ASP.NET MVC 專案會使用[Bootstrap](http://getbootstrap.com/)啟動安裝程式中的檔案其設定樣式和存放區的*內容*和*指令碼*資料夾。 產生舊的 ASP.NET MVC 專案範本會參考配置檔案中的啟動程序 (*Views/Shared/_Layout.cshtml*)。 您無法複製*bootstrap.js*和*bootstrap.css*檔案從 ASP.NET MVC 專案加入*wwwroot*不會使用新的專案，而該方法中的資料夾改良的機制讓您管理 ASP.NET Core 中的用戶端相依性。
 
-在新的專案中，我們會將啟動程序 （及其他用戶端程式庫） 使用支援新增[Bower](http://bower.io/):
+在新的專案中，我們會將啟動程序 （及其他用戶端程式庫） 使用支援新增[Bower](https://bower.io/):
 
-* 新增[Bower](http://bower.io/)名為組態檔*bower.json*專案根目錄 (以滑鼠右鍵按一下專案，然後**新增 > 新的項目 > Bower 的組態檔**)。 新增[Bootstrap](http://getbootstrap.com/)和[jQuery](https://jquery.com/)檔案 （請參閱下列反白顯示的程式行）。
+* 新增[Bower](https://bower.io/)名為組態檔*bower.json*專案根目錄 (以滑鼠右鍵按一下專案，然後**新增 > 新的項目 > Bower 的組態檔**)。 新增[Bootstrap](http://getbootstrap.com/)和[jQuery](https://jquery.com/)檔案 （請參閱下列反白顯示的程式行）。
 
   [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
 

@@ -2,7 +2,7 @@
 title: "使用分散式快取"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: 09a1a30de38b9eb40d4fa6a684a7d43ac3e0413c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: abf680fef9de175082c1e4f4cebc2b9648f18a28
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="working-with-a-distributed-cache"></a>使用分散式快取
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 分散式快取可以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。 本文說明如何使用 ASP.NET Core 內建的分散式快取的抽象概念和實作。
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="using-a-redis-distributed-cache"></a>使用 Redis 分散式快取
 
-[Redis](http://redis.io)是開放原始碼記憶體中的資料存放區，通常是做為分散式快取。 您可以使用在本機，並且可以設定[Azure Redis 快取](https://azure.microsoft.com/services/cache/)Azure 裝載的 ASP.NET Core 應用程式。 您的 ASP.NET Core 應用程式會設定快取實作使用`RedisDistributedCache`執行個體。
+[Redis](https://redis.io/)是開放原始碼記憶體中的資料存放區，通常是做為分散式快取。 您可以使用在本機，並且可以設定[Azure Redis 快取](https://azure.microsoft.com/services/cache/)Azure 裝載的 ASP.NET Core 應用程式。 您的 ASP.NET Core 應用程式會設定快取實作使用`RedisDistributedCache`執行個體。
 
 設定中的 Redis 實作`ConfigureServices`，而且應用程式程式碼中存取所要求的執行個體`IDistributedCache`（請參閱上面的程式碼）。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/11/2017
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
-> 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
+> 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
 
 ## <a name="using-a-sql-server-distributed-cache"></a>使用 SQL Server 分散式快取
 

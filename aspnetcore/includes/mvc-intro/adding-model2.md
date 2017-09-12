@@ -10,7 +10,7 @@
   dotnet ef database update
   ```
   
-  [.NET core](http://go.microsoft.com/fwlink/?LinkID=517853)是.NET 的跨平台實作。 以下是這些命令所執行的動作：
+  [.NET core](https://docs.microsoft.com/dotnet/core/tools/index)是.NET 的跨平台實作。 以下是這些命令所執行的動作：
 
   * `dotnet restore`： 會下載 NuGet 封裝中指定*.csproj*檔案。
   * `dotnet ef migrations add Initial`執行實體架構.NET Core CLI 移轉命令，並建立初始的移轉。 「 加入 」 之後的參數是您指派給移轉的名稱。 這裡您正在命名移轉 「 初始 」 因為它是初始資料庫移轉。 此操作會建立*資料/移轉/\<日期時間 > _Initial.cs*包含移轉命令，來新增檔案*影片*到資料庫資料表。

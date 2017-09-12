@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdc93b2c06b7f0314b5bf49e0e3ea5aa3c1eb3cf
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8b451bde1e3180d12781d55113638cc1a99182c8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>工作階段和應用程式的狀態，在 ASP.NET Core 簡介
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Steve Smith](http://ardalis.com)，和[Diana LaRose](https://github.com/DianaLaRose)
+由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Steve Smith](https://ardalis.com/)，和[Diana LaRose](https://github.com/DianaLaRose)
 
 HTTP 是無狀態的通訊協定。 Web 伺服器視為獨立的要求中的每個 HTTP 要求，並不會保留來自前一個要求的使用者值。 本文將討論不同的方式來保留應用程式和要求之間的工作階段狀態。 
 
@@ -42,7 +42,7 @@ ASP.NET Core 會讓用戶端的 cookie，包含工作階段識別碼，以便傳
 <a name="temp"></a>
 ### <a name="tempdata"></a>TempData
 
-ASP.NET Core MVC 公開[TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData)屬性[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)。 這個屬性會儲存資料，直到讀取。 `Keep`和`Peek`方法可以用來檢查沒有刪除的資料。 `TempData`就特別有用的重新導向，當超過單一要求所需的資料。 `TempData`建置工作階段狀態的頂端。 
+ASP.NET Core MVC 公開[TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData)屬性[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 `TempData`就特別有用的重新導向，當超過單一要求所需的資料。 `TempData`建置工作階段狀態的頂端。 
 
 ## <a name="cookie-based-tempdata-provider"></a>Cookie 架構 TempData 提供者 
 
@@ -58,7 +58,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Cookie 資料以編碼[Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder)。 Cookie 會進行加密及區塊處理，因為單一 cookie 大小限制不適用。 Cookie 資料不會壓縮，因為壓縮 encryped 資料可能會導致安全性問題例如[CRIME](https://en.wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://en.wikipedia.org/wiki/BREACH_(security_exploit))攻擊。 如需有關 cookie 架構 TempData 提供者的詳細資訊，請參閱[CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)。
+Cookie 資料以編碼[Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder)。 Cookie 會進行加密及區塊處理，因為單一 cookie 大小限制不適用。 Cookie 資料不會壓縮，因為壓縮 encryped 資料可能會導致安全性問題例如[CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://wikipedia.org/wiki/BREACH_(security_exploit))攻擊。 如需有關 cookie 架構 TempData 提供者的詳細資訊，請參閱[CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)。
 
 ### <a name="query-strings"></a>查詢字串
 

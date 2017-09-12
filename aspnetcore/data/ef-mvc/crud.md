@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 855f060a6404dedff310b288ada9738689069ceb
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、 讀取、 更新和刪除-EF Core 與 ASP.NET Core MVC 教學課程 (2 / 10)
 
@@ -122,7 +122,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 您移除`ID`從`Bind`屬性，因為識別碼是 SQL Server 會插入資料列時自動設定的主要金鑰值。 使用者輸入未設定的識別碼值。
 
-除了`Bind`屬性，try catch 區塊是唯一的 scaffold 的程式碼所做的變更。 如果例外狀況衍生自`DbUpdateException`會攔截到儲存變更時，會顯示一般錯誤訊息。 `DbUpdateException`例外狀況有時是由外部應用程式，而不是程式設計錯誤，造成，因此再試一次會建議使用者。 未實作此範例中，雖然生產品質應用程式會記錄該例外狀況。 如需詳細資訊，請參閱**記錄檔，以深入了解**一節中[監控與遙測 （建置真實世界雲端應用程式與 Azure）](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。
+除了`Bind`屬性，try catch 區塊是唯一的 scaffold 的程式碼所做的變更。 如果例外狀況衍生自`DbUpdateException`會攔截到儲存變更時，會顯示一般錯誤訊息。 `DbUpdateException`例外狀況有時是由外部應用程式，而不是程式設計錯誤，造成，因此再試一次會建議使用者。 未實作此範例中，雖然生產品質應用程式會記錄該例外狀況。 如需詳細資訊，請參閱**記錄檔，以深入了解**一節中[監控與遙測 （建置真實世界雲端應用程式與 Azure）](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。
 
 `ValidateAntiForgeryToken`屬性有助於防止跨網站要求偽造 (CSRF) 攻擊。 語彙基元自動插入檢視[FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)和由使用者提交表單時，會包含。 權杖由驗證`ValidateAntiForgeryToken`屬性。 如需 CSRF 的詳細資訊，請參閱[反要求偽造](../../security/anti-request-forgery.md)。
 
@@ -274,7 +274,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 若要釋放出保留的資料庫連接的資源，當您在使用它，則必須儘速處置內容執行個體。 ASP.NET Core 內建[相依性插入](../../fundamentals/dependency-injection.md)會負責您該工作。
 
-在*Startup.cs*，您呼叫[AddDbContext 擴充方法](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)佈建`DbContext`ASP.NET DI 容器中的類別。 方法會設定為服務的存留期`Scoped`預設。 `Scoped`表示內容物件存留期伴隨 web 要求存留時間，而`Dispose`方法將會自動呼叫 web 要求的結尾。
+在*Startup.cs*，您呼叫[AddDbContext 擴充方法](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs)佈建`DbContext`ASP.NET DI 容器中的類別。 方法會設定為服務的存留期`Scoped`預設。 `Scoped`表示內容物件存留期伴隨 web 要求存留時間，而`Dispose`方法將會自動呼叫 web 要求的結尾。
 
 ## <a name="handling-transactions"></a>處理交易
 

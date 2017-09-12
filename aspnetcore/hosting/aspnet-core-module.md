@@ -11,11 +11,11 @@ ms.assetid: 5de0c8f7-50ce-4e2c-b3d4-a1bd9fdfcff5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/aspnet-core-module
-ms.openlocfilehash: a676b695160b7219bd13f3915e291b722eef47c8
-ms.sourcegitcommit: 8f5277871eff86134ebf68d3737196cfd4a62c2c
+ms.openlocfilehash: 44fc8bd647ad869dd029d8ca4ced782962d71020
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -98,7 +98,7 @@ ASP.NET 核心模組可以讓您指定環境變數中指定的處理序`processP
 
 ## <a name="start-up-error-page"></a>啟動錯誤頁面
 
-如果 ASP.NET 核心模組無法啟動後端程序或後端程序會啟動但無法在設定的連接埠上接聽，您會看到 HTTP 502.5 狀態字碼頁。 若要隱藏這個頁面，並還原至預設 IIS 502 狀態字碼頁，請使用`disableStartUpErrorPage`屬性。 如需有關如何設定自訂錯誤訊息的詳細資訊，請參閱[HTTP 錯誤`<httpErrors>` ](https://www.iis.net/configreference/system.webserver/httperrors)。
+如果 ASP.NET 核心模組無法啟動後端程序或後端程序會啟動但無法在設定的連接埠上接聽，您會看到 HTTP 502.5 狀態字碼頁。 若要隱藏這個頁面，並還原至預設 IIS 502 狀態字碼頁，請使用`disableStartUpErrorPage`屬性。 如需有關如何設定自訂錯誤訊息的詳細資訊，請參閱[HTTP 錯誤`<httpErrors>` ](https://docs.microsoft.com/iis/configuration/system.webServer/httpErrors/)。
 
 ![502 狀態 頁面](aspnet-core-module/_static/ANCM-502_5.png)
 

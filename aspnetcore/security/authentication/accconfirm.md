@@ -10,15 +10,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: aaed75c78a99e59954add959a76a2fd68ea5f3fc
-ms.sourcegitcommit: f2fb0b45284e4f8c4a9c422bec790aede7c1f0ac
+ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
 
@@ -62,7 +62,7 @@ dotnet new mvc --auth Individual
 
 ## <a name="test-new-user-registration"></a>測試新的使用者註冊
 
-執行應用程式中，選取**註冊**連結，並登錄使用者。 請依照下列指示執行 Entity Framework Core 移轉。 此時，只有在電子郵件時才驗證與[[EmailAddress]](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx)屬性。 提交註冊後，您登入的應用程式。 稍後在教學課程中，我們將會變更這讓新的使用者無法登入，直到他們的電子郵件已通過驗證。
+執行應用程式中，選取**註冊**連結，並登錄使用者。 請依照下列指示執行 Entity Framework Core 移轉。 此時，只有在電子郵件時才驗證與[[EmailAddress]](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊後，您登入的應用程式。 稍後在教學課程中，我們將會變更這讓新的使用者無法登入，直到他們的電子郵件已通過驗證。
 
 ## <a name="view-the-identity-database"></a>檢視識別資料庫
 

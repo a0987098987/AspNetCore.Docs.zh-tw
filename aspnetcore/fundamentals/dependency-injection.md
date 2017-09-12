@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2e191a7395110cde7ab5b2f19b6154c96fb496e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 4d0302439fbc777c72f00c37a8c852fc0d46300e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>在 ASP.NET Core 的相依性插入的簡介
 
 <a name=fundamentals-dependency-injection></a>
 
-由[Steve Smith](http://ardalis.com)和[Scott Addie](https://scottaddie.com)
+由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
 ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core 應用程式可以利用內建架構服務，讓它們插入到啟動類別中的方法，可以將應用程式服務設定以及資料隱碼。 ASP.NET Core 所提供的預設服務容器會提供最少的功能設定，而不是取代其他容器。
 
@@ -39,7 +39,7 @@ ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core
 ASP.NET Core 包含簡單的內建容器 (由`IServiceProvider`介面)，根據預設，支援建構函式插入並 ASP.NET 的特定服務提供透過 DI。 ASP。網路的容器做為其所管理的類型是指*服務*。 此篇文章的其餘*服務*會參考受 ASP.NET Core IoC 容器的類型。 設定中的內建的容器服務`ConfigureServices`應用程式中的方法`Startup`類別。
 
 > [!NOTE]
-> Martin Fowler 已寫入大量的發行項上[逆轉控制容器和相依性插入模式](http://www.martinfowler.com/articles/injection.html)。 Microsoft Patterns and Practices 也有很棒的描述[相依性插入](https://msdn.microsoft.com/library/dn178469(v=pandp.30).aspx)。
+> Martin Fowler 已寫入大量的發行項上[逆轉控制容器和相依性插入模式](https://www.martinfowler.com/articles/injection.html)。 Microsoft Patterns and Practices 也有很棒的描述[相依性插入](https://msdn.microsoft.com/library/hh323705.aspx)。
 
 > [!NOTE]
 > 本文涵蓋相依性插入套用到所有的 ASP.NET 應用程式。 MVC 控制器內的相依性插入在講述[相依性插入和控制器](../mvc/controllers/dependency-injection.md)。
@@ -210,7 +210,7 @@ ASP.NET 服務可以使用下列的存留時間設定：
 
 ## <a name="designing-your-services-for-dependency-injection"></a>設計您的服務相依性插入
 
-您應該設計服務，以取得其共同作業者使用相依性插入。 這表示避免使用可設定狀態的靜態方法呼叫 (這會導致程式碼的氣味稱為[靜態黏貼](http://deviq.com/static-cling/)) 和您的服務內的相依類別的直接具現化。 它有助於記住片語，[新是黏附](http://ardalis.com/new-is-glue)，當您選擇是否要具現化型別，或要求透過相依性插入。 依照[實心原則的物件導向設計](http://deviq.com/solid/)，類別自然會傾向小型、 構造良好且輕鬆地測試。
+您應該設計服務，以取得其共同作業者使用相依性插入。 這表示避免使用可設定狀態的靜態方法呼叫 (這會導致程式碼的氣味稱為[靜態黏貼](http://deviq.com/static-cling/)) 和您的服務內的相依類別的直接具現化。 它有助於記住片語，[新是黏附](https://ardalis.com/new-is-glue)，當您選擇是否要具現化型別，或要求透過相依性插入。 依照[實心原則的物件導向設計](http://deviq.com/solid/)，類別自然會傾向小型、 構造良好且輕鬆地測試。
 
 如果找到您的類別通常有方式媵檔晻太多的相依性？ 這通常是一個符號，嘗試太多，您的類別，並可能違反 SRP-[單一責任原則](http://deviq.com/single-responsibility-principle/)。 如果您能夠重構類別將某些其負責的部分移到新的類別，請參閱。 請注意，您`Controller`類別應該專注於 UI 考量，讓商務規則和資料存取實作詳細資料保存在適用於這些類別[將重點分開](http://deviq.com/separation-of-concerns/)。
 
@@ -245,7 +245,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="replacing-the-default-services-container"></a>取代預設服務容器
 
-內建的服務容器是要做的架構和建置在其上的大部分取用者應用程式的基本需求。 不過，開發人員可以使用其偏好的容器取代內建的容器。 `ConfigureServices`方法通常會傳回`void`，但是，如果其簽章變更為傳回`IServiceProvider`，可設定與傳回不同的容器。 沒有適用於.NET 的許多 IOC 容器。 在此範例中， [Autofac](http://autofac.org/)使用套件。
+內建的服務容器是要做的架構和建置在其上的大部分取用者應用程式的基本需求。 不過，開發人員可以使用其偏好的容器取代內建的容器。 `ConfigureServices`方法通常會傳回`void`，但是，如果其簽章變更為傳回`IServiceProvider`，可設定與傳回不同的容器。 沒有適用於.NET 的許多 IOC 容器。 在此範例中， [Autofac](https://autofac.org/)使用套件。
 
 首先，安裝適當的容器封裝：
 
@@ -317,8 +317,8 @@ public class DefaultModule : Module
 
 * [相依性插入 (MSDN) 與 ASP.NET Core 中撰寫全新的程式碼](https://msdn.microsoft.com/magazine/mt703433.aspx)
 
-* [容器管理應用程式的設計，Prelude： 位置？ 容器屬於](http://blogs.msdn.com/b/nblumhardt/archive/2008/12/27/container-managed-application-design-prelude-where-does-the-container-belong.aspx)
+* [容器管理應用程式的設計，Prelude： 位置？ 容器屬於](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 
 * [明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)
 
-* [逆轉控制容器和相依性插入模式](http://www.martinfowler.com/articles/injection.html)(Fowler)
+* [逆轉控制容器和相依性插入模式](https://www.martinfowler.com/articles/injection.html)(Fowler)

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd69e008a81abc4f6785d93b89823c03e1a7df83
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c3f7792d7458013f837a48ca2caa459f35658f02
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>在表單的 ASP.NET Core 使用標記協助程式簡介
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/11/2017
 
 * 會產生 HTML [\<表單 >](https://www.w3.org/TR/html401/interact/forms.html) `action`之 MVC 控制器動作或具名的路由的屬性值
 
-* 產生隱藏[要求驗證語彙基元](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)以防止跨站台要求偽造 (搭配使用時`[ValidateAntiForgeryToken]`HTTP Post 動作方法中的屬性)
+* 產生隱藏[要求驗證語彙基元](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)以防止跨站台要求偽造 (搭配使用時`[ValidateAntiForgeryToken]`HTTP Post 動作方法中的屬性)
 
 * 提供`asp-route-<Parameter Name>`屬性，其中`<Parameter Name>`新增至路由值。 `routeValues`參數`Html.BeginForm`和`Html.BeginRouteForm`提供類似的功能。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/11/2017
     </form>
    ```
 
-MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-controller`和`asp-action`。 表單標記協助程式也會產生隱藏[要求驗證語彙基元](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)以防止跨站台要求偽造 (搭配使用時`[ValidateAntiForgeryToken]`HTTP Post 動作方法中的屬性)。 防止跨站台要求偽造的純 HTML 表單是很困難，表單標記協助程式提供此服務。
+MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-controller`和`asp-action`。 表單標記協助程式也會產生隱藏[要求驗證語彙基元](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)以防止跨站台要求偽造 (搭配使用時`[ValidateAntiForgeryToken]`HTTP Post 動作方法中的屬性)。 防止跨站台要求偽造的純 HTML 表單是很困難，表單標記協助程式提供此服務。
 
 ### <a name="using-a-named-route"></a>使用具名的路由
 
@@ -61,7 +61,7 @@ MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-con
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-中的檢視表的許多*檢視/帳戶*資料夾 (當您建立新的 web 應用程式，以產生*個別使用者帳戶*) 包含[asp-路由-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper)屬性：
+中的檢視表的許多*檢視/帳戶*資料夾 (當您建立新的 web 應用程式，以產生*個別使用者帳戶*) 包含[asp-路由-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms)屬性：
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
@@ -88,11 +88,11 @@ MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-con
 
 * 會產生`id`和`name`HTML 屬性中指定的運算式名稱`asp-for`屬性。 `asp-for="Property1.Property2"` 相當於 `m => m.Property1.Property2`。 運算式的名稱是用途`asp-for`屬性值。 請參閱[運算式名稱](#expression-names)一節以取得其他資訊。
 
-* 設定的 HTML`type`屬性值為基礎的模型型別和[資料註解](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)屬性套用至模型屬性
+* 設定的 HTML`type`屬性值為基礎的模型型別和[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性套用至模型屬性
 
 * 不會覆寫 HTML`type`時指定的其中一個屬性值
 
-* 會產生[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)驗證屬性從[資料註解](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)屬性套用至模型屬性
+* 會產生[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)驗證屬性從[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性套用至模型屬性
 
 * 具有重疊的 HTML Helper 功能`Html.TextBoxFor`和`Html.EditorFor`。 請參閱**輸入標記協助程式的 HTML Helper 替代**如需詳細資訊。
 
@@ -121,7 +121,7 @@ Type expected
 |Single、Double|類型 ="number"|
 
 
-下表顯示一些常見[資料註解](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)屬性輸入的標記協助程式將會對應至特定的輸入類型 （並非所有驗證屬性會都列出）：
+下表顯示一些常見[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性輸入的標記協助程式將會對應至特定的輸入類型 （並非所有驗證屬性會都列出）：
 
 
 |屬性|輸入的類型|
@@ -260,7 +260,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Textarea Tag Helper`標記協助程式是輸入標記協助程式類似。
 
-* 會產生`id`和`name`屬性和資料的驗證屬性的模型從[ \<textarea >](http://www.w3.org/wiki/HTML/Elements/textarea)項目。
+* 會產生`id`和`name`屬性和資料的驗證屬性的模型從[ \<textarea >](https://www.w3.org/wiki/HTML/Elements/textarea)項目。
 
 * 提供強型別。
 
@@ -324,7 +324,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ### <a name="the-validation-message-tag-helper"></a>驗證訊息標記協助程式
 
-* 新增[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"`屬性[跨越](https://developer.mozilla.org/docs/Web/HTML/Element/span)元素，其會附加在指定的模型屬性的輸入欄位的驗證錯誤訊息。   用戶端端驗證錯誤時， [jQuery](https://jquery.com/)顯示中的錯誤訊息`<span>`項目。
+* 新增[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-valmsg-for="property"`屬性[跨越](https://developer.mozilla.org/docs/Web/HTML/Element/span)元素，其會附加在指定的模型屬性的輸入欄位的驗證錯誤訊息。 用戶端端驗證錯誤時， [jQuery](https://jquery.com/)顯示中的錯誤訊息`<span>`項目。
 
 * 驗證也會在伺服器上的位置。 用戶端可能具有停用 JavaScript 和一些驗證只能在伺服器端。
 
@@ -594,12 +594,12 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup)檢視模型
 
 * [HTML 表單元素](https://www.w3.org/TR/html401/interact/forms.html)
 
-* [要求驗證語彙基元](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
+* [要求驗證語彙基元](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 
 * [模型繫結](../models/model-binding.md)
 
 * [模型驗證](../models/validation.md)
 
-* [資料註解](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)
+* [資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)
 
 * [程式碼片段，這份文件](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)。

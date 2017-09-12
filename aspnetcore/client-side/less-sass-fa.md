@@ -11,17 +11,17 @@ ms.assetid: 94c988f9-95fd-425d-b37e-7f846598c6d4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 4282e992ea80420181f9d7a2e3d6a55d6614c4de
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 128612eb2f7c6c8fdd0cc01f10b8e522df46dcf6
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>樣式應用程式，以更少、 Sass，和字型臻中 ASP.NET Core 簡介
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
-以設定樣式及整體體驗時，web 應用程式的使用者會有越來越多高的期望。 現代化 web 應用程式經常會運用豐富的工具及架構定義和管理其外觀及操作，以一致的方式。 架構喜歡[Bootstrap](http://getbootstrap.com/)可以對定義一組常用的樣式和網站的版面配置選項。 不過，大部分的非一般站台也可以從能夠有效地定義和維護樣式和階層式樣式表 (CSS) 檔案，以及輕鬆存取協助讓站台的介面更直覺的非影像圖示。 這是 where 語言和支援的工具[較少](http://lesscss.org/)和[Sass](http://sass-lang.com/)，如同程式庫和[字型臻](http://fortawesome.github.io/Font-Awesome/)，有。
+以設定樣式及整體體驗時，web 應用程式的使用者會有越來越多高的期望。 現代化 web 應用程式經常會運用豐富的工具及架構定義和管理其外觀及操作，以一致的方式。 架構喜歡[Bootstrap](http://getbootstrap.com/)可以對定義一組常用的樣式和網站的版面配置選項。 不過，大部分的非一般站台也可以從能夠有效地定義和維護樣式和階層式樣式表 (CSS) 檔案，以及輕鬆存取協助讓站台的介面更直覺的非影像圖示。 這是 where 語言和支援的工具[較少](http://lesscss.org/)和[Sass](http://sass-lang.com/)，如同程式庫和[字型臻](http://fontawesome.io/)，有。
 
 ## <a name="css-preprocessor-languages"></a>CSS 前置處理器的語言
 

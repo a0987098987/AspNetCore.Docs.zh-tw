@@ -2,7 +2,7 @@
 title: "使用 ASP.NET Core Grunt"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 471112e9-2c33-454b-96fc-32916102ce73
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-grunt
-ms.openlocfilehash: df20c3a31fce81ab039ef2f63bf38ed9943c7c6c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8ae50514ce24c7f9e3bb1e347d5d860e1de43c5f
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-grunt-in-aspnet-core"></a>使用 ASP.NET Core Grunt 
 
-由[Noel Rice](http://blog.falafel.com/author/noel-rice/)
+由[Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
 Grunt 是會自動將指令碼縮製、 TypeScript 編譯、 程式碼品質 「 不 」 工具，CSS 前處理器，以及幾乎任何重複的工程又需要執行以支援用戶端開發 JavaScript 工作執行器。 雖然 ASP.NET 專案範本預設會使用 Gulp grunt 完全支援 Visual Studio 中，(請參閱[使用 Gulp](using-gulp.md))。
 

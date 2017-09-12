@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 409f7afba8dd7d03b7b9aa27d93ec9167252b965
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: f5d208072f55d78de6ec8c238ebbe723cc0ec598
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](http://blog.falafel.com/author/noel-rice/)，和[Scott Addie](https://scottaddie.com) 
+由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com) 
 
-[Bower](https://bower.io/)呼叫其本身"web 封裝管理員。 」 在.NET 生態系統中，填滿由 NuGet 的傳遞靜態內容的檔案無法驗證為 void。 針對 ASP.NET Core 專案，這些靜態檔案會於用戶端程式庫，例如固有[jQuery](http://jquery.com/)和[Bootstrap](http://getbootstrap.com/)。 .NET 程式庫，您仍然使用[NuGet](https://nuget.org/)封裝管理員。
+[Bower](https://bower.io/)呼叫其本身"web 封裝管理員。 」 在.NET 生態系統中，填滿由 NuGet 的傳遞靜態內容的檔案無法驗證為 void。 針對 ASP.NET Core 專案，這些靜態檔案會於用戶端程式庫，例如固有[jQuery](http://jquery.com/)和[Bootstrap](http://getbootstrap.com/)。 .NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
 
 設定用戶端之 ASP.NET Core 專案範本建立的新專案建置程序。 [jQuery](http://jquery.com/)和[啟動程序](http://getbootstrap.com/)安裝，而且受到 Bower。
 

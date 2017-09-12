@@ -11,15 +11,15 @@ ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: d30af6edc31fbce2ebb77c57be3fd78231c54b50
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 02018299c9bd1d194c2c70c14f518786e803d572
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>整合測試 ASP.NET Core
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 整合測試，可確保應用程式的元件正確運作時組合在一起。 ASP.NET Core 支援整合測試使用單元測試架構和內建測試 web 主機，可以用來處理要求網路額外負荷。
 
@@ -130,7 +130,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 這項重構之後, 您確信，web 應用程式仍能運作，因為所有要通過整合測試。
 
 > [!NOTE]
-> 您最好將變更認可到原始檔控制之後您完成重構和您的測試都成功。 如果您正在練習測試導向開發[認可加入您紅-綠-重構 」 循環，請考慮](http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development)。
+> 您最好將變更認可到原始檔控制之後您完成重構和您的測試都成功。 如果您正在練習測試導向開發[認可加入您紅-綠-重構 」 循環，請考慮](https://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development)。
 
 ## <a name="resources"></a>資源
 

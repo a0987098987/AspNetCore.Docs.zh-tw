@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 7d216bc07d0a8d739f0cecbc5b571b6144c13e61
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: a9e255040c300bc5ce55a356e17e6912dbaeaf88
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>建立複雜的資料模型的 EF Core 與 ASP.NET Core MVC 教學課程 (10-5)
 
@@ -374,7 +374,7 @@ public Student Student { get; set; }
 
 因為外部索引鍵都不是可為 null 且一起唯一識別資料表的每個資料列，就不必再為個別的主索引鍵。 *InstructorID*和*CourseID*屬性應該當做複合主索引鍵。 若要識別 EF 複合主索引鍵的唯一方法是使用*fluent API* （它無法完成使用屬性）。 您會看到如何設定在下一節中的複合主索引鍵。
 
-複合索引鍵可確保您可以有一個課程中，和一個講師的多個資料列的多個資料列，而您不能有多個資料列的相同講師和課程。 `Enrollment`聯結實體會定義它自己的主索引鍵，因此可能會有這種重複的項目。 若要避免這種重複的項目，您無法加入唯一的索引上的外部索引鍵欄位，或設定`Enrollment`主複合索引鍵類似`CourseAssignment`。 如需詳細資訊，請參閱[索引](https://docs.efproject.net/en/latest/modeling/indexes.html)。
+複合索引鍵可確保您可以有一個課程中，和一個講師的多個資料列的多個資料列，而您不能有多個資料列的相同講師和課程。 `Enrollment`聯結實體會定義它自己的主索引鍵，因此可能會有這種重複的項目。 若要避免這種重複的項目，您無法加入唯一的索引上的外部索引鍵欄位，或設定`Enrollment`主複合索引鍵類似`CourseAssignment`。 如需詳細資訊，請參閱[索引](https://docs.microsoft.com/ef/core/modeling/indexes)。
 
 ## <a name="update-the-database-context"></a>更新的資料庫內容
 

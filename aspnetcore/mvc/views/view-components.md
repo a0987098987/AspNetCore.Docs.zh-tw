@@ -11,15 +11,15 @@ ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 68efa1f313c73e2aee3e0e3c2fcb9eba0e12a62f
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 07a2aca731b8017450a1b0da00ddef25306c122e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="view-components"></a>檢視元件
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample)
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 08/11/2017
 
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
 
-依照 pascal 命名法的大小寫慣例類別和方法的參數標記協助程式會轉譯成其[降低 kebab 案例](http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101)。 標記協助程式叫用檢視元件會使用`<vc></vc>`項目。 檢視元件的指定方式如下：
+依照 pascal 命名法的大小寫慣例類別和方法的參數標記協助程式會轉譯成其[降低 kebab 案例](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 標記協助程式叫用檢視元件會使用`<vc></vc>`項目。 檢視元件的指定方式如下：
 
 ```html
 <vc:[view-component-name]
@@ -250,4 +250,4 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="additional-resources"></a>其他資源
 
-* [檢視的相依性插入](dependency-injection.md)
+* [在檢視中插入相依性](dependency-injection.md)

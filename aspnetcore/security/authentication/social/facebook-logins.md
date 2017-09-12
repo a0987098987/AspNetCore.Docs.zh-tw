@@ -2,7 +2,7 @@
 title: "在 ASP.NET Core Facebook 外部登入安裝程式"
 author: rick-anderson
 description: "在 ASP.NET Core Facebook 外部登入安裝程式"
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 8/1/2017
@@ -11,11 +11,11 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 9554d66712f93df6d2c50503b60162757986e707
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: da019ad3fd6cefa23b8331c98cc36e50ac9c1105
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="configuring-facebook-authentication"></a>設定 Facebook 驗證
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 08/25/2017
 
 由[Valeriy Novytskyy](https://github.com/01binary)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何讓使用者以使用範例 ASP.NET Core 2.0 專案上建立其 Facebook 帳戶登入[上一頁](index.md)。 我們先建立 Facebook 應用程式識別碼依照[官方步驟](https://developers.facebook.com/docs/apps/register)。
+本教學課程會示範如何讓使用者以使用範例 ASP.NET Core 2.0 專案上建立其 Facebook 帳戶登入[上一頁](index.md)。 我們先建立 Facebook 應用程式識別碼依照[官方步驟](https://www.facebook.com/unsupportedbrowser)。
 
 ## <a name="create-the-app-in-facebook"></a>在 Facebook 中建立應用程式
 
-*  瀏覽至[Facebook 開發人員](https://developers.facebook.com/apps)頁面上，並登入。 如果您還沒有的 Facebook 帳戶，使用**註冊 Facebook**建立一個登入頁面上的連結。
+*  瀏覽至[Facebook 開發人員](https://www.facebook.com/unsupportedbrowser)頁面上，並登入。 如果您還沒有的 Facebook 帳戶，使用**註冊 Facebook**建立一個登入頁面上的連結。
 
 * 點選**建立應用程式**按鈕右上角來建立新的應用程式識別碼。
 

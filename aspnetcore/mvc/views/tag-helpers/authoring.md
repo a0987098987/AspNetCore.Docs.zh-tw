@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f16af1184a29b891a9aab0b38ab833836c326c44
-ms.sourcegitcommit: e6a8f171f26fab1b2195a2d7f14e7d258a2e690e
+ms.openlocfilehash: 97013d06273c0993b74cdacfa16cb0d655c73667
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>撰寫 ASP.NET Core，範例與逐步解說中的標記協助程式
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample)
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/23/2017
 
 **注意：**
 
-* 依照 pascal 命名法的大小寫慣例類別和屬性名稱標記協助程式會轉譯成其[降低 kebab 案例](http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101)。 因此，若要使用`MailTo`屬性，您將使用`<email mail-to="value"/>`相等。
+* 依照 pascal 命名法的大小寫慣例類別和屬性名稱標記協助程式會轉譯成其[降低 kebab 案例](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101)。 因此，若要使用`MailTo`屬性，您將使用`<email mail-to="value"/>`相等。
 
 * 最後一行會設定已完成的內容，我們使用最低限度功能標記協助程式。
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 08/23/2017
     
     **注意：**
     
-    * 如前所述，標記協助程式將使用 Pascal 大小寫 C# 類別名稱和屬性為標記協助程式至[降低 kebab 案例](http://c2.com/cgi/wiki?KebabCase)。 因此，若要使用`WebsiteInformationTagHelper`Razor，在您將撰寫`<website-information />`。
+    * 如前所述，標記協助程式將使用 Pascal 大小寫 C# 類別名稱和屬性為標記協助程式至[降低 kebab 案例](http://wiki.c2.com/?KebabCase)。 因此，若要使用`WebsiteInformationTagHelper`Razor，在您將撰寫`<website-information />`。
     
     * 明確地不識別目標項目與`[HtmlTargetElement]`屬性，因此預設值是`website-information`的目標。 如果您套用下列屬性 （請注意不 kebab 這種情況，但符合類別名稱）：
     
@@ -209,7 +209,7 @@ ms.lasthandoff: 08/23/2017
     
     * 不能自我結尾的項目有內容。 此範例中，Razor 標記將會使用自我結尾標記，但標記協助程式會建立[區段](http://www.w3.org/TR/html5/sections.html#the-section-element)項目 (不是自我結尾，而且您要撰寫內部內容`section`項目)。 因此，您需要設定`TagMode`至`StartTagAndEndTag`來寫入輸出。 或者，您可以註解線條設定`TagMode`和寫入結尾標記的標記。 （稍後在本教學課程會提供範例標記）。
     
-    * `$` （貨幣符號） 下面這一行會使用[以內插值取代字串](https://msdn.microsoft.com/library/Dn961160.aspx):
+    * `$` （貨幣符號） 下面這一行會使用[以內插值取代字串](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings):
     
     ```cshtml
     $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
@@ -272,11 +272,11 @@ ms.lasthandoff: 08/23/2017
 4.  執行應用程式，並瀏覽至首頁。 在條件中的標記`div`將不會轉譯。 將查詢字串附加`?approved=true`的 url (例如， `http://localhost:1235/Home/Index?approved=true`)。 `approved`設定為 true，且條件會顯示標記。
 
 >[!NOTE]
->使用[nameof](https://msdn.microsoft.com/library/dn986596.aspx)運算子，來指定目標，而不是指定字串，您可以如同使用粗體顯示標記協助程式屬性：
+>使用[nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof)運算子，來指定目標，而不是指定字串，您可以如同使用粗體顯示標記協助程式屬性：
 >
 >[!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs?highlight=1,2,5&range=5-18)]
 >
->[Nameof](https://msdn.microsoft.com/library/dn986596.aspx)運算子將保護的程式碼應該它曾經重構 (我們可能會想要將名稱變更為`RedCondition`)。
+>[Nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof)運算子將保護的程式碼應該它曾經重構 (我們可能會想要將名稱變更為`RedCondition`)。
 
 ### <a name="avoiding-tag-helper-conflicts"></a>避免衝突標記協助程式
 
@@ -289,7 +289,7 @@ ms.lasthandoff: 08/23/2017
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
     >[!NOTE]
-    >`AutoLinkerHttpTagHelper`類別目標`p`項目，並使用[Regex](https://msdn.microsoft.com/library/system.text.regularexpressions.regex.aspx)建立錨點。
+    >`AutoLinkerHttpTagHelper`類別目標`p`項目，並使用[Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)建立錨點。
 
 2.  加入下列標記的結尾*Views/Home/Contact.cshtml*檔案：
 

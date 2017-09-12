@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d1c6ece833672af3ef2003510ef96c4ff0d63fbf
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 210f8e8b91c2487e5c4b73fdeb6ff0d5aa35c0c5
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>進階的主題-EF Core 與 ASP.NET Core MVC 教學課程 (10-10)
 
@@ -171,7 +171,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="entity-framework-core-source-code-and-development-plans"></a>Entity Framework Core 來源的程式碼及開發計劃
 
-Entity Framework Core 的原始程式碼位於[https://github.com/aspnet/EntityFramework](https://github.com/aspnet/EntityFramework)。 除了原始程式碼，您可以取得夜間組建，發出追蹤，功能規格、 設計會議記錄[未來的開發藍圖](https://github.com/aspnet/EntityFramework/wiki/Roadmap)，以及其他更多。 您可以檔 bug，而且您可能會造成您自己的 EF 原始碼的增強功能。
+Entity Framework Core 的原始程式碼位於[https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore)。 除了原始程式碼，您可以取得夜間組建，發出追蹤，功能規格、 設計會議記錄[未來的開發藍圖](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)，以及其他更多。 您可以檔 bug，而且您可能會造成您自己的 EF 原始碼的增強功能。
 
 雖然開啟原始碼時，Entity Framework Core 則完全支援以 Microsoft 產品。 Microsoft Entity Framework 小組將控制接受哪些比重保留，並測試所有的程式碼變更，以確保每次發行的品質。
 

@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: b8ef101458e0a6e6284624693689181646ced051
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
@@ -31,7 +31,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 > [!NOTE]
 > * 如需本教學課程的 ASP.NET Core 1.1 版本，請參閱[本教學課程以 PDF 格式的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf)。
-> * 如需本教學課程的 Visual Studio 2015 版本，請參閱[VS 2015 版本的 ASP.NET 核心文件集以 PDF 格式](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
+> * 如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET 核心文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -39,7 +39,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](http://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](http://stackoverflow.com/questions/tagged/entity-framework-core)。
+如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP] 
 > 這是一系列 10 教學課程，其中每一個都是根據所完成的作業在先前的教學課程。  請考慮每個成功的教學課程完成後儲存專案的複本。  然後如果您遇到問題時，您可以透過從啟動上一個教學課程，而不是回到整個序列的開頭。
@@ -168,7 +168,7 @@ Entity Framework 會解譯為外部索引鍵屬性屬性如果名稱為`<navigat
 
 ## <a name="create-the-database-context"></a>建立的資料庫內容
 
-協調對給定的資料模型的 Entity Framework 功能的主要類別是資料庫內容類別。 您建立這個類別衍生自`Microsoft.EntityFrameworkCore.DbContext`類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
+協調對給定的資料模型的 Entity Framework 功能的主要類別是資料庫內容類別。 您可以透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立此類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
 
 在專案資料夾中，建立名為資料夾*資料*。
 
@@ -176,7 +176,7 @@ Entity Framework 會解譯為外部索引鍵屬性屬性如果名稱為`<navigat
 
 [!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
-此程式碼建立`DbSet`每一個實體集的屬性。 在 Entity Framework 詞彙的實體集通常會對應至資料庫資料表，並實體對應至資料表中的資料列。
+此程式碼建立`DbSet`每一個實體集的屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。
 
 您可以省略`DbSet<Enrollment>`和`DbSet<Course>`陳述式，它會運作方式相同。 Entity Framework 會將其包含隱含因為`Student`實體參考`Enrollment`實體和`Enrollment`實體參考`Course`實體。
 
@@ -330,7 +330,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 * 實體屬性會在名為 ID 或 classnameID 辨識為主索引鍵屬性。
 
-* 屬性會解譯為外部索引鍵屬性上，如果名稱為 *<navigation property name> <primary key property name>*  (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為 *<primary key property name>*  (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
+* 屬性會解譯為外部索引鍵屬性上，如果名稱為* <navigation property name> <primary key property name> * (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為* <primary key property name> * (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 傳統行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見。 您可以設定資料行名稱和主索引鍵或外部索引鍵，以設定任何屬性，您會發現在[之後的教學課程](complex-data-model.md)本系列。
 

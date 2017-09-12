@@ -4,7 +4,7 @@ Contoso 大學示範如何使用 Entity Framework Core ASP.NET Core MVC web 應�
 
 ## <a name="build-it-from-scratch"></a>從頭開始建置它
 
-您可以建置應用程式中的步驟[一系列的教學課程](https://docs.asp.net/en/latest/data/ef-mvc/intro.html)。
+您可以建置應用程式中的步驟[一系列的教學課程](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)。
 
 ## <a name="download-it"></a>下載該套件
 

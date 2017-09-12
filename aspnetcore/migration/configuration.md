@@ -2,7 +2,7 @@
 title: "移轉設定"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 8468d859-ff32-4a92-9e62-08c4a9e36594
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/configuration
-ms.openlocfilehash: f19a8389bd8c4035292306216522994b1dbdc506
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 62660f7e58467a69f540966df188747b6fde57fe
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-configuration"></a>移轉設定
 
-由[Steve Smith](http://ardalis.com)和[Scott Addie](https://scottaddie.com)
+由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
 前一個發行項，開始[將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC](mvc.md)。 在本文中，我們可以移轉設定。
 

@@ -2,7 +2,7 @@
 title: "檢視的相依性插入"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 80fb9e43-e4db-4af2-b2a8-e1364a712f69
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 05d64858dd70b45a1e2bb90a86ab3cbdc85264b1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: ff3ded36a04fdbba0628dc5f223bfd865d58612a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="dependency-injection-into-views"></a>檢視的相依性插入
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core 支援[相依性插入](xref:fundamentals/dependency-injection)到檢視表。 這可用於檢視特定的服務，例如當地語系化或只適用於填入檢視項目所需的資料。 您應該嘗試維護[的重要性分離](http://deviq.com/separation-of-concerns)您控制器和檢視之間。 大部分的檢視所顯示的資料應該來自控制器中傳遞。
+ASP.NET Core 支援[相依性插入](xref:fundamentals/dependency-injection)到檢視表。 這可用於檢視特定的服務，例如當地語系化或只適用於填入檢視項目所需的資料。 您應該嘗試維護[的重要性分離](http://deviq.com/separation-of-concerns/)您控制器和檢視之間。 大部分的檢視所顯示的資料應該來自控制器中傳遞。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)
 

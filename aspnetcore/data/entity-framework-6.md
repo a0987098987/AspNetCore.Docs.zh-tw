@@ -11,11 +11,11 @@ ms.assetid: 016cc836-4c43-45a4-b9a7-9efaf53350df
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/entity-framework-6
-ms.openlocfilehash: e186568e27c067e29985b8a286e26b87c3186ac4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdc24ed9b6b2d412b09871302b5478da4d81ec28
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>開始使用 ASP.NET Core 與 Entity Framework 6
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="overview"></a>概觀
 
-若要使用 Entity Framework 6，您的專案具有.NET Framework，根據編譯因為 Entity Framework 6 不支援.NET Core。 如果您需要跨平台功能必須升級至[Entity Framework Core](https://docs.efproject.net)。
+若要使用 Entity Framework 6，您的專案具有.NET Framework，根據編譯因為 Entity Framework 6 不支援.NET Core。 如果您需要跨平台功能必須升級至[Entity Framework Core](https://docs.microsoft.com/ef/)。
 
 使用 Entity Framework 6 ASP.NET Core 應用程式中的建議的方式是將 EF6 內容和類別庫中的模型類別專案的目標為完整 framework。 加入 ASP.NET Core 專案中的類別庫的參考。 請參閱範例[EF6 和 ASP.NET Core 專案與 Visual Studio 方案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)。
 

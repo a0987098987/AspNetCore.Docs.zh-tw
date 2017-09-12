@@ -2,7 +2,7 @@
 title: "模型繫結"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 930ea062ffb914cbd4f1500308b813167c1f601b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 597d4058a410e0b5991b1d5a74c9fc7bfe8171b8
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="model-binding"></a>模型繫結
 
-由[Rachel Appel](http://github.com/rachelappel)
+由[Rachel Appel](https://github.com/rachelappel)
 
 ## <a name="introduction-to-model-binding"></a>模型繫結的簡介
 
@@ -103,7 +103,7 @@ MVC 包含數個屬性可讓您將導向至不同來源的預設模型繫結行�
 > 有最多可達一個參數，每個動作以裝飾`[FromBody]`。 ASP.NET Core MVC 執行階段委派要求資料流讀取的格式器的責任。 一旦參數讀取要求資料流時，它通常不可能是讀取要求資料流，再為其他繫結`[FromBody]`參數。
 
 > [!NOTE]
-> `JsonInputFormatter`是預設的格式器，並且根據[Json.NET](http://www.newtonsoft.com/json)。
+> `JsonInputFormatter`是預設的格式器，並且根據[Json.NET](https://www.newtonsoft.com/json)。
 
 ASP.NET 選取輸入的格式器基礎[Content-type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)標頭和參數的型別除非套用，否則為指定的屬性。 如果您想要使用 XML 或另一種格式必須設定在*Startup.cs*檔案，但您可能需要取得的參考`Microsoft.AspNetCore.Mvc.Formatters.Xml`使用 NuGet。 您的啟始程式碼看起來應該像這樣：
 

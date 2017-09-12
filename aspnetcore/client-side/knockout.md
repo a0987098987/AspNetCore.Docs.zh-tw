@@ -2,7 +2,7 @@
 title: "在 ASP.NET Core 解 Knockout.js MVVM 架構"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: b20e3b23-1c51-47bf-adac-91b5048567e0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/knockout
-ms.openlocfilehash: 87b4fdc86f6bb870ae0a8cc85688a549fd0740ac
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: d1c5cbd430587b757bb550f8f04355e67f04eb54
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="knockoutjs-mvvm-framework-in-aspnet-core"></a>在 ASP.NET Core 解 Knockout.js MVVM 架構
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 Knockout 是常用的 JavaScript 程式庫，可簡化建立複雜資料為基礎的使用者介面。 它可以是單獨使用或與其他程式庫，例如 jQuery。 其主要用途是定義為 JavaScript 物件，基礎資料模型繫結 UI 項目，如此當 ui 進行變更，則會更新模型，反之亦然。 Knockout 有助於模型-檢視-ViewModel (MVVM) 模式的 web 應用程式的用戶端行為的使用。 其中一個必須了解 Knockout 的 MVVM 實作使用時的兩個主要概念是可預見值 」 和 「 繫結。
 
@@ -140,7 +140,7 @@ var viewModel = {
 ko.applyBindings(viewModel);
 ```
 
-請注意，此時我們尚未您尚未更新到正確的 URL，這個 twitter 別名 twitterUrl – 只要指向 twitter.com。 同時也請注意，我們使用新的 Knockout 函式， `computed`，如 twitterUrl。 這是會通知任何 UI 項目，如果變更了它的可觀察函式。 不過，讓它 viewModel 中有其他屬性的存取權，我們需要變更方式，我們會建立 viewModel，使每一個屬性是其本身的陳述式。
+請注意，此時我們尚未您尚未更新到正確的 URL，這個 twitter 別名 twitterUrl – 只要指向 twitter.com。同時也請注意，我們使用新的 Knockout 函式， `computed`，如 twitterUrl。 這是會通知任何 UI 項目，如果變更了它的可觀察函式。 不過，讓它 viewModel 中有其他屬性的存取權，我們需要變更方式，我們會建立 viewModel，使每一個屬性是其本身的陳述式。
 
 修訂的 viewModel 宣告如下所示。 它現在會宣告為函式。 請注意，每一個屬性自己陳述式現在，請以分號結束。 也請注意，若要存取 twitterAlias 屬性值，我們需要執行它，使其參考包含 （）。
 

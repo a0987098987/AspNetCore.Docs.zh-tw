@@ -11,17 +11,17 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 39e76b14af85de34b8443bf4e04d18d13ad2aa90
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: a14bc7fbcdac9acddfdab4fcd6e40385ca48bcc4
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 <a name=fundamentals-configuration></a>
 
   # <a name="configuration-in-aspnet-core"></a>在 ASP.NET Core 組態
 
-[Rick Anderson](https://twitter.com/RickAndMSFT)，[標記 Michaelis](http://intellitect.com/author/mark-michaelis/)， [Steve Smith](http://ardalis.com)，和[奧 Roth](https://github.com/danroth27)
+[Rick Anderson](https://twitter.com/RickAndMSFT)，[標記 Michaelis](http://intellitect.com/author/mark-michaelis/)， [Steve Smith](https://ardalis.com/)，和[奧 Roth](https://github.com/danroth27)
 
 組態 API 提供一種設定的名稱 / 值組清單為基礎的應用程式。 在執行階段從多個來源讀取組態。 名稱 / 值組可以分為多層級的階層。 有的組態提供者：
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/08/2017
 * [Azure 金鑰保存庫](xref:security/key-vault-configuration)
 * 自訂提供者，供您安裝或建立
 
-每個組態值將對應至字串索引鍵。 沒有要還原序列化到自訂設定的內建繫結支援[POCO](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)物件 （具有屬性的簡單.NET 類別）。
+每個組態值將對應至字串索引鍵。 沒有要還原序列化到自訂設定的內建繫結支援[POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object)物件 （具有屬性的簡單.NET 類別）。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample)
 
@@ -356,6 +356,6 @@ A *web.config*檔案時，需要您裝載於 IIS 或 IIS Express 應用程式。
 ### <a name="additional-resources"></a>其他資源
 
 * [使用多個環境](environments.md)
-* [在開發期間的應用程式密碼的安全存放](../security/app-secrets.md)
+* [在開發期間安全儲存應用程式密碼](../security/app-secrets.md)
 * [相依性插入](dependency-injection.md)
-* [Azure 金鑰保存庫的組態提供者](xref:security/key-vault-configuration)
+* [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)

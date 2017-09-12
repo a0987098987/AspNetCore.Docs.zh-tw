@@ -11,11 +11,11 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 735c53ab8a01d995c4945a95705ee9adb2fcdf02
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 05a92c4eee6b26e49831c11e1251aedba87ed717
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
@@ -221,7 +221,7 @@ A`StreamReader`用於讀取從規則*ApacheModRewrite.txt*規則檔案。
 * TIME_YEAR
 
 ### <a name="iis-url-rewrite-module-rules"></a>IIS URL Rewrite 模組規則
-若要使用適用於 IIS URL Rewrite 模組的規則， `AddIISUrlRewrite`。 請確定規則檔與應用程式部署。 不直接的中介軟體来使用您*web.config*檔案時在 Windows Server IIS 上執行。 使用 IIS 時，應該儲存這些規則的外部程式*web.config*以避免與 IIS Rewrite module 發生衝突。 如需詳細資訊和 IIS URL Rewrite 模組規則的範例，請參閱[使用 Url 重寫模組 2.0](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20)和[URL Rewrite 模組組態參考](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)。
+若要使用適用於 IIS URL Rewrite 模組的規則， `AddIISUrlRewrite`。 請確定規則檔與應用程式部署。 不直接的中介軟體来使用您*web.config*檔案時在 Windows Server IIS 上執行。 使用 IIS 時，應該儲存這些規則的外部程式*web.config*以避免與 IIS Rewrite module 發生衝突。 如需詳細資訊和 IIS URL Rewrite 模組規則的範例，請參閱[使用 Url 重寫模組 2.0](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20)和[URL Rewrite 模組組態參考](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -381,8 +381,8 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 * [.NET 中的規則運算式](/dotnet/articles/standard/base-types/regular-expressions)
 * [規則運算式語言 - 快速參考](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-* [使用 Url Rewrite 模組 2.0 （適用於 IIS)](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20)
-* [URL 重寫模組的組態參考](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
+* [使用 Url Rewrite 模組 2.0 （適用於 IIS)](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20)
+* [URL 重寫模組的組態參考](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
 * [IIS URL 重寫模組論壇](https://forums.iis.net/1152.aspx)
 * [保持簡單的 URL 結構](https://support.google.com/webmasters/answer/76329?hl=en)
 * [10 的 URL 重寫的秘訣和訣竅](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)

@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: c6c9db21a95131a3d7920054e32004791b499c11
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/08/2017
 
 與 ASP.NET Core 建立多國語言的網站，可讓您的網站才能達到更多觀眾。 ASP.NET Core 提供服務和中介軟體將當地語系化成不同的語言和文化特性。
 
-國際化牽涉到[全球化](https://msdn.microsoft.com/library/aa292081(v=vs.71).aspx)和[當地語系化](https://msdn.microsoft.com/library/aa292137(v=vs.71).aspx)。 全球化是設計支援不同的文化特性的應用程式的程序。 全球化加入支援輸入、 顯示和一組定義的特定地理區域與相關聯的語言指令碼的輸出。
+國際化牽涉到[全球化](https://docs.microsoft.com/dotnet/api/system.globalization)和[當地語系化](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization)。 全球化是設計支援不同的文化特性的應用程式的程序。 全球化加入支援輸入、 顯示和一組定義的特定地理區域與相關聯的語言指令碼的輸出。
 
 當地語系化是調整您已針對特定文化特性/地區設定可當地語系化的全球化應用程式的程序。  如需詳細資訊，請參閱**全球化和當地語系化條款**這份文件結尾附近。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
-ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開發當地語系化應用程式時提高生產力。 `IStringLocalizer`使用[ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx)和[ResourceReader](https://msdn.microsoft.com/library/system.resources.resourcereader(v=vs.110).aspx)在執行階段提供特定文化特性的資源。 簡單的介面有索引子和`IEnumerable`傳回當地語系化的字串。 `IStringLocalizer`不需要您將預設語言字串儲存在資源檔。 您可以開發應用程式當地語系化為目標，並不需要在開發的早期建立資源檔。 下列程式碼會示範如何包裝當地語系化的字串"有關 Title"。
+ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開發當地語系化應用程式時提高生產力。 `IStringLocalizer`使用[ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager)和[ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader)在執行階段提供特定文化特性的資源。 簡單的介面有索引子和`IEnumerable`傳回當地語系化的字串。 `IStringLocalizer`不需要您將預設語言字串儲存在資源檔。 您可以開發應用程式當地語系化為目標，並不需要在開發的早期建立資源檔。 下列程式碼會示範如何包裝當地語系化的字串"有關 Title"。
 
 [!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
 
@@ -65,7 +65,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 ## <a name="view-localization"></a>檢視當地語系化
 
-`IViewLocalizer`服務提供的當地語系化的字串[檢視](http://docs.asp.net/projects/mvc/en/latest/views/index.html)。 `ViewLocalizer`類別會實作這個介面，並尋找檢視的檔案路徑的資源位置。 下列程式碼示範如何使用的預設實作`IViewLocalizer`:
+`IViewLocalizer`服務提供的當地語系化的字串[檢視](https://docs.microsoft.com/aspnet/core)。 `ViewLocalizer`類別會實作這個介面，並尋找檢視的檔案路徑的資源位置。 下列程式碼示範如何使用的預設實作`IViewLocalizer`:
 
 [!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
 
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures 和 SupportedUICultures
 
-ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`SupportedUICultures`。 [CultureInfo](https://msdn.microsoft.com/library/system.globalization.cultureinfo(v=vs.110).aspx)物件`SupportedCultures`判斷文化特性相關的函數，例如日期、 時間、 數字和貨幣格式的結果。 `SupportedCultures`也會決定文字、 大小寫慣例和字串比較的排序順序。 請參閱[CultureInfo.CurrentCulture](https://msdn.microsoft.com/library/system.globalization.cultureinfo.currentculture%28v=vs.110%29.aspx)如需詳細資訊，在伺服器取得文化特性的方式。 `SupportedUICultures`決定會轉譯為字串 (從*.resx*檔案) 依查閱[ResourceManager](https://msdn.microsoft.com/library/system.resources.resourcemanager(v=vs.110).aspx)。 `ResourceManager`查閱所決定的特定文化特性的字串，只需`CurrentUICulture`。 在.NET 中的每個執行緒都`CurrentCulture`和`CurrentUICulture`物件。 ASP.NET Core 呈現文化特性相關函式時，會檢查這些值。 比方說，如果目前執行緒的文化特性設定為"EN-US"英文 (美國），`DateTime.Now.ToLongDateString()`顯示 「 星期四年 2 月 18，2016 年 」，但是如果`CurrentCulture`設定"ES-ES"（西班牙文，西班牙） 的輸出會是"jueves，18 febrero de-de 2016"。
+ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`SupportedUICultures`。 [CultureInfo](https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo)物件`SupportedCultures`判斷文化特性相關的函數，例如日期、 時間、 數字和貨幣格式的結果。 `SupportedCultures`也會決定文字、 大小寫慣例和字串比較的排序順序。 請參閱[CultureInfo.CurrentCulture](https://docs.microsoft.com/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)如需詳細資訊，在伺服器取得文化特性的方式。 `SupportedUICultures`決定會轉譯為字串 (從*.resx*檔案) 依查閱[ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager)。 `ResourceManager`查閱所決定的特定文化特性的字串，只需`CurrentUICulture`。 在.NET 中的每個執行緒都`CurrentCulture`和`CurrentUICulture`物件。 ASP.NET Core 呈現文化特性相關函式時，會檢查這些值。 比方說，如果目前執行緒的文化特性設定為"EN-US"英文 (美國），`DateTime.Now.ToLongDateString()`顯示 「 星期四年 2 月 18，2016 年 」，但是如果`CurrentCulture`設定"ES-ES"（西班牙文，西班牙） 的輸出會是"jueves，18 febrero de-de 2016"。
 
 ## <a name="working-with-resource-files"></a>使用資源檔
 
@@ -214,7 +214,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-某些應用程式會使用查詢字串來設定[文化特性和 UI 文化特性](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx#Current)。 針對使用 cookie 或 Accept-encoding 標頭方法的應用程式，將查詢字串新增至 URL 是用於偵錯和測試程式碼。 根據預設，`QueryStringRequestCultureProvider`登錄中的第一個當地語系化提供者為`RequestCultureProvider`清單。 您將查詢字串參數`culture`和`ui-culture`。 下列範例會設定要每次墨西哥的西班牙文 （語言和地區） 的特定文化特性：
+某些應用程式會使用查詢字串來設定[文化特性和 UI 文化特性](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx)。 針對使用 cookie 或 Accept-encoding 標頭方法的應用程式，將查詢字串新增至 URL 是用於偵錯和測試程式碼。 根據預設，`QueryStringRequestCultureProvider`登錄中的第一個當地語系化提供者為`RequestCultureProvider`清單。 您將查詢字串參數`culture`和`ui-culture`。 下列範例會設定要每次墨西哥的西班牙文 （語言和地區） 的特定文化特性：
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -303,7 +303,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 當地語系化您的應用程式的程序也需要相關的字元集中的現代軟體開發中常用的基本了解並了解與它們相關聯的問題。 雖然所有的電腦會將文字儲存為數字 （程式碼），不同的系統存放區使用不同的數字的相同文字。 轉譯特定的文化特性/地區設定的應用程式使用者介面 (UI) 是指在當地語系化過程。
 
-[當地語系化能力](https://msdn.microsoft.com/library/aa292135(v=vs.71).aspx)會確認全球化應用程式已準備好進行當地語系化的中繼程序。
+[當地語系化能力](https://docs.microsoft.com/dotnet/standard/globalization-localization/localizability-review)會確認全球化應用程式已準備好進行當地語系化的中繼程序。
 
 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt)格式的文化特性名稱是"<languagecode2>-< country/regioncode2 >"，其中<languagecode2>的語言代碼，而 < country/regioncode2 > 子文化特性代碼。 例如，`es-CL`西班牙文 （智利），`en-US`英文 （美國） 和`en-AU`英文 （澳大利亞）。 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt)是兩個字母小寫文化特性代碼相關聯的語言的 ISO 639 和兩個字母的大寫子程式碼相關聯的國家或地區的 ISO 3166 的組合。  請參閱[語言文化特性名稱](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx)。
 
@@ -322,5 +322,5 @@ services.Configure<RequestLocalizationOptions>(options =>
 ## <a name="additional-resources"></a>其他資源
 
 * [Localization.StarterWeb 專案](https://github.com/aspnet/entropy)用於發行項。
-* [Visual Studio 中的資源檔](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#VSResFiles)
-* [.Resx 檔中的資源](https://msdn.microsoft.com/library/xbx3z216(v=vs.110).aspx#ResourcesFiles)
+* [Visual Studio 中的資源檔](https://docs.microsoft.com/cpp/windows/resource-files-visual-studio)
+* [.Resx 檔中的資源](https://docs.microsoft.com/dotnet/framework/resources/working-with-resx-files-programmatically)

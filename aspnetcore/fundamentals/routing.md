@@ -2,7 +2,7 @@
 title: "在 ASP.NET Core 路由"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 98756e2c5b336aabcf5155d929160b616baaf2ee
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 431b837dc93abdf305b77615409883fd54b99455
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
-由[Ryan Nowak](https://github.com/rynowak)， [Steve Smith](http://ardalis.com)，和[Rick Anderson](https://twitter.com/RickAndMSFT)
+由[Ryan Nowak](https://github.com/rynowak)， [Steve Smith](https://ardalis.com/)，和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 路由功能是負責將傳入的要求對應至路由處理常式。 在 ASP.NET 應用程式中定義和設定應用程式啟動時的路由。 路由可以選擇性地從要求中所含的 URL 擷取值，這些值就用於處理要求。 使用 ASP.NET 應用程式中的路由資訊，路由的功能也會產生對應至路由處理常式的 Url。 因此，路由，可以找到 URL 或對應至路由處理常式資訊為基礎的指定的路由處理常式的 URL 為基礎的路由處理常式。
 
@@ -325,9 +325,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 ## <a name="regular-expressions"></a>規則運算式 
 
-加入 ASP.NET Core framework`RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant`規則運算式建構函式。 請參閱[RegexOptions 列舉型別](https://msdn.microsoft.com/library/system.text.regularexpressions.regexoptions(v=vs.110).aspx)如需這些成員的說明。
+加入 ASP.NET Core framework`RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant`規則運算式建構函式。 請參閱[RegexOptions 列舉型別](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions)如需這些成員的說明。
 
-規則運算式會使用分隔符號，類似於所使用的路由和 C# 語言的語彙基元。 規則運算式的語彙基元必須逸出。 例如，若要使用規則運算式`^\d{3}-\d{2}-\d{4}$`路由，在它需要擁有`\`字元輸入為`\\`C# 原始程式檔來逸出`\`字串逸出字元 (除非使用[逐字字串常值](https://msdn.microsoft.com/library/aa691090(v=vs.71).aspx))。 `{` ， `}` ，' [' 和 ']' 必須成對使用加以逸出路由參數的分隔符號字元逸出字元。  下表顯示規則運算式和逸出的版本。
+規則運算式會使用分隔符號，類似於所使用的路由和 C# 語言的語彙基元。 規則運算式的語彙基元必須逸出。 例如，若要使用規則運算式`^\d{3}-\d{2}-\d{4}$`路由，在它需要擁有`\`字元輸入為`\\`C# 原始程式檔來逸出`\`字串逸出字元 (除非使用[逐字字串常值](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string)。 `{` ， `}` ，' [' 和 ']' 必須成對使用加以逸出路由參數的分隔符號字元逸出字元。  下表顯示規則運算式和逸出的版本。
 
 | 運算式               | 注意事項 |
 | ----------------- | ------------ | 
@@ -347,7 +347,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | `^[a-z]{2}$` |  hello | no | 請參閱`^`和`$`上方 |
 | `^[a-z]{2}$` |  123abc456 | no | 請參閱`^`和`$`上方 |
 
-請參閱[.NET Framework 規則運算式](https://msdn.microsoft.com/library/hs600312(v=vs.110).aspx)如需有關規則運算式語法。
+請參閱[.NET Framework 規則運算式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)如需有關規則運算式語法。
 
 若要限制一組已知的可能值的參數，請使用規則運算式。 例如`{action:regex(^(list|get|create)$)}`只符合`action`路由值`list`， `get`，或`create`。 如果傳遞到此條件約束的字典，字串"^ (清單 | get | 建立) $"相當。 條件約束的條件約束字典 （沒有內嵌在樣板內） 傳入不符合其中一個已知的條件約束也會被視為規則運算式。
 

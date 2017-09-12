@@ -2,7 +2,7 @@
 title: "移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: tdykstra
 manager: wpickett
 ms.date: 12/07/2016
@@ -11,17 +11,17 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: f99c2751138ac789e7105ff256ce7254e280463e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e14664133abf010b80374036e4855fdff71d1d5f
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組 
 
 由[Matt Perdeck](https://www.linkedin.com/in/mattperdeck)
 
-本文將說明如何移轉現有的 ASP.NET [HTTP 模組和處理常式](https://msdn.microsoft.com/library/bb398986.aspx)到 ASP.NET Core[中介軟體](../fundamentals/middleware.md)。
+本文將說明如何移轉現有的 ASP.NET [HTTP 模組和處理常式 system.webserver](https://docs.microsoft.com/iis/configuration/system.webserver/)到 ASP.NET Core[中介軟體](../fundamentals/middleware.md)。
 
 ## <a name="modules-and-handlers-revisited"></a>模組和處理常式進行重新瀏覽
 
@@ -31,15 +31,15 @@ ms.lasthandoff: 08/11/2017
 
 **處理常式包括：**
 
-   * 類別可實作[IHttpHandler](https://msdn.microsoft.com/library/system.web.ihttphandler.aspx)
+   * 類別可實作[IHttpHandler](https://docs.microsoft.com/dotnet/api/system.web.ihttphandler)
 
    * 用來處理要求，以指定的檔案名稱或副檔名，例如*.report*
 
-   * [設定](https://msdn.microsoft.com/library/46c5ddfy.aspx)中*Web.config*
+   * [設定](https://docs.microsoft.com//iis/configuration/system.webserver/handlers/)中*Web.config*
 
 **模組為：**
 
-   * 類別可實作[IHttpModule](https://msdn.microsoft.com/library/system.web.ihttpmodule.aspx)
+   * 類別可實作[IHttpModule](https://docs.microsoft.com/dotnet/api/system.web.ihttpmodule)
 
    * 叫用每個要求
 
@@ -47,11 +47,11 @@ ms.lasthandoff: 08/11/2017
 
    * 無法加入至 HTTP 回應，或建立自己
 
-   * [設定](https://msdn.microsoft.com/library/ms227673.aspx)中*Web.config*
+   * [設定](https://docs.microsoft.com//iis/configuration/system.webserver/modules/)中*Web.config*
 
 **模組處理內送要求的順序取決於：**
 
-   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx)， [AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)等等。每個模組都可以建立一或多個事件的處理常式。
+   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
 
    2. 相同事件中設定的順序*Web.config*。
 
@@ -167,7 +167,7 @@ HTTP 處理常式看起來像這樣：
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>載入使用選項模式的中介軟體選項
 
-部分模組和處理常式有儲存在組態選項*Web.config*。 不過，在 ASP.NET Core 新的組態模型會使用取代*Web.config*。
+部分模組和處理常式有儲存在組態選項*Web.config*。不過，在 ASP.NET Core 新的組態模型會使用取代*Web.config*。
 
 新[組態系統](../fundamentals/configuration.md)提供您下列選項可用來解決這個問題：
 
@@ -245,7 +245,7 @@ HTTP 處理常式看起來像這樣：
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext`已經大幅變更 ASP.NET Core 中。 本節說明如何將最常用的屬性轉譯[System.Web.HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx)新`Microsoft.AspNetCore.Http.HttpContext`。
+`HttpContext`已經大幅變更 ASP.NET Core 中。 本節說明如何將最常用的屬性轉譯[System.Web.HttpContext](https://docs.microsoft.com/dotnet/api/system.web.httpcontext)新`Microsoft.AspNetCore.Http.HttpContext`。
 
 ### <a name="httpcontext"></a>HttpContext
 
@@ -382,7 +382,7 @@ public async Task Invoke(HttpContext httpContext)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [HTTP 處理常式和 HTTP 模組概觀](https://msdn.microsoft.com/library/bb398986.aspx)
+* [HTTP 處理常式和 HTTP 模組概觀](https://docs.microsoft.com/iis/configuration/system.webserver/)
 
 * [組態](../fundamentals/configuration.md)
 

@@ -2,7 +2,7 @@
 title: "安全儲存體的過程中的程式開發 ASP.NET Core 應用程式密碼"
 author: rick-anderson
 description: "示範如何安全地將密碼儲存在開發期間"
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 7/14/2017
@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: 99a1129549d6b9802315c7e5accfa22907994a41
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 56214c2fbdca84591c5c1a6b7f2451f33ee64ef0
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="secret-manager"></a>密碼管理員
 
-密碼管理員工具會儲存為您專案的樹狀目錄外部的開發工作的敏感性資料。 密碼管理員工具是一種專案的工具，可以用來儲存的秘密資訊[.NET Core](https://microsoft.com/net/core)在開發期間的專案。 使用密碼管理員 工具中，您可以將應用程式密碼與特定的專案產生關聯，並共用跨多個專案。
+密碼管理員工具會儲存為您專案的樹狀目錄外部的開發工作的敏感性資料。 密碼管理員工具是一種專案的工具，可以用來儲存的秘密資訊[.NET Core](https://www.microsoft.com/net/core)在開發期間的專案。 使用密碼管理員 工具中，您可以將應用程式密碼與特定的專案產生關聯，並共用跨多個專案。
 
 >[!WARNING]
 > 密碼管理員工具不會加密預存機密資料，並不會被視為受信任存放區。 它是僅限開發用途。 索引鍵和值會儲存在使用者設定檔的目錄中的 JSON 組態檔。

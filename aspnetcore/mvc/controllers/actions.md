@@ -11,15 +11,15 @@ ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: b7d6341c0312b3f5f122acfb2ee01210151b33bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 5dc6c7dc70027bb79875f389d535119a2543b873
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>處理要求中 ASP.NET Core MVC 控制站
 
-由[Steve Smith](http://ardalis.com)和[Scott Addie](https://github.com/scottaddie)
+由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://github.com/scottaddie)
 
 控制器、 動作和動作結果是開發人員如何建置使用 ASP.NET Core MVC 應用程式的基礎部分。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 
 控制器類別不具有相關聯`[NonController]`屬性。
 
-控制站應該遵循[明確的相依性原則](http://deviq.com/explicit-dependencies-principle)。 有幾種方法可以實作此原則。 如果多個控制器的動作需要在相同的服務，請考慮使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)要求的相依性。 如果只有單一動作方法所需的服務，請考慮使用[動作資料隱碼](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)要求的相依性。
+控制站應該遵循[明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)。 有幾種方法可以實作此原則。 如果多個控制器的動作需要在相同的服務，請考慮使用[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)要求的相依性。 如果只有單一動作方法所需的服務，請考慮使用[動作資料隱碼](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)要求的相依性。
 
 內**M**模型-**V**檢視-**C**ontroller 模式控制站會負責初始要求的處理和具現化的模型。 一般而言，模型內，應執行的商業決策。
 

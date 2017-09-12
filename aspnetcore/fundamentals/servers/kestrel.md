@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 451a548403c8fa0ed2befeb6969a3ee28fe34790
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: baf1a979e4f18cbc7818f78b866e6cb6958efccf
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core Kestrel web 伺服器實作的簡介
 
-由[Tom Dykstra](http://github.com/tdykstra)， [Chris Ross](https://github.com/Tratcher)，和[Stephen Halter](https://twitter.com/halter73)
+由[Tom Dykstra](https://github.com/tdykstra)， [Chris Ross](https://github.com/Tratcher)，和[Stephen Halter](https://twitter.com/halter73)
 
 Kestrel 是跨平台[適用於 ASP.NET Core web 伺服器](index.md)根據[libuv](https://github.com/libuv/libuv)，跨平台非同步 I/O 文件庫。 Kestrel 是 ASP.NET Core 專案範本中的預設隨附的 web 伺服器。 
 
@@ -46,25 +46,25 @@ Kestrel 都支援所有平台和.NET Core 支援的版本。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-您可以單獨使用時或使用 Kestrel*反向 proxy 伺服器*，例如 IIS、 Nginx 或 Apache。 反向 proxy 伺服器會從網際網路接收 HTTP 要求，並轉送至 Kestrel 後一些初步處理。
+您可以單獨使用 Kestrel，或與 IIS、Nginx 或 Apache 等「反向 Proxy 伺服器」搭配使用。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，並在進行一些初步處理後，將其轉送至 Kestrel。
 
-![Kestrel 直接與不使用反向 proxy 伺服器的網際網路通訊](kestrel/_static/kestrel-to-internet2.png)
+![Kestrel 不使用反向 Proxy 伺服器直接與網際網路通訊](kestrel/_static/kestrel-to-internet2.png)
 
-![Kestrel 通訊間接透過反向 proxy 伺服器，如 IIS、 Nginx 或 Apache 與網際網路](kestrel/_static/kestrel-to-internet.png)
+![Kestrel 透過 IIS、Nginx 或 Apache 等反向 Proxy 伺服器間接與網際網路通訊](kestrel/_static/kestrel-to-internet.png)
 
-不論是否設定&mdash;反向 proxy 伺服器，不論&mdash;也可以用如果 Kestrel 向內部網路。
+如果 Kestrel 只公開到內部網路，則不論組態是否使用反向 Proxy 伺服器，皆可使用。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-如果您的應用程式只接受來自要求的內部網路，您可以使用 Kestrel 本身。
+如果應用程式只接受來自內部網路的要求，您可以單獨使用 Kestrel。
 
-![Kestrel 會直接與您的內部網路進行通訊](kestrel/_static/kestrel-to-internal.png)
+![Kestrel 直接與內部網路通訊](kestrel/_static/kestrel-to-internal.png)
 
-如果您公開至網際網路的應用程式，您必須使用 IIS、 Nginx 或做為 Apache*反向 proxy 伺服器*。 反向 proxy 伺服器會從網際網路接收 HTTP 要求，並轉送至 Kestrel 後一些初步處理。
+如果將應用程式公開到網際網路，您必須使用 IIS、Nginx 或 Apache 作為「反向 Proxy 伺服器」。 反向 Proxy 伺服器會從網際網路接收 HTTP 要求，並在進行一些初步處理後，將其轉送至 Kestrel。
 
-![Kestrel 通訊間接透過反向 proxy 伺服器，如 IIS、 Nginx 或 Apache 與網際網路](kestrel/_static/kestrel-to-internet.png)
+![Kestrel 透過 IIS、Nginx 或 Apache 等反向 Proxy 伺服器間接與網際網路通訊](kestrel/_static/kestrel-to-internet.png)
 
-需要邊緣部署 （公開流量從網際網路） 的安全性考量的反向 proxy。 Kestrel 的 1.x 版不需要足額的防禦。 其中包括但不限制於適當的逾時、 大小上限，以及並行連線限制。
+需要邊緣部署 （公開流量從網際網路） 的安全性考量的反向 proxy。 Kestrel 的 1.x 版對於攻擊的防禦並不充足。 其中包括但不限制於適當的逾時、 大小上限，以及並行連線限制。
 
 ---
 
@@ -107,9 +107,9 @@ Kestrel 都支援所有平台和.NET Core 支援的版本。
 
 Kestrel web 伺服器的條件約束組態選項，在網際網路對向部署時特別有用。 以下是一些您可以設定的限制：
 
-- 最大用戶端連線
+- 用戶端連線數目上限
 - 要求主體大小上限
-- 最小要求主體資料的速率
+- 要求主體資料速率下限
 
 您設定這些條件約束與其他人在`Limits`屬性[KestrelServerOptions](https://github.com/aspnet/KestrelHttpServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.Kestrel.Core/KestrelServerOptions.cs)類別。 `Limits`屬性會保留的執行個體[KestrelServerLimits](https://github.com/aspnet/KestrelHttpServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.Kestrel.Core/KestrelServerLimits.cs)類別。 
 

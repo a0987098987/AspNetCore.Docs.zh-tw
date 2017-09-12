@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: b9b03dab6446aed7ee875916cd2e64acbb226e8f
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 72b6098b2a71957da338ef36beff4808201773f4
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 金鑰保存庫的組態提供者
 
@@ -161,4 +161,4 @@ Configuration.Reload();
 * [Microsoft Azure： 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure： 金鑰保存庫文件](https://docs.microsoft.com/azure/key-vault/)
 * [如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)
-* [KeyVaultClient 類別](https://msdn.microsoft.com/library/microsoft.azure.keyvault.keyvaultclient.aspx)
+* [KeyVaultClient 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient)

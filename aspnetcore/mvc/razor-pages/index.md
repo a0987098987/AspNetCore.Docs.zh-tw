@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 9301b99aed8fcb3bef91abf0fb269c4052cdb7e2
-ms.sourcegitcommit: 87900dffec8ad84a0f74357b23343e215f354dcb
+ms.openlocfilehash: 543399d99af127f943f7e9119fb5d84c8c5bc499
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -28,7 +28,7 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 ## <a name="aspnet-core-20-prerequisites"></a>ASP.NET Core 2.0 必要條件
 
-安裝 [.NET Core](https://dot.net/core) 2.0.0 或更新版本。
+安裝 [.NET Core](https://www.microsoft.com/net/core) 2.0.0 或更新版本。
 
 如果您使用的是 Visual Studio，請安裝 [Visual Studio](https://www.visualstudio.com/vs/) 15.3 或更新版本，加上下列工作負載：
 
@@ -222,7 +222,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
 
-本教學課程稍後會說明 `@namespace`。 `@addTagHelper` 指示詞會將[內建標記協助程式](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/)帶入 *Pages* 資料夾中的所有頁面。
+本教學課程稍後會說明 `@namespace`。 `@addTagHelper` 指示詞會將[內建標記協助程式](xref:mvc/views/tag-helpers/builtin-th/Index)帶入 *Pages* 資料夾中的所有頁面。
 
 <a name="namespace"></a>
 

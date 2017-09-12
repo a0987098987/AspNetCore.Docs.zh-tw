@@ -2,7 +2,7 @@
 title: "金鑰管理的擴充性"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: fb74905660015b9a83503e1f74b25c66ae9df9e3
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="key-management-extensibility"></a>金鑰管理的擴充性
 
@@ -67,7 +67,7 @@ IKeyManager 介面代表負責一般金鑰儲存、 擷取及管理的物件。 
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-XmlKeyManager 類型為 IKeyManager 的內建具象實作。 它提供數個實用的功能，包括金鑰委付和加密在靜止的索引鍵。 在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://msdn.microsoft.com/library/system.xml.linq.xelement(v=vs.110).aspx))。
+XmlKeyManager 類型為 IKeyManager 的內建具象實作。 它提供數個實用的功能，包括金鑰委付和加密在靜止的索引鍵。 在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)。
 
 XmlKeyManager 取決於過程中完成其工作的其他數個元件：
 

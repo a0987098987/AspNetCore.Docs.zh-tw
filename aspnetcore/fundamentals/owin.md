@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28bd52edbdb3159642ce523dd63fde9d6001678c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 796d075d4d0c6b888be4fc2225fc482acdbad498
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>若要開啟.NET (OWIN) 的網頁介面的簡介
 
-由[Steve Smith](http://ardalis.com)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+由[Steve Smith](https://ardalis.com/)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core 支援開啟 Web 介面.NET (OWIN)。 OWIN 可讓 web 應用程式從 web 伺服器。 它會定義可以在管線中用來處理要求和回應相關聯的中介軟體的標準方式。 與 OWIN 應用程式、 伺服器和中介軟體的 ASP.NET Core 應用程式和中介軟體可以交互操作。
 

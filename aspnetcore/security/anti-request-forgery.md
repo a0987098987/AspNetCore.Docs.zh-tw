@@ -9,15 +9,15 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/anti-request-forgery
-ms.openlocfilehash: 466453bff68f3e0da8b90924edb13095c7548db5
-ms.sourcegitcommit: 4f075f2c22c5a4b5345ffa759be4365824110788
+ms.openlocfilehash: 3c0f90dd9894c362c0d7fef5d1f1da076991605c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core
 
-[Steve Smith](http://ardalis.com/)， [Fiyaz Hasan](https://twitter.com/FiyazBinHasan)，和[Rick Anderson](https://twitter.com/RickAndMSFT)
+[Steve Smith](https://ardalis.com/)， [Fiyaz Hasan](https://twitter.com/FiyazBinHasan)，和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="what-attack-does-anti-forgery-prevent"></a>防偽防止何種攻擊？
 
@@ -354,7 +354,7 @@ CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie �
 
 ### <a name="user-tokens"></a>使用者語彙基元
 
-權杖型驗證不會儲存在伺服器上的工作階段。 相反地，當使用者登入他們就會發出的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含驗證權杖所需的所有資料。 它也包含使用者資訊，請在表單的[宣告](https://msdn.microsoft.com/library/ff359101.aspx)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 此權杖不是*加密*; 而是*編碼*。 在伺服器端權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，您可以儲存它在瀏覽器的本機儲存體，或在 cookie 中。 您不必擔心 XSRF 弱點，如果您的權杖會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
+權杖型驗證不會儲存在伺服器上的工作階段。 相反地，當使用者登入他們就會發出的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含驗證權杖所需的所有資料。 它也包含使用者資訊，請在表單的[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 此權杖不是*加密*; 而是*編碼*。 在伺服器端權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，您可以儲存它在瀏覽器的本機儲存體，或在 cookie 中。 您不必擔心 XSRF 弱點，如果您的權杖會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
 
 ### <a name="multiple-applications-are-hosted-in-one-domain"></a>在一個網域中裝載多個應用程式
 

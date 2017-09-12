@@ -11,15 +11,15 @@ ms.assetid: ebc98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 78cc9cd846f9b0963dbba9069c86ca295f7a32e4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 3d42fd0657bcfb4b0fdab699bbcb572e5736688c
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="file-uploads-in-aspnet-core"></a>在 ASP.NET Core 檔案上傳
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 ASP.NET MVC 動作支援的一或多個檔案使用簡單的模型繫結為較小的檔案或資料流處理的較大的檔案上傳。
 
@@ -75,7 +75,7 @@ public interface IFormFile
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-使用上傳的檔案`IFormFile`技術緩衝在記憶體中或在 web 伺服器上的磁碟上然後再開始處理。 在動作方法中，內`IFormFile`內容是可存取資料流的形式。 除了本機檔案系統中，檔案可以串流處理至[Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs)或[Entity Framework](https://docs.microsoft.com/ef/core/index)。
+使用上傳的檔案`IFormFile`技術緩衝在記憶體中或在 web 伺服器上的磁碟上然後再開始處理。 在動作方法中，內`IFormFile`內容是可存取資料流的形式。 除了本機檔案系統中，檔案可以串流處理至[Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)或[Entity Framework](https://docs.microsoft.com/ef/core/index)。
 
 若要將二進位檔案資料儲存在資料庫中使用 Entity Framework 中，定義 型別屬性`byte[]`實體上：
 
@@ -197,7 +197,7 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-這項設定僅適用於 IIS。 裝載 Kestrel 上時，預設不會發生行為。 如需詳細資訊，請參閱[要求限制\<requestLimits\>](https://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits)。
+這項設定僅適用於 IIS。 裝載 Kestrel 上時，預設不會發生行為。 如需詳細資訊，請參閱[要求限制\<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile null 參考例外狀況
 

@@ -11,11 +11,11 @@ ms.assetid: d54230f9-8e5f-4861-a29c-1d3a14e0b0d9
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 810d89798330aeb1c387ec85eb05b1f4efde167a
-ms.sourcegitcommit: 275a5381b6172b4f0b5fcd1d252aff03d3dae166
+ms.openlocfilehash: d8512bdd49b61019f22a49900bdd65086d821a6b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="bundling-and-minification-in-aspnet-core"></a>統合及縮製中 ASP.NET Core
 
@@ -91,8 +91,8 @@ MVC 專案範本提供`bundleconfig.json`組態檔會定義每個組合的選項
 * 縮短-縮小選項的輸出類型。 **選擇性**，*預設值-`minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。
     * [CSS 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
-    * [JavaScript 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/jsminifier)
-    * [HTML 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/htmlminifier)
+    * [JavaScript 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki)
+    * [HTML 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki)
 * includeInProject-將產生的檔案加入至專案檔。 **選擇性**，*預設為 false*
 * Sourcemap-產生將配套的檔案的來源對應。 **選擇性**，*預設為 false*
 

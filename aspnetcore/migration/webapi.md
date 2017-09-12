@@ -2,7 +2,7 @@
 title: "從 ASP.NET Web API 移轉"
 author: ardalis
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 4f0564b4-ed4e-4e1e-9755-c1144d21a0ef
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/webapi
-ms.openlocfilehash: 55125e711a8b04f5a363ba965ab2223da02aab78
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2dd2d40aef3803ad2f75504920a1174fee5c2444
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="migrating-from-aspnet-web-api"></a>從 ASP.NET Web API 移轉
 
-由[Steve Smith](http://ardalis.com)和[Scott Addie](https://scottaddie.com)
+由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
 Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置的較大範圍的 HTTP 服務。 ASP.NET Core MVC 包括建置 Web 應用程式開發介面提供單一且一致的方式，建立 web 應用程式的支援。 在本文中，我們會示範從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC 所需的步驟。
 
@@ -27,7 +27,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 
 ## <a name="review-aspnet-web-api-project"></a>檢閱 ASP.NET Web API 專案
 
-本文使用範例專案， *ProductsApp*建立發行項的[開始使用 ASP.NET Web API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)做為起點。 在該專案中，簡單的 ASP.NET Web API 專案設定，如下所示。
+本文使用範例專案， *ProductsApp*建立發行項的[開始使用 ASP.NET Web API](https://docs.microsoft.com/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)做為起點。 在該專案中，簡單的 ASP.NET Web API 專案設定，如下所示。
 
 在*Global.asax.cs*，進行呼叫以`WebApiConfig.Register`:
 
@@ -38,7 +38,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 
-這個類別會設定[屬性路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定 ASP.NET Web API 所使用的路由表。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與*{id}*為選擇性。
+這個類別會設定[屬性路由](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定 ASP.NET Web API 所使用的路由表。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與*{id}*為選擇性。
 
 *ProductsApp*專案包含一個簡單的控制器，繼承自`ApiController`和公開兩個方法：
 

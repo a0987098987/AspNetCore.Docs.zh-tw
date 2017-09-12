@@ -11,18 +11,18 @@ ms.assetid: 94f2f1a4-7d46-45e2-a085-a57916e41724
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/https
-ms.openlocfilehash: e06f4194d496b5b11aa867e66563bec317e735ff
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7c366ffbac71152c2f29901ff12bac2962e83e3e
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="setting-up-https-for-development-in-aspnet-core"></a>設定 HTTPS 進行開發的 ASP.NET Core
 
 > [!NOTE] 
 > 本主題適用於 ASP.NET Core 2.0 Preview 1
 
-您可以設定您的應用程式在開發期間使用 HTTPS，來模擬實際執行環境中的 HTTPS。 可能需要啟用 HTTPS 啟用整合與各種身分識別提供者 (例如[Azure AD](https://azure.microsoft.com/services/active-directory)和[Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c))。
+您可以設定您的應用程式在開發期間使用 HTTPS，來模擬實際執行環境中的 HTTPS。 可能需要啟用 HTTPS 啟用整合與各種身分識別提供者 (例如[Azure AD](https://azure.microsoft.com/services/active-directory)和[Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/))。
 
 <a name="iisxpress"></a>
 

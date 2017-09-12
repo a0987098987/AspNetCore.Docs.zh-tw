@@ -11,15 +11,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b1de37d93f5dca2d6b6be24c429b5971692e17e
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 53a31ed8ca6ff24a19a33a56c3a896aa58cbb62a
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>在 ASP.NET Core 標記協助程式簡介 
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="what-are-tag-helpers"></a>標記協助程式有哪些？
 
@@ -151,7 +151,7 @@ IntelliSense 陳述式完成可讓您輸入 tab 鍵來完成選取的值的陳�
 
 ![影像](intro/_static/labelaspfor2.png)
 
-您可以輸入 Visual Studio *CompleteWord*快顯 (Ctrl + 空格鍵是[預設](https://msdn.microsoft.com/library/da5kh0wa.aspx)) 置於雙引號內 ("")，而您現在在 C# 中，就像您會在 C# 類別。 IntelliSense 會顯示頁面模型上所有的方法和屬性。 方法和屬性可用的屬性類型，所以`ModelExpression`。 在下列影像中，我編輯`Register` 檢視中，所以`RegisterViewModel`可用。
+您可以輸入 Visual Studio *CompleteWord*快顯 (Ctrl + 空格鍵是[預設](https://docs.microsoft.com/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio)置於雙引號內 ("")，而您現在在 C# 中，就像您會在 C# 類別。 IntelliSense 會顯示頁面模型上所有的方法和屬性。 方法和屬性可用的屬性類型，所以`ModelExpression`。 在下列影像中，我編輯`Register` 檢視中，所以`RegisterViewModel`可用。
 
 ![影像](intro/_static/intellemail.png)
 
@@ -169,7 +169,7 @@ IntelliSense 會列出的屬性和方法在頁面上的模型。 豐富的 Intel
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
 ```
 
-在 (`@`) 符號會告知 Razor 這是程式碼啟動。 下面兩個參數 ("FirstName"和"名字:") 是字串，因此[IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx)無法幫助。 最後的引數：
+在 (`@`) 符號會告知 Razor 這是程式碼啟動。 下面兩個參數 ("FirstName"和"名字:") 是字串，因此[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense)無法幫助。 最後的引數：
 
 ```html
 new {@class="caption"}
@@ -245,7 +245,7 @@ Visual Studio 編輯器顯示 C# 程式碼以灰色背景。 例如， `AntiForg
 
 * Web 伺服器控制項使用類型轉換器，將字串轉換成物件。 標記協助程式，您可以使用原生方式在 C# 中，因此您不需要進行類型轉換。
 
-* Web 伺服器控制項使用[System.ComponentModel](https://msdn.microsoft.com/library/system.componentmodel%28v=vs.110%29.aspx)來實作元件和控制項的 run-time 和設計階段行為。 `System.ComponentModel`包含基底類別和介面的實作屬性和型別轉換子、 繫結至資料來源，以及授權元件。 對比，以標記協助程式，通常衍生自`TagHelper`，而`TagHelper`基底類別會公開只有兩個方法，`Process`和`ProcessAsync`。
+* Web 伺服器控制項使用[System.ComponentModel](https://docs.microsoft.com/dotnet/api/system.componentmodel)來實作元件和控制項的 run-time 和設計階段行為。 `System.ComponentModel`包含基底類別和介面的實作屬性和型別轉換子、 繫結至資料來源，以及授權元件。 對比，以標記協助程式，通常衍生自`TagHelper`，而`TagHelper`基底類別會公開只有兩個方法，`Process`和`ProcessAsync`。
 
 ## <a name="customizing-the-tag-helper-element-font"></a>自訂標記協助程式項目字型
 

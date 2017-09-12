@@ -11,17 +11,17 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: 1b3cdc18ded89ebdf7b7afa9f43af9669748eff4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 33a4eca48a04f9b29c60a446f4191d39d21e7e7d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core 應用程式
 
 由[Tom Dykstra](https://github.com/tdykstra)
 
-當您不使用 IIS 裝載的 ASP.NET Core 應用程式，在 Windows 上的建議的方式是執行[Windows 服務](https://msdn.microsoft.com/library/d56de412)。 如此一來它可以自動啟動之後重新開機和損毀，而不需等待有人登入。
+當您不使用 IIS 裝載的 ASP.NET Core 應用程式，在 Windows 上的建議的方式是執行[Windows 服務](https://docs.microsoft.com/dotnet/framework/windows-services/introduction-to-windows-service-applications)。 如此一來它可以自動啟動之後重新開機和損毀，而不需等待有人登入。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/hosting/windows-service/sample)看到[接下來的步驟](#next-steps)> 一節，如需如何執行此程式碼的指示。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/11/2017
 
   使用 Visual Studio 中建立專案時**ASP.NET Core 應用程式 (.NET Framework)**範本。
 
-* 如果應用程式將取得要求從網際網路 （不只是從內部網路），則必須使用[WebListener](xref:fundamentals/servers/weblistener) web 伺服器而非[Kestrel](xref:fundamentals/servers/kestrel)。  Kestrel 必須搭配 IIS 邊緣部署。  如需詳細資訊，請參閱[何時使用反向 proxy Kestrel](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
+* 如果應用程式將取得要求從網際網路 （不只是從內部網路），則必須使用[WebListener](xref:fundamentals/servers/weblistener) web 伺服器而非[Kestrel](xref:fundamentals/servers/kestrel)。  Kestrel 必須搭配 IIS 邊緣部署。  如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
 
 ## <a name="getting-started"></a>使用者入門
 
@@ -121,5 +121,5 @@ ms.lasthandoff: 08/11/2017
 
 撰寫本文時的協助的已發行的來源。 最早和最有用的是這些內容：
 
-* [為 Windows 服務裝載的 ASP.NET Core](http://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074#37464074)
-* [如何在裝載您的 ASP.NET 核心 Windows 服務中](http://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)
+* [為 Windows 服務裝載的 ASP.NET Core](https://stackoverflow.com/questions/37346383/hosting-asp-net-core-as-windows-service/37464074)
+* [如何在裝載您的 ASP.NET 核心 Windows 服務中](https://dotnetthoughts.net/how-to-host-your-aspnet-core-in-a-windows-service/)

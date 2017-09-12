@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d2e76c472e67c26238abee4f7b0ed64cd043ab
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2c7929976f0c9f8284ab397b1a87d576bcdd15b0
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>使用 AngularJS 與 ASP.NET Core 單一網頁應用程式 (SPAs)
 
 
-由[Venkata Koppaka](http://blog.falafel.com/author/venkata-koppaka/)和[Scott Addie](https://scottaddie.com)
+由[Venkata Koppaka](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)和[Scott Addie](https://scottaddie.com)
 
 在本文中，您將學習如何建置使用 AngularJS SPA 樣式 ASP.NET 應用程式。
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="what-is-angularjs"></a>AngularJS 是什麼？
 
-[AngularJS](http://angularjs.org/)是現代化的 JavaScript 架構，將來自 Google 通常用於使用單一頁面應用程式 (SPAs)。 AngularJS 開啟來源 MIT 授權，並可以在之後的 AngularJS 開發進度[其 GitHub 儲存機制](https://github.com/angular/angular.js)。 稱為 Angular 文件庫，因為 HTML 使用角度形狀的方括號。
+[AngularJS](https://angularjs.org/)是現代化的 JavaScript 架構，將來自 Google 通常用於使用單一頁面應用程式 (SPAs)。 AngularJS 開啟來源 MIT 授權，並可以在之後的 AngularJS 開發進度[其 GitHub 儲存機制](https://github.com/angular/angular.js)。 稱為 Angular 文件庫，因為 HTML 使用角度形狀的方括號。
 
-AngularJS 不是 DOM 操作程式庫，例如 jQuery，但是它會使用稱為 jQLite jQuery 的子集。 AngularJS 主要根據您可以將它加入至 HTML 標記的宣告式 HTML 屬性。 您可以在瀏覽器中使用嘗試 AngularJS[程式碼學校網站](https://www.codeschool.com/courses/shaping-up-with-angular-js)或[W3Schools 網站](https://www.w3schools.com/angular/)。
+AngularJS 不是 DOM 操作程式庫，例如 jQuery，但是它會使用稱為 jQLite jQuery 的子集。 AngularJS 主要根據您可以將它加入至 HTML 標記的宣告式 HTML 屬性。 您可以在瀏覽器中使用嘗試 AngularJS[程式碼學校網站](https://www.codeschool.com/courses/shaping-up-with-angularjs)或[W3Schools 網站](https://www.w3schools.com/angular/)。
 
 本文將重點放在 AngularJS Angular 標題的其中一些注意事項。
 
@@ -393,4 +393,4 @@ AngularJS 有內建路由提供者來處理 SPA （單一頁面應用程式）�
 
 * [角度的文件](https://docs.angularjs.org)
 
-* [角度 2 的資訊](http://angular.io)
+* [角度 2 的資訊](https://angular.io/)

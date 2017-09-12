@@ -11,15 +11,15 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: 6baeb472770daf1d54b2d9ea894fc710f4f40780
-ms.sourcegitcommit: 4693cb02d845adf2efa00e07ad432c81867bfa12
+ms.openlocfilehash: b96a70a2446cab7b1af9bd689469584868980595
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="filters"></a>篩選條件
 
-由[Tom Dykstra](https://github.com/tdykstra/)和[Steve Smith](http://ardalis.com)
+由[Tom Dykstra](https://github.com/tdykstra/)和[Steve Smith](https://ardalis.com/)
 
 *篩選*中 ASP.NET Core MVC 可讓您執行程式碼之前或之後的要求處理管線中的特定階段。
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 09/08/2017
 
 ### <a name="default-order-of-execution"></a>預設的執行順序
 
-當管線的特定階段如有多個篩選條件時，範圍會決定執行篩選條件的預設順序。  全域篩選括住類別篩選，又圍繞方法篩選器。 這有時候稱為"俄文布偶 「 巢狀結構，因為每次加大範圍圍繞前一個範圍，例如[巢狀布偶](https://en.wikipedia.org/wiki/Matryoshka_doll)。 您通常不必明確地判斷順序取得想要覆寫的行為。
+當管線的特定階段如有多個篩選條件時，範圍會決定執行篩選條件的預設順序。  全域篩選括住類別篩選，又圍繞方法篩選器。 這有時候稱為"俄文布偶 「 巢狀結構，因為每次加大範圍圍繞前一個範圍，例如[巢狀布偶](https://wikipedia.org/wiki/Matryoshka_doll)。 您通常不必明確地判斷順序取得想要覆寫的行為。
 
 因為這個巢狀結構、*之後*的篩選條件的程式碼會執行相反的順序*之前*程式碼。 順序看起來像這樣：
 

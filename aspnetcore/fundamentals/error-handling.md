@@ -12,15 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/error-handling
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5898892c63e978adfabf9939394fef4ea1848d49
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 96a4fed19887a7a9eba08ec70296147f22e41569
+ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="introduction-to-error-handling-in-aspnet-core"></a>Introduction to ASP.NET Core 中的錯誤處理
 
-由[Steve Smith](http://ardalis.com)和[Tom Dykstra](https://github.com/tdykstra/)
+由[Steve Smith](https://ardalis.com/)和[Tom Dykstra](https://github.com/tdykstra/)
 
 本文涵蓋常見 appoaches 處理 ASP.NET Core 應用程式中的錯誤。
 
@@ -45,7 +45,7 @@ Put`UseDeveloperExceptionPage`之前您要攔截例外狀況中，例如任何�
 
 ![查詢字串參數](error-handling/_static/developer-exception-page-query.png)
 
-此要求沒有任何 cookie，但如果有，它們會出現在上**Cookie**  索引標籤。 您可以看到最後一個索引標籤中所傳遞的標頭。
+此要求沒有任何 cookie，但如果有，它們會出現在上**Cookie**  索引標籤。您可以看到最後一個索引標籤中所傳遞的標頭。
 
 ![標頭](error-handling/_static/developer-exception-page-headers.png)
 
@@ -111,13 +111,13 @@ if (statusCodePagesFeature != null)
 
 ## <a name="server-exception-handling"></a>伺服器例外狀況處理
 
-除了例外狀況處理應用程式中的邏輯[伺服器](servers/index.md)裝載您的應用程式將會執行一些例外狀況處理。 如果之前已傳送標頭傳送 500 內部伺服器錯誤回應，且沒有主體伺服器會攔截例外狀況。 如果傳送的標頭後，它會攔截例外狀況，就會關閉連線。 不會處理您的應用程式的要求將由伺服器和伺服器的例外狀況處理，就會發生任何例外狀況處理。 任何自訂錯誤網頁或例外狀況處理中介軟體或您已設定您的應用程式的篩選器不會影響這個行為。
+除了例外狀況處理應用程式中的邏輯[伺服器](servers/index.md)裝載您的應用程式會執行一些例外狀況處理。 如果標頭傳送之前，伺服器會攔截例外狀況，伺服器會傳送 500 內部伺服器錯誤回應，且沒有主體。 如果傳送的標頭後，伺服器會攔截例外狀況，伺服器就會關閉連接。 不由您的應用程式的要求是由伺服器處理。 任何發生的例外狀況由伺服器的例外狀況處理。 任何設定自訂錯誤網頁，或例外狀況處理中介軟體或篩選器不會影響這個行為。
 
 ## <a name="startup-exception-handling"></a>啟動例外狀況處理
 
-只裝載層可以處理應用程式啟動期間發生的例外狀況。 應用程式啟動期間發生例外狀況可能會影響伺服器的行為。 例如，如果發生例外狀況，才能呼叫`KestrelServerOptions.UseHttps`，裝載層攔截例外狀況，可啟動伺服器，並且顯示錯誤頁面上的非 SSL 連接埠。 如果發生例外狀況，執行該行之後，則改為透過 HTTPS 提供錯誤網頁。
+只裝載層可以處理應用程式啟動期間發生的例外狀況。 您可以[設定主應用程式的運作方式的錯誤回應在啟動期間](hosting.md#detailed-errors)使用`captureStartupErrors`和`detailedErrors`索引鍵。
 
-您可以[設定主機的行為方式以回應錯誤在啟動期間](hosting.md#configuring-a-host)使用`CaptureStartupErrors`和`detailedErrors`索引鍵。
+裝載可以只會顯示錯誤頁面擷取的啟動錯誤，如果主機位址/連接埠繫結之後，就會發生錯誤。 如果任何繫結失敗，因為任何原因，裝載層記錄重大例外狀況 dotnet 處理序損毀，並不顯示任何錯誤頁面。
 
 ## <a name="aspnet-mvc-error-handling"></a>ASP.NET MVC 的錯誤處理
 

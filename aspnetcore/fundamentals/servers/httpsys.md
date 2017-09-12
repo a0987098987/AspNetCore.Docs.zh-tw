@@ -11,15 +11,15 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: cff6f171432febac5ec3e7adf9cf77953e0ece2d
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 5ffe6b5d55d88cbcfa62dfacf1e6e896f1304e39
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
-由[Tom Dykstra](http://github.com/tdykstra)和[Chris Ross](https://github.com/Tratcher)
+由[Tom Dykstra](https://github.com/tdykstra)和[Chris Ross](https://github.com/Tratcher)
 
 > [!NOTE]
 > 本主題只適用於 ASP.NET Core 2.0 和更新版本。 在舊版的 ASP.NET Core，HTTP.sys 會命名為[WebListener](xref:fundamentals/servers/weblistener)。
@@ -52,7 +52,7 @@ HTTP.sys 可用於部署您要公開，直接向網際網路伺服器而不使�
 
 當您需要的功能不適用於 Kestrel，例如 Windows 驗證時，HTTP.sys 會是內部部署的理想選擇。
 
-![HTTP.sys 會直接與您的內部網路進行通訊](httpsys/_static/httpsys-to-internal.png)
+![HTTP.sys 直接與內部網路通訊](httpsys/_static/httpsys-to-internal.png)
 
 ## <a name="how-to-use-httpsys"></a>如何使用 HTTP.sys
 
@@ -161,14 +161,14 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 以下是參考文件*netsh.exe*:
 
-* [Netsh 命令都會使用超文字傳輸通訊協定 (HTTP)](http://technet.microsoft.com/library/cc725882.aspx)
+* [Netsh 命令都會使用超文字傳輸通訊協定 (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
 * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 下列資源提供數種案例的詳細的指示。 指 HttpListener 的發行項同樣適用於 HTTP.sys，同時根據 Http.Sys。
 
-* [如何： 使用 SSL 憑證設定連接埠](http://msdn.microsoft.com/library/ms733791.aspx)
+* [如何： 使用 SSL 憑證設定連接埠](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
 * [HTTPS 通訊-HttpListener 基礎代管與用戶端憑證](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html)這是協力廠商架構部落格和相當老舊，但仍有有用的資訊。
-* [如何： 逐步解說使用 HttpListener 或 Http 伺服器 unmanaged 程式碼 （c + +） 做為 SSL 簡單伺服器](http://blogs.msdn.com/b/jpsanders/archive/2009/09/29/walkthrough-using-httplistener-as-an-ssl-simple-server.aspx)這也是較舊的部落格包含有用資訊。
+* [如何： 逐步解說使用 HttpListener 或 Http 伺服器 unmanaged 程式碼 （c + +） 做為 SSL 簡單伺服器](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/)這也是較舊的部落格包含有用資訊。
 
 以下是一些協力廠商工具可以更輕鬆地使用比*netsh.exe*命令列。 這些不是所提供，或經由 Microsoft 背書。 這些工具執行系統管理員身分根據預設，由於*netsh.exe*本身需要系統管理員權限。
 
@@ -181,6 +181,6 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={000000
 
 如需詳細資訊，請參閱下列資源：
 
-* [這篇文章的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/HttpSys/sample)
+* [這篇文章的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
 * [HTTP.sys 原始程式碼](https://github.com/aspnet/HttpSysServer/)
 * [裝載](xref:fundamentals/hosting)

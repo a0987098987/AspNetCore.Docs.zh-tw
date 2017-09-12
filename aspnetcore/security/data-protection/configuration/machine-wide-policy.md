@@ -2,7 +2,7 @@
 title: "寬型電腦的原則"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 513726e209401d158ac98d5874942765751ac07d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 7ada940acfbb7fb0887fd7c0cd722bf62f211248
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="machine-wide-policy"></a>寬型電腦的原則
 
@@ -77,4 +77,4 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設全機
 如果 EncryptionType 有任何其他值 （null 或空白），資料保護系統會在啟動時擲回例外狀況。
 
 >[!WARNING]
-> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用於應用程式。 在實務上，這表示，若為桌面 CLR 上執行的應用程式，其中包含這些類型的組件應該是 Gac 中。 ASP.NET Core 應用程式上執行[.NET Core](https://microsoft.com/net/core)，應安裝包含這些類型的套件。
+> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用於應用程式。 在實務上，這表示，若為桌面 CLR 上執行的應用程式，其中包含這些類型的組件應該是 Gac 中。 ASP.NET Core 應用程式上執行[.NET Core](https://www.microsoft.com/net/core)，應安裝包含這些類型的套件。

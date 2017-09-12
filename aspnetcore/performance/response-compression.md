@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: b79d86358a8f1552118fac508c4cc02cf674f169
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 5705e9f879af4be3fe338716a4310bf9f0530039
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -169,7 +169,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 ![顯示具有 Accept-encoding 標頭之要求的結果而值為 mycustomcompression fiddler 視窗。 Vary 和內容編碼標頭會新增至回應。](response-compression/_static/request-custom-compression.png)
 
 ## <a name="compression-with-secure-protocol"></a>使用安全通訊協定的壓縮
-透過安全的連線壓縮的回應可以控制與`EnableForHttps`選項，預設會停用。 使用動態產生的頁面壓縮可能會導致安全性問題例如[CRIME](https://en.wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://en.wikipedia.org/wiki/BREACH_(security_exploit))攻擊。
+透過安全的連線壓縮的回應可以控制與`EnableForHttps`選項，預設會停用。 使用動態產生的頁面壓縮可能會導致安全性問題例如[CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://wikipedia.org/wiki/BREACH_(security_exploit))攻擊。
 
 ## <a name="adding-the-vary-header"></a>加入 Vary 標頭
 當壓縮回應基礎`Accept-Encoding`標頭，但是會有潛在的多個壓縮的版本回應和未壓縮的版本。 若要指示用戶端和 proxy 快取多個版本存在，而且應該儲存`Vary`標頭加入使用`Accept-Encoding`值。 在 ASP.NET Core 1.x 加入`Vary`標頭至回應以手動方式完成。 在 ASP.NET Core 2.x 中, 介軟體新增`Vary`標頭壓縮回應時，自動。

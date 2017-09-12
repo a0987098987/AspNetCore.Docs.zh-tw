@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99fbe0e02be27a0fbbb7ff65bc15713aab58c003
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 5d8ca35b0e2e4b6e9b1ec745a3a7cf7c3983c461
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-fundamentals-overview"></a>ASP.NET Core 基本概念的概觀
 
@@ -101,7 +101,7 @@ ASP.NET Core 隨附一組豐富的內建中介軟體：
 
 ## <a name="servers"></a>伺服器
 
-裝載模型的 ASP.NET Core 不會直接接聽要求；相反地，它依賴 HTTP 伺服器實作將要求轉送至應用程式。 轉送的要求會包裝成一組您可以透過介面存取的功能物件。 應用程式會將此設定撰寫成 `HttpContext`。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產網頁伺服器 (例如 [IIS](https://iis.net) 或 [nginx](http://nginx.org)) 背後執行。
+裝載模型的 ASP.NET Core 不會直接接聽要求；相反地，它依賴 HTTP 伺服器實作將要求轉送至應用程式。 轉送的要求會包裝成一組您可以透過介面存取的功能物件。 應用程式會將此設定撰寫成 `HttpContext`。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產網頁伺服器 (例如 [IIS](https://www.iis.net/) 或 [nginx](http://nginx.org)) 背後執行。
 
 如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)和[裝載](xref:fundamentals/hosting)。
 

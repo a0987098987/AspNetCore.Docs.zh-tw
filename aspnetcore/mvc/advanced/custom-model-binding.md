@@ -11,15 +11,15 @@ ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 8dae9cf1597ae2bddf2943af4a7ab9d50620825b
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 2b95073bc0972908d0c0b2158a036e4374c7df4d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="custom-model-binding"></a>自訂的模型繫結
 
-由[Steve Smith](http://ardalis.com)
+由[Steve Smith](https://ardalis.com/)
 
 模型繫結可讓模型類型 （傳入當做方法引數），而不是 HTTP 要求比直接使用非同步控制器動作。 模型繫結器會處理內送要求資料和應用程式模型之間的對應。 開發人員可以實作自訂的模型繫結器 （雖然一般而言，您不需要撰寫您自己的提供者），以擴充的內建的模型繫結功能。
 
@@ -137,4 +137,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 自訂模型繫結器：
 - 不應嘗試設定狀態碼，或傳回的結果 （例如，404 找不到）。 如果模型繫結失敗，[動作篩選條件](xref:mvc/controllers/filters)或邏輯在動作方法本身內應該處理失敗。
 - 是最適用於不重複的程式碼和跨領域考量的動作方法。
-- 通常不應將字串轉換成自訂型別， [ `TypeConverter` ](https://msdn.microsoft.com/library/ayybcxe5.aspx)通常是較好的選擇。
+- 通常不應將字串轉換成自訂型別， [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter)通常是較好的選擇。

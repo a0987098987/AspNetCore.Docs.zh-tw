@@ -1,229 +1,522 @@
 ---
-title: "裝載於 ASP.NET Core |Microsoft 文件"
-author: ardalis
-description: "在 ASP.NET Core web 主機簡介。"
-keywords: "ASP.NET Core web 主機，IWebHost"
+title: "在 ASP.NET Core 中裝載"
+author: guardrex
+description: "深入了解 ASP.NET Core，負責啟動與存留期管理的應用程式中的 web 主機。"
+keywords: "ASP.NET Core web 主機 IWebHost、 WebHostBuilder、 IHostingEnvironment、 IApplicationLifetime"
 ms.author: riande
 manager: wpickett
-ms.date: 08/02/2017
+ms.date: 09/10/2017
 ms.topic: article
 ms.assetid: 4e45311d-8d56-46e2-b99d-6f65b648a277
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0725f3d2c130068094792e5ba9e17481155e4294
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: a1a789ff1bc6b3e3af99419e7d74d3fb46bb2345
+ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
-# <a name="introduction-to-hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載的簡介
+# <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
-由[Steve Smith](http://ardalis.com)
+由[Luke Latham](https://github.com/guardrex)
 
-若要執行 ASP.NET Core 應用程式，您必須設定並啟動使用主機`WebHostBuilder`。
-
-## <a name="what-is-a-host"></a>什麼是主應用程式？
-
-ASP.NET Core 應用程式需要*主機*要在其中執行。 主機必須實作`IWebHost`介面，以便公開的功能和服務的集合，而`Start`方法。 主機通常會建立使用的執行個體`WebHostBuilder`，會建立並傳回`WebHost`執行個體。 `WebHost`參照的伺服器將會處理要求。 深入了解[伺服器](servers/index.md)。
-
-### <a name="what-is-the-difference-between-a-host-and-a-server"></a>在主機與伺服器之間的差異為何？
-
-負責應用程式啟動和生命週期管理的主機。 伺服器是負責接受 HTTP 要求。 主機負責的部分包括確保應用程式的服務和伺服器可供使用且已正確設定。 您可以將主機視為伺服器的包裝函式。 主機已設定為使用特定的伺服器。伺服器不會知道其主機。
+ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程式啟動和存留期管理。 至少一部伺服器和要求處理管線，會設定主應用程式。
 
 ## <a name="setting-up-a-host"></a>設定主機
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-建立使用的執行個體的主機`WebHostBuilder`。 這通常是在您的應用程式進入點： `public static void Main` (在專案範本位於*Program.cs*檔案)。 一般*Program.cs*，所示，將示範如何使用`WebHostBuilder`建置主應用程式。
-
-[!code-csharp[Main](../common/samples/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
-
-`WebHostBuilder`負責建立主機將啟動載入應用程式伺服器。 `WebHostBuilder`需要您提供伺服器實作`IServer`(`UseKestrel`上述程式碼中)。 `UseKestrel`指定應用程式會使用 Kestrel 伺服器。
-
-伺服器的*內容的根*決定搜尋內容的檔案，就像 MVC 檢視檔案。 預設內容的根是從中執行應用程式的資料夾。
-
-> [!NOTE]
-> 指定`Directory.GetCurrentDirectory`為內容的根會用於 web 專案的根資料夾為應用程式的內容的根應用程式啟動時從這個資料夾 (例如，呼叫`dotnet run`web 專案資料夾中)。 這是使用 Visual Studio 中的預設值和`dotnet new`範本。
-
-若要使用 IIS 做為反向 proxy，呼叫`UseIISIntegration`建置主應用程式的一部分。 
-
-請注意，`UseIISIntegration`不設定*伺服器*、 like`UseKestrel`沒有。 若要使用 IIS 與 ASP.NET Core，您必須同時指定`UseKestrel`和`UseIISIntegration`。 `UseKestrel`建立網頁伺服器及裝載應用程式。 `UseIISIntegration`檢查 IIS/iis Express 所使用的環境變數，並設定要接聽的連接埠等要使用的標頭的設定。
-
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-建立使用的執行個體的主機`WebHostBuilder`。 這通常是在您的應用程式進入點： `public static void Main` (在專案範本位於*Program.cs*檔案)。 一般*Program.cs*，如下所示，呼叫`CreateDefaultbuilder`建置主應用程式：
+建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。 這通常在您的應用程式進入點，執行`Main`方法。 在專案範本中，`Main`位於*Program.cs*。 一般*Program.cs*呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)啟動主機的設定：
 
-[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]
+[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main)]
 
-`CreateDefaultbuilder`建立的執行個體`WebHostBuilder`建置 bootstraps 應用程式伺服器的主機。 主應用程式需要[伺服器實作 IServer](servers/index.md)。 內建的伺服器是[Kestrel](servers/kestrel.md)和[HTTP.sys](servers/httpsys.md);`CreateDefaultbuilder`預設都會使用 Kestrel。
+`CreateDefaultBuilder`會執行下列工作：
 
-`CreateDefaultbuilder`會執行除了與網頁伺服器設定 Kestrel 安裝工作：
+* 設定[Kestrel](servers/kestrel.md)做為 web 伺服器。
+* 若要設定內容的根[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。
+* 從負載選擇性設定：
+  * *appsettings.json*。
+  * *appsettings。{環境}.json*。
+  * [使用者密碼](xref:security/app-secrets)的應用程式執行時`Development`環境。
+  * 環境變數。
+  * 命令列引數。
+* 設定[記錄](xref:fundamentals/logging)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。
+* IIS 背景執行，可讓 IIS 整合所設定的基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 Kestrel 與 IIS 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。
 
-* 若要設定內容的根`Directory.GetCurrentDirectory`。
-* 載入組態：
-  * *appsettings.json*
-  * *appsettings。\<EnvironmentName >.json*。
-  * 在開發環境中執行的應用程式時的使用者密碼
-  * 環境變數
-  * 提供的命令列引數
-* 使用篩選的記錄組態區段中指定的規則來設定主控台和偵錯輸出的記錄。
-* 可讓 IIS 整合。
-* 在開發環境中執行的應用程式時，請新增 [開發人員的例外狀況] 頁面。
+*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。 這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 
-伺服器的*內容的根*決定搜尋內容的檔案，就像 MVC 檢視檔案。 預設內容的根是從中執行應用程式的資料夾。
+請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration)如需有關應用程式組態。
 
 > [!NOTE]
-> 指定`Directory.GetCurrentDirectory`為內容的根會用於 web 專案的根資料夾為應用程式的內容的根應用程式啟動時從這個資料夾 (例如，呼叫`dotnet run`web 專案資料夾中)。 這是使用 Visual Studio 中的預設值和`dotnet new`範本。
+> 做為使用靜態替代`CreateDefaultBuilder`方法，建立從主機[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)是支援的方法與 ASP.NET Core 2.x。 請參閱 ASP.NET Core 1.x 索引標籤的詳細資訊。
 
-當您使用 IIS 的反向 proxy 時，ASP.NET Core 自動呼叫`UseIISIntegration`建置主應用程式的一部分。 如需詳細資訊，請參閱[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-請注意，`UseIISIntegration`不設定*伺服器*、 like`UseKestrel`沒有。 `UseKestrel`建立網頁伺服器及裝載應用程式。 `UseIISIntegration`檢查 IIS/iis Express 所使用的環境變數，並設定要接聽的連接埠等要使用的標頭的設定。
+建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。 這通常在您的應用程式進入點，執行`Main`方法。 在專案範本中，`Main`位於*Program.cs*。 下列*Program.cs*示範如何使用`WebHostBuilder`建置主應用程式：
 
----
+[!code-csharp[Main](../common/samples/WebApplication1/Program.cs)]
 
-設定主機 （和 ASP.NET Core 應用程式） 的最簡單的實作會包含只伺服器和應用程式的要求管線的組態：
+`WebHostBuilder`需要[伺服器實作 IServer](servers/index.md)。 內建的伺服器是[Kestrel](servers/kestrel.md)和[HTTP.sys](servers/httpsys.md) (ASP.NET Core 2.0 版本中之前, 已呼叫 HTTP.sys [WebListener](xref:fundamentals/servers/weblistener))。 在此範例中， [UseKestrel 擴充方法](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)指定 Kestrel 伺服器。
+
+*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容根提供給`UseContentRoot`是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory?view=netcore-1.1)。 這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
+
+若要使用 IIS 做為反向 proxy，呼叫[UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions)建置主應用程式的一部分。 `UseIISIntegration`未設定*伺服器*、 like [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)沒有。 `UseIISIntegration`設定基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)建立 Kestrel 與 IIS 之間的反向 proxy。 若要使用 IIS 與 ASP.NET Core，您必須同時指定`UseKestrel`和`UseIISIntegration`。 `UseIISIntegration`只會啟動執行 IIS 或 IIS Express 後面時。 如需詳細資訊，請參閱[簡介 ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)和[ASP.NET 核心模組的組態參考](xref:hosting/aspnet-core-module)。
+
+最簡單的實作，以設定主應用程式 （和 ASP.NET Core 應用程式） 包含指定伺服器和應用程式的要求管線的組態：
 
 ```csharp
 var host = new WebHostBuilder()
     .UseKestrel()
     .Configure(app =>
     {
-        app.Run(async (context) => await context.Response.WriteAsync("Hi!"));
+        app.Run(context => context.Response.WriteAsync("Hello World!"));
     })
     .Build();
 
 host.Run();
 ```
 
-> [!NOTE]
-> 當設定主機，您可以提供`Configure`和`ConfigureServices`方法，而不是，或除了指定`Startup`類別 (其中也必須定義這些方法中-請參閱[應用程式啟動](startup.md))。 多個呼叫`ConfigureServices`會將附加至另一個，則為呼叫`Configure`或`UseStartup`將會取代先前的設定。
+---
 
-## <a name="configuring-a-host"></a>主控件設定
+當設定主機，您可以提供[設定](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure?view=aspnetcore-1.1)和[ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices?view=aspnetcore-1.1)方法。 如果您指定`Startup`類別，則必須定義`Configure`方法。 如需詳細資訊，請參閱[中 ASP.NET Core 應用程式啟動](startup.md)。 多個呼叫`ConfigureServices`附加至另一個。 多個呼叫`Configure`或`UseStartup`上`WebHostBuilder`取代先前的設定。
 
-`WebHostBuilder`提供方法來設定大部分可用的設定值，這也可以設定直接使用主機`UseSetting`和相關聯的金鑰。
+## <a name="host-configuration-values"></a>主機組態值
 
-### <a name="host-configuration-values"></a>主機組態值
+[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)提供方法來設定大部分可用的設定值，主機也可以直接與設定[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting)和相關聯的金鑰。 設定的值時`UseSetting`，此值設定為字串 （以引號括住），不論類型為何。
 
-**擷取啟動錯誤**`bool`
+### <a name="capture-startup-errors"></a>擷取啟動錯誤
 
-索引鍵： `captureStartupErrors`。 預設值為 `false`。 當`false`，啟動導致主機結束期間發生的錯誤。 當`true`，主機會擷取任何例外狀況，從`Startup`類別，並嘗試啟動伺服器。 它會顯示錯誤頁面 （泛型，或詳細，根據詳細的錯誤設定下, 面） 為每個要求。 使用設定`CaptureStartupErrors`方法。
+此設定會控制擷取的啟動錯誤。
 
-注意： 您的應用程式執行時的 Kestrel 和 IIS，預設行為是以擷取啟動錯誤。 
+**索引鍵**: captureStartupErrors  
+**型別**: *bool* (`true`或`1`)  
+**預設**： 預設為`false`Kestrel 背後 IIS，其中預設值是以執行應用程式除非`true`。  
+**使用設定**:`CaptureStartupErrors`
+
+當`false`，啟動導致主機結束期間發生的錯誤。 當`true`，主應用程式在啟動期間擷取例外狀況，並嘗試啟動伺服器。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 ```csharp
-new WebHostBuilder()
+WebHost.CreateDefaultBuilder(args)
     .CaptureStartupErrors(true)
-   ```
+    ...
+```
 
-**內容根**`string`
-
-索引鍵： `contentRoot`。 預設應用程式組件 （適用於 Kestrel; 所在的資料夾IIS 預設會使用 web 專案根目錄）。 此設定可決定 ASP.NET Core 會開始搜尋的內容檔案，例如 MVC 檢視。 也做為基底路徑[Web 根目錄設定](#web-root-setting)。 使用設定`UseContentRoot`方法。 路徑必須存在，或主機將無法啟動。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .CaptureStartupErrors(true)
+    ...
+```
+
+---
+
+### <a name="content-root"></a>內容的根
+
+此設定可決定 ASP.NET Core 開始搜尋的內容檔案，例如 MVC 檢視的位置。 
+
+**索引鍵**: contentRoot  
+**型別**:*字串*  
+**預設**： 預設為應用程式組件所在的資料夾。  
+**使用設定**:`UseContentRoot`
+
+內容的根也作為基底路徑[Web 根目錄下設定](#web-root)。 如果路徑不存在，就無法啟動主機。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\mywebsite")
-   ```
-
-**詳細錯誤**`bool`
-
-索引鍵： `detailedErrors`。 預設值為 `false`。 當`true`（或當環境設定為 「 開發 」），應用程式會顯示啟動例外狀況，而不是一般錯誤網頁的詳細資料。 使用設定`UseSetting`。
-
-```csharp
-new WebHostBuilder()
-    .UseSetting("detailedErrors", "true")
+    ...
 ```
 
-當設定詳細的錯誤為`false`擷取啟動錯誤，且`true`，以伺服器的每個要求的回應會顯示一般錯誤頁面。
-
-![一般錯誤頁面](hosting/_static/generic-error-page.png)
-
-當設定詳細的錯誤為`true`擷取啟動錯誤，且`true`，以伺服器的每個要求的回應會顯示詳細的錯誤頁面。
-
-![詳細的錯誤頁面](hosting/_static/detailed-error-page.png)
-
-**環境**`string`
-
-索引鍵： `environment`。 預設為 「 生產 」。 可能會設定為任何值。 架構定義的值包括 「 開發 」、 「 預備 」 及 「 生產 」。 值不區分大小寫。 請參閱[使用多個環境](environments.md)。 使用設定`UseEnvironment`方法。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseContentRoot("c:\\mywebsite")
+    ...
+```
+
+---
+
+### <a name="detailed-errors"></a>詳細的錯誤
+
+判斷詳細的錯誤應該擷取。
+
+**索引鍵**: detailedErrors  
+**型別**: *bool* (`true`或`1`)  
+**預設**: false  
+**使用設定**:`UseSetting`
+
+當啟用 (或當<a href="#environment">環境</a>設`Development`)，應用程式會擷取詳細例外狀況。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+```csharp
+var host = new WebHostBuilder()
+    .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+    ...
+```
+
+---
+
+### <a name="environment"></a>環境
+
+設定應用程式的環境。
+
+**索引鍵**： 環境  
+**型別**:*字串*  
+**預設**： 生產環境  
+**使用設定**:`UseEnvironment`
+
+您可以設定*環境*為任何值。 架構定義的值包括`Development`， `Staging`，和`Production`。 值不區分大小寫。 根據預設，*環境*讀取從`ASPNETCORE_ENVIRONMENT`環境變數。 當使用[Visual Studio](https://www.visualstudio.com/)，可能會設定環境變數*launchSettings.json*檔案。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseEnvironment("Development")
+    ...
 ```
 
-> [!NOTE]
-> 根據預設，環境會從讀取`ASPNETCORE_ENVIRONMENT`環境變數。 當使用 Visual Studio，可能會設定環境變數*launchSettings.json*檔案。
-
-<a id="server-urls"></a>
-
-**伺服器 Url**`string`
-
-索引鍵： `urls`。 設定為分號 （;） 分隔清單的 URL 前置詞應該回應伺服器。 例如，`http://localhost:123`。 網域/主機名稱可以取代"\*"，表示伺服器應接聽任何 IP 位址的要求，或裝載使用指定的連接埠和通訊協定 (例如，`http://*:5000`或`https://*:5001`)。 通訊協定 (`http://`或`https://`) 必須包含以每個 URL。 前置詞解譯所設定的伺服器。支援的格式而異的伺服器之間。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseEnvironment("Development")
+    ...
+```
+
+---
+
+### <a name="hosting-startup-assemblies"></a>裝載啟動的組件
+
+設定應用程式的裝載啟動組件。
+
+**索引鍵**: hostingStartupAssemblies  
+**型別**:*字串*  
+**預設**： 空字串  
+**使用設定**:`UseSetting`
+
+裝載啟動在啟動時載入的組件的字串，以分號分隔。 這項功能的新 ASP.NET Core 2.0。
+
+雖然組態值會預設為空字串，則裝載的啟動組件永遠會包含應用程式的組件。 當您提供裝載啟動組件時，這些被加入至應用程式的組件載入應用程式在啟動時建置其常見的服務時。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+這項功能已無法在 ASP.NET Core 1.x。
+
+---
+
+### <a name="prefer-hosting-urls"></a>偏好裝載 Url
+
+表示主機是否應接聽設定的 Url`WebHostBuilder`而不是與`IServer`實作。
+
+**索引鍵**: preferHostingUrls  
+**型別**: *bool* (`true`或`1`)  
+**預設**: true  
+**使用設定**:`PreferHostingUrls`
+
+這項功能的新 ASP.NET Core 2.0。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .PreferHostingUrls(false)
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+這項功能已無法在 ASP.NET Core 1.x。
+
+---
+
+### <a name="prevent-hosting-startup"></a>防止裝載啟動
+
+可防止自動載入裝載啟動的組件，包括應用程式的組件。
+
+**索引鍵**: preventHostingStartup  
+**型別**: *bool* (`true`或`1`)  
+**預設**: false  
+**使用設定**:`UseSetting`
+
+這項功能的新 ASP.NET Core 2.0。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+這項功能已無法在 ASP.NET Core 1.x。
+
+---
+
+### <a name="server-urls"></a>伺服器 Url
+
+表示 IP 位址或連接埠和通訊協定，伺服器應該接聽之要求的主機位址。
+
+**索引鍵**: url  
+**型別**:*字串*  
+**預設**: http://localhost:5000/  
+**使用設定**:`UseUrls`
+
+設定為以分號分隔 （;） 應該回應伺服器的前置詞的 URL 清單。 例如，`http://localhost:123`。 使用 「\*"，表示伺服器應接聽任何 IP 位址或主機名稱使用指定的連接埠和通訊協定上的要求 (例如， `http://*:5000`)。 通訊協定 (`http://`或`https://`) 必須包含以每個 URL。 伺服器之間的不支援的格式。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
+    ...
 ```
 
-在 ASP.NET Core 2.0 中，Kestrel 有它自己的端點設定應用程式開發介面，而且不支援`https://`中`urls`字串。 如需詳細資訊，請參閱[簡介 Kestrel](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration)。
+Kestrel 有它自己的端點設定應用程式開發介面。 如需詳細資訊，請參閱[在 ASP.NET Core 中實作 Kestrel 網頁伺服器](xref:fundamentals/servers/kestrel?tabs=aspnetcore2x#endpoint-configuration)。
 
-**啟動組件**`string`
-
-索引鍵： `startupAssembly`。 決定要搜尋的組件`Startup`類別。 使用設定`UseStartup`方法。 可能會改為參照特定的型別使用`WebHostBuilder.UseStartup<StartupType>`。 若為多個`UseStartup`呼叫的方法，最後一個的優先順序。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
+    ...
+```
+
+---
+
+### <a name="shutdown-timeout"></a>關閉逾時
+
+指定 web 主機關閉的時間量。
+
+**索引鍵**: shutdownTimeoutSeconds  
+**型別**: *int*  
+**預設**: 5  
+**使用設定**:`UseShutdownTimeout`
+
+雖然索引鍵接受*int*與`UseSetting`(例如， `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`)、`UseShutdownTimeout`擴充方法會採用`TimeSpan`。 這項功能的新 ASP.NET Core 2.0。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseShutdownTimeout(TimeSpan.FromSeconds(10))
+    ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+這項功能已無法在 ASP.NET Core 1.x。
+
+---
+
+### <a name="startup-assembly"></a>啟動組件
+
+決定要搜尋的組件`Startup`類別。
+
+**索引鍵**: startupAssembly  
+**型別**:*字串*  
+**預設**： 應用程式的組件  
+**使用設定**:`UseStartup`
+
+您可以依名稱參考組件 (`string`) 或型別 (`TStartup`)。 若為多個`UseStartup`呼叫的方法，最後一個的優先順序。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseStartup("StartupAssemblyName")
+    ...
 ```
 
-<a name=web-root-setting></a>
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseStartup<TStartup>()
+    ...
+```
 
-**Web 根目錄**`string`
-
-索引鍵： `webroot`。 如果未指定預設值是`(Content Root Path)\wwwroot`，如果它存在。 如果此路徑不存在，則會使用任何作業檔案提供者。 使用設定`UseWebRoot`。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-new WebHostBuilder()
+var host = new WebHostBuilder()
+    .UseStartup("StartupAssemblyName")
+    ...
+```
+
+```csharp
+var host = new WebHostBuilder()
+    .UseStartup<TStartup>()
+    ...
+```
+
+---
+
+### <a name="web-root"></a>Web 根目錄
+
+設定應用程式的靜態資產的相對路徑。
+
+**索引鍵**: webroot  
+**型別**:*字串*  
+**預設**： 如果未指定，預設值是"(Content Root)/wwwroot"，則該路徑存在。 如果路徑不存在，則會使用任何作業檔案提供者。  
+**使用設定**:`UseWebRoot`
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
+    ...
 ```
 
-### <a name="overriding-configuration"></a>覆寫設定
-
-使用[組態](configuration.md)設定主應用程式所使用的組態值。 這些值可能會隨後覆寫。 這指定使用`UseConfiguration`。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ```csharp
-public static void Main(string[] args)
+var host = new WebHostBuilder()
+    .UseWebRoot("public")
+    ...
+```
+
+---
+
+## <a name="overriding-configuration"></a>覆寫設定
+
+使用[組態](configuration.md)設定主控件。 在下列範例中，主機設定 （選擇性） 指定於*hosting.json*檔案。 從載入任何組態*hosting.json*命令列引數可能會覆寫檔案。 內建的設定 (在`config`) 用來設定與主機`UseConfiguration`。
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+*hosting.json*:
+
+```json
 {
-    var config = new ConfigurationBuilder()
-        .AddJsonFile("hosting.json", optional: true)
-        .AddCommandLine(args)
-        .Build();
-
-    var host = new WebHostBuilder()
-        .UseConfiguration(config)
-        .UseKestrel()
-        .Configure(app =>
-        {
-            app.Run(async (context) => await context.Response.WriteAsync("Hi!"));
-        })
-        .Build();
-
-    host.Run();
+    urls: "http://*:5005"
 }
 ```
 
-在上述範例中，命令列引數可能會傳入設定主控件，或設定選擇性地指定在*hosting.json*檔案。 若要指定特定 URL 上所執行的主機，您可以傳入所要的值從命令提示字元：
+覆寫所提供的組態`UseUrls`與*hosting.json*設定第一個命令列引數設定第二個：
 
-```console
-dotnet run --urls "http://*:5000"
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        BuildWebHost(args).Run();
+    }
+
+    public static IWebHost BuildWebHost(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("hosting.json", optional: true)
+            .AddCommandLine(args)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseUrls("http://*:5000")
+            .UseConfiguration(config)
+            .Configure(app =>
+            {
+                app.Run(context => 
+                    context.Response.WriteAsync("Hello, World!"));
+            })
+            .Build();
+    }
+}
 ```
 
-`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉。
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+*hosting.json*:
+
+```json
+{
+    urls: "http://*:5005"
+}
+```
+
+覆寫所提供的組態`UseUrls`與*hosting.json*設定第一個命令列引數設定第二個：
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("hosting.json", optional: true)
+            .AddCommandLine(args)
+            .Build();
+
+        var host = new WebHostBuilder()
+            .UseUrls("http://*:5000")
+            .UseConfiguration(config)
+            .UseKestrel()
+            .Configure(app =>
+            {
+                app.Run(context => 
+                    context.Response.WriteAsync("Hello, World!"));
+            })
+            .Build();
+
+        host.Run();
+    }
+}
+```
+
+---
+
+> [!NOTE]
+> `UseConfiguration`擴充方法不是目前可以剖析所傳回的組態區段`GetSection`(例如， `.UseConfiguration(Configuration.GetSection("section"))`。 `GetSection`方法篩選到要求的區段之組態機碼，但會保留的區段名稱索引鍵 (例如， `section:urls`， `section:environment`)。 `UseConfiguration`方法預期要比對的索引鍵`WebHostBuilder`索引鍵 (例如， `urls`， `environment`)。 索引鍵的區段名稱存在主控件設定防止區段的值。 這個問題將在近期的版本中解決。 如需詳細資訊和因應措施，請參閱[傳遞到 WebHostBuilder.UseConfiguration 組態區段會使用完整金鑰](https://github.com/aspnet/Hosting/issues/839)。
+
+若要指定特定 URL 上所執行的主機，您可以傳入所要的值從命令提示字元執行時`dotnet run`。 命令列引數會覆寫`urls`值*hosting.json*檔和伺服器會接聽連接埠 8080:
+
+```console
+dotnet run --urls "http://*:8080"
+```
+
+## <a name="ordering-importance"></a>排序重要性
+
+部分`WebHostBuilder`如果先設定讀取來自環境變數設定。 這些環境變數使用格式`ASPNETCORE_{configurationKey}`。 若要設定伺服器接聽預設的 Url，您將設定`ASPNETCORE_URLS`。
+
+您可以指定覆寫這些環境變數值的任何組態 (使用`UseConfiguration`) 或明確地將此值設定 (使用`UseSetting`或其中一個明確的擴充方法，例如`UseUrls`)。 主機會使用任何選項設定的值上一次。 如果您想要以程式設計方式設定的預設 URL 為一個值，但允許它會覆寫的組態，您可以使用命令列組態之後設定 URL。 請參閱[正在覆寫組態](#overriding-configuration)。
+
+## <a name="starting-the-host"></a>正在啟動主機
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+**執行**
+
+`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉：
 
 ```csharp
 host.Run();
 ```
+
+**Start**
 
 您可以藉由呼叫非封鎖方式執行主機其`Start`方法：
 
@@ -235,7 +528,7 @@ using (host)
 }
 ```
 
-將 Url 的清單`Start`方法，它會接聽指定的 Url:
+如果您要傳入的 Url 清單`Start`方法，它會接聽指定的 Url:
 
 ```csharp
 var urls = new List<string>()
@@ -255,28 +548,344 @@ using (host)
 }
 ```
 
-以下是有效的 URL 格式取決於您要使用的伺服器。 如需詳細資訊，請參閱[伺服器 Url](#server-urls)稍早在本文章。
+您可以初始化並開始使用預先設定的預設值的新主控件`CreateDefaultBuilder`使用靜態便利的方法。 啟動伺服器未主控台輸出的情況下，這些方法[WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown)等候中斷 （Ctrl-C/SIGINT 或 SIGTERM）：
 
-> [!NOTE]
-> `UseConfiguration`擴充方法不是目前可以剖析所傳回的組態區段`GetSection`(例如， `.UseConfiguration(Configuration.GetSection("section"))`。 `GetSection`方法篩選到要求的區段之組態機碼，但會保留的區段名稱索引鍵 (例如， `section:urls`， `section:environment`)。 `UseConfiguration`方法預期要比對的索引鍵`WebHostBuilder`索引鍵 (例如， `urls`， `environment`)。 索引鍵的區段名稱存在主控件設定防止區段的值。 這個問題將在近期的版本中解決。 如需詳細資訊和因應措施，請參閱[傳遞到 WebHostBuilder.UseConfiguration 組態區段會使用完整金鑰](https://github.com/aspnet/Hosting/issues/839)。
+**開始 （RequestDelegate 應用程式）**
 
-### <a name="ordering-importance"></a>排序重要性
-
-`WebHostBuilder`如果設定第一次從某些環境變數，讀取設定。 這些環境變數都必須使用格式`ASPNETCORE_{configurationKey}`，所以若要設定 Url 的範例則伺服器會接聽預設，會設定`ASPNETCORE_URLS`。
-
-您可以指定覆寫這些環境變數值的任何組態 (使用`UseConfiguration`) 或明確地將此值設定 (使用`UseUrls`執行個體)。 主機會使用任何選項設定的值上一次。 基於這個理由，`UseIISIntegration`必須出現在之後`UseUrls`，因為它會取代 URL 動態 IIS 所提供的其中一個。 如果您想要以程式設計方式設定一個值，預設 URL，但允許它會覆寫的組態，您可以設定主應用程式，如下所示：
+開頭`RequestDelegate`:
 
 ```csharp
-var config = new ConfigurationBuilder()
-    .AddCommandLine(args)
-    .Build();
+using (var host = WebHost.Start(app => app.Response.WriteAsync("Hello, World!")))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+若要在瀏覽器中提出要求`http://localhost:5000`接收"Hello World ！"的回應 `WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。 應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。
+
+**開始 （以字串 url、 RequestDelegate 應用程式）**
+
+URL 的開頭和`RequestDelegate`:
+
+```csharp
+using (var host = WebHost.Start("http://localhost:8080", app => app.Response.WriteAsync("Hello, World!")))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+會產生相同結果**開始 （RequestDelegate 應用程式）**，除了應用程式回應`http://localhost:8080`。
+
+**啟動 (動作<IRouteBuilder>routeBuilder)**
+
+使用的執行個體`IRouteBuilder`([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) 使用路由的中介軟體：
+
+```csharp
+using (var host = WebHost.Start(router => router
+    .MapGet("hello/{name}", (req, res, data) => 
+        res.WriteAsync($"Hello, {data.Values["name"]}!"))
+    .MapGet("buenosdias/{name}", (req, res, data) => 
+        res.WriteAsync($"Buenos dias, {data.Values["name"]}!"))
+    .MapGet("throw/{message?}", (req, res, data) => 
+        throw new Exception((string)data.Values["message"] ?? "Uh oh!"))
+    .MapGet("{greeting}/{name}", (req, res, data) => 
+        res.WriteAsync($"{data.Values["greeting"]}, {data.Values["name"]}!"))
+    .MapGet("", (req, res, data) => res.WriteAsync("Hello, World!"))))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+使用下列瀏覽器要求範例：
+
+| 要求                                    | 回應                                 |
+| ------------------------------------------ | ---------------------------------------- |
+| `http://localhost:5000/hello/Martin`       | Hello，Martin ！                           |
+| `http://localhost:5000/buenosdias/Catrina` | Catrina 布宜諾 dias ！                    |
+| `http://localhost:5000/throw/ooops!`       | 擲回例外狀況的字串"ooops ！ 」 |
+| `http://localhost:5000/throw`              | 擲回例外狀況的字串"Uh 喔 ！ 」 |
+| `http://localhost:5000/Sante/Kevin`        | Sante，Kevin ！                            |
+| `http://localhost:5000`                    | Hello World!                             |
+
+`WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。 應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。
+
+**啟動 (string url，動作<IRouteBuilder>routeBuilder)**
+
+使用 URL 和執行個體`IRouteBuilder`:
+
+```csharp
+using (var host = WebHost.Start("http://localhost:8080", router => router
+    .MapGet("hello/{name}", (req, res, data) => 
+        res.WriteAsync($"Hello, {data.Values["name"]}!"))
+    .MapGet("buenosdias/{name}", (req, res, data) => 
+        res.WriteAsync($"Buenos dias, {data.Values["name"]}!"))
+    .MapGet("throw/{message?}", (req, res, data) => 
+        throw new Exception((string)data.Values["message"] ?? "Uh oh!"))
+    .MapGet("{greeting}/{name}", (req, res, data) => 
+        res.WriteAsync($"{data.Values["greeting"]}, {data.Values["name"]}!"))
+    .MapGet("", (req, res, data) => res.WriteAsync("Hello, World!"))))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+會產生相同結果**開始 (動作<IRouteBuilder>routeBuilder)**，除了應用程式會回應在`http://localhost:8080`。
+
+**StartWith (動作<IApplicationBuilder>應用程式)**
+
+提供設定委派`IApplicationBuilder`:
+
+```csharp
+using (var host = WebHost.StartWith(app => 
+    app.Use(next => 
+    {
+        return async context => 
+        {
+            await context.Response.WriteAsync("Hello World!");
+        };
+    })))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+若要在瀏覽器中提出要求`http://localhost:5000`接收"Hello World ！"的回應 `WaitForShutdown`直到發出中斷 （Ctrl-C/SIGINT 或 SIGTERM） 的區塊。 應用程式會顯示`Console.WriteLine`訊息並等候 keypress 結束。
+
+**StartWith (string url，動作<IApplicationBuilder>應用程式)**
+
+提供 URL，若要設定委派`IApplicationBuilder`:
+
+```csharp
+using (var host = WebHost.StartWith("http://localhost:8080", app => 
+    app.Use(next => 
+    {
+        return async context => 
+        {
+            await context.Response.WriteAsync("Hello World!");
+        };
+    })))
+{
+    Console.WriteLine("Use Ctrl-C to shutdown the host...");
+    host.WaitForShutdown();
+}
+```
+
+會產生相同結果**StartWith (動作<IApplicationBuilder>應用程式)**，除了應用程式回應`http://localhost:8080`。
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+**執行**
+
+`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉：
+
+```csharp
+host.Run();
+```
+
+**Start**
+
+您可以藉由呼叫非封鎖方式執行主機其`Start`方法：
+
+```csharp
+using (host)
+{
+    host.Start();
+    Console.ReadLine();
+}
+```
+
+如果您要傳入的 Url 清單`Start`方法，它會接聽指定的 Url:
+
+
+```csharp
+var urls = new List<string>()
+{
+    "http://*:5000",
+    "http://localhost:5001"
+};
 
 var host = new WebHostBuilder()
-    .UseUrls("http://*:1000") // default URL
-    .UseConfiguration(config) // override from command line
     .UseKestrel()
-    .Build();
+    .UseStartup<Startup>()
+    .Start(urls.ToArray());
+
+using (host)
+{
+    Console.ReadLine();
+}
 ```
+
+---
+
+## <a name="ihostingenvironment-interface"></a>IHostingEnvironment 介面
+
+[IHostingEnvironment 介面](/aspnet/core/api/microsoft.aspnetcore.hosting.ihostingenvironment)提供應用程式的 web 主機環境的相關資訊。 您可以使用[建構函式插入](xref:fundamentals/dependency-injection)取得`IHostingEnvironment`才能使用其屬性和擴充方法：
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IHostingEnvironment _env;
+
+    public CustomFileReader(IHostingEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+您可以使用[慣例為基礎的方法](xref:fundamentals/environments#startup-conventions)根據環境的啟動時設定您的應用程式。 或者，您可以將插入`IHostingEnvironment`到`Startup`建構函式以用於`ConfigureServices`:
+
+```csharp
+public class Startup
+{
+    public Startup(IHostingEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IHostingEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> 除了`IsDevelopment`擴充方法，`IHostingEnvironment`提供`IsStaging`， `IsProduction`，和`IsEnvironment(string environmentName)`方法。 請參閱[使用多個環境](xref:fundamentals/environments)如需詳細資訊。
+
+`IHostingEnvironment`服務也可直接插入`Configure`設定處理管線的方法：
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the developer exception page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+您可以將插入`IHostingEnvironment`到`Invoke`方法時建立自訂[中介軟體](xref:fundamentals/middleware#writing-middleware):
+
+```csharp
+public async Task Invoke(HttpContext context, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+## <a name="iapplicationlifetime-interface"></a>IApplicationLifetime 介面
+
+[IApplicationLifetime 介面](/aspnet/core/api/microsoft.aspnetcore.hosting.iapplicationlifetime)可讓您執行後啟動和關閉的活動。 介面上的三個屬性都是您可以使用註冊的取消語彙基元`Action`定義啟動和關閉事件的方法。 另外還有`StopApplication`方法。
+
+| 取消語彙基元    | 觸發時 &#8230; |
+| --------------------- | --------------------- |
+| `ApplicationStarted`  | 已完全啟動主機。 |
+| `ApplicationStopping` | 主機正在執行正常關機程序。 可能仍在處理要求。 關機封鎖，直到完成此事件。 |
+| `ApplicationStopped`  | 主應用程式即將完成正常關機程序。 應該完全處理所有要求。 關機封鎖，直到完成此事件。 |
+
+| 方法            | 動作                                           |
+| ----------------- | ------------------------------------------------ |
+| `StopApplication` | 目前的應用程式要求終止。 |
+
+```csharp
+public class Startup 
+{
+    public void Configure(IApplicationBuilder app, IApplicationLifetime appLifetime) 
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+## <a name="troubleshooting-systemargumentexception"></a>疑難排解 System.ArgumentException
+
+**ASP.NET Core 2.0 只適用於**
+
+如果您將，以便建置主機`IStartup`直接將相依性插入容器，而不是呼叫`UseStartup`或`Configure`，您可能會遇到下列錯誤： `Unhandled Exception: System.ArgumentException: A valid non-empty application name must be provided`。
+
+這是因為[applicationName(ApplicationKey)](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostdefaults#Microsoft_AspNetCore_Hosting_WebHostDefaults_ApplicationKey) （目前的組件），才能掃描`HostingStartupAttributes`。 如果您手動插入`IStartup`到相依性插入容器中，加入下列呼叫您`WebHostBuilder`具有所指定的組件名稱：
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting("applicationName", "<Assembly Name>")
+    ...
+```
+
+或者，新增假`Configure`到您`WebHostBuilder`，將`applicationName`(`ApplicationKey`) 自動：
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .Configure(_ => { })
+    ...
+```
+
+**請注意**： 時，這只需要 ASP.NET Core 2.0 版，而且只在未呼叫`UseStartup`或`Configure`。
+
+如需詳細資訊，請參閱[公告： Microsoft.Extensions.PlatformAbstractions 已移除 （註解）](https://github.com/aspnet/Announcements/issues/237#issuecomment-323786938)和[StartupInjection 範例](https://github.com/aspnet/Hosting/blob/8377d226f1e6e1a97dabdb6769a845eeccc829ed/samples/SampleStartups/StartupInjection.cs)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -284,4 +893,3 @@ var host = new WebHostBuilder()
 * [發行至使用 Nginx Linux](../publishing/linuxproduction.md)
 * [若要使用 Apache 的 Linux 發行](../publishing/apache-proxy.md)
 * [在 Windows 服務的主機](xref:hosting/windows-service)
-

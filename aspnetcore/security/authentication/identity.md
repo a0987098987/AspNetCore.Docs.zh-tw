@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 5718336868f3ee5ab08162ae2bc885c695d19a1d
-ms.sourcegitcommit: f3366461010da37981cf7fc092b9b9613eb4ca89
+ms.openlocfilehash: 72802830660ddcf479e540de7cfc33a07c49dc23
+ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -38,7 +38,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     ![[新增專案] 對話](identity/_static/01-mvc.png)
     
-    # <a name="net-core-clitabnetcore-cli"></a>[.NET core CLI](#tab/netcore-cli)
+    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
     如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 這會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
  
     建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，將身分資料和 SQL Server 使用的結構描述保存[Entity Framework Core](https://docs.efproject.net)。
@@ -48,19 +48,33 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 2.  設定身分識別服務，並將新增中的介軟體中`Startup`。
 
     識別服務會加入至應用程式中`ConfigureServices`方法中的`Startup`類別：
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configureservices&highlight=7-9,13-34)]
+
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
     這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
- 
+    
+    識別已啟用應用程式藉由呼叫`UseAuthentication`中`Configure`方法。 `UseAuthentication`加入驗證[中介軟體](xref:fundamentals/middleware)要求管線。
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
+    
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-34)]
+    
+    這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
+    
     識別已啟用應用程式藉由呼叫`UseIdentity`中`Configure`方法。 `UseIdentity`新增 cookie 基本驗證[中介軟體](xref:fundamentals/middleware)要求管線。
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configure&highlight=21)]
- 
+        
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
+    
+    ---
+     
     如需處理程序的應用程式啟動的詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
 3.  建立使用者。
- 
+
     啟動應用程式，然後按一下**註冊**連結。
 
     如果這是您要執行此動作的第一次，您可能需要執行移轉。 應用程式會提示您**套用移轉**:
@@ -76,7 +90,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     
     當使用者按一下**註冊**連結，``Register``上叫用動作``AccountController``。 ``Register``動作會建立使用者藉由呼叫`CreateAsync`上`_userManager`物件 (提供給``AccountController``的相依性插入):
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=register&highlight=11)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
     如果已成功建立使用者，使用者會登入的呼叫所``_signInManager.SignInAsync``。
 
@@ -86,7 +100,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     使用者可以登入，依序按一下**登入**頂端的站台連結或它們可能瀏覽至登入頁面當他們嘗試存取需要的授權站台的一部分。 當使用者提交表單的登入頁面上， ``AccountController`` ``Login``動作呼叫。
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=login&highlight=13-14)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
  
     ``Login``動作呼叫``PasswordSignInAsync``上``_signInManager``物件 (提供給``AccountController``的相依性插入)。
  
@@ -96,15 +110,23 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     按一下**登出**連結呼叫`LogOut`動作。
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=logout&highlight=7)]
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
  
     上述程式碼中的呼叫上述`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者的宣告。
  
 6.  組態設定。
 
     識別有一些您可以在您的應用程式啟動類別中覆寫的預設行為。 您不需要設定``IdentityOptions``如果您使用的預設行為。
- 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=configureservices&highlight=13-34)]
+
+    # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
+    
+    # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-34)]
+
+    ---
     
     如需如何設定身分識別的詳細資訊，請參閱[設定身分識別](xref:security/authentication/identity-configuration)。
     
@@ -112,7 +134,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
 7.  檢視的資料庫。
 
-    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** -> **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合 **aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
+    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** -> **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合* *aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
 
     ![AspNetUsers 資料庫資料表上的內容功能表](identity/_static/04-db.png)
     
@@ -136,7 +158,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [移轉的驗證和身分識別](xref:migration/identity)
+* [移轉驗證和身分識別](xref:migration/identity)
 * [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
-* [使用 SMS 雙因素驗證](xref:security/authentication/2fa)
-* [啟用驗證使用 Facebook、 Google 和其他外部提供者](xref:security/authentication/social/index)
+* [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
+* [使用 Facebook、Google 和其他外部提供者啟用驗證](xref:security/authentication/social/index)

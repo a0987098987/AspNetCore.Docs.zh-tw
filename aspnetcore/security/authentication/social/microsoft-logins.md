@@ -2,7 +2,7 @@
 title: "外部登入的 Microsoft 帳戶設定"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 08/24/2017
@@ -11,11 +11,11 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: cc2d119ae2f7cf06ed0ea4b8a91fd8fa15804468
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: 70cbeea15199498c592307dccc125e60206dadbf
+ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 09/08/2017
 
 * 基於本教學課程的目的，清除**指引安裝**核取方塊。
 
-* 點選**建立**繼續**註冊**頁面：
+* 點選**建立**繼續**註冊**頁面。 提供**名稱**並記下的值**應用程式識別碼**，作為使用`ClientId`稍後在本教學課程：
 
 ![註冊頁面](index/_static/MicrosoftDevAppReg.png)
 

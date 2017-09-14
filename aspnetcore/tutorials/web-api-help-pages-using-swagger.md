@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: fd2f415947c049d1239ce4e6bf0b1cf0264e7836
-ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.openlocfilehash: 92136a6e5db68b4d7e5245e38960e4a1f01bfb73
+ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/05/2017
 ---
 # <a name="aspnet-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Web API 說明頁面
 
@@ -92,6 +92,12 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore
 將 Swagger 產生器新增至 *Startup.cs* 的 `ConfigureServices` 方法中的服務集合：
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup2.cs?name=snippet_ConfigureServices&highlight=7-10)]
+
+在 `Info` 類別新增下列 using 陳述式：
+
+```csharp
+using Swashbuckle.AspNetCore.Swagger;
+```
 
 在 *Startup.cs* 的 `Configure` 方法中，啟用中介軟體為產生的 JSON 文件和 SwaggerUI 提供服務：
 

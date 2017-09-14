@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 7790f38dda61eabd3cbbc6088ad455c07289b739
-ms.sourcegitcommit: 70089de5bfd8ecd161261aa95faf07a4e1534cf8
+ms.openlocfilehash: 4013619f738b3b8b58e45d9dfd205e7b75e056b4
+ms.sourcegitcommit: 029dd7fbc0793e84b9ed91f2b45624bbc187fb32
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -113,7 +113,7 @@ if (responseCachingFeature != null)
 
 * [Fiddler](http://www.telerik.com/fiddler)
 * [Firebug 這類](http://getfirebug.com/)
-* [郵差](https://www.getpostman.com/)
+* [Postman](https://www.getpostman.com/)
 
 ### <a name="conditions-for-caching"></a>快取的條件
 * 要求必須導致伺服器 200 （確定） 回應。
@@ -125,7 +125,7 @@ if (responseCachingFeature != null)
 * `Set-Cookie`標頭不得存在。
 * `Vary`標頭參數必須是有效且不等於`*`。
 * `Content-Length`標頭值 (如果設定) 必須符合回應主體的大小。
-* `HttpSendFileFeature`不會使用。
+* [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature)不會使用。
 * 回應不是所指定過時`Expires`標頭和`max-age`和`s-maxage`快取指示詞。
 * 回應緩衝處理是否成功，並回應的大小會小於所設定，或預設`SizeLimit`。
 * 回應必須是根據可快取[RFC 7234](https://tools.ietf.org/html/rfc7234)規格。 例如，`no-store`指示詞不能存在於要求或回應標頭欄位。 請參閱*區段 3： 儲存在快取的回應*的[RFC 7234](https://tools.ietf.org/html/rfc7234)如需詳細資訊。

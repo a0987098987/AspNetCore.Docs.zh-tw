@@ -1,20 +1,20 @@
 ---
 title: "ASP.NET Core 中的 Razor 頁面簡介"
 author: Rick-Anderson
-description: "ASP.NET Core 中的 Razor 頁面概觀"
-keywords: "ASP.NET Core, Razor 頁面"
+description: "此文件提供在 ASP.NET Core 中使用 Razor 頁面的概觀，以便於以頁面為焦點的案例之開發。"
+keywords: "ASP.NET Core，Razor 頁面"
 ms.author: riande
 manager: wpickett
-ms.date: 08/15/2017
+ms.date: 09/12/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 543399d99af127f943f7e9119fb5d84c8c5bc499
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e9678279db85ec03616e693b9772c6ee71c4fef8
+ms.sourcegitcommit: d2f705f7a8ef2c1a940f590e4de188621fd48d2a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -30,7 +30,7 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 安裝 [.NET Core](https://www.microsoft.com/net/core) 2.0.0 或更新版本。
 
-如果您使用的是 Visual Studio，請安裝 [Visual Studio](https://www.visualstudio.com/vs/) 15.3 或更新版本，加上下列工作負載：
+如果您使用的是 Visual Studio，請安裝 [Visual Studio](https://www.visualstudio.com/vs/)2017 15.3 版本或更新版本，加上下列工作負載：
 
 * **ASP.NET 與網頁程式開發**
 * **.NET Core 跨平台開發**
@@ -63,15 +63,15 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 Razor 頁面是在 *Startup.cs* 中啟用：
 
-[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=Startup)]
+[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
 請考慮使用基本頁面：<a name="OnGet"></a>
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
 
-上述程式碼看起來很像 Razor 檢視檔案。 讓它不同的是 `@page` 指示詞。 `@page` 會將檔案轉換成 MVC 動作，這表示它會直接處理要求，不用透過控制器。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 會影響其他的 Razor 建構行為。 [@functions](xref:mvc/views/razor#functions) 指示詞可啟用函式層級的內容。
+上述程式碼看起來很像 Razor 檢視檔案。 讓它不同的是 `@page` 指示詞。 `@page` 會將檔案轉換成 MVC 動作，這表示它會直接處理要求，不用透過控制器。 `@page` 必須是頁面上的第一個 Razor 指示詞。 `@page` 會影響其他的 Razor 建構行為。
 
-下列兩個檔案會顯示類似的頁面，但 `PageModel` 在不同的檔案中。 *Pages/Index2.cshtml* 檔案：
+使用`PageModel`類別的類似頁面，顯示於下列兩個檔案中。 *Pages/Index2.cshtml* 檔案：
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
@@ -81,8 +81,6 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 
 依照慣例，`PageModel` 類別檔和附加 *.cs* 檔名的 Razor 頁面檔案名稱相同。 例如，前一個 Razor 頁面是 *Pages/Index2.cshtml*。 包含 `PageModel` 類別的檔案名為 *Pages/Index2.cshtml.cs*。
 
-至於簡單的頁面，混合 `PageModel` 類別加上 Razor 標記是正常的。 至於更複雜的程式碼，最佳做法是分開頁面模型程式碼。
-
 頁面的 URL 路徑關聯是由頁面在檔案系統中的位置決定。 下表顯示 Razor 頁面路徑和相符的 URL：
 
 | 檔案名稱和路徑               | 比對 URL |
@@ -90,7 +88,7 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 | */Pages/Index.cshtml* | `/` 或 `/Index` |
 | */Pages/Contact.cshtml* | `/Contact` |
 | */Pages/Store/Contact.cshtml* | `/Store/Contact` |
-| */Pages/Store/Index.cshtml* | `/Store` 或 `/Store/Index`  |
+| */Pages/Store/Index.cshtml* | `/Store` 或 `/Store/Index` |
 
 附註：
 
@@ -115,9 +113,9 @@ Razor 頁面功能旨在讓常見模式容易搭配網頁瀏覽器使用。 [模
 
 *Pages/Create.cshtml.cs* 程式碼後置檔案供檢視之用：
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=ALL)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
-依照慣例，`PageModel` 類別稱之為 `<PageName>Model`，與頁面位於相同的命名空間。 從使用 `@functions` 定義處理常式的頁面和使用 `PageModel` 類別的頁面轉換，不需要太多變更。
+依照慣例，`PageModel` 類別稱之為 `<PageName>Model`，與頁面位於相同的命名空間。
 
 使用 `PageModel` 程式碼後置檔案可支援單元測試，但需要撰寫明確的建構函式和類別。 沒有 `PageModel` 程式碼後置檔案的頁面支援執行階段編譯，這會是開發中的優勢。  <!-- review: advantage because you can make changes and refresh the browser without explicitly compiling the app -->
 
@@ -130,7 +128,7 @@ Razor 頁面功能旨在讓常見模式容易搭配網頁瀏覽器使用。 [模
 
 前一個 `OnPostAsync` 方法：
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 `OnPostAsync` 的基本流程：
 
@@ -145,18 +143,9 @@ Razor 頁面功能旨在讓常見模式容易搭配網頁瀏覽器使用。 [模
 
 `Customer` 屬性 (property) 使用 `[BindProperty]` 屬性 (attribute) 加入模型繫結。
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=PageModel&highlight=10-11)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
 Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
-
-下列程式碼顯示建立頁面的合併版本：
-
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/CreateCombined.cshtml)]
-
-我們要利用頁面的新功能，而不是使用 `@model`。 根據預設，產生的 `Page` 衍生類別「是」模型。 使用「檢視模型」搭配 Razor 檢視是最佳做法。 透過頁面，您可以「自動」取得檢視模型。
-
-主要的變更是以插入的 (`@inject`) 屬性取代建構函式插入。 此頁面會使用 [@inject ](xref:mvc/views/razor#inject) 處理[建構函式相依性插入](xref:mvc/controllers/dependency-injection#constructor-injection)。 `@inject` 陳述式會產生並初始化用於 `OnPostAsync` 中的 `Db` 屬性。 插入的 (`@inject`) 屬性會在處理常式方法執行之前設定。
-
 
 首頁 (*Index.cshtml*)：
 
@@ -168,7 +157,7 @@ Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 
 *Index.cshtml* 檔案包含下列標記可為每個連絡人建立編輯連結：
 
-```html
+```cshtml
 <a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
 ```
 
@@ -212,7 +201,7 @@ Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
-注意：版面配置是在 *Pages* 資料夾中。 頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。 您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。
+**注意：**版面配置是在 *Pages* 資料夾中。 頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。 您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。
 
 我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
 
@@ -236,7 +225,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 例如，程式碼後置檔案*Pages/Customers/Edit.cshtml.cs* 會以明確方式設定命名空間：
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=namespace)]
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
 
 *Pages/_ViewImports.cshtml* 檔案會設定下列命名空間：
 
@@ -244,15 +233,13 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 針對 *Pages/Customers/Edit.cshtml* Razor 頁面產生的命名空間和程式碼後置檔案相同。 `@namespace` 指示詞的設計是為了將 C# 類別新增至專案，頁面產生的程式碼「就這麼簡單」，不必為程式碼後置檔案新增 `@using` 指示詞。
 
-注意：`@namespace` 也適用於傳統的 Razor 檢視。
+**注意：**`@namespace`也適用於傳統的 Razor 檢視。
 
 原始的 *Pages/Create.cshtml* 檢視檔案：
 
 [!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
 
-更新的頁面：
-
-*Pages/Create.cshtml* 檢視檔案：
+更新的 *Pages/Create.cshtml* 檢視檔案：
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
@@ -264,9 +251,9 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 前面出現過的 `Create` 頁面使用 `RedirectToPage`：
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=OnPostAsync&highlight=10)]
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
 
-應用程式有下列檔案/資料夾結構
+應用程式有下列檔案/資料夾結構：
 
 * */Pages*
 
@@ -304,8 +291,9 @@ ASP.NET Core 公開[控制器](https://docs.microsoft.com/aspnet/core/api/micros
 
 `[TempData]` 是 ASP.NET Core 2.0 的新屬性，在控制站和頁面都受支援。
 
-下列程式碼會設定使用 `TempData` 的 `Message` 值。
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,27-28&name=snippetTemp)]
+下列程式碼會設定使用 `TempData` 的 `Message` 值：
+
+[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
 
 *Pages/Customers/Index.cshtml* 檔案中的下列標記會顯示使用 `TempData` 的 `Message` 值。
 
@@ -349,7 +337,6 @@ public string Message { get; set; }
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
 
-
 上述的路由會將處理常式名稱放入 URL 路徑，而不是放入查詢字串。 跟在 `handler` 後面的 `?` 表示路由參數為選擇性。
 
 您可以使用 `@page` 將額外的區段和參數新增至頁面的路由。 無論什麼都**附加**至頁面的預設路由。 不支援使用絕對或虛擬路徑變更頁面的路由 (例如 `"~/Some/Other/Path"`)。
@@ -358,7 +345,7 @@ public string Message { get; set; }
 
 若要設定進階選項，請在 MVC 產生器上使用擴充方法 `AddRazorPagesOptions`：
 
-[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet1)]
+[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
 
 目前可以使用 `RazorPagesOptions` 設定頁面的根目錄，或新增頁面的應用程式模型慣例。 我們希望未來能以這種方式獲得更多的擴充性。
 

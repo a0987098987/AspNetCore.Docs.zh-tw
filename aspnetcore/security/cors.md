@@ -2,7 +2,7 @@
 title: "啟用跨原始要求 (CORS)"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
@@ -11,11 +11,11 @@ ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: 44936c6db8a003a61091ec9a7fd3be5786d89b5b
-ms.sourcegitcommit: 8cafdd1dd409d5070d227100ba0e094c779ac47b
+ms.openlocfilehash: e441ce1c50139a5b33865eec8e8d99764258730d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 08/28/2017
 
 瀏覽器安全性防止網頁 AJAX 要求到另一個網域。 這項限制稱為*相同來源原則*，並可防止惡意網站從另一個站台讀取的機密資料。 不過，有時您可能想要讓其他對您的 web API 進行跨原始要求的站台。
 
-[跨原始資源共用](http://www.w3.org/TR/cors/)」 (CORS) 是一種 W3C 標準，可讓放寬的相同來源原則的伺服器。 使用 CORS，伺服器可以明確地允許某些跨原始要求時拒絕其他人。 CORS 是更安全且更彈性與較早的技術如[JSONP](http://en.wikipedia.org/wiki/JSONP)。 本主題示範如何在 ASP.NET Core 應用程式中啟用 CORS。
+[跨原始資源共用](http://www.w3.org/TR/cors/)」 (CORS) 是一種 W3C 標準，可讓放寬的相同來源原則的伺服器。 使用 CORS，伺服器可以明確地允許某些跨原始要求時拒絕其他人。 CORS 是更安全且更彈性與較早的技術如[JSONP](https://wikipedia.org/wiki/JSONP)。 本主題示範如何在 ASP.NET Core 應用程式中啟用 CORS。
 
 ## <a name="what-is-same-origin"></a>什麼是 「 相同來源 」？
 

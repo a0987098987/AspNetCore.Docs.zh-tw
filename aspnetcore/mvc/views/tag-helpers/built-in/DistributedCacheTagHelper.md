@@ -11,11 +11,11 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a022
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
-ms.openlocfilehash: b6e0beca0833b1dbe0843e8f8848b976726cc7b0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>分散式快取標記協助程式
 
@@ -52,14 +52,14 @@ ms.lasthandoff: 08/11/2017
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
     Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</distributed-cache>
 ```
 
 ## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>分散式快取標記協助程式 IDistributedCache 實作
 
 有兩種實作方式`IDistributedCache`內建於 ASP.NET Core。  其中根據**Sql Server** ，並且根據其他**Redis**。 可以在以下具名 「 使用分散式快取 」 參照的資源中找到這些實作的詳細資料。 這兩種實作牽涉到設定的執行個體`IDistributedCache`中 ASP.NET Core **startup.cs**。
 
-那里沒有標記屬性特別與相關聯的任何特定實作方式`IDistributedCache`。
+沒有特別與任何特定實作方式的相關聯的標記屬性`IDistributedCache`。
 
 
 

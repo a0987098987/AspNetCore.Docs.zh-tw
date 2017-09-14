@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: bc2896d0eeda7e84cef06ee3f235e637bfe04318
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: 9de39ce59633036c0dd850a7552bd3f4806c5431
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、 篩選、 分頁和群組-EF Core 與 ASP.NET Core MVC 教學課程 (10-3)
 
@@ -94,7 +94,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-此程式碼使用`<form>`[標記協助程式](https://docs.asp.net/en/latest/mvc/views/tag-helpers/intro.html)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 此動作不會導致更新時，就會收到 W3C 指導方針建議，您應該使用。
+此程式碼使用`<form>`[標記協助程式](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 此動作不會導致更新時，就會收到 W3C 指導方針建議，您應該使用。
 
 執行網頁中，輸入搜尋字串，然後按一下 搜尋確認篩選運作。
 

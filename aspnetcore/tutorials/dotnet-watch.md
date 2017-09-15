@@ -1,0 +1,110 @@
+---
+title: "使用 dotnet watch 開發 ASP.NET Core 應用程式"
+author: rick-anderson
+description: "示範如何使用 dotnet watch。"
+keywords: "ASP.NET Core, 使用 dotnet watch"
+ms.author: riande
+manager: wpickett
+ms.date: 03/09/2017
+ms.topic: article
+ms.assetid: 563ffb3f-d369-4aa5-bf0a-7300b4e7832c
+ms.technology: aspnet
+ms.prod: asp.net-core
+uid: tutorials/dotnet-watch
+ms.openlocfilehash: 30e0d07bdfbd16a475e03c1a21cdd10220bd1630
+ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 08/11/2017
+---
+# <a name="developing-aspnet-core-apps-using-dotnet-watch"></a>使用 dotnet watch 開發 ASP.NET Core 應用程式
+
+
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
+
+`dotnet watch` 是一種工具，其會在來源檔案變更時執行 `dotnet` 命令。 例如，檔案變更可能會觸發編譯、測試或部署。
+
+在本教學課程中，我們會使用現有的 Web API 應用程式與兩個端點：一個傳回加總；一個則傳回產品。 Product 方法包含一個 Bug，我們會在本教學課程中一併修正。
+
+下載[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含 `WebApp` (Web 應用程式) 和 `WebAppTests` (Web 應用程式的單元測試) 這兩個專案。
+
+在主控台中，巡覽至 WebApp 資料夾並執行下列命令：
+
+- `dotnet restore`
+- `dotnet run`
+
+主控台輸出會顯示類似如下的訊息 (指出應用程式正在執行，並等待要求)：
+
+```console
+$ dotnet run
+Hosting environment: Production
+Content root path: C:/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+```
+
+在 Web 瀏覽器中，巡覽至 `http://localhost:5000/api/math/sum?a=4&b=5`，您應該會看到結果 `9`。
+
+巡覽至產品 API (`http://localhost:5000/api/math/product?a=4&b=5`)，其會傳回 `9`，而非您所預期的 `20`。 我們稍後將在本教學課程中對此進行修正。
+
+## <a name="add-dotnet-watch-to-a-project"></a>將 `dotnet watch` 新增至專案
+
+- 將 `Microsoft.DotNet.Watcher.Tools` 新增至 *.csproj* 檔案：
+ ```xml
+ <ItemGroup>
+   <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+ </ItemGroup> 
+ ```
+
+- 執行 `dotnet restore`。
+
+## <a name="running-dotnet-commands-using-dotnet-watch"></a>使用 `dotnet watch` 來執行 `dotnet` 命令
+
+您可以使用 `dotnet watch` 來執行任何 `dotnet` 命令，例如：
+
+| 命令 | 使用監看式的命令 |
+| ---- | ----- |
+| dotnet run | dotnet watch run |
+| dotnet run -f net451 | dotnet watch run -f net451 |
+| dotnet run -f net451 -- --arg1 | dotnet watch run -f net451 -- --arg1 |
+| dotnet test | dotnet watch test |
+
+在 `WebApp` 資料夾中執行 `dotnet watch run`。 主控台輸出會指出 `watch` 已啟動。
+
+## <a name="making-changes-with-dotnet-watch"></a>使用 `dotnet watch` 來變更資料
+
+請確認 `dotnet watch` 正在執行。
+
+修正 `MathController` 之 `Product` 方法的 Bug，使其傳回產品而非加總。
+
+```csharp
+public static int Product(int a, int b)
+{
+  return a * b;
+} 
+```
+
+儲存檔案。 主控台輸出會顯示訊息，指出 `dotnet watch` 已偵測到檔案變更，並重新啟動應用程式。
+
+驗證 `http://localhost:5000/api/math/product?a=4&b=5` 是否傳回正確的結果。
+
+## <a name="running-tests-using-dotnet-watch"></a>使用 `dotnet watch` 來執行測試
+
+- 將 `MathController` 的 `Product` 方法變更為傳回加總，然後儲存檔案。
+- 在命令視窗中，巡覽到 `WebAppTests` 資料夾。
+- 執行 `dotnet restore`
+- 執行 `dotnet watch test`。 您會看到一項輸出，指出測試失敗，且監看員正在等候檔案變更：
+
+ ```console
+ Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.
+ Test Run Failed.
+  ```
+- 修正 `Product` 方法程式碼，使其傳回產品。 儲存檔案。
+
+`dotnet watch` 會偵測檔案變更，並重新執行測試。 主控台輸出會顯示測試成功。
+
+## <a name="dotnet-watch-in-github"></a>GitHub 中的 dotnet-watch
+
+dotnet-watch 是 GitHub [DotNetTools 存放庫](https://github.com/aspnet/DotNetTools/tree/dev/src/Microsoft.DotNet.Watcher.Tools)的一部分。
+
+[dotnet-watch 讀我檔案](https://github.com/aspnet/DotNetTools/blob/dev/src/Microsoft.DotNet.Watcher.Tools/README.md)的 [MSBuild 區段](https://github.com/aspnet/DotNetTools/blob/dev/src/Microsoft.DotNet.Watcher.Tools/README.md#msbuild)說明如何從要監控的 MSBuild 專案檔設定 dotnet-watch。 [dotnet-watch 讀我檔案](https://github.com/aspnet/DotNetTools/blob/dev/src/Microsoft.DotNet.Watcher.Tools/README.md)包含本教學課程中未涵蓋的 dotnet-watch 相關資訊。

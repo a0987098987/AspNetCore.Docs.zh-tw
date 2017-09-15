@@ -1,0 +1,1 @@
+<span data-ttu-id="4efad-101">這個資料夾中的程式碼即為 Razor 頁面序列的即時快照。</span><span class="sxs-lookup"><span data-stu-id="4efad-101">The code in this folder is snapshots in time from the Razor Pages series.</span></span>

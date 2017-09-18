@@ -11,11 +11,11 @@ ms.assetid: ff8fd9b8-7c98-424d-8641-7524e23bf541
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: dd8b8603d8444c95f086fd593aabe86d60f93ad4
-ms.sourcegitcommit: eb025f2166023e1c394a0213c7ed8a9ca7190da5
+ms.openlocfilehash: d06a957f41d4d8928f825c7a795b3d1518ab4421
+ms.sourcegitcommit: c496ec8d5483e7de79b20d06127da7a6cbdac108
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="working-with-sql-server-localdb"></a>使用 SQL Server LocalDB
 
@@ -33,7 +33,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `Connectio
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/\<使用者\>* 目錄中建立 "\*.mdf" 檔案。
+LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
 
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
 
@@ -75,7 +75,7 @@ if (context.Movie.Any())
 
 在 *Program.cs* 檔案中，將種子初始設定式新增至 `Main` 方法：
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Program.cs?highlight=6,16-32)]
+[!code-csharp[Main](start-mvc/sample/MvcMovie/Program.cs?highlight=6,14-32)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -90,7 +90,7 @@ if (context.Movie.Any())
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 SSOX 的刪除連結來執行這項操作。
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止站台]。
+  * 以滑鼠右鍵按一下通知區域中的 IIS Express 系統匣圖示，然後點選 [結束] 或 [停止網站]
 
     ![IIS Express 系統匣圖示](working-with-sql/_static/iisExIcon.png)
 

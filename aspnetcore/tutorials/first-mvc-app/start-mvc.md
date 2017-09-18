@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9636e0e51e506d294ffb50a21165195c9d04fe20
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 283a3869300b83235197951cbbee92a82532c6e3
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/25/2017
 
 安裝 Visual Studio Community 2017。 選取要下載的社群。 如已安裝 Visual Studio 2017 請跳過此步驟。
 
-* [Visual Studio 2017 首頁的安裝程式](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Visual Studio 2017 首頁的安裝程式](https://www.visualstudio.com/)
 
 執行安裝程式並選取下列工作負載：
 
@@ -98,7 +98,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
 ![執行中的應用程式](start-mvc/_static/1.png)
 
-* Visual Studio 會啟動 [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 在上圖中，連接埠號碼為 5000。 當您執行應用程式時，會看到不同的連接埠編號。
+* Visual Studio 會啟動 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 在上圖中，連接埠號碼為 5000。 當您執行應用程式時，會看到不同的連接埠編號。
 * 使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
 * 您可以從 [偵錯] 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 

@@ -1,21 +1,21 @@
 ---
 title: "使用 ASP.NET Core 和 Visual Studio for Mac 建立 Web API"
-author: rick-anderson
 description: "使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API"
-keywords: "ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, 服務, HTTP 服務"
+author: rick-anderson
 ms.author: riande
-manager: wpickett
-ms.date: 5/24/2017
+ms.date: 09/15/2017
 ms.topic: get-started-article
-ms.assetid: 830b4af5-ed14-1638-7734-764a6f13a8f6
-ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: 08619d3b4ab2d6fdb04794dcbafac0b696dd8504
-ms.sourcegitcommit: 3273675dad5ac3e1dc1c589938b73db3f7d6660a
+helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
+ms.technology: aspnet
+keywords: "ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, 服務, HTTP 服務"
+manager: wpickett
+ms.openlocfilehash: 992059f7abd7650f82c1307acf3ba3219a6fcbb5
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 08/28/2017
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-這是 HTTP POST 方法，以 [`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) 屬性表示。 [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
+這是 HTTP POST 方法，以 [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api) 屬性表示。 [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
 
 `CreatedAtRoute` 方法會傳回 201 回應，這是 HTTP POST 方法的標準回應，可在伺服器上建立新的資源。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 08/28/2017
 * 選取 [主體] 選項按鈕
 * 選取 [原始] 選項按鈕
 * 將類型設定為 JSON
-* 在索引鍵-值編輯器中，輸入待辦事項，例如
+* 在索引鍵/值編輯器中，輸入待辦事項，例如
 
 ```json
 {
@@ -200,4 +200,4 @@ public IActionResult GetById(string id)
 * 如需部署 API 的資訊，請參閱[發行和部署](../publishing/index.md)。
 * [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample)
 * [Postman](https://www.getpostman.com/)
-* [Fiddler](http://www.fiddler2.com/fiddler2/)
+* [Fiddler](https://www.telerik.com/download/fiddler)

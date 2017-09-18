@@ -6,7 +6,7 @@
 
   ![建立含有內容類型、價格、發行日期和標題等欄位的檢視](../../tutorials/first-mvc-app/adding-model/_static/movies.png)
 
-* 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](http://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱 https://github.com/aspnet/Docs/issues/4076 和[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+* 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱 https://github.com/aspnet/Docs/issues/4076 和[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
 
 <a name="displayformatdatelocal"></a>
 

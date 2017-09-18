@@ -11,11 +11,11 @@ ms.assetid: 2707c7a8-2350-4304-9856-fda58e5c0a16
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/azure-continuous-deployment
-ms.openlocfilehash: b576ef6bce3b211afe7465f33dfe62c25dac1f62
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: a9efad38b1c75bd3a186b4ec85861357ecf744b9
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>使用 Visual Studio 與 Git 持續部署到適用於 ASP.NET Core 的 Azure
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/11/2017
 另請參閱 [Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic) (使用 VSTS 來建立 Azure Web 應用程式，並透過連續部署來發行)，其中說明如何使用 Visual Studio Team Services 來設定 [Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/) 的持續傳遞 (CD) 工作流程。 Team Services 中的 Azure 持續傳遞功能，可簡化將應用程式更新發行到 Azure App Service 的部署管道設定。 您可以透過 Azure 入口網站設定這個管道，以建置、執行測試、部署到預備位置，然後再部署到生產環境。
 
 > [!NOTE]
-> 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有帳戶，可以[啟動 MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)或[註冊免費試用帳戶](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有帳戶，可以[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)或[註冊免費試用帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 08/11/2017
 
 * [Visual Studio](https://www.visualstudio.com)
 
-* [ASP.NET Core](http://go.microsoft.com/fwlink/?LinkId=627627) (執行階段和工具)
+* [ASP.NET Core](https://download.microsoft.com/download/F/6/E/F6ECBBCC-B02F-424E-8E03-D47E9FA631B7/DotNetCore.1.0.1-VS2015Tools.Preview2.0.3.exe) (執行階段和工具)
 
-* [Git](http://git-scm.com/downloads) (適用於 Windows)
+* [Git](https://git-scm.com/downloads) (適用於 Windows)
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 

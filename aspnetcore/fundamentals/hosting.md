@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1a789ff1bc6b3e3af99419e7d74d3fb46bb2345
-ms.sourcegitcommit: 368aabde4de3728a8e5a8c016a2ec61f9c0854bf
+ms.openlocfilehash: 4eb57cf80399abdb7c6d05546ea2b0d5718c56c3
+ms.sourcegitcommit: 0a3f215b4f665afc6f2678642968eea698102346
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
@@ -34,7 +34,7 @@ ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程�
 
 `CreateDefaultBuilder`會執行下列工作：
 
-* 設定[Kestrel](servers/kestrel.md)做為 web 伺服器。
+* 設定[Kestrel](servers/kestrel.md)做為 web 伺服器。 Kestrel 預設選項，請參閱[Kestrel 選項 > 一節中 ASP.NET Core Kestrel web 伺服器實作的](xref:fundamentals/servers/kestrel#kestrel-options)。
 * 若要設定內容的根[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。
 * 從負載選擇性設定：
   * *appsettings.json*。
@@ -43,7 +43,7 @@ ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程�
   * 環境變數。
   * 命令列引數。
 * 設定[記錄](xref:fundamentals/logging)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。
-* IIS 背景執行，可讓 IIS 整合所設定的基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 Kestrel 與 IIS 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。
+* 當 IIS 背景執行，可讓[IIS integration](xref:publishing/iis)藉由設定基底路徑和通訊埠伺服器應接聽時使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 IIS 與 Kestrel 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。 對於 IIS 的預設選項，請參閱[IIS 選項 > 一節的主控件與 IIS 的 Windows 上的 ASP.NET Core](xref:publishing/iis#iis-options)。
 
 *內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。 這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 

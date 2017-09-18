@@ -10,23 +10,23 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: caadc3fcb3bb71abe0773aed4f6ff60a043e3a02
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 56ff18589d189b0d2760c761c58b5b030d02940b
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>利用 Visual Studio for Mac 開始使用 ASP.NET Core 中的 Razor 頁面
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
-本教學課程將教導您建置 ASP.NET Core Razor 頁面的 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
 ## <a name="prerequisites"></a>必要條件
 
 安裝下列項目：
 
-* [.NET Core 2.0.0 SDK](https://dot.net/core) (含) 以上版本
+* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) (含) 以上版本
 * [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="create-a-razor-web-app"></a>建立 Razor Web 應用程式
@@ -53,7 +53,7 @@ dotnet run
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)，啟動瀏覽器，然後巡覽至 `http://localhost:5000`。
+在 Visual Studio 中，選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)，啟動瀏覽器，然後巡覽至 `http://localhost:5000`。
 
 在下一個教學課程中，我們可以將模型新增至專案。
 

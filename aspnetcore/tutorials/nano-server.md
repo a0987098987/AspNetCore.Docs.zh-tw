@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: affd5bb36f33aab5cdff6904016b628794462d97
-ms.sourcegitcommit: 26166785ad181a8519cb008800d71d96499b0499
+ms.openlocfilehash: 39e9dea5b3cbd43f41f8a9bceb5d5f8eb6adb16d
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server 上的 ASP.NET Core 與 IIS
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/01/2017
 
 ## <a name="introduction"></a>簡介
 
-Nano Server 是 Windows Server 2016 中的安裝選項，提供比 Server Core 或完整伺服器更小的使用量、更佳的安全性，以及更好的服務。 如需 180 天評估版的詳細資訊和下載連結，請參閱官方的 [Nano Server 文件](https://technet.microsoft.com/library/mt126167.aspx)。 
+Nano Server 是 Windows Server 2016 中的安裝選項，提供比 Server Core 或完整伺服器更小的使用量、更佳的安全性，以及更好的服務。 如需 180 天評估版的詳細資訊和下載連結，請參閱官方的 [Nano Server 文件](https://docs.microsoft.com/windows-server/get-started/getting-started-with-nano-server)。 
 
 有三種簡單的方法可讓您試用 Nano Server。 當您使用 MS 帳戶登入時：
 
@@ -106,7 +106,7 @@ Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
 
 ## <a name="installing-the-aspnet-core-module-ancm"></a>安裝 ASP.NET Core Module (ANCM)
 
-ASP.NET Core Module 是 IIS 7.5 + 模組，其負責 ASP.NET Core HTTP 接聽程式的處理序管理，以及對其所管理之處理序的 Proxy 要求。 目前，為 IIS 安裝 ASP.NET Core Module 的程序是手動作業。 您需要在一般 (不是 Nano) 電腦上安裝[.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 在一般電腦上安裝套件組合之後，必須將下列檔案複製到我們稍早建立的檔案共用。
+ASP.NET Core Module 是 IIS 7.5 + 模組，其負責 ASP.NET Core HTTP 接聽程式的處理序管理，以及對其所管理之處理序的 Proxy 要求。 目前，為 IIS 安裝 ASP.NET Core Module 的程序是手動作業。 您需要在一般 (不是 Nano) 電腦上安裝[.NET Core Windows Server 裝載套件組合](https://download.microsoft.com/download/B/1/D/B1D7D5BF-3920-47AA-94BD-7A6E48822F18/DotNetCore.2.0.0-WindowsHosting.exe)。 在一般電腦上安裝套件組合之後，必須將下列檔案複製到我們稍早建立的檔案共用。
 
 在含有 IIS 的一般 (不是 Nano) 伺服器上，執行下列複製命令：
 

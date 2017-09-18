@@ -11,15 +11,15 @@ ms.assetid: fa9b0cb7-afb3-4361-9e7e-33afffeaca0c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/apache-proxy
-ms.openlocfilehash: 831e2fa148e52f6447e9065f5949785627d5e248
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 9dc22ea20a6ae2e2477f9e6db95ddabecc038dcb
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-apache-and-deploy-to-it"></a>在 Linux 上使用 Apache 設定並部署到 ASP.NET Core 裝載環境
 
-作者：[Shayne Boyer](https://www.github.com/spboyer)
+作者：[Shayne Boyer](https://github.com/spboyer)
 
 Apache 是非常熱門的 HTTP 伺服器，類似於 nginx，可以設定為 Proxy 來重新導向 HTTP 流量。 在本指南中，我們將了解如何在 CentOS 7 上設定 Apache，並使用它作為反向 Proxy 來接受連入連線並重新導向至在 Kestrel 上執行的 ASP.NET Core 應用程式。 基於此目的，我們將使用 *mod_proxy* 延伸模組和其他相關的 Apache 模組。
 
@@ -134,7 +134,8 @@ Apache 已設定完成，可將向 `http://localhost:80` 提出的要求轉送�
     WorkingDirectory=/var/aspnetcore/hellomvc
     ExecStart=/usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
     Restart=always
-    RestartSec=10                                          # Restart service after 10 seconds if dotnet service crashes
+    # Restart service after 10 seconds if dotnet service crashes
+    RestartSec=10
     SyslogIdentifier=dotnet-example
     User=apache
     Environment=ASPNETCORE_ENVIRONMENT=Production 

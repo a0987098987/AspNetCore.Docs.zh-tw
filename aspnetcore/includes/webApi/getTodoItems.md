@@ -3,7 +3,7 @@
 上述程式碼：
 
 * 定義空白控制器類別。 在接下來的幾節中，我們將新增實作 API 的方法。
-* 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`TodoContext `) 插入到控制器中。 控制器中的每一個 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
+* 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`TodoContext `) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 * 建構函式會將項目新增至記憶體內部資料庫 (如果項目不存在的話)。
 
 ## <a name="getting-to-do-items"></a>取得待辦事項

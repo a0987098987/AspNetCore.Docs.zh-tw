@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 734dad7778eba41780f9d3ac0685879687288d47
-ms.sourcegitcommit: 8f5277871eff86134ebf68d3737196cfd4a62c2c
+ms.openlocfilehash: ed1ad71b6b1395bce1dd287e86e499e23446f190
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
 
@@ -24,13 +24,13 @@ ms.lasthandoff: 08/13/2017
 
 ## <a name="validation"></a>驗證
 
-軟體開發的核心原則稱為 [DRY](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
+軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
 
 Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
-開啟 *Movie.cs* 檔案。 [DataAnnotations](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
+開啟 *Movie.cs* 檔案。 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 提供一組內建的驗證屬性 (attribute)，其以宣告方式套用至類別或屬性 (property)。 DataAnnotations 也包含格式化屬性 (如 `DataType`)，可協助進行格式化，但不提供驗證。
 
 更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
@@ -49,7 +49,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](validation/_static/val.png)
 
 > [!NOTE]
-> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](http://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期格式支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
@@ -83,7 +83,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
+[輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
 Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
 

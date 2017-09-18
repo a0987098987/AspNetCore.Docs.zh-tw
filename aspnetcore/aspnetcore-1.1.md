@@ -11,18 +11,18 @@ ms.assetid: 062f8353-d1bc-4e99-a821-c1d1bb162c47
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-1.1
-ms.openlocfilehash: 7fdb00bc64cb20bd0e658b3a81814059404476d2
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 6b1c6648a55e966f448a383440b2b4f0d8e5afa1
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1 的新功能
 
 ASP.NET Core 1.1 包含下列新功能：
 
-- [URL 重寫中介軟體](https://docs.microsoft.com/aspnet/core/fundamentals/url-rewriting)
-- [回應快取中介軟體](https://docs.microsoft.com/aspnet/core/performance/caching/middleware)
+- [URL 重寫中介軟體](xref:fundamentals/url-rewriting)
+- [回應快取中介軟體](xref:performance/caching/middleware)
 - [檢視元件作為標記協助程式](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [中介軟體作為 MVC 篩選條件](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
 - [Cookie 架構 TempData 提供者](xref:fundamentals/app-state#cookie-based-tempdata-provider )

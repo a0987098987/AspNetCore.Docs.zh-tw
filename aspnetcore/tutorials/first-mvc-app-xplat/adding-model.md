@@ -11,11 +11,11 @@ ms.assetid: 8dc28498-eeee-4666-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/adding-model
-ms.openlocfilehash: 054ef316461447ab651cca8c4f324e7b4e98f856
-ms.sourcegitcommit: d9e2c99c837078fcac0e315025f8fbfbd45ea6e8
+ms.openlocfilehash: c68466a645687b6fe0193e9deec2f32632e6f0e7
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/12/2017
 ---
 [!INCLUDE[adding-model1](../../includes/mvc-intro/adding-model1.md)]
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/28/2017
 
    [!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?name=snippet2&highlight=6-7)]
 
-  這會告知 Entity Framework 哪些模型類別包含在資料模型中。 您是在定義電影物件的一個「實體集」，它會在資料庫中以電影資料表表示。
+  這會告知 Entity Framework 哪些模型類別包含在資料模型中。 您是在定義電影物件的一個「實體集」，它會在資料庫中以「電影」資料表表示。
 
 - 建置專案以確認沒有任何錯誤。
 
@@ -68,7 +68,7 @@ Scaffolding 引擎會建立下列各項：
 * 電影控制器 (*Controllers/MoviesController.cs*)
 * Create、Delete、Details、Edit 和 Index 頁面的 Razor 檢視檔案 (*Views/Movies/\*.cshtml*)
 
-自動建立 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。 您很快就會擁有一個正常運作的 Web 應用程式，可讓您管理電影資料庫。
+自動建立 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。 您很快就會擁有一個正常運作的 Web 應用程式，可讓您管理電影資料庫。
 
 [!INCLUDE[adding-model 2x](../../includes/mvc-intro/adding-model2xp.md)]
 

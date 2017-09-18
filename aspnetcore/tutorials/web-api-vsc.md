@@ -11,11 +11,11 @@ ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: abe088f2c9df94135209ce71540e6b345186ee70
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 17687e38aae066bdab4663268a2af54f20a6ad75
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>在 macOS、Linux 和 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建立 Web API
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/11/2017
 ## <a name="set-up-your-development-environment"></a>設定您的開發環境
 
 下載與安裝：
-- [.NET Core](https://microsoft.com/net/core)
+- [.NET Core](https://www.microsoft.com/net/core)
 - [Visual Studio Code](https://code.visualstudio.com)
 - Visual Studio Code [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 
@@ -114,9 +114,9 @@ dotnet new webapi
 - [整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)
 - [鍵盤快速鍵](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Mac 鍵盤快速鍵](https://go.microsoft.com/fwlink/?linkid=832143)
-  - [Linux 鍵盤快速鍵](https://go.microsoft.com/fwlink/?linkid=832144)
-  - [Windows 鍵盤快速鍵](https://go.microsoft.com/fwlink/?linkid=832145)
+  - [Mac 鍵盤快速鍵](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
+  - [Linux 鍵盤快速鍵](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+  - [Windows 鍵盤快速鍵](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 [!INCLUDE[next steps](../includes/webApi/next.md)]
 

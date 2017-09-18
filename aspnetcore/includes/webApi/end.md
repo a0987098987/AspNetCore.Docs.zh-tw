@@ -6,7 +6,7 @@
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-這是 HTTP POST 方法，以 [`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) 屬性表示。 [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
+這是 HTTP POST 方法，以 [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api) 屬性表示。 [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
 
 `CreatedAtRoute` 方法會傳回 201 回應，這是 HTTP POST 方法的標準回應，可在伺服器上建立新的資源。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
 
@@ -46,7 +46,7 @@ public IActionResult GetById(long id)
 
 `Update` 類似於 `Create`，但是會使用 HTTP PUT。 回應是 [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是差異。 若要支援部分更新，請使用 HTTP PATCH。
 
-![顯示 204 (沒有內容) 回應的 Postman 主控台](../../tutorials/first-web-api/_static/pmcput.png)
+![顯示「204 (沒有內容) 回應」的 Postman 主控台](../../tutorials/first-web-api/_static/pmcput.png)
 
 ### <a name="delete"></a>刪除
 

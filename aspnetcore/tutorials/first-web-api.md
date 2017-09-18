@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
-ms.openlocfilehash: c57c73c6f9c60874ef88749b838ed1cc1d353ead
-ms.sourcegitcommit: 7fef13045e98d716c589a2982613dad261694a65
+ms.openlocfilehash: 4aab61c7ee4498b33a4ea8bbec6033ce9828e2af
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/12/2017
 ---
 #<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/31/2017
 
 [!INCLUDE[install 2.0](../includes/install2.0.md)]
 
-若要了解 ASP.NET Core 1.1 版，請參閱[此 PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)。
+若要了解 ASP.NET Core 1.1 版，請參閱[此 PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)。
 
 ## <a name="create-the-project"></a>建立專案
 

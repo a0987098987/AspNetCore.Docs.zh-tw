@@ -11,18 +11,18 @@ ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-ms.openlocfilehash: f7852f0dddb0585089f5ccd8f4c865f5b87b049b
-ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
+ms.openlocfilehash: c81e1328fda6d1652ab937bd580be2342924d241
+ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/12/2017
 ---
 # <a name="getting-started-with-aspnet-core"></a>開始使用 ASP.NET Core
 
 > [!NOTE]
 > 這些指示是針對最新版本的 ASP.NET Core。 要從較早版本開始入門嗎？ 請參閱 [1.1 版的本教學課程](xref:getting-started-1.1)。
 
-1. 安裝 [.NET Core](https://microsoft.com/net/core/)。
+1. 安裝 [.NET Core](https://www.microsoft.com/net/core/)。
 
 2. 建立新的 .NET Core 專案。
 

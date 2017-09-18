@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 949733119b4e3a4b8716f2bcc1f631949d5049bc
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 6bde59ddbf153ada36034765b390892ec2ed5997
+ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/17/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
@@ -30,7 +30,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需有關如何選擇 EF 資訊 6.x 和 EF 核心，請參閱[EF 核心 vs。EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
-> * 如需本教學課程的 ASP.NET Core 1.1 版本，請參閱[本教學課程以 PDF 格式的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf)。
+> * 如需本教學課程的 ASP.NET Core 1.1 版本，請參閱[本教學課程以 PDF 格式的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
 > * 如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET 核心文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
 
 ## <a name="prerequisites"></a>必要條件
@@ -80,7 +80,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 * 按一下 [確定] 
 
-  ![新增 ASP.NET 專案 對話方塊](intro/_static/new-aspnet.png)
+  ![[新增 ASP.NET 專案] 對話方塊](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>設定站台樣式
 
@@ -168,7 +168,7 @@ Entity Framework 會解譯為外部索引鍵屬性屬性如果名稱為`<navigat
 
 ## <a name="create-the-database-context"></a>建立的資料庫內容
 
-協調對給定的資料模型的 Entity Framework 功能的主要類別是資料庫內容類別。 您可以透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立此類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
+協調對給定的資料模型的 Entity Framework 功能的主要類別是資料庫內容類別。 若要建立此類別，您可以從 `Microsoft.EntityFrameworkCore.DbContext` 類別來衍生。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
 
 在專案資料夾中，建立名為資料夾*資料*。
 
@@ -204,7 +204,7 @@ EF 建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬性名�
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 視需要啟動 LocalDB，並以使用者模式執行，因此沒有複雜的設定。 根據預設，建立 LocalDB *.mdf*資料庫中的檔案`C:/Users/<user>`目錄。
+連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，建立 LocalDB *.mdf*資料庫中的檔案`C:/Users/<user>`目錄。
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>加入程式碼以初始化測試資料的資料庫
 
@@ -242,7 +242,7 @@ CRUD 動作方法和檢視表的自動建立稱為 scaffolding。 Scaffolding �
 
 * 以滑鼠右鍵按一下**控制器**資料夾中的**方案總管 中**選取**新增 > 新的 Scaffold 項目**。
 
-* 在**將 MVC 相依性**對話方塊中，選取**最少的相依性**，然後選取**新增**。
+* 在 [新增 MVC 相依性] 對話方塊中，選取 [基本相依性]，然後選取 [新增]。
 
   ![新增相依性](intro/_static/add-depend.png)
 

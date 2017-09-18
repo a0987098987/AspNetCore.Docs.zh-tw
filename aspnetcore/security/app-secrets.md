@@ -1,20 +1,20 @@
 ---
-title: "安全儲存體的過程中的程式開發 ASP.NET Core 應用程式密碼"
+title: "安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼"
 author: rick-anderson
 description: "示範如何安全地將密碼儲存在開發期間"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 09/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: 56214c2fbdca84591c5c1a6b7f2451f33ee64ef0
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e112cc5ef9cba5aff6470ce4b9b1091a3c2b2600
+ms.sourcegitcommit: f1271b218d7dfdc806ec8f411c81f3750130463d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/15/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼
 
@@ -42,36 +42,19 @@ ms.lasthandoff: 09/12/2017
 >[!WARNING]
 > 密碼管理員工具不會加密預存機密資料，並不會被視為受信任存放區。 它是僅限開發用途。 索引鍵和值會儲存在使用者設定檔的目錄中的 JSON 組態檔。
 
-### <a name="visual-studio-2017-installing-the-secret-manager-tool"></a>Visual Studio 2017： 安裝 「 密碼管理員工具
+## <a name="installing-the-secret-manager-tool"></a>安裝密碼管理員工具
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 以滑鼠右鍵按一下方案總管 中的專案，然後選取**編輯\<project_name\>.csproj**從內容功能表。 將反白顯示的行加入*.csproj*檔案，並將儲存到還原相關聯的 NuGet 套件：
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
-以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此筆勢加入新`UserSecretsId`節點內`PropertyGroup`的*.csproj*檔案。 它也會開啟`secrets.json`文字編輯器中的檔案。
+以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此筆勢加入新`UserSecretsId`節點內`PropertyGroup`的*.csproj*檔案，以反白顯示在下列範例中：
 
-將下列內容加入 `secrets.json`：
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
-```json
-{
-    "MySecret": "ValueOfMySecret"
-}
-```
-
-### <a name="visual-studio-2015-installing-the-secret-manager-tool"></a>Visual Studio 2015： 安裝 「 密碼管理員工具
-
-開啟專案的`project.json`檔案。 將參考加入`Microsoft.Extensions.SecretManager.Tools`內`tools`屬性，並儲存至還原相關聯的 NuGet 套件：
-
-```json
-"tools": {
-    "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-},
-```
-
-以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此筆勢加入新`userSecretsId`屬性`project.json`。 它也會開啟`secrets.json`文字編輯器中的檔案。
-
-將下列內容加入 `secrets.json`：
+儲存已修改*.csproj*檔案也會開啟`secrets.json`文字編輯器中的檔案。 取代內容`secrets.json`以下列程式碼檔案：
 
 ```json
 {
@@ -79,11 +62,11 @@ ms.lasthandoff: 09/12/2017
 }
 ```
 
-### <a name="visual-studio-code-or-command-line-installing-the-secret-manager-tool"></a>Visual Studio 程式碼或命令列： 安裝 「 密碼管理員工具
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-新增`Microsoft.Extensions.SecretManager.Tools`至*.csproj*檔，然後執行`dotnet restore`。
+新增`Microsoft.Extensions.SecretManager.Tools`至*.csproj*檔，然後執行`dotnet restore`。 若要安裝的命令列使用的密碼管理員工具，您可以使用相同的步驟。
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 測試密碼管理員工具執行下列命令：
 
@@ -100,7 +83,7 @@ dotnet user-secrets -h
 
 新增`UserSecretsId`中的專案*.csproj*檔案：
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?range=7-9&highlight=2)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 您可以使用密碼管理員工具來設定密碼。 例如，在命令視窗從專案目錄中，輸入下列內容：
 
@@ -115,6 +98,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 ```
 
 您也可以使用密碼管理員工具來列出、 移除，並清除應用程式密碼。
+
+-----
 
 ## <a name="accessing-user-secrets-via-configuration"></a>透過設定存取的使用者密碼
 

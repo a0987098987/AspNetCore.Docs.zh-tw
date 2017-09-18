@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 2f99a5d3db84c3fd3f7ebcb8bccd9a4b8bc8e2b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8fe21b1a1ccb93c124dbd12a540b195400d45ef6
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -117,7 +117,7 @@ config.SignIn.RequireConfirmedEmail = true;
 
 在本教學課程，SendGrid 用來傳送電子郵件。 您需要 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您傳送電子郵件使用 SendGrid 或另一個電子郵件服務。
 
-[選項模式](xref:fundamentals/configuration#options-config-objects)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration#fundamentals-configuration)。
+[選項模式](xref:fundamentals/configuration#options-config-objects)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
 
 建立可擷取保護電子郵件的索引鍵的類別。 此範例中，`AuthMessageSenderOptions`中建立類別*Services/AuthMessageSenderOptions.cs*檔案。
 

@@ -1,5 +1,5 @@
 ---
-title: "在 ASP.NET Core 組態"
+title: "ASP.NET Core 的設定"
 author: rick-anderson
 description: "了解如何設定 ASP.NET Core 應用程式使用多個來源使用的組態 API。"
 keywords: "ASP.NET Core，組態中，JSON 中設定"
@@ -11,15 +11,13 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 041bb04a3a3699a166a03338865da154403d8c07
-ms.sourcegitcommit: f535ce61c6a5e615bc6399b5d763c734396231f4
+ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/14/2017
 ---
-<a name=fundamentals-configuration></a>
-
-# <a name="configuration-in-aspnet-core"></a>在 ASP.NET Core 組態
+# <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
 [Rick Anderson](https://twitter.com/RickAndMSFT)，[標記 Michaelis](http://intellitect.com/author/mark-michaelis/)， [Steve Smith](https://ardalis.com/)，和[奧 Roth](https://github.com/danroth27)
 
@@ -287,7 +285,7 @@ public void CanBindObjectTree()
 
 [!code-json[Main](configuration/sample/CustomConfigurationProvider/appsettings.json)]
 
-顯示下列項目：
+此時會顯示下列對話方塊：
 
 ```console
 key1=value_from_ef_1

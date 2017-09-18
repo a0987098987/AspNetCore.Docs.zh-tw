@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: c14e7d61e8b353c18fc4a4f2bf3658069982bad5
-ms.sourcegitcommit: e832a9b9f41a8b26a8c88edfd8fc35b8bfd97d5d
+ms.openlocfilehash: 7a845cec23f662dd6fe48044b819099f2c20ecb3
+ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0
 
 作者：[Scott Addie](https://github.com/scottaddie)
 
-在本文中，我們將引導您將現有的 ASP.NET Core 1.x 專案更新至 ASP.NET Core 2.0。 將應用程式移轉至 ASP.NET Core 2.0 可讓您充分利用[許多新功能和效能改進](https://go.microsoft.com/fwlink/?linkid=854094)。 
+在本文中，我們將引導您將現有的 ASP.NET Core 1.x 專案更新至 ASP.NET Core 2.0。 將應用程式移轉至 ASP.NET Core 2.0 可讓您充分利用[許多新功能和效能改進](https://docs.microsoft.com/aspnet/core/aspnetcore-2.0)。 
 
 現有的 ASP.NET Core 1.x 應用程式是根據特定版本的專案範本。 隨著 ASP.NET Core 架構發展，其中內含的專案範本和起始程式碼也跟著演進。 除了更新 ASP.NET Core 架構之外，您還需要更新應用程式的程式碼。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="update-target-framework-moniker-tfm"></a>更新 Target Framework Moniker (TFM)
 以 .NET Core 為目標的專案應該使用版本大於或等於 .NET Core 2.0 的 [TFM](/dotnet/standard/frameworks#referring-to-frameworks)。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `netcoreapp2.0` 取代其內部文字：
 
-[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App.csproj?range=3)]
+[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
 
 以 .NET Framework 為目標的專案應該使用版本大於或等於 .NET Framework 4.6.1 的 TFM。 在 *.csproj* 檔案中搜尋 `<TargetFramework>` 節點，並以 `net461` 取代其內部文字：
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>更新 global.json 中的 .NET Core SDK 版本
 如果您的方案依賴 [*global.json* ](https://docs.microsoft.com/dotnet/core/tools/global-json) 檔案而以特定的 .NET Core SDK 版本為目標，請更新其 `version` 屬性，以使用您電腦上安裝的 2.0 版：
 
-[!code-json[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/global.json?highlight=3)]
+[!code-json[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 
 <a name="package-reference"></a>
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 08/18/2017
 
 在以 .NET Core 2.0 為目標的 ASP.NET Core 2.0 專案中，*.csproj* 檔案中的單一[中繼套件](xref:fundamentals/metapackage) metapackage 參考會取代套件的集合：
 
-[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App.csproj?range=9-11)]
+[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=8-10)]
 
 中繼套件包含 ASP.NET Core 2.0 和 Entity Framework Core 2.0 的所有功能。
 
@@ -74,35 +74,55 @@ ms.lasthandoff: 08/18/2017
 
 例如，以下是以 .NET Core 2.0 為目標的典型 ASP.NET Core 2.0 專案所使用的 CLI 工具清單：
 
-[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App.csproj?range=13-17)]
+[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=12-16)]
 
 <a name="package-target-fallback"></a>
 
 ## <a name="rename-package-target-fallback-property"></a>重新命名套件目標後援屬性
 1.x 專案的 *.csproj* 檔案使用 `PackageTargetFallback` 節點和變數：
 
-[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App.csproj?range=5)]
+[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=5)]
 
 將節點與變數都重新命名為 `AssetTargetFallback`：
 
-[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App.csproj?range=5)]
+[!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=4)]
 
 <a name="program-cs"></a>
 
 ## <a name="update-main-method-in-programcs"></a>更新 Program.cs 中的 Main 方法
 在 1.x 專案中，*Program.cs*的 `Main` 方法看起來像這樣：
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
 
 在 2.0 專案中，*Program.cs*的 `Main` 方法已經過簡化：
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2.0App/AspNetCoreDotNetCore2.0App/Program.cs?highlight=8-11)]
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program.cs?highlight=8-11)]
 
-強烈建議您採用這個新的 2.0 模式，如 [Entity Framework Core 移轉](xref:data/ef-mvc/migrations)之類的產品功能需要這個模式才能運作。 例如，從 [套件管理員主控台] 視窗執行 `Update-Database` 或從命令列 (在轉換成 ASP.NET Core 2.0 的專案中) 執行 `dotnet ef database update` 會產生下列錯誤：
+強烈建議您採用這個新的 2.0 模式，像[Entity Framework (EF) Core 移轉](xref:data/ef-mvc/migrations)這類的產品功能必須有這個模式才能運作。 例如，從 [套件管理員主控台] 視窗執行 `Update-Database` 或從命令列 (在轉換成 ASP.NET Core 2.0 的專案中) 執行 `dotnet ef database update` 會產生下列錯誤：
 
 ```
 Unable to create an object of type '<Context>'. Add an implementation of 'IDesignTimeDbContextFactory<Context>' to the project, or see https://go.microsoft.com/fwlink/?linkid=851728 for additional patterns supported at design time.
 ```
+
+<a name="db-init-code"></a>
+
+## <a name="move-database-initialization-code"></a>移動資料庫初始化程式碼
+在使用 EF Core 1.x 的 1.x 專案中，`dotnet ef migrations add` 這類命令會執行下列作業：
+1. 將 `Startup` 執行個體具現化
+2. 叫用 `ConfigureServices` 方法以註冊所有具相依性導入的服務 (包括 `DbContext` 類型)
+3. 執行其必要工作
+
+在使用 EF Core 2.0 的 2.0 專案中，則會叫用 `Program.BuildWebHost` 來取得應用程式服務。 與 1.x 不同的是，這會有叫用 `Startup.Configure` 的額外副作用。 如果您的 1.x 應用程式在其 `Configure` 方法中叫用了資料庫初始化程式碼，可能會發生未預期的問題。 例如，如果資料庫尚不存在，植入程式碼會在 EF Core 移轉命令執行前就執行程式碼。 如果資料庫尚不存在，這個問題會造成 `dotnet ef migrations list` 命令失敗。
+
+請考慮在 *Startup.cs* 的 `Configure` 方法中使用下列 1.x 植入初始化程式碼：
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_ConfigureSeedData&highlight=8)]
+
+在 2.0 專案中，將 `SeedData.Initialize` 呼叫移到 *Program.cs* 的 `Main` 方法：
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
+
+從 2.0 開始，除了建置及設定網頁主機外，並不適合在 `BuildWebHost` 中執行任何作業。 有關執行應用程式的任何作業都應該在 `BuildWebHost` 外處理 &mdash; 通常會在 *Program.cs* 的 `Main` 方法中處理。
 
 <a name="view-compilation"></a>
 
@@ -124,15 +144,15 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 1. 從 *.csproj* 檔案中移除下列 `<PackageReference />` 節點：
     
-    [!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App.csproj?range=10)]
+    [!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
 2. 從 *Program.cs* 中移除 `UseApplicationInsights` 擴充方法引動過程：
 
-    [!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
+    [!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 
 3. 從 *_Layout.cshtml* 中移除 Application Insights 用戶端 API 呼叫。 它包含下列兩行程式碼：
 
-    [!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1.1App/AspNetCoreDotNetCore1.1App/Views/Shared/_Layout.cshtml?range=1,19)]
+    [!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19)]
 
 如果您要直接使用 Application Insights SDK，請繼續執行這項操作。 2.0 [中繼套件](xref:fundamentals/metapackage)含有最新版本的 Application Insights，因此如果您參考的是較舊的版本，就會出現套件降級錯誤。
 

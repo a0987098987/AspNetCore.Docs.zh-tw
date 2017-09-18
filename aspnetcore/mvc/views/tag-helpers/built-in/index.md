@@ -5,25 +5,25 @@ description: "ASP.NET Core 內建的標記協助程式"
 keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
-ms.date: 7/11/2017
+ms.date: 09/13/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 3f47cc571eff0c522aaf6543de58f158835384d4
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e7c8c64283ca3740698300689b10497f984cfd3e
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
 
-ASP.NET Core 架構包含許多標記協助程式，可協助您更有效率地撰寫健全的程式碼。 本節提供所有內建標記協助程式的概觀。
+ASP.NET Core 包含許多內建標記協助程式，能夠提高您的產能。 本節提供內建標記協助程式的概觀。
 
 > [!NOTE]
-> 有一些內建標記協助程式不會進行討論，因為它們是由 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用。 這包括 ~ 字元的標記協助程式，其可將範圍擴展到網站的根路徑。
+> 有一些標記協助程式由 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用，因此不會加以討論。 這包括 ~ 字元的標記協助程式，其可將範圍擴展到網站的根路徑。
 
 ## <a name="built-in-aspnet-core-tag-helpers"></a>內建的 ASP.NET Core 標記協助程式
 
@@ -37,13 +37,13 @@ ASP.NET Core 架構包含許多標記協助程式，可協助您更有效率地�
 
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/FormActionTagHelper)**
 
-[comment]: **[FormTagTagHelper](xref:mvc/views/tag-helpers/builtin-th/FormTagHelper)**
+**[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)**
 
 **[影像標記協助程式](xref:mvc/views/tag-helpers/builtin-th/ImageTagHelper)**
 
-[comment]: **[InputTagHelper](xref:mvc/views/tag-helpers/builtin-th/InputTagHelper)**
+**[輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)**
 
-[comment]: **[LabelTagHelper](xref:mvc/views/tag-helpers/builtin-th/LabelTagHelper)**
+**[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper)**
 
 [comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/LinkTagHelper)**
 
@@ -51,21 +51,15 @@ ASP.NET Core 架構包含許多標記協助程式，可協助您更有效率地�
 
 [comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/ScriptTagTagHelper)**
 
-[comment]: **[SelectTagHelper](xref:mvc/views/tag-helpers/builtin-th/SelectTagTagHelper)**
+**[選取標記協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)**
 
-[comment]: **[TextAreaTagHelper](xref:mvc/views/tag-helpers/builtin-th/TextAreaTagHelper)**
+**[Textarea 標記協助程式](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
 
-[comment]: **[ValidationMessageTagHelper](xref:mvc/views/tag-helpers/builtin-th/ValidationMessageTagHelper)**
+**[驗證訊息標記協助程式](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
 
-[comment]: **[ValidationSummaryTagHelper](xref:mvc/views/tag-helpers/builtin-th/ValidationSummaryTagHelper)**  
-  
-  
-<!--
+**[驗證摘要標記協助程式](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
 
-## Additional Resources
+## <a name="additional-resources"></a>其他資源
 
-REQUIRED These must be xref links, not relative, that is ../../
-* [Client-Side Development](../../../client-side/index.md)
-
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
--->
+* [用戶端開發](xref:client-side/index)
+* [標記協助程式](xref:mvc/views/tag-helpers/intro)

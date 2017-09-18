@@ -5,17 +5,17 @@ description: "使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式
 keywords: "ASP.NET Core, 教學課程, 使用者入門"
 ms.author: riande
 manager: wpickett
-ms.date: 08/07/2017
+ms.date: 08/30/2017
 ms.topic: get-started-article
 ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-ms.openlocfilehash: 3399df3958093da9117b013736b1cb370fd6beb2
-ms.sourcegitcommit: 297ee5d2f3b3b24eb8a2c4a25195c9e2973cb91b
+ms.openlocfilehash: f7852f0dddb0585089f5ccd8f4c865f5b87b049b
+ms.sourcegitcommit: fb518f856f31fe53c09196a13309eacb85b37a22
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="getting-started-with-aspnet-core"></a>開始使用 ASP.NET Core
 
@@ -28,21 +28,26 @@ ms.lasthandoff: 08/14/2017
 
    在 macOS 和 Linux 上，開啟終端機視窗。 在 Windows 上，開啟命令提示字元。
 
-   ```terminal
-   mkdir aspnetcoreapp
-   cd aspnetcoreapp
-   dotnet new web
-   ```
+    ```terminal
+    dotnet new razor -o aspnetcoreapp
+    ```
     
 4. 執行應用程式。
 
-   `dotnet run` 命令會在必要時先建置應用程式。
+    使用以下命令來執行應用程式：
 
-   ```terminal
-   dotnet run
-   ```
+    ```terminal
+    cd aspnetcoreapp
+    dotnet run
+    ```
 
-5. 瀏覽至 `http://localhost:5000`。
+5. 瀏覽至 [http://localhost:5000](http://localhost:5000)
+
+6. 開啟 *Pages/About.cshtml* 並修改頁面以顯示訊息 "Hello, world! 伺服器的時間為 @DateTime.Now：
+
+    [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
+
+7. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並驗證變更。
 
 ### <a name="next-steps"></a>後續步驟
 

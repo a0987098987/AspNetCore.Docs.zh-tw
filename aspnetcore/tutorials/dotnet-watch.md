@@ -11,11 +11,11 @@ ms.assetid: 563ffb3f-d369-4aa5-bf0a-7300b4e7832c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 30e0d07bdfbd16a475e03c1a21cdd10220bd1630
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 2ddcbfc30a839ed8dd72a632644bf73dcea777ac
+ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/11/2017
 ---
 # <a name="developing-aspnet-core-apps-using-dotnet-watch"></a>使用 dotnet watch 開發 ASP.NET Core 應用程式
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 08/11/2017
 
 `dotnet watch` 是一種工具，其會在來源檔案變更時執行 `dotnet` 命令。 例如，檔案變更可能會觸發編譯、測試或部署。
 
-在本教學課程中，我們會使用現有的 Web API 應用程式與兩個端點：一個傳回加總；一個則傳回產品。 Product 方法包含一個 Bug，我們會在本教學課程中一併修正。
+在本教學課程中，我們會使用現有的 Web API 應用程式與兩個端點：一個傳回加總，另一個傳回產品。 Product 方法包含一個 Bug，我們會在本教學課程中一併修正。
 
 下載[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含 `WebApp` (Web 應用程式) 和 `WebAppTests` (Web 應用程式的單元測試) 這兩個專案。
 
@@ -52,7 +52,7 @@ Application started. Press Ctrl+C to shut down.
 - 將 `Microsoft.DotNet.Watcher.Tools` 新增至 *.csproj* 檔案：
  ```xml
  <ItemGroup>
-   <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+   <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
  </ItemGroup> 
  ```
 

@@ -1,11 +1,20 @@
 ---
-title: "設定身分識別"
+title: "設定 ASP.NET Core 身分識別"
+author: AdrienTorris
+description: "了解 ASP.NET Core 識別預設值，並設定要使用自訂值的各種識別屬性。"
+keywords: "ASP.NET Core，身分識別驗證安全性"
+ms.author: scaddie
+manager: wpickett
+ms.date: 09/18/2017
+ms.topic: article
+ms.technology: aspnet
+ms.prod: asp.net-core
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 7ccd89360a8c7f5c8c6dfac76df42898e18a116a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 629fcc2941b2d2fda9604a3eac04be3d0f5294b2
+ms.sourcegitcommit: ddefc78270bd9b5ae0b1bd8de6c45f6977e7dceb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="configure-identity"></a>設定身分識別
 

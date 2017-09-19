@@ -11,11 +11,11 @@ ms.assetid: d026a58c-67f4-411e-a410-c35f29c2c517
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 7befd983f6a45839868639708ec5cf45bf2df35f
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5688ff2c36907231f88d45cef4ae1b1c60ab44ab
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="context-headers"></a>內容標頭
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 ## <a name="background-and-theory"></a>背景和理論上
 
-在資料保護系統中，「 金鑰 」 表示的物件，可提供驗證加密服務。 每個索引鍵由唯一識別碼 (GUID)，它會具有演算法的資訊和 entropic 材料。 並非每個索引鍵執行唯一 entropy，但是系統無法強制執行，而且我們也要負責的開發人員可能會藉由修改現有的索引鍵中鑰匙圈的演算法資訊手動變更鑰匙圈。 若要達到指定這些情況下我們安全性需求的資料保護系統具有的概念[加密彈性](https://www.microsoft.com/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D121045)，可讓安全地使用單一 entropic 值不同的多個密碼編譯演算法。
+在資料保護系統中，「 金鑰 」 表示的物件，可提供驗證加密服務。 每個索引鍵由唯一識別碼 (GUID)，它會具有演算法的資訊和 entropic 材料。 並非每個索引鍵執行唯一 entropy，但是系統無法強制執行，而且我們也要負責的開發人員可能會藉由修改現有的索引鍵中鑰匙圈的演算法資訊手動變更鑰匙圈。 若要達到指定這些情況下我們安全性需求的資料保護系統具有的概念[加密彈性](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/)，可讓安全地使用單一 entropic 值不同的多個密碼編譯演算法。
 
 大部分的系統支援的加密彈性來達成包括一些有關裝載內部之演算法的識別資訊。 此演算法的 OID 通常是適合此。 不過，我們遇到的一個問題是有多種方式可以指定相同的演算法:"AES 」 (CNG) 和 managed Aes、 AesManaged、 AesCryptoServiceProvider、 AesCng 和 RijndaelManaged （要有特定的參數） 類別所有實際上都相同件事，所以我們需要維護所有這些至正確的 OID 的對應。 如果開發人員想要提供自訂的演算法 （或甚至是另一個實作 AES ！），他們必須告訴 OID。 此額外的註冊步驟可讓系統設定特別人痛苦。
 

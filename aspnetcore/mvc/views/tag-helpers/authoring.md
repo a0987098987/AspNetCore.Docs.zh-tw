@@ -5,18 +5,18 @@ description: "了解如何撰寫 ASP.NET Core 中標記協助程式。"
 keywords: "ASP.NET Core，標記協助程式"
 ms.author: riande
 manager: wpickett
-ms.date: 6/14/2017
+ms.date: 06/14/2017
 ms.topic: article
 ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97013d06273c0993b74cdacfa16cb0d655c73667
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 1a5222da1380c2fe768b287bfa1a49b300c02f2b
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>撰寫 ASP.NET Core，範例與逐步解說中的標記協助程式
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 09/12/2017
     public class Email : TagHelper
     ```
 
-2.  讓`EmailTagHelper`類別提供至所有我們 Razor 檢視中，加入`addTagHelper`指示詞加入*Views/_ViewImports.cshtml*檔案： [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+2.  若要讓`EmailTagHelper`類別提供至所有我們 Razor 檢視中，加入`addTagHelper`指示詞加入*Views/_ViewImports.cshtml*檔案：[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
     
     上述程式碼會使用的萬用字元語法來指定將可使用我們的組件中的所有標記協助程式。 之後的第一個字串`@addTagHelper`指定載入標記協助程式 (使用"*"的所有標記協助程式)，而第二個字串"AuthoringTagHelpers 」 指定標記協助程式組件。 此外，請注意，第二行帶來中使用的萬用字元語法的 ASP.NET Core MVC 標記協助程式 (這些 helper 會討論[標記協助程式簡介](intro.md)。)它是`@addTagHelper`使標記協助程式可使用 Razor 檢視的指示詞。 或者，您可以提供完整的名稱 (FQN) 標記協助程式，如下所示：
     
@@ -108,7 +108,7 @@ ms.lasthandoff: 09/12/2017
 
 該方法的效果 」 href"的屬性，只要它目前並不存在於屬性集合。 您也可以使用`output.Attributes.Add`方法，以加入標記屬性集合的結尾標記協助程式屬性。
 
-1.  更新中的標記*Views/Home/Contact.cshtml*這些變更的檔案： [!code-html [Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+1.  更新中的標記*Views/Home/Contact.cshtml*這些變更的檔案：[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 2.  執行應用程式，並確認它會產生正確的連結。
     
@@ -183,7 +183,7 @@ ms.lasthandoff: 09/12/2017
 
 1.  新增*模型*資料夾。
 
-2.  加入下列`WebsiteContext`類別*模型*資料夾：
+2.  將下列 `WebsiteContext` 類別新增至 *Models* 資料夾：
 
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 

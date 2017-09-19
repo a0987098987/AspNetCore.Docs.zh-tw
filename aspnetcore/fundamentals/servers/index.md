@@ -11,11 +11,11 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 17124f1ef181a4f1572d9375ae8cd27ce8845016
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 54c8e1ad7d4de7f953d9801c214c0bd577304f46
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -115,7 +115,7 @@ HTTP.sys 在 ASP.NET Core 1.x 中名為 WebListener。 如果在 Windows 上執�
 
 ## <a name="notes-about-aspnet-core-server-infrastructure"></a>ASP.NET Core 伺服器基礎結構的相關注意事項
 
-`Startup` 類別 `Configure` 方法中提供的 [`IApplicationBuilder`](https://docs.microsoft.com/aspnet/core/api) 會公開 [`IFeatureCollection`](https://docs.microsoft.com/aspnet/core/api) 類型的 `ServerFeatures` 屬性。 Kestrel 和 WebListener 都只公開單一功能 [`IServerAddressesFeature`](https://docs.microsoft.com/aspnet/core/api)，但不同的伺服器實作可能會公開其他的功能。
+`Startup` 類別 `Configure` 方法中提供的 [`IApplicationBuilder`](/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder) 會公開 [`IFeatureCollection`](/aspnet/core/api/microsoft.aspnetcore.http.features.ifeaturecollection) 類型的 `ServerFeatures` 屬性。 Kestrel 和 WebListener 都只公開單一功能 [`IServerAddressesFeature`](/aspnet/core/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature)，但不同的伺服器實作可能會公開其他的功能。
 
 `IServerAddressesFeature` 可用來找出伺服器實作在執行階段已繫結的連接埠。
 

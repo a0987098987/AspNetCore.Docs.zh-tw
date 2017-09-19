@@ -5,17 +5,17 @@ description: "示範如何防止對 ASP.NET Core 應用程式的開啟重新導�
 keywords: "ASP.NET Core，安全性，開啟重新導向攻擊"
 ms.author: riande
 manager: wpickett
-ms.date: 07/7/2017
+ms.date: 07/07/2017
 ms.topic: article
 ms.assetid: 4604e563-e91a-4ecd-b7ed-00b3f1eee2b5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 7a62b08d641de5a9df5c2f7d89bf6bf97ed8e39d
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 84354905d289847849719700de815502a0cb948f
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>防止 ASP.NET Core 應用程式中開啟的重新導向攻擊
 

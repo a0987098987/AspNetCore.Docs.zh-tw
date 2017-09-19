@@ -5,17 +5,17 @@ description: "自訂 ASP.NET Core MVC 中的模型繫結。"
 keywords: "ASP.NET Core、 模型繫結、 自訂的模型繫結器"
 ms.author: riande
 manager: wpickett
-ms.date: 4/10/2017
+ms.date: 04/10/2017
 ms.topic: article
 ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 2b95073bc0972908d0c0b2158a036e4374c7df4d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 999c4f76354ef6ce07733bbb8b0094be90c03c26
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="custom-model-binding"></a>自訂的模型繫結
 

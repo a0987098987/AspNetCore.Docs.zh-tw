@@ -5,16 +5,16 @@ description: "使用 ASP.NET Core 和 EF Core 來建立 Razor 頁面 Web 應用�
 keywords: "ASP.NET Core ,Razor 頁面, Scaffolding, Entity Framework Core, EF, EF Core, 資料庫, mac, macOS, Visual Studio for Mac"
 ms.author: riande
 manager: wpickett
-ms.date: 7/26/2017
+ms.date: 07/26/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/index
-ms.openlocfilehash: aeadfad58e043c6de46eab21a1b8fd765d7dc3b6
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 299e5c1cee28f3e5effb48f627848dc33e01c3cf
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core-and-visual-studio-for-mac"></a>使用 ASP.NET Core 和 Visual Studio for Mac 來建立 Razor 頁面 Web 應用程式
 

@@ -5,17 +5,17 @@ description: "了解如何使用應用程式組件，也就是 abstrations 透�
 keywords: "ASP.NET Core 應用程式組件、 應用程式組件"
 ms.author: riande
 manager: wpickett
-ms.date: 1/4/2017
+ms.date: 01/04/2017
 ms.topic: article
 ms.assetid: b355a48e-a15c-4d58-b69c-899963613a98
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: a5205ebab6c827b4e6af63287e56fe2b8f72c933
-ms.sourcegitcommit: 418e6aa4ab79474ecc4d0a6af573a3759b113fe4
+ms.openlocfilehash: 77d3a58d58493bf1b0b760ab9037d2778ba23441
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="application-parts-in-aspnet-core"></a>在 ASP.NET Core 應用程式組件
 
@@ -66,7 +66,7 @@ services.AddMvc()
 
 應用程式功能提供者會檢查應用程式組件，並對這些組件提供的功能。 有下列的 MVC 功能內建功能提供者：
 
-* [控制站](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
+* [控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
 * [中繼資料參考](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
 * [標記協助程式](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [檢視元件](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)

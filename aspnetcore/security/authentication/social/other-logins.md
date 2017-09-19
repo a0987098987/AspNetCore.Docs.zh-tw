@@ -3,16 +3,16 @@ title: "其他驗證提供者的簡短問卷調查。"
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 11/3/2016
+ms.date: 11/03/2016
 ms.topic: article
 ms.assetid: BC36CA84-3DE8-496E-9AA2-2F1B74AE8309
 ms.prod: asp.net-core
 uid: security/authentication/otherlogins
-ms.openlocfilehash: a7a7443129c23269dd10fd224d7f8c46011d5d11
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 617b7a7e90f2f27b96bd4d0f793ef69bf738dbde
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="short-survey-of-other-authentication-providers"></a>其他驗證提供者的簡短問卷調查
 

@@ -36,7 +36,8 @@
     "CnE_UE_Bugfixing_ENG@moravia.com"
   ],
   "branches_to_filter": [
-    "live"
+    "live",
+    "master"
   ],
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,

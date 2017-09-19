@@ -5,16 +5,16 @@ description: "了解如何開發 ASP.NET Core 應用程式的逐步指南清單�
 keywords: ASP.NET Core,
 ms.author: tdykstra
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 07/14/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: bf9a5b58d3c0a6a2e90dd4ee9a316de90640c79e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b3ea7688eefa69171fd1179de42497c98cf9302e
+ms.sourcegitcommit: 4d9c6d47bded895f3d9a35e9550e31ae213c083c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 

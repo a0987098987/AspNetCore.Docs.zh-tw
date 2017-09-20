@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 92136a6e5db68b4d7e5245e38960e4a1f01bfb73
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 647ab48fb83c5e2c79b5de371173bc644c65d831
+ms.sourcegitcommit: 98ecb0f1bae4886507b090c84ecd99ff1e5c46ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/17/2017
 ---
 # <a name="aspnet-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Web API 說明頁面
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 09/05/2017
 
 建置使用的應用程式時，了解 API 的各種方法對於開發人員而言可能是一項挑戰。
 
-搭配使用 [Swagger](http://swagger.io) 與 .NET Core 實作 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)，為您的 Web API 產生優良的文件與說明頁面，就像新增幾個 NuGet 套件和修改 *Startup.cs* 一樣簡單。
+搭配使用 [Swagger](https://swagger.io/) 與 .NET Core 實作 [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)，為您的 Web API 產生優良的文件與說明頁面，就像新增幾個 NuGet 套件和修改 *Startup.cs* 一樣簡單。
 
 * [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) 是用來為 ASP.NET Core Web API 產生 Swagger 文件的開放原始碼專案。
 
-* [Swagger](http://swagger.io) 是 RESTful API 的電腦可讀取表示法，可支援互動式文件、產生用戶端 SDK，以及可探索性。
+* [Swagger](https://swagger.io/) 是 RESTful API 的電腦可讀取表示法，可支援互動式文件、產生用戶端 SDK，以及可探索性。
 
 本教學課程是基於[使用 ASP.NET Core MVC 和 Visual Studio 建置第一個 Web API](xref:tutorials/first-web-api) 的範例。 如果您想要跟著做，請下載 [https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample) 上的範例。
 
@@ -275,7 +275,7 @@ UI 是由產生的 JSON 檔案所驅動，該檔案中也包含這些註解：
 
 ### <a name="data-annotations"></a>資料註釋
 
-使用 `System.ComponentModel.DataAnnotations` 中找到的屬性裝飾 API 控制器，有助於驅動 Swagger UI 元件。
+使用 `System.ComponentModel.DataAnnotations` 中的屬性來裝飾模型，以協助驅動 Swagger UI 元件。
 
 將 `[Required]` 屬性 (attribute) 新增至 `TodoItem` 類別的 `Name` 屬性 (property)：
 

@@ -11,11 +11,11 @@ ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 14ce45f0cd15b2de39f722767df076d2c0313787
-ms.sourcegitcommit: 6ece943781d8a56784bb6160f14da85210d3fcea
+ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
+ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/13/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/11/2017
 
 ## <a name="set-up-the-development-environment"></a>設定開發環境
 
-* 安裝 [.NET Core + Visual Studio 工具](http://go.microsoft.com/fwlink/?LinkID=798306)。
+* 安裝最新的 [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/)。 如果還沒有 Visual Studio，SDK 會安裝它。
 
 * 驗證您的 [Azure 帳戶](https://portal.azure.com/)。 您可以[建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)或[啟用 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
@@ -95,7 +95,7 @@ Visual Studio 會建立解決方案。
 
 * 為應用程式提供唯一名稱。 
 
-* 選取 MSDN 訂用帳戶。
+* 選取訂用帳戶。
 
 * 對資源群組選取 [新增...]，並輸入新資源群組的名稱。
 
@@ -160,7 +160,7 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 
 * 編輯 *Pages/About.cshtml* Razor 頁面，並變更其內容。 例如，您可以修改段落使其說出 "Hello ASP.NET Core!"：
 
-    [!code-html[關於](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * 以滑鼠右鍵按一下專案，然後再次選取 [發行...]。
 

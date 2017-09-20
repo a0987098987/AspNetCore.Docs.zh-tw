@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: 39e9dea5b3cbd43f41f8a9bceb5d5f8eb6adb16d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: dd1f2c8de58ea8d3a57e64ecc519184400cb52c8
+ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server 上的 ASP.NET Core 與 IIS
 
@@ -165,12 +165,11 @@ New-IISConfigCollectionElement $modules -ConfigAttribute @{"name"="AspNetCoreMod
 
 ## <a name="installing-net-core-framework"></a>安裝 .NET Core Framework
 
-如果您發行的是 Framework 相依的 (可攜式) 應用程式，則 .NET Core 必須安裝在目標電腦上。 在遠端 PowerShell 工作階段中執行下列 PowerShell 指令碼，以在 Nano Server 上安裝 .NET Framework。
+若應用程式以[與 Framework 相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)發行，就必須在伺服器上安裝 .NET Core。 在遠端 PowerShell 工作階段中使用 [dotnet-install.ps1 PowerShell 指令碼](https://dot.net/v1/dotnet-install.ps1)，以在 Nano Server 上安裝 .NET Core。 使用 `-Version` 參數傳遞 CLI 版本：
 
-> [!NOTE]
-> 若要了解 Framework 相依的部署 (FDD) 與獨立的部署 (SCD) 之間的差異，請參閱[部署選項](https://docs.microsoft.com/dotnet/articles/core/deploying/)。
-
-[!code-powershell[Main](nano-server/Download-Dotnet.ps1)]
+```console
+dotnet-install.ps1 -Version 2.0.0
+```
 
 ## <a name="publishing-the-application"></a>發行應用程式
 

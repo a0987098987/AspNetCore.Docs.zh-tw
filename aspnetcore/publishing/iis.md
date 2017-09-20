@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 351f3519643bc88fc3dd1c4fbac1c144c6837523
-ms.sourcegitcommit: 0a70706a3814d2684f3ff96095d1e8291d559cc7
+ms.openlocfilehash: 8ffadc1dede4053faa129a3b224aace901e70e14
+ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/18/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>在 Windows 上使用 IIS 設定並部署到 ASP.NET Core 裝載環境
 
@@ -66,38 +66,55 @@ ms.lasthandoff: 08/22/2017
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>使用 Visual Studio 發佈時安裝 Web Deploy
 
-如果您想要在 Visual Studio 中使用 Web Deploy 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/search/result.aspx?q=webdeploy&form=dlc)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
+如果您想要在 Visual Studio 中使用 Web Deploy 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
 
 ## <a name="application-configuration"></a>應用程式組態
 
 ### <a name="enabling-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在應用程式相依性的 *Microsoft.AspNetCore.Server.IISIntegration* 套件中包含相依性。 將 IIS Integration 中介軟體加入應用程式中，方法是將 *.UseIISIntegration()* 擴充方法新增至 *WebHostBuilder()*。 請注意，程式碼呼叫 *.UseIISIntegration()* 不影響程式碼的可攜性。
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+一般 *Program.cs* 會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 以開始設定主機。 `CreateDefaultBuilder` 會將 [Kestrel](xref:fundamentals/servers/kestrel) 設為網頁伺服器，並設定 [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) 的基底路徑與連接埠來啟用 IIS 整合：
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+在應用程式相依性的 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) 套件中包含相依性。 在 *WebHostBuilder* 新增 *UseIISIntegration* 擴充方法，將 IIS 整合中介程式併入應用程式中：
 
 ```csharp
 var host = new WebHostBuilder()
     .UseKestrel()
-    .UseContentRoot(Directory.GetCurrentDirectory())
     .UseIISIntegration()
-    .UseStartup<Startup>()
-    .Build();
+    ...
 ```
 
-### <a name="setting-iisoptions-for-the-iisintegration-service"></a>設定 IISIntegration 服務的 IISOptions
+`UseKestrel` 與 `UseIISIntegration` 都是必要項目。 呼叫 *UseIISIntegration* 的程式碼並不會影響程式碼的可攜性。 若應用程式不在 IIS 背後執行 (例如，應用程式直接在 Kestrel 上執行)，`UseIISIntegration` 就不會生效。
 
-若要設定 *IISIntegration* 服務選項，*ConfigureServices* 中請包括 *IISOptions* 的服務組態。
+---
+
+如需裝載的詳細資訊，請參閱[在 ASP.NET Core 中裝載](xref:fundamentals/hosting)。
+
+### <a name="iis-options"></a>IIS 選項
+
+若要設定 *IISIntegration* 服務選項，*ConfigureServices* 中請包括 *IISOptions* 的服務組態：
 
 ```csharp
-services.Configure<IISOptions>(options => {
-  ...
+services.Configure<IISOptions>(options => 
+{
+    ...
 });
 ```
 
-| 選項 | 設定|
-| --- | --- | 
-| AutomaticAuthentication | 如果為 true，則驗證中介軟體會改變要求使用者抵達和泛型挑戰回應。 如果為 false，則驗證中介軟體只會在 theAuthenticationScheme 明確指出時，提供挑戰的身分識別及回應。 |
-| ForwardClientCertificate | 如果為 true 且 `MS-ASPNETCORE-CLIENTCERT` 要求標頭已存在，則會填入 `ITLSConnectionFeature`。 |
-| ForwardWindowsAuthentication | 如果為 true，驗證中介軟體會使用平台處理常式的 Windows 驗證嘗試驗證。 如果為 false，則不會新增驗證中介軟體。 |
+| 選項                         | 預設 | 設定 |
+| ------------------------------ | ------- | ------- |
+| `AutomaticAuthentication`      | `true`  | 如果為 `true`，則驗證中介軟體設為 `HttpContext.User`並回應泛行挑戰。 如果為 `false`，則驗證中介軟體僅提供身分識別 (`HttpContext.User`) 並當 `AuthenticationScheme` 提出明確要求時，回應泛型挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 |
+| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
+| `ForwardClientCertificate`     | `true`  | 如果為 `true` 且 `MS-ASPNETCORE-CLIENTCERT` 要求標頭已存在，則會填入 `HttpContext.Connection.ClientCertificate`。 |
 
 ### <a name="webconfig"></a>web.config
 
@@ -154,7 +171,7 @@ services.Configure<IISOptions>(options => {
 ![[發佈] 對話方塊頁](iis/_static/pub-dialog.png)
 
 ### <a name="web-deploy-outside-of-visual-studio"></a>Visual Studio 外部的 Web Deploy
-您也可以從命令列使用 Visual Studio 外部的 Web Deploy。 如需詳細資訊，請參閱 [Web 部署工具](https://technet.microsoft.com/library/dd568996(WS.10).aspx)。
+您也可以從命令列使用 Visual Studio 外部的 Web Deploy。 如需詳細資訊，請參閱 [Web 部署工具](https://docs.microsoft.com/iis/publish/using-web-deploy/use-the-web-deployment-tool)。
 
 ### <a name="alternatives-to-web-deploy"></a>Web Deploy 的替代項目
 如果您不想使用 Web Deploy 或不是使用 Visual Studio，您可以使用 Xcopy、Robocopy 或 PowerShell 等任何一種方法，將應用程式移至主控系統。 Visual Studio 使用者可以使用[發佈範例](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md)。
@@ -185,12 +202,12 @@ services.Configure<IISOptions>(options => {
 
 * 執行 [powershell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) 建立適當的登錄項目 (例如，`.\Provision-AutoGenKeys.ps1 DefaultAppPool`)。 這會將金鑰存放在登錄中，使用具有全電腦金鑰的 DPAPI 保護。
 * 設定 IIS 應用程式集區載入使用者設定檔。 此設定位在應用程式集區 [進階設定] 下的 [處理序模型] 區段中。 將 [載入使用者設定檔] 設為 `True`。 這會將索引鍵儲存在使用者設定檔目錄下，使用具有應用程式集區使用的使用者帳戶特定金鑰的 DPAPI 保護。
-* 調整應用程式程式碼[將檔案系統用為 Keyring 存放區](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)。 使用 X509 憑證保護 Keyring，確保它是受信任的憑證。 例如，如果它是自我簽署的憑證，就必須放在受信任的根存放區。
+* 調整應用程式程式碼[將檔案系統用為 Keyring 存放區](xref:security/data-protection/configuration/overview)。 使用 X509 憑證保護 Keyring，確保它是受信任的憑證。 例如，如果它是自我簽署的憑證，就必須放在受信任的根存放區。
 
 在 Web 伺服陣列中使用 IIS 時：
 
 * 使用所有電腦都可以存取的檔案共用。
-* 將 X509 憑證部署到每一部電腦。  設定[程式碼中的資料保護](https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html)。
+* 將 X509 憑證部署到每一部電腦。  設定[程式碼中的資料保護](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)。
 
 ### <a name="1-create-a-data-protection-registry-hive"></a>1.建立資料保護登錄 Hive
 
@@ -244,7 +261,7 @@ ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
-IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>` 區段所影響，這些 IIS 功能適用於反向 Proxy 組態。 例如，您可能在系統層級設定 IIS 使用動態壓縮，但可使用應用程式之 *web.config* 檔案中的 `<urlCompression>` 元素，停用應用程式的該項設定。 如需詳細資訊，請參閱 [`<system.webServer>` 的組態參考](https://www.iis.net/configreference/system.webserver)、[ASP.NET Core 模組組態參考](xref:hosting/aspnet-core-module)，和[使用 IIS 模組與 ASP.NET Core](xref:hosting/iis-modules)。 如果您需要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (IIS 10.0+ 支援)，請參閱 IIS 參考文件之[環境變數\<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>` 區段所影響，這些 IIS 功能適用於反向 Proxy 組態。 例如，您可能在系統層級設定 IIS 使用動態壓縮，但可使用應用程式之 *web.config* 檔案中的 `<urlCompression>` 元素，停用應用程式的該項設定。 如需詳細資訊，請參閱 [`<system.webServer>` 的組態參考](https://docs.microsoft.com/iis/configuration/system.webServer/)、[ASP.NET Core 模組組態參考](xref:hosting/aspnet-core-module)，和[使用 IIS 模組與 ASP.NET Core](xref:hosting/iis-modules)。 如果您需要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (IIS 10.0+ 支援)，請參閱 IIS 參考文件之[環境變數\<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -433,7 +450,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[互通性的疑難排解](#troubleshooting-tips)。
 
-* 檢查 *web.config* 中 `<aspNetCore>` 元素的 *arguments* 屬性，以確認它是 (a) 與 Framework 相依部署的 *.\my_applciation.dll*；或 (b) 不存在的空字串 (*arguments=""*)，或獨立部署的應用程式引數清單 (*arguments="arg1, arg2, ..."*)。
+* 檢查 *web.config* 中 `<aspNetCore>` 元素的 *arguments* 屬性，以確認它是 (a) 與 Framework 相依部署的 *.\my_application.dll*；或 (b) 不存在的空字串 (*arguments=""*)，或獨立部署的應用程式引數清單 (*arguments="arg1, arg2, ..."*)。
 
 ### <a name="missing-net-framework-version"></a>遺失 .NET Framework 版本
 
@@ -509,6 +526,6 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * [ASP.NET Core 簡介](../index.md)
 
-* [Microsoft IIS 官方網站](http://www.iis.net/)
+* [Microsoft IIS 官方網站](https://www.iis.net/)
 
-* [Microsoft TechNet Library：Windows Server](https://technet.microsoft.com/library/bb625087.aspx)
+* [Microsoft TechNet Library：Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)

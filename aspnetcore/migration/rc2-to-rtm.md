@@ -1,8 +1,8 @@
 ---
 redirect_url: /aspnet/core/migration/index
-ms.openlocfilehash: 10bf888617024c4f194c15a3dcfd73ed78cfc496
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
-ms.translationtype: HT
+ms.openlocfilehash: 28164d8d6d171893fbc14eada4bcdb1d66a85818
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---

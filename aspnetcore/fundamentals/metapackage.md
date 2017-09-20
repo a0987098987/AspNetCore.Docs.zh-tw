@@ -1,20 +1,20 @@
 ---
 title: "適用於 ASP.NET Core Microsoft.AspNetCore.All metapackage 2.x 及更新版本"
 author: Rick-Anderson
-description: "Microsoft.AspNetCore.All metapackage 包含所有支援的封裝。"
-keywords: "ASP.NET Core、 NuGet 封裝，Microsoft.AspNetCore.All、 metapackage"
+description: "Microsoft.AspNetCore.All metapackage 包含所有支援的 ASP.NET Core 和 Entity Framework Core 套件，以及它們的相依性。"
+keywords: ASP.NET Core,NuGet,package,Microsoft.AspNetCore.All,metapackage
 ms.author: riande
 manager: wpickett
-ms.date: 07/16/2017
+ms.date: 09/20/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/metapackage
-ms.openlocfilehash: 255438a4ce36ce4978f8c8ee298388a25ac00d17
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 23a07867874eb534c75c4e7b3be00c4a376f8a8b
+ms.sourcegitcommit: 4e45fd4e3f1374cd51cc931cee93c9d72631d9fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 #<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>適用於 ASP.NET Core Microsoft.AspNetCore.All metapackage 2.x
 
@@ -30,7 +30,7 @@ ASP.NET Core 的所有功能 2.x 和 Entity Framework Core 2.x 包含在`Microso
 
 版本號碼`Microsoft.AspNetCore.All`metapackage 表示的 ASP.NET Core 版本和 Entity Framework Core 版本 （.NET Core 版本與對齊）。
 
-使用應用程式`Microsoft.AspNetCore.All`metapackage 自動利用.NET 核心執行階段存放區。 執行階段存放區包含執行 ASP.NET Core 2.x 應用程式所需的所有執行階段資產。 當您使用`Microsoft.AspNetCore.All`metapackage，**沒有**參考 ASP.NET Core NuGet 套件的資產會隨著應用程式部署&mdash;.NET 核心執行階段存放區包含這些資產。 <!-- todo add link to Runtime store -->在執行階段存放區中的資產中都會先行編譯為了改善應用程式啟動時間。
+使用應用程式`Microsoft.AspNetCore.All`metapackage 自動利用[.NET 核心執行階段存放區](https://docs.microsoft.com/dotnet/core/deploying/runtime-store)。 執行階段存放區包含執行 ASP.NET Core 2.x 應用程式所需的所有執行階段資產。 當您使用`Microsoft.AspNetCore.All`metapackage，**沒有**參考 ASP.NET Core NuGet 套件的資產會隨著應用程式部署&mdash;.NET 核心執行階段存放區包含這些資產。 在執行階段存放區中的資產中都會先行編譯為了改善應用程式啟動時間。
 
 若要移除未使用的封裝，您可以使用封裝調整處理序。 發行的應用程式的輸出中排除已修剪的封裝。
 

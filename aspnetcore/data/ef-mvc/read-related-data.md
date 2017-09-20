@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: a3badbfe365a99593b38fc3846a9984824438f16
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: e818411f2cc568afdfd0612a6367dc3e257d0dd7
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>讀取的相關資料的 EF Core 與 ASP.NET Core MVC 教學課程 (10-6)
 
@@ -85,7 +85,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
   @Html.DisplayFor(modelItem => item.Department.Name)
   ```
 
-若要查看具有部門名稱的清單執行頁面 （選取 Contoso 大學首頁上的 [課程] 索引標籤）。
+執行應用程式並選取**課程**索引標籤，查看與部門名稱清單。
 
 ![課程索引頁](read-related-data/_static/courses-index.png)
 
@@ -203,7 +203,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用程式並選取 [講師] 索引標籤。沒有相關的 OfficeAssignment 實體時，頁面就會顯示相關的 OfficeAssignment 實體和空的資料表資料格的 Location 屬性。
+執行應用程式並選取**講師** 索引標籤。沒有相關的 OfficeAssignment 實體時，頁面就會顯示相關的 OfficeAssignment 實體和空的資料表資料格的 Location 屬性。
 
 ![選取任何項目講師索引頁](read-related-data/_static/instructors-index-no-selection.png)
 
@@ -213,7 +213,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
 
 此程式碼讀取`Courses`要顯示的課程清單的檢視模型的屬性。 它也提供**選取**超連結，將傳送至所選的課程識別碼`Index`動作方法。
 
-執行網頁，然後選取 instructor。 現在您會看到一個方格，其中會顯示指派給所選講師，課程，每個課程中，您看到指派的部門名稱。
+重新整理頁面，然後選取 instructor。 現在您會看到一個方格，其中會顯示指派給所選講師，課程，每個課程中，您看到指派的部門名稱。
 
 ![選取講師索引頁面講師](read-related-data/_static/instructors-index-instructor-selected.png)
 
@@ -223,7 +223,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
 
 此程式碼會讀取檢視模型的註冊項目屬性，以顯示一份學生課程中註冊。
 
-執行網頁，然後選取 instructor。 然後，選取課程來查看已註冊的學生版和其等級清單。
+再次重新整理頁面，然後選取 instructor。 然後，選取課程來查看已註冊的學生版和其等級清單。
 
 ![講師索引頁面講師和選取的課程](read-related-data/_static/instructors-index.png)
 
@@ -237,7 +237,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
 
 新的程式碼會卸除*ThenInclude*方法會呼叫註冊資料來擷取講師實體的程式碼。 如果選取講師和課程，反白顯示的程式碼會擷取所選的課程中，註冊實體和每個註冊的學生實體。
 
-現在就執行講師索引頁，雖然您已變更資料擷取的方式，您會看到任何差異顯示在頁面上。
+執行應用程式，請移至講師索引頁面現在，您會看到任何差異顯示在頁面上，雖然您已變更資料擷取的方式。
 
 ## <a name="summary"></a>總結
 

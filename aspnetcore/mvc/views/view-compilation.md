@@ -11,15 +11,15 @@ ms.assetid: ab4705b7-1638-1638-bc97-ea7f292fe92a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 1395717341bfcf5441b78633ca3957630ae5d899
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 0cb61315916d1b38f7cab3339e150c446fb69d98
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>Razor 檢視編譯和先行編譯的 ASP.NET Core
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 檢視叫用時，會在執行階段編譯 razor 檢視。 ASP.NET 核心 1.1.0 和更新版本可以選擇性地編譯 Razor 檢視，以及將其部署與應用程式&mdash;稱為先行編譯的程序。 ASP.NET Core 2.x 專案範本預設會啟用先行編譯。
 

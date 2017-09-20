@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2e4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/index
-ms.openlocfilehash: 04e09113724014c6952d36f58fc031e1eb372f47
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 875dfda8794aff69ea3d13c43d21ae805a199ed2
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core 的用戶端開發
 

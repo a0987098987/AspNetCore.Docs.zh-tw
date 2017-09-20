@@ -10,11 +10,11 @@ ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 9de39ce59633036c0dd850a7552bd3f4806c5431
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 149af0ce88d55527a42ba3b88d40047a61d510c9
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、 篩選、 分頁和群組-EF Core 與 ASP.NET Core MVC 教學課程 (10-3)
 
@@ -67,7 +67,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 此程式碼使用中的資訊`ViewData`屬性，以設定適當的查詢與超連結的字串值。
 
-執行網頁，然後按一下**姓氏**和**註冊日期**以確認該排序的資料行標題的運作方式。
+執行應用程式中，選取**學生**索引標籤，然後按一下**姓氏**和**註冊日期**以確認該排序的資料行標題的運作方式。
 
 ![學生名稱順序的索引頁](sort-filter-page/_static/name-order.png)
 
@@ -94,9 +94,9 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-此程式碼使用`<form>`[標記協助程式](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 此動作不會導致更新時，就會收到 W3C 指導方針建議，您應該使用。
+此程式碼使用`<form>`[標記協助程式](xref:mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 此動作不會導致更新時，就會收到 W3C 指導方針建議，您應該使用。
 
-執行網頁中，輸入搜尋字串，然後按一下 搜尋確認篩選運作。
+執行應用程式中，選取**學生**索引標籤，輸入搜尋字串，然後按一下 [搜尋] 以確認篩選可以運作。
 
 ![學生與篩選的索引頁](sort-filter-page/_static/filtering.png)
 
@@ -193,7 +193,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 </a>
 ```
 
-執行網頁。
+執行應用程式，並移至學生頁面。
 
 ![學生索引分頁連結的頁面](sort-filter-page/_static/paging.png)
 
@@ -241,7 +241,7 @@ LINQ 陳述式註冊日期分組的學生實體、 計算每個群組中的實�
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
-執行應用程式，然後按一下**有關**連結。 針對每個註冊日期的學生人數會顯示在資料表中。
+執行應用程式，並移至 [關於] 頁面。 針對每個註冊日期的學生人數會顯示在資料表中。
 
 ![有關頁面](sort-filter-page/_static/about.png)
 

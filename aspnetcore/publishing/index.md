@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/index
 ms.openlocfilehash: df3c1f0c2768b89c3ea5dc901782170c530a542e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="hosting-and-deployment-overview-for-aspnet-core-apps"></a>ASP.NET Core 應用程式的裝載和部署概觀
 

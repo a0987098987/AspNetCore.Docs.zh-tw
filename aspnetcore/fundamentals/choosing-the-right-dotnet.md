@@ -1,8 +1,8 @@
 ---
 redirect_url: https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server
 ms.openlocfilehash: 00cbd43a8ac7bb22470864be3302f9abd00baaf8
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
-ms.translationtype: HT
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---

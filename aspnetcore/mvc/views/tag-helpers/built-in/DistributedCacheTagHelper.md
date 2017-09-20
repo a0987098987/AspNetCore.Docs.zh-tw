@@ -2,7 +2,7 @@
 title: "分散式快取標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用快取標記協助程式"
-keywords: "ASP.NET Core，標記協助程式"
+keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -12,14 +12,14 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper
 ms.openlocfilehash: 2b260624fb2d85ab1a2625511397bcb4a85b6e77
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="distributed-cache-tag-helper"></a>分散式快取標記協助程式
 
-由[Peter Kellner](http://peterkellner.net) 
+由 [Peter Kellner](http://peterkellner.net) 提供 
 
 
 分散式快取標記協助程式提供了可大幅改善其分散式快取來源的內容快取的 ASP.NET Core 應用程式的效能。

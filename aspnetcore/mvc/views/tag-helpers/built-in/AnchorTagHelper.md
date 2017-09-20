@@ -2,7 +2,7 @@
 title: "錨定標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用錨定標記協助程式"
-keywords: "ASP.NET Core，標記協助程式"
+keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/AnchorTagHelper
-ms.openlocfilehash: f08e6a5288076d56b55843f1872bcfa8104f3923
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdb91836699b4dd334499cffa6c4c3961c5c020f
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="anchor-tag-helper"></a>錨定標記協助程式
 
-由[Peter Kellner](http://peterkellner.net) 
+由 [Peter Kellner](http://peterkellner.net) 提供 
 
 錨定標記協助程式增強 HTML 錨定 (`<a ... ></a>`) 藉由加入新屬性的標記。 所產生的連結 (在`href`標記) 會建立使用新的屬性。 該 URL 可以包含選擇性通訊協定，例如 https。
 
@@ -207,7 +207,7 @@ app.UseMvc(routes =>
 
     * *部落格*
 
-      * *控制站*
+      * *控制器*
 
         * *HomeController.cs*
 
@@ -219,7 +219,7 @@ app.UseMvc(routes =>
           
           * *AboutBlog.cshtml*
           
-  * *控制站*
+  * *控制器*
   
 
         

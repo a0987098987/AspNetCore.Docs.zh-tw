@@ -11,11 +11,11 @@ ms.assetid: 0dd63913-a041-48b6-96a4-3aeaedbdf5d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: a9e255040c300bc5ce55a356e17e6912dbaeaf88
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: dde50f766dc9842089cbb0561b8bd6e2d8e7c34f
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>建立複雜的資料模型的 EF Core 與 ASP.NET Core MVC 教學課程 (10-5)
 
@@ -41,27 +41,27 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-`DataType`屬性用來指定資料庫內建型別比更特定的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 `DataType`列舉型別提供許多的資料類型，例如日期、 時間、 PhoneNumber、 貨幣、 EmailAddress，等等。 `DataType`屬性也可以讓應用程式會自動提供特定類型的功能。 比方說，`mailto:`可建立連結的`DataType.EmailAddress`，而且可以提供日期選擇器`DataType.Date`中支援 HTML5 的瀏覽器。 `DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器可以了解的 (唸成的資料 dash) 屬性。 `DataType`屬性不提供任何驗證。
+`DataType` 屬性用來指定比資料庫內建類型更特殊的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 `DataType`列舉型別提供許多的資料類型，例如日期、 時間、 PhoneNumber、 貨幣、 EmailAddress，等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器可以了解的 (唸成的資料 dash) 屬性。 `DataType`屬性不提供任何驗證。
 
-`DataType.Date`未指定的格式顯示日期。 根據預設，資料欄位會顯示根據伺服器的 CultureInfo 為基礎的預設格式。
+`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據伺服器的 CultureInfo 為基礎的預設格式。
 
-`DisplayFormat`屬性用來明確指定的日期格式：
+`DisplayFormat` 屬性用來明確指定日期格式：
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 ```
 
-`ApplyFormatInEditMode`設定指定的格式應該也套用時的值會顯示在文字方塊中進行編輯。 （您可能不想，某些欄位-例如，貨幣值，您可能不想在文字方塊中的貨幣符號進行編輯）。
+`ApplyFormatInEditMode` 設定可指定在文字方塊中顯示值以供編輯時，也應該套用的格式。 （您可能不想，某些欄位-例如，貨幣值，您可能不想在文字方塊中的貨幣符號進行編輯）。
 
 您可以使用`DisplayFormat`屬性本身，但它通常是最好使用`DataType`也屬性。 `DataType`屬性的語意，而不是如何呈現在螢幕上的資料並提供下列優點，就無法取得與`DisplayFormat`:
 
 * 瀏覽器可以啟用 HTML5 功能 （例如若要顯示日曆控制項、 地區設定適當的貨幣符號、 電子郵件連結，某些用戶端輸入驗證等。）。
 
-* 根據預設，在瀏覽器將呈現資料使用正確的格式，根據您的地區設定。
+* 根據預設，瀏覽器將根據您的地區設定，使用正確的格式呈現資料。
 
 如需詳細資訊，請參閱[\<輸入 > 標記協助程式文件](../../mvc/views/working-with-forms.md#the-input-tag-helper)。
 
-再次執行學生索引頁，並請注意，時間不會再顯示註冊日期。 相同將學生模型會使用任何檢視，則為 true。
+執行應用程式，請學生索引頁，請注意，時間不會再顯示註冊日期。 相同將學生模型會使用任何檢視，則為 true。
 
 ![顯示不含時間日期的學生索引頁面](complex-data-model/_static/dates-no-times.png)
 
@@ -97,7 +97,7 @@ dotnet ef database update
 
 移轉的檔案名稱的前置詞的時間戳記 Entity framework 用於排序的移轉。 您可以建立多個移轉之前執行更新資料庫的命令，然後所有移轉都套用中所建立的順序。
 
-執行 [建立] 頁面中，並輸入任一名稱長度超過 50 個字元。 當您按一下 建立時，用戶端驗證就會顯示錯誤訊息。
+執行應用程式中，選取**學生**索引標籤上，按一下 **新建**，並輸入任一名稱長度超過 50 個字元。 當您按一下**建立**，用戶端驗證會顯示錯誤訊息。
 
 ![學生索引頁面顯示字串長度錯誤](complex-data-model/_static/string-length-errors.png)
 
@@ -483,7 +483,7 @@ dotnet ef database update
 
 執行應用程式，讓`DbInitializer.Initialize`方法來執行，並填入新的資料庫。
 
-SSOX 中開啟的資料庫，您可以如同更早版本，然後展開**資料表**節點以查看所有資料表具有已建立。 (如果仍有 SSOX 開啟從較早的時間，按一下 [重新整理] 按鈕)。
+SSOX 中開啟的資料庫，您可以如同更早版本，然後展開**資料表**節點以查看所有資料表具有已建立。 (如果仍有 SSOX 開啟從較早的時間，按一下**重新整理** 按鈕。)
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 

@@ -11,11 +11,11 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: f44a4f842180b4001eb1428316c24fd9cacc39db
-ms.sourcegitcommit: 5355c96a1768e5a1d5698a98c190e7addcc4ded5
+ms.openlocfilehash: fc6b218034183a9153c1ef22c99d920a942d2d09
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>處理並行衝突的 EF Core 與 ASP.NET Core MVC 教學課程 (10-8)
 
@@ -184,9 +184,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ## <a name="test-concurrency-conflicts-in-the-edit-page"></a>在 [編輯] 頁面中測試並行衝突
 
-執行站台，然後按一下 移至部門索引頁面的部門。
-
-以滑鼠右鍵按一下**編輯**英文部門並選取超連結**新索引標籤中開啟**，然後按一下 **編輯**英文部門的超連結。 兩個瀏覽器索引標籤現在會顯示相同的資訊。
+執行應用程式，並移至部門索引頁面。 以滑鼠右鍵按一下**編輯**英文部門並選取超連結**新索引標籤中開啟**，然後按一下 **編輯**英文部門的超連結。 兩個瀏覽器索引標籤現在會顯示相同的資訊。
 
 變更第一個瀏覽器索引標籤中的欄位，然後按一下**儲存**。
 
@@ -255,7 +253,7 @@ public async Task<IActionResult> Delete(Department department)
 
 * 將隱藏的欄位加入`RowVersion`屬性。
 
-執行部門索引頁面。 以滑鼠右鍵按一下**刪除**英文部門並選取超連結**新索引標籤中開啟**，然後在第一個索引標籤中按一下**編輯**英文部門的超連結。
+執行應用程式，並移至部門索引頁面。 以滑鼠右鍵按一下**刪除**英文部門並選取超連結**新索引標籤中開啟**，然後在第一個索引標籤中按一下**編輯**英文部門的超連結。
 
 在第一個視窗中，變更其中一個值，然後按一下**儲存**:
 

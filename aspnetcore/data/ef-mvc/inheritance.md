@@ -11,11 +11,11 @@ ms.assetid: 41dc0db7-6f17-453e-aba6-633430609c74
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 3c86dea145d2d4dec10c77e008f511cfe67975f9
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 6102b426cb5aff78fedb9389df229cd8100e4f36
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>繼承的 EF Core 與 ASP.NET Core MVC 教學課程 (9 / 10)
 
@@ -131,7 +131,7 @@ dotnet ef database update
 
 ## <a name="test-with-inheritance-implemented"></a>使用繼承實作測試
 
-執行網站，然後再次嘗試各種不同的頁面。 運作一切正常相同與以前一樣。
+執行應用程式，然後再次嘗試各種不同的頁面。 運作一切正常相同與以前一樣。
 
 在**SQL Server 物件總管**，展開**資料連線/SchoolContext**然後**資料表**，而且您會看到 「 學生 」 和 「 講師資料表有被取代Person 資料表。 開啟 Person 資料表設計工具，您會看到它具有所有 Student 與講師資料表中使用的資料行。
 

@@ -11,11 +11,11 @@ ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 87aa7e63b1a08e457c5fdcbc052bfa039b8d2175
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 3393bb90d170cfc572d2307ec18f1a8e25bdce59
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、 讀取、 更新和刪除-EF Core 與 ASP.NET Core MVC 教學課程 (2 / 10)
 
@@ -156,7 +156,7 @@ public class Student
 
 中的程式碼*Views/Students/Create.cshtml*使用`label`， `input`，和`span`（適用於驗證的訊息） 標記協助程式的每個欄位。
 
-執行選取的頁面**學生** 索引標籤，然後按一下**新建**。
+執行應用程式中，選取**學生**索引標籤，然後按一下**新建**。
 
 輸入名稱和日期。 請嘗試輸入無效的日期，如果您的瀏覽器可讓您執行此作業。 （某些瀏覽器會強制要求您使用 日期選擇器。）然後按一下 **建立**以查看錯誤訊息。
 
@@ -222,7 +222,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 ### <a name="test-the-edit-page"></a>測試 編輯頁面
 
-執行應用程式並選取**學生**索引標籤，然後按一下 **編輯**超連結。
+執行應用程式中，選取**學生**索引標籤，然後按一下 **編輯**超連結。
 
 ![學生編輯頁面](crud/_static/student-edit.png)
 
@@ -264,7 +264,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 [!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-執行選取的頁面**學生** 索引標籤，然後按一下**刪除**超連結：
+執行應用程式中，選取**學生**索引標籤，然後按一下**刪除**超連結：
 
 ![刪除確認 頁面](crud/_static/student-delete.png)
 

@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/index
-ms.openlocfilehash: 80897c4b4882274f6d9dbc88c92ec9cd58481e23
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 2ffa2361077c4c2719a458c59bebecf1cb0e9879
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core-and-visual-studio-code"></a>使用 ASP.NET Core 和 Visual Studio Code 建立 Razor 頁面 Web 應用程式
 

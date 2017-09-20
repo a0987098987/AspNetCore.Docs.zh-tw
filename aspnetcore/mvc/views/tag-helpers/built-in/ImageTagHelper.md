@@ -2,7 +2,7 @@
 title: "影像標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用影像標記協助程式"
-keywords: "ASP.NET Core，標記協助程式"
+keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a013
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/ImageTagHelper
-ms.openlocfilehash: 67537674154d885fc6f69accd2cc7f01c9104d71
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e91018be7d706ddc227f82b695a188ed91163f9d
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="imagetaghelper"></a>ImageTagHelper
 
-由[Peter Kellner](http://peterkellner.net) 
+由 [Peter Kellner](http://peterkellner.net) 提供 
 
 影像標記協助程式增強`img`(`<img>`) 標記。 它需要`src`標記以及`boolean`屬性`asp-append-version`。
 

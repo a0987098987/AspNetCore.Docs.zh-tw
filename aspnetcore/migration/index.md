@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0a2c3e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/index
-ms.openlocfilehash: 4edd1fb9d472611c9f37c4a7d735c602cd9aed30
-ms.sourcegitcommit: 8cafdd1dd409d5070d227100ba0e094c779ac47b
+ms.openlocfilehash: 687d35e63a4cab24406a56eb4b3c48b0272c337d
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="migration"></a>移轉
 

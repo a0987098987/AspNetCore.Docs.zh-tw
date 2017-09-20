@@ -1,8 +1,8 @@
 ---
 redirect_url: /aspnet/core
-ms.openlocfilehash: 0265822a019bdcb65c3e39cdabb433b63e26ab28
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c7d2ce2e0c3ecb352c9da455136592b305d6a858
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---

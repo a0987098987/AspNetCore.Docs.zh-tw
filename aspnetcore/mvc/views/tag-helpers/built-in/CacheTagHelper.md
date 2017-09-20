@@ -2,7 +2,7 @@
 title: "快取中 ASP.NET Core MVC 標記協助程式"
 author: pkellner
 description: "示範如何使用快取標記協助程式"
-keywords: "ASP.NET Core，標記協助程式"
+keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,15 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a012
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/CacheTagHelper
-ms.openlocfilehash: 37f93816c75d83211a85c311395e2664d8a649b9
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 31c362a70e44c7178efe1c35b28a02fd712ac2b4
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
 
-由[Peter Kellner](http://peterkellner.net) 
+由 [Peter Kellner](http://peterkellner.net) 提供 
 
 
 快取標記協助程式提供了可大幅改善其內部的 ASP.NET Core 快取提供者的內容快取的 ASP.NET Core 應用程式的效能。

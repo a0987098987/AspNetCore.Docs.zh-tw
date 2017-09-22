@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e2d43d837ba76c6ef8b5136f3751edb44d6606a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b5dca6a81a66ce2a8771f1a16e63834d6504d8b6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>介紹記憶體中快取中 ASP.NET Core
 
@@ -101,4 +101,4 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 ### <a name="other-resources"></a>其他資源
 
 * [使用分散式快取](distributed.md)
-* [回應的快取中介軟體](middleware.md)
+* [回應快取中介軟體](middleware.md)

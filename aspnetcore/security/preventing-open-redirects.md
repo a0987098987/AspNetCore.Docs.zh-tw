@@ -11,11 +11,11 @@ ms.assetid: 4604e563-e91a-4ecd-b7ed-00b3f1eee2b5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 84354905d289847849719700de815502a0cb948f
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: d5419aa149b3201ecbc93f4f17ae5928f1d39b1d
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>防止 ASP.NET Core 應用程式中開啟的重新導向攻擊
 

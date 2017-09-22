@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2ff38288cee3e9ca42a07c219521bb79a00a359
-ms.sourcegitcommit: 4e84d8bf5f404bb77f3d41665cf7e7374fc39142
+ms.openlocfilehash: 211dd5d03e6b8414e0b2ed3234d8970c92f72452
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-browser-link-in-aspnet-core"></a>在 ASP.NET Core 瀏覽器連結簡介 
 

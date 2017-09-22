@@ -2,7 +2,7 @@
 title: "ASP.NET Core HTTP.sys web 伺服器實作"
 author: rick-anderson
 description: "導入了 HTTP.sys，適用於在 Windows 上的 ASP.NET Core web 伺服器。 建置在 Http.Sys 核心模式驅動程式，HTTP.sys 會是 Kestrel 用於 IIS 沒有網際網路直接連線的替代方式。"
-keywords: "ASP.NET Core、 HttpSys、 HTTP.sys、 HttpListener、 url 前置詞，SSL"
+keywords: "ASP.NET Core,HttpSys,HTTP.sys,HttpListener,url 前置詞的 SSL"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 5ffe6b5d55d88cbcfa62dfacf1e6e896f1304e39
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 38ceb20c8901baadc7efbacb81a3598afce3f006
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 

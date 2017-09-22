@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 8f8612fd9c92370d9b0a86572dca654a6a034916
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b66ef7e3626effff1c66c37a86865699fa8866f9
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -100,7 +100,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 **每個 IIS 應用程式集區**
 
-如果您需要設定環境變數，個別執行的應用程式中 （支援 IIS 10.0 +） 隔離的應用程式集區，請參閱*AppCmd.exe 命令*區段[環境變數\<environmentVariables >](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe)在 IIS 中的主題參考文件。
+如果您需要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (IIS 10.0+ 支援)，請參閱 IIS 參考文件之[環境變數\<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
 ### <a name="macos"></a>MacOS
 設定 macOS 的目前環境可以是內建作業時完成執行應用程式。

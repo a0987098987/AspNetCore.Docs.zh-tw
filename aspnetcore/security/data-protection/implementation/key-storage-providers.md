@@ -2,7 +2,7 @@
 title: "金鑰儲存提供者"
 author: rick-anderson
 description: "金鑰儲存提供者"
-keywords: "加密，ASP.NET Core"
+keywords: "encryption,ASP.NET 核心"
 ms.author: riande
 manager: wpickett
 ms.date: 01/14/2017
@@ -11,11 +11,11 @@ ms.assetid: 423e0a79-2f34-44c4-aaf3-146a53c39251
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 0d604c1aab1b7bad5b9f5c7d21edf12e8db7c563
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 1c73608245e668c0810813e29f78f1ac3dacc414
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="key-storage-providers"></a>金鑰儲存提供者
 

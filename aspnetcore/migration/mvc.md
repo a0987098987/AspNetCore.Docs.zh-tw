@@ -2,7 +2,7 @@
 title: "ASP.NET MVC 從移轉至 ASP.NET Core MVC"
 author: ardalis
 description: 
-keywords: "ASP.NET MVC 中，單核心，移轉"
+keywords: "ASP.NET Core, MVC, 移轉"
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -11,11 +11,11 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: 2bd689626e867e0ea82fbebdf92447a6029aa35b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 385ab7dfea5b92687a427bdfe9558462227113b1
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 09/12/2017
 
 * 新增**MVC 控制器類別**名稱*HomeController.cs*至*控制器*資料夾。
 
-![加入新項目 對話方塊](mvc/_static/add_mvc_ctl.png)
+![[新增項目] 對話方塊](mvc/_static/add_mvc_ctl.png)
 
 * 新增*檢視*資料夾。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 09/12/2017
 
 * 新增*Index.cshtml* MVC 檢視頁面，即可*Views/Home*資料夾。
 
-![加入新項目 對話方塊](mvc/_static/view.png)
+![[新增項目] 對話方塊](mvc/_static/view.png)
 
 專案結構如下所示：
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 09/12/2017
 
    * 取代`@Styles.Render("~/Content/css")`與`<link>`載入的項目*bootstrap.css* （請參閱下文）。
 
-   * 移除`@Scripts.Render("~/bundles/modernizr")`。
+   * 移除 `@Scripts.Render("~/bundles/modernizr")`。
 
    * 標記為註解`@Html.Partial("_LoginPartial")`列 (周圍的線條`@*...*@`)。 我們將在未來的教學課程中傳回它。
 

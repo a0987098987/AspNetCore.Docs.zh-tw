@@ -11,11 +11,11 @@ ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 07a2aca731b8017450a1b0da00ddef25306c122e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: bb8a889c66ec9ca0c0aec7b4a4184d7c19858d78
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="view-components"></a>檢視元件
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 09/12/2017
 
 * 建立*檢視/共用/元件/PriorityList*資料夾。 此資料夾名稱必須符合檢視元件類別的名稱或減去後置詞的類別名稱 (如果我們遵循慣例，並使用*ViewComponent*中的類別名稱後置字元)。 如果您使用`ViewComponent`屬性，以符合指定的屬性，會需要類別名稱。
 
-* 建立*Views/Shared/Components/PriorityList/Default.cshtml* Razor 檢視： [!code-html [Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
+* 建立*Views/Shared/Components/PriorityList/Default.cshtml* Razor 檢視：[!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
     
    Razor 檢視採用一份`TodoItem`並加以顯示。 如果檢視元件`InvokeAsync`方法未通過 （我們如範例所示），檢視名稱*預設*依慣例用於檢視表名稱。 稍後在教學課程中，我將示範如何將檢視的名稱。 若要覆寫特定控制器的預設樣式，加入檢視到控制器的特定檢視資料夾 (例如*Views/Todo/Components/PriorityList/Default.cshtml)*。
     

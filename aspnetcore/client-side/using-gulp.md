@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-gulp
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd617a99ad348c545cbf50f6aa461ca8f456d3a8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: d2a2971a46d9d45a8fda5ac56073af608a0ede2b
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp 簡介 
 
@@ -305,7 +305,7 @@ IntelliSense 提供程式碼完成功能、 參數說明和其他功能，以提
 
     Web 應用程式的屬性工作表會顯示。
 
-3.  按一下**偵錯** 索引標籤。
+3.  按一下 [偵錯] 索引標籤。
 
 4.  值設定**主控： 環境**環境變數，以`Production`。
 

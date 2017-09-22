@@ -11,11 +11,11 @@ ms.assetid: 94f2f1a4-7d46-45e2-a085-a57916e41724
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/https
-ms.openlocfilehash: 7c366ffbac71152c2f29901ff12bac2962e83e3e
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 7913758ffa045dcf884d73eed9bab223b8d2c3fe
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="setting-up-https-for-development-in-aspnet-core"></a>設定 HTTPS 進行開發的 ASP.NET Core
 

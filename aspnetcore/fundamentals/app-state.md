@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 409444e99cfa49f30812c6130120391a8f477839
-ms.sourcegitcommit: 50608ec8ae49897d8bf11d5f6dc511da30862bfa
+ms.openlocfilehash: c639d3b0d896b927bb2b70658032fc1bd8e87191
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>工作階段和應用程式的狀態，在 ASP.NET Core 簡介
 

@@ -11,11 +11,11 @@ ms.assetid: ef7dad2a-7029-4ae5-8f06-1fbebedccaa4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 913eda69f88ef05a990d9465024f4fa6b08cd1b7
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: c361af7d336fc0f7651e5d2f28d71515e2949c65
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="key-management-and-lifetime"></a>金鑰管理和存留期
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/11/2017
 
 2. 如果使用者設定檔可用時，金鑰會保存到"%localappdata%\asp.net\dataprotection-keys"資料夾。 此外，如果作業系統為 Windows，它們會在待用期間使用 DPAPI 會加密。
 
-3. 如果應用程式裝載在 IIS 中，會保存 ACLed 只是為了背景工作處理序帳戶的特殊的登錄機碼 HKLM 登錄機碼。 索引鍵會在待用期間使用 DPAPI 加密。
+3. 如果應用程式裝載在 IIS 中，會保存 ACLed 只是為了背景工作處理序帳戶的特殊的登錄機碼 HKLM 登錄機碼。 在待用期間使用 DPAPI 加密金鑰。
 
 4. 如果上述條件符合時，索引鍵不會保存在目前的程序之外。 處理程序關閉時，產生所有索引鍵將會遺失。
 

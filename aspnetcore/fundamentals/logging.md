@@ -2,7 +2,7 @@
 title: "在 ASP.NET Core 記錄"
 author: ardalis
 description: "導入了 ASP.NET Core 的記錄架構。 每個內建的記錄提供者和一些受歡迎的協力廠商提供者的連結，包括區段。"
-keywords: "ASP.NET Core 記錄、 記錄提供者、 Microsoft.Extensions.Logging、 ILogger、 ILoggerFactory、 LogLevel、 WithFilter、 TraceSource、 事件記錄檔、 EventSource，範圍"
+keywords: "ASP.NET Core 記錄、 記錄 providers,Microsoft.Extensions.Logging,ILogger,ILoggerFactory,LogLevel,WithFilter,TraceSource,EventLog,EventSource,scopes"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 10/14/2016
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9a4ae6e7d9b2fa998b91e643e63657239d4866b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ca81f01fe1c5026514eafedf852b4bc8f3b6fd21
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>若要登入 ASP.NET Core 簡介
 

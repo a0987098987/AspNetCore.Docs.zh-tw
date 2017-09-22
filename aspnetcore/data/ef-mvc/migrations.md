@@ -2,7 +2,7 @@
 title: "ASP.NET Core MVC EF 核心--4 的移轉 10"
 author: tdykstra
 description: "在本教學課程中，您啟動管理資料模型變更 ASP.NET Core MVC 應用程式中的使用 EF 核心移轉功能。"
-keywords: "ASP.NET Core，Entity Framework Core，移轉"
+keywords: "ASP.NET Core,Entity Framework Core,移轉"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -11,11 +11,11 @@ ms.assetid: 81f6c9c2-a819-4f3a-97a4-4b0503b56c26
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 4d81099d1ab97a8a49d96657153a54aa96dd6bf8
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 638bef0cda14f53a326c66c6a5da3f3c1bb762c6
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>移轉的 EF Core 與 ASP.NET Core MVC 教學課程 (10-4)
 
@@ -31,11 +31,11 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 讓資料庫保持同步資料模型的這個方法適用於也直到您將部署到生產環境應用程式。 它通常會儲存您想要保留，且您不想遺失的所有項目每次資料的生產環境中執行應用程式時您變更例如加入新的資料行。 EF 核心移轉功能來解決這個問題，進而 EF 更新資料庫結構描述，而不是建立新的資料庫。
 
-## <a name="entity-framework-core-nuget-packages-for-migrations"></a>進行移轉的 entity Framework Core NuGet 封裝
+## <a name="entity-framework-core-nuget-packages-for-migrations"></a>用於移轉的 Entity Framework Core NuGet 套件
 
 若要使用移轉，您可以使用**Package Manager Console** (PMC) 或命令列介面 (CLI)。  這些教學課程會示範如何使用 CLI 命令。 Pmc 依存的相關資訊位於[本教學課程結尾](#pmc)。
 
-中所提供的命令列介面 (CLI) 的 EF 工具[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet)。 若要安裝此套件，將它加入`DotNetCliToolReference`集合*.csproj*檔案，如下所示。 **注意：**您需要安裝此套件，藉由編輯*.csproj*檔案; 您不能使用`install-package`命令或封裝管理員 GUI。 您可以編輯*.csproj*檔案中的專案名稱上按一下滑鼠右鍵**方案總管 中**，然後選取**編輯 ContosoUniversity.csproj**。
+[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF 工具。 若要安裝此套件，將它加入`DotNetCliToolReference`集合*.csproj*檔案，如下所示。 **注意：**您必須藉由編輯 *.csproj* 檔案來安裝這個套件；而不能使用 `install-package` 命令或套件管理員 GUI。 您可以編輯*.csproj*檔案中的專案名稱上按一下滑鼠右鍵**方案總管 中**，然後選取**編輯 ContosoUniversity.csproj**。
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
@@ -68,7 +68,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
   ![開啟命令視窗](migrations/_static/open-command-window.png)
 
-在 [命令] 視窗中輸入下列命令：
+在命令視窗中輸入下列命令：
 
 ```console
 dotnet ef migrations add InitialCreate

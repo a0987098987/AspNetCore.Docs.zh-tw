@@ -2,7 +2,7 @@
 title: "在 ASP.NET 中取代 '< machineKey >'"
 author: rick-anderson
 description: "在 ASP.NET 中取代 '< machineKey >'"
-keywords: "ASP.NET Core 安全性、 '< machineKey >'"
+keywords: "ASP.NET Core，安全性，< machineKey > machineKey"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 29229b9507ece6aff8278b0ad66169c9e4e7498b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8c00c05a1120e65f503b70229466fcad561bc6a9
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="replacing-machinekey-in-aspnet"></a>取代`<machineKey>`ASP.NET 中
 

@@ -11,15 +11,15 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: 97c5fb6db6fe2a1dbae5529c11479413fd4814fb
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: afad266874d3ac059d9f3a6d26a5330a0006320b
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>使用 IIS 模組與 ASP.NET Core
 
-由[Luke Latham](https://github.com/GuardRex)
+由[Luke Latham](https://github.com/guardrex)
 
 由 IIS 所裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 原生 IIS 模組的某些和所有 IIS 管理模組並非可用來處理要求的 ASP.NET Core 應用程式。 在許多情況下，ASP.NET Core 可提供替代性 IIS 原生和 managed 模組的功能。
 

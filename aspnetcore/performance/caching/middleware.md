@@ -10,15 +10,15 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 4013619f738b3b8b58e45d9dfd205e7b75e056b4
-ms.sourcegitcommit: 029dd7fbc0793e84b9ed91f2b45624bbc187fb32
+ms.openlocfilehash: 07626ae7f40dc6f704d69d71cb7f95d318e6f503
+ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/24/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
-由[Luke Latham](https://github.com/GuardRex)和[John Luo](https://github.com/JunTaoLuo)
+由[Luke Latham](https://github.com/guardrex)和[John Luo](https://github.com/JunTaoLuo)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)
 

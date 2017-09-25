@@ -11,11 +11,11 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 5c4b7139a09acf2f02877840d09df431e0e71e0c
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: b561dcee5435dfc34cfa0b9b15babf75ca8f3508
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>使用 Facebook、Google 和其他外部提供者啟用驗證
 

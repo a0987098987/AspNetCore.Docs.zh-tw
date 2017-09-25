@@ -11,11 +11,11 @@ ms.assetid: 959ff4ca-be2d-4444-acac-789e787146f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/index
-ms.openlocfilehash: 1a0e4a5df45b3385ef44894d57030c886e0c47c5
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 6cb8f1b8daa0417b6e02efcf5a6c4e37a54e79d0
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-using-visual-studio-for-mac"></a>使用 Visual Studio for Mac 和 ASP.NET Core MVC 建立 Web 應用程式
 

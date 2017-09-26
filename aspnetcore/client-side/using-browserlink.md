@@ -59,8 +59,6 @@ app.UseBrowserLink();
 
 <span data-ttu-id="d3e34-122">該程式碼通常是內部`if`區塊，只在開發環境，可讓瀏覽器連結，如下所示：</span><span class="sxs-lookup"><span data-stu-id="d3e34-122">Usually that code is inside an `if` block that enables Browser Link only in the Development environment, as shown here:</span></span>
 
-[!code-csharp[Main](./using-browserlink/sample/BrowserLinkSample/src/BrowserLinkSample/Startup.cs?highlight=1,4&range=40-44)]
-
 <span data-ttu-id="d3e34-123">如需詳細資訊，請參閱[使用多個環境](../fundamentals/environments.md)。</span><span class="sxs-lookup"><span data-stu-id="d3e34-123">For more information, see [Working with Multiple Environments](../fundamentals/environments.md).</span></span>
 
 ## <a name="how-to-use-browser-link"></a><span data-ttu-id="d3e34-124">如何使用瀏覽器連結</span><span class="sxs-lookup"><span data-stu-id="d3e34-124">How to use Browser Link</span></span>

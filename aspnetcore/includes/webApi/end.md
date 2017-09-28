@@ -6,7 +6,7 @@
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-這是 HTTP POST 方法，以 [`[HttpPost]`](https://docs.microsoft.com/aspnet/core/api) 屬性表示。 [`[FromBody]`](https://docs.microsoft.com/aspnet/core/api) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
+這是 HTTP POST 方法，以 [`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute) 屬性表示。 [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
 
 `CreatedAtRoute` 方法會傳回 201 回應，這是 HTTP POST 方法的標準回應，可在伺服器上建立新的資源。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
 

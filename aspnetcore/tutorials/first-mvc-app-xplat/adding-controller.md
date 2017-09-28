@@ -11,11 +11,11 @@ ms.assetid: e04b6665-1638-4d99-1636-d666c4634666
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/adding-controller
-ms.openlocfilehash: 1eb12741deb26f6fb6bc0e61c60b6dee2c96bbd1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 33bc37b07f4457281af3acec43e0a3c7d382dc1e
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="adding-a-controller-to-a-aspnet-core-mvc-app-with-visual-studio-code"></a>使用 Visual Studio Code 將控制器新增至 ASP.NET Core MVC 應用程式
 

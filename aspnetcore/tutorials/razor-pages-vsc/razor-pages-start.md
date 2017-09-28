@@ -5,16 +5,16 @@ description: "利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor �
 keywords: "ASP.NET Core, Razor 頁面, Scaffolding, Entity Framework Core, EF, EF Core, 資料庫, mac, macOS, Visual Studio Code, Code"
 ms.author: riande
 manager: wpickett
-ms.date: 8/27/2017
+ms.date: 08/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: 096a60dae171ac5dbfa935be4c16e0903d8f5bb3
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 1b9dff14fa98314601fa44aa229aef6b73bb79d0
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-code"></a>利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面
 

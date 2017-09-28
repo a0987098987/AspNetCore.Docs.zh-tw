@@ -29,7 +29,7 @@ ms.lasthandoff: 08/11/2017
 
 [!code-csharp[Main](start-mvc/sample/MvcMovie/Models/MovieDateWithExtraUsings.cs?name=snippet_1&highlight=13-14)]
 
-以滑鼠右鍵按一下紅色曲線 > [Quick Actions and Refactorings] (快速控制項目及重構)。
+以滑鼠右鍵按一下紅色曲線 > [Quick Actions and Refactorings] \(快速控制項目及重構)。
 
   ![操作功能表隨即顯示 **> [Quick Actions and Refactorings] (快速控制項目及重構)**。](controller-methods-views/_static/qa.png)
 

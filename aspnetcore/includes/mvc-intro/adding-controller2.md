@@ -6,7 +6,7 @@
 
 HTTP 端點是 Web 應用程式中的可設定目標 URL，例如 `http://localhost:1234/HelloWorld`，其結合使用的通訊協定：`HTTP`、網頁伺服器的網路位置 (包括 TCP 連接埠)：`localhost:1234`，以及目標 URI `HelloWorld`。
 
-第一個註解指出這是 [HTTP GET](http://www.w3schools.com/tags/ref_httpmethods.asp) 方法，叫用方式是將 "/HelloWorld/" 附加至基底 URL。 第二個註解指定 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 方法，叫用方式是將 "/HelloWorld/Welcome/" 附加至 URL。 稍後在本教學課程中，您將使用 Scaffolding 引擎產生 `HTTP POST` 方法。
+第一個註解指出這是 [HTTP GET](https://www.w3schools.com/tags/ref_httpmethods.asp) 方法，叫用方式是將 "/HelloWorld/" 附加至基底 URL。 第二個註解指定 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 方法，叫用方式是將 "/HelloWorld/Welcome/" 附加至 URL。 稍後在本教學課程中，您將使用 Scaffolding 引擎產生 `HTTP POST` 方法。
 
 在非偵錯模式中執行應用程式，並將 "HelloWorld" 附加至網址列中的路徑。 `Index` 方法會傳回一個字串。
 
@@ -46,7 +46,7 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 ![顯示應用程式回應 "Hello Rick, NumTimes is: 4" 的瀏覽器視窗](../../tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則作為[查詢字串](http://en.wikipedia.org/wiki/Query_string)傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
+在上方的影像中，不會使用 URL 區段 (`Parameters`) ，`name` 和 `numTimes` 則作為[查詢字串](https://wikipedia.org/wiki/Query_string)傳遞。 上述 URL 中的 `?` (問號) 是分隔符號，隨後接著查詢字串。 `&` 字元可分隔查詢字串。
 
 以下列程式碼取代 `Welcome` 方法：
 

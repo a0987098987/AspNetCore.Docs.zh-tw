@@ -2,26 +2,25 @@
 title: "將模型新增至 ASP.NET MVC Core 應用程式"
 author: rick-anderson
 description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
-keywords: ASP.NET Core, MVC, Scaffold, Scaffolding
+keywords: ASP.NET Core,MVC,scaffold,scaffolding
 ms.author: riande
 manager: wpickett
 ms.devlang: csharp
-ms.date: 09/15/2017
+ms.date: 09/22/2017
 ms.topic: get-started-article
 ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: .net-core
-helpviewer_keywords: aspnet, csharp, mvc
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: 36819284073eb1cb20b19c41512944e34c54c6d3
-ms.sourcegitcommit: 3fece4e2869581df72090ff5e82af1a09d927699
+ms.openlocfilehash: 0e2c47c7d9903d6d300fa293dd0530a2f65f77d8
+ms.sourcegitcommit: e6bcd56a4b11e20ff55df004971f9ed384937342
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/22/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
-* 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案]。 
+* 以滑鼠右鍵按一下 [Models] 資料夾，然後選取 [新增] > [新增檔案]。 
 * 在 [新增檔案] 對話方塊中：
 
   * 在左窗格中選取 [一般]。

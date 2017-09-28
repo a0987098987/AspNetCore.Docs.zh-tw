@@ -2,7 +2,7 @@
 title: "快取"
 author: ardalis
 description: "示範如何使用快取以達到更高的效能。"
-keywords: "ASP.NET Core, 快取, 效能"
+keywords: "ASP.NET Core,快取,效能"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 1e73cf62-8862-4341-8816-83be1a3edc96
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/index
-ms.openlocfilehash: 67c92ce4daf3db64909a12062c514b6c64c181c7
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 35c57c9c684308d9e4ee7c42216f5ef65b72885b
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="caching"></a>快取
 

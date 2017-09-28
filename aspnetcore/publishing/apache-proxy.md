@@ -1,7 +1,7 @@
 ---
 title: "在 Linux 上使用 Apache 裝載 ASP.NET Core"
 description: "了解如何將 Apache 設定為 CentOS 上的反向 Proxy，將 HTTP 流量重新導向至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。"
-keywords: "ASP.NET Core, Apache, CentOS, 反向 Proxy, Linux, mod_proxy, httpd, 裝載"
+keywords: "ASP.NET Core,Apache,CentOS,反向 Proxy,Linux,mod_proxy,httpd,裝載,主控,託管,代管"
 author: spboyer
 ms.author: spboyer
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: fa9b0cb7-afb3-4361-9e7e-33afffeaca0c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/apache-proxy
-ms.openlocfilehash: 9dc22ea20a6ae2e2477f9e6db95ddabecc038dcb
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 34ede2fdebe0e9516f62e39618e7adba3c8c89db
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-apache-and-deploy-to-it"></a>在 Linux 上使用 Apache 設定並部署到 ASP.NET Core 裝載環境
 

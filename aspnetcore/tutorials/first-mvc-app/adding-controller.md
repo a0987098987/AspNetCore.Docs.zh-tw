@@ -11,11 +11,11 @@ ms.assetid: e04b6665-d0de-4d99-b78f-d6a0c4634a87
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1eee67dbde6a9e63b341de5b420ccd3d7ab9ae86
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: cddfa0b28dc3efc5b6f762b35dbff48ec40f4b99
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="adding-a-controller-to-a-aspnet-core-mvc-app-with-visual-studio"></a>使用 Visual Studio 將控制器新增至 ASP.NET Core MVC 應用程式
 

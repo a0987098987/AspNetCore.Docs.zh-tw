@@ -5,16 +5,16 @@ description: "開始使用 ASP.NET Core 中的 Razor 頁面"
 keywords: "ASP.NET Core, Razor 頁面, Razor, MVC"
 ms.author: riande
 manager: wpickett
-ms.date: 8/27/2017
+ms.date: 08/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: c22ee2554992d15df2f6b92ee5da6805ab80b73a
-ms.sourcegitcommit: d9ec19e5452af83648074db5d96c0a0f4f9e7f9a
+ms.openlocfilehash: 8c6e281e761e69908fc742d1f19c14a00de4bd46
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
 

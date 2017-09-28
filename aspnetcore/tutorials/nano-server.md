@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: dd1f2c8de58ea8d3a57e64ecc519184400cb52c8
-ms.sourcegitcommit: ad01283f299d346cf757c4f4744c48634dc27e73
+ms.openlocfilehash: 337cc69ef522452c17cdd6ea4a5e71cd122035dc
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server 上的 ASP.NET Core 與 IIS
 

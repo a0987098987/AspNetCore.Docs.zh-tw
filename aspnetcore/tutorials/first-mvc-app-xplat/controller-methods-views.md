@@ -11,11 +11,11 @@ ms.assetid: c7313211-bb71-4adf-babe-8e72603cc0ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
-ms.openlocfilehash: 87516295c6e8c49b492312afda80c92c968e778b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b72fb5077d3bd577cd6282e7a6231a0806ee1fd2
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 # <a name="controller-methods-and-views"></a>控制器方法和檢視
 

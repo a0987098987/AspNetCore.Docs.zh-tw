@@ -5,16 +5,16 @@ description: "用來學習如何在 Docker 容器中裝載 ASP.NET Core 應用�
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 07/14/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: publishing/docker
-ms.openlocfilehash: 503e351b06abc6cc10913c763dffd1239b7e7593
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 44c12162dcfb3754b732613c3797884deaf1d317
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 # <a name="host-aspnet-core-in-docker-containers"></a>在 Docker 容器中裝載 ASP.NET Core
 

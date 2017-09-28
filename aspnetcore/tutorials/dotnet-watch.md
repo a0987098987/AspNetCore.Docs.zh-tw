@@ -11,11 +11,11 @@ ms.assetid: 563ffb3f-d369-4aa5-bf0a-7300b4e7832c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 2ddcbfc30a839ed8dd72a632644bf73dcea777ac
-ms.sourcegitcommit: b02db6da115e55140da91b67355aaf56aae1703f
+ms.openlocfilehash: 6a8943619e6174dbcd3d901b7bb736ba5d3af95d
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="developing-aspnet-core-apps-using-dotnet-watch"></a>使用 dotnet watch 開發 ASP.NET Core 應用程式
 

@@ -1,11 +1,11 @@
 
-接下來的教學課程中將涵蓋 [DataAnnotations](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)。 [Display](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayattribute.aspx) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx) 屬性指定資料的型別 (Date)，因此不會顯示儲存在欄位中的時間資訊。
+接下來的教學課程中將涵蓋 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。 [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的型別 (Date)，因此不會顯示儲存在欄位中的時間資訊。
 
 瀏覽至 `Movies` 控制器，並將滑鼠指標停留在 **Edit** 連結，以查看目標 URL。
 
 ![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由 MVC Core 錨點標記協助程式所產生。
+在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由 MVC Core 錨點標記協助程式所產生。
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -35,7 +35,7 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
-`[Bind]` 屬性是一種防止[過度發佈](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)的方式。 您應該只在想要變更的 `[Bind]` 屬性 (attribute) 中包含屬性 ( property)。 如需詳細資訊，請參閱[保護控制器避免過度發佈](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)。 [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) 提供防止過度發佈的替代方法。
+`[Bind]` 屬性是一種防止[過度發佈](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)的方式。 您應該只在想要變更的 `[Bind]` 屬性 (attribute) 中包含屬性 ( property)。 如需詳細資訊，請參閱[保護控制器避免過度發佈](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)。 [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) 提供防止過度發佈的替代方法。
 
 請注意，第二個 `Edit` 動作方法的前面是 `[HttpPost]` 屬性。
 
@@ -89,7 +89,7 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 * [標記協助程式簡介](xref:mvc/views/tag-helpers/intro)
 * [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
 * [防偽要求](xref:security/anti-request-forgery)
-* 保護控制器避免[過度發佈](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)
+* 保護控制器避免[過度發佈](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [表單標記協助程式](xref:mvc/views/working-with-forms)
 * [輸入標記協助程式](xref:mvc/views/working-with-forms)

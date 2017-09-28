@@ -6,7 +6,7 @@
 
 ## <a name="keeping-things-dry"></a>項目保持 DRY
 
-MVC 的設計原則之一是[DRY](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (「不自行重複」)。 ASP.NET MVC 鼓勵您只指定一次功能或行為，然後讓它反映到應用程式的所有位置。 這會減少您需要撰寫的程式碼數量，並讓您撰寫的程式碼錯誤較不容易出錯、更容易測試，以及更容易維護。
+MVC 的設計原則之一是[DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (「不自行重複」)。 ASP.NET MVC 鼓勵您只指定一次功能或行為，然後讓它反映到應用程式的所有位置。 這會減少您需要撰寫的程式碼數量，並讓您撰寫的程式碼錯誤較不容易出錯、更容易測試，以及更容易維護。
 
 MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DRY 準則的絶佳範例。 您可以宣告方式在單一位置指定驗證規則 (在模型類別中) ，而規則可在應用程式的任何位置強制執行。
 
@@ -31,13 +31,13 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](../../tutorials/first-mvc-app/validation/_static/val.png)
 
 > [!NOTE]
-> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](http://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
 
 請注意表單如何在包含無效值的每個欄位中自動呈現適當的驗證錯誤訊息。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (若使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
 最明顯的好處是，您不需要為了啟用這項驗證 UI 而變更 `MoviesController` 類別或 *Create.cshtml* 檢視的程式碼，一行都不用。 您稍早在本教學課程中建立的控制器和檢視會自動拾取您指定的驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 `Edit` 動作方法測試驗證，即會套用相同的驗證。
 
-直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](https://dev.windows.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
+直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
 
 ## <a name="how-validation-works"></a>驗證的運作方式
 
@@ -65,7 +65,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms) 會使用 [DataAnnotations](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
+[輸入標記協助程式](xref:mvc/views/working-with-forms) 會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
 此方法最好的一點在於，控制器和 `Create` 檢視範本對要強制執行的實際驗證規則，或顯示的特定錯誤訊息，全都一無所知。 驗證規則和錯誤字串只在 `Movie` 類別中指定。 這些相同的驗證規則會自動套用到 `Edit` 檢視，以及任何其他您可能建立以編輯模型的檢視範本。
 

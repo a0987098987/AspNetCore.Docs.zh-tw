@@ -5,16 +5,16 @@ description: "使用 ASP.NET Core MVC 和 Visual Studio for Windows 建置 Web A
 keywords: "ASP.NET Core, WebAPI, Web API, REST, HTTP, 服務, HTTP 服務"
 ms.author: riande
 manager: wpickett
-ms.date: 8/15/2017
+ms.date: 08/15/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4aab61c7ee4498b33a4ea8bbec6033ce9828e2af
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 617b11cd7652e393c06446c62138802e4a4e90df
+ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/19/2017
 ---
 #<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 09/12/2017
 
 ![[新增專案] 對話方塊](first-web-api/_static/new-project.png)
 
-在 [New ASP.NET Core Web Application - TodoApi] (新增 ASP.NET Core Web 應用程式 - TodoApi) 對話方塊中，選取 [Web API] 範本。 選取 [確定]。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)。
+在 [New ASP.NET Core Web Application - TodoApi] \(新增 ASP.NET Core Web 應用程式 - TodoApi) 對話方塊中，選取 [Web API] 範本。 選取 [確定]。 請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援)。
 
 ![已從 ASP.NET Core 範本中選取 Web API 專案範本的 [新增 ASP.NET Web 應用程式] 對話方塊](first-web-api/_static/web-api-project.png)
 

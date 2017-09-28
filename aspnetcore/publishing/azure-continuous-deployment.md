@@ -138,7 +138,7 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
 
     ![Team Explorer 的 [連線] 索引標籤](azure-continuous-deployment/_static/10-team-explorer.png)
 
-2.  在 **Team Explorer** 中，選取 [首頁] (首頁圖示) > [設定] > [存放庫設定]。
+2.  在 **Team Explorer** 中，選取 [首頁] \(首頁圖示) > [設定] > [存放庫設定]。
 
 3.  在 [存放庫設定] 的 [遠端] 區段中，選取 [新增]。 隨即顯示 [新增遠端] 對話方塊。
 
@@ -151,7 +151,7 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
     >[!NOTE]
     >或者，您可以開啟**命令視窗**、變更為您的專案目錄，並輸入命令，以透過**命令視窗**指定遠端存放庫。 例如：`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
-6.  選取 [首頁] (首頁圖示) > [設定] > [全域設定]。 確認您已設定好名稱和電子郵件地址。 您可能也需要選取 [更新]。
+6.  選取 [首頁] \(首頁圖示) > [設定] > [全域設定]。 確認您已設定好名稱和電子郵件地址。 您可能也需要選取 [更新]。
 
 7.  選取 [首頁] > [變更]，即可返回 [變更] 檢視。
 

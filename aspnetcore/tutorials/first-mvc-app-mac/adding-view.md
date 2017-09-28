@@ -11,11 +11,11 @@ ms.assetid: 6942432b-7734-1638-9ad7-cad313abdbdb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/adding-view
-ms.openlocfilehash: 16a8aadf9550828809a73ac5ea5975fd1a61ef44
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 0ac816ec84218d0532587690c937687932138cfc
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---
 [!INCLUDE[adding-view](../../includes/mvc-intro/adding_view1.md)]
 

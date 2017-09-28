@@ -11,11 +11,11 @@ ms.date: 04/14/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: 21ba51200a8caabd7f466261c50ca58c8c6c3a01
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8732dfda88e4971dc5ffba3e143127eb82e31ae1
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 [!INCLUDE[adding-field](../../includes/mvc-intro/new-field.md)]
 

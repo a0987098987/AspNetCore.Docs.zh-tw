@@ -5,16 +5,16 @@ description: "說明如何使用 SQL Server LocalDB 與 ASP.NET Core。"
 keywords: "ASP.NET Core, Razor 頁面, Razor,MVC, SQL, LocalDB"
 ms.author: riande
 manager: wpickett
-ms.date: 8/7/2017
+ms.date: 08/07/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 173bdcca80a599ec2d87ff4158614727b35f984a
-ms.sourcegitcommit: d02d90b6272372178723ff932e8a9b9566afedb8
+ms.openlocfilehash: 852bd2dff96c951f55a9b142d8e15b6ec5856921
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
@@ -24,11 +24,11 @@ ms.lasthandoff: 08/15/2017
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=6-7)]
 
-ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連線字串：
+ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連接字串：
 
 [!code-javascript[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
-當您將應用程式部署到測試或生產環境伺服器時，可以使用環境變數或另一個方法來設定實際 SQL Server 的連線字串。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
+當您將應用程式部署到測試或生產環境伺服器時，可以使用環境變數或另一個方法來設定實際 SQL Server 的連接字串。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
@@ -41,9 +41,9 @@ LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為�
 
 * 以滑鼠右鍵按一下 `Movie` 資料表 > [檢視表設計工具]
 
-  ![電影資料表上開啟的操作功能表](sql/_static/design.png)
+  ![在電影資料表上開啟操作功能表](sql/_static/design.png)
 
-  ![設計工具中開啟的電影資料表](sql/_static/dv.png)
+  ![在設計工具中開啟電影資料表](sql/_static/dv.png)
 
 請注意 `ID` 旁的索引鍵圖示。 根據預設，EF 會將名為 `ID` 的屬性設為主索引鍵。
 

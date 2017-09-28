@@ -2,7 +2,7 @@
 title: "ASP.NET Core 1.1 的新功能"
 author: rick-anderson
 description: "ASP.NET Core 1.1 的新功能"
-keywords: ASP.NET Core, Bower
+keywords: ASP.NET Core,Bower
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -11,11 +11,11 @@ ms.assetid: 062f8353-d1bc-4e99-a821-c1d1bb162c47
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-1.1
-ms.openlocfilehash: 6b1c6648a55e966f448a383440b2b4f0d8e5afa1
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 28a99d3040df9611995fc8aed4bb8751aa9845f8
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/22/2017
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1 的新功能
 

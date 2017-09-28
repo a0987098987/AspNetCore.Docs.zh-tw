@@ -11,15 +11,15 @@ ms.date: 04/14/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: a6678cd3e9aea54330b00da1899e55c0035cdc59
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fcc18948f0bd5bc40f3fef254177fd1a8c46bd4b
+ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/22/2017
 ---
 [!INCLUDE[adding-field](../../includes/mvc-intro/new-field.md)]
 
 >[!div class="step-by-step"]
-<span data-ttu-id="2a61d-104">[上一步 - 新增搜尋](search.md)
-[下一步 - 新增驗證](validation.md)</span><span class="sxs-lookup"><span data-stu-id="2a61d-104">[Previous - Add search](search.md)
+<span data-ttu-id="cbfb3-104">[上一步 - 新增搜尋](search.md)
+[下一步 - 新增驗證](validation.md)</span><span class="sxs-lookup"><span data-stu-id="cbfb3-104">[Previous - Add search](search.md)
 [Next - Add validation](validation.md)</span></span>  

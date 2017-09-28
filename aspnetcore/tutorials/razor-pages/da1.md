@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 39b65f8af8304fabc6cf8d9a27992043f1e381a0
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 290d752ea5f177348ff3e749cc125e946ae6e763
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="updating-the-generated-pages"></a>更新產生的頁面
 
@@ -34,7 +34,6 @@ ms.lasthandoff: 09/12/2017
 
   ![操作功能表隨即顯示 **> [Quick Actions and Refactorings] (快速控制項目及重構)**。](da1/qa.png)
 
-
 選取 `using System.ComponentModel.DataAnnotations;`。
 
   ![使用清單頂端的 System.ComponentModel.DataAnnotations](da1/da.png)
@@ -47,9 +46,9 @@ ms.lasthandoff: 09/12/2017
 
 ![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](da1/edit7.png)
 
-在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)所產生。
+在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
-[!code-cshtml[Main](razor-pages-start\snapshot_sample\RazorPagesMovie\Pages\Movie\Index.cshtml?highlight=16-18&range=32-)]
+[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:mvc/razor-pages/index#url-generation-for-pages)。
 
@@ -61,7 +60,6 @@ ms.lasthandoff: 09/12/2017
   <a href="/Movies/Details?id=1">Details</a> |
   <a href="/Movies/Delete?id=1">Delete</a>
 </td>
-
 ```
 
 動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如，`http://localhost:5000/Movies/Details?id=2`)。 
@@ -86,7 +84,7 @@ ms.lasthandoff: 09/12/2017
 
 在 *Pages/Movies/Edit.cshtml.cs* 檔案中更新 `OnPostAsync` 方法。 下列醒目提示的程式碼示範這些變更：
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Edit.cshtml.cs?name=snippet1&highlight=17-24)]
+[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
 
 當第一個並行用戶端刪除電影，而第二個並行用戶端發佈對電影的變更時，先前的程式碼只會偵測並行存取例外狀況。
 
@@ -101,7 +99,7 @@ ms.lasthandoff: 09/12/2017
 
 ### <a name="posting-and-binding-review"></a>發佈和繫結檢閱內容
 
-檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movie/Edit.cshtml.cs?name=snippet2)]
+檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：
 
@@ -113,10 +111,10 @@ ms.lasthandoff: 09/12/2017
 
 * 頁面上的表單值會繫結至 `Movie` 屬性。 `[BindProperty]` 屬性可讓[模型繫結](xref:mvc/models/model-binding)。
 
-```csharp
-[BindProperty]
-public Movie Movie { get; set; }
-```
+  ```csharp
+  [BindProperty]
+  public Movie Movie { get; set; }
+  ```
 
 * 如果模型狀態中有錯誤 (例如，`ReleaseDate`無法轉換為 date)，則會以提交的值再次發佈表單。
 * 如果沒有任何模型錯誤，則會儲存電影。

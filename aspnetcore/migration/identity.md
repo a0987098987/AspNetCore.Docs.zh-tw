@@ -11,11 +11,11 @@ ms.assetid: 0db145cb-41a5-448a-b889-72e2d789ad7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/identity
-ms.openlocfilehash: b5a9bab4399714c481d4f38eeeaeba19d8bdd5b2
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ed96266f06eb473fa3c3e1cc81b2b58fcd89f29e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="migrating-authentication-and-identity"></a>移轉的驗證和身分識別
 
@@ -52,8 +52,6 @@ public void ConfigureServices(IServiceCollection services)
 此時，有兩種類型，尚未您尚未從 ASP.NET MVC 專案移轉上述程式碼中參考：`ApplicationDbContext`和`ApplicationUser`。 建立新*模型*資料夾中 ASP.NET Core 專案，然後將兩個類別加入至其對應至這些型別。 您可以找到 ASP.NET MVC 中的這些類別的版本`/Models/IdentityModels.cs`，但因為這是更清楚，我們將使用每個類別已移轉的專案中的一個檔案。
 
 ApplicationUser.cs:
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -93,8 +91,6 @@ ASP.NET Core MVC 入門 Web 專案不包含太多自訂的使用者或 Applicati
 
 與就地這些檔案，Startup.cs 檔案，可以藉由編譯藉由更新其使用陳述式：
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
@@ -110,9 +106,7 @@ using Microsoft.AspNetCore.Identity;
 
 更新 _Layout.cshtml;請取消註解@Html.Partial行：
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "none"} -->
-
-```none
+```cshtml
       <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </ul>
     @*@Html.Partial("_LoginPartial")*@
@@ -124,9 +118,7 @@ using Microsoft.AspNetCore.Identity;
 
 下列程式碼以更新 _LoginPartial.cshtml （取代其所有內容）：
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
-```csharp
+```cshtml
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 

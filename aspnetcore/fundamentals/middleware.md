@@ -11,11 +11,11 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: cb39d74b9293b3ab341beba08d2f0af90261ca5f
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 881cabdbb7814b36d97a977b30389506b99d16b9
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
@@ -44,7 +44,7 @@ ASP.NET Core 要求管線包含一連串要求委派，呼叫其中一個之後�
 
 ![顯示要求抵達，透過三個 middlewares，並讓應用程式保持回應處理的要求處理模式。 每個中介軟體執行其邏輯，並傳遞要在 next （） 陳述式的下一個中介軟體的要求。 第三個中介軟體在處理要求之後, 是左手透過先前的兩個 middlewares 額外處理 next （） 陳述式之後，每個依次離開做為回應至用戶端應用程式之前傳回。](middleware/_static/request-delegate-pipeline.png)
 
-每個委派之前和之後的下一個委派，可以執行作業。 委派，也可以決定要將要求傳遞至下一步的委派，會呼叫最少運算要求管線。 最少運算通常會因為它可讓以避免不必要的工作。 比方說，靜態檔案中介軟體可以傳回靜態檔案的要求，並最少運算管線的其餘部分。 例外狀況處理委派需要呼叫及早在管線中，讓它們可以攔截管線的後續階段中發生例外狀況。
+每個委派之前和之後的下一個委派，可以執行作業。 委派，也可以決定要將要求傳遞至下一步的委派，會呼叫最少運算要求管線。 最少運算通常會因為它可避免不必要的工作。 比方說，靜態檔案中介軟體可以傳回靜態檔案的要求，並最少運算管線的其餘部分。 例外狀況處理委派需要呼叫及早在管線中，讓它們可以攔截管線的後續階段中發生例外狀況。
 
 最簡單的可能 ASP.NET Core 應用程式設定單一要求委派會處理所有要求。 此案例不包含實際的要求管線。 相反地，單一的匿名函式會呼叫每個 HTTP 要求的回應。
 

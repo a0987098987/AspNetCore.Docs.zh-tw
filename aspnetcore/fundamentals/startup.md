@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 009df1416c822018d6e88912cc77e525c7349c34
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 94db2ff530b5de7fe357cfb591d09b984cb248f9
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/22/2017
 
 ## <a name="the-startup-class"></a>啟動類別
 
-ASP.NET Core 應用程式需要`Startup`類別。 依照慣例，`Startup`類別的名稱為 「 啟動 」。 指定啟動類別名稱在`Main`程式的[WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_)方法。 請參閱[主控](xref:fundamentals/hosting)若要深入了解`WebHostBuilder`，執行之前`Startup`。
+ASP.NET Core 應用程式需要`Startup`類別，名為`Startup`依慣例。 指定啟動類別名稱在`Main`程式的[WebHostBuilderExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions) [ `UseStartup<TStartup>` ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderextensions#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_)方法。 請參閱[主控](xref:fundamentals/hosting)若要深入了解`WebHostBuilder`，執行之前`Startup`。
 
 您可以定義個別`Startup`不同環境中，並在執行階段會選取一個適當的類別。 如果您指定`startupAssembly`中[WebHost 設定](https://docs.microsoft.com/aspnet/core/fundamentals/hosting?tabs=aspnetcore2x#configuring-a-host)或裝載的選項將會載入該啟動組件，並搜尋`Startup`或`Startup[Environment]`型別。 類別目前的環境來排列優先順序的名稱後置詞相符項目，因此如果在執行應用程式*開發*環境中，並同時包含`Startup`和`StartupDevelopment`類別`StartupDevelopment`類別將為使用。 請參閱[FindStartupType](https://github.com/aspnet/Hosting/blob/rel/1.1.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs)中`StartupLoader`和[使用多個環境](environments.md#startup-conventions)。
 

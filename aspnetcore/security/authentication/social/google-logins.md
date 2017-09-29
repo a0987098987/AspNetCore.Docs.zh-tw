@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 7e37a8af4ae5a957483fa5f4a89ea4e8999a3d1d
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Google 驗證
 
@@ -101,6 +101,10 @@ ms.lasthandoff: 09/19/2017
 加入在 Google 服務`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
@@ -108,7 +112,7 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 });
 ```
 
-`AddAuthentication`方法只能呼叫一次時新增多個驗證提供者。 後續呼叫可能會覆寫任何先前設定的[AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions)屬性。
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

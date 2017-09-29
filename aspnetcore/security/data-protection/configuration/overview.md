@@ -2,7 +2,7 @@
 title: "設定資料保護"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 39fab796c24456d61a6a103c4a3f7a8722b4718c
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-data-protection"></a>設定資料保護
 
@@ -66,8 +66,6 @@ public void ConfigureServices(IServiceCollection services)
 根據預設資料保護系統隔離應用程式，即使它們共用相同的實體索引鍵儲存機制。 這可防止從了解其他人的受保護的裝載的應用程式。 若要共用受保護的裝載兩個不同的應用程式之間，設定系統傳遞兩個應用程式中的相同應用程式名稱中的下列範例：
 
 <a name=data-protection-code-sample-application-name></a>
-
-<!-- literal_block {"ids": ["data-protection-code-sample-application-name"], "linenos": false, "names": ["data-protection-code-sample-application-name"], "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -291,5 +289,5 @@ services.AddDataProtection()
 
 ### <a name="see-also"></a>請參閱
 
-* [非 DI 注意案例](non-di-scenarios.md)
-* [寬型電腦的原則](machine-wide-policy.md)
+* [非 DI 感知案例](non-di-scenarios.md)
+* [電腦全域原則](machine-wide-policy.md)

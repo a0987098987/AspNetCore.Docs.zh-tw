@@ -11,11 +11,11 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 597d4058a410e0b5991b1d5a74c9fc7bfe8171b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 92085829d2a37a2aa6080aeb34a5e14be95e02d8
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="model-binding"></a>模型繫結
 
@@ -32,8 +32,6 @@ MVC 收到 HTTP 要求時，它將其路由至特定的動作方法的控制器�
 `http://contoso.com/movies/edit/2`
 
 因為路由範本看起來像這樣， `{controller=Home}/{action=Index}/{id?}`，`movies/edit/2`會路由傳送至`Movies`控制站，且其`Edit`動作方法。 它也可接受選擇性參數呼叫`id`。 動作方法的程式碼看起來應該像這樣：
-
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 public IActionResult Edit(int? id)
@@ -71,7 +69,7 @@ The link works but generates an error when building with DocFX
 
 * `IFormFile``IEnumerable<IFormFile>`： 一或多個上傳的檔案的 HTTP 要求的一部分。
 
-* `CancelationToken`： 用來取消非同步控制器中的活動。
+* `CancellationToken`： 用來取消非同步控制器中的活動。
 
 這些型別可以繫結至動作參數或屬性的類別類型。
 
@@ -107,15 +105,13 @@ MVC 包含數個屬性可讓您將導向至不同來源的預設模型繫結行�
 
 ASP.NET 選取輸入的格式器基礎[Content-type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)標頭和參數的型別除非套用，否則為指定的屬性。 如果您想要使用 XML 或另一種格式必須設定在*Startup.cs*檔案，但您可能需要取得的參考`Microsoft.AspNetCore.Mvc.Formatters.Xml`使用 NuGet。 您的啟始程式碼看起來應該像這樣：
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
-
 ```csharp
 public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc()
-          .AddXmlSerializerFormatters();
+{
+    services.AddMvc()
+        .AddXmlSerializerFormatters();
    }
-   ```
+```
 
 中的程式碼*Startup.cs*檔案包含`ConfigureServices`方法`services`引數可用來建置您的 ASP.NET 應用程式的服務。 在範例中，我們會將 XML 格式器加入為 MVC 會提供此應用程式的服務。 `options`引數傳遞至`AddMvc`方法可讓您新增及管理篩選器、 格式器，以及其他系統選項從 MVC 應用程式啟動時。 然後套用`Consumes`屬性到控制器類別或動作方法，才能使用您想要的格式。
 

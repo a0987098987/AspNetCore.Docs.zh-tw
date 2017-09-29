@@ -11,11 +11,11 @@ ms.assetid: d026a58c-67f4-411e-a410-c35f29c2c517
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 5688ff2c36907231f88d45cef4ae1b1c60ab44ab
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: a47d2f91e6764bf6760ea559f1e2753e966753e3
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="context-headers"></a>內容標頭
 
@@ -63,14 +63,12 @@ ms.lasthandoff: 09/19/2017
 
 首先，讓 (K_E | |K_H) = SP800_108_CTR (prf = HMACSHA512，索引鍵 =""，標籤 =""，內容 ="")，其中 |K_E |= 192 位元和 |K_H |= 每個指定的演算法的 256 位元。 這會導致 K_E = 5BB6...21DD 和 K_H = A04A...下例會 00A9:
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
-   61 62 42 71 CB 83 21 DD A0 4A 05 00 5B AB C0 A2
-   49 6F A5 61 E3 E2 49 87 AA 63 55 CD 74 0A DA C4
-   B7 92 3D BF 59 90 00 A9
-   ```
+61 62 42 71 CB 83 21 DD A0 4A 05 00 5B AB C0 A2
+49 6F A5 61 E3 E2 49 87 AA 63 55 CD 74 0A DA C4
+B7 92 3D BF 59 90 00 A9
+```
 
 接下來，計算 Enc_CBC (K_E、 IV，"") 192 位 AES-CBC 指定 IV = 0 * 和上述 K_E。
 
@@ -82,15 +80,13 @@ ms.lasthandoff: 09/19/2017
 
 這會產生下列的完整內容標頭：
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 00 00 00 00 00 18 00 00 00 10 00 00 00 20 00 00
-   00 20 F4 74 B1 87 2B 3B 53 E4 72 1D E1 9C 08 41
-   DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
-   8F A8 FB D9 8A BD FF 54 02 F2 64 B1 D7 21 15 36
-   22 0C
-   ```
+00 20 F4 74 B1 87 2B 3B 53 E4 72 1D E1 9C 08 41
+DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
+8F A8 FB D9 8A BD FF 54 02 F2 64 B1 D7 21 15 36
+22 0C
+```
 
 此內容標頭是已驗證的加密演算法組 （AES-CBC-192 加密 + HMACSHA256 驗證） 的憑證指紋。 所述的元件[上方](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components)是：
 
@@ -115,13 +111,11 @@ ms.lasthandoff: 09/19/2017
 
 首先，讓 (K_E | |K_H) = SP800_108_CTR (prf = HMACSHA512，索引鍵 =""，標籤 =""，內容 ="")，其中 |K_E |= 192 位元和 |K_H |= 160 位元，每個指定的演算法。 這會導致 K_E = A219...E2BB 和 K_H = DC4A...下例會 B464:
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
-   61 D9 F8 6C 10 51 E2 BB DC 4A 00 D7 03 A2 48 3E
-   D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
-   ```
+61 D9 F8 6C 10 51 E2 BB DC 4A 00 D7 03 A2 48 3E
+D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
+```
 
 接下來，計算 Enc_CBC (K_E、 IV，"") 3DES-192 位 CBC 指定 IV = 0 * 和上述 K_E。
 
@@ -133,13 +127,11 @@ A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
 
 這會產生完整的內容標頭的已驗證的指紋即加密演算法組 （3DES-192 位 CBC 加密 + HMACSHA1 驗證），如下所示：
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 00 00 00 00 00 18 00 00 00 08 00 00 00 14 00 00
-   00 14 AB B1 00 F8 1E 53 E1 0E 76 EB 18 9B 35 CF
-   03 46 1D DF 87 7C D9 F4 B1 B4 D6 3A 75 55
-   ```
+00 14 AB B1 00 F8 1E 53 E1 0E 76 EB 18 9B 35 CF
+03 46 1D DF 87 7C D9 F4 B1 B4 D6 3A 75 55
+```
 
 如下所示分解元件：
 
@@ -189,13 +181,11 @@ K_E: = 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 這會產生下列的完整內容標頭：
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 00 01 00 00 00 20 00 00 00 0C 00 00 00 10 00 00
-   00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
-   BE 45
-   ```
+00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
+BE 45
+```
 
 如下所示分解元件：
 

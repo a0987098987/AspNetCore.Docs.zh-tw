@@ -11,17 +11,17 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 1602a7fa801f77c259e3e3a37d60e02606cf5bac
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: cb4ea63664f29e39c2dd26cbf814a484a295ec6c
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 
 <a name=security-authentication-microsoft-logins></a>
 
-由[Valeriy Novytskyy](https://github.com/01binary)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程會示範如何讓使用者使用範例 ASP.NET Core 2.0 專案上建立其 Microsoft 帳戶登入[上一頁](index.md)。
 
@@ -83,6 +83,10 @@ ms.lasthandoff: 09/12/2017
 新增 Microsoft 帳戶服務中的`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 {
     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
@@ -90,7 +94,7 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 });
 ```
 
-`AddAuthentication`方法只能呼叫一次時新增多個驗證提供者。 後續呼叫可能會覆寫任何先前設定的[AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions)屬性。
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

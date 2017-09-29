@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core MVC 概觀"
 author: ardalis
-description: 
+description: "了解如何 ASP.NET Core MVC 是用於建置 web 應用程式的豐富架構以及應用程式開發介面使用模型檢視控制器設計模式。"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 67394b066c18a149a97b957d6478ba8301ea8147
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 2492b6aa4602dbbf3b9cd3dca00d40690c640cab
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -92,8 +92,6 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 
 *屬性路由*可讓您指定的路由資訊，而將您的控制器和動作以定義您的應用程式路由的屬性。 這表示路由定義會緊控制器和動作與它們相關聯。
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 4]}} -->
-
 ```csharp
 [Route("api/[controller]")]
 public class ProductsController : Controller
@@ -118,8 +116,6 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 ASP.NET Core MVC 支援[驗證](models/validation.md)而將您的模型物件與資料註解驗證屬性。 驗證屬性值在公佈到伺服器之前，先檢查用戶端，以及呼叫控制器動作之前，伺服器上。
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
-
 ```csharp
 using System.ComponentModel.DataAnnotations;
 public class LoginViewModel
@@ -138,8 +134,6 @@ public class LoginViewModel
 ```
 
 控制器的動作：
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -161,17 +155,15 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 您的應用程式也可以使用[檢視中檔案的相依性插入](views/dependency-injection.md)，並使用`@inject`指示詞：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
-
-```html
+```cshtml
 @inject SomeService ServiceName
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>@ServiceName.GetTitle</title>
+    <title>@ServiceName.GetTitle</title>
 </head>
 <body>
-  <h1>@ServiceName.GetTitle</h1>
+    <h1>@ServiceName.GetTitle</h1>
 </body>
 </html>
 ```
@@ -185,7 +177,6 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 [Authorize]
    public class AccountController : Controller
    {
-
 ```
 
 ### <a name="areas"></a>區域
@@ -224,7 +215,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 例如，下列檢視定義的模型型別`IEnumerable<Product>`:
 
-```html
+```cshtml
 @model IEnumerable<Product>
 <ul>
     @foreach (Product p in Model)
@@ -240,9 +231,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 有許多內建的標記協助程式的一般工作-例如建立表單、 連結、 載入資產和更多的和更多可用公用 GitHub 儲存機制中以及 NuGet 封裝。 標記協助程式以 C# 中，撰寫，與它們目標項目名稱、 屬性名稱，或父標記的 HTML 項目。 例如，內建 LinkTagHelper 可以用來建立的連結`Login`動作`AccountsController`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
-
-```html
+```cshtml
 <p>
     Thank you for confirming your email.
     Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
@@ -251,9 +240,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 `EnvironmentTagHelper`可用來在您檢視 （例如 raw 或縮短） 為基礎的執行階段環境，例如開發、 預備或生產環境中包含不同的指令碼：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
-
-```html
+```cshtml
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </environment>

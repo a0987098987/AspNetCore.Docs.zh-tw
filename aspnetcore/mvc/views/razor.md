@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 066fe3b2486c63bd4de2ccb865ad432a67846d77
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0e65f0e9f672f9f93256ebc039ea0db2e4ef5ae0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Razor 語法的 ASP.NET Core
 
@@ -30,7 +30,7 @@ Razor 是伺服器為基礎的程式碼內嵌在網頁標記語法。 Razor 語�
 
 ```html
 <p>Hello World</p>
-   ```
+```
 
 會轉譯為未變更`<p>Hello World</p>`伺服器。
 
@@ -42,15 +42,15 @@ Razor 支援 C#，並使用`@`轉換來自 HTML，以 C# 中的符號。 Razor �
 
 包含 HTML`@`符號可能需要逸出的第二個`@`符號。 例如: 
 
-```html
+```cshtml
 <p>@@Username</p>
-   ```
+```
 
 會轉譯下列 HTML:
 
-```html
+```cshtml
 <p>@Username</p>
-   ```
+```
 
 <a name=razor-email-ref></a>
 
@@ -91,16 +91,14 @@ Razor 的明確運算式包含 @ 有對稱的括號的符號。 例如，若要�
 
 ```html
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
-   ```
+```
 
 您可以使用明確的運算式來串連文字與運算式結果：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [5]}} -->
-
-```none
+```cshtml
 @{
     var joe = new Person("Joe", 33);
- }
+}
 
 <p>Age@(joe.Age)</p>
 ```
@@ -113,15 +111,15 @@ Razor 的明確運算式包含 @ 有對稱的括號的符號。 例如，若要�
 
 C# 運算式，評估為字串會以 HTML 編碼。 C# 運算式會評估得出`IHtmlContent`轉譯直接透過*IHtmlContent.WriteTo*。 C# 運算式未評估成*IHtmlContent*轉換成字串 (由*ToString*)，而且編碼在呈現之前。 例如，下列的 Razor 標記：
 
-```html
+```cshtml
 @("<span>Hello World</span>")
-   ```
+```
 
 將 HTML 呈現此：
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
-   ```
+```
 
 其瀏覽器會呈現為：
 
@@ -134,15 +132,15 @@ C# 運算式，評估為字串會以 HTML 編碼。 C# 運算式會評估得出`
 
 下列的 Razor 標記：
 
-```html
+```cshtml
 @Html.Raw("<span>Hello World</span>")
-   ```
+```
 
 將 HTML 呈現此：
 
 ```html
 <span>Hello World</span>
-   ```
+```
 
 <a name=razor-code-blocks-label></a>
 
@@ -162,7 +160,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 ```html
 <p>The rendered result: Hello World</p>
-   ```
+```
 
 <a name=implicit-transitions-label></a>
 
@@ -170,7 +168,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 程式碼區塊中的預設語言是 C# 中，但您可以轉換回 HTML。 HTML 程式碼區塊內就會轉換成 HTML 呈現：
 
-```none
+```cshtml
 @{
     var inCSharp = true;
     <p>Now in HTML, was in C# @inCSharp</p>
@@ -183,9 +181,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 若要定義應該呈現的 HTML 程式碼區塊的子區段，括住的字元來呈現使用 Razor`<text>`標記：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [4]}} -->
-
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -201,9 +197,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 若要轉譯為 HTML 的整行的其餘部分的程式碼區塊內，使用`@:`語法：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [4]}} -->
-
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -223,7 +217,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 `@if`系列可讓您控制執行程式碼：
 
-```none
+```cshtml
 @if (value % 2 == 0)
 {
     <p>The value was even</p>
@@ -232,7 +226,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，C# 程式
 
 `else`和`else if`不需要`@`符號：
 
-```none
+```cshtml
 @if (value % 2 == 0)
 {
     <p>The value was even</p>
@@ -249,7 +243,7 @@ else
 
 您可以使用 switch 陳述式如下：
 
-```none
+```cshtml
 @switch (value)
 {
     case 1:
@@ -268,7 +262,7 @@ else
 
 您可以將迴圈控制陳述式的樣板化 HTML 轉譯。 例如，若要呈現的人員清單：
 
-```none
+```cshtml
 @{
     var people = new Person[]
     {
@@ -282,7 +276,7 @@ else
 
 `@for`
 
-```none
+```cshtml
 @for (var i = 0; i < people.Length; i++)
 {
     var person = people[i];
@@ -293,7 +287,7 @@ else
 
 `@foreach`
 
-```none
+```cshtml
 @foreach (var person in people)
 {
     <p>Name: @person.Name</p>
@@ -303,7 +297,7 @@ else
 
 `@while`
 
-```none
+```cshtml
 @{ var i = 0; }
 @while (i < people.Length)
 {
@@ -317,7 +311,7 @@ else
 
 `@do while`
 
-```none
+```cshtml
 @{ var i = 0; }
 @do
 {
@@ -333,7 +327,7 @@ else
 
 在 C# using 陳述式用來確保處置物件。 Razor 中相同的機制可用來建立包含其他內容的 HTML helper。 比方說，我們可以利用 HTML Helper 呈現表單標記與`@using`陳述式：
 
-```none
+```cshtml
 @using (Html.BeginForm())
 {
     <div>
@@ -356,7 +350,7 @@ else
 
 Razor 具有保護與 lock 陳述式的關鍵區段的功能：
 
-```none
+```cshtml
 @lock (SomeLock)
 {
     // Do critical section work
@@ -367,7 +361,7 @@ Razor 具有保護與 lock 陳述式的關鍵區段的功能：
 
 Razor 支援 C# 和 HTML 註解。 下列標記：
 
-```none
+```cshtml
 @{
     /* C# comment. */
     // Another C# comment.
@@ -377,14 +371,14 @@ Razor 支援 C# 和 HTML 註解。 下列標記：
 
 轉譯伺服器：
 
-```none
+```cshtml
 <!-- HTML comment -->
 ```
 
 呈現頁面之前，伺服器會移除 razor 註解。 使用 razor`@*  *@`來分隔註解。 下列程式碼會標記為註解，所以伺服器將不會呈現任何標記：
 
-```none
- @*
+```cshtml
+@*
  @{
      /* C# comment. */
      // Another C# comment.
@@ -431,33 +425,33 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 `@model`指示詞會指定傳遞至 Razor 頁面的模型型別。 其使用下列語法：
 
-```none
+```cshtml
 @model TypeNameOfModel
-   ```
+```
 
 例如，如果您建立的 ASP.NET Core MVC 應用程式與個別使用者帳戶*Views/Account/Login.cshtml* Razor 檢視包含下列模型宣告：
 
-```csharp
+```cshtml
 @model LoginViewModel
-   ```
+```
 
 在上述的類別範例中，產生的類別繼承自`RazorPage<dynamic>`。 藉由新增`@model`您控制所繼承。 例如
 
-```csharp
+```cshtml
 @model LoginViewModel
-   ```
+```
 
 會產生下列類別
 
 ```csharp
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
-   ```
+```
 
 Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。
 
-```html
+```cshtml
 <div>The Login Email: @Model.Email</div>
-   ```
+```
 
 `@model`指示詞會指定此屬性的型別 (藉由指定`T`中`RazorPage<T>`對您的頁面產生的類別衍生自)。 如果您未指定`@model`指示詞`Model`屬性都屬於類型`dynamic`。 模型值會從控制器到檢視。 請參閱[強類型模型和@model關鍵字](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label)如需詳細資訊。
 
@@ -465,9 +459,9 @@ Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。
 
 `@inherits`指示詞讓您完整控制 Razor 頁面所繼承的類別：
 
-```none
+```cshtml
 @inherits TypeNameOfClassToInheritFrom
-   ```
+```
 
 比方說，假設我們有下列自訂 Razor 頁面類型：
 
@@ -487,7 +481,7 @@ Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。
 
 會產生這個 HTML 標記：
 
-```none
+```cshtml
 <div>The Login Email: Rick@contoso.com</div>
 <div>Custom text: Hello World</div>
 ```
@@ -506,9 +500,9 @@ Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。
 
 `@functions`指示詞可讓您將函式層級內容加入至您的 Razor 頁面。 其語法為：
 
-```none
+```cshtml
 @functions { // C# Code }
-   ```
+```
 
 例如: 
 
@@ -516,9 +510,9 @@ Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。
 
 會產生下列的 HTML 標記：
 
-```none
+```cshtml
 <div>From method: Hello</div>
-   ```
+```
 
 產生 Razor 的 C# 看起來像：
 

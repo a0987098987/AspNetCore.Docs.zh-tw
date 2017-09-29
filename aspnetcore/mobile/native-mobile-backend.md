@@ -11,11 +11,11 @@ ms.assetid: 3b6a32f2-5af9-4ede-9b7f-17ab300526d0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 7b2b35b1519badbc8b8fbddab97a0c6336926185
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: be1cd9f4fe41f1a79669975cb6a89439cdd9e5c7
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="creating-backend-services-for-native-mobile-applications"></a>建立原生行動應用程式的後端服務
 
@@ -46,8 +46,6 @@ ToDoRest 應用程式支援清單、 加入、 刪除和更新待辦項目。 �
 ![[編輯項目] 對話方塊](native-mobile-backend/_static/todo-android-edit-item.png)
 
 這個範例會使用後端服務裝載於 developer.xamarin.com，允許唯讀作業的預設設定。 若要測試自己對您的電腦上執行的下一節中所建立的 ASP.NET Core 應用程式，您將需要更新的應用程式`RestUrl`常數。 瀏覽至`ToDoREST`專案，並開啟*Constants.cs*檔案。 取代`RestUrl`具有 URL，其中包含您的電腦 IP 位址 （不 localhost 或 127.0.0.1，因為此位址是使用從裝置模擬器，不是從您的電腦）。 包含連接埠號碼 (5000)。 若要測試您的服務使用的裝置，請確定您沒有使用中防火牆封鎖這個連接埠的存取。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 // URL of REST service (Xamarin ReadOnly Service)

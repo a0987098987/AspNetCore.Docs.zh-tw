@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 431b837dc93abdf305b77615409883fd54b99455
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 469c30cf66d28e82519d5eff7f2fc82d490827b7
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -197,8 +197,6 @@ routes.MapRoute(
 * `Build`
 * `MapGet`比對僅 HTTP GET 要求
 * `UseRouter`
-
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ```csharp
 public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)

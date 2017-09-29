@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10471210075dc8a5366b7d5170d6594c2e66ce94
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>在 ASP.NET Core 標記協助程式簡介 
 
@@ -67,9 +67,7 @@ ms.lasthandoff: 09/22/2017
 
 如果您的專案包含`EmailTagHelper`與預設的命名空間 (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，您可以提供標記協助程式的完整限定的名稱 (FQN):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
-
-```html
+```cshtml
 @using AuthoringTagHelpers
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers

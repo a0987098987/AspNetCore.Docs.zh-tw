@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/enforcing-ssl
-ms.openlocfilehash: e8e7d4a69fd681534fb313ff113805bfd6a6d44e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 6f2755a606000717ca8a57f045b1ef613c7f14f6
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="enforcing-ssl-in-an-aspnet-core-app"></a>強制執行的 ASP.NET Core 應用程式中的 SSL
 
@@ -40,7 +40,3 @@ ms.lasthandoff: 09/22/2017
 請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)如需詳細資訊。
 
 全域需要 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 套用`[RequireHttps]`所有控制器的屬性不會視為為全域需要 HTTPS 的安全。 您無法保證新的控制站新增至您的應用程式將會記住要套用`[RequireHttps]`屬性。
-
-## <a name="set-up-iis-express-for-sslhttps"></a>設定 SSL/HTTPS 的 IIS Express
-
-請參閱[設定 HTTPS 進行開發的 ASP.NET Core](xref:security/https#iisxpress)。

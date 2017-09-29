@@ -2,7 +2,7 @@
 title: "已驗證的加密的詳細資料。"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 826e6d5d-9620-44e6-ad93-3b1d9969b70b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/authenticated-encryption-details
-ms.openlocfilehash: 146b1cb197766f02bb75559c44b24686898ed4d9
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 4d0e63d7722071ab8806a217e96ee7ad7bf10286
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="authenticated-encryption-details"></a>已驗證的加密的詳細資料。
 
@@ -37,19 +37,17 @@ IDataProtector.Protect 會採用 byte [] 的純文字參數，並產生的位元
 
 下圖說明範例受保護的內容。
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/implementation/authenticated-encryption-details/_static/protectedpayload.txt", "ids": [], "linenos": true, "highlight_args": {"linenostart": 1}} -->
-
 ```
 09 F0 C9 F0 80 9C 81 0C 19 66 19 40 95 36 53 F8
-   AA FF EE 57 57 2F 40 4C 3F 7F CC 9D CC D9 32 3E
-   84 17 99 16 EC BA 1F 4A A1 18 45 1F 2D 13 7A 28
-   79 6B 86 9C F8 B7 84 F9 26 31 FC B1 86 0A F1 56
-   61 CF 14 58 D3 51 6F CF 36 50 85 82 08 2D 3F 73
-   5F B0 AD 9E 1A B2 AE 13 57 90 C8 F5 7C 95 4E 6A
-   8A AA 06 EF 43 CA 19 62 84 7C 11 B2 C8 71 9D AA
-   52 19 2E 5B 4C 1E 54 F0 55 BE 88 92 12 C1 4B 5E
-   52 C9 74 A0
-   ```
+AA FF EE 57 57 2F 40 4C 3F 7F CC 9D CC D9 32 3E
+84 17 99 16 EC BA 1F 4A A1 18 45 1F 2D 13 7A 28
+79 6B 86 9C F8 B7 84 F9 26 31 FC B1 86 0A F1 56
+61 CF 14 58 D3 51 6F CF 36 50 85 82 08 2D 3F 73
+5F B0 AD 9E 1A B2 AE 13 57 90 C8 F5 7C 95 4E 6A
+8A AA 06 EF 43 CA 19 62 84 7C 11 B2 C8 71 9D AA
+52 19 2E 5B 4C 1E 54 F0 55 BE 88 92 12 C1 4B 5E
+52 C9 74 A0
+```
 
 從上面的前 32 個位元或 4 個位元組的裝載格式會使用識別的版本 (09 F0 C9 F0) magic 標頭
 

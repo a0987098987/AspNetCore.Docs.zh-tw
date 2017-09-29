@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 42b4b31d4a34bc54c2c9338db802dcc0801ee85a
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: fcadf9ca0ad66bb0fd56efc248fc7534965b48b3
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
 
@@ -44,7 +44,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QR
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
-    <script type="text/javascript" src="/lib/qrcode.js"></script>
+    <script type="text/javascript" src="~/lib/qrcode.js"></script>
     <script type="text/javascript">
         new QRCode(document.getElementById("qrCode"),
             {

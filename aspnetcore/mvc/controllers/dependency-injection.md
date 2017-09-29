@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: b83bd4a24ccf7e90e9df06d6a8e229a2d5c6699a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f6b454da838308adddaaddb84073722f647af379
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>相依性插入控制器
 
@@ -49,8 +49,6 @@ ASP.NET Core 建構函式為基礎的相依性插入的內建支援會延伸到 
 
 當我們執行應用程式現在，我們很可能會發生錯誤：
 
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
-
 ```
 An unhandled exception occurred while processing the request.
 
@@ -73,8 +71,6 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 > 請參閱[測試控制器邏輯](testing.md)以了解如何明確地要求的相依性[http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/)控制站可以更輕鬆地測試的程式碼。
 
 ASP.NET Core 內建的相依性插入支援只有單一建構函式類別要求服務。 如果您有一個以上的建構函式，您可能會收到例外狀況的說明：
-
-<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ```
 An unhandled exception occurred while processing the request.

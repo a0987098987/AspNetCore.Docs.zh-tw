@@ -11,11 +11,11 @@ ms.assetid: E5931607-31C0-4B20-B416-85E3550F5EA8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 401836c3782e5d9d31b13d7c94eb2f955045fa0c
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 87be0bdd4637cff609a4908b303a13272656e2a4
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuring-twitter-authentication"></a>設定 Twitter 驗證
 
@@ -65,6 +65,10 @@ ms.lasthandoff: 09/19/2017
 Twitter 服務中的新增`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddTwitter(twitterOptions =>
 {
     twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
@@ -72,7 +76,7 @@ services.AddAuthentication().AddTwitter(twitterOptions =>
 });
 ```
 
-`AddAuthentication`方法只能呼叫一次時新增多個驗證提供者。 後續呼叫可能會覆寫任何先前設定的[AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions)屬性。
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

@@ -11,11 +11,11 @@ ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: 0f388ba090ada11a0ac7937606cbcd5a89d6263e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 3096d6404ff9c7e34eefcfb1990e7bf1ccab27ba
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="areas"></a>區域
 
@@ -105,8 +105,6 @@ services.Configure<RazorViewEngineOptions>(options =>
 
 一旦您定義了資料夾階層，您必須告訴 MVC 每個控制站是與區域相關聯。 您執行此作業，而將控制器名稱與`[Area]`屬性。
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
-
 ```csharp
 ...
    namespace MyStore.Areas.Products.Controllers
@@ -130,8 +128,6 @@ services.Configure<RazorViewEngineOptions>(options =>
    ```
 
 設定路由定義可搭配您新建立的區域。 [路由至控制器動作](routing.md)文章進入詳細資料，以建立路由定義，包括使用傳統與屬性路由的路由。 在此範例中，我們會使用傳統的路由。 若要這樣做，請開啟*Startup.cs*檔案，並修改加`areaRoute`名為路由定義下方。
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
 ```csharp
 ...

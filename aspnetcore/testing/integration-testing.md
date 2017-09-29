@@ -2,20 +2,20 @@
 title: "整合測試 ASP.NET Core"
 author: ardalis
 description: "如何使用 ASP.NET Core 整合測試，以確保應用程式的元件可以正確運作。"
-keywords: "ASP.NET Core 整合測試"
+keywords: "ASP.NET Core，整合測試，Razor"
 ms.author: riande
 manager: wpickett
-ms.date: 02/14/2017
+ms.date: 09/25/2017
 ms.topic: article
 ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: 02018299c9bd1d194c2c70c14f518786e803d572
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: fab1fb0e64debd8488713b3518cb3bc90182616b
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>整合測試 ASP.NET Core
 
@@ -64,6 +64,23 @@ ASP.NET Core 包含可加入至整合測試專案的測試主機來裝載 ASP.NE
 ![測試總管](integration-testing/_static/test-explorer.png)
 
 您可以進一步了解中的單元測試[單元測試](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)發行項。
+
+
+### <a name="integration-testing-mvcrazor"></a>測試 Mvc/Razor 的整合
+
+含有 Razor 檢視的測試專案需要`<PreserveCompilationContext>`設為 true *.csproj*檔案：
+
+
+```xml
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+```
+
+專案遺漏這個項目會產生類似下面的錯誤：
+```
+Microsoft.AspNetCore.Mvc.Razor.Compilation.CompilationFailedException: 'One or more compilation failures occurred:
+ooebhccx.1bd(4,62): error CS0012: The type 'Attribute' is defined in an assembly that is not referenced. You must add a reference to assembly 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'.
+```
+
 
 ## <a name="refactoring-to-use-middleware"></a>若要使用的中介軟體中重構
 

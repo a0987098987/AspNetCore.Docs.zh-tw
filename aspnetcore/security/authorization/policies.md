@@ -2,7 +2,7 @@
 title: "以原則為基礎的自訂授權"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: dd7187f67887bb39a5ff425dcbae0927c7565cb8
-ms.sourcegitcommit: 41e3e007512c175a42910bc69678f3f0403cab04
+ms.openlocfilehash: 5021b5d20f6d9b9a4d8889f25b5e41f2c9306f64
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="custom-policy-based-authorization"></a>以原則為基礎的自訂授權
 
@@ -24,8 +24,6 @@ ms.lasthandoff: 09/01/2017
 基本上[角色授權](roles.md#security-authorization-role-based)和[宣告授權](claims.md#security-authorization-claims-based)使需求的使用、 需求和預先設定的原則的處理常式。 這些建置組塊可讓您快速的程式碼，以便更豐富、 可重複使用和授權可輕鬆地測試結構授權評估。
 
 授權原則是由一或多個需求所組成，並中註冊應用程式啟動時做為授權服務組態的一部分`ConfigureServices`中*Startup.cs*檔案。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -44,8 +42,6 @@ public void ConfigureServices(IServiceCollection services)
 
 原則會套用使用`Authorize`藉由指定原則名稱，例如，屬性
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 [Authorize(Policy="Over21")]
 public class AlcoholPurchaseRequirementsController : Controller
@@ -63,8 +59,6 @@ public class AlcoholPurchaseRequirementsController : Controller
 ## <a name="requirements"></a>需求
 
 授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。 在我們的最短使用期限原則的需求，我們有會是單一參數的最低存在時間。 必須實作一項需求`IAuthorizationRequirement`。 這是空的標記介面。 參數化的最低年齡要求 」 可能的實作，如下所示。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class MinimumAgeRequirement : IAuthorizationRequirement
@@ -89,8 +83,6 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 <a name=security-authorization-handler-example></a>
 
 最短使用期限處理常式可能如下所示：
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
@@ -128,8 +120,6 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 
 處理常式必須是集合中註冊服務在設定期間例如
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 
 public void ConfigureServices(IServiceCollection services)
@@ -165,8 +155,6 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>為什麼需要多個處理常式之需求？
 
 在您想要評估的情況下**或**實作單一需求的多個處理常式的基礎。 例如，Microsoft 有門只開啟與索引鍵的卡片。 如果您在家離開您金鑰卡接線生列印暫存的貼紙，並會為您開啟媒體櫃門。 在此案例中，您會有一個需求， *EnterBuilding*，但多個處理常式，每個檢查單一的需求。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 public class EnterBuildingRequirement : IAuthorizationRequirement
@@ -209,8 +197,6 @@ public class HasTemporaryStickerHandler : AuthorizationHandler<EnterBuildingRequ
 
 例如先前`BadgeEntryHandler`可以改寫，如下所示。
 
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
-
 ```csharp
 services.AddAuthorization(options =>
     {
@@ -232,8 +218,6 @@ services.AddAuthorization(options =>
 MVC 的執行個體的傳遞，例如`Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext`資源屬性用來存取 HttpContext、 RouteData 和所有項目中提供其他 MVC。
 
 使用`Resource`屬性是特定的架構。 使用中的資訊`Resource`屬性會限制您的授權原則，以特定的架構。 您應該轉換`Resource`屬性使用`as`關鍵字，然後檢查已轉型成功確定不會損毀您的程式碼與`InvalidCastExceptions`其他架構; 上執行時
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 if (context.Resource is Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext mvcContext)

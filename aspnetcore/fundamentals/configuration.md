@@ -11,15 +11,15 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: 7d591259587766a932a14bb030c76274101d16ac
-ms.sourcegitcommit: f8f6b5934bd071a349f5bc1e389365c52b1c00fa
+ms.openlocfilehash: 379030df4ca91a38fce251aeaab9c5dfaf11e915
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
-[Rick Anderson](https://twitter.com/RickAndMSFT)，[標記 Michaelis](http://intellitect.com/author/mark-michaelis/)， [Steve Smith](https://ardalis.com/)，和[奧 Roth](https://github.com/danroth27)
+[Rick Anderson](https://twitter.com/RickAndMSFT)，[標記 Michaelis](http://intellitect.com/author/mark-michaelis/)， [Steve Smith](https://ardalis.com/)，[奧 Roth](https://github.com/danroth27)，和[Luke Latham](https://github.com/guardrex)
 
 組態 API 提供一種設定的名稱 / 值組清單為基礎的應用程式。 在執行階段從多個來源讀取組態。 名稱 / 值組可以分為多層級的階層。 有的組態提供者：
 
@@ -295,55 +295,187 @@ key3=value_from_json_3
 
 ## <a name="commandline-configuration-provider"></a>命令列組態提供者
 
-下列範例會啟用最後 CommandLine 組態提供者：
+[CommandLine 組態提供者](/aspnet/core/api/microsoft.extensions.configuration.commandline.commandlineconfigurationprovider)接收組態在執行階段的命令列引數索引鍵-值組。
 
-[!code-csharp[Main](configuration/sample/CommandLine/Program.cs)]
+[檢視或下載的命令列組態範例](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample/CommandLine)
+
+### <a name="setting-up-the-provider"></a>設定提供者
+
+# <a name="basic-configurationtabbasicconfiguration"></a>[基本組態](#tab/basicconfiguration)
+
+若要啟動 命令列組態，請呼叫`AddCommandLine`擴充方法的執行個體上[ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder):
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program.cs?highlight=18,21)]
+
+執行程式碼，會顯示下列輸出：
+
+```console
+MachineName: MairaPC
+Left: 1980
+```
+
+在命令列上傳遞引數索引鍵-值組會變更值`Profile:MachineName`和`App:MainWindow:Left`:
+
+```console
+dotnet run Profile:MachineName=BartPC App:MainWindow:Left=1979
+```
+
+在主控台視窗會顯示：
+
+```console
+MachineName: BartPC
+Left: 1979
+```
+
+若要覆寫其他組態提供者所提供的命令列組態與設定，請呼叫`AddCommandLine`上最後一個`ConfigurationBuilder`:
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?range=11-16&highlight=1,5)]
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+典型的 ASP.NET Core 2.x 應用程式使用靜態簡便方法`CreateDefaultBuilder`建置主應用程式：
+
+[!code-csharp[Main](configuration/sample_snapshot/Program.cs?highlight=12)]
+
+`CreateDefaultBuilder`載入選擇性組態從*appsettings.json*， *appsettings。 {環境}.json*，[使用者密碼](xref:security/app-secrets)(在`Development`環境)，環境變數和命令列引數。 最後會呼叫的命令列組態提供者。 上次呼叫提供者允許在執行階段來覆寫組態集中的其他組態提供者所傳遞的命令列引數之前呼叫。
+
+請注意，針對*appsettings*檔案`reloadOnChange`已啟用。 如果相符的組態值中，命令列引數會覆寫*appsettings*應用程式啟動之後變更檔案。
+
+> [!NOTE]
+> 做為使用替代`CreateDefaultBuilder`方法，建立主控件使用[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)及手動建置組態[ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder)適用於 ASP.NET Core 2.x。 請參閱 ASP.NET Core 1.x 索引標籤的詳細資訊。
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+建立[ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder)呼叫`AddCommandLine`方法，以使用命令列組態提供者。 上次呼叫提供者允許在執行階段來覆寫組態集中的其他組態提供者所傳遞的命令列引數之前呼叫。 將組態套用到[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)與`UseConfiguration`方法：
+
+[!code-csharp[Main](configuration/sample_snapshot/CommandLine/Program2.cs?highlight=11,15,19)]
+
+---
+
+### <a name="arguments"></a>引數
+
+在命令列上傳遞引數必須符合下表顯示兩種格式之一。
+
+| 引數格式                                                     | 範例        |
+| ------------------------------------------------------------------- | :------------: |
+| 單一引數： 等號分隔的索引鍵-值組 (`=`) | `key1=value`   |
+| 兩個引數的順序： 以空格分隔的索引鍵-值配對    | `/key1 value1` |
+
+**單一引數**
+
+值必須遵照等號 (`=`)。 這個值可以是 null (例如， `mykey=`)。
+
+索引鍵可能會有前置詞。
+
+| 索引鍵前置詞               | 範例         |
+| ------------------------ | :-------------: |
+| 沒有前置詞                | `key1=value1`   |
+| 單一虛線 (`-`) &#8224; | `-key2=value2`  |
+| 兩個破折號 (`--`)        | `--key3=value3` |
+| 正斜線 (`/`)      | `/key4=value4`  |
+
+&#8224;具有單一虛線前置詞的索引鍵 (`-`) 中必須提供[切換對應](#switch-mappings)，如下所述。
+
+範例命令：
+
+```console
+dotnet run key1=value1 -key2=value2 --key3=value3 /key4=value4
+```
+
+注意： 如果`-key1`不存在於[切換對應](#switch-mappings)提供給組態提供者`FormatException`就會擲回。
+
+**兩個引數的順序**
+
+值不能是 null，而且必須遵循以空格分隔的索引鍵。
+
+機碼必須具有前置詞。
+
+| 索引鍵前置詞               | 範例         |
+| ------------------------ | :-------------: |
+| 單一虛線 (`-`) &#8224; | `-key1 value1`  |
+| 兩個破折號 (`--`)        | `--key2 value2` |
+| 正斜線 (`/`)      | `/key3 value3`  |
+
+&#8224;具有單一虛線前置詞的索引鍵 (`-`) 中必須提供[切換對應](#switch-mappings)，如下所述。
+
+範例命令：
+
+```console
+dotnet run -key1 value1 --key2 value2 /key3 value3
+```
+
+注意： 如果`-key1`不存在於[切換對應](#switch-mappings)提供給組態提供者`FormatException`就會擲回。
+
+### <a name="duplicate-keys"></a>重複的索引鍵
+
+如果未提供重複的索引鍵時，會使用最後一個索引鍵-值配對。
+
+### <a name="switch-mappings"></a>參數對應
+
+當手動建置組態`ConfigurationBuilder`，您可以選擇性地提供參數對應字典`AddCommandLine`方法。 參數對應可讓您提供的索引鍵名稱更換邏輯。
+
+使用交換器對應字典時，會檢查字典索引鍵符合命令列引數所提供的金鑰。 如果在字典中找到的命令列的索引鍵，該字典值 （索引鍵取代） 會傳遞回來進行設定。 參數對應無須任何命令列的索引鍵，加上單一虛線 (`-`)。
+
+切換對應字典索引鍵規則：
+
+* 參數必須以破折號開頭 (`-`) 或雙虛線 (`--`)。
+* 參數對應字典不能包含重複的索引鍵。
+
+在下列範例中，`GetSwitchMappings`方法可讓您使用單一的虛線的命令列引數 (`-`) 索引鍵前置詞，並避免開頭的子機碼前置詞。
+
+[!code-csharp[Main](configuration/sample/CommandLine/Program.cs?highlight=10-19,32)]
+
+不需要提供命令列引數，提供給字典`AddInMemoryCollection`設定組態值。 執行應用程式使用下列命令：
+
+```console
+dotnet run
+```
+
+在主控台視窗會顯示：
+
+```console
+MachineName: RickPC
+Left: 1980
+```
 
 使用下列組態設定中傳遞：
 
 ```console
-dotnet run /Profile:MachineName=Bob /App:MainWindow:Left=1234
+dotnet run /Profile:MachineName=DahliaPC /App:MainWindow:Left=1984
 ```
 
-這會顯示：
+在主控台視窗會顯示：
 
 ```console
-Hello Bob
-Left 1234
+MachineName: DahliaPC
+Left: 1984
 ```
 
-`GetSwitchMappings`方法可讓您使用`-`而不是`/`和它去除開頭的子機碼前置詞。 例如: 
+建立參數對應字典之後，它會包含下表中所顯示的資料。
+
+| Key            | 值                 |
+| -------------- | --------------------- |
+| `-MachineName` | `Profile:MachineName` |
+| `-Left`        | `App:MainWindow:Left` |
+
+若要示範使用字典的索引鍵切換，請執行下列命令：
 
 ```console
-dotnet run -MachineName=Bob -Left=7734
+dotnet run -MachineName=ChadPC -Left=1988
 ```
 
-顯示：
+交換的命令列的索引鍵。 主控台視窗會顯示組態值`Profile:MachineName`和`App:MainWindow:Left`:
 
 ```console
-Hello Bob
-Left 7734
+MachineName: ChadPC
+Left: 1988
 ```
-
-命令列引數必須包含 （它可以是 null） 值。 例如: 
-
-```console
-dotnet run /Profile:MachineName=
-```
-
-為 [確定]，但
-
-```console
-dotnet run /Profile:MachineName
-```
-
-導致例外狀況。 如果您指定的-或--有是沒有對應的參數對應的命令列參數前置詞，將會擲回例外狀況。
 
 ## <a name="the-webconfig-file"></a>Web.config 檔案
 
 A *web.config*檔案時，需要您裝載於 IIS 或 IIS Express 應用程式。 *web.config* AspNetCoreModule IIS 啟動您的應用程式中開啟。 中的設定*web.config*啟用 AspNetCoreModule IIS 啟動應用程式，並設定其他 IIS 設定和模組中的。 如果您使用 Visual Studio，刪除*web.config*，Visual Studio 會建立一個新。
 
-### <a name="additional-notes"></a>其他備註
+## <a name="additional-notes"></a>其他備註
 
 * 相依性插入 (DI) 未設定為止之後`ConfigureServices`叫用。
 * 組態系統不 DI 注意。
@@ -351,9 +483,10 @@ A *web.config*檔案時，需要您裝載於 IIS 或 IIS Express 應用程式。
   * `IConfigurationRoot`用於根節點。 可以觸發重新載入。
   * `IConfigurationSection`代表組態值的區段。 `GetSection`和`GetChildren`方法會傳回`IConfigurationSection`。
 
-### <a name="additional-resources"></a>其他資源
+## <a name="additional-resources"></a>其他資源
 
 * [使用多個環境](environments.md)
 * [在開發期間安全儲存應用程式密碼](../security/app-secrets.md)
+* [在 ASP.NET Core 中裝載](xref:fundamentals/hosting)
 * [相依性插入](dependency-injection.md)
 * [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)

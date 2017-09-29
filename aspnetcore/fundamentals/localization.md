@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 2a760343566d2c2be591983e20830b5207a2199b
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
@@ -39,41 +39,41 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開發當地語系化應用程式時提高生產力。 `IStringLocalizer`使用[ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager)和[ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader)在執行階段提供特定文化特性的資源。 簡單的介面有索引子和`IEnumerable`傳回當地語系化的字串。 `IStringLocalizer`不需要您將預設語言字串儲存在資源檔。 您可以開發應用程式當地語系化為目標，並不需要在開發的早期建立資源檔。 下列程式碼會示範如何包裝當地語系化的字串"有關 Title"。
 
-[!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/AboutController.cs)]
 
 在上述程式碼中`IStringLocalizer<T>`實作來自[相依性插入](dependency-injection.md)。 如果找不到當地語系化"有關 Title"的值，則索引子機碼會傳回，也就是"有關 Title"的字串。 您可以保留預設的應用程式中的語言常值字串，並將其包裝在定位器，您可以專注於開發應用程式。 使用您的預設語言進行開發您的應用程式，並做好當地語系化步驟中沒有先建立預設資源檔。 或者，您可以使用的傳統方法，並提供要擷取的預設語言字串索引鍵。 許多開發人員將新的工作流程不會有預設語言的*.resx*檔案和簡單地包裝字串常值可以降低當地語系化應用程式的額外負荷。 其他開發人員會偏好傳統的工作流程，因為它可以讓您更輕鬆地使用較長的字串常值和更輕鬆地更新的當地語系化的字串。
 
 使用`IHtmlLocalizer<T>`包含 HTML 資源的實作。 `IHtmlLocalizer`HTML 編碼格式的資源字串，但不是資源字串的引數。 在此範例中反白顯示的值以下`name`參數是 HTML 編碼。
 
-[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
+[!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
 注意： 您通常想要只當地語系化文字和沒有 HTML。
 
 最低層級，您可以取得`IStringLocalizerFactory`超出[相依性插入](dependency-injection.md):
 
-[!code-csharp[Main](localization/sample/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
 
 上述程式碼示範兩個處理站的每個建立方法。
 
 您可以控制站，區域中，依分割當地語系化的字串，或具有一個容器。 範例應用程式中的虛擬類別名稱為`SharedResource`用於共用資源。
 
-[!code-csharp[Main](localization/sample/Resources/SharedResource.cs)]
+[!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
 有些開發人員使用`Startup`類別可以包含全域或共用的字串。  在下列範例，`InfoController`和`SharedResource`當地語系化人員使用：
 
-[!code-csharp[Main](localization/sample/Controllers/InfoController.cs?range=9-26)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
 ## <a name="view-localization"></a>檢視當地語系化
 
 `IViewLocalizer`服務提供的當地語系化的字串[檢視](https://docs.microsoft.com/aspnet/core)。 `ViewLocalizer`類別會實作這個介面，並尋找檢視的檔案路徑的資源位置。 下列程式碼示範如何使用的預設實作`IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 預設實作`IViewLocalizer`尋找檢視的檔案名稱為基礎的資源檔。 沒有任何使用共用的全域資源檔案的選項。 `ViewLocalizer`實作使用當地語系化`IHtmlLocalizer`，因此 Razor 不 HTML 編碼的當地語系化的字串。 您可以參數化資源字串和`IViewLocalizer`將 HTML 編碼的參數，但不是資源字串。 請考慮下列 Razor 標記：
 
-```HTML
+```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
-   ```
+```
 
 法文資源檔可以包含下列內容：
 
@@ -89,7 +89,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 若要使用的共用的資源檔案，在檢視中，插入`IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Views/Test/About.cshtml?highlight=5,12)]
+[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>DataAnnotations 當地語系化
 
@@ -98,7 +98,7 @@ DataAnnotations 錯誤訊息會翻與`IStringLocalizer<T>`。 使用選項`Resou
 * Resources/ViewModels.Account.RegisterViewModel.fr.resx
 * Resources/ViewModels/Account/RegisterViewModel.fr.resx
 
-[!code-csharp[Main](localization/sample/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
+[!code-csharp[Main](localization/sample/Localization/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
 
 在 ASP.NET Core MVC 1.1.0 和更高版本、 非驗證屬性會當地語系化。 ASP.NET Core MVC 1.0 未**不**查閱 非驗證屬性的當地語系化字串。
 
@@ -107,7 +107,7 @@ DataAnnotations 錯誤訊息會翻與`IStringLocalizer<T>`。 使用選項`Resou
 
 下列程式碼會示範如何使用資源字串，有多個類別的驗證屬性：
 
-```
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc()
@@ -136,7 +136,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 2. 在**搜尋已安裝的範本**，輸入 「 資源 」，並將檔案命名。
 
-    ![加入新項目 對話方塊](localization/_static/res.png)
+    ![[新增項目] 對話方塊](localization/_static/res.png)
 
 3. 輸入索引鍵的值 （原生字串）**名稱**資料行和中的已翻譯的字串**值**資料行。
 
@@ -190,7 +190,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 設定當地語系化`ConfigureServices`方法：
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet1)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet1)]
 
 * `AddLocalization`將當地語系化服務加入至服務容器。 上方的程式碼也會設定 「 資源 」 的資源路徑。
 
@@ -202,7 +202,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 在要求上目前的文化特性設定當地語系化的[中介軟體](middleware.md)。 當地語系化的中介軟體中已啟用`Configure`方法*Program.cs*檔案。 請注意，必須設定當地語系化的中介軟體，可能會檢查要求文化特性任何中介軟體之前 (例如， `app.UseMvcWithDefaultRoute()`)。
 
-[!code-csharp[Main](localization/sample/Program.cs?name=snippet2)]
+[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet2)]
 
 `UseRequestLocalization`初始化`RequestLocalizationOptions`物件。 在每次要求清單的`RequestCultureProvider`中`RequestLocalizationOptions`列舉並用可以成功地決定要求文化特性的第一個提供者。 預設的提供者來自`RequestLocalizationOptions`類別：
 
@@ -287,15 +287,15 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 這個範例**Localization.StarterWeb**投影上[GitHub](https://github.com/aspnet/entropy)包含設定的 UI `Culture`。 *Views/Shared/_SelectLanguagePartial.cshtml*檔可讓您從支援的文化特性的清單中選取的文化特性：
 
-[!code-HTML[Main](localization/sample/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml*檔案加入至`footer`區段的配置檔案，因此將予以提供至所有的檢視：
 
-[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage`方法設定的文化特性的 cookie。
 
-[!code-csharp[Main](localization/sample/Controllers/HomeController.cs?range=57-67)]
+[!code-csharp[Main](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 您無法插入*_SelectLanguagePartial.cshtml*這個專案的範例程式碼。 **Localization.StarterWeb**投影上[GitHub](https://github.com/aspnet/entropy)有程式碼流向`RequestLocalizationOptions`來透過部分 Razor[相依性插入](dependency-injection.md)容器。
 

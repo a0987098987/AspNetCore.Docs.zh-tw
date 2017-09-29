@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core MVC 中的模型驗證"
-author: rick-anderson
-description: "導入了 ASP.NET Core MVC 中的模型驗證。"
+author: rachelappel
+description: "深入了解 ASP.NET Core MVC 中的模型驗證。"
 keywords: "ASP.NET Core，MVC、 驗證"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0874d3b677cee2859da9eb85b0573811abbed12a
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: efbc68e898cadd06d61fa69914fe08f3a12ba802
+ms.sourcegitcommit: 8b5733f1cd5d2c2b6d432bf82fcd4be2d2d6b2a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證的簡介
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/22/2017
 
 以下是 註解式`Movie`模型儲存電影的電視節目的相關資訊的應用程式。 大部分的屬性所需，且字串的數個屬性具有長度要求。 此外，還有數字範圍限制為就地`Price`從 0 至 $999.99，以及自訂驗證屬性的屬性。
 
-[!code-csharp[Main](validation/sample/Movie.cs?range=6-31)]
+[!code-csharp[Main](validation/sample/Movie.cs?range=6-29)]
 
 只讀取透過模型會顯示此應用程式，以便更容易維護的程式碼的資料相關的規則。 以下是幾個常用的內建驗證屬性：
 
@@ -61,6 +61,18 @@ ms.lasthandoff: 09/22/2017
 MVC 支援的任何屬性，衍生自`ValidationAttribute`進行驗證。 許多有用的驗證屬性位於[System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations)命名空間。
 
 可能需要更多的功能提供的內建屬性的執行個體。 若是在這些時間點，您可以建立自訂的驗證屬性衍生自`ValidationAttribute`或變更您的模型來實作`IValidatableObject`。
+
+## <a name="notes-on-the-use-of-the-required-attribute"></a>使用必要的屬性資訊
+
+不可為 null[實值型別的](/dotnet/csharp/language-reference/keywords/value-types)(例如`decimal`， `int`， `float`，和`DateTime`) 原本就是需要而且不需要`Required`屬性。 應用程式不會執行伺服器端驗證檢查為非 null 的型別標示為`Required`。
+
+MVC 模型繫結，這並不關心驗證和驗證屬性，會拒絕包含遺漏值或空白字元不可為 null 類型的欄位送出表單。 如果沒有`BindRequired`屬性針對目標屬性，模型繫結會忽略遺漏的資料，不可為 null 的類型，其中的表單欄位不存在的連入的表單資料。
+
+[BindRequired 屬性](/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute)(另請參閱[自訂屬性的模型繫結行為](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes)) 來確保完成表單資料。 套用至屬性時，模型繫結系統需要該屬性的值。 套用至類型時，模型繫結系統就會需要的所有該類型的屬性值。
+
+當您使用[Nullable\<T > 類型](/dotnet/csharp/programming-guide/nullable-types/)(例如，`decimal?`或`System.Nullable<decimal>`) 並將它標示`Required`，屬性就像標準的可為 null 型別 （適用於執行伺服器端驗證檢查範例中， `string`)。
+
+用戶端驗證需要對應到已標示的模型屬性的表單欄位的值`Required`和未標示為非 null 的型別屬性`Required`。 `Required`可用來控制用戶端驗證錯誤訊息。
 
 ## <a name="model-state"></a>模型狀態
 
@@ -104,15 +116,15 @@ MVC 會繼續直到到達驗證欄位的錯誤 (依預設為 200) 的數目上�
 
 您必須具有適當的 JavaScript 指令碼參考的檢視以進行用戶端驗證，如下所示的工作。
 
-[!code-html[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
+[!code-cshtml[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
 
-[!code-html[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
+[!code-cshtml[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
 要驗證資料並顯示任何錯誤訊息，使用 JavaScript 則 MVC 會使用驗證屬性，除了從 模型屬性的型別中繼資料。 當您使用 MVC 來呈現模型使用從表單元素[標記協助程式](xref:mvc/views/tag-helpers/intro)或[HTML helper](xref:mvc/views/overview)將 HTML 5[資料屬性](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)需要驗證，做為表單項目中如下所示。 MVC 會產生`data-`內建和自訂屬性的屬性。 您可以使用如下所示的相關標記協助程式的用戶端上顯示驗證錯誤：
 
-[!code-html[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
+[!code-cshtml[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
-上述的標記協助程式會將下列 HTML 轉譯。 請注意，`data-`屬性的 html 輸出對應的驗證屬性`ReleaseDate`屬性。 `data-val-required`屬性包含錯誤訊息顯示如果使用者不會填入 [發行日期] 欄位中，而且該訊息會顯示隨附`<span>`項目。
+上述的標記協助程式會將下列 HTML 轉譯。 請注意，`data-`屬性的 html 輸出對應的驗證屬性`ReleaseDate`屬性。 `data-val-required`屬性包含錯誤訊息顯示如果使用者不會填入 [發行日期] 欄位中，而且該訊息會顯示隨附 **\<s p a n >**項目。
 
 ```html
 <form action="/Movies/Create" method="post">
@@ -147,11 +159,11 @@ MVC 判斷型別屬性，可能是覆寫使用的.NET 資料類型為基礎的�
 
 ```html
 <input class="form-control" type="datetime"
-data-val="true"
-data-val-classicmovie="Classic movies must have a release year earlier than 1960."
-data-val-classicmovie-year="1960"
-data-val-required="The ReleaseDate field is required."
-id="ReleaseDate" name="ReleaseDate" value="" />
+    data-val="true"
+    data-val-classicmovie="Classic movies must have a release year earlier than 1960."
+    data-val-classicmovie-year="1960"
+    data-val-required="The ReleaseDate field is required."
+    id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
 不顯眼的驗證會使用中的資料`data-`顯示錯誤訊息的屬性。 不過，jQuery 不了解規則或訊息，直到您將它們加入 jQuery 的`validator`物件。 這顯示在下列範例中，加入名為方法`classicmovie`包含自訂用戶端驗證程式碼，加入 jQuery`validator`物件。

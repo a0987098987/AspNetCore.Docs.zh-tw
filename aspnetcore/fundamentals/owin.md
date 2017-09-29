@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9edacb494c38d7812f9e3826ab9277cd1dffd675
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: cd32d6929f16a619ad2cc8c7752a0373cbdff034
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>若要開啟.NET (OWIN) 的網頁介面的簡介
 
@@ -55,15 +55,11 @@ public Task OwinHello(IDictionary<string, object> environment)
 
     return responseStream.WriteAsync(responseBytes, 0, responseBytes.Length);
 }
-
-
 ```
 
 範例簽章傳回`Task`並接受`IDictionary<string, object>`依 OWIN。
 
 下列程式碼示範如何加入`OwinHello`（如上所示） 具有的 ASP.NET 管線中介軟體`UseOwin`擴充方法。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/OwinSample/Startup.cs"} -->
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -73,8 +69,6 @@ public void Configure(IApplicationBuilder app)
         pipeline(next => OwinHello);
     });
 }
-
-
 ```
 
 您可以設定 OWIN 管線中進行其他動作。
@@ -84,8 +78,6 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > 多個呼叫`UseOwin`建議您不要使用基於效能的考量。 如果群組在一起，OWIN 元件會以最能運作。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 app.UseOwin(pipeline =>
@@ -112,8 +104,6 @@ OWIN 伺服器可以裝載 ASP.NET 應用程式。 這類伺服器[Nowin](https:
 `Start`會負責設定和啟動伺服器，在此情況下透過一系列 fluent 應用程式開發的應用程式開發介面呼叫從 IServerAddressesFeature 設定剖析的位址。 請注意，fluent 應用程式開發的設定`_builder`變數會指定要求交由`appFunc`稍早在方法中定義。 這`Func`呼叫的每個要求來處理傳入的要求。
 
 我們也可以加入`IWebHostBuilder`輕鬆加入及設定 Nowin 伺服器的延伸模組。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [11], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs"} -->
 
 ```csharp
 using System;
@@ -147,8 +137,6 @@ namespace Microsoft.AspNetCore.Hosting
 ```
 
 這個位置，所有的要求執行 ASP.NET 應用程式擴充功能呼叫中使用此自訂伺服器*Program.cs*:
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [15], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinSample/Program.cs"} -->
 
 ```csharp
 
@@ -184,8 +172,6 @@ namespace NowinSample
 ## <a name="run-aspnet-core-on-an-owin-based-server-and-use-its-websockets-support"></a>OWIN 架構的伺服器上執行 ASP.NET Core，並使用 WebSockets 的支援
 
 如何 OWIN 架構伺服器功能的另一個範例可以利用 ASP.NET Core 是 WebSockets 等功能的存取。 在上述範例中使用.NET OWIN web 伺服器的 Web 通訊端中，建立以 ASP.NET Core 應用程式的支援。 下列範例顯示簡單的 web 應用程式支援 Web 通訊端及回應透過 Websocket 傳送的所有項目。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {"hl_lines": [7, 9, 10], "linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": true, "classes": [], "xml:space": "preserve", "language": "c#", "source": "/Users/shirhatti/src/Docs/aspnet/fundamentals/owin/sample/src/NowinWebSockets/Startup.cs"} -->
 
 ```csharp
 public class Startup
@@ -240,8 +226,6 @@ public class Startup
 ## <a name="owin-environment"></a>OWIN 環境
 
 您可以建構的 OWIN 環境 using `HttpContext`。
-
-<!-- literal_block {"ids": [], "names": [], "highlight_args": {}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "c#"} -->
 
 ```csharp
 

@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: b728c3d62b59f28f1d020b6f3732918a1fcdf4eb
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.openlocfilehash: af3ffe418521d5d97f5d14ca9c904c21b4d4ff89
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 Cookie 驗證
 
@@ -45,7 +45,7 @@ ASP.NET Core 1.x 提供 cookie[中介軟體](../../fundamentals/middleware.md#fu
 
     ```csharp
     services.AddAuthentication("MyCookieAuthenticationScheme")
-            .AddCookie(options => {
+            .AddCookie("MyCookieAuthenticationScheme", options => {
                 options.AccessDeniedPath = "/Account/Forbidden/";
                 options.LoginPath = "/Account/Unauthorized/";
             });
@@ -178,7 +178,7 @@ public static class LastChangedValidator
 
 ```csharp
 services.AddAuthentication("MyCookieAuthenticationScheme")
-        .AddCookie(options =>
+        .AddCookie("MyCookieAuthenticationScheme", options =>
         {
             options.Events = new CookieAuthenticationEvents
             {

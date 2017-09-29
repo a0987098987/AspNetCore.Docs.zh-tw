@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fe774a1ae02ab5ea168c19045fcc8664c0273a6
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: ff6fee6eee539fc77b6c6180a816daa760202848
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>在表單的 ASP.NET Core 使用標記協助程式簡介
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 09/22/2017
      <!-- Input and Submit elements -->
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
     </form>
-   ```
+```
 
 MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-controller`和`asp-action`。 表單標記協助程式也會產生隱藏[要求驗證語彙基元](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)以防止跨站台要求偽造 (搭配使用時`[ValidateAntiForgeryToken]`HTTP Post 動作方法中的屬性)。 防止跨站台要求偽造的純 HTML 表單是很困難，表單標記協助程式提供此服務。
 
@@ -63,13 +63,11 @@ MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-con
 
 中的檢視表的許多*檢視/帳戶*資料夾 (當您建立新的 web 應用程式，以產生*個別使用者帳戶*) 包含[asp-路由-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms)屬性：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
-
-```none
+```cshtml
 <form asp-controller="Account" asp-action="Login"
      asp-route-returnurl="@ViewData["ReturnUrl"]"
      method="post" class="form-horizontal" role="form">
-   ```
+```
 
 >[!NOTE]
 >內建的範本， `returnUrl` ，才會填入自動當您嘗試存取授權的資源，但不是驗證或授權。 當您嘗試未經授權的存取時，安全性的中介軟體您重新導向到的登入頁面`returnUrl`設定。
@@ -82,7 +80,7 @@ MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-con
 
 ```HTML
 <input asp-for="<Expression Name>" />
-   ```
+```
 
 輸入的標記協助程式：
 
@@ -157,7 +155,7 @@ Type expected
        <button type="submit">Register</button>
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
    </form>
-   ```
+```
 
 套用至資料註解`Email`和`Password`屬性產生模型的中繼資料。 輸入標記協助程式會消耗模型中繼資料，並產生[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*`屬性 (請參閱[模型驗證](../models/validation.md))。 這些屬性描述附加至輸入欄位的驗證。 這會提供不顯眼的 HTML5 和[jQuery](https://jquery.com/)驗證。 不顯眼的屬性具有格式`data-val-rule="Error Message"`，其中的規則是驗證規則的名稱 (例如`data-val-required`， `data-val-email`，`data-val-maxlength`等。)如果屬性中提供的錯誤訊息，就會顯示的值為`data-val-rule`屬性。 另外還有的表單屬性`data-val-ruleName-argumentName="argumentValue"`可提供其他詳細資料的規則，比方說， `data-val-maxlength-max="1024"` 。
 
@@ -209,7 +207,7 @@ Type expected
 
 ```HTML
 <input type="text" id="Address_AddressLine1" name="Address.AddressLine1" value="" />
-   ```
+```
 
 ### <a name="expression-names-and-collections"></a>運算式名稱和集合
 
@@ -225,7 +223,7 @@ public IActionResult Edit(int id, int colorIndex)
        ViewData["Index"] = colorIndex;
        return View(GetPerson(id));
    }
-   ```
+```
 
 下列的 Razor 示範如何存取特定`Color`項目：
 
@@ -274,8 +272,6 @@ public IActionResult Edit(int id, int colorIndex)
 
 會產生下列 HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6, 7, 8]}} -->
-
 ```HTML
 <form method="post" action="/Demo/RegisterTextArea">
   <textarea data-val="true"
@@ -314,7 +310,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ```HTML
 <label for="Email">Email Address</label>
-   ```
+```
 
 產生的標籤標記協助程式`for`與相關聯的屬性值，"Email"，這是識別碼`<input>`項目。 標記協助程式產生一致`id`和`for`以便能夠正確地建立關聯的項目。 在此範例中的標題來自`Display`屬性。 如果模型未包含`Display`屬性標題會是運算式的屬性名稱。
 
@@ -334,7 +330,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ```HTML
 <span asp-validation-for="Email"></span>
-   ```
+```
 
 驗證訊息標記協助程式將會產生下列 HTML:
 
@@ -382,8 +378,6 @@ public IActionResult Edit(int id, int colorIndex)
 
 產生的 HTML （如果模型有效）：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 8, 9, 12, 13]}} -->
-
 ```HTML
 <form action="/DemoReg/Register" method="post">
   <div class="validation-summary-valid" data-valmsg-summary="true">
@@ -427,13 +421,11 @@ HTTP POST`Index`方法會顯示選取項目：
 
 `Index`檢視：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
+[!code-cshtml[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
 
 如此就會產生 （具有"CA"選取) 下列 HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6]}} -->
-
-```HTML
+```html
 <form method="post" action="/">
      <select id="Country" name="Country">
        <option value="MX">Mexico</option>
@@ -443,7 +435,7 @@ HTTP POST`Index`方法會顯示選取項目：
        <br /><button type="submit">Register</button>
      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
    </form>
-   ```
+```
 
 > [!NOTE]
 > 我們不建議使用`ViewBag`或`ViewData`與選取的標記協助程式。 檢視模型是較為提供 MVC 中繼資料以及通常較不容易發生問題。
@@ -472,8 +464,6 @@ HTTP POST`Index`方法會顯示選取項目：
 
 會產生下列 HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [4, 5]}} -->
-
 ```HTML
   <form method="post" action="/Home/IndexEnum">
          <select data-val="true" data-val-required="The EnumCountry field is required."
@@ -488,7 +478,7 @@ HTTP POST`Index`方法會顯示選取項目：
          <br /><button type="submit">Register</button>
          <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
     </form>
-   ```
+```
 
 ### <a name="option-group"></a>群組選項
 
@@ -503,8 +493,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup)檢視模型
 ![選項群組範例](working-with-forms/_static/grp.png)
 
 產生的 HTML:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
 
 ```HTML
  <form method="post" action="/Home/IndexGroup">
@@ -536,8 +524,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup)檢視模型
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
 
 會產生下列 HTML:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3]}} -->
 
 ```HTML
 <form method="post" action="/Home/IndexMultiSelect">
@@ -572,8 +558,6 @@ HTML [ \<optgroup >](https://www.w3.org/wiki/HTML/Elements/optgroup)檢視模型
 [!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 正確`<option>`將選取項目 (包含`selected="selected"`屬性) 根據目前`Country`值。
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [5]}} -->
 
 ```HTML
  <form method="post" action="/Home/IndexEmpty">

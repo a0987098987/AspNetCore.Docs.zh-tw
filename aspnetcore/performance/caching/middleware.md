@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: 07626ae7f40dc6f704d69d71cb7f95d318e6f503
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: f07b0cb44542b7da140d519e883c67901d6327e2
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -105,6 +105,17 @@ if (responseCachingFeature != null)
 | 日期 | 當服務從快取，`Date`若未提供原始回應上設定標頭中介軟體。 |
 | 內容長度 | 當服務從快取，`Content-Length`若未提供原始回應上設定標頭中介軟體。 |
 | 存留期 | `Age`原始回應中傳送的標頭會被忽略。 當服務快取的回應中, 介軟體會計算新值。 |
+
+## <a name="caching-respects-request-cache-control-directives"></a>快取尊重要求快取控制指示詞
+
+中介軟體會遵守的規則[HTTP 1.1 快取規格](https://tools.ietf.org/html/rfc7234#section-5.2)。 在規則需要遵守有效的快取`Cache-Control`用戶端傳送的標頭。 此規格，在用戶端可要求`no-cache`標頭值，強制產生新的回應，每個要求的伺服器。 目前，此快取行為沒有開發人員控制時使用中介軟體，由於中介軟體遵守正式的快取規格。
+
+[未來的增強功能的中介軟體](https://github.com/aspnet/ResponseCaching/issues/96)設定快取案例的中介軟體將會允許其中要求`Cache-Control`決定要提供快取的回應時，應該忽略標頭。 如果您搜尋更充分掌控快取行為，瀏覽 ASP.NET Core 其他快取的功能。 請參閱下列主題：
+
+* [介紹記憶體中快取中 ASP.NET Core](xref:performance/caching/memory)
+* [使用分散式快取](xref:performance/caching/distributed)
+* [快取中 ASP.NET Core MVC 標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
 
 ## <a name="troubleshooting"></a>疑難排解
 如果快取行為是未如預期般，，確認回應的快取，並且可以從快取由檢查要求的連入標頭和回應的傳出標頭。 啟用[記錄](xref:fundamentals/logging)有助於偵錯時。 快取行為，並回應從快取的擷取時此中介軟體記錄。

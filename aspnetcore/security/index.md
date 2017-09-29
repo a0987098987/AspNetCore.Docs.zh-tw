@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: e8045b8804d1e7915cd81d697d43a173e33a7119
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="security"></a>安全性
 
@@ -79,7 +79,6 @@ ms.lasthandoff: 09/12/2017
 *   [在開發期間安全儲存應用程式密碼](app-secrets.md)
 *   [Azure Key Vault 組態提供者](key-vault-configuration.md)
 *   [強制執行 SSL](enforcing-ssl.md)
-*   [設定 HTTPS 進行開發](https.md)
 *   [防偽要求](anti-request-forgery.md)
 *   [防止開啟重新導向攻擊](preventing-open-redirects.md)
 *   [防止跨站台指令碼攻擊](cross-site-scripting.md)

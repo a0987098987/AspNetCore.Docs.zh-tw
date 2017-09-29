@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/model
-ms.openlocfilehash: 445c13542bd4a7561eb6aa509b1aabe47cb45468
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: f2f09909f4c307ce3e1a0c8571b82a709e1f88f9
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>使用 Visual Studio for Mac 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -40,9 +40,10 @@ ms.lasthandoff: 09/19/2017
 編輯 *RazorPagesMovie.csproj* 檔案：
 
 * 選取 [檔案] > [開啟檔案]，然後選取 *RazorPagesMovie.csproj* 檔案。
-* 新增 `<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />`，如下列程式碼所強調顯示：
+* 將 `Microsoft.EntityFrameworkCore.Tools.DotNet` 的工具參考新增到第二個 **\<ItemGroup >**：
 
-[!code-xml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?range=12-16&highlight=4)]
+
 [!INCLUDE[model 3](../../includes/RP/model3.md)]
 
 <a name="scaffold"></a>

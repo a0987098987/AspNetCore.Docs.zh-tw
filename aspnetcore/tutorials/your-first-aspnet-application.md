@@ -1,8 +1,8 @@
 ---
 redirect_url: /aspnet/core/tutorials/first-mvc-app/
-ms.openlocfilehash: 27dd2413b71fe56ef9fea40a5b666ef96454484c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 62bd4975a365da9ac09ffcb97536a8bd060da267
+ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/20/2017
 ---

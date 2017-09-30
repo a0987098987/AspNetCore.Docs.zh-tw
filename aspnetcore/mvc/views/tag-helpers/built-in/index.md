@@ -10,56 +10,56 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: e7c8c64283ca3740698300689b10497f984cfd3e
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.openlocfilehash: dd732822a715df19c0ee4b6accad3455ad6537da
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/28/2017
 ---
-# <a name="aspnet-core-built-in-tag-helpers"></a><span data-ttu-id="7f390-104">ASP.NET Core 內建的標記協助程式</span><span class="sxs-lookup"><span data-stu-id="7f390-104">ASP.NET Core built-in Tag Helpers</span></span>
+# <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 
-<span data-ttu-id="7f390-105">由 [Peter Kellner](http://peterkellner.net) 提供</span><span class="sxs-lookup"><span data-stu-id="7f390-105">By [Peter Kellner](http://peterkellner.net)</span></span> 
+由 [Peter Kellner](http://peterkellner.net) 提供 
 
-<span data-ttu-id="7f390-106">ASP.NET Core 包含許多內建標記協助程式，能夠提高您的產能。</span><span class="sxs-lookup"><span data-stu-id="7f390-106">ASP.NET Core includes many built-in Tag Helpers to boost your productivity.</span></span> <span data-ttu-id="7f390-107">本節提供內建標記協助程式的概觀。</span><span class="sxs-lookup"><span data-stu-id="7f390-107">This section provides an overview of the built-in Tag Helpers.</span></span>
+ASP.NET Core 包含許多內建標記協助程式，能夠提高您的產能。 本節提供內建標記協助程式的概觀。
 
 > [!NOTE]
-> <span data-ttu-id="7f390-108">有一些標記協助程式由 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用，因此不會加以討論。</span><span class="sxs-lookup"><span data-stu-id="7f390-108">There are built-in Tag Helpers which aren't discussed, since they're used internally by the [Razor](xref:mvc/views/razor) view engine.</span></span> <span data-ttu-id="7f390-109">這包括 ~ 字元的標記協助程式，其可將範圍擴展到網站的根路徑。</span><span class="sxs-lookup"><span data-stu-id="7f390-109">This includes a Tag Helper for the ~ character, which expands to the root path of the website.</span></span>
+> 有一些標記協助程式由 [Razor](xref:mvc/views/razor) 檢視引擎在內部使用，因此不會加以討論。 這包括 ~ 字元的標記協助程式，其可將範圍擴展到網站的根路徑。
 
-## <a name="built-in-aspnet-core-tag-helpers"></a><span data-ttu-id="7f390-110">內建的 ASP.NET Core 標記協助程式</span><span class="sxs-lookup"><span data-stu-id="7f390-110">Built-in ASP.NET Core Tag Helpers</span></span>
+## <a name="built-in-aspnet-core-tag-helpers"></a>內建的 ASP.NET Core 標記協助程式
 
-<span data-ttu-id="7f390-111">**[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-111">**[Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)**</span></span>
+**[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)**
 
-<span data-ttu-id="7f390-112">**[快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/CacheTagHelper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-112">**[Cache Tag Helper](xref:mvc/views/tag-helpers/builtin-th/CacheTagHelper)**</span></span>
+**[快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
 
-<span data-ttu-id="7f390-113">**[分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-113">**[Distributed Cache Tag Helper](xref:mvc/views/tag-helpers/builtin-th/DistributedCacheTagHelper)**</span></span>
+**[分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
 
-<span data-ttu-id="7f390-114">**[環境標記協助程式](xref:mvc/views/tag-helpers/builtin-th/EnvironmentTagHelper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-114">**[Environment Tag Helper](xref:mvc/views/tag-helpers/builtin-th/EnvironmentTagHelper)**</span></span>
+**[環境標記協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
 
-[comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/FormActionTagHelper)**
+[comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
 
-<span data-ttu-id="7f390-115">**[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-115">**[Form Tag Helper](xref:mvc/views/working-with-forms#the-form-tag-helper)**</span></span>
+**[表單標記協助程式](xref:mvc/views/working-with-forms#the-form-tag-helper)**
 
-<span data-ttu-id="7f390-116">**[影像標記協助程式](xref:mvc/views/tag-helpers/builtin-th/ImageTagHelper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-116">**[Image Tag Helper](xref:mvc/views/tag-helpers/builtin-th/ImageTagHelper)**</span></span>
+**[影像標記協助程式](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
 
-<span data-ttu-id="7f390-117">**[輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-117">**[Input Tag Helper](xref:mvc/views/working-with-forms#the-input-tag-helper)**</span></span>
+**[輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)**
 
-<span data-ttu-id="7f390-118">**[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-118">**[Label Tag Helper](xref:mvc/views/working-with-forms#the-label-tag-helper)**</span></span>
+**[標籤標記協助程式](xref:mvc/views/working-with-forms#the-label-tag-helper)**
 
-[comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/LinkTagHelper)**
+[comment]: **[LinkTagHelper](xref:mvc/views/tag-helpers/builtin-th/link-tag-helper)**
 
-[comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/OptionTagHelper)**
+[comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
 
-[comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/ScriptTagTagHelper)**
+[comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
 
-<span data-ttu-id="7f390-119">**[選取標記協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-119">**[Select Tag Helper](xref:mvc/views/working-with-forms#the-select-tag-helper)**</span></span>
+**[選取標記協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)**
 
-<span data-ttu-id="7f390-120">**[Textarea 標記協助程式](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-120">**[Textarea Tag Helper](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**</span></span>
+**[Textarea 標記協助程式](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
 
-<span data-ttu-id="7f390-121">**[驗證訊息標記協助程式](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-121">**[Validation Message Tag Helper](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**</span></span>
+**[驗證訊息標記協助程式](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
 
-<span data-ttu-id="7f390-122">**[驗證摘要標記協助程式](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**</span><span class="sxs-lookup"><span data-stu-id="7f390-122">**[Validation Summary Tag Helper](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**</span></span>
+**[驗證摘要標記協助程式](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
 
-## <a name="additional-resources"></a><span data-ttu-id="7f390-123">其他資源</span><span class="sxs-lookup"><span data-stu-id="7f390-123">Additional resources</span></span>
+## <a name="additional-resources"></a>其他資源
 
-* [<span data-ttu-id="7f390-124">用戶端開發</span><span class="sxs-lookup"><span data-stu-id="7f390-124">Client-Side Development</span></span>](xref:client-side/index)
-* [<span data-ttu-id="7f390-125">標記協助程式</span><span class="sxs-lookup"><span data-stu-id="7f390-125">Tag Helpers</span></span>](xref:mvc/views/tag-helpers/intro)
+* [用戶端開發](xref:client-side/index)
+* [標記協助程式](xref:mvc/views/tag-helpers/intro)

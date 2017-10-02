@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: b45642e39eb46631bb8034f4747222fb1bc0a83b
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: cab986d0a7b7ac68cdda36a558e9b05c429108d0
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor 頁面
 
@@ -50,7 +50,9 @@ ms.lasthandoff: 09/24/2017
 
 在更新資料庫以包含新欄位之前，應用程式無法運作。 如果立即執行，應用程式會擲回 `SqlException`：
 
-`SqlException: Invalid column name 'Rating'.`
+```
+SqlException: Invalid column name 'Rating'.
+```
 
 此錯誤是因為更新的電影模型類別，不同於資料庫之電影資料表的結構描述 (資料庫資料表中沒有任何 `Rating` 資料行)。
 
@@ -72,9 +74,7 @@ ms.lasthandoff: 09/24/2017
 
 建置方案。
 
-<a name="pmc"></a>
-
-從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
+<a name="pmc"></a> 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 在 PMC 中，輸入下列命令：
 
 ```PMC
@@ -93,13 +93,13 @@ Update-Database
 
 * 在 SSOX 中選取資料庫。
 * 以滑鼠右鍵按一下資料庫，然後選取 [刪除]。
-* 核取 *[關閉現有的連接]
-* 選取 [確定]
-* 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫 
+* 核取 [關閉現有的連接]。
+* 選取 [確定]。
+* 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
 
-    ```PMC
-    Update-Database
-    ```
+  ```PMC
+  Update-Database
+  ```
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 如果未植入資料庫，請停止 IIS Express，然後執行應用程式。
 

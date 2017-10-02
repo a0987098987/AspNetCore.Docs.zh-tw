@@ -11,13 +11,13 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: f506fc880e50aa2fdc772fd29b905dfad02cda2b
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 75fc1edec9050a4690a39d37307f2f95f5d534a5
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 09/28/2017
 ---
-# <a name="set-up-a-hosting-environment-for-aspnet-core-on-windows-with-iis-and-deploy-to-it"></a>在 Windows 上使用 IIS 設定並部署到 ASP.NET Core 裝載環境
+# <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex) 及 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -26,12 +26,11 @@ ms.lasthandoff: 09/24/2017
 支援下列作業系統：
 
 * Windows 7 和更新版本
-
 * Windows Server 2008 R2 和更新版本&#8224;
 
 &#8224;就概念而言，本文件中描述的 IIS 組態也適用於在 Nano Server IIS 上裝載 ASP.NET Core 應用程式，但特定指示需參考 [Nano Server 上的 IIS 與 ASP.NET Core](xref:tutorials/nano-server)。
 
-[WebListener 伺服器](xref:fundamentals/servers/weblistener)在使用 IIS 的反向 Proxy 組態中無法運作。 您必須使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
+[HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 不適用 IIS 的反向 Proxy 設定。 您必須使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
 
 ## <a name="iis-configuration"></a>IIS 組態
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 09/24/2017
 
 ### <a name="windows-desktop-operating-systems"></a>Windows 桌面作業系統
 
-巡覽至 [控制台] > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (螢幕左側)。 開啟 [Internet Information Services] 和 [Web 管理工具] 群組。 核取 [IIS 管理主控台] 方塊。 [World Wide Web Services] (全球資訊網服務) 核取方塊。 接受**全球資訊網服務**的預設功能，或自訂符合需求的 IIS 功能。
+瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。 開啟 [Internet Information Services] 和 [Web 管理工具] 群組。 核取 [IIS 管理主控台] 方塊。 [World Wide Web Services] (全球資訊網服務) 核取方塊。 接受**全球資訊網服務**的預設功能，或自訂符合需求的 IIS 功能。
 
 ![選取 [Windows 功能] 中的 [IIS 管理主控台] 和 [World Wide Web Services] (全球資訊網服務)。](iis/_static/windows-features-win10.png)
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 09/24/2017
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>安裝 .NET Core Windows Server 裝載套件組合
 
-1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 注意：如果系統沒有網際網路連線，請先取得並安裝 *[Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)*，再安裝 .NET Core Windows Server 裝載套件組合。
+1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
 
 2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，挑選系統 PATH 的變更。
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 09/24/2017
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>使用 Visual Studio 發佈時安裝 Web Deploy
 
-如果您想要在 Visual Studio 中使用 Web Deploy 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
+如果您想要在 [Visual Studio](https://www.visualstudio.com/vs/) 中使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
 
 ## <a name="application-configuration"></a>應用程式組態
 
@@ -84,7 +83,7 @@ public static IWebHost BuildWebHost(string[] args) =>
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-在應用程式相依性的 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) 套件中包含相依性。 在 *WebHostBuilder* 新增 *UseIISIntegration* 擴充方法，將 IIS 整合中介程式併入應用程式中：
+在應用程式相依性中，納入對 [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) 套件的相依性。 將 *UseIISIntegration* 擴充方法新增至 *WebHostBuilder*，以在應用程式中併入 IIS 整合中介軟體：
 
 ```csharp
 var host = new WebHostBuilder()
@@ -118,7 +117,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig"></a>web.config
 
-*web.config* 檔案會設定 ASP.NET Core 模組，並提供其他 IIS 組態。 `Microsoft.NET.Sdk.Web` 處理 *web.config* 的建立、轉換及發佈，這都包含在當您將專案的 SDK 設定在 *.csproj* 檔案 `<Project Sdk="Microsoft.NET.Sdk.Web">` 的上方時。 為防止 MSBuild 目標轉換您的 *web.config* 檔案，請將 **\<IsTransformWebConfigDisabled>** 屬性新增至設定為 `true` 的專案檔：
+*web.config* 檔案會設定 ASP.NET Core 模組，並提供其他 IIS 組態。 *web.config* 的建立、轉換及發佈作業是由 `Microsoft.NET.Sdk.Web` 來處理，當您在專案 (*.csproj*) 檔案 `<Project Sdk="Microsoft.NET.Sdk.Web">` 的上方設定專案 SDK 時，即會包含此項目。 為防止 MSBuild 目標轉換您的 *web.config* 檔案，請將 **\<IsTransformWebConfigDisabled>** 屬性新增至設定為 `true` 的專案檔：
 
 ```xml
 <PropertyGroup>
@@ -126,15 +125,22 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-如果專案中沒有 *web.config* 檔案，當您使用 *dotnet publish* 或 Visual Studio publish 發佈時，就會為您在發佈的輸出中建立檔案。 如果專案中有該檔案，它會使用正確的 *processPath* 和「引數」轉換以設定 ASP.NET Core 模組，並移至已發佈的輸出。 轉換不會觸碰檔案包含的 IIS 組態設定。
+如果專案中沒有 *web.config* 檔案，當您使用 *dotnet publish* 或 Visual Studio publish 進行發佈時，系統就會為您在[已發佈的輸出](xref:hosting/directory-structure)中建立檔案。 如果專案中具備 *web.config* 檔案，則系統會使用正確的 *processPath* 和 *arguments* 來進行轉換，並設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，然後將其移至已發佈的輸出。 轉換不會觸碰檔案包含的 IIS 組態設定。
 
 ## <a name="create-the-iis-website"></a>建立 IIS 網站
 
-1. 在目標 IIS 系統上建立資料夾，以包含應用程式的已發佈資料夾和檔案，說明請參閱[目錄結構](xref:hosting/directory-structure)。
+1. 在目標 IIS 系統上建立資料夾，以包含應用程式的已發佈資料夾和檔案；相關說明請參閱[目錄結構](xref:hosting/directory-structure)。
 
-2. 在您建立的資料夾內，建立 *logs* 資料夾來保存應用程式記錄檔 (如果您打算啟用記錄)。 如果您打算以將 *logs* 資料夾放在承載中的方式來部署您的應用程式，您可以略過此步驟。
+2. 在您建立的資料夾內，建立 *logs* 資料夾以保存 stdout 記錄檔 (若您打算啟用記錄來針對啟動問題進行疑難排解的話)。 如果您打算以將 *logs* 資料夾放在承載中的方式來部署您的應用程式，您可以略過此步驟。 目前有一項[自動建立資料夾方面的開放問題](https://github.com/aspnet/AspNetCoreModule/issues/30)。 若要讓 MSBuild 為您建立 *log* 資料夾，請在專案檔中新增下列 `Target`：
 
-3. 在 **IIS 管理員**中建立新的網站。 提供**網站名稱**並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態並建立網站。
+   ```xml
+   <Target Name="CreateLogsFolder" AfterTargets="AfterPublish">
+     <MakeDir Directories="$(PublishDir)logs" Condition="!Exists('$(PublishDir)logs')" />
+     <MakeDir Directories="$(PublishUrl)logs" Condition="!Exists('$(PublishUrl)logs')" />
+   </Target>
+   ```
+
+3. 在 **IIS 管理員**中建立新的網站。 提供**網站名稱**，並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態並建立網站。
 
 4. 將應用程式集區設為 [沒有 Managed 程式碼]。 ASP.NET Core 會在不同的處理序中執行，並管理執行階段。
 
@@ -146,7 +152,7 @@ services.Configure<IISOptions>(options =>
 
    ![在新增網站步驟中提供站台名稱、實體路徑和主機名稱。](iis/_static/add-website-ws2016.png)
 
-7. 在 [應用程式集區] 面板中，以滑鼠右鍵按一下網站的應用程式集區，並從快顯功能表中選取 [基本設定...]，開啟 [編輯應用程式集區] 視窗。
+7. 在 [應用程式集區] 面板中，以滑鼠右鍵按一下網站的應用程式集區，並從快顯功能表中選取 [基本設定...]，開啟 [編輯應用程式集區] 窗格。
 
    ![選取 [應用程式集區] 操作功能表的 [基本設定]。](iis/_static/apppools-basic-settings-ws2016.png)
 
@@ -158,10 +164,10 @@ services.Configure<IISOptions>(options =>
 
 9. 確認處理序模型身分識別具有適當的權限。
 
-    如果您將應用程式集區的預設身分識別從 **ApplicationPoolIdentity** 變更為其他身分識別 ([處理序模型] > [身分識別])，確認新的身分識別具有必要權限，可存取應用程式的資料夾、資料庫和其他必要的資源。
+   如果您將應用程式集區的預設身分識別 ([處理序模型] > [身分識別]) 從 **ApplicationPoolIdentity** 變更為其他身分識別，請驗證新的身分識別具有必要權限，可存取應用程式的資料夾、資料庫和其他必要的資源。
    
 ## <a name="deploy-the-application"></a>部署應用程式
-將應用程式部署至您在目標 IIS 系統上建立的資料夾。 Web Deploy 是建議的部署機制。 Web Deploy 的替代項目列示如下。
+將應用程式部署至您在目標 IIS 系統上建立的資料夾。 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 是建議的部署機制。 Web Deploy 的替代項目列示如下。
 
 確認部署的已發佈應用程式未在執行中。 當應用程式執行時，會鎖定 *publish* 資料夾中的檔案。 因為無法複製鎖定的檔案，所以無法執行部署。
 
@@ -171,7 +177,7 @@ services.Configure<IISOptions>(options =>
 ![[發佈] 對話方塊頁](iis/_static/pub-dialog.png)
 
 ### <a name="web-deploy-outside-of-visual-studio"></a>Visual Studio 外部的 Web Deploy
-您也可以從命令列使用 Visual Studio 外部的 Web Deploy。 如需詳細資訊，請參閱 [Web 部署工具](https://docs.microsoft.com/iis/publish/using-web-deploy/use-the-web-deployment-tool)。
+您也可以透過命令列在 Visual Studio 外部使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy)。 如需詳細資訊，請參閱 [Web 部署工具](/iis/publish/using-web-deploy/use-the-web-deployment-tool)。
 
 ### <a name="alternatives-to-web-deploy"></a>Web Deploy 的替代項目
 如果您不想使用 Web Deploy 或不是使用 Visual Studio，您可以使用 Xcopy、Robocopy 或 PowerShell 等任何一種方法，將應用程式移至主控系統。 Visual Studio 使用者可以使用[發佈範例](https://github.com/aspnet/vsweb-publish/blob/master/samples/samples.md)。
@@ -179,68 +185,69 @@ services.Configure<IISOptions>(options =>
 ## <a name="browse-the-website"></a>瀏覽網站
 ![Microsoft Edge 瀏覽器已載入 IIS 啟動頁面。](iis/_static/browsewebsite.png)
    
->[!WARNING]
-> .NET Core 應用程式是透過 IIS 和 Kestrel 伺服器之間的反向 Proxy 裝載。 為了建立反向 Proxy，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)，這是提供給 IIS 的網站實體路徑。 機密檔案位於應用程式的實體路徑，包括 *my_application.runtimeconfig.json*、*my_application.xml* (XML 文件註解) 和 *my_application.deps.json* 等子資料夾。 需要有 *web.config* 檔案才能建立 Kestrel 的反向 Proxy，防止 IIS 提供這些和其他機密檔案。 **因此，絕對不要意外重新命名或從部署移除 *web.config* 檔案，這一點十分重要。**
+> [!WARNING]
+> .NET Core 應用程式是透過 IIS 和 Kestrel 伺服器之間的反向 Proxy 裝載。 為了建立反向 Proxy，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)，這是提供給 IIS 的網站實體路徑。 機密檔案位於應用程式的實體路徑，包括 *my_application.runtimeconfig.json*、*my_application.xml* (XML 文件註解) 和 *my_application.deps.json* 等子資料夾。 需要有 *web.config* 檔案才能建立 Kestrel 的反向 Proxy，防止 IIS 提供這些和其他機密檔案。 **因此，請注意避免意外重新命名或從部署移除 *web.config* 檔案。**
 
 ## <a name="data-protection"></a>資料保護
 
 下列情況下，ASP.NET Core 應用程式會將 Keyring 儲存在記憶體中：
 
 * 網站裝載在 IIS 後端。
-* 尚未設定資料保護堆疊將 Keyring 儲存在持續性存放區中。
+* 尚未將資料保護堆疊設定為要在持續性存放區中儲存 Keyring。
 
 如果 Keyring 儲存在記憶體中，則當應用程式重新啟動時：
 
-* 所有表單驗證權杖都將無效。 
-* 下一次要求時使用者需要再次登入。 
-* 使用 Keyring 保護的所有資料都會受到保護。
+* 所有表單驗證權杖都會失效。 
+* 當使用者提出下一個要求時，需要再次登入。 
+* 使用 Keyring 保護的所有資料都不再受到保護。
 
 > [!WARNING]
-> 有數個 ASP.NET 中介軟體使用資料保護，包括在驗證中使用的中介軟體。 即使不特別從自己的程式碼呼叫任何資料保護 API，您也應該使用部署指令碼或在您自己的程式碼中設定資料保護。 如果您不設定資料保護，索引鍵預設會保留在記憶體中，並於應用程式重新啟動時捨棄。 重新啟動會讓 Cookie 驗證寫入的所有 Cookie 失效，使用者必須再次登入。
+> 有數個 ASP.NET 中介軟體使用資料保護，包括在驗證中使用的中介軟體。 即使您不從自己的程式碼呼叫任何資料保護 API，也應該使用部署指令碼或在自己的程式碼中設定資料保護。 如果您不設定資料保護，則系統預設會將金鑰保留在記憶體中，並於應用程式重新啟動時捨棄。 重新啟動時，會導致 Cookie 驗證中介軟體寫入的所有 Cookie 失效，因此使用者必須再次登入。
 
 若要在 IIS 下設定資料保護，您必須使用下列方法之一：
 
-* 執行 [powershell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) 建立適當的登錄項目 (例如，`.\Provision-AutoGenKeys.ps1 DefaultAppPool`)。 這會將金鑰存放在登錄中，使用具有全電腦金鑰的 DPAPI 保護。
-* 設定 IIS 應用程式集區載入使用者設定檔。 此設定位在應用程式集區 [進階設定] 下的 [處理序模型] 區段中。 將 [載入使用者設定檔] 設為 `True`。 這會將索引鍵儲存在使用者設定檔目錄下，使用具有應用程式集區使用的使用者帳戶特定金鑰的 DPAPI 保護。
-* 調整應用程式程式碼[將檔案系統用為 Keyring 存放區](xref:security/data-protection/configuration/overview)。 使用 X509 憑證保護 Keyring，確保它是受信任的憑證。 例如，如果它是自我簽署的憑證，就必須放在受信任的根存放區。
+* 執行 [powershell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)以建立適當的登錄項目 (例如 `.\Provision-AutoGenKeys.ps1 DefaultAppPool`)。 這會將金鑰存放在登錄中，並使用 DPAPI 與全電腦金鑰加以保護。
+* 設定 IIS 應用程式集區載入使用者設定檔。 此設定位在應用程式集區 [進階設定] 下的 [處理序模型] 區段中。 將 [載入使用者設定檔] 設為 `True`。 這會將金鑰儲存在使用者設定檔目錄下，並使用 DPAPI 與應用程式集區所用的特定使用者帳戶金鑰加以保護。
+* 調整應用程式程式碼，以[將檔案系統作為 Keyring 存放區](xref:security/data-protection/configuration/overview)。 使用 X509 憑證保護 Keyring，確保它是受信任的憑證。 如果它是自我簽署的憑證，就必須放在受信任的根存放區。
 
 在 Web 伺服陣列中使用 IIS 時：
 
-* 使用所有電腦都可以存取的檔案共用。
-* 將 X509 憑證部署到每一部電腦。  設定[程式碼中的資料保護](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)。
+* 請使用所有電腦都可以存取的檔案共用。
+* 將 X509 憑證部署到每一部電腦。 設定[程式碼中的資料保護](https://docs.microsoft.com/aspnet/core/security/data-protection/configuration/overview)。
 
 ### <a name="1-create-a-data-protection-registry-hive"></a>1.建立資料保護登錄 Hive
 
-ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的登錄 Hive 中。 若要保存指定應用程式的金鑰，您必須建立應用程式的應用程式集區登錄 Hive。
+ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的登錄 Hive 中。 若要保存指定應用程式的金鑰，您必須為應用程式的應用程式集區建立登錄 Hive。
 
-若為獨立的 IIS 安裝，您可以針對和 ASP.NET Core 應用程式一起使用的每個應用程式集區使用[資料保護 Provision-AutoGenKeys.ps1 PowerShell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)。 此指令碼會在 HKLM 登錄中建立特殊的登錄機碼，HKLM 登錄只有碰到背景工作處理序帳戶才會是 ACL。 在待用期間使用 DPAPI 加密金鑰。
+若為獨立的 IIS 安裝，您可以針對搭配使用 ASP.NET Core 應用程式的每個應用程式集區，使用[資料保護 Provision-AutoGenKeys.ps1 PowerShell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)。 此指令碼會在 HKLM 登錄中建立特殊的登錄機碼，其只會將背景工作處理序帳戶列入 ACL。 在待用期間使用 DPAPI 加密金鑰。
 
-在 Web 伺服陣列案例中，應用程式可以設定成使用 UNC 路徑來儲存其資料保護 Keyring。 根據預設，資料保護金鑰不予加密。 您應該確保這類共用的檔案權限僅限於執行應用程式的 Windows 帳戶身分。 此外，您可以選擇使用 X509 憑證保護待用的金鑰。 您可能要考慮這樣的機制：讓使用者上傳憑證、將它們放入使用者的受信任的憑證存放區，並確保在執行使用者應用程式的所有電腦上都能使用它們。 詳細資訊請參閱[設定資料保護](xref:security/data-protection/configuration/overview#data-protection-configuring)。
+在 Web 伺服陣列案例中，應用程式可以設定成使用 UNC 路徑來儲存其資料保護 Keyring。 根據預設，資料保護金鑰不予加密。 您應該確保這類共用的檔案權限僅限於執行應用程式的 Windows 帳戶身分。 此外，您可以選擇使用 X509 憑證保護待用的金鑰。 您可能考慮下列讓使用者上傳憑證的機制：將憑證放入使用者的受信任憑證存放區，並確保在執行使用者應用程式的所有電腦上都能使用這些憑證。 詳細資訊請參閱[設定資料保護](xref:security/data-protection/configuration/overview#data-protection-configuring)。
 
 ### <a name="2-configure-the-iis-application-pool-to-load-the-user-profile"></a>2.設定 IIS 應用程式集區載入使用者設定檔
-此設定位在應用程式集區 [進階設定] 下的 [處理序模型] 區段中。 將 [載入使用者設定檔] 設為 True。 這會將索引鍵儲存在使用者設定檔目錄下，使用具有應用程式集區使用的使用者帳戶特定金鑰的 DPAPI 保護。
+
+此設定位在應用程式集區 [進階設定] 下的 [處理序模型] 區段中。 將 [載入使用者設定檔] 設為 `True`。 這會將金鑰儲存在使用者設定檔目錄下，並使用 DPAPI 與應用程式集區所用的特定使用者帳戶金鑰加以保護。
 
 ### <a name="3-machine-wide-policy-for-data-protection"></a>3.資料保護的全電腦原則
 
-資料保護系統對針對取用資料保護 API 的所有應用程式設定預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy)的支援有限。 如需詳細資訊，請參閱[資料保護](xref:security/data-protection/index)文件。
+針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy)設定。 如需詳細資訊，請參閱[資料保護](xref:security/data-protection/index)文件。
 
 ## <a name="configuration-of-sub-applications"></a>子應用程式的組態
 
-根應用程式下新增的子應用程式不應包含 ASP.NET Core 模組當做處理常式。 如果您在子應用程式的 *web.config* 檔案中將模組新增為處理常式，當您嘗試瀏覽子應用程式時，您會收到參考錯誤組態檔的 500.19 (內部伺服器錯誤)。 下例顯示已發佈之 ASP.NET Core 子應用程式的 *web.config* 檔案內容：
+根應用程式下新增的子應用程式不應包含 ASP.NET Core 模組當做處理常式。 如果您在子應用程式的 *web.config* 檔案中，將模組新增為處理常式，則當您嘗試瀏覽子應用程式時，會收到參考錯誤組態檔的 500.19 (內部伺服器錯誤)。 下列範例顯示 ASP.NET Core 子應用程式的已發佈 *web.config* 檔案內容：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <system.webServer>
     <aspNetCore processPath="dotnet" 
-        arguments=".\MyApp.dll" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
+      arguments=".\MyApp.dll" 
+      stdoutLogEnabled="false" 
+      stdoutLogFile=".\logs\stdout" />
   </system.webServer>
 </configuration>
 ```
 
-如果您打算在 ASP.NET Core 應用程式下裝載非 ASP.NET Core 子應用程式，您必須明確移除子應用程式 *web.config* 檔案中已繼承的處理常式：
+如果您打算在 ASP.NET Core 應用程式下方裝載非 ASP.NET Core 子應用程式，您必須明確移除子應用程式 *web.config* 檔案中已繼承的處理常式：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -250,9 +257,9 @@ ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的
       <remove name="aspNetCore"/>
     </handlers>
     <aspNetCore processPath="dotnet" 
-        arguments=".\MyApp.dll" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
+      arguments=".\MyApp.dll" 
+      stdoutLogEnabled="false" 
+      stdoutLogFile=".\logs\stdout" />
   </system.webServer>
 </configuration>
 ```
@@ -261,7 +268,7 @@ ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
-IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>` 區段所影響，這些 IIS 功能適用於反向 Proxy 組態。 例如，您可能在系統層級設定 IIS 使用動態壓縮，但可使用應用程式之 *web.config* 檔案中的 `<urlCompression>` 元素，停用應用程式的該項設定。 如需詳細資訊，請參閱 [`<system.webServer>` 的組態參考](https://docs.microsoft.com/iis/configuration/system.webServer/)、[ASP.NET Core 模組組態參考](xref:hosting/aspnet-core-module)，和[使用 IIS 模組與 ASP.NET Core](xref:hosting/iis-modules)。 如果您需要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (IIS 10.0+ 支援)，請參閱 IIS 參考文件之[環境變數\<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>` 區段所影響，這些 IIS 功能適用於反向 Proxy 組態。 例如，您可能在系統層級設定 IIS 使用動態壓縮，但可使用應用程式之 *web.config* 檔案中的 `<urlCompression>` 元素，停用應用程式的該項設定。 如需詳細資訊，請參閱 [`<system.webServer>` 的組態參考](https://docs.microsoft.com/iis/configuration/system.webServer/)、[ASP.NET Core 模組組態參考](xref:hosting/aspnet-core-module)以及[使用 IIS 模組與 ASP.NET Core](xref:hosting/iis-modules)。 如果您需要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (IIS 10.0+ 支援)，請參閱 IIS 參考文件之[環境變數\<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -269,17 +276,17 @@ IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>`
 
 ## <a name="application-pools"></a>應用程式集區
 
-當多個網站裝載在單一系統上時，您應該在其各自的應用程式集區中執行每個應用程式，以隔開所有的應用程式。 IIS [新增網站] 對話方塊預設執行此行為。 當您提供**站台名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 當您新增網站時，即使用該站台名稱建立新的應用程式集區。
+在單一系統上裝載多個網站時，您應該在其各自的應用程式集區中執行每個應用程式，以將應用程式互相隔離。 IIS [新增網站] 對話方塊預設執行此行為。 當您提供**站台名稱**時，文字會自動轉移至 [應用程式集區] 文字方塊。 當您新增網站時，即會使用該網站名稱建立新的應用程式集區。
 
 ## <a name="application-pool-identity"></a>應用程式集區身分識別
 
-應用程式集區身分識別帳戶可讓您在唯一的帳戶下執行應用程式，不必建立及管理網域或本機帳戶。 在 IIS 8.0+ 上，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於您的應用程式集區 [進階設定] 下，確定 [身分識別] 設定為使用 **ApplicationPoolIdentity**，如下圖所示。
+應用程式集區身分識別帳戶可讓您在唯一的帳戶下執行應用程式，不必建立及管理網域或本機帳戶。 在 IIS 8.0+ 中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於應用程式集區的 [進階設定] 下，確定 [身分識別] 設定為使用 **ApplicationPoolIdentity**，如下圖所示。
 
 ![應用程式集區進階設定對話方塊](iis/_static/apppool-identity.png)
 
-IIS 管理程序會在 Windows 安全系統中以應用程式集區的名稱建立安全識別碼。 使用這個身分識別可以保護資源，但此身分識別不是真正的使用者帳戶，也不會顯示在 Windows 使用者管理主控台中。
+IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱建立安全識別碼。 使用這個身分識別時，即可保護資源；不過，此身分識別不是真正的使用者帳戶，也不會顯示在 Windows 使用者管理主控台中。
 
-如果您需要將提升的 IIS 背景工作處理序存取權授與您的應用程式，就需要修改包含您應用程式的目錄存取控制清單 (ACL)。
+如果您要將提升的 IIS 背景工作處理序存取權授與應用程式，就必須修改包含應用程式的目錄存取控制清單 (ACL)。
 
 1. 開啟 Windows 檔案總管，巡覽至目錄。
 
@@ -305,26 +312,30 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 ## <a name="troubleshooting-tips"></a>疑難排解提示
 
-若要診斷 IIS 部署的問題，請研究瀏覽器輸出、透過 [事件檢視器] 檢查系統的**應用程式**記錄檔，並啟用 `stdout` 記錄。 在 *web.config* 的 `<aspNetCore>` 元素的 *stdoutLogFile* 屬性提供的路徑上，會找到 **ASP.NET Core 模組**記錄。部署中必須有屬性值提供之路徑上的所有資料夾。 您也必須設定 *stdoutLogEnabled ="true"*。 使用 `Microsoft.NET.Sdk.Web` SDK 建立 *web.config* 檔案的應用程式，其 *stdoutLogEnabled* 設定預設值為 *false*，因此您必須手動提供 *web.config* 檔案或修改檔案，以啟用 `stdout` 記錄。
+若要診斷 IIS 部署問題：
 
-要等到模組 *startupTimeLimit* (預設值：120 秒) 和 *startupRetryCount* (預設值：2) 通過後，數個常見錯誤才會出現在瀏覽器、應用程式記錄檔和 ASP.NET Core 模組記錄檔中。 因此，要等候整整六分鐘，才能推算出模組無法啟動應用程式的程序。
+* 研究瀏覽器輸出。
+* 透過**事件檢視器**，檢查系統的**應用程式**記錄檔。
+* 啟用 `stdout` 記錄。 您可以在 *web.config* 中 `<aspNetCore>` 項目的 *stdoutLogFile* 屬性所提供的路徑上，找到 **ASP.NET Core 模組**記錄檔。部署中必須有屬性值提供之路徑上的所有資料夾。 您也必須設定 *stdoutLogEnabled ="true"*。 如果應用程式是使用 `Microsoft.NET.Sdk.Web` SDK 來建立 *web.config* 檔案，其會將 *stdoutLogEnabled* 設定預設為 *false*，因此您必須手動提供 *web.config* 檔案或修改檔案，以啟用 `stdout` 記錄。
 
-有一個快速方法可判斷應用程式是否正常運作，即直接在 Kestrel 上執行應用程式。 應用程式如已發佈為與 Framework 相依的部署，請執行部署資料夾中的 **dotnet my_application.dll**，這是應用程式的 IIS 實體路徑。 如果應用程式已發佈為獨立部署，請直接從命令提示字元執行部署資料夾中的應用程式可執行檔 **my_application.exe**。 如果 Kestrel 接聽預設通訊埠 5000，您應該能夠瀏覽在 `http://localhost:5000/` 的應用程式。 如果應用程式通常在 Kestrel 端點位址回應，IIS-ASP.NET Core 模組-Kestrel 組態出問題的機率比較大，應用程式本身出問題的機率比較小。
+若干常見錯誤要等到模組的 *startupTimeLimit* (預設值：120 秒) 和 *startupRetryCount* (預設值：2) 經過後，才會出現在瀏覽器、應用程式記錄檔和 ASP.NET Core 模組記錄檔中。 因此，要等候整整六分鐘，才能推算出模組無法啟動應用程式的程序。
 
-判定 Kestrel 伺服器的 IIS 反向 Proxy 是否正常運作的一種方式，是使用[靜態檔案中介軟體](xref:fundamentals/static-files)針對樣式表、指令碼或來自 *wwwroot* 應用程式靜態檔案的影像，執行簡單的靜態檔案要求。 如果應用程式可以提供靜態檔案，但 MVC 檢視和其他端點卻失敗，就不太可能是 IIS-ASP.NET Core 模組-Kestrel 組態出問題，更可能是應用程式本身出問題 (例如，MVC 路由或 500 內部伺服器錯誤)。
+若要判斷應用程式是否正常運作，有一個快速的方法是直接在 Kestrel 上執行應用程式。 如果您已將應用程式發佈為與 Framework 相依的部署 (FDD)，請執行部署資料夾中的 `dotnet my_application.dll`，這是應用程式的 IIS 實體路徑。 如果您已將應用程式發佈為獨立部署 (SCD)，請直接從命令提示字元執行部署資料夾中的應用程式可執行檔 `my_application.exe`。 如果 Kestrel 是接聽預設通訊埠 5000，您應該能夠在 `http://localhost:5000/` 瀏覽應用程式。 如果應用程式如常在 Kestrel 端點位址回應，則 IIS-ASP.NET Core 模組-Kestrel 組態出問題的機率比較大，應用程式本身出問題的機率比較小。
 
-當 Kestrel 在 IIS 後端正常啟動，但應用程式在本機上成功執行之後卻不能在系統上執行時，您可以暫時將環境變數新增至 *web.config*，將 `ASPNETCORE_ENVIRONMENT` 設成 `Development`。 只要您不覆寫應用程式啟動的環境，應用程式在系統上執行時，[開發人員例外狀況頁面](xref:fundamentals/error-handling)就會出現。 只有不公開到網際網路的臨時/測試系統，才建議以這種方式設定 `ASPNETCORE_ENVIRONMENT` 的環境變數。 完成後，請務必從 *web.config* 檔案移除環境變數。 如需透過反向 Proxy 的 *web.config* 設定環境變數的相關資訊，請參閱 [aspNetCore 的 environmentVariables 子元素](xref:hosting/aspnet-core-module#setting-environment-variables)。
+若要判斷 Kestrel 伺服器的 IIS 反向 Proxy 是否正常運作，其中一種方式是使用[靜態檔案中介軟體](xref:fundamentals/static-files)，針對樣式表、指令碼或來自 *wwwroot* 應用程式靜態檔案的影像，執行簡單的靜態檔案要求。 如果應用程式可以提供靜態檔案，但 MVC 檢視和其他端點卻失敗，就不太可能是 IIS-ASP.NET Core 模組-Kestrel 組態出問題，更可能是應用程式本身出問題 (例如，MVC 路由或 500 內部伺服器錯誤)。
 
-在大部分情況下，啟用應用程式記錄會協助疑難排解應用程式或反向 Proxy 的問題。 如需詳細資訊，請參閱[記錄](xref:fundamentals/logging)。
+當 Kestrel 在 IIS 後端正常啟動，但應用程式在本機上成功執行之後卻不能在系統上執行時，您可以暫時將環境變數新增至 *web.config*，將 `ASPNETCORE_ENVIRONMENT` 設成 `Development`。 只要您不覆寫應用程式啟動的環境，上述設定即可讓應用程式在系統上執行時出現[開發人員例外狀況頁面](xref:fundamentals/error-handling)。 不過，只有不公開到網際網路的臨時/測試系統，才建議以這種方式設定 `ASPNETCORE_ENVIRONMENT` 的環境變數。 完成後，請務必從 *web.config* 檔案移除環境變數。 如需透過反向 Proxy 的 *web.config* 設定環境變數的相關資訊，請參閱 [aspNetCore 的 environmentVariables 子元素](xref:hosting/aspnet-core-module#setting-environment-variables)。
+
+在大部分情況下，啟用應用程式記錄有助於針對應用程式或反向 Proxy 的問題進行疑難排解。 如需詳細資訊，請參閱[記錄](xref:fundamentals/logging)。
 
 升級開發電腦的 .NET Core SDK 或應用程式內的套件版本後，最後有關應用程式的疑難排解提示無法執行。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 這些問題大部分是可以修正的，方法是刪除專案中的 `bin` 和 `obj` 資料夾、清除 `%UserProfile%\.nuget\packages\` 和 `%LocalAppData%\Nuget\v3-cache` 的套件快取、還原專案，然後確認已完全刪除之前在系統上的部署，再重新部署應用程式。
 
->[!TIP]
-> 有一個便利的方式可以清除套件快取，即從 [NuGet.org](https://www.nuget.org/) 取得 `NuGet.exe` 工具，將它新增系統的 PATH，再從命令提示字元執行 `nuget locals all -clear`。
+> [!TIP]
+> 若要清除套件快取，有一個便利的方式是從 [NuGet.org](https://www.nuget.org/) 取得 *NuGet.exe* 工具，將它新增至系統路徑，再從命令提示字元執行 `nuget locals all -clear`。 您也可以從命令提示字元執行 `dotnet nuget locals all --clear` 命令，即不需取得 *NuGet.exe*。
 
 ## <a name="common-errors"></a>常見的錯誤
 
-以下是不完整的錯誤清單。 假如遇到此處未列出的錯誤，請在下方的 [註解] 區段中留下詳細的錯誤訊息。
+以下的錯誤清單並非完整清單。 假如遇到此處未列出的錯誤，請在下方的 [註解] 區段中留下詳細的錯誤訊息。
 
 ### <a name="installer-unable-to-obtain-vc-redistributable"></a>安裝程式無法取得 VC++ 可轉散發套件
 
@@ -336,7 +347,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 疑難排解：
 
-* 如果安裝伺服器裝載套件組合時，系統不能存取網際網路，當安裝程式受阻無法取得 *Microsoft Visual C++ 2015 可轉散發套件*時，就會發生這個例外狀況。 您可從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。 如果安裝程式失敗，您可能不會收到裝載與 Framework 相依部署的必要 .NET Core 執行階段。 如果您打算裝載與 Framework 相依的部署，請確認已在 [程式和功能] 中安裝執行階段。 您可從 [.NET 下載](https://www.microsoft.com/net/download/core)取得執行階段安裝程式。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
+* 如果安裝伺服器裝載套件組合時，系統無法存取網際網路，導致安裝程式無法取得 *Microsoft Visual C++ 2015 可轉散發套件*，就會發生這個例外狀況。 您可從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。 如果安裝程式失敗，您可能無法收到必要的 .NET Core 執行階段來裝載與 Framework 相依的部署 (FDD)。 如果您打算裝載 FDD，請確認已在 [程式和功能] 中安裝執行階段。 您可從 [.NET 下載](https://www.microsoft.com/net/download/core)取得執行階段安裝程式。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
 
 ### <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>作業系統升級已移除 32 位元的 ASP.NET Core 模組
 
@@ -344,7 +355,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 疑難排解：
 
-* 作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級作業系統，然後嘗試在作業系統升級之後在 32 位元模式中執行任何 AppPool，就會發生這個問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](#install-the-net-core-windows-server-hosting-bundle)。 執行安裝程式時，請選取 [修復]。
+* 作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級作業系統，然後嘗試在作業系統升級之後於 32 位元模式中執行任何 AppPool，就會發生這個問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](#install-the-net-core-windows-server-hosting-bundle)。 執行安裝程式時，請選取 [修復]。
 
 ### <a name="platform-conflicts-with-rid"></a>平台發生 RID 衝突
 
@@ -358,7 +369,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[互通性的疑難排解](#troubleshooting-tips)。
 
-* 確認您並未在 *.csproj* 中設定與 RID 發生衝突的 `<PlatformTarget>`。 例如，藉由使用 *dotnet publish -c Release -r win10-x64*，或將 *.csproj* 的 `<RuntimeIdentifiers>` 設定為 `win10-x64`，不指定 `x86` 的 `<PlatformTarget>` 且以 `win10-x64` 的 RID 發佈。 專案發佈且沒有警告或錯誤，但會失敗，因為上述記錄在系統上的例外狀況。
+* 確認您並未在 *.csproj* 中設定與 RID 發生衝突的 `<PlatformTarget>`。 例如，藉由使用 *dotnet publish -c Release -r win10-x64*，或將 *.csproj* 的 `<RuntimeIdentifiers>` 設定為 `win10-x64`，不指定 `x86` 的 `<PlatformTarget>` 且以 `win10-x64` 的 RID 發佈。 專案發佈時沒有警告或錯誤，但因為上述在系統上記錄的例外狀況而失敗。
 
 * 如果在升級應用程式和部署新的組件時， Azure 應用程式部署發生這個例外狀況，請手動刪除先前部署的所有檔案。 部署升級的應用程式時，延遲不相容的組件會導致 `System.BadImageFormatException` 例外狀況。
 
@@ -410,7 +421,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 請檢查 [程式和功能] 並確認 **Microsoft ASP.NET Core 模組** 已安裝。 如果已安裝的程式清單中沒有 **Microsoft ASP.NET Core 模組**，請安裝此模組。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](#install-the-net-core-windows-server-hosting-bundle)。
 
-* 請確定 [應用程式集區] > [處理序模型] > [身分識別] 設為 [ApplicationPoolIdentity]，或您的自訂身分識別具有正確的權限，可存取應用程式的部署資料夾。
+* 請確定 [應用程式集區] > [處理序模型] > [身分識別] 設為 **ApplicationPoolIdentity**，或您的自訂身分識別具有正確的權限，可存取應用程式的部署資料夾。
 
 ### <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath, 遺失 PATH 變數, 未安裝裝載套件組合, 未重新啟動系統/IIS, 未安裝 VC++ 可轉散發套件, 或 dotnet.exe 存取違規
 
@@ -424,19 +435,19 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[互通性的疑難排解](#troubleshooting-tips)。
 
-* 請檢查 *web.config* 中 `<aspNetCore>` 元素的 *processPath* 屬性，以確認它是與 Framework 相依部署的 *dotnet* 或獨立部署的 *.\my_application.exe*。
+* 請檢查 *web.config* 中 `<aspNetCore>` 項目的 *processPath* 屬性，以確認它是 *dotnet* (若是與 Framework 相依的部署 (FDD)) 或 *.\my_application.exe* (若為獨立部署 (SCD))。
 
-* 若為與 Framework 相依的部署，可能無法透過 PATH 設定存取 *dotnet.exe*。 確認系統 PATH 設定中有 *C:\Program Files\dotnet\*。
+* 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認系統 PATH 設定中有 *C:\Program Files\dotnet\*。
 
-* 若為與 Framework 相依的部署，應用程式集區的使用者身分識別可能無法存取 *dotnet.exe*。 確認 AppPool 使用者身分識別可以存取 *C:\Program Files\dotnet* 目錄。 確認 *C:\Program Files\dotnet* 和應用程式目錄上的 AppPool 使用者身分識別未設定任何拒絕規則。
+* 若為 FDD，應用程式集區的使用者身分識別可能無法存取 *dotnet.exe*。 確認 AppPool 使用者身分識別可以存取 *C:\Program Files\dotnet* 目錄。 確認 *C:\Program Files\dotnet* 和應用程式目錄上的 AppPool 使用者身分識別未設定任何拒絕規則。
 
-* 您可能已部署與 Framework 相依的部署，並在不重新啟動 IIS 的狀況下安裝了 .NET Core。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動伺服器或重新啟動 IIS。
+* 您可能已部署 FDD，並在未重新啟動 IIS 的狀況下安裝了 .NET Core。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動伺服器或重新啟動 IIS。
 
-* 您可能已部署與 Framework 相依的部署，但未在主控系統上安裝 .NET Core 執行階段。 如果您要嘗試部署與 Framework 相依的部署，但尚未安裝 .NET Core 執行階段，請在系統上執行 **.NET Core Windows Server 裝載套件組合安裝程式**。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](#install-the-net-core-windows-server-hosting-bundle)。 如果您要嘗試在沒有網際網路連線的系統上安裝 .NET Core 執行階段，請從 [.NET 下載](https://www.microsoft.com/net/download/core)取得執行階段，執行裝載套件組合安裝程式以安裝 ASP.NET Core 模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
+* 您可能已部署 FDD，但未在主控系統上安裝 .NET Core 執行階段。 如果您嘗試部署 FDD，但尚未安裝 .NET Core 執行階段，請在系統上執行 **.NET Core Windows Server 裝載套件組合安裝程式**。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](#install-the-net-core-windows-server-hosting-bundle)。 如果您嘗試在沒有網際網路連線的系統上安裝 .NET Core 執行階段，請從 [.NET 下載](https://www.microsoft.com/net/download/core)取得執行階段，並執行裝載套件組合安裝程式以安裝 ASP.NET Core 模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
 
-* 您可能已部署與 Framework 相依的部署，並在不重新啟動系統/IIS 的情況下安裝 .NET Core。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
+* 您可能已部署 FDD，並在未重新啟動系統/IIS 的狀況下安裝了 .NET Core。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
 
-* 您可能已部署與 Framework 相依的部署，但系統上未安裝 *Microsoft Visual C++ 2015 可轉散發套件 (x64)*。 您可從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。
+* 您可能已部署 FDD，但系統上未安裝 *Microsoft Visual C++ 2015 可轉散發套件 (x64)*。 您可從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53840)取得安裝程式。
 
 ### <a name="incorrect-arguments-of-aspnetcore-element"></a>不正確的 \<aspNetCore\> 元素引數
 
@@ -450,7 +461,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[互通性的疑難排解](#troubleshooting-tips)。
 
-* 檢查 *web.config* 中 `<aspNetCore>` 元素的 *arguments* 屬性，以確認它是 (a) 與 Framework 相依部署的 *.\my_application.dll*；或 (b) 不存在的空字串 (*arguments=""*)，或獨立部署的應用程式引數清單 (*arguments="arg1, arg2, ..."*)。
+* 檢查 *web.config* 中 `<aspNetCore>` 項目的 *arguments* 屬性，以確認它是 (a) 與 Framework 相依部署 (FDD) 的 *.\my_application.dll*；或 (b) 不存在的空字串 (*arguments=""*)，或獨立部署 (SCD) 的應用程式引數清單 (*arguments="arg1, arg2, ..."*)。
 
 ### <a name="missing-net-framework-version"></a>遺失 .NET Framework 版本
 
@@ -464,7 +475,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 安裝系統中遺失的 .NET Framework 版本。
 
-* 若為與 Framework 相依的部署，請確認已在系統上正確安裝執行階段。 例如，如果您將專案從 1.0 升級為 1.1、部署到主控系統，然後收到這個例外狀況，請確定主控系統上安裝了 1.1 架構。
+* 若為 FDD，請確認已在系統上正確安裝執行階段。 如果您將專案從 1.1 升級到 2.0，再部署到主控系統，然後收到這個例外狀況，請確定主控系統上安裝了 2.0 架構。
 
 ### <a name="stopped-application-pool"></a>已停止應用程式集區
 
@@ -490,7 +501,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[互通性的疑難排解](#troubleshooting-tips)。
 
-* 在應用程式的 *WebHostBuilder()* 呼叫 *.UseIISIntegration()* 方法，確認您已正確參考 IIS Integration 中介軟體。
+* 在應用程式的 *WebHostBuilder()* (ASP.NET Core 1.x) 上呼叫 *.UseIISIntegration()* 方法，確認您已正確參考 IIS 整合中介軟體，或已正確使用 `CreateDefaultBuilder` 方法 (ASP.NET Core 2.x)。 如需詳細資訊，請參閱[在 ASP.NET Core 中裝載](xref:fundamentals/hosting)。
 
 ### <a name="sub-application-includes-a-handlers-section"></a>子應用程式包含\<處理常式\>區段
 
@@ -502,7 +513,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 疑難排解
 
-* 請確認子應用程式的 *web.config* 檔案不包含 `<handlers>`區段。
+* 請確認子應用程式的 *web.config* 檔案不包含 `<handlers>` 區段。
 
 ### <a name="application-configuration-general-issue"></a>應用程式組態一般問題
 
@@ -519,13 +530,8 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 ## <a name="resources"></a>資源
 
 * [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
-
 * [ASP.NET Core 模組組態參考](xref:hosting/aspnet-core-module)
-
 * [使用 IIS 模組與 ASP.NET Core](xref:hosting/iis-modules)
-
 * [ASP.NET Core 簡介](../index.md)
-
 * [Microsoft IIS 官方網站](https://www.iis.net/)
-
 * [Microsoft TechNet Library：Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)

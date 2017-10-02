@@ -5,23 +5,23 @@ description: "說明 Visual Studio 中的 Web 發佈。"
 keywords: "ASP.NET Core, Web 發佈, 發佈, msbuild, Web 部署, Dotnet 發佈, Visual Studio 2017"
 ms.author: riande
 manager: wpickett
-ms.date: 03/14/2017
+ms.date: 09/26/2017
 ms.topic: article
 ms.assetid: 0377a02d-8fda-47a5-929a-24a16e1d2c93
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/web-publishing-vs
-ms.openlocfilehash: 665c98b5ac16bb9739af4ac204fca59a55dbb812
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 8a2584363cbf418281cc0e2d796debe57fab846f
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="create-publish-profiles-for-visual-studio-and-msbuild-to-deploy-aspnet-core-apps"></a>建立 Visual Studio 和 MSBuild 的發行設定檔，以部署 ASP.NET Core 應用程式。
 
 作者：[Sayed Ibrahim Hashimi](https://github.com/sayedihashimi) 及 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本文著重在使用 Visual Studio 2017 建立發行設定檔。 使用 Visual Studio 建立的發行設定檔，可從 MSBuild 和 Visual Studio 2017 執行。
+本文著重在使用 Visual Studio 2017 建立發行設定檔。 使用 Visual Studio 建立的發行設定檔，可從 MSBuild 和 Visual Studio 2017 執行。 本文提供發行程序的詳細資料。 如需發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
 
 下列 *.csproj* 檔案是使用命令 `dotnet new mvc` 建立：
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 09/22/2017
 
 載入專案時，會計算專案項目 (檔案)。 `item type` 屬性會決定如何處理檔案。 根據預設，*.cs* 檔案會包含在 `Compile` 項目清單中。 `Compile` 項目清單中的檔案會予以編譯。
 
-`Content` 項目清單包含的檔案還會另行發佈到組建輸出。 根據預設，符合模式 wwwroot/** 的檔案會包含在 `Content` 項目中。 [wwwroot/** 是通用慣例模式](https://gruntjs.com/configuring-tasks#globbing-patterns)，指定 *wwwroot* 資料夾**和**子資料夾中的所有檔案。 如果您需要明確地將檔案新增至發佈清單，您可以直接在 *.csproj* 檔案中新增檔案，如[包括檔案](#including-files)中所示。
+`Content` 項目清單包含的檔案還會另行發佈到組建輸出。 根據預設，符合模式 wwwroot/** 的檔案會包含在 `Content` 項目中。 [wwwroot/** 是通用慣例模式](https://gruntjs.com/configuring-tasks#globbing-patterns)，指定 *wwwroot* 資料夾**和**子資料夾中的所有檔案。 若要明確地將檔案新增至發佈清單，請直接在 *.csproj* 檔案中新增檔案，如[包括檔案](#including-files)中所示。
 
 當您在 Visual Studio 中選取 [發佈] 按鈕，或當您從命令列發佈時：
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 09/22/2017
 - 會計算的發佈項目 (需要發佈的檔案)。
 - 專案已發佈。 (計算的檔案會複製到發佈目的地。)
 
-## <a name="simple-command-line-publishing"></a>簡單的命令列發佈
+## <a name="basic-command-line-publishing"></a>基本命令列發佈
 
 本節適用於所有 .NET Core 支援的平台，不需要 Visual Studio。 在下列範例中，`dotnet publish` 命令是從專案目錄執行 (其包含 *.csproj* 檔案)。 如果您不在專案資料夾中，您可以明確方式在專案檔案路徑中傳送。 例如: 
 
@@ -116,23 +116,35 @@ dotnet publish  c:/webs/web1
 
 執行下列命令來建立及發佈 Web 應用程式：
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```console
+dotnet new mvc
+dotnet publish
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 ```console
 dotnet new mvc
 dotnet restore
 dotnet publish
 ```
 
+--------------
+
 `dotnet publish` 會產生與類似下列內容的輸出：
 
 ```console
 C:\Webs\Web1>dotnet publish
-Microsoft (R) Build Engine version 15.1.548.43366
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp1.1\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\publish\
 ```
 
-預設發佈資料夾是 `bin\$(Configuration)\netcoreapp<version>\publish`。 `$(Configuration)` 預設為偵錯。 在上例中，`<TargetFramework>` 是 `netcoreapp1.1`。 上例中的實際路徑是 *bin\Debug\netcoreapp1.1\publish*。
+預設發佈資料夾是 `bin\$(Configuration)\netcoreapp<version>\publish`。 `$(Configuration)` 預設為偵錯。 在上例中，`<TargetFramework>` 是 `netcoreapp2.0`。
 
 `dotnet publish -h` 顯示發佈的說明資訊。
 
@@ -222,7 +234,7 @@ dotnet publish -c Release -o C:/MyWebs/test
 
 以 MSDeploy 發佈最簡單的方式，是先在 Visual Studio 2017 中建立發行設定檔，再從命令列使用設定檔。
 
-在下列範例中，我建立了 ASP.NET Core Web 應用程式 (使用 `dotnet new mvc`)，並使用 Visual Studio 新增了 Azure 發行設定檔。
+下列範例會建立 ASP.NET Core Web 應用程式 (使用 `dotnet new mvc`)，並使用 Visual Studio 新增 Azure 發行設定檔。
 
 您從 **VS 2017 開發人員命令提示字元**執行 `msbuild`。 開發人員命令提示字元在其路徑中會有正確的 *msbuild.exe*，並設定某些 MSBuild 變數。
 

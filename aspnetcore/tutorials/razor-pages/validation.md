@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f8d86b48363675adaf27e2bed39f835f117e624a
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: 9a822457d1581a70d59c553eb28133815f395d7d
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
 
@@ -128,8 +128,6 @@ public DateTime ReleaseDate { get; set; }
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-感謝您看完這份 Razor 頁面簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
-
 ## <a name="additional-resources"></a>其他資源
 
 * [使用表單](xref:mvc/views/working-with-forms)
@@ -139,3 +137,4 @@ public DateTime ReleaseDate { get; set; }
 
 >[!div class="step-by-step"]
 [上一步：新增欄位](xref:tutorials/razor-pages/new-field)
+[下一步：上傳檔案](xref:tutorials/razor-pages/uploading-files)

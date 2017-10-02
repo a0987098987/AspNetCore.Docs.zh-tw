@@ -5,16 +5,16 @@ description:
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 08/03/2017
+ms.date: 09/03/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: d8516643393cdf9175adc78ab98420dc1dc5d1d9
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 748c8c0b9dd0e6eab0d7347bbf89ed80c10bdb54
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 09/12/2017
 
 ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.com/aspnet/home)架構，用於建置現代化、雲端式、網際網路連線的應用程式。 利用 ASP.NET Core，您可以：
 
-* 建置 Web 應用程式和服務、IoT 應用程式，以及行動後端。
+* 建置 Web 應用程式和服務、[IoT](https://www.microsoft.com/en-us/internet-of-things/) 應用程式，以及行動後端。
 * 在 Windows、macOS 和 Linux 上使用您最愛的開發工具。
 * 部署到雲端和在內部部署。
 * 在 [.NET Core 或 .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server) 上執行。

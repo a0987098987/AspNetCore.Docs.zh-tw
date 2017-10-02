@@ -1,233 +1,341 @@
 ---
-title: "檢視概觀"
+title: "ASP.NET Core MVC 中的檢視"
 author: ardalis
-description: 
-keywords: ASP.NET Core,
+description: "了解如何檢視處理的應用程式資料的呈現與 ASP.NET Core MVC 中的使用者互動。"
+keywords: "ASP.NET Core MVC、 razor、 viewmodel、 別的 viewdata、 viewbag 檢視"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 09/26/2017
 ms.topic: article
 ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 3b33c13f2385d3b07ba9b6f0bc0fd560abc3735c
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
-# <a name="rendering-html-with-views-in-aspnet-core-mvc"></a>將 HTML 呈現使用 ASP.NET Core MVC 中的檢視
+# <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
-由[Steve Smith](https://ardalis.com/)
+由[Steve Smith](https://ardalis.com/)和[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core MVC 控制器可能會傳回使用的格式化的結果*檢視*。
+在**M**模型-**V**檢視-**C**ontroller (MVC) 模式*檢視*處理應用程式的資料呈現與使用者互動。 檢視是 HTML 範本與內嵌[Razor 標記](xref:mvc/views/razor)。 Razor 標記是與 HTML 標記，以產生傳送至用戶端的網頁互動的程式碼。
 
-## <a name="what-are-views"></a>檢視有哪些？
+ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/dotnet/csharp/)Razor 標記中。 通常，檢視檔案會分組成資料夾名為每個應用程式的[控制器](xref:mvc/controllers/actions)。 資料夾會儲存在中*檢視*根目錄中的應用程式的資料夾：
 
-在模型檢視控制器 (MVC) 模式中，*檢視*封裝與應用程式的使用者互動的呈現方式詳細資料。 檢視是內嵌程式碼與 HTML 範本產生要傳送給用戶端內容。 檢視使用[Razor 語法](razor.md)，可讓程式碼與 HTML 互動最少的程式碼或儀式。
+![Visual Studio 方案總管 中的 檢視 資料夾是主資料夾 資料夾開啟顯示 About.cshtml、 Contact.cshtml 和 Index.cshtml 檔案開啟](overview/_static/views_solution_explorer.png)
 
-ASP.NET Core MVC 檢視*.cshtml*預設會在儲存檔案*檢視*應用程式中的資料夾。 一般而言，每個控制器將具有自己的資料夾，其中都是適用於特定控制器動作的檢視。
+*首頁*控制器由*首頁*資料夾內*檢視*資料夾。 *首頁*資料夾包含檢視*有關*，*連絡人*，和*索引*（首頁） 網頁。 當使用者要求這些三個網頁中的控制器動作的其中一個*首頁*控制器決定這三個檢視用來建置和網頁傳回給使用者。
 
-![在 [方案總管] 的 [檢視] 資料夾](overview/_static/views_solution_explorer.png)
+使用[配置](xref:mvc/views/layout)來提供一致的網頁區段，並減少重複的程式碼。 配置通常包含標頭、 導覽和功能表項目和頁尾。 頁首和頁尾通常包含許多中繼資料的項目和連結指令碼和樣式資產的未定案標記。 配置可協助您避免在您檢視這個未定案標記。
 
-動作特定的檢視，除了[部分檢視](partial.md)，[版面配置和其他特殊的檢視檔案](layout.md)可用來協助降低重複，並允許在應用程式的檢視內的重複使用。
+[部分檢視](xref:mvc/views/partial)管理檢視的可重複使用的組件時，減少程式碼重複。 例如，部分檢視可用於數個檢視中會出現在部落格網站上的作者自傳。 作者自傳是一般的檢視內容，而不需要執行，才能產生的網頁內容的程式碼。 作者自傳內容是內容的可檢視的模型繫結，方式，因此適合用於這種類型中的部分檢視。
+
+[檢視元件](xref:mvc/views/view-components)，在於它們可讓您減少重複的程式碼，都設為部分類似的檢視，但是它們很適用於需要在伺服器上呈現網頁所執行的程式碼的檢視內容。 呈現的內容需要資料庫互動，例如購物車的網站時，檢視元件就很有用。 不限制檢視元件，才能產生網頁輸出模型繫結。
 
 ## <a name="benefits-of-using-views"></a>使用檢視的優點
 
-檢視提供[的重要性分離](http://deviq.com/separation-of-concerns/)MVC 應用程式，封裝使用者介面層級標記分開商務邏輯中。 ASP.NET MVC 檢視使用[Razor 語法](razor.md)，讓切換 HTML 標記和伺服器端邏輯輕鬆的方式。 一般的重複性層面應用程式的使用者介面可輕易地重複使用的檢視之間[版面配置和共用的指示詞](layout.md)或[部分檢視](partial.md)。
+檢視可以協助建立[ **S**eparation **o**f **C**oncerns (SoC) 設計](http://deviq.com/separation-of-concerns/)分隔從使用者介面標記 MVC 應用程式中應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組，提供數個優點：
+
+* 應用程式很容易維護，因為組織較佳。 檢視通常會依應用程式功能分組。 這可讓您更輕鬆地找到相關的檢視，使用一項功能時。
+* 應用程式的組件不是緊密結合。 您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
+* 它是您更輕鬆地測試應用程式的使用者介面部分，因為檢視表的個別單位。
+* 因為較佳的組織，而較不可能是您會意外地重複的區段的使用者介面。
 
 ## <a name="creating-a-view"></a>建立檢視
 
-檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*/檢視表/共用*資料夾。 檢視檔案與它關聯之的控制器的動作，相同的名稱，並加入*.cshtml*檔案副檔名。 例如，若要建立的檢視*有關*動作*首頁*控制站，您就必須建立*About.cshtml*檔案 * /檢視表/首頁*資料夾。
+檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*Views/Shared*資料夾。 若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。 若要建立檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案*Views/Home*資料夾：
 
-範例的檢視檔案 (*About.cshtml*):
+[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
+*Razor*標記開頭`@`符號。 執行的 C# 陳述式放入 C# 程式碼內[Razor 程式碼區塊](xref:mvc/views/razor#razor-code-blocks)設定 off，大括號括住 (`{ ... }`)。 例如，請參閱 [關於] 的指派`ViewData["Title"]`如上所示。 您可以顯示在 HTML 中的值只參考的值與`@`符號。 請參閱的內容`<h2>`和`<h3>`上述項目。
 
-*Razor*程式碼由表示`@`符號。 C# 陳述式會執行的 Razor 程式碼區塊，已設定 off 大括號內 (`{` `}`)，例如指派 [關於] 以`ViewData["Title"]`如上所示的項目。 Razor 可以用來顯示值在 HTML 內只參考的值與`@`符號，如中所示`<h2>`和`<h3>`上述項目。
+如上所示的檢視內容是只有一部分會呈現給使用者的整個網頁。 其餘的頁面配置和其他常用的部分檢視的其他檢視檔案中指定。 若要進一步了解，請參閱[配置主題](xref:mvc/views/layout)。
 
-此檢視會著重於只輸出，它是負責的部分。 其餘的頁面配置和其他常用的部分檢視的其他地方指定。 深入了解[配置和共用的檢視邏輯](layout.md)。
+## <a name="how-controllers-specify-views"></a>控制器指定檢視的方式
 
-## <a name="how-do-controllers-specify-views"></a>控制器指定檢視如何？
-
-檢視通常會傳回動作為`ViewResult`。 動作方法可以建立並傳回`ViewResult`直接，但是通常如果您的控制器是繼承自`Controller`，只要您將使用`View`helper 方法與這個範例示範：
+檢視通常會傳回動作為[ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult)，這是一種[ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult)。 動作方法可以建立並傳回`ViewResult`直接，但是一般來說，不進行。 因為大部分的控制站繼承自[控制器](/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，您只需要使用`View`helper 方法以傳回`ViewResult`:
 
 *HomeController.cs*
 
 [!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
-`View` Helper 方法擁有數個多載來傳回檢視表更輕鬆地進行應用程式開發人員。 您可以選擇性地指定要傳回的檢視，以及要傳遞至檢視的模型物件。
+這個動作會傳回*About.cshtml*的最後一節中所顯示的檢視會轉譯為下列網頁：
 
-這個動作會傳回*About.cshtml*呈現檢視上面所示：
+![關於在 microsoft Edge 瀏覽器中呈現的頁面](overview/_static/about-page.png)
 
-![有關頁面](overview/_static/about-page.png)
+`View` Helper 方法擁有數個多載。 您可以選擇性地指定：
+
+* 要傳回明確的檢視：
+
+  ```csharp
+  return View("Orders");
+  ```
+* A[模型](xref:mvc/models/model-binding)来傳遞至檢視：
+
+  ```csharp
+  return View(Orders);
+  ```
+* 檢視和模型：
+
+  ```csharp
+  return View("Orders", Orders);
+  ```
 
 ### <a name="view-discovery"></a>檢視探索
 
-當動作傳回的檢視時，這個程序稱為*檢視探索*進行。 此程序會決定將使用的檢視檔案。 除非指定了特定的檢視檔案，則執行階段會尋找控制器特定檢視第一次，則會尋找相符的檢視名稱中*共用*資料夾。
+當動作傳回的檢視時，這個程序稱為*檢視探索*進行。 此程序決定根據檢視名稱使用的檢視檔案。 
 
-當動作傳回`View`方法，就像這樣`return View();`，動作名稱當做檢視表名稱。 例如，如果這從名為"Index"的動作方法呼叫，將相當於 「 索引 」 的檢視名稱傳入。 檢視名稱可以明確地傳遞給方法 (`return View("SomeView");`)。 在這兩種情況下，檢視探索會搜尋相符的檢視檔案中：
+當動作傳回`View`方法 (`return View();`) 並不指定了檢視，動作名稱當做檢視表名稱。 例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。 首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。 如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。
 
-   1. 檢視 /\<ControllerName > /\<ViewName >.cshtml
+如果您以隱含方式傳回，它並不重要`ViewResult`與`return View();`或明確地將傳遞至檢視表名稱`View`方法`return View("<ViewName>");`。 在這兩種情況下，檢視探索會搜尋相符的檢視檔案，依此順序：
 
-   2. 檢視/共用/\<ViewName >.cshtml
+   1. *檢視 /\[ControllerName]\[ViewName].cshtml*
+   1. *檢視/共用/\[ViewName].cshtml*
 
->[!TIP]
-> 我們建議您遵循的慣例只傳回`View()`從可能的因為它會造成更具彈性且更容易重構程式碼時的動作。
+可以提供的檢視檔案的路徑，而不是檢視表名稱。 如果使用 啟動應用程式根目錄的絕對路徑 (選擇性地從"/"或"~ /")，則*.cshtml*必須指定延伸模組：
 
-可以提供的檢視檔案的路徑，而不是檢視表名稱。 如果使用 啟動應用程式根目錄的絕對路徑 (選擇性地從"/"或"~ /")、 *.cshtml*延伸模組必須指定檔案路徑的一部分 (例如， `return View("Views/Home/About.cshtml");`)。 或者，您可以使用相對路徑內的控制站的特定目錄從*檢視*目錄中，指定在不同的目錄檢視 (例如，`return View("../Manage/Index");`內`HomeController`)。 同樣地，您便可以周遊的目前的控制器特定目錄 (例如， `return View("./About");`)。 請注意，不要使用相對路徑*.cshtml*延伸模組。 如先前所述，請遵循組織檢視，以反映在控制器、 動作和可維護性和避免困擾的檢視之間的關聯性的檔案結構的最佳做法。
+```csharp
+return View("Views/Home/About.cshtml");
+```
 
-> [!NOTE]
-> [部分檢視](partial.md)和[檢視元件](view-components.md)使用類似 （但不是完全相同） 的探索機制。
+您也可以使用相對路徑來指定不同的目錄，而檢視*.cshtml*延伸模組。 內部`HomeController`，您可以傳回*索引*檢視您*管理*檢視具有相對路徑：
 
-> [!NOTE]
-> 您可以自訂有關檢視的所在位置的應用程式中使用自訂的預設慣例`IViewLocationExpander`。
+```csharp
+return View("../Manage/Index");
+```
 
->[!TIP]
-> 可能會區分大小寫的基礎檔案系統根據檢視名稱。 作業系統之間的相容性，永遠符合控制器和動作名稱與相關聯的檢視資料夾和檔案名稱之間的大小寫。
+同樣地，您可以指出與目前的控制站的特定目錄 」。 /"前置詞：
+
+```csharp
+return View("./About");
+```
+
+[部分檢視](xref:mvc/views/partial)和[檢視元件](xref:mvc/views/view-components)使用類似 （但不是完全相同） 的探索機制。
+
+您可以自訂如何檢視位於應用程式中使用自訂的預設慣例[IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander)。
+
+檢視探索依賴檔案名稱來尋找檢視的檔案。 如果基礎檔案系統區分大小寫，檢視名稱會可能區分大小寫。 作業系統之間的相容性，請控制器和動作名稱與相關聯的檢視資料夾和檔案名稱之間的大小寫須相符。 如果您遇到的錯誤，使用區分大小寫的檔案系統時找不到檢視檔案，確認其大小寫符合要求的檢視檔案和實際的檢視檔案名稱之間。
+
+請遵循最佳作法來組織您的檢視，以反映控制器、 動作和可維護性和避免困擾的檢視之間的關聯性的檔案結構。
 
 ## <a name="passing-data-to-views"></a>將資料傳遞至檢視
 
-您可以將資料傳遞至檢視使用數種機制。 最健全的作法是指定*模型*檢視中的類型 (通常稱為*viewmodel*，若要在區別商務網域模型類型)，然後將此類型的執行個體傳遞至檢視從動作。 我們建議您將資料傳遞至檢視使用模型或檢視模型。 這可讓檢視以充分利用強式型別檢查。 您可以指定的模型檢視，使用`@model`指示詞：
+您可以將資料傳遞至使用數種方法的檢視。 最健全的作法是指定[模型](xref:mvc/models/model-binding)檢視中的型別。 這種模型通常稱為*viewmodel*。 您傳遞至檢視的 viewmodel 類型的執行個體的動作。
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
+將資料傳遞至檢視中使用 viewmodel 可讓檢視來善用*強式*類型檢查。 *強式類型*(或*強型別*) 表示每個變數和常數有明確定義的型別 (例如， `string`， `int`，或`DateTime`)。 在編譯時期檢查有效性的檢視中使用的類型。
 
-```html
+工具，例如[Visual Studio](https://www.visualstudio.com/vs/)或[Visual Studio Code](https://code.visualstudio.com/)，也可以列出成員 （屬性的模型） 時，您要將其加入的檢視，可協助您撰寫較少的錯誤更快的程式碼。 這項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 工具。
+
+指定模型使用`@model`指示詞。 使用模型與`@Model`:
+
+```cshtml
 @model WebApplication1.ViewModels.Address
-   <h2>Contact</h2>
-   <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
 
-一旦模型已指定的檢視，傳送至檢視執行個體可以存取在強類型的方式，使用`@Model`如上所示。 若要提供檢視的模型類型的執行個體，控制器會將它做為參數：
+<h2>Contact</h2>
+<address>
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+若要提供模型給檢視，控制器會將它做為參數：
 
 ```csharp
 public IActionResult Contact()
-   {
-       ViewData["Message"] = "Your contact page.";
+{
+    ViewData["Message"] = "Your contact page.";
 
-       var viewModel = new Address()
-       {
-           Name = "Microsoft",
-           Street = "One Microsoft Way",
-           City = "Redmond",
-           State = "WA",
-           PostalCode = "98052-6399"
-       };
-       return View(viewModel);
-   }
-   ```
+    var viewModel = new Address()
+    {
+        Name = "Microsoft",
+        Street = "One Microsoft Way",
+        City = "Redmond",
+        State = "WA",
+        PostalCode = "98052-6399"
+    };
 
-沒有任何限制可供檢視，以做為模型的型別。 我們建議您傳遞純舊 CLR 物件 (POCO) 檢視模型少甚至沒有行為，以便可以其他地方封裝商務邏輯，在應用程式。 舉例來說，這種方法是*位址*viewmodel 上述範例中使用：
+    return View(viewModel);
+}
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+沒有任何限制，您可以提供給檢視的模型型別。 我們建議您使用**P**lain **O**ld **C**LR **O**物件 (POCO) viewmodels 少量或沒有定義的行為 （方法）。 通常，viewmodel 類別可能會儲存在*模型*資料夾或個別*ViewModels*根目錄中的應用程式的資料夾。 *位址*viewmodel 使用上述範例中是儲存在名為 POCO viewmodel *Address.cs*:
 
 ```csharp
 namespace WebApplication1.ViewModels
-   {
-       public class Address
-       {
-           public string Name { get; set; }
-           public string Street { get; set; }
-           public string City { get; set; }
-           public string State { get; set; }
-           public string PostalCode { get; set; }
-       }
-   }
-   ```
+{
+    public class Address
+    {
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+    }
+}
+```
 
 > [!NOTE]
-> 不會讓您為您的商務模型類型和顯示的模型型別使用相同的類別。 不過，使它們保持在個別可讓您檢視，以獨立會因您的網域或持續性的模型，並提供一些安全性優點 (針對使用者會將傳送至應用程式使用的模型[模型繫結](../models/model-binding.md))。
+> 會造成任何問題 viewmodel 類型和您的商務模型類型使用相同的類別。 不過，使用不同的模型可讓您的檢視而異獨立的商務邏輯和資料存取應用程式部分。 模型和 viewmodels 分離也提供安全性優點，當模型使用時[模型繫結](xref:mvc/models/model-binding)和[驗證](xref:mvc/models/validation)資料傳送到應用程式的使用者。
 
-### <a name="loosely-typed-data"></a>鬆散型別的資料
+### <a name="weakly-typed-data-viewdata-and-viewbag"></a>弱型別資料 （別的 ViewData 和 ViewBag）
 
-除了強型別檢視中，所有檢視都可以存取資料的鬆散型別集合。 這個相同的集合，可透過參考`ViewData`或`ViewBag`控制器和檢視上的屬性。 `ViewBag`屬性是周圍的包裝函式`ViewData`，該集合上提供的動態檢視。 它不是個別的集合。
+除了強型別檢視表檢視可以存取*弱型別*(也稱為*鬆散型別*) 的資料集合。 不同於強式類型，*弱式類型*(或*鬆散類型*) 表示您沒有明確宣告的您所使用的資料類型。 您可以使用弱式型別資料的集合，用來傳遞資料移轉入和控制器和檢視的資訊量很少。
 
-`ViewData`一個字典物件存取透過`string`索引鍵。 您可以儲存和擷取中的物件，必須先將它們轉換成特定類型，當您擷取它們。 您可以使用`ViewData`至控制器中的資料傳遞至檢視，以及檢視 （和部分檢視和配置） 內。 字串資料可以儲存並直接使用，而不需要轉型。
+| 傳遞之間的資料...                        | 範例                                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 在控制器與檢視                             | 填入下拉式清單的資料。                                          |
+| 檢視和[版面配置檢視](xref:mvc/views/layout)   | 設定**\<標題 >**版面配置檢視的檢視檔案中的項目內容。  |
+| [部分檢視](xref:mvc/views/partial)和檢視 | 一種 widget，會根據使用者要求網頁顯示資料。      |
 
-設定某些值`ViewData`動作：
+此集合可透過參考`ViewData`或`ViewBag`控制器和檢視上的屬性。 `ViewData`屬性是弱型別物件的字典。 `ViewBag`屬性是周圍的包裝函式`ViewData`基礎提供動態內容`ViewData`集合。
+
+`ViewData`和`ViewBag`以動態方式在執行階段解析。 由於它們不提供編譯時間類型檢查，因此兩者都是通常更容易發生錯誤比使用 viewmodel。 基於這個原因，有些開發人員想要使用最少或從不`ViewData`和`ViewBag`。
+
+**別的 viewData**
+
+`ViewData`是[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)物件透過存取`string`索引鍵。 字串資料可以儲存和使用直接，而不需要轉型，但您必須轉換為其他`ViewData`物件特定類型的值，當您擷取它們。 您可以使用`ViewData`來控制站中的資料傳遞至檢視和檢視，包括內[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。
+
+以下是設定問候語和位址使用的值範例`ViewData`動作：
 
 ```csharp
 public IActionResult SomeAction()
-   {
-       ViewData["Greeting"] = "Hello";
-       ViewData["Address"]  = new Address()
-       {
-           Name = "Steve",
-           Street = "123 Main St",
-           City = "Hudson",
-           State = "OH",
-           PostalCode = "44236"
-       };
+{
+    ViewData["Greeting"] = "Hello";
+    ViewData["Address"]  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
 
-       return View();
-   }
-   ```
+    return View();
+}
+```
 
 使用檢視中的資料：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3, 6]}} -->
-
-```html
+```cshtml
 @{
-       // Requires cast
-       var address = ViewData["Address"] as Address;
-   }
+    // Since Address isn't a string, it requires a cast.
+    var address = ViewData["Address"] as Address;
+}
 
-   @ViewData["Greeting"] World!
+@ViewData["Greeting"] World!
 
-   <address>
-       @address.Name<br />
-       @address.Street<br />
-       @address.City, @address.State @address.PostalCode
-   </address>
-   ```
+<address>
+    @address.Name<br>
+    @address.Street<br>
+    @address.City, @address.State @address.PostalCode
+</address>
+```
 
-`ViewBag`物件提供儲存在物件的動態存取`ViewData`。 這可以是更方便使用，因為它不需要進行轉型。 上面使用的相同範例`ViewBag`而不是強型別`address`檢視中的執行個體：
+**ViewBag**
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 4, 5, 6]}} -->
+`ViewBag`是[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)物件，提供儲存在物件的動態存取`ViewData`。 `ViewBag`可能更方便使用，因為它不需要進行轉型。 下列範例示範如何使用`ViewBag`與使用相同的結果與`ViewData`上方：
 
-```html
+```csharp
+public IActionResult SomeAction()
+{
+    ViewBag.Greeting = "Hello";
+    ViewBag.Address  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
+
+    return View();
+}
+```
+
+```cshtml
 @ViewBag.Greeting World!
 
-   <address>
-       @ViewBag.Address.Name<br />
-       @ViewBag.Address.Street<br />
-       @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
-   </address>
-   ```
+<address>
+    @ViewBag.Address.Name<br>
+    @ViewBag.Address.Street<br>
+    @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
+</address>
+```
 
-> [!NOTE]
-> 因為都會指向相同的基礎`ViewData`集合，您可以混合和比對之間`ViewData`和`ViewBag`讀取和寫入的值，如果方便時。
+**同時使用別的 ViewData ViewBag**
+
+因為`ViewData`和`ViewBag`參考相同的基礎`ViewData`集合，您可以同時使用`ViewData`和`ViewBag`並混用，而且符合之間讀取和寫入的值時。
+
+設定標題使用`ViewBag`和描述使用`ViewData`頂端*About.cshtml*檢視：
+
+```cshtml
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Contoso";
+    ViewData["Description"] = "Let us tell you about Contoso's philosophy and mission.";
+}
+```
+
+讀取內容，但是反向使用`ViewData`和`ViewBag`。 在*_Layout.cshtml*檔案中，取得標題使用`ViewData`並取得描述使用`ViewBag`:
+
+```cshtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewBag.Description">
+    ...
+```
+
+請記住，字串不需要轉型為`ViewData`。 您可以使用`@ViewData["Title"]`而不用轉型。
+
+使用這兩個`ViewData`和`ViewBag`在相同時間運作方式，為沒有混合和比對讀取和寫入的屬性。 會呈現下列標記：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Contoso</title>
+    <meta name="description" content="Let us tell you about Contoso's philosophy and mission.">
+    ...
+```
+
+**ViewBag 別的 ViewData 之間差異的摘要**
+
+* `ViewData`
+  * 衍生自[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性會很有用，例如`ContainsKey`， `Add`， `Remove`，和`Clear`。
+  * 字典中的索引鍵是字串，因此允許空白字元。 範例：`ViewData["Some Key With Whitespace"]`
+  * 任何型別以外`string`必須轉換中要使用的檢視`ViewData`。
+* `ViewBag`
+  * 衍生自[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)，因此它可以建立動態屬性使用點標記法 (`@ViewBag.SomeKey = <value or object>`)，而且不會執行轉換需要。 語法`ViewBag`可更快速地將加入至控制器和檢視。
+  * 容易檢查 null 值。 範例：`@ViewBag.Person?.Name`
+
+**何時使用別的 ViewData 或 ViewBag**
+
+同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。 選擇其中一個，以便使用 （或兩者） 最重要的是個人的喜好設定或您組織的喜好設定。 一般而言，開發人員會在使用其中一個一致的。 它們使用`ViewData`每個地方或使用`ViewBag`everywhere，但歡迎混用，並加以比對。 因為兩者都是在執行階段以動態方式解決，因此容易導致執行階段錯誤，請小心它們使用。 有些開發人員完全予以避免。
 
 ### <a name="dynamic-views"></a>動態檢視
 
-檢視未宣告的模型型別，而沒有傳遞給它們的模型執行個體可以動態地參考這個執行個體。 例如，如果執行個體`Address`傳遞至檢視，不會宣告`@model`，檢視就仍然可以動態示參考執行個體的屬性：
+不要宣告模型的檢視類型使用`@model`但可以是傳遞給它們的模型執行個體 (例如， `return View(Address);`) 可以動態地參考執行個體的屬性：
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [13, 16, 17, 18]}} -->
-
-```html
+```cshtml
 <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-此功能可提供一些彈性，但不是提供任何編譯保護或 IntelliSense。 如果屬性不存在，頁面將會在執行階段失敗。
+此功能，可提供彈性，但並未提供編譯保護或 IntelliSense。 如果屬性不存在，網頁產生在執行階段失敗。
 
 ## <a name="more-view-features"></a>詳細的檢視功能
 
-[標記協助程式](tag-helpers/intro.md)讓您輕鬆將伺服器端行為加入至現有的 HTML 標記，避免需要使用自訂程式碼或檢視內的協助程式。 標記協助程式做為屬性套用至 HTML 項目，則會忽略不熟悉，允許編輯和各種不同的工具所呈現的檢視標記的編輯器。 標記協助程式有許多用途，而且特別是可以[使用表單](working-with-forms.md)容易得多。
+[標記協助程式](xref:mvc/views/tag-helpers/intro)讓您輕鬆將伺服器端行為加入至現有的 HTML 標記。 使用標記協助程式，可避免需要撰寫自訂程式碼或在檢視內的協助程式。 標記協助程式會做為屬性套用至 HTML 元素，而且會忽略由無法處理它們的編輯器。 這可讓您編輯並呈現檢視標記中的各種工具。
 
-產生自訂的 HTML 標記可達到許多內建 HTML Helper 和更複雜的 UI 邏輯 （可能具備它自己的資料需求） 可以封裝在[檢視元件](view-components.md)。 檢視元件提供相同重要性分離，控制器和檢視提供，並可免除動作和檢視表的需要來處理常見的 UI 項目所使用的資料。
+許多內建的 HTML Helper 可達到產生自訂的 HTML 標記。 更複雜的使用者介面邏輯可以處理由[檢視元件](xref:mvc/views/view-components)。 檢視元件提供的相同 SoC 該控制站，並檢視所提供。 它們不需要動作和一般使用者介面項目所使用的資料處理的檢視。
 
-如同許多其他 ASP.NET Core 方面，檢視支援[相依性插入](../../fundamentals/dependency-injection.md)，讓服務變成[插入檢視](dependency-injection.md)。
+如同許多其他 ASP.NET Core 方面，檢視支援[相依性插入](xref:fundamentals/dependency-injection)，讓服務變成[插入檢視](xref:mvc/views/dependency-injection)。

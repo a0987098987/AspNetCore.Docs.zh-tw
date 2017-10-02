@@ -1,7 +1,7 @@
 ---
 title: "開啟 Web 介面 for.NET (OWIN)"
 author: ardalis
-description: "若要開啟.NET (OWIN) 的網頁介面的簡介。"
+description: "探索 ASP.NET Core 支援的方式開啟 Web 介面的.NET (OWIN)，可讓 web 應用程式来從 web 伺服器。"
 keywords: "ASP.NET Core，for.NET，OWIN 開啟 Web 介面"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd32d6929f16a619ad2cc8c7752a0373cbdff034
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e111a451bcc741f3e77f7ce756356cc1b57a5b52
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>若要開啟.NET (OWIN) 的網頁介面的簡介
 
@@ -32,7 +32,7 @@ OWIN 提供脫鉤層，可讓兩個架構來使用不同的物件模型一起使
 
 注意： 使用這些介面卡隨附的效能成本。 使用僅 ASP.NET 核心元件的應用程式不應該使用 Owin 封裝或介面卡。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>在 ASP.NET 管線中執行 OWIN 中介軟體
 

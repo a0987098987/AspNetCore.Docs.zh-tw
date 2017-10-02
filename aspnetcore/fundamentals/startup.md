@@ -1,7 +1,7 @@
 ---
 title: "在 ASP.NET Core 應用程式啟動"
 author: ardalis
-description: "說明在 ASP.NET Core 啟動類別。"
+description: "探索啟動類別中 ASP.NET Core 如何設定服務和應用程式的要求管線。"
 keywords: "ASP.NET Core，啟動時，設定方法、 ConfigureServices 方法"
 ms.author: tdykstra
 manager: wpickett
@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 94db2ff530b5de7fe357cfb591d09b984cb248f9
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: bba0eafe3917fa850b3a07df8df6448409f4062d
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
 由[Steve Smith](https://ardalis.com/)和[Tom Dykstra](https://github.com/tdykstra/)
 
-`Startup`類別來設定服務和應用程式的要求管線。 
+`Startup`類別來設定服務和應用程式的要求管線。
 
 ## <a name="the-startup-class"></a>啟動類別
 

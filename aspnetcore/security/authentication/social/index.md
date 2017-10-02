@@ -11,11 +11,11 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: b561dcee5435dfc34cfa0b9b15babf75ca8f3508
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 56036000535156b4b5814dde2a0145dcdfff28c3
+ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>使用 Facebook、Google 和其他外部提供者啟用驗證
 
@@ -53,9 +53,7 @@ OAuth 2.0 要求使用 SSL 以透過 HTTPS 通訊協定進行驗證。
 
 注意：如果您是使用適用於 ASP.NET Core 2.x 的 [Web 應用程式] 或 [Web API] 專案範本來建立專案，且專案精靈的 [變更驗證] 對話方塊已如上所示選取 [個別使用者帳戶] 選項的話，則系統會自動將該專案設為啟用 SSL，並使用 https URL 來啟動。
 
-* 了解如何遵循[設定 HTTPS 進行 ASP.NET Core 開發](xref:security/https)主題中的步驟以手動啟用 SSL。
-
-* 然後，遵循[強制執行 ASP.NET Core 應用程式中的 SSL](xref:security/enforcing-ssl) 主題的下列步驟，要求網站使用 SSL。
+* 遵循[在 ASP.NET Core 應用程式中強制執行 SSL](xref:security/enforcing-ssl) 主題中的步驟，要求網站使用 SSL。
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>使用 SecretManager 來儲存登入提供者指派的權杖
 

@@ -11,11 +11,11 @@ ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/integration-testing
-ms.openlocfilehash: fab1fb0e64debd8488713b3518cb3bc90182616b
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 155fd2f0663c6225531a4df6f323ebb30ab1ee73
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="integration-testing-in-aspnet-core"></a>整合測試 ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/28/2017
 
 整合測試，可確保應用程式的元件正確運作時組合在一起。 ASP.NET Core 支援整合測試使用單元測試架構和內建測試 web 主機，可以用來處理要求網路額外負荷。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/testing/integration-testing/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/testing/integration-testing/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="introduction-to-integration-testing"></a>整合測試的簡介
 

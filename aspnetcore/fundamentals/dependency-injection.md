@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5dfebeddb3a9394fd1faf798e029a9312201089
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f5c903a72d004afac55fbcc04ad157442e7a18ee
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>在 ASP.NET Core 的相依性插入的簡介
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/22/2017
 
 ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core 應用程式可以利用內建架構服務，讓它們插入到啟動類別中的方法，可以將應用程式服務設定以及資料隱碼。 ASP.NET Core 所提供的預設服務容器會提供最少的功能設定，而不是取代其他容器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-dependency-injection"></a>相依性插入是什麼？
 

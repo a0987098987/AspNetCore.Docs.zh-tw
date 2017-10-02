@@ -1,7 +1,7 @@
 ---
 title: "使用 ASP.NET Core 中的靜態檔案"
 author: rick-anderson
-description: "使用 ASP.NET Core 上的靜態檔案"
+description: "了解如何使用 ASP.NET Core 中的靜態檔案。"
 keywords: "ASP.NET Core 靜態檔案、 HTML、 CSS、 JavaScript 靜態資產"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69a4542c9b2a0d7091d05d42029e68384b760dd7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e099c4767958f153134e0fb6b3de8132ab1ead82
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>使用 ASP.NET Core 中的靜態檔案
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 
 靜態檔案，例如 HTML、 CSS、 影像和 JavaScript 中，是 ASP.NET Core 應用程式可以直接用戶端提供服務的資產。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="serving-static-files"></a>提供靜態檔案
 

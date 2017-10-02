@@ -10,17 +10,17 @@ ms.topic: article
 ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: f07b0cb44542b7da140d519e883c67901d6327e2
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: bc3350a7ef15c5c38aa072bab15cbddc7d0ee0fa
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
 由[Luke Latham](https://github.com/guardrex)和[John Luo](https://github.com/JunTaoLuo)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 本文件提供有關如何設定 ASP.NET Core 應用程式中的回應快取中介軟體的詳細資料。 中介軟體會決定當回應的快取、 儲存區回應，以及做回應從快取。 如需簡介 HTTP 快取和`ResponseCache`屬性，請參閱[快取回應](response.md)。
 

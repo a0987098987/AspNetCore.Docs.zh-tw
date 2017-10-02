@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dbe5e3567bb4feea7e56cff3dcf75be5df88310
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: a93dae3edec73f1b5254aa60662834ca83de62fd
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>使用單一頁面應用程式建立與 ASP.NET Core JavaScriptServices
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 09/12/2017
 
 單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[反應](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。 [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 <a name="what-is-js-services"></a>
 

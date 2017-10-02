@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 5eac2194dd0a49f89a3c348ec480bc8e1b3f0e54
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f1abb3558546cd907c78b44d9353d9c9f1f5aff1
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core WebListener web 伺服器實作
 
@@ -42,7 +42,7 @@ WebListener 支援下列功能：
 
 - Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-weblistener"></a>何時使用 WebListener
 

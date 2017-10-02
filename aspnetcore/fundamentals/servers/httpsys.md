@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 38ceb20c8901baadc7efbacb81a3598afce3f006
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: d3f9eb4943ed62b674d6bb2ab1b275b0a3c02343
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
@@ -40,7 +40,7 @@ HTTP.sys 支援下列功能：
 
 - Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 

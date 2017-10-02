@@ -5,20 +5,20 @@ description: "啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生"
 keywords: "ASP.NET Core、 MVC、 QR 代碼產生驗證器、 2FA"
 ms.author: riande
 manager: wpickett
-ms.date: 07/24/2017
+ms.date: 09/24/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: fcadf9ca0ad66bb0fd56efc248fc7534965b48b3
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 36a3dc542f3321c5e6ebaa078efd8bde3f50948f
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
 
-注意： 本主題適用於 ASP.NET Core 2.x 使用 Razor 頁面。
+注意： 本主題適用於 ASP.NET Core 2.x
 
 ASP.NET Core 隨附個別驗證的驗證器應用程式的支援。 兩個因素驗證 (2FA) 驗證器應用程式，使用以時間為基礎單次密碼演算法 (TOTP)，是建議的 2FA approch 產業。 2FA 使用 TOTP 最好 SMS 2FA。 驗證器應用程式提供的使用者必須確認使用者名稱和密碼之後輸入 6 to 8 位數代碼。 通常驗證器應用程式會安裝在智慧型手機上。
 
@@ -30,7 +30,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QR
 
 * 下載[qrcode.js javascript 程式庫](https://davidshimjs.github.io/qrcodejs/)至`wwwroot\lib`專案資料夾中的。
 
-* 在*Pages\Account\Manage\EnableAuthenticator.cshtml*檔案中，找出`Scripts`檔案結尾 」 一節：
+* 在*Pages\Account\Manage\EnableAuthenticator.cshtml* （Razor 頁面） 或*Views\Account\Manage\EnableAuthenticator.cshtml* (MVC)、 找出`Scripts`檔案結尾 」 一節：
 
 ```cshtml
 @section Scripts {
@@ -89,3 +89,7 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 * `data-url`中的屬性`qrCodeData`項目。 
 
 使用`@Html.Raw`存取檢視中的模型屬性 （否則會雙重編碼 url 中的連字號和 QR 代碼的標籤參數將被忽略）。
+
+## <a name="totp-client-and-server-time-skew"></a>TOTP 用戶端和伺服器時間誤差
+
+TOTP 驗證取決於伺服器和驗證器的裝置，具有正確的時間。 語彙基元只有最後一個 30 秒。 TOTP 2FA 登入而失敗，請檢查伺服器時間是否正確，且最好是已同步處理至正確的 NTP 服務。

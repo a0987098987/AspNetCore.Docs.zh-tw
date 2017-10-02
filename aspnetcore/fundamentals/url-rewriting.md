@@ -1,7 +1,7 @@
 ---
 title: "URL 重寫中 ASP.NET Core 中的介軟體"
 author: guardrex
-description: "簡介 URL 重寫，並將重新導向，其中包含有關如何在 ASP.NET Core 應用程式中使用 URL 重寫中介軟體的指示。"
+description: "深入了解重寫，並在 ASP.NET Core 應用程式中使用 URL 重寫中介軟體重新導向 URL。"
 keywords: "ASP.NET Core URL 重寫，URL 重寫 URL 重新導向 URL 重新導向中, 介軟體，apache_mod"
 ms.author: riande
 manager: wpickett
@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 44c78a6304eacc70cdee9bb0d9407376017abcac
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
 由[Luke Latham](https://github.com/guardrex)和[黃冠馬力](https://github.com/mikaelm12)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 URL 重寫是指修改的要求 Url 會根據一或多個預先定義的規則。 URL 重寫會建立資源位置和地址之間的抽象概念，讓不緊密連結的位置和地址。 有幾種的情況很重要 URL 重寫：
 * 移動或取代伺服器資源暫時或永久地維持穩定的定位器，針對這些資源

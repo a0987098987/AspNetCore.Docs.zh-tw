@@ -11,11 +11,11 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: 5b54c77ff9e019b1d550aa687923077a3e9ba5c2
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: ca3b98f0b0405fcd5751cb7d9bc7a40257739084
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core 應用程式
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/22/2017
 
 當您不使用 IIS 裝載的 ASP.NET Core 應用程式，在 Windows 上的建議的方式是執行[Windows 服務](https://docs.microsoft.com/dotnet/framework/windows-services/introduction-to-windows-service-applications)。 如此一來它可以自動啟動之後重新開機和損毀，而不需等待有人登入。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/hosting/windows-service/sample)看到[接下來的步驟](#next-steps)> 一節，如需如何執行此程式碼的指示。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/hosting/windows-service/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))。 請參閱[接下來的步驟](#next-steps)> 一節，如需如何執行此程式碼的指示。
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d271560476ee4efdffbd457e37eb769a7ae6ca25
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 4aecf9e9bd11cc7e2b36b40955178d9e9368c185
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>使用 AngularJS 與 ASP.NET Core 單一網頁應用程式 (SPAs)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 09/22/2017
 
 在本文中，您將學習如何建置使用 AngularJS SPA 樣式 ASP.NET 應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-angularjs"></a>AngularJS 是什麼？
 

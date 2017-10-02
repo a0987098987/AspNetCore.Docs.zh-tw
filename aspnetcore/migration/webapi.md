@@ -11,11 +11,11 @@ ms.assetid: 4f0564b4-ed4e-4e1e-9755-c1144d21a0ef
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/webapi
-ms.openlocfilehash: 2dd2d40aef3803ad2f75504920a1174fee5c2444
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 4acb7ccf7f944df5d08ac7faa342f0c72cf9d1a7
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="migrating-from-aspnet-web-api"></a>從 ASP.NET Web API 移轉
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/12/2017
 
 Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置的較大範圍的 HTTP 服務。 ASP.NET Core MVC 包括建置 Web 應用程式開發介面提供單一且一致的方式，建立 web 應用程式的支援。 在本文中，我們會示範從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC 所需的步驟。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/webapi/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="review-aspnet-web-api-project"></a>檢閱 ASP.NET Web API 專案
 

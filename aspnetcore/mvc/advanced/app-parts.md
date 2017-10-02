@@ -11,15 +11,15 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899963613a98
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 77d3a58d58493bf1b0b760ab9037d2778ba23441
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: a260675e7461105d4f6a0c61fd13971663c268f2
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="application-parts-in-aspnet-core"></a>在 ASP.NET Core 應用程式組件
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 *應用程式部分*是的抽象概念的應用程式中，然後再從中 MVC 等功能的控制站，檢視元件的資源，或可能會發現標記協助程式。 應用程式一部分的其中一個範例是 AssemblyPart，封裝組件參考和公開型別和編譯的參考。 *功能提供者*使用應用程式組件，以填入 ASP.NET Core MVC 應用程式的功能。 主要使用案例的應用程式組件可讓您設定您的應用程式探索 （或避免載入） MVC 組件中的功能。
 

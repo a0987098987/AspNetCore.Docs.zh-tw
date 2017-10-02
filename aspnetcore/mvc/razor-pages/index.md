@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 72ab979c6c718544955ae5734903ec936fc5afbc
-ms.sourcegitcommit: 195b2b331434f74334c5c5b7dfeba62d744a1e38
+ms.openlocfilehash: 3112faa38bb9702f6856097e315c413f0974010d
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -157,11 +157,9 @@ Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 
 *Index.cshtml* 檔案包含下列標記可為每個連絡人建立編輯連結：
 
-```cshtml
-<a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
-```
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
-[錨定標記協助程式](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper)過去使用 [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/AnchorTagHelper#route) 屬性產生 [編輯] 頁面的連結。 該連結包含路由資料和連絡人識別碼。 例如，`http://localhost:5000/Edit/1`。
+[錨定標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)過去使用 [asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#route) 屬性產生 [編輯] 頁面的連結。 該連結包含路由資料和連絡人識別碼。 例如，`http://localhost:5000/Edit/1`。
 
 *Pages/Edit.cshtml* 檔案：
 
@@ -172,6 +170,34 @@ Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 *Pages/Edit.cshtml.cs* 檔案：
 
 [!code-cs[main](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
+
+*Index.cshtml* 檔案也包含能夠為每個客戶連絡人建立刪除按鈕的標記：
+
+[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
+
+使用 HTML 轉譯刪除按鈕時，其 `formaction` 會包含下列項目的參數：
+
+* `asp-route-id` 屬性指定的客戶連絡人識別碼。
+* `asp-page-handler` 屬性指定的 `handler`。
+
+以下是轉譯的刪除按鈕範例，內含客戶連絡人識別碼 `1`：
+
+```html
+<button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
+```
+
+選取按鈕時，表單 `POST` 要求會傳送至伺服器。 依照慣例，會依據配置 `OnPost[handler]Async` 按 `handler` 參數的值來選取處理常式方法。
+
+在此範例中，因為 `handler` 為 `delete`，所以會使用 `OnPostDeleteAsync` 處理常式方法來處理 `POST` 要求。 若 `asp-page-handler` 設為其他值 (例如 `remove`)，則會選取名為 `OnPostRemoveAsync` 的頁面處理常式。
+
+[!code-cs[main](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
+
+`OnPostDeleteAsync` 方法：
+
+* 接受查詢字串的 `id`。
+* 使用 `FindAsync` 在資料庫中查詢客戶連絡人。
+* 若找到客戶連絡人，會從客戶連絡人清單中予以移除。 資料庫隨即更新。
+* 呼叫 `RedirectToPage` 以重新導向至根索引頁 (`/Index`)。
 
 <a name="xsrf"></a>
 

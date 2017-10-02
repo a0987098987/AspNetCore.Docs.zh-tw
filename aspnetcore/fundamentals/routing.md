@@ -1,7 +1,7 @@
 ---
 title: "在 ASP.NET Core 路由"
 author: ardalis
-description: 
+description: "探索如何 ASP.NET Core 路由功能是負責將傳入的要求對應至路由處理常式。"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 469c30cf66d28e82519d5eff7f2fc82d490827b7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 8bce642576b6b2f9326425d30ef95168da8f47e5
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 09/28/2017
 >[!IMPORTANT]
 > 本文件涵蓋的最低層級的 ASP.NET Core 路由。 ASP.NET Core MVC 路由，請參閱[路由至控制器的動作](../mvc/controllers/routing.md)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>路由的基本概念
 

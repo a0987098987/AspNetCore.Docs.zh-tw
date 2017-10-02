@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 479fc3a389168bb08e278aa3d9da3bf7df1b49f4
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 8ced1e667acb7d11954aea27de7701db89091fd9
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/01/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 模組簡介
 
@@ -28,7 +28,7 @@ ASP.NET 核心模組 (ANCM) 可讓您執行 ASP.NET Core 應用程式背後 IIS�
 
 * Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-aspnet-core-module-does"></a>ASP.NET 核心模組的功能
 

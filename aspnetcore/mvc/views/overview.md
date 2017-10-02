@@ -1,233 +1,341 @@
 ---
-title: "檢視概觀"
+title: "ASP.NET Core MVC 中的檢視"
 author: ardalis
-description: 
-keywords: ASP.NET Core,
+description: "了解如何檢視處理的應用程式資料的呈現與 ASP.NET Core MVC 中的使用者互動。"
+keywords: "ASP.NET Core MVC、 razor、 viewmodel、 別的 viewdata、 viewbag 檢視"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 09/26/2017
 ms.topic: article
 ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 3b33c13f2385d3b07ba9b6f0bc0fd560abc3735c
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
+ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 09/29/2017
 ---
-# <a name="rendering-html-with-views-in-aspnet-core-mvc"></a><span data-ttu-id="cc043-103">將 HTML 呈現使用 ASP.NET Core MVC 中的檢視</span><span class="sxs-lookup"><span data-stu-id="cc043-103">Rendering HTML with views in ASP.NET Core MVC</span></span>
+# <a name="views-in-aspnet-core-mvc"></a><span data-ttu-id="6c04e-104">ASP.NET Core MVC 中的檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-104">Views in ASP.NET Core MVC</span></span>
 
-<span data-ttu-id="cc043-104">由[Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="cc043-104">By [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="6c04e-105">由[Steve Smith](https://ardalis.com/)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="6c04e-105">By [Steve Smith](https://ardalis.com/) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="cc043-105">ASP.NET Core MVC 控制器可能會傳回使用的格式化的結果*檢視*。</span><span class="sxs-lookup"><span data-stu-id="cc043-105">ASP.NET Core MVC controllers can return formatted results using *views*.</span></span>
+<span data-ttu-id="6c04e-106">在**M**模型-**V**檢視-**C**ontroller (MVC) 模式*檢視*處理應用程式的資料呈現與使用者互動。</span><span class="sxs-lookup"><span data-stu-id="6c04e-106">In the **M**odel-**V**iew-**C**ontroller (MVC) pattern, the *view* handles the app's data presentation and user interaction.</span></span> <span data-ttu-id="6c04e-107">檢視是 HTML 範本與內嵌[Razor 標記](xref:mvc/views/razor)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-107">A view is an HTML template with embedded [Razor markup](xref:mvc/views/razor).</span></span> <span data-ttu-id="6c04e-108">Razor 標記是與 HTML 標記，以產生傳送至用戶端的網頁互動的程式碼。</span><span class="sxs-lookup"><span data-stu-id="6c04e-108">Razor markup is code that interacts with HTML markup to produce a webpage that's sent to the client.</span></span>
 
-## <a name="what-are-views"></a><span data-ttu-id="cc043-106">檢視有哪些？</span><span class="sxs-lookup"><span data-stu-id="cc043-106">What are Views?</span></span>
+<span data-ttu-id="6c04e-109">ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/dotnet/csharp/)Razor 標記中。</span><span class="sxs-lookup"><span data-stu-id="6c04e-109">In ASP.NET Core MVC, views are *.cshtml* files that use the [C# programming language](/dotnet/csharp/) in Razor markup.</span></span> <span data-ttu-id="6c04e-110">通常，檢視檔案會分組成資料夾名為每個應用程式的[控制器](xref:mvc/controllers/actions)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-110">Usually, view files are grouped into folders named for each of the app's [controllers](xref:mvc/controllers/actions).</span></span> <span data-ttu-id="6c04e-111">資料夾會儲存在中*檢視*根目錄中的應用程式的資料夾：</span><span class="sxs-lookup"><span data-stu-id="6c04e-111">The folders are stored in a in a *Views* folder at the root of the app:</span></span>
 
-<span data-ttu-id="cc043-107">在模型檢視控制器 (MVC) 模式中，*檢視*封裝與應用程式的使用者互動的呈現方式詳細資料。</span><span class="sxs-lookup"><span data-stu-id="cc043-107">In the Model-View-Controller (MVC) pattern, the *view* encapsulates the presentation details of the user's interaction with the app.</span></span> <span data-ttu-id="cc043-108">檢視是內嵌程式碼與 HTML 範本產生要傳送給用戶端內容。</span><span class="sxs-lookup"><span data-stu-id="cc043-108">Views are HTML templates with embedded code that generate content to send to the client.</span></span> <span data-ttu-id="cc043-109">檢視使用[Razor 語法](razor.md)，可讓程式碼與 HTML 互動最少的程式碼或儀式。</span><span class="sxs-lookup"><span data-stu-id="cc043-109">Views use [Razor syntax](razor.md), which allows code to interact with HTML with minimal code or ceremony.</span></span>
+![Visual Studio 方案總管 中的 檢視 資料夾是主資料夾 資料夾開啟顯示 About.cshtml、 Contact.cshtml 和 Index.cshtml 檔案開啟](overview/_static/views_solution_explorer.png)
 
-<span data-ttu-id="cc043-110">ASP.NET Core MVC 檢視*.cshtml*預設會在儲存檔案*檢視*應用程式中的資料夾。</span><span class="sxs-lookup"><span data-stu-id="cc043-110">ASP.NET Core MVC views are *.cshtml* files stored by default in a *Views* folder within the application.</span></span> <span data-ttu-id="cc043-111">一般而言，每個控制器將具有自己的資料夾，其中都是適用於特定控制器動作的檢視。</span><span class="sxs-lookup"><span data-stu-id="cc043-111">Typically, each controller will have its own folder, in which are views for specific controller actions.</span></span>
+<span data-ttu-id="6c04e-113">*首頁*控制器由*首頁*資料夾內*檢視*資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-113">The *Home* controller is represented by a *Home* folder inside the *Views* folder.</span></span> <span data-ttu-id="6c04e-114">*首頁*資料夾包含檢視*有關*，*連絡人*，和*索引*（首頁） 網頁。</span><span class="sxs-lookup"><span data-stu-id="6c04e-114">The *Home* folder contains the views for the *About*, *Contact*, and *Index* (homepage) webpages.</span></span> <span data-ttu-id="6c04e-115">當使用者要求這些三個網頁中的控制器動作的其中一個*首頁*控制器決定這三個檢視用來建置和網頁傳回給使用者。</span><span class="sxs-lookup"><span data-stu-id="6c04e-115">When a user requests one of these three webpages, controller actions in the *Home* controller determine which of the three views is used to build and return a webpage to the user.</span></span>
 
-![在 [方案總管] 的 [檢視] 資料夾](overview/_static/views_solution_explorer.png)
+<span data-ttu-id="6c04e-116">使用[配置](xref:mvc/views/layout)來提供一致的網頁區段，並減少重複的程式碼。</span><span class="sxs-lookup"><span data-stu-id="6c04e-116">Use [layouts](xref:mvc/views/layout) to provide consistent webpage sections and reduce code repetition.</span></span> <span data-ttu-id="6c04e-117">配置通常包含標頭、 導覽和功能表項目和頁尾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-117">Layouts often contain the header, navigation and menu elements, and the footer.</span></span> <span data-ttu-id="6c04e-118">頁首和頁尾通常包含許多中繼資料的項目和連結指令碼和樣式資產的未定案標記。</span><span class="sxs-lookup"><span data-stu-id="6c04e-118">The header and footer usually contain boilerplate markup for many metadata elements and links to script and style assets.</span></span> <span data-ttu-id="6c04e-119">配置可協助您避免在您檢視這個未定案標記。</span><span class="sxs-lookup"><span data-stu-id="6c04e-119">Layouts help you avoid this boilerplate markup in your views.</span></span>
 
-<span data-ttu-id="cc043-113">動作特定的檢視，除了[部分檢視](partial.md)，[版面配置和其他特殊的檢視檔案](layout.md)可用來協助降低重複，並允許在應用程式的檢視內的重複使用。</span><span class="sxs-lookup"><span data-stu-id="cc043-113">In addition to action-specific views, [partial views](partial.md), [layouts, and other special view files](layout.md) can be used to help reduce repetition and allow for reuse within the app's views.</span></span>
+<span data-ttu-id="6c04e-120">[部分檢視](xref:mvc/views/partial)管理檢視的可重複使用的組件時，減少程式碼重複。</span><span class="sxs-lookup"><span data-stu-id="6c04e-120">[Partial views](xref:mvc/views/partial) reduce code duplication by managing reusable parts of views.</span></span> <span data-ttu-id="6c04e-121">例如，部分檢視可用於數個檢視中會出現在部落格網站上的作者自傳。</span><span class="sxs-lookup"><span data-stu-id="6c04e-121">For example, a partial view is useful for an author biography on a blog website that appears in several views.</span></span> <span data-ttu-id="6c04e-122">作者自傳是一般的檢視內容，而不需要執行，才能產生的網頁內容的程式碼。</span><span class="sxs-lookup"><span data-stu-id="6c04e-122">An author biography is ordinary view content and doesn't require code to execute in order to produce the content for the webpage.</span></span> <span data-ttu-id="6c04e-123">作者自傳內容是內容的可檢視的模型繫結，方式，因此適合用於這種類型中的部分檢視。</span><span class="sxs-lookup"><span data-stu-id="6c04e-123">Author biography content is available to the view by model binding alone, so using a partial view for this type of content is ideal.</span></span>
 
-## <a name="benefits-of-using-views"></a><span data-ttu-id="cc043-114">使用檢視的優點</span><span class="sxs-lookup"><span data-stu-id="cc043-114">Benefits of Using Views</span></span>
+<span data-ttu-id="6c04e-124">[檢視元件](xref:mvc/views/view-components)，在於它們可讓您減少重複的程式碼，都設為部分類似的檢視，但是它們很適用於需要在伺服器上呈現網頁所執行的程式碼的檢視內容。</span><span class="sxs-lookup"><span data-stu-id="6c04e-124">[View components](xref:mvc/views/view-components) are similar to partial views in that they allow you to reduce repetitive code, but they're appropriate for view content that requires code to run on the server in order to render the webpage.</span></span> <span data-ttu-id="6c04e-125">呈現的內容需要資料庫互動，例如購物車的網站時，檢視元件就很有用。</span><span class="sxs-lookup"><span data-stu-id="6c04e-125">View components are useful when the rendered content requires database interaction, such as for a website shopping cart.</span></span> <span data-ttu-id="6c04e-126">不限制檢視元件，才能產生網頁輸出模型繫結。</span><span class="sxs-lookup"><span data-stu-id="6c04e-126">View components aren't limited to model binding in order to produce webpage output.</span></span>
 
-<span data-ttu-id="cc043-115">檢視提供[的重要性分離](http://deviq.com/separation-of-concerns/)MVC 應用程式，封裝使用者介面層級標記分開商務邏輯中。</span><span class="sxs-lookup"><span data-stu-id="cc043-115">Views provide [separation of concerns](http://deviq.com/separation-of-concerns/) within an MVC app, encapsulating user interface level markup separately from business logic.</span></span> <span data-ttu-id="cc043-116">ASP.NET MVC 檢視使用[Razor 語法](razor.md)，讓切換 HTML 標記和伺服器端邏輯輕鬆的方式。</span><span class="sxs-lookup"><span data-stu-id="cc043-116">ASP.NET MVC views use [Razor syntax](razor.md) to make switching between HTML markup and server side logic painless.</span></span> <span data-ttu-id="cc043-117">一般的重複性層面應用程式的使用者介面可輕易地重複使用的檢視之間[版面配置和共用的指示詞](layout.md)或[部分檢視](partial.md)。</span><span class="sxs-lookup"><span data-stu-id="cc043-117">Common, repetitive aspects of the app's user interface can easily be reused between views using [layout and shared directives](layout.md) or [partial views](partial.md).</span></span>
+## <a name="benefits-of-using-views"></a><span data-ttu-id="6c04e-127">使用檢視的優點</span><span class="sxs-lookup"><span data-stu-id="6c04e-127">Benefits of using views</span></span>
 
-## <a name="creating-a-view"></a><span data-ttu-id="cc043-118">建立檢視</span><span class="sxs-lookup"><span data-stu-id="cc043-118">Creating a View</span></span>
+<span data-ttu-id="6c04e-128">檢視可以協助建立[ **S**eparation **o**f **C**oncerns (SoC) 設計](http://deviq.com/separation-of-concerns/)分隔從使用者介面標記 MVC 應用程式中應用程式的其他部分。</span><span class="sxs-lookup"><span data-stu-id="6c04e-128">Views help to establish a [**S**eparation **o**f **C**oncerns (SoC) design](http://deviq.com/separation-of-concerns/) within an MVC app by separating the user interface markup from other parts of the app.</span></span> <span data-ttu-id="6c04e-129">遵循 SoC 設計可讓您的應用程式模組，提供數個優點：</span><span class="sxs-lookup"><span data-stu-id="6c04e-129">Following SoC design makes your app modular, which provides several benefits:</span></span>
 
-<span data-ttu-id="cc043-119">檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。</span><span class="sxs-lookup"><span data-stu-id="cc043-119">Views that are specific to a controller are created in the *Views/[ControllerName]* folder.</span></span> <span data-ttu-id="cc043-120">在控制站之間共用的檢視會放在*/檢視表/共用*資料夾。</span><span class="sxs-lookup"><span data-stu-id="cc043-120">Views that are shared among controllers are placed in the */Views/Shared* folder.</span></span> <span data-ttu-id="cc043-121">檢視檔案與它關聯之的控制器的動作，相同的名稱，並加入*.cshtml*檔案副檔名。</span><span class="sxs-lookup"><span data-stu-id="cc043-121">Name the view file the same as its associated controller action, and add the *.cshtml* file extension.</span></span> <span data-ttu-id="cc043-122">例如，若要建立的檢視*有關*動作*首頁*控制站，您就必須建立*About.cshtml*檔案 * /檢視表/首頁*資料夾。</span><span class="sxs-lookup"><span data-stu-id="cc043-122">For example, to create a view for the *About* action on the *Home* controller, you would create the *About.cshtml* file in the */Views/Home* folder.</span></span>
+* <span data-ttu-id="6c04e-130">應用程式很容易維護，因為組織較佳。</span><span class="sxs-lookup"><span data-stu-id="6c04e-130">The app is easier to maintain because it's better organized.</span></span> <span data-ttu-id="6c04e-131">檢視通常會依應用程式功能分組。</span><span class="sxs-lookup"><span data-stu-id="6c04e-131">Views are generally grouped by app feature.</span></span> <span data-ttu-id="6c04e-132">這可讓您更輕鬆地找到相關的檢視，使用一項功能時。</span><span class="sxs-lookup"><span data-stu-id="6c04e-132">This makes it easier to find related views when working on a feature.</span></span>
+* <span data-ttu-id="6c04e-133">應用程式的組件不是緊密結合。</span><span class="sxs-lookup"><span data-stu-id="6c04e-133">The parts of the app aren't tightly coupled.</span></span> <span data-ttu-id="6c04e-134">您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。</span><span class="sxs-lookup"><span data-stu-id="6c04e-134">You can build and update the app's views separately from the business logic and data access components.</span></span> <span data-ttu-id="6c04e-135">您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。</span><span class="sxs-lookup"><span data-stu-id="6c04e-135">You can modify the views of the app without necessarily having to update other parts of the app.</span></span>
+* <span data-ttu-id="6c04e-136">它是您更輕鬆地測試應用程式的使用者介面部分，因為檢視表的個別單位。</span><span class="sxs-lookup"><span data-stu-id="6c04e-136">It's easier to test the user interface parts of the app because the views are separate units.</span></span>
+* <span data-ttu-id="6c04e-137">因為較佳的組織，而較不可能是您會意外地重複的區段的使用者介面。</span><span class="sxs-lookup"><span data-stu-id="6c04e-137">Due to better organization, it's less likely that you'll accidently repeat sections of the user interface.</span></span>
 
-<span data-ttu-id="cc043-123">範例的檢視檔案 (*About.cshtml*):</span><span class="sxs-lookup"><span data-stu-id="cc043-123">A sample view file (*About.cshtml*):</span></span>
+## <a name="creating-a-view"></a><span data-ttu-id="6c04e-138">建立檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-138">Creating a view</span></span>
 
-<span data-ttu-id="cc043-124">[!code-html[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]</span><span class="sxs-lookup"><span data-stu-id="cc043-124">[!code-html[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]</span></span>
+<span data-ttu-id="6c04e-139">檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-139">Views that are specific to a controller are created in the *Views/[ControllerName]* folder.</span></span> <span data-ttu-id="6c04e-140">在控制站之間共用的檢視會放在*Views/Shared*資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-140">Views that are shared among controllers are placed in the *Views/Shared* folder.</span></span> <span data-ttu-id="6c04e-141">若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。</span><span class="sxs-lookup"><span data-stu-id="6c04e-141">To create a view, add a new file and give it the same name as its associated controller action with the *.cshtml* file extension.</span></span> <span data-ttu-id="6c04e-142">若要建立檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案*Views/Home*資料夾：</span><span class="sxs-lookup"><span data-stu-id="6c04e-142">To create a view for the *About* action in the *Home* controller, create an *About.cshtml* file in the *Views/Home* folder:</span></span>
 
-<span data-ttu-id="cc043-125">*Razor*程式碼由表示`@`符號。</span><span class="sxs-lookup"><span data-stu-id="cc043-125">*Razor* code is denoted by the `@` symbol.</span></span> <span data-ttu-id="cc043-126">C# 陳述式會執行的 Razor 程式碼區塊，已設定 off 大括號內 (`{` `}`)，例如指派 [關於] 以`ViewData["Title"]`如上所示的項目。</span><span class="sxs-lookup"><span data-stu-id="cc043-126">C# statements are run within Razor code blocks set off by curly braces (`{` `}`), such as the assignment of "About" to the `ViewData["Title"]` element shown above.</span></span> <span data-ttu-id="cc043-127">Razor 可以用來顯示值在 HTML 內只參考的值與`@`符號，如中所示`<h2>`和`<h3>`上述項目。</span><span class="sxs-lookup"><span data-stu-id="cc043-127">Razor can be used to display values within HTML by simply referencing the value with the `@` symbol, as shown within the `<h2>` and `<h3>` elements above.</span></span>
+[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
-<span data-ttu-id="cc043-128">此檢視會著重於只輸出，它是負責的部分。</span><span class="sxs-lookup"><span data-stu-id="cc043-128">This view focuses on just the portion of the output for which it is responsible.</span></span> <span data-ttu-id="cc043-129">其餘的頁面配置和其他常用的部分檢視的其他地方指定。</span><span class="sxs-lookup"><span data-stu-id="cc043-129">The rest of the page's layout, and other common aspects of the view, are specified elsewhere.</span></span> <span data-ttu-id="cc043-130">深入了解[配置和共用的檢視邏輯](layout.md)。</span><span class="sxs-lookup"><span data-stu-id="cc043-130">Learn more about [layout and shared view logic](layout.md).</span></span>
+<span data-ttu-id="6c04e-143">*Razor*標記開頭`@`符號。</span><span class="sxs-lookup"><span data-stu-id="6c04e-143">*Razor* markup starts with the `@` symbol.</span></span> <span data-ttu-id="6c04e-144">執行的 C# 陳述式放入 C# 程式碼內[Razor 程式碼區塊](xref:mvc/views/razor#razor-code-blocks)設定 off，大括號括住 (`{ ... }`)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-144">Run C# statements by placing C# code within [Razor code blocks](xref:mvc/views/razor#razor-code-blocks) set off by curly braces (`{ ... }`).</span></span> <span data-ttu-id="6c04e-145">例如，請參閱 [關於] 的指派`ViewData["Title"]`如上所示。</span><span class="sxs-lookup"><span data-stu-id="6c04e-145">For example, see the assignment of "About" to `ViewData["Title"]` shown above.</span></span> <span data-ttu-id="6c04e-146">您可以顯示在 HTML 中的值只參考的值與`@`符號。</span><span class="sxs-lookup"><span data-stu-id="6c04e-146">You can display values within HTML by simply referencing the value with the `@` symbol.</span></span> <span data-ttu-id="6c04e-147">請參閱的內容`<h2>`和`<h3>`上述項目。</span><span class="sxs-lookup"><span data-stu-id="6c04e-147">See the contents of the `<h2>` and `<h3>` elements above.</span></span>
 
-## <a name="how-do-controllers-specify-views"></a><span data-ttu-id="cc043-131">控制器指定檢視如何？</span><span class="sxs-lookup"><span data-stu-id="cc043-131">How do Controllers Specify Views?</span></span>
+<span data-ttu-id="6c04e-148">如上所示的檢視內容是只有一部分會呈現給使用者的整個網頁。</span><span class="sxs-lookup"><span data-stu-id="6c04e-148">The view content shown above is only part of the entire webpage that's rendered to the user.</span></span> <span data-ttu-id="6c04e-149">其餘的頁面配置和其他常用的部分檢視的其他檢視檔案中指定。</span><span class="sxs-lookup"><span data-stu-id="6c04e-149">The rest of the page's layout and other common aspects of the view are specified in other view files.</span></span> <span data-ttu-id="6c04e-150">若要進一步了解，請參閱[配置主題](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-150">To learn more, see the [Layout topic](xref:mvc/views/layout).</span></span>
 
-<span data-ttu-id="cc043-132">檢視通常會傳回動作為`ViewResult`。</span><span class="sxs-lookup"><span data-stu-id="cc043-132">Views are typically returned from actions as a `ViewResult`.</span></span> <span data-ttu-id="cc043-133">動作方法可以建立並傳回`ViewResult`直接，但是通常如果您的控制器是繼承自`Controller`，只要您將使用`View`helper 方法與這個範例示範：</span><span class="sxs-lookup"><span data-stu-id="cc043-133">Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from `Controller`, you'll simply use the `View` helper method, as this example demonstrates:</span></span>
+## <a name="how-controllers-specify-views"></a><span data-ttu-id="6c04e-151">控制器指定檢視的方式</span><span class="sxs-lookup"><span data-stu-id="6c04e-151">How controllers specify views</span></span>
 
-<span data-ttu-id="cc043-134">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="cc043-134">*HomeController.cs*</span></span>
+<span data-ttu-id="6c04e-152">檢視通常會傳回動作為[ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult)，這是一種[ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-152">Views are typically returned from actions as a [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult), which is a type of [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult).</span></span> <span data-ttu-id="6c04e-153">動作方法可以建立並傳回`ViewResult`直接，但是一般來說，不進行。</span><span class="sxs-lookup"><span data-stu-id="6c04e-153">Your action method can create and return a `ViewResult` directly, but that isn't commonly done.</span></span> <span data-ttu-id="6c04e-154">因為大部分的控制站繼承自[控制器](/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，您只需要使用`View`helper 方法以傳回`ViewResult`:</span><span class="sxs-lookup"><span data-stu-id="6c04e-154">Since most controllers inherit from [Controller](/aspnet/core/api/microsoft.aspnetcore.mvc.controller), you simply use the `View` helper method to return the `ViewResult`:</span></span>
 
-<span data-ttu-id="cc043-135">[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]</span><span class="sxs-lookup"><span data-stu-id="cc043-135">[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]</span></span>
+<span data-ttu-id="6c04e-155">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="6c04e-155">*HomeController.cs*</span></span>
 
-<span data-ttu-id="cc043-136">`View` Helper 方法擁有數個多載來傳回檢視表更輕鬆地進行應用程式開發人員。</span><span class="sxs-lookup"><span data-stu-id="cc043-136">The `View` helper method has several overloads to make returning views easier for app developers.</span></span> <span data-ttu-id="cc043-137">您可以選擇性地指定要傳回的檢視，以及要傳遞至檢視的模型物件。</span><span class="sxs-lookup"><span data-stu-id="cc043-137">You can optionally specify a view to return, as well as a model object to pass to the view.</span></span>
+[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
-<span data-ttu-id="cc043-138">這個動作會傳回*About.cshtml*呈現檢視上面所示：</span><span class="sxs-lookup"><span data-stu-id="cc043-138">When this action returns, the *About.cshtml* view shown above is rendered:</span></span>
+<span data-ttu-id="6c04e-156">這個動作會傳回*About.cshtml*的最後一節中所顯示的檢視會轉譯為下列網頁：</span><span class="sxs-lookup"><span data-stu-id="6c04e-156">When this action returns, the *About.cshtml* view shown in the last section is rendered as the following webpage:</span></span>
 
-![有關頁面](overview/_static/about-page.png)
+![關於在 microsoft Edge 瀏覽器中呈現的頁面](overview/_static/about-page.png)
 
-### <a name="view-discovery"></a><span data-ttu-id="cc043-140">檢視探索</span><span class="sxs-lookup"><span data-stu-id="cc043-140">View Discovery</span></span>
+<span data-ttu-id="6c04e-158">`View` Helper 方法擁有數個多載。</span><span class="sxs-lookup"><span data-stu-id="6c04e-158">The `View` helper method has several overloads.</span></span> <span data-ttu-id="6c04e-159">您可以選擇性地指定：</span><span class="sxs-lookup"><span data-stu-id="6c04e-159">You can optionally specify:</span></span>
 
-<span data-ttu-id="cc043-141">當動作傳回的檢視時，這個程序稱為*檢視探索*進行。</span><span class="sxs-lookup"><span data-stu-id="cc043-141">When an action returns a view, a process called *view discovery* takes place.</span></span> <span data-ttu-id="cc043-142">此程序會決定將使用的檢視檔案。</span><span class="sxs-lookup"><span data-stu-id="cc043-142">This process determines which view file will be used.</span></span> <span data-ttu-id="cc043-143">除非指定了特定的檢視檔案，則執行階段會尋找控制器特定檢視第一次，則會尋找相符的檢視名稱中*共用*資料夾。</span><span class="sxs-lookup"><span data-stu-id="cc043-143">Unless a specific view file is specified, the runtime looks for a controller-specific view first, then looks for matching view name in the *Shared* folder.</span></span>
+* <span data-ttu-id="6c04e-160">要傳回明確的檢視：</span><span class="sxs-lookup"><span data-stu-id="6c04e-160">An explicit view to return:</span></span>
 
-<span data-ttu-id="cc043-144">當動作傳回`View`方法，就像這樣`return View();`，動作名稱當做檢視表名稱。</span><span class="sxs-lookup"><span data-stu-id="cc043-144">When an action returns the `View` method, like so `return View();`, the action name is used as the view name.</span></span> <span data-ttu-id="cc043-145">例如，如果這從名為"Index"的動作方法呼叫，將相當於 「 索引 」 的檢視名稱傳入。</span><span class="sxs-lookup"><span data-stu-id="cc043-145">For example, if this were called from an action method named "Index", it would be equivalent to passing in a view name of "Index".</span></span> <span data-ttu-id="cc043-146">檢視名稱可以明確地傳遞給方法 (`return View("SomeView");`)。</span><span class="sxs-lookup"><span data-stu-id="cc043-146">A view name can be explicitly passed to the method (`return View("SomeView");`).</span></span> <span data-ttu-id="cc043-147">在這兩種情況下，檢視探索會搜尋相符的檢視檔案中：</span><span class="sxs-lookup"><span data-stu-id="cc043-147">In both of these cases, view discovery searches for a matching view file in:</span></span>
+  ```csharp
+  return View("Orders");
+  ```
+* <span data-ttu-id="6c04e-161">A[模型](xref:mvc/models/model-binding)来傳遞至檢視：</span><span class="sxs-lookup"><span data-stu-id="6c04e-161">A [model](xref:mvc/models/model-binding) to pass to the the view:</span></span>
 
-   1. <span data-ttu-id="cc043-148">檢視 /\<ControllerName > /\<ViewName >.cshtml</span><span class="sxs-lookup"><span data-stu-id="cc043-148">Views/\<ControllerName>/\<ViewName>.cshtml</span></span>
+  ```csharp
+  return View(Orders);
+  ```
+* <span data-ttu-id="6c04e-162">檢視和模型：</span><span class="sxs-lookup"><span data-stu-id="6c04e-162">Both a view and a model:</span></span>
 
-   2. <span data-ttu-id="cc043-149">檢視/共用/\<ViewName >.cshtml</span><span class="sxs-lookup"><span data-stu-id="cc043-149">Views/Shared/\<ViewName>.cshtml</span></span>
+  ```csharp
+  return View("Orders", Orders);
+  ```
 
->[!TIP]
-> <span data-ttu-id="cc043-150">我們建議您遵循的慣例只傳回`View()`從可能的因為它會造成更具彈性且更容易重構程式碼時的動作。</span><span class="sxs-lookup"><span data-stu-id="cc043-150">We recommend following the convention of simply returning `View()` from actions when possible, as it results in more flexible, easier to refactor code.</span></span>
+### <a name="view-discovery"></a><span data-ttu-id="6c04e-163">檢視探索</span><span class="sxs-lookup"><span data-stu-id="6c04e-163">View discovery</span></span>
 
-<span data-ttu-id="cc043-151">可以提供的檢視檔案的路徑，而不是檢視表名稱。</span><span class="sxs-lookup"><span data-stu-id="cc043-151">A view file path can be provided instead of a view name.</span></span> <span data-ttu-id="cc043-152">如果使用 啟動應用程式根目錄的絕對路徑 (選擇性地從"/"或"~ /")、 *.cshtml*延伸模組必須指定檔案路徑的一部分 (例如， `return View("Views/Home/About.cshtml");`)。</span><span class="sxs-lookup"><span data-stu-id="cc043-152">If using an absolute path starting at the application root (optionally starting with "/" or "~/"), the *.cshtml* extension must be specified as part of the file path (for example, `return View("Views/Home/About.cshtml");`).</span></span> <span data-ttu-id="cc043-153">或者，您可以使用相對路徑內的控制站的特定目錄從*檢視*目錄中，指定在不同的目錄檢視 (例如，`return View("../Manage/Index");`內`HomeController`)。</span><span class="sxs-lookup"><span data-stu-id="cc043-153">Alternatively, you can use a relative path from the controller-specific directory within the *Views* directory to specify views in different directories (for example, `return View("../Manage/Index");` inside the `HomeController`).</span></span> <span data-ttu-id="cc043-154">同樣地，您便可以周遊的目前的控制器特定目錄 (例如， `return View("./About");`)。</span><span class="sxs-lookup"><span data-stu-id="cc043-154">Similarly, you can traverse the current controller-specific directory (for example, `return View("./About");`).</span></span> <span data-ttu-id="cc043-155">請注意，不要使用相對路徑*.cshtml*延伸模組。</span><span class="sxs-lookup"><span data-stu-id="cc043-155">Note that relative paths don't use the *.cshtml* extension.</span></span> <span data-ttu-id="cc043-156">如先前所述，請遵循組織檢視，以反映在控制器、 動作和可維護性和避免困擾的檢視之間的關聯性的檔案結構的最佳做法。</span><span class="sxs-lookup"><span data-stu-id="cc043-156">As previously mentioned, follow the best practice of organizing the file structure for views to reflect the relationships among controllers, actions, and views for maintainability and clarity.</span></span>
+<span data-ttu-id="6c04e-164">當動作傳回的檢視時，這個程序稱為*檢視探索*進行。</span><span class="sxs-lookup"><span data-stu-id="6c04e-164">When an action returns a view, a process called *view discovery* takes place.</span></span> <span data-ttu-id="6c04e-165">此程序決定根據檢視名稱使用的檢視檔案。</span><span class="sxs-lookup"><span data-stu-id="6c04e-165">This process determines which view file is used based on the view name.</span></span> 
 
-> [!NOTE]
-> <span data-ttu-id="cc043-157">[部分檢視](partial.md)和[檢視元件](view-components.md)使用類似 （但不是完全相同） 的探索機制。</span><span class="sxs-lookup"><span data-stu-id="cc043-157">[Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.</span></span>
+<span data-ttu-id="6c04e-166">當動作傳回`View`方法 (`return View();`) 並不指定了檢視，動作名稱當做檢視表名稱。</span><span class="sxs-lookup"><span data-stu-id="6c04e-166">When an action returns the `View` method (`return View();`) and a view isn't specified, the action name is used as the view name.</span></span> <span data-ttu-id="6c04e-167">例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="6c04e-167">For example, the *About* `ActionResult` method name of the controller is used to search for a view file named *About.cshtml*.</span></span> <span data-ttu-id="6c04e-168">首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-168">First, the runtime looks in the *Views/[ControllerName]* folder for the view.</span></span> <span data-ttu-id="6c04e-169">如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-169">If it doesn't find a matching view there, it searches the *Shared* folder for the view.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="cc043-158">您可以自訂有關檢視的所在位置的應用程式中使用自訂的預設慣例`IViewLocationExpander`。</span><span class="sxs-lookup"><span data-stu-id="cc043-158">You can customize the default convention regarding where views are located within the app by using a custom `IViewLocationExpander`.</span></span>
+<span data-ttu-id="6c04e-170">如果您以隱含方式傳回，它並不重要`ViewResult`與`return View();`或明確地將傳遞至檢視表名稱`View`方法`return View("<ViewName>");`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-170">It doesn't matter if you implicitly return the `ViewResult` with `return View();` or explicitly pass the view name to the `View` method with `return View("<ViewName>");`.</span></span> <span data-ttu-id="6c04e-171">在這兩種情況下，檢視探索會搜尋相符的檢視檔案，依此順序：</span><span class="sxs-lookup"><span data-stu-id="6c04e-171">In both cases, view discovery searches for a matching view file in this order:</span></span>
 
->[!TIP]
-> <span data-ttu-id="cc043-159">可能會區分大小寫的基礎檔案系統根據檢視名稱。</span><span class="sxs-lookup"><span data-stu-id="cc043-159">View names may be case sensitive depending on the underlying file system.</span></span> <span data-ttu-id="cc043-160">作業系統之間的相容性，永遠符合控制器和動作名稱與相關聯的檢視資料夾和檔案名稱之間的大小寫。</span><span class="sxs-lookup"><span data-stu-id="cc043-160">For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.</span></span>
+   1. <span data-ttu-id="6c04e-172">*檢視 /\[ControllerName]\[ViewName].cshtml*</span><span class="sxs-lookup"><span data-stu-id="6c04e-172">*Views/\[ControllerName]\[ViewName].cshtml*</span></span>
+   1. <span data-ttu-id="6c04e-173">*檢視/共用/\[ViewName].cshtml*</span><span class="sxs-lookup"><span data-stu-id="6c04e-173">*Views/Shared/\[ViewName].cshtml*</span></span>
 
-## <a name="passing-data-to-views"></a><span data-ttu-id="cc043-161">將資料傳遞至檢視</span><span class="sxs-lookup"><span data-stu-id="cc043-161">Passing Data to Views</span></span>
+<span data-ttu-id="6c04e-174">可以提供的檢視檔案的路徑，而不是檢視表名稱。</span><span class="sxs-lookup"><span data-stu-id="6c04e-174">A view file path can be provided instead of a view name.</span></span> <span data-ttu-id="6c04e-175">如果使用 啟動應用程式根目錄的絕對路徑 (選擇性地從"/"或"~ /")，則*.cshtml*必須指定延伸模組：</span><span class="sxs-lookup"><span data-stu-id="6c04e-175">If using an absolute path starting at the app root (optionally starting with "/" or "~/"), the *.cshtml* extension must be specified:</span></span>
 
-<span data-ttu-id="cc043-162">您可以將資料傳遞至檢視使用數種機制。</span><span class="sxs-lookup"><span data-stu-id="cc043-162">You can pass data to views using several mechanisms.</span></span> <span data-ttu-id="cc043-163">最健全的作法是指定*模型*檢視中的類型 (通常稱為*viewmodel*，若要在區別商務網域模型類型)，然後將此類型的執行個體傳遞至檢視從動作。</span><span class="sxs-lookup"><span data-stu-id="cc043-163">The most robust approach is to specify a *model* type in the view (commonly referred to as a *viewmodel*, to distinguish it from business domain model types), and then pass an instance of this type to the view from the action.</span></span> <span data-ttu-id="cc043-164">我們建議您將資料傳遞至檢視使用模型或檢視模型。</span><span class="sxs-lookup"><span data-stu-id="cc043-164">We recommend you use a model or view model to pass data to a view.</span></span> <span data-ttu-id="cc043-165">這可讓檢視以充分利用強式型別檢查。</span><span class="sxs-lookup"><span data-stu-id="cc043-165">This allows the view to take advantage of strong type checking.</span></span> <span data-ttu-id="cc043-166">您可以指定的模型檢視，使用`@model`指示詞：</span><span class="sxs-lookup"><span data-stu-id="cc043-166">You can specify a model for a view using the `@model` directive:</span></span>
+```csharp
+return View("Views/Home/About.cshtml");
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
+<span data-ttu-id="6c04e-176">您也可以使用相對路徑來指定不同的目錄，而檢視*.cshtml*延伸模組。</span><span class="sxs-lookup"><span data-stu-id="6c04e-176">You can also use a relative path to specify views in different directories without the *.cshtml* extension.</span></span> <span data-ttu-id="6c04e-177">內部`HomeController`，您可以傳回*索引*檢視您*管理*檢視具有相對路徑：</span><span class="sxs-lookup"><span data-stu-id="6c04e-177">Inside the `HomeController`, you can return the *Index* view of your *Manage* views with a relative path:</span></span>
 
-```html
+```csharp
+return View("../Manage/Index");
+```
+
+<span data-ttu-id="6c04e-178">同樣地，您可以指出與目前的控制站的特定目錄 」。 /"前置詞：</span><span class="sxs-lookup"><span data-stu-id="6c04e-178">Similarly, you can indicate the current controller-specific directory with the "./" prefix:</span></span>
+
+```csharp
+return View("./About");
+```
+
+<span data-ttu-id="6c04e-179">[部分檢視](xref:mvc/views/partial)和[檢視元件](xref:mvc/views/view-components)使用類似 （但不是完全相同） 的探索機制。</span><span class="sxs-lookup"><span data-stu-id="6c04e-179">[Partial views](xref:mvc/views/partial) and [view components](xref:mvc/views/view-components) use similar (but not identical) discovery mechanisms.</span></span>
+
+<span data-ttu-id="6c04e-180">您可以自訂如何檢視位於應用程式中使用自訂的預設慣例[IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-180">You can customize the default convention for how views are located within the app by using a custom [IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander).</span></span>
+
+<span data-ttu-id="6c04e-181">檢視探索依賴檔案名稱來尋找檢視的檔案。</span><span class="sxs-lookup"><span data-stu-id="6c04e-181">View discovery relies on finding view files by file name.</span></span> <span data-ttu-id="6c04e-182">如果基礎檔案系統區分大小寫，檢視名稱會可能區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="6c04e-182">If the underlying file system is case sensitive, view names are probably case sensitive.</span></span> <span data-ttu-id="6c04e-183">作業系統之間的相容性，請控制器和動作名稱與相關聯的檢視資料夾和檔案名稱之間的大小寫須相符。</span><span class="sxs-lookup"><span data-stu-id="6c04e-183">For compatibility across operating systems, match case between controller and action names and associated view folders and file names.</span></span> <span data-ttu-id="6c04e-184">如果您遇到的錯誤，使用區分大小寫的檔案系統時找不到檢視檔案，確認其大小寫符合要求的檢視檔案和實際的檢視檔案名稱之間。</span><span class="sxs-lookup"><span data-stu-id="6c04e-184">If you encounter an error that a view file can't be found while working with a case-sensitive file system, confirm that the casing matches between the requested view file and the actual view file name.</span></span>
+
+<span data-ttu-id="6c04e-185">請遵循最佳作法來組織您的檢視，以反映控制器、 動作和可維護性和避免困擾的檢視之間的關聯性的檔案結構。</span><span class="sxs-lookup"><span data-stu-id="6c04e-185">Follow the best practice of organizing the file structure for your views to reflect the relationships among controllers, actions, and views for maintainability and clarity.</span></span>
+
+## <a name="passing-data-to-views"></a><span data-ttu-id="6c04e-186">將資料傳遞至檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-186">Passing data to views</span></span>
+
+<span data-ttu-id="6c04e-187">您可以將資料傳遞至使用數種方法的檢視。</span><span class="sxs-lookup"><span data-stu-id="6c04e-187">You can pass data to views using several approaches.</span></span> <span data-ttu-id="6c04e-188">最健全的作法是指定[模型](xref:mvc/models/model-binding)檢視中的型別。</span><span class="sxs-lookup"><span data-stu-id="6c04e-188">The most robust approach is to specify a [model](xref:mvc/models/model-binding) type in the view.</span></span> <span data-ttu-id="6c04e-189">這種模型通常稱為*viewmodel*。</span><span class="sxs-lookup"><span data-stu-id="6c04e-189">This model is commonly referred to as a *viewmodel*.</span></span> <span data-ttu-id="6c04e-190">您傳遞至檢視的 viewmodel 類型的執行個體的動作。</span><span class="sxs-lookup"><span data-stu-id="6c04e-190">You pass an instance of the viewmodel type to the view from the action.</span></span>
+
+<span data-ttu-id="6c04e-191">將資料傳遞至檢視中使用 viewmodel 可讓檢視來善用*強式*類型檢查。</span><span class="sxs-lookup"><span data-stu-id="6c04e-191">Using a viewmodel to pass data to a view allows the view to take advantage of *strong* type checking.</span></span> <span data-ttu-id="6c04e-192">*強式類型*(或*強型別*) 表示每個變數和常數有明確定義的型別 (例如， `string`， `int`，或`DateTime`)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-192">*Strong typing* (or *strongly-typed*) means that every variable and constant has an explicitly defined type (for example, `string`, `int`, or `DateTime`).</span></span> <span data-ttu-id="6c04e-193">在編譯時期檢查有效性的檢視中使用的類型。</span><span class="sxs-lookup"><span data-stu-id="6c04e-193">The validity of types used in a view is checked at compile time.</span></span>
+
+<span data-ttu-id="6c04e-194">工具，例如[Visual Studio](https://www.visualstudio.com/vs/)或[Visual Studio Code](https://code.visualstudio.com/)，也可以列出成員 （屬性的模型） 時，您要將其加入的檢視，可協助您撰寫較少的錯誤更快的程式碼。</span><span class="sxs-lookup"><span data-stu-id="6c04e-194">Tooling, such as [Visual Studio](https://www.visualstudio.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/), can also list members (properties of a model) while you're adding them to a view, which helps you write code faster with fewer errors.</span></span> <span data-ttu-id="6c04e-195">這項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 工具。</span><span class="sxs-lookup"><span data-stu-id="6c04e-195">This feature is called [IntelliSense](/visualstudio/ide/using-intellisense) in Microsoft tools.</span></span>
+
+<span data-ttu-id="6c04e-196">指定模型使用`@model`指示詞。</span><span class="sxs-lookup"><span data-stu-id="6c04e-196">Specify a model using the `@model` directive.</span></span> <span data-ttu-id="6c04e-197">使用模型與`@Model`:</span><span class="sxs-lookup"><span data-stu-id="6c04e-197">Use the model with `@Model`:</span></span>
+
+```cshtml
 @model WebApplication1.ViewModels.Address
-   <h2>Contact</h2>
-   <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
 
-<span data-ttu-id="cc043-167">一旦模型已指定的檢視，傳送至檢視執行個體可以存取在強類型的方式，使用`@Model`如上所示。</span><span class="sxs-lookup"><span data-stu-id="cc043-167">Once a model has been specified for a view, the instance sent to the view can be accessed in a strongly-typed manner using `@Model` as shown above.</span></span> <span data-ttu-id="cc043-168">若要提供檢視的模型類型的執行個體，控制器會將它做為參數：</span><span class="sxs-lookup"><span data-stu-id="cc043-168">To provide an instance of the model type to the view, the controller passes it as a parameter:</span></span>
+<h2>Contact</h2>
+<address>
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+<span data-ttu-id="6c04e-198">若要提供模型給檢視，控制器會將它做為參數：</span><span class="sxs-lookup"><span data-stu-id="6c04e-198">To provide the model to the view, the controller passes it as a parameter:</span></span>
 
 ```csharp
 public IActionResult Contact()
-   {
-       ViewData["Message"] = "Your contact page.";
+{
+    ViewData["Message"] = "Your contact page.";
 
-       var viewModel = new Address()
-       {
-           Name = "Microsoft",
-           Street = "One Microsoft Way",
-           City = "Redmond",
-           State = "WA",
-           PostalCode = "98052-6399"
-       };
-       return View(viewModel);
-   }
-   ```
+    var viewModel = new Address()
+    {
+        Name = "Microsoft",
+        Street = "One Microsoft Way",
+        City = "Redmond",
+        State = "WA",
+        PostalCode = "98052-6399"
+    };
 
-<span data-ttu-id="cc043-169">沒有任何限制可供檢視，以做為模型的型別。</span><span class="sxs-lookup"><span data-stu-id="cc043-169">There are no restrictions on the types that can be provided to a view as a model.</span></span> <span data-ttu-id="cc043-170">我們建議您傳遞純舊 CLR 物件 (POCO) 檢視模型少甚至沒有行為，以便可以其他地方封裝商務邏輯，在應用程式。</span><span class="sxs-lookup"><span data-stu-id="cc043-170">We recommend passing Plain Old CLR Object (POCO) view models with little or no behavior, so that business logic can be encapsulated elsewhere in the app.</span></span> <span data-ttu-id="cc043-171">舉例來說，這種方法是*位址*viewmodel 上述範例中使用：</span><span class="sxs-lookup"><span data-stu-id="cc043-171">An example of this approach is the *Address* viewmodel used in the example above:</span></span>
+    return View(viewModel);
+}
+```
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
+<span data-ttu-id="6c04e-199">沒有任何限制，您可以提供給檢視的模型型別。</span><span class="sxs-lookup"><span data-stu-id="6c04e-199">There are no restrictions on the model types that you can provide to a view.</span></span> <span data-ttu-id="6c04e-200">我們建議您使用**P**lain **O**ld **C**LR **O**物件 (POCO) viewmodels 少量或沒有定義的行為 （方法）。</span><span class="sxs-lookup"><span data-stu-id="6c04e-200">We recommend using **P**lain **O**ld **C**LR **O**bject (POCO) viewmodels with little or no behavior (methods) defined.</span></span> <span data-ttu-id="6c04e-201">通常，viewmodel 類別可能會儲存在*模型*資料夾或個別*ViewModels*根目錄中的應用程式的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6c04e-201">Usually, viewmodel classes are either stored in the *Models* folder or a separate *ViewModels* folder at the root of the app.</span></span> <span data-ttu-id="6c04e-202">*位址*viewmodel 使用上述範例中是儲存在名為 POCO viewmodel *Address.cs*:</span><span class="sxs-lookup"><span data-stu-id="6c04e-202">The *Address* viewmodel used in the example above is a POCO viewmodel stored in a file named *Address.cs*:</span></span>
 
 ```csharp
 namespace WebApplication1.ViewModels
-   {
-       public class Address
-       {
-           public string Name { get; set; }
-           public string Street { get; set; }
-           public string City { get; set; }
-           public string State { get; set; }
-           public string PostalCode { get; set; }
-       }
-   }
-   ```
+{
+    public class Address
+    {
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+    }
+}
+```
 
 > [!NOTE]
-> <span data-ttu-id="cc043-172">不會讓您為您的商務模型類型和顯示的模型型別使用相同的類別。</span><span class="sxs-lookup"><span data-stu-id="cc043-172">Nothing prevents you from using the same classes as your business model types and your display model types.</span></span> <span data-ttu-id="cc043-173">不過，使它們保持在個別可讓您檢視，以獨立會因您的網域或持續性的模型，並提供一些安全性優點 (針對使用者會將傳送至應用程式使用的模型[模型繫結](../models/model-binding.md))。</span><span class="sxs-lookup"><span data-stu-id="cc043-173">However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).</span></span>
+> <span data-ttu-id="6c04e-203">會造成任何問題 viewmodel 類型和您的商務模型類型使用相同的類別。</span><span class="sxs-lookup"><span data-stu-id="6c04e-203">Nothing prevents you from using the same classes for both your viewmodel types and your business model types.</span></span> <span data-ttu-id="6c04e-204">不過，使用不同的模型可讓您的檢視而異獨立的商務邏輯和資料存取應用程式部分。</span><span class="sxs-lookup"><span data-stu-id="6c04e-204">However, using separate models allows your views to vary independently from the business logic and data access parts of your app.</span></span> <span data-ttu-id="6c04e-205">模型和 viewmodels 分離也提供安全性優點，當模型使用時[模型繫結](xref:mvc/models/model-binding)和[驗證](xref:mvc/models/validation)資料傳送到應用程式的使用者。</span><span class="sxs-lookup"><span data-stu-id="6c04e-205">Separation of models and viewmodels also offers security benefits when models use [model binding](xref:mvc/models/model-binding) and [validation](xref:mvc/models/validation) for data sent to the app by the user.</span></span>
 
-### <a name="loosely-typed-data"></a><span data-ttu-id="cc043-174">鬆散型別的資料</span><span class="sxs-lookup"><span data-stu-id="cc043-174">Loosely Typed Data</span></span>
+### <a name="weakly-typed-data-viewdata-and-viewbag"></a><span data-ttu-id="6c04e-206">弱型別資料 （別的 ViewData 和 ViewBag）</span><span class="sxs-lookup"><span data-stu-id="6c04e-206">Weakly-typed data (ViewData and ViewBag)</span></span>
 
-<span data-ttu-id="cc043-175">除了強型別檢視中，所有檢視都可以存取資料的鬆散型別集合。</span><span class="sxs-lookup"><span data-stu-id="cc043-175">In addition to strongly typed views, all views have access to a loosely typed collection of data.</span></span> <span data-ttu-id="cc043-176">這個相同的集合，可透過參考`ViewData`或`ViewBag`控制器和檢視上的屬性。</span><span class="sxs-lookup"><span data-stu-id="cc043-176">This same collection can be referenced through either the `ViewData` or `ViewBag` properties on controllers and views.</span></span> <span data-ttu-id="cc043-177">`ViewBag`屬性是周圍的包裝函式`ViewData`，該集合上提供的動態檢視。</span><span class="sxs-lookup"><span data-stu-id="cc043-177">The `ViewBag` property is a wrapper around `ViewData` that provides a dynamic view over that collection.</span></span> <span data-ttu-id="cc043-178">它不是個別的集合。</span><span class="sxs-lookup"><span data-stu-id="cc043-178">It is not a separate collection.</span></span>
+<span data-ttu-id="6c04e-207">除了強型別檢視表檢視可以存取*弱型別*(也稱為*鬆散型別*) 的資料集合。</span><span class="sxs-lookup"><span data-stu-id="6c04e-207">In addition to strongly-typed views, views have access to a *weakly-typed* (also called *loosely-typed*) collection of data.</span></span> <span data-ttu-id="6c04e-208">不同於強式類型，*弱式類型*(或*鬆散類型*) 表示您沒有明確宣告的您所使用的資料類型。</span><span class="sxs-lookup"><span data-stu-id="6c04e-208">Unlike strong types, *weak types* (or *loose types*) means that you don't explicitly declare the type of data you're using.</span></span> <span data-ttu-id="6c04e-209">您可以使用弱式型別資料的集合，用來傳遞資料移轉入和控制器和檢視的資訊量很少。</span><span class="sxs-lookup"><span data-stu-id="6c04e-209">You can use the collection of weakly-typed data for passing small amounts of data in and out of controllers and views.</span></span>
 
-<span data-ttu-id="cc043-179">`ViewData`一個字典物件存取透過`string`索引鍵。</span><span class="sxs-lookup"><span data-stu-id="cc043-179">`ViewData` is a dictionary object accessed through `string` keys.</span></span> <span data-ttu-id="cc043-180">您可以儲存和擷取中的物件，必須先將它們轉換成特定類型，當您擷取它們。</span><span class="sxs-lookup"><span data-stu-id="cc043-180">You can store and retrieve objects in it, and you'll need to cast them to a specific type when you extract them.</span></span> <span data-ttu-id="cc043-181">您可以使用`ViewData`至控制器中的資料傳遞至檢視，以及檢視 （和部分檢視和配置） 內。</span><span class="sxs-lookup"><span data-stu-id="cc043-181">You can use `ViewData` to pass data from a controller to views, as well as within views (and partial views and layouts).</span></span> <span data-ttu-id="cc043-182">字串資料可以儲存並直接使用，而不需要轉型。</span><span class="sxs-lookup"><span data-stu-id="cc043-182">String data can be stored and used directly, without the need for a cast.</span></span>
+| <span data-ttu-id="6c04e-210">傳遞之間的資料...</span><span class="sxs-lookup"><span data-stu-id="6c04e-210">Passing data between a ...</span></span>                        | <span data-ttu-id="6c04e-211">範例</span><span class="sxs-lookup"><span data-stu-id="6c04e-211">Example</span></span>                                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ |
+| <span data-ttu-id="6c04e-212">在控制器與檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-212">Controller and a view</span></span>                             | <span data-ttu-id="6c04e-213">填入下拉式清單的資料。</span><span class="sxs-lookup"><span data-stu-id="6c04e-213">Populating a dropdown list with data.</span></span>                                          |
+| <span data-ttu-id="6c04e-214">檢視和[版面配置檢視](xref:mvc/views/layout)</span><span class="sxs-lookup"><span data-stu-id="6c04e-214">View and a [layout view](xref:mvc/views/layout)</span></span>   | <span data-ttu-id="6c04e-215">設定**\<標題 >**版面配置檢視的檢視檔案中的項目內容。</span><span class="sxs-lookup"><span data-stu-id="6c04e-215">Setting the **\<title>** element content in the layout view from a view file.</span></span>  |
+| <span data-ttu-id="6c04e-216">[部分檢視](xref:mvc/views/partial)和檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-216">[Partial view](xref:mvc/views/partial) and a view</span></span> | <span data-ttu-id="6c04e-217">一種 widget，會根據使用者要求網頁顯示資料。</span><span class="sxs-lookup"><span data-stu-id="6c04e-217">A widget that displays data based on the webpage that the user requested.</span></span>      |
 
-<span data-ttu-id="cc043-183">設定某些值`ViewData`動作：</span><span class="sxs-lookup"><span data-stu-id="cc043-183">Set some values for `ViewData` in an action:</span></span>
+<span data-ttu-id="6c04e-218">此集合可透過參考`ViewData`或`ViewBag`控制器和檢視上的屬性。</span><span class="sxs-lookup"><span data-stu-id="6c04e-218">This collection can be referenced through either the `ViewData` or `ViewBag` properties on controllers and views.</span></span> <span data-ttu-id="6c04e-219">`ViewData`屬性是弱型別物件的字典。</span><span class="sxs-lookup"><span data-stu-id="6c04e-219">The `ViewData` property is a dictionary of weakly-typed objects.</span></span> <span data-ttu-id="6c04e-220">`ViewBag`屬性是周圍的包裝函式`ViewData`基礎提供動態內容`ViewData`集合。</span><span class="sxs-lookup"><span data-stu-id="6c04e-220">The `ViewBag` property is a wrapper around `ViewData` that provides dynamic properties for the underlying `ViewData` collection.</span></span>
+
+<span data-ttu-id="6c04e-221">`ViewData`和`ViewBag`以動態方式在執行階段解析。</span><span class="sxs-lookup"><span data-stu-id="6c04e-221">`ViewData` and `ViewBag` are dynamically resolved at runtime.</span></span> <span data-ttu-id="6c04e-222">由於它們不提供編譯時間類型檢查，因此兩者都是通常更容易發生錯誤比使用 viewmodel。</span><span class="sxs-lookup"><span data-stu-id="6c04e-222">Since they don't offer compile-time type checking, both are generally more error-prone than using a viewmodel.</span></span> <span data-ttu-id="6c04e-223">基於這個原因，有些開發人員想要使用最少或從不`ViewData`和`ViewBag`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-223">For that reason, some developers prefer to minimally or never use `ViewData` and `ViewBag`.</span></span>
+
+<span data-ttu-id="6c04e-224">**別的 viewData**</span><span class="sxs-lookup"><span data-stu-id="6c04e-224">**ViewData**</span></span>
+
+<span data-ttu-id="6c04e-225">`ViewData`是[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)物件透過存取`string`索引鍵。</span><span class="sxs-lookup"><span data-stu-id="6c04e-225">`ViewData` is a [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) object accessed through `string` keys.</span></span> <span data-ttu-id="6c04e-226">字串資料可以儲存和使用直接，而不需要轉型，但您必須轉換為其他`ViewData`物件特定類型的值，當您擷取它們。</span><span class="sxs-lookup"><span data-stu-id="6c04e-226">String data can be stored and used directly without the need for a cast, but you must cast other `ViewData` object values to specific types when you extract them.</span></span> <span data-ttu-id="6c04e-227">您可以使用`ViewData`來控制站中的資料傳遞至檢視和檢視，包括內[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-227">You can use `ViewData` to pass data from controllers to views and within views, including [partial views](xref:mvc/views/partial) and [layouts](xref:mvc/views/layout).</span></span>
+
+<span data-ttu-id="6c04e-228">以下是設定問候語和位址使用的值範例`ViewData`動作：</span><span class="sxs-lookup"><span data-stu-id="6c04e-228">The following is an example that sets values for a greeting and an address using `ViewData` in an action:</span></span>
 
 ```csharp
 public IActionResult SomeAction()
-   {
-       ViewData["Greeting"] = "Hello";
-       ViewData["Address"]  = new Address()
-       {
-           Name = "Steve",
-           Street = "123 Main St",
-           City = "Hudson",
-           State = "OH",
-           PostalCode = "44236"
-       };
+{
+    ViewData["Greeting"] = "Hello";
+    ViewData["Address"]  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
 
-       return View();
-   }
-   ```
+    return View();
+}
+```
 
-<span data-ttu-id="cc043-184">使用檢視中的資料：</span><span class="sxs-lookup"><span data-stu-id="cc043-184">Work with the data in a view:</span></span>
+<span data-ttu-id="6c04e-229">使用檢視中的資料：</span><span class="sxs-lookup"><span data-stu-id="6c04e-229">Work with the data in a view:</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3, 6]}} -->
-
-```html
+```cshtml
 @{
-       // Requires cast
-       var address = ViewData["Address"] as Address;
-   }
+    // Since Address isn't a string, it requires a cast.
+    var address = ViewData["Address"] as Address;
+}
 
-   @ViewData["Greeting"] World!
+@ViewData["Greeting"] World!
 
-   <address>
-       @address.Name<br />
-       @address.Street<br />
-       @address.City, @address.State @address.PostalCode
-   </address>
-   ```
+<address>
+    @address.Name<br>
+    @address.Street<br>
+    @address.City, @address.State @address.PostalCode
+</address>
+```
 
-<span data-ttu-id="cc043-185">`ViewBag`物件提供儲存在物件的動態存取`ViewData`。</span><span class="sxs-lookup"><span data-stu-id="cc043-185">The `ViewBag` objects provides dynamic access to the objects stored in `ViewData`.</span></span> <span data-ttu-id="cc043-186">這可以是更方便使用，因為它不需要進行轉型。</span><span class="sxs-lookup"><span data-stu-id="cc043-186">This can be more convenient to work with, since it doesn't require casting.</span></span> <span data-ttu-id="cc043-187">上面使用的相同範例`ViewBag`而不是強型別`address`檢視中的執行個體：</span><span class="sxs-lookup"><span data-stu-id="cc043-187">The same example as above, using `ViewBag` instead of a strongly typed `address` instance in the view:</span></span>
+<span data-ttu-id="6c04e-230">**ViewBag**</span><span class="sxs-lookup"><span data-stu-id="6c04e-230">**ViewBag**</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 4, 5, 6]}} -->
+<span data-ttu-id="6c04e-231">`ViewBag`是[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)物件，提供儲存在物件的動態存取`ViewData`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-231">`ViewBag` is a [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) object that provides dynamic access to the objects stored in `ViewData`.</span></span> <span data-ttu-id="6c04e-232">`ViewBag`可能更方便使用，因為它不需要進行轉型。</span><span class="sxs-lookup"><span data-stu-id="6c04e-232">`ViewBag` can be more convenient to work with, since it doesn't require casting.</span></span> <span data-ttu-id="6c04e-233">下列範例示範如何使用`ViewBag`與使用相同的結果與`ViewData`上方：</span><span class="sxs-lookup"><span data-stu-id="6c04e-233">The following example shows how to use `ViewBag` with the same result as using `ViewData` above:</span></span>
 
-```html
+```csharp
+public IActionResult SomeAction()
+{
+    ViewBag.Greeting = "Hello";
+    ViewBag.Address  = new Address()
+    {
+        Name = "Steve",
+        Street = "123 Main St",
+        City = "Hudson",
+        State = "OH",
+        PostalCode = "44236"
+    };
+
+    return View();
+}
+```
+
+```cshtml
 @ViewBag.Greeting World!
 
-   <address>
-       @ViewBag.Address.Name<br />
-       @ViewBag.Address.Street<br />
-       @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
-   </address>
-   ```
+<address>
+    @ViewBag.Address.Name<br>
+    @ViewBag.Address.Street<br>
+    @ViewBag.Address.City, @ViewBag.Address.State @ViewBag.Address.PostalCode
+</address>
+```
 
-> [!NOTE]
-> <span data-ttu-id="cc043-188">因為都會指向相同的基礎`ViewData`集合，您可以混合和比對之間`ViewData`和`ViewBag`讀取和寫入的值，如果方便時。</span><span class="sxs-lookup"><span data-stu-id="cc043-188">Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.</span></span>
+<span data-ttu-id="6c04e-234">**同時使用別的 ViewData ViewBag**</span><span class="sxs-lookup"><span data-stu-id="6c04e-234">**Using ViewData and ViewBag simultaneously**</span></span>
 
-### <a name="dynamic-views"></a><span data-ttu-id="cc043-189">動態檢視</span><span class="sxs-lookup"><span data-stu-id="cc043-189">Dynamic Views</span></span>
+<span data-ttu-id="6c04e-235">因為`ViewData`和`ViewBag`參考相同的基礎`ViewData`集合，您可以同時使用`ViewData`和`ViewBag`並混用，而且符合之間讀取和寫入的值時。</span><span class="sxs-lookup"><span data-stu-id="6c04e-235">Since `ViewData` and `ViewBag` refer to the same underlying `ViewData` collection, you can use both `ViewData` and `ViewBag` and mix and match between them when reading and writing values.</span></span>
 
-<span data-ttu-id="cc043-190">檢視未宣告的模型型別，而沒有傳遞給它們的模型執行個體可以動態地參考這個執行個體。</span><span class="sxs-lookup"><span data-stu-id="cc043-190">Views that do not declare a model type but have a model instance passed to them can reference this instance dynamically.</span></span> <span data-ttu-id="cc043-191">例如，如果執行個體`Address`傳遞至檢視，不會宣告`@model`，檢視就仍然可以動態示參考執行個體的屬性：</span><span class="sxs-lookup"><span data-stu-id="cc043-191">For example, if an instance of `Address` is passed to a view that doesn't declare an `@model`, the view would still be able to refer to the instance's properties dynamically as shown:</span></span>
+<span data-ttu-id="6c04e-236">設定標題使用`ViewBag`和描述使用`ViewData`頂端*About.cshtml*檢視：</span><span class="sxs-lookup"><span data-stu-id="6c04e-236">Set the title using `ViewBag` and the description using `ViewData` at the top of an *About.cshtml* view:</span></span>
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [13, 16, 17, 18]}} -->
+```cshtml
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Contoso";
+    ViewData["Description"] = "Let us tell you about Contoso's philosophy and mission.";
+}
+```
+
+<span data-ttu-id="6c04e-237">讀取內容，但是反向使用`ViewData`和`ViewBag`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-237">Read the properties but reverse the use of `ViewData` and `ViewBag`.</span></span> <span data-ttu-id="6c04e-238">在*_Layout.cshtml*檔案中，取得標題使用`ViewData`並取得描述使用`ViewBag`:</span><span class="sxs-lookup"><span data-stu-id="6c04e-238">In the *_Layout.cshtml* file, obtain the title using `ViewData` and obtain the description using `ViewBag`:</span></span>
+
+```cshtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewBag.Description">
+    ...
+```
+
+<span data-ttu-id="6c04e-239">請記住，字串不需要轉型為`ViewData`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-239">Remember that strings don't require a cast for `ViewData`.</span></span> <span data-ttu-id="6c04e-240">您可以使用`@ViewData["Title"]`而不用轉型。</span><span class="sxs-lookup"><span data-stu-id="6c04e-240">You can use `@ViewData["Title"]` without casting.</span></span>
+
+<span data-ttu-id="6c04e-241">使用這兩個`ViewData`和`ViewBag`在相同時間運作方式，為沒有混合和比對讀取和寫入的屬性。</span><span class="sxs-lookup"><span data-stu-id="6c04e-241">Using both `ViewData` and `ViewBag` at the same time works, as does mixing and matching reading and writing the properties.</span></span> <span data-ttu-id="6c04e-242">會呈現下列標記：</span><span class="sxs-lookup"><span data-stu-id="6c04e-242">The following markup is rendered:</span></span>
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Contoso</title>
+    <meta name="description" content="Let us tell you about Contoso's philosophy and mission.">
+    ...
+```
+
+<span data-ttu-id="6c04e-243">**ViewBag 別的 ViewData 之間差異的摘要**</span><span class="sxs-lookup"><span data-stu-id="6c04e-243">**Summary of the differences between ViewData and ViewBag**</span></span>
+
+* `ViewData`
+  * <span data-ttu-id="6c04e-244">衍生自[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性會很有用，例如`ContainsKey`， `Add`， `Remove`，和`Clear`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-244">Derives from [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), so it has dictionary properties that can be useful, such as `ContainsKey`, `Add`, `Remove`, and `Clear`.</span></span>
+  * <span data-ttu-id="6c04e-245">字典中的索引鍵是字串，因此允許空白字元。</span><span class="sxs-lookup"><span data-stu-id="6c04e-245">Keys in the dictionary are strings, so whitespace is allowed.</span></span> <span data-ttu-id="6c04e-246">範例：`ViewData["Some Key With Whitespace"]`</span><span class="sxs-lookup"><span data-stu-id="6c04e-246">Example: `ViewData["Some Key With Whitespace"]`</span></span>
+  * <span data-ttu-id="6c04e-247">任何型別以外`string`必須轉換中要使用的檢視`ViewData`。</span><span class="sxs-lookup"><span data-stu-id="6c04e-247">Any type other than a `string` must be cast in the view to use `ViewData`.</span></span>
+* `ViewBag`
+  * <span data-ttu-id="6c04e-248">衍生自[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)，因此它可以建立動態屬性使用點標記法 (`@ViewBag.SomeKey = <value or object>`)，而且不會執行轉換需要。</span><span class="sxs-lookup"><span data-stu-id="6c04e-248">Derives from [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata), so it allows the creation of dynamic properties using dot notation (`@ViewBag.SomeKey = <value or object>`), and no casting is required.</span></span> <span data-ttu-id="6c04e-249">語法`ViewBag`可更快速地將加入至控制器和檢視。</span><span class="sxs-lookup"><span data-stu-id="6c04e-249">The syntax of `ViewBag` makes it quicker to add to controllers and views.</span></span>
+  * <span data-ttu-id="6c04e-250">容易檢查 null 值。</span><span class="sxs-lookup"><span data-stu-id="6c04e-250">Simpler to check for null values.</span></span> <span data-ttu-id="6c04e-251">範例：`@ViewBag.Person?.Name`</span><span class="sxs-lookup"><span data-stu-id="6c04e-251">Example: `@ViewBag.Person?.Name`</span></span>
+
+<span data-ttu-id="6c04e-252">**何時使用別的 ViewData 或 ViewBag**</span><span class="sxs-lookup"><span data-stu-id="6c04e-252">**When to use ViewData or ViewBag**</span></span>
+
+<span data-ttu-id="6c04e-253">同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。</span><span class="sxs-lookup"><span data-stu-id="6c04e-253">Both `ViewData` and `ViewBag` are equally valid approaches for passing small amounts of data among controllers and views.</span></span> <span data-ttu-id="6c04e-254">選擇其中一個，以便使用 （或兩者） 最重要的是個人的喜好設定或您組織的喜好設定。</span><span class="sxs-lookup"><span data-stu-id="6c04e-254">The choice of which one to use (or both) comes down to personal preference or the preference of your organization.</span></span> <span data-ttu-id="6c04e-255">一般而言，開發人員會在使用其中一個一致的。</span><span class="sxs-lookup"><span data-stu-id="6c04e-255">Generally, developers are consistent in their use of one or the other.</span></span> <span data-ttu-id="6c04e-256">它們使用`ViewData`每個地方或使用`ViewBag`everywhere，但歡迎混用，並加以比對。</span><span class="sxs-lookup"><span data-stu-id="6c04e-256">They either use `ViewData` everywhere or use `ViewBag` everywhere, but you're welcome to mix and match them.</span></span> <span data-ttu-id="6c04e-257">因為兩者都是在執行階段以動態方式解決，因此容易導致執行階段錯誤，請小心它們使用。</span><span class="sxs-lookup"><span data-stu-id="6c04e-257">Since both are dynamically resolved at runtime and thus prone to causing runtime errors, use them carefully.</span></span> <span data-ttu-id="6c04e-258">有些開發人員完全予以避免。</span><span class="sxs-lookup"><span data-stu-id="6c04e-258">Some developers avoid them completely.</span></span>
+
+### <a name="dynamic-views"></a><span data-ttu-id="6c04e-259">動態檢視</span><span class="sxs-lookup"><span data-stu-id="6c04e-259">Dynamic views</span></span>
+
+<span data-ttu-id="6c04e-260">不要宣告模型的檢視類型使用`@model`但可以是傳遞給它們的模型執行個體 (例如， `return View(Address);`) 可以動態地參考執行個體的屬性：</span><span class="sxs-lookup"><span data-stu-id="6c04e-260">Views that don't declare a model type using `@model` but that have a model instance passed to them (for example, `return View(Address);`) can reference the instance's properties dynamically:</span></span>
+
+```cshtml
 <address>
-       @Model.Street<br />
-       @Model.City, @Model.State @Model.PostalCode<br />
-       <abbr title="Phone">P:</abbr>
-       425.555.0100
-   </address>
-   ```
+    @Model.Street<br>
+    @Model.City, @Model.State @Model.PostalCode<br>
+    <abbr title="Phone">P:</abbr> 425.555.0100
+</address>
+```
 
-<span data-ttu-id="cc043-192">此功能可提供一些彈性，但不是提供任何編譯保護或 IntelliSense。</span><span class="sxs-lookup"><span data-stu-id="cc043-192">This feature can offer some flexibility, but does not offer any compilation protection or IntelliSense.</span></span> <span data-ttu-id="cc043-193">如果屬性不存在，頁面將會在執行階段失敗。</span><span class="sxs-lookup"><span data-stu-id="cc043-193">If the property doesn't exist, the page will fail at runtime.</span></span>
+<span data-ttu-id="6c04e-261">此功能，可提供彈性，但並未提供編譯保護或 IntelliSense。</span><span class="sxs-lookup"><span data-stu-id="6c04e-261">This feature offers flexibility but doesn't offer compilation protection or IntelliSense.</span></span> <span data-ttu-id="6c04e-262">如果屬性不存在，網頁產生在執行階段失敗。</span><span class="sxs-lookup"><span data-stu-id="6c04e-262">If the property doesn't exist, webpage generation fails at runtime.</span></span>
 
-## <a name="more-view-features"></a><span data-ttu-id="cc043-194">詳細的檢視功能</span><span class="sxs-lookup"><span data-stu-id="cc043-194">More View Features</span></span>
+## <a name="more-view-features"></a><span data-ttu-id="6c04e-263">詳細的檢視功能</span><span class="sxs-lookup"><span data-stu-id="6c04e-263">More view features</span></span>
 
-<span data-ttu-id="cc043-195">[標記協助程式](tag-helpers/intro.md)讓您輕鬆將伺服器端行為加入至現有的 HTML 標記，避免需要使用自訂程式碼或檢視內的協助程式。</span><span class="sxs-lookup"><span data-stu-id="cc043-195">[Tag helpers](tag-helpers/intro.md) make it easy to add server-side behavior to existing HTML tags, avoiding the need to use custom code or helpers within views.</span></span> <span data-ttu-id="cc043-196">標記協助程式做為屬性套用至 HTML 項目，則會忽略不熟悉，允許編輯和各種不同的工具所呈現的檢視標記的編輯器。</span><span class="sxs-lookup"><span data-stu-id="cc043-196">Tag helpers are applied as attributes to HTML elements, which are ignored by editors that aren't familiar with them, allowing view markup to be edited and rendered in a variety of tools.</span></span> <span data-ttu-id="cc043-197">標記協助程式有許多用途，而且特別是可以[使用表單](working-with-forms.md)容易得多。</span><span class="sxs-lookup"><span data-stu-id="cc043-197">Tag helpers have many uses, and in particular can make [working with forms](working-with-forms.md) much easier.</span></span>
+<span data-ttu-id="6c04e-264">[標記協助程式](xref:mvc/views/tag-helpers/intro)讓您輕鬆將伺服器端行為加入至現有的 HTML 標記。</span><span class="sxs-lookup"><span data-stu-id="6c04e-264">[Tag Helpers](xref:mvc/views/tag-helpers/intro) make it easy to add server-side behavior to existing HTML tags.</span></span> <span data-ttu-id="6c04e-265">使用標記協助程式，可避免需要撰寫自訂程式碼或在檢視內的協助程式。</span><span class="sxs-lookup"><span data-stu-id="6c04e-265">Using Tag Helpers avoids the need to write custom code or helpers within your views.</span></span> <span data-ttu-id="6c04e-266">標記協助程式會做為屬性套用至 HTML 元素，而且會忽略由無法處理它們的編輯器。</span><span class="sxs-lookup"><span data-stu-id="6c04e-266">Tag helpers are applied as attributes to HTML elements and are ignored by editors that can't process them.</span></span> <span data-ttu-id="6c04e-267">這可讓您編輯並呈現檢視標記中的各種工具。</span><span class="sxs-lookup"><span data-stu-id="6c04e-267">This allows you to edit and render view markup in a variety of tools.</span></span>
 
-<span data-ttu-id="cc043-198">產生自訂的 HTML 標記可達到許多內建 HTML Helper 和更複雜的 UI 邏輯 （可能具備它自己的資料需求） 可以封裝在[檢視元件](view-components.md)。</span><span class="sxs-lookup"><span data-stu-id="cc043-198">Generating custom HTML markup can be achieved with many built-in HTML Helpers, and more complex UI logic (potentially with its own data requirements) can be encapsulated in [View Components](view-components.md).</span></span> <span data-ttu-id="cc043-199">檢視元件提供相同重要性分離，控制器和檢視提供，並可免除動作和檢視表的需要來處理常見的 UI 項目所使用的資料。</span><span class="sxs-lookup"><span data-stu-id="cc043-199">View components provide the same separation of concerns that controllers and views offer, and can eliminate the need for actions and views to deal with data used by common UI elements.</span></span>
+<span data-ttu-id="6c04e-268">許多內建的 HTML Helper 可達到產生自訂的 HTML 標記。</span><span class="sxs-lookup"><span data-stu-id="6c04e-268">Generating custom HTML markup can be achieved with many built-in HTML Helpers.</span></span> <span data-ttu-id="6c04e-269">更複雜的使用者介面邏輯可以處理由[檢視元件](xref:mvc/views/view-components)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-269">More complex user interface logic can be handled by [View Components](xref:mvc/views/view-components).</span></span> <span data-ttu-id="6c04e-270">檢視元件提供的相同 SoC 該控制站，並檢視所提供。</span><span class="sxs-lookup"><span data-stu-id="6c04e-270">View components provide the same SoC that controllers and views offer.</span></span> <span data-ttu-id="6c04e-271">它們不需要動作和一般使用者介面項目所使用的資料處理的檢視。</span><span class="sxs-lookup"><span data-stu-id="6c04e-271">They can eliminate the need for actions and views that deal with data used by common user interface elements.</span></span>
 
-<span data-ttu-id="cc043-200">如同許多其他 ASP.NET Core 方面，檢視支援[相依性插入](../../fundamentals/dependency-injection.md)，讓服務變成[插入檢視](dependency-injection.md)。</span><span class="sxs-lookup"><span data-stu-id="cc043-200">Like many other aspects of ASP.NET Core, views support [dependency injection](../../fundamentals/dependency-injection.md), allowing services to be [injected into views](dependency-injection.md).</span></span>
+<span data-ttu-id="6c04e-272">如同許多其他 ASP.NET Core 方面，檢視支援[相依性插入](xref:fundamentals/dependency-injection)，讓服務變成[插入檢視](xref:mvc/views/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="6c04e-272">Like many other aspects of ASP.NET Core, views support [dependency injection](xref:fundamentals/dependency-injection), allowing services to be [injected into views](xref:mvc/views/dependency-injection).</span></span>

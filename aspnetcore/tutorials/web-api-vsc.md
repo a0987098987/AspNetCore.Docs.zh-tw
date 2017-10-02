@@ -11,11 +11,11 @@ keywords: "ASP.NET Core, WebAPI, Web API, REST, Mac, Linux, HTTP, 服務, HTTP �
 manager: wpickett
 ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: e09943b2f810d04456a65589976aa07065a9f010
-ms.sourcegitcommit: e6bcd56a4b11e20ff55df004971f9ed384937342
+ms.openlocfilehash: caf40ee1c2d45d2fbf33b07d707fa4f1be98d31c
+ms.sourcegitcommit: 8b5733f1cd5d2c2b6d432bf82fcd4be2d2d6b2a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>在 macOS、Linux 和 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建立 Web API
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 09/22/2017
 ## <a name="set-up-your-development-environment"></a>設定您的開發環境
 
 下載與安裝：
-- [.NET Core](https://www.microsoft.com/net/core)
+- [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 或更新版本。
 - [Visual Studio Code](https://code.visualstudio.com)
 - Visual Studio Code [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 
@@ -59,7 +59,7 @@ dotnet new webapi
 
 ![VS Code 與警告：'TodoApi' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？ 不要再詢問、現在不要、是以及資訊 - 有未解析的相依性 - 還原 - 關閉](web-api-vsc/_static/vsc_restore.png)
 
-按 [偵錯] \(F5) 以建置並執行程式。 在瀏覽器中，巡覽至 http://localhost:5000/api/values。 此時會顯示下列對話方塊：
+按 [偵錯] (F5) 以建置並執行程式。 在瀏覽器中，巡覽至 http://localhost:5000/api/values。 此時會顯示下列對話方塊：
 
 `["value1","value2"]`
 
@@ -71,7 +71,7 @@ dotnet new webapi
 
 [!code-xml[Main](web-api-vsc/sample/TodoApi/TodoApi.csproj?highlight=12)]
 
-執行 `dotnet restore` 以下載並安裝 EF Core 記憶體內部資料庫提供者。 您可以從終端機執行 `dotnet restore` 或在 VS Code 中輸入 `⌘⇧P` (macOS) 或 `Ctrl+Shift+P` (Linux)，然後鍵入 **.NET**。 選取 [.NET: Restore Packages] \(.NET: 還原套件)。
+執行 `dotnet restore` 以下載並安裝 EF Core 記憶體內部資料庫提供者。 您可以從終端機執行 `dotnet restore` 或在 VS Code 中輸入 `⌘⇧P` (macOS) 或 `Ctrl+Shift+P` (Linux)，然後鍵入 **.NET**。 選取 [.NET: Restore Packages] (.NET: 還原套件)。
 
 ## <a name="add-a-model-class"></a>新增模型類別
 

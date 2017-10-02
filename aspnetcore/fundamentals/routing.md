@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 8bce642576b6b2f9326425d30ef95168da8f47e5
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 9d24c2956c24a7995b3eeffc19e8c0a827349493
+ms.sourcegitcommit: ed401027aac45c5938c917c7f518a33ceffe9f95
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/02/2017
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -46,17 +46,17 @@ ms.lasthandoff: 10/01/2017
 
 URL 比對是由哪些路由分派傳入要求的程序*處理常式*。 此程序通常根據 URL 路徑中的資料，但是可以擴充考量在要求中的任何資料。 分派分開處理常式要求的能力是調整的大小和複雜度的應用程式的關鍵。
 
-內送要求輸入`RouterMiddleware`，而它會呼叫`RouteAsync`序列中的每個路由上的方法。 `IRouter`執行個體選擇是否要*處理*藉由設定要求`RouteContext``Handler`為非 null `RequestDelegate`。 如果路由設定要求的處理常式，則會叫用路由處理會停止，而此處理常式來處理要求。 如果嘗試所有的路由時，而且沒有處理常式的要求中, 介軟體呼叫*下一步*並叫用要求管線中的下一個中介軟體。
+內送要求輸入`RouterMiddleware`，而它會呼叫`RouteAsync`序列中的每個路由上的方法。 `IRouter`執行個體選擇是否要*處理*藉由設定要求`RouteContext.Handler`為非 null `RequestDelegate`。 如果路由設定要求的處理常式，則會叫用路由處理會停止，而此處理常式來處理要求。 如果嘗試所有的路由時，而且沒有處理常式的要求中, 介軟體呼叫*下一步*並叫用要求管線中的下一個中介軟體。
 
-主要輸入`RouteAsync`是`RouteContext``HttpContext`與目前的要求相關聯。 `RouteContext.Handler`和`RouteContext``RouteData`是會在之後路由符合設定的輸出。
+主要輸入`RouteAsync`是`RouteContext.HttpContext`與目前的要求相關聯。 `RouteContext.Handler`和`RouteContext.RouteData`是會在之後路由符合設定的輸出。
 
 相符項目期間`RouteAsync`也會設定的屬性`RouteContext.RouteData`根據到目前為止完成的要求處理的適當值。 如果路由符合要求，`RouteContext.RouteData`會包含重要的狀態資訊的相關*結果*。
 
-`RouteData``Values`是*路由值*所產生的路由。 這些值通常由 token 化 URL，可以用來接受使用者輸入，或進一步分派做出應用程式內。
+`RouteData.Values`是一個字典的*路由值*所產生的路由。 這些值通常由 token 化 URL，可以用來接受使用者輸入，或進一步分派做出應用程式內。
 
-`RouteData``DataTokens`是相符路由相關的其他資料的屬性包。 `DataTokens`被提供來支援與每個路由，因此應用程式，可以根據哪一個路由決策的資料比對關聯性的狀態。 這些值是開發人員定義，並且不要**不**影響行為的任何方式的路由。 此外，隱藏資料語彙基元中的值可以是任何類型，相較於路由值，必須與字串輕鬆轉換。
+`RouteData.DataTokens`是相符路由相關的其他資料的屬性包。 `DataTokens`被提供來支援與每個路由，因此應用程式，可以根據哪一個路由決策的資料比對關聯性的狀態。 這些值是開發人員定義，並且不要**不**影響行為的任何方式的路由。 此外，隱藏資料語彙基元中的值可以是任何類型，相較於路由值，必須與字串輕鬆轉換。
 
-`RouteData``Routers`是花費在成功比對要求中的組件的路由清單。 路由可以巢狀內，而`Routers`屬性會反映透過邏輯樹狀結構的相符項目所導致的路由路徑。 通常第一個項目`Routers`路由集合中，而且應該用於 URL 的產生。 中的最後一個項目`Routers`是相符路由處理常式。
+`RouteData.Routers`是一份所中成功比對要求的路由。 路由可以巢狀內，而`Routers`屬性會反映透過邏輯樹狀結構的相符項目所導致的路由路徑。 通常第一個項目`Routers`路由集合中，而且應該用於 URL 的產生。 中的最後一個項目`Routers`是相符路由處理常式。
 
 ### <a name="url-generation"></a>URL 的產生
 
@@ -66,11 +66,11 @@ URL 的產生遵循類似的反覆程序，但是一開始呼叫的使用者或 
 
 輸入主要`GetVirtualPath`是：
 
-* `VirtualPathContext` `HttpContext`
+* `VirtualPathContext.HttpContext`
 
-* `VirtualPathContext` `Values`
+* `VirtualPathContext.Values`
 
-* `VirtualPathContext` `AmbientValues`
+* `VirtualPathContext.AmbientValues`
 
 路由主要會使用所提供的路由值`Values`和`AmbientValues`判斷很可能產生的 URL，以及要包含哪些值。 `AmbientValues`是從符合目前要求的路由系統所產生的路由值的集合。 相反地，`Values`會指定如何產生目前作業所需的 URL 的路由值。 `HttpContext`提供當路由需要取得的服務或與目前內容關聯的其他資料。
 
@@ -78,11 +78,11 @@ URL 的產生遵循類似的反覆程序，但是一開始呼叫的使用者或 
 
 輸出`GetVirtualPath`是`VirtualPathData`。 `VirtualPathData`是的平行處理`RouteData`; 它包含`VirtualPath`輸出 URL，以及一些額外的屬性應該設定路由。
 
-`VirtualPathData` `VirtualPath`屬性包含*虛擬路徑*所產生的路由。 根據您的需求，您可能需要處理進一步的路徑。 比方說，如果您想要呈現以 HTML 產生的 URL 需要在前面加上應用程式的基底路徑。
+`VirtualPathData.VirtualPath`屬性包含*虛擬路徑*所產生的路由。 根據您的需求，您可能需要處理進一步的路徑。 比方說，如果您想要呈現以 HTML 產生的 URL 需要在前面加上應用程式的基底路徑。
 
-`VirtualPathData` `Router`是已成功產生 URL 的路由的參考。
+`VirtualPathData.Router`是已成功產生 URL 的路由的參考。
 
-`VirtualPathData` `DataTokens`屬性是產生 URL 的路由相關的其他資料的字典。 這是的平行`RouteData.DataTokens`。
+`VirtualPathData.DataTokens`屬性是產生 URL 的路由相關的其他資料的字典。 這是的平行`RouteData.DataTokens`。
 
 ### <a name="creating-routes"></a>建立路由
 

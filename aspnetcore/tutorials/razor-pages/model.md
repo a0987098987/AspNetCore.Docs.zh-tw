@@ -9,9 +9,9 @@ ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
-uid: tutorials/razor-pages/modelz
-ms.openlocfilehash: bd2c3e09366e228fade69f843849e7452196c475
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+uid: tutorials/razor-pages/model
+ms.openlocfilehash: 195128f670223f15e1679c51fb6354c1aa527c01
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/28/2017

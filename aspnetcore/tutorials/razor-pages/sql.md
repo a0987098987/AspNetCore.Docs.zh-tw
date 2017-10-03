@@ -35,7 +35,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `Connectio
 LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
 
 <a name="ssox"></a>
-* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
+* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] \(SSOX)。
 
   ![檢視功能表](sql/_static/ssox.png)
 

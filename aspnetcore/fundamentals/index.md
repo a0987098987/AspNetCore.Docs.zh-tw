@@ -1,140 +1,216 @@
 ---
 title: "ASP.NET Core 基本概念"
 author: rick-anderson
-description: "本文提供了建置 ASP.NET Core 應用程式時需了解之基本概念的高階概觀。"
+description: "探索用於建置 ASP.NET Core 應用程式的基本概念。"
 keywords: "ASP.NET Core, 基本概念, 概觀"
 ms.author: riande
 manager: wpickett
-ms.date: 08/18/2017
+ms.date: 09/30/2017
 ms.topic: get-started-article
 ms.assetid: a19b7836-63e4-44e8-8250-50d426dd1070
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d8ca35b0e2e4b6e9b1ec745a3a7cf7c3983c461
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: e707bb92b2d8b1776ae2970001f1699248580e5f
+ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/01/2017
 ---
-# <a name="aspnet-core-fundamentals-overview"></a><span data-ttu-id="890c3-104">ASP.NET Core 基本概念的概觀</span><span class="sxs-lookup"><span data-stu-id="890c3-104">ASP.NET Core fundamentals overview</span></span>
+# <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
-<span data-ttu-id="890c3-105">ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` 方法建立網頁伺服器：</span><span class="sxs-lookup"><span data-stu-id="890c3-105">An ASP.NET Core application is a console app that creates a web server in its `Main` method:</span></span>
+ASP.NET Core 應用程式是一種主控台應用程式，可使用其 `Main` 方法建立網頁伺服器：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="890c3-106">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="890c3-106">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-<span data-ttu-id="890c3-107">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs)]</span><span class="sxs-lookup"><span data-stu-id="890c3-107">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs)]</span></span>
+[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
 
-<span data-ttu-id="890c3-108">`Main` 方法會叫用 `WebHost.CreateDefaultBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。</span><span class="sxs-lookup"><span data-stu-id="890c3-108">The `Main` method invokes `WebHost.CreateDefaultBuilder`, which follows the builder pattern to create a web application host.</span></span> <span data-ttu-id="890c3-109">產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。</span><span class="sxs-lookup"><span data-stu-id="890c3-109">The builder has methods that define the web server (for example, `UseKestrel`) and the startup class (`UseStartup`).</span></span> <span data-ttu-id="890c3-110">在上述範例中，會自動配置 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="890c3-110">In the preceding example, a [Kestrel](xref:fundamentals/servers/kestrel) web server is automatically allocated.</span></span> <span data-ttu-id="890c3-111">ASP.NET Core 的 Web 主機將嘗試在 IIS 上執行 (如果有的話)。</span><span class="sxs-lookup"><span data-stu-id="890c3-111">ASP.NET Core's web host will attempt to run on IIS, if it is available.</span></span> <span data-ttu-id="890c3-112">其他網頁伺服器 (例如 [HTTP.sys](xref:fundamentals/servers/httpsys)) 則可透過叫用適當的擴充方法來使用。</span><span class="sxs-lookup"><span data-stu-id="890c3-112">Other web servers, such as [HTTP.sys](xref:fundamentals/servers/httpsys), can be used by invoking the appropriate extension method.</span></span> <span data-ttu-id="890c3-113">`UseStartup` 將於下一節進一步說明。</span><span class="sxs-lookup"><span data-stu-id="890c3-113">`UseStartup` is explained further in the next section.</span></span>
+`Main` 方法會叫用 `WebHost.CreateDefaultBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。 以前述範例而言，會自動配置 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 ASP.NET Core 的 Web 主機會嘗試在 IIS 上執行 (如果有的話)。 其他網頁伺服器 (例如 [HTTP.sys](xref:fundamentals/servers/httpsys)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
 
-<span data-ttu-id="890c3-114">`IWebHostBuilder` 是 `WebHost.CreateDefaultBuilder` 叫用的傳回型別，提供了許多選擇性方法。</span><span class="sxs-lookup"><span data-stu-id="890c3-114">`IWebHostBuilder`, the return type of the `WebHost.CreateDefaultBuilder` invocation, provides many optional methods.</span></span> <span data-ttu-id="890c3-115">其中某些方法包括用來在 HTTP.sys 中裝載應用程式的 `UseHttpSys`，以及用於指定內容根目錄的 `UseContentRoot`。</span><span class="sxs-lookup"><span data-stu-id="890c3-115">Some of these methods include `UseHttpSys` for hosting the application in HTTP.sys, and `UseContentRoot` for specifying the root content directory.</span></span> <span data-ttu-id="890c3-116">`Build` 和 `Run` 方法則會建置 `IWebHost` 物件，以裝載應用程式並開始接聽 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="890c3-116">The `Build` and `Run` methods build the `IWebHost` object that will host the application and begin listening for HTTP requests.</span></span>
+`IWebHostBuilder` 是 `WebHost.CreateDefaultBuilder` 叫用的傳回型別，提供了許多選擇性方法。 其中某些方法包括用來在 HTTP.sys 中裝載應用程式的 `UseHttpSys`，以及用於指定根內容目錄的 `UseContentRoot`。 `Build` 與 `Run` 方法則會建置 `IWebHost` 物件，裝載應用程式並開始接聽 HTTP 要求。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="890c3-117">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="890c3-117">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-<span data-ttu-id="890c3-118">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs)]</span><span class="sxs-lookup"><span data-stu-id="890c3-118">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs)]</span></span>
+[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs)]
 
-<span data-ttu-id="890c3-119">`Main` 方法會使用 `WebHostBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。</span><span class="sxs-lookup"><span data-stu-id="890c3-119">The `Main` method uses `WebHostBuilder`, which follows the builder pattern to create a web application host.</span></span> <span data-ttu-id="890c3-120">產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。</span><span class="sxs-lookup"><span data-stu-id="890c3-120">The builder has methods that define the web server (for example, `UseKestrel`) and the startup class (`UseStartup`).</span></span> <span data-ttu-id="890c3-121">在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。</span><span class="sxs-lookup"><span data-stu-id="890c3-121">In the preceding example, the [Kestrel](xref:fundamentals/servers/kestrel) web server is used.</span></span> <span data-ttu-id="890c3-122">其他網頁伺服器 (例如 [WebListener](xref:fundamentals/servers/weblistener)) 則可透過叫用適當的擴充方法來使用。</span><span class="sxs-lookup"><span data-stu-id="890c3-122">Other web servers, such as [WebListener](xref:fundamentals/servers/weblistener), can be used by invoking the appropriate extension method.</span></span> <span data-ttu-id="890c3-123">`UseStartup` 將於下一節進一步說明。</span><span class="sxs-lookup"><span data-stu-id="890c3-123">`UseStartup` is explained further in the next section.</span></span>
+`Main` 方法會使用 `WebHostBuilder`，這會遵循產生器模式來建立 Web 應用程式主機。 產生器具有定義網頁伺服器 (例如，`UseKestrel`) 和啟動類別 (`UseStartup`) 的方法。 在上述範例中，會使用 [Kestrel](xref:fundamentals/servers/kestrel) 網頁伺服器。 其他網頁伺服器 (例如 [WebListener](xref:fundamentals/servers/weblistener)) 則可透過叫用適當的擴充方法來使用。 `UseStartup` 將於下一節進一步說明。
 
-<span data-ttu-id="890c3-124">`WebHostBuilder` 提供許多選擇性方法，包括用來在 IIS 和 IIS Express 中進行裝載的 `UseIISIntegration`，以及用於指定內容根目錄的 `UseContentRoot`。</span><span class="sxs-lookup"><span data-stu-id="890c3-124">`WebHostBuilder` provides many optional methods, including `UseIISIntegration` for hosting in IIS and IIS Express, and `UseContentRoot` for specifying the root content directory.</span></span> <span data-ttu-id="890c3-125">`Build` 和 `Run` 方法則會建置 `IWebHost` 物件，以裝載應用程式並開始接聽 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="890c3-125">The `Build` and `Run` methods build the `IWebHost` object that will host the application and begin listening for HTTP requests.</span></span>
-
----
-
-## <a name="startup"></a><span data-ttu-id="890c3-126">啟動</span><span class="sxs-lookup"><span data-stu-id="890c3-126">Startup</span></span>
-
-<span data-ttu-id="890c3-127">`WebHostBuilder` 上的 `UseStartup` 方法可為應用程式指定 `Startup` 類別：</span><span class="sxs-lookup"><span data-stu-id="890c3-127">The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for your app:</span></span>
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="890c3-128">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="890c3-128">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
-
-<span data-ttu-id="890c3-129">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]</span><span class="sxs-lookup"><span data-stu-id="890c3-129">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]</span></span>
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="890c3-130">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="890c3-130">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
-
-<span data-ttu-id="890c3-131">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]</span><span class="sxs-lookup"><span data-stu-id="890c3-131">[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]</span></span>
+`WebHostBuilder` 提供許多選擇性方法，包括用來裝載於 IIS 和 IIS Express 中的 `UseIISIntegration`，以及用於指定根內容目錄的 `UseContentRoot`。 `Build` 與 `Run` 方法則會建置 `IWebHost` 物件，裝載應用程式並開始接聽 HTTP 要求。
 
 ---
 
-<span data-ttu-id="890c3-132">`Startup` 類別是您用來定義要求處理管線和設定應用程式所需之任何服務的位置。</span><span class="sxs-lookup"><span data-stu-id="890c3-132">The `Startup` class is where you define the request handling pipeline and where any services needed by the application are configured.</span></span> <span data-ttu-id="890c3-133">`Startup` 必須是公用類別，而且包含下列方法：</span><span class="sxs-lookup"><span data-stu-id="890c3-133">The `Startup` class must be public and contain the following methods:</span></span>
+## <a name="startup"></a>啟動
+
+`WebHostBuilder` 上的 `UseStartup` 方法可為應用程式指定 `Startup` 類別：
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
+
+---
+
+`Startup` 類別是您用來定義要求處理管線以及設定應用程式所需之所有服務的位置。 `Startup` 必須是公用類別，而且包含下列方法：
 
 ```csharp
 public class Startup
 {
-    // This method gets called by the runtime. Use this method to add services to the container.
+    // This method gets called by the runtime. Use this method
+    // to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    // This method gets called by the runtime. Use this method
+    // to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app)
     {
     }
 }
 ```
 
-* <span data-ttu-id="890c3-134">`ConfigureServices` 定義應用程式所使用的[服務](#services) (例如 ASP.NET Core MVC、Entity Framework Core、Identity 等)。</span><span class="sxs-lookup"><span data-stu-id="890c3-134">`ConfigureServices` defines the [Services](#services) used by your application (such as ASP.NET Core MVC, Entity Framework Core, Identity, etc.).</span></span>
+`ConfigureServices` 會定義應用程式所使用的[服務](#dependency-injection-services) (例如 ASP.NET Core MVC、Entity Framework Core、Identity 等)。 `Configure` 則會定義要求管線的[中介軟體](xref:fundamentals/middleware)。
 
-* <span data-ttu-id="890c3-135">`Configure` 定義要求管線中的[中介軟體](xref:fundamentals/middleware)。</span><span class="sxs-lookup"><span data-stu-id="890c3-135">`Configure` defines the [middleware](xref:fundamentals/middleware) in the request pipeline.</span></span>
+如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
-<span data-ttu-id="890c3-136">如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="890c3-136">For more information, see [Application startup](xref:fundamentals/startup).</span></span>
+## <a name="content-root"></a>內容根目錄
 
-## <a name="services"></a><span data-ttu-id="890c3-137">服務</span><span class="sxs-lookup"><span data-stu-id="890c3-137">Services</span></span>
+內容根目錄是應用程式所使用的任何內容的基底路徑，例如檢視、[Razor 頁面](xref:mvc/razor-pages/index)，以及靜態資產。 根據預設，內容根目錄會與裝載應用程式之可執行檔的應用程式基底路徑相同。
 
-<span data-ttu-id="890c3-138">服務是一種可在應用程式中共用使用的元件。</span><span class="sxs-lookup"><span data-stu-id="890c3-138">A service is a component that is intended for common consumption in an application.</span></span> <span data-ttu-id="890c3-139">服務是透過[相依性插入](xref:fundamentals/dependency-injection) (DI) 提供。</span><span class="sxs-lookup"><span data-stu-id="890c3-139">Services are made available through [dependency injection](xref:fundamentals/dependency-injection) (DI).</span></span> <span data-ttu-id="890c3-140">ASP.NET Core 包含原生控制反轉 (IoC) 容器，預設支援[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)。</span><span class="sxs-lookup"><span data-stu-id="890c3-140">ASP.NET Core includes a native inversion of control (IoC) container that supports [constructor injection](xref:mvc/controllers/dependency-injection#constructor-injection) by default.</span></span> <span data-ttu-id="890c3-141">原生容器可取代為您所選擇的容器。</span><span class="sxs-lookup"><span data-stu-id="890c3-141">The native container can be replaced with your container of choice.</span></span> <span data-ttu-id="890c3-142">除了其鬆散結合的益處之外，DI 還能夠讓服務可以在整個應用程式中使用。</span><span class="sxs-lookup"><span data-stu-id="890c3-142">In addition to its loose coupling benefit, DI makes services available throughout your application.</span></span> <span data-ttu-id="890c3-143">例如，可以在整個應用程式中使用[記錄](xref:fundamentals/logging)。</span><span class="sxs-lookup"><span data-stu-id="890c3-143">For example, [logging](xref:fundamentals/logging) is available throughout your application.</span></span>
+## <a name="web-root"></a>Web 根目錄
 
-<span data-ttu-id="890c3-144">如需詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="890c3-144">For more information, see [Dependency injection](xref:fundamentals/dependency-injection).</span></span>
+應用程式的 Web 根目錄是專案中包含公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的目錄。
 
-## <a name="middleware"></a><span data-ttu-id="890c3-145">中介軟體</span><span class="sxs-lookup"><span data-stu-id="890c3-145">Middleware</span></span>
+## <a name="dependency-injection-services"></a>相依性插入 (服務)
 
-<span data-ttu-id="890c3-146">在 ASP.NET Core 中，您可以使用[中介軟體](xref:fundamentals/middleware)來撰寫要求管線。</span><span class="sxs-lookup"><span data-stu-id="890c3-146">In ASP.NET Core, you compose your request pipeline using [Middleware](xref:fundamentals/middleware).</span></span> <span data-ttu-id="890c3-147">ASP.NET Core 中介軟體會對 `HttpContext` 執行非同步邏輯，然後叫用序列中的下一個中介軟體或直接終止要求。</span><span class="sxs-lookup"><span data-stu-id="890c3-147">ASP.NET Core middleware performs asynchronous logic on an `HttpContext` and then either invokes the next middleware in the sequence or terminates the request directly.</span></span> <span data-ttu-id="890c3-148">透過在 `Configure` 方法中叫用 `UseXYZ` 擴充方法，新增稱為 "XYZ" 的中介軟體元件。</span><span class="sxs-lookup"><span data-stu-id="890c3-148">A middleware component called "XYZ" is added by invoking a `UseXYZ` extension method in the `Configure` method.</span></span>
+服務是一種在應用程式中常用的元件。 服務可透過[相依性插入 (DI)](xref:fundamentals/dependency-injection) 提供。 ASP.NET Core 包含原生逆轉控制 (IoC) 容器，根據預設，其會支援[建構函式插入](xref:mvc/controllers/dependency-injection#constructor-injection)。 您可視需要取代掉預設的原生容器。 DI 除了具有鬆散結合的優點之外，還能夠讓整個應用程式皆可使用服務。(例如：[記錄](xref:fundamentals/logging))。
 
-<span data-ttu-id="890c3-149">ASP.NET Core 隨附一組豐富的內建中介軟體：</span><span class="sxs-lookup"><span data-stu-id="890c3-149">ASP.NET Core comes with a rich set of built-in middleware:</span></span>
+如需詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。
 
-* [<span data-ttu-id="890c3-150">靜態檔案</span><span class="sxs-lookup"><span data-stu-id="890c3-150">Static files</span></span>](xref:fundamentals/static-files)
+## <a name="middleware"></a>中介軟體
 
-* [<span data-ttu-id="890c3-151">路由傳送</span><span class="sxs-lookup"><span data-stu-id="890c3-151">Routing</span></span>](xref:fundamentals/routing)
+在 ASP.NET Core 中，您可以使用[中介軟體](xref:fundamentals/middleware)來撰寫要求管線。 ASP.NET Core 中介軟體會對 `HttpContext` 執行非同步邏輯，然後叫用序列中的下一個中介軟體或直接終止要求。 透過在 `Configure` 方法中叫用 `UseXYZ` 擴充方法，新增稱為 "XYZ" 的中介軟體元件。
 
-* [<span data-ttu-id="890c3-152">驗證</span><span class="sxs-lookup"><span data-stu-id="890c3-152">Authentication</span></span>](xref:security/authentication/index)
+ASP.NET Core 隨附一組豐富的內建中介軟體：
 
-<span data-ttu-id="890c3-153">您可以搭配使用任何以 [OWIN](http://owin.org) 為基礎的中介軟體與 ASP.NET Core，也可以撰寫您自己的自訂中介軟體。</span><span class="sxs-lookup"><span data-stu-id="890c3-153">You can use any [OWIN](http://owin.org)-based middleware with ASP.NET Core, and you can write your own custom middleware.</span></span>
+* [靜態檔案](xref:fundamentals/static-files)
+* [路由傳送](xref:fundamentals/routing)
+* [驗證](xref:security/authentication/index)
+* [回應壓縮中介軟體](xref:performance/response-compression)
+* [URL 重寫中介軟體](xref:fundamentals/url-rewriting)
 
-<span data-ttu-id="890c3-154">如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。</span><span class="sxs-lookup"><span data-stu-id="890c3-154">For more information, see [Middleware](xref:fundamentals/middleware) and [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin).</span></span>
+ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介軟體，您也可以自行撰寫自訂的中介軟體。
 
-## <a name="servers"></a><span data-ttu-id="890c3-155">伺服器</span><span class="sxs-lookup"><span data-stu-id="890c3-155">Servers</span></span>
+如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
 
-<span data-ttu-id="890c3-156">裝載模型的 ASP.NET Core 不會直接接聽要求；相反地，它依賴 HTTP 伺服器實作將要求轉送至應用程式。</span><span class="sxs-lookup"><span data-stu-id="890c3-156">The ASP.NET Core hosting model does not directly listen for requests; rather, it relies on an HTTP server implementation to forward the request to the application.</span></span> <span data-ttu-id="890c3-157">轉送的要求會包裝成一組您可以透過介面存取的功能物件。</span><span class="sxs-lookup"><span data-stu-id="890c3-157">The forwarded request is wrapped as a set of feature objects that you can access through interfaces.</span></span> <span data-ttu-id="890c3-158">應用程式會將此設定撰寫成 `HttpContext`。</span><span class="sxs-lookup"><span data-stu-id="890c3-158">The application composes this set into an `HttpContext`.</span></span> <span data-ttu-id="890c3-159">ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。</span><span class="sxs-lookup"><span data-stu-id="890c3-159">ASP.NET Core includes a managed, cross-platform web server, called [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="890c3-160">Kestrel 通常會在生產網頁伺服器 (例如 [IIS](https://www.iis.net/) 或 [nginx](http://nginx.org)) 背後執行。</span><span class="sxs-lookup"><span data-stu-id="890c3-160">Kestrel is typically run behind a production web server like [IIS](https://www.iis.net/) or [nginx](http://nginx.org).</span></span>
+## <a name="environments"></a>環境
 
-<span data-ttu-id="890c3-161">如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)和[裝載](xref:fundamentals/hosting)。</span><span class="sxs-lookup"><span data-stu-id="890c3-161">For more information, see [Servers](xref:fundamentals/servers/index) and [Hosting](xref:fundamentals/hosting).</span></span>
+如「開發」與「生產」等環境是 ASP.NET Core 中的第一級概念，可使用環境變數加以設定。
 
-## <a name="content-root"></a><span data-ttu-id="890c3-162">內容根目錄</span><span class="sxs-lookup"><span data-stu-id="890c3-162">Content root</span></span>
+如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
 
-<span data-ttu-id="890c3-163">內容根目錄是應用程式所使用的任何內容的基底路徑，例如檢視、[Razor 頁面](xref:mvc/razor-pages/index)，以及靜態資產。</span><span class="sxs-lookup"><span data-stu-id="890c3-163">The content root is the base path to any content used by the app, such as views, [Razor Pages](xref:mvc/razor-pages/index), and static assets.</span></span> <span data-ttu-id="890c3-164">根據預設，內容根目錄與裝載應用程式之可執行檔的應用程式基底路徑相同。</span><span class="sxs-lookup"><span data-stu-id="890c3-164">By default, the content root is the same as application base path for the executable hosting the application.</span></span> <span data-ttu-id="890c3-165">內容根目錄的其他位置則由 `WebHostBuilder` 指定。</span><span class="sxs-lookup"><span data-stu-id="890c3-165">An alternative location for content root is specified with `WebHostBuilder`.</span></span>
+## <a name="configuration"></a>組態
 
-## <a name="web-root"></a><span data-ttu-id="890c3-166">Web 根目錄</span><span class="sxs-lookup"><span data-stu-id="890c3-166">Web root</span></span>
+ASP.NET Core 會使用以成對的名稱/值為基礎的組態模型。 而非以 `System.Configuration` 或 *web.config* 為基礎的組態模型。組態會從組態提供者經排序的集合中取得設定。 內建的組態提供者支援各種檔案格式 (XML、JSON、INI) 和環境變數，可啟用以環境為基礎的組態。 您也可以撰寫您自己的自訂組態提供者。
 
-<span data-ttu-id="890c3-167">應用程式的 Web 根目錄是專案中包含公用、靜態資源 (例如 CSS、JavaScript 和影像檔) 的目錄。</span><span class="sxs-lookup"><span data-stu-id="890c3-167">The web root of an application is the directory in the project containing public, static resources like CSS, JavaScript, and image files.</span></span> <span data-ttu-id="890c3-168">根據預設，靜態檔案中介軟體只會處理來自 Web 根目錄及其子目錄的檔案。</span><span class="sxs-lookup"><span data-stu-id="890c3-168">By default, the static files middleware will only serve files from the web root directory and its sub-directories.</span></span> <span data-ttu-id="890c3-169">如需詳細資訊，請參閱[使用靜態檔案](xref:fundamentals/static-files)。</span><span class="sxs-lookup"><span data-stu-id="890c3-169">See [working with static files](xref:fundamentals/static-files) for more info.</span></span> <span data-ttu-id="890c3-170">Web 根目錄的路徑預設為 */wwwroot*，但是您可以使用 `WebHostBuilder` 指定不同的位置。</span><span class="sxs-lookup"><span data-stu-id="890c3-170">The web root path defaults to */wwwroot*, but you can specify a different location using the `WebHostBuilder`.</span></span>
+如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
 
-## <a name="configuration"></a><span data-ttu-id="890c3-171">組態</span><span class="sxs-lookup"><span data-stu-id="890c3-171">Configuration</span></span>
+## <a name="logging"></a>記錄
 
-<span data-ttu-id="890c3-172">ASP.NET Core 使用新的組態模型來處理簡單的名稱/值對。</span><span class="sxs-lookup"><span data-stu-id="890c3-172">ASP.NET Core uses a new configuration model for handling simple name-value pairs.</span></span> <span data-ttu-id="890c3-173">新的組態模型不是根據 `System.Configuration` 或 *web.config*；相反地，它會從組態提供者的已排序集合中提取。</span><span class="sxs-lookup"><span data-stu-id="890c3-173">The new configuration model is not based on `System.Configuration` or *web.config*; rather, it pulls from an ordered set of configuration providers.</span></span> <span data-ttu-id="890c3-174">內建的組態提供者支援各種檔案格式 (XML、JSON、INI) 和環境變數，可啟用以環境為基礎的組態。</span><span class="sxs-lookup"><span data-stu-id="890c3-174">The built-in configuration providers support a variety of file formats (XML, JSON, INI) and environment variables to enable environment-based configuration.</span></span> <span data-ttu-id="890c3-175">您也可以撰寫您自己的自訂組態提供者。</span><span class="sxs-lookup"><span data-stu-id="890c3-175">You can also write your own custom configuration providers.</span></span>
+ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供者支援將記錄檔傳送至一或多個目的地。 可以使用協力廠商記錄架構。
 
-<span data-ttu-id="890c3-176">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。</span><span class="sxs-lookup"><span data-stu-id="890c3-176">For more information, see [Configuration](xref:fundamentals/configuration).</span></span>
+[記錄](xref:fundamentals/logging)
 
-## <a name="environments"></a><span data-ttu-id="890c3-177">環境</span><span class="sxs-lookup"><span data-stu-id="890c3-177">Environments</span></span>
+## <a name="error-handling"></a>錯誤處理
 
-<span data-ttu-id="890c3-178">如「開發」和「生產」等環境是 ASP.NET Core 中的第一級概念，可以使用環境變數進行設定。</span><span class="sxs-lookup"><span data-stu-id="890c3-178">Environments, like "Development" and "Production", are a first-class notion in ASP.NET Core and can be set using environment variables.</span></span>
+ASP.NET CoreASP.NET Core 具有內建功能，可處理應用程式中的錯誤，包括開發人員例外狀況頁面、自訂錯誤頁面、靜態狀態字碼頁，以及啟動例外狀況處理。
 
-<span data-ttu-id="890c3-179">如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。</span><span class="sxs-lookup"><span data-stu-id="890c3-179">For more information, see [Working with Multiple Environments](xref:fundamentals/environments).</span></span>
+如需詳細資訊，請參閱[錯誤處理](xref:fundamentals/error-handling)。
 
-## <a name="net-core-vs-net-framework-runtime"></a><span data-ttu-id="890c3-180">.NET Core 與 .NET Framework 執行階段</span><span class="sxs-lookup"><span data-stu-id="890c3-180">.NET Core vs. .NET Framework runtime</span></span>
+## <a name="routing"></a>路由
 
-<span data-ttu-id="890c3-181">ASP.NET Core 應用程式可將目標設為 .NET Core 或 .NET Framework 執行階段。</span><span class="sxs-lookup"><span data-stu-id="890c3-181">An ASP.NET Core application can target the .NET Core or .NET Framework runtime.</span></span> <span data-ttu-id="890c3-182">如需詳細資訊，[選擇 .NET Core 或 .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)。</span><span class="sxs-lookup"><span data-stu-id="890c3-182">For more information, see [Choosing between .NET Core and .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).</span></span>
+ASP.NET Core 提供用來將應用程式要求路由至路由處理常式的功能。
 
-## <a name="additional-information"></a><span data-ttu-id="890c3-183">其他資訊</span><span class="sxs-lookup"><span data-stu-id="890c3-183">Additional information</span></span>
+如需詳細資訊，請參閱[路由](xref:fundamentals/routing)。
 
-<span data-ttu-id="890c3-184">另請參閱下列主題：</span><span class="sxs-lookup"><span data-stu-id="890c3-184">See also the following topics:</span></span>
+## <a name="file-providers"></a>檔案提供者
 
-- [<span data-ttu-id="890c3-185">錯誤處理</span><span class="sxs-lookup"><span data-stu-id="890c3-185">Error Handling</span></span>](xref:fundamentals/error-handling)
-- [<span data-ttu-id="890c3-186">檔案提供者</span><span class="sxs-lookup"><span data-stu-id="890c3-186">File Providers</span></span>](xref:fundamentals/file-providers)
-- [<span data-ttu-id="890c3-187">全球化和當地語系化</span><span class="sxs-lookup"><span data-stu-id="890c3-187">Globalization and localization</span></span>](xref:fundamentals/localization)
-- [<span data-ttu-id="890c3-188">記錄</span><span class="sxs-lookup"><span data-stu-id="890c3-188">Logging</span></span>](xref:fundamentals/logging)
-- [<span data-ttu-id="890c3-189">管理應用程式狀態</span><span class="sxs-lookup"><span data-stu-id="890c3-189">Managing Application State</span></span>](xref:fundamentals/app-state)
+ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而檔案提供者則提供通用介面，讓您可跨平台使用檔案。
+
+如需詳細資訊，請參閱[檔案提供者](xref:fundamentals/file-providers)。
+
+## <a name="static-files"></a>靜態檔案
+
+靜態檔案中介軟體負責提供靜態檔案，例如 HTML、CSS、影像和 JavaScript。
+
+如需詳細資訊，請參閱[使用靜態檔案](xref:fundamentals/static-files)。
+
+## <a name="hosting"></a>裝載
+
+ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。
+
+如需詳細資訊，請參閱[裝載](xref:fundamentals/hosting)。
+
+## <a name="session-and-application-state"></a>工作階段與應用程式狀態
+
+在 ASP.NET Core 中的工作階段狀態功能，可用於在使用者瀏覽您的 Web 應用程式時，儲存及存放使用者資料。
+
+如需詳細資訊，請參閱[工作階段與應用程式狀態](xref:fundamentals/app-state)。
+
+## <a name="servers"></a>伺服器
+
+ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 伺服器實作，才可將要求轉寄至應用程式。 轉寄的要求會包裝成一組可透過介面來存取的功能物件。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產網頁伺服器 (例如 [IIS](https://www.iis.net/) 或 [nginx](http://nginx.org)) 背後執行。 Kestrel 可執行為 Edge Server。
+
+如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)及下列主題：
+
+* [Kestrel](xref:fundamentals/servers/kestrel)
+* [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
+* [HTTP.sys](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener))
+
+## <a name="globalization-and-localization"></a>全球化和當地語系化
+
+使用 ASP.NET Core 建立多語系網站，讓更廣大的群眾得以使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
+
+如需詳細資訊，請參閱[全球化與當地語系化](xref:fundamentals/localization)。
+
+## <a name="request-features"></a>要求功能
+
+有關 HTTP 要求和回應的網頁伺服器實作詳細資料，定義於介面中。 伺服器實作與中介軟體會使用這些介面，建立及修改應用程式的裝載管線。
+
+如需詳細資訊，請參閱[要求功能](xref:fundamentals/request-features)。
+
+## <a name="open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN)
+
+ASP.NET Core 支援Open Web Interface for .NET (OWIN)。 OWIN 可讓 Web 應用程式獨立於網頁伺服器。
+
+如需詳細資訊，請參閱 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
+
+## <a name="websockets"></a>WebSockets
+
+[WebSocket](https://wikipedia.org/wiki/WebSocket) 為通訊協定，其可在 TCP 連線下啟用雙向的持續性通訊通道。 其可用於像是聊天、股票行情、遊戲等應用程式，以及您希望在 Web 應用程式中使用即時功能的任何位置。 ASP.NET Core 支援網路通訊端功能。
+
+如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+
+## <a name="microsoftaspnetcoreall-metapackage"></a>Microsoft.AspNetCore.All 中繼套件
+
+ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
+
+* 所有由 ASP.NET Core 小組支援的套件。
+* 所有由 Entity Framework Core 支援的套件。 
+* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。
+
+如需詳細資訊，請參閱 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+
+## <a name="net-core-vs-net-framework-runtime"></a>.NET Core 與 .NET Framework 執行階段
+
+ASP.NET Core 應用程式可將目標設為 .NET Core 或 .NET Framework 執行階段。
+
+如需詳細資訊，請參閱[在 .NET Core 和 .NET Framework 之間進行選擇](/dotnet/articles/standard/choosing-core-framework-server)。
+
+## <a name="choose-between-aspnet-core-and-aspnet"></a>在 ASP.NET Core 與 ASP.NET 之間選擇
+
+如需在 ASP.NET Core 與 ASP.NET 之間選擇的詳細資訊，請參閱[在 ASP.NET Core 與 ASP.NET 之間選擇](xref:fundamentals/choose-between-aspnet-and-aspnetcore)。

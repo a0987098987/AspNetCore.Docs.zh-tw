@@ -11,11 +11,11 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: d3fbdecaed87b3432f0532748a0833c833c65129
+ms.sourcegitcommit: a60a99104fe7a29e271667cead6a06b6d8258d03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/03/2017
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -40,13 +40,13 @@ ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/do
 檢視可以協助建立[ **S**eparation **o**f **C**oncerns (SoC) 設計](http://deviq.com/separation-of-concerns/)分隔從使用者介面標記 MVC 應用程式中應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組，提供數個優點：
 
 * 應用程式很容易維護，因為組織較佳。 檢視通常會依應用程式功能分組。 這可讓您更輕鬆地找到相關的檢視，使用一項功能時。
-* 應用程式的組件不是緊密結合。 您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
+* 鬆散耦合的應用程式組件。 您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
 * 它是您更輕鬆地測試應用程式的使用者介面部分，因為檢視表的個別單位。
 * 因為較佳的組織，而較不可能是您會意外地重複的區段的使用者介面。
 
 ## <a name="creating-a-view"></a>建立檢視
 
-檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*Views/Shared*資料夾。 若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。 若要建立檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案*Views/Home*資料夾：
+檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*Views/Shared*資料夾。 若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。 若要建立對應於檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案中*Views/Home*資料夾：
 
 [!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/do
 
 當動作傳回的檢視時，這個程序稱為*檢視探索*進行。 此程序決定根據檢視名稱使用的檢視檔案。 
 
-當動作傳回`View`方法 (`return View();`) 並不指定了檢視，動作名稱當做檢視表名稱。 例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。 首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。 如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。
+預設行為`View`方法 (`return View();`) 會傳回與動作方法會呼叫同名的檢視。 例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。 首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。 如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。
 
 如果您以隱含方式傳回，它並不重要`ViewResult`與`return View();`或明確地將傳遞至檢視表名稱`View`方法`return View("<ViewName>");`。 在這兩種情況下，檢視探索會搜尋相符的檢視檔案，依此順序：
 
@@ -127,7 +127,7 @@ return View("./About");
 
 將資料傳遞至檢視中使用 viewmodel 可讓檢視來善用*強式*類型檢查。 *強式類型*(或*強型別*) 表示每個變數和常數有明確定義的型別 (例如， `string`， `int`，或`DateTime`)。 在編譯時期檢查有效性的檢視中使用的類型。
 
-工具，例如[Visual Studio](https://www.visualstudio.com/vs/)或[Visual Studio Code](https://code.visualstudio.com/)，也可以列出成員 （屬性的模型） 時，您要將其加入的檢視，可協助您撰寫較少的錯誤更快的程式碼。 這項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 工具。
+[Visual Studio](https://www.visualstudio.com/vs/)和[Visual Studio Code](https://code.visualstudio.com/)列出強型別類別成員使用一項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense)。 當您想要查看的 viewmodel 屬性時，輸入變數名稱，後面接著句號 viewmodel (`.`)。 這有助於減少錯誤更快撰寫程式碼。
 
 指定模型使用`@model`指示詞。 使用模型與`@Model`:
 
@@ -316,7 +316,7 @@ public IActionResult SomeAction()
 
 **何時使用別的 ViewData 或 ViewBag**
 
-同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。 選擇其中一個，以便使用 （或兩者） 最重要的是個人的喜好設定或您組織的喜好設定。 一般而言，開發人員會在使用其中一個一致的。 它們使用`ViewData`每個地方或使用`ViewBag`everywhere，但歡迎混用，並加以比對。 因為兩者都是在執行階段以動態方式解決，因此容易導致執行階段錯誤，請小心它們使用。 有些開發人員完全予以避免。
+同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。 選擇其中一個，以便使用 （或兩者） 最重要的是個人的喜好設定或您組織的喜好設定。 雖然您可以混合和比對`ViewData`和`ViewBag`物件，該程式碼是容易讀取與維護時，您只選擇一個，並使用它以一致的方式。 因為兩者都是在執行階段以動態方式解決，因此容易導致執行階段錯誤，請小心它們使用。 有些開發人員完全予以避免。
 
 ### <a name="dynamic-views"></a>動態檢視
 

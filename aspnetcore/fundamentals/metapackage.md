@@ -10,21 +10,21 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/metapackage
-ms.openlocfilehash: 23a07867874eb534c75c4e7b3be00c4a376f8a8b
-ms.sourcegitcommit: 4e45fd4e3f1374cd51cc931cee93c9d72631d9fc
+ms.openlocfilehash: ff25d80be907994f7ac3d64a8ffa39ae53278ba6
+ms.sourcegitcommit: 73bf6b222474d9f1f6aba3feaca4e191069d2121
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 10/03/2017
 ---
 #<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>適用於 ASP.NET Core Microsoft.AspNetCore.All metapackage 2.x
 
-這項功能需要 ASP.NET Core 2.x。
+這項功能需要 ASP.NET Core 2.x 目標.NET 核心 2.x。
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All)適用於 ASP.NET Core metapackage 包括：
+ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
 
-* 由 ASP.NET Core 小組支援所有封裝。
-* 所有支援 Entity Framework Core 的套件。 
-* 內部和第 3 合作對象的相依性由 ASP.NET Core 和 Entity Framework Core。 
+* 所有由 ASP.NET Core 小組支援的套件。
+* 所有由 Entity Framework Core 支援的套件。 
+* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。 
 
 ASP.NET Core 的所有功能 2.x 和 Entity Framework Core 2.x 包含在`Microsoft.AspNetCore.All`封裝。 預設的專案範本會使用這個封裝。
 

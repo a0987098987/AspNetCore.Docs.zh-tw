@@ -1,99 +1,91 @@
 ---
 title: "適用於 ASP.NET Core razor 語法參考"
-author: rick-anderson
-description: "Razor 語法的詳細資料"
-keywords: ASP.NET Core Razor
+author: guardrex
+description: "深入了解伺服器基礎的程式碼內嵌到網頁的 Razor 標記語法。"
+keywords: "ASP.NET Core，Razor，Razor 指示詞"
 ms.author: riande
 manager: wpickett
-ms.date: 07/04/2017
+ms.date: 09/29/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 0e65f0e9f672f9f93256ebc039ea0db2e4ef5ae0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 532e278597a0029b5bae93068af5b7b147c35688
+ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
-# <a name="razor-syntax-for-aspnet-core"></a><span data-ttu-id="f5f33-104">Razor 語法的 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f5f33-104">Razor syntax for ASP.NET Core</span></span>
+# <a name="razor-syntax-for-aspnet-core"></a><span data-ttu-id="6b55f-104">Razor 語法的 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="6b55f-104">Razor syntax for ASP.NET Core</span></span>
 
-<span data-ttu-id="f5f33-105">由[Taylor Mullen](https://twitter.com/ntaylormullen)和[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="f5f33-105">By [Taylor Mullen](https://twitter.com/ntaylormullen) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="6b55f-105">由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Luke Latham](https://github.com/guardrex)，和[Taylor Mullen](https://twitter.com/ntaylormullen)</span><span class="sxs-lookup"><span data-stu-id="6b55f-105">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), and [Taylor Mullen](https://twitter.com/ntaylormullen)</span></span>
 
-## <a name="what-is-razor"></a><span data-ttu-id="f5f33-106">Razor 是什麼？</span><span class="sxs-lookup"><span data-stu-id="f5f33-106">What is Razor?</span></span>
+<span data-ttu-id="6b55f-106">Razor 是將伺服器端程式碼內嵌到網頁標記語法。</span><span class="sxs-lookup"><span data-stu-id="6b55f-106">Razor is a markup syntax for embedding server-based code into webpages.</span></span> <span data-ttu-id="6b55f-107">Razor 語法包含 Razor 標記、 C# 和 HTML。</span><span class="sxs-lookup"><span data-stu-id="6b55f-107">The Razor syntax consists of Razor markup, C#, and HTML.</span></span> <span data-ttu-id="6b55f-108">通常包含 Razor 檔案有*.cshtml*檔案副檔名。</span><span class="sxs-lookup"><span data-stu-id="6b55f-108">Files containing Razor generally have a *.cshtml* file extension.</span></span>
 
-<span data-ttu-id="f5f33-107">Razor 是伺服器為基礎的程式碼內嵌在網頁標記語法。</span><span class="sxs-lookup"><span data-stu-id="f5f33-107">Razor is a markup syntax for embedding server based code into web pages.</span></span> <span data-ttu-id="f5f33-108">Razor 語法包含 Razor 標記，C# 和 HTML。</span><span class="sxs-lookup"><span data-stu-id="f5f33-108">The Razor syntax consists of Razor markup, C# and HTML.</span></span> <span data-ttu-id="f5f33-109">通常包含 Razor 檔案有*.cshtml*檔案副檔名。</span><span class="sxs-lookup"><span data-stu-id="f5f33-109">Files containing Razor generally have a *.cshtml* file extension.</span></span>
+## <a name="rendering-html"></a><span data-ttu-id="6b55f-109">將 HTML 呈現</span><span class="sxs-lookup"><span data-stu-id="6b55f-109">Rendering HTML</span></span>
 
-## <a name="rendering-html"></a><span data-ttu-id="f5f33-110">將 HTML 呈現</span><span class="sxs-lookup"><span data-stu-id="f5f33-110">Rendering HTML</span></span>
+<span data-ttu-id="6b55f-110">預設 Razor 語言為 HTML。</span><span class="sxs-lookup"><span data-stu-id="6b55f-110">The default Razor language is HTML.</span></span> <span data-ttu-id="6b55f-111">轉譯 HTML Razor 標記中的並無不同轉譯 HTML，從 HTML 檔案。</span><span class="sxs-lookup"><span data-stu-id="6b55f-111">Rendering HTML from Razor markup is no different than rendering HTML from an HTML file.</span></span> <span data-ttu-id="6b55f-112">如果您將 HTML 標記*.cshtml* Razor 檔案呈現伺服器保持不變。</span><span class="sxs-lookup"><span data-stu-id="6b55f-112">If you place HTML markup into a *.cshtml* Razor file, it's rendered by the server unchanged.</span></span>
 
-<span data-ttu-id="f5f33-111">預設 Razor 語言為 HTML。</span><span class="sxs-lookup"><span data-stu-id="f5f33-111">The default Razor language is HTML.</span></span> <span data-ttu-id="f5f33-112">將 HTML 呈現從 Razor 並無不同 HTML 檔案中。</span><span class="sxs-lookup"><span data-stu-id="f5f33-112">Rendering HTML from Razor is no different than in an HTML file.</span></span> <span data-ttu-id="f5f33-113">Razor 檔案中以下列標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-113">A Razor file with the following markup:</span></span>
+## <a name="razor-syntax"></a><span data-ttu-id="6b55f-113">Razor 語法</span><span class="sxs-lookup"><span data-stu-id="6b55f-113">Razor syntax</span></span>
 
-```html
-<p>Hello World</p>
-```
+<span data-ttu-id="6b55f-114">Razor 支援 C#，並使用`@`轉換來自 HTML，以 C# 中的符號。</span><span class="sxs-lookup"><span data-stu-id="6b55f-114">Razor supports C# and uses the `@` symbol to transition from HTML to C#.</span></span> <span data-ttu-id="6b55f-115">Razor 評估 C# 運算式，並將它們呈現的 HTML 輸出中。</span><span class="sxs-lookup"><span data-stu-id="6b55f-115">Razor evaluates C# expressions and renders them in the HTML output.</span></span>
 
-<span data-ttu-id="f5f33-114">會轉譯為未變更`<p>Hello World</p>`伺服器。</span><span class="sxs-lookup"><span data-stu-id="f5f33-114">Is rendered unchanged as `<p>Hello World</p>` by the server.</span></span>
+<span data-ttu-id="6b55f-116">當`@`符號後面[Razor 保留關鍵字](#razor-reserved-keywords)，它就會轉換成特定的 Razor 標記。</span><span class="sxs-lookup"><span data-stu-id="6b55f-116">When an `@` symbol is followed by a [Razor reserved keyword](#razor-reserved-keywords), it transitions into Razor-specific markup.</span></span> <span data-ttu-id="6b55f-117">否則，會轉換成一般的 C#。</span><span class="sxs-lookup"><span data-stu-id="6b55f-117">Otherwise, it transitions into plain C#.</span></span>
 
-## <a name="razor-syntax"></a><span data-ttu-id="f5f33-115">Razor 語法</span><span class="sxs-lookup"><span data-stu-id="f5f33-115">Razor syntax</span></span>
-
-<span data-ttu-id="f5f33-116">Razor 支援 C#，並使用`@`轉換來自 HTML，以 C# 中的符號。</span><span class="sxs-lookup"><span data-stu-id="f5f33-116">Razor supports C# and uses the `@` symbol to transition from HTML to C#.</span></span> <span data-ttu-id="f5f33-117">Razor 評估 C# 運算式，並將它們呈現的 HTML 輸出中。</span><span class="sxs-lookup"><span data-stu-id="f5f33-117">Razor evaluates C# expressions and renders them in the HTML output.</span></span> <span data-ttu-id="f5f33-118">Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。</span><span class="sxs-lookup"><span data-stu-id="f5f33-118">Razor can transition from HTML into C# or into Razor-specific markup.</span></span> <span data-ttu-id="f5f33-119">當`@`符號後面[Razor 保留關鍵字](#razor-reserved-keywords)會轉換成特定的 Razor 標記，否則它會轉換成一般的 C#。</span><span class="sxs-lookup"><span data-stu-id="f5f33-119">When an `@` symbol is followed by a [Razor reserved keyword](#razor-reserved-keywords) it transitions into Razor-specific markup, otherwise it transitions into plain C#.</span></span>
-
-<a name=escape-at-label></a>
-
-<span data-ttu-id="f5f33-120">包含 HTML`@`符號可能需要逸出的第二個`@`符號。</span><span class="sxs-lookup"><span data-stu-id="f5f33-120">HTML containing `@` symbols may need to be escaped with a second `@` symbol.</span></span> <span data-ttu-id="f5f33-121">例如: </span><span class="sxs-lookup"><span data-stu-id="f5f33-121">For example:</span></span>
+<span data-ttu-id="6b55f-118">要逸出`@`Razor 標記中的符號，請使用第二個`@`符號：</span><span class="sxs-lookup"><span data-stu-id="6b55f-118">To escape an `@` symbol in Razor markup, use a second `@` symbol:</span></span>
 
 ```cshtml
 <p>@@Username</p>
 ```
 
-<span data-ttu-id="f5f33-122">會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="f5f33-122">would render the following HTML:</span></span>
+<span data-ttu-id="6b55f-119">程式碼會以 HTML 轉譯單一`@`符號：</span><span class="sxs-lookup"><span data-stu-id="6b55f-119">The code is rendered in HTML with a single `@` symbol:</span></span>
 
-```cshtml
+```html
 <p>@Username</p>
 ```
 
-<a name=razor-email-ref></a>
+<span data-ttu-id="6b55f-120">HTML 屬性和內容包含電子郵件地址不會將`@`符號為轉換字元。</span><span class="sxs-lookup"><span data-stu-id="6b55f-120">HTML attributes and content containing email addresses don't treat the `@` symbol as a transition character.</span></span> <span data-ttu-id="6b55f-121">電子郵件地址，在下列範例中被不受影響的 Razor 剖析：</span><span class="sxs-lookup"><span data-stu-id="6b55f-121">The email addresses in the following example are untouched by Razor parsing:</span></span>
 
-<span data-ttu-id="f5f33-123">HTML 屬性和內容包含電子郵件地址不會將`@`符號為轉換字元。</span><span class="sxs-lookup"><span data-stu-id="f5f33-123">HTML attributes and content containing email addresses don’t treat the `@` symbol as a transition character.</span></span>
+```cshtml
+<a href="mailto:Support@contoso.com">Support@contoso.com</a>
+```
 
-   `<a href="mailto:Support@contoso.com">Support@contoso.com</a>`
+## <a name="implicit-razor-expressions"></a><span data-ttu-id="6b55f-122">Razor 的隱含運算式</span><span class="sxs-lookup"><span data-stu-id="6b55f-122">Implicit Razor expressions</span></span>
 
-## <a name="implicit-razor-expressions"></a><span data-ttu-id="f5f33-124">Razor 的隱含運算式</span><span class="sxs-lookup"><span data-stu-id="f5f33-124">Implicit Razor expressions</span></span>
+<span data-ttu-id="6b55f-123">Razor 的隱含運算式開頭`@`後面接著 C# 程式碼：</span><span class="sxs-lookup"><span data-stu-id="6b55f-123">Implicit Razor expressions start with `@` followed by C# code:</span></span>
 
-<span data-ttu-id="f5f33-125">Razor 的隱含運算式開頭`@`後面接著 C# 程式碼。</span><span class="sxs-lookup"><span data-stu-id="f5f33-125">Implicit Razor expressions start with `@` followed by C# code.</span></span> <span data-ttu-id="f5f33-126">例如: </span><span class="sxs-lookup"><span data-stu-id="f5f33-126">For example:</span></span>
-
-```html
+```cshtml
 <p>@DateTime.Now</p>
 <p>@DateTime.IsLeapYear(2016)</p>
 ```
 
-<span data-ttu-id="f5f33-127">除了 C#`await`關鍵字的隱含運算式不能包含空格。</span><span class="sxs-lookup"><span data-stu-id="f5f33-127">With the exception of the C# `await` keyword implicit expressions must not contain spaces.</span></span> <span data-ttu-id="f5f33-128">比方說，您也可以只要 C# 陳述式已清除結束 intermingle 空格：</span><span class="sxs-lookup"><span data-stu-id="f5f33-128">For example, you can intermingle spaces as long as the C# statement has a clear ending:</span></span>
+<span data-ttu-id="6b55f-124">除了 C#`await`關鍵字，隱含運算式不能包含空格。</span><span class="sxs-lookup"><span data-stu-id="6b55f-124">With the exception of the C# `await` keyword, implicit expressions must not contain spaces.</span></span> <span data-ttu-id="6b55f-125">您可以在 C# 陳述式是否清除結束 intermingle 空格：</span><span class="sxs-lookup"><span data-stu-id="6b55f-125">You can intermingle spaces if the C# statement has a clear ending:</span></span>
 
-```html
+```cshtml
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-## <a name="explicit-razor-expressions"></a><span data-ttu-id="f5f33-129">Razor 的明確運算式</span><span class="sxs-lookup"><span data-stu-id="f5f33-129">Explicit Razor expressions</span></span>
+## <a name="explicit-razor-expressions"></a><span data-ttu-id="6b55f-126">Razor 的明確運算式</span><span class="sxs-lookup"><span data-stu-id="6b55f-126">Explicit Razor expressions</span></span>
 
-<span data-ttu-id="f5f33-130">Razor 的明確運算式包含 @ 有對稱的括號的符號。</span><span class="sxs-lookup"><span data-stu-id="f5f33-130">Explicit Razor expressions consists of an @ symbol with balanced parenthesis.</span></span> <span data-ttu-id="f5f33-131">例如，若要顯示上週的時間：</span><span class="sxs-lookup"><span data-stu-id="f5f33-131">For example, to render last week's time:</span></span>
+<span data-ttu-id="6b55f-127">Razor 的明確運算式組成`@`有對稱的括號的符號。</span><span class="sxs-lookup"><span data-stu-id="6b55f-127">Explicit Razor expressions consist of an `@` symbol with balanced parenthesis.</span></span> <span data-ttu-id="6b55f-128">若要轉譯上週的時間，會使用下列 Razor 標記：</span><span class="sxs-lookup"><span data-stu-id="6b55f-128">To render last week's time, the following Razor markup is used:</span></span>
 
-```html
+```cshtml
 <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
 ```
 
-<span data-ttu-id="f5f33-132">內的任何內容 @ （） 括號會評估並呈現至輸出。</span><span class="sxs-lookup"><span data-stu-id="f5f33-132">Any content within the @() parenthesis is evaluated and rendered to the output.</span></span>
+<span data-ttu-id="6b55f-129">內的任何內容`@()`括號會評估並呈現至輸出。</span><span class="sxs-lookup"><span data-stu-id="6b55f-129">Any content within the `@()` parenthesis is evaluated and rendered to the output.</span></span>
 
-<span data-ttu-id="f5f33-133">通常隱含運算式不可包含空格。</span><span class="sxs-lookup"><span data-stu-id="f5f33-133">Implicit expressions generally cannot contain spaces.</span></span> <span data-ttu-id="f5f33-134">例如，下列程式碼，一週會不減去目前的時間：</span><span class="sxs-lookup"><span data-stu-id="f5f33-134">For example, in the code below, one week is not subtracted from the current time:</span></span>
+<span data-ttu-id="6b55f-130">上一節中所述的隱含運算式通常不能包含空格。</span><span class="sxs-lookup"><span data-stu-id="6b55f-130">Implicit expressions, described in the previous section, generally can't contain spaces.</span></span> <span data-ttu-id="6b55f-131">下列程式碼中，一週未減去目前的時間：</span><span class="sxs-lookup"><span data-stu-id="6b55f-131">In the following code, one week isn't subtracted from the current time:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact.cshtml?range=20)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
-<span data-ttu-id="f5f33-135">這會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="f5f33-135">Which renders the following HTML:</span></span>
+<span data-ttu-id="6b55f-132">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-132">The code renders the following HTML:</span></span>
 
 ```html
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
 ```
 
-<span data-ttu-id="f5f33-136">您可以使用明確的運算式來串連文字與運算式結果：</span><span class="sxs-lookup"><span data-stu-id="f5f33-136">You can use an explicit expression to concatenate text with an expression result:</span></span>
+<span data-ttu-id="6b55f-133">您可以使用明確的運算式來串連文字與運算式結果：</span><span class="sxs-lookup"><span data-stu-id="6b55f-133">You can use an explicit expression to concatenate text with an expression result:</span></span>
 
 ```cshtml
 @{
@@ -103,70 +95,71 @@ ms.lasthandoff: 09/28/2017
 <p>Age@(joe.Age)</p>
 ```
 
-<span data-ttu-id="f5f33-137">沒有明確的運算式，`<p>Age@joe.Age</p>`會被視為電子郵件地址和`<p>Age@joe.Age</p>`都會呈現。</span><span class="sxs-lookup"><span data-stu-id="f5f33-137">Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an email address and `<p>Age@joe.Age</p>` would be rendered.</span></span> <span data-ttu-id="f5f33-138">做為明確的運算式，寫入時`<p>Age33</p>`轉譯。</span><span class="sxs-lookup"><span data-stu-id="f5f33-138">When written as an explicit expression, `<p>Age33</p>` is rendered.</span></span>
+<span data-ttu-id="6b55f-134">沒有明確的運算式，`<p>Age@joe.Age</p>`會被視為電子郵件地址和`<p>Age@joe.Age</p>`轉譯。</span><span class="sxs-lookup"><span data-stu-id="6b55f-134">Without the explicit expression, `<p>Age@joe.Age</p>` is treated as an email address, and `<p>Age@joe.Age</p>` is rendered.</span></span> <span data-ttu-id="6b55f-135">做為明確的運算式，寫入時`<p>Age33</p>`轉譯。</span><span class="sxs-lookup"><span data-stu-id="6b55f-135">When written as an explicit expression, `<p>Age33</p>` is rendered.</span></span>
 
-<a name=expression-encoding-label></a>
+## <a name="expression-encoding"></a><span data-ttu-id="6b55f-136">運算式的編碼方式</span><span class="sxs-lookup"><span data-stu-id="6b55f-136">Expression encoding</span></span>
 
-## <a name="expression-encoding"></a><span data-ttu-id="f5f33-139">運算式的編碼方式</span><span class="sxs-lookup"><span data-stu-id="f5f33-139">Expression encoding</span></span>
-
-<span data-ttu-id="f5f33-140">C# 運算式，評估為字串會以 HTML 編碼。</span><span class="sxs-lookup"><span data-stu-id="f5f33-140">C# expressions that evaluate to a string are HTML encoded.</span></span> <span data-ttu-id="f5f33-141">C# 運算式會評估得出`IHtmlContent`轉譯直接透過*IHtmlContent.WriteTo*。</span><span class="sxs-lookup"><span data-stu-id="f5f33-141">C# expressions that evaluate to `IHtmlContent` are rendered directly through *IHtmlContent.WriteTo*.</span></span> <span data-ttu-id="f5f33-142">C# 運算式未評估成*IHtmlContent*轉換成字串 (由*ToString*)，而且編碼在呈現之前。</span><span class="sxs-lookup"><span data-stu-id="f5f33-142">C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered.</span></span> <span data-ttu-id="f5f33-143">例如，下列的 Razor 標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-143">For example, the following Razor markup:</span></span>
+<span data-ttu-id="6b55f-137">C# 運算式，評估為字串會以 HTML 編碼。</span><span class="sxs-lookup"><span data-stu-id="6b55f-137">C# expressions that evaluate to a string are HTML encoded.</span></span> <span data-ttu-id="6b55f-138">C# 運算式會評估得出`IHtmlContent`轉譯直接透過`IHtmlContent.WriteTo`。</span><span class="sxs-lookup"><span data-stu-id="6b55f-138">C# expressions that evaluate to `IHtmlContent` are rendered directly through `IHtmlContent.WriteTo`.</span></span> <span data-ttu-id="6b55f-139">C# 運算式未評估成`IHtmlContent`會轉換成字串`ToString`和編碼它們在呈現之前。</span><span class="sxs-lookup"><span data-stu-id="6b55f-139">C# expressions that don't evaluate to `IHtmlContent` are converted to a string by `ToString` and encoded before they're rendered.</span></span>
 
 ```cshtml
 @("<span>Hello World</span>")
 ```
 
-<span data-ttu-id="f5f33-144">將 HTML 呈現此：</span><span class="sxs-lookup"><span data-stu-id="f5f33-144">Renders this HTML:</span></span>
+<span data-ttu-id="6b55f-140">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-140">The code renders the following HTML:</span></span>
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
 ```
 
-<span data-ttu-id="f5f33-145">其瀏覽器會呈現為：</span><span class="sxs-lookup"><span data-stu-id="f5f33-145">Which the browser renders as:</span></span>
+<span data-ttu-id="6b55f-141">HTML 會顯示為瀏覽器：</span><span class="sxs-lookup"><span data-stu-id="6b55f-141">The HTML is shown in the browser as:</span></span>
 
-`<span>Hello World</span>`
+```
+<span>Hello World</span>
+```
 
-<span data-ttu-id="f5f33-146">`HtmlHelper``Raw`輸出不會編碼，但不會轉譯為 HTML 標記。</span><span class="sxs-lookup"><span data-stu-id="f5f33-146">`HtmlHelper` `Raw` output is not encoded but rendered as HTML markup.</span></span>
+<span data-ttu-id="6b55f-142">`HtmlHelper.Raw`輸出不編碼，但轉譯為 HTML 標記。</span><span class="sxs-lookup"><span data-stu-id="6b55f-142">`HtmlHelper.Raw` output isn't encoded but rendered as HTML markup.</span></span>
 
->[!WARNING]
-> <span data-ttu-id="f5f33-147">使用`HtmlHelper.Raw`unsanitized 使用者輸入會造成安全性風險。</span><span class="sxs-lookup"><span data-stu-id="f5f33-147">Using `HtmlHelper.Raw` on unsanitized user input is a security risk.</span></span> <span data-ttu-id="f5f33-148">使用者輸入可能包含惡意的 JavaScript 或其他入侵。</span><span class="sxs-lookup"><span data-stu-id="f5f33-148">User input might contain malicious JavaScript or other exploits.</span></span> <span data-ttu-id="f5f33-149">免於使用者輸入很難，避免使用`HtmlHelper.Raw`使用者輸入。</span><span class="sxs-lookup"><span data-stu-id="f5f33-149">Sanitizing user input is difficult, avoid using `HtmlHelper.Raw` on user input.</span></span>
-
-<span data-ttu-id="f5f33-150">下列的 Razor 標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-150">The following Razor markup:</span></span>
+> [!WARNING]
+> <span data-ttu-id="6b55f-143">使用`HtmlHelper.Raw`unsanitized 使用者輸入會造成安全性風險。</span><span class="sxs-lookup"><span data-stu-id="6b55f-143">Using `HtmlHelper.Raw` on unsanitized user input is a security risk.</span></span> <span data-ttu-id="6b55f-144">使用者輸入可能包含惡意的 JavaScript 或其他入侵。</span><span class="sxs-lookup"><span data-stu-id="6b55f-144">User input might contain malicious JavaScript or other exploits.</span></span> <span data-ttu-id="6b55f-145">免於使用者輸入並不容易。</span><span class="sxs-lookup"><span data-stu-id="6b55f-145">Sanitizing user input is difficult.</span></span> <span data-ttu-id="6b55f-146">請避免使用`HtmlHelper.Raw`與使用者輸入。</span><span class="sxs-lookup"><span data-stu-id="6b55f-146">Avoid using `HtmlHelper.Raw` with user input.</span></span>
 
 ```cshtml
 @Html.Raw("<span>Hello World</span>")
 ```
 
-<span data-ttu-id="f5f33-151">將 HTML 呈現此：</span><span class="sxs-lookup"><span data-stu-id="f5f33-151">Renders this HTML:</span></span>
+<span data-ttu-id="6b55f-147">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-147">The code renders the following HTML:</span></span>
 
 ```html
 <span>Hello World</span>
 ```
 
-<a name=razor-code-blocks-label></a>
+## <a name="razor-code-blocks"></a><span data-ttu-id="6b55f-148">Razor 程式碼區塊</span><span class="sxs-lookup"><span data-stu-id="6b55f-148">Razor code blocks</span></span>
 
-## <a name="razor-code-blocks"></a><span data-ttu-id="f5f33-152">Razor 程式碼區塊</span><span class="sxs-lookup"><span data-stu-id="f5f33-152">Razor code blocks</span></span>
+<span data-ttu-id="6b55f-149">Razor 程式碼區塊的開頭`@`和由`{}`。</span><span class="sxs-lookup"><span data-stu-id="6b55f-149">Razor code blocks start with `@` and are enclosed by `{}`.</span></span> <span data-ttu-id="6b55f-150">不同於運算式中，不會呈現 C# 程式碼區塊內的程式碼。</span><span class="sxs-lookup"><span data-stu-id="6b55f-150">Unlike expressions, C# code inside code blocks isn't rendered.</span></span> <span data-ttu-id="6b55f-151">程式碼區塊和檢視中的運算式共用相同範圍和順序中所定義：</span><span class="sxs-lookup"><span data-stu-id="6b55f-151">Code blocks and expressions in a view share the same scope and are defined in order:</span></span>
 
-<span data-ttu-id="f5f33-153">Razor 程式碼區塊的開頭`@`和由`{}`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-153">Razor code blocks start with `@` and are enclosed by `{}`.</span></span> <span data-ttu-id="f5f33-154">不同於運算式中，C# 程式碼區塊內的程式碼不會轉譯。</span><span class="sxs-lookup"><span data-stu-id="f5f33-154">Unlike expressions, C# code inside code blocks is not rendered.</span></span> <span data-ttu-id="f5f33-155">程式碼區塊和 Razor 頁面中的運算式共用相同的範圍，以及定義順序 （也就是在程式碼區塊中的宣告會有的更新版本的程式碼區塊和運算式的範圍內）。</span><span class="sxs-lookup"><span data-stu-id="f5f33-155">Code blocks and expressions in a Razor page share the same scope and are defined in order (that is, declarations in a code block will be in scope for later code blocks and expressions).</span></span>
-
-```none
+```cshtml
 @{
-    var output = "Hello World";
+    var quote = "The future depends on what you do today. - Mahatma Gandhi";
 }
 
-<p>The rendered result: @output</p>
+<p>@quote</p>
+
+@{
+    quote = "Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.";
+}
+
+<p>@quote</p>
 ```
 
-<span data-ttu-id="f5f33-156">會轉譯：</span><span class="sxs-lookup"><span data-stu-id="f5f33-156">Would render:</span></span>
+<span data-ttu-id="6b55f-152">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-152">The code renders the following HTML:</span></span>
 
 ```html
-<p>The rendered result: Hello World</p>
+<p>The future depends on what you do today. - Mahatma Gandhi</p>
+<p>Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.</p>
 ```
 
-<a name=implicit-transitions-label></a>
+### <a name="implicit-transitions"></a><span data-ttu-id="6b55f-153">隱含轉換</span><span class="sxs-lookup"><span data-stu-id="6b55f-153">Implicit transitions</span></span>
 
-### <a name="implicit-transitions"></a><span data-ttu-id="f5f33-157">隱含轉換</span><span class="sxs-lookup"><span data-stu-id="f5f33-157">Implicit transitions</span></span>
-
-<span data-ttu-id="f5f33-158">程式碼區塊中的預設語言是 C# 中，但您可以轉換回 HTML。</span><span class="sxs-lookup"><span data-stu-id="f5f33-158">The default language in a code block is C#, but you can transition back to HTML.</span></span> <span data-ttu-id="f5f33-159">HTML 程式碼區塊內就會轉換成 HTML 呈現：</span><span class="sxs-lookup"><span data-stu-id="f5f33-159">HTML within a code block will transition back into rendering HTML:</span></span>
+<span data-ttu-id="6b55f-154">程式碼區塊中的預設語言是 C# 中，但您可以轉換回 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-154">The default language in a code block is C#, but you can transition back to HTML:</span></span>
 
 ```cshtml
 @{
@@ -175,11 +168,9 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<a name=explicit-delimited-transition-label></a>
+### <a name="explicit-delimited-transition"></a><span data-ttu-id="6b55f-155">明確分隔的轉換</span><span class="sxs-lookup"><span data-stu-id="6b55f-155">Explicit delimited transition</span></span>
 
-### <a name="explicit-delimited-transition"></a><span data-ttu-id="f5f33-160">明確分隔的轉換</span><span class="sxs-lookup"><span data-stu-id="f5f33-160">Explicit delimited transition</span></span>
-
-<span data-ttu-id="f5f33-161">若要定義應該呈現的 HTML 程式碼區塊的子區段，括住的字元來呈現使用 Razor`<text>`標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-161">To define a sub-section of a code block that should render HTML, surround the characters to be rendered with the Razor `<text>` tag:</span></span>
+<span data-ttu-id="6b55f-156">若要定義應該呈現的 HTML 程式碼區塊的子區段，使用 Razor 括住的字元轉譯**\<文字 >**標記：</span><span class="sxs-lookup"><span data-stu-id="6b55f-156">To define a sub-section of a code block that should render HTML, surround the characters for rendering with the Razor **\<text>** tag:</span></span>
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -189,13 +180,13 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<span data-ttu-id="f5f33-162">當您想要將不會圍繞著之 HTML 標記的 HTML 轉譯時，通常會使用此方法。</span><span class="sxs-lookup"><span data-stu-id="f5f33-162">You generally use this approach when you want to render HTML that is not surrounded by an HTML tag.</span></span> <span data-ttu-id="f5f33-163">沒有 HTML 或 Razor 的標籤，您可以取得 Razor 執行階段錯誤。</span><span class="sxs-lookup"><span data-stu-id="f5f33-163">Without an HTML or Razor tag, you get a Razor runtime error.</span></span>
+<span data-ttu-id="6b55f-157">當您想要將未包圍起來的 HTML 標記的 HTML 轉譯，請使用此方法。</span><span class="sxs-lookup"><span data-stu-id="6b55f-157">Use this approach when you want to render HTML that isn't surrounded by an HTML tag.</span></span> <span data-ttu-id="6b55f-158">沒有 HTML 或 Razor 的標籤，您會收到 Razor 執行階段錯誤。</span><span class="sxs-lookup"><span data-stu-id="6b55f-158">Without an HTML or Razor tag, you receive a Razor runtime error.</span></span>
 
-<a name=explicit-line-transition-with-label></a>
+<span data-ttu-id="6b55f-159">**\<文字 >**標記也很有用來轉譯內容時控制空白字元。</span><span class="sxs-lookup"><span data-stu-id="6b55f-159">The **\<text>** tag is also useful to control whitespace when rendering content.</span></span> <span data-ttu-id="6b55f-160">之間的內容**\<文字 >**呈現標記時之前, 或之後的任何空白字元**\<文字 >** HTML 輸出中出現的標籤。</span><span class="sxs-lookup"><span data-stu-id="6b55f-160">Only the content between the **\<text>** tags is rendered, and no whitespace before or after the **\<text>** tags appears in the HTML output.</span></span>
 
-### <a name="explicit-line-transition-with-"></a><span data-ttu-id="f5f33-164">使用明確列轉換`@:`</span><span class="sxs-lookup"><span data-stu-id="f5f33-164">Explicit Line Transition with `@:`</span></span>
+### <a name="explicit-line-transition-with-"></a><span data-ttu-id="6b55f-161">使用明確列轉換 @:</span><span class="sxs-lookup"><span data-stu-id="6b55f-161">Explicit Line Transition with @:</span></span>
 
-<span data-ttu-id="f5f33-165">若要轉譯為 HTML 的整行的其餘部分的程式碼區塊內，使用`@:`語法：</span><span class="sxs-lookup"><span data-stu-id="f5f33-165">To render the rest of an entire line as HTML inside a code block, use the `@:` syntax:</span></span>
+<span data-ttu-id="6b55f-162">若要轉譯為 HTML 的整行的其餘部分的程式碼區塊內，使用`@:`語法：</span><span class="sxs-lookup"><span data-stu-id="6b55f-162">To render the rest of an entire line as HTML inside a code block, use the `@:` syntax:</span></span>
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -205,31 +196,29 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-<span data-ttu-id="f5f33-166">不含`@:`上述程式碼，您會取得 Razor，執行階段錯誤。</span><span class="sxs-lookup"><span data-stu-id="f5f33-166">Without the `@:` in the code above, you'd get a Razor run time error.</span></span>
+<span data-ttu-id="6b55f-163">不含`@:`在程式碼中，您會收到 Razor 執行階段錯誤。</span><span class="sxs-lookup"><span data-stu-id="6b55f-163">Without the `@:` in the code, you recieve a Razor runtime error.</span></span>
 
-<a name=control-structures-razor-label></a>
+## <a name="control-structures"></a><span data-ttu-id="6b55f-164">控制結構</span><span class="sxs-lookup"><span data-stu-id="6b55f-164">Control Structures</span></span>
 
-## <a name="control-structures"></a><span data-ttu-id="f5f33-167">控制結構</span><span class="sxs-lookup"><span data-stu-id="f5f33-167">Control Structures</span></span>
+<span data-ttu-id="6b55f-165">控制結構是一種擴充的程式碼區塊。</span><span class="sxs-lookup"><span data-stu-id="6b55f-165">Control structures are an extension of code blocks.</span></span> <span data-ttu-id="6b55f-166">所有層面的程式碼區塊 （轉換到標記中，內嵌 C#） 也適都用於下列的結構。</span><span class="sxs-lookup"><span data-stu-id="6b55f-166">All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.</span></span>
 
-<span data-ttu-id="f5f33-168">控制結構是一種擴充的程式碼區塊。</span><span class="sxs-lookup"><span data-stu-id="f5f33-168">Control structures are an extension of code blocks.</span></span> <span data-ttu-id="f5f33-169">所有層面的程式碼區塊 （轉換到標記中，內嵌 C#） 也適都用於下列的結構。</span><span class="sxs-lookup"><span data-stu-id="f5f33-169">All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.</span></span>
+### <a name="conditionals-if-else-if-else-and-switch"></a><span data-ttu-id="6b55f-167">條件式@if，else 的 if、 和@switch</span><span class="sxs-lookup"><span data-stu-id="6b55f-167">Conditionals @if, else if, else, and @switch</span></span>
 
-### <a name="conditionals-if-else-if-else-and-switch"></a><span data-ttu-id="f5f33-170">條件式`@if`， `else if`，`else`和`@switch`</span><span class="sxs-lookup"><span data-stu-id="f5f33-170">Conditionals `@if`, `else if`, `else` and `@switch`</span></span>
-
-<span data-ttu-id="f5f33-171">`@if`系列可讓您控制執行程式碼：</span><span class="sxs-lookup"><span data-stu-id="f5f33-171">The `@if` family controls when code runs:</span></span>
+<span data-ttu-id="6b55f-168">`@if`控制項時執行程式碼：</span><span class="sxs-lookup"><span data-stu-id="6b55f-168">`@if` controls when code runs:</span></span>
 
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 ```
 
-<span data-ttu-id="f5f33-172">`else`和`else if`不需要`@`符號：</span><span class="sxs-lookup"><span data-stu-id="f5f33-172">`else` and `else if` don't require the `@` symbol:</span></span>
+<span data-ttu-id="6b55f-169">`else`和`else if`不需要`@`符號：</span><span class="sxs-lookup"><span data-stu-id="6b55f-169">`else` and `else if` don't require the `@` symbol:</span></span>
 
 ```cshtml
 @if (value % 2 == 0)
 {
-    <p>The value was even</p>
+    <p>The value was even.</p>
 }
 else if (value >= 1337)
 {
@@ -237,11 +226,11 @@ else if (value >= 1337)
 }
 else
 {
-    <p>The value was not large and is odd.</p>
+    <p>The value is odd and small.</p>
 }
 ```
 
-<span data-ttu-id="f5f33-173">您可以使用 switch 陳述式如下：</span><span class="sxs-lookup"><span data-stu-id="f5f33-173">You can use a switch statement like this:</span></span>
+<span data-ttu-id="6b55f-170">您可以使用 switch 陳述式如下：</span><span class="sxs-lookup"><span data-stu-id="6b55f-170">You can use a switch statement like this:</span></span>
 
 ```cshtml
 @switch (value)
@@ -253,26 +242,27 @@ else
         <p>Your number is 1337!</p>
         break;
     default:
-        <p>Your number was not 1 or 1337.</p>
+        <p>Your number wasn't 1 or 1337.</p>
         break;
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a><span data-ttu-id="f5f33-174">迴圈`@for`， `@foreach`， `@while`，和`@do while`</span><span class="sxs-lookup"><span data-stu-id="f5f33-174">Looping `@for`, `@foreach`, `@while`, and `@do while`</span></span>
+### <a name="looping-for-foreach-while-and-do-while"></a><span data-ttu-id="6b55f-171">迴圈@for， @foreach， @while，和@do時</span><span class="sxs-lookup"><span data-stu-id="6b55f-171">Looping @for, @foreach, @while, and @do while</span></span>
 
-<span data-ttu-id="f5f33-175">您可以將迴圈控制陳述式的樣板化 HTML 轉譯。</span><span class="sxs-lookup"><span data-stu-id="f5f33-175">You can render templated HTML with looping control statements.</span></span> <span data-ttu-id="f5f33-176">例如，若要呈現的人員清單：</span><span class="sxs-lookup"><span data-stu-id="f5f33-176">For example, to render a list of people:</span></span>
+<span data-ttu-id="6b55f-172">您可以將迴圈控制陳述式的樣板化 HTML 轉譯。</span><span class="sxs-lookup"><span data-stu-id="6b55f-172">You can render templated HTML with looping control statements.</span></span> <span data-ttu-id="6b55f-173">若要轉譯的人員清單：</span><span class="sxs-lookup"><span data-stu-id="6b55f-173">To render a list of people:</span></span>
 
 ```cshtml
 @{
     var people = new Person[]
     {
-          new Person("John", 33),
-          new Person("Doe", 41),
+          new Person("Weston", 33),
+          new Person("Johnathon", 41),
+          ...
     };
 }
 ```
 
-<span data-ttu-id="f5f33-177">您可以使用任何下列的迴圈陳述式：</span><span class="sxs-lookup"><span data-stu-id="f5f33-177">You can use any of the following looping statements:</span></span>
+<span data-ttu-id="6b55f-174">您可以使用任何下列的迴圈陳述式：</span><span class="sxs-lookup"><span data-stu-id="6b55f-174">You can use any of the following looping statements:</span></span>
 
 `@for`
 
@@ -323,32 +313,32 @@ else
 } while (i < people.Length);
 ```
 
-### <a name="compound-using"></a><span data-ttu-id="f5f33-178">複合`@using`</span><span class="sxs-lookup"><span data-stu-id="f5f33-178">Compound `@using`</span></span>
+### <a name="compound-using"></a><span data-ttu-id="6b55f-175">複合@using</span><span class="sxs-lookup"><span data-stu-id="6b55f-175">Compound @using</span></span>
 
-<span data-ttu-id="f5f33-179">在 C# using 陳述式用來確保處置物件。</span><span class="sxs-lookup"><span data-stu-id="f5f33-179">In C# a using statement is used to ensure an object is disposed.</span></span> <span data-ttu-id="f5f33-180">Razor 中相同的機制可用來建立包含其他內容的 HTML helper。</span><span class="sxs-lookup"><span data-stu-id="f5f33-180">In Razor this same mechanism can be used to create HTML helpers that contain additional content.</span></span> <span data-ttu-id="f5f33-181">比方說，我們可以利用 HTML Helper 呈現表單標記與`@using`陳述式：</span><span class="sxs-lookup"><span data-stu-id="f5f33-181">For instance, we can utilize HTML Helpers to render a form tag with the `@using` statement:</span></span>
+<span data-ttu-id="6b55f-176">在 C# 中，`using`陳述式用來確保處置物件。</span><span class="sxs-lookup"><span data-stu-id="6b55f-176">In C#, a `using` statement is used to ensure an object is disposed.</span></span> <span data-ttu-id="6b55f-177">在 Razor，相同的機制用來建立包含其他內容的 HTML Helper。</span><span class="sxs-lookup"><span data-stu-id="6b55f-177">In Razor, the same mechanism is used to create HTML Helpers that contain additional content.</span></span> <span data-ttu-id="6b55f-178">比方說，您可以利用 HTML Helper 呈現表單標記與`@using`陳述式：</span><span class="sxs-lookup"><span data-stu-id="6b55f-178">For instance, you can utilize HTML Helpers to render a form tag with the `@using` statement:</span></span>
 
 ```cshtml
 @using (Html.BeginForm())
 {
     <div>
         email:
-        <input type="email" id="Email" name="Email" value="" />
-        <button type="submit"> Register </button>
+        <input type="email" id="Email" value="">
+        <button>Register</button>
     </div>
 }
 ```
 
-<span data-ttu-id="f5f33-182">您也可以執行範圍層級的動作，如上所示使用[標記協助程式](tag-helpers/index.md)。</span><span class="sxs-lookup"><span data-stu-id="f5f33-182">You can also perform scope level actions like the above with [Tag Helpers](tag-helpers/index.md).</span></span>
+<span data-ttu-id="6b55f-179">您也可以執行與領域層級動作[標記協助程式](xref:mvc/views/tag-helpers/intro)。</span><span class="sxs-lookup"><span data-stu-id="6b55f-179">You can also perform scope-level actions with [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
 
-### <a name="try-catch-finally"></a><span data-ttu-id="f5f33-183">`@try`, `catch`, `finally`</span><span class="sxs-lookup"><span data-stu-id="f5f33-183">`@try`, `catch`, `finally`</span></span>
+### <a name="try-catch-finally"></a><span data-ttu-id="6b55f-180">@trycatch、 finally</span><span class="sxs-lookup"><span data-stu-id="6b55f-180">@try, catch, finally</span></span>
 
-<span data-ttu-id="f5f33-184">例外狀況處理會類似於 C#:</span><span class="sxs-lookup"><span data-stu-id="f5f33-184">Exception handling is similar to  C#:</span></span>
+<span data-ttu-id="6b55f-181">例外狀況處理會類似於 C#:</span><span class="sxs-lookup"><span data-stu-id="6b55f-181">Exception handling is similar to C#:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
 
-### `@lock`
+### <a name="lock"></a>@lock
 
-<span data-ttu-id="f5f33-185">Razor 具有保護與 lock 陳述式的關鍵區段的功能：</span><span class="sxs-lookup"><span data-stu-id="f5f33-185">Razor has the capability to protect critical sections with lock statements:</span></span>
+<span data-ttu-id="6b55f-182">Razor 具有保護與 lock 陳述式的關鍵區段的功能：</span><span class="sxs-lookup"><span data-stu-id="6b55f-182">Razor has the capability to protect critical sections with lock statements:</span></span>
 
 ```cshtml
 @lock (SomeLock)
@@ -357,247 +347,231 @@ else
 }
 ```
 
-### <a name="comments"></a><span data-ttu-id="f5f33-186">註解</span><span class="sxs-lookup"><span data-stu-id="f5f33-186">Comments</span></span>
+### <a name="comments"></a><span data-ttu-id="6b55f-183">註解</span><span class="sxs-lookup"><span data-stu-id="6b55f-183">Comments</span></span>
 
-<span data-ttu-id="f5f33-187">Razor 支援 C# 和 HTML 註解。</span><span class="sxs-lookup"><span data-stu-id="f5f33-187">Razor supports C# and HTML comments.</span></span> <span data-ttu-id="f5f33-188">下列標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-188">The following markup:</span></span>
+<span data-ttu-id="6b55f-184">Razor 支援 C# 和 HTML 註解：</span><span class="sxs-lookup"><span data-stu-id="6b55f-184">Razor supports C# and HTML comments:</span></span>
 
 ```cshtml
 @{
-    /* C# comment. */
-    // Another C# comment.
+    /* C# comment */
+    // Another C# comment
 }
 <!-- HTML comment -->
 ```
 
-<span data-ttu-id="f5f33-189">轉譯伺服器：</span><span class="sxs-lookup"><span data-stu-id="f5f33-189">Is rendered by the server as:</span></span>
+<span data-ttu-id="6b55f-185">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-185">The code renders the following HTML:</span></span>
 
-```cshtml
+```html
 <!-- HTML comment -->
 ```
 
-<span data-ttu-id="f5f33-190">呈現頁面之前，伺服器會移除 razor 註解。</span><span class="sxs-lookup"><span data-stu-id="f5f33-190">Razor comments are removed by the server before the page is rendered.</span></span> <span data-ttu-id="f5f33-191">使用 razor`@*  *@`來分隔註解。</span><span class="sxs-lookup"><span data-stu-id="f5f33-191">Razor uses `@*  *@` to delimit comments.</span></span> <span data-ttu-id="f5f33-192">下列程式碼會標記為註解，所以伺服器將不會呈現任何標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-192">The following code is commented out, so the server will not render any markup:</span></span>
+<span data-ttu-id="6b55f-186">呈現網頁之前，伺服器會移除 razor 註解。</span><span class="sxs-lookup"><span data-stu-id="6b55f-186">Razor comments are removed by the server before the webpage is rendered.</span></span> <span data-ttu-id="6b55f-187">使用 razor`@*  *@`來分隔註解。</span><span class="sxs-lookup"><span data-stu-id="6b55f-187">Razor uses `@*  *@` to delimit comments.</span></span> <span data-ttu-id="6b55f-188">下列程式碼會標記為註解，讓伺服器不會呈現任何標記：</span><span class="sxs-lookup"><span data-stu-id="6b55f-188">The following code is commented out, so the server doesn't render any markup:</span></span>
 
 ```cshtml
 @*
- @{
-     /* C# comment. */
-     // Another C# comment.
- }
- <!-- HTML comment -->
+    @{
+        /* C# comment */
+        // Another C# comment
+    }
+    <!-- HTML comment -->
 *@
 ```
 
-<a name=razor-directives-label></a>
+## <a name="directives"></a><span data-ttu-id="6b55f-189">指示詞</span><span class="sxs-lookup"><span data-stu-id="6b55f-189">Directives</span></span>
 
-## <a name="directives"></a><span data-ttu-id="f5f33-193">指示詞</span><span class="sxs-lookup"><span data-stu-id="f5f33-193">Directives</span></span>
+<span data-ttu-id="6b55f-190">Razor 指示詞都由下列保留的關鍵字的隱含運算式`@`符號。</span><span class="sxs-lookup"><span data-stu-id="6b55f-190">Razor directives are represented by implicit expressions with reserved keywords following the `@` symbol.</span></span> <span data-ttu-id="6b55f-191">指示詞通常會變更的方式，檢視會剖析或啟用不同的功能。</span><span class="sxs-lookup"><span data-stu-id="6b55f-191">A directive typically changes the way a view is parsed or enables different functionality.</span></span>
 
-<span data-ttu-id="f5f33-194">Razor 指示詞都由下列保留的關鍵字的隱含運算式`@`符號。</span><span class="sxs-lookup"><span data-stu-id="f5f33-194">Razor directives are represented by implicit expressions with reserved keywords following the `@` symbol.</span></span> <span data-ttu-id="f5f33-195">指示詞通常會變更網頁剖析的方式，或是啟用 Razor 頁面內的不同功能。</span><span class="sxs-lookup"><span data-stu-id="f5f33-195">A directive will typically change the way a page is parsed or enable different functionality within your Razor page.</span></span>
-
-<span data-ttu-id="f5f33-196">了解如何 Razor 產生檢視的程式碼將更易於了解指示詞的運作方式。</span><span class="sxs-lookup"><span data-stu-id="f5f33-196">Understanding how Razor generates code for a view will make it easier to understand how directives work.</span></span> <span data-ttu-id="f5f33-197">Razor 頁面用來產生 C# 檔案。</span><span class="sxs-lookup"><span data-stu-id="f5f33-197">A Razor page is used to generate a C# file.</span></span> <span data-ttu-id="f5f33-198">例如，此 Razor 頁面：</span><span class="sxs-lookup"><span data-stu-id="f5f33-198">For example, this Razor page:</span></span>
+<span data-ttu-id="6b55f-192">了解 Razor 如何產生程式碼 檢視，可以更輕鬆地了解指示詞的運作方式。</span><span class="sxs-lookup"><span data-stu-id="6b55f-192">Understanding how Razor generates code for a view makes it easier to understand how directives work.</span></span>
 
 [!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
 
-<span data-ttu-id="f5f33-199">產生的類別如下所示：</span><span class="sxs-lookup"><span data-stu-id="f5f33-199">Generates a class similar to the following:</span></span>
+<span data-ttu-id="6b55f-193">程式碼會產生的類別如下所示：</span><span class="sxs-lookup"><span data-stu-id="6b55f-193">The code generates a class similar to the following:</span></span>
 
 ```csharp
 public class _Views_Something_cshtml : RazorPage<dynamic>
 {
     public override async Task ExecuteAsync()
     {
-        var output = "Hello World";
+        var output = "Getting old ain't for wimps! - Anonymous";
 
-        WriteLiteral("/r/n<div>Output: ");
+        WriteLiteral("/r/n<div>Quote of the Day: ");
         Write(output);
         WriteLiteral("</div>");
     }
 }
 ```
 
-<span data-ttu-id="f5f33-200">[檢視檢視產生的 Razor C# 類別](#razor-customcompilationservice-label)說明如何檢視這個產生的類別。</span><span class="sxs-lookup"><span data-stu-id="f5f33-200">[Viewing the Razor C# class generated for a view](#razor-customcompilationservice-label) explains how to view this generated class.</span></span>
+<span data-ttu-id="6b55f-194">在本文中 > 一節稍後[檢視產生檢視的 Razor C# 類別](#viewing-the-razor-c-class-generated-for-a-view)說明如何檢視這個產生的類別。</span><span class="sxs-lookup"><span data-stu-id="6b55f-194">Later in this article, the section [Viewing the Razor C# class generated for a view](#viewing-the-razor-c-class-generated-for-a-view) explains how to view this generated class.</span></span>
 
-### `@using`
+### <a name="using"></a>@using
 
-<span data-ttu-id="f5f33-201">`@using`指示詞會將 c#`using`產生的 razor 頁面指示詞：</span><span class="sxs-lookup"><span data-stu-id="f5f33-201">The `@using` directive will add the c# `using` directive to the generated razor page:</span></span>
+<span data-ttu-id="6b55f-195">`@using`指示詞加入 C#`using`指示詞加入產生的檢視：</span><span class="sxs-lookup"><span data-stu-id="6b55f-195">The `@using` directive adds the C# `using` directive to the generated view:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
 
-### `@model`
+### <a name="model"></a>@model
 
-<span data-ttu-id="f5f33-202">`@model`指示詞會指定傳遞至 Razor 頁面的模型型別。</span><span class="sxs-lookup"><span data-stu-id="f5f33-202">The `@model` directive specifies the type of the model passed to the Razor page.</span></span> <span data-ttu-id="f5f33-203">其使用下列語法：</span><span class="sxs-lookup"><span data-stu-id="f5f33-203">It uses the following syntax:</span></span>
+<span data-ttu-id="6b55f-196">`@model`指示詞會指定傳遞至檢視的模型型別：</span><span class="sxs-lookup"><span data-stu-id="6b55f-196">The `@model` directive specifies the type of the model passed to a view:</span></span>
 
 ```cshtml
 @model TypeNameOfModel
 ```
 
-<span data-ttu-id="f5f33-204">例如，如果您建立的 ASP.NET Core MVC 應用程式與個別使用者帳戶*Views/Account/Login.cshtml* Razor 檢視包含下列模型宣告：</span><span class="sxs-lookup"><span data-stu-id="f5f33-204">For example, if you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* Razor view contains the following model declaration:</span></span>
+<span data-ttu-id="6b55f-197">如果您建立的 ASP.NET Core MVC 應用程式與個別使用者帳戶*Views/Account/Login.cshtml*檢視包含下列模型宣告：</span><span class="sxs-lookup"><span data-stu-id="6b55f-197">If you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* view contains the following model declaration:</span></span>
 
 ```cshtml
 @model LoginViewModel
 ```
 
-<span data-ttu-id="f5f33-205">在上述的類別範例中，產生的類別繼承自`RazorPage<dynamic>`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-205">In the preceding class example, the class generated inherits from `RazorPage<dynamic>`.</span></span> <span data-ttu-id="f5f33-206">藉由新增`@model`您控制所繼承。</span><span class="sxs-lookup"><span data-stu-id="f5f33-206">By adding an `@model` you control what’s inherited.</span></span> <span data-ttu-id="f5f33-207">例如</span><span class="sxs-lookup"><span data-stu-id="f5f33-207">For example</span></span>
-
-```cshtml
-@model LoginViewModel
-```
-
-<span data-ttu-id="f5f33-208">會產生下列類別</span><span class="sxs-lookup"><span data-stu-id="f5f33-208">Generates the following class</span></span>
+<span data-ttu-id="6b55f-198">產生的類別繼承自`RazorPage<dynamic>`:</span><span class="sxs-lookup"><span data-stu-id="6b55f-198">The class generated inherits from `RazorPage<dynamic>`:</span></span>
 
 ```csharp
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
-<span data-ttu-id="f5f33-209">Razor 頁面公開`Model`屬性，以存取模型傳遞至網頁。</span><span class="sxs-lookup"><span data-stu-id="f5f33-209">Razor pages expose a `Model` property for accessing the model passed to the page.</span></span>
+<span data-ttu-id="6b55f-199">Razor 公開`Model`屬性，以存取模型傳遞至檢視：</span><span class="sxs-lookup"><span data-stu-id="6b55f-199">Razor exposes a `Model` property for accessing the model passed to the view:</span></span>
 
 ```cshtml
 <div>The Login Email: @Model.Email</div>
 ```
 
-<span data-ttu-id="f5f33-210">`@model`指示詞會指定此屬性的型別 (藉由指定`T`中`RazorPage<T>`對您的頁面產生的類別衍生自)。</span><span class="sxs-lookup"><span data-stu-id="f5f33-210">The `@model` directive specified the type of this property (by specifying the `T` in `RazorPage<T>` that the generated class for your page derives from).</span></span> <span data-ttu-id="f5f33-211">如果您未指定`@model`指示詞`Model`屬性都屬於類型`dynamic`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-211">If you don't specify the `@model` directive the `Model` property will be of type `dynamic`.</span></span> <span data-ttu-id="f5f33-212">模型值會從控制器到檢視。</span><span class="sxs-lookup"><span data-stu-id="f5f33-212">The value of the model is passed from the controller to the view.</span></span> <span data-ttu-id="f5f33-213">請參閱[強類型模型和@model關鍵字](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="f5f33-213">See [Strongly typed models and the @model keyword](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) for more information.</span></span>
+<span data-ttu-id="6b55f-200">`@model`指示詞會指定此屬性的型別。</span><span class="sxs-lookup"><span data-stu-id="6b55f-200">The `@model` directive specifies the type of this property.</span></span> <span data-ttu-id="6b55f-201">指示詞會指定`T`中`RazorPage<T>`，所產生類別，衍生自的檢視。</span><span class="sxs-lookup"><span data-stu-id="6b55f-201">The directive specifies the `T` in `RazorPage<T>` that the generated class that your view derives from.</span></span> <span data-ttu-id="6b55f-202">如果您未指定`@model`指示詞，`Model`屬性屬於型別`dynamic`。</span><span class="sxs-lookup"><span data-stu-id="6b55f-202">If you don't specify the `@model` directive, the `Model` property is of type `dynamic`.</span></span> <span data-ttu-id="6b55f-203">模型值會從控制器到檢視。</span><span class="sxs-lookup"><span data-stu-id="6b55f-203">The value of the model is passed from the controller to the view.</span></span> <span data-ttu-id="6b55f-204">請參閱[強類型模型和@model關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="6b55f-204">See [Strongly typed models and the @model keyword](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label) for more information.</span></span>
 
-### `@inherits`
+### <a name="inherits"></a>@inherits
 
-<span data-ttu-id="f5f33-214">`@inherits`指示詞讓您完整控制 Razor 頁面所繼承的類別：</span><span class="sxs-lookup"><span data-stu-id="f5f33-214">The `@inherits` directive gives you full control of the class your Razor page inherits:</span></span>
+<span data-ttu-id="6b55f-205">`@inherits`指示詞讓您完整控制您的檢視所繼承的類別：</span><span class="sxs-lookup"><span data-stu-id="6b55f-205">The `@inherits` directive gives you full control of the class your view inherits:</span></span>
 
 ```cshtml
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-<span data-ttu-id="f5f33-215">比方說，假設我們有下列自訂 Razor 頁面類型：</span><span class="sxs-lookup"><span data-stu-id="f5f33-215">For instance, let’s say we had the following custom Razor page type:</span></span>
+<span data-ttu-id="6b55f-206">以下是自訂的 Razor 頁面類型：</span><span class="sxs-lookup"><span data-stu-id="6b55f-206">The following is a custom Razor page type:</span></span>
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
-<span data-ttu-id="f5f33-216">會產生下列 Razor `<div>Custom text: Hello World</div>`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-216">The following Razor would generate `<div>Custom text: Hello World</div>`.</span></span>
+<span data-ttu-id="6b55f-207">`CustomText`會顯示在檢視中：</span><span class="sxs-lookup"><span data-stu-id="6b55f-207">The `CustomText` is displayed in a view:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
 
-<span data-ttu-id="f5f33-217">您無法使用`@model`和`@inherits`相同頁面上。</span><span class="sxs-lookup"><span data-stu-id="f5f33-217">You can't use `@model` and `@inherits` on the same page.</span></span> <span data-ttu-id="f5f33-218">您可以擁有`@inherits`中*_ViewImports.cshtml* Razor 網頁匯入的檔案。</span><span class="sxs-lookup"><span data-stu-id="f5f33-218">You can have `@inherits` in a *_ViewImports.cshtml* file that the Razor page imports.</span></span> <span data-ttu-id="f5f33-219">例如，如果您的 Razor 檢視匯入下列*_ViewImports.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="f5f33-219">For example, if your Razor view imported the following *_ViewImports.cshtml* file:</span></span>
+<span data-ttu-id="6b55f-208">程式碼會轉譯下列 HTML:</span><span class="sxs-lookup"><span data-stu-id="6b55f-208">The code renders the following HTML:</span></span>
 
-[!code-html[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
-
-<span data-ttu-id="f5f33-220">下列的強型別的 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f5f33-220">The following strongly typed Razor page</span></span>
-
-[!code-html[Main](razor/sample/Views/Home/Login1.cshtml)]
-
-<span data-ttu-id="f5f33-221">會產生這個 HTML 標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-221">Generates this HTML markup:</span></span>
-
-```cshtml
-<div>The Login Email: Rick@contoso.com</div>
-<div>Custom text: Hello World</div>
+```html
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
-<span data-ttu-id="f5f33-222">當傳遞"[Rick@contoso.com](mailto:Rick@contoso.com)"在模型中：</span><span class="sxs-lookup"><span data-stu-id="f5f33-222">When passed "[Rick@contoso.com](mailto:Rick@contoso.com)" in the model:</span></span>
+<span data-ttu-id="6b55f-209">您無法使用`@model`和`@inherits`相同檢視中。</span><span class="sxs-lookup"><span data-stu-id="6b55f-209">You can't use `@model` and `@inherits` in the same view.</span></span> <span data-ttu-id="6b55f-210">您可以擁有`@inherits`中*_ViewImports.cshtml*檢視匯入的檔案：</span><span class="sxs-lookup"><span data-stu-id="6b55f-210">You can have `@inherits` in a *_ViewImports.cshtml* file that the view imports:</span></span>
 
-   <span data-ttu-id="f5f33-223">如需詳細資訊，請參閱 [Layout](layout.md)。</span><span class="sxs-lookup"><span data-stu-id="f5f33-223">See [Layout](layout.md) for more information.</span></span>
+[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-### `@inject`
+<span data-ttu-id="6b55f-211">強型別檢視的範例如下：</span><span class="sxs-lookup"><span data-stu-id="6b55f-211">The following is an example of a strongly-typed view:</span></span>
 
-<span data-ttu-id="f5f33-224">`@inject`指示詞可讓您將從服務程式[服務容器](../../fundamentals/dependency-injection.md)插入 Razor 網頁使用。</span><span class="sxs-lookup"><span data-stu-id="f5f33-224">The `@inject` directive enables you to inject a service from your [service container](../../fundamentals/dependency-injection.md)  into your Razor page for use.</span></span> <span data-ttu-id="f5f33-225">請參閱[檢視的相依性插入](dependency-injection.md)。</span><span class="sxs-lookup"><span data-stu-id="f5f33-225">See [Dependency injection into views](dependency-injection.md).</span></span>
+[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
 
-<a name="functions"></a>
+<span data-ttu-id="6b55f-212">如果 「rick@contoso.com」 會在模型中，檢視就會產生下列的 HTML 標記：</span><span class="sxs-lookup"><span data-stu-id="6b55f-212">If "rick@contoso.com" is passed in the model, the view generates the following HTML markup:</span></span>
 
-### `@functions`
+```html
+<div>The Login Email: rick@contoso.com</div>
+<div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
+```
 
-<span data-ttu-id="f5f33-226">`@functions`指示詞可讓您將函式層級內容加入至您的 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="f5f33-226">The `@functions` directive enables you to add function level content to your Razor page.</span></span> <span data-ttu-id="f5f33-227">其語法為：</span><span class="sxs-lookup"><span data-stu-id="f5f33-227">The syntax is:</span></span>
+### <a name="inject"></a>@inject
+
+<span data-ttu-id="6b55f-213">`@inject`指示詞可讓您將從服務程式[服務容器](xref:fundamentals/dependency-injection)到您的檢視。</span><span class="sxs-lookup"><span data-stu-id="6b55f-213">The `@inject` directive enables you to inject a service from your [service container](xref:fundamentals/dependency-injection) into your view.</span></span> <span data-ttu-id="6b55f-214">請參閱[檢視的相依性插入](xref:mvc/views/dependency-injection)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="6b55f-214">See [Dependency injection into views](xref:mvc/views/dependency-injection) for more information.</span></span>
+
+### <a name="functions"></a>@functions
+
+<span data-ttu-id="6b55f-215">`@functions`指示詞可讓您將函式層級內容加入至檢視：</span><span class="sxs-lookup"><span data-stu-id="6b55f-215">The `@functions` directive enables you to add function-level content to a view:</span></span>
 
 ```cshtml
 @functions { // C# Code }
 ```
 
-<span data-ttu-id="f5f33-228">例如: </span><span class="sxs-lookup"><span data-stu-id="f5f33-228">For example:</span></span>
+<span data-ttu-id="6b55f-216">例如: </span><span class="sxs-lookup"><span data-stu-id="6b55f-216">For example:</span></span>
 
-[!code-html[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
 
-<span data-ttu-id="f5f33-229">會產生下列的 HTML 標記：</span><span class="sxs-lookup"><span data-stu-id="f5f33-229">Generates the following HTML markup:</span></span>
+<span data-ttu-id="6b55f-217">程式碼會產生下列的 HTML 標記：</span><span class="sxs-lookup"><span data-stu-id="6b55f-217">The code generates the following HTML markup:</span></span>
 
-```cshtml
+```html
 <div>From method: Hello</div>
 ```
 
-<span data-ttu-id="f5f33-230">產生 Razor 的 C# 看起來像：</span><span class="sxs-lookup"><span data-stu-id="f5f33-230">The generated Razor C# looks like:</span></span>
+<span data-ttu-id="6b55f-218">下列程式碼會產生的 Razor C# 類別：</span><span class="sxs-lookup"><span data-stu-id="6b55f-218">The following code is the generated Razor C# class:</span></span>
 
 [!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
-### `@section`
+### <a name="section"></a>@section
 
-<span data-ttu-id="f5f33-231">`@section`指示詞用於搭配[版面配置頁](layout.md)啟用檢視，以呈現在呈現的 HTML 頁面的不同部分的內容。</span><span class="sxs-lookup"><span data-stu-id="f5f33-231">The `@section` directive is used in conjunction with the [layout page](layout.md) to enable views to render content in different parts of the rendered HTML page.</span></span> <span data-ttu-id="f5f33-232">請參閱[區段](layout.md#layout-sections-label)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="f5f33-232">See [Sections](layout.md#layout-sections-label) for more information.</span></span>
+<span data-ttu-id="6b55f-219">`@section`指示詞用於搭配[配置](xref:mvc/views/layout)啟用檢視轉譯的 HTML 網頁的不同部分中的內容。</span><span class="sxs-lookup"><span data-stu-id="6b55f-219">The `@section` directive is used in conjunction with the [layout](xref:mvc/views/layout) to enable views to render content in different parts of the HTML page.</span></span> <span data-ttu-id="6b55f-220">請參閱[區段](xref:mvc/views/layout#layout-sections-label)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="6b55f-220">See [Sections](xref:mvc/views/layout#layout-sections-label) for more information.</span></span>
 
-## <a name="tag-helpers"></a><span data-ttu-id="f5f33-233">標記協助程式</span><span class="sxs-lookup"><span data-stu-id="f5f33-233">Tag Helpers</span></span>
+## <a name="tag-helpers"></a><span data-ttu-id="6b55f-221">標記協助程式</span><span class="sxs-lookup"><span data-stu-id="6b55f-221">Tag Helpers</span></span>
 
-<span data-ttu-id="f5f33-234">下列[標記協助程式](tag-helpers/index.md)指示詞的詳細說明所提供的連結。</span><span class="sxs-lookup"><span data-stu-id="f5f33-234">The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the links provided.</span></span>
+<span data-ttu-id="6b55f-222">有三個指示詞與[標記協助程式](xref:mvc/views/tag-helpers/intro)。</span><span class="sxs-lookup"><span data-stu-id="6b55f-222">There are three directives that pertain to [Tag Helpers](xref:mvc/views/tag-helpers/intro).</span></span>
 
-* [@addTagHelper](tag-helpers/intro.md#add-helper-label)
-* [@removeTagHelper](tag-helpers/intro.md#remove-razor-directives-label)
-* [@tagHelperPrefix](tag-helpers/intro.md#prefix-razor-directives-label)
+| <span data-ttu-id="6b55f-223">指示詞</span><span class="sxs-lookup"><span data-stu-id="6b55f-223">Directive</span></span> | <span data-ttu-id="6b55f-224">函式</span><span class="sxs-lookup"><span data-stu-id="6b55f-224">Function</span></span> |
+| --------- | -------- |
+| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | <span data-ttu-id="6b55f-225">使標記協助程式可供檢視。</span><span class="sxs-lookup"><span data-stu-id="6b55f-225">Makes Tag Helpers available to a view.</span></span> |
+| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | <span data-ttu-id="6b55f-226">移除先前加入從檢視表的標記協助程式。</span><span class="sxs-lookup"><span data-stu-id="6b55f-226">Removes Tag Helpers previously added from a view.</span></span> |
+| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | <span data-ttu-id="6b55f-227">指定啟用標記協助程式支援，且能夠明確標記協助程式使用方式的標記首碼。</span><span class="sxs-lookup"><span data-stu-id="6b55f-227">Specifies a tag prefix to enable Tag Helper support and to make Tag Helper usage explicit.</span></span> |
 
-<a name=razor-reserved-keywords-label></a>
+## <a name="razor-reserved-keywords"></a><span data-ttu-id="6b55f-228">Razor 保留關鍵字</span><span class="sxs-lookup"><span data-stu-id="6b55f-228">Razor reserved keywords</span></span>
 
-## <a name="razor-reserved-keywords"></a><span data-ttu-id="f5f33-235">Razor 保留關鍵字</span><span class="sxs-lookup"><span data-stu-id="f5f33-235">Razor reserved keywords</span></span>
+### <a name="razor-keywords"></a><span data-ttu-id="6b55f-229">Razor 關鍵字</span><span class="sxs-lookup"><span data-stu-id="6b55f-229">Razor keywords</span></span>
 
-### <a name="razor-keywords"></a><span data-ttu-id="f5f33-236">Razor 關鍵字</span><span class="sxs-lookup"><span data-stu-id="f5f33-236">Razor keywords</span></span>
+* <span data-ttu-id="6b55f-230">頁面 （需要 ASP.NET Core 2.0 和更新版本）</span><span class="sxs-lookup"><span data-stu-id="6b55f-230">page (Requires ASP.NET Core 2.0 and later)</span></span>
+* <span data-ttu-id="6b55f-231">函式</span><span class="sxs-lookup"><span data-stu-id="6b55f-231">functions</span></span>
+* <span data-ttu-id="6b55f-232">繼承</span><span class="sxs-lookup"><span data-stu-id="6b55f-232">inherits</span></span>
+* <span data-ttu-id="6b55f-233">model</span><span class="sxs-lookup"><span data-stu-id="6b55f-233">model</span></span>
+* <span data-ttu-id="6b55f-234">section</span><span class="sxs-lookup"><span data-stu-id="6b55f-234">section</span></span>
+* <span data-ttu-id="6b55f-235">（目前不支援 ASP.NET Core） 的協助程式</span><span class="sxs-lookup"><span data-stu-id="6b55f-235">helper (Not currently supported by ASP.NET Core)</span></span>
 
-* <span data-ttu-id="f5f33-237">頁面 （需要 ASP.NET Core 2.0 和更新版本）</span><span class="sxs-lookup"><span data-stu-id="f5f33-237">page (Requires ASP.NET Core 2.0 and later)</span></span>
-* <span data-ttu-id="f5f33-238">函式</span><span class="sxs-lookup"><span data-stu-id="f5f33-238">functions</span></span>
-* <span data-ttu-id="f5f33-239">繼承</span><span class="sxs-lookup"><span data-stu-id="f5f33-239">inherits</span></span>
-* <span data-ttu-id="f5f33-240">model</span><span class="sxs-lookup"><span data-stu-id="f5f33-240">model</span></span>
-* <span data-ttu-id="f5f33-241">section</span><span class="sxs-lookup"><span data-stu-id="f5f33-241">section</span></span>
-* <span data-ttu-id="f5f33-242">協助程式 （不支援 ASP.NET Core。）</span><span class="sxs-lookup"><span data-stu-id="f5f33-242">helper   (Not supported by ASP.NET Core.)</span></span>
+<span data-ttu-id="6b55f-236">Razor 關鍵字會以逸出`@(Razor Keyword)`(例如， `@(functions)`)。</span><span class="sxs-lookup"><span data-stu-id="6b55f-236">Razor keywords are escaped with `@(Razor Keyword)` (for example, `@(functions)`).</span></span>
 
-<span data-ttu-id="f5f33-243">Razor 關鍵字可以以逸出`@(Razor Keyword)`，例如`@(functions)`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-243">Razor keywords can be escaped with `@(Razor Keyword)`, for example `@(functions)`.</span></span> <span data-ttu-id="f5f33-244">請參閱完整的範例。</span><span class="sxs-lookup"><span data-stu-id="f5f33-244">See the complete sample below.</span></span>
+### <a name="c-razor-keywords"></a><span data-ttu-id="6b55f-237">C# Razor 關鍵字</span><span class="sxs-lookup"><span data-stu-id="6b55f-237">C# Razor keywords</span></span>
 
-### <a name="c-razor-keywords"></a><span data-ttu-id="f5f33-245">C# Razor 關鍵字</span><span class="sxs-lookup"><span data-stu-id="f5f33-245">C# Razor keywords</span></span>
+* <span data-ttu-id="6b55f-238">case</span><span class="sxs-lookup"><span data-stu-id="6b55f-238">case</span></span>
+* <span data-ttu-id="6b55f-239">do</span><span class="sxs-lookup"><span data-stu-id="6b55f-239">do</span></span>
+* <span data-ttu-id="6b55f-240">default</span><span class="sxs-lookup"><span data-stu-id="6b55f-240">default</span></span>
+* <span data-ttu-id="6b55f-241">for</span><span class="sxs-lookup"><span data-stu-id="6b55f-241">for</span></span>
+* <span data-ttu-id="6b55f-242">foreach</span><span class="sxs-lookup"><span data-stu-id="6b55f-242">foreach</span></span>
+* <span data-ttu-id="6b55f-243">if</span><span class="sxs-lookup"><span data-stu-id="6b55f-243">if</span></span>
+* <span data-ttu-id="6b55f-244">else</span><span class="sxs-lookup"><span data-stu-id="6b55f-244">else</span></span>
+* <span data-ttu-id="6b55f-245">lock</span><span class="sxs-lookup"><span data-stu-id="6b55f-245">lock</span></span>
+* <span data-ttu-id="6b55f-246">switch</span><span class="sxs-lookup"><span data-stu-id="6b55f-246">switch</span></span>
+* <span data-ttu-id="6b55f-247">try</span><span class="sxs-lookup"><span data-stu-id="6b55f-247">try</span></span>
+* <span data-ttu-id="6b55f-248">catch</span><span class="sxs-lookup"><span data-stu-id="6b55f-248">catch</span></span>
+* <span data-ttu-id="6b55f-249">finally</span><span class="sxs-lookup"><span data-stu-id="6b55f-249">finally</span></span>
+* <span data-ttu-id="6b55f-250">使用</span><span class="sxs-lookup"><span data-stu-id="6b55f-250">using</span></span>
+* <span data-ttu-id="6b55f-251">while</span><span class="sxs-lookup"><span data-stu-id="6b55f-251">while</span></span>
 
-* <span data-ttu-id="f5f33-246">case</span><span class="sxs-lookup"><span data-stu-id="f5f33-246">case</span></span>
-* <span data-ttu-id="f5f33-247">do</span><span class="sxs-lookup"><span data-stu-id="f5f33-247">do</span></span>
-* <span data-ttu-id="f5f33-248">default</span><span class="sxs-lookup"><span data-stu-id="f5f33-248">default</span></span>
-* <span data-ttu-id="f5f33-249">for</span><span class="sxs-lookup"><span data-stu-id="f5f33-249">for</span></span>
-* <span data-ttu-id="f5f33-250">foreach</span><span class="sxs-lookup"><span data-stu-id="f5f33-250">foreach</span></span>
-* <span data-ttu-id="f5f33-251">if</span><span class="sxs-lookup"><span data-stu-id="f5f33-251">if</span></span>
-* <span data-ttu-id="f5f33-252">else</span><span class="sxs-lookup"><span data-stu-id="f5f33-252">else</span></span>
-* <span data-ttu-id="f5f33-253">lock</span><span class="sxs-lookup"><span data-stu-id="f5f33-253">lock</span></span>
-* <span data-ttu-id="f5f33-254">switch</span><span class="sxs-lookup"><span data-stu-id="f5f33-254">switch</span></span>
-* <span data-ttu-id="f5f33-255">try</span><span class="sxs-lookup"><span data-stu-id="f5f33-255">try</span></span>
-* <span data-ttu-id="f5f33-256">catch</span><span class="sxs-lookup"><span data-stu-id="f5f33-256">catch</span></span>
-* <span data-ttu-id="f5f33-257">finally</span><span class="sxs-lookup"><span data-stu-id="f5f33-257">finally</span></span>
-* <span data-ttu-id="f5f33-258">使用</span><span class="sxs-lookup"><span data-stu-id="f5f33-258">using</span></span>
-* <span data-ttu-id="f5f33-259">while</span><span class="sxs-lookup"><span data-stu-id="f5f33-259">while</span></span>
+<span data-ttu-id="6b55f-252">C# Razor 關鍵字必須是雙逸出與`@(@C# Razor Keyword)`(例如， `@(@case)`)。</span><span class="sxs-lookup"><span data-stu-id="6b55f-252">C# Razor keywords must be double-escaped with `@(@C# Razor Keyword)` (for example, `@(@case)`).</span></span> <span data-ttu-id="6b55f-253">第一個`@`逸出 Razor 剖析器。</span><span class="sxs-lookup"><span data-stu-id="6b55f-253">The first `@` escapes the Razor parser.</span></span> <span data-ttu-id="6b55f-254">第二個`@`逸出的 C# 剖析器。</span><span class="sxs-lookup"><span data-stu-id="6b55f-254">The second `@` escapes the C# parser.</span></span>
 
-<span data-ttu-id="f5f33-260">C# Razor 關鍵字必須為 double 以逸出`@(@C# Razor Keyword)`，例如`@(@case)`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-260">C# Razor keywords need to be double escaped with `@(@C# Razor Keyword)`, for example `@(@case)`.</span></span> <span data-ttu-id="f5f33-261">第一個`@`逸出 Razor 剖析器，第二個`@`逸出的 C# 剖析器。</span><span class="sxs-lookup"><span data-stu-id="f5f33-261">The first `@` escapes the Razor parser, the second `@` escapes the C# parser.</span></span> <span data-ttu-id="f5f33-262">請參閱完整的範例。</span><span class="sxs-lookup"><span data-stu-id="f5f33-262">See the complete sample below.</span></span>
+### <a name="reserved-keywords-not-used-by-razor"></a><span data-ttu-id="6b55f-255">不使用 Razor 的保留的關鍵字</span><span class="sxs-lookup"><span data-stu-id="6b55f-255">Reserved keywords not used by Razor</span></span>
 
-### <a name="reserved-keywords-not-used-by-razor"></a><span data-ttu-id="f5f33-263">不使用 Razor 的保留的關鍵字</span><span class="sxs-lookup"><span data-stu-id="f5f33-263">Reserved keywords not used by Razor</span></span>
+* <span data-ttu-id="6b55f-256">namespace</span><span class="sxs-lookup"><span data-stu-id="6b55f-256">namespace</span></span>
+* <span data-ttu-id="6b55f-257">Class - 類別</span><span class="sxs-lookup"><span data-stu-id="6b55f-257">class</span></span>
 
-* <span data-ttu-id="f5f33-264">namespace</span><span class="sxs-lookup"><span data-stu-id="f5f33-264">namespace</span></span>
-* <span data-ttu-id="f5f33-265">Class - 類別</span><span class="sxs-lookup"><span data-stu-id="f5f33-265">class</span></span>
+## <a name="viewing-the-razor-c-class-generated-for-a-view"></a><span data-ttu-id="6b55f-258">檢視檢視產生的 Razor C# 類別</span><span class="sxs-lookup"><span data-stu-id="6b55f-258">Viewing the Razor C# class generated for a view</span></span>
 
-<a name=razor-customcompilationservice-label></a>
+<span data-ttu-id="6b55f-259">將下列類別加入至您的 ASP.NET Core MVC 專案：</span><span class="sxs-lookup"><span data-stu-id="6b55f-259">Add the following class to your ASP.NET Core MVC project:</span></span>
 
-## <a name="viewing-the-razor-c-class-generated-for-a-view"></a><span data-ttu-id="f5f33-266">檢視檢視產生的 Razor C# 類別</span><span class="sxs-lookup"><span data-stu-id="f5f33-266">Viewing the Razor C# class generated for a view</span></span>
+[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
-<span data-ttu-id="f5f33-267">將下列類別加入至您的 ASP.NET Core MVC 專案：</span><span class="sxs-lookup"><span data-stu-id="f5f33-267">Add the following class to your ASP.NET Core MVC project:</span></span>
+<span data-ttu-id="6b55f-260">覆寫`RazorTemplateEngine`加入與 MVC`CustomTemplateEngine`類別：</span><span class="sxs-lookup"><span data-stu-id="6b55f-260">Override the `RazorTemplateEngine` added by MVC with the `CustomTemplateEngine` class:</span></span>
 
-[!code-csharp[Main](razor/sample/Services/CustomCompilationService.cs)]
+[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
-<span data-ttu-id="f5f33-268">覆寫`ICompilationService`MVC 加上述類別; 事件類別</span><span class="sxs-lookup"><span data-stu-id="f5f33-268">Override the `ICompilationService` added by MVC with the above class;</span></span>
+<span data-ttu-id="6b55f-261">在 設定中斷點`return csharpDocument`陳述式的`CustomTemplateEngine`。</span><span class="sxs-lookup"><span data-stu-id="6b55f-261">Set a break point on the `return csharpDocument` statement of `CustomTemplateEngine`.</span></span> <span data-ttu-id="6b55f-262">當在中斷點停止執行程式時，檢視 值`generatedCode`。</span><span class="sxs-lookup"><span data-stu-id="6b55f-262">When program execution stops at the break point, view the value of `generatedCode`.</span></span>
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=29-33)]
+![GeneratedCode 文字視覺化檢視](razor/_static/tvr.png)
 
-<span data-ttu-id="f5f33-269">在 設定中斷點`Compile`方法`CustomCompilationService`和檢視`compilationContent`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-269">Set a break point on the `Compile` method of `CustomCompilationService` and view `compilationContent`.</span></span>
+## <a name="view-lookups-and-case-sensitivity"></a><span data-ttu-id="6b55f-264">檢視對應及區分大小寫</span><span class="sxs-lookup"><span data-stu-id="6b55f-264">View lookups and case sensitivity</span></span>
 
-![CompilationContent 文字視覺化檢視](razor/_static/tvr.png)
+<span data-ttu-id="6b55f-265">Razor 檢視引擎會執行檢視的區分大小寫的查閱。</span><span class="sxs-lookup"><span data-stu-id="6b55f-265">The Razor view engine performs case-sensitive lookups for views.</span></span> <span data-ttu-id="6b55f-266">不過，實際查閱是由基礎檔案系統的方式決定：</span><span class="sxs-lookup"><span data-stu-id="6b55f-266">However, the actual lookup is determined by the underlying file system:</span></span>
 
-<a name="case"></a>
-## <a name="view-lookups-and-case-sensitivity"></a><span data-ttu-id="f5f33-271">檢視對應及區分大小寫</span><span class="sxs-lookup"><span data-stu-id="f5f33-271">View lookups and case sensitivity</span></span>
+* <span data-ttu-id="6b55f-267">根據的來源檔案：</span><span class="sxs-lookup"><span data-stu-id="6b55f-267">File based source:</span></span> 
+  * <span data-ttu-id="6b55f-268">在作業系統上使用不區分大小寫的檔案系統 (例如 Windows)，實體檔案提供者對應是不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="6b55f-268">On operating systems with case insensitive file systems (for example, Windows), physical file provider lookups are case insensitive.</span></span> <span data-ttu-id="6b55f-269">例如，`return View("Test")`符合的項目會導致*/Views/Home/Test.cshtml*， */Views/home/test.cshtml*，和任何其他大小寫變數。</span><span class="sxs-lookup"><span data-stu-id="6b55f-269">For example, `return View("Test")` results in matches for */Views/Home/Test.cshtml*, */Views/home/test.cshtml*, and any other casing variant.</span></span>
+  * <span data-ttu-id="6b55f-270">在區分大小寫的檔案系統上 (例如 Linux、 OSX，與`EmbeddedFileProvider`)，查詢不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="6b55f-270">On case sensitive file systems (for example, Linux, OSX, and with `EmbeddedFileProvider`), lookups are case sensitive.</span></span> <span data-ttu-id="6b55f-271">例如，`return View("Test")`特別相符項目*/Views/Home/Test.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="6b55f-271">For example, `return View("Test")` specifically matches */Views/Home/Test.cshtml*.</span></span>
+* <span data-ttu-id="6b55f-272">先行編譯的檢視： 使用 ASP.Net Core 2.0 和更新版本，查閱先行編譯的檢視是不區分大小寫在所有作業系統上。</span><span class="sxs-lookup"><span data-stu-id="6b55f-272">Precompiled views: With ASP.Net Core 2.0 and later, looking up precompiled views is case insensitive on all operating systems.</span></span> <span data-ttu-id="6b55f-273">行為是在 Windows 上的實體檔案提供者的行為相同。</span><span class="sxs-lookup"><span data-stu-id="6b55f-273">The behavior is identical to physical file provider's behavior on Windows.</span></span> <span data-ttu-id="6b55f-274">如果兩個先行編譯的檢視只有大小寫不同，查詢的結果會是不具決定性。</span><span class="sxs-lookup"><span data-stu-id="6b55f-274">If two precompiled views differ only in case, the result of lookup is non-deterministic.</span></span>
 
-<span data-ttu-id="f5f33-272">Razor 檢視引擎會執行檢視的區分大小寫的查閱。</span><span class="sxs-lookup"><span data-stu-id="f5f33-272">The Razor view engine performs case-sensitive lookups for views.</span></span> <span data-ttu-id="f5f33-273">然而，實際的查詢會決定基礎來源：</span><span class="sxs-lookup"><span data-stu-id="f5f33-273">However, the actual lookup is determined by the underlying source:</span></span>
-
-* <span data-ttu-id="f5f33-274">根據的來源檔案：</span><span class="sxs-lookup"><span data-stu-id="f5f33-274">File based source:</span></span> 
-
-    * <span data-ttu-id="f5f33-275">在作業系統上使用不區分大小寫的檔案系統 （例如 Windows)，實體檔案提供者對應是不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f5f33-275">On operating systems with case insensitive file systems (like Windows), physical file provider lookups are case insensitive.</span></span> <span data-ttu-id="f5f33-276">例如`return View("Test")`會導致`/Views/Home/Test.cshtml`，`/Views/home/test.cshtml`並會探索所有其他大小寫變體。</span><span class="sxs-lookup"><span data-stu-id="f5f33-276">For example `return View("Test")` would result in `/Views/Home/Test.cshtml`, `/Views/home/test.cshtml` and all other casing variants would be discovered.</span></span>
-    * <span data-ttu-id="f5f33-277">在區分大小寫的檔案系統中，包括 Linux、 OSX 和`EmbeddedFileProvider`，查閱會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="f5f33-277">On case sensitive file systems, which includes Linux, OSX and `EmbeddedFileProvider`, lookups are case sensitive.</span></span> <span data-ttu-id="f5f33-278">例如，`return View("Test")`會特別尋找`/Views/Home/Test.cshtml`。</span><span class="sxs-lookup"><span data-stu-id="f5f33-278">For example, `return View("Test")` would specifically look for `/Views/Home/Test.cshtml`.</span></span>
-        
-* <span data-ttu-id="f5f33-279">先行編譯的檢視：</span><span class="sxs-lookup"><span data-stu-id="f5f33-279">Precompiled views:</span></span>
-
-   * <span data-ttu-id="f5f33-280">ASP.Net Core 2.0 和更新版本中，查閱先行編譯的檢視是不區分大小寫在所有作業系統上。</span><span class="sxs-lookup"><span data-stu-id="f5f33-280">With ASP.Net Core 2.0 and later, looking up precompiled views is case insensitive on all operating systems.</span></span> <span data-ttu-id="f5f33-281">行為是在 Windows 上的實體檔案提供者的行為相同。</span><span class="sxs-lookup"><span data-stu-id="f5f33-281">The behavior is identical to physical file provider's behavior on Windows.</span></span> 
-   <span data-ttu-id="f5f33-282">注意： 如果兩個先行編譯的檢視只有大小寫不同，查詢的結果是不具決定性。</span><span class="sxs-lookup"><span data-stu-id="f5f33-282">Note: If two precompiled views differ only in case, the result of lookup is non-deterministic.</span></span>
-
-<span data-ttu-id="f5f33-283">開發人員都要比對的區域中，控制器和動作名稱的大小寫的檔案和目錄名稱的大小寫。</span><span class="sxs-lookup"><span data-stu-id="f5f33-283">Developers are encouraged to match the casing of file and directory names to the casing of area, controller and action names.</span></span> <span data-ttu-id="f5f33-284">這樣會確保您的部署仍然無從驗證的基礎檔案系統。</span><span class="sxs-lookup"><span data-stu-id="f5f33-284">This would ensure your deployments remain agnostic of the underlying file system.</span></span>
+<span data-ttu-id="6b55f-275">開發人員都要比對的區域、 控制器和動作名稱的大小寫的檔案和目錄名稱的大小寫。</span><span class="sxs-lookup"><span data-stu-id="6b55f-275">Developers are encouraged to match the casing of file and directory names to the casing of area, controller, and action names.</span></span> <span data-ttu-id="6b55f-276">這可確保您的部署會發現其不論基礎檔案系統的檢視。</span><span class="sxs-lookup"><span data-stu-id="6b55f-276">This ensures your deployments will find their views regardless of the underlying file system.</span></span>

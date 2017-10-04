@@ -144,7 +144,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
     Visual Studio 會顯示*Welcome.es.resx*檔案。
 
-    ![方案總管] 中顯示 [歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
+    ![[方案總管] 中顯示 歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
 
 <a name="error"></a>
 

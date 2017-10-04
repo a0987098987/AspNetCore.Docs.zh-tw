@@ -11,11 +11,11 @@ ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 37613d974fdf1766b187cdd05efc926ecc6a351b
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 778ef976fdbef70684ca26b0c7c548ffcc83ee00
+ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>讀取的相關資料的 EF Core 與 ASP.NET Core MVC 教學課程 (10-6)
 
@@ -184,7 +184,7 @@ Index 方法取代為下列程式碼相關資料的積極式載入作業，並�
   }
   ```
 
-* 加入**課程**資料行，顯示課程教導每個講師所。 請參閱[使用明確列轉換`@:`](xref:mvc/views/razor#explicit-line-transition-with-label)如需有關此 razor 語法。
+* 加入**課程**資料行，顯示課程教導每個講師所。 請參閱[使用明確列轉換`@:`](xref:mvc/views/razor#explicit-line-transition-with-)如需有關此 razor 語法。
 
 * 加入的程式碼動態新增`class="success"`至`tr`選取講師項目。 這會設定使用啟動程序的類別所選取的資料列的背景色彩。
 

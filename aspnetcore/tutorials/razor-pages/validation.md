@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 9a822457d1581a70d59c553eb28133815f395d7d
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 302e3077e8cf1cc3b145fcb4ba2ff677023d1524
+ms.sourcegitcommit: c9658c0db446f7cb2e443f62b00cf773bed545fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/30/2017
 ---
 # <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
 
@@ -36,7 +36,12 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
-驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足驗證條件約束。 `RegularExpression` 屬性則用來限制可輸入的字元。 在上述程式碼，`Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 [實值型別](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (例如 `decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
+驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
+
+* `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
+* `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 和 `Rating` 只能使用字母 (不允許使用空白字元、數字及特殊字元)。
+* `Range` 屬性會將值限制在指定的範圍內。
+* `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 
 
 擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓應用程式更穩固。 對模型的自動驗證可協助保護應用程式，因為您不需要在新增新程式碼時記得加以套用。
 
@@ -127,6 +132,10 @@ public DateTime ReleaseDate { get; set; }
 下列程式碼會顯示一行上的結合屬性：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+### <a name="publish-to-azure"></a>發佈至 Azure
+
+如需將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
 
 ## <a name="additional-resources"></a>其他資源
 

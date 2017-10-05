@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 3fd155c5e9a119717243a4bafff776fcbd06fab5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 211d5fd3b8a736799155c2ab1c1cf92993e63fc3
+ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/28/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會檢查在[上一個教學課程](xref:tutorials/razor-pages/page)中 Scaffolding 所建立的 Razor 頁面。 
+本教學課程會查看在上一個教學課程 ([新增模型](xref:tutorials/razor-pages/model#scaffold-the-movie-model)) 中透過 Scaffolding 所建立的 Razor 頁面。 
 
 [檢視或下載](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)範例。
 
@@ -145,5 +145,5 @@ Scaffolding 引擎會在模型中建立每個欄位的 Razor 標記 (除了識�
 下一個教學課程說明 SQL Server LocalDB 和植入資料庫。
 
 >[!div class="step-by-step"]
-[上一步：新增模型](xref:tutorials/razor-pages/modelz)
+[上一步：新增模型](xref:tutorials/razor-pages/model)
 [下一步：SQL Server LocalDB](xref:tutorials/razor-pages/sql)

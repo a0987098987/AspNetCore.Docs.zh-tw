@@ -11,11 +11,11 @@ ms.assetid: 870192b4-8d4f-45c7-8c14-83d02bc0ad79
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: bab93a2faa122d9d6d2e71367519baa09bd76bd1
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 28ed7a7a56415d7eb675c06353fb9a8f65fb571f
+ms.sourcegitcommit: c9658c0db446f7cb2e443f62b00cf773bed545fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/30/2017
 ---
 # <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
 
@@ -55,6 +55,10 @@ EF 可讓您輕鬆使用 `SingleOrDefaultAsync` 方法來搜尋資料。 此方�
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```
+
+### <a name="publish-to-azure"></a>發佈至 Azure
+
+如需將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。
 
 感謝您看完這份 ASP.NET Core MVC 簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
 

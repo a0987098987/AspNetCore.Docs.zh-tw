@@ -11,17 +11,17 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 85a192bf0b2eb245ecdaaa8ffa1c8dd2f43b45b0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 9ff2fb92c81719c7278d70b5df5387f1244195bf
+ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Damien Bowden](https://twitter.com/damien_bod)， [Bart Calixto](https://twitter.com/bartmax)， [Nadeem Afana](https://twitter.com/NadeemAfana)，和[Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
-與 ASP.NET Core 建立多國語言的網站，可讓您的網站才能達到更多觀眾。 ASP.NET Core 提供服務和中介軟體將當地語系化成不同的語言和文化特性。
+與 ASP.NET Core 建立多國語言的網站，可讓您的網站才能達到更多觀眾。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
 國際化牽涉到[全球化](https://docs.microsoft.com/dotnet/api/system.globalization)和[當地語系化](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization)。 全球化是設計支援不同的文化特性的應用程式的程序。 全球化加入支援輸入、 顯示和一組定義的特定地理區域與相關聯的語言指令碼的輸出。
 
@@ -43,7 +43,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 在上述程式碼中`IStringLocalizer<T>`實作來自[相依性插入](dependency-injection.md)。 如果找不到當地語系化"有關 Title"的值，則索引子機碼會傳回，也就是"有關 Title"的字串。 您可以保留預設的應用程式中的語言常值字串，並將其包裝在定位器，您可以專注於開發應用程式。 使用您的預設語言進行開發您的應用程式，並做好當地語系化步驟中沒有先建立預設資源檔。 或者，您可以使用的傳統方法，並提供要擷取的預設語言字串索引鍵。 許多開發人員將新的工作流程不會有預設語言的*.resx*檔案和簡單地包裝字串常值可以降低當地語系化應用程式的額外負荷。 其他開發人員會偏好傳統的工作流程，因為它可以讓您更輕鬆地使用較長的字串常值和更輕鬆地更新的當地語系化的字串。
 
-使用`IHtmlLocalizer<T>`包含 HTML 資源的實作。 `IHtmlLocalizer`HTML 編碼格式的資源字串，但不是資源字串的引數。 在此範例中反白顯示的值以下`name`參數是 HTML 編碼。
+使用`IHtmlLocalizer<T>`包含 HTML 資源的實作。 `IHtmlLocalizer`HTML 編碼中的資源字串，格式化的引數，但並不 HTML 編碼的資源字串本身。 在此範例中反白顯示的值以下`name`參數是 HTML 編碼。
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
@@ -144,7 +144,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
     Visual Studio 會顯示*Welcome.es.resx*檔案。
 
-    ![[方案總管] 中顯示 歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
+    ![方案總管] 中顯示 [歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
 
 <a name="error"></a>
 
@@ -317,6 +317,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 * 文化特性： 它是一種語言和 （選擇性） 地區。
 * 中性文化特性： 具有指定的語言，而不是地區的文化特性。 (例如"en"，"es")
 * 特定文化特性： 具有指定的語言和地區的文化特性。 （適用於範例"EN-US"、"EN-GB"、"es CL"）
+* 父文化特性： 包含特定文化特性中性文化特性。 （例如，"en"是"EN-US"和"EN-GB"的父文化特性）
 * 地區設定： 地區設定是文化特性相同。
 
 ## <a name="additional-resources"></a>其他資源

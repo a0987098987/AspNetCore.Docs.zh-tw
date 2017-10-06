@@ -11,11 +11,11 @@ ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/index
-ms.openlocfilehash: 14eaa3b25d0e6c367f26631d15da2ea077265f72
-ms.sourcegitcommit: 9a22c64759a7285ba788a37039bea5fe95f45f21
+ms.openlocfilehash: 92f480236d035bafe329b14c7383e25c3edd3499
+ms.sourcegitcommit: af6c2a58ea828899d5fbe6bc442a1b1ea3e46cf7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 10/05/2017
 ---
 # <a name="authentication"></a>驗證
 
@@ -31,16 +31,18 @@ ms.lasthandoff: 08/15/2017
 
 * [帳戶確認和密碼復原](accconfirm.md)
 
-* [使用 SMS 的雙因素驗證](2fa.md)
+* [使用 SMS 的雙重關卡驗證](2fa.md)
 
 * [使用沒有 ASP.NET Core 身分識別的 Cookie 驗證](cookie.md)
 
 * [Azure Active Directory](azure-active-directory/index.md)
 
-  * [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
+  * [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 
-  * [從使用 Azure AD 的 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore)
+  * [從使用 Azure AD 的 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 
-  * [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+  * [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 
-* [使用 IdentityServer4 保護 ASP.NET Core 應用程式安全](https://identityserver4.readthedocs.io)
+* [使用 IdentityServer4 保護 ASP.NET Core 應用程式](https://identityserver4.readthedocs.io/release/)
+
+* [使用 Azure App Service 驗證 (簡單驗證) 保護 ASP.NET Core 應用程式](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)

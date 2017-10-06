@@ -209,6 +209,7 @@
 #### [使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 #### [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 ### [使用 IdentityServer4 保護 ASP.NET Core 應用程式](https://identityserver4.readthedocs.io/)
+### [使用 Azure App Service 驗證 (簡單驗證) 保護 ASP.NET Core 應用程式](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
 ## [授權](xref:security/authorization/index)
 ### [簡介](xref:security/authorization/introduction)
 ### [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)

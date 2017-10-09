@@ -11,7 +11,7 @@
 | 檔案或資料夾              | 用途 |
 | ----------------- | ------------ | 
 | wwwroot | 包含靜態檔案。 請參閱[使用靜態檔案](xref:fundamentals/static-files)。 |
-| 總頁數 | [Razor 頁面](xref:mvc/razor-pages/index)的資料夾。 | 
+| Pages | [Razor 頁面](xref:mvc/razor-pages/index)的資料夾。 | 
 | *appsettings.json* | [組態](xref:fundamentals/configuration) |
 | *bower.json* | 用戶端套件管理。 請參閱 [Bower](xref:client-side/bower)。|
 | *Program.cs* | [裝載](xref:fundamentals/hosting) ASP.NET Core 應用程式。|

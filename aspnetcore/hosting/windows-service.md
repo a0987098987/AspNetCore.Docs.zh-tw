@@ -11,11 +11,11 @@ ms.assetid: d9a65066-d7cb-47df-b046-64629c4d2c6f
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/windows-service
-ms.openlocfilehash: ca3b98f0b0405fcd5751cb7d9bc7a40257739084
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 107436d2d49816d18d230b86636a5ee7e39610f2
+ms.sourcegitcommit: 58ccf3f7d592b28eaff3534b73a45d9d190ac8c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core 應用程式
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/01/2017
 
 ## <a name="prerequisites"></a>必要條件
 
-* 應用程式必須執行.NET framework 執行階段。  在*.csproj*檔案中，指定適當的值[TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks)和[RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog)。 以下為範例：
+* 應用程式必須執行.NET Framework 執行階段。  在*.csproj*檔案中，指定適當的值[TargetFramework](https://docs.microsoft.com/nuget/schema/target-frameworks)和[RuntimeIdentifier](https://docs.microsoft.com/dotnet/articles/core/rid-catalog)。 以下為範例：
 
   [!code-xml[](windows-service/sample/AspNetCoreService.csproj?range=3-6)]
 

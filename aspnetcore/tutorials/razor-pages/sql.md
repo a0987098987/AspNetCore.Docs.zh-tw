@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 42fa98886f3e87e79ea1ea4a2223a79319676006
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 374111dfcf92132bbcf956eafb98a75f833ce2bb
+ms.sourcegitcommit: 94b7e0f95b92c98b182a93d2b3dc0287e5f97976
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
@@ -35,7 +35,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `Connectio
 LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
 
 <a name="ssox"></a>
-* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] \(SSOX)。
+* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
 
   ![檢視功能表](sql/_static/ssox.png)
 
@@ -60,7 +60,7 @@ LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為�
 如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。
 
 ```csharp
-if (context.Movies.Any())
+if (context.Movie.Any())
 {
     return;   // DB has been seeded.
 }

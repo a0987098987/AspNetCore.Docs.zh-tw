@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 5a3dc302186c7fd0a5730bc2c7599676fb543ba7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 3c5841f8c623f09530b60cc9997281dcb8e3c4f6
+ms.sourcegitcommit: 94b7e0f95b92c98b182a93d2b3dc0287e5f97976
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/04/2017
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -42,11 +42,9 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="update-the-moviecontext"></a>更新 MovieContext
 
-在 `MovieContext` (*Models/MovieContext.cs*) 中，為排程指定 `DbSet`，並為 `OnModelCreating` 方法新增一行，以針對 `DbSet` 屬性設定單數的資料庫資料表名稱 (`Schedule`)：
+在 `MovieContext` 中指定 `DbSet` (*Models/MovieContext.cs*) 以進行排程：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13,18)]
-
-注意：如果您未覆寫 `OnModelCreating` 以使用單數的資料表名稱，Entity Framework 會假設您使用複數的資料庫資料表名稱 (例如 `Movies` 和 `Schedules`)。 針對是否要複數化資料表名稱，開發人員並沒有共識。 請以相同方式，設定 `MovieContext` 與資料庫。 在這兩處均使用單數或複數化的資料庫資料表名稱。
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13)]
 
 ## <a name="add-the-schedule-table-to-the-database"></a>將 Schedule 資料表新增至資料庫
 
@@ -97,7 +95,7 @@ Update-Database
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet3)]
 
-當表單張貼至伺服器時，系統即會檢查 `ModelState`。 如果無效，就會重建 `Schedules`，且頁面會顯示一或多則驗證訊息，指出頁面驗證失敗的原因。 如果有效，即會在 *OnPostAsync* 中使用 `FileUpload` 屬性，以完成上傳這兩個排程版本的檔案，並建立新的 `Schedule` 物件來儲存資料。 接著，系統就會將排程儲存到資料庫中：
+當表單張貼至伺服器時，系統即會檢查 `ModelState`。 如果無效，就會重建 `Schedule`，且頁面會顯示一或多則驗證訊息，指出頁面驗證失敗的原因。 如果有效，即會在 *OnPostAsync* 中使用 `FileUpload` 屬性，以完成上傳這兩個排程版本的檔案，並建立新的 `Schedule` 物件來儲存資料。 接著，系統就會將排程儲存到資料庫中：
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
 

@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 36a3dc542f3321c5e6ebaa078efd8bde3f50948f
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: 01bb5597033fef7e1cb08e980c81d37d88ed253e
+ms.sourcegitcommit: ab91aad2680efc4eb5c0642746e2b981db7f81b8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/10/2017
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
 
 注意： 本主題適用於 ASP.NET Core 2.x
 
-ASP.NET Core 隨附個別驗證的驗證器應用程式的支援。 兩個因素驗證 (2FA) 驗證器應用程式，使用以時間為基礎單次密碼演算法 (TOTP)，是建議的 2FA approch 產業。 2FA 使用 TOTP 最好 SMS 2FA。 驗證器應用程式提供的使用者必須確認使用者名稱和密碼之後輸入 6 to 8 位數代碼。 通常驗證器應用程式會安裝在智慧型手機上。
+ASP.NET Core 隨附個別驗證的驗證器應用程式的支援。 兩個因素驗證 (2FA) 驗證器應用程式，使用以時間為基礎單次密碼演算法 (TOTP)，是建議的方法，如 2FA 產業。 2FA 使用 TOTP 最好 SMS 2FA。 驗證器應用程式提供的使用者必須確認使用者名稱和密碼之後輸入 6 to 8 位數代碼。 通常驗證器應用程式會安裝在智慧型手機上。
 
 ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QRCode 產生。 QRCode 產生器可簡化 2FA 的安裝程式。 本文件將引導您完成新增[QR 代碼](https://wikipedia.org/wiki/QR_code)產生 2FA 組態頁面。
 
@@ -30,7 +30,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QR
 
 * 下載[qrcode.js javascript 程式庫](https://davidshimjs.github.io/qrcodejs/)至`wwwroot\lib`專案資料夾中的。
 
-* 在*Pages\Account\Manage\EnableAuthenticator.cshtml* （Razor 頁面） 或*Views\Account\Manage\EnableAuthenticator.cshtml* (MVC)、 找出`Scripts`檔案結尾 」 一節：
+* 在*Pages\Account\Manage\EnableAuthenticator.cshtml* （Razor 頁面） 或*Views\Manage\EnableAuthenticator.cshtml* (MVC)、 找出`Scripts`檔案結尾 」 一節：
 
 ```cshtml
 @section Scripts {
@@ -62,7 +62,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QR
 
 ## <a name="change-the-site-name-in-the-qr-code"></a>變更站台名稱在 QR 代碼
 
-將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*EnableAuthenticator.cshtml.cs*檔案。 
+將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*Pages\Account\Manage\EnableAuthenticator.cshtml.cs* （Razor 頁面） 檔案或*Controllers\AccountController.cs* (MVC) 檔案。 
 
 從範本的預設程式碼看起來如下：
 

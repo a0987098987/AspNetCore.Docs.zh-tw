@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: b3ea7688eefa69171fd1179de42497c98cf9302e
-ms.sourcegitcommit: 4d9c6d47bded895f3d9a35e9550e31ae213c083c
+ms.openlocfilehash: 4962361aa0fc8a61cfc771ed3123a3bafdbe6100
+ms.sourcegitcommit: fe25b8163e9e4115915b3293936e9da646fff84f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/09/2017
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 09/19/2017
 * [使用 ASP.NET Core 和 Visual Studio for Mac 來建立 Web API](xref:tutorials/first-web-api-mac)
 * [使用 ASP.NET Core 和 Visual Studio for Windows 來建立 Web API](first-web-api.md)
 * [使用 ASP.NET Core 和 Visual Studio Code 來建立 Web API](web-api-vsc.md)
-* [使用 Swagger 的 ASP.NET Web API 說明頁面](web-api-help-pages-using-swagger.md)
+* [使用 Swagger 的 ASP.NET Core Web API 說明頁面](web-api-help-pages-using-swagger.md)
 * [建立原生行動裝置應用程式的後端 Web 服務](../mobile/native-mobile-backend.md)
 
 ## <a name="working-with-data"></a>使用資料

@@ -10,17 +10,17 @@ ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2ef
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: 7a485b749762bad5ca559d85df86a9a87dd7bb58
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 42dabfcef4aeae2505c1998d75ec700429cb2f21
+ms.sourcegitcommit: fe25b8163e9e4115915b3293936e9da646fff84f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/09/2017
 ---
-# <a name="building-web-apis"></a><span data-ttu-id="833c1-103">建置 Web API</span><span class="sxs-lookup"><span data-stu-id="833c1-103">Building Web APIs</span></span>
+# <a name="building-web-apis"></a>建置 Web API
 
-* [<span data-ttu-id="833c1-104">使用 ASP.NET Core MVC 與 Visual Studio 建置第一個 Web API</span><span class="sxs-lookup"><span data-stu-id="833c1-104">Building your first Web API with ASP.NET Core MVC using Visual Studio</span></span>](../../tutorials/first-web-api.md)
-* [<span data-ttu-id="833c1-105">使用 Swagger 的 ASP.NET Web API 說明頁面</span><span class="sxs-lookup"><span data-stu-id="833c1-105">ASP.NET Web API Help Pages using Swagger</span></span>](../../tutorials/web-api-help-pages-using-swagger.md)
-* [<span data-ttu-id="833c1-106">建立原生行動裝置應用程式的後端服務</span><span class="sxs-lookup"><span data-stu-id="833c1-106">Creating backend services for native mobile applications</span></span>](../../mobile/native-mobile-backend.md)
-* [<span data-ttu-id="833c1-107">格式化回應資料</span><span class="sxs-lookup"><span data-stu-id="833c1-107">Formatting response data</span></span>](../models/formatting.md)
-* [<span data-ttu-id="833c1-108">自訂格式器</span><span class="sxs-lookup"><span data-stu-id="833c1-108">Custom formatters</span></span>](../advanced/custom-formatters.md)
+* [使用 ASP.NET Core MVC 與 Visual Studio 建置第一個 Web API](../../tutorials/first-web-api.md)
+* [使用 Swagger 的 ASP.NET Core Web API 說明頁面](../../tutorials/web-api-help-pages-using-swagger.md)
+* [建立原生行動裝置應用程式的後端服務](../../mobile/native-mobile-backend.md)
+* [格式化回應資料](../models/formatting.md)
+* [自訂格式器](../advanced/custom-formatters.md)
 

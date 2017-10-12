@@ -174,7 +174,7 @@ Type expected
 
 ### <a name="expression-names"></a>運算式名稱
 
-`asp-for`屬性值是`ModelExpression`和 lambda 運算式的右邊。 因此，`asp-for="Property1"`變成`m => m.Property1`中產生的程式碼，這也是為什麼您不需要加上前置詞`Model`。 您可以使用"@"字元在內嵌運算式的開頭，並移動後，再`m.`:
+`asp-for`屬性值是`ModelExpression`和 lambda 運算式的右邊。 因此，`asp-for="Property1"`變成`m => m.Property1`中產生的程式碼，這也是為什麼您不需要加上前置詞`Model`。 您可以使用 « @ » 字元在內嵌運算式的開頭，並移動後，再 `m.`:
 
 ```HTML
 @{

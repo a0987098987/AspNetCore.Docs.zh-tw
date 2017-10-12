@@ -129,7 +129,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 -  取得資料庫使用的目前 [Instructor] 實體積極式載入`OfficeAssignment`導覽屬性。 這是您未在 HttpGet 相同`Edit`方法。
 
--  更新擷取 [Instructor] 實體中的模型繫結器的值。 `TryUpdateModel`多載可讓您將白名單您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](crud.md)。
+-  更新擷取 [Instructor] 實體中的模型繫結器的值。 `TryUpdateModel`多載可讓您將允許清單您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](crud.md)。
 
     <!-- Snippets do not play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 

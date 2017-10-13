@@ -1,79 +1,144 @@
 ---
-title: "配置，以限制身分識別"
+title: "授權與特定的結構描述中的 ASP.NET Core"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文說明如何使用多個驗證方法時，限制特定的結構描述的識別。"
+keywords: "ASP.NET Core 身分識別、 驗證配置"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/12/2017
 ms.topic: article
 ms.assetid: d3d6ca1b-b4b5-4bf7-898e-dcd90ec1bf8c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 2483c441da317a5c29b611b3a4910eae3c01fd7a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: cf3259f206b8d970cc6f2b0b9e52e233c30d6df3
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/12/2017
 ---
-# <a name="limiting-identity-by-scheme"></a><span data-ttu-id="2ee2e-103">配置，以限制身分識別</span><span class="sxs-lookup"><span data-stu-id="2ee2e-103">Limiting identity by scheme</span></span>
+# <a name="authorize-with-a-specific-scheme"></a><span data-ttu-id="cc40f-104">授權與特定的結構描述</span><span class="sxs-lookup"><span data-stu-id="cc40f-104">Authorize with a specific scheme</span></span>
 
-<a name=security-authorization-limiting-by-scheme></a>
+<span data-ttu-id="cc40f-105">在某些情況下，例如單一頁面應用程式 (SPAs)，它會使用多個驗證方法。</span><span class="sxs-lookup"><span data-stu-id="cc40f-105">In some scenarios, such as Single Page Applications (SPAs), it's common to use multiple authentication methods.</span></span> <span data-ttu-id="cc40f-106">例如，應用程式可能會使用 cookie 基本驗證來登入和 JWT bearer 驗證進行 JavaScript 要求。</span><span class="sxs-lookup"><span data-stu-id="cc40f-106">For example, the app may use cookie-based authentication to log in and JWT bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="cc40f-107">在某些情況下，應用程式可能會有多個執行個體的驗證處理常式。</span><span class="sxs-lookup"><span data-stu-id="cc40f-107">In some cases, the app may have multiple instances of an authentication handler.</span></span> <span data-ttu-id="cc40f-108">例如，兩個位置其中一個包含基本的身分識別的 cookie 處理常式，另一個會建立時已觸發多因素驗證 (MFA)。</span><span class="sxs-lookup"><span data-stu-id="cc40f-108">For example, two cookie handlers where one contains a basic identity and one is created when a multi-factor authentication (MFA) has been triggered.</span></span> <span data-ttu-id="cc40f-109">因為使用者要求的作業需要額外的安全性，可能會觸發 MFA。</span><span class="sxs-lookup"><span data-stu-id="cc40f-109">MFA may be triggered because the user requested an operation that requires extra security.</span></span>
 
-<span data-ttu-id="2ee2e-104">在某些情況下，例如單一頁面應用程式很可能得到多個驗證方法。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-104">In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods.</span></span> <span data-ttu-id="2ee2e-105">比方說，您的應用程式可能會使用 cookie 基本驗證來登入和承載驗證 JavaScript 要求。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-105">For example, your application may use cookie-based authentication to log in and bearer authentication for JavaScript requests.</span></span> <span data-ttu-id="2ee2e-106">在某些情況下，您可能需要多個執行個體的驗證中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-106">In some cases you may have multiple instances of an authentication middleware.</span></span> <span data-ttu-id="2ee2e-107">例如，兩個 cookie middlewares 其中一個含有基本的身分識別，因為使用者要求的作業需要額外的安全性，已觸發多因素驗證時便會建立一個。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-107">For example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="cc40f-110">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-110">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="2ee2e-108">驗證配置時，例如設定在驗證期間，驗證中介軟體的名稱</span><span class="sxs-lookup"><span data-stu-id="2ee2e-108">Authentication schemes are named when authentication middleware is configured during authentication, for example</span></span>
+<span data-ttu-id="cc40f-111">在驗證期間設定的驗證服務時，會命名為驗證配置。</span><span class="sxs-lookup"><span data-stu-id="cc40f-111">An authentication scheme is named when the authentication service is configured during authentication.</span></span> <span data-ttu-id="cc40f-112">例如: </span><span class="sxs-lookup"><span data-stu-id="cc40f-112">For example:</span></span>
 
 ```csharp
-app.UseCookieAuthentication(new CookieAuthenticationOptions()
+public void ConfigureServices(IServiceCollection services)
 {
-    AuthenticationScheme = "Cookie",
-    LoginPath = new PathString("/Account/Unauthorized/"),
-    AccessDeniedPath = new PathString("/Account/Forbidden/"),
-    AutomaticAuthenticate = false
-});
+    // Code omitted for brevity
 
-app.UseBearerAuthentication(options =>
-{
-    options.AuthenticationScheme = "Bearer";
-    options.AutomaticAuthenticate = false;
-});
+    services.AddAuthentication()
+        .AddCookie(options => {
+            options.LoginPath = "/Account/Unauthorized/";
+            options.AccessDeniedPath = "/Account/Forbidden/";
+        })
+        .AddJwtBearer(options => {
+            options.Audience = "http://localhost:5001/";
+            options.Authority = "http://localhost:5000/";
+        });
 ```
 
-<span data-ttu-id="2ee2e-109">在此組態中兩個驗證 middlewares 已經加入，一個 cookie，一個用於持有者。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-109">In this configuration two authentication middlewares have been added, one for cookies and one for bearer.</span></span>
+<span data-ttu-id="cc40f-113">在上述程式碼中，已經加入兩個驗證處理常式： 一個用於 cookie，另一個用於承載。</span><span class="sxs-lookup"><span data-stu-id="cc40f-113">In the preceding code, two authentication handlers have been added: one for cookies and one for bearer.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="2ee2e-110">加入多個驗證中介軟體時，您應該確定任何中介軟體設定成自動執行。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-110">When adding multiple authentication middleware you should ensure that no middleware is configured to run automatically.</span></span> <span data-ttu-id="2ee2e-111">您可以設定`AutomaticAuthenticate`選項屬性設定為 false。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-111">You do this by setting the `AutomaticAuthenticate` options property to false.</span></span> <span data-ttu-id="2ee2e-112">如果您無法執行這項篩選由配置無法運作。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-112">If you fail to do this filtering by scheme will not work.</span></span>
+><span data-ttu-id="cc40f-114">指定預設的配置會導致`HttpContext.User`屬性設定為該身分識別。</span><span class="sxs-lookup"><span data-stu-id="cc40f-114">Specifying the default scheme results in the `HttpContext.User` property being set to that identity.</span></span> <span data-ttu-id="cc40f-115">如果不需要該行為，請停用它叫用的無參數形式`AddAuthentication`。</span><span class="sxs-lookup"><span data-stu-id="cc40f-115">If that behavior isn't desired, disable it by invoking the parameterless form of `AddAuthentication`.</span></span>
 
-## <a name="selecting-the-scheme-with-the-authorize-attribute"></a><span data-ttu-id="2ee2e-113">選取配置和授權屬性</span><span class="sxs-lookup"><span data-stu-id="2ee2e-113">Selecting the scheme with the Authorize attribute</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="cc40f-116">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-116">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="2ee2e-114">做為沒有驗證中介軟體會設定為自動執行，並建立您必須在授權選擇哪個中介軟體將會使用身分識別。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-114">As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used.</span></span> <span data-ttu-id="2ee2e-115">選取您想要使用授權的中介軟體的最簡單方式是使用`ActiveAuthenticationSchemes`屬性。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-115">The simplest way to select the middleware you wish to authorize with is to use the `ActiveAuthenticationSchemes` property.</span></span> <span data-ttu-id="2ee2e-116">這個屬性可以接受以逗號分隔清單，若要使用的驗證配置。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-116">This property accepts a comma delimited list of Authentication Schemes to use.</span></span> <span data-ttu-id="2ee2e-117">例如，</span><span class="sxs-lookup"><span data-stu-id="2ee2e-117">For example;</span></span>
+<span data-ttu-id="cc40f-117">在驗證期間驗證 middlewares 設定時，會命名為驗證配置。</span><span class="sxs-lookup"><span data-stu-id="cc40f-117">Authentication schemes are named when authentication middlewares are configured during authentication.</span></span> <span data-ttu-id="cc40f-118">例如: </span><span class="sxs-lookup"><span data-stu-id="cc40f-118">For example:</span></span>
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    // Code omitted for brevity
+
+    app.UseCookieAuthentication(new CookieAuthenticationOptions()
+    {
+        AuthenticationScheme = "Cookie",
+        LoginPath = "/Account/Unauthorized/",
+        AccessDeniedPath = "/Account/Forbidden/",
+        AutomaticAuthenticate = false
+    });
+    
+    app.UseJwtBearerAuthentication(new JwtBearerOptions()
+    {
+        AuthenticationScheme = "Bearer",
+        AutomaticAuthenticate = false,
+        Audience = "http://localhost:5001/",
+        Authority = "http://localhost:5000/",
+        RequireHttpsMetadata = false
+    });
+```
+
+<span data-ttu-id="cc40f-119">在上述程式碼中，已經加入兩個驗證 middlewares： 一個用於 cookie，另一個用於承載。</span><span class="sxs-lookup"><span data-stu-id="cc40f-119">In the preceding code, two authentication middlewares have been added: one for cookies and one for bearer.</span></span>
+
+>[!NOTE]
+><span data-ttu-id="cc40f-120">指定預設的配置會導致`HttpContext.User`屬性設定為該身分識別。</span><span class="sxs-lookup"><span data-stu-id="cc40f-120">Specifying the default scheme results in the `HttpContext.User` property being set to that identity.</span></span> <span data-ttu-id="cc40f-121">如果不需要該行為，請停用它藉由設定`AuthenticationOptions.AutomaticAuthenticate`屬性`false`。</span><span class="sxs-lookup"><span data-stu-id="cc40f-121">If that behavior isn't desired, disable it by setting the `AuthenticationOptions.AutomaticAuthenticate` property to `false`.</span></span>
+
+---
+
+## <a name="selecting-the-scheme-with-the-authorize-attribute"></a><span data-ttu-id="cc40f-122">選取配置和授權屬性</span><span class="sxs-lookup"><span data-stu-id="cc40f-122">Selecting the scheme with the Authorize attribute</span></span>
+
+<span data-ttu-id="cc40f-123">在授權應用程式會指出要使用的處理常式。</span><span class="sxs-lookup"><span data-stu-id="cc40f-123">At the point of authorization, the app indicates the handler to be used.</span></span> <span data-ttu-id="cc40f-124">選取的應用程式將授權藉由傳遞驗證配置的逗號分隔清單的處理常式`[Authorize]`。</span><span class="sxs-lookup"><span data-stu-id="cc40f-124">Select the handler with which the app will authorize by passing a comma-delimited list of authentication schemes to `[Authorize]`.</span></span> <span data-ttu-id="cc40f-125">`[Authorize]`屬性指定的配置，來使用，不論預設值設定的驗證配置。</span><span class="sxs-lookup"><span data-stu-id="cc40f-125">The `[Authorize]` attribute specifies the authentication scheme or schemes to use regardless of whether a default is configured.</span></span> <span data-ttu-id="cc40f-126">例如: </span><span class="sxs-lookup"><span data-stu-id="cc40f-126">For example:</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="cc40f-127">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-127">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+[Authorize(AuthenticationSchemes = "Cookie,Bearer")]
+public class MixedController : Controller
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="cc40f-128">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-128">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
 [Authorize(ActiveAuthenticationSchemes = "Cookie,Bearer")]
 public class MixedController : Controller
 ```
 
-<span data-ttu-id="2ee2e-118">在上述 cookie 和承載範例 middlewares 將會執行，並有機會建立並附加目前使用者的身分識別。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-118">In the example above both the cookie and bearer middlewares will run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="2ee2e-119">藉由指定單一配置只有指定的中介軟體會執行;</span><span class="sxs-lookup"><span data-stu-id="2ee2e-119">By specifying a single scheme only the specified middleware will run;</span></span>
+---
+
+<span data-ttu-id="cc40f-129">在上述範例中，cookie 和承載的處理常式會執行，並有機會建立並附加目前使用者的身分識別。</span><span class="sxs-lookup"><span data-stu-id="cc40f-129">In the preceding example, both the cookie and bearer handlers run and have a chance to create and append an identity for the current user.</span></span> <span data-ttu-id="cc40f-130">藉由指定單一配置，會執行對應的處理常式。</span><span class="sxs-lookup"><span data-stu-id="cc40f-130">By specifying a single scheme only, the corresponding handler runs.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="cc40f-131">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-131">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+```csharp
+[Authorize(AuthenticationSchemes = "Bearer")]
+public class MixedController : Controller
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="cc40f-132">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="cc40f-132">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
 [Authorize(ActiveAuthenticationSchemes = "Bearer")]
+public class MixedController : Controller
 ```
 
-<span data-ttu-id="2ee2e-120">僅使用 Bearer 配置的中介軟體會執行在此情況下，並以 cookie 為基礎的所有識別會遭到都忽略。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-120">In this case only the middleware with the Bearer scheme would run, and any cookie based identities would be ignored.</span></span>
+---
 
-## <a name="selecting-the-scheme-with-policies"></a><span data-ttu-id="2ee2e-121">選取原則的配置</span><span class="sxs-lookup"><span data-stu-id="2ee2e-121">Selecting the scheme with policies</span></span>
+<span data-ttu-id="cc40f-133">在上述程式碼，只使用"Bearer"配置處理常式會執行。</span><span class="sxs-lookup"><span data-stu-id="cc40f-133">In the preceding code, only the handler with the "Bearer" scheme runs.</span></span> <span data-ttu-id="cc40f-134">以 cookie 為基礎的所有識別都會被都忽略。</span><span class="sxs-lookup"><span data-stu-id="cc40f-134">Any cookie-based identities are ignored.</span></span>
 
-<span data-ttu-id="2ee2e-122">如果您想要指定在所需的配置[原則](policies.md#security-authorization-policies-based)您可以設定`AuthenticationSchemes`加入您的原則時的集合。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-122">If you prefer to specify the desired schemes in [policy](policies.md#security-authorization-policies-based) you can set the `AuthenticationSchemes` collection when adding your policy.</span></span>
+## <a name="selecting-the-scheme-with-policies"></a><span data-ttu-id="cc40f-135">選取原則的配置</span><span class="sxs-lookup"><span data-stu-id="cc40f-135">Selecting the scheme with policies</span></span>
+
+<span data-ttu-id="cc40f-136">如果您想要指定在所需的配置[原則](xref:security/authorization/policies#security-authorization-policies-based)，您可以設定`AuthenticationSchemes`集合加入您的原則時：</span><span class="sxs-lookup"><span data-stu-id="cc40f-136">If you prefer to specify the desired schemes in [policy](xref:security/authorization/policies#security-authorization-policies-based), you can set the `AuthenticationSchemes` collection when adding your policy:</span></span>
 
 ```csharp
-options.AddPolicy("Over18", policy =>
+services.AddAuthorization(options =>
 {
-    policy.AuthenticationSchemes.Add("Bearer");
-    policy.RequireAuthenticatedUser();
-    policy.Requirements.Add(new Over18Requirement());
+    options.AddPolicy("Over18", policy =>
+    {
+        policy.AuthenticationSchemes.Add("Bearer");
+        policy.RequireAuthenticatedUser();
+        policy.Requirements.Add(new MinimumAgeRequirement());
+    });
 });
 ```
 
-<span data-ttu-id="2ee2e-123">在此範例中 Over18 原則只會執行比對所建立的識別`Bearer`中介軟體。</span><span class="sxs-lookup"><span data-stu-id="2ee2e-123">In this example the Over18 policy will only run against the identity created by the `Bearer` middleware.</span></span>
+<span data-ttu-id="cc40f-137">在上述範例中，"Over18"原則只會執行比對"Bearer"的處理常式所建立的識別。</span><span class="sxs-lookup"><span data-stu-id="cc40f-137">In the preceding example, the "Over18" policy only runs against the identity created by the "Bearer" handler.</span></span> <span data-ttu-id="cc40f-138">使用此原則設定`[Authorize]`屬性的`Policy`屬性：</span><span class="sxs-lookup"><span data-stu-id="cc40f-138">Use the policy by setting the `[Authorize]` attribute's `Policy` property:</span></span>
+
+```csharp
+[Authorize(Policy = "Over18")]
+public class RegistrationController : Controller
+```

@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 01bb5597033fef7e1cb08e980c81d37d88ed253e
-ms.sourcegitcommit: ab91aad2680efc4eb5c0642746e2b981db7f81b8
+ms.openlocfilehash: a3029e68164dd91d1bc43704c5e96bd591bcae05
+ms.sourcegitcommit: a73fb5161fbdbee1d2e8474205e9840a134ee2ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
 
@@ -62,7 +62,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不是提供支援 QR
 
 ## <a name="change-the-site-name-in-the-qr-code"></a>變更站台名稱在 QR 代碼
 
-將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*Pages\Account\Manage\EnableAuthenticator.cshtml.cs* （Razor 頁面） 檔案或*Controllers\AccountController.cs* (MVC) 檔案。 
+將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*Pages\Account\Manage\EnableAuthenticator.cshtml.cs* （Razor 頁面） 檔案或*Controllers\ManageController.cs* (MVC) 檔案。 
 
 從範本的預設程式碼看起來如下：
 

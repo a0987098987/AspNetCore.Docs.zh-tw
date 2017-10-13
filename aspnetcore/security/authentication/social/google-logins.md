@@ -10,15 +10,13 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: d7c5e1f1564c1bbf345e28fa76ce0b11ae65b0d4
+ms.sourcegitcommit: 93785b6b29a4996066fba05149348f1bdf881263
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Google 驗證
-
-<a name=security-authentication-google-logins></a>
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

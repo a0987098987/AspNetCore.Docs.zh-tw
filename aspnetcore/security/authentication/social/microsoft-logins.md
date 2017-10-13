@@ -11,15 +11,13 @@ ms.assetid: 66DB4B94-C78C-4005-BA03-3D982B87C268
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: cb4ea63664f29e39c2dd26cbf814a484a295ec6c
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4e1512aa151a87f677b400f16dbf53ca22b61e9e
+ms.sourcegitcommit: 93785b6b29a4996066fba05149348f1bdf881263
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="configuring-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
-
-<a name=security-authentication-microsoft-logins></a>
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

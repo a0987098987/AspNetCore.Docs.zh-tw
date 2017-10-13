@@ -11,15 +11,13 @@ ms.assetid: 8c65179b-688c-4af1-8f5e-1862920cda95
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 2b478ce38e98977a7c52e9317b5bc6fa0d6624b7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 1eb563a5067fe4b063e5bd593d441e4e2a719b18
+ms.sourcegitcommit: 93785b6b29a4996066fba05149348f1bdf881263
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="configuring-facebook-authentication"></a>設定 Facebook 驗證
-
-<a name=security-authentication-facebook-logins></a>
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

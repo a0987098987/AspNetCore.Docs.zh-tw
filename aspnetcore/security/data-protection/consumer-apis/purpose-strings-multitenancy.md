@@ -2,7 +2,7 @@
 title: "在 ASP.NET Core 目的字串"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: 9d18c287-e0e6-4541-b09c-7fed45c902d9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
-ms.openlocfilehash: dd87d8bcaf0056b322908e9a3ef75678f603e1e6
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: b25af7c1f4dd3c63734290e6ac82e2e30a030c61
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a>目的階層和 ASP.NET Core 中的多租用戶
 
 由於 IDataProtector 也隱含地 IDataProtectionProvider，用途可以鏈結在一起。 在此意義提供者。CreateProtector （["purpose1"、"purpose2"]） 就相當於提供者。CreateProtector("purpose1")。CreateProtector("purpose2")。
 
-這可讓您透過資料保護系統一些有趣的階層式關聯性。 在先前範例中的[Contoso.Messaging.SecureMessage](purpose-strings.md#data-protection-contoso-purpose)，SecureMessage 元件可以呼叫提供者。一旦前方 CreateProtector("Contoso.Messaging.SecureMessage") 和快取到 _myProvider 私用欄位的結果。 然後可以透過呼叫 _myProvider.CreateProtector 建立未來的保護裝置 (」 使用者： 使用者名稱 」)，以及這些保護裝置會用來保護個別訊息。
+這可讓您透過資料保護系統一些有趣的階層式關聯性。 在先前範例中的[Contoso.Messaging.SecureMessage](purpose-strings.md#data-protection-contoso-purpose)，SecureMessage 元件可以呼叫提供者。一旦前方 CreateProtector("Contoso.Messaging.SecureMessage") 和快取到私用結果`_myProvide`欄位。 未來的保護裝置，就可以建立透過呼叫`_myProvider.CreateProtector("User: username")`，而且會用於這些保護裝置保護個別訊息。
 
 這可以也翻轉。 請考慮單一邏輯應用程式與它自己的驗證和狀態管理系統，則可以設定多個租用戶 （CMS 似乎很合理） 和每個租用戶的主機。 概括性應用程式具有單一主要提供者，它會呼叫提供者。CreateProtector （「 租用戶 1 」） 和提供者。CreateProtector （「 租用戶 2 」） 來提供每個租用戶的資料保護系統自己隔離配量。 租用戶無法再衍生自己個別的保護裝置根據其自己的需求，但是無論他們嘗試手動他們無法建立相衝突的保護裝置與任何其他租用戶系統中。 以圖形方式，這被表示，如下所示。
 

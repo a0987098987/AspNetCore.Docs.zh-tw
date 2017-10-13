@@ -11,11 +11,11 @@ ms.assetid: 2bdcbf95-8d9d-4537-a4a0-a5ee439dcb62
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/cookie
-ms.openlocfilehash: e5c53a7044edb56e065b2dc1536343fdaf9fb007
-ms.sourcegitcommit: 7d8f4e3443a2989a64343f8fec83e6a4c4ed2f97
+ms.openlocfilehash: ea9c93e34a3242b5b3716404228edb8902baf625
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 Cookie 驗證
 
@@ -76,7 +76,7 @@ ASP.NET Core 1.x 提供 cookie[中介軟體](../../fundamentals/middleware.md#fu
 
 * `AccessDeniedPath`-這是相對路徑，要求重新導向當使用者嘗試存取資源，但未通過任何[授權原則](xref:security/authorization/policies#security-authorization-policies-based)該資源。
 
-* `AuthenticationScheme`-這是特定的 cookie 驗證配置會依已知的值。 當多個執行個體的 cookie 驗證，而您想要這非常有用[授權限制為一個執行個體](xref:security/authorization/limitingidentitybyscheme#security-authorization-limiting-by-scheme)。
+* `AuthenticationScheme`-這是特定的 cookie 驗證配置會依已知的值。 Cookie 驗證與應用程式需要多個執行個體時，這會很有用[授權限制為一個執行個體](xref:security/authorization/limitingidentitybyscheme)。
 
 * `AutomaticAuthenticate`-此旗標是只適用於 ASP.NET Core 1.x。 它會指出應該執行每個要求的 cookie 驗證，並嘗試驗證，重新建構建立它的任何序列化的主體。
 

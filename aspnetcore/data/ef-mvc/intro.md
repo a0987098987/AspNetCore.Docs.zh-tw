@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a4e9ab26fa49720aa2334101ee12916fc797d944
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 379802f644b977563b0b50354feb1fb9a4c8fabb
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
@@ -94,11 +94,11 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 所做的變更會反白顯示。
 
-[!code-html[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
 
 在*Views/Home/Index.cshtml*，ASP.NET MVC 的相關文字使用文字來取代此應用程式有關的下列程式碼取代檔案的內容：
 
-[!code-html[](intro/samples/cu/Views/Home/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
 按 CTRL + F5 執行專案，或選擇**偵錯 > 啟動但不偵錯**從功能表。 您會看到這些教學課程中，您將建立之頁面的索引標籤的 [首頁] 頁面。
 
@@ -288,7 +288,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 *Views/Students/Index.cshtml*檢視會顯示在資料表中的這份清單：
 
-[!code-html[](intro/samples/cu/Views/Students/Index1.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index1.cshtml)]
 
 按 CTRL + F5 執行專案，或選擇**偵錯 > 啟動但不偵錯**從功能表。
 
@@ -306,7 +306,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 如果 SSOX 視窗尚未開啟，請選取 從**檢視**Visual Studio 中的功能表。
 
-在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下 資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
+在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
 
 展開**資料表**節點以查看您的資料庫中的資料表。
 
@@ -330,7 +330,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 * 實體屬性會在名為 ID 或 classnameID 辨識為主索引鍵屬性。
 
-* 屬性會解譯為外部索引鍵屬性上，如果名稱為* <navigation property name> <primary key property name> * (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為* <primary key property name> * (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
+* 屬性會解譯為外部索引鍵屬性上，如果名稱為 *<navigation property name> <primary key property name>*  (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為 *<primary key property name>*  (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 傳統行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見。 您可以設定資料行名稱和主索引鍵或外部索引鍵，以設定任何屬性，您會發現在[之後的教學課程](complex-data-model.md)本系列。
 

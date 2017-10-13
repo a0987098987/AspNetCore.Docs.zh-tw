@@ -2,7 +2,7 @@
 title: "檢視架構的授權"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 24ce40d8-9b83-4bae-9d4c-a66350fcc8f8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/views
-ms.openlocfilehash: 3b7fa6025d766da80ba92ee27af20bf9bfe0dcf4
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 82c0c7282de34e496f529d964f99121ae2805c5a
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="view-based-authorization"></a>檢視架構的授權
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 08/25/2017
 
 一旦您已插入授權服務就使用它藉由呼叫`AuthorizeAsync`方法中完全相同方式，您會檢查期間[以資源為基礎的授權](resourcebased.md#security-authorization-resource-based-imperative)。
 
-```csharp
+```cshtml
 @if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
    {
        <p>This paragraph is displayed because you fulfilled PolicyName.</p>
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/25/2017
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-```csharp
+```cshtml
    @if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)
    {
        <p><a class="btn btn-default" role="button"
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/25/2017
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-```csharp
+```cshtml
    @if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
    {
        <p><a class="btn btn-default" role="button"

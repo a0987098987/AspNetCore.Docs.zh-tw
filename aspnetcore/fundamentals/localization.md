@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 9ff2fb92c81719c7278d70b5df5387f1244195bf
-ms.sourcegitcommit: e7f01a649f240b6b57118c53314ab82f7f36f2eb
+ms.openlocfilehash: b64af625dd280b40e3c743af9415e3a67155fe6e
+ms.sourcegitcommit: e9bd53f53c0ba148343cd2057c714a7c72ee81e9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
@@ -47,7 +47,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-注意： 您通常想要只當地語系化文字和沒有 HTML。
+**注意：**通常會想要只當地語系化文字和沒有 HTML。
 
 最低層級，您可以取得`IStringLocalizerFactory`超出[相依性插入](dependency-injection.md):
 
@@ -59,7 +59,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 [!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
 
-有些開發人員使用`Startup`類別可以包含全域或共用的字串。  在下列範例，`InfoController`和`SharedResource`當地語系化人員使用：
+有些開發人員使用`Startup`類別可以包含全域或共用的字串。 在下列範例，`InfoController`和`SharedResource`當地語系化人員使用：
 
 [!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
@@ -67,7 +67,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 `IViewLocalizer`服務提供的當地語系化的字串[檢視](https://docs.microsoft.com/aspnet/core)。 `ViewLocalizer`類別會實作這個介面，並尋找檢視的檔案路徑的資源位置。 下列程式碼示範如何使用的預設實作`IViewLocalizer`:
 
-[!code-HTML[Main](localization/sample/Localization/Views/Home/About.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Home/About.cshtml)]
 
 預設實作`IViewLocalizer`尋找檢視的檔案名稱為基礎的資源檔。 沒有任何使用共用的全域資源檔案的選項。 `ViewLocalizer`實作使用當地語系化`IHtmlLocalizer`，因此 Razor 不 HTML 編碼的當地語系化的字串。 您可以參數化資源字串和`IViewLocalizer`將 HTML 編碼的參數，但不是資源字串。 請考慮下列 Razor 標記：
 
@@ -83,13 +83,11 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 呈現的檢視可能包含從資源檔的 HTML 標記。
 
-附註：
-- 檢視當地語系化需要 「 Localization.AspNetCore.TagHelpers"NuGet 封裝。
-- 您通常想要只當地語系化文字和沒有 HTML。
+**注意：**通常會想要只當地語系化文字和沒有 HTML。
 
 若要使用的共用的資源檔案，在檢視中，插入`IHtmlLocalizer<T>`:
 
-[!code-HTML[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
+[!code-cshtml[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>DataAnnotations 當地語系化
 
@@ -144,7 +142,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
     Visual Studio 會顯示*Welcome.es.resx*檔案。
 
-    ![方案總管中顯示 歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
+    ![方案總管] 中顯示 [歡迎使用西班牙文 (es) 資源檔](localization/_static/se.png)
 
 <a name="error"></a>
 
@@ -287,11 +285,11 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 這個範例**Localization.StarterWeb**投影上[GitHub](https://github.com/aspnet/entropy)包含設定的 UI `Culture`。 *Views/Shared/_SelectLanguagePartial.cshtml*檔可讓您從支援的文化特性的清單中選取的文化特性：
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 *Views/Shared/_SelectLanguagePartial.cshtml*檔案加入至`footer`區段的配置檔案，因此將予以提供至所有的檢視：
 
-[!code-HTML[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage`方法設定的文化特性的 cookie。
 

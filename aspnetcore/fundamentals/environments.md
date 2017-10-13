@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 2a92c50085e70b4a505913c86348ba5fe54f6d13
-ms.sourcegitcommit: 67811da1278c75cb10994602c13bd5adec3f0907
+ms.openlocfilehash: becdfa647acb6483b39f5421ab881c4817f31c40
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -50,7 +50,7 @@ IIS Express 的設定檔如下所示：
 專案設定檔所做的變更可能不會生效，直到重新啟動使用網頁伺服器 （特別是，Kestrel 必須重新啟動之前它會偵測到它的環境所做的變更）。
 
 >[!WARNING]
-> 環境變數會儲存在*launchSettings.json*並未受到保護以任何方式，並將原始程式碼儲存機制在專案的一部分，如果您使用其中一個。 **絕對不要儲存這個檔案中的認證或其他機密資料。** 如果您需要儲存這類資料的位置，使用*密碼管理員*中所述的工具[安全存放應用程式密碼，在開發期間](../security/app-secrets.md#security-app-secrets)。
+> 環境變數會儲存在*launchSettings.json*並未受到保護以任何方式，並將原始程式碼儲存機制在專案的一部分，如果您使用其中一個。 **絕對不要儲存這個檔案中的認證或其他機密資料。** 如果您需要儲存這類資料的位置，使用*密碼管理員*中所述的工具[安全存放應用程式密碼，在開發期間](xref:security/app-secrets)。
 
 ### <a name="staging"></a>預備環境
 

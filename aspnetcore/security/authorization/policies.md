@@ -11,15 +11,15 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 2e3bbcc9ffd90d7cba974466860738f1f462d3b3
-ms.sourcegitcommit: c29954cdfed0257eef92243175802ad6929e32bc
+ms.openlocfilehash: 24585ed5b4c21a357fc0eed4de6ccedf9fa50d3e
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2017
 ---
 # <a name="custom-policy-based-authorization"></a>以原則為基礎的自訂授權
 
-<a name=security-authorization-policies-based></a>
+<a name="security-authorization-policies-based"></a>
 
 基本上[角色授權](roles.md)和[宣告授權](claims.md)使需求的使用、 需求和預先設定的原則的處理常式。 這些建置組塊可讓您快速的程式碼，以便更豐富、 可重複使用和授權可輕鬆地測試結構授權評估。
 
@@ -74,13 +74,13 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 
 一項需求不需要將資料或屬性。
 
-<a name=security-authorization-policies-based-authorization-handler></a>
+<a name="security-authorization-policies-based-authorization-handler"></a>
 
 ## <a name="authorization-handlers"></a>授權的處理常式
 
 授權處理常式會負責評估的一項需求的任何屬性。 授權的處理常式必須評估他們提供`AuthorizationHandlerContext`決定如果允許授權。 可以有一項需求[多個處理常式](policies.md#security-authorization-policies-based-multiple-handlers)。 處理常式必須繼承`AuthorizationHandler<T>`其中 T 是它所處理的需求。
 
-<a name=security-authorization-handler-example></a>
+<a name="security-authorization-handler-example"></a>
 
 最短使用期限處理常式可能如下所示：
 
@@ -116,7 +116,7 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 
 上方的程式碼我們先來看看目前的使用者主體已宣告它發出的簽發者，我們已經知道與信任的出生日期。 如果宣告是遺漏我們無法授權讓我們決定傳回。 如果我們擁有宣告時，我們找出舊的使用者，且符合傳入要求的最低存在時間然後授權已成功。 成功授權之後我們呼叫`context.Succeed()`中的需求，已成功做為參數傳遞。
 
-<a name=security-authorization-policies-based-handler-registration></a>
+<a name="security-authorization-policies-based-handler-registration"></a>
 
 處理常式必須是集合中註冊服務在設定期間例如
 
@@ -150,7 +150,7 @@ public void ConfigureServices(IServiceCollection services)
 
 不論您呼叫您的處理常式內之需求的所有處理常式會呼叫時的原則需要的需求。 這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。
 
-<a name=security-authorization-policies-based-multiple-handlers></a>
+<a name="security-authorization-policies-based-multiple-handlers"></a>
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>為什麼需要多個處理常式之需求？
 

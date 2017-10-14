@@ -2,7 +2,7 @@
 title: "在要求處理常式中的相依性插入"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 5fb6625c-173a-4feb-8380-73c9844dc23c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: 37d197d7696a6e91fa236b2defc577959c95c49f
-ms.sourcegitcommit: 0a70706a3814d2684f3ff96095d1e8291d559cc7
+ms.openlocfilehash: 308951a45ee6576f096e1cdc792208b89e476e61
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="dependency-injection-in-requirement-handlers"></a>在要求處理常式中的相依性插入
 
-<a name=security-authorization-di></a>
+<a name="security-authorization-di"></a>
 
 [授權的處理常式必須註冊](policies.md#security-authorization-policies-based-handler-registration)在設定期間的服務集合中 (使用[相依性插入](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection))。
 

@@ -2,7 +2,7 @@
 title: "簡單的授權"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 391bcaad-205f-43e4-badc-fa592d6f79f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/simple
-ms.openlocfilehash: 013ce0d9ac1e9c1b6bb541b9fa66218c3fd799bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 91f402b1cbf73e212418d197a8a7230ce22e9e1d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="simple-authorization"></a>簡單的授權
 
-<a name=security-authorization-simple></a>
+<a name="security-authorization-simple"></a>
 
 在 MVC 中的授權由`AuthorizeAttribute`屬性和各種不同的參數。 在其最簡單的套用`AuthorizeAttribute`屬性到控制器或動作限制存取控制器或動作，任何已驗證的使用者。
 

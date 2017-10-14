@@ -11,15 +11,15 @@ ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 7f7df52bf51a81558818836450997281a21b5839
-ms.sourcegitcommit: f303a457644ed034a49aa89edecb4e79d9028cb1
+ms.openlocfilehash: d3575619c53e77dadc293ea2bb7dc72501a8a1e3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="resource-based-authorization"></a>以資源為基礎的授權
 
-<a name=security-authorization-resource-based></a>
+<a name="security-authorization-resource-based"></a>
 
 通常授權存取的資源而定。 例如，文件可能會有 author 屬性。 文件作者會允許進行更新，所以後才能進行授權評估，必須從 文件儲存機制載入資源。 無法完成具有授權屬性，因為屬性評估會發生資料繫結之前和動作中執行您自己的程式碼載入的資源之前。 而不是宣告式授權屬性方法中，我們必須使用必要的授權，其中的開發人員呼叫他們自己的程式碼中的授權函式。
 
@@ -50,7 +50,7 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                           string policyName);
 ```
 
-<a name=security-authorization-resource-based-imperative></a>
+<a name="security-authorization-resource-based-imperative"></a>
 
 若要呼叫服務，載入您的資源，您的動作內再呼叫`AuthorizeAsync`您需要的多載。 例如: 
 

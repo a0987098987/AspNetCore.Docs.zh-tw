@@ -2,7 +2,7 @@
 title: "目的字串"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: c96ed361-c382-4980-8933-800e740cfc38
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/purpose-strings
-ms.openlocfilehash: cc33bcfab4945e6d6f9ca7e61edeff4d1837661a
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 799c3dc2768e264307783efafee626a346a9362c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="purpose-strings"></a>目的字串
 
-<a name=data-protection-consumer-apis-purposes></a>
+<a name="data-protection-consumer-apis-purposes"></a>
 
 取用 IDataProtectionProvider 元件必須通過唯一*用途*CreateProtector 方法的參數。 目的*參數*是固有的安全性資料保護系統中，因為它會提供密碼編譯的取用者之間的隔離，即使根密碼編譯金鑰都相同。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 08/11/2017
 
 由於 CreateProtector 用途參數是字串陣列，上述無法改為指定為 ["Contoso.Security.BearerToken"，"v1"]。 這樣可讓您建立階層的用途，並開啟與資料保護系統的多租用戶案例的可能性。
 
-<a name=data-protection-contoso-purpose></a>
+<a name="data-protection-contoso-purpose"></a>
 
 >[!WARNING]
 > 元件不應該允許不受信任的使用者輸入的目的鏈結輸入唯一的來源。

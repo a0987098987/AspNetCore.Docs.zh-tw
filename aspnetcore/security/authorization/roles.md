@@ -11,15 +11,15 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: 1dc76f316b70d486febe386cc47cd1f843d8d8e3
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 3dfba8a492c5d592b1fa9c8893a0ec4b1a2e70b9
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="role-based-authorization"></a>角色型授權
 
-<a name=security-authorization-role-based></a>
+<a name="security-authorization-role-based"></a>
 
 當建立了識別之後可能屬於一個或多個角色，例如 Tracy 可能屬於系統管理員和使用者角色儘管 Scott 可能只屬於使用者角色。 如何建立和管理這些角色取決於備份存放區的授權程序。 角色會公開給開發人員透過[IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole)屬性[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)類別。
 
@@ -93,7 +93,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-<a name=security-authorization-role-policy></a>
+<a name="security-authorization-role-policy"></a>
 
 ## <a name="policy-based-role-checks"></a>原則為基礎的角色檢查
 

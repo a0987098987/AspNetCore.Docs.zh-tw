@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4aecf9e9bd11cc7e2b36b40955178d9e9368c185
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: ccdf1625cdaf2400780500ac5ab86f41537964a9
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>使用 AngularJS 與 ASP.NET Core 單一網頁應用程式 (SPAs)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/01/2017
 
 在本文中，您將學習如何建置使用 AngularJS SPA 樣式 ASP.NET 應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/angular/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-angularjs"></a>AngularJS 是什麼？
 
@@ -43,7 +43,7 @@ AngularJS 不是 DOM 操作程式庫，例如 jQuery，但是它會使用稱為 
 
 有幾種方式將 AngularJS 加入您的應用程式。 如果您在 Visual Studio 中開始新的 ASP.NET Core web 應用程式，您可以加入 AngularJS 使用內建[Bower](bower.md)支援。 開啟*bower.json*，並加入項目以`dependencies`屬性：
 
-<a name=angular-bower-json></a>
+<a name="angular-bower-json"></a>
 
 [!code-json[Main](../client-side/angular/sample/AngularJSSample/src/AngularJSSample/bower.json?highlight=9)]
 

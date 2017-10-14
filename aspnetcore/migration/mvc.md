@@ -11,11 +11,11 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc
-ms.openlocfilehash: 385ab7dfea5b92687a427bdfe9558462227113b1
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 7a4357da4cc97d7c60cc7e309add7583ef096597
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 09/22/2017
 
 請參閱[Bower 與管理用戶端封裝](../client-side/bower.md)如需詳細資訊。
 
-<a name=migrate-layout-file></a>
+<a name="migrate-layout-file"></a>
 
 ## <a name="migrate-the-layout-file"></a>移轉配置檔案
 

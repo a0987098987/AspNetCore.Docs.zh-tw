@@ -11,22 +11,22 @@ ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: 16a9385630d88c4c9f33954f83fce2bbce5be719
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5d0eb4036a3d491336cbe9357779c150b5cbb236
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-encryption-at-rest"></a>金鑰加密在靜止
 
-<a name=data-protection-implementation-key-encryption-at-rest></a>
+<a name="data-protection-implementation-key-encryption-at-rest"></a>
 
 根據預設資料保護系統[採用啟發學習法](../configuration/default-settings.md#data-protection-default-settings)來判斷如何密碼編譯金鑰內容應該加密在靜止。 開發人員可以覆寫啟發學習法，並以手動方式指定索引鍵應該如何加密在靜止。
 
 > [!NOTE]
 > 如果您指定明確的金鑰加密，在其餘的機制，資料保護系統將會取消註冊啟發學習法所提供的預設金鑰儲存機制。 您必須[指定明確的金鑰儲存機制](key-storage-providers.md#data-protection-implementation-key-storage-providers)，否則資料保護系統將無法啟動。
 
-<a name=data-protection-implementation-key-encryption-at-rest-providers></a>
+<a name="data-protection-implementation-key-encryption-at-rest-providers"></a>
 
 資料保護系統隨附三種內建金鑰加密機制。
 
@@ -64,7 +64,7 @@ sc.AddDataProtection()
 
 由於.NET Framework 限制支援只使用 CAPI 私用金鑰的憑證。 請參閱[憑證為基礎的加密與 Windows DPAPI-NG](#data-protection-implementation-key-encryption-at-rest-dpapi-ng)下面這些限制可能的解決方法。
 
-<a name=data-protection-implementation-key-encryption-at-rest-dpapi-ng></a>
+<a name="data-protection-implementation-key-encryption-at-rest-dpapi-ng"></a>
 
 ## <a name="windows-dpapi-ng"></a>Windows DPAPI NG
 

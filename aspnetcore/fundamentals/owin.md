@@ -1,5 +1,5 @@
 ---
-title: "開啟 Web 介面 for.NET (OWIN)"
+title: Open Web Interface for .NET (OWIN)
 author: ardalis
 description: "探索 ASP.NET Core 支援的方式開啟 Web 介面的.NET (OWIN)，可讓 web 應用程式来從 web 伺服器。"
 keywords: "ASP.NET Core，for.NET，OWIN 開啟 Web 介面"
@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e111a451bcc741f3e77f7ce756356cc1b57a5b52
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: e2ee970a1c9cd05ebee76b92c3e2c7c6c6cc6ef8
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>若要開啟.NET (OWIN) 的網頁介面的簡介
 
 由[Steve Smith](https://ardalis.com/)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core 支援開啟 Web 介面.NET (OWIN)。 OWIN 可讓 web 應用程式從 web 伺服器。 它會定義可以在管線中用來處理要求和回應相關聯的中介軟體的標準方式。 與 OWIN 應用程式、 伺服器和中介軟體的 ASP.NET Core 應用程式和中介軟體可以交互操作。
+ASP.NET Core 支援Open Web Interface for .NET (OWIN)。 OWIN 可讓 Web 應用程式獨立於網頁伺服器。 它會定義可以在管線中用來處理要求和回應相關聯的中介軟體的標準方式。 與 OWIN 應用程式、 伺服器和中介軟體的 ASP.NET Core 應用程式和中介軟體可以交互操作。
 
 OWIN 提供脫鉤層，可讓兩個架構來使用不同的物件模型一起使用。 `Microsoft.AspNetCore.Owin`套件提供兩個配接器實作：
 - Owin ASP.NET Core 
@@ -32,7 +32,7 @@ OWIN 提供脫鉤層，可讓兩個架構來使用不同的物件模型一起使
 
 注意： 使用這些介面卡隨附的效能成本。 使用僅 ASP.NET 核心元件的應用程式不應該使用 Owin 封裝或介面卡。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a>在 ASP.NET 管線中執行 OWIN 中介軟體
 
@@ -91,7 +91,7 @@ app.UseOwin(pipeline =>
 });
 ```
 
-<a name=hosting-on-owin></a>
+<a name="hosting-on-owin"></a>
 
 ## <a name="using-aspnet-hosting-on-an-owin-based-server"></a>使用 OWIN 架構的伺服器上的 ASP.NET 裝載
 

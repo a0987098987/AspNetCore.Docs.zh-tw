@@ -2,7 +2,7 @@
 title: "子機碼衍生和已驗證的加密"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,22 +11,22 @@ ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 24ce71b417599bea22b7fae8b384db599f9e907c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: e070742b5d9966c4772fd2f0a6d637d98a46137c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="subkey-derivation-and-authenticated-encryption"></a>子機碼衍生和已驗證的加密
 
-<a name=data-protection-implementation-subkey-derivation></a>
+<a name="data-protection-implementation-subkey-derivation"></a>
 
 會包含某種形式的 entropy 鑰匙圈中大部分的索引鍵，而且必須演算資訊指出"CBC 模式加密 + HMAC 驗證 」 或 「 GCM 加密 + 驗證 」。 在這些情況下，我們將內嵌的 entropy 稱為主要金鑰處理內容 （或金鑰管理），此索引鍵，和我們執行金鑰衍生功能來衍生金鑰會用於實際的密碼編譯作業。
 
 > [!NOTE]
 > 索引鍵是抽象類別，並自訂實作可能無法運作，如下所示。 如果索引鍵提供自己的 IAuthenticatedEncryptor，而不是使用其中一種我們內建的 factory 實作，適用於不會再這一節所述的機制。
 
-<a name=data-protection-implementation-subkey-derivation-aad></a>
+<a name="data-protection-implementation-subkey-derivation-aad"></a>
 
 ## <a name="additional-authenticated-data-and-subkey-derivation"></a>其他的已驗證的資料和子機碼衍生
 
@@ -42,7 +42,7 @@ IAuthenticatedEncryptor 介面做為所有已驗證的加密作業的核心介�
 
 （K_E、 K_H） = SP800_108_CTR_HMACSHA512 (K_M，AAD，contextHeader | | keyModifier)
 
-在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)、 秒。 5.1) 使用下列參數：
+在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，秒 5.1) 使用下列參數：
 
 * 金鑰衍生金鑰 (KDK) = K_M
 

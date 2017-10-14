@@ -11,11 +11,11 @@ ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 9d24c2956c24a7995b3eeffc19e8c0a827349493
-ms.sourcegitcommit: ed401027aac45c5938c917c7f518a33ceffe9f95
+ms.openlocfilehash: 5dd8bee7228587d7e13f128bc8f16102fb70a412
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/02/2017
 >[!IMPORTANT]
 > 本文件涵蓋的最低層級的 ASP.NET Core 路由。 ASP.NET Core MVC 路由，請參閱[路由至控制器的動作](../mvc/controllers/routing.md)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/02/2017
 
 路由會連接到[中介軟體](middleware.md)由管線`RouterMiddleware`類別。 [ASP.NET MVC](../mvc/overview.md)新增路由傳送至中介軟體管線，其組態的一部分。 若要深入了解使用路由作為獨立元件，請參閱[使用路由的中介軟體](#using-routing-middleware)。
 
-<a name=url-matching-ref></a>
+<a name="url-matching-ref"></a>
 
 ### <a name="url-matching"></a>URL 比對
 
@@ -159,7 +159,7 @@ routes.MapRoute(
 
 ![[區域變數] 視窗語彙基元](routing/_static/tokens.png)
 
-<a name=id1></a>
+<a name="id1"></a>
 
 ### <a name="url-generation"></a>URL 的產生
 

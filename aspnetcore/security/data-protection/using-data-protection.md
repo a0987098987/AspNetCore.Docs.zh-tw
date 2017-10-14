@@ -2,7 +2,7 @@
 title: "開始使用資料保護應用程式開發介面"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 39b7a73c-29d4-4137-b311-49529adcf3cb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: 2a381acf5faa7071fe4a22641037fcee11f6d362
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 9489b55b1de626b77bcbe21cb9678e561b559099
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="getting-started-with-the-data-protection-apis"></a>開始使用資料保護應用程式開發介面
 
-<a name=security-data-protection-getting-started></a>
+<a name="security-data-protection-getting-started"></a>
 
 在其最簡單的保護資料包含下列步驟：
 

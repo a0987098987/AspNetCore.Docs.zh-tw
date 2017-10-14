@@ -11,15 +11,15 @@ ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: ed84b6dc257d5fd9e4c1cf6106df3c8bd6e14f64
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: ce23931e72404347ebc17c69ae90e70cd15328bc
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management-extensibility"></a>金鑰管理的擴充性
 
-<a name=data-protection-extensibility-key-management></a>
+<a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
 > 讀取[金鑰管理](../implementation/key-management.md#data-protection-implementation-key-management)閱讀本節中，因為它會說明這些 Api 的基本概念的某些之前 > 一節。
@@ -63,7 +63,7 @@ IKeyManager 介面代表負責一般金鑰儲存、 擷取及管理的物件。 
 >[!WARNING]
 > 撰寫 IKeyManager 非常進階的工作，並且大部分的開發人員不應嘗試它。 相反地，大部分的開發人員應利用所提供的功能[XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager)類別。
 
-<a name=data-protection-extensibility-key-management-xmlkeymanager></a>
+<a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
@@ -139,7 +139,7 @@ IXmlRepository 介面代表可保存到 XML 和 XML 擷取備份存放區的類�
 
 有兩種內建的具象類型實作 IXmlRepository: FileSystemXmlRepository 和 RegistryXmlRepository。 請參閱[金鑰儲存提供者文件](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers)如需詳細資訊。 註冊自訂 IXmlRepository 會適當的方式來使用不同的備份存放區，例如 Azure Blob 儲存體。 若要變更預設儲存機制的應用程式層級，請在服務提供者註冊自訂的單一 IXmlRepository。
 
-<a name=data-protection-extensibility-key-management-ixmlencryptor></a>
+<a name="data-protection-extensibility-key-management-ixmlencryptor"></a>
 
 ## <a name="ixmlencryptor"></a>IXmlEncryptor
 

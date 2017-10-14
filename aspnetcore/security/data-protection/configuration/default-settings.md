@@ -11,15 +11,15 @@ ms.assetid: ef7dad2a-7029-4ae5-8f06-1fbebedccaa4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: c361af7d336fc0f7651e5d2f28d71515e2949c65
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 5ac2d80e7d1cebcbc792e1247608e67991ec36f4
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management-and-lifetime"></a>金鑰管理和存留期
 
-<a name=data-protection-default-settings></a>
+<a name="data-protection-default-settings"></a>
 
 ## <a name="key-management"></a>金鑰管理
 

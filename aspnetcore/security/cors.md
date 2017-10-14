@@ -11,11 +11,11 @@ ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: e441ce1c50139a5b33865eec8e8d99764258730d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 0d1c34f5c82fe1a28a405617ea77084db899139b
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -150,7 +150,7 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 標頭，列出應用程式所設定的 HTTP 標頭 (所謂的 「 撰寫要求標頭 」)。
 
-允許清單特定的標頭：
+白名單特定的標頭：
 
 [!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=53-58)]
 
@@ -219,7 +219,7 @@ $.ajax({
 
 [!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
-<a name=cors-how-cors-works></a>
+<a name="cors-how-cors-works"></a>
 
 ## <a name="how-cors-works"></a>CORS 的運作方式
 

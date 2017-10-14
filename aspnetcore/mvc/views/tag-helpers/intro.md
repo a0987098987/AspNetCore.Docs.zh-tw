@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 78004aa370cac8b297fd7ede534260c83965ae79
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>在 ASP.NET Core 標記協助程式簡介 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 09/28/2017
 
 標記協助程式範圍由多種`@addTagHelper`， `@removeTagHelper`，而"！"退出字元。
 
-<a name=add-helper-label></a>
+<a name="add-helper-label"></a>
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper`提供標記協助程式
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/28/2017
 
 如先前所述，新增`@addTagHelper`指示詞加入*Views/_ViewImports.cshtml*檔案讓標記協助程式中的所有檢視檔案*檢視*目錄和子目錄。 您可以使用`@addTagHelper`指示詞中特定的檢視檔案，如果您想要選擇加入以公開這些檢視表標記協助專家。
 
-<a name=remove-razor-directives-label></a>
+<a name="remove-razor-directives-label"></a>
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper`移除標記協助程式
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 09/28/2017
 
 您必須套用標記協助程式退出字元的開頭和結尾標記。 （在 Visual Studio 編輯器中自動將退出字元加入結尾標記，當您加入一個開頭標記）。 加入選擇退出字元之後，此項目和標記協助程式屬性不再顯示在特殊的字型。
 
-<a name=prefix-razor-directives-label></a>
+<a name="prefix-razor-directives-label"></a>
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>使用`@tagHelperPrefix`進行明確標記協助程式使用方式
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 09/28/2017
 
 ![影像](intro/_static/label.png)
 
-不只取得 HTML 說明，但圖示 ("@"符號與在其下的"<>")。
+不只取得 HTML 說明，但圖示 (「@" symbol with "<>"下)。
 
 ![影像](intro/_static/tagSym.png)
 

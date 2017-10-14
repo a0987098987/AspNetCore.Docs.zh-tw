@@ -11,15 +11,15 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 8c00c05a1120e65f503b70229466fcad561bc6a9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 2c2f6e04c42d547592cc1c2e6e66da7133b8bbef
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="replacing-machinekey-in-aspnet"></a>取代`<machineKey>`ASP.NET 中
 
-<a name=compatibility-replacing-machinekey></a>
+<a name="compatibility-replacing-machinekey"></a>
 
 實作`<machineKey>`ASP.NET 中的項目[是可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制，包括新的資料保護系統進行路由。
 

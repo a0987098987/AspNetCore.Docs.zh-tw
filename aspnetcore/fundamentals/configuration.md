@@ -11,11 +11,11 @@ ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration
-ms.openlocfilehash: ca6b62dd4699536b24c3422a2a51fc3fe1744f0a
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: d626768fe1a485705e104a5c758cbdb0b46685a3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/01/2017
 
 每個組態值將對應至字串索引鍵。 沒有要還原序列化到自訂設定的內建繫結支援[POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object)物件 （具有屬性的簡單.NET 類別）。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="simple-configuration"></a>簡單的組態
 
@@ -81,7 +81,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 * **永遠不會**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字設定檔案中。 不在您開發使用生產機密資料或測試環境。 相反地，指定外部專案樹狀結構的機密資料，讓它們無法意外認可到您的儲存機制。 深入了解[使用多個環境](environments.md)和管理[安全存放應用程式密碼，在開發期間](../security/app-secrets.md)。
 * 如果`:`不能在您的系統中，以使用環境變數中，取代`:`與`__`（雙底線）。
 
-<a name=options-config-objects></a>
+<a name="options-config-objects"></a>
 
 ## <a name="using-options-and-configuration-objects"></a>使用選項和設定物件
 
@@ -94,7 +94,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 [!code-csharp[Main](configuration/sample/UsingOptions/Models/MyOptions.cs)]
 
-<a name=options-example></a>
+<a name="options-example"></a>
 
 在下列程式碼，被啟用的 JSON 組態提供者。 `MyOptions`類別加入至服務容器，並繫結至組態。
 
@@ -148,7 +148,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 [!code-html[Main](configuration/sample/UsingOptions/Views/Home/Index.cshtml?highlight=3-4,16-17,20-21)]
 
-<a name=in-memory-provider></a>
+<a name="in-memory-provider"></a>
 
 ## <a name="ioptionssnapshot"></a>IOptionsSnapshot
 
@@ -247,7 +247,7 @@ public void CanBindObjectTree()
 }
 ```
 
-<a name=custom-config-providers></a>
+<a name="custom-config-providers"></a>
 
 ## <a name="basic-sample-of-entity-framework-custom-provider"></a>Entity Framework 自訂提供者的基本範例
 

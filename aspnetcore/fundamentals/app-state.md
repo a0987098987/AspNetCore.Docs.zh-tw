@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9c1d10101d23e105c4a8af41d851f69b1b6a175
-ms.sourcegitcommit: 9c27fa0f0c57ad611aa43f63afb9b9c9571d4a94
+ms.openlocfilehash: d4d10ef45d562f34c3f8b5ce025abaf763c862d3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>工作階段和應用程式的狀態，在 ASP.NET Core 簡介
 
@@ -43,6 +43,7 @@ ASP.NET Core 會讓用戶端的 cookie，包含工作階段識別碼，以便傳
 
 ASP.NET Core MVC 公開[TempData](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData)屬性[控制器](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0)。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 `TempData`就特別有用的重新導向，當超過單一要求所需的資料。 `TempData`是 TempData 提供者實作，例如，使用 cookie、 工作階段狀態。
 
+<a name="tempdata-providers"></a>
 ### <a name="tempdata-providers"></a>TempData 提供者
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
@@ -106,7 +107,7 @@ Cookie 通常可用來個人化，其中內容自訂為已知的使用者。 因
 
 快取是有效的方式儲存和擷取資料。 您可以控制時間和其他考量為基礎的快取項目存留的期。 深入了解[快取](../performance/caching/index.md)。
 
-<a name=session></a>
+<a name="session"></a>
 ## <a name="working-with-session-state"></a>使用工作階段狀態
 
 ### <a name="configuring-session"></a>設定工作階段
@@ -167,7 +168,7 @@ Cookie 通常可用來個人化，其中內容自訂為已知的使用者。 因
 
 下列範例示範設定和取得整數和字串：
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
 
 如果您加入下列的擴充方法，您可以設定並取得工作階段可序列化的物件：
 
@@ -232,7 +233,7 @@ public class HomeController : Controller
 
 此方法也有消除重複的程式碼中的多個位置中的"magic 字串 」 的優點。
 
-<a name=appstate-errors></a>
+<a name="appstate-errors"></a>
 
 ## <a name="application-state-data"></a>應用程式狀態資料
 

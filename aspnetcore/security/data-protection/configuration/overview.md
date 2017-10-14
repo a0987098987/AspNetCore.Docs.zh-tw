@@ -11,19 +11,19 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: d35e0e806999ffd2e0f8f82e0adfc940ea2b503d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configuring-data-protection"></a>設定資料保護
 
-<a name=data-protection-configuring></a>
+<a name="data-protection-configuring"></a>
 
 初始化資料保護系統時它會套用某些[預設設定](default-settings.md#data-protection-default-settings)根據作業環境。 這些設定是一般適用於在單一機器上執行的應用程式。 有某些情況的下，開發人員可能要變更這些設定 (可能是因為它們的應用程式分散在多部電腦，或基於相容性因素)，並針對這些案例的資料保護系統提供豐富的組態 API。
 
-<a name=data-protection-configuration-callback></a>
+<a name="data-protection-configuration-callback"></a>
 
 沒有擴充方法會傳回 IDataProtectionBuilder AddDataProtection 本身會公開，您可以鏈結在一起選項來設定各種不同的資料保護的擴充方法。 例如，若要儲存在 UNC 共用，而不是 %LOCALAPPDATA%（預設值），設定系統，如下所示：
 
@@ -38,7 +38,7 @@ public void ConfigureServices(IServiceCollection services)
 >[!WARNING]
 > 如果您變更金鑰的持續性位置時，系統將不會再自動加密金鑰靜止因為它不知道是否 DPAPI 是適當的加密機制。
 
-<a name=configuring-x509-certificate></a>
+<a name="configuring-x509-certificate"></a>
 
 您可以設定系統以保護靜止的金鑰呼叫任何 ProtectKeysWith\*組態 Api。 請考慮下列範例中，這會儲存在 UNC 共用的金鑰及加密這些金鑰在靜止與特定 X.509 憑證。
 
@@ -65,7 +65,7 @@ public void ConfigureServices(IServiceCollection services)
 
 根據預設資料保護系統隔離應用程式，即使它們共用相同的實體索引鍵儲存機制。 這可防止從了解其他人的受保護的裝載的應用程式。 若要共用受保護的裝載兩個不同的應用程式之間，設定系統傳遞兩個應用程式中的相同應用程式名稱中的下列範例：
 
-<a name=data-protection-code-sample-application-name></a>
+<a name="data-protection-code-sample-application-name"></a>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -75,7 +75,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuring-disable-automatic-key-generation></a>
+<a name="data-protection-configuring-disable-automatic-key-generation"></a>
 
 最後，您可能需要的案例，您不想要自動將索引鍵，因為它們會很接近到期的應用程式。 其中一個範例，這可能是應用程式設定中的主要 / 次要關聯性，其中只有主要的應用程式會負責金鑰管理考量，以及次要的所有應用程式只需要鑰匙圈的唯讀檢視。 您可以設定次要應用程式將鑰匙圈視為唯讀，藉由系統設定，如下所示：
 
@@ -87,7 +87,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuration-per-app-isolation></a>
+<a name="data-protection-configuration-per-app-isolation"></a>
 
 ## <a name="per-application-isolation"></a>每個應用程式隔離
 
@@ -105,7 +105,7 @@ ASP.NET Core 主機所提供的資料保護系統時，它會自動將應用程�
 
 如果資料保護系統不會提供 ASP.NET Core 主機 （例如，如果開發人員會具現化它自己透過 DataProtectionProvider 具象型別）、 預設，會停用應用程式隔離和所有應用程式支援相同的金鑰處理資料可以共用裝載，只要它們提供適當的用途。 若要提供應用程式隔離在此環境中的，組態物件上呼叫 SetApplicationName 方法，請參閱[程式碼範例](#data-protection-code-sample-application-name)上方。
 
-<a name=data-protection-changing-algorithms></a>
+<a name="data-protection-changing-algorithms"></a>
 
 ## <a name="changing-algorithms"></a>變更演算法
 
@@ -144,7 +144,7 @@ services.AddDataProtection()
 >[!TIP]
 > 變更演算法不會影響鑰匙圈中現有的索引鍵。 它只會影響新產生的索引鍵。
 
-<a name=data-protection-changing-algorithms-custom-managed></a>
+<a name="data-protection-changing-algorithms-custom-managed"></a>
 
 ### <a name="specifying-custom-managed-algorithms"></a>指定受管理的自訂演算法
 
@@ -193,7 +193,7 @@ serviceCollection.AddDataProtection()
 > [!NOTE]
 > SymmetricAlgorithm 必須 ≥ 128 位元金鑰長度和區塊大小為 ≥ 64 位元為單位，就必須支援 CBC 模式加密 PKCS #7 填補。 KeyedHashAlgorithm 必須有摘要大小 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。 無法為 HMAC 絕對必要 KeyedHashAlgorithm。
 
-<a name=data-protection-changing-algorithms-cng></a>
+<a name="data-protection-changing-algorithms-cng"></a>
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>指定自訂的 Windows CNG 演算法
 

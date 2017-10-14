@@ -11,21 +11,21 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 4c632f521cf314bcf8c84f40c52a580a26a5ceee
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: ff0a1a34ee6b025be6312a81f1a0bcdd07026adb
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>相依性插入控制器
 
-<a name=dependency-injection-controllers></a>
+<a name="dependency-injection-controllers"></a>
 
 由[Steve Smith](https://ardalis.com/)
 
 ASP.NET Core MVC 控制器應該要求明確透過其建構函式及其相依性。 在某些情況下，個別的控制器動作可能需要一項服務，並不合理，要求在控制器層級。 在此情況下，您也可以選擇將做為參數，動作方法上的服務。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="dependency-injection"></a>相依性插入
 

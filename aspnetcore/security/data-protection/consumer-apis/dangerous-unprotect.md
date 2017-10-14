@@ -11,15 +11,15 @@ ms.assetid: 6c4e6591-45d2-4d25-855e-062ad352d648
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 5d176515792045545add66ba5aedb0358d8bdc70
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 082fd69769dd0ef000b39ec148c12719d66f7aac
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>取消保護裝載之索引鍵已被撤銷。
 
-<a name=data-protection-consumer-apis-dangerous-unprotect></a>
+<a name="data-protection-consumer-apis-dangerous-unprotect"></a>
 
 ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持續性。 其他技術喜歡[Windows CNG api，DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx)和[Azure Rights Management](https://docs.microsoft.com/rights-management/)更適合的案例是無限期的儲存體，而且必須跟著強式金鑰的管理功能。 話雖如此，沒有任何開發人員會禁止從 ASP.NET Core 資料保護應用程式開發介面使用的長期保護的機密資料。 永遠不會移除金鑰從金鑰環，因此 IDataProtector.Unprotect 一律可以復原現有的承載，只要索引鍵可供使用且有效。
 

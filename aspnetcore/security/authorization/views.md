@@ -11,15 +11,15 @@ ms.assetid: 24ce40d8-9b83-4bae-9d4c-a66350fcc8f8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/views
-ms.openlocfilehash: 82c0c7282de34e496f529d964f99121ae2805c5a
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.openlocfilehash: 58cafcfdc7946e82d1e0ea5de95e0e497b1b6bcf
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="view-based-authorization"></a>檢視架構的授權
 
-<a name=security-authorization-views></a>
+<a name="security-authorization-views"></a>
 
 通常開發人員會想要顯示、 隱藏或修改目前的使用者識別為基礎的 UI。 您可以存取授權服務會在透過 MVC 檢視內[相依性插入](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection)。 若要將插入 Razor 檢視使用的授權服務`@inject`指示詞，例如`@inject IAuthorizationService AuthorizationService`(需要`@using Microsoft.AspNetCore.Authorization`)。 如果您想要授權服務中的每個檢視則放入`@inject`到指示詞`_ViewImports.cshtml`檔案`Views`目錄。 如需有關檢視的相依性插入[檢視的相依性插入](../../mvc/views/dependency-injection.md)。
 

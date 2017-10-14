@@ -11,8 +11,8 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: b64af625dd280b40e3c743af9415e3a67155fe6e
-ms.sourcegitcommit: e9bd53f53c0ba148343cd2057c714a7c72ee81e9
+ms.openlocfilehash: 1922037245a33f49c17f1c361003260462d96264
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2017
@@ -100,7 +100,7 @@ DataAnnotations 錯誤訊息會翻與`IStringLocalizer<T>`。 使用選項`Resou
 
 在 ASP.NET Core MVC 1.1.0 和更高版本、 非驗證屬性會當地語系化。 ASP.NET Core MVC 1.0 未**不**查閱 非驗證屬性的當地語系化字串。
 
-<a name=one-resource-string-multiple-classes></a>
+<a name="one-resource-string-multiple-classes"></a>
 ### <a name="using-one-resource-string-for-multiple-classes"></a>多個類別使用一個資源字串
 
 下列程式碼會示範如何使用資源字串，有多個類別的驗證屬性：

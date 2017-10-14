@@ -11,19 +11,19 @@ ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 730b4c281a766059b16ca1c36bbeb9611b979b72
-ms.sourcegitcommit: 0f23400cae837e90927043aa0dfd6c31108a4e2c
+ms.openlocfilehash: ad8d207b1e6de396f16d098fb07ddc89bea2c520
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
-<a name=fundamentals-middleware></a>
+<a name="fundamentals-middleware"></a>
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-middleware"></a>什麼是中介軟體
 
@@ -138,7 +138,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-<a name=middleware-run-map-use></a>
+<a name="middleware-run-map-use"></a>
 
 ### <a name="use-run-and-map"></a>使用、 執行和對應
 
@@ -206,7 +206,7 @@ ASP.NET Core 隨附下列的中介軟體元件：
 | [靜態檔案](xref:fundamentals/static-files) | 提供靜態檔案和目錄瀏覽提供服務的支援。 |
 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) | 提供重寫 Url，並將要求重新導向的支援。 |
 
-<a name=middleware-writing-middleware></a>
+<a name="middleware-writing-middleware"></a>
 
 ## <a name="writing-middleware"></a>寫入中介軟體
 

@@ -11,15 +11,15 @@ ms.assetid: d026a58c-67f4-411e-a410-c35f29c2c517
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: a47d2f91e6764bf6760ea559f1e2753e966753e3
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: b32a5e2c216137f1191bbee32dbe76f0ef604670
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="context-headers"></a>內容標頭
 
-<a name=data-protection-implementation-context-headers></a>
+<a name="data-protection-implementation-context-headers"></a>
 
 ## <a name="background-and-theory"></a>背景和理論上
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="cbc-mode-encryption--hmac-authentication"></a>CBC 模式加密 + HMAC 驗證
 
-<a name=data-protection-implementation-context-headers-cbc-components></a>
+<a name="data-protection-implementation-context-headers-cbc-components"></a>
 
 內容標頭包含下列元件：
 

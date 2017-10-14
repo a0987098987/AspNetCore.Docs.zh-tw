@@ -2,7 +2,7 @@
 title: "金鑰管理"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
+keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: fb9b807a-d143-4861-9ddb-005d8796afa3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 507c00edc5bade2427151ecadfed581817e4d088
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 687207cb6a1cea89166fd2b6172cdc0a013de4b3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="key-management"></a>金鑰管理
 
-<a name=data-protection-implementation-key-management></a>
+<a name="data-protection-implementation-key-management"></a>
 
 資料保護系統會自動管理用來保護且取消保護內容的主要金鑰的存留期。 其中四個階段可以存在於每個索引鍵。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/11/2017
 
 沒有例外狀況。 如果應用程式開發人員有[停用自動產生金鑰](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation)，然後在資料保護系統必須選擇做為預設索引鍵的項目。 在此後援的案例中，系統會選擇非撤銷鍵的最新的啟動日期，加上指定的時間才會傳播到叢集中的其他機器索引鍵為喜好設定。 回溯系統可能會因此選擇過期的預設索引鍵。 回溯系統將會永遠不會選擇已撤銷的索引鍵，做為預設索引鍵，如果鑰匙圈是空的或每個索引鍵已被撤銷。 然後系統會產生錯誤時初始化。
 
-<a name=data-protection-implementation-key-management-expiration></a>
+<a name="data-protection-implementation-key-management-expiration"></a>
 
 ## <a name="key-expiration-and-rolling"></a>金鑰到期時間和循環
 

@@ -11,15 +11,15 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 56036000535156b4b5814dde2a0145dcdfff28c3
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 7b72421f703db919daf640c54b725fc1497d2481
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>使用 Facebook、Google 和其他外部提供者啟用驗證
 
-<a name=security-authentication-social-logins></a>
+<a name="security-authentication-social-logins"></a>
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

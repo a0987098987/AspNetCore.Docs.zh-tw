@@ -11,15 +11,15 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 7eeb8f0517b8806cabdd59e7d81f8c2272238615
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 8a87972a7394246ece2af3485d93739975ba5383
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="aspnet-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Web API 說明頁面
+# <a name="aspnet-core-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Core Web API 說明頁面
 
-<a name=web-api-help-pages-using-swagger></a>
+<a name="web-api-help-pages-using-swagger"></a>
 
 由 [Shayne Boyer](https://twitter.com/spboyer) 和 [Scott Addie](https://twitter.com/Scott_Addie) 提供
 

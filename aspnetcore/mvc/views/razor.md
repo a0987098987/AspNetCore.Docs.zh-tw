@@ -1,30 +1,30 @@
 ---
 title: "適用於 ASP.NET Core razor 語法參考"
-author: guardrex
+author: rick-anderson
 description: "深入了解伺服器基礎的程式碼內嵌到網頁的 Razor 標記語法。"
 keywords: "ASP.NET Core，Razor，Razor 指示詞"
 ms.author: riande
 manager: wpickett
-ms.date: 09/29/2017
+ms.date: 10/18/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 532e278597a0029b5bae93068af5b7b147c35688
-ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
+ms.openlocfilehash: 743c42b26c62d0e24b5d5b487b3154bc249fcff4
+ms.sourcegitcommit: a873f862c8e68b2cf2998aaed3dddd93eeba9e0f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Razor 語法的 ASP.NET Core
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Luke Latham](https://github.com/guardrex)，和[Taylor Mullen](https://twitter.com/ntaylormullen)
+由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Luke Latham](https://github.com/guardrex)， [Taylor Mullen](https://twitter.com/ntaylormullen)，和[Dan Vicarel](https://github.com/Rabadash8820)
 
 Razor 是將伺服器端程式碼內嵌到網頁標記語法。 Razor 語法包含 Razor 標記、 C# 和 HTML。 通常包含 Razor 檔案有*.cshtml*檔案副檔名。
 
 ## <a name="rendering-html"></a>將 HTML 呈現
 
-預設 Razor 語言為 HTML。 轉譯 HTML Razor 標記中的並無不同轉譯 HTML，從 HTML 檔案。 如果您將 HTML 標記*.cshtml* Razor 檔案呈現伺服器保持不變。
+預設 Razor 語言為 HTML。 轉譯 HTML Razor 標記中的並無不同轉譯 HTML，從 HTML 檔案。  中的 HTML 標記*.cshtml* Razor 檔案會呈現未變更的伺服器。
 
 ## <a name="razor-syntax"></a>Razor 語法
 
@@ -59,11 +59,24 @@ Razor 的隱含運算式開頭`@`後面接著 C# 程式碼：
 <p>@DateTime.IsLeapYear(2016)</p>
 ```
 
-除了 C#`await`關鍵字，隱含運算式不能包含空格。 您可以在 C# 陳述式是否清除結束 intermingle 空格：
+除了 C#`await`關鍵字，隱含運算式不能包含空格。 如果 C# 陳述式已清除結束，混合空格：
 
 ```cshtml
 <p>@await DoSomething("hello", "world")</p>
 ```
+
+隱含運算式**無法**包含 C# 泛型，括號內的字元 (`<>`) 會解譯為 HTML 標記。 下列程式碼是**不**有效：
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+上述程式碼會產生編譯器錯誤類似下列其中一項：
+
+ * "Int"項目未結束。  所有元素都必須自行關閉或沒有對稱的結束標記。
+ *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ 
+泛型方法的呼叫必須包裝在[明確 Razor 運算式](#explicit-razor-expressions)或[Razor 程式碼區塊](#razor-code-blocks)。 這項限制不適用於*.vbhtml* Razor 檔案，因為 Visual Basic 語法會將泛型型別參數，而不是方括號括住。
 
 ## <a name="explicit-razor-expressions"></a>Razor 的明確運算式
 
@@ -85,7 +98,7 @@ Razor 的明確運算式組成`@`有對稱的括號的符號。 若要轉譯上�
 <p>Last week: 7/7/2016 4:39:52 PM - TimeSpan.FromDays(7)</p>
 ```
 
-您可以使用明確的運算式來串連文字與運算式結果：
+明確運算式可以用來串連文字與運算式結果：
 
 ```cshtml
 @{
@@ -96,6 +109,26 @@ Razor 的明確運算式組成`@`有對稱的括號的符號。 若要轉譯上�
 ```
 
 沒有明確的運算式，`<p>Age@joe.Age</p>`會被視為電子郵件地址和`<p>Age@joe.Age</p>`轉譯。 做為明確的運算式，寫入時`<p>Age33</p>`轉譯。
+
+
+明確運算式可以用來呈現在泛型方法的輸出*.cshtml*檔案。 在隱含運算式中，括號內的字元 (`<>`) 會解譯為 HTML 標記。 下列標記是**不**有效 Razor:
+
+```cshtml
+<p>@GenericMethod<int>()</p>
+```
+
+上述程式碼會產生編譯器錯誤類似下列其中一項：
+
+ * "Int"項目未結束。  所有元素都必須自行關閉或沒有對稱的結束標記。
+ *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ 
+ 下列標記會顯示正確的方式寫入這段程式碼。  程式碼會寫入做為明確運算式：
+
+```cshtml
+<p>@(GenericMethod<int>())</p>
+```
+
+注意： 這項限制不適用於*.vbhtml* Razor 檔案。  與*.vbhtml* Razor 檔案，Visual Basic 語法會將泛型型別參數，而不是方括號括住。
 
 ## <a name="expression-encoding"></a>運算式的編碼方式
 
@@ -159,7 +192,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，不會呈
 
 ### <a name="implicit-transitions"></a>隱含轉換
 
-程式碼區塊中的預設語言是 C# 中，但您可以轉換回 HTML:
+程式碼區塊中的預設語言是 C# 中，但 Razor 頁面可以轉換回 HTML:
 
 ```cshtml
 @{
@@ -180,9 +213,12 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，不會呈
 }
 ```
 
-當您想要將未包圍起來的 HTML 標記的 HTML 轉譯，請使用此方法。 沒有 HTML 或 Razor 的標籤，您會收到 Razor 執行階段錯誤。
+使用此方式來呈現不以 HTML 標記括住的 HTML。 沒有 HTML 或 Razor 的標籤，就會發生 Razor 執行階段錯誤。
 
-**\<文字 >**標記也很有用來轉譯內容時控制空白字元。 之間的內容**\<文字 >**呈現標記時之前, 或之後的任何空白字元**\<文字 >** HTML 輸出中出現的標籤。
+**\<文字 >**標記可用於轉譯內容時控制空白字元：
+
+* 之間的內容**\<文字 >**標記的呈現。 
+* 不能有空白之前或之後**\<文字 >** HTML 輸出中會顯示標籤。
 
 ### <a name="explicit-line-transition-with-"></a>使用明確列轉換 @:
 
@@ -196,11 +232,13 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，不會呈
 }
 ```
 
-不含`@:`在程式碼中，您會收到 Razor 執行階段錯誤。
+不含`@:`在程式碼會產生 Razor 的執行階段錯誤。
+
+警告： 額外`@`Razor 檔案中的字元可能會造成在陳述式會導致編譯器錯誤稍後區塊。 這些編譯器錯誤很難了解，因為實際的錯誤發生之前報告的錯誤。  此錯誤之後結合成單一的程式碼區塊的多個隱含/明確運算式是常見的。
 
 ## <a name="control-structures"></a>控制結構
 
-控制結構是一種擴充的程式碼區塊。 所有層面的程式碼區塊 （轉換到標記中，內嵌 C#） 也適都用於下列的結構。
+控制結構是一種擴充的程式碼區塊。 所有層面的程式碼區塊 （轉換到標記中，內嵌 C#） 也適都用於下列結構：
 
 ### <a name="conditionals-if-else-if-else-and-switch"></a>條件式@if，else 的 if、 和@switch
 
@@ -230,7 +268,7 @@ else
 }
 ```
 
-您可以使用 switch 陳述式如下：
+下列標記會顯示如何使用 switch 陳述式：
 
 ```cshtml
 @switch (value)
@@ -249,7 +287,7 @@ else
 
 ### <a name="looping-for-foreach-while-and-do-while"></a>迴圈@for， @foreach， @while，和@do時
 
-您可以將迴圈控制陳述式的樣板化 HTML 轉譯。 若要轉譯的人員清單：
+樣板化 HTML 可以轉譯迴圈控制陳述式。  若要轉譯的人員清單：
 
 ```cshtml
 @{
@@ -262,7 +300,7 @@ else
 }
 ```
 
-您可以使用任何下列的迴圈陳述式：
+支援下列的迴圈陳述式：
 
 `@for`
 
@@ -315,7 +353,8 @@ else
 
 ### <a name="compound-using"></a>複合@using
 
-在 C# 中，`using`陳述式用來確保處置物件。 在 Razor，相同的機制用來建立包含其他內容的 HTML Helper。 比方說，您可以利用 HTML Helper 呈現表單標記與`@using`陳述式：
+在 C# 中，`using`陳述式用來確保處置物件。 在 Razor，相同的機制用來建立包含其他內容的 HTML Helper。 下列程式碼中，HTML Helper 呈現表單標記與`@using`陳述式：
+
 
 ```cshtml
 @using (Html.BeginForm())
@@ -328,7 +367,7 @@ else
 }
 ```
 
-您也可以執行與領域層級動作[標記協助程式](xref:mvc/views/tag-helpers/intro)。
+範圍層級的動作可以使用執行[標記協助程式](xref:mvc/views/tag-helpers/intro)。
 
 ### <a name="try-catch-finally"></a>@trycatch、 finally
 
@@ -417,7 +456,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 @model TypeNameOfModel
 ```
 
-如果您建立的 ASP.NET Core MVC 應用程式與個別使用者帳戶*Views/Account/Login.cshtml*檢視包含下列模型宣告：
+在 ASP.NET Core MVC 應用程式中使用個別的使用者帳戶建立*Views/Account/Login.cshtml*檢視包含下列模型宣告：
 
 ```cshtml
 @model LoginViewModel
@@ -435,17 +474,17 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 <div>The Login Email: @Model.Email</div>
 ```
 
-`@model`指示詞會指定此屬性的型別。 指示詞會指定`T`中`RazorPage<T>`，所產生類別，衍生自的檢視。 如果您未指定`@model`指示詞，`Model`屬性屬於型別`dynamic`。 模型值會從控制器到檢視。 請參閱[強類型模型和@model關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-keyword-label)如需詳細資訊。
+`@model`指示詞會指定此屬性的型別。 指示詞會指定`T`中`RazorPage<T>`，所產生類別，衍生自的檢視。 如果`@model`指示詞並不指定，`Model`屬性屬於型別`dynamic`。 模型值會從控制器到檢視。 如需詳細資訊，請參閱 [強類型模型和@model關鍵字。
 
 ### <a name="inherits"></a>@inherits
 
-`@inherits`指示詞讓您完整控制您的檢視所繼承的類別：
+`@inherits`指示詞提供的檢視所繼承的類別的完整控制權：
 
 ```cshtml
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-以下是自訂的 Razor 頁面類型：
+下列程式碼是自訂的 Razor 頁面類型：
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
@@ -459,11 +498,11 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 <div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
-您無法使用`@model`和`@inherits`相同檢視中。 您可以擁有`@inherits`中*_ViewImports.cshtml*檢視匯入的檔案：
+ `@model`和`@inherits`可以使用相同的檢視中。  `@inherits`可以是*_ViewImports.cshtml*檢視匯入的檔案：
 
 [!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-強型別檢視的範例如下：
+下列程式碼是強型別檢視的範例：
 
 [!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
 
@@ -476,11 +515,12 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 
 ### <a name="inject"></a>@inject
 
-`@inject`指示詞可讓您將從服務程式[服務容器](xref:fundamentals/dependency-injection)到您的檢視。 請參閱[檢視的相依性插入](xref:mvc/views/dependency-injection)如需詳細資訊。
+
+`@inject`指示詞可讓 Razor 頁面，將服務從[服務容器](xref:fundamentals/dependency-injection)插入檢視。 如需詳細資訊，請參閱[檢視的相依性插入](xref:mvc/views/dependency-injection)。
 
 ### <a name="functions"></a>@functions
 
-`@functions`指示詞可讓您將函式層級內容加入至檢視：
+`@functions`指示詞可讓 Razor 頁面將函式層級內容加入至檢視：
 
 ```cshtml
 @functions { // C# Code }
@@ -502,7 +542,7 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 
 ### <a name="section"></a>@section
 
-`@section`指示詞用於搭配[配置](xref:mvc/views/layout)啟用檢視轉譯的 HTML 網頁的不同部分中的內容。 請參閱[區段](xref:mvc/views/layout#layout-sections-label)如需詳細資訊。
+`@section`指示詞用於搭配[配置](xref:mvc/views/layout)啟用檢視轉譯的 HTML 網頁的不同部分中的內容。 如需詳細資訊，請參閱[區段](xref:mvc/views/layout#layout-sections-label)。
 
 ## <a name="tag-helpers"></a>標記協助程式
 
@@ -553,7 +593,7 @@ C# Razor 關鍵字必須是雙逸出與`@(@C# Razor Keyword)`(例如， `@(@case
 
 ## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>檢視檢視產生的 Razor C# 類別
 
-將下列類別加入至您的 ASP.NET Core MVC 專案：
+加入 ASP.NET Core MVC 專案中的下列類別：
 
 [!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
@@ -574,4 +614,9 @@ Razor 檢視引擎會執行檢視的區分大小寫的查閱。 不過，實際�
   * 在區分大小寫的檔案系統上 (例如 Linux、 OSX，與`EmbeddedFileProvider`)，查詢不區分大小寫。 例如，`return View("Test")`特別相符項目*/Views/Home/Test.cshtml*。
 * 先行編譯的檢視： 使用 ASP.Net Core 2.0 和更新版本，查閱先行編譯的檢視是不區分大小寫在所有作業系統上。 行為是在 Windows 上的實體檔案提供者的行為相同。 如果兩個先行編譯的檢視只有大小寫不同，查詢的結果會是不具決定性。
 
-開發人員都要比對的區域、 控制器和動作名稱的大小寫的檔案和目錄名稱的大小寫。 這可確保您的部署會發現其不論基礎檔案系統的檢視。
+開發人員都要比對的大小寫的檔案和目錄名稱的大小寫：
+
+    * 區域、 控制器和動作名稱。 
+    * Razor 頁面。
+    
+相符的情況下，可確保部署尋找及其不論基礎檔案系統的檢視。

@@ -12,25 +12,25 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9557e9f6915507450de3ffe500582839a28c3f0c
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: b2e991ea37b1b726e472d78d839143546ebd559f
+ms.sourcegitcommit: 29da58de11e20c9c60448e36e7075c6b13622624
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>若要登入 ASP.NET Core 簡介
 
 由[Steve Smith](https://ardalis.com/)和[Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core 支援的記錄 API，可搭配各種記錄提供者。 內建提供者可讓您將記錄檔傳送至一個或多個目的地，而您可以插入的第三方記錄架構。 本文示範如何在程式碼中使用的內建的記錄 API 和提供者。
+ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供者可讓您將記錄檔傳送至一個或多個目的地，而您可以插入的第三方記錄架構。 本文示範如何在程式碼中使用的內建的記錄 API 和提供者。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample2) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 
@@ -585,9 +585,6 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices)封裝提供者會將記錄寫入 Azure App Service 應用程式的檔案系統中，文字檔[blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)Azure 儲存體帳戶中。 僅適用於 ASP.NET Core 1.1.0 為目標的應用程式或更高版本的提供者。 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-> [!NOTE]
-> ASP.NET Core 2.0 處於預覽狀態。  使用最新預覽版本建立應用程式部署至 Azure 應用程式服務時，可能無法執行。 Azure App Service ASP.NET Core 2.0 發行時，會執行 2.0 應用程式和 Azure 應用程式服務提供者將使用此處所示。
 
 您不需要安裝之提供者的封裝或呼叫`AddAzureWebAppDiagnostics`擴充方法。  當您將應用程式部署至 Azure App Service 自動提供給您的應用程式提供者。
 

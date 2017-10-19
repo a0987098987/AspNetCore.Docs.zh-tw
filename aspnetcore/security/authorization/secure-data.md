@@ -180,7 +180,7 @@ dotnet user-secrets set SeedUserPW <PW>
 更新`ContactsController`建構函式：
 
 * 新增`IAuthorizationService`服務存取授權的處理常式。 
-* 新增`Identity``UserManager`服務：
+* 新增`Identity` `UserManager`服務：
 
 [!code-csharp[Main](secure-data/samples/final/Controllers/ContactsController.cs?name=snippet_ContactsControllerCtor)]
 

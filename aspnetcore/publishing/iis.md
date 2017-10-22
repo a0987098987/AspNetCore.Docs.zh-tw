@@ -58,14 +58,14 @@ ms.lasthandoff: 09/28/2017
 
 1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
 
-2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，挑選系統 PATH 的變更。
+2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，讓系統 PATH 的進行變更。
 
 > [!NOTE]
 > 如果使用 IIS 共用組態，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:hosting/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
 
-## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>使用 Visual Studio 發佈時安裝 Web Deploy
+## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>安裝 Web Deploy 來提供 Visual Studio 發佈功能
 
-如果您想要在 [Visual Studio](https://www.visualstudio.com/vs/) 中使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
+如果您想要在 [Visual Studio](https://www.visualstudio.com/vs/) 中使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態來提供裝載。
 
 ## <a name="application-configuration"></a>應用程式組態
 

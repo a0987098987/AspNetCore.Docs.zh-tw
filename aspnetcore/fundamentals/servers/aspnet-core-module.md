@@ -34,7 +34,7 @@ ASP.NET 核心模組 (ANCM) 可讓您執行 ASP.NET Core 應用程式背後 IIS�
 
 ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 應用程式的原生 IIS 模組。 大部分其他模組，例如 windows 驗證時，仍有機會執行。 ANCM 才會控制當處理常式已選取的要求，且應用程式中定義的處理常式對應*web.config*檔案。
 
-因為處理序中執行的 ASP.NET 核心應用程式是由 IIS 工作者處理序分開，ANCM 也沒有處理序管理。 ANCM 啟動 ASP.NET Core 應用程式的程序，當第一個要求送入，然後損毀時將它重新啟動。 這是傳統的 ASP.NET 應用程式基本上相同的行為執行同處理序在 IIS 和 WAS （Windows 啟用服務） 所管理。
+由於 ASP.NET Core 應用程式的處理序與 IIS 工作者處理序分開運行，所以 ANCM 還進行處理序管理。 ANCM 啟動 ASP.NET Core 應用程式的程序，當第一個要求送入，然後損毀時將它重新啟動。 這是傳統的 ASP.NET 應用程式基本上相同的行為執行同處理序在 IIS 和 WAS （Windows 啟用服務） 所管理。
 
 以下是說明 IIS、 ANCM 和 ASP.NET Core 應用程式之間的關聯性圖表。
 

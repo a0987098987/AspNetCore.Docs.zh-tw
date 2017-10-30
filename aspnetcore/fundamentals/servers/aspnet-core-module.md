@@ -42,7 +42,7 @@ ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 
 
 要求來自網站及叫用核心模式 Http.Sys 驅動程式的路由傳送到 IIS 上的主要連接埠 (80) 或 SSL 連接埠 (443)。 ANCM 將要求轉送至 ASP.NET Core 上的應用程式設定應用程式，不是通訊埠 80/443 的 HTTP 連接埠。
 
-Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，透過的連接埠和[UseIISIntegration](#call-useiisintegration)方法會設定伺服器接聽`http://localhost:{port}`。 沒有額外的檢查拒絕不是從 ANCM 的要求。 （ANCM 不支援 HTTPS 轉送，因此即使透過 HTTPS 接收 IIS 要求都會轉送 over HTTP。）
+Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，透過的連接埠和[UseIISIntegration](#call-useiisintegration)方法會設定伺服器接聽`http://localhost:{port}`。 並且還有一些額外的檢查來拒絕不是來自 ANCM 的請求。 （ANCM 不支援 HTTPS 轉送，因此即使透過 HTTPS 接收 IIS 要求都會轉送 over HTTP。）
 
 Kestrel 拾取 ANCM 要求，並將 ASP.NET Core 中介軟體管線，然後處理它們，並將它們當做傳遞`HttpContext`應用程式邏輯的執行個體。 應用程式的回應，接著會傳遞至 IIS，它們回起始要求的 HTTP 用戶端的推播通知。
 

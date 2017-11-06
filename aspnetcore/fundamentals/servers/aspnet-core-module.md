@@ -36,7 +36,8 @@ ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 
 
 
 
-由於執行 ASP.NET Core 應用程式的處理序與 IIS 工作者處理序是分開運行的，所以 ANCM 也會進行處理序管理。ANCM 會第一個要求送入時啟動 ASP.NET Core 應用程式的處理序，也會在它損毀時重新予以啟動。這種在 IIS 中執行同處理序，並由 WAS (Windows 啟用服務) 加以管理的行為，在本質上與傳統的 ASP.NET 應用程式相同。
+因為處理序中執行的 ASP.NET 核心應用程式是由 IIS 工作者處理序分開，ANCM 也沒有處理序管理。 ANCM 啟動 ASP.NET Core 應用程式的程序，當第一個要求送入，然後損毀時將它重新啟動。 這是傳統的 ASP.NET 應用程式基本上相同的行為執行同處理序在 IIS 和 WAS （Windows 啟用服務） 所管理。
+
 
 
 以下是說明 IIS、 ANCM 和 ASP.NET Core 應用程式之間的關聯性圖表。
@@ -63,7 +64,9 @@ ANCM 還有幾個其他功能：
 
 ### <a name="install-ancm"></a>安裝 ANCM
 
-ASP.NET 核心模組必須安裝在 IIS 伺服器上，並在 IIS Express 開發電腦上。 針對伺服器，ANCM 隨附於[.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 開發電腦的 Visual Studio 會自動安裝 ANCM 在 IIS Express 中，並在 IIS 中如果已安裝在電腦上。
+
+ASP.NET 核心模組必須安裝在 IIS 伺服器上，或開發電腦的 IIS Express 上。 對於伺服器而言，ANCM 已隨附於 [.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting) 之中。 對於開發電腦而言，Visual Studio 會自動將 ANCM 安裝在 IIS Express 中，且如果電腦上已經安裝了 IIS，也會安裝在 IIS 之中。
+
 
 ### <a name="install-the-iisintegration-nuget-package"></a>安裝 IISIntegration NuGet 套件
 

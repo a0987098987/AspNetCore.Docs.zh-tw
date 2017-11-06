@@ -58,7 +58,7 @@ ANCM 有幾個其他函式：
 
 ### <a name="install-ancm"></a>安裝 ANCM
 
-ASP.NET 核心模組必須安裝在 IIS 伺服器上，或開發電腦上的 IIS Express 。 針對伺服器，ANCM 隨附於[.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 針對開發電腦， Visual Studio 會自動安裝 ANCM 在 IIS Express 中，如果電腦上已經安裝 IIS 也會安裝。
+ASP.NET 核心模組必須安裝在 IIS 伺服器上，或開發電腦的 IIS Express 上。 對於伺服器而言，ANCM 已隨附於 [.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting) 之中。 對於開發電腦而言，Visual Studio 會自動將 ANCM 安裝在 IIS Express 中，且如果電腦上已經安裝了 IIS，也會安裝在 IIS 之中。
 
 ### <a name="install-the-iisintegration-nuget-package"></a>安裝 IISIntegration NuGet 套件
 

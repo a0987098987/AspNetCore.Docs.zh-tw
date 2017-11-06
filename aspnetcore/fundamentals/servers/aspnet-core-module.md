@@ -46,6 +46,7 @@ Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，�
 
 Kestrel 拾取 ANCM 要求，並將 ASP.NET Core 中介軟體管線，然後處理它們，並將它們當做傳遞`HttpContext`應用程式邏輯的執行個體。 應用程式的回應，接著會傳遞至 IIS，它們回起始要求的 HTTP 用戶端的推播通知。
 
+
 ANCM 有幾個其他函式：
 
 * 設定環境變數。

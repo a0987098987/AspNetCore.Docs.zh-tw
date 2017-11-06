@@ -34,7 +34,9 @@ ASP.NET 核心模組 (ANCM) 可讓您執行 ASP.NET Core 應用程式背後 IIS�
 
 ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 應用程式的原生 IIS 模組。 大部分其他模組，例如 windows 驗證時，仍有機會執行。 ANCM 才會控制當處理常式已選取的要求，且應用程式中定義的處理常式對應*web.config*檔案。
 
+
 因為處理序中執行的 ASP.NET 核心應用程式是由 IIS 工作者處理序分開，ANCM 也沒有處理序管理。 ANCM 啟動 ASP.NET Core 應用程式的程序，當第一個要求送入，然後損毀時將它重新啟動。 這是傳統的 ASP.NET 應用程式基本上相同的行為執行同處理序在 IIS 和 WAS （Windows 啟用服務） 所管理。
+
 
 以下是說明 IIS、 ANCM 和 ASP.NET Core 應用程式之間的關聯性圖表。
 
@@ -42,9 +44,11 @@ ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 
 
 要求來自網站及叫用核心模式 Http.Sys 驅動程式的路由傳送到 IIS 上的主要連接埠 (80) 或 SSL 連接埠 (443)。 ANCM 將要求轉送至 ASP.NET Core 上的應用程式設定應用程式，不是通訊埠 80/443 的 HTTP 連接埠。
 
+
 Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，透過的連接埠和[UseIISIntegration](#call-useiisintegration)方法會設定伺服器接聽`http://localhost:{port}`。 沒有額外的檢查拒絕不是從 ANCM 的要求。 （ANCM 不支援 HTTPS 轉送，因此即使透過 HTTPS 接收 IIS 要求都會轉送 over HTTP。）
 
 Kestrel 拾取 ANCM 要求，並將 ASP.NET Core 中介軟體管線，然後處理它們，並將它們當做傳遞`HttpContext`應用程式邏輯的執行個體。 應用程式的回應，接著會傳遞至 IIS，它們回起始要求的 HTTP 用戶端的推播通知。
+
 
 ANCM 有幾個其他函式：
 
@@ -58,7 +62,9 @@ ANCM 有幾個其他函式：
 
 ### <a name="install-ancm"></a>安裝 ANCM
 
+
 ASP.NET 核心模組必須安裝在 IIS 伺服器上，或開發電腦的 IIS Express 上。 對於伺服器而言，ANCM 已隨附於 [.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting) 之中。 對於開發電腦而言，Visual Studio 會自動將 ANCM 安裝在 IIS Express 中，且如果電腦上已經安裝了 IIS，也會安裝在 IIS 之中。
+
 
 ### <a name="install-the-iisintegration-nuget-package"></a>安裝 IISIntegration NuGet 套件
 

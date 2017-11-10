@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a93dae3edec73f1b5254aa60662834ca83de62fd
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: f3c38a1730e43586f37cd773bb8daa418736952f
+ms.sourcegitcommit: b3d46df910fb679edb8dd47234db6b4da604eedb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/10/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>使用單一頁面應用程式建立與 ASP.NET Core JavaScriptServices
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 10/01/2017
 
 單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[反應](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。 [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 <a name="what-is-js-services"></a>
 
@@ -167,7 +167,7 @@ Webpack Dev 中介軟體已註冊至 HTTP 要求管線中的下列程式碼透�
 
 ## <a name="hot-module-replacement"></a>熱模組更換
 
-想像 Webpack 的[熱模組更換](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html)(HMR) 功能的進化[Webpack Dev 中介軟體](#webpack-dev-middleware)。 HMR 完全相同的優點，但它進一步簡化開發工作流程自動編譯所做的變更之後更新頁面內容。 請勿混淆這個與重新整理瀏覽器中，這會干擾 SPA 的偵錯工作階段與目前記憶體中狀態。 沒有 Webpack Dev 中介軟體服務與瀏覽器中，這表示變更之間的即時連結 ~ 只是另一個禁止的單字 ~ 推送至瀏覽器。
+想像 Webpack 的[熱模組更換](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html)(HMR) 功能的進化[Webpack Dev 中介軟體](#webpack-dev-middleware)。 HMR 完全相同的優點，但它進一步簡化開發工作流程自動編譯所做的變更之後更新頁面內容。 請勿混淆這個與重新整理瀏覽器中，這會干擾 SPA 的偵錯工作階段與目前記憶體中狀態。 沒有 Webpack Dev 中介軟體服務與瀏覽器中，這表示變更推送至瀏覽器之間的即時連結。
 
 ### <a name="prerequisites"></a>必要條件
 

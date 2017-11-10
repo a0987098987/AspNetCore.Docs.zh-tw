@@ -11,11 +11,11 @@ ms.assetid: 29f12d1f-9734-48bd-bf1a-cee53a8ab700
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/layout
-ms.openlocfilehash: 25aa5fc730d9076fdcf9d29cb5d9dfa75a246a1a
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 064621d8756b007c5b8859111bf3a03a0d7dda81
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="layout"></a>配置
 
@@ -51,7 +51,7 @@ Razor 檢視有`Layout`屬性。 個別檢視指定版面配置設定此屬性�
 
 根據預設，必須呼叫每個配置`RenderBody`。 無論在何處呼叫`RenderBody`是用來放置，檢視的內容會呈現。
 
-<a name=layout-sections-label></a>
+<a name="layout-sections-label"></a>
 
 ### <a name="sections"></a>章節
 
@@ -77,7 +77,7 @@ Razor 檢視有`Layout`屬性。 個別檢視指定版面配置設定此屬性�
 
 在主體和 Razor 頁面中的每個區段必須轉譯或忽略。
 
-<a name=viewimports></a>
+<a name="viewimports"></a>
 
 ## <a name="importing-shared-directives"></a>匯入共用的指示詞
 
@@ -121,7 +121,7 @@ Razor 檢視有`Layout`屬性。 個別檢視指定版面配置設定此屬性�
 
 * `@inject`： 每個屬性，以檢視最接近的其中一個會覆寫具有相同屬性名稱的任何其他
 
-<a name=viewstart></a>
+<a name="viewstart"></a>
 
 ## <a name="running-code-before-each-view"></a>執行每個檢視之前的程式碼
 

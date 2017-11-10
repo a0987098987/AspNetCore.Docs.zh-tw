@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 054b3e9f1e2bcfe1e4a75eca4d9dc6326ee6e44f
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: becdfa647acb6483b39f5421ab881c4817f31c40
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 10/01/2017
 
 ASP.NET Core 提供支援跨多個環境，例如開發、 預備及生產環境中控制應用程式行為。 表示執行階段環境中，允許應用程式設定為該環境使用環境變數。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="development-staging-production"></a>開發、 暫存、 生產環境
 
-ASP.NET Core 參考特定[環境變數](https://github.com/aspnet/Home/wiki)，`ASPNETCORE_ENVIRONMENT`來描述應用程式目前執行中的環境。 此變數可以設定任何值，但是慣例會使用三個值： `Development`， `Staging`，和`Production`。 您會發現這些範例中所使用的值和 ASP.NET Core 提供的範本。
+ASP.NET Core 參考特定環境變數，`ASPNETCORE_ENVIRONMENT`來描述應用程式目前執行中的環境。 此變數可以設定任何值，但是慣例會使用三個值： `Development`， `Staging`，和`Production`。 您會發現這些範例中所使用的值和 ASP.NET Core 提供的範本。
 
 目前的環境設定可以偵測到以程式設計方式從您的應用程式內。 此外，您可以使用環境[標記協助程式](../mvc/views/tag-helpers/index.md)中的特定區段中加入您[檢視](../mvc/views/index.md)根據目前的應用程式環境。
 
@@ -50,7 +50,7 @@ IIS Express 的設定檔如下所示：
 專案設定檔所做的變更可能不會生效，直到重新啟動使用網頁伺服器 （特別是，Kestrel 必須重新啟動之前它會偵測到它的環境所做的變更）。
 
 >[!WARNING]
-> 環境變數會儲存在*launchSettings.json*並未受到保護以任何方式，並將原始程式碼儲存機制在專案的一部分，如果您使用其中一個。 **絕對不要儲存這個檔案中的認證或其他機密資料。** 如果您需要儲存這類資料的位置，使用*密碼管理員*中所述的工具[安全存放應用程式密碼，在開發期間](../security/app-secrets.md#security-app-secrets)。
+> 環境變數會儲存在*launchSettings.json*並未受到保護以任何方式，並將原始程式碼儲存機制在專案的一部分，如果您使用其中一個。 **絕對不要儲存這個檔案中的認證或其他機密資料。** 如果您需要儲存這類資料的位置，使用*密碼管理員*中所述的工具[安全存放應用程式密碼，在開發期間](xref:security/app-secrets)。
 
 ### <a name="staging"></a>預備環境
 

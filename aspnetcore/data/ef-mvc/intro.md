@@ -11,27 +11,27 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a4e9ab26fa49720aa2334101ee12916fc797d944
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 379802f644b977563b0b50354feb1fb9a4c8fabb
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
 由[Tom Dykstra](https://github.com/tdykstra)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
+Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) 核心 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
 
 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括功能，例如許可學生、 課程建立和講師指派。 這是一系列的教學課程說明如何建置從頭 Contoso 大學範例應用程式中的第一個。
 
 [下載或檢視完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需有關如何選擇 EF 資訊 6.x 和 EF Core，請參閱[EF Core vs。EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
+EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需有關如何選擇 EF 資訊 6.x 和 EF 核心，請參閱[EF 核心 vs。EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
 > * 如需本教學課程的 ASP.NET Core 1.1 版本，請參閱[本教學課程以 PDF 格式的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
-> * 如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET Core 文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
+> * 如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET 核心文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -39,7 +39,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
+如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP] 
 > 這是一系列 10 教學課程，其中每一個都是根據所完成的作業在先前的教學課程。  請考慮每個成功的教學課程完成後儲存專案的複本。  然後如果您遇到問題時，您可以透過從啟動上一個教學課程，而不是回到整個序列的開頭。
@@ -74,7 +74,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 選取**ASP.NET Core 2.0**和**Web 應用程式 （模型-檢視-控制器）**範本。
 
-  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
+  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF 核心 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
 
 * 請確定**驗證**設**非驗證**。
 
@@ -94,11 +94,11 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 所做的變更會反白顯示。
 
-[!code-html[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
 
 在*Views/Home/Index.cshtml*，ASP.NET MVC 的相關文字使用文字來取代此應用程式有關的下列程式碼取代檔案的內容：
 
-[!code-html[](intro/samples/cu/Views/Home/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
 按 CTRL + F5 執行專案，或選擇**偵錯 > 啟動但不偵錯**從功能表。 您會看到這些教學課程中，您將建立之頁面的索引標籤的 [首頁] 頁面。
 
@@ -288,7 +288,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 *Views/Students/Index.cshtml*檢視會顯示在資料表中的這份清單：
 
-[!code-html[](intro/samples/cu/Views/Students/Index1.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index1.cshtml)]
 
 按 CTRL + F5 執行專案，或選擇**偵錯 > 啟動但不偵錯**從功能表。
 
@@ -306,7 +306,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 如果 SSOX 視窗尚未開啟，請選取 從**檢視**Visual Studio 中的功能表。
 
-在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下 資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
+在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
 
 展開**資料表**節點以查看您的資料庫中的資料表。
 
@@ -330,13 +330,13 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 * 實體屬性會在名為 ID 或 classnameID 辨識為主索引鍵屬性。
 
-* 屬性會解譯為外部索引鍵屬性上，如果名稱為* <navigation property name> <primary key property name> * (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為* <primary key property name> * (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
+* 屬性會解譯為外部索引鍵屬性上，如果名稱為 *<navigation property name> <primary key property name>*  (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性也只稱為 *<primary key property name>*  (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 傳統行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見。 您可以設定資料行名稱和主索引鍵或外部索引鍵，以設定任何屬性，您會發現在[之後的教學課程](complex-data-model.md)本系列。
 
 ## <a name="asynchronous-code"></a>非同步程式碼
 
-非同步程式設計是預設的 ASP.NET Core 和 EF Core 模式。
+非同步程式設計是預設的 ASP.NET Core 和 EF 核心模式。
 
 Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下的所有可用的執行緒可能正在使用中。 當發生這種情況時，伺服器無法處理新的要求，直到執行緒釋放。 使用同步程式碼，許多執行緒可能會將繫結起來雖然它們實際上並不執行任何工作，因為他們正在等候 I/O 完成。 使用非同步程式碼，當處理程序在等候 I/O 完成，它的執行緒釋放針對伺服器將用於處理其他要求。 如此一來，非同步程式碼可讓更有效率地使用伺服器資源，而且伺服器已啟用以處理更多流量不會造成延遲。
 

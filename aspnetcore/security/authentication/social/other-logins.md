@@ -8,15 +8,15 @@ ms.topic: article
 ms.assetid: BC36CA84-3DE8-496E-9AA2-2F1B74AE8309
 ms.prod: asp.net-core
 uid: security/authentication/otherlogins
-ms.openlocfilehash: 617b7a7e90f2f27b96bd4d0f793ef69bf738dbde
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.openlocfilehash: bbc069e974fd826e6e9fb29429a0875f02c01fd3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="short-survey-of-other-authentication-providers"></a>其他驗證提供者的簡短問卷調查
 
-<a name=security-authentication-other-logins></a>
+<a name="security-authentication-other-logins"></a>
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Pranav Rastogi](https://github.com/rustd)，和[Valeriy Novytskyy](https://github.com/01binary)
 

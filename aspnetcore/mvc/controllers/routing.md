@@ -11,11 +11,11 @@ ms.assetid: 26250a4d-bf62-4d45-8549-26801cf956e9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/routing
-ms.openlocfilehash: 5a0b5399f7441035cb1231a009681ca22b07ab4e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: cc3277400aee956f47c53e5a4f3d4e84d3a3d1a3
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="routing-to-controller-actions"></a>路由至控制器的動作
 
@@ -118,7 +118,7 @@ app.UseRouter(routes.Build());
 
 `UseMvc`沒有直接定義的任何路由，它將預留位置加入至路由集合`attribute`路由。 多載`UseMvc(Action<IRouteBuilder>)`可讓您新增您自己的路由，也支援屬性路由。  `UseMvc`和所有其變化新增預留位置，代表屬性路由-屬性路由是一律可以使用，不論您如何設定`UseMvc`。 `UseMvcWithDefaultRoute`定義預設路由，並支援屬性路由。 [屬性路由](#attribute-routing-ref-label)章節包含有關屬性路由的更多詳細資料。
 
-<a name=routing-conventional-ref-label></a>
+<a name="routing-conventional-ref-label"></a>
 
 ## <a name="conventional-routing"></a>傳統的路由
 
@@ -190,7 +190,7 @@ public class ProductsController : Controller
 
 如果多個路由相符，而且 MVC 找不到 '最佳' 的路由，則會擲回`AmbiguousActionException`。
 
-<a name=routing-route-name-ref-label></a>
+<a name="routing-route-name-ref-label"></a>
 
 ### <a name="route-names"></a>路由名稱
 
@@ -210,7 +210,7 @@ app.UseMvc(routes =>
 
 路由名稱不會有影響 url 比對或處理的要求。它們只用於 URL 的產生。 [路由](xref:fundamentals/routing)有更詳細資訊包括在 MVC 特定協助程式 URL 的產生 URL 的產生。
 
-<a name=attribute-routing-ref-label></a>
+<a name="attribute-routing-ref-label"></a>
 
 ## <a name="attribute-routing"></a>路由屬性
 
@@ -324,7 +324,7 @@ public class ProductsApiController : Controller
 > [!NOTE]
 > 這和傳統*預設路由*，而後者可定義`id`參數為選擇性 (`{id?}`)。 這項功能精確地指定應用程式開發介面有優點，例如允許`/products`和`/products/5`分派至不同的動作。
 
-<a name=routing-combining-ref-label></a>
+<a name="routing-combining-ref-label"></a>
 
 ### <a name="combining-routes"></a>結合路由
 
@@ -369,7 +369,7 @@ public class HomeController : Controller
 }
 ```
 
-<a name=routing-ordering-ref-label></a>
+<a name="routing-ordering-ref-label"></a>
 
 ### <a name="ordering-attribute-routes"></a>排序屬性路由
 
@@ -382,7 +382,7 @@ public class HomeController : Controller
 > [!TIP]
 > 避免取決於`Order`。 如果您的 URL 空間需要明確的順序值正確路由，則用戶端也可能會造成混淆。 在 一般屬性路由選取正確的路由與 URL 相符。 如果不使用用來產生 URL 的預設順序，使用的路由名稱通常比套用覆寫現狀`Order`屬性。
 
-<a name=routing-token-replacement-templates-ref-label></a>
+<a name="routing-token-replacement-templates-ref-label"></a>
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>語彙基元取代路由範本中的 ([控制器]，[動作]，[區域])
 
@@ -414,7 +414,7 @@ public class ProductsController : MyBaseController
 
 要比對常值語彙基元取代分隔符號`[`或`]`，它藉由重複的字元逸出 (`[[`或`]]`)。
 
-<a name=routing-multiple-routes-ref-label></a>
+<a name="routing-multiple-routes-ref-label"></a>
 
 ### <a name="multiple-routes"></a>多個路由
 
@@ -458,7 +458,7 @@ public class ProductsController : Controller
 > [!TIP]
 > 雖然使用多個路由動作可以看起來是功能強大，最好是保留您的應用程式 URL 空間，簡單且妥善定義。 只有在需要時，例如若要支援現有的用戶端時，才使用多個路由動作。
 
-<a name=routing-attr-options></a>
+<a name="routing-attr-options"></a>
 
 ### <a name="specifying-attribute-route-optional-parameters-default-values-and-constraints"></a>指定屬性路由選擇性參數、 預設值和條件約束
 
@@ -474,7 +474,7 @@ public IActionResult ShowProduct(int id)
 
 請參閱[路由範本參考](../../fundamentals/routing.md#route-template-reference)的路由範本語法的詳細描述。
 
-<a name=routing-cust-rt-attr-irt-ref-label></a>
+<a name="routing-cust-rt-attr-irt-ref-label"></a>
 
 ### <a name="custom-route-attributes-using-iroutetemplateprovider"></a>使用的自訂路由屬性`IRouteTemplateProvider`
 
@@ -495,7 +495,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 上述範例中的屬性會自動設定`Template`至`"api/[controller]"`時`[MyApiController]`套用。
 
-<a name=routing-app-model-ref-label></a>
+<a name="routing-app-model-ref-label"></a>
 
 ### <a name="using-application-model-to-customize-attribute-routes"></a>使用自訂屬性路由的應用程式模型
 
@@ -503,7 +503,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 [!code-csharp[Main](routing/sample/main/NamespaceRoutingConvention.cs)]
 
-<a name=routing-mixed-ref-label></a>
+<a name="routing-mixed-ref-label"></a>
 
 ## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>混合的路由： 路由與傳統路由的屬性
 
@@ -514,7 +514,7 @@ MVC 應用程式可以混合使用傳統的路由和屬性路由。 這是通常
 > [!NOTE]
 > 路由系統兩種類型的差異是 URL 符合的路由範本之後，套用的程序。 在傳統的路由，從符合的路由值可用來從查閱資料表的所有傳統的路由動作選擇動作與控制器。 路由屬性，每個範本已經與動作相關聯，不必採取任何進一步的查閱。
 
-<a name=routing-url-gen-ref-label></a>
+<a name="routing-url-gen-ref-label"></a>
 
 ## <a name="url-generation"></a>URL 的產生
 
@@ -567,7 +567,7 @@ MVC 建置查閱資料表的所有屬性路由動作，並將符合`controller`�
 > [!TIP]
 > 若要建立的絕對 URL，使用多載，接受`protocol`:`Url.Action("Buy", "Products", new { id = 17 }, protocol: Request.Scheme)`
 
-<a name=routing-gen-urls-route-ref-label></a>
+<a name="routing-gen-urls-route-ref-label"></a>
 
 ### <a name="generating-urls-by-route"></a>產生 Url 的路由
 
@@ -575,7 +575,7 @@ MVC 建置查閱資料表的所有屬性路由動作，並將符合`controller`�
 
 [!code-csharp[Main](routing/sample/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
 
-<a name=routing-gen-urls-html-ref-label></a>
+<a name="routing-gen-urls-html-ref-label"></a>
 
 ### <a name="generating-urls-in-html"></a>以 HTML 產生 Url
 
@@ -585,7 +585,7 @@ TagHelpers 產生透過 Url `form` TagHelper 和`<a>`TagHelper。 這兩種使�
 
 在檢視內`IUrlHelper`可透過`Url`未涵蓋的上述任何特定 URL 的產生的屬性。
 
-<a name=routing-gen-urls-action-ref-label></a>
+<a name="routing-gen-urls-action-ref-label"></a>
 
 ### <a name="generating-urls-in-action-results"></a>在動作結果中產生 URL
 
@@ -606,7 +606,7 @@ public Task<IActionResult> Edit(int id, Customer customer)
 
 動作結果的 factory 方法的方法遵循類似的模式上`IUrlHelper`。
 
-<a name=routing-dedicated-ref-label></a>
+<a name="routing-dedicated-ref-label"></a>
 
 ### <a name="special-case-for-dedicated-conventional-routes"></a>特殊的專用的傳統路由案例
 
@@ -625,7 +625,7 @@ app.UseMvc(routes =>
 
 專用的傳統路由依賴為特殊的行為，沒有對應的路由參數可防止路由的預設值是 「 太窮盡 」 與 URL 的產生。 預設值是在此情況下`{ controller = Blog, action = Article }`，並沒有`controller`也`action`會顯示為路由參數。 當執行路由 URL 的產生時，所提供的值必須符合的預設值。 URL 產生使用`blog`會失敗，因為值`{ controller = Home, action = Index }`不符`{ controller = Blog, action = Article }`。 路由然後再試一次回落`default`，這會成功。
 
-<a name=routing-areas-ref-label></a>
+<a name="routing-areas-ref-label"></a>
 
 ## <a name="areas"></a>區域
 
@@ -670,7 +670,7 @@ app.UseMvc(routes =>
 
 [!code-csharp[Main](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 
-<a name=iactionconstraint-ref-label></a>
+<a name="iactionconstraint-ref-label"></a>
 
 ## <a name="understanding-iactionconstraint"></a>了解 IActionConstraint
 
@@ -695,7 +695,7 @@ public class ProductsController : Controller
 
 就概念而言，`IActionConstraint`是一種*多載*，但而不多載具有相同名稱的方法，它多載之間的相同的 URL 相符的動作。 路由屬性也會使用`IActionConstraint`並可能導致從不同的控制器動作這兩個正在考慮的候選項目。
 
-<a name=iactionconstraint-impl-ref-label></a>
+<a name="iactionconstraint-impl-ref-label"></a>
 
 ### <a name="implementing-iactionconstraint"></a>實作 IActionConstraint
 

@@ -5,25 +5,25 @@ description: "深入了解 ASP.NET Core 中介軟體和要求管線。"
 keywords: "ASP.NET Core 中, 介軟體管線、 委派"
 ms.author: riande
 manager: wpickett
-ms.date: 08/14/2017
+ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: 3cd15c7e8ed4956e1d451f3bd5935fc175999d1f
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: ad8d207b1e6de396f16d098fb07ddc89bea2c520
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
-<a name=fundamentals-middleware></a>
+<a name="fundamentals-middleware"></a>
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-middleware"></a>什麼是中介軟體
 
@@ -74,6 +74,26 @@ Configure 方法 （如下所示） 會加入下列的中介軟體元件：
 3. 驗證
 4. MVC
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseExceptionHandler("/Home/Error"); // Call first to catch exceptions
+                                            // thrown in the following middleware.
+
+    app.UseStaticFiles();                   // Return static files and end pipeline.
+
+    app.UseAuthentication();               // Authenticate before you access
+                                           // secure resources.
+
+    app.UseMvcWithDefaultRoute();          // Add MVC to the request pipeline.
+}
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
@@ -89,11 +109,22 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
+-----------
+
 在上述程式碼中`UseExceptionHandler`是第一個新增至管線的中介軟體元件，因此，它會攔截稍後呼叫中發生任何例外狀況。
 
 靜態檔案中介軟體稱為及早在管線中，讓它可以處理要求，並最少運算無須經過剩餘的元件。 靜態檔案中介軟體提供**沒有**授權檢查。 任何檔案由提供服務，包括下*wwwroot*，都可以公開使用。 請參閱[靜態檔案處理](xref:fundamentals/static-files)如需安全靜態檔案的方法。
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+
+如果要求不會處理靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseAuthentication`)，它會執行驗證。 身分識別不最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的 Razor 頁面或控制器和動作。
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
 如果要求不會處理靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseIdentity`)，它會執行驗證。 身分識別不最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的控制器和動作。
+
+-----------
 
 下列範例會示範中介軟體訂購靜態檔案的要求處理前回應壓縮中介軟體的靜態檔案中介軟體的位置。 具有此中介軟體的順序，不會壓縮靜態檔案。 MVC 回應[UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_)可以壓縮。
 
@@ -107,7 +138,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-<a name=middleware-run-map-use></a>
+<a name="middleware-run-map-use"></a>
 
 ### <a name="use-run-and-map"></a>使用、 執行和對應
 
@@ -175,7 +206,7 @@ ASP.NET Core 隨附下列的中介軟體元件：
 | [靜態檔案](xref:fundamentals/static-files) | 提供靜態檔案和目錄瀏覽提供服務的支援。 |
 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) | 提供重寫 Url，並將要求重新導向的支援。 |
 
-<a name=middleware-writing-middleware></a>
+<a name="middleware-writing-middleware"></a>
 
 ## <a name="writing-middleware"></a>寫入中介軟體
 

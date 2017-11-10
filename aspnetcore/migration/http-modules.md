@@ -11,11 +11,11 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: e14664133abf010b80374036e4855fdff71d1d5f
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: eb5049d4d63c224ca74fc39072ae2c0d98ba330d
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組 
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 09/12/2017
 
 中所示[中介軟體](../fundamentals/middleware.md) 頁面上，ASP.NET Core 中介軟體是公開的類別`Invoke`方法擷取`HttpContext`並傳回`Task`。 您新的中介軟體看起來像這樣：
 
-<a name=http-modules-usemiddleware></a>
+<a name="http-modules-usemiddleware"></a>
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 09/12/2017
 
 *MyMiddlewareExtensions* helper 類別可讓您更輕鬆地設定中的介軟體在您`Startup`類別。 `UseMyMiddleware`方法將中介軟體類別加入至要求管線。 中介軟體所需的服務取得插入的中介軟體的建構函式中。
 
-<a name=http-modules-shortcircuiting-middleware></a>
+<a name="http-modules-shortcircuiting-middleware"></a>
 
 您可以在模組可能會終止要求，例如，如果使用者未獲授權：
 

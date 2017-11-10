@@ -11,17 +11,17 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 0a4024edf13651e2ed7e0f87e554e8ba8d895619
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: dde0b5673c9885db2fecbb24b384752e5ddf70eb
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
 由[Luke Latham](https://github.com/guardrex)和[黃冠馬力](https://github.com/mikaelm12)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 URL 重寫是指修改的要求 Url 會根據一或多個預先定義的規則。 URL 重寫會建立資源位置和地址之間的抽象概念，讓不緊密連結的位置和地址。 有幾種的情況很重要 URL 重寫：
 * 移動或取代伺服器資源暫時或永久地維持穩定的定位器，針對這些資源
@@ -98,7 +98,7 @@ A *URL 重寫*是伺服器端作業，以提供不同的資源位址中的資源
 
 取代字串中的擷取的群組會插入貨幣符號的字串 (`$`) 後面接著擷取的序號。 取得第一個擷取群組值`$1`、 與第二個`$2`，而且會持續在您的 regex 的擷取群組的順序。 只有一個擷取的群組中沒有重新導向規則 regex 範例應用程式，因此在取代字串中，這是只有一個插入的群組`$1`。 套用規則時，URL 會成為`/redirected/1234/5678`。
 
-<a name=url-redirect-to-secure-endpoint></a>
+<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>安全端點的 URL 重新導向
 使用`AddRedirectToHttps`將 HTTP 要求重新導向至相同的主機，並使用 HTTPS 的路徑 (`https://`)。 如果未提供的狀態碼中, 介軟體會預設為 302 （找到）。 如果未提供連接埠中, 介軟體會預設為`null`，這表示通訊協定變更為`https://`和用戶端會存取連接埠 443 上的資源。 此範例示範如何設定狀態碼 301 （已永久移動） 到，並將連接埠變更為 5001。
 ```csharp

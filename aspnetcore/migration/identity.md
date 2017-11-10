@@ -11,15 +11,15 @@ ms.assetid: 0db145cb-41a5-448a-b889-72e2d789ad7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/identity
-ms.openlocfilehash: ed96266f06eb473fa3c3e1cc81b2b58fcd89f29e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 6972329e3d434e1b67131843118f2f18229807b9
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="migrating-authentication-and-identity"></a>移轉的驗證和身分識別
 
-<a name=migration-identity></a>
+<a name="migration-identity"></a>
 
 由[Steve Smith](https://ardalis.com/)
 

@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: cab986d0a7b7ac68cdda36a558e9b05c429108d0
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 128b69513976a56104524bb803f2b8cb1daf1967
+ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor 頁面
 
@@ -77,7 +77,7 @@ SqlException: Invalid column name 'Rating'.
 <a name="pmc"></a> 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 在 PMC 中，輸入下列命令：
 
-```PMC
+```powershell
 Add-Migration Rating
 Update-Database
 ```
@@ -97,7 +97,7 @@ Update-Database
 * 選取 [確定]。
 * 在 [PMC](xref:tutorials/razor-pages/new-field#pmc) 中，更新資料庫：
 
-  ```PMC
+  ```powershell
   Update-Database
   ```
 

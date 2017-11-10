@@ -11,11 +11,11 @@ ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/testing
-ms.openlocfilehash: 5d81e0193fb042993452ed314e70fb63573e615c
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: aa60912e06946bd0df4936d33c88d3bf7b69984c
+ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="testing-controller-logic-in-aspnet-core"></a>在 ASP.NET Core 中測試控制器邏輯
 
@@ -47,7 +47,7 @@ ASP.NET MVC 應用程式中的控制站應該小，並著重於使用者介面�
 如果您正在撰寫自訂篩選條件、 路由和其他內容，您應該將單元測試，但不是上特定控制器執行測試的一部分。 它們應該地接受獨立測試。
 
 > [!TIP]
-> [建立及執行單元測試使用 Visual Studio](https://www.visualstudio.com/docs/code/create-and-run-unit-tests-vs)。
+> [建立及執行單元測試使用 Visual Studio](https://docs.microsoft.com/visualstudio/test/unit-test-your-code)。
 
 若要示範的單元測試，請檢閱下列控制站。 它會顯示一份腦力激盪工作，並可讓新腦力激盪使用 POST 來建立的工作階段：
 
@@ -84,7 +84,7 @@ ASP.NET MVC 應用程式中的控制站應該小，並著重於使用者介面�
 
 應用程式公開 web API （腦力激和方法的新概念加入至工作階段相關聯的想法清單） 的功能：
 
-<a name=ideas-controller></a>
+<a name="ideas-controller"></a>
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
 

@@ -5,16 +5,16 @@ description: "本文概述將 ASP.NET Core 1.x 專案移轉至 ASP.NET Core 2.0 
 keywords: "ASP.NET Core,移轉"
 ms.author: scaddie
 manager: wpickett
-ms.date: 08/01/2017
+ms.date: 10/03/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 541774d46bbf570ee860c72fdff5cece364935df
-ms.sourcegitcommit: 55759ae80e7039036a7c6da8e3806f7c88ade325
+ms.openlocfilehash: 9574f1f8e0970e1b64c2910bf46794621583f18d
+ms.sourcegitcommit: 3cf879f6beaaca2d401ad980cd26cfec70c05c24
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0
 
@@ -104,6 +104,27 @@ ms.lasthandoff: 09/22/2017
 Unable to create an object of type '<Context>'. Add an implementation of 'IDesignTimeDbContextFactory<Context>' to the project, or see https://go.microsoft.com/fwlink/?linkid=851728 for additional patterns supported at design time.
 ```
 
+<a name="add-modify-configuration"></a>
+
+## <a name="add-configuration-providers"></a>新增組態提供者
+在 1.x 專案中，若要將組態提供者新增至應用程式，必須透過 `Startup` 建構函式。 其中涉及的步驟包括建立 `ConfigurationBuilder` 的執行個體、載入適用的提供者 (環境變數、應用程式設定等等)，以及初始化 `IConfigurationRoot` 的成員。
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
+
+上述範例載入 `Configuration` 成員時，會使用 *appsettings.json* 與所有 *appsettings.\<EnvironmentName\>.json* 檔案中符合 `IHostingEnvironment.EnvironmentName` 屬性的組態設定。 這些檔案的位置與 *Startup.cs* 的路徑相同。
+
+在 2.0 專案中，1.x 專案固有的模板組態程式碼會在幕後執行。 例如，環境變數及應用程式設定會在啟動時載入。 對等的 *Startup.cs* 程式碼會縮減成為插入執行個體的 `IConfiguration` 初始化：
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
+
+若要移除 `WebHostBuilder.CreateDefaultBuilder` 所新增的預設提供者，請叫用 `ConfigureAppConfiguration` 內 `IConfigurationBuilder.Sources` 屬性上的 `Clear` 方法。 若要將提供者新增回來，請利用 *Program.cs* 中的 `ConfigureAppConfiguration` 方法：
+
+[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
+
+[此處](https://github.com/aspnet/MetaPackages/blob/rel/2.0.0/src/Microsoft.AspNetCore/WebHost.cs#L152) \(英文\) 有前述程式碼片段中 `CreateDefaultBuilder` 方法所使用的組態。
+
+如需詳細資訊，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration)。
+
 <a name="db-init-code"></a>
 
 ## <a name="move-database-initialization-code"></a>移動資料庫初始化程式碼
@@ -142,11 +163,11 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 根據預設，在 Visual Studio 2017 中建立的 ASP.NET Core 1.1 專案已新增 Application Insights。 如果您不要直接使用 Application Insights SDK，請在 *Program.cs* 和 *Startup.cs* 之外，遵循下列步驟：
 
-1. 從 *.csproj* 檔案中移除下列 `<PackageReference />` 節點：
+1. 如果以 .NET Core 為目標，請從 *.csproj* 檔案中移除下列 `<PackageReference />` 節點：
     
     [!code-xml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
-2. 從 *Program.cs* 中移除 `UseApplicationInsights` 擴充方法引動過程：
+2. 如果以 .NET Core 為目標，請從 *Program.cs* 中移除 `UseApplicationInsights` 擴充方法引動過程：
 
     [!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 

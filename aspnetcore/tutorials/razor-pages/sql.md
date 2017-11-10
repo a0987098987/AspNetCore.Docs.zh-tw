@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 42fa98886f3e87e79ea1ea4a2223a79319676006
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 1e35ce49980bf026de35359cdf413961051e3bee
+ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
@@ -60,7 +60,7 @@ LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為�
 如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。
 
 ```csharp
-if (context.Movies.Any())
+if (context.Movie.Any())
 {
     return;   // DB has been seeded.
 }
@@ -70,7 +70,7 @@ if (context.Movies.Any())
 
 在 *Program.cs* 檔案中，將種子初始設定式新增至 `Main` 方法的結尾處：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs?highlight=6,17-32)]
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 測試應用程式
 

@@ -40,7 +40,7 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-上述命令使用 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000，以檢視應用程式。
+上述命令使用 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000 ，以檢視應用程式。
 
 ![Home 或 Index 頁面](../razor-pages/razor-pages-start/_static/home.png)
 

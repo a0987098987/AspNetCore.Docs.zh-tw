@@ -11,11 +11,11 @@ ms.assetid: 0377a02d-8fda-47a5-929a-24a16e1d2c93
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/web-publishing-vs
-ms.openlocfilehash: 8a2584363cbf418281cc0e2d796debe57fab846f
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: f010f9d90165ce4d6718fe1440e600985f21a01d
+ms.sourcegitcommit: f33fb9d648a611bb7b2b96291dd2176b230a9a43
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 09/29/2017
 ---
 # <a name="create-publish-profiles-for-visual-studio-and-msbuild-to-deploy-aspnet-core-apps"></a>建立 Visual Studio 和 MSBuild 的發行設定檔，以部署 ASP.NET Core 應用程式。
 
@@ -202,7 +202,36 @@ dotnet publish -c Release -o C:/MyWebs/test
 
 如需如何在 ASP.NET Core 上發佈 Web 應用程式的概觀，請參閱[發佈和部署](index.md)。 [發佈和部署](index.md)是開放原始碼專案，位在 https://github.com/aspnet/websdk。
 
-目前 `dotnet publish` 不能使用發行設定檔。 若要使用發行設定檔，請使用 `dotnet build`。 `dotnet build` 在專案上叫用 MSBuild。 或者，直接呼叫 `msbuild`。
+ `dotnet publish` 可以使用資料夾、Msdeploy 及 [KUDU](https://github.com/projectkudu/kudu/wiki) \(英文\) 發行設定檔：
+ 
+資料夾 (可跨平台運作) `dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>`
+
+Msdeploy (目前這僅適用於 Windows，因為 msdeploy 並無法跨平台運作)：`dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>`
+
+Msdeploy 套件(目前這僅適用於 Windows，因為 msdeploy 並無法跨平台運作)：`dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>`
+
+在先前的範例中，請「不要」將 `deployonbuild` 傳遞至 `dotnet publish`。
+
+如需詳細資訊，請參閱 [Microsoft.NET.Sdk.Publish](https://github.com/aspnet/websdk#microsoftnetsdkpublish) \(英文\)
+
+`dotnet publish` 支援使用 KUDU API 從任何平台發行至 Azure。 Visual Studio 發行支援 KUDU API，但它也受 websdk 支援以針對 Azure 進行跨平台發行。
+
+搭配下列內容將發行設定檔新增至 *Properties/PublishProfiles* 資料夾：
+
+```xml
+<Project>
+<PropertyGroup>
+                <PublishProtocol>Kudu</PublishProtocol>
+                <PublishSiteName>nodewebapp</PublishSiteName>
+                <UserName>username</UserName>
+                <Password>password</Password>
+</PropertyGroup>
+</Project>
+```
+
+執行下列命令將會壓縮發行內容，並使用 KUDU API 將它發行至 Azure。
+
+`dotnet publish /p:PublishProfile=Azure /p:Configuration=Release`
 
 使用發行設定檔時，請設定下列 MSBuild 屬性：
 

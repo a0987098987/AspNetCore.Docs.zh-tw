@@ -11,11 +11,11 @@ ms.assetid: 16efbacf-fe7b-4b41-84b0-06a1574b95c2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 7d7e7055dd6dc0a2aefd8f4a0a170483b8504267
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 9c872a48aba4974ddac2e49ca40c944da356f0e0
+ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="adding-a-new-field"></a>新增欄位
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 09/12/2017
 
 建置應用程式 (Ctrl+Shift+B)。
 
-因為您已將欄位新增至 `Movie` 類別，所以也需要更新繫結白名單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將欄位新增至 `Movie` 類別，所以也需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
@@ -77,7 +77,7 @@ ms.lasthandoff: 09/12/2017
 
 在 PMC 中，輸入下列命令：
 
-```PMC
+```powershell
 Add-Migration Rating
 Update-Database
 ```

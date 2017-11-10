@@ -1,7 +1,7 @@
 ---
-title: "安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼"
+title: "安全的儲存 ASP.NET Core 在開發期間的應用程式密碼"
 author: rick-anderson
-description: "示範如何安全地將密碼儲存在開發期間"
+description: "示範如何在開發期間安全地儲存密碼"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -14,6 +14,7 @@ ms.openlocfilehash: 280819a6a0afb72311f0d50f7d3b83a942e9fcc3
 ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
 ms.translationtype: MT
 ms.contentlocale: zh-TW
+
 ms.lasthandoff: 10/12/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼
@@ -128,3 +129,4 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 ## <a name="additional-resources"></a>其他資源
 
 * [組態](../fundamentals/configuration.md)
+

@@ -13,52 +13,52 @@
 
 --> 
 
-<span data-ttu-id="ac6b7-101">現在當您提交搜尋時，URL 中會包含搜尋查詢字串。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-101">Now when you submit a search, the URL contains the search query string.</span></span> <span data-ttu-id="ac6b7-102">即使您有 `HttpPost Index` 方法，搜尋也會移至 `HttpGet Index` 動作方法。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-102">Searching will also go to the `HttpGet Index` action method, even if you have a `HttpPost Index` method.</span></span>
+<span data-ttu-id="15bfc-101">現在當您提交搜尋時，URL 中會包含搜尋查詢字串。</span><span class="sxs-lookup"><span data-stu-id="15bfc-101">Now when you submit a search, the URL contains the search query string.</span></span> <span data-ttu-id="15bfc-102">即使您有 `HttpPost Index` 方法，搜尋也會移至 `HttpGet Index` 動作方法。</span><span class="sxs-lookup"><span data-stu-id="15bfc-102">Searching will also go to the `HttpGet Index` action method, even if you have a `HttpPost Index` method.</span></span>
 
 ![顯示 URL 中 searchString=ghost 且傳回的電影 Ghostbusters 和 Ghostbusters 2 包含 ghost 一詞的瀏覽器視窗](../../tutorials/first-mvc-app/search/_static/search_get.png)
 
-<span data-ttu-id="ac6b7-104">下列標記顯示 `form` 標記的變更：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-104">The following markup shows the change to the `form` tag:</span></span>
+<span data-ttu-id="15bfc-104">下列標記顯示 `form` 標記的變更：</span><span class="sxs-lookup"><span data-stu-id="15bfc-104">The following markup shows the change to the `form` tag:</span></span>
 
 ```html
 <form asp-controller="Movies" asp-action="Index" method="get">
    ```
 
-## <a name="adding-search-by-genre"></a><span data-ttu-id="ac6b7-105">新增依內容類型搜尋</span><span class="sxs-lookup"><span data-stu-id="ac6b7-105">Adding Search by genre</span></span>
+## <a name="adding-search-by-genre"></a><span data-ttu-id="15bfc-105">新增依內容類型搜尋</span><span class="sxs-lookup"><span data-stu-id="15bfc-105">Adding Search by genre</span></span>
 
-<span data-ttu-id="ac6b7-106">將下列 `MovieGenreViewModel` 類別新增至 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-106">Add the following `MovieGenreViewModel` class to the *Models* folder:</span></span>
+<span data-ttu-id="15bfc-106">將下列 `MovieGenreViewModel` 類別新增至 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="15bfc-106">Add the following `MovieGenreViewModel` class to the *Models* folder:</span></span>
 
-<span data-ttu-id="ac6b7-107">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieGenreViewModel.cs)]</span><span class="sxs-lookup"><span data-stu-id="ac6b7-107">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieGenreViewModel.cs)]</span></span>
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieGenreViewModel.cs)]
 
-<span data-ttu-id="ac6b7-108">電影內容類型檢視模型將包含：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-108">The movie-genre view model will contain:</span></span>
+<span data-ttu-id="15bfc-107">電影內容類型檢視模型將包含：</span><span class="sxs-lookup"><span data-stu-id="15bfc-107">The movie-genre view model will contain:</span></span>
 
-   * <span data-ttu-id="ac6b7-109">電影清單。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-109">A list of movies.</span></span>
-   * <span data-ttu-id="ac6b7-110">包含內容類型清單的 `SelectList`。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-110">A `SelectList` containing the list of genres.</span></span> <span data-ttu-id="ac6b7-111">這可讓使用者從清單中選取內容類型。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-111">This will allow the user to select a genre from the list.</span></span>
-   * <span data-ttu-id="ac6b7-112">包含所選取內容類型的 `movieGenre`。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-112">`movieGenre`, which contains the selected genre.</span></span>
+   * <span data-ttu-id="15bfc-108">電影清單。</span><span class="sxs-lookup"><span data-stu-id="15bfc-108">A list of movies.</span></span>
+   * <span data-ttu-id="15bfc-109">包含內容類型清單的 `SelectList`。</span><span class="sxs-lookup"><span data-stu-id="15bfc-109">A `SelectList` containing the list of genres.</span></span> <span data-ttu-id="15bfc-110">這可讓使用者從清單中選取內容類型。</span><span class="sxs-lookup"><span data-stu-id="15bfc-110">This will allow the user to select a genre from the list.</span></span>
+   * <span data-ttu-id="15bfc-111">包含所選取內容類型的 `movieGenre`。</span><span class="sxs-lookup"><span data-stu-id="15bfc-111">`movieGenre`, which contains the selected genre.</span></span>
 
-<span data-ttu-id="ac6b7-113">以下列程式碼取代 `MoviesController.cs` 中的 `Index` 方法：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-113">Replace the `Index` method in `MoviesController.cs` with the following code:</span></span>
+<span data-ttu-id="15bfc-112">以下列程式碼取代 `MoviesController.cs` 中的 `Index` 方法：</span><span class="sxs-lookup"><span data-stu-id="15bfc-112">Replace the `Index` method in `MoviesController.cs` with the following code:</span></span>
 
-<span data-ttu-id="ac6b7-114">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchGenre)]</span><span class="sxs-lookup"><span data-stu-id="ac6b7-114">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchGenre)]</span></span>
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchGenre)]
 
-<span data-ttu-id="ac6b7-115">下列程式碼是從資料庫中擷取所有內容類型的 `LINQ` 查詢。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-115">The following code is a `LINQ` query that retrieves all the genres from the database.</span></span>
+<span data-ttu-id="15bfc-113">下列程式碼是從資料庫中擷取所有內容類型的 `LINQ` 查詢。</span><span class="sxs-lookup"><span data-stu-id="15bfc-113">The following code is a `LINQ` query that retrieves all the genres from the database.</span></span>
 
-<span data-ttu-id="ac6b7-116">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_LINQ)]</span><span class="sxs-lookup"><span data-stu-id="ac6b7-116">[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_LINQ)]</span></span>
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_LINQ)]
 
-<span data-ttu-id="ac6b7-117">藉由投射不同的內容類型來建立內容類型的 `SelectList` (我們不希望選取清單中有重複的內容類型)。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-117">The `SelectList` of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).</span></span>
+<span data-ttu-id="15bfc-114">藉由投射不同的內容類型來建立內容類型的 `SelectList` (我們不希望選取清單中有重複的內容類型)。</span><span class="sxs-lookup"><span data-stu-id="15bfc-114">The `SelectList` of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).</span></span>
 
 ```csharp
 movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
    ```
 
-## <a name="adding-search-by-genre-to-the-index-view"></a><span data-ttu-id="ac6b7-118">將依內容類型搜尋新增至 Index 檢視</span><span class="sxs-lookup"><span data-stu-id="ac6b7-118">Adding search by genre to the Index view</span></span>
+## <a name="adding-search-by-genre-to-the-index-view"></a><span data-ttu-id="15bfc-115">將依內容類型搜尋新增至 Index 檢視</span><span class="sxs-lookup"><span data-stu-id="15bfc-115">Adding search by genre to the Index view</span></span>
 
-<span data-ttu-id="ac6b7-119">如下所示更新 `Index.cshtml`：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-119">Update `Index.cshtml` as follows:</span></span>
+<span data-ttu-id="15bfc-116">如下所示更新 `Index.cshtml`：</span><span class="sxs-lookup"><span data-stu-id="15bfc-116">Update `Index.cshtml` as follows:</span></span>
 
-<span data-ttu-id="ac6b7-120">[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,28,31,34,37,43)]</span><span class="sxs-lookup"><span data-stu-id="ac6b7-120">[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,28,31,34,37,43)]</span></span>
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,28,31,34,37,43)]
 
-<span data-ttu-id="ac6b7-121">檢查下列 HTML 協助程式中使用的 Lambda 運算式：</span><span class="sxs-lookup"><span data-stu-id="ac6b7-121">Examine the lambda expression used in the following HTML Helper:</span></span>
+<span data-ttu-id="15bfc-117">檢查下列 HTML 協助程式中使用的 Lambda 運算式：</span><span class="sxs-lookup"><span data-stu-id="15bfc-117">Examine the lambda expression used in the following HTML Helper:</span></span>
 
 `@Html.DisplayNameFor(model => model.movies[0].Title)`
  
-<span data-ttu-id="ac6b7-122">在上述程式碼中，`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-122">In the preceding code, the `DisplayNameFor` HTML Helper inspects the `Title` property referenced in the lambda expression to determine the display name.</span></span> <span data-ttu-id="ac6b7-123">由於 Lambda 運算式是檢查而不是評估，因此您在 `model`、`model.movies` 或 `model.movies[0]` 是 `null` 或空白時，不會收到存取違規。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-123">Since the lambda expression is inspected rather than evaluated, you don't receive an access violation when `model`, `model.movies`, or `model.movies[0]` are `null` or empty.</span></span> <span data-ttu-id="ac6b7-124">在評估 Lambda 運算式時 (例如，`@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-124">When the lambda expression is evaluated (for example, `@Html.DisplayFor(modelItem => item.Title)`), the model's property values are evaluated.</span></span>
+<span data-ttu-id="15bfc-118">在上述程式碼中，`DisplayNameFor` HTML 協助程式會檢查 Lambda 運算式中參考的 `Title` 屬性來判斷顯示名稱。</span><span class="sxs-lookup"><span data-stu-id="15bfc-118">In the preceding code, the `DisplayNameFor` HTML Helper inspects the `Title` property referenced in the lambda expression to determine the display name.</span></span> <span data-ttu-id="15bfc-119">由於 Lambda 運算式是檢查而不是評估，因此您在 `model`、`model.movies` 或 `model.movies[0]` 是 `null` 或空白時，不會收到存取違規。</span><span class="sxs-lookup"><span data-stu-id="15bfc-119">Since the lambda expression is inspected rather than evaluated, you don't receive an access violation when `model`, `model.movies`, or `model.movies[0]` are `null` or empty.</span></span> <span data-ttu-id="15bfc-120">在評估 Lambda 運算式時 (例如，`@Html.DisplayFor(modelItem => item.Title)`)，會評估模型的屬性值。</span><span class="sxs-lookup"><span data-stu-id="15bfc-120">When the lambda expression is evaluated (for example, `@Html.DisplayFor(modelItem => item.Title)`), the model's property values are evaluated.</span></span>
 
-<span data-ttu-id="ac6b7-125">依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="ac6b7-125">Test the app by searching by genre, by movie title, and by both.</span></span>
+<span data-ttu-id="15bfc-121">依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="15bfc-121">Test the app by searching by genre, by movie title, and by both.</span></span>

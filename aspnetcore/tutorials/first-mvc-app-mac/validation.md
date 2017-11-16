@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/validation
 ms.openlocfilehash: 9b702912fdc0bb9d61cdc78b3abb335b4819213c
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 [!INCLUDE[validation](../../includes/mvc-intro/validation.md)]
 
 >[!div class="step-by-step"]
-<span data-ttu-id="8910d-104">[上一步 - 新增欄位](new-field.md)
-[下一步 - 檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)</span><span class="sxs-lookup"><span data-stu-id="8910d-104">[Previous - Add a field](new-field.md)
+<span data-ttu-id="48d1b-104">[上一步 - 新增欄位](new-field.md)
+[下一步 - 檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)</span><span class="sxs-lookup"><span data-stu-id="48d1b-104">[Previous - Add a field](new-field.md)
 [Next - Examine the Details and Delete methods](xref:tutorials/first-mvc-app/details)</span></span>
 
 

@@ -12,18 +12,18 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/search
 ms.openlocfilehash: 8dab5293ab6a6fe65288bb230e4f39af462ba28b
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/search1.md)]
 
-<span data-ttu-id="7e124-104">注意：SQLlite 有區分大小寫，因此您必須搜尋 "Ghost" 而不是 "ghost"。</span><span class="sxs-lookup"><span data-stu-id="7e124-104">Note: SQLlite is case sensitive, so you'll need to search for "Ghost" and not "ghost".</span></span>
+<span data-ttu-id="d0daa-104">注意：SQLlite 有區分大小寫，因此您必須搜尋 "Ghost" 而不是 "ghost"。</span><span class="sxs-lookup"><span data-stu-id="d0daa-104">Note: SQLlite is case sensitive, so you'll need to search for "Ghost" and not "ghost".</span></span>
 
 [!INCLUDE[adding-model](../../includes/mvc-intro/search2.md)]
 
-<span data-ttu-id="7e124-105">變更 *Views\movie\Index.cshtml* Razor 檢視中的 `<form>` 標記，以指定 `method="get"`：</span><span class="sxs-lookup"><span data-stu-id="7e124-105">Change the `<form>` tag in the *Views\movie\Index.cshtml* Razor view to specify `method="get"`:</span></span>
+<span data-ttu-id="d0daa-105">變更 *Views\movie\Index.cshtml* Razor 檢視中的 `<form>` 標記，以指定 `method="get"`：</span><span class="sxs-lookup"><span data-stu-id="d0daa-105">Change the `<form>` tag in the *Views\movie\Index.cshtml* Razor view to specify `method="get"`:</span></span>
 
 ```html
 <form asp-controller="Movies" asp-action="Index" method="get">
@@ -32,6 +32,6 @@ ms.lasthandoff: 08/11/2017
 [!INCLUDE[adding-model](../../includes/mvc-intro/search3.md)]
 
 >[!div class="step-by-step"]
-<span data-ttu-id="7e124-106">[上一步 - 控制器方法和檢視](controller-methods-views.md)
-[下一步 - 新增欄位](new-field.md)</span><span class="sxs-lookup"><span data-stu-id="7e124-106">[Previous - Controller methods and views](controller-methods-views.md)
+<span data-ttu-id="d0daa-106">[上一步 - 控制器方法和檢視](controller-methods-views.md)
+[下一步 - 新增欄位](new-field.md)</span><span class="sxs-lookup"><span data-stu-id="d0daa-106">[Previous - Controller methods and views](controller-methods-views.md)
 [Next - Add a field](new-field.md)</span></span>

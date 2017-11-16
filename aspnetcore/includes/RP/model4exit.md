@@ -1,7 +1,7 @@
-<span data-ttu-id="0866b-101">如果您收到錯誤：</span><span class="sxs-lookup"><span data-stu-id="0866b-101">If you get the error:</span></span>
+<span data-ttu-id="2edfe-101">如果您收到錯誤：</span><span class="sxs-lookup"><span data-stu-id="2edfe-101">If you get the error:</span></span>
   ```
   The process cannot access the file 
  'RazorPagesMovie/bin/Debug/netcoreapp2.0/RazorPagesMovie.dll' 
   because it is being used by another process.
   ```
-<span data-ttu-id="0866b-102">結束 Visual Studio 並再次執行命令。</span><span class="sxs-lookup"><span data-stu-id="0866b-102">Exit Visual Studio and run the command again.</span></span>
+<span data-ttu-id="2edfe-102">結束 Visual Studio 並再次執行命令。</span><span class="sxs-lookup"><span data-stu-id="2edfe-102">Exit Visual Studio and run the command again.</span></span>

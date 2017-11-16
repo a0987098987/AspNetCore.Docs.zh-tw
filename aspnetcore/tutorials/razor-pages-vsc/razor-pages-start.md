@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/razor-pages-start
 ms.openlocfilehash: 1b9dff14fa98314601fa44aa229aef6b73bb79d0
-ms.sourcegitcommit: 67f54fabbfa4e3942f5bfe1f8a7fdfe4a7a75358
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-code"></a>利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面
 
@@ -40,7 +40,7 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-上述命令使用 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000 ，以檢視應用程式。
+上述命令使用 [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/dotnet) 來建立和執行 Razor 頁面專案。 將瀏覽器開啟到 http://localhost:5000，以檢視應用程式。
 
 ![Home 或 Index 頁面](../razor-pages/razor-pages-start/_static/home.png)
 

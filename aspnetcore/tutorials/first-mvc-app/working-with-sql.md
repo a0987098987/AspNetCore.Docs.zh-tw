@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: e44b6de13540d93337bf9a128d287808cffbfb46
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="working-with-sql-server-localdb"></a>使用 SQL Server LocalDB
 
@@ -35,7 +35,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration)系統會讀取 `Connectio
 
 LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
 
-* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] \(SSOX)。
+* 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。
 
   ![檢視功能表](working-with-sql/_static/ssox.png)
 

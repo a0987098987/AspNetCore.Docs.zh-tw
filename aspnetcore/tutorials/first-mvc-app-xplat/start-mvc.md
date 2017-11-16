@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
 ms.openlocfilehash: 87ce5dca011a7bc37d34799db159d933c158cba1
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Mac、Linux 或 Windows 上的 ASP.NET Core MVC 使用者入門
 
@@ -56,7 +56,7 @@ dotnet new mvc
 
 ![VS Code 與警告：'MvcMovie' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？ 不要再詢問、現在不要、是以及資訊 - 有未解析的相依性 - 還原 - 關閉](../web-api-vsc/_static/vsc_restore.png)
 
-按 [偵錯] \(F5) 以建置並執行程式。
+按 [偵錯] (F5) 以建置並執行程式。
 
 ![執行中的應用程式](../first-mvc-app/start-mvc/_static/1.png)
 

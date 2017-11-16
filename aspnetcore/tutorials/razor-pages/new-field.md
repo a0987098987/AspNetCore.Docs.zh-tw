@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: 128b69513976a56104524bb803f2b8cb1daf1967
-ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor 頁面
 

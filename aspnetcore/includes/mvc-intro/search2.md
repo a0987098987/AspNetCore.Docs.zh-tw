@@ -49,7 +49,7 @@ HTML `<form>` 標記使用[表單標記協助程式](../../mvc/views/working-wit
 
 ![應用程式回應為 "From HttpPost Index: filter on ghost" 的瀏覽器視窗](../../tutorials/first-mvc-app/search/_static/fo.png)
 
-不過，即使您新增這個 `[HttpPost]` 版本的 `Index` 方法，在如何全部實作此方法方面仍然有其限制。 假設您想要將特定的搜尋加為書籤，或者想要傳送連結給朋友，讓他們可以點選來查看相同的電影篩選清單。 請注意，HTTP POST 要求的 URL 與 GET 要求的 URL (localhost:xxxxx/Movies/Index) 相同 -- 在 URL 中沒有搜尋資訊。 搜尋字串資訊會以[表單欄位值](https://developer.mozilla.org/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data)的形式傳送至伺服器。 您可以使用瀏覽器開發人員工具或絕佳的 [Fiddler 工具](http://www.telerik.com/fiddler)來進行確認。 下圖顯示 Chrome 瀏覽器開發人員工具：
+不過，即使您新增這個 `[HttpPost]` 版本的 `Index` 方法，在如何全部實作此方法方面仍然有其限制。 假設您想要將特定的搜尋加為書籤，或者想要傳送連結給朋友，讓他們可以點選來查看相同的電影篩選清單。 請注意，HTTP POST 要求的 URL 與 GET 要求的 URL (localhost:xxxxx/Movies/Index) 相同 -- 在 URL 中沒有搜尋資訊。 搜尋字串資訊會以[表單欄位值](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)的形式傳送至伺服器。 您可以使用瀏覽器開發人員工具或絕佳的 [Fiddler 工具](http://www.telerik.com/fiddler)來進行確認。 下圖顯示 Chrome 瀏覽器開發人員工具：
 
 ![顯示 searchString 值為 ghost 之要求本文的 Microsoft Edge 開發人員工具的 [網路] 索引標籤](../../tutorials/first-mvc-app/search/_static/f12_rb.png)
 

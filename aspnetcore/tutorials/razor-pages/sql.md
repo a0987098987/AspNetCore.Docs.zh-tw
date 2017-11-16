@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
 ms.openlocfilehash: 1e35ce49980bf026de35359cdf413961051e3bee
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 

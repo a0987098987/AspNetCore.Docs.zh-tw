@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/adding-view
 ms.openlocfilehash: 7f48e8a89034708b2cb4f6d4898e5b6a172e7452
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 [!INCLUDE[adding-view](../../includes/mvc-intro/adding_view1.md)]
 

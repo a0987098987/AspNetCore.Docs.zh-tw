@@ -11,11 +11,11 @@ ms.assetid: 08c9f457-9c24-40f9-a08b-47dc251e4cec
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-2.0
-ms.openlocfilehash: c572315d7a801b9b87d5f4cd14b82c5ed27e7a85
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 98af3788652e87f6222551cb4a8e5427b312660c
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -58,7 +58,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 在 ASP.NET Core 2.0 中，記錄預設會合併至相依性插入 (DI) 系統。 您要在 *Program.cs* 檔案中新增提供者並設定篩選，不是在 *Startup.cs* 檔案。 而預設的 `ILoggerFactory` 支援篩選的方式，可讓您使用一個彈性的方法同時應對跨提供者的篩選和特定提供者的篩選。
 
-如需詳細資訊，請參閱[記錄簡介](xref:fundamentals/logging)。
+如需詳細資訊，請參閱[記錄簡介](xref:fundamentals/logging/index)。
 
 ## <a name="authentication-update"></a>驗證更新
 

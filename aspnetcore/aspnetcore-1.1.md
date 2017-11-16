@@ -11,11 +11,11 @@ ms.assetid: 062f8353-d1bc-4e99-a821-c1d1bb162c47
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-1.1
-ms.openlocfilehash: 28a99d3040df9611995fc8aed4bb8751aa9845f8
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: f014bdb41447f0354938c719ab37104b2d4b08e5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1 的新功能
 
@@ -25,8 +25,8 @@ ASP.NET Core 1.1 包含下列新功能：
 - [回應快取中介軟體](xref:performance/caching/middleware)
 - [檢視元件作為標記協助程式](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [中介軟體作為 MVC 篩選條件](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
-- [Cookie 架構 TempData 提供者](xref:fundamentals/app-state#cookie-based-tempdata-provider )
-- [Azure App Service 記錄提供者](xref:fundamentals/logging#appservice)
+- [Cookie 架構 TempData 提供者](xref:fundamentals/app-state#tempdata)
+- [Azure App Service 記錄提供者](xref:fundamentals/logging/index#appservice)
 - [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)
 - [Azure 與 Redis 儲存體資料保護金鑰存放庫](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis)
 - [適用於 Windows 的 WebListener 伺服器](xref:fundamentals/servers/weblistener)

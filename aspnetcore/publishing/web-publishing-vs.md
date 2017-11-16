@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/web-publishing-vs
 ms.openlocfilehash: f010f9d90165ce4d6718fe1440e600985f21a01d
-ms.sourcegitcommit: f33fb9d648a611bb7b2b96291dd2176b230a9a43
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-publish-profiles-for-visual-studio-and-msbuild-to-deploy-aspnet-core-apps"></a>建立 Visual Studio 和 MSBuild 的發行設定檔，以部署 ASP.NET Core 應用程式。
 

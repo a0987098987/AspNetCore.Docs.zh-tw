@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/new-field
 ms.openlocfilehash: 9c872a48aba4974ddac2e49ca40c944da356f0e0
-ms.sourcegitcommit: 79bbe7481c3d1297a0db8e41dd2b635b0f778264
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="adding-a-new-field"></a>新增欄位
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/06/2017
 
 建置應用程式 (Ctrl+Shift+B)。
 
-因為您已將欄位新增至 `Movie` 類別，所以也需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將欄位新增至 `Movie` 類別，所以也需要更新繫結白名單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]

@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/development-time-iis-support
 ms.openlocfilehash: a35a6fd9896c4c110d1b6680b6aaf718d29a18ab
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="enable-iis"></a>啟用 IIS
 
-在系統上啟用 IIS。 瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] \(畫面左側)。 選取 [Internet Information Services] 核取方塊。
+在系統上啟用 IIS。 瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。 選取 [Internet Information Services] 核取方塊。
 
 ![Windows 功能會以黑色方塊 (而非勾選記號) 顯示選取的 [Internet Information Services] 核取方塊，表示已啟用部分 IIS 功能](development-time-iis-support/_static/enable_iis.png)
 

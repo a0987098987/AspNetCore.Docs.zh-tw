@@ -12,7 +12,7 @@
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
-因為您已將新欄位新增至 `Movie` 類別，所以也需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將新欄位新增至 `Movie` 類別，所以也需要更新繫結白名單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]

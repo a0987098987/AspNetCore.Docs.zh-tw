@@ -5,30 +5,28 @@ description: "ASP.NET Core MVC 與 Visual Studio 使用者入門"
 keywords: ASP.NET Core, MVC
 ms.author: riande
 manager: wpickett
-ms.date: 08/07/2017
+ms.date: 10/07/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 6e233a0114967405a67b05365e0125620441efb4
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 4b86eb22e367d2305b7995421aec6f37008c5637
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會讓您了解使用 [Visual Studio 2017](https://www.visualstudio.com/) 建置 ASP.NET Core MVC Web 應用程式的基本知識。 [!INCLUDE[consider RP](../../includes/razor.md)]
+[!INCLUDE[consider RP](../../includes/razor.md)]
 
 本教學課程有 3 個版本：
 
 * macOS：[使用 Visual Studio for Mac 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-mac/start-mvc)
 * Windows：[使用 Visual Studio 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app/start-mvc)
 * macOS、Linux 和 Windows：[使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-xplat/start-mvc)
-
-如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET 核心文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
 
 ## <a name="install-visual-studio-and-net-core"></a>安裝 Visual Studio 和 .NET Core
 

@@ -5,7 +5,7 @@
 
 ![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details ** 和 **Delete** 連結是由 MVC Core 錨點標記協助程式所產生。
+在 *Views/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由 Core MVC 錨點標記協助程式所產生。
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 

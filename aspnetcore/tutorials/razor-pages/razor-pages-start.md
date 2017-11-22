@@ -10,17 +10,23 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 9d647657f21dd7e952808e5fe020f7a9e8767cd8
-ms.sourcegitcommit: 3ba32b2b6425ed94604cb0f681db0d5bb5f8ad58
+ms.openlocfilehash: 5c58b5156f62572687755c9c0878db10c3c14eb1
+ms.sourcegitcommit: c07fb5cb5df0a12f9fe6735fcbc90964608fa687
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
 
 本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+
+本教學課程有 3 個版本：
+
+* Windows：本教學課程
+* macOS：[利用 Visual Studio for Mac 開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
+* macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
 
 ## <a name="prerequisites"></a>必要條件
 

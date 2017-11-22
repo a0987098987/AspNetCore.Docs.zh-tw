@@ -10,4 +10,4 @@
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-上述程式碼會傳回 `View` 物件。 它使用檢視範本來產生對瀏覽器的 HTML 回應。 如上述 `Index` 方法等控制器方法 (也稱為動作方法)，通常會傳回 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) (或衍生自 `ActionResult` 的類別)，而不是如字串等基本類型。
+上述程式碼會傳回 `View` 物件。 它使用檢視範本來產生對瀏覽器的 HTML 回應。 如上述 `Index` 方法等控制器方法 (也稱為動作方法)，通常會傳回 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) (或衍生自 `ActionResult` 的類別)，而不是如字串等類型。

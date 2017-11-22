@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 5a3dc302186c7fd0a5730bc2c7599676fb543ba7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 3b54bf0b40c396c8c141966219f65231fb362ca4
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -25,6 +25,14 @@ ms.lasthandoff: 09/28/2017
 在本教學課程中，[Razor 頁面電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
 
 在下列步驟中，您可以將電影排程檔案上傳功能新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
+
+## <a name="add-a-fileupload-class"></a>新增 FileUpload 類別
+
+在本節中，您將建立 Razor 頁面來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
+
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
+
+針對這兩個版本的排程，此類別具有每種版本的排程標題和屬性。 所有三個屬性都是必要項目，且標題長度必須為 3-60 個字元。
 
 ## <a name="add-a-helper-method-to-upload-files"></a>新增可上傳檔案的 Helper 方法
 
@@ -42,11 +50,9 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="update-the-moviecontext"></a>更新 MovieContext
 
-在 `MovieContext` (*Models/MovieContext.cs*) 中，為排程指定 `DbSet`，並為 `OnModelCreating` 方法新增一行，以針對 `DbSet` 屬性設定單數的資料庫資料表名稱 (`Schedule`)：
+在 `MovieContext` 中指定 `DbSet` (*Models/MovieContext.cs*) 以進行排程：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13,18)]
-
-注意：如果您未覆寫 `OnModelCreating` 以使用單數的資料表名稱，Entity Framework 會假設您使用複數的資料庫資料表名稱 (例如 `Movies` 和 `Schedules`)。 針對是否要複數化資料表名稱，開發人員並沒有共識。 請以相同方式，設定 `MovieContext` 與資料庫。 在這兩處均使用單數或複數化的資料庫資料表名稱。
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13)]
 
 ## <a name="add-the-schedule-table-to-the-database"></a>將 Schedule 資料表新增至資料庫
 
@@ -60,14 +66,6 @@ ms.lasthandoff: 09/28/2017
 Add-Migration AddScheduleTable
 Update-Database
 ```
-
-## <a name="add-a-fileupload-class"></a>新增 FileUpload 類別
-
-接下來，新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
-
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
-
-針對這兩個版本的排程，此類別具有每種版本的排程標題和屬性。 所有三個屬性都是必要項目，且標題長度必須為 3-60 個字元。
 
 ## <a name="add-a-file-upload-razor-page"></a>新增檔案上傳 Razor 頁面
 
@@ -97,7 +95,7 @@ Update-Database
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet3)]
 
-當表單張貼至伺服器時，系統即會檢查 `ModelState`。 如果無效，就會重建 `Schedules`，且頁面會顯示一或多則驗證訊息，指出頁面驗證失敗的原因。 如果有效，即會在 *OnPostAsync* 中使用 `FileUpload` 屬性，以完成上傳這兩個排程版本的檔案，並建立新的 `Schedule` 物件來儲存資料。 接著，系統就會將排程儲存到資料庫中：
+當表單張貼至伺服器時，系統即會檢查 `ModelState`。 如果無效，就會重建 `Schedule`，且頁面會顯示一或多則驗證訊息，指出頁面驗證失敗的原因。 如果有效，即會在 *OnPostAsync* 中使用 `FileUpload` 屬性，以完成上傳這兩個排程版本的檔案，並建立新的 `Schedule` 物件來儲存資料。 接著，系統就會將排程儲存到資料庫中：
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
 

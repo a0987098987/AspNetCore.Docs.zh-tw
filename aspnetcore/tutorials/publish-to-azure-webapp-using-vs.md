@@ -5,27 +5,27 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 09/01/2017
+ms.date: 10/05/2017
 ms.topic: get-started-article
 ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 0c0ec1c7c1408b0460c594a47a3e5738cd170d5f
-ms.sourcegitcommit: d022d4b96795ee473fa3847a1d8a8c7430423a86
+ms.openlocfilehash: 6f697ed4d8876a19cd058533e4f6a5d4f7cdc2fb
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Cesar Blum Silveira](https://github.com/cesarbs) 及 [Rachel Appel](https://twitter.com/rachelappel) 共同編纂
 
-## <a name="set-up-the-development-environment"></a>設定開發環境
+如果您是使用 Mac，請參閱[從 Visual Studio for Mac 發佈至 Azure](https://blog.xamarin.com/publish-azure-visual-studio-mac/) \(英文\)。
 
-* 安裝最新的 [Azure SDK for Visual Studio](https://www.visualstudio.com/vs/azure-tools/)。 如果還沒有 Visual Studio，SDK 會安裝它。
+## <a name="set-up"></a>設定
 
-* 驗證您的 [Azure 帳戶](https://portal.azure.com/)。 您可以[建立免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)或[啟用 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+* 如果沒有帳戶，請開啟[免費的 Azure 帳戶](https://aka.ms/K5y5yh)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -186,8 +186,4 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 
 ### <a name="next-steps"></a>後續步驟
 
-* [ASP.NET Core MVC 與 Visual Studio 使用者入門](first-mvc-app/start-mvc.md)
-
-* [ASP.NET Core 簡介](../index.md)
-
-* [基礎概念](../fundamentals/index.md)
+* [使用 Visual Studio 與 Git 持續部署到 Azure](../publishing/azure-continuous-deployment.md)

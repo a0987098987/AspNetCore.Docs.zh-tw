@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: 75fc1edec9050a4690a39d37307f2f95f5d534a5
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: e9e9019d5b879498e8800bb579c177dd3ad64061
+ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -56,16 +56,16 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>安裝 .NET Core Windows Server 裝載套件組合
 
-1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
+1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://download.microsoft.com/download/5/C/1/5C190037-632B-443D-842D-39085F02E1E8/DotNetCore.2.0.3-WindowsHosting.exe)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
 
-2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，讓系統 PATH 進行變更。
+2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，挑選系統 PATH 的變更。
 
 > [!NOTE]
 > 如果使用 IIS 共用組態，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:hosting/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
 
-## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>安裝 Web Deploy 來提供 Visual Studio 發佈功能
+## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>使用 Visual Studio 發佈時安裝 Web Deploy
 
-如果您想要在 [Visual Studio](https://www.visualstudio.com/vs/) 中使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 能為裝載服務的供應者提供獨立的安裝程式和組態。
+如果您想要在 [Visual Studio](https://www.visualstudio.com/vs/) 中使用 [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) 部署應用程式，請在主控系統上安裝最新版的 Web Deploy。 若要安裝 Web Deploy，您可以使用 [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) 或從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=43717)直接取得安裝程式。 慣用的方法是使用 WebPI。 WebPI 提供獨立的安裝程式和組態以裝載提供者。
 
 ## <a name="application-configuration"></a>應用程式組態
 
@@ -117,7 +117,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig"></a>web.config
 
-*web.config* 檔案會設定 ASP.NET Core 模組，並提供其他 IIS 組態。 *web.config* 的建立、轉換及發佈作業是由 `Microsoft.NET.Sdk.Web` 來處理，當您在專案 (*.csproj*) 檔案 `<Project Sdk="Microsoft.NET.Sdk.Web">` 的上方設定專案 SDK 時，即會包含此項目。 為防止 MSBuild 目標轉換您的 *web.config* 檔案，請將 **\<IsTransformWebConfigDisabled>** 屬性新增至設定為 `true` 的專案檔：
+*web.config* 檔案主要是用來設定 ASP.NET Core 模組。 它能選擇性地提供其他 IIS 組態設定。 建立、轉換及發行 *web.config* 是由 .NET Core Web SDK (`Microsoft.NET.Sdk.Web`) 處理。 SDK 是設定在專案檔 (*.csproj*) 的頂端，`<Project Sdk="Microsoft.NET.Sdk.Web">`。 為防止 SDK 轉換 *web.config* 檔案，請將 **\<IsTransformWebConfigDisabled>** 屬性新增至專案檔，並將其設定為 `true`：
 
 ```xml
 <PropertyGroup>
@@ -221,7 +221,7 @@ ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的
 
 若為獨立的 IIS 安裝，您可以針對搭配使用 ASP.NET Core 應用程式的每個應用程式集區，使用[資料保護 Provision-AutoGenKeys.ps1 PowerShell 指令碼](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1)。 此指令碼會在 HKLM 登錄中建立特殊的登錄機碼，其只會將背景工作處理序帳戶列入 ACL。 在待用期間使用 DPAPI 加密金鑰。
 
-在 Web 伺服陣列案例中，應用程式可以設定成使用 UNC 路徑來儲存其資料保護 Keyring。 根據預設，資料保護金鑰不予加密。 您應該確保這類共用的檔案權限僅限於執行應用程式的 Windows 帳戶身分。 此外，您可以選擇使用 X509 憑證保護待用的金鑰。 您可能考慮下列讓使用者上傳憑證的機制：將憑證放入使用者的受信任憑證存放區，並確保在執行使用者應用程式的所有電腦上都能使用這些憑證。 詳細資訊請參閱[設定資料保護](xref:security/data-protection/configuration/overview#data-protection-configuring)。
+在 Web 伺服陣列案例中，應用程式可以設定成使用 UNC 路徑來儲存其資料保護 Keyring。 根據預設，資料保護金鑰不予加密。 您應該確保這類共用的檔案權限僅限於執行應用程式的 Windows 帳戶身分。 此外，您可以選擇使用 X509 憑證保護待用的金鑰。 您可能考慮下列讓使用者上傳憑證的機制：將憑證放入使用者的受信任憑證存放區，並確保在執行使用者應用程式的所有電腦上都能使用這些憑證。 詳細資訊請參閱[設定資料保護](xref:security/data-protection/configuration/overview)。
 
 ### <a name="2-configure-the-iis-application-pool-to-load-the-user-profile"></a>2.設定 IIS 應用程式集區載入使用者設定檔
 
@@ -229,7 +229,7 @@ ASP.NET 應用程式使用的資料保護金鑰會儲存在應用程式外部的
 
 ### <a name="3-machine-wide-policy-for-data-protection"></a>3.資料保護的全電腦原則
 
-針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy#data-protection-configuration-machinewidepolicy)設定。 如需詳細資訊，請參閱[資料保護](xref:security/data-protection/index)文件。
+針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱[資料保護](xref:security/data-protection/index)文件。
 
 ## <a name="configuration-of-sub-applications"></a>子應用程式的組態
 
@@ -326,7 +326,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 當 Kestrel 在 IIS 後端正常啟動，但應用程式在本機上成功執行之後卻不能在系統上執行時，您可以暫時將環境變數新增至 *web.config*，將 `ASPNETCORE_ENVIRONMENT` 設成 `Development`。 只要您不覆寫應用程式啟動的環境，上述設定即可讓應用程式在系統上執行時出現[開發人員例外狀況頁面](xref:fundamentals/error-handling)。 不過，只有不公開到網際網路的臨時/測試系統，才建議以這種方式設定 `ASPNETCORE_ENVIRONMENT` 的環境變數。 完成後，請務必從 *web.config* 檔案移除環境變數。 如需透過反向 Proxy 的 *web.config* 設定環境變數的相關資訊，請參閱 [aspNetCore 的 environmentVariables 子元素](xref:hosting/aspnet-core-module#setting-environment-variables)。
 
-在大部分情況下，啟用應用程式記錄有助於針對應用程式或反向 Proxy 的問題進行疑難排解。 如需詳細資訊，請參閱[記錄](xref:fundamentals/logging)。
+在大部分情況下，啟用應用程式記錄有助於針對應用程式或反向 Proxy 的問題進行疑難排解。 如需詳細資訊，請參閱[記錄](xref:fundamentals/logging/index)。
 
 升級開發電腦的 .NET Core SDK 或應用程式內的套件版本後，最後有關應用程式的疑難排解提示無法執行。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 這些問題大部分是可以修正的，方法是刪除專案中的 `bin` 和 `obj` 資料夾、清除 `%UserProfile%\.nuget\packages\` 和 `%LocalAppData%\Nuget\v3-cache` 的套件快取、還原專案，然後確認已完全刪除之前在系統上的部署，再重新部署應用程式。
 

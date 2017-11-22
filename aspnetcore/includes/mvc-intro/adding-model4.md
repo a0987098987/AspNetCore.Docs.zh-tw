@@ -1,4 +1,4 @@
-上述強調顯示的程式碼會顯示要新增至[相依性插入](xref:fundamentals/dependency-injection)容器的電影資料庫內容。 不會顯示 `services.AddDbContext<MvcMovieContext>(options =>` 的後續行 (請參閱您的程式碼)。 它指定要使用的資料庫和連線字串。 `=>` 是 [Lambda 運算子](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator)。
+上述反白顯示的程式碼會顯示要新增至[相依性插入](xref:fundamentals/dependency-injection)容器 (在 *Startup.cs* 檔案中) 的電影資料庫內容。 `services.AddDbContext<MvcMovieContext>(options =>` 指定要使用的資料庫和連線字串。 `=>` 是 [Lambda 運算子](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator)。
 
 開啟 *Controllers/MoviesController.cs* 檔案，並檢查建構函式：
 
@@ -8,7 +8,7 @@
 
 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`MvcMovieContext `) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 
-<a name=strongly-typed-models-keyword-label></a>
+<a name="strongly-typed-models-keyword-label"></a>
 
 ## <a name="strongly-typed-models-and-the-model-keyword"></a>強型別模型和 @model 關鍵字
 

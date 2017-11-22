@@ -9,12 +9,12 @@ ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
-uid: tutorials/razor-pages/modelz
-ms.openlocfilehash: bd2c3e09366e228fade69f843849e7452196c475
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+uid: tutorials/razor-pages/model
+ms.openlocfilehash: 38f27a1d5ca80cec4b7bc43c3d5473fc829f1b05
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="adding-a-model-to-a-razor-pages-app"></a>將模型新增至 Razor 頁面應用程式
 
@@ -73,7 +73,21 @@ Update-Database
 
 [!INCLUDE[model 4windows](../../includes/RP/model4Win.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)]
+[!INCLUDE[model 4](../../includes/RP/model4tbl.md)]
+
+<a name="test"></a>
+### <a name="test-the-app"></a>測試應用程式
+
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
+* 測試 **Create** 連結。
+
+ ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)
+
+<a name="scaffold"></a>
+
+* 測試 **Edit**、**Details** 和 **Delete** 連結。
+
+如果您收到 SQL 例外狀況，請確認您已執行移轉並更新資料庫：
 
 下一個教學課程說明 Scaffolding 所建立的檔案。
 

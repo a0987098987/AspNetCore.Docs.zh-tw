@@ -31,7 +31,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](../../tutorials/first-mvc-app/validation/_static/val.png)
 
 > [!NOTE]
-> 您可能無法在 `Price` 欄位中輸入小數點或逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 如需詳細資訊，請參閱[其他資源](#additional-resources)。 現在，只要輸入如 10 之類的整數。
+> 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 這個 [GitHub 問題 4076](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) 有加入小數逗號的指示。 
 
 請注意表單如何在包含無效值的每個欄位中自動呈現適當的驗證錯誤訊息。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (若使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 

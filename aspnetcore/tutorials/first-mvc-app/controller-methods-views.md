@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: 8960853438d3227de3ef7c50936626149d8d5997
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="controller-methods-and-views"></a>控制器方法和檢視
 
@@ -34,11 +34,11 @@ ms.lasthandoff: 08/11/2017
   ![操作功能表隨即顯示 **> [Quick Actions and Refactorings] (快速控制項目及重構)**。](controller-methods-views/_static/qa.png)
 
 
-點選`using System.ComponentModel.DataAnnotations;`
+點選 `using System.ComponentModel.DataAnnotations;`
 
-  ![使用 System.ComponentModel.DataAnnotations 清單頂端](controller-methods-views/_static/da.png)
+  ![使用清單頂端的 System.ComponentModel.DataAnnotations](controller-methods-views/_static/da.png)
 
-  Visual studio 即會新增 `using System.ComponentModel.DataAnnotations;`。
+  Visual Studio 即會新增 `using System.ComponentModel.DataAnnotations;`。
 
 讓我們移除不需要的 `using` 陳述式。 預設會以淺灰色字型顯示這些陳述式。 以滑鼠右鍵按一下 *Movie.cs* 檔案的任一處 > [移除和排序 Using]。
 

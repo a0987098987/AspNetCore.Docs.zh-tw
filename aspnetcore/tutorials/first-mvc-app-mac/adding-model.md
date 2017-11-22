@@ -1,7 +1,7 @@
 ---
 title: "新增模型到 ASP.NET Core MVC 應用程式"
 author: rick-anderson
-description: "新增模型到簡單的 ASP.NET Core 應用程式。"
+description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
 keywords: ASP.NET Core,MVC,scaffold,scaffolding
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: .net-core
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: 15fef14ab754b48935d17e754daa011acdd90b42
-ms.sourcegitcommit: a73fb5161fbdbee1d2e8474205e9840a134ee2ad
+ms.openlocfilehash: ff0b262bdf2685bd1bc410c30c12aa2d16f6dcda
+ms.sourcegitcommit: 7d092cd99057bad9246c472a8a0a8cbc7ab9fa9b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/13/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -71,7 +71,7 @@ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMo
 
  * 您位在專案目錄中。 專案目錄中含有 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案。
  * Dotnet 版本是 1.1 版 (含) 以上版本。 執行 `dotnet` 以取得版本。
- * 您已將 `<DotNetCliToolReference>` 項目新增至 [MvcMovie.csproj 檔案](#prepare-the-project-for-scaffolding)。
+ * 您已將 `<DotNetCliToolReference>` 元素新增至 [MvcMovie.csproj 檔案](#prepare-the-project-for-scaffolding)。
  
 <!--
 > [!NOTE]

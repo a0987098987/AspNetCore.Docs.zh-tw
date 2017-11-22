@@ -10,17 +10,19 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: 028d6d3246908a9cd44a6834449d2fdbc9cae0b8
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 387d7a91ae7d58cbc293c04039017df1dd208c82
+ms.sourcegitcommit: f017f940a164dbaf84307410c78eb14e0f3ac811
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>ASP.NET Core MVC 與 Visual Studio for Mac 使用者入門
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會讓您了解使用 [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/) 建置 ASP.NET Core MVC Web 應用程式的基本知識。 [!INCLUDE[consider RP](../../includes/razor.md)]
+本教學課程會讓您了解使用 [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/) 建置 ASP.NET Core MVC Web 應用程式的基本知識。 
+
+[!INCLUDE[consider RP](../../includes/razor.md)]
 
 本教學課程有 3 個版本：
 
@@ -53,7 +55,7 @@ ms.lasthandoff: 09/12/2017
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)、啟動瀏覽器並巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的通訊埠編號。
+在 Visual Studio 中，選取 [執行] > [啟動但不偵錯] 來啟動應用程式。 Visual Studio 會啟動 [Kestrel](xref:fundamentals/servers/index#Kestrel)，再啟動瀏覽器並瀏覽至 `http://localhost:port`，其中 *port* 是隨機選擇的通訊埠編號。
 
 ![含有新專案的瀏覽器](start-mvc/b1.png)
 

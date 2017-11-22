@@ -2,7 +2,7 @@
 
 上述程式碼：
 
-* 定義空白控制器類別。 在接下來的幾節中，我們將新增實作 API 的方法。
+* 定義空白控制器類別。 在接下來的幾節中，我們將新增方法藉以實作 API。
 * 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將資料庫內容 (`TodoContext `) 插入到控制器中。 控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。
 * 建構函式會將項目新增至記憶體內部資料庫 (如果項目不存在的話)。
 
@@ -20,22 +20,22 @@
 以下是 `GetAll` 方法的範例 HTTP 回應：
 
 ```
-HTTP/1.1 200 OK
-   Content-Type: application/json; charset=utf-8
-   Server: Microsoft-IIS/10.0
-   Date: Thu, 18 Jun 2015 20:51:10 GMT
-   Content-Length: 82
-
-   [{"Key":"1", "Name":"Item1","IsComplete":false}]
+[
+  {
+    "id": 1,
+    "name": "Item1",
+    "isComplete": false
+  }
+]
    ```
 
-稍後在本教學課程中，我們將示範如何使用 [Postman](https://www.getpostman.com/) 或 [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) 檢視 HTTP 回應。
+稍後在本教學課程中，我們將示範如何使用 [Postman](https://www.getpostman.com/) \(英文\) 或 [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) \(英文\) 來檢視 HTTP 回應。
 
 ### <a name="routing-and-url-paths"></a>傳送和 URL 路徑
 
 `[HttpGet]` 屬性會指定 HTTP GET 方法。 每個方法的 URL 路徑的建構方式如下：
 
-* 在控制器的 Route 屬性中採用範本字串：
+* 在控制器的 `Route` 屬性中採用範本字串：
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
@@ -44,14 +44,14 @@ HTTP/1.1 200 OK
 
 在 `GetById` 方法中：
 
-```csharp
-[HttpGet("{id}", Name = "GetTodo")]
-public IActionResult GetById(long id)
-```
+[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
 `"{id}"` 是 `todo` 項目識別碼的預留位置變數。 在叫用 `GetById` 時，它會將 URL 中的 "{id}" 值指派給方法的 `id` 參數。
 
-`Name = "GetTodo"` 會建立具名路由，並可讓您在 HTTP 回應中連結到此路由。 稍後，我將利用範例進行說明。 如需詳細資訊，請參閱[傳送至控制器動作](xref:mvc/controllers/routing)。
+`Name = "GetTodo"` 會建立具名路由。 具名路由：
+
+* 讓應用程式以該路由名稱建立 HTTP 連結。
+* 本教學課程稍後會說明。
 
 ### <a name="return-values"></a>傳回值
 
@@ -59,6 +59,6 @@ public IActionResult GetById(long id)
 
 反之，`GetById` 方法會傳回更普通的 `IActionResult` 類型，其代表各種不同的傳回型別。 `GetById` 有兩種不同的傳回型別：
 
-* 如果沒有項目符合所要求的識別碼，方法會傳回 404 錯誤。  藉由傳回 `NotFound` 即可達到此目的。
+* 如果沒有項目符合所要求的識別碼，方法會傳回 404 錯誤。 傳回 `NotFound` 會傳回 HTTP 404 回應。
 
-* 否則，方法會傳回 200 與 JSON 回應本文。 藉由傳回 `ObjectResult` 即可達到此目的
+* 否則，方法會傳回 200 與 JSON 回應本文。 傳回 `ObjectResult` 會傳回 HTTP 200 回應。

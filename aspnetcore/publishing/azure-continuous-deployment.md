@@ -11,11 +11,11 @@ ms.assetid: 2707c7a8-2350-4304-9856-fda58e5c0a16
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/azure-continuous-deployment
-ms.openlocfilehash: a9efad38b1c75bd3a186b4ec85861357ecf744b9
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: f7ea2e76fdee19a3d964e42053f0060a0a505e5b
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>使用 Visual Studio 與 Git 持續部署到適用於 ASP.NET Core 的 Azure
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 09/12/2017
 
 * [Visual Studio](https://www.visualstudio.com)
 
-* [ASP.NET Core](https://download.microsoft.com/download/F/6/E/F6ECBBCC-B02F-424E-8E03-D47E9FA631B7/DotNetCore.1.0.1-VS2015Tools.Preview2.0.3.exe) (執行階段和工具)
+* [ASP.NET Core](https://www.microsoft.com/net/download/core) (執行階段和工具)
 
 * [Git](https://git-scm.com/downloads) (適用於 Windows)
 
@@ -44,14 +44,16 @@ ms.lasthandoff: 09/12/2017
 
 2. 從 [檔案] 功能表選取 [新增] > [專案]。
 
-3. 選取 [ASP.NET Web 應用程式] 專案範本。 它會出現在 [已安裝] > [範本] > [Visual C#] > [Web] 下方。 將專案命名為 `SampleWebAppDemo`。 選取 [建立新的 Git 存放庫] 選項，然後按一下 [確定]。
+3. 選取 [ASP.NET Core Web 應用程式] 專案範本。 它會出現在 [已安裝] > [範本] > [Visual C#] > [.NET Core] 下。 將專案命名為 `SampleWebAppDemo`。 選取 [建立新的 Git 存放庫] 選項，然後按一下 [確定]。
 
    ![[新增專案] 對話](azure-continuous-deployment/_static/01-new-project.png)
 
-4. 在 [新增 ASP.NET 專案] 對話方塊中，選取 ASP.NET Core 的 [空白] 範本，然後按一下 [確定]。
+4. 在 [新增 ASP.NET Core 專案] 對話方塊中，選取 ASP.NET Core 的 [空白] 範本，然後按一下 [確定]。
 
    ![[新增 ASP.NET 專案] 對話方塊](azure-continuous-deployment/_static/02-web-site-template.png)
 
+>[!NOTE]
+    >.NET Core 的最新版本為 2.0
 
 ### <a name="running-the-web-app-locally"></a>在本機執行 Web 應用程式
 
@@ -94,21 +96,17 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) (如果您尚未登入)。
 
-2. 在瀏覽窗格的底部，按一下 [瀏覽]。
+2. 按一下 [應用程式服務]，即可檢視與 Azure 訂用帳戶相關聯的應用程式服務清單。
 
-3. 按一下 [Web 應用程式]，即可檢視與 Azure 訂用帳戶建立關聯的 Web 應用程式清單。
+3. 選取您在本教學課程上一節所建立的 Web 應用程式。
 
-4. 選取您在本教學課程上一節所建立的 Web 應用程式。
+4. 在 [開發] 刀鋒視窗中，選取 [部署選項] > [選擇來源] > [本機 Git 存放庫]。
 
-5. 如果未顯示 [設定] 刀鋒視窗，請選取 [Web 應用程式] 刀鋒視窗中的 [設定]。
+   ![[設定] 刀鋒視窗：[部署來源] 刀鋒視窗：[選擇來源] 刀鋒視窗](azure-continuous-deployment/_static/deployment-options.png)
 
-6. 在 [設定] 刀鋒視窗中，選取 [部署來源] > [選擇來源] > [本機 Git 存放庫]。
+5. 按一下 [確定]。
 
-   ![[設定] 刀鋒視窗：[部署來源] 刀鋒視窗：[選擇來源] 刀鋒視窗](azure-continuous-deployment/_static/08-azure-localrepository.png)
-
-7. 按一下 [確定]。
-
-8. 如果您先前尚未設定用來發行 Web 應用程式或其他 App Service 應用程式的部署認證，請立即設定：
+6. 如果您先前尚未設定用來發行 Web 應用程式或其他 App Service 應用程式的部署認證，請立即設定：
 
    * 按一下 [設定] > [部署認證]。 [設定部署認證] 刀鋒視窗隨即顯示。
 
@@ -116,9 +114,9 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
 
    * 按一下 [儲存] 。
 
-9. 在 [Web 應用程式] 刀鋒視窗中，按一下 [設定] > [屬性]。 [GIT URL] 下方顯示的遠端 Git 存放庫 URL，即為您的部署目的地。
+7. 在 [Web 應用程式] 刀鋒視窗中，按一下 [設定] > [屬性]。 [GIT URL] 下方顯示的遠端 Git 存放庫 URL，即為您的部署目的地。
 
-10. 複製 **GIT URL** 值，以便於教學課程稍後使用。
+8. 複製 **GIT URL** 值，以便於教學課程稍後使用。
 
    ![Azure 入口網站：應用程式的 [屬性] 刀鋒視窗](azure-continuous-deployment/_static/09-azure-giturl.png)
 
@@ -138,7 +136,7 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
 
     ![Team Explorer 的 [連線] 索引標籤](azure-continuous-deployment/_static/10-team-explorer.png)
 
-2.  在 **Team Explorer** 中，選取 [首頁] \(首頁圖示) > [設定] > [存放庫設定]。
+2.  在 **Team Explorer** 中，選取 [首頁] (首頁圖示) > [設定] > [存放庫設定]。
 
 3.  在 [存放庫設定] 的 [遠端] 區段中，選取 [新增]。 隨即顯示 [新增遠端] 對話方塊。
 
@@ -151,7 +149,7 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
     >[!NOTE]
     >或者，您可以開啟**命令視窗**、變更為您的專案目錄，並輸入命令，以透過**命令視窗**指定遠端存放庫。 例如：`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
-6.  選取 [首頁] \(首頁圖示) > [設定] > [全域設定]。 確認您已設定好名稱和電子郵件地址。 您可能也需要選取 [更新]。
+6.  選取 [首頁] (首頁圖示) > [設定] > [全域設定]。 確認您已設定好名稱和電子郵件地址。 您可能也需要選取 [更新]。
 
 7.  選取 [首頁] > [變更]，即可返回 [變更] 檢視。
 
@@ -194,7 +192,7 @@ Git 是一種分散式版本控制系統，可用來部署您的 Azure App Servi
 
 您可以驗證是否已將 Web 應用程式從本機環境成功傳送至 Azure。 您可以查看提列的成功部署。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取您的 Web 應用程式。 然後，選取 [設定] > [持續部署]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取您的 Web 應用程式。 然後，選取 [部署] > [部署選項]。
 
    ![Azure 入口網站：[設定] 刀鋒視窗：顯示成功部署的 [部署] 刀鋒視窗](azure-continuous-deployment/_static/13-verify-deployment.png)
 

@@ -11,11 +11,11 @@ ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/iis
-ms.openlocfilehash: e9e9019d5b879498e8800bb579c177dd3ad64061
-ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
+ms.openlocfilehash: 7eb1537df47fcf0b24db2a7d843b655a6f6f8f21
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="install-the-net-core-windows-server-hosting-bundle"></a>安裝 .NET Core Windows Server 裝載套件組合
 
-1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://download.microsoft.com/download/5/C/1/5C190037-632B-443D-842D-39085F02E1E8/DotNetCore.2.0.3-WindowsHosting.exe)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
+1. 在主控系統上安裝 [.NET Core Windows Server 裝載套件組合](https://aka.ms/dotnetcore-2-windowshosting)。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
 
 2. 重新啟動系統或從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，挑選系統 PATH 的變更。
 
@@ -272,7 +272,7 @@ IIS 組態仍然會受到這些 IIS 功能 *web.config* 的 `<system.webServer>`
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
-有別於使用 *web.config* 中的 `<system.web>`、`<appSettings>`、`<connectionStrings>` 和 `<location>` 元素所設定的 .NET Framework 應用程式，ASP.NET Core 應用程式設定使用其他組態提供者。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
+有別於使用 *web.config* 中的 `<system.web>`、`<appSettings>`、`<connectionStrings>` 和 `<location>` 元素所設定的 .NET Framework 應用程式，ASP.NET Core 應用程式設定使用其他組態提供者。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
 ## <a name="application-pools"></a>應用程式集區
 

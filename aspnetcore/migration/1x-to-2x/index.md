@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 9574f1f8e0970e1b64c2910bf46794621583f18d
-ms.sourcegitcommit: 3cf879f6beaaca2d401ad980cd26cfec70c05c24
+ms.openlocfilehash: 12734504953f2942458c3bfe1fe146f48d8f24ff
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0
 
@@ -123,7 +123,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 [此處](https://github.com/aspnet/MetaPackages/blob/rel/2.0.0/src/Microsoft.AspNetCore/WebHost.cs#L152) \(英文\) 有前述程式碼片段中 `CreateDefaultBuilder` 方法所使用的組態。
 
-如需詳細資訊，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration)。
+如需詳細資訊，請參閱 [ASP.NET Core 中的組態](xref:fundamentals/configuration/index)。
 
 <a name="db-init-code"></a>
 

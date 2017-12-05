@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/index
 ms.openlocfilehash: 65a1761e0e8c2f0a397f20a790da6dc9c24b6886
-ms.sourcegitcommit: aa6951e0c2e62209bf7c25e3b3138f04eb92898d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="performance"></a>效能
 

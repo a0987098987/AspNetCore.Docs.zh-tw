@@ -1,7 +1,7 @@
 ---
 title: "ASP.NET Core 簡介"
 author: rick-anderson
-description: 
+description: "提供 ASP.NET Core 簡介。"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 748c8c0b9dd0e6eab0d7347bbf89ed80c10bdb54
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: a075c63fddb9e28a1da37d4ef6647808a0dcb583
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -29,13 +29,13 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 
 ## <a name="why-use-aspnet-core"></a>為何使用 ASP.NET Core？
 
-數百萬的開發人員已使用 ASP.NET (並繼續使用它) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 的重新設計，其架構變更可產生精簡且模組化的架構。
+數百萬的開發人員已使用 (並持續使用) ASP.NET 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 的重新設計，其架構變更可產生精簡且模組化的架構。
 
 ASP.NET Core 提供下列優點：
 
 * 用於建置 Web UI 和 Web API 的統一劇本。
 * 整合[現代化的用戶端架構](xref:client-side/index)和開發工作流程。
-* 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration)。
+* 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
 * 內建的[相依性插入](xref:fundamentals/dependency-injection)。
 * 輕量型、高效能且模組化的 HTTP 要求管線。
 * 能夠在 IIS 上裝載，或自我裝載於您自己的處理序。

@@ -27,7 +27,11 @@
 >[!WARNING]
 > 我們尚未實作 `Movies` 控制器，因此如果您按一下該連結，就會收到 404 (找不到) 錯誤。
 
-儲存變更並點選 **About** 連結。 請注意現在瀏覽器索引標籤上的標題會顯示 **About - Movie App**，而不是 **About - Mvc Movie**。 點選 **Contact** 連結，並請注意它也會顯示 **Movie App**。 我們能夠在版面配置範本中一次進行變更，並讓網站上的所有頁面反映新的連結文字和新的標題。
+儲存變更並點選 **About** 連結。 請注意現在瀏覽器索引標籤上的標題會顯示 **About - Movie App**，而不是 **About - Mvc Movie**。 
+
+![關於標籤](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
+
+點選 **Contact** 連結，並請注意它也會顯示 **Movie App**。 我們能夠在版面配置範本中一次進行變更，並讓網站上的所有頁面反映新的連結文字和新的標題。
 
 檢查 *Views/_ViewStart.cshtml* 檔案：
 

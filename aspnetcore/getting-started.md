@@ -43,11 +43,11 @@ ms.lasthandoff: 11/10/2017
 
 5. 瀏覽至 [http://localhost:5000](http://localhost:5000)
 
-6. 開啟 *Pages/About.cshtml* 並修改頁面以顯示訊息 "Hello, world! 伺服器的時間為 @DateTime.Now "：
+6. 開啟 *Pages/About.cshtml* 並修改頁面顯示訊息為 "Hello, world! The time on the server is @DateTime.Now "：
 
     [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
-7. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並驗證變更。
+7. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 檢視變更內容。
 
 ### <a name="next-steps"></a>後續步驟
 

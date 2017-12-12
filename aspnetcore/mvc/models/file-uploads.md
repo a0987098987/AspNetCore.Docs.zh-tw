@@ -12,22 +12,22 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
 ms.openlocfilehash: e8608a46d6688df8da6c665a25b6f4db5f480461
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="file-uploads-in-aspnet-core"></a><span data-ttu-id="d33fc-104">在 ASP.NET Core 檔案上傳</span><span class="sxs-lookup"><span data-stu-id="d33fc-104">File uploads in ASP.NET Core</span></span>
+# <a name="file-uploads-in-aspnet-core"></a><span data-ttu-id="578af-104">在 ASP.NET Core 檔案上傳</span><span class="sxs-lookup"><span data-stu-id="578af-104">File uploads in ASP.NET Core</span></span>
 
-<span data-ttu-id="d33fc-105">由[Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="d33fc-105">By [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="578af-105">由[Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="578af-105">By [Steve Smith](https://ardalis.com/)</span></span>
 
-<span data-ttu-id="d33fc-106">ASP.NET MVC 動作支援的一或多個檔案使用簡單的模型繫結為較小的檔案或資料流處理的較大的檔案上傳。</span><span class="sxs-lookup"><span data-stu-id="d33fc-106">ASP.NET MVC actions support uploading of one or more files using simple model binding for smaller files or streaming for larger files.</span></span>
+<span data-ttu-id="578af-106">ASP.NET MVC 動作支援的一或多個檔案使用簡單的模型繫結為較小的檔案或資料流處理的較大的檔案上傳。</span><span class="sxs-lookup"><span data-stu-id="578af-106">ASP.NET MVC actions support uploading of one or more files using simple model binding for smaller files or streaming for larger files.</span></span>
 
-[<span data-ttu-id="d33fc-107">檢視或從 GitHub 下載範例</span><span class="sxs-lookup"><span data-stu-id="d33fc-107">View or download sample from GitHub</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
+[<span data-ttu-id="578af-107">檢視或從 GitHub 下載範例</span><span class="sxs-lookup"><span data-stu-id="578af-107">View or download sample from GitHub</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
 
-## <a name="uploading-small-files-with-model-binding"></a><span data-ttu-id="d33fc-108">將小型檔案上傳使用模型繫結</span><span class="sxs-lookup"><span data-stu-id="d33fc-108">Uploading small files with model binding</span></span>
+## <a name="uploading-small-files-with-model-binding"></a><span data-ttu-id="578af-108">將小型檔案上傳使用模型繫結</span><span class="sxs-lookup"><span data-stu-id="578af-108">Uploading small files with model binding</span></span>
 
-<span data-ttu-id="d33fc-109">若要上傳的小檔案，您可以使用多部分的 HTML 表單，或建構使用 JavaScript 的 POST 要求。</span><span class="sxs-lookup"><span data-stu-id="d33fc-109">To upload small files, you can use a multi-part HTML form or construct a POST request using JavaScript.</span></span> <span data-ttu-id="d33fc-110">範例表單中使用 Razor，支援多個已上傳的檔案，如下所示：</span><span class="sxs-lookup"><span data-stu-id="d33fc-110">An example form using Razor, which supports multiple uploaded files, is shown below:</span></span>
+<span data-ttu-id="578af-109">若要上傳的小檔案，您可以使用多部分的 HTML 表單，或建構使用 JavaScript 的 POST 要求。</span><span class="sxs-lookup"><span data-stu-id="578af-109">To upload small files, you can use a multi-part HTML form or construct a POST request using JavaScript.</span></span> <span data-ttu-id="578af-110">範例表單中使用 Razor，支援多個已上傳的檔案，如下所示：</span><span class="sxs-lookup"><span data-stu-id="578af-110">An example form using Razor, which supports multiple uploaded files, is shown below:</span></span>
 
 ```html
 <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
@@ -45,11 +45,11 @@ ms.lasthandoff: 09/22/2017
 </form>
 ```
 
-<span data-ttu-id="d33fc-111">若要支援的檔案上傳，必須指定 HTML 表單`enctype`的`multipart/form-data`。</span><span class="sxs-lookup"><span data-stu-id="d33fc-111">In order to support file uploads, HTML forms must specify an `enctype` of `multipart/form-data`.</span></span> <span data-ttu-id="d33fc-112">`files`如上所示的輸入項目支援上傳多個檔案。</span><span class="sxs-lookup"><span data-stu-id="d33fc-112">The `files` input element shown above supports uploading multiple files.</span></span> <span data-ttu-id="d33fc-113">省略`multiple`允許只將單一檔案上傳這個輸入項目上的屬性。</span><span class="sxs-lookup"><span data-stu-id="d33fc-113">Omit the `multiple` attribute on this input element to allow just a single file to be uploaded.</span></span> <span data-ttu-id="d33fc-114">上述的標記會轉譯為在瀏覽器中：</span><span class="sxs-lookup"><span data-stu-id="d33fc-114">The above markup renders in a browser as:</span></span>
+<span data-ttu-id="578af-111">若要支援的檔案上傳，必須指定 HTML 表單`enctype`的`multipart/form-data`。</span><span class="sxs-lookup"><span data-stu-id="578af-111">In order to support file uploads, HTML forms must specify an `enctype` of `multipart/form-data`.</span></span> <span data-ttu-id="578af-112">`files`如上所示的輸入項目支援上傳多個檔案。</span><span class="sxs-lookup"><span data-stu-id="578af-112">The `files` input element shown above supports uploading multiple files.</span></span> <span data-ttu-id="578af-113">省略`multiple`允許只將單一檔案上傳這個輸入項目上的屬性。</span><span class="sxs-lookup"><span data-stu-id="578af-113">Omit the `multiple` attribute on this input element to allow just a single file to be uploaded.</span></span> <span data-ttu-id="578af-114">上述的標記會轉譯為在瀏覽器中：</span><span class="sxs-lookup"><span data-stu-id="578af-114">The above markup renders in a browser as:</span></span>
 
 ![檔案上傳的表單](file-uploads/_static/upload-form.png)
 
-<span data-ttu-id="d33fc-116">個別檔案上傳至伺服器可以透過存取[模型繫結](xref:mvc/models/model-binding)使用[IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile)介面。</span><span class="sxs-lookup"><span data-stu-id="d33fc-116">The individual files uploaded to the server can be accessed through [Model Binding](xref:mvc/models/model-binding) using the [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile) interface.</span></span> <span data-ttu-id="d33fc-117">`IFormFile`具有下列結構：</span><span class="sxs-lookup"><span data-stu-id="d33fc-117">`IFormFile` has the following structure:</span></span>
+<span data-ttu-id="578af-116">個別檔案上傳至伺服器可以透過存取[模型繫結](xref:mvc/models/model-binding)使用[IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile)介面。</span><span class="sxs-lookup"><span data-stu-id="578af-116">The individual files uploaded to the server can be accessed through [Model Binding](xref:mvc/models/model-binding) using the [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile) interface.</span></span> <span data-ttu-id="578af-117">`IFormFile`具有下列結構：</span><span class="sxs-lookup"><span data-stu-id="578af-117">`IFormFile` has the following structure:</span></span>
 
 ```csharp
 public interface IFormFile
@@ -67,17 +67,17 @@ public interface IFormFile
 ```
 
 > [!WARNING]
-> <span data-ttu-id="d33fc-118">不依賴或不信任`FileName`不需要驗證的屬性。</span><span class="sxs-lookup"><span data-stu-id="d33fc-118">Don't rely on or trust the `FileName` property without validation.</span></span> <span data-ttu-id="d33fc-119">`FileName`屬性應該只用於顯示用途。</span><span class="sxs-lookup"><span data-stu-id="d33fc-119">The `FileName` property should only be used for display purposes.</span></span>
+> <span data-ttu-id="578af-118">不依賴或不信任`FileName`不需要驗證的屬性。</span><span class="sxs-lookup"><span data-stu-id="578af-118">Don't rely on or trust the `FileName` property without validation.</span></span> <span data-ttu-id="578af-119">`FileName`屬性應該只用於顯示用途。</span><span class="sxs-lookup"><span data-stu-id="578af-119">The `FileName` property should only be used for display purposes.</span></span>
 
-<span data-ttu-id="d33fc-120">上傳使用模型繫結檔案時，`IFormFile`介面，動作方法可接受單一`IFormFile`或`IEnumerable<IFormFile>`(或`List<IFormFile>`) 代表數個檔案。</span><span class="sxs-lookup"><span data-stu-id="d33fc-120">When uploading files using model binding and the `IFormFile` interface, the action method can accept either a single `IFormFile` or an `IEnumerable<IFormFile>` (or `List<IFormFile>`) representing several files.</span></span> <span data-ttu-id="d33fc-121">下列範例會循環一或多個上傳的檔案、 將它們儲存到本機檔案系統中，並傳回總數與上傳的檔案大小。</span><span class="sxs-lookup"><span data-stu-id="d33fc-121">The following example loops through one or more uploaded files, saves them to the local file system, and returns the total number and size of files uploaded.</span></span>
+<span data-ttu-id="578af-120">上傳使用模型繫結檔案時，`IFormFile`介面，動作方法可接受單一`IFormFile`或`IEnumerable<IFormFile>`(或`List<IFormFile>`) 代表數個檔案。</span><span class="sxs-lookup"><span data-stu-id="578af-120">When uploading files using model binding and the `IFormFile` interface, the action method can accept either a single `IFormFile` or an `IEnumerable<IFormFile>` (or `List<IFormFile>`) representing several files.</span></span> <span data-ttu-id="578af-121">下列範例會循環一或多個上傳的檔案、 將它們儲存到本機檔案系統中，並傳回總數與上傳的檔案大小。</span><span class="sxs-lookup"><span data-stu-id="578af-121">The following example loops through one or more uploaded files, saves them to the local file system, and returns the total number and size of files uploaded.</span></span>
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-<span data-ttu-id="d33fc-122">使用上傳的檔案`IFormFile`技術緩衝在記憶體中或在 web 伺服器上的磁碟上然後再開始處理。</span><span class="sxs-lookup"><span data-stu-id="d33fc-122">Files uploaded using the `IFormFile` technique are buffered in memory or on disk on the web server before being processed.</span></span> <span data-ttu-id="d33fc-123">在動作方法中，內`IFormFile`內容是可存取資料流的形式。</span><span class="sxs-lookup"><span data-stu-id="d33fc-123">Inside the action method, the `IFormFile` contents are accessible as a stream.</span></span> <span data-ttu-id="d33fc-124">除了本機檔案系統中，檔案可以串流處理至[Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)或[Entity Framework](https://docs.microsoft.com/ef/core/index)。</span><span class="sxs-lookup"><span data-stu-id="d33fc-124">In addition to the local file system, files can be streamed to [Azure Blob storage](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) or [Entity Framework](https://docs.microsoft.com/ef/core/index).</span></span>
+<span data-ttu-id="578af-122">使用上傳的檔案`IFormFile`技術緩衝在記憶體中或在 web 伺服器上的磁碟上然後再開始處理。</span><span class="sxs-lookup"><span data-stu-id="578af-122">Files uploaded using the `IFormFile` technique are buffered in memory or on disk on the web server before being processed.</span></span> <span data-ttu-id="578af-123">在動作方法中，內`IFormFile`內容是可存取資料流的形式。</span><span class="sxs-lookup"><span data-stu-id="578af-123">Inside the action method, the `IFormFile` contents are accessible as a stream.</span></span> <span data-ttu-id="578af-124">除了本機檔案系統中，檔案可以串流處理至[Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)或[Entity Framework](https://docs.microsoft.com/ef/core/index)。</span><span class="sxs-lookup"><span data-stu-id="578af-124">In addition to the local file system, files can be streamed to [Azure Blob storage](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) or [Entity Framework](https://docs.microsoft.com/ef/core/index).</span></span>
 
-<span data-ttu-id="d33fc-125">若要將二進位檔案資料儲存在資料庫中使用 Entity Framework 中，定義 型別屬性`byte[]`實體上：</span><span class="sxs-lookup"><span data-stu-id="d33fc-125">To store binary file data in a database using Entity Framework, define a property of type `byte[]` on the entity:</span></span>
+<span data-ttu-id="578af-125">若要將二進位檔案資料儲存在資料庫中使用 Entity Framework 中，定義 型別屬性`byte[]`實體上：</span><span class="sxs-lookup"><span data-stu-id="578af-125">To store binary file data in a database using Entity Framework, define a property of type `byte[]` on the entity:</span></span>
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -86,7 +86,7 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-<span data-ttu-id="d33fc-126">指定型別的 viewmodel 屬性`IFormFile`:</span><span class="sxs-lookup"><span data-stu-id="d33fc-126">Specify a viewmodel property of type `IFormFile`:</span></span>
+<span data-ttu-id="578af-126">指定型別的 viewmodel 屬性`IFormFile`:</span><span class="sxs-lookup"><span data-stu-id="578af-126">Specify a viewmodel property of type `IFormFile`:</span></span>
 
 ```csharp
 public class RegisterViewModel
@@ -98,9 +98,9 @@ public class RegisterViewModel
 ```
 
 > [!NOTE]
-> <span data-ttu-id="d33fc-127">`IFormFile`可做為動作方法參數，或作為 viewmodel 屬性，如上所示。</span><span class="sxs-lookup"><span data-stu-id="d33fc-127">`IFormFile` can be used directly as an action method parameter or as a viewmodel property, as shown above.</span></span>
+> <span data-ttu-id="578af-127">`IFormFile`可做為動作方法參數，或作為 viewmodel 屬性，如上所示。</span><span class="sxs-lookup"><span data-stu-id="578af-127">`IFormFile` can be used directly as an action method parameter or as a viewmodel property, as shown above.</span></span>
 
-<span data-ttu-id="d33fc-128">複製`IFormFile`至資料流，並將其儲存至位元組陣列：</span><span class="sxs-lookup"><span data-stu-id="d33fc-128">Copy the `IFormFile` to a stream and save it to the byte array:</span></span>
+<span data-ttu-id="578af-128">複製`IFormFile`至資料流，並將其儲存至位元組陣列：</span><span class="sxs-lookup"><span data-stu-id="578af-128">Copy the `IFormFile` to a stream and save it to the byte array:</span></span>
 
 ```csharp
 // POST: /Account/Register
@@ -129,18 +129,18 @@ public async Task<IActionResult> Register(RegisterViewModel model)
 ```
 
 > [!NOTE]
-> <span data-ttu-id="d33fc-129">請謹慎將二進位資料儲存在關聯式資料庫，因為它可能會造成不良影響效能。</span><span class="sxs-lookup"><span data-stu-id="d33fc-129">Use caution when storing binary data in relational databases, as it can adversely impact performance.</span></span>
+> <span data-ttu-id="578af-129">請謹慎將二進位資料儲存在關聯式資料庫，因為它可能會造成不良影響效能。</span><span class="sxs-lookup"><span data-stu-id="578af-129">Use caution when storing binary data in relational databases, as it can adversely impact performance.</span></span>
 
-## <a name="uploading-large-files-with-streaming"></a><span data-ttu-id="d33fc-130">使用資料流上傳大型檔案</span><span class="sxs-lookup"><span data-stu-id="d33fc-130">Uploading large files with streaming</span></span>
+## <a name="uploading-large-files-with-streaming"></a><span data-ttu-id="578af-130">使用資料流上傳大型檔案</span><span class="sxs-lookup"><span data-stu-id="578af-130">Uploading large files with streaming</span></span>
 
-<span data-ttu-id="d33fc-131">如果大小或檔案上傳的頻率會造成應用程式的資源問題，請考慮資料流檔案上傳，而非緩衝整個，如上所示的模型繫結方法一樣。</span><span class="sxs-lookup"><span data-stu-id="d33fc-131">If the size or frequency of file uploads is causing resource problems for the app, consider streaming the file upload rather than buffering it in its entirety, as the model binding approach shown above does.</span></span> <span data-ttu-id="d33fc-132">同時使用`IFormFile`和模型繫結是比較簡單的解決方案，資料流需要的步驟，以實作正確的數字。</span><span class="sxs-lookup"><span data-stu-id="d33fc-132">While using `IFormFile` and model binding is a much simpler solution, streaming requires a number of steps to implement properly.</span></span>
+<span data-ttu-id="578af-131">如果大小或檔案上傳的頻率會造成應用程式的資源問題，請考慮資料流檔案上傳，而非緩衝整個，如上所示的模型繫結方法一樣。</span><span class="sxs-lookup"><span data-stu-id="578af-131">If the size or frequency of file uploads is causing resource problems for the app, consider streaming the file upload rather than buffering it in its entirety, as the model binding approach shown above does.</span></span> <span data-ttu-id="578af-132">同時使用`IFormFile`和模型繫結是比較簡單的解決方案，資料流需要的步驟，以實作正確的數字。</span><span class="sxs-lookup"><span data-stu-id="578af-132">While using `IFormFile` and model binding is a much simpler solution, streaming requires a number of steps to implement properly.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="d33fc-133">任何單一緩衝超過 64KB 會移動檔案從 RAM 磁碟上的暫存檔案伺服器上。</span><span class="sxs-lookup"><span data-stu-id="d33fc-133">Any single buffered file exceeding 64KB will be moved from RAM to a temp file on disk on the server.</span></span> <span data-ttu-id="d33fc-134">檔案上傳所使用的資源 （磁碟、 RAM） 的數目和並行的檔案上傳的大小而定。</span><span class="sxs-lookup"><span data-stu-id="d33fc-134">The resources (disk, RAM) used by file uploads depend on the number and size of concurrent file uploads.</span></span> <span data-ttu-id="d33fc-135">資料流不是這麼多關於效能，了小數位數。</span><span class="sxs-lookup"><span data-stu-id="d33fc-135">Streaming is not so much about perf, it's about scale.</span></span> <span data-ttu-id="d33fc-136">如果您嘗試要緩衝處理太多上傳，記憶體或磁碟空間不足時，會損毀您的網站。</span><span class="sxs-lookup"><span data-stu-id="d33fc-136">If you try to buffer too many uploads, your site will crash when it runs out of memory or disk space.</span></span>
+> <span data-ttu-id="578af-133">任何單一緩衝超過 64KB 會移動檔案從 RAM 磁碟上的暫存檔案伺服器上。</span><span class="sxs-lookup"><span data-stu-id="578af-133">Any single buffered file exceeding 64KB will be moved from RAM to a temp file on disk on the server.</span></span> <span data-ttu-id="578af-134">檔案上傳所使用的資源 （磁碟、 RAM） 的數目和並行的檔案上傳的大小而定。</span><span class="sxs-lookup"><span data-stu-id="578af-134">The resources (disk, RAM) used by file uploads depend on the number and size of concurrent file uploads.</span></span> <span data-ttu-id="578af-135">資料流不是這麼多關於效能，了小數位數。</span><span class="sxs-lookup"><span data-stu-id="578af-135">Streaming is not so much about perf, it's about scale.</span></span> <span data-ttu-id="578af-136">如果您嘗試要緩衝處理太多上傳，記憶體或磁碟空間不足時，會損毀您的網站。</span><span class="sxs-lookup"><span data-stu-id="578af-136">If you try to buffer too many uploads, your site will crash when it runs out of memory or disk space.</span></span>
 
-<span data-ttu-id="d33fc-137">下列範例會示範使用 JavaScript/Angular 串流至控制器動作。</span><span class="sxs-lookup"><span data-stu-id="d33fc-137">The following example demonstrates using JavaScript/Angular to stream to a controller action.</span></span> <span data-ttu-id="d33fc-138">使用自訂的篩選條件屬性，而不是在要求主體中的 HTTP 標頭中傳遞，就會產生檔案的 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="d33fc-138">The file's antiforgery token is generated using a custom filter attribute and passed in HTTP headers instead of in the request body.</span></span> <span data-ttu-id="d33fc-139">動作方法會直接處理上傳的資料，因為另一個篩選條件會停用模型繫結。</span><span class="sxs-lookup"><span data-stu-id="d33fc-139">Because the action method processes the uploaded data directly, model binding is disabled by another filter.</span></span> <span data-ttu-id="d33fc-140">動作，在表單的內容會使用讀取`MultipartReader`，讀取每個個別`MultipartSection`、 處理檔案，或視需要儲存內容。</span><span class="sxs-lookup"><span data-stu-id="d33fc-140">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="d33fc-141">一旦已經讀取所有區段，此動作會在執行它自己的模型繫結。</span><span class="sxs-lookup"><span data-stu-id="d33fc-141">Once all sections have been read, the action performs its own model binding.</span></span>
+<span data-ttu-id="578af-137">下列範例會示範使用 JavaScript/Angular 串流至控制器動作。</span><span class="sxs-lookup"><span data-stu-id="578af-137">The following example demonstrates using JavaScript/Angular to stream to a controller action.</span></span> <span data-ttu-id="578af-138">使用自訂的篩選條件屬性，而不是在要求主體中的 HTTP 標頭中傳遞，就會產生檔案的 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="578af-138">The file's antiforgery token is generated using a custom filter attribute and passed in HTTP headers instead of in the request body.</span></span> <span data-ttu-id="578af-139">動作方法會直接處理上傳的資料，因為另一個篩選條件會停用模型繫結。</span><span class="sxs-lookup"><span data-stu-id="578af-139">Because the action method processes the uploaded data directly, model binding is disabled by another filter.</span></span> <span data-ttu-id="578af-140">動作，在表單的內容會使用讀取`MultipartReader`，讀取每個個別`MultipartSection`、 處理檔案，或視需要儲存內容。</span><span class="sxs-lookup"><span data-stu-id="578af-140">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="578af-141">一旦已經讀取所有區段，此動作會在執行它自己的模型繫結。</span><span class="sxs-lookup"><span data-stu-id="578af-141">Once all sections have been read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="d33fc-142">初始化動作載入表單，並儲存在 cookie 中的 antiforgery 的語彙基元 (透過`GenerateAntiforgeryTokenCookieForAjax`屬性):</span><span class="sxs-lookup"><span data-stu-id="d33fc-142">The initial action loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieForAjax` attribute):</span></span>
+<span data-ttu-id="578af-142">初始化動作載入表單，並儲存在 cookie 中的 antiforgery 的語彙基元 (透過`GenerateAntiforgeryTokenCookieForAjax`屬性):</span><span class="sxs-lookup"><span data-stu-id="578af-142">The initial action loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieForAjax` attribute):</span></span>
 
 ```csharp
 [HttpGet]
@@ -151,40 +151,40 @@ public IActionResult Index()
 }
 ```
 
-<span data-ttu-id="d33fc-143">屬性會使用 ASP.NET Core 內建[Antiforgery](xref:security/anti-request-forgery)設定要求的語彙基元的 cookie 的支援：</span><span class="sxs-lookup"><span data-stu-id="d33fc-143">The attribute uses ASP.NET Core's built-in [Antiforgery](xref:security/anti-request-forgery) support to set a cookie with a request token:</span></span>
+<span data-ttu-id="578af-143">屬性會使用 ASP.NET Core 內建[Antiforgery](xref:security/anti-request-forgery)設定要求的語彙基元的 cookie 的支援：</span><span class="sxs-lookup"><span data-stu-id="578af-143">The attribute uses ASP.NET Core's built-in [Antiforgery](xref:security/anti-request-forgery) support to set a cookie with a request token:</span></span>
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
 
-<span data-ttu-id="d33fc-144">角度自動傳遞 antiforgery 的語彙基元中名為要求標頭`X-XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="d33fc-144">Angular automatically passes an antiforgery token in a request header named `X-XSRF-TOKEN`.</span></span> <span data-ttu-id="d33fc-145">ASP.NET Core MVC 應用程式設定為在其設定，此標頭是指*Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="d33fc-145">The ASP.NET Core MVC app is configured to refer to this header in its configuration in *Startup.cs*:</span></span>
+<span data-ttu-id="578af-144">角度自動傳遞 antiforgery 的語彙基元中名為要求標頭`X-XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="578af-144">Angular automatically passes an antiforgery token in a request header named `X-XSRF-TOKEN`.</span></span> <span data-ttu-id="578af-145">ASP.NET Core MVC 應用程式設定為在其設定，此標頭是指*Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="578af-145">The ASP.NET Core MVC app is configured to refer to this header in its configuration in *Startup.cs*:</span></span>
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
-<span data-ttu-id="d33fc-146">`DisableFormValueModelBinding` ，如下所示的屬性用來停用的模型繫結`Upload`動作方法。</span><span class="sxs-lookup"><span data-stu-id="d33fc-146">The `DisableFormValueModelBinding` attribute, shown below, is used to disable model binding for the `Upload` action method.</span></span>
+<span data-ttu-id="578af-146">`DisableFormValueModelBinding` ，如下所示的屬性用來停用的模型繫結`Upload`動作方法。</span><span class="sxs-lookup"><span data-stu-id="578af-146">The `DisableFormValueModelBinding` attribute, shown below, is used to disable model binding for the `Upload` action method.</span></span>
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 
-<span data-ttu-id="d33fc-147">模型繫結已停用，因為`Upload`動作方法不會接受參數。</span><span class="sxs-lookup"><span data-stu-id="d33fc-147">Since model binding is disabled, the `Upload` action method doesn't accept parameters.</span></span> <span data-ttu-id="d33fc-148">它適用於直接`Request`屬性`ControllerBase`。</span><span class="sxs-lookup"><span data-stu-id="d33fc-148">It works directly with the `Request` property of `ControllerBase`.</span></span> <span data-ttu-id="d33fc-149">A`MultipartReader`用來讀取每個區段。</span><span class="sxs-lookup"><span data-stu-id="d33fc-149">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="d33fc-150">GUID 檔案名稱儲存檔案，以及索引鍵/值資料會儲存在`KeyValueAccumulator`。</span><span class="sxs-lookup"><span data-stu-id="d33fc-150">The file is saved with a GUID filename and the key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="d33fc-151">一旦已經讀取所有區段，內容`KeyValueAccumulator`用來將表單資料繫結的模型型別。</span><span class="sxs-lookup"><span data-stu-id="d33fc-151">Once all sections have been read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
+<span data-ttu-id="578af-147">模型繫結已停用，因為`Upload`動作方法不會接受參數。</span><span class="sxs-lookup"><span data-stu-id="578af-147">Since model binding is disabled, the `Upload` action method doesn't accept parameters.</span></span> <span data-ttu-id="578af-148">它適用於直接`Request`屬性`ControllerBase`。</span><span class="sxs-lookup"><span data-stu-id="578af-148">It works directly with the `Request` property of `ControllerBase`.</span></span> <span data-ttu-id="578af-149">A`MultipartReader`用來讀取每個區段。</span><span class="sxs-lookup"><span data-stu-id="578af-149">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="578af-150">GUID 檔案名稱儲存檔案，以及索引鍵/值資料會儲存在`KeyValueAccumulator`。</span><span class="sxs-lookup"><span data-stu-id="578af-150">The file is saved with a GUID filename and the key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="578af-151">一旦已經讀取所有區段，內容`KeyValueAccumulator`用來將表單資料繫結的模型型別。</span><span class="sxs-lookup"><span data-stu-id="578af-151">Once all sections have been read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
 
-<span data-ttu-id="d33fc-152">完整`Upload`方法如下所示：</span><span class="sxs-lookup"><span data-stu-id="d33fc-152">The complete `Upload` method is shown below:</span></span>
+<span data-ttu-id="578af-152">完整`Upload`方法如下所示：</span><span class="sxs-lookup"><span data-stu-id="578af-152">The complete `Upload` method is shown below:</span></span>
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
 
-## <a name="troubleshooting"></a><span data-ttu-id="d33fc-153">疑難排解</span><span class="sxs-lookup"><span data-stu-id="d33fc-153">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="578af-153">疑難排解</span><span class="sxs-lookup"><span data-stu-id="578af-153">Troubleshooting</span></span>
 
-<span data-ttu-id="d33fc-154">以下是使用上傳的檔案和可能的解決方案時，發現一些常見的問題。</span><span class="sxs-lookup"><span data-stu-id="d33fc-154">Below are some common problems encountered when working with uploading files and their possible solutions.</span></span>
+<span data-ttu-id="578af-154">以下是使用上傳的檔案和可能的解決方案時，發現一些常見的問題。</span><span class="sxs-lookup"><span data-stu-id="578af-154">Below are some common problems encountered when working with uploading files and their possible solutions.</span></span>
 
-### <a name="unexpected-not-found-error-with-iis"></a><span data-ttu-id="d33fc-155">找不到的未預期的錯誤 iis</span><span class="sxs-lookup"><span data-stu-id="d33fc-155">Unexpected Not Found error with IIS</span></span>
+### <a name="unexpected-not-found-error-with-iis"></a><span data-ttu-id="578af-155">找不到的未預期的錯誤 iis</span><span class="sxs-lookup"><span data-stu-id="578af-155">Unexpected Not Found error with IIS</span></span>
 
-<span data-ttu-id="d33fc-156">下列的錯誤指出您的檔案上傳超過伺服器所設定的`maxAllowedContentLength`:</span><span class="sxs-lookup"><span data-stu-id="d33fc-156">The following error indicates your file upload exceeds the server's configured `maxAllowedContentLength`:</span></span>
+<span data-ttu-id="578af-156">下列的錯誤指出您的檔案上傳超過伺服器所設定的`maxAllowedContentLength`:</span><span class="sxs-lookup"><span data-stu-id="578af-156">The following error indicates your file upload exceeds the server's configured `maxAllowedContentLength`:</span></span>
 
 ```
 HTTP 404.13 - Not Found
 The request filtering module is configured to deny a request that exceeds the request content length.
 ```
 
-<span data-ttu-id="d33fc-157">預設值是`30000000`，這是大約 28.6 MB。</span><span class="sxs-lookup"><span data-stu-id="d33fc-157">The default setting is `30000000`, which is approximately 28.6MB.</span></span> <span data-ttu-id="d33fc-158">值可以藉由編輯自訂*web.config*:</span><span class="sxs-lookup"><span data-stu-id="d33fc-158">The value can be customized by editing *web.config*:</span></span>
+<span data-ttu-id="578af-157">預設值是`30000000`，這是大約 28.6 MB。</span><span class="sxs-lookup"><span data-stu-id="578af-157">The default setting is `30000000`, which is approximately 28.6MB.</span></span> <span data-ttu-id="578af-158">值可以藉由編輯自訂*web.config*:</span><span class="sxs-lookup"><span data-stu-id="578af-158">The value can be customized by editing *web.config*:</span></span>
 
 ```xml
 <system.webServer>
@@ -197,8 +197,8 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-<span data-ttu-id="d33fc-159">這項設定僅適用於 IIS。</span><span class="sxs-lookup"><span data-stu-id="d33fc-159">This setting only applies to IIS.</span></span> <span data-ttu-id="d33fc-160">裝載 Kestrel 上時，預設不會發生行為。</span><span class="sxs-lookup"><span data-stu-id="d33fc-160">The behavior doesn't occur by default when hosting on Kestrel.</span></span> <span data-ttu-id="d33fc-161">如需詳細資訊，請參閱[要求限制\<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。</span><span class="sxs-lookup"><span data-stu-id="d33fc-161">For more information, see [Request Limits \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).</span></span>
+<span data-ttu-id="578af-159">這項設定僅適用於 IIS。</span><span class="sxs-lookup"><span data-stu-id="578af-159">This setting only applies to IIS.</span></span> <span data-ttu-id="578af-160">裝載 Kestrel 上時，預設不會發生行為。</span><span class="sxs-lookup"><span data-stu-id="578af-160">The behavior doesn't occur by default when hosting on Kestrel.</span></span> <span data-ttu-id="578af-161">如需詳細資訊，請參閱[要求限制\<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。</span><span class="sxs-lookup"><span data-stu-id="578af-161">For more information, see [Request Limits \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).</span></span>
 
-### <a name="null-reference-exception-with-iformfile"></a><span data-ttu-id="d33fc-162">IFormFile null 參考例外狀況</span><span class="sxs-lookup"><span data-stu-id="d33fc-162">Null Reference Exception with IFormFile</span></span>
+### <a name="null-reference-exception-with-iformfile"></a><span data-ttu-id="578af-162">IFormFile null 參考例外狀況</span><span class="sxs-lookup"><span data-stu-id="578af-162">Null Reference Exception with IFormFile</span></span>
 
-<span data-ttu-id="d33fc-163">如果您的控制器是接受上傳檔案使用`IFormFile`，但您尋找這個值一律是 null，請確認已指定 HTML 表單`enctype`值`multipart/form-data`。</span><span class="sxs-lookup"><span data-stu-id="d33fc-163">If your controller is accepting uploaded files using `IFormFile` but you find that the value is always null, confirm that your HTML form is specifying an `enctype` value of `multipart/form-data`.</span></span> <span data-ttu-id="d33fc-164">如果這個屬性未設定上`<form>`項目，檔案上傳不會和任何繫結`IFormFile`引數將會是 null。</span><span class="sxs-lookup"><span data-stu-id="d33fc-164">If this attribute is not set on the `<form>` element, the file upload will not occur and any bound `IFormFile` arguments will be null.</span></span>
+<span data-ttu-id="578af-163">如果您的控制器是接受上傳檔案使用`IFormFile`，但您尋找這個值一律是 null，請確認已指定 HTML 表單`enctype`值`multipart/form-data`。</span><span class="sxs-lookup"><span data-stu-id="578af-163">If your controller is accepting uploaded files using `IFormFile` but you find that the value is always null, confirm that your HTML form is specifying an `enctype` value of `multipart/form-data`.</span></span> <span data-ttu-id="578af-164">如果這個屬性未設定上`<form>`項目，檔案上傳不會和任何繫結`IFormFile`引數將會是 null。</span><span class="sxs-lookup"><span data-stu-id="578af-164">If this attribute is not set on the `<form>` element, the file upload will not occur and any bound `IFormFile` arguments will be null.</span></span>

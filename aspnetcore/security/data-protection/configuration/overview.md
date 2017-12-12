@@ -1,31 +1,33 @@
 ---
-title: "設定資料保護"
+title: "在 ASP.NET Core 中設定資料保護"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "了解如何設定 ASP.NET Core 中的資料保護。"
+keywords: "ASP.NET Core 資料保護、 組態"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 07/17/2017
 ms.topic: article
 ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 9361dcec89a0f35067181523cc56637d629614ff
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4713c2bed04af784e74586daa10ec847262a1345
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="configuring-data-protection"></a><span data-ttu-id="34650-103">設定資料保護</span><span class="sxs-lookup"><span data-stu-id="34650-103">Configuring data protection</span></span>
+# <a name="configuring-data-protection-in-aspnet-core"></a><span data-ttu-id="1dafa-104">在 ASP.NET Core 中設定資料保護</span><span class="sxs-lookup"><span data-stu-id="1dafa-104">Configuring Data Protection in ASP.NET Core</span></span>
 
-<a name=data-protection-configuring></a>
+<span data-ttu-id="1dafa-105">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="1dafa-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="34650-104">初始化資料保護系統時它會套用某些[預設設定](default-settings.md#data-protection-default-settings)根據作業環境。</span><span class="sxs-lookup"><span data-stu-id="34650-104">When the data protection system is initialized it applies some [default settings](default-settings.md#data-protection-default-settings) based on the operational environment.</span></span> <span data-ttu-id="34650-105">這些設定是一般適用於在單一機器上執行的應用程式。</span><span class="sxs-lookup"><span data-stu-id="34650-105">These settings are generally good for applications running on a single machine.</span></span> <span data-ttu-id="34650-106">有某些情況的下，開發人員可能要變更這些設定 (可能是因為它們的應用程式分散在多部電腦，或基於相容性因素)，並針對這些案例的資料保護系統提供豐富的組態 API。</span><span class="sxs-lookup"><span data-stu-id="34650-106">There are some cases where a developer may want to change these (perhaps because their application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.</span></span>
+<span data-ttu-id="1dafa-106">當初始化資料保護系統時，它會套用[預設設定](xref:security/data-protection/configuration/default-settings)根據作業環境。</span><span class="sxs-lookup"><span data-stu-id="1dafa-106">When the Data Protection system is initialized, it applies [default settings](xref:security/data-protection/configuration/default-settings) based on the operational environment.</span></span> <span data-ttu-id="1dafa-107">這些設定是通常適用於在單一機器上執行的應用程式。</span><span class="sxs-lookup"><span data-stu-id="1dafa-107">These settings are generally appropriate for apps running on a single machine.</span></span> <span data-ttu-id="1dafa-108">沒有開發人員可能的想来變更的預設設定，可能是因為其應用程式分散在多部電腦，或基於相容性因素。</span><span class="sxs-lookup"><span data-stu-id="1dafa-108">There are cases where a developer may want to change the default settings, perhaps because their app is spread across multiple machines or for compliance reasons.</span></span> <span data-ttu-id="1dafa-109">這些案例中，資料保護系統會提供豐富的組態 API。</span><span class="sxs-lookup"><span data-stu-id="1dafa-109">For these scenarios, the Data Protection system offers a rich configuration API.</span></span>
 
-<a name=data-protection-configuration-callback></a>
+<span data-ttu-id="1dafa-110">擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。</span><span class="sxs-lookup"><span data-stu-id="1dafa-110">There's an extension method [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) that returns an [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder).</span></span> <span data-ttu-id="1dafa-111">`IDataProtectionBuilder`會公開，您可以鏈結在一起選項來設定資料保護的擴充方法。</span><span class="sxs-lookup"><span data-stu-id="1dafa-111">`IDataProtectionBuilder` exposes extension methods that you can chain together to configure Data Protection options.</span></span>
 
-<span data-ttu-id="34650-107">沒有擴充方法會傳回 IDataProtectionBuilder AddDataProtection 本身會公開，您可以鏈結在一起選項來設定各種不同的資料保護的擴充方法。</span><span class="sxs-lookup"><span data-stu-id="34650-107">There is an extension method AddDataProtection which returns an IDataProtectionBuilder which itself exposes extension methods that you can chain together to configure various data protection options.</span></span> <span data-ttu-id="34650-108">例如，若要儲存在 UNC 共用，而不是 %LOCALAPPDATA%（預設值），設定系統，如下所示：</span><span class="sxs-lookup"><span data-stu-id="34650-108">For instance, to store keys at a UNC share instead of %LOCALAPPDATA% (the default), configure the system as follows:</span></span>
+## <a name="persistkeystofilesystem"></a><span data-ttu-id="1dafa-112">PersistKeysToFileSystem</span><span class="sxs-lookup"><span data-stu-id="1dafa-112">PersistKeysToFileSystem</span></span>
+
+<span data-ttu-id="1dafa-113">若要將金鑰儲存在 UNC 共用而不是在*%LOCALAPPDATA%*預設位置，設定與系統[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):</span><span class="sxs-lookup"><span data-stu-id="1dafa-113">To store keys on a UNC share instead of at the *%LOCALAPPDATA%* default location, configure the system with [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -35,12 +37,12 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
->[!WARNING]
-> <span data-ttu-id="34650-109">如果您變更金鑰的持續性位置時，系統將不會再自動加密金鑰靜止因為它不知道是否 DPAPI 是適當的加密機制。</span><span class="sxs-lookup"><span data-stu-id="34650-109">If you change the key persistence location, the system will no longer automatically encrypt keys at rest since it doesn't know whether DPAPI is an appropriate encryption mechanism.</span></span>
+> [!WARNING]
+> <span data-ttu-id="1dafa-114">如果您變更金鑰的持續性位置時，系統將不會再自動加密靜止的索引鍵因為它不知道是否 DPAPI 是適當的加密機制。</span><span class="sxs-lookup"><span data-stu-id="1dafa-114">If you change the key persistence location, the system no longer automatically encrypts keys at rest, since it doesn't know whether DPAPI is an appropriate encryption mechanism.</span></span>
 
-<a name=configuring-x509-certificate></a>
+## <a name="protectkeyswith"></a><span data-ttu-id="1dafa-115">ProtectKeysWith\*</span><span class="sxs-lookup"><span data-stu-id="1dafa-115">ProtectKeysWith\*</span></span>
 
-<span data-ttu-id="34650-110">您可以設定系統以保護靜止的金鑰呼叫任何 ProtectKeysWith\*組態 Api。</span><span class="sxs-lookup"><span data-stu-id="34650-110">You can configure the system to protect keys at rest by calling any of the ProtectKeysWith\* configuration APIs.</span></span> <span data-ttu-id="34650-111">請考慮下列範例中，這會儲存在 UNC 共用的金鑰及加密這些金鑰在靜止與特定 X.509 憑證。</span><span class="sxs-lookup"><span data-stu-id="34650-111">Consider the example below, which stores keys at a UNC share and encrypts those keys at rest with a specific X.509 certificate.</span></span>
+<span data-ttu-id="1dafa-116">您可以設定系統以保護靜止的金鑰呼叫上述任一[ProtectKeysWith\* ](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions)組態 Api。</span><span class="sxs-lookup"><span data-stu-id="1dafa-116">You can configure the system to protect keys at rest by calling any of the [ProtectKeysWith\*](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions) configuration APIs.</span></span> <span data-ttu-id="1dafa-117">請考慮下列範例中，將金鑰儲存在 UNC 共用，且加密待用與特定 X.509 憑證的金鑰：</span><span class="sxs-lookup"><span data-stu-id="1dafa-117">Consider the example below, which stores keys on a UNC share and encrypts those keys at rest with a specific X.509 certificate:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -51,9 +53,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="34650-112">請參閱[金鑰加密在靜止](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)更多範例，以及內建的金鑰加密機制的討論。</span><span class="sxs-lookup"><span data-stu-id="34650-112">See [key encryption at rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) for more examples and for discussion on the built-in key encryption mechanisms.</span></span>
+<span data-ttu-id="1dafa-118">請參閱[金鑰靜態加密](xref:security/data-protection/implementation/key-encryption-at-rest)如需詳細的範例和內建的金鑰加密機制的討論。</span><span class="sxs-lookup"><span data-stu-id="1dafa-118">See [Key Encryption At Rest](xref:security/data-protection/implementation/key-encryption-at-rest) for more examples and discussion on the built-in key encryption mechanisms.</span></span>
 
-<span data-ttu-id="34650-113">若要設定系統使用的預設金鑰存留期為 14 天，而不是 90 天，請考慮下列範例：</span><span class="sxs-lookup"><span data-stu-id="34650-113">To configure the system to use a default key lifetime of 14 days instead of 90 days, consider the following example:</span></span>
+## <a name="setdefaultkeylifetime"></a><span data-ttu-id="1dafa-119">SetDefaultKeyLifetime</span><span class="sxs-lookup"><span data-stu-id="1dafa-119">SetDefaultKeyLifetime</span></span>
+
+<span data-ttu-id="1dafa-120">若要設定系統而非預設的 90 天使用的金鑰的存留期為 14 天，請使用[SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):</span><span class="sxs-lookup"><span data-stu-id="1dafa-120">To configure the system to use a key lifetime of 14 days instead of the default 90 days, use [SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -63,21 +67,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="34650-114">根據預設資料保護系統隔離應用程式，即使它們共用相同的實體索引鍵儲存機制。</span><span class="sxs-lookup"><span data-stu-id="34650-114">By default the data protection system isolates applications from one another, even if they're sharing the same physical key repository.</span></span> <span data-ttu-id="34650-115">這可防止從了解其他人的受保護的裝載的應用程式。</span><span class="sxs-lookup"><span data-stu-id="34650-115">This prevents the applications from understanding each other's protected payloads.</span></span> <span data-ttu-id="34650-116">若要共用受保護的裝載兩個不同的應用程式之間，設定系統傳遞兩個應用程式中的相同應用程式名稱中的下列範例：</span><span class="sxs-lookup"><span data-stu-id="34650-116">To share protected payloads between two different applications, configure the system passing in the same application name for both applications as in the below example:</span></span>
+## <a name="setapplicationname"></a><span data-ttu-id="1dafa-121">SetApplicationName</span><span class="sxs-lookup"><span data-stu-id="1dafa-121">SetApplicationName</span></span>
 
-<a name=data-protection-code-sample-application-name></a>
+<span data-ttu-id="1dafa-122">根據預設，資料保護系統隔離應用程式，即使它們共用相同的實體索引鍵儲存機制。</span><span class="sxs-lookup"><span data-stu-id="1dafa-122">By default, the Data Protection system isolates apps from one another, even if they're sharing the same physical key repository.</span></span> <span data-ttu-id="1dafa-123">這可防止應用程式的了解其他人的受保護的內容。</span><span class="sxs-lookup"><span data-stu-id="1dafa-123">This prevents the apps from understanding each other's protected payloads.</span></span> <span data-ttu-id="1dafa-124">若要共用受保護的裝載兩個應用程式之間，使用[SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname)與每個應用程式相同的值：</span><span class="sxs-lookup"><span data-stu-id="1dafa-124">To share protected payloads between two apps, use [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) with the same value for each app:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddDataProtection()
-        .SetApplicationName("my application");
+        .SetApplicationName("shared app name");
 }
 ```
 
-<a name=data-protection-configuring-disable-automatic-key-generation></a>
+## <a name="disableautomatickeygeneration"></a><span data-ttu-id="1dafa-125">DisableAutomaticKeyGeneration</span><span class="sxs-lookup"><span data-stu-id="1dafa-125">DisableAutomaticKeyGeneration</span></span>
 
-<span data-ttu-id="34650-117">最後，您可能需要的案例，您不想要自動將索引鍵，因為它們會很接近到期的應用程式。</span><span class="sxs-lookup"><span data-stu-id="34650-117">Finally, you may have a scenario where you do not want an application to automatically roll keys as they approach expiration.</span></span> <span data-ttu-id="34650-118">其中一個範例，這可能是應用程式設定中的主要 / 次要關聯性，其中只有主要的應用程式會負責金鑰管理考量，以及次要的所有應用程式只需要鑰匙圈的唯讀檢視。</span><span class="sxs-lookup"><span data-stu-id="34650-118">One example of this might be applications set up in a primary / secondary relationship, where only the primary application is responsible for key management concerns, and all secondary applications simply have a read-only view of the key ring.</span></span> <span data-ttu-id="34650-119">您可以設定次要應用程式將鑰匙圈視為唯讀，藉由系統設定，如下所示：</span><span class="sxs-lookup"><span data-stu-id="34650-119">The secondary applications can be configured to treat the key ring as read-only by configuring the system as below:</span></span>
+<span data-ttu-id="1dafa-126">您可能需要的案例，您不想自動回復 （建立新的索引鍵） 的索引鍵，因為它們會很接近到期的應用程式。</span><span class="sxs-lookup"><span data-stu-id="1dafa-126">You may have a scenario where you don't want an app to automatically roll keys (create new keys) as they approach expiration.</span></span> <span data-ttu-id="1dafa-127">其中一個範例，這可能是應用程式設定中的主要/次要關聯性，其中只有主要的應用程式是負責金鑰管理問題，而次要應用程式只需要鑰匙圈的唯讀檢視。</span><span class="sxs-lookup"><span data-stu-id="1dafa-127">One example of this might be apps set up in a primary/secondary relationship, where only the primary app is responsible for key management concerns and secondary apps simply have a read-only view of the key ring.</span></span> <span data-ttu-id="1dafa-128">次要的應用程式可以設定將鑰匙圈視為唯讀，藉由設定與系統[DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):</span><span class="sxs-lookup"><span data-stu-id="1dafa-128">The secondary apps can be configured to treat the key ring as read-only by configuring the system with [DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -87,46 +91,44 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<a name=data-protection-configuration-per-app-isolation></a>
+## <a name="per-application-isolation"></a><span data-ttu-id="1dafa-129">每個應用程式隔離</span><span class="sxs-lookup"><span data-stu-id="1dafa-129">Per-application isolation</span></span>
 
-## <a name="per-application-isolation"></a><span data-ttu-id="34650-120">每個應用程式隔離</span><span class="sxs-lookup"><span data-stu-id="34650-120">Per-application isolation</span></span>
+<span data-ttu-id="1dafa-130">ASP.NET Core 主機所提供資料保護系統時，它會自動會隔離應用程式，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰處理內容。</span><span class="sxs-lookup"><span data-stu-id="1dafa-130">When the Data Protection system is provided by an ASP.NET Core host, it automatically isolates apps from one another, even if those apps are running under the same worker process account and are using the same master keying material.</span></span> <span data-ttu-id="1dafa-131">這是有點像 IsolateApps 修飾詞將來自 System.Web 的 **\<machineKey >**項目。</span><span class="sxs-lookup"><span data-stu-id="1dafa-131">This is somewhat similar to the IsolateApps modifier from System.Web's **\<machineKey>** element.</span></span>
 
-<span data-ttu-id="34650-121">ASP.NET Core 主機所提供的資料保護系統時，它會自動將應用程式隔離，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰處理內容。</span><span class="sxs-lookup"><span data-stu-id="34650-121">When the data protection system is provided by an ASP.NET Core host, it will automatically isolate applications from one another, even if those applications are running under the same worker process account and are using the same master keying material.</span></span> <span data-ttu-id="34650-122">這是有點像 IsolateApps 修飾詞將來自 System.Web 的<machineKey>項目。</span><span class="sxs-lookup"><span data-stu-id="34650-122">This is somewhat similar to the IsolateApps modifier from System.Web's <machineKey> element.</span></span>
+<span data-ttu-id="1dafa-132">隔離機制的運作方式是做為唯一的租用戶，考慮在本機電腦上的每個應用程式，因此[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector)根項目，針對任何給定的應用程式會自動包含應用程式識別碼，表示為鑑別子。</span><span class="sxs-lookup"><span data-stu-id="1dafa-132">The isolation mechanism works by considering each app on the local machine as a unique tenant, thus the [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) rooted for any given app automatically includes the app ID as a discriminator.</span></span> <span data-ttu-id="1dafa-133">應用程式的唯一識別碼來自兩個地方的其中一個：</span><span class="sxs-lookup"><span data-stu-id="1dafa-133">The app's unique ID comes from one of two places:</span></span>
 
-<span data-ttu-id="34650-123">考慮在本機電腦上每個應用程式，做為唯一的租用戶隔離機制如何運作，因此 IDataProtector 根項目為任何指定的應用程式會自動包含應用程式識別碼為鑑別子。</span><span class="sxs-lookup"><span data-stu-id="34650-123">The isolation mechanism works by considering each application on the local machine as a unique tenant, thus the IDataProtector rooted for any given application automatically includes the application ID as a discriminator.</span></span> <span data-ttu-id="34650-124">應用程式的唯一識別碼來自兩個地方的其中一個。</span><span class="sxs-lookup"><span data-stu-id="34650-124">The application's unique ID comes from one of two places.</span></span>
+1. <span data-ttu-id="1dafa-134">如果應用程式裝載在 IIS 中，唯一的識別項是應用程式的組態路徑。</span><span class="sxs-lookup"><span data-stu-id="1dafa-134">If the app is hosted in IIS, the unique identifier is the app's configuration path.</span></span> <span data-ttu-id="1dafa-135">如果在 web 伺服陣列環境中部署應用程式，這個值應該是假設同樣的 web 伺服陣列中的所有電腦上設定 IIS 環境穩定。</span><span class="sxs-lookup"><span data-stu-id="1dafa-135">If an app is deployed in a web farm environment, this value should be stable assuming that the IIS environments are configured similarly across all machines in the web farm.</span></span>
 
-1. <span data-ttu-id="34650-125">如果應用程式裝載在 IIS 中，唯一的識別項是應用程式的組態路徑。</span><span class="sxs-lookup"><span data-stu-id="34650-125">If the application is hosted in IIS, the unique identifier is the application's configuration path.</span></span> <span data-ttu-id="34650-126">如果伺服陣列環境中部署應用程式，這個值應該是假設同樣的伺服陣列中的所有電腦上設定 IIS 環境穩定。</span><span class="sxs-lookup"><span data-stu-id="34650-126">If an application is deployed in a farm environment, this value should be stable assuming that the IIS environments are configured similarly across all machines in the farm.</span></span>
+2. <span data-ttu-id="1dafa-136">如果應用程式不裝載在 IIS 中，唯一的識別項是應用程式的實體路徑。</span><span class="sxs-lookup"><span data-stu-id="1dafa-136">If the app isn't hosted in IIS, the unique identifier is the physical path of the app.</span></span>
 
-2. <span data-ttu-id="34650-127">如果應用程式不會裝載在 IIS 中，唯一的識別項是應用程式的實體路徑。</span><span class="sxs-lookup"><span data-stu-id="34650-127">If the application is not hosted in IIS, the unique identifier is the physical path of the application.</span></span>
+<span data-ttu-id="1dafa-137">唯一識別項設計來重設不會被&mdash;個別應用程式和的電腦本身。</span><span class="sxs-lookup"><span data-stu-id="1dafa-137">The unique identifier is designed to survive resets &mdash; both of the individual app and of the machine itself.</span></span>
 
-<span data-ttu-id="34650-128">不會被重設為個別的應用程式和電腦本身的旨在的唯一識別碼。</span><span class="sxs-lookup"><span data-stu-id="34650-128">The unique identifier is designed to survive resets - both of the individual application and of the machine itself.</span></span>
+<span data-ttu-id="1dafa-138">此隔離機制假設應用程式不是惡意。</span><span class="sxs-lookup"><span data-stu-id="1dafa-138">This isolation mechanism assumes that the apps are not malicious.</span></span> <span data-ttu-id="1dafa-139">惡意的應用程式一律會影響任何其他在相同的背景工作處理序帳戶下執行的應用程式。</span><span class="sxs-lookup"><span data-stu-id="1dafa-139">A malicious app can always impact any other app running under the same worker process account.</span></span> <span data-ttu-id="1dafa-140">在共用裝載環境中互相不受信任的應用程式所在位置，主機服務提供者應該採取步驟來確保應用程式，包括將應用程式的基礎索引鍵的儲存機制之間的作業系統層級隔離。</span><span class="sxs-lookup"><span data-stu-id="1dafa-140">In a shared hosting environment where apps are mutually untrusted, the hosting provider should take steps to ensure OS-level isolation between apps, including separating the apps' underlying key repositories.</span></span>
 
-<span data-ttu-id="34650-129">此隔離機制假設應用程式不是惡意。</span><span class="sxs-lookup"><span data-stu-id="34650-129">This isolation mechanism assumes that the applications are not malicious.</span></span> <span data-ttu-id="34650-130">惡意的應用程式一律會影響任何其他在相同的背景工作處理序帳戶下執行的應用程式。</span><span class="sxs-lookup"><span data-stu-id="34650-130">A malicious application can always impact any other application running under the same worker process account.</span></span> <span data-ttu-id="34650-131">在共用裝載環境中互相不受信任的應用程式所在位置，主機服務提供者應該採取步驟，以確保作業系統層級隔離的應用程式，包括將應用程式的基礎索引鍵的儲存機制。</span><span class="sxs-lookup"><span data-stu-id="34650-131">In a shared hosting environment where applications are mutually untrusted, the hosting provider should take steps to ensure OS-level isolation between applications, including separating the applications' underlying key repositories.</span></span>
+<span data-ttu-id="1dafa-141">如果 ASP.NET Core 主機未提供資料保護系統 (例如，如果您透過它執行個體化`DataProtectionProvider`具象類型) 預設會停用應用程式隔離。</span><span class="sxs-lookup"><span data-stu-id="1dafa-141">If the Data Protection system isn't provided by an ASP.NET Core host (for example, if you instantiate it via the `DataProtectionProvider` concrete type) app isolation is disabled by default.</span></span> <span data-ttu-id="1dafa-142">停用應用程式隔離時，由相同的金鑰處理內容的所有應用程式可以共用裝載，只要它們提供適當[用途](xref:security/data-protection/consumer-apis/purpose-strings)。</span><span class="sxs-lookup"><span data-stu-id="1dafa-142">When app isolation is disabled, all apps backed by the same keying material can share payloads as long as they provide the appropriate [purposes](xref:security/data-protection/consumer-apis/purpose-strings).</span></span> <span data-ttu-id="1dafa-143">若要提供應用程式隔離在此環境中的，呼叫[SetApplicationName](#setapplicationname)方法的設定物件，並提供每個應用程式的唯一名稱。</span><span class="sxs-lookup"><span data-stu-id="1dafa-143">To provide app isolation in this environment, call the [SetApplicationName](#setapplicationname) method on the configuration object and provide a unique name for each app.</span></span>
 
-<span data-ttu-id="34650-132">如果資料保護系統不會提供 ASP.NET Core 主機 （例如，如果開發人員會具現化它自己透過 DataProtectionProvider 具象型別）、 預設，會停用應用程式隔離和所有應用程式支援相同的金鑰處理資料可以共用裝載，只要它們提供適當的用途。</span><span class="sxs-lookup"><span data-stu-id="34650-132">If the data protection system is not provided by an ASP.NET Core host (e.g., if the developer instantiates it himself via the DataProtectionProvider concrete type), application isolation is disabled by default, and all applications backed by the same keying material can share payloads as long as they provide the appropriate purposes.</span></span> <span data-ttu-id="34650-133">若要提供應用程式隔離在此環境中的，組態物件上呼叫 SetApplicationName 方法，請參閱[程式碼範例](#data-protection-code-sample-application-name)上方。</span><span class="sxs-lookup"><span data-stu-id="34650-133">To provide application isolation in this environment, call the SetApplicationName method on the configuration object, see the [code sample](#data-protection-code-sample-application-name) above.</span></span>
+## <a name="changing-algorithms-with-usecryptographicalgorithms"></a><span data-ttu-id="1dafa-144">變更與 UseCryptographicAlgorithms 演算法</span><span class="sxs-lookup"><span data-stu-id="1dafa-144">Changing algorithms with UseCryptographicAlgorithms</span></span>
 
-<a name=data-protection-changing-algorithms></a>
+<span data-ttu-id="1dafa-145">資料保護堆疊可讓您變更新產生的索引鍵所使用的預設演算法。</span><span class="sxs-lookup"><span data-stu-id="1dafa-145">The Data Protection stack allows you to change the default algorithm used by newly-generated keys.</span></span> <span data-ttu-id="1dafa-146">若要這樣做最簡單的方式是呼叫[UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms)從組態回呼：</span><span class="sxs-lookup"><span data-stu-id="1dafa-146">The simplest way to do this is to call [UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) from the configuration callback:</span></span>
 
-## <a name="changing-algorithms"></a><span data-ttu-id="34650-134">變更演算法</span><span class="sxs-lookup"><span data-stu-id="34650-134">Changing algorithms</span></span>
-
-<span data-ttu-id="34650-135">資料保護堆疊允許變更新產生的索引鍵所使用的預設演算法。</span><span class="sxs-lookup"><span data-stu-id="34650-135">The data protection stack allows changing the default algorithm used by newly-generated keys.</span></span> <span data-ttu-id="34650-136">若要這樣做最簡單的方式是設定回呼，呼叫 UseCryptographicAlgorithms，在下列範例。</span><span class="sxs-lookup"><span data-stu-id="34650-136">The simplest way to do this is to call UseCryptographicAlgorithms from the configuration callback, as in the below example.</span></span>
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="34650-137">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="34650-137">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1dafa-147">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-147">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
 ```csharp
 services.AddDataProtection()
-    .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+    .UseCryptographicAlgorithms(
+        new AuthenticatedEncryptorConfiguration()
     {
         EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
         ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="34650-138">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="34650-138">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1dafa-148">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-148">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
 services.AddDataProtection()
-    .UseCryptographicAlgorithms(new AuthenticatedEncryptionSettings()
+    .UseCryptographicAlgorithms(
+        new AuthenticatedEncryptionSettings()
     {
         EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
         ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
@@ -135,105 +137,106 @@ services.AddDataProtection()
 
 ---
 
-<span data-ttu-id="34650-139">預設的 EncryptionAlgorithm 和 ValidationAlgorithm 分別為 256-AES-CBC 和 HMACSHA256。</span><span class="sxs-lookup"><span data-stu-id="34650-139">The default EncryptionAlgorithm and ValidationAlgorithm are AES-256-CBC and HMACSHA256, respectively.</span></span> <span data-ttu-id="34650-140">透過系統管理員可以設定預設原則[機器寬原則](machine-wide-policy.md)，但 UseCryptographicAlgorithms 明確呼叫將會覆寫預設原則。</span><span class="sxs-lookup"><span data-stu-id="34650-140">The default policy can be set by a system administrator via [Machine Wide Policy](machine-wide-policy.md), but an explicit call to UseCryptographicAlgorithms will override the default policy.</span></span>
+<span data-ttu-id="1dafa-149">預設 EncryptionAlgorithm AES 256 CBC，而預設 ValidationAlgorithm HMACSHA256。</span><span class="sxs-lookup"><span data-stu-id="1dafa-149">The default EncryptionAlgorithm is AES-256-CBC, and the default ValidationAlgorithm is HMACSHA256.</span></span> <span data-ttu-id="1dafa-150">透過系統管理員可以設定預設原則[全機器原則](xref:security/data-protection/configuration/machine-wide-policy)，但明確呼叫`UseCryptographicAlgorithms`會覆寫預設原則。</span><span class="sxs-lookup"><span data-stu-id="1dafa-150">The default policy can be set by a system administrator via a [machine-wide policy](xref:security/data-protection/configuration/machine-wide-policy), but an explicit call to `UseCryptographicAlgorithms` overrides the default policy.</span></span>
 
-<span data-ttu-id="34650-141">呼叫 UseCryptographicAlgorithms 將允許開發人員指定所需的演算法 （從預先定義內建清單），以及開發人員不需要擔心演算法的實作。</span><span class="sxs-lookup"><span data-stu-id="34650-141">Calling UseCryptographicAlgorithms will allow the developer to specify the desired algorithm (from a predefined built-in list), and the developer does not need to worry about the implementation of the algorithm.</span></span> <span data-ttu-id="34650-142">比方說，在上面的資料保護系統案例會嘗試使用 AES 的 CNG 實作，如果在 Windows 上執行，否則它會切換回 managed System.Security.Cryptography.Aes 類別。</span><span class="sxs-lookup"><span data-stu-id="34650-142">For instance, in the scenario above the data protection system will attempt to use the CNG implementation of AES if running on Windows, otherwise it will fall back to the managed System.Security.Cryptography.Aes class.</span></span>
+<span data-ttu-id="1dafa-151">呼叫`UseCryptographicAlgorithms`可讓您指定從預先定義的內建清單所需的演算法。</span><span class="sxs-lookup"><span data-stu-id="1dafa-151">Calling `UseCryptographicAlgorithms` allows you to specify the desired algorithm from a predefined built-in list.</span></span> <span data-ttu-id="1dafa-152">您不需要擔心演算法的實作。</span><span class="sxs-lookup"><span data-stu-id="1dafa-152">You don't need to worry about the implementation of the algorithm.</span></span> <span data-ttu-id="1dafa-153">在上述案例中，資料保護系統會嘗試使用 AES 的 CNG 實作，如果在 Windows 上執行。</span><span class="sxs-lookup"><span data-stu-id="1dafa-153">In the scenario above, the Data Protection system attempts to use the CNG implementation of AES if running on Windows.</span></span> <span data-ttu-id="1dafa-154">否則，它就會回到 managed [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes)類別。</span><span class="sxs-lookup"><span data-stu-id="1dafa-154">Otherwise, it falls back to the managed [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes) class.</span></span>
 
-<span data-ttu-id="34650-143">如果想要透過 UseCustomCryptographicAlgorithms，呼叫中所述，開發人員可以手動指定實作下面範例。</span><span class="sxs-lookup"><span data-stu-id="34650-143">The developer can manually specify an implementation if desired via a call to UseCustomCryptographicAlgorithms, as show in the below examples.</span></span>
+<span data-ttu-id="1dafa-155">您可以手動指定的實作，透過對呼叫[UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms)。</span><span class="sxs-lookup"><span data-stu-id="1dafa-155">You can manually specify an implementation via a call to [UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms).</span></span>
 
->[!TIP]
-> <span data-ttu-id="34650-144">變更演算法不會影響鑰匙圈中現有的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="34650-144">Changing algorithms does not affect existing keys in the key ring.</span></span> <span data-ttu-id="34650-145">它只會影響新產生的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="34650-145">It only affects newly-generated keys.</span></span>
+> [!TIP]
+> <span data-ttu-id="1dafa-156">變更演算法不會影響鑰匙圈中現有的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="1dafa-156">Changing algorithms doesn't affect existing keys in the key ring.</span></span> <span data-ttu-id="1dafa-157">它只會影響新產生的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="1dafa-157">It only affects newly-generated keys.</span></span>
 
-<a name=data-protection-changing-algorithms-custom-managed></a>
+### <a name="specifying-custom-managed-algorithms"></a><span data-ttu-id="1dafa-158">指定受管理的自訂演算法</span><span class="sxs-lookup"><span data-stu-id="1dafa-158">Specifying custom managed algorithms</span></span>
 
-### <a name="specifying-custom-managed-algorithms"></a><span data-ttu-id="34650-146">指定受管理的自訂演算法</span><span class="sxs-lookup"><span data-stu-id="34650-146">Specifying custom managed algorithms</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1dafa-159">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-159">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="34650-147">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="34650-147">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
-
-<span data-ttu-id="34650-148">若要指定受管理的自訂演算法，建立指向實作類型的 ManagedAuthenticatedEncryptorConfiguration 執行個體。</span><span class="sxs-lookup"><span data-stu-id="34650-148">To specify custom managed algorithms, create a ManagedAuthenticatedEncryptorConfiguration instance that points to the implementation types.</span></span>
+<span data-ttu-id="1dafa-160">若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration)指向實作類型的執行個體：</span><span class="sxs-lookup"><span data-stu-id="1dafa-160">To specify custom managed algorithms, create a [ManagedAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.managedauthenticatedencryptorconfiguration) instance that points to the implementation types:</span></span>
 
 ```csharp
 serviceCollection.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new ManagedAuthenticatedEncryptorConfiguration()
+    .UseCustomCryptographicAlgorithms(
+        new ManagedAuthenticatedEncryptorConfiguration()
     {
-        // a type that subclasses SymmetricAlgorithm
+        // A type that subclasses SymmetricAlgorithm
         EncryptionAlgorithmType = typeof(Aes),
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256,
 
-        // a type that subclasses KeyedHashAlgorithm
+        // A type that subclasses KeyedHashAlgorithm
         ValidationAlgorithmType = typeof(HMACSHA256)
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="34650-149">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="34650-149">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1dafa-161">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-161">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="34650-150">若要指定受管理的自訂演算法，建立指向實作類型的 ManagedAuthenticatedEncryptionSettings 執行個體。</span><span class="sxs-lookup"><span data-stu-id="34650-150">To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionSettings instance that points to the implementation types.</span></span>
+<span data-ttu-id="1dafa-162">若要指定受管理的自訂演算法，建立[ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings)指向實作類型的執行個體：</span><span class="sxs-lookup"><span data-stu-id="1dafa-162">To specify custom managed algorithms, create a [ManagedAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.managedauthenticatedencryptionsettings) instance that points to the implementation types:</span></span>
 
 ```csharp
 serviceCollection.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new ManagedAuthenticatedEncryptionSettings()
+    .UseCustomCryptographicAlgorithms(
+        new ManagedAuthenticatedEncryptionSettings()
     {
-        // a type that subclasses SymmetricAlgorithm
+        // A type that subclasses SymmetricAlgorithm
         EncryptionAlgorithmType = typeof(Aes),
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256,
 
-        // a type that subclasses KeyedHashAlgorithm
+        // A type that subclasses KeyedHashAlgorithm
         ValidationAlgorithmType = typeof(HMACSHA256)
     });
 ```
 
 ---
 
-<span data-ttu-id="34650-151">通常\*類型屬性必須指向實體，可具現化 （透過公用的無參數建構函式） SymmetricAlgorithm 和 KeyedHashAlgorithm，實作雖然之系統特殊案例某些等值 typeof(Aes) 為了方便起見.</span><span class="sxs-lookup"><span data-stu-id="34650-151">Generally the \*Type properties must point to concrete, instantiable (via a public parameterless ctor) implementations of SymmetricAlgorithm and KeyedHashAlgorithm, though the system special-cases some values like typeof(Aes) for convenience.</span></span>
+<span data-ttu-id="1dafa-163">通常\*類型屬性必須指向實體，可具現化 （透過公用的無參數建構函式） 的實作[SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)和[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)，但是系統特殊案例某些等值`typeof(Aes)`為了方便起見。</span><span class="sxs-lookup"><span data-stu-id="1dafa-163">Generally the \*Type properties must point to concrete, instantiable (via a public parameterless ctor) implementations of [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) and [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), though the system special-cases some values like `typeof(Aes)` for convenience.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="34650-152">SymmetricAlgorithm 必須 ≥ 128 位元金鑰長度和區塊大小為 ≥ 64 位元為單位，就必須支援 CBC 模式加密 PKCS #7 填補。</span><span class="sxs-lookup"><span data-stu-id="34650-152">The SymmetricAlgorithm must have a key length of ≥ 128 bits and a block size of ≥ 64 bits, and it must support CBC-mode encryption with PKCS #7 padding.</span></span> <span data-ttu-id="34650-153">KeyedHashAlgorithm 必須有摘要大小 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。</span><span class="sxs-lookup"><span data-stu-id="34650-153">The KeyedHashAlgorithm must have a digest size of >= 128 bits, and it must support keys of length equal to the hash algorithm's digest length.</span></span> <span data-ttu-id="34650-154">無法為 HMAC 絕對必要 KeyedHashAlgorithm。</span><span class="sxs-lookup"><span data-stu-id="34650-154">The KeyedHashAlgorithm is not strictly required to be HMAC.</span></span>
+> <span data-ttu-id="1dafa-164">`SymmetricAlgorithm`的金鑰長度必須 > = 128 位元的區塊大小 > = 64 位元，而且它必須支援 CBC 模式加密 PKCS #7 填補。</span><span class="sxs-lookup"><span data-stu-id="1dafa-164">The `SymmetricAlgorithm` must have a key length of >= 128 bits, a block size of >= 64 bits, and it must support CBC-mode encryption with PKCS #7 padding.</span></span> <span data-ttu-id="1dafa-165">`KeyedHashAlgorithm`的摘要大小必須 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。</span><span class="sxs-lookup"><span data-stu-id="1dafa-165">The `KeyedHashAlgorithm` must have a digest size of >= 128 bits, and it must support keys of length equal to the hash algorithm's digest length.</span></span> <span data-ttu-id="1dafa-166">`KeyedHashAlgorithm`不是絕對必要，是 HMAC。</span><span class="sxs-lookup"><span data-stu-id="1dafa-166">The `KeyedHashAlgorithm` isn't strictly required to be HMAC.</span></span>
+> <span data-ttu-id="1dafa-167">SymmetricAlgorithm 必須 ≥ 128 位元金鑰長度和區塊大小為 ≥ 64 位元為單位，就必須支援 CBC 模式加密 PKCS #7 填補。</span><span class="sxs-lookup"><span data-stu-id="1dafa-167">The SymmetricAlgorithm must have a key length of ≥ 128 bits and a block size of ≥ 64 bits, and it must support CBC-mode encryption with PKCS #7 padding.</span></span> <span data-ttu-id="1dafa-168">KeyedHashAlgorithm 必須有摘要大小 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。</span><span class="sxs-lookup"><span data-stu-id="1dafa-168">The KeyedHashAlgorithm must have a digest size of >= 128 bits, and it must support keys of length equal to the hash algorithm's digest length.</span></span> <span data-ttu-id="1dafa-169">無法為 HMAC 絕對必要 KeyedHashAlgorithm。</span><span class="sxs-lookup"><span data-stu-id="1dafa-169">The KeyedHashAlgorithm is not strictly required to be HMAC.</span></span>
 
-<a name=data-protection-changing-algorithms-cng></a>
+### <a name="specifying-custom-windows-cng-algorithms"></a><span data-ttu-id="1dafa-170">指定自訂的 Windows CNG 演算法</span><span class="sxs-lookup"><span data-stu-id="1dafa-170">Specifying custom Windows CNG algorithms</span></span>
 
-### <a name="specifying-custom-windows-cng-algorithms"></a><span data-ttu-id="34650-155">指定自訂的 Windows CNG 演算法</span><span class="sxs-lookup"><span data-stu-id="34650-155">Specifying custom Windows CNG algorithms</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1dafa-171">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-171">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="34650-156">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="34650-156">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
-
-<span data-ttu-id="34650-157">若要指定自訂的 Windows CNG 演算法使用 CBC 模式加密 + HMAC 驗證，請建立 CngCbcAuthenticatedEncryptorConfiguration 執行個體，其中包含演算法的資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-157">To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptorConfiguration instance that contains the algorithmic information.</span></span>
+<span data-ttu-id="1dafa-172">若要指定自訂的 Windows CNG 演算法使用 CBC 模式的加密 HMAC 驗證時，建立[CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration)執行個體，其中包含演算法的資訊：</span><span class="sxs-lookup"><span data-stu-id="1dafa-172">To specify a custom Windows CNG algorithm using CBC-mode encryption with HMAC validation, create a [CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) instance that contains the algorithmic information:</span></span>
 
 ```csharp
 services.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new CngCbcAuthenticatedEncryptorConfiguration()
+    .UseCustomCryptographicAlgorithms(
+        new CngCbcAuthenticatedEncryptorConfiguration()
     {
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         EncryptionAlgorithm = "AES",
         EncryptionAlgorithmProvider = null,
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256,
 
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         HashAlgorithm = "SHA256",
         HashAlgorithmProvider = null
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="34650-158">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="34650-158">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1dafa-173">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-173">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="34650-159">若要指定自訂的 Windows CNG 演算法使用 CBC 模式加密 + HMAC 驗證，請建立 CngCbcAuthenticatedEncryptionSettings 執行個體，其中包含演算法的資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-159">To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionSettings instance that contains the algorithmic information.</span></span>
+<span data-ttu-id="1dafa-174">若要指定自訂的 Windows CNG 演算法使用 CBC 模式的加密 HMAC 驗證時，建立[CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings)執行個體，其中包含演算法的資訊：</span><span class="sxs-lookup"><span data-stu-id="1dafa-174">To specify a custom Windows CNG algorithm using CBC-mode encryption with HMAC validation, create a [CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) instance that contains the algorithmic information:</span></span>
 
 ```csharp
 services.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new CngCbcAuthenticatedEncryptionSettings()
+    .UseCustomCryptographicAlgorithms(
+        new CngCbcAuthenticatedEncryptionSettings()
     {
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         EncryptionAlgorithm = "AES",
         EncryptionAlgorithmProvider = null,
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256,
 
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         HashAlgorithm = "SHA256",
         HashAlgorithmProvider = null
     });
@@ -242,38 +245,40 @@ services.AddDataProtection()
 ---
 
 > [!NOTE]
-> <span data-ttu-id="34650-160">對稱的區塊加密演算法必須 ≥ 128 位元金鑰長度和區塊大小為 ≥ 64 位元，且它必須支援 PKCS #7 填補 CBC 模式加密。</span><span class="sxs-lookup"><span data-stu-id="34650-160">The symmetric block cipher algorithm must have a key length of ≥ 128 bits and a block size of ≥ 64 bits, and it must support CBC-mode encryption with PKCS #7 padding.</span></span> <span data-ttu-id="34650-161">雜湊演算法必須有摘要大小 > = 128 位元，且必須支援開啟 BCRYPT_ALG_HANDLE_HMAC_FLAG 旗標。</span><span class="sxs-lookup"><span data-stu-id="34650-161">The hash algorithm must have a digest size of >= 128 bits and must support being opened with the BCRYPT_ALG_HANDLE_HMAC_FLAG flag.</span></span> <span data-ttu-id="34650-162">\*可以設定為 null，以使用指定之演算法的預設提供者提供者屬性。</span><span class="sxs-lookup"><span data-stu-id="34650-162">The \*Provider properties can be set to null to use the default provider for the specified algorithm.</span></span> <span data-ttu-id="34650-163">請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-163">See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.</span></span>
+> <span data-ttu-id="1dafa-175">對稱的區塊加密演算法的金鑰長度必須 > = 128 位元的區塊大小 > = 64 位元，而且它必須支援 CBC 模式加密 PKCS #7 填補。</span><span class="sxs-lookup"><span data-stu-id="1dafa-175">The symmetric block cipher algorithm must have a key length of >= 128 bits, a block size of >= 64 bits, and it must support CBC-mode encryption with PKCS #7 padding.</span></span> <span data-ttu-id="1dafa-176">雜湊演算法必須有摘要大小 > = 128 位元，且必須支援正在開啟與 BCRYPT\_ALG\_處理\_HMAC\_旗標的旗標。</span><span class="sxs-lookup"><span data-stu-id="1dafa-176">The hash algorithm must have a digest size of >= 128 bits and must support being opened with the BCRYPT\_ALG\_HANDLE\_HMAC\_FLAG flag.</span></span> <span data-ttu-id="1dafa-177">\*可以設定為 null，以使用指定之演算法的預設提供者提供者屬性。</span><span class="sxs-lookup"><span data-stu-id="1dafa-177">The \*Provider properties can be set to null to use the default provider for the specified algorithm.</span></span> <span data-ttu-id="1dafa-178">請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="1dafa-178">See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="34650-164">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="34650-164">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="1dafa-179">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-179">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="34650-165">若要指定自訂的 Windows CNG 演算法使用 Galois/計數器模式加密 + 驗證，請建立 CngGcmAuthenticatedEncryptorConfiguration 執行個體，其中包含演算法的資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-165">To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption + validation, create a CngGcmAuthenticatedEncryptorConfiguration instance that contains the algorithmic information.</span></span>
+<span data-ttu-id="1dafa-180">若要指定自訂的 Windows CNG 演算法使用 Galois/計數器模式加密驗證時，建立[CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration)執行個體，其中包含演算法的資訊：</span><span class="sxs-lookup"><span data-stu-id="1dafa-180">To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption with validation, create a [CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) instance that contains the algorithmic information:</span></span>
 
 ```csharp
 services.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new CngGcmAuthenticatedEncryptorConfiguration()
+    .UseCustomCryptographicAlgorithms(
+        new CngGcmAuthenticatedEncryptorConfiguration()
     {
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         EncryptionAlgorithm = "AES",
         EncryptionAlgorithmProvider = null,
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="34650-166">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="34650-166">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="1dafa-181">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="1dafa-181">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="34650-167">若要指定自訂的 Windows CNG 演算法使用 Galois/計數器模式加密 + 驗證，請建立 CngGcmAuthenticatedEncryptionSettings 執行個體，其中包含演算法的資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-167">To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption + validation, create a CngGcmAuthenticatedEncryptionSettings instance that contains the algorithmic information.</span></span>
+<span data-ttu-id="1dafa-182">若要指定自訂的 Windows CNG 演算法使用 Galois/計數器模式加密驗證時，建立[CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings)執行個體，其中包含演算法的資訊：</span><span class="sxs-lookup"><span data-stu-id="1dafa-182">To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption with validation, create a [CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) instance that contains the algorithmic information:</span></span>
 
 ```csharp
 services.AddDataProtection()
-    .UseCustomCryptographicAlgorithms(new CngGcmAuthenticatedEncryptionSettings()
+    .UseCustomCryptographicAlgorithms(
+        new CngGcmAuthenticatedEncryptionSettings()
     {
-        // passed to BCryptOpenAlgorithmProvider
+        // Passed to BCryptOpenAlgorithmProvider
         EncryptionAlgorithm = "AES",
         EncryptionAlgorithmProvider = null,
 
-        // specified in bits
+        // Specified in bits
         EncryptionAlgorithmKeySize = 256
     });
 ```
@@ -281,13 +286,20 @@ services.AddDataProtection()
 ---
 
 > [!NOTE]
-> <span data-ttu-id="34650-168">對稱的區塊加密演算法必須 ≥ 128 位元金鑰長度和區塊大小為剛好為 128 位元，且它必須支援 GCM 加密。</span><span class="sxs-lookup"><span data-stu-id="34650-168">The symmetric block cipher algorithm must have a key length of ≥ 128 bits and a block size of exactly 128 bits, and it must support GCM encryption.</span></span> <span data-ttu-id="34650-169">EncryptionAlgorithmProvider 屬性可以設定為 null，使用指定之演算法的預設提供者。</span><span class="sxs-lookup"><span data-stu-id="34650-169">The EncryptionAlgorithmProvider property can be set to null to use the default provider for the specified algorithm.</span></span> <span data-ttu-id="34650-170">請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="34650-170">See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.</span></span>
+> <span data-ttu-id="1dafa-183">對稱的區塊加密演算法的金鑰長度必須 > = 128 位元，區塊大小為剛好為 128 位元，而且它必須支援 GCM 加密。</span><span class="sxs-lookup"><span data-stu-id="1dafa-183">The symmetric block cipher algorithm must have a key length of >= 128 bits, a block size of exactly 128 bits, and it must support GCM encryption.</span></span> <span data-ttu-id="1dafa-184">您可以設定[EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider)屬性設為 null 的預設提供者用於指定的演算法。</span><span class="sxs-lookup"><span data-stu-id="1dafa-184">You can set the [EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) property to null to use the default provider for the specified algorithm.</span></span> <span data-ttu-id="1dafa-185">請參閱[BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx)文件的詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="1dafa-185">See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.</span></span>
 
-### <a name="specifying-other-custom-algorithms"></a><span data-ttu-id="34650-171">指定其他的自訂演算法</span><span class="sxs-lookup"><span data-stu-id="34650-171">Specifying other custom algorithms</span></span>
+### <a name="specifying-other-custom-algorithms"></a><span data-ttu-id="1dafa-186">指定其他的自訂演算法</span><span class="sxs-lookup"><span data-stu-id="1dafa-186">Specifying other custom algorithms</span></span>
 
-<span data-ttu-id="34650-172">雖然不公開為第一級的應用程式開發介面，資料保護系統是演算法的可擴充的特點可讓您指定幾乎任何類型。</span><span class="sxs-lookup"><span data-stu-id="34650-172">Though not exposed as a first-class API, the data protection system is extensible enough to allow specifying almost any kind of algorithm.</span></span> <span data-ttu-id="34650-173">例如，它是核心的可以保留在 HSM 中所包含的所有索引鍵，並提供自訂實作加密和解密常式。</span><span class="sxs-lookup"><span data-stu-id="34650-173">For example, it is possible to keep all keys contained within an HSM and to provide a custom implementation of the core encryption and decryption routines.</span></span> <span data-ttu-id="34650-174">IAuthenticatedEncryptorConfiguration 中核心加密擴充性區段，如需詳細資訊，請參閱。</span><span class="sxs-lookup"><span data-stu-id="34650-174">See IAuthenticatedEncryptorConfiguration in the core cryptography extensibility section for more information.</span></span>
+<span data-ttu-id="1dafa-187">雖然不公開為第一級的應用程式開發介面，資料保護系統是演算法的可足夠的延伸，可讓您指定幾乎任何類型。</span><span class="sxs-lookup"><span data-stu-id="1dafa-187">Though not exposed as a first-class API, the Data Protection system is extensible enough to allow specifying almost any kind of algorithm.</span></span> <span data-ttu-id="1dafa-188">例如，它是核心的可以保留包含在硬體安全性模組 (HSM) 的所有索引鍵，並提供自訂實作加密和解密常式。</span><span class="sxs-lookup"><span data-stu-id="1dafa-188">For example, it's possible to keep all keys contained within a Hardware Security Module (HSM) and to provide a custom implementation of the core encryption and decryption routines.</span></span> <span data-ttu-id="1dafa-189">請參閱[IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor)中[核心加密擴充性](xref:security/data-protection/extensibility/core-crypto)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="1dafa-189">See [IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) in [Core cryptography extensibility](xref:security/data-protection/extensibility/core-crypto) for more information.</span></span>
 
-### <a name="see-also"></a><span data-ttu-id="34650-175">請參閱</span><span class="sxs-lookup"><span data-stu-id="34650-175">See also</span></span>
+## <a name="persisting-keys-when-hosting-in-a-docker-container"></a><span data-ttu-id="1dafa-190">裝載在 Docker 容器中時，保存索引鍵</span><span class="sxs-lookup"><span data-stu-id="1dafa-190">Persisting keys when hosting in a Docker container</span></span>
 
-* [<span data-ttu-id="34650-176">非 DI 感知案例</span><span class="sxs-lookup"><span data-stu-id="34650-176">Non DI Aware Scenarios</span></span>](non-di-scenarios.md)
-* [<span data-ttu-id="34650-177">電腦全域原則</span><span class="sxs-lookup"><span data-stu-id="34650-177">Machine Wide Policy</span></span>](machine-wide-policy.md)
+<span data-ttu-id="1dafa-191">在裝載時[Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/)容器中，索引鍵應該維護在：</span><span class="sxs-lookup"><span data-stu-id="1dafa-191">When hosting in a [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/) container, keys should be maintained in either:</span></span>
+
+* <span data-ttu-id="1dafa-192">是持續發生，例如共用磁碟區或主機掛接的磁碟區的容器的存留期的 Docker 磁碟區的資料夾。</span><span class="sxs-lookup"><span data-stu-id="1dafa-192">A folder that's a Docker volume that persists beyond the container's lifetime, such as a shared volume or a host-mounted volume.</span></span>
+* <span data-ttu-id="1dafa-193">外部提供者，例如[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)。</span><span class="sxs-lookup"><span data-stu-id="1dafa-193">An external provider, such as [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) or [Redis](https://redis.io/).</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="1dafa-194">請參閱</span><span class="sxs-lookup"><span data-stu-id="1dafa-194">See also</span></span>
+
+* [<span data-ttu-id="1dafa-195">非 DI 感知案例</span><span class="sxs-lookup"><span data-stu-id="1dafa-195">Non DI Aware Scenarios</span></span>](xref:security/data-protection/configuration/non-di-scenarios)
+* [<span data-ttu-id="1dafa-196">電腦全域原則</span><span class="sxs-lookup"><span data-stu-id="1dafa-196">Machine Wide Policy</span></span>](xref:security/data-protection/configuration/machine-wide-policy)

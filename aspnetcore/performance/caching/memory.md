@@ -1,28 +1,26 @@
 ---
 title: "記憶體中快取中 ASP.NET Core"
 author: rick-anderson
-description: "示範如何快取在記憶體中 ASP.NET Core 的資料。"
-keywords: "ASP.NET Core，快取中，記憶體中效能"
+description: "了解如何快取在記憶體中 ASP.NET Core 的資料。"
 ms.author: riande
 manager: wpickett
 ms.date: 12/14/2016
 ms.topic: article
-ms.assetid: 819511cf-d33e-410a-b5a9-bef7fa64d2f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ce865427b6ca44c76888908fdeea9cd45c881c4
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 23312e73b4530b24b8479e2d379f16315b672ca4
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="introduction-to-in-memory-caching-in-aspnet-core"></a>介紹記憶體中快取中 ASP.NET Core
+# <a name="in-memory-caching-in-aspnet-core"></a>記憶體中快取中 ASP.NET Core
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [John Luo](https://github.com/JunTaoLuo)，和[Steve Smith](https://ardalis.com/)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>快取的基本概念
 
@@ -89,7 +87,7 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 使用`CancellationTokenSource`可讓多個快取項目被收回為群組。 與`using`上述程式碼模式，快取項目內建立`using`區塊將會繼承觸發程序和到期日設定。
 
-### <a name="additional-notes"></a>其他備註
+## <a name="additional-notes"></a>其他備註
 
 - 使用時回呼重新擴展快取項目：
 
@@ -98,7 +96,11 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 - 若要建立另一個使用一個快取項目時，子將複製的父項目到期語彙基元和以時間為基礎的到期日設定。 子不是手動移除已過期或更新的父項目。
 
-### <a name="other-resources"></a>其他資源
+## <a name="additional-resources"></a>其他資源
 
-* [使用分散式快取](distributed.md)
-* [回應快取中介軟體](middleware.md)
+* [使用分散式快取](xref:performance/caching/distributed)
+* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [回應快取](xref:performance/caching/response)
+* [回應快取中介軟體](xref:performance/caching/middleware)
+* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

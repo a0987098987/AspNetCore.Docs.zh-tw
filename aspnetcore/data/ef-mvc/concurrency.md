@@ -11,11 +11,11 @@ ms.assetid: 15e79e15-bda5-441d-80c7-8032a2628605
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 9a9ce7eed7ab43a11e1285dec4aa6c0715889dd2
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: ffe8ef968d7bde9755d5c55389f6f1548f03ffec
+ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>處理並行衝突的 EF Core 與 ASP.NET Core MVC 教學課程 (10-8)
 

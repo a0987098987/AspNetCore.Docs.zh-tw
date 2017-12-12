@@ -11,11 +11,11 @@ ms.assetid: 9c826a76-fbd2-46b5-978d-6ca6df53531a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: eb5049d4d63c224ca74fc39072ae2c0d98ba330d
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: f217e5264742826f285444dcbaea4b28b97c4d7e
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組 
 
@@ -169,11 +169,11 @@ HTTP 處理常式看起來像這樣：
 
 部分模組和處理常式有儲存在組態選項*Web.config*。不過，在 ASP.NET Core 新的組態模型會使用取代*Web.config*。
 
-新[組態系統](../fundamentals/configuration.md)提供您下列選項可用來解決這個問題：
+新[組態系統](xref:fundamentals/configuration/index)提供您下列選項可用來解決這個問題：
 
 * 直接插入到中介軟體選項中所示[下一節](#loading-middleware-options-through-direct-injection)。
 
-* 使用[選項模式](../fundamentals/configuration.md#options-config-objects):
+* 使用[選項模式](xref:fundamentals/configuration/options):
 
 1.  建立類別以包裝您的中介軟體選項，例如：
 
@@ -384,7 +384,7 @@ public async Task Invoke(HttpContext httpContext)
 
 * [HTTP 處理常式和 HTTP 模組概觀](https://docs.microsoft.com/iis/configuration/system.webserver/)
 
-* [組態](../fundamentals/configuration.md)
+* [組態](xref:fundamentals/configuration/index)
 
 * [應用程式啟動](../fundamentals/startup.md)
 

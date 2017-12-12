@@ -11,15 +11,15 @@ ms.assetid: 492b3a7e-04c5-461b-b96a-38ecee5c64bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: hosting/iis-modules
-ms.openlocfilehash: afad266874d3ac059d9f3a6d26a5330a0006320b
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: fee8e830ab43f731de9c90fad06b577662760f87
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>使用 IIS 模組與 ASP.NET Core
 
-由[Luke Latham](https://github.com/guardrex)
+作者：[Luke Latham](https://github.com/guardrex)
 
 由 IIS 所裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 原生 IIS 模組的某些和所有 IIS 管理模組並非可用來處理要求的 ASP.NET Core 應用程式。 在許多情況下，ASP.NET Core 可提供替代性 IIS 原生和 managed 模組的功能。
 
@@ -37,10 +37,10 @@ ms.lasthandoff: 09/24/2017
 **摘要式驗證**<br>`DigestAuthenticationModule` | 是 | 
 **目錄瀏覽**<br>`DirectoryListingModule` | 否 | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enabling-directory-browsing)
 **動態壓縮**<br>`DynamicCompressionModule` | 是 | [回應壓縮中介軟體](xref:performance/response-compression)
-**追蹤**<br>`FailedRequestsTracingModule` | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging#the-tracesource-provider)
+**追蹤**<br>`FailedRequestsTracingModule` | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index#the-tracesource-provider)
 **檔案快取**<br>`FileCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware)
 **HTTP 快取**<br>`HttpCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware)
-**HTTP 記錄**<br>`HttpLoggingModule` | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging)<br>實作： [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)， [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)， [NLog](https://github.com/NLog/NLog.Extensions.Logging)， [Serilog](https://github.com/serilog/serilog-extensions-logging)
+**HTTP 記錄**<br>`HttpLoggingModule` | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作： [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)， [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)， [NLog](https://github.com/NLog/NLog.Extensions.Logging)， [Serilog](https://github.com/serilog/serilog-extensions-logging)
 **HTTP 重新導向**<br>`HttpRedirectionModule` | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting)
 **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | 是 | 
 **IP 及網域限制**<br>`IpRestrictionModule` | 是 | 

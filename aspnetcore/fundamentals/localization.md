@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
 ms.openlocfilehash: 1922037245a33f49c17f1c361003260462d96264
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 

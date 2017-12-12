@@ -1,8 +1,8 @@
 ---
 title: "在 ASP.NET Core Google 外部登入安裝程式"
 author: rick-anderson
-description: "在 ASP.NET Core Google 外部登入安裝程式"
-keywords: ASP.NET Core,
+description: "本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Google 帳戶使用者驗證。"
+keywords: "ASP.NET Core，Google 登入、 驗證"
 ms.author: riande
 manager: wpickett
 ms.date: 08/02/2017
@@ -10,15 +10,13 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/google-logins
-ms.openlocfilehash: 8723a74250ff1b0a63139057bfc17fdd31dd169e
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: af316d832de7356d539eaaab5be6485639030c7a
+ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="configuring-google-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Google 驗證
-
-<a name=security-authentication-google-logins></a>
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -89,13 +87,6 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="configure-google-authentication"></a>設定 Google 驗證
 
-在本教學課程中使用的專案範本，可確保[Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)安裝封裝。
-
- * 若要安裝此套件與 Visual Studio 2017，以滑鼠右鍵按一下專案，然後選取**管理 NuGet 封裝**。
- * 若要安裝的.NET Core CLI，請在您的專案目錄中執行下列：
-
-   `dotnet add package Microsoft.AspNetCore.Authentication.Google`
-
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 加入在 Google 服務`ConfigureServices`方法中的*Startup.cs*檔案：
@@ -115,6 +106,13 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 [!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+在本教學課程中使用的專案範本，可確保[Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)安裝封裝。
+
+ * 若要安裝此套件與 Visual Studio 2017，以滑鼠右鍵按一下專案，然後選取**管理 NuGet 封裝**。
+ * 若要安裝的.NET Core CLI，請在您的專案目錄中執行下列：
+
+   `dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
 新增 Google 中的介軟體中`Configure`方法中的*Startup.cs*檔案：
 

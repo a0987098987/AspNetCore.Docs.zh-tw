@@ -1,8 +1,8 @@
 ---
 title: "以原則為基礎的自訂授權"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件說明如何建立和使用 ASP.NET Core 應用程式中的自訂授權原則的處理常式。"
+keywords: "ASP.NET Core 授權、 自訂原則、 授權原則"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 5021b5d20f6d9b9a4d8889f25b5e41f2c9306f64
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 0281d054204a11acc2cf11cf5fca23a8f70aad8e
+ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="custom-policy-based-authorization"></a>以原則為基礎的自訂授權
 
-<a name=security-authorization-policies-based></a>
+<a name="security-authorization-policies-based"></a>
 
-基本上[角色授權](roles.md#security-authorization-role-based)和[宣告授權](claims.md#security-authorization-claims-based)使需求的使用、 需求和預先設定的原則的處理常式。 這些建置組塊可讓您快速的程式碼，以便更豐富、 可重複使用和授權可輕鬆地測試結構授權評估。
+基本上，[角色授權](roles.md)和[宣告授權](claims.md)使需求的使用、 需求，並預先設定的原則的處理常式。 這些建置組塊可讓您快速的程式碼，以便更豐富、 可重複使用和授權可輕鬆地測試結構授權評估。
 
 授權原則是由一或多個需求所組成，並中註冊應用程式啟動時做為授權服務組態的一部分`ConfigureServices`中*Startup.cs*檔案。
 
@@ -58,7 +58,7 @@ public class AlcoholPurchaseRequirementsController : Controller
 
 ## <a name="requirements"></a>需求
 
-授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。 在我們的最短使用期限原則的需求，我們有會是單一參數的最低存在時間。 必須實作一項需求`IAuthorizationRequirement`。 這是空的標記介面。 參數化的最低年齡要求 」 可能的實作，如下所示。
+授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。 在最短使用期限原則中，我們的需求會是單一參數的最低存在時間。 必須實作一項需求`IAuthorizationRequirement`。 這是空的標記介面。 參數化的最低年齡要求 」 可能的實作，如下所示。
 
 ```csharp
 public class MinimumAgeRequirement : IAuthorizationRequirement
@@ -74,13 +74,13 @@ public class MinimumAgeRequirement : IAuthorizationRequirement
 
 一項需求不需要將資料或屬性。
 
-<a name=security-authorization-policies-based-authorization-handler></a>
+<a name="security-authorization-policies-based-authorization-handler"></a>
 
 ## <a name="authorization-handlers"></a>授權的處理常式
 
 授權處理常式會負責評估的一項需求的任何屬性。 授權的處理常式必須評估他們提供`AuthorizationHandlerContext`決定如果允許授權。 可以有一項需求[多個處理常式](policies.md#security-authorization-policies-based-multiple-handlers)。 處理常式必須繼承`AuthorizationHandler<T>`其中 T 是它所處理的需求。
 
-<a name=security-authorization-handler-example></a>
+<a name="security-authorization-handler-example"></a>
 
 最短使用期限處理常式可能如下所示：
 
@@ -114,10 +114,11 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 }
 ```
 
-上方的程式碼我們先來看看目前的使用者主體已宣告它發出的簽發者，我們已經知道與信任的出生日期。 如果宣告是遺漏我們無法授權讓我們決定傳回。 如果我們擁有宣告時，我們找出舊的使用者，且符合傳入要求的最低存在時間然後授權已成功。 成功授權之後我們呼叫`context.Succeed()`中的需求，已成功做為參數傳遞。
+上述程式碼，我們先來看看目前的使用者主體已宣告它發出的簽發者，我們已經知道與信任的出生日期。 如果宣告是遺漏我們無法授權讓我們決定傳回。 如果我們擁有宣告時，我們找出舊的使用者，且符合傳入要求的最低存在時間然後授權已成功。 成功授權之後我們呼叫`context.Succeed()`中的需求，已成功做為參數傳遞。
 
-<a name=security-authorization-policies-based-handler-registration></a>
+<a name="security-authorization-policies-based-handler-registration"></a>
 
+### <a name="handler-registration"></a>處理常式註冊
 處理常式必須是集合中註冊服務在設定期間例如
 
 ```csharp
@@ -148,9 +149,9 @@ public void ConfigureServices(IServiceCollection services)
 
 * 若要保證失敗，即使成功之需求的其他處理常式，呼叫`context.Fail`。
 
-不論您呼叫您的處理常式內之需求的所有處理常式會呼叫時的原則需要的需求。 這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。
+不論您呼叫您的處理常式內，將原則需要需求時呼叫之需求的所有處理常式。 這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。
 
-<a name=security-authorization-policies-based-multiple-handlers></a>
+<a name="security-authorization-policies-based-multiple-handlers"></a>
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>為什麼需要多個處理常式之需求？
 
@@ -195,7 +196,7 @@ public class HasTemporaryStickerHandler : AuthorizationHandler<EnterBuildingRequ
 
 可能的情況下是簡單程式碼來表達履行原則。 很可能只需要提供`Func<AuthorizationHandlerContext, bool>`時設定與原則`RequireAssertion`原則產生器。
 
-例如先前`BadgeEntryHandler`可以改寫，如下所示。
+例如先前`BadgeEntryHandler`可以改寫，如下所示：
 
 ```csharp
 services.AddAuthorization(options =>

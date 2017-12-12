@@ -1,7 +1,7 @@
 ---
 title: "在 ASP.NET Core 瀏覽器連結"
 author: ncarandini
-description: "了解瀏覽器連結的連結與一或多個 web 瀏覽器的開發環境的 Visual Studio 功能的方式。"
+description: "說明瀏覽器連結的連結與一或多個 web 瀏覽器的開發環境的 Visual Studio 功能的方式。"
 keywords: "ASP.NET Core，瀏覽器連結 CSS 同步處理"
 ms.author: riande
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-browserlink
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67ddc58e38962bd876050739a2a1447be4f589bb
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: b69d085e8bee4cdac2dff08b46a95a8869e263b7
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="browser-link-in-aspnet-core"></a>在 ASP.NET Core 瀏覽器連結 
 
@@ -81,10 +81,10 @@ if (env.IsDevelopment())
 * 重新整理 web 應用程式在數個瀏覽器中的一次。
 * 開啟**瀏覽器連結儀表板**。
 * 啟用或停用**瀏覽器連結**。 附註： 預設會在 Visual Studio 2017 (15.3)，停用瀏覽器連結。
-* 啟用或停用 CSS 自動同步處理。
+* 啟用或停用[CSS 自動同步](#enable-or-disable-css-auto-sync)。
 
 > [!NOTE]
-> 某些 Visual Studio 外掛程式，最值得注意的是*Web 擴充功能組件 2015年*和*Web 擴充功能組件 2017年*、 瀏覽器連結提供擴充的功能，但與 ASP 不搭配使用的一些其他功能。.NET Core 專案。
+> 某些 Visual Studio 外掛程式，最值得注意的是*Web 擴充功能組件 2015年*和*Web 擴充功能組件 2017年*、 瀏覽器連結提供擴充的功能，但與 ASP 不搭配使用的一些其他功能.NET Core 專案。
 
 ## <a name="refresh-the-web-application-in-several-browsers-at-once"></a>Web 應用程式在數個瀏覽器中的一次重新整理
 

@@ -11,11 +11,11 @@ ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 92085829d2a37a2aa6080aeb34a5e14be95e02d8
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 40aa105dcf06b269025d0c44e5cd7bffef271e9d
+ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="model-binding"></a>模型繫結
 
@@ -61,9 +61,19 @@ The link works but generates an error when building with DocFX
 
 順序，就可能發生的繫結的類別必須具有公用預設建構函式，並繫結的成員必須是公用的可寫入屬性。 當模型繫結發生時，此類別將只使用具現化公用預設建構函式時，可以設定的屬性。
 
-參數繫結，模型繫結會停止尋找具有該名稱的值，它會移至下一個參數繫結。 如果繫結失敗時，MVC 不會擲回錯誤。 您可以藉由檢查查詢的模型狀態錯誤`ModelState.IsValid`屬性。
+參數繫結，模型繫結會停止尋找具有該名稱的值，它會移至下一個參數繫結。 否則，預設模型繫結行為會將參數設為預設值根據其類型而定：
 
-注意： 每個項目中的控制站`ModelState`屬性是`ModelStateEntry`包含`Errors property`。 它是很少會需要自行查詢此集合。 請改用 `ModelState.IsValid` 。
+* `T[]`： 使用的陣列型別的`byte[]`，繫結會設定參數的型別`T[]`至`Array.Empty<T>()`。 類型的陣列`byte[]`設為`null`。
+
+* 參考型別： 繫結建立執行個體類別的預設建構函式未設定屬性。 不過，模型繫結設定`string`參數`null`。
+
+* 可為 null 的類型： 可為 Null 的型別會設定為`null`。 在上述範例中，模型繫結設定`id`至`null`因為它是型別`int?`。
+
+* 實值型別： 不可為 null 值類型的型別`T`設為`default(T)`。 例如，模型繫結會設定參數`int id`設為 0。 請考慮使用模型驗證或可為 null 的類型，而不要依賴預設值。
+
+如果繫結失敗時，MVC 不會擲回錯誤。 可接受使用者輸入的每一個動作應該檢查`ModelState.IsValid`屬性。
+
+注意： 每個項目中的控制站`ModelState`屬性是`ModelStateEntry`包含`Errors`屬性。 它是很少會需要自行查詢此集合。 請改用 `ModelState.IsValid` 。
 
 此外，還有當 MVC 模型繫結時，必須考量某些特殊的資料類型：
 

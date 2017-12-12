@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 455b992dc10129278f8e23366aac9d8bcbf5594c
-ms.sourcegitcommit: ef9784dd7500f22fb98b3591ebd73d57d4f67544
+ms.openlocfilehash: 7deccf135ddd21729206ebed58ddc8aca52c1deb
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/21/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
-由[Luke Latham](https://github.com/guardrex)
+作者：[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程式啟動和存留期管理。 至少一部伺服器和要求處理管線，會設定主應用程式。
+ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。 至少一部伺服器和要求處理管線，會設定主應用程式。
 
 ## <a name="setting-up-a-host"></a>設定主機
 
@@ -40,12 +40,12 @@ ASP.NET Core 應用程式設定和啟動*主機*，這是負責使用應用程�
   * [使用者密碼](xref:security/app-secrets)的應用程式執行時`Development`環境。
   * 環境變數。
   * 命令列引數。
-* 設定[記錄](xref:fundamentals/logging)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。
+* 設定[記錄](xref:fundamentals/logging/index)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。
 * 當 IIS 背景執行，可讓[IIS integration](xref:publishing/iis)藉由設定基底路徑和通訊埠伺服器應接聽時使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 IIS 與 Kestrel 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。 對於 IIS 的預設選項，請參閱[IIS 選項 > 一節的主控件與 IIS 的 Windows 上的 ASP.NET Core](xref:publishing/iis#iis-options)。
 
 *內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。 這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 
-請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration)如需有關應用程式組態。
+請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration/index)如需有關應用程式組態。
 
 > [!NOTE]
 > 做為使用靜態替代`CreateDefaultBuilder`方法，建立從主機[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)是支援的方法與 ASP.NET Core 2.x。 請參閱 ASP.NET Core 1.x 索引標籤的詳細資訊。
@@ -403,7 +403,7 @@ var host = new WebHostBuilder()
 
 ## <a name="overriding-configuration"></a>覆寫設定
 
-使用[組態](configuration.md)設定主控件。 在下列範例中，主機設定 （選擇性） 指定於*hosting.json*檔案。 從載入任何組態*hosting.json*命令列引數可能會覆寫檔案。 內建的設定 (在`config`) 用來設定與主機`UseConfiguration`。
+使用[組態](xref:fundamentals/configuration/index)設定主控件。 在下列範例中，主機設定 （選擇性） 指定於*hosting.json*檔案。 從載入任何組態*hosting.json*命令列引數可能會覆寫檔案。 內建的設定 (在`config`) 用來設定與主機`UseConfiguration`。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

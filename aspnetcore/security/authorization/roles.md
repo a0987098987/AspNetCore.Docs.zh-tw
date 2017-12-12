@@ -1,8 +1,8 @@
 ---
 title: "角色型授權"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件將示範如何藉由傳遞角色 Authorize 屬性來限制 ASP.NET Core 控制器和動作的存取。"
+keywords: "ASP.NET Core 授權，角色"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,23 +11,23 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: 1dc76f316b70d486febe386cc47cd1f843d8d8e3
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 649b21d99c742843534748b0ba9d7b7b22483a62
+ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="role-based-authorization"></a>角色型授權
 
-<a name=security-authorization-role-based></a>
+<a name="security-authorization-role-based"></a>
 
-當建立了識別之後可能屬於一個或多個角色，例如 Tracy 可能屬於系統管理員和使用者角色儘管 Scott 可能只屬於使用者角色。 如何建立和管理這些角色取決於備份存放區的授權程序。 角色會公開給開發人員透過[IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole)屬性[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)類別。
+建立身分識別時它可能屬於一個或多個角色。 比方說，Tracy 可能屬於系統管理員和使用者角色，儘管 Scott 可能只屬於使用者角色。 如何建立和管理這些角色取決於備份存放區的授權程序。 角色會公開給開發人員透過[IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole)方法[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)類別。
 
 ## <a name="adding-role-checks"></a>加入角色檢查
 
-以角色為基礎的授權檢查宣告式-開發人員會內嵌它們對控制器或動作中控制站，其程式碼內指定目前使用者必須是成員的存取要求之資源的角色。
+以角色為基礎的授權檢查是宣告式&mdash;開發人員會內嵌它們對控制器或動作中控制站，其程式碼內指定目前使用者必須是成員的存取要求之資源的角色。
 
-例如下列程式碼時，會在限制的存取權的任何動作`AdministrationController`使用者是誰隸屬`Administrator`群組。
+例如，下列程式碼時，會在限制存取任何動作`AdministrationController`使用者是誰隸屬`Administrator`群組。
 
 ```csharp
 [Authorize(Roles = "Administrator")]
@@ -36,7 +36,7 @@ public class AdministrationController : Controller
 }
 ```
 
-您可以指定多個角色，為逗號分隔的清單。
+您可以為以逗號分隔清單指定多個角色：
 
 ```csharp
 [Authorize(Roles = "HRManager,Finance")]
@@ -57,7 +57,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-您可以套用在動作層級; 其他角色授權屬性，以進一步限制存取
+您可以進一步限制存取，藉由套用在動作層級的其他角色授權屬性：
 
 ```csharp
 [Authorize(Roles = "Administrator, PowerUser")]
@@ -93,7 +93,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-<a name=security-authorization-role-policy></a>
+<a name="security-authorization-role-policy"></a>
 
 ## <a name="policy-based-role-checks"></a>原則為基礎的角色檢查
 
@@ -111,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-原則會套用使用`Policy`屬性`AuthorizeAttribute`屬性;
+原則會套用使用`Policy`屬性`AuthorizeAttribute`屬性：
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -121,7 +121,7 @@ public IActionResult Shutdown()
 }
 ```
 
-如果您想要指定多個允許的角色的需求，則您可以指定它們做為參數`RequireRole`方法。
+如果您想要指定多個允許的角色的需求，則您可以指定它們做為參數`RequireRole`方法：
 
 ```csharp
 options.AddPolicy("ElevatedRights", policy =>

@@ -11,15 +11,15 @@ ms.assetid: 5ac13589-3837-4b4d-8abe-81f843942120
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 8c00c05a1120e65f503b70229466fcad561bc6a9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: b5a1be5fee7489f266e8a676956f68b499c6f14f
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="replacing-machinekey-in-aspnet"></a>取代`<machineKey>`ASP.NET 中
 
-<a name=compatibility-replacing-machinekey></a>
+<a name="compatibility-replacing-machinekey"></a>
 
 實作`<machineKey>`ASP.NET 中的項目[是可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制，包括新的資料保護系統進行路由。
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 09/22/2017
 > [!NOTE]
 > 新的資料保護系統只能安裝到現有的 ASP.NET 應用程式為目標.NET 4.5.1 或更新版本。 安裝將會失敗，如果應用程式的目標.NET 4.5 或降低。
 
-若要安裝新的資料保護系統到現有的 ASP.NET 4.5.1+ 專案，請將封裝 Microsoft.AspNetCore.DataProtection.SystemWeb 安裝。 這會具現化的資料保護系統使用[預設組態](../configuration/default-settings.md#data-protection-default-settings)設定。
+若要安裝新的資料保護系統到現有的 ASP.NET 4.5.1+ 專案，請將封裝 Microsoft.AspNetCore.DataProtection.SystemWeb 安裝。 這會具現化的資料保護系統使用[預設組態](xref:security/data-protection/configuration/default-settings)設定。
 
 當您安裝封裝時，它會插入到行*Web.config*這會告知 ASP.NET，若要將其用於[最密碼編譯作業](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)，包括表單驗證、 檢視狀態和呼叫MachineKey.Protect。 插入的行讀取，如下所示。
 

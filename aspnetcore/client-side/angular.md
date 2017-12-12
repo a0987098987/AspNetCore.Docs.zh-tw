@@ -13,10 +13,10 @@ ms.prod: asp.net-core
 uid: client-side/angular
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ccdf1625cdaf2400780500ac5ab86f41537964a9
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="using-angularjs-for-single-page-applications-spas-with-aspnet-core"></a>使用 AngularJS 與 ASP.NET Core 單一網頁應用程式 (SPAs)
 

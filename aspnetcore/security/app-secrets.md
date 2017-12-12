@@ -1,7 +1,7 @@
 ---
-title: "安全的儲存 ASP.NET Core 在開發期間的應用程式密碼"
+title: "安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼"
 author: rick-anderson
-description: "示範如何在開發期間安全地儲存密碼"
+description: "示範如何安全地將密碼儲存在開發期間"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
@@ -10,24 +10,23 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: 280819a6a0afb72311f0d50f7d3b83a942e9fcc3
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.openlocfilehash: 897d9b360ceeb5fbb0863ff1c1fcec039e1a8b8f
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)，和[Scott Addie](https://scottaddie.com) 
 
-本文件示範如何使用密碼管理員工具在開發程式碼保持機密資料。 您應該永遠不會儲存密碼或其他機密資料來源的程式碼，而您不應該在開發和測試模式中使用實際執行的密碼最重要的一點。 您可以改為使用[組態](../fundamentals/configuration.md)系統環境變數中讀取這些值，或使用密碼管理員儲存的值從工具。 密碼管理員工具可協助防止機密資料被簽入原始檔控制。 [組態](../fundamentals/configuration.md)系統可以讀取儲存在本文中所描述的密碼管理員工具與密碼。
+本文件示範如何使用密碼管理員工具在開發程式碼保持機密資料。 您應該永遠不會儲存密碼或其他機密資料來源的程式碼，而您不應該在開發和測試模式中使用實際執行的密碼最重要的一點。 您可以改為使用[組態](xref:fundamentals/configuration/index)系統環境變數中讀取這些值，或使用密碼管理員儲存的值從工具。 密碼管理員工具可協助防止機密資料被簽入原始檔控制。 [組態](xref:fundamentals/configuration/index)系統可以讀取儲存在本文中所描述的密碼管理員工具與密碼。
 
 密碼管理員工具只能用於開發。 您可以保護 Azure 測試與實際的機密資料以[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/)組態提供者。 請參閱[Azure 金鑰保存庫的組態提供者](https://docs.microsoft.com/aspnet/core/security/key-vault-configuration)如需詳細資訊。
 
 ## <a name="environment-variables"></a>環境變數
 
-若要避免在程式碼，或在本機的組態檔中儲存應用程式密碼，您可以將密碼儲存在環境變數中。 您可以設定[組態](../fundamentals/configuration.md)架構，以讀取環境變數中的值，藉由呼叫`AddEnvironmentVariables`。 然後，您可以使用環境變數覆寫所有先前指定的設定來源的組態值。
+若要避免在程式碼，或在本機的組態檔中儲存應用程式密碼，您可以將密碼儲存在環境變數中。 您可以設定[組態](xref:fundamentals/configuration/index)架構，以讀取環境變數中的值，藉由呼叫`AddEnvironmentVariables`。 然後，您可以使用環境變數覆寫所有先前指定的設定來源的組態值。
 
 例如，如果您建立新的 ASP.NET Core web 應用程式與個別使用者帳戶時，它會將新增的預設連接字串*appsettings.json*專案具有索引鍵中的檔案`DefaultConnection`。 預設的連接字串是安裝程式使用 LocalDB，但在使用者模式下執行，而不需要密碼。 當您部署到測試或實際執行伺服器應用程式時，您可以覆寫`DefaultConnection`機碼值與包含測試或實際執行資料庫的連接字串 （潛在機密的認證） 的環境變數設定伺服器。
 
@@ -128,5 +127,4 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 ## <a name="additional-resources"></a>其他資源
 
-* [組態](../fundamentals/configuration.md)
-
+* [組態](xref:fundamentals/configuration/index)

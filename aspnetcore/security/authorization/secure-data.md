@@ -10,11 +10,11 @@ ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 000b14ddc1adb56c029d3da8ab0754215403ba79
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: 8eeb5d71575fd819239da6dd63dd31e323fb0556
+ms.sourcegitcommit: 96af03c9f44f7c206e68ae3ef8596068e6b4e5fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -186,7 +186,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ### <a name="add-a-contact-operations-requirements-class"></a>加入連絡人的作業需求類別
 
-新增`ContactOperationsRequirements`類別*授權*資料夾。 這個類別包含需求我們的應用程式支援：
+新增`ContactOperations`類別*授權*資料夾。 這個類別包含需求我們的應用程式支援：
 
 [!code-csharp[Main](secure-data/samples/final/Authorization/ContactOperations.cs)]
 

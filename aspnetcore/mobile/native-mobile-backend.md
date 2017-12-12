@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mobile/native-mobile-backend
 ms.openlocfilehash: be1cd9f4fe41f1a79669975cb6a89439cdd9e5c7
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="creating-backend-services-for-native-mobile-applications"></a>建立原生行動應用程式的後端服務
 

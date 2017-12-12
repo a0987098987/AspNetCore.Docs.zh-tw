@@ -11,11 +11,11 @@ ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: 215d165d0029bbf38ef37cdde57b80a15bff9ef9
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0a2a374ac77b9fd7c626aa6749cffbd3fb0f08d5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="filters"></a>篩選條件
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 09/22/2017
 
 此架構包含內建屬性型篩選，您可以子類別和自訂。 例如，下列結果篩選條件會將標頭加入回應。
 
-<a name=add-header-attribute></a>
+<a name="add-header-attribute"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 09/22/2017
 
 您可以縮短在任何時間點的篩選管線設定`Result`屬性`context`提供給篩選方法的參數。 比方說，下列資源的篩選條件可防止其他管線執行。
 
-<a name=short-circuiting-resource-filter></a>
+<a name="short-circuiting-resource-filter"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
@@ -188,7 +188,7 @@ ms.lasthandoff: 09/22/2017
 * `IFilterFactory`在您的屬性上實作
 
 > [!NOTE]
-> 一種相依性，您可能想要取得從 DI 是記錄器。 不過，不需要建立及單純地進行記錄，使用篩選器，因為[內建架構記錄功能](../../fundamentals/logging.md)可能已提供您的需要。 如果您要將記錄加入至您的篩選，它應該專注於商務網域疑慮或篩選條件，而不是 MVC 動作或其他架構事件的特定行為。
+> 一種相依性，您可能想要取得從 DI 是記錄器。 不過，不需要建立及單純地進行記錄，使用篩選器，因為[內建架構記錄功能](xref:fundamentals/logging/index)可能已提供您的需要。 如果您要將記錄加入至您的篩選，它應該專注於商務網域疑慮或篩選條件，而不是 MVC 動作或其他架構事件的特定行為。
 
 ### <a name="servicefilterattribute"></a>ServiceFilterAttribute
 

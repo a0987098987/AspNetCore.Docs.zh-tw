@@ -22,7 +22,7 @@ var movies = from m in _context.Movie
 
 如果 `searchString` 參數包含字串，則會修改電影查詢來篩選搜尋字串的值：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull)]
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_SearchNull2)]
 
 上述 `s => s.Title.Contains()` 程式碼是 [Lambda 運算式](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)。 在以方法為基礎的 [LINQ](https://docs.microsoft.com/dotnet/standard/using-linq) 查詢中，Lambda 會用來作為標準查詢運算子方法的引數，例如 [Where](https://docs.microsoft.com//dotnet/api/system.linq.enumerable.where) 方法或 `Contains` (用於上述程式碼)。 在定義 LINQ 查詢或呼叫方法 (例如`Where`、`Contains`或 `OrderBy`) 來修改它們時，不會執行這些查詢。 而是會延後查詢執行。  這是指延遲評估運算式，直到實際反覆運算其實現值或呼叫 `ToListAsync` 方法為止。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution)。
 

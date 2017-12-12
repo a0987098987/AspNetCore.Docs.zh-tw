@@ -1,8 +1,8 @@
 ---
-title: "已驗證的加密的詳細資料。"
+title: "已驗證的加密詳細資料"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "此文件大綱 ASP.NET Core 資料保護的實作詳細資料來進行驗證加密。"
+keywords: "ASP.NET Core，資料保護，驗證加密"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 826e6d5d-9620-44e6-ad93-3b1d9969b70b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/authenticated-encryption-details
-ms.openlocfilehash: 4d0e63d7722071ab8806a217e96ee7ad7bf10286
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: dc96412f6578e612a39e86ce00e1dc5a20cf84e9
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="authenticated-encryption-details"></a>已驗證的加密的詳細資料。
+# <a name="authenticated-encryption-details"></a>已驗證的加密詳細資料
 
-<a name=data-protection-implementation-authenticated-encryption-details></a>
+<a name="data-protection-implementation-authenticated-encryption-details"></a>
 
 呼叫 IDataProtector.Protect 都已驗證的加密作業。 保護方法提供機密性和驗證，以及它會連結到目的鏈結，用於從其根 IDataProtectionProvider 衍生此特定 IDataProtector 執行個體。
 

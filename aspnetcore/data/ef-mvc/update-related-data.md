@@ -11,11 +11,11 @@ ms.assetid: 67bd162b-bfb7-4750-9e7f-705228b5288c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: daf6dd8024863e02e40ad002a0a7da388f5a2ec7
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: b59782bccce00f3940da4ec8bcff768aff8fa4ef
+ms.sourcegitcommit: ccf08615ad59bc6f654560de33b93396113a2eb0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>更新相關的資料-EF Core 與 ASP.NET Core MVC 教學課程 (10-7)
 
@@ -129,7 +129,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 -  取得資料庫使用的目前 [Instructor] 實體積極式載入`OfficeAssignment`導覽屬性。 這是您未在 HttpGet 相同`Edit`方法。
 
--  更新擷取 [Instructor] 實體中的模型繫結器的值。 `TryUpdateModel`多載可讓您將允許清單您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](crud.md)。
+-  更新擷取 [Instructor] 實體中的模型繫結器的值。 `TryUpdateModel`多載可讓您將白名單您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](crud.md)。
 
     <!-- Snippets do not play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -219,7 +219,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 <a id="notepad"></a>
 > [!NOTE] 
-> 當您將程式碼貼在 Visual Studio 中時，插入換行符號將會破壞程式碼的方式。  按一次 Ctrl + Z 復原自動格式化。  這會修正換行，讓它們看起來像這裡所示。 縮排不一定要是完美，但是`@</tr><tr>`， `@:<td>`， `@:</td>`，和`@:</tr>`行必須是在單一行所示，否則將會執行階段錯誤。 選取新的程式碼區塊時，按下 Tab 鍵三次線與現有的程式碼的新程式碼。
+> 當您將程式碼貼在 Visual Studio 中時，插入換行符號將會破壞程式碼的方式。  按一次 Ctrl + Z 復原自動格式化。  這會修正換行，讓它們看起來像這裡所示。 縮排不一定要是完美，但是`@</tr><tr>`， `@:<td>`， `@:</td>`，和`@:</tr>`行必須是在單一行所示，否則將會執行階段錯誤。 選取新的程式碼區塊時，按下 Tab 鍵三次線與現有的程式碼的新程式碼。 您可以檢查問題的狀態[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)。
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 

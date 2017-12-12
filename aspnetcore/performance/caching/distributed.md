@@ -1,29 +1,27 @@
 ---
-title: "使用分散式快取"
+title: "使用分散式快取中 ASP.NET Core"
 author: ardalis
-description: 
-keywords: ASP.NET Core,
+description: "了解如何使用分散式快取以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: abf680fef9de175082c1e4f4cebc2b9648f18a28
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: a00937e8c47e73fa8e29af883f44f6e1f4d4b1b4
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="working-with-a-distributed-cache"></a>使用分散式快取
+# <a name="working-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
 由[Steve Smith](https://ardalis.com/)
 
 分散式快取可以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。 本文說明如何使用 ASP.NET Core 內建的分散式快取的抽象概念和實作。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-a-distributed-cache"></a>什麼是分散式快取
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 09/12/2017
 
    2. 設定的特定實作`IDistributedCache`中您`Startup`類別的`ConfigureServices`方法，並將它新增至那里容器。
 
-   3. 從應用程式的 [`Middleware](../../fundamentals/middleware.md) or MVC controller classes, request an instance of `IDistributedCache' 從建構函式。 執行個體將會由提供[相依性插入](../../fundamentals/dependency-injection.md)(DI)。
+   3. 從應用程式的[中介軟體](../../fundamentals/middleware.md)MVC 控制器類別中，要求的執行個體或`IDistributedCache`從建構函式。 執行個體將會由提供[相依性插入](../../fundamentals/dependency-injection.md)(DI)。
 
 > [!NOTE]
 > 若要使用的單一或 Scoped 存留期不需要`IDistributedCache`執行個體 (至少為內建實作)。 您也可以建立執行個體，只要您可能需要一個 (而不是使用[相依性插入](../../fundamentals/dependency-injection.md))，但是這可以讓您的程式碼不容易進行測試，且違反[明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)。
@@ -86,7 +84,7 @@ ms.lasthandoff: 09/12/2017
 > [!NOTE]
 > 因為`IDistributedCache`中設定`ConfigureServices`方法，您就能夠`Configure`做為參數的方法。 將它加入做為參數，可讓透過 DI 提供設定的執行個體。
 
-## <a name="using-a-redis-distributed-cache"></a>使用 Redis 分散式快取
+## <a name="using-a-redis-distributed-cache"></a>使用分散式的 Redis 快取
 
 [Redis](https://redis.io/)是開放原始碼記憶體中的資料存放區，通常是做為分散式快取。 您可以使用在本機，並且可以設定[Azure Redis 快取](https://azure.microsoft.com/services/cache/)Azure 裝載的 ASP.NET Core 應用程式。 您的 ASP.NET Core 應用程式會設定快取實作使用`RedisDistributedCache`執行個體。
 
@@ -105,7 +103,7 @@ SqlServerCache 實作可讓分散式快取，以使用 SQL Server 資料庫做�
 
 若要使用 sql 快取工具，加入`SqlConfig.Tools`至`<ItemGroup>`元素*.csproj*檔，然後執行 dotnet 還原。
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+[!code-xml[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
 
 執行下列命令來測試 SqlConfig.Tools
 
@@ -136,8 +134,13 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 當您決定哪一個實作時`IDistributedCache`是適合您的應用程式中，選擇 Redis 和 SQL Server 根據現有的基礎結構和環境、 您效能需求，以及小組的體驗。 如果您的小組更方便使用 Redis，它會是很好的選擇。 如果小組慣用的 SQL Server，您可以實作以及信心。 請注意傳統快取方案儲存在記憶體資料可快速擷取資料。 您應該在快取中儲存常用的資料，並將整個資料儲存在 SQL Server 或 Azure 儲存體之類的後端持續性存放區。 Redis 快取是快取的解決方案，可提供您高輸送量和低度延遲相較於 SQL 快取。
 
-其他資源：
+## <a name="additional-resources"></a>其他資源
 
-* [在記憶體內部快取](memory.md)
 * [Redis 快取，在 Azure 上](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [在 Azure 上的 SQL 資料庫](https://azure.microsoft.com/documentation/services/sql-database/)
+* [記憶體中快取](xref:performance/caching/memory)
+* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [回應快取](xref:performance/caching/response)
+* [回應快取中介軟體](xref:performance/caching/middleware)
+* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

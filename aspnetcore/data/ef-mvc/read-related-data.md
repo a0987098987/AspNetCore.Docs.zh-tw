@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/read-related-data
 ms.openlocfilehash: 778ef976fdbef70684ca26b0c7c548ffcc83ee00
-ms.sourcegitcommit: e45f8912ce32b4071bf7e83b8f8315cd8bba3520
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>讀取的相關資料的 EF Core 與 ASP.NET Core MVC 教學課程 (10-6)
 

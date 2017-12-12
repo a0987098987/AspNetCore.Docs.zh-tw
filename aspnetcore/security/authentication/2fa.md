@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/2fa
-ms.openlocfilehash: 802a4c92b366d656e194e2099b412e48eef7ae6d
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 15620d89c4db2e74dbcec4707bb2ebc6df916e03
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="two-factor-authentication-with-sms"></a>使用 SMS 雙因素驗證
 
@@ -57,7 +57,7 @@ SMS 帳戶，例如，建立從[twilio](https://www.twilio.com/)或[ASPSMS](http
 
 ### <a name="provide-credentials-for-the-sms-service"></a>SMS 服務提供的認證
 
-我們將使用[選項模式](xref:fundamentals/configuration#options-config-objects)存取使用者帳戶和金鑰設定。 
+我們將使用[選項模式](xref:fundamentals/configuration/options)存取使用者帳戶和金鑰設定。 
 
    * 建立類別以擷取安全 SMS 索引鍵。 此範例中，`SMSoptions`中建立類別*Services/SMSoptions.cs*檔案。
 

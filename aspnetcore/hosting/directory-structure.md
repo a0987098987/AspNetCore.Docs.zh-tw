@@ -11,15 +11,15 @@ ms.assetid: e55eb131-d42e-4bf6-b130-fd626082243c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/directory-structure
-ms.openlocfilehash: f406d866bb1c8ac2d4371c8ddf669fc08af0fada
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 60797bff85a44dd10caad4aabc109ee12dedfe61
+ms.sourcegitcommit: 7efdc4b6025ad70c15c26bf7451c3c0411123794
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="directory-structure-of-published-aspnet-core-apps"></a>已發行的 ASP.NET Core 應用程式的目錄結構
 
-由[Luke Latham](https://github.com/guardrex)
+作者：[Luke Latham](https://github.com/guardrex)
 
 在 ASP.NET Core，應用程式目錄，*發行*，組成應用程式檔案、 組態檔、 靜態資產、 封裝和執行階段 （適用於獨立的應用程式）。 這是舊版 ASP.NET 中，整個應用程式所在的 web 根目錄內相同的目錄結構。
 
@@ -32,12 +32,16 @@ ms.lasthandoff: 09/24/2017
 內容*發行*目錄代表*內容的根路徑*，也稱為*應用程式基底路徑*的部署。 若要指定任何名稱*發行*部署中的目錄，它的位置做為託管的應用程式伺服器的實體路徑。 *Wwwroot*目錄中，如果有的話，只包含靜態資產。 *記錄*可能藉由建立專案中加入部署中包含目錄`<Target>`項目，如下所示，以您*.csproj*檔案或實體上建立目錄伺服器。
 
 ```xml
-<Target Name="CreateLogsFolder" AfterTargets="AfterPublish">
-  <MakeDir Directories="$(PublishDir)logs" Condition="!Exists('$(PublishDir)logs')" />
-  <MakeDir Directories="$(PublishUrl)Logs" Condition="!Exists('$(PublishUrl)Logs')" />
+<Target Name="CreateLogsFolder" AfterTargets="Publish">
+  <MakeDir Directories="$(PublishDir)Logs" 
+           Condition="!Exists('$(PublishDir)Logs')" />
+  <WriteLinesToFile File="$(PublishDir)Logs\.log" 
+                    Lines="Generated file" 
+                    Overwrite="True" 
+                    Condition="!Exists('$(PublishDir)Logs\.log')" />
 </Target>
 ```
 
-第一個`<MakeDir>`元素，其會使用`PublishDir`屬性，可由.NET Core CLI 來決定發行作業的目標位置。 第二個`<MakeDir>`元素，其會使用`PublishUrl`屬性，由 Visual Studio 用來判斷目標位置。 Visual Studio 會使用`PublishUrl`與非.NET Core 專案相容性的屬性。
+`<MakeDir>`項目會建立空*記錄*中發行的輸出資料夾。 項目使用`PublishDir`屬性來判斷建立此資料夾的目標位置。 數種部署方法，例如 Web Deploy，請在部署期間，略過空資料夾。 `<WriteLinesToFile>`項目會產生的檔案中*記錄*資料夾中，以確保部署到伺服器的資料夾。 請注意是否工作者處理序不具有寫入存取權的目標資料夾可能仍然無法建立資料夾。
 
 部署目錄中需要讀取/執行權限，雖然*記錄*目錄需要讀取/寫入權限。 其他目錄將會寫入資產需要讀取/寫入權限。

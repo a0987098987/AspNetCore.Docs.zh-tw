@@ -1,8 +1,8 @@
 ---
 title: "金鑰管理"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文件概述的 ASP.NET Core 資料保護金鑰管理應用程式開發介面的實作詳細資料。"
+keywords: "ASP.NET Core 資料保護、 金鑰管理"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,17 +11,17 @@ ms.assetid: fb9b807a-d143-4861-9ddb-005d8796afa3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 507c00edc5bade2427151ecadfed581817e4d088
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: d9e38fd5c8de2b10ad24fe557aa6e3063e40236e
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-management"></a>金鑰管理
 
-<a name=data-protection-implementation-key-management></a>
+<a name="data-protection-implementation-key-management"></a>
 
-資料保護系統會自動管理用來保護且取消保護內容的主要金鑰的存留期。 其中四個階段可以存在於每個索引鍵。
+資料保護系統會自動管理用來保護且取消保護內容的主要金鑰的存留期。 每個索引鍵可以存在於其中一個四個階段：
 
 * 建立索引鍵存在於鑰匙圈，但尚未啟動。 機碼不應該用於新的保護作業有足夠的時間經過之前索引鍵有傳播到所有機器正在耗用此鑰匙圈的機會。
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 08/11/2017
 
 資料保護系統的原因會立即產生新的金鑰，而不是正在回復到不同的索引鍵是新的金鑰產生應視為新的金鑰之前已啟用的所有索引鍵的隱含到期日。 新的金鑰可能已設定使用不同的演算法或靜態加密機制，與舊的索引鍵，而系統應該而不用的目前組態回到一般概念。
 
-沒有例外狀況。 如果應用程式開發人員有[停用自動產生金鑰](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation)，然後在資料保護系統必須選擇做為預設索引鍵的項目。 在此後援的案例中，系統會選擇非撤銷鍵的最新的啟動日期，加上指定的時間才會傳播到叢集中的其他機器索引鍵為喜好設定。 回溯系統可能會因此選擇過期的預設索引鍵。 回溯系統將會永遠不會選擇已撤銷的索引鍵，做為預設索引鍵，如果鑰匙圈是空的或每個索引鍵已被撤銷。 然後系統會產生錯誤時初始化。
+沒有例外狀況。 如果應用程式開發人員有[停用自動產生金鑰](xref:security/data-protection/configuration/overview#disableautomatickeygeneration)，然後在資料保護系統必須選擇做為預設索引鍵的項目。 在此後援的案例中，系統會選擇非撤銷鍵的最新的啟動日期，加上指定的時間才會傳播到叢集中的其他機器索引鍵為喜好設定。 回溯系統可能會因此選擇過期的預設索引鍵。 回溯系統將會永遠不會選擇已撤銷的索引鍵，做為預設索引鍵，如果鑰匙圈是空的或每個索引鍵已被撤銷。 然後系統會產生錯誤時初始化。
 
-<a name=data-protection-implementation-key-management-expiration></a>
+<a name="data-protection-implementation-key-management-expiration"></a>
 
 ## <a name="key-expiration-and-rolling"></a>金鑰到期時間和循環
 
@@ -62,24 +62,24 @@ ms.lasthandoff: 08/11/2017
 services.AddDataProtection()
        // use 14-day lifetime instead of 90-day lifetime
        .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
-   ```
+```
 
-系統管理員也可以變更預設全系統，但 SetDefaultKeyLifetime 明確呼叫將會覆寫任何全系統原則。 預設金鑰存留期不可短於 7 天。
+雖然明確呼叫，以系統管理員也可以變更預設全系統`SetDefaultKeyLifetime`將會覆寫任何全系統原則。 預設金鑰存留期不可短於 7 天。
 
-## <a name="automatic-keyring-refresh"></a>自動 keyring 重新整理
+## <a name="automatic-key-ring-refresh"></a>自動鑰匙圈重新整理
 
 當資料保護系統初始化時，它會鑰匙圈讀取從基礎儲存機制，並放入快取在記憶體中。 此快取可讓您保護且取消保護的作業繼續進行而不叫用的備份存放區。 大約每隔 24 小時或目前的預設金鑰過期時，何者較早，系統將自動檢查有變更的備份存放區。
 
 >[!WARNING]
 > （如果有的話） 開發人員應該很少需要直接使用 Api 的金鑰管理。 資料保護系統將會執行自動金鑰管理，如上面所述。
 
-資料保護系統公開介面，可用來檢查及變更鑰匙圈 IKeyManager。 DI 系統提供的 IDataProtectionProvider 執行個體也可以提供 IKeyManager 供您使用的執行的個體。 或者，您可以提取 IKeyManager 直接從 IServiceProvider，如下列範例所示。
+資料保護系統公開介面`IKeyManager`，可用來檢查及變更索引鍵環形。 DI 系統提供的執行個體`IDataProtectionProvider`也可以提供的執行個體`IKeyManager`供您使用。 或者，您可以拉`IKeyManager`直接從`IServiceProvider`如下列範例所示。
 
-任何可修改鑰匙圈 （明確地建立新的金鑰，或執行撤銷） 作業會使記憶體中快取失效。 保護或解除下一個呼叫會導致重新讀取鑰匙圈，並重新建立快取的資料保護系統。
+任何可修改鑰匙圈 （明確地建立新的金鑰，或執行撤銷） 作業會使記憶體中快取失效。 下次呼叫`Protect`或`Unprotect`會導致重新讀取鑰匙圈，並重新建立快取的資料保護系統。
 
-下列範例會示範使用 IKeyManager 介面來檢查及操作鑰匙圈，包括撤銷，則現有的索引鍵，並手動產生新的金鑰。
+下列範例將示範如何使用`IKeyManager`介面來檢查及操作鑰匙圈，包括撤銷，則現有的索引鍵，並手動產生新的金鑰。
 
-[!code-none[Main](key-management/samples/key-management.cs)]
+[!code-csharp[Main](key-management/samples/key-management.cs)]
 
 ## <a name="key-storage"></a>金鑰儲存
 

@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 820836eaf3a29c9941e84458f09ac470f8150ba7
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 0679663b3b3b66f9935d0fb24360be2954fcdee1
+ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -32,11 +32,11 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 1.  建立 ASP.NET Core Web 應用程式專案與個別使用者帳戶。
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Web 應用程式**從**新專案** 對話方塊。 選取 ASP.NET Core **Web 應用程式**與**個別使用者帳戶**做為驗證方法。
+    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Web 應用程式**從**新專案** 對話方塊。 選取 ASP.NET Core **Web Application(Model-View-Controller)**適用於 ASP.NET Core 與 2.x**個別使用者帳戶**做為驗證方法。
 
     注意： 您必須選取**個別使用者帳戶**。
  
-    ![[新增專案] 對話](identity/_static/01-mvc.png)
+    ![[新增專案] 對話](identity/_static/01-mvc_2.png)
     
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
     如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 這會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
@@ -134,7 +134,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
 7.  檢視的資料庫。
 
-    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** -> **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合* *aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
+    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** -> **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合 **aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
 
     ![AspNetUsers 資料庫資料表上的內容功能表](identity/_static/04-db.png)
     

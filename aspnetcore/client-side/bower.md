@@ -2,7 +2,7 @@
 title: "使用 ASP.NET Core 中的 Bower"
 author: rick-anderson
 description: "Bower 管理用戶端封裝。"
-keywords: "ASP.NET Core、 bower"
+keywords: ASP.NET Core,Bower
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5d9acc59b6f40dc8a336f59925d639fff007c4e
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 183e748cbf87b1973941eacb3fb1008f4041bb2a
+ms.sourcegitcommit: 532a323f99a37c4d7894c95cee3f7a04b594dcec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
@@ -78,7 +78,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 ## <a name="exploring-the-client-side-build-process"></a>探索用戶端建置程序
 
-大部分的 ASP.NET Core 專案範本已設定為使用 Bower。 這個下一個逐步解說開頭空白的 ASP.NET Core 專案，並將手動加入每一項，讓您可以感受 Bower 專案中的使用方式。 您會看到可以專案結構會發生什麼事，且由輸出每個組態變更為執行階段。
+大部分的 ASP.NET Core 專案範本已設定為使用 Bower。 這個下一個逐步解說開頭空白的 ASP.NET Core 專案，並將手動加入每一項，讓您可以感受 Bower 專案中的使用方式。 您可以看到所發生的專案結構和執行階段輸出每個組態變更的狀況。
 
 使用 Bower 用戶端建置程序的一般步驟如下：
 

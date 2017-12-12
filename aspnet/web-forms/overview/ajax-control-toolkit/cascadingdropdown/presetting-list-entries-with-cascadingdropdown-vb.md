@@ -1,0 +1,65 @@
+---
+uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
+title: "Presetting CascadingDropDown (VB) 的清單項目 |Microsoft 文件"
+author: wenz
+description: "AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯 anoth 中的值..."
+ms.author: aspnetcontent
+manager: wpickett
+ms.date: 06/02/2008
+ms.topic: article
+ms.assetid: ec61ced7-bbca-4bdd-aa3b-80878f295181
+ms.technology: dotnet-webforms
+ms.prod: .net-framework
+msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
+msc.type: authoredcontent
+ms.openlocfilehash: c28c7893c39d9ba9f828c34da7ffdce525ee248e
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 11/10/2017
+---
+<a name="presetting-list-entries-with-cascadingdropdown-vb"></a>Presetting CascadingDropDown (VB) 的清單項目
+====================
+由[Christian Wenz](https://github.com/wenz)
+
+[下載程式碼](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown2.vb.zip)或[下載 PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/CascadingDropDown2VB.pdf)
+
+> AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 利用最少的程式碼可能會以動態方式載入資料之後的清單項目已預先選取。
+
+
+## <a name="overview"></a>概觀
+
+AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 （比方說，一份清單會提供一份我們狀態，而且下一個清單然後填入處於該狀態中的主要城市）。利用最少的程式碼可能會以動態方式載入資料之後的清單項目已預先選取。
+
+## <a name="steps"></a>步驟
+
+為了啟用 ASP.NET AJAX 和控制工具組的功能`ScriptManager`控制項必須任意位置放置在頁面 (但內部`<form>`項目):
+
+[!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample1.aspx)]
+
+DropDownList 控制項則需要：
+
+[!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample2.aspx)]
+
+對於此清單中，就會加入 CascadingDropDown extender，提供 web 服務 URL 和方法資訊：
+
+[!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample3.aspx)]
+
+然後 CascadingDropDown extender 以非同步方式呼叫下列方法簽章的 web 服務：
+
+[!code-vb[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample4.vb)]
+
+方法會傳回類型 CascadingDropDown 值的陣列。 清單項目的標題，然後此值的型別建構函式需要先 (HTML`value`屬性)。 如果第三個引數設定為 true，清單項目會自動選取瀏覽器中。
+
+[!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample5.aspx)]
+
+載入網頁瀏覽器中的，將會填滿下拉式清單具有三位廠商，第二個正在預先選取。
+
+
+[![清單會填入，且自動預先選取](presetting-list-entries-with-cascadingdropdown-vb/_static/image2.png)](presetting-list-entries-with-cascadingdropdown-vb/_static/image1.png)
+
+填入清單並預先選取自動 ([按一下以檢視完整大小的影像](presetting-list-entries-with-cascadingdropdown-vb/_static/image3.png))
+
+>[!div class="step-by-step"]
+[上一頁](using-cascadingdropdown-with-a-database-vb.md)
+[下一頁](using-auto-postback-with-cascadingdropdown-vb.md)

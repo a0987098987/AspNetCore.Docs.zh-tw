@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
 ms.openlocfilehash: 4586f50bc663b7269914dfff28b61342e3991a48
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="dependency-injection-into-views"></a>檢視的相依性插入
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/01/2017
 
 ASP.NET Core 支援[相依性插入](xref:fundamentals/dependency-injection)到檢視表。 這可用於檢視特定的服務，例如當地語系化或只適用於填入檢視項目所需的資料。 您應該嘗試維護[的重要性分離](http://deviq.com/separation-of-concerns/)您控制器和檢視之間。 大部分的檢視所顯示的資料應該來自控制器中傳遞。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="a-simple-example"></a>簡單的範例
 

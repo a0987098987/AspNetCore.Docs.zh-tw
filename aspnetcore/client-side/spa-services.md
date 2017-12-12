@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/spa-services
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3c38a1730e43586f37cd773bb8daa418736952f
-ms.sourcegitcommit: b3d46df910fb679edb8dd47234db6b4da604eedb
+ms.openlocfilehash: 8d47910beef9195295c8da6ac81b83b3ffe20124
+ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>使用單一頁面應用程式建立與 ASP.NET Core JavaScriptServices
 
@@ -98,11 +98,11 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 標記協助程式會在專案的命名空間註冊透過*_ViewImports.cshtml*檔案：
 
-[!code-csharp[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
 這些標記協助程式立即抽象複雜的通訊直接與低階 Api 運用在 Razor 檢視內部類似 HTML 的語法：
 
-[!code-html[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
 ### <a name="the-asp-prerender-module-tag-helper"></a>`asp-prerender-module`標記協助程式
 
@@ -118,7 +118,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 如果結合`asp-prerender-module`標記 Helper`asp-prerender-data`標記協助程式可以用來從 Razor 檢視的內容資訊傳遞至伺服器端 JavaScript。 例如，下列標記使用者會將資料傳遞至`main-server`模組：
 
-[!code-html[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
+[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
 接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的角度範例中，資料用來建構內的個人化的問候語`h1`項目：
 

@@ -13,10 +13,10 @@ ms.prod: asp.net-core
 uid: fundamentals/error-handling
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: de2ba0ff9ad17c198c06b510ecfb49f808721bdf
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction-to-error-handling-in-aspnet-core"></a>Introduction to ASP.NET Core 中的錯誤處理
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 10/01/2017
 
 本文涵蓋常見 appoaches 處理 ASP.NET Core 應用程式中的錯誤。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="the-developer-exception-page"></a>[開發人員的例外狀況] 頁面
 

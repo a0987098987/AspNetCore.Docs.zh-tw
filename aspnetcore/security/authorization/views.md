@@ -1,61 +1,80 @@
 ---
-title: "檢視架構的授權"
+title: "在 ASP.NET Core MVC 檢視為基礎的授權"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文件將示範如何插入，並利用授權服務的 ASP.NET Core Razor 檢視內。"
+keywords: "ASP.NET Core，授權 IAuthorizationService，Razor 授權"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/30/2017
 ms.topic: article
 ms.assetid: 24ce40d8-9b83-4bae-9d4c-a66350fcc8f8
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/views
-ms.openlocfilehash: 3b7fa6025d766da80ba92ee27af20bf9bfe0dcf4
-ms.sourcegitcommit: 74e22e08e3b08cb576e5184d16f4af5656c13c0c
+ms.openlocfilehash: 756431f398c29376ab0ecd6c4f4d1db4f8022b0b
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="view-based-authorization"></a>檢視架構的授權
+# <a name="view-based-authorization"></a>檢視為基礎的授權
 
-<a name=security-authorization-views></a>
+開發人員通常會想要顯示、 隱藏或修改目前的使用者識別為基礎的 UI。 您可以存取授權服務會在透過 MVC 檢視內[相依性插入](xref:fundamentals/dependency-injection#fundamentals-dependency-injection)。 若要插入 Razor 檢視授權服務，使用`@inject`指示詞：
 
-通常開發人員會想要顯示、 隱藏或修改目前的使用者識別為基礎的 UI。 您可以存取授權服務會在透過 MVC 檢視內[相依性插入](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection)。 若要將插入 Razor 檢視使用的授權服務`@inject`指示詞，例如`@inject IAuthorizationService AuthorizationService`(需要`@using Microsoft.AspNetCore.Authorization`)。 如果您想要授權服務中的每個檢視則放入`@inject`到指示詞`_ViewImports.cshtml`檔案`Views`目錄。 如需有關檢視的相依性插入[檢視的相依性插入](../../mvc/views/dependency-injection.md)。
+```cshtml
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+```
 
-一旦您已插入授權服務就使用它藉由呼叫`AuthorizeAsync`方法中完全相同方式，您會檢查期間[以資源為基礎的授權](resourcebased.md#security-authorization-resource-based-imperative)。
+如果您想要授權服務的每個檢視中，放入`@inject`到指示詞*_ViewImports.cshtml*檔案*檢視*目錄。 如需詳細資訊，請參閱[檢視的相依性插入](xref:mvc/views/dependency-injection)。
 
-```csharp
-@if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
-   {
-       <p>This paragraph is displayed because you fulfilled PolicyName.</p>
-   }
-   ```
-
-在某些情況下，資源會是您的檢視模型，而且您可以呼叫`AuthorizeAsync`中完全相同方式，您會檢查期間[以資源為基礎的授權](resourcebased.md#security-authorization-resource-based-imperative);
+使用插入的授權服務叫用`AuthorizeAsync`方式完全相同時，您會檢查[資源為基礎的授權](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-```csharp
-   @if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)
-   {
-       <p><a class="btn btn-default" role="button"
-           href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>
-   }
-   ```
+```cshtml
+@if ((await AuthorizationService.AuthorizeAsync(User, "PolicyName")).Succeeded)
+{
+    <p>This paragraph is displayed because you fulfilled PolicyName.</p>
+}
+```
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-```csharp
-   @if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
-   {
-       <p><a class="btn btn-default" role="button"
-           href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>
-   }
-   ```
+```cshtml
+@if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
+{
+    <p>This paragraph is displayed because you fulfilled PolicyName.</p>
+}
+```
+
 ---
 
-您可以查看模型會如資源授權應該納入考量。
+在某些情況下，資源會是您的檢視模型。 叫用`AuthorizeAsync`方式完全相同時，您會檢查[資源為基礎的授權](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 
->[!WARNING]
->請勿依賴顯示或隱藏您的 UI 做為唯一的授權方法的部分。 隱藏 UI 項目不代表使用者無法存取它。 您也必須在控制器的程式碼中授權使用者。
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+```cshtml
+@if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)
+{
+    <p><a class="btn btn-default" role="button"
+        href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>
+}
+```
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+```cshtml
+@if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
+{
+    <p><a class="btn btn-default" role="button"
+        href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>
+}
+```
+
+---
+
+在上述程式碼中，模型會傳遞做為原則評估應該採取的資源納入考量。
+
+> [!WARNING]
+> 不要只依賴切換可見性的應用程式的 UI 元素的唯一授權檢查。 隱藏 UI 項目可能無法完全防止存取至其關聯之的控制器的動作。 例如，請考慮前面的程式碼片段中的按鈕。 使用者可以叫用`Edit`動作方法如果他或她知道之相對資源 URL 是*/Document/Edit/1*。 基於這個理由，`Edit`動作方法執行它自己的授權檢查。

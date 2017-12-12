@@ -11,15 +11,17 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 379802f644b977563b0b50354feb1fb9a4c8fabb
-ms.sourcegitcommit: e3b1726cc04e80dc28464c35259edbd3bc39a438
+ms.openlocfilehash: 5095def776f79d0bb76d5a8e94a4228ef0abed75
+ms.sourcegitcommit: a80d35647aff66323160b2cb413b65d79d98f7a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
 由[Tom Dykstra](https://github.com/tdykstra)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+
+本教學課程的 Razor 頁面版本[這裡](xref:data/ef-rp/intro)。 Razor 頁面版本很容易遵循，並涵蓋更多的 EF 功能。 我們建議您遵循[本教學課程的 Razor 頁面版本](xref:data/ef-rp/intro)。
 
 Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) 核心 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
 
@@ -64,7 +66,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 * 從左窗格中，選取**已安裝 > Visual C# > Web**。
 
-* 選取**ASP.NET Core Web 應用程式**專案範本。
+* 選取 [ASP.NET Core Web 應用程式] 專案範本。
 
 * 輸入**ContosoUniversity**做為名稱，然後按一下**確定**。
 
@@ -192,7 +194,7 @@ EF 建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬性名�
 
 [!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
 
-連接字串的名稱會傳遞至內容所呼叫的方法上`DbContextOptionsBuilder`物件。 本機開發， [ASP.NET Core 組態系統](../../fundamentals/configuration.md)讀取連接字串從*appsettings.json*檔案。
+連接字串的名稱會傳遞至內容所呼叫的方法上`DbContextOptionsBuilder`物件。 本機開發， [ASP.NET Core 組態系統](xref:fundamentals/configuration/index)讀取連接字串從*appsettings.json*檔案。
 
 新增`using`陳述式`ContosoUniversity.Data`和`Microsoft.EntityFrameworkCore`命名空間，然後建置專案。
 
@@ -306,7 +308,7 @@ ASP.NET 相依性插入會負責傳遞的執行個體的`SchoolContext`到控制
 
 如果 SSOX 視窗尚未開啟，請選取 從**檢視**Visual Studio 中的功能表。
 
-在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
+在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫**，然後按一下 資料庫名稱中的連接字串中的項目您*appsettings.json*檔案。
 
 展開**資料表**節點以查看您的資料庫中的資料表。
 

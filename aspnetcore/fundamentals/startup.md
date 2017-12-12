@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: bba0eafe3917fa850b3a07df8df6448409f4062d
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 83b2647df8beec1feae33400224dacf9823be9b4
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
@@ -30,7 +30,7 @@ ASP.NET Core 應用程式需要`Startup`類別，名為`Startup`依慣例。 指
 
 或者，您可以定義固定`Startup`不論環境將使用藉由呼叫類別`UseStartup<TStartup>`。 這是建議的處理方式。
 
-`Startup`類別建構函式可以接受經由所提供的相依性[相依性插入](xref:fundamentals/dependency-injection)。 常見的方法是使用`IHostingEnvironment`設定[組態](xref:fundamentals/configuration)來源。
+`Startup`類別建構函式可以接受經由所提供的相依性[相依性插入](xref:fundamentals/dependency-injection)。 常見的方法是使用`IHostingEnvironment`設定[組態](xref:fundamentals/configuration/index)來源。
 
 `Startup`類別必須包含`Configure`方法，而且可以選擇包含`ConfigureServices`方法，這兩種應用程式啟動時呼叫。 類別也可以包含[這些方法的環境特定版本](xref:fundamentals/environments#startup-conventions)。 `ConfigureServices`如果有的話，會呼叫之前`Configure`。
 
@@ -38,7 +38,7 @@ ASP.NET Core 應用程式需要`Startup`類別，名為`Startup`依慣例。 指
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
-[ConfigureServices](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_)方法是選擇項，但如果使用，它就稱為之前`Configure`web 主機的方法。 Web 主機可能會設定某些服務之前``Startup``呼叫的方法 (請參閱[裝載](xref:fundamentals/hosting))。 依照慣例，[組態選項](xref:fundamentals/configuration)中這個方法所設定。
+[ConfigureServices](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.startupbase#Microsoft_AspNetCore_Hosting_StartupBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_)方法是選擇項，但如果使用，它就稱為之前`Configure`web 主機的方法。 Web 主機可能會設定某些服務之前``Startup``呼叫的方法 (請參閱[裝載](xref:fundamentals/hosting))。 依照慣例，[組態選項](xref:fundamentals/configuration/index)中這個方法所設定。
 
 對於需要大量的安裝程式的功能有`Add[Service]`的擴充方法[IServiceCollection](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.dependencyinjection.iservicecollection)。 這個範例來自預設的網站範本會設定應用程式使用 Entity Framework、 識別和 MVC 的服務：
 
@@ -76,5 +76,5 @@ ASP.NET Core 相依性插入的應用程式啟動時提供服務。 您可以要
 
 * [使用多個環境](xref:fundamentals/environments)
 * [中介軟體](xref:fundamentals/middleware)
-* [記錄](xref:fundamentals/logging)
-* [組態](xref:fundamentals/configuration)
+* [記錄](xref:fundamentals/logging/index)
+* [組態](xref:fundamentals/configuration/index)

@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/knockout
 ms.openlocfilehash: d1c5cbd430587b757bb550f8f04355e67f04eb54
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="knockoutjs-mvvm-framework-in-aspnet-core"></a>在 ASP.NET Core 解 Knockout.js MVVM 架構
 

@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
 ms.openlocfilehash: 114d52d831668e5facd1142b5f9e5f68e7456f7e
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>在 ASP.NET Core WebSockets 簡介
 
 由[Tom Dykstra](https://github.com/tdykstra)和[Andrew Stanton 護士](https://github.com/anurse)
 
-本文說明如何開始使用 ASP.NET Core 中 WebSockets。 [WebSocket](https://wikipedia.org/wiki/WebSocket)是啟用透過 TCP 連線的持續性的雙向通訊通道的通訊協定。 用於應用程式，例如聊天、 股票行情即時看板、 遊戲，您想要在 web 應用程式的即時功能的任何位置。
+本文說明如何開始使用 ASP.NET Core 中 WebSockets。 [WebSocket](https://wikipedia.org/wiki/WebSocket) 為通訊協定，其可在 TCP 連線下啟用雙向的持續性通訊通道。 用於應用程式，例如聊天、 股票行情即時看板、 遊戲，您想要在 web 應用程式的即時功能的任何位置。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/websockets/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))。 請參閱[接下來的步驟](#next-steps)節的詳細資訊。
 

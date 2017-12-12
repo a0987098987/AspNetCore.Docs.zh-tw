@@ -1,8 +1,8 @@
 ---
 title: "金鑰加密在靜止"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文概述 ASP.NET Core 資料保護加密在靜止的實作詳細資料。"
+keywords: "ASP.NET Core 資料保護、 金鑰加密"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,22 +11,22 @@ ms.assetid: f2bbbf4e-0945-43ce-be59-8bf19e448798
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: 16a9385630d88c4c9f33954f83fce2bbce5be719
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: b56dc56ed94662dbedeea49022aa73941bc833c5
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-encryption-at-rest"></a>金鑰加密在靜止
 
-<a name=data-protection-implementation-key-encryption-at-rest></a>
+<a name="data-protection-implementation-key-encryption-at-rest"></a>
 
-根據預設資料保護系統[採用啟發學習法](../configuration/default-settings.md#data-protection-default-settings)來判斷如何密碼編譯金鑰內容應該加密在靜止。 開發人員可以覆寫啟發學習法，並以手動方式指定索引鍵應該如何加密在靜止。
+根據預設，資料保護系統[採用啟發學習法](xref:security/data-protection/configuration/default-settings)來判斷如何密碼編譯金鑰內容應該加密在靜止。 開發人員可以覆寫啟發學習法，並以手動方式指定索引鍵應該如何加密在靜止。
 
 > [!NOTE]
 > 如果您指定明確的金鑰加密，在其餘的機制，資料保護系統將會取消註冊啟發學習法所提供的預設金鑰儲存機制。 您必須[指定明確的金鑰儲存機制](key-storage-providers.md#data-protection-implementation-key-storage-providers)，否則資料保護系統將無法啟動。
 
-<a name=data-protection-implementation-key-encryption-at-rest-providers></a>
+<a name="data-protection-implementation-key-encryption-at-rest-providers"></a>
 
 資料保護系統隨附三種內建金鑰加密機制。
 
@@ -38,17 +38,17 @@ ms.lasthandoff: 09/12/2017
 
 ```csharp
 sc.AddDataProtection()
-       // only the local user account can decrypt the keys
-       .ProtectKeysWithDpapi();
-   ```
+    // only the local user account can decrypt the keys
+    .ProtectKeysWithDpapi();
+```
 
-如果 ProtectKeysWithDpapi 呼叫不含任何參數，只有目前 Windows 使用者帳戶可以破解保存的金鑰內容。 您可以選擇性地指定中所示，電腦 （不只是目前的使用者帳戶） 上的任何使用者帳戶，應該可以進行破解金鑰的內容中，下列範例。
+如果`ProtectKeysWithDpapi`是不使用參數呼叫，只有目前 Windows 使用者帳戶可以破解保存的金鑰內容。 您可以選擇性地指定中所示，電腦 （不只是目前的使用者帳戶） 上的任何使用者帳戶，應該可以進行破解金鑰的內容中，下列範例。
 
 ```csharp
 sc.AddDataProtection()
-       // all user accounts on the machine can decrypt the keys
-       .ProtectKeysWithDpapi(protectToLocalMachine: true);
-   ```
+    // all user accounts on the machine can decrypt the keys
+    .ProtectKeysWithDpapi(protectToLocalMachine: true);
+```
 
 ## <a name="x509-certificate"></a>X.509 憑證
 
@@ -58,13 +58,13 @@ sc.AddDataProtection()
 
 ```csharp
 sc.AddDataProtection()
-       // searches the cert store for the cert with this thumbprint
-       .ProtectKeysWithCertificate("3BCE558E2AD3E0E34A7743EAB5AEA2A9BD2575A0");
-   ```
+    // searches the cert store for the cert with this thumbprint
+    .ProtectKeysWithCertificate("3BCE558E2AD3E0E34A7743EAB5AEA2A9BD2575A0");
+```
 
 由於.NET Framework 限制支援只使用 CAPI 私用金鑰的憑證。 請參閱[憑證為基礎的加密與 Windows DPAPI-NG](#data-protection-implementation-key-encryption-at-rest-dpapi-ng)下面這些限制可能的解決方法。
 
-<a name=data-protection-implementation-key-encryption-at-rest-dpapi-ng></a>
+<a name="data-protection-implementation-key-encryption-at-rest-dpapi-ng"></a>
 
 ## <a name="windows-dpapi-ng"></a>Windows DPAPI NG
 
@@ -80,18 +80,18 @@ sc.AddDataProtection()
 
 ```csharp
 sc.AddDataProtection()
-     // uses the descriptor rule "SID=S-1-5-21-..."
-     .ProtectKeysWithDpapiNG("SID=S-1-5-21-...",
-       flags: DpapiNGProtectionDescriptorFlags.None);
-   ```
+    // uses the descriptor rule "SID=S-1-5-21-..."
+    .ProtectKeysWithDpapiNG("SID=S-1-5-21-...",
+    flags: DpapiNGProtectionDescriptorFlags.None);
+```
 
-另外還有 ProtectKeysWithDpapiNG 的無參數多載。 這是便利的方法來指定規則 」 SID = 採擷"，其中我是目前的 Windows 使用者帳戶的 SID。
+也是無參數多載`ProtectKeysWithDpapiNG`。 這是便利的方法來指定規則 」 SID = 採擷"，其中我是目前的 Windows 使用者帳戶的 SID。
 
 ```csharp
 sc.AddDataProtection()
-     // uses the descriptor rule "SID={current account SID}"
-     .ProtectKeysWithDpapiNG();
-   ```
+    // uses the descriptor rule "SID={current account SID}"
+    .ProtectKeysWithDpapiNG();
+```
 
 在此案例中，AD 網域控制站會負責將 DPAPI NG 作業所使用的加密金鑰。 目標使用者將能夠解密從任何已加入網域的電腦的加密的內容 （前提是處理程序以其識別執行）。
 
@@ -101,13 +101,13 @@ sc.AddDataProtection()
 
 ```csharp
 sc.AddDataProtection()
-       // searches the cert store for the cert with this thumbprint
-       .ProtectKeysWithDpapiNG("CERTIFICATE=HashId:3BCE558E2AD3E0E34A7743EAB5AEA2A9BD2575A0",
-           flags: DpapiNGProtectionDescriptorFlags.None);
-   ```
+    // searches the cert store for the cert with this thumbprint
+    .ProtectKeysWithDpapiNG("CERTIFICATE=HashId:3BCE558E2AD3E0E34A7743EAB5AEA2A9BD2575A0",
+        flags: DpapiNGProtectionDescriptorFlags.None);
+```
 
 任何指向這個儲存機制的應用程式必須執行 Windows 8.1 / Windows Server 2012 R2 或更新版本能夠解密此機碼。
 
 ## <a name="custom-key-encryption"></a>自訂金鑰加密
 
-如果內建機制不適當，開發人員可以藉由提供自訂 IXmlEncryptor 指定自己的金鑰加密機制。
+如果內建機制不適當，開發人員可以指定自己的金鑰加密機制藉由提供自訂`IXmlEncryptor`。

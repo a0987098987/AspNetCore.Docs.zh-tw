@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
 ms.openlocfilehash: d3f9eb4943ed62b674d6bb2ab1b275b0a3c02343
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
@@ -40,7 +40,7 @@ HTTP.sys 支援下列功能：
 
 - Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -125,7 +125,7 @@ HTTP.sys 中的其他選項的相關資訊，請參閱[HttpSysOptions](https://g
 
 優點`UrlPrefixes`會收到錯誤訊息立即如果您嘗試新增的格式錯誤的前置詞。 優點`UseUrls`(與共用`urls`和 ASPNETCORE_URLS) 是您可以更輕鬆地切換 Kestrel 和 HTTP.sys 之間。
 
-如果您同時使用`UseUrls`(或`urls`或 ASPNETCORE_URLS) 和`UrlPrefixes`中的設定`UrlPrefixes`覆寫中的`UseUrls`。 如需詳細資訊，請參閱[主控](xref:fundamentals/hosting)。
+如果您同時使用`UseUrls`(或`urls`或 ASPNETCORE_URLS) 和`UrlPrefixes`中的設定`UrlPrefixes`覆寫中的`UseUrls`。 如需詳細資訊，請參閱[裝載](xref:fundamentals/hosting)。
 
 HTTP.sys 會使用[HTTP 伺服器 API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 

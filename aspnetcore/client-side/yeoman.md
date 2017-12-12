@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/yeoman
 ms.openlocfilehash: d7411c1635e9fef2857f9a03e7310224ee8d7344
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction-to-building-projects-with-yeoman-in-aspnet-core"></a>簡介與 Yeoman 中 ASP.NET Core 建置專案
 

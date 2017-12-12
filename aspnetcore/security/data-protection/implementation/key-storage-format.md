@@ -1,8 +1,8 @@
 ---
 title: "金鑰的儲存體格式"
 author: tdykstra
-description: 
-keywords: ASP.NET Core
+description: "本文件說明 ASP.NET Core 資料保護的金鑰儲存格式的實作詳細資料。"
+keywords: "ASP.NET Core，資料保護的金鑰儲存區"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: e8996478-f7bf-4b58-bab4-7fdb5d8556c5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: e761eaa406a9691e3fa36881d42c1a0c1bd8a206
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 4ebad05f7d55e954463ce5e277b419a7d6f773c0
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-storage-format"></a>金鑰的儲存體格式
 
-<a name=data-protection-implementation-key-storage-format></a>
+<a name="data-protection-implementation-key-storage-format"></a>
 
 物件會儲存在 XML 表示法中的其餘部分。 金鑰儲存的預設目錄是 %localappdata%\asp.net\dataprotection-keys\。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/11/2017
 
 \<金鑰 > 元素包含下列屬性和子項目：
 
-* 索引鍵的識別碼。 這個值會被視為可靠;檔名不只是人力可讀性 nicety。
+* 索引鍵的識別碼。這個值會被視為可靠;檔名不只是人力可讀性 nicety。
 
 * 版本\<金鑰 > 項目，目前固定為 1。
 

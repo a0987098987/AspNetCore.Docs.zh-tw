@@ -5,17 +5,17 @@ description: "說明如何啟用 MVC Razor 檢視編譯和先行編譯 ASP.NET C
 keywords: "ASP.NET Core Razor 檢視編譯、 Razor 預先編譯、 Razor 先行編譯"
 ms.author: riande
 manager: wpickett
-ms.date: 08/16/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.assetid: ab4705b7-1638-1638-bc97-ea7f292fe92a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-compilation
-ms.openlocfilehash: bfee2e5e8f71c99465be79589a77f0e173097b23
-ms.sourcegitcommit: 8005eb4051e568d88ee58d48424f39916052e6e2
+ms.openlocfilehash: 873f6203f9e7b5bb14968dcec3f8d8e5548bd834
+ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>Razor 檢視編譯和先行編譯的 ASP.NET Core
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 09/24/2017
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-如果您的專案以.NET Framework 為目標，包含的封裝參考`Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`:
+如果您的專案以.NET Framework 為目標，包含的封裝參考[Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/):
 
 ```xml
 <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.0" PrivateAssets="All" />
@@ -54,3 +54,7 @@ ms.lasthandoff: 09/24/2017
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
 ---
+
+A *< project_name >。PrecompiledViews.dll*當先行編譯成功，則會產生包含已編譯的 Razor 檢視的檔案。 例如，下列螢幕擷取畫面會描述的內容*Index.cshtml*內*WebApplication1.PrecompiledViews.dll*:
+
+![DLL 內的 razor 檢視](view-compilation/_static/razor-views-in-dll.png)

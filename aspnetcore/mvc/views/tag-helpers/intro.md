@@ -11,11 +11,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06644b8359fb5ccc2e61a17a4c6e20e354d5ceef
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 78d9fdbd32eae29d7714507498d5d68b86c6d12e
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>在 ASP.NET Core 標記協助程式簡介 
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 09/28/2017
 
 大部分的內建的標記協助程式和目標現有的 HTML 元素的元素提供伺服器端的屬性。 例如，`<input>`所使用的檢視中的許多項目的*檢視/帳戶*資料夾包含`asp-for`屬性，它會擷取到轉譯的 HTML 與指定的模型屬性的名稱。 下列的 Razor 標記：
 
-```html
+```cshtml
 <label asp-for="Email"></label>
 ```
 
 會產生下列 HTML:
 
-```html
+```cshtml
 <label for="Email">Email</label>
 ```
 
@@ -51,19 +51,19 @@ ms.lasthandoff: 09/28/2017
 
 標記協助程式範圍由多種`@addTagHelper`， `@removeTagHelper`，而"！"退出字元。
 
-<a name=add-helper-label></a>
+<a name="add-helper-label"></a>
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper`提供標記協助程式
 
 如果您建立新 ASP.NET Core web 應用程式名為*AuthoringTagHelpers* （使用無驗證），下列*Views/_ViewImports.cshtml*檔案會加入至您的專案：
 
-[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
+[!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
 `@addTagHelper`指示詞使標記協助程式可供檢視。 在此案例中，檢視檔案是*Views/_ViewImports.cshtml*，預設會繼承中的所有檢視檔案*檢視*資料夾和子的目錄; 可用標記協助程式。 上述程式碼使用的萬用字元語法 (「\*") 來指定在指定的組件中的所有標記協助程式 (*Microsoft.AspNetCore.Mvc.TagHelpers*) 將可在每個檢視檔案*檢視*目錄或子目錄。 之後的第一個參數`@addTagHelper`指定載入標記協助程式 (我們使用 「\*"的所有標記協助程式)，而第二個參數會指定包含標記協助程式的組件 」 Microsoft.AspNetCore.Mvc.TagHelpers"。 *Microsoft.AspNetCore.Mvc.TagHelpers*是內建 ASP.NET Core 標記協助程式組件。
 
 若要公開所有將在此專案中的標記協助程式 (這會建立名為組件*AuthoringTagHelpers*)，您會使用下列：
 
-[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
+[!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
 如果您的專案包含`EmailTagHelper`與預設的命名空間 (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，您可以提供標記協助程式的完整限定的名稱 (FQN):
 
@@ -75,14 +75,14 @@ ms.lasthandoff: 09/28/2017
 
 若要新增的檢視使用 FQN 標記協助程式，您先新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，並接著組件名稱 (*AuthoringTagHelpers*)。 大部分的開發人員想要使用 「\*"的萬用字元語法。 萬用字元語法可讓您插入萬用字元"\*"FQN 中的尾碼。 例如，任何下列指示詞會顯示`EmailTagHelper`:
 
-```csharp
+```cshtml
 @addTagHelper AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers
 @addTagHelper AuthoringTagHelpers.TagHelpers.Email*, AuthoringTagHelpers
 ```
 
 如先前所述，新增`@addTagHelper`指示詞加入*Views/_ViewImports.cshtml*檔案讓標記協助程式中的所有檢視檔案*檢視*目錄和子目錄。 您可以使用`@addTagHelper`指示詞中特定的檢視檔案，如果您想要選擇加入以公開這些檢視表標記協助專家。
 
-<a name=remove-razor-directives-label></a>
+<a name="remove-razor-directives-label"></a>
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper`移除標記協助程式
 
@@ -98,19 +98,19 @@ ms.lasthandoff: 09/28/2017
 
 您可以停用在項目層級，以標記協助程式退出字元標記協助程式 ("！")。 例如，`Email`中已停用驗證`<span>`標記協助程式退出字元：
 
-```csharp
+```cshtml
 <!span asp-validation-for="Email" class="text-danger"></!span>
 ```
 
 您必須套用標記協助程式退出字元的開頭和結尾標記。 （在 Visual Studio 編輯器中自動將退出字元加入結尾標記，當您加入一個開頭標記）。 加入選擇退出字元之後，此項目和標記協助程式屬性不再顯示在特殊的字型。
 
-<a name=prefix-razor-directives-label></a>
+<a name="prefix-razor-directives-label"></a>
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>使用`@tagHelperPrefix`進行明確標記協助程式使用方式
 
 `@tagHelperPrefix`指示詞可讓您指定要啟用標記協助程式支援，並讓標記協助程式使用明確標記前置詞字串。 例如，您可以加入下列標記以*Views/_ViewImports.cshtml*檔案：
 
-```html
+```cshtml
 @tagHelperPrefix th:
 ```
 在下列程式碼影像，標記協助程式前置詞設定為`th:`，因此只有在使用前置詞的元素`th:`支援標記協助程式 （啟用標記協助程式的項目會有特殊的字型）。 `<label>`和`<input>`元素有標記協助程式前置詞且標記協助程式功能，同時`<span>`元素則否。
@@ -127,7 +127,7 @@ ms.lasthandoff: 09/28/2017
 
 ![影像](intro/_static/label.png)
 
-不只取得 HTML 說明，但圖示 ("@"符號與在其下的"<>")。
+不只取得 HTML 說明，但圖示 (「@" symbol with "<>"下)。
 
 ![影像](intro/_static/tagSym.png)
 
@@ -163,13 +163,13 @@ IntelliSense 會列出的屬性和方法在頁面上的模型。 豐富的 Intel
 
 標記協助程式附加至 HTML 元素在 Razor 檢視中，雖然[HTML Helper](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers)會叫用的方法與 HTML 顛倒 Razor 檢視中。 請考慮下列的 Razor 標記 CSS 類別 「 標題 」 建立的 HTML 標籤：
 
-```html
+```cshtml
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
 ```
 
 在 (`@`) 符號會告知 Razor 這是程式碼啟動。 下面兩個參數 ("FirstName"和"名字:") 是字串，因此[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense)無法幫助。 最後的引數：
 
-```html
+```cshtml
 new {@class="caption"}
 ```
 
@@ -189,7 +189,7 @@ IntelliSense 可協助您撰寫的整行。 `LabelTagHelper`也預設為設定�
 
 會產生：
 
-```html
+```cshtml
 <label class="caption" for="FirstName">First Name</label>
 ```
 
@@ -199,7 +199,7 @@ IntelliSense 可協助您撰寫的整行。 `LabelTagHelper`也預設為設定�
 
 會產生：
 
-```html
+```cshtml
 <label class="caption" for="FirstName">Name First</label>
 ```
 
@@ -209,7 +209,7 @@ IntelliSense 可協助您撰寫的整行。 `LabelTagHelper`也預設為設定�
 
 Visual Studio 編輯器顯示 C# 程式碼以灰色背景。 例如， `AntiForgeryToken` HTML Helper:
 
-```html
+```cshtml
 @Html.AntiForgeryToken()
 ```
 

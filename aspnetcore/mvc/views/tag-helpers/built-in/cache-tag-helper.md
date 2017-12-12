@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
 ms.openlocfilehash: da5b7b3bf1aa01ee22edf9bd003d8f79a00a5d0b
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
 
@@ -84,7 +84,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 | 屬性類型    | 範例值     |
 |----------------   |----------------   |
-| TimeSpan    | " @TimeSpan.FromSeconds (120)"    |
+| TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
 
 
 從快取內容的第一個要求時間設定時間的長度。 
@@ -103,7 +103,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 | 屬性類型    | 範例值     |
 |----------------   |----------------   |
-| TimeSpan    | " @TimeSpan.FromSeconds (60)"     |
+| TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
 
 
 設定應該收回快取項目，如果它尚未被存取的時間。
@@ -229,7 +229,7 @@ routes.MapRoute(
 
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
-| 字串             | " @Model "                 |
+| 字串             | "@Model"                 |
 
 
 可讓您自訂的哪些資料取得快取。 更新屬性的字串值的變更，快取標記協助程式的內容所參考的物件時。 通常模型值的字串串連會指派給這個屬性。  實際上，這表示，串連的值的任何更新的快取失效。

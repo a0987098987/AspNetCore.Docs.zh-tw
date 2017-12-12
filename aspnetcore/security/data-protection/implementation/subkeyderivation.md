@@ -1,8 +1,8 @@
 ---
 title: "子機碼衍生和已驗證的加密"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文件說明 ASP.NET Core 資料保護的實作詳細資料衍生子機碼，驗證加密。"
+keywords: "ASP.NET Core 資料保護、 子機碼衍生，驗證加密"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,38 +11,38 @@ ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 24ce71b417599bea22b7fae8b384db599f9e907c
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 3eb27b8a6d04074662bf619a09fd867252624209
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="subkey-derivation-and-authenticated-encryption"></a>子機碼衍生和已驗證的加密
 
-<a name=data-protection-implementation-subkey-derivation></a>
+<a name="data-protection-implementation-subkey-derivation"></a>
 
 會包含某種形式的 entropy 鑰匙圈中大部分的索引鍵，而且必須演算資訊指出"CBC 模式加密 + HMAC 驗證 」 或 「 GCM 加密 + 驗證 」。 在這些情況下，我們將內嵌的 entropy 稱為主要金鑰處理內容 （或金鑰管理），此索引鍵，和我們執行金鑰衍生功能來衍生金鑰會用於實際的密碼編譯作業。
 
 > [!NOTE]
-> 索引鍵是抽象類別，並自訂實作可能無法運作，如下所示。 如果索引鍵提供自己的 IAuthenticatedEncryptor，而不是使用其中一種我們內建的 factory 實作，適用於不會再這一節所述的機制。
+> 索引鍵是抽象類別，並自訂實作可能無法運作，如下所示。 如果索引鍵提供自己的實作`IAuthenticatedEncryptor`而不是使用我們的內建處理站的其中一個，這一節所述的機制就不再適用。
 
-<a name=data-protection-implementation-subkey-derivation-aad></a>
+<a name="data-protection-implementation-subkey-derivation-aad"></a>
 
 ## <a name="additional-authenticated-data-and-subkey-derivation"></a>其他的已驗證的資料和子機碼衍生
 
-IAuthenticatedEncryptor 介面做為所有已驗證的加密作業的核心介面。 它的加密方法會採用兩個緩衝區： 純文字和 additionalAuthenticatedData (AAD)。 純文字內容流量不變 IDataProtector.Protect，呼叫，但 AAD 由系統產生，並包含三個元件：
+`IAuthenticatedEncryptor`介面做為所有已驗證的加密作業的核心介面。 其`Encrypt`方法會採用兩個緩衝區： 純文字和 additionalAuthenticatedData (AAD)。 純文字內容流量未變更的呼叫`IDataProtector.Protect`，但 AAD 由系統產生，並包含三個元件：
 
 1. 32 位元 magic 標頭 09 F0 C9 F0 可識別此版本的資料保護系統。
 
 2. 128 位元的金鑰識別碼。
 
-3. 從建立會執行此作業 IDataProtector 目的鏈結，構成的可變長度字串。
+3. 可變長度字串所組成的用途鏈結建立`IDataProtector`，正在執行此作業。
 
-因為 AAD 都是唯一的所有三個元件的 tuple，我們可以用它來衍生自金鑰管理的新機碼，而不是使用金鑰管理本身在所有的密碼編譯作業。 IAuthenticatedEncryptor.Encrypt 每次呼叫，如下列的金鑰衍生程序就會發生：
+因為 AAD 都是唯一的所有三個元件的 tuple，我們可以用它來衍生自金鑰管理的新機碼，而不是使用金鑰管理本身在所有的密碼編譯作業。 若要每次呼叫`IAuthenticatedEncryptor.Encrypt`，下列的金鑰衍生處理序會發生：
 
 （K_E、 K_H） = SP800_108_CTR_HMACSHA512 (K_M，AAD，contextHeader | | keyModifier)
 
-在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)、 秒。 5.1) 使用下列參數：
+在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，秒 5.1) 使用下列參數：
 
 * 金鑰衍生金鑰 (KDK) = K_M
 
@@ -52,7 +52,7 @@ IAuthenticatedEncryptor 介面做為所有已驗證的加密作業的核心介�
 
 * 內容 = contextHeader | |keyModifier
 
-內容標頭是可變長度，基本上是我們要為其衍生 K_E 與 K_H 演算法的憑證指紋。 索引鍵的修飾詞是 128 位元字串隨機產生的加密每次呼叫，而且是用來確保與過度機率，KE 和 KH 是唯一的這項特定的驗證加密作業，即使所有其他輸入至 KDF 是常數。
+內容標頭是可變長度，基本上是我們要為其衍生 K_E 與 K_H 演算法的憑證指紋。 索引鍵的修飾詞是隨機產生的每個呼叫的 128 位元字串`Encrypt`，並提供服務，以確保與過度機率，KE 和 KH 是唯一的這項特定的驗證加密作業，即使所有其他輸入 KDF 是常數。
 
 CBC 模式加密 + HMAC 驗證作業，|K_E |這是對稱的區塊加密金鑰的長度和 |K_H |是摘要的大小 HMAC 常式。 GCM 加密 + 驗證作業 |K_H |= 0。
 
@@ -65,7 +65,7 @@ CBC 模式加密 + HMAC 驗證作業，|K_E |這是對稱的區塊加密金鑰�
 *輸出: = keyModifier | |iv | |E_cbc （K_E，iv，資料） | |HMAC (K_H、 iv | |E_cbc （K_E，iv，資料）)*
 
 > [!NOTE]
-> IDataProtector.Protect 實作將[magic 標頭和索引鍵的識別碼，前面加上](authenticated-encryption-details.md#data-protection-implementation-authenticated-encryption-details)輸出傳回給呼叫者之前。 因為 magic 標頭和索引鍵識別碼是隱含的一部分[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)，因為索引鍵的修飾詞做為輸入至 KDF 回饋，這也表示，每個單一位元組的最後一個傳回的內容由 MAC 驗證
+> `IDataProtector.Protect`實作將[magic 標頭和索引鍵的識別碼，前面加上](authenticated-encryption-details.md)輸出傳回給呼叫者之前。 因為 magic 標頭和索引鍵識別碼是隱含的一部分[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)，因為索引鍵的修飾詞做為輸入至 KDF 回饋，這也表示，每個單一位元組的最後一個傳回的內容由 MAC 驗證
 
 ## <a name="galoiscounter-mode-encryption--validation"></a>Galois/計數器模式加密 + 驗證
 

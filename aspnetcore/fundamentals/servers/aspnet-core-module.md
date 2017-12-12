@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ced1e667acb7d11954aea27de7701db89091fd9
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 1d1f551dbde5f3dd6e71808154c2e5885d588d7c
+ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 模組簡介
 
@@ -28,7 +28,7 @@ ASP.NET 核心模組 (ANCM) 可讓您執行 ASP.NET Core 應用程式背後 IIS�
 
 * Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-aspnet-core-module-does"></a>ASP.NET 核心模組的功能
 
@@ -58,7 +58,8 @@ ANCM 有幾個其他函式：
 
 ### <a name="install-ancm"></a>安裝 ANCM
 
-ASP.NET 核心模組必須安裝在 IIS 伺服器上，並在 IIS Express 開發電腦上。 針對伺服器，ANCM 隨附於[.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore.2.0.0-windowshosting)。 開發電腦的 Visual Studio 會自動安裝 ANCM 在 IIS Express 中，並在 IIS 中如果已安裝在電腦上。
+
+ASP.NET 核心模組必須安裝在 IIS 伺服器上，並在 IIS Express 開發電腦上。 針對伺服器，ANCM 隨附於[.NET 核心 Windows Server 裝載配套](https://aka.ms/dotnetcore-2-windowshosting)。 開發電腦的 Visual Studio 會自動安裝 ANCM 在 IIS Express 中，並在 IIS 中如果已安裝在電腦上。
 
 ### <a name="install-the-iisintegration-nuget-package"></a>安裝 IISIntegration NuGet 套件
 
@@ -111,6 +112,12 @@ ASP.NET Core 模組的設定會儲存在*Web.config*位於應用程式的根資�
 ### <a name="run-with-iis-express-in-development"></a>在開發中執行的 IIS Express
 
 IIS Express 可以由 Visual Studio 中使用 ASP.NET Core 範本所定義的預設設定檔啟動。
+
+## <a name="proxy-configuration-uses-http-protocol-and-a-pairing-token"></a>Proxy 設定使用 HTTP 通訊協定和配對的語彙基元
+
+ANCM 和 Kestrel 之間建立 proxy 會使用 HTTP 通訊協定。 使用 HTTP 是其中 ANCM 和 Kestrel 之間的流量會在回送位址從網路介面效能最佳化。 沒有任何風險竊聽 ANCM 和 Kestrel 從位置不在伺服器之間的流量。
+
+配對的語彙基元用來保證 Kestrel 所接收的要求已由 IIS 代理，且不是來自其他來源。 建立並設定環境變數配對的語彙基元 (`ASPNETCORE_TOKEN`) 由 ANCM。 配對的語彙基元也會設成標頭 (`MSAspNetCoreToken`) 針對每個 proxy 的要求。 IIS 中介軟體檢查每個要求收到確認配對的語彙基元的標頭值符合環境變數值。 如果語彙基元值不相符時，要求將記錄中，並拒絕。 配對的語彙基元的環境變數和 ANCM 和 Kestrel 之間的流量無法存取從出伺服器的位置。 而不需要知道配對的語彙基元值，攻擊者無法送出要求，略過檢查在 IIS 中介軟體。
 
 ## <a name="next-steps"></a>後續步驟
 

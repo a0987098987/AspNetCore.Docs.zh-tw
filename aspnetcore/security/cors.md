@@ -1,8 +1,8 @@
 ---
 title: "啟用跨原始要求 (CORS)"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件介紹的標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
+keywords: "ASP.NET Core，CORS，跨來源"
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
@@ -11,11 +11,11 @@ ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: e441ce1c50139a5b33865eec8e8d99764258730d
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 5398b6ad6531710de2b8000cb368e5fa607ae7ff
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -219,7 +219,7 @@ $.ajax({
 
 [!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
-<a name=cors-how-cors-works></a>
+<a name="cors-how-cors-works"></a>
 
 ## <a name="how-cors-works"></a>CORS 的運作方式
 
@@ -240,7 +240,7 @@ User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6
 Host: myservice.azurewebsites.net
 ```
 
-如果伺服器允許的要求，它會設定存取控制-允許的原始標頭。 此標頭的值符合 Origin 標頭，或為萬用字元值"*"，允許任何來源的意義。:
+如果伺服器允許的要求，它會在回應中設定的存取控制-允許的原始標頭。 此標頭的值符合要求，從 Origin 標頭或萬用字元值"*"，允許任何來源的意義：
 
 ```
 HTTP/1.1 200 OK

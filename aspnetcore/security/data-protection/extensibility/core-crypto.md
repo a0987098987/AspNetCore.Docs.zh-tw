@@ -10,20 +10,20 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: 8ee4e380b154db7f1736edc793b56258655ddd52
-ms.sourcegitcommit: bd05f7ea8f87ad076ef6e8b704698ebcba5ca80c
+ms.openlocfilehash: 69839562c39ab83531085e20dac1bd56e8d13d3f
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="core-cryptography-extensibility"></a>核心加密擴充性
 
-<a name=data-protection-extensibility-core-crypto></a>
+<a name="data-protection-extensibility-core-crypto"></a>
 
 >[!WARNING]
 > 實作下列介面的型別應該是安全執行緒的多個呼叫端。
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptor"></a>
 
 ## <a name="iauthenticatedencryptor"></a>IAuthenticatedEncryptor
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 08/25/2017
 > [!NOTE]
 > IAuthenticatedEncryptor 執行個體本身實際上不需要包含金鑰資料。 例如，實作可以委派給 HSM 的所有作業。
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory></a>
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory"></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="how-to-create-an-iauthenticatedencryptor"></a>如何建立 IAuthenticatedEncryptor
 
@@ -102,7 +102,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 ---
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
 ## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET Core 2.x 只)
 
@@ -120,7 +120,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 IAuthenticatedEncryptor 與 IAuthenticatedEncryptorDescriptor 之間的主要差異是描述元知道如何建立加密程式，並提供有效的引數。 請考慮 IAuthenticatedEncryptor 其實作依賴 SymmetricAlgorithm 和 KeyedHashAlgorithm。 加密程式的作業是使用這些型別，但是它不一定知道這些型別來自何處，讓它無法真正將寫出適當描述如何重新啟動應用程式時重新建立本身。 描述元做為較高的層級，在這個基礎之上。 由於描述項會知道如何建立加密程式執行個體 （例如，它知道如何建立必要的演算法），它可以將該知識以 XML 格式序列化，讓應用程式重設之後，可以重新建立加密程式執行個體。
 
-<a name=data-protection-extensibility-core-crypto-exporttoxml></a>
+<a name="data-protection-extensibility-core-crypto-exporttoxml"></a>
 
 描述元可以透過其 ExportToXml 常式進行序列化。 這個常式會傳回包含兩個屬性 XmlSerializedDescriptorInfo： 描述項和類型表示的 XElement 表示[IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer)它可以是用來重新啟動指定對應的 XElement 此描述元。
 
@@ -131,7 +131,7 @@ IAuthenticatedEncryptor 與 IAuthenticatedEncryptorDescriptor 之間的主要差
 
 也可以序列化的描述元其中不包含機密資訊的情況。 請再次考量 HSM 中所儲存的密碼編譯金鑰的大小寫。 序列化本身，因為 HSM 不會公開以純文字形式的資料時，無法寫入出金鑰的內容描述元。 相反地，描述元可以撰寫出金鑰包裝的版本 （如果 HSM 會以這種方式允許匯出） 的索引鍵或索引鍵的 HSM 自己唯一識別碼。
 
-<a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer></a>
+<a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer"></a>
 
 ## <a name="iauthenticatedencryptordescriptordeserializer"></a>IAuthenticatedEncryptorDescriptorDeserializer
 
@@ -162,7 +162,7 @@ AlgorithmConfiguration 視為最上層的 factory。 設定做為範本。 它�
 
 當 CreateNewDescriptor 稱為，全新金錀會建立僅供此呼叫，而且會產生新的 IAuthenticatedEncryptorDescriptor 包裝此金鑰的內容和取用所需的資料所需的演算法資訊。 金鑰內容可能會在軟體中建立 （和保留在記憶體中），所以無法建立且保留在 HSM，依此類推。 重要的重點是 CreateNewDescriptor 任何兩個呼叫應該永遠不會建立對等 IAuthenticatedEncryptorDescriptor 執行個體。
 
-AlgorithmConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#data-protection-implementation-key-management)。 若要變更的所有未來的索引鍵的實作，請在 KeyManagementOptions 中設定 AuthenticatedEncryptorConfiguration 屬性。
+AlgorithmConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在 KeyManagementOptions 中設定 AuthenticatedEncryptorConfiguration 屬性。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -174,6 +174,6 @@ IAuthenticatedEncryptorConfiguration 視為最上層的 factory。 設定做為�
 
 當 CreateNewDescriptor 稱為，全新金錀會建立僅供此呼叫，而且會產生新的 IAuthenticatedEncryptorDescriptor 包裝此金鑰的內容和取用所需的資料所需的演算法資訊。 金鑰內容可能會在軟體中建立 （和保留在記憶體中），所以無法建立且保留在 HSM，依此類推。 重要的重點是 CreateNewDescriptor 任何兩個呼叫應該永遠不會建立對等 IAuthenticatedEncryptorDescriptor 執行個體。
 
-IAuthenticatedEncryptorConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#data-protection-implementation-key-management)。 若要變更的所有未來的索引鍵的實作，請在服務容器中註冊單一 IAuthenticatedEncryptorConfiguration。
+IAuthenticatedEncryptorConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在服務容器中註冊單一 IAuthenticatedEncryptorConfiguration。
 
 ---

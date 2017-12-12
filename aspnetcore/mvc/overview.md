@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
 ms.openlocfilehash: 2492b6aa4602dbbf3b9cd3dca00d40690c640cab
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -183,7 +183,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 [區域](controllers/areas.md)提供資料的大型 ASP.NET Core MVC Web 應用程式分割成較小功能群組的方式。 一個區域就是應用程式中的一個 MVC 結構。 在 MVC 專案中，邏輯元件，例如模型、 控制器和檢視保留在不同的資料夾，而且若要建立這些元件之間的關聯性則 MVC 會使用命名慣例。 大型應用程式中，它可能比較有利分割成個別高功能層級區域的 應用程式。 例如，電子商務應用程式與多個業務單位，例如簽出、 帳單和搜尋等。每個這些單位具有自己的邏輯元件檢視、 控制器、 和模型。
 
-### <a name="web-apis"></a>Web 應用程式開發介面
+### <a name="web-apis"></a>Web API
 
 正在建立網站的絕佳平台，除了 ASP.NET Core MVC 會有絕佳的支援，來建置 Web 應用程式開發介面。 您可以建立服務，可達到廣泛的用戶端包括瀏覽器和行動裝置。
 

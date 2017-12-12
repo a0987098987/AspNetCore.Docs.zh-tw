@@ -10,10 +10,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/anti-request-forgery
 ms.openlocfilehash: d7df8f91e88290509c8751a4b69804b60138846e
-ms.sourcegitcommit: 31a979c5d45fd3ed38aa13ef17cddb3389721588
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core
 

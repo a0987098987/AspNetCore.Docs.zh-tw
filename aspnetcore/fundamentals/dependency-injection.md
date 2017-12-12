@@ -12,21 +12,21 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5c903a72d004afac55fbcc04ad157442e7a18ee
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 8d12960708f9d9bf2bc7c5997f82096d93087d13
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>在 ASP.NET Core 的相依性插入的簡介
 
-<a name=fundamentals-dependency-injection></a>
+<a name="fundamentals-dependency-injection"></a>
 
 由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
 ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core 應用程式可以利用內建架構服務，讓它們插入到啟動類別中的方法，可以將應用程式服務設定以及資料隱碼。 ASP.NET Core 所提供的預設服務容器會提供最少的功能設定，而不是取代其他容器。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-dependency-injection"></a>相依性插入是什麼？
 
@@ -143,7 +143,7 @@ Entity Framework 內容應該加入至服務容器使用`Scoped`存留期。 這
 >[!WARNING]
 > 正在解析主要危險来謹慎`Scoped`服務從單一子句。 很可能在此情況下處理後續要求時，服務會造成不正確的狀態。
 
-具有相依性服務應該註冊這些伺服器在容器中。 如果服務的建構函式可如需要基本型別`string`，這可以藉由插入[模式和組態選項](configuration.md)。
+具有相依性服務應該註冊這些伺服器在容器中。 如果服務的建構函式可如需要基本型別`string`，這可以藉由插入[組態](xref:fundamentals/configuration/index)和[選項模式](xref:fundamentals/configuration/options)。
 
 ## <a name="service-lifetimes-and-registration-options"></a>服務的存留期和註冊選項
 
@@ -228,11 +228,16 @@ public class Service1 : IDisposable {}
 public class Service2 : IDisposable {}
 public class Service3 : IDisposable {}
 
+public interface ISomeService {}
+public class SomeServiceImplementation : ISomeService, IDisposable {}
+
+
 public void ConfigureServices(IServiceCollection services)
 {
     // container will create the instance(s) of these types and will dispose them
     services.AddScoped<Service1>();
     services.AddSingleton<Service2>();
+    services.AddSingleton<ISomeService>(sp => new SomeServiceImplementation());
 
     // container did not create instance so it will NOT dispose it
     services.AddSingleton<Service3>(new Service3());
@@ -296,7 +301,7 @@ public class DefaultModule : Module
 
 * DI 適用於具有複雜的相依性物件。 控制站、 服務、 配接器，以及儲存機制是所有的範例 DI 可能加入的物件。
 
-* 避免直接在 DI 中儲存資料和設定。 例如，使用者的購物車通常不應該新增至服務容器。 組態應該使用[選項模型](configuration.md#options-config-objects)。 同樣地，避免只存在於以允許存取其他物件的 「 資料持有者 」 物件。 最好是要求透過 DI，盡可能所需的實際項目。
+* 避免直接在 DI 中儲存資料和設定。 例如，使用者的購物車通常不應該新增至服務容器。 組態應該使用[選項模式](xref:fundamentals/configuration/options)。 同樣地，避免只存在於以允許存取其他物件的 「 資料持有者 」 物件。 最好是要求透過 DI，盡可能所需的實際項目。
 
 * 避免靜態存取服務。
 

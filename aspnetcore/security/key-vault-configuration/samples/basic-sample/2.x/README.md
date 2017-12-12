@@ -8,7 +8,7 @@
 1. 建立金鑰保存庫，並設定下列中的指導方針的應用程式的 Azure Active Directory (Azure AD)[開始使用 Azure 金鑰保存庫](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。
   * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
     * 簡單密碼，會建立為名稱 / 值組。 Azure 金鑰保存庫密碼名稱會限制為英數字元及虛線。
-    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
+    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
     * 建立兩個*手動*具有下列名稱 / 值組的密碼。 第一個密碼是簡單名稱和值，並以第二個密碼建立祕密值區段和秘密名稱中的子機碼：
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`

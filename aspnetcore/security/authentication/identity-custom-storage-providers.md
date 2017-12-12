@@ -11,11 +11,11 @@ ms.assetid: b2ace545-ecf6-4664-b31e-b65bd4a6b025
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: c1d974e72eab388ba7b196c4b48f21a06b59dc20
-ms.sourcegitcommit: f5cf472d49c2475e4d57654efd5fc0a4ccecba4c
+ms.openlocfilehash: 687ca96be5121502e816bdc856e17dcd5923fe05
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -68,7 +68,7 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ### <a name="user-claims"></a>使用者宣告
 
-一組陳述式 (或[宣告](https://docs.microsoft.com//dotnet/api/system.security.claims.claim)代表使用者的身分識別之使用者的相關。 可以啟用更高的使用者身分識別與透過角色能達到之效果的運算式。
+一組陳述式 (或[宣告](https://docs.microsoft.com//dotnet/api/system.security.claims.claim)) 代表使用者的身分識別之使用者的相關。 可以啟用更高的使用者身分識別與透過角色能達到之效果的運算式。
 
 ### <a name="user-logins"></a>使用者登入
 

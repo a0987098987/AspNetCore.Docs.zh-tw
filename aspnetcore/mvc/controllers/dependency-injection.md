@@ -11,11 +11,11 @@ ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: ff0a1a34ee6b025be6312a81f1a0bcdd07026adb
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: 46b92a1cab6fb2cd06eff44feb6a55788fca5c2a
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="dependency-injection-into-controllers"></a>相依性插入控制器
 
@@ -89,7 +89,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 ## <a name="accessing-settings-from-a-controller"></a>存取控制站的設定
 
-存取應用程式或組態設定從控制器內是常見的模式。 此存取都應該使用中所述的選項模式[組態](../../fundamentals/configuration.md)。 您通常應該不會要求設定直接從您使用相依性插入的控制器。 更好的方法是要求`IOptions<T>`執行個體，其中`T`是您需要的組態類別。
+存取應用程式或組態設定從控制器內是常見的模式。 此存取都應該使用中所述的選項模式[組態](xref:fundamentals/configuration/index)。 您通常應該不會要求設定直接從您使用相依性插入的控制器。 更好的方法是要求`IOptions<T>`執行個體，其中`T`是您需要的組態類別。
 
 若要使用的選項模式，您需要建立表示的選項，這種類別：
 
@@ -100,7 +100,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 [!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
 
 > [!NOTE]
-> 在上述清單中，我們正在設定應用程式讀取從 JSON 格式化檔案的設定。 您也可以進行設定完全以程式碼，如上述加上註解的程式碼所示。 請參閱[組態](../../fundamentals/configuration.md)進一步設定選項。
+> 在上述清單中，我們正在設定應用程式讀取從 JSON 格式化檔案的設定。 您也可以進行設定完全以程式碼，如上述加上註解的程式碼所示。 請參閱[組態](xref:fundamentals/configuration/index)進一步設定選項。
 
 一旦您所指定的強型別組態物件 (在此情況下， `SampleWebSettings`) 並將它新增至服務的集合，您可要求從任何控制器或動作方法所要求的執行個體`IOptions<T>`(在此情況下， `IOptions<SampleWebSettings>`). 下列程式碼會示範一個控制器從要求設定的方式：
 

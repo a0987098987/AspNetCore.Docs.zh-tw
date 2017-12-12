@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-primary-key-configuration
 ms.openlocfilehash: 5734a9aa86fb2831bd054593ad41c3e3bda4729e
-ms.sourcegitcommit: 13291956ad858d465dfd46caa384df58f08e286b
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-the-aspnet-core-identity-primary-key-data-type"></a>設定 ASP.NET Core 識別主索引鍵資料類型
 

@@ -11,27 +11,32 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 7aea4db44764d5d8f47520adb6599e651e0e9000
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: fdb396d8857dc9c118cc19da1f7d1d498dfaacd5
+ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 網路頻寬是有限的資源。 降低回應的大小通常應用程式的回應能力通常會大幅增加。 若要減少內容大小的方法之一是壓縮應用程式的回應。
 
 ## <a name="when-to-use-response-compression-middleware"></a>使用回應壓縮中介軟體的時機
-使用 IIS、 Apache 或 Nginx 其中中介軟體的效能可能不符合伺服器模組中的伺服器回應壓縮技術。 當您將無法使用，請使用回應壓縮中介軟體：
-* [IIS 動態壓縮模組](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
-* [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
-* [NGINX 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
-* [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)(先前稱為[WebListener](xref:fundamentals/servers/weblistener))
-* [Kestrel](xref:fundamentals/servers/kestrel)
+使用 IIS、 Apache 或 Nginx 中的伺服器回應壓縮技術。 中介軟體的效能可能不符合伺服器模組。 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)和[Kestrel](xref:fundamentals/servers/kestrel)目前並未提供內建壓縮支援。
+
+當您準備使用回應壓縮中介軟體：
+
+* 無法使用下列伺服器為基礎的壓縮技術：
+  * [IIS 動態壓縮模組](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
+  * [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
+  * [NGINX 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
+* 主機上直接：
+  * [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)(先前稱為[WebListener](xref:fundamentals/servers/weblistener))
+  * [Kestrel](xref:fundamentals/servers/kestrel)
 
 ## <a name="response-compression"></a>回應的壓縮
 通常，任何原本不壓縮的回應可以從回應壓縮中受益。 回應原本不壓縮通常包括： CSS、 JavaScript、 HTML、 XML 和 JSON。 您不應該壓縮原生壓縮的資產，例如 PNG 檔案。 如果您嘗試以進一步壓縮原生壓縮的回應，小型其他致使大小和傳輸的時間將很可能會被掩蓋處理壓縮花費的時間。 不壓縮檔案小於大約 150-1000年位元組 （取決於檔案的內容和壓縮效率）。 壓縮的小檔案的額外負荷可能會產生比未壓縮的檔案較大的壓縮的檔。

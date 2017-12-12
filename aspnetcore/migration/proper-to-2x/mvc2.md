@@ -11,11 +11,11 @@ ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc2
-ms.openlocfilehash: e0691b276b63ee12d3163ac48d1392696fb97aa6
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 8005d23ad00774e488eecc9771f36a244a051126
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="migrating-from-aspnet-to-aspnet-core-20"></a>移轉 ASP.NET ASP.NET Core 2.0
 
@@ -107,7 +107,7 @@ ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它�
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-**注意：**如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration)。
+**注意：**如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration/index)。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 建置可延展的大型應用程式時，鬆散的元件和服務結合程度就是重要的目標。 [相依性插入](xref:fundamentals/dependency-injection)是達到此目標的常用技巧，它也是 ASP.NET Core 的原生元件。

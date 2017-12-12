@@ -5,18 +5,18 @@ description: "在要求之間的方法來保留應用程式和使用者 （工�
 keywords: "ASP.NET Core 應用程式狀態、 工作階段狀態、 查詢字串，張貼"
 ms.author: riande
 manager: wpickett
-ms.date: 06/08/2017
+ms.date: 11/27/2017
 ms.topic: article
 ms.assetid: 18cda488-0769-4cb9-82f6-4c6685f2045d
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/app-state
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c639d3b0d896b927bb2b70658032fc1bd8e87191
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 35b34f1a40e431e59e6b9c1d9bfb4ce3fced35e6
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>工作階段和應用程式的狀態，在 ASP.NET Core 簡介
 
@@ -26,7 +26,7 @@ HTTP 是無狀態的通訊協定。 Web 伺服器視為獨立的要求中的每�
 
 ## <a name="session-state"></a>工作階段狀態
 
-工作階段狀態會是可用來儲存和還原使用者資料，而使用者瀏覽您的 web 應用程式的 ASP.NET 核心功能。 伺服器上的字典或雜湊資料表所組成，工作階段狀態資料保存跨要求從瀏覽器。 快取所支援的工作階段資料。
+在 ASP.NET Core 中的工作階段狀態功能，可用於在使用者瀏覽您的 Web 應用程式時，儲存及存放使用者資料。 伺服器上的字典或雜湊資料表所組成，工作階段狀態資料保存跨要求從瀏覽器。 快取所支援的工作階段資料。
 
 ASP.NET Core 會讓用戶端的 cookie，包含工作階段識別碼，以便傳送至每個要求的伺服器維護工作階段狀態。 伺服器會使用工作階段識別碼來擷取工作階段資料。 因為工作階段 cookie 是瀏覽器專用的所以您無法跨瀏覽器共用工作階段。 只有在瀏覽器工作階段結束時，會刪除工作階段 cookie。 如果 cookie 已過期的工作階段收到時，會建立新的工作階段使用相同的工作階段 cookie。 
 
@@ -37,38 +37,69 @@ ASP.NET Core 會讓用戶端的 cookie，包含工作階段識別碼，以便傳
 
 記憶體中工作階段提供者會在本機伺服器儲存工作階段資料。 如果您打算在伺服器陣列上執行您 web 應用程式，您必須將繫結到特定伺服器的每個工作階段使用自黏工作階段。 Windows Azure Web Sites 平台預設值是自黏工作階段 （應用程式要求路由或 ARR）。 不過，自黏工作階段可能會影響延展性，而且使得 web 應用程式更新。 更好的選項是使用 Redis 或 SQL Server 分散式快取，而這不需要黏性工作階段。 如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。 如需設定服務提供者的詳細資訊，請參閱[設定工作階段](#configuring-session)本文稍後。
 
-本章節的其餘部分描述來儲存使用者資料的選項。
-
 <a name="temp"></a>
-### <a name="tempdata"></a>TempData
+## <a name="tempdata"></a>TempData
 
-ASP.NET Core MVC 公開[TempData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller#Microsoft_AspNetCore_Mvc_Controller_TempData)屬性[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 `TempData`就特別有用的重新導向，當超過單一要求所需的資料。 `TempData`建置工作階段狀態的頂端。 
+ASP.NET Core MVC 公開[TempData](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData)屬性[控制器](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0)。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 `TempData`就特別有用的重新導向，當超過單一要求所需的資料。 `TempData`是 TempData 提供者實作，例如，使用 cookie、 工作階段狀態。
 
-## <a name="cookie-based-tempdata-provider"></a>Cookie 架構 TempData 提供者 
+<a name="tempdata-providers"></a>
+### <a name="tempdata-providers"></a>TempData 提供者
 
-在 ASP.NET Core 1.1 和更新版本，您可以使用 cookie 架構 TempData 提供者來儲存使用者的 TempData 在 cookie 中。 若要啟用的 cookie 架構 TempData 提供者，註冊`CookieTempDataProvider`服務`ConfigureServices`:
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
-    // Add CookieTempDataProvider after AddMvc and include ViewFeatures.
-    // using Microsoft.AspNetCore.Mvc.ViewFeatures;
-    services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
-}
-```
+ASP.NET Core 2.0 版及更新版本中，以 cookie 為基礎 TempData 使用提供者是預設 TempData 儲存在 cookie 中。
 
-Cookie 資料以編碼[Base64UrlTextEncoder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.authentication.base64urltextencoder)。 Cookie 會進行加密及區塊處理，因為單一 cookie 大小限制不適用。 Cookie 資料不會壓縮，因為壓縮 encryped 資料可能會導致安全性問題例如[CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://wikipedia.org/wiki/BREACH_(security_exploit))攻擊。 如需有關 cookie 架構 TempData 提供者的詳細資訊，請參閱[CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)。
+Cookie 資料以編碼[Base64UrlTextEncoder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder?view=aspnetcore-2.0)。 Cookie 會進行加密及區塊處理，因為單一 cookie 的大小限制 1.x 不適用的 ASP.NET Core 中找到。 Cookie 資料不壓縮，因為壓縮加密的資料可能會導致安全性問題例如[CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit))和[破壞](https://wikipedia.org/wiki/BREACH_(security_exploit))攻擊。 如需有關 cookie 架構 TempData 提供者的詳細資訊，請參閱[CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)。
 
-### <a name="query-strings"></a>查詢字串
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+在 ASP.NET Core 1.0 和 1.1 中，工作階段狀態 TempData 提供者是預設值。
+
+--------------
+
+<a name="choose-temp"></a>
+### <a name="choosing-a-tempdata-provider"></a>選擇 TempData 提供者
+
+選擇 TempData 提供者包括數個考量，例如：
+
+1. 應用程式已無法用於其他用途使用工作階段狀態？ 如果是的話，使用工作階段狀態 TempData 提供者有任何額外的成本 （除了資料的大小） 應用程式。
+2. 沒有應用程式 TempData 只盡量少用，適用於相對較小量的資料 （最多 500 個位元組）？ 因此，cookie TempData 提供者要新增至每個要求傳送 TempData 的小型的成本。 如果沒有，則工作階段狀態 TempData 提供者可能會以避免往返大量的每個要求中的資料，直到取用 TempData 很有用。
+3. 應用程式執行 web 伺服陣列 （多部伺服器） 嗎？ 如果是，沒有需要使用 cookie TempData 提供者的其他設定。
+
+> [!NOTE]
+> 大部分的 web 用戶端 （例如網頁瀏覽器） 強制執行每個 cookie、 總數的 cookie，或兩者的最大大小的限制。 因此，當使用 cookie TempData 提供者，請確認應用程式將不會超過這些限制。 請考慮帳戶加密的負荷處理和區塊處理的資料大小總計。
+
+<a name="config-temp"></a>
+### <a name="configure-the-tempdata-provider"></a>TempData 提供者設定
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+
+預設會啟用 cookie 架構 TempData 提供者。 下列`Startup`類別程式碼會設定工作階段為基礎的 TempData 提供者：
+
+[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,6,11)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+
+下列`Startup`類別程式碼會設定工作階段為基礎的 TempData 提供者：
+
+[!code-csharp[](app-state/sample/src/WebAppSession/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,9)]
+
+---
+
+順序很重要的中介軟體元件。 在上述範例中，類型的例外狀況`InvalidOperationException`發生時`UseSession`之後叫用`UseMvcWithDefaultRoute`。 請參閱[中介軟體訂購](xref:fundamentals/middleware#ordering)如需詳細資訊。
+
+> [!IMPORTANT]
+> 如果目標為.NET Framework 和使用工作階段為基礎的提供者，將[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session) NuGet 封裝加入您的專案。
+
+## <a name="query-strings"></a>查詢字串
 
 您可以傳遞有限的數量的資料從一個要求到另一個方法是加入新的要求查詢字串。 這可用於擷取狀態，以持續方式，可讓連結與內嵌的狀態，要透過電子郵件或社交網路共用。 不過，基於這個理由，您應該永遠不會使用查詢字串之機密資料。 除了輕鬆地共用，在查詢字串中包括的資料可以建立的機會[跨網站要求偽造 (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))可以誘騙瀏覽惡意網站時驗證使用者的攻擊。 攻擊者可能會再竊取您的應用程式中的使用者資料，或者要代表使用者惡意動作。 任何保留的應用程式或工作階段狀態必須防範 CSRF 攻擊。 如需有關 CSRF 攻擊的詳細資訊，請參閱[防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core](../security/anti-request-forgery.md)。
 
-### <a name="post-data-and-hidden-fields"></a>張貼資料和隱藏的欄位
+## <a name="post-data-and-hidden-fields"></a>張貼資料和隱藏的欄位
 
-資料可以儲存在隱藏的表單欄位和公佈回於下一個要求。 這是一般多頁的表單中。 不過，用戶端可能可以修改資料，因為伺服器必須一律重新驗證它。 
+資料可以儲存在隱藏的表單欄位和公佈回於下一個要求。 這是一般多頁表單中。 不過，用戶端可能可以修改資料，因為伺服器必須一律重新驗證它。 
 
-### <a name="cookies"></a>Cookie
+## <a name="cookies"></a>Cookie
 
 Cookie 會提供在 web 應用程式儲存使用者專屬資料的方法。 每個要求傳送 cookie，因為其大小應該降到最低。 在理想情況下，只有識別碼應該與實際伺服器上儲存的資料儲存在 cookie 中。 大部分的瀏覽器限制為 4096 個位元組的 cookie。 此外，只有少數的 cookie 可供每個網域。  
 
@@ -76,17 +107,18 @@ Cookie 是有可能遭到竄改，因為它們必須在伺服器上驗證。 雖
 
 Cookie 通常可用來個人化，其中內容自訂為已知的使用者。 因為使用者只能識別，並且尚未驗證在大部分情況下，您通常可以藉由在 cookie 中儲存的使用者名稱、 帳戶名稱或唯一的使用者識別碼 （例如 GUID) 來保護 cookie。 Cookie 然後可用來存取站台的使用者個人化基礎結構。
 
-### <a name="httpcontextitems"></a>HttpContext.Items
+## <a name="httpcontextitems"></a>HttpContext.Items
 
 `Items`集合是個不錯的位置來儲存資料所需時，才處理一個特定的要求。 每個要求之後，會捨棄集合的內容。 `Items`集合最適合用做為元件或中介軟體的方式來通訊時可操作不同時間點期間要求的時間，並且具有沒有直接的方式，將參數傳遞。 如需詳細資訊，請參閱[使用 HttpContext.Items](#working-with-httpcontextitems)在本文稍後。
 
-### <a name="cache"></a>快取
+## <a name="cache"></a>快取
 
 快取是有效的方式儲存和擷取資料。 您可以控制時間和其他考量為基礎的快取項目存留的期。 深入了解[快取](../performance/caching/index.md)。
 
-<a name=session></a>
+<a name="session"></a>
+## <a name="working-with-session-state"></a>使用工作階段狀態
 
-## <a name="configuring-session"></a>設定工作階段
+### <a name="configuring-session"></a>設定工作階段
 
 `Microsoft.AspNetCore.Session`套件提供中介軟體管理的工作階段狀態。 若要啟用工作階段中介軟體`Startup`必須包含：
 
@@ -138,13 +170,13 @@ Cookie 通常可用來個人化，其中內容自訂為已知的使用者。 因
 
 因為`Session`是*非鎖定*，如果兩個要求同時嘗試修改的工作階段中，最後一個內容，會覆寫第一個。 `Session`會實作為*一致的工作階段*，這表示所有內容會都儲存在一起。 要修改的工作階段 （不同的索引鍵） 的不同部分的兩個要求仍可能會影響彼此。
 
-## <a name="setting-and-getting-session-values"></a>設定和取得工作階段值
+### <a name="setting-and-getting-session-values"></a>設定和取得工作階段值
 
 工作階段透過存取`Session`屬性`HttpContext`。 這個屬性是[ISession](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.isession)實作。
 
 下列範例示範設定和取得整數和字串：
 
-[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet1)]
+[!code-csharp[Main](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
 
 如果您加入下列的擴充方法，您可以設定並取得工作階段可序列化的物件：
 
@@ -209,7 +241,7 @@ public class HomeController : Controller
 
 此方法也有消除重複的程式碼中的多個位置中的"magic 字串 」 的優點。
 
-<a name=appstate-errors></a>
+<a name="appstate-errors"></a>
 
 ## <a name="application-state-data"></a>應用程式狀態資料
 
@@ -237,11 +269,20 @@ public class MyController : Controller
 } 
 ```
 
-### <a name="common-errors-when-working-with-session"></a>使用工作階段時的常見錯誤
+## <a name="common-errors-when-working-with-session"></a>使用工作階段時的常見錯誤
 
 * 「 無法解析類型 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' 服務嘗試啟動 'Microsoft.AspNetCore.Session.DistributedSessionStore'。 」
 
   這種情形通常因未能設定至少一個`IDistributedCache`實作。 如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)和[中記憶體內部快取](xref:performance/caching/memory)。
+
+* 事件的工作階段中介軟體無法保存工作階段 (例如： 如果資料庫無法使用)，它記錄例外狀況，抑制它。 要求將再繼續正常運作，這會導致非常無法預期的行為。
+
+典型的範例：
+
+有人會以購物籃儲存工作階段中。 使用者將項目，但認可會失敗。 應用程式並不知道有關失敗，因此它會報告訊息 」 項目已加入"，這並不正確。
+
+檢查是否有這類錯誤的建議的方式是呼叫`await feature.Session.CommitAsync();`從應用程式程式碼完成後寫入工作階段。 然後您可以執行您要與錯誤。 它的運作方式相同呼叫時`LoadAsync`。
+
 
 ### <a name="additional-resources"></a>其他資源
 

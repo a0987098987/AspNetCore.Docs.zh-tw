@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/weblistener
 ms.openlocfilehash: f1abb3558546cd907c78b44d9353d9c9f1f5aff1
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core WebListener web 伺服器實作
 
@@ -42,7 +42,7 @@ WebListener 支援下列功能：
 
 - Windows 7 和 Windows Server 2008 R2 和更新版本
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-weblistener"></a>何時使用 WebListener
 
@@ -86,7 +86,7 @@ WebListener 也是不錯的選擇內部部署，當您需要的功能，您無�
 
 * 設定 Url 和連接埠上接聽 
 
-  根據預設 ASP.NET Core 繫結至`http://localhost:5000`。 若要設定 URL 前置詞和連接埠，您可以使用`UseURLs`擴充方法，`urls`命令列引數或 ASP.NET Core 組態系統。 如需詳細資訊，請參閱[主控](../../fundamentals/hosting.md)。
+  根據預設 ASP.NET Core 繫結至`http://localhost:5000`。 若要設定 URL 前置詞和連接埠，您可以使用`UseURLs`擴充方法，`urls`命令列引數或 ASP.NET Core 組態系統。 如需詳細資訊，請參閱[裝載](../../fundamentals/hosting.md)。
 
   網頁接聽程式會使用[Http.Sys 前置詞字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。 沒有前置詞字串格式需求 WebListener 特有的。
 

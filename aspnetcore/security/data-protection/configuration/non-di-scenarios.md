@@ -1,8 +1,8 @@
 ---
-title: "非 DI 注意案例"
+title: "ASP.NET 核心中的資料保護的非 DI 注意案例"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "了解如何支援資料的保護案例，您無法或不想要使用相依性插入所提供的服務。"
+keywords: "ASP.NET Core 資料保護、 相依性插入，DataProtectionProvider"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,30 +11,29 @@ ms.assetid: a7d8a962-80ff-48e3-96f6-8472b7ba2df9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: 54a930c26f9f48ea0e6f7865e2927bcde0f4d6c0
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 375eecf649819dce8f1c2ba30e1cb6451d1c1253
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="non-di-aware-scenarios"></a>非 DI 注意案例
+# <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>ASP.NET 核心中的資料保護的非 DI 注意案例
 
-通常設計的資料保護系統[要加入至服務容器](../consumer-apis/overview.md)和要提供給透過 DI 機制相依元件。 不過，可能有某些情況下，這並不可行，尤其是系統匯入現有的應用程式。
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-為了支援這些案例封裝 Microsoft.AspNetCore.DataProtection.Extensions 提供 DataProtectionProvider 它提供了簡單的方式來使用資料保護系統，而不需要透過 DI 特定程式碼路徑的具象類型。 型別本身實作 IDataProtectionProvider，並建構它相當簡單，只要提供 DirectoryInfo 儲存提供者的密碼編譯金鑰的位置。
+通常是 ASP.NET Core 資料保護系統[加入至服務容器](xref:security/data-protection/consumer-apis/overview)且由透過相依性插入 (DI) 的相依元件。 不過，有一些情況下，這不可行或您想要尤其是系統匯入現有的應用程式。
 
-例如: 
+若要支援這些案例中， [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/)套件提供具象型別， [DataProtectionProvider](/dotnet/api/Microsoft.AspNetCore.DataProtection.DataProtectionProvider)，其中提供簡單的方式來使用資料保護不需依賴 DI。 `DataProtectionProvider`型別會實作[IDataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionprovider)。 建構`DataProtectionProvider`只需要提供[DirectoryInfo](/dotnet/api/system.io.directoryinfo)執行個體，以指出提供者的密碼編譯金鑰應該儲存的位置，如下列程式碼範例所示：
 
 [!code-none[Main](non-di-scenarios/_static/nodisample1.cs)]
 
->[!WARNING]
-> 根據預設 DataProtectionProvider 具象型別不會加密原始金鑰內容之前將它保存到檔案系統。 這是為了支援的案例，其中網路指向的開發人員共用時，資料保護系統，無法在此情況下會自動推算在其餘的適當的金鑰加密機制。
->
->此外，DataProtectionProvider 具象型別並不會[隔離應用程式](overview.md#data-protection-configuration-per-app-isolation)依預設，因此所有指向相同的索引鍵目錄的應用程式可以共用裝載，只要符合其用途的參數。
+根據預設，`DataProtectionProvider`具象型別不會加密金鑰的未經處理資料之前將它保存到檔案系統。 這是為了支援的案例，開發人員會指向網路共用和資料保護系統無法自動推算在其餘的適當的金鑰加密機制。
 
-如有需要，應用程式開發人員可以這兩個位址。 DataProtectionProvider 建構函式接受[選擇性的組態回呼](overview.md#data-protection-configuration-callback)可用來調整系統的行為。 下列範例示範如何透過明確呼叫 SetApplicationName，還原隔離，它也會示範設定系統以自動加密使用 Windows DPAPI 保存的金鑰。 如果目錄指向 UNC 共用，您可能想所有相關的電腦上發佈共用的憑證，並設定改為使用憑證加密透過呼叫系統[ProtectKeysWithCertificate](overview.md#configuring-x509-certificate)。
+此外，`DataProtectionProvider`具象型別不[隔離應用程式](xref:security/data-protection/configuration/overview#per-application-isolation)預設。 使用相同的索引鍵目錄的所有應用程式可以共用裝載只要其[用途參數](xref:security/data-protection/consumer-apis/purpose-strings)比對。
+
+[DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider)建構函式接受可用於調整的系統行為的選擇性設定回撥。 下列範例示範如何還原隔離的明確呼叫[SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname)。 此範例也示範如何設定系統來自動加密使用 Windows DPAPI 保存的金鑰。 如果目錄指向 UNC 共用，您可能想所有相關的電腦上發佈共用的憑證並將系統設定為使用憑證為基礎的加密功能呼叫[ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate)。
 
 [!code-none[Main](non-di-scenarios/_static/nodisample2.cs)]
 
->[!TIP]
-> DataProtectionProvider 具象類型的執行個體是相當費時建立。 如果應用程式會維護此類型的多個執行個體，而且它們所有指向相同的金鑰儲存目錄，可能會降低應用程式的效能。 預定的使用方式是應用程式開發人員一次將此類型具現化，則保留重複使用這個單一參考盡量。 DataProtectionProvider 型別和從它建立的所有 IDataProtector 執行個體是安全執行緒的多個呼叫端。
+> [!TIP]
+> 執行個體`DataProtectionProvider`具象型別很難建立。 如果應用程式會維護此類型的多個執行個體，而且它們使用相同的金鑰儲存目錄，可能會降低應用程式效能。 如果您使用`DataProtectionProvider`類型，我們建議您一次建立此類型，並重複使用它盡量。 `DataProtectionProvider`類型及其所有[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector)從它建立執行個體是安全執行緒的多個呼叫端。

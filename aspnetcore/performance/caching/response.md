@@ -1,26 +1,24 @@
 ---
 title: "回應快取中 ASP.NET Core"
 author: rick-anderson
-description: "了解如何使用快取以降低頻寬，並提升效能的回應。"
-keywords: "ASP.NET Core，快取 HTTP 標頭的回應"
+description: "了解如何使用快取以較低的頻寬需求的回應，並增加 ASP.NET Core 應用程式的效能。"
 ms.author: riande
 manager: wpickett
 ms.date: 09/20/2017
 ms.topic: article
-ms.assetid: cb42035a-60b0-472e-a614-cb79f443f654
 ms.prod: asp.net-core
 uid: performance/caching/response
-ms.openlocfilehash: 79d9246632aae0fe9c3629fd7202842836828151
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 104cfb2eab706a2ec6278b4d1c461f70b0af5df1
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
 由[John Luo](https://github.com/JunTaoLuo)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Steve Smith](https://ardalis.com/)，和[Luke Latham](https://github.com/guardrex)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 回應快取可減少用戶端或 proxy 可讓 web 伺服器的要求數目。 回應快取也可以減少網頁伺服器執行產生回應的工作。 指定您要用戶端、 proxy、 和中的介軟體來快取回應的標頭會控制快取回應。
 
@@ -179,4 +177,9 @@ Cache-Control: public,max-age=60
 
 * [快取 http 規格](https://tools.ietf.org/html/rfc7234#section-3)
 * [快取控制](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [記憶體中快取](xref:performance/caching/memory)
+* [使用分散式快取](xref:performance/caching/distributed)
+* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取中介軟體](xref:performance/caching/middleware)
+* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

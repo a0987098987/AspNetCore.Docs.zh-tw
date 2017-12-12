@@ -1,8 +1,8 @@
 ---
 title: "防止跨網站指令碼"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文件介紹跨網站指令碼 (XSS) 與技術來處理這個 ASP.NET Core 應用程式中的弱點。"
+keywords: "ASP.NET Core，XSS，弱點"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,15 +11,15 @@ ms.assetid: 95790927-2bfe-445e-b1fd-429c2c7030ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1816977837efd82f374a03d9f776db21358e2850
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: fdb26a8338b98135cfc3f6bce9d87285e9a7eb12
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="preventing-cross-site-scripting"></a>防止跨網站指令碼
 
-<a name=security-cross-site-scripting></a>
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入受影響的頁面，攻擊者指令碼執行時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作的 web 網頁內容，或瀏覽器重新導向至另一個頁面。 應用程式會接受使用者輸入，並將它在網頁輸出而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
 
@@ -183,7 +183,7 @@ var example = "\"Quoted Value with spaces and &\"";
 >[!WARNING]
 > 請勿使用不受信任的輸入的 URL 路徑的一部分。 一律為查詢字串值傳遞未受信任的輸入。
 
-<a name=security-cross-site-scripting-customization></a>
+<a name="security-cross-site-scripting-customization"></a>
 
 ## <a name="customizing-the-encoders"></a>自訂編碼器
 

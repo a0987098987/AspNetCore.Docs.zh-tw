@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40c9a799c6ac8a2ce712df4b8fbf3c142ef3fd82
-ms.sourcegitcommit: 8f4d4fad1ca27adf9e396f5c205c9875a3963664
+ms.openlocfilehash: c0751576a1391f26f045c3f8c42ea39c0ff6e5d9
+ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="working-with-static-files-in-aspnet-core"></a>使用 ASP.NET Core 中的靜態檔案
 
@@ -68,6 +68,8 @@ ms.lasthandoff: 10/13/2017
 `StaticFileOptions()`可以設定回應標頭。 例如，下列程式碼會設定靜態檔案提供從*wwwroot*資料夾，然後設定`Cache-Control`標頭，讓它們可公開可快取的 10 分鐘 （600 秒）：
 
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupAddHeader.cs?name=snippet1)]
+
+[HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append)方法都可從[Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/)封裝。 新增`using Microsoft.AspNetCore.Http;`到您*csharp*檔案如果方法無法使用。
 
 ![已加入顯示的快取控制標頭的回應標頭](static-files/_static/add-header.png)
 

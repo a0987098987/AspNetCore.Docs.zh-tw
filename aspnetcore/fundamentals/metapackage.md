@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/metapackage
 ms.openlocfilehash: ff25d80be907994f7ac3d64a8ffa39ae53278ba6
-ms.sourcegitcommit: 73bf6b222474d9f1f6aba3feaca4e191069d2121
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 #<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>適用於 ASP.NET Core Microsoft.AspNetCore.All metapackage 2.x
 

@@ -11,17 +11,17 @@ ms.assetid: 423e0a79-2f34-44c4-aaf3-146a53c39251
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 1c73608245e668c0810813e29f78f1ac3dacc414
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: d4b286dc47f8d66e6d09c3e0f48e6326139c8e1e
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="key-storage-providers"></a>金鑰儲存提供者
 
-<a name=data-protection-implementation-key-storage-providers></a>
+<a name="data-protection-implementation-key-storage-providers"></a>
 
-根據預設資料保護系統[採用啟發學習法](../configuration/default-settings.md#data-protection-default-settings)來判斷應該保存密碼編譯金鑰內容的位置。 開發人員可以覆寫啟發學習法，並以手動方式指定的位置。
+根據預設資料保護系統[採用啟發學習法](xref:security/data-protection/configuration/default-settings)來判斷應該保存密碼編譯金鑰內容的位置。 開發人員可以覆寫啟發學習法，並以手動方式指定的位置。
 
 > [!NOTE]
 > 如果您指定明確的金鑰持續性位置時，資料保護系統將會取消註冊預設金鑰加密，在其餘的機制，提供啟發學習法，讓金鑰無法再進行加密在靜止。 建議您另外[指定明確的金鑰加密機制](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)實際執行應用程式。

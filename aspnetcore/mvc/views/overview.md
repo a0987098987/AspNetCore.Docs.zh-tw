@@ -11,11 +11,11 @@ ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: f40feb0466854080cc749a83c546ce857d850902
-ms.sourcegitcommit: e4a1df2a5a85f299322548809e547a79b380bb92
+ms.openlocfilehash: 4530d2f500dd887bf649a753283fb3e4af995322
+ms.sourcegitcommit: c2f6c593d81fbd90e6ddd672fe0a5636d06b615a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 09/29/2017
 
 在**M**模型-**V**檢視-**C**ontroller (MVC) 模式*檢視*處理應用程式的資料呈現與使用者互動。 檢視是 HTML 範本與內嵌[Razor 標記](xref:mvc/views/razor)。 Razor 標記是與 HTML 標記，以產生傳送至用戶端的網頁互動的程式碼。
 
-ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/dotnet/csharp/)Razor 標記中。 通常，檢視檔案會分組成資料夾名為每個應用程式的[控制器](xref:mvc/controllers/actions)。 資料夾會儲存在中*檢視*根目錄中的應用程式的資料夾：
+ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/dotnet/csharp/)Razor 標記中。 通常，檢視檔案會分組成資料夾名為每個應用程式的[控制器](xref:mvc/controllers/actions)。 資料夾會儲存在*檢視*根目錄中的應用程式的資料夾：
 
 ![Visual Studio 方案總管 中的 檢視 資料夾是主資料夾 資料夾開啟顯示 About.cshtml、 Contact.cshtml 和 Index.cshtml 檔案開啟](overview/_static/views_solution_explorer.png)
 
@@ -40,13 +40,13 @@ ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/do
 檢視可以協助建立[ **S**eparation **o**f **C**oncerns (SoC) 設計](http://deviq.com/separation-of-concerns/)分隔從使用者介面標記 MVC 應用程式中應用程式的其他部分。 遵循 SoC 設計可讓您的應用程式模組，提供數個優點：
 
 * 應用程式很容易維護，因為組織較佳。 檢視通常會依應用程式功能分組。 這可讓您更輕鬆地找到相關的檢視，使用一項功能時。
-* 應用程式的組件不是緊密結合。 您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
+* 鬆散耦合的應用程式組件。 您可以建置並更新商務邏輯和資料存取元件分開的應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
 * 它是您更輕鬆地測試應用程式的使用者介面部分，因為檢視表的個別單位。
 * 因為較佳的組織，而較不可能是您會意外地重複的區段的使用者介面。
 
 ## <a name="creating-a-view"></a>建立檢視
 
-檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*Views/Shared*資料夾。 若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。 若要建立檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案*Views/Home*資料夾：
+檢視特定的控制站中建立*檢視 / [ControllerName]*資料夾。 在控制站之間共用的檢視會放在*Views/Shared*資料夾。 若要建立的檢視，將新檔案，並提供相同的名稱與它關聯之的控制器的動作*.cshtml*檔案副檔名。 若要建立對應於檢視*有關*中的動作*首頁*控制器，建立*About.cshtml*檔案中*Views/Home*資料夾：
 
 [!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -88,7 +88,7 @@ ASP.NET Core MVC 中，檢視都*.cshtml*檔案使用[C# 程式設計語言](/do
 
 當動作傳回的檢視時，這個程序稱為*檢視探索*進行。 此程序決定根據檢視名稱使用的檢視檔案。 
 
-當動作傳回`View`方法 (`return View();`) 並不指定了檢視，動作名稱當做檢視表名稱。 例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。 首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。 如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。
+預設行為`View`方法 (`return View();`) 會傳回與動作方法會呼叫同名的檢視。 例如，*有關*`ActionResult`控制站的方法名稱用來搜尋名為的檢視檔案*About.cshtml*。 首先，執行階段會尋找*檢視 / [ControllerName]*檢視的資料夾。 如果找不到那里相符的檢視，它會搜尋*共用*檢視的資料夾。
 
 如果您以隱含方式傳回，它並不重要`ViewResult`與`return View();`或明確地將傳遞至檢視表名稱`View`方法`return View("<ViewName>");`。 在這兩種情況下，檢視探索會搜尋相符的檢視檔案，依此順序：
 
@@ -127,7 +127,7 @@ return View("./About");
 
 將資料傳遞至檢視中使用 viewmodel 可讓檢視來善用*強式*類型檢查。 *強式類型*(或*強型別*) 表示每個變數和常數有明確定義的型別 (例如， `string`， `int`，或`DateTime`)。 在編譯時期檢查有效性的檢視中使用的類型。
 
-工具，例如[Visual Studio](https://www.visualstudio.com/vs/)或[Visual Studio Code](https://code.visualstudio.com/)，也可以列出成員 （屬性的模型） 時，您要將其加入的檢視，可協助您撰寫較少的錯誤更快的程式碼。 這項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense) Microsoft 工具。
+[Visual Studio](https://www.visualstudio.com/vs/)和[Visual Studio Code](https://code.visualstudio.com/)列出強型別類別成員使用一項功能稱為[IntelliSense](/visualstudio/ide/using-intellisense)。 當您想要查看的 viewmodel 屬性時，輸入變數名稱，後面接著句號 viewmodel (`.`)。 這有助於減少錯誤更快撰寫程式碼。
 
 指定模型使用`@model`指示詞。 使用模型與`@Model`:
 
@@ -181,7 +181,12 @@ namespace WebApplication1.ViewModels
 > [!NOTE]
 > 會造成任何問題 viewmodel 類型和您的商務模型類型使用相同的類別。 不過，使用不同的模型可讓您的檢視而異獨立的商務邏輯和資料存取應用程式部分。 模型和 viewmodels 分離也提供安全性優點，當模型使用時[模型繫結](xref:mvc/models/model-binding)和[驗證](xref:mvc/models/validation)資料傳送到應用程式的使用者。
 
+
+<a name="VD_VB"></a>
+
 ### <a name="weakly-typed-data-viewdata-and-viewbag"></a>弱型別資料 （別的 ViewData 和 ViewBag）
+
+注意：`ViewBag`不適用於 Razor 頁面。
 
 除了強型別檢視表檢視可以存取*弱型別*(也稱為*鬆散型別*) 的資料集合。 不同於強式類型，*弱式類型*(或*鬆散類型*) 表示您沒有明確宣告的您所使用的資料類型。 您可以使用弱式型別資料的集合，用來傳遞資料移轉入和控制器和檢視的資訊量很少。
 
@@ -194,6 +199,9 @@ namespace WebApplication1.ViewModels
 此集合可透過參考`ViewData`或`ViewBag`控制器和檢視上的屬性。 `ViewData`屬性是弱型別物件的字典。 `ViewBag`屬性是周圍的包裝函式`ViewData`基礎提供動態內容`ViewData`集合。
 
 `ViewData`和`ViewBag`以動態方式在執行階段解析。 由於它們不提供編譯時間類型檢查，因此兩者都是通常更容易發生錯誤比使用 viewmodel。 基於這個原因，有些開發人員想要使用最少或從不`ViewData`和`ViewBag`。
+
+
+<a name="VD"></a>
 
 **別的 viewData**
 
@@ -237,6 +245,8 @@ public IActionResult SomeAction()
 
 **ViewBag**
 
+注意：`ViewBag`不適用於 Razor 頁面。
+
 `ViewBag`是[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)物件，提供儲存在物件的動態存取`ViewData`。 `ViewBag`可能更方便使用，因為它不需要進行轉型。 下列範例示範如何使用`ViewBag`與使用相同的結果與`ViewData`上方：
 
 ```csharp
@@ -267,6 +277,8 @@ public IActionResult SomeAction()
 ```
 
 **同時使用別的 ViewData ViewBag**
+
+注意：`ViewBag`不適用於 Razor 頁面。
 
 因為`ViewData`和`ViewBag`參考相同的基礎`ViewData`集合，您可以同時使用`ViewData`和`ViewBag`並混用，而且符合之間讀取和寫入的值時。
 
@@ -306,6 +318,8 @@ public IActionResult SomeAction()
 
 **ViewBag 別的 ViewData 之間差異的摘要**
 
+ `ViewBag`無法使用 Razor 頁面中。
+
 * `ViewData`
   * 衍生自[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性會很有用，例如`ContainsKey`， `Add`， `Remove`，和`Clear`。
   * 字典中的索引鍵是字串，因此允許空白字元。 範例：`ViewData["Some Key With Whitespace"]`
@@ -316,7 +330,7 @@ public IActionResult SomeAction()
 
 **何時使用別的 ViewData 或 ViewBag**
 
-同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。 選擇其中一個，以便使用 （或兩者） 最重要的是個人的喜好設定或您組織的喜好設定。 一般而言，開發人員會在使用其中一個一致的。 它們使用`ViewData`每個地方或使用`ViewBag`everywhere，但歡迎混用，並加以比對。 因為兩者都是在執行階段以動態方式解決，因此容易導致執行階段錯誤，請小心它們使用。 有些開發人員完全予以避免。
+同時`ViewData`和`ViewBag`同樣會傳遞小量的資料在控制器和檢視之間的有效方法。 若要使用哪一個選擇根據喜好設定。 您可以混合和比對`ViewData`和`ViewBag`物件，不過，程式碼是容易讀取與維護與使用一致的其中一個方法。 這兩種方法是在執行階段以動態方式解決，因此容易導致執行階段錯誤。 某些開發團隊予以避免。
 
 ### <a name="dynamic-views"></a>動態檢視
 

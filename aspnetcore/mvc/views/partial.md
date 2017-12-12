@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/partial
 ms.openlocfilehash: 60f5255ca31accbffffec18053b29810977a5ff1
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="partial-views"></a>部分檢視
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 10/01/2017
 
 ASP.NET Core MVC 支援部分檢視，當您有想要不同的檢視之間共用的 web 網頁的可重複使用的組件時相當實用。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-are-partial-views"></a>部分檢視有哪些？
 

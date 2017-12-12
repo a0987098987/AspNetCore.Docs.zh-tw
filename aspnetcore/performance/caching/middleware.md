@@ -1,26 +1,24 @@
 ---
 title: "快取中 ASP.NET Core 中的介軟體的回應"
 author: guardrex
-description: "設定及使用回應快取中介軟體中 ASP.NET Core 應用程式。"
-keywords: "ASP.NET Core 回應快取，快取，ResponseCache，ResponseCaching，快取控制、 VaryByQueryKeys、 中介軟體"
+description: "了解如何設定和 ASP.NET Core 應用程式中使用回應快取中介軟體。"
 ms.author: riande
 manager: wpickett
 ms.date: 08/22/2017
 ms.topic: article
-ms.assetid: f9267eab-2762-42ac-1638-4a25d2c9d67c
 ms.prod: asp.net-core
 uid: performance/caching/middleware
-ms.openlocfilehash: bc3350a7ef15c5c38aa072bab15cbddc7d0ee0fa
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: f3312d0c333b47169c71891eea79f03be0abcfa3
+ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
 由[Luke Latham](https://github.com/guardrex)和[John Luo](https://github.com/JunTaoLuo)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 本文件提供有關如何設定 ASP.NET Core 應用程式中的回應快取中介軟體的詳細資料。 中介軟體會決定當回應的快取、 儲存區回應，以及做回應從快取。 如需簡介 HTTP 快取和`ResponseCache`屬性，請參閱[快取回應](response.md)。
 
@@ -112,13 +110,13 @@ if (responseCachingFeature != null)
 
 [未來的增強功能的中介軟體](https://github.com/aspnet/ResponseCaching/issues/96)設定快取案例的中介軟體將會允許其中要求`Cache-Control`決定要提供快取的回應時，應該忽略標頭。 如果您搜尋更充分掌控快取行為，瀏覽 ASP.NET Core 其他快取的功能。 請參閱下列主題：
 
-* [介紹記憶體中快取中 ASP.NET Core](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [快取中 ASP.NET Core MVC 標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
 
 ## <a name="troubleshooting"></a>疑難排解
-如果快取行為是未如預期般，，確認回應的快取，並且可以從快取由檢查要求的連入標頭和回應的傳出標頭。 啟用[記錄](xref:fundamentals/logging)有助於偵錯時。 快取行為，並回應從快取的擷取時此中介軟體記錄。
+如果快取行為是未如預期般，，確認回應的快取，並且可以從快取由檢查要求的連入標頭和回應的傳出標頭。 啟用[記錄](xref:fundamentals/logging/index)有助於偵錯時。 快取行為，並回應從快取的擷取時此中介軟體記錄。
 
 當測試及疑難排解快取行為，在瀏覽器可能設定要求標頭之影響快取不想要的方式。 例如，可能會設定瀏覽器`Cache-Control`標頭`no-cache`時重新整理頁面。 下列工具可以明確地將要求標頭，以及慣用發佈點進行測試快取：
 
@@ -148,3 +146,9 @@ if (responseCachingFeature != null)
 
 * [應用程式啟動](xref:fundamentals/startup)
 * [中介軟體](xref:fundamentals/middleware)
+* [記憶體中快取](xref:performance/caching/memory)
+* [使用分散式快取](xref:performance/caching/distributed)
+* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [回應快取](xref:performance/caching/response)
+* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

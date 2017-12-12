@@ -12,17 +12,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6861021b3a48a175f1f134f4622e6d43af5f720b
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 6858b6b8ec89a5e5ffa9e5f8dddb905f38e16603
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>撰寫 ASP.NET Core，範例與逐步解說中的標記協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="getting-started-with-tag-helpers"></a>開始使用標記協助程式
 
@@ -253,8 +253,8 @@ ms.lasthandoff: 10/01/2017
     
     <div>
         <h3>Information about our website (outdated):</h3>
-        <website-information info=Model />
-        <div condition="Model.Approved">
+        <website-information info=@Model />
+        <div condition="@Model.Approved">
             <p>
                 This website has <strong surround="em"> @Model.Approved </strong> been approved yet.
                 Visit www.contoso.com for more information.

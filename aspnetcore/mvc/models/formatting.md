@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/formatting
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91ba2456178fe806b90f27bbd2940773da950423
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: abc125a093ff2cd5a38a537ecdfc795ff03e23f7
+ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/19/2017
 ---
 # <a name="introduction-to-formatting-response-data-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的格式化回應資料簡介
 
@@ -84,7 +84,7 @@ ASP.NET Core MVC 有內建支援來格式化回應資料，使用固定的格式
 
 ### <a name="content-negotiation-process"></a>內容交涉程序
 
-內容*交涉*才只會發生`Accept`標頭會出現在要求中。 當要求包含 accept 標頭時，架構會列舉 accept 標頭中的喜好設定順序中的媒體類型，並會嘗試尋找可能會產生其中一種 accept 標頭所指定格式的回應格式器。 如果找到不到格式器可以滿足用戶端的要求，架構會嘗試尋找第一個可能會產生回應的格式器 (除非開發人員已設定選項上`MvcOptions`傳回 406 無法接受改為)。 如果要求指定的 XML，但尚未設定的 XML 格式器，則會使用 JSON 格式器。 較常見地，如果設定不到格式器，可以提供要求的格式，然後使用比可以格式化物件的第一個格式器。 如果沒有標頭，可以處理的物件要傳回的第一個格式器將用來序列化回應中。 在此情況下，沒有任何交涉進行-伺服器會判斷它會使用何種格式。
+內容*交涉*才只會發生`Accept`標頭會出現在要求中。 當要求包含 accept 標頭時，架構會列舉 accept 標頭中的喜好設定順序中的媒體類型，並會嘗試尋找可能會產生其中一種 accept 標頭所指定格式的回應格式器。 如果找到不到格式器可以滿足用戶端的要求，架構會嘗試尋找第一個可能會產生回應的格式器 (除非開發人員已設定選項上`MvcOptions`傳回 406 無法接受改為)。 如果要求指定的 XML，但尚未設定的 XML 格式器，則會使用 JSON 格式器。 較常見地，如果設定不到格式器，可以提供要求的格式，然後使用可以格式化物件的第一個格式器。 如果沒有標頭，可以處理的物件要傳回的第一個格式器將用來序列化回應中。 在此情況下，沒有任何交涉進行-伺服器會判斷它會使用何種格式。
 
 > [!NOTE]
 > 如果 Accept 標頭包含`*/*`，將忽略標頭，除非`RespectBrowserAcceptHeader`設為 true `MvcOptions`。
@@ -99,7 +99,7 @@ ASP.NET Core MVC 有內建支援來格式化回應資料，使用固定的格式
 services.AddMvc(options =>
 {
     options.RespectBrowserAcceptHeader = true; // false by default
-}
+});
 ```
 
 ## <a name="configuring-formatters"></a>設定格式器

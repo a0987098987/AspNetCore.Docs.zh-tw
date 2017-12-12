@@ -5,20 +5,20 @@ description: "示範如何建置使用電子郵件確認和密碼重設的 ASP.N
 keywords: "ASP.NET Core 重設密碼，電子郵件確認時，安全性"
 ms.author: riande
 manager: wpickett
-ms.date: 07/19/2017
+ms.date: 12/1/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: b05dd2fee50f6cc96058971daa42b069dbb6d21d
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 955064122d2335016c7eb3dd7451b14106a3b83f
+ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette) 
 
 本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
 
@@ -117,7 +117,7 @@ config.SignIn.RequireConfirmedEmail = true;
 
 在本教學課程，SendGrid 用來傳送電子郵件。 您需要 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您傳送電子郵件使用 SendGrid 或另一個電子郵件服務。
 
-[選項模式](xref:fundamentals/configuration#options-config-objects)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration)。
+[選項模式](xref:fundamentals/configuration/options)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
 建立可擷取保護電子郵件的索引鍵的類別。 此範例中，`AuthMessageSenderOptions`中建立類別*Services/AuthMessageSenderOptions.cs*檔案。
 
@@ -195,6 +195,8 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 反白顯示的已變更的程式行顯示完整的方法：
 
 [!code-csharp[Main](accconfirm/sample/WebPW/Controllers/AccountController.cs?highlight=19&name=snippet_Register)]
+
+注意： 先前的程式碼將會失敗如果您實作`IEmailSender`並傳送純文字電子郵件。 請參閱[此問題](https://github.com/aspnet/Home/issues/2152)如需詳細資訊和因應措施。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

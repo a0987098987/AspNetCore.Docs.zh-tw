@@ -1,8 +1,8 @@
 ---
 title: "簡單的授權"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core
+description: "本文件說明如何使用授權屬性來限制對 ASP.NET Core 控制器和動作的存取。"
+keywords: "ASP.NET Core，授權 AuthorizeAttribute"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,68 +11,68 @@ ms.assetid: 391bcaad-205f-43e4-badc-fa592d6f79f3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/simple
-ms.openlocfilehash: 013ce0d9ac1e9c1b6bb541b9fa66218c3fd799bb
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: f2dad58ffa17259412077d31f512b561e79ac595
+ms.sourcegitcommit: b38796ea3806bf39b89806adfa681b2a33762907
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="simple-authorization"></a>簡單的授權
 
-<a name=security-authorization-simple></a>
+<a name="security-authorization-simple"></a>
 
-在 MVC 中的授權由`AuthorizeAttribute`屬性和各種不同的參數。 在其最簡單的套用`AuthorizeAttribute`屬性到控制器或動作限制存取控制器或動作，任何已驗證的使用者。
+在 MVC 中的授權由`AuthorizeAttribute`屬性和各種不同的參數。 簡單來說，套用`AuthorizeAttribute`屬性到控制器或動作限制存取控制器或動作，任何已驗證的使用者。
 
 例如，下列程式碼會限制存取`AccountController`任何已驗證的使用者。
 
 ```csharp
 [Authorize]
-   public class AccountController : Controller
-   {
-       public ActionResult Login()
-       {
-       }
+public class AccountController : Controller
+{
+    public ActionResult Login()
+    {
+    }
 
-       public ActionResult Logout()
-       {
-       }
-   }
-   ```
+    public ActionResult Logout()
+    {
+    }
+}
+```
 
-如果您想要只將授權套用至動作，而不是在控制器套用`AuthorizeAttribute`該項動作; 此屬性
+如果您想要將授權套用至動作，而非控制站，套用`AuthorizeAttribute`屬性本身的動作：
 
 ```csharp
 public class AccountController : Controller
+{
+   public ActionResult Login()
    {
-       public ActionResult Login()
-       {
-       }
-
-       [Authorize]
-       public ActionResult Logout()
-       {
-       }
    }
-   ```
 
-現在已驗證的使用者可以存取登出函式。
+   [Authorize]
+   public ActionResult Logout()
+   {
+   }
+}
+```
 
-您也可以使用`AllowAnonymousAttribute`屬性，以允許存取個別的動作; 未經驗證使用者，例如
+現在已驗證的使用者可以存取`Logout`函式。
+
+您也可以使用`AllowAnonymousAttribute`允許未經驗證的使用者，對個別動作所存取的屬性。 例如: 
 
 ```csharp
 [Authorize]
-   public class AccountController : Controller
-   {
-       [AllowAnonymous]
-       public ActionResult Login()
-       {
-       }
+public class AccountController : Controller
+{
+    [AllowAnonymous]
+    public ActionResult Login()
+    {
+    }
 
-       public ActionResult Logout()
-       {
-       }
-   }
-   ```
+    public ActionResult Logout()
+    {
+    }
+}
+```
 
 這樣可讓只有經過驗證的使用者`AccountController`，除了`Login`動作，都可以存取所有人不論他們已驗證或未驗證 / 匿名的狀態。
 

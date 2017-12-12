@@ -12,16 +12,16 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/request-features
 ms.openlocfilehash: b689d82d16c6ef55485691b3474a070765c8144b
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="request-features-in-aspnet-core"></a>要求 ASP.NET 核心的功能
 
 由[Steve Smith](https://ardalis.com/)
 
-Web 伺服器實作的介面中所定義的 HTTP 要求和回應相關的詳細資料。 伺服器實作和中介軟體會使用這些介面來建立及修改應用程式的裝載管線。
+有關 HTTP 要求和回應的網頁伺服器實作詳細資料，定義於介面中。 伺服器實作和中介軟體會使用這些介面來建立及修改應用程式的裝載管線。
 
 ## <a name="feature-interfaces"></a>功能的介面
 

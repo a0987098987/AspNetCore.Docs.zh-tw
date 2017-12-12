@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: c5d8506c1bc8e6364d01596a0c82e1da41eea4ca
-ms.sourcegitcommit: 732cd2684246e49e796836596643a8d37e20c46d
+ms.openlocfilehash: 352d125b9042c603b59ed9bda0e99b6a49c7ab9f
+ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 金鑰保存庫的組態提供者
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/01/2017
 1. 建立金鑰保存庫，並設定下列中的指導方針的應用程式的 Azure Active Directory (Azure AD)[開始使用 Azure 金鑰保存庫](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。
   * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
     * 簡單密碼，會建立為名稱 / 值組。 Azure 金鑰保存庫密碼名稱會限制為英數字元及虛線。
-    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
+    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
     * 建立兩個*手動*具有下列名稱 / 值組的密碼。 第一個密碼是簡單名稱和值，並以第二個密碼建立祕密值區段和秘密名稱中的子機碼：
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
@@ -146,7 +146,7 @@ Configuration.Reload();
 已停用及過期的密碼會擲回`KeyVaultClientException`。 若要防止您的應用程式擲回，取代您的應用程式或更新已停用/過期的密碼。
 
 ## <a name="troubleshooting"></a>疑難排解
-當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET 記錄基礎結構](xref:fundamentals/logging)。 在下列情況會造成無法載入組態：
+當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET 記錄基礎結構](xref:fundamentals/logging/index)。 在下列情況會造成無法載入組態：
 * 應用程式未正確設定 Azure Active Directory 中。
 * 金鑰保存庫不存在於 Azure 金鑰保存庫。
 * 應用程式未獲授權存取金鑰保存庫。
@@ -157,7 +157,7 @@ Configuration.Reload();
 * 設定索引鍵 （名稱） 不正確的值，您想要載入的應用程式中。
 
 ## <a name="additional-resources"></a>其他資源
-* <xref:fundamentals/configuration>
+* [組態](xref:fundamentals/configuration/index)
 * [Microsoft Azure： 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure： 金鑰保存庫文件](https://docs.microsoft.com/azure/key-vault/)
 * [如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)

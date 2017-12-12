@@ -11,11 +11,11 @@ ms.assetid: 81f6c9c2-a819-4f3a-97a4-4b0503b56c26
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 638bef0cda14f53a326c66c6a5da3f3c1bb762c6
-ms.sourcegitcommit: 78d28178345a0eea91556e4cd1adad98b1446db8
+ms.openlocfilehash: 20b05801ac666feef29fd05dd3e4738b1bd50b86
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>移轉的 EF Core 與 ASP.NET Core MVC 教學課程 (10-4)
 
@@ -119,7 +119,7 @@ Done. To undo this action, use 'ef migrations remove'
 dotnet ef database update
 ```
 
-此命令的輸出是類似於`migrations add`命令時，不同之處在於如的 SQL 命令，將資料庫設定，請參閱記錄檔。 下列範例輸出中將略過大部分的記錄檔。 如果您不想看到此層級記錄檔訊息詳細資料，您可以變更的記錄層級*appsettings。Development.json*檔案。 如需詳細資訊，請參閱[簡介記錄](xref:fundamentals/logging)。
+此命令的輸出是類似於`migrations add`命令時，不同之處在於如的 SQL 命令，將資料庫設定，請參閱記錄檔。 下列範例輸出中將略過大部分的記錄檔。 如果您不想看到此層級記錄檔訊息詳細資料，您可以變更記錄層級中的*appsettings。Development.json*檔案。 如需詳細資訊，請參閱[簡介記錄](xref:fundamentals/logging/index)。
 
 ```text
 info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]

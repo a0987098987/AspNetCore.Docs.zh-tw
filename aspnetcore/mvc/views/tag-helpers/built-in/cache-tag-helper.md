@@ -11,11 +11,11 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a012
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: da5b7b3bf1aa01ee22edf9bd003d8f79a00a5d0b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1710a5781fb69aaa6101270d6b4fd44f92c7f06c
+ms.sourcegitcommit: a33737ea24e1ea9642e461d1bc90d6701f889436
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
 
@@ -92,7 +92,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache expires-on="@TimeSpan.FromSeconds(120)">
+<Cache expires-after="@TimeSpan.FromSeconds(120)">
     Current Time Inside Cache Tag Helper: @DateTime.Now
 </Cache>
 ```

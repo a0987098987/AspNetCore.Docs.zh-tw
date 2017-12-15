@@ -1,8 +1,8 @@
 ---
 title: Azure Active Directory
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件是與 ASP.NET Core 相關之各種 Azure Active Directory 主題的目錄。"
+keywords: "ASP.NET Core, Azure Active Directory, AAD, 驗證"
 ms.author: riande
 manager: wpickett
 ms.date: 10/4/2017
@@ -11,16 +11,16 @@ ms.assetid: bd272e10-7b7d-43cf-85e2-42a7f87fedb5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: 4169380bd791a19c0e3363f19d4250919d58f7cd
-ms.sourcegitcommit: b23c8bd76bfe6078922dd0d50b1f94ab3772c302
+ms.openlocfilehash: 8323454854a5b27949c3d290810071d4c21cc9cf
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/03/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="azure-active-directory"></a>Azure Active Directory
+# <a name="azure-active-directory"></a><span data-ttu-id="a9ab9-104">Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a9ab9-104">Azure Active Directory</span></span>
 
-* [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
-* [使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
-* [使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
-* [使用 Azure AD B2C 的 ASP.NET Core Web API](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)
+* [<span data-ttu-id="a9ab9-105">將 Azure AD 整合到 ASP.NET Core Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="a9ab9-105">Integrating Azure AD Into an ASP.NET Core Web App</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+* [<span data-ttu-id="a9ab9-106">使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API</span><span class="sxs-lookup"><span data-stu-id="a9ab9-106">Calling a ASP.NET Core Web API From a WPF Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
+* [<span data-ttu-id="a9ab9-107">使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API</span><span class="sxs-lookup"><span data-stu-id="a9ab9-107">Calling a Web API in an ASP.NET Core Web Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+* [<span data-ttu-id="a9ab9-108">使用 Azure AD B2C 的 ASP.NET Core Web API</span><span class="sxs-lookup"><span data-stu-id="a9ab9-108">An ASP.NET Core web API with Azure AD B2C</span></span>](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)
 

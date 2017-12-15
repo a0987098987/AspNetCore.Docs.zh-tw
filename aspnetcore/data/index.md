@@ -1,28 +1,39 @@
 ---
 title: "在 ASP.NET Core 中處理資料"
 author: rick-anderson
-description: 
+description: "提供使用資料的相關文章連結。 許多人使用 Entity Framework Core。"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 10/14/2017
 ms.topic: article
-ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2ef
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: 3566127476289ae085a9161132b103638bc9b068
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+uid: data/index
+ms.openlocfilehash: b3bcd15a078ed2125d14c3e94311e385a1db9683
+ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="working-with-data-in-aspnet-core"></a>在 ASP.NET Core 中處理資料 
 
+* [使用 Visual Studio 開始使用 Razor 頁面與 Entity Framework Core](xref:data/ef-rp/index)
+
+   * [開始使用 Razor 頁面與 EF](xref:data/ef-rp/intro)
+   * [建立、讀取、更新和刪除作業](xref:data/ef-rp/crud)
+   * [排序、篩選、分頁與群組](xref:data/ef-rp/sort-filter-page)
+   * [移轉](xref:data/ef-rp/migrations)
+   * [建立複雜的資料模型](xref:data/ef-rp/complex-data-model)
+   * [讀取相關資料](xref:data/ef-rp/read-related-data)
+   * [更新相關資料](xref:data/ef-rp/update-related-data)
+   * [處理並行存取衝突](xref:data/ef-rp/concurrency)
+
 *   [使用 Visual Studio 的 ASP.NET Core 與 Entity Framework Core 的使用者入門](ef-mvc/index.md)
     *   [快速入門](ef-mvc/intro.md)
-    *   [建立、讀取、更新和刪除作業](ef-mvc/crud.md)
-    *   [排序、篩選、分頁與群組](ef-mvc/sort-filter-page.md)
-    *   [移轉](ef-mvc/migrations.md)
+    *   [建立、讀取、更新和刪除作業](xref:data/ef-mvc/crud)
+    *   [排序、篩選、分頁與群組](xref:data/ef-mvc/sort-filter-page)
+    *   [移轉](xref:data/ef-mvc/migrations)
     *   [建立複雜的資料模型](ef-mvc/complex-data-model.md)
     *   [讀取相關資料](ef-mvc/read-related-data.md)
     *   [更新相關資料](ef-mvc/update-related-data.md)
@@ -37,3 +48,4 @@ ms.lasthandoff: 08/11/2017
     *   [開始使用 Azure Blob 儲存體和 Visual Studio 連線服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
     *   [開始使用佇列儲存體和 Visual Studio 連線服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
     *   [如何：開始使用 Azure 資料表儲存體和 Visual Studio 連線的服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+

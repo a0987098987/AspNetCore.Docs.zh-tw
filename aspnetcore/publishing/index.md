@@ -11,11 +11,11 @@ ms.assetid: f0930c68-4d17-4748-adbf-801e17601eb6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/index
-ms.openlocfilehash: df3c1f0c2768b89c3ea5dc901782170c530a542e
-ms.sourcegitcommit: 74a8ad9c1ba5c155d7c4303e67632a0922c38e86
+ms.openlocfilehash: 0de459128426c4d027606951592b1fe3fdd24fd9
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="hosting-and-deployment-overview-for-aspnet-core-apps"></a>ASP.NET Core 應用程式的裝載和部署概觀
 
@@ -58,6 +58,10 @@ ASP.NET Core 應用程式是一種主控台應用程式，必須在伺服器開�
 除了將輸出從 `dotnet publish` 複製到伺服器之外，部署通常還需要額外的工作。 例如，您可以將額外檔案包含在 *publish* 資料夾，也可以從中排除檔案。 Visual Studio 會將 MSBuild 用於 Web 部署，而且您可以自訂 MSBuild，以便在部署期間執行許多其他工作。 如需詳細資訊，請參閱[在 Visual Studio 中發行設定檔](xref:publishing/web-publishing-vs)和[使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com/) 書籍。
 
 您可以使用[發行 Web 功能](xref:tutorials/publish-to-azure-webapp-using-vs)或使用[內建的 Git 支援](xref:publishing/azure-continuous-deployment)，直接從 Visual Studio 部署至 Azure App Service。 Visual Studio Team Services 支援[持續部署至 Azure App Service](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)。
+
+## <a name="publishing-to-azure"></a>發行至 Azure
+
+如需使用 Visual Studio 將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。  您也可以透過[命令列](xref:tutorials/publish-to-azure-webapp-using-cli)，將應用程式發行至 Azure。
 
 ## <a name="additional-resources"></a>其他資源
 

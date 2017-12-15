@@ -1,20 +1,20 @@
 ---
 title: "ASP.NET Core 教學課程"
-author: tdykstra
+author: rick-anderson
 description: "了解如何開發 ASP.NET Core 應用程式的逐步指南清單。"
 keywords: ASP.NET Core,
-ms.author: tdykstra
+ms.author: riande
 manager: wpickett
-ms.date: 07/14/2017
+ms.date: 10/14/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: b3ea7688eefa69171fd1179de42497c98cf9302e
-ms.sourcegitcommit: 4d9c6d47bded895f3d9a35e9550e31ae213c083c
+ms.openlocfilehash: 44eaac4f3f4ad55cbc9b5ca9fae6e406ceff3d3c
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
@@ -22,15 +22,21 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="building-web-applications"></a>建置 Web 應用程式
 
-[Razor 頁面](xref:mvc/razor-pages/index)是使用 ASP.NET Core 2.0 建立 Web UI 的建議方法。
+若要使用 ASP.NET Core 2.0 建立新的 Web UI 應用程式，建議您透過 [Razor 頁面](xref:mvc/razor-pages/index)來進行。
 
 * [ASP.NET Core 中的 Razor 頁面簡介](xref:mvc/razor-pages/index)
-* [在 Windows 上使用 ASP.NET Core 來建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages/index)
-* [在 Mac 上使用 ASP.NET Core 來建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-mac/index)  
-* [使用 ASP.NET Core 和 VS Code 來建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-vsc/index) 
-* [在 Windows 上使用 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式](first-mvc-app/index.md)
-* [在 Mac 上使用 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式](first-mvc-app-mac/index.md)
-* [在 Mac 或 Linux 上使用 Visual Studio Code 來建立 ASP.NET Core MVC Web 應用程式](first-mvc-app-xplat/index.md)
+* 使用 ASP.NET Core 建立 Razor 頁面 Web 應用程式
+
+   * [Razor Pages 在 Windows 上](xref:tutorials/razor-pages/index)
+   * [Razor Pages 在 Mac 上](xref:tutorials/razor-pages-mac/index)
+   * [Razor Pages 與 VS Code 的搭配應用](xref:tutorials/razor-pages-vsc/index)  
+
+* 建立 ASP.NET Core MVC Web 應用程式
+
+   * [使用 Visual Studio for Windows 建立 Web 應用程式](first-mvc-app/index.md)
+   * [使用 Visual Studio for Mac 建立 Web 應用程式](first-mvc-app-mac/index.md)
+   * [使用 Mac 或 Linux 版 Visual Studio Code 建立 Web 應用程式](first-mvc-app-xplat/index.md)
+
 * [使用 Visual Studio 的 ASP.NET Core 與 Entity Framework Core 的使用者入門](../data/ef-mvc/index.md)
 * [使用 Yeoman 建置專案](../client-side/yeoman.md)
 * [撰寫標記協助程式](../mvc/views/tag-helpers/authoring.md)
@@ -38,10 +44,13 @@ ms.lasthandoff: 09/19/2017
 * [開發使用 dotnet 監看式的 ASP.NET Core 應用程式](dotnet-watch.md)
 
 ## <a name="building-web-apis"></a>建置 Web API
-* [使用 ASP.NET Core 和 Visual Studio for Mac 來建立 Web API](xref:tutorials/first-web-api-mac)
-* [使用 ASP.NET Core 和 Visual Studio for Windows 來建立 Web API](first-web-api.md)
-* [使用 ASP.NET Core 和 Visual Studio Code 來建立 Web API](web-api-vsc.md)
-* [使用 Swagger 的 ASP.NET Web API 說明頁面](web-api-help-pages-using-swagger.md)
+* 使用 ASP.NET Core 建立 Web API
+
+  * [使用 Visual Studio for Windows 建立 Web API](first-web-api.md)
+  * [使用 Visual Studio for Mac 建立 Web API](xref:tutorials/first-web-api-mac)
+  * [使用 Visual Studio Code 建立 Web API](web-api-vsc.md)
+  
+* [使用 Swagger 的 ASP.NET Core Web API 說明頁面](web-api-help-pages-using-swagger.md)
 * [建立原生行動裝置應用程式的後端 Web 服務](../mobile/native-mobile-backend.md)
 
 ## <a name="working-with-data"></a>使用資料
@@ -65,6 +74,7 @@ ms.lasthandoff: 09/19/2017
 
 ## <a name="publishing-and-deployment"></a>發佈和部署
 * [使用 Visual Studio 將 ASP.NET Core Web 應用程式部署至 Azure](publish-to-azure-webapp-using-vs.md)
+* [使用命令列將 ASP.NET Core Web 應用程式部署至 Azure](publish-to-azure-webapp-using-cli.md)
 * [使用連續部署發佈至 Azure Web 應用程式](../publishing/azure-continuous-deployment.md)
 * [將 ASP.NET 容器部署至遠端 Docker 主機](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [Nano Server 上的 ASP.NET Core](nano-server.md)

@@ -1,8 +1,8 @@
 ---
 title: "驗證"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件是不同 ASP.NET Core 驗證主題的目錄。"
+keywords: "ASP.NET Core, 驗證"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/index
-ms.openlocfilehash: 14eaa3b25d0e6c367f26631d15da2ea077265f72
-ms.sourcegitcommit: 9a22c64759a7285ba788a37039bea5fe95f45f21
+ms.openlocfilehash: 9b92a3206e2d6ca921e8580fa367e4bae12725c5
+ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="authentication"></a>驗證
 
@@ -31,16 +31,20 @@ ms.lasthandoff: 08/15/2017
 
 * [帳戶確認和密碼復原](accconfirm.md)
 
-* [使用 SMS 的雙因素驗證](2fa.md)
+* [使用 SMS 的雙重關卡驗證](2fa.md)
 
 * [使用沒有 ASP.NET Core 身分識別的 Cookie 驗證](cookie.md)
 
 * [Azure Active Directory](azure-active-directory/index.md)
 
-  * [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
+  * [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 
-  * [從使用 Azure AD 的 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore)
+  * [從使用 Azure AD 的 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 
-  * [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+  * [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
 
-* [使用 IdentityServer4 保護 ASP.NET Core 應用程式安全](https://identityserver4.readthedocs.io)
+* [使用 IdentityServer4 保護 ASP.NET Core 應用程式](http://docs.identityserver.io/en/release/)
+
+* [使用 Azure App Service 驗證 (簡單驗證) 保護 ASP.NET Core 應用程式](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
+
+* [關於以個別使用者帳戶建立之專案的文章](xref:security/authentication/individual)

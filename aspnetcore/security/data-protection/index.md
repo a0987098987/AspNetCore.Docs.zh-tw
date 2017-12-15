@@ -1,8 +1,8 @@
 ---
 title: "ASP.NET Core 的資料保護"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "本文件是各種 ASP.NET Core 資料保護主題的目錄。"
+keywords: "ASP.NET Core, 資料保護"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.assetid: 1f402da8-1052-4970-9835-9f9f16a02dbc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/index
-ms.openlocfilehash: 39f2ca96f8542de033274ea957b5c7736948c981
-ms.sourcegitcommit: 0b6c8e6d81d2b3c161cd375036eecbace46a9707
+ms.openlocfilehash: 8b42e65bb6121355120a6f4fbe8cd4d1fea153de
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="data-protection-in-aspnet-core-consumer-apis-configuration-extensibility-apis-and-implementation"></a>ASP.NET Core 中的資料保護：取用者 API、組態、擴充性 API 和實作
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 08/11/2017
 
   * [金鑰儲存體提供者](implementation/key-storage-providers.md)
 
-  * [靜止時的金鑰加密](implementation/key-encryption-at-rest.md)
+  * [待用時加密金鑰](implementation/key-encryption-at-rest.md)
 
   * [金鑰的不變性和變更設定](implementation/key-immutability.md)
 

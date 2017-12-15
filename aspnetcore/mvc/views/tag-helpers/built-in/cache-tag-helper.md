@@ -11,16 +11,15 @@ ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a012
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 1710a5781fb69aaa6101270d6b4fd44f92c7f06c
-ms.sourcegitcommit: a33737ea24e1ea9642e461d1bc90d6701f889436
+ms.openlocfilehash: 74080d089dc7a72da96f9f18d613cb313cd930db
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
-
 
 快取標記協助程式提供了可大幅改善其內部的 ASP.NET Core 快取提供者的內容快取的 ASP.NET Core 應用程式的效能。
 
@@ -29,7 +28,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 下列的 Razor 標記會快取的日期/時間：
 
 ```cshtml
-<Cache>@DateTime.Now<Cache>
+<cache>@DateTime.Now</cache>
 ```
 
 包含頁面的第一個要求`CacheTagHelper`會顯示目前的日期/時間。 其他要求會顯示快取的值，直到快取到期 （預設值 20 分鐘），或者由記憶體不足的壓力移出記憶體。
@@ -54,9 +53,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache enabled="true">
+<cache enabled="true">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -73,9 +72,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache expires-on="@new DateTime(2025,1,29,17,02,0)">
+<cache expires-on="@new DateTime(2025,1,29,17,02,0)">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -92,9 +91,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache expires-after="@TimeSpan.FromSeconds(120)">
+<cache expires-after="@TimeSpan.FromSeconds(120)">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -111,9 +110,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache expires-sliding="@TimeSpan.FromSeconds(60)">
+<cache expires-sliding="@TimeSpan.FromSeconds(60)">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -130,9 +129,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache vary-by-header="User-Agent">
+<cache vary-by-header="User-Agent">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -149,9 +148,9 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 範例：
 
 ```cshtml
-<Cache vary-by-query="Make,Model">
+<cache vary-by-query="Make,Model">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -176,9 +175,9 @@ routes.MapRoute(
 *Index.cshtml*
 
 ```cshtml
-<Cache vary-by-route="Make,Model">
+<cache vary-by-route="Make,Model">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -195,9 +194,9 @@ routes.MapRoute(
 範例：
 
 ```cshtml
-<Cache vary-by-cookie=".AspNetCore.Identity.Application">
+<cache vary-by-cookie=".AspNetCore.Identity.Application">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -216,9 +215,9 @@ routes.MapRoute(
 範例：
 
 ```cshtml
-<Cache vary-by-user="true">
+<cache vary-by-user="true">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 使用這個屬性會維護透過在登入和登出循環的快取中的內容。  當使用`vary-by-user="true"`，登入和登出的動作會導致無效的快取驗證的使用者。  快取無效，因為登入，產生新的唯一的 cookie 值。 快取保留匿名狀態時沒有任何 cookie，或已過期。 這表示如果沒有使用者登入，仍會維護快取。
@@ -254,9 +253,9 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 *Index.cshtml*
 
 ```cshtml
-<Cache vary-by="@Model"">
+<cache vary-by="@Model"">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 - - -
@@ -275,9 +274,9 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 範例：
 
 ```cshtml
-<Cache priority="High">
+<cache priority="High">
     Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>
+</cache>
 ```
 
 `priority`屬性並不保證快取保留特定層級。 `CacheItemPriority`是只是建議。 將此屬性設定為`NeverRemove`不保證一定會保留在快取。 請參閱[其他資源](#additional-resources)如需詳細資訊。

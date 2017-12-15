@@ -16,7 +16,7 @@
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
   * 向 Azure Active Directory 中註冊範例應用程式。
-  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToKeys list,get`。
+  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
 2. 更新應用程式的*appsettings.json*檔案使用的數值`Vault`， `ClientId`，和`ClientSecret`。
 3. 執行範例應用程式，會取得從其組態值`IConfigurationRoot`具有相同名稱與密碼的名稱。
   * 非階層式的值： 的值`SecretName`取得`config["SecretName"]`。

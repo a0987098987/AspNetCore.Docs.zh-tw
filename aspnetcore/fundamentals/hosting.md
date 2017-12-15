@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 7deccf135ddd21729206ebed58ddc8aca52c1deb
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: dfec2a67112d40b528b97c847da3dda8ef1e63bd
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
@@ -254,7 +254,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>防止裝載啟動
 
-可防止自動載入裝載啟動的組件，包括應用程式的組件。
+可防止自動載入裝載啟動的組件，包括裝載應用程式的組件所設定的啟動組件。 請參閱[使用 IHostingStartup 外部組件加入應用程式功能](xref:hosting/ihostingstartup)如需詳細資訊。
 
 **索引鍵**: preventHostingStartup  
 **型別**: *bool* (`true`或`1`)  

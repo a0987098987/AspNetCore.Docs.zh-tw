@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 98fe1b0c2dcf2e133d921b2cc8695bd2056c5ec0
-ms.sourcegitcommit: a33737ea24e1ea9642e461d1bc90d6701f889436
+ms.openlocfilehash: 571d683636244565b184cfec49061ec656377f11
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -250,6 +250,14 @@ The system cannot find the file specified.
 ```
 
 重新執行命令，並將在頁面底部的註解。
+
+如果您收到錯誤：
+  ```
+No executable found matching command "dotnet-aspnet-codegenerator"
+  ```
+
+在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
+
 
 建置專案。 建置會產生類似如下的錯誤：
 

@@ -11,11 +11,11 @@ ms.assetid: 5de0c8f7-50ce-4e2c-b3d4-a1bd9fdfcff5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/aspnet-core-module
-ms.openlocfilehash: ac52b791e02ce52da35fe8d599465076d251b4da
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f0759f16ada531774a3945f67495e5f634e6154e
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -66,7 +66,7 @@ ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並
 | startupTimeLimit | <p>選擇性整數屬性。</p><p>此模組，可開始接聽連接埠之處理序的等候秒持續時間。 如果超過此時間限制，此模組會終止處理序。 此模組會嘗試啟動處理序，當它收到新的要求，並將繼續嘗試重新啟動的程序，在後續的內送要求，除非應用程式無法啟動**rapidFailsPerMinute**數目最後一個循環分鐘的時間。</p><p>預設值為 120。</p> |
 | shutdownTimeLimit | <p>選擇性整數屬性。</p><p>持續時間 （秒） 模組將會等候到正常關機狀態的可執行檔時*app_offline.htm*偵測到的檔案。</p><p>預設值為 10。</p> |
 | rapidFailsPerMinute | <p>選擇性整數屬性。</p><p>指定處理程序中指定的次數**processPath**允許每分鐘的損毀。 如果超過此限制，此模組會停止啟動該分鐘的剩餘的處理程序。</p><p>預設值為 10。</p> |
-| requestTimeout | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組將等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>預設值為 "00:02:00"。</p> |
+| requestTimeout | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組將等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>預設值為 "00:02:00"。</p><p>`requestTimeout`必須指定以分鐘為單位，否則它會預設為 2 分鐘。</p> |
 | stdoutLogEnabled | <p>選擇性的 Boolean 屬性。</p><p>如果為 true， **stdout**和**stderr**中指定的處理序**processPath**會重新導向至指定的檔案**stdoutLogFile**.</p><p>預設值為 false。</p> |
 | stdoutLogFile | <p>選擇性字串屬性。</p><p>指定的相對或絕對檔案路徑的**stdout**和**stderr**中指定的處理序從**processPath**將記錄。 相對路徑會相對於網站根目錄。 從任何路徑 '。 ' 將會相對於網站根目錄和所有其他路徑將會被視為絕對路徑。 提供的路徑中任何資料夾必須存在於要建立的記錄檔之模組的順序。 處理序識別碼，時間戳記 (*yyyyMdhms*)，和副檔名 (*.log*) 加上底線分隔符號會加入至最後一個區段**stdoutLogFile**提供。</p><p>預設值是 `aspnetcore-stdout`。</p> |
 | forwardWindowsAuthToken | true 或 false。</p><p>如果為 true，權杖會轉送子處理序做為每個要求的標頭 ' MS-ASPNETCORE-WINAUTHTOKEN' 接聽 %aspnetcore_port%。 它負責這個語彙基元，每個要求上呼叫 CloseHandle 該程序。</p><p>預設值為 true。</p> |

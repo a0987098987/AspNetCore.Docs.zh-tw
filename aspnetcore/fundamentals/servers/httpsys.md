@@ -11,11 +11,11 @@ ms.assetid: 0a7286e4-6428-424e-b5c4-5c98815cf61c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: d3f9eb4943ed62b674d6bb2ab1b275b0a3c02343
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8d46862af44379d8592efdf214a80214dce2d69d
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 > [!NOTE]
 > 本主題只適用於 ASP.NET Core 2.0 和更新版本。 在舊版的 ASP.NET Core，HTTP.sys 會命名為[WebListener](xref:fundamentals/servers/weblistener)。
 
-HTTP.sys 是[適用於 ASP.NET Core web 伺服器](index.md)只能在 Windows 上執行。 此系統建置[Http.Sys 核心模式驅動程式](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)。 HTTP.sys 是替代[Kestrel](kestrel.md) ，提供了一些 Kestel 沒有的功能。 **HTTP.sys 不能與 IIS 或 IIS Express，並不相容於[ASP.NET 核心模組](aspnet-core-module.md)。**
+HTTP.sys 是[適用於 ASP.NET Core web 伺服器](index.md)只能在 Windows 上執行。 此系統建置[Http.Sys 核心模式驅動程式](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)。 HTTP.sys 是替代[Kestrel](kestrel.md) ，提供了一些 Kestel 沒有的功能。 **HTTP.sys 不能與 IIS 或 IIS Express，因為它是與不相容[ASP.NET 核心模組](aspnet-core-module.md)。**
 
 HTTP.sys 支援下列功能：
 

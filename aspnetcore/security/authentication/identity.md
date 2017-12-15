@@ -5,17 +5,17 @@ description: "使用身分識別與 ASP.NET Core 應用程式"
 keywords: "ASP.NET Core，身分識別授權安全性"
 ms.author: riande
 manager: wpickett
-ms.date: 07/07/2017
+ms.date: 12/15/2017
 ms.topic: article
 ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 0679663b3b3b66f9935d0fb24360be2954fcdee1
-ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
+ms.openlocfilehash: 7daf0267a6dc659afbd188ce87e35ca40816a31d
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -39,9 +39,9 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     ![[新增專案] 對話](identity/_static/01-mvc_2.png)
     
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-    如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 這會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
+    如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 此命令會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
  
-    建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，將身分資料和 SQL Server 使用的結構描述保存[Entity Framework Core](https://docs.microsoft.com/ef/)。
+    建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，它會保存身分資料和 SQL Server 使用的結構描述[Entity Framework Core](https://docs.microsoft.com/ef/)。
     
     ---
  

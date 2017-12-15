@@ -5,21 +5,22 @@ description: "了解如何檢視處理的應用程式資料的呈現與 ASP.NET 
 keywords: "ASP.NET Core MVC、 razor、 viewmodel、 別的 viewdata、 viewbag 檢視"
 ms.author: riande
 manager: wpickett
-ms.date: 09/26/2017
+ms.date: 12/12/2017
 ms.topic: article
-ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: 4530d2f500dd887bf649a753283fb3e4af995322
-ms.sourcegitcommit: c2f6c593d81fbd90e6ddd672fe0a5636d06b615a
+ms.openlocfilehash: 2562d4e5fb85159e6ccb47990f54448ddc188077
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
 由[Steve Smith](https://ardalis.com/)和[Luke Latham](https://github.com/guardrex)
+
+本文件說明 ASP.NET Core MVC 應用程式中使用的檢視。 在 Razor 頁面上的資訊，請參閱[Razor 頁面的簡介](xref:mvc/razor-pages/index)。
 
 在**M**模型-**V**檢視-**C**ontroller (MVC) 模式*檢視*處理應用程式的資料呈現與使用者互動。 檢視是 HTML 範本與內嵌[Razor 標記](xref:mvc/views/razor)。 Razor 標記是與 HTML 標記，以產生傳送至用戶端的網頁互動的程式碼。
 

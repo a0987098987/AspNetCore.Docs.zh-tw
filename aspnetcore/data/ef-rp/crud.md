@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/crud
-ms.openlocfilehash: 410829608540697ac4563f1399c8e72d28a13cf2
-ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
+ms.openlocfilehash: b4b24c155c29a0ef8ffffda752253f56097e50ed
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>建立、 讀取、 更新和刪除-Razor 頁面 (8 個 2) 使用的 EF 核心
 
@@ -102,7 +102,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 開啟*Pages/Students/Details.cshtml*。 加入下列反白顯示的程式碼，以顯示一份註冊項目：
 
  <!--2do ricka. if doesn't change, remove dup -->
-[!code-cshtml[Main](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=35-53)]
+[!code-cshtml[Main](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
 
 如果程式碼縮排是錯的程式碼就會貼上之後，請按 CTRL-K-D 更正它。
 

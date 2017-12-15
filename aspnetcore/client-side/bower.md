@@ -12,15 +12,18 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bower
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 183e748cbf87b1973941eacb3fb1008f4041bb2a
-ms.sourcegitcommit: 532a323f99a37c4d7894c95cee3f7a04b594dcec
+ms.openlocfilehash: 0258315e0e24d662086a3171b58112e08b9a40ab
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com) 
+
+> [!IMPORTANT]
+> 雖然仍會保留 Bower，它們建議使用不同的解決方案。 與 Webpack yarn 是一種常用的替代方法，[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。
 
 [Bower](https://bower.io/)呼叫其本身"web 封裝管理員。 」 在.NET 生態系統中，填滿由 NuGet 的傳遞靜態內容的檔案無法驗證為 void。 針對 ASP.NET Core 專案，這些靜態檔案會於用戶端程式庫，例如固有[jQuery](http://jquery.com/)和[Bootstrap](http://getbootstrap.com/)。 .NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
 

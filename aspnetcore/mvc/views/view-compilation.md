@@ -5,17 +5,17 @@ description: "說明如何啟用 MVC Razor 檢視編譯和先行編譯 ASP.NET C
 keywords: "ASP.NET Core Razor 檢視編譯、 Razor 預先編譯、 Razor 先行編譯"
 ms.author: riande
 manager: wpickett
-ms.date: 12/05/2017
+ms.date: 12/13/2017
 ms.topic: article
 ms.assetid: ab4705b7-1638-1638-bc97-ea7f292fe92a
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 873f6203f9e7b5bb14968dcec3f8d8e5548bd834
-ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
+ms.openlocfilehash: 6839892c104673af0fd0fd074d368f3f42259d76
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>Razor 檢視編譯和先行編譯的 ASP.NET Core
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 12/05/2017
 
 檢視叫用時，會在執行階段編譯 razor 檢視。 ASP.NET 核心 1.1.0 和更新版本可以選擇性地編譯 Razor 檢視，以及將其部署與應用程式&mdash;稱為先行編譯的程序。 ASP.NET Core 2.x 專案範本預設會啟用先行編譯。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 執行時，是目前無法使用 razor 檢視先行編譯[獨立的部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) ASP.NET Core 2.0 中。 2.1 版本時，此功能可供 Scd。 如需詳細資訊，請參閱[檢視編譯會失敗，在 Windows 上的 Linux 交互編譯時](https://github.com/aspnet/MvcPrecompilation/issues/102)。
 
 先行編譯的考量：
@@ -54,6 +54,12 @@ ms.lasthandoff: 12/05/2017
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
 ---
+
+準備適用於應用程式[framework 相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)執行命令如下所示，在專案的根目錄：
+
+```console
+dotnet publish -c Release
+```
 
 A *< project_name >。PrecompiledViews.dll*當先行編譯成功，則會產生包含已編譯的 Razor 檢視的檔案。 例如，下列螢幕擷取畫面會描述的內容*Index.cshtml*內*WebApplication1.PrecompiledViews.dll*:
 

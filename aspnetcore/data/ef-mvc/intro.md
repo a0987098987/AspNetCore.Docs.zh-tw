@@ -11,11 +11,11 @@ ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 5095def776f79d0bb76d5a8e94a4228ef0abed75
-ms.sourcegitcommit: a80d35647aff66323160b2cb413b65d79d98f7a6
+ms.openlocfilehash: 2b21c7fb35c65d9374723faac5b812289023a0f6
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
@@ -244,15 +244,10 @@ CRUD 動作方法和檢視表的自動建立稱為 scaffolding。 Scaffolding �
 
 * 以滑鼠右鍵按一下**控制器**資料夾中的**方案總管 中**選取**新增 > 新的 Scaffold 項目**。
 
-* 在 [新增 MVC 相依性] 對話方塊中，選取 [基本相依性]，然後選取 [新增]。
+如果**將 MVC 相依性**對話方塊隨即出現：
 
-  ![新增相依性](intro/_static/add-depend.png)
-
-  Visual Studio 加入 scaffold 控制器所需的相依性。 專案檔中的唯一變更是新增`Microsoft.VisualStudio.Web.CodeGeneration.Design`封裝。
-
-  A *ScaffoldingReadMe.txt*建立您可以刪除的檔案。
-
-* 同樣地，以滑鼠右鍵按一下**控制器**資料夾中的**方案總管 中**選取**新增 > 新的 Scaffold 項目**。
+* [更新為最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)。 15.5 之前的 visual Studio 版本會顯示此對話方塊。
+* 如果您不能更新，請選取**新增**，然後依照 新增控制器步驟一次。
 
 * 在**新增 Scaffold**對話方塊：
 

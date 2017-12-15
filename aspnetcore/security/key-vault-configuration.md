@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 0292bdae-b3ed-4637-bd67-19b9bb8b65cb
 ms.prod: asp.net-core
 uid: security/key-vault-configuration
-ms.openlocfilehash: 352d125b9042c603b59ed9bda0e99b6a49c7ab9f
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 19cab22176c732c5cb8e337d7635bddc54107921
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 金鑰保存庫的組態提供者
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/29/2017
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
   * 向 Azure Active Directory 中註冊範例應用程式。
-  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToKeys list,get`。
+  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
 2. 更新應用程式的*appsettings.json*檔案使用的數值`Vault`， `ClientId`，和`ClientSecret`。
 3. 執行範例應用程式，會取得從其組態值`IConfigurationRoot`具有相同名稱與密碼的名稱。
   * 非階層式的值： 的值`SecretName`取得`config["SecretName"]`。
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/29/2017
       * `5000-AppSecret`: `5.0.0.0_secret_value`
       * `5100-AppSecret`: `5.1.0.0_secret_value`
   * 向 Azure Active Directory 中註冊範例應用程式。
-  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToKeys list,get`。
+  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
 2. 更新應用程式的*appsettings.json*檔案使用的數值`Vault`， `ClientId`，和`ClientSecret`。
 3. 執行範例應用程式，會取得從其組態值`IConfigurationRoot`具有相同名稱做為帶有前置詞的秘密名稱。 在此範例中，前置詞是應用程式的版本，您提供給`PrefixKeyVaultSecretManager`當您加入的 Azure 金鑰保存庫的組態提供者。 值`AppSecret`取得`config["AppSecret"]`。 應用程式所產生的網頁顯示載入的值：
 

@@ -1,228 +1,123 @@
 ---
-title: "以原則為基礎的自訂授權"
+title: "在 ASP.NET Core 自訂以原則為基礎的授權"
 author: rick-anderson
-description: "本文件說明如何建立和使用 ASP.NET Core 應用程式中的自訂授權原則的處理常式。"
+description: "了解如何建立及使用自訂授權原則的處理常式來強制執行的 ASP.NET Core 應用程式中的授權需求。"
 keywords: "ASP.NET Core 授權、 自訂原則、 授權原則"
 ms.author: riande
+ms.custom: mvc
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 11/21/2017
 ms.topic: article
 ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 0281d054204a11acc2cf11cf5fca23a8f70aad8e
-ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
+ms.openlocfilehash: 280dd72b75e39546061d8455931f597f50c829fe
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="custom-policy-based-authorization"></a><span data-ttu-id="11025-104">以原則為基礎的自訂授權</span><span class="sxs-lookup"><span data-stu-id="11025-104">Custom policy-based authorization</span></span>
+# <a name="custom-policy-based-authorization"></a><span data-ttu-id="1f3b3-104">以原則為基礎的自訂授權</span><span class="sxs-lookup"><span data-stu-id="1f3b3-104">Custom policy-based authorization</span></span>
 
-<a name="security-authorization-policies-based"></a>
+<span data-ttu-id="1f3b3-105">基本上，[角色為基礎的授權](xref:security/authorization/roles)和[宣告型授權](xref:security/authorization/claims)使用需求、 要求處理常式和預先設定的原則。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-105">Underneath the covers, [role-based authorization](xref:security/authorization/roles) and [claims-based authorization](xref:security/authorization/claims) use a requirement, a requirement handler, and a pre-configured policy.</span></span> <span data-ttu-id="1f3b3-106">這些建置組塊支援程式碼中的授權評估的運算式。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-106">These building blocks support the expression of authorization evaluations in code.</span></span> <span data-ttu-id="1f3b3-107">結果會是更豐富、 可重複使用、 可測試性授權結構。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-107">The result is a richer, reusable, testable authorization structure.</span></span>
 
-<span data-ttu-id="11025-105">基本上，[角色授權](roles.md)和[宣告授權](claims.md)使需求的使用、 需求，並預先設定的原則的處理常式。</span><span class="sxs-lookup"><span data-stu-id="11025-105">Underneath the covers, the [role authorization](roles.md) and [claims authorization](claims.md) make use of a requirement, a handler for the requirement, and a pre-configured policy.</span></span> <span data-ttu-id="11025-106">這些建置組塊可讓您快速的程式碼，以便更豐富、 可重複使用和授權可輕鬆地測試結構授權評估。</span><span class="sxs-lookup"><span data-stu-id="11025-106">These building blocks allow you to express authorization evaluations in code, allowing for a richer, reusable, and easily testable authorization structure.</span></span>
+<span data-ttu-id="1f3b3-108">授權原則是由一或多個需求所組成。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-108">An authorization policy consists of one or more requirements.</span></span> <span data-ttu-id="1f3b3-109">在將它註冊為授權服務的組態，`ConfigureServices`方法`Startup`類別：</span><span class="sxs-lookup"><span data-stu-id="1f3b3-109">It's registered as part of the authorization service configuration, in the `ConfigureServices` method of the `Startup` class:</span></span>
 
-<span data-ttu-id="11025-107">授權原則是由一或多個需求所組成，並中註冊應用程式啟動時做為授權服務組態的一部分`ConfigureServices`中*Startup.cs*檔案。</span><span class="sxs-lookup"><span data-stu-id="11025-107">An authorization policy is made up of one or more requirements and registered at application startup as part of the Authorization service configuration, in `ConfigureServices` in the *Startup.cs* file.</span></span>
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63,72)]
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
+<span data-ttu-id="1f3b3-110">在上述範例中，會建立 「 AtLeast21 」 原則。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-110">In the preceding example, an "AtLeast21" policy is created.</span></span> <span data-ttu-id="1f3b3-111">它有一個需求的最低存在時間，其提供做為參數的需求。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-111">It has a single requirement, that of a minimum age, which is supplied as a parameter to the requirement.</span></span>
 
-    services.AddAuthorization(options =>
-    {
-        options.AddPolicy("Over21",
-                          policy => policy.Requirements.Add(new MinimumAgeRequirement(21)));
-    });
-}
-```
+<span data-ttu-id="1f3b3-112">原則適用於使用`[Authorize]`原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-112">Policies are applied by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="1f3b3-113">例如: </span><span class="sxs-lookup"><span data-stu-id="1f3b3-113">For example:</span></span>
 
-<span data-ttu-id="11025-108">您可以查看與單一的需求，並確認的最低存在時間，這做為參數傳遞的需求，建立 「 Over21 」 原則。</span><span class="sxs-lookup"><span data-stu-id="11025-108">Here you can see an "Over21" policy is created with a single requirement, that of a minimum age, which is passed as a parameter to the requirement.</span></span>
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-<span data-ttu-id="11025-109">原則會套用使用`Authorize`藉由指定原則名稱，例如，屬性</span><span class="sxs-lookup"><span data-stu-id="11025-109">Policies are applied using the `Authorize` attribute by specifying the policy name, for example;</span></span>
+## <a name="requirements"></a><span data-ttu-id="1f3b3-114">需求</span><span class="sxs-lookup"><span data-stu-id="1f3b3-114">Requirements</span></span>
 
-```csharp
-[Authorize(Policy="Over21")]
-public class AlcoholPurchaseRequirementsController : Controller
-{
-    public ActionResult Login()
-    {
-    }
+<span data-ttu-id="1f3b3-115">授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-115">An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user principal.</span></span> <span data-ttu-id="1f3b3-116">在我們的 「 AtLeast21 」 原則的需求是單一參數&mdash;的最低存在時間。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-116">In our "AtLeast21" policy, the requirement is a single parameter&mdash;the minimum age.</span></span> <span data-ttu-id="1f3b3-117">需求實作`IAuthorizationRequirement`，這是空白標記的介面。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-117">A requirement implements `IAuthorizationRequirement`, which is an empty marker interface.</span></span> <span data-ttu-id="1f3b3-118">參數化的最低年齡要求實作，如下所示：</span><span class="sxs-lookup"><span data-stu-id="1f3b3-118">A parameterized minimum age requirement could be implemented as follows:</span></span>
 
-    public ActionResult Logout()
-    {
-    }
-}
-```
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
-## <a name="requirements"></a><span data-ttu-id="11025-110">需求</span><span class="sxs-lookup"><span data-stu-id="11025-110">Requirements</span></span>
-
-<span data-ttu-id="11025-111">授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。</span><span class="sxs-lookup"><span data-stu-id="11025-111">An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user principal.</span></span> <span data-ttu-id="11025-112">在最短使用期限原則中，我們的需求會是單一參數的最低存在時間。</span><span class="sxs-lookup"><span data-stu-id="11025-112">In our Minimum Age policy, the requirement we have is a single parameter, the minimum age.</span></span> <span data-ttu-id="11025-113">必須實作一項需求`IAuthorizationRequirement`。</span><span class="sxs-lookup"><span data-stu-id="11025-113">A requirement must implement `IAuthorizationRequirement`.</span></span> <span data-ttu-id="11025-114">這是空的標記介面。</span><span class="sxs-lookup"><span data-stu-id="11025-114">This is an empty, marker interface.</span></span> <span data-ttu-id="11025-115">參數化的最低年齡要求 」 可能的實作，如下所示。</span><span class="sxs-lookup"><span data-stu-id="11025-115">A parameterized minimum age requirement might be implemented as follows;</span></span>
-
-```csharp
-public class MinimumAgeRequirement : IAuthorizationRequirement
-{
-    public int MinimumAge { get; private set; }
-    
-    public MinimumAgeRequirement(int minimumAge)
-    {
-        MinimumAge = minimumAge;
-    }
-}
-```
-
-<span data-ttu-id="11025-116">一項需求不需要將資料或屬性。</span><span class="sxs-lookup"><span data-stu-id="11025-116">A requirement doesn't need to have data or properties.</span></span>
+> [!NOTE]
+> <span data-ttu-id="1f3b3-119">一項需求不需要將資料或屬性。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-119">A requirement doesn't need to have data or properties.</span></span>
 
 <a name="security-authorization-policies-based-authorization-handler"></a>
 
-## <a name="authorization-handlers"></a><span data-ttu-id="11025-117">授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="11025-117">Authorization handlers</span></span>
+## <a name="authorization-handlers"></a><span data-ttu-id="1f3b3-120">授權的處理常式</span><span class="sxs-lookup"><span data-stu-id="1f3b3-120">Authorization handlers</span></span>
 
-<span data-ttu-id="11025-118">授權處理常式會負責評估的一項需求的任何屬性。</span><span class="sxs-lookup"><span data-stu-id="11025-118">An authorization handler is responsible for the evaluation of any properties of a requirement.</span></span> <span data-ttu-id="11025-119">授權的處理常式必須評估他們提供`AuthorizationHandlerContext`決定如果允許授權。</span><span class="sxs-lookup"><span data-stu-id="11025-119">The  authorization handler must evaluate them against a provided `AuthorizationHandlerContext` to decide if authorization is allowed.</span></span> <span data-ttu-id="11025-120">可以有一項需求[多個處理常式](policies.md#security-authorization-policies-based-multiple-handlers)。</span><span class="sxs-lookup"><span data-stu-id="11025-120">A requirement can have [multiple handlers](policies.md#security-authorization-policies-based-multiple-handlers).</span></span> <span data-ttu-id="11025-121">處理常式必須繼承`AuthorizationHandler<T>`其中 T 是它所處理的需求。</span><span class="sxs-lookup"><span data-stu-id="11025-121">Handlers must inherit `AuthorizationHandler<T>` where T is the requirement it handles.</span></span>
+<span data-ttu-id="1f3b3-121">授權處理常式負責需求之屬性的評估。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-121">An authorization handler is responsible for the evaluation of a requirement's properties.</span></span> <span data-ttu-id="1f3b3-122">授權的處理常式會評估需求，提供對`AuthorizationHandlerContext`來判斷是否允許存取。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-122">The authorization handler evaluates the requirements against a provided `AuthorizationHandlerContext` to determine if access is allowed.</span></span> <span data-ttu-id="1f3b3-123">可以有一項需求[多個處理常式](#security-authorization-policies-based-multiple-handlers)。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-123">A requirement can have [multiple handlers](#security-authorization-policies-based-multiple-handlers).</span></span> <span data-ttu-id="1f3b3-124">處理常式繼承`AuthorizationHandler<T>`，其中`T`是要處理的需求。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-124">Handlers inherit `AuthorizationHandler<T>`, where `T` is the requirement to be handled.</span></span>
 
 <a name="security-authorization-handler-example"></a>
 
-<span data-ttu-id="11025-122">最短使用期限處理常式可能如下所示：</span><span class="sxs-lookup"><span data-stu-id="11025-122">The minimum age handler might look like this:</span></span>
+<span data-ttu-id="1f3b3-125">最短使用期限處理常式可能如下所示：</span><span class="sxs-lookup"><span data-stu-id="1f3b3-125">The minimum age handler might look like this:</span></span>
 
-```csharp
-public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
-{
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement)
-    {
-        if (!context.User.HasClaim(c => c.Type == ClaimTypes.DateOfBirth &&
-                                   c.Issuer == "http://contoso.com"))
-        {
-            // .NET 4.x -> return Task.FromResult(0);
-            return Task.CompletedTask;
-        }
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/MinimumAgeHandler.cs?name=snippet_MinimumAgeHandlerClass)]
 
-        var dateOfBirth = Convert.ToDateTime(context.User.FindFirst(
-            c => c.Type == ClaimTypes.DateOfBirth && c.Issuer == "http://contoso.com").Value);
-
-        int calculatedAge = DateTime.Today.Year - dateOfBirth.Year;
-        if (dateOfBirth > DateTime.Today.AddYears(-calculatedAge))
-        {
-            calculatedAge--;
-        }
-
-        if (calculatedAge >= requirement.MinimumAge)
-        {
-            context.Succeed(requirement);
-        }
-        return Task.CompletedTask;
-    }
-}
-```
-
-<span data-ttu-id="11025-123">上述程式碼，我們先來看看目前的使用者主體已宣告它發出的簽發者，我們已經知道與信任的出生日期。</span><span class="sxs-lookup"><span data-stu-id="11025-123">In the code above, we first look to see if the current user principal has a date of birth claim which has been issued by an Issuer we know and trust.</span></span> <span data-ttu-id="11025-124">如果宣告是遺漏我們無法授權讓我們決定傳回。</span><span class="sxs-lookup"><span data-stu-id="11025-124">If the claim is missing we can't authorize so we return.</span></span> <span data-ttu-id="11025-125">如果我們擁有宣告時，我們找出舊的使用者，且符合傳入要求的最低存在時間然後授權已成功。</span><span class="sxs-lookup"><span data-stu-id="11025-125">If we have a claim, we figure out how old the user is, and if they meet the minimum age passed in by the requirement then authorization has been successful.</span></span> <span data-ttu-id="11025-126">成功授權之後我們呼叫`context.Succeed()`中的需求，已成功做為參數傳遞。</span><span class="sxs-lookup"><span data-stu-id="11025-126">Once authorization is successful we call `context.Succeed()` passing in the requirement that has been successful as a parameter.</span></span>
+<span data-ttu-id="1f3b3-126">上述程式碼會判斷目前的使用者主體已宣告已知且受信任的簽發者所發出的出生日期。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-126">The preceding code determines if the current user principal has a date of birth claim which has been issued by a known and trusted Issuer.</span></span> <span data-ttu-id="1f3b3-127">宣告遺漏時，無法進行授權，在此情況下會傳回已完成的工作。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-127">Authorization can't occur when the claim is missing, in which case a completed task is returned.</span></span> <span data-ttu-id="1f3b3-128">當宣告存在時，會計算使用者的年齡。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-128">When a claim is present, the user's age is calculated.</span></span> <span data-ttu-id="1f3b3-129">如果使用者符合此需求所定義的最低存在時間，授權會被視為成功。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-129">If the user meets the minimum age defined by the requirement, authorization is deemed successful.</span></span> <span data-ttu-id="1f3b3-130">當授權是否成功，`context.Succeed`用來叫用做為參數的滿足需求。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-130">When authorization is successful, `context.Succeed` is invoked with the satisfied requirement as a parameter.</span></span>
 
 <a name="security-authorization-policies-based-handler-registration"></a>
 
-### <a name="handler-registration"></a><span data-ttu-id="11025-127">處理常式註冊</span><span class="sxs-lookup"><span data-stu-id="11025-127">Handler registration</span></span>
-<span data-ttu-id="11025-128">處理常式必須是集合中註冊服務在設定期間例如</span><span class="sxs-lookup"><span data-stu-id="11025-128">Handlers must be registered in the services collection during configuration, for example;</span></span>
+### <a name="handler-registration"></a><span data-ttu-id="1f3b3-131">處理常式註冊</span><span class="sxs-lookup"><span data-stu-id="1f3b3-131">Handler registration</span></span>
 
-```csharp
+<span data-ttu-id="1f3b3-132">處理常式都登錄在設定期間的服務集合。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-132">Handlers are registered in the services collection during configuration.</span></span> <span data-ttu-id="1f3b3-133">例如: </span><span class="sxs-lookup"><span data-stu-id="1f3b3-133">For example:</span></span>
 
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
 
-    services.AddAuthorization(options =>
-    {
-        options.AddPolicy("Over21",
-                          policy => policy.Requirements.Add(new MinimumAgeRequirement(21)));
-    });
+<span data-ttu-id="1f3b3-134">每個處理常式，會叫用加入至服務集合`services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();`。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-134">Each handler is added to the services collection by invoking `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();`.</span></span>
 
-    services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
-}
-```
+## <a name="what-should-a-handler-return"></a><span data-ttu-id="1f3b3-135">功能應該處理常式傳回？</span><span class="sxs-lookup"><span data-stu-id="1f3b3-135">What should a handler return?</span></span>
 
-<span data-ttu-id="11025-129">每個處理常式加入使用 services 集合`services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();`傳送處理常式類別中。</span><span class="sxs-lookup"><span data-stu-id="11025-129">Each handler is added to the services collection by using `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();` passing in your handler class.</span></span>
+<span data-ttu-id="1f3b3-136">請注意，`Handle`方法中的[處理常式範例](#security-authorization-handler-example)不傳回任何值。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-136">Note that the `Handle` method in the [handler example](#security-authorization-handler-example) returns no value.</span></span> <span data-ttu-id="1f3b3-137">狀態為成功或失敗的方式？</span><span class="sxs-lookup"><span data-stu-id="1f3b3-137">How is a status of either success or failure indicated?</span></span>
 
-## <a name="what-should-a-handler-return"></a><span data-ttu-id="11025-130">功能應該處理常式傳回？</span><span class="sxs-lookup"><span data-stu-id="11025-130">What should a handler return?</span></span>
+* <span data-ttu-id="1f3b3-138">處理常式呼叫來表示成功`context.Succeed(IAuthorizationRequirement requirement)`，傳遞需求已順利通過驗證。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-138">A handler indicates success by calling `context.Succeed(IAuthorizationRequirement requirement)`, passing the requirement that has been successfully validated.</span></span>
 
-<span data-ttu-id="11025-131">您可以看到我們[處理常式範例](policies.md#security-authorization-handler-example)，`Handle()`方法有沒有傳回值，因此如何執行我們表示成功或失敗？</span><span class="sxs-lookup"><span data-stu-id="11025-131">You can see in our [handler example](policies.md#security-authorization-handler-example) that the `Handle()` method has no return value, so how do we indicate success or failure?</span></span>
+* <span data-ttu-id="1f3b3-139">處理常式不需一般而言，處理失敗，因為相同的需求的其他處理常式可能會成功。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-139">A handler does not need to handle failures generally, as other handlers for the same requirement may succeed.</span></span>
 
-* <span data-ttu-id="11025-132">處理常式呼叫來表示成功`context.Succeed(IAuthorizationRequirement requirement)`，傳遞需求已順利通過驗證。</span><span class="sxs-lookup"><span data-stu-id="11025-132">A handler indicates success by calling `context.Succeed(IAuthorizationRequirement requirement)`, passing the requirement that has been successfully validated.</span></span>
+* <span data-ttu-id="1f3b3-140">若要保證失敗，即使其他需求的處理常式會成功，呼叫`context.Fail`。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-140">To guarantee failure, even if other requirement handlers succeed, call `context.Fail`.</span></span>
 
-* <span data-ttu-id="11025-133">處理常式不需一般而言，處理失敗，因為相同的需求的其他處理常式可能會成功。</span><span class="sxs-lookup"><span data-stu-id="11025-133">A handler does not need to handle failures generally, as other handlers for the same requirement may succeed.</span></span>
-
-* <span data-ttu-id="11025-134">若要保證失敗，即使成功之需求的其他處理常式，呼叫`context.Fail`。</span><span class="sxs-lookup"><span data-stu-id="11025-134">To guarantee failure even if other handlers for a requirement succeed, call `context.Fail`.</span></span>
-
-<span data-ttu-id="11025-135">不論您呼叫您的處理常式內，將原則需要需求時呼叫之需求的所有處理常式。</span><span class="sxs-lookup"><span data-stu-id="11025-135">Regardless of what you call inside your handler, all handlers for a requirement will be called when a policy requires the requirement.</span></span> <span data-ttu-id="11025-136">這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。</span><span class="sxs-lookup"><span data-stu-id="11025-136">This allows requirements to have side effects, such as logging, which will always take place even if `context.Fail()` has been called in another handler.</span></span>
+<span data-ttu-id="1f3b3-141">不論您呼叫您的處理常式內，將原則需要需求時呼叫之需求的所有處理常式。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-141">Regardless of what you call inside your handler, all handlers for a requirement will be called when a policy requires the requirement.</span></span> <span data-ttu-id="1f3b3-142">這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-142">This allows requirements to have side effects, such as logging, which will always take place even if `context.Fail()` has been called in another handler.</span></span>
 
 <a name="security-authorization-policies-based-multiple-handlers"></a>
 
-## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a><span data-ttu-id="11025-137">為什麼需要多個處理常式之需求？</span><span class="sxs-lookup"><span data-stu-id="11025-137">Why would I want multiple handlers for a requirement?</span></span>
+## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a><span data-ttu-id="1f3b3-143">為什麼需要多個處理常式之需求？</span><span class="sxs-lookup"><span data-stu-id="1f3b3-143">Why would I want multiple handlers for a requirement?</span></span>
 
-<span data-ttu-id="11025-138">在您想要評估的情況下**或**實作單一需求的多個處理常式的基礎。</span><span class="sxs-lookup"><span data-stu-id="11025-138">In cases where you want evaluation to be on an **OR** basis you implement multiple handlers for a single requirement.</span></span> <span data-ttu-id="11025-139">例如，Microsoft 有門只開啟與索引鍵的卡片。</span><span class="sxs-lookup"><span data-stu-id="11025-139">For example, Microsoft has doors which only open with key cards.</span></span> <span data-ttu-id="11025-140">如果您在家離開您金鑰卡接線生列印暫存的貼紙，並會為您開啟媒體櫃門。</span><span class="sxs-lookup"><span data-stu-id="11025-140">If you leave your key card at home the receptionist prints a temporary sticker and opens the door for you.</span></span> <span data-ttu-id="11025-141">在此案例中，您會有一個需求， *EnterBuilding*，但多個處理常式，每個檢查單一的需求。</span><span class="sxs-lookup"><span data-stu-id="11025-141">In this scenario you'd have a single requirement, *EnterBuilding*, but multiple handlers, each one examining a single requirement.</span></span>
+<span data-ttu-id="1f3b3-144">在您想要評估的情況下**或**為基礎，實作多個處理常式為單一的需求。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-144">In cases where you want evaluation to be on an **OR** basis, implement multiple handlers for a single requirement.</span></span> <span data-ttu-id="1f3b3-145">例如，Microsoft 有門只開啟與索引鍵的卡片。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-145">For example, Microsoft has doors which only open with key cards.</span></span> <span data-ttu-id="1f3b3-146">如果您在家離開您金鑰卡，接線生列印暫存的貼紙，並會為您開啟媒體櫃門。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-146">If you leave your key card at home, the receptionist prints a temporary sticker and opens the door for you.</span></span> <span data-ttu-id="1f3b3-147">在此案例中，您必須是單一的必要條件， *BuildingEntry*，但多個處理常式，每個檢查單一的需求。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-147">In this scenario, you'd have a single requirement, *BuildingEntry*, but multiple handlers, each one examining a single requirement.</span></span>
 
-```csharp
-public class EnterBuildingRequirement : IAuthorizationRequirement
-{
-}
+<span data-ttu-id="1f3b3-148">*BuildingEntryRequirement.cs*</span><span class="sxs-lookup"><span data-stu-id="1f3b3-148">*BuildingEntryRequirement.cs*</span></span>
 
-public class BadgeEntryHandler : AuthorizationHandler<EnterBuildingRequirement>
-{
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, EnterBuildingRequirement requirement)
-    {
-        if (context.User.HasClaim(c => c.Type == ClaimTypes.BadgeId &&
-                                       c.Issuer == "http://microsoftsecurity"))
-        {
-            context.Succeed(requirement);
-        }
-        return Task.CompletedTask;
-    }
-}
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/BuildingEntryRequirement.cs?name=snippet_BuildingEntryRequirementClass)]
 
-public class HasTemporaryStickerHandler : AuthorizationHandler<EnterBuildingRequirement>
-{
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, EnterBuildingRequirement requirement)
-    {
-        if (context.User.HasClaim(c => c.Type == ClaimTypes.TemporaryBadgeId &&
-                                       c.Issuer == "https://microsoftsecurity"))
-        {
-            // We'd also check the expiration date on the sticker.
-            context.Succeed(requirement);
-        }
-        return Task.CompletedTask;
-    }
-}
-```
+<span data-ttu-id="1f3b3-149">*BadgeEntryHandler.cs*</span><span class="sxs-lookup"><span data-stu-id="1f3b3-149">*BadgeEntryHandler.cs*</span></span>
 
-<span data-ttu-id="11025-142">現在，假設這兩個處理常式會[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)當原則評估`EnterBuildingRequirement`如果任一個處理常式成功原則評估會成功。</span><span class="sxs-lookup"><span data-stu-id="11025-142">Now, assuming both handlers are [registered](xref:security/authorization/policies#security-authorization-policies-based-handler-registration) when a policy evaluates the `EnterBuildingRequirement` if either handler succeeds the policy evaluation will succeed.</span></span>
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/BadgeEntryHandler.cs?name=snippet_BadgeEntryHandlerClass)]
 
-## <a name="using-a-func-to-fulfill-a-policy"></a><span data-ttu-id="11025-143">符合原則中使用函式</span><span class="sxs-lookup"><span data-stu-id="11025-143">Using a func to fulfill a policy</span></span>
+<span data-ttu-id="1f3b3-150">*TemporaryStickerHandler.cs*</span><span class="sxs-lookup"><span data-stu-id="1f3b3-150">*TemporaryStickerHandler.cs*</span></span>
 
-<span data-ttu-id="11025-144">可能的情況下是簡單程式碼來表達履行原則。</span><span class="sxs-lookup"><span data-stu-id="11025-144">There may be occasions where fulfilling a policy is simple to express in code.</span></span> <span data-ttu-id="11025-145">很可能只需要提供`Func<AuthorizationHandlerContext, bool>`時設定與原則`RequireAssertion`原則產生器。</span><span class="sxs-lookup"><span data-stu-id="11025-145">It is possible to simply supply a `Func<AuthorizationHandlerContext, bool>` when configuring your policy with the `RequireAssertion` policy builder.</span></span>
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/TemporaryStickerHandler.cs?name=snippet_TemporaryStickerHandlerClass)]
 
-<span data-ttu-id="11025-146">例如先前`BadgeEntryHandler`可以改寫，如下所示：</span><span class="sxs-lookup"><span data-stu-id="11025-146">For example the previous `BadgeEntryHandler` could be rewritten as follows:</span></span>
+<span data-ttu-id="1f3b3-151">請確定這兩個處理常式會[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-151">Ensure that both handlers are [registered](xref:security/authorization/policies#security-authorization-policies-based-handler-registration).</span></span> <span data-ttu-id="1f3b3-152">如果任一個處理常式成功時原則評估`BuildingEntryRequirement`，成功的原則評估。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-152">If either handler succeeds when a policy evaluates the `BuildingEntryRequirement`, the policy evaluation succeeds.</span></span>
+
+## <a name="using-a-func-to-fulfill-a-policy"></a><span data-ttu-id="1f3b3-153">符合原則中使用函式</span><span class="sxs-lookup"><span data-stu-id="1f3b3-153">Using a func to fulfill a policy</span></span>
+
+<span data-ttu-id="1f3b3-154">可能的情況下在哪些完成原則簡單程式碼來表達。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-154">There may be situations in which fulfilling a policy is simple to express in code.</span></span> <span data-ttu-id="1f3b3-155">可提供`Func<AuthorizationHandlerContext, bool>`時設定與原則`RequireAssertion`原則產生器。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-155">It's possible to supply a `Func<AuthorizationHandlerContext, bool>` when configuring your policy with the `RequireAssertion` policy builder.</span></span>
+
+<span data-ttu-id="1f3b3-156">例如，先前`BadgeEntryHandler`可以改寫，如下所示：</span><span class="sxs-lookup"><span data-stu-id="1f3b3-156">For example, the previous `BadgeEntryHandler` could be rewritten as follows:</span></span>
+
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=52-53,57-63)]
+
+## <a name="accessing-mvc-request-context-in-handlers"></a><span data-ttu-id="1f3b3-157">在處理常式中存取的 MVC 要求內容</span><span class="sxs-lookup"><span data-stu-id="1f3b3-157">Accessing MVC request context in handlers</span></span>
+
+<span data-ttu-id="1f3b3-158">`HandleRequirementAsync`授權處理常式中實作的方法有兩個參數：`AuthorizationHandlerContext`和`TRequirement`所處理。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-158">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="1f3b3-159">任何將物件加入至可用的架構，例如 MVC 或 Jabbr`Resource`屬性`AuthorizationHandlerContext`傳遞額外資訊。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-159">Frameworks such as MVC or Jabbr are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
+
+<span data-ttu-id="1f3b3-160">MVC 的執行個體的傳遞，例如[AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext)中`Resource`屬性。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-160">For example, MVC passes an instance of [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) in the `Resource` property.</span></span> <span data-ttu-id="1f3b3-161">此屬性可存取`HttpContext`， `RouteData`，和 else MVC 和 Razor 頁面所提供的所有項目。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-161">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and Razor Pages.</span></span>
+
+<span data-ttu-id="1f3b3-162">使用`Resource`屬性是特定的架構。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-162">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="1f3b3-163">使用中的資訊`Resource`屬性會限制您的授權原則，以特定的架構。</span><span class="sxs-lookup"><span data-stu-id="1f3b3-163">Using information in the `Resource` property limits your authorization policies to particular frameworks.</span></span> <span data-ttu-id="1f3b3-164">您應該轉換`Resource`屬性使用`as`關鍵字，然後確認 轉型已成功以確保不會損毀您的程式碼與`InvalidCastException`其他架構上執行時：</span><span class="sxs-lookup"><span data-stu-id="1f3b3-164">You should cast the `Resource` property using the `as` keyword, and then confirm the cast has succeed to ensure your code doesn't crash with an `InvalidCastException` when run on other frameworks:</span></span>
 
 ```csharp
-services.AddAuthorization(options =>
-    {
-        options.AddPolicy("BadgeEntry",
-                          policy => policy.RequireAssertion(context =>
-                                  context.User.HasClaim(c =>
-                                     (c.Type == ClaimTypes.BadgeId ||
-                                      c.Type == ClaimTypes.TemporaryBadgeId)
-                                      && c.Issuer == "https://microsoftsecurity"));
-                          }));
-    }
- }
-```
-
-## <a name="accessing-mvc-request-context-in-handlers"></a><span data-ttu-id="11025-147">在處理常式中存取的 MVC 要求內容</span><span class="sxs-lookup"><span data-stu-id="11025-147">Accessing MVC request context in handlers</span></span>
-
-<span data-ttu-id="11025-148">`Handle`授權處理常式中，您必須實作的方法有兩個參數，`AuthorizationContext`和`Requirement`所處理。</span><span class="sxs-lookup"><span data-stu-id="11025-148">The `Handle` method you must implement in an authorization handler has two parameters, an `AuthorizationContext` and the `Requirement` you are handling.</span></span> <span data-ttu-id="11025-149">任何將物件加入至可用的架構，例如 MVC 或 Jabbr`Resource`屬性`AuthorizationContext`通過額外的資訊。</span><span class="sxs-lookup"><span data-stu-id="11025-149">Frameworks such as MVC or Jabbr are free to add any object to the `Resource` property on the `AuthorizationContext` to pass through extra information.</span></span>
-
-<span data-ttu-id="11025-150">MVC 的執行個體的傳遞，例如`Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext`資源屬性用來存取 HttpContext、 RouteData 和所有項目中提供其他 MVC。</span><span class="sxs-lookup"><span data-stu-id="11025-150">For example, MVC passes an instance of `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` in the resource property which is used to access HttpContext, RouteData and everything else MVC provides.</span></span>
-
-<span data-ttu-id="11025-151">使用`Resource`屬性是特定的架構。</span><span class="sxs-lookup"><span data-stu-id="11025-151">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="11025-152">使用中的資訊`Resource`屬性會限制您的授權原則，以特定的架構。</span><span class="sxs-lookup"><span data-stu-id="11025-152">Using information in the `Resource` property will limit your authorization policies to particular frameworks.</span></span> <span data-ttu-id="11025-153">您應該轉換`Resource`屬性使用`as`關鍵字，然後檢查已轉型成功確定不會損毀您的程式碼與`InvalidCastExceptions`其他架構; 上執行時</span><span class="sxs-lookup"><span data-stu-id="11025-153">You should cast the `Resource` property using the `as` keyword, and then check the cast has succeed to ensure your code doesn't crash with `InvalidCastExceptions` when run on other frameworks;</span></span>
-
-```csharp
-if (context.Resource is Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext mvcContext)
+// Requires the following import:
+//     using Microsoft.AspNetCore.Mvc.Filters;
+if (context.Resource is AuthorizationFilterContext mvcContext)
 {
-    // Examine MVC specific things like routing data.
+    // Examine MVC-specific things like routing data.
 }
 ```

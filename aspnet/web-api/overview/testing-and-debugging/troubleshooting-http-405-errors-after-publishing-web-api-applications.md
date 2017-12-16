@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
 msc.type: authoredcontent
-ms.openlocfilehash: 2455bbed891179466de8fb6ade3b0a8e66eadee6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b87ae7420e1295030e90c30e97b1e331413ce263
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/15/2017
 ---
 <a name="troubleshooting-http-405-errors-after-publishing-web-api-2-applications"></a>疑難排解 HTTP 405 錯誤，在發行後的 Web API 2 應用程式
 ====================
@@ -44,7 +44,7 @@ Web API 應用程式通常會使用數個常見的 HTTP 動詞命令： GET、 P
 | **取得** | 這個方法用來擷取資料的 URI，並從可能的最常用的 HTTP 方法。 |
 | **標頭** | 這個方法是很像 GET 方法，不同之處在於它實際上不會在要求 URI 中擷取資料-只會擷取 HTTP 狀態。 |
 | **POST** | 這個方法通常用來將新的資料傳送至 URI;POST 通常用於送出表單資料。 |
-| **PUT** | 這個方法通常用於未經處理資料至的 URI。PUT 通常用於 JSON 或 XML 資料提交至 Web API 應用程式。 |
+| **PUT** | 這個方法通常用來將原始資料傳送至的 URI。PUT 通常用於 JSON 或 XML 資料提交至 Web API 應用程式。 |
 | **刪除** | 這個方法用來移除 URI 中的資料。 |
 | **選項** | 這個方法通常用來擷取 uri 所支援的 HTTP 方法清單。 |
 | **複製移動** | 這兩種方法可搭配 WebDAV，和其目的是一目了然。 |

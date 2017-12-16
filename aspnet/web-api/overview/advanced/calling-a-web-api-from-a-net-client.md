@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 8fcc5e7c6bc39f961931589128a7a5863482aa4e
-ms.sourcegitcommit: b38796ea3806bf39b89806adfa681b2a33762907
+ms.openlocfilehash: 41f014e1d23d46ed28c8c1be5ee92f1a6d878ad9
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>呼叫 Web API，從.NET 用戶端 (C#)
 ====================
@@ -167,7 +167,7 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 若要測試用戶端應用程式：
 
-1. [下載](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/samples/server)並執行伺服器應用程式。 [下載指示](https://docs.microsoft.com/en-us/aspnet/core/tutorials/#how-to-download-a-sample)。 請確認伺服器應用程式運作。 Exaxmple，如`http://localhost:64195/api/products`應該會傳回一份產品清單。
+1. [下載](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server)並執行伺服器應用程式。 [下載指示](https://docs.microsoft.com/en-us/aspnet/core/tutorials/#how-to-download-a-sample)。 請確認伺服器應用程式運作。 Exaxmple，如`http://localhost:64195/api/products`應該會傳回一份產品清單。
 2. 設定 HTTP 要求的基底 URI。 將連接埠號碼變更為伺服器應用程式中使用的通訊埠。
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

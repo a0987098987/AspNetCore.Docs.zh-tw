@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: fdb396d8857dc9c118cc19da1f7d1d498dfaacd5
-ms.sourcegitcommit: 8ab9d0065fad23400757e4e08033787e42c97d41
+ms.openlocfilehash: 68e8c89f6e5485f25d1a551ab3e524f0e9c53d0d
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -43,16 +43,16 @@ ms.lasthandoff: 11/17/2017
 
 當用戶端可以處理壓縮的內容時，用戶端必須透過傳送通知的伺服器，其功能`Accept-Encoding`與要求標頭。 當伺服器傳送壓縮的內容時，它必須包括中的資訊`Content-Encoding`標頭壓縮的回應編碼的方式。 下表中，會顯示由中介軟體所支援的內容編碼方式指定。
 
-| `Accept-Encoding`標頭值 | 支援的中介軟體 | 說明                                                 |
+| `Accept-Encoding`標頭值 | 支援的中介軟體 | 描述                                                 |
 | :-----------------------------: | :------------------: | ----------------------------------------------------------- |
 | `br`                            | 否                   | Brotli 壓縮的資料格式                               |
 | `compress`                      | 否                   | UNIX 「 壓縮 」 的資料格式                                 |
 | `deflate`                       | 否                   | 「 deflate 」 內的 「 zlib 」 資料格式的壓縮的資料     |
 | `exi`                           | 否                   | W3C 有效率 XML 交換                               |
 | `gzip`                          | [是] （預設值）        | gzip 檔案格式                                            |
-| `identity`                      | 是                  | 「 無編碼 」 的識別項： 必須編碼回應。 |
+| `identity`                      | [是]                  | 「 無編碼 」 的識別項： 必須編碼回應。 |
 | `pack200-gzip`                  | 否                   | Java 封存的網路傳輸格式                   |
-| `*`                             | 是                  | 任何可用的內容編碼不明確要求     |
+| `*`                             | [是]                  | 任何可用的內容編碼不明確要求     |
 
 如需詳細資訊，請參閱[IANA 官方內容編碼清單](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry)。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/17/2017
 
 Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)，這可能不會產生最有效的壓縮。 如果想要使用最有效率的壓縮，您可以設定最佳的壓縮的中介軟體。
 
-| 壓縮層級                | 說明                                                                                                   |
+| 壓縮層級                | 描述                                                                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `CompressionLevel.Fastest`       | 即使未以最佳方式壓縮所產生的輸出，應該盡快，完成壓縮。 |
 | `CompressionLevel.NoCompression` | 您應該不執行任何壓縮。                                                                           |
@@ -183,7 +183,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
-## <a name="middlware-issue-when-behind-an-nginx-reverse-proxy"></a>位於 Nginx 反向 proxy 後方 Middlware 問題
+## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>位於 Nginx 反向 proxy 後方的中介軟體問題
 當要求 Nginx，由代理`Accept-Encoding`標頭會移除。 這可防止壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx (BasicMiddleware #123) 傳遞壓縮](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮

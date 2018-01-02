@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: dfec2a67112d40b528b97c847da3dda8ef1e63bd
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 14e48adf5671a41ad6e135caeb4a87fdf7292aa6
+ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。 至少一部伺服器和要求處理管線，會設定主應用程式。
+ASP.NET Core 應用程式設定和啟動*主機*。 負責應用程式啟動和生命週期管理的主機。 至少一部伺服器和要求處理管線，會設定主應用程式。
 
 ## <a name="setting-up-a-host"></a>設定主機
 
@@ -40,19 +40,19 @@ ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程�
   * [使用者密碼](xref:security/app-secrets)的應用程式執行時`Development`環境。
   * 環境變數。
   * 命令列引數。
-* 設定[記錄](xref:fundamentals/logging/index)主控台和偵錯輸出與[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。{環境}.json*檔案。
+* 設定[記錄](xref:fundamentals/logging/index)主控台和偵錯輸出。 記錄將包含[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。 {環境}.json*檔案。
 * 當 IIS 背景執行，可讓[IIS integration](xref:publishing/iis)藉由設定基底路徑和通訊埠伺服器應接聽時使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 IIS 與 Kestrel 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。 對於 IIS 的預設選項，請參閱[IIS 選項 > 一節的主控件與 IIS 的 Windows 上的 ASP.NET Core](xref:publishing/iis#iis-options)。
 
-*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。 這會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
+*內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 預設內容的根是[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。 預設內容的根 (`Directory.GetCurrentDirectory`) 會導致在根資料夾中啟動應用程式時，使用 web 專案的根資料夾做為內容的根目錄 (例如，呼叫[dotnet 執行](/dotnet/core/tools/dotnet-run)來自專案資料夾)。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 
-請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration/index)如需有關應用程式組態。
+如需有關應用程式組態的詳細資訊，請參閱[組態中 ASP.NET Core](xref:fundamentals/configuration/index)。
 
 > [!NOTE]
-> 做為使用靜態替代`CreateDefaultBuilder`方法，建立從主機[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)是支援的方法與 ASP.NET Core 2.x。 請參閱 ASP.NET Core 1.x 索引標籤的詳細資訊。
+> 做為使用靜態替代`CreateDefaultBuilder`方法，建立從主機[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)是支援的方法與 ASP.NET Core 2.x。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。 這通常在您的應用程式進入點，執行`Main`方法。 在專案範本中，`Main`位於*Program.cs*。 下列*Program.cs*示範如何使用`WebHostBuilder`建置主應用程式：
+建立主應用程式使用的執行個體[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)。 建立主控件應用程式的進入點，通常執行`Main`方法。 在專案範本中，`Main`位於*Program.cs*。 一般*Program.cs*呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)啟動主機的設定：
 
 [!code-csharp[Main](../common/samples/WebApplication1/Program.cs)]
 
@@ -82,7 +82,11 @@ host.Run();
 
 ## <a name="host-configuration-values"></a>主機組態值
 
-[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)提供方法來設定大部分可用的設定值，主機也可以直接與設定[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting)和相關聯的金鑰。 設定的值時`UseSetting`，此值設定為字串 （以引號括住），不論類型為何。
+[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)提供下列方法設定主機的大部分可用的設定值：
+
+* 環境變數與格式`ASPNETCORE_{configurationKey}`。 例如，`ASPNETCORE_DETAILEDERRORS`。
+* 明確的方法，例如`CaptureStartupErrors`。
+* [UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting)和相關聯的金鑰。 設定的值時`UseSetting`，此值設定為字串，不論類型為何。
 
 ### <a name="capture-startup-errors"></a>擷取啟動錯誤
 
@@ -91,7 +95,8 @@ host.Run();
 **索引鍵**: captureStartupErrors  
 **型別**: *bool* (`true`或`1`)  
 **預設**： 預設為`false`Kestrel 背後 IIS，其中預設值是以執行應用程式除非`true`。  
-**使用設定**:`CaptureStartupErrors`
+**使用設定**:`CaptureStartupErrors`  
+**環境變數**:`ASPNETCORE_CAPTURESTARTUPERRORS`
 
 當`false`，啟動導致主機結束期間發生的錯誤。 當`true`，主應用程式在啟動期間擷取例外狀況，並嘗試啟動伺服器。
 
@@ -120,7 +125,8 @@ var host = new WebHostBuilder()
 **索引鍵**: contentRoot  
 **型別**:*字串*  
 **預設**： 預設為應用程式組件所在的資料夾。  
-**使用設定**:`UseContentRoot`
+**使用設定**:`UseContentRoot`  
+**環境變數**:`ASPNETCORE_CONTENTROOT`
 
 內容的根也作為基底路徑[Web 根目錄下設定](#web-root)。 如果路徑不存在，就無法啟動主機。
 
@@ -149,7 +155,8 @@ var host = new WebHostBuilder()
 **索引鍵**: detailedErrors  
 **型別**: *bool* (`true`或`1`)  
 **預設**: false  
-**使用設定**:`UseSetting`
+**使用設定**:`UseSetting`  
+**環境變數**:`ASPNETCORE_DETAILEDERRORS`
 
 當啟用 (或當<a href="#environment">環境</a>設`Development`)，應用程式會擷取詳細例外狀況。
 
@@ -178,7 +185,8 @@ var host = new WebHostBuilder()
 **索引鍵**： 環境  
 **型別**:*字串*  
 **預設**： 生產環境  
-**使用設定**:`UseEnvironment`
+**使用設定**:`UseEnvironment`  
+**環境變數**:`ASPNETCORE_ENVIRONMENT`
 
 您可以設定*環境*為任何值。 架構定義的值包括`Development`， `Staging`，和`Production`。 值不區分大小寫。 根據預設，*環境*讀取從`ASPNETCORE_ENVIRONMENT`環境變數。 當使用[Visual Studio](https://www.visualstudio.com/)，可能會設定環境變數*launchSettings.json*檔案。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
 
@@ -207,7 +215,8 @@ var host = new WebHostBuilder()
 **索引鍵**: hostingStartupAssemblies  
 **型別**:*字串*  
 **預設**： 空字串  
-**使用設定**:`UseSetting`
+**使用設定**:`UseSetting`  
+**環境變數**:`ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
 裝載啟動在啟動時載入的組件的字串，以分號分隔。 這項功能的新 ASP.NET Core 2.0。
 
@@ -234,7 +243,8 @@ WebHost.CreateDefaultBuilder(args)
 **索引鍵**: preferHostingUrls  
 **型別**: *bool* (`true`或`1`)  
 **預設**: true  
-**使用設定**:`PreferHostingUrls`
+**使用設定**:`PreferHostingUrls`  
+**環境變數**:`ASPNETCORE_PREFERHOSTINGURLS`
 
 這項功能的新 ASP.NET Core 2.0。
 
@@ -259,7 +269,8 @@ WebHost.CreateDefaultBuilder(args)
 **索引鍵**: preventHostingStartup  
 **型別**: *bool* (`true`或`1`)  
 **預設**: false  
-**使用設定**:`UseSetting`
+**使用設定**:`UseSetting`  
+**環境變數**:`ASPNETCORE_PREVENTHOSTINGSTARTUP`
 
 這項功能的新 ASP.NET Core 2.0。
 
@@ -284,7 +295,8 @@ WebHost.CreateDefaultBuilder(args)
 **索引鍵**: url  
 **型別**:*字串*  
 **預設**: http://localhost:5000/  
-**使用設定**:`UseUrls`
+**使用設定**:`UseUrls`  
+**環境變數**:`ASPNETCORE_URLS`
 
 設定為以分號分隔 （;） 應該回應伺服器的前置詞的 URL 清單。 例如，`http://localhost:123`。 使用 「\*"，表示伺服器應接聽任何 IP 位址或主機名稱使用指定的連接埠和通訊協定上的要求 (例如， `http://*:5000`)。 通訊協定 (`http://`或`https://`) 必須包含以每個 URL。 伺服器之間的不支援的格式。
 
@@ -315,7 +327,8 @@ var host = new WebHostBuilder()
 **索引鍵**: shutdownTimeoutSeconds  
 **型別**: *int*  
 **預設**: 5  
-**使用設定**:`UseShutdownTimeout`
+**使用設定**:`UseShutdownTimeout`  
+**環境變數**:`ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
 雖然索引鍵接受*int*與`UseSetting`(例如， `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`)、`UseShutdownTimeout`擴充方法會採用`TimeSpan`。 這項功能的新 ASP.NET Core 2.0。
 
@@ -340,7 +353,8 @@ WebHost.CreateDefaultBuilder(args)
 **索引鍵**: startupAssembly  
 **型別**:*字串*  
 **預設**： 應用程式的組件  
-**使用設定**:`UseStartup`
+**使用設定**:`UseStartup`  
+**環境變數**:`ASPNETCORE_STARTUPASSEMBLY`
 
 您可以依名稱參考組件 (`string`) 或型別 (`TStartup`)。 若為多個`UseStartup`呼叫的方法，最後一個的優先順序。
 
@@ -381,7 +395,8 @@ var host = new WebHostBuilder()
 **索引鍵**: webroot  
 **型別**:*字串*  
 **預設**： 如果未指定，預設值是"(Content Root)/wwwroot"，則該路徑存在。 如果路徑不存在，則會使用任何作業檔案提供者。  
-**使用設定**:`UseWebRoot`
+**使用設定**:`UseWebRoot`  
+**環境變數**:`ASPNETCORE_WEBROOT`
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -679,7 +694,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 
 **執行**
 
-`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機已關閉：
+`Run`方法會啟動 web 應用程式，並且封鎖呼叫執行緒，直到主機關機：
 
 ```csharp
 host.Run();
@@ -819,7 +834,7 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 | --------------------- | --------------------- |
 | `ApplicationStarted`  | 已完全啟動主機。 |
 | `ApplicationStopping` | 主機正在執行正常關機程序。 可能仍在處理要求。 關機封鎖，直到完成此事件。 |
-| `ApplicationStopped`  | 主應用程式即將完成正常關機程序。 應該完全處理所有要求。 關機封鎖，直到完成此事件。 |
+| `ApplicationStopped`  | 主應用程式即將完成正常關機程序。 應該處理所有要求。 關機封鎖，直到完成此事件。 |
 
 | 方法            | 動作                                           |
 | ----------------- | ------------------------------------------------ |

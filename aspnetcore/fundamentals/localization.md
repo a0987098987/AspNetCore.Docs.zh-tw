@@ -11,11 +11,11 @@ ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 1922037245a33f49c17f1c361003260462d96264
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a3fdbf8a1ab4ca397824a46da445fa34ddd35204
+ms.sourcegitcommit: 4be61844141d3cfb6f263636a36aebd26e90fb28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`SupportedUICultures`。 [CultureInfo](https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo)物件`SupportedCultures`判斷文化特性相關的函數，例如日期、 時間、 數字和貨幣格式的結果。 `SupportedCultures`也會決定文字、 大小寫慣例和字串比較的排序順序。 請參閱[CultureInfo.CurrentCulture](https://docs.microsoft.com/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)如需詳細資訊，在伺服器取得文化特性的方式。 `SupportedUICultures`決定會轉譯為字串 (從*.resx*檔案) 依查閱[ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager)。 `ResourceManager`查閱所決定的特定文化特性的字串，只需`CurrentUICulture`。 在.NET 中的每個執行緒都`CurrentCulture`和`CurrentUICulture`物件。 ASP.NET Core 呈現文化特性相關函式時，會檢查這些值。 比方說，如果目前執行緒的文化特性設定為"EN-US"英文 (美國），`DateTime.Now.ToLongDateString()`顯示 「 星期四年 2 月 18，2016 年 」，但是如果`CurrentCulture`設定"ES-ES"（西班牙文，西班牙） 的輸出會是"jueves，18 febrero de-de 2016"。
 
-## <a name="working-with-resource-files"></a>使用資源檔
+## <a name="resource-files"></a>資源檔
 
 資源檔是有用的機制，來從程式碼分隔可當地語系化的字串。 非預設語言的翻譯的字串會隔離*.resx*資源檔。 例如，您可能想要建立名為西班牙文的資源檔*Welcome.es.resx*包含翻譯的字串。 "es"是西班牙文語言程式碼。 若要在 Visual Studio 中建立此資源檔：
 
@@ -172,19 +172,21 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 如果您不使用`ResourcesPath`選項， *.resx*檔案檢視會位於相同的資料夾檢視。
 
-如果您移除 「.fr 」 文化特性指示項，且您必須設定為 「 法文 （透過 cookie 或其他機制） 的文化特性，在讀取預設資源檔，以及字串已當地語系化。 資源管理員會指定預設值或後援資源，不符合您要求的文化特性，您要提供文化特性指示項不 *.resx 檔案時。 如果您想要針對您的要求文化特性缺少資源，必須沒有預設資源檔時，只傳回索引鍵。
+## <a name="culture-fallback-behavior"></a>文化特性後援行為
 
-### <a name="generating-resource-files-with-visual-studio"></a>使用 Visual Studio 產生的資源檔
+例如，如果您移除 「.fr 」 文化特性指示項，且您必須設定為法文的文化特性，讀取預設資源檔，以及字串已當地語系化。 不符合必要的文化特性時，資源管理員會指定預設值或後援資源。 如果您想要針對您的要求文化特性缺少資源，必須沒有預設資源檔時，只傳回索引鍵。
+
+### <a name="generate-resource-files-with-visual-studio"></a>產生 Visual Studio 中的資源檔
 
 如果在 Visual Studio 中建立資源檔，而不是檔案名稱中的文化特性 (例如， *Welcome.resx*)，Visual Studio 會針對每個字串的屬性建立 C# 類別。 這通常不是您想要使用 ASP.NET Core;您通常不會有預設值*.resx*資源檔 (A *.resx*沒有的文化特性名稱的檔案)。 我們建議您建立*.resx*文化特性名稱的檔案 (例如*Welcome.fr.resx*)。 當您建立*.resx*文化特性名稱，Visual Studio 檔案將不會產生類別檔案。 我們預期的許多開發人員**不**建立預設語言資源檔案。
 
-### <a name="adding-other-cultures"></a>加入其他文化特性
+### <a name="add-other-cultures"></a>加入其他文化特性
 
 每個語言和文化特性的組合 （非預設的語言） 需要唯一的資源檔。 您藉由建立新的資源檔中的 ISO 語言代碼是檔案名稱的一部分建立不同的文化特性與地區設定的資源檔 (例如， **en-我們**， **fr ca**，和**en gb**)。 這些 ISO 碼放置於之間的檔案名稱和*.resx*副檔名，像是*Welcome.es MX.resx* （墨西哥西班牙文/）。 若要指定的文化特性中性語言，移除 國家/地區的程式碼 (`MX`在上述範例中)。 西班牙文的文化特性中性資源檔案名稱是*Welcome.es.resx*。
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>選取每個要求的語言/文化特性的策略實作  
 
-### <a name="configuring-localization"></a>設定當地語系化
+### <a name="configure-localization"></a>設定當地語系化
 
 設定當地語系化`ConfigureServices`方法：
 
@@ -236,7 +238,7 @@ Cookie 格式是`c=%LANGCODE%|uic=%LANGCODE%`，其中`c`是`Culture`和`uic`是
 
 [Accept-encoding 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)是可在大部分的瀏覽器設定和原本要用來指定使用者的語言。 這個設定會指出瀏覽器功能已設定為傳送或已繼承自基礎作業系統。 從瀏覽器要求的接受語言 HTTP 標頭不是百分之百的方法，可偵測使用者的慣用的語言 (請參閱[瀏覽器中設定語言喜好設定](https://www.w3.org/International/questions/qa-lang-priorities.en.php))。 在生產應用程式應該包含方法，讓使用者可以自訂自己選擇的文化特性。
 
-### <a name="setting-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-encoding HTTP 標頭
+### <a name="set-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-encoding HTTP 標頭
 
 1. 從齒輪圖示，點選**網際網路選項**。
 
@@ -252,7 +254,7 @@ Cookie 格式是`c=%LANGCODE%|uic=%LANGCODE%`，其中`c`是`Culture`和`uic`是
 
 6. 點選語言，然後點選 **移**。
 
-### <a name="using-a-custom-provider"></a>使用自訂提供者
+### <a name="use-a-custom-provider"></a>使用自訂提供者
 
 假設您想要讓客戶將他們的語言和文化特性儲存在您的資料庫。 您可以撰寫查詢使用者，這些值提供者。 下列程式碼會示範如何加入自訂提供者：
 
@@ -281,7 +283,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 使用`RequestLocalizationOptions`新增或移除當地語系化提供者。
 
-### <a name="setting-the-culture-programmatically"></a>以程式設計方式設定文化特性
+### <a name="set-the-culture-programmatically"></a>以程式設計方式設定文化特性
 
 這個範例**Localization.StarterWeb**投影上[GitHub](https://github.com/aspnet/entropy)包含設定的 UI `Culture`。 *Views/Shared/_SelectLanguagePartial.cshtml*檔可讓您從支援的文化特性的清單中選取的文化特性：
 

@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 571d683636244565b184cfec49061ec656377f11
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: acbd987438edeea13f29547dc471f9a211e87b04
+ms.sourcegitcommit: 1de159820a572c08955ee77cc8b1caa3d7aa938c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -29,6 +29,8 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 ## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE[install 2.0](../../includes/install2.0.md)]
+
+熟悉[Razor 頁面](xref:mvc/razor-pages/index)。 新的程式設計人員應該完成[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)再開始此數列。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -5,18 +5,17 @@ description: "深入了解 ASP.NET Core MVC 中的模型驗證。"
 keywords: "ASP.NET Core，MVC、 驗證"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 12/18/2016
 ms.topic: article
 ms.assetid: 3a8676dd-7ed8-4a05-bca2-44e288ab99ee
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3f3f7010d7744d59ce2dd88b323418423b3ae08
-ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
+ms.openlocfilehash: 7f641c247cb672934e76fa13bc7b7beb3990dd82
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證的簡介
 
@@ -84,7 +83,7 @@ MVC 會繼續直到到達驗證欄位的錯誤 (依預設為 200) 的數目上�
 
 ## <a name="handling-model-state-errors"></a>處理模型狀態錯誤
 
-模型驗證發生在之前所叫用每個控制器動作和動作方法必須負責檢查`ModelState.IsValid`和作出適當回應。 在許多情況下，適當的反應就會傳回某種類型的錯誤回應，在理想情況下，詳列出模型驗證失敗的原因。
+模型驗證發生在之前所叫用每個控制器動作和動作方法必須負責檢查`ModelState.IsValid`和作出適當回應。 在許多情況下，適當的反應就會傳回錯誤回應，在理想情況下，詳列出模型驗證失敗的原因。
 
 某些應用程式會選擇遵循標準慣例來處理模型驗證錯誤，其中案例篩選器可能會實作這類原則的適當位置。 您應該測試您的動作具有有效和無效的模型狀態的行為方式。
 
@@ -98,7 +97,7 @@ MVC 會繼續直到到達驗證欄位的錯誤 (依預設為 200) 的數目上�
 
 ## <a name="custom-validation"></a>自訂驗證
 
-驗證屬性適用於大多數的驗證需求。 不過，一些驗證規則專屬於您企業中，因為它們並不是只需要確認欄位的一般資料驗證，或符合某個範圍的值。 針對這些案例，自訂驗證屬性會是很好的解決方案。 在 MVC 中建立您自己的自訂驗證屬性十分簡單。 只會繼承`ValidationAttribute`，並覆寫`IsValid`方法。 `IsValid`方法接受兩個參數，第一個是名為物件*值*第二個是`ValidationContext`名為物件*validationContext*。 *值*正在驗證您的自訂驗證程式的欄位參考的實際值。
+驗證屬性適用於大多數的驗證需求。 不過，某些驗證規則僅適用於您的業務。 您的規則可能不是一般資料驗證技術，例如確定欄位是必要或符合某個範圍的值。 針對這些案例，自訂驗證屬性會是很好的解決方案。 在 MVC 中建立您自己的自訂驗證屬性十分簡單。 只會繼承`ValidationAttribute`，並覆寫`IsValid`方法。 `IsValid`方法接受兩個參數，第一個是名為物件*值*第二個是`ValidationContext`名為物件*validationContext*。 *值*正在驗證您的自訂驗證程式的欄位參考的實際值。
 
 在下列範例中，商務規則表示使用者可能無法設定內容類型為*傳統*1960年之後發行的電影。 `[ClassicMovie]`屬性會先檢查內容類型，如果是典型，然後檢查是否晚於 1960年的發行日期。 它會釋放 1960年之後，如果驗證失敗。 這個屬性接受整數參數代表年份可讓您驗證資料。 您可以擷取該屬性的建構函式，在參數的值如下所示：
 
@@ -145,11 +144,11 @@ MVC 會繼續直到到達驗證欄位的錯誤 (依預設為 200) 的數目上�
 </form>
 ```
 
-因此，用戶端驗證可避免送出表單有效之前。 [提交] 按鈕會執行 JavaScript，或者送出表單會顯示錯誤訊息。
+用戶端驗證可避免送出之前格式無效。 [提交] 按鈕會執行 JavaScript，或者送出表單會顯示錯誤訊息。
 
 MVC 判斷型別屬性，可能是覆寫使用的.NET 資料類型為基礎的屬性值`[DataType]`屬性。 基底`[DataType]`屬性不會實際的伺服器端驗證。 瀏覽器選擇他們自己的錯誤訊息，並顯示這些錯誤，不過他們希望，不過 jQuery 驗證不顯眼封裝可以覆寫的訊息，並與其他以一致的方式顯示。 發生這種情況最明顯當使用者套用`[DataType]`子類別，例如`[EmailAddress]`。
 
-### <a name="adding-validation-to-dynamic-forms"></a>將驗證加入至動態表單：
+### <a name="add-validation-to-dynamic-forms"></a>將驗證加入至動態表單
 
 因為驗證不顯眼的 jQuery 驗證邏輯和傳遞參數給 jQuery 驗證第一次載入頁面時，動態產生的表單將不會自動會呈現驗證。 相反地，您必須告訴 jQuery 建立後立即剖析的動態表單不顯眼的驗證。 例如，下列程式碼顯示您可以設定 AJAX 透過加入表單上的用戶端驗證。
 
@@ -172,7 +171,7 @@ $.get({
 
 `$.validator.unobtrusive.parse()`方法會接受一個引數的 jQuery 選取器。 這個方法會告訴 jQuery 不顯眼的驗證，以剖析`data-`表單內的選取器的屬性。 這些屬性的值會接著傳遞至 jQuery 驗證外掛程式，表單表現用所需的用戶端驗證規則。
 
-### <a name="adding-validation-to-dynamic-controls"></a>將驗證加入至動態控制項：
+### <a name="add-validation-to-dynamic-controls"></a>將驗證加入至動態控制項
 
 您也可以更新表單上的驗證規則，當個別控制項，例如`<input/>`s 和`<select/>`s，動態產生。 您無法將傳遞至這些項目的選取器`parse()`方法直接因為周圍的表單已剖析，而且不會更新。  相反地，您先移除現有的驗證資料，然後重新剖析整份表單，如下所示：
 

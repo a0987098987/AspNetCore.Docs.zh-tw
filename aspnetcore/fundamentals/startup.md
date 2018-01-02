@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: 8adb96c7261a2e7b1556f0daddcf6f135862b53a
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: dd2eb3d3996bc0bf277c8d5e772c8568ef9f147e
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
@@ -49,7 +49,7 @@ ASP.NET Core 應用程式使用`Startup`類別，名為`Startup`依慣例。 `St
 
 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices)方法是：
 
-* 選擇項。
+* 選擇性。
 * 由 web 主機之前呼叫`Configure`方法來設定應用程式的服務。
 * 其中[組態選項](xref:fundamentals/configuration/index)慣例所設定。
 
@@ -121,4 +121,4 @@ Web 主機提供某些服務，可用於`Startup`類別建構函式。 應用程
 * [中介軟體](xref:fundamentals/middleware)
 * [記錄](xref:fundamentals/logging/index)
 * [組態](xref:fundamentals/configuration/index)
-* [StartupLoader 類別： FindStartupType 方法 （參考來源）](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116))
+* [StartupLoader 類別： FindStartupType 方法 （參考來源）](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)

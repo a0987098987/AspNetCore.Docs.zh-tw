@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 24c6a35a6b663ebb0f8d0e3e7988322fa5d9018c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6790cd0deb36c9fb297ccd4df371f763dba17844
+ms.sourcegitcommit: 17b025bd33f4474f0deaafc6d0447a4e72bcad87
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/27/2017
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>不執行在 ASP.NET 中，以及應該改用哪個程式
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 
 本主題不是做為完整指南以確保您的應用程式很安全而且有效率。 您仍然要遵循的安全性和效能不會在本主題中所述的最佳作法。 它只會建議如何避免常見的錯誤相關的.NET 類別，以及程序。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 此主題包括下列章節：
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
     - [UrlPathEncode](#urlpathencode)
 - [可靠性和效能](#performance)
 
-    - [PreSendRequestHeaders 和 PreSendRequestContext](#presend)
+    - [PreSendRequestHeaders 和 PreSendRequestContent](#presend)
     - [Web Form 頁面非同步事件](#asyncevents)
     - [和不理工作](#fire)
     - [要求實體本文](#requestentity)
@@ -200,11 +200,13 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 <a id="presend"></a>
 
-### <a name="presendrequestheaders-and-presendrequestcontext"></a>PreSendRequestHeaders 和 PreSendRequestContext
+### <a name="presendrequestheaders-and-presendrequestcontent"></a>PreSendRequestHeaders 和 PreSendRequestContent
 
 建議： 不要使用這些事件與受管理模組。 相反地，寫入原生 IIS 模組來執行必要的工作。 請參閱[建立原生程式碼 HTTP 模組](https://msdn.microsoft.com/en-us/library/ms693629.aspx)。
 
-您可以使用[PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx)和[PreSendRequestContext](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx)事件的原生 IIS 模組，但不要在使用這些 managed 模組的實作 IHttpModule。 設定這些屬性會導致發生問題的非同步要求。
+您可以使用[PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx)和[PreSendRequestContent](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx)事件的原生 IIS 模組。
+> [!WARNING]
+> 請勿使用`PreSendRequestHeaders`和`PreSendRequestContent`與實作的 managed 模組`IHttpModule`。 設定這些屬性會導致發生問題的非同步要求。 應用程式要求路由 (ARR) 和 websockets 的組合可能會造成存取違規的例外狀況，可能會造成 w3wp 損毀。 例如，iiscore ！W3_CONTEXT_BASE::GetIsLastNotification + 68 iiscore.dll 中的造成存取違規例外狀況 (0xC0000005)。
 
 <a id="asyncevents"></a>
 

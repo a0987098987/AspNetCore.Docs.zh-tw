@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6858b6b8ec89a5e5ffa9e5f8dddb905f38e16603
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cbe46ee1d3cd9f7a30a87d364074f1302f9af7ab
+ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>撰寫 ASP.NET Core，範例與逐步解說中的標記協助程式
 
@@ -76,9 +76,18 @@ ms.lasthandoff: 11/10/2017
     
     上述程式碼會使用的萬用字元語法來指定將可使用我們的組件中的所有標記協助程式。 之後的第一個字串`@addTagHelper`指定載入標記協助程式 (使用"*"的所有標記協助程式)，而第二個字串"AuthoringTagHelpers 」 指定標記協助程式組件。 此外，請注意，第二行帶來中使用的萬用字元語法的 ASP.NET Core MVC 標記協助程式 (這些 helper 會討論[標記協助程式簡介](intro.md)。)它是`@addTagHelper`使標記協助程式可使用 Razor 檢視的指示詞。 或者，您可以提供完整的名稱 (FQN) 標記協助程式，如下所示：
     
-    [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
+```csharp
+@using AuthoringTagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+```
     
-    若要新增的檢視使用 FQN 標記協助程式，您先新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，並接著組件名稱 (*AuthoringTagHelpers*)。 大部分的開發人員會想要使用的萬用字元語法。 [標記協助程式簡介](intro.md)進入 標記協助程式加入、 移除、 階層及萬用字元語法中的 詳細資料。
+<!--
+the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
+    [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
+-->
+    
+若要新增的檢視使用 FQN 標記協助程式，您先新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，並接著組件名稱 (*AuthoringTagHelpers*)。 大部分的開發人員會想要使用的萬用字元語法。 [標記協助程式簡介](intro.md)進入 標記協助程式加入、 移除、 階層及萬用字元語法中的 詳細資料。
     
 3.  更新中的標記*Views/Home/Contact.cshtml*這些變更的檔案：
 

@@ -11,11 +11,11 @@ ms.assetid: 5de0c8f7-50ce-4e2c-b3d4-a1bd9fdfcff5
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: hosting/aspnet-core-module
-ms.openlocfilehash: f0759f16ada531774a3945f67495e5f634e6154e
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 277e63a5663aca622e8252d6c6be1671e57cbf68
+ms.sourcegitcommit: 44a62f59d4db39d685c4487a0345a486be18d7c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -59,7 +59,7 @@ ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>AspNetCore 元素的屬性
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | processPath | <p>必要的字串屬性。</p><p>將會啟動接聽 HTTP 要求的處理序的可執行檔的路徑。 支援相對路徑。 如果路徑是以開頭 '。 '，路徑會被視為相對於網站根目錄。</p><p>它沒有預設值。</p> |
 | 引數 | <p>選擇性字串屬性。</p><p>可執行檔中指定的引數**processPath**。</p><p>預設值為空字串。</p> |
@@ -117,6 +117,7 @@ ASP.NET 核心模組重新導向`stdout`和`stderr`記錄檔磁碟，如果您�
     stdoutLogFile="\\?\%home%\LogFiles\stdout">
 </aspNetCore>
 ```
+請參閱[透過 web.config 組態](#configuration-via-webconfig)的範例，`aspNetCore`中的項目*web.config*檔案。
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>IIS 與 ASP.NET Core 模組共用設定
 
@@ -126,7 +127,7 @@ ASP.NET 核心模組安裝程式會執行與的權限**系統**帳戶。 因為�
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、 結構描述和組態檔的位置
 
-### <a name="module"></a>模組
+### <a name="module"></a>Module
 
 **IIS (x86/amd64):**
 

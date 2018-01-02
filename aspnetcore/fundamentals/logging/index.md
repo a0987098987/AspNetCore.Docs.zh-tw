@@ -5,18 +5,18 @@ description: "了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供
 keywords: "ASP.NET Core, 記錄, 記錄提供者, Microsoft.Extensions.Logging, ILogger, ILoggerFactory, LogLevel, WithFilter, TraceSource, EventLog, EventSource, 範圍"
 ms.author: tdykstra
 manager: wpickett
-ms.date: 11/15/2017
+ms.date: 12/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging/index
-ms.openlocfilehash: f7f5f08799513aa07223995410f2125407c58c94
-ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
+ms.openlocfilehash: 737de614625ce560df1c3d7cfd9810f9433c153d
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="introduction-to-logging-in-aspnet-core"></a>ASP.NET Core 中的記錄簡介
+# <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Tom Dykstra](https://github.com/tdykstra)
 
@@ -587,7 +587,13 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-您不需要安裝提供者套件或呼叫 `AddAzureWebAppDiagnostics` 擴充方法。 當您將應用程式部署至 Azure App Service 時，此提供者就會自動提供給應用程式。
+若是以 .NET Core 作為目標，即無須安裝提供者套件或明確地呼叫 `AddAzureWebAppDiagnostics`。 當您將應用程式部署至 Azure App Service 時，此提供者就會自動提供給應用程式。
+
+若是以 .NET Core 作為目標，請將提供者套件新增至專案，然後叫用 `AddAzureWebAppDiagnostics`：
+
+```csharp
+logging.AddAzureWebAppDiagnostics();
+```
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 

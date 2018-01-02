@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/index
-ms.openlocfilehash: b3bcd15a078ed2125d14c3e94311e385a1db9683
-ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
+ms.openlocfilehash: bc19cbf0093e8a7f26af82d19f597cc805e04309
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-data-in-aspnet-core"></a>在 ASP.NET Core 中處理資料 
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/02/2017
    * [更新相關資料](xref:data/ef-rp/update-related-data)
    * [處理並行存取衝突](xref:data/ef-rp/concurrency)
 
-*   [使用 Visual Studio 的 ASP.NET Core 與 Entity Framework Core 的使用者入門](ef-mvc/index.md)
+*   [使用 Visual Studio 的 ASP.NET Core MVC 與 Entity Framework Core 使用者入門](ef-mvc/index.md)
     *   [快速入門](ef-mvc/intro.md)
     *   [建立、讀取、更新和刪除作業](xref:data/ef-mvc/crud)
     *   [排序、篩選、分頁與群組](xref:data/ef-mvc/sort-filter-page)

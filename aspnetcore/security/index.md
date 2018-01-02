@@ -10,11 +10,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: 4f3a74d67ce3453499ea9785cc80bee183dc1aff
-ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
+ms.openlocfilehash: 3f4df08d6cf5d183735ae4b4ec4f07ed60a9623a
+ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 
@@ -62,7 +62,7 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
     *   [簡單授權](authorization/simple.md)
     *   [角色型授權](authorization/roles.md)
     *   [宣告式授權](authorization/claims.md)
-    *   [自訂以原則為基礎的授權](authorization/policies.md)
+    *   [自訂原則式授權](authorization/policies.md)
     *   [要求處理常式中的相依性插入](authorization/dependencyinjection.md)
     *   [資源型授權](authorization/resourcebased.md)
     *   [檢視型授權](authorization/views.md)

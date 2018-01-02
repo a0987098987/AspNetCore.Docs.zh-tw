@@ -11,25 +11,25 @@ ms.assetid: 959ff4ca-be2d-1638-ac04-789e7f7146ff
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/index
-ms.openlocfilehash: 8a6fa695a1b1ad660f7f5b1aeb520d5372a273a8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4083dea74548099ee3ba8d963110bb2c3c8ae00a
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
-# <a name="create-an-aspnet-core-mvc-app-with-visual-studio-code"></a><span data-ttu-id="8b559-104">使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式</span><span class="sxs-lookup"><span data-stu-id="8b559-104">Create an ASP.NET Core MVC app with Visual Studio Code</span></span>
+# <a name="create-an-aspnet-core-mvc-app-with-visual-studio-code"></a><span data-ttu-id="f2a94-104">使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式</span><span class="sxs-lookup"><span data-stu-id="f2a94-104">Create an ASP.NET Core MVC app with Visual Studio Code</span></span>
 
-<span data-ttu-id="8b559-105">這一系列的教學課程會教導您如何使用 Visual Studio 建立 ASP.NET Core MVC Web 應用程式的基本知識。</span><span class="sxs-lookup"><span data-stu-id="8b559-105">This series of tutorials teaches you the basics of building an ASP.NET Core MVC web app using Visual Studio.</span></span> 
+<span data-ttu-id="f2a94-105">這一系列的教學課程會教導您如何使用 Visual Studio Code 建置 ASP.NET Core MVC Web 應用程式的基本知識。</span><span class="sxs-lookup"><span data-stu-id="f2a94-105">This series of tutorials teaches you the basics of building an ASP.NET Core MVC web app using Visual Studio Code.</span></span> 
 
 [!INCLUDE[consider RP](../../includes/razor.md)]
 
-1. [<span data-ttu-id="8b559-106">快速入門</span><span class="sxs-lookup"><span data-stu-id="8b559-106">Getting started</span></span>](start-mvc.md)
-2. [<span data-ttu-id="8b559-107">新增控制器</span><span class="sxs-lookup"><span data-stu-id="8b559-107">Adding a controller</span></span>](adding-controller.md)
-3. [<span data-ttu-id="8b559-108">新增檢視</span><span class="sxs-lookup"><span data-stu-id="8b559-108">Adding a view</span></span>](adding-view.md)
-4. [<span data-ttu-id="8b559-109">新增模型</span><span class="sxs-lookup"><span data-stu-id="8b559-109">Adding a model</span></span>](adding-model.md)
-5. [<span data-ttu-id="8b559-110">使用 SQLite</span><span class="sxs-lookup"><span data-stu-id="8b559-110">Working with SQLite</span></span>](working-with-sql.md)
-6. [<span data-ttu-id="8b559-111">控制器方法和檢視</span><span class="sxs-lookup"><span data-stu-id="8b559-111">Controller methods and views</span></span>](controller-methods-views.md)
-7. [<span data-ttu-id="8b559-112">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="8b559-112">Adding Search</span></span>](search.md)
-8. [<span data-ttu-id="8b559-113">新增欄位</span><span class="sxs-lookup"><span data-stu-id="8b559-113">Adding a New Field</span></span>](new-field.md)
-9. [<span data-ttu-id="8b559-114">新增驗證</span><span class="sxs-lookup"><span data-stu-id="8b559-114">Adding Validation</span></span>](validation.md)
-10. [<span data-ttu-id="8b559-115">檢查 Details 和 Delete 方法</span><span class="sxs-lookup"><span data-stu-id="8b559-115">Examining the Details and Delete methods</span></span>](xref:tutorials/first-mvc-app/details)
+1. [<span data-ttu-id="f2a94-106">快速入門</span><span class="sxs-lookup"><span data-stu-id="f2a94-106">Getting started</span></span>](start-mvc.md)
+2. [<span data-ttu-id="f2a94-107">新增控制器</span><span class="sxs-lookup"><span data-stu-id="f2a94-107">Adding a controller</span></span>](adding-controller.md)
+3. [<span data-ttu-id="f2a94-108">新增檢視</span><span class="sxs-lookup"><span data-stu-id="f2a94-108">Adding a view</span></span>](adding-view.md)
+4. [<span data-ttu-id="f2a94-109">新增模型</span><span class="sxs-lookup"><span data-stu-id="f2a94-109">Adding a model</span></span>](adding-model.md)
+5. [<span data-ttu-id="f2a94-110">使用 SQLite</span><span class="sxs-lookup"><span data-stu-id="f2a94-110">Working with SQLite</span></span>](working-with-sql.md)
+6. [<span data-ttu-id="f2a94-111">控制器方法和檢視</span><span class="sxs-lookup"><span data-stu-id="f2a94-111">Controller methods and views</span></span>](controller-methods-views.md)
+7. [<span data-ttu-id="f2a94-112">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="f2a94-112">Adding Search</span></span>](search.md)
+8. [<span data-ttu-id="f2a94-113">新增欄位</span><span class="sxs-lookup"><span data-stu-id="f2a94-113">Adding a New Field</span></span>](new-field.md)
+9. [<span data-ttu-id="f2a94-114">新增驗證</span><span class="sxs-lookup"><span data-stu-id="f2a94-114">Adding Validation</span></span>](validation.md)
+10. [<span data-ttu-id="f2a94-115">檢查 Details 和 Delete 方法</span><span class="sxs-lookup"><span data-stu-id="f2a94-115">Examining the Details and Delete methods</span></span>](xref:tutorials/first-mvc-app/details)

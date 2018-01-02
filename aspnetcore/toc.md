@@ -37,6 +37,18 @@
 ### [更新相關資料](xref:data/ef-rp/update-related-data)
 ### [處理並行存取衝突](xref:data/ef-rp/concurrency)
 
+## [資料存取 - MVC 與 EF Core](data/ef-mvc/index.md)
+### [快速入門](data/ef-mvc/intro.md)
+### [建立、讀取、更新和刪除作業](data/ef-mvc/crud.md)
+### [排序、篩選、分頁與群組](data/ef-mvc/sort-filter-page.md)
+### [移轉](data/ef-mvc/migrations.md)
+### [建立複雜的資料模型](data/ef-mvc/complex-data-model.md)
+### [讀取相關資料](data/ef-mvc/read-related-data.md)
+### [更新相關資料](data/ef-mvc/update-related-data.md)
+### [處理並行存取衝突](data/ef-mvc/concurrency.md)
+### [繼承](data/ef-mvc/inheritance.md)
+### [進階主題](data/ef-mvc/advanced.md)
+
 ## [建立行動裝置應用程式的後端服務](mobile/native-mobile-backend.md)
 ## [建置 Web API](mvc/web-api/index.md)
 ## [建立 Web API](xref:tutorials/first-web-api-mac)

@@ -11,11 +11,11 @@ ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/social/index
-ms.openlocfilehash: 9fc0d6c3e9691f8c3fa0d769ac53c3337d822fc5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9cc637f469dcb7097ee1b3996fde8a4ebac8d7ff
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>使用 Facebook、Google 和其他外部提供者啟用驗證
 
@@ -46,6 +46,13 @@ ms.lasthandoff: 11/10/2017
 ![[新增 Web 應用程式] 對話方塊](index/_static/select-project.png)
 
 注意：本教學課程適用於 ASP.NET Core 2.0 SDK 版本；您可以在精靈的頂端選取此版本。
+
+## <a name="apply-migrations"></a>套用移轉
+
+* 執行應用程式並選取 [登入] 連結。
+* 選取 [以新使用者身分註冊] 連結。
+* 輸入新帳戶的電子郵件和密碼，然後選取 [註冊]。
+* 遵循指示以套用移轉。
 
 ## <a name="require-ssl"></a>需要 SSL
 

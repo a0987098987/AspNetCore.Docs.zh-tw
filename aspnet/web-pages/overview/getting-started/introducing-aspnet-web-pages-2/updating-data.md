@@ -5,24 +5,24 @@ author: tfitzmac
 description: "本教學課程會示範如何更新現有的資料庫 （變更） 項目，當您使用 ASP.NET Web Pages (Razor)。 它會假設您已經完成數列 th..."
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 05/28/2015
+ms.date: 01/02/2018
 ms.topic: article
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
 ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 6fdb365c1449e6c54dfdbe492211700211f61005
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aabf572e254de9861719fdc502340353482919b4
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/03/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>導入的 ASP.NET Web Pages-更新資料庫的資料
 ====================
 由[Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本教學課程會示範如何更新現有的資料庫 （變更） 項目，當您使用 ASP.NET Web Pages (Razor)。 它會假設您已完成透過數列[輸入資料所使用的表單使用 ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251582)。
+> 本教學課程會示範如何更新現有的資料庫 （變更） 項目，當您使用 ASP.NET Web Pages (Razor)。 它會假設您已完成透過數列[輸入資料所使用的表單使用 ASP.NET Web Pages](entering-data.md)。
 > 
 > 您將學習：
 > 
@@ -143,7 +143,7 @@ ms.lasthandoff: 11/10/2017
 
 此標記和程式碼是類似於您在*AddMovie*頁面。 沒有 [提交] 按鈕的文字上有些許不同。 如同*AddMovie*頁面上，有`Html.ValidationSummary`如果有的話，將會顯示驗證錯誤的呼叫。 目前我們正在留下任何呼叫`Validation.Message`，因為驗證摘要中會顯示錯誤。 上一個教學課程所述，您可以使用各種組合的摘要驗證和個別的錯誤訊息。
 
-請注意一次，`method`屬性`<form>`元素設定為`post`。 如同*AddMovie.cshtml*  頁面上，此頁面變更資料庫。 因此，應該執行這種形式`POST`作業。 (如需詳細資訊之間的差異`GET`和`POST`作業，請參閱[GET、 POST 和 HTTP 動詞命令安全性](https://go.microsoft.com/fwlink/?LinkId=251581#GET,_POST,_and_HTTP_Verb_Safety)HTML 表單上的教學課程中的 [資訊看板]。)
+請注意一次，`method`屬性`<form>`元素設定為`post`。 如同*AddMovie.cshtml*  頁面上，此頁面變更資料庫。 因此，應該執行這種形式`POST`作業。 (如需詳細資訊之間的差異`GET`和`POST`作業，請參閱[GET、 POST 和 HTTP 動詞命令安全性](form-basics.md#GET,_POST,_and_HTTP_Verb_Safety)HTML 表單上的教學課程中的 [資訊看板]。)
 
 如同先前的教學課程，`value`文字方塊中的屬性使用 Razor 程式碼以預先載入這些設定。 此時，不過，您使用變數，如下`title`和`genre`為該工作，而不是`Request.Form["title"]`:
 
@@ -224,7 +224,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 當然，`Query`方法可能會傳回只有一個資料庫的資料列。 不過，ASP.NET 一律會將結果`Query`做為集合的方法。 即使這個方法會傳回一個資料列，您必須從集合中擷取該單一資料列。 因此，在情況下，您*知道*您會得到只有一個資料列，它是更方便使用的位元`QuerySingle`。
 > 
-> 有幾個其他執行特定類型的資料庫作業的方法。 您可以找到資料庫中的方法清單[ASP.NET Web Pages 應用程式開發介面的快速參考](https://go.microsoft.com/fwlink/?LinkID=202907#Data)。
+> 有幾個其他執行特定類型的資料庫作業的方法。 您可以找到資料庫中的方法清單[ASP.NET Web Pages 應用程式開發介面的快速參考](../../api-reference/asp-net-web-pages-api-reference.md#Data)。
 
 
 ## <a name="making-validation-for-the-id-more-robust"></a>進行驗證 ID 更健全
@@ -308,7 +308,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](introducing-razor-syntax-c.md)
 - [SQL UPDATE 陳述式](http://www.w3schools.com/sql/sql_update.asp)W3Schools 站台上
 
 >[!div class="step-by-step"]

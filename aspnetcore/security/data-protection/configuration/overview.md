@@ -11,11 +11,11 @@ ms.assetid: 0e4881a3-a94d-4e35-9c1c-f025d65dcff0
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 4713c2bed04af784e74586daa10ec847262a1345
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 20e3d974e7790cd01f78f8db09225b5887f1772a
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-data-protection-in-aspnet-core"></a>在 ASP.NET Core 中設定資料保護
 
@@ -193,7 +193,6 @@ serviceCollection.AddDataProtection()
 通常\*類型屬性必須指向實體，可具現化 （透過公用的無參數建構函式） 的實作[SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm)和[KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm)，但是系統特殊案例某些等值`typeof(Aes)`為了方便起見。
 
 > [!NOTE]
-> `SymmetricAlgorithm`的金鑰長度必須 > = 128 位元的區塊大小 > = 64 位元，而且它必須支援 CBC 模式加密 PKCS #7 填補。 `KeyedHashAlgorithm`的摘要大小必須 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。 `KeyedHashAlgorithm`不是絕對必要，是 HMAC。
 > SymmetricAlgorithm 必須 ≥ 128 位元金鑰長度和區塊大小為 ≥ 64 位元為單位，就必須支援 CBC 模式加密 PKCS #7 填補。 KeyedHashAlgorithm 必須有摘要大小 > = 128 位元，而且它必須支援長度等於雜湊演算法的摘要長度的金鑰。 無法為 HMAC 絕對必要 KeyedHashAlgorithm。
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>指定自訂的 Windows CNG 演算法
@@ -299,7 +298,7 @@ services.AddDataProtection()
 * 是持續發生，例如共用磁碟區或主機掛接的磁碟區的容器的存留期的 Docker 磁碟區的資料夾。
 * 外部提供者，例如[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [非 DI 感知案例](xref:security/data-protection/configuration/non-di-scenarios)
 * [電腦全域原則](xref:security/data-protection/configuration/machine-wide-policy)

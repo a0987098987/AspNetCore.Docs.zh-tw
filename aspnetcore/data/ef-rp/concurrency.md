@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 0c49376fd1b602fe03ef2a152d19b58513ae2710
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: 8862c6b9a5eb7ac3b6889071e4ce9ff6f02512c9
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 en-我們 /
 
@@ -194,7 +194,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-若要偵測的並行存取問題， [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue)更新`rowVersion`從實體的值為其提取。 EF 核心產生 SQL UPDATE 命令搭配 WHERE 子句，其中包含原始`RowVersion`值。 如果任何資料列不受到 UPDATE 命令 (沒有資料列的原始`RowVersion`值)、`DbUpdateConcurrencyException`擲回例外狀況。
+若要偵測的並行存取問題， [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue)以更新`rowVersion`從它已擷取之實體的值。 EF 核心產生 SQL UPDATE 命令搭配 WHERE 子句，其中包含原始`RowVersion`值。 如果任何資料列不受到 UPDATE 命令 (沒有資料列的原始`RowVersion`值)、`DbUpdateConcurrencyException`擲回例外狀況。
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-)]
 

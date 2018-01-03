@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 7a3f1bfa8bec830216af37d89aa588a921485e6b
-ms.sourcegitcommit: 4925a91ef4130ddb333f187ab13defe66f2c6cef
+ms.openlocfilehash: 1ecdf010f7c283a0a08b224d570a5bc5cdf536df
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Razor 頁面單位和整合測試 ASP.NET Core
 
@@ -38,7 +38,7 @@ ASP.NET Core 支援單位和整合測試的 Razor 網頁應用程式。 測試�
 
 這個範例專案是由兩個應用程式所組成：
 
-| 應用程式         | 專案資料夾                        | 說明 |
+| 應用程式         | 專案資料夾                        | 描述 |
 | ----------- | ------------------------------------- | ----------- |
 | 訊息應用程式 | *src/RazorPagesTestingSample*         | 允許使用者加入、 刪除其中一個，刪除所有項目，以及分析訊息。 |
 | 測試應用程式    | *tests/RazorPagesTestingSample.Tests* | 用來測試訊息的應用程式。<ul><li>單元測試： 資料存取層 (DAL)，索引頁面模型</li><li>整合測試： 索引頁</li></ul> |
@@ -57,7 +57,7 @@ dotnet test
 * 所描述的訊息`Message`類別 (*Data/Message.cs*) 使用兩個屬性： `Id` （金鑰） 和`Text`（訊息）。 `Text`屬性所需，且限制為 200 個字元。
 * 訊息會儲存使用[Entity Framework 的記憶體中資料庫](/ef/core/providers/in-memory/)&#8224;。
 * 應用程式在其資料庫內容類別，包含資料存取層 (DAL) `AppDbContext` (*Data/AppDbContext.cs*)。 DAL 方法標示為`virtual`，可讓模擬測試中使用的方法。
-* 在開發環境中，三個訊息以初始化訊息存放區。 這些*植入訊息*也會用於測試。
+* 如果資料庫是空的應用程式啟動時，訊息存放區會使用三個訊息中初始化。 這些*植入訊息*也會用於測試。
 
 &#8224;EF 主題[測試 InMemory](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中的資料庫使用 MSTest 進行測試。 本主題使用[xUnit](https://xunit.github.io/)測試架構。 測試概念與測試實作跨不同測試架構很類似的但不是完全相同。
 
@@ -67,7 +67,7 @@ dotnet test
 
 測試應用程式是主控台應用程式內*tests/RazorPagesTestingSample.Tests*資料夾：
 
-| 測試應用程式的資料夾    | 說明 |
+| 測試應用程式的資料夾    | 描述 |
 | ------------------ | ----------- |
 | *IntegrationTests* | <ul><li>*IndexPageTest.cs*包含索引頁的整合測試。</li><li>*TestFixture.cs*建立測試訊息的應用程式的測試主機。</li></ul> |
 | *UnitTests*        | <ul><li>*DataAccessLayerTest.cs* DAL 包含單元測試。</li><li>*IndexPageTest.cs*包含單元測試，索引頁面模型。</li></ul> |
@@ -79,7 +79,7 @@ dotnet test
 
 訊息應用程式具有四種方法中所包含的 DAL`AppDbContext`類別 (*src/RazorPagesTestingSample/Data/AppDbContext.cs*)。 每個方法都有一個或兩個單元測試中測試應用程式。
 
-| DAL 方法               | 函式                                                                   |
+| DAL 方法               | 功能                                                                   |
 | ------------------------ | -------------------------------------------------------------------------- |
 | `GetMessagesAsync`       | 取得`List<Message>`從依照資料庫`Text`屬性。 |
 | `AddMessageAsync`        | 新增`Message`到資料庫。                                          |
@@ -150,7 +150,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 單元測試的另一組負責測試頁面模型方法。 在中找到訊息應用程式時，索引頁面模型`IndexModel`類別*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*。
 
-| 頁面模型方法 | 函式 |
+| 頁面模型方法 | 功能 |
 | ----------------- | -------- | 
 | `OnGetAsync` | 取得訊息的 UI 使用 DAL`GetMessagesAsync`方法。 |
 | `OnPostAddMessageAsync` | 如果`ModelState`有效，但呼叫`AddMessageAsync`將訊息新增至資料庫。 | 
@@ -228,7 +228,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs?name=snippet3&highlight=7,16-17)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 * [整合測試](xref:testing/integration-testing)

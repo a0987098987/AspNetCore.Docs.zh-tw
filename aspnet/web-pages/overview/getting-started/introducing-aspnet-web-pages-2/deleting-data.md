@@ -5,24 +5,24 @@ author: tfitzmac
 description: "本教學課程會示範如何刪除個別的資料庫項目。 它會假設您已完成透過更新 ASP.NET Web 的 pa 中的資料庫資料數列..."
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 05/28/2015
+ms.date: 01/02/2018
 ms.topic: article
 ms.assetid: 75b5c1cf-84bd-434f-8a86-85c568eb5b09
 ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
 msc.type: authoredcontent
-ms.openlocfilehash: aef31b6170cc3bba2421eb8c2c41e83aadc129c5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5bc92b5d40e7a55dcd730d552c71031d913b277e
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/03/2018
 ---
 <a name="introducing-aspnet-web-pages---deleting-database-data"></a>導入的 ASP.NET Web Pages-刪除資料庫資料
 ====================
 由[Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本教學課程會示範如何刪除個別的資料庫項目。 它會假設您已完成透過數列[更新 ASP.NET Web Pages 中的資料庫資料](https://go.microsoft.com/fwlink/?LinkId=251583)。
+> 本教學課程會示範如何刪除個別的資料庫項目。 它會假設您已完成透過數列[更新 ASP.NET Web Pages 中的資料庫資料](updating-data.md)。
 > 
 > 您將學習：
 > 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 此連結會叫用名為的頁面*DeleteMovie*並將它傳遞您所選取的電影識別碼。
 
-本教學課程將不會移到此連結的建構方式的詳細資料，因為它是與幾乎完全相同**編輯**從上一個教學課程的連結 ([更新 ASP.NET Web Pages 中的資料庫資料](https://go.microsoft.com/fwlink/?LinkId=251583))。
+本教學課程將不會移到此連結的建構方式的詳細資料，因為它是與幾乎完全相同**編輯**從上一個教學課程的連結 ([更新 ASP.NET Web Pages 中的資料庫資料](updating-data.md))。
 
 ## <a name="creating-the-delete-page"></a>建立刪除頁面
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](../introducing-razor-syntax-c.md)
 - [SQL DELETE 陳述式](http://www.w3schools.com/sql/sql_delete.asp)W3Schools 站台上
 
 >[!div class="step-by-step"]

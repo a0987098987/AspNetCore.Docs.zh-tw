@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 52f15784f16d355791360021f045cf4f3c467897
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: cf0bb7984ad3460f8784193f7bb407c9b0ad50db
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/03/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -123,11 +123,11 @@ ms.lasthandoff: 11/19/2017
 
 [!code-csharp[Main](adding-a-view/samples/sample8.cs)]
 
-現在`ViewBag`物件包含會自動傳遞到檢視的資料。 接下來，您需要褖畫惎檢視範本 ！ 在**建置**功能表上，選取**建置方案**（或 Ctrl + Shift + B） 若要確定專案會編譯。 以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
+現在`ViewBag`物件包含會自動傳遞到檢視的資料。 接下來，您需要  褖畫惎檢視範本 ！ 在**建置**功能表上，選取**建置方案**（或 Ctrl + Shift + B） 若要確定專案會編譯。 以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
   
 ![](adding-a-view/_static/image10.png)   
   
-在**指定項目的名稱**對話方塊方塊中，輸入*褖畫惎*，然後按一下 **確定**。   
+在**指定項目的名稱**對話方塊方塊中，輸入* 褖畫惎*，然後按一下 **確定**。   
   
 在**選取版面配置頁** 對話方塊中，接受預設值 **\_Layout.cshtml**按一下**確定**。  
   

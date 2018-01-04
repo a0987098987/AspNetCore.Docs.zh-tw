@@ -5,17 +5,17 @@ description: "使用身分識別與 ASP.NET Core 應用程式"
 keywords: "ASP.NET Core，身分識別授權安全性"
 ms.author: riande
 manager: wpickett
-ms.date: 12/15/2017
+ms.date: 01/02/2018
 ms.topic: article
 ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 7daf0267a6dc659afbd188ce87e35ca40816a31d
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 7af53bfad2b77558a06003cbc6534236235054c4
+ms.sourcegitcommit: 677986b3a39817b712e2432cce85ad1685326b75
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -32,11 +32,20 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 1.  建立 ASP.NET Core Web 應用程式專案與個別使用者帳戶。
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Web 應用程式**從**新專案** 對話方塊。 選取 ASP.NET Core **Web Application(Model-View-Controller)**適用於 ASP.NET Core 與 2.x**個別使用者帳戶**做為驗證方法。
+    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Core Web 應用程式**按一下**確定**。 
 
-    注意： 您必須選取**個別使用者帳戶**。
+    ![[新增專案] 對話](identity/_static/01-new-project.png)
+
+    選取 ASP.NET Core **Web 應用程式 （模型-檢視-控制器）** asp.net Core 2.x，然後選取 **變更驗證**。 
+
+    ![[新增專案] 對話](identity/_static/02-new-project.png)
+
+    提供項目會出現對話方塊驗證選項。 選取**個別使用者帳戶**按一下**確定**返回上一個對話方塊。
+
+    ![[新增專案] 對話](identity/_static/03-new-project-auth.png)
+    
+    選取**個別使用者帳戶**會指示 Visual Studio 建立模型、 ViewModels、 檢視、 控制站及其他資產，驗證所需的專案範本的一部分。
  
-    ![[新增專案] 對話](identity/_static/01-mvc_2.png)
     
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
     如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 此命令會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
@@ -77,7 +86,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     啟動應用程式，然後按一下**註冊**連結。
 
-    如果這是您要執行此動作的第一次，您可能需要執行移轉。 應用程式會提示您**套用移轉**:
+    如果這是您要執行此動作的第一次，您可能需要執行移轉。 應用程式會提示您**套用移轉**。 如有需要請重新整理頁面。
     
     ![適用於移轉 Web 網頁](identity/_static/apply-migrations.png)
     
@@ -100,9 +109,9 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     使用者可以登入，依序按一下**登入**頂端的站台連結或它們可能瀏覽至登入頁面當他們嘗試存取需要的授權站台的一部分。 當使用者提交表單的登入頁面上， ``AccountController`` ``Login``動作呼叫。
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
- 
     ``Login``動作呼叫``PasswordSignInAsync``上``_signInManager``物件 (提供給``AccountController``的相依性插入)。
+
+    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
  
     基底``Controller``類別會公開``User``從控制器方法可以存取的屬性。 比方說，您可以列舉`User.Claims`和進行授權決策。 如需詳細資訊，請參閱[授權](xref:security/authorization/index)。
  
@@ -139,6 +148,35 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     ![AspNetUsers 資料庫資料表上的內容功能表](identity/_static/04-db.png)
     
     展開的資料庫及其**資料表**，然後以滑鼠右鍵按一下**dbo。AspNetUsers**資料表，然後選取**檢視資料**。
+
+8. 確認身分識別可運作
+
+    預設值*ASP.NET Core Web 應用程式*專案範本可讓使用者存取應用程式中的任何動作，而不需登入。 若要確認 ASP.NET Identity 運作方式，加入`[Authorize]`屬性`About`動作`Home`控制站。
+ 
+    ```cs
+    [Authorize]
+    public IActionResult About()
+    {
+        ViewData["Message"] = "Your application description page.";
+        return View();
+    }
+    ```
+    
+    # <a name="visual-studiotabvisualstudio"></a>[Visual Studio](#tab/visualstudio)     
+
+    執行專案使用**Ctrl** + **F5**並瀏覽至**有關**頁面。 已驗證的使用者可以存取**有關**頁面現在，讓 ASP.NET 將您重新導向至登入頁面，來登入或註冊。
+
+    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+    開啟命令視窗並瀏覽至專案的根目錄目錄包含`.csproj`檔案。 執行`dotnet run`執行應用程式的命令：
+
+    ```cs
+    dotnet run 
+    ```
+
+    瀏覽的輸出中指定的 URL`dotnet run`命令。 此 URL 應該指向`localhost`產生的連接埠號碼。 瀏覽至**有關**頁面。 已驗證的使用者可以存取**有關**頁面現在，讓 ASP.NET 將您重新導向至登入頁面，來登入或註冊。
+
+    ---
 
 ## <a name="identity-components"></a>身分識別的元件
 

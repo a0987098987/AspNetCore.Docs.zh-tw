@@ -1,7 +1,7 @@
 ---
 title: "使用 ASP.NET Core 和 Visual Studio Code 建立 Razor 頁面 Web 應用程式"
 author: rick-anderson
-description: "使用 ASP.NET Core 和 EF Core 建立 Razor 頁面 Web 應用程式。"
+description: "使用 ASP.NET Core 和 EF Core 來建立 Razor 頁面 Web 應用程式。"
 keywords: "ASP.NET Core, Razor 頁面, scaffolding, Entity Framework Core, EF, EF Core, 資料庫, 程式碼, Visual Studio Code"
 ms.author: riande
 manager: wpickett
@@ -10,15 +10,15 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-vsc/index
-ms.openlocfilehash: 2ffa2361077c4c2719a458c59bebecf1cb0e9879
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f27bfaf49dac3ca9eccf8e968606c0264564b1fa
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core-and-visual-studio-code"></a>使用 ASP.NET Core 和 Visual Studio Code 建立 Razor 頁面 Web 應用程式
 
-這項工作正在進行中。 我們希望在兩週內完成這個系列。
+這項工作正在進行中。
 
 本系列說明使用 Visual Studio Code 的 ASP.NET Core 來建置 Razor 頁面 Web 應用程式的基本概念。
 

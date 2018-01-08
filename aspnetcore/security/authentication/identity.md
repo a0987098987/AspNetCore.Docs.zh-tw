@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 7af53bfad2b77558a06003cbc6534236235054c4
-ms.sourcegitcommit: 677986b3a39817b712e2432cce85ad1685326b75
+ms.openlocfilehash: 4a5d3622a22b70daa22333cafe58f8831bf0918e
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -32,28 +32,29 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 1.  建立 ASP.NET Core Web 應用程式專案與個別使用者帳戶。
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Core Web 應用程式**按一下**確定**。 
+
+    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Core Web 應用程式**按一下**確定**。
 
     ![[新增專案] 對話](identity/_static/01-new-project.png)
 
-    選取 ASP.NET Core **Web 應用程式 （模型-檢視-控制器）** asp.net Core 2.x，然後選取 **變更驗證**。 
+    選取 ASP.NET Core **Web 應用程式 （模型-檢視-控制器）** asp.net Core 2.x，然後選取 **變更驗證**。
 
     ![[新增專案] 對話](identity/_static/02-new-project.png)
 
     提供項目會出現對話方塊驗證選項。 選取**個別使用者帳戶**按一下**確定**返回上一個對話方塊。
 
     ![[新增專案] 對話](identity/_static/03-new-project-auth.png)
-    
+
     選取**個別使用者帳戶**會指示 Visual Studio 建立模型、 ViewModels、 檢視、 控制站及其他資產，驗證所需的專案範本的一部分。
- 
-    
+
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
     如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 此命令會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
- 
+
     建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，它會保存身分資料和 SQL Server 使用的結構描述[Entity Framework Core](https://docs.microsoft.com/ef/)。
-    
+
     ---
- 
+
 2.  設定身分識別服務，並將新增中的介軟體中`Startup`。
 
     識別服務會加入至應用程式中`ConfigureServices`方法中的`Startup`類別：
@@ -162,7 +163,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     }
     ```
     
-    # <a name="visual-studiotabvisualstudio"></a>[Visual Studio](#tab/visualstudio)     
+    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
     執行專案使用**Ctrl** + **F5**並瀏覽至**有關**頁面。 已驗證的使用者可以存取**有關**頁面現在，讓 ASP.NET 將您重新導向至登入頁面，來登入或註冊。
 

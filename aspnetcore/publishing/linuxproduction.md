@@ -11,11 +11,11 @@ ms.assetid: 1c33e576-33de-481a-8ad3-896b94fde0e3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: publishing/linuxproduction
-ms.openlocfilehash: 01768263fe82dc75a7da0e113b1850c8d788bfd3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7c7b949fc922c605aa4554c158200a4123c4eb1c
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="set-up-a-hosting-environment-for-aspnet-core-on-linux-with-nginx-and-deploy-to-it"></a>在 Linux 上使用 Nginx 設定並部署到 ASP.NET Core 裝載環境
 
@@ -45,8 +45,6 @@ ms.lasthandoff: 11/10/2017
  - 從命令列執行 `dotnet yourapp.dll`
  - 在瀏覽器中，巡覽至 `http://<serveraddress>:<port>` 以確認應用程式可在 Linux 上正常運作。 
  
-**注意：**使用 [Yeoman](xref:client-side/yeoman) 針對新專案建立新的 ASP.NET Core 應用程式。
-
 ## <a name="configure-a-reverse-proxy-server"></a>設定反向 Proxy 伺服器
 
 反向 Proxy 是服務動態 Web 應用程式的常見安裝程式。 反向 Proxy 會終止 HTTP 要求，並將它轉送至 ASP.NET Core 應用程式。
@@ -123,7 +121,7 @@ server {
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection keep-alive;
-        proxy_set_header Host $host;
+        proxy_set_header Host $http_host;
         proxy_cache_bypass $http_upgrade;
     }
 }

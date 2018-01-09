@@ -153,7 +153,7 @@
 ## [統合和縮製](xref:client-side/bundling-and-minification)
 ## [使用瀏覽器連結](xref:client-side/using-browserlink)
 ## [使用 JavaScriptServices 於 SPA](xref:client-side/spa-services)
-## [使用 SPA 專案範本 (預覽)](xref:spa/index)
+## [使用 SPA 專案範本 (RC)](xref:spa/index)
 ### [Angular 專案範本](xref:spa/angular)
 ### [React 專案範本](xref:spa/react)
 ### [React with Redux 專案範本](xref:spa/react-with-redux)

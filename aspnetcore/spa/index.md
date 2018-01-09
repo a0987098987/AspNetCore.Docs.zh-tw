@@ -1,7 +1,7 @@
 ---
 title: "使用單頁應用程式範本"
 author: SteveSandersonMS
-description: "了解如何安裝與開始使用 ASP.NET Core 單頁應用程式 (SPA) 預覽專案範本。"
+description: "了解如何安裝與開始使用 ASP.NET Core 單頁應用程式 (SPA) 候選版專案範本。"
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/index
-ms.openlocfilehash: 59031d79a9558bb8fc94e55ac04e70876618dc02
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 0ac3803aabdc148401b9d5b614645a8560c9a089
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="use-the-single-page-application-templates-preview"></a>使用單頁應用程式範本 (預覽)
+# <a name="use-the-single-page-application-templates-release-candidate"></a>使用單頁應用程式範本 (候選版)
 
 > [!NOTE]
 > 已發行的 .NET Core 2.0.x SDK 中包含了 Angular、React 與 React with Redux 的專案範本。 **此文件與這些已發行的專案範本無關。** 此文件是針對下一版本的 Angular、React 與 React with Redux 範本。這些範本計劃會在 2018 年初推出。
@@ -29,10 +29,10 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="installation"></a>安裝
 
-執行下列命令以安裝 Angular、React 與 React with Redux 的 ASP.NET Core 範本**預覽**版本：
+執行下列命令以安裝 Angular、React 與 React with Redux 的 ASP.NET Core 範本**候選版**：
 
 ```console
-dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-preview1-final
+dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-rc1-final
 ```
 
 ## <a name="use-the-templates"></a>使用範本

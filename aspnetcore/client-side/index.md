@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2e4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/index
-ms.openlocfilehash: b4770a91a735cf9c7304e03b848f9593bacb1455
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 926aecb243153b92d70d5aa5a689eeec4dc8415a
+ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core 的用戶端開發
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/14/2017
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [使用瀏覽器連結](xref:client-side/using-browserlink)
 - [使用 JavaScriptServices 於 SPA](xref:client-side/spa-services)
-- [使用 SPA 專案範本 (預覽)](xref:spa/index)
+- [使用 SPA 專案範本 (RC)](xref:spa/index)
     - [Angular 專案範本](xref:spa/angular)
     - [React 專案範本](xref:spa/react)
     - [React with Redux 專案範本](xref:spa/react-with-redux)

@@ -70,7 +70,6 @@
 ### [使用 LoggerMessage 記錄](xref:fundamentals/logging/loggermessage)
 ## [錯誤處理](fundamentals/error-handling.md)
 ## [檔案提供者](fundamentals/file-providers.md)
-## [使用靜態檔案](fundamentals/static-files.md)
 ## [裝載](fundamentals/hosting.md)
 ## [工作階段和應用程式狀態](fundamentals/app-state.md)
 ## [伺服器](fundamentals/servers/index.md)

@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 0ee8827ad3d5464e1645a40d453054b9e23641cf
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 054b60206cafc3d6dd5775436995638d7f5700cf
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
@@ -874,7 +874,17 @@ public class Startup
 
 **ASP.NET Core 2.0 只適用於**
 
-如果主機由所插入的建置`IStartup`直接將相依性插入容器，而不是呼叫`UseStartup`或`Configure`，可能會發生下列錯誤： `Unhandled Exception: System.ArgumentException: A valid non-empty application name must be provided`。
+主機可能會建立將，以便`IStartup`直接將相依性插入容器，而不是呼叫`UseStartup`或`Configure`:
+
+```csharp
+services.AddSingleton<IStartup, Startup>();
+```
+
+如果主應用程式建立的如此一來，可能會發生下列錯誤：
+
+```
+Unhandled Exception: System.ArgumentException: A valid non-empty application name must be provided.
+```
 
 這是因為[applicationName(ApplicationKey)](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostdefaults#Microsoft_AspNetCore_Hosting_WebHostDefaults_ApplicationKey) （目前的組件），才能掃描`HostingStartupAttributes`。 如果應用程式以手動方式插入`IStartup`到相依性插入容器中，加入下列呼叫`WebHostBuilder`具有所指定的組件名稱：
 

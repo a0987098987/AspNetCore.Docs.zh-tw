@@ -5,17 +5,17 @@ description: "了解如何 ASP.NET Core MVC 是用於建置 web 應用程式的�
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 01/08/2018
 ms.topic: article
 ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/overview
-ms.openlocfilehash: 2492b6aa4602dbbf3b9cd3dca00d40690c640cab
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 33c293e15c0a7f18bbace9dc564fe11d93a7d509
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -38,7 +38,7 @@ ASP.NET Core MVC 建立 web 應用程式的豐富架構，而且應用程式開�
 
 ### <a name="model-responsibilities"></a>模型的責任
 
-在 MVC 應用程式中的模型代表應用程式和任何的商務邏輯或應該由它來執行作業的狀態。 商務邏輯應該封裝在模型中，以及任何實作邏輯，來保存應用程式的狀態。 強型別檢視通常會顯示於該檢視; 使用 ViewModel 類型特別設計來包含的資料控制站會建立和填入這些 ViewModel 來自執行個體模型。
+在 MVC 應用程式中的模型代表應用程式和任何的商務邏輯或應該由它來執行作業的狀態。 商務邏輯應該封裝在模型中，以及任何實作邏輯，來保存應用程式的狀態。 強型別檢視通常會使用該檢視上顯示的設計成包含資料的 ViewModel 型別。 控制站會建立並填入從模型這些 ViewModel 執行個體。
 
 > [!NOTE]
 > 有許多方式來組織中使用 MVC 架構模式的應用程式的模型。 深入了解一些[不同種類的模型型別](http://deviq.com/kinds-of-models/)。
@@ -142,7 +142,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
     {
       // work with the model
     }
-    // If we got this far, something failed, redisplay form
+    // At this point, something failed, redisplay form
     return View(model);
 }
 ```
@@ -181,11 +181,11 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 ### <a name="areas"></a>區域
 
-[區域](controllers/areas.md)提供資料的大型 ASP.NET Core MVC Web 應用程式分割成較小功能群組的方式。 一個區域就是應用程式中的一個 MVC 結構。 在 MVC 專案中，邏輯元件，例如模型、 控制器和檢視保留在不同的資料夾，而且若要建立這些元件之間的關聯性則 MVC 會使用命名慣例。 大型應用程式中，它可能比較有利分割成個別高功能層級區域的 應用程式。 例如，電子商務應用程式與多個業務單位，例如簽出、 帳單和搜尋等。每個這些單位具有自己的邏輯元件檢視、 控制器、 和模型。
+[區域](controllers/areas.md)提供資料的大型 ASP.NET Core MVC Web 應用程式分割成較小功能群組的方式。 一個區域是在應用程式內的一個 MVC 結構。 在 MVC 專案中，邏輯元件，例如模型、 控制器和檢視保留在不同的資料夾，而且若要建立這些元件之間的關聯性則 MVC 會使用命名慣例。 大型應用程式中，它可能比較有利分割成個別高功能層級區域的 應用程式。 例如，電子商務應用程式與多個業務單位，例如簽出、 帳單和搜尋等。每個這些單位具有自己的邏輯元件檢視、 控制器、 和模型。
 
 ### <a name="web-apis"></a>Web API
 
-正在建立網站的絕佳平台，除了 ASP.NET Core MVC 會有絕佳的支援，來建置 Web 應用程式開發介面。 您可以建立服務，可達到廣泛的用戶端包括瀏覽器和行動裝置。
+正在建立網站的絕佳平台，除了 ASP.NET Core MVC 會有絕佳的支援，來建置 Web 應用程式開發介面。 您可以建立連線的用戶端，包括瀏覽器和行動裝置的較大範圍的服務。
 
 此架構包含支援的內建支援的 HTTP 內容交涉[格式化資料](models/formatting.md)為 JSON 或 XML。 寫入[自訂格式器](advanced/custom-formatters.md)加入自己的格式支援。
 
@@ -213,7 +213,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 在 MVC razor 檢視可以是強型別根據您的模型。 控制站可以強型別的模型傳遞至檢視，讓您檢視，以具有型別檢查和 IntelliSense 支援。
 
-例如，下列檢視定義的模型型別`IEnumerable<Product>`:
+例如，下列檢視呈現的模型型別`IEnumerable<Product>`:
 
 ```cshtml
 @model IEnumerable<Product>

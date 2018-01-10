@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 8862c6b9a5eb7ac3b6889071e4ce9ff6f02512c9
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 841c638b2cacaab7970f2b173fee488972957b63
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 en-我們 /
 
@@ -302,7 +302,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 刪除測試部門中的第二個索引標籤。並行處理錯誤會顯示資料庫的目前值。 按一下**刪除**刪除實體，除非`RowVersion`已 updated.department 已被刪除。
 
-請參閱[繼承](xref:data/ef-mvc/inheritance)資料模型中的繼承如何的相關指示。
+請參閱[繼承](xref:data/ef-mvc/inheritance)如何繼承的資料模型。
 
 ### <a name="additional-resources"></a>其他資源
 

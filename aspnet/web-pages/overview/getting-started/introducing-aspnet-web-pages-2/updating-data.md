@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: aabf572e254de9861719fdc502340353482919b4
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: b016231975bf8d359f4c390b0b478edc383117d4
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>導入的 ASP.NET Web Pages-更新資料庫的資料
 ====================
@@ -308,7 +308,7 @@ ms.lasthandoff: 01/03/2018
 
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](introducing-razor-syntax-c.md)
+- [使用 Razor 語法的 ASP.NET Web 程式設計簡介](../../getting-started/introducing-razor-syntax-c.md)
 - [SQL UPDATE 陳述式](http://www.w3schools.com/sql/sql_update.asp)W3Schools 站台上
 
 >[!div class="step-by-step"]

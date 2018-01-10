@@ -11,11 +11,11 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: 649b21d99c742843534748b0ba9d7b7b22483a62
-ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
+ms.openlocfilehash: 26babef1a296aaa1fa11f36d30c4d911d73808ce
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="role-based-authorization"></a>角色型授權
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/05/2017
 
 以角色為基礎的授權檢查是宣告式&mdash;開發人員會內嵌它們對控制器或動作中控制站，其程式碼內指定目前使用者必須是成員的存取要求之資源的角色。
 
-例如，下列程式碼時，會在限制存取任何動作`AdministrationController`使用者是誰隸屬`Administrator`群組。
+例如，下列程式碼限制的存取權的任何動作`AdministrationController`使用者是誰隸屬`Administrator`角色：
 
 ```csharp
 [Authorize(Roles = "Administrator")]

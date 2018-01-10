@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: acbd987438edeea13f29547dc471f9a211e87b04
-ms.sourcegitcommit: 1de159820a572c08955ee77cc8b1caa3d7aa938c
+ms.openlocfilehash: 86f9eceb5b8646e371811fa4611a4509ff652231
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -71,7 +71,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 
 * 加入功能表項目**學生**，**課程**，**講師**，和**部門**，並刪除**連絡人**功能表項目。
 
-所做的變更會反白顯示。
+所做的變更會反白顯示。 (所有標記都為*不*顯示。)
 
 [!code-html[](intro/samples/cu/Pages/_Layout.cshtml?highlight=6,29,35-38,47&range=1-50)]
 

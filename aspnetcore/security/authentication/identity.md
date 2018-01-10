@@ -11,11 +11,11 @@ ms.assetid: cf119f21-1a2b-49a2-b052-547ccb66ee83
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 4a5d3622a22b70daa22333cafe58f8831bf0918e
-ms.sourcegitcommit: fc98e93464ccf37d9904e89a71cdddbd4bbdb86a
+ms.openlocfilehash: fc8e076af92bd8f9a95e73abb66ce32cae8ab9cf
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -25,6 +25,8 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET 核心身分識別。 或者，您可以使用您自己的持續性存放區，例如 Azure 資料表儲存體。 本文件包含適用於 Visual Studio 以及使用 CLI 的指示。
 
+[檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](https://docs.microsoft.com/en-us/aspnet/core/tutorials/index#how-to-download-a-sample)
+
 ## <a name="overview-of-identity"></a>身分識別的概觀
 
 本主題中，您將了解如何使用 ASP.NET Core 身分加入的功能，以註冊、 登入，並登出使用者。 如需使用 ASP.NET Core 識別建立應用程式的詳細指示，請參閱本文結尾處的後續步驟 > 一節。
@@ -33,7 +35,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-    在 Visual Studio 中，選取**檔案** -> **新增** -> **專案**。 選取**ASP.NET Core Web 應用程式**按一下**確定**。
+    在 Visual Studio 中，選取**檔案** > **新增** > **專案**。 選取**ASP.NET Core Web 應用程式**按一下**確定**。
 
     ![[新增專案] 對話](identity/_static/01-new-project.png)
 
@@ -144,7 +146,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
 7.  檢視的資料庫。
 
-    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** -> **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合 **aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
+    如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** > **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合 **aspnet-<*的專案名稱*>-<*日期字串*> * * 隨即出現。
 
     ![AspNetUsers 資料庫資料表上的內容功能表](identity/_static/04-db.png)
     

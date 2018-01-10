@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
 ms.technology: 
 ms.prod: .net-framework
-ms.openlocfilehash: ab5eaaa32a8f678b2aa4e2a0b30b674dbd6d6e9c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 733a0839c77bcfc96214bdf235ce8fe22ee2d3cf
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>ASP.NET Webhook 原始碼和 NuGet 套件
 
@@ -22,11 +22,9 @@ Microsoft ASP.NET Webhook 屬於模組的 Microsoft ASP.NET 系列和裝載為[G
 
 您正在閱讀這個線上文件現在也裝載為[GitHub 上的開放原始碼](http://docs.asp.net/en/latest/contribute/style-guide.html#style-guide)和也可接受的貢獻。
 
-## <a name="nuget-packages"></a>Nuget 封裝
+## <a name="nuget-packages"></a>NuGet 套件
 
-Microsoft ASP.NET Webhook 也是可以找到預覽 Nuget 封裝，這表示您必須選取 Visual Studio 中的預覽旗標，才能看到它們。
-
-[Nuget 封裝](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks)devided 分成三個部分：
+[NuGet 封裝](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks)分為三個部分：
 
 * [一般](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common)： 常見的封裝傳送者與接收者之間共用。
 

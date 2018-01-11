@@ -11,11 +11,11 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: dde0b5673c9885db2fecbb24b384752e5ddf70eb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.openlocfilehash: 754af24f4dcf054dd89eaa5f237ab680bf2d1172
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
@@ -120,7 +120,7 @@ app.UseRewriter(options);
 ![瀏覽器視窗中使用追蹤的要求和回應的開發人員工具](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
 ### <a name="url-rewrite"></a>URL 重寫
-使用`AddRewrite`建立 Url 重寫規則。 第一個參數會包含您的 regex 的比對連入的 URL 路徑。 第二個參數是取代字串。 第三個參數， `skipRemainingRules: {true|false}`，指示中介軟體，就不會略過其他重寫規則，如果套用目前的規則。
+使用`AddRewrite`來建立 Url 重寫的規則。 第一個參數會包含您的 regex 的比對連入的 URL 路徑。 第二個參數是取代字串。 第三個參數， `skipRemainingRules: {true|false}`，指示中介軟體，就不會略過其他重寫規則，如果套用目前的規則。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -142,15 +142,15 @@ app.UseRewriter(options);
 
 | 路徑                               | 比對 |
 | ---------------------------------- | :---: |
-| `/redirect-rule/1234/5678`         | 是   |
+| `/redirect-rule/1234/5678`         | [是]   |
 | `/my-cool-redirect-rule/1234/5678` | 是   |
-| `/anotherredirect-rule/1234/5678`  | 是   |
+| `/anotherredirect-rule/1234/5678`  | [是]   |
 
 請重寫規則， `^rewrite-rule/(\d+)/(\d+)`，只比對路徑，開頭為`rewrite-rule/`。 請注意的差異比對下列重寫規則與上述的重新導向規則。
 
 | 路徑                              | 比對 |
 | --------------------------------- | :---: |
-| `/rewrite-rule/1234/5678`         | 是   |
+| `/rewrite-rule/1234/5678`         | [是]   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
 | `/anotherrewrite-rule/1234/5678`  | 否    |
 
@@ -371,7 +371,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 | 重新撰寫成查詢字串的路徑 | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
 | 寬帶尾端斜線 | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |
 | 強制執行結尾的斜線 | `(.*[^/])$`<br>`/path` | `$1/`<br>`/path/` |
-| 避免重新撰寫特定的要求 | `(.*[^(\.axd)])$`<br>[是]:`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
+| 避免重新撰寫特定的要求 | `(.*[^(\.axd)])$`<br>是:`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
 | 重新排列 URL 區段 | `path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1` |
 | 取代 URL 區段 | `^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
 

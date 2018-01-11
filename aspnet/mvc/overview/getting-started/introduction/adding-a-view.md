@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: cf0bb7984ad3460f8784193f7bb407c9b0ad50db
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: d273eb5e99da6c6b7678e03b1a8973041113744c
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/03/2018
 
 `Index`上述方法，使用檢視範本來產生瀏覽器的 HTML 回應。 控制器方法 (也稱為[動作方法](http://rachelappel.com/asp.net-mvc-actionresults-explained))，例如`Index`上述，方法通常會傳回[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (或類別衍生自[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx))，不是基本型別類似字串。
 
-以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (配置 razor)**。
+以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
   
 ![](adding-a-view/_static/image1.png)   
   

@@ -11,11 +11,11 @@ ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 754af24f4dcf054dd89eaa5f237ab680bf2d1172
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
-ms.translationtype: HT
+ms.openlocfilehash: e07634a6d7ad97bf8735029b5c28d6935b71eb52
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
@@ -245,7 +245,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 
 ![瀏覽器視窗中使用追蹤要求和回應的開發人員工具](url-rewriting/_static/add_iis_url_rewrite.png)
 
-如果您有使用中的 IIS 重寫模組的伺服器層級規則設定，會影響您的應用程式非預期的方式，您可以停用應用程式的 IIS Rewrite Module。 如需詳細資訊，請參閱[停用 IIS 模組](xref:hosting/iis-modules#disabling-iis-modules)。
+如果您有使用中的 IIS 重寫模組的伺服器層級規則設定，會影響您的應用程式非預期的方式，您可以停用應用程式的 IIS Rewrite Module。 如需詳細資訊，請參閱[停用 IIS 模組](xref:host-and-deploy/iis/modules#disabling-iis-modules)。
 
 #### <a name="unsupported-features"></a>不支援的功能
 

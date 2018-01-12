@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: a7664d16a056424ee51db2208152cb5d35d8e5d9
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 10457d154f5fda875f7d1054d48daeeba3a50b7c
+ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/12/2018
 ---
 <a name="search"></a>搜尋
 ====================
@@ -123,7 +123,7 @@ Visual Studio 2013 有很棒的改進時顯示與編輯檢視檔案。 當您執
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-程式碼會使用`AddRange`方法屬於泛型`List`將不同的內容類型加入至清單的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 例如，喜劇會加入兩次在我們的範例)。 程式碼再儲存清單中的內容類型`ViewBag.movieGenre`物件。 儲存類別目錄資料 （這類電影內容類型的） 做為[SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx)物件存放至`ViewBag`，則存取下拉式清單方塊中的類別目錄資料是一般 MVC 應用程式的方法。
+程式碼會使用`AddRange`方法屬於泛型`List`將不同的內容類型加入至清單的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 例如，喜劇會加入兩次在我們的範例)。 程式碼再儲存清單中的內容類型`ViewBag.MovieGenre`物件。 儲存類別目錄資料 （這類電影內容類型的） 做為[SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx)物件存放至`ViewBag`，則存取下拉式清單方塊中的類別目錄資料是一般 MVC 應用程式的方法。
 
 下列程式碼示範如何檢查`movieGenre`參數。 如果它不是空的再進一步限制電影查詢，以限制選取的影片，以指定的內容類型。
 
@@ -141,7 +141,7 @@ Visual Studio 2013 有很棒的改進時顯示與編輯檢視檔案。 當您執
 
 [!code-cshtml[Main](adding-search/samples/sample15.cshtml)]
 
-參數"movieGenre 」 提供的索引鍵`DropDownList`helper 來尋找`IEnumerable<SelectListItem>`中`ViewBag`。 `ViewBag`擴展動作方法中：
+參數"MovieGenre 」 提供的索引鍵`DropDownList`helper 來尋找`IEnumerable<SelectListItem>`中`ViewBag`。 `ViewBag`擴展動作方法中：
 
 [!code-csharp[Main](adding-search/samples/sample16.cs?highlight=10)]
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: c10eb343259b58052fd1f2411dbdc2196eafc858
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 7427b4f7c6b7a00fe795053aac0f612471a163cd
+ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/12/2018
 ---
 <a name="adding-a-new-field"></a>新增欄位
 ====================
@@ -161,7 +161,7 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 `add-migration`命令告訴移轉架構，以檢查目前的電影模型，與目前的電影 DB 結構描述，並建立必要的程式碼將資料庫移轉至新的模型。 名稱*分級*是任意的以及用來移轉檔案名稱。 最好先使用有意義的名稱，如移轉步驟。
 
-此命令完成時，Visual Studio 會開啟定義新的類別檔案`DbMIgration`衍生的類別，然後在`Up`方法，您可以看到建立新的資料行的程式碼。
+此命令完成時，Visual Studio 會開啟定義新的類別檔案`DbMigration`衍生的類別，然後在`Up`方法，您可以看到建立新的資料行的程式碼。
 
 [!code-csharp[Main](adding-a-new-field/samples/sample11.cs)]
 

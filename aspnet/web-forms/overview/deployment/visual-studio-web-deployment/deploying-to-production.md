@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 2a8b165c149ceacba49a193c25e4a66a701ea0d6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c49e7f6925b1ca172642747c5052ba97d70d036
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，設定 Microsoft Azure 帳戶、 建立預備與生產環境和部署到預備環境的 ASP.NET web 應用程式和實際執行環境中的使用 Visual Studio 單鍵發行功能。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="create-a-staging-environment"></a>建立預備環境
 
 > [!NOTE]
-> 由於本教學課程所撰寫，Azure 應用程式服務會加入新功能，可自動化許多周圍有預備與生產環境的程序。 請參閱[設定預備環境中 Azure App Service web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/)。
+> 由於本教學課程所撰寫，Azure 應用程式服務會加入新功能，可自動化許多程序中建立暫存和實際執行環境。 請參閱[設定預備環境中 Azure App Service web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/)。
 
 
 中所述[部署至測試環境教學課程](deploying-to-iis.md)、 最可靠的測試環境是在具有方式就像是實際執行的網站主機服務提供者網站。 在許多主控提供者，您就必須權衡這個的優點和重大的額外成本，但在 Azure 中您可以建立其他可用的 web 應用程式為您執行的應用程式。 您也需要資料庫，並透過您的生產資料庫的費用的額外費用將會是 none 或最少。 在 Azure 中您必須支付您所使用的資料庫儲存體數量，而不是每個資料庫，而且您將使用在預備環境中的其他儲存體數量最小。

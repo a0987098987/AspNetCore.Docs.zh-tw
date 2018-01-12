@@ -5,17 +5,17 @@ description: "了解如何最佳化 ASP.NET Core web 應用程式中的靜態資
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/01/2017
+ms.date: 01/10/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: c271b7ef386bacedbd45fbe9f62c9c486db55b36
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: ac8e7fee7600dabb8f4970b5bf87ad7a57ebf17f
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="bundling-and-minification"></a>統合及縮製
 
@@ -75,7 +75,7 @@ MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每�
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-組合的選項包括：
+設定選項包括：
 
 * `outputFileName`: 要輸出的組合檔案的名稱。 可包含相對路徑*bundleconfig.json*檔案。 **所需**
 * `inputFiles`： 要配套起來的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空值會導致空的輸出檔案。 [通用慣例](http://www.tldp.org/LDP/abs/html/globbingref.html)支援的模式。
@@ -91,6 +91,9 @@ MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每�
 ## <a name="build-time-execution-of-bundling-and-minification"></a>建置時間執行的統合及縮製
 
 [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier/) NuGet 封裝啟用的結合在一起執行，以及在建置階段縮製。 封裝會插入[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)在建置和清除的時間執行的。 *Bundleconfig.json*建置程序來產生輸出檔案，根據定義的組態分析檔案。
+
+> [!NOTE]
+> BuildBundlerMinifier 所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
@@ -176,6 +179,9 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=10)]
 
+> [!NOTE]
+> BundlerMinifier.Core 所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
+
 此套件會擴充以包含.NET Core CLI *dotnet 配套*工具。 在 封裝管理員主控台 (PMC) 視窗或在命令殼層中，可以執行下列命令：
 
 ```console
@@ -243,6 +249,9 @@ dotnet bundle
 ### <a name="use-the-bundler--minifier-extension"></a>使用搭配程式 （& s） 縮短程式延伸模組
 
 Visual Studio[搭配程式 （& s) 縮短程式](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.BundlerMinifier)延伸模組會處理 Gulp 的轉換。
+
+> [!NOTE]
+> 搭配程式 （& s） 縮短程式副檔名所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
 
 以滑鼠右鍵按一下*bundleconfig.json*檔案在 [方案總管]，然後選取**搭配程式 （& s) 縮短程式** > **轉換至 Gulp...**:
 

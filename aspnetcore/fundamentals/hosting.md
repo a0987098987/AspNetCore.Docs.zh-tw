@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 054b60206cafc3d6dd5775436995638d7f5700cf
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 8adc58d67f103e8d1fc8fe197cf392752bdaf660
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
@@ -41,7 +41,7 @@ ASP.NET Core 應用程式設定和啟動*主機*。 負責應用程式啟動和�
   * 環境變數。
   * 命令列引數。
 * 設定[記錄](xref:fundamentals/logging/index)主控台和偵錯輸出。 記錄將包含[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)記錄組態區段中指定的規則*appsettings.json*或*appsettings。 {環境}.json*檔案。
-* 當 IIS 背景執行，可讓[IIS integration](xref:publishing/iis)。 設定基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 IIS 與 Kestrel 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。 對於 IIS 的預設選項，請參閱[IIS 選項 > 一節的主控件與 IIS 的 Windows 上的 ASP.NET Core](xref:publishing/iis#iis-options)。
+* 當 IIS 背景執行，可讓[IIS integration](xref:host-and-deploy/iis/index)。 設定基底路徑和伺服器使用時聆聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會建立 IIS 與 Kestrel 之間的反向 proxy。 也會設定應用程式[擷取啟動錯誤](#capture-startup-errors)。 對於 IIS 的預設選項，請參閱[IIS 選項 > 一節的主控件與 IIS 的 Windows 上的 ASP.NET Core](xref:host-and-deploy/iis/index#iis-options)。
 
 *內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 應用程式啟動時從專案的根資料夾，會使用專案的根資料夾，做為內容的根。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 
@@ -60,7 +60,7 @@ ASP.NET Core 應用程式設定和啟動*主機*。 負責應用程式啟動和�
 
 *內容的根*決定主機會為內容檔案，例如 MVC 檢視的搜尋。 取得預設內容根`UseContentRoot`由[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory?view=netcore-1.1)。 應用程式啟動時從專案的根資料夾，會使用專案的根資料夾，做為內容的根。 這是預設值用於[Visual Studio](https://www.visualstudio.com/)和[dotnet 新範本](/dotnet/core/tools/dotnet-new)。
 
-若要使用 IIS 做為反向 proxy，呼叫[UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions)建置主應用程式的一部分。 `UseIISIntegration`未設定*伺服器*、 like [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)沒有。 `UseIISIntegration`設定基底路徑和伺服器使用時應接聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)建立 Kestrel 與 IIS 之間的反向 proxy。 若要使用 IIS 與 ASP.NET Core`UseKestrel`和`UseIISIntegration`必須指定。 `UseIISIntegration`只會啟動執行 IIS 或 IIS Express 後面時。 如需詳細資訊，請參閱[簡介 ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)和[ASP.NET 核心模組的組態參考](xref:hosting/aspnet-core-module)。
+若要使用 IIS 做為反向 proxy，呼叫[UseIISIntegration](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions)建置主應用程式的一部分。 `UseIISIntegration`未設定*伺服器*、 like [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1)沒有。 `UseIISIntegration`設定基底路徑和伺服器使用時聆聽的連接埠[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)建立 Kestrel 與 IIS 之間的反向 proxy。 若要使用 IIS 與 ASP.NET Core`UseKestrel`和`UseIISIntegration`必須指定。 `UseIISIntegration`只會啟動執行 IIS 或 IIS Express 後面時。 如需詳細資訊，請參閱[簡介 ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)和[ASP.NET 核心模組的組態參考](xref:host-and-deploy/aspnet-core-module)。
 
 最簡單的實作，以設定主應用程式 （和 ASP.NET Core 應用程式） 包含指定伺服器和應用程式的要求管線的組態：
 
@@ -266,7 +266,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="prevent-hosting-startup"></a>防止裝載啟動
 
-可防止自動載入裝載啟動的組件，包括裝載應用程式的組件所設定的啟動組件。 請參閱[使用 IHostingStartup 外部組件加入應用程式功能](xref:hosting/ihostingstartup)如需詳細資訊。
+可防止自動載入裝載啟動的組件，包括裝載應用程式的組件所設定的啟動組件。 請參閱[使用 IHostingStartup 外部組件加入應用程式功能](xref:host-and-deploy/ihostingstartup)如需詳細資訊。
 
 **索引鍵**: preventHostingStartup  
 **型別**: *bool* (`true`或`1`)  
@@ -908,7 +908,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [發行到使用 IIS 的 Windows](../publishing/iis.md)
-* [發行至使用 Nginx Linux](../publishing/linuxproduction.md)
-* [若要使用 Apache 的 Linux 發行](../publishing/apache-proxy.md)
-* [在 Windows 服務的主機](xref:hosting/windows-service)
+* [ Windows 上使用 IIS 的主機](xref:host-and-deploy/iis/index)
+* [Linux 上使用 Nginx 的主機](xref:host-and-deploy/linux-nginx)
+* [Linux 上使用 Apache 的主機](xref:host-and-deploy/linux-apache)
+* [在 Windows 服務的主機](xref:host-and-deploy/windows-service)

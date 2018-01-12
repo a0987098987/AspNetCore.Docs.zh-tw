@@ -11,11 +11,11 @@ ms.assetid: b5bba985-be12-4464-9a01-df3599b2a6f1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 3eb19aa090d0a979ceaf4edc56752472ba47ae84
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 9127c3d7180422c0e3dbd813340dd485bf360c81
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -96,7 +96,7 @@ $Env:ASPNETCORE_ENVIRONMENT = "Development"
 
 **web.config**
 
-請參閱*設定環境變數*區段[ASP.NET 核心模組的組態參考](xref:hosting/aspnet-core-module#setting-environment-variables)主題。
+請參閱*設定環境變數*區段[ASP.NET 核心模組的組態參考](xref:host-and-deploy/aspnet-core-module#setting-environment-variables)主題。
 
 **每個 IIS 應用程式集區**
 

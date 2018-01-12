@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d1f551dbde5f3dd6e71808154c2e5885d588d7c
-ms.sourcegitcommit: 282f69e8dd63c39bde97a6d72783af2970d92040
+ms.openlocfilehash: 5eef9405c0c3d219755d7cffa5d45c3df45ddb5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 模組簡介
 
@@ -54,7 +54,7 @@ ANCM 有幾個其他函式：
 
 ## <a name="how-to-use-ancm-in-aspnet-core-apps"></a>如何在 ASP.NET Core 應用程式中使用 ANCM
 
-本節提供設定 IIS 伺服器和 ASP.NET Core 應用程式的程序概觀。 如需詳細指示，請參閱[發行至 IIS](../../publishing/iis.md)。
+本節提供設定 IIS 伺服器和 ASP.NET Core 應用程式的程序概觀。 如需詳細指示，請參閱[與 IIS 的 Windows 上的主機](xref:host-and-deploy/iis/index)。
 
 ### <a name="install-ancm"></a>安裝 ANCM
 
@@ -107,7 +107,7 @@ ANCM 會產生要指派給後端程序的動態連接埠。 `UseIISIntegration`�
 
 ### <a name="configure-ancm-options-in-webconfig"></a>在 Web.config 中設定 ANCM 選項
 
-ASP.NET Core 模組的設定會儲存在*Web.config*位於應用程式的根資料夾中的檔案。 此檔案中的設定會指向的啟動命令和啟動 ASP.NET Core 應用程式的引數。 範例 Web.config 程式碼和組態選項的指引，請參閱[ASP.NET 核心模組的組態參考](../../hosting/aspnet-core-module.md)。
+ASP.NET Core 模組的設定會儲存在*web.config*位於應用程式的根資料夾中的檔案。 此檔案中的設定會指向的啟動命令和啟動 ASP.NET Core 應用程式的引數。 範例*web.config*程式碼和指引組態選項，請參閱[ASP.NET 核心模組的組態參考](xref:host-and-deploy/aspnet-core-module)。
 
 ### <a name="run-with-iis-express-in-development"></a>在開發中執行的 IIS Express
 
@@ -125,5 +125,5 @@ ANCM 和 Kestrel 之間建立 proxy 會使用 HTTP 通訊協定。 使用 HTTP �
 
 * [這篇文章的範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)
 * [ASP.NET 核心模組的原始程式碼](https://github.com/aspnet/AspNetCoreModule)
-* [ASP.NET Core 模組的組態參考](../../hosting/aspnet-core-module.md)
-* [發行至 IIS](../../publishing/iis.md)
+* [ASP.NET Core 模組的組態參考](xref:host-and-deploy/aspnet-core-module)
+* [ Windows 上使用 IIS 的主機](xref:host-and-deploy/iis/index)

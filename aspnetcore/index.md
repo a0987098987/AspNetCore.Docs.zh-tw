@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 3a18ed30819a3d395e9bfb5dba0547667a4425e8
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 5d8e9a72a3b69866f5a4f725076e44575d20d64f
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -38,7 +38,7 @@ ASP.NET Core 提供下列優點：
 * 雲端就緒、以環境為基礎的[組態系統](xref:fundamentals/configuration/index)。
 * 內建的[相依性插入](xref:fundamentals/dependency-injection)。
 * 輕量型、[高效能](https://github.com/aspnet/benchmarks) \(英文\) 且模組化的 HTTP 要求管線。
-* 能夠在 [IIS](xref:publishing/iis)、[Nginx](xref:publishing/linuxproduction)、[Apache](xref:publishing/apache-proxy)、[Docker](xref:publishing/docker) 上裝載，或自我裝載於您自己的處理序中。
+* 能夠在 [IIS](xref:host-and-deploy/iis/index)、[Nginx](xref:host-and-deploy/linux-nginx)、[Apache](xref:host-and-deploy/linux-apache)、[Docker](xref:host-and-deploy/docker/index) 上裝載，或自我裝載於您自己的處理序中。
 * 以 [.NET Core](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server) 為目標時，會有並存應用程式版本設定。
 * 可簡化現代網頁程式開發的工具。
 * 能夠在 Windows、macOS 和 Linux 上建置並執行。
@@ -48,7 +48,7 @@ ASP.NET Core 完全以 [NuGet](https://www.nuget.org/) 套件的形式提供。 
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>使用 ASP.NET Core MVC 建置 Web API 和 Web UI
 
-ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#building-web-apis) 和 [Web 應用程式](xref:tutorials/index#building-web-applications)的功能：
+ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 和 [Web 應用程式](xref:tutorials/index#build-web-apps)的功能：
 
 * [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式[可測試](testing/index.md)。
 * [Razor 頁面](xref:mvc/razor-pages/index) (ASP.NET Core 2.0 中的新功能) 是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。

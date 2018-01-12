@@ -11,11 +11,11 @@ ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d63502a32e38eb192b40f21f5cd57d20048154e3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c20ed37e1e54273929593dddc9fe1180f1492d6
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>進階的主題-EF Core 與 ASP.NET Core MVC 教學課程 (10-10)
 
@@ -192,7 +192,7 @@ Entity Framework Core 的原始程式碼位於[https://github.com/aspnet/EntityF
 
 如需 EF Core 的詳細資訊，請參閱[Entity Framework 的核心文件集](https://docs.microsoft.com/ef/core)。 也會提供一本書：[動作中的 Entity Framework Core](https://www.manning.com/books/entity-framework-core-in-action)。
 
-如需如何部署 web 應用程式建置它之後，請參閱[發行和部署](../../publishing/index.md)。
+如需如何部署 web 應用程式的資訊，請參閱[主機和部署](xref:host-and-deploy/index)。
 
 如需 ASP.NET Core MVC、 驗證和授權，例如相關的其他主題，請參閱[ASP.NET Core 文件](https://docs.microsoft.com/aspnet/core/)。
 

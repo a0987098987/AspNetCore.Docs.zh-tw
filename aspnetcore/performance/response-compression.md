@@ -11,11 +11,11 @@ ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 68e8c89f6e5485f25d1a551ab3e524f0e9c53d0d
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 86244179115fe6a7d0f7298495086a96ee9570d9
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -187,7 +187,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 當要求 Nginx，由代理`Accept-Encoding`標頭會移除。 這可防止壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx (BasicMiddleware #123) 傳遞壓縮](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮
-如果您有使用中 IIS 動態壓縮模組在您想要停用應用程式的伺服器層級設定，您可以新增至與您*web.config*檔案。 如需詳細資訊，請參閱[停用 IIS 模組](xref:hosting/iis-modules#disabling-iis-modules)。
+如果您有使用中 IIS 動態壓縮模組在您想要停用應用程式的伺服器層級設定，您可以新增至與您*web.config*檔案。 如需詳細資訊，請參閱[停用 IIS 模組](xref:host-and-deploy/iis/modules#disabling-iis-modules)。
 
 ## <a name="troubleshooting"></a>疑難排解
 使用這類工具[Fiddler](http://www.telerik.com/fiddler)， [firebug 這類](http://getfirebug.com/)，或[郵差](https://www.getpostman.com/)，可讓您設定`Accept-Encoding`要求標頭和研究回應標頭、 大小和主體。 回應壓縮中介軟體壓縮符合下列條件的回應：

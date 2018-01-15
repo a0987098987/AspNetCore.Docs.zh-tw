@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 8a87972a7394246ece2af3485d93739975ba5383
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 630378510f4182034735cb4c306dfc5a761543ab
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="aspnet-core-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Core Web API 說明頁面
 
@@ -221,6 +221,10 @@ XML 註解可以使用下列方式啟用：
 將下列程式碼片段手動新增至 *.csproj* 檔案：
 
 [!code-xml[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/TodoApi.csproj?range=7-9)]
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+請參閱 Visual Studio Code。
 
 ---
 

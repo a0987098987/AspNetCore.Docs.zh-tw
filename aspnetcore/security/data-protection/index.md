@@ -11,11 +11,11 @@ ms.assetid: 1f402da8-1052-4970-9835-9f9f16a02dbc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/index
-ms.openlocfilehash: 8b42e65bb6121355120a6f4fbe8cd4d1fea153de
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cbf18c6ec867fefec22980f3e3493562594ef72d
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="data-protection-in-aspnet-core-consumer-apis-configuration-extensibility-apis-and-implementation"></a>ASP.NET Core 中的資料保護：取用者 API、組態、擴充性 API 和實作
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
   * [預設設定](configuration/default-settings.md)
 
-  * [電腦全域原則](configuration/machine-wide-policy.md)
+  * [整個電腦的原則](configuration/machine-wide-policy.md)
 
   * [非 DI 感知案例](configuration/non-di-scenarios.md)
 
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/10/2017
 
 * [相容性](compatibility/index.md)
 
-  * [共用應用程式之間的 Cookie](compatibility/cookie-sharing.md)
+  * [應用程式間共用 Cookie](compatibility/cookie-sharing.md)
 
   * [取代 ASP.NET 中的 <machineKey>](compatibility/replacing-machinekey.md)

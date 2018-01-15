@@ -10,11 +10,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: 3f4df08d6cf5d183735ae4b4ec4f07ed60a9623a
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: f6a1f32c1edd098b0782fd066d8e32f09952a9b7
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 
@@ -48,12 +48,12 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
     *   [使用 Facebook、Google 和其他外部提供者啟用驗證](authentication/social/index.md)
     * [使用 Windows 驗證](authentication/windowsauth.md)
     *   [帳戶確認和密碼復原](authentication/accconfirm.md)
-    *   [使用 SMS 的雙重關卡驗證](authentication/2fa.md) 
-    *   [使用沒有 ASP.NET Core 身分識別的 Cookie 驗證](authentication/cookie.md)
+    *   [使用 SMS 的雙因素驗證](authentication/2fa.md) 
+    *   [使用沒有身分識別的 Cookie 驗證](authentication/cookie.md)
     *   [Azure Active Directory](authentication/azure-active-directory/index.md)
-        *   [將 Azure AD 整合到 ASP.NET Core Web 應用程式](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
-        *   [使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
-        *   [在使用 Azure AD 的 ASP.NET Core Web 應用程式中呼叫 Web API](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+        *   [Integrate Azure AD Into an ASP.NET Core web app](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/) (將 Azure AD 整合到 ASP.NET Core Web 應用程式)
+        *   [Call a ASP.NET Core Web API from a WPF app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/) (使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API)
+        *   [Call a Web API in an ASP.NET Core web app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/) (使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API)
         *   [使用 Azure AD B2C 的 ASP.NET Core Web 應用程式](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
     *   [使用 IdentityServer4 保護 ASP.NET Core 應用程式](https://identityserver4.readthedocs.io)
 *   [授權](authorization/index.md)
@@ -62,7 +62,7 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
     *   [簡單授權](authorization/simple.md)
     *   [角色型授權](authorization/roles.md)
     *   [宣告式授權](authorization/claims.md)
-    *   [自訂原則式授權](authorization/policies.md)
+    *   [原則式授權](authorization/policies.md)
     *   [要求處理常式中的相依性插入](authorization/dependencyinjection.md)
     *   [資源型授權](authorization/resourcebased.md)
     *   [檢視型授權](authorization/views.md)
@@ -80,7 +80,7 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
     *   [組態](data-protection/configuration/index.md)
         *   [設定資料保護](data-protection/configuration/overview.md)
         *   [預設設定](data-protection/configuration/default-settings.md)
-        *   [電腦全域原則](data-protection/configuration/machine-wide-policy.md)
+        *   [整個電腦的原則](data-protection/configuration/machine-wide-policy.md)
         *   [非 DI 感知案例](data-protection/configuration/non-di-scenarios.md)
     *   [擴充性 API](data-protection/extensibility/index.md)
         *   [核心加密擴充性](data-protection/extensibility/core-crypto.md)
@@ -97,13 +97,13 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
         *   [金鑰儲存體格式](data-protection/implementation/key-storage-format.md)
         *   [暫時資料保護提供者](data-protection/implementation/key-storage-ephemeral.md)
     *   [相容性](data-protection/compatibility/index.md)
-        *   [共用應用程式之間的 Cookie](data-protection/compatibility/cookie-sharing.md)
+        *   [應用程式間共用 Cookie](data-protection/compatibility/cookie-sharing.md)
         *   [取代 ASP.NET 中的 <machineKey>](data-protection/compatibility/replacing-machinekey.md)
 *   [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
 *   [在開發期間安全儲存應用程式密碼](app-secrets.md)
 *   [Azure Key Vault 組態提供者](key-vault-configuration.md)
-*   [強制執行 SSL](enforcing-ssl.md)
+*   [強制使用 SSL](enforcing-ssl.md)
 *   [防偽要求](anti-request-forgery.md)
 *   [防止開啟重新導向攻擊](preventing-open-redirects.md)
-*   [防止跨站台指令碼攻擊](cross-site-scripting.md)
+*   [防止跨網站指令碼攻擊](cross-site-scripting.md)
 *   [啟用跨原始來源要求 (CORS)](cors.md)

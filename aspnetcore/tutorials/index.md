@@ -10,17 +10,17 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
-ms.openlocfilehash: 44eaac4f3f4ad55cbc9b5ca9fae6e406ceff3d3c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: acedebaa9b89a0e00602b497d11d5612fce99a5f
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
 下列開發 ASP.NET Core 應用程式的逐步指南已可使用：
 
-## <a name="building-web-applications"></a>建置 Web 應用程式
+## <a name="build-web-apps"></a>建置 Web 應用程式
 
 若要使用 ASP.NET Core 2.0 建立新的 Web UI 應用程式，建議您透過 [Razor 頁面](xref:mvc/razor-pages/index)來進行。
 
@@ -37,13 +37,12 @@ ms.lasthandoff: 11/10/2017
    * [使用 Visual Studio for Mac 建立 Web 應用程式](first-mvc-app-mac/index.md)
    * [使用 Mac 或 Linux 版 Visual Studio Code 建立 Web 應用程式](first-mvc-app-xplat/index.md)
 
-* [使用 Visual Studio 的 ASP.NET Core 與 Entity Framework Core 的使用者入門](../data/ef-mvc/index.md)
-* [使用 Yeoman 建置專案](../client-side/yeoman.md)
-* [撰寫標記協助程式](../mvc/views/tag-helpers/authoring.md)
+* [使用 Visual Studio 開始使用 ASP.NET Core 與 Entity Framework Core](../data/ef-mvc/index.md)
+* [建立標記協助程式](../mvc/views/tag-helpers/authoring.md)
 * [建立簡單的檢視元件](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
-* [開發使用 dotnet 監看式的 ASP.NET Core 應用程式](dotnet-watch.md)
+* [使用 dotnet watch 開發 ASP.NET Core 應用程式](dotnet-watch.md)
 
-## <a name="building-web-apis"></a>建置 Web API
+## <a name="build-web-apis"></a>建置 Web API
 * 使用 ASP.NET Core 建立 Web API
 
   * [使用 Visual Studio for Windows 建立 Web API](first-web-api.md)
@@ -51,10 +50,10 @@ ms.lasthandoff: 11/10/2017
   * [使用 Visual Studio Code 建立 Web API](web-api-vsc.md)
   
 * [使用 Swagger 的 ASP.NET Core Web API 說明頁面](web-api-help-pages-using-swagger.md)
-* [建立原生行動裝置應用程式的後端 Web 服務](../mobile/native-mobile-backend.md)
+* [建立原生行動應用程式的後端 Web 服務](../mobile/native-mobile-backend.md)
 
-## <a name="working-with-data"></a>使用資料
-* [使用 Visual Studio 的 ASP.NET Core 與 Entity Framework Core 的使用者入門](../data/ef-mvc/index.md)
+## <a name="data-access-and-storage"></a>資料存取與存放
+* [使用 Visual Studio 開始使用 ASP.NET Core 與 Entity Framework Core](../data/ef-mvc/index.md)
 * [ASP.NET Core 與 EF Core - 新的資料庫](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
 * [ASP.NET Core 與 EF Core - 現有的資料庫](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
 
@@ -67,15 +66,15 @@ ms.lasthandoff: 11/10/2017
 * [使用 Gulp](../client-side/using-gulp.md)
 * [使用 Grunt](../client-side/using-grunt.md)
 * [使用 Bower 管理用戶端套件](../client-side/bower.md)
-* [使用啟動程序建置美觀的回應式網站](../client-side/bootstrap.md)
+* [建置具有啟動程序的回應式網站](../client-side/bootstrap.md)
 
-## <a name="testing"></a>測試
+## <a name="test"></a>測試
 * [使用 dotnet test 的 .NET Core 單元測試](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-## <a name="publishing-and-deployment"></a>發佈和部署
+## <a name="publish-and-deploy"></a>發行與部署
 * [使用 Visual Studio 將 ASP.NET Core Web 應用程式部署至 Azure](publish-to-azure-webapp-using-vs.md)
 * [使用命令列將 ASP.NET Core Web 應用程式部署至 Azure](publish-to-azure-webapp-using-cli.md)
-* [使用連續部署發佈至 Azure Web 應用程式](../publishing/azure-continuous-deployment.md)
+* [使用連續部署發行至 Azure Web 應用程式](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 * [將 ASP.NET 容器部署至遠端 Docker 主機](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [Nano Server 上的 ASP.NET Core](nano-server.md)
 * [ASP.NET Core 和 Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-add-a-web-frontend)

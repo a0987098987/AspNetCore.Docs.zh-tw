@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging/index
-ms.openlocfilehash: 737de614625ce560df1c3d7cfd9810f9433c153d
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 3eb167c961b8d089d508ef5622db6ae1cdd99088
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
 
@@ -56,7 +56,7 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該快速，�
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_ExpandDefault&highlight=16,17)]
 
-預設專案範本會將記錄設定為如上述程式碼中所示，但 `ConfigureLogging` 呼叫是由 `CreateDefaultBuilder` 方法執行。 以下是 *Program.cs* 中由專案範本建立的程式碼：
+預設專案範本可使用 [CreateDefaultBuilder](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___) 方法來記錄：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
@@ -297,7 +297,7 @@ System.Exception: Item not found exception.
 
 組態資料和上述範例中所示的 `AddFilter` 程式碼會建立下表中所示的規則。 前六項來自組態範例，最後兩項來自程式碼範例。
 
-| 數字 | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
+| number | 提供者      | 開頭如下的類別...          | 最低記錄層級 |
 | :----: | ------------- | --------------------------------------- | ----------------- |
 | 1      | 偵錯         | 所有類別                          | 資訊       |
 | 2      | 主控台       | Microsoft.AspNetCore.Mvc.Razor.Internal | 警告           |
@@ -653,6 +653,6 @@ Azure 記錄資料流可讓您即時檢視來自下列位置的記錄活動：
 ![Azure 入口網站應用程式的 [記錄資料流]](index/_static/azure-log-streaming.png)
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [使用 LoggerMessage 進行高效能記錄](xref:fundamentals/logging/loggermessage)

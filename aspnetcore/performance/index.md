@@ -11,11 +11,11 @@ ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0abcde
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/index
-ms.openlocfilehash: 65a1761e0e8c2f0a397f20a790da6dc9c24b6886
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d18ef0799fa33626d5aa32e1373da41dca10034b
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="performance"></a>效能
 

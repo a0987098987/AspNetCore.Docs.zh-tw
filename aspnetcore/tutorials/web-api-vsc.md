@@ -11,11 +11,11 @@ keywords: "ASP.NET Core, WebAPI, Web API, REST, Mac, Linux, HTTP, 服務, HTTP �
 manager: wpickett
 ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: caf40ee1c2d45d2fbf33b07d707fa4f1be98d31c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 40f9259101e5d006378562a27e97948641e29450
+ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>在 macOS、Linux 和 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建立 Web API
 
@@ -57,7 +57,7 @@ dotnet new webapi
 
 <!-- uid: tutorials/first-mvc-app-xplat/start-mvc uses the pic below. If you change it, make sure it's consistent -->
 
-![VS Code 與警告：'TodoApi' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？ 不要再詢問、現在不要、是以及資訊 - 有未解析的相依性 - 還原 - 關閉](web-api-vsc/_static/vsc_restore.png)
+![VS Code 與警告：'TodoApi' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？ 不再詢問, 現在不要, 是](web-api-vsc/_static/vsc_restore.png)
 
 按 [偵錯] (F5) 以建置並執行程式。 在瀏覽器中，巡覽至 http://localhost:5000/api/values。 此時會顯示下列對話方塊：
 
@@ -67,11 +67,9 @@ dotnet new webapi
 
 ## <a name="add-support-for-entity-framework-core"></a>新增 Entity Framework Core 的支援
 
-編輯 *TodoApi.csproj* 檔案以安裝 [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
+在 .NET Core 2.0 中建立新專案會在 *TodoApi.csproj* 檔案中新增 'Microsoft.AspNetCore.All' 提供者。 不必另行安裝 [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
 
 [!code-xml[Main](web-api-vsc/sample/TodoApi/TodoApi.csproj?highlight=12)]
-
-執行 `dotnet restore` 以下載並安裝 EF Core 記憶體內部資料庫提供者。 您可以從終端機執行 `dotnet restore` 或在 VS Code 中輸入 `⌘⇧P` (macOS) 或 `Ctrl+Shift+P` (Linux)，然後鍵入 **.NET**。 選取 [.NET: Restore Packages] (.NET: 還原套件)。
 
 ## <a name="add-a-model-class"></a>新增模型類別
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 6281d6ba254670b111964715410fc0694ae4d149
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: b662e66ab5b4c46d1a8d10eb7c38bf4064b5b927
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -375,7 +375,7 @@ Left: 1988
 
 ## <a name="the-webconfig-file"></a>web.config 檔案
 
-當您在 IIS 或 IIS Express 中裝載應用程式時，需要 *web.config* 檔案。 *web.config* 會開啟 IIS 中的 AspNetCoreModule 以啟動您的應用程式。 *web.config* 中的設定可讓 IIS 中的 AspNetCoreModule 啟動您的應用程式，並設定其他 IIS 設定和模組。 如果您使用 Visual Studio 並刪除 *web.config*，Visual Studio 會建立新的 web.config 檔案。
+當您在 IIS 或 IIS Express 中裝載應用程式時，需要 *web.config* 檔案。 *web.config* 中的設定可讓 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)啟動應用程式，並設定其他 IIS 設定和模組。 如果沒有 *web.config* 檔案，而專案檔包含 `<Project Sdk="Microsoft.NET.Sdk.Web">`，發行專案會在已發行的輸出 (*publish* 資料夾) 中建立 *web.config* 檔案。 如需詳細資訊，請參閱[在使用 IIS 的 Windows 上裝載 ASP.NET Core](xref:host-and-deploy/iis/index#webconfig)。
 
 ## <a name="additional-notes"></a>其他備註
 

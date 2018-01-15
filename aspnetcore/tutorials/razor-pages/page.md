@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 7ae83b9bdadf5ebf8846b0c09c585da406708d12
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e42e7e469e411d2d4bc1bd1b3a3995a77c355ebd
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Scaffold Razor 頁面
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 檢查 *Pages/Movies/Index.cshtml.cs* 程式碼後置檔案：[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
 
-Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別稱為 `<PageName>Model`。 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將 `MovieContext` 新增至頁面中。 所有 Scaffold 頁面都遵循這個模式。
+Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別稱為 `<PageName>Model`。 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將 `MovieContext` 新增至頁面中。 所有 Scaffold 頁面都遵循這個模式。 如需使用 Entity Framework 進行非同步程式設計的詳細資訊，請參閱[非同步程式碼](xref:data/ef-rp/intro#asynchronous-code)。
 
 當針對頁面提出要求時，`OnGetAsync` 方法會將電影清單傳回 Razor 頁面。 在 Razor 頁面上會呼叫 `OnGetAsync` 或 `OnGet` 來初始化頁面的狀態。 在此情況下，`OnGetAsync` 會取得要顯示的電影清單。
 

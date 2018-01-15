@@ -11,15 +11,17 @@ ms.assetid: 1abd456b-2199-4ba3-9698-3241e0bd4afc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/index
-ms.openlocfilehash: d74254c8f2cc3ee55f6842f9f952d7ab93fe7a03
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 13b4e1db7e3ae73a0cba49d214c5ffdb31601e5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a>ASP.NET Core 的授權：簡單授權、角色型授權、宣告式授權和自訂授權
 
 * [簡介](introduction.md)
+
+* [Razor 頁面授權](xref:security/authorization/razor-pages-authorization)
 
 * [簡單授權](simple.md)
 
@@ -27,7 +29,7 @@ ms.lasthandoff: 12/15/2017
 
 * [宣告式授權](claims.md)
 
-* [自訂原則式授權](policies.md)
+* [原則式授權](policies.md)
 
 * [要求處理常式中的相依性插入](dependencyinjection.md)
 

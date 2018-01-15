@@ -5,28 +5,30 @@ description: "開始使用 ASP.NET Core 中的 Razor 頁面"
 keywords: "ASP.NET Core, Razor 頁面, Razor, MVC"
 ms.author: riande
 manager: wpickett
-ms.date: 08/27/2017
+ms.date: 12/22/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 5c58b5156f62572687755c9c0878db10c3c14eb1
-ms.sourcegitcommit: c07fb5cb5df0a12f9fe6735fcbc90964608fa687
+ms.openlocfilehash: 12685d6a391c127d78399408291c26caa0192ee2
+ms.sourcegitcommit: 44a62f59d4db39d685c4487a0345a486be18d7c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
+# <a name="get-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
 本教學課程有 3 個版本：
 
 * Windows：本教學課程
 * macOS：[利用 Visual Studio for Mac 開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
 * macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -38,7 +40,11 @@ ms.lasthandoff: 11/14/2017
 * 建立新的 ASP.NET Core Web 應用程式。 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，因此當您複製/貼上程式碼時，名稱空間會相符。
   ![新增 ASP.NET Core Web 應用程式](../../mvc/razor-pages/index/_static/np.png)
 * 在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。
-  ![Web 應用程式 (Razor 頁面)](../../mvc/razor-pages/index/_static/np2.png)
+
+> [!NOTE]
+> 如果您想要在 .NET Framework 上使用 ASP.NET Core，則必須先從對話方塊最左邊的下拉式清單中選取 [.NET Framework]，然後即可選取所需的 ASP.NET Core 版本。
+
+  ![Web 應用程式 (Razor 頁面)](razor-pages-start/_static/np2.png)
 
 Visual Studio 範本會建立入門專案：
 

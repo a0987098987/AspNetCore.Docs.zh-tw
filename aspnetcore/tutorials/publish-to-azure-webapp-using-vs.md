@@ -5,18 +5,19 @@ description:
 keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
-ms.date: 10/05/2017
+ms.date: 12/16/2017
 ms.topic: get-started-article
-ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 6f697ed4d8876a19cd058533e4f6a5d4f7cdc2fb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fdd439a5e4fd41e72fd7a3c602183d4a4e9e0aa5
+ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/19/2017
 ---
+/zh-TW
+
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Cesar Blum Silveira](https://github.com/cesarbs) 及 [Rachel Appel](https://twitter.com/rachelappel) 共同編纂
@@ -36,9 +37,7 @@ ms.lasthandoff: 11/10/2017
 完成 [新增專案] 對話方塊：
 
 * 在左窗格中，選取 [.NET Core]。
-
 * 在中央窗格中，選取 [ASP.NET Core Web 應用程式]。
-
 * 選取 [確定]。
 
 ![[新增專案] 對話](publish-to-azure-webapp-using-vs/_static/new_prj.png)
@@ -46,7 +45,6 @@ ms.lasthandoff: 11/10/2017
 在 [新增 ASP.NET Core Web 應用程式] 對話方塊中：
 
 * 選取 [Web 應用程式]。
-
 * 選取 [變更驗證]。
 
 ![[新增專案] 對話](publish-to-azure-webapp-using-vs/_static/new_prj_2.png)
@@ -54,25 +52,24 @@ ms.lasthandoff: 11/10/2017
 [變更驗證] 對話方塊會隨即出現。 
 
 * 選取 [個別使用者帳戶]。
-
 * 選取 [確定] 返回 [新增 ASP.NET Core Web 應用程式]，然後再次選取 [確定]。
 
 ![[新增 ASP.NET Core Web 驗證] 對話方塊](publish-to-azure-webapp-using-vs/_static/new_prj_auth.png) 
 
 Visual Studio 會建立解決方案。
 
-## <a name="run-the-app-locally"></a>在本機執行應用程式
+## <a name="run-the-app"></a>執行應用程式
 
-* 選擇 [偵錯]，然後 [啟動但不偵錯] 以在本機執行應用程式。
-
-* 按一下 [關於] 與 [連絡資訊] 連結，以驗證 Web 應用程式能夠運作。
+* 按 CTRL+F5 執行專案。
+* 測試 [關於] 和 [連絡人] 連結。
 
 ![在 Microsoft Edge 中於 localhost 開啟的 Web 應用程式](publish-to-azure-webapp-using-vs/_static/show.png)
+
+### <a name="register-a-user"></a>註冊使用者
 
 * 選取 [註冊] 並註冊新的使用者。 您可以使用虛構的電子郵件地址。 提交時，頁面會顯示下列錯誤：
 
     「內部伺服器錯誤: 處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
-
 * 選取 [套用移轉]，並在頁面更新後重新整理頁面。
 
 ![內部伺服器錯誤：處理要求時資料庫作業失敗。 SQL 例外狀況：無法開啟資料庫。 為應用程式資料庫內容套用現有的移轉可能會解決此問題。](publish-to-azure-webapp-using-vs/_static/mig.png)
@@ -83,23 +80,24 @@ Visual Studio 會建立解決方案。
 
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
-關閉網頁，回到 Visual Studio 並在 [偵錯] 功能表選取 [停止偵錯]。
-
 在方案總管中，以滑鼠右鍵按一下專案，然後選取 [發行]。
 
 ![反白顯示 [發行] 連結的已開啟操作功能表](publish-to-azure-webapp-using-vs/_static/pub.png)
 
-在 [發行] 對話方塊中，選取 [Microsoft Azure App Service]，然後按一下 [發行]。
+在 [發行] 對話方塊中：
+
+* 選取 [Microsoft Azure App Service]。
+* 選取齒輪圖示，然後選取 [建立設定檔]。
+* 選取 [建立設定檔]。
 
 ![[發行] 對話方塊](publish-to-azure-webapp-using-vs/_static/maas1.png)
 
-* 為應用程式提供唯一名稱。 
+### <a name="create-azure-resources"></a>建立 Azure 資源
 
-* 選取訂用帳戶。
+出現 [建立應用程式服務] 對話方塊：
 
-* 對資源群組選取 [新增...]，並輸入新資源群組的名稱。
-
-* 對應用程式服務方案選取 [新增...]，並選取您附近的位置。 您可以保留預設產生的名稱。
+* 輸入訂用帳戶。
+* 會填入 [應用程式名稱]、[資源群組] 和 [App Service 方案] 輸入欄位。 您可以保留這些名稱，或變更它們。
 
 ![[應用程式服務] 對話方塊](publish-to-azure-webapp-using-vs/_static/newrg1.png)
 
@@ -115,9 +113,7 @@ Visual Studio 會建立解決方案。
 
 [設定 SQL Server] 對話方塊會隨即出現。
 
-* 輸入系統管理員使用者名稱與密碼，然後選取 [確定]。 請勿忘記您在此步驟中建立的使用者名稱和密碼。 您可以保留預設的**伺服器名稱**。 
-
-* 輸入資料庫與連接字串的名稱。
+* 輸入系統管理員使用者名稱與密碼，然後選取 [確定]。 您可以保留預設的**伺服器名稱**。 
 
 > [!NOTE]
 > "admin" 不允許作為系統管理員使用者名稱。
@@ -132,21 +128,22 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 
 ![[設定 SQL Database] 對話方塊](publish-to-azure-webapp-using-vs/_static/conf_final.png)
 
-* 在 [發行] 對話方塊中按一下 [設定] 連結。
+Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟可能需要幾分鐘的時間。 如需所建立資源的資訊，請參閱[其他資源](#additonal-resources)。
 
-![[發行] 對話方塊：連線面板](publish-to-azure-webapp-using-vs/_static/pubc.png)
+部署完成時，請選取 [設定]：
+
+![[設定 SQL Server] 對話方塊](publish-to-azure-webapp-using-vs/_static/set.png)
 
 在 [發行] 對話方塊的 [設定] 頁面上：
 
   * 展開 [資料庫] 並選取 [在執行階段使用此連接字串]。
-
   * 展開 [Entity Framework 移轉] 並選取 [在發行時套用此移轉]。
 
 * 選取 [儲存]。 Visual Studio 會回到 [發行] 對話方塊。 
 
 ![[發行] 對話方塊：設定面板](publish-to-azure-webapp-using-vs/_static/pubs.png)
 
-按一下 [發行] 。 Visual Studio 會將您的應用程式發行至 Azure，並在您的瀏覽器中啟動雲端應用程式。
+按一下 [發行] 。 Visual Studio 會將您的應用程式發行至 Azure。 部署完成時，會在瀏覽器中開啟應用程式。
 
 ### <a name="test-your-app-in-azure"></a>在 Azure 中測試應用程式
 
@@ -158,9 +155,7 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 
 ### <a name="update-the-app"></a>更新應用程式
 
-* 編輯 *Pages/About.cshtml* Razor 頁面，並變更其內容。 例如，您可以修改段落使其說出 "Hello ASP.NET Core!"：
-
-    [!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
+* 編輯 *Pages/About.cshtml* Razor 頁面，並變更其內容。 例如，您可以修改段落，使其說出 "Hello ASP.NET Core!"：[!code-html[About](publish-to-azure-webapp-using-vs/sample/about.cshtml?highlight=9&range=1-9)]
 
 * 以滑鼠右鍵按一下專案，然後再次選取 [發行...]。
 
@@ -187,3 +182,10 @@ Visual Studio 會回到 [建立 App Service] 對話方塊。
 ### <a name="next-steps"></a>後續步驟
 
 * [使用 Visual Studio 與 Git 持續部署到 Azure](../publishing/azure-continuous-deployment.md)
+
+
+## <a name="additonal-resources"></a>其他資源
+
+* [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-overview)
+* [Azure 資源群組](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups)
+* [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/)

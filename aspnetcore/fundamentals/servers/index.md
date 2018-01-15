@@ -11,11 +11,11 @@ ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/index
-ms.openlocfilehash: 04dee100dff91f7868175ff4be01156787e13e81
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b149cb316e4266e67d846b8ef8c2c7f2a25ded5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -79,11 +79,11 @@ Kestrel 是 ASP.NET Core 新專案範本中預設隨附的網頁伺服器。
 
 ### <a name="nginx-with-kestrel"></a>Nginx 與 Kestrel
 
-如需如何在 Linux 上使用 Nginx 作為 Kestrel 的反向 Proxy 伺服器的資訊，請參閱[發行至 Linux 生產環境](../../publishing/linuxproduction.md)。
+如需如何在 Linux 上使用 Nginx 作為 Kestrel 之反向 Proxy 伺服器的資訊，請參閱 [Linux 上使用 Nginx 的主機](xref:host-and-deploy/linux-nginx)。
 
 ### <a name="apache-with-kestrel"></a>Apache 與 Kestrel
 
-如需如何在 Linux 上使用 Apache 作為 Kestrel 之反向 Proxy 伺服器的資訊，請參閱[使用 Apache 網頁伺服器作為反向 Proxy](../../publishing/apache-proxy.md)。
+如需如何在 Linux 上使用 Apache 作為 Kestrel 之反向 Proxy 伺服器的資訊，請參閱 [Linux 上使用 Apache 的主機](xref:host-and-deploy/linux-apache)。
 
 ## <a name="httpsys"></a>HTTP.sys
 
@@ -131,16 +131,16 @@ HTTP.sys 在 ASP.NET Core 1.x 中名為 WebListener。 如果在 Windows 上執�
 
 - [Kestrel](kestrel.md)
 - [Kestrel 與 IIS](aspnet-core-module.md)
-- [Kestrel 與 Nginx](../../publishing/linuxproduction.md)
-- [Kestrel 與 Apache](../../publishing/apache-proxy.md)
+- [Linux 上使用 Nginx 的主機](xref:host-and-deploy/linux-nginx)
+- [Linux 上使用 Apache 的主機](xref:host-and-deploy/linux-apache)
 - [HTTP.sys](httpsys.md)
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 - [Kestrel](kestrel.md)
 - [Kestrel 與 IIS](aspnet-core-module.md)
-- [Kestrel 與 Nginx](../../publishing/linuxproduction.md)
-- [Kestrel 與 Apache](../../publishing/apache-proxy.md)
+- [Linux 上使用 Nginx 的主機](xref:host-and-deploy/linux-nginx)
+- [Linux 上使用 Apache 的主機](xref:host-and-deploy/linux-apache)
 - [WebListener](weblistener.md)
 
 ---

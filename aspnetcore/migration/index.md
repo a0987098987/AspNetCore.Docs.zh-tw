@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/index
-ms.openlocfilehash: 4c653d83569bcd218710ad276e154c6b8f89963c
-ms.sourcegitcommit: 747a7fddf7a4c7ef5f3e2a0912c411ee647ee203
+ms.openlocfilehash: 955634b9c3d207a7b0026de76e37b527607f4775
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="migration-to-aspnet-core-including-aspnet-4x-aspnet-core-2"></a>移轉至 ASP.NET Core，包括 ASP.NET 4.x、ASP.NET Core 2
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 11/22/2017
 *   [從 ASP.NET MVC 移轉至 ASP.NET Core MVC](xref:migration/mvc)
 *   [移轉組態](xref:migration/configuration)
 *   [移轉驗證和身分識別](xref:migration/identity)
-*   [移轉自 ASP.NET Web API](xref:migration/webapi)
+*   [從 ASP.NET Web API 移轉](xref:migration/webapi)
 *   [將 HTTP 模組移轉至中介軟體](xref:migration/http-modules)
 
 ### <a name="aspnet-to-aspnet-core-20"></a>ASP.NET 至 ASP.NET Core 2.0

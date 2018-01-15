@@ -5,23 +5,20 @@ description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 03/30/2017
+ms.date: 12/8/2017
 ms.topic: get-started-article
-ms.assetid: 8dc28498-00ee-4d66-b903-b593059e9f39
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: a29bab9cf0712936fa9c3f2b4bb3b275a46fe6f6
-ms.sourcegitcommit: e641c5794525f983485621860926d8ab4e7360c8
+ms.openlocfilehash: 03c16e523fe2f91cae5c71357835684d813e3a1f
+ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
 注意：ASP.NET Core 2.0 範本包含 *Models* 資料夾。
-
-在方案總管中，以滑鼠右鍵按一下 **MvcMovie** 專案 > [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
 以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
 
@@ -37,15 +34,10 @@ ms.lasthandoff: 11/23/2017
 
 ![上方步驟的檢視](adding-model/_static/add_controller.png)
 
-在 [新增 MVC 相依性] 對話方塊中，選取 [基本相依性]，然後選取 [新增]。
+如果出現 [新增 MVC 相依性] 對話方塊：
 
-![上方步驟的檢視](adding-model/_static/add_depend.png)
-
-Visual Studio 會新增 Scaffold 控制器所需的相依性，但不會建立控制器本身。 接下來叫用 > [新增] > [控制器]可建立控制器。 
-
-在**方案總管**中，以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [控制器]。
-
-![上方步驟的檢視](adding-model/_static/add_controller.png)
+* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
+* 如果您無法更新，請選取 [新增]，然後再次遵循新增控制器步驟進行。
 
 在 [新增 Scaffold] 對話方塊中，點選 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]。
 
@@ -72,7 +64,7 @@ Visual Studio 會建立：
 
 自動建立資料庫內容與 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。 您很快就會擁有一個正常運作的 Web 應用程式，可讓您管理電影資料庫。
 
-如果執行應用程式，並按一下 **Mvc Movie** 連結，您將收到如下錯誤：
+如果執行應用程式，然後按一下 **Mvc Movie** 連結，則會收到如下錯誤：
 
 ```
 An unhandled exception occurred while processing the request.

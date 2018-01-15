@@ -18,7 +18,7 @@
 
 ## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題和功能表連結
 
-變更標題元素的內容。 將版面配置範本中的錨定文字變更為 "Movie App"，並將控制器從 `Home` 變更為 `Movies`，醒目提示如下：
+在標題項目中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Mvc Movie`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
 
 注意：ASP.NET Core 2.0 版略有不同。 它並未包含 `@inject ApplicationInsights` 和 `@Html.Raw(JavaScriptSnippet.FullScript)`。
 
@@ -29,9 +29,9 @@
 
 儲存變更並點選 **About** 連結。 請注意現在瀏覽器索引標籤上的標題會顯示 **About - Movie App**，而不是 **About - Mvc Movie**。 
 
-![關於標籤](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
+![關於標籤](../../tutorials/first-mvc-app/adding-view/_static/about2.png)
 
-點選 **Contact** 連結，並請注意它也會顯示 **Movie App**。 我們能夠在版面配置範本中一次進行變更，並讓網站上的所有頁面反映新的連結文字和新的標題。
+點選 [連絡人] 連結，並注意標題和錨定文字也要顯示**電影應用程式**。 我們能夠在版面配置範本中一次進行變更，並讓網站上的所有頁面反映新的連結文字和新的標題。
 
 檢查 *Views/_ViewStart.cshtml* 檔案：
 
@@ -105,7 +105,7 @@
 
 資料是使用 [MVC 模型繫結器](xref:mvc/models/model-binding)從 URL 取得並傳遞至控制站。 控制器會將資料封裝成 `ViewData` 字典，並將該物件傳遞至檢視。 接著，檢視會以 HTML 將資料呈現到瀏覽器。
 
-![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 About 檢視](../../tutorials/first-mvc-app/adding-view/_static/rick.png)
+![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 About 檢視](../../tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
 在上述範例中，我們使用 `ViewData` 字典，以便將資料從控制器傳遞至檢視。 稍後在教學課程中，我們將使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱 [ViewModel vs ViewData vs ViewBag vs TempData vs Session in MVC](http://www.mytecbits.com/microsoft/dot-net/viewmodel-viewdata-viewbag-tempdata-mvc)(MVC 中的 ViewMode 與 ViewData 與 ViewBag 與 TempData 與 Session)。
 

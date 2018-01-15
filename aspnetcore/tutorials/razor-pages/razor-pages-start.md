@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 12685d6a391c127d78399408291c26caa0192ee2
-ms.sourcegitcommit: 44a62f59d4db39d685c4487a0345a486be18d7c7
+ms.openlocfilehash: 4643665d48ca07ff43ce52064291fc106bd5c8ac
+ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
 
@@ -41,10 +41,7 @@ ms.lasthandoff: 12/21/2017
   ![新增 ASP.NET Core Web 應用程式](../../mvc/razor-pages/index/_static/np.png)
 * 在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。
 
-> [!NOTE]
-> 如果您想要在 .NET Framework 上使用 ASP.NET Core，則必須先從對話方塊最左邊的下拉式清單中選取 [.NET Framework]，然後即可選取所需的 ASP.NET Core 版本。
-
-  ![Web 應用程式 (Razor 頁面)](razor-pages-start/_static/np2.png)
+  [!INCLUDE[install 2.0](../../includes/dotnetcore-on-dotnetfx-vs.md)]
 
 Visual Studio 範本會建立入門專案：
 
@@ -58,6 +55,9 @@ Visual Studio 範本會建立入門專案：
 * 使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
 
 [!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+
+>[!div class="step-by-step"]
+[下一步：新增模型](xref:tutorials/razor-pages/model)
 
 >[!div class="step-by-step"]
 [下一步：新增模型](xref:tutorials/razor-pages/model)

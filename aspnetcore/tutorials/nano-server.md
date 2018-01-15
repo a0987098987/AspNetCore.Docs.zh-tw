@@ -11,11 +11,11 @@ ms.assetid: 50922cf1-ca58-4006-9236-99b7ff2dd0cf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/nano-server
-ms.openlocfilehash: 337cc69ef522452c17cdd6ea4a5e71cd122035dc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f30e911703d5c36d076872f91d4b2fafeefb91f5
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="aspnet-core-with-iis-on-nano-server"></a>Nano Server 上的 ASP.NET Core 與 IIS
 
@@ -37,7 +37,7 @@ Nano Server 是 Windows Server 2016 中的安裝選項，提供比 Server Core �
 
 在本教學課程中，我們將使用第 2 個選項：Windows Server 2016 中預先建置的 Nano Server VHD。
 
-在繼續進行此教學課程之前，您需要現有 ASP.NET Core 應用程式的[已發行輸出](xref:hosting/directory-structure)。 請確認應用程式已建置為在 **64 位元**處理序中執行。
+在繼續進行此教學課程之前，您需要現有 ASP.NET Core 應用程式的[已發行輸出](xref:host-and-deploy/directory-structure)。 請確認應用程式已建置為在 **64 位元**處理序中執行。
 
 ## <a name="setting-up-the-nano-server-instance"></a>設定 Nano Server 執行個體
 
@@ -191,7 +191,7 @@ dotnet-install.ps1 -Version 2.0.0
 </configuration>
 ```
 
-在遠端工作階段中執行下列命令，針對不同於預設網站的連接埠上所發行的應用程式，在 IIS 中建立新的網站。 您還需要開啟該連接埠，才能存取 Web。 為了簡單起見，此指令碼使用 `DefaultAppPool`。 如需在應用程式集區下執行的其他考量，請參閱[應用程式集區](xref:publishing/iis#application-pools)。
+在遠端工作階段中執行下列命令，針對不同於預設網站的連接埠上所發行的應用程式，在 IIS 中建立新的網站。 您還需要開啟該連接埠，才能存取 Web。 為了簡單起見，此指令碼使用 `DefaultAppPool`。 如需在應用程式集區下執行的其他考量，請參閱[應用程式集區](xref:host-and-deploy/iis/index#application-pools)。
 
 ```PowerShell
 Import-module IISAdministration
@@ -205,4 +205,4 @@ New-NetFirewallRule -Name "AspNetCore Port 81 IIS" -DisplayName "Allow HTTP on T
 
 ## <a name="running-the-application"></a>執行應用程式
 
-透過瀏覽器前往 `http://192.168.1.10:8000`，即可存取已發行的 Web 應用程式。 如果您已遵循[記錄檔的建立和重新導向](xref:hosting/aspnet-core-module#log-creation-and-redirection)所述設定記錄，則可以檢視記錄檔，這些檔案位於 *C:\PublishedApps\AspNetCoreSampleForNano\logs*。
+透過瀏覽器前往 `http://192.168.1.10:8000`，即可存取已發行的 Web 應用程式。 如果您已遵循[記錄檔的建立和重新導向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)所述設定記錄，則可以檢視記錄檔，這些檔案位於 *C:\PublishedApps\AspNetCoreSampleForNano\logs*。

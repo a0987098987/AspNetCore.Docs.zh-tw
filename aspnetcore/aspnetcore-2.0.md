@@ -11,11 +11,11 @@ ms.assetid: 08c9f457-9c24-40f9-a08b-47dc251e4cec
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-2.0
-ms.openlocfilehash: 98af3788652e87f6222551cb4a8e5427b312660c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f01f047f809e4eaa055a4204611b152c5db87f74
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -142,7 +142,7 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 
 ## <a name="other-documentation-updates-for-20"></a>針對 2.0 的其他文件更新
 
-* [建立 Visual Studio 和 MSBuild 的發行設定檔，以部署 ASP.NET Core 應用程式](xref:publishing/web-publishing-vs)
+* [適用於 ASP.NET 應用程式部署的 Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)
 * [金鑰管理](xref:security/data-protection/implementation/key-management)
 * [設定 Facebook 驗證](xref:security/authentication/facebook-logins)
 * [設定 Twitter 驗證](xref:security/authentication/twitter-logins)

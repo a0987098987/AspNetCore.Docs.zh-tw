@@ -11,11 +11,11 @@ ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 630378510f4182034735cb4c306dfc5a761543ab
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 08503b724aaea64ad2d32eaa710378ec77b9a1fe
+ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="aspnet-core-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Core Web API 說明頁面
 
@@ -227,6 +227,8 @@ XML 註解可以使用下列方式啟用：
 請參閱 Visual Studio Code。
 
 ---
+
+啟用 XML 註解，可提供未記載之公用類型與成員的偵錯資訊。 未記載的類型和成員，會以警告訊息表示：遺漏公用可見類型或成員的 XML 註解。
 
 設定 Swagger 來使用產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*ToDoApi.XML* 檔案可位於 Windows，但不是 CentOS。
 

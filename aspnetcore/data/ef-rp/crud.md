@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/crud
-ms.openlocfilehash: 163bc35afed0bf1d9236935d5ce60e6975356594
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 246e6307989f2660d84288ceac6793c422875f93
+ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>建立、 讀取、 更新和刪除-Razor 頁面 (8 個 2) 使用的 EF 核心
 
@@ -202,7 +202,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 
 ## <a name="update-the-delete-page"></a>更新刪除頁面
 
-在本節中，加入程式碼實作自訂的錯誤訊息時呼叫`SaveChanges`失敗。 加入字串，包含 possile 錯誤訊息：
+在本節中，加入程式碼實作自訂的錯誤訊息時呼叫`SaveChanges`失敗。 加入字串，包含可能的錯誤訊息：
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet1&highlight=12)]
 

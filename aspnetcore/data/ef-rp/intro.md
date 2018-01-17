@@ -10,11 +10,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 86f9eceb5b8646e371811fa4611a4509ff652231
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 2725960aa8a54c803a141b8d1275e65f245f7082
+ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -34,7 +34,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[完成階段](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots)或[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](xref:data/ef-mvc/advanced#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](https://stackoverflow.com/questions/tagged/entity-framework-core)。
+如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[完成階段](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots)或[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](xref:data/ef-mvc/advanced#common-errors)。 如果您找不到您需要那里，您可以將問題張貼至[StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core)如[ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP]
 > 這一系列的教學課程是根據所完成的作業在先前的教學課程。 請考慮每個成功的教學課程完成後儲存專案的複本。 如果您遇到問題時，您可以從上一個教學課程，而不是要開始啟動一段。 或者，您可以下載[完成階段](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots)然後再使用已完成的階段重新啟動。

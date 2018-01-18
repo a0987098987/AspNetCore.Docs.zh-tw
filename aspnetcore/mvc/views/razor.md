@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: e3c3149254d602db1fcc6d42360690be026189a5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6df769069fce52755a57d8404f88203a652a1ab9
+ms.sourcegitcommit: a3e88639a6bcf8fb4d634036dac93130c464a097
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Razor 語法的 ASP.NET Core
 
@@ -76,7 +76,7 @@ Razor 的隱含運算式開頭`@`後面接著 C# 程式碼：
  * "Int"項目未結束。  所有元素都必須自行關閉或沒有對稱的結束標記。
  *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
  
-泛型方法的呼叫必須包裝在[明確 Razor 運算式](#explicit-razor-expressions)或[Razor 程式碼區塊](#razor-code-blocks)。 這項限制不適用於*.vbhtml* Razor 檔案，因為 Visual Basic 語法會將泛型型別參數，而不是方括號括住。
+泛型方法的呼叫必須包裝在[明確 Razor 運算式](#explicit-razor-expressions)或[Razor 程式碼區塊](#razor-code-blocks)。
 
 ## <a name="explicit-razor-expressions"></a>Razor 的明確運算式
 
@@ -127,8 +127,6 @@ Razor 的明確運算式組成`@`有對稱的括號的符號。 若要轉譯上�
 ```cshtml
 <p>@(GenericMethod<int>())</p>
 ```
-
-注意： 這項限制不適用於*.vbhtml* Razor 檔案。  與*.vbhtml* Razor 檔案，Visual Basic 語法會將泛型型別參數，而不是方括號括住。
 
 ## <a name="expression-encoding"></a>運算式的編碼方式
 
@@ -548,7 +546,7 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 
 有三個指示詞與[標記協助程式](xref:mvc/views/tag-helpers/intro)。
 
-| 指示詞 | 函式 |
+| 指示詞 | 功能 |
 | --------- | -------- |
 | [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標記協助程式可供檢視。 |
 | [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前加入從檢視表的標記協助程式。 |
@@ -569,7 +567,7 @@ Razor 關鍵字會以逸出`@(Razor Keyword)`(例如， `@(functions)`)。
 
 ### <a name="c-razor-keywords"></a>C# Razor 關鍵字
 
-* case
+* 大小寫
 * do
 * default
 * for

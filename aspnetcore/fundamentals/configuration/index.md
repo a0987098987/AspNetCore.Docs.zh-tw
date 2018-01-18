@@ -5,22 +5,22 @@ description: "透過多種方法來使用組態 API 設定 ASP.NET Core 應用�
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/01/2017
+ms.date: 1/11/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: b662e66ab5b4c46d1a8d10eb7c38bf4064b5b927
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 0f8618898089418f709506aee5eb013f983dc294
+ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Mark Michaelis](http://intellitect.com/author/mark-michaelis/)、[Steve Smith](https://ardalis.com/)、[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-組態 API 可讓您根據成對的名稱和數值清單來設定 ASP.NET Core Web 應用程式。 組態是在執行階段讀取自多個來源。 您可以將這些成對的名稱和數值分組為多層階層。 
+組態 API 可讓您根據成對的名稱和數值清單來設定 ASP.NET Core Web 應用程式。 組態是在執行階段讀取自多個來源。 您可以將這些成對的名稱和數值分組為多層階層。
 
 下列項目有組態提供者：
 
@@ -50,19 +50,21 @@ ms.lasthandoff: 01/11/2018
 
 組態是由成對的名稱和數值階層式清單所組成，其中節點是以冒號分隔。 若要擷取值，請使用對應項目的索引鍵來存取 `Configuration` 索引子：
 
-```csharp
-Console.WriteLine($"option1 = {Configuration["subsection:suboption1"]}");
-```
+[!code-csharp[Main](index/sample/ConfigJson/Program.cs?range=24-24)]
 
 若要使用 JSON 格式組態來源中的陣列，請使用陣列索引作為冒號分隔字串的一部分。 下列範例會取得上述 `wizards` 陣列中第一個項目的名稱：
 
 ```csharp
-Console.Write($"{Configuration["wizards:0:Name"]}, ");
+Console.Write($"{Configuration["wizards:0:Name"]}");
+// Output: Gandalf
 ```
 
-寫入至內建 `Configuration` 提供者之成對的名稱和數值**不會**保存。 不過，您可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
+寫入內建[組態](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration)提供者的成對名稱和數值**不會**保存。 不過，您可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
 
 上述範例使用 Configuration 索引子來讀取值。 若要存取 `Startup` 外部組態，請使用「選項模式」。 如需詳細資訊，請參閱[選項](xref:fundamentals/configuration/options)主題。
+
+
+## <a name="configuration-by-environment"></a>取決於環境的組態
 
 不同的環境 (例如開發、測試和生產) 通常會有不同的組態設定。 ASP.NET Core 2.x 應用程式中的 `CreateDefaultBuilder` 擴充方法 (或在 ASP.NET Core 1.x 應用程式中直接使用 `AddJsonFile` 和 `AddEnvironmentVariables`) 會新增組態提供者以讀取 JSON 檔案和系統組態來源：
 
@@ -70,18 +72,28 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 * *appsettings.\<環境名稱>.json*
 * 環境變數
 
-如需參數的說明，請參閱 [AddJsonFile](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions)。 `reloadOnChange` 只有在 ASP.NET Core 1.1 和更新版本中才支援。 
+ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVariables](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables #Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_)。
+
+如需參數的說明，請參閱 [AddJsonFile](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions)。 `reloadOnChange` 只有在 ASP.NET Core 1.1 和更新版本中才支援。
 
 組態來源是依其指定順序讀取。 在上述程式碼中，環境變數最後才會讀取。 在環境中設定的任何組態值會取代在上述兩個提供者中設定的值。
+
+請考慮使用下列 *appsettings.Staging.json* 檔案：
+
+[!code-json[Main](index/sample/appsettings.Staging.json)]
+
+當環境設定為 `Staging` 時，下列 `Configure` 方法會讀取 `MyConfig` 的值：
+
+[!code-csharp[Main](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
+
 
 環境通常會設定為 `Development`、`Staging` 或 `Production`。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
 
 組態考量：
 
 * `IOptionsSnapshot` 可在組態資料變更時重新載入資料。 如需詳細資訊，請參閱 [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot)。
-* 組態索引鍵不區分大小寫。
-* 最後才指定環境變數，以便本機環境可覆寫已部署組態檔中的設定。
-* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 相反地，請在專案外部指定祕密，以防止意外認可至您的存放庫。 深入了解如何[使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
+* 組態金鑰**不**區分大小寫。
+* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至您的存放庫。 深入了解如何[使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
 * 如果無法在您系統上的環境變數中使用冒號 (`:`)，請以雙底線 (`__`) 取代冒號 (`:`)。
 
 ## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>記憶體內部提供者和 POCO 類別的繫結
@@ -96,7 +108,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}, ");
 
 下列範例示範 [GetValue&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationbinder#Microsoft_Extensions_Configuration_ConfigurationBinder_GetValue_Microsoft_Extensions_Configuration_IConfiguration_System_Type_System_String_System_Object_) 擴充方法：
 
-[!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=27-29)]
+[!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
 
 ConfigurationBinder 的 `GetValue<T>` 方法可讓您指定預設值 (在此範例中為 80)。 `GetValue<T>` 適用於簡單的案例，並不會繫結至整個區段。 `GetValue<T>` 會從轉換成特定類型的 `GetSection(key).Value` 取得純量值。
 
@@ -153,7 +165,7 @@ public void CanBindObjectTree()
 
 ## <a name="create-an-entity-framework-custom-provider"></a>建立 Entity Framework 自訂提供者
 
-在本節中，會建立從使用 EF 的資料庫讀取成對的名稱和數值的基本組態提供者。 
+在本節中，會建立從使用 EF 的資料庫讀取成對的名稱和數值的基本組態提供者。
 
 定義 `ConfigurationValue` 實體來將組態值儲存在資料庫中：
 
@@ -167,7 +179,7 @@ public void CanBindObjectTree()
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
 
-透過繼承自 [ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider) 來建立自訂組態提供者。  組態提供者會將空白資料庫初始化：
+透過繼承自 [ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider) 來建立自訂組態提供者。 組態提供者會將空白資料庫初始化：
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
 
@@ -187,7 +199,7 @@ public void CanBindObjectTree()
 
 [!code-json[Main](index/sample/CustomConfigurationProvider/appsettings.json)]
 
-此時會顯示下列對話方塊：
+下列輸出隨即顯示：
 
 ```console
 key1=value_from_ef_1
@@ -241,10 +253,15 @@ Left: 1979
 
 `CreateDefaultBuilder` 會從 *appsettings.json*、*appsettings.{Environment}.json*、[使用者祕密](xref:security/app-secrets) (在 `Development` 環境中)、環境變數和命令列引數載入選擇性組態。 最後才呼叫命令列組態提供者。 最後呼叫提供者可讓在執行階段傳遞的命令列引數，覆寫之前呼叫之其他組態提供者所設定的組態。
 
-請注意，已啟用 *appsettings* 檔案的 `reloadOnChange`。 如果 *appsettings* 檔案中的相符組態值在應用程式啟動後已變更，則會覆寫命令列引數。
+若是符合下列條件的 *appsettings* 檔案：
 
-> [!NOTE]
-> ASP.NET Core 2.x 支援使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 建立主應用程式並使用 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 手動建置組態，來替代使用 `CreateDefaultBuilder` 方法。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
+* `reloadOnChange` 已啟用。
+* 在命令列引數與 *appsettings* 檔案中包含相同設定。
+* 包含相符命令列引數的 *appsettings* 檔案在應用程式啟動後變更。
+
+若上述條件皆成立，即覆寫所有命令列引數。
+
+ASP.NET Core 2.x 應用程式可以使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 取代 ``CreateDefaultBuilde`。使用 `WebHostBuilder` 時，請以 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 手動設定組態。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -256,7 +273,7 @@ Left: 1979
 
 ### <a name="arguments"></a>引數
 
-在命令列上傳遞的引數必須符合下表中所示的兩種格式之一。
+在命令列上傳遞的引數必須符合下表所示的兩種格式之一：
 
 | 引數格式                                                     | 範例        |
 | ------------------------------------------------------------------- | :------------: |
@@ -353,7 +370,7 @@ MachineName: DahliaPC
 Left: 1984
 ```
 
-建立切換對應字典之後，它會包含下表中所示的資料。
+建立參數對應字典之後，其中會包含下表所示的資料：
 
 | Key            | 值                 |
 | -------------- | --------------------- |
@@ -382,8 +399,9 @@ Left: 1988
 * 相依性插入 (DI) 會在叫用 `ConfigureServices` 之後才設定。
 * 組態系統非 DI 感知。
 * `IConfiguration` 有兩個特製化：
-  * `IConfigurationRoot`：用於根節點。 可觸發重新載入。
-  * `IConfigurationSection`：代表組態值區段。 `GetSection` 和 `GetChildren` 方法會傳回 `IConfigurationSection`。
+  * `IConfigurationRoot` 用於根節點。 可觸發重新載入。
+  * `IConfigurationSection` 代表組態值區段。 `GetSection` 和 `GetChildren` 方法會傳回 `IConfigurationSection`。
+  * 在重新載入組態或需要存取各個提供者時使用 [IConfigurationRoot](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.iconfigurationroot)。 以上皆為罕見案例。
 
 ## <a name="additional-resources"></a>其他資源
 

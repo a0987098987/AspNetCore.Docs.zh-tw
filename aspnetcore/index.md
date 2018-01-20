@@ -2,7 +2,6 @@
 title: "ASP.NET Core 簡介"
 author: rick-anderson
 description: "提供 ASP.NET Core 簡介。"
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 12/12/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 5d8e9a72a3b69866f5a4f725076e44575d20d64f
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 6535cc2d7eed099804db5d9783e0f7384bc9fcad
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 

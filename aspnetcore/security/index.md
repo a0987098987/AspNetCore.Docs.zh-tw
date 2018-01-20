@@ -6,15 +6,14 @@ ms.author: rachelap
 manager: wpickett
 ms.date: 11/01/2017
 ms.topic: article
-ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: f6a1f32c1edd098b0782fd066d8e32f09952a9b7
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 71bde77e0bc5698b670b560455301cae642165a6
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 

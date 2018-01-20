@@ -2,20 +2,18 @@
 title: "ASP.NET Core 的用戶端開發"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2e4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/index
-ms.openlocfilehash: 61a8eeed1a5ef5517f839ebd830eff40b959347a
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 09d05a5e08a5e4b78d8fa7b8f55d59ca3b422f5f
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core 的用戶端開發
 

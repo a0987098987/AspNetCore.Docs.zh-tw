@@ -2,7 +2,6 @@
 title: "ASP.NET Core 中的記錄"
 author: ardalis
 description: "了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。"
-keywords: "ASP.NET Core, 記錄, 記錄提供者, Microsoft.Extensions.Logging, ILogger, ILoggerFactory, LogLevel, WithFilter, TraceSource, EventLog, EventSource, 範圍"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 12/15/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging/index
-ms.openlocfilehash: 3eb167c961b8d089d508ef5622db6ae1cdd99088
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 387d19af9165d4b54ce3cb1a9b04412271da6fb0
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
 

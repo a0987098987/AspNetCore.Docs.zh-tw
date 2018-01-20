@@ -2,7 +2,6 @@
 title: "在 ASP.NET Core 中處理資料"
 author: rick-anderson
 description: "提供使用資料的相關文章連結。 許多人使用 Entity Framework Core。"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/index
-ms.openlocfilehash: 325f95cf9ecc295f7a1c646e352b9cd496b6268e
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 944d659c914c1601d29cc693f474d171ecb6d5e4
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="working-with-data-in-aspnet-core"></a>在 ASP.NET Core 中處理資料 
 

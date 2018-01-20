@@ -2,7 +2,6 @@
 title: "ASP.NET Core Razor 頁面與 EF Core - 教學課程系列"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 03/15/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/index
-ms.openlocfilehash: b7dae97d0b16eda1a94f6b9b824506d80be9c663
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 83b45759db98230d935d49725402f65e821e8176
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio"></a>使用 Visual Studio 開始使用 Razor 頁面與 Entity Framework Core
 

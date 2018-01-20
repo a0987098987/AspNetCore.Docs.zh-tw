@@ -2,19 +2,17 @@
 title: "ASP.NET Core MVC 的進階主題"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 01/05/2016
 ms.topic: article
-ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe0ba2ef
 ms.technology: aspnet
 ms.prod: asp.net-core
-ms.openlocfilehash: e36cad71f3546e75a9afe2b73a1ccaae1348c9ae
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7e207693d91329977d80e9eebb20c2140ccbe93e
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="advanced-topics-for-aspnet-core-mvc"></a>ASP.NET Core MVC 的進階主題
 

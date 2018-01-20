@@ -2,20 +2,18 @@
 title: "使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式"
 author: rick-anderson
 description: "第一個使用 Visual Studio Code 的 ASP.NET Core MVC 應用程式 Index 頁面"
-keywords: ASP.NET Core, MVC, Entity Framework, Visual Studio Code, VS Code
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
 ms.topic: get-started-article
-ms.assetid: 959ff4ca-be2d-1638-ac04-789e7f7146ff
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/index
-ms.openlocfilehash: 4083dea74548099ee3ba8d963110bb2c3c8ae00a
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: 279757e6f56d0b9694c0ef6296188b76e35dabc4
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-an-aspnet-core-mvc-app-with-visual-studio-code"></a>使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式
 

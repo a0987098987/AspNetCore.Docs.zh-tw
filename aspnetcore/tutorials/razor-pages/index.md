@@ -2,7 +2,6 @@
 title: "使用 ASP.NET Core 建立 Razor 頁面 Web 應用程式"
 author: rick-anderson
 description: "使用 Visual Studio、ASP.NET Core 及 EF Core，在 Windows 上建立 Razor 頁面 Web 應用程式。"
-keywords: "ASP.NET Core, Razor 頁面, scaffolding, Entity Framework Core, EF, EF Core, 資料庫"
 ms.author: riande
 manager: wpickett
 ms.date: 09/08/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 1902795279e202bcce9361d9be7a12d9e34880c3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d2448dde22eb09cd6c69854b1b86b379a4a6873c
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>使用 ASP.NET Core 建立 Razor 頁面 Web 應用程式
 

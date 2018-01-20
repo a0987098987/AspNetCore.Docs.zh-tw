@@ -2,7 +2,6 @@
 title: "ASP.NET Core 中的 Razor 頁面簡介"
 author: Rick-Anderson
 description: "此文件提供在 ASP.NET Core 中使用 Razor 頁面的概觀，以便於以頁面為焦點的案例之開發。"
-keywords: "ASP.NET Core，Razor 頁面"
 ms.author: riande
 manager: wpickett
 ms.date: 09/12/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 31d8b1f662d3d5e7dad8f459d951c7b8181148b8
-ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
+ms.openlocfilehash: 2c9f4291d458032e6aea961707e74e1e1da90b0a
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 

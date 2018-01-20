@@ -2,20 +2,18 @@
 title: "ASP.NET Core 中的 Azure 儲存體"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: eae8a3d0-c361-4de4-883c-040879fce6d1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/azure-storage/index
-ms.openlocfilehash: e7f92621dd188057d05680da7cc0ce6ac212e872
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e98bb2bda2b93db9a7ade05b9594a680489fb3d2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-storage-in-aspnet-core"></a>ASP.NET Core 中的 Azure 儲存體 
 

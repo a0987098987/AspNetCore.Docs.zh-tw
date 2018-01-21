@@ -2,7 +2,6 @@
 title: "使用 SMS 雙因素驗證"
 author: rick-anderson
 description: "示範如何設定 ASP.NET Core 的雙因素驗證 (2FA)"
-keywords: "ASP.NET Core、 SMS、 驗證、 2FA、 雙因素驗證、 雙因素驗證"
 ms.author: riande
 manager: wpickett
 ms.date: 08/15/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/2fa
-ms.openlocfilehash: 15620d89c4db2e74dbcec4707bb2ebc6df916e03
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 0970b7e95b116ceab1d17502d2f8aee9cd821715
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="two-factor-authentication-with-sms"></a>使用 SMS 雙因素驗證
 

@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core 檔案提供者"
 author: ardalis
 description: "了解 ASP.NET Core 抽象化透過檔案提供者使用的檔案系統存取的方式。"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 1e35d362-0005-4f84-a187-274ca203a787
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/file-providers
-ms.openlocfilehash: fd847db992b20ab096b54378418d2b9bccff67be
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: db207f19b7ddc24dea36009138840be6efebdb84
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="file-providers-in-aspnet-core"></a>在 ASP.NET Core 檔案提供者
 

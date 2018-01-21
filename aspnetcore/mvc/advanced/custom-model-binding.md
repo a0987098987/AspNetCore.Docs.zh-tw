@@ -2,20 +2,18 @@
 title: "自訂的模型繫結"
 author: ardalis
 description: "自訂 ASP.NET Core MVC 中的模型繫結。"
-keywords: "ASP.NET Core、 模型繫結、 自訂的模型繫結器"
 ms.author: riande
 manager: wpickett
 ms.date: 04/10/2017
 ms.topic: article
-ms.assetid: ebd98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: f3fc3d624c3b79d49a886dd85ca8b19147631e39
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d8b94f53954c5ab63ccf3aab4eb7a7a7dbea487b
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="custom-model-binding"></a>自訂的模型繫結
 
@@ -74,7 +72,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 您可以張貼至這個應用程式開發介面方法，使用這類工具 base64 編碼字串[郵差](https://www.getpostman.com/):
 
-![郵差](custom-model-binding/images/postman.png "郵差")
+![postman](custom-model-binding/images/postman.png "postman")
 
 只要繫結器可以適當命名的屬性或引數繫結要求資料，模型繫結將會成功。 下列範例示範如何使用`ByteArrayModelBinder`檢視模型：
 

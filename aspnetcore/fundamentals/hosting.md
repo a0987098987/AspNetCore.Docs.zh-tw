@@ -2,7 +2,6 @@
 title: "在 ASP.NET Core 中裝載"
 author: guardrex
 description: "深入了解 ASP.NET Core，負責啟動與存留期管理的應用程式中的 web 主機。"
-keywords: "ASP.NET Core web 主機 IWebHost、 WebHostBuilder、 IHostingEnvironment、 IApplicationLifetime"
 ms.author: riande
 manager: wpickett
 ms.date: 09/21/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/hosting
-ms.openlocfilehash: 8adc58d67f103e8d1fc8fe197cf392752bdaf660
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 7f6712073002b73ca4ddd7586718c81e62cacbc2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="hosting-in-aspnet-core"></a>在 ASP.NET Core 中裝載
 
@@ -35,8 +34,8 @@ ASP.NET Core 應用程式設定和啟動*主機*。 負責應用程式啟動和�
 * 設定[Kestrel](servers/kestrel.md)做為 web 伺服器。 Kestrel 預設選項，請參閱[Kestrel 選項 > 一節中 ASP.NET Core Kestrel web 伺服器實作的](xref:fundamentals/servers/kestrel#kestrel-options)。
 * 設定所傳回的路徑內容的根[Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory)。
 * 從負載選擇性設定：
-  * *appsettings.json*。
-  * *appsettings。{環境}.json*。
+  * *appsettings.json*.
+  * *appsettings.{Environment}.json*.
   * [使用者密碼](xref:security/app-secrets)的應用程式執行時`Development`環境。
   * 環境變數。
   * 命令列引數。
@@ -587,7 +586,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 會產生相同結果**開始 （RequestDelegate 應用程式）**，除了應用程式回應`http://localhost:8080`。
 
-**啟動 (動作<IRouteBuilder>routeBuilder)**
+**Start(Action<IRouteBuilder> routeBuilder)**
 
 使用的執行個體`IRouteBuilder`([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) 使用路由的中介軟體：
 
@@ -644,7 +643,7 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 
 會產生相同結果**開始 (動作<IRouteBuilder>routeBuilder)**，除了應用程式會回應在`http://localhost:8080`。
 
-**StartWith (動作<IApplicationBuilder>應用程式)**
+**StartWith(Action<IApplicationBuilder> app)**
 
 提供設定委派`IApplicationBuilder`:
 

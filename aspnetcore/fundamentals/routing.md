@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core 路由"
 author: ardalis
 description: "探索如何 ASP.NET Core 路由功能是負責將傳入的要求對應至路由處理常式。"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: bbbcf9e4-3c4c-4f50-b91e-175fe9cae4e2
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: 58388f674ed5d353c1c7208a67fb338e49fdb592
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ffa3178dc4e3aac3ba51c29b7efa3f71eb56bcfe
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -233,9 +231,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | URI | 回應  |
 | ------- | -------- |
 | /package/create/3  | Hello! 路由值: [作業中，建立]，[id，3] |
-| 封裝/追蹤 /-3  | Hello! 路由值: [作業，追蹤]，[id，-3] |
-| / 封裝追蹤 /-3 / | Hello! 路由值: [作業，追蹤]，[id，-3]  |
-| /package/追蹤 / | \<落入沒有相符項目 > |
+| /package/track/-3  | Hello! 路由值: [作業，追蹤]，[id，-3] |
+| /package/track/-3/ | Hello! 路由值: [作業，追蹤]，[id，-3]  |
+| /package/track/ | \<落入沒有相符項目 > |
 | 取得 /hello/Joe | 您好，Joe ！ |
 | POST /hello/Joe | \<落入、 符合 HTTP GET 只 > |
 | 取得 /hello/Joe/Smith | \<落入沒有相符項目 > |
@@ -278,11 +276,11 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | 路由範本 | 範例對應 URL | 注意 |
 | -------- | -------- | ------- |
 | hello  | /hello  | 只比對單一路徑`/hello` |
-| {頁面 = Home} | / | 比對，並設定`Page`至`Home` |
-| {頁面 = Home}  | / 連絡人  | 比對，並設定`Page`至`Contact` |
-| {controller} / {action} / {id} 嗎？ | / 產品/清單 | 對應至`Products`控制站和`List`動作 |
-| {controller} / {action} / {id} 嗎？ | / 產品/詳細資料/123  |  對應至`Products`控制站和`Details`動作。  `id`設定為 123 |
-| {控制器 = Home} / {動作 = 索引} / {id} 嗎？ | /  |  對應至`Home`控制站和`Index`方法。`id`會被忽略。 |
+| {Page=Home} | / | 比對，並設定`Page`至`Home` |
+| {Page=Home}  | / 連絡人  | 比對，並設定`Page`至`Contact` |
+| {controller} / {action} / {id} 嗎？ | /Products/List | 對應至`Products`控制站和`List`動作 |
+| {controller} / {action} / {id} 嗎？ | /Products/Details/123  |  對應至`Products`控制站和`Details`動作。  `id`設定為 123 |
+| {controller=Home}/{action=Index}/{id?} | /  |  對應至`Home`控制站和`Index`方法。`id`會被忽略。 |
 
 使用範本通常是最簡單的方式路由。 條件約束和預設值也可以指定外部的路由範本。
 
@@ -336,14 +334,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 路由中所用的規則運算式通常會啟動`^`字元 （比對字串的起始位置），且結尾`$`字元 （比對結束之字串的位置）。 `^`和`$`確保規則運算式比對整個路由參數值的字元。 不含`^`和`$`字元的規則運算式會比對的字串，通常是不是您想要的任何子字串。 下表顯示一些範例，並說明為何比對或比對會失敗。
 
-| 運算式               | 字串 | 比對 | 註解 |
+| 運算式               | String | 比對 | 註解 |
 | ----------------- | ------------ |  ------------ |  ------------ | 
 | `[a-z]{2}` | hello | 是 | 子字串相符項目 |
 | `[a-z]{2}` | 123abc456 | 是 | 子字串相符項目 |
 | `[a-z]{2}` | mz | 是 | 符合運算式 |
 | `[a-z]{2}` | MZ | 是 | 不區分大小寫 |
-| `^[a-z]{2}$` |  hello | no | 請參閱`^`和`$`上方 |
-| `^[a-z]{2}$` |  123abc456 | no | 請參閱`^`和`$`上方 |
+| `^[a-z]{2}$` |  hello | 否 | 請參閱`^`和`$`上方 |
+| `^[a-z]{2}$` |  123abc456 | 否 | 請參閱`^`和`$`上方 |
 
 請參閱[.NET Framework 規則運算式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)如需有關規則運算式語法。
 
@@ -365,10 +363,10 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 | 環境的值 | 明確的值 | 結果 |
 | -------------   | -------------- | ------ |
-| 控制器 = 常用 | 動作 = 「 關於 」 | `/Home/About` |
-| 控制器 = 常用 | 控制器 ="Order"，動作 = 「 關於 」 | `/Order/About` |
-| 控制站 「 家用 」，= color ="Red" | 動作 = 「 關於 」 | `/Home/About` |
-| 控制器 = 常用 | 動作 = [關於]，色彩 ="Red" | `/Home/About?color=Red`
+| controller="Home" | action="About" | `/Home/About` |
+| controller="Home" | controller="Order",action="About" | `/Order/About` |
+| controller="Home",color="Red" | action="About" | `/Home/About` |
+| controller="Home" | action="About",color="Red" | `/Home/About?color=Red`
 
 如果路由了未對應至參數的預設值，該值會明確提供，它必須符合預設值。 例如: 
 

@@ -2,7 +2,6 @@
 title: "使用 Entity Framework Core 8 的教學課程 1 的 razor 頁面"
 author: rick-anderson
 description: "示範如何建立使用 Entity Framework Core 的 Razor 網頁應用程式"
-keywords: "ASP.NET Core，Entity Framework Core，教學課程"
 ms.author: riande
 manager: wpickett
 ms.date: 11/15/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: 2725960aa8a54c803a141b8d1275e65f245f7082
-ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
+ms.openlocfilehash: bea3b12ebe476c4b59abe117393b0ec8bb7f0306
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 

@@ -2,20 +2,18 @@
 title: "防止跨網站指令碼"
 author: rick-anderson
 description: "本文件介紹跨網站指令碼 (XSS) 與技術來處理這個 ASP.NET Core 應用程式中的弱點。"
-keywords: "ASP.NET Core，XSS，弱點"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 95790927-2bfe-445e-b1fd-429c2c7030ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cross-site-scripting
-ms.openlocfilehash: fdb26a8338b98135cfc3f6bce9d87285e9a7eb12
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: af73a86aa6bcde084ecbe1a3fb5711c7da55871c
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="preventing-cross-site-scripting"></a>防止跨網站指令碼
 
@@ -171,7 +169,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>編碼的 URL 參數
 
-如果您想要建立具有不受信任的輸入，當作值使用的 URL 查詢字串`UrlEncoder`来編碼的值。 例如：
+如果您想要建立具有不受信任的輸入，當作值使用的 URL 查詢字串`UrlEncoder`来編碼的值。 例如，套用至物件的
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";

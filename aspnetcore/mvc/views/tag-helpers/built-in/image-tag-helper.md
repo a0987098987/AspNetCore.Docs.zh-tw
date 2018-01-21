@@ -2,20 +2,18 @@
 title: "影像標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用影像標記協助程式"
-keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a013
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 0d55514508b963ce05031f89a20af696f5d4a670
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 438c5afb96dce6d8978d26159a3b460614111988
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="imagetaghelper"></a>ImageTagHelper
 
@@ -30,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="image-tag-helper-attributes"></a>映像標記協助程式屬性
 
 
-### <a name="asp-append-version"></a>asp 附加版本
+### <a name="asp-append-version"></a>asp-append-version
 
 當指定連同`src`影像標記協助程式的屬性，會叫用。
 

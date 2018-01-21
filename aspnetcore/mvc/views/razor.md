@@ -2,7 +2,6 @@
 title: "適用於 ASP.NET Core razor 語法參考"
 author: rick-anderson
 description: "深入了解伺服器基礎的程式碼內嵌到網頁的 Razor 標記語法。"
-keywords: "ASP.NET Core，Razor，Razor 指示詞"
 ms.author: riande
 manager: wpickett
 ms.date: 10/18/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: 6df769069fce52755a57d8404f88203a652a1ab9
-ms.sourcegitcommit: a3e88639a6bcf8fb4d634036dac93130c464a097
+ms.openlocfilehash: d932e28246998c60e2b3f9c77a2521fe55991e85
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Razor 語法的 ASP.NET Core
 
@@ -24,7 +23,7 @@ Razor 是將伺服器端程式碼內嵌到網頁標記語法。 Razor 語法包�
 
 ## <a name="rendering-html"></a>將 HTML 呈現
 
-預設 Razor 語言為 HTML。 轉譯 HTML Razor 標記中的並無不同轉譯 HTML，從 HTML 檔案。  中的 HTML 標記*.cshtml* Razor 檔案會呈現未變更的伺服器。
+預設 Razor 語言為 HTML。 轉譯 HTML Razor 標記中的並無不同轉譯 HTML，從 HTML 檔案。 中的 HTML 標記*.cshtml* Razor 檔案會呈現未變更的伺服器。
 
 ## <a name="razor-syntax"></a>Razor 語法
 
@@ -73,8 +72,8 @@ Razor 的隱含運算式開頭`@`後面接著 C# 程式碼：
 
 上述程式碼會產生編譯器錯誤類似下列其中一項：
 
- * "Int"項目未結束。  所有元素都必須自行關閉或沒有對稱的結束標記。
- *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ * "Int"項目未結束。 所有元素都必須自行關閉或沒有對稱的結束標記。
+ * 無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
  
 泛型方法的呼叫必須包裝在[明確 Razor 運算式](#explicit-razor-expressions)或[Razor 程式碼區塊](#razor-code-blocks)。
 
@@ -119,10 +118,10 @@ Razor 的明確運算式組成`@`有對稱的括號的符號。 若要轉譯上�
 
 上述程式碼會產生編譯器錯誤類似下列其中一項：
 
- * "Int"項目未結束。  所有元素都必須自行關閉或沒有對稱的結束標記。
- *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ * "Int"項目未結束。 所有元素都必須自行關閉或沒有對稱的結束標記。
+ * 無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
  
- 下列標記會顯示正確的方式寫入這段程式碼。  程式碼會寫入做為明確運算式：
+ 下列標記會顯示正確的方式寫入這段程式碼。 程式碼會寫入做為明確運算式：
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -232,7 +231,7 @@ Razor 程式碼區塊的開頭`@`和由`{}`。 不同於運算式中，不會呈
 
 不含`@:`在程式碼會產生 Razor 的執行階段錯誤。
 
-警告： 額外`@`Razor 檔案中的字元可能會造成在陳述式會導致編譯器錯誤稍後區塊。 這些編譯器錯誤很難了解，因為實際的錯誤發生之前報告的錯誤。  此錯誤之後結合成單一的程式碼區塊的多個隱含/明確運算式是常見的。
+警告： 額外`@`Razor 檔案中的字元可能會造成在陳述式會導致編譯器錯誤稍後區塊。 這些編譯器錯誤很難了解，因為實際的錯誤發生之前報告的錯誤。 此錯誤之後結合成單一的程式碼區塊的多個隱含/明確運算式是常見的。
 
 ## <a name="control-structures"></a>控制結構
 
@@ -285,7 +284,7 @@ else
 
 ### <a name="looping-for-foreach-while-and-do-while"></a>迴圈@for， @foreach， @while，和@do時
 
-樣板化 HTML 可以轉譯迴圈控制陳述式。  若要轉譯的人員清單：
+樣板化 HTML 可以轉譯迴圈控制陳述式。 若要轉譯的人員清單：
 
 ```cshtml
 @{
@@ -496,7 +495,7 @@ Razor 公開`Model`屬性，以存取模型傳遞至檢視：
 <div>Custom text: Gardyloo! - A Scottish warning yelled from a window before dumping a slop bucket on the street below.</div>
 ```
 
- `@model`和`@inherits`可以使用相同的檢視中。  `@inherits`可以是*_ViewImports.cshtml*檢視匯入的檔案：
+ `@model`和`@inherits`可以使用相同的檢視中。 `@inherits`可以是*_ViewImports.cshtml*檢視匯入的檔案：
 
 [!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 

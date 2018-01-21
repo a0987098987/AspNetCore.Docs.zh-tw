@@ -2,20 +2,18 @@
 title: "在要求處理常式中的相依性插入"
 author: rick-anderson
 description: "本文件概述如何使用相依性插入的 ASP.NET Core 應用程式中插入授權需求的處理常式。"
-keywords: "ASP.NET Core 相依性插入、 授權的處理常式"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 5fb6625c-173a-4feb-8380-73c9844dc23c
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: b5e590cc63387553af7385b611cdf8cd6b255db7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9aaa356fe67a7e2c8177ffa1b886ec6b3dc13ef0
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="dependency-injection-in-requirement-handlers"></a>在要求處理常式中的相依性插入
 

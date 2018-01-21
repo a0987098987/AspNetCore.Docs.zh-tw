@@ -2,20 +2,18 @@
 title: "密碼雜湊"
 author: rick-anderson
 description: "本文件說明如何使用 ASP.NET Core 資料保護 Api 的密碼雜湊。"
-keywords: "ASP.NET Core 資料保護、 密碼雜湊"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 982a1eb2-1e6f-4909-896f-82784364472d
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: da9f505f58f18f7ab3b93753bae079eb976b3939
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e97d17b5f6de2e0ddcde6d51618675388b43911a
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="password-hashing"></a>密碼雜湊
 

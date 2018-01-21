@@ -2,20 +2,18 @@
 title: "Razor 頁面路由和應用程式慣例功能 ASP.NET Core"
 author: guardrex
 description: "探索如何路由和應用程式模型提供者慣例功能有助於控制頁面路由、 探索與處理。"
-keywords: "ASP.NET Core、 Razor 頁面、 慣例，AddFolderRouteModelConvention、 AddPageRouteModelConvention、 AddPageRoute、 AddFolderApplicationModelConvention、 AddPageApplicationModelConvention，ConfigureFilter，篩選"
 ms.author: riande
 manager: wpickett
 ms.date: 10/23/2017
 ms.topic: article
-ms.assetid: 6b60514c-81ad-485b-bb22-9b71416dff08
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/razor-pages-convention-features
-ms.openlocfilehash: 81fe5198e25c4275f5cf0a123536a9130be8c1d9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69475ca9abd4e732dc704ad6a8a2fffe219984f7
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="razor-pages-route-and-app-convention-features-in-aspnet-core"></a>Razor 頁面路由和應用程式慣例功能 ASP.NET Core
 
@@ -296,6 +294,6 @@ MVC[動作篩選條件](xref:mvc/controllers/filters#action-filters)Razor 頁面
 
 ![要求 OtherPages/Page3 TriggerValue 路由區段在中使用結果取代 ReplacementValue 路由值的篩選條件。](razor-pages-convention-features/_static/otherpages-page3-filter-replacement-value.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization)

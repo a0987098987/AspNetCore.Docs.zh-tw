@@ -2,20 +2,18 @@
 title: "URL 重寫中 ASP.NET Core 中的介軟體"
 author: guardrex
 description: "深入了解重寫，並在 ASP.NET Core 應用程式中使用 URL 重寫中介軟體重新導向 URL。"
-keywords: "ASP.NET Core URL 重寫，URL 重寫 URL 重新導向 URL 重新導向中, 介軟體，apache_mod"
 ms.author: riande
 manager: wpickett
 ms.date: 08/17/2017
 ms.topic: article
-ms.assetid: e6130638-c410-4161-9921-b658ce988bd1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e07634a6d7ad97bf8735029b5c28d6935b71eb52
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 769696931498605bd3cf3459279939afb86a4ee8
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>URL 重寫中 ASP.NET Core 中的介軟體
 
@@ -266,7 +264,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 * CustomResponse 動作
 * 自訂伺服器變數
 * 萬用字元
-* CustomResponse 動作：
+* Action:CustomResponse
 * LogRewrittenUrl
 
 ---
@@ -274,7 +272,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 #### <a name="supported-server-variables"></a>支援的伺服器變數
 中介軟體可支援下列 IIS URL Rewrite Module 伺服器變數：
 * CONTENT_LENGTH
-* 有效
+* CONTENT_TYPE
 * HTTP_ACCEPT
 * HTTP_CONNECTION
 * HTTP_COOKIE
@@ -299,7 +297,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 ### <a name="method-based-rule"></a>以方法為基礎的規則
 使用`Add(Action<RewriteContext> applyRule)`來實作您自己的規則邏輯的方法中。 `RewriteContext`公開`HttpContext`以便用於您的方法。 `context.Result`判斷其他管線處理。
 
-| 內容。結果                       | 動作                                                          |
+| context.Result                       | 動作                                                          |
 | ------------------------------------ | --------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (預設值) | 繼續套用規則                                         |
 | `RuleResult.EndResponse`             | 停止套用規則，並傳送回應                       |
@@ -371,7 +369,7 @@ A`StreamReader`用於讀取從規則*IISUrlRewrite.xml*規則檔案。
 | 重新撰寫成查詢字串的路徑 | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
 | 寬帶尾端斜線 | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |
 | 強制執行結尾的斜線 | `(.*[^/])$`<br>`/path` | `$1/`<br>`/path/` |
-| 避免重新撰寫特定的要求 | `(.*[^(\.axd)])$`<br>是:`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
+| 避免重新撰寫特定的要求 | `(.*[^(\.axd)])$`<br>[是]:`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
 | 重新排列 URL 區段 | `path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1` |
 | 取代 URL 區段 | `^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
 

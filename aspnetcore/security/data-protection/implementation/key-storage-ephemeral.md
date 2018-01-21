@@ -2,20 +2,18 @@
 title: "暫時資料保護提供者"
 author: rick-anderson
 description: "本文件說明的 ASP.NET Core 暫時資料保護提供者的實作詳細資料。"
-keywords: "ASP.NET Core 資料保護、 暫時的提供者"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: af6ea1d0-0d9d-41df-a870-5dda24978e2f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-storage-ephemeral
-ms.openlocfilehash: 51d4aaa3a669763c2e388a8186ebeaec6b57e77a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9c1d03373c9d7fb6dffb3583c58aa593fd3875f4
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="ephemeral-data-protection-providers"></a>暫時資料保護提供者
 

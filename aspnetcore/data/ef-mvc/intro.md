@@ -2,26 +2,24 @@
 title: "Entity Framework Core 10 的教學課程 1 的 ASP.NET Core MVC"
 author: tdykstra
 description: 
-keywords: "ASP.NET Core，Entity Framework Core，教學課程"
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
 ms.topic: get-started-article
-ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 2b21c7fb35c65d9374723faac5b812289023a0f6
-ms.sourcegitcommit: 198fb0488e961048bfa376cf58cb853ef1d1cb91
+ms.openlocfilehash: df13726689c430ab19786e104ea7404051107aa9
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
 由[Tom Dykstra](https://github.com/tdykstra)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程的 Razor 頁面版本[這裡](xref:data/ef-rp/intro)。 Razor 頁面版本很容易遵循，並涵蓋更多的 EF 功能。 我們建議您遵循[本教學課程的 Razor 頁面版本](xref:data/ef-rp/intro)。
+本教學課程的 Razor 頁面版本[這裡](xref:data/ef-rp/intro)。 此 Razor 頁面版本更容易遵循，並涵蓋更多 EF 功能。 我們建議您遵循[本教學課程的 Razor 頁面版本](xref:data/ef-rp/intro)。
 
 Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) 核心 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
 
@@ -29,7 +27,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 
 [下載或檢視完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需有關如何選擇 EF 資訊 6.x 和 EF 核心，請參閱[EF 核心 vs。EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
+EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需有關如何選擇 EF 資訊 6.x 和 EF 核心，請參閱[EF 核心 vs。EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/). 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
 > * 如需本教學課程的 ASP.NET Core 1.1 版本，請參閱[本教學課程以 PDF 格式的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
@@ -44,7 +42,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core)或[EF 核心](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP] 
-> 這是一系列 10 教學課程，其中每一個都是根據所完成的作業在先前的教學課程。  請考慮每個成功的教學課程完成後儲存專案的複本。  然後如果您遇到問題時，您可以透過從啟動上一個教學課程，而不是回到整個序列的開頭。
+> 這是一系列 10 教學課程，其中每一個都是根據所完成的作業在先前的教學課程。 請考慮每個成功的教學課程完成後儲存專案的複本。 然後如果您遇到問題時，您可以透過從啟動上一個教學課程，而不是回到整個序列的開頭。
 
 ## <a name="the-contoso-university-web-application"></a>Contoso 大學 web 應用程式
 
@@ -136,7 +134,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 `Enrollments`屬性為導覽屬性。 導覽屬性會保留此實體與相關的其他實體。 在此情況下，`Enrollments`屬性`Student entity`保存所有`Enrollment`的實體有關的`Student`實體。 換句話說，如果給定的學生資料列，在資料庫中有兩個相關註冊資料列 （資料列包含該學生的主索引鍵值其 StudentID 外部索引鍵資料行中），可`Student`實體的`Enrollments`導覽屬性會包含那些兩個`Enrollment`實體。
 
-如果導覽屬性都可以保存多個實體 （如同多對多或一對多的關聯性），其類型必須是的清單中的項目可以新增、 刪除和更新，例如`ICollection<T>`。  您可以指定`ICollection<T>`或型別，例如`List<T>`或`HashSet<T>`。 如果您指定`ICollection<T>`，EF 建立`HashSet<T>`預設集合。
+如果導覽屬性都可以保存多個實體 （如同多對多或一對多的關聯性），其類型必須是的清單中的項目可以新增、 刪除和更新，例如`ICollection<T>`。 您可以指定`ICollection<T>`或型別，例如`List<T>`或`HashSet<T>`。 如果您指定`ICollection<T>`，EF 建立`HashSet<T>`預設集合。
 
 ### <a name="the-enrollment-entity"></a>註冊實體
 
@@ -210,7 +208,7 @@ EF 建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬性名�
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>加入程式碼以初始化測試資料的資料庫
 
-Entity Framework 會為您建立空的資料庫。  本節中，您可以撰寫以填入測試資料建立資料庫之後呼叫的方法。
+Entity Framework 會為您建立空的資料庫。 本節中，您可以撰寫以填入測試資料建立資料庫之後呼叫的方法。
 
 在此您將使用`EnsureCreated`方法，以自動建立資料庫。 在[之後的教學課程](migrations.md)您會看到如何使用 Code First 移轉，若要變更資料庫結構描述，而不是卸除並重新建立資料庫處理模型的變更。
 
@@ -218,7 +216,7 @@ Entity Framework 會為您建立空的資料庫。  本節中，您可以撰寫�
 
 [!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
-如果在資料庫中，沒有任何的學生，而且如果沒有，則會假設資料庫新，而且必須是測試資料植入，則會檢查程式碼。  它將測試資料載入至陣列而非`List<T>`集合，以最佳化效能。
+如果在資料庫中，沒有任何的學生，而且如果沒有，則會假設資料庫新，而且必須是測試資料植入，則會檢查程式碼。 它將測試資料載入至陣列而非`List<T>`集合，以最佳化效能。
 
 在*Program.cs*，修改`Main`方法來啟動應用程式上執行以下作業：
 
@@ -244,10 +242,10 @@ CRUD 動作方法和檢視表的自動建立稱為 scaffolding。 Scaffolding �
 
 * 以滑鼠右鍵按一下**控制器**資料夾中的**方案總管 中**選取**新增 > 新的 Scaffold 項目**。
 
-如果**將 MVC 相依性**對話方塊隨即出現：
+如果出現 [新增 MVC 相依性] 對話方塊：
 
-* [更新為最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)。 15.5 之前的 visual Studio 版本會顯示此對話方塊。
-* 如果您不能更新，請選取**新增**，然後依照 新增控制器步驟一次。
+* [將 Visual Studio 更新為最新版本](https://www.visualstudio.com/downloads/)。 15.5 之前的 Visual Studio 版本會顯示此對話方塊。
+* 如果您無法更新，請選取 [新增]，然後再次遵循新增控制器步驟進行。
 
 * 在**新增 Scaffold**對話方塊：
 
@@ -353,7 +351,7 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 
 要注意當您撰寫非同步程式碼，使用 Entity Framework 的一些事項：
 
-* 只會造成查詢或命令傳送至資料庫的陳述式會以非同步方式執行。 其中包含，例如`ToListAsync`， `SingleOrDefaultAsync`，和`SaveChangesAsync`。  它不包含，例如，陳述式，只要變更`IQueryable`，例如`var students = context.Students.Where(s => s.LastName == "Davolio")`。
+* 只會造成查詢或命令傳送至資料庫的陳述式會以非同步方式執行。 其中包含，例如`ToListAsync`， `SingleOrDefaultAsync`，和`SaveChangesAsync`。 它不包含，例如，陳述式，只要變更`IQueryable`，例如`var students = context.Students.Where(s => s.LastName == "Davolio")`。
 
 * EF 內容不是安全執行緒： 不要嘗試執行多個平行作業。 當您呼叫任何非同步 EF 方法時，一律使用`await`關鍵字。
 
@@ -366,4 +364,4 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 現在您已建立簡單的應用程式使用的 Entity Framework Core 和 SQL Server Express LocalDB 來儲存和顯示資料。 在下列的教學課程中，您將學習如何執行基本 CRUD （建立、 讀取、 更新、 刪除） 作業。
 
 >[!div class="step-by-step"]
-[下一步](crud.md)  
+[下一步](crud.md)

@@ -2,7 +2,6 @@
 title: "設定 ASP.NET Core 身分識別"
 author: AdrienTorris
 description: "了解 ASP.NET Core 識別預設值，並設定要使用自訂值的各種識別屬性。"
-keywords: "ASP.NET Core，身分識別驗證安全性"
 ms.author: scaddie
 manager: wpickett
 ms.date: 01/11/2018
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: ac204cb89aac1f90adc64c4f0bec4e946cb8c4d9
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: d3a13d1cef3417522460b44c52c1361c3e9d1162
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-identity"></a>設定身分識別
 
@@ -103,13 +102,13 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
-| `Cookie.Name`  | Cookie 的名稱。  | .AspNetCore.Cookies。  |
+| `Cookie.Name`  | Cookie 的名稱。  | .AspNetCore.Cookies.  |
 | `Cookie.HttpOnly`  | 當 true 時，不能從用戶端指令碼存取 cookie。  |  true |
 | `ExpireTimeSpan`  | 控制儲存在 cookie 中的驗證票證的時間會維持有效從其建立點。  | 14 天  |
 | `LoginPath`  | 未經授權的使用者時，則會重新導向至登入此路徑。 | / 帳戶/登入  |
-| `LogoutPath`  | 在使用者登出時，則會重新導向到這個路徑。  | / 帳戶/登出  |
+| `LogoutPath`  | 在使用者登出時，則會重新導向到這個路徑。  | /Account/Logout  |
 | `AccessDeniedPath`  | 當使用者失敗時的授權檢查時，則會重新導向到這個路徑。  |   |
-| `SlidingExpiration`  | 若為 true，將會與新的到期時間，當目前 cookie 是多個到期視窗的中間發出新的 cookie。  | / 帳戶/AccessDenied |
+| `SlidingExpiration`  | 若為 true，將會與新的到期時間，當目前 cookie 是多個到期視窗的中間發出新的 cookie。  | /Account/AccessDenied |
 | `ReturnUrlParameter`  | 判斷當 401 未授權的狀態的程式碼變更為 302 重新導向至登入路徑時，由中介軟體附加的查詢字串參數的名稱。  |  true |
 | `AuthenticationScheme`  | 這只是適用於 ASP.NET Core 相關 1.x。 特定的驗證配置的邏輯名稱。 |  |
 | `AutomaticAuthenticate`  | 這個旗標僅適用於 ASP.NET Core 相關 1.x。 若為 true，cookie 驗證應執行每個要求，並嘗試驗證，重新建構建立它的任何序列化的主體。  |  |

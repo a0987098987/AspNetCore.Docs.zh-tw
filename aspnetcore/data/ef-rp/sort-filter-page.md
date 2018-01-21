@@ -2,18 +2,17 @@
 title: "Razor 頁面使用 EF Core-排序、 篩選、 分頁-3 個 8"
 author: rick-anderson
 description: "在本教學課程中，您要加入排序、 篩選和分頁至網頁的 ASP.NET 核心和實體架構的核心功能。"
-keywords: "ASP.NET Core、 Entity Framework Core、 排序、 篩選、 分頁、 分組"
 ms.author: riande
 ms.date: 10/22/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 5e17663b88a622101245228e9372db55e4e874be
-ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
+ms.openlocfilehash: 08f00e183dd8a8daa883d0b9ff15698b3a39f625
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>排序、 篩選、 分頁和群組的方式-Razor 頁面 (以 8 為 3) 使用的 EF 核心
 
@@ -280,7 +279,7 @@ LINQ 陳述式註冊日期分組的學生實體、 計算每個群組中的實�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [偵錯 ASP.NET Core 2.x 來源](https://github.com/aspnet/Docs/issues/4155)
+* [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)
 
 在下一個教學課程中，應用程式會使用移轉更新的資料模型。
 

@@ -1,20 +1,18 @@
 ---
 title: "建立 ASP.NET Core 應用程式與受保護的授權的使用者資料"
 author: rick-anderson
-keywords: "ASP.NET Core、 MVC、 授權、 角色、 安全性、 系統管理員"
 ms.author: riande
 manager: wpickett
 ms.date: 05/22/2017
 ms.topic: article
-ms.assetid: abeb2f8e-dfbf-4398-a04c-338a613a65bc
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: db95d46dafdd300d4ec13e8cc31a3d995016ab92
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 861ac619c7f5fb19a56c59536e20724d96bbddca
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -321,4 +319,4 @@ dotnet user-secrets set SeedUserPW <PW>
 
 * [ASP.NET Core 授權實驗室](https://github.com/blowdart/AspNetAuthorizationWorkshop)。 這個實驗室會進入這個教學課程中介紹的安全性功能的更多詳細資料。
 * [在 ASP.NET Core 授權： 簡單、 宣告式和自訂的角色](index.md)
-* [以原則為基礎的自訂授權](policies.md)
+* [自訂原則式授權](policies.md)

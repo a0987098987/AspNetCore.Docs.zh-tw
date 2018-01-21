@@ -2,7 +2,6 @@
 title: "個別使用者帳戶建立的專案為基礎的發行項"
 author: rick-anderson
 description: "本文件列出個別的使用者帳戶建立的專案為基礎的發行項。"
-keywords: "ASP.NET Core，IAuthorizationService 的授權"
 ms.author: riande
 manager: wpickett
 ms.date: 11/30/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/individual
-ms.openlocfilehash: 1864625e0ad6b4ec6fc2ada3fa7d93edec91b633
-ms.sourcegitcommit: 037d3900f739dbaa2ba14158e3d7dc81478952ad
+ms.openlocfilehash: 844514f2970b761ec65589765eb21421cd1962a1
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="articles-based-on-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的專案為基礎的發行項
 

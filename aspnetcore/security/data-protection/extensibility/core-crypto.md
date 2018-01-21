@@ -2,7 +2,6 @@
 title: "核心加密擴充性"
 author: rick-anderson
 description: "說明 IAuthenticatedEncryptor、 IAuthenticatedEncryptorDescriptor、 IAuthenticatedEncryptorDescriptorDeserializer 和最上層的 factory。"
-keywords: "ASP.NET Core，IAuthenticatedEncryptor，IAuthenticatedEncryptorDescriptor IAuthenticatedEncryptorDescriptorDeserializer"
 ms.author: riande
 manager: wpickett
 ms.date: 8/11/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: 69839562c39ab83531085e20dac1bd56e8d13d3f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b82c30fe40c4badc74645dafa9f0d13f6ffae031
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="core-cryptography-extensibility"></a>核心加密擴充性
 
@@ -78,7 +77,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 * CreateEncryptorInstance(): IAuthenticatedEncryptor
 
-* ExportToXml(): XmlSerializedDescriptorInfo
+* ExportToXml() : XmlSerializedDescriptorInfo
 
 IAuthenticatedEncryptor，一樣會假設 IAuthenticatedEncryptorDescriptor 的執行個體包裝一個特定的索引鍵。 這表示，對於任何給定的 IAuthenticatedEncryptorDescriptor 執行個體，其 CreateEncryptorInstance 方法所建立的任何已驗證的加密程式應視為相等，如下列程式碼範例。
 
@@ -110,7 +109,7 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 **IAuthenticatedEncryptorDescriptor**介面代表知道如何將本身匯出到 XML 的類型。 它的 API 如下所示。
 
-* ExportToXml(): XmlSerializedDescriptorInfo
+* ExportToXml() : XmlSerializedDescriptorInfo
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -145,7 +144,7 @@ ImportFromXml 方法會傳回 XElement [IAuthenticatedEncryptorDescriptor.Export
 
 * .ctor(IServiceProvider)
 
-* .ctor
+* .ctor()
 
 > [!NOTE]
 > 傳遞至建構函式的 IServiceProvider 可能是 null。
@@ -156,7 +155,7 @@ ImportFromXml 方法會傳回 XElement [IAuthenticatedEncryptorDescriptor.Export
 
 **AlgorithmConfiguration**類別代表的類型而知道如何建立[IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor)執行個體。 它會公開單一 API。
 
-* CreateNewDescriptor(): IAuthenticatedEncryptorDescriptor
+* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
 
 AlgorithmConfiguration 視為最上層的 factory。 設定做為範本。 它會包裝的演算法資訊 （例如，此組態產生描述元的 AES-128-GCM 主要金鑰），但是它尚未與特定的索引鍵相關聯。
 
@@ -168,7 +167,7 @@ AlgorithmConfiguration 類型做為索引鍵建立常式的進入點例如[自�
 
 **IAuthenticatedEncryptorConfiguration**介面代表的類型而知道如何建立[IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor)執行個體。 它會公開單一 API。
 
-* CreateNewDescriptor(): IAuthenticatedEncryptorDescriptor
+* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
 
 IAuthenticatedEncryptorConfiguration 視為最上層的 factory。 設定做為範本。 它會包裝的演算法資訊 （例如，此組態產生描述元的 AES-128-GCM 主要金鑰），但是它尚未與特定的索引鍵相關聯。
 

@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core 目的字串"
 author: rick-anderson
 description: "本文概述目的字串階層和多租用戶與 ASP.NET Core 資料保護 Api。"
-keywords: "ASP.NET Core 資料保護和目的字串"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 9d18c287-e0e6-4541-b09c-7fed45c902d9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
-ms.openlocfilehash: ce506710042bfb76015c3af991b17e018b78e970
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e720c3e245f4a20ffeb728035ee3ad3c1320ab92
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a>目的階層和 ASP.NET Core 中的多租用戶
 

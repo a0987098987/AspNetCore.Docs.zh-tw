@@ -2,20 +2,18 @@
 title: "角色型授權"
 author: rick-anderson
 description: "本文件將示範如何藉由傳遞角色 Authorize 屬性來限制 ASP.NET Core 控制器和動作的存取。"
-keywords: "ASP.NET Core 授權，角色"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: 26babef1a296aaa1fa11f36d30c4d911d73808ce
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.openlocfilehash: 18964464fea76c91d716202d89ee3a3eb36c3078
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="role-based-authorization"></a>角色型授權
 

@@ -2,20 +2,18 @@
 title: "啟用跨原始要求 (CORS)"
 author: rick-anderson
 description: "本文件介紹的標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
-keywords: "ASP.NET Core，CORS，跨來源"
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
 ms.topic: article
-ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: 5398b6ad6531710de2b8000cb368e5fa607ae7ff
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: e6b49b9dde94cc7d035ea91b992a13df8cb8caf2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -164,15 +162,15 @@ CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 
 
 根據預設，在瀏覽器不會公開所有應用程式的回應標頭。 (請參閱[http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header)。)預設可用的回應標頭如下：
 
-* 快取控制
+* Cache-Control
 
-* 內容語言
+* Content-Language
 
-* 內容類型
+* Content-Type
 
 * 到期
 
-* 上次修改
+* Last-Modified
 
 * Pragma
 
@@ -268,7 +266,7 @@ Test message
 
   * application/x-www-form-urlencoded
 
-  * multipart/表單資料
+  * multipart/form-data
 
   * 文字/純文字
 

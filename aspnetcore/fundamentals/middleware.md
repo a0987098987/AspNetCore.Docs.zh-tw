@@ -2,20 +2,18 @@
 title: "ASP.NET Core 中介軟體"
 author: rick-anderson
 description: "深入了解 ASP.NET Core 中介軟體和要求管線。"
-keywords: "ASP.NET Core 中, 介軟體管線、 委派"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2017
 ms.topic: article
-ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: ad8d207b1e6de396f16d098fb07ddc89bea2c520
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: af16046c97964e8e1c16a4f5989fcfa794741c4d
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
@@ -153,9 +151,9 @@ public void Configure(IApplicationBuilder app)
 | 要求 | 回應 |
 | --- | --- |
 | localhost:1234 | 從非對應委派的 hello。  |
-| localhost:1234 / map1 | 測試 1 對應 |
-| localhost:1234 / map2 | 測試 2 對應 |
-| localhost:1234 / map3 | 從非對應委派的 hello。  |
+| localhost:1234/map1 | 測試 1 對應 |
+| localhost:1234/map2 | 測試 2 對應 |
+| localhost:1234/map3 | 從非對應委派的 hello。  |
 
 當`Map`是使用，相符的路徑區段已從`HttpRequest.Path`和附加至`HttpRequest.PathBase`針對每個要求。
 
@@ -168,7 +166,7 @@ public void Configure(IApplicationBuilder app)
 | 要求 | 回應 |
 | --- | --- |
 | localhost:1234 | 從非對應委派的 hello。  |
-| localhost:1234 /？ 分支 = master | 使用分支 = master|
+| localhost:1234/?branch=master | 使用分支 = master|
 
 `Map`支援巢狀結構，例如：
 
@@ -195,7 +193,7 @@ app.Map("/level1/level2", HandleMultiSeg);
 
 ASP.NET Core 隨附下列的中介軟體元件：
 
-| 中介軟體 | 說明 |
+| 中介軟體 | 描述 |
 | ----- | ------- |
 | [驗證](xref:security/authentication/identity) | 提供的驗證支援。 |
 | [CORS](xref:security/cors) | 設定跨原始資源共用。 |

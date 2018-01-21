@@ -2,20 +2,18 @@
 title: "ASP.NET Core 壓縮回應中介軟體"
 author: guardrex
 description: "了解回應壓縮以及如何在 ASP.NET Core 應用程式中使用回應壓縮中介軟體。"
-keywords: "ASP.NET Core 效能、 回應壓縮、 gzip、 接受編碼、 中介軟體"
 ms.author: riande
 manager: wpickett
 ms.date: 08/20/2017
 ms.topic: article
-ms.assetid: de621887-c5c9-4ac8-9efd-f5cc0457a134
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 86244179115fe6a7d0f7298495086a96ee9570d9
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 9270287b62f91ddb81d6a347dd583e1cbb32f3c3
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -33,7 +31,7 @@ ms.lasthandoff: 01/11/2018
 * 無法使用下列伺服器為基礎的壓縮技術：
   * [IIS 動態壓縮模組](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
   * [Apache mod_deflate 模組](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
-  * [NGINX 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
+  * [Nginx 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * 主機上直接：
   * [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys)(先前稱為[WebListener](xref:fundamentals/servers/weblistener))
   * [Kestrel](xref:fundamentals/servers/kestrel)
@@ -184,7 +182,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>位於 Nginx 反向 proxy 後方的中介軟體問題
-當要求 Nginx，由代理`Accept-Encoding`標頭會移除。 這可防止壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 nginx (BasicMiddleware #123) 傳遞壓縮](https://github.com/aspnet/BasicMiddleware/issues/123)。
+當要求 Nginx，由代理`Accept-Encoding`標頭會移除。 這可防止壓縮回應的中介軟體。 如需詳細資訊，請參閱[NGINX： 壓縮和解壓縮](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)。 此問題會追蹤[找出 Nginx (BasicMiddleware #123) 傳遞壓縮](https://github.com/aspnet/BasicMiddleware/issues/123)。
 
 ## <a name="working-with-iis-dynamic-compression"></a>使用 IIS 動態壓縮
 如果您有使用中 IIS 動態壓縮模組在您想要停用應用程式的伺服器層級設定，您可以新增至與您*web.config*檔案。 如需詳細資訊，請參閱[停用 IIS 模組](xref:host-and-deploy/iis/modules#disabling-iis-modules)。

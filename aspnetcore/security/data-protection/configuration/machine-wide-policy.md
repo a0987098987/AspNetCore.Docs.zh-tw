@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core 支援的資料保護整部機器的原則"
 author: rick-anderson
 description: "了解支援的設定預設的全機器原則針對取用 ASP.NET Core 資料保護的所有應用程式。"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 692e120f13882be594afc5fb926b96b82d9609e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c3ae3b628ebe17c7926c71f1fad664d719d1706
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>在 ASP.NET Core 支援的資料保護整部機器的原則
 
@@ -36,7 +34,7 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 
 支援的值如下所示。
 
-| 值              | 類型   | 說明 |
+| 值              | 類型   | 描述 |
 | ------------------ | :----: | ----------- |
 | EncryptionType     | 字串 | 指定哪些演算法適用於資料保護。 值必須是 CNG CBC、 CNG GCM 或受管理，並且會在下面將更多詳細描述。 |
 | DefaultKeyLifetime | DWORD  | 指定新產生的索引鍵的存留期。 指定以天為單位的值，而且必須是 > = 7。 |
@@ -46,7 +44,7 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 
 如果 EncryptionType CNG CBC，系統設定成搭配 Windows CNG 提供服務的真實性使用 CBC 模式對稱的區塊編碼器的機密性和 HMAC (請參閱[指定自訂的 Windows CNG 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)的詳細資料）。 支援下列的其他值，其中每一個都對應至 CngCbcAuthenticatedEncryptionSettings 類型上的屬性。
 
-| 值                       | 類型   | 說明 |
+| 值                       | 類型   | 描述 |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | 字串 | 了解的 CNG 對稱的區塊加密演算法的名稱。 CBC 模式中開啟此演算法。 |
 | EncryptionAlgorithmProvider | 字串 | 可以產生 EncryptionAlgorithm 演算法的 CNG 提供者實作的名稱。 |
@@ -56,7 +54,7 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 
 如果 EncryptionType CNG GCM，系統會設定要用於 Galois/計數器模式對稱的區塊編碼器機密性與驗證與 Windows CNG 所提供的服務 (請參閱[指定自訂的 Windows CNG 演算法](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms)如需詳細資訊）。 支援下列的其他值，其中每一個都對應至 CngGcmAuthenticatedEncryptionSettings 類型上的屬性。
 
-| 值                       | 類型   | 說明 |
+| 值                       | 類型   | 描述 |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | 字串 | 了解的 CNG 對稱的區塊加密演算法的名稱。 此演算法 Galois/計數器模式中開啟。 |
 | EncryptionAlgorithmProvider | 字串 | 可以產生 EncryptionAlgorithm 演算法的 CNG 提供者實作的名稱。 |
@@ -64,7 +62,7 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 
 如果 EncryptionType 為 Managed，系統會設定要用於受管理的 SymmetricAlgorithm 機密性和 KeyedHashAlgorithm 的真實性 (請參閱[指定自訂管理演算法](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms)如需詳細資訊)。 支援下列的其他值，其中每一個都對應至 ManagedAuthenticatedEncryptionSettings 類型上的屬性。
 
-| 值                      | 類型   | 說明 |
+| 值                      | 類型   | 描述 |
 | -------------------------- | :----: | ----------- |
 | EncryptionAlgorithmType    | 字串 | 實作 SymmetricAlgorithm 之型別的組件限定名稱。 |
 | EncryptionAlgorithmKeySize | DWORD  | 要衍生的對稱式加密演算法的金鑰長度 （以位元為單位）。 |

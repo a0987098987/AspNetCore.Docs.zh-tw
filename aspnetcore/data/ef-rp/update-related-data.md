@@ -2,7 +2,6 @@
 title: "使用 EF Core-razor 頁面更新相關的資料-7，8 個"
 author: rick-anderson
 description: "在本教學課程中，您要更新相關的資料藉由更新外部索引鍵欄位，而且導覽屬性。"
-keywords: "加入 ASP.NET Core，Entity Framework Core，相關資料，"
 ms.author: riande
 manager: wpickett
 ms.date: 11/15/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: f07a33c19ba1be623fae14228f8fbc909d766816
-ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
+ms.openlocfilehash: 817bfd48dce94e7dbad96cb6f822494e3adfae1d
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>更新相關的資料-EF 核心 Razor 頁面 (8 個 7)
 

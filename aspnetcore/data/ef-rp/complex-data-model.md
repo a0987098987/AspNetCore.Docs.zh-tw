@@ -2,7 +2,6 @@
 title: "使用 EF Core-資料模型-5 8 的 razor 頁面"
 author: rick-anderson
 description: "本教學課程中您要新增更多的實體和關聯性，並指定格式、 驗證和資料庫對應規則，以自訂資料模型。"
-keywords: "ASP.NET Core，Entity Framework Core，資料註解"
 ms.author: riande
 manager: wpickett
 ms.date: 10/25/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: c2761f79fa4836d29541526782969bb0fd47778b
-ms.sourcegitcommit: 6e46abd65973dea796d364a514de9ec2e3e1c1ed
+ms.openlocfilehash: c375fe6ea98c621012eb55589c8b174c2a95b697
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-razor-pages-tutorial-5-of-8"></a>建立複雜的資料模型的 EF 核心 Razor 頁面教學課程 (5 8 個)
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 12/02/2017
 名稱不能超過 50 個字元限制為上述的程式碼。 `StringLength`屬性不會防止使用者輸入名稱的泛空白字元。 [RegularExpression](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1)屬性用來將限制套用至輸入。 例如，下列程式碼需要第一個字元是大寫，而其餘字元是依字母順序排列：
 
 ```csharp
-[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
 執行應用程式：

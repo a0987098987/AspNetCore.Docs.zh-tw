@@ -2,29 +2,27 @@
 title: "撰寫 ASP.NET Core 中的標記協助程式"
 author: rick-anderson
 description: "了解如何撰寫 ASP.NET Core 中標記協助程式。"
-keywords: "ASP.NET Core，標記協助程式"
 ms.author: riande
 manager: wpickett
-ms.date: 06/14/2017
+ms.date: 01/19/2018
 ms.topic: article
-ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cbe46ee1d3cd9f7a30a87d364074f1302f9af7ab
-ms.sourcegitcommit: 5834afb87e4262b9b88e60e3fe6c735e61a1e08d
+ms.openlocfilehash: 9aaf40377e07e53fd0b7ebb177bcbb2df52b7553
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="authoring-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>撰寫 ASP.NET Core，範例與逐步解說中的標記協助程式
+# <a name="author-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>在 ASP.NET Core，範例與逐步解說中的作者標記協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="getting-started-with-tag-helpers"></a>開始使用標記協助程式
+## <a name="get-started-with-tag-helpers"></a>開始使用標記協助程式
 
 本教學課程介紹程式設計標記協助程式。 [標記協助程式簡介](intro.md)描述標記協助程式提供的優點。
 
@@ -46,7 +44,7 @@ ms.lasthandoff: 12/20/2017
 
 ```html
 <a href="mailto:Support@contoso.com">Support@contoso.com</a>
-   ```
+```
 
 也就是錨點標籤，可讓此電子郵件 連結。 您可以執行這項操作，如果您要撰寫的部落格引擎，並且需要其所有以相同的網域傳送電子郵件行銷、 支援和其他連絡人。
 
@@ -188,7 +186,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 [HtmlTargetElement("MyBold")]
    ```
 
-## <a name="passing-a-model-to-a-tag-helper"></a>將模型傳遞至標記協助程式
+## <a name="pass-a-model-to-a-tag-helper"></a>將模型傳遞至標記協助程式
 
 1.  新增*模型*資料夾。
 
@@ -285,7 +283,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 >
 >[Nameof](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/nameof)運算子將保護的程式碼應該它曾經重構 (我們可能會想要將名稱變更為`RedCondition`)。
 
-### <a name="avoiding-tag-helper-conflicts"></a>避免衝突標記協助程式
+### <a name="avoid-tag-helper-conflicts"></a>避免衝突標記協助程式
 
 本節中，您可以撰寫一組的自動連結標記協助程式。 第一個將會取代標記包含 HTML 錨定標記包含相同的 URL （並因而產生連結至 URL） 從 HTTP URL。 第二個會執行相同動作 URL 的開頭為 WWW。
 
@@ -329,7 +327,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     
     上述程式碼將會保證 HTTP 標記協助程式執行之前 WWW 標記協助程式。 變更`Order`至`MaxValue`並確認產生 WWW 標記的標記不正確。
 
-## <a name="inspecting-and-retrieving-child-content"></a>檢查及擷取子內容
+## <a name="inspect-and-retrieve-child-content"></a>檢查及擷取子內容
 
 標記協助程式提供數個屬性，擷取內容。
 

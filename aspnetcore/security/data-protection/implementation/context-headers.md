@@ -2,20 +2,18 @@
 title: "內容標頭"
 author: rick-anderson
 description: "本文概述 ASP.NET Core 資料保護內容標頭的實作詳細資料。"
-keywords: "ASP.NET Core 資料保護、 內容標頭"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: d026a58c-67f4-411e-a410-c35f29c2c517
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: eb8e4c9ad67d3046648aea1b45f4a675b41b3ec0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b5ed2e48a55e23d73bccd01a731b35ea68f8944e
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="context-headers"></a>內容標頭
 
@@ -55,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 相反地，我們使用 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，秒 5.1) 零長度的索引鍵、 標籤和與內容為基礎的 PRF HMACSHA512。 我們衍生 |K_E |+ |K_H |位元組的輸出，然後分解結果 K_E 和 K_H 本身。 在數學上，這被表示，如下所示。
 
-(K_E | |K_H) = SP800_108_CTR (prf = HMACSHA512，索引鍵 =""，標籤 =""，內容 ="")
+( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 
 ### <a name="example-aes-192-cbc--hmacsha256"></a>範例： 192 位 AES-CBC + HMACSHA256
 
@@ -72,11 +70,11 @@ B7 92 3D BF 59 90 00 A9
 
 接下來，計算 Enc_CBC (K_E、 IV，"") 192 位 AES-CBC 指定 IV = 0 * 和上述 K_E。
 
-結果: = F474B1872B3B53E4721DE19C0841DB6F
+result := F474B1872B3B53E4721DE19C0841DB6F
 
 接下來，計算 MAC (K_H，"") 的 HMACSHA256 上述指定 K_H。
 
-結果: = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
 
 這會產生下列的完整內容標頭：
 
@@ -123,7 +121,7 @@ D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 
 接下來，計算 MAC (K_H，"") 的上述指定 K_H HMACSHA1。
 
-結果: = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
+result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 這會產生完整的內容標頭的已驗證的指紋即加密演算法組 （3DES-192 位 CBC 加密 + HMACSHA1 驗證），如下所示：
 
@@ -167,17 +165,17 @@ D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 
 K_E 衍生使用相同的機制，如 CBC 加密 + HMAC 驗證案例所示。 不過，因為沒有 K_H 正在播放這裡，我們基本上都擁有 |K_H |= 0，演算法會摺疊至下列表單。
 
-K_E = SP800_108_CTR (prf = HMACSHA512，索引鍵 =""，標籤 =""，內容 ="")
+K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 
 ### <a name="example-aes-256-gcm"></a>範例： AES 256 GCM
 
 首先，讓 K_E = SP800_108_CTR (prf = HMACSHA512，索引鍵 =""，標籤 =""，內容 ="")，其中 |K_E |= 256 位元。
 
-K_E: = 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
+K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 接下來，計算 Enc_GCM 的驗證標記 (K_E nonce，"") AES-256-GCM 提供 nonce = 096 和 K_E 上述。
 
-結果: = E7DCCE66DF855A323A6BB7BD7A59BE45
+result := E7DCCE66DF855A323A6BB7BD7A59BE45
 
 這會產生下列的完整內容標頭：
 

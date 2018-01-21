@@ -2,20 +2,18 @@
 title: "處理要求中 ASP.NET Core MVC 控制站"
 author: ardalis
 description: 
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 07/03/2017
 ms.topic: article
-ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: 5dc6c7dc70027bb79875f389d535119a2543b873
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cef493fc2010d1c82e5c1dfec85864539252b817
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>處理要求中 ASP.NET Core MVC 控制站
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 11/10/2017
 
     這種類型會傳回 HTTP 狀態碼。 此類型的一些協助程式方法都是`BadRequest`， `NotFound`，和`Ok`。 例如，`return BadRequest();`產生 400 狀態碼執行時。 當這類方法`BadRequest`， `NotFound`，和`Ok`會多載，它們不會再限定為 HTTP 狀態碼回應，因為執行內容交涉。
 
-* **重新導向**
+* **Redirect**
 
     這種類型會傳回重新導向到某個動作或目的地 (使用`Redirect`， `LocalRedirect`， `RedirectToAction`，或`RedirectToRoute`)。 例如，`return RedirectToAction("Complete", new {id = 123});`重新導向至`Complete`，傳遞匿名物件。
 

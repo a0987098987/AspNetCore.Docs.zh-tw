@@ -2,20 +2,18 @@
 title: "共用應用程式之間的 cookie"
 author: rick-anderson
 description: "本文件說明如何資料保護堆疊支援共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式。"
-keywords: "共用的 ASP.NET Core,ASP.NET,cookies,Interop,cookie"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 9a7aae45-8e21-4c54-950c-3c29df6c1082
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/cookie-sharing
-ms.openlocfilehash: e92cc81f9362787b7b4bfb44ba26b82182826a59
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0cbf5a3e9dfe8f99433800ac5c10ed36b4de6527
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sharing-cookies-between-applications"></a>共用應用程式之間的 cookie
 

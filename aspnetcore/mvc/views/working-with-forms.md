@@ -2,21 +2,19 @@
 title: "在表單的 ASP.NET Core 標記協助程式"
 author: rick-anderson
 description: "描述搭配表單的標記協助程式的內建。"
-keywords: "ASP.NET Core，標記 Helper TagHelper，HTML 表單，表單"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 25595059-4fac-4785-8152-f88590e3169b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da36985206521798d3bfe71f6372dc5cc4fca09a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9fbe2c5cb495aabee0e1f0bdb3871641efa03599
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>在表單的 ASP.NET Core 使用標記協助程式簡介
 
@@ -111,12 +109,12 @@ Type expected
 
 |.NET 型別|輸入的類型|
 |---|---|
-|Bool|類型 ="checkbox"|
-|字串|類型 ="text"|
-|DateTime|類型 ="datetime"|
-|Byte|類型 ="number"|
-|Int|類型 ="number"|
-|Single、Double|類型 ="number"|
+|Bool|type=”checkbox”|
+|String|type=”text”|
+|DateTime|type=”datetime”|
+|Byte|type=”number”|
+|Int|type=”number”|
+|Single、Double|type=”number”|
 
 
 下表顯示一些常見[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性輸入的標記協助程式將會對應至特定的輸入類型 （並非所有驗證屬性會都列出）：
@@ -124,13 +122,13 @@ Type expected
 
 |屬性|輸入的類型|
 |---|---|
-|[EmailAddress]|類型 ="email"|
-|[Url]|類型 ="url"|
-|[HiddenInput]|類型 ="hidden"|
-|[Phone]|類型 = 「 電話 」|
-|[DataType(DataType.Password)]| 類型 = 「 密碼 」|
-|[DataType(DataType.Date)]| 類型 = 「 日期 」|
-|[DataType(DataType.Time)]| 類型 = 「 時間 」|
+|[EmailAddress]|type=”email”|
+|[Url]|type=”url”|
+|[HiddenInput]|type=”hidden”|
+|[Phone]|type=”tel”|
+|[DataType(DataType.Password)]| type=”password”|
+|[DataType(DataType.Date)]| type=”date”|
+|[DataType(DataType.Time)]| type=”time”|
 
 
 範例：
@@ -362,7 +360,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Validation Summary Tag Helper`用來顯示驗證訊息的摘要。 `asp-validation-summary`屬性值可以是下列任一項：
 
-|asp 驗證摘要|顯示驗證訊息|
+|asp-validation-summary|顯示驗證訊息|
 |--- |--- |
 |ValidationSummary.All|屬性和模型層級|
 |ValidationSummary.ModelOnly|型號|

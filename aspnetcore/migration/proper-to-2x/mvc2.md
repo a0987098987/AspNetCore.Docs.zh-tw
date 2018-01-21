@@ -2,20 +2,18 @@
 title: "移轉 ASP.NET ASP.NET Core 2.0"
 author: isaac2004
 description: "此參考文件會提供從現有的 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0 的指引。"
-keywords: "ASP.NET Core, MVC, 移轉"
 ms.author: scaddie
 manager: wpickett
 ms.date: 08/27/2017
 ms.topic: article
-ms.assetid: 3155cc9e-d0c9-424b-886c-35c0ec6f9f4e
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/mvc2
-ms.openlocfilehash: 68188072da5a857d730a1bc8a57df0ef6d10b922
-ms.sourcegitcommit: a3e88639a6bcf8fb4d634036dac93130c464a097
+ms.openlocfilehash: f9845449659960e82afd4f51d64084b7f55f68d4
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="migrating-from-aspnet-to-aspnet-core-20"></a>移轉 ASP.NET ASP.NET Core 2.0
 

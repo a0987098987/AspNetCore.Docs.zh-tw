@@ -2,7 +2,6 @@
 title: "在 ASP.NET Core 中使用 Gulp"
 author: rick-anderson
 description: "了解如何在 ASP.NET Core 中使用 Gulp。"
-keywords: ASP.NET Core Gulp
 ms.author: riande
 manager: wpickett
 ms.date: 02/28/2017
@@ -11,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-gulp
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68f6838889cfb830f2c5a1976b3140ae5d94ac25
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 11f7254a2f3d3d132f2f6af6d5ddab23f896cf63
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp 簡介 
 
@@ -60,13 +59,13 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 上述程式碼會指定哪一個節點模組所需。 `require`函式匯入每個模組，以便的相依工作可以使用其功能。 每個匯入的模組會指派給變數。 模組可以位於依名稱或路徑。 在此範例中，將模組命名為`gulp`， `rimraf`， `gulp-concat`， `gulp-cssmin`，和`gulp-uglify`會依名稱擷取。 此外，能夠重複使用及工作內所參考的 CSS 和 JavaScript 檔案的位置，會建立一系列的路徑。 下表提供的模組中包含描述*gulpfile.js*。
 
-|模組名稱|說明|
+|模組名稱|描述|
 |---|---|
 |gulp|Gulp 串流建置系統。 如需詳細資訊，請參閱[gulp](https://www.npmjs.com/package/gulp)。|
 |rimraf|節點刪除模組。 如需詳細資訊，請參閱[rimraf](https://www.npmjs.com/package/rimraf)。|
-|gulp concat|模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。|
-|gulp cssmin|縮短 CSS 檔案的模組。 如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。|
-|gulp uglify|縮短模組*.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。|
+|gulp-concat|模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。|
+|gulp-cssmin|縮短 CSS 檔案的模組。 如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。|
+|gulp-uglify|縮短模組*.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。|
 
 一旦匯入必要模組，您可以指定工作。 這裡有六個工作註冊中，由下列程式碼：
 
@@ -100,10 +99,10 @@ gulp.task("min", ["min:js", "min:css"]);
 
 下表提供上述程式碼中指定之工作的說明：
 
-|任務名稱|說明|
+|任務名稱|描述|
 |--- |--- |
-|全新： js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
-|全新： css|若要移除 site.css 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
+|clean:js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
+|clean:css|若要移除 site.css 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
 |清除|呼叫工作`clean:js`工作中，後面接著`clean:css`工作。|
 |min:js|工作並縮短，串連的 js 資料夾中的所有.js 檔案。 。 Min.js 檔案會排除。|
 |min:css|縮短及串連的 css 資料夾中的所有.css 檔案的工作。 。 Min.css 檔案會排除。|
@@ -249,7 +248,7 @@ gulp.task("min", ["min:js", "min:css"]);
     gulp.task("series", ["series:first", "series:second"], function () {});
     ```
  
-    您現在有三個工作： `series:first`， `series:second`，和`series`。 `series:second`工作包含指定的工作來執行和完成之前陣列的第二個參數`series:second`工作將會執行。  如同在上方，唯一的程式碼中指定`series:first`之前必須完成工作`series:second`工作將會執行。
+    您現在有三個工作： `series:first`， `series:second`，和`series`。 `series:second`工作包含指定的工作來執行和完成之前陣列的第二個參數`series:second`工作將會執行。 如同在上方，唯一的程式碼中指定`series:first`之前必須完成工作`series:second`工作將會執行。
 
 2.  儲存*gulpfile.js*。
 
@@ -328,9 +327,9 @@ IntelliSense 提供程式碼完成功能、 參數說明和其他功能，以提
 
 ## <a name="task-and-module-details"></a>工作和模組的詳細資料
 
-Gulp 工作已註冊的函式名稱。  如果目前的工作之前，必須執行其他工作，您可以指定相依性。 其他函式可讓您執行和觀賞 Gulp 的工作，以及將來源設定 (*src*) 和目的地 (*目的地*) 正在修改的檔案。 以下是主要的 Gulp API 函式：
+Gulp 工作已註冊的函式名稱。 如果目前的工作之前，必須執行其他工作，您可以指定相依性。 其他函式可讓您執行和觀賞 Gulp 的工作，以及將來源設定 (*src*) 和目的地 (*目的地*) 正在修改的檔案。 以下是主要的 Gulp API 函式：
 
-|Gulp 函式|語法|說明|
+|Gulp 函式|語法|描述|
 |---   |--- |--- |
 |task  |`gulp.task(name[, deps], fn) { }`|`task`函式建立的工作。 `name`參數會定義工作的名稱。 `deps`參數包含才可以執行此工作已完成工作的陣列。 `fn`參數所代表的回呼函式會執行工作的作業。|
 |監看式 |`gulp.watch(glob [, opts], tasks) { }`|`watch`函式監視檔案和執行工作，當檔案變更時。 `glob`參數是`string`或`array`，決定要監看的檔案。 `opts`參數提供額外監控選項的檔案。|

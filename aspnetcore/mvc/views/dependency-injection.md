@@ -2,20 +2,18 @@
 title: "檢視的相依性插入"
 author: ardalis
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 80fb9e43-e4db-4af2-b2a8-e1364a712f69
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 4586f50bc663b7269914dfff28b61342e3991a48
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cade61b1ebdb2b845b07117384475638c0227f7f
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="dependency-injection-into-views"></a>檢視的相依性插入
 
@@ -84,6 +82,6 @@ ASP.NET Core 支援[相依性插入](xref:fundamentals/dependency-injection)到�
 
 如果您想要擴充現有的服務，您只可以在繼承自或換行以您自己的現有實作時，使用這項技術。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * Simon Timms 部落格：[查閱資料放入您的檢視](http://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/)

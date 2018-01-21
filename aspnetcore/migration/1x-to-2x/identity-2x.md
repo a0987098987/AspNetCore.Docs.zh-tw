@@ -2,7 +2,6 @@
 title: "移轉的驗證和身分識別，ASP.NET Core 2.0"
 author: scottaddie
 description: "本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和身分識別為 ASP.NET Core 2.0。"
-keywords: "ASP.NET Core，身分識別驗證"
 ms.author: scaddie
 manager: wpickett
 ms.date: 10/26/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 1d8c75a21cd7110b3e414f0c600e9f05cbaeff45
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 72ad31438a344fb5fa2b357c709b923b8077e742
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="migrating-authentication-and-identity-to-aspnet-core-20"></a>移轉的驗證和身分識別，ASP.NET Core 2.0
 

@@ -2,20 +2,18 @@
 title: "模型繫結"
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/model-binding
-ms.openlocfilehash: 40aa105dcf06b269025d0c44e5cd7bffef271e9d
-ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
+ms.openlocfilehash: 84b9c5dc3a87b739affaeaecaa180d1b01f49b8e
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="model-binding"></a>模型繫結
 
@@ -73,7 +71,7 @@ The link works but generates an error when building with DocFX
 
 如果繫結失敗時，MVC 不會擲回錯誤。 可接受使用者輸入的每一個動作應該檢查`ModelState.IsValid`屬性。
 
-注意： 每個項目中的控制站`ModelState`屬性是`ModelStateEntry`包含`Errors`屬性。 它是很少會需要自行查詢此集合。 請改用 `ModelState.IsValid` 。
+注意： 每個項目中的控制站`ModelState`屬性是`ModelStateEntry`包含`Errors`屬性。 它是很少會需要自行查詢此集合。 請改用 `ModelState.IsValid`。
 
 此外，還有當 MVC 模型繫結時，必須考量某些特殊的資料類型：
 

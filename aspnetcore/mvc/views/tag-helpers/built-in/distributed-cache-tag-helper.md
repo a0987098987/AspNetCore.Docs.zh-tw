@@ -2,20 +2,18 @@
 title: "分散式快取標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用快取標記協助程式"
-keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a022
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: 462c3775677924fc7b9b715cd6de75fe53ada89e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f5844dade218fdba1169a55fe3ce251a9cc03db2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="distributed-cache-tag-helper"></a>分散式快取標記協助程式
 
@@ -43,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 
 | 屬性類型    | 範例值     |
 |----------------   |----------------   |
-| 字串    | 「 my-distributed-cache-unique-key-101"     |
+| 字串    | "my-distributed-cache-unique-key-101"     |
 
 所需`name`屬性做為分散式快取標記協助程式的每個執行個體儲存該快取的索引鍵。  不同於基本根據 Razor 頁面名稱和位置標記協助程式 razor 頁面中的每個快取標記協助程式執行個體指定索引鍵的快取標記 Helper，分散式快取標記協助程式只根據它的索引鍵屬性`name`
 

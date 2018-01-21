@@ -2,20 +2,18 @@
 title: "子機碼衍生和已驗證的加密"
 author: rick-anderson
 description: "本文件說明 ASP.NET Core 資料保護的實作詳細資料衍生子機碼，驗證加密。"
-keywords: "ASP.NET Core 資料保護、 子機碼衍生，驗證加密"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 3eb27b8a6d04074662bf619a09fd867252624209
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3927678b7b67b0e521a961e363200bdfe0bdaeb3
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="subkey-derivation-and-authenticated-encryption"></a>子機碼衍生和已驗證的加密
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 因為 AAD 都是唯一的所有三個元件的 tuple，我們可以用它來衍生自金鑰管理的新機碼，而不是使用金鑰管理本身在所有的密碼編譯作業。 若要每次呼叫`IAuthenticatedEncryptor.Encrypt`，下列的金鑰衍生處理序會發生：
 
-（K_E、 K_H） = SP800_108_CTR_HMACSHA512 (K_M，AAD，contextHeader | | keyModifier)
+( K_E, K_H ) = SP800_108_CTR_HMACSHA512(K_M, AAD, contextHeader || keyModifier)
 
 在這裡，我們正在撥打 NIST SP800 108 KDF 計數器模式中 (請參閱[NIST SP800 108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，秒 5.1) 使用下列參數：
 

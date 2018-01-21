@@ -5,14 +5,13 @@ ms.author: riande
 manager: wpickett
 ms.date: 11/03/2016
 ms.topic: article
-ms.assetid: BC36CA84-3DE8-496E-9AA2-2F1B74AE8309
 ms.prod: asp.net-core
 uid: security/authentication/otherlogins
-ms.openlocfilehash: bbc069e974fd826e6e9fb29429a0875f02c01fd3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9b061c66c8bf81f275ac35dc2e160feaf79eb21e
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="short-survey-of-other-authentication-providers"></a>其他驗證提供者的簡短問卷調查
 

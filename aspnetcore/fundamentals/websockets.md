@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core Websocket 支援"
 author: tdykstra
 description: "了解如何開始使用 ASP.NET Core 中 WebSockets。"
-keywords: ASP.NET Core WebSockets
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/25/2017
 ms.topic: article
-ms.assetid: 0e0fedcd-a7b4-4479-8ae0-36eab0229d7e
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: fundamentals/websockets
-ms.openlocfilehash: 114d52d831668e5facd1142b5f9e5f68e7456f7e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46c1f42b925a43df470d7491a1e259ab51ea5f50
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-websockets-in-aspnet-core"></a>在 ASP.NET Core WebSockets 簡介
 
@@ -33,7 +31,7 @@ ms.lasthandoff: 11/10/2017
   
   * Windows 7 / Windows Server 2008 及更新版本
   * Linux
-  * MacOS
+  * macOS
 
 * **例外狀況**： 如果您的應用程式會使用 IIS 時，Windows 上執行，或使用 WebListener，您必須使用：
 
@@ -56,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 * 支援用戶端呼叫方法，在伺服器上，反之亦然。
 * 縮放至多部伺服器的支援。
 
-## <a name="how-to-use-it"></a>如何使用它
+## <a name="how-to-use-it"></a>如何使用
 
 * 安裝[Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/)封裝。
 * 設定中介軟體。

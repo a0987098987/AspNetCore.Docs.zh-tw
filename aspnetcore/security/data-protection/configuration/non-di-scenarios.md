@@ -2,20 +2,18 @@
 title: "ASP.NET 核心中的資料保護的非 DI 注意案例"
 author: rick-anderson
 description: "了解如何支援資料的保護案例，您無法或不想要使用相依性插入所提供的服務。"
-keywords: "ASP.NET Core 資料保護、 相依性插入，DataProtectionProvider"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: a7d8a962-80ff-48e3-96f6-8472b7ba2df9
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: 375eecf649819dce8f1c2ba30e1cb6451d1c1253
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1c84cfcf44086359a7d6900ca52781dc6f3b1b10
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>ASP.NET 核心中的資料保護的非 DI 注意案例
 

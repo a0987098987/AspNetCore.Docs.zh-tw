@@ -2,20 +2,18 @@
 title: "在 ASP.NET Core 檔案上傳"
 author: ardalis
 description: "如何使用模型繫結和資料流上傳 ASP.NET Core MVC 中的檔案。"
-keywords: "ASP.NET Core，檔案上傳，模型繫結 IFormFile，資料流"
 ms.author: riande
 manager: wpickett
 ms.date: 07/05/2017
 ms.topic: article
-ms.assetid: ebc98159-a028-4a94-b06c-43981c79c6be
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: e8608a46d6688df8da6c665a25b6f4db5f480461
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3c5abe84a5c7cc399e0586e680a414fab7a26c1d
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="file-uploads-in-aspnet-core"></a>在 ASP.NET Core 檔案上傳
 

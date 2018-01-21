@@ -2,20 +2,18 @@
 title: "ASP.NET Core MVC 中的模型驗證"
 author: rachelappel
 description: "深入了解 ASP.NET Core MVC 中的模型驗證。"
-keywords: "ASP.NET Core，MVC、 驗證"
 ms.author: riande
 manager: wpickett
 ms.date: 12/18/2016
 ms.topic: article
-ms.assetid: 3a8676dd-7ed8-4a05-bca2-44e288ab99ee
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
-ms.openlocfilehash: 7f641c247cb672934e76fa13bc7b7beb3990dd82
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 91db17e103723ac411a2ad4f3f9549860f250cce
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證的簡介
 
@@ -173,7 +171,7 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>將驗證加入至動態控制項
 
-您也可以更新表單上的驗證規則，當個別控制項，例如`<input/>`s 和`<select/>`s，動態產生。 您無法將傳遞至這些項目的選取器`parse()`方法直接因為周圍的表單已剖析，而且不會更新。  相反地，您先移除現有的驗證資料，然後重新剖析整份表單，如下所示：
+您也可以更新表單上的驗證規則，當個別控制項，例如`<input/>`s 和`<select/>`s，動態產生。 您無法將傳遞至這些項目的選取器`parse()`方法直接因為周圍的表單已剖析，而且不會更新。 相反地，您先移除現有的驗證資料，然後重新剖析整份表單，如下所示：
 
 ```js
 $.get({
@@ -233,11 +231,11 @@ $.get({
 
 現在當使用者輸入電子郵件時，在檢視中的 JavaScript 可讓以查看該電子郵件已取用，如果是的話，會顯示錯誤訊息的遠端呼叫。 否則，使用者可以像往常一樣送出表單。
 
-`AdditionalFields`屬性`[Remote]`屬性是適合用來驗證針對伺服器上的資料欄位的組合。  例如，如果`User`上述的模型有兩個額外的屬性稱為`FirstName`和`LastName`，您可能想要確認沒有任何現有的使用者已經有該名稱的組。  下列程式碼所示，您會定義新屬性：
+`AdditionalFields`屬性`[Remote]`屬性是適合用來驗證針對伺服器上的資料欄位的組合。 例如，如果`User`上述的模型有兩個額外的屬性稱為`FirstName`和`LastName`，您可能想要確認沒有任何現有的使用者已經有該名稱的組。 下列程式碼所示，您會定義新屬性：
 
 [!code-csharp[Main](validation/sample/User.cs?range=10-13)]
 
-`AdditionalFields`可能已明確設定為字串`"FirstName"`和`"LastName"`，但使用[ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)運算子，這樣可簡化稍後重構。  要執行驗證的動作方法必須接受兩個引數，其中一個值的`FirstName`和值的其中一個`LastName`。
+`AdditionalFields`可能已明確設定為字串`"FirstName"`和`"LastName"`，但使用[ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)運算子，這樣可簡化稍後重構。 要執行驗證的動作方法必須接受兩個引數，其中一個值的`FirstName`和值的其中一個`LastName`。
 
 
 [!code-csharp[Main](validation/sample/UsersController.cs?range=30-39)]
@@ -248,11 +246,11 @@ $.get({
 * 如果已取用配對，會顯示錯誤訊息。 
 * 如果不採用，使用者可以送出表單。
 
-如果您要驗證兩個或多個額外的欄位，與`[Remote]`屬性，您提供它們做為逗號分隔的清單。  例如，若要新增`MiddleName`屬性加入模型中，設定`[Remote]`屬性，如下列程式碼所示：
+如果您要驗證兩個或多個額外的欄位，與`[Remote]`屬性，您提供它們做為逗號分隔的清單。 例如，若要新增`MiddleName`屬性加入模型中，設定`[Remote]`屬性，如下列程式碼所示：
 
 ```cs
 [Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`像所有的屬性引數必須是常數運算式。  因此，您必須使用[以內插值取代字串](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫[ `string.Join()` ](https://msdn.microsoft.com/en-us/library/system.string.join(v=vs.110).aspx)初始化`AdditionalFields`。 每個其他欄位加入至`[Remote]`屬性，您必須將另一個引數加入至對應的控制器動作方法。
+`AdditionalFields`像所有的屬性引數必須是常數運算式。 因此，您必須使用[以內插值取代字串](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫[ `string.Join()` ](https://msdn.microsoft.com/en-us/library/system.string.join(v=vs.110).aspx)初始化`AdditionalFields`。 每個其他欄位加入至`[Remote]`屬性，您必須將另一個引數加入至對應的控制器動作方法。

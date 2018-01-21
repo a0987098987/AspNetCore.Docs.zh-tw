@@ -2,20 +2,18 @@
 title: "建置美麗、 可回應網站與啟動程序"
 author: ardalis
 description: 
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: f89ad584600c3f12a936599de27f931aff0cd4b5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aee3304515686fc8e45e8e2aafb79d957219f94a
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
 
@@ -73,7 +71,7 @@ Install-Package bootstrap
 
 ### <a name="basic-navigation"></a>基本導覽
 
-預設範本會使用一組`<div>`要呈現在上方導覽列和頁面的主體。 如果您使用 HTML5，您可以取代第一個`<div>`標記`<nav>`標記來取得相同的效果，但有更精確的語意。  在此第一個`<div>`您可以看到還有其他幾個。 首先， `<div>` "container"，然後在中，兩個類別`<div>`項目: 「 瀏覽列標頭 」 和 「 導覽列摺疊 」。  導覽列標頭 div 包含一個按鈕，會出現如下的某些最小寬度，顯示 3 水平線螢幕時 (所謂 「 漢堡圖示 」)。 使用純 HTML 和 CSS; 呈現圖示需要沒有映像。 這是會顯示圖示，與每個程式碼<span>標記呈現白色橫條的其中一個：
+預設範本會使用一組`<div>`要呈現在上方導覽列和頁面的主體。 如果您使用 HTML5，您可以取代第一個`<div>`標記`<nav>`標記來取得相同的效果，但有更精確的語意。 在此第一個`<div>`您可以看到還有其他幾個。 首先， `<div>` "container"，然後在中，兩個類別`<div>`項目: 「 瀏覽列標頭 」 和 「 導覽列摺疊 」。 導覽列標頭 div 包含一個按鈕，會出現如下的某些最小寬度，顯示 3 水平線螢幕時 (所謂 「 漢堡圖示 」)。 使用純 HTML 和 CSS; 呈現圖示需要沒有映像。 這是會顯示圖示，與每個程式碼<span>標記呈現白色橫條的其中一個：
 
 ```html
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -83,7 +81,7 @@ Install-Package bootstrap
 </button>
 ```
 
-它也包含應用程式名稱，它會出現在左上方。  主瀏覽功能表呈現`<ul>`內第二個 div，項目，並包含以首頁、 關於和連絡人的連結。 註冊和登入的其他連結會新增一行 29 _LoginPartial 列。 下方瀏覽，在另一個轉譯的每個頁面主體`<div>`、 標示為 「 容器 」 和 「 本文內容 」 類別。 簡單的預設 _Layout 檔案如下所示，在頁面的內容會轉譯頁面上，然後按一下 簡單與相關聯的特定檢視`<footer>`加入至結尾`<div>`項目。  您可以看到有關頁面內建的顯示方式使用此範本：
+它也包含應用程式名稱，它會出現在左上方。 主瀏覽功能表呈現`<ul>`內第二個 div，項目，並包含以首頁、 關於和連絡人的連結。 註冊和登入的其他連結會新增一行 29 _LoginPartial 列。 下方瀏覽，在另一個轉譯的每個頁面主體`<div>`、 標示為 「 容器 」 和 「 本文內容 」 類別。 簡單的預設 _Layout 檔案如下所示，在頁面的內容會轉譯頁面上，然後按一下 簡單與相關聯的特定檢視`<footer>`加入至結尾`<div>`項目。 您可以看到有關頁面內建的顯示方式使用此範本：
 
 ![有關頁面](bootstrap/_static/about-page-wide.png)
 
@@ -117,10 +115,10 @@ Install-Package bootstrap
 
 CSS 類別的前置詞 | 裝置層 | 寬度
 :---: | :---: | :---:
-資料行-xs- | 電話 | < 768px
-資料行-sm- | 平板電腦 | > = 768px
-資料行-md- | 桌上型電腦 | > = 992px
-資料行-lg- | 較大的桌面顯示 | > = 1200px
+col-xs- | 電話 | < 768px
+col-sm- | 平板電腦 | >= 768px
+col-md- | 桌上型電腦 | >= 992px
+col-lg- | 較大的桌面顯示 | >= 1200px
 
 當指定的兩個資料行都與 「 資料行-md-6 」 產生的配置將會在桌面的解析度上，兩個資料行，但這兩個資料行上較小裝置 （或較窄的瀏覽器視窗，在桌面上），讓使用者能夠輕鬆地檢視轉譯時就會垂直堆疊而不需要水平捲動內容。
 
@@ -136,7 +134,7 @@ CSS 類別的前置詞 | 裝置層 | 寬度
 
 ### <a name="jumbotron"></a>Jumbotron
 
-如果您已使用預設 ASP.NET MVC 範本在 Visual Studio 2012 或 2013年中，您可能已經看到 Jumbotron 作用中。 它是指大型全形頁面章節包含可以用來顯示大型的背景影像，呼叫動作、 旋轉或類似的項目。 若要將 jumbotron 加入頁面中，只要加入`<div>`並為它提供一種"jumbotron"，然後放置在容器`<div>`內並加入您的內容。  我們可以輕易地調整標準的 「 關於使用主要的標題，它會顯示 jumbotron 頁：
+如果您已使用預設 ASP.NET MVC 範本在 Visual Studio 2012 或 2013年中，您可能已經看到 Jumbotron 作用中。 它是指大型全形頁面章節包含可以用來顯示大型的背景影像，呼叫動作、 旋轉或類似的項目。 若要將 jumbotron 加入頁面中，只要加入`<div>`並為它提供一種"jumbotron"，然後放置在容器`<div>`內並加入您的內容。 我們可以輕易地調整標準的 「 關於使用主要的標題，它會顯示 jumbotron 頁：
 
 ![jumbotron 範例](bootstrap/_static/jumbotron.png)
 
@@ -154,7 +152,7 @@ CSS 類別的前置詞 | 裝置層 | 寬度
 
 ### <a name="alerts"></a>警示
 
-您可能需要對應用程式的使用者顯示通知、 警示或錯誤訊息的某種。 這是其中的標準警示類別會很有用。  有四個不同的嚴重性層級與相關聯的色彩配置：
+您可能需要對應用程式的使用者顯示通知、 警示或錯誤訊息的某種。 這是其中的標準警示類別會很有用。 有四個不同的嚴重性層級與相關聯的色彩配置：
 
 ![佈景主題的警示](bootstrap/_static/theme-alerts.png)
 
@@ -164,23 +162,23 @@ CSS 類別的前置詞 | 裝置層 | 寬度
 
 ![佈景主題 tabstrips](bootstrap/_static/theme-tabstrips.png)
 
-Navbars 同樣地，內建，但會稍微更複雜。  開頭為`<nav>`或`<div>`"導覽列 」，在其中容器 div 保存的項目其餘部分的類別。 我們的頁面導覽列在其標頭中已包含 – 如下所示只會展開，新增下拉式功能表的支援：
+Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`"導覽列 」，在其中容器 div 保存的項目其餘部分的類別。 我們的頁面導覽列在其標頭中已包含 – 如下所示只會展開，新增下拉式功能表的支援：
 
 ![佈景主題 navbars](bootstrap/_static/theme-navbars.png)
 
 ### <a name="additional-elements"></a>其他項目
 
-預設佈景主題也可用來呈現 HTML 表格格式樣式，包括支援等量的檢視中。 標籤一共有使用類似於按鈕的樣式。 您可以建立自訂支援標準 HTML 以外的其他樣式選項的下拉式功能表`<select>`項目，以及 Navbars 類似我們預設入門網站已在使用中。 如果您需要將進度列，有數種樣式，以供選擇，以及列出群組和包含標題與內容的面板。  瀏覽標準啟動程序主題這裡內的其他選項：
+預設佈景主題也可用來呈現 HTML 表格格式樣式，包括支援等量的檢視中。 標籤一共有使用類似於按鈕的樣式。 您可以建立自訂支援標準 HTML 以外的其他樣式選項的下拉式功能表`<select>`項目，以及 Navbars 類似我們預設入門網站已在使用中。 如果您需要將進度列，有數種樣式，以供選擇，以及列出群組和包含標題與內容的面板。 瀏覽標準啟動程序主題這裡內的其他選項：
 
 [http://getbootstrap.com/examples/theme/](http://getbootstrap.com/examples/theme/)
 
 ## <a name="more-themes"></a>更多主題
 
-您可以擴充標準啟動程序的主題，藉由覆寫部分或所有其 CSS 調整色彩和樣式，以符合您自己的應用程式的需求。 如果您想要從現成的佈景主題開始，有數個主題組件庫提供線上，在啟動程序的佈景主題，例如 WrapBootstrap.com （這有各種不同的商業佈景主題） 和 Bootswatch.com （其提供可用的佈景主題） 中的特製化。  某些可用的付費範本提供許多基本的啟動程序佈景主題，例如豐富的支援系統管理功能表和儀表板頂端的功能豐富的圖表和量測計。 熱門付費範本的範例是 Inspinia，目前 $18，其中包含除了 AngularJS 和靜態的 HTML 版本的 ASP.NET MVC5 範本的銷售。 範例螢幕擷取畫面所示。
+您可以擴充標準啟動程序的主題，藉由覆寫部分或所有其 CSS 調整色彩和樣式，以符合您自己的應用程式的需求。 如果您想要從現成的佈景主題開始，有數個主題組件庫提供線上，在啟動程序的佈景主題，例如 WrapBootstrap.com （這有各種不同的商業佈景主題） 和 Bootswatch.com （其提供可用的佈景主題） 中的特製化。 某些可用的付費範本提供許多基本的啟動程序佈景主題，例如豐富的支援系統管理功能表和儀表板頂端的功能豐富的圖表和量測計。 熱門付費範本的範例是 Inspinia，目前 $18，其中包含除了 AngularJS 和靜態的 HTML 版本的 ASP.NET MVC5 範本的銷售。 範例螢幕擷取畫面所示。
 
 ![範例主題 inspinia](bootstrap/_static/theme-inspinia.png)
 
-如果您想要變更您的啟動程序主題，請將放*bootstrap.css*中您要的佈景主題檔案**wwwroot/css**資料夾，並變更中的參考*_Layout.cshtml*指向它。  變更用於所有環境的連結：
+如果您想要變更您的啟動程序主題，請將放*bootstrap.css*中您要的佈景主題檔案**wwwroot/css**資料夾，並變更中的參考*_Layout.cshtml*指向它。 變更用於所有環境的連結：
 
 ```html
 <environment names="Development">

@@ -2,20 +2,18 @@
 title: "區域"
 author: rick-anderson
 description: "示範如何使用區域。"
-keywords: "ASP.NET Core，區域、 路由、 檢視表"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: cd0302fa1668979df9bbd6cb36f82742d325c5e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 666be2da6b38ffb538ae3888ea879a4104c8fd12
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="areas"></a>區域
 

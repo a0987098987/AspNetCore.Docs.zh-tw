@@ -2,20 +2,18 @@
 title: "檢視元件"
 author: rick-anderson
 description: "檢視元件是任何位置有可重複使用的呈現邏輯。"
-keywords: "ASP.NET Core，檢視元件的部分檢視"
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017
 ms.topic: article
-ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 2cf82df78c250cdfdd808d49acfc06dc2ea82f5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2d93dcee102009661af708b9a9066e8af0bdbb17
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="view-components"></a>檢視元件
 
@@ -78,8 +76,8 @@ ms.lasthandoff: 11/10/2017
 
 執行階段會搜尋下列路徑中的檢視：
 
-   * 檢視 /\<controller_name > /Components/\<view_component_name > /\<view_name >
-   * 檢視/共用元件/\<view_component_name > /\<view_name >
+   * Views/\<controller_name>/Components/\<view_component_name>/\<view_name>
+   * Views/Shared/Components/\<view_component_name>/\<view_name>
 
 檢視元件中預設的檢視名稱是*預設*，這表示您的檢視檔案將通常會命名為*Default.cshtml*。 建立元件檢視結果時，或呼叫時，您可以指定不同的檢視名稱`View`方法。
 

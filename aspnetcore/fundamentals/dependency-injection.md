@@ -2,21 +2,19 @@
 title: "在 ASP.NET Core 的相依性插入"
 author: ardalis
 description: "了解 ASP.NET Core 實作相依性插入的方式以及如何使用它。"
-keywords: "ASP.NET Core 相依性插入、 di"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: fccd69be-7ad1-47fb-b203-b3633b6b9a9b
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d12960708f9d9bf2bc7c5997f82096d93087d13
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 1da3d557c48921747634b08cedb518184fb5f963
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>在 ASP.NET Core 的相依性插入的簡介
 
@@ -149,7 +147,7 @@ Entity Framework 內容應該加入至服務容器使用`Scoped`存留期。 這
 
 ASP.NET 服務可以使用下列的存留時間設定：
 
-**暫時性**
+**Transient**
 
 暫時性的存留時間服務會建立每次要求。 此存留時間最適合用於輕量型、 無狀態服務。
 
@@ -157,7 +155,7 @@ ASP.NET 服務可以使用下列的存留時間設定：
 
 已設定領域的存留時間服務會建立一次，每個要求。
 
-**單一**
+**Singleton**
 
 單一存留時間服務會建立第一次要求 (或當`ConfigureServices`如果您指定執行個體執行) 然後每個後續的要求將會使用相同的執行個體。 如果您的應用程式需要單一行為，允許 「 服務 」 容器來管理服務的存留期建議而不是實作單一設計模式，並管理您自己的類別中物件的存留期。
 

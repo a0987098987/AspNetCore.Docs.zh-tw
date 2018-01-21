@@ -2,20 +2,18 @@
 title: "錨定標記協助程式 |Microsoft 文件"
 author: pkellner
 description: "示範如何使用錨定標記協助程式"
-keywords: "ASP.NET Core,標記協助程式"
 ms.author: riande
 manager: wpickett
 ms.date: 12/20/2017
 ms.topic: article
-ms.assetid: c045d485-d1dc-4cea-a675-46be83b7a011
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 86756a1d09e6e55ca79aed6e5b718088b82b782c
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 7923876c792544ac4d559eb8de29475d8a4b37e0
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="anchor-tag-helper"></a>錨定標記協助程式
 
@@ -32,7 +30,7 @@ ms.lasthandoff: 01/12/2018
 
 ## <a name="anchor-tag-helper-attributes"></a>錨定標記協助程式屬性
 
-### <a name="asp-controller"></a>asp 控制器
+### <a name="asp-controller"></a>asp-controller
 
 `asp-controller`用來建立關聯的控制器將會用來產生 URL。 指定的控制器必須存在於目前的專案。 下列程式碼列出所有的喇叭： 
 
@@ -52,7 +50,7 @@ ms.lasthandoff: 01/12/2018
 <a href="/Home">All Speakers</a>
 ```
 
-### <a name="asp-action"></a>asp 動作
+### <a name="asp-action"></a>asp-action
 
 `asp-action`將會包含控制器動作方法的名稱在產生`href`。 例如，下列程式碼產生設定`href`指向喇叭詳細資料頁面：
 
@@ -70,7 +68,7 @@ ms.lasthandoff: 01/12/2018
  
 如果屬性`asp-action`是`Index`，然後採取任何動作會不附加至的 URL，導致預設`Index`所呼叫方法。 動作指定 （或預設），必須在控制器中參考`asp-controller`。
 
-### <a name="asp-page"></a>asp 網頁
+### <a name="asp-page"></a>asp-page
 
 使用`asp-page`屬性中設定其 URL，以指向特定頁面的錨點標籤。 以正斜線的頁面名稱前面加上"/"來建立 URL。 下面範例中的 URL 會指向目前的目錄中的"喇叭 」 頁面。
 
@@ -99,7 +97,7 @@ https://localhost:44399/Speakers/Index/2?page=%2FSpeaker
 > [!NOTE]
 > 若要使用`asp-page`Razor 頁面中，Url 屬性必須是相對路徑，例如`"./Speaker"`。 中的相對路徑`asp-page`屬性不適用於 MVC 檢視。 請改用 MVC 檢視的"/"語法。
 
-### <a name="asp-route-value"></a>asp-路由的 {value}
+### <a name="asp-route-value"></a>asp-route-{value}
 
 `asp-route-`是萬用字元路由前置詞。 尾端的虛線會被解譯為潛在的路由參數之後，您將任何值。 如果找不到預設路由，此路由前置字元會附加至要求參數和值為產生的 href。 否則將會取代中的路由範本。
 
@@ -162,13 +160,13 @@ app.UseMvc(routes =>
 
 如果有任一個`asp-controller`或`asp-action`未指定，則相同的預設處理後，因為處於`asp-route`屬性。
 
-### <a name="asp-route"></a>asp 路由
+### <a name="asp-route"></a>asp-route
 
 `asp-route`可用來建立直接連結到具名路由的 URL。 使用路由的屬性，路由可以具名中所示`SpeakerController`和用於其`Evaluations`方法。
 
 `Name = "speakerevals"`會告知錨定標記協助程式，來產生該控制器方法，使用 URL 直接路由`/Speaker/Evaluations`。 如果`asp-controller`或`asp-action`指定除了`asp-route`，產生的路由可能不如預期。 `asp-route`不應該使用屬性的其中一種`asp-controller`或`asp-action`為避免發生路由衝突。
 
-### <a name="asp-all-route-data"></a>asp all-路由資料
+### <a name="asp-all-route-data"></a>asp-all-route-data
 
 `asp-all-route-data`允許建立所在的索引鍵是參數名稱和值是該索引鍵相關聯的值的機碼值組的字典。
 
@@ -206,7 +204,7 @@ asp-all-route-data="dict">SpeakerEvals</a>
 
 建置用戶端應用程式時，適合使用雜湊標記。 它們可以用於簡單的標記，並在 JavaScript 中，例如搜尋。
 
-### <a name="asp-area"></a>asp 區域
+### <a name="asp-area"></a>asp-area
 
 `asp-area`設定 ASP.NET Core 使用來設定適當的路由的區域名稱。 以下是如何區域屬性會造成重新對應路由的範例。 設定`asp-area`部落格的前置詞目錄`Areas/Blogs`路由相關聯的控制器與檢視此錨定標記。
 
@@ -237,7 +235,7 @@ asp-all-route-data="dict">SpeakerEvals</a>
 > [!TIP]
 > MVC web 應用程式中工作的區域，如果它存在路由範本時，必須包含區域的參考。 該範本，也就是第二個參數的`routes.MapRoute`呼叫方法時，將會顯示為：`template: '"{area:exists}/{controller=Home}/{action=Index}"'`
 
-### <a name="asp-protocol"></a>asp 通訊協定
+### <a name="asp-protocol"></a>asp-protocol
 
 `asp-protocol`可用於指定通訊協定 (例如`https`) 在您的 URL。 範例包含通訊協定的錨定標記協助程式看起來如下：
 

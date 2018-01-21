@@ -2,7 +2,6 @@
 title: "使用 EF Core-razor 頁面讀取相關的資料-6，8 個"
 author: rick-anderson
 description: "在此教學課程中您可以讀取並顯示相關的資料--也就是，可將 Entity Framework 載入導覽屬性的資料。"
-keywords: "加入 ASP.NET Core，Entity Framework Core，相關資料，"
 ms.author: riande
 manager: wpickett
 ms.date: 11/05/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: ba9b17ecdcb605d39117d03230b1db37e8e4d0dd
-ms.sourcegitcommit: 05e798c9bac7b9e9983599afb227ef393905d023
+ms.openlocfilehash: d0cdb5aaa4b1129c3f2404d069e9781ca16260b7
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>讀取的相關資料-Razor 頁面 (8 個 6) 使用的 EF 核心
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 12/05/2017
 * 取得`Name`屬性從`Department`實體。
 * `Department`實體來自`Course.Department`導覽屬性。
 
-![ourse。部門](read-related-data/_static/dep-crs.png)
+![ourse.Department](read-related-data/_static/dep-crs.png)
 
 <a name="scaffold"></a>
 ### <a name="scaffold-the-course-model"></a>Scaffold 課程模型

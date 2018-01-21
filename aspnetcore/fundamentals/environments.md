@@ -2,7 +2,6 @@
 title: "使用多個環境中 ASP.NET Core"
 author: rick-anderson
 description: "了解 ASP.NET Core 應用程式行為控制跨多個環境所提供的支援。"
-keywords: "ASP.NET Core，環境設定，ASPNETCORE_ENVIRONMENT"
 ms.author: riande
 manager: wpickett
 ms.date: 12/25/2017
@@ -10,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 784d176145c3e4e44ddc0ea06b6702f70cd4b08c
-ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
+ms.openlocfilehash: 83d1593d46761b1c00aa431cfdcde59cb3b28b65
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -157,7 +156,7 @@ export ASPNETCORE_ENVIRONMENT=Development
 ### <a name="linux"></a>Linux
 針對 Linux 散發版本，請使用`export`工作階段以變數設定為基礎的命令在命令列和*bash_profile*機器層級的環境設定的檔案。
 
-### <a name="configuration-by-environment"></a>設定環境
+### <a name="configuration-by-environment"></a>取決於環境的組態
 
 請參閱[環境組態](xref:fundamentals/configuration/index#configuration-by-environment)如需詳細資訊。
 

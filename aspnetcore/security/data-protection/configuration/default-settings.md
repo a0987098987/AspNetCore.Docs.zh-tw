@@ -2,20 +2,18 @@
 title: "資料保護金鑰管理和 ASP.NET Core 存留期"
 author: rick-anderson
 description: "了解資料保護的金鑰管理和 ASP.NET Core 存留期。"
-keywords: "ASP.NET Core 金鑰管理，DPAPI，資料保護金鑰存留期"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: ef7dad2a-7029-4ae5-8f06-1fbebedccaa4
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 4f5409acf4d934ced828153ccfd945834d0f1718
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0993c68e37944a3aad863b98f92fe0140cfb746d
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護金鑰管理和 ASP.NET Core 存留期
 
@@ -51,6 +49,6 @@ ms.lasthandoff: 11/10/2017
 
 使用的預設裝載保護演算法為 256-AES-CBC 機密性和 HMACSHA256 的真實性。 512 位元主要金鑰，每 90 天變更，用來衍生這些每個裝載為基礎的演算法使用兩個子機碼。 請參閱[子機碼衍生](xref:security/data-protection/implementation/subkeyderivation#additional-authenticated-data-and-subkey-derivation)如需詳細資訊。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [金鑰管理擴充性](xref:security/data-protection/extensibility/key-management)

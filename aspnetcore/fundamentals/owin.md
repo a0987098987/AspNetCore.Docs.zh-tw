@@ -2,21 +2,19 @@
 title: Open Web Interface for .NET (OWIN)
 author: ardalis
 description: "探索 ASP.NET Core 支援的方式開啟 Web 介面的.NET (OWIN)，可讓 web 應用程式来從 web 伺服器。"
-keywords: "ASP.NET Core，for.NET，OWIN 開啟 Web 介面"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
 ms.topic: article
-ms.assetid: 70c4e6bc-a773-4039-96ec-6fe557c9369d
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/owin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2ee970a1c9cd05ebee76b92c3e2c7c6c6cc6ef8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e819037e2ebd1566c778879516e20de8dc7603ea
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-open-web-interface-for-net-owin"></a>若要開啟.NET (OWIN) 的網頁介面的簡介
 
@@ -239,86 +237,86 @@ OWIN 取決於`IDictionary<string,object>`通訊內的 HTTP 要求/回應交換�
 
 ### <a name="request-data-owin-v100"></a>要求資料 (OWIN v1.0.0)
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin。RequestScheme | `String` |  |
-| owin。RequestMethod  | `String` | |    
-| owin。RequestPathBase  | `String` | |    
-| owin。RequestPath | `String` | |     
-| owin。RequestQueryString  | `String` | |    
-| owin。RequestProtocol  | `String` | |    
-| owin。RequestHeaders | `IDictionary<string,string[]>`  | |
-| owin。RequestBody | `Stream`  | |
+| owin.RequestScheme | `String` |  |
+| owin.RequestMethod  | `String` | |    
+| owin.RequestPathBase  | `String` | |    
+| owin.RequestPath | `String` | |     
+| owin.RequestQueryString  | `String` | |    
+| owin.RequestProtocol  | `String` | |    
+| owin.RequestHeaders | `IDictionary<string,string[]>`  | |
+| owin.RequestBody | `Stream`  | |
 
 ### <a name="request-data-owin-v110"></a>要求資料 (OWIN v1.1.0)
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin。RequestId | `String` | Optional |
+| owin.RequestId | `String` | Optional |
 
 ### <a name="response-data-owin-v100"></a>回應資料 (OWIN v1.0.0)
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin。ResponseStatusCode | `int` | Optional |
-| owin。ResponseReasonPhrase | `String` | Optional |
-| owin。ResponseHeaders | `IDictionary<string,string[]>`  | |
-| owin。ResponseBody | `Stream`  | |
+| owin.ResponseStatusCode | `int` | Optional |
+| owin.ResponseReasonPhrase | `String` | Optional |
+| owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
+| owin.ResponseBody | `Stream`  | |
 
 
 ### <a name="other-data-owin-v100"></a>其他資料 (OWIN v1.0.0)
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| owin。CallCancelled | `CancellationToken` |  |
-| owin。版本  | `String` | |   
+| owin.CallCancelled | `CancellationToken` |  |
+| owin.Version  | `String` | |   
 
 
 ### <a name="common-keys"></a>一般索引鍵
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| ssl。ClientCertificate | `X509Certificate` |  |
-| ssl。LoadClientCertAsync  | `Func<Task>` | |    
-| 伺服器。RemoteIpAddress  | `String` | |    
-| 伺服器。RemotePort | `String` | |     
-| 伺服器。LocalIpAddress  | `String` | |    
-| 伺服器。LocalPort  | `String` | |    
-| 伺服器。IsLocal  | `bool` | |    
-| 伺服器。OnSendingHeaders  | `Action<Action<object>,object>` | |
+| ssl.ClientCertificate | `X509Certificate` |  |
+| ssl.LoadClientCertAsync  | `Func<Task>` | |    
+| server.RemoteIpAddress  | `String` | |    
+| server.RemotePort | `String` | |     
+| server.LocalIpAddress  | `String` | |    
+| server.LocalPort  | `String` | |    
+| server.IsLocal  | `bool` | |    
+| server.OnSendingHeaders  | `Action<Action<object>,object>` | |
 
 
 ### <a name="sendfiles-v030"></a>SendFiles v0.3.0
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| sendfile。SendAsync | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | 每個要求 |
+| sendfile.SendAsync | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | 每個要求 |
 
 
 ### <a name="opaque-v030"></a>不透明 v0.3.0
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| 不透明的。版本 | `String` |  |
-| 不透明的。升級 | `OpaqueUpgrade` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
-| 不透明的。資料流 | `Stream` |  |
-| 不透明的。CallCancelled | `CancellationToken` |  |
+| opaque.Version | `String` |  |
+| opaque.Upgrade | `OpaqueUpgrade` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| opaque.Stream | `Stream` |  |
+| opaque.CallCancelled | `CancellationToken` |  |
 
 
 ### <a name="websocket-v030"></a>WebSocket v0.3.0
 
-| Key               | 值 （類型） | 說明 |
+| Key               | 值 （類型） | 描述 |
 | ----------------- | ------------ | ----------- |
-| websocket。版本 | `String` |  |
-| websocket。接受 | `WebSocketAccept` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
-| websocket。AcceptAlt |  | 非規格 |
-| websocket。子通訊協定 | `String` | 請參閱[RFC6455 第 4.2.2 節](https://tools.ietf.org/html/rfc6455#section-4.2.2)步驟 5.5 |
-| websocket。SendAsync | `WebSocketSendAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| websocket。ReceiveAsync | `WebSocketReceiveAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| websocket。CloseAsync | `WebSocketCloseAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
-| websocket。CallCancelled | `CancellationToken` |  |
-| websocket。ClientCloseStatus | `int` | Optional |
-| websocket。ClientCloseDescription | `String` | Optional |
+| websocket.Version | `String` |  |
+| websocket.Accept | `WebSocketAccept` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| websocket.AcceptAlt |  | 非規格 |
+| websocket.SubProtocol | `String` | 請參閱[RFC6455 第 4.2.2 節](https://tools.ietf.org/html/rfc6455#section-4.2.2)步驟 5.5 |
+| websocket.SendAsync | `WebSocketSendAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.ReceiveAsync | `WebSocketReceiveAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CloseAsync | `WebSocketCloseAsync` | 請參閱[委派簽章](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CallCancelled | `CancellationToken` |  |
+| websocket.ClientCloseStatus | `int` | Optional |
+| websocket.ClientCloseDescription | `String` | Optional |
 
 
 ## <a name="additional-resources"></a>其他資源

@@ -2,7 +2,6 @@
 title: "將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
 author: rick-anderson
 description: "將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
-keywords: "ASP.NET Core, Razor 頁面, Razor, MVC"
 ms.author: riande
 manager: wpickett
 ms.date: 07/27/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 38f27a1d5ca80cec4b7bc43c3d5473fc829f1b05
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 84e5ec27904b564fa6ee29843ceae0bb70754ea7
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="adding-a-model-to-a-razor-pages-app"></a>將模型新增至 Razor 頁面應用程式
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 以[相依性插入](xref:fundamentals/dependency-injection)容器在 *Startup.cs* 檔案中登錄資料庫內容。
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-6)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
 
 請建置專案，以確認您沒有任何錯誤。
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 11/10/2017
 在 PMC 中，輸入下列命令：
 
 ```powershell
-Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 2.0.0
+Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
 Add-Migration Initial
 Update-Database
 ```

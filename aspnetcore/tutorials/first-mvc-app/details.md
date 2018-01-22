@@ -2,7 +2,6 @@
 title: "檢查 Details 和 Delete 方法"
 author: rick-anderson
 description: "基本 ASP.NET Core MVC 應用程式中的 Details 控制器方法和檢視。"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 43394106c9074f9487e1065a37a88eb017833bae
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1b091cc479accfad5ad570a006d7395ef8d62a08
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
 

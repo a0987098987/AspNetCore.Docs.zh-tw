@@ -2,7 +2,6 @@
 title: "在 Mac 上開始使用 ASP.NET Core 中的 Razor 頁面"
 author: rick-anderson
 description: "利用 Visual Studio for Mac 開始使用 ASP.NET Core 中的 Razor 頁面"
-keywords: "ASP.NET Core ,Razor 頁面, Scaffolding, Entity Framework Core, EF, EF Core, 資料庫, mac, macOS, Visual Studio for Mac"
 ms.author: riande
 manager: wpickett
 ms.date: 07/27/2017
@@ -10,15 +9,15 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: 9431e8160011d1485925db5cc4f9f83bf7381e97
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ca9fca507096f3f09f19fe0a7f1dc023003649d7
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>利用 Visual Studio for Mac 開始使用 ASP.NET Core 中的 Razor 頁面
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 

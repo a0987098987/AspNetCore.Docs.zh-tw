@@ -2,20 +2,18 @@
 title: "控制器方法和檢視"
 author: rick-anderson
 description: "使用控制器方法、檢視和 DataAnnotations"
-keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
 ms.date: 04/07/2017
 ms.topic: get-started-article
-ms.assetid: c7313211-bb71-4adf-babe-8e72603cc0ce
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
-ms.openlocfilehash: b72fb5077d3bd577cd6282e7a6231a0806ee1fd2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1d9258d8f52bf7030ae34ac4069b1b02a51de51b
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="controller-methods-and-views"></a>控制器方法和檢視
 

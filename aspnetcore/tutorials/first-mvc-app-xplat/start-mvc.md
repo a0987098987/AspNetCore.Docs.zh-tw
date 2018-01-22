@@ -2,20 +2,18 @@
 title: "Mac、Linux 或 Windows 上的 ASP.NET Core MVC 簡介"
 author: rick-anderson
 description: "Mac、Linux 和 Windows 上的 ASP.NET Core MVC 與 Visual Studio Code 使用者入門"
-keywords: ASP.NET Core,MVC,VS Code,Visual Studio Code,Mac,Linux,Windows
 ms.author: riande
 manager: wpickett
 ms.date: 07/07/2017
 ms.topic: get-started-article
-ms.assetid: 1d18b589-1638-4dc6-1638-fb0f41998d78
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: 87ce5dca011a7bc37d34799db159d933c158cba1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f439b6414d95f6edd1c2201c8aee043f1eab9b76
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Mac、Linux 或 Windows 上的 ASP.NET Core MVC 使用者入門
 
@@ -52,7 +50,7 @@ dotnet new mvc
 在 Visual Studio Code (VS Code) 中，開啟 *MvcMovie* 資料夾，然後選取 *Startup.cs* 檔案。
 
 - 針對下列 [警告] 訊息選取 [是]：「'MvcMovie' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？」
-- 選取 [還原] 至 [資訊] 訊息「有未解析的相依性」。
+- 針對下列 [資訊] 訊息選取 [還原]：「有未解析的相依性」。
 
 ![VS Code 與警告：'MvcMovie' 中遺漏了建置和偵錯的必要資產。 新增它們嗎？ 不要再詢問、現在不要、是以及資訊 - 有未解析的相依性 - 還原 - 關閉](../web-api-vsc/_static/vsc_restore.png)
 

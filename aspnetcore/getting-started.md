@@ -2,20 +2,18 @@
 title: "ASP.NET Core 2.0 使用者入門"
 author: rick-anderson
 description: "使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式的快速教學課程。"
-keywords: "ASP.NET Core, 教學課程, 使用者入門"
 ms.author: riande
 manager: wpickett
 ms.date: 10/18/2017
 ms.topic: get-started-article
-ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
-ms.openlocfilehash: 5b8c9f770e749c13bc562f157b4ebfd25a88a4e0
-ms.sourcegitcommit: 019e5a0342fd49a94056d14fc7a1a1d0f81d2a39
+ms.openlocfilehash: b5f1fb0de2776177374b8b4d5ea6041b0fc653a9
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-aspnet-core"></a>ASP.NET Core 使用者入門
 

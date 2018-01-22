@@ -2,7 +2,6 @@
 title: "新增驗證"
 author: rick-anderson
 description: "如何將驗證新增至 ASP.NET Core 應用程式。"
-keywords: "ASP.NET Core,驗證,DataAnnotations"
 ms.author: riande
 manager: wpickett
 ms.date: 04/13/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: e02aeda83cfa0f064000eceec029a451f1bd432e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c23631b9bccc6dccdaf2f8c8206317540e70b81f
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/19/2018
 ---
 [!INCLUDE[validation](../../includes/mvc-intro/validation.md)]
 

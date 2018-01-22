@@ -7,15 +7,13 @@ ms.date: 09/22/2017
 ms.topic: get-started-article
 ms.prod: asp.net-core
 ms.technology: aspnet
-keywords: "ASP.NET Core, WebAPI, Web API, REST, Mac, Linux, HTTP, 服務, HTTP 服務, VS Code"
 manager: wpickett
-ms.assetid: 830b4bf5-dd14-423e-9f59-764a6f13a8f6
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 40f9259101e5d006378562a27e97948641e29450
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: e5e0f7c5704036057db33bc8a705da9d4cd8c004
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>在 macOS、Linux 和 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建立 Web API
 

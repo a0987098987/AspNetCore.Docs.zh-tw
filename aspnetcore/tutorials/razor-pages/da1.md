@@ -2,7 +2,6 @@
 title: "更新產生的頁面"
 author: rick-anderson
 description: "以更好的顯示方式更新產生的網頁。"
-keywords: "ASP.NET Core, Razor 頁面"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: c66bb3a9d766e02c7775906cdd547a0e12c15336
-ms.sourcegitcommit: b38796ea3806bf39b89806adfa681b2a33762907
+ms.openlocfilehash: 201e8d9c77d8e022bc56ffcf46456fada6fcfe25
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="updating-the-generated-pages"></a>更新產生的頁面
 

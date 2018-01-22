@@ -2,7 +2,6 @@
 title: "新增驗證"
 author: rick-anderson
 description: "說明如何將驗證新增至 Razor 頁面。"
-keywords: "ASP.NET Core, 驗證, DataAnnotations, Razor, Razor 頁面"
 ms.author: riande
 manager: wpickett
 ms.date: 08/07/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: bd794ae2217c2a56f36cd46c2f12f1c80f6b4f2b
-ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
+ms.openlocfilehash: 2c7473647f23daf20ce7b204f621fb34f1a528c2
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
 

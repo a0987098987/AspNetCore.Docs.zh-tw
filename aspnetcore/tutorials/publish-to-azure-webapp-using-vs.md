@@ -2,7 +2,6 @@
 title: "使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure"
 author: rick-anderson
 description: "了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。"
-keywords: ASP.NET Core
 ms.author: riande
 manager: wpickett
 ms.date: 12/16/2017
@@ -10,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: e8de630c4fa8cff5395f7246b91384d4725e4ca6
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: dd31e3a9583a0c152e97ae7cf6b215389298a20c
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 /zh-TW
 

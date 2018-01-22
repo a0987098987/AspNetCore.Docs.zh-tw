@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 msc.type: authoredcontent
-ms.openlocfilehash: 08ef1564b2f8f11294c3bb1ec0ff9a3d063895b6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 53ad705fad6d2225cecca4d73355bd6ebfcf56d5
+ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/22/2018
 ---
 <a name="bson-support-in-aspnet-web-api-21"></a>在 ASP.NET Web API 2.1 BSON 支援
 ====================
@@ -30,7 +30,7 @@ Web API 2.1 引進了 BSON 的支援。 本主題說明如何使用 BSON 和.NET
 
 BSON 被設計成是輕量、 能夠輕鬆瀏覽，以及快速編碼/解碼。
 
-- BSON 相當的大小為 JSON。 根據資料，BSON 內容可能會小於或大於 JSON 裝載。 序列化二進位資料，例如影像檔，BSON 小於 JSON，因為執行的二進位資料不是 base64 編碼。
+- BSON 相當的大小為 JSON。 根據資料，BSON 內容可能會小於或大於 JSON 裝載。 序列化二進位資料，映像檔案，例如 BSON 小於 JSON，因為二進位資料不是 base64 編碼。
 - BSON 文件不容易閱讀，因為項目會加上長度欄位，讓剖析器可以略過項目而不需要加以解碼。
 - 編碼和解碼是有效率，因為數值資料類型會儲存成數字，不是字串。
 

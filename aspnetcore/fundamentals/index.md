@@ -2,21 +2,19 @@
 title: "ASP.NET Core 基本概念"
 author: rick-anderson
 description: "探索用於建置 ASP.NET Core 應用程式的基本概念。"
-keywords: "ASP.NET Core, 基本概念, 概觀"
 ms.author: riande
 manager: wpickett
 ms.date: 09/30/2017
 ms.topic: get-started-article
-ms.assetid: a19b7836-63e4-44e8-8250-50d426dd1070
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/index
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83bed4676be3ca752442da3fe560f1f2a4d728a1
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: 0d977c13eb5f4cbe8bac261733bdc747e6c19b2a
+ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -163,7 +161,7 @@ ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程�
 
 ## <a name="servers"></a>伺服器
 
-ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 伺服器實作，才可將要求轉寄至應用程式。 轉寄的要求會包裝成一組可透過介面來存取的功能物件。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產網頁伺服器 (例如 [IIS](https://www.iis.net/) 或 [nginx](http://nginx.org)) 背後執行。 Kestrel 可執行為 Edge Server。
+ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 伺服器實作，才可將要求轉寄至應用程式。 轉寄的要求會包裝成一組可透過介面來存取的功能物件。 ASP.NET Core 包含一個受管理的跨平台網頁伺服器，稱為 [Kestrel](xref:fundamentals/servers/kestrel)。 Kestrel 通常會在生產 Web 伺服器 (例如 [IIS](https://www.iis.net/) 或 [Nginx](http://nginx.org)) 背後執行。 Kestrel 可執行為 Edge Server。
 
 如需詳細資訊，請參閱[伺服器](xref:fundamentals/servers/index)及下列主題：
 

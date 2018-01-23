@@ -16,7 +16,7 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-您可以在 *Startup.cs* 檔案中設定路由的格式。
+您可以在 *Startup.cs* 的 `Configure` 方法中設定路由的格式。
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 

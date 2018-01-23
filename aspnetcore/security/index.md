@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: 71bde77e0bc5698b670b560455301cae642165a6
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3f0f1c402aeac388c2fcabb509aa8aa3a46e95f5
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 
@@ -96,7 +96,7 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
         *   [金鑰儲存體格式](data-protection/implementation/key-storage-format.md)
         *   [暫時資料保護提供者](data-protection/implementation/key-storage-ephemeral.md)
     *   [相容性](data-protection/compatibility/index.md)
-        *   [應用程式間共用 Cookie](data-protection/compatibility/cookie-sharing.md)
+        *   [在應用程式間共用 Cookie](data-protection/compatibility/cookie-sharing.md)
         *   [取代 ASP.NET 中的 <machineKey>](data-protection/compatibility/replacing-machinekey.md)
 *   [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
 *   [在開發期間安全儲存應用程式密碼](app-secrets.md)

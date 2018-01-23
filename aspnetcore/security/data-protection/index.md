@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/index
-ms.openlocfilehash: 7bbd203a67b32032ba2ab82448a5fc9a495b52aa
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 151385964d877fc9eadaa219320e5f5a195164e4
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="data-protection-in-aspnet-core-consumer-apis-configuration-extensibility-apis-and-implementation"></a>ASP.NET Core 中的資料保護：取用者 API、組態、擴充性 API 和實作
 
@@ -75,6 +75,6 @@ ms.lasthandoff: 01/19/2018
 
 * [相容性](compatibility/index.md)
 
-  * [應用程式間共用 Cookie](compatibility/cookie-sharing.md)
+  * [在應用程式間共用 Cookie](xref:security/data-protection/compatibility/cookie-sharing)
 
-  * [取代 ASP.NET 中的 <machineKey>](compatibility/replacing-machinekey.md)
+  * [取代 ASP.NET 中的 <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)

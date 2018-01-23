@@ -1,7 +1,19 @@
 ---
-標題：ASP.NET Core 中的 Razor 頁面簡介，作者：Rick-Anderson，說明：Razor 頁面上的 ASP.NET Core 教學課程。 包含 MVC Core、ASP.NET Core 2.x、網頁程式開發簡介及 Visual Studio 2017。
-此文件簡介在 ASP.NET Core 中使用 Razor 頁面的相關知識，讓您在開發著重於網頁的案例時更得心應手。
-ms.author: riande manager: wpickett ms.date: 09/12/2017 ms.topic: get-started-article ms.technology: aspnet ms.prod: asp.net-core uid: mvc/razor-pages/index
+title: "ASP.NET Core 中的 Razor 頁面簡介"
+author: Rick-Anderson
+description: "在 Razor 頁面上的 ASP.NET Core 教學課程。 包含 MVC Core、ASP.NET Core 2.x、網頁程式開發簡介及 Visual Studio 2017。 此文件提供在 ASP.NET Core 中使用 Razor 頁面的概觀，以便於以頁面為焦點的案例之開發。"
+ms.author: riande
+manager: wpickett
+ms.date: 09/12/2017
+ms.topic: get-started-article
+ms.technology: aspnet
+ms.prod: asp.net-core
+uid: mvc/razor-pages/index
+ms.openlocfilehash: 059dc3a163c646877da40a73bcc9a75eb38fb345
+ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 

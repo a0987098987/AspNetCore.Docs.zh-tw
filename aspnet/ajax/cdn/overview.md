@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 2955888bc745fa3d49e40d364196283f16ad95ef
-ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
+ms.openlocfilehash: f69f707ba64d13fc372b7bc44718c9dcf8cec6e2
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/22/2018
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -161,6 +161,14 @@ CDN 裝載一些最受歡迎的第三方 JavaScript 程式庫。 Microsoft 不�
 ### <a name="jquery-releases-on-the-cdn"></a>jQuery 版本在 CDN 上
 
 下列版本的 jQuery 裝載在 CDN 上：
+
+#### <a name="jquery-version-331"></a>jQuery 版本 3.3.1
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.map
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.js
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.js
+- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.map
 
 #### <a name="jquery-version-321"></a>jQuery 版本 3.2.1
 - http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js

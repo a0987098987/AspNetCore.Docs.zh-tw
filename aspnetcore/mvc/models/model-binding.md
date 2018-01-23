@@ -1,19 +1,20 @@
 ---
 title: "模型繫結"
-author: rick-anderson
-description: 
-ms.author: riande
+author: rachelappel
+description: "在 ASP.NET Core MVC 模型繫結的相關資訊"
+ms.author: rachelap
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 01/22/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
+ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 uid: mvc/models/model-binding
-ms.openlocfilehash: 84b9c5dc3a87b739affaeaecaa180d1b01f49b8e
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 8fc6ff66d05164c1040f8cc77886357a633a0472
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="model-binding"></a>模型繫結
 
@@ -41,7 +42,7 @@ MVC 會嘗試要求將資料繫結至動作參數名稱。 MVC 會尋找每個�
 
 1. `Form values`： 這些是在使用 POST 方法的 HTTP 要求的表單值。 （包括 jQuery POST 要求）。
 
-2. `Route values`： 所提供的路由值的集合[路由](../../fundamentals/routing.md)
+2. `Route values`： 所提供的路由值的集合[路由](xref:fundamentals/routing)
 
 3. `Query strings`: URI 查詢字串組件。
 
@@ -101,7 +102,7 @@ MVC 包含數個屬性可讓您將導向至不同來源的預設模型繫結行�
 
 當您需要覆寫預設行為的模型繫結時，屬性是很有幫助的工具。
 
-## <a name="binding-formatted-data-from-the-request-body"></a>從要求主體格式的繫結資料
+## <a name="bind-formatted-data-from-the-request-body"></a>繫結的要求主體中的格式化的資料
 
 要求的資料可以來自各種不同的格式，包括 JSON、 XML 及其他等等。 當您使用 [FromBody] 屬性來指出您想要將參數繫結至的要求主體中的資料時，MVC 會使用設定的格式器來處理要求資料，根據其內容的型別。 根據預設，MVC 包含`JsonInputFormatter`類別處理 JSON 資料，但是您可以新增其他的格式器來處理 XML 和其他自訂格式。
 

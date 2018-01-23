@@ -4,16 +4,16 @@ author: rick-anderson
 description: "深入了解 ASP.NET Core 中介軟體和要求管線。"
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2017
+ms.date: 01/22/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: af16046c97964e8e1c16a4f5989fcfa794741c4d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: ef130e736e2f32fa134156d979ce5bfbedcae828
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/19/2018
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/middleware/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="what-is-middleware"></a>什麼是中介軟體
+## <a name="what-is-middleware"></a>什麼是中介軟體？
 
 中介軟體是組裝至應用程式管線來處理要求和回應的軟體。 每個元件：
 
@@ -191,18 +191,22 @@ app.Map("/level1/level2", HandleMultiSeg);
 
 ## <a name="built-in-middleware"></a>內建的中介軟體
 
-ASP.NET Core 隨附下列的中介軟體元件：
+ASP.NET Core 隨附於下列的中介軟體元件，以及在其中應該將它們加入的順序的描述：
 
-| 中介軟體 | 描述 |
-| ----- | ------- |
-| [驗證](xref:security/authentication/identity) | 提供的驗證支援。 |
-| [CORS](xref:security/cors) | 設定跨原始資源共用。 |
-| [回應快取](xref:performance/caching/middleware) | 提供支援快取回應。 |
-| [回應的壓縮](xref:performance/response-compression) | 提供支援壓縮回應。 |
-| [路由傳送](xref:fundamentals/routing) | 定義，並限制要求的路由。 |
-| [工作階段](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 |
-| [靜態檔案](xref:fundamentals/static-files) | 提供靜態檔案和目錄瀏覽提供服務的支援。 |
-| [URL 重寫中介軟體](xref:fundamentals/url-rewriting) | 提供重寫 Url，並將要求重新導向的支援。 |
+| 中介軟體 | 描述 | 訂單 |
+| ---------- | ----------- | ----- |
+| [驗證](xref:security/authentication/identity) | 提供的驗證支援。 | 之前`HttpContext.User`需要。 OAuth 回呼的終端機。 |
+| [CORS](xref:security/cors) | 設定跨原始資源共用。 | 之前使用 CORS 的元件。 |
+| [診斷](xref:fundamentals/error-handling) | 設定診斷。 | 元件之前，會產生錯誤。 |
+| [ForwardedHeaders/HttpOverrides](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | 將轉送代理至目前要求的標頭。 | 使用更新的欄位的元件之前 (範例： 配置、 主機、 ClientIP、 方法)。 |
+| [回應快取](xref:performance/caching/middleware) | 提供支援快取回應。 | 元件之前，需要使用快取。 |
+| [回應的壓縮](xref:performance/response-compression) | 提供支援壓縮回應。 | 元件之前，需要壓縮。 |
+| [RequestLocalization](xref:fundamentals/localization) | 提供當地語系化支援。 | 之前當地語系化敏感的元件。 |
+| [路由傳送](xref:fundamentals/routing) | 定義，並限制要求的路由。 | 終端機的相符路由。 |
+| [工作階段](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 元件之前，需要工作階段。 |
+| [靜態檔案](xref:fundamentals/static-files) | 提供靜態檔案和目錄瀏覽提供服務的支援。 | 如果要求符合檔案的終端機。 |
+| [URL 重寫](xref:fundamentals/url-rewriting) | 提供重寫 Url，並將要求重新導向的支援。 | 元件之前，可以使用 URL。 |
+| [WebSockets](xref:fundamentals/websockets) | 啟用 Websocket 通訊協定。 | 元件之前，必須接受 WebSocket 要求。 |
 
 <a name="middleware-writing-middleware"></a>
 

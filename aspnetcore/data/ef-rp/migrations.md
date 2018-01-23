@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 26fbda99b0c1dfa2d09cf387e43f3123c58215f8
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9a0fb52a1d1a62bce3f11c7e0394c00b9d544ab3
+ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>移轉的 EF 核心 Razor 頁面教學課程 (8 個 4)
 
@@ -127,7 +127,7 @@ EF 核心命令`migrations add`產生程式碼來建立從 DB。 此移轉程式
 
 ## <a name="remove-ensurecreated"></a>移除 EnsureCreated
 
-早期開發，`EnsureCreated`命令的使用。 在本教學課程，請使用移轉。 `EnsureCreated`具有下列 limatitions:
+早期開發，`EnsureCreated`命令的使用。 在本教學課程，請使用移轉。 `EnsureCreated`具有下列限制：
 
 * 會略過移轉作業，並建立資料庫和結構描述。
 * 不會建立移轉表格。

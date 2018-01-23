@@ -130,6 +130,7 @@
 ## [測試控制器](xref:mvc/controllers/testing)
 ## [遠端偵錯](/visualstudio/debugger/remote-debugging-azure)
 ## [快照集偵錯](/azure/application-insights/app-insights-snapshot-debugger)
+## [Visual Studio 中的快照集偵錯](/visualstudio/debugger/debug-live-azure-applications)
 
 # [資料存取與存放](data/index.md)
 ## [使用 Visual Studio 開始使用 Razor 頁面與 Entity Framework Core](xref:data/ef-rp/intro)

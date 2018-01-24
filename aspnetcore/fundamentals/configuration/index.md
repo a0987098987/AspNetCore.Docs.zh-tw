@@ -5,16 +5,16 @@ description: "透過多種方法來使用組態 API 設定 ASP.NET Core 應用�
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/11/2018
+ms.date: 01/11/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0f8618898089418f709506aee5eb013f983dc294
-ms.sourcegitcommit: 87168cdc409e7a7257f92a0f48f9c5ab320b5b28
+ms.openlocfilehash: c4f57d1e02ad5f4e235039999af9df9d236756a7
+ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/17/2018
 
 組態是由成對的名稱和數值階層式清單所組成，其中節點是以冒號分隔。 若要擷取值，請使用對應項目的索引鍵來存取 `Configuration` 索引子：
 
-[!code-csharp[Main](index/sample/ConfigJson/Program.cs?range=24-24)]
+[!code-csharp[Main](index/sample/ConfigJson/Program.cs?range=21-22)]
 
 若要使用 JSON 格式組態來源中的陣列，請使用陣列索引作為冒號分隔字串的一部分。 下列範例會取得上述 `wizards` 陣列中第一個項目的名稱：
 
@@ -59,7 +59,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 // Output: Gandalf
 ```
 
-寫入內建[組態](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration)提供者的成對名稱和數值**不會**保存。 不過，您可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
+寫入內建[組態](/dotnet/api/microsoft.extensions.configuration)提供者的成對名稱和數值**不會**保存。 不過，您可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
 
 上述範例使用 Configuration 索引子來讀取值。 若要存取 `Startup` 外部組態，請使用「選項模式」。 如需詳細資訊，請參閱[選項](xref:fundamentals/configuration/options)主題。
 
@@ -72,7 +72,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 * *appsettings.\<環境名稱>.json*
 * 環境變數
 
-ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVariables](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables #Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_)。
+ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables#Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_)。
 
 如需參數的說明，請參閱 [AddJsonFile](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions)。 `reloadOnChange` 只有在 ASP.NET Core 1.1 和更新版本中才支援。
 
@@ -106,7 +106,7 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 ### <a name="getvalue"></a>GetValue
 
-下列範例示範 [GetValue&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationbinder#Microsoft_Extensions_Configuration_ConfigurationBinder_GetValue_Microsoft_Extensions_Configuration_IConfiguration_System_Type_System_String_System_Object_) 擴充方法：
+下列範例示範 [GetValue&lt;T&gt;](/dotnet/api/microsoft.extensions.configuration.configurationbinder.get?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_ConfigurationBinder_Get__1_Microsoft_Extensions_Configuration_IConfiguration_) 擴充方法：
 
 [!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
 
@@ -175,11 +175,11 @@ public void CanBindObjectTree()
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
 
-建立實作 [IConfigurationSource](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.iconfigurationsource) 的類別：
+建立實作 [IConfigurationSource](/dotnet/api/Microsoft.Extensions.Configuration.IConfigurationSource) 的類別：
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
 
-透過繼承自 [ConfigurationProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.configuration.configurationprovider) 來建立自訂組態提供者。 組態提供者會將空白資料庫初始化：
+透過繼承自 [ConfigurationProvider](/dotnet/api/Microsoft.Extensions.Configuration.ConfigurationProvider) 來建立自訂組態提供者。 組態提供者會將空白資料庫初始化：
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
 
@@ -401,7 +401,7 @@ Left: 1988
 * `IConfiguration` 有兩個特製化：
   * `IConfigurationRoot` 用於根節點。 可觸發重新載入。
   * `IConfigurationSection` 代表組態值區段。 `GetSection` 和 `GetChildren` 方法會傳回 `IConfigurationSection`。
-  * 在重新載入組態或需要存取各個提供者時使用 [IConfigurationRoot](https://docs.microsoft.com/ dotnet/api/microsoft.extensions.configuration.iconfigurationroot)。 以上皆為罕見案例。
+  * 在重新載入組態或需要存取各個提供者時使用 [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot)。 以上皆為罕見案例。
 
 ## <a name="additional-resources"></a>其他資源
 

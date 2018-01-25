@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 7d85b995cd577d0ff90fe96bce508c7fbdc6ebbb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9103574597df126a22e21a2f51815f608e46f47f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的媒體格式器
 ====================
@@ -48,8 +48,8 @@ ms.lasthandoff: 11/10/2017
 
 若要建立的媒體格式器，衍生自這些類別的其中一個：
 
-- [MediaTypeFormatter](https://msdn.microsoft.com/en-us/library/system.net.http.formatting.mediatypeformatter.aspx)。 此類別會使用非同步讀取及寫入方法。
-- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/en-us/library/system.net.http.formatting.bufferedmediatypeformatter.aspx)。 此類別衍生自**MediaTypeFormatter**但使用 sychronous 讀/寫方法。
+- [MediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.mediatypeformatter.aspx). 此類別會使用非同步讀取及寫入方法。
+- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). 此類別衍生自**MediaTypeFormatter**但使用 sychronous 讀/寫方法。
 
 衍生自**BufferedMediaTypeFormatter**較為簡單，因為沒有非同步程式碼，但這也表示 i/o 可能會封鎖呼叫執行緒。
 
@@ -91,10 +91,10 @@ ms.lasthandoff: 11/10/2017
 
 （選擇性） 媒體格式器可以支援多個的字元編碼，例如 utf-8 或 ISO 8859-1。
 
-在建構函式，加入一個或多個[System.Text.Encoding](https://msdn.microsoft.com/en-us/library/system.text.encoding.aspx)類型**SupportedEncodings**集合。 將使用預設編碼方式的第一個。
+在建構函式，加入一個或多個[System.Text.Encoding](https://msdn.microsoft.com/library/system.text.encoding.aspx)類型**SupportedEncodings**集合。 將使用預設編碼方式的第一個。
 
 [!code-csharp[Main](media-formatters/samples/sample10.cs?highlight=6-7)]
 
-在**WriteToStream**和**ReadFromStream**方法呼叫[MediaTypeFormatter.SelectCharacterEncoding](https://msdn.microsoft.com/en-us/library/hh969054.aspx)選取的慣用的字元編碼。 這個方法比對支援的編碼方式清單進行比對的要求標頭。 使用傳回**編碼**當讀取或寫入資料流：
+在**WriteToStream**和**ReadFromStream**方法呼叫[MediaTypeFormatter.SelectCharacterEncoding](https://msdn.microsoft.com/library/hh969054.aspx)選取的慣用的字元編碼。 這個方法比對支援的編碼方式清單進行比對的要求標頭。 使用傳回**編碼**當讀取或寫入資料流：
 
 [!code-csharp[Main](media-formatters/samples/sample11.cs?highlight=3,5)]

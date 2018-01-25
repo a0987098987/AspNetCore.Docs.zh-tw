@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 30bc92c5c5a54e8c43092c69d0b0707a96d6b331
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a24245a3c846d061a528d520f915b8eac3ff475
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-the-tableadapter-to-use-joins-c"></a>更新要使用的 TableAdapter 聯結 (C#)
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 A`JOIN`合併記錄從一個資料表，根據一些準則的另一個資料表內的記錄。 在上述查詢中，例如`LEFT JOIN Categories ON Categories.CategoryID = Products.CategoryID`指示合併每個 SQL Server 產品與分類的記錄會記錄其`CategoryID`值符合產品的`CategoryID`值。 合併的結果，可讓我們使用對應的類別目錄欄位，針對每個產品 (例如`CategoryName`)。
 
 > [!NOTE]
-> `JOIN`s 常用於查詢關聯式資料庫中的資料時。 如果您是新手`JOIN`語法或需要複習有點其使用情形，d 建議[SQL Join 教學課程](http://www.w3schools.com/sql/sql_join.asp)在[W3 學校](http://www.w3schools.com/)。 也值得讀取會[`JOIN`基礎](https://msdn.microsoft.com/en-us/library/ms191517.aspx)和[子查詢基礎觀念](https://msdn.microsoft.com/en-us/library/ms189575.aspx)區段[SQL 線上叢書 》](https://msdn.microsoft.com/en-us/library/ms130214.aspx)。
+> `JOIN`s 常用於查詢關聯式資料庫中的資料時。 如果您是新手`JOIN`語法或需要複習有點其使用情形，d 建議[SQL Join 教學課程](http://www.w3schools.com/sql/sql_join.asp)在[W3 學校](http://www.w3schools.com/)。 也值得讀取會[`JOIN`基礎](https://msdn.microsoft.com/library/ms191517.aspx)和[子查詢基礎觀念](https://msdn.microsoft.com/library/ms189575.aspx)區段[SQL 線上叢書 》](https://msdn.microsoft.com/library/ms130214.aspx)。
 
 
 因為`JOIN`s 和相互關聯子查詢可以同時用來從其他資料表擷取相關的資料，許多開發人員會一直突破其標頭，並想要使用哪個方法。 所有 SQL 討論我 ve 談到說大致上相同的作業，它規定 t 真的很重要取向因為 SQL Server 會產生大致上相同的執行計畫。 然後，他們的建議，是使用您和小組是最熟悉的技巧。 它需要注意的是之後 imparting 這項建議, 這些專家立即 express 其喜好設定`JOIN`s 透過相互關聯子查詢。

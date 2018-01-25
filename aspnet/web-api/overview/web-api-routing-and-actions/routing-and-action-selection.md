@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: 02c2a01ef8ec2b5a49f2c303ee61f02702a3ba54
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 997582263bd48590b74434ee0ffc6be928fa1e08
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="routing-and-action-selection-in-aspnet-web-api"></a>路由和 ASP.NET Web API 中的動作選取
 ====================
@@ -95,7 +95,7 @@ URI 路徑 」 api/產品 」 和路由字典將會包含：
 如果 URI 路徑是"8/api/根"，字典會包含兩個值：
 
 - 控制器: 「 客戶 」
-- 識別碼:"8"
+- id: "8"
 
 ## <a name="selecting-a-controller"></a>選取控制站
 
@@ -121,7 +121,7 @@ URI 路徑 」 api/產品 」 和路由字典將會包含：
 
 之前查看選取演算法時，我們必須了解有關非同步控制器動作的一些事項。
 
-**在控制器上的方法被視為 「 動作 」？** 當選取動作，架構只查看公用執行個體方法的控制站上。 此外，它會排除[「 特殊名稱 」](https://msdn.microsoft.com/en-us/library/system.reflection.methodbase.isspecialname) （建構函式、 事件、 運算子多載，以及其他等等） 的方法和方法繼承自**ApiController**類別。
+**在控制器上的方法被視為 「 動作 」？** 當選取動作，架構只查看公用執行個體方法的控制站上。 此外，它會排除[「 特殊名稱 」](https://msdn.microsoft.com/library/system.reflection.methodbase.isspecialname) （建構函式、 事件、 運算子多載，以及其他等等） 的方法和方法繼承自**ApiController**類別。
 
 **HTTP 方法。** 架構只會選擇符合的決定，如下所示，在要求之 HTTP 方法的動作：
 
@@ -134,7 +134,7 @@ URI 路徑 」 api/產品 」 和路由字典將會包含：
 - 簡單類型會從 URI 擷取。
 - 複雜型別會從要求主體中取用。
 
-簡單類型包括所有[.NET Framework 基本型別](https://msdn.microsoft.com/en-us/library/system.type.isprimitive)，加上**DateTime**，**十進位**， **Guid**，**字串**，和**TimeSpan**。 對於每個動作中，最多一個參數可以讀取的要求主體。
+簡單類型包括所有[.NET Framework 基本型別](https://msdn.microsoft.com/library/system.type.isprimitive)，加上**DateTime**，**十進位**， **Guid**，**字串**，和**TimeSpan**。 對於每個動作中，最多一個參數可以讀取的要求主體。
 
 > [!NOTE]
 > 很可能覆寫預設的繫結規則。 請參閱[WebAPI 參數繫結實際上](https://blogs.msdn.com/b/jmstall/archive/2012/05/11/webapi-parameter-binding-under-the-hood.aspx)。
@@ -192,7 +192,7 @@ HTTP 要求：
 URI 符合路由名為"DefaultApi"。 路由字典包含下列項目：
 
 - 控制器:"products"
-- 識別碼:"1"
+- id: "1"
 
 路由字典不包含查詢字串參數、 「 版本 」 和 「 詳細資料 」，但這些仍然會被視為動作選取的期間。
 
@@ -218,7 +218,7 @@ HTTP 要求是 GET 要求。 支援 GET 的控制器動作為`GetAll`， `GetByI
 
 `GetById` Wins 方法，因為它會比對一個參數，也沒有參數與`GetAll`。 使用下列參數值叫用的方法：
 
-- *識別碼*= 1
+- *id* = 1
 - *版本*= 1.5
 
 請注意，即使*版本*未使用在選取演算法參數的值來自 URI 查詢字串。
@@ -227,7 +227,7 @@ HTTP 要求是 GET 要求。 支援 GET 的控制器動作為`GetAll`， `GetByI
 
 Web API 路由的處理程序的某些部分提供擴充點。
 
-| 介面 | 說明 |
+| 介面 | 描述 |
 | --- | --- |
 | **IHttpControllerSelector** | 選取的控制器。 |
 | **IHttpControllerTypeResolver** | 取得控制器型別的清單。 **DefaultHttpControllerSelector**從這份清單中選擇 控制器類型。 |

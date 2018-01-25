@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: d2bdf04b4da2a099f3a2af100b16682c68f946f2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c593c56ba3d0ee8ebf6dc425408d2c3b91c83f93
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="global-error-handling-in-aspnet-web-api-2"></a>全域錯誤處理中 ASP.NET Web API 2
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 1. 我們支援註冊多個例外狀況記錄器，但只有單一例外狀況處理常式。
 2. 例外狀況記錄器一律取得呼叫，即使我們即將中止連接。 只有當我們仍然可以選擇要傳送的回應訊息時，取得呼叫例外狀況處理常式。
 
-這兩項服務提供存取權包含來自例外狀況已偵測到，點的相關資訊的例外狀況內容特別[HttpRequestMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.110).aspx)、 [HttpRequestContext](https://msdn.microsoft.com/en-us/library/system.web.http.controllers.httprequestcontext(v=vs.118).aspx)，則會擲回例外狀況和例外狀況來源 （下面的詳細資料）。
+這兩項服務提供存取權包含來自例外狀況已偵測到，點的相關資訊的例外狀況內容特別[HttpRequestMessage](https://msdn.microsoft.com/library/system.net.http.httprequestmessage(v=vs.110).aspx)、 [HttpRequestContext](https://msdn.microsoft.com/library/system.web.http.controllers.httprequestcontext(v=vs.118).aspx)，則會擲回例外狀況和例外狀況來源 （下面的詳細資料）。
 
 ### <a name="design-principles"></a>設計原則
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](web-api-global-error-handling/samples/sample5.cs)]
 
-例外狀況處理常式會指出它已設定處理例外狀況`Result`的動作結果的屬性 (例如， [ExceptionResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.exceptionresult(v=vs.118).aspx)， [InternalServerErrorResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.internalservererrorresult(v=vs.118).aspx)， [StatusCodeResult](https://msdn.microsoft.com/en-us/library/system.web.http.results.statuscoderesult(v=vs.118).aspx)，或自訂的結果)。 如果`Result`屬性為 null、 例外狀況未處理，而且會重新擲回原始例外狀況。
+例外狀況處理常式會指出它已設定處理例外狀況`Result`的動作結果的屬性 (例如， [ExceptionResult](https://msdn.microsoft.com/library/system.web.http.results.exceptionresult(v=vs.118).aspx)， [InternalServerErrorResult](https://msdn.microsoft.com/library/system.web.http.results.internalservererrorresult(v=vs.118).aspx)， [StatusCodeResult](https://msdn.microsoft.com/library/system.web.http.results.statuscoderesult(v=vs.118).aspx)，或自訂的結果)。 如果`Result`屬性為 null、 例外狀況未處理，而且會重新擲回原始例外狀況。
 
 對於例外狀況呼叫堆疊的頂端，我們採用額外的步驟，以確保應用程式開發介面呼叫的適當回應。 如果例外狀況會傳播到主機，呼叫端會看到的黃色死亡畫面，或某個其他主機提供回應通常是 HTML，而且通常不適當的 API 錯誤回應。 在這些情況下，不是 null，而且只有自訂例外狀況處理常式明確設定出結果開始回`null`（未處理的） 將例外狀況傳播到主機。 設定`Result`至`null`在這類情況下可適用於兩個案例：
 

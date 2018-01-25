@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/response-compression
-ms.openlocfilehash: 9270287b62f91ddb81d6a347dd583e1cbb32f3c3
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 2b39a5105339beb416490db282d4cd8b83d08660
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -110,7 +110,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 
 | 壓縮層級                | 描述                                                                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `CompressionLevel.Fastest`       | 即使未以最佳方式壓縮所產生的輸出，應該盡快，完成壓縮。 |
+| `CompressionLevel.Fastest`       | 即使不最佳的方式壓縮所產生的輸出，應該儘快，完成壓縮。 |
 | `CompressionLevel.NoCompression` | 您應該不執行任何壓縮。                                                                           |
 | `CompressionLevel.Optimal`       | 回應應以最佳方式壓縮，即使壓縮會使用更多時間來完成。                |
 

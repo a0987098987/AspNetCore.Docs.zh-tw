@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 3d6cc52f7fa3089f30f1a6bbd76593f1eca95009
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 85276377671b96e65406639c8584d9ebf8d77ff7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>MVC 5 Web 應用程式 (12 / 12) 的進階的 Entity Framework 6 案例
 ====================
@@ -58,9 +58,9 @@ ms.lasthandoff: 11/10/2017
 
 Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫的 SQL 命令的方法。 下列選項可供您選擇：
 
-- 使用[DbSet.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset.sqlquery.aspx)查詢來傳回實體類型的方法。 傳回的物件必須是所預期的類型`DbSet`物件，而且它們會自動追蹤對資料庫內容所除非您關閉追蹤。 (請參閱下一節有關[AsNoTracking](https://msdn.microsoft.com/en-us/library/system.data.entity.dbextensions.asnotracking.aspx)方法。)
-- 使用[Database.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.database.sqlquery.aspx)方法的傳回類型不是實體的查詢。 即使您使用這個方法來擷取實體類型不被追蹤的資料庫內容，傳回的資料。
-- 使用[Database.ExecuteSqlCommand](https://msdn.microsoft.com/en-us/library/gg679456.aspx)非查詢命令。
+- 使用[DbSet.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx)查詢來傳回實體類型的方法。 傳回的物件必須是所預期的類型`DbSet`物件，而且它們會自動追蹤對資料庫內容所除非您關閉追蹤。 (請參閱下一節有關[AsNoTracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx)方法。)
+- 使用[Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx)方法的傳回類型不是實體的查詢。 即使您使用這個方法來擷取實體類型不被追蹤的資料庫內容，傳回的資料。
+- 使用[Database.ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx)非查詢命令。
 
 使用 Entity Framework 的優點之一是它可避免中斷您太接近儲存資料的特定方法的程式碼。 它會產生 SQL 查詢和命令，這也讓您不必自行撰寫。 但有例外狀況時，您需要執行特定 SQL 查詢，以手動方式建立，而且這些方法可讓您處理這類例外狀況。
 
@@ -68,7 +68,7 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 ### <a name="calling-a-query-that-returns-entities"></a>呼叫查詢會傳回實體
 
-[DbSet&lt;TEntity&gt; ](https://msdn.microsoft.com/en-us/library/gg696460.aspx)類別會提供方法可讓您執行查詢，以傳回型別的實體`TEntity`。 若要查看這對您所做的運作將會在變更程式碼`Details`方法`Department`控制站。
+[DbSet&lt;TEntity&gt; ](https://msdn.microsoft.com/library/gg696460.aspx)類別會提供方法可讓您執行查詢，以傳回型別的實體`TEntity`。 若要查看這對您所做的運作將會在變更程式碼`Details`方法`Department`控制站。
 
 在*DepartmentController.cs*，請在`Details`方法，取代`db.Departments.FindAsync`方法呼叫`db.Departments.SqlQuery`方法呼叫，如下列反白顯示的程式碼所示：
 
@@ -84,7 +84,7 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample2.cs)]
 
-假設您想要撰寫的程式碼會擷取直接在 SQL，而不是使用 LINQ 中的此資料。 若要執行您要執行查詢，以傳回實體物件以外的項目，這表示您需要使用[Database.SqlQuery](https://msdn.microsoft.com/en-us/library/system.data.entity.database.sqlquery(v=VS.103).aspx)方法。
+假設您想要撰寫的程式碼會擷取直接在 SQL，而不是使用 LINQ 中的此資料。 若要執行您要執行查詢，以傳回實體物件以外的項目，這表示您需要使用[Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery(v=VS.103).aspx)方法。
 
 在*HomeController.cs*，取代中的 LINQ 陳述式`About`方法使用 SQL 陳述式，如下列反白顯示的程式碼所示：
 
@@ -130,19 +130,19 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 ![Courses_Index_page_showing_revised_credits](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image9.png)
 
-如需原始的 SQL 查詢的詳細資訊，請參閱[原始的 SQL 查詢](https://msdn.microsoft.com/en-us/data/jj592907)MSDN 上。
+如需原始的 SQL 查詢的詳細資訊，請參閱[原始的 SQL 查詢](https://msdn.microsoft.com/data/jj592907)MSDN 上。
 
 <a id="notracking"></a>
 ## <a name="no-tracking-queries"></a>不追蹤查詢
 
 當資料庫內容中擷取資料表資料列，並建立代表的實體物件時，依預設它會追蹤的是否與資料庫中的實體記憶體中保持同步。 記憶體中的資料做為快取，並更新實體時，會使用。 這種快取，所以通常不必要的 web 應用程式通常存留較短 （新的其中一個是建立及處置每個要求） 以及內容的內容執行個體讀取實體通常處置之前會再次使用該實體。
 
-您可以使用停用記憶體中的實體物件的追蹤[AsNoTracking](https://msdn.microsoft.com/en-us/library/gg679352(v=vs.103).aspx)方法。 您可以執行此作業的一般案例包括下列：
+您可以使用停用記憶體中的實體物件的追蹤[AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)方法。 您可以執行此作業的一般案例包括下列：
 
 - 查詢會擷取這類大量的資料，關閉追蹤可能會大幅提升效能。
 - 您想要將實體附加以更新，但您稍早擷取同一個實體用於不同用途。 因為實體已經受到追蹤的資料庫內容，您無法附加您想要變更的實體。 若要處理這種情況的一種方式為使用`AsNoTracking`與前面的查詢選項。
 
-如需範例，示範如何使用[AsNoTracking](https://msdn.microsoft.com/en-us/library/gg679352(v=vs.103).aspx)方法，請參閱[本教學課程的舊版](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)。 此版的教學課程不會修改旗標上設定繫結器建立模型中實體的編輯方法，讓它不需要`AsNoTracking`。
+如需範例，示範如何使用[AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)方法，請參閱[本教學課程的舊版](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)。 此版的教學課程不會修改旗標上設定繫結器建立模型中實體的編輯方法，讓它不需要`AsNoTracking`。
 
 <a id="sql"></a>
 ## <a name="examining-sql-sent-to-the-database"></a>檢查 SQL 傳送至資料庫
@@ -204,8 +204,8 @@ A`SelectList`集合，其中包含所有部門傳遞至檢視的下拉式清單�
 如需如何實作儲存機制和單位的工作模式的詳細資訊，請參閱[此教學課程系列的 Entity Framework 5 新版](../../older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application.md)。 在 Entity Framework 6 中實作 TDD 的方式的相關資訊，請參閱下列資源：
 
 - [如何 EF6 讓 Mocking DbSets 更輕鬆地](http://thedatafarm.com/data-access/how-ef6-enables-mocking-dbsets-more-easily/)
-- [測試模擬架構](https://msdn.microsoft.com/en-us/data/dn314429)
-- [使用您自己的測試複本測試](https://msdn.microsoft.com/en-us/data/dn314431)
+- [測試模擬架構](https://msdn.microsoft.com/data/dn314429)
+- [使用您自己的測試複本測試](https://msdn.microsoft.com/data/dn314431)
 
 <a id="proxies"></a>
 ## <a name="proxy-classes"></a>Proxy 類別
@@ -220,11 +220,11 @@ A`SelectList`集合，其中包含所有部門傳遞至檢視的下拉式清單�
 
 大部分的情況下您不需要注意這項使用的 proxy，但有例外狀況：
 
-- 在某些情況下您可能想要防止 Entity Framework 建立 proxy 執行個體。 例如，當您序列化的實體您通常會想 POCO 類別，而不是 proxy 類別。 一種方式以避免發生序列化問題為序列化而不是實體物件的資料傳輸物件 (Dto) 中所示[使用 Web API 和 Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md)教學課程。 另一個方法是[停用 proxy 建立](https://msdn.microsoft.com/en-US/data/jj592886.aspx)。
-- 當您具現化的實體類別使用`new`運算子，就無法取得 proxy 執行個體。 這表示您不先取得功能，例如消極式載入和自動變更追蹤。 這通常是好;您通常不需要延遲載入，因為您要建立新的實體不在資料庫中，而且通常不需要變更追蹤，如果您要明確地標示為實體`Added`。 不過，如果您需要消極式載入，而您需要變更追蹤，您可以建立新的實體執行個體使用的 proxy[建立](https://msdn.microsoft.com/en-us/library/gg679504.aspx)方法`DbSet`類別。
-- 您可能想要從的 proxy 型別取得實際的實體類型。 您可以使用[GetObjectType](https://msdn.microsoft.com/en-us/library/system.data.objects.objectcontext.getobjecttype.aspx)方法`ObjectContext`類別取得的 proxy 型別執行個體的實際實體類型。
+- 在某些情況下您可能想要防止 Entity Framework 建立 proxy 執行個體。 例如，當您序列化的實體您通常會想 POCO 類別，而不是 proxy 類別。 一種方式以避免發生序列化問題為序列化而不是實體物件的資料傳輸物件 (Dto) 中所示[使用 Web API 和 Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md)教學課程。 另一個方法是[停用 proxy 建立](https://msdn.microsoft.com/data/jj592886.aspx)。
+- 當您具現化的實體類別使用`new`運算子，就無法取得 proxy 執行個體。 這表示您不先取得功能，例如消極式載入和自動變更追蹤。 這通常是好;您通常不需要延遲載入，因為您要建立新的實體不在資料庫中，而且通常不需要變更追蹤，如果您要明確地標示為實體`Added`。 不過，如果您需要消極式載入，而您需要變更追蹤，您可以建立新的實體執行個體使用的 proxy[建立](https://msdn.microsoft.com/library/gg679504.aspx)方法`DbSet`類別。
+- 您可能想要從的 proxy 型別取得實際的實體類型。 您可以使用[GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx)方法`ObjectContext`類別取得的 proxy 型別執行個體的實際實體類型。
 
-如需詳細資訊，請參閱[使用 Proxy](https://msdn.microsoft.com/en-us/data/JJ592886.aspx) MSDN 上。
+如需詳細資訊，請參閱[使用 Proxy](https://msdn.microsoft.com/data/JJ592886.aspx) MSDN 上。
 
 <a id="changedetection"></a>
 ## <a name="automatic-change-detection"></a>自動變更偵測
@@ -241,12 +241,12 @@ Entity Framework 藉由比較原始值與實體的目前值，決定如何變更
 - `DbContext.Entry`
 - `DbChangeTracker.Entries`
 
-如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，可能會暫時停用自動變更偵測使用收到的顯著效能改善[AutoDetectChangesEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled.aspx)屬性。 如需詳細資訊，請參閱[自動偵測變更](https://msdn.microsoft.com/en-us/data/jj556205)MSDN 上。
+如果您追蹤的實體數量龐大，而且您在迴圈中呼叫其中一種方法多次，可能會暫時停用自動變更偵測使用收到的顯著效能改善[AutoDetectChangesEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.autodetectchangesenabled.aspx)屬性。 如需詳細資訊，請參閱[自動偵測變更](https://msdn.microsoft.com/data/jj556205)MSDN 上。
 
 <a id="validation"></a>
 ## <a name="automatic-validation"></a>自動驗證
 
-當您呼叫`SaveChanges`方法，依預設 Entity Framework 中所有已變更實體的所有屬性的資料會先驗證更新資料庫。 如果您已更新大量實體且您已驗證資料，這項工作不需要確定儲存的程序所做的變更會藉由暫時關閉驗證需要較少的時間。 您可以使用[ValidateOnSaveEnabled](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx)屬性。 如需詳細資訊，請參閱[驗證](https://msdn.microsoft.com/en-us/data/gg193959)MSDN 上。
+當您呼叫`SaveChanges`方法，依預設 Entity Framework 中所有已變更實體的所有屬性的資料會先驗證更新資料庫。 如果您已更新大量實體且您已驗證資料，這項工作不需要確定儲存的程序所做的變更會藉由暫時關閉驗證需要較少的時間。 您可以使用[ValidateOnSaveEnabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx)屬性。 如需詳細資訊，請參閱[驗證](https://msdn.microsoft.com/data/gg193959)MSDN 上。
 
 <a id="tools"></a>
 ## <a name="entity-framework-power-tools"></a>Entity Framework Power Tools
@@ -267,7 +267,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 <a id="summary"></a>
 ## <a name="summary"></a>總結
 
-如此即完成這一系列的教學課程，在 ASP.NET MVC 應用程式中使用 Entity Framework。 如需如何搭配使用 Entity Framework 資料的詳細資訊，請參閱[EF MSDN 上的文件頁面](https://msdn.microsoft.com/en-us/data/ee712907)和[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
+如此即完成這一系列的教學課程，在 ASP.NET MVC 應用程式中使用 Entity Framework。 如需如何搭配使用 Entity Framework 資料的詳細資訊，請參閱[EF MSDN 上的文件頁面](https://msdn.microsoft.com/data/ee712907)和[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
 如需如何建置它之後部署 web 應用程式的詳細資訊，請參閱[ASP.NET Web 部署的建議資源](../../../../whitepapers/aspnet-web-deployment-content-map.md)MSDN Library 中。
 
@@ -295,7 +295,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 > 無法建立或陰影複製 '&lt;filename&gt;' 已存在該檔案。
 
 
-解決方式
+方案
 
 等候數秒鐘，並重新整理頁面。
 
@@ -306,7 +306,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 > 'Update-database' 詞彙無法辨識為 cmdlet、 函式、 指令碼檔案或可執行程式的名稱。 請檢查名稱拼字，或如果包含路徑的話，確認路徑正確，然後再試一次。
 
 
-解決方式
+方案
 
 結束 Visual Studio。 重新開啟專案，然後再試一次。
 
@@ -317,7 +317,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 > 一個或多個實體的驗證失敗。 請參閱 'EntityValidationErrors' 屬性，如需詳細資訊。
 
 
-解決方式
+方案
 
 發生此問題的其中一個原因是驗證錯誤時`Seed`方法執行。 請參閱[植入和偵錯 Entity Framework (EF) Db](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)如需有關偵錯秘訣`Seed`方法。
 
@@ -329,7 +329,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 > 無法存取要求的網頁，因為該頁面的相關的組態資料無效。
 
 
-解決方式
+方案
 
 您可以取得此錯誤的其中一種方式是方案的從多個複本時，每個使用相同的連接埠號碼。 您通常可以結束 Visual Studio 中的所有執行個體，然後重新啟動的專案正努力解決這個問題。 如果無法解決問題，請變更通訊埠編號。 以滑鼠右鍵按一下專案檔，然後按一下 屬性。 選取**Web**索引標籤，然後變更 連接埠號碼**專案 Url**文字方塊。
 
@@ -340,7 +340,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 > 建立 SQL Server 的連接時發生網路相關或執行個體特定錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者： SQL 網路介面，錯誤： 26-尋找指定時發生錯誤伺服器/執行個體)
 
 
-解決方式
+方案
 
 請檢查連接字串。 如果您已經手動刪除資料庫，變更建構字串的資料庫名稱。
 

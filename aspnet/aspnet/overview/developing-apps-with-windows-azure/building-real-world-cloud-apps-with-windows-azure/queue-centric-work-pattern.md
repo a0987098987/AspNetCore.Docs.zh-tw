@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
-ms.openlocfilehash: 125d555a9e170ef35dd99e0409a2442d5f9ae34a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ccfbaa26cbf610f847811e6f3c612458277046ed
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>佇列為主的工作模式 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -91,7 +91,7 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 - 當使用者提交新修正它的工作時，請將工作放在佇列中，而不是寫入至資料庫。
 - 建立後端服務處理之訊息佇列中。
 
-佇列中，我們將使用[Azure 佇列儲存體服務](https://www.windowsazure.com/en-us/develop/net/how-to-guides/queue-service/)。 另一個選項是使用[Azure 服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
+佇列中，我們將使用[Azure 佇列儲存體服務](https://www.windowsazure.com/develop/net/how-to-guides/queue-service/)。 另一個選項是使用[Azure 服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
 
 若要決定要使用的佇列服務，請考慮您的應用程式需要的方式傳送和接收訊息佇列中：
 
@@ -106,10 +106,10 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 若要修正該工作放入佇列中，web 前端，請執行下列步驟：
 
-1. 建立[CloudQueueClient](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.queue.cloudqueueclient.aspx)執行個體。 `CloudQueueClient`執行個體用來執行對佇列服務的要求。
+1. 建立[CloudQueueClient](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueueclient.aspx)執行個體。 `CloudQueueClient`執行個體用來執行對佇列服務的要求。
 2. 如果尚未存在，請建立佇列。
 3. 序列化修正其工作。
-4. 呼叫[CloudQueue.AddMessageAsync](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync.aspx)將放在佇列的訊息。
+4. 呼叫[CloudQueue.AddMessageAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync.aspx)將放在佇列的訊息。
 
 我們將會執行這項工作中建構函式和`SendMessageAsync`方法的新`FixItQueueManager`類別。
 
@@ -117,7 +117,7 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 這裡我們使用[Json.NET](https://github.com/JamesNK/Newtonsoft.Json)序列化為 JSON 格式 fixit 的程式庫。 您可以使用任何您偏好的序列化方法。 JSON 的優點是能夠被人類看得懂，同時會比 XML。
 
-生產環境品質的程式碼會加入錯誤處理邏輯、 暫停如果資料庫變成無法使用，更完全地處理復原、 應用程式啟動時建立佇列和管理 「[有害 」 訊息](https://msdn.microsoft.com/en-us/library/ms789028(v=vs.110).aspx)。 （有害訊息是因為某些原因無法處理的訊息。 您不想成放置在佇列中，其中背景工作角色會持續嘗試進行處理、 失敗、 再試一次、 失敗，等等的有害訊息。）
+生產環境品質的程式碼會加入錯誤處理邏輯、 暫停如果資料庫變成無法使用，更完全地處理復原、 應用程式啟動時建立佇列和管理 「[有害 」 訊息](https://msdn.microsoft.com/library/ms789028(v=vs.110).aspx)。 （有害訊息是因為某些原因無法處理的訊息。 您不想成放置在佇列中，其中背景工作角色會持續嘗試進行處理、 失敗、 再試一次、 失敗，等等的有害訊息。）
 
 在前端的 MVC 應用程式中，我們需要更新建立新工作的程式碼。 而不是將工作放到儲存機制中，呼叫`SendMessageAsync`方法如上所示。
 
@@ -156,7 +156,7 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 ![](queue-centric-work-pattern/_static/image8.png)
 
-如需詳細資訊，請參閱[使用 Visual Studio 建立 Azure 專案。](https://msdn.microsoft.com/en-us/library/windowsazure/ee405487.aspx)
+如需詳細資訊，請參閱[使用 Visual Studio 建立 Azure 專案。](https://msdn.microsoft.com/library/windowsazure/ee405487.aspx)
 
 在背景工作角色中，我們輪詢訊息藉由呼叫`ProcessMessageAsync`方法`FixItQueueManager`我們之前看到的類別。
 
@@ -168,7 +168,7 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 輪詢佇列訊息會產生小型的交易收費，所以沒有任何訊息等待處理，在背景工作角色的`RunAsync`方法會等候第二個輪詢之前再次呼叫`Task.Delay(1000)`。
 
-在 web 專案中，新增非同步程式碼可以自動改善效能，因為 IIS 管理有限的執行緒集區。 這不是背景工作角色專案中的案例。 若要改善延展性的背景工作角色，您可以撰寫多執行緒程式碼，或使用非同步程式碼來實作[平行程式設計](https://msdn.microsoft.com/en-us/library/ff963553.aspx)。 此範例不會實作平行程式設計，但會示範如何讓程式碼非同步，因此您可以實作平行程式設計。
+在 web 專案中，新增非同步程式碼可以自動改善效能，因為 IIS 管理有限的執行緒集區。 這不是背景工作角色專案中的案例。 若要改善延展性的背景工作角色，您可以撰寫多執行緒程式碼，或使用非同步程式碼來實作[平行程式設計](https://msdn.microsoft.com/library/ff963553.aspx)。 此範例不會實作平行程式設計，但會示範如何讓程式碼非同步，因此您可以實作平行程式設計。
 
 ## <a name="summary"></a>總結
 
@@ -184,11 +184,11 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 文件集：
 
 - [Microsoft Azure 儲存體佇列第 1 部： 入門](http://justazure.com/microsoft-azure-storage-queues-part-1-getting-started/)。 細明體 Schacherl 的文章。
-- [執行背景工作](https://msdn.microsoft.com/en-us/library/ff803365.aspx)，第 5 章[應用程式移至雲端，第 3 版](https://msdn.microsoft.com/en-us/library/ff728592.aspx)從 Microsoft Patterns and Practices。 (特別是，區段[」 使用 Azure 儲存體佇列 」](https://msdn.microsoft.com/en-us/library/ff803365.aspx#sec7)。)
-- [延展性和 Azure 上的佇列架構傳訊解決方案的成本的效益最大化的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/hh697709.aspx)。 由 Valery Mizonov 詘躩裛。
-- [比較 Azure 佇列和服務匯流排佇列](https://msdn.microsoft.com/en-us/magazine/jj159884.aspx)。 MSDN Magazine 文件，提供可協助您選擇要使用的佇列服務的其他資訊。 本文提及 Service Bus 是依存於 ACS 進行驗證，這表示無法使用 ACS 時 SB 佇列將無法再使用。 不過，因為發行項所撰寫，SB 已變更，您可以使用[SAS 權杖](https://msdn.microsoft.com/en-us/library/windowsazure/dn170477.aspx)作為 ACS 的替代方案。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱非同步傳訊入門、 管線和篩選模式中，補償的交易模式、 競爭取用者模式、 CQRS 模式。
-- [CQRS 旅程](https://msdn.microsoft.com/en-us/library/jj554200)。 由 Microsoft Patterns and Practices CQRS 相關的電子書。
+- [執行背景工作](https://msdn.microsoft.com/library/ff803365.aspx)，第 5 章[應用程式移至雲端，第 3 版](https://msdn.microsoft.com/library/ff728592.aspx)從 Microsoft Patterns and Practices。 (特別是，區段[」 使用 Azure 儲存體佇列 」](https://msdn.microsoft.com/library/ff803365.aspx#sec7)。)
+- [延展性和 Azure 上的佇列架構傳訊解決方案的成本的效益最大化的最佳作法](https://msdn.microsoft.com/library/windowsazure/hh697709.aspx)。 由 Valery Mizonov 詘躩裛。
+- [比較 Azure 佇列和服務匯流排佇列](https://msdn.microsoft.com/magazine/jj159884.aspx)。 MSDN Magazine 文件，提供可協助您選擇要使用的佇列服務的其他資訊。 本文提及 Service Bus 是依存於 ACS 進行驗證，這表示無法使用 ACS 時 SB 佇列將無法再使用。 不過，因為發行項所撰寫，SB 已變更，您可以使用[SAS 權杖](https://msdn.microsoft.com/library/windowsazure/dn170477.aspx)作為 ACS 的替代方案。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱非同步傳訊入門、 管線和篩選模式中，補償的交易模式、 競爭取用者模式、 CQRS 模式。
+- [CQRS 旅程](https://msdn.microsoft.com/library/jj554200)。 由 Microsoft Patterns and Practices CQRS 相關的電子書。
 
 影片：
 

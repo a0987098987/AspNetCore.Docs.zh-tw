@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: 9ecde847841eb727a0440f0483c69d1df6757815
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb979333131cc6ac87fd640bf7c96931054a1814
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a>開始使用 Entity Framework 6 資料庫優先使用 MVC 5
 ====================
@@ -37,11 +37,11 @@ ms.lasthandoff: 11/10/2017
 
 Code First 開發的簡介範例，請參閱[開始使用 ASP.NET MVC 5](../introduction/getting-started.md)。 如需更進階的範例，請參閱[建立 ASP.NET MVC 4 應用程式的 Entity Framework 資料模型](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
-如需選取要使用哪一個 Entity Framework 方法的指引，請參閱[Entity Framework 開發方式](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf)。
+如需選取要使用哪一個 Entity Framework 方法的指引，請參閱[Entity Framework 開發方式](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf)。
 
 ## <a name="prerequisites"></a>必要條件
 
-Visual Studio 2013 或 Visual Studio Express 2013 for Web
+Visual Studio 2013 or Visual Studio Express 2013 for Web
 
 ## <a name="set-up-the-database"></a>將資料庫設定
 
@@ -49,7 +49,7 @@ Visual Studio 2013 或 Visual Studio Express 2013 for Web
 
 本教學課程被開發使用 LocalDB Visual Studio 2013 或 Visual Studio Express 2013 for Web。 您可以使用現有的資料庫伺服器，而不是 LocalDB，但根據您的 Visual Studio 和您的資料庫類型的版本，所有的 Visual Studio 中的資料工具可能不支援。 如果工具不適用於您的資料庫，您可能需要執行一些管理套件中的特定資料庫的步驟為您的資料庫。
 
-如果您的 Visual Studio 版本中有資料庫工具的問題，請確定您已安裝資料庫工具的最新版本。 如需更新或安裝資料庫工具的詳細資訊，請參閱[Microsoft SQL Server Data Tools](https://msdn.microsoft.com/en-us/data/hh297027)。
+如果您的 Visual Studio 版本中有資料庫工具的問題，請確定您已安裝資料庫工具的最新版本。 如需更新或安裝資料庫工具的詳細資訊，請參閱[Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/hh297027)。
 
 啟動 Visual Studio 並建立**SQL Server 資料庫專案**。 將專案命名**ContosoUniversityData**。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
 msc.type: authoredcontent
-ms.openlocfilehash: b225d9911246b3e2be1679b73a9f31d9f8577ba5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 98fd728f48f6fb64a61686bc58824b9fb3a28b13
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-a-database-server-for-web-deploy-publishing"></a>設定 Web Deploy 發行變更資料庫伺服器
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/10/2017
 SQL Server 執行個體只需要包含**Database Engine Services**角色，會自動包含在任何 SQL Server 安裝。 不過，為了簡化組態和維護，我們建議您包含**管理工具 – 基本**和**管理工具-完整**伺服器角色。
 
 > [!NOTE]
-> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/en-us/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/en-us/library/cc754203(v=ws.10).aspx)。 如需安裝 SQL Server 的詳細資訊，請參閱[安裝 SQL Server 2008 R2](https://technet.microsoft.com/en-us/library/bb500395.aspx)。
+> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx)。 如需安裝 SQL Server 的詳細資訊，請參閱[安裝 SQL Server 2008 R2](https://technet.microsoft.com/library/bb500395.aspx)。
 
 
 ## <a name="enable-remote-access-to-sql-server"></a>啟用 SQL Server 的遠端存取
@@ -66,7 +66,7 @@ SQL Server 會使用 TCP/IP 的遠端電腦進行通訊。 如果您的資料庫
 2. 在樹狀檢視窗格中，依序展開**SQL Server 網路組態**，然後按一下  **MSSQLSERVER 的通訊協定**。
 
     > [!NOTE]
-    > 如果您已安裝多個 SQL Server 執行個體，您會看到**通訊協定***[執行個體名稱]*每個執行個體的項目。 您要設定執行個體的執行個體為基礎的網路設定。
+    > 如果您已安裝多個 SQL Server 執行個體，您會看到 **通訊協定 * * * [執行個體名稱]*每個執行個體的項目。 您要設定執行個體的執行個體為基礎的網路設定。
 3. 在詳細資料窗格中，以滑鼠右鍵按一下**TCP/IP**資料列，然後再按一下**啟用**。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image1.png)
@@ -102,7 +102,7 @@ SQL Server 會使用 TCP/IP 的遠端電腦進行通訊。 如果您的資料庫
   
 
 > [!NOTE]
-> 技術上來說，用戶端電腦會使用介於 1024年到 5000 之間隨機指派的 TCP 通訊埠與 SQL Server 通訊，因此您可以據以限制您的防火牆規則。 如需有關 SQL Server 連接埠和防火牆的詳細資訊，請參閱[TCP/IP 通訊埠編號，才能透過防火牆進行通訊 to SQL](https://go.microsoft.com/?linkid=9805125)和[How to： 設定伺服器接聽特定 TCP 通訊埠 （SQL Server 組態管理員）](https://msdn.microsoft.com/en-us/library/ms177440.aspx)。
+> 技術上來說，用戶端電腦會使用介於 1024年到 5000 之間隨機指派的 TCP 通訊埠與 SQL Server 通訊，因此您可以據以限制您的防火牆規則。 如需有關 SQL Server 連接埠和防火牆的詳細資訊，請參閱[TCP/IP 通訊埠編號，才能透過防火牆進行通訊 to SQL](https://go.microsoft.com/?linkid=9805125)和[How to： 設定伺服器接聽特定 TCP 通訊埠 （SQL Server 組態管理員）](https://msdn.microsoft.com/library/ms177440.aspx)。
 
 
 在大部分的 Windows Server 環境中，您可能必須在資料庫伺服器上設定 Windows 防火牆。 根據預設，Windows 防火牆會允許所有輸出流量，除非規則明確禁止。 若要啟用您的 web 伺服器連線到您的資料庫，您需要設定 SQL Server 執行個體會使用通訊埠編號允許 TCP 流量的輸入的規則。 如果您使用 SQL Server 的預設執行個體，您可以使用下一個程序來設定此規則。
@@ -126,11 +126,11 @@ SQL Server 會使用 TCP/IP 的遠端電腦進行通訊。 如果您的資料庫
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image9.png)
 8. 上**名稱**頁面上，為規則提供適當的描述性名稱 (例如， **SQL Server 預設執行個體 – 網路存取**)，然後按一下 **完成**。
 
-如需有關設定用於 SQL Server 的 Windows 防火牆，特別是如果您需要透過非標準或動態連接埠與 SQL Server 通訊，請參閱[How to： 設定用於 Database Engine 存取的 Windows 防火牆](https://technet.microsoft.com/en-us/library/ms175043.aspx)。
+如需有關設定用於 SQL Server 的 Windows 防火牆，特別是如果您需要透過非標準或動態連接埠與 SQL Server 通訊，請參閱[How to： 設定用於 Database Engine 存取的 Windows 防火牆](https://technet.microsoft.com/library/ms175043.aspx)。
 
 ## <a name="configure-logins-and-database-permissions"></a>設定登入和資料庫權限
 
-當您部署 web 應用程式到網際網路資訊服務 (IIS) 時，應用程式會使用執行的應用程式集區身分識別。 在網域環境中，應用程式集區識別使用其執行存取網路資源所在伺服器的電腦帳戶。 電腦帳戶會採用*[網域名稱]***\***[電腦名稱] ***$**（& c) 2014年 #x; 例如， **FABRIKAM\TESTWEB1$**。 若要讓 web 應用程式透過網路存取的資料庫，您需要：
+當您部署 web 應用程式到網際網路資訊服務 (IIS) 時，應用程式會使用執行的應用程式集區身分識別。 在網域環境中，應用程式集區識別使用其執行存取網路資源所在伺服器的電腦帳戶。 電腦帳戶會採用 * [網域名稱]***\** * [電腦名稱]***$ * * & #x 2014; 例如， **FABRIKAM\TESTWEB1$**。 若要讓 web 應用程式透過網路存取的資料庫，您需要：
 
 - 將 web 伺服器電腦帳戶的登入加入至 SQL Server 執行個體。
 - 將電腦帳戶登入對應到任何必要的資料庫角色 (通常**db\_datareader**和**db\_datawriter**)。
@@ -158,7 +158,7 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
 4. 在**登入-新增**對話方塊中，於**登入名稱**方塊中，輸入您的 web 伺服器電腦帳戶的名稱 (例如， **FABRIKAM\TESTWEB1$**)。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image11.png)
-5. 按一下 [確定]。
+5. 按一下 [確定 **Deploying Office Solutions**]。
 
 此時，您的資料庫伺服器可供 Web Deploy 發行。 不過，任何您所部署的解決方案也將無法運作，直到您將電腦帳戶登入對應至所需的資料庫角色。 登入對應到資料庫角色需要更以為大量，您無法之後，直到對應角色已部署資料庫。 若要對應到必要的資料庫角色的電腦帳戶登入，您可以：
 
@@ -178,12 +178,12 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
 5. 在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取所需的權限。 範例解決方案的連絡管理員，您必須選取**db\_datareader**和**db\_datawriter**角色。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image13.png)
-6. 按一下 [確定]。
+6. 按一下 [確定 **Deploying Office Solutions**]。
 
 雖然手動對應資料庫角色的方法，通常更適合用於測試環境，它是較不適合自動或單鍵部署到預備環境或生產環境。 您可以找到更多有關自動化這種使用中的部署後指令碼工作[部署資料庫角色成員資格測試環境](../advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments.md)。
 
 > [!NOTE]
-> 如需有關伺服器專案及資料庫專案的詳細資訊，請參閱[Visual Studio 2010 SQL Server 資料庫專案](https://msdn.microsoft.com/en-us/library/ff678491.aspx)。
+> 如需有關伺服器專案及資料庫專案的詳細資訊，請參閱[Visual Studio 2010 SQL Server 資料庫專案](https://msdn.microsoft.com/library/ff678491.aspx)。
 
 
 ## <a name="configure-permissions-for-the-deployment-account"></a>設定部署帳戶的權限
@@ -215,7 +215,7 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
 5. 在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取**db\_擁有者**角色。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image15.png)
-6. 按一下 [確定]。
+6. 按一下 [確定 **Deploying Office Solutions**]。
 
 ## <a name="conclusion"></a>結論
 

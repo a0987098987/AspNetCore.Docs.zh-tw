@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: 729b4fa4c461eedbd0447371102010451eb51586
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bc31bf55b29661816e0ca9a50b51b0abc3eb2c98
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>建立和執行部署指令檔
 ====================
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/10/2017
 > 如需如何自訂伺服器環境的特定環境的專案檔案的指引，請參閱[目標環境設定部署屬性](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md)。
 
 
-您也可以自訂每個環境的建置程序來覆寫屬性，或在 MSBuild 命令中設定各種其他參數。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/en-us/library/ms164311.aspx)。
+您也可以自訂每個環境的建置程序來覆寫屬性，或在 MSBuild 命令中設定各種其他參數。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](deploying-database-projects.md)

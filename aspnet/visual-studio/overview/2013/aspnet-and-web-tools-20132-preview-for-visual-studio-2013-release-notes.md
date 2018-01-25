@@ -12,15 +12,15 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: d3a8183fecaf830b2ee1211acd56da86454b4437
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0e7ad52662f7ceaa1f087d007d0b14b610f90bee
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-and-web-tools-20132--for-visual-studio-2013-release-notes"></a>ASP.NET 及 Web Tools 2013.2 for Visual Studio 2013 版本資訊
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 ## <a name="installation-notes"></a>安裝注意事項
 
@@ -78,7 +78,7 @@ ASP.NET 及 Web Tools for Visual Studio 2013.2 需要 Visual Studio 2013。
 
 按 CTRL+F5 執行應用程式。 依照要信任 IIS Express 產生的自我簽署的憑證的指示。
 
-![SSL 警告](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes/_static/image3.png)
+![SSL Warning](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes/_static/image3.png)
 
 讀取**安全性警告**對話方塊，然後按一下**是**如果您想要安裝憑證，表示 localhost。
 
@@ -232,10 +232,10 @@ NuGet 2.8.1 RTM 將於 2014 年 4 月發行。 以下是重點從版本資訊，
 <a id="ef"></a>
 ### <a name="entity-framework-61"></a>Entity Framework 6.1
 
-Entity Framework 已更新為 6.1 版執行階段和工具。 Entity Framework (EF) 6.1 是 Entity Framework 6 次要更新，而包含數個 bug 修正和新功能。 如需 EF6.1，包括文件的新功能，連結的詳細資訊請參閱[Entity Framework 版本記錄](https://msdn.microsoft.com/en-US/data/jj574253)。 在此版本中的新功能包括：
+Entity Framework 已更新為 6.1 版執行階段和工具。 Entity Framework (EF) 6.1 是 Entity Framework 6 次要更新，而包含數個 bug 修正和新功能。 如需 EF6.1，包括文件的新功能，連結的詳細資訊請參閱[Entity Framework 版本記錄](https://msdn.microsoft.com/data/jj574253)。 在此版本中的新功能包括：
 
 - **Tooling 合併**提供一致的方式，以建立新的 EF 模型。 此功能會延伸 ADO.NET 實體資料模型精靈，可讓您建立的 Code First 模型，包括從現有的資料庫的反向工程。 這些功能是先前使用的 EF Power Tools 中的 Beta 品質。
-- **處理的交易認可失敗**提供新[System.Data.Entity.Infrastructure.CommitFailureHandler](https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.commitfailurehandler(v=vs.113).aspx)是會攔截交易作業使用的新引入的功能。 **CommitFailureHandler**儘管認可交易，允許從連線失敗的自動復原。
+- **處理的交易認可失敗**提供新[System.Data.Entity.Infrastructure.CommitFailureHandler](https://msdn.microsoft.com/library/system.data.entity.infrastructure.commitfailurehandler(v=vs.113).aspx)是會攔截交易作業使用的新引入的功能。 **CommitFailureHandler**儘管認可交易，允許從連線失敗的自動復原。
 - **IndexAttribute**允許將屬性 （或屬性） 上的屬性放在 Code First 模型中指定的索引。 程式碼第一次將接著建立對應的索引在資料庫中。
 - **應用程式開發介面的公用對應**提供 EF 對於如何對應到資料行和資料表在資料庫中的屬性及型別資訊的存取權。 在過去的發行此應用程式開發介面是內部。
 - **若要設定攔截器，透過 App/Web.config 檔案的能力**（允許加入，而不需要重新編譯應用程式的攔截器）。

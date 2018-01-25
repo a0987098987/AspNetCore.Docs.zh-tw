@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 0cc51fbe84124a62f0c1254faab796cbcdc7efd6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de661616ff3ca83052ae74d3ae6810d014aff764
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>將新的分類加入至使用 jQuery UI 的 DropDownList
 ====================
@@ -90,7 +90,7 @@ HTML`Select`標記非常適合用來呈現一份固定的類別目錄資料，�
 
 [!code-cshtml[Main](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/samples/sample7.cshtml)]
 
-[Html.BeginForm](https://msdn.microsoft.com/en-us/library/dd492714.aspx)協助程式中使用的多載*Views\Genre\\_CreateGenre.cshtml*檔案產生 HTML，以包含 URL 送出表單的 action 屬性。 您可以看到此瀏覽器中顯示建立專輯頁面，然後在瀏覽器中選取顯示來源。 下列標記會顯示產生包含表單標記的 HTML。
+[Html.BeginForm](https://msdn.microsoft.com/library/dd492714.aspx)協助程式中使用的多載*Views\Genre\\_CreateGenre.cshtml*檔案產生 HTML，以包含 URL 送出表單的 action 屬性。 您可以看到此瀏覽器中顯示建立專輯頁面，然後在瀏覽器中選取顯示來源。 下列標記會顯示產生包含表單標記的 HTML。
 
 [!code-html[Main](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/samples/sample8.html)]
 

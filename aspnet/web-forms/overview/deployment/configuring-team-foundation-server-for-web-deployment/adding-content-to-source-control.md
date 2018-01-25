@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: a6a90a03674cfe7565da0ed56148186ee9525707
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d46e2697d10ca27f8e08533350a6e7f2354b4a43
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-content-to-source-control"></a>將內容加入至原始檔控制
 ====================
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 1. 在您開發人員工作站上，將移至 team 專案對應的資料夾結構中的適當位置的專案和方案。
 
     > [!NOTE]
-    > 許多組織必須如何專案和方案安排原始檔控制中的慣用的方法。 如需有關資料夾結構的指引，請參閱[How To： 結構您原始檔控制資料夾 Team Foundation Server 中](https://msdn.microsoft.com/en-us/library/bb668992.aspx)。
+    > 許多組織必須如何專案和方案安排原始檔控制中的慣用的方法。 如需有關資料夾結構的指引，請參閱[How To： 結構您原始檔控制資料夾 Team Foundation Server 中](https://msdn.microsoft.com/library/bb668992.aspx)。
 2. Visual Studio 2010 中開啟的方案。
 3. 在**方案總管 中**視窗中，以滑鼠右鍵按一下方案，然後**將方案加入至原始檔控制**。
 
@@ -149,13 +149,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="conclusion"></a>結論
 
-本主題描述如何連接到 team 專案，將對應的資料夾結構，並將內容加入至原始檔控制。 如需有關如何使用原始檔控制下的項目詳細資訊，請參閱[使用版本控制](https://msdn.microsoft.com/en-us/library/ms181368.aspx)。
+本主題描述如何連接到 team 專案，將對應的資料夾結構，並將內容加入至原始檔控制。 如需有關如何使用原始檔控制下的項目詳細資訊，請參閱[使用版本控制](https://msdn.microsoft.com/library/ms181368.aspx)。
 
 下一個主題[設定 TFS 組建伺服器的 Web 部署](configuring-a-tfs-build-server-for-web-deployment.md)，說明如何準備的 TFS Team Build server 建置和部署您的方案。
 
 ## <a name="further-reading"></a>進一步閱讀
 
-更廣泛使用在 TFS 中的原始檔控制的詳細資訊，請參閱[使用版本控制](https://msdn.microsoft.com/en-us/library/ms181368.aspx)。
+更廣泛使用在 TFS 中的原始檔控制的詳細資訊，請參閱[使用版本控制](https://msdn.microsoft.com/library/ms181368.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](creating-a-team-project-in-tfs.md)

@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/working-with-forms
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fbe2c5cb495aabee0e1f0bdb3871641efa03599
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9fd51755e1dc9a1dfb9ab5cc4558f7da9475ce32
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>在表單的 ASP.NET Core 使用標記協助程式簡介
 
@@ -86,7 +86,7 @@ MVC 執行階段產生`action`屬性值的表單標記協助程式屬性`asp-con
 
 * 設定的 HTML`type`屬性值為基礎的模型型別和[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性套用至模型屬性
 
-* 不會覆寫 HTML`type`時指定的其中一個屬性值
+* 將不會覆寫 HTML`type`時指定的其中一個屬性值
 
 * 會產生[HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)驗證屬性從[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性套用至模型屬性
 
@@ -159,7 +159,7 @@ Type expected
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>輸入標記協助程式的 HTML Helper 替代項目
 
-`Html.TextBox``Html.TextBoxFor`，`Html.Editor`和`Html.EditorFor`具有重疊的功能與輸入標記協助程式。 輸入標記協助程式將會自動設定`type`屬性;`Html.TextBox`和`Html.TextBoxFor`則不會。 `Html.Editor`和`Html.EditorFor`處理集合、 複雜的物件和範本，並不會輸入標記協助程式。 輸入標記協助程式`Html.EditorFor`和`Html.TextBoxFor`強型別 （使用 lambda 運算式）。`Html.TextBox`和`Html.Editor`不 （其使用的運算式名稱）。
+`Html.TextBox``Html.TextBoxFor`，`Html.Editor`和`Html.EditorFor`具有重疊的功能與輸入標記協助程式。 輸入標記協助程式將會自動設定`type`屬性;`Html.TextBox`和`Html.TextBoxFor`將不會。 `Html.Editor`和`Html.EditorFor`處理集合、 複雜的物件和範本; 不會輸入標記協助程式。 輸入標記協助程式`Html.EditorFor`和`Html.TextBoxFor`強型別 （使用 lambda 運算式）。`Html.TextBox`和`Html.Editor`不 （其使用的運算式名稱）。
 
 ### <a name="htmlattributes"></a>HtmlAttributes
 

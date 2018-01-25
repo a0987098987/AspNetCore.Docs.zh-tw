@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5e3507acda4958fa7caa4a22fec7603deaec73c2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8061a2aff318d397116cbc0bc0a8ce24ef35c7fb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-c"></a>建立全站台的版面配置使用主版頁面 (C#)
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 有各種不同的技術，用於建立具有一致的外觀及操作的 web 網頁。 貝氏方法是只要複製並貼到所有的網頁，一般的版面配置標記，但這種方法有一些缺點。 簡單來說，每次建立新的頁面時，您必須記得複製並貼到頁面的 共用的內容。 這類複製和貼上作業與敞開錯誤可能不小心將共用標記的子集複製到新頁面。 和上方它，這個方法可讓新的實際痛苦因為必須編輯每個站台中的單一頁面，才能使用新的外觀及操作以取代現有的全站台的外觀。
 
-在 ASP.NET 2.0 版中前, 頁面上通常用來放置常見標記中的開發人員[使用者控制項](https://msdn.microsoft.com/en-us/library/y6wb1a0e.aspx)然後在每個頁面中加入這些使用者控制項。 這種方法需要網頁開發人員手動將使用者控制項加入至每個新的頁面，請記住，但允許的簡單全站台的修改，因為更新的一般標記時使用者控制項所需修改。 不幸的是，Visual Studio.NET 2002年和 2003-版本的 Visual Studio 用來建立 ASP.NET 1.x 應用程式-以灰色方塊呈現在 [設計] 檢視中的使用者控制項。 因此，使用這種方法的網頁開發人員未不喜歡 WYSIWYG 的設計階段環境。
+在 ASP.NET 2.0 版中前, 頁面上通常用來放置常見標記中的開發人員[使用者控制項](https://msdn.microsoft.com/library/y6wb1a0e.aspx)然後在每個頁面中加入這些使用者控制項。 這種方法需要網頁開發人員手動將使用者控制項加入至每個新的頁面，請記住，但允許的簡單全站台的修改，因為更新的一般標記時使用者控制項所需修改。 不幸的是，Visual Studio.NET 2002年和 2003-版本的 Visual Studio 用來建立 ASP.NET 1.x 應用程式-以灰色方塊呈現在 [設計] 檢視中的使用者控制項。 因此，使用這種方法的網頁開發人員未不喜歡 WYSIWYG 的設計階段環境。
 
 使用使用者控制項的缺點已解決在 ASP.NET 2.0 版和 Visual Studio 2005 中導入*主版頁面*。 主版頁面是一種特殊的 ASP.NET 頁面，定義全站台的標記和*區域*其中相關聯*內容頁面*定義其自訂的標記。 我們將會看到在步驟 1 中，這些區域是由 ContentPlaceHolder 控制項中定義。 ContentPlaceHolder 控制項只是表示主版頁面控制項階層架構中，由內容頁面可以插入自訂內容的位置。
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 我們可以建立和使用主要和內容頁面瀏覽之前，我們先需要 ASP.NET 網站。 開始建立新檔案系統以 ASP.NET 網站。 若要完成此動作，啟動 Visual Web Developer 然後移至 檔案 功能表並選擇新的網站，顯示新的網站 對話方塊 （請參閱圖 4）。 選擇 ASP.NET 網站範本、 設定到檔案系統位置下拉式清單中，選擇要將網站的資料夾和設定的語言為 C#。 這會建立新的網站與`Default.aspx`ASP.NET 網頁`App_Data`資料夾，和`Web.config`檔案。
 
 > [!NOTE]
-> Visual Studio 支援的專案管理的兩種模式： 網站專案和 Web 應用程式專案。 網站專案缺少專案檔，而 Web 應用程式專案模仿專案架構在 Visual Studio.NET 2002年/2003年-它們包括專案檔和編譯成單一組件，放在專案的原始程式碼`/bin`資料夾。 Visual Studio 2005 一開始只支援的網站專案，雖然[Web 應用程式專案模型](https://msdn.microsoft.com/en-us/library/aa730880(vs.80).aspx)已重新引入含 Service Pack 1。Visual Studio 2008 提供這兩個專案的模型。 Visual Web Developer 2005 和 2008年版本，不過，僅支援的網站專案。 我使用我的示範，本教學課程系列的網站專案模型。 如果您正在使用非 Express edition，而且想要改為使用 Web 應用程式專案模型，則可以自由以執行這項操作，但請注意您螢幕和螢幕擷取畫面所示及 instructio 必須採取的步驟上看到的內容之間可能會有些不一致這些教學課程中所提供的 ns。
+> Visual Studio 支援的專案管理的兩種模式： 網站專案和 Web 應用程式專案。 網站專案缺少專案檔，而 Web 應用程式專案模仿專案架構在 Visual Studio.NET 2002年/2003年-它們包括專案檔和編譯成單一組件，放在專案的原始程式碼`/bin`資料夾。 Visual Studio 2005 一開始只支援的網站專案，雖然[Web 應用程式專案模型](https://msdn.microsoft.com/library/aa730880(vs.80).aspx)已重新引入含 Service Pack 1。Visual Studio 2008 提供這兩個專案的模型。 Visual Web Developer 2005 和 2008年版本，不過，僅支援的網站專案。 我使用我的示範，本教學課程系列的網站專案模型。 如果您正在使用非 Express edition，而且想要改為使用 Web 應用程式專案模型，則可以自由以執行這項操作，但請注意您螢幕和螢幕擷取畫面所示及 instructio 必須採取的步驟上看到的內容之間可能會有些不一致這些教學課程中所提供的 ns。
 
 
 [![建立新檔案系統為基礎的網站](creating-a-site-wide-layout-using-master-pages-cs/_static/image9.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image8.png)
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](creating-a-site-wide-layout-using-master-pages-cs/samples/sample1.aspx)]
 
-宣告式標記中的第一行是[`@Master`指示詞](https://msdn.microsoft.com/en-us/library/ms228176.aspx)。 `@Master`指示詞是類似於[`@Page`指示詞](https://msdn.microsoft.com/en-us/library/ydy4x04a.aspx)出現在 ASP.NET 網頁中。 它會定義的伺服器端語言 (C#) 和資訊的位置和主版頁面的程式碼後置類別的繼承。
+宣告式標記中的第一行是[`@Master`指示詞](https://msdn.microsoft.com/library/ms228176.aspx)。 `@Master`指示詞是類似於[`@Page`指示詞](https://msdn.microsoft.com/library/ydy4x04a.aspx)出現在 ASP.NET 網頁中。 它會定義的伺服器端語言 (C#) 和資訊的位置和主版頁面的程式碼後置類別的繼承。
 
 `DOCTYPE`和網頁的宣告式標記下方`@Master`指示詞。 此頁面包含四個伺服器端控制項以及靜態 HTML:
 
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/10/2017
 幸運的是，有提供免費的 HTML 設計範本的 innumerous 網站-Google 傳回超過 6 百萬個結果的搜尋字詞 」 可用的網站範本 」。 我最喜歡的項目是[OpenDesigns.org](http://opendesigns.org/)。一旦您找到您要的網站範本，將 CSS 檔案和影像加入至您的網站專案，並將範本的 HTML 整合到您的主版頁面。
 
 > [!NOTE]
-> Microsoft 也提供了許多[釋放 ASP.NET 設計開始套件範本](https://msdn.microsoft.com/en-us/asp.net/aa336613.aspx)，整合到 Visual Studio 中的 [新的網站] 對話方塊。
+> Microsoft 也提供了許多[釋放 ASP.NET 設計開始套件範本](https://msdn.microsoft.com/asp.net/aa336613.aspx)，整合到 Visual Studio 中的 [新的網站] 對話方塊。
 
 
 ## <a name="step-2-creating-associated-content-pages"></a>步驟 2： 建立相關聯的內容頁面
@@ -272,8 +272,8 @@ ASP.NET 引擎時呈現內容頁面，必須將網頁的內容使用其主版頁
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 設計工具： 上建置 ASP.NET 網站使用 Web 標準釋放設計範本和指引](https://msdn.microsoft.com/en-us/asp.net/aa336602.aspx)
-- [ASP.NET 主版頁面概觀](https://msdn.microsoft.com/en-us/library/wtxbf3hh.aspx)
+- [ASP.NET 設計工具： 上建置 ASP.NET 網站使用 Web 標準釋放設計範本和指引](https://msdn.microsoft.com/asp.net/aa336602.aspx)
+- [ASP.NET 主版頁面概觀](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
 - [階層式樣式表 (CSS) 教學課程](http://www.w3schools.com/css/default.asp)
 - [動態設定頁面的標題](http://aspnet.4guysfromrolla.com/articles/051006-1.aspx)
 - [在 ASP.NET 中的主版頁面](http://www.odetocode.com/articles/419.aspx)

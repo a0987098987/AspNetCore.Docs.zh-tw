@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: f6266045ebf55fb7ae691bfb55e9c90cd4edcc96
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 497102cfa98680f2156a56ff9e36d84b7c820020
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="calling-an-odata-service-from-a-net-client-c"></a>從.NET 用戶端 (C#) 呼叫 OData 服務
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 
 > - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) （適用於使用 Visual Studio 2012）
-> - [WCF Data Services 用戶端程式庫](https://msdn.microsoft.com/en-us/library/cc668772.aspx)
+> - [WCF Data Services 用戶端程式庫](https://msdn.microsoft.com/library/cc668772.aspx)
 > - Web API 2。 （使用 Web API 2，建置範例 OData 服務時，但用戶端應用程式不相依於 Web 應用程式開發介面）。
 
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 - [建立 Web API 2 OData 端點](creating-an-odata-endpoint.md)
 - [在 Web API 2 OData 實體關聯性](working-with-entity-relations.md)
-- [在 Web API 2 OData 動作](odata-actions.md)
+- [Web API 2 中的 OData 動作](odata-actions.md)
 
 ## <a name="generate-the-service-proxy"></a>產生服務 Proxy
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/10/2017
 
 OData 會定義[查詢選項](../supporting-odata-query-options.md)，可以用來篩選、 排序、 頁面資料等等。 在服務 proxy，您可以使用各種 LINQ 運算式，以套用這些選項。
 
-在本節中，我將示範簡短的範例。 如需詳細資訊，請參閱主題[LINQ 考量 (WCF Data Services)](https://msdn.microsoft.com/en-us/library/ee622463.aspx) MSDN 上。
+在本節中，我將示範簡短的範例。 如需詳細資訊，請參閱主題[LINQ 考量 (WCF Data Services)](https://msdn.microsoft.com/library/ee622463.aspx) MSDN 上。
 
 ### <a name="filtering-filter"></a>篩選 ($filter)
 
@@ -226,7 +226,7 @@ Select 子句可以包含相關的實體。 在此情況下，請勿呼叫**展�
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample24.cs)]
 
-如需詳細資訊，請參閱[呼叫服務作業和動作](https://msdn.microsoft.com/en-us/library/hh230677.aspx)。
+如需詳細資訊，請參閱[呼叫服務作業和動作](https://msdn.microsoft.com/library/hh230677.aspx)。
 
 其中一個選項是以擴充**容器**類別提供強類型的方法，叫用的動作：
 

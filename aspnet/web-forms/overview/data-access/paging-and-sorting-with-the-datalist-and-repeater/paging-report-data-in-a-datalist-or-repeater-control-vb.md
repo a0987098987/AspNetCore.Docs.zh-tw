@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5cb469252dc36ced98357dd984d36668af1c430b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 66f1065c41352f355dd5f1be43443165df909b93
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-vb"></a>DataList 或中繼器控制項 (VB) 中的分頁報表資料
 ====================
@@ -80,7 +80,7 @@ ms.lasthandoff: 11/10/2017
 
 *自訂分頁*透過抓取精確子集所要求的頁面上顯示的記錄，以解決效能問題的預設分頁。 在實作自訂分頁時，我們必須撰寫 SQL 查詢，有效率地傳回只在正確的記錄集。 我們了解如何建立這類查詢使用新的 SQL Server 2005 s [ `ROW_NUMBER()`關鍵字](http://www.4guysfromrolla.com/webtech/010406-1.shtml)回[有效率地分頁透過大型量的資料](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md)教學課程。
 
-若要在 DataList 或中繼器控制項中實作預設分頁，我們可以使用[`PagedDataSource`類別](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.aspx)周圍的包裝函式`ProductsDataTable`其內容正在呼叫。 `PagedDataSource`類別具有`DataSource`可以指派給任何可列舉物件的屬性和[ `PageSize` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx)和[ `CurrentPageIndex` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx)屬性來指示要記錄數顯示每個頁面和目前頁面索引。 一旦已設定這些屬性，`PagedDataSource`可用來當做資料來源的 Web 控制項的任何資料。 `PagedDataSource`、 列舉時，就只能傳回適當的記錄其內部子集`DataSource`根據`PageSize`和`CurrentPageIndex`屬性。 圖 4 說明的功能`PagedDataSource`類別。
+若要在 DataList 或中繼器控制項中實作預設分頁，我們可以使用[`PagedDataSource`類別](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.aspx)周圍的包裝函式`ProductsDataTable`其內容正在呼叫。 `PagedDataSource`類別具有`DataSource`可以指派給任何可列舉物件的屬性和[ `PageSize` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.pagesize.aspx)和[ `CurrentPageIndex` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.currentpageindex.aspx)屬性來指示要記錄數顯示每個頁面和目前頁面索引。 一旦已設定這些屬性，`PagedDataSource`可用來當做資料來源的 Web 控制項的任何資料。 `PagedDataSource`、 列舉時，就只能傳回適當的記錄其內部子集`DataSource`根據`PageSize`和`CurrentPageIndex`屬性。 圖 4 說明的功能`PagedDataSource`類別。
 
 
 ![PagedDataSource 包裝的可分頁介面的可列舉物件](paging-report-data-in-a-datalist-or-repeater-control-vb/_static/image6.png)
@@ -204,7 +204,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="determining-the-total-number-of-records-being-paged-through"></a>決定要透過分頁的記錄總數
 
-`PagedDataSource`物件從 ObjectDataSource s 傳回`Select()`方法已在其中*所有*一個產品記錄，即使它們的子集會顯示在資料清單。 `PagedDataSource` s [ `Count`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.count.aspx)傳回只會顯示在 DataList; 的項目數目[`DataSourceCount`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx)傳回內的項目總數`PagedDataSource`. 因此，我們需要指派 ASP.NET 頁面 s`TotalRowCount`屬性值的`PagedDataSource`s`DataSourceCount`屬性。
+`PagedDataSource`物件從 ObjectDataSource s 傳回`Select()`方法已在其中*所有*一個產品記錄，即使它們的子集會顯示在資料清單。 `PagedDataSource` s [ `Count`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.count.aspx)傳回只會顯示在 DataList; 的項目數目[`DataSourceCount`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.datasourcecount.aspx)傳回內的項目總數`PagedDataSource`. 因此，我們需要指派 ASP.NET 頁面 s`TotalRowCount`屬性值的`PagedDataSource`s`DataSourceCount`屬性。
 
 若要達成此目的，建立事件處理常式 ObjectDataSource s`Selected`事件。 在`Selected`都可存取 ObjectDataSource s 的傳回值的事件處理常式`Select()`方法在此情況下， `PagedDataSource`。
 
@@ -224,7 +224,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="disabling-paging-interface-controls"></a>停用分頁介面控制項
 
-目前，所有的四個按鈕會啟用不論要檢視的網頁。 不過，我們想要停用 [第一個和上一步] 按鈕時顯示的第一頁的資料，以及下一步] 和 [最後一個按鈕時顯示的最後一頁。 `PagedDataSource` ObjectDataSource s 所傳回物件`Select()`方法具有屬性[ `IsFirstPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx)和[ `IsLastPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) ，我們可以檢查來判斷是否我們目前檢視資料的第一個或最後一頁。
+目前，所有的四個按鈕會啟用不論要檢視的網頁。 不過，我們想要停用 [第一個和上一步] 按鈕時顯示的第一頁的資料，以及下一步] 和 [最後一個按鈕時顯示的最後一頁。 `PagedDataSource` ObjectDataSource s 所傳回物件`Select()`方法具有屬性[ `IsFirstPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.isfirstpage.aspx)和[ `IsLastPage` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pageddatasource.islastpage.aspx) ，我們可以檢查來判斷是否我們目前檢視資料的第一個或最後一頁。
 
 加入下列 ObjectDataSource s`Selected`事件處理常式：
 

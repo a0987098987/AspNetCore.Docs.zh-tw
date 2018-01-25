@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 6362f0506934ca3b3cc86e1a927af75e7bc4e1d3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 103cd68c576463d87d0077cc149f9b89c6e028e8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 自訂動作篩選條件
 ====================
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/10/2017
 > - **結果**包裝 ActionResult 物件執行篩選條件。 此篩選器可以執行額外處理的結果，例如修改 HTTP 回應。
 > - **例外狀況**篩選器，它會執行處理的動作方法，授權篩選條件的開始和結束與結果的執行中的某處擲回的例外狀況時。 例外狀況篩選條件可以用於工作，例如記錄或顯示錯誤頁面。
 > 
-> 如需篩選器提供者的詳細資訊，請造訪此 MSDN 連結: ([https://msdn.microsoft.com/en-us/library/dd410209.aspx](https://msdn.microsoft.com/en-us/library/dd410209.aspx))。
+> 如需篩選器提供者的詳細資訊，請造訪此 MSDN 連結: ([https://msdn.microsoft.com/library/dd410209.aspx](https://msdn.microsoft.com/library/dd410209.aspx))。
 
 
 <a id="AboutLoggingFeature"></a>
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE]
     > **OnActionExecuting**的方法使用**Entity Framework**来加入新的 ActionLog 暫存器。 它會建立並填入新的實體執行個體的內容資訊**filterContext**。
     > 
-    > 您可以深入了解**ControllerContext**類別在[msdn](https://msdn.microsoft.com/en-us/library/system.web.mvc.controllercontext.aspx)。
+    > 您可以深入了解**ControllerContext**類別在[msdn](https://msdn.microsoft.com/library/system.web.mvc.controllercontext.aspx)。
 
 <a id="Ex1Task2"></a>
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/10/2017
 
 此外，每個動作篩選條件具有順序屬性用來判斷篩選器的範圍中的執行順序。
 
-如需自訂動作篩選條件執行順序的詳細資訊，請瀏覽 MSDN 上的本文: ([https://msdn.microsoft.com/en-us/library/dd381609(v=vs.98).aspx](https://msdn.microsoft.com/en-us/library/dd381609(v=vs.98).aspx))。
+如需自訂動作篩選條件執行順序的詳細資訊，請瀏覽 MSDN 上的本文: ([https://msdn.microsoft.com/library/dd381609(v=vs.98).aspx](https://msdn.microsoft.com/library/dd381609(v=vs.98).aspx))。
 
 <a id="Ex2Task1"></a>
 

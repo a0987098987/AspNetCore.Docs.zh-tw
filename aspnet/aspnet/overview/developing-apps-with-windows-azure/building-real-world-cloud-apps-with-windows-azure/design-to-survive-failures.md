@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: a0ee790da07c99cdb1279a6bca637a4ce8076e84
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 62a16e9a99cd1298b0db5f8099092212f9f6850b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>設計存留失敗 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -117,14 +117,14 @@ Azure 的目標是要讓所有的失敗中來得簡單許多，這類的處理�
 
 文件集：
 
-- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
-- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
-- [Azure 業務續航力技術指引](https://msdn.microsoft.com/en-us/library/windowsazure/hh873027.aspx)。 Patrick Wickline 和 Jason Roth 詘躩裛。
-- [災害復原與高可用性 Azure 應用程式](https://msdn.microsoft.com/en-us/library/windowsazure/dn251004.aspx)。 Michael McKeown、 Kommalapati 和 Jason Roth 詘躩裛。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱多資料中心部署指導方針，斷路器模式。
+- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
+- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
+- [Azure 業務續航力技術指引](https://msdn.microsoft.com/library/windowsazure/hh873027.aspx)。 Patrick Wickline 和 Jason Roth 詘躩裛。
+- [災害復原與高可用性 Azure 應用程式](https://msdn.microsoft.com/library/windowsazure/dn251004.aspx)。 Michael McKeown、 Kommalapati 和 Jason Roth 詘躩裛。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱多資料中心部署指導方針，斷路器模式。
 - [Azure 支援的服務等級協定](https://azure.microsoft.com/support/legal/sla/)。
-- [Azure SQL Database 的業務續航力](https://msdn.microsoft.com/en-us/library/windowsazure/hh852669.aspx)。 SQL 資料庫高可用性和災害復原功能的相關文件。
-- [高可用性和災害復原 Azure 虛擬機器中的 SQL Server](https://msdn.microsoft.com/en-us/library/windowsazure/jj870962.aspx)。
+- [Azure SQL Database 的業務續航力](https://msdn.microsoft.com/library/windowsazure/hh852669.aspx)。 SQL 資料庫高可用性和災害復原功能的相關文件。
+- [高可用性和災害復原 Azure 虛擬機器中的 SQL Server](https://msdn.microsoft.com/library/windowsazure/jj870962.aspx)。
 
 影片：
 

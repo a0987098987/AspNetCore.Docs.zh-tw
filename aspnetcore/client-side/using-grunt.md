@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/using-grunt
-ms.openlocfilehash: 959a3e61af9834b9364e9fe4bf65a04962e28969
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 527373829754757e52ab84b64e04702d649e9062
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-grunt-in-aspnet-core"></a>使用 ASP.NET Core Grunt 
 
@@ -94,14 +94,14 @@ Grunt 是會自動將指令碼縮製、 TypeScript 編譯、 程式碼品質 「
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取**新增 > 新的項目**從內容功能表。 選取**NPM 組態檔**項目，保留預設名稱， *package.json*，然後按一下**新增** 按鈕。
 
-2. 在*package.json*內部檔案`devDependencies`物件大括號中，輸入 「 grunt"。 選取`grunt`從 Intellisense 清單，然後按 Enter 鍵。 Visual Studio 會加上引號 grunt 所完成的封裝名稱，並加入冒號。 右邊的冒號，請從 Intellisense 清單頂端選取封裝的最新穩定版本 (按`Ctrl-Space`如果 Intellisense 不會出現)。
+2. 在*package.json*內部檔案`devDependencies`物件大括號中，輸入 「 grunt"。 選取`grunt`從 Intellisense 清單，然後按 Enter 鍵。 Visual Studio 會加上引號 grunt 所完成的封裝名稱，並加入冒號。 右邊的冒號，請從 Intellisense 清單頂端選取封裝的最新穩定版本 (按`Ctrl-Space`Intellisense 不會出現)。
 
     ![grun Intellisense](using-grunt/_static/devdependencies-grunt.png)
     
     > [!NOTE]
     > NPM 使用[語意版本設定](http://semver.org/)將組織的相依性。 語意版本設定，也稱為 SemVer 編號方式識別封裝<major>。<minor>。<patch>.Intellisense 會顯示只有幾個常見的選項，以簡化語意版本設定。 Intellisense 清單 (在上述範例 0.4.5) 中的最上層項目會被視為封裝的最新穩定版本。 插入號 (^) 符號符合最新的主要版本和波狀符號 （~） 符合最新的次要版本。 請參閱[NPM semver 版本剖析器參考](https://www.npmjs.com/package/semver)做為 SemVer 提供的完整表現的指南。
 
-3. 新增更多的相依性，以便載入 grunt-contrib-\*封裝的*全新*， *jshint*， *concat*， *uglify*，和*監看式*如下列範例所示。 不需要符合範例版本。
+3. 新增更多的相依性，以便載入 grunt-contrib-\*封裝的*全新*， *jshint*， *concat*， *uglify*，和*監看式*如下列範例所示。 版本不需要符合範例。
 
     ```json
     "devDependencies": {

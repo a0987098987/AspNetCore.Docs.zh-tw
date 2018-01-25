@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 18c3825c58e7cfe0a73817a8431593c661c5fa4f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f9b68abeba19561a327bad5ee4be80d79af1a550
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>排序、 篩選和分頁與 Entity Framework 中的 ASP.NET MVC 應用程式 (10-3)
 ====================
@@ -64,7 +64,7 @@ ms.lasthandoff: 11/10/2017
 | 遞增的日期 | ascending | descending |
 | 日期遞減 | ascending | ascending |
 
-此方法會使用[LINQ to Entities](https://msdn.microsoft.com/en-us/library/bb386964.aspx)指定排序所依據的資料行。 程式碼會建立[IQueryable](https://msdn.microsoft.com/en-us/library/bb351562.aspx)變數之前`switch`陳述式，修改在`switch`陳述式，並呼叫`ToList`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 查詢不會執行直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToList`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
+此方法會使用[LINQ to Entities](https://msdn.microsoft.com/library/bb386964.aspx)指定排序所依據的資料行。 程式碼會建立[IQueryable](https://msdn.microsoft.com/library/bb351562.aspx)變數之前`switch`陳述式，修改在`switch`陳述式，並呼叫`ToList`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 查詢不會執行直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToList`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>加入資料行標題學生索引檢視的超連結
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=1,7-11)]
 
-您已新增`searchString`參數`Index`方法。 您也已經加入至 LINQ 陳述式`where`clausethat 選取其名字或姓氏包含搜尋字串的學生。 從文字方塊中，您會加入至索引檢視收到的搜尋字串值。加入陳述式[其中](https://msdn.microsoft.com/en-us/library/bb535040.aspx)子句在沒有要搜尋的值時，才會執行。
+您已新增`searchString`參數`Index`方法。 您也已經加入至 LINQ 陳述式`where`clausethat 選取其名字或姓氏包含搜尋字串的學生。 從文字方塊中，您會加入至索引檢視收到的搜尋字串值。加入陳述式[其中](https://msdn.microsoft.com/library/bb535040.aspx)子句在沒有要搜尋的值時，才會執行。
 
 > [!NOTE]
 > 在許多情況下，Entity Framework 實體集上，或是當做擴充方法上的記憶體中集合，可以呼叫相同的方法。 結果通常都相同，但在某些情況下可能會不同。 例如，.NET Framework 實作的`Contains`方法會傳回所有資料列，當您將空字串傳遞給它，但 SQL Server Compact 4.0 的 Entity Framework 提供者會傳回零個資料列空白字串。 因此在範例程式碼 (放`Where`陳述式內`if`陳述式) 可確保您取得所有版本的 SQL Server 相同的結果。 此外，.NET Framework 實作的`Contains`方法會根據預設，執行區分大小寫的比較，但預設實體架構的 SQL Server 提供者執行不區分大小寫的比較。 因此，呼叫`ToUpper`來進行測試更明確地不區分大小寫的方法可確保當您變更程式碼更新版本使用的儲存機制將會傳回結果不會變更`IEnumerable`集合，而不是`IQueryable`物件。 (當您呼叫`Contains`方法`IEnumerable`集合，取得.NET Framework 實作，則當您呼叫它在`IQueryable`物件，則會收到資料庫提供者實作。)
@@ -158,7 +158,7 @@ NuGet **PagedList.Mvc**套件會自動安裝**PagedList**封裝做為相依性�
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-`ToPagedList`方法會採用頁面數目。 兩個問號代表[null 聯合運算子](https://msdn.microsoft.com/en-us/library/ms173224.aspx)。 Null 聯合運算子定義預設值為 null 的型別。運算式`(page ?? 1)`方法傳回的值`page`它具有的值，或傳回 1，如果`page`為 null。
+`ToPagedList`方法會採用頁面數目。 兩個問號代表[null 聯合運算子](https://msdn.microsoft.com/library/ms173224.aspx)。 Null 聯合運算子定義預設值為 null 的型別。運算式`(page ?? 1)`方法傳回的值`page`它具有的值，或傳回 1，如果`page`為 null。
 
 ### <a name="add-paging-links-to-the-student-index-view"></a>將 Student 索引檢視中的分頁連結
 
@@ -170,11 +170,11 @@ NuGet **PagedList.Mvc**套件會自動安裝**PagedList**封裝做為相依性�
 
 `using`陳述式`PagedList.Mvc`可讓 MVC 協助程式的存取 [分頁] 按鈕。
 
-程式碼使用的多載[BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) ，可讓它指定[FormMethod.Get](https://msdn.microsoft.com/en-us/library/system.web.mvc.formmethod(v=vs.100).aspx/css)。
+程式碼使用的多載[BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) ，可讓它指定[FormMethod.Get](https://msdn.microsoft.com/library/system.web.mvc.formmethod(v=vs.100).aspx/css)。
 
 [!code-cshtml[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cshtml?highlight=1)]
 
-預設值[BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx)提交表單與文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式的資料。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 [W3C 指導方針，使用 HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html)指定動作並不會導致更新時應使用 GET。
+預設值[BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx)提交表單與文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式的資料。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 [W3C 指導方針，使用 HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html)指定動作並不會導致更新時應使用 GET。
 
 在文字方塊中會使用目前的搜尋字串初始化，因此當您按一下新的頁面時，您就可以看到目前的搜尋字串。
 
@@ -291,7 +291,7 @@ Windows Azure SQL Database 是建立在 SQL Server 技術以雲端為基礎的�
 7. 按一下底部的方塊右邊的箭號。 精靈會進入**資料庫設定**步驟。
 8. 在**名稱**方塊中，輸入*ContosoUniversityDB*。
 9. 在**伺服器**方塊中，選取**新 SQL Database 伺服器**。 或者，如果您先前建立的伺服器，您可以從下拉式清單選取該伺服器。
-10. 輸入系統管理員**登入名稱**和**密碼**。 如果您選取**新 SQL Database 伺服器**不輸入現有的名稱和密碼，您輸入新名稱和密碼，您現在定義存取資料庫時使用。 如果您選取您先前建立的伺服器，您會輸入該伺服器的認證。 此教學課程中，您將不會選取***進階***核取方塊。 ***進階***選項可讓您將資料庫設為[定序](https://msdn.microsoft.com/en-us/library/aa174903(v=SQL.80).aspx)。
+10. 輸入系統管理員**登入名稱**和**密碼**。 如果您選取**新 SQL Database 伺服器**不輸入現有的名稱和密碼，您輸入新名稱和密碼，您現在定義存取資料庫時使用。 如果您選取您先前建立的伺服器，您會輸入該伺服器的認證。 此教學課程中，您將不會選取***進階***核取方塊。 ***進階***選項可讓您將資料庫設為[定序](https://msdn.microsoft.com/library/aa174903(v=SQL.80).aspx)。
 11. 選擇相同**區域**您所選擇的網站。
 12. 按一下右下方的方塊以表示您完成在核取記號。   
   
@@ -367,7 +367,7 @@ Windows Azure SQL Database 是建立在 SQL Server 技術以雲端為基礎的�
   
     ![Students_index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image32.png)
 
-此時您*SchoolContext*資料庫已建立 Windows Azure SQL Database 中因為您選取**執行 Code First 移轉 （在應用程式啟動時執行）**。 *Web.config*已部署的網站中檔案已經變更，讓[MigrateDatabaseToLatestVersion](https://msdn.microsoft.com/en-us/library/hh829476(v=vs.103).aspx)初始設定式會執行第一次您的程式碼中讀取或寫入資料庫中的資料 （其中發生什麼事時您所選取**學生** 索引標籤):
+此時您*SchoolContext*資料庫已建立 Windows Azure SQL Database 中因為您選取**執行 Code First 移轉 （在應用程式啟動時執行）**。 *Web.config*已部署的網站中檔案已經變更，讓[MigrateDatabaseToLatestVersion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx)初始設定式會執行第一次您的程式碼中讀取或寫入資料庫中的資料 （其中發生什麼事時您所選取**學生** 索引標籤):
 
 ![](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image33.png)
 
@@ -387,7 +387,7 @@ Windows Azure SQL Database 是建立在 SQL Server 技術以雲端為基礎的�
 
 ## <a name="code-first-initializers"></a>程式碼的第一個初始設定式
 
-在 [部署] 區段中看到[MigrateDatabaseToLatestVersion](https://msdn.microsoft.com/en-us/library/hh829476(v=vs.103).aspx)所使用的初始設定式。 程式碼第一次也會提供您可以使用，包括其他初始設定式[CreateDatabaseIfNotExists](https://msdn.microsoft.com/en-us/library/gg679221(v=vs.103).aspx) （預設）、 [DropCreateDatabaseIfModelChanges](https://msdn.microsoft.com/en-us/library/gg679604(v=VS.103).aspx)和[DropCreateDatabaseAlways](https://msdn.microsoft.com/en-us/library/gg679506(v=VS.103).aspx)。 `DropCreateAlways`初始設定式可用於設定單元測試的條件。 您也可以撰寫您自己的初始設定式，而且您可以呼叫初始設定式明確若不想等到應用程式讀取或寫入資料庫。 初始設定式的完整說明，請參閱第 6 章活頁簿[程式設計 Entity Framework: Code First](http://shop.oreilly.com/product/0636920022220.do) Julie Lerman 和 Rowan Miller。
+在 [部署] 區段中看到[MigrateDatabaseToLatestVersion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx)所使用的初始設定式。 程式碼第一次也會提供您可以使用，包括其他初始設定式[CreateDatabaseIfNotExists](https://msdn.microsoft.com/library/gg679221(v=vs.103).aspx) （預設）、 [DropCreateDatabaseIfModelChanges](https://msdn.microsoft.com/library/gg679604(v=VS.103).aspx)和[DropCreateDatabaseAlways](https://msdn.microsoft.com/library/gg679506(v=VS.103).aspx)。 `DropCreateAlways`初始設定式可用於設定單元測試的條件。 您也可以撰寫您自己的初始設定式，而且您可以呼叫初始設定式明確若不想等到應用程式讀取或寫入資料庫。 初始設定式的完整說明，請參閱第 6 章活頁簿[程式設計 Entity Framework: Code First](http://shop.oreilly.com/product/0636920022220.do) Julie Lerman 和 Rowan Miller。
 
 ## <a name="summary"></a>總結
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 52052ad202958eb5d648ceb64d9f06fb86ef3777
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bad742af28d6c36bb1b66207c2ba09d140332449
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-performance-signalr-1x"></a>SignalR 效能 (SignalR 1.x)
 ====================
@@ -70,7 +70,7 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 
 ### <a name="tuning-your-signalr-server-for-performance"></a>微調您 SignalR 的伺服器效能
 
-下列組態設定可以用來微調您的伺服器，以提升效能的 SignalR 應用程式中。 如需如何改善 ASP.NET 應用程式效能的一般資訊，請參閱[改善 ASP.NET 效能](https://msdn.microsoft.com/en-us/library/ff647787.aspx)。
+下列組態設定可以用來微調您的伺服器，以提升效能的 SignalR 應用程式中。 如需如何改善 ASP.NET 應用程式效能的一般資訊，請參閱[改善 ASP.NET 效能](https://msdn.microsoft.com/library/ff647787.aspx)。
 
 **SignalR 的組態設定**
 
@@ -198,7 +198,7 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 - **向外延展資料流開啟**
 - **向外延展資料流緩衝**
 - **範圍外錯誤總數**
-- **範圍外錯誤數/秒**
+- **Scaleout Errors/Sec**
 - **範圍外傳送佇列長度**
 
 如需有關這些計數器會測量的詳細資訊，請參閱[SignalR 範圍外使用 Azure 服務匯流排](scaleout-with-windows-azure-service-bus.md)。
@@ -209,13 +209,13 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 
 下列效能計數器也可能在監視應用程式的效能很有用。
 
-**記憶體**
+**Memory**
 
 - .NET CLR 記憶體中的位元組數全部堆積 （w3wp)
 
 **ASP.NET**
 
-- Asp.net\requests Current
+- ASP.NET\Requests Current
 - ASP.NET\Queued
 - ASP.NET\Rejected
 
@@ -244,6 +244,6 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 
 如需 ASP.NET 效能監視與微調的詳細資訊，請參閱下列主題：
 
-- [ASP.NET 效能概觀](https://msdn.microsoft.com/en-us/library/cc668225(v=vs.100).aspx)
+- [ASP.NET 效能概觀](https://msdn.microsoft.com/library/cc668225(v=vs.100).aspx)
 - [IIS 7.5、 IIS 7.0 和 IIS 6.0 的 ASP.NET 執行緒用法](https://blogs.msdn.com/b/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx)
-- [&lt;應用程式集區&gt;項目 （Web 設定）](https://msdn.microsoft.com/en-us/library/dd560842.aspx)
+- [&lt;應用程式集區&gt;項目 （Web 設定）](https://msdn.microsoft.com/library/dd560842.aspx)

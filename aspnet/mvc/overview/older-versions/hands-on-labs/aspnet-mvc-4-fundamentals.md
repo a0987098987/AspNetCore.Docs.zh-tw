@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: 086084b63cceca1c2d4e0bd4e5b654aaad6637a9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 468f6d5dabb645b1c005680dc5a1ffc4debd63b6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 的基本概念
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 > > 這個實際操作實驗室假設開發人員體驗中的 Web 開發技術，例如 HTML 和 JavaScript。
 > 
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
 
 
 <a id="The_Music_Store_application"></a>
@@ -130,12 +130,12 @@ MVC 模式可協助您建立個別的不同層面的應用程式 （輸入的邏
 2. 按一下 [檔案] 功能表上的 [新增專案]。
 3. 在**新專案**對話方塊中，選取**ASP.NET MVC 4 Web 應用程式**專案類型，位於**Visual C#** **Web**範本清單。
 4. 變更**名稱**至*MvcMusicStore*。
-5. 設定內的新方案的位置**開始**資料夾，在此練習中的來源資料夾中，例如**[您-HOL-PATH] \Source\Ex01-CreatingMusicStoreProject\Begin**。 按一下 [確定]。
+5. 設定內的新方案的位置**開始**資料夾，在此練習中的來源資料夾中，例如**[您-HOL-PATH] \Source\Ex01-CreatingMusicStoreProject\Begin**。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![建立新專案 對話方塊](aspnet-mvc-4-fundamentals/_static/image2.png "建立新專案 對話方塊")
 
     *建立新專案 對話方塊*
-6. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**基本**範本並確定**檢視引擎**選取**Razor**。 按一下 [確定]。
+6. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**基本**範本並確定**檢視引擎**選取**Razor**。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![新 ASP.NET MVC 4 專案 對話方塊](aspnet-mvc-4-fundamentals/_static/image3.png "新 ASP.NET MVC 4 專案 對話方塊")
 
@@ -319,7 +319,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
     > [!NOTE]
     > 您使用**HttpUtility.HtmlEncode**公用程式方法，以防止使用者的連結，例如，將檢視插入的 Javascript   **/存放區/瀏覽？內容類型 =&lt;指令碼&gt;window.location='[http://hackersite.com](http://hackersite.com)'&lt;/指令碼&gt;**。
     > 
-    > 如需進一步說明，請瀏覽[msdn 本文](https://msdn.microsoft.com/en-us/library/a2a4yykt(v=VS.80).aspx)。
+    > 如需進一步說明，請瀏覽[msdn 本文](https://msdn.microsoft.com/library/a2a4yykt(v=VS.80).aspx)。
 
 <a id="Ex3Task2"></a>
 
@@ -594,7 +594,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     ![加入檢視](aspnet-mvc-4-fundamentals/_static/image23.png "加入的檢視")
 
-    *加入的檢視*
+    *新增檢視*
 3. 因為**新增檢視對話方塊**已經叫用**StoreController**，它會將檢視範本預設會在新增**\Views\Store\Index.cshtml**檔案。 請檢查**建立強型別-檢視**核取方塊，然後選取  **StoreIndexViewModel**為**模型類別**。 此外，請確定選取的檢視引擎是**Razor**。 按一下 [加入] 。
 
     ![新增檢視對話方塊](aspnet-mvc-4-fundamentals/_static/image24.png "新增檢視對話方塊")
@@ -964,7 +964,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
         *包含在解決方案中 SimpleMembership*
 
         > [!NOTE]
-        > 更多關於[OAuthWebSecurity](https://msdn.microsoft.com/en-us/library/jj158393(v=vs.111).aspx) MSDN 中。
+        > 更多關於[OAuthWebSecurity](https://msdn.microsoft.com/library/jj158393(v=vs.111).aspx) MSDN 中。
 
 > [!NOTE]
 > 此外，您可以部署此應用程式以 Windows Azure Web Sites 下列[附錄 b： 發佈 ASP.NET MVC 4 應用程式使用 Web Deploy](#AppendixB)。

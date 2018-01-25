@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: afb2fa9b3dfd80a2aa49fffae71965fc2098442f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3f641b53a9ed568132909114c6cceaa957064fa2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>教學課程： 透過 ASP.NET SignalR 的伺服器廣播 1.x
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 在本教學課程的註解是歡迎畫面。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Microsoft.AspNet.SignalR.Sample](http://nuget.org/packages/microsoft.aspnet.signalr.sample) NuGet 封裝會安裝 Visual Studio 專案中的範例模擬股票行情指示器應用程式。 在本教學課程的第一個部分中，您會從頭開始建立該應用程式的簡化的版本。 本教學課程的其餘部分，將安裝 NuGet 套件，並檢閱程式碼所建立的其他功能。
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample3.cs)]
 
-    [中樞](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)類別用來定義用戶端可以呼叫在伺服器的方法。 您要定義一種方法： `GetAllStocks()`。 用戶端一開始會連接到伺服器，它會呼叫這個方法，取得所有其目前的價格股票的清單。 方法可以以同步方式執行，並傳回`IEnumerable<Stock>`因為它會從記憶體中傳回資料。 如果方法具有以取得資料所做的事，牽涉到等待，例如資料庫尋查 」 或 「 web 服務呼叫，您會指定`Task<IEnumerable<Stock>>`當做傳回值，若要啟用非同步處理。 如需詳細資訊，請參閱[ASP.NET SignalR 中樞 API 指南-伺服器-時以非同步方式執行](index.md)。
+    [中樞](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)類別用來定義用戶端可以呼叫在伺服器的方法。 您要定義一種方法： `GetAllStocks()`。 用戶端一開始會連接到伺服器，它會呼叫這個方法，取得所有其目前的價格股票的清單。 方法可以以同步方式執行，並傳回`IEnumerable<Stock>`因為它會從記憶體中傳回資料。 如果方法具有以取得資料所做的事，牽涉到等待，例如資料庫尋查 」 或 「 web 服務呼叫，您會指定`Task<IEnumerable<Stock>>`當做傳回值，若要啟用非同步處理。 如需詳細資訊，請參閱[ASP.NET SignalR 中樞 API 指南-伺服器-時以非同步方式執行](index.md)。
 
     HubName 屬性指定中樞的用戶端上的 JavaScript 程式碼中的參考方式。 如果您不使用這個屬性在用戶端上的預設名稱是依照 camel 命名法的大小寫慣例版本的類別名稱，因此在此情況下會 stockTickerHub。
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 11/10/2017
 
     ### <a name="storing-the-singleton-instance-in-a-static-field"></a>將單一執行個體儲存在靜態欄位
 
-    程式碼會初始化靜態\_支援類別，而這樣的執行個體的執行個體內容的執行個體欄位是唯一的執行個體，可以建立的類別，因為標示為私用建構函式。 [延遲初始設定](https://msdn.microsoft.com/en-us/library/dd997286.aspx)用於\_不基於效能考量，但若要確定執行個體建立 threadsafe 的執行個體欄位。
+    程式碼會初始化靜態\_支援類別，而這樣的執行個體的執行個體內容的執行個體欄位是唯一的執行個體，可以建立的類別，因為標示為私用建構函式。 [延遲初始設定](https://msdn.microsoft.com/library/dd997286.aspx)用於\_不基於效能考量，但若要確定執行個體建立 threadsafe 的執行個體欄位。
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample5.cs)]
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample7.cs)]
 
-    股票集合定義為[ConcurrentDictionary](https://msdn.microsoft.com/en-us/library/dd287191.aspx)執行緒安全的類型。 或者，您可以使用[字典](https://msdn.microsoft.com/en-us/library/xfhwa508.aspx)物件，並明確地鎖定字典，對它進行變更時。
+    股票集合定義為[ConcurrentDictionary](https://msdn.microsoft.com/library/dd287191.aspx)執行緒安全的類型。 或者，您可以使用[字典](https://msdn.microsoft.com/library/xfhwa508.aspx)物件，並明確地鎖定字典，對它進行變更時。
 
     此範例應用程式，它是 [確定] 儲存在記憶體中的應用程式資料並處置 StockTicker 執行個體時，遺失的資料。 在實際應用您可能會使用後端資料存放區，例如資料庫。
 
@@ -162,7 +162,7 @@ ms.lasthandoff: 11/10/2017
 
     UpdateStockPrices 計時器，state 參數中的 null 會傳入所呼叫。 更新之前的價格，採用的鎖定\_updateStockPricesLock 物件。 如果另一個執行緒已經正在更新價格，然後在清單中的每種股票呼叫 TryUpdateStockPrice，會檢查程式碼。 TryUpdateStockPrice 方法會決定是否要變更的股價，以及有多少變更它。 如果變更的股價，BroadcastStockPrice 稱為股票價格變更廣播給所有連接的用戶端。
 
-    \_UpdatingStockPrices 旗標標示為[volatile](https://msdn.microsoft.com/en-us/library/x13ttww7.aspx)以確保其存取權是 threadsafe。
+    \_UpdatingStockPrices 旗標標示為[volatile](https://msdn.microsoft.com/library/x13ttww7.aspx)以確保其存取權是 threadsafe。
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample9.cs)]
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 11/10/2017
 
     您要呼叫中 BroadcastStockPrice updateStockPrice 方法不存在。稍後當您撰寫的用戶端執行的程式碼時，會將其新增。 您可以參考以下 updateStockPrice 因為 Clients.All 是動態，這表示會在執行階段評估的運算式。 SignalR 呼叫此方法執行時，會傳送的方法名稱和參數值給用戶端，以及如果用戶端具有名為 updateStockPrice 的方法，該方法會呼叫和參數值會傳遞給它。
 
-    Clients.All 表示傳送給所有用戶端。 SignalR 提供其他選項來指定哪些用戶端或用戶端傳送到群組。 如需詳細資訊，請參閱[HubConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)。
+    Clients.All 表示傳送給所有用戶端。 SignalR 提供其他選項來指定哪些用戶端或用戶端傳送到群組。 如需詳細資訊，請參閱[HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)。
 
 ### <a name="register-the-signalr-route"></a>註冊的 SignalR 的路由
 
@@ -196,7 +196,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample11.cs)]
 
-    根據預設，所有 SignalR 流量的基底 URL 是:"/ signalr 」，和 「 / signalr/中心 」 用來擷取動態產生的 JavaScript 檔案，定義您在您的應用程式的所有主機的 proxy。 MapHubs 方法包含可讓您指定不同的基底 URL 和 SignalR 的特定選項的執行個體中的多載[HubConfiguration](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubconfiguration(v=vs.111).aspx)類別。
+    根據預設，所有 SignalR 流量的基底 URL 是:"/ signalr 」，和 「 / signalr/中心 」 用來擷取動態產生的 JavaScript 檔案，定義您在您的應用程式的所有主機的 proxy。 MapHubs 方法包含可讓您指定不同的基底 URL 和 SignalR 的特定選項的執行個體中的多載[HubConfiguration](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubconfiguration(v=vs.111).aspx)類別。
 4. 加入 using 陳述式在檔案頂端：
 
     [!code-csharp[Main](tutorial-server-broadcast-with-aspnet-signalr/samples/sample12.cs)]

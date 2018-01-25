@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: a88d8f35c770b362b74f787fee2c60a7577bccb2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a526275d76618c325a6b00f33cc550f28ab0cc00
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>使用 Visual Studio 的 ASP.NET Web 部署： Web.config 檔案轉換
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何變更的程序自動化*Web.config*檔案時將它部署至不同目的地環境。 大部分的應用程式中有設定*Web.config*部署應用程式時都必須使用不同的檔案。 自動化程序可確保這些變更可防止您不必手動執行它們，每次您部署時，就可能發生冗長又容易出錯。
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>Web Deploy 參數與 Web.config 轉換
 
-有兩種方式變更的程序自動化*Web.config*檔案設定： [Web.config 轉換](https://msdn.microsoft.com/en-us/library/dd465326.aspx)和[Web Deploy 參數](https://msdn.microsoft.com/en-us/library/ff398068.aspx)。 A *Web.config*轉換檔案包含會指定如何變更的 XML 標記*Web.config*部署到檔案。 您可以指定不同的變更，針對特定組建組態，以及針對特定的發行設定檔。 預設建置組態偵錯和發行，而且您可以建立自訂的建置組態。 發行設定檔通常會對應到目的地環境。 (您將學習到有關發行設定檔中的[部署至 IIS 做為測試環境](deploying-to-iis.md)教學課程。)
+有兩種方式變更的程序自動化*Web.config*檔案設定： [Web.config 轉換](https://msdn.microsoft.com/library/dd465326.aspx)和[Web Deploy 參數](https://msdn.microsoft.com/library/ff398068.aspx)。 A *Web.config*轉換檔案包含會指定如何變更的 XML 標記*Web.config*部署到檔案。 您可以指定不同的變更，針對特定組建組態，以及針對特定的發行設定檔。 預設建置組態偵錯和發行，而且您可以建立自訂的建置組態。 發行設定檔通常會對應到目的地環境。 (您將學習到有關發行設定檔中的[部署至 IIS 做為測試環境](deploying-to-iis.md)教學課程。)
 
 Web 部署參數可以用來指定各種不同的設定，必須在部署期間，包括設定中找到設定*Web.config*檔案。 當用來指定*Web.config*檔案變更，Web Deploy 參數都是更複雜的設定，但您不知道要部署之前設定的值時，它們很有用。 例如，在企業環境中，您可能會建立*部署套件*給予 IT 部門中的人員，若要安裝在生產環境中，以及該人員可以輸入連接字串或不這麼做的密碼了解。
 

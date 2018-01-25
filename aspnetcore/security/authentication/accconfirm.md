@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/accconfirm
-ms.openlocfilehash: b004a8e7680b203416552e5a7a2809799e657759
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: bc9febc41d0637be9f83a02799d360489f257849
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -89,7 +89,7 @@ dotnet new mvc --auth Individual
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
 
-若要確認新的使用者註冊，以確認它們不會模擬其他人的電子郵件的最佳作法是 （也就是它們未向其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com。 」 電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式取得垃圾電子郵件。 假設使用者不小心註冊為 「ylo@example.com"而且未注意到拼字錯誤的 「 yli 」，它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認從 bot 提供有限的保護，並不會從擁有多的工作電子郵件別名，他們可以使用登錄來決定垃圾提供保護。
+若要確認新的使用者註冊，以確認它們不模擬其他人的電子郵件的最佳作法是 （也就是它們未向其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com。 」 電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式取得垃圾電子郵件。 假設使用者不小心註冊為 「ylo@example.com"而且未注意到拼字錯誤的 「 yli 」，它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認從 bot 提供有限的保護，並不會從擁有多的工作電子郵件別名，他們可以使用登錄來決定垃圾提供保護。
 
 您通常想要讓新的使用者張貼到您的網站的任何資料之前確認電子郵件。 
 
@@ -110,7 +110,7 @@ dotnet new mvc --auth Individual
 ```csharp
 config.SignIn.RequireConfirmedEmail = true;
 ```
-前一行會防止之前確認他們的電子郵件登入已註冊的使用者。 但是，該行不新使用者無法從它們在註冊後登入。 它們在註冊後，預設程式碼會登入使用者。 一旦他們登出他們將無法再次登入之前他們註冊。 稍後在教學課程中我們將會變更程式碼，因此新註冊的使用者是**不**登入。
+前一行會防止之前確認他們的電子郵件登入已註冊的使用者。 不過，該行不讓新的使用者從他們在註冊後登入。 它們在註冊後，預設程式碼會登入使用者。 一旦他們登出他們將無法再次登入之前他們註冊。 稍後在教學課程中我們將會變更程式碼，因此新註冊的使用者是**不**登入。
 
 ### <a name="configure-email-provider"></a>設定電子郵件提供者
 
@@ -277,7 +277,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ## <a name="prevent-login-at-registration"></a>避免在註冊的登入
 
-目前的範本，一旦使用者完成註冊表單中，這些會記錄在 （驗證）。 您通常想要確認他們的電子郵件才能加以登入。 下方區段中，我們將會修改程式碼，需要新的使用者登入之前，有確認電子郵件。 更新`[HttpPost] Login`中的動作*AccountController.cs*下列反白顯示變更的檔案。
+目前的範本，一旦使用者完成註冊表單中，使用者要登入 （驗證）。 您通常想要確認他們的電子郵件才能加以登入。 下方區段中，我們將會修改程式碼，需要使用者正在登入之前，新的使用者有確認電子郵件。 更新`[HttpPost] Login`中的動作*AccountController.cs*下列反白顯示變更的檔案。
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=11-21&name=snippet_Login)]
 
@@ -302,4 +302,4 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ![管理您列出 Facebook 的外部登入檢視](accconfirm/_static/fb.png)
 
-已合併兩個帳戶。 您可以使用任一個帳戶登入。 您可能會想讓使用者加入本機帳戶，以防使用者社交的記錄檔中驗證服務已關閉，或可能比較他們已經失去其社交帳戶的存取。
+已合併兩個帳戶。 您可以使用任一個帳戶登入。 您可能會想讓使用者加入本機帳戶，以防使用者社交的記錄檔中驗證服務已關閉，或可能比較他們遺失了存取其社交帳戶。

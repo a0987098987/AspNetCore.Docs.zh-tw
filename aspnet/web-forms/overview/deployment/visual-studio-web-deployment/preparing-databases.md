@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 1f19d54a5f2679f790575d520b28472d4ff3233f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: caa79725ede320c4bd3e87ac246966c57175eb8e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 準備部署資料庫
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何取得專案供部署資料庫。 資料庫結構以及某些 （並非全部） 的資料，應用程式的兩個資料庫必須部署到測試、 預備及實際執行環境。
 
@@ -52,7 +52,7 @@ LocalDB 是一種特殊的執行模式的 SQL Server Express，可讓您能夠�
 進行資料庫存取 Contoso 大學應用程式需要下列軟體必須與應用程式部署，因為它不會包含在.NET Framework:
 
 - [ASP.NET Universal Providers](http://www.hanselman.com/blog/IntroducingSystemWebProvidersASPNETUniversalProvidersForSessionMembershipRolesAndUserProfileOnSQLCompactAndSQLAzure.aspx) （啟用 ASP.NET 成員資格系統，才能使用 Azure SQL Database）
-- [Entity Framework](https://msdn.microsoft.com/en-us/library/gg696172.aspx)
+- [Entity Framework](https://msdn.microsoft.com/library/gg696172.aspx)
 
 此軟體包含在 NuGet 封裝，因為專案已設定，以便必要的組件會部署專案。 （連結指向這些封裝，可能會比功能會安裝在您下載此教學課程的起始專案的目前版本。）
 
@@ -171,12 +171,12 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 您會將開發使用者部署到測試環境和生產環境使用者預備和生產環境。 若要這樣做，在本教學課程中，一個用於開發，一個用於生產環境中，您將建立兩個 SQL 指令碼並在之後的教學課程中，您會設定發行程序，並執行。
 
 > [!NOTE]
-> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/en-us/library/system.web.configuration.machinekeysection.aspx)**  Web.config 檔案中的項目。
+> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)**  Web.config 檔案中的項目。
 
 
 使用 SQL Server Management Studio (SSMS)，或使用協力廠商工具，您可以手動建立資料的部署指令碼。 本教學課程的這個其餘部分將說明如何執行在 SSMS 中，但如果您不想要安裝和使用 SSMS 您可以從專案的完整版取得的指令碼，並略過，您將其儲存在方案資料夾中的區段。
 
-若要安裝 SSMS，安裝從[Download Center: Microsoft SQL Server 2012 Express](https://www.microsoft.com/en-us/download/details.aspx?id=29062)按一下[ENU\x64\SQLManagementStudio\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe)或[ENU\x86\SQLManagementStudio\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe)。 如果您選擇錯誤的其中一個用於您的系統，它將無法安裝，而且您可以嘗試另一個。
+若要安裝 SSMS，安裝從[Download Center: Microsoft SQL Server 2012 Express](https://www.microsoft.com/download/details.aspx?id=29062)按一下[ENU\x64\SQLManagementStudio\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe)或[ENU\x86\SQLManagementStudio\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe)。 如果您選擇錯誤的其中一個用於您的系統，它將無法安裝，而且您可以嘗試另一個。
 
 （請注意，這是 600 mb 下載項目。 可能需要很長的時間安裝且您需要重新啟動您的電腦。)
 
@@ -201,7 +201,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 7. 變更**編寫 USE DATABASE 的指令碼**至**False**。 使用陳述式不是有效的 Azure SQL Database，並不所需的測試環境中的部署到 SQL Server Express。
 
     ![SSMS 資料僅限指令碼，沒有使用陳述式](preparing-databases/_static/image13.png)
-8. 按一下 [確定]。
+8. 按一下 [確定 **Deploying Office Solutions**]。
 9. 在**產生和發佈指令碼**對話方塊中，**檔案名稱**方塊會指定將會建立指令碼。 將路徑變更您的方案資料夾 （具有 ContosoUniversity.sln 檔案的資料夾） 和檔案名稱， *aspnet-資料-dev.sql*。
 10. 按一下**下一步**移至**摘要**索引標籤，然後再按一下**下一步**以建立指令碼。
 
@@ -218,7 +218,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 - 在**附加資料庫**對話方塊中，按一下 **新增**然後瀏覽至*aspnet-ContosoUniversity-Prod.mdf*檔案*應用程式\_資料*資料夾。
 
     ![要附加的 SSMS 將.mdf 檔案](preparing-databases/_static/image16.png)
-- 按一下 [確定]。
+- 按一下 [確定 **Deploying Office Solutions**]。
 - 請遵循相同的程序，您先前用來建立實際執行檔案的指令碼。 指令碼檔案名稱*aspnet-資料-prod.sql*。
 
 ## <a name="summary"></a>總結
@@ -231,7 +231,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 
 ## <a name="more-information"></a>更多資訊
 
-如需 NuGet 的詳細資訊，請參閱[管理專案程式庫與 NuGet](https://msdn.microsoft.com/en-us/magazine/hh547106.aspx)和[NuGet 文件](http://docs.nuget.org/docs/start-here/overview)。 如果您不想要使用 NuGet，您必須了解如何分析 NuGet 封裝來判斷其用途在安裝時。 (例如，它可能會設定*Web.config*轉換設定為在建置時間等等時執行的 PowerShell 指令碼。)若要了解有關 NuGet 的運作方式的詳細資訊，請參閱[建立和發佈封裝](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package)和[組態檔和來源的程式碼轉換](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations)。
+如需 NuGet 的詳細資訊，請參閱[管理專案程式庫與 NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx)和[NuGet 文件](http://docs.nuget.org/docs/start-here/overview)。 如果您不想要使用 NuGet，您必須了解如何分析 NuGet 封裝來判斷其用途在安裝時。 (例如，它可能會設定*Web.config*轉換設定為在建置時間等等時執行的 PowerShell 指令碼。)若要了解有關 NuGet 的運作方式的詳細資訊，請參閱[建立和發佈封裝](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package)和[組態檔和來源的程式碼轉換](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations)。
 
 >[!div class="step-by-step"]
 [上一頁](introduction.md)

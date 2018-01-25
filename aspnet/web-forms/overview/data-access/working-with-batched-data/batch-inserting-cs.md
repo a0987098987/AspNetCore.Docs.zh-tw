@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9eb65b99a955770c72b28713d8daa66bcd1d5344
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9dc18e259da24d71464a156a70a85cfc9a1745ce
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="batch-inserting-c"></a>批次插入 (C#)
 ====================
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/10/2017
 接下來，我們必須建立可在 圖 1 顯示的插入介面。 這個介面可建立透過不同的 HTML 技術，但我們將使用一個相當簡單： 四個資料行中，七個資料列的資料表。
 
 > [!NOTE]
-> 當輸入標記的 HTML`<table>`項目，我想要使用的來源檢視。 雖然 Visual Studio 沒有工具加入`<table>`透過設計工具項目，在設計工具似乎所有太願意將騙取如`style`設定的標記。 當我建立`<table>`標記，通常是傳回至設計工具，以加入 Web 控制項，並設定其屬性。 使用預先決定的資料行和資料列中建立資料表時我更傾向於使用靜態 HTML 而[資料表 Web 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.table.aspx)因為任何放置在資料表 Web 控制項內的 Web 控制項只能存取使用`FindControl("controlID")`模式。 不過，作業，動態調整大小的資料表 （而其資料列或資料行依據部分資料庫或使用者指定的條件），使用資料表 Web 控制項自資料表 Web 控制項可用於以程式設計方式建構。
+> 當輸入標記的 HTML`<table>`項目，我想要使用的來源檢視。 雖然 Visual Studio 沒有工具加入`<table>`透過設計工具項目，在設計工具似乎所有太願意將騙取如`style`設定的標記。 當我建立`<table>`標記，通常是傳回至設計工具，以加入 Web 控制項，並設定其屬性。 使用預先決定的資料行和資料列中建立資料表時我更傾向於使用靜態 HTML 而[資料表 Web 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.table.aspx)因為任何放置在資料表 Web 控制項內的 Web 控制項只能存取使用`FindControl("controlID")`模式。 不過，作業，動態調整大小的資料表 （而其資料列或資料行依據部分資料庫或使用者指定的條件），使用資料表 Web 控制項自資料表 Web 控制項可用於以程式設計方式建構。
 
 
 輸入下列標記內`<asp:Panel>`標記`InsertingInterface`面板：

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 6790cd0deb36c9fb297ccd4df371f763dba17844
-ms.sourcegitcommit: 17b025bd33f4474f0deaafc6d0447a4e72bcad87
+ms.openlocfilehash: 829f3a024bc15bec8b60b91193ba9bca37b78009
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/27/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>不執行在 ASP.NET 中，以及應該改用哪個程式
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/27/2017
 
     - [PreSendRequestHeaders 和 PreSendRequestContent](#presend)
     - [Web Form 頁面非同步事件](#asyncevents)
-    - [和不理工作](#fire)
+    - [Fire-and-Forget Work](#fire)
     - [要求實體本文](#requestentity)
     - [Response.Redirect 和 Response.End](#redirect)
     - [EnableViewState 和 ViewStateMode](#viewstatemode)
@@ -94,7 +94,7 @@ Web 伺服器控制項包含數十個屬性可以用來設定的內建樣式屬�
 
 建議： 停止使用頁面和控制項的回呼，並且改為使用下列任一項： AJAX、 UpdatePanel、 MVC 動作方法、 Web API 或 SignalR。
 
-在舊版 ASP.NET 中，網頁和控制項的回呼方法會啟用您更新網頁的一部分，而不重新整理整個頁面。 您現在可以完成在局部網頁更新，透過[AJAX](../../../ajax/index.md)， [UpdatePanel](https://msdn.microsoft.com/en-US/library/bb386454.aspx)， [MVC](../../../mvc/index.md)， [Web API](../../../web-api/index.md)或[SignalR](../../../signalr/index.md). 您應該停止使用回呼方法，因為它們會導致問題，使用易記的 Url 和路由。 根據預設，控制項不會啟用回呼方法，但如果您啟用這項功能在控制項中的，您應該停用它。
+在舊版 ASP.NET 中，網頁和控制項的回呼方法會啟用您更新網頁的一部分，而不重新整理整個頁面。 您現在可以完成在局部網頁更新，透過[AJAX](../../../ajax/index.md)， [UpdatePanel](https://msdn.microsoft.com/library/bb386454.aspx)， [MVC](../../../mvc/index.md)， [Web API](../../../web-api/index.md)或[SignalR](../../../signalr/index.md). 您應該停止使用回呼方法，因為它們會導致問題，使用易記的 Url 和路由。 根據預設，控制項不會啟用回呼方法，但如果您啟用這項功能在控制項中的，您應該停用它。
 
 <a id="browsercap"></a>
 
@@ -138,7 +138,7 @@ Web 伺服器控制項包含數十個屬性可以用來設定的內建樣式屬�
 
 [!code-csharp[Main](what-not-to-do-in-aspnet-and-what-to-do-instead/samples/sample7.cs)]
 
-若要安全地編碼 SQL 命令的值，請使用命令參數例如[SqlParameter](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlparameter.aspx)。 <a id="cookieless"></a>
+若要安全地編碼 SQL 命令的值，請使用命令參數例如[SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx)。 <a id="cookieless"></a>
 
 ### <a name="cookieless-forms-authentication-and-session"></a>Cookie 的表單驗證和工作階段
 
@@ -180,15 +180,15 @@ Web 伺服器控制項包含數十個屬性可以用來設定的內建樣式屬�
 
 AppSettings 項目會包含許多值所需的安全性更新。 您不應該變更或停用這些值。 如果部署更新時，您必須停用這些值，請立即重新啟動完成部署之後。
 
-如需詳細資訊，請參閱[ASP.NET appSettings 項目](https://msdn.microsoft.com/en-us/library/hh975440.aspx)。
+如需詳細資訊，請參閱[ASP.NET appSettings 項目](https://msdn.microsoft.com/library/hh975440.aspx)。
 
 <a id="urlpathencode"></a>
 
 ### <a name="urlpathencode"></a>UrlPathEncode
 
-建議： 使用[進行 urlencode 處理](https://msdn.microsoft.com/en-us/library/zttxte6w.aspx)改為。
+建議： 使用[進行 urlencode 處理](https://msdn.microsoft.com/library/zttxte6w.aspx)改為。
 
-UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽器相容性問題。 它不會適當地編碼 URL，並不會保護您的應用程式從跨網站指令碼。 您應該永遠不會使用您的應用程式中。 請改用[進行 urlencode 處理](https://msdn.microsoft.com/en-us/library/zttxte6w.aspx)。
+UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽器相容性問題。 它不會適當地編碼 URL，並不會保護您的應用程式從跨網站指令碼。 您應該永遠不會使用您的應用程式中。 請改用[進行 urlencode 處理](https://msdn.microsoft.com/library/zttxte6w.aspx)。
 
 下列範例顯示如何將超連結控制項的查詢字串參數為傳遞編碼的 URL。
 
@@ -202,9 +202,9 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 ### <a name="presendrequestheaders-and-presendrequestcontent"></a>PreSendRequestHeaders 和 PreSendRequestContent
 
-建議： 不要使用這些事件與受管理模組。 相反地，寫入原生 IIS 模組來執行必要的工作。 請參閱[建立原生程式碼 HTTP 模組](https://msdn.microsoft.com/en-us/library/ms693629.aspx)。
+建議： 不要使用這些事件與受管理模組。 相反地，寫入原生 IIS 模組來執行必要的工作。 請參閱[建立原生程式碼 HTTP 模組](https://msdn.microsoft.com/library/ms693629.aspx)。
 
-您可以使用[PreSendRequestHeaders](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestheaders.aspx)和[PreSendRequestContent](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.presendrequestcontent.aspx)事件的原生 IIS 模組。
+您可以使用[PreSendRequestHeaders](https://msdn.microsoft.com/library/system.web.httpapplication.presendrequestheaders.aspx)和[PreSendRequestContent](https://msdn.microsoft.com/library/system.web.httpapplication.presendrequestcontent.aspx)事件的原生 IIS 模組。
 > [!WARNING]
 > 請勿使用`PreSendRequestHeaders`和`PreSendRequestContent`與實作的 managed 模組`IHttpModule`。 設定這些屬性會導致發生問題的非同步要求。 應用程式要求路由 (ARR) 和 websockets 的組合可能會造成存取違規的例外狀況，可能會造成 w3wp 損毀。 例如，iiscore ！W3_CONTEXT_BASE::GetIsLastNotification + 68 iiscore.dll 中的造成存取違規例外狀況 (0xC0000005)。
 
@@ -212,7 +212,7 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 ### <a name="asynchronous-page-events-with-web-forms"></a>Web Form 頁面非同步事件
 
-建議： 在 Web Form，避免撰寫 async void 的方法，適用於網頁生命週期事件，並改用[Page.RegisterAsyncTask](https://msdn.microsoft.com/en-us/library/system.web.ui.page.registerasynctask.aspx)非同步程式碼。
+建議： 在 Web Form，避免撰寫 async void 的方法，適用於網頁生命週期事件，並改用[Page.RegisterAsyncTask](https://msdn.microsoft.com/library/system.web.ui.page.registerasynctask.aspx)非同步程式碼。
 
 您將標記與網頁事件**非同步**和**void**，您無法判斷非同步程式碼已經完成時。 請改用 Page.RegisterAsyncTask 中可讓您追蹤其完成的方式執行非同步的程式碼。
 
@@ -226,7 +226,7 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 <a id="fire"></a>
 
-### <a name="fire-and-forget-work"></a>和不理工作
+### <a name="fire-and-forget-work"></a>Fire-and-Forget Work
 
 建議： 當您處理 asp.net 要求，避免啟動和不理工作 （這類呼叫 ThreadPool.QueueUserWorkItem 方法或建立重複呼叫委派的計時器）。
 
@@ -244,15 +244,15 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 您應該從 Request.Form 或 Request.InputStream 讀取最舊期間的處理常式執行事件。 在 MVC 中，控制器會處理常式，並在動作方法執行時，執行事件。 在 Web Form 頁面是處理常式，Page.Init 事件引發時執行事件。 如果您執行事件之前讀取要求實體主體，您會干擾處理要求。
 
-如果您要讀取要求實體主體，執行事件之前，請使用[Request.GetBufferlessInputStream](https://msdn.microsoft.com/en-us/library/ff406798.aspx)或[Request.GetBufferedInputStream](https://msdn.microsoft.com/en-us/library/system.web.httprequest.getbufferedinputstream.aspx)。 當您使用 GetBufferlessInputStream 時，您會從要求取得未經處理的資料流，並負責處理整個要求。 在呼叫之後 GetBufferlessInputStream，Request.Form 和 Request.InputStream 不適因為它們未填入 asp.net。 當您使用 GetBufferedInputStream 時，會從要求取得一份資料流。 Request.Form 和 Request.InputStream 屬性仍然可稍後在要求中因為 ASP.NET 會填入其他複本。
+如果您要讀取要求實體主體，執行事件之前，請使用[Request.GetBufferlessInputStream](https://msdn.microsoft.com/library/ff406798.aspx)或[Request.GetBufferedInputStream](https://msdn.microsoft.com/library/system.web.httprequest.getbufferedinputstream.aspx)。 當您使用 GetBufferlessInputStream 時，您會從要求取得未經處理的資料流，並負責處理整個要求。 在呼叫之後 GetBufferlessInputStream，Request.Form 和 Request.InputStream 不適因為它們未填入 asp.net。 當您使用 GetBufferedInputStream 時，會從要求取得一份資料流。 Request.Form 和 Request.InputStream 屬性仍然可稍後在要求中因為 ASP.NET 會填入其他複本。
 
 <a id="redirect"></a>
 
 ### <a name="responseredirect-and-responseend"></a>Response.Redirect 和 Response.End
 
-建議： 需要注意的執行緒之後呼叫的處理方式的差異[Response.Redirect(String)](https://msdn.microsoft.com/en-us/library/t9dwyts4.aspx)。
+建議： 需要注意的執行緒之後呼叫的處理方式的差異[Response.Redirect(String)](https://msdn.microsoft.com/library/t9dwyts4.aspx)。
 
-[Response.Redirect(String)](https://msdn.microsoft.com/en-us/library/t9dwyts4.aspx)方法會呼叫 Response.End 方法。 在同步處理中，呼叫 Request.Redirect 會導致目前的執行緒可立即中止。 不過，在非同步處理序中，呼叫 Response.Redirect 不會中止目前的執行緒，因此要求繼續執行程式碼。 在非同步處理序中，您必須從要停止執行程式碼的方法傳回的工作。
+[Response.Redirect(String)](https://msdn.microsoft.com/library/t9dwyts4.aspx)方法會呼叫 Response.End 方法。 在同步處理中，呼叫 Request.Redirect 會導致目前的執行緒可立即中止。 不過，在非同步處理序中，呼叫 Response.Redirect 不會中止目前的執行緒，因此要求繼續執行程式碼。 在非同步處理序中，您必須從要停止執行程式碼的方法傳回的工作。
 
 在 MVC 專案中，您不應該呼叫 Response.Redirect。 相反地，傳回 RedirectResult。
 
@@ -286,7 +286,7 @@ UrlPathEncode 方法已加入至.NET Framework，若要解決非常特定瀏覽�
 
 ### <a name="long-running-requests-110-seconds"></a>長時間執行要求 (> 110 秒)
 
-建議： 使用[WebSockets](https://msdn.microsoft.com/en-us/library/system.net.websockets.websocket.aspx)或[SignalR](../../../signalr/index.md)連線的用戶端，以及使用非同步 I/O 作業。
+建議： 使用[WebSockets](https://msdn.microsoft.com/library/system.net.websockets.websocket.aspx)或[SignalR](../../../signalr/index.md)連線的用戶端，以及使用非同步 I/O 作業。
 
 長時間執行的要求可能導致無法預期的結果和效能不佳，web 應用程式中。 要求的預設逾時設定為 110 秒。 如果您正在使用長時間執行要求的工作階段狀態，ASP.NET 會 110 秒後釋放工作階段物件上的鎖定。 不過，您的應用程式可能正在將工作階段物件上的作業時釋放鎖定，以及操作可能無法順利完成。 如果第一個要求正在執行時，會封鎖來自使用者的第二個要求，第二個要求可能需要存取工作階段中的物件不一致的狀態。
 

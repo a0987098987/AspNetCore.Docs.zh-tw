@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: a1d6a6468a39f31c3af8779abbbced093288773c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6bce4a5d889f548cb1faec15842310703d7077b8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================
@@ -51,13 +51,13 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 藉由新增一些驗證邏輯，以開始，您將`Movie`類別。
 
-開啟 *Movie.cs* 檔案。 新增`using`在參考的檔案最上方的陳述式[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間：
+開啟 *Movie.cs* 檔案。 新增`using`在參考的檔案最上方的陳述式[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間：
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample1.cs)]
 
 命名空間是.NET Framework 的一部分。 它提供一組內建的驗證屬性，您可以以宣告方式套用至任何類別或屬性。
 
-立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)，和[ `Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性. 使用下列程式碼做為要套用屬性的範例。
+立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)，和[ `Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性. 使用下列程式碼做為要套用屬性的範例。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample2.cs)]
 
@@ -105,11 +105,11 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 ## <a name="adding-formatting-to-the-movie-model"></a>加入影片模型格式設定
 
-開啟 *Movie.cs* 檔案。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 您將套用[ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性和[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性。
+開啟 *Movie.cs* 檔案。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 您將套用[ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性和[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample7.cs)]
 
-或者，您也可以明確設定[ `DataFormatString` ](https://msdn.microsoft.com/en-us/library/system.string.format.aspx)值。 下列程式碼將示範使用日期的格式字串的發行日期屬性 (也就是"d")。 您會使用這個指定不希望時間做為發行日期的一部分。
+或者，您也可以明確設定[ `DataFormatString` ](https://msdn.microsoft.com/library/system.string.format.aspx)值。 下列程式碼將示範使用日期的格式字串的發行日期屬性 (也就是"d")。 您會使用這個指定不希望時間做為發行日期的一部分。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample8.cs)]
 

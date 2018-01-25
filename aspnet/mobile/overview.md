@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /mobile
 msc.type: content
-ms.openlocfilehash: 57d865ee7c6d1afa21f4e9cd6da64f0bb430a5d2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de05ede5b7b41f0c44c867b51faf2310ac9fc514
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="mobile-apps--sites-with-aspnet"></a>行動裝置應用程式 （& s) 的 ASP.NET 網站
 ====================
@@ -38,17 +38,17 @@ ms.lasthandoff: 11/10/2017
 本端對端教學課程會示範如何建立 ASP.NET Web API 應用程式提供資料給 Windows Phone 8 應用程式。
 
 
-### <a name="get-started-with-azure-mobile-serviceshttpsazuremicrosoftcomen-usdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-startedwtmcidzumoaspnet"></a>[開始使用 Azure 行動服務](https://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started?WT.mc_id=zumo_aspnet)
+### <a name="get-started-with-azure-mobile-serviceshttpsazuremicrosoftcomdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-startedwtmcidzumoaspnet"></a>[開始使用 Azure 行動服務](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started?WT.mc_id=zumo_aspnet)
 
 開始使用 Azure 行動服務與 ASP.NET Web API。 本教學課程會示範如何從 Azure 管理入口網站建立行動服務應用程式。
 
 
-### <a name="authentication-in-azure-mobile-serviceshttpsazuremicrosoftcomen-usdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-started-userswtmcidzumoaspnet"></a>[Azure 行動服務中的驗證](https://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/?WT.mc_id=zumo_aspnet)
+### <a name="authentication-in-azure-mobile-serviceshttpsazuremicrosoftcomdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-started-userswtmcidzumoaspnet"></a>[Azure 行動服務中的驗證](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/?WT.mc_id=zumo_aspnet)
 
 本教學課程會示範如何驗證 Azure Mobile Services 中的使用者從您的應用程式。
 
 
-### <a name="using-push-notifications-in-azure-mobile-serviceshttpsazuremicrosoftcomen-usdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-started-pushwtmcidzumoaspnet"></a>[在 Azure 行動服務中使用推播通知](https://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/?WT.mc_id=zumo_aspnet)
+### <a name="using-push-notifications-in-azure-mobile-serviceshttpsazuremicrosoftcomdocumentationarticlesmobile-services-dotnet-backend-windows-store-dotnet-get-started-pushwtmcidzumoaspnet"></a>[在 Azure 行動服務中使用推播通知](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/?WT.mc_id=zumo_aspnet)
 
 使用 Azure 行動服務推播通知傳送到行動裝置。
 

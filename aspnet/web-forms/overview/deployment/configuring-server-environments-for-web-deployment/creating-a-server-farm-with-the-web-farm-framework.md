@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
 msc.type: authoredcontent
-ms.openlocfilehash: 2458abc863a83364f90fc9d6edaace897c23b4c9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c592ed78a7332834923ce2290af77919fb3c7576
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-server-farm-with-the-web-farm-framework"></a>建立伺服器陣列與 Web 伺服陣列架構
 ====================
@@ -65,7 +65,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
 - 伺服器具有靜態 IP 位址。
 
 > [!NOTE]
-> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/en-us/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/en-us/library/cc754203(v=ws.10).aspx)。
+> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx)。
 
 
 ## <a name="create-the-wff-controller-server"></a>建立 WFF 控制站伺服器
@@ -78,7 +78,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
 2. 在頂端**Web Platform Installer 3.0**視窗中，按一下 **產品**。
 3. 在左邊視窗中，瀏覽窗格中按一下 **伺服器**。
 4. 在**IIS 7 建議組態**資料列中，按一下 **新增**。
-5. 在**Web 伺服陣列架構 2。***x*資料列中，按一下 **新增**。
+5. 在 **Web 伺服陣列架構 2。 * * * x*資料列中，按一下 **新增**。
 
     ![](creating-a-server-farm-with-the-web-farm-framework/_static/image2.png)
 6. 按一下 [安裝] 。 請注意，Web Platform Installer 已加入 Web Deployment Tool，各種其他相依性，以及安裝清單中。

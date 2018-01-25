@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: 144097cd1551c1d0aece5df20ce01e14146a41d1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 7909f21057f22e78c03b41464a19a18ce0908216
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="limiting-the-lifetime-of-protected-payloads"></a>限制受保護的裝載的存留期
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/19/2018
 `Unprotect`方法會傳回原始未受保護的資料。 如果裝載尚未尚未過期，絕對期限會傳回做為選擇性的 out 參數，以及原始未受保護的資料。 如果裝載已過期，取消保護方法的所有多載會擲回 CryptographicException。
 
 >[!WARNING]
-> 不建議您先使用這些 Api 來保護裝載需要長期或無限期的持續性。 「 可我負擔的月份是永久無法復原受保護的內容嗎？ 」 可以做為最佳經驗法則;如果答案是沒有然後開發人員應該考慮替代的 Api。
+> 它已不建議使用這些 Api 來保護裝載需要長期或無限期的持續性。 「 可我負擔的月份是永久無法復原受保護的內容嗎？ 」 可以做為最佳經驗法則;如果答案是沒有然後開發人員應該考慮替代的 Api。
 
 使用下列的範例[非 DI 程式碼路徑](../configuration/non-di-scenarios.md)具現化的資料保護系統。 若要執行此範例，請確認您有第一次加入 Microsoft.AspNetCore.DataProtection.Extensions 封裝的參考。
 

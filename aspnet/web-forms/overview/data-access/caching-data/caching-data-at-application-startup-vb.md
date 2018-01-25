@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 06370e31d27aeab50e56e0b0b860aca7c3ad683b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5b84b797bf0c9670ac65a5384b6d95d5df3827eb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching-data-at-application-startup-vb"></a>快取資料在應用程式啟動 (VB)
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 主動式載入，以及我們將在本教學課程中，瀏覽的類型的另一個類別會將資料載入應用程式啟動時快取。 這個方法是特別適用於快取靜態資料，例如資料庫查閱資料表中的記錄。
 
 > [!NOTE]
-> 主動式與反應式載入以及專業人員及缺點，實作建議的清單之間的差異更深入探討，請參閱[管理的快取的內容](https://msdn.microsoft.com/en-us/library/ms978503.aspx)區段[快取 .NET Framework 應用程式的架構指南](https://msdn.microsoft.com/en-us/library/ms978498.aspx)。
+> 主動式與反應式載入以及專業人員及缺點，實作建議的清單之間的差異更深入探討，請參閱[管理的快取的內容](https://msdn.microsoft.com/library/ms978503.aspx)區段[快取 .NET Framework 應用程式的架構指南](https://msdn.microsoft.com/library/ms978498.aspx)。
 
 
 ## <a name="step-1-determining-what-data-to-cache-at-application-startup"></a>步驟 1： 決定要在應用程式啟動時的快取的資料
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 我們可以叫用之前*SomeMethod*或使用*SomeProperty*，我們必須先建立類別使用的執行個體`New`關鍵字。 *SomeMethod*和*SomeProperty*相關聯的特定執行個體。 這些成員的存留期會繫結及其相關聯的物件的存留期。 *靜態成員*，相反地，是變數、 屬性和方法所共用*所有*類別的執行個體，因此，只要類別存留期。 靜態成員以關鍵字代表`Shared`。
 
-除了靜態成員，可以快取的資料使用應用程式狀態。 每個 ASP.NET 應用程式會維護名稱/值集合 s 的所有使用者和應用程式的頁面之間共用。 此集合可以使用存取[`HttpContext`類別](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.aspx)s [ `Application`屬性](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.application.aspx)，並使用從 ASP.NET 頁面 s 程式碼後置類別就像這樣：
+除了靜態成員，可以快取的資料使用應用程式狀態。 每個 ASP.NET 應用程式會維護名稱/值集合 s 的所有使用者和應用程式的頁面之間共用。 此集合可以使用存取[`HttpContext`類別](https://msdn.microsoft.com/library/system.web.httpcontext.aspx)s [ `Application`屬性](https://msdn.microsoft.com/library/system.web.httpcontext.application.aspx)，並使用從 ASP.NET 頁面 s 程式碼後置類別就像這樣：
 
 
 [!code-vb[Main](caching-data-at-application-startup-vb/samples/sample2.vb)]
@@ -135,7 +135,7 @@ Web 應用程式初次啟動時執行程式碼，我們必須建立名為的特�
 - **`Session_Start`**建立新的工作階段時執行
 - **`Session_End`**執行工作階段已過期或已放棄時
 
-`Application_Start` s 應用程式生命週期內一次呼叫事件處理常式。 在應用程式啟動第一次 ASP.NET 資源會從應用程式要求，會繼續執行，直到重新啟動應用程式時，這可能會藉由修改的內容`/Bin`資料夾中，修改`Global.asax`，修改在內容`App_Code`資料夾，或修改`Web.config`檔案，在其他原因。 請參閱[ASP.NET 應用程式生命週期概觀](https://msdn.microsoft.com/en-us/library/ms178473.aspx)的應用程式生命週期的更詳細討論。
+`Application_Start` s 應用程式生命週期內一次呼叫事件處理常式。 在應用程式啟動第一次 ASP.NET 資源會從應用程式要求，會繼續執行，直到重新啟動應用程式時，這可能會藉由修改的內容`/Bin`資料夾中，修改`Global.asax`，修改在內容`App_Code`資料夾，或修改`Web.config`檔案，在其他原因。 請參閱[ASP.NET 應用程式生命週期概觀](https://msdn.microsoft.com/library/ms178473.aspx)的應用程式生命週期的更詳細討論。
 
 如需這些教學課程我們只需要將程式碼加入`Application_Start`方法中，因此可自由移除其他。 在`Application_Start`，只需呼叫`StaticCache`類別的`LoadStaticCache()`方法，將會載入並快取供應商資訊：
 

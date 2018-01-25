@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a980669d49d332d7ef2ff5a18c73e9b269281287
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b36fb71cba058a3409b30a1d9469159fcd027375
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 en-us/
 
@@ -57,7 +57,7 @@ John 按**儲存**上仍會顯示 $350,000.00 的預算的編輯頁面。 接下
 
 * 您可以追蹤的哪些使用者已修改的屬性，並更新只對應的資料行在資料庫中。
 
- 在案例中，將不會遺失任何資料。 兩位使用者已更新不同的屬性。 下一次有人瀏覽英文的部門，他們會看到 Jane 的和 John 的變更。 這種更新方法可以減少可能會導致資料遺失的衝突數目。 這種方法: * 無法避免資料遺失，如果競爭變更至相同的屬性。
+ 在案例中，將不會遺失任何資料。 兩位使用者已更新不同的屬性。 下一次有人瀏覽英文的部門，就會看到 Jane 的和 John 的變更。 這種更新方法可以減少可能會導致資料遺失的衝突數目。 這種方法: * 無法避免資料遺失，如果競爭變更至相同的屬性。
         * 是在 web 應用程式通常不實用。 它需要維護重要狀態來追蹤感所有擷取的值和新值。 維護大量狀態，可能會影響應用程式效能。
         * 可以提高應用程式複雜度相較於實體上的並行偵測。
 
@@ -73,18 +73,18 @@ John 按**儲存**上仍會顯示 $350,000.00 的預算的編輯頁面。 接下
 
 ## <a name="handling-concurrency"></a>處理並行 
 
-當屬性設定為[並行語彙基元](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency):
+當屬性設定為[並行語彙基元](https://docs.microsoft.com/ef/core/modeling/concurrency):
 
-* EF 核心確認屬性有未被修改它提取之後。 不會進行檢查時[SaveChanges](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges)或[SaveChangesAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_)呼叫。
+* EF 核心確認屬性有未被修改它提取之後。 不會進行檢查時[SaveChanges](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges)或[SaveChangesAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_)呼叫。
 * 如果屬性已變更，則提取之後, [DbUpdateConcurrencyException](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0)就會擲回。 
 
 資料庫和資料模型必須設定為支援擲回`DbUpdateConcurrencyException`。
 
 ### <a name="detecting-concurrency-conflicts-on-a-property"></a>偵測並行衝突的屬性
 
-在屬性層級的偵測並行衝突[ConcurrencyCheck](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0)屬性。 屬性可以套用到模型上的多個屬性。 如需詳細資訊，請參閱[資料註解 ConcurrencyCheck](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency#data-annotations)。
+在屬性層級的偵測並行衝突[ConcurrencyCheck](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0)屬性。 屬性可以套用到模型上的多個屬性。 如需詳細資訊，請參閱[資料註解 ConcurrencyCheck](https://docs.microsoft.com/ef/core/modeling/concurrency#data-annotations)。
 
-`[ConcurrencyCheck]`屬性不是在本教學課程。
+`[ConcurrencyCheck]`屬性不會使用在本教學課程。
 
 ### <a name="detecting-concurrency-conflicts-on-a-row"></a>偵測並行衝突的資料列
 
@@ -127,7 +127,7 @@ modelBuilder.Entity<Department>()
 
 [!code-sql[](intro/samples/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT ](https://docs.microsoft.com/en-us/sql/t-sql/functions/rowcount-transact-sql)傳回最後一個陳述式所影響的資料列數目。 在不會更新資料列，會擲回 EF 核心`DbUpdateConcurrencyException`。
+[@@ROWCOUNT ](https://docs.microsoft.com/sql/t-sql/functions/rowcount-transact-sql)傳回最後一個陳述式所影響的資料列數目。 在不會更新資料列，會擲回 EF 核心`DbUpdateConcurrencyException`。
 
 您可以看到 T-SQL EF 核心會產生的 Visual Studio [輸出] 視窗中。
 
@@ -305,8 +305,8 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 ### <a name="additional-resources"></a>其他資源
 
-* [在 EF 核心中的並行語彙基元](https://docs.microsoft.com/en-us/ef/core/modeling/concurrency)
-* [處理 EF 核心中的並行存取](https://docs.microsoft.com/en-us/ef/core/saving/concurrency)
+* [在 EF 核心中的並行語彙基元](https://docs.microsoft.com/ef/core/modeling/concurrency)
+* [處理 EF 核心中的並行存取](https://docs.microsoft.com/ef/core/saving/concurrency)
 
 >[!div class="step-by-step"]
 [上一步](xref:data/ef-rp/update-related-data)

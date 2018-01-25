@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: af4967f642ba4615f3392c0c404d2ec62edaaae8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 48a7d7fdb670aebb72450fc4eb12a364ef595c53
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 相依性插入
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > [!NOTE]
 > 這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**和**ASP.NET MVC 4 篩選**。 如果您不使用**ASP.NET MVC 4 篩選**之前，我們建議您在一段**ASP.NET MVC 自訂動作篩選條件**實際操作實驗室。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
 
 
 在**物件導向程式設計**開發架構時，物件一起運作共同作業模型中有 contributors 和取用者。 當然，此通訊模式會產生物件和元件，變得難以管理複雜度增加之間的相依性。
@@ -474,7 +474,7 @@ ms.lasthandoff: 11/10/2017
 
     ![Music Store](aspnet-mvc-4-dependency-injection/_static/image11.png "Music Store")
 
-    *Music Store*
+    *Music 市集*
 3. 瀏覽至**/Trace.axd**以查看應用程式追蹤頁面，然後再按一下**檢視詳細資料**。
 
     ![應用程式追蹤記錄檔](aspnet-mvc-4-dependency-injection/_static/image12.png "應用程式追蹤記錄檔")

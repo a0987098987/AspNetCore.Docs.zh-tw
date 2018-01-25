@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4796d5d9fcf1f924e9baa9bc56424a9d719425c9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6f238b8ea8dfbde67dbad7a52d6b4851d67402a8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-gridview-column-of-checkboxes-c"></a>加入 GridView 的資料行的核取方塊 (C#)
 ====================
@@ -100,7 +100,7 @@ ms.lasthandoff: 11/10/2017
 
 現在我們有核取方塊，但沒有方法可以判斷哪些核取方塊在回傳簽入的資料行。 按一下 [刪除選取的產品] 按鈕時，不過，我們需要知道哪些核取方塊已接受檢查，以刪除這些產品。
 
-GridView s [ `Rows`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rows.aspx)提供在 GridView 的資料列的存取。 我們可以逐一查看這些資料列，以程式設計方式存取 [CheckBox] 控制項，然後再參閱其`Checked`屬性來判斷是否已選取核取方塊。
+GridView s [ `Rows`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rows.aspx)提供在 GridView 的資料列的存取。 我們可以逐一查看這些資料列，以程式設計方式存取 [CheckBox] 控制項，然後再參閱其`Checked`屬性來判斷是否已選取核取方塊。
 
 建立事件處理常式`DeleteSelectedProducts`按鈕 Web 控制項的`Click`事件並加入下列程式碼：
 

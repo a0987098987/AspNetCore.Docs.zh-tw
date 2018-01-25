@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c610f84cfb82f38f9c67b757aa341c7a1497369c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>建立資料存取層 (C#)
 ====================
@@ -79,17 +79,17 @@ ms.lasthandoff: 11/10/2017
 
 - **GetCategories()，**這會傳回有關所有的分類資訊
 - **GetProducts()**，這會傳回所有產品的相關資訊
-- **GetProductsByCategoryID (*categoryID*) * *，其中會傳回屬於指定類別的所有產品
-- **GetProductByProductID (*productID*) * *，其中會傳回特定產品的相關資訊
+- **GetProductsByCategoryID (*categoryID*)**，這會傳回屬於指定類別的所有產品
+- **GetProductByProductID (*productID*)**，這會傳回特定產品的相關資訊
 
 這些方法，叫用時，將連接到資料庫、 發出適當的查詢，並傳回結果。 我們決定傳回這些結果的方式很重要。 這些方法可能只會傳回資料集或 DataReader 填入資料庫查詢，但在理想情況下這些結果應該傳回使用*強型別物件*。 強型別物件是在編譯時期，嚴格定義其結構描述而相反，是透過鬆散型別的物件，則是其中一個執行階段之前不知道其結構描述。
 
-比方說，DataReader 和 （依預設） 資料集是透過鬆散型別物件，因為其結構描述由用來填入資料庫查詢所傳回的資料行所定義。 若要從鬆散型別的 DataTable，我們需要使用類似下面的語法存取特定資料行：   ***DataTable*。資料列 [*索引*] ["*columnName*"]**。DataTable 的鬆散型別在此範例中會顯示我們需要存取使用字串或序數索引的資料行名稱的事實。強型別 DataTable，相反地，會有每個實作為屬性，其資料行導致程式碼所示：   ***DataTable*。資料列 [*索引*]。*columnName** *。
+比方說，DataReader 和 （依預設） 資料集是透過鬆散型別物件，因為其結構描述由用來填入資料庫查詢所傳回的資料行所定義。 若要從鬆散型別的 DataTable，我們需要使用類似下面的語法存取特定資料行: ***DataTable*。資料列 [*索引*] ["*columnName *"]**。 DataTable 的鬆散型別在此範例中會顯示我們需要存取使用字串或序數索引的資料行名稱的事實。 強型別 DataTable，相反地，會有每個實作為屬性，其資料行導致程式碼所示： ***DataTable*。資料列 [*索引*]。*columnName***。
 
 若要傳回強型別物件，開發人員可以建立自己的自訂商務物件或使用型別資料集。 類別，其屬性通常會反映基礎資料庫資料表的商務物件的資料行表示為開發人員所實作的商務物件。 型別資料集是由基礎資料庫結構描述和其成員的強型別根據此結構描述上的 Visual Studio 為您產生的類別。 輸入資料集本身包含的擴充 ADO.NET 資料集、 DataTable 和 DataRow 類別的類別。 除了強型別 Datatable，具類型資料集現在也包含 TableAdapters，也就是具有填入資料集的 Datatable 和傳播回資料庫中的 Datatable 修改方法的類別。
 
 > [!NOTE]
-> 如需有關使用型別資料集與自訂商務物件的優缺點的詳細資訊，請參閱[設計的資料層元件和傳遞資料透過層](https://msdn.microsoft.com/en-us/library/ms978496.aspx)。
+> 如需有關使用型別資料集與自訂商務物件的優缺點的詳細資訊，請參閱[設計的資料層元件和傳遞資料透過層](https://msdn.microsoft.com/library/ms978496.aspx)。
 
 
 這些教學課程架構，我們會使用強型別資料集。 圖 3 說明使用具類型資料集的應用程式的不同層之間的工作流程。
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 型別資料集做為強型別集合的資料;它是由構成強型別 DataTable 執行個體，其中每個則包含強型別 DataRow 執行個體。 我們將建立強型別 DataTable，我們需要使用此教學課程系列的基礎資料庫資料表的每個。 讓我們開始建立 DataTable**產品**資料表。
 
-請注意，強型別 Datatable 不會包含如何存取資料，從其基礎資料庫資料表上的所有資訊。 若要擷取的資料來填入 DataTable，我們使用的 TableAdapter 類別，可當做我們的資料存取層。 針對我們**產品**DataTable，TableAdapter 將包含方法**GetProducts()**，  **GetProductByCategoryID (*categoryID*) * *，依此類推，我們將會叫用從展示層。 DataTable 的角色是做為用來在各層之間傳遞資料的強型別物件。
+請注意，強型別 Datatable 不會包含如何存取資料，從其基礎資料庫資料表上的所有資訊。 若要擷取的資料來填入 DataTable，我們使用的 TableAdapter 類別，可當做我們的資料存取層。 針對我們**產品**DataTable，TableAdapter 將包含方法**GetProducts()**， **GetProductByCategoryID (*categoryID*)**，依此類推，我們將會叫用從展示層。 DataTable 的角色是做為用來在各層之間傳遞資料的強型別物件。
 
 TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫。 下拉式清單會顯示在 [伺服器總管] 中這些資料庫。 如果您沒有 Northwind 資料庫新增到 [伺服器總管] 中，您可以按一下 [新增連接] 按鈕，此時若要這樣做。
 
@@ -217,7 +217,7 @@ AllProducts.aspx.cs
 
 此時我們**ProductsTableAdapter**類別具有一種方法，但**GetProducts()**，它會傳回所有產品在資料庫中。 雖然無法使用的所有產品很明確有用的但有些的時候我們會想要擷取特定產品或屬於特定類別的所有產品的相關資訊。 將這類功能加入至我們的資料存取層中，我們可以將參數化的方法加入 TableAdapter。
 
-讓我們加入 **GetProductsByCategoryID (*categoryID*) * * 方法。 若要將新方法新增至 DAL 返回 DataSet 設計工具中，以滑鼠右鍵按一下**ProductsTableAdapter**區段，然後選擇 加入查詢。
+讓我們加入**GetProductsByCategoryID (*categoryID*)**方法。 若要將新方法新增至 DAL 返回 DataSet 設計工具中，以滑鼠右鍵按一下**ProductsTableAdapter**區段，然後選擇 加入查詢。
 
 
 ![TableAdapter 上按一下滑鼠右鍵，然後選擇 新增查詢](creating-a-data-access-layer-cs/_static/image38.png)
@@ -233,7 +233,7 @@ AllProducts.aspx.cs
 **圖 15**： 選擇建立**選取**陳述式的傳回資料列 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image41.png))
 
 
-下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同**選取**陳述式從**GetProducts()**，但加入下列**其中**子句：**其中 CategoryID = @CategoryID** 。  **@CategoryID** 參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
+下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同**選取**陳述式從**GetProducts()**，但加入下列**其中**子句：**其中 CategoryID = @CategoryID** 。 **@CategoryID** 參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
 
 
 [![輸入查詢只傳回指定的類別目錄中的 產品](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
@@ -241,7 +241,7 @@ AllProducts.aspx.cs
 **圖 16**： 輸入查詢只傳回產品中指定的類別目錄 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image44.png))
 
 
-最後一個步驟中，我們可以選擇資料存取模式來使用，以及自訂方法產生的名稱。 填滿模式，讓我們將名稱變更為**FillByCategoryID**和傳回的 DataTable 傳回模式 ( **取得*X** * 方法)，讓我們使用**GetProductsByCategoryID**。
+最後一個步驟中，我們可以選擇資料存取模式來使用，以及自訂方法產生的名稱。 填滿模式，讓我們將名稱變更為**FillByCategoryID**和傳回的 DataTable 傳回模式 (**取得 * X*** 方法)，讓我們使用**GetProductsByCategoryID**.
 
 
 [![選擇的 TableAdapter 方法的名稱](creating-a-data-access-layer-cs/_static/image46.png)](creating-a-data-access-layer-cs/_static/image45.png)
@@ -257,7 +257,7 @@ AllProducts.aspx.cs
 **圖 18**: 產品可以立即查詢依類別目錄
 
 
-請花一點時間加入 **GetProductByProductID (*productID*) * * 方法使用相同的技巧。
+請花一點時間加入**GetProductByProductID (*productID*)**方法使用相同的技巧。
 
 您可以測試這些參數化的查詢，直接從 DataSet 設計工具。 TableAdapter 中的方法上按一下滑鼠右鍵，然後選擇 預覽資料。 接下來，輸入要使用的參數，並按一下 [預覽] 的值。
 
@@ -267,7 +267,7 @@ AllProducts.aspx.cs
 **圖 19**： 會顯示那些產品屬於 「 飲料 」 分類 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image51.png))
 
 
-與 **GetProductsByCategoryID (*categoryID*) * * 我們 DAL 中的方法，我們現在可以建立 ASP.NET 網頁，只會顯示這些產品指定類別中。 下列範例會顯示所有產品中的飲料類別目錄中，具有**CategoryID**為 1。
+與**GetProductsByCategoryID (*categoryID*)**方法我們 DAL 中的，我們現在可以建立 ASP.NET 網頁，只會顯示這些產品指定類別中。 下列範例會顯示所有產品中的飲料類別目錄中，具有**CategoryID**為 1。
 
 Beverages.asp
 
@@ -293,7 +293,7 @@ Beverages.aspx.cs
 **圖 21**： 每個插入、 更新和刪除要求傳送至立即資料庫 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image57.png))
 
 
-其他模式，它會參照為批次更新模式，是更新整個資料集、 資料表或其中一個方法呼叫中的資料行集合。 此模式與開發人員刪除、 插入、 修改 DataTable 中的資料行以及然後將這些資料行或資料表傳遞轉換成更新的方法。 然後此方法列舉傳入資料行，判斷是否已被修改、 加入，或刪除這些 (透過 DataRow [RowState 屬性](https://msdn.microsoft.com/en-us/library/system.data.datarow.rowstate.aspx)值)，並會發出適當的資料庫要求的每一筆記錄。
+其他模式，它會參照為批次更新模式，是更新整個資料集、 資料表或其中一個方法呼叫中的資料行集合。 此模式與開發人員刪除、 插入、 修改 DataTable 中的資料行以及然後將這些資料行或資料表傳遞轉換成更新的方法。 然後此方法列舉傳入資料行，判斷是否已被修改、 加入，或刪除這些 (透過 DataRow [RowState 屬性](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx)值)，並會發出適當的資料庫要求的每一筆記錄。
 
 
 [![與資料庫同步的所有變更時叫用 Update 方法](creating-a-data-access-layer-cs/_static/image59.png)](creating-a-data-access-layer-cs/_static/image58.png)
@@ -339,7 +339,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 **圖 25**： 建立方法以加入新的資料列至**產品**資料表 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image69.png))
 
 
-在下一個畫面**InsertCommand**的**CommandText**隨即出現。 藉由新增擴充此查詢**選取範圍\_IDENTITY()**在查詢的結束時，它會傳回插入的最後一個識別值**識別**相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/en-us/library/ms190315.aspx)如需有關**範圍\_IDENTITY()**以及為什麼您可能想要[使用範圍\_替代 IDENTITY() @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).)請確定您結束**插入**以分號分隔的陳述式，然後再加入**選取**陳述式。
+在下一個畫面**InsertCommand**的**CommandText**隨即出現。 藉由新增擴充此查詢**選取範圍\_IDENTITY()**在查詢的結束時，它會傳回插入的最後一個識別值**識別**相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/library/ms190315.aspx)如需有關**範圍\_IDENTITY()**以及為什麼您可能想要[使用範圍\_替代 IDENTITY() @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).)請確定您結束**插入**以分號分隔的陳述式，然後再加入**選取**陳述式。
 
 
 [![加強查詢傳回 scope_identity （） 值](creating-a-data-access-layer-cs/_static/image71.png)](creating-a-data-access-layer-cs/_static/image70.png)
@@ -391,7 +391,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 **圖 30**:**產品**DataTable 有兩個新的資料行
 
 
-請花一點時間更新**選取**中的子句 **GetProductsByCategoryID (*categoryID*) * * 以及方法。
+請花一點時間更新**選取**中的子句**GetProductsByCategoryID (*categoryID*)**以及方法。
 
 如果您更新**GetProducts()** **選取**使用**聯結**語法 DataSet 設計工具將無法自動產生插入、 更新和刪除的方法使用 DB 直接模式的資料庫資料。 相反地，您必須手動建立它們更像我們與**InsertProduct**稍早在本教學課程中的方法。 此外，您以手動方式必須提供**InsertCommand**， **UpdateCommand**，和**DeleteCommand**屬性值，如果您想要使用批次更新模式。
 
@@ -399,7 +399,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 至今的情況下，我們只探討了使用單一資料庫資料表的單一 TableAdapter。 不過，Northwind 資料庫包含數個相關的資料表，我們需要使用我們的 web 應用程式中。 型別資料集可以包含多個相關的 Datatable。 因此，若要完成我們 DAL 我們需要將 Datatable 加入我們將使用這些教學課程中的其他資料表。 新的 TableAdapter 加入型別資料集，請開啟 DataSet 設計工具、 在設計師中，以滑鼠右鍵按一下並選擇 加入 / TableAdapter。 這會建立新的 DataTable 和 TableAdapter，並逐步引導您完成精靈我們稍早在本教學課程中檢查。
 
-需要幾分鐘才能建立 TableAdapters，下列方法使用下列查詢。 請注意，在查詢**ProductsTableAdapter**包含子查詢，擷取每個產品類別目錄] 和 [供應商的名稱。 此外，如果您已經一路，您已新增**ProductsTableAdapter**類別的**GetProducts()**和 **GetProductsByCategoryID (*categoryID*) * * 方法。
+需要幾分鐘才能建立 TableAdapters，下列方法使用下列查詢。 請注意，在查詢**ProductsTableAdapter**包含子查詢，擷取每個產品類別目錄] 和 [供應商的名稱。 此外，如果您已經一路，您已新增**ProductsTableAdapter**類別的**GetProducts()**和**GetProductsByCategoryID (*categoryID*)**方法。
 
 - **ProductsTableAdapter**
 
@@ -520,18 +520,18 @@ SuppliersAndProducts.aspx.cs
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [建置 DAL，使用強型別 Tableadapter 和 VS 2005 和 ASP.NET 2.0 中的 Datatable](https://weblogs.asp.net/scottgu/435498)
-- [設計資料層元件和傳遞的資料層](https://msdn.microsoft.com/en-us/library/ms978496.aspx)
+- [設計資料層元件和傳遞的資料層](https://msdn.microsoft.com/library/ms978496.aspx)
 - [建置 Visual Studio 2005 DataSet 設計工具與資料存取層](http://www.theserverside.net/articles/showarticle.tss?id=DataSetDesigner)
 - [加密組態資訊，在 ASP.NET 2.0 應用程式](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)
-- [TableAdapter 概觀](https://msdn.microsoft.com/en-us/library/bz9tthwx.aspx)
-- [使用具類型資料集](https://msdn.microsoft.com/en-us/library/esbykkzb.aspx)
+- [TableAdapter 概觀](https://msdn.microsoft.com/library/bz9tthwx.aspx)
+- [使用具類型資料集](https://msdn.microsoft.com/library/esbykkzb.aspx)
 - [使用 Visual Studio 2005 和 ASP.NET 2.0 中的強型別資料存取](http://aspnet.4guysfromrolla.com/articles/020806-1.aspx)
 - [如何擴充 TableAdapter 方法](https://blogs.msdn.com/vbteam/archive/2005/05/04/ExtendingTableAdapters.aspx)
 - [從預存程序擷取純量的資料](http://aspnet.4guysfromrolla.com/articles/062905-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
 
-- [ASP.NET 應用程式中的資料存取層級](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
+- [ASP.NET 應用程式中的資料存取層](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
 - [如何以手動方式將資料集繫結到資料格](../../../videos/data-access/adonet-data-services/how-to-manually-bind-a-dataset-to-a-datagrid.md)
 - [如何從 ASP 應用程式與資料集和篩選的工作](../../../videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application.md)
 

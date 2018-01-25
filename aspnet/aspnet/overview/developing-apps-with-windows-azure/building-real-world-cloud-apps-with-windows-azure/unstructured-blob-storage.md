@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: 6cb77e8ef301c2eeef7df3e391e14f4e2c0364e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 489769533a26c99404c6a5186d66f560385dcffd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>非結構化的 Blob 儲存體 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 Azure 儲存體 Blob 服務會提供在雲端中儲存檔案的方法。 Blob 服務的數目將檔案儲存在本機網路檔案系統的優點：
 
-- 它是具有高擴充性。 單一儲存體帳戶可以儲存[數百個 tb 且](https://msdn.microsoft.com/en-us/library/windowsazure/dn249410.aspx)，而且您可以有多個儲存體帳戶。 部分最大的 Azure 客戶儲存數百個 pb。 Microsoft SkyDrive 使用 blob 儲存體。
+- 它是具有高擴充性。 單一儲存體帳戶可以儲存[數百個 tb 且](https://msdn.microsoft.com/library/windowsazure/dn249410.aspx)，而且您可以有多個儲存體帳戶。 部分最大的 Azure 客戶儲存數百個 pb。 Microsoft SkyDrive 使用 blob 儲存體。
 - 它是持久。 每個檔案儲存在 Blob 服務會自動備份。
 - 它提供高可用性。 [儲存體 SLA](https://go.microsoft.com/fwlink/p/?linkid=159705&amp;clcid=0x409)承諾 99.9%或 99.99%執行時間，依據您選擇的地理備援性選項。
 - 它是平台做為服務 (PaaS) 功能的 Azure，這表示只需要儲存，並擷取只支付您使用時，存放裝置的實際數量的檔案，Azure 會自動設定及管理的所有 Vm 和所需的磁碟機服務。
@@ -146,7 +146,7 @@ Azure 不會將資料複寫到地理政治界限： 如果主要位置是在美�
 - [Azure BLOB 儲存體簡介](https://www.simple-talk.com/cloud/cloud-data/an-introduction-to-windows-azure-blob-storage-/)。 Mike 木材部落格。
 - [如何在.NET 中使用 Azure Blob 儲存體服務](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 MicrosoftAzure.com 站台上的官方文件集。 Blob 儲存體，後面接著程式碼範例顯示如何連接到 blob 儲存體，將簡單介紹建立容器、 上傳和下載 blob，依此類推。
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 高層級概念與架構原則非常可存取且有趣的方式，呈現劇本取自與實際客戶的 Microsoft 客戶諮詢團隊 (CAT) 體驗。 如需 Azure 儲存體服務和 blob 的討論，請參閱 35:13 時段 5 開始。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱附屬金鑰模式。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱附屬金鑰模式。
 
 >[!div class="step-by-step"]
 [上一頁](data-partitioning-strategies.md)

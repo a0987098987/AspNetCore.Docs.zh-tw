@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 96960ef56b1206374458dbbba4befffaa83c1624
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aacae7a9ccf483b21d3c6796c0411d558fa3c75b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>在 Visual Studio 2013 中建立 ASP.NET Web 專案
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 > - 使用[Bootstrap](#bootstrap)提供回應式設計和主題功能。
 > - 用來只對 MVC 中，例如提供的 Web Form 的新功能[自動測試專案的建立](#testproj)和[內部網路網站範本](#winauth)。
 > 
-> 如需如何為 Azure 雲端服務或 Azure 行動服務中建立 web 專案的資訊，請參閱[開始使用 Azure 雲端服務和 ASP.NET](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-get-started/)和[建立 Leaderboard 應用程式使用 Azure 行動服務的.NET後端](https://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)。
+> 如需如何為 Azure 雲端服務或 Azure 行動服務中建立 web 專案的資訊，請參閱[開始使用 Azure 雲端服務和 ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/)和[建立 Leaderboard 應用程式使用 Azure 行動服務的.NET後端](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)。
 
 
 <a id="prerequisites"></a>
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 <a id="wap"></a>
 ## <a name="web-application-projects-versus-web-site-projects"></a>與網站專案的 web 應用程式專案
 
-ASP.NET 可讓您可以選擇兩種類型的 web 專案： *web 應用程式專案*和*網站專案*。 我們建議您進行新開發，web 應用程式專案，這篇文章僅適用於 web 應用程式專案。 如需詳細資訊，請參閱[Web 應用程式專案與 Visual Studio 中的網站專案](https://msdn.microsoft.com/en-us/library/dd547590(v=vs.120).aspx)MSDN 網站上的。
+ASP.NET 可讓您可以選擇兩種類型的 web 專案： *web 應用程式專案*和*網站專案*。 我們建議您進行新開發，web 應用程式專案，這篇文章僅適用於 web 應用程式專案。 如需詳細資訊，請參閱[Web 應用程式專案與 Visual Studio 中的網站專案](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx)MSDN 網站上的。
 
 <a id="overview"></a>
 ## <a name="overview-of-web-application-project-creation"></a>建立 web 應用程式專案的概觀
@@ -54,8 +54,8 @@ ASP.NET 可讓您可以選擇兩種類型的 web 專案： *web 應用程式專�
 
     ![[新增專案] 對話](creating-web-projects-in-visual-studio/_static/image1.png)
 
-    您可以選擇**雲端**建立的左窗格中[Azure 雲端服務](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy)， [Azure 行動服務](https://msdn.microsoft.com/en-us/library/windows/apps/dn629482.aspx)，或[Azure WebJob](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-webjobs)。 本主題並未涵蓋這些範本。
-3. 在右窗格中，按一下 **加入 Application Insights 加入專案**核取方塊，如果您想健全狀況與使用量監視您的應用程式。 如需詳細資訊，請參閱[監視 web 應用程式中的效能](https://azure.microsoft.com/en-us/documentation/articles/app-insights-web-monitor-performance/)。
+    您可以選擇**雲端**建立的左窗格中[Azure 雲端服務](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy)， [Azure 行動服務](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx)，或[Azure WebJob](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs)。 本主題並未涵蓋這些範本。
+3. 在右窗格中，按一下 **加入 Application Insights 加入專案**核取方塊，如果您想健全狀況與使用量監視您的應用程式。 如需詳細資訊，請參閱[監視 web 應用程式中的效能](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)。
 4. 指定專案**名稱**，**位置**，和其他選項，以及然後按一下**確定**。
 
     **新增 ASP.NET 專案**對話方塊隨即出現。
@@ -86,7 +86,7 @@ Visual Studio 包含可讓您輕鬆地使用 Azure 服務來裝載 web 應用程
 - 在 偵錯模式中從遠端執行應用程式會在雲端中執行時。
 - Viiew 及管理其他 Azure 服務，例如 SQL 資料庫。
 
-您可以[建立 Azure 帳戶](https://www.windowsazure.com/en-us/pricing/free-trial/)免費，包含基本的服務，例如 web 應用程式，而且如果您是 MSDN 訂戶可以[啟用權益](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/)，可以讓您向其他 Azure 每月信用額度服務。 
+您可以[建立 Azure 帳戶](https://www.windowsazure.com/pricing/free-trial/)免費，包含基本的服務，例如 web 應用程式，而且如果您是 MSDN 訂戶可以[啟用權益](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/)，可以讓您向其他 Azure 每月信用額度服務。 
 
 根據預設**新增 ASP.NET 專案**對話方塊可讓您建立 web 應用程式或新的 web 專案的虛擬機器。 如果您不想要建立新的 web 應用程式或虛擬機器，清除**雲端中的主機**核取方塊。
 
@@ -96,7 +96,7 @@ Visual Studio 包含可讓您輕鬆地使用 Azure 服務來裝載 web 應用程
 
 ![設定 Azure 應用程式設定](creating-web-projects-in-visual-studio/_static/image9.png)
 
-如需如何使用此程序來建立 Azure 資源的詳細資訊，請參閱[開始使用 Azure 和 ASP.NET](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)和[使用 Visual Studio 中建立網站的虛擬機器](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/)。
+如需如何使用此程序來建立 Azure 資源的詳細資訊，請參閱[開始使用 Azure 和 ASP.NET](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)和[使用 Visual Studio 中建立網站的虛擬機器](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/)。
 
 這篇文章的其餘部分提供可用的範本和其選項的詳細資訊。 發行項也導入啟動程序、 配置和佈景主題的架構，用於範本。
 
@@ -112,7 +112,7 @@ Visual Studio 2013.NET 4.5 或更新版本的.NET framework 為目標的專案�
 - [MVC 範本](#mvc)
 - [Web API 範本](#webapi)
 - [單一頁面應用程式範本](#spa)
-- [Azure 行動服務範本](https://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
+- [Azure 行動服務範本](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
 - [Visual Studio 2012 範本](#vs2012)
 
 您也可以安裝 Visual Studio 擴充功能提供[Facebook 範本](#facebook)。
@@ -198,7 +198,7 @@ SPA 範本的唯一的驗證選項是[個別使用者帳戶](#indauth)。
 
 - [ASP.NET 單一頁面應用程式](../../../single-page-application/index.md)。
 - [了解 VS2013 RC SPA 範本中的安全性功能](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
-- [使用 ASP.NET 的現代化、 可回應的 Web 應用程式的單一頁面應用程式： 建置](https://msdn.microsoft.com/en-us/magazine/dn463786.aspx)
+- [使用 ASP.NET 的現代化、 可回應的 Web 應用程式的單一頁面應用程式： 建置](https://msdn.microsoft.com/magazine/dn463786.aspx)
 
 <a id="facebook"></a>
 ### <a name="facebook-template"></a>Facebook 範本
@@ -360,7 +360,7 @@ Visual Studio 2013 提供多種的驗證選項，Web Form、 MVC、 和 Web API 
 
 ![單一組織驗證](creating-web-projects-in-visual-studio/_static/image24.png)
 
-選擇此選項，如果您想要啟用一個 Azure AD 中所定義的使用者帳戶的驗證[租用戶](https://technet.microsoft.com/en-us/library/jj573650.aspx)。 例如，網站為 contoso.com，它將會對可用 contoso.onmicrosoft.com 租用戶中是 Contoso 公司的員工。 您將無法設定以允許使用者從其他租用戶存取應用程式的 Azure AD。
+選擇此選項，如果您想要啟用一個 Azure AD 中所定義的使用者帳戶的驗證[租用戶](https://technet.microsoft.com/library/jj573650.aspx)。 例如，網站為 contoso.com，它將會對可用 contoso.onmicrosoft.com 租用戶中是 Contoso 公司的員工。 您將無法設定以允許使用者從其他租用戶存取應用程式的 Azure AD。
 
 #### <a name="domain"></a>Domain
 
@@ -368,7 +368,7 @@ Visual Studio 2013 提供多種的驗證選項，Web Form、 MVC、 和 Web API 
 
 #### <a name="access-level"></a>存取層級
 
-如果應用程式需要查詢或使用 Graph API 來更新目錄資訊，請選擇**單一登入，讀取目錄資料**或**單一登入，讀取和寫入目錄資料**。 否則，請選擇**單一登入**。 如需詳細資訊，請參閱[應用程式的存取層級](https://msdn.microsoft.com/en-us/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels)和[使用查詢 Azure AD Graph API](https://msdn.microsoft.com/en-US/library/windowsazure/dn151791.aspx)。
+如果應用程式需要查詢或使用 Graph API 來更新目錄資訊，請選擇**單一登入，讀取目錄資料**或**單一登入，讀取和寫入目錄資料**。 否則，請選擇**單一登入**。 如需詳細資訊，請參閱[應用程式的存取層級](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels)和[使用查詢 Azure AD Graph API](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx)。
 
 #### <a name="application-id-uri"></a>應用程式識別碼 URI
 
@@ -386,8 +386,8 @@ Visual Studio 2013 提供多種的驗證選項，Web Form、 MVC、 和 Web API 
 
 - [Azure 驗證](../2012/windows-azure-authentication.md)
 - [登入加入至 Web 應用程式，使用 Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
-- [使用 Azure Active Directory 開發的 ASP.NET 應用程式](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
-- [保護 Azure AD 的 ASP.NET Web API 和 Microsoft OWIN 元件](https://msdn.microsoft.com/en-us/magazine/dn463788.aspx)
+- [使用 Azure Active Dirctory 開發 ASP.NET 應用程式](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
+- [保護 Azure AD 的 ASP.NET Web API 和 Microsoft OWIN 元件](https://msdn.microsoft.com/magazine/dn463788.aspx)
 
 教學課程有尚未更新 Visual Studio 2013。教學課程引導您以手動方式執行的某些系統會自動在 Visual Studio 2013。
 
@@ -396,14 +396,14 @@ Visual Studio 2013 提供多種的驗證選項，Web Form、 MVC、 和 Web API 
 
 ![多個組織的驗證](creating-web-projects-in-visual-studio/_static/image25.png)
 
-選擇此選項，如果您想要啟用多個 Azure AD 中所定義的使用者帳戶的驗證[租用戶](https://technet.microsoft.com/en-us/library/jj573650.aspx)。 例如，網站為 contoso.com，它將會對可用 contoso.onmicrosoft.com 租用戶中是 Contoso 公司的員工和員工的 Fabrikam 公司 fabrikam.onmicrosoft.com 租用戶中。
+選擇此選項，如果您想要啟用多個 Azure AD 中所定義的使用者帳戶的驗證[租用戶](https://technet.microsoft.com/library/jj573650.aspx)。 例如，網站為 contoso.com，它將會對可用 contoso.onmicrosoft.com 租用戶中是 Contoso 公司的員工和員工的 Fabrikam 公司 fabrikam.onmicrosoft.com 租用戶中。
 
 您輸入的設定和應用程式佈建步驟，類似[單一組織驗證](#orgauthsingle)。
 
 如需有關如何建立使用的應用程式資訊**雲端為多組織**驗證，請參閱下列資源：
 
 - [很容易與 Azure Active Directory，ASP.NET Web 應用程式整合&amp;Visual Studio](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx) Active Directory 團隊部落格上。
-- [開發多租用戶 Web 應用程式與 Azure AD](https://msdn.microsoft.com/en-us/library/windowsazure/dn151789.aspx)教學課程。 本教學課程尚未尚未更新 Visual Studio 2013。某些功能的教學課程會引導您手動執行會自動化 Visual Studio 2013 中。
+- [開發多租用戶 Web 應用程式與 Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx)教學課程。 本教學課程尚未尚未更新 Visual Studio 2013。某些功能的教學課程會引導您手動執行會自動化 Visual Studio 2013 中。
 - [您必須註冊您的多個組織 ASP.NET 應用程式之前，您可以登入](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/)。 建立專案，使用多組織驗證時，會遇到 Vittorio Bertocci，說明如何解決常見的問題人員部落格。
 
 <a id="orgauthonprem"></a>

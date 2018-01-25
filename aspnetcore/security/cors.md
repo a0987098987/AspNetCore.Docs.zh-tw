@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cors
-ms.openlocfilehash: e6b49b9dde94cc7d035ea91b992a13df8cb8caf2
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9f53ce11f1659aa3416fe4fbb94183c64ab0dab5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/19/2018
 * `http://example.com:9000/foo.html`為不同的通訊埠
 
 > [!NOTE]
-> 比較來源時，Internet Explorer 不會將連接埠。
+> 比較來源時，Internet Explorer 不會視為連接埠。
 
 ## <a name="setting-up-cors"></a>CORS 設定
 
@@ -160,7 +160,7 @@ CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 
 
 ### <a name="set-the-exposed-response-headers"></a>設定公開的回應標頭
 
-根據預設，在瀏覽器不會公開所有應用程式的回應標頭。 (請參閱[http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header)。)預設可用的回應標頭如下：
+根據預設，瀏覽器不會公開所有的應用程式的回應標頭。 (請參閱[http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header)。)預設可用的回應標頭如下：
 
 * Cache-Control
 
@@ -180,7 +180,7 @@ CORS 規格會呼叫這些*簡單的回應標頭*。 若要讓其他標頭可用
 
 ### <a name="credentials-in-cross-origin-requests"></a>跨原始要求中的認證
 
-認證需要特殊處理 CORS 要求中。 根據預設，在瀏覽器不會傳送跨原始要求的任何認證。 認證會包括 cookie，以及 HTTP 驗證配置。 若要傳送與跨原始要求的認證，用戶端必須 XMLHttpRequest.withCredentials 設定為 true。
+認證需要特殊處理 CORS 要求中。 根據預設，瀏覽器不會傳送跨原始要求的任何認證。 認證會包括 cookie，以及 HTTP 驗證配置。 若要傳送與跨原始要求的認證，用戶端必須 XMLHttpRequest.withCredentials 設定為 true。
 
 直接使用 XMLHttpRequest:
 
@@ -207,7 +207,7 @@ $.ajax({
 
 現在 HTTP 回應將包含存取控制-允許-認證標頭，告知瀏覽器伺服器允許跨原始要求的認證。
 
-如果瀏覽器傳送認證，但回應不包含有效的存取控制-允許-認證標頭，瀏覽器不會公開至應用程式中，回應和 AJAX 要求失敗。
+如果瀏覽器傳送認證，但回應未包含有效的存取控制-允許-認證標頭，瀏覽器將不會公開至應用程式中，回應和 AJAX 要求失敗。
 
 要非常小心有關允許跨原始認證，因為這表示網站，位於另一個網域可以傳送給您的應用程式使用者的身分登入之使用者的認證不會察覺使用者。 CORS 規格也狀態該設定來源可"*"（所有原始網域） 不正確的存取控制-允許-認證標頭是否存在。
 
@@ -252,7 +252,7 @@ Content-Length: 12
 Test message
 ```
 
-如果回應不包含存取控制-允許的原始標頭，要求將會失敗。 具體來說，瀏覽器不允許要求。 即使伺服器會傳回成功的回應，瀏覽器不會回應提供給用戶端應用程式。
+如果回應不包含存取控制-允許的原始標頭，要求將會失敗。 具體來說，瀏覽器不允許要求。 即使伺服器會傳回成功的回應，瀏覽器不會提供回應給用戶端應用程式。
 
 ### <a name="preflight-requests"></a>預檢要求
 
@@ -290,7 +290,7 @@ Content-Length: 0
 
 * 存取控制-要求的方法： 將實際的要求使用 HTTP 方法。
 
-* 存取控制-access-control-request-headers 標： 實際要求設定的應用程式的要求標頭的清單。 （同樣地，這不包括瀏覽器設定的標頭。）
+* 存取控制-access-control-request-headers 標： 實際要求設定的應用程式的要求標頭的清單。 （同樣地，這不包括瀏覽器設定的標頭）。
 
 以下是範例回應，假設伺服器允許要求：
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 97e4a2a1794dbdccf80f0b44c1246c743fa23019
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 68056759b2e80230e5fd2c0f9b2d2a89b549cf37
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>簡介 ASP.NET Web 網頁的 HTML 表單的基本概念
 ====================
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > **重要 ！** 使用預留位置 (例如`@0`) 將值傳遞至 SQL 命令為*極為重要*安全性。 您看到該元件，和預留位置的變數，方法是您應該建構 SQL 命令的唯一方式。
 > 
-> 永遠不會以建構 SQL 陳述式放在一起，（串連） 的常值文字和您從使用者取得的值。 串連使用者輸入 SQL 陳述式會開啟您的站台*SQL 資料隱碼攻擊*當惡意使用者送出至您的頁面 hack 資料庫的值。 (您可以讀取多個發行項中[SQL 資料隱碼](https://msdn.microsoft.com/en-us/library/ms161953.aspx)MSDN 網站。)
+> 永遠不會以建構 SQL 陳述式放在一起，（串連） 的常值文字和您從使用者取得的值。 串連使用者輸入 SQL 陳述式會開啟您的站台*SQL 資料隱碼攻擊*當惡意使用者送出至您的頁面 hack 資料庫的值。 (您可以讀取多個發行項中[SQL 資料隱碼](https://msdn.microsoft.com/library/ms161953.aspx)MSDN 網站。)
 
 
 ## <a name="updating-the-movies-page-with-search-code"></a>搜尋程式碼以更新 [影片] 頁面

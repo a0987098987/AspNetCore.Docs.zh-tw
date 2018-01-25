@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 82b4521279dcd9b9dc5a8e81b3a0d87ab26d46ac
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f323fe37da739d957a609dc7ca4e71a3c3ab475e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
@@ -92,9 +92,9 @@ ASP.NET MVC 也提供將傳遞強的功能類型的資料或檢視表範本的�
 
 [!code-cshtml[Main](accessing-your-models-data-from-a-controller/samples/sample4.cshtml)]
 
-這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在*Details.cshtml*範本，在程式碼通過每個影片欄位`DisplayNameFor`和[DisplayFor](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.displayextensions.displayfor(VS.98).aspx) HTML Helper 的強型別`Model`物件。 建立與編輯方法並檢視範本也會傳遞影片模型物件。
+這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在*Details.cshtml*範本，在程式碼通過每個影片欄位`DisplayNameFor`和[DisplayFor](https://msdn.microsoft.com/library/system.web.mvc.html.displayextensions.displayfor(VS.98).aspx) HTML Helper 的強型別`Model`物件。 建立與編輯方法並檢視範本也會傳遞影片模型物件。
 
-檢查*Index.cshtml*檢視範本和`Index`方法中的*MoviesController.cs*檔案。 請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`從控制器到檢視的清單：
+檢查*Index.cshtml*檢視範本和`Index`方法中的*MoviesController.cs*檔案。 請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`從控制器到檢視的清單：
 
 [!code-csharp[Main](accessing-your-models-data-from-a-controller/samples/sample5.cs?highlight=3)]
 

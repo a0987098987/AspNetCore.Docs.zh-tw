@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 21cffcd285879fdca81cb7d92d0f079d4bf7756c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 946d695c572379c3ebc2eda1569f186f25ab9bfc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="dependency-injection-into-controllers"></a>相依性插入控制器
 
@@ -87,7 +87,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstr
 
 ## <a name="accessing-settings-from-a-controller"></a>存取控制站的設定
 
-存取應用程式或組態設定從控制器內是常見的模式。 此存取都應該使用中所述的選項模式[組態](xref:fundamentals/configuration/index)。 您通常應該不會要求設定直接從您使用相依性插入的控制器。 更好的方法是要求`IOptions<T>`執行個體，其中`T`是您需要的組態類別。
+存取應用程式或組態設定從控制器內是常見的模式。 此存取都應該使用中所述的選項模式[組態](xref:fundamentals/configuration/index)。 您通常不應該要求直接從您使用相依性插入的控制器設定。 更好的方法是要求`IOptions<T>`執行個體，其中`T`是您需要的組態類別。
 
 若要使用的選項模式，您需要建立表示的選項，這種類別：
 

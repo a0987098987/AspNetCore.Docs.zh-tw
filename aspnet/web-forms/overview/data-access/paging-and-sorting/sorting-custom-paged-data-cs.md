@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f171929da3610f70f3641030d9a5fdb88f610f7f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a71405bc84304bf7c47f400dfa9886208316d223
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-custom-paged-data-c"></a>排序自訂分頁資料 (C#)
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 - 每個排序運算式可使用; 撰寫硬式編碼的查詢然後，使用`IF/ELSE`T-SQL 陳述式來判斷要執行的查詢。
 - 使用`CASE`陳述式來提供動態`ORDER BY`運算式根據`@sortExpressio`n 輸入參數，請參閱 < 以動態方式排序查詢結果區段中用以[SQL 電源`CASE`陳述式](http://www.4guysfromrolla.com/webtech/102704-1.shtml)如需詳細資訊。
-- 預存程序以字串形式製作適當的查詢，然後使用[`sp_executesql`系統預存程序](https://msdn.microsoft.com/en-us/library/ms188001.aspx)執行動態查詢。
+- 預存程序以字串形式製作適當的查詢，然後使用[`sp_executesql`系統預存程序](https://msdn.microsoft.com/library/ms188001.aspx)執行動態查詢。
 
 每個這些因應措施有一些缺點。 無法為可維護與其他兩個因為它需要您建立的每個可能的排序運算式查詢的第一個選項。 因此，如果您稍後決定將新的、 可排序的欄位加入至 GridView 您也必須返回並更新預存程序。 第二種方法都有一些微妙的非字串的資料庫資料行排序時造成效能問題，而且也會受到這些相同的可維護性問題，第一個。 如果攻擊者能夠執行傳入輸入的參數值，他們所選擇的預存程序的第三個選擇，會使用動態 SQL，導入的 SQL 資料隱碼攻擊的風險。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/10/2017
 
 DAL 和 BLL，包括使用的方法具有夾帶`GetProductsPagedAndSorted`預存程序，是設定在 ObjectDataSource`SortParameter.aspx`頁面，即可使用新的 BLL 方法並傳入`SortExpression`參數為基礎使用者已要求來排序結果所依據的資料行。
 
-藉由變更 ObjectDataSource s 啟動`SelectMethod`從`GetProductsPaged`至`GetProductsPagedAndSorted`。 這可以透過設定資料來源精靈，從 [屬性] 視窗中，或直接透過宣告式語法完成。 接下來，我們必須提供值給 ObjectDataSource s [ `SortParameterName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx)。 如果設定這個屬性，ObjectDataSource 嘗試傳入 GridView s`SortExpression`屬性`SelectMethod`。 ObjectDataSource 特別的是，其名稱的值等於輸入參數會尋找`SortParameterName`屬性。 因為 BLL s`GetProductsPagedAndSorted`方法有名稱為排序的運算式輸入的參數`sortExpression`，設定 ObjectDataSource 的`SortExpression`sortExpression 的屬性。
+藉由變更 ObjectDataSource s 啟動`SelectMethod`從`GetProductsPaged`至`GetProductsPagedAndSorted`。 這可以透過設定資料來源精靈，從 [屬性] 視窗中，或直接透過宣告式語法完成。 接下來，我們必須提供值給 ObjectDataSource s [ `SortParameterName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sortparametername.aspx)。 如果設定這個屬性，ObjectDataSource 嘗試傳入 GridView s`SortExpression`屬性`SelectMethod`。 ObjectDataSource 特別的是，其名稱的值等於輸入參數會尋找`SortParameterName`屬性。 因為 BLL s`GetProductsPagedAndSorted`方法有名稱為排序的運算式輸入的參數`sortExpression`，設定 ObjectDataSource 的`SortExpression`sortExpression 的屬性。
 
 這兩個變更之後，ObjectDataSource s 宣告式語法看起來應該如下所示：
 
@@ -139,7 +139,7 @@ DAL 和 BLL，包括使用的方法具有夾帶`GetProductsPagedAndSorted`預存
 
 若要啟用在 GridView 中排序，只會檢查啟用排序 核取方塊在 GridView s 智慧標籤中，這會設定 GridView s`AllowSorting`屬性`true`，進而導致每個資料行轉譯為 LinkButton 標頭文字。 當使用者按一下其中一個標頭 LinkButtons 時，回傳展示和經過下列步驟：
 
-1. GridView 更新其[`SortExpression`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridview.sortexpression.aspx)值`SortExpression`已按下其標頭連結的欄位
+1. GridView 更新其[`SortExpression`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx)值`SortExpression`已按下其標頭連結的欄位
 2. ObjectDataSource 叫用 BLL s`GetProductsPagedAndSorted`方法，傳入 GridView s`SortExpression`屬性做為方法的值`sortExpression`輸入的參數 (以及適當`startRowIndex`和`maximumRows`輸入參數值)
 3. BLL 叫用 DAL 的`GetProductsPagedAndSorted`方法
 4. DAL 執行`GetProductsPagedAndSorted`中傳遞預存程序，`@sortExpression`參數 (連同`@startRowIndex`和`@maximumRows`輸入參數值)

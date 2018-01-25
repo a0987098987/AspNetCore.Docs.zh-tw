@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: 4cb0d72330086ecb8cd9e6fb70ce0a57698dda5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ef8cddb7733c1f8cacd24c5cf341a42741d25a95
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-team-project-in-tfs"></a>在 TFS 中建立 Team 專案
 ====================
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/10/2017
 
     ![](creating-a-team-project-in-tfs/_static/image10.png)
 
-如需有關如何讓使用者可以建立 team 專案集合中的新 team 專案的詳細資訊，請參閱[設定 Team 專案集合的系統管理員權限](https://msdn.microsoft.com/en-us/library/dd547204.aspx)。
+如需有關如何讓使用者可以建立 team 專案集合中的新 team 專案的詳細資訊，請參閱[設定 Team 專案集合的系統管理員權限](https://msdn.microsoft.com/library/dd547204.aspx)。
 
 ## <a name="create-a-new-team-project-and-add-users"></a>建立新的 Team 專案並新增使用者
 
@@ -162,9 +162,9 @@ ms.lasthandoff: 11/10/2017
 11. 在**選取流程範本**頁面上，選取您要用來管理開發程序，然後按一下的流程範本**下一步**。
 
     > [!NOTE]
-    > Tfs 流程範本的資訊，請參閱[流程範本和工具](https://msdn.microsoft.com/en-us/vstudio/aa718795)。
+    > Tfs 流程範本的資訊，請參閱[流程範本和工具](https://msdn.microsoft.com/vstudio/aa718795)。
 12. 在**小組網站設定**頁面上，保留不變的預設設定，然後按一下**下一步**。
-13. 此設定建立或識別，SharePoint 小組網站與 TFS team 專案相關聯。 您的開發小組可以使用此站台來管理文件、 參與討論區，建立 wiki 頁面以及執行各項程式碼無關的其他工作。 如需詳細資訊，請參閱[SharePoint 產品之間互動和 Team Foundation Server](https://msdn.microsoft.com/en-us/library/ms253177.aspx)。
+13. 此設定建立或識別，SharePoint 小組網站與 TFS team 專案相關聯。 您的開發小組可以使用此站台來管理文件、 參與討論區，建立 wiki 頁面以及執行各項程式碼無關的其他工作。 如需詳細資訊，請參閱[SharePoint 產品之間互動和 Team Foundation Server](https://msdn.microsoft.com/library/ms253177.aspx)。
 14. 在**指定原始檔控制設定**頁面上，保留不變的預設設定，然後按一下**下一步**。
 15. 這項設定識別或 TFS 資料夾階層，做為您內容的根資料夾中建立的位置。
 16. 在**確認 Team 專案設定**頁面上，按一下**完成**。
@@ -200,7 +200,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需更廣泛指引在 TFS 中建立 team 專案的詳細資訊，請參閱[建立 Team 專案](https://msdn.microsoft.com/en-us/library/ms181477(v=VS.100).aspx)。 如需有關如何讓使用者可以建立 team 專案集合中的新 team 專案的詳細資訊，請參閱[設定 Team 專案集合的系統管理員權限](https://msdn.microsoft.com/en-us/library/dd547204.aspx)。 如需有關如何將使用者加入至 team 專案的詳細資訊，請參閱[將使用者加入 Team 專案](https://msdn.microsoft.com/en-us/library/bb558971.aspx)。
+如需更廣泛指引在 TFS 中建立 team 專案的詳細資訊，請參閱[建立 Team 專案](https://msdn.microsoft.com/library/ms181477(v=VS.100).aspx)。 如需有關如何讓使用者可以建立 team 專案集合中的新 team 專案的詳細資訊，請參閱[設定 Team 專案集合的系統管理員權限](https://msdn.microsoft.com/library/dd547204.aspx)。 如需有關如何將使用者加入至 team 專案的詳細資訊，請參閱[將使用者加入 Team 專案](https://msdn.microsoft.com/library/bb558971.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](configuring-team-foundation-server-for-web-deployment.md)

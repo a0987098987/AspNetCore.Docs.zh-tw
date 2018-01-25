@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: f5783287a26174ddf65bb0eae34c347831d02c47
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3ab67b93a32106c0b79f9e8d739d47835391edb5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>加入 ASP.NET Identity 至空的或現有的 Web Form 專案
 ====================
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="configuring-the-application-for-owin-authentication"></a>設定 OWIN 驗證的應用程式
 
-此時我們只新增了支援以建立使用者。 現在，我們將示範如何我們新增登入使用者的驗證。 ASP.NET Identity 表單驗證使用 Microsoft OWIN 驗證中介軟體。 OWIN 的 Cookie 驗證 cookie 和宣告型的驗證機制，可供任何架構上裝載[OWIN](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx)或 IIS。 使用這個模型，相同的驗證封裝可以用於跨多個架構，包含 ASP.NET MVC 和 Web Form。 如需有關專案 Katana 和如何執行中介軟體中主機無從驗證，請參閱[入門 Katana 專案](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx)。
+此時我們只新增了支援以建立使用者。 現在，我們將示範如何我們新增登入使用者的驗證。 ASP.NET Identity 表單驗證使用 Microsoft OWIN 驗證中介軟體。 OWIN 的 Cookie 驗證 cookie 和宣告型的驗證機制，可供任何架構上裝載[OWIN](https://msdn.microsoft.com/magazine/dn451439.aspx)或 IIS。 使用這個模型，相同的驗證封裝可以用於跨多個架構，包含 ASP.NET MVC 和 Web Form。 如需有關專案 Katana 和如何執行中介軟體中主機無從驗證，請參閱[入門 Katana 專案](https://msdn.microsoft.com/magazine/dn451439.aspx)。
 
 ## <a name="installing-authentication-packages-to-your-application"></a>驗證封裝安裝至您的應用程式
 
@@ -135,8 +135,8 @@ ms.lasthandoff: 11/10/2017
 
     > [!NOTE] 
     > 
-    > - 架構，因為 ASP.NET Identity 和 OWIN 的 Cookie 驗證是宣告式系統，需要產生應用程式開發人員[ClaimsIdentity](https://msdn.microsoft.com/en-us/library/microsoft.identitymodel.claims.claimsidentity.aspx)使用者。 身分識別的所有宣告的使用者，例如使用者所屬的角色的相關資訊。 您也可以在這個階段中加入更多的使用者宣告。
-    > - 您可以使用登入使用者呼叫與 OWIN AuthenticationManager`SignIn`並傳入 ClaimsIdentity，如上所示。 這段程式碼將會在使用者登入，並產生以及 cookie。 這個呼叫是類似於[FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.setauthcookie.aspx)供[FormsAuthentication](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx)模組。
+    > - 架構，因為 ASP.NET Identity 和 OWIN 的 Cookie 驗證是宣告式系統，需要產生應用程式開發人員[ClaimsIdentity](https://msdn.microsoft.com/library/microsoft.identitymodel.claims.claimsidentity.aspx)使用者。 身分識別的所有宣告的使用者，例如使用者所屬的角色的相關資訊。 您也可以在這個階段中加入更多的使用者宣告。
+    > - 您可以使用登入使用者呼叫與 OWIN AuthenticationManager`SignIn`並傳入 ClaimsIdentity，如上所示。 這段程式碼將會在使用者登入，並產生以及 cookie。 這個呼叫是類似於[FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx)供[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)模組。
 2. 在**方案總管 中**，以滑鼠右鍵按一下專案按一下**新增**，然後**Web Form**。 Web 表單**登入**。  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image12.png)
@@ -150,16 +150,16 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE] 
     > 
     > - `Page_Load`現在會檢查目前使用者的狀態，並且會根據其`Context.User.Identity.IsAuthenticated`狀態。  
-    >     **在 使用者名稱顯示間隔**: Microsoft ASP.NET Identity Framework 已加入的擴充方法上[System.Security.Principal.IIdentity](https://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.aspx) ，可讓您取得`UserName`和`UserId`的登入的使用者。 這些擴充方法中定義`Microsoft.AspNet.Identity.Core`組件。 這些擴充方法會取代[HttpContext.User.Identity.Name](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.user.aspx) 。
+    >     **在 使用者名稱顯示間隔**: Microsoft ASP.NET Identity Framework 已加入的擴充方法上[System.Security.Principal.IIdentity](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx) ，可讓您取得`UserName`和`UserId`的登入的使用者。 這些擴充方法中定義`Microsoft.AspNet.Identity.Core`組件。 這些擴充方法會取代[HttpContext.User.Identity.Name](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) 。
     > - 登入方法：   
     >     `This`方法會取代先前`CreateUser_Click`方法，在這個範例和現在已成功建立使用者之後，在使用者的符號。   
     >  Microsoft OWIN 架構有加入擴充方法上`System.Web.HttpContext`，可讓您取得的參考`IOwinContext`。 這些擴充方法中定義`Microsoft.Owin.Host.SystemWeb`組件。 `OwinContext`類別會公開`IAuthenticationManager`屬性，代表目前要求中可取的驗證中介軟體功能。  
     >  您可以使用登入使用者`AuthenticationManager`OWIN 並呼叫從`SignIn`和傳入`ClaimsIdentity`如上所示。   
     >  因為 ASP.NET Identity 和 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構都需要應用程式產生`ClaimsIdentity`使用者。   
     >  `ClaimsIdentity`有使用者，例如使用者所屬的角色的所有宣告的相關資訊。 您也可以在這個階段新增更多的使用者宣告  
-    >  這段程式碼將會在使用者登入，並產生以及 cookie。 這個呼叫是類似於[FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.setauthcookie.aspx)供[FormsAuthentication](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx)模組。
+    >  這段程式碼將會在使用者登入，並產生以及 cookie。 這個呼叫是類似於[FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx)供[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)模組。
     > - `SignOut`方法：   
-    >  取得參考`AuthenticationManager`OWIN 並呼叫從`SignOut`。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx)模組。
+    >  取得參考`AuthenticationManager`OWIN 並呼叫從`SignOut`。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)模組。
 5. 按**Ctrl + F5**建置並執行 web 應用程式。 輸入新的使用者名稱和密碼，然後按一下 上**註冊**。  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image13.png)  

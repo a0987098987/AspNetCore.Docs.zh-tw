@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 42139f8c158dd84cfc30f23c013343348b0c008a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cceefa128f90b4c3e23dd31119f44e6ffc55f46f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>使用 Entity Framework 6 與 Web API 2
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 > - [Visual Studio 2013 Update 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
 > - Entity Framework 6
 > - .NET 4.5
-> - [解 Knockout.js](http://knockoutjs.com/) 3.1
+> - [Knockout.js](http://knockoutjs.com/) 3.1
 
 
 本教學課程會使用 Entity Framework 6 與 ASP.NET Web API 2，若要建立 web 應用程式來管理後端資料庫。 以下是您將建立的應用程式的螢幕擷取畫面。
@@ -59,8 +59,8 @@ AJAX 不是新的但現在有更輕鬆地建立及維護的大型複雜的 SPA �
 
 您需要 Azure 帳戶，以將此方案部署到 Azure。 如果您沒有帳戶，您會有下列選項：
 
-- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
-- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
+- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
+- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
 
 ## <a name="create-the-project"></a>建立專案
 

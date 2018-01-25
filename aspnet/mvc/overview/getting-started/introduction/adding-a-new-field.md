@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 7427b4f7c6b7a00fe795053aac0f612471a163cd
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 7339f6658ede16e79d19762bd6636917fe4de85f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-new-field"></a>新增欄位
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/12/2018
 
 在**Package Manager Console**視窗`PM>`提示字元中輸入
 
-Enable-migrations-ContextTypeName MvcMovie.Models.MovieDBContext
+Enable-Migrations -ContextTypeName MvcMovie.Models.MovieDBContext
 
 ![](adding-a-new-field/_static/image3.png)
 
@@ -66,13 +66,13 @@ Visual Studio 隨即開啟*configuration.cs 中*檔案。 取代`Seed`方法中�
 > 
 > Code First 移轉呼叫`Seed`方法之後每個移轉 (也就呼叫**更新資料庫**Package Manager Console 中)，這個方法會更新已經插入，或如果將它們插入的資料列和它們不存在。
 > 
-> [AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)下列程式碼中的方法會執行 「 更新插入 」 作業：
+> [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)下列程式碼中的方法會執行 「 更新插入 」 作業：
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample3.cs)]
 > 
-> 因為[種子](https://msdn.microsoft.com/en-us/library/hh829453(v=vs.103).aspx)方法執行每個移轉，因為您嘗試新增的資料列，就會有第一個移轉建立資料庫之後插入資料。 「[Upsert](http://en.wikipedia.org/wiki/Upsert)」 作業會讓您嘗試要插入的資料列已經存在，會發生的錯誤，但是它會覆寫任何您所做測試應用程式時的資料變更。 測試資料表中的資料部分可能不會想才會發生： 在某些情況下測試時變更資料時要您的資料庫更新後要保持的變更。 在此情況下您要執行條件式的 insert 作業： 插入資料列，只有當其不存在。   
+> 因為[種子](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx)方法執行每個移轉，因為您嘗試新增的資料列，就會有第一個移轉建立資料庫之後插入資料。 「[Upsert](http://en.wikipedia.org/wiki/Upsert)」 作業會讓您嘗試要插入的資料列已經存在，會發生的錯誤，但是它會覆寫任何您所做測試應用程式時的資料變更。 測試資料表中的資料部分可能不會想才會發生： 在某些情況下測試時變更資料時要您的資料庫更新後要保持的變更。 在此情況下您要執行條件式的 insert 作業： 插入資料列，只有當其不存在。   
 >   
-> 第一個參數傳遞至[AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法會指定用來檢查資料列是否已經存在的屬性。 您提供的測試電影資料`Title`因為清單中的每個書名是唯一的可以針對此用途使用屬性：
+> 第一個參數傳遞至[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法會指定用來檢查資料列是否已經存在的屬性。 您提供的測試電影資料`Title`因為清單中的每個書名是唯一的可以針對此用途使用屬性：
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample4.cs)]
 > 
@@ -80,7 +80,7 @@ Visual Studio 隨即開啟*configuration.cs 中*檔案。 取代`Seed`方法中�
 >   
 >  *序列包含一個以上的項目*  
 >   
-> 如需有關[AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法，請參閱[小心以 EF 4.3 AddOrUpdate 方法](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
+> 如需有關[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法，請參閱[小心以 EF 4.3 AddOrUpdate 方法](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
 
 
 **按 CTRL-SHIFT-B 以建置專案。**（如果您不要在此時建置將會失敗的下列步驟）。

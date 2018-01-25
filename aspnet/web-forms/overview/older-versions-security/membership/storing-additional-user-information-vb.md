@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8db63cb42fb04343150d2175a9d6fad1d5287a9b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7b9acc02a1280446b9826c3f8f0022b4726139c7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="storing-additional-user-information-vb"></a>儲存額外的使用者資訊 (VB)
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="introduction"></a>簡介
 
-ASP。網路的成員資格 framework 會提供彈性的介面，來管理使用者。 成員資格應用程式開發介面包含方法驗證認證、 擷取目前登入使用者的相關資訊，建立新的使用者帳戶，以及刪除使用者帳戶，和其他項目。 成員資格 framework 中的每個使用者帳戶包含只針對所需的驗證認證，並執行必要的使用者帳戶相關工作的屬性。 這證明方法和屬性[`MembershipUser`類別](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx)的模型中的成員資格架構的使用者帳戶。 這個類別具有屬性，例如[ `UserName` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.username.aspx)， [ `Email` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.email.aspx)，和[ `IsLockedOut` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.islockedout.aspx)，如同方法和[ `GetPassword` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.getpassword.aspx)和[ `UnlockUser` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.unlockuser.aspx)。
+ASP。網路的成員資格 framework 會提供彈性的介面，來管理使用者。 成員資格應用程式開發介面包含方法驗證認證、 擷取目前登入使用者的相關資訊，建立新的使用者帳戶，以及刪除使用者帳戶，和其他項目。 成員資格 framework 中的每個使用者帳戶包含只針對所需的驗證認證，並執行必要的使用者帳戶相關工作的屬性。 這證明方法和屬性[`MembershipUser`類別](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx)的模型中的成員資格架構的使用者帳戶。 這個類別具有屬性，例如[ `UserName` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.username.aspx)， [ `Email` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.email.aspx)，和[ `IsLockedOut` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx)，如同方法和[ `GetPassword` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.getpassword.aspx)和[ `UnlockUser` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx)。
 
 有時候，應用程式必須儲存在成員資格 framework 未包含的其他使用者資訊。 例如，線上零售店可能需要讓每個使用者儲存其出貨和帳單地址、 付款資訊、 傳送喜好設定，並連絡電話號碼。 此外，在系統中的每筆訂單為特定使用者帳戶相關聯。
 
@@ -71,7 +71,7 @@ ASP。網路的成員資格 framework 會提供彈性的介面，來管理使用
 
 在新增之後`UserId`資料行中，依序按一下工具列中的 [儲存] 圖示上的資料表儲存。 命名新資料表`GuestbookComments`。
 
-我們已處理的最後一個問題`GuestbookComments`資料表： 我們需要建立[foreign key 條件約束](https://msdn.microsoft.com/en-us/library/ms175464.aspx)之間`GuestbookComments.UserId`資料行和`aspnet_Users.UserId`資料行。 若要達成此目的，按一下工具列啟動外部索引鍵關聯性 對話方塊中的關聯性圖示。 （或者，您可以啟動此對話方塊中移至 資料表設計工具 功能表，然後選擇 關聯性。）
+我們已處理的最後一個問題`GuestbookComments`資料表： 我們需要建立[foreign key 條件約束](https://msdn.microsoft.com/library/ms175464.aspx)之間`GuestbookComments.UserId`資料行和`aspnet_Users.UserId`資料行。 若要達成此目的，按一下工具列啟動外部索引鍵關聯性 對話方塊中的關聯性圖示。 （或者，您可以啟動此對話方塊中移至 資料表設計工具 功能表，然後選擇 關聯性。）
 
 按一下 [外部索引鍵關聯性] 對話方塊的左下角中的 [新增] 按鈕。 這會新增新外部索引鍵條件約束，雖然我們仍需要定義關聯性中參與的資料表。
 
@@ -231,7 +231,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 **圖 14**： 指定 SqlDataSource`UpdateCommand`和`UpdateParameters`([按一下以檢視完整大小的影像](storing-additional-user-information-vb/_static/image42.png))
 
 
-新增的項目因為我們對 SqlDataSource 控制項，DetailsView 控制項現在可以支援編輯。 在 DetailsView 的智慧標籤上，從選取 「 啟用編輯 」 核取方塊。 這會加入控制項的 CommandField`Fields`集合，其`ShowEditButton`屬性設定為 True。 在 DetailsView 會顯示在唯讀模式和更新和取消按鈕時顯示在編輯模式時，這會呈現編輯 按鈕。 不需要按一下 編輯使用者，不過，我們中可以有 DetailsView 呈現"一律可編輯的 「 狀態藉由設定 DetailsView 控制項的[`DefaultMode`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.defaultmode.aspx)至`Edit`。
+新增的項目因為我們對 SqlDataSource 控制項，DetailsView 控制項現在可以支援編輯。 在 DetailsView 的智慧標籤上，從選取 「 啟用編輯 」 核取方塊。 這會加入控制項的 CommandField`Fields`集合，其`ShowEditButton`屬性設定為 True。 在 DetailsView 會顯示在唯讀模式和更新和取消按鈕時顯示在編輯模式時，這會呈現編輯 按鈕。 不需要按一下 編輯使用者，不過，我們中可以有 DetailsView 呈現"一律可編輯的 「 狀態藉由設定 DetailsView 控制項的[`DefaultMode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.defaultmode.aspx)至`Edit`。
 
 這些變更，DetailsView 控制項的宣告式標記看起來應該如下所示：
 
@@ -380,7 +380,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 不用說，因為我們的設計決策很重要的成員資格系統中每個使用者帳戶沒有相對應的記錄中`UserProfiles`資料表。 我們想要為對應的記錄加入至`UserProfiles`透過適用於 CreateUserWizard 每次建立新的成員資格使用者帳戶時。
 
-中所述[*建立使用者帳戶*](creating-user-accounts-vb.md)教學課程中，新的成員資格使用者帳戶建立適用於 CreateUserWizard 控制項之後會引發其[`CreatedUser`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx). 我們可以建立此事件的事件處理常式為剛建立的使用者，取得使用者識別碼，然後插入一筆記錄，到`UserProfiles`針對使用預設值的資料表`HomeTown`， `HomepageUrl`，和`Signature`資料行。 不僅如此，很可能透過自訂適用於 CreateUserWizard 控制項的介面，以加入其他文字方塊會提示使用者輸入這些值。
+中所述[*建立使用者帳戶*](creating-user-accounts-vb.md)教學課程中，新的成員資格使用者帳戶建立適用於 CreateUserWizard 控制項之後會引發其[`CreatedUser`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx). 我們可以建立此事件的事件處理常式為剛建立的使用者，取得使用者識別碼，然後插入一筆記錄，到`UserProfiles`針對使用預設值的資料表`HomeTown`， `HomepageUrl`，和`Signature`資料行。 不僅如此，很可能透過自訂適用於 CreateUserWizard 控制項的介面，以加入其他文字方塊會提示使用者輸入這些值。
 
 讓我們先看看如何加入新的資料列`UserProfiles`資料表中`CreatedUser`事件處理常式和預設值。 接下來，我們會了解如何自訂適用於 CreateUserWizard 控制項的使用者介面，以包含新使用者的家用城鎮、 首頁和簽章所收集的其他表單欄位。
 
@@ -390,7 +390,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 開啟`EnhancedCreateUserWizard.aspx`Visual Studio 中的頁面上，並從 [工具箱] 拖曳至網頁拖曳適用於 CreateUserWizard 控制項。 設定適用於 CreateUserWizard 控制項`ID`屬性`NewUserWizard`。 如我們所述[*建立使用者帳戶*](creating-user-accounts-vb.md)教學課程，適用於 CreateUserWizard 的預設使用者介面提示的訪客所需的資訊。 已提供這項資訊，控制項在內部會建立新的使用者帳戶在成員資格 framework 中，而不需我們需要撰寫一行程式碼。
 
-適用於 CreateUserWizard 控制項在其工作流程期間引發的事件數目。 適用於 CreateUserWizard 控制項訪客提供要求資訊並提交表單之後，一開始會引發其[`CreatingUser`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx)。 如果在建立過程中，問題[`CreateUserError`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx)引發; 不過，如果已成功建立使用者，然後在[`CreatedUser`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx)，就會引發。 在[*建立使用者帳戶*](creating-user-accounts-vb.md)教學課程中我們建立的事件處理常式`CreatingUser`事件以確保提供的使用者名稱未包含任何開頭或尾端空格，而且，使用者名稱中沒有出現任何位置的密碼。
+適用於 CreateUserWizard 控制項在其工作流程期間引發的事件數目。 適用於 CreateUserWizard 控制項訪客提供要求資訊並提交表單之後，一開始會引發其[`CreatingUser`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx)。 如果在建立過程中，問題[`CreateUserError`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx)引發; 不過，如果已成功建立使用者，然後在[`CreatedUser`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx)，就會引發。 在[*建立使用者帳戶*](creating-user-accounts-vb.md)教學課程中我們建立的事件處理常式`CreatingUser`事件以確保提供的使用者名稱未包含任何開頭或尾端空格，而且，使用者名稱中沒有出現任何位置的密碼。
 
 若要加入的資料列中`UserProfiles`資料表剛建立的使用者，我們需要建立事件處理常式`CreatedUser`事件。 依時間`CreatedUser`引發事件，使用者帳戶已建立在成員資格 framework 中，讓我們能夠擷取帳戶的使用者識別碼值。
 
@@ -398,9 +398,9 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 [!code-vb[Main](storing-additional-user-information-vb/samples/sample11.vb)]
 
-上述程式碼身藉由擷取剛加入的使用者帳戶的使用者識別碼。 這會透過使用`Membership.GetUser(username)`方法以傳回特定的使用者，然後將相關的資訊`ProviderUserKey`屬性，以擷取其使用者識別碼。 適用於 CreateUserWizard 控制項中的使用者所輸入的使用者名稱是可透過其[`UserName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.username.aspx)。
+上述程式碼身藉由擷取剛加入的使用者帳戶的使用者識別碼。 這會透過使用`Membership.GetUser(username)`方法以傳回特定的使用者，然後將相關的資訊`ProviderUserKey`屬性，以擷取其使用者識別碼。 適用於 CreateUserWizard 控制項中的使用者所輸入的使用者名稱是可透過其[`UserName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx)。
 
-接下來，從擷取連接字串`Web.config`和`INSERT`指定陳述式。 必要的 ADO.NET 物件具現化並執行命令。 程式碼指派[ `DBNull` ](https://msdn.microsoft.com/en-us/library/system.dbnull.aspx)執行個體`@HomeTown`， `@HomepageUrl`，和`@Signature`參數，已插入資料庫的效果`NULL`值`HomeTown`， `HomepageUrl`，和`Signature`欄位。
+接下來，從擷取連接字串`Web.config`和`INSERT`指定陳述式。 必要的 ADO.NET 物件具現化並執行命令。 程式碼指派[ `DBNull` ](https://msdn.microsoft.com/library/system.dbnull.aspx)執行個體`@HomeTown`， `@HomepageUrl`，和`@Signature`參數，已插入資料庫的效果`NULL`值`HomeTown`， `HomepageUrl`，和`Signature`欄位。
 
 請瀏覽`EnhancedCreateUserWizard.aspx`頁面上透過瀏覽器，並建立新的使用者帳戶。 之後，請返回 Visual Studio，並檢查內容`aspnet_Users`和`UserProfiles`資料表 （如同我們在圖 12）。 您應該會看到新的使用者帳戶在`aspnet_Users`和對應`UserProfiles`資料列 (與`NULL`值`HomeTown`， `HomepageUrl`，和`Signature`)。
 
@@ -412,7 +412,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 訪客具有提供其新的帳戶資訊，並按一下 [建立使用者] 按鈕，建立使用者帳戶，並加入一個資料列之後`UserProfiles`資料表。 適用於 CreateUserWizard 接著會顯示其`CompleteWizardStep`，其中顯示成功訊息並繼續 按鈕。 按一下 [繼續] 按鈕會導致回傳，但未採取任何動作，而讓使用者卡上`EnhancedCreateUserWizard.aspx`頁面。
 
-我們可以指定要將使用者傳送至適用於 CreateUserWizard 控制項透過按一下 [繼續] 按鈕時的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。 設定`ContinueDestinationPageUrl`屬性為"~ / Membership/AdditionalUserInfo.aspx"。 這會帶到新的使用者`AdditionalUserInfo.aspx`，其中也可以檢視和更新其設定。
+我們可以指定要將使用者傳送至適用於 CreateUserWizard 控制項透過按一下 [繼續] 按鈕時的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。 設定`ContinueDestinationPageUrl`屬性為"~ / Membership/AdditionalUserInfo.aspx"。 這會帶到新的使用者`AdditionalUserInfo.aspx`，其中也可以檢視和更新其設定。
 
 ### <a name="customizing-the-createuserwizards-interface-to-prompt-for-the-new-users-home-town-homepage-and-signature"></a>自訂適用於 CreateUserWizard 的介面，以提示輸入新使用者的家用城鎮、 首頁及簽章
 
@@ -473,7 +473,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 請注意新`<asp:WizardStep>`項目。 我們需要加入使用者介面，以收集新使用者的家用城鎮、 首頁上，與此簽章。 宣告式語法中，或透過設計工具，您可以輸入此內容。 若要使用設計工具，請從下拉式清單，請參閱 < 設計工具中的步驟在智慧標籤在選取 「 您的設定 」 步驟。
 
 > [!NOTE]
-> 選取透過智慧標籤的下拉式清單中的步驟更新適用於 CreateUserWizard 控制項[`ActiveStepIndex`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.activestepindex.aspx)，以指定的索引開始的步驟。 因此，如果您使用此下拉式清單來編輯設計工具中的 「 您的設定 」 步驟，請確定服務設回 「 登註冊您新帳戶 」，讓使用者第一次瀏覽時顯示此步驟`EnhancedCreateUserWizard.aspx`頁面。
+> 選取透過智慧標籤的下拉式清單中的步驟更新適用於 CreateUserWizard 控制項[`ActiveStepIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.activestepindex.aspx)，以指定的索引開始的步驟。 因此，如果您使用此下拉式清單來編輯設計工具中的 「 您的設定 」 步驟，請確定服務設回 「 登註冊您新帳戶 」，讓使用者第一次瀏覽時顯示此步驟`EnhancedCreateUserWizard.aspx`頁面。
 
 
 建立使用者介面包含三個文字方塊控制項，名為 「 您的設定 」 步驟內`HomeTown`， `HomepageUrl`，和`Signature`。 之後建構這個介面時，適用於 CreateUserWizard 的宣告式標記看起來應該如下所示：
@@ -482,7 +482,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 請繼續並造訪此頁透過瀏覽器，並建立新的使用者帳戶，指定主城鎮、 首頁和簽章的值。 完成之後`CreateUserWizardStep`成員資格架構中建立使用者帳戶和`CreatedUser`事件處理常式執行時，這會將新的資料列`UserProfiles`，但資料庫`NULL`值`HomeTown`， `HomepageUrl`，和`Signature`. 永遠不會使用家用城鎮、 首頁和簽章的輸入值。 最後結果就是新的使用者帳戶`UserProfiles`記錄其`HomeTown`， `HomepageUrl`，和`Signature`欄位尚未指定。
 
-我們要在可接受使用者輸入的家用城鎮、 honepage 和簽章值，且更新適當的 「 您的設定 」 步驟之後執行程式碼`UserProfiles`記錄。 每次使用者在精靈中的步驟之間移動控制項，精靈的[`ActiveStepChanged`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.wizard.activestepchanged.aspx)引發。 我們可以建立此事件和更新的事件處理常式`UserProfiles`資料表時已完成 「 您的設定 」 步驟。
+我們要在可接受使用者輸入的家用城鎮、 honepage 和簽章值，且更新適當的 「 您的設定 」 步驟之後執行程式碼`UserProfiles`記錄。 每次使用者在精靈中的步驟之間移動控制項，精靈的[`ActiveStepChanged`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.activestepchanged.aspx)引發。 我們可以建立此事件和更新的事件處理常式`UserProfiles`資料表時已完成 「 您的設定 」 步驟。
 
 加入事件處理常式適用於 CreateUserWizard`ActiveStepChanged`事件並加入下列程式碼：
 

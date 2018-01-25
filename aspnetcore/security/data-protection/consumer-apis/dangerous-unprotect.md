@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: f2425de3f790cd8dab17940ec52a2a7e170cc630
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 08a8ad9b3b3cc2de48751d4149bf39c58954fd90
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>取消保護裝載之索引鍵已被撤銷。
 
@@ -44,6 +44,6 @@ DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
 * `wasRevoked`： 將設為 true，如果用來保護此內容的索引鍵已被撤銷。
 
 >[!WARNING]
-> 傳遞時小心`ignoreRevocationErrors: true`至`DangerousUnprotect`方法。 如果呼叫這個方法後的`wasRevoked`值為 true，則用來保護此內容的索引鍵已被撤銷，並裝載的真實性應該被視為有疑問。 在此情況下，才繼續上未受保護的內容操作，如果您有一些個別的保證，它是真確，例如它的來自安全的資料庫，而不是受信任的 web 用戶端所傳送。
+> 傳遞時小心`ignoreRevocationErrors: true`至`DangerousUnprotect`方法。 如果呼叫這個方法後的`wasRevoked`值為 true，則用來保護此內容的索引鍵已被撤銷，並裝載的真實性應該被視為有疑問。 在此情況下，只有繼續上未受保護的內容操作，如果您有一些個別的保證，它是真確的例如它來自安全的資料庫，而不是受信任的 web 用戶端所傳送。
 
 [!code-csharp[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]

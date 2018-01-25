@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/declarative-parameters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7759b3d078ddabd335034f2ff76f10fb0de7dd28
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ea1aed2b76eb4196196f8a800c0bdb891bceda91
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="declarative-parameters-vb"></a>宣告式的參數 (VB)
 ====================
@@ -111,7 +111,7 @@ ObjectDataSource 參數也可以設定的值為基礎的頁面上的 Web 控制�
 **圖 8**： 將參數值設定為`CountryName`控制項的值 ([按一下以檢視完整大小的影像](declarative-parameters-vb/_static/image24.png))
 
 
-ObjectDataSource 的宣告式標記稍有不同於第一個範例中，使用[ControlParameter](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.controlparameter.aspx)而不是標準`Parameter`物件。 A`ControlParameter`有其他屬性來指定`ID`Web 控制項和要用於參數的屬性值 (`PropertyName`)。 設定資料來源精靈是聰明，可以判斷，針對文字方塊中，我們可能會想要使用`Text`參數值的屬性。 如果您想要使用不同的屬性值從 Web 控制項的不過，您可以變更`PropertyName`此處或按一下 「 顯示進階屬性 」 的連結，在精靈中的值。
+ObjectDataSource 的宣告式標記稍有不同於第一個範例中，使用[ControlParameter](https://msdn.microsoft.com/library/system.web.ui.webcontrols.controlparameter.aspx)而不是標準`Parameter`物件。 A`ControlParameter`有其他屬性來指定`ID`Web 控制項和要用於參數的屬性值 (`PropertyName`)。 設定資料來源精靈是聰明，可以判斷，針對文字方塊中，我們可能會想要使用`Text`參數值的屬性。 如果您想要使用不同的屬性值從 Web 控制項的不過，您可以變更`PropertyName`此處或按一下 「 顯示進階屬性 」 的連結，在精靈中的值。
 
 [!code-aspx[Main](declarative-parameters-vb/samples/sample2.aspx)]
 

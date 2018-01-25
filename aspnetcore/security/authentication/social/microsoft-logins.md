@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 6e4586eb681bd230413ace67ca9eddc3fe3e9e60
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 330398dc945fc61e5fc94d55bf651e62e0963072
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configuring-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 
@@ -106,7 +106,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 
 ---
 
-雖然 Microsoft 開發人員入口網站上所使用的術語命名這些語彙基元`ApplicationId`和`Password`，它們會公開為`ClientId`和`ClientSecret`組態 API。
+雖然 Microsoft 開發人員入口網站上所使用的術語命名這些語彙基元`ApplicationId`和`Password`，它們公開為`ClientId`和`ClientSecret`組態 API。
 
 請參閱[MicrosoftAccountOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.microsoftaccountoptions) API 參考，如需有關 Microsoft 帳戶驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
 
@@ -131,7 +131,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 * 如果 Microsoft 帳戶提供者將您重新導向至登入錯誤頁面，請注意錯誤標題和描述查詢字串參數緊接`#`（雜湊標記） 之 Uri 中。
 
   雖然指出 Microsoft 驗證問題，看起來的錯誤訊息，但最常見的原因是您的應用程式 Uri 不符合任何的**重新導向 Uri**指定**Web**平台.
-* **ASP.NET Core 2.x 僅：**如果身分識別未設定藉由呼叫`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
+* **ASP.NET Core 2.x 僅：**如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時，資料庫作業失敗*錯誤。 點選**套用移轉**來建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

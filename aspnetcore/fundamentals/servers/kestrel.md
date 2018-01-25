@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/kestrel
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3695a6a127f77bd90538d72af6112ccf507f3482
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3e2b28f15e47789ac89213e57396060ee356ee33
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core Kestrel web 伺服器實作的簡介
 
@@ -144,7 +144,7 @@ public IActionResult MyActionMethod()
 
 **最小要求主體資料的速率**
 
-如果資料是中指定的速率位元組/秒 kestrel 會檢查每秒。 如果速率低於最小值、 連接逾時。在寬限期是時間的 Kestrel 可讓用戶端來增加其傳送速率的最小值量在這段期間，不會檢查速率。 在寬限期內可協助避免中斷連接一開始是以低速由於 TCP 緩慢開始傳送資料。
+如果資料是中指定的速率位元組/秒 kestrel 會檢查每秒。 如果速率低於最小值、 連接逾時。在寬限期是時間的 Kestrel 可讓用戶端來增加其傳送速率的最小值量速率不是在這段期間檢查。 在寬限期內可協助避免中斷連接一開始是以低速由於 TCP 緩慢開始傳送資料。
 
 預設最小頻率為 240 位元組/秒、 5 秒的寬限期內。
 
@@ -260,7 +260,7 @@ Kestrel 選項的相關資訊，請參閱[KestrelServerOptions 類別](https://d
   http://[::1]:5000/
   ```
 
-  當`localhost`指定，則 Kestrel 嘗試繫結到 IPv4 和 IPv6 的回送介面。 如果要求的通訊埠，在任一個回送介面上的另一個服務使用 Kestrel 無法啟動。 如果任一個回送介面，就無法使用任何其他原因 （大部分通常是因為不支援 IPv6 的時候），Kestrel 記錄警告。 
+  當`localhost`指定，則 Kestrel 嘗試繫結到 IPv4 和 IPv6 的回送介面。 如果要求的通訊埠，在任一個回送介面上的另一個服務使用 Kestrel 無法啟動。 如果任一個回送介面，就無法使用任何其他原因 （大部分通常因為不支援 IPv6），Kestrel 記錄警告。 
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -303,7 +303,7 @@ Kestrel 選項的相關資訊，請參閱[KestrelServerOptions 類別](https://d
   http://[::1]:5000/
   ```
 
-  當`localhost`指定，則 Kestrel 嘗試繫結到 IPv4 和 IPv6 的回送介面。 如果要求的通訊埠，在任一個回送介面上的另一個服務使用 Kestrel 無法啟動。 如果任一個回送介面，就無法使用任何其他原因 （大部分通常是因為不支援 IPv6 的時候），Kestrel 記錄警告。 
+  當`localhost`指定，則 Kestrel 嘗試繫結到 IPv4 和 IPv6 的回送介面。 如果要求的通訊埠，在任一個回送介面上的另一個服務使用 Kestrel 無法啟動。 如果任一個回送介面，就無法使用任何其他原因 （大部分通常因為不支援 IPv6），Kestrel 記錄警告。 
 
 * Unix 通訊端
 

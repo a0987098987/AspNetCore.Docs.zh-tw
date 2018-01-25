@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.topic: article
 ms.prod: asp.net-core
 uid: performance/caching/response
-ms.openlocfilehash: 104cfb2eab706a2ec6278b4d1c461f70b0af5df1
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: d7726443dbcc34c21fd6cf0f56c4412863617b9f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
@@ -34,16 +34,16 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | 快取可能會將回應儲存。 |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 回應不能儲存的共用快取。 私用快取可以儲存和重複使用的回應。 |
-| [保留時間上限](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 用戶端不接受其年齡大於指定的秒數的回應。 範例： `max-age=60` （60 秒）， `max-age=2592000` （1 個月） |
-| [無快取](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **在要求上**： 快取不能使用的預存的回應滿足要求。 注意： 為用戶端，來源伺服器重新產生的回應和中介軟體會更新其快取中的預存的回應。<br><br>**回應**： 回應未必須用於後續的要求，但不在原始伺服器上的驗證。 |
-| [無存放區](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **在要求上**： 快取不能儲存的要求。<br><br>**回應**： 快取不能儲存任何回應的一部分。 |
+| [max-age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 用戶端不接受其年齡大於指定的秒數的回應。 範例： `max-age=60` （60 秒）， `max-age=2592000` （1 個月） |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **在要求上**： 快取不能使用的預存的回應滿足要求。 注意： 為用戶端，來源伺服器重新產生的回應和中介軟體會更新其快取中的預存的回應。<br><br>**回應**： 回應未必須用於後續的要求，但不在原始伺服器上的驗證。 |
+| [no-store](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **在要求上**： 快取不能儲存的要求。<br><br>**回應**： 快取不能儲存任何回應的一部分。 |
 
 其他扮演的角色中快取的快取標頭會顯示下表中。
 
-| 頁首                                                     | 函式 |
+| 頁首                                                     | 功能 |
 | ---------------------------------------------------------- | -------- |
 | [存留期](https://tools.ietf.org/html/rfc7234#section-5.1)     | 估計的時間，以秒為單位，因為產生的回應，或是在原始伺服器成功驗證。 |
-| [到期](https://tools.ietf.org/html/rfc7234#section-5.3) | 日期/時間之後的回應會被視為過時了。 |
+| [Expires](https://tools.ietf.org/html/rfc7234#section-5.3) | 日期/時間之後的回應會被視為過時了。 |
 | [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | 回溯相容性 HTTP/1.0 會在快取設定存在`no-cache`行為。 如果`Cache-Control`標頭已存在，`Pragma`標頭會被忽略。 |
 | [而有所不同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定快取的回應必須不傳送除非所有的`Vary`標頭欄位相符的原始要求的快取的回應和新的要求。 |
 
@@ -65,7 +65,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 ### <a name="distributed-cache"></a>分散式快取
 
-若要將資料儲存在記憶體中，當應用程式裝載於雲端或伺服器陣列中使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交要求處理的群組中的任何伺服器，且可用的用戶端快取的資料。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
+若要將資料儲存在記憶體中，當應用程式裝載於雲端或伺服器陣列中使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交要求已處理的任何群組中的伺服器和用戶端快取資料是可用。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
 
 如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。
 
@@ -96,7 +96,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 | `http://example.com?key1=value1` | 所傳回的中介軟體 |
 | `http://example.com?key1=value2` | 從伺服器傳回     |
 
-第一個要求是由伺服器傳回，而且快取中介軟體。 第二個要求會傳回由中介軟體，因為查詢字串比對前一個要求。 第三項要求不在中介軟體快取因為查詢字串值不符合先前的要求。 
+第一個要求是由伺服器傳回，而且快取中介軟體。 第二個要求會傳回由中介軟體，因為查詢字串比對前一個要求。 第三項要求不在的中介軟體快取中，因為查詢字串值不符合先前的要求。 
 
 `ResponseCacheAttribute`用來設定並建立 (透過`IFilterFactory`) `ResponseCacheFilter`。 `ResponseCacheFilter`執行的工作更新適當的 HTTP 標頭和回應的功能。 篩選器：
 
@@ -176,10 +176,10 @@ Cache-Control: public,max-age=60
 ## <a name="additional-resources"></a>其他資源
 
 * [快取 http 規格](https://tools.ietf.org/html/rfc7234#section-3)
-* [快取控制](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [記憶體中快取](xref:performance/caching/memory)
+* [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [記憶體內部快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
-* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

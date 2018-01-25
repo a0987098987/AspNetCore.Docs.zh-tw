@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/using-browser-link
 msc.type: authoredcontent
-ms.openlocfilehash: 14f67d81a5b460da591b8fb27fedf53d228e7717
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e5a13405a303580ec8c1d4cdacafc26c6f8ff34a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-browser-link-in-visual-studio-2013"></a>在 Visual Studio 2013 中使用瀏覽器連結
 ====================
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/10/2017
 
 **備註**
 
-- 若要啟用瀏覽器連結，將`debug=true`中[&lt;編譯&gt;](https://msdn.microsoft.com/en-us/library/s10awwz0(v=vs.85).aspx)專案的 Web.config 檔案中的項目。
+- 若要啟用瀏覽器連結，將`debug=true`中[&lt;編譯&gt;](https://msdn.microsoft.com/library/s10awwz0(v=vs.85).aspx)專案的 Web.config 檔案中的項目。
 - 應用程式必須在 localhost 上執行。
 - 應用程式必須以.NET 4.0 或更新版本為目標。
 

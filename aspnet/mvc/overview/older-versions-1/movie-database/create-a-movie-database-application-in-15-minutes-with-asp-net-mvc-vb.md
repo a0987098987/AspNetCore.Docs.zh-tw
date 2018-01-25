@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4dbb3804bbb0ccb80506a592f1efb585c5748c2f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b87a69df24a410161dfaf055519eb6137fa76c06
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-vb"></a>建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (VB)
 ====================
@@ -59,11 +59,11 @@ ms.lasthandoff: 11/10/2017
 
 如果您沒有 Visual Studio 2008，您可以從此網站下載 Visual Studio 2008 的 90 天試用的版：
 
-[https://msdn.microsoft.com/en-us/vs2008/products/cc268305.aspx](https://msdn.microsoft.com/en-us/vs2008/products/cc268305.aspx)
+[https://msdn.microsoft.com/vs2008/products/cc268305.aspx](https://msdn.microsoft.com/vs2008/products/cc268305.aspx)
 
 或者，您可以建立 ASP.NET MVC 應用程式與 Visual Web Developer Express 2008。 如果您決定要使用 Visual Web Developer Express，您必須已安裝 Service Pack 1。 您可以從此網站下載 Visual Web Developer 2008 Express Service Pack 1:
 
-[https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang = en](https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en)
+[https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en](https://www.microsoft.com/downloads/details.aspx?FamilyId=BDB6391C-05CA-4036-9154-6DF4F6DEBD14&amp;displaylang=en)
 
 安裝 Visual Studio 2008 或 Visual Web Developer 2008 之後，您需要安裝 ASP.NET MVC 架構。 您可以從下列網站下載 ASP.NET MVC 架構：
 
@@ -136,8 +136,8 @@ ASP.NET MVC 應用程式有一組標準的資料夾： 模型、 檢視和控制
 | **資料行名稱** | **資料類型** | **允許 null 值** |
 | --- | --- | --- |
 | ID | Int | False |
-| 標題 | Nvarchar （100) | False |
-| 導向器 | Nvarchar （100) | False |
+| 標題 | Nvarchar(100) | False |
+| 導向器 | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
 

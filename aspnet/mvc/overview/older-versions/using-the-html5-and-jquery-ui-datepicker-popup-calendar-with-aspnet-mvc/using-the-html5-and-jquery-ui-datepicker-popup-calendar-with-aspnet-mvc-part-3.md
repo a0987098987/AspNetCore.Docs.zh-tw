@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: dc81961094928025e25cf62ce4d51d12bc67b80c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7d4ed67254c2b0fc2aef748cfab1c8f628b25641
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-3"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-3 部分
 ====================
@@ -86,14 +86,14 @@ ms.lasthandoff: 11/10/2017
 - 套用`DisplayFormat`屬性設定為模型中的屬性。 例如，下列程式碼會導致顯示不含時間的日期：
 
     [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3/samples/sample8.cs)]
-- 套用[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性中的模型和指定的資料類型的屬性。 例如，下列程式碼會導致顯示不含時間日期。
+- 套用[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性中的模型和指定的資料類型的屬性。 例如，下列程式碼會導致顯示不含時間日期。
 
     [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3/samples/sample9.cs)]
 
     如果應用程式包含*date.cshtml*中的範本*Views\Shared\DisplayTemplates*資料夾或*Views\Movies\DisplayTemplates*資料夾中，該範本將用來呈現`DateTime`屬性。 否則內建 ASP.NET 樣板化系統會顯示為日期屬性。
 - 建立顯示範本中的*Views\Shared\DisplayTemplates*資料夾或*Views\Movies\DisplayTemplates*資料夾名稱符合您想要格式化的資料類型。 例如，您看到*Views\Shared\DisplayTemplates\DateTime.cshtml*用於呈現`DateTime`模型，但不會加入至模型的屬性，而不需要任何標記加入至檢視中的屬性。
-- 使用[UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性上指定的範本，以顯示模型屬性的模型。
-- 明確地加入要的顯示範本名稱[Html.DisplayFor](https://msdn.microsoft.com/en-us/library/ee407420.aspx)呼叫在檢視中。
+- 使用[UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性上指定的範本，以顯示模型屬性的模型。
+- 明確地加入要的顯示範本名稱[Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx)呼叫在檢視中。
 
 您使用的方法，取決於您要在您的應用程式中的項目。 是很常見混用這些方法，以取得所需要的格式，您需要的位置。
 

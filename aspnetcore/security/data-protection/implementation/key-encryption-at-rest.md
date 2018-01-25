@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: a0b9ab31264e5cae666a69491bf4a8ee8251a86f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 0a62a1a10e578e59e1d80579d80779d4dcf1658a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="key-encryption-at-rest"></a>金鑰加密在靜止
 
@@ -50,7 +50,7 @@ sc.AddDataProtection()
 
 ## <a name="x509-certificate"></a>X.509 憑證
 
-*這項機制並不適用於`.NET Core 1.0`或`1.1`。*
+*這項機制未提供`.NET Core 1.0`或`1.1`。*
 
 如果您的應用程式則會分散到多部電腦，可能會很方便分散的機器上的共用的 X.509 憑證，並設定應用程式使用此憑證進行加密在靜止的索引鍵。 如需範例，請參閱下方內容。
 

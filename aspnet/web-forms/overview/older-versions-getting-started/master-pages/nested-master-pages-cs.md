@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6483d24e15529f1c4a8662ddeee5943d4c043c5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 97513a5a6ac7a958a03626f16a328ecb0b85c03f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="nested-master-pages-c"></a>巢狀主版頁面 (C#)
 ====================
@@ -352,7 +352,7 @@ ms.lasthandoff: 11/10/2017
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [巢狀的 ASP.NET 主版頁面](https://msdn.microsoft.com/en-us/library/x2b3ktt7.aspx)
+- [巢狀的 ASP.NET 主版頁面](https://msdn.microsoft.com/library/x2b3ktt7.aspx)
 - [巢狀主版頁面和 VS 2005 設計階段的秘訣](https://weblogs.asp.net/scottgu/archive/2005/11/11/430382.aspx)
 - [VS 2008 巢狀主版頁面支援](https://weblogs.asp.net/scottgu/archive/2007/07/09/vs-2008-nested-master-page-support.aspx)
 

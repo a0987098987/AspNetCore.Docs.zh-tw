@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 08f00e183dd8a8daa883d0b9ff15698b3a39f625
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 24649374b71da39d638d943617a219d45f064846
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>排序、 篩選、 分頁和群組的方式-Razor 頁面 (以 8 為 3) 使用的 EF 核心
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-)]
 
- 當`IQueryable`是建立或修改任何查詢傳送至資料庫。 不會執行查詢，直到`IQueryable`物件轉換成集合。 `IQueryable`會轉換成集合的呼叫方法，例如`ToListAsync`。 因此，`IQueryable`程式碼中不會執行下列陳述式之前的單一查詢的結果：
+ 當`IQueryable`是建立或修改任何查詢傳送至資料庫。 不執行查詢，直到`IQueryable`物件轉換成集合。 `IQueryable`會轉換成集合的呼叫方法，例如`ToListAsync`。 因此，`IQueryable`程式碼中不會執行下列陳述式之前的單一查詢的結果：
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
-上述程式碼會使用`<form>`[標記協助程式](xref:mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單 POST 資料。 使用 post 要求的 HTTP 訊息本文中並不會在 URL 中傳遞參數。 使用 HTTP GET 時，就會在 URL 中表單資料傳遞查詢字串的形式。 使用查詢字串資料傳遞給可讓使用者 URL 加入書籤。 [W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html)建議動作並不會導致更新時，是否應該使用 GET。
+上述程式碼會使用`<form>`[標記協助程式](xref:mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單 POST 資料。 使用 post 要求的 HTTP 訊息本文中並不會在 URL 中傳遞參數。 使用 HTTP GET 時，就會在 URL 中表單資料傳遞查詢字串的形式。 使用查詢字串資料傳遞給可讓使用者 URL 加入書籤。 [W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html)建議動作並不會產生更新時，是否應該使用 GET。
 
 測試應用程式：
 

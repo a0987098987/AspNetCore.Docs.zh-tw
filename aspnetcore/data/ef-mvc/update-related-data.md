@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 0e4df407a1ca15aa5baa2b7226be1cf91902a583
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3cdd36ae03824645e09f97cae85cc55956679390
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>更新相關的資料-EF Core 與 ASP.NET Core MVC 教學課程 (10-7)
 
@@ -49,7 +49,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 `PopulateDepartmentsDropDownList`方法會取得一份依名稱排序的所有部門、 建立`SelectList`集合下拉式清單中，並將集合傳遞給在檢視`ViewBag`。 該方法會接受選擇性`selectedDepartment`參數，可讓呼叫的程式碼，指定將會呈現下拉式清單時所選取的項目。 檢視會將"DepartmentID 」 的名稱傳遞給`<select>`標記協助程式，以及協助程式就會知道要查看`ViewBag`物件`SelectList`名為"DepartmentID"。
 
-HttpGet`Create`方法呼叫`PopulateDepartmentsDropDownList`但不會將選取的項目，因為新的課程部門不會建立尚未方法：
+HttpGet`Create`方法呼叫`PopulateDepartmentsDropDownList`方法但不會將選取的項目，因為新的課程部門不尚未建立：
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
 
@@ -129,7 +129,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 -  更新擷取 [Instructor] 實體中的模型繫結器的值。 `TryUpdateModel`多載可讓您將白名單您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](crud.md)。
 
-    <!-- Snippets do not play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
+    <!-- Snippets don't play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
     ```csharp
     if (await TryUpdateModelAsync<Instructor>(
@@ -140,7 +140,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
     
 -   如果辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設定為 null，如此就會刪除 OfficeAssignment 資料表中相關的資料列。
 
-    <!-- Snippets do not play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
+    <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
 
     ```csharp
     if (String.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location))
@@ -221,7 +221,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
-此程式碼會建立具有三個資料行的 HTML 表格。 在每個資料行是核取方塊，後面的課程編號和標題所組成的標題。 所有核取方塊具有相同名稱 ("selectedCourses 」) 會通知它們會被視為一個群組的模型繫結器。 每個核取方塊的 value 屬性的值設定為值`CourseID`。 當網頁回傳時，模型繫結器會將陣列傳遞至所組成的控制站`CourseID`只核取方塊已選取的值。
+此程式碼會建立具有三個資料行的 HTML 表格。 在每個資料行是核取方塊，後面的課程編號和標題所組成的標題。 所有核取方塊具有相同名稱 ("selectedCourses 」) 會通知它們被視為一個群組的模型繫結器。 每個核取方塊的 value 屬性的值設定為值`CourseID`。 當網頁回傳時，模型繫結器會將陣列傳遞至所組成的控制站`CourseID`只核取方塊已選取的值。
 
 當一開始會呈現核取方塊時，為指派給講師課程的已簽屬性，以選取它們 （顯示其核取）。
 

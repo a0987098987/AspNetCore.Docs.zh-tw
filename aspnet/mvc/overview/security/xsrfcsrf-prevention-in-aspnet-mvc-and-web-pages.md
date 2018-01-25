@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 4ff4ed20d0768a48f8afb2deeb7cdb6b4c60b5bc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6cf30daa7ed966b11405cec715c5bc803b567249
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護
 ====================
@@ -73,9 +73,9 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 *欄位語彙基元*儲存為`<input type="hidden" />`且包含其裝載中的下列資訊：
 
 - 登入之使用者的使用者名稱 （如果通過驗證）。
-- 所提供的任何其他資料[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)。
+- 所提供的任何其他資料[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)。
 
-防 XSRF 權杖的承載都會經過加密並簽署，所以使用工具來檢查權杖時，您無法檢視的使用者名稱。 當 web 應用程式以 ASP.NET 4.0 為目標時，密碼編譯服務提供的[MachineKey.Encode](https://msdn.microsoft.com/en-us/library/system.web.security.machinekey.encode.aspx)常式。 當 web 應用程式的目標 ASP.NET 4.5 或更高版本、 密碼編譯服務所提供的[MachineKey.Protect](https://msdn.microsoft.com/en-us/library/system.web.security.machinekey.protect(v=vs.110))常式，其可提供較佳的效能、 擴充性和安全性。 請參閱下列部落格文章以取得詳細資料：
+防 XSRF 權杖的承載都會經過加密並簽署，所以使用工具來檢查權杖時，您無法檢視的使用者名稱。 當 web 應用程式以 ASP.NET 4.0 為目標時，密碼編譯服務提供的[MachineKey.Encode](https://msdn.microsoft.com/library/system.web.security.machinekey.encode.aspx)常式。 當 web 應用程式的目標 ASP.NET 4.5 或更高版本、 密碼編譯服務所提供的[MachineKey.Protect](https://msdn.microsoft.com/library/system.web.security.machinekey.protect(v=vs.110))常式，其可提供較佳的效能、 擴充性和安全性。 請參閱下列部落格文章以取得詳細資料：
 
 - [ASP.NET 4.5 中的密碼編譯增強功能、 pt。1](https://blogs.msdn.com/b/webdev/archive/2012/10/22/cryptographic-improvements-in-asp-net-4-5-pt-1.aspx)
 - [ASP.NET 4.5 中的密碼編譯增強功能、 pt。2](https://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx)
@@ -83,19 +83,19 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 ## <a name="generating-the-tokens"></a>產生權杖
 
-若要產生的防 XSRF 權杖，請呼叫[ @Html.AntiForgeryToken ](https://msdn.microsoft.com/en-us/library/dd470175.aspx) MVC 檢視中的方法或@AntiForgery.GetHtml從 Razor 頁面 （)。 然後，執行階段會執行下列步驟：
+若要產生的防 XSRF 權杖，請呼叫[ @Html.AntiForgeryToken ](https://msdn.microsoft.com/library/dd470175.aspx) MVC 檢視中的方法或@AntiForgery.GetHtml從 Razor 頁面 （)。 然後，執行階段會執行下列步驟：
 
 1. 如果目前的 HTTP 要求中已包含的防 XSRF 工作階段權杖 (防 XSRF cookie \_ \_RequestVerificationToken)，從其擷取安全性權杖。 如果 HTTP 要求不包含防 XSRF 工作階段權杖或安全性權杖的擷取失敗，就會產生新的隨機的防 XSRF 權杖。
-2. 防 XSRF 欄位語彙基元會產生使用從上個步驟 (1) 和目前的登入之使用者的身分識別的安全性 token。 (如需判斷使用者的身分識別的詳細資訊，請參閱**[具有特殊的支援案例](#_Scenarios_with_special)**下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位語彙基元。 (請參閱**[組態和擴充性](#_Configuration_and_extensibility)**節的詳細資訊。)
+2. 防 XSRF 欄位語彙基元會產生使用從上個步驟 (1) 和目前的登入之使用者的身分識別的安全性 token。 (如需判斷使用者的身分識別的詳細資訊，請參閱**[具有特殊的支援案例](#_Scenarios_with_special)**下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位語彙基元。 (請參閱**[組態和擴充性](#_Configuration_and_extensibility)**節的詳細資訊。)
 3. 如果步驟 (1) 中產生新的 ANTI-XSRF 權杖，新的工作階段語彙基元會建立包含該，並將加入至傳出 HTTP cookie 集合。 步驟 (2) 中的欄位語彙基元會包裝在`<input type="hidden" />`項目，然後這個 HTML 標記將會傳回值`Html.AntiForgeryToken()`或`AntiForgery.GetHtml()`。
 
 ## <a name="validating-the-tokens"></a>驗證權杖
 
-若要驗證連入的防 XSRF 權杖，包括開發人員[ValidateAntiForgeryToken](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute(VS.108).aspx)屬性她 MVC 動作或控制器，或她呼叫`@AntiForgery.Validate()`從她 Razor 頁面。 執行階段會執行下列步驟：
+若要驗證連入的防 XSRF 權杖，包括開發人員[ValidateAntiForgeryToken](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(VS.108).aspx)屬性她 MVC 動作或控制器，或她呼叫`@AntiForgery.Validate()`從她 Razor 頁面。 執行階段會執行下列步驟：
 
 1. 會讀取內送工作階段權杖和欄位語彙基元，並從每個擷取的防 XSRF 權杖。 防 XSRF 權杖必須是每個步驟 (2) 產生常式中完全相同。
 2. 如果目前的使用者驗證時，她的使用者名稱進行比較與儲存在欄位語彙基元中的使用者名稱。 使用者名稱必須相符。
-3. 如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)設定時，執行階段呼叫其*ValidateAdditionalData*方法。 此方法必須傳回布林值*true*。
+3. 如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)設定時，執行階段呼叫其*ValidateAdditionalData*方法。 此方法必須傳回布林值*true*。
 
 如果驗證成功，允許要求繼續執行。 如果驗證失敗，將會擲回架構*HttpAntiForgeryException*。
 
@@ -108,7 +108,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 - 已交換的工作階段權杖和欄位語彙基元。
 - 工作階段權杖和欄位語彙基元包含不相符的安全性權杖。
 - 欄位語彙基元中內嵌使用者名稱不符合目前已登入之使用者的使用者名稱。
--  *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* 方法會傳回*false*。
+- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* 方法會傳回*false*。
 
 防 XSRF 設備可能也會執行其他檢查權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS 宣告型驗證](#_WIF_ACS)和**[組態和擴充性](#_Configuration_and_extensibility)**區段，如需詳細資訊。
 
@@ -130,12 +130,12 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 宣告式驗證，相反地，不一定需要識別特定的使用者。 相反地， *ClaimsPrincipal*和*ClaimsIdentity*類型相關聯的一組*宣告*情況下，個別的宣告可能是"is 18 + 歲"或"是系統管理員 」 以任何其他項目。 由於尚未一定識別使用者，無法使用執行階段*ClaimsIdentity.Name*屬性做為此特定使用者的唯一識別碼。 小組已經看到真實世界範例其中*ClaimsIdentity.Name*傳回*null*、 傳回 （顯示） 的好記的名稱，或否則會傳回不適合做為唯一的識別項使用的字串使用者。
 
-許多使用宣告式驗證的部署使用[Azure 存取控制服務](https://msdn.microsoft.com/en-us/library/windowsazure/gg429786.aspx)(ACS) 特別。 ACS 可讓開發人員設定個別*身分識別提供者*（例如 Microsoft 帳戶提供者的 ADFS，OpenID 提供者類似 yahoo ！ 等），和身分識別提供者傳回*命名識別項*. 這些名稱識別項可能包含個人識別資訊 (PII)，像是電子郵件地址，或它們可以匿名像私有的個人識別碼 (PPID)。 不論如何，tuple （身分識別提供者，名稱識別項） 不夠作為特定的使用者適當的追蹤 token，而她瀏覽網站，因此 ASP.NET Web 堆疊執行階段產生時，可以使用 tuple 取代使用者名稱和驗證防 XSRF 欄位語彙基元。 身分識別提供者 」 和 「 名稱識別碼的特定 Uri 是：
+許多使用宣告式驗證的部署使用[Azure 存取控制服務](https://msdn.microsoft.com/library/windowsazure/gg429786.aspx)(ACS) 特別。 ACS 可讓開發人員設定個別*身分識別提供者*（例如 Microsoft 帳戶提供者的 ADFS，OpenID 提供者類似 yahoo ！ 等），和身分識別提供者傳回*命名識別項*. 這些名稱識別項可能包含個人識別資訊 (PII)，像是電子郵件地址，或它們可以匿名像私有的個人識別碼 (PPID)。 不論如何，tuple （身分識別提供者，名稱識別項） 不夠作為特定的使用者適當的追蹤 token，而她瀏覽網站，因此 ASP.NET Web 堆疊執行階段產生時，可以使用 tuple 取代使用者名稱和驗證防 XSRF 欄位語彙基元。 身分識別提供者 」 和 「 名稱識別碼的特定 Uri 是：
 
 - `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider`
 - `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`
 
-(請參閱此[ACS 文件頁面](https://msdn.microsoft.com/en-us/library/windowsazure/gg185971.aspx)如需詳細資訊。)
+(請參閱此[ACS 文件頁面](https://msdn.microsoft.com/library/windowsazure/gg185971.aspx)如需詳細資訊。)
 
 當產生或驗證權杖時，ASP.NET Web 堆疊執行階段會在執行階段嘗試繫結的型別：
 
@@ -163,9 +163,9 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 開發人員可能會設定從應用程式的防 XSRF 系統\_開始。 以程式設計方式設定。 靜態屬性*AntiForgeryConfig*類型說明如下。 大部分使用宣告的使用者會想要設定 UniqueClaimTypeIdentifier 屬性。
 
-| **Property** | **說明** |
+| **Property** | **描述** |
 | --- | --- |
-| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) ，在語彙基元產生期間提供額外的資料和權杖驗證期間會耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) > 一節。 |
+| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) ，在語彙基元產生期間提供額外的資料和權杖驗證期間會耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx) > 一節。 |
 | **CookieName** | 提供用來儲存防 XSRF 工作階段權杖的 HTTP cookie 名稱的字串。 如果未設定此值，產生的名稱將會自動根據應用程式的已部署的虛擬路徑。 預設值是*null*。 |
 | **RequireSsl** | 布林值，指出是否需要 SSL 安全保護的通道上送出的防 XSRF 權杖。 如果此值為*true*，任何自動產生的 cookie 會有 「 安全 」 的旗標設定，如果從呼叫中不會透過 SSL 提交的要求，將會擲回的防 XSRF Api。 預設值為 *false*。 |
 | **SuppressIdentityHeuristicChecks** | 布林值，指出是否防 XSRF 系統應該停用其支援的宣告式身分識別。 如果此值為*true*，系統會假設*IIdentity.Name*很適合做為每個使用者的唯一識別項，將不會嘗試特殊案例*IClaimsIdentity*或*ClClaimsIdentity*中所述[WIF / ACS 宣告型驗證](#_WIF_ACS)> 一節。 預設值是 `false`。 |
@@ -175,7 +175,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 ### <a name="iantiforgeryadditionaldataprovider"></a>IAntiForgeryAdditionalDataProvider
 
- *[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/en-us/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* 類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
+*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* 類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
 
 同樣地， *ValidateAdditionalData*每次呼叫方法來驗證欄位語彙基元時，並已內嵌在權杖中的 [詳細資料] 字串傳遞給方法。 驗證常式無法實作的逾時 （藉由檢查目前的時間針對建立語彙基元時，已儲存的時間）、 nonce 檢查常式，或任何其他所需的邏輯。
 

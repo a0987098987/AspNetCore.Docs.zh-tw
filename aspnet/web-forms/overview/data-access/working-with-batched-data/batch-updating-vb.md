@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 02df858a7ad2ccefce4717e9bb7b08fc4c8d6ace
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bcfdf734de0b4a4aa0a11f35bd6e40d6b97719cf
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="batch-updating-vb"></a>批次更新 (VB)
 ====================
@@ -47,7 +47,7 @@ Let s 開始 ！
 
 ## <a name="examining-the-steps-for-making-all-gridview-rows-editable"></a>檢查進行所有的 GridView 資料列可編輯的步驟
 
-中所述[概觀的插入、 更新和刪除資料](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md)教學課程中，GridView 提供編輯每個資料列依其基礎資料的內建支援。 就內部而言，GridView 記哪些資料列是透過可編輯其[`EditIndex`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.editindex(VS.80).aspx)。 GridView 繫結至其資料來源，因為它會檢查以查看的資料列索引是否等於值的每個資料列`EditIndex`。 如果是的話，該資料列的欄位就會使用呈現其編輯介面。 編輯介面是文字方塊 BoundFields，其`Text`BoundField s 所指定的資料欄位的值指派給屬性`DataField`屬性。 TemplateFields，如`EditItemTemplate`用來取代`ItemTemplate`。
+中所述[概觀的插入、 更新和刪除資料](../editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md)教學課程中，GridView 提供編輯每個資料列依其基礎資料的內建支援。 就內部而言，GridView 記哪些資料列是透過可編輯其[`EditIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.editindex(VS.80).aspx)。 GridView 繫結至其資料來源，因為它會檢查以查看的資料列索引是否等於值的每個資料列`EditIndex`。 如果是的話，該資料列的欄位就會使用呈現其編輯介面。 編輯介面是文字方塊 BoundFields，其`Text`BoundField s 所指定的資料欄位的值指派給屬性`DataField`屬性。 TemplateFields，如`EditItemTemplate`用來取代`ItemTemplate`。
 
 前文提過編輯工作流程會啟動，當使用者按一下資料列 s [編輯] 按鈕。 這會導致回傳，請設定 GridView 的`EditIndex`屬性設為按下後的資料列的索引並重新繫結至資料格的資料。 資料列 s [取消] 按鈕按一下的時間，在回傳`EditIndex`設定的值為`-1`重新繫結至資料格的資料。 GridView s 資料列開始索引零，因為設定`EditIndex`至`-1`在唯讀模式中顯示的 GridView 的效果。
 
@@ -240,7 +240,7 @@ GridView s 自編輯介面定義在其 TemplateFields `ItemTemplate` s， `EditI
 
 [!code-vb[Main](batch-updating-vb/samples/sample5.vb)]
 
-這個方法一開始會取得所有產品回`ProductsDataTable`透過呼叫 BLL 的`GetProducts`方法。 接著它會列舉`ProductGrid`GridView s [ `Rows`集合](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rows(VS.80).aspx)。 `Rows`集合包含[`GridViewRow`執行個體](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridviewrow.aspx)GridView 中顯示每一個資料列。 因為我們會顯示最多十個資料列每個分頁，GridView 的`Rows`集合會有十個以上的項目。
+這個方法一開始會取得所有產品回`ProductsDataTable`透過呼叫 BLL 的`GetProducts`方法。 接著它會列舉`ProductGrid`GridView s [ `Rows`集合](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rows(VS.80).aspx)。 `Rows`集合包含[`GridViewRow`執行個體](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewrow.aspx)GridView 中顯示每一個資料列。 因為我們會顯示最多十個資料列每個分頁，GridView 的`Rows`集合會有十個以上的項目。
 
 每個資料列`ProductID`捕捉從`DataKeys`集合和適當`ProductsRow`選取從`ProductsDataTable`。 以程式設計方式參考的四個 TemplateField 輸入的控制項，且其值指派給`ProductsRow`執行個體內容。 每個 GridView 之後列值 s 已用來更新`ProductsDataTable`，它 s 傳遞至 BLL s`UpdateWithTransaction`方法，如我們所見前述教學課程中，只會呼叫向下到 DAL 的`UpdateWithTransaction`方法。
 
@@ -257,7 +257,7 @@ GridView s 自編輯介面定義在其 TemplateFields `ItemTemplate` s， `EditI
 
 [!code-vb[Main](batch-updating-vb/samples/sample6.vb)]
 
-第一次進行呼叫以`BatchUpdate`。 下一步 [ `ClientScript`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.page.clientscript(VS.80).aspx)用來插入將會顯示讀取已更新之產品的 messagebox 的 JavaScript。
+第一次進行呼叫以`BatchUpdate`。 下一步 [ `ClientScript`屬性](https://msdn.microsoft.com/library/system.web.ui.page.clientscript(VS.80).aspx)用來插入將會顯示讀取已更新之產品的 messagebox 的 JavaScript。
 
 花一分鐘，若要測試這段程式碼。 請瀏覽`BatchUpdate.aspx`透過瀏覽器中，編輯資料列數目，並按一下其中一個更新產品按鈕。 假設沒有任何輸入的驗證錯誤，您應該會看到讀取已更新之產品的 messagebox。 若要確認不可部分完成的更新，請考慮加入的隨機`CHECK`條件約束，例如不允許的其中一個`UnitPrice`1234.56 的值。 然後從`BatchUpdate.aspx`，編輯的記錄數，務必要設定其中一個產品的`UnitPrice`禁止的值 (1234.56) 的值。 這應該與其他變更的更新產品按一下該批次作業期間復原為其原始值時產生錯誤。
 
@@ -270,7 +270,7 @@ GridView s 自編輯介面定義在其 TemplateFields `ItemTemplate` s， `EditI
 
 [!code-vb[Main](batch-updating-vb/samples/sample7.vb)]
 
-`BatchMethodAlternate`藉由建立新的空白啟動`ProductsDataTable`名為`products`。 接著，它會逐一 GridView s`Rows`集合，在每個資料列取得特定產品資訊使用 BLL 的`GetProductByProductID(productID)`方法。 擷取`ProductsRow`執行個體有以相同的方式，以更新其屬性`BatchUpdate`，但在更新匯入的資料列之後`products``ProductsDataTable`經由 DataTable s [ `ImportRow(DataRow)`方法](https://msdn.microsoft.com/en-us/library/system.data.datatable.importrow(VS.80).aspx).
+`BatchMethodAlternate`藉由建立新的空白啟動`ProductsDataTable`名為`products`。 接著，它會逐一 GridView s`Rows`集合，在每個資料列取得特定產品資訊使用 BLL 的`GetProductByProductID(productID)`方法。 擷取`ProductsRow`執行個體有以相同的方式，以更新其屬性`BatchUpdate`，但在更新匯入的資料列之後`products``ProductsDataTable`經由 DataTable s [ `ImportRow(DataRow)`方法](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
 
 之後`For Each`迴圈完成時，`products`包含一個`ProductsRow`GridView 中每個資料列的執行個體。 由於每個的`ProductsRow`執行個體已新增至`products`（而不是更新），如果我們盲目地將它傳遞給`UpdateWithTransaction`方法`ProductsTableAdatper`會嘗試每筆記錄插入資料庫。 相反地，我們需要指定這些資料列的每個已修改的 （不會新增）。
 

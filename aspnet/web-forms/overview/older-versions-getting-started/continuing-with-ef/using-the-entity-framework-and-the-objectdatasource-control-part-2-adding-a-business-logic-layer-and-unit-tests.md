@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 title: "使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 加入商務邏輯層和單元測試 |Microsoft 文件"
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 我..."
+description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 msc.type: authoredcontent
-ms.openlocfilehash: 0440f807c7baa7b92e5f05590eca9cc237b5aef9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: df37acd8901b457f7887afe767d42d53e45e4815
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 加入商務邏輯層和單元測試
 ====================
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 儲存機制類別和兩個建構函式呼叫的 CRUD 方法可讓您選擇任何後端資料存放區中使用商務邏輯類別。 商務邏輯類別不需要知道它正在呼叫的類別將資料的保存。 (這通常稱為*永續性無知之*。)這有助於單元測試，因為您可以連接使用的項目為簡單的儲存機制實作商務邏輯類別做為記憶體中`List`來儲存資料的集合。
 
 > [!NOTE]
-> 實體物件技術上來說，是仍不持續性-不知道，因為它們正在執行個體化的類別繼承自 Entity Framework`EntityObject`類別。 您可以使用完整的持續性忽略*純舊 CLR 物件*，或*POCOs*，來取代繼承的物件`EntityObject`類別。 使用 POCOs 超出本教學課程的範圍。 如需詳細資訊，請參閱[可測試性和 Entity Framework 4.0](https://msdn.microsoft.com/en-us/library/ff714955.aspx) MSDN 網站上。)
+> 實體物件技術上來說，是仍不持續性-不知道，因為它們正在執行個體化的類別繼承自 Entity Framework`EntityObject`類別。 您可以使用完整的持續性忽略*純舊 CLR 物件*，或*POCOs*，來取代繼承的物件`EntityObject`類別。 使用 POCOs 超出本教學課程的範圍。 如需詳細資訊，請參閱[可測試性和 Entity Framework 4.0](https://msdn.microsoft.com/library/ff714955.aspx) MSDN 網站上。)
 
 
 現在您可以連接`ObjectDataSource`控制項加入至商務邏輯類別而不是至儲存機制，並確認一切運作與以前一樣。
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/10/2017
 
 您現在可以測試*DepartmentsAdd.aspx.cs*頁面，確認它也會正確處理嘗試讓一人以上部門的系統管理員。
 
-如此即完成實作使用的儲存機制模式的介紹`ObjectDataSource`與 Entity Framework 的控制項。 如需儲存機制模式和可測試性的詳細資訊，請參閱 MSDN 技術白皮書[可測試性和 Entity Framework 4.0](https://msdn.microsoft.com/en-us/library/ff714955.aspx)。
+如此即完成實作使用的儲存機制模式的介紹`ObjectDataSource`與 Entity Framework 的控制項。 如需儲存機制模式和可測試性的詳細資訊，請參閱 MSDN 技術白皮書[可測試性和 Entity Framework 4.0](https://msdn.microsoft.com/library/ff714955.aspx)。
 
 下列教學課程中，您會看到如何加入排序和篩選應用程式的功能。
 

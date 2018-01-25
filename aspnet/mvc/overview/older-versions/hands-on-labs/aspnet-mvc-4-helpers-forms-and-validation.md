@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 4dd10430778dc51fef1199315ee02eb2cd4970ba
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 925d659f42496045089ba056e194ac977c37a8de
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 Helper、 表單和驗證
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
 
 
 <a id="Objectives"></a>
@@ -228,7 +228,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這項工作，您會將新方法加入**Truncate**至**HTML** ASP.NET MVC 檢視中公開的物件。 若要這樣做，您會實作**擴充方法**內建**System.Web.Mvc.HtmlHelper** ASP.NET MVC 所提供的類別。
 
 > [!NOTE]
-> 若要深入了解**擴充方法**，請瀏覽 msdn 上的本文。 [https://msdn.microsoft.com/en-us/library/bb383977.aspx](https://msdn.microsoft.com/en-us/library/bb383977.aspx)。
+> 若要深入了解**擴充方法**，請瀏覽 msdn 上的本文。 [https://msdn.microsoft.com/library/bb383977.aspx](https://msdn.microsoft.com/library/bb383977.aspx).
 
 
 1. 開啟**開始**方案位於**來源/Ex2AddingAnHTMLHelper/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
@@ -745,10 +745,10 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
     > 每個用戶端驗證規則不顯眼的 jQuery 加入資料屬性-val-*rulename*=&quot;*訊息*&quot;。 以下是一份標記該 Unobtrusive jQuery 插入 html 輸入欄位，以執行用戶端驗證：
     > 
     > - 資料值
-    > - 資料 val 數字
+    > - Data-val-number
     > - 資料 val 範圍
     > - 資料 val 範圍-min/資料 val-range max
-    > - Val 需要資料
+    > - Data-val-required
     > - 資料 val 長度
     > - 資料值的長度上限/資料 val 長度-分鐘
     > 

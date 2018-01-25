@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: b60913cef4b62745cf167e6074834bf7d0c228d1
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 91bfa5fe3c5bd3029b7d7c12c8831e1653fb1d2b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
@@ -87,7 +87,7 @@ Visual Studio 會自動建立[CRUD](http://en.wikipedia.org/wiki/Create,_read,_u
 
 您已看到稍早在本教學課程中，如何控制站可以傳遞資料或物件給檢視範本使用`ViewBag`物件。 `ViewBag`是動態的物件，提供便利的晚期繫結方式，將資訊傳遞至檢視。
 
-MVC 也提供傳遞的能力*強*型別檢視表範本的物件。 此強型別的方法可讓更佳編譯時期檢查您的程式碼和更豐富[IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b(v=vs.120).aspx) Visual Studio 編輯器中。 在 Visual Studio 中的 scaffolding 機制使用這個方法 (也就傳遞*強*具類型的模型) 與`MoviesController`類別並檢視範本建立的方法和檢視時。
+MVC 也提供傳遞的能力*強*型別檢視表範本的物件。 此強型別的方法可讓更佳編譯時期檢查您的程式碼和更豐富[IntelliSense](https://msdn.microsoft.com/library/hcw1s69b(v=vs.120).aspx) Visual Studio 編輯器中。 在 Visual Studio 中的 scaffolding 機制使用這個方法 (也就傳遞*強*具類型的模型) 與`MoviesController`類別並檢視範本建立的方法和檢視時。
 
 在*Controllers\MoviesController.cs*檔案檢查產生`Details`方法。 `Details`方法如下所示。
 
@@ -109,9 +109,9 @@ MVC 也提供傳遞的能力*強*型別檢視表範本的物件。 此強型別�
 
 [!code-cshtml[Main](accessing-your-models-data-from-a-controller/samples/sample6.cshtml)]
 
-這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在*Details.cshtml*範本，在程式碼通過每個影片欄位`DisplayNameFor`和[DisplayFor](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.displayextensions.displayfor(VS.98).aspx) HTML Helper 的強型別`Model`物件。 `Create`和`Edit`方法和檢視範本也會傳遞影片模型物件。
+這個 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影。 例如，在*Details.cshtml*範本，在程式碼通過每個影片欄位`DisplayNameFor`和[DisplayFor](https://msdn.microsoft.com/library/system.web.mvc.html.displayextensions.displayfor(VS.98).aspx) HTML Helper 的強型別`Model`物件。 `Create`和`Edit`方法和檢視範本也會傳遞影片模型物件。
 
-檢查*Index.cshtml*檢視範本和`Index`方法中的*MoviesController.cs*檔案。 請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`清單`Index`檢視的動作方法：
+檢查*Index.cshtml*檢視範本和`Index`方法中的*MoviesController.cs*檔案。 請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`清單`Index`檢視的動作方法：
 
 [!code-csharp[Main](accessing-your-models-data-from-a-controller/samples/sample7.cs?highlight=3)]
 

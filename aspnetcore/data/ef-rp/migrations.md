@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 9a0fb52a1d1a62bce3f11c7e0394c00b9d544ab3
-ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
+ms.openlocfilehash: 7b0a3f73efd1d30b903b3258bea2082792eb6e8c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>移轉的 EF 核心 Razor 頁面教學課程 (8 個 4)
 
@@ -54,7 +54,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 
 [!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
 
-變更連接字串中的資料庫名稱，會導致第一個移轉建立新的 DB。 因為具有該名稱不存在，會建立新的 DB。 變更連接字串並不需要移轉使用者入門。
+變更連接字串中的資料庫名稱，會導致第一個移轉建立新的 DB。 因為以該名稱不存在，會建立新的 DB。 變更連接字串並不需要移轉使用者入門。
 
 變更資料庫名稱的替代方式刪除資料庫。 使用**SQL Server 物件總管**(SSOX) 或`database drop`CLI 命令：
 
@@ -189,7 +189,7 @@ Done.
 
 ## <a name="appling-migrations-in-production"></a>在生產環境中套用移轉
 
-我們建議實際執行應用程式應該**不**呼叫[Database.Migrate](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_)應用程式啟動時。 `Migrate`不應該呼叫從伺服器陣列中的應用程式。 例如，如果應用程式已部署向外 （執行的應用程式的多個執行個體） 的雲端。
+我們建議實際執行應用程式應該**不**呼叫[Database.Migrate](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_)應用程式啟動時。 `Migrate`不應該從伺服器陣列中的應用程式呼叫。 例如，如果應用程式已部署向外 （執行的應用程式的多個執行個體） 的雲端。
 
 資料庫移轉應該在部署中，並在受控制的方式。 包括實際執行資料庫移轉方法：
 

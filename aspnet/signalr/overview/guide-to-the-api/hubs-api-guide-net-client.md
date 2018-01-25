@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: a03c8c42622a768d706acf5ac1f23b37a830d426
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c52a02291e18b1dd8a9d95b33fe466d17aae835f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>ASP.NET SignalR 中樞 API 指南-.NET 用戶端 (C#)
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 - [SignalR 中樞 API 指南-伺服器](hubs-api-guide-server.md)
 - [SignalR 中樞 API 指南 JavaScript 用戶端](hubs-api-guide-javascript-client.md)
 
-應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx)。
+應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx)。
 
 <a id="clientsetup"></a>
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="cross-domain-connections-from-silverlight-clients"></a>Silverlight 用戶端進行跨網域連線
 
-如需如何啟用跨網域 Silverlight 用戶端的連接資訊，請參閱[讓服務提供跨網域界限](https://msdn.microsoft.com/en-us/library/cc197955(v=vs.95).aspx)。
+如需如何啟用跨網域 Silverlight 用戶端的連接資訊，請參閱[讓服務提供跨網域界限](https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)。
 
 <a id="configureconnection"></a>
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](hubs-api-guide-net-client/samples/sample4.cs?highlight=4)]
 
-如需詳細資訊，請參閱[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/en-us/library/system.net.servicepointmanager.defaultconnectionlimit.aspx)。
+如需詳細資訊，請參閱[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx)。
 
 <a id="querystring"></a>
 
@@ -163,12 +163,12 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](hubs-api-guide-net-client/samples/sample7.cs?highlight=4)]
 
-[Microsoft.AspNet.SignalR.Client.Transports](https://msdn.microsoft.com/en-us/library/jj918090(v=vs.111).aspx)命名空間包含下列類別可讓您指定的傳輸。
+[Microsoft.AspNet.SignalR.Client.Transports](https://msdn.microsoft.com/library/jj918090(v=vs.111).aspx)命名空間包含下列類別可讓您指定的傳輸。
 
-- [LongPollingTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.longpollingtransport(v=vs.111).aspx)
-- [ServerSentEventsTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.serversenteventstransport(v=vs.111).aspx)
-- [WebSocketTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.websockettransport(v=vs.111).aspx) （使用伺服器和用戶端使用.NET 4.5 時，才）。
-- [AutoTransport](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.transports.autotransport(v=vs.111).aspx) （會自動選擇最佳傳輸支援的用戶端和伺服器。 這是預設的傳輸。 傳遞此中`Start`方法具有相同的效果不會傳遞任何項目。)
+- [LongPollingTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.longpollingtransport(v=vs.111).aspx)
+- [ServerSentEventsTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.serversenteventstransport(v=vs.111).aspx)
+- [WebSocketTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.websockettransport(v=vs.111).aspx) （使用伺服器和用戶端使用.NET 4.5 時，才）。
+- [AutoTransport](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.transports.autotransport(v=vs.111).aspx) （會自動選擇最佳傳輸支援的用戶端和伺服器。 這是預設的傳輸。 傳遞此中`Start`方法具有相同的效果不會傳遞任何項目。)
 
 ForeverFrame 傳輸不會包含這份清單中，因為它僅由瀏覽器。
 
@@ -336,7 +336,7 @@ SignalR 提供下列的連線，您可以控制它們的存留期事件：
 - `ConnectionSlow`： 用戶端偵測到低速或經常卸除連接時引發。
 - `Reconnecting`： 基礎傳輸可讓您開始重新連線時引發。
 - `Reconnected`： 基礎傳輸已重新連接時引發。
-- `StateChanged`： 連線狀態變更時引發。 提供舊的狀態和新的狀態。 如需連接狀態值請參閱[ConnectionState 列舉，](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx)。
+- `StateChanged`： 連線狀態變更時引發。 提供舊的狀態和新的狀態。 如需連接狀態值請參閱[ConnectionState 列舉，](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx)。
 - `Closed`： 當連接已中斷連接時引發。
 
 例如，如果您想要顯示的不嚴重，但間歇性連線問題會造成錯誤的警告訊息，例如為緩慢或太頻繁地卸除的連接，處理`ConnectionSlow`事件。

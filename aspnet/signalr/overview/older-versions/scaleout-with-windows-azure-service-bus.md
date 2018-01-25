@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 0dd245b597ebd4b58b60a53276d7808b6e2377e7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b48a7b04701b69f68a492c0f7e08da4a37a92a48
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>Azure 服務匯流排與 SignalR 範圍外 (SignalR 1.x)
 ====================
@@ -32,13 +32,13 @@ ms.lasthandoff: 11/10/2017
 - [Windows Azure SDK](https://go.microsoft.com/fwlink/?linkid=254364&amp;clcid=0x409)。
 - Visual Studio 2012。
 
-服務匯流排後擋板也是與相容[Service Bus for Windows Server](https://msdn.microsoft.com/en-us/library/windowsazure/dn282144.aspx)，1.1 版。 不過，不相容 1.0 版的 Service Bus for Windows Server。
+服務匯流排後擋板也是與相容[Service Bus for Windows Server](https://msdn.microsoft.com/library/windowsazure/dn282144.aspx)，1.1 版。 不過，不相容 1.0 版的 Service Bus for Windows Server。
 
 ## <a name="pricing"></a>Pricing
 
 服務匯流排後擋板用來傳送訊息的主題。 最新定價的資訊，請參閱[Service Bus](https://azure.microsoft.com/pricing/details/service-bus/)。 在撰寫本文時，您可以傳送每個月 1000000 訊息小於 $ 1。 後擋板傳送 SignalR 中樞方法的每次叫用的服務匯流排訊息。 也有某些控制項的訊息連線、 中斷連接、 聯結或讓群組和其他等等。 大多數的應用程式中大部分的訊息流量將中樞方法叫用。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 我們可以詳細的教學課程之前，以下是您將執行的快速概觀。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](scaleout-with-windows-azure-service-bus/_static/image5.png)
 
-在**新增 ASP.NET MVC 4 專案**精靈中，選取**網際網路應用程式**。 按一下 [確定]。 專案精靈會建立兩個專案：
+在**新增 ASP.NET MVC 4 專案**精靈中，選取**網際網路應用程式**。 按一下 [確定 **Deploying Office Solutions**]。 專案精靈會建立兩個專案：
 
 - ChatService： 此專案是 Windows Azure 應用程式。 它會定義 Azure 角色和其他組態選項。
 - SignalRChat： 此專案是您的 ASP.NET MVC 4 專案。

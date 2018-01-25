@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 84d2b9b5379475c4f8f2208a49b4f9e07b242a51
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a3832bd9847ec8e789b71d13b30a673c8779f4ac
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="querying-data-with-the-sqldatasource-control-vb"></a>查詢資料與 SqlDataSource 控制項 (VB)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 雖然教學課程到目前為止的所有已使用架構來處理資料，它也可存取、 插入、 更新和刪除資料庫資料直接從 ASP.NET 網頁，略過架構。 如此一來直接在網頁中放置的特定資料庫查詢和商務邏輯。 充分的大型或複雜應用程式的設計、 實作和使用階層式的架構是非常重要的成功、 可更新性，與應用程式的可維護性。 開發強固的架構，不過，可能就不需要建立非常簡單、 一次性應用程式時。
 
-ASP.NET 2.0 提供五個內建資料來源控制項[SqlDataSource](https://msdn.microsoft.com/en-us/library/dz12d98w%28vs.80%29.aspx)， [AccessDataSource](https://msdn.microsoft.com/en-us/library/8e5545e1.aspx)， [ObjectDataSource](https://msdn.microsoft.com/en-us/library/9a4kyhcx.aspx)， [XmlDataSource](https://msdn.microsoft.com/en-us/library/e8d8587a%28en-US,VS.80%29.aspx)，和[Treeview](https://msdn.microsoft.com/en-us/library/5ex9t96x%28en-US,VS.80%29.aspx)。 SqlDataSource 可以用於存取和修改資料直接從關聯式資料庫，包括 Microsoft SQL Server、 Microsoft Access、 Oracle、 MySQL 和其他項目。 在本教學課程和三個 下一步，我們將檢驗如何使用 SqlDataSource 控制項時，瀏覽如何查詢和篩選資料庫資料，以及如何使用以 SqlDataSource 插入、 更新和刪除資料。
+ASP.NET 2.0 提供五個內建資料來源控制項[SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx)， [AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx)， [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx)， [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx)，和[Treeview](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx)。 SqlDataSource 可以用於存取和修改資料直接從關聯式資料庫，包括 Microsoft SQL Server、 Microsoft Access、 Oracle、 MySQL 和其他項目。 在本教學課程和三個 下一步，我們將檢驗如何使用 SqlDataSource 控制項時，瀏覽如何查詢和篩選資料庫資料，以及如何使用以 SqlDataSource 插入、 更新和刪除資料。
 
 
 ![ASP.NET 2.0 包含五個內建資料來源控制項](querying-data-with-the-sqldatasource-control-vb/_static/image1.gif)
@@ -144,12 +144,12 @@ AccessDataSource 和 SqlDataSource 控制項之間的唯一差異是指定資料
 
 若要完成精靈後，按一下 [完成]。
 
-Like 與 ObjectDataSource SqlDataSource 的精靈只是將值指派給控制項 s 的屬性，也就是[ `ConnectionString` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.connectionstring.aspx)和[ `SelectCommand` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.selectcommand.aspx)屬性。 完成精靈之後，您 SqlDataSource 控制項 s 宣告式標記看起來應該如下所示：
+Like 與 ObjectDataSource SqlDataSource 的精靈只是將值指派給控制項 s 的屬性，也就是[ `ConnectionString` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.connectionstring.aspx)和[ `SelectCommand` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommand.aspx)屬性。 完成精靈之後，您 SqlDataSource 控制項 s 宣告式標記看起來應該如下所示：
 
 
 [!code-aspx[Main](querying-data-with-the-sqldatasource-control-vb/samples/sample2.aspx)]
 
-`ConnectionString`屬性提供有關如何連接到資料庫的資訊。 這個屬性會指定完整的硬式編碼的連接字串值或連接字串中可以指向`Web.config`。 若要參考在 Web.config 中的連接字串值，請使用語法`<%$ expressionPrefix:expressionValue %>`。 一般而言， *expressionPrefix*是 ConnectionStrings 和*expressionValue*是中的連接字串名稱`Web.config` [ `<connectionStrings>`區段](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)。 不過，可以使用語法來參考`<appSettings>`項目或從資源檔的內容。 請參閱[ASP.NET 運算式概觀](https://msdn.microsoft.com/en-us/library/d5bd1tad.aspx)如需此語法的詳細資訊。
+`ConnectionString`屬性提供有關如何連接到資料庫的資訊。 這個屬性會指定完整的硬式編碼的連接字串值或連接字串中可以指向`Web.config`。 若要參考在 Web.config 中的連接字串值，請使用語法`<%$ expressionPrefix:expressionValue %>`。 一般而言， *expressionPrefix*是 ConnectionStrings 和*expressionValue*是中的連接字串名稱`Web.config` [ `<connectionStrings>`區段](https://msdn.microsoft.com/library/bf7sd233.aspx)。 不過，可以使用語法來參考`<appSettings>`項目或從資源檔的內容。 請參閱[ASP.NET 運算式概觀](https://msdn.microsoft.com/library/d5bd1tad.aspx)如需此語法的詳細資訊。
 
 `SelectCommand`屬性會指定特定 SQL 陳述式或預存程序傳回資料所執行。
 
@@ -190,7 +190,7 @@ SqlDataSource 設定之後, 可以繫結至 Web 控制項，例如 GridView 或 
 
 排序和分頁運作，因為 SqlDataSource 插入鬆散型別資料集擷取的資料庫資料。 從資料集都可以確定查詢所傳回的基本層面實作分頁的記錄總數。 此外，資料集的結果可以透過 DataView 進行排序。 這些功能會自動使用 SqlDataSource GridView 要求分頁或排序資料。
 
-SqlDataSource 可以設定為傳回 DataReader 而不是資料集，藉由變更其[`DataSourceMode`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx)從`DataSet`（預設） 至`DataReader`。 使用 DataReader 可能被慣用的情況下將 SqlDataSource 的結果傳遞到現有的程式碼預期 DataReader 時。 此外，由於 Datareader 是相當簡單的資料集物件，它們會提供更佳的效能。 如果您進行這項變更，不過，兩者都不可以排序資料的 Web 控制項，也因為 SqlDataSource 無法確定查詢所傳回的多少筆記錄，也不會 DataReader 的頁面會提供任何技術排序傳回的資料。
+SqlDataSource 可以設定為傳回 DataReader 而不是資料集，藉由變更其[`DataSourceMode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx)從`DataSet`（預設） 至`DataReader`。 使用 DataReader 可能被慣用的情況下將 SqlDataSource 的結果傳遞到現有的程式碼預期 DataReader 時。 此外，由於 Datareader 是相當簡單的資料集物件，它們會提供更佳的效能。 如果您進行這項變更，不過，兩者都不可以排序資料的 Web 控制項，也因為 SqlDataSource 無法確定查詢所傳回的多少筆記錄，也不會 DataReader 的頁面會提供任何技術排序傳回的資料。
 
 ## <a name="step-4-using-a-custom-sql-statement-or-stored-procedure"></a>步驟 4： 使用自訂的 SQL 陳述式或預存程序
 
@@ -249,9 +249,9 @@ SqlDataSource 可以設定為傳回 DataReader 而不是資料集，藉由變更
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [存取關聯式資料庫資料](http://aspnet.4guysfromrolla.com/articles/022206-1.aspx)
-- [SqlDataSource 控制項概觀](https://msdn.microsoft.com/en-us/library/dz12d98w.aspx)
+- [SqlDataSource 控制項概觀](https://msdn.microsoft.com/library/dz12d98w.aspx)
 - [SqlDataSource 控制項的 ASP.NET 快速入門教學課程：](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/data/sqldatasource.aspx)
-- [Web.config`<connectionStrings>`項目](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)
+- [Web.config`<connectionStrings>`項目](https://msdn.microsoft.com/library/bf7sd233.aspx)
 - [資料庫連接字串參考](http://www.connectionstrings.com/)
 
 ## <a name="about-the-author"></a>關於作者

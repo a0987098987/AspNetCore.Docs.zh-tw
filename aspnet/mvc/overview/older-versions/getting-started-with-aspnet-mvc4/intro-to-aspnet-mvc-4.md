@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 41efda63026c9d17cb9dceb92b5efc87490a722d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 92d9e583b6c26fa8c928d33e14593d280702a269
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="intro-to-aspnet-mvc-4"></a>ASP.NET MVC 4 簡介
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果本教學課程中可用的更新的版本[這裡](../../getting-started/introduction/getting-started.md)使用[Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)。 新的教學課程會使用 ASP.NET MVC 5，本教學課程提供許多改良。
 > 
-> 本教學課程將告訴您建置使用 Microsoft ASP.NET MVC 4 Web 應用程式的基本概念[Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express)或 Visual Web Developer 2010 Express Service Pack 1。 Visual Studio 2012，建議您不需要安裝任何項目才能完成本教學課程。 如果您使用 Visual Studio 2010，您必須安裝下列元件。 您可以安裝全部都依序按一下下列連結：
+> 本教學課程將告訴您建置使用 Microsoft ASP.NET MVC 4 Web 應用程式的基本概念[Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express)或 Visual Web Developer 2010 Express Service Pack 1。 Visual Studio 2012，建議您不需要安裝任何項目才能完成本教學課程。 如果您使用 Visual Studio 2010，您必須安裝下列元件。 您可以安裝全部都依序按一下下列連結：
 > 
 > - [Visual Studio Web Developer Express SP1 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)
 > - [ASP.NET MVC 4 的 WPI 安裝程式](https://go.microsoft.com/fwlink/?LinkId=243392)
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 使用本主題隨附在 Visual Web Developer 專案中的使用 C# 原始程式碼。 [下載的 C# 版本](https://code.msdn.microsoft.com/Intro-to-ASPNET-MVC-4-61d0219d/file/114480/1/MvcMovie.zip)。
 > 
-> 教學課程中您要在 Visual Studio 執行應用程式。 您也可以讓應用程式可透過網際網路將它部署至主機服務提供者。 Microsoft 提供的免費 web 裝載中的最多 10 個 web sites[免費試用版的 Windows Azure 帳戶](https://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604)。 如需如何部署 Visual Studio web 專案至 Windows Azure 網站的資訊，請參閱[建立及部署 ASP.NET 網站和 Visual Studio 中的 SQL Database](https://docs.microsoft.com/dotnet/azure/)。 該教學課程也會示範如何使用 Entity Framework Code First 移轉將 SQL Server 資料庫部署到 Windows Azure SQL Database (先前稱為 SQL Azure)。
+> 教學課程中您要在 Visual Studio 執行應用程式。 您也可以讓應用程式可透過網際網路將它部署至主機服務提供者。 Microsoft 提供的免費 web 裝載中的最多 10 個 web sites[免費試用版的 Windows Azure 帳戶](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604)。 如需如何部署 Visual Studio web 專案至 Windows Azure 網站的資訊，請參閱[建立及部署 ASP.NET 網站和 Visual Studio 中的 SQL Database](https://docs.microsoft.com/dotnet/azure/)。 該教學課程也會示範如何使用 Entity Framework Code First 移轉將 SQL Server 資料庫部署到 Windows Azure SQL Database (先前稱為 SQL Azure)。
 > 
 > 本教學課程中所編寫的 Rick Anderson ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) )。
 
@@ -72,7 +72,7 @@ Visual Studio 是一個 IDE 中或整合式的開發環境。 就像您使用 Mi
 
 ![](intro-to-aspnet-mvc-4/_static/image5.png)
 
-按一下 [確定]。 Visual Studio 使用您剛才建立的 ASP.NET MVC 專案的預設範本，因此您有可用的應用程式立即而不做任何事 ！ 這是簡單&quot;Hello World ！&quot;專案和它的啟動您的應用程式的好地方。
+按一下 [確定 **Deploying Office Solutions**]。 Visual Studio 使用您剛才建立的 ASP.NET MVC 專案的預設範本，因此您有可用的應用程式立即而不做任何事 ！ 這是簡單&quot;Hello World ！&quot;專案和它的啟動您的應用程式的好地方。
 
 ![](intro-to-aspnet-mvc-4/_static/image6.png)
 

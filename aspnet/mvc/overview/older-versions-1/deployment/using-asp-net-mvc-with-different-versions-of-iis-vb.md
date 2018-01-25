@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 57a729501d15ebf9a533716b2a1767766954bb4c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6c9c3bf004b13677728c7c6bf2f5adf6a264dc49
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>ASP.NET MVC 中使用不同版本的 IIS (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 在本教學課程中，您可以了解如何使用 ASP.NET MVC 和 URL 路由，處理不同版本的 Internet Information Services。 您了解不同的策略來使用 （傳統模式） 的 IIS 7.0、 IIS 6.0 和舊版 IIS 的 ASP.NET MVC。
 
@@ -33,7 +33,7 @@ ASP.NET MVC framework 取決於 ASP.NET 路由瀏覽器要求路由至控制器�
 - IIS 7.0 （傳統模式）-您需要執行特殊的設定，若要使用 ASP.NET 路由。
 - IIS 6.0 或以下-您需要執行特殊的設定，若要使用 ASP.NET 路由。
 
-最新的 IIS 版本是版本 7.5 （在 Win7)。 IIS 的 IIS 7 是包含 Windows Server 2008 和 VISTA/SP1 及更高版本。 您也可以安裝 IIS 7.0 上 Vista 作業系統 Home Basic 以外的任何版本 (請參閱[https://technet.microsoft.com/en-us/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/en-us/library/cc731179%28WS.10%29.aspx))。
+最新的 IIS 版本是版本 7.5 （在 Win7)。 IIS 的 IIS 7 是包含 Windows Server 2008 和 VISTA/SP1 及更高版本。 您也可以安裝 IIS 7.0 上 Vista 作業系統 Home Basic 以外的任何版本 (請參閱[https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx))。
 
 IIS 7.0 支援兩種模式來處理要求。 您可以使用整合式的模式或傳統模式。 您不需要執行任何特殊組態步驟，在整合模式中使用 IIS 7.0 時。 不過，您需要使用傳統模式的 IIS 7.0 時執行其他設定。
 
@@ -93,7 +93,7 @@ IIS 7.0 可處理要求使用兩種不同的要求處理模式： 整合和傳�
 
 / Home/Index
 
-/ 產品/詳細資料/3
+/Product/Details/3
 
 / 產品
 
@@ -216,7 +216,7 @@ Global.asax 檔案中列出的 3 是完全相同的與先前的 Global.asax 檔�
 
 / Home/Index
 
-/ 產品/詳細資料/3
+/Product/Details/3
 
 / 產品
 

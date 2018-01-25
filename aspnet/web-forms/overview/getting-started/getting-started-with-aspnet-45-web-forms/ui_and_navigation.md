@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 98c96749781f577d9544c80f58404353d40848b2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7f1d8a1a473820a7c8da4c8086904cc41c86fd2a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="ui-and-navigation"></a>UI 和導覽
 ====================
@@ -215,7 +215,7 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 
 > [!NOTE] 
 > 
-> **秘訣**
+> **Tip**
 > 
 > 當您在開發期間輸入加入程式碼時，您就可以確定物件的有效成員找到，因為強型別資料控制項顯示可用 IntelliSense 所根據的成員。 IntelliSense 提供了適當的內容程式碼選項，當您輸入程式碼，例如屬性、 方法和物件。
 
@@ -288,8 +288,8 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 
 ## <a name="additional-resources"></a>其他資源
 
-[介紹程式設計 ASP.NET Web Pages](https://msdn.microsoft.com/en-us/library/ms178125.aspx)   
-[ASP.NET Web 伺服器控制項概觀](https://msdn.microsoft.com/en-us/library/zsyt68f1.aspx)   
+[介紹程式設計 ASP.NET Web Pages](https://msdn.microsoft.com/library/ms178125.aspx)   
+[ASP.NET Web 伺服器控制項概觀](https://msdn.microsoft.com/library/zsyt68f1.aspx)   
 [CSS 教學課程](http://www.w3schools.com/css/default.asp)
 
 >[!div class="step-by-step"]

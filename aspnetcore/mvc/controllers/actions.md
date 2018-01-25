@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/actions
-ms.openlocfilehash: cef493fc2010d1c82e5c1dfec85864539252b817
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 99dcf1bd4f0dc4fcb6169f48bd398c9e40c21a35
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>處理要求中 ASP.NET Core MVC 控制站
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 控制器使用模型的處理 （如果有的話） 的結果，並傳回適當的檢視和其相關聯的檢視資料或應用程式開發介面呼叫的結果。 進一步了解在[ASP.NET Core MVC 概觀](xref:mvc/overview)和[開始使用 ASP.NET Core MVC 和 Visual Studio](xref:tutorials/first-mvc-app/start-mvc)。
 
-控制器是*UI 層級*抽象概念。 其負責的部分是以確保要求的資料無效，並選擇應傳回哪些檢視 （或應用程式開發介面的結果）。 在構造良好的應用程式，它不會直接包含資料存取或商務邏輯。 相反地，服務處理這些責任委派給控制器。
+控制器是*UI 層級*抽象概念。 其負責的部分是以確保要求的資料無效，並選擇應傳回哪些檢視 （或應用程式開發介面的結果）。 在構造良好的應用程式，它不直接包含資料存取或商務邏輯。 相反地，服務處理這些責任委派給控制器。
 
 ## <a name="defining-actions"></a>定義動作
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="controller-helper-methods"></a>控制器的 Helper 方法
 
-控制站通常是繼承自[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，不過這並非必要。 衍生自`Controller`提供三種 helper 方法的存取：
+控制站通常是繼承自[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，不過這並非必要條件。 衍生自`Controller`提供三種 helper 方法的存取：
 
 #### <a name="1-methods-resulting-in-an-empty-response-body"></a>1.產生空的回應主體中的方法
 

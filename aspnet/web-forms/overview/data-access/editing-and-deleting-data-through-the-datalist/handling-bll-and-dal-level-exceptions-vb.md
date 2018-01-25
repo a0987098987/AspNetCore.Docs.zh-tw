@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 245e381eca2aca61be5f860d1ec9994b482a9863
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2bd2ccb13c44d104e8945840705a21738d8abd5c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-vb"></a>處理 BLL 和 DAL 層級例外狀況 (VB)
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 當引發例外狀況時，我們將指派到的例外狀況的詳細資料`ExceptionDetails`標籤控制項的`Text`屬性。 因為其檢視狀態為停用，在後續回傳時`Text`屬性 s 以程式設計方式變更將會遺失，再還原至預設的文字 （空字串），從而隱藏的警告訊息。
 
-若要判斷很有幫助的訊息顯示在頁面上，以引發錯誤，我們需要加入`Try ... Catch`封鎖`UpdateCommand`事件處理常式。 `Try`部分包含程式碼，可能會導致例外狀況，而`Catch`區塊包含遇到例外狀況時執行的程式碼。 簽出[例外狀況處理基礎觀念](https://msdn.microsoft.com/en-us/library/2w8f0bss.aspx)上一節中的.NET Framework 文件，如需詳細資訊`Try ... Catch`區塊。
+若要判斷很有幫助的訊息顯示在頁面上，以引發錯誤，我們需要加入`Try ... Catch`封鎖`UpdateCommand`事件處理常式。 `Try`部分包含程式碼，可能會導致例外狀況，而`Catch`區塊包含遇到例外狀況時執行的程式碼。 簽出[例外狀況處理基礎觀念](https://msdn.microsoft.com/library/2w8f0bss.aspx)上一節中的.NET Framework 文件，如需詳細資訊`Try ... Catch`區塊。
 
 
 [!code-vb[Main](handling-bll-and-dal-level-exceptions-vb/samples/sample5.vb)]
@@ -142,7 +142,7 @@ GridView 和 ObjectDataSource 提供包含任何在更新和刪除工作流程�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [例外狀況的設計指導方針](https://msdn.microsoft.com/en-us/library/ms298399.aspx)
+- [例外狀況的設計方針](https://msdn.microsoft.com/library/ms298399.aspx)
 - [錯誤記錄模組和處理常式 (ELMAH)](http://workspaces.gotdotnet.com/elmah) （記錄錯誤開放原始碼程式庫）
 - [Enterprise Library for.NET Framework 2.0](https://www.microsoft.com/downloads/details.aspx?familyid=5A14E870-406B-4F2A-B723-97BA84AE80B5&amp;displaylang=en) （包括例外狀況管理應用程式區塊）
 

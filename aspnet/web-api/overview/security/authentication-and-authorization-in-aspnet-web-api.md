@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 137ac45166be03ae3c4864f41666d2acd1a37dc2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2a4b5ed8a712b061b4afdf5a3adc9378dd72b37f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>驗證和授權的 ASP.NET Web API
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 Web API 會假設該驗證發生在主機中。 適用於虛擬主機，主機會為 HTTP 模組用於驗證的 IIS。 您可以將專案設定為使用任何驗證模組內建於 IIS 或 ASP.NET，或撰寫您自己的 HTTP 模組來執行自訂驗證。
 
-當主應用程式會驗證使用者時，它會建立*主體*，也就是[IPrincipal](https://msdn.microsoft.com/en-us/library/System.Security.Principal.IPrincipal.aspx)物件，表示執行程式碼的安全性內容。 主機將主體附加至目前的執行緒藉由設定**Thread.CurrentPrincipal**。 主體包含相關聯**識別**物件，其中包含使用者的相關資訊。 如果使用者已經過驗證， **Identity.IsAuthenticated**屬性會傳回**true**。 針對匿名要求， **IsAuthenticated**傳回**false**。 如需有關主體的詳細資訊，請參閱[以角色為基礎的安全性](https://msdn.microsoft.com/en-us/library/shz8h065.aspx)。
+當主應用程式會驗證使用者時，它會建立*主體*，也就是[IPrincipal](https://msdn.microsoft.com/library/System.Security.Principal.IPrincipal.aspx)物件，表示執行程式碼的安全性內容。 主機將主體附加至目前的執行緒藉由設定**Thread.CurrentPrincipal**。 主體包含相關聯**識別**物件，其中包含使用者的相關資訊。 如果使用者已經過驗證， **Identity.IsAuthenticated**屬性會傳回**true**。 針對匿名要求， **IsAuthenticated**傳回**false**。 如需有關主體的詳細資訊，請參閱[以角色為基礎的安全性](https://msdn.microsoft.com/library/shz8h065.aspx)。
 
 ### <a name="http-message-handlers-for-authentication"></a>HTTP 訊息處理常式進行驗證
 
@@ -58,7 +58,7 @@ Web API 會假設該驗證發生在主機中。 適用於虛擬主機，主機�
 如果您的應用程式會執行任何自訂驗證邏輯，您必須設定兩個位置上的主體：
 
 - **Thread.CurrentPrincipal**。 這個屬性是在.NET 中設定執行緒的主體的標準方式。
-- **HttpContext.Current.User**。 這個屬性是 ASP.NET 特定的項目。
+- **HttpContext.Current.User**. 這個屬性是 ASP.NET 特定的項目。
 
 下列程式碼會示範如何設定主體：
 
@@ -78,7 +78,7 @@ Web API 會假設該驗證發生在主機中。 適用於虛擬主機，主機�
 <a id="auth3"></a>
 ### <a name="using-the-authorize-attribute"></a>使用 [授權] 屬性
 
-Web 應用程式開發介面提供的內建的授權篩選條件中， [AuthorizeAttribute](https://msdn.microsoft.com/en-us/library/system.web.http.authorizeattribute.aspx)。 此篩選條件會檢查是否已驗證使用者。 如果沒有，它會傳回 HTTP 狀態碼 401 （未經授權），而不叫用動作。
+Web 應用程式開發介面提供的內建的授權篩選條件中， [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx)。 此篩選條件會檢查是否已驗證使用者。 如果沒有，它會傳回 HTTP 狀態碼 401 （未經授權），而不叫用動作。
 
 您可以套用全域，在控制器層級，或 inidivual 動作的層級的篩選條件。
 
@@ -112,7 +112,7 @@ Web 應用程式開發介面提供的內建的授權篩選條件中， [Authoriz
 
 - **AuthorizeAttribute**。 擴充此類別來執行目前的使用者和使用者的角色為基礎的授權邏輯。
 - **AuthorizationFilterAttribute**。 擴充此類別來執行同步授權邏輯不一定是根據目前的使用者或角色。
-- **IAuthorizationFilter**。 實作這個介面來執行非同步的授權邏輯。例如，如果您的授權邏輯呼叫非同步 I/O 或網路。 (如果受限於 CPU 授權邏輯，比較容易衍生自**AuthorizationFilterAttribute**，因為您不需要撰寫的非同步方法。)
+- **IAuthorizationFilter**. 實作這個介面來執行非同步的授權邏輯。例如，如果您的授權邏輯呼叫非同步 I/O 或網路。 (如果受限於 CPU 授權邏輯，比較容易衍生自**AuthorizationFilterAttribute**，因為您不需要撰寫的非同步方法。)
 
 下圖顯示的類別階層**AuthorizeAttribute**類別。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: c0d6fd421dad02298326d1975ae68d1e7cc78d8c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8376c6537d693841a621158358cc8f69cda0a1d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>SignalR 範圍外使用 Redis (SignalR 1.x)
 ====================
@@ -42,7 +42,7 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 > SignalR 範圍外 Redis 與不支援 Redis 的叢集。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 我們可以詳細的教學課程之前，以下是您將執行的快速概觀。
 
@@ -132,7 +132,7 @@ Redis 是記憶體中索引鍵-值存放區。 它也支援發行/訂閱模型�
 
 檢查 Web 管理服務正在執行。 否則，請啟動服務。 （如果您沒有看到 Web 管理服務中 Windows 服務的清單，請確定您加入的 IIS 角色時，已安裝管理服務。）
 
-根據預設，Web 管理服務會接聽 TCP 連接埠 8172 上。 在 Windows 防火牆中建立新的輸入的規則以允許連接埠 8172 上的 TCP 流量。 如需詳細資訊，請參閱[設定防火牆規則](https://technet.microsoft.com/en-us/library/dd448559(WS.10).aspx)。 （如果您裝載在 Azure 上的 Vm，您可以直接在 Azure 入口網站中。 請參閱[如何設定虛擬機器的端點](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/)。)
+根據預設，Web 管理服務會接聽 TCP 連接埠 8172 上。 在 Windows 防火牆中建立新的輸入的規則以允許連接埠 8172 上的 TCP 流量。 如需詳細資訊，請參閱[設定防火牆規則](https://technet.microsoft.com/library/dd448559(WS.10).aspx)。 （如果您裝載在 Azure 上的 Vm，您可以直接在 Azure 入口網站中。 請參閱[如何設定虛擬機器的端點](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)。)
 
 現在您已準備好部署從開發電腦的 Visual Studio 專案到伺服器。 在 [方案總管] 中，以滑鼠右鍵按一下方案，然後按一下**發行**。
 

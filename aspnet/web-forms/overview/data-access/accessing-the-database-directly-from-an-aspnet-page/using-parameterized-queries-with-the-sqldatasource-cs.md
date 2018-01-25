@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7b32a664975254dcc1d015f2400df30d05346948
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b66c68b8306b905a800465ab0ed720ae6f9d16b9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-c"></a>使用參數化的查詢使用 SqlDataSource (C#)
 ====================
@@ -209,7 +209,7 @@ O d e s 為了說明使用 SqlDataSource 中預存程序，在名為 Northwind �
 **圖 11**： 使用 Hard-Coded 值為 1，傳回 「 飲料 」 分類中的產品 ([按一下以檢視完整大小的影像](using-parameterized-queries-with-the-sqldatasource-cs/_static/image22.png))
 
 
-下列所示宣告式標記，當使用預存程序，SqlDataSource s`SelectCommand`屬性設定為預存程序名稱和[`SelectCommandType`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.selectcommandtype.aspx)設`StoredProcedure`，這表示`SelectCommand`是預存程序，而不是特定 SQL 陳述式的名稱。
+下列所示宣告式標記，當使用預存程序，SqlDataSource s`SelectCommand`屬性設定為預存程序名稱和[`SelectCommandType`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.selectcommandtype.aspx)設`StoredProcedure`，這表示`SelectCommand`是預存程序，而不是特定 SQL 陳述式的名稱。
 
 
 [!code-aspx[Main](using-parameterized-queries-with-the-sqldatasource-cs/samples/sample9.aspx)]
@@ -237,9 +237,9 @@ O d e s 為了說明使用 SqlDataSource 中預存程序，在名為 Northwind �
 
 `ORDER BY NEWID()`傳回以隨機順序排序的記錄 (請參閱[使用`NEWID()`隨機排序記錄](http://www.sqlteam.com/item.asp?ItemID=8747))。 `SELECT TOP 1`從結果集傳回第一筆記錄。 放在一起，此查詢會傳回`CategoryID`和`CategoryName`從單一的隨機選取的分類資料行值。
 
-若要顯示類別目錄 s`CategoryName`值、 標籤 Web 控制項加入網頁，請設定其`ID`屬性`CategoryNameLabel`，並以清除其`Text`屬性。 若要從 SqlDataSource 控制項，以程式設計方式擷取資料，我們要叫用其`Select()`方法。 [ `Select()`方法](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.select.aspx)單一輸入的參數的型別必須要有[ `DataSourceSelectArguments` ](https://msdn.microsoft.com/en-us/library/system.web.ui.datasourceselectarguments.aspx)，以指定如何將資料應該依現狀在傳回之前。 這可以包含指示排序及篩選資料，而且由 Web 控制項時排序，或從 SqlDataSource 控制項的資料進行分頁的資料。 我們的範例，我們不 t 需要資料在傳回之前修改，因此將會傳入`DataSourceSelectArguments.Empty`物件。
+若要顯示類別目錄 s`CategoryName`值、 標籤 Web 控制項加入網頁，請設定其`ID`屬性`CategoryNameLabel`，並以清除其`Text`屬性。 若要從 SqlDataSource 控制項，以程式設計方式擷取資料，我們要叫用其`Select()`方法。 [ `Select()`方法](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.select.aspx)單一輸入的參數的型別必須要有[ `DataSourceSelectArguments` ](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx)，以指定如何將資料應該依現狀在傳回之前。 這可以包含指示排序及篩選資料，而且由 Web 控制項時排序，或從 SqlDataSource 控制項的資料進行分頁的資料。 我們的範例，我們不 t 需要資料在傳回之前修改，因此將會傳入`DataSourceSelectArguments.Empty`物件。
 
-`Select()`方法會傳回該物件會實作`IEnumerable`。 SqlDataSource 控制項 s 的值而定的精確的類型傳回[`DataSourceMode`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx)。 上一個教學課程所述，這個屬性可以設定為值的其中一個`DataSet`或`DataReader`。 如果設定為`DataSet`、`Select()`方法會傳回[DataView](https://msdn.microsoft.com/en-us/library/01s96x0z.aspx)物件; 如果設為`DataReader`，它會傳回該物件會實作[ `IDataReader` ](https://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx)。 因為`RandomCategoryDataSource`SqlDataSource 具有其`DataSourceMode`屬性設定為`DataSet`（預設值），我們會使用 DataView 物件。
+`Select()`方法會傳回該物件會實作`IEnumerable`。 SqlDataSource 控制項 s 的值而定的精確的類型傳回[`DataSourceMode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.datasourcemode.aspx)。 上一個教學課程所述，這個屬性可以設定為值的其中一個`DataSet`或`DataReader`。 如果設定為`DataSet`、`Select()`方法會傳回[DataView](https://msdn.microsoft.com/library/01s96x0z.aspx)物件; 如果設為`DataReader`，它會傳回該物件會實作[ `IDataReader` ](https://msdn.microsoft.com/library/system.data.idatareader.aspx)。 因為`RandomCategoryDataSource`SqlDataSource 具有其`DataSourceMode`屬性設定為`DataSet`（預設值），我們會使用 DataView 物件。
 
 下列程式碼說明如何擷取的記錄從`RandomCategoryDataSource`為 DataView SqlDataSource 以及如何讀取`CategoryName`從第一個 DataView 資料列的資料行值：
 

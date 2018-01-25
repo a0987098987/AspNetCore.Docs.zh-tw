@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: 61e357198ffa4e93d35b7fa4619270da630547c6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 23195949121cd13ca4b1809b8db91a7320d1fdd2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>設定 Web 伺服器的 Web Deploy 發行 （遠端代理程式）
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 - 伺服器具有靜態 IP 位址。
 
 > [!NOTE]
-> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/en-us/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/en-us/library/cc754203(v=ws.10).aspx)。 遠端代理程式服務的 IIS 6 及更新版本支援，並不需要加入網域。 不過，在本教學課程步驟開發及測試在 IIS 7.5 上，為其他版本的程序可能會不同。
+> 如需有關如何將電腦加入網域的詳細資訊，請參閱[將電腦加入網域並登入](https://technet.microsoft.com/library/cc725618(v=WS.10).aspx)。 如需有關如何設定靜態 IP 位址的詳細資訊，請參閱[設定靜態 IP 位址](https://technet.microsoft.com/library/cc754203(v=ws.10).aspx)。 遠端代理程式服務的 IIS 6 及更新版本支援，並不需要加入網域。 不過，在本教學課程步驟開發及測試在 IIS 7.5 上，為其他版本的程序可能會不同。
 
 
 ## <a name="install-products-and-components"></a>安裝的產品和元件
@@ -108,7 +108,7 @@ ms.lasthandoff: 11/10/2017
 11. 檢閱授權條款，然後如果您同意條款，按一下**我接受**。
 12. 當安裝完成時，按一下 **完成**，然後關閉**Web Platform Installer 3.0**視窗。
 
-如果您安裝 IIS 之前，您會安裝.NET Framework 4.0，您需要執行[ASP.NET IIS 註冊工具](https://msdn.microsoft.com/en-us/library/k6h9cz8h(v=VS.100).aspx)(aspnet\_regiis.exe) 向 IIS 註冊 ASP.NET 的最新版本。 如果沒有這樣做，您會發現，IIS 會提供靜態內容 （例如 HTML 檔） 不會有任何問題，但它會傳回**HTTP 錯誤 404.0 – 找不到**當您嘗試瀏覽至 ASP.NET 內容。 您可以使用此程序，確定已註冊 ASP.NET 4.0。
+如果您安裝 IIS 之前，您會安裝.NET Framework 4.0，您需要執行[ASP.NET IIS 註冊工具](https://msdn.microsoft.com/library/k6h9cz8h(v=VS.100).aspx)(aspnet\_regiis.exe) 向 IIS 註冊 ASP.NET 的最新版本。 如果沒有這樣做，您會發現，IIS 會提供靜態內容 （例如 HTML 檔） 不會有任何問題，但它會傳回**HTTP 錯誤 404.0 – 找不到**當您嘗試瀏覽至 ASP.NET 內容。 您可以使用此程序，確定已註冊 ASP.NET 4.0。
 
 **若要向 IIS 註冊 ASP.NET 4.0**
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 11/10/2017
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image4.png)
 
     > [!NOTE]
-    > 在實際執行環境中，您可能會想將網站連接埠 80 上的主控，並設定主機標頭，以及比對 DNS 記錄。 如需有關如何在 IIS 7 中設定主機標頭的詳細資訊，請參閱[設定網站 (IIS 7) 的主機標頭](https://technet.microsoft.com/en-us/library/cc753195(WS.10).aspx)。 如需有關 Windows Server 2008 R2 中 DNS 伺服器角色的詳細資訊，請參閱[DNS 伺服器概觀](https://technet.microsoft.com/en-gb/library/cc770392.aspx)和[DNS 伺服器](https://technet.microsoft.com/en-us/windowsserver/dd448607)。
+    > 在實際執行環境中，您可能會想將網站連接埠 80 上的主控，並設定主機標頭，以及比對 DNS 記錄。 如需有關如何在 IIS 7 中設定主機標頭的詳細資訊，請參閱[設定網站 (IIS 7) 的主機標頭](https://technet.microsoft.com/library/cc753195(WS.10).aspx)。 如需有關 Windows Server 2008 R2 中 DNS 伺服器角色的詳細資訊，請參閱[DNS 伺服器概觀](https://technet.microsoft.com/en-gb/library/cc770392.aspx)和[DNS 伺服器](https://technet.microsoft.com/windowsserver/dd448607)。
 9. 在 [ **動作** ] 窗格的 [ **編輯站台**] 下方，按一下 [ **繫結**]。
 10. 在**站台繫結**對話方塊中，按一下 **新增**。
 
@@ -198,8 +198,8 @@ ms.lasthandoff: 11/10/2017
 
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image8.png)
 5. 在**選取使用者或群組**] 對話方塊中，輸入**IIS\_IUSRS**，按一下**檢查名稱**，然後按一下 [**確定**。
-6. 在**權限***[資料夾名稱]*對話方塊中，請注意，新的群組已經被委派**讀取&amp;執行**，**清單資料夾內容**，和**讀取**預設權限。 保留不變，然後按一下**確定**。
-7. 按一下**確定**關閉*[資料夾名稱]***屬性** 對話方塊。
+6. 在 **權限 * * * [資料夾名稱]*對話方塊中，請注意，新的群組已經被委派**讀取&amp;執行**，**列出資料夾內容**，和**讀取**預設權限。 保留不變，然後按一下**確定**。
+7. 按一下**確定**關閉*[資料夾名稱] * * * 屬性** 對話方塊。
 
 做為最終工作之前您嘗試將任何 web 套件部署到您的伺服器，您應該確認 Web Deployment Agent Service 正在執行。 當您部署封裝，以從遠端電腦時，Web Deployment Agent Service 負責擷取及安裝套件的內容。 當您安裝 Web Deployment Tool，依預設並啟動服務，並會在 Network Service 識別下執行。
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/10/2017
 
 根據預設，遠端代理程式服務會接聽 TCP 連接埠 80，這個 url:
 
-http:// [*伺服器名稱*] / MSDEPLOYAGENTSERVICE
+http://[*server name*]/MSDEPLOYAGENTSERVICE
 
 在大部分情況下，您不需要任何額外的防火牆規則設定為遠端代理程式服務，因為網頁伺服器通常會接聽通訊埠 80 上的 HTTP 要求。 如果您自訂您的安裝以非標準連接埠上接聽，您必須視需要設定防火牆例外狀況。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: f1538c933ff9e8e680d70ce1e63d24b189be47e5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb0f06a3ca2b39a4a952c33cea70136c7c5af7a8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="authentication-and-authorization-for-signalr-hubs"></a>SignalR 中樞的驗證和授權
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 此主題包括下列章節：
 
@@ -55,13 +55,13 @@ ms.lasthandoff: 11/10/2017
     - [使用表單驗證 cookie](#cookie)
     - [Windows 驗證](#windows)
     - [連接標頭](#header)
-    - [憑證](#certificate)
+    - [Certificate](#certificate)
 
 <a id="authorizeattribute"></a>
 
 ## <a name="authorize-attribute"></a>授權屬性
 
-提供 SignalR[授權](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者或角色有存取權的集線器或方法。 這個屬性位於`Microsoft.AspNet.SignalR`命名空間。 您套用`Authorize`屬性到集線器或中樞中的特定方法。 當您將套用`Authorize`屬性套用至 hub 類別，指定的授權需求套用至所有中樞中的方法。 本主題提供您可以將套用的授權需求的不同類型的範例。 不含`Authorize`屬性，已連線用戶端可以存取中樞上的任何公用方法。
+提供 SignalR[授權](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者或角色有存取權的集線器或方法。 這個屬性位於`Microsoft.AspNet.SignalR`命名空間。 您套用`Authorize`屬性到集線器或中樞中的特定方法。 當您將套用`Authorize`屬性套用至 hub 類別，指定的授權需求套用至所有中樞中的方法。 本主題提供您可以將套用的授權需求的不同類型的範例。 不含`Authorize`屬性，已連線用戶端可以存取中樞上的任何公用方法。
 
 如果您已經定義名為"Admin"，web 應用程式中的角色，您可以指定只有該角色中的使用者可以存取的集線器以下列程式碼。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="require-authentication-for-all-hubs"></a>需要之所有驗證
 
-您可以對所有中樞和中樞方法進行驗證，應用程式中，藉由呼叫[RequireAuthentication](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubpipelineextensions.requireauthentication(v=vs.111).aspx)應用程式啟動時的方法。 當您有多個中樞，並想要強制所有的驗證需求，您可以使用這個方法。 使用此方法，您無法指定角色、 使用者或外寄的授權的需求。 您只可以指定存取中樞的方法是限制為已驗證的使用者。 不過，您仍然可以套用 Authorize 屬性中心或方法，以指定其他需求。 基本驗證的需求會加入您指定在屬性中的任何需求。
+您可以對所有中樞和中樞方法進行驗證，應用程式中，藉由呼叫[RequireAuthentication](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubpipelineextensions.requireauthentication(v=vs.111).aspx)應用程式啟動時的方法。 當您有多個中樞，並想要強制所有的驗證需求，您可以使用這個方法。 使用此方法，您無法指定角色、 使用者或外寄的授權的需求。 您只可以指定存取中樞的方法是限制為已驗證的使用者。 不過，您仍然可以套用 Authorize 屬性中心或方法，以指定其他需求。 基本驗證的需求會加入您指定在屬性中的任何需求。
 
 下列範例會示範已驗證的使用者限制所有中樞方法的啟動檔案。
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="customized-authorization"></a>自訂的授權
 
-如果您需要自訂如何決定授權，您可以建立衍生自類別`AuthorizeAttribute`並覆寫[UserAuthorized](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.authorizeattribute.userauthorized(v=vs.111).aspx)方法。 針對每個要求，SignalR 會叫用這個方法，以判斷是否授權使用者完成要求。 在覆寫方法中，您會為授權案例提供必要的邏輯。 下列範例會示範如何強制執行宣告式身分識別授權。
+如果您需要自訂如何決定授權，您可以建立衍生自類別`AuthorizeAttribute`並覆寫[UserAuthorized](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute.userauthorized(v=vs.111).aspx)方法。 針對每個要求，SignalR 會叫用這個方法，以判斷是否授權使用者完成要求。 在覆寫方法中，您會為授權案例提供必要的邏輯。 下列範例會示範如何強制執行宣告式身分識別授權。
 
 [!code-csharp[Main](hub-authorization/samples/sample4.cs)]
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="cookie"></a>Cookie
 
-當.NET 用戶端會使用 ASP.NET 表單驗證的集線器與互動時，您必須以手動方式在連接上設定的驗證 cookie。 新增 cookie`CookieContainer`屬性[HubConnection](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.client.hubs.hubconnection(v=vs.111).aspx)物件。 下列範例主控台應用程式會從網頁擷取驗證 cookie 並將該 cookie 新增到連線。
+當.NET 用戶端會使用 ASP.NET 表單驗證的集線器與互動時，您必須以手動方式在連接上設定的驗證 cookie。 新增 cookie`CookieContainer`屬性[HubConnection](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.hubs.hubconnection(v=vs.111).aspx)物件。 下列範例主控台應用程式會從網頁擷取驗證 cookie 並將該 cookie 新增到連線。
 
 [!code-csharp[Main](hub-authorization/samples/sample7.cs)]
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="windows-authentication"></a>Windows 驗證
 
-使用 Windows 驗證時，您可以使用傳遞目前使用者的認證[DefaultCredentials](https://msdn.microsoft.com/en-us/library/system.net.credentialcache.defaultcredentials.aspx)屬性。 您可以設定連線認證 DefaultCredentials 的值。
+使用 Windows 驗證時，您可以使用傳遞目前使用者的認證[DefaultCredentials](https://msdn.microsoft.com/library/system.net.credentialcache.defaultcredentials.aspx)屬性。 您可以設定連線認證 DefaultCredentials 的值。
 
 [!code-csharp[Main](hub-authorization/samples/sample9.cs?highlight=6)]
 
@@ -152,6 +152,6 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="certificate"></a>憑證
 
-您可以傳遞用戶端憑證，以驗證使用者。 建立連接時，您可以加入憑證。 下列範例顯示如何只將用戶端憑證新增至連線;它不會顯示完整的主控台應用程式。 它會使用[X509Certificate](https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate.aspx)類別提供幾種不同的方式建立憑證。
+您可以傳遞用戶端憑證，以驗證使用者。 建立連接時，您可以加入憑證。 下列範例顯示如何只將用戶端憑證新增至連線;它不會顯示完整的主控台應用程式。 它會使用[X509Certificate](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate.aspx)類別提供幾種不同的方式建立憑證。
 
 [!code-csharp[Main](hub-authorization/samples/sample11.cs?highlight=6)]

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 0af5f7e841bb43fa41fa0daa4ad8d59ee0596404
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4a5433a7dd70e27b59163822ba427b026c3f4ce0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>持續整合與持續傳遞 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 下圖從[Microsoft Patterns and Practices 電子書持續傳遞有關](http://aka.ms/ReleasePipeline)說明典型的工作流程。 按一下以查看它的映像完整大小，以其原始內容。
 
-[![持續傳遞工作流程](continuous-integration-and-continuous-delivery/_static/image1.png)](https://msdn.microsoft.com/en-us/library/dn449955.aspx)
+[![持續傳遞工作流程](continuous-integration-and-continuous-delivery/_static/image1.png)](https://msdn.microsoft.com/library/dn449955.aspx)
 
 ## <a name="how-the-cloud-enables-cost-effective-ci-and-cd"></a>雲端可以讓具成本效益的 CI 和 CD
 
@@ -65,14 +65,14 @@ VSTS 提供功能，可協助您從規劃到部署的應用程式開發的數的
 
 ## <a name="resources"></a>資源
 
-如需詳細資訊，請參閱[部署在 Azure App Service web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/)。
+如需詳細資訊，請參閱[部署在 Azure App Service web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-deploy/)。
 
 另請參閱下列資源：
 
 - [建立與 Team Foundation Server 2012 的發行管線](http://aka.ms/ReleasePipeline)。 電子書的實際操作實驗室和範例程式碼由 Microsoft Patterns and Practices，深入了解介紹持續傳遞。 涵蓋如何使用 Visual Studio Lab Management 和 Visual Studio Release Management。
 - [ALM Ranger DevOps 工具和指引](https://aka.ms/vsarsolutions/)。 DevOps Workbench 範例隨附的方案和共同作業與模式中的實用指導方針，導入了 ALM Ranger&amp;實務書籍*建置與 TFS 2012 的發行管線*，做為啟動的絕佳方式了解的概念 DevOps &amp; TFS 2012，促使輪胎 Release Management。 本指南示範如何一次建置並部署至多個環境。
-- [For Continuous Delivery with Visual Studio 2012 測試](https://msdn.microsoft.com/en-us/library/jj159345.aspx)。 電子書，由 Microsoft Patterns and Practices，說明如何將自動化測試持續傳遞與整合。
-- [WindowsAzureDeploymentTracker](https://github.com/RyanTBerry/WindowsAzureDeploymentTracker)。 設計用來擷取從 TFS （根據標籤），建置工具的原始程式碼建置、 封裝、 讓其他人 DevOps 角色中設定特定層面，和將它推送至 Azure。 分析工具會追蹤部署程序，才能啟用 「 回復 」 到先前部署版本的作業。 此工具沒有外部相依性，並可在 TFS 應用程式開發介面和 Azure SDK 獨立使用。
+- [For Continuous Delivery with Visual Studio 2012 測試](https://msdn.microsoft.com/library/jj159345.aspx)。 電子書，由 Microsoft Patterns and Practices，說明如何將自動化測試持續傳遞與整合。
+- [WindowsAzureDeploymentTracker](https://github.com/RyanTBerry/WindowsAzureDeploymentTracker). 設計用來擷取從 TFS （根據標籤），建置工具的原始程式碼建置、 封裝、 讓其他人 DevOps 角色中設定特定層面，和將它推送至 Azure。 分析工具會追蹤部署程序，才能啟用 「 回復 」 到先前部署版本的作業。 此工具沒有外部相依性，並可在 TFS 應用程式開發介面和 Azure SDK 獨立使用。
 - [持續傳遞： 透過組建、 測試和自動化部署可靠軟體釋放](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1377126361)。 Jez 卑微書。
 - [釋放它 ！設計和部署可實際執行的軟體](https://www.amazon.com/Release-It-Production-Ready-Pragmatic-Programmers/dp/0978739213)。 本書由 Michael T Nygard。
 

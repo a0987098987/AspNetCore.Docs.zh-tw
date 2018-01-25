@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 99d6b98bb7efa2f63e0c19b8623fd42ed92bdbaf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e7552abb30aa26d3aaceb3312c00661c6d4d6cf8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a>插入、 更新和刪除資料 (VB) 的概觀
 ====================
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/10/2017
 
 ObjectDataSource 包含參數的每個輸入參數為其相關聯的方法，就像一份`SelectParameter`s 時的存在 ObjectDataSource 呼叫選取的方法需要輸入的參數的設定時 (例如`GetProductsByCategoryID(categoryID)`). 我們稍後將會看到這些值`DeleteParameters`， `UpdateParameters`，和`InsertParameters`會自動設定的 GridView、 DetailsView 和 FormView 再叫用 ObjectDataSource `Insert()`， `Update()`，或`Delete()`方法。 這些值也可以設定以程式設計的方式如有需要因為在未來的教學課程中，我們將討論。
 
-它的一個副作用使用精靈來設定 ObjectDataSource 是 Visual Studio 設定[Where 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.oldvaluesparameterformatstring(VS.80).aspx)至`original_{0}`。 這個屬性值用於包含正在編輯之資料的原始值，並在兩個案例中很有用：
+它的一個副作用使用精靈來設定 ObjectDataSource 是 Visual Studio 設定[Where 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.oldvaluesparameterformatstring(VS.80).aspx)至`original_{0}`。 這個屬性值用於包含正在編輯之資料的原始值，並在兩個案例中很有用：
 
 - 如果編輯記錄，使用者就可以變更主索引鍵值。 在此情況下，新的主要金鑰值和原始主索引鍵值必須提供使原始的主索引鍵值的記錄可以找到並據以更新其值。
 - 當使用開放式並行存取。 開放式並行存取是一種技術，確定兩個同時連接的使用者不會覆寫彼此的變更，以及主題未來教學課程。
@@ -168,8 +168,8 @@ ObjectDataSource 包含參數的每個輸入參數為其相關聯的方法，就
 
 繫結至其智慧標籤透過 ObjectDataSource 的 GridView 有兩個好處：
 
-- BoundFields 和 CheckBoxFields 會自動建立每個 ObjectDataSource 所傳回的欄位。 此外，BoundField 和 CheckBoxField 的屬性會根據設定的基礎欄位中繼資料。 例如， `ProductID`， `CategoryName`，和`SupplierName`欄位標示為以唯讀狀態中`ProductsDataTable`，因此不應該是可更新編輯時。 若要配合此，這些 BoundFields' [ReadOnly 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.boundfield.readonly(VS.80).aspx)設為`True`。
-- [DataKeyNames 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.datakeynames(VS.80).aspx)指派給基礎物件的主索引鍵欄位。 這是必要時使用 GridView 編輯或刪除資料，因為在進行這個屬性會指出欄位 （或一組欄位），唯一識別每一筆記錄。 如需有關`DataKeyNames`屬性，會回頭[主要/詳細說明可選取的主要 GridView 使用詳細資料 DetailView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)教學課程。
+- BoundFields 和 CheckBoxFields 會自動建立每個 ObjectDataSource 所傳回的欄位。 此外，BoundField 和 CheckBoxField 的屬性會根據設定的基礎欄位中繼資料。 例如， `ProductID`， `CategoryName`，和`SupplierName`欄位標示為以唯讀狀態中`ProductsDataTable`，因此不應該是可更新編輯時。 若要配合此，這些 BoundFields' [ReadOnly 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.boundfield.readonly(VS.80).aspx)設為`True`。
+- [DataKeyNames 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.datakeynames(VS.80).aspx)指派給基礎物件的主索引鍵欄位。 這是必要時使用 GridView 編輯或刪除資料，因為在進行這個屬性會指出欄位 （或一組欄位），唯一識別每一筆記錄。 如需有關`DataKeyNames`屬性，會回頭[主要/詳細說明可選取的主要 GridView 使用詳細資料 DetailView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)教學課程。
 
 雖然 GridView 可透過 [屬性] 視窗或宣告式語法 ObjectDataSource 繫結，這樣需要您手動加入適當的 BoundField 和`DataKeyNames`標記。
 
@@ -327,7 +327,7 @@ CommandField 包含數個`ShowXButton`指出哪些系列的按鈕會顯示在 Co
 
 按一下 [刪除] 按鈕啟動事件的相同順序，如同 GridView： 的回傳。後面接著填入其 ObjectDataSource DetailsView`DeleteParameters`根據`DataKeyNames`值;，並已完成，但在呼叫其 ObjectDataSource`Delete()`方法，從資料庫中實際移除產品。 編輯 DetailsView 中也能運作，以相同的 GridView 的方式。
 
-插入，使用者會看見新按鈕，按一下時，會呈現在 DetailsView 中 「 插入模式 」。 插入模式 使用 新增 按鈕和會取代插入 和 取消 5d; 按鈕只有那些 BoundFields 其`InsertVisible`屬性設定為`True`（預設值） 會顯示。 識別做為自動遞增的欄位，例如那些資料欄位`ProductID`，有其[InsertVisible 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datacontrolfield.insertvisible(VS.80).aspx)設`False`繫結至資料來源透過智慧標籤的 DetailsView 時。
+插入，使用者會看見新按鈕，按一下時，會呈現在 DetailsView 中 「 插入模式 」。 插入模式 使用 新增 按鈕和會取代插入 和 取消 5d; 按鈕只有那些 BoundFields 其`InsertVisible`屬性設定為`True`（預設值） 會顯示。 識別做為自動遞增的欄位，例如那些資料欄位`ProductID`，有其[InsertVisible 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datacontrolfield.insertvisible(VS.80).aspx)設`False`繫結至資料來源透過智慧標籤的 DetailsView 時。
 
 當繫結的 DetailsView 透過智慧標籤的資料來源，Visual Studio 設定`InsertVisible`屬性`False`只適用於自動遞增的欄位。 唯讀欄位，例如`CategoryName`和`SupplierName`，將會顯示在 「 插入模式 」 使用者介面中，除非其`InsertVisible`屬性明確設定為`False`。 請花一點時間來設定這兩個欄位`InsertVisible`屬性`False`，透過在 DetailsView 的宣告式語法或透過編輯的欄位中的智慧標籤連結。 圖 19 顯示設定`InsertVisible`屬性`False`編輯欄位上按一下連結。
 
@@ -354,7 +354,7 @@ CommandField 包含數個`ShowXButton`指出哪些系列的按鈕會顯示在 Co
 
 
 > [!NOTE]
-> 在 DetailsView 的[CurrentMode 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.currentmode(VS.80).aspx)指出所顯示的介面，而且可以是下列值之一： `Edit`， `Insert`，或`ReadOnly`。 [DefaultMode 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.defaultmode(VS.80).aspx)指出的模式 DetailsView 返回編輯之後，或插入已經完成，並且適用於顯示的 DetailsView 永久處於編輯，或插入模式。
+> 在 DetailsView 的[CurrentMode 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.currentmode(VS.80).aspx)指出所顯示的介面，而且可以是下列值之一： `Edit`， `Insert`，或`ReadOnly`。 [DefaultMode 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.defaultmode(VS.80).aspx)指出的模式 DetailsView 返回編輯之後，或插入已經完成，並且適用於顯示的 DetailsView 永久處於編輯，或插入模式。
 
 
 的點，並按一下插入及編輯 DetailsView 的功能會受困於從 GridView 相同的限制： 使用者必須輸入現有`CategoryID`和`SupplierID`到文字方塊中的值; 介面缺少任何驗證邏輯中，不允許的產品欄位`NULL`值沒有預設值或在資料庫層級指定的值必須包含在插入介面，依此類推。

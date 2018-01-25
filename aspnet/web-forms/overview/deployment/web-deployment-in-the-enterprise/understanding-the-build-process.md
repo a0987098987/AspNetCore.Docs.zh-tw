@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
-ms.openlocfilehash: 551e31a7a2d0a4e6259f74977c2f8e21cb694e42
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3efcefc40dc135ff42f55911036f8b38b5aa13b1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="understanding-the-build-process"></a>了解建置程序
 ====================
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> **/Fl**切換 (簡稱**/fileLogger**) 組建輸出記錄到名為*msbuild.log*目前目錄中。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/en-us/library/ms164311.aspx)。
+> **/Fl**切換 (簡稱**/fileLogger**) 組建輸出記錄到名為*msbuild.log*目前目錄中。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
 
 此時，MSBuild 開始執行、 載入*Publish.proj*檔案，並開始處理中的指示。 第一個指令會告知 MSBuild 匯入專案檔**TargetEnvPropsFile**參數指定。
@@ -178,7 +178,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 **DbPublishPackages**項目會包含單一值的路徑*ContactManager.Database.deploymanifest*檔案。
 
 > [!NOTE]
-> 當您建置資料庫專案，並為 MSBuild 專案檔使用相同的結構描述時，會產生.deploymanifest 檔案。 它包含部署資料庫，包括資料庫結構描述 (.dbschema) 的位置以及任何的預先部署和部署後指令碼的詳細資料所需的所有資訊。 如需詳細資訊，請參閱[概觀的資料庫建置和部署](https://msdn.microsoft.com/en-us/library/aa833165.aspx)。
+> 當您建置資料庫專案，並為 MSBuild 專案檔使用相同的結構描述時，會產生.deploymanifest 檔案。 它包含部署資料庫，包括資料庫結構描述 (.dbschema) 的位置以及任何的預先部署和部署後指令碼的詳細資料所需的所有資訊。 如需詳細資訊，請參閱[概觀的資料庫建置和部署](https://msdn.microsoft.com/library/aa833165.aspx)。
 
 
 您將進一步了解如何部署封裝和資料庫部署資訊清單建立及用於[建置和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)和[部署資料庫專案](deploying-database-projects.md)。
@@ -193,13 +193,13 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 [!code-xml[Main](understanding-the-build-process/samples/sample10.xml)]
 
 
-這是範例*目標批次處理*。 MSBuild 專案檔案中的批次處理是用於逐一查看集合的技術。 值**輸出**屬性**"%(DbPublishPackages.Identity)"**，是指**識別**中繼資料屬性**DbPublishPackages**項目清單。 此表示法，**輸出 = %***(ItemList.ItemMetadataName)*，會轉譯成：
+這是範例*目標批次處理*。 MSBuild 專案檔案中的批次處理是用於逐一查看集合的技術。 值**輸出**屬性**"%(DbPublishPackages.Identity)"**，是指**識別**中繼資料屬性**DbPublishPackages**項目清單。 此表示法，**Outputs=%***(ItemList.ItemMetadataName)*，會轉譯成：
 
 - 分割中的項目**DbPublishPackages**成批次含有相同的項目**識別**中繼資料值。
 - 執行一次每個批次的目標。
 
 > [!NOTE]
-> **識別**是其中一個[內建中繼資料值](https://msdn.microsoft.com/en-us/library/ms164313.aspx)，指派給每個項目上建立。 它的值是指**Include**屬性**項目**項目 & #x 2014年; 換句話說，路徑和檔案名稱的項目。
+> **識別**是其中一個[內建中繼資料值](https://msdn.microsoft.com/library/ms164313.aspx)，指派給每個項目上建立。 它的值是指**Include**屬性**項目**項目 & #x 2014年; 換句話說，路徑和檔案名稱的項目。
 
 
 在此情況下，不應具有相同的路徑和檔案名稱的多個項目，因為我們基本上正在使用的其中一個批次大小。 對於每個資料庫套件一次執行目標。
@@ -210,7 +210,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
 
 
-在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和**%(DbPublishPackages.FullPath)**參照中繼資料值的**DbPublishPackages**項目集合。  **\_Cmd**屬性供**Exec**工作中，叫用命令。
+在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和**%(DbPublishPackages.FullPath)**參照中繼資料值的**DbPublishPackages**項目集合。 **\_Cmd**屬性供**Exec**工作中，叫用命令。
 
 
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]
@@ -219,7 +219,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 因為此表示法，而**Exec**工作將會建立唯一的組合為基礎的批次**DatabaseConnectionString**， **TargetDatabase**，和**FullPath**中繼資料值，而且工作將會執行一次針對每個批次。 這是範例*工作批次處理*。 不過，因為目標層級的批次已經有分割成單一項目的批次中，我們項目集合**Exec**工作將會執行一次，每個反覆項目的目標只能出現一次。 換句話說，這項工作會叫用一次針對方案中每個資料庫封裝 VSDBCMD 公用程式。
 
 > [!NOTE]
-> 如需有關目標和工作批次處理的詳細資訊，請參閱 < MSBuild[批次處理](https://msdn.microsoft.com/en-us/library/ms171473.aspx)，[目標批次處理中的項目中繼資料](https://msdn.microsoft.com/en-US/library/ms228229.aspx)，和[工作批次處理中的項目中繼資料](https://msdn.microsoft.com/en-us/library/ms171474.aspx)。
+> 如需有關目標和工作批次處理的詳細資訊，請參閱 < MSBuild[批次處理](https://msdn.microsoft.com/library/ms171473.aspx)，[目標批次處理中的項目中繼資料](https://msdn.microsoft.com/library/ms228229.aspx)，和[工作批次處理中的項目中繼資料](https://msdn.microsoft.com/library/ms171474.aspx)。
 
 
 ### <a name="the-publishwebpackages-target"></a>PublishWebPackages 目標

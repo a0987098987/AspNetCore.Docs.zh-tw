@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: migration/http-modules
-ms.openlocfilehash: 44b2b38c284e678344432d4473162404b4bb75a5
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a38ddc64583de05b4088cd31d48fbd7ee949d4e5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/19/2018
 
    1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
 
-   2. 相同事件中設定的順序*Web.config*。
+   2. 相同事件中所設定的順序*Web.config*。
 
 除了模組，您可以加入處理常式的生命週期事件，以您*Global.asax.cs*檔案。 在 設定模組中的處理常式之後，執行這些處理常式。
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/19/2018
 
 **中介軟體和模組會處理不同的順序：**
 
-   * 中介軟體的順序根據在其中插入至要求管線時之模組的順序主要是根據的順序[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
+   * 中介軟體的順序根據的順序所在它們正在插入要求管線時之模組的順序主要是根據[應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)事件
 
    * 順序中介軟體的回應時，針對要求，從該反向模組的順序是相同的要求和回應
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&name=snippet_Terminate)]
 
-中介軟體所不會呼叫處理`Invoke`在管線中的下一個中介軟體。 請記住，這不會完全終止要求，因為前一個 middlewares 將仍會叫用時回應回通過管線。
+中介軟體所不會呼叫處理`Invoke`在管線中的下一個中介軟體。 請記住這並不完全終止要求，因為前一個 middlewares 將仍會叫用時回應回通過管線。
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&name=snippet_Terminate)]
 

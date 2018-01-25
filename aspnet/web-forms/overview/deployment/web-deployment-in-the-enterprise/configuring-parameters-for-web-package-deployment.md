@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: dd1ae266740ea4728c0624b1833a98ac262e0e5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 12a4ba8ad30df43e7192500ad4514dfa9679f899
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>用於 Web 套件部署中設定參數
 ====================
@@ -88,7 +88,7 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 
 如果您手動安裝的部署套件時，IIS 管理員會提示您輸入的服務端點位址，連同已自動參數化的屬性。 如果您執行安裝的部署套件*。 deploy.cmd*檔案中，您可以編輯*SetParameters.xml*檔案，以提供的服務端點位址，以及值的值已自動參數化的屬性。
 
-如需如何建立完整細節*parameters.xml*檔案，請參閱[How to： 使用參數來設定部署設定時封裝會安裝](https://msdn.microsoft.com/en-us/library/ff398068.aspx)。 名為程序**部署參數用於 Web.config 檔案設定**提供逐步指示。
+如需如何建立完整細節*parameters.xml*檔案，請參閱[How to： 使用參數來設定部署設定時封裝會安裝](https://msdn.microsoft.com/library/ff398068.aspx)。 名為程序**部署參數用於 Web.config 檔案設定**提供逐步指示。
 
 ## <a name="modifying-the-setparametersxml-file"></a>修改 SetParameters.xml 檔案
 
@@ -144,7 +144,7 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需如何建立 web 封裝的資訊，請參閱[建置和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)。 如需如何部署 web 封裝的指引，請參閱[部署 Web 封裝](deploying-web-packages.md)。 如需如何建立的逐步解說*parameters.xml*檔案，請參閱[How to： 使用參數來設定部署設定時封裝會安裝](https://msdn.microsoft.com/en-us/library/ff398068.aspx)。
+如需如何建立 web 封裝的資訊，請參閱[建置和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)。 如需如何部署 web 封裝的指引，請參閱[部署 Web 封裝](deploying-web-packages.md)。 如需如何建立的逐步解說*parameters.xml*檔案，請參閱[How to： 使用參數來設定部署設定時封裝會安裝](https://msdn.microsoft.com/library/ff398068.aspx)。
 
 一般參數化的 Web Deploy 的詳細資訊，請參閱[動作中的 Web 部署參數化](https://go.microsoft.com/?linkid=9805119)（部落格文章）。
 

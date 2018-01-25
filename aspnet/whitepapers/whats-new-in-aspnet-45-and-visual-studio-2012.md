@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
-ms.openlocfilehash: 93fdc7ca241198dc1d7c4c1f6be0a61b15790039
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4487eb7436c0b6241505f41621a7f31b89c38b28
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>什麼是 ASP.NET 4.5 和 Visual Studio 2012 的新功能
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
     - [未驗證要求的支援](#_Toc318097381)
     - [AntiXSS 程式庫](#_Toc318097382)
     - [支援的 Websocket 通訊協定](#_Toc318097383)
-    - [統合及縮製](#_Toc318097384)
+    - [統合和縮製](#_Toc318097384)
     - [適用於虛擬主機的效能改進](#_Toc_perf)
 
         - [關鍵效能因素](#_Toc_perf_1)
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
         - [預先擷取 web 應用程式](#_Toc_perf_6)
 - [ASP.NET Web Form](#_Toc318097385)
 
-    - [強型別的資料控制項](#_Toc318097386)
+    - [強型別資料控制項](#_Toc318097386)
     - [模型繫結](#_Toc318097387)
 
         - [選取資料](#_Toc318097388)
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
         - [事件處理常式產生](#_Toc318097404)
         - [智慧型縮排](#_Toc318097405)
         - [自動減少陳述式完成](#_Toc318097406)
-    - [JavaScript 編輯器](#_Toc318097407)
+    - [JavaScript Editor](#_Toc318097407)
 
         - [程式碼大綱](#_Toc318097408)
         - [括號對稱](#_Toc318097409)
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/10/2017
         - [發行設定檔](#_Toc318097426)
         - [ASP.NET 先行編譯及合併](#_Toc318097427)
 - [IIS Express](#_Toc318097428)
-- [免責聲明](#_Toc318097429)
+- [Disclaimer](#_Toc318097429)
 
 <a id="_Toc318097372"></a>
 ## <a name="aspnet-core-runtime-and-framework"></a>ASP.NET Core 執行階段和架構
@@ -266,8 +266,8 @@ ASP.NET 和用戶端已順利完成 WebSockets 交握之後，ASP.NET 會呼叫�
 
 當檔案會集結時，它們會先依字母順序排序 (中顯示的方式**方案總管 中**)。 然後組織方式，讓已知的文件庫，以及其自訂延伸模組 （例如 jQuery、 MooTools 和 Dojo） 載入第一次。 例如，如上所示的指令碼資料夾組合的最終次序會是：
 
-1. jquery 1.6.2.js
-2. jquery ui.js
+1. jquery-1.6.2.js
+2. jquery-ui.js
 3. jquery.tools.js
 4. a.js
 
@@ -330,7 +330,7 @@ CSS 檔案是也依字母順序排序，然後重新組織，以便 reset.css �
 
 **需求**:.NET Framework 4.5
 
-為冷網站啟動時，組件沒有要讀取的磁碟，不僅站台必須是 JIT 編譯。 針對複雜的站台，這可以加入明顯的延遲。 .NET Framework 4.5 中新的一般用途技術可減少這些延遲分散到可用的處理器核心分配 JIT 編譯。 它會盡可能，並儘可能及早使用期間蒐集資訊先前啟動的站台。 這項功能所實作[System.Runtime.ProfileOptimization.StartProfile](https://msdn.microsoft.com/en-us/library/system.runtime.profileoptimization.startprofile(VS.110).aspx)方法。
+為冷網站啟動時，組件沒有要讀取的磁碟，不僅站台必須是 JIT 編譯。 針對複雜的站台，這可以加入明顯的延遲。 .NET Framework 4.5 中新的一般用途技術可減少這些延遲分散到可用的處理器核心分配 JIT 編譯。 它會盡可能，並儘可能及早使用期間蒐集資訊先前啟動的站台。 這項功能所實作[System.Runtime.ProfileOptimization.StartProfile](https://msdn.microsoft.com/library/system.runtime.profileoptimization.startprofile(VS.110).aspx)方法。
 
 JIT 編譯使用多個核心預設會啟用在 ASP.NET 中，因此您不需要執行任何動作來利用這項功能。 如果您想要停用此功能，請在 Web.config 檔案中進行下列設定：
 

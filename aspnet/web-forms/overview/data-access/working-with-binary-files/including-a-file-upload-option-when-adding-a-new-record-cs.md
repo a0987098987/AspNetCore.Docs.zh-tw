@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fcb791868e6af9eef1614d039d11ef5232b40af5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 384251e5d0d72c6d1cc014c929a5d504be11d1d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>包括檔案上傳選項，當加入新的記錄 (C#)
 ====================
@@ -176,7 +176,7 @@ First 涵蓋[概觀的插入、 更新和刪除資料](../editing-inserting-and-
 
 ## <a name="step-6-saving-the-uploaded-brochure-to-the-web-server-s-file-system"></a>步驟 6： 將上傳的冊儲存至 Web 伺服器的檔案系統
 
-當使用者輸入新的類別目錄的值，然後按一下 [插入] 按鈕時，就會發生回傳，而且插入工作流程可以掀起。 首先，DetailsView s [ `ItemInserting`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.iteminserting.aspx)引發。 下一步，ObjectDataSource s`Insert()`叫用方法時，結果會在新的記錄新增至`Categories`資料表。 之後，DetailsView s [ `ItemInserted`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.detailsview.iteminserted.aspx)引發。
+當使用者輸入新的類別目錄的值，然後按一下 [插入] 按鈕時，就會發生回傳，而且插入工作流程可以掀起。 首先，DetailsView s [ `ItemInserting`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserting.aspx)引發。 下一步，ObjectDataSource s`Insert()`叫用方法時，結果會在新的記錄新增至`Categories`資料表。 之後，DetailsView s [ `ItemInserted`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.detailsview.iteminserted.aspx)引發。
 
 在 ObjectDataSource s 前面`Insert()`叫用方法，我們必須先確認使用者已上傳適當的檔案類型，然後將冊 PDF 儲存到 web 伺服器檔案系統。 建立事件處理常式 DetailsView s`ItemInserting`事件並加入下列程式碼：
 
@@ -191,7 +191,7 @@ First 涵蓋[概觀的插入、 更新和刪除資料](../editing-inserting-and-
 
 中所述[上傳檔案](uploading-files-cs.md)教學課程，必須小心儲存檔案至檔案系統，讓一位使用者的傳不會覆寫另一個 s 時。 此教學課程中，我們會嘗試上傳的檔案使用相同的名稱。 如果已經存在的檔案中`~/Brochures`目錄與該相同檔名，不過，我們將附加的數字結尾，直到找到唯一的名稱。 例如，如果使用者將名為冊檔案上傳`Meats.pdf`，但已經有名稱為的檔案`Meats.pdf`中`~/Brochures`資料夾中，我們將會變更已儲存的檔案名稱以`Meats-1.pdf`。 如果已存在，我們將嘗試`Meats-2.pdf`，依此類推，直到找到唯一的檔案名稱。
 
-下列程式碼會使用[`File.Exists(path)`方法](https://msdn.microsoft.com/en-us/library/system.io.file.exists.aspx)來判斷檔案是否已存在具有指定的檔案名稱。 如果是的話，它會繼續嘗試冊新檔案名稱，直到找到沒有衝突。
+下列程式碼會使用[`File.Exists(path)`方法](https://msdn.microsoft.com/library/system.io.file.exists.aspx)來判斷檔案是否已存在具有指定的檔案名稱。 如果是的話，它會繼續嘗試冊新檔案名稱，直到找到沒有衝突。
 
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample7.cs)]

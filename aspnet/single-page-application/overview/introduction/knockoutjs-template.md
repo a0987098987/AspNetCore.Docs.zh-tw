@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 6e84dcc16345e33fcd3a3f83c4b35bc993c03ca6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e6c0c45bed098a8a1160ff11e4f77244bf55ffd3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="single-page-application-knockoutjs-template"></a>單一網頁應用程式： KnockoutJS 範本
 ====================
@@ -41,7 +41,7 @@ AJAX 沒有新增，但現在有更輕鬆地建立及維護的大型複雜的 SP
 
 需求：
 
-- Visual Studio 2012 或 Visual Studio Express 2012 for Web
+- Visual Studio 2012 or Visual Studio Express 2012 for Web
 - ASP.NET Web 工具 2012.2 更新。 您可以安裝更新[這裡](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ASPDOTNETandWebTools2012_2)。
 
 啟動 Visual Studio，然後選取**新專案**從 [開始] 頁面。 或從**檔案**功能表上，選取**新增**然後**專案**。
@@ -117,7 +117,7 @@ SPA 在範本中 DTOs 包含網域模型相同的資料。 不過，它們仍很
 
 ## <a name="entity-framework"></a>Entity Framework
 
-SPA 範本使用 EF Code First。 在 Code First 開發中，您定義模型，先在程式碼中，然後 EF 使用模型來建立資料庫。 您也可以使用 EF 與現有的資料庫 ([Database First](https://msdn.microsoft.com/en-us/data/jj206878.aspx))。
+SPA 範本使用 EF Code First。 在 Code First 開發中，您定義模型，先在程式碼中，然後 EF 使用模型來建立資料庫。 您也可以使用 EF 與現有的資料庫 ([Database First](https://msdn.microsoft.com/data/jj206878.aspx))。
 
 `TodoItemContext` Models 資料夾中的類別衍生自**DbContext**。 這個類別會提供 「 黏附 」 模型與 EF 之間。 `TodoItemContext`保存`ToDoItem`集合和`TodoList`集合。 若要查詢資料庫，您只要撰寫 LINQ 查詢，針對這些集合。 例如，以下是選取所有的使用者"Alice"待辦事項清單：
 
@@ -142,13 +142,13 @@ SPA 範本使用 EF Code First。 在 Code First 開發中，您定義模型，�
 
 `TodoItemContext`用於通訊使用 EF，如先前所述。 在控制器上的方法實作 CRUD 作業。 Web API 會對應至控制器方法的 HTTP 要求從用戶端，如下所示：
 
-| HTTP 要求 | 控制器方法 | 說明 |
+| HTTP 要求 | 控制器方法 | 描述 |
 | --- | --- | --- |
 | GET /api/todo | `GetTodoLists` | 取得集合的待辦事項清單。 |
 | GET/api/todo/*識別碼* | `GetTodoList` | 取得依識別碼待辦事項清單 |
 | PUT/api/todo/*識別碼* | `PutTodoList` | 更新 待辦事項清單。 |
 | POST /api/todo | `PostTodoList` | 建立新的待辦事項清單。 |
-| 刪除/api/todo/*識別碼* | `DeleteTodoList` | 刪除 TODO 清單。 |
+| DELETE /api/todo/*id* | `DeleteTodoList` | 刪除 TODO 清單。 |
 
 請注意，某些作業的 Uri 包含預留位置的識別碼值。 例如，若要刪除以清單、 識別碼為 42，URI 是`/api/todo/42`。
 
@@ -229,7 +229,7 @@ Knockout 提供數種不同的繫結的類型。 以下是一些使用 SPA 範�
 
 防偽語彙基元運作，因為惡意的頁面無法讀取使用者的權杖，因為相同原始原則。 （相同原始原則可避免兩個不同的站台存取彼此的內容上裝載的文件）。
 
-ASP.NET MVC 提供防偽語彙基元內建支援，透過[AntiForgery](https://msdn.microsoft.com/en-us/library/system.web.helpers.antiforgery.aspx)類別和[[ValidateAntiForgeryToken]](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute.aspx)屬性。 目前，這項功能不會建立到 Web API。 不過，SPA 範本包含 Web API 的自訂實作。 此代碼會定義在`ValidateHttpAntiForgeryTokenAttribute`類別位於方案的 [篩選器] 資料夾中。 若要深入了解反-CSRF Web API 中，請參閱[防止跨站台要求偽造 」 (CSRF) 攻擊](../../../web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md)。
+ASP.NET MVC 提供防偽語彙基元內建支援，透過[AntiForgery](https://msdn.microsoft.com/library/system.web.helpers.antiforgery.aspx)類別和[[ValidateAntiForgeryToken]](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute.aspx)屬性。 目前，這項功能不會建立到 Web API。 不過，SPA 範本包含 Web API 的自訂實作。 此代碼會定義在`ValidateHttpAntiForgeryTokenAttribute`類別位於方案的 [篩選器] 資料夾中。 若要深入了解反-CSRF Web API 中，請參閱[防止跨站台要求偽造 」 (CSRF) 攻擊](../../../web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md)。
 
 ## <a name="conclusion"></a>結論
 

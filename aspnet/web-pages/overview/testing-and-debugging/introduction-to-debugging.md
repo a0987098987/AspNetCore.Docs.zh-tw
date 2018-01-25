@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: 2bc1f096540d17095ef760eed67b458fcd4e1372
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b6b5a886efe515b434948dade1ae840ddaecd42
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Introduction to 偵錯 ASP.NET Web Pages (Razor) 站台
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
     - HTTP 執行階段資訊。 本章節提供詳細的 Microsoft.NET Framework 下執行您的網頁、 路徑、 詳細資料快取，等等的新版。 (因為您了解在[ASP.NET Web 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890)、 使用的 Razor 語法在 Microsoft ASP.NET web 伺服器技術，也就是根據廣泛的軟體本身建立的 ASP.NET Web Pages開發程式庫呼叫.NET Framework。）
     - 環境變數。 本節提供在 web 伺服器上的所有本機的環境變數及其值的清單。
 
-    所有伺服器及要求資訊的完整說明超出本文的範圍，但您可以看到`ServerInfo`協助程式傳回的診斷資訊很多。 如需值的詳細資訊，`ServerInfo`傳回時，請參閱[辨識環境變數](https://technet.microsoft.com/en-us/library/dd560744(WS.10).aspx)Microsoft TechNet 網站上和[IIS 伺服器變數](https://msdn.microsoft.com/en-us/library/ms524602(VS.90).aspx)MSDN 網站上。
+    所有伺服器及要求資訊的完整說明超出本文的範圍，但您可以看到`ServerInfo`協助程式傳回的診斷資訊很多。 如需值的詳細資訊，`ServerInfo`傳回時，請參閱[辨識環境變數](https://technet.microsoft.com/library/dd560744(WS.10).aspx)Microsoft TechNet 網站上和[IIS 伺服器變數](https://msdn.microsoft.com/library/ms524602(VS.90).aspx)MSDN 網站上。
 
 ## <a name="embedding-output-expressions-to-display-page-values"></a>內嵌的輸出運算式，以顯示頁面的值
 
@@ -139,5 +139,5 @@ ms.lasthandoff: 11/10/2017
 ## <a name="additional-resources"></a>其他資源
 
 - [使用 Visual Studio 程式設計 ASP.NET Web Pages (Razor)](https://go.microsoft.com/fwlink/?LinkId=205854)
-- [IIS 伺服器變數](https://msdn.microsoft.com/en-us/library/ms524602(VS.90).aspx)(MSDN)
-- [辨識環境變數](https://technet.microsoft.com/en-us/library/dd560744(WS.10).aspx)(TechNet)
+- [IIS 伺服器變數](https://msdn.microsoft.com/library/ms524602(VS.90).aspx)(MSDN)
+- [辨識環境變數](https://technet.microsoft.com/library/dd560744(WS.10).aspx)(TechNet)

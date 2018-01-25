@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 31d83a11488212ab0ff83494d5e896ffcbeaa8a4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b97834e3e287645151bf927996fde63d93ae8356
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 移轉至 SQL Server-10 12 個
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何從 SQL Server Compact 移轉到 SQL Server。 其中一個原因，您可能想要這樣做，是利用 SQL Server Compact 不支援，例如預存程序、 觸發程序、 檢視或複寫的 SQL Server 功能。 如需有關 SQL Server Compact 和 SQL Server 之間的差異的詳細資訊，請參閱[部署 SQL Server Compact](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)教學課程。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 一旦您已經決定要升級到 SQL Server，您可能想要在開發和測試環境中使用 SQL Server 或 SQL Server Express。 在工具支援和 database engine 功能的差異，除了有 SQL Server Compact 和其他版本的 SQL Server 之間的差異提供者實作。 這些差異可能造成相同的程式碼來產生不同的結果。 因此，如果您決定要保留 SQL Server Compact 當做開發資料庫，您應該徹底測試您的站台 SQL Server 或 SQL Server Express 中每個部署到生產環境之前在測試環境中。
 
-不同於 SQL Server Compact，SQL Server Express 是基本上相同的資料庫引擎，使用相同的.NET 提供者為 SQL Server 完整版。 當您測試以 SQL Server Express 時，您可以取得相同的結果，您將會與 SQL Server 的信心。 您可以使用 SQL Server Express，您可以使用 SQL Server 的大部分相同的資料庫工具 (值得注意的例外狀況，正在[SQL Server Profiler](https://msdn.microsoft.com/en-us/library/ms181091.aspx))，並且也支援 SQL Server 的其他功能，例如預存程序、 檢視表、 觸發程序，和複寫。 （您通常必須在生產網站，但是使用 SQL Server 完整版。 SQL Server Express 可以在共用代管環境中執行，但它不適用於該作業，且許多主控提供者不支援它。）
+不同於 SQL Server Compact，SQL Server Express 是基本上相同的資料庫引擎，使用相同的.NET 提供者為 SQL Server 完整版。 當您測試以 SQL Server Express 時，您可以取得相同的結果，您將會與 SQL Server 的信心。 您可以使用 SQL Server Express，您可以使用 SQL Server 的大部分相同的資料庫工具 (值得注意的例外狀況，正在[SQL Server Profiler](https://msdn.microsoft.com/library/ms181091.aspx))，並且也支援 SQL Server 的其他功能，例如預存程序、 檢視表、 觸發程序，和複寫。 （您通常必須在生產網站，但是使用 SQL Server 完整版。 SQL Server Express 可以在共用代管環境中執行，但它不適用於該作業，且許多主控提供者不支援它。）
 
 如果您使用 Visual Studio 2012，您通常選擇 SQL Server Express LocalDB 開發環境的因為這是預設會隨 Visual Studio 安裝的內容。 不過，LocalDB 無法用在 IIS 中，因此對於您的測試環境，您必須使用 SQL Server 或 SQL Server Express。
 
@@ -57,9 +57,9 @@ Contoso 大學應用程式有兩個 SQL Server Compact 資料庫： 成員資格
 
 根據預設，Visual Studio 2010 中，使用自動安裝 SQL Server Express，但根據預設並未安裝使用 Visual Studio 2012。 若要安裝 SQL Server 2012 Express，請按一下下列連結
 
-- [SQL Server Express 2012](https://www.microsoft.com/en-us/download/details.aspx?id=29062)
+- [SQL Server Express 2012](https://www.microsoft.com/download/details.aspx?id=29062)
 
-選擇*繁體中文/x64/SQLEXPR\_x64\_ENU.exe*或*繁體中文/x86/SQLEXPR\_x86\_ENU.exe*，並在安裝精靈接受預設值設定。 如需有關安裝選項的詳細資訊，請參閱[從安裝精靈 （安裝程式） 安裝 SQL Server 2012](https://msdn.microsoft.com/en-us/library/ms143219.aspx)。
+選擇*繁體中文/x64/SQLEXPR\_x64\_ENU.exe*或*繁體中文/x86/SQLEXPR\_x86\_ENU.exe*，並在安裝精靈接受預設值設定。 如需有關安裝選項的詳細資訊，請參閱[從安裝精靈 （安裝程式） 安裝 SQL Server 2012](https://msdn.microsoft.com/library/ms143219.aspx)。
 
 ## <a name="creating-sql-server-express-databases-for-the-test-environment"></a>針對測試環境中建立 SQL Server Express 資料庫
 

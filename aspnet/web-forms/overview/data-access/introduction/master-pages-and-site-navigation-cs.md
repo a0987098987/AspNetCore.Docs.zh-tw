@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 32ddda8d883a99805d2448c9673e585bfe9ef2f4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c44ad7ec1b43129365cc22f5076b4fa7fe860f4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="master-pages-and-site-navigation-c"></a>主版頁面和站台瀏覽 (C#)
 ====================
@@ -167,11 +167,11 @@ Web.sitemap
 **圖 10**： 網站導覽代表階層式導覽結構 ([按一下以檢視完整大小的影像](master-pages-and-site-navigation-cs/_static/image26.png))
 
 
-ASP.NET 公開透過.NET Framework 的網站地圖結構[SiteMap 類別](https://msdn.microsoft.com/en-us/library/system.web.sitemap.aspx)。 這個類別具有`CurrentNode`屬性，它會傳回使用者目前正在造訪; 區段的詳細資訊`RootNode`屬性會傳回站台對應的根目錄 （家中，我們的站台對應中）。 同時`CurrentNode`和`RootNode`屬性傳回[SiteMapNode](https://msdn.microsoft.com/en-us/library/system.web.sitemapnode.aspx)執行個體，且有屬性類似`ParentNode`， `ChildNodes`， `NextSibling`， `PreviousSibling`，依此類推，可讓站台地圖若要逐步階層。
+ASP.NET 公開透過.NET Framework 的網站地圖結構[SiteMap 類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)。 這個類別具有`CurrentNode`屬性，它會傳回使用者目前正在造訪; 區段的詳細資訊`RootNode`屬性會傳回站台對應的根目錄 （家中，我們的站台對應中）。 同時`CurrentNode`和`RootNode`屬性傳回[SiteMapNode](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx)執行個體，且有屬性類似`ParentNode`， `ChildNodes`， `NextSibling`， `PreviousSibling`，依此類推，可讓站台地圖若要逐步階層。
 
 ## <a name="step-3-displaying-a-menu-based-on-the-site-map"></a>步驟 3： 顯示功能表，根據站台對應
 
-在 ASP.NET 2.0 中存取資料可以是以程式設計方式來達成，如同在 ASP.NET 1.x，或以宣告方式，透過新[資料來源控制項](https://msdn.microsoft.com/en-us/library/ms227679.aspx)。 有數個內建資料來源控制項，例如 SqlDataSource 控制項，用於存取關聯式資料庫資料、 ObjectDataSource 控制項，從類別和其他人存取資料。 您甚至可以建立您自己[自訂資料來源控制項](https://msdn.microsoft.com/asp.net/reference/data/default.aspx?pull=/library/en-us/dnvs05/html/DataSourceCon1.asp)。
+在 ASP.NET 2.0 中存取資料可以是以程式設計方式來達成，如同在 ASP.NET 1.x，或以宣告方式，透過新[資料來源控制項](https://msdn.microsoft.com/library/ms227679.aspx)。 有數個內建資料來源控制項，例如 SqlDataSource 控制項，用於存取關聯式資料庫資料、 ObjectDataSource 控制項，從類別和其他人存取資料。 您甚至可以建立您自己[自訂資料來源控制項](https://msdn.microsoft.com/asp.net/reference/data/default.aspx?pull=/library/dnvs05/html/DataSourceCon1.asp)。
 
 資料來源控制項做為您的 ASP.NET 頁面與基礎資料之間的 proxy。 為了顯示資料來源控制項的擷取的資料，我們通常會將另一個 Web 控制項加入頁面和繫結到資料來源控制項。 若要將 Web 控制項繫結至資料來源控制項，只要設定 Web 控制項`DataSourceID`屬性設為值的資料來源控制項的`ID`屬性。
 
@@ -218,7 +218,7 @@ Treeview 控制項傳回的站台對應一個階層層級一次，開頭為根�
 
 所有 ASP.NET 控制項可以選擇性地都保存其狀態[檢視狀態](https://msdn.microsoft.com/msdnmag/issues/03/02/CuttingEdge/)，這會序列化為隱藏的表單欄位中呈現的 HTML。 檢視狀態是控制項用來記住它們以程式設計方式變更的狀態，在回傳，例如資料繫結至資料的 Web 控制項。 雖然檢視狀態允許在回傳記住的資訊，它會增加必須傳送至用戶端可能會導致嚴重的頁面膨脹不可和密切監視的標記的大小。 Web 控制項的資料特別 GridView 會特別昭彰數十個額外的 kb 數標記加入頁面的。 雖然這種增加可能是微不足道寬頻或內部網路使用者，檢視狀態可以新增撥號使用者，來回行程期間幾秒鐘的時間。
 
-若要查看的影響，檢視狀態、 造訪的網頁瀏覽器中，然後檢視網頁所傳送的來源 （在 Internet Explorer 中，移至 [檢視] 功能表並選擇來源選項）。 您也可以開啟[網頁追蹤](https://msdn.microsoft.com/en-us/library/sfbfw58f.aspx)以查看每個頁面上的控制項使用的檢視狀態配置。 檢視狀態資訊會以名為隱藏的表單欄位序列化`__VIEWSTATE`，位於`<div>`緊接之後開啟項目`<form>`標記。 正在使用 Web 表單時，只保存檢視狀態如果您的 ASP.NET 頁面不包括`<form runat="server">`宣告式語法中將不會在`__VIEWSTATE`呈現標記中的隱藏的欄位。
+若要查看的影響，檢視狀態、 造訪的網頁瀏覽器中，然後檢視網頁所傳送的來源 （在 Internet Explorer 中，移至 [檢視] 功能表並選擇來源選項）。 您也可以開啟[網頁追蹤](https://msdn.microsoft.com/library/sfbfw58f.aspx)以查看每個頁面上的控制項使用的檢視狀態配置。 檢視狀態資訊會以名為隱藏的表單欄位序列化`__VIEWSTATE`，位於`<div>`緊接之後開啟項目`<form>`標記。 正在使用 Web 表單時，只保存檢視狀態如果您的 ASP.NET 頁面不包括`<form runat="server">`宣告式語法中將不會在`__VIEWSTATE`呈現標記中的隱藏的欄位。
 
 `__VIEWSTATE`主版頁面所產生的表單欄位將大致 1800 位元組加入至網頁的產生的標記。 此額外膨脹是主要是因為在中繼器控制項中，為 Treeview 控制項的內容會保存至檢視狀態。 雖然額外的 1800 位元組不看似很感興趣，使用 GridView 有許多欄位與記錄時，檢視狀態可以輕鬆地 swell 10 倍或更多的因數。
 
@@ -252,7 +252,7 @@ Treeview 控制項傳回的站台對應一個階層層級一次，開頭為根�
 
 我們的網站中的教學課程會分成不同類別基本報表功能，篩選、 的自訂格式，與每個類別目錄和對應的教學課程為該資料夾中的 ASP.NET 網頁的資料夾，依此類推。 此外，每個資料夾包含`Default.aspx`頁面。 此預設頁面上，讓我們來顯示所有目前區段的教學課程。 也就是針對`Default.aspx`中`BasicReporting`資料夾，我們會有連結`SimpleDisplay.aspx`， `DeclarativeParams.aspx`，和`ProgrammaticParams.aspx`。 在這裡，同樣地，我們可以使用`SiteMap`中定義的類別和 Web 控制項來顯示這項資訊根據網站導覽資料`Web.sitemap`。
 
-讓我們來顯示一次，但這次我們將會顯示標題和描述的教學課程使用中繼器的未排序的清單。 因為標記和程式碼以完成這將會針對每個重複`Default.aspx` 頁面上，我們可以將封裝中的此 UI 邏輯[使用者控制項](https://msdn.microsoft.com/en-us/library/y6wb1a0e.aspx)。 在呼叫網站上建立資料夾`UserControls`並將類型名為 Web 使用者控制項的新項目加入至該`SectionLevelTutorialListing.ascx`，並加入下列標記：
+讓我們來顯示一次，但這次我們將會顯示標題和描述的教學課程使用中繼器的未排序的清單。 因為標記和程式碼以完成這將會針對每個重複`Default.aspx` 頁面上，我們可以將封裝中的此 UI 邏輯[使用者控制項](https://msdn.microsoft.com/library/y6wb1a0e.aspx)。 在呼叫網站上建立資料夾`UserControls`並將類型名為 Web 使用者控制項的新項目加入至該`SectionLevelTutorialListing.ascx`，並加入下列標記：
 
 
 [![將新的 Web 使用者控制項加入至 Usercontrol 資料夾](master-pages-and-site-navigation-cs/_static/image30.png)](master-pages-and-site-navigation-cs/_static/image29.png)
@@ -297,15 +297,15 @@ SectionLevelTutorialListing.ascx.cs
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 主版頁面概觀](https://msdn.microsoft.com/en-us/library/wtxbf3hh.aspx)
+- [ASP.NET 主版頁面概觀](https://msdn.microsoft.com/library/wtxbf3hh.aspx)
 - [在 ASP.NET 2.0 的主版頁面](http://odetocode.com/Articles/419.aspx)
 - [ASP.NET 2.0 的設計範本](https://msdn.microsoft.com/asp.net/reference/design/templates/default.aspx)
-- [ASP.NET 網站巡覽概觀](https://msdn.microsoft.com/en-us/library/e468hxky.aspx)
+- [ASP.NET 網站巡覽概觀](https://msdn.microsoft.com/library/e468hxky.aspx)
 - [檢查 ASP.NET 2.0 的站台瀏覽](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
 - [ASP.NET 2.0 的網站瀏覽功能](https://weblogs.asp.net/scottgu/archive/2005/11/20/431019.aspx)
-- [了解 ASP.NET 檢視狀態](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/viewstate.asp)
-- [如何： 啟用 ASP.NET 網頁的追蹤](https://msdn.microsoft.com/en-us/library/94c55d08%28VS.80%29.aspx)
-- [ASP.NET 使用者控制項](https://msdn.microsoft.com/en-us/library/y6wb1a0e.aspx)
+- [了解 ASP.NET 檢視狀態](https://msdn.microsoft.com/library/default.asp?url=/library/dnaspp/html/viewstate.asp)
+- [如何： 啟用 ASP.NET 網頁的追蹤](https://msdn.microsoft.com/library/94c55d08%28VS.80%29.aspx)
+- [ASP.NET 使用者控制項](https://msdn.microsoft.com/library/y6wb1a0e.aspx)
 
 ## <a name="about-the-author"></a>關於作者
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3aef1c2c2357d948a49787c9dd039d4529479357
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eeb1210038f4982d80352322842733c0e96300a7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="logging-error-details-with-elmah-c"></a>記錄錯誤的詳細資料與 ELMAH (C#)
 ====================
@@ -254,7 +254,7 @@ ELMAH 提供簡單，但功能強大的機制，ASP.NET web 應用程式中記�
 - [ELMAH 專案頁面](https://code.google.com/p/elmah/)（來源的程式碼、 範例、 wiki）
 - [插入 ELMAH 成 Web 應用程式以攔截未處理例外狀況](http://screencastaday.com/ScreenCasts/43_Plugging_Elmah_into_Web_Application_to_Catch_Unhandled_Exceptions.aspx)（影片）
 - [安全性錯誤記錄 頁面](https://code.google.com/p/elmah/wiki/SecuringErrorLogPages)
-- [使用 HTTP 模組和處理常式來建立隨插即用的 ASP.NET 元件](https://msdn.microsoft.com/en-us/library/aa479332.aspx)
+- [使用 HTTP 模組和處理常式來建立隨插即用的 ASP.NET 元件](https://msdn.microsoft.com/library/aa479332.aspx)
 - [網站安全性教學課程](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
 >[!div class="step-by-step"]

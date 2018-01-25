@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 1c007c4c327b7cde6ff52c6b0022acdff3c9b137
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f9b471fe2afdce278869a2e4d9b693a78030324b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-aspnet-web-api-2"></a>設定 ASP.NET Web API 2
 ====================
@@ -33,15 +33,15 @@ ms.lasthandoff: 11/10/2017
 <a id="settings"></a>
 ## <a name="configuration-settings"></a>組態設定
 
-中所定義的 web API 組態所[HttpConfiguration](https://msdn.microsoft.com/en-us/library/system.web.http.httpconfiguration.aspx)類別。
+中所定義的 web API 組態所[HttpConfiguration](https://msdn.microsoft.com/library/system.web.http.httpconfiguration.aspx)類別。
 
-| 成員 | 說明 |
+| 成員 | 描述 |
 | --- | --- |
-| **Dependencyresolver 來註冊** | 可讓相依性插入控制站。 請參閱[使用 Web 應用程式開發介面的相依性解析程式](dependency-injection.md)。 |
+| **DependencyResolver** | 可讓相依性插入控制站。 請參閱[使用 Web 應用程式開發介面的相依性解析程式](dependency-injection.md)。 |
 | **篩選** | 動作篩選條件。 |
 | **格式器** | [媒體類型格式器](../formats-and-model-binding/media-formatters.md)。 |
-| **IncludeErrorDetailPolicy** | 指定伺服器在 HTTP 回應訊息中是否包含錯誤詳細資料，例如例外狀況訊息和堆疊追蹤。 請參閱[IncludeErrorDetailPolicy](https://msdn.microsoft.com/en-us/library/system.web.http.includeerrordetailpolicy(v=vs.108))。 |
-| **初始設定式** | 執行最後的初始化函式**HttpConfiguration**。 |
+| **IncludeErrorDetailPolicy** | 指定伺服器在 HTTP 回應訊息中是否包含錯誤詳細資料，例如例外狀況訊息和堆疊追蹤。 請參閱[IncludeErrorDetailPolicy](https://msdn.microsoft.com/library/system.web.http.includeerrordetailpolicy(v=vs.108))。 |
+| **Initializer** | 執行最後的初始化函式**HttpConfiguration**。 |
 | **MessageHandlers** | [HTTP 訊息處理常式](http-message-handlers.md)。 |
 | **ParameterBindingRules** | 用於控制器動作上的繫結參數的規則集合。 |
 | **屬性** | 一般屬性包。 |
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/10/2017
 <a id="webhost"></a>
 ## <a name="configuring-web-api-with-aspnet-hosting"></a>設定與 ASP.NET 裝載的 Web 應用程式開發介面
 
-ASP.NET 應用程式中，設定 Web 應用程式開發介面呼叫[GlobalConfiguration.Configure](https://msdn.microsoft.com/en-us/library/system.web.http.globalconfiguration.configure.aspx)中**應用程式\_啟動**方法。 **設定**方法會採用單一參數的型別與委派**HttpConfiguration**。 執行所有的委派在您使用設定。
+ASP.NET 應用程式中，設定 Web 應用程式開發介面呼叫[GlobalConfiguration.Configure](https://msdn.microsoft.com/library/system.web.http.globalconfiguration.configure.aspx)中**應用程式\_啟動**方法。 **設定**方法會採用單一參數的型別與委派**HttpConfiguration**。 執行所有的委派在您使用設定。
 
 以下是使用在匿名委派的範例：
 
@@ -99,7 +99,7 @@ ASP.NET 應用程式中，設定 Web 應用程式開發介面呼叫[GlobalConfig
 單一執行個體的服務
 
 
-| 服務 | 說明 |
+| 服務 | 描述 |
 | --- | --- |
 | **IActionValueBinder** | 取得參數繫結。 |
 | **IApiExplorer** | 取得描述元的應用程式所公開的 Api。 請參閱[建立 Web API 說明頁面](../getting-started-with-aspnet-web-api/creating-api-help-pages.md)。 |
@@ -120,7 +120,7 @@ ASP.NET 應用程式中，設定 Web 應用程式開發介面呼叫[GlobalConfig
 多個執行個體的服務
 
 
-| 服務 | 說明 |
+| 服務 | 描述 |
 | --- | --- |
 | **IFilterProvider** | 傳回控制器動作的篩選清單。 |
 | **ModelBinderProvider** | 傳回指定型別的模型繫結。 |

@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: c5c06e61239c65cb1ff501a57777363a047a8db5
-ms.sourcegitcommit: f8ecf3d8f5b15f1e84ec86de3835b49ebe89fa1e
+ms.openlocfilehash: 4ee12cae0220825c81bd8b178dea3ac777f97bb6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>進階的主題-EF Core 與 ASP.NET Core MVC 教學課程 (10-10)
 
@@ -27,7 +27,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 使用 Entity Framework 的優點之一是它可避免中斷您太接近儲存資料的特定方法的程式碼。 它會產生 SQL 查詢和命令，這也讓您不必自行撰寫。 但有例外狀況，當您需要執行手動建立的特定 SQL 查詢。 針對這些案例，Entity Framework 程式碼的第一個 API 會包含可讓您將直接對資料庫的 SQL 命令的方法。 您在 EF Core 1.0 中有下列選項：
 
-* 使用`DbSet.FromSql`查詢來傳回實體類型的方法。 傳回的物件必須是所預期的類型`DbSet`物件，而且它們會自動追蹤對資料庫內容所除非您[關閉追蹤](crud.md#no-tracking-queries)。
+* 使用`DbSet.FromSql`查詢來傳回實體類型的方法。 傳回的物件必須是所預期的類型`DbSet`物件，而且它們自動受到內容追蹤時資料庫除非您[關閉追蹤](crud.md#no-tracking-queries)。
 
 * 使用`Database.ExecuteSqlCommand`非查詢命令。
 
@@ -139,7 +139,7 @@ ORDER BY [t].[ID]
 
 ## <a name="repository-and-unit-of-work-patterns"></a>儲存機制和單位的工作模式
 
-許多開發人員撰寫程式碼以搭配 Entity Framework 的程式碼周圍的包裝函式實作的儲存機制和工作模式的單位。 這些模式被用來建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可以協助您隔離您的應用程式資料存放區中的變更，以及有助於自動化的單元測試為導向的開發 (TDD)。 不過，撰寫額外的程式碼來實作這些模式做不一定有數種原因使用 EF，應用程式的最佳選擇：
+許多開發人員撰寫程式碼以搭配 Entity Framework 的程式碼周圍的包裝函式實作的儲存機制和工作模式的單位。 這些模式被用來建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可以協助您隔離您的應用程式資料存放區中的變更，以及有助於自動化的單元測試為導向的開發 (TDD)。 不過，撰寫額外的程式碼來實作這些模式並非始終使用 EF，有幾個原因的應用程式的最佳選擇：
 
 * EF 內容類別本身，以隔離您的程式碼，從資料存放區特有的程式碼。
 

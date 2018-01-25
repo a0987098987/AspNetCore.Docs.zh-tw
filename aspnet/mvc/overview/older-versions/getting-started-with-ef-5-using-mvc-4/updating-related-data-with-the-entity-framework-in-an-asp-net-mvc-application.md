@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: f2d480793d02c8bfa25c05fd11fa2e6ef9e54a60
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2ca76364a2e9a71dc92644bd579345ae3c304a69
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a>更新與 ASP.NET MVC 應用程式 (10-6) 中的 Entity Framework 的相關的資料
 ====================
@@ -110,7 +110,7 @@ Scaffold 程式碼不是您所要的。 正在設定資料下拉式清單中，�
 程式碼會執行下列動作：
 
 - 取得目前`Instructor`實體使用的積極式載入從資料庫`OfficeAssignment`導覽屬性。 這是您未相同`HttpGet``Edit`方法。
-- 更新擷取`Instructor`實體模型繫結器的值。 [TryUpdateModel](https://msdn.microsoft.com/en-us/library/dd470908(v=vs.108).aspx)使用多載可讓您*白名單*您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)。
+- 更新擷取`Instructor`實體模型繫結器的值。 [TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.108).aspx)使用多載可讓您*白名單*您想要包含的屬性。 這可防止過度公佈時，所述[第二個教學課程](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)。
 
     [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample10.cs)]
 - 如果辦公室位置是空白，請設定`Instructor.OfficeAssignment`屬性設為 null，讓相關的資料列中`OfficeAssignment`資料表將會刪除。
@@ -146,13 +146,13 @@ Scaffold 程式碼不是您所要的。 正在設定資料下拉式清單中，�
 
 加入的程式碼的積極式載入`Courses`導覽屬性，並呼叫新`PopulateAssignedCourseData`方法以提供的核取方塊陣列使用資訊`AssignedCourseData`檢視模型類別。
 
-中的程式碼`PopulateAssignedCourseData`方法會讀取所有`Course`實體以載入一份課程使用的檢視模型類別。 每個課程中，程式碼會檢查課程是否存在於講師`Courses`導覽屬性。 若要建立有效率查閱，檢查是否課程已指派給講師時，指派給講師的課程會放入[HashSet](https://msdn.microsoft.com/en-us/library/bb359438.aspx)集合。 `Assigned`屬性設定為`true`課程講師指派。 檢視會使用這個屬性，來判斷哪一個核取方塊必須顯示為選取。 最後，清單會傳遞至檢視中`ViewBag`屬性。
+中的程式碼`PopulateAssignedCourseData`方法會讀取所有`Course`實體以載入一份課程使用的檢視模型類別。 每個課程中，程式碼會檢查課程是否存在於講師`Courses`導覽屬性。 若要建立有效率查閱，檢查是否課程已指派給講師時，指派給講師的課程會放入[HashSet](https://msdn.microsoft.com/library/bb359438.aspx)集合。 `Assigned`屬性設定為`true`課程講師指派。 檢視會使用這個屬性，來判斷哪一個核取方塊必須顯示為選取。 最後，清單會傳遞至檢視中`ViewBag`屬性。
 
 接下來，新增使用者時所執行的程式碼**儲存**。 取代`HttpPost``Edit`方法會呼叫新的方法會更新為下列程式碼`Courses`導覽屬性`Instructor`實體。 所做的變更會反白顯示。
 
 [!code-csharp[Main](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs?highlight=3,7,20,33,37-65)]
 
-因為檢視沒有集合的`Course`實體模型繫結器無法自動會更新`Courses`導覽屬性。 而不是使用模型繫結器，來更新課程導覽屬性，您將會執行在新的`UpdateInstructorCourses`方法。 因此您必須排除`Courses`屬性從模型繫結。 這並不需要呼叫的程式碼的任何變更[TryUpdateModel](https://msdn.microsoft.com/en-us/library/dd470908(v=vs.98).aspx)因為您正在使用*允許清單*多載和`Courses`不在 include 清單中。
+因為檢視沒有集合的`Course`實體模型繫結器無法自動會更新`Courses`導覽屬性。 而不是使用模型繫結器，來更新課程導覽屬性，您將會執行在新的`UpdateInstructorCourses`方法。 因此您必須排除`Courses`屬性從模型繫結。 這並不需要呼叫的程式碼的任何變更[TryUpdateModel](https://msdn.microsoft.com/library/dd470908(v=vs.98).aspx)因為您正在使用*允許清單*多載和`Courses`不在 include 清單中。
 
 如果沒有核取方塊已選取中的程式碼`UpdateInstructorCourses`初始化`Courses`導覽屬性使用空的集合：
 

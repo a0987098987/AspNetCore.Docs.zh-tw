@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/error-handling
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49507e90cd659be5da08df17e175297adad0fea1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 019e31fa749a950db48575e1f4e8d4d26d1cde75
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-error-handling-in-aspnet-core"></a>Introduction to ASP.NET Core 中的錯誤處理
 
@@ -49,7 +49,7 @@ Put`UseDeveloperExceptionPage`之前您要攔截例外狀況中，例如任何�
 
 ## <a name="configuring-a-custom-exception-handling-page"></a>設定自訂的例外狀況處理頁面
 
-它是個不錯的主意設定不以執行應用程式時所要使用的例外狀況處理常式頁面`Development`環境。
+它是個不錯的主意設定例外狀況處理常式網頁應用程式不在執行時所要使用`Development`環境。
 
 [!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
@@ -65,7 +65,7 @@ public IActionResult Index()
 
 ## <a name="configuring-status-code-pages"></a>設定狀態的字碼頁
 
-根據預設，您的應用程式不會提供豐富的狀態字碼頁的 HTTP 狀態碼 500 （內部伺服器錯誤） 或 404 （找不到） 等。 您可以設定`StatusCodePagesMiddleware`將這一行加入`Configure`方法：
+根據預設，您的應用程式將不會提供 HTTP 狀態碼 500 （內部伺服器錯誤） 或 404 （找不到） 等豐富狀態字碼頁。 您可以設定`StatusCodePagesMiddleware`將這一行加入`Configure`方法：
 
 ```csharp
 app.UseStatusCodePages();

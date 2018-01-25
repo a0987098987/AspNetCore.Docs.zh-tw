@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 2d416432aad9d5654aefd8c63b84b6ae18967515
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a7a66e7e67539e4b075da6fc054a7b53984b6ce1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解
 ====================
@@ -31,8 +31,8 @@ ms.lasthandoff: 11/10/2017
 
 顯示案例適用於 Azure 和協力廠商主機服務提供者。 如需有關如何疑難排解在 Azure App Service web 應用程式的詳細資訊，請參閱下列資源：
 
-- [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
-- [監視 Azure App Service 中的 Web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-monitor//)
+- [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+- [監視 Azure App Service 中的 Web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-monitor//)
 - [發表新版的 Windows Azure SDK 2.0 for.NET](http://https://weblogs.asp.net/scottgu/announcing-the-release-of-windows-azure-sdk-2-0-for-net) （ScottGu 的部落格，會示範如何取得 Visual Studio 中的診斷記錄檔）
 
 ## <a name="server-error-in--application---current-custom-error-settings-prevent-details-of-the-error-from-being-viewed-remotely"></a>伺服器錯誤目前自訂錯誤設定 '/' 應用程式層中避免從遠端檢視錯誤詳細資料
@@ -180,7 +180,7 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-名稱*.mdf*檔案無法符合曾經已存在您的電腦的任何 SQL Server Express 資料庫的名稱，即使您刪除*.mdf*先前已存在的資料庫檔案。 變更名稱*.mdf*從未使用過為資料庫名稱以及變更名稱的檔案*Web.config*檔案，以使用新的名稱。 或者，您可以使用[SQL Server Management Studio Express](https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=7593)刪除先前已存在 SQL Server Express 資料庫。
+名稱*.mdf*檔案無法符合曾經已存在您的電腦的任何 SQL Server Express 資料庫的名稱，即使您刪除*.mdf*先前已存在的資料庫檔案。 變更名稱*.mdf*從未使用過為資料庫名稱以及變更名稱的檔案*Web.config*檔案，以使用新的名稱。 或者，您可以使用[SQL Server Management Studio Express](https://www.microsoft.com/download/details.aspx?displaylang=en&amp;id=7593)刪除先前已存在 SQL Server Express 資料庫。
 
 ## <a name="model-compatibility-cannot-be-checked"></a>模型的相容性無法檢查
 
@@ -192,7 +192,7 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-如果您將 Web.config 檔案中的資料庫名稱已用過您的電腦上的資料庫可能已存在的某些資料表之前。 選取新的名稱，未在電腦上之前變更使用*Web.config*指向要使用這個新的資料庫名稱的檔案。 或者，您可以使用[SQL Server Express 公用程式](https://www.microsoft.com/en-us/download/details.aspx?DisplayLang=en&amp;id=3990)或[SQL Server Management Studio Express](https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=7593)刪除現有的資料庫。
+如果您將 Web.config 檔案中的資料庫名稱已用過您的電腦上的資料庫可能已存在的某些資料表之前。 選取新的名稱，未在電腦上之前變更使用*Web.config*指向要使用這個新的資料庫名稱的檔案。 或者，您可以使用[SQL Server Express 公用程式](https://www.microsoft.com/download/details.aspx?DisplayLang=en&amp;id=3990)或[SQL Server Management Studio Express](https://www.microsoft.com/download/details.aspx?displaylang=en&amp;id=7593)刪除現有的資料庫。
 
 ## <a name="sql-error-when-a-script-attempts-to-create-users-or-roles"></a>當指令碼會嘗試建立使用者或角色的 SQL 錯誤
 
@@ -210,7 +210,7 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 [!code-console[Main](troubleshooting/samples/sample9.cmd)]
 
-如需如何編輯專案檔中的 PreSource 項目資訊，請參閱[如何： 編輯專案檔中的部署設定](https://msdn.microsoft.com/en-us/library/ff398069(v=vs.100).aspx)。 如果需要會在目的地資料庫中的使用者或開發資料庫中的角色，請連絡您的主機服務提供者尋求協助。
+如需如何編輯專案檔中的 PreSource 項目資訊，請參閱[如何： 編輯專案檔中的部署設定](https://msdn.microsoft.com/library/ff398069(v=vs.100).aspx)。 如果需要會在目的地資料庫中的使用者或開發資料庫中的角色，請連絡您的主機服務提供者尋求協助。
 
 ## <a name="sql-server-timeout-error-when-running-custom-scripts-during-deployment"></a>在部署期間執行自訂指令碼時發生 SQL Server 逾時錯誤
 
@@ -220,7 +220,7 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-執行多個有不同的交易模式的指令碼可能會導致逾時錯誤。 根據預設，自動產生的指令碼執行在交易中，但自訂指令碼不這麼做。 如果您選取**提取資料和/或從現有的資料庫結構描述**選項**封裝/發行 SQL**索引標籤上，而且如果您新增自訂 SQL 指令碼，您必須變更一些指令碼的交易設定，讓所有指令碼會使用相同的交易設定。 如需詳細資訊，請參閱[How to： 部署資料庫與 Web 應用程式專案](https://msdn.microsoft.com/en-us/library/dd465343.aspx)。
+執行多個有不同的交易模式的指令碼可能會導致逾時錯誤。 根據預設，自動產生的指令碼執行在交易中，但自訂指令碼不這麼做。 如果您選取**提取資料和/或從現有的資料庫結構描述**選項**封裝/發行 SQL**索引標籤上，而且如果您新增自訂 SQL 指令碼，您必須變更一些指令碼的交易設定，讓所有指令碼會使用相同的交易設定。 如需詳細資訊，請參閱[How to： 部署資料庫與 Web 應用程式專案](https://msdn.microsoft.com/library/dd465343.aspx)。
 
 如果您已設定的交易，讓所有都相同，但是仍然收到這個錯誤，可能的解決方法是分別執行指令碼。 在**資料庫指令碼**方格中的**封裝/發行**SQL 索引標籤上，清除**Include**造成逾時錯誤，指令碼 核取方塊，然後發行專案。 然後移回至**資料庫指令碼**方格中，選取該指令碼**Include**核取方塊，然後清除**Include**其他指令碼的核取方塊。 然後將專案發行一次。 此時，當您發行時，只有在選取的自訂指令碼執行。
 
@@ -280,7 +280,7 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 您部署的應用程式，例如 SQL Server Compact 的檔案中的應用程式儲存其資料庫會使用 Entity Framework Code First 移轉和 DBMS\_Data 資料夾。 您必須設定為在您第一次部署之後建立資料庫的 Code First 移轉。 當您執行應用程式會取得錯誤訊息，如下列範例所示：
 
-路徑不是有效的。 請檢查資料庫目錄。 [路徑 = c:\inetpub\wwwroot\App\_Data\DatabaseName.sdf]
+路徑不是有效的。 請檢查資料庫目錄。 [Path = c:\inetpub\wwwroot\App\_Data\DatabaseName.sdf ]
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
@@ -309,7 +309,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/en-us/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>當應用程式嘗試寫入應用程式的資料夾時，存取被拒錯誤
 
@@ -319,7 +319,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/en-us/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 <a id="aspnet45error"></a>
 
@@ -333,7 +333,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 錯誤頁面的 [來源錯誤] 方塊中，反白顯示從 Web.config 下行錯誤的原因為：
 
-&lt;編譯 targetFramework ="4.5"/&gt;
+&lt;compilation targetFramework="4.5" /&gt;
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
@@ -341,7 +341,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 如果您將 ASP.NET 4 或較早的 web 專案部署到相同的目的地時，選取**移除目的端的其他檔案** 核取方塊**設定** 索引標籤**發行 Web**精靈。 如果您沒有選取**移除目的端的其他檔案**，您仍會繼續組態錯誤頁面。
 
-專案**屬性**windows 包含目標 framework 下拉式清單中，但您無法解決這個問題只變更與**.NET Framework 4.5**至**.NET Framework 4**. 如果您的目標 framework 變更為舊版 framework 時，專案還是會有較新的 framework 版本的組件的參考，並不會執行。 您必須手動變更這些參考，或建立新的專案以.NET Framework 4 或更早版本為目標。 如需詳細資訊，請參閱[Web sites 的.NET Framework 目標](https://msdn.microsoft.com/en-us/library/bb398791(v=vs.100).aspx)。
+專案**屬性**windows 包含目標 framework 下拉式清單中，但您無法解決這個問題只變更與**.NET Framework 4.5**至**.NET Framework 4**. 如果您的目標 framework 變更為舊版 framework 時，專案還是會有較新的 framework 版本的組件的參考，並不會執行。 您必須手動變更這些參考，或建立新的專案以.NET Framework 4 或更早版本為目標。 如需詳細資訊，請參閱[Web sites 的.NET Framework 目標](https://msdn.microsoft.com/library/bb398791(v=vs.100).aspx)。
 
 ## <a name="medium-trust-errors"></a>中度信任錯誤
 

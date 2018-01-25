@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d6a9c6aef42d1f165567d1a1802bffa853a320e1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 416178533f022f2a262799e6f042d6009bb9d999
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-vb"></a>顯示每個資料列與資料清單控制項 (VB) 的多筆記錄
 ====================
@@ -67,7 +67,7 @@ Visual Studio 會自動建立之後建立和繫結至資料清單的新 ObjectDa
 
 ## <a name="step-2-changing-the-datalist-s-layout-direction"></a>步驟 2： 變更 DataList s 版面配置方向
 
-預設行為時配置它的項目，以垂直方式在單一資料行中，多重資料列的資料表中，DataList 為這種行為可輕鬆地透過變更 DataList s [ `RepeatDirection`屬性](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalist.repeatdirection.aspx)。 `RepeatDirection`屬性可以接受兩個可能值的其中一個：`Horizontal`或`Vertical`（預設值）。
+預設行為時配置它的項目，以垂直方式在單一資料行中，多重資料列的資料表中，DataList 為這種行為可輕鬆地透過變更 DataList s [ `RepeatDirection`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatdirection.aspx)。 `RepeatDirection`屬性可以接受兩個可能值的其中一個：`Horizontal`或`Vertical`（預設值）。
 
 藉由變更`RepeatDirection`屬性從`Vertical`至`Horizontal`，DataList 呈現其記錄在單一資料列，建立一個資料行，每個資料來源項目。 為了說明這個效果，設計工具中 DataList 上按一下，然後從 [屬性] 視窗中，變更`RepeatDirection`屬性從`Vertical`至`Horiztonal`。 立即在此情況下，在設計工具調整 DataList 的配置，建立單一資料列、 多重資料行的介面 （請參閱圖 3）。
 
@@ -87,7 +87,7 @@ Visual Studio 會自動建立之後建立和繫結至資料清單的新 ObjectDa
 
 ## <a name="step-3-displaying-data-in-a-multi-column-multi-row-table"></a>步驟 3： 在多個資料行、 多重資料列的資料表中顯示資料
 
-若要建立多重資料行中，多重資料列的資料清單，所以我們需要將[`RepeatColumns`屬性](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalist.repeatcolumns.aspx)要顯示的資料行的數字。 根據預設，`RepeatColumns`屬性設定為 0，這會導致在 DataList 以單一資料列或資料行中顯示所有的項目 (根據的值`RepeatDirection`屬性)。
+若要建立多重資料行中，多重資料列的資料清單，所以我們需要將[`RepeatColumns`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.datalist.repeatcolumns.aspx)要顯示的資料行的數字。 根據預設，`RepeatColumns`屬性設定為 0，這會導致在 DataList 以單一資料列或資料行中顯示所有的項目 (根據的值`RepeatDirection`屬性)。
 
 我們的範例，可讓 s 顯示三個產品每個資料表資料列。 因此，設定`RepeatColumns`屬性設定為 3。 變更之後，請花一點時間瀏覽器中檢視結果。 如圖 5 所示，是現在會在三個資料行中，多重資料列的資料表中列出的產品。
 

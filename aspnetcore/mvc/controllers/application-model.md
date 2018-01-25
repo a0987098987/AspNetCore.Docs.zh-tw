@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/application-model
-ms.openlocfilehash: c69dd1cfae713036ce0ee95f70acc162b1e82cb0
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a0913edaab723656c9be484332e02c551a5c88e1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-the-application-model"></a>使用應用程式模型
 
@@ -35,7 +35,7 @@ ASP.NET Core MVC 應用程式模型具有下列結構：
 模型的每個層級對一般存取`Properties`集合中，而較低層級可以存取，並覆寫階層架構中較高的層級所設定的屬性值。 屬性會保存到`ActionDescriptor.Properties`建立動作時。 然後時在處理要求時，任何屬性的加入或修改的慣例可以透過存取`ActionContext.ActionDescriptor.Properties`。 使用屬性會設定您的篩選器、 模型繫結器等每個動作為基礎的好方法。
 
 > [!NOTE]
-> `ActionDescriptor.Properties`集合不是安全執行緒 （適用於寫入） 應用程式啟動完成。 慣例會安全地將資料加入至這個集合的最佳方式。
+> `ActionDescriptor.Properties`收集不具備執行緒安全 （適用於寫入），一旦完成應用程式啟動。 慣例會安全地將資料加入至這個集合的最佳方式。
 
 ### <a name="iapplicationmodelprovider"></a>IApplicationModelProvider
 
@@ -53,7 +53,7 @@ ASP.NET Core MVC 載入應用程式模型使用定義的提供者模式[IApplica
 * [`CorsApplicationModelProvider`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.cors.internal.corsapplicationmodelprovider)
 
 > [!NOTE]
-> 具有相同值的兩個提供者中的順序`Order`稱為未定義，並因此不應依賴時。
+> 具有相同值的兩個提供者中的順序`Order`稱為未定義，並因此不應憑藉此方式。
 
 > [!NOTE]
 > `IApplicationModelProvider`是擴充的架構作者進階的概念。 一般情況下，應用程式應該使用的慣例，因此架構應該使用提供者。 主要的差別是提供者，一律執行之前慣例。
@@ -185,7 +185,7 @@ services.AddMvc().AddWebApiConventions();
 
 ### <a name="action-conventions"></a>動作慣例
 
-`UseWebApiActionConventionsAttribute`用來根據其名稱的動作對應的 HTTP 方法 (例如，`Get`會將對應至`HttpGet`)。 它只適用於不使用路由屬性的動作。
+`UseWebApiActionConventionsAttribute`用來根據其名稱的動作對應的 HTTP 方法 (例如，`Get`會將對應至`HttpGet`)。 它只適用於不使用屬性路由的動作。
 
 ### <a name="overloading"></a>多載化
 

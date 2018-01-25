@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 78a54fb1b0e4c0ebd5445cca175103471925a065
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 323ee44f43f6d4081bd9ba50791755696bc9128f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 一部分 8
 ====================
@@ -125,11 +125,11 @@ ms.lasthandoff: 11/10/2017
 
 - [Entity Framework 常見問題集](http://www.ef-faq.org/introduction.html)
 - [Entity Framework 小組部落格](https://blogs.msdn.com/b/adonet/)
-- [MSDN Library 中的 entity Framework](https://msdn.microsoft.com/en-us/library/bb399572.aspx)
-- [Entity Framework 中 MSDN 資料開發人員中心](https://msdn.microsoft.com/en-us/data/ef.aspx)
-- [MSDN Library 中的 EntityDataSource Web 伺服器控制項概觀](https://msdn.microsoft.com/en-us/library/cc488502.aspx)
-- [EntityDataSource 控制項 MSDN Library 中的應用程式開發介面參考](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.entitydatasource.aspx)
-- [MSDN 上的實體架構論壇](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/)
+- [MSDN Library 中的 entity Framework](https://msdn.microsoft.com/library/bb399572.aspx)
+- [Entity Framework 中 MSDN 資料開發人員中心](https://msdn.microsoft.com/data/ef.aspx)
+- [MSDN Library 中的 EntityDataSource Web 伺服器控制項概觀](https://msdn.microsoft.com/library/cc488502.aspx)
+- [EntityDataSource 控制項 MSDN Library 中的應用程式開發介面參考](https://msdn.microsoft.com/library/system.web.ui.webcontrols.entitydatasource.aspx)
+- [MSDN 上的實體架構論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/)
 - [Julie Lerman 部落格](http://thedatafarm.com/blog/)
 
 >[!div class="step-by-step"]

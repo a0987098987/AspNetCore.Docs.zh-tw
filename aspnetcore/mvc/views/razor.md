@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/razor
-ms.openlocfilehash: d932e28246998c60e2b3f9c77a2521fe55991e85
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: abdbb8112533d42f81180abad52f5ee86e3b280f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="razor-syntax-for-aspnet-core"></a>Razor 語法的 ASP.NET Core
 
@@ -72,8 +72,8 @@ Razor 的隱含運算式開頭`@`後面接著 C# 程式碼：
 
 上述程式碼會產生編譯器錯誤類似下列其中一項：
 
- * "Int"項目未結束。 所有元素都必須自行關閉或沒有對稱的結束標記。
- * 無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ * "Int"項目未關閉。 所有元素都必須自行關閉或沒有對稱的結束標記。
+ *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
  
 泛型方法的呼叫必須包裝在[明確 Razor 運算式](#explicit-razor-expressions)或[Razor 程式碼區塊](#razor-code-blocks)。
 
@@ -118,8 +118,8 @@ Razor 的明確運算式組成`@`有對稱的括號的符號。 若要轉譯上�
 
 上述程式碼會產生編譯器錯誤類似下列其中一項：
 
- * "Int"項目未結束。 所有元素都必須自行關閉或沒有對稱的結束標記。
- * 無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
+ * "Int"項目未關閉。 所有元素都必須自行關閉或沒有對稱的結束標記。
+ *  無法將方法群組 'GenericMethod' 為非委派類型 'object' 的轉換。 您是否想要叫用的方法？ ' 
  
  下列標記會顯示正確的方式寫入這段程式碼。 程式碼會寫入做為明確運算式：
 

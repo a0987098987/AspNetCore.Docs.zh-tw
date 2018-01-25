@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
-ms.openlocfilehash: f8d378d3332669ae4606dad8ada06de37e7dfd20
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5780bfde928011f46c3f504aec927f2127f10d0d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuration-and-instrumentation"></a>組態和測試設備
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓您以程式設計方式進行組態變更。 此外，許多新的組態設定存在允許新的設定和測試設備。
 
@@ -76,15 +76,15 @@ ASP.NET 組態應用程式開發介面包含一組可讓您以程式設計方式
 
 是類似於每個其他許多組態類別和方法。 下表描述最常使用的組態類別和命名空間。
 
-| **設定類別或命名空間** | **說明** |
+| **設定類別或命名空間** | **描述** |
 | --- | --- |
-| [System.Configuration](https://msdn.microsoft.com/en-us/library/system.configuration.aspx)命名空間 | 包含所有的.NET Framework 應用程式的主要組態類別。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 這兩種方法為非靜態。 |
+| [System.Configuration](https://msdn.microsoft.com/library/system.configuration.aspx) namespace | 包含所有的.NET Framework 應用程式的主要組態類別。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 這兩種方法為非靜態。 |
 | System.Configuration.Configuration 類別 | 代表一組的電腦、 應用程式、 Web 目錄或其他資源的設定資料。 這個類別包含有用的方法，例如 GetSection 和 GetSectionGroup，更新組態設定和取得參考區段或區段群組。 這個類別用於取得設計階段組態資料，例如 WebConfigurationManager 和 ConfigurationManager 類別方法的方法當做傳回型別。 |
-| System.Web.Configuration 命名空間 | ASP.NET 組態區段會定義在包含區段處理常式類別[ASP.NET 組態設定](https://msdn.microsoft.com/en-us/library/b5ysx397.aspx)。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 |
-| System.Web.Configuration.WebConfigurationManager 類別 | 提供有用的方法，以取得執行階段和設計階段的組態設定的參考。 這些方法會使用 System.Configuration.Configuration 類別做為傳回類型。 您可以使用這個類別的靜態 GetSection 方法或 System.Configuration.ConfigurationManager 類別非靜態 GetSection 方法交換使用。 對於 Web 應用程式設定，而不是 System.Configuration.ConfigurationManager 類別建議 System.Web.Configuration.WebConfigurationManager 類別。 |
-| [System.Configuration.Provider](https://msdn.microsoft.com/en-us/library/system.configuration.provider.aspx)命名空間 | 提供方法，以自訂和擴充的組態提供者。 這是所有的提供者類別的基底類別中的組態系統。 |
-| [System.Web.Management](https://msdn.microsoft.com/en-us/library/system.web.management.aspx)命名空間 | 包含類別和介面來管理和監視的 Web 應用程式的健全狀況。 嚴格來說，此命名空間不會視為組態 API 的一部分。 比方說，追蹤和事件引發便可達成此命名空間中的類別。 |
-| [System.Management.Instrumentation](https://msdn.microsoft.com/en-us/library/system.management.instrumentation.aspx)命名空間 | 提供的應用程式公開其管理資訊和潛在取用者透過 Windows Management Instrumentation (WMI) 事件檢測所需的類別。 ASP.NET 健康監視使用 WMI 傳遞事件。 嚴格來說，此命名空間不會視為組態 API 的一部分。 |
+| System.Web.Configuration namespace | ASP.NET 組態區段會定義在包含區段處理常式類別[ASP.NET 組態設定](https://msdn.microsoft.com/library/b5ysx397.aspx)。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 |
+| System.Web.Configuration.WebConfigurationManager class | 提供有用的方法，以取得執行階段和設計階段的組態設定的參考。 這些方法會使用 System.Configuration.Configuration 類別做為傳回類型。 您可以使用這個類別的靜態 GetSection 方法或 System.Configuration.ConfigurationManager 類別非靜態 GetSection 方法交換使用。 對於 Web 應用程式設定，而不是 System.Configuration.ConfigurationManager 類別建議 System.Web.Configuration.WebConfigurationManager 類別。 |
+| [System.Configuration.Provider](https://msdn.microsoft.com/library/system.configuration.provider.aspx) namespace | 提供方法，以自訂和擴充的組態提供者。 這是所有的提供者類別的基底類別中的組態系統。 |
+| [System.Web.Management](https://msdn.microsoft.com/library/system.web.management.aspx) namespace | 包含類別和介面來管理和監視的 Web 應用程式的健全狀況。 嚴格來說，此命名空間不會視為組態 API 的一部分。 比方說，追蹤和事件引發便可達成此命名空間中的類別。 |
+| [System.Management.Instrumentation](https://msdn.microsoft.com/library/system.management.instrumentation.aspx)命名空間 | 提供的應用程式公開其管理資訊和潛在取用者透過 Windows Management Instrumentation (WMI) 事件檢測所需的類別。 ASP.NET 健康監視使用 WMI 傳遞事件。 嚴格來說，此命名空間不會視為組態 API 的一部分。 |
 
 ## <a name="reading-from-aspnet-configuration-files"></a>ASP.NET 組態檔讀取
 
@@ -152,7 +152,7 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 | --- | --- |
 | **eventMappings** | 包含各種 WebBase 類別的對應。 如果您產生您自己的事件類別，您可以擴充此清單。 產生您自己的事件類別可讓您更精細的資料粒度上您將資訊傳送至的提供者。 例如，您可以設定要傳送您的電子郵件的自訂事件時傳送至 SQL Server 的未處理例外狀況。 |
 | **規則** | 提供者 eventMappings 的連結。 |
-| **緩衝處理** | 搭配 SQL Server 和電子郵件提供者，以決定排清至提供者的事件的頻率。 |
+| **buffering** | 搭配 SQL Server 和電子郵件提供者，以決定排清至提供者的事件的頻率。 |
 
 以下是全域的 Web.config 檔案中的程式碼範例。
 
@@ -259,11 +259,11 @@ ASP.NET 2.0 允許以程式設計方式存取所有的追蹤訊息，透過**Tra
 
 數個 ASP.NET 應用程式服務依賴來管理儲存和擷取資料來源的資料提供者。 每個提供者會因資料來源。 ASP.NET 會包含在下列 ASP.NET 功能的 SQL Server 提供者：
 
-- 成員資格 ( [SqlMembershipProvider](https://msdn.microsoft.com/en-us/library/system.web.security.sqlmembershipprovider.aspx)類別)。
-- 角色管理 ( [SqlRoleProvider](https://msdn.microsoft.com/en-us/library/system.web.security.sqlroleprovider.aspx)類別)。
-- 設定檔 ( [SqlProfileProvider](https://msdn.microsoft.com/en-us/library/system.web.profile.sqlprofileprovider.aspx)類別)。
-- Web 組件個人化 ( [SqlPersonalizationProvider](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.webparts.sqlpersonalizationprovider.aspx)類別)。
-- Web 事件 ( [SqlWebEventProvider](https://msdn.microsoft.com/en-us/library/system.web.management.sqlwebeventprovider.aspx)類別)。
+- 成員資格 ( [SqlMembershipProvider](https://msdn.microsoft.com/library/system.web.security.sqlmembershipprovider.aspx)類別)。
+- 角色管理 ( [SqlRoleProvider](https://msdn.microsoft.com/library/system.web.security.sqlroleprovider.aspx)類別)。
+- 設定檔 ( [SqlProfileProvider](https://msdn.microsoft.com/library/system.web.profile.sqlprofileprovider.aspx)類別)。
+- Web 組件個人化 ( [SqlPersonalizationProvider](https://msdn.microsoft.com/library/system.web.ui.webcontrols.webparts.sqlpersonalizationprovider.aspx)類別)。
+- Web 事件 ( [SqlWebEventProvider](https://msdn.microsoft.com/library/system.web.management.sqlwebeventprovider.aspx)類別)。
 
 當您安裝 ASP.NET 時，Machine.config 檔案，為您的伺服器會包含組態項目會指定每個提供者所依賴的 ASP.NET 功能的 SQL Server 提供者。 設定這些提供者，根據預設，連接到 SQL Server Express 2005 的本機使用者執行個體。 如果您變更的提供者所用的預設連接字串，然後您可以使用任何在電腦組態中，設定的 ASP.NET 功能之前，您必須安裝 SQL Server 資料庫和資料庫項目如您所選擇的功能使用 Aspnet\_regsql.exe。 如果您使用 SQL 註冊工具指定的資料庫不存在 （aspnetdb 將預設資料庫如果未在命令列上指定其中一個），則目前的使用者必須擁有 SQL Server 一併建立結構描述中建立資料庫權限lements 資料庫內。
 
@@ -291,7 +291,7 @@ ASP.NET 2.0 允許以程式設計方式存取所有的追蹤訊息，透過**Tra
 
 執行 aspnet 時，可以使用下列選項\_regbrowser.exe:
 
-| **選項** | **說明** |
+| **選項** | **描述** |
 | --- | --- |
 | **-?** | 顯示 Aspnet\_regbbrowsers.exe 命令視窗中的說明文字。 |
 | **-i** | 建立執行階段瀏覽器能力組件，並將它安裝在全域組件快取中。 |
@@ -301,7 +301,7 @@ ASP.NET 2.0 允許以程式設計方式存取所有的追蹤訊息，透過**Tra
 
 ASP.NET 編譯工具可用於兩種方法： 在就地編譯和部署，而指定目標的輸出目錄的編譯。
 
-### <a name="compiling-an-application-in-placehttpsmsdnmicrosoftcomen-uslibraryms229863aspx"></a>[編譯應用程式中的位置](https://msdn.microsoft.com/en-us/library/ms229863.aspx)
+### <a name="compiling-an-application-in-placehttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[編譯應用程式中的位置](https://msdn.microsoft.com/library/ms229863.aspx)
 
 ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模擬應用程式，因此會造成一般的編譯進行多個要求的行為。 先行編譯網站的使用者不會發生編譯第一次要求頁面所造成的延遲。
 
@@ -317,7 +317,7 @@ ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模
 > 包含巢狀的應用程式的應用程式的編譯不會編譯巢狀的應用程式。 巢狀的應用程式必須個別進行編譯。
 
 
-### <a name="compiling-an-application-for-deploymenthttpsmsdnmicrosoftcomen-uslibraryms229863aspx"></a>[編譯應用程式部署](https://msdn.microsoft.com/en-us/library/ms229863.aspx)
+### <a name="compiling-an-application-for-deploymenthttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[編譯應用程式部署](https://msdn.microsoft.com/library/ms229863.aspx)
 
 您藉由指定 targetDir 參數編譯應用程式部署 （編譯到目標位置）。 TargetDir 可以是 Web 應用程式的最後一個位置，或編譯的應用程式可以進一步進行部署。 使用**-u**選項編譯的方式，您可以進行變更編譯的應用程式中的某些檔案而不需要重新編譯應用程式。 Aspnet\_compiler.exe 區別靜態和動態的檔案類型，並建立產生的應用程式時以不同方式處理它們。
 
@@ -349,18 +349,18 @@ ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模
 | .cs、.vb、.jsl、.cpp （不包括程式碼後置檔案，如稍早所列的檔案類型） | 從.ascx、.ashx 或.aspx 檔案產生的組件所參考的程式碼會編譯成組件，並放置於 Bin 目錄。 會不複製任何原始程式檔。 |
 | 自訂的檔案類型 | 這些檔案會編譯像動態檔案。 根據它們所根據的檔案類型，編譯器可以將對應檔案放在輸出目錄中。 |
 | 應用程式中的檔案\_程式碼子目錄 | 這個子目錄中原始程式碼檔會編譯成組件，並放在 Bin 目錄中。 |
-| 應用程式中的檔案\_GlobalResources 子目錄 | 這些檔案會編譯成組件，並放在 Bin 目錄中。 任何應用程式\_主要輸出目錄下建立 GlobalResources 子目錄。 如果組態檔會指定 appliesTo = 「 全部 」，.resx 和.resources 檔案會複製到輸出目錄。 不會複製如果它們正由[BuildProvider](https://msdn.microsoft.com/en-us/library/system.web.configuration.buildprovider.aspx)。 |
+| 應用程式中的檔案\_GlobalResources 子目錄 | 這些檔案會編譯成組件，並放在 Bin 目錄中。 任何應用程式\_主要輸出目錄下建立 GlobalResources 子目錄。 如果組態檔會指定 appliesTo = 「 全部 」，.resx 和.resources 檔案會複製到輸出目錄。 不會複製如果它們正由[BuildProvider](https://msdn.microsoft.com/library/system.web.configuration.buildprovider.aspx)。 |
 | 應用程式中的.resx 和.resource 檔\_LocalResources 子目錄 | 這些檔案會編譯成組件的唯一名稱，並放在 Bin 目錄中。 沒有.resx 或.resource 檔案會複製到輸出目錄。 |
 | 應用程式中的.skin 檔案\_佈景主題的子目錄 | 佈景主題會編譯成組件，並放在 Bin 目錄中。 虛設常式檔案建立.skin 檔案並放在對應的輸出目錄中。 靜態 （例如.css) 檔案會複製到輸出目錄。 |
 | .browser Web.config 靜態檔案類型的 Bin 目錄中已經存在的組件 | 這些檔案會複製到輸出目錄。 |
 
-### <a name="fixed-assembly-nameshttpsmsdnmicrosoftcomen-uslibraryms229863aspx"></a>[固定的組件名稱](https://msdn.microsoft.com/en-us/library/ms229863.aspx##)
+### <a name="fixed-assembly-nameshttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[固定的組件名稱](https://msdn.microsoft.com/library/ms229863.aspx##)
 
 某些情況下，例如使用 MSI Windows Installer，Web 應用程式部署需要使用一致的檔案名稱和內容，以及一致的目錄結構，以找出組件或更新的組態設定。 在這些情況下，您可以使用**-fixednames**選項來指定 ASP.NET 編譯工具應該編譯組件的每個來源檔案，而不是使用 where 多個頁面會編譯成組件。 這可能會導致大量的組件，因此如果您擔心延展性與您應小心使用此選項。
 
-### <a name="strong-name-compilationhttpsmsdnmicrosoftcomen-uslibraryms229863aspx"></a>[強式名稱編譯](https://msdn.microsoft.com/en-us/library/ms229863.aspx##)
+### <a name="strong-name-compilationhttpsmsdnmicrosoftcomlibraryms229863aspx"></a>[強式名稱編譯](https://msdn.microsoft.com/library/ms229863.aspx##)
 
-**-Aptca**， **-delaysign**， **-keycontainer**和**-keyfile**會提供選項，好讓您可以使用 Aspnet\_compiler.exe 建立強式名稱組件而不使用[強式名稱工具 (Sn.exe)](https://msdn.microsoft.com/en-us/library/k5b5tt23.aspx)分開。 這些選項，分別對應至**AllowPartiallyTrustedCallersAttribute**， **AssemblyDelaySignAttribute**， **AssemblyKeyNameAttribute**，和**AssemblyKeyFileAttribute**。
+**-Aptca**， **-delaysign**， **-keycontainer**和**-keyfile**會提供選項，好讓您可以使用 Aspnet\_compiler.exe 建立強式名稱組件而不使用[強式名稱工具 (Sn.exe)](https://msdn.microsoft.com/library/k5b5tt23.aspx)分開。 這些選項，分別對應至**AllowPartiallyTrustedCallersAttribute**， **AssemblyDelaySignAttribute**， **AssemblyKeyNameAttribute**，和**AssemblyKeyFileAttribute**。
 
 這些屬性的討論超出本課程的範圍。
 
@@ -447,4 +447,4 @@ ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模
 
 ## <a name="more-information"></a>詳細資訊：
 
-ASP.NET 2.0 的提供者模型可讓您建立自己的提供者不只是應用程式檢測，但許多其他用途以及例如成員資格、 設定檔等等。如需撰寫自訂的提供者，將應用程式事件記錄到文字檔的詳細資訊，請瀏覽[此連結](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/ASPNETProvMod_Prt6.asp)。
+ASP.NET 2.0 的提供者模型可讓您建立自己的提供者不只是應用程式檢測，但許多其他用途以及例如成員資格、 設定檔等等。如需撰寫自訂的提供者，將應用程式事件記錄到文字檔的詳細資訊，請瀏覽[此連結](https://msdn.microsoft.com/library/default.asp?url=/library/dnaspp/html/ASPNETProvMod_Prt6.asp)。

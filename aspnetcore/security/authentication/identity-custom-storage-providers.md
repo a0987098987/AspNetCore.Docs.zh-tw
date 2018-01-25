@@ -9,17 +9,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 6a5feb9039c5b0e9823e5f22f4d55a70830dd3e6
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: f0953ad5d9f1bfa92ecc5169d9a211ce6b8cda8f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
 由[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core 身分識別是可擴充的系統可讓您建立自訂的儲存提供者，然後連接到您的應用程式。 本主題描述如何建立 ASP.NET Core 身分識別的自訂儲存體提供者。 它涵蓋建立自己的儲存體提供者的重要概念，但不是會逐步解說。
+ASP.NET Core 身分識別是可擴充的系統可讓您建立自訂的儲存提供者，然後連接到您的應用程式。 本主題描述如何建立 ASP.NET Core 身分識別的自訂儲存體提供者。 它涵蓋建立自己的儲存體提供者的重要概念，但不是逐步解說。
 
 [檢視或從 GitHub 下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
 
@@ -78,9 +78,9 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ## <a name="the-data-access-layer"></a>資料存取層
 
-本主題假設您熟悉您要使用的持續性機制，以及如何建立實體，該機制。 本主題不提供如何建立儲存機制或資料存取類別; 詳細資料使用 ASP.NET Core 識別時，它會提供有關設計決策的一些建議。
+本主題假設您熟悉您要使用的持續性機制，以及如何建立實體，該機制。 本主題不會提供有關如何建立儲存機制或資料存取類別; 詳細資料使用 ASP.NET Core 識別時，它會提供有關設計決策的一些建議。
 
-設計自訂存放區提供者的資料存取層時，您會有很多的自由。 您只需要建立持續性機制，可用於您想要使用您的應用程式中的功能。 例如，如果您不會在您的應用程式中使用角色，您不需要建立的角色或使用者角色關聯的儲存體。 您的技術和現有的基礎結構，可能需要與 ASP.NET Core 身分識別的預設實作非常不同的結構。 資料存取層，您提供的邏輯來處理您的儲存體實作的結構。
+設計自訂存放區提供者的資料存取層時，您會有很多的自由。 您只需要建立持續性機制，可用於您想要使用您的應用程式中的功能。 例如，如果您不會在您的應用程式中使用角色，您不需要建立角色或使用者角色關聯的儲存體。 您的技術和現有的基礎結構，可能需要與 ASP.NET Core 身分識別的預設實作非常不同的結構。 資料存取層，您提供的邏輯來處理您的儲存體實作的結構。
 
 資料存取層提供邏輯以從 ASP.NET Core 身分識別的資料儲存至資料來源。 資料存取層，您自訂的存放裝置提供者可能會包含下列類別，以儲存使用者和角色的資訊。
 

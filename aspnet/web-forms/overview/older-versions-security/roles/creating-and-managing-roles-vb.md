@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a67065a33bb38388ab941c785b7dcc268645ceca
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b1132c6d782cd85edb8cbee98c8ab95a15171ac
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-and-managing-roles-vb"></a>建立及管理角色 (VB)
 ====================
@@ -78,13 +78,13 @@ ASP.NET 提供了角色架構定義的角色和與使用者帳戶建立關聯。
 
 ## <a name="step-2-specifying-and-configuring-the-roles-framework-provider"></a>步驟 2： 指定和設定角色架構提供者
 
-成員資格架構，例如角色 framework 是建置在提供者模型之上。 中所述<a id="_msoanchor_5"> </a> [*安全性基本概念和 ASP.NET 支援*](../introduction/security-basics-and-asp-net-support-vb.md)教學課程中，.NET Framework 隨附三個內建的角色提供者： [ `AuthorizationStoreRoleProvider` ](https://msdn.microsoft.com/en-us/library/system.web.security.authorizationstoreroleprovider.aspx)[ `WindowsTokenRoleProvider` ](https://msdn.microsoft.com/en-us/library/system.web.security.windowstokenroleprovider.aspx)，和[ `SqlRoleProvider` ](https://msdn.microsoft.com/en-us/library/system.web.security.sqlroleprovider.aspx)。 此教學課程系列著重於`SqlRoleProvider`，使用 Microsoft SQL Server 資料庫為角色存放區。
+成員資格架構，例如角色 framework 是建置在提供者模型之上。 中所述<a id="_msoanchor_5"> </a> [*安全性基本概念和 ASP.NET 支援*](../introduction/security-basics-and-asp-net-support-vb.md)教學課程中，.NET Framework 隨附三個內建的角色提供者： [ `AuthorizationStoreRoleProvider` ](https://msdn.microsoft.com/library/system.web.security.authorizationstoreroleprovider.aspx)[ `WindowsTokenRoleProvider` ](https://msdn.microsoft.com/library/system.web.security.windowstokenroleprovider.aspx)，和[ `SqlRoleProvider` ](https://msdn.microsoft.com/library/system.web.security.sqlroleprovider.aspx)。 此教學課程系列著重於`SqlRoleProvider`，使用 Microsoft SQL Server 資料庫為角色存放區。
 
 基本上角色架構和`SqlRoleProvider`工作一樣，成員資格架構和`SqlMembershipProvider`。 .NET Framework 包含`Roles`做為角色架構應用程式開發介面的類別。 `Roles`類別具有共用類似的方法`CreateRole`， `DeleteRole`， `GetAllRoles`， `AddUserToRole`， `IsUserInRole`，依此類推。 叫用其中一種方法時，`Roles`類別委派設定的提供者呼叫。 `SqlRoleProvider`適用於的特定角色的資料表 (`aspnet_Roles`和`aspnet_UsersInRoles`) 回應。
 
-若要使用`SqlRoleProvider`我們的應用程式中的提供者，我們需要指定哪些資料庫做為存放區。 `SqlRoleProvider`需要有特定的資料庫資料表、 檢視和預存程序的指定的角色存放區。 這些必要的資料庫物件可以使用加入[`aspnet_regsql.exe`工具](https://msdn.microsoft.com/en-us/library/ms229862.aspx)。 現在我們已經有具有所需的結構描述的資料庫`SqlRoleProvider`。 回到<a id="_msoanchor_6"> </a> [*在 SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-vb.md)教學課程中我們建立一個名為資料庫`SecurityTutorials.mdf`並用`aspnet_regsql.exe`加入應用程式包含所需的資料庫物件的服務`SqlRoleProvider`。 因此我們只需要判斷角色架構以啟用角色的支援，並使用`SqlRoleProvider`與`SecurityTutorials.mdf`做為角色存放區資料庫。
+若要使用`SqlRoleProvider`我們的應用程式中的提供者，我們需要指定哪些資料庫做為存放區。 `SqlRoleProvider`需要有特定的資料庫資料表、 檢視和預存程序的指定的角色存放區。 這些必要的資料庫物件可以使用加入[`aspnet_regsql.exe`工具](https://msdn.microsoft.com/library/ms229862.aspx)。 現在我們已經有具有所需的結構描述的資料庫`SqlRoleProvider`。 回到<a id="_msoanchor_6"> </a> [*在 SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-vb.md)教學課程中我們建立一個名為資料庫`SecurityTutorials.mdf`並用`aspnet_regsql.exe`加入應用程式包含所需的資料庫物件的服務`SqlRoleProvider`。 因此我們只需要判斷角色架構以啟用角色的支援，並使用`SqlRoleProvider`與`SecurityTutorials.mdf`做為角色存放區資料庫。
 
-已透過設定角色架構`<roleManager>`在應用程式中的項目`Web.config`檔案。 根據預設，已停用角色的支援。 若要啟用它，您必須設定[ `<roleManager>` ](https://msdn.microsoft.com/en-us/library/ms164660.aspx)項目的`enabled`屬性`true`就像這樣：
+已透過設定角色架構`<roleManager>`在應用程式中的項目`Web.config`檔案。 根據預設，已停用角色的支援。 若要啟用它，您必須設定[ `<roleManager>` ](https://msdn.microsoft.com/library/ms164660.aspx)項目的`enabled`屬性`true`就像這樣：
 
 [!code-xml[Main](creating-and-managing-roles-vb/samples/sample3.xml)]
 
@@ -103,7 +103,7 @@ ASP.NET 提供了角色架構定義的角色和與使用者帳戶建立關聯。
 
 [!code-xml[Main](creating-and-managing-roles-vb/samples/sample5.xml)]
 
-上述的標記定義`SecurityTutorialsSqlRoleProvider`做為預設提供者 (透過`defaultProvider`屬性`<roleManager>`項目)。 它也會設定`SecurityTutorialsSqlRoleProvider`的`applicationName`設`SecurityTutorials`，相當於`applicationName`成員資格提供者所使用的設定 (`SecurityTutorialsSqlMembershipProvider`)。 而不顯示在這裡， [ `<add>`元素](https://msdn.microsoft.com/en-us/library/ms164662.aspx)如`SqlRoleProvider`也可能包含`commandTimeout`屬性來指定資料庫逾時持續期間，以秒為單位。 預設值為 30。
+上述的標記定義`SecurityTutorialsSqlRoleProvider`做為預設提供者 (透過`defaultProvider`屬性`<roleManager>`項目)。 它也會設定`SecurityTutorialsSqlRoleProvider`的`applicationName`設`SecurityTutorials`，相當於`applicationName`成員資格提供者所使用的設定 (`SecurityTutorialsSqlMembershipProvider`)。 而不顯示在這裡， [ `<add>`元素](https://msdn.microsoft.com/library/ms164662.aspx)如`SqlRoleProvider`也可能包含`commandTimeout`屬性來指定資料庫逾時持續期間，以秒為單位。 預設值為 30。
 
 與此組態中標記位置，我們會準備好開始使用我們的應用程式中的角色功能。
 
@@ -113,13 +113,13 @@ ASP.NET 提供了角色架構定義的角色和與使用者帳戶建立關聯。
 
 ## <a name="step-3-examining-the-roles-api"></a>步驟 3： 檢查應用程式開發介面的角色
 
-角色架構的功能可透過公開[`Roles`類別](https://msdn.microsoft.com/en-us/library/system.web.security.roles.aspx)，其中包含 13 個共用的方法來執行以角色為基礎的作業。 當我們建立及刪除角色，在步驟 4 和 6 我們將使用[ `CreateRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.createrole.aspx)和[ `DeleteRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.deleterole.aspx)的方法，加入或移除系統中的角色。
+角色架構的功能可透過公開[`Roles`類別](https://msdn.microsoft.com/library/system.web.security.roles.aspx)，其中包含 13 個共用的方法來執行以角色為基礎的作業。 當我們建立及刪除角色，在步驟 4 和 6 我們將使用[ `CreateRole` ](https://msdn.microsoft.com/library/system.web.security.roles.createrole.aspx)和[ `DeleteRole` ](https://msdn.microsoft.com/library/system.web.security.roles.deleterole.aspx)的方法，加入或移除系統中的角色。
 
-若要取得系統中的所有角色的清單，請使用[`GetAllRoles`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getallroles.aspx)（請參閱步驟 5）。 [ `RoleExists`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.roleexists.aspx)傳回布林值，指出指定的角色是否存在。
+若要取得系統中的所有角色的清單，請使用[`GetAllRoles`方法](https://msdn.microsoft.com/library/system.web.security.roles.getallroles.aspx)（請參閱步驟 5）。 [ `RoleExists`方法](https://msdn.microsoft.com/library/system.web.security.roles.roleexists.aspx)傳回布林值，指出指定的角色是否存在。
 
-在下一個教學課程中，我們將檢查如何將使用者與角色產生關聯。 `Roles`類別的[ `AddUserToRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.addusertorole.aspx)， [ `AddUserToRoles` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.addusertoroles.aspx)， [ `AddUsersToRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.adduserstorole.aspx)，和[ `AddUsersToRoles` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.adduserstoroles.aspx)方法會將一或多個使用者加入至一或多個角色。 若要從角色移除使用者，請使用[ `RemoveUserFromRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.removeuserfromrole.aspx)， [ `RemoveUserFromRoles` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.removeuserfromroles.aspx)， [ `RemoveUsersFromRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.removeusersfromrole.aspx)，或[ `RemoveUsersFromRoles` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.removeusersfromroles.aspx)方法。
+在下一個教學課程中，我們將檢查如何將使用者與角色產生關聯。 `Roles`類別的[ `AddUserToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertorole.aspx)， [ `AddUserToRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertoroles.aspx)， [ `AddUsersToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.adduserstorole.aspx)，和[ `AddUsersToRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.adduserstoroles.aspx)方法會將一或多個使用者加入至一或多個角色。 若要從角色移除使用者，請使用[ `RemoveUserFromRole` ](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromrole.aspx)， [ `RemoveUserFromRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromroles.aspx)， [ `RemoveUsersFromRole` ](https://msdn.microsoft.com/library/system.web.security.roles.removeusersfromrole.aspx)，或[ `RemoveUsersFromRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.removeusersfromroles.aspx)方法。
 
-在<a id="_msoanchor_9"> </a> [*角色為基礎的授權*](role-based-authorization-vb.md)教學課程中我們將探討如何以程式設計方式顯示或隱藏目前登入的使用者角色為基礎的功能。 若要達成此目的，我們可以使用角色類別的[ `FindUsersInRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.findusersinrole.aspx)， [ `GetRolesForUser` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getrolesforuser.aspx)， [ `GetUsersInRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getusersinrole.aspx)，或[ `IsUserInRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.isuserinrole.aspx)方法。
+在<a id="_msoanchor_9"> </a> [*角色為基礎的授權*](role-based-authorization-vb.md)教學課程中我們將探討如何以程式設計方式顯示或隱藏目前登入的使用者角色為基礎的功能。 若要達成此目的，我們可以使用角色類別的[ `FindUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.findusersinrole.aspx)， [ `GetRolesForUser` ](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx)， [ `GetUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx)，或[ `IsUserInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx)方法。
 
 > [!NOTE]
 > 請記住，隨時其中一種方法會叫用，`Roles`類別委派設定的提供者呼叫。 在我們的案例，這表示若要傳送的呼叫`SqlRoleProvider`。 `SqlRoleProvider`然後會執行叫用的方法為基礎的適當的資料庫作業。 例如，程式碼`Roles.CreateRole("Administrators")`導致`SqlRoleProvider`執行`aspnet_Roles_CreateRole`預存程序，它會插入新的記錄，到`aspnet_Roles`資料表名為系統管理員。
@@ -132,7 +132,7 @@ ASP.NET 提供了角色架構定義的角色和與使用者帳戶建立關聯。
 角色提供的方式，將任意使用者分組，以及此群組最常用於較方便的方式，將授權規則套用。 但若要使用角色做為授權機制，我們需要先定義應用程式中有哪些角色。 不幸的是，ASP.NET 不包括 CreateRoleWizard 控制項。 若要加入新的角色，我們需要建立適當的使用者介面，並叫用角色 API 自己。 好消息是，這是很容易就能完成。
 
 > [!NOTE]
-> 雖然沒有 CreateRoleWizard Web 控制項，還有[ASP.NET 網站管理工具](https://msdn.microsoft.com/en-us/library/ms228053.aspx)，這是本機的 ASP.NET 應用程式，設計來協助您檢視及管理 web 應用程式的組態。 不過，我不大風扇原因有兩個 ASP.NET 網站管理工具。 首先，它是一個位元錯誤和使用者經驗會讓人滿意。 第二，ASP.NET 網站管理工具被專門用於只在本機，表示您將需要建置您自己的角色管理網頁，如果您要從遠端管理即時網站上的角色。 這兩個原因，本教學課程和下一步將重點放在建置所需的角色管理工具，在網頁中的，而不是依賴 ASP.NET 網站管理工具。
+> 雖然沒有 CreateRoleWizard Web 控制項，還有[ASP.NET 網站管理工具](https://msdn.microsoft.com/library/ms228053.aspx)，這是本機的 ASP.NET 應用程式，設計來協助您檢視及管理 web 應用程式的組態。 不過，我不大風扇原因有兩個 ASP.NET 網站管理工具。 首先，它是一個位元錯誤和使用者經驗會讓人滿意。 第二，ASP.NET 網站管理工具被專門用於只在本機，表示您將需要建置您自己的角色管理網頁，如果您要從遠端管理即時網站上的角色。 這兩個原因，本教學課程和下一步將重點放在建置所需的角色管理工具，在網頁中的，而不是依賴 ASP.NET 網站管理工具。
 
 
 開啟`ManageRoles.aspx`頁面`Roles`資料夾並將文字方塊和按鈕 Web 控制項加入至頁面。 將文字方塊控制項的`ID`屬性`RoleName`和按鈕的`ID`和`Text`屬性`CreateRoleButton`和建立角色，分別。 此時，網頁的宣告式標記看起來應該如下所示：
@@ -215,8 +215,8 @@ GridView 會顯示標示為項目，因為唯一資料行的 GridView`AutoGenera
 
 使用者可以建立新的角色與檢視所有現有的角色從此時`ManageRoles.aspx`頁面。 讓我們可讓使用者若要同時刪除角色。 `Roles.DeleteRole`方法有兩個多載：
 
-- [`DeleteRole(roleName)`](https://msdn.microsoft.com/en-us/library/ek4sywc0.aspx)-刪除的角色*roleName*。 如果角色包含一個或多個成員，則會擲回例外狀況。
-- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/en-us/library/38h6wf59.aspx)-刪除的角色*roleName*。 如果*throwOnPopulateRole*是`True`，則會擲回例外狀況，如果角色包含一個或多個成員。 如果*throwOnPopulateRole*是`False`，然後刪除角色後是否或不包含任何成員。 就內部而言，`DeleteRole(roleName)`方法呼叫`DeleteRole(roleName, True)`。
+- [`DeleteRole(roleName)`](https://msdn.microsoft.com/library/ek4sywc0.aspx)-刪除的角色*roleName*。 如果角色包含一個或多個成員，則會擲回例外狀況。
+- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/library/38h6wf59.aspx)-刪除的角色*roleName*。 如果*throwOnPopulateRole*是`True`，則會擲回例外狀況，如果角色包含一個或多個成員。 如果*throwOnPopulateRole*是`False`，然後刪除角色後是否或不包含任何成員。 就內部而言，`DeleteRole(roleName)`方法呼叫`DeleteRole(roleName, True)`。
 
 `DeleteRole`方法也會擲回例外狀況如果*roleName*是`Nothing`或空字串或*roleName*包含逗號。 如果*roleName*不存在於系統`DeleteRole`失敗時以無訊息模式，而不會引發例外狀況。
 
@@ -255,10 +255,10 @@ GridView 會顯示標示為項目，因為唯一資料行的 GridView`AutoGenera
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [檢查 ASP.NET 2.0 的成員資格、 角色和設定檔](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
-- [如何： 使用 ASP.NET 2.0 中的 角色管理員](https://msdn.microsoft.com/en-us/library/ms998314.aspx)
-- [角色提供者](https://msdn.microsoft.com/en-us/library/aa478950.aspx)
+- [如何： 使用 ASP.NET 2.0 中的 角色管理員](https://msdn.microsoft.com/library/ms998314.aspx)
+- [角色提供者](https://msdn.microsoft.com/library/aa478950.aspx)
 - [復原您的網站管理工具](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
-- [技術文件`<roleManager>`項目](https://msdn.microsoft.com/en-us/library/ms164660.aspx)
+- [技術文件`<roleManager>`項目](https://msdn.microsoft.com/library/ms164660.aspx)
 - [使用成員資格和角色管理員 Api](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/security/membership.aspx)
 
 ### <a name="about-the-author"></a>關於作者

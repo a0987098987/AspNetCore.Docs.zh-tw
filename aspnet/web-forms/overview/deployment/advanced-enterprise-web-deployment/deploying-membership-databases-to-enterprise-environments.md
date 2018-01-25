@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments
 msc.type: authoredcontent
-ms.openlocfilehash: f4d898b6e09b5b9df44b62f9cb4b9d367f288efb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 27fade9fc5cae917579d4963da7bca12f6a5cda1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-membership-databases-to-enterprise-environments"></a>將成員資格資料庫部署至企業環境
 ====================
@@ -44,8 +44,8 @@ ms.lasthandoff: 11/10/2017
 
 當您選擇如何佈建企業伺服器環境中的成員資格資料庫，請使用下列方針：
 
-- 可能的情況下，不會部署成員資格資料庫。 相反地，手動在目標資料庫伺服器上建立成員資格資料庫。 如果您未自訂成員資格資料庫結構描述，您可以只建立一個新的 situ 在目的地使用[ASP.NET SQL Server 註冊工具 (aspnet\_regsql.exe)](https://msdn.microsoft.com/en-us/library/ms229862(v=vs.100).aspx)。
-- 如果您不有任何選項，但若要部署的成員資格資料庫 & #x 2014; 例如，如果您已擬定廣泛修改資料庫結構描述 & #x 2014; 您應該執行的成員資格資料庫，以排除使用者帳戶資料，僅限結構描述部署和然後執行部署後指令碼中加入任何必要的組態資料。 您可以在這些方法中找到廣泛指導[How to： 部署 ASP.NET 成員資格資料庫但不包括使用者帳戶](https://msdn.microsoft.com/en-us/library/ff361972(v=vs.100).aspx)。
+- 可能的情況下，不會部署成員資格資料庫。 相反地，手動在目標資料庫伺服器上建立成員資格資料庫。 如果您未自訂成員資格資料庫結構描述，您可以只建立一個新的 situ 在目的地使用[ASP.NET SQL Server 註冊工具 (aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx)。
+- 如果您不有任何選項，但若要部署的成員資格資料庫 & #x 2014; 例如，如果您已擬定廣泛修改資料庫結構描述 & #x 2014; 您應該執行的成員資格資料庫，以排除使用者帳戶資料，僅限結構描述部署和然後執行部署後指令碼中加入任何必要的組態資料。 您可以在這些方法中找到廣泛指導[How to： 部署 ASP.NET 成員資格資料庫但不包括使用者帳戶](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx)。
 
 請務必記住*的成員資格資料庫結構描述很可能是相當靜態*。 即使您已自訂成員資格資料庫，不太確定您要更新的定期 & #x 2014年的結構描述; 不會變更與 web 應用程式或資料庫專案中的程式碼的頻率相同。 因此，您應該不需要包含任何自動或逐步部署程序中的成員資格資料庫。
 
@@ -57,8 +57,8 @@ ms.lasthandoff: 11/10/2017
 
 您可以使用下列高階步驟來更新成員資格資料庫結構描述：
 
-1. 使用 VSDBCMD**匯入**產生.dbschema 來源成員資格資料庫檔案的動作。 此程序所述[How to： 從命令提示字元中匯入結構描述](https://msdn.microsoft.com/en-us/library/dd172135.aspx)。
-2. 使用 VSDBCMD**部署**部署.dbschema 檔案到目的地的成員資格資料庫中的動作。 此程序所述[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/en-us/library/dd193283.aspx)。
+1. 使用 VSDBCMD**匯入**產生.dbschema 來源成員資格資料庫檔案的動作。 此程序所述[How to： 從命令提示字元中匯入結構描述](https://msdn.microsoft.com/library/dd172135.aspx)。
+2. 使用 VSDBCMD**部署**部署.dbschema 檔案到目的地的成員資格資料庫中的動作。 此程序所述[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)。
 
 ## <a name="conclusion"></a>結論
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需詳細指引和 VSDBCMD 的使用方式的範例，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/en-us/library/dd193283.aspx)和[How to： 從命令提示字元中匯入結構描述](https://msdn.microsoft.com/en-us/library/dd172135.aspx)。 如需有關使用 aspnet\_regsql.exe 建立成員資格資料庫，請參閱[ASP.NET SQL Server 註冊工具 (aspnet\_regsql.exe)](https://msdn.microsoft.com/en-us/library/ms229862(v=vs.100).aspx)。 多個一般指引部署成員資格資料庫的詳細資訊，請參閱[How to： 部署 ASP.NET 成員資格資料庫但不包括使用者帳戶](https://msdn.microsoft.com/en-us/library/ff361972(v=vs.100).aspx)。
+如需詳細指引和 VSDBCMD 的使用方式的範例，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)和[How to： 從命令提示字元中匯入結構描述](https://msdn.microsoft.com/library/dd172135.aspx)。 如需有關使用 aspnet\_regsql.exe 建立成員資格資料庫，請參閱[ASP.NET SQL Server 註冊工具 (aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx)。 多個一般指引部署成員資格資料庫的詳細資訊，請參閱[How to： 部署 ASP.NET 成員資格資料庫但不包括使用者帳戶](https://msdn.microsoft.com/library/ff361972(v=vs.100).aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](deploying-database-role-memberships-to-test-environments.md)

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: db2b39fab9c0701c8792d48f2ed0a059b9e450ad
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a933324b48d4117d5d4c806920f1691a7ef7849
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>檢查編輯方法與編輯檢視 (VB)
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 請注意如何檢視範本都有`@ModelType MvcMovie.Models.Movie`在檔案最上方的陳述式，這會指定檢視預期型別檢視範本模型`Movie`。
 
-Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/en-us/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 會顯示為 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
+Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 會顯示為 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
 
 執行應用程式，並瀏覽至*/Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 HTML 網頁中的看起來像下列的範例。 （為了清楚起見已排除的功能表標記）。
 
@@ -85,7 +85,7 @@ ASP.NET framework 模型繫結器會使用的已張貼的表單值，並建立`M
 
 [![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image7.png)](examining-the-edit-methods-and-edit-view/_static/image6.png)
 
-> **請注意，關於地區設定**如果您通常會使用英文以外的地區設定，請參閱[支援 ASP.NET MVC 3 驗證來搭配非英文地區設定。](https://msdn.microsoft.com/en-us/library/gg674880(VS.98).aspx)
+> **請注意，關於地區設定**如果您通常會使用英文以外的地區設定，請參閱[支援 ASP.NET MVC 3 驗證來搭配非英文地區設定。](https://msdn.microsoft.com/library/gg674880(VS.98).aspx)
 
 
 ## <a name="making-the-edit-method-more-robust"></a>進行更強固的編輯方法
@@ -114,7 +114,7 @@ ASP.NET framework 模型繫結器會使用的已張貼的表單值，並建立`M
 
 [!code-vb[Main](examining-the-edit-methods-and-edit-view/samples/sample8.vb)]
 
-第一行`SearchIndex`方法會建立下列[LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx)查詢，以選取影片：
+第一行`SearchIndex`方法會建立下列[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)查詢，以選取影片：
 
 [!code-vb[Main](examining-the-edit-methods-and-edit-view/samples/sample9.vb)]
 
@@ -123,10 +123,10 @@ ASP.NET framework 模型繫結器會使用的已張貼的表單值，並建立`M
 如果`searchString`參數包含字串，若要篩選搜尋字串，使用下列程式碼的值修改電影查詢：
 
 如果不是 String.IsNullOrEmpty(searchString) 然後   
- 電影 = 電影。位置 （包含 s.Title.Contains(searchString))   
+ movies = movies.Where(Function(s) s.Title.Contains(searchString))   
  如果結束
 
-LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例如`Where`或`OrderBy`。 相反地，延後查詢執行，這表示運算式的評估是否延遲到實際反覆查看其實現的值或[ `ToList` ](https://msdn.microsoft.com/en-us/library/bb342261.aspx)方法呼叫。 在`SearchIndex`範例 SearchIndex 檢視中執行查詢。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](https://msdn.microsoft.com/en-us/library/bb738633.aspx)。
+LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例如`Where`或`OrderBy`。 相反地，延後查詢執行，這表示運算式的評估是否延遲到實際反覆查看其實現的值或[ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx)方法呼叫。 在`SearchIndex`範例 SearchIndex 檢視中執行查詢。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](https://msdn.microsoft.com/library/bb738633.aspx)。
 
 現在您可以實作`SearchIndex`會向使用者顯示表單的檢視。 以滑鼠右鍵按一下`SearchIndex`方法，然後按一下**加入檢視**。 在**加入檢視**對話方塊方塊中，指定您要傳遞`Movie`其模型類別檢視範本的物件。 在**Scaffold 範本**清單中，選擇**清單**，然後按一下 **新增**。
 

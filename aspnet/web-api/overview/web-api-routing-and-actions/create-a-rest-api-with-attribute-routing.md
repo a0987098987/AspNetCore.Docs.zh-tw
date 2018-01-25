@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 9ecc233e595716a167ad800a0a21a6162b051648
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c1d0b3e1644ef7f9ebb4be74c3fdf3df90cf3537
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>REST API 建立以 ASP.NET Web API 2 中的路由的屬性
 ====================
@@ -37,12 +37,12 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 資料層，我們將使用 Entity Framework。 活頁簿的記錄有下列欄位：
 
-- ID
+- 識別碼
 - 標題
 - 內容類型
 - 發行日期
 - 價格
-- 說明
+- 描述
 - AuthorID （Authors 資料表外部索引鍵）
 
 不過，大部分的要求，API 會傳回這項資料 （標題、 作者和內容類型） 的子集。 若要取得完整的記錄，用戶端要求`/api/books/{id}/details`。
@@ -141,7 +141,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample8.cs)]
 
-接下來，更新`BooksController`類別，以傳回`BookDto`執行個體。 我們將使用[Queryable.Select](https://msdn.microsoft.com/en-us/library/system.linq.queryable.select.aspx)方法，以專案`Book`執行個體來`BookDto`執行個體。 以下是更新的程式碼，如控制器類別。
+接下來，更新`BooksController`類別，以傳回`BookDto`執行個體。 我們將使用[Queryable.Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx)方法，以專案`Book`執行個體來`BookDto`執行個體。 以下是更新的程式碼，如控制器類別。
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample9.cs)]
 

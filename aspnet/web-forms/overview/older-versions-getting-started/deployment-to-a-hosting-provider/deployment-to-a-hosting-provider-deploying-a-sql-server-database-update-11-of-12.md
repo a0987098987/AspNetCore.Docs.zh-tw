@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 898259885da8a089db296bd0f400ee8863877d08
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aeec69c7373a111d30e8f32a374a9f02fb4c080a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-sql-server-database-update---11-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server 資料庫更新-11 12
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Windows Azure 網站的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何將資料庫更新部署至完整的 SQL Server 資料庫。 Code First 移轉將會更新資料庫的所有工作，因為在程序會與您未針對 SQL Server Compact 中幾乎完全相同[部署資料庫更新](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)教學課程。
 
@@ -153,7 +153,7 @@ Code First 移轉來測試環境中相同的方式更新資料庫。 您會看�
 
 ## <a name="more-information"></a>更多資訊
 
-如此即完成這一系列的 ASP.NET web 應用程式部署到協力廠商主機服務提供者上的教學課程。 如需任何這些教學課程涵蓋之主題的詳細資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/en-us/library/bb386521(v=vs.110).aspx)MSDN 網站上。
+如此即完成這一系列的 ASP.NET web 應用程式部署到協力廠商主機服務提供者上的教學課程。 如需任何這些教學課程涵蓋之主題的詳細資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521(v=vs.110).aspx)MSDN 網站上。
 
 ## <a name="acknowledgements"></a>謝誌
 
@@ -162,7 +162,7 @@ Code First 移轉來測試環境中相同的方式更新資料庫。 您會看�
 - [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.support.microsoft.com/profile/Alberto)
 - Jarod Ferguson，資料平台開發 MVP，美國
 - 惡劣 Mittal、 Microsoft
-- [Kristina Olson Microsoft](https://blogs.iis.net/krolson/default.aspx)
+- [Kristina Olson, Microsoft](https://blogs.iis.net/krolson/default.aspx)
 - [Mike 教宗 Microsoft](http://www.mikepope.com/blog/DisplayBlog.aspx)
 - Mohit Srivastava Microsoft
 - [Raffaele Rialdi （義大利）](http://www.iamraf.net/)

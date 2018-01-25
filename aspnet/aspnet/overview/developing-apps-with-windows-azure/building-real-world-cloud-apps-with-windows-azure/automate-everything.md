@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: cf1cb7b07ffe8750724e58e4fb66854c9a033a54
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aa8bb895ed6eaa0ef4c5752f475ea7c911544ef2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>自動化 （建置真實世界雲端應用程式與 Azure） 的所有項目
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 在[此的電子書簡介](introduction.md)，您所看到的網頁型主控台，在 Azure 管理入口網站。 在管理入口網站可讓您監視和管理所有您已部署在 Azure 的資源。 它是可以輕鬆地建立和刪除服務，例如 web 應用程式和 Vm、 設定這些服務、 監控服務作業等等。 這是一個很棒的工具，但使用它是手動程序。 如果您要開發的任何大小的實際執行應用程式，而且特別是在小組環境中，我們建議您瀏覽入口網站以深入了解及探索 Azure，UI，然後再自動執行，也會進行回應的處理程序。
 
-幾乎所有的作業，您可以手動在管理入口網站中，或從 Visual Studio 也可以藉由呼叫 REST 管理 API 完成。 您可以撰寫指令碼使用[Windows PowerShell](https://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx)，或您可以使用一種開放原始碼架構，例如[Chef](http://www.opscode.com/chef/)或[Puppet](http://puppetlabs.com/puppet/what-is-puppet)。 您也可以在 Mac 或 Linux 的環境中使用 Bash 命令列工具。 Azure 有針對所有這些不同環境中，指令碼應用程式開發介面，而且有[.NET 管理 API](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx)萬一您想要撰寫程式碼，而不是指令碼。
+幾乎所有的作業，您可以手動在管理入口網站中，或從 Visual Studio 也可以藉由呼叫 REST 管理 API 完成。 您可以撰寫指令碼使用[Windows PowerShell](https://msdn.microsoft.com/library/windowsazure/jj156055.aspx)，或您可以使用一種開放原始碼架構，例如[Chef](http://www.opscode.com/chef/)或[Puppet](http://puppetlabs.com/puppet/what-is-puppet)。 您也可以在 Mac 或 Linux 的環境中使用 Bash 命令列工具。 Azure 有針對所有這些不同環境中，指令碼應用程式開發介面，而且有[.NET 管理 API](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx)萬一您想要撰寫程式碼，而不是指令碼。
 
 我們已修正它應用程式建立自動化的程序，建立測試環境，並將專案部署到該環境中，某些 Windows PowerShell 指令碼，我們會檢閱一些這些指令碼的內容。
 

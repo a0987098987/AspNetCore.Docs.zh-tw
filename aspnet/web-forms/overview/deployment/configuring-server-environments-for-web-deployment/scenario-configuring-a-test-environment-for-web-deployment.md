@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 008b9cd081152e6a378d0fa2e08497a6771fd9b5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 23e317c6e0b6daf2d7937b73738e5cb6fa32cde2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>案例： 用於 Web 部署設定測試環境
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 - 設定測試的 web 伺服器，以支援使用 Web Deploy 的處理常式的部署。
 
 > [!NOTE]
-> 您也可以使用[Web 部署隨選](https://technet.microsoft.com/en-us/library/ee517345(WS.10).aspx)（「 暫存代理程式 」）。 這是類似的遠端代理程式方法，根據需求和限制條件。
+> 您也可以使用[Web 部署隨選](https://technet.microsoft.com/library/ee517345(WS.10).aspx)（「 暫存代理程式 」）。 這是類似的遠端代理程式方法，根據需求和限制條件。
 
 
 在此情況下，開發人員，目的地伺服器上具有系統管理員權限和測試環境不是具有嚴格的安全性限制，因此合理的選擇是要設定測試的 web 伺服器，以支援使用遠端代理程式部署。 這是較不複雜，因此需要比 Web 部署的處理常式方法的較低的初始設定。 您還需要設定您的資料庫伺服器，以支援遠端存取和部署。

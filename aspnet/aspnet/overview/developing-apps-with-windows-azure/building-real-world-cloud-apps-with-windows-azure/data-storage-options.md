@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 3eb070167c36db7d8fb2e05af89716ee386b8211
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 88f57244bfbfdf33df3bb265d8aa2c93689b2f24
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>資料儲存體選項 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -41,14 +41,14 @@ ms.lasthandoff: 11/10/2017
 
 下表顯示四種類型的 NoSQL 資料庫：
 
-- [索引鍵/值資料庫](https://msdn.microsoft.com/en-us/library/dn313285.aspx#sec7)儲存單一序列化的物件，針對每個索引鍵的值。 適合用來儲存大量資料，您想要針對給定索引鍵的值取得一個項目，而且不需要它們來查詢是根據項目的其他屬性。
+- [索引鍵/值資料庫](https://msdn.microsoft.com/library/dn313285.aspx#sec7)儲存單一序列化的物件，針對每個索引鍵的值。 適合用來儲存大量資料，您想要針對給定索引鍵的值取得一個項目，而且不需要它們來查詢是根據項目的其他屬性。
 
-    [Azure Blob 儲存體](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/)是函式，例如檔案儲存在雲端中，以對應至資料夾和檔案名稱的索引鍵值的索引鍵/值資料庫。 擷取檔案由資料夾和檔案名稱，而不是依搜尋的檔案內容中的值。
+    [Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/)是函式，例如檔案儲存在雲端中，以對應至資料夾和檔案名稱的索引鍵值的索引鍵/值資料庫。 擷取檔案由資料夾和檔案名稱，而不是依搜尋的檔案內容中的值。
 
-    [Azure 資料表儲存體](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/)也是索引鍵/值的資料庫。 每個值都稱為*實體*（類似於資料列，以資料分割索引鍵和資料列索引鍵所識別） 與包含多個*屬性*(類似於資料行，但並非所有資料表中的實體都必須共用相同資料行）。 查詢以外的索引鍵資料行上非常沒有效率，且應予以避免。 例如，您可以儲存使用者設定檔資料，以一個資料分割的儲存單一使用者的相關資訊。 在個別的一個實體的屬性或相同的資料分割中的個別實體中，您可以儲存資料，例如使用者名稱、 密碼雜湊、 出生日期等等。 但是您不想要查詢給定的出生日期範圍的所有使用者，而且聯結查詢無法執行設定檔資料表與另一個資料表之間。 資料表儲存體是更具擴充性和關聯式資料庫中，成本較低，但它不會啟用複雜的查詢或聯結。
-- [Documentdatabases](https://msdn.microsoft.com/en-us/library/dn313285.aspx#sec8)索引鍵/值的資料庫中的值是*文件*。 這裡的 「 文件 」 不會使用 Word 或 Excel 的文件的意義，但表示具名的欄位和值，任何一項都可能是子文件的集合。 例如，訂單歷程記錄資料表中的訂單文件可能訂單號碼、 訂單日期，以及客戶的欄位。與客戶欄位有名稱和地址欄位。 資料庫會將編碼的格式，例如 XML、 YAML、 JSON 或 BSON; 中的欄位資料或者，它可以使用純文字。 設定文件資料庫除了資料庫索引鍵/值的其中一項功能是查詢的非索引鍵欄位，並定義要讓查詢更有效率的次要索引的能力。 這項功能可讓您更適合需要擷取資料比文件索引鍵的值更複雜的準則為基礎的應用程式文件資料庫。 例如，銷售訂單歷程記錄文件資料庫中可以查詢的各種欄位，例如產品識別碼、 客戶編號、 客戶名稱等。 [MongoDB](http://www.mongodb.org/)是常用的文件資料庫。
-- [資料欄系列資料庫](https://msdn.microsoft.com/en-us/library/dn313285.aspx#sec9)是索引鍵/值資料存放區可讓您結構資料儲存成相關的資料行稱為資料行家族的集合。 比方說，人口普查資料庫可能有一個群組的資料行的某個人的名稱 （名字、 中間名上, 一次），一個群組，該人員的位址和一個群組，該人員的設定檔資訊 (DOB、 性別等等。)。 然後資料庫就可以每個資料欄系列儲存在不同的磁碟分割中同時保留所有人與相同的索引鍵相關的資料。 您接著可以讀取所有設定檔資訊而不需要閱讀的所有名稱和位址資訊以及。 [Cassandra](http://cassandra.apache.org/)是常用的資料欄系列資料庫。
-- [圖形資料庫](https://msdn.microsoft.com/en-us/library/dn313285.aspx#sec10)儲存資訊的物件和關聯性集合。 圖表資料庫的目的是讓應用程式有效率地執行查詢，兩者之間周遊的網路物件和關聯性。 比方說，物件可能是員工在人力資源資料庫中，而且您可能會想以便查詢這類 「 尋找所有員工直接或間接 scott。 」 [Neo4j](http://www.neo4j.org/)是常用的 graph 資料庫。
+    [Azure 資料表儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/)也是索引鍵/值的資料庫。 每個值都稱為*實體*（類似於資料列，以資料分割索引鍵和資料列索引鍵所識別） 與包含多個*屬性*(類似於資料行，但並非所有資料表中的實體都必須共用相同資料行）。 查詢以外的索引鍵資料行上非常沒有效率，且應予以避免。 例如，您可以儲存使用者設定檔資料，以一個資料分割的儲存單一使用者的相關資訊。 在個別的一個實體的屬性或相同的資料分割中的個別實體中，您可以儲存資料，例如使用者名稱、 密碼雜湊、 出生日期等等。 但是您不想要查詢給定的出生日期範圍的所有使用者，而且聯結查詢無法執行設定檔資料表與另一個資料表之間。 資料表儲存體是更具擴充性和關聯式資料庫中，成本較低，但它不會啟用複雜的查詢或聯結。
+- [Documentdatabases](https://msdn.microsoft.com/library/dn313285.aspx#sec8)索引鍵/值的資料庫中的值是*文件*。 這裡的 「 文件 」 不會使用 Word 或 Excel 的文件的意義，但表示具名的欄位和值，任何一項都可能是子文件的集合。 例如，訂單歷程記錄資料表中的訂單文件可能訂單號碼、 訂單日期，以及客戶的欄位。與客戶欄位有名稱和地址欄位。 資料庫會將編碼的格式，例如 XML、 YAML、 JSON 或 BSON; 中的欄位資料或者，它可以使用純文字。 設定文件資料庫除了資料庫索引鍵/值的其中一項功能是查詢的非索引鍵欄位，並定義要讓查詢更有效率的次要索引的能力。 這項功能可讓您更適合需要擷取資料比文件索引鍵的值更複雜的準則為基礎的應用程式文件資料庫。 例如，銷售訂單歷程記錄文件資料庫中可以查詢的各種欄位，例如產品識別碼、 客戶編號、 客戶名稱等。 [MongoDB](http://www.mongodb.org/)是常用的文件資料庫。
+- [資料欄系列資料庫](https://msdn.microsoft.com/library/dn313285.aspx#sec9)是索引鍵/值資料存放區可讓您結構資料儲存成相關的資料行稱為資料行家族的集合。 比方說，人口普查資料庫可能有一個群組的資料行的某個人的名稱 （名字、 中間名上, 一次），一個群組，該人員的位址和一個群組，該人員的設定檔資訊 (DOB、 性別等等。)。 然後資料庫就可以每個資料欄系列儲存在不同的磁碟分割中同時保留所有人與相同的索引鍵相關的資料。 您接著可以讀取所有設定檔資訊而不需要閱讀的所有名稱和位址資訊以及。 [Cassandra](http://cassandra.apache.org/)是常用的資料欄系列資料庫。
+- [圖形資料庫](https://msdn.microsoft.com/library/dn313285.aspx#sec10)儲存資訊的物件和關聯性集合。 圖表資料庫的目的是讓應用程式有效率地執行查詢，兩者之間周遊的網路物件和關聯性。 比方說，物件可能是員工在人力資源資料庫中，而且您可能會想以便查詢這類 「 尋找所有員工直接或間接 scott。 」 [Neo4j](http://www.neo4j.org/)是常用的 graph 資料庫。
 
 相較於關聯式資料庫、 NoSQL 選項會提供更大的延展性和成本效益的儲存體和分析的非結構化資料。 缺點是它們不提供的豐富 queryability 和關聯式資料庫穩固的資料完整性功能。 NoSQL 會適用於 IIS 記錄檔資料，這牽涉到大量使用聯結查詢不需要。 NoSQL 不適合非常銀行的交易，需要絕對資料完整性以及牽涉到許多其他帳戶相關的資料關聯性。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 - 細分成部分資料，並將它們傳送給不同的電腦進行處理。 電腦 A 計算 1950年 1959年日期的人數，電腦 B 沒有 1960年 1969，等等。此群組的電腦稱為*Hadoop 叢集*。
 - 將每個部分結果放回組合在一起的組件在處理完成之後。 您現在有相對較短的出生年份多少人員清單，且可管理此整體清單中的百分比的計算的工作。
 
-在 Azure 上、 [HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/)可讓您處理、 分析和深入探索新巨量資料使用 Hadoop 的電源。 例如，您可以使用它來分析 web 伺服器記錄檔：
+在 Azure 上、 [HDInsight](https://azure.microsoft.com/services/hdinsight/)可讓您處理、 分析和深入探索新巨量資料使用 Hadoop 的電源。 例如，您可以使用它來分析 web 伺服器記錄檔：
 
 - 啟用 web 伺服器記錄，到儲存體帳戶。 這會設定 Azure Blob 服務，以您的應用程式的每個 HTTP 要求寫入記錄檔。 Blob 服務基本上是雲端檔案存放裝置，並運用整合與 HDInsight。 
 
@@ -131,7 +131,7 @@ Azure IaaS 資料儲存體選項，更容易使用，但是 PaaS 供應項目有
 - 您不需要購買授權。授權費用會包含在服務費用。
 - 您只需支付您所使用。
 
-在 Azure 中的 PaaS 資料儲存體選項包含由協力廠商提供者的供應項目。 例如，您可以選擇[MongoLab 附加元件](https://azure.microsoft.com/en-us/documentation/articles/store-mongolab-web-sites-dotnet-store-data-mongodb/)MongoDB 資料庫做為服務佈建 Azure 市集中。
+在 Azure 中的 PaaS 資料儲存體選項包含由協力廠商提供者的供應項目。 例如，您可以選擇[MongoLab 附加元件](https://azure.microsoft.com/documentation/articles/store-mongolab-web-sites-dotnet-store-data-mongodb/)MongoDB 資料庫做為服務佈建 Azure 市集中。
 
 ## <a name="choosing-a-data-storage-option"></a>選擇資料的儲存體選項
 
@@ -249,8 +249,8 @@ Entity Framework 建立*FixItTasks*資料表中包含的屬性在基礎`FixItTas
 
 | Azure SQL Database (PaaS) | 虛擬機器 (IaaS) 中的 SQL Server |
 | --- | --- |
-| **專業人員**-您不必建立或管理 Vm、 更新或修補作業系統或 SQL。Azure 會為您。 -內建高可用性，與資料庫層級 SLA。 -因為您只支付您使用 （不需要權限），低總擁有成本 (TCO)。 -適合處理大量的較小的資料庫 (&lt;= 500 GB)。 -您輕鬆地以動態方式建立新的資料庫，以便向外延展。 | ***專業人員***-在內部部署 SQL Server 功能相容。 -可實作 SQL Server[透過 AlwaysOn 高可用性](https://www.microsoft.com/en-us/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx)2 + Vm，VM 層級 SLA 中。 -您對具有完整控制權 SQL 管理的方式。 -可以重複使用您已擁有，或其中一個每小時付費 SQL 授權。 -適用於處理較少但較大 (1 TB +) 資料庫。 |
-| **Cons** -某些功能相較於內部部署 SQL Server 的間距 (缺乏[CLR 整合](https://technet.microsoft.com/en-us/library/ms131102.aspx)， [TDE](https://technet.microsoft.com/en-us/library/bb934049.aspx)，[壓縮支援](https://technet.microsoft.com/en-us/library/cc280449.aspx)， [SQLServer Reporting Services](https://technet.microsoft.com/en-us/library/ms159106.aspx)等等)-500 GB 的資料庫大小限制。 | ***Cons*** -更新/修補程式 （作業系統和 SQL） 是您的責任-建立並管理資料庫使用的是，您必須負責-限於約 8000 （透過 16 個資料磁碟機） 的磁碟 IOPS （每秒輸入/輸出作業）。 |
+| **專業人員**-您不必建立或管理 Vm、 更新或修補作業系統或 SQL。Azure 會為您。 -內建高可用性，與資料庫層級 SLA。 -因為您只支付您使用 （不需要權限），低總擁有成本 (TCO)。 -適合處理大量的較小的資料庫 (&lt;= 500 GB)。 -您輕鬆地以動態方式建立新的資料庫，以便向外延展。 | ***專業人員***-在內部部署 SQL Server 功能相容。 -可實作 SQL Server[透過 AlwaysOn 高可用性](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx)2 + Vm，VM 層級 SLA 中。 -您對具有完整控制權 SQL 管理的方式。 -可以重複使用您已擁有，或其中一個每小時付費 SQL 授權。 -適用於處理較少但較大 (1 TB +) 資料庫。 |
+| **Cons** -某些功能相較於內部部署 SQL Server 的間距 (缺乏[CLR 整合](https://technet.microsoft.com/library/ms131102.aspx)， [TDE](https://technet.microsoft.com/library/bb934049.aspx)，[壓縮支援](https://technet.microsoft.com/library/cc280449.aspx)， [SQLServer Reporting Services](https://technet.microsoft.com/library/ms159106.aspx)等等)-500 GB 的資料庫大小限制。 | ***Cons*** -更新/修補程式 （作業系統和 SQL） 是您的責任-建立並管理資料庫使用的是，您必須負責-限於約 8000 （透過 16 個資料磁碟機） 的磁碟 IOPS （每秒輸入/輸出作業）。 |
 
 如果您想要使用 SQL Server 在 VM 中，您可以使用您自己的 SQL Server 授權或支付每小時的其中一個。 例如，在入口網站或透過 REST API 可以建立新的 VM 使用 SQL Server 映像。
 
@@ -271,35 +271,35 @@ Entity Framework 建立*FixItTasks*資料表中包含的屬性在基礎`FixItTas
 選擇的資料庫平台：
 
 - [資料存取可高度擴充的方案： 使用 SQL、 NoSQL 和 Polyglot 持續性](http://aka.ms/dag-doc)。 電子書由 Microsoft Patterns and Practices，深度進入不同種類的資料會儲存適用於雲端應用程式。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/ff898430.aspx)。 請參閱資料一致性入門、 資料複寫和同步處理的指引，索引資料表的模式、 具體化的檢視模式。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/ff898430.aspx)。 請參閱資料一致性入門、 資料複寫和同步處理的指引，索引資料表的模式、 具體化的檢視模式。
 - [基底： Acid 替代](http://queue.acm.org/detail.cfm?id=1394128)。 發行項的相關資料的一致性和延展性之間的權衡取捨。
 - [七個週七個資料庫： 新式資料庫和 NoSQL 移動的指引](https://www.amazon.com/Seven-Databases-Weeks-Modern-Movement/dp/1934356921)。 活頁簿 Eric Redmond，Jim R Wilson。 強烈建議簡介自己範圍的目前可用的資料儲存平台。
 
 SQL Server 和 SQL Database 之間選擇：
 
-- [SQL Database 的指引的高階預覽](https://msdn.microsoft.com/en-us/library/windowsazure/dn369873.aspx)。 高階 SQL Database，以及何時選擇透過 SQL Database Web 和 Business edition 指引簡介。
-- [方針和限制 (Azure SQL Database)](https://msdn.microsoft.com/en-us/library/windowsazure/ff394102.aspx)。 連結到 SQL Database 的限制相關文件的入口網站頁面上，包括其中一個，著重於 SQL Server 功能的 SQL Database 不支援。
-- [Azure 虛擬機器中的 SQL Server](https://msdn.microsoft.com/en-us/library/windowsazure/jj823132.aspx)。 連結文件中有關在 Azure 中執行 SQL Server 的入口網站頁面。
-- [Scott Guthrie 說明在 Azure 中的 SQL 資料庫](https://azure.microsoft.com/en-us/documentation/videos/sql-in-azure-scottgu/)。 6 分鐘的介紹影片由 Scott Guthrie 的 SQL 資料庫。
-- [應用程式模式和 Azure 虛擬機器中的 SQL Server 的開發策略](https://msdn.microsoft.com/en-us/library/windowsazure/dn574746.aspx)。
+- [SQL Database 的指引的高階預覽](https://msdn.microsoft.com/library/windowsazure/dn369873.aspx)。 高階 SQL Database，以及何時選擇透過 SQL Database Web 和 Business edition 指引簡介。
+- [方針和限制 (Azure SQL Database)](https://msdn.microsoft.com/library/windowsazure/ff394102.aspx)。 連結到 SQL Database 的限制相關文件的入口網站頁面上，包括其中一個，著重於 SQL Server 功能的 SQL Database 不支援。
+- [Azure 虛擬機器中的 SQL Server](https://msdn.microsoft.com/library/windowsazure/jj823132.aspx)。 連結文件中有關在 Azure 中執行 SQL Server 的入口網站頁面。
+- [Scott Guthrie 說明在 Azure 中的 SQL 資料庫](https://azure.microsoft.com/documentation/videos/sql-in-azure-scottgu/)。 6 分鐘的介紹影片由 Scott Guthrie 的 SQL 資料庫。
+- [應用程式模式和 Azure 虛擬機器中的 SQL Server 的開發策略](https://msdn.microsoft.com/library/windowsazure/dn574746.aspx)。
 
 ASP.NET Web 應用程式中使用 Entity Framework 和 SQL Database
 
 - [開始使用 EF 6 使用 MVC 5](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 九部分的教學課程會引導您進行建置使用 EF，並將資料庫部署到 Azure 和 SQL Database 的 MVC 應用程式。
 - [使用 Visual Studio 的 ASP.NET Web 部署](../../../../web-forms/overview/deployment/visual-studio-web-deployment/introduction.md)。 12 個部分的教學課程，會產生更多有關如何將資料庫部署使用 EF Code First 深度。
-- [將成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 應用程式部署至 Azure 網站](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。 逐步引導您建立 web 應用程式的教學課程會使用驗證、 成員資格資料庫中儲存應用程式資料表、 修改資料庫結構描述，和將應用程式部署到 Azure。
+- [將成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 應用程式部署至 Azure 網站](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。 逐步引導您建立 web 應用程式的教學課程會使用驗證、 成員資格資料庫中儲存應用程式資料表、 修改資料庫結構描述，和將應用程式部署到 Azure。
 - [ASP.NET 資料存取內容對應](https://go.microsoft.com/fwlink/p/?LinkId=282414)。 使用 EF 和 SQL Database 資源的連結。
 
 在 Azure 上使用 MongoDB:
 
 - [MongoLab-在 Azure 上 MongoDB](http://msopentech.com/opentech-projects/mongolab-mongodb-on-windows-azure/)。 如需在 Azure 上執行 MongoDB 文件入口網站頁面。
-- [建立 Azure 網站連接到 Azure 中的虛擬機器上執行的 MongoDB](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-store-data-mongodb-vm/)。 示範如何使用 MongoDB 資料庫中的 ASP.NET web 應用程式的逐步教學課程。
+- [建立 Azure 網站連接到 Azure 中的虛擬機器上執行的 MongoDB](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-store-data-mongodb-vm/)。 示範如何使用 MongoDB 資料庫中的 ASP.NET web 應用程式的逐步教學課程。
 
 HDInsight (Azure 上的 Hadoop):
 
-- [HDInsight](https://azure.microsoft.com/en-us/documentation/services/hdinsight/)。 入口網站上的 HDInsight 文件[Azure](https://azure.microsoft.com/)網站。
-- [Hadoop 和 HDInsight： 在 Azure 中的巨量資料](https://msdn.microsoft.com/en-us/magazine/dn385705.aspx)。 Bruno Terkaly 和 Ricardo Villalobos，介紹在 Azure 上的 Hadoop 的 MSDN Magazine 文件。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱 MapReduce 模式。
+- [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/)。 入口網站上的 HDInsight 文件[Azure](https://azure.microsoft.com/)網站。
+- [Hadoop 和 HDInsight： 在 Azure 中的巨量資料](https://msdn.microsoft.com/magazine/dn385705.aspx)。 Bruno Terkaly 和 Ricardo Villalobos，介紹在 Azure 上的 Hadoop 的 MSDN Magazine 文件。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱 MapReduce 模式。
 
 >[!div class="step-by-step"]
 [上一頁](single-sign-on.md)

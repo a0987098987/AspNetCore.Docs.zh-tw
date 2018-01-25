@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 5b5645936504333573950b5bd17f5a037ffd984f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d844e2a69e4bbfdf3942f2666ead0047bdf83b7a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>建立複雜的資料模型的 EF Core 與 ASP.NET Core MVC 教學課程 (10-5)
 
@@ -39,9 +39,9 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-`DataType` 屬性用來指定比資料庫內建類型更特殊的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 `DataType`列舉型別提供許多的資料類型，例如日期、 時間、 PhoneNumber、 貨幣、 EmailAddress，等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器可以了解的 (唸成的資料 dash) 屬性。 `DataType`屬性不提供任何驗證。
+`DataType`屬性用來指定資料庫內建型別比更特定的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 `DataType`列舉型別提供許多的資料類型，例如日期、 時間、 PhoneNumber、 貨幣、 EmailAddress，等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器可以了解的 (唸成的資料 dash) 屬性。 `DataType`屬性沒有提供任何驗證。
 
-`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據伺服器的 CultureInfo 為基礎的預設格式。
+`DataType.Date`未指定的格式顯示日期。 根據預設，資料欄位會顯示根據伺服器的 CultureInfo 為基礎的預設格式。
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -103,7 +103,7 @@ dotnet ef database update
 
 您也可以使用屬性來控制您的類別和屬性如何對應到資料庫。 假設您使用名稱`FirstMidName`，第一個名稱欄位，因為欄位也可能包含中間名。 但您想要命名的資料庫欄`FirstName`，因為使用者將會寫入資料庫的臨機操作查詢習慣於該名稱。 若要讓此對應，您可以使用`Column`屬性。
 
-`Column`屬性指定當建立資料庫時，資料行`Student`對應到資料表`FirstMidName`屬性會被命名為`FirstName`。 換句話說，當您的程式碼是指`Student.FirstMidName`，資料將來自，或在更新`FirstName`資料行`Student`資料表。 如果您未指定資料行名稱，會收到相同的名稱與屬性名稱。
+`Column`屬性指定當建立資料庫時，資料行`Student`對應到資料表`FirstMidName`屬性會被命名為`FirstName`。 換句話說，當您的程式碼是指`Student.FirstMidName`，資料將來自，或在更新`FirstName`資料行`Student`資料表。 如果您未指定資料行名稱，它們會獲得相同的名稱與屬性名稱。
 
 在*Student.cs* file、 add`using`陳述式`System.ComponentModel.DataAnnotations.Schema`並加入至資料行名稱屬性`FirstMidName`屬性，如下列反白顯示的程式碼所示：
 
@@ -125,7 +125,7 @@ dotnet ef database update
 
 ![在移轉之後，在 SSOX students 資料表](complex-data-model/_static/ssox-after-migration.png)
 
-套用的前兩個移轉作業之前，名稱資料行的類型 nvarchar （max）。 它們現在是 nvarchar （50） 和資料行名稱已經從 FirstMidName FirstName。
+套用的前兩個移轉作業之前，名稱資料行的類型 nvarchar （max）。 它們現在 nvarchar （50） 和資料行名稱已從 FirstMidName 改成 FirstName。
 
 > [!Note]
 > 如果您嘗試編譯，才能完成下列各節中建立的所有實體類別，您可能會收到編譯器錯誤。
@@ -231,7 +231,7 @@ public int InstructorID { get; set; }
 
 課程實體具有外部索引鍵屬性`DepartmentID`哪些點及其相關的 Department 實體具有`Department`導覽屬性。
 
-Entity Framework 不需要具有相關實體的導覽屬性時，將外部索引鍵屬性加入至您的資料模型。  EF 自動在資料庫中建立外部索引鍵，在需要時會和建立[遮蔽屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)它們。 但是，具有資料模型中的外部索引鍵可進行更新，更簡單且更有效率。 例如，當您擷取一個課程實體，來編輯、 Department 實體為 null 如果您不載入它，因此當您更新課程實體中，您必須先擷取 Department 實體。 當外部索引鍵屬性`DepartmentID`是否包含在資料模型，您不需要在更新之前擷取 Department 實體。
+Entity Framework 不需要具有相關實體的導覽屬性時，將外部索引鍵屬性加入至您的資料模型。  EF 自動在資料庫中建立外部索引鍵，只要它們仍必要的並建立[遮蔽屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)它們。 但是，具有資料模型中的外部索引鍵可進行更新，更簡單且更有效率。 例如，當您擷取一個課程實體，來編輯、 Department 實體為 null 如果您不載入它，因此當您更新課程實體中，您必須先擷取 Department 實體。 當外部索引鍵屬性`DepartmentID`是否包含在資料模型，您不需要在更新之前擷取 Department 實體。
 
 ### <a name="the-databasegenerated-attribute"></a>DatabaseGenerated 屬性
 
@@ -308,7 +308,7 @@ public ICollection<Course> Courses { get; set; }
 ```
 
 > [!NOTE]
-> 依照慣例，Entity Framework 可讓 cascade delete 不可為 null 的外部索引鍵和多對多關聯性。 這會導致循環的串聯刪除規則，這會造成例外狀況，當您嘗試新增的移轉。 例如，如果您未定義 Department.InstructorID 屬性為可為 null，EF 會設定 cascade delete 規則刪除講師，當您刪除部門，這不是您想要發生的事情。 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列的 fluent API 陳述式來停用串聯刪除關聯性上：
+> 依照慣例，Entity Framework 可讓 cascade delete 不可為 null 的外部索引鍵和多對多關聯性。 這會導致循環的串聯刪除規則，這會造成例外狀況，當您嘗試新增的移轉。 比方說，如果您未定義 Department.InstructorID 屬性為可為 null，EF 會設定要刪除的部門，這並不是您想要發生的事情時刪除講師串聯刪除規則。 如果您的商務規則所需`InstructorID`屬性成為不可為 null，您必須使用下列的 fluent API 陳述式來停用串聯刪除關聯性上：
 > ```csharp
 > modelBuilder.Entity<Department>()
 >    .HasOne(d => d.Administrator)
@@ -354,7 +354,7 @@ public Student Student { get; set; }
 
 如果在 Enrollment 資料表未包含等級資訊，它只需要包含兩個外部索引鍵 CourseID 和 StudentID。 在此情況下，它可以裝載多對多聯結資料表 （或純聯結資料表） 在資料庫。 「 講師 」 和 「 課程實體具有多對多關聯性，該類型和下一步是建立實體類別，以做為裝載聯結資料表。
 
-（並不會隱含聯結資料表的多對多關聯性，但 EF 核心 EF 6.x 支援。 如需詳細資訊，請參閱[EF 核心 GitHub 儲存機制中的討論](https://github.com/aspnet/EntityFramework/issues/1368)。) 
+（不會隱含聯結資料表的多對多關聯性，但 EF 核心 EF 6.x 支援。 如需詳細資訊，請參閱[EF 核心 GitHub 儲存機制中的討論](https://github.com/aspnet/EntityFramework/issues/1368)。) 
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 

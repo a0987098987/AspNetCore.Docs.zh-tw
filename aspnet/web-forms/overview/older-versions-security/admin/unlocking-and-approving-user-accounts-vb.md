@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5f4977c4ad88d6f32fb682c841d0e5bdd8aeb7e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f4444e566a760ef3beda4af5fba62dd349a8bba9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unlocking-and-approving-user-accounts-vb"></a>解除鎖定並核准使用者帳戶 (VB)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 **圖 1**: HyperLinkField 新增每個使用者帳戶的 「 管理 」 連結 ([按一下以檢視完整大小的影像](unlocking-and-approving-user-accounts-vb/_static/image3.png))
 
 
-我們將建立的使用者介面和程式碼`UserInformation.aspx`頁面時刻，但首先讓我們 talk 有關如何以程式設計方式變更使用者的鎖定，並且核准狀態。 [ `MembershipUser`類別](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx)具有[ `IsLockedOut` ](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.islockedout.aspx)和[`IsApproved`屬性](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.isapproved.aspx)。 `IsLockedOut`屬性是唯讀的。 沒有任何機制來以程式設計方式鎖定使用者。若要解除鎖定使用者，請使用`MembershipUser`類別的[`UnlockUser`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.unlockuser.aspx)。 `IsApproved`屬性可讀取和寫入。 若要儲存任何變更這個屬性，我們必須呼叫`Membership`類別的[`UpdateUser`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.updateuser.aspx)，並傳入修改`MembershipUser`物件。
+我們將建立的使用者介面和程式碼`UserInformation.aspx`頁面時刻，但首先讓我們 talk 有關如何以程式設計方式變更使用者的鎖定，並且核准狀態。 [ `MembershipUser`類別](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx)具有[ `IsLockedOut` ](https://msdn.microsoft.com/library/system.web.security.membershipuser.islockedout.aspx)和[`IsApproved`屬性](https://msdn.microsoft.com/library/system.web.security.membershipuser.isapproved.aspx)。 `IsLockedOut`屬性是唯讀的。 沒有任何機制來以程式設計方式鎖定使用者。若要解除鎖定使用者，請使用`MembershipUser`類別的[`UnlockUser`方法](https://msdn.microsoft.com/library/system.web.security.membershipuser.unlockuser.aspx)。 `IsApproved`屬性可讀取和寫入。 若要儲存任何變更這個屬性，我們必須呼叫`Membership`類別的[`UpdateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.updateuser.aspx)，並傳入修改`MembershipUser`物件。
 
 因為`IsApproved`屬性為讀取和寫入，核取方塊控制項可能是最佳的使用者介面項目來設定這個屬性。 不過，核取方塊並不適用於`IsLockedOut`屬性因為系統管理員無法鎖定使用者，她可能只能解除鎖定使用者。 合適的使用者介面`IsLockedOut`屬性是一個按鈕，按一下時，會解除鎖定使用者帳戶。 只有當使用者遭到鎖定，才應該啟用這個按鈕。
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 
 `MembershipUser`物件的`UserName`值接著會顯示在`UserNameLabel`和`IsApproved`核取方塊根據`IsApproved`屬性值。
 
-`MembershipUser`物件的[`LastLockoutDate`屬性](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.lastlockoutdate.aspx)傳回`DateTime`值，指出使用者上次鎖定。如果使用者永遠不會被鎖定，傳回的值會取決於成員資格提供者。 建立新的帳戶時，`SqlMembershipProvider`設定`aspnet_Membership`資料表的`LastLockoutDate`欄位設為`1754-01-01 12:00:00 AM`。 上述程式碼會顯示中的空字串`LastLockoutDateLabel`如果`LastLockoutDate`屬性出現在年份的前 2000年，否則的日期部分`LastLockoutDate`標籤中顯示屬性。 `UnlockUserButton`的`Enabled`屬性設定為使用者的鎖定狀態，這表示當使用者遭到鎖定，才會啟用此按鈕。
+`MembershipUser`物件的[`LastLockoutDate`屬性](https://msdn.microsoft.com/library/system.web.security.membershipuser.lastlockoutdate.aspx)傳回`DateTime`值，指出使用者上次鎖定。如果使用者永遠不會被鎖定，傳回的值會取決於成員資格提供者。 建立新的帳戶時，`SqlMembershipProvider`設定`aspnet_Membership`資料表的`LastLockoutDate`欄位設為`1754-01-01 12:00:00 AM`。 上述程式碼會顯示中的空字串`LastLockoutDateLabel`如果`LastLockoutDate`屬性出現在年份的前 2000年，否則的日期部分`LastLockoutDate`標籤中顯示屬性。 `UnlockUserButton`的`Enabled`屬性設定為使用者的鎖定狀態，這表示當使用者遭到鎖定，才會啟用此按鈕。
 
 請花一點時間來測試`UserInformation.aspx`透過瀏覽器的頁面。 當然，會需要在啟動`ManageUsers.aspx`和選取要管理的使用者帳戶。 在到達`UserInformation.aspx`，請注意，`IsApproved`如果使用者核准，才會檢查核取方塊。 如果使用者曾已經鎖定時，會顯示鎖定日期其最後一個。 只有當使用者目前已鎖定，會啟用 [解除鎖定使用者] 按鈕。選取或取消選取`IsApproved`核取方塊，或按一下 [解除鎖定使用者] 按鈕會導致回傳，但是因為我們尚未以使用者帳戶進行任何修改建立這些事件的事件處理常式。
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="sending-a-verification-email-to-new-users"></a>驗證電子郵件傳送給新使用者
 
-若要從適用於 CreateUserWizard 控制項傳送一封電子郵件，請設定其`MailDefinition`屬性適當地。 中所述<a id="Tutorial13"> </a>[上一個教學課程](recovering-and-changing-passwords-vb.md)，包含 「 變更密碼 」 和 「 Provider 控制項[`MailDefinition`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx)的運作方式與適用於 CreateUserWizard 控制項。
+若要從適用於 CreateUserWizard 控制項傳送一封電子郵件，請設定其`MailDefinition`屬性適當地。 中所述<a id="Tutorial13"> </a>[上一個教學課程](recovering-and-changing-passwords-vb.md)，包含 「 變更密碼 」 和 「 Provider 控制項[`MailDefinition`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx)的運作方式與適用於 CreateUserWizard 控制項。
 
 > [!NOTE]
 > 若要使用`MailDefinition`中的屬性，您必須指定郵件傳遞選項`Web.config`。 如需詳細資訊，請參閱[ASP.NET 中的 傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)。
@@ -160,7 +160,7 @@ ms.lasthandoff: 11/10/2017
 
 請注意，`CreateUserWizard.txt`電子郵件範本包含`<%VerificationUrl%>`預留位置。 這適用於 URL`Verification.aspx`會置於頁面。 適用於 CreateUserWizard 會自動取代`<%UserName%>`和`<%Password%>`預留位置取代新的帳戶使用者名稱和密碼，但是沒有任何內建`<%VerificationUrl%>`預留位置。 我們需要手動將它取代適當的驗證 URL。
 
-若要達成此目的，建立適用於 CreateUserWizard 的事件處理常式[`SendingMail`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx)並加入下列程式碼：
+若要達成此目的，建立適用於 CreateUserWizard 的事件處理常式[`SendingMail`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.sendingmail.aspx)並加入下列程式碼：
 
 [!code-vb[Main](unlocking-and-approving-user-accounts-vb/samples/sample4.vb)]
 

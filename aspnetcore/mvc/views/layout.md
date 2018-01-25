@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/layout
-ms.openlocfilehash: f225e2a93edfc552961f9f16294bc0ace6eb0002
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: e268f045e39188e9cc1e759ff7e6c553662dd669
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="layout"></a>配置
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/19/2018
 
 ![在 [方案總管] 的 [檢視] 資料夾](layout/_static/web-project-views.png)
 
-此配置命名為應用程式中定義檢視的最上層範本。 應用程式不需要配置，且應用程式可以定義一個以上的版面配置，以指定不同的版面配置的不同檢視。
+此配置命名為應用程式中定義檢視的最上層範本。 應用程式不需要配置，以及應用程式可以定義一個以上的版面配置，以指定不同的版面配置的不同檢視。
 
 範例`_Layout.cshtml`:
 

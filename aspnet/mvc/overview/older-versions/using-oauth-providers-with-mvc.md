@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 965d2e740cc76838b1b4e1c618a2a6d784672fcc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f0d053cecbf9a59f258470ee370852e3f112908c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>MVC 4 搭配使用 OAuth 提供者
 ====================
@@ -148,7 +148,7 @@ Facebook 站台會自動建立測試帳戶，您所要求的數目。
 
 您注意到上一節，您不需要擷取要處理的內建帳戶註冊的任何其他資訊。 不過，最外部提供者傳遞使用者的其他資訊。 下列各節顯示如何以保留該資訊，並將它儲存至資料庫。 具體來說，您將會保留使用者的完整名稱，使用者的個人網頁，URI 的值和值，指出是否 Facebook 已驗證帳戶。
 
-您將使用[Code First 移轉](https://msdn.microsoft.com/en-us/data/jj591621)加入儲存額外的使用者資訊的資料表。 因此第一次您必須建立在目前資料庫的快照集，您會加入至現有的資料庫資料表。 藉由建立目前資料庫的快照集，您稍後可以建立包含新的資料表移轉。 若要建立目前資料庫的快照集：
+您將使用[Code First 移轉](https://msdn.microsoft.com/data/jj591621)加入儲存額外的使用者資訊的資料表。 因此第一次您必須建立在目前資料庫的快照集，您會加入至現有的資料庫資料表。 藉由建立目前資料庫的快照集，您稍後可以建立包含新的資料表移轉。 若要建立目前資料庫的快照集：
 
 1. 開啟**Package Manager Console**
 2. 執行命令**啟用移轉**
@@ -188,7 +188,7 @@ UsersContext 類別中加入反白顯示下列程式碼以建立新類別 DbSet 
 
 - id
 - name
-- link
+- 連結
 - 性別
 - accesstoken
 

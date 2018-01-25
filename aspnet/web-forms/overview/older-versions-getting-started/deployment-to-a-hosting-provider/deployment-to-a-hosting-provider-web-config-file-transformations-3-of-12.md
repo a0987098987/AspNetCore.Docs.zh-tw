@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 8f68a85e44389ed17576436a9210c0ca3f414403
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed78b55d2b0315cf428f137c56ad85b29a95e1c5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： Web.Config 檔案轉換為 12 3
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何變更的程序自動化*Web.config*檔案時將它部署至不同目的地環境。 大部分的應用程式中有設定*Web.config*部署應用程式時都必須使用不同的檔案。 自動化程序可確保這些變更可防止您不必手動執行它們，每次您部署時，就可能發生冗長又容易出錯。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="webconfig-transformations-versus-web-deploy-parameters"></a>與 Web 的 Web.config 轉換部署參數
 
-有兩種方式變更的程序自動化*Web.config*檔案設定： [Web.config 轉換](https://msdn.microsoft.com/en-us/library/dd465326.aspx)和[Web Deploy 參數](https://msdn.microsoft.com/en-us/library/ff398068.aspx)。 A *Web.config*轉換檔案包含會指定如何變更的 XML 標記*Web.config*部署到檔案。 您可以指定不同的變更，針對特定組建組態，以及針對特定的發行設定檔。 預設建置組態偵錯和發行，而且您可以建立自訂的建置組態。 發行設定檔通常會對應到目的地環境。 (您將學習到有關發行設定檔中的[部署至 IIS 做為測試環境](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)教學課程。)
+有兩種方式變更的程序自動化*Web.config*檔案設定： [Web.config 轉換](https://msdn.microsoft.com/library/dd465326.aspx)和[Web Deploy 參數](https://msdn.microsoft.com/library/ff398068.aspx)。 A *Web.config*轉換檔案包含會指定如何變更的 XML 標記*Web.config*部署到檔案。 您可以指定不同的變更，針對特定組建組態，以及針對特定的發行設定檔。 預設建置組態偵錯和發行，而且您可以建立自訂的建置組態。 發行設定檔通常會對應到目的地環境。 (您將學習到有關發行設定檔中的[部署至 IIS 做為測試環境](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)教學課程。)
 
 Web 部署參數可以用來指定各種不同的設定，必須在部署期間，包括設定中找到設定*Web.config*檔案。 當用來指定*Web.config*檔案變更，Web Deploy 參數都是更複雜的設定，但您不知道要部署之前設定的值時，它們很有用。 例如，在企業環境中，您可能會建立*部署套件*給予 IT 部門中的人員，若要安裝在生產環境中，以及該人員可以輸入連接字串或不這麼做的密碼了解。
 
@@ -146,7 +146,7 @@ Contoso 大學網頁讀取的設定中的值`appSettings`中*Web.config*檔案�
 
 ## <a name="more-information"></a>更多資訊
 
-如需本教學課程所涵蓋之主題的詳細資訊，請參閱中的 Web.config 轉換案例[ASP.NET 部署內容地圖](https://msdn.microsoft.com/en-us/library/bb386521.aspx)。
+如需本教學課程所涵蓋之主題的詳細資訊，請參閱中的 Web.config 轉換案例[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

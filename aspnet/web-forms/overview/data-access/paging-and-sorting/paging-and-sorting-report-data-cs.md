@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fd365ca3ae8e832e368fa4c29c33af8a42cf41d2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d5cf45e391a2b32e1d22e160fd2757b754753875
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="paging-and-sorting-report-data-c"></a>分頁和排序報表資料 (C#)
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-adding-paging-support"></a>步驟 3： 加入分頁支援
 
-列出*所有*的上一個螢幕的產品可能會導致資訊的使用者瀏覽資料的多載。 為了讓結果更容易管理，我們可以分解成較小的頁面資料的資料，並允許使用者在一頁資料透過一次。 若要完成這只會檢查啟用分頁 核取方塊的 GridView s 智慧標籤 (這會設定 GridView s [ `AllowPaging`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.allowpaging.aspx)至`true`)。
+列出*所有*的上一個螢幕的產品可能會導致資訊的使用者瀏覽資料的多載。 為了讓結果更容易管理，我們可以分解成較小的頁面資料的資料，並允許使用者在一頁資料透過一次。 若要完成這只會檢查啟用分頁 核取方塊的 GridView s 智慧標籤 (這會設定 GridView s [ `AllowPaging`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.allowpaging.aspx)至`true`)。
 
 
 [![選取要加入的分頁支援啟用分頁核取方塊](paging-and-sorting-report-data-cs/_static/image10.png)](paging-and-sorting-report-data-cs/_static/image9.png)
@@ -111,12 +111,12 @@ ms.lasthandoff: 11/10/2017
 
 啟用分頁限制每頁顯示的記錄數目，並將*分頁介面*至 GridView。 圖 7 所示的預設分頁介面是一連串的頁面數字，讓使用者快速瀏覽一頁的資料從另一個。 此分頁介面應該看起來很熟悉，當我們 ve DetailsView 和 FormView 控制項加入分頁支援，在過去的教學課程時看到它。
 
-DetailsView 和 FormView 控制項只會顯示每個頁面的單一記錄。 在 GridView，不過，參照其[`PageSize`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridview.pagesize.aspx)來判斷每頁顯示的多少筆記錄 （此屬性預設為 10）。
+DetailsView 和 FormView 控制項只會顯示每個頁面的單一記錄。 在 GridView，不過，參照其[`PageSize`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.pagesize.aspx)來判斷每頁顯示的多少筆記錄 （此屬性預設為 10）。
 
 使用下列屬性可以自訂此 GridView、 DetailsView 和 FormView 的分頁介面：
 
 - `PagerStyle`表示樣式資訊的分頁介面。可以指定設定，例如`BackColor`， `ForeColor`， `CssClass`， `HorizontalAlign`，依此類推。
-- `PagerSettings`包含屬性，可以自訂分頁介面; 功能的 first`PageButtonCount`表示數值頁面 （預設值為 10） 的分頁介面中顯示的數字的最大數目; [ `Mode`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.pagersettings.mode.aspx)表示分頁介面如何運作，且可以設定為： 
+- `PagerSettings`包含屬性，可以自訂分頁介面; 功能的 first`PageButtonCount`表示數值頁面 （預設值為 10） 的分頁介面中顯示的數字的最大數目; [ `Mode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pagersettings.mode.aspx)表示分頁介面如何運作，且可以設定為： 
 
     - `NextPrevious`顯示下一個] 和 [上一步的按鈕，讓使用者逐步向前或向後一頁
     - `NextPreviousFirstLast`除了下一步 和 上一步 按鈕，第一個和最後一個 按鈕也會包含，讓使用者快速移至第一個或最後一頁的資料
@@ -216,7 +216,7 @@ Web 控制項的資料提供許多可用來加強使用者的分頁體驗的屬�
 
 ## <a name="step-5-adding-bi-directional-sorting-support"></a>步驟 5： 加入雙向排序支援
 
-加入雙向排序支援很簡單，只新增分頁支援只會檢查 GridView s 智慧標籤的 啟用排序選項 (它會設定 GridView s [ `AllowSorting`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridview.allowsorting.aspx)至`true`)。 顯示如下的 GridView 的欄位標頭的每個 LinkButtons，按下時、 導致回傳，將資料依按資料行，以遞增順序排序。 再次按一下相同的標頭 LinkButton 重新排序的資料，以遞減的順序。
+加入雙向排序支援很簡單，只新增分頁支援只會檢查 GridView s 智慧標籤的 啟用排序選項 (它會設定 GridView s [ `AllowSorting`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.allowsorting.aspx)至`true`)。 顯示如下的 GridView 的欄位標頭的每個 LinkButtons，按下時、 導致回傳，將資料依按資料行，以遞增順序排序。 再次按一下相同的標頭 LinkButton 重新排序的資料，以遞減的順序。
 
 > [!NOTE]
 > 如果您使用自訂的資料存取層，而不是型別資料集，您可能沒有啟用排序選項的 GridView s 智慧標籤。 繫結至原生支援排序的資料來源的 GridViews 有使用此核取方塊。 型別資料集提供的方塊外排序支援，因為 ADO.NET DataTable 提供`Sort`方法，叫用時，排序資料表 s Datarow 使用指定的準則。
@@ -243,11 +243,11 @@ Web 控制項的資料提供許多可用來加強使用者的分頁體驗的屬�
 
 所有的 GridView 欄位 BoundField CheckBoxField、 TemplateField，而且等有`SortExpression`屬性，指出應該用來排序資料，在按下欄位 s 排序標頭連結時的運算式。 在 GridView 還有`SortExpression`屬性。 在 GridView 時排序的標頭，LinkButton 已按下，指派欄位 s`SortExpression`值設定為其`SortExpression`屬性。 接下來，資料是從 ObjectDataSource 重新擷取，而且排序 GridView s 根據`SortExpression`屬性。 下列清單詳細說明步驟的順序，顯示瓿當使用者排序 GridView 中的資料：
 
-1. GridView s [Sorting 事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.sorting(VS.80).aspx)引發
-2. GridView s [ `SortExpression`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.sortexpression.aspx)設`SortExpression`欄位的 LinkButton 已按下其排序的標頭
+1. GridView s [Sorting 事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sorting(VS.80).aspx)引發
+2. GridView s [ `SortExpression`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx)設`SortExpression`欄位的 LinkButton 已按下其排序的標頭
 3. ObjectDataSource 重新擷取的所有資料從 BLL，，然後排序的資料，使用 GridView s`SortExpression`
 4. GridView 的`PageIndex`屬性重設為 0，表示排序使用者時傳回第一頁的資料 （假設已實作的分頁支援）
-5. GridView s [ `Sorted`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.sorted(VS.80).aspx)引發
+5. GridView s [ `Sorted`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sorted(VS.80).aspx)引發
 
 使用預設分頁時，預設的排序選項重新擷取像*所有*記錄 BLL 的。 使用分頁沒有排序時或在使用含有排序預設分頁時，那里 s 沒有方法可以避免這個效能影響 （除非快取的資料庫資料）。 不過，我們會看到在未來的教學課程中，如它 s 能夠有效率地使用自訂分頁時，排序資料。
 
@@ -274,7 +274,7 @@ Web 控制項的資料提供許多可用來加強使用者的分頁體驗的屬�
 
 ## <a name="programmatically-sorting-the-gridview"></a>以程式設計的方式排序 GridView
 
-您也可以排序 GridView 內容以程式設計方式使用 GridView s [ `Sort`方法](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.sort.aspx)。 只傳入`SortExpression`排序所依據連同值[ `SortDirection` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sortdirection.aspx) (`Ascending`或`Descending`)，而且會重新排序 GridView 的資料。
+您也可以排序 GridView 內容以程式設計方式使用 GridView s [ `Sort`方法](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sort.aspx)。 只傳入`SortExpression`排序所依據連同值[ `SortDirection` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sortdirection.aspx) (`Ascending`或`Descending`)，而且會重新排序 GridView 的資料。
 
 想像一下，我們關閉排序原因`UnitPrice`因為我們擔心我們的客戶會只是購買只低價產品。 不過，我們想要建議他們購買成本最高的產品，因此，我們 d 希望他們能夠排序到最少的產品價格，但只能從成本最高價格。
 

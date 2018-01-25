@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: ecb1fc693063995a3a05a7af5db64554c9f595e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0f9ff7cf74048a008b150da1e843ff15333269ab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="two-factor-authentication-using-sms-and-email-with-aspnet-identity"></a>SMS 和電子郵件使用 ASP.NET Identity 的雙因素驗證
 ====================
@@ -168,7 +168,7 @@ ms.lasthandoff: 11/10/2017
 
 `isPersistent`參數會設定是否驗證工作階段會保存在多個要求。
 
-當您變更您的安全性設定檔時，會產生新的安全性戳記，並儲存在`SecurityStamp`欄位*AspNetUsers*資料表。 請注意，`SecurityStamp`欄位是不同的安全性 cookie。 安全性 cookie 不會儲存在`AspNetUsers`資料表 （或識別資料庫中的其他地方）。 使用自我簽署的安全性 cookie 語彙基元[DPAPI](https://msdn.microsoft.com/en-us/library/system.security.cryptography.protecteddata.aspx)並建立`UserId, SecurityStamp`和到期時間資訊。
+當您變更您的安全性設定檔時，會產生新的安全性戳記，並儲存在`SecurityStamp`欄位*AspNetUsers*資料表。 請注意，`SecurityStamp`欄位是不同的安全性 cookie。 安全性 cookie 不會儲存在`AspNetUsers`資料表 （或識別資料庫中的其他地方）。 使用自我簽署的安全性 cookie 語彙基元[DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx)並建立`UserId, SecurityStamp`和到期時間資訊。
 
 Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`方法中的`Startup`類別叫用的資料庫，並定期檢查安全性戳記與所指定`validateInterval`。 這只會每隔 30 分鐘 （在我們的範例），除非您變更您的安全性設定檔。 在 30 分鐘的間隔選擇用來存取資料庫的次數降到最低。
 
@@ -264,7 +264,7 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 
 [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample17.cs?highlight=10-11,17-18)]
 
-下列程式碼會示範`SendCode`動作方法。 A [SelectListItem](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.aspx)建立與所有使用者啟用 2FA 方法。 [SelectListItem](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.aspx)傳遞至[DropDownListFor](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.dropdownlist.aspx) helper，可讓使用者選取的 2FA 方法 （通常是電子郵件和 SMS）。
+下列程式碼會示範`SendCode`動作方法。 A [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx)建立與所有使用者啟用 2FA 方法。 [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx)傳遞至[DropDownListFor](https://msdn.microsoft.com/library/system.web.ui.webcontrols.dropdownlist.aspx) helper，可讓使用者選取的 2FA 方法 （通常是電子郵件和 SMS）。
 
 [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample18.cs)]
 
@@ -284,6 +284,6 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 - [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)也示範如何加入使用者資料表中的設定檔資訊。
 - [ASP.NET MVC 和身分識別 2.0： 了解基本概念](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx)由 John Atten。
 - [帳戶確認和 ASP.NET 識別的密碼復原](account-confirmation-and-password-recovery-with-aspnet-identity.md)
-- [ASP.NET 識別簡介](../getting-started/introduction-to-aspnet-identity.md)
+- [ASP.NET Identity 簡介](../getting-started/introduction-to-aspnet-identity.md)
 - [宣告 ASP.NET Identity 2.0.0 的 RTM](https://blogs.msdn.com/b/webdev/archive/2014/03/20/test-announcing-rtm-of-asp-net-identity-2-0-0.aspx)由 Pranav Rastogi。
 - [ASP.NET Identity 2.0： 設定帳戶驗證與授權雙因素](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)由 John Atten。

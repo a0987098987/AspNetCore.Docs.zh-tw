@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-immutability
-ms.openlocfilehash: 8e46e634266fa5f082c47f3be306009eb54bcbcc
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 425b8ba9769c2b5ac635693b045e52c110f25205
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="key-immutability-and-changing-settings"></a>索引鍵不變性和變更設定
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 01/19/2018
 
 此行為的一種結果是一旦金鑰會寫入備份存放區，即不可變。 其建立、 啟用和到期日期可以永遠不會變更，但它可以撤銷使用`IKeyManager`。 此外，其基礎的演算法資訊、 主要金鑰處理內容和加密其他屬性也是不變。
 
-如果開發人員變更任何設定，會影響金鑰的持續性，這些變更將不會進入效果產生金鑰時，透過明確呼叫至下一次`IKeyManager.CreateNewKey`或透過資料保護系統本身[自動金鑰產生](key-management.md#data-protection-implementation-key-management)行為。 會影響金鑰的持續性的設定如下所示：
+如果開發人員變更任何設定，會影響金鑰的持續性，這些變更將不會生效之前產生金鑰時，透過明確呼叫在下一次`IKeyManager.CreateNewKey`或透過資料保護系統本身[自動金鑰產生](key-management.md#data-protection-implementation-key-management)行為。 會影響金鑰的持續性的設定如下所示：
 
 * [預設金鑰存留期](key-management.md#data-protection-implementation-key-management)
 

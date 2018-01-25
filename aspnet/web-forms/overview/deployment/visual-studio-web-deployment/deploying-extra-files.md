@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
 msc.type: authoredcontent
-ms.openlocfilehash: a34607b25f6cf502f5fbf2fe51bf1937f470159e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46e18ba81c3db8bb04c5cb997bcc1607e4e38bae
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署額外的檔案
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何擴充 Visual Studio web 發行管線部署期間進行一個額外的工作。 工作是要複製到目的地網站的專案資料夾中所沒有的額外檔案。
 
@@ -83,17 +83,17 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="more-information"></a>詳細資訊
 
-如果您知道如何使用 MSBuild 檔案，您可以撰寫程式碼來自動化許多其他部署工作*.pubxml*檔案 （適用於特定設定檔的工作） 或專案*。 wpp.targets*檔案 （如工作適用於所有設定檔）。 如需詳細資訊*.pubxml*和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio Web 中的檔案專案](https://msdn.microsoft.com/en-us/library/ff398069)。 MSBuild 的程式碼的基本簡介，請參閱**剖析專案檔**中[企業部署序列： 了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 若要了解如何使用 MSBuild 檔案，為您自己的案例中執行工作，請參閱此活頁簿：[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi 和 William Bartholomew。
+如果您知道如何使用 MSBuild 檔案，您可以撰寫程式碼來自動化許多其他部署工作*.pubxml*檔案 （適用於特定設定檔的工作） 或專案*。 wpp.targets*檔案 （如工作適用於所有設定檔）。 如需詳細資訊*.pubxml*和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio Web 中的檔案專案](https://msdn.microsoft.com/library/ff398069)。 MSBuild 的程式碼的基本簡介，請參閱**剖析專案檔**中[企業部署序列： 了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 若要了解如何使用 MSBuild 檔案，為您自己的案例中執行工作，請參閱此活頁簿：[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi 和 William Bartholomew。
 
 ## <a name="acknowledgements"></a>謝誌
 
 我想要感謝下列重大貢獻內容本教學課程系列的人：
 
-- [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.microsoft.com/en-us/mvp/Alberto%20Poblacion%20Bolano-36772)
+- [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - Jarod Ferguson，資料平台開發 MVP，美國
 - 惡劣 Mittal、 Microsoft
 - [Jon Galloway](https://weblogs.asp.net/jgalloway) (twitter: [ @jongalloway ](http://twitter.com/jongalloway))
-- [Kristina Olson Microsoft](https://blogs.iis.net/krolson/default.aspx)
+- [Kristina Olson, Microsoft](https://blogs.iis.net/krolson/default.aspx)
 - [Mike 教宗 Microsoft](http://www.mikepope.com/blog/DisplayBlog.aspx)
 - Mohit Srivastava Microsoft
 - [Raffaele Rialdi （義大利）](http://www.iamraf.net/)

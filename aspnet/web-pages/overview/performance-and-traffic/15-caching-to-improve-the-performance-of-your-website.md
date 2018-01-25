@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: c747fef33a6d1db19f09fd0303c47d689b956687
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 742409219bd3b05f8ddf2c0d5034919fc9bf1d26
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>為了達到最佳效能的 ASP.NET Web Pages (Razor) 網站中的快取資料
 ====================
@@ -72,15 +72,15 @@ ASP.NET 包含`WebCache`helper，可讓您輕鬆地將快取加入至您的網�
     此程式碼說明時，您應該一律使用快取資料的模式。 您會得到在快取之前，一律先查看是否`WebCache.Get`方法已傳回 null。 請記住快取項目可能已過期或可能已移除基於其他原因，所以永遠不會保證任何指定的項目，快取中。
 3. 執行*WebCache.cshtml*瀏覽器中。 (請確定中選取頁面**檔案**才能執行這個工作區。)第一次要求頁面的時間資料沒有快取中，而且的程式碼新增至快取的時間值。
 
-    ![快取-1](15-caching-to-improve-the-performance-of-your-website/_static/image1.jpg)
+    ![cache-1](15-caching-to-improve-the-performance-of-your-website/_static/image1.jpg)
 4. 重新整理*WebCache.cshtml*瀏覽器中。 此時，[時間] 資料是快取中。 請注意，時間尚未變更檢視頁面最後一次。
 
-    ![快取-2](15-caching-to-improve-the-performance-of-your-website/_static/image2.jpg)
+    ![cache-2](15-caching-to-improve-the-performance-of-your-website/_static/image2.jpg)
 5. 等待一分鐘先清空快取，然後重新整理頁面。 頁面會再次指出快取中，找不到時間資料，並新增到快取更新的時間。
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>其他資源
 
 
-- [在圖表中顯示資料](https://go.microsoft.com/fwlink/?LinkId=202895)
-- [WebCache API 參考](https://msdn.microsoft.com/en-us/library/system.web.helpers.webcache(v=vs.99).aspx)(MSDN)
+- [以圖表顯示資料](https://go.microsoft.com/fwlink/?LinkId=202895)
+- [WebCache API 參考](https://msdn.microsoft.com/library/system.web.helpers.webcache(v=vs.99).aspx)(MSDN)

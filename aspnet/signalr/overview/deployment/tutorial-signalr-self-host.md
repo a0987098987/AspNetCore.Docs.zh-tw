@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 997756ff8d48e41da981491d6154f3107ec7a051
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d38e6fbc3407e4beca6942bbdefcaa8258ebc5ad
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-signalr-self-host"></a>自我裝載的教學課程： SignalR
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 SignalR 伺服器通常裝載於 IIS，ASP.NET 應用程式中，但它也可以是自我裝載 （例如，在主控台應用程式或 Windows 服務） 使用的自我裝載的程式庫。 此程式庫，如同所有 SignalR 2 根據 OWIN ([開啟適用於.NET 的 Web 介面](http://owin.org))。 OWIN 定義.NET web 伺服器和 web 應用程式之間的抽象概念。 OWIN 以減少從伺服器，使得 OWIN 適合自我裝載的 web 應用程式，在您自己的處理序，在 IIS 外部的 web 應用程式。
 
@@ -94,7 +94,7 @@ SignalR 伺服器通常裝載於 IIS，ASP.NET 應用程式中，但它也可以
 
     上述程式碼包含三個類別：
 
-    - **程式**，包括**Main**方法定義執行主要路徑。 在此方法中，類型的 web 應用程式**啟動**開始於指定的 URL (`http://localhost:8080`)。 如果端點需要安全性，您可以實作 SSL。 請參閱[How to： 使用 SSL 憑證設定連接埠](https://msdn.microsoft.com/en-us/library/ms733791.aspx)如需詳細資訊。
+    - **程式**，包括**Main**方法定義執行主要路徑。 在此方法中，類型的 web 應用程式**啟動**開始於指定的 URL (`http://localhost:8080`)。 如果端點需要安全性，您可以實作 SSL。 請參閱[How to： 使用 SSL 憑證設定連接埠](https://msdn.microsoft.com/library/ms733791.aspx)如需詳細資訊。
     - **啟動**、 包含 SignalR 伺服器設定的類別 (本教學課程使用的唯一設定是呼叫`UseCors`)，且呼叫`MapSignalR`，其中的專案中建立中樞的任何物件的路由。
     - **MyHub**，應用程式將提供給用戶端的 SignalR 中樞類別。 這個類別具有單一方法**傳送**，用戶端將呼叫廣播給所有其他連接的用戶端的訊息。
 6. 編譯並執行應用程式。 主控台視窗中應該會顯示該伺服器正在執行的位址。

@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 20e920ff63444c0d69cecb972619b07fe6d23097
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6b699cc939292b7ab0167dba7cfa6a00b681ef3a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>建立基本的 ASP.NET 4.5 Web Form 頁面中的 Visual Studio 2013
 ====================
 由[Erik Reitan](https://github.com/Erikre)
 
-本逐步解說為您提供的簡介中的 Web 開發環境[Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs)和[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。 本逐步解說會引導您完成建立簡單的 ASP.NET Web Form 頁面，並說明如何建立新的頁面中，加入控制項，並撰寫程式碼的基本技巧。
+本逐步解說為您提供的簡介中的 Web 開發環境[Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs)和[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。 本逐步解說會引導您完成建立簡單的 ASP.NET Web Form 頁面，並說明如何建立新的頁面中，加入控制項，並撰寫程式碼的基本技巧。
 
 這個逐步解說中所述的工作包括：
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 若要完成這個逐步解說，您將需要：
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。 會自動安裝.NET Framework。 
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。 會自動安裝.NET Framework。 
 
     > [!NOTE] 
     > 

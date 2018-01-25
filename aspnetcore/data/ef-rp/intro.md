@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/intro
-ms.openlocfilehash: bea3b12ebe476c4b59abe117393b0ec8bb7f0306
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6d36c0f0cabaf99195470a212091bd5e35c8eb30
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -179,7 +179,7 @@ EF 核心建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬�
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，建立 LocalDB *.mdf* DB 中的檔案`C:/Users/<user>`目錄。
+連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 視需要啟動 LocalDB，並以使用者模式執行，因此沒有複雜的設定。 根據預設，建立 LocalDB *.mdf* DB 中的檔案`C:/Users/<user>`目錄。
 
 ## <a name="add-code-to-initialize-the-db-with-test-data"></a>加入程式碼以初始化測試資料的資料庫
 
@@ -271,7 +271,7 @@ No executable found matching command "dotnet-aspnet-codegenerator"
  <a name="test"></a>
 ### <a name="test-the-app"></a>測試應用程式
 
-執行應用程式並選取**學生**連結。 根據瀏覽器寬度，**學生**連結出現在頁面頂端。 如果**學生**連結不可見，請按一下右上角的 [導覽] 圖示。
+執行應用程式並選取**學生**連結。 根據瀏覽器寬度，**學生**連結出現在頁面頂端。 如果**學生**看不到連結中，按一下右上角的 [導覽] 圖示。
 
 ![Contoso 大學首頁窄](intro/_static/home-page-narrow.png)
 
@@ -337,9 +337,9 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 
 若要撰寫使用 EF 核心的非同步程式碼時應該注意的事項：
 
-* 只會造成查詢或命令傳送至資料庫的陳述式會以非同步方式執行。 包含`ToListAsync`， `SingleOrDefaultAsync`， `FirstOrDefaultAsync`，和`SaveChangesAsync`。 它不包含只變更陳述式`IQueryable`，例如`var students = context.Students.Where(s => s.LastName == "Davolio")`。
+* 只會造成查詢或命令傳送至資料庫的陳述式會以非同步方式執行。 包含`ToListAsync`， `SingleOrDefaultAsync`， `FirstOrDefaultAsync`，和`SaveChangesAsync`。 它不會包含陳述式，只要變更`IQueryable`，例如`var students = context.Students.Where(s => s.LastName == "Davolio")`。
 
-* EF 核心內容不執行緒安全： 不要嘗試執行多個平行作業。 
+* EF 核心內容不是安全執行緒： 不要嘗試執行多個平行作業。 
 
 * 若要利用非同步程式碼的效能優勢，確認程式庫封裝 （例如分頁） 使用非同步呼叫查詢傳送至資料庫的 EF 核心方法。
 

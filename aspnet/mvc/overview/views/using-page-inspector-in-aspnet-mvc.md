@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 6aa9f16f166ecf5529ae33a17951eb5ea425e7af
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5b443963a089f96a9dab11b7db4a25451075d6be
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>在 ASP.NET MVC 中使用 Page Inspector
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11/en-us)或[Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。
+- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11)或[Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。
 
 > [!NOTE]
 > 若要取得 Page Inspector 的最新版本，請使用[Web Platform Installer](https://go.microsoft.com/fwlink/?LinkId=255386)安裝 Windows Azure SDK for.NET 2.0。
@@ -62,7 +62,7 @@ Page Inspector 隨附 Microsoft Web Developer Tools。 最新版本是 1.3。 �
 
 ![新的 ASP.NET MVC 應用程式](using-page-inspector-in-aspnet-mvc/_static/image2.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**網際網路應用程式**。 保留**Razor**做為預設檢視引擎。
 
@@ -84,9 +84,9 @@ Page Inspector 隨附 Microsoft Web Developer Tools。 最新版本是 1.3。 �
 
 ![在 Page Inspector 中檢視 Index.cshtml](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-根據預設，Page Inspector 停駐成為視窗在 Visual Studio 環境的左半部。 如果您想要的話，您可以在其他地方，將它停駐或取消停駐視窗。 請參閱[如何： 排列和停駐視窗](https://msdn.microsoft.com/en-us/library/z4y0hsax.aspx)。
+根據預設，Page Inspector 停駐成為視窗在 Visual Studio 環境的左半部。 如果您想要的話，您可以在其他地方，將它停駐或取消停駐視窗。 請參閱[如何： 排列和停駐視窗](https://msdn.microsoft.com/library/z4y0hsax.aspx)。
 
-頁面偵測器視窗的上方窗格會顯示目前的網頁瀏覽器視窗中。 下方窗格會顯示在 HTML 標記中，以及可讓您檢查頁面的不同層面的某些索引標籤頁面。 下方窗格會類似於[F12 開發人員工具](https://msdn.microsoft.com/en-us/ie/aa740478)Internet Explorer 中。
+頁面偵測器視窗的上方窗格會顯示目前的網頁瀏覽器視窗中。 下方窗格會顯示在 HTML 標記中，以及可讓您檢查頁面的不同層面的某些索引標籤頁面。 下方窗格會類似於[F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)Internet Explorer 中。
 
 ![Page Inspector 中的 ASP.NET MVC 應用程式](using-page-inspector-in-aspnet-mvc/_static/image10.png)
 
@@ -243,7 +243,7 @@ Page Inspector 可以立即偵測到變更*Site.css*檔並且顯示在 更新列
 > SPA 範本需要[ASP.NET 和 Web 工具 2012.2](https://go.microsoft.com/fwlink/?LinkId=282650)更新。
 
 
-在 Visual Studio 中，選擇 **檔案** &gt; **新專案**。 在左邊展開**Visual C#**，選取**Web**，然後選取**ASP.NET MVC4 Web 應用程式**。 按一下 [確定]。
+在 Visual Studio 中，選擇 **檔案** &gt; **新專案**。 在左邊展開**Visual C#**，選取**Web**，然後選取**ASP.NET MVC4 Web 應用程式**。 按一下 [確定 **Deploying Office Solutions**]。
 
 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**單一網頁應用程式**。
 
@@ -269,7 +269,7 @@ Page Inspector 可以立即偵測到變更*Site.css*檔並且顯示在 更新列
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image50.png)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [簡介 Visual Studio 中的 ASP.NET MVC 4](../older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md) （ASP.net 網站）
 

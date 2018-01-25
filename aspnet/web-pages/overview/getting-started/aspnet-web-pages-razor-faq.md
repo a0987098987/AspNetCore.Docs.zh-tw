@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 msc.type: authoredcontent
-ms.openlocfilehash: 7f6dc3b56a33bcbe3e1e4086681ca1ba76d7d153
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60cc4ca364923cb131d5e91cd7b6307b1e68644b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-pages-razor-faq"></a>ASP.NET Web Pages (Razor) 常見問題集
 ====================
@@ -99,7 +99,7 @@ IIS Express 的命令列選項的說明，請輸入`iisexpress.exe /?`在命令�
 <a id="Can_I_use_ASP.NET_Web_Forms_controls_on_a_Web_Pages_page"></a>
 ## <a name="can-i-use-aspnet-web-forms-controls-on-a-web-pages-page"></a>可以使用 ASP.NET Web Form 網頁 」 頁面上的控制項嗎？
 
-否。 Web Form 控制項，例如[核取方塊](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.checkbox)控制項，[驗證控制項](https://msdn.microsoft.com/en-us/library/bwd43d0x)，而[GridView](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview)控制只在 Web Form 網頁中的工作 (*.aspx*檔案)。 這些控制項需要 Web Form 網頁架構。
+否。 Web Form 控制項，例如[核取方塊](https://msdn.microsoft.com/library/system.web.ui.webcontrols.checkbox)控制項，[驗證控制項](https://msdn.microsoft.com/library/bwd43d0x)，而[GridView](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview)控制只在 Web Form 網頁中的工作 (*.aspx*檔案)。 這些控制項需要 Web Form 網頁架構。
 
 <a id="Can_I_deploy_an_ASP.NET_Web_Pages_site_without_using_WebMatrix"></a>
 ## <a name="can-i-deploy-an-aspnet-web-pages-site-without-using-webmatrix"></a>可以不使用 WebMatrix 部署 ASP.NET Web Pages 站台嗎？

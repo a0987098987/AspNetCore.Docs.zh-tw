@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3caeeb83e4c074ae0ffc30f035d793a821eb6be2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b743b04789c5e5ebf5ab922cf34a516a16a6d356
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a>暫時性錯誤處理 （建置真實世界雲端應用程式與 Azure）
 ====================
@@ -39,11 +39,11 @@ ms.lasthandoff: 11/10/2017
 
 有數種方式，您可以實作智慧重試邏輯。
 
-- Microsoft Patterns&amp;作法群組具有[暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx)執行的所有項目，如果您使用 ADO.NET 的 SQL 資料庫存取權 （不透過 Entity Framework)。 您剛才設定的原則，重試 – 多少次重試查詢或命令和等待的時間之間嘗試 – 和包裝您的 SQL 程式碼中*使用*區塊。
+- Microsoft Patterns&amp;作法群組具有[暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx)執行的所有項目，如果您使用 ADO.NET 的 SQL 資料庫存取權 （不透過 Entity Framework)。 您剛才設定的原則，重試 – 多少次重試查詢或命令和等待的時間之間嘗試 – 和包裝您的 SQL 程式碼中*使用*區塊。
 
     [!code-csharp[Main](transient-fault-handling/samples/sample1.cs)]
 
-    也支援 TFH [Azure 角色中快取](https://msdn.microsoft.com/en-us/library/windowsazure/dn386103.aspx)和[Service Bus](https://azure.microsoft.com/services/service-bus/)。
+    也支援 TFH [Azure 角色中快取](https://msdn.microsoft.com/library/windowsazure/dn386103.aspx)和[Service Bus](https://azure.microsoft.com/services/service-bus/)。
 - 當您使用 Entity Framework，您通常不直接使用 SQL 連線，讓您無法使用此模式和實務的封裝，但是 Entity Framework 6 建立這種類型的重試邏輯，請直接將架構。 類似的方式，您指定的重試策略，，然後會 EF 使用這個策略，只要它存取資料庫。
 
     若要修正它應用程式中使用這項功能，我們只需要已加入的類別，衍生自*DbConfiguration*開啟重試邏輯。
@@ -88,14 +88,14 @@ SQL Database 重試原則指導方針，請參閱[暫時性錯誤和 SQL Databas
 
 文件
 
-- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。 類似於保全數列但進入詳細的使用說明。 請參閱遙測和診斷 > 一節。
-- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱 < 重試模式、 排程器代理程式監督員模式。
+- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。 類似於保全數列但進入詳細的使用說明。 請參閱遙測和診斷 > 一節。
+- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱 < 重試模式、 排程器代理程式監督員模式。
 - [Azure SQL Database 中的容錯](https://blogs.msdn.com/b/windowsazure/archive/2012/07/30/fault-tolerance-in-windows-azure-sql-database.aspx)。 Tong Petrossian 部落格文章。
-- [Entity Framework-連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/en-us/data/dn456835)。 如何使用和自訂暫時性錯誤處理功能的 Entity Framework 6。
+- [Entity Framework-連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/data/dn456835)。 如何使用和自訂暫時性錯誤處理功能的 Entity Framework 6。
 - [連接恢復功能和 Entity framework，ASP.NET MVC 應用程式中的命令攔截](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)。 第四個九部分的教學課程系列，示範如何設定 SQL 資料庫的 EF 6 連接恢復功能。
 
-影片
+視訊
 
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 九部分 Ulrich Homann、 Marc Mercuri 和 Mark Simms 的系列。 高層級概念與架構原則非常可存取且有趣的方式，呈現劇本取自與實際客戶的 Microsoft 客戶諮詢團隊 (CAT) 體驗。 請參閱斷路器 3 的時段開始 40:55 中的討論。
 - [建置大型： 學到來自 Azure 客戶-II](https://channel9.msdn.com/Events/Build/2012/3-030)。 Mark Simms 討論有關設計的失敗，暫時性錯誤處理和追蹤記錄的所有項目。

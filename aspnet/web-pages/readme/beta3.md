@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: 5fad4b659dafe5470aeb84d320ff711b8840d1e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: def2f4b3e54c8de539e10c1b526a1dababeca8fb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 <a id="Overview"></a>
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > Microsoft WebMatrix Beta 是以分鐘為單位安裝免費的網頁開發堆疊。 它可以整合網頁伺服器與資料庫和程式設計架構來建立單一整合體驗。 您可以使用 WebMatrix Beta 來簡化程式碼、 測試和發佈專屬 ASP.NET 或 PHP 網站的方式，或您可以使用 WebMatrix Beta 來啟動新的網站使用熱門的開放原始碼應用程式，例如 DotNetNuke、 Umbraco、 WordPress 或 Joomla。 WebMatrix beta 版會使用相同的功能強大的 web 伺服器、 資料庫引擎和架構環境將在網際網路上，讓從開發轉換至實際執行環境，順利且流暢地執行您的網站。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
 
 > WebMatrix Beta 需要.NET Framework 第 4 版。 在某些情況下，WebMatrix beta 版安裝程式可讓您嘗試安裝不支援的組態集的一部分的平台上。 特別是，Windows Vista SP1 更新不會讓您開始安裝 WebMatrix Beta，但是.NET Framework 4 元件會失敗並封鎖您的安裝。
 > 
-> **因應措施**  
+> **Workaround**  
 > 安裝在支援的平台，其中包括：
 > 
 > - Windows 7
@@ -86,7 +86,7 @@ ms.lasthandoff: 11/10/2017
 
 #### <a name="issue-cannot-install-webmatrix-beta-3-if-microsoft-visual-studio-2008-is-installed-without-microsoft-visual-studio-2008-sp1"></a>如果未安裝 Microsoft Visual Studio 2008 SP1 已安裝的 Microsoft Visual Studio 2008 問題： 無法安裝 WebMatrix Beta 3
 
-> **因應措施**  
+> **Workaround**  
 > 安裝[Microsoft Visual Studio 2008 SP1](https://www.microsoft.com/downloads/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en)從 Microsoft 下載中心取得。
 
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 > - *System.Data.SqlServerCe.dll* （ADO.NET 提供者）
 > - *System.Data.SqlServerCe.Entity.dll* (ADO.NET Entity Framework)
 > 
-> **因應措施**  
+> **Workaround**  
 > 解除安裝 SQL Server Compact 4.0。 下載並安裝.NET Framework 3.5 SP1 的完整版本，從下列位置：  
 >   
 > [Microsoft.NET Framework 3.5 Service pack 1 （完整套件）](https://go.microsoft.com/fwlink/?LinkId=194828)  
@@ -109,7 +109,7 @@ ms.lasthandoff: 11/10/2017
 
 > 解除安裝的 SQL Server Compact 使用命令列選項在此版本中無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 使用*程式和功能*Windows 控制台中解除安裝 Microsoft SQL Server Compact 4.0。
 
 
@@ -162,9 +162,9 @@ ms.lasthandoff: 11/10/2017
 > 請注意，`@{ }`不再使用中的協助程式的初始程式碼周圍的字元。 這是因為將協助程式的內容會視為預設做為程式碼區塊。 Helper 會呈現開頭為開頭的標記`<a>`標記。 如果協助專家必須在純文字或不含結尾標記的標記呈現 (例如，`<meta>`標記)，要呈現的內容必須在`<text></text>`標記。
 
 
-#### <a name="change-webpagecontexthttpcontext-removed"></a>「 WebPageContext.HttpContext"中移除變更：
+#### <a name="change-webpagecontexthttpcontext-removed"></a>Change: "WebPageContext.HttpContext" removed
 
-> `WebPageContext.HttpContext`屬性已經移除。 請改用 `HttpContext.Current` 。 (`WebPageContext.HttpContext`屬性只包裝這。)
+> `WebPageContext.HttpContext`屬性已經移除。 請改用 `HttpContext.Current`。 (`WebPageContext.HttpContext`屬性只包裝這。)
 
 
 #### <a name="change-facebook-helper-moved-to-new-package"></a>移至新的封裝變更:"Facebook"helper
@@ -212,7 +212,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 如果您想要使用自訂使用者資料表的成員資格，但傳遞至錯誤的資料表名稱，這可能會有問題`WebSecurity.InitializeDatabaseConnection`方法。 因為方法不會預設產生錯誤如果您指定的資料表不存在，而且它改為建立新的資料表，應用程式會無法運作。 不過，必須使用自訂使用者資料表 （和中的欄位） 的應用程式程式碼最後可能意外的錯誤會失敗。
 > 
-> **因應措施**  
+> **Workaround**  
 > 請確定名稱傳入`InitializeDatabaseConnection`方法比對的使用者設定檔資料表中的成員資格資料庫，或請確定`autoCreateTables`參數設定為 false。
 
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果您在 Visual Studio 中的專案中使用自訂組件，這些組件中宣告的命名空間不自動匯入在設計階段。 如此一來，自訂類型的參考可能無法辨識在設計階段，並會標示為無法辨識中的 Visual Studio （使用 「 波浪線 」）。 只能在 Visual Studio; 中的設計階段就會發生此問題應用程式本身會正確地執行。
 > 
-> **因應措施**  
+> **Workaround**  
 > 包含`using`陳述式 (`imports`在 Visual Basic 中) 會參考在設計階段無法辨識的實體。
 
 
@@ -242,7 +242,7 @@ ms.lasthandoff: 11/10/2017
 
 > 在升級到 Beta 3 之後，您可能會看到錯誤的協助程式類別 (比方說，`Facebook`類別) 不到。 從 Beta 2 開始，並繼續在 Beta 3，協助專家都已移至，您必須明確地安裝封裝中。 現有的站台不會升級到包含這些封裝。這包括中的站台*\My Documents\IISExpress*或*\My Documents\My 網站*資料夾。 特別是，您會看到此錯誤如果您使用中的預設站台*我網站*(網站 1)，其中包含的參考`Twitter`協助程式。
 > 
-> **因應措施**  
+> **Workaround**  
 > 註解呼叫任何 helper 在網站中，執行 *\_Admin*頁面，然後安裝封裝或封裝包含您想要使用的 helper。 安裝封裝之後，您可以參考協助程式行取消註解。
 
 
@@ -265,7 +265,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > [!code-xml[Main](beta3/samples/sample5.xml)]
 > 
-> 如需有關如何設定 proxy 伺服器的詳細資訊，請參閱[ &lt;proxy&gt;項目 （網路設定）](https://msdn.microsoft.com/en-us/library/sa91de1e.aspx) MSDN 網站上。
+> 如需有關如何設定 proxy 伺服器的詳細資訊，請參閱[ &lt;proxy&gt;項目 （網路設定）](https://msdn.microsoft.com/library/sa91de1e.aspx) MSDN 網站上。
 
 
 #### <a name="issue-microsoftwebinfrastructuredll-cannot-be-loaded-error"></a>問題: 「 無法載入 Microsoft.Web.Infrastructure.dll 」 錯誤
@@ -274,7 +274,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 如果您載入 Beta 3 版本乾淨的電腦上，則不會發生此問題。
 > 
-> **因應措施**  
+> **Workaround**  
 > 在 [控制台] 解除安裝 ASP.NET Web Pages。 然後重新安裝 Beta 3 版本。
 
 
@@ -307,7 +307,7 @@ ms.lasthandoff: 11/10/2017
 >   
 > 因為 URL 重寫沒有啟用預設的 IIS 7 或 IIS 7.5，就會發生此問題。 Likeliest 案例是看不到問題時測試使用在本機 IIS Express，但它時遇到您將您的網站部署至裝載的網站。
 > 
-> **因應措施**
+> **Workaround**
 > 
 > - 如果您有伺服器電腦的控制權，在伺服器電腦上安裝更新中所述[的更新功能可讓某些 IIS 7.0 或 IIS 7.5 處理常式來處理要求的 Url 不以句號結束](https://support.microsoft.com/kb/980368)。
 > - 如果您沒有在伺服器電腦的控制權 （例如，您要部署至裝載的網站），加上網站的下列*Web.config*檔案：
@@ -320,7 +320,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果您使用 ASP.NET Web Pages Web 應用程式專案或 ASP.NET MVC 應用程式中，您可能會看到錯誤， *WebPageHttpApplication*找不到。
 > 
-> **因應措施**  
+> **Workaround**  
 > 如果您收到這個錯誤，請變更應用程式所衍生自的基底類別。 在*Global.asax*檔案中，將以下這一行：
 > 
 > [!code-csharp[Main](beta3/samples/sample8.cs)]
@@ -340,7 +340,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 1. 資料庫引擎組件，以複製*Bin*資料夾 （及其子資料夾） 的目標電腦上的應用程式： 
 > 
->     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll* **至** *\Bin*
+>     - Copy *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll* **to** *\Bin*
 >     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\** **至** *\Bin\x86*
 >     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **至** *\Bin\amd64*
 > 2. 在網站的根資料夾中，建立或開啟*Web.config*檔案。 (在 WebMatrix Beta 3 中，此檔案類型才可用如果您按一下**所有**中**選擇檔案型別** 對話方塊。)
@@ -354,7 +354,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果您使用 Visual Basic (建立*.vbhtml*檔案)，則`Database`和`WebGrid`如果應用程式會設定為使用度信任，協助專家將無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 暫時設定應用程式使用完全信任。
 
 <a id="Known_Issues_SQL_Server_Compact"></a>
@@ -364,7 +364,7 @@ ms.lasthandoff: 11/10/2017
 
 > 無法辨識 SQL Server Compact 4.0`Encrypt`屬性`SqlCeConnection`類別。 您不應該使用這個屬性來加密資料庫檔案。 `Encrypt`屬性在 SQL Server Compact 3.5 版本中已被取代，並僅為回溯相容性已保留。 
 > 
-> **因應措施**  
+> **Workaround**  
 > 使用`Encryption Mode`屬性`SqlCeConnection`類別來加密 SQL Server Compact 4.0 資料庫檔案。 下列範例示範如何建立加密的 SQL Server Compact 4.0 資料庫使用`Encryption Mode`屬性：
 >  
 > [!code-csharp[Main](beta3/samples/sample11.cs)]
@@ -388,7 +388,7 @@ ms.lasthandoff: 11/10/2017
 
 > 原生 Dll 的 SQL Server Compact 4.0 需要 Microsoft Visual c + + 2008年執行階段程式庫 （x86、 IA64 和 x64）、 Service Pack 1。
 > 
-> **因應措施**  
+> **Workaround**  
 > 安裝.NET Framework 3.5 SP1。 這也會安裝 Visual c + + 2008年執行階段程式庫 SP1。 您可以從下列位置下載的程式庫：   
 >   
 > [Microsoft Visual c + + 2008 Service Pack 1 可轉散發套件 ATL Security Update](https://go.microsoft.com/fwlink/?LinkId=194827)
@@ -403,7 +403,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > [!code-xml[Main](beta3/samples/sample17.xml)]
 > 
-> **因應措施**  
+> **Workaround**  
 > 解除安裝 SQL Server Compact 4.0 CTP1。 下載並安裝.NET Framework 的完整版本，從下列位置：
 > 
 > [Microsoft.NET Framework 3.5 Service pack 1 （完整套件）](https://go.microsoft.com/fwlink/?LinkId=194828)  
@@ -418,7 +418,7 @@ ms.lasthandoff: 11/10/2017
 
 #### <a name="issue-installing-an-application-can-take-a-long-time-if-the-users-my-documents-folder-is-redirected-to-a-network-share"></a>問題： 安裝應用程式可能需要很長的時間。 如果使用者的 [我的文件] 資料夾重新導向到網路共用
 
-> **因應措施**  
+> **Workaround**  
 > 無。 應用程式可能需要一段，若要安裝，但會正確安裝。
 
 
@@ -430,7 +430,7 @@ ms.lasthandoff: 11/10/2017
 
 > 在**發佈設定**對話方塊中，如果目的地 URL 開頭不是`http://`或`https://`，在部署之後，站台可能無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 請確定發行的網站中的目的地 URL 之前，先**發行設定**對話方塊開頭`http://`或`https://`。
 
 
@@ -438,7 +438,7 @@ ms.lasthandoff: 11/10/2017
 
 > 針對數個原因會發生錯誤。 您可以看到此錯誤的其中一個原因是，如果將資料庫指令碼包含單引號字元 （'），而且目的地 MySQL 資料庫的預設字元集不為 utf-8。
 > 
-> **因應措施**  
+> **Workaround**  
 > 設定遠端的 MySQL 資料庫設定為 utf-8 的預設字元。
 
 
@@ -480,7 +480,7 @@ ms.lasthandoff: 11/10/2017
 > - 在 Windows Vista 或 Windows 7 上，您使用沒有系統管理權限的帳戶登入和使用者帳戶控制 (UAC) 已停用。
 > - 您正在使用 Microsoft Windows XP 或 Microsoft Windows Server 2003。
 > 
-> **因應措施**  
+> **Workaround**  
 > WebMatrix Beta 3 中大部分的工作不需要系統管理權限。 對於執行，您可以執行操作，因為系統管理員，或請遵循下列步驟：
 > 
 > - 在 Windows Vista 或 Windows 7 上，啟用 UAC。
@@ -491,7 +491,7 @@ ms.lasthandoff: 11/10/2017
 
 > **從 Web 組件庫網站**選項已停用，如果未安裝 Web Platform Installer 3.0。
 > 
-> **因應措施**  
+> **Workaround**  
 > 安裝[Microsoft Web Platform Installer 3.0](https://go.microsoft.com/fwlink/?LinkID=194638)。
 
 
@@ -499,7 +499,7 @@ ms.lasthandoff: 11/10/2017
 
 > Windows Server 2003，當您啟動頁面，或啟動 IIS Express，IIS Express 不會啟動。 Web 網頁會顯示錯誤，指出已由非系統管理使用者啟動應用程式。
 > 
-> **因應措施**  
+> **Workaround**  
 > 系統管理使用者身分來啟動 WebMatrix Beta 3。 如需詳細資訊，請參閱下列知識庫文件：  
 >   
 > [非系統管理使用者啟動的應用程式無法接聽應用程式執行 Windows Vista、 Windows Server 2003 或 Windows XP 中所在之電腦的 HTTP 流量。](https://support.microsoft.com/kb/939786)
@@ -509,7 +509,7 @@ ms.lasthandoff: 11/10/2017
 
 > Google Chrome 瀏覽器在清單中未顯示**執行**上**首頁** 索引標籤。
 > 
-> **因應措施**  
+> **Workaround**  
 > Google Chrome 的某些版本中請勿本身正確向註冊 Windows 中的預設程式 功能。 因應措施，啟動 Google Chrome，請按一下*自訂和控制 Google Chrome*功能表上，按一下 *選項*，然後按一下 *請 Google Chrome 預設瀏覽器*。
 
 
@@ -517,7 +517,7 @@ ms.lasthandoff: 11/10/2017
 
 > **外部索引鍵**對話方塊不允許輸入從主索引鍵資料表的主索引鍵的名稱。
 > 
-> **因應措施**  
+> **Workaround**  
 > 這是有意如此。 您不需要輸入主索引鍵資料表的主索引鍵的名稱。
 
 
@@ -525,7 +525,7 @@ ms.lasthandoff: 11/10/2017
 
 > **關聯性**按鈕底下**資料表**索引標籤中**資料庫**工作區中已停用 SQL Server Compact 資料庫。
 > 
-> **因應措施**  
+> **Workaround**  
 > 無。 SQL Server Compact 不支援資料表之間的關聯性。
 
 
@@ -533,7 +533,7 @@ ms.lasthandoff: 11/10/2017
 
 > 在 SQL Server Compact 4.0，如果您未指定資料類型例如`SqlDbType`或`DbType`執行查詢時，發生例外狀況參數化查詢中的參數。
 > 
-> **因應措施**  
+> **Workaround**  
 > 明確地設定參數的資料類型，例如`SqlDbType`或`DbType`。 這一點十分重要，在 BLOB 資料類型的情況下 (`image`和`ntext`)。 使用程式碼如下所示：
 > 
 > [!code-sql[Main](beta3/samples/sample20.sql)]
@@ -553,4 +553,4 @@ ms.lasthandoff: 11/10/2017
 
 * * *
 
-© 2010 Microsoft Corporation。 All Rights Reserved. [使用規定](https://msdn.microsoft.com/en-us/cc300389.aspx)。
+© 2010 Microsoft Corporation. All Rights Reserved. [使用規定](https://msdn.microsoft.cos/cc300389.aspx)。

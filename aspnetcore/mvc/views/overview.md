@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/overview
-ms.openlocfilehash: c0a1f475941f3389e9aa1f5bb7819bef491b2cae
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: dc36c76dbd7d82a926e39d8a8ab3a2a53b65d954
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -186,7 +186,7 @@ namespace WebApplication1.ViewModels
 
 ### <a name="weakly-typed-data-viewdata-and-viewbag"></a>弱型別資料 （別的 ViewData 和 ViewBag）
 
-注意：`ViewBag`不適用於 Razor 頁面。
+注意： `ViewBag` Razor 頁面中沒有。
 
 除了強型別檢視表檢視可以存取*弱型別*(也稱為*鬆散型別*) 的資料集合。 不同於強式類型，*弱式類型*(或*鬆散類型*) 表示您沒有明確宣告的您所使用的資料類型。 您可以使用弱式型別資料的集合，用來傳遞資料移轉入和控制器和檢視的資訊量很少。
 
@@ -245,7 +245,7 @@ public IActionResult SomeAction()
 
 **ViewBag**
 
-注意：`ViewBag`不適用於 Razor 頁面。
+注意： `ViewBag` Razor 頁面中沒有。
 
 `ViewBag`是[DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)物件，提供儲存在物件的動態存取`ViewData`。 `ViewBag`可能更方便使用，因為它不需要進行轉型。 下列範例示範如何使用`ViewBag`與使用相同的結果與`ViewData`上方：
 
@@ -278,7 +278,7 @@ public IActionResult SomeAction()
 
 **同時使用別的 ViewData ViewBag**
 
-注意：`ViewBag`不適用於 Razor 頁面。
+注意： `ViewBag` Razor 頁面中沒有。
 
 因為`ViewData`和`ViewBag`參考相同的基礎`ViewData`集合，您可以同時使用`ViewData`和`ViewBag`並混用，而且符合之間讀取和寫入的值時。
 
@@ -318,7 +318,7 @@ public IActionResult SomeAction()
 
 **ViewBag 別的 ViewData 之間差異的摘要**
 
- `ViewBag`無法使用 Razor 頁面中。
+ `ViewBag`無法使用 Razor 頁面。
 
 * `ViewData`
   * 衍生自[ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性會很有用，例如`ContainsKey`， `Add`， `Remove`，和`Clear`。

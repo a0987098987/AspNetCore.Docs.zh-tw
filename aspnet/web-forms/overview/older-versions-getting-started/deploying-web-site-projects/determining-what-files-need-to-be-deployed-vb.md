@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 44349b09fdc0de8ad6bd241a4c158d6a198e5d01
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aad0d4d4f7db5942c51255c34f36be73ed0e1f2d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-vb"></a>判斷檔案必須為部署 (VB)
 ====================
@@ -43,7 +43,7 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 
 為了讓 ASP.NET 引擎服務的這個頁面上，在頁面的程式碼部分的要求 (  *`WebPage`*  `.aspx.vb`檔案) 必須先編譯。 明確或自動，則可能會發生這個編譯。
 
-如果編譯會明確地發生，則整個應用程式的原始程式碼會編譯成一或多個組件 (`.dll`檔案) 位於應用程式的`Bin`目錄。 如果編譯會自動發生，則所產生的自動產生組件時，根據預設，會變成 「`Temporary ASP.NET Files`資料夾，請參閱`%WINDOWS%\Microsoft.NET\Framework\<version>`，不過這個位置可透過設定[ &lt;編譯&gt;元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)中`Web.config`。 使用明確編譯，您必須採取某些動作到 ASP.NET 應用程式的程式碼編譯成組件，並在部署之前，會發生這個步驟。 使用自動編譯編譯處理程序，就會發生在 web 伺服器上第一次存取資源時。
+如果編譯會明確地發生，則整個應用程式的原始程式碼會編譯成一或多個組件 (`.dll`檔案) 位於應用程式的`Bin`目錄。 如果編譯會自動發生，則所產生的自動產生組件時，根據預設，會變成 「`Temporary ASP.NET Files`資料夾，請參閱`%WINDOWS%\Microsoft.NET\Framework\<version>`，不過這個位置可透過設定[ &lt;編譯&gt;元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中`Web.config`。 使用明確編譯，您必須採取某些動作到 ASP.NET 應用程式的程式碼編譯成組件，並在部署之前，會發生這個步驟。 使用自動編譯編譯處理程序，就會發生在 web 伺服器上第一次存取資源時。
 
 不論哪一種編譯模型使用，所有的 ASP.NET 網頁的標記部份 (`WebPage.aspx`檔案) 必須複製到生產環境。 您需要將複製的組件明確編譯`Bin`資料夾中，但是您不需要將複製的 ASP.NET 網頁程式碼某些部分 (`WebPage.aspx.vb`檔案)。 使用自動編譯，您需要將複製程式碼部分檔案，因此程式碼存在，且當瀏覽網頁時可以自動編譯。 每個 ASP.NET 網頁的標記部分包含`@Page`與屬性，指出是否已明確編譯網頁的相關聯的程式碼，或是否需要自動編譯指示詞。 如此一來，在實際執行環境可以緊密地與兩種模式中編譯，您不需要套用任何特殊的組態設定，以指出使用明確或自動編譯。
 
@@ -51,8 +51,8 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 
 | **編譯模型** | **將部署標記的部分檔案嗎？** | **將原始程式碼檔的部署嗎？** | **部署中的組件`Bin`目錄嗎？** |
 | --- | --- | --- | --- |
-| 明確編譯 | 是 | 否 | 是 |
-| 自動編譯 | 是 | 是 | 是 （如果存在的話） |
+| 明確編譯 | [是] | 否 | [是] |
+| 自動編譯 | [是] | [是] | 是 （如果存在的話） |
 
 **表 1： 部署哪些檔案取決於所使用的編譯模型。**
 
@@ -69,7 +69,7 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 - 建置 Visual Studio 中的專案不會建立組件中的`Bin`目錄。 相反地，建置網站專案報告任何編譯時間錯誤。
 - 自動編譯支援。 通常會部署的網站專案會將標記和原始程式碼的程式碼複製到生產環境，雖然程式碼可以是先行編譯 （明確編譯）。
 
-發行 Visual Studio 2005 Service Pack 1 時，Microsoft 會恢復 Web 應用程式專案模型。 不過，Visual Web Developer 中繼續執行至僅支援網站專案模型。 好消息是這項限制已遭丟棄，Visual Web Developer 2008 Service Pack 1。 現在您可以建立 ASP.NET 應用程式在 Visual Studio （和 Visual Web Developer） 使用 Web 應用程式專案模式的網站專案。 這兩個模型會有其優缺點。 請參閱[簡介 Web 應用程式專案： 比較網站專案和 Web 應用程式專案](https://msdn.microsoft.com/en-us/library/aa730880.aspx#wapp_topic5)比較的兩個模型，可協助您判斷哪一種專案模型最適合您的情況。
+發行 Visual Studio 2005 Service Pack 1 時，Microsoft 會恢復 Web 應用程式專案模型。 不過，Visual Web Developer 中繼續執行至僅支援網站專案模型。 好消息是這項限制已遭丟棄，Visual Web Developer 2008 Service Pack 1。 現在您可以建立 ASP.NET 應用程式在 Visual Studio （和 Visual Web Developer） 使用 Web 應用程式專案模式的網站專案。 這兩個模型會有其優缺點。 請參閱[簡介 Web 應用程式專案： 比較網站專案和 Web 應用程式專案](https://msdn.microsoft.com/library/aa730880.aspx#wapp_topic5)比較的兩個模型，可協助您判斷哪一種專案模型最適合您的情況。
 
 ## <a name="exploring-the-sample-web-application"></a>瀏覽範例 Web 應用程式
 
@@ -179,15 +179,15 @@ Web 應用程式專案模型會使用明確編譯，並將專案的程式碼編�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 編譯概觀](https://msdn.microsoft.com/en-us/library/ms178466.aspx)
-- [ASP.NET 使用者控制項](https://msdn.microsoft.com/en-us/library/y6wb1a0e.aspx)
+- [ASP.NET 編譯概觀](https://msdn.microsoft.com/library/ms178466.aspx)
+- [ASP.NET 使用者控制項](https://msdn.microsoft.com/library/y6wb1a0e.aspx)
 - [正在檢查 ASP。網路的站台瀏覽](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
-- [Web 應用程式專案的簡介](https://msdn.microsoft.com/en-us/library/aa730880.aspx)
+- [Web 應用程式專案的簡介](https://msdn.microsoft.com/library/aa730880.aspx)
 - [主版頁面教學課程](../master-pages/creating-a-site-wide-layout-using-master-pages-cs.md)
 - [頁面之間共用程式碼](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/pages/code.aspx)
 - [ASP.NET 網頁的程式碼後置類別中使用自訂的基底類別](http://aspnet.4guysfromrolla.com/articles/041305-1.aspx)
 - [Visual Studio 2005 的網站專案系統： 它是什麼，以及未我們為什麼它嗎？](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
-- [逐步解說： 將網站專案轉換成 Visual Studio 中的 Web 應用程式專案](https://msdn.microsoft.com/en-us/library/aa983476.aspx)
+- [逐步解說： 將網站專案轉換成 Visual Studio 中的 Web 應用程式專案](https://msdn.microsoft.com/library/aa983476.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](asp-net-hosting-options-vb.md)

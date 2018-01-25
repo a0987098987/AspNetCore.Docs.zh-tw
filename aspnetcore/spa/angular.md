@@ -11,16 +11,16 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: b54798a43f6a448c2e2aad0613ee60805a61f303
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 4162b1c26e9d278c811f691c4277d4de25adb204
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-the-angular-project-template-release-candidate"></a>使用角度的專案範本 （發行候選版本）
 
 > [!NOTE]
-> 這份文件不是有關已發行的角度專案範本。 **這份文件是範本的關於發行候選版本的角度。** 我們希望在早期 2018年出貨的發行的版本。
+> 這份文件不需發行角度專案範本。 **這份文件是範本的關於發行候選版本的角度。** 我們希望在早期 2018年出貨的發行的版本。
 
 已更新的角度專案範本提供方便的起點 ASP.NET Core 應用程式使用角度 5 和有角度的方向 CLI 實作豐富的用戶端使用者介面 (UI)。
 
@@ -137,7 +137,7 @@ npm install --save <package_name>
 
 [!code-csharp[](sample/AngularServerSideRendering/Startup.cs?name=snippet_Call_UseSpa&highlight=5-12)]
 
-在開發模式中，這段程式碼會嘗試執行指令碼建立 SSR 配套`build:ssr`，定義在*ClientApp\package.json*。 這會建置角度的應用程式，名稱為`ssr`，不尚未定義。 
+在開發模式中，這段程式碼會嘗試執行指令碼建立 SSR 配套`build:ssr`，定義在*ClientApp\package.json*。 這會建置角度的應用程式，名稱為`ssr`，但未定義。 
 
 在結尾`apps`陣列中*ClientApp/.angular-cli.json*，定義額外的應用程式，但名稱`ssr`。 使用下列選項：
 
@@ -176,7 +176,7 @@ npm install --save <package_name>
 ```csharp
 options.SupplyData = (context, data) =>
 {
-    // Creates a new value called isHttpsRequest that is passed to TypeScript code
+    // Creates a new value called isHttpsRequest that's passed to TypeScript code
     data["isHttpsRequest"] = context.Request.IsHttps;
 };
 ```

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 3c5abe84a5c7cc399e0586e680a414fab7a26c1d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: bc1cfe0d6ee88a0af49cdff9ce77ad42f57b95f7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="file-uploads-in-aspnet-core"></a>在 ASP.NET Core 檔案上傳
 
@@ -134,7 +134,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
 如果大小或檔案上傳的頻率會造成應用程式的資源問題，請考慮資料流檔案上傳，而非緩衝整個，如上所示的模型繫結方法一樣。 同時使用`IFormFile`和模型繫結是比較簡單的解決方案，資料流需要的步驟，以實作正確的數字。
 
 > [!NOTE]
-> 任何單一緩衝超過 64KB 會移動檔案從 RAM 磁碟上的暫存檔案伺服器上。 檔案上傳所使用的資源 （磁碟、 RAM） 的數目和並行的檔案上傳的大小而定。 資料流不是這麼多關於效能，了小數位數。 如果您嘗試要緩衝處理太多上傳，記憶體或磁碟空間不足時，會損毀您的網站。
+> 任何單一緩衝超過 64KB 會移動檔案從 RAM 磁碟上的暫存檔案伺服器上。 檔案上傳所使用的資源 （磁碟、 RAM） 的數目和並行的檔案上傳的大小而定。 資料流不是這麼多關於效能，關於小數位數。 如果您嘗試要緩衝處理太多上傳，記憶體或磁碟空間不足時，會損毀您的網站。
 
 下列範例會示範使用 JavaScript/Angular 串流至控制器動作。 使用自訂的篩選條件屬性，而不是在要求主體中的 HTTP 標頭中傳遞，就會產生檔案的 antiforgery 語彙基元。 動作方法會直接處理上傳的資料，因為另一個篩選條件會停用模型繫結。 動作，在表單的內容會使用讀取`MultipartReader`，讀取每個個別`MultipartSection`、 處理檔案，或視需要儲存內容。 一旦已經讀取所有區段，此動作會在執行它自己的模型繫結。
 
@@ -199,4 +199,4 @@ The request filtering module is configured to deny a request that exceeds the re
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile null 參考例外狀況
 
-如果您的控制器是接受上傳檔案使用`IFormFile`，但您尋找這個值一律是 null，請確認已指定 HTML 表單`enctype`值`multipart/form-data`。 如果這個屬性未設定上`<form>`項目，檔案上傳不會和任何繫結`IFormFile`引數將會是 null。
+如果您的控制器是接受上傳檔案使用`IFormFile`，但您尋找這個值一律是 null，請確認已指定 HTML 表單`enctype`值`multipart/form-data`。 如果未設定此屬性`<form>`項目，就不會在檔案上傳和任何繫結`IFormFile`引數將會是 null。

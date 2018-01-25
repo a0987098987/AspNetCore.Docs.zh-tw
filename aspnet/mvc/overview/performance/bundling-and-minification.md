@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: e83be2446ef1e3ff1275d06d5b743fb5b9444a6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7192481de46c36f7de71164766e68afdbba74f6d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="bundling-and-minification"></a>統合及縮製
 ====================
@@ -68,15 +68,15 @@ ms.lasthandoff: 11/10/2017
 |  | **使用 B/M** | **沒有 B/M** | **變更** |
 | --- | --- | --- | --- |
 | **檔案要求** | 9 | 34 | 256% |
-| **傳送的 KB** | 3.26 | 11.92 | 266% |
-| **接收的 KB** | 388.51 | 530 | 36% |
+| **KB Sent** | 3.26 | 11.92 | 266% |
+| **KB Received** | 388.51 | 530 | 36% |
 | **載入時間** | 510 MS | 780 MS | 53% |
 
 傳送的位元組有大幅降低與結合在一起的瀏覽器相當詳細資訊，以套用要求的 HTTP 標頭。 接收的位元組減少不一樣大因為最大檔案 (*Scripts\jquery-ui-1.8.11.min.js*和*Scripts\jquery-1.7.1.min.js*) 已經縮短。 注意： 上使用的範例程式時機[Fiddler](http://www.fiddler2.com/fiddler2/)工具來模擬慢速網路。 (從 Fiddler**規則**功能表上，選取**效能**然後**模擬數據機速度**。)
 
 ## <a name="debugging-bundled-and-minified-javascript"></a>偵錯配套並縮短 JavaScript
 
-所以可以輕鬆地偵錯您的 JavaScript，在開發環境中 (其中[compilation 元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)中*Web.config*檔案設定為`debug="true"`) 因為不會集結 JavaScript 檔案或縮短。 您也可以偵錯的 JavaScript 檔案包裝在一起，而縮短的發行組建。 您使用 IE F12 開發人員工具，偵錯使用下列方式縮短組合中所包含的 JavaScript 函式：
+所以可以輕鬆地偵錯您的 JavaScript，在開發環境中 (其中[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案設定為`debug="true"`) 因為不會集結 JavaScript 檔案或縮短。 您也可以偵錯的 JavaScript 檔案包裝在一起，而縮短的發行組建。 您使用 IE F12 開發人員工具，偵錯使用下列方式縮短組合中所包含的 JavaScript 函式：
 
 1. 選取**指令碼**索引標籤，然後選取 [**開始偵錯**] 按鈕。
 2. 選取包含您想要使用 [資產] 按鈕進行偵錯 JavaScript 函式的組合。  
@@ -85,11 +85,11 @@ ms.lasthandoff: 11/10/2017
 4. 在**搜尋指令碼**t 輸入的方塊中，選取您要偵錯函式的名稱。 在下圖**AddAltToImg**輸入**搜尋指令碼**t 輸入的方塊。  
     ![](bundling-and-minification/_static/image6.png)
 
-如需有關如何使用 F12 開發人員工具進行偵錯的詳細資訊，請參閱 MSDN 文章：[使用 F12 開發人員工具，偵錯 JavaScript 錯誤](https://msdn.microsoft.com/en-us/library/ie/gg699336(v=vs.85).aspx)。
+如需有關如何使用 F12 開發人員工具進行偵錯的詳細資訊，請參閱 MSDN 文章：[使用 F12 開發人員工具，偵錯 JavaScript 錯誤](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx)。
 
 ## <a name="controlling-bundling-and-minification"></a>控制統合及縮製
 
-統合及縮製已啟用或停用偵錯屬性中的值設定[compilation 元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)中*Web.config*檔案。 在下列 XML 中，`debug`設定為 true，組合和縮製已停用。
+統合及縮製已啟用或停用偵錯屬性中的值設定[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案。 在下列 XML 中，`debug`設定為 true，組合和縮製已停用。
 
 [!code-xml[Main](bundling-and-minification/samples/sample3.xml?highlight=2)]
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/10/2017
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> 除非`EnableOptimizations`是`true`或中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)中*Web.config*檔案設定為`false`，檔案將不會搭配或縮短。 此外，將不會使用檔案的.min 版本，將選取完整的偵錯版本。 `EnableOptimizations`覆寫中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)中*Web.config*檔案
+> 除非`EnableOptimizations`是`true`或中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案設定為`false`，檔案將不會搭配或縮短。 此外，將不會使用檔案的.min 版本，將選取完整的偵錯版本。 `EnableOptimizations`覆寫中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案
 
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>使用組合和縮製與 ASP.NET Web Form 和 Web 網頁
@@ -137,11 +137,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="creating-a-bundle"></a>建立套件組合
 
-[配套](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx)類別`Include`方法會採用字串陣列，其中每個字串都是資源的虛擬路徑。 下列程式碼中的 RegisterBundles 方法從*應用程式\_Start\BundleConfig.cs*檔會示範如何在多個檔案會新增至組合：
+[配套](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx)類別`Include`方法會採用字串陣列，其中每個字串都是資源的虛擬路徑。 下列程式碼中的 RegisterBundles 方法從*應用程式\_Start\BundleConfig.cs*檔會示範如何在多個檔案會新增至組合：
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
-[配套](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx)類別`IncludeDirectory`方法提供來加入所有的檔案的目錄 （以及選擇性地所有子目錄） 中符合搜尋模式。 [配套](https://msdn.microsoft.com/en-us/library/system.web.optimization.bundle(v=VS.110).aspx)類別`IncludeDirectory`API 如下所示：
+[配套](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx)類別`IncludeDirectory`方法提供來加入所有的檔案的目錄 （以及選擇性地所有子目錄） 中符合搜尋模式。 [配套](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx)類別`IncludeDirectory`API 如下所示：
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
@@ -170,17 +170,17 @@ ms.lasthandoff: 11/10/2017
 
 | **Call** | **加入檔案或引發例外狀況** |
 | --- | --- |
-| 包含 (「 ~/Scripts/Common/\*.js") | *AddAltToImg.js，ToggleDiv.js，ToggleImg.js* |
-| 包含 (「 ~/Scripts/Common/T\*.js") | 無效的模式例外狀況。 前置詞或後置詞只允許萬用字元。 |
-| 包含 (「 ~/Scripts/Common/\*og。\*") | 無效的模式例外狀況。 允許只能有一個萬用字元。 |
-| 「 包含 (「 ~/Scripts/Common/T\*") | *ToggleDiv.js ToggleImg.js* |
-| 「 包含 (「 ~/Scripts/Common/\*") | 無效的模式例外狀況。 純的萬用字元片段無效。 |
-| IncludeDirectory (「 ~/Scripts/Common"、"T\*") | *ToggleDiv.js ToggleImg.js* |
-| IncludeDirectory (「 ~/Scripts/Common"、"T\*"，則為 true) | *ToggleDiv.js，ToggleImg.js，ToggleLinks.js* |
+| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
+| Include("~/Scripts/Common/T\*.js") | 無效的模式例外狀況。 前置詞或後置詞只允許萬用字元。 |
+| Include("~/Scripts/Common/\*og.\*") | 無效的模式例外狀況。 允許只能有一個萬用字元。 |
+| "Include("~/Scripts/Common/T\*") | *ToggleDiv.js ToggleImg.js* |
+| "Include("~/Scripts/Common/\*") | 無效的模式例外狀況。 純的萬用字元片段無效。 |
+| IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js ToggleImg.js* |
+| IncludeDirectory("~/Scripts/Common", "T\*",true) | *ToggleDiv.js，ToggleImg.js，ToggleLinks.js* |
 
 明確地將每個檔案加入至組合是通常慣用透過萬用字元載入的檔案，原因如下：
 
-- 加入指令碼萬用字元預設依字母順序，通常不是您想要載入它們。 若要新增特定的 （非英文字母） 順序經常需要 CSS 和 JavaScript 檔案。 您可以新增自訂來降低此風險[IBundleOrderer](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundleorderer(VS.110).aspx)實作，但是會明確地將每個檔案較不易有錯誤。 比方說，您可以在其中加入新資產的資料夾在未來可能需要修改您[IBundleOrderer](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundleorderer(VS.110).aspx)實作。
+- 加入指令碼萬用字元預設依字母順序，通常不是您想要載入它們。 若要新增特定的 （非英文字母） 順序經常需要 CSS 和 JavaScript 檔案。 您可以新增自訂來降低此風險[IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx)實作，但是會明確地將每個檔案較不易有錯誤。 比方說，您可以在其中加入新資產的資料夾在未來可能需要修改您[IBundleOrderer](https://msdn.microsoft.com/library/system.web.optimization.ibundleorderer(VS.110).aspx)實作。
 - 檢視特定檔案新增至目錄，使用載入的萬用字元可以包含在所有檢視中參考該配套。 如果檢視特定指令碼新增至組合，您可能會參考組合之其他檢視上的 JavaScript 錯誤。
 - CSS 檔案匯入其他檔案，會導致匯入的檔案載入兩次。 例如，下列程式碼建立組合與大部分的載入兩次的 jQuery UI 佈景主題 CSS 檔。 
 
@@ -209,10 +209,10 @@ ms.lasthandoff: 11/10/2017
 1. 建立適用於您較少的內容資料夾。 下列範例會使用*Content\MyLess*資料夾。
 2. 新增[.less](http://www.dotlesscss.org/) NuGet 封裝**無點**至您的專案。  
     ![NuGet 無點安裝](bundling-and-minification/_static/image9.png)
-3. 加入的類別，實作[IBundleTransform](https://msdn.microsoft.com/en-us/library/system.web.optimization.ibundletransform(VS.110).aspx)介面。 .Less 轉換，請將下列程式碼加入您的專案。
+3. 加入的類別，實作[IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx)介面。 .Less 轉換，請將下列程式碼加入您的專案。
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. 建立具有較少檔案的組合`LessTransform`和[CssMinify](https://msdn.microsoft.com/en-us/library/system.web.optimization.cssminify(VS.110).aspx)轉換。 將下列程式碼加入`RegisterBundles`方法中的*應用程式\_Start\BundleConfig.cs*檔案。
+4. 建立具有較少檔案的組合`LessTransform`和[CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx)轉換。 將下列程式碼加入`RegisterBundles`方法中的*應用程式\_Start\BundleConfig.cs*檔案。
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
 5. 將下列程式碼加入至參考較少的資源存放區的任何檢視。

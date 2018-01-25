@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f626731e79d83785057498c53cdf49aecb90261
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42203bdd7c22f3885eecab36dbd710d371107285
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a>顯示資料，以在 DataList 和中繼器控制項中 (C#)
 ====================
@@ -163,7 +163,7 @@ GridView，像是在 DataList 提供了許多樣式相關的屬性，例如`Font
 
 - `HeaderTemplate`如果提供，將標頭資料列加入至輸出，而且用來呈現此資料列
 - `AlternatingItemTemplate`用來呈現替代項目
-- `SelectedItemTemplate`用來呈現選取的項目。選取的項目是項目索引的對應至 DataList s [ `SelectedIndex`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
+- `SelectedItemTemplate`用來呈現選取的項目。選取的項目是項目索引的對應至 DataList s [ `SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
 - `EditItemTemplate`用來呈現正在編輯的項目
 - `SeparatorTemplate`如果提供，將每個項目之間的分隔符號與用來呈現這個分隔符號
 - `FooterTemplate`-如果提供，頁尾資料列加入至輸出，而且用來呈現此資料列
@@ -222,7 +222,7 @@ GridView，像是在 DataList 提供了許多樣式相關的屬性，例如`Font
 - 在`SectionLevelTutorialListing.ascx`，中繼器用來顯示目前的站台對應區段的子系區段項目符號清單
 
 > [!NOTE]
-> ASP.NET 2.0 導入新[BulletedList 控制項](https://msdn.microsoft.com/en-us/library/ms228101.aspx)，它可以才能顯示簡單的項目符號清單繫結至資料來源控制項。 與設定 BulletedList 控制項我們不需要指定任何相關清單 HTML 中。相反地，我們只是指出要顯示為每個清單項目文字的資料欄位。
+> ASP.NET 2.0 導入新[BulletedList 控制項](https://msdn.microsoft.com/library/ms228101.aspx)，它可以才能顯示簡單的項目符號清單繫結至資料來源控制項。 與設定 BulletedList 控制項我們不需要指定任何相關清單 HTML 中。相反地，我們只是指出要顯示為每個清單項目文字的資料欄位。
 
 
 中繼器當做 catch Web 控制項的所有資料。 如果不是產生所需的標記的現有控制項，在中繼器控制項可用。 為了說明使用中繼器，可讓 s 已在步驟 2 中建立產品資訊 DataList 上方顯示的類別目錄的清單。 O d e s 特別的是，具有單一資料列 HTML 中顯示類別目錄`<table>`且顯示為資料表中的資料行的每個分類。

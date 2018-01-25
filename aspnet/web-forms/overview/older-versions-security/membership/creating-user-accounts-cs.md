@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ce206eae47c2fa718d4fca1f88b2c48441fedff2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d1bdec096b68a01c36f46765abef00aad319f2c2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-user-accounts-c"></a>建立使用者帳戶 (C#)
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 我們開始使用的成員資格 framework 之前，請讓我們花一點時間檢閱重要的步驟，我們已達到這個點。 當使用成員資格架構與`SqlMembershipProvider`必須在 web 應用程式中實作的成員資格功能之前會先執行下列步驟在表單型驗證案例中，：
 
 1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)*，藉由編輯啟用表單驗證`Web.config`和設定`<authentication>`項目的`mode`屬性`Forms`。 使用表單驗證已啟用，每個傳入要求會檢查*表單驗證票證*，其中，如果出現找出要求者。
-2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。  *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-cs.md)*教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
+2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。 *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-cs.md)*教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
 3. **自訂 Web 應用程式的設定步驟 2 中參考的資料庫。** *在 SQL Server 中建立成員資格結構描述*教學課程示範了兩種方式可設定 web 應用程式，讓`SqlMembershipProvider`會使用在步驟 2 中選取的資料庫： 藉由修改`LocalSqlServer`連接字串名稱。或者，透過將新的註冊提供者加入至成員資格 framework 提供者的清單，以及自訂該新的提供者使用的資料庫從步驟 2。
 
 當建置 web 應用程式使用`SqlMembershipProvider`和表單型驗證，您必須使用之前執行這三個步驟`Membership`類別或 ASP.NET 登入 Web 控制項。 因為我們已經執行下列步驟，在先前的教學課程中，我們已準備好開始使用的成員資格 framework ！
@@ -77,9 +77,9 @@ ms.lasthandoff: 11/10/2017
 
 幾乎連最簡單的網站必須實作某種形式的巡覽使用者介面。 巡覽使用者介面，可能是簡單的站台的不同區段的連結清單。 此外，這些連結可能會分成功能表或樹狀檢視。 網頁開發人員建立巡覽使用者介面是劇本的一半。 我們也會需要某些方法來定義站台的邏輯結構，可維護性和可更新的方式。 當新的頁面會加入或移除現有的頁面時，我們想要能夠更新單一來源 – 站台對應圖，而且這些修改反映在站台的巡覽使用者介面。
 
-– 定義站台對應和實作巡覽使用者介面，根據站台對應 – 這兩個工作是可輕鬆地完成這點受惠網站地圖架構，並瀏覽 Web 控制項加入 ASP.NET 2.0 版。 站台地圖架構可讓開發人員定義站台對應，然後存取透過程式設計的 API ( [ `SiteMap`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemap.aspx))。 瀏覽 Web 控制項的內建包括[功能表控制項](https://msdn.microsoft.com/en-us/library/bz09dy46.aspx)、 [TreeView 控制項](https://msdn.microsoft.com/en-us/library/3eafky27.aspx)，而[SiteMapPath 控制項](https://msdn.microsoft.com/en-us/library/3eafky27.aspx)。
+– 定義站台對應和實作巡覽使用者介面，根據站台對應 – 這兩個工作是可輕鬆地完成這點受惠網站地圖架構，並瀏覽 Web 控制項加入 ASP.NET 2.0 版。 站台地圖架構可讓開發人員定義站台對應，然後存取透過程式設計的 API ( [ `SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx))。 瀏覽 Web 控制項的內建包括[功能表控制項](https://msdn.microsoft.com/library/bz09dy46.aspx)、 [TreeView 控制項](https://msdn.microsoft.com/library/3eafky27.aspx)，而[SiteMapPath 控制項](https://msdn.microsoft.com/library/3eafky27.aspx)。
 
-成員資格和角色的架構，例如網站地圖 framework 建置在之上[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)。 站台地圖提供者類別的工作是產生所使用的記憶體中結構`SiteMap`從永續性資料存放區，例如 XML 檔案或資料庫資料表的類別。 .NET Framework 隨附於從 XML 檔案讀取網站導覽資料的預設站台地圖提供者 ([`XmlSiteMapProvider`](https://msdn.microsoft.com/en-us/library/system.web.xmlsitemapprovider.aspx))，而且這是我們將在本教學課程中使用的提供者。 針對某些其他的站台地圖提供者實作，請參閱進一步讀數區段在本教學課程結尾處。
+成員資格和角色的架構，例如網站地圖 framework 建置在之上[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)。 站台地圖提供者類別的工作是產生所使用的記憶體中結構`SiteMap`從永續性資料存放區，例如 XML 檔案或資料庫資料表的類別。 .NET Framework 隨附於從 XML 檔案讀取網站導覽資料的預設站台地圖提供者 ([`XmlSiteMapProvider`](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx))，而且這是我們將在本教學課程中使用的提供者。 針對某些其他的站台地圖提供者實作，請參閱進一步讀數區段在本教學課程結尾處。
 
 預設站台地圖提供者必須要有格式正確 XML 檔案，名為`Web.sitemap`存在的根目錄。 因為我們使用此預設提供者，我們需要加入這類檔案，並以適當的 XML 格式定義站台對應的結構。 若要加入檔案，以滑鼠右鍵按一下方案總管] 中的專案名稱上，選擇 [加入新項目。 從對話方塊中，選擇加入的檔案的類型名為站台地圖`Web.sitemap`。
 
@@ -115,7 +115,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 [!code-aspx[Main](creating-user-accounts-cs/samples/sample3.aspx)]
 
-上述的標記將繫結中繼器控制項，名為`menu`Treeview，來傳回中所定義的對應站台階層`Web.sitemap`。 Treeview 控制項的自[`ShowStartingNode`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx)設為的 False，同時也會傳回開頭為 「 家用 」 節點的下階的站台對應的階層。 中繼器的每個這些節點 (目前只"Membership") 中顯示`<li>`項目。 另一個、 內部中繼器然後會在巢狀的未排序清單中顯示目前節點的子系。
+上述的標記將繫結中繼器控制項，名為`menu`Treeview，來傳回中所定義的對應站台階層`Web.sitemap`。 Treeview 控制項的自[`ShowStartingNode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx)設為的 False，同時也會傳回開頭為 「 家用 」 節點的下階的站台對應的階層。 中繼器的每個這些節點 (目前只"Membership") 中顯示`<li>`項目。 另一個、 內部中繼器然後會在巢狀的未排序清單中顯示目前節點的子系。
 
 圖 4 顯示上述的標記呈現的輸出與步驟 2 中建立站台對應結構。 中繼器呈現香草未排序的清單的標記。階層式樣式表規則中定義`Styles.css`負責悅耳版面配置。 如上述的標記如何運作的更詳細的描述，請參閱[主版頁面和站台瀏覽](https://asp.net/learn/data-access/tutorial-03-cs.aspx)教學課程。
 
@@ -149,14 +149,14 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 ## <a name="step-5-programmatically-creating-a-new-user"></a>步驟 5： 以程式設計方式建立新的使用者
 
-若要建立新的使用者帳戶，透過使用成員資格 framework`Membership`類別的[`CreateUser`方法](https://msdn.microsoft.com/En-US/library/system.web.security.membership.createuser.aspx)。 這個方法具有輸入參數的使用者名稱、 密碼及其他使用者相關的欄位。 在引動過程，它會委派給已設定的成員資格提供者建立新的使用者帳戶，然後傳回[`MembershipUser`物件](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx)代表剛建立的使用者帳戶。
+若要建立新的使用者帳戶，透過使用成員資格 framework`Membership`類別的[`CreateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.createuser.aspx)。 這個方法具有輸入參數的使用者名稱、 密碼及其他使用者相關的欄位。 在引動過程，它會委派給已設定的成員資格提供者建立新的使用者帳戶，然後傳回[`MembershipUser`物件](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx)代表剛建立的使用者帳戶。
 
 `CreateUser`方法具有四個多載，各接受不同數目的輸入參數：
 
-- [`CreateUser(username, password)`](https://msdn.microsoft.com/En-US/library/d8t4h2es.aspx)
-- [`CreateUser(username, password, email)`](https://msdn.microsoft.com/En-US/library/t8yy6w3h.aspx)
-- [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, MembershipCreateStatus)`](https://msdn.microsoft.com/En-US/library/82xx2e62.aspx)
-- [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey, MembershipCreateStatus)`](https://msdn.microsoft.com/En-US/library/ms152012.aspx)
+- [`CreateUser(username, password)`](https://msdn.microsoft.com/library/d8t4h2es.aspx)
+- [`CreateUser(username, password, email)`](https://msdn.microsoft.com/library/t8yy6w3h.aspx)
+- [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, MembershipCreateStatus)`](https://msdn.microsoft.com/library/82xx2e62.aspx)
+- [`CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey, MembershipCreateStatus)`](https://msdn.microsoft.com/library/ms152012.aspx)
 
 這些四個多載的差別收集的資訊數量。 第一個多載，例如，需要使用者名稱和密碼為新的使用者帳戶，而第二個也需要使用者的電子郵件地址。
 
@@ -192,7 +192,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 [!code-csharp[Main](creating-user-accounts-cs/samples/sample6.cs)]
 
-`Click`事件處理常式開始定義變數，名為`createStatus`型別的[ `MembershipCreateStatus` ](https://msdn.microsoft.com/En-US/library/system.web.security.membershipcreatestatus.aspx)。 `MembershipCreateStatus`是一種列舉，指出狀態`CreateUser`作業。 例如，如果使用者帳戶建立成功時，所產生的`MembershipCreateStatus`執行個體將會設定為值`Success`; 在其他另一方面，如果作業失敗，因為已經存在具有相同的使用者名稱的使用者，將設定的值`DuplicateUserName`. 在`CreateUser`我們使用多載，我們需要將`MembershipCreateStatus`到做為方法的執行個體`out`參數。 此參數設定為適當的值內`CreateUser`方法，所以我們可以檢查它的值來判斷是否已成功建立使用者帳戶在方法呼叫之後。
+`Click`事件處理常式開始定義變數，名為`createStatus`型別的[ `MembershipCreateStatus` ](https://msdn.microsoft.com/library/system.web.security.membershipcreatestatus.aspx)。 `MembershipCreateStatus`是一種列舉，指出狀態`CreateUser`作業。 例如，如果使用者帳戶建立成功時，所產生的`MembershipCreateStatus`執行個體將會設定為值`Success`; 在其他另一方面，如果作業失敗，因為已經存在具有相同的使用者名稱的使用者，將設定的值`DuplicateUserName`. 在`CreateUser`我們使用多載，我們需要將`MembershipCreateStatus`到做為方法的執行個體`out`參數。 此參數設定為適當的值內`CreateUser`方法，所以我們可以檢查它的值來判斷是否已成功建立使用者帳戶在方法呼叫之後。
 
 在呼叫`CreateUser`，並傳入`createStatus`、`switch`陳述式用來輸出指派給的值而定有適當錯誤訊息`createStatus`。 圖 7 顯示輸出時已成功建立新的使用者。 未建立使用者帳戶時，數字 8 和 9 顯示輸出。 圖 8 中造訪者輸入五個字母密碼不符合成員資格提供者的組態設定中的密碼強度需求。 圖 9 中造訪者嘗試建立使用者帳戶使用現有的使用者名稱 （圖 7 中建立的一個）。
 
@@ -213,7 +213,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 
 > [!NOTE]
-> 您可能想知道如何判斷成功或失敗時使用的前兩個的其中一種`CreateUser`方法多載，兩者都不具有類型參數的`MembershipCreateStatus`。 這些前兩個多載會擲回[`MembershipCreateUserException`例外狀況](https://msdn.microsoft.com/en-us/library/system.web.security.membershipcreateuserexception.aspx)時失敗，其中包括[`StatusCode`屬性](https://msdn.microsoft.com/en-us/library/system.web.security.membershipcreateuserexception.statuscode.aspx)型別的`MembershipCreateStatus`。
+> 您可能想知道如何判斷成功或失敗時使用的前兩個的其中一種`CreateUser`方法多載，兩者都不具有類型參數的`MembershipCreateStatus`。 這些前兩個多載會擲回[`MembershipCreateUserException`例外狀況](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.aspx)時失敗，其中包括[`StatusCode`屬性](https://msdn.microsoft.com/library/system.web.security.membershipcreateuserexception.statuscode.aspx)型別的`MembershipCreateStatus`。
 
 
 建立幾個使用者帳戶之後，請確認帳戶都由列出的內容`aspnet_Users`和`aspnet_Membership`中的資料表`SecurityTutorials.mdf`資料庫。 如圖 10 所示，我已經加入兩位使用者透過`CreatingUserAccounts.aspx`頁面： Tito 和 Bruce。
@@ -258,12 +258,12 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 有趣的是適用於 CreateUserWizard 控制項在呈現其使用者介面時，會參照成員資格提供者的組態設定。 例如，安全性問題和解答文字方塊才顯示`requiresQuestionAndAnswer`設為 True。 同樣地，適用於 CreateUserWizard 會自動加入 RegularExpressionValidator 控制項，以確保密碼強度需求均符合，並設定其`ErrorMessage`和`ValidationExpression`屬性根據`minRequiredPasswordLength`， `minRequiredNonalphanumericCharacters`，和`passwordStrengthRegularExpression`組態設定。
 
-適用於 CreateUserWizard 控制項，正如其名，衍生自[精靈控制項](https://msdn.microsoft.com/en-us/library/s2etd1ek.aspx)。 精靈控制項的設計來提供介面來完成多步驟工作。 精靈控制項可能包含任意數量的`WizardSteps`、 每一個都是定義 HTML 的範本與 Web 控制項的該步驟。 精靈控制項最初顯示的第一個`WizardStep`，以及瀏覽控制項，可讓使用者從一個步驟繼續執行下一步，或若要返回上一個步驟。
+適用於 CreateUserWizard 控制項，正如其名，衍生自[精靈控制項](https://msdn.microsoft.com/library/s2etd1ek.aspx)。 精靈控制項的設計來提供介面來完成多步驟工作。 精靈控制項可能包含任意數量的`WizardSteps`、 每一個都是定義 HTML 的範本與 Web 控制項的該步驟。 精靈控制項最初顯示的第一個`WizardStep`，以及瀏覽控制項，可讓使用者從一個步驟繼續執行下一步，或若要返回上一個步驟。
 
 圖 11 中的宣告式標記所示，適用於 CreateUserWizard 控制項的預設介面包含兩個`WizardSteps:`
 
-- [`CreateUserWizardStep`](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizardstep.aspx)– 呈現的介面來收集資訊，以建立新的使用者帳戶。 這是顯示在圖 11 中的步驟。
-- [`CompleteWizardStep`](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.completewizardstep.aspx)– 呈現訊息，指出已成功建立帳戶。
+- [`CreateUserWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizardstep.aspx)– 呈現的介面來收集資訊，以建立新的使用者帳戶。 這是顯示在圖 11 中的步驟。
+- [`CompleteWizardStep`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.completewizardstep.aspx)– 呈現訊息，指出已成功建立帳戶。
 
 可以修改適用於 CreateUserWizard 的外觀和行為，透過將其中一個步驟轉換成範本，或是加入您自己`WizardSteps`。 我們將探討加入`WizardStep`中登錄介面*儲存額外的使用者資訊*教學課程。
 
@@ -293,11 +293,11 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 中有許多種，透過屬性，可自訂適用於 CreateUserWizard `WizardSteps`，和事件處理常式。 這一節我們將探討如何自訂控制項的外觀，透過它的屬性。擴充控制項的行為，透過事件處理常式會查看下一節。
 
-可以透過其內容的眾多自訂幾乎所有適用於 CreateUserWizard 控制項的預設使用者介面中顯示的文字。 例如，文字方塊的左邊顯示之 「 使用者名稱 」、 「 密碼 」、 [確認密碼] 中，「 電子郵件 」、 「 安全性問題 」 和 「 安全性的回答 」 標籤可以透過自訂[ `UserNameLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.usernamelabeltext.aspx)， [ `PasswordLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.passwordlabeltext.aspx)， [ `ConfirmPasswordLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.confirmpasswordlabeltext.aspx)， [ `EmailLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.emaillabeltext.aspx)， [ `QuestionLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.questionlabeltext.aspx)，和[ `AnswerLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.answerlabeltext.aspx)屬性，分別。 同樣地，有指定的文字中的 「 建立使用者 」 及 「 繼續 」 按鈕屬性`CreateUserWizardStep`和`CompleteWizardStep`，也如同這些按鈕會呈現為按鈕、 LinkButtons 或 ImageButtons。
+可以透過其內容的眾多自訂幾乎所有適用於 CreateUserWizard 控制項的預設使用者介面中顯示的文字。 例如，文字方塊的左邊顯示之 「 使用者名稱 」、 「 密碼 」、 [確認密碼] 中，「 電子郵件 」、 「 安全性問題 」 和 「 安全性的回答 」 標籤可以透過自訂[ `UserNameLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.usernamelabeltext.aspx)， [ `PasswordLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.passwordlabeltext.aspx)， [ `ConfirmPasswordLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.confirmpasswordlabeltext.aspx)， [ `EmailLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.emaillabeltext.aspx)， [ `QuestionLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.questionlabeltext.aspx)，和[ `AnswerLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.answerlabeltext.aspx)屬性，分別。 同樣地，有指定的文字中的 「 建立使用者 」 及 「 繼續 」 按鈕屬性`CreateUserWizardStep`和`CompleteWizardStep`，也如同這些按鈕會呈現為按鈕、 LinkButtons 或 ImageButtons。
 
-可透過主機的樣式屬性來設定色彩、 框線、 字型和其他視覺化項目。 適用於 CreateUserWizard 控制項本身有共通的 Web 控制項樣式屬性 – `BackColor`， `BorderStyle`， `CssClass`，`Font`等等 – 而且有很多的樣式屬性定義的特定區段的外觀適用於 CreateUserWizard 的介面。 [ `TextBoxStyle`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx)，比方說，定義中文字方塊的樣式`CreateUserWizardStep`，雖然[`TitleTextStyle`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx)定義 （「 登入您新標題的樣式帳戶 」）。
+可透過主機的樣式屬性來設定色彩、 框線、 字型和其他視覺化項目。 適用於 CreateUserWizard 控制項本身有共通的 Web 控制項樣式屬性 – `BackColor`， `BorderStyle`， `CssClass`，`Font`等等 – 而且有很多的樣式屬性定義的特定區段的外觀適用於 CreateUserWizard 的介面。 [ `TextBoxStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx)，比方說，定義中文字方塊的樣式`CreateUserWizardStep`，雖然[`TitleTextStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx)定義 （「 登入您新標題的樣式帳戶 」）。
 
-除了外觀相關的屬性，還有一些會影響適用於 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示 （預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必也設定[`CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，以指定使用者按一下 [取消] 5d; 之後，會傳送至頁面。 如前一節中的 [繼續] 按鈕中所述`CompleteWizardStep`的介面，導致回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁訪客按一下 [繼續] 按鈕之後，您只需要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
+除了外觀相關的屬性，還有一些會影響適用於 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示 （預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必也設定[`CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，以指定使用者按一下 [取消] 5d; 之後，會傳送至頁面。 如前一節中的 [繼續] 按鈕中所述`CompleteWizardStep`的介面，導致回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁訪客按一下 [繼續] 按鈕之後，您只需要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
 
 讓我們更新`RegisterUser`適用於 CreateUserWizard 控制項顯示取消按鈕，並傳送至訪客`Default.aspx`當按下 取消 5d; 或繼續 按鈕。 若要達成此目的，設定`DisplayCancelButton`屬性設為 True，同時兩者皆`CancelDestinationPageUrl`和`ContinueDestinationPageUrl`屬性，以"~ / Default.aspx"。 圖 14 顯示透過瀏覽器檢視時更新適用於 CreateUserWizard。
 
@@ -307,13 +307,13 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 **圖 14**:`CreateUserWizardStep`包含 [取消] 按鈕 ([按一下以檢視完整大小的影像](creating-user-accounts-cs/_static/image42.png))
 
 
-當訪客輸入使用者名稱、 密碼、 電子郵件地址和安全性問題和答案，並按一下 [建立使用者] 時，建立新的使用者帳戶和訪客，會建立新使用者的身分登入。 假設瀏覽頁面的人員正在自行建立新的帳戶，這可能是所要的行為。 不過，您可能想要允許系統管理員新增使用者帳戶。 在此情況下，會建立使用者帳戶，但系統管理員會仍保持登入系統管理員身分 （而不是新建立的帳戶）。 此行為可以修改透過布林[`LoginCreatedUser`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx)。
+當訪客輸入使用者名稱、 密碼、 電子郵件地址和安全性問題和答案，並按一下 [建立使用者] 時，建立新的使用者帳戶和訪客，會建立新使用者的身分登入。 假設瀏覽頁面的人員正在自行建立新的帳戶，這可能是所要的行為。 不過，您可能想要允許系統管理員新增使用者帳戶。 在此情況下，會建立使用者帳戶，但系統管理員會仍保持登入系統管理員身分 （而不是新建立的帳戶）。 此行為可以修改透過布林[`LoginCreatedUser`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.logincreateduser.aspx)。
 
-成員資格 framework 中的使用者帳戶包含已核准的旗標。未核准的使用者將無法登入網站。 根據預設，新建立的帳戶已標示為核准，讓使用者立即登入網站。 不過，有標示為 未核准的新使用者帳戶會盡可能。 也許您想要手動核准新的使用者，才可以登入; 系統管理員或者，您想要檢查在註冊期間取得輸入的電子郵件地址有效，才允許使用者登入。 任何大小寫，可能是您可以藉由設定適用於 CreateUserWizard 控制項的標記為 未核准的新建立的使用者帳戶[`DisableCreatedUser`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx)為 True （預設值為 False）。
+成員資格 framework 中的使用者帳戶包含已核准的旗標。未核准的使用者將無法登入網站。 根據預設，新建立的帳戶已標示為核准，讓使用者立即登入網站。 不過，有標示為 未核准的新使用者帳戶會盡可能。 也許您想要手動核准新的使用者，才可以登入; 系統管理員或者，您想要檢查在註冊期間取得輸入的電子郵件地址有效，才允許使用者登入。 任何大小寫，可能是您可以藉由設定適用於 CreateUserWizard 控制項的標記為 未核准的新建立的使用者帳戶[`DisableCreatedUser`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.disablecreateduser.aspx)為 True （預設值為 False）。
 
-附註的其他行為相關的屬性包含`AutoGeneratePassword`和`MailDefinition`。 如果[`AutoGeneratePassword`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.autogeneratepassword.aspx)設為 True，`CreateUserWizardStep`不會顯示 「 密碼 」 和 [確認密碼] 文字方塊中; 相反地，新建立之使用者的密碼自動產生使用`Membership`類別的[`GeneratePassword`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.generatepassword.aspx)。 `GeneratePassword`方法會建構具有足夠數目的非英數字元，以滿足設定的密碼強度需求及指定長度的密碼。
+附註的其他行為相關的屬性包含`AutoGeneratePassword`和`MailDefinition`。 如果[`AutoGeneratePassword`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.autogeneratepassword.aspx)設為 True，`CreateUserWizardStep`不會顯示 「 密碼 」 和 [確認密碼] 文字方塊中; 相反地，新建立之使用者的密碼自動產生使用`Membership`類別的[`GeneratePassword`方法](https://msdn.microsoft.com/library/system.web.security.membership.generatepassword.aspx)。 `GeneratePassword`方法會建構具有足夠數目的非英數字元，以滿足設定的密碼強度需求及指定長度的密碼。
 
-[ `MailDefinition`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx)如果您想要在帳戶建立程序期間指定的電子郵件地址傳送電子郵件就很有用。 `MailDefinition`屬性包含一系列的子屬性，定義建構的電子郵件訊息的相關資訊。 這些子屬性包括選項，例如`Subject`， `Priority`， `IsBodyHtml`， `From`， `CC`，和`BodyFileName`。 [ `BodyFileName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx)指向的文字或 HTML 檔案，其中包含電子郵件訊息的主體。 本文支援兩個預先定義的預留位置：`<%UserName%>`和`<%Password%>`。 如果出現在這些預留位置`BodyFileName`檔案中，將會取代剛建立的使用者名稱和密碼。
+[ `MailDefinition`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.maildefinition.aspx)如果您想要在帳戶建立程序期間指定的電子郵件地址傳送電子郵件就很有用。 `MailDefinition`屬性包含一系列的子屬性，定義建構的電子郵件訊息的相關資訊。 這些子屬性包括選項，例如`Subject`， `Priority`， `IsBodyHtml`， `From`， `CC`，和`BodyFileName`。 [ `BodyFileName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx)指向的文字或 HTML 檔案，其中包含電子郵件訊息的主體。 本文支援兩個預先定義的預留位置：`<%UserName%>`和`<%Password%>`。 如果出現在這些預留位置`BodyFileName`檔案中，將會取代剛建立的使用者名稱和密碼。
 
 > [!NOTE]
 > `CreateUserWizard`控制項的`MailDefinition`屬性只會指定在建立新的帳戶時，會傳送電子郵件訊息詳細資料。 它不包含任何實際如何傳送電子郵件訊息上的詳細資料 （也就是是否使用 SMTP 伺服器或郵件放置目錄，任何驗證資訊，以及等等）。 這些低層級的詳細資料，必須定義在`<system.net>`一節中`Web.config`。 這些組態設定和在一般情況下傳送電子郵件從 ASP.NET 2.0 的詳細資訊，請參閱[常見問題集在 SystemNetMail.com](http://www.systemnetmail.com/)和我的文件： [ASP.NET 2.0 中的 傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)。
@@ -321,7 +321,7 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 ### <a name="extending-the-createuserwizards-behavior-using-event-handlers"></a>擴充適用於 CreateUserWizard 的行為使用事件處理常式
 
-適用於 CreateUserWizard 控制項在其工作流程期間引發的事件數目。 例如，在訪客輸入其使用者名稱、 密碼和其他相關資訊，並按一下 [建立使用者] 按鈕之後，適用於 CreateUserWizard 控制項引發其[`CreatingUser`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx)。 如果在建立過程中，問題[`CreateUserError`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx)引發; 不過，如果已成功建立使用者，然後在[`CreatedUser`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx)，就會引發。 取得引發的其他適用於 CreateUserWizard 控制項事件，但這些是三個最密切關聯。
+適用於 CreateUserWizard 控制項在其工作流程期間引發的事件數目。 例如，在訪客輸入其使用者名稱、 密碼和其他相關資訊，並按一下 [建立使用者] 按鈕之後，適用於 CreateUserWizard 控制項引發其[`CreatingUser`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.creatinguser.aspx)。 如果在建立過程中，問題[`CreateUserError`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createusererror.aspx)引發; 不過，如果已成功建立使用者，然後在[`CreatedUser`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.createduser.aspx)，就會引發。 取得引發的其他適用於 CreateUserWizard 控制項事件，但這些是三個最密切關聯。
 
 在某些情況下，我們可能要挖掘適用於 CreateUserWizard 工作流程，我們可以透過建立適當的事件的事件處理常式中執行。 為了說明這點，讓我們來增強`RegisterUser`適用於 CreateUserWizard 控制項，以包含某些自訂驗證使用者名稱和密碼。 特別是，讓我們來增強我們適用於 CreateUserWizard 以便使用者名稱不能包含開頭或尾端空格及使用者名稱不能出現在任何位置的密碼。 簡單地說，我們想要防止別人建立 「 Scott"，例如使用者名稱或使用者名稱/密碼組合，例如"Scott"和"Scott.1234"。
 
@@ -335,7 +335,7 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 [!code-csharp[Main](creating-user-accounts-cs/samples/sample8.cs)]
 
-請注意，使用者名稱和密碼輸入適用於 CreateUserWizard 控制項都可透過其[ `UserName` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.password.aspx)分別。 上述的事件處理常式中使用這些屬性時，我們判斷提供的使用者名稱是否包含開頭或尾端空格，且是否密碼中找到使用者名稱。 如果符合任一條件，則錯誤訊息，都會在`InvalidUserNameOrPasswordMessage`標籤和事件處理常式的`e.Cancel`屬性設定為`true`。 如果`e.Cancel`設`true`，適用於 CreateUserWizard short-circuits 其工作流程中，有效地取消 使用者帳戶建立程序。
+請注意，使用者名稱和密碼輸入適用於 CreateUserWizard 控制項都可透過其[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.password.aspx)分別。 上述的事件處理常式中使用這些屬性時，我們判斷提供的使用者名稱是否包含開頭或尾端空格，且是否密碼中找到使用者名稱。 如果符合任一條件，則錯誤訊息，都會在`InvalidUserNameOrPasswordMessage`標籤和事件處理常式的`e.Cancel`屬性設定為`true`。 如果`e.Cancel`設`true`，適用於 CreateUserWizard short-circuits 其工作流程中，有效地取消 使用者帳戶建立程序。
 
 圖 15 所示的螢幕擷取畫面`CreatingUserAccounts.aspx`當使用者輸入使用者名稱的開頭空白。
 
@@ -363,7 +363,7 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [`CreateUser`技術文件](https://msdn.microsoft.com/En-US/library/system.web.security.membershipprovider.createuser.aspx)
+- [`CreateUser`技術文件](https://msdn.microsoft.com/library/system.web.security.membershipprovider.createuser.aspx)
 - [適用於 CreateUserWizard 控制項概觀](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx)
 - [建立檔案系統為基礎的站台對應提供者](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx)
 - [建立與 ASP.NET 2.0 精靈控制項的逐步使用者介面](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)

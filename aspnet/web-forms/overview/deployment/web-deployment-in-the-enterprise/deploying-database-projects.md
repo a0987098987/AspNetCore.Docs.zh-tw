@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
 msc.type: authoredcontent
-ms.openlocfilehash: aef8229f2920bd026e3dbf063afb57cffb9b21d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9b1f9a19c76e33b5d996cb4d562cf0c1a3e2f83b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-database-projects"></a>部署資料庫專案
 ====================
@@ -65,18 +65,18 @@ ms.lasthandoff: 11/10/2017
 有三個主要的方式，您可以使用來部署資料庫專案：
 
 - 您可以使用部署功能與在 Visual Studio 2010 資料庫專案類型。 當您建置並部署在 Visual Studio 2010 資料庫專案時，部署程序會使用部署資訊清單產生特定的組建組態的 SQL 為基礎的部署檔案。 如果它已不存在或對資料庫進行任何必要的變更，如果已經存在的話，這會建立資料庫。 您可以使用 SQLCMD.exe 來執行在目的地伺服器上，這個檔案，或您可以設定 Visual Studio 來建立和執行檔案。 這個方法的缺點是，僅有有限控制部署設定。 您通常也可能需要修改 SQL 部署檔案，以提供環境特定變數的值。 您只能使用與 Visual Studio 2010 安裝，這種方法，從電腦和開發人員會想要知道，並提供所有目的地環境中的連接字串和認證。
-- 您可以使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 至[將資料庫部署為 web 應用程式專案的一部分](https://msdn.microsoft.com/en-us/library/dd465343.aspx)。 不過，這個方法是如果您想要部署資料庫專案，而不是只複寫到目的地伺服器上現有的本機資料庫更加複雜。 您可以設定 Web Deploy 才能執行 SQL 部署指令碼的資料庫專案所產生，但若要這樣做，您必須建立您的 web 應用程式專案的自訂 WPP 目標檔案。 這會將大量的複雜度加入部署程序。 此外，Web Deploy 不直接支援累加式更新至現有的資料庫。 如需這種方法的詳細資訊，請參閱[擴充封裝資料庫專案將 Web 發行管線部署 SQL 檔案](https://go.microsoft.com/?linkid=9805121)。
+- 您可以使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 至[將資料庫部署為 web 應用程式專案的一部分](https://msdn.microsoft.com/library/dd465343.aspx)。 不過，這個方法是如果您想要部署資料庫專案，而不是只複寫到目的地伺服器上現有的本機資料庫更加複雜。 您可以設定 Web Deploy 才能執行 SQL 部署指令碼的資料庫專案所產生，但若要這樣做，您必須建立您的 web 應用程式專案的自訂 WPP 目標檔案。 這會將大量的複雜度加入部署程序。 此外，Web Deploy 不直接支援累加式更新至現有的資料庫。 如需這種方法的詳細資訊，請參閱[擴充封裝資料庫專案將 Web 發行管線部署 SQL 檔案](https://go.microsoft.com/?linkid=9805121)。
 - 您可以使用 VSDBCMD 公用程式來部署資料庫，使用的資料庫結構描述或部署資訊清單。 您可以呼叫 VSDBCMD.exe 從 MSBuild 目標，這可讓您將資料庫發行更大、 已編寫指令碼的部署程序的一部分。 您可以覆寫您.sqlcmdvars 檔案與許多其他的資料庫內容從 VSDBCMD 命令，可讓您自訂您的部署不同環境，而不需要建立多個組建組態中的變數。 VSDBCMD 提供差異化功能，這表示它會變更只需要對齊資料庫結構描述的目的地資料庫。 VSDBCMD 也提供各種不同的命令列選項，可讓您在部署程序更細微的控制。
 
 從本概觀中，您可以發現，使用 MSBuild VSDBCMD 最適合典型的企業部署案例的方法：
 
 |  | Visual Studio 2010 | Web Deploy 2.0 | VSDBCMD.exe |
 | --- | --- | --- | --- |
-| 支援遠端部署嗎？ | 是 | 是 | 是 |
-| 支援累加式更新嗎？ | 是 | 否 | 是 |
-| 支援預先/部署後指令碼嗎？ | 是 | 是 | 是 |
-| 支援多重環境部署嗎？ | 有限 | 有限 | 是 |
-| 支援已編寫指令碼的部署嗎？ | 有限 | 是 | 是 |
+| 支援遠端部署嗎？ | [是] | 是 | [是] |
+| 支援累加式更新嗎？ | [是] | 否 | [是] |
+| 支援預先/部署後指令碼嗎？ | [是] | 是 | [是] |
+| 支援多重環境部署嗎？ | 有限 | 有限 | [是] |
+| 支援已編寫指令碼的部署嗎？ | 有限 | [是] | [是] |
 
 本主題的其餘部分說明如何使用部署資料庫專案的 MSBuild VSDBCMD 使用。
 
@@ -97,7 +97,7 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 - **/Dd+** (或**/DeployToDatabase+**) 參數表示您想要建立部署，並將它部署至目標環境。 如果您指定**/dd-**，或省略這個參數，VSDBCMD 將會產生部署指令碼，但不是將它部署至目標環境。 此參數通常是混淆的來源，並且會在下一節中詳細說明。
 - **/指令碼**(或**/DeploymentScriptFile**) 參數指定您想要用來產生部署指令碼。 此值不會影響部署程序。
 
-如需有關 VSDBCMD 的詳細資訊，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/en-us/library/dd193283.aspx)和[如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/en-us/library/dd193258.aspx)。
+如需有關 VSDBCMD 的詳細資訊，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)和[如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/library/dd193258.aspx)。
 
 如需如何使用 VSDBCMD 從 MSBuild 專案檔的範例，請參閱[瞭解建置程序](understanding-the-build-process.md)。 如需如何設定資料庫部署設定多個環境的範例，請參閱[自訂資料庫部署多個環境](../advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments.md)。
 
@@ -145,10 +145,10 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 
 MSDN 上的這些主題會提供更廣泛的指導方針和 Visual Studio 資料庫專案的背景資訊和資料庫部署程序：
 
-- [Visual Studio 2010 SQL Server 資料庫專案](https://msdn.microsoft.com/en-us/library/ff678491.aspx)
-- [管理資料庫變更](https://msdn.microsoft.com/en-us/library/aa833404.aspx)
-- [如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/en-us/library/dd193258.aspx)
-- [資料庫建置和部署的概觀](https://msdn.microsoft.com/en-us/library/aa833165.aspx)
+- [Visual Studio 2010 SQL Server 資料庫專案](https://msdn.microsoft.com/library/ff678491.aspx)
+- [管理資料庫變更](https://msdn.microsoft.com/library/aa833404.aspx)
+- [如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/library/dd193258.aspx)
+- [資料庫建置和部署的概觀](https://msdn.microsoft.com/library/aa833165.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](deploying-web-packages.md)

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fa0a0f1f80a407f8f68d5fe081b5b144e2945700
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ce0daabf8d68614c530115cc37b4f088f75dba4d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching-data-with-the-objectdatasource-vb"></a>快取資料與 ObjectDataSource (VB)
 ====================
@@ -44,7 +44,7 @@ ASP.NET 2.0 提供各種不同的快取選項。 整個網頁或使用者控制�
 
 快取中的項目可能是指定的收回條件，不論*清除*之前符合時間或相依性為基礎的準則。 如果快取已達到其容量，就必須移除現有的項目才能加入新的。 因此，當以程式設計方式使用快取的資料可 s 重要，您一律假設快取的資料可能不存在。 我們將在下一個教學課程中，以程式設計方式存取資料從快取時要使用的模式*架構中的快取資料*。
 
-快取提供經濟的方式並從應用程式效能。 做為[Steven Smith](http://aspadvice.com/blogs/ssmith/) articulates 在他的文章[ASP.NET 快取： 技巧和最佳作法](https://msdn.microsoft.com/en-us/library/aa478965.aspx):
+快取提供經濟的方式並從應用程式效能。 做為[Steven Smith](http://aspadvice.com/blogs/ssmith/) articulates 在他的文章[ASP.NET 快取： 技巧和最佳作法](https://msdn.microsoft.com/library/aa478965.aspx):
 
 快取可以取得良好足夠效能而不需要很長的時間和分析的好方法。 記憶體便宜，因此您可以取得您需要的快取輸出，而不需花費一天或週，嘗試最佳化您的程式碼或資料庫 30 秒的效能，如果不要快取方案 （假設為第二個舊-30 資料為 [確定]），且將上。 最後，不良的設計將可能跟上，因此的課程中，您應該試著正確地設計您的應用程式。 但如果您只需要取得良好不足，無法在目前的效能，快取可以是一個絕佳 [方法]，購買您有時間重構您的應用程式，在日後當您有時間，若要這樣做。
 
@@ -175,10 +175,10 @@ ObjectDataSource 資料，架構就會要求每次標籤會顯示在文字 Selec
 
 只需要設定一些屬性，ObjectDataSource 可以設定為自動快取的 ASP.NET 資料快取其擷取的資料。 下列清單摘要說明 ObjectDataSource 的快取相關屬性：
 
-- [EnableCaching](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx)必須設為`True`啟用快取。 預設為 `False`。
-- [CacheDuration](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx)的時間 （秒），快取資料量。 預設值為 0。 ObjectDataSource 將只能快取資料如果`EnableCaching`是`True`和`CacheDuration`設定的值小於或等於零。
-- [CacheExpirationPolicy](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx)可設為`Absolute`或`Sliding`。 如果`Absolute`，ObjectDataSource 快取其擷取的資料，以`CacheDuration`秒; 如果`Sliding`的資料過期未經存取的之後，才`CacheDuration`秒。 預設為 `Absolute`。
-- [CacheKeyDependency](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) ObjectDataSource s 快取項目與現有的快取相依性中使用這個屬性。 ObjectDataSource 的資料項目可以提前收回從快取設定為已過期及其相關聯`CacheKeyDependency`。 這個屬性通常用於關聯 ObjectDataSource s 快取中的 SQL 快取相依性、 主題我們將探討未來[使用 SQL 快取相依性](using-sql-cache-dependencies-vb.md)教學課程。
+- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx)必須設為`True`啟用快取。 預設值為 `False`。
+- [CacheDuration](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx)的時間 （秒），快取資料量。 預設值為 0。 ObjectDataSource 將只能快取資料如果`EnableCaching`是`True`和`CacheDuration`設定的值小於或等於零。
+- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx)可設為`Absolute`或`Sliding`。 如果`Absolute`，ObjectDataSource 快取其擷取的資料，以`CacheDuration`秒; 如果`Sliding`的資料過期未經存取的之後，才`CacheDuration`秒。 預設值為 `Absolute`。
+- [CacheKeyDependency](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx) ObjectDataSource s 快取項目與現有的快取相依性中使用這個屬性。 ObjectDataSource 的資料項目可以提前收回從快取設定為已過期及其相關聯`CacheKeyDependency`。 這個屬性通常用於關聯 ObjectDataSource s 快取中的 SQL 快取相依性、 主題我們將探討未來[使用 SQL 快取相依性](using-sql-cache-dependencies-vb.md)教學課程。
 
 可讓設定 s `ProductsDataSource` ObjectDataSource 絕對標尺上 30 秒快取其資料。 設定 ObjectDataSource s`EnableCaching`屬性`True`及其`CacheDuration`屬性設為 30。 保留`CacheExpirationPolicy`屬性設定為其預設`Absolute`。
 
@@ -206,7 +206,7 @@ ObjectDataSource 資料，架構就會要求每次標籤會顯示在文字 Selec
 
 每個 ASP.NET 應用程式有自己的資料快取執行個體上所有頁面和訪客共用該 s。 這表示 objectdatasource 資料快取中儲存的資料同樣橫跨所有使用者瀏覽的頁面。 若要確認這種情況，請開啟`ObjectDataSource.aspx`瀏覽器中的。 當第一次瀏覽頁面，選取引發事件會以文字 （假設先前的測試加入至快取的資料，現在已收回）。 開啟第二個瀏覽器執行個體，然後複製並貼上第二個從第一個瀏覽器執行個體的 URL。 第二個瀏覽器執行個體中選取事件引發文字不會顯示因為它多個使用相同快取的資料與第一個。
 
-ObjectDataSource 插入時擷取的資料快取，會使用快取索引鍵的值，其中包含：`CacheDuration`和`CacheExpirationPolicy`屬性值; ObjectDataSource，指定正在使用的基礎商務物件的類型透過[`TypeName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.typename.aspx)(`ProductsBLL`，在此範例中); 的值`SelectMethod`屬性的名稱和值的參數中`SelectParameters`集合和其值`StartRowIndex`和`MaximumRows`屬性實作時，使用[自訂分頁](../paging-and-sorting/paging-and-sorting-report-data-vb.md)。
+ObjectDataSource 插入時擷取的資料快取，會使用快取索引鍵的值，其中包含：`CacheDuration`和`CacheExpirationPolicy`屬性值; ObjectDataSource，指定正在使用的基礎商務物件的類型透過[`TypeName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.typename.aspx)(`ProductsBLL`，在此範例中); 的值`SelectMethod`屬性的名稱和值的參數中`SelectParameters`集合和其值`StartRowIndex`和`MaximumRows`屬性實作時，使用[自訂分頁](../paging-and-sorting/paging-and-sorting-report-data-vb.md)。
 
 製作的快取索引鍵值為這些屬性的組合可確保唯一快取項目，這些值會變更。 例如，在過去的教學課程中我們我們探討了使用`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`，它會傳回指定分類的所有產品。 一位使用者可能會頁面並檢視飲料具有`CategoryID`為 1。 如果 ObjectDataSource 快取而不考慮其結果`SelectParameters`值，則當其他使用者頁面以檢視 「 調味品 」 飲料產品時快取中，d 他們會看到快取的飲料產品，而不是 「 調味品 」。 改變這些屬性的快取索引鍵，其中包含的值`SelectParameters`，ObjectDataSource 維護 beverages 和 「 調味品 」 的不同的快取項目。
 
@@ -230,8 +230,8 @@ ObjectDataSource 只會快取資料快取其值，因為我們無法以程式設
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 快取： 技巧和最佳作法](https://msdn.microsoft.com/en-us/library/aa478965.aspx)
-- [.NET Framework 應用程式的快取架構指南](https://msdn.microsoft.com/en-us/library/ee817645.aspx)
+- [ASP.NET 快取： 技巧和最佳作法](https://msdn.microsoft.com/library/aa478965.aspx)
+- [.NET Framework 應用程式的快取架構指南](https://msdn.microsoft.com/library/ee817645.aspx)
 - [ASP.NET 2.0 中的輸出快取](http://aspnet.4guysfromrolla.com/articles/121306-1.aspx)
 
 ## <a name="about-the-author"></a>關於作者

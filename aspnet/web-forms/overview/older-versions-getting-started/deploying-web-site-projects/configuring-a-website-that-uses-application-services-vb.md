@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7fb212638765589b998c4eca8265dfeb2910082f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5f908eb6c6b2d18c6c41870a38bb618737949b0a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-a-website-that-uses-application-services-vb"></a>設定網站使用應用程式服務 (VB)
 ====================
@@ -35,7 +35,7 @@ ASP.NET 2.0 版導入了一系列的*應用程式服務*，.NET Framework 的一
 - **角色**-的 API，用於使用者分類成群組。
 - **設定檔**-的應用程式開發介面來儲存自訂的使用者特定的內容。
 - **站台對應**-的 API，用於定義階層，然後透過導覽控制項，例如功能表和階層連結列會顯示表單中的站台 s 邏輯結構。
-- **個人化**-的 API，用於維護自訂喜好設定，最常搭配[ *WebParts*](https://msdn.microsoft.com/en-us/library/e0s9t4ck.aspx)。
+- **個人化**-的 API，用於維護自訂喜好設定，最常搭配[ *WebParts*](https://msdn.microsoft.com/library/e0s9t4ck.aspx)。
 - **健全狀況監視**-的 API，用於監視效能、 安全性、 錯誤和執行 web 應用程式的其他系統健康情況計量。
   
 
@@ -71,7 +71,7 @@ ASP.NET 2.0 版導入了一系列的*應用程式服務*，.NET Framework 的一
 
 可以，且通常是理想的做法，來建立應用程式服務在網站 s 應用程式特定資料的儲存位置的相同資料庫中資料庫物件。 .NET Framework 隨附於名為的工具`aspnet_regsql.exe`指定的資料庫上安裝的資料庫物件。 我已事先並使用此工具，這些將物件加入至`Reviews.mdf`資料庫`App_Data`資料夾 （開發資料庫）。 我們會看到如何使用這項工具稍後在本教學課程中，當我們將這些物件加入至實際執行資料庫。
 
-如果您加入應用程式服務資料庫的資料庫物件以外`ASPNETDB`必須將自訂`SqlMembershipProvider`和`SqlRoleProvider`提供者類別的組態，使其使用適當的資料庫。 若要自訂成員資格提供者新增[ *&lt;成員資格&gt;元素*](https://msdn.microsoft.com/en-us/library/1b9hw62f.aspx)內`<system.web>`一節中`Web.config`; 使用[ *&lt;roleManager&gt;元素*](https://msdn.microsoft.com/en-us/library/ms164660.aspx)設定角色提供者。 下列程式碼片段取自書籍檢閱應用程式的`Web.config`和顯示的成員資格和角色應用程式開發介面的設定。 注意兩者註冊新的提供者-`ReviewMembership`和`ReviewRole`-使用`SqlMembershipProvider`和`SqlRoleProvider`提供者，分別。
+如果您加入應用程式服務資料庫的資料庫物件以外`ASPNETDB`必須將自訂`SqlMembershipProvider`和`SqlRoleProvider`提供者類別的組態，使其使用適當的資料庫。 若要自訂成員資格提供者新增[ *&lt;成員資格&gt;元素*](https://msdn.microsoft.com/library/1b9hw62f.aspx)內`<system.web>`一節中`Web.config`; 使用[ *&lt;roleManager&gt;元素*](https://msdn.microsoft.com/library/ms164660.aspx)設定角色提供者。 下列程式碼片段取自書籍檢閱應用程式的`Web.config`和顯示的成員資格和角色應用程式開發介面的設定。 注意兩者註冊新的提供者-`ReviewMembership`和`ReviewRole`-使用`SqlMembershipProvider`和`SqlRoleProvider`提供者，分別。
 
 [!code-xml[Main](configuring-a-website-that-uses-application-services-vb/samples/sample1.xml)]
 
@@ -94,7 +94,7 @@ ASP.NET 的 URL 授權功能以及如何使用它來拼出授權規則的使用�
 
 部署使用應用程式服務，如果您想要複寫到生產環境的開發環境中建立的使用者帳戶的網站時，可能會發生另一項挑戰。 根據成員資格和角色的組態，則可能即使您已成功複製到實際執行資料庫開發環境中所建立的使用者帳戶，這些使用者無法登入 web 應用程式在生產環境中。 我們會查看此問題的原因，並討論如何避免這種情況。
 
-ASP.NET 隨附 nice [*網站管理工具 (WSAT)* ](https://msdn.microsoft.com/en-us/library/yy40ytx0.aspx) ，可以從 Visual Studio 啟動，並讓使用者透過以 web 為基礎的管理帳戶、 角色和授權規則介面。 不幸的是，WSAT 僅適用於本機網站，亦即無法使用遠端管理使用者帳戶、 角色和 web 應用程式在生產環境中的授權規則。 我們會探討不同的方式來實作您的生產網站 WSAT 類似的行為。
+ASP.NET 隨附 nice [*網站管理工具 (WSAT)* ](https://msdn.microsoft.com/library/yy40ytx0.aspx) ，可以從 Visual Studio 啟動，並讓使用者透過以 web 為基礎的管理帳戶、 角色和授權規則介面。 不幸的是，WSAT 僅適用於本機網站，亦即無法使用遠端管理使用者帳戶、 角色和 web 應用程式在生產環境中的授權規則。 我們會探討不同的方式來實作您的生產網站 WSAT 類似的行為。
 
 ### <a name="adding-the-database-objects-using-aspnetregsqlexe"></a>加入的資料庫物件使用 aspnet\_regsql.exe
 
@@ -192,13 +192,13 @@ ASP.NET 網站管理工具 (WSAT) 可讓您輕鬆地建立及管理使用者帳�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [*ASP.NET SQL Server 註冊工具 (aspnet_regsql.exe)*](https://msdn.microsoft.com/en-us/library/ms229862.aspx)
-- [*建立適用於 SQL Server 的應用程式服務資料庫*](https://msdn.microsoft.com/en-us/library/x28wfk74.aspx)
+- [*ASP.NET SQL Server 註冊工具 (aspnet_regsql.exe)*](https://msdn.microsoft.com/library/ms229862.aspx)
+- [*建立適用於 SQL Server 的應用程式服務資料庫*](https://msdn.microsoft.com/library/x28wfk74.aspx)
 - [*在 SQL Server 中建立成員資格結構描述*](../../older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md)
 - [*檢查 ASP.NET s 成員資格、 角色和設定檔*](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
 - [*復原您的網站管理工具*](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
 - [*網站安全性教學課程*](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
-- [*網站管理工具概觀*](https://msdn.microsoft.com/en-us/library/yy40ytx0.aspx)
+- [*網站管理工具概觀*](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](configuring-the-production-web-application-to-use-the-production-database-vb.md)

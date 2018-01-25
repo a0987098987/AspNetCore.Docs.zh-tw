@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 1d066e4bab866a2195647f43aa886279fee941db
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 304c428b0d787e902f30c1989471c476f54d3b39
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-model"></a>加入模型
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 本節中您要加入一些類別，來管理資料庫中的影片。 這些類別會&quot;模型&quot;ASP.NET MVC 應用程式的一部分。
 
-您將使用的.NET Framework 資料存取技術稱為[Entity Framework](https://msdn.microsoft.com/en-us/library/bb399572(VS.110).aspx)來定義及使用這些模型類別。 呼叫開發架構 （通常稱為 EF） 的 Entity Framework 支援*Code First*。 程式碼第一次可讓您撰寫簡單的類別來建立模型物件。 (這些是也稱為 POCO 類別，從&quot;純舊 CLR 物件。&quot;)然後您可以立即從您的類別，可讓非常全新且更快速的開發工作流程所建立的資料庫。
+您將使用的.NET Framework 資料存取技術稱為[Entity Framework](https://msdn.microsoft.com/library/bb399572(VS.110).aspx)來定義及使用這些模型類別。 呼叫開發架構 （通常稱為 EF） 的 Entity Framework 支援*Code First*。 程式碼第一次可讓您撰寫簡單的類別來建立模型物件。 (這些是也稱為 POCO 類別，從&quot;純舊 CLR 物件。&quot;)然後您可以立即從您的類別，可讓非常全新且更快速的開發工作流程所建立的資料庫。
 
 ## <a name="adding-model-classes"></a>加入模型類別
 

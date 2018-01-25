@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: fecdd582918a61f3d01519c75d159f9c601c8223
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a28284e203904cc943e5e46b369e8a58ea5c820
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>連接恢復功能和命令攔截與 Entity Framework 中的 ASP.NET MVC 應用程式
 ====================
@@ -49,14 +49,14 @@ ms.lasthandoff: 11/10/2017
 
 您可以設定這些手動設定 Entity Framework 提供者支援的任何資料庫環境，但通常適用於使用 Windows Azure SQL Database 的線上應用程式的預設值已設定，並這些是您將實作 Contoso 大學應用程式的設定。
 
-您只需要啟用連接恢復功能是衍生自組件中建立類別[DbConfiguration](https://msdn.microsoft.com/en-us/data/jj680699.aspx)類別，並在該類別中設定 SQL Database*執行策略*，在 EF 是另一種說法*重試原則*。
+您只需要啟用連接恢復功能是衍生自組件中建立類別[DbConfiguration](https://msdn.microsoft.com/data/jj680699.aspx)類別，並在該類別中設定 SQL Database*執行策略*，在 EF 是另一種說法*重試原則*。
 
 1. 在 DAL 資料夾中，加入名為的類別檔案*SchoolConfiguration.cs*。
 2. 取代為下列程式碼中的範本程式碼：
 
     [!code-csharp[Main](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-    Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfiguration`。 您可以使用`DbConfiguration`類別來設定工作，否則您會在中執行的程式碼中*Web.config*檔案。 如需詳細資訊，請參閱[EntityFramework 程式碼為基礎的組態](https://msdn.microsoft.com/en-us/data/jj680699)。
+    Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfiguration`。 您可以使用`DbConfiguration`類別來設定工作，否則您會在中執行的程式碼中*Web.config*檔案。 如需詳細資訊，請參閱[EntityFramework 程式碼為基礎的組態](https://msdn.microsoft.com/data/jj680699)。
 3. 在*StudentController.cs*，新增`using`陳述式`System.Data.Entity.Infrastructure`。
 
     [!code-csharp[Main](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
@@ -66,13 +66,13 @@ ms.lasthandoff: 11/10/2017
 
     您已使用`DataException`嘗試識別可能是暫時性，以便將提供好記的 「 重試 」 訊息的錯誤。 但是，現在您已開啟重試原則，可能是暫時性的唯一錯誤將已經已經嘗試過且失敗數次並傳回實際的例外狀況會包裝在`RetryLimitExceededException`例外狀況。
 
-如需詳細資訊，請參閱[Entity Framework 連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/en-us/data/dn456835)。
+如需詳細資訊，請參閱[Entity Framework 連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/data/dn456835)。
 
 ## <a name="enable-command-interception"></a>啟用命令攔截
 
 既然您已開啟重試原則，您要如何測試以確認它的運作正常？ 不是很容易就能強制暫時性錯誤發生，特別是您要在本機執行，且很難整合自動化的單元測試實際的暫時性錯誤。 若要測試連接恢復功能，您需要能夠攔截 Entity Framework 會將傳送至 SQL Server 的查詢，並取代為通常屬於暫時性的例外狀況類型的 SQL Server 回應。
 
-您也可以使用查詢攔截，以便實作雲端應用程式的最佳作法：[記錄延遲和成功或失敗的所有外部服務呼叫](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log)等資料庫服務。 提供 EF6[專用記錄 API](https://msdn.microsoft.com/en-us/data/dn469464) ，可以讓您更輕鬆地進行記錄，但在本教學課程的這一節中，您將學習如何使用 Entity Framework[攔截功能](https://msdn.microsoft.com/en-us/data/dn469464)直接，同時用於記錄和模擬暫時性錯誤。
+您也可以使用查詢攔截，以便實作雲端應用程式的最佳作法：[記錄延遲和成功或失敗的所有外部服務呼叫](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log)等資料庫服務。 提供 EF6[專用記錄 API](https://msdn.microsoft.com/data/dn469464) ，可以讓您更輕鬆地進行記錄，但在本教學課程的這一節中，您將學習如何使用 Entity Framework[攔截功能](https://msdn.microsoft.com/data/dn469464)直接，同時用於記錄和模擬暫時性錯誤。
 
 ### <a name="create-a-logging-interface-and-class"></a>建立記錄介面和類別
 

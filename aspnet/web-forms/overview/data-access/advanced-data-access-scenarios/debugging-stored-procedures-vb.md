@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e74d368b1f9eec2177a528a6b09c599d6a307b74
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad09847d828d02019a72e3022d035a8fbe921568
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="debugging-stored-procedures-vb"></a>偵錯預存程序 (VB)
 ====================
@@ -39,7 +39,7 @@ Visual Studio 提供豐富的偵錯經驗。 有幾個按鍵或按下滑鼠，�
 
 ## <a name="sql-server-debugging-concepts"></a>SQL Server 偵錯概念
 
-Microsoft SQL Server 2005 設計來提供與整合[Common Language Runtime (CLR)](https://msdn.microsoft.com/en-us/netframework/aa497266.aspx)，也就是所有的.NET 組件所使用的執行階段。 因此，SQL Server 2005 支援 managed 的資料庫物件。 也就是說，您可以建立資料庫物件，例如預存程序和使用者定義函數 (Udf) 為 Visual Basic 類別中的方法。 這可讓這些預存程序和 Udf 利用.NET Framework 中，以及您自己自訂的類別的功能。 當然，SQL Server 2005 也會提供支援的 T-SQL 和資料庫物件。
+Microsoft SQL Server 2005 設計來提供與整合[Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx)，也就是所有的.NET 組件所使用的執行階段。 因此，SQL Server 2005 支援 managed 的資料庫物件。 也就是說，您可以建立資料庫物件，例如預存程序和使用者定義函數 (Udf) 為 Visual Basic 類別中的方法。 這可讓這些預存程序和 Udf 利用.NET Framework 中，以及您自己自訂的類別的功能。 當然，SQL Server 2005 也會提供支援的 T-SQL 和資料庫物件。
 
 SQL Server 2005 提供 T-SQL 和 managed 的資料庫物件偵錯的支援。 不過，這些物件只可透過 Visual Studio 2005 Professional 和小組的系統版本偵錯。 在本教學課程中，我們將檢查偵錯的 T-SQL 和資料庫物件。 後續的教學課程會查看偵錯 managed 的資料庫物件。
 
@@ -53,7 +53,7 @@ Visual Studio 可以偵錯在本機和遠端的 SQL Server 執行個體上的預
 
 如果您使用本機的 SQL Server 執行個體，您可以從步驟 1 開始，逐步進行本教學課程結尾。 如果您使用遠端 SQL Server 執行個體，不過，您將必須先確定當您偵錯會記錄到遠端執行個體上有 SQL Server 登入的 Windows 使用者帳戶在開發電腦。 Moveover，此資料庫登入，用於從執行的 ASP.NET 應用程式連接到資料庫的資料庫登入必須是成員的`sysadmin`角色。 如需有關設定 Visual Studio 和 SQL Server 遠端執行個體進行偵錯本教學課程結尾處中查看上遠端執行個體 > 一節 T-SQL 偵錯資料庫物件。
 
-最後，了解偵錯支援 T-SQL 的資料庫物件不為做為偵錯的.NET 應用程式支援豐富的功能。 例如，中斷點條件和篩選條件不支援，偵錯視窗的子集只可以使用，您無法使用 [編輯後繼續]、 即時運算視窗呈現毫無用處，等等。 請參閱[偵錯工具命令和功能的限制](https://msdn.microsoft.com/en-us/library/ms165035(VS.80).aspx)如需詳細資訊。
+最後，了解偵錯支援 T-SQL 的資料庫物件不為做為偵錯的.NET 應用程式支援豐富的功能。 例如，中斷點條件和篩選條件不支援，偵錯視窗的子集只可以使用，您無法使用 [編輯後繼續]、 即時運算視窗呈現毫無用處，等等。 請參閱[偵錯工具命令和功能的限制](https://msdn.microsoft.com/library/ms165035(VS.80).aspx)如需詳細資訊。
 
 ## <a name="step-1-directly-stepping-into-a-stored-procedure"></a>步驟 1： 直接逐步執行預存程序
 
@@ -172,10 +172,10 @@ Visual Studio 輕鬆地直接偵錯資料庫物件。 將 s 看看如何使用�
 
 [!code-console[Main](debugging-stored-procedures-vb/samples/sample2.cmd)]
 
-如需這個程序的更詳細說明，請參閱[William R Vaughn](http://betav.com/BLOG/billva/) s *（英文) s Visual Studio 和 SQL Server，第七個 Edition 指引*以及[How To： 設定 SQL Server 權限偵錯](https://msdn.microsoft.com/en-us/library/w1bhybwz(VS.80).aspx)。
+如需這個程序的更詳細說明，請參閱[William R Vaughn](http://betav.com/BLOG/billva/) s *（英文) s Visual Studio 和 SQL Server，第七個 Edition 指引*以及[How To： 設定 SQL Server 權限偵錯](https://msdn.microsoft.com/library/w1bhybwz(VS.80).aspx)。
 
 > [!NOTE]
-> 如果您在開發電腦正在執行 Windows XP Service Pack 2，您必須設定網際網路連線防火牆，允許遠端偵錯。 [如何以： 啟用 SQL Server 2005 偵錯](https://msdn.microsoft.com/en-us/library/s0fk6z6e(VS.80).aspx)文章附註這牽涉到兩個步驟: （a） 在 Visual Studio 主機電腦上，您必須加入`Devenv.exe`例外狀況清單並開啟 TCP 135 通訊埠，且 （b） 上遠端 (SQL) 電腦中，您必須開啟TCP 135 通訊埠及新增`sqlservr.exe`至例外清單。 如果您的網域原則要求透過 IPSec 完成網路通訊，您必須開啟 UDP 4500 和 UDP 500 的連接埠。
+> 如果您在開發電腦正在執行 Windows XP Service Pack 2，您必須設定網際網路連線防火牆，允許遠端偵錯。 [如何以： 啟用 SQL Server 2005 偵錯](https://msdn.microsoft.com/library/s0fk6z6e(VS.80).aspx)文章附註這牽涉到兩個步驟: （a） 在 Visual Studio 主機電腦上，您必須加入`Devenv.exe`例外狀況清單並開啟 TCP 135 通訊埠，且 （b） 上遠端 (SQL) 電腦中，您必須開啟TCP 135 通訊埠及新增`sqlservr.exe`至例外清單。 如果您的網域原則要求透過 IPSec 完成網路通訊，您必須開啟 UDP 4500 和 UDP 500 的連接埠。
 
 
 ## <a name="summary"></a>總結

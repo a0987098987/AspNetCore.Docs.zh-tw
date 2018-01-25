@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: f0d465b363652c691c203d608f2cb9d139e72fed
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b3640c94a8ae9ede330c0fe6a392acb5843cb65c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>單一登入 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -31,12 +31,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="introduction-to-azure-ad"></a>Azure AD 簡介
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/)提供[Active Directory](https://msdn.microsoft.com/en-us/library/windows/desktop/aa746492.aspx)雲端中。 主要功能包括下列各項：
+[Azure AD](https://docs.microsoft.com/azure/active-directory/)提供[Active Directory](https://msdn.microsoft.com/library/windows/desktop/aa746492.aspx)雲端中。 主要功能包括下列各項：
 
 - 它會與內部部署 Active Directory 整合。
 - 它可讓單一登入與您的應用程式。
 - 它支援開放標準，例如[SAML](http://en.wikipedia.org/wiki/SAML_2.0)， [Ws-fed](http://en.wikipedia.org/wiki/WS-Federation)，和[OAuth 2.0](http://oauth.net/2/)。
-- 它支援企業[Graph REST API](https://msdn.microsoft.com/en-us/library/hh974476.aspx)。
+- 它支援企業[Graph REST API](https://msdn.microsoft.com/library/hh974476.aspx)。
 
 假設您有內部部署 Windows Server Active Directory 環境您用來啟用登入內部網路應用程式的員工：
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="set-up-an-azure-ad-tenant"></a>設定 Azure AD 租用戶
 
-呼叫 Azure AD 目錄的 Azure AD[租用戶](https://technet.microsoft.com/en-us/library/jj573650.aspx)，並設定租用戶會很簡單。 我們會告訴您如何它為了在 Azure 管理入口網站中說明的概念，但當然和其他入口網站的函式一樣您也可以執行它所使用的指令碼或管理應用程式開發介面。
+呼叫 Azure AD 目錄的 Azure AD[租用戶](https://technet.microsoft.com/library/jj573650.aspx)，並設定租用戶會很簡單。 我們會告訴您如何它為了在 Azure 管理入口網站中說明的概念，但當然和其他入口網站的函式一樣您也可以執行它所使用的指令碼或管理應用程式開發介面。
 
 在管理入口網站中按一下 [Active Directory] 索引標籤。
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/10/2017
 
 ![WAAD 同步作業工具組態精靈](single-sign-on/_static/image17.png)
 
-您可以在雲端中儲存密碼雜湊是單向的雜湊。實際的密碼永遠不會儲存在 Azure AD 中。 如果您決定對雜湊儲存在雲端中，您必須使用[Active Directory Federation Services](https://technet.microsoft.com/en-us/library/hh831502.aspx) (ADFS)。 另外還有[時，要考量的其他因素選擇是否使用 ADFS](https://technet.microsoft.com/en-us/library/jj573653.aspx)。 ADFS 選項需要一些額外的設定步驟。
+您可以在雲端中儲存密碼雜湊是單向的雜湊。實際的密碼永遠不會儲存在 Azure AD 中。 如果您決定對雜湊儲存在雲端中，您必須使用[Active Directory Federation Services](https://technet.microsoft.com/library/hh831502.aspx) (ADFS)。 另外還有[時，要考量的其他因素選擇是否使用 ADFS](https://technet.microsoft.com/library/jj573653.aspx)。 ADFS 選項需要一些額外的設定步驟。
 
 如果您選擇將雜湊儲存在雲端中，您完成時，工具將會啟動同步處理目錄，當您按一下**下一步**。
 
@@ -156,7 +156,7 @@ Visual Studio 可讓您輕鬆建立使用 Azure AD 進行單一登入，應用�
 
 ![設定驗證對話方塊](single-sign-on/_static/image24.png)
 
-您也可以讓應用程式讀取或讀取/寫入目錄資料的權限。 如果您這樣做，可以使用[Azure Graph REST API](https://msdn.microsoft.com/en-us/library/windowsazure/hh974476.aspx)查閱使用者的電話號碼，找出其是否在辦公室，上次登入等。
+您也可以讓應用程式讀取或讀取/寫入目錄資料的權限。 如果您這樣做，可以使用[Azure Graph REST API](https://msdn.microsoft.com/library/windowsazure/hh974476.aspx)查閱使用者的電話號碼，找出其是否在辦公室，上次登入等。
 
 這就是您必須執行的 Visual Studio 會要求認證的 Azure AD 租用戶系統管理員，並接著設定您的專案和 Azure AD 租用戶的新應用程式。
 
@@ -186,7 +186,7 @@ Visual Studio 可讓您輕鬆建立使用 Azure AD 進行單一登入，應用�
 - [Azure Active Directory 文件](https://docs.microsoft.com/azure/active-directory/)。 如需 windowsazure.com 網站上的 Azure AD 文件入口網站頁面。 如需逐步教學課程，請參閱**開發**> 一節。
 - [Azure Multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)。 如需有關在 Azure 中的多因素驗證的文件入口網站頁面。
 - [組織帳戶的驗證選項](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#orgauthoptions)。 在 Visual Studio 2013 的 [新增專案] 對話方塊中的 Azure AD 驗證選項的說明。
-- [Microsoft Patterns and Practices-同盟身分識別模式](https://msdn.microsoft.com/en-us/library/dn589790.aspx)。
+- [Microsoft Patterns and Practices-同盟身分識別模式](https://msdn.microsoft.com/library/dn589790.aspx)。
 - [如何： 安裝 Azure Active Directory 同步作業工具](https://social.technet.microsoft.com/wiki/contents/articles/19098.howto-install-the-windows-azure-active-directory-sync-tool-now-with-pictures.aspx)。
 - [Active Directory Federation Services 2.0 內容地圖](https://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx)。 ADFS 2.0 的相關文件的連結。
 - [在 Windows Azure AD 應用程式中的角色型和 ACL 型授權](https://code.msdn.microsoft.com/Role-Based-and-ACL-Based-86ad71a1)。 範例應用程式。

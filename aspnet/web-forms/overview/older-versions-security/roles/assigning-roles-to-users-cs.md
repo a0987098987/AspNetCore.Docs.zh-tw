@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 752882b16fe80cc99c9f333bcc2067e677e6670b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 15d2b427e6fccfc82eab535200ba6878ab41b72e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="assigning-roles-to-users-c"></a>將角色指派給使用者 (C#)
 ====================
@@ -81,13 +81,13 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 
 [!code-csharp[Main](assigning-roles-to-users-cs/samples/sample5.cs)]
 
-`BindUsersToUserList`方法會擷取所有使用者帳戶透過在系統中[`Membership.GetAllUsers`方法](https://msdn.microsoft.com/en-us/library/dy8swhya.aspx)。 這會傳回[`MembershipUserCollection`物件](https://msdn.microsoft.com/en-us/library/system.web.security.membershipusercollection.aspx)，這是集合的[`MembershipUser`執行個體](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx)。 此集合則繫結到`UserList`DropDownList。 `MembershipUser`執行個體的集合包含的各種屬性，如該結構`UserName`， `Email`， `CreationDate`，和`IsOnline`。 若要指示 DropDownList 以顯示的值`UserName`屬性，請確認`UserList`DropDownList 的`DataTextField`和`DataValueField`內容已設定為"UserName"。
+`BindUsersToUserList`方法會擷取所有使用者帳戶透過在系統中[`Membership.GetAllUsers`方法](https://msdn.microsoft.com/library/dy8swhya.aspx)。 這會傳回[`MembershipUserCollection`物件](https://msdn.microsoft.com/library/system.web.security.membershipusercollection.aspx)，這是集合的[`MembershipUser`執行個體](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx)。 此集合則繫結到`UserList`DropDownList。 `MembershipUser`執行個體的集合包含的各種屬性，如該結構`UserName`， `Email`， `CreationDate`，和`IsOnline`。 若要指示 DropDownList 以顯示的值`UserName`屬性，請確認`UserList`DropDownList 的`DataTextField`和`DataValueField`內容已設定為"UserName"。
 
 > [!NOTE]
 > `Membership.GetAllUsers`方法有兩個多載： 一個不接受任何輸入的參數並傳回所有使用者，另一個接受頁面索引和頁面大小的整數值，並傳回使用者的指定的子集。 大量的可分頁的使用者介面項目中顯示的使用者帳戶時，第二個多載可用來更有效率地瀏覽使用者因為它會傳回只精確的使用者帳戶而非全部的子集。
 
 
-`BindRolesToList`方法會藉由呼叫啟動`Roles`類別的[`GetAllRoles`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getallroles.aspx)，它會傳回字串陣列，包含系統中的角色。 這個字串陣列，然後繫結至中繼器。
+`BindRolesToList`方法會藉由呼叫啟動`Roles`類別的[`GetAllRoles`方法](https://msdn.microsoft.com/library/system.web.security.roles.getallroles.aspx)，它會傳回字串陣列，包含系統中的角色。 這個字串陣列，然後繫結至中繼器。
 
 最後，我們需要先載入的頁面時，請呼叫這兩種方法。 將下列程式碼加入至 `Page_Load` 事件處理常式：
 
@@ -107,10 +107,10 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 
 [!code-csharp[Main](assigning-roles-to-users-cs/samples/sample7.cs)]
 
-上述程式碼一開始會判斷選取的使用者是誰。 然後它會使用角色類別的[`GetRolesForUser(userName)`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getrolesforuser.aspx)傳回指定之使用者的一組角色做為字串陣列。 接下來，會列舉中繼器的項目和每個項目`RoleCheckBox`核取方塊以程式設計方式所參考。 核取方塊才是它會對應至角色內含`selectedUsersRoles`字串陣列。
+上述程式碼一開始會判斷選取的使用者是誰。 然後它會使用角色類別的[`GetRolesForUser(userName)`方法](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx)傳回指定之使用者的一組角色做為字串陣列。 接下來，會列舉中繼器的項目和每個項目`RoleCheckBox`核取方塊以程式設計方式所參考。 核取方塊才是它會對應至角色內含`selectedUsersRoles`字串陣列。
 
 > [!NOTE]
-> `selectedUserRoles.Contains<string>(...)`語法不會編譯，如果您使用 ASP.NET 2.0 版。 `Contains<string>`方法屬於[LINQ 程式庫](http://en.wikipedia.org/wiki/Language_Integrated_Query)，這也是以 ASP.NET 3.5。 如果您仍在使用 ASP.NET 2.0 版中，使用[`Array.IndexOf<string>`方法](https://msdn.microsoft.com/en-us/library/eha9t187.aspx)改為。
+> `selectedUserRoles.Contains<string>(...)`語法不會編譯，如果您使用 ASP.NET 2.0 版。 `Contains<string>`方法屬於[LINQ 程式庫](http://en.wikipedia.org/wiki/Language_Integrated_Query)，這也是以 ASP.NET 3.5。 如果您仍在使用 ASP.NET 2.0 版中，使用[`Array.IndexOf<string>`方法](https://msdn.microsoft.com/library/eha9t187.aspx)改為。
 
 
 `CheckRolesForSelectedUser`方法需要在兩個情況下呼叫： 第一次載入頁面時，只要使用`UserList`DropDownList 的選取的索引已變更。 因此，呼叫這個方法從`Page_Load`事件處理常式 (呼叫之後`BindUsersToUserList`和`BindRolesToList`)。 此外，事件處理常式建立 DropDownList`SelectedIndexChanged`事件，並從該處呼叫這個方法。
@@ -129,7 +129,7 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 
 [!code-aspx[Main](assigning-roles-to-users-cs/samples/sample10.aspx)]
 
-我們最後一項工作是在完成`RoleCheckBox_CheckChanged`事件處理常式。 我們必須藉由參考引發事件，因為這個核取方塊執行個體告訴我們什麼角色已 checked 或 unchecked 透過核取方塊控制項開始其`Text`和`Checked`屬性。 使用所選使用者的使用者名稱以及此資訊，我們從新增或移除使用者透過角色`Roles`類別的[ `AddUserToRole` ](https://msdn.microsoft.com/en-us/library/system.web.security.roles.addusertorole.aspx)或[`RemoveUserFromRole`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.removeuserfromrole.aspx)。
+我們最後一項工作是在完成`RoleCheckBox_CheckChanged`事件處理常式。 我們必須藉由參考引發事件，因為這個核取方塊執行個體告訴我們什麼角色已 checked 或 unchecked 透過核取方塊控制項開始其`Text`和`Checked`屬性。 使用所選使用者的使用者名稱以及此資訊，我們從新增或移除使用者透過角色`Roles`類別的[ `AddUserToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertorole.aspx)或[`RemoveUserFromRole`方法](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromrole.aspx)。
 
 [!code-csharp[Main](assigning-roles-to-users-cs/samples/sample11.cs)]
 
@@ -181,7 +181,7 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 
 [!code-csharp[Main](assigning-roles-to-users-cs/samples/sample14.cs)]
 
-此方法會藉由取得從選取的角色啟動`RoleList`DropDownList。 然後它會使用[`Roles.GetUsersInRole(roleName)`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.getusersinrole.aspx)擷取屬於該角色之使用者的使用者名稱的字串陣列。 這個陣列則繫結到`RolesUserList`GridView。
+此方法會藉由取得從選取的角色啟動`RoleList`DropDownList。 然後它會使用[`Roles.GetUsersInRole(roleName)`方法](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx)擷取屬於該角色之使用者的使用者名稱的字串陣列。 這個陣列則繫結到`RolesUserList`GridView。
 
 需要在兩個情況下呼叫這個方法： 以及時一開始載入的頁面中選取的角色`RoleList`DropDownList 變更。 因此，更新`Page_Load`事件處理常式，讓這個方法會叫用呼叫之後`CheckRolesForSelectedUser`。 接下來，建立事件處理常式`RoleList`的`SelectedIndexChanged`事件，並太從該處，呼叫這個方法。
 
@@ -242,7 +242,7 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 中的程式碼的大部分`Click`事件處理常式會執行各種的驗證檢查。 它會確保訪客提供中的使用者名稱`UserNameToAddToRole`文字方塊中，使用者存在於系統中，而且它們已不屬於選取的角色。 如果其中任何一項檢查失敗，有適當錯誤訊息會顯示在`ActionStatus`和結束事件處理常式。 如果所有檢查都通過，要將使用者新增到透過角色`Roles.AddUserToRole`方法。 接下來，文字方塊的`Text`清除屬性、 重新整理 GridView 和`ActionStatus`標籤會顯示訊息，指出指定的使用者已成功加入到選取的角色。
 
 > [!NOTE]
-> 若要確保指定的使用者已經不隸屬於選取的角色，我們使用[`Roles.IsUserInRole(userName, roleName)`方法](https://msdn.microsoft.com/en-us/library/system.web.security.roles.isuserinrole.aspx)，它會傳回布林值，指出是否*userName* 隸屬*roleName*。 我們將使用中的，這個方法一次<a id="_msoanchor_2"> </a>[下一個教學課程](role-based-authorization-cs.md)當我們會審視角色為基礎的授權。
+> 若要確保指定的使用者已經不隸屬於選取的角色，我們使用[`Roles.IsUserInRole(userName, roleName)`方法](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx)，它會傳回布林值，指出是否*userName* 隸屬*roleName*。 我們將使用中的，這個方法一次<a id="_msoanchor_2"> </a>[下一個教學課程](role-based-authorization-cs.md)當我們會審視角色為基礎的授權。
 
 
 透過瀏覽器網頁並選取從的監督員角色`RoleList`DropDownList。 請輸入使用者名稱無效，您應該會看到訊息，說明使用者不存在系統中。
@@ -356,7 +356,7 @@ DropDownList 下方加入名為中繼器`UsersRoleList`。 此中繼器會列出
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 網站管理工具概觀](https://msdn.microsoft.com/en-us/library/ms228053.aspx)
+- [ASP.NET 網站管理工具概觀](https://msdn.microsoft.com/library/ms228053.aspx)
 - [正在檢查 ASP。網路的成員資格、 角色和設定檔](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
 - [復原您的網站管理工具](http://aspnet.4guysfromrolla.com/articles/052307-1.aspx)
 

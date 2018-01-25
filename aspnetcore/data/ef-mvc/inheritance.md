@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 756f1bbba73bd760f780d18c01597642dd1f7216
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a4ae696bdd114ab9c36d1218f753fa3d515f2300
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>繼承的 EF Core 與 ASP.NET Core MVC 教學課程 (9 / 10)
 
@@ -106,7 +106,7 @@ dotnet ef migrations add Inheritance
 
 * 由於學生資料列將不會有雇用日期，使 HireDate 可為 null。
 
-* 將暫存的欄位會用來更新指向學生的外部索引鍵。 當您複製到 [人員] 資料表的學生它們會取得新的主索引鍵值。
+* 將暫存的欄位會用來更新指向學生的外部索引鍵。 當您將學生複製到 [人員] 資料表，它們會取得新的主索引鍵值。
 
 * 從 Person 資料表學生資料表複製資料。 這會導致學生在指派新的主索引鍵值。
 

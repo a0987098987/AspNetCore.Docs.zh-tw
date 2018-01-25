@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: a66e2a80668dbf291b9cc34f205b546b72d92bcc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7c7dcb7903b0d0772acc560161ff39c6869c599a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-aspnet-identity"></a>ASP.NET 識別簡介
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="aspnet-membership"></a>ASP.NET 成員資格
 
-[ASP.NET 成員資格](https://msdn.microsoft.com/en-us/library/yh26yfzy(v=VS.100).aspx)用來解決常見 2005，涉及表單驗證，以及使用者名稱、 密碼及分析資料的 SQL Server 資料庫中的站台的成員資格需求。 目前沒有更廣泛陣列的 web 應用程式資料儲存選項，而且大部分的開發人員想要啟用其網站社交身分識別提供者用於驗證和授權功能。 ASP.NET 成員資格設計的限制進行這項轉換困難：
+[ASP.NET 成員資格](https://msdn.microsoft.com/library/yh26yfzy(v=VS.100).aspx)用來解決常見 2005，涉及表單驗證，以及使用者名稱、 密碼及分析資料的 SQL Server 資料庫中的站台的成員資格需求。 目前沒有更廣泛陣列的 web 應用程式資料儲存選項，而且大部分的開發人員想要啟用其網站社交身分識別提供者用於驗證和授權功能。 ASP.NET 成員資格設計的限制進行這項轉換困難：
 
 - 針對 SQL Server 資料庫結構描述而設計，您無法變更它。 您可以新增設定檔資訊，但其他的資料壓縮成不同的資料表，不容易存取透過任何方式除了透過設定檔提供者 API。
 - 提供者系統可讓您變更支援的資料存放區，但系統針對假設適用於關聯式資料庫設計。 您可以撰寫提供者來儲存非關聯式儲存體機制，例如 Azure 儲存體資料表中的成員資格資訊，但是您需要撰寫大量程式碼和許多來解決關聯式設計`System.NotImplementedException`例外狀況之不方法套用到 NoSQL 資料庫。
@@ -132,7 +132,7 @@ ASP.NET Identity 是使用下列程序來實作。 本文的目的是要讓您�
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample3.cs?highlight=5-6)]
 
- 在上方的反白顯示程式碼`SignInAsync`方法會產生[ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity.aspx)。 因為 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構就會需要應用程式，以產生使用者的 ClaimsIdentity。 身分識別的使用者，例如使用者所屬的角色的所有宣告資訊。 您也可以在這個階段中加入更多的使用者宣告。  
+ 在上方的反白顯示程式碼`SignInAsync`方法會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 因為 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構就會需要應用程式，以產生使用者的 ClaimsIdentity。 身分識別的使用者，例如使用者所屬的角色的所有宣告資訊。 您也可以在這個階段中加入更多的使用者宣告。  
   
  在 反白顯示下列程式碼`SignInAsync`方法登入使用者呼叫與 OWIN AuthenticationManager`SignIn`並傳入 ClaimsIdentity。  
 
@@ -142,7 +142,7 @@ ASP.NET Identity 是使用下列程序來實作。 本文的目的是要讓您�
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample5.cs?highlight=6)]
 
- 反白顯示程式碼顯示上述 OWIN`AuthenticationManager.SignOut`方法。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx) Web Form 中的模組。
+ 反白顯示程式碼顯示上述 OWIN`AuthenticationManager.SignOut`方法。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) Web Form 中的模組。
 
 ## <a name="components-of-aspnet-identity"></a>ASP.NET 識別的元件
 

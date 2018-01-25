@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/distributed
-ms.openlocfilehash: a00937e8c47e73fa8e29af883f44f6e1f4d4b1b4
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: a0af4887143f6ed37a1af982ec21a2ad5eae9515
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/29/2017
 
 ## <a name="what-is-a-distributed-cache"></a>什麼是分散式快取
 
-分散式快取由多個應用程式伺服器共用 (請參閱[快取的基本概念](memory.md#caching-basics))。 快取中的資訊不會儲存在個別 web 伺服器的記憶體和快取的資料可供所有的應用程式的伺服器。 這會提供數個優點：
+分散式快取由多個應用程式伺服器共用 (請參閱[快取的基本概念](memory.md#caching-basics))。 快取中的資訊不會儲存在個別 web 伺服器的記憶體，而且快取的資料可用於所有應用程式的伺服器。 這會提供數個優點：
 
 1. 快取的資料是一致的所有 web 伺服器上。 使用者沒有看到不同的結果，根據哪個 web 伺服器會處理其要求
 
@@ -138,9 +138,9 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 * [Redis 快取，在 Azure 上](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [在 Azure 上的 SQL 資料庫](https://azure.microsoft.com/documentation/services/sql-database/)
-* [記憶體中快取](xref:performance/caching/memory)
-* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [記憶體內部快取](xref:performance/caching/memory)
+* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

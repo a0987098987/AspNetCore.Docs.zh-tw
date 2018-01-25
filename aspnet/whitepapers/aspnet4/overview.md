@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 226ef83f289b8fbe9a68f0d0741c7eca0d96ba94
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f0224bcd2badc423ba5146feacccc44b8f33a608
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀
 ====================
@@ -199,7 +199,7 @@ ASP.NET 4 導入了新擴充的應用程式 Url 大小的選項。 舊版 ASP.NE
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改 *[maxUrlLength](https://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要讓長或短的查詢字串，修改的值 *[maxQueryStringLength](https://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
+若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改 *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要讓長或短的查詢字串，修改的值 *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
 
 ASP.NET 4 也可讓您設定的 URL 字元檢查所使用的字元。 當 ASP.NET 之 url 的路徑部分中找到無效的字元時，它會拒絕要求，並發出 HTTP 400 錯誤。 在舊版 ASP.NET 中，URL 字元檢查已限制為一組固定的字元。 在 ASP.NET 4 中，您可以自訂的一組使用新的有效字元*requestPathInvalidChars*屬性*httpRuntime*組態項目，如下列範例所示：
 
@@ -561,7 +561,7 @@ ASP.NET 4 加入內建支援使用 Web Form 的路由。 路由可讓您設定�
 - 下列新運算式產生器，它定義於*System.Web.Compilation.RouteUrlExpressionBuilder*和*System.Web.Compilation.RouteValueExpressionBuilder*:
 - *RouteUrl*，其中提供簡單的方式，以建立對應至 ASP.NET 伺服器控制項內的路由 URL 的 URL。
 - *RouteValue*，這樣會提供簡單的方式來擷取資訊從*RouteContext*物件。
-- *RouteParameter*類別，讓您更輕鬆地將中所包含的資料傳遞*RouteContext*查詢，資料來源控制項的物件 (類似於[ *FormParameter*](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.formparameter.aspx)).
+- *RouteParameter*類別，讓您更輕鬆地將中所包含的資料傳遞*RouteContext*查詢，資料來源控制項的物件 (類似於[ *FormParameter*](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx)).
 
 #### <a name="routing-for-web-forms-pages"></a>Web Form 網頁的路由
 
@@ -625,7 +625,7 @@ ASP.NET 會自動運作出正確的路由 （亦即，它會產生正確的 URL�
 
 #### <a name="using-route-data-for-data-source-control-parameters"></a>使用路由資料的資料來源控制項參數
 
-*RouteParameter*類別可讓您指定做為資料來源控制項中的查詢參數值的路由資料。 它[運作方式就像是](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.formparameter.aspx)類別，如下列範例所示：
+*RouteParameter*類別可讓您指定做為資料來源控制項中的查詢參數值的路由資料。 它[運作方式就像是](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formparameter.aspx)類別，如下列範例所示：
 
 [!code-aspx[Main](overview/samples/sample46.aspx)]
 
@@ -1146,7 +1146,7 @@ ASP.NET MVC 中引進了一種架構，附加元件為 ASP.NET 3.5 sp1 2009 年 
 - 能夠輕鬆地變更針對欄位中所產生的標記*GridView*和*DetailsView*使用動態資料專案中的欄位樣板控制項。
 
 > [!NOTE]
-> 請注意，如需詳細資訊，請參閱[動態資料文件](https://msdn.microsoft.com/en-us/library/cc488545.aspx)MSDN Library 中。
+> 請注意，如需詳細資訊，請參閱[動態資料文件](https://msdn.microsoft.com/library/cc488545.aspx)MSDN Library 中。
 
 
 針對 ASP.NET 4，動態資料已經過增強，讓開發人員更強大的威力，快速建置資料導向網站。
@@ -1325,7 +1325,7 @@ Visual Studio 2010 使用 MSDeploy 工具，來建立您的應用程式，這指
 
 Web 套件可以複製到任何伺服器，然後使用 IIS 管理員以手動方式安裝。 或者，用於自動化部署，封裝可以安裝使用命令列命令，或使用部署 Api。
 
-Visual Studio 2010 提供內建的 MSBuild 工作和建立 Web 封裝的目標。 如需詳細資訊，請參閱[ASP.NET Web 應用程式專案部署概觀](https://msdn.microsoft.com/en-us/library/dd394698%28VS.100%29.aspx)MSDN 網站上和[10 + 20 原因為何，您應該建立 Web 套件](http://vishaljoshi.blogspot.com/2009/07/10-20-reasons-why-you-should-create-web.html)Vishal Joshi 部落格上。
+Visual Studio 2010 提供內建的 MSBuild 工作和建立 Web 封裝的目標。 如需詳細資訊，請參閱[ASP.NET Web 應用程式專案部署概觀](https://msdn.microsoft.com/library/dd394698%28VS.100%29.aspx)MSDN 網站上和[10 + 20 原因為何，您應該建立 Web 套件](http://vishaljoshi.blogspot.com/2009/07/10-20-reasons-why-you-should-create-web.html)Vishal Joshi 部落格上。
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
@@ -1337,7 +1337,7 @@ Visual Studio 2010 提供內建的 MSBuild 工作和建立 Web 封裝的目標�
 
 [!code-xml[Main](overview/samples/sample102.xml)]
 
-如需詳細資訊，請參閱[Web.config 轉換語法，用於 Web 應用程式專案部署](https://msdn.microsoft.com/en-us/library/dd465326%28VS.100%29.aspx)在 MSDN 上<a id="0.2_a"></a>網站和[Web 部署： Web.Config 轉換](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html)Vishal Joshi 部落格上。
+如需詳細資訊，請參閱[Web.config 轉換語法，用於 Web 應用程式專案部署](https://msdn.microsoft.com/library/dd465326%28VS.100%29.aspx)在 MSDN 上<a id="0.2_a"></a>網站和[Web 部署： Web.Config 轉換](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html)Vishal Joshi 部落格上。
 
 <a id="0.2__Toc224729058"></a><a id="0.2__Toc253429295"></a><a id="0.2__Toc243304666"></a>
 
@@ -1345,7 +1345,7 @@ Visual Studio 2010 提供內建的 MSBuild 工作和建立 Web 封裝的目標�
 
 Visual Studio 2010 部署套件可以包含在 SQL Server 資料庫上的相依性。 封裝定義的一部分，您提供來源資料庫的連接字串。 當您建立 Web 套件時，Visual Studio 2010 建立 SQL 指令碼的資料庫結構描述和 （選擇性） 資料，並將這些封裝。 您也可以提供自訂 SQL 指令碼，並指定在伺服器應該執行的順序。 在部署階段，您會提供適用於目標伺服器的連接字串部署程序然後會使用執行指令碼，建立資料庫結構描述，並將資料加入此連接字串。
 
-此外，使用單鍵發行報表，您可以設定部署至應用程式發佈到遠端共用裝載站台時，直接發佈您的資料庫。 如需詳細資訊，請參閱[How to： 部署資料庫與 Web 應用程式專案](https://msdn.microsoft.com/en-us/library/dd465343%28VS.100%29.aspx)MSDN 網站上和[與 VS 2010 的資料庫部署](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html)Vishal Joshi 部落格上。
+此外，使用單鍵發行報表，您可以設定部署至應用程式發佈到遠端共用裝載站台時，直接發佈您的資料庫。 如需詳細資訊，請參閱[How to： 部署資料庫與 Web 應用程式專案](https://msdn.microsoft.com/library/dd465343%28VS.100%29.aspx)MSDN 網站上和[與 VS 2010 的資料庫部署](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html)Vishal Joshi 部落格上。
 
 <a id="0.2__Toc224729059"></a><a id="0.2__Toc253429296"></a><a id="0.2__Toc243304667"></a>
 
@@ -1353,7 +1353,7 @@ Visual Studio 2010 部署套件可以包含在 SQL Server 資料庫上的相依�
 
 Visual Studio 2010 也可讓您使用 IIS 的遠端管理服務 Web 應用程式發行至遠端伺服器。 針對您裝載的帳戶或測試伺服器或臨時伺服器，您可以建立發行設定檔。 每個設定檔可以安全地儲存適當的認證。 您可以再部署到任何目標伺服器，使用 Web 單鍵按一下發行工具列。 使用 Visual Studio 2010，您也可以使用 MSBuild 命令列發行。 這可讓您設定您的小組建置環境要持續整合模型中包含發行。
 
-如需詳細資訊，請參閱[How to： 部署 Web 應用程式專案使用單鍵發行和 Web Deploy](https://msdn.microsoft.com/en-us/library/dd465337%28VS.100%29.aspx) MSDN 網站上和[Web 與 VS 2010 1 單鍵發行](http://vishaljoshi.blogspot.com/2009/05/web-1-click-publish-with-vs-2010.html)Vishal Joshi 部落格上。 若要檢視 Visual Studio 2010 中的 Web 應用程式部署相關的視訊簡報，請參閱[Web 開發人員預覽的 VS 2010](http://vishaljoshi.blogspot.com/2008/12/vs-2010-for-web-developer-previews.html) Vishal Joshi 部落格上。
+如需詳細資訊，請參閱[How to： 部署 Web 應用程式專案使用單鍵發行和 Web Deploy](https://msdn.microsoft.com/library/dd465337%28VS.100%29.aspx) MSDN 網站上和[Web 與 VS 2010 1 單鍵發行](http://vishaljoshi.blogspot.com/2009/05/web-1-click-publish-with-vs-2010.html)Vishal Joshi 部落格上。 若要檢視 Visual Studio 2010 中的 Web 應用程式部署相關的視訊簡報，請參閱[Web 開發人員預覽的 VS 2010](http://vishaljoshi.blogspot.com/2008/12/vs-2010-for-web-developer-previews.html) Vishal Joshi 部落格上。
 
 <a id="0.2__Toc224729060"></a><a id="0.2__Toc253429297"></a><a id="0.2__Toc243304668"></a>
 
@@ -1361,9 +1361,9 @@ Visual Studio 2010 也可讓您使用 IIS 的遠端管理服務 Web 應用程式
 
 欞眭寍鯚提供 ASP.NET 4 和 Visual Studio 2010 的其他資訊。
 
-- [ASP.NET 4](https://msdn.microsoft.com/en-us/library/ee532866%28VS.100%29.aspx) — MSDN 網站上的 ASP.NET 4 的官方文件。
+- [ASP.NET 4](https://msdn.microsoft.com/library/ee532866%28VS.100%29.aspx) — MSDN 網站上的 ASP.NET 4 的官方文件。
 - [https://www.asp.net/](https://www.asp.net/) — ASP.NET 小組自己的網站。
-- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/en-us/library/cc488545.aspx)和[ASP.NET 動態資料內容地圖](https://msdn.microsoft.com/en-us/library/cc488545%28VS.100%29.aspx)— ASP.NET 小組網站和 ASP.NET Dynamic Data 的官方文件中的線上資源。
+- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx)和[ASP.NET 動態資料內容地圖](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx)— ASP.NET 小組網站和 ASP.NET Dynamic Data 的官方文件中的線上資源。
 - [https://www.asp.net/ajax/](../../ajax/index.md) — ASP.NET Ajax 開發的主要 Web 資源。
 - [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) — 其中包括功能的資訊，Visual Studio 2010 中的 Visual Web Developer 團隊部落格。
 - [ASP.NET WebStack](https://github.com/aspnet/AspNetWebStack) — 主要 Web 資源的預覽版本的 ASP.NET。

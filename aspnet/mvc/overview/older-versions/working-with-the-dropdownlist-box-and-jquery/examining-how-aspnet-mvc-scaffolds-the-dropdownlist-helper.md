@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: b5210f9a29f82fbadd0e6dd2d81bd85e7f23ae7e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 737773ab424b3ec3b6139b8c238a60ca23de2e69
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>檢查 ASP.NET MVC 如何 scaffolds DropDownList Helper
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="the-html-select-tag"></a>HTML 選取標記
 
-HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/en-us/library/dd492948.aspx)協助程式) 用來顯示值 （例如內容類型清單） 的完整清單。 編輯表單時已知的目前值，則選取清單可以顯示的目前值。 我們了解此先前當我們選取的值設定為**喜劇**。 Select 清單是適合用來顯示類別目錄或外部索引鍵資料。 `<select>`內容類型的外部索引鍵的項目會顯示可能的內容類型名稱的清單，但當您儲存的表單類型外部索引鍵值，而不是顯示的內容類型名稱與更新的內容類型屬性。 在下面的影像中，選取內容類型是**Disco**和演出者是**Donna Summer**。
+HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/library/dd492948.aspx)協助程式) 用來顯示值 （例如內容類型清單） 的完整清單。 編輯表單時已知的目前值，則選取清單可以顯示的目前值。 我們了解此先前當我們選取的值設定為**喜劇**。 Select 清單是適合用來顯示類別目錄或外部索引鍵資料。 `<select>`內容類型的外部索引鍵的項目會顯示可能的內容類型名稱的清單，但當您儲存的表單類型外部索引鍵值，而不是顯示的內容類型名稱與更新的內容類型屬性。 在下面的影像中，選取內容類型是**Disco**和演出者是**Donna Summer**。
 
 ![](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/_static/image4.png)
 
@@ -70,11 +70,11 @@ HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/e
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample5.cs)]
 
-`Create`方法會將兩個[SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist.aspx)物件加入至`ViewBag`，一個包含內容類型的資訊，一個包含演出者資訊。 [SelectList](https://msdn.microsoft.com/en-us/library/dd505286.aspx)上面使用的建構函式多載會採用三個引數：
+`Create`方法會將兩個[SelectList](https://msdn.microsoft.com/library/system.web.mvc.selectlist.aspx)物件加入至`ViewBag`，一個包含內容類型的資訊，一個包含演出者資訊。 [SelectList](https://msdn.microsoft.com/library/dd505286.aspx)上面使用的建構函式多載會採用三個引數：
 
 [!code-csharp[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample6.cs)]
 
-1. *項目*: [IEnumerable](https://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx)包含在清單中的項目。 在上述範例中，內容類型的清單傳回`db.Genres`。
+1. *項目*: [IEnumerable](https://msdn.microsoft.com/library/system.collections.ienumerable.aspx)包含在清單中的項目。 在上述範例中，內容類型的清單傳回`db.Genres`。
 2. *dataValueField*： 中屬性的名稱**IEnumerable**清單，其中包含的索引鍵值。 在上述範例`GenreId`和`ArtistId`。
 3. *dataTextField*： 中屬性的名稱**IEnumerable**清單，其中包含要顯示的資訊。 演出者和類型表格中`name`欄位使用。
 
@@ -84,7 +84,7 @@ HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/e
 
 第一行會顯示建立檢視所花費的`Album`模型。 在`Create`方法如上所示，已通過沒有模型，因此檢視取得**null** `Album`模型。 此時我們會建立新的相簿因此我們不需要任何`Album`為它的資料。
 
-[Html.DropDownList](https://msdn.microsoft.com/en-us/library/dd492948.aspx)如上所示的多載會採用要繫結至模型之欄位的名稱。 它也會使用此名稱尋找**ViewBag**物件，包含[SelectList](https://msdn.microsoft.com/en-us/library/dd505286.aspx)物件。 使用這個多載，您都必須名稱**ViewBag SelectList**物件`GenreId`。 第二個參數 (`String.Empty`) 是要在選取的項目時顯示的文字。 這正是我們想要建立新專輯時。 如果您移除第二個參數，並使用下列程式碼：
+[Html.DropDownList](https://msdn.microsoft.com/library/dd492948.aspx)如上所示的多載會採用要繫結至模型之欄位的名稱。 它也會使用此名稱尋找**ViewBag**物件，包含[SelectList](https://msdn.microsoft.com/library/dd505286.aspx)物件。 使用這個多載，您都必須名稱**ViewBag SelectList**物件`GenreId`。 第二個參數 (`String.Empty`) 是要在選取的項目時顯示的文字。 這正是我們想要建立新專輯時。 如果您移除第二個參數，並使用下列程式碼：
 
 [!code-cshtml[Main](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper/samples/sample8.cshtml)]
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/claims
-ms.openlocfilehash: dd8f42684f9e58b9329602aa9b70d2c0ab950892
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 870bdf79abc2c94745ab5da6997a37ed0e4ea4e2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="claims-based-authorization"></a>宣告型授權
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/19/2018
 
 宣告型的授權檢查是宣告式-開發人員會內嵌它們對控制器或動作中控制站，其程式碼內指定的宣告，而目前的使用者必須擁有，按住選擇性地宣告的值必須可存取要求的資源。 需求會原則為基礎的宣告，開發人員必須建置和註冊表示宣告需求的原則。
 
-最簡單的類型宣告原則尋找宣告存在，但不會檢查此值。
+最簡單的類型宣告的宣告存在的原則看起來，並不會檢查值。
 
 首先您必須建置和註冊的原則。 這會以授權服務組態的一部分，其通常參與方式進行`ConfigureServices()`中您*Startup.cs*檔案。
 

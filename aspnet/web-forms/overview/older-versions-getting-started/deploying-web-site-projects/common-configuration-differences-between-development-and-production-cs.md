@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 25299d1f047542ac4f2d61f9d5fe55813517f76b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 725812c64667488b9a06c065c7100d0536c2e3e2
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="common-configuration-differences-between-development-and-production-c"></a>一般組態差異開發和生產環境 (C#)
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 `Web.config`檔案包含 ASP.NET 應用程式的組態資訊的分類。 此組態資訊的某些部分是相同的環境。 例如，驗證設定和 URL 授權規則拼出`Web.config`檔案的`<authentication>`和`<authorization>`項目通常是相同的不論環境。 但是，根據環境的其他組態資訊-例如，外部資源的相關資訊通常有所不同。
 
-資料庫連接字串是根據環境的基本和不同的組態資訊的使用範例。 當 web 應用程式資料庫與伺服器通訊，必須先建立連接，而且，只透過[連接字串](http://www.connectionstrings.com/Articles/Show/what-is-a-connection-string)。 雖然也可以用硬式編碼直接在網頁或連接至資料庫的程式碼中的資料庫連接字串，但是建議您最好將它放入`Web.config`的[`<connectionStrings>`元素](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)使連接字串資訊是在單一且集中式位置。 有時候不同的資料庫用在開發期間比用在生產環境。因此，連接字串資訊必須是唯一的每個環境。
+資料庫連接字串是根據環境的基本和不同的組態資訊的使用範例。 當 web 應用程式資料庫與伺服器通訊，必須先建立連接，而且，只透過[連接字串](http://www.connectionstrings.com/Articles/Show/what-is-a-connection-string)。 雖然也可以用硬式編碼直接在網頁或連接至資料庫的程式碼中的資料庫連接字串，但是建議您最好將它放入`Web.config`的[`<connectionStrings>`元素](https://msdn.microsoft.com/library/bf7sd233.aspx)使連接字串資訊是在單一且集中式位置。 有時候不同的資料庫用在開發期間比用在生產環境。因此，連接字串資訊必須是唯一的每個環境。
 
 > [!NOTE]
 > 未來的教學課程中，瀏覽部署資料導向應用程式，此時我們將探討如何將資料庫連接字串儲存在組態檔中的細節。
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="configuration-settings-that-impact-performance"></a>會影響效能的組態設定
 
-當瀏覽 ASP.NET 網頁時第一次 （或第一次變更後），其宣告式標記必須先轉換成類別，這個類別必須進行編譯。 如果 web 應用程式會使用自動編譯網頁的程式碼後置類別需要進行編譯，太。 您可以設定各種編譯選項，透過`Web.config`檔案的[`<compilation>`元素](https://msdn.microsoft.com/en-us/library/s10awwz0.aspx)。
+當瀏覽 ASP.NET 網頁時第一次 （或第一次變更後），其宣告式標記必須先轉換成類別，這個類別必須進行編譯。 如果 web 應用程式會使用自動編譯網頁的程式碼後置類別需要進行編譯，太。 您可以設定各種編譯選項，透過`Web.config`檔案的[`<compilation>`元素](https://msdn.microsoft.com/library/s10awwz0.aspx)。
 
 偵錯屬性是最重要的屬性中的其中一個`<compilation>`項目。 如果`debug`屬性設定為"true"，則在已編譯的組件包含偵錯 Visual Studio 中的應用程式時，所需要的偵錯符號。 但偵錯符號增加組件的大小，並執行程式碼時造成額外的記憶體需求。 此外，當`debug`屬性設定為"true"傳回的任何內容`WebResource.axd`未快取，這表示，每次使用者存取他們需要重新下載所傳回的靜態內容網頁`WebResource.axd`。
 
@@ -68,7 +68,7 @@ ASP.NET 應用程式中發生未處理的例外狀況時它會顯示最多三個
 - 會顯示例外狀況詳細資料訊息，其中包含只擲回的例外狀況的資訊。
 - 會顯示自訂錯誤網頁，這是 ASP.NET 網頁，您建立顯示您想要的任何訊息。
 
-遇到未處理的例外狀況時的事取決於`Web.config`檔案的[`<customErrors>`區段](https://msdn.microsoft.com/en-us/library/h0hfz6fc.aspx)。
+遇到未處理的例外狀況時的事取決於`Web.config`檔案的[`<customErrors>`區段](https://msdn.microsoft.com/library/h0hfz6fc.aspx)。
 
 在開發和測試應用程式時這樣做有助於查看瀏覽器中的任何例外狀況的詳細資料。 不過，實際執行應用程式中顯示例外狀況詳細資料是潛在的安全性風險。 此外，它是 unflattering，而且可讓您看起來不夠專業的網站。 在理想情況下，期間發生未處理的例外狀況在開發環境中的 web 應用程式會顯示例外狀況的詳細資料時相同的應用程式在生產環境中會顯示自訂錯誤網頁。
 
@@ -76,7 +76,7 @@ ASP.NET 應用程式中發生未處理的例外狀況時它會顯示最多三個
 > 預設值`<customErrors>`區段設定例外狀況詳細資料訊息頁面所造訪透過 localhost，且否則示範一般執行階段錯誤頁面時，才會顯示。 這不是理想的做法，但它以確保知道的預設行為並不會顯示為非本機訪客的例外狀況詳細資料。 未來的教學課程會檢查`<customErrors>`> 一節中更多詳細資料，並說明如何將自訂錯誤網頁顯示在生產環境中發生的錯誤。
 
 
-追蹤另一項 ASP.NET 功能，在開發期間很有用。 追蹤，如果啟用，記錄每個連入要求的相關資訊，並提供特殊的網頁上， `Trace.axd`，來檢視最近的要求詳細資料。 您可以開啟和設定追蹤透過[`<trace>`元素](https://msdn.microsoft.com/en-us/library/6915t83k.aspx)中`Web.config`。
+追蹤另一項 ASP.NET 功能，在開發期間很有用。 追蹤，如果啟用，記錄每個連入要求的相關資訊，並提供特殊的網頁上， `Trace.axd`，來檢視最近的要求詳細資料。 您可以開啟和設定追蹤透過[`<trace>`元素](https://msdn.microsoft.com/library/6915t83k.aspx)中`Web.config`。
 
 如果您啟用追蹤，請務必確定它已停用在生產環境中。 追蹤資訊包括 cookie、 工作階段資料，以及其他潛在的敏感資訊，因此務必停用在生產環境中的追蹤。 好消息是，根據預設，已停用追蹤和`Trace.axd`檔案僅可透過 localhost 存取。 如果您變更這些預設設定，在開發中確定，它們會關閉回生產環境中。
 
@@ -110,7 +110,7 @@ ASP.NET 應用程式中發生未處理的例外狀況時它會顯示最多三個
 
 若要部署的 web 應用程式的組建 Web 部署專案，然後從專案的輸出資料夾複製檔案到生產環境。
 
-若要深入了解使用 Web 部署專案的詳細資訊請參閱[Web 部署專案本文](https://msdn.microsoft.com/en-us/magazine/cc163448.aspx)從 2007 年 4 月發行的[MSDN Magazine](https://msdn.microsoft.com/en-us/magazine/default.aspx)，或洽詢進一步閱讀一節中的連結本教學課程的結尾。
+若要深入了解使用 Web 部署專案的詳細資訊請參閱[Web 部署專案本文](https://msdn.microsoft.com/magazine/cc163448.aspx)從 2007 年 4 月發行的[MSDN Magazine](https://msdn.microsoft.com/magazine/default.aspx)，或洽詢進一步閱讀一節中的連結本教學課程的結尾。
 
 > [!NOTE]
 > 因為 Web 部署專案會實作為 Visual Studio 增益集，而且 Visual Studio Express Edition （包括 Visual Web Developer） 不支援增益集，您無法使用隨 Visual Web Developer Web 部署專案。
@@ -134,7 +134,7 @@ ASP.NET 應用程式中發生未處理的例外狀況時它會顯示最多三個
 - [部署資料庫時，索引鍵的組態設定](http://aspnet.4guysfromrolla.com/articles/121008-1.aspx)
 - [Visual Studio 2008 Web 部署專案下載](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en) | [Visual Studio 2005 Web 部署專案下載項目](https://download.microsoft.com/download/9/4/9/9496adc4-574e-4043-bb70-bc841e27f13c/WebDeploymentSetup.msi)
 - [VS 2008 Web 部署專案](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [VS 2008 Web 部署專案支援發行](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
-- [Web 部署專案](https://msdn.microsoft.com/en-us/magazine/cc163448.aspx)
+- [Web 部署專案](https://msdn.microsoft.com/magazine/cc163448.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](deploying-your-site-using-visual-studio-cs.md)

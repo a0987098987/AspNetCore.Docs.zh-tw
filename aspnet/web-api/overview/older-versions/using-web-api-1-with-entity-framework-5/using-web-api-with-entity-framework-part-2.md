@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 5d4c7d7d02ced5a99db5b59f9e2e1adf6588208a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a573b47d27767dc78d557cd2b6c73714eb9e94f4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="part-2-creating-the-domain-models"></a>第 2 部分： 建立網域模型
 ====================
@@ -32,14 +32,14 @@ ms.lasthandoff: 11/10/2017
 - 模型優先： 開始您以視覺化的模型，與 Entity Framework 產生資料庫與程式碼。
 - 程式碼優先： 開始您以程式碼中，與 Entity Framework 產生資料庫。
 
-我們使用的程式碼第一個方法，讓我們一開始定義為 POCOs （純舊 CLR 物件） 的網域物件。 使用程式碼優先方法時，網域物件不需要任何額外的程式碼，以支援資料庫層級，例如交易或持續性。 (具體而言，它們不需要繼承自[EntityObject](https://msdn.microsoft.com/en-us/library/system.data.objects.dataclasses.entityobject.aspx)類別。)您仍然可以使用資料註解來控制 Entity Framework 建立的資料庫結構描述的方式。
+我們使用的程式碼第一個方法，讓我們一開始定義為 POCOs （純舊 CLR 物件） 的網域物件。 使用程式碼優先方法時，網域物件不需要任何額外的程式碼，以支援資料庫層級，例如交易或持續性。 (具體而言，它們不需要繼承自[EntityObject](https://msdn.microsoft.com/library/system.data.objects.dataclasses.entityobject.aspx)類別。)您仍然可以使用資料註解來控制 Entity Framework 建立的資料庫結構描述的方式。
 
-因為 POCOs 不會包含任何額外的屬性描述[的資料庫狀態](https://msdn.microsoft.com/en-us/library/system.data.entitystate.aspx)，他們可以輕鬆地序列化為 JSON 或 XML。 不過，這不表示您應該一律公開給用戶端，直接 Entity Framework 模型稍後在本教學課程中，我們會看到。
+因為 POCOs 不會包含任何額外的屬性描述[的資料庫狀態](https://msdn.microsoft.com/library/system.data.entitystate.aspx)，他們可以輕鬆地序列化為 JSON 或 XML。 不過，這不表示您應該一律公開給用戶端，直接 Entity Framework 模型稍後在本教學課程中，我們會看到。
 
 我們將建立下列 POCOs:
 
 - 產品
-- 順序
+- 訂單
 - OrderDetail
 
 若要建立每個類別，以滑鼠右鍵按一下方案總管 中的 模型 資料夾。 從內容功能表中，選取**新增**，然後選取 **類別。**

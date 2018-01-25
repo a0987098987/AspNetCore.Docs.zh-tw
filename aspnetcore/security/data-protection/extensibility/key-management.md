@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 2bd0f945306a7acd6252c2a00aafb648cf722616
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d748ee9d3edf9eed4285fab447d5b379dfcd937c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="key-management-extensibility"></a>金鑰管理的擴充性
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 01/19/2018
 * 撤銷一或多個金鑰，並將保存到儲存體的撤銷資訊。
 
 >[!WARNING]
-> 撰寫`IKeyManager`非常進階的工作，並且大部分的開發人員不應嘗試它。 相反地，大部分的開發人員應利用所提供的功能[XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager)類別。
+> 撰寫`IKeyManager`的非常進階的工作，而且大部分的開發人員不應該嘗試它。 相反地，大部分的開發人員應利用所提供的功能[XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager)類別。
 
 <a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
 

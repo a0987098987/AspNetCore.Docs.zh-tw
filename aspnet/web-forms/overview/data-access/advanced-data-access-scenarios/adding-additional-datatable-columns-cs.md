@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0b1fe8d2e376065aed8d94b1267910bd1f7e5bd0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2982af897b433706889cb4eda79dcb4e76baea62
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-additional-datatable-columns-c"></a>加入其他 DataTable 資料行 (C#)
 ====================
@@ -90,12 +90,12 @@ ms.lasthandoff: 11/10/2017
 
 [!code-sql[Main](adding-additional-datatable-columns-cs/samples/sample1.sql)]
 
-上述查詢會使用 SQL Server 2005 s 新[`NTILE`函式](https://msdn.microsoft.com/en-us/library/ms175126.aspx)將結果分成四個群組的群組由決定`UnitPrice`值以遞減順序排序。
+上述查詢會使用 SQL Server 2005 s 新[`NTILE`函式](https://msdn.microsoft.com/library/ms175126.aspx)將結果分成四個群組的群組由決定`UnitPrice`值以遞減順序排序。
 
 不幸的是，查詢產生器不知道如何剖析`OVER`關鍵字剖析上述查詢時，就會顯示錯誤。 因此，請輸入上述查詢直接在文字方塊中，在精靈中，而不需使用查詢產生器。
 
 > [!NOTE]
-> 如需有關 NTILE 和 SQL Server 2005 s 其他排名函數，請參閱[傳回等級結果與 Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml)和[排名函數區段](https://msdn.microsoft.com/en-us/library/ms189798.aspx)從[SQLServer 2005 線上叢書 》](https://msdn.microsoft.com/en-us/library/ms189798.aspx)。
+> 如需有關 NTILE 和 SQL Server 2005 s 其他排名函數，請參閱[傳回等級結果與 Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml)和[排名函數區段](https://msdn.microsoft.com/library/ms189798.aspx)從[SQLServer 2005 線上叢書 》](https://msdn.microsoft.com/library/ms189798.aspx)。
 
 
 輸入後`SELECT`查詢並按一下 [下一步]，精靈會詢問我們提供，它會建立預存程序的名稱。 命名新的預存程序`Products_SelectWithPriceQuartile`，按一下 [下一步]。

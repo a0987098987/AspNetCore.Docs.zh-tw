@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: d0cdb5aaa4b1129c3f2404d069e9781ca16260b7
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 532020a8fe4c5a0312cbd89278e61f614b1825f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>讀取的相關資料-Razor 頁面 (8 個 6) 使用的 EF 核心
 
@@ -93,13 +93,13 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 開啟*Pages/Courses/Index.cshtml.cs*並檢查`OnGetAsync`方法。 Scaffolding 引擎所指定的積極式載入`Department`導覽屬性。 `Include`方法指定積極式載入。
 
-執行應用程式並選取**課程**連結。 Department 資料行顯示`DepartmentID`，不是很有用。
+執行應用程式並選取**課程**連結。 Department 資料行顯示`DepartmentID`，不會很有用。
 
 以下列程式碼更新 `OnGetAsync` 方法：
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
-上述程式碼會加入`AsNoTracking`。 `AsNoTracking`改善效能，因為傳回的實體不會受到追蹤。 因為它們不會更新目前的內容中，不會追蹤實體。
+上述程式碼會加入`AsNoTracking`。 `AsNoTracking`改善效能，因為傳回的實體不會受到追蹤。 因為它們不在目前的內容更新時，不會追蹤實體。
 
 更新*Views/Courses/Index.cshtml*以反白顯示下列標記：
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e6931f9d14461456cc8461b0a6b194079b7654c6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 28f4c95e1578c5c91cfa1a21af2b4720ba7b286c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-a-custom-error-page-vb"></a>顯示自訂錯誤網頁 (VB)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 在理想的世界裡中會有任何執行階段錯誤。 程式設計人員可以撰寫程式碼與 nary bug，健全的使用者輸入驗證，與外部資源，例如資料庫伺服器和電子郵件伺服器將會永遠不會進入離線。 當然，但實際上是無法避免錯誤。 .NET Framework 中的類別會通知發生錯誤，所擲回例外狀況。 物件的開啟方法呼叫 SqlConnection，例如建立資料庫連接字串所指定的連接。 不過，如果資料庫已關閉，或連接字串中的認證不正確然後 Open 方法擲回`SqlException`。 可以處理例外狀況，方法是使用`Try/Catch/Finally`區塊。 如果內的程式碼`Try`區塊擲回例外狀況，控制權會轉移到適當的 catch 區塊，開發人員可以嘗試從錯誤中復原。 如果沒有相符的 catch 區塊，或例外狀況擲回例外狀況的程式碼不是在 try 區塊中，如果 percolates search 的呼叫堆疊向上`Try/Catch/Finally`區塊。
 
-如果沒有要處理的例外狀況反昇一直 ASP.NET 執行階段[`HttpApplication`類別](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.aspx)的[`Error`事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.error.aspx)，就會引發和設定*錯誤頁面*隨即出現。 根據預設，ASP.NET 會顯示錯誤頁面，affectionately 稱為[死亡畫面黃色](http://en.wikipedia.org/wiki/Yellow_Screen_of_Death#Yellow)(YSOD)。 有兩個版本的 YSOD： 其中一個會顯示例外狀況詳細資料、 堆疊追蹤，以及其他資訊給偵錯應用程式的開發人員很有幫助 (請參閱**圖 1**); 其他只要狀態發生執行階段錯誤 （請參閱**圖 2**)。
+如果沒有要處理的例外狀況反昇一直 ASP.NET 執行階段[`HttpApplication`類別](https://msdn.microsoft.com/library/system.web.httpapplication.aspx)的[`Error`事件](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx)，就會引發和設定*錯誤頁面*隨即出現。 根據預設，ASP.NET 會顯示錯誤頁面，affectionately 稱為[死亡畫面黃色](http://en.wikipedia.org/wiki/Yellow_Screen_of_Death#Yellow)(YSOD)。 有兩個版本的 YSOD： 其中一個會顯示例外狀況詳細資料、 堆疊追蹤，以及其他資訊給偵錯應用程式的開發人員很有幫助 (請參閱**圖 1**); 其他只要狀態發生執行階段錯誤 （請參閱**圖 2**)。
 
 例外狀況詳細資料 YSOD 偵錯應用程式，開發人員很有用，但 YSOD 顯示給使用者，而且 tacky 不夠專業。 相反地，一般使用者，應該採取以維護站台的外觀與風格與更加易懂易記 prose 描述這種情況的錯誤頁面。 好消息是建立自訂錯誤頁面，是相當簡單。 本教學課程開頭 ASP 看。網路的不同的錯誤頁面。 然後，它會示範如何設定 web 應用程式，以顯示使用者自訂錯誤網頁遇到錯誤時。
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 - 中的組態資訊`<customErrors>` 區段中，並
 - 是否在本機或遠端使用者造訪網站。
 
-[ `<customErrors>`區段](https://msdn.microsoft.com/en-us/library/h0hfz6fc.aspx)中`Web.config`具有兩個屬性會影響哪些錯誤頁面會顯示：`defaultRedirect`和`mode`。 `defaultRedirect` 屬性是選擇性的。 如果提供，它會指定自訂錯誤網頁的 URL，並指出自訂錯誤頁面應該會顯示而不是執行階段錯誤 YSOD。 `mode`必要屬性，並接受三個值之一： `On`， `Off`，或`RemoteOnly`。 這些值具有下列行為：
+[ `<customErrors>`區段](https://msdn.microsoft.com/library/h0hfz6fc.aspx)中`Web.config`具有兩個屬性會影響哪些錯誤頁面會顯示：`defaultRedirect`和`mode`。 `defaultRedirect` 屬性是選擇性的。 如果提供，它會指定自訂錯誤網頁的 URL，並指出自訂錯誤頁面應該會顯示而不是執行階段錯誤 YSOD。 `mode`必要屬性，並接受三個值之一： `On`， `Off`，或`RemoteOnly`。 這些值具有下列行為：
 
 - `On`-表示自訂錯誤網頁或執行階段錯誤 YSOD，會顯示所有造訪者，不論是本機或遠端。
 - `Off`-指定例外狀況詳細資料 YSOD 會顯示所有造訪者，不論是本機或遠端。
@@ -167,9 +167,9 @@ ms.lasthandoff: 11/10/2017
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [錯誤頁面，一次](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/)
-- [例外狀況的設計指導方針](https://msdn.microsoft.com/en-us/library/ms229014.aspx)
+- [例外狀況的設計方針](https://msdn.microsoft.com/library/ms229014.aspx)
 - [使用者易記的錯誤網頁](http://aspnet.4guysfromrolla.com/articles/090606-1.aspx)
-- [處理和擲回例外狀況](https://msdn.microsoft.com/en-us/library/5b2yeyab.aspx)
+- [處理和擲回例外狀況](https://msdn.microsoft.com/library/5b2yeyab.aspx)
 - [正確地在 ASP.NET 中使用自訂錯誤網頁](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
 
 >[!div class="step-by-step"]

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5283da2786d41c0ae06607185dd416aeb7d2b62a
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: accb5ddab8df67dfa29038541dc0cd72eaac173c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>ASP.NET MVC 應用程式 (10-4) 中建立更複雜的資料模型
 ====================
@@ -49,9 +49,9 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample1.cs?highlight=3,13-14)]
 
-[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
+[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
 
-`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/en-us/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
+`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -61,11 +61,11 @@ ms.lasthandoff: 01/19/2018
 
 `ApplyFormatInEditMode`設定指定指定的格式應該也套用時的值會顯示在文字方塊中進行編輯。 (您可能不想要的某些欄位，例如，貨幣值，您可能不想在文字方塊中的貨幣符號進行編輯。)
 
-您可以使用[DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性本身，但它通常是最好使用[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)也屬性。 `DataType`屬性傳達*語意*的資料做為相對於如何呈現在畫面上，並提供下列優點，就無法取得與`DisplayFormat`:
+您可以使用[DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性本身，但它通常是最好使用[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)也屬性。 `DataType`屬性傳達*語意*的資料做為相對於如何呈現在畫面上，並提供下列優點，就無法取得與`DisplayFormat`:
 
 - 瀏覽器可以啟用 HTML5 功能 （例如顯示日曆控制項、 地區設定適當的貨幣符號、 電子郵件連結等等）。
-- 根據預設，瀏覽器將會轉譯資料使用正確的格式，根據您[地區設定](https://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx)。
-- [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性可以讓 MVC 選擇正確的欄位範本轉譯資料 ( [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)如果由本身使用字串的範本)。 如需詳細資訊，請參閱 Brad Wilson 的[ASP.NET MVC 2 範本](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html)。 （針對 MVC 2 所撰寫，不過這篇文章仍適用於目前版本的 ASP.NET MVC。）
+- 根據預設，瀏覽器將會轉譯資料使用正確的格式，根據您[地區設定](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx)。
+- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性可以讓 MVC 選擇正確的欄位範本轉譯資料 ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)如果由本身使用字串的範本)。 如需詳細資訊，請參閱 Brad Wilson 的[ASP.NET MVC 2 範本](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html)。 （針對 MVC 2 所撰寫，不過這篇文章仍適用於目前版本的 ASP.NET MVC。）
 
 如果您使用`DataType`屬性使用 [日期] 欄位中，您必須指定`DisplayFormat`屬性也以確保欄位在 Chrome 瀏覽器中正確轉譯。 如需詳細資訊，請參閱[這個 StackOverflow 執行緒](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie)。
 
@@ -75,21 +75,21 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="the-stringlengthattribute"></a>StringLengthAttribute
 
-您也可以指定資料的驗證規則和使用屬性的訊息。 假設您想要確保使用者不要輸入超過 50 個字元的名稱。 若要加入這項限制，加入[StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性至`LastName`和`FirstMidName`屬性，如下列範例所示：
+您也可以指定資料的驗證規則和使用屬性的訊息。 假設您想要確保使用者不要輸入超過 50 個字元的名稱。 若要加入這項限制，加入[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性至`LastName`和`FirstMidName`屬性，如下列範例所示：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample3.cs?highlight=10,12)]
 
-[StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性將不會防止使用者輸入名稱的泛空白字元。 您可以使用[RegularExpression](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)將限制套用至輸入的屬性。 例如下列程式碼需要第一個字元是大寫，而其餘字元是依字母順序排列：
+[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性將不會防止使用者輸入名稱的泛空白字元。 您可以使用[RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)將限制套用至輸入的屬性。 例如下列程式碼需要第一個字元是大寫，而其餘字元是依字母順序排列：
 
 `[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]`
 
-[MaxLength](https://msdn.microsoft.com/en-us/library/System.ComponentModel.DataAnnotations.MaxLengthAttribute.aspx)屬性會提供類似的功能[StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性，但不會提供用戶端驗證。
+[MaxLength](https://msdn.microsoft.com/library/System.ComponentModel.DataAnnotations.MaxLengthAttribute.aspx)屬性會提供類似的功能[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性，但不會提供用戶端驗證。
 
 執行應用程式，然後按一下**學生** 索引標籤。您會收到下列錯誤：
 
 *備份 'SchoolContext' 內容的模型已變更，因為所建立的資料庫。請考慮使用 Code First 移轉來更新資料庫 ([https://go.microsoft.com/fwlink/?LinkId=238269](https://go.microsoft.com/fwlink/?LinkId=238269))。*
 
-資料庫模型已變更，則需要在資料庫結構描述變更的方式和 Entity Framework 偵測到。 您將使用移轉，而不會遺失任何資料，使用 UI 新增到資料庫中更新結構描述。 如果您變更資料所建立的`Seed`方法，將會變更回其原始狀態，因為[AddOrUpdate](https://msdn.microsoft.com/en-us/library/hh846520(v=vs.103).aspx)中使用的方法`Seed`方法。 ([AddOrUpdate](https://msdn.microsoft.com/en-us/library/hh846520(v=vs.103).aspx)等於從資料庫詞彙中的 「 更新插入 」 作業。)
+資料庫模型已變更，則需要在資料庫結構描述變更的方式和 Entity Framework 偵測到。 您將使用移轉，而不會遺失任何資料，使用 UI 新增到資料庫中更新結構描述。 如果您變更資料所建立的`Seed`方法，將會變更回其原始狀態，因為[AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx)中使用的方法`Seed`方法。 ([AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx)等於從資料庫詞彙中的 「 更新插入 」 作業。)
 
 在 封裝管理員主控台 (PMC)，請輸入下列命令：
 
@@ -107,11 +107,11 @@ ms.lasthandoff: 01/19/2018
 
 `Column`屬性指定當建立資料庫時，資料行`Student`對應到資料表`FirstMidName`屬性會被命名為`FirstName`。 換句話說，當您的程式碼是指`Student.FirstMidName`，資料將來自，或在更新`FirstName`資料行`Student`資料表。 如果您未指定資料行名稱，會收到相同的名稱與屬性名稱。
 
-加入 using 陳述式[System.ComponentModel.DataAnnotations.Schema](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.aspx)和資料行名稱屬性來`FirstMidName`屬性，如下列反白顯示的程式碼所示：
+加入 using 陳述式[System.ComponentModel.DataAnnotations.Schema](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.aspx)和資料行名稱屬性來`FirstMidName`屬性，如下列反白顯示的程式碼所示：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample5.cs?highlight=4,14)]
 
-新增[資料行屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.columnattribute.aspx)變更備份 SchoolContext，因此它將不會符合資料庫的模型。 若要建立其他移轉 PMC 中輸入下列命令：
+新增[資料行屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx)變更備份 SchoolContext，因此它將不會符合資料庫的模型。 若要建立其他移轉 PMC 中輸入下列命令：
 
 [!code-console[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample6.cmd)]
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 01/19/2018
 
 ![](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image5.png)
 
-您也可以變更資料庫對應使用[Fluent API](https://msdn.microsoft.com/en-us/data/jj591617)，稍後在本教學課程，您會看到如下。
+您也可以變更資料庫對應使用[Fluent API](https://msdn.microsoft.com/data/jj591617)，稍後在本教學課程，您會看到如下。
 
 > [!NOTE]
 > 如果您嘗試編譯，才能完成建立所有的這些實體類別，您可能會收到編譯器錯誤。
@@ -145,7 +145,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample8.cs)]
 
-[StringLength 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)設定資料庫中的最大長度，並提供用戶端和伺服器端的 ASP.NET MVC 驗證。 您也可以指定最小字串長度，此屬性，但資料庫結構描述的最小值沒有任何影響。 [必要的屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)不需要使用實值類型，例如 DateTime、 int、 double、 和 float。 因此它們都是原本就是必要，實值類型無法指派 null 值。 您也可以移除[必要的屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)並取代的最小長度參數`StringLength`屬性：
+[StringLength 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)設定資料庫中的最大長度，並提供用戶端和伺服器端的 ASP.NET MVC 驗證。 您也可以指定最小字串長度，此屬性，但資料庫結構描述的最小值沒有任何影響。 [必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)不需要使用實值類型，例如 DateTime、 int、 double、 和 float。 因此它們都是原本就是必要，實值類型無法指派 null 值。 您也可以移除[必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)並取代的最小長度參數`StringLength`屬性：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample9.cs?highlight=2)]
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="the-courses-and-officeassignment-navigation-properties"></a>課程和 OfficeAssignment 導覽屬性
 
-`Courses`和`OfficeAssignment`屬性為導覽屬性。 已稍早所述，它們通常會定義為[虛擬](https://msdn.microsoft.com/en-us/library/9fkccyh4(v=vs.110).aspx)，讓他們可以利用稱為 Entity Framework 功能[消極式載入](https://msdn.microsoft.com/en-us/magazine/hh205756.aspx)。 此外，如果導覽屬性都可以保存多個實體，其類型必須實作[ICollection&lt;T&gt; ](https://msdn.microsoft.com/en-us/library/92t2ye13.aspx)介面。 (例如[IList&lt;T&gt; ](https://msdn.microsoft.com/en-us/library/5y536ey6.aspx)但不是會限定[IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/en-us/library/9eekhta0.aspx)因為`IEnumerable<T>`不會實作[新增](https://msdn.microsoft.com/en-us/library/63ywd54z.aspx).
+`Courses`和`OfficeAssignment`屬性為導覽屬性。 已稍早所述，它們通常會定義為[虛擬](https://msdn.microsoft.com/library/9fkccyh4(v=vs.110).aspx)，讓他們可以利用稱為 Entity Framework 功能[消極式載入](https://msdn.microsoft.com/magazine/hh205756.aspx)。 此外，如果導覽屬性都可以保存多個實體，其類型必須實作[ICollection&lt;T&gt; ](https://msdn.microsoft.com/library/92t2ye13.aspx)介面。 (例如[IList&lt;T&gt; ](https://msdn.microsoft.com/library/5y536ey6.aspx)但不是會限定[IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/library/9eekhta0.aspx)因為`IEnumerable<T>`不會實作[新增](https://msdn.microsoft.com/library/63ywd54z.aspx).
 
 講師可以教導任意數目的課程，因此`Courses`做為集合定義`Course`實體。 我們的商務規則狀態講師只能使用最多一個辦事處的資料，因此`OfficeAssignment`定義為單一`OfficeAssignment`實體 (它可能是`null`如果被不指派任何 office)。
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="the-foreignkey-attribute"></a>ForeignKey 屬性
 
-有一對零-或-一關聯性或兩個實體之間的一對一關聯性時 (這類之間`OfficeAssignment`和`Instructor`)，EF 不算出關聯性的一端是主體，而且相依的結尾。 一對一關聯性為其他類別的每個類別中有參考導覽屬性。 [ForeignKey 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx)可以套用至相依的類別，以建立關聯性。 如果您省略[ForeignKey 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx)，當您嘗試建立移轉作業時，收到下列錯誤：
+有一對零-或-一關聯性或兩個實體之間的一對一關聯性時 (這類之間`OfficeAssignment`和`Instructor`)，EF 不算出關聯性的一端是主體，而且相依的結尾。 一對一關聯性為其他類別的每個類別中有參考導覽屬性。 [ForeignKey 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx)可以套用至相依的類別，以建立關聯性。 如果您省略[ForeignKey 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.foreignkeyattribute.aspx)，當您嘗試建立移轉作業時，收到下列錯誤：
 
 無法判定類型 'ContosoUniversity.Models.OfficeAssignment' 和 'ContosoUniversity.Models.Instructor' 之間的關聯的主要端點。 此關聯的主要端點必須使用明確設定關聯性 fluent 應用程式開發介面或資料註解。
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="the-databasegenerated-attribute"></a>DatabaseGenerated 屬性
 
-[DatabaseGenerated 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute.aspx)與[無](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.110).aspx)參數`CourseID`屬性指定主索引鍵值是使用者所提供，而不是不是資料庫產生。
+[DatabaseGenerated 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute.aspx)與[無](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.110).aspx)參數`CourseID`屬性指定主索引鍵值是使用者所提供，而不是不是資料庫產生。
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample16.cs)]
 
@@ -241,11 +241,11 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="the-column-attribute"></a>資料行屬性
 
-您所用的稍早[資料行屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.columnattribute.aspx)若要變更資料行名稱的對應。 在程式碼`Department`實體，`Column`屬性用來變更 SQL 資料類型對應，以便將會定義資料行，使用 SQL Server [money](https://msdn.microsoft.com/en-us/library/ms179882.aspx)資料庫中的類型：
+您所用的稍早[資料行屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.columnattribute.aspx)若要變更資料行名稱的對應。 在程式碼`Department`實體，`Column`屬性用來變更 SQL 資料類型對應，以便將會定義資料行，使用 SQL Server [money](https://msdn.microsoft.com/library/ms179882.aspx)資料庫中的類型：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample21.cs)]
 
-資料行對應通常是不必要的因為 Entity Framework 通常會選擇根據您定義屬性的 CLR 類型的適當 SQL Server 資料類型。 CLR`decimal`類型會對應至 SQL Server`decimal`型別。 但在此情況下您知道貨幣金額將會保留資料行和[money](https://msdn.microsoft.com/en-us/library/ms179882.aspx)資料類型是更適合的。
+資料行對應通常是不必要的因為 Entity Framework 通常會選擇根據您定義屬性的 CLR 類型的適當 SQL Server 資料類型。 CLR`decimal`類型會對應至 SQL Server`decimal`型別。 但在此情況下您知道貨幣金額將會保留資料行和[money](https://msdn.microsoft.com/library/ms179882.aspx)資料類型是更適合的。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵和導覽屬性
 
@@ -319,7 +319,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 ## <a name="customize-the-data-model-by-adding-code-to-the-database-context"></a>將程式碼加入至資料庫內容中自訂資料模型
 
-接下來您要加入新的實體來`SchoolContext`類別和自訂的對應使用某些[fluent API](https://msdn.microsoft.com/en-us/data/jj591617)呼叫。 （應用程式開發介面是"fluent 應用程式開發 「 的因為它通常由串連成單一陳述式在一起的方法呼叫的一系列函式）。
+接下來您要加入新的實體來`SchoolContext`類別和自訂的對應使用某些[fluent API](https://msdn.microsoft.com/data/jj591617)呼叫。 （應用程式開發介面是"fluent 應用程式開發 「 的因為它通常由串連成單一陳述式在一起的方法呼叫的一系列函式）。
 
 在本教學課程中，您將使用 fluent API 僅適用於資料庫對應時，您不能與屬性。 不過，您也可以使用 fluent 應用程式開發的應用程式開發介面指定大部分的格式設定、 驗證和您可以使用屬性的對應規則。 某些屬性，例如`MinimumLength`fluent 應用程式開發的應用程式開發介面無法套用。 如前所述，`MinimumLength`並不會變更結構描述中，它只適用於用戶端和伺服器端驗證規則
 
@@ -329,7 +329,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample29.cs)]
 
-新的陳述式中[OnModelCreating](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx)方法，會設定 「 多對多聯結資料表：
+新的陳述式中[OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx)方法，會設定 「 多對多聯結資料表：
 
 - 之間的多對多關聯性`Instructor`和`Course`實體，程式碼指定聯結資料表的資料表和資料行名稱。 程式碼第一次可以設定多對多關聯性為您沒有這個程式碼，但如果在未呼叫它，就會預設名稱例如`InstructorInstructorID`如`InstructorID`資料行。
 

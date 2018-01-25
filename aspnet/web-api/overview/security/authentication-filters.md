@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-filters
 msc.type: authoredcontent
-ms.openlocfilehash: eee4e7accd338262698d127ed08d4182608839ab
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7c704cc351876b49ec143a49b25cc0ca83876e06
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的驗證篩選條件
 ====================
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="implementing-a-web-api-authentication-filter"></a>實作 Web API 驗證篩選條件
 
-在 Web API 驗證篩選條件會實作[System.Web.Http.Filters.IAuthenticationFilter](https://msdn.microsoft.com/en-us/library/system.web.http.filters.iauthenticationfilter.aspx)介面。 它們也應該繼承自**System.Attribute**，以便套用做為屬性。
+在 Web API 驗證篩選條件會實作[System.Web.Http.Filters.IAuthenticationFilter](https://msdn.microsoft.com/library/system.web.http.filters.iauthenticationfilter.aspx)介面。 它們也應該繼承自**System.Attribute**，以便套用做為屬性。
 
 **IAuthenticationFilter**介面有兩種方法：
 
@@ -168,4 +168,4 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="additional-resources"></a>其他資源
 
-[ASP.NET Web API 的安全性篩選](https://msdn.microsoft.com/en-us/magazine/dn781361.aspx)(MSDN Magazine)
+[ASP.NET Web API 的安全性篩選](https://msdn.microsoft.com/magazine/dn781361.aspx)(MSDN Magazine)

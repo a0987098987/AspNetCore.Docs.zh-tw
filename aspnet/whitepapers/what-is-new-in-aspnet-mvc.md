@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
-ms.openlocfilehash: e7f92dd7a09d1986ad775203effcbce76fb0e6f4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29692b380f0ad1673459681042610876d152a76f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="whats-new-in-aspnet-mvc-2"></a>ASP.NET MVC 2 中最新消息
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 [Html.ValidationSummary Helper 方法可顯示模型層級錯誤](#_TOC3_14)   
 [T4 範本在 Visual Studio 產生程式碼在特定的.NET framework 目標版本](#_TOC3_15)[應用程式開發介面改進](#_TOC4)  
 [重大變更](#_TOC5)  
-[免責聲明](#_TOC6)  
+[Disclaimer](#_TOC6)  
 
 ## <a id="_TOC1"></a>簡介
 
@@ -88,7 +88,7 @@ ASP.NET MVC 2 的預設專案範本在 Global.asax 檔案的程式碼中包含 R
 
 ### <a id="_TOC3_3"></a>支援非同步控制器
 
-ASP.NET MVC 2 現在可讓以非同步方式處理要求的控制站。 藉由使用伺服器經常呼叫改為呼叫非封鎖的對應項目 （如網路要求） 的封鎖作業，這可能會導致效能提升。 如需詳細資訊，請參閱[在 ASP.NET MVC 中使用非同步控制器](https://msdn.microsoft.com/en-us/library/ee728598(v=VS.100).aspx)MSDN 上的主題。
+ASP.NET MVC 2 現在可讓以非同步方式處理要求的控制站。 藉由使用伺服器經常呼叫改為呼叫非封鎖的對應項目 （如網路要求） 的封鎖作業，這可能會導致效能提升。 如需詳細資訊，請參閱[在 ASP.NET MVC 中使用非同步控制器](https://msdn.microsoft.com/library/ee728598(v=VS.100).aspx)MSDN 上的主題。
 
 ### <a id="_TOC3_4"></a>DefaultValueAttribute 在動作方法參數的支援
 
@@ -104,7 +104,7 @@ System.ComponentModel.DefaultValueAttribute 類別可讓動作方法的引數參
 
 - / 文件/檢視/123
 - / 文件/檢視/123？ 頁面 = 1 （有效地如同前一個要求）
-- / 文件/檢視/123？ 頁面 = 2
+- /Article/View/123?page=2
 
 若沒有 DefaultValueAttribute 屬性從上述清單的第一個 URL 不會執行，因為頁面引數是尚未提供其值不可為 null 的實值型別。
 
@@ -142,7 +142,7 @@ ModelMetadataProvider 類別提供用來取得內檢視的模型中繼資料的�
 
 ViewDataDictionary 類別會公開包含由 ModelMetadataProvider 類別從模型擷取中繼資料的 ModelMetadata 物件。 這可讓取用這個中繼資料，並據以調整其輸出的樣板化 helper。
 
-如需詳細資訊，請參閱文件[ModelMetadata](https://msdn.microsoft.com/en-us/library/system.web.mvc.modelmetadataprovider(VS.100).aspx)和[ModelMetadataProvider](https://msdn.microsoft.com/en-us/library/system.web.mvc.modelmetadataprovider(VS.100).aspx)類別。
+如需詳細資訊，請參閱文件[ModelMetadata](https://msdn.microsoft.com/library/system.web.mvc.modelmetadataprovider(VS.100).aspx)和[ModelMetadataProvider](https://msdn.microsoft.com/library/system.web.mvc.modelmetadataprovider(VS.100).aspx)類別。
 
 ### <a id="_TOC3_7"></a>支援 DataAnnotations 屬性
 
@@ -152,7 +152,7 @@ ASP.NET MVC 2 支援使用 RangeAttribute、 出現 RequiredAttribute、 StringL
 
 ### <a id="_TOC3_8"></a>模型驗證程式提供者
 
-模型驗證提供者類別代表模型提供驗證邏輯的抽象概念。 ASP.NET MVC 包括根據 System.ComponentModel.DataAnnotations 命名空間中包含的驗證屬性的預設提供者。 您也可以建立自己的驗證提供者定義模型的自訂驗證規則和自訂驗證規則的對應。 如需詳細資訊，請參閱文件[ModelValidatorProvider](https://msdn.microsoft.com/en-us/library/system.web.mvc.ModelValidatorProvider(VS.100).aspx)類別。
+模型驗證提供者類別代表模型提供驗證邏輯的抽象概念。 ASP.NET MVC 包括根據 System.ComponentModel.DataAnnotations 命名空間中包含的驗證屬性的預設提供者。 您也可以建立自己的驗證提供者定義模型的自訂驗證規則和自訂驗證規則的對應。 如需詳細資訊，請參閱文件[ModelValidatorProvider](https://msdn.microsoft.com/library/system.web.mvc.ModelValidatorProvider(VS.100).aspx)類別。
 
 ### <a id="_TOC3_9"></a>用戶端驗證
 
@@ -289,7 +289,7 @@ DefaultControllerFactory 類別已修正藉由移除 RequestContext 屬性。 �
 如果您使用 「 區域 」 功能，請務必使用 {區域} 做為路由 URL 的一部分。
 
 
-## <a id="_TOC6"></a>免責聲明
+## <a id="_TOC6"></a>  Disclaimer
 
 這是一份初稿，內容在本文所述的軟體於正式商業發行前都可能有所更動。
 
@@ -303,7 +303,7 @@ DefaultControllerFactory 類別已修正藉由移除 RequestContext 屬性。 �
 
 除非特別註明，否則本文件中所述，用來舉例之公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所和事件皆為虛構，沒有意圖或不應該推斷為與任何真實存在的公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所或事件有所關聯。
 
-© 2010 Microsoft Corporation。 著作權所有，並保留一切權利。
+© 2010 Microsoft Corporation. 著作權所有，並保留一切權利。
 
 Microsoft 和 Windows 是 Microsoft Corporation 在美國及/或其他國家/地區的註冊商標或商標。
 

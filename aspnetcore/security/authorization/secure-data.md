@@ -8,11 +8,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: security/authorization/secure-data
-ms.openlocfilehash: 861ac619c7f5fb19a56c59536e20724d96bbddca
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 7404b8ec20ed6a00554c8a7ade9a282362b9a186
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -225,7 +225,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-html[Main](secure-data/samples/final/Views/Contacts/Index.cshtml?range=63-84)]
 
-警告： 隱藏連結沒有編輯或刪除資料的權限的使用者不會不安全的應用程式。 隱藏連結，讓應用程式更多的使用者易記顯示唯一有效的連結。 使用者可以 hack 叫用 編輯和刪除作業沒有自己的資料產生的 Url。  控制器必須是安全的存取檢查重複的。
+警告： 隱藏連結之使用者無權編輯或刪除資料的不安全的應用程式。 隱藏連結，讓應用程式更多的使用者易記顯示唯一有效的連結。 使用者可以 hack 叫用 編輯和刪除作業沒有自己的資料產生的 Url。  控制器必須是安全的存取檢查重複的。
 
 ### <a name="update-the-details-view"></a>更新詳細資料檢視
 
@@ -304,7 +304,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[Main](secure-data/samples/starter/Startup.cs?name=Configure&highlight=28-)]
 
-測試應用程式植入資料庫。 如果連絡人 DB 中沒有任何資料列種子方法不會執行。
+測試應用程式植入資料庫。 請連絡資料庫中沒有任何資料列時，不執行 seed 方法。
 
 ### <a name="create-a-class-used-in-the-tutorial"></a>建立本教學課程中使用的類別
 

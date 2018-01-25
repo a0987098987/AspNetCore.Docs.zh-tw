@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: a5538744dfaff76f28c5f17d8f5d782ef3f6c118
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a7995844ee6ed19efa130c4f6c019214d6652ea7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-iis-as-a-test-environment---5-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署至 IIS 做為測試環境-5 的 12
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何在 ASP.NET web 應用程式部署至 IIS 在本機電腦上。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 如果您看到只有兩個應用程式集區，而這兩種都設定為.NET Framework 2.0，您必須安裝在 IIS 中的 ASP.NET 4:
 
-- 開啟命令提示字元視窗，以滑鼠右鍵按一下**命令提示字元**windows**啟動**功能表，然後選取**系統管理員身分執行**。 然後執行[aspnet\_regiis.exe](https://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx)在 IIS 中，使用下列命令安裝 ASP.NET 4。 （在 64 位元系統中，取代"架構"與"Framework64"）。
+- 開啟命令提示字元視窗，以滑鼠右鍵按一下**命令提示字元**windows**啟動**功能表，然後選取**系統管理員身分執行**。 然後執行[aspnet\_regiis.exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx)在 IIS 中，使用下列命令安裝 ASP.NET 4。 （在 64 位元系統中，取代"架構"與"Framework64"）。
 
     [!code-console[Main](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/samples/sample2.cmd)]
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/10/2017
 - 建立*部署套件*及使用 IIS 管理員 UI 進行安裝。 部署套件組成*.zip*檔案，其中包含所有檔案和在 IIS 中安裝站台所需的中繼資料。
 - 建立部署套件，並使用命令列進行安裝。
 
-您已在上一個教學課程中設定 Visual Studio，來自動化部署工作套用到所有這三個方法的程序。 在這些教學課程中，您將使用這些方法的第一個。 使用部署套件的相關資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/en-us/library/bb386521.aspx)。
+您已在上一個教學課程中設定 Visual Studio，來自動化部署工作套用到所有這三個方法的程序。 在這些教學課程中，您將使用這些方法的第一個。 使用部署套件的相關資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521.aspx)。
 
 在發行之前，請確定您系統管理員模式中執行 Visual Studio。 (在 Windows 7**啟動**功能表上，以滑鼠右鍵按一下您要使用的 Visual Studio 版本的圖示，然後選取**系統管理員身分執行**。)需要發行只有當您發行至 IIS 在本機電腦上的系統管理員模式。
 
@@ -244,7 +244,7 @@ ms.lasthandoff: 11/10/2017
 
 - [IIS Express 概觀](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)IIS.net 網站上。
 - [導入 IIS Express](https://weblogs.asp.net/scottgu/archive/2010/06/28/introducing-iis-express.aspx) Scott Guthrie 的部落格上。
-- [如何： 在 Visual Studio 中的 Web 專案指定的 Web 伺服器](https://msdn.microsoft.com/en-us/library/ms178108.aspx)。
+- [如何： 在 Visual Studio 中的 Web 專案指定的 Web 伺服器](https://msdn.microsoft.com/library/ms178108.aspx)。
 - [核心 IIS 之間的差異和 ASP.NET 程式開發伺服器](../deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md)ASP.NET 網站上。
 - [在 30 秒內測試 ASP.NET MVC 或 Web Form 應用程式在 IIS 7 上](https://blogs.msdn.com/b/rickandy/archive/2011/04/22/test-you-asp-net-mvc-or-webforms-application-on-iis-7-in-30-seconds.aspx)Rick Anderson 部落格上。 此項目提供的範例使用 Visual Studio 程式開發伺服器 (Cassini) 來測試為何不可靠，做為測試在 IIS Express 中，以及在 IIS Express 測試為何無法做為測試在 IIS 中的可靠性。
 

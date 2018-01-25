@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: aaa061e61b9bab5b33083851624f0487b2cf6473
-ms.sourcegitcommit: ccf08615ad59bc6f654560de33b93396113a2eb0
+ms.openlocfilehash: ccf4329e6684d07570bfaabfaa1a570664fb2ca3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/11/2017
 6. 選取**Web**索引標籤，然後貼到 SSL URL**專案 Url**方塊。 儲存檔案 (Ctl + S)。 您將需要此 URL，若要設定 Facebook 和 Google 驗證的應用程式。  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image10.png)
-7. 新增[RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx)屬性`Home`需要的所有要求的控制站都必須使用 HTTPS。 最安全的作法是新增[RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx)應用程式的篩選。 請參閱節&quot;保護應用程式的 SSL 和授權屬性&quot;在我 tutoral[驗證與 SQL 資料庫中建立 ASP.NET MVC 應用程式並部署至 Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 如下所示主控制器的一部分。
+7. 新增[RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)屬性`Home`需要的所有要求的控制站都必須使用 HTTPS。 最安全的作法是新增[RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)應用程式的篩選。 請參閱節&quot;保護應用程式的 SSL 和授權屬性&quot;在我 tutoral[驗證與 SQL 資料庫中建立 ASP.NET MVC 應用程式並部署至 Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 如下所示主控制器的一部分。
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample1.cs?highlight=1)]
 8. 按 CTRL+F5 執行應用程式。 如果您已安裝憑證，在過去，您可以略過此章節的其餘部分，並跳至[OAuth 2 建立 Google 應用程式和應用程式連接至專案](#goog)，否則請遵循指示信任的自我簽署IIS Express 產生的憑證。  
@@ -253,9 +253,9 @@ Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 
 
 從**工具**功能表上，按一下  **NuGet 封裝管理員**，然後按一下  **Package Manager Console** (PMC)。 PMC 中輸入下列命令。
 
-1. Enable-migrations
+1. Enable-Migrations
 2. 新增移轉初始化
-3. 更新資料庫
+3. Update-Database
 
 執行應用程式，並使用 FaceBook 和 Google 登入並註冊某些使用者。
 
@@ -286,7 +286,7 @@ Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 
 
 1. 如何將您的應用程式部署至 Azure。
 2. 如何保護您的角色的應用程式。
-3. 如何保護您的應用程式[RequireHttps](https://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx)和[授權](https://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx)篩選器。
+3. 如何保護您的應用程式[RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx)和[授權](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.100).aspx)篩選器。
 4. 如何使用應用程式開發介面的成員資格加入使用者和角色。
 
 請在您所喜歡本教學課程的方式，我們可以改進留下意見反應。 您也可以要求在新的主題[顯示我如何使用程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。 您甚至可以要求並票選加入 ASP.NET 的新功能。 例如，您可以在此投票的工具[建立及管理使用者和角色。](http://aspnet.uservoice.com/forums/41199-general-asp-net/suggestions/5646857-asp-net-identity-membership-db-tool-to-mangage-use)

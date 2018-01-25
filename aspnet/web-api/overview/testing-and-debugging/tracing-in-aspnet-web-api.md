@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f35c8a10018ce796e2d905d6ee839ff09bb380a1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7392ae5d9bc4c3aab45a9373099a0ee18e873a4f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的追蹤
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > - [Visual Studio 2017](https://www.visualstudio.com/downloads/) （也可用於 Visual Studio 2015）
 > - Web API 2
-> - [用於 Microsoft.AspNet.WebApi.Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
+> - [Microsoft.AspNet.WebApi.Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
 
 
 ## <a name="enable-systemdiagnostics-tracing-in-web-api"></a>啟用 System.Diagnostics 中 Web API 追蹤
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample2.cs?highlight=6)]
 
-這個程式碼加入[SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/en-us/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) Web API 管線的類別。 **SystemDiagnosticsTraceWriter**類別會將寫入追蹤[System.Diagnostics.Trace](https://msdn.microsoft.com/en-us/library/system.diagnostics.trace)。
+這個程式碼加入[SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) Web API 管線的類別。 **SystemDiagnosticsTraceWriter**類別會將寫入追蹤[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)。
 
 若要查看追蹤，請在偵錯工具中執行應用程式。 在瀏覽器中，瀏覽至`/api/values`。
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 [![](tracing-in-aspnet-web-api/_static/image7.png)](tracing-in-aspnet-web-api/_static/image6.png)
 
-因為**SystemDiagnosticsTraceWriter**寫入追蹤**System.Diagnostics.Trace**，您可以註冊其他追蹤接聽項; 例如，要寫入追蹤記錄檔。 如需有關追蹤寫入器的詳細資訊，請參閱[追蹤接聽項](https://msdn.microsoft.com/en-us/library/4y5y10s7.aspx)MSDN 上的主題。
+因為**SystemDiagnosticsTraceWriter**寫入追蹤**System.Diagnostics.Trace**，您可以註冊其他追蹤接聽項; 例如，要寫入追蹤記錄檔。 如需有關追蹤寫入器的詳細資訊，請參閱[追蹤接聽項](https://msdn.microsoft.com/library/4y5y10s7.aspx)MSDN 上的主題。
 
 ### <a name="configuring-systemdiagnosticstracewriter"></a>設定的 SystemDiagnosticsTraceWriter
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 若要取得追蹤寫入器，呼叫**HttpConfiguration.Services.GetTraceWriter**。 在控制站，這個方法是透過可存取**ApiController.Configuration**屬性。
 
-若要撰寫追蹤，您可以呼叫**ITraceWriter.Trace**方法直接，但[ITraceWriterExtensions](https://msdn.microsoft.com/en-us/library/system.web.http.tracing.itracewriterextensions.aspx)類別定義會更好記某些擴充方法。 例如，**資訊**如上所示的方法建立的追蹤使用追蹤層級**資訊**。
+若要撰寫追蹤，您可以呼叫**ITraceWriter.Trace**方法直接，但[ITraceWriterExtensions](https://msdn.microsoft.com/library/system.web.http.tracing.itracewriterextensions.aspx)類別定義會更好記某些擴充方法。 例如，**資訊**如上所示的方法建立的追蹤使用追蹤層級**資訊**。
 
 ## <a name="web-api-tracing-infrastructure"></a>Web API 追蹤基礎結構
 

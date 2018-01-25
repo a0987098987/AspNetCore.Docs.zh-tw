@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: fa1cd068a7466e0b6b6fe7716090c8a7afd2a4d5
-ms.sourcegitcommit: ec9371e2fbfcb8d62e7e7cae69e7752f3f205385
+ms.openlocfilehash: 6ff9fd279a03197f761454bba3f180d7428b1b1f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-aspnet-web-api-2-c"></a>開始使用 ASP.NET Web API 2 (C#)
 ====================
@@ -47,7 +47,7 @@ ASP.NET Web API 是用於建置的 web Api 在.NET Framework 之上的架構。 
 
 ![](tutorial-your-first-web-api/_static/image2.png)
 
-在**新增 ASP.NET 專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考&quot;，檢查**Web API**。 按一下 [確定]。
+在**新增 ASP.NET 專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考&quot;，檢查**Web API**。 按一下 [確定 **Deploying Office Solutions**]。
 
 ![](tutorial-your-first-web-api/_static/image3.png)
 
@@ -107,12 +107,12 @@ Web API 中*控制器*是用來處理 HTTP 要求的物件。 我們會將新增
 - `GetAllProducts`方法會傳回完整的產品做為清單**IEnumerable&lt;產品&gt;**型別。
 - `GetProduct`方法查閱單一產品的識別碼。
 
-就這麼容易 ！ 您必須使用 web API。 在控制器上的每個方法會對應至一或多個 Uri:
+就這麼容易！ 您必須使用 web API。 在控制器上的每個方法會對應至一或多個 Uri:
 
 | 控制器方法 | URI |
 | --- | --- |
 | GetAllProducts | / api/產品 |
-| GetProduct | /api/產品/*識別碼* |
+| GetProduct | /api/products/*id* |
 
 如`GetProduct`方法，*識別碼*URI 中是預留位置。 例如，若要取得識別碼 5 的產品，URI 是`api/products/5`。
 
@@ -186,11 +186,11 @@ JQuery [getJSON](http://api.jquery.com/jQuery.getJSON/)函式會將 AJAX 要求�
 
 您需要 Azure 帳戶，以將此方案部署到 Azure。 如果您沒有帳戶，您會有下列選項：
 
-- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
-- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
+- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
+- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 支援 POST、 PUT 和 DELETE 動作，並將寫入資料庫的 HTTP 服務的更完整的範例，請參閱[Entity Framework 6 與使用 Web API 2](../data/using-web-api-with-entity-framework/part-1.md)。
 - 如需建立流暢並反應快速 web HTTP 服務上的應用程式相關資訊，請參閱[單一網頁應用程式的 ASP.NET](../../../single-page-application/index.md)。
-- 如需如何將 Visual Studio web 專案部署至 Azure 應用程式服務資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/)。
+- 如需如何將 Visual Studio web 專案部署至 Azure 應用程式服務資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)。

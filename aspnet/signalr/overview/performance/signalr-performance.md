@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: dec2602e47fbcb838643a506a7e3feebda9d9c81
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4468ee8031afccca847db67bd4b5b263f0a2c5ac
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================
@@ -87,7 +87,7 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 
 ### <a name="tuning-your-signalr-server-for-performance"></a>微調您 SignalR 的伺服器效能
 
-下列組態設定可以用來微調您的伺服器，以提升效能的 SignalR 應用程式中。 如需如何改善 ASP.NET 應用程式效能的一般資訊，請參閱[改善 ASP.NET 效能](https://msdn.microsoft.com/en-us/library/ff647787.aspx)。
+下列組態設定可以用來微調您的伺服器，以提升效能的 SignalR 應用程式中。 如需如何改善 ASP.NET 應用程式效能的一般資訊，請參閱[改善 ASP.NET 效能](https://msdn.microsoft.com/library/ff647787.aspx)。
 
 **SignalR 的組態設定**
 
@@ -104,7 +104,7 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
     [!code-console[Main](signalr-performance/samples/sample4.cmd)]
 - **應用程式集區 QueueLength**： 這是 Http.sys 應用程式集區排入佇列的要求數目上限。 佇列已滿時，新的要求就會收到 503 「 服務無法使用 」 回應。 預設值為 1000。
 
-    縮短中裝載您的應用程式的應用程式集區的工作者處理序的佇列長度，將會節省記憶體資源。 如需詳細資訊，請參閱[管理、 調整及設定應用程式集區](https://technet.microsoft.com/en-us/library/cc745955.aspx)。
+    縮短中裝載您的應用程式的應用程式集區的工作者處理序的佇列長度，將會節省記憶體資源。 如需詳細資訊，請參閱[管理、 調整及設定應用程式集區](https://technet.microsoft.com/library/cc745955.aspx)。
 
 **ASP.NET 組態設定**
 
@@ -215,7 +215,7 @@ SignalR 效能和調整的最新簡報，請參閱[調整透過 ASP.NET SignalR 
 
 下列度量會測量流量和向外延展提供者所產生的錯誤。 A**資料流**在此內容是縮放單位向外延展提供者使用; 如果這是資料表，如果使用 SQL Server、 使用服務匯流排時，如果某個主題和訂用帳戶使用 Redis。 每個資料流可確保已排序的讀取和寫入作業。單一資料流是潛在的小數位數瓶頸，因此可以增加的資料流數目，有助於減少該瓶頸。 如果使用多個資料流，SignalR 會自動分配這些資料流的方式，可確保從任何給定的連線傳送訊息的順序 （分區） 訊息。
 
-[MaxQueueLength](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)設定控制的維護的 SignalR 範圍外傳送佇列長度。 將它的值大於 0 會在傳送佇列以傳送一次設定的訊息後擋板以將所有訊息。 如果佇列的大小超出設定的長度，後續的呼叫將會立即失敗並[InvalidOperationException](https://msdn.microsoft.com/en-us/library/system.invalidoperationexception(v=vs.118).aspx)直到佇列中的訊息數小於設定一次。 因為已實作的背板通常已有自己的佇列或流程控制預設會停用佇列。 在 SQL Server 連接共用實際上會限制傳送一次進行的作業數目。
+[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)設定控制的維護的 SignalR 範圍外傳送佇列長度。 將它的值大於 0 會在傳送佇列以傳送一次設定的訊息後擋板以將所有訊息。 如果佇列的大小超出設定的長度，後續的呼叫將會立即失敗並[InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception(v=vs.118).aspx)直到佇列中的訊息數小於設定一次。 因為已實作的背板通常已有自己的佇列或流程控制預設會停用佇列。 在 SQL Server 連接共用實際上會限制傳送一次進行的作業數目。
 
 根據預設，只有一個資料流使用的 SQL Server 和 Redis，五個資料流用於服務匯流排和已停用佇列，但可以變更這些設定，透過 SQL Server 和服務匯流排上的設定：
 
@@ -234,7 +234,7 @@ A**緩衝處理**資料流是已進入錯誤的狀態，則當資料流處於錯
 - **向外延展資料流開啟**
 - **向外延展資料流緩衝**
 - **範圍外錯誤總數**
-- **範圍外錯誤數/秒**
+- **Scaleout Errors/Sec**
 - **範圍外傳送佇列長度**
 
 如需有關這些計數器會測量的詳細資訊，請參閱[SignalR 範圍外使用 Azure 服務匯流排](scaleout-with-windows-azure-service-bus.md)。
@@ -245,13 +245,13 @@ A**緩衝處理**資料流是已進入錯誤的狀態，則當資料流處於錯
 
 下列效能計數器也可能在監視應用程式的效能很有用。
 
-**記憶體**
+**Memory**
 
 - .NET CLR 記憶體\\全部堆積 （w3wp) 中的 # 位元組
 
 **ASP.NET**
 
-- Asp.net\requests Current
+- ASP.NET\Requests Current
 - ASP.NET\Queued
 - ASP.NET\Rejected
 
@@ -280,6 +280,6 @@ A**緩衝處理**資料流是已進入錯誤的狀態，則當資料流處於錯
 
 如需 ASP.NET 效能監視與微調的詳細資訊，請參閱下列主題：
 
-- [ASP.NET 效能概觀](https://msdn.microsoft.com/en-us/library/cc668225(v=vs.100).aspx)
+- [ASP.NET 效能概觀](https://msdn.microsoft.com/library/cc668225(v=vs.100).aspx)
 - [IIS 7.5、 IIS 7.0 和 IIS 6.0 的 ASP.NET 執行緒用法](https://blogs.msdn.com/b/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx)
-- [&lt;應用程式集區&gt;項目 （Web 設定）](https://msdn.microsoft.com/en-us/library/dd560842.aspx)
+- [&lt;應用程式集區&gt;項目 （Web 設定）](https://msdn.microsoft.com/library/dd560842.aspx)

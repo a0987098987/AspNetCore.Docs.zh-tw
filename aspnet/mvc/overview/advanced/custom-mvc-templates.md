@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
-ms.openlocfilehash: a1fe1844e582f402a1eed9ddf10ee249e856b083
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c3ddd4e341511f520927e924b25d890088adb69e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-mvc-template"></a>自訂的 MVC 範本
 ====================
@@ -26,7 +26,7 @@ MVC 3 Tools Update for Visual Studio 2010 的版本導入了 MVC 專案的個別
 
 新增自訂的範本是依賴使用登錄來顯示新的範本才能 MVC 專案精靈棘手程序。 新範本的作者必須將其包裝在 MSI 以確保在安裝時，會建立必要的登錄項目內。 替代方案是包含可用範本的 ZIP 檔案，然後使用者以手動方式建立所需的登錄項目。
 
-上述方法皆不理想，我們決定將利用現有的基礎結構所提供的某些[VSIX](https://msdn.microsoft.com/en-us/library/ff363239.aspx)延伸模組，以便更容易撰寫，發佈和安裝自訂起始 MVC 4 的 MVC 範本適用於 Visual Studio 2012。 這種方法的好處包括：
+上述方法皆不理想，我們決定將利用現有的基礎結構所提供的某些[VSIX](https://msdn.microsoft.com/library/ff363239.aspx)延伸模組，以便更容易撰寫，發佈和安裝自訂起始 MVC 4 的 MVC 範本適用於 Visual Studio 2012。 這種方法的好處包括：
 
 - VSIX 擴充功能包含多個範本可支援不同的語言 （C# 和 Visual Basic） 和多個檢視引擎 （ASPX 和 Razor）。
 - VSIX 擴充功能可以針對多個 Sku 的 Visual Studio 包括 Express Sku。
@@ -63,15 +63,15 @@ MVC 3 Tools Update for Visual Studio 2010 的版本導入了 MVC 專案的個別
 
 **資產** 索引標籤用來將所有內容檔加入至 VSIX。 因為 MVC 要求自訂中繼資料，您會編輯而不是使用 VSIX 資訊清單檔案的原始 XML**資產**新增內容 索引標籤。 啟動者加入 VSIX 專案的範本內容。 請務必資料夾及其內容的結構鏡像專案的版面配置。 下列範例包含四個衍生自基本 MVC 專案範本的專案範本。 請確定組成您的專案範本 （ProjectTemplates 資料夾下的所有內容） 的所有檔案會都新增到**內容**itemgroup 在 VSIX 專案檔案，而且每個項目包含**複製到輸出目錄**和**IncludeInVsix**設定中繼資料，如下列範例所示。
 
-&lt;內容包括 =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
+&lt;Content Include=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
 
-&lt;複製到輸出目錄&gt;一律&lt;/CopyToOutputDirectory&gt;
+&lt;CopyToOutputDirectory&gt;Always&lt;/CopyToOutputDirectory&gt;
 
 &lt;IncludeInVSIX&gt;true&lt;/IncludeInVSIX&gt;
 
-&lt;/ 內容&gt;
+&lt;/Content&gt;
 
-如果沒有，IDE 會嘗試編譯範本的內容，當您建立此 VSIX，而且您可能會看到錯誤。 範本中的程式碼檔通常包含特殊[範本參數](https://msdn.microsoft.com/en-us/library/eehb4faa(v=vs.110).aspx)時的專案範本會具現化，因此無法加以編譯在 IDE 中使用 Visual Studio。
+如果沒有，IDE 會嘗試編譯範本的內容，當您建立此 VSIX，而且您可能會看到錯誤。 範本中的程式碼檔通常包含特殊[範本參數](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx)時的專案範本會具現化，因此無法加以編譯在 IDE 中使用 Visual Studio。
 
 ![底下提供說明，包括方案總管](custom-mvc-templates/_static/image6.jpg)
 
@@ -83,27 +83,27 @@ MVC 3 Tools Update for Visual Studio 2010 的版本導入了 MVC 專案的個別
 
 只將檔案加入至 VSIX 不足以向 MVC 精靈中的範本。 您需要為 MVC 精靈提供的範本名稱、 描述、 支援的檢視引擎和程式設計語言等資訊。 這項資訊會在相關聯的自訂屬性執行**&lt;資產&gt;**每個項目**vstemplate**檔案。
 
-&lt;資產 d:VsixSubPath =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
+&lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
-類型 =&quot;Microsoft.VisualStudio.Mvc.Template&quot;
+Type=&quot;Microsoft.VisualStudio.Mvc.Template&quot;
 
-d:Source =&quot;檔案&quot;
+d:Source=&quot;File&quot;
 
-路徑 =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
+Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
 
-ProjectType =&quot;MVC&quot;
+ProjectType=&quot;MVC&quot;
 
-語言 =&quot;C#&quot;
+Language=&quot;C#&quot;
 
-ViewEngine =&quot;Aspx&quot;
+ViewEngine=&quot;Aspx&quot;
 
-TemplateId =&quot;MyMvcApplication&quot;
+TemplateId=&quot;MyMvcApplication&quot;
 
 標題 =&quot;自訂基本 Web 應用程式&quot;
 
 描述 =&quot;自訂範本衍生自基本 MVC web 應用程式 (Razor)&quot;
 
-版本 =&quot;4.0&quot;/&gt;
+Version=&quot;4.0&quot;/&gt;
 
 以下是必須要有自訂屬性的說明：
 

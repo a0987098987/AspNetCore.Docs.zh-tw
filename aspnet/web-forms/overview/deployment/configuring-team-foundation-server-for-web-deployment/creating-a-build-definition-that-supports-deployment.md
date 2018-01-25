@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: c2e7a768c2cf9900731b822ec187093a4b250ead
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e5610753968328e5d0f1dba4cbbfed08480fd773
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>建立組建定義支援的部署
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 - 各種其他建置流程參數。
 
 > [!NOTE]
-> 如需組建定義的詳細資訊，請參閱[定義建置流程](https://msdn.microsoft.com/en-us/library/ms181715.aspx)。
+> 如需組建定義的詳細資訊，請參閱[定義建置流程](https://msdn.microsoft.com/library/ms181715.aspx)。
 
 
 本主題將說明如何建立組建定義使用 CI，如此當開發人員簽入新的內容時，會觸發建置。 如果建置成功，則組建服務執行自訂專案檔，將方案部署到測試環境。
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/10/2017
 11. 檔案位置的自訂專案與您控制的部署程序，選取檔案，然後按一下瀏覽**確定**。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image6.png)
-12. **要建置的項目**對話方塊現在應該會顯示兩個項目。 按一下 [確定]。
+12. **要建置的項目**對話方塊現在應該會顯示兩個項目。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image7.png)
 13. 在**程序**索引標籤的**建置流程參數**資料表中，展開 **進階**> 一節。
@@ -149,7 +149,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="monitor-the-build-process"></a>監視建置程序
 
-TFS 提供廣泛的功能，可協助您監視在建置程序。 例如，TFS 可以傳送電子郵件或完成組建後，工作列通知區域中顯示的警示。 如需詳細資訊，請參閱[執行和監視組建](https://msdn.microsoft.com/en-us/library/ms181721.aspx)。
+TFS 提供廣泛的功能，可協助您監視在建置程序。 例如，TFS 可以傳送電子郵件或完成組建後，工作列通知區域中顯示的警示。 如需詳細資訊，請參閱[執行和監視組建](https://msdn.microsoft.com/library/ms181721.aspx)。
 
 ## <a name="conclusion"></a>結論
 
@@ -159,7 +159,7 @@ TFS 提供廣泛的功能，可協助您監視在建置程序。 例如，TFS �
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/en-us/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/en-us/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/en-us/library/ms181722.aspx)。
+如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/library/ms181722.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](configuring-a-tfs-build-server-for-web-deployment.md)

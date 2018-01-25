@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 3de952224e23eed29f90ed0e8c662e4ee3f531ce
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8b1bdae048afc78399ccc7b0eac7125d9b983c13
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="whats-new-in-aspnet-mvc-4"></a>ASP.NET MVC 4 中最新消息
 ====================
 由[Web 營小組](https://twitter.com/webcamps)
 
-[下載 Web 營訓練套件](http://www.microsoft.com/en-us/download/29843)
+[下載 Web 營訓練套件](http://www.microsoft.com/download/29843)
 
 > ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.NET 和.NET framework 的可擴充、 以標準為基礎的 web 應用程式的架構。 這個新，第四個版本的 framework 著重於讓行動裝置 web 應用程式開發更容易。
 > 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 在這個實際操作實驗室中，您將啟動 ASP.NET MVC 4&quot;網際網路應用程式&quot;建立相片圖庫的應用程式的專案範本。 您將漸進式增強使用 jQuery Mobile 和 ASP.NET MVC 4 的新功能，才能讓它與不同的行動裝置和桌面的網頁瀏覽器相容的應用程式。 您也將了解程式碼產生和 ASP.NET MVC 4 如何讓您更輕鬆地撰寫非同步動作方法，支援工作的新程式碼訣竅&lt;ActionResult&gt;傳回型別。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
 
 
 <a id="Objectives"></a>
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/10/2017
 
 - [Microsoft Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web)或上層 (讀取[附錄 B](#AppendixB)如需有關如何安裝指示)。
 - [ASP.NET MVC 4](../../../mvc4.md) （隨附於 Microsoft Visual Studio 2012 安裝）
-- Windows Phone 模擬器 (包含在[Windows Phone 7.1.1 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=29233))
+- Windows Phone 模擬器 (包含在[Windows Phone 7.1.1 SDK](https://www.microsoft.com/download/details.aspx?id=29233))
 - 選用- [WebMatrix 2](https://www.microsoft.com/web/webmatrix/)與**Electric Plum iPhone 模擬器**延伸模組 （僅適用於 iPhone 模擬器與瀏覽 web 應用程式的練習 3)
 
 <a id="Setup"></a>
@@ -345,7 +345,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
 
     [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample5.cs)]
-4. 開啟**HomeController.cs**檔案從**控制器**資料夾。
+4. 從 **Controllers** 資料夾中，開啟 **HomeController.cs** 檔案。
 5. 使用陳述式加入下列程式碼。
 
     (程式碼片段- *ASP.NET MVC 4 實驗室-Ex02-HomeController Using*)
@@ -622,7 +622,7 @@ jQuery Mobile 預設佈景主題包含 5 個樣本指定字母 (a、 b、 c、 d
 
 Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basic.NET 程式設計中非同步提供新的基礎架構。 此新基礎架構，會使非同步程式設計類似於-大約像是那樣-同步程式設計。 您現在已可使用 ASP.NET MVC 4 撰寫非同步動作方法**AsyncController**類別。 您可以使用非同步動作方法的長時間執行、 不受限於 CPU 的要求。 如此可避免在處理要求時執行工作的 Web 伺服器。 AsyncController 類別通常用於長時間執行的 Web 服務呼叫。
 
-這個練習說明 ASP.NET MVC 4 中的非同步作業的基本概念。 如果您想深入探討，您可以查看下列文章： [ [https://msdn.microsoft.com/en-us/library/ee728598%28v=vs.100%29.aspx](https://msdn.microsoft.com/en-us/library/ee728598%28v=vs.100%29.aspx)](https://msdn.microsoft.com/en-us/library/ee728598%28v=vs.100%29.aspx)
+這個練習說明 ASP.NET MVC 4 中的非同步作業的基本概念。 如果您想深入探討，您可以查看下列文章： [ [https://msdn.microsoft.com/library/ee728598%28v=vs.100%29.aspx](https://msdn.microsoft.com/library/ee728598%28v=vs.100%29.aspx)](https://msdn.microsoft.com/library/ee728598%28v=vs.100%29.aspx)
 
 <a id="Task_1_-_Implementing_an_Asynchronous_Controller"></a>
 #### <a name="task-1---implementing-an-asynchronous-controller"></a>工作 1-實作非同步控制器

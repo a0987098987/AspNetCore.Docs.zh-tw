@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 15de0ca9bcceb7f745fa311b18d2c095f1dafcb1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5d1be6c30cda5a06087516210a77f48b6a3fe45b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>使用現有的預存程序的具類型資料集的 Tableadapter (VB)
 ====================
@@ -200,7 +200,7 @@ Visual Studio 輕鬆地將新的預存程序加入至資料庫。 O d e s 傳回
 
 範本會定義啟動`TRY...CATCH`區塊中，新增到 SQL Server 2005 的建構。 例如`Try...Catch`封鎖在 Visual Basic 中，SQL`TRY...CATCH`區塊會執行中的陳述式`TRY`區塊。 如果任何陳述式引發錯誤，控制權會立即轉移到`CATCH`區塊。
 
-如果沒有執行 SQL 陳述式的交易，該結構的錯誤`COMMIT TRANSACTION`陳述式認可的變更並完成交易。 如果其中一個陳述式導致錯誤，不過，`ROLLBACK TRANSACTION`中`CATCH`區塊將使資料庫回到其交易啟動之前的狀態。 預存程序也會引發錯誤使用[RAISERROR 命令](https://msdn.microsoft.com/en-us/library/ms178592.aspx)，這會導致`SqlException`在應用程式中引發。
+如果沒有執行 SQL 陳述式的交易，該結構的錯誤`COMMIT TRANSACTION`陳述式認可的變更並完成交易。 如果其中一個陳述式導致錯誤，不過，`ROLLBACK TRANSACTION`中`CATCH`區塊將使資料庫回到其交易啟動之前的狀態。 預存程序也會引發錯誤使用[RAISERROR 命令](https://msdn.microsoft.com/library/ms178592.aspx)，這會導致`SqlException`在應用程式中引發。
 
 > [!NOTE]
 > 因為`TRY...CATCH`區塊的新 SQL Server 2005、 如果您使用舊版的 Microsoft SQL Server，將無法使用上述的範本。 如果您不使用 SQL Server 2005，請參閱[管理 SQL Server 預存程序中的交易](http://www.4guysfromrolla.com/webtech/080305-1.shtml)的範本，將會使用其他版本的 SQL Server。

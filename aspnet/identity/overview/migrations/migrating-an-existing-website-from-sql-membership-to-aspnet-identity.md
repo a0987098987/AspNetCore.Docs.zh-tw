@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: b88cd54040c02c977a83e20d7af7fda4fff969c1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3638c6779a0fcedaaa49623126b28ecf09a4954f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="migrating-to-visual-studio-2013"></a>移轉至 Visual Studio 2013
 
-1. 安裝適用於 Web 或搭配 Visual Studio 2013 的 Visual Studio Express 2013[最新更新](https://www.microsoft.com/en-us/download/details.aspx?id=44921)。
+1. 安裝適用於 Web 或搭配 Visual Studio 2013 的 Visual Studio Express 2013[最新更新](https://www.microsoft.com/download/details.aspx?id=44921)。
 2. 您已安裝的 Visual Studio 版本中開啟上述的專案。 如果電腦上未安裝 SQL Server Express，當您開啟專案，因為連接字串使用 SQL Express 時，會顯示提示。 您可以選擇要安裝 SQL Express 或做為解決變更 LocalDb 的連接字串。 我們將會為 LocalDb 變更這個發行項。
 3. 開啟 web.config，然後變更的連接字串。以 (LocalDb) v11.0 SQLExpess。 移除 ' 使用者執行個體 = true' 從連接字串。
 
@@ -89,25 +89,25 @@ ASP.NET Identity 類別現成可用的資料的現有使用者，我們需要將
 | **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | ID | 字串 | ID | RoleId | ProviderKey | ID |
-| 使用者名稱 | 字串 | 名稱 | 使用者識別碼 | 使用者識別碼 | ClaimType |
+| 使用者名稱 | 字串 | 名稱 | UserId | UserId | ClaimType |
 | PasswordHash | 字串 |  |  | LoginProvider | ClaimValue |
 | SecurityStamp | 字串 |  |  |  | 使用者\_識別碼 |
-| 電子郵件 | 字串 |  |  |  |  |
+| Email | 字串 |  |  |  |  |
 | EmailConfirmed | bool |  |  |  |  |
-| 電話號碼 | 字串 |  |  |  |  |
+| PhoneNumber | 字串 |  |  |  |  |
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
 | LockoutEndDate | DateTime |  |  |  |  |
 | AccessFailedCount | int |  |  |  |  |
 
-我們需要資料表的每個這些模型具有資料行對應至屬性。 中所定義的類別與資料表之間的對應`OnModelCreating`方法`IdentityDBContext`。 這就所謂的設定 fluent 應用程式開發的應用程式開發介面方法，可以找到更多資訊[這裡](https://msdn.microsoft.com/en-us/data/jj591617.aspx)。 如下所述為類別設定
+我們需要資料表的每個這些模型具有資料行對應至屬性。 中所定義的類別與資料表之間的對應`OnModelCreating`方法`IdentityDBContext`。 這就所謂的設定 fluent 應用程式開發的應用程式開發介面方法，可以找到更多資訊[這裡](https://msdn.microsoft.com/data/jj591617.aspx)。 如下所述為類別設定
 
 | **類別** | **資料表** | **主索引鍵** | **外部索引鍵** |
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | ID |  |
 | IdentityRole | AspnetRoles | ID |  |
-| IdentityUserRole | AspnetUserRole | 使用者識別碼 + RoleId | 使用者\_識別碼-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
-| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | 使用者識別碼-&gt;AspnetUsers |
+| IdentityUserRole | AspnetUserRole | UserId + RoleId | 使用者\_識別碼-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
+| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
 | IdentityUserClaim | AspnetUserClaims | ID | 使用者\_識別碼-&gt;AspnetUsers |
 
 我們可以使用這項資訊來建立 SQL 陳述式來建立新的資料表。 我們可以個別寫入每個陳述式，或產生整個視需要使用 EntityFramework PowerShell 命令，然後我們可以編輯的指令碼。 若要這樣做，請在 VS 開啟**Package Manager Console**從**檢視**或**工具**功能表
@@ -122,7 +122,7 @@ SQL 成員資格使用者資訊有其他內容以及識別使用者模型類別�
 
 [!code-sql[Main](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/samples/sample1.sql)]
 
-接下來，我們需要將現有的資訊從 SQL 成員資格資料庫複製到新加入的資料表，身分識別。 這可以透過 SQL 會將資料直接從一個資料表複製到另一個。 若要將資料加入至資料表的資料列中，我們使用`INSERT INTO [Table]`建構。 我們可以使用另一個資料表複製`INSERT INTO`陳述式，連同`SELECT`陳述式。 若要取得我們需要查詢的所有使用者資訊*aspnet\_使用者*和*aspnet\_成員資格*資料表，並將資料複製到*AspNetUsers*資料表。 我們使用`INSERT INTO`和`SELECT`連同`JOIN`和`LEFT OUTER JOIN`陳述式。 如需有關查詢和資料表之間複製資料的詳細資訊，請參閱[這](https://technet.microsoft.com/en-us/library/ms190750%28v=sql.105%29.aspx)連結。 此外在 AspnetUserLogins 和 AspnetUserClaims 資料表是空的開始因為沒有預設會對應至此的 SQL 成員資格資訊。 複製的唯一資訊是針對使用者和角色。 在先前步驟中所建立的專案，將會是 SQL 查詢來將資訊複製到使用者資料表
+接下來，我們需要將現有的資訊從 SQL 成員資格資料庫複製到新加入的資料表，身分識別。 這可以透過 SQL 會將資料直接從一個資料表複製到另一個。 若要將資料加入至資料表的資料列中，我們使用`INSERT INTO [Table]`建構。 我們可以使用另一個資料表複製`INSERT INTO`陳述式，連同`SELECT`陳述式。 若要取得我們需要查詢的所有使用者資訊*aspnet\_使用者*和*aspnet\_成員資格*資料表，並將資料複製到*AspNetUsers*資料表。 我們使用`INSERT INTO`和`SELECT`連同`JOIN`和`LEFT OUTER JOIN`陳述式。 如需有關查詢和資料表之間複製資料的詳細資訊，請參閱[這](https://technet.microsoft.com/library/ms190750%28v=sql.105%29.aspx)連結。 此外在 AspnetUserLogins 和 AspnetUserClaims 資料表是空的開始因為沒有預設會對應至此的 SQL 成員資格資訊。 複製的唯一資訊是針對使用者和角色。 在先前步驟中所建立的專案，將會是 SQL 查詢來將資訊複製到使用者資料表
 
 [!code-sql[Main](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/samples/sample2.sql)]
 

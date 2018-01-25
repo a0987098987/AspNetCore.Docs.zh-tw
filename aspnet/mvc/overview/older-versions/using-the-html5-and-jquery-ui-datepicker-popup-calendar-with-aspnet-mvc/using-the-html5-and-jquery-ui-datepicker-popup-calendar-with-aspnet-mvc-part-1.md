@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 9320c8a2aadb3b3c5bd6cd90b59d8a72db384c0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4b5507021af47d96c29809c9830d0558f5501f87
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 1 部分
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 以下是您將學習：
 
-- 如何使用屬性從[DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間來控制資料的格式顯示時，並處於編輯模式。
+- 如何使用屬性從[DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間來控制資料的格式顯示時，並處於編輯模式。
 - 如何建立範本 （編輯和顯示範本） 來控制資料的格式。
 - 如何新增[jQuery UI 日期選擇器](http://jqueryui.com/demos/datepicker/)做為輸入的日期欄位的方式。
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image3.png)
 
-格式的日期和價格是使用結果[DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)上的內容屬性`Movie`類別。
+格式的日期和價格是使用結果[DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)上的內容屬性`Movie`類別。
 
 開啟*Movie.cs*檔案，並標記為註解`DisplayFormat`屬性`ReleaseDate`和`Price`屬性。 產生`Movie`類別看起來像這樣：
 
@@ -79,11 +79,11 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="using-the-dataannotations-datatype-attribute-to-specify-the-data-type"></a>使用 DataAnnotations DataType 屬性來指定資料類型
 
-取代標記為註解`DisplayFormat`屬性`ReleaseDate`屬性[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性，使用`Date`列舉型別。 取代`DisplayFormat`屬性`Price`屬性[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性同樣地，這次使用`Currency`列舉型別。 這是已完成的程式碼看起來像：
+取代標記為註解`DisplayFormat`屬性`ReleaseDate`屬性[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性，使用`Date`列舉型別。 取代`DisplayFormat`屬性`Price`屬性[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性同樣地，這次使用`Currency`列舉型別。 這是已完成的程式碼看起來像：
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/samples/sample2.cs)]
 
-執行應用程式。 現在的發行日期和價格屬性的格式正確 （亦即，使用適當的日期和貨幣格式）。 [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性提供型別中繼資料內建的 ASP.NET MVC 範本，以便呈現格式正確的欄位。 使用`DataType`屬性時，最好使用`DisplayFormat`原本在程式碼，因為屬性`DataType`屬性可讓模型較為簡潔且更有彈性的國際化這類目的。
+執行應用程式。 現在的發行日期和價格屬性的格式正確 （亦即，使用適當的日期和貨幣格式）。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性提供型別中繼資料內建的 ASP.NET MVC 範本，以便呈現格式正確的欄位。 使用`DataType`屬性時，最好使用`DisplayFormat`原本在程式碼，因為屬性`DataType`屬性可讓模型較為簡潔且更有彈性的國際化這類目的。
 
 下一節中，您會看到如何進行自訂範本來顯示日期的欄位。
 

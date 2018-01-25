@@ -12,15 +12,15 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 15daa5fa94094fb50971514a152312fd81a749a1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>顯示資料在圖表中以 ASP.NET Web Pages (Razor)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 這篇文章說明如何使用圖表來顯示資料在 ASP.NET Web Pages (Razor) 的網站中，使用`Chart`協助程式。
 > 
@@ -181,7 +181,7 @@ ms.lasthandoff: 11/10/2017
 
 下表列出內建的佈景主題。
 
-| 主題 | 說明 |
+| 主題 | 描述 |
 | --- | --- |
 | `Vanilla` | 白色背景上顯示紅色的資料行。 |
 | `Blue` | 顯示藍色藍色漸層背景上的資料行。 |
@@ -296,4 +296,4 @@ ms.lasthandoff: 11/10/2017
 
 - [簡介使用的資料庫中 ASP.NET Web Pages 站台](https://go.microsoft.com/fwlink/?LinkId=202893)
 - [使用快取中 ASP.NET Web Pages 站台，以改善效能](https://go.microsoft.com/fwlink/?LinkId=202903)
-- [圖表類別](https://msdn.microsoft.com/en-us/library/system.web.helpers.chart(v=vs.99))（MSDN 上的 ASP.NET Web Pages 應用程式開發介面參考）
+- [圖表類別](https://msdn.microsoft.com/library/system.web.helpers.chart(v=vs.99))（MSDN 上的 ASP.NET Web Pages 應用程式開發介面參考）

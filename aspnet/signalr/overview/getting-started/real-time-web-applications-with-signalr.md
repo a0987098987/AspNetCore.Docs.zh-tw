@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 96d3b8b82f78d8f6da85012aac8a1411cf297e26
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 22123a9c61e6830f3f9f66a45182e1e923950341
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>與 SignalR 實習： 即時 Web 應用程式
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 
 <a id="Overview"></a>
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -263,7 +263,7 @@ ms.lasthandoff: 11/10/2017
 - **SQL Server**。 SQL Server 後擋板訊息寫入 SQL 資料表。 後擋板有效率的通訊使用 Service Broker。 不過，它也適用於未啟用 Service Broker。
 - **Redis**。 Redis 是記憶體中索引鍵-值存放區。 Redis 支援發行/訂閱 (「 pub/sub") 的模式來傳送訊息。
 
-每個訊息是透過訊息匯流排傳送。 訊息匯流排實作[IMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx)介面，可提供發佈/訂閱抽象的。 運作方式是取代預設的背板**IMessageBus**與針對該後擋板匯流排。
+每個訊息是透過訊息匯流排傳送。 訊息匯流排實作[IMessageBus](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx)介面，可提供發佈/訂閱抽象的。 運作方式是取代預設的背板**IMessageBus**與針對該後擋板匯流排。
 
 每個伺服器執行個體連接到後擋板，已透過匯流排。 當訊息傳送時，它會移至後擋板，並後擋板，已將它傳送至每一部伺服器。 當伺服器從後擋板接收訊息時，它會在其本機快取中儲存訊息。 伺服器再將訊息傳遞至用戶端從其本機快取。
 

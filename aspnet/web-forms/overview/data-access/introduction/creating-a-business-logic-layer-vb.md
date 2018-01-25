@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7722ed54e333515f641f1c1adf647c4ec08dfb6b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 858383203ddbaa9cb895c3368705f90546c8c974
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-business-logic-layer-vb"></a>建立商務邏輯層 (VB)
 ====================
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 接下來，我們將方法加入至每個類別包裝 Tableadapter 從第一個教學課程所定義的方法。 現在，這些方法會直接呼叫直接插入 DAL;我們將稍後加入任何所需的商務邏輯。
 
 > [!NOTE]
-> 如果您使用 Visual Studio Standard 版或更新版本 (也就是您*不*使用 Visual Web Developer)，您可以選擇性地設計您的類別，以視覺化方式使用[類別設計工具](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/clssdsgnr.asp)。 請參閱[類別設計工具部落格](https://blogs.msdn.com/classdesigner/default.aspx)如需有關這個 Visual Studio 中的新功能。
+> 如果您使用 Visual Studio Standard 版或更新版本 (也就是您*不*使用 Visual Web Developer)，您可以選擇性地設計您的類別，以視覺化方式使用[類別設計工具](https://msdn.microsoft.com/library/default.asp?url=/library/dv_vstechart/html/clssdsgnr.asp)。 請參閱[類別設計工具部落格](https://blogs.msdn.com/classdesigner/default.aspx)如需有關這個 Visual Studio 中的新功能。
 
 
 如`ProductsBLL`我們需要加入總共七種方法的類別：
@@ -78,7 +78,7 @@ ProductsBLL.vb
 
 只傳回資料的方法`GetProducts`， `GetProductByProductID`， `GetProductsByCategoryID`，和`GetProductBySuppliersID`都相當直接明瞭，因為它們只是呼叫向下 DAL。 在某些情況下可能需要實作的商務規則，而此層級 （例如目前登入的使用者或使用者所隸屬的角色為基礎的授權規則），我們只會保留這些方法為-是。 這些方法，然後 BLL 做只是透過此展示分層會存取基礎資料從資料存取層的 proxy。
 
-`AddProduct`和`UpdateProduct`方法同時採用做為參數的值不同的產品欄位和加入新的產品或更新現有磁碟，分別。 因為許多`Product`資料表的資料行可以接受`NULL`值 (`CategoryID`， `SupplierID`，和`UnitPrice`，以提供幾個)，這些輸入參數`AddProduct`和`UpdateProduct`對應至這類資料行使用[可為 null 的型別](https://msdn.microsoft.com/en-us/library/1t3y8s4s(v=vs.80).aspx)。 可為 null 的型別不熟悉.NET 2.0 和提供的技術，指出是否實值型別應該反而是`Nothing`。 是指[Paul Vick](http://www.panopticoncentral.net/)的部落格項目[真關於可為 Null 類型和 VB](http://www.panopticoncentral.net/archive/2004/06/04/1180.aspx)和技術文件[Nullable](https://msdn.microsoft.com/en-US/library/b3h38hb0%28VS.80%29.aspx)結構，如需詳細資訊。
+`AddProduct`和`UpdateProduct`方法同時採用做為參數的值不同的產品欄位和加入新的產品或更新現有磁碟，分別。 因為許多`Product`資料表的資料行可以接受`NULL`值 (`CategoryID`， `SupplierID`，和`UnitPrice`，以提供幾個)，這些輸入參數`AddProduct`和`UpdateProduct`對應至這類資料行使用[可為 null 的型別](https://msdn.microsoft.com/library/1t3y8s4s(v=vs.80).aspx)。 可為 null 的型別不熟悉.NET 2.0 和提供的技術，指出是否實值型別應該反而是`Nothing`。 是指[Paul Vick](http://www.panopticoncentral.net/)的部落格項目[真關於可為 Null 類型和 VB](http://www.panopticoncentral.net/archive/2004/06/04/1180.aspx)和技術文件[Nullable](https://msdn.microsoft.com/library/b3h38hb0%28VS.80%29.aspx)結構，如需詳細資訊。
 
 所有的三個方法都會傳回布林值，指出資料列已插入、 更新或刪除，因為作業可能不會導致受影響的資料列。 例如，如果網頁開發人員呼叫`DeleteProduct`傳入`ProductID`不存在的產品，`DELETE`發出至資料庫的陳述式不會有作用，因此`DeleteProduct`方法會傳回`False`。
 
@@ -88,7 +88,7 @@ ProductsBLL.vb
 
 在`UpdateProduct`我們先載入要使用更新的產品`GetProductByProductID(productID)`。 這似乎不必要的往返資料庫，而此額外的往返將證明值得在未來教學課程中，瀏覽開放式並行存取。 開放式並行存取是一種技術確保兩個使用者同時使用相同的資料不小心不要覆寫彼此的變更。 抓取整個記錄也可讓您更輕鬆地建立更新方法中只能修改 DataRow 的資料行的子集 BLL。 當我們探討`SuppliersBLL`我們會看到這類範例的類別。
 
-最後，請注意，`ProductsBLL`類別具有[DataObject 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataobjectattribute.aspx)套用 (`[System.ComponentModel.DataObject]`前類別陳述式，在檔案頂端附近的語法) 的方法具有與[DataObjectMethodAttribute 屬性](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataobjectmethodattribute.aspx)。 `DataObject`屬性標記為適合的繫結的物件類別[ObjectDataSource 控制項](https://msdn.microsoft.com/en-us/library/9a4kyhcx.aspx)，而`DataObjectMethodAttribute`表示方法的目的。 如稍後將在未來教學課程，ASP.NET 2.0 ObjectDataSource 可讓您輕鬆地以宣告方式從類別中存取資料。 若要篩選的繫結至 ObjectDataSource 精靈中的可能類別清單，依預設只將標示為這些類別`DataObjects`精靈的下拉式清單中會顯示。 `ProductsBLL`類別將同樣也適用於不含這些屬性，但將它們加入可以更輕鬆地在 ObjectDataSource 精靈中使用。
+最後，請注意，`ProductsBLL`類別具有[DataObject 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataobjectattribute.aspx)套用 (`[System.ComponentModel.DataObject]`前類別陳述式，在檔案頂端附近的語法) 的方法具有與[DataObjectMethodAttribute 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataobjectmethodattribute.aspx)。 `DataObject`屬性標記為適合的繫結的物件類別[ObjectDataSource 控制項](https://msdn.microsoft.com/library/9a4kyhcx.aspx)，而`DataObjectMethodAttribute`表示方法的目的。 如稍後將在未來教學課程，ASP.NET 2.0 ObjectDataSource 可讓您輕鬆地以宣告方式從類別中存取資料。 若要篩選的繫結至 ObjectDataSource 精靈中的可能類別清單，依預設只將標示為這些類別`DataObjects`精靈的下拉式清單中會顯示。 `ProductsBLL`類別將同樣也適用於不含這些屬性，但將它們加入可以更輕鬆地在 ObjectDataSource 精靈中使用。
 
 ## <a name="adding-the-other-classes"></a>加入其他類別
 
@@ -146,7 +146,7 @@ BLL 類別也可以使用 ObjectDataSource 存取以宣告方式 （如可輸入
 - `ProductID`， `ProductName`，和`Discontinued`欄位是必要的但其他所有欄位都是選用
 - `UnitPrice`， `UnitsInStock`， `UnitsOnOrder`，和`ReorderLevel`欄位必須是大於或等於零
 
-這些規則可以而且應該以表示資料庫層級。 字元的限制`ProductName`和`QuantityPerUnit`欄位中資料行的資料型別，即可擷取`Products`資料表 (`nvarchar(40)`和`nvarchar(20)`分別)。 如果資料庫資料表資料行允許欄位是否為必要和選擇性來表示`NULL`s。 四個[check 條件約束](https://msdn.microsoft.com/en-us/library/ms188258.aspx)存在，請務必大於或等於零的值可以讓它`UnitPrice`， `UnitsInStock`， `UnitsOnOrder`，或`ReorderLevel`資料行。
+這些規則可以而且應該以表示資料庫層級。 字元的限制`ProductName`和`QuantityPerUnit`欄位中資料行的資料型別，即可擷取`Products`資料表 (`nvarchar(40)`和`nvarchar(20)`分別)。 如果資料庫資料表資料行允許欄位是否為必要和選擇性來表示`NULL`s。 四個[check 條件約束](https://msdn.microsoft.com/library/ms188258.aspx)存在，請務必大於或等於零的值可以讓它`UnitPrice`， `UnitsInStock`， `UnitsOnOrder`，或`ReorderLevel`資料行。
 
 除了強制執行這些規則，在資料庫中他們應該也會強制執行資料集層級。 事實上，欄位長度值是必要或選擇性已擷取和每個 DataTable DataColumns 組。 自動提供的現有欄位層級驗證，請移至 DataSet 設計工具從 Datatable 的其中一個選取的欄位，然後移至 屬性 視窗。 如圖 4 所示， `QuantityPerUnit` DataColumn 在`ProductsDataTable`20 個字元的最大長度，允許`NULL`值。 如果我們嘗試設定`ProductsDataRow`的`QuantityPerUnit`超過 20 個字元的字串值的屬性`ArgumentException`就會擲回。
 
@@ -156,7 +156,7 @@ BLL 類別也可以使用 ObjectDataSource 存取以宣告方式 （如可輸入
 **圖 4**: DataColumn 提供基本欄位層級驗證 ([按一下以檢視完整大小的影像](creating-a-business-logic-layer-vb/_static/image8.png))
 
 
-不幸的是，我們無法指定界限檢查，例如`UnitPrice`值必須大於或等於零，透過 [屬性] 視窗。 若要提供這種類型的欄位層級驗證我們要建立的 DataTable 的事件處理常式[ColumnChanging](https://msdn.microsoft.com/en-us/library/system.data.datatable.columnchanging%28VS.80%29.aspx)事件。 中所述[前述教學課程](creating-a-data-access-layer-vb.md)，可以透過使用部分類別擴充輸入資料集所建立的 DataSet、 Datatable 和 DataRow 物件。 使用這項技術，我們可以建立`ColumnChanging`事件處理常式`ProductsDataTable`類別。 藉由建立類別，以在啟動`App_Code`資料夾名為`ProductsDataTable.ColumnChanging.vb`。
+不幸的是，我們無法指定界限檢查，例如`UnitPrice`值必須大於或等於零，透過 [屬性] 視窗。 若要提供這種類型的欄位層級驗證我們要建立的 DataTable 的事件處理常式[ColumnChanging](https://msdn.microsoft.com/library/system.data.datatable.columnchanging%28VS.80%29.aspx)事件。 中所述[前述教學課程](creating-a-data-access-layer-vb.md)，可以透過使用部分類別擴充輸入資料集所建立的 DataSet、 Datatable 和 DataRow 物件。 使用這項技術，我們可以建立`ColumnChanging`事件處理常式`ProductsDataTable`類別。 藉由建立類別，以在啟動`App_Code`資料夾名為`ProductsDataTable.ColumnChanging.vb`。
 
 
 [![將新類別加入至 App_Code 資料夾](creating-a-business-logic-layer-vb/_static/image10.png)](creating-a-business-logic-layer-vb/_static/image9.png)
@@ -190,7 +190,7 @@ BLL 類別應該包含檢查，以確保應用程式的商務規則，請遵循�
 
 ## <a name="responding-to-validation-errors-in-the-presentation-tier"></a>展示層中的驗證錯誤回應
 
-當從展示層中呼叫 BLL 我們可以決定是否要嘗試處理可能會引發，或將這些反昇至 ASP.NET 的任何例外狀況 (這將會引發`HttpApplication`的`Error`事件)。 若要以程式設計方式使用 BLL 時處理例外狀況，我們可以使用[再試一次...攔截](https://msdn.microsoft.com/en-us/library/fk6t46tz%28VS.80%29.aspx)區塊，如下列範例所示：
+當從展示層中呼叫 BLL 我們可以決定是否要嘗試處理可能會引發，或將這些反昇至 ASP.NET 的任何例外狀況 (這將會引發`HttpApplication`的`Error`事件)。 若要以程式設計方式使用 BLL 時處理例外狀況，我們可以使用[再試一次...攔截](https://msdn.microsoft.com/library/fk6t46tz%28VS.80%29.aspx)區塊，如下列範例所示：
 
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample7.vb)]

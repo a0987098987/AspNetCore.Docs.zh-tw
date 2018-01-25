@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: performance/caching/memory
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 23312e73b4530b24b8479e2d379f16315b672ca4
-ms.sourcegitcommit: 216dfac27542f10a79274a9ce60dc449e888ed20
+ms.openlocfilehash: 12d3982ce1abf74a575dae5362b037bd4ecc3d0f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="in-memory-caching-in-aspnet-core"></a>記憶體中快取中 ASP.NET Core
 
@@ -46,7 +46,7 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 `IMemoryCache`需要 NuGet 套件 」 Microsoft.Extensions.Caching.Memory"。
 
-下列程式碼會使用[TryGetValue](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__)來檢查目前是否為快取中。 如果沒有快取項目，建立並與快取中加入新項目[設定](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_)。
+下列程式碼會使用[TryGetValue](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__)來檢查目前是否為快取中。 如果不快取項目，建立並與快取中加入新項目[設定](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_)。
 
 [!code-csharp[Main](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet1)]
 
@@ -94,13 +94,13 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
   - 多個要求可以找到的快取索引鍵值空因為尚未完成的回呼。 
   - 這會導致多個執行緒重新填入快取的項目。
 
-- 若要建立另一個使用一個快取項目時，子將複製的父項目到期語彙基元和以時間為基礎的到期日設定。 子不是手動移除已過期或更新的父項目。
+- 若要建立另一個使用一個快取項目時，子將複製的父項目到期語彙基元和以時間為基礎的到期日設定。 子系不過期手動移除或更新的父項目。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [使用分散式快取](xref:performance/caching/distributed)
-* [偵測變更語彙基元的變更](xref:fundamentals/primitives/change-tokens)
+* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)
-* [快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [分散式快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
+* [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)

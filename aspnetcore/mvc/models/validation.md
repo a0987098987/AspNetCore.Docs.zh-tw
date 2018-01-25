@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/models/validation
-ms.openlocfilehash: 91db17e103723ac411a2ad4f3f9549860f250cce
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 56928c61ae47d313145afadf3e0fa93a078b681b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證的簡介
 
@@ -155,7 +155,7 @@ $.get({
     url: "https://url/that/returns/a/form",
     dataType: "html",
     error: function(jqXHR, textStatus, errorThrown) {
-        alert(textStatus + ": Could not add form. " + errorThrown);
+        alert(textStatus + ": Couldn't add form. " + errorThrown);
     },
     success: function(newFormHTML) {
         var container = document.getElementById("form-container");
@@ -171,14 +171,14 @@ $.get({
 
 ### <a name="add-validation-to-dynamic-controls"></a>將驗證加入至動態控制項
 
-您也可以更新表單上的驗證規則，當個別控制項，例如`<input/>`s 和`<select/>`s，動態產生。 您無法將傳遞至這些項目的選取器`parse()`方法直接因為周圍的表單已剖析，而且不會更新。 相反地，您先移除現有的驗證資料，然後重新剖析整份表單，如下所示：
+您也可以更新表單上的驗證規則，當個別控制項，例如`<input/>`s 和`<select/>`s，動態產生。 您無法將傳遞至這些項目的選取器`parse()`方法直接因為周圍的表單已剖析，並不會更新。 相反地，您先移除現有的驗證資料，然後重新剖析整份表單，如下所示：
 
 ```js
 $.get({
     url: "https://url/that/returns/a/control",
     dataType: "html",
     error: function(jqXHR, textStatus, errorThrown) {
-        alert(textStatus + ": Could not add form. " + errorThrown);
+        alert(textStatus + ": Couldn't add form. " + errorThrown);
     },
     success: function(newInputHTML) {
         var form = document.getElementById("my-form");
@@ -235,8 +235,7 @@ $.get({
 
 [!code-csharp[Main](validation/sample/User.cs?range=10-13)]
 
-`AdditionalFields`可能已明確設定為字串`"FirstName"`和`"LastName"`，但使用[ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)運算子，這樣可簡化稍後重構。 要執行驗證的動作方法必須接受兩個引數，其中一個值的`FirstName`和值的其中一個`LastName`。
-
+`AdditionalFields`可能已被明確設定為字串`"FirstName"`和`"LastName"`，但使用[ `nameof` ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)運算子，這樣可簡化稍後重構。 要執行驗證的動作方法必須接受兩個引數，其中一個值的`FirstName`和值的其中一個`LastName`。
 
 [!code-csharp[Main](validation/sample/UsersController.cs?range=30-39)]
 
@@ -253,4 +252,4 @@ $.get({
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`像所有的屬性引數必須是常數運算式。 因此，您必須使用[以內插值取代字串](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫[ `string.Join()` ](https://msdn.microsoft.com/en-us/library/system.string.join(v=vs.110).aspx)初始化`AdditionalFields`。 每個其他欄位加入至`[Remote]`屬性，您必須將另一個引數加入至對應的控制器動作方法。
+`AdditionalFields`像所有的屬性引數必須是常數運算式。 因此，您必須使用[以內插值取代字串](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings)或呼叫[ `string.Join()` ](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx)初始化`AdditionalFields`。 每個其他欄位加入至`[Remote]`屬性，您必須將另一個引數加入至對應的控制器動作方法。

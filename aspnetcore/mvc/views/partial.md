@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/partial
-ms.openlocfilehash: e5c8aac855a1f4ec4c6f08087dbe77f6820cc506
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 5919c273de2a298c3e407f118ac478e6a6031332
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="partial-views"></a>部分檢視
 
@@ -37,7 +37,7 @@ ASP.NET Core MVC 支援部分檢視，當您有想要不同的檢視之間共用
 
 ## <a name="declaring-partial-views"></a>宣告的部分檢視
 
-部分檢視會建立任何其他檢視一樣： 您建立*.cshtml*檔案內*檢視*資料夾。 沒有任何部分檢視和一般檢視之間的語意差異-只會以不同的方式呈現。 您可以檢視所傳回的控制站的直接`ViewResult`，和相同檢視可用來當做部分檢視。 在檢視和部分檢視轉譯的方式主要差異在於，部分檢視不會執行*_viewstart.vbhtml* (雖然檢視動作-深入了解*_viewstart.vbhtml*中[版面配置](layout.md)).
+部分檢視會建立任何其他檢視一樣： 您建立*.cshtml*檔案內*檢視*資料夾。 沒有任何部分檢視和一般檢視之間的語意差異-只以不同的方式呈現。 您可以檢視所傳回的控制站的直接`ViewResult`，和相同檢視可用來當做部分檢視。 如何呈現的檢視與部分檢視的主要差異是，不要執行部分檢視*_viewstart.vbhtml* (雖然檢視動作-深入了解*_viewstart.vbhtml*中[版面配置](layout.md)).
 
 ## <a name="referencing-a-partial-view"></a>參考的部分檢視
 

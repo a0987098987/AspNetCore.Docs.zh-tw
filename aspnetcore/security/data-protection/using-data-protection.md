@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: 54976a7f2ac13fe445eb2eea204f4f781813030f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c6a631b6dc4a7855b11031dfcef42b17906754b0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-the-data-protection-apis"></a>開始使用資料保護應用程式開發介面
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](../../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-當您建立保護裝置時必須提供一個或多個[目的字串](consumer-apis/purpose-strings.md)。 目的字串之間提供隔離取用者。 例如，使用 「 綠色 」 的目的字串建立的保護裝置會無法取消保護的保護裝置所提供的目的為 「 紫色"的資料。
+當您建立保護裝置時必須提供一個或多個[目的字串](consumer-apis/purpose-strings.md)。 目的字串之間提供隔離取用者。 例如，使用 「 綠色 」 的目的字串建立的保護裝置就無法取消保護的保護裝置所提供的目的為 「 紫色"的資料。
 
 >[!TIP]
-> 執行個體`IDataProtectionProvider`和`IDataProtector`是多個呼叫的執行緒安全。 它是適合的元件取得參考，一旦`IDataProtector`透過呼叫`CreateProtector`，它會使用該參考的多個呼叫`Protect`和`Unprotect`。
+> 執行個體`IDataProtectionProvider`和`IDataProtector`是多個呼叫的執行緒安全。 它具有一旦元件取得的參考用的`IDataProtector`透過呼叫`CreateProtector`，它會使用該參考的多個呼叫`Protect`和`Unprotect`。
 >
 >呼叫`Unprotect`將會擲回 CryptographicException，如果無法驗證或是用來解密受保護的內容。 某些元件可能會想要忽略的錯誤時取消保護作業;元件會讀取驗證 cookie，可能會處理這種錯誤和任何 cookie 已完全處理要求而徹底要求失敗。 元件的這個行為特別應該攔截 CryptographicException，而不是抑制所有例外狀況。

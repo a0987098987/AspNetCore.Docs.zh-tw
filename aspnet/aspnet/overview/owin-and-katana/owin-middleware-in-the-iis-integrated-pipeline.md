@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 42851cb9b8046ca4f70894b9ec5b671b269da04c
-ms.sourcegitcommit: 97432cbf9b8673bc4ad7012d5b6f2ed273420295
+ms.openlocfilehash: 4e1270f9fb58032d22380117f4ec18b00bd725fc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>IIS integrated 管線中的 OWIN 中介軟體
 ====================
@@ -36,9 +36,9 @@ ms.lasthandoff: 11/17/2017
 
 ## <a name="how-owin-middleware-executes-in-the-iis-integrated-pipeline"></a>OWIN 中介軟體會在 IIS Integrated 管線中執行的方式
 
-OWIN 主控台應用程式，應用程式管線使用建置[啟動設定](owin-startup-class-detection.md)設定元件會使用加入的順序`IAppBuilder.Use`方法。 也就是說，OWIN 管線中的[Katana](an-overview-of-project-katana.md)執行階段將其註冊使用的順序處理 OMCs `IAppBuilder.Use`。 在 IIS integrated 管線要求管線組成[HttpModules](https://msdn.microsoft.com/en-us/library/ms178468(v=vs.85).aspx)例如訂閱一組預先定義的管線事件[BeginRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.beginrequest.aspx)， [AuthenticateRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx)， [AuthorizeRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authorizerequest.aspx)等等。
+OWIN 主控台應用程式，應用程式管線使用建置[啟動設定](owin-startup-class-detection.md)設定元件會使用加入的順序`IAppBuilder.Use`方法。 也就是說，OWIN 管線中的[Katana](an-overview-of-project-katana.md)執行階段將其註冊使用的順序處理 OMCs `IAppBuilder.Use`。 在 IIS integrated 管線要求管線組成[HttpModules](https://msdn.microsoft.com/library/ms178468(v=vs.85).aspx)例如訂閱一組預先定義的管線事件[BeginRequest](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx)， [AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)， [AuthorizeRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx)等等。
 
-如果我們比較的 OMC [HttpModule](https://msdn.microsoft.com/en-us/library/zec9k340(v=vs.85).aspx) ASP.NET 世界 OMC 必須註冊到正確的預先定義的管線的事件。 例如，HttpModule`MyModule`會叫用時要求送入[AuthenticateRequest](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx)管線階段中：
+如果我們比較的 OMC [HttpModule](https://msdn.microsoft.com/library/zec9k340(v=vs.85).aspx) ASP.NET 世界 OMC 必須註冊到正確的預先定義的管線的事件。 例如，HttpModule`MyModule`會叫用時要求送入[AuthenticateRequest](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)管線階段中：
 
 [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample2.cs?highlight=10)]
 
@@ -57,7 +57,7 @@ OWIN 主控台應用程式，應用程式管線使用建置[啟動設定](owin-s
 
 [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample5.cmd)]
 
-Katana 執行階段對應每個 OWIN 中介軟體元件[PreExecuteRequestHandler](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.prerequesthandlerexecute.aspx)根據預設，它會對應到 IIS 管線事件[PreRequestHandlerExecute](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.prerequesthandlerexecute.aspx)。
+Katana 執行階段對應每個 OWIN 中介軟體元件[PreExecuteRequestHandler](https://msdn.microsoft.com/library/system.web.httpapplication.prerequesthandlerexecute.aspx)根據預設，它會對應到 IIS 管線事件[PreRequestHandlerExecute](https://msdn.microsoft.com/library/system.web.httpapplication.prerequesthandlerexecute.aspx)。
 
 ## <a name="stage-markers"></a>階段標記
 
@@ -65,7 +65,7 @@ Katana 執行階段對應每個 OWIN 中介軟體元件[PreExecuteRequestHandler
 
 [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample6.cs?highlight=13,19)]
 
-`app.UseStageMarker(PipelineStage.Authenticate)`呼叫會設定 （在此情況下，我們有兩個診斷元件） 的所有先前註冊的中介軟體元件在管線的驗證階段上執行。 在上執行的最後一個中介軟體元件 （這會顯示診斷和回應的要求）`ResolveCache`階段 ( [ResolveRequestCache](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.resolverequestcache.aspx)事件)。
+`app.UseStageMarker(PipelineStage.Authenticate)`呼叫會設定 （在此情況下，我們有兩個診斷元件） 的所有先前註冊的中介軟體元件在管線的驗證階段上執行。 在上執行的最後一個中介軟體元件 （這會顯示診斷和回應的要求）`ResolveCache`階段 ( [ResolveRequestCache](https://msdn.microsoft.com/library/system.web.httpapplication.resolverequestcache.aspx)事件)。
 
 按 F5 執行應用程式。[輸出] 視窗顯示下列資訊：
 

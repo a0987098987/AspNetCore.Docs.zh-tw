@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 014fb9fe5fb9fc1a7fe56441bd70e65cfe05862d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 337765988cc6ec92384bec09a72fd00505d9a039
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-templatefields-in-the-gridview-control-vb"></a>在 GridView 控制項 (VB) 中使用 TemplateFields
 ====================
@@ -158,7 +158,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-using-the-calendar-control-to-display-thehireddatefield"></a>步驟 3： 使用行事曆控制項來顯示`HiredDate`欄位
 
-在 GridView 中以文字顯示資料欄位值是使用 BoundField 一樣簡單。 某些情況下，不過，資料是最適合表示使用特定的 Web 控制項，而非只是文字。 這類自訂資料是顯示的 TemplateFields 可行的。 例如，而不是比： 員工的雇用日期顯示為文字，我們無法顯示行事曆 (使用[月曆控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.calendar(VS.80).aspx)) 具有其雇用日期反白顯示。
+在 GridView 中以文字顯示資料欄位值是使用 BoundField 一樣簡單。 某些情況下，不過，資料是最適合表示使用特定的 Web 控制項，而非只是文字。 這類自訂資料是顯示的 TemplateFields 可行的。 例如，而不是比： 員工的雇用日期顯示為文字，我們無法顯示行事曆 (使用[月曆控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar(VS.80).aspx)) 具有其雇用日期反白顯示。
 
 若要完成這項作業，一開始轉換`HiredDate`BoundField TemplateField 到。 只需前往 GridView 的智慧標籤，然後按一下 編輯資料行連結，顯示欄位 對話方塊。 選取`HiredDate`BoundField 並按一下 」 這個欄位轉換為 TemplateField。 」
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 11/10/2017
 **圖 12**： 將行事曆控制項加入`HireDate`TemplateField 的`ItemTemplate`([按一下以檢視完整大小的影像](using-templatefields-in-the-gridview-control-vb/_static/image36.png))
 
 
-此時在 GridView 中的每個資料列會包含日曆控制項中的其`HiredDate`TemplateField。 不過，員工的實際`HiredDate`值不設定中的任何行事曆控制，造成每個行事曆控制項，顯示目前的月份和日期的預設值。 若要補救這種情況，我們必須指派每位員工的`HiredDate`月曆控制項[SelectedDate](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.calendar.selecteddate(VS.80).aspx)和[VisibleDate](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.calendar.visibledate(VS.80).aspx)屬性。
+此時在 GridView 中的每個資料列會包含日曆控制項中的其`HiredDate`TemplateField。 不過，員工的實際`HiredDate`值不設定中的任何行事曆控制，造成每個行事曆控制項，顯示目前的月份和日期的預設值。 若要補救這種情況，我們必須指派每位員工的`HiredDate`月曆控制項[SelectedDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selecteddate(VS.80).aspx)和[VisibleDate](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.visibledate(VS.80).aspx)屬性。
 
 從日曆控制項的智慧標籤上，選擇 編輯資料繫結。 接下來，繫結兩者`SelectedDate`和`VisibleDate`屬性`HiredDate`資料欄位。
 

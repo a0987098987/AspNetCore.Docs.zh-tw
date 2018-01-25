@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: dfb0158ec05c890ecf80571d95b22d8c791ba7fc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9baddd1836323385239206a3cf49e5938bbaff58
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監控與遙測 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 - [AppDynamics](http://www.appdynamics.com/)
 - [Dynatrace](https://datamarket.azure.com/application/b4011de2-1212-4375-9211-e882766121ff)
 
-自 2015 年 3 月[Microsoft Application Insights for Visual Studio Online](https://azure.microsoft.com/en-us/documentation/articles/app-insights-get-started/)尚未發行，但也可以利用 嘗試預覽。[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#)也包含監視功能。
+自 2015 年 3 月[Microsoft Application Insights for Visual Studio Online](https://azure.microsoft.com/documentation/articles/app-insights-get-started/)尚未發行，但也可以利用 嘗試預覽。[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#)也包含監視功能。
 
 我們將快速逐步 New Relic 設定來顯示如何輕鬆它可以是使用遙測系統。
 
@@ -156,13 +156,13 @@ Azure App Service 中的 web 應用程式已內建的書寫支援`System.Diagnos
 
 我們建議您建立生產應用程式時進行的工作是要建立簡單*ILogger*介面，並在其中堅持某些方法。 這可讓您輕鬆地變更記錄實作之後，不必瀏覽執行的所有程式碼。 我們無法使用`System.Diagnostics.Trace`類別整個修正它應用程式，但我們會改為使用它在幕後記錄類別實作中*ILogger*，我們進行*ILogger*整個呼叫方法應用程式。
 
-這樣一來，如果您想要讓您記錄更豐富的您可以取代[ `System.Diagnostics.Trace` ](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs)想與任何其他記錄機制。 比方說，您的應用程式茁壯您可能會決定您想要更廣泛的記錄封裝使用如[NLog](http://nlog-project.org/)或[企業程式庫記錄應用程式區塊](https://msdn.microsoft.com/en-us/library/dn440731(v=pandp.60).aspx)。 ([Log4Net](http://logging.apache.org/log4net/)是另一個熱門的記錄架構，但它不會執行非同步的記錄。)
+這樣一來，如果您想要讓您記錄更豐富的您可以取代[ `System.Diagnostics.Trace` ](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs)想與任何其他記錄機制。 比方說，您的應用程式茁壯您可能會決定您想要更廣泛的記錄封裝使用如[NLog](http://nlog-project.org/)或[企業程式庫記錄應用程式區塊](https://msdn.microsoft.com/library/dn440731(v=pandp.60).aspx)。 ([Log4Net](http://logging.apache.org/log4net/)是另一個熱門的記錄架構，但它不會執行非同步的記錄。)
 
 使用的架構，例如 NLog 一個可能的原因是有助於分割成個別的高容量和高價值資料存放區記錄輸出。 這將有助於您有效率地儲存大型 INFORM 資料，您不需要快速針對執行查詢，同時維持快速存取 ACT 資料磁碟區。
 
 ### <a name="semantic-logging"></a>語意的記錄
 
-一個相對新的方法可產生更實用的診斷資訊的記錄，請參閱[企業程式庫語意記錄應用程式區塊 (SLAB)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/)。 平台會使用[Windows 事件追蹤](https://msdn.microsoft.com/en-us/library/windows/desktop/bb968803.aspx)(ETW) 和[EventSource](https://msdn.microsoft.com/en-us/library/system.diagnostics.tracing.eventsource.aspx)支援在.NET 4.5，您可以建立多個結構化和可查詢的記錄檔中。 您定義每種類型的事件記錄時，可讓您自訂的資訊，您撰寫不同的方法。 例如，若要記錄的 SQL 資料庫錯誤，您可能會呼叫`LogSQLDatabaseError`方法。 針對該類型的例外狀況中，您知道金鑰的資訊是錯誤號碼，讓您無法在方法簽章中包含錯誤數字參數並做為個別的欄位，您撰寫的記錄檔記錄中記錄的錯誤號碼。 在個別的欄位數目，所以您可以更輕鬆並穩定地取得根據 SQL 錯誤號碼，如果您只成訊息的字串串連的錯誤號碼可以報告。
+一個相對新的方法可產生更實用的診斷資訊的記錄，請參閱[企業程式庫語意記錄應用程式區塊 (SLAB)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/)。 平台會使用[Windows 事件追蹤](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)(ETW) 和[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)支援在.NET 4.5，您可以建立多個結構化和可查詢的記錄檔中。 您定義每種類型的事件記錄時，可讓您自訂的資訊，您撰寫不同的方法。 例如，若要記錄的 SQL 資料庫錯誤，您可能會呼叫`LogSQLDatabaseError`方法。 針對該類型的例外狀況中，您知道金鑰的資訊是錯誤號碼，讓您無法在方法簽章中包含錯誤數字參數並做為個別的欄位，您撰寫的記錄檔記錄中記錄的錯誤號碼。 在個別的欄位數目，所以您可以更輕鬆並穩定地取得根據 SQL 錯誤號碼，如果您只成訊息的字串串連的錯誤號碼可以報告。
 
 ## <a name="logging-in-the-fix-it-app"></a>其記錄在修正應用程式
 
@@ -244,13 +244,13 @@ Azure 支援下列種類的[登入雲端服務](https://docs.microsoft.com/azure
 
 啟用登入 Azure 之後，您可以在建立時看到 Visual Studio 輸出 視窗中的記錄檔。
 
-![資料流處理的記錄檔 功能表](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-viewlogsmenu.png)
+![資料流處理的記錄檔 功能表](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-viewlogsmenu.png)
 
-![資料流處理的記錄檔 功能表](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
+![資料流處理的記錄檔 功能表](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
 
 您也可以將記錄寫入儲存體帳戶，並檢視任何工具，可以存取 Azure 儲存體資料表服務，例如**伺服器總管**Visual Studio 中或[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 
-![在伺服器總管 中的記錄檔](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
+![在伺服器總管 中的記錄檔](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
 
 ## <a name="summary"></a>總結
 
@@ -264,10 +264,10 @@ Azure 支援下列種類的[登入雲端服務](https://docs.microsoft.com/azure
 
 主要相關遙測的文件：
 
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱檢測和遙測指引、 服務計量指引、 健康情況端點監控模式和執行階段重新設定模式。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱檢測和遙測指引、 服務計量指引、 健康情況端點監控模式和執行階段重新設定模式。
 - [就在雲端中的貨幣值： 啟用 New Relic 效能監視在 Azure 網站上](http://www.hanselman.com/blog/PennyPinchingInTheCloudEnablingNewRelicPerformanceMonitoringOnWindowsAzureWebsites.aspx)。
-- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。 請參閱遙測和診斷 > 一節。
-- [使用 Application Insights 的下一代開發](https://msdn.microsoft.com/en-us/magazine/dn683794.aspx)。 MSDN Magazine 文件。
+- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。 請參閱遙測和診斷 > 一節。
+- [使用 Application Insights 的下一代開發](https://msdn.microsoft.com/magazine/dn683794.aspx)。 MSDN Magazine 文件。
 
 記錄有關的主要文件集：
 

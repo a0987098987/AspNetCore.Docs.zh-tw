@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: ad44968975b7929f5b0f70334deabc7238797402
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4aa6766c2c7765f499f5c5380962a5fe443e8c9d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署到生產環境-7 個 12
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，主機服務提供者的帳戶設定和部署您的 ASP.NET web 應用程式至生產環境使用 Visual Studio 單鍵發行功能。
 
@@ -246,7 +246,7 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 `User-agent`一行告訴檔案中的規則套用至所有搜尋引擎網頁自動尋檢 (robots)，搜尋引擎和`Disallow`一行指定應該進行編目的網站上的任何頁面。
 
-您可能想搜尋引擎目錄生產網站，因此您需要從生產環境部署中排除此檔案。 若要這樣做，請參閱**可以我排除特定檔案或資料夾從部署嗎？**中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/en-us/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)。 請確定您指定在排除，只會針對實際執行發行設定檔。
+您可能想搜尋引擎目錄生產網站，因此您需要從生產環境部署中排除此檔案。 若要這樣做，請參閱**可以我排除特定檔案或資料夾從部署嗎？**中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)。 請確定您指定在排除，只會針對實際執行發行設定檔。
 
 建立第二個裝載帳戶是一種方法使用的測試環境，不是必要，但是可能值得額外的費用。 在下列的教學課程中，您將會繼續使用 IIS 做為您的測試環境。
 

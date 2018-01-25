@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /mobile/device-simulators
 msc.type: content
-ms.openlocfilehash: 48145b15b4983d6a143a8c53c9e6e8b4639da91e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a8293a5bff9ed73f177be2d9928d8d686c4f311d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="simulate-popular-mobile-devices-for-testing"></a>模擬熱門的行動裝置進行測試
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 | 裝置或瀏覽器 | 模擬器 / 模擬器 |
 | --- | --- |
 | BrowserStack 裝載瀏覽器虛擬化 ![BrowserStack 裝載瀏覽器虛擬化](device-simulators/_static/image1.png) | [BrowserStack 裝載瀏覽器虛擬化](http://browserstack.com)在任何平台上的任何瀏覽器中測試您的本機或實際執行環境。 您可以建立您的電腦與 BrowserStack 網路之間的通道，裝載虛擬機器。 請務必取得[BrowserStack Visual Studio 擴充功能](https://visualstudiogallery.msdn.microsoft.com/2dfa32b1-3c47-439d-b1c5-9e28be18b81c)獲得更順暢的體驗。 |
-| Windows Phone | [Windows Phone SDK 下載](https://dev.windowsphone.com/en-us/downloadsdk)Windows Phone 軟體開發套件 (SDK) 包含所有您需要適用於 Windows Phone 開發應用程式和遊戲的工具 |
+| Windows Phone | [Windows Phone SDK 下載](https://dev.windowsphone.com/downloadsdk)Windows Phone 軟體開發套件 (SDK) 包含所有您需要適用於 Windows Phone 開發應用程式和遊戲的工具 |
 | iPhone / iPod / iPad | [Electric Plum](http://www.electricplum.com/studio.aspx) iPhone 和 iPad 模擬器的 Windows，以及 Responsive 設計工具。 可以整合 VS 2012 [瀏覽與..] 選項。 |
 | Android | [Android SDK 首頁](https://developer.android.com/sdk) |
 | Opera Mobile / Opera Mini | 最新版本： [Opera 開發人員工具家用](http://www.opera.com/developer/tools/)Opera Mini 4.2:[線上 Java 為基礎的模擬器](http://www.opera.com/mobile/demo/?ver=4) |

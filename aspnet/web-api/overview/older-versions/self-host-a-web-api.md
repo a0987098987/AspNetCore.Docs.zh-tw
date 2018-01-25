@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: b308ee9ec209ba8bbb021827655c83443dd149e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 564f859e73a88ac9c5f27e9b8f7409ec126642f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="self-host-aspnet-web-api-1-c"></a>自我裝載 ASP.NET Web API 1 (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="set-the-target-framework-visual-studio-2010"></a>設定目標架構 (Visual Studio 2010)
 
-如果您使用 Visual Studio 2010，將目標 framework 變更為.NET Framework 4.0。 (根據預設，專案範本的目標[.Net Framework 用戶端設定檔](https://msdn.microsoft.com/en-us/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile)。)
+如果您使用 Visual Studio 2010，將目標 framework 變更為.NET Framework 4.0。 (根據預設，專案範本的目標[.Net Framework 用戶端設定檔](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile)。)
 
 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取**屬性**。 在**目標 framework**下拉式清單中，將目標 framework 變更為.NET Framework 4.0。 當出現提示，以套用變更，請按一下 **是**。
 
@@ -98,11 +98,11 @@ NuGet 封裝管理員是 Web 應用程式開發介面的組件加入至非 ASP.N
 
 如需此控制器中的程式碼的詳細資訊，請參閱[入門](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md)教學課程。 此控制器會定義三個 GET 動作：
 
-| URI | 說明 |
+| URI | 描述 |
 | --- | --- |
 | / api/產品 | 取得所有產品的清單。 |
-| /api/產品/*識別碼* | 取得產品的識別碼。 |
-| /api/產品 /？ category =*類別* | 取得類別目錄的產品清單。 |
+| /api/products/*id* | 取得產品的識別碼。 |
+| /api/products/?category=*category* | 取得類別目錄的產品清單。 |
 
 ## <a name="host-the-web-api"></a>裝載 Web 應用程式開發介面
 
@@ -156,7 +156,7 @@ ClientApp 中加入 SelfHost 專案的參考：
 - 選取**將參考加入**。
 - 在**參考管理員**對話方塊下方**方案**，選取**專案**。
 - 選取 SelfHost 專案。
-- 按一下 [確定]。
+- 按一下 [確定 **Deploying Office Solutions**]。
 
 ![](self-host-a-web-api/_static/image6.png)
 

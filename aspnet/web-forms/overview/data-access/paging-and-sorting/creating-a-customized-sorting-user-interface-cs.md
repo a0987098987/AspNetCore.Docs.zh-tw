@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bc009272df3626402ee4c52578f9b364f70a4e78
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dbd2f6c8f1e21529da8a0fbffab212a29f615cc1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>建立自訂排序的使用者介面 (C#)
 ====================
@@ -187,7 +187,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> 如果您有產品`NULL`資料庫值`CategoryID`， `SupplierID`，或`UnitPrice`欄位，這些值會出現為 GridView 中的空白字串依預設，分隔符號 s 資料列文字表示的那些產品之`NULL`值將讀取像類別目錄: (也就是沒有 s 類別後的沒有名稱： 例如類別目錄： 飲料)。 如果您想要在此顯示值，您可以透過設定 BoundFields [ `NullDisplayText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.boundfield.nulldisplaytext.aspx)文字您想要顯示或指派時，您可以在轉譯方法中加入條件陳述式`currentValue`分隔符號資料列的`Text`屬性。
+> 如果您有產品`NULL`資料庫值`CategoryID`， `SupplierID`，或`UnitPrice`欄位，這些值會出現為 GridView 中的空白字串依預設，分隔符號 s 資料列文字表示的那些產品之`NULL`值將讀取像類別目錄: (也就是沒有 s 類別後的沒有名稱： 例如類別目錄： 飲料)。 如果您想要在此顯示值，您可以透過設定 BoundFields [ `NullDisplayText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.boundfield.nulldisplaytext.aspx)文字您想要顯示或指派時，您可以在轉譯方法中加入條件陳述式`currentValue`分隔符號資料列的`Text`屬性。
 
 
 ## <a name="summary"></a>總結

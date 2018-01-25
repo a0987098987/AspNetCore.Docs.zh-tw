@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 14e245f5fd25079b4ee1dee566ca451f955a8b25
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fc6c297f08790cdcc74867df21e32258017c5a7d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>在 DataList 和中繼器 (VB) 中的自訂按鈕
 ====================
@@ -114,17 +114,17 @@ DataList 控制項，Visual Studio 會建立預設值與`ItemTemplate`根據資�
 
 當按一下按鈕，就會發生回傳，DataList 或中繼器的`ItemCommand`事件引發。 此事件處理常式會傳遞按鈕 s`CommandName`和`CommandArgument`值。
 
-建立事件處理常式的中繼器 s`ItemCommand`事件，請注意第二個參數傳遞至事件處理常式 (名稱為`e`)。 這個第二個參數的型別是[ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx)而且具有下列四個屬性：
+建立事件處理常式的中繼器 s`ItemCommand`事件，請注意第二個參數傳遞至事件處理常式 (名稱為`e`)。 這個第二個參數的型別是[ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx)而且具有下列四個屬性：
 
 - `CommandArgument`按下按鈕的值`CommandArgument`屬性
 - `CommandName`按鈕的值`CommandName`屬性
 - `CommandSource`已按下按鈕控制項的參考
-- `Item`若要參考[ `RepeaterItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeateritem.aspx)包含已按下的按鈕; 繫結至中繼器每一筆記錄，會顯示為`RepeaterItem`
+- `Item`若要參考[ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx)包含已按下的按鈕; 繫結至中繼器每一筆記錄，會顯示為`RepeaterItem`
 
 因為選取的類別 s`CategoryID`透過傳入`CommandArgument`屬性，我們可以得到的選取類別目錄中相關聯的產品集`ItemCommand`事件處理常式。 這些產品則會至設定 BulletedList 的控制項繫結`ItemTemplate`(哪些我們將尚未發生)。 所有維持狀態，然後是加入 BulletedList，參考在`ItemCommand`事件處理常式，並繫結至其產品，我們將會處理在步驟 4 中所選取類別目錄的集合。
 
 > [!NOTE]
-> DataList s`ItemCommand`事件處理常式會傳遞類型的物件[ `DataListCommandEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx)，提供相同的四個內容`RepeaterCommandEventArgs`類別。
+> DataList s`ItemCommand`事件處理常式會傳遞類型的物件[ `DataListCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistcommandeventargs.aspx)，提供相同的四個內容`RepeaterCommandEventArgs`類別。
 
 
 ## <a name="step-4-displaying-the-selected-category-s-products-in-a-bulleted-list"></a>步驟 4： 在項目符號清單中顯示選取的類別的產品

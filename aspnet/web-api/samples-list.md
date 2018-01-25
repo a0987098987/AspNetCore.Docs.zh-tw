@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/samples-list
 msc.type: content
-ms.openlocfilehash: 2f40cd4bebdd64c3a4b94cfc1e717fa4b304e57e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1e1f43bbeedfc052f0b3a3924f51b544a5a79dca
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="web-api-samples-list"></a>Web API 範例清單
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 **Bing 翻譯範例** | [VS 2012 來源](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet45%2fCS%2fHttpClient%2fBingTranslateSample%2fReadMe.txt)
 
-示範如何呼叫[Microsoft Translator 服務](https://msdn.microsoft.com/en-us/library/ff512419.aspx)使用**HttpClient**類別。 Microsoft Translator 服務 API 需要應用程式將要求傳送至轉譯器服務每個要求的語彙基元 Azure 伺服器取得 OAuth 語彙基元。 傳送至轉譯服務的要求送入語彙基元 server 的結果。 執行此範例之前，您必須取得[Azure marketplace 的應用程式金鑰](https://msdn.microsoft.com/en-us/library/hh454950.aspx)並填入 AccessTokenMessageHandler 範例類別中的資訊。
+示範如何呼叫[Microsoft Translator 服務](https://msdn.microsoft.com/library/ff512419.aspx)使用**HttpClient**類別。 Microsoft Translator 服務 API 需要應用程式將要求傳送至轉譯器服務每個要求的語彙基元 Azure 伺服器取得 OAuth 語彙基元。 傳送至轉譯服務的要求送入語彙基元 server 的結果。 執行此範例之前，您必須取得[Azure marketplace 的應用程式金鑰](https://msdn.microsoft.com/library/hh454950.aspx)並填入 AccessTokenMessageHandler 範例類別中的資訊。
 
 **Google 地圖範例** | [詳細描述](https://blogs.msdn.com/b/henrikn/archive/2012/02/17/downloading-a-google-map-to-local-file.aspx) | [VS 2012 來源](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet45%2fCS%2fHttpClient%2fGoogleMapsSample%2fReadMe.txt)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 **檔案上的傳至 Azure Blob 存放區範例** | [詳細描述](https://blogs.msdn.com/b/yaohuang1/archive/2012/07/02/asp-net-web-api-and-azure-blob-storage.aspx) | [VS 2012 來源](http://aspnet.codeplex.com/SourceControl/changeset/view/61dfed023e50#Samples%2fNet45%2fCS%2fWebApi%2fAzureBlobsFileUploadSample%2fReadMe.txt)
 
-這個範例類似於檔案上傳範例的一部分，但而不是儲存在本機磁碟上傳的檔案，它以非同步方式將檔案上傳至[Azure Blob 存放區](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)使用[Windows Azure SDK for.NET](https://www.windowsazure.com/en-us/develop/net/)。 它也提供一種機制，列出目前存在於 blob [Azure Blob 儲存體容器](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 您可以嘗試執行此範例**Azure 儲存體模擬器**所附的 Azure SDK。 如果您有[Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)，您可以執行的實際儲存體服務。
+這個範例類似於檔案上傳範例的一部分，但而不是儲存在本機磁碟上傳的檔案，它以非同步方式將檔案上傳至[Azure Blob 存放區](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)使用[Windows Azure SDK for.NET](https://www.windowsazure.com/develop/net/)。 它也提供一種機制，列出目前存在於 blob [Azure Blob 儲存體容器](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 您可以嘗試執行此範例**Azure 儲存體模擬器**所附的 Azure SDK。 如果您有[Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)，您可以執行的實際儲存體服務。
 
 **Http 訊息處理常式管線範例** | [詳細描述](https://blogs.msdn.com/b/henrikn/archive/2012/08/07/httpclient-httpclienthandler-and-httpwebrequesthandler.aspx) | [VS 2010 來源](http://aspnet.codeplex.com/SourceControl/changeset/view/15dfe7e0759f#Samples%2fNet4%2fCS%2fWebApi%2fHttpMessageHandlerPipelineSample%2fReadMe.txt)
 

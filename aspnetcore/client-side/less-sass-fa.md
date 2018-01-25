@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/less-sass-fa
-ms.openlocfilehash: c3a53d6118a72c00d61d9139b05325fd1cbd53da
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 764b11bbd301c0116488265d32f7d46dfc5bce27
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>樣式應用程式，以更少、 Sass，和字型臻中 ASP.NET Core 簡介
 
@@ -97,7 +97,7 @@ body {
 .bgDark2    {color:@darker2}
 ```
 
-`@base`和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，它們會設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 較少的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
+`@base`和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 較少的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
 
 ### <a name="getting-started"></a>使用者入門
 
@@ -246,7 +246,7 @@ nav {
 }
 ```
 
-請注意，在此情況下，所有的附屬項目`nav`所包含的範圍內。 不再有任何重複的父項目 (`nav`， `li`， `a`)，而且總計的行數以及 （雖然部分，是將值放在第二個範例中相同的程式行的結果）。 它可以是檔案的很有幫助組織，若要看到的所有規則明確繫結的範圍內指定的 UI 項目在此情況下設定其餘大括號。
+請注意，在此情況下，所有的附屬項目`nav`所包含的範圍內。 不再有任何重複的父項目 (`nav`， `li`， `a`)，而且總計的行數以及 （雖然部分是將值放在第二個範例中相同的程式行的結果）。 它可以是檔案的很有幫助組織，若要看到的所有規則明確繫結的範圍內指定的 UI 項目在此情況下設定其餘大括號。
 
 `&`語法是使用較少的選取器功能，與代表目前的選取器父系。 因此，在 {...} 區塊中，`&`代表`a`標記，因此`&:link`相當於`a:link`。
 
@@ -321,7 +321,7 @@ CSS 檔案，特別是針對大型網站 （而且特別是如果使用媒體查
 
 ## <a name="sass"></a>Sass
 
-Sass 很少類似提供支援的許多相同的功能，但稍微不同的語法。 它內建使用 Ruby，而非 JavaScript 中，並且擁有不同的安裝需求。 原始的 Sass 語言未使用大括號或分號分隔，而定義使用泛空白字元和縮排的範圍。 中的 Sass 第 3 版，引進一種新語法， **SCSS** (「 Sassy CSS")。 SCSS 是類似於 CSS，在於，它會忽略縮排層級和空白字元，並改為使用分號和大括號。
+Sass 很少類似提供支援的許多相同的功能，但稍微不同的語法。 它內建使用 Ruby，而非 JavaScript 中，並且擁有不同的安裝需求。 原始的 Sass 語言並未使用大括號或分號分隔，而定義使用泛空白字元和縮排的範圍。 中的 Sass 第 3 版，引進一種新語法， **SCSS** (「 Sassy CSS")。 SCSS 是類似於 CSS，在於，它會忽略縮排層級和空白字元，並改為使用分號和大括號。
 
 若要安裝 Sass，通常您會先安裝 Ruby （預先安裝在 Mac 上），並接著執行：
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/app-secrets
-ms.openlocfilehash: e2c11b768098b3d92ef702e0daad746963dc3856
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 94356cef7a0333f0faac6420b1b5425920b99deb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>安全儲存體的 ASP.NET Core 在開發期間的應用程式密碼
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/19/2018
 密碼管理員工具會儲存為您專案的樹狀目錄外部的開發工作的敏感性資料。 密碼管理員工具是一種專案的工具，可以用來儲存的秘密資訊[.NET Core](https://www.microsoft.com/net/core)在開發期間的專案。 使用密碼管理員 工具中，您可以將應用程式密碼與特定的專案產生關聯，並共用跨多個專案。
 
 >[!WARNING]
-> 密碼管理員工具不會加密預存機密資料，並不會被視為受信任存放區。 它是僅限開發用途。 索引鍵和值會儲存在使用者設定檔的目錄中的 JSON 組態檔。
+> 密碼管理員工具不會加密預存機密資料，而且不應該被視為受信任存放區。 它是僅限開發用途。 索引鍵和值會儲存在使用者設定檔的目錄中的 JSON 組態檔。
 
 ## <a name="installing-the-secret-manager-tool"></a>安裝密碼管理員工具
 
@@ -122,7 +122,7 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 值`userSecretsId`中指定的值是來自*.csproj*檔案。
 
-您不應該撰寫程式碼所依賴這些實作細節，可能會變更位置或使用密碼管理員 工具中，儲存的資料格式。 例如，密碼值是目前*不*加密，但是也可能是吧。
+您不應撰寫程式碼所依賴這些實作細節，可能會變更位置或使用密碼管理員 工具中，儲存的資料格式。 例如，密碼值是目前*不*加密，但是也可能是吧。
 
 ## <a name="additional-resources"></a>其他資源
 

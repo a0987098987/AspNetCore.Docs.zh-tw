@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 1f4912bb3113a8f9cdae4211e055a7e317ab2aff
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7a74d01f306abeeac5ac28c942f03001e0fe00f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>閱讀相關的 Entity Framework 的 ASP.NET MVC 應用程式中的資料
 ====================
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 - *積極式載入*。 實體讀取時，同時擷取的相關的資料。 這通常會導致單一聯結查詢以擷取所有所需的資料。 使用指定積極式載入`Include`方法。
 
     ![Eager_loading_example](https://asp.net/media/2577856/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Eager_loading_example_33f907ff-f0b0-4057-8e75-05a8cacac807.png)
-- *明確式載入*。 這是類似於延遲載入，不同之處在於您明確地擷取相關的資料中的程式碼;當您存取導覽屬性時，它不會發生自動。 您載入相關的資料手動透過取得物件狀態管理員項目實體和呼叫[Collection.Load](https://msdn.microsoft.com/en-us/library/gg696220(v=vs.103).aspx)集合的方法或[Reference.Load](https://msdn.microsoft.com/en-us/library/gg679166(v=vs.103).aspx)保存的屬性方法單一實體。 (在下列範例中，如果您想要載入的系統管理員導覽屬性，您必須取代`Collection(x => x.Courses)`與`Reference(x => x.Administrator)`。)通常您會使用您已開啟消極式載入關閉時，才明確載入。
+- *明確式載入*。 這是類似於延遲載入，不同之處在於您明確地擷取相關的資料中的程式碼;當您存取導覽屬性時，它不會發生自動。 您載入相關的資料手動透過取得物件狀態管理員項目實體和呼叫[Collection.Load](https://msdn.microsoft.com/library/gg696220(v=vs.103).aspx)集合的方法或[Reference.Load](https://msdn.microsoft.com/library/gg679166(v=vs.103).aspx)保存的屬性方法單一實體。 (在下列範例中，如果您想要載入的系統管理員導覽屬性，您必須取代`Collection(x => x.Courses)`與`Reference(x => x.Administrator)`。)通常您會使用您已開啟消極式載入關閉時，才明確載入。
 
     ![Explicit_loading_example](https://asp.net/media/2577862/Windows-Live-Writer_Reading-Re.NET-MVC-Application-5-of-10h1_ADC3_Explicit_loading_example_79d8c368-6d82-426f-be9a-2b443644ab15.png)
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 
 相反地，在某些情況下會更有效率消極式載入。 積極式載入可能會導致非常複雜聯結來產生，SQL Server 無法有效率地進行處理。 或者，如果您需要存取實體的導覽屬性，只會針對一組實體的子集正在處理，消極式載入可能會更好因為積極式載入會擷取比您所需的更多資料。 如果效能嚴重不足，所以最好先測試效能才能做出最好的選擇這兩種方式。
 
-消極式載入，就能遮罩會造成效能問題的程式碼。 例如，程式碼不會指定立即或明確載入但處理高容量的實體，而且每個反覆項目中使用數個導覽屬性可能非常沒有效率 （因為許多反覆存取的資料庫）。 在開發使用在內部部署 SQL server 中執行的應用程式可能會發生效能問題時移至 Azure SQL Database，因為增加的延遲及消極式載入。 程式碼剖析實際的測試負載的資料庫查詢，可協助您判斷是否適用消極式載入。 如需詳細資訊，請參閱[Demystifying 實體架構策略： 載入相關資料](https://msdn.microsoft.com/en-us/magazine/hh205756.aspx)和[使用 Entity Framework 來減少網路延遲到 SQL Azure](https://msdn.microsoft.com/en-us/magazine/gg309181.aspx)。
+消極式載入，就能遮罩會造成效能問題的程式碼。 例如，程式碼不會指定立即或明確載入但處理高容量的實體，而且每個反覆項目中使用數個導覽屬性可能非常沒有效率 （因為許多反覆存取的資料庫）。 在開發使用在內部部署 SQL server 中執行的應用程式可能會發生效能問題時移至 Azure SQL Database，因為增加的延遲及消極式載入。 程式碼剖析實際的測試負載的資料庫查詢，可協助您判斷是否適用消極式載入。 如需詳細資訊，請參閱[Demystifying 實體架構策略： 載入相關資料](https://msdn.microsoft.com/magazine/hh205756.aspx)和[使用 Entity Framework 來減少網路延遲到 SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx)。
 
 ### <a name="disable-lazy-loading-before-serialization"></a>停用序列化之前的延遲載入
 
@@ -67,9 +67,9 @@ ms.lasthandoff: 11/10/2017
 
 一種方式以避免發生序列化問題為序列化而不是實體物件的資料傳輸物件 (Dto) 中所示[使用 Web API 和 Entity Framework](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-5.md)教學課程。
 
-如果您不使用 DTOs，您可以停用消極式載入，並避免 proxy 問題，依[停用 proxy 建立](https://msdn.microsoft.com/en-US/data/jj592886.aspx)。
+如果您不使用 DTOs，您可以停用消極式載入，並避免 proxy 問題，依[停用 proxy 建立](https://msdn.microsoft.com/data/jj592886.aspx)。
 
-以下是一些其他[方式停用延遲載入](https://msdn.microsoft.com/en-US/data/jj574232):
+以下是一些其他[方式停用延遲載入](https://msdn.microsoft.com/data/jj574232):
 
 - 對於特定的導覽屬性，請省略`virtual`關鍵字，當您宣告屬性。
 - 對於所有導覽屬性，設定`LazyLoadingEnabled`至`false`，下列程式碼置於內容類別的建構函式： 
@@ -164,7 +164,7 @@ Scaffold 中的程式碼`Index`方法會指定僅適用於的積極式載入`Off
 
 `Where`方法會傳回集合，但在此情況下準則傳遞至該方法的結果中只有一個`Instructor`所傳回的實體。 `Single`方法會將集合轉換成單一`Instructor`實體，可讓您存取與該實體`Courses`屬性。
 
-您使用[單一](https://msdn.microsoft.com/en-us/library/system.linq.enumerable.single.aspx)集合，當您知道集合的方法將會有只有一個項目。 `Single`方法擲回例外狀況，如果是空的集合傳遞給它，或若有多個項目。 替代方式是[SingleOrDefault](https://msdn.microsoft.com/en-us/library/bb342451.aspx)，它會傳回預設值 (`null`在此情況下) 如果集合是空的。 不過，在此情況下，就仍然造成例外狀況 (從嘗試尋找`Courses`屬性`null`參考)，以及例外狀況訊息會較不清楚指出問題的原因。 當您呼叫`Single`方法，您也可以傳遞中`Where`條件，而不是呼叫`Where`方法分別：
+您使用[單一](https://msdn.microsoft.com/library/system.linq.enumerable.single.aspx)集合，當您知道集合的方法將會有只有一個項目。 `Single`方法擲回例外狀況，如果是空的集合傳遞給它，或若有多個項目。 替代方式是[SingleOrDefault](https://msdn.microsoft.com/library/bb342451.aspx)，它會傳回預設值 (`null`在此情況下) 如果集合是空的。 不過，在此情況下，就仍然造成例外狀況 (從嘗試尋找`Courses`屬性`null`參考)，以及例外狀況訊息會較不清楚指出問題的原因。 當您呼叫`Single`方法，您也可以傳遞中`Where`條件，而不是呼叫`Where`方法分別：
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cs)]
 

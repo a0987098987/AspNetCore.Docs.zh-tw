@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 465c9cf6f452c268e7e23509e7a29547df5d3e83
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 995d9a088e3095f36a01d2adb19ec08e6a6d1b3e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>ASP.NET 和 Azure App Service 部署的密碼和其他機密資料的最佳作法
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 ASP.NET 執行階段會合併的外部檔案中的標記與內容&lt;appSettings&gt;項目。 如果找不到指定的檔案，則執行階段會略過檔案屬性。
 
 > [!WARNING]
-> 安全性-不要新增您*密碼.config*檔案至您的專案，或將它簽入原始檔控制。 根據預設，Visual Studio 會將設定`Build Action`至`Content`，這表示檔案已部署。 如需詳細資訊，請參閱[為何不在我的專案資料夾中檔案的所有部署？](https://msdn.microsoft.com/en-us/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) 雖然您可以使用任何副檔名*密碼.config*檔案，所以最好先將它保留*.config*，如設定檔不會由 IIS。 也請注意*AppSettingsSecrets.config*檔案是兩個目錄層級從*web.config*檔案，讓它完全超出方案目錄。 移動檔案使用的方案目錄，藉以&quot;git 新增\*&quot;將不會將它加入至您的儲存機制。
+> 安全性-不要新增您*密碼.config*檔案至您的專案，或將它簽入原始檔控制。 根據預設，Visual Studio 會將設定`Build Action`至`Content`，這表示檔案已部署。 如需詳細資訊，請參閱[為何不在我的專案資料夾中檔案的所有部署？](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) 雖然您可以使用任何副檔名*密碼.config*檔案，所以最好先將它保留*.config*，如設定檔不會由 IIS。 也請注意*AppSettingsSecrets.config*檔案是兩個目錄層級從*web.config*檔案，讓它完全超出方案目錄。 移動檔案使用的方案目錄，藉以&quot;git 新增\*&quot;將不會將它加入至您的儲存機制。
 
 
 <a id="con"></a>
@@ -96,7 +96,7 @@ Visual Studio 會建立新的 ASP.NET 專案使用[LocalDB](https://blogs.msdn.c
 
 **應用程式設定**和**連接字串**值會覆寫中的相同設定*web.config*檔案。 在本例中，我們無法部署這些設定到 Azure，但如果這些機碼已在*web.config*檔案中，顯示在入口網站上的設定會優先。
 
-最佳做法是遵循[DevOps 工作流程](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md)並用[Azure PowerShell](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/) (或另一個架構，例如[Chef](http://www.opscode.com/chef/)或[Puppet](http://puppetlabs.com/puppet/what-is-puppet)) 至在 Azure 中設定這些值會自動執行。 下列 PowerShell 指令碼會使用[Export-clixml](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)加密機密資料匯出至磁碟：
+最佳做法是遵循[DevOps 工作流程](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything.md)並用[Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/) (或另一個架構，例如[Chef](http://www.opscode.com/chef/)或[Puppet](http://puppetlabs.com/puppet/what-is-puppet)) 至在 Azure 中設定這些值會自動執行。 下列 PowerShell 指令碼會使用[Export-clixml](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)加密機密資料匯出至磁碟：
 
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample6.ps1)]
 
@@ -105,7 +105,7 @@ Visual Studio 會建立新的 ASP.NET 專案使用[LocalDB](https://blogs.msdn.c
 [!code-powershell[Main](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure/samples/sample7.ps1)]
 
 > [!WARNING]
-> 安全性-不執行因此擊敗部署敏感性資料使用的 PowerShell 指令碼的目的在 PowerShell 指令碼中包含密碼或其他機密資料。 [Get-credential](https://technet.microsoft.com/en-us/library/hh849815.aspx) cmdlet 會提供用於取得密碼的安全機制。 使用 UI 提示，可以防止洩漏密碼。
+> 安全性-不執行因此擊敗部署敏感性資料使用的 PowerShell 指令碼的目的在 PowerShell 指令碼中包含密碼或其他機密資料。 [Get-credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet 會提供用於取得密碼的安全機制。 使用 UI 提示，可以防止洩漏密碼。
 
 
 ### <a name="deploying-db-connection-strings"></a>部署資料庫的連接字串
@@ -119,7 +119,7 @@ Visual Studio 會建立新的 ASP.NET 專案使用[LocalDB](https://blogs.msdn.c
 
 ## <a name="notes-for-on-premises-servers"></a>在內部部署伺服器資訊
 
-如果您要部署至內部部署 web 伺服器，您可以協助安全密碼[加密組態檔的組態區段](https://msdn.microsoft.com/en-us/library/ff647398.aspx)。 或者，您可以使用 Azure 網站的建議相同的方法： 在組態檔中保留開發設定，但使用的實際執行設定環境變數值。 在此情況下，不過，您必須撰寫應用程式程式碼會自動在 Azure 網站中的功能： 擷取環境變數設定和使用這些值來取代組態檔設定，或使用組態檔設定時找不到環境變數。
+如果您要部署至內部部署 web 伺服器，您可以協助安全密碼[加密組態檔的組態區段](https://msdn.microsoft.com/library/ff647398.aspx)。 或者，您可以使用 Azure 網站的建議相同的方法： 在組態檔中保留開發設定，但使用的實際執行設定環境變數值。 在此情況下，不過，您必須撰寫應用程式程式碼會自動在 Azure 網站中的功能： 擷取環境變數設定和使用這些值來取代組態檔設定，或使用組態檔設定時找不到環境變數。
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>其他資源

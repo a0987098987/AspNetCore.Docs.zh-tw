@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme
 msc.type: content
-ms.openlocfilehash: 90f24550d2bb50147bab6be545be63c1838f312a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b8402aa3db1b2566878c4d56212facbbb2925eec
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="webmatrix-readme"></a>WebMatrix 讀我檔案
 ====================
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 
 <a id="Overview"></a>
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > Microsoft WebMatrix 1.0 是以分鐘為單位安裝免費的網頁開發堆疊。 它可以整合網頁伺服器與資料庫和程式設計架構來建立單一整合體驗。 您可以使用 WebMatrix 來簡化程式碼、 測試和發佈專屬 ASP.NET 或 PHP 網站的方式，或您可以使用 WebMatrix 來啟動新的網站使用熱門的開放原始碼應用程式，例如 DotNetNuke、 Umbraco、 WordPress 或 Joomla。 WebMatrix 使用相同的功能強大的 web 伺服器、 資料庫引擎和架構環境將在網際網路上，讓從開發轉換至實際執行環境，順利且流暢地執行您的網站。
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 > .NET Framework 第 4 版是 WebMatrix 的必要項目。 在某些情況下，WebMatrix 1.0 安裝程式可讓您嘗試安裝不支援的組態集的一部分的平台上。 特別是，Windows Vista SP1 更新不會讓您開始安裝 WebMatrix，但是.NET Framework 4 元件會失敗並封鎖您的安裝。
 > 
-> **因應措施**  
+> **Workaround**  
 > 安裝在支援的平台，其中包括：
 > 
 > - Windows 7
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 #### <a name="issue-cannot-install-webmatrix-10-if-microsoft-visual-studio-2008-is-installed-without-microsoft-visual-studio-2008-sp1"></a>問題： 無法安裝 WebMatrix 1.0，如果未安裝 Microsoft Visual Studio 2008 SP1 已安裝的 Microsoft Visual Studio 2008
 
-> **因應措施**  
+> **Workaround**  
 > 安裝[Microsoft Visual Studio 2008 SP1](https://www.microsoft.com/downloads/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en)從 Microsoft 下載中心取得。
 
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 11/10/2017
 > - *System.Data.SqlServerCe.dll* （ADO.NET 提供者）
 > - *System.Data.SqlServerCe.Entity.dll* (ADO.NET Entity Framework)
 > 
-> **因應措施**  
+> **Workaround**  
 > 解除安裝 SQL Server Compact 4.0。 下載並安裝.NET Framework 3.5 SP1 的完整版本，從下列位置：  
 >   
 > [Microsoft.NET Framework 3.5 Service pack 1 （完整套件）](https://go.microsoft.com/fwlink/?LinkId=194828)  
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/10/2017
 
 > 解除安裝的 SQL Server Compact 使用命令列選項在此版本中無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 使用*程式和功能*Windows 控制台中解除安裝 Microsoft SQL Server Compact 4.0。
 
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 如果您想要使用自訂使用者資料表的成員資格，但傳遞至錯誤的資料表名稱，這可能會有問題`WebSecurity.InitializeDatabaseConnection`方法。 因為方法不會預設產生錯誤如果您指定的資料表不存在，而且它改為建立新的資料表，應用程式會無法運作。 不過，必須使用自訂使用者資料表 （和中的欄位） 的應用程式程式碼最後可能意外的錯誤會失敗。
 > 
-> **因應措施**  
+> **Workaround**  
 > 請確定名稱傳入`InitializeDatabaseConnection`方法比對的使用者設定檔資料表中的成員資格資料庫，或請確定`autoCreateTables`參數設定為 false。
 
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > [!code-xml[Main](overview/samples/sample2.xml)]
 > 
-> 如需有關如何設定 proxy 伺服器的詳細資訊，請參閱[ &lt;proxy&gt;項目 （網路設定）](https://msdn.microsoft.com/en-us/library/sa91de1e.aspx) MSDN 網站上。
+> 如需有關如何設定 proxy 伺服器的詳細資訊，請參閱[ &lt;proxy&gt;項目 （網路設定）](https://msdn.microsoft.com/library/sa91de1e.aspx) MSDN 網站上。
 
 
 #### <a name="issue-uninstalling-the-net-framework-version-4-disables-aspnet-web-pages-with-razor-syntax"></a>問題： 解除安裝.NET Framework 第 4 版會停用含有 Razor 語法的 ASP.NET Web Pages
@@ -241,7 +241,7 @@ ms.lasthandoff: 11/10/2017
 >   
 > 因為 URL 重寫沒有啟用預設的 IIS 7 或 IIS 7.5，就會發生此問題。 Likeliest 案例是看不到問題時測試使用在本機 IIS Express，但它時遇到您將您的網站部署至裝載的網站。
 > 
-> **因應措施**
+> **Workaround**
 > 
 > - 如果您有伺服器電腦的控制權，在伺服器電腦上安裝更新中所述[的更新功能可讓某些 IIS 7.0 或 IIS 7.5 處理常式來處理要求的 Url 不以句號結束](https://support.microsoft.com/kb/980368)。
 > - 如果您沒有在伺服器電腦的控制權 （例如，您要部署至裝載的網站），加上網站的下列*web.config*檔案： 
@@ -257,10 +257,10 @@ ms.lasthandoff: 11/10/2017
 > 
 > 1. 資料庫引擎組件，以複製*Bin*資料夾 （及其子資料夾） 的目標電腦上的應用程式：  
 > 
->     - 複製*C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
->         **若要** *\Bin*
->     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\* * * 到***\Bin\x86*
->     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **至***\Bin\amd64*
+>     - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
+>         **to** *\Bin*
+>     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\* * * 若要 * * * \Bin\x86*
+>     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **至 * * * \Bin\amd64*
 > 2. 在網站的根資料夾中，建立或開啟*web.config*檔案。 (在 WebMatrix 1.0，此檔案類型才可用如果您按一下**所有**中**選擇檔案型別** 對話方塊。)
 > 3. 將下列項目新增為子系`<configuration>`項目 (不是在內`<system.web>`項目):
 > 
@@ -271,7 +271,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果您使用 Visual Basic (建立*.vbhtml*檔案)，則`Database`和`WebGrid`如果應用程式會設定為使用度信任，協助專家將無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 如果您使用 Visual Studio 2010，您可以透過安裝 Service Pack 1 版本來解決這個問題。 SP1 版本的最終版本可用之前，您可以下載從 SP1 Beta 版[Microsoft Visual Studio 2010 Service Pack 1 Beta](https://www.microsoft.com/downloads/en/details.aspx?FamilyID=11ea69cb-cf12-4842-a3d7-b32a1e5642e2&amp;displaylang=en) Microsoft 下載中心上的頁面。   
 >   
 > 如果這是不可行，或如果您未使用 Visual Studio 2010，您可以暫時設定應用程式使用完全信任。
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/10/2017
 
 #### <a name="issue-changes-in-the-username-or-password-of-a-database-connection-string-in-a-webconfig-file-are-not-reflected-in-the-databases-workspace"></a>問題： 使用者名稱或密碼的 web.config 檔案中的資料庫連接字串中的變更不會反映在 [資料庫] 工作區
 
-> **因應措施**  
+> **Workaround**  
 > 
 > 1. 在*web.config*檔案中，變更連接字串中的資料庫名稱 （例如，將"1"）。
 > 2. 儲存*web.config*檔案。
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/10/2017
 
 > 如果正在執行 WebMatrix，使用提高的權限 (也就是您開始 WebMatrix 使用**系統管理員身分執行**Windows 中的選項)，WebMatrix 所建立的資料夾無法使用 Windows 檔案總管中刪除。
 > 
-> **因應措施**  
+> **Workaround**  
 > 執行 Windows 檔案總管 使用提高的權限。 請依照下列步驟：  
 > 
 > 1. 在 Windows 中，按一下 **啟動**。
@@ -330,7 +330,7 @@ ms.lasthandoff: 11/10/2017
 > - 在 Windows Vista 或 Windows 7 上，您使用沒有系統管理權限的帳戶登入和使用者帳戶控制 (UAC) 已停用。
 > - 您正在使用 Microsoft Windows XP 或 Microsoft Windows Server 2003。
 > 
-> **因應措施**  
+> **Workaround**  
 > WebMatrix 1.0 中大部分的工作不需要系統管理權限。 對於執行，您可以執行操作，因為系統管理員，或請遵循下列步驟：
 > 
 > - 在 Windows Vista 或 Windows 7 上，啟用 UAC。
@@ -341,7 +341,7 @@ ms.lasthandoff: 11/10/2017
 
 > **從 Web 組件庫網站**選項已停用，如果未安裝 Web Platform Installer 3.0。
 > 
-> **因應措施**  
+> **Workaround**  
 > 安裝[Microsoft Web Platform Installer 3.0](https://go.microsoft.com/fwlink/?LinkID=194638)。
 
 
@@ -349,7 +349,7 @@ ms.lasthandoff: 11/10/2017
 
 > Google Chrome 瀏覽器在清單中未顯示**執行**上**首頁** 索引標籤。
 > 
-> **因應措施**  
+> **Workaround**  
 > Google Chrome 的某些版本中請勿本身正確向註冊 Windows 中的預設程式 功能。 因應措施，啟動 Google Chrome，請按一下*自訂和控制 Google Chrome*功能表上，按一下 *選項*，然後按一下 *請 Google Chrome 預設瀏覽器*。
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/10/2017
 
 > **外部索引鍵**對話方塊不允許輸入從主索引鍵資料表的主索引鍵的名稱。
 > 
-> **因應措施**  
+> **Workaround**  
 > 這是有意如此。 您不需要輸入主索引鍵資料表的主索引鍵的名稱。
 
 
@@ -400,7 +400,7 @@ ms.lasthandoff: 11/10/2017
 
 IIS Express 都有它自己讀我檔案，將會位於下列 URL:
 
-[https://go.microsoft.com/fwlink/?LinkID=207675&amp;: //go.microsoft.com/fwlink/？ linkid = 0x409](https://go.microsoft.com/fwlink/?LinkID=207675&amp;clcid=0x409)
+[https://go.microsoft.com/fwlink/?LinkID=207675&amp;clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=207675&amp;clcid=0x409)
 
 <a id="Known_Issues_SQLServerCompact"></a>
 
@@ -416,7 +416,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 #### <a name="issue-installing-an-application-can-take-a-long-time-if-the-users-my-documents-folder-is-redirected-to-a-network-share"></a>問題： 安裝應用程式可能需要很長的時間。 如果使用者的 [我的文件] 資料夾重新導向到網路共用
 
-> **因應措施**  
+> **Workaround**  
 > 無。 應用程式可能需要一段，若要安裝，但會正確安裝。
 
 
@@ -426,7 +426,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > WebMatrix 不完全支援的 SQL Server Compact 的支援的二進位檔部署至伺服器執行.NET Framework 3.5 版與中度信任設定。
 > 
-> **因應措施**  
+> **Workaround**  
 > 慣用的因應措施是在伺服器上安裝.NET Framework 4。 或者，執行下列作業：
 > 
 > 1. 加入下列項目來`SecurityClasses`一節中*Web\_MediumTrust.config*檔案：
@@ -444,7 +444,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 在某些情況下，應用程式的發行會導致 「 服務無法使用 」 錯誤。
 > 
-> **因應措施**  
+> **Workaround**  
 > 在 WebMatrix 中加入反斜線 (\)中的伺服器名稱的結尾**發行設定**視窗，然後將發行的應用程式。
 
 
@@ -452,7 +452,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > Moodle 應用程式發行之後，應用程式運作不正常運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 在 WebMatrix 中，加入結尾的斜線 （/）**站台名稱**欄位**發行設定**視窗，然後將發行的應用程式。
 
 
@@ -460,7 +460,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 發行 nopCommerce 失敗並報告資料庫錯誤，例如 「 插入 nop\_記錄資料表失敗。 」
 > 
-> **因應措施**  
+> **Workaround**  
 > 
 > 1. 在 WebMatrix 中，按一下 **執行**啟動 nopCommerce 在本機。
 > 2. 登入的管理頁面。
@@ -472,13 +472,13 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 #### <a name="issue-silverstripe-cms-displays-a-http-500-php-fcgi-error-when-you-download-a-published-site"></a>問題： Silverstripe CMS 會顯示 「 HTTP 500 PHP FCGI 錯誤 」 下載已發行的站台時
 
-> **因應措施**  
+> **Workaround**  
 > 按一下 之後**下載發佈站台**，略過`silverstripe-cache/manifest_main`中**發行預覽**。 這個檔案用於快取，且特定的每一部電腦。
 
 
 #### <a name="issue-subtext-displays-server-error-in--application-when-you-download-a-published-site"></a>問題： Subtext 會顯示 「 伺服器錯誤 '/' 應用程式中 」 的已發行的網站的下載時
 
-> **因應措施**  
+> **Workaround**  
 > 開啟網站的*web.config*檔案，並將使用者識別碼和密碼的資料庫連接字串中使用 SQL Server 系統管理員認證 （"sa"認證）。
 > 
 > 或者，請遵循下列步驟，才能將提供您用來登入的使用者帳戶`db_owner`權限：
@@ -493,7 +493,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 在**發佈設定**對話方塊中，如果目的地 URL 開頭不是`http://`或`https://`，在部署之後，站台可能無法運作。
 > 
-> **因應措施**  
+> **Workaround**  
 > 請確定發行的網站中的目的地 URL 之前，先**發行設定**對話方塊開頭`http://`或`https://`。
 
 
@@ -501,7 +501,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 針對數個原因會發生錯誤。 您可以看到此錯誤的其中一個原因是，如果將資料庫指令碼包含單引號字元 （'），而且目的地 MySQL 資料庫的預設字元集不為 utf-8。
 > 
-> **因應措施**  
+> **Workaround**  
 > 設定遠端的 MySQL 資料庫設定為 utf-8 的預設字元。
 
 
@@ -509,7 +509,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 如果您發行或下載 DotNetNuke 網站，您可能需要清除快取，以取得新的連結會出現在網站上。
 > 
-> **因應措施**
+> **Workaround**
 > 
 > 1. 「 主機 」 身分登入。
 > 2. 請移至主功能表並選取**主機設定**。
@@ -520,7 +520,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 #### <a name="issue-some-links-in-atomsite-are-broken-after-you-download-a-published-site"></a>問題： 某些 AtomSite 中的連結已中斷後下載已發佈的網站
 
-> **因應措施**  
+> **Workaround**  
 > 在*service.config*檔案， *users.config*檔案，以及所有*.xml*檔案，取代 URL 字串 (例如， `http://myhost.com/atomsite`) 以本機 (比方說， `http://localhost:1239`).
 
 
@@ -528,7 +528,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 根據預設，WebMatrix 會使用 utf-8 字元集安裝 MySQL。 如果您將 MySQL 安裝在您自己的而且字元集不是 utf-8 （例如，它是 Latin1），發行程序的資料庫可能會失敗。
 > 
-> **因應措施**
+> **Workaround**
 > 
 > 1. 變更 MySQL 為 utf-8 的字元集。 (如需詳細資訊，請參閱[伺服器字元集和定序](http://dev.mysql.com/doc/refman/5.0/en/charset-server.html)MySQL 網站上。)
 > 2. 重新安裝應用程式。
@@ -539,7 +539,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 
 > 某些應用程式 (例如，Kentico CMS) 會要求您在瀏覽器中啟動以執行後續安裝設定，例如建立資料庫。 如果您發行像這樣的應用程式，而不會完成瀏覽器為基礎的安裝程式，嘗試從遠端伺服器下載相同的站台將會失敗。
 > 
-> **因應措施**  
+> **Workaround**  
 > 發佈站台之前先完成瀏覽器為基礎的安裝。
 
 
@@ -549,7 +549,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 > 
 > [!code-console[Main](overview/samples/sample9.cmd)]
 > 
-> **因應措施**  
+> **Workaround**  
 > 如果可行的話，重新發行網站 （或將之發行） 資料庫使用非系統管理員認證。
 
 
@@ -563,4 +563,4 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 - [ASP.NET](https://asp.net/webmatrix)
 - [Microsoft.com/web](https://www.microsoft.com/web)
 
-© 2011 Microsoft Corporation。 All Rights Reserved. [使用規定](https://msdn.microsoft.com/en-us/cc300389.aspx)。
+© 2011 Microsoft Corporation. All Rights Reserved. [使用規定](https://msdn.microsoft.cos/cc300389.aspx)。

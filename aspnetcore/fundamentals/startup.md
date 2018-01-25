@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/startup
-ms.openlocfilehash: dd2eb3d3996bc0bf277c8d5e772c8568ef9f147e
-ms.sourcegitcommit: f5a7f0198628f0d152257d90dba6c3a0747a355a
+ms.openlocfilehash: 81d76c39b7890e2d4ab86252cb0a343e3bb7359a
+ms.sourcegitcommit: 83b5a4715fd25e4eb6f7c8427c0ef03850a7fa07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>在 ASP.NET Core 應用程式啟動
 
@@ -37,11 +37,14 @@ ASP.NET Core 應用程式使用`Startup`類別，名為`Startup`依慣例。 `St
 
 [!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
-`Startup`類別建構函式接受主機所定義的相依性。 常見用法[相依性插入](xref:fundamentals/dependency-injection)到`Startup`類別是要插入[IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment)由環境中設定服務：
+`Startup`類別建構函式接受主機所定義的相依性。 常見用法[相依性插入](xref:fundamentals/dependency-injection)到`Startup`類別將是：
+
+* [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment)環境所設定的服務。
+* [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration)在啟動期間設定應用程式。
 
 [!code-csharp[Main](startup/snapshot_sample/Startup2.cs)]
 
-插入的替代方式`IHostingStartup`是使用以慣例為基礎的方法。 應用程式可以定義個別`Startup`不同環境的類別 (例如， `StartupDevelopment`)，並在執行階段選取適當的啟動類別。 類別的名稱尾碼符合目前的環境已設定優先權。 如果應用程式會在開發環境中執行，並同時包含`Startup`類別和`StartupDevelopment`類別`StartupDevelopment`類別使用。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments#startup-conventions)。
+插入的替代方式`IHostingEnvironment`是使用以慣例為基礎的方法。 應用程式可以定義個別`Startup`不同環境的類別 (例如， `StartupDevelopment`)，並在執行階段選取適當的啟動類別。 類別的名稱尾碼符合目前的環境已設定優先權。 如果應用程式會在開發環境中執行，並同時包含`Startup`類別和`StartupDevelopment`類別`StartupDevelopment`類別使用。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments#startup-conventions)。
 
 若要深入了解`WebHostBuilder`，請參閱[主控](xref:fundamentals/hosting)主題。 如需在啟動期間處理的錯誤，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 
@@ -83,7 +86,7 @@ Web 主機提供某些服務，可用於`Startup`類別建構函式。 應用程
 
 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder.configureservices)和[設定](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure)使用便利的方法來取代指定`Startup`類別。 多個呼叫`ConfigureServices`附加至另一個。 多個呼叫`Configure`使用最後一個方法呼叫。
 
-[!code-csharp[Main](startup/snapshot_sample/Program.cs?highlight=16,20)]
+[!code-csharp[Main](startup/snapshot_sample/Program.cs?highlight=18,22)]
 
 ## <a name="startup-filters"></a>啟動篩選
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: a0f25ed3c996b73e362177b196539c6f2b143739
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 98647830125670ee2ed43538d65fb3ce6ac40d0d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 的重大變更
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 [Passport System.Web.Security 類型為過時](#0.1__Toc256770158 "_Toc256770158")  
 [無法轉譯 ASP.NET 4 中的映像 MenuItem.PopOutImageUrl 屬性](#0.1__Toc256770159 "_Toc256770159")  
 [Menu.StaticPopOutImageUrl 和 Menu.DynamicPopOutImageUrl 容錯移轉至呈現影像時路徑包含反斜線](#0.1__Toc256770160 "_Toc256770160")  
-[免責聲明](#0.1__Toc256770161 "_Toc256770161")
+[Disclaimer](#0.1__Toc256770161 "_Toc256770161")
 
 <a id="0.1__ControlRenderingCompatibilityVersio"></a><a id="0.1__Toc245724853"></a><a id="0.1__Toc255587630"></a><a id="0.1__Toc256770141"></a>
 
@@ -385,7 +385,7 @@ ASP.NET 2.0 中，並由延伸模組 3.5 中所加入的 ASP.NET 功能會使用
 - 動態編譯的組件所建立的 ASP.NET 組建提供者已明確地將標示為透明的組件更新。
 - 現在標記的方式接受 APTCA 屬性時，則只有在 Web 裝載環境中的所有 ASP.NET 組件。 部分信任的非 Web 裝載環境類似 ClickOnce 不能呼叫 ASP.NET 組件。
 
-如需有關新的 ASP.NET 4 程式碼存取安全性模型的詳細資訊，請參閱[ASP.NET 應用程式中使用程式碼存取安全性](https://msdn.microsoft.com/en-us/library/dd984947%28VS.100%29.aspx)MSDN 網站上。
+如需有關新的 ASP.NET 4 程式碼存取安全性模型的詳細資訊，請參閱[ASP.NET 應用程式中使用程式碼存取安全性](https://msdn.microsoft.com/library/dd984947%28VS.100%29.aspx)MSDN 網站上。
 
 <a id="0.1__Toc256770156"></a><a id="0.1__Toc245724863"></a><a id="0.1__Toc252995496"></a><a id="0.1__Toc255587645"></a><a id="0.1__Toc245724864"></a>
 
@@ -503,7 +503,7 @@ ASP.NET 成員資格中使用某些類型已從移動`System.Web.dll`新 System.
 
 除非特別註明，否則本文件中所述，用來舉例之公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所和事件皆為虛構，沒有意圖或不應該推斷為與任何真實存在的公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所或事件有所關聯。
 
-© 2010 Microsoft Corporation。 著作權所有，並保留一切權利。
+© 2010 Microsoft Corporation. 著作權所有，並保留一切權利。
 
 Microsoft 和 Windows 是 Microsoft Corporation 在美國及/或其他國家/地區的註冊商標或商標。
 

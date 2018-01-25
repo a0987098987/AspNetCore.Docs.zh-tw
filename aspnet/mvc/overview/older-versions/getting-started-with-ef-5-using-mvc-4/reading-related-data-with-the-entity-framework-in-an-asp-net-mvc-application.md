@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: f455c3656c9120f4d7e6fccdba8f705e0a1c7d35
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9093fb90a52b297f173c5cddb6f332d2d1a25135
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-5-of-10"></a>閱讀相關的 Entity Framework 中的 ASP.NET MVC 應用程式 (10-5) 的資料
 ====================
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-消極式載入，就能遮罩會造成效能問題的程式碼。 例如，程式碼不會指定立即或明確載入但處理高容量的實體，而且每個反覆項目中使用數個導覽屬性可能非常沒有效率 （因為許多反覆存取的資料庫）。 在開發使用在內部部署 SQL server 中執行的應用程式可能會發生效能問題時移至 Azure SQL Database，因為增加的延遲及消極式載入。 程式碼剖析實際的測試負載的資料庫查詢，可協助您判斷是否適用消極式載入。 如需詳細資訊，請參閱[Demystifying 實體架構策略： 載入相關資料](https://msdn.microsoft.com/en-us/magazine/hh205756.aspx)和[使用 Entity Framework 來減少網路延遲到 SQL Azure](https://msdn.microsoft.com/en-us/magazine/gg309181.aspx)。
+消極式載入，就能遮罩會造成效能問題的程式碼。 例如，程式碼不會指定立即或明確載入但處理高容量的實體，而且每個反覆項目中使用數個導覽屬性可能非常沒有效率 （因為許多反覆存取的資料庫）。 在開發使用在內部部署 SQL server 中執行的應用程式可能會發生效能問題時移至 Azure SQL Database，因為增加的延遲及消極式載入。 程式碼剖析實際的測試負載的資料庫查詢，可協助您判斷是否適用消極式載入。 如需詳細資訊，請參閱[Demystifying 實體架構策略： 載入相關資料](https://msdn.microsoft.com/magazine/hh205756.aspx)和[使用 Entity Framework 來減少網路延遲到 SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx)。
 
 ## <a name="create-a-courses-index-page-that-displays-department-name"></a>建立課程索引頁會顯示部門名稱
 
@@ -155,7 +155,7 @@ Scaffold 中的程式碼`Index`方法會指定僅適用於的積極式載入`Off
 > 
 > 路由資料是在路由表中指定的 URL 區段中找到的模型繫結器的資料。 例如，指定預設路由`controller`， `action`，和`id`區段：
 > 
-> 路由。MapRoute (  
+> routes.MapRoute(  
 >  名稱:"Default"  
 >  url:"{controller} / {action} / {id}"，  
 >  預設值： new {控制器 ="Home"，動作 ="Index"，識別碼 = UrlParameter.Optional}  
@@ -194,7 +194,7 @@ Scaffold 中的程式碼`Index`方法會指定僅適用於的積極式載入`Off
 
 `Where`方法會傳回集合，但在此情況下準則傳遞至該方法的結果中只有一個`Instructor`所傳回的實體。 `Single`方法會將集合轉換成單一`Instructor`實體，可讓您存取與該實體`Courses`屬性。
 
-您使用[單一](https://msdn.microsoft.com/en-us/library/system.linq.enumerable.single.aspx)集合，當您知道集合的方法將會有只有一個項目。 `Single`方法擲回例外狀況，如果是空的集合傳遞給它，或若有多個項目。 替代方式是[SingleOrDefault](https://msdn.microsoft.com/en-us/library/bb342451.aspx)，它會傳回預設值 (`null`在此情況下) 如果集合是空的。 不過，在此情況下，就仍然造成例外狀況 (從嘗試尋找`Courses`屬性`null`參考)，以及例外狀況訊息會較不清楚指出問題的原因。 當您呼叫`Single`方法，您也可以傳遞中`Where`條件，而不是呼叫`Where`方法分別：
+您使用[單一](https://msdn.microsoft.com/library/system.linq.enumerable.single.aspx)集合，當您知道集合的方法將會有只有一個項目。 `Single`方法擲回例外狀況，如果是空的集合傳遞給它，或若有多個項目。 替代方式是[SingleOrDefault](https://msdn.microsoft.com/library/bb342451.aspx)，它會傳回預設值 (`null`在此情況下) 如果集合是空的。 不過，在此情況下，就仍然造成例外狀況 (從嘗試尋找`Courses`屬性`null`參考)，以及例外狀況訊息會較不清楚指出問題的原因。 當您呼叫`Single`方法，您也可以傳遞中`Where`條件，而不是呼叫`Where`方法分別：
 
 [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs)]
 

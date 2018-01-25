@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4122f55c09f94d41f7caa3f86d1fbd5870417a20
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 43aed94fe5b1095af37abdae2cb4c9e67b7d7f6f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>自訂格式會根據資料 (VB)
 ====================
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample3.vb)]
 
 > [!NOTE]
-> 因為`UnitPrice`可以有`NULL`值在資料庫中，我們會先檢查以確定我們正在未處理的`NULL`前存取值`ProductsRow`的`UnitPrice`屬性。 這項檢查，請務必因為如果我們嘗試存取`UnitPrice`屬性時，它有`NULL`值`ProductsRow`物件將會擲回[StrongTypingException 例外狀況](https://msdn.microsoft.com/en-us/library/system.data.strongtypingexception.aspx)。
+> 因為`UnitPrice`可以有`NULL`值在資料庫中，我們會先檢查以確定我們正在未處理的`NULL`前存取值`ProductsRow`的`UnitPrice`屬性。 這項檢查，請務必因為如果我們嘗試存取`UnitPrice`屬性時，它有`NULL`值`ProductsRow`物件將會擲回[StrongTypingException 例外狀況](https://msdn.microsoft.com/library/system.data.strongtypingexception.aspx)。
 
 
 ## <a name="step-3-formatting-the-unitprice-value-in-the-detailsview"></a>步驟 3： 格式化 UnitPrice 值 DetailsView 中
@@ -193,7 +193,7 @@ ms.lasthandoff: 11/10/2017
 [!code-vb[Main](custom-formatting-based-upon-data-vb/samples/sample12.vb)]
 
 > [!NOTE]
-> 格式設定範本，以程式設計方式存取 Web 控制項使用的語法`FindControl("controlID")`，然後設定其樣式相關屬性也可使用時[TemplateFields](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.templatefield(VS.80).aspx) DetailsView 或 GridView 中控制項。 在我們的下一個教學課程中，我們將檢驗 TemplateFields。
+> 格式設定範本，以程式設計方式存取 Web 控制項使用的語法`FindControl("controlID")`，然後設定其樣式相關屬性也可使用時[TemplateFields](https://msdn.microsoft.com/library/system.web.ui.webcontrols.templatefield(VS.80).aspx) DetailsView 或 GridView 中控制項。 在我們的下一個教學課程中，我們將檢驗 TemplateFields。
 
 
 圖 7 顯示 FormView，檢視產品時其`UnitsInStock`值大於 10，而圖 8 中的產品有它的值小於 10。

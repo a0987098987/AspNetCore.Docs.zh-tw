@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 7923876c792544ac4d559eb8de29475d8a4b37e0
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 74609b515936ec7da8bfc133c27cb69f51311924
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="anchor-tag-helper"></a>錨定標記協助程式
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/19/2018
 <a href="/Speaker">All Speakers</a>
 ```
 
-如果`asp-controller`指定和`asp-action`不是，預設值`asp-action`將目前正在執行檢視的預設控制器方法。 是，在上述範例中，如果`asp-action`被省略，而且此錨定標記協助程式從產生的*HomeController*的`Index`檢視 (**/首頁**)，將會產生的標記：
+如果`asp-controller`指定和`asp-action`不是預設`asp-action`將目前正在執行檢視的預設控制器方法。 是，在上述範例中，如果`asp-action`被省略，而且此錨定標記協助程式從產生的*HomeController*的`Index`檢視 (**/首頁**)，將會產生的標記：
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -142,7 +142,7 @@ app.UseMvc(routes =>
 <a href='/Speaker/Detail/12'>SpeakerId: 12</a>
 ```
 
-如果路由前置字元不是找到的路由範本的一部分，也就是以下列**cshtml**檔案：
+如果路由前置字元不屬於找到的路由範本中，也就是以下列**cshtml**檔案：
 
 ```cshtml
 @model SpeakerData
@@ -164,7 +164,7 @@ app.UseMvc(routes =>
 
 `asp-route`可用來建立直接連結到具名路由的 URL。 使用路由的屬性，路由可以具名中所示`SpeakerController`和用於其`Evaluations`方法。
 
-`Name = "speakerevals"`會告知錨定標記協助程式，來產生該控制器方法，使用 URL 直接路由`/Speaker/Evaluations`。 如果`asp-controller`或`asp-action`指定除了`asp-route`，產生的路由可能不如預期。 `asp-route`不應該使用屬性的其中一種`asp-controller`或`asp-action`為避免發生路由衝突。
+`Name = "speakerevals"`會告知錨定標記協助程式，來產生該控制器方法，使用 URL 直接路由`/Speaker/Evaluations`。 如果`asp-controller`或`asp-action`指定除了`asp-route`，產生的路由可能不如預期。 `asp-route`不應使用屬性的其中一種`asp-controller`或`asp-action`為避免發生路由衝突。
 
 ### <a name="asp-all-route-data"></a>asp-all-route-data
 

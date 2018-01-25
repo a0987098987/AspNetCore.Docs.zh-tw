@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 13211ee4543e17a4bfb2f83495f4041880f37df2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4d6102dd81589e41894d8ecd95bf9ddd761a65bd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="unit-testing-aspnet-web-api-2"></a>單元測試 ASP.NET Web API 2
 ====================
@@ -118,7 +118,7 @@ Visual Studio 2017 Community、 Professional 或 Enterprise edition
 
 [!code-csharp[Main](unit-testing-with-aspnet-web-api/samples/sample2.cs)]
 
-GetProduct 方法傳回的執行個體**IHttpActionResult**介面。 IHttpActionResult 是其中一個在 Web API 2 中，新的功能，並簡化單元測試開發。 實作 IHttpActionResult 介面的類別位於[System.Web.Http.Results](https://msdn.microsoft.com/en-us/library/system.web.http.results.aspx)命名空間。 這些類別代表與動作的要求中的可能回應，而且它們對應到 HTTP 狀態碼。
+GetProduct 方法傳回的執行個體**IHttpActionResult**介面。 IHttpActionResult 是其中一個在 Web API 2 中，新的功能，並簡化單元測試開發。 實作 IHttpActionResult 介面的類別位於[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)命名空間。 這些類別代表與動作的要求中的可能回應，而且它們對應到 HTTP 狀態碼。
 
 建置方案。
 

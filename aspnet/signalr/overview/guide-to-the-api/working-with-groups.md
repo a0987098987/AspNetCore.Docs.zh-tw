@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: 3befcdbbc735dc4f64c714ba583e026c0c19465d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 11f5be1ac4e74b692f0db3daac971a2c9d74a64c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="working-with-groups-in-signalr"></a>使用 SignalR 中的群組
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 SignalR 中的群組提供方法，將訊息廣播至連線的用戶端指定的子集。 群組可以有任意數目的用戶端，並在用戶端可以是任意數目的群組成員。 您不需要明確地建立群組。 作用中，群組會自動建立第一次您 Groups.Add，呼叫中指定其名稱，並從它的成員資格中移除最後一次連接時，就會刪除。 如需使用群組的簡介，請參閱[如何 Hub 類別從管理群組成員資格](hubs-api-guide-server.md#groupsfromhub)集線器 API-伺服器指南中。
 
@@ -64,7 +64,7 @@ SignalR 中的群組提供方法，將訊息廣播至連線的用戶端指定的
 
 ## <a name="adding-and-removing-users"></a>加入和移除使用者
 
-若要新增或從群組移除使用者，請呼叫[新增](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)或[移除](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)方法，並傳入使用者的連線識別碼和群組的名稱做為參數。 您不需要以手動方式於連線結束時，從群組移除使用者。
+若要新增或從群組移除使用者，請呼叫[新增](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)或[移除](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)方法，並傳入使用者的連線識別碼和群組的名稱做為參數。 您不需要以手動方式於連線結束時，從群組移除使用者。
 
 下列範例所示`Groups.Add`和`Groups.Remove`Hub 方法中使用的方法。
 

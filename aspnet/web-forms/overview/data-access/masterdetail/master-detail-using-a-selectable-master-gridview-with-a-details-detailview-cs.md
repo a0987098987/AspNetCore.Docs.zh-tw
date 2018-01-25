@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: badf9da0e9a26d185e7532b02f53a8acea60ea91
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5f0d380ee411116844f42a542c12050513721eb1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-c"></a>使用詳細資料 DetailView (C#) 可選取的主要 GridView 的主要/詳細資料
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-1-creating-a-selectable-gridview"></a>步驟 1： 建立可選取的 GridView
 
-提醒您，在兩個頁面主要/詳細資料中每個主要的記錄包含超連結的報表，按一下時，會傳送使用者傳遞的按下資料列的詳細資料頁面`SupplierID`於 querystring 中的值。 每個使用 HyperLinkField 的 GridView 資料列加入超連結。 單一頁面的主要/詳細資料報表，我們需要按鈕的每個 GridView 資料列，按一下時，會顯示詳細資料。 GridView 控制項可以設定為包含每個資料列，導致回傳，並將該資料列標示為 GridView 選取按鈕[SelectedRow](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedrow.aspx)。
+提醒您，在兩個頁面主要/詳細資料中每個主要的記錄包含超連結的報表，按一下時，會傳送使用者傳遞的按下資料列的詳細資料頁面`SupplierID`於 querystring 中的值。 每個使用 HyperLinkField 的 GridView 資料列加入超連結。 單一頁面的主要/詳細資料報表，我們需要按鈕的每個 GridView 資料列，按一下時，會顯示詳細資料。 GridView 控制項可以設定為包含每個資料列，導致回傳，並將該資料列標示為 GridView 選取按鈕[SelectedRow](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedrow.aspx)。
 
 開始將 GridView 控制項加入`DetailsBySelecting.aspx`頁面`Filtering`資料夾中，設定其`ID`屬性`ProductsGrid`。 接下來，加入名為新 ObjectDataSource`AllProductsDataSource`會叫用`ProductsBLL`類別的`GetProducts()`方法。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs/samples/sample2.aspx)]
 
-在按下 GridView 資料列選取按鈕時回傳展示和 GridView`SelectedRow`更新屬性。 除了`SelectedRow`屬性 GridView 提供[SelectedIndex](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx)， [SelectedValue](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx)，和[SelectedDataKey](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx)屬性。 `SelectedIndex`屬性會傳回選取的資料列的索引，而`SelectedValue`和`SelectedDataKey`屬性會傳回值為基礎的 GridView [DataKeyNames 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx)。
+在按下 GridView 資料列選取按鈕時回傳展示和 GridView`SelectedRow`更新屬性。 除了`SelectedRow`屬性 GridView 提供[SelectedIndex](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex%28VS.80%29.aspx)， [SelectedValue](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue%28VS.80%29.aspx)，和[SelectedDataKey](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selecteddatakey%28VS.80%29.aspx)屬性。 `SelectedIndex`屬性會傳回選取的資料列的索引，而`SelectedValue`和`SelectedDataKey`屬性會傳回值為基礎的 GridView [DataKeyNames 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.datakeynames%28VS.80%29.aspx)。
 
 `DataKeyNames`屬性用來將一個或多個資料欄位值與每個資料列，並且通常用來從基礎資料的每個 GridView 資料列的唯一識別資訊的屬性。 `SelectedValue`屬性會傳回第一個值`DataKeyNames`選取的資料列的資料欄位做為 where`SelectedDataKey`屬性會傳回選取的資料列`DataKey`物件，其中包含所有的指定的資料索引鍵欄位的值該資料列。
 

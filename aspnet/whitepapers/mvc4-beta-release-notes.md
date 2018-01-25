@@ -1,6 +1,6 @@
 ---
 uid: whitepapers/mvc4-beta-release-notes
-title: "ASP.NET MVC 4 |Microsoft 文件"
+title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
 description: "本文件說明 ASP.NET MVC 4 Beta for Visual Studio 2010 的版本。"
 ms.author: aspnetcontent
@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 4af2df61ab4507b1f100d6bb75777da1168c5a75
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 58ae178a0e6578d8353e1a4e9d67fc1026e99f55
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -245,7 +245,7 @@ jQuery Mobile 是開放原始碼程式庫建置觸控最佳化 web UI。 如果�
 
 現在您可以撰寫非同步動作方法為單一方法的傳回型別的物件*工作*或*工作&lt;ActionResult&gt;*。
 
-例如，如果您使用 Visual C# 5 (或使用[非同步 CTP](https://msdn.microsoft.com/en-us/vstudio/async.aspx))，您可以建立非同步動作方法看起來如下所示：
+例如，如果您使用 Visual C# 5 (或使用[非同步 CTP](https://msdn.microsoft.com/vstudio/async.aspx))，您可以建立非同步動作方法看起來如下所示：
 
 [!code-csharp[Main](mvc4-beta-release-notes/samples/sample8.cs)]
 

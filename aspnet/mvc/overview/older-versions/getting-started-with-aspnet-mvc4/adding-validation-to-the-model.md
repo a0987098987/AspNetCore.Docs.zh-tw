@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 73332d168e2f22621cb234a6591f3ce0eeed802f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 93b4df5fcbde8d87866d00dffda8a241d0dd596b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================
@@ -40,13 +40,13 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 藉由新增一些驗證邏輯，以開始，您將`Movie`類別。
 
-開啟 *Movie.cs* 檔案。 新增`using`在參考的檔案最上方的陳述式[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間：
+開啟 *Movie.cs* 檔案。 新增`using`在參考的檔案最上方的陳述式[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間：
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample1.cs)]
 
 請注意命名空間不包含`System.Web`。 DataAnnotations 提供一組內建的驗證屬性，您可以以宣告方式套用至任何類別或屬性。
 
-立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)，和[ `Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性. 使用下列程式碼做為要套用屬性的範例。
+立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)，和[ `Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性. 使用下列程式碼做為要套用屬性的範例。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample2.cs?highlight=4,10,13,17)]
 
@@ -99,7 +99,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 5. 移除文字。
 6. 索引標籤時。
 
-上述順序將會觸發必要的驗證，而不叫用 [提交] 按鈕。 只要不需要輸入的任何欄位按下 [提交] 按鈕，將會觸發用戶端驗證。 直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 您可以藉由將中斷點放在 HTTP Post 方法，或使用測試[fiddler 工具](http://fiddler2.com/fiddler2/)或 IE 9 [F12 開發人員工具](https://msdn.microsoft.com/en-us/ie/aa740478)。
+上述順序將會觸發必要的驗證，而不叫用 [提交] 按鈕。 只要不需要輸入的任何欄位按下 [提交] 按鈕，將會觸發用戶端驗證。 直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 您可以藉由將中斷點放在 HTTP Post 方法，或使用測試[fiddler 工具](http://fiddler2.com/fiddler2/)或 IE 9 [F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)。
 
 ![](adding-validation-to-the-model/_static/image2.png)
 
@@ -137,17 +137,17 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 ## <a name="adding-formatting-to-the-movie-model"></a>加入影片模型格式設定
 
-開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 我們已經套用[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DisplayFormat` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性。
+開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 我們已經套用[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DisplayFormat` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample9.cs)]
 
-[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性不是驗證屬性，它們用來告訴檢視引擎呈現 HTML。 在上述範例`DataType.Date`屬性顯示為日期，影片日期沒有時間。 例如，下列[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性不會驗證資料的格式：
+[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性不是驗證屬性，它們用來告訴檢視引擎呈現 HTML。 在上述範例`DataType.Date`屬性顯示為日期，影片日期沒有時間。 例如，下列[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性不會驗證資料的格式：
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample10.cs)]
 
-以上所列的屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和&lt;&gt; url 的和&lt;href =&quot;mailto:EmailAddress.com&quot; &gt;電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。
+以上所列的屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和&lt;&gt; url 的和&lt;href =&quot;mailto:EmailAddress.com&quot; &gt;電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。
 
-另一個方法，使用`DataType`屬性，您也可以明確設定[ `DataFormatString` ](https://msdn.microsoft.com/en-us/library/system.string.format.aspx)值。 下列程式碼將示範使用日期的格式字串的發行日期屬性 (也就是&quot;d&quot;)。 您會使用這個指定不希望時間做為發行日期的一部分。
+另一個方法，使用`DataType`屬性，您也可以明確設定[ `DataFormatString` ](https://msdn.microsoft.com/library/system.string.format.aspx)值。 下列程式碼將示範使用日期的格式字串的發行日期屬性 (也就是&quot;d&quot;)。 您會使用這個指定不希望時間做為發行日期的一部分。
 
 [!code-csharp[Main](adding-validation-to-the-model/samples/sample11.cs)]
 

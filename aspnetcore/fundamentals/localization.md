@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/localization
-ms.openlocfilehash: 1c93a53ea23ec13ca3d6fc138024ba38ec4883ee
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 5f1579b5682b2f0b3f8227f0cf6b4c0361eb1e67
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>全球化和當地語系化的 ASP.NET Core
 
@@ -41,7 +41,7 @@ ASP.NET Core 中導入`IStringLocalizer`和`IStringLocalizer<T>`已設計成開�
 
 在上述程式碼中`IStringLocalizer<T>`實作來自[相依性插入](dependency-injection.md)。 如果找不到當地語系化"有關 Title"的值，則索引子機碼會傳回，也就是"有關 Title"的字串。 您可以保留預設的應用程式中的語言常值字串，並將其包裝在定位器，您可以專注於開發應用程式。 使用您的預設語言進行開發您的應用程式，並做好當地語系化步驟中沒有先建立預設資源檔。 或者，您可以使用的傳統方法，並提供要擷取的預設語言字串索引鍵。 許多開發人員將新的工作流程不會有預設語言的*.resx*檔案和簡單地包裝字串常值可以降低當地語系化應用程式的額外負荷。 其他開發人員會偏好傳統的工作流程，因為它可以讓您更輕鬆地使用較長的字串常值和更輕鬆地更新的當地語系化的字串。
 
-使用`IHtmlLocalizer<T>`包含 HTML 資源的實作。 `IHtmlLocalizer`HTML 編碼中的資源字串，格式化的引數，但並不 HTML 編碼的資源字串本身。 在此範例中反白顯示的值以下`name`參數是 HTML 編碼。
+使用`IHtmlLocalizer<T>`包含 HTML 資源的實作。 `IHtmlLocalizer`HTML 編碼中的資源字串，格式化的引數，但不 HTML 編碼的資源字串本身。 在此範例中反白顯示的值以下`name`參數是 HTML 編碼。
 
 [!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
@@ -152,7 +152,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 ## <a name="resource-file-naming"></a>資源檔命名
 
-資源是減去的組件名稱與其類別的完整類型名稱命名。 例如，法文資源在其主要組件是的專案中`LocalizationWebsite.Web.dll`類別`LocalizationWebsite.Web.Startup`就會命名為*Startup.fr.resx*。 類別資源`LocalizationWebsite.Web.Controllers.HomeController`就會命名為*Controllers.HomeController.fr.resx*。 如果您的目標的類別的命名空間不是相同的組件名稱必須完整類型名稱。 比方說，在範例專案的資源類型`ExtraNamespace.Tools`就會命名為*ExtraNamespace.Tools.fr.resx*。
+資源是減去的組件名稱與其類別的完整類型名稱命名。 例如，法文資源在其主要組件是的專案中`LocalizationWebsite.Web.dll`類別`LocalizationWebsite.Web.Startup`就會命名為*Startup.fr.resx*。 類別資源`LocalizationWebsite.Web.Controllers.HomeController`就會命名為*Controllers.HomeController.fr.resx*。 如果您的目標的類別的命名空間和不相同的組件名稱必須完整類型名稱。 比方說，在範例專案的資源類型`ExtraNamespace.Tools`就會命名為*ExtraNamespace.Tools.fr.resx*。
 
 在範例專案中，`ConfigureServices`方法會設定`ResourcesPath`至 [資源]，主控制器的法文資源檔之專案相對路徑，所以*Resources/Controllers.HomeController.fr.resx*。 或者，您可以使用資料夾來組織資源檔案。 主控制器，路徑就是*Resources/Controllers/HomeController.fr.resx*。 如果您不使用`ResourcesPath`選項， *.resx*檔案會放在專案的基底目錄。 資源檔`HomeController`就會命名為*Controllers.HomeController.fr.resx*。 使用點或路徑的命名慣例的選擇取決於您想要組織您的資源檔的方式。
 
@@ -176,7 +176,7 @@ ASP.NET Core 可讓您指定兩個文化特性值，`SupportedCultures`和`Suppo
 
 ### <a name="generate-resource-files-with-visual-studio"></a>產生 Visual Studio 中的資源檔
 
-如果在 Visual Studio 中建立資源檔，而不是檔案名稱中的文化特性 (例如， *Welcome.resx*)，Visual Studio 會針對每個字串的屬性建立 C# 類別。 這通常不是您想要使用 ASP.NET Core;您通常不會有預設值*.resx*資源檔 (A *.resx*沒有的文化特性名稱的檔案)。 我們建議您建立*.resx*文化特性名稱的檔案 (例如*Welcome.fr.resx*)。 當您建立*.resx*文化特性名稱，Visual Studio 檔案將不會產生類別檔案。 我們預期的許多開發人員**不**建立預設語言資源檔案。
+如果在 Visual Studio 中建立資源檔，而不是檔案名稱中的文化特性 (例如， *Welcome.resx*)，Visual Studio 會針對每個字串的屬性建立 C# 類別。 這通常不是您想要使用 ASP.NET Core;您通常不會有預設值*.resx*資源檔 (A *.resx*沒有的文化特性名稱的檔案)。 我們建議您建立*.resx*文化特性名稱的檔案 (例如*Welcome.fr.resx*)。 當您建立*.resx*文化特性名稱，Visual Studio 檔案不會產生類別檔案。 我們預期的許多開發人員**不**建立預設語言資源檔案。
 
 ### <a name="add-other-cultures"></a>加入其他文化特性
 
@@ -234,7 +234,7 @@ Cookie 格式是`c=%LANGCODE%|uic=%LANGCODE%`，其中`c`是`Culture`和`uic`是
 
 ### <a name="the-accept-language-http-header"></a>Accept-encoding HTTP 標頭
 
-[Accept-encoding 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)是可在大部分的瀏覽器設定和原本要用來指定使用者的語言。 這個設定會指出瀏覽器功能已設定為傳送或已繼承自基礎作業系統。 從瀏覽器要求的接受語言 HTTP 標頭不是百分之百的方法，可偵測使用者的慣用的語言 (請參閱[瀏覽器中設定語言喜好設定](https://www.w3.org/International/questions/qa-lang-priorities.en.php))。 在生產應用程式應該包含方法，讓使用者可以自訂自己選擇的文化特性。
+[Accept-encoding 標頭](https://www.w3.org/International/questions/qa-accept-lang-locales)是可在大部分的瀏覽器設定和原本要用來指定使用者的語言。 這個設定會指出瀏覽器功能已設定為傳送或已繼承自基礎作業系統。 從瀏覽器要求 HTTP Accept-encoding 標頭不是百分之百的方法，可偵測使用者的慣用的語言 (請參閱[瀏覽器中設定語言喜好設定](https://www.w3.org/International/questions/qa-lang-priorities.en.php))。 在生產應用程式應該包含方法，讓使用者可以自訂自己選擇的文化特性。
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>在 IE 中設定 Accept-encoding HTTP 標頭
 

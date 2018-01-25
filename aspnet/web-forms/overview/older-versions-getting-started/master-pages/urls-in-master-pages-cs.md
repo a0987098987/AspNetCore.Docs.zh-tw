@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 243bd8a30a84d3a57d418da7b2b55cfe132bf0e3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8b01f0ac780121c4e0941df6016220a1cb1ed2d1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="urls-in-master-pages-c"></a>主版頁面 (C#) 中的 Url
 ====================
@@ -108,7 +108,7 @@ ms.lasthandoff: 11/10/2017
 
 而是硬式編碼的絕對 URL 位址，比 ASP.NET 可讓網頁開發人員可以使用波狀符號 (`~`) 來表示 web 應用程式的根目錄。 例如，如稍早在本教學課程我可以使用標記法`~/Admin/Default.aspx`中的文字來參考`Default.aspx`頁面`Admin`資料夾。 `~`表示`Admin`資料夾是 web 應用程式根目錄的子資料夾。
 
-`Control`類別的[`ResolveClientUrl`方法](https://msdn.microsoft.com/en-us/library/system.web.ui.control.resolveclienturl.aspx)採用 URL 並加以修改以適當的控制項所在的網頁的相對 URL。 例如，呼叫`ResolveClientUrl("~/Images/PoweredByASPNET.gif")`從`About.aspx`傳回`Images/PoweredByASPNET.gif`。 呼叫從`~/Admin/Default.aspx`，不過，會傳回`../Images/PoweredByASPNET.gif`。
+`Control`類別的[`ResolveClientUrl`方法](https://msdn.microsoft.com/library/system.web.ui.control.resolveclienturl.aspx)採用 URL 並加以修改以適當的控制項所在的網頁的相對 URL。 例如，呼叫`ResolveClientUrl("~/Images/PoweredByASPNET.gif")`從`About.aspx`傳回`Images/PoweredByASPNET.gif`。 呼叫從`~/Admin/Default.aspx`，不過，會傳回`../Images/PoweredByASPNET.gif`。
 
 > [!NOTE]
 > 因為所有 ASP.NET 伺服器控制項都衍生自`Control`類別，所有的伺服器控制項有存取權`ResolveClientUrl`方法。 即使`Page`類別衍生自`Control`類別，這表示您可以使用這個方法，直接從您的 ASP.NET 網頁程式碼後置類別。
@@ -148,7 +148,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](urls-in-master-pages-cs/samples/sample8.aspx)]
 
-就這麼容易 ！ 此時，所有主版頁面和內容頁面，無論何種資料夾的內容頁轉譯時，我們主版頁面中的 Url 會正確基礎位於中。
+就這麼容易！ 此時，所有主版頁面和內容頁面，無論何種資料夾的內容頁轉譯時，我們主版頁面中的 Url 會正確基礎位於中。
 
 ### <a name="automatic-url-resolution-in-theheadsection"></a>中的自動 URL 解析`<head>`區段
 

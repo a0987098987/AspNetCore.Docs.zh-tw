@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-staging-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: b5f223f59a8b222f4f01322d228cf7434e3dfc14
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 683a0cf88225fee762e82925afe3785a2defd5bf
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="scenario-configuring-a-staging-environment-for-web-deployment"></a>案例： 設定用於 Web 部署的預備環境
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 - 對應用程式部署頻繁地，所以環境必須支援單一步驟或自動部署。
 
 > [!NOTE]
-> 擴充資料庫部署到多部伺服器已超出本教學課程的範圍。 如需有關此區域的詳細資訊，請參閱[SQL Server 線上叢書 》](https://technet.microsoft.com/en-us/library/ms130214.aspx)。
+> 擴充資料庫部署到多部伺服器已超出本教學課程的範圍。 如需有關此區域的詳細資訊，請參閱[SQL Server 線上叢書 》](https://technet.microsoft.com/library/ms130214.aspx)。
 
 
 例如，在我們[教學課程案例](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)，Team Foundation Server (TFS) 管理連絡人管理員解決方案。 TFS 系統管理員，Rob 郭已經建立可讓開發人員觸發部署到預備環境所需的組建定義。

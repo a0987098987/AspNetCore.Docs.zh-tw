@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 7697763b97e36304d686c77e8cedd060d630c530
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aeea122636f5235364e6a40cb6e041b1fe221317
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-7"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 一部分 7
 ====================
@@ -135,7 +135,7 @@ Entity Framework 不會自動執行預存程序這類`GetCourses`，而且您無
 
 頁面現在會使用`GetCourses`預存程序擷取所有課程的清單。 執行頁面，以驗證它的運作與以前一樣。
 
-(預存程序所擷取的實體的導覽屬性可能不會自動填入這些實體，取決於與相關的資料`ObjectContext`預設設定。 如需詳細資訊，請參閱[載入相關物件](https://msdn.microsoft.com/en-us/library/bb896272.aspx)MSDN Library 中。)
+(預存程序所擷取的實體的導覽屬性可能不會自動填入這些實體，取決於與相關的資料`ObjectContext`預設設定。 如需詳細資訊，請參閱[載入相關物件](https://msdn.microsoft.com/library/bb896272.aspx)MSDN Library 中。)
 
 在下一個教學課程中，您將學習如何使用動態資料功能，更輕鬆地程式和測試資料格式和驗證規則。 而不是指定每個網頁規則，例如資料格式字串，以及為必要欄位，您可以在資料模型中繼資料中指定這類規則，它們會自動套用每一頁上。
 

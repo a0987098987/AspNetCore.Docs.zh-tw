@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: 1d6d9265d93fbd32e2d9c22e2ac3db9b5ffd9776
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d24c633368abc14efcd9fcf200a4d05c5b182c9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>在實驗室交給： 容易維護的 Azure 網站： 管理變更和小數位數
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 
 <a id="Overview"></a>
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/10/2017
 需要下列項目才能完成這個實際操作實驗室：
 
 - [Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/)或更新版本
-- [Azure SDK for.NET 2.2](https://www.microsoft.com/windowsazure/sdk/)
+- [Azure SDK for .NET 2.2](https://www.microsoft.com/windowsazure/sdk/)
 - [GIT 版本控制系統](http://git-scm.com/download)
 - Microsoft Azure 訂用帳戶 
 
@@ -199,9 +199,9 @@ ms.lasthandoff: 11/10/2017
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample5.ps1)]
 
-    ![新增移轉](maintainable-azure-websites-managing-change-and-scale/_static/image8.png "新增移轉")
+    ![Add-Migration](maintainable-azure-websites-managing-change-and-scale/_static/image8.png "Add-Migration")
 
-    *新增移轉*
+    *Add-Migration*
 
     > [!NOTE]
     > 移轉檔案由兩個方法，組成**向上**和**向**。
@@ -251,7 +251,7 @@ ms.lasthandoff: 11/10/2017
 在此練習中，您將部署**玩家測驗**到預備環境使用 Git 原始檔控制的 web 應用程式的應用程式。 若要這樣做，您會建立 web 應用程式和佈建在管理入口網站的必要的元件，請設定**Git**儲存機制並推送應用程式原始程式碼，從本機電腦以預備位置。 您也會更新您的生產資料庫與**Code First 移轉**您在上一個練習中建立。 您再將此測試環境，以驗證其作業中執行應用程式。 一旦您滿意其根據您的預期運作，您將會升級到生產環境應用程式。
 
 > [!NOTE]
-> 若要啟用預備的發行，web 應用程式必須處於**標準模式**。 請注意，是否您變更為標準模式的 web 應用程式，將會產生額外費用。 如需有關定價的詳細資訊，請參閱[應用程式服務定價](https://azure.microsoft.com/en-us/pricing/details/app-service/)。
+> 若要啟用預備的發行，web 應用程式必須處於**標準模式**。 請注意，是否您變更為標準模式的 web 應用程式，將會產生額外費用。 如需有關定價的詳細資訊，請參閱[應用程式服務定價](https://azure.microsoft.com/pricing/details/app-service/)。
 
 
 <a id="Ex2Task1"></a>
@@ -542,9 +542,9 @@ ms.lasthandoff: 11/10/2017
 5. 選取測驗的任何選項。 您會看到沒有任何反應。
 6. 在**F12**視窗中，對應至 POST HTTP 要求的項目會顯示 HTTP **500**結果。
 
-    ![HTTP 500 錯誤](maintainable-azure-websites-managing-change-and-scale/_static/image52.png)
+    ![HTTP 500 error](maintainable-azure-websites-managing-change-and-scale/_static/image52.png)
 
-    *HTTP 500 錯誤*
+    *HTTP 500 error*
 7. 選取**主控台** 索引標籤。將錯誤記錄的原因詳細資料。
 
     ![記錄的錯誤](maintainable-azure-websites-managing-change-and-scale/_static/image53.png)
@@ -695,7 +695,7 @@ ms.lasthandoff: 11/10/2017
     [!code-xml[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample17.xml)]
 
     > [!NOTE]
-    > URL 重寫為攔截傳入的 Web 要求，並將要求重新導向至不同的資源的程序。 重寫規則的 URL 會告訴重寫引擎要求時必須重新導向，而且其中應該他們重新導向。 重寫規則由兩個字串所組成： 尋找所要求 URL 中的模式 （通常會使用規則運算式），並找到要取代的模式，如果字串。 如需詳細資訊，請參閱[ASP.NET 中的 URL 重寫](https://msdn.microsoft.com/en-us/library/ms972974.aspx)。
+    > URL 重寫為攔截傳入的 Web 要求，並將要求重新導向至不同的資源的程序。 重寫規則的 URL 會告訴重寫引擎要求時必須重新導向，而且其中應該他們重新導向。 重寫規則由兩個字串所組成： 尋找所要求 URL 中的模式 （通常會使用規則運算式），並找到要取代的模式，如果字串。 如需詳細資訊，請參閱[ASP.NET 中的 URL 重寫](https://msdn.microsoft.com/library/ms972974.aspx)。
 3. 按**CTRL + S**儲存的變更。
 4. 開啟新**Git Bash**主控台部署至 Azure App Service 更新的應用程式。
 5. 執行下列命令以將變更推送至 Azure。 更新*[您的應用程式的路徑]*預留位置路徑**GeekQuiz**方案。 系統會提示您做為部署密碼。
@@ -910,7 +910,7 @@ ms.lasthandoff: 11/10/2017
     > 
     > - 增加負載測試的持續時間 (例如以**10 分鐘**)
     > - 減少的最大和最小值**目標 CPU**您 web 應用程式的自動調整規模設定中的範圍
-    > - 透過在雲端執行負載測試**Visual Studio Online**。 更多資訊[這裡](https://www.visualstudio.com/en-us/get-started/load-test-your-app-vs.aspx)
+    > - 透過在雲端執行負載測試**Visual Studio Online**。 更多資訊[這裡](https://www.visualstudio.com/get-started/load-test-your-app-vs.aspx)
 
 * * *
 

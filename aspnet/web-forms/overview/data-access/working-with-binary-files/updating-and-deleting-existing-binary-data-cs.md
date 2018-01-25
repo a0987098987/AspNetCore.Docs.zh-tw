@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 55128faa3752a43902c17525dde3543a4a8c3997
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f2fca1e91720fba0215e12b1a1894a3a31e86b5c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="updating-and-deleting-existing-binary-data-c"></a>更新和刪除現有的二進位資料 (C#)
 ====================
@@ -150,7 +150,7 @@ ObjectDataSource 現在包含的值及其`DeleteMethod`屬性以及`DeleteParame
 
 儲存在資料庫外部的二進位資料的缺點是必須採取額外的步驟來刪除相關聯的資料庫記錄時，清除這些檔案。 GridView 和 ObjectDataSource 提供事件引發之前和之後執行 delete 命令。 實際上，我們需要建立前置和後置動作事件的事件處理常式。 之前`Categories`刪除記錄我們必須判定其 PDF 檔的路徑，但是我們不想要刪除 PDF，以防沒有某些例外狀況，而且不會刪除類別目錄刪除類別目錄之前。
 
-GridView s [ `RowDeleting`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx)引發已叫用 ObjectDataSource s delete 命令之前，而其[`RowDeleted`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleted.aspx)之後引發。 建立使用下列程式碼這兩個事件的事件處理常式：
+GridView s [ `RowDeleting`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx)引發已叫用 ObjectDataSource s delete 命令之前，而其[`RowDeleted`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleted.aspx)之後引發。 建立使用下列程式碼這兩個事件的事件處理常式：
 
 
 [!code-csharp[Main](updating-and-deleting-existing-binary-data-cs/samples/sample5.cs)]

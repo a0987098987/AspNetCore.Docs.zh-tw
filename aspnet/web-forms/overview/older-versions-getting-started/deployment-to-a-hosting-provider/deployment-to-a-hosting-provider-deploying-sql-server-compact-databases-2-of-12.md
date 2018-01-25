@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: d0b76c06495c51df3ed0f61cd318507a05240392
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5296bc1ca3fd0b24123bd79a550a7e2cffc34a44
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何設定兩個 SQL Server Compact 資料庫和 database engine 的部署。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 - [SQL Server Compact](https://www.microsoft.com/sqlserver/en/us/editions/compact.aspx) （資料庫引擎）。
 - [ASP.NET Universal Providers](http://www.hanselman.com/blog/IntroducingSystemWebProvidersASPNETUniversalProvidersForSessionMembershipRolesAndUserProfileOnSQLCompactAndSQLAzure.aspx) （可讓 ASP.NET 成員資格系統，若要使用 SQL Server Compact）
-- [Entity Framework 5.0](https://msdn.microsoft.com/en-us/library/gg696172(d=lightweight,v=vs.103).aspx)（程式碼移轉的第一個）。
+- [Entity Framework 5.0](https://msdn.microsoft.com/library/gg696172(d=lightweight,v=vs.103).aspx)（程式碼移轉的第一個）。
 
 資料庫結構以及某些 （並非全部） 的應用程式的兩個資料也必須部署資料庫。 一般而言，當您開發應用程式時，您輸入測試資料的資料庫，您不想要部署到即時網站。 不過，您也可能會輸入您要部署的實際執行資料。 在本教學課程中，您會設定 Contoso 大學專案，讓所需的軟體和正確的資料都包含在部署時。
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/10/2017
 
 範例應用程式會使用 SQL Server Compact 4.0。 此資料庫引擎是網站; 相對較新的選項舊版的 SQL Server Compact 在 web 主機環境中無法運作。 SQL Server Compact 提供相較於以 SQL Server Express 開發及部署到 SQL Server 完整版的更常見的案例的一些優點。 根據您選擇的主控提供者，SQL Server Compact 可能成本較低，若要部署，因為某些提供者會收取額外支援完整的 SQL Server 資料庫。 沒有額外的免費的 SQL Server Compact，因為您可以將資料庫引擎本身部署 web 應用程式的一部分。
 
-不過，您也應該注意其限制。 SQL Server Compact 不支援預存程序、 觸發程序、 檢視或複寫。 (如 SQL Server compact 不支援的 SQL Server 功能的完整清單，請參閱[差異之間 SQL Server Compact 和 SQL Server](https://msdn.microsoft.com/en-us/library/bb896140.aspx)。)此外，有些工具可用來管理結構描述和 SQL Server Express 和 SQL Server 資料庫中的資料不適用與 SQL Server Compact。 比方說，您無法使用 SQL Server Management Studio 或 SQL Server Data Tools Visual Studio 中的 SQL Server Compact 資料庫。 您需要使用 SQL Server Compact 資料庫的其他選項：
+不過，您也應該注意其限制。 SQL Server Compact 不支援預存程序、 觸發程序、 檢視或複寫。 (如 SQL Server compact 不支援的 SQL Server 功能的完整清單，請參閱[差異之間 SQL Server Compact 和 SQL Server](https://msdn.microsoft.com/library/bb896140.aspx)。)此外，有些工具可用來管理結構描述和 SQL Server Express 和 SQL Server 資料庫中的資料不適用與 SQL Server Compact。 比方說，您無法使用 SQL Server Management Studio 或 SQL Server Data Tools Visual Studio 中的 SQL Server Compact 資料庫。 您需要使用 SQL Server Compact 資料庫的其他選項：
 
 - 您可以使用伺服器總管，在 Visual Studio 中的 SQL Server Compact 提供有限的資料庫管理功能。
 - 您可以使用的資料庫操作功能[WebMatrix](https://www.microsoft.com/web/webmatrix/)，其中包含 伺服器總管較多的功能。
@@ -119,7 +119,7 @@ NuGet 套件安裝通常會負責您需將此軟體與應用程式部署的所�
 
 在頂端**Package Manager Console**視窗選取 ContosoUniversity.DAL 做為預設專案，然後在`PM>`提示字元中輸入 「 啟用移轉 」。
 
-![啟用 migrations_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image7.png)
+![enable-migrations_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image7.png)
 
 此命令會建立*configuration.cs 中*檔案中的新*移轉*ContosoUniversity.DAL 專案資料夾中的。
 
@@ -159,13 +159,13 @@ NuGet 套件安裝通常會負責您需將此軟體與應用程式部署的所�
 
 在**Package Manager Console**視窗中，輸入 「 新增移轉初始"命令以建立初始移轉並將它命名為 「 初始 」。
 
-![新增 migration_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image11.png)
+![add-migration_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image11.png)
 
 Code First 移轉建立的另一個類別檔案*移轉*資料夾中，且此類別包含程式碼會建立資料庫結構描述。
 
 在**Package Manager Console**，輸入命令 [更新的資料庫] 來建立資料庫和執行**種子**方法。
 
-![更新 database_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image12.png)
+![update-database_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image12.png)
 
 (如果您收到錯誤，指出資料表已經存在，而且無法建立，它可能是因為刪除資料庫之後，您在執行之前，執行該應用程式`update-database`。 In that case，刪除*School.sdf*檔案一次，然後重試`update-database`命令。)
 
@@ -190,7 +190,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 當您第一次部署站台時，因此常會排除大部分或所有您針對測試建立的使用者帳戶。 在此情況下，您要部署的系統管理員帳戶並沒有使用者帳戶。 而不是以手動方式刪除測試帳戶，您將建立新的成員資格資料庫，其只有一位系統管理員使用者帳戶，您需要在生產環境中。
 
 > [!NOTE]
-> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/en-us/library/w8h3skw9.aspx)**  Web.config 檔案中的項目。
+> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)**  Web.config 檔案中的項目。
 
 
 成員資格資料庫不由 Code First 移轉，維護，而且沒有任何自動的初始設定式植入的資料庫測試帳戶，（因為沒有 School 資料庫）。 因此，要保留測試資料使用之前建立一個新會建立一份測試資料庫。
@@ -243,7 +243,7 @@ SQL Server Compact 資料庫引擎和這兩個資料庫現在會是隨時可供�
 
 ## <a name="more-information"></a>更多資訊
 
-如需 NuGet 的詳細資訊，請參閱[管理專案程式庫與 NuGet](https://msdn.microsoft.com/en-us/magazine/hh547106.aspx)和[NuGet 文件](http://docs.nuget.org/docs/start-here/overview)。 如果您不想要使用 NuGet，您必須了解如何分析 NuGet 封裝來判斷其用途在安裝時。 (例如，它可能會設定*Web.config*轉換設定為在建置時間等等時執行的 PowerShell 指令碼。)若要了解有關 NuGet 的運作方式的詳細資訊，請參閱特別[建立和發佈封裝](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package)和[組態檔和來源的程式碼轉換](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations)。
+如需 NuGet 的詳細資訊，請參閱[管理專案程式庫與 NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx)和[NuGet 文件](http://docs.nuget.org/docs/start-here/overview)。 如果您不想要使用 NuGet，您必須了解如何分析 NuGet 封裝來判斷其用途在安裝時。 (例如，它可能會設定*Web.config*轉換設定為在建置時間等等時執行的 PowerShell 指令碼。)若要了解有關 NuGet 的運作方式的詳細資訊，請參閱特別[建立和發佈封裝](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package)和[組態檔和來源的程式碼轉換](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations)。
 
 >[!div class="step-by-step"]
 [上一頁](deployment-to-a-hosting-provider-introduction-1-of-12.md)

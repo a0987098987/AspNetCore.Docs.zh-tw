@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: e57f1200aaa207c9109f2832cbf88629ed385bb5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f0818cce2a82ede80556b3471cec9d965c3e987f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息
 ====================
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 
 - [Microsoft Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web)或上層 (讀取[附錄 A](#AppendixA)如需有關如何安裝指示)。
 - [Windows PowerShell](https://support.microsoft.com/kb/968930/) （適用於安裝指令碼-已安裝 Windows 8 和 Windows Server 2008 R2）
-- [Internet Explorer 10](https://windows.microsoft.com/en-US/internet-explorer/products/ie/home) -或 HTML5 相容的瀏覽器
+- [Internet Explorer 10](https://windows.microsoft.com/internet-explorer/products/ie/home) -或 HTML5 相容的瀏覽器
 
 <a id="Exercises"></a>
 
@@ -202,7 +202,7 @@ Visual Studio 現在包括功能，可協助開發人員存取、 工作及有�
     > [!NOTE]
     > 如果您使用 Internet Explorer 10，且看不到陰影，請確定文件模式設定為 IE10 標準。 按**F12**開啟 Internet Explorer 開發人員工具，然後按一下 **文件模式**變更為 IE10 標準。
 
-    ![關於-我們](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image21.png)
+    ![about-us](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image21.png)
 
 <a id="Exercise2"></a>
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f5ebdf168610b715dc918ff6addf88d3c2a67097
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2269458cbc41fd3a483aaade0f07288ee805bdd1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-vb"></a>ASP.NET 網頁 (VB) 中的 BLL 和 DAL 層級例外狀況處理
 ====================
@@ -101,9 +101,9 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-gracefully-handling-dal-level-exceptions"></a>步驟 2： 依正常程序 DAL 層級例外狀況處理
 
-當我們可以讓您編輯 GridView 作出當使用者輸入的已編輯的產品名稱、 價格和庫存單位的合法值，輸入不合法的值會導致例外狀況。 例如，省略`ProductName`值原因[NoNullAllowedException](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemdatanonullallowedexceptionclasstopic.asp)之後擲回`ProductName`中的屬性`ProdcutsRow`類別具有其`AllowDBNull`屬性設定為`false`; 如果資料庫已關閉，`SqlException`會擲回的 TableAdapter 時嘗試連線到資料庫。 但不採取任何動作，這些例外狀況反昇資料存取層的商務邏輯層，然後再 ASP.NET 頁面中，最後再 ASP.NET 執行階段。
+當我們可以讓您編輯 GridView 作出當使用者輸入的已編輯的產品名稱、 價格和庫存單位的合法值，輸入不合法的值會導致例外狀況。 例如，省略`ProductName`值原因[NoNullAllowedException](https://msdn.microsoft.com/library/default.asp?url=/library/cpref/html/frlrfsystemdatanonullallowedexceptionclasstopic.asp)之後擲回`ProductName`中的屬性`ProdcutsRow`類別具有其`AllowDBNull`屬性設定為`false`; 如果資料庫已關閉，`SqlException`會擲回的 TableAdapter 時嘗試連線到資料庫。 但不採取任何動作，這些例外狀況反昇資料存取層的商務邏輯層，然後再 ASP.NET 頁面中，最後再 ASP.NET 執行階段。
 
-根據您的 web 應用程式的設定方式和是否您瀏覽應用程式從`localhost`，未處理的例外狀況可能會導致一般伺服器錯誤頁面、 詳細的錯誤報表或使用者易記的網頁。 請參閱[Web 應用程式 Error Handling in ASP.NET](http://www.15seconds.com/issue/030102.htm)和[customErrors 元素](https://msdn.microsoft.com/en-US/library/h0hfz6fc(VS.80).aspx)如需有關 ASP.NET 執行階段如何回應無法攔截的例外狀況。
+根據您的 web 應用程式的設定方式和是否您瀏覽應用程式從`localhost`，未處理的例外狀況可能會導致一般伺服器錯誤頁面、 詳細的錯誤報表或使用者易記的網頁。 請參閱[Web 應用程式 Error Handling in ASP.NET](http://www.15seconds.com/issue/030102.htm)和[customErrors 元素](https://msdn.microsoft.com/library/h0hfz6fc(VS.80).aspx)如需有關 ASP.NET 執行階段如何回應無法攔截的例外狀況。
 
 圖 6 顯示螢幕時嘗試更新的產品，但未指定，發現`ProductName`值。 這是來自時顯示詳細的錯誤報告的預設`localhost`。
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb/samples/sample4.vb)]
 
-此事件處理常式的第二個輸入的參數是類型的物件[GridViewUpdatedEventArgs](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx)，其具有三個處理例外狀況的感興趣的屬性：
+此事件處理常式的第二個輸入的參數是類型的物件[GridViewUpdatedEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx)，其具有三個處理例外狀況的感興趣的屬性：
 
 - `Exception`擲回的例外狀況; 的參考如果已擲不回任何例外狀況，此屬性會有的值`null`
 - `ExceptionHandled`布林值，指出是否已處理的例外狀況中`RowUpdated`事件處理常式; 如果`false`（預設值），例外狀況會重新擲回，percolating 至 ASP.NET 執行階段

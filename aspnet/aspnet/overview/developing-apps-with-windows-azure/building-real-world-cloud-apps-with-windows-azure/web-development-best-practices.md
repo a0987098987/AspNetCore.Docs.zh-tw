@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: a40a3779ddc416e141dd27b665f43830a43590b1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de536a0ca39cb752c0962f0c4ae36eb00b586bff
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web 開發最佳做法 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -142,20 +142,20 @@ Windows Azure 有 CDN，而且您可以使用其他 Cdn 會在 Windows Azure 或
 
 無狀態的 web 伺服器：
 
-- [Microsoft Patterns and Practices-自動調整指引](https://msdn.microsoft.com/en-us/library/dn589774.aspx)。
+- [Microsoft Patterns and Practices-自動調整指引](https://msdn.microsoft.com/library/dn589774.aspx)。
 - [停用 ARR 執行個體的 Windows Azure 網站中的同質](https://azure.microsoft.com/blog/2013/11/18/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)。 Erez Benari 部落格文章說明工作階段親和性在 Windows Azure 網站。
 
 CDN:
 
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 1:34:00 時段 3 中的 CDN 討論，請參閱。
-- [Microsoft 模式和作法靜態內容託管模式](https://msdn.microsoft.com/en-us/library/dn589776.aspx)
+- [Microsoft 模式和作法靜態內容託管模式](https://msdn.microsoft.com/library/dn589776.aspx)
 - [CDN 檢閱](http://www.cdnreviews.com/)。 許多 Cdn 的概觀。
 
 非同步程式設計：
 
 - [ASP.NET MVC 4 中使用非同步方法](../../../../mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4.md)。 由 Rick anderson 發表的教學課程。
-- [非同步程式設計使用 Async 和 Await （C# 和 Visual Basic）](https://msdn.microsoft.com/en-us/library/vstudio/hh191443.aspx)。 說明非同步程式設計的基本原理、 ASP.NET 4.5 中的運作方式以及如何撰寫程式碼來實作它的 MSDN 技術白皮書。
-- [Entity Framework 非同步查詢和儲存](https://msdn.microsoft.com/en-us/data/jj819165)
+- [非同步程式設計使用 Async 和 Await （C# 和 Visual Basic）](https://msdn.microsoft.com/library/vstudio/hh191443.aspx)。 說明非同步程式設計的基本原理、 ASP.NET 4.5 中的運作方式以及如何撰寫程式碼來實作它的 MSDN 技術白皮書。
+- [Entity Framework 非同步查詢和儲存](https://msdn.microsoft.com/data/jj819165)
 - [如何建立 ASP.NET Web 應用程式使用非同步](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/DEV-B337#fbid=tgkT4SR_DK7)。 由 Rowan Miller 的視訊簡報。 包含示範圖形，說明如何非同步程式設計也有助於大幅增加在高負載狀況下的 web 伺服器輸送量。
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 延展性的非同步程式設計的相關討論，請參閱時段 4 和 8 的時段。
 - [使用 ASP.NET 4.5，再加上重要的陷阱中的非同步方法的識別常數](http://www.hanselman.com/blog/TheMagicOfUsingAsynchronousMethodsInASPNET45PlusAnImportantGotcha.aspx)。 部落格文章由 Scott Hanselman 主要是有關使用非同步方式在 ASP.NET Web Form 應用程式中。

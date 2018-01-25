@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: cade61b1ebdb2b845b07117384475638c0227f7f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a1258dbe2e659f6c5149d15b37451810ec7d6601
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="dependency-injection-into-views"></a>檢視的相依性插入
 
@@ -41,7 +41,7 @@ ASP.NET Core 支援[相依性插入](xref:fundamentals/dependency-injection)到�
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
 
-範例儲存機制會使用記憶體中的集合。 如上所示的實作 （它對所有記憶體中的資料） 都建議您不要針對大型、 可從遠端存取的資料集。
+範例儲存機制會使用記憶體中的集合。 如上所示的實作 （它對所有記憶體中的資料） 時，不都建議針對大型、 可從遠端存取的資料集。
 
 此範例會顯示資料繫結至檢視的模型和檢視所插入的服務：
 

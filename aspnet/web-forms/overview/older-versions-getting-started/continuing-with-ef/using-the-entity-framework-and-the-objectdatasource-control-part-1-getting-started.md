@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 6f93d6033b68773507d624125936f0a69777e2b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 83fe815af9030aee10a5204718b00c79925e9126
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分： 使用者入門
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="database-first"></a>第一次資料庫
 > 
-> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個資料庫。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf)。
+> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個資料庫。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf)。
 > 
 > ## <a name="web-forms"></a>Web Form
 > 
@@ -41,13 +41,13 @@ ms.lasthandoff: 11/10/2017
 > | **教學課程中所示** | **也可以搭配** |
 > | --- | --- |
 > | Windows 7 | Windows 8 |
-> | Visual Studio 2010 | Visual Studio 2010 Express for Web。 本教學課程尚未經過測試的 Visual Studio 版本。 有許多差異功能表選取項目、 對話方塊和範本。 |
+> | Visual Studio 2010 | Visual Studio 2010 Express for Web. 本教學課程尚未經過測試的 Visual Studio 版本。 有許多差異功能表選取項目、 對話方塊和範本。 |
 > | .NET 4 | .NET 4.5 回溯相容於.NET 4 中，但本教學課程不經過.NET 4.5。 |
 > | Entity Framework 4 | 本教學課程尚未經過測試新的 Entity Framework 的版本。 從 Entity Framework 5 開始，依預設使用 EF`DbContext API`導入的已 EF 4.1。 EntityDataSource 控制項的設計使用`ObjectContext`應用程式開發介面。 如需如何使用 EntityDataSource 控制項`DbContext`API，請參閱[此部落格文章](https://blogs.msdn.com/b/webdev/archive/2012/09/13/how-to-use-the-entitydatasource-control-with-entity-framework-code-first.aspx)。 |
 > 
 > ## <a name="questions"></a>問題
 > 
-> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
+> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
 
 
 `EntityDataSource`控制項可讓您建立的應用程式非常快速，但它通常會要求您保存相當數量的商務邏輯和資料存取邏輯中的您*.aspx*頁面。 如果您預期應用程式變得更複雜，並在需要持續性維護，您可投入更多的開發時間最前面位置才能建立*多層式架構*或*分層*應用程式結構這是更容易維護。 若要實作這種架構，您會從商務邏輯層 (BLL) 和資料存取層 (DAL) 分隔展示層。 若要實作此結構的一種方式為使用`ObjectDataSource`而不是控制`EntityDataSource`控制項。 當您使用`ObjectDataSource`控制項，您實作您自己的資料存取程式碼，然後叫用它在*.aspx*頁面使用的控制項有許多相同功能的其他資料來源控制項。 這可讓您與使用 Web Form 控制項進行資料存取的優點結合多層式架構方法的優點。
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 除了基本 CRUD 作業，您建立要使用的類別`ObjectDataSource`控制項可能需要執行商務邏輯時`ObjectDataSource`讀取或更新資料。 例如，當您更新部門時，您可能需要驗證沒有其他部門具有相同的系統管理員，因為一個人不能有多個部門的系統管理員。
 
-在某些`ObjectDataSource`文件，例如[ObjectDataSource 類別概觀](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.aspx)，控制項會呼叫類別，稱為*商務物件*同時包含商務邏輯和資料存取邏輯. 在本教學課程中，您將建立個別的類別，為商務邏輯和資料存取邏輯。 封裝資料存取邏輯的類別稱為*儲存機制*。 商務邏輯類別包含商務邏輯方法和資料存取方法，但資料存取方法呼叫來執行資料存取工作的儲存機制。
+在某些`ObjectDataSource`文件，例如[ObjectDataSource 類別概觀](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.aspx)，控制項會呼叫類別，稱為*商務物件*同時包含商務邏輯和資料存取邏輯. 在本教學課程中，您將建立個別的類別，為商務邏輯和資料存取邏輯。 封裝資料存取邏輯的類別稱為*儲存機制*。 商務邏輯類別包含商務邏輯方法和資料存取方法，但資料存取方法呼叫來執行資料存取工作的儲存機制。
 
 您也會建立抽象層 BLL 之間 DAL，可協助自動化的單元測試的 BLL。 此抽象層是由建立介面，並且使用介面，當您具現化的儲存機制中的商務邏輯類別實作。 這可讓您提供的商務邏輯類別會實作儲存機制介面的任何物件的參考。 對於一般操作而言，您會提供適用於 Entity Framework 的儲存機制物件。 進行測試，您必須提供資料儲存在您可以輕鬆地操作，例如做為集合定義的類別變數的方式運作的儲存機制物件。
 

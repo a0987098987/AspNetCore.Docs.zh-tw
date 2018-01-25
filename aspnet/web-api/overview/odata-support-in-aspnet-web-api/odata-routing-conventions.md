@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
-ms.openlocfilehash: cd24a85a05e427f83d28cae876431d04cc295f17
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ab99dd443040b90ffefd2f5b9261a63b91e9463
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>路由慣例，在 ASP.NET Web API 2 Odata
 ====================
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/10/2017
 | --- | --- | --- | --- |
 | 取得 /entityset | / 產品 | GetEntitySet 或 Get | GetProducts |
 | 取得 /entityset(key) | /Products(1) | GetEntityType 或 Get | GetProduct |
-| 取得 /entityset （金鑰）/轉換 | / /Models.Book 產品 (1) | GetEntityType 或 Get | GetBook |
+| 取得 /entityset （金鑰）/轉換 | /Products(1)/Models.Book | GetEntityType 或 Get | GetBook |
 
 如需詳細資訊，請參閱[建立唯讀的 OData 端點](odata-v3/creating-an-odata-endpoint.md)。
 
@@ -77,18 +77,18 @@ ms.lasthandoff: 11/10/2017
 | --- | --- | --- | --- |
 | 張貼 /entityset | / 產品 | PostEntityType 或 Post | PostProduct |
 | PUT /entityset(key) | /Products(1) | PutEntityType 或 Put | PutProduct |
-| PUT /entityset （金鑰）/轉換 | / /Models.Book 產品 (1) | PutEntityType 或 Put | PutBook |
+| PUT /entityset （金鑰）/轉換 | /Products(1)/Models.Book | PutEntityType 或 Put | PutBook |
 | 修補程式 /entityset(key) | /Products(1) | PatchEntityType 或修補程式 | PatchProduct |
-| 修補程式 /entityset （金鑰）/轉換 | / /Models.Book 產品 (1) | PatchEntityType 或修補程式 | PatchBook |
-| 刪除 /entityset(key) | /Products(1) | DeleteEntityType 或刪除 | DeleteProduct |
-| 轉換/刪除 /entityset （索引鍵） | / /Models.Book 產品 (1) | DeleteEntityType 或刪除 | DeleteBook |
+| 修補程式 /entityset （金鑰）/轉換 | /Products(1)/Models.Book | PatchEntityType 或修補程式 | PatchBook |
+| DELETE /entityset(key) | /Products(1) | DeleteEntityType 或刪除 | DeleteProduct |
+| DELETE /entityset(key)/cast | /Products(1)/Models.Book | DeleteEntityType 或刪除 | DeleteBook |
 
 **查詢的導覽屬性**
 
 | 要求 | 範例 URI | 動作名稱 | 範例動作 |
 | --- | --- | --- | --- |
-| GET /entityset （金鑰） / 瀏覽 | / 產品 （1）/供應商 | GetNavigationFromEntityType 或 GetNavigation | GetSupplierFromProduct |
-| 取得 /entityset （金鑰）/轉換/瀏覽 | / /Models.Book/Author 產品 (1) | GetNavigationFromEntityType 或 GetNavigation | GetAuthorFromBook |
+| GET /entityset （金鑰） / 瀏覽 | /Products(1)/Supplier | GetNavigationFromEntityType or GetNavigation | GetSupplierFromProduct |
+| 取得 /entityset （金鑰）/轉換/瀏覽 | /Products(1)/Models.Book/Author | GetNavigationFromEntityType or GetNavigation | GetAuthorFromBook |
 
 如需詳細資訊，請參閱[使用實體關係](odata-v3/working-with-entity-relations.md)。
 
@@ -96,10 +96,10 @@ ms.lasthandoff: 11/10/2017
 
 | 要求 | 範例 URI | 動作名稱 |
 | --- | --- | --- |
-| POST /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | CreateLink |
-| PUT 的 /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | CreateLink |
-| 刪除 /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | DeleteLink |
-| 刪除 /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$links/Suppliers(1) | DeleteLink |
+| POST /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | CreateLink |
+| PUT 的 /entityset （金鑰） / $links/瀏覽 | /Products(1)/$links/Supplier | CreateLink |
+| DELETE /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | DeleteLink |
+| DELETE /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$links/Suppliers(1) | DeleteLink |
 
 如需詳細資訊，請參閱[使用實體關係](odata-v3/working-with-entity-relations.md)。
 
@@ -109,15 +109,15 @@ ms.lasthandoff: 11/10/2017
 
 | 要求 | 範例 URI | 動作名稱 | 範例動作 |
 | --- | --- | --- | --- |
-| GET /entityset （金鑰） / 屬性 | / 產品 （1）/名稱 | GetPropertyFromEntityType 或 GetProperty | GetNameFromProduct |
-| 取得 /entityset （金鑰）/轉換/屬性 | / /Models.Book/Author 產品 (1) | GetPropertyFromEntityType 或 GetProperty | GetTitleFromBook |
+| GET /entityset （金鑰） / 屬性 | /Products(1)/Name | GetPropertyFromEntityType 或 GetProperty | GetNameFromProduct |
+| 取得 /entityset （金鑰）/轉換/屬性 | /Products(1)/Models.Book/Author | GetPropertyFromEntityType 或 GetProperty | GetTitleFromBook |
 
 **動作**
 
 | 要求 | 範例 URI | 動作名稱 | 範例動作 |
 | --- | --- | --- | --- |
-| POST /entityset （金鑰） / 動作 | / 產品 （1）/速率 | ActionNameOnEntityType 或 ActionName | RateOnProduct |
-| 後 /entityset （金鑰）/轉換/動作 | / /Models.Book/CheckOut 產品 (1) | ActionNameOnEntityType 或 ActionName | CheckOutOnBook |
+| POST /entityset(key)/action | /Products(1)/Rate | ActionNameOnEntityType 或 ActionName | RateOnProduct |
+| POST /entityset(key)/cast/action | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType 或 ActionName | CheckOutOnBook |
 
 如需詳細資訊，請參閱[OData 動作](odata-v3/odata-actions.md)。
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/10/2017
 
 這兩種方法，如果慣例不適用於該要求，方法應該傳回 null。
 
-**ODataPath**參數所代表的已剖析的 OData 資源路徑。 它包含一份 **[ODataPathSegment](https://msdn.microsoft.com/en-us/library/system.web.http.odata.routing.odatapathsegment.aspx)** 執行個體，其中每個區段的資源路徑。 **ODataPathSegment**是抽象類別; 每個區段的類型由衍生自類別**ODataPathSegment**。
+**ODataPath**參數所代表的已剖析的 OData 資源路徑。 它包含一份 **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)** 執行個體，其中每個區段的資源路徑。 **ODataPathSegment**是抽象類別; 每個區段的類型由衍生自類別**ODataPathSegment**。
 
 **ODataPath.TemplatePath**屬性是字串，代表串連所有的路徑區段。 例如，如果 URI 是`/Products(1)/Supplier`，路徑範本&quot;~/entityset/key/navigation&quot;。 請注意，區段不能直接對應到 URI 區段。 例如，實體索引鍵 (1) 以其本身**ODataPathSegment**。
 
@@ -170,7 +170,7 @@ ms.lasthandoff: 11/10/2017
 1. 我是衍生自**EntitySetRoutingConvention**，因為**SelectController**該類別中的方法是適用於這個新的路由慣例。 也就是說，不必重新實作**SelectController**。
 2. 慣例僅適用於 GET 要求和路徑範本時才&quot;~/entityset/key/navigation/key&quot;。
 3. 動作名稱是&quot;取得 {EntityType}&quot;，其中*{EntityType}*是瀏覽集合的型別。 例如， &quot;GetSupplier&quot;。 您可以使用任何您喜歡的命名慣例 &#8212;請確定您符合控制器的動作。
-4. 採取的動作名稱為兩個參數*金鑰*和*relatedKey*。 (如需某些預先定義的參數名稱的清單，請參閱[ODataRouteConstants](https://msdn.microsoft.com/en-us/library/system.web.http.odata.routing.odatarouteconstants.aspx)。)
+4. 採取的動作名稱為兩個參數*金鑰*和*relatedKey*。 (如需某些預先定義的參數名稱的清單，請參閱[ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx)。)
 
 下一個步驟新增新的慣例路由慣例的清單。 發生這種情況在設定期間，如下列程式碼所示：
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/publish-to-azure
 msc.type: authoredcontent
-ms.openlocfilehash: f75b7192b4d97c88fcbcb4ad7fef88c83157c902
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eadc0f2b08df29f80fe53d03cf88cd3cdcecfb12
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="publish-mvc-database-first-site-to-azure"></a>發行 MVC 資料庫第一個站台至 Azure
 ====================
@@ -31,8 +31,8 @@ ms.lasthandoff: 11/10/2017
 
 您需要 Azure 帳戶，以完成本教學課程：
 
-- 您可以[開啟免費的 Azure 帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
-- 您可以[啟用 MSDN 訂閱者權益](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
+- 您可以[開啟免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
+- 您可以[啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
 
 若要發行 web 應用程式，以滑鼠右鍵按一下專案，然後選取**發行**。
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/10/2017
 
 按一下 [確定]。
 
-您可能會想要儲存這個設定檔，因此您可以發佈在未來的更新，而不需重新輸入的所有連接資訊。 選取**建立設定檔**。
+您可能會想要儲存這個設定檔，因此您可以發佈在未來的更新，而不需重新輸入的所有連接資訊。 選取 [建立設定檔]。
 
 ![儲存設定檔](publish-to-azure/_static/image19.png)
 

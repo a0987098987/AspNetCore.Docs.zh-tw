@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 575fb382cc758efb101485bd5aece461bf995bfc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d52597e65272fa202ef4980924f669dcc4cec593
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="authenticating-users-with-windows-authentication-c"></a>驗證使用者使用 Windows 驗證 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何在 MVC 應用程式的內容中使用 Windows 驗證。 您了解如何啟用您的應用程式 web 組態檔中的 Windows 驗證以及如何設定 iis 驗證。 最後，您會學習如何使用 [Authorize] 屬性來限制存取權給特定的 Windows 使用者或群組的控制器動作。
 
@@ -51,7 +51,7 @@ ASP.NET 開發 Web 伺服器也支援 NTLM 驗證。 您可以滑鼠右鍵按一
 
 > [!NOTE] 
 > 
-> 這些不同類型的驗證的詳細概觀，請參閱[https://msdn.microsoft.com/en-us/library/aa292114(VS.71).aspx](https://msdn.microsoft.com/en-us/library/aa292114(VS.71).aspx).
+> 這些不同類型的驗證的詳細概觀，請參閱[https://msdn.microsoft.com/library/aa292114(VS.71).aspx](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
 
 
 若要啟用特定類型的驗證，您可以使用 Internet Information Services 管理員。 請注意，所有的驗證類型不是在每個作業系統的情況下可用。 此外，如果您使用 IIS 7.0 使用 Windows Vista，您必須啟用不同類型的 Windows 驗證，才會出現在 Internet Information Services 管理員。 開啟**控制台、 程式、 程式和功能，開啟或關閉 Windows 功能**，然後展開 Internet Information Services 節點 （請參閱圖 2）。

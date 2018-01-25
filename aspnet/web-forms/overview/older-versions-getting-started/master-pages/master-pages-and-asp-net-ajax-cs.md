@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 86ec6454313f5a6e78c0f64433ef4e5a4f8461ee
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6e09951be5483ed098b8cab6517335f9962a5d95
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="master-pages-and-aspnet-ajax-c"></a>主版頁面和 ASP.NET AJAX (C#)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 過去幾年來，越來越多的開發人員有建置[AJAX](http://en.wikipedia.org/wiki/Ajax_(programming))-啟用 web 應用程式。 啟用 AJAX 的網站使用多個相關的 web 技術，以提供更能有效回應的使用者體驗。 建立啟用 AJAX 的 ASP.NET 應用程式是非常簡單的感謝您至 Microsoft 的[ASP.NET AJAX framework](../../../../ajax/index.md)。 ASP.NET AJAX 內建 ASP.NET 3.5 和 Visual Studio 2008。它也會提供個別下載 ASP.NET 2.0 應用程式。
 
-建置時使用 ASP.NET AJAX framework 啟用 AJAX 的網頁，您必須加入精確一個[ScriptManager 控制項](https://msdn.microsoft.com/en-us/library/bb398863.aspx)使用 framework 的每個頁面。 正如其名，ScriptManager 會管理已啟用 AJAX 的網頁中使用的用戶端指令碼。 最少 ScriptManager 會發出會指示瀏覽器下載 JavaScript 檔案，該結構 ASP.NET AJAX 用戶端程式庫的 HTML。 它也可以用來註冊自訂的 JavaScript 檔案、 指令碼啟用 web 服務和自訂應用程式服務功能。
+建置時使用 ASP.NET AJAX framework 啟用 AJAX 的網頁，您必須加入精確一個[ScriptManager 控制項](https://msdn.microsoft.com/library/bb398863.aspx)使用 framework 的每個頁面。 正如其名，ScriptManager 會管理已啟用 AJAX 的網頁中使用的用戶端指令碼。 最少 ScriptManager 會發出會指示瀏覽器下載 JavaScript 檔案，該結構 ASP.NET AJAX 用戶端程式庫的 HTML。 它也可以用來註冊自訂的 JavaScript 檔案、 指令碼啟用 web 服務和自訂應用程式服務功能。
 
 如果您的站台會使用主版頁面 （如同它），您不一定需要 ScriptManager 控制項加入每一個單一的內容頁面。相反地，您可以將 ScriptManager 控制項加入主版頁面。 本教學課程會示範如何將 ScriptManager 控制項加入至主版頁面。 它也會查看如何使用 ScriptManagerProxy 控制項特定的內容頁面中註冊自訂指令碼和指令碼服務。
 
@@ -117,7 +117,7 @@ ScriptManager 加入主版頁面中的一個缺點是，上述指令碼會在中
 
 [!code-sql[Main](master-pages-and-asp-net-ajax-cs/samples/sample3.sql)]
 
-`TOP 1`關鍵字`SELECT`子句會傳回只由查詢所傳回的第一筆記錄。 [ `NEWID()`函式](https://msdn.microsoft.com/en-us/library/ms190348.aspx)會產生新[全域唯一識別碼 (GUID) 的值](http://en.wikipedia.org/wiki/Globally_Unique_Identifier)而且可以用於`ORDER BY`子句，以隨機順序傳回資料表的記錄。
+`TOP 1`關鍵字`SELECT`子句會傳回只由查詢所傳回的第一筆記錄。 [ `NEWID()`函式](https://msdn.microsoft.com/library/ms190348.aspx)會產生新[全域唯一識別碼 (GUID) 的值](http://en.wikipedia.org/wiki/Globally_Unique_Identifier)而且可以用於`ORDER BY`子句，以隨機順序傳回資料表的記錄。
 
 
 [![設定傳回單一的隨機選取的記錄 SqlDataSource](master-pages-and-asp-net-ajax-cs/_static/image11.png)](master-pages-and-asp-net-ajax-cs/_static/image10.png)

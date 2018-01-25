@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1b9dadbfb82790a08a25a5c0f759b733cb59eb60
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: df79748bf5734ffcb9eb81ca089aeded0e63bdc5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-vb"></a>顯示資料的 Web 控制項 (VB) 中的二進位資料
 ====================
@@ -129,7 +129,7 @@ TemplateField HyperLinkField 變成選取`BrochurePath`HyperLinkField，然後�
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample3.vb)]
 
-這個方法會判斷傳入`Object`值是資料庫`NULL`而且，如果是的話，會傳回訊息，指出類別是否缺少冊。 否則，如果沒有`BrochurePath`值，它顯示超連結。 請注意，如果`BrochurePath`值是呈現 s 傳入[`ResolveUrl(url)`方法](https://msdn.microsoft.com/en-us/library/system.web.ui.control.resolveurl.aspx)。 這個方法會將傳入的解析*url*，並將`~`字元搭配適當的虛擬路徑。 例如，如果應用程式根目錄`/Tutorial55`，`ResolveUrl("~/Brochures/Meats.pdf")`會傳回`/Tutorial55/Brochures/Meat.pdf`。
+這個方法會判斷傳入`Object`值是資料庫`NULL`而且，如果是的話，會傳回訊息，指出類別是否缺少冊。 否則，如果沒有`BrochurePath`值，它顯示超連結。 請注意，如果`BrochurePath`值是呈現 s 傳入[`ResolveUrl(url)`方法](https://msdn.microsoft.com/library/system.web.ui.control.resolveurl.aspx)。 這個方法會將傳入的解析*url*，並將`~`字元搭配適當的虛擬路徑。 例如，如果應用程式根目錄`/Tutorial55`，`ResolveUrl("~/Brochures/Meats.pdf")`會傳回`/Tutorial55/Brochures/Meat.pdf`。
 
 套用這些變更之後，圖 10 說明頁面。 請注意，Seafood 類別的`BrochurePath`欄位現在會顯示沒有冊可用的文字。
 
@@ -164,7 +164,7 @@ TemplateField HyperLinkField 變成選取`BrochurePath`HyperLinkField，然後�
 
 [!code-vb[Main](displaying-binary-data-in-the-data-web-controls-vb/samples/sample6.vb)]
 
-此程式碼開始讀取`CategoryID`querystring 值到變數，名為`categoryID`。 接下來，圖片擷取的資料，透過對呼叫`CategoriesBLL`類別的`GetCategoryWithBinaryDataByCategoryID(categoryID)`方法。 這項資料由用戶端使用`Response.BinaryWrite(data)`方法，但之前呼叫，`Picture`必須移除資料行值的 OLE 標頭。 這可以藉由建立`Byte`名為陣列`strippedImageData`將保留精確 78 字元小於功能的`Picture`資料行。 [ `Array.Copy`方法](https://msdn.microsoft.com/en-us/library/z50k9bft.aspx)用來將資料從複製`category.Picture`開始位置 78 透過`strippedImageData`。
+此程式碼開始讀取`CategoryID`querystring 值到變數，名為`categoryID`。 接下來，圖片擷取的資料，透過對呼叫`CategoriesBLL`類別的`GetCategoryWithBinaryDataByCategoryID(categoryID)`方法。 這項資料由用戶端使用`Response.BinaryWrite(data)`方法，但之前呼叫，`Picture`必須移除資料行值的 OLE 標頭。 這可以藉由建立`Byte`名為陣列`strippedImageData`將保留精確 78 字元小於功能的`Picture`資料行。 [ `Array.Copy`方法](https://msdn.microsoft.com/library/z50k9bft.aspx)用來將資料從複製`category.Picture`開始位置 78 透過`strippedImageData`。
 
 `Response.ContentType`屬性會指定[MIME 類型](http://en.wikipedia.org/wiki/MIME)如此瀏覽器可得知如何呈現它所傳回的內容。 因為`Categories`資料表的`Picture`資料行是點陣圖影像、 點陣圖 MIME 類型會使用這裡 (image/bmp)。 如果您省略的 MIME 類型，大部分的瀏覽器仍會顯示影像正確因為它們可以推斷型別根據映像檔案 s 的二進位資料的內容。 不過，它必須包含 MIME s 輸入盡可能。 請參閱[Internet Assigned Numbers Authority 的網站](http://www.iana.org/)的完整清單[MIME 媒體類型](http://www.iana.org/assignments/media-types/)。
 

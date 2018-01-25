@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9d34fb64984313e5e2844d36a70f3ab08560654e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a9a470efc9e9416cd06fd4268f4e9505393dbed3
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-vb"></a>加入 GridView 的資料行的選項按鈕 (VB)
 ====================
@@ -148,7 +148,7 @@ GridView 控制項提供了許多內建功能。 包含一些不同欄位的顯�
 
 [!code-aspx[Main](adding-a-gridview-column-of-radio-buttons-vb/samples/sample3.aspx)]
 
-RadioButton s [ `GroupName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.radiobutton.groupname(VS.80).aspx)並用來群組一系列的選項按鈕。 所有具有相同的 RadioButton 控制項`GroupName`會被視為分組; 可以從群組選取一個選項按鈕，一次。 `GroupName`屬性指定的值轉譯的選項按鈕的`name`屬性。 瀏覽器會檢查選項按鈕`name`屬性來判斷選項按鈕群組。
+RadioButton s [ `GroupName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.radiobutton.groupname(VS.80).aspx)並用來群組一系列的選項按鈕。 所有具有相同的 RadioButton 控制項`GroupName`會被視為分組; 可以從群組選取一個選項按鈕，一次。 `GroupName`屬性指定的值轉譯的選項按鈕的`name`屬性。 瀏覽器會檢查選項按鈕`name`屬性來判斷選項按鈕群組。
 
 使用 RadioButton Web 控制項加入至`ItemTemplate`，請造訪此頁透過瀏覽器，然後按一下 格線 s 資料列中的選項按鈕。 請注意，選項按鈕未分組的方式，讓您可以選取所有資料列，作為圖 11 顯示。
 
@@ -184,7 +184,7 @@ RadioButton s [ `GroupName`屬性](https://msdn.microsoft.com/en-us/library/syst
 
 在這裡，`GetUniqueRadioButton`和`GetRadioButtonValue`會傳回適當的程式碼後置類別中定義的方法`id`和`value`屬性值，每個選項按鈕。 這個方法適用於指派`id`和`value`屬性，但是落短時需要指定`checked`屬性值，因為當資料第一次繫結至 GridView，才會執行資料繫結語法。 因此，如果在 GridView 啟用檢視狀態，格式化的方法將只引發時第一次載入頁面 （或當 GridView 會明確地重新繫結至資料來源），因此函式，可設定`checked`贏了 t 屬性上呼叫回傳。 它 s 而微妙的問題和位元超出範圍的這篇文章，因此這會保留。 不過，我不要鼓勵您嘗試使用上述的方法和透過它運作來，您將會碰到的點。 雖然這類贏了練習 t 協助您取得任何接近工作版本，它有助於促進更深入了解 GridView 和資料繫結的生命週期。
 
-另一種方法來插入自訂，低層級的標記中的範本及我們將使用此教學課程中的方法是加入[literal](https://msdn.microsoft.com/en-us/library/sz4949ks(VS.80).aspx)範本。 然後，在 GridView s`RowCreated`或`RowDataBound`事件處理常式，常值，可以透過程式設計方式存取控制項及其`Text`屬性來標記設定為發出。
+另一種方法來插入自訂，低層級的標記中的範本及我們將使用此教學課程中的方法是加入[literal](https://msdn.microsoft.com/library/sz4949ks(VS.80).aspx)範本。 然後，在 GridView s`RowCreated`或`RowDataBound`事件處理常式，常值，可以透過程式設計方式存取控制項及其`Text`屬性來標記設定為發出。
 
 開始移除 TemplateField 的 RadioButton `ItemTemplate`，取代常值的控制項。 設定 literal s`ID`至`RadioButtonMarkup`。
 
@@ -205,7 +205,7 @@ GridView 資料列已選取，並回傳時，我們有興趣`SupplierID`選取�
 
 加入之後此事件處理常式程式碼，請花一分鐘測試瀏覽器中。 首先，請注意，只有一個選項一次選取方格中的按鈕。 不過，選取選項按鈕，然後按一下其中一個按鈕，就會發生回傳，而且所有的選項按鈕會還原為初始狀態 （也就是在回傳時，選取的選項按鈕已無法再選取）。 若要修正此問題，我們需要加強`RowCreated`事件處理常式，它會檢查寄件者回傳的已選取的選項按鈕索引並新增`checked="checked"`發出標記的資料列的索引比對的屬性。
 
-回傳發生時，瀏覽器送回`name`和`value`的選取的選項按鈕。 擷取的值可以透過程式設計方式使用`Request.Form("name")`。 [ `Request.Form`屬性](https://msdn.microsoft.com/en-us/library/system.web.httprequest.form.aspx)提供[ `NameValueCollection` ](https://msdn.microsoft.com/en-us/library/system.collections.specialized.namevaluecollection.aspx)代表表單變數。 表單變數的名稱和值的表單中的欄位網頁上，而且會傳送回網頁瀏覽器時回傳展示。 因為呈現`name`GridView 中的選項按鈕的屬性就是`SuppliersGroup`、 網頁瀏覽器將會傳送的回張貼時`SuppliersGroup=valueOfSelectedRadioButton`回到網頁伺服器 （以及其他表單欄位）。 然後從存取這項資訊`Request.Form`屬性使用： `Request.Form("SuppliersGroup")`。
+回傳發生時，瀏覽器送回`name`和`value`的選取的選項按鈕。 擷取的值可以透過程式設計方式使用`Request.Form("name")`。 [ `Request.Form`屬性](https://msdn.microsoft.com/library/system.web.httprequest.form.aspx)提供[ `NameValueCollection` ](https://msdn.microsoft.com/library/system.collections.specialized.namevaluecollection.aspx)代表表單變數。 表單變數的名稱和值的表單中的欄位網頁上，而且會傳送回網頁瀏覽器時回傳展示。 因為呈現`name`GridView 中的選項按鈕的屬性就是`SuppliersGroup`、 網頁瀏覽器將會傳送的回張貼時`SuppliersGroup=valueOfSelectedRadioButton`回到網頁伺服器 （以及其他表單欄位）。 然後從存取這項資訊`Request.Form`屬性使用： `Request.Form("SuppliersGroup")`。
 
 因為我們將需要判斷選取的選項按鈕索引不只在`RowCreated`事件處理常式，但在`Click`按鈕 Web 控制項的事件處理常式，可讓 s 新增`SuppliersSelectedIndex`屬性至程式碼後置類別傳回`-1`如果已選取 [無] 選項按鈕和選取的索引，如果已選取其中一個選項按鈕。
 
@@ -222,7 +222,7 @@ GridView 資料列已選取，並回傳時，我們有興趣`SupplierID`選取�
 此時我們加入群組的選項按鈕資料的行至 GridView，可讓單一的 GridView 資料列，選取並記住在回傳。 我們接下來的步驟會顯示所選取的供應商提供的產品。 步驟 4 中我們會看到如何將使用者重新導向至另一個頁面上，沿著所選傳送`SupplierID`。 在步驟 5 中，我們會看到如何在相同頁面上的 GridView 中顯示選取的供應商的產品。
 
 > [!NOTE]
-> 而不是使用為 TemplateField （這個冗長的步驟 3 的焦點），我們可以建立自訂`DataControlField`呈現適當的使用者介面與功能的類別。 [ `DataControlField`類別](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datacontrolfield.aspx)BoundField、 CheckBoxField、 TemplateField 和其他內建的 GridView 和 DetailsView 欄位衍生自的基底類別。 建立自訂`DataControlField`類別表示的資料行的選項按鈕，可以只使用宣告式語法，加入和也會讓複寫其他網頁和其他大幅簡化的 web 應用程式的功能。
+> 而不是使用為 TemplateField （這個冗長的步驟 3 的焦點），我們可以建立自訂`DataControlField`呈現適當的使用者介面與功能的類別。 [ `DataControlField`類別](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datacontrolfield.aspx)BoundField、 CheckBoxField、 TemplateField 和其他內建的 GridView 和 DetailsView 欄位衍生自的基底類別。 建立自訂`DataControlField`類別表示的資料行的選項按鈕，可以只使用宣告式語法，加入和也會讓複寫其他網頁和其他大幅簡化的 web 應用程式的功能。
 
 
 如果您已曾在建立自訂，編譯 ASP.NET 中的控制項，不過，您知道，這樣做需要相當多的 legwork，並且會夾帶微妙和邊緣案例，必須小心處理的主機。 因此，我們將會放棄實作的選項按鈕，以做為自訂的資料行`DataControlField`現在類別，並盡可能 TemplateField 選項使用。 可能是我們必須有機會建立、 使用和部署自訂的瀏覽`DataControlField`未來教學課程中的類別 ！
@@ -295,7 +295,7 @@ GridView 資料列已選取，並回傳時，我們有興趣`SupplierID`選取�
 
 我們有幾個這裡在指定的參數 s 的值來源的選項。 我們可以使用預設參數的物件，並以程式設計方式將指定的值`SuppliersSelectedIndex`參數 s 的屬性`DefaultValue`ObjectDataSource s 中的屬性`Selecting`事件處理常式。 回頭參考[以程式設計方式設定 ObjectDataSource 參數值](../basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)教學課程的重新整理程式以程式設計方式將值指派給 ObjectDataSource 的參數。
 
-或者，我們可以使用 ControlParameter，請參閱`Suppliers`GridView s [ `SelectedValue`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedvalue.aspx)（請參閱圖 19）。 GridView s`SelectedValue`屬性會傳回`DataKey`值對應至[`SelectedIndex`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindex.aspx)。 這個選項才能正常運作，我們必須以程式設計方式設定 GridView s`SelectedIndex`屬性至所選資料列時`ListProducts`按鈕。 額外的好處在於，藉由設定`SelectedIndex`，將不執行選取的記錄`SelectedRowStyle`中定義`DataWebControls`佈景主題 （黃色背景）。
+或者，我們可以使用 ControlParameter，請參閱`Suppliers`GridView s [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue.aspx)（請參閱圖 19）。 GridView s`SelectedValue`屬性會傳回`DataKey`值對應至[`SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex.aspx)。 這個選項才能正常運作，我們必須以程式設計方式設定 GridView s`SelectedIndex`屬性至所選資料列時`ListProducts`按鈕。 額外的好處在於，藉由設定`SelectedIndex`，將不執行選取的記錄`SelectedRowStyle`中定義`DataWebControls`佈景主題 （黃色背景）。
 
 
 [![使用 ControlParameter 指定 GridView 的 SelectedValue 做為參數來源](adding-a-gridview-column-of-radio-buttons-vb/_static/image19.gif)](adding-a-gridview-column-of-radio-buttons-vb/_static/image33.png)

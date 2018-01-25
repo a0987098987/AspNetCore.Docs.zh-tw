@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 69ffafc7f92cda75c001fe1098275766063113fb
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: eee84fe0fbec6ed772342d09931986994903906a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>處理並行衝突的 EF Core 與 ASP.NET Core MVC 教學課程 (10-8)
 
@@ -59,7 +59,7 @@ Jane 按一下**儲存**第一次，並觀察其瀏覽器會返回索引頁面�
 
 * 您可以追蹤的哪些使用者已修改的屬性，並更新只對應的資料行在資料庫中。
 
-     在範例案例中，任何資料將不會遺失，因為兩位使用者已更新不同的屬性。 下一次有人瀏覽英文的部門，他們會看到 Jane 的和 John 的變更-2013 年 9 月 1 日的開始日期和零美元的預算。 這種更新方法可以減少可能會導致資料遺失的衝突數目，但它無法避免資料遺失，如果相同的實體屬性進行競爭的變更。 Entity Framework 是否這種方式運作，端視實作更新程式碼的方式而定。 它通常中並不實用的 web 應用程式，因為它可能需要您維護大量狀態，若要追蹤的所有實體的原始屬性值以及新的值。 維護大量的狀態會影響應用程式效能，因為它需要的伺服器資源，或必須包含在網頁上 （例如，在隱藏的欄位） 或在 cookie 中。
+     在範例案例中，任何資料將不會遺失，因為兩位使用者已更新不同的屬性。 下一次有人瀏覽英文的部門，就會看到 Jane 的和 John 的變更-2013 年 9 月 1 日的開始日期和零美元的預算。 這種更新方法可以減少可能會導致資料遺失的衝突數目，但它無法避免資料遺失，如果相同的實體屬性進行競爭的變更。 Entity Framework 是否這種方式運作，端視實作更新程式碼的方式而定。 它通常中並不實用的 web 應用程式，因為它可能需要您維護大量狀態，若要追蹤的所有實體的原始屬性值以及新的值。 維護大量的狀態會影響應用程式效能，因為它需要的伺服器資源，或必須包含在網頁上 （例如，在隱藏的欄位） 或在 cookie 中。
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 

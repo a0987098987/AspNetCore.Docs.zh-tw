@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06f3e59d0e6fd59a83934084422816360e915bd7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b80b25933679d5c5b465af24cf6ff5d3b824b401
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-controls-to-the-datalists-editing-interface-c"></a>驗證控制項加入 DataList 編輯介面 (C#)
 ====================
@@ -71,11 +71,11 @@ ms.lasthandoff: 11/10/2017
 
 建構資料輸入表單時, 很重要，使用者輸入任何必要的欄位和所有其提供的輸入是合法、 格式正確的值。 為協助確保使用者的輸入有效值，ASP.NET 會提供五個內建的驗證控制項，設計來驗證單一輸入 Web 控制項的值：
 
-- [RequiredFieldValidator](https://msdn.microsoft.com/en-us/library/5hbw267h(VS.80).aspx)可確保已提供的值
-- [CompareValidator](https://msdn.microsoft.com/en-us/library/db330ayw(VS.80).aspx)驗證值與另一個 Web 控制項值或常數的值，或確保值的格式不合法的指定的資料型別
-- [RangeValidator](https://msdn.microsoft.com/en-us/library/f70d09xt.aspx)確保值的值範圍內
-- [RegularExpressionValidator](https://msdn.microsoft.com/en-US/library/eahwtc9e.aspx)驗證值，以針對[規則運算式](http://en.wikipedia.org/wiki/Regular_expression)
-- [一起](https://msdn.microsoft.com/en-us/library/9eee01cx(VS.80).aspx)驗證值，以符合自訂的使用者定義的方法
+- [RequiredFieldValidator](https://msdn.microsoft.com/library/5hbw267h(VS.80).aspx)可確保已提供的值
+- [CompareValidator](https://msdn.microsoft.com/library/db330ayw(VS.80).aspx)驗證值與另一個 Web 控制項值或常數的值，或確保值的格式不合法的指定的資料型別
+- [RangeValidator](https://msdn.microsoft.com/library/f70d09xt.aspx)確保值的值範圍內
+- [RegularExpressionValidator](https://msdn.microsoft.com/library/eahwtc9e.aspx)驗證值，以針對[規則運算式](http://en.wikipedia.org/wiki/Regular_expression)
+- [一起](https://msdn.microsoft.com/library/9eee01cx(VS.80).aspx)驗證值，以符合自訂的使用者定義的方法
 
 如需有關這些五個控制項回頭參考[新增驗證控制項的編輯和插入介面](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)教學課程或簽出[驗證控制項 」 一節](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/validation/default.aspx)的[ASP.NET 快速入門教學課程](https://quickstarts.asp.net)。
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 11/10/2017
 **圖 3**： 新增至 RequiredFieldValidator `EditItemTemplate After` `ProductName`文字方塊中 ([按一下以檢視完整大小的影像](adding-validation-controls-to-the-datalist-s-editing-interface-cs/_static/image9.png))
 
 
-所有驗證控制項的都運作方式驗證單一 ASP.NET Web 控制項的輸入。 因此，我們需要表示我們剛才加入的 RequiredFieldValidator 應該驗證`ProductName`文字方塊中; 這是藉由設定驗證控制項 s [ `ControlToValidate`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx)至`ID`的適當的 Web 控制項 (`ProductName`，這個執行個體中)。 接下來，設定[`ErrorMessage`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx)您必須提供的產品的名稱和[`Text`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx)至\*。 `Text`屬性值，如果提供，是在驗證失敗時，會將驗證控制項所顯示的文字。 `ErrorMessage`屬性值，這是必要的由 ValidationSummary 控制項; 如果`Text`省略屬性值，則`ErrorMessage`屬性值會顯示無效的輸入上的驗證控制項。
+所有驗證控制項的都運作方式驗證單一 ASP.NET Web 控制項的輸入。 因此，我們需要表示我們剛才加入的 RequiredFieldValidator 應該驗證`ProductName`文字方塊中; 這是藉由設定驗證控制項 s [ `ControlToValidate`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx)至`ID`的適當的 Web 控制項 (`ProductName`，這個執行個體中)。 接下來，設定[`ErrorMessage`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx)您必須提供的產品的名稱和[`Text`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx)至\*。 `Text`屬性值，如果提供，是在驗證失敗時，會將驗證控制項所顯示的文字。 `ErrorMessage`屬性值，這是必要的由 ValidationSummary 控制項; 如果`Text`省略屬性值，則`ErrorMessage`屬性值會顯示無效的輸入上的驗證控制項。
 
 設定後的 RequiredFieldValidator 這三個屬性，請您的畫面看起來應該類似於圖 4。
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/10/2017
 
 與加入 RequiredFieldValidator `EditItemTemplate`，則所有剩下是加入必要的驗證產品 s 價格文字方塊。 因為`UnitPrice`是選擇性的編輯時記錄，我們不 t 需要加入 RequiredFieldValidator。 我們，不過，需要手動新增，確保 CompareValidator `UnitPrice`，提供，如果已正確格式化為貨幣，且大於或等於 0。
 
-新增到 CompareValidator`EditItemTemplate`並設定其`ControlToValidate`屬性`UnitPrice`、 其`ErrorMessage`價格屬性必須是大於或等於零，而且不能包含貨幣符號，且其`Text`屬性\*. 表示`UnitPrice`值必須是大於或等於 0，且設定 CompareValidator s [ `Operator`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx)至`GreaterThanEqual`、 其[`ValueToCompare`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx)為 0，並其[`Type`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx)至`Currency`。
+新增到 CompareValidator`EditItemTemplate`並設定其`ControlToValidate`屬性`UnitPrice`、 其`ErrorMessage`價格屬性必須是大於或等於零，而且不能包含貨幣符號，且其`Text`屬性\*. 表示`UnitPrice`值必須是大於或等於 0，且設定 CompareValidator s [ `Operator`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx)至`GreaterThanEqual`、 其[`ValueToCompare`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx)為 0，並其[`Type`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx)至`Currency`。
 
 新增這些兩個驗證控制項中，DataList s 後`EditItemTemplate`s 宣告式語法看起來應該類似下列：
 
@@ -144,13 +144,13 @@ ms.lasthandoff: 11/10/2017
 
 [取消] 按鈕是這類範例。 想像一下，使用者輸入無效的資料，例如省略 s 產品名稱，然後決定她不想要在所有儲存產品並點擊 [取消] 按鈕。 目前，[取消] 按鈕會觸發驗證控制項在頁面上，執行中的報表產品名稱遺漏，防止回傳。 我們的使用者可以輸入一些文字到`ProductName`文字方塊中，只是為了取消編輯程序。
 
-幸運的是，按鈕、 LinkButton 和 ImageButton 已[`CausesValidation`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.causesvalidation.aspx)，可以指出是否按一下按鈕應該起始驗證邏輯 (預設值為`True`)。 設定 [取消] 按鈕 s`CausesValidation`屬性`False`。
+幸運的是，按鈕、 LinkButton 和 ImageButton 已[`CausesValidation`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.causesvalidation.aspx)，可以指出是否按一下按鈕應該起始驗證邏輯 (預設值為`True`)。 設定 [取消] 按鈕 s`CausesValidation`屬性`False`。
 
 ## <a name="ensuring-the-inputs-are-valid-in-the-updatecommand-event-handler"></a>確保輸入都有效 UpdateCommand 的事件處理常式
 
 因為驗證控制項中，所發出的用戶端指令碼如果使用者輸入無效的輸入驗證控制項取消按鈕，LinkButton，由起始任何回傳或 ImageButton 控制其`CausesValidation`屬性`True`(預設值）。 不過，如果使用者造訪用的瀏覽器或其中一個已停用其 JavaScript 支援時，不會執行的用戶端驗證檢查。
 
-ASP.NET 驗證控制項的所有重複回傳時立即其驗證邏輯，並報告整體透過頁輸入的有效性[`Page.IsValid`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.page.isvalid.aspx)。 不過，未中斷或停止任何方式為基礎的值頁面流程`Page.IsValid`。 身為開發人員，負責我們確定`Page.IsValid`屬性的值為`True`之前繼續執行程式碼假設有效輸入資料。
+ASP.NET 驗證控制項的所有重複回傳時立即其驗證邏輯，並報告整體透過頁輸入的有效性[`Page.IsValid`屬性](https://msdn.microsoft.com/library/system.web.ui.page.isvalid.aspx)。 不過，未中斷或停止任何方式為基礎的值頁面流程`Page.IsValid`。 身為開發人員，負責我們確定`Page.IsValid`屬性的值為`True`之前繼續執行程式碼假設有效輸入資料。
 
 如果使用者已停用 JavaScript，造訪我們的頁面，編輯產品，進入價格的值太昂貴，並按一下 [更新] 按鈕，將會略過用戶端驗證，並將發生回傳。 在回傳時，ASP.NET 頁面 s`UpdateCommand`執行事件處理常式，並嘗試剖析太時引發例外狀況，是相當費時`Decimal`。 因為我們有例外狀況處理，會依正常程序，處理這類例外狀況，不過就可以防止無效的資料在由只能繼續使用在第一次機會通過`UpdateCommand`事件處理常式如果`Page.IsValid`的值為`True`。
 
@@ -167,9 +167,9 @@ ASP.NET 驗證控制項的所有重複回傳時立即其驗證邏輯，並報告
 
 ## <a name="step-3-summarizing-data-entry-problems"></a>步驟 3： 摘要資料輸入問題
 
-除了五個驗證控制項，包含 ASP.NET [ValidationSummary 控制項](https://msdn.microsoft.com/en-US/library/f9h59855(VS.80).aspx)，用來顯示`ErrorMessage`之偵測到無效的資料，這些驗證控制項。 此摘要的資料可以顯示為網頁上或透過強制回應，用戶端的訊息方塊的文字。 可讓 s 強化這個教學課程，包括用戶端 messagebox 摘要的任何驗證問題。
+除了五個驗證控制項，包含 ASP.NET [ValidationSummary 控制項](https://msdn.microsoft.com/library/f9h59855(VS.80).aspx)，用來顯示`ErrorMessage`之偵測到無效的資料，這些驗證控制項。 此摘要的資料可以顯示為網頁上或透過強制回應，用戶端的訊息方塊的文字。 可讓 s 強化這個教學課程，包括用戶端 messagebox 摘要的任何驗證問題。
 
-若要達成此目的，拖曳到 ValidationSummary 控制項從 [工具箱] 拖曳至設計工具。 ValidationSummary 控制項規定 t 位置真的很重要，因為我們重新打算將它設定為只顯示摘要為 messagebox。 加入控制項之後, 設定其[`ShowSummary`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx)至`False`及其[`ShowMessageBox`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx)至`True`。 此新增功能，使用任何驗證錯誤會摘要在用戶端 messagebox （請參閱圖 6）。
+若要達成此目的，拖曳到 ValidationSummary 控制項從 [工具箱] 拖曳至設計工具。 ValidationSummary 控制項規定 t 位置真的很重要，因為我們重新打算將它設定為只顯示摘要為 messagebox。 加入控制項之後, 設定其[`ShowSummary`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx)至`False`及其[`ShowMessageBox`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx)至`True`。 此新增功能，使用任何驗證錯誤會摘要在用戶端 messagebox （請參閱圖 6）。
 
 
 [![驗證錯誤摘要說明在用戶端訊息方塊](adding-validation-controls-to-the-datalist-s-editing-interface-cs/_static/image17.png)](adding-validation-controls-to-the-datalist-s-editing-interface-cs/_static/image16.png)

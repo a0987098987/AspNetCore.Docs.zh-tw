@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: ad052570fb2f168da657cd1263d8342a59d4cab0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5aa532137436922519c86246ebfa834910ac0d86
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="parameter-binding-in-aspnet-web-api"></a>ASP.NET Web API 中的繫結的參數
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 根據預設，Web API 會使用下列規則來繫結參數：
 
-- 如果參數是 「 簡單 」 類型，Web API 會嘗試從 URI 取得的值。 簡單類型包括.NET[基本型別](https://msdn.microsoft.com/en-us/library/system.type.isprimitive.aspx)(**int**， **bool**， **double**，依此類推)，加上**TimeSpan**， **DateTime**， **Guid**，**十進位**，和**字串**，*加上*任何類型與類型轉換器可以從字串轉換。 （深入了解稍後型別轉換子。）
+- 如果參數是 「 簡單 」 類型，Web API 會嘗試從 URI 取得的值。 簡單類型包括.NET[基本型別](https://msdn.microsoft.com/library/system.type.isprimitive.aspx)(**int**， **bool**， **double**，依此類推)，加上**TimeSpan**， **DateTime**， **Guid**，**十進位**，和**字串**，*加上*任何類型與類型轉換器可以從字串轉換。 （深入了解稍後型別轉換子。）
 - 針對複雜型別，Web API 會嘗試從訊息本文讀取的值，使用[媒體類型格式器](media-formatters.md)。
 
 例如，以下是典型的 Web API 控制器方法：
@@ -121,7 +121,7 @@ Web API 中的預設值提供者從路由資料和查詢字串取得值。 例�
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample11.cs)]
 
-最後，您可以在其中加入模型繫結器提供者**HttpConfiguration**。 模型繫結器提供者是只建立的模型繫結器 factory 類別。 您可以建立提供者藉由衍生自[ModelBinderProvider](https://msdn.microsoft.com/en-us/library/system.web.http.modelbinding.modelbinderprovider.aspx)類別。 不過，如果您的模型繫結器可以處理單一類型，它很容易使用內建**SimpleModelBinderProvider**，它設計為此目的。 下列程式碼示範如何執行這項操作。
+最後，您可以在其中加入模型繫結器提供者**HttpConfiguration**。 模型繫結器提供者是只建立的模型繫結器 factory 類別。 您可以建立提供者藉由衍生自[ModelBinderProvider](https://msdn.microsoft.com/library/system.web.http.modelbinding.modelbinderprovider.aspx)類別。 不過，如果您的模型繫結器可以處理單一類型，它很容易使用內建**SimpleModelBinderProvider**，它設計為此目的。 下列程式碼示範如何執行這項操作。
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample12.cs)]
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
 msc.type: authoredcontent
-ms.openlocfilehash: 10da2b5013ae1348b69ea4f456d81bb4c4b73df6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f6861c702c1ccb19e5a4eee484a622079e205f86
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署程式碼更新
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 初始部署之後，您的工作，維護及開發您的網站會繼續，而且之前長時間中，您會想要部署更新。 本教學課程會帶領您完成將更新部署到您的應用程式程式碼的程序。 在實作和部署本教學課程中的更新並不包含資料庫變更。您會看到有關部署資料庫變更下一個教學課程中的不同。
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
 您平常也執行迴歸測試 （也就是說，測試以確定新的變更不會中斷任何現有功能的站台的其餘部分）。 但本教學課程中您會略過該步驟，並繼續進行更新部署至預備和生產環境。
 
-當您重新部署時，Web Deploy，自動決定哪些檔案已變更，只有複本變更為伺服器的檔案。 根據預設，Web Deploy 使用上次變更日期檔案來判斷哪些已經變更。 當您不要變更檔案內容，某些原始檔控制系統將變更檔案甚至的日期。 在此情況下，您可能想要設定 Web Deploy 來使用檔案總和檢查碼，以判斷哪些檔案已變更。 如需詳細資訊，請參閱[為什麼執行我的所有檔案取得重新部署雖然並沒有變更它們？](https://msdn.microsoft.com/en-us/library/ee942158.aspx#use_checksum)中 ASP.NET 部署常見問題集。
+當您重新部署時，Web Deploy，自動決定哪些檔案已變更，只有複本變更為伺服器的檔案。 根據預設，Web Deploy 使用上次變更日期檔案來判斷哪些已經變更。 當您不要變更檔案內容，某些原始檔控制系統將變更檔案甚至的日期。 在此情況下，您可能想要設定 Web Deploy 來使用檔案總和檢查碼，以判斷哪些檔案已變更。 如需詳細資訊，請參閱[為什麼執行我的所有檔案取得重新部署雖然並沒有變更它們？](https://msdn.microsoft.com/library/ee942158.aspx#use_checksum)中 ASP.NET 部署常見問題集。
 
 ## <a name="take-the-application-offline-during-deployment"></a>應用程式離線在部署期間
 
@@ -188,7 +188,7 @@ Visual Studio 2012 也可讓您部署的個別檔案的能力。 選取的檔案
 
     視窗會開啟，顯示目的地環境中的本機檔案和它的版本之間的差異。
 
-    ![Diff-內容/Site.css](deploying-a-code-update/_static/image13.png)
+    ![Diff-Content/Site.css](deploying-a-code-update/_static/image13.png)
 4. 在**方案總管 中**，以滑鼠右鍵按一下**Site.css**再次按一下**發行 Site.css**。
 
     **Web 發行活動** 視窗會顯示已發行的檔案。

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: db57b8fe44f41d65d27964f45e0884138629f92b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d6bc92f3cbe6b61332e33e8a507b4516bf5c15a5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a>使用 SMS 和電子郵件雙因素驗證的 ASP.NET MVC 5 應用程式
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 1. 建立新的 ASP.NET Web 專案，然後選取 MVC 範本。 Web Form 也支援 ASP.NET Identity，因此您可以依照類似的步驟，在 web form 應用程式。  
     ![](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/_static/image1.png)
-2. 保留預設驗證為**個別使用者帳戶**。 如果您想要裝載應用程式在 Azure 中的，將保留勾選核取方塊。 稍後在本教學課程中，我們將部署至 Azure。 您可以[開啟免費的 Azure 帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F)。
+2. 保留預設驗證為**個別使用者帳戶**。 如果您想要裝載應用程式在 Azure 中的，將保留勾選核取方塊。 稍後在本教學課程中，我們將部署至 Azure。 您可以[開啟免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 3. 設定[專案以使用 SSL](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)。
 
 <a id="SMS"></a>
@@ -106,7 +106,7 @@ ms.lasthandoff: 11/10/2017
 7. 更新*Views\Manage\Index.cshtml* Razor 檢視: (注意： 不要只移除現有的程式碼中的註解，請使用下列程式碼。)  
 
     [!code-cshtml[Main](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/samples/sample3.cshtml?highlight=29-66)]
-8. 確認`EnableTwoFactorAuthentication`和`DisableTwoFactorAuthentication`中的動作方法`ManageController`有[[ValidateAntiForgeryToken]](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.118).aspx)屬性：  
+8. 確認`EnableTwoFactorAuthentication`和`DisableTwoFactorAuthentication`中的動作方法`ManageController`有[[ValidateAntiForgeryToken]](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.118).aspx)屬性：  
 
     [!code-csharp[Main](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/samples/sample4.cs?highlight=3,16)]
 9. 執行應用程式，您先前註冊的帳戶登入。

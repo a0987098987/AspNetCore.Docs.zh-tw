@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ef10d5140073d28589c0be80a3a3bb4d3a554e35
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 76c02a3da7dffad25a7bee03efff6b693f261d85
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="recovering-and-changing-passwords-c"></a>復原，以及變更密碼 (C#)
 ====================
@@ -83,7 +83,7 @@ Provider 控制項包含三種檢視：
 
 測試此頁面之前，沒有要傾向於組態的最後一個項目： 我們需要指定中的郵件傳遞設定`Web.config`。 Provider 控制項必須這些設定來傳送電子郵件。
 
-郵件傳遞組態透過指定[`<system.net>`元素](https://msdn.microsoft.com/en-us/library/6484zdc1.aspx)的[`<mailSettings>`元素](https://msdn.microsoft.com/en-us/library/w355a94k.aspx)。 使用[`<smtp>`元素](https://msdn.microsoft.com/en-us/library/ms164240.aspx)指出傳遞方法，而且位址的預設值。 下列標記會設定為使用名為網路 SMTP 伺服器的郵件設定`smtp.example.com`連接埠 25 上且擁有的使用者名稱和密碼的使用者名稱/密碼認證。
+郵件傳遞組態透過指定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)的[`<mailSettings>`元素](https://msdn.microsoft.com/library/w355a94k.aspx)。 使用[`<smtp>`元素](https://msdn.microsoft.com/library/ms164240.aspx)指出傳遞方法，而且位址的預設值。 下列標記會設定為使用名為網路 SMTP 伺服器的郵件設定`smtp.example.com`連接埠 25 上且擁有的使用者名稱和密碼的使用者名稱/密碼認證。
 
 > [!NOTE]
 > `<system.net>`是根目錄的子項目`<configuration>`項目和的同層級`<system.web>`。 因此，請不要將`<system.net>`內的項目`<system.web>`項目; 相反地，將其放置在相同層級。
@@ -93,7 +93,7 @@ Provider 控制項包含三種檢視：
 
 除了在網路上使用 SMTP 伺服器，您也可以指定應該均存放要傳送的電子郵件訊息的收取目錄。
 
-一旦您已設定 SMTP 設定，請瀏覽`RecoverPassword.aspx`透過瀏覽器的頁面。 第一次嘗試輸入在使用者存放區不存在的使用者名稱。 如圖 2 所示，Provider 控制項就會顯示訊息，指出 無法存取使用者資訊。 您可以透過控制項的自訂訊息的文字[`UserNameFailureText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.usernamefailuretext.aspx)。
+一旦您已設定 SMTP 設定，請瀏覽`RecoverPassword.aspx`透過瀏覽器的頁面。 第一次嘗試輸入在使用者存放區不存在的使用者名稱。 如圖 2 所示，Provider 控制項就會顯示訊息，指出 無法存取使用者資訊。 您可以透過控制項的自訂訊息的文字[`UserNameFailureText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.usernamefailuretext.aspx)。
 
 
 [![如果未輸入使用者名稱無效，會顯示錯誤訊息](recovering-and-changing-passwords-cs/_static/image5.png)](recovering-and-changing-passwords-cs/_static/image4.png)
@@ -101,7 +101,7 @@ Provider 控制項包含三種檢視：
 **圖 2**： 如果未輸入使用者名稱無效，會顯示的錯誤訊息 ([按一下以檢視完整大小的影像](recovering-and-changing-passwords-cs/_static/image6.png))
 
 
-現在請輸入使用者名稱。 使用知道帳戶的電子郵件地址，您可以存取其安全性回答您系統中的使用者名稱。 輸入使用者名稱並按下提交之後之後, Provider 控制項會顯示檢視的問題。 為使用使用者名稱 檢視中，如果您輸入了不正確回答 Provider 控制項會顯示錯誤訊息 （請參閱圖 3）。 使用[`QuestionFailureText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.questionfailuretext.aspx)來自訂此錯誤訊息。
+現在請輸入使用者名稱。 使用知道帳戶的電子郵件地址，您可以存取其安全性回答您系統中的使用者名稱。 輸入使用者名稱並按下提交之後之後, Provider 控制項會顯示檢視的問題。 為使用使用者名稱 檢視中，如果您輸入了不正確回答 Provider 控制項會顯示錯誤訊息 （請參閱圖 3）。 使用[`QuestionFailureText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.questionfailuretext.aspx)來自訂此錯誤訊息。
 
 
 [![如果使用者輸入無效的安全性解答，會顯示錯誤訊息](recovering-and-changing-passwords-cs/_static/image8.png)](recovering-and-changing-passwords-cs/_static/image7.png)
@@ -127,15 +127,15 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 密碼：*密碼*
 
-此訊息可透過 Provider 控制項的事件處理常式以程式設計方式自訂[`SendingMail`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx)，或以宣告方式透過[`MailDefinition`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx)。 讓我們來探索這兩個選項。
+此訊息可透過 Provider 控制項的事件處理常式以程式設計方式自訂[`SendingMail`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx)，或以宣告方式透過[`MailDefinition`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx)。 讓我們來探索這兩個選項。
 
-`SendingMail`事件引發之前會傳送電子郵件訊息，並以程式設計方式調整電子郵件訊息的最後機會。 此事件處理常式時引發此事件時，會傳遞給型別的物件[ `MailMessageEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.mailmessageeventargs.aspx)、 其`Message`屬性包含傳送電子郵件的參考。
+`SendingMail`事件引發之前會傳送電子郵件訊息，並以程式設計方式調整電子郵件訊息的最後機會。 此事件處理常式時引發此事件時，會傳遞給型別的物件[ `MailMessageEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.mailmessageeventargs.aspx)、 其`Message`屬性包含傳送電子郵件的參考。
 
 建立事件處理常式`SendingMail`事件並加入下列程式碼，以程式設計方式將`webmaster@example.com`[副本] 清單。
 
 [!code-csharp[Main](recovering-and-changing-passwords-cs/samples/sample2.cs)]
 
-也可以透過宣告式的方式設定電子郵件訊息。 Provider`MailDefinition`屬性是物件的型別[ `MailDefinition` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.aspx)。 `MailDefinition`類別提供的電子郵件相關的屬性，包括主機`From`， `CC`， `Priority`， `Subject`， `IsBodyHtml`， `BodyFileName`，和其他人。 首先，設定[`Subject`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.subject.aspx)為比預設 （密碼），例如您的密碼已重設使用更具描述性的項目...
+也可以透過宣告式的方式設定電子郵件訊息。 Provider`MailDefinition`屬性是物件的型別[ `MailDefinition` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.aspx)。 `MailDefinition`類別提供的電子郵件相關的屬性，包括主機`From`， `CC`， `Priority`， `Subject`， `IsBodyHtml`， `BodyFileName`，和其他人。 首先，設定[`Subject`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.subject.aspx)為比預設 （密碼），例如您的密碼已重設使用更具描述性的項目...
 
 自訂建立個別的電子郵件範本檔案所需的電子郵件訊息的本文，其中包含主體的內容。 藉由建立新的資料夾中名為 「 網站啟動`EmailTemplates`。 接下來，將新的文字檔加入至名為此資料夾`PasswordRecovery.txt`並加入下列內容：
 
@@ -143,7 +143,7 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 請記下的預留位置使用`<%UserName%>`和`<%Password%>`。 Provider 控制項會自動取代這些兩個預留位置使用者的使用者名稱和傳送電子郵件之前的復原的密碼。
 
-最後，點`MailDefinition`的[`BodyFileName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx)剛才所建立的電子郵件範本 (`~/EmailTemplates/PasswordRecovery.txt`)。
+最後，點`MailDefinition`的[`BodyFileName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.bodyfilename.aspx)剛才所建立的電子郵件範本 (`~/EmailTemplates/PasswordRecovery.txt`)。
 
 進行這些變更重新審視之後`RecoverPassword.aspx`頁面上，輸入您使用者名稱和安全性的答案。 您會收到應該看起來類似下面圖 5 中的電子郵件。 請注意，`webmaster@example.com`已副本會且已經過更新的主旨和本文。
 
@@ -153,7 +153,7 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 **圖 5**: 主體、 Body 和 [副本] 已更新清單 ([按一下以檢視完整大小的影像](recovering-and-changing-passwords-cs/_static/image15.png))
 
 
-若要傳送 HTML 格式的電子郵件將[ `IsBodyHtml` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.maildefinition.isbodyhtml.aspx) True （預設值為 False） 和更新電子郵件範本包含 HTML。
+若要傳送 HTML 格式的電子郵件將[ `IsBodyHtml` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.maildefinition.isbodyhtml.aspx) True （預設值為 False） 和更新電子郵件範本包含 HTML。
 
 `MailDefinition`屬性不是唯一 Provider 類別。 我們將會看到在步驟 2 中，ChangePassword 控制項也提供`MailDefinition`屬性。 此外，適用於 CreateUserWizard 控制項包含這類屬性，您可以設定自動傳送給新使用者的 歡迎使用電子郵件訊息。
 
@@ -163,10 +163,10 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 ### <a name="programmatically-resetting-a-users-password"></a>以程式設計方式重設使用者的密碼
 
-當重設使用者密碼 Provider 控制呼叫`MembershipUser`物件的[`ResetPassword`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.resetpassword.aspx)。 這個方法有兩個多載：
+當重設使用者密碼 Provider 控制呼叫`MembershipUser`物件的[`ResetPassword`方法](https://msdn.microsoft.com/library/system.web.security.membershipuser.resetpassword.aspx)。 這個方法有兩個多載：
 
-- **[`ResetPassword`](https://msdn.microsoft.com/en-us/library/d94bdzz2.aspx)**-重設使用者的密碼。 如果使用這個多載`RequiresQuestionAndAnswer`為 False。
-- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/en-us/library/d90zte4w.aspx)**-重設使用者密碼才提供*securityAnswer*正確無誤。 如果使用這個多載`RequiresQuestionAndAnswer`為 True。
+- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)**-重設使用者的密碼。 如果使用這個多載`RequiresQuestionAndAnswer`為 False。
+- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)**-重設使用者密碼才提供*securityAnswer*正確無誤。 如果使用這個多載`RequiresQuestionAndAnswer`為 True。
 
 這兩個多載會傳回新的隨機產生的密碼。
 
@@ -179,7 +179,7 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 ### <a name="a-word-on-how-the-random-passwords-are-generated"></a>產生 Word 如何的隨機密碼
 
-電子郵件中的訊息數字 4 和 5 所示的隨機產生密碼建立的成員資格類別[`GeneratePassword`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.generatepassword.aspx)。 這個方法會接受兩個整數輸入的參數-*長度*和*numberOfNonAlphanumericCharacters* -並至少傳回一個字串*長度*在長時間使用的字元至少*numberOfNonAlphanumericCharacters*非英數的字元數。 當這個方法中呼叫的成員資格類別或登入相關的 Web 控制項時，這兩個參數的值取決於成員資格設定`MinRequiredPasswordLength`和`MinRequiredNonalphanumericCharacters`我們分別設定為 7 和 1 的屬性。
+電子郵件中的訊息數字 4 和 5 所示的隨機產生密碼建立的成員資格類別[`GeneratePassword`方法](https://msdn.microsoft.com/library/system.web.security.membership.generatepassword.aspx)。 這個方法會接受兩個整數輸入的參數-*長度*和*numberOfNonAlphanumericCharacters* -並至少傳回一個字串*長度*在長時間使用的字元至少*numberOfNonAlphanumericCharacters*非英數的字元數。 當這個方法中呼叫的成員資格類別或登入相關的 Web 控制項時，這兩個參數的值取決於成員資格設定`MinRequiredPasswordLength`和`MinRequiredNonalphanumericCharacters`我們分別設定為 7 和 1 的屬性。
 
 `GeneratePassword`方法會使用強式密碼編譯亂數產生器，請確認有無偏差中有哪些隨機字元會選取。 此外，`GeneratePassword`是`public`，這表示，您可以直接使用直接從您的 ASP.NET 應用程式如果您需要產生隨機字串或密碼。
 
@@ -194,7 +194,7 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 您可以使用 ChangePassword 控制項來建立使用者變更其密碼的介面。 很多 Provider 控制項，例如 ChangePassword 控制項包含兩種檢視： 變更密碼及成功與否。 變更密碼 檢視會提示使用者輸入其舊的和新密碼。 在提供正確的舊密碼和新的密碼符合最小長度以及非英數字元的需求，ChangePassword 控制項以更新使用者的密碼，並顯示順利完成檢視表。
 
 > [!NOTE]
-> ChangePassword 控制項由叫用來修改使用者的密碼`MembershipUser`物件的[`ChangePassword`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.changepassword.aspx)。 ChangePassword 方法接受兩個`string`輸入參數- *oldPassword*和*newPassword*-並更新使用者的帳戶與*newPassword*，假設提供*oldPassword*正確無誤。
+> ChangePassword 控制項由叫用來修改使用者的密碼`MembershipUser`物件的[`ChangePassword`方法](https://msdn.microsoft.com/library/system.web.security.membershipuser.changepassword.aspx)。 ChangePassword 方法接受兩個`string`輸入參數- *oldPassword*和*newPassword*-並更新使用者的帳戶與*newPassword*，假設提供*oldPassword*正確無誤。
 
 
 開啟`ChangePassword.aspx`頁面上，並將 ChangePassword 控制項加入至頁面上，其命名為`ChangePwd`。 此時，設計 檢視應顯示 變更密碼 （請參閱圖 6） 的檢視。 像與 Provider 控制項，您可以切換檢視透過控制項的智慧標籤。 此外，這些檢視的外觀也可透過各種的樣式屬性，或將它們轉換成範本的自訂。
@@ -207,7 +207,7 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 ChangePassword 控制項可以更新目前登入使用者的密碼*或*另一個，指定使用者的密碼。 如圖 6 所示，預設的 [變更密碼] 檢視會呈現只有三個文字方塊控制項： 一個適用於舊密碼，而兩個新的密碼。 這個預設介面用來更新目前登入使用者的密碼。
 
-若要使用 ChangePassword 控制更新其他使用者的密碼，將控制項的[`DisplayUserName`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.changepassword.displayusername.aspx)為 True。 這樣將第四個文字方塊加入至頁面上，若要變更其密碼提示使用者的使用者名稱。
+若要使用 ChangePassword 控制更新其他使用者的密碼，將控制項的[`DisplayUserName`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.changepassword.displayusername.aspx)為 True。 這樣將第四個文字方塊加入至頁面上，若要變更其密碼提示使用者的使用者名稱。
 
 設定`DisplayUserName`至很有用，如果您想要讓出記錄的使用者變更其密碼，而不需要登入則為 True。 個人，我認為有沒有任何問題然後再讓她變更其密碼，要求使用者必須登入。 因此，保留`DisplayUserName`設為 False （預設值）。 在這項決策，不過，我們基本上會限制匿名使用者，使其無法到達此頁面。 更新站台的 URL 授權規則以拒絕匿名使用者造訪`ChangePassword.aspx`。 如果您需要重新整理您的 URL 授權規則語法上的記憶體，請參閱上一步<a id="_msoanchor_4"> </a> [*使用者為基礎的授權*](../membership/user-based-authorization-cs.md)教學課程。
 

@@ -12,15 +12,15 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 10835c39d3bca752ed3068a23fecaaab56449e41
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7f38a0f2693aeb2a4884b9c03719b583423957a8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 本文件說明 Visual Studio 2013 ASP.NET 及 Web 工具版本。
 
@@ -137,8 +137,8 @@ Visual Studio 2013 也提供使用這兩個 CoffeeScript 和較低的內建的�
 
 如需詳細資訊，請參閱下列資源：
 
-- [在 Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/)
-- [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+- [在 Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)
+- [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 
 <a id="publish"></a>
 ## <a name="web-publish-enhancements"></a>Web 發行的增強功能
@@ -170,7 +170,7 @@ Web Form 專案範本緊密整合新的一個 ASP.NET 體驗中。 您可以將 
 
 Web Form 專案範本支援新的 ASP.NET Identity framework。 此外，範本現在支援建立 Web Form 內部網路專案。 如需詳細資訊，請參閱[驗證方法](creating-web-projects-in-visual-studio.md#auth)中**Visual Studio 2013 中建立 ASP.NET Web 專案**。
 
-### <a name="bootstrap"></a>啟動程序
+### <a name="bootstrap"></a>Bootstrap
 
 Web Form 範本使用[Bootstrap](http://twitter.github.io/bootstrap/)提供精緻且回應迅速外觀及操作，您可以輕鬆地自訂。 如需詳細資訊，請參閱[啟動 Visual Studio 2013 的 web 專案範本中的程序](creating-web-projects-in-visual-studio.md#bootstrap)。
 
@@ -185,9 +185,9 @@ Web MVC 專案範本緊密整合新的一個 ASP.NET 體驗中。 您可以自�
 
 ### <a name="aspnet-identity"></a>ASP.NET Identity
 
-要用於驗證和身分識別管理 ASP.NET 識別的 MVC 專案範本已更新。 將 Facebook 和 Google 驗證和新的成員資格應用程式開發介面設為特色的教學課程，請參閱[建立 ASP.NET MVC 5 應用程式與 Facebook、 Google OAuth2 和 OpenID 登入](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)和[建立 ASP.NET MVC 應用程式具有驗證和SQL 資料庫並部署至 Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。
+要用於驗證和身分識別管理 ASP.NET 識別的 MVC 專案範本已更新。 將 Facebook 和 Google 驗證和新的成員資格應用程式開發介面設為特色的教學課程，請參閱[建立 ASP.NET MVC 5 應用程式與 Facebook、 Google OAuth2 和 OpenID 登入](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)和[建立 ASP.NET MVC 應用程式具有驗證和SQL 資料庫並部署至 Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。
 
-### <a name="bootstrap"></a>啟動程序
+### <a name="bootstrap"></a>Bootstrap
 
 MVC 專案範本已更新為使用[Bootstrap](http://getbootstrap.com/)提供精緻且回應迅速外觀及操作，您可以輕鬆地自訂。 如需詳細資訊，請參閱[啟動 Visual Studio 2013 的 web 專案範本中的程序](creating-web-projects-in-visual-studio.md#bootstrap)。
 
@@ -531,7 +531,7 @@ OWIN 和 Katana 相關的詳細資訊，請參閱[OWIN 和 Katana 中最新消�
 
 與此版本中，加入了新元件，以啟用自我裝載案例。 這些元件包括下列 NuGet 套件：
 
-- **Microsoft.Owin.Host.HttpListener**。 提供 OWIN 使用的伺服器， **HttpListener**接聽 HTTP 要求，並將他們導向至 OWIN 管線。
+- **Microsoft.Owin.Host.HttpListener**. 提供 OWIN 使用的伺服器， **HttpListener**接聽 HTTP 要求，並將他們導向至 OWIN 管線。
 - **Microsoft.Owin.Hosting**提供文件庫的開發人員想要自助代管 OWIN 管線中的自訂處理序，例如主控台應用程式或 Windows 服務。
 - **OwinHost**。 提供獨立的可執行檔包裝`Microsoft.Owin.Hosting`並可讓您在自我裝載 OWIN 管線，而不需要撰寫自訂主應用程式。
 
@@ -553,13 +553,13 @@ OWIN 和 Katana 相關的詳細資訊，請參閱[OWIN 和 Katana 中最新消�
 
 使用下列的驗證元件。
 
-- **Microsoft.Owin.Security.ActiveDirectory**。 啟用使用在內部部署或雲端式目錄服務的驗證。
+- **Microsoft.Owin.Security.ActiveDirectory**. 啟用使用在內部部署或雲端式目錄服務的驗證。
 - **Microsoft.Owin.Security.Cookies**使用 cookie 會啟用驗證。 此套件先前命名為`Microsoft.Owin.Security.Forms`。
 - **Microsoft.Owin.Security.Facebook**啟用驗證使用 Facebook 的 OAuth 基礎服務。
 - **Microsoft.Owin.Security.Google**使用 Google OpenID 型服務啟用驗證。
 - **Microsoft.Owin.Security.Jwt**啟用驗證使用 JWT 權杖。
 - **Microsoft.Owin.Security.MicrosoftAccount**啟用驗證使用 Microsoft 帳戶。
-- **Microsoft.Owin.Security.OAuth**。 提供 OAuth 授權伺服器與中介軟體驗證持有人權杖。
+- **Microsoft.Owin.Security.OAuth**. 提供 OAuth 授權伺服器與中介軟體驗證持有人權杖。
 - **Microsoft.Owin.Security.Twitter**啟用驗證使用 Twitter 的 OAuth 基礎服務。
 
 此版本也包含`Microsoft.Owin.Cors`包含處理跨原始 HTTP 要求的中介軟體套件。
@@ -666,7 +666,7 @@ ASP.NET 應用程式暫停是.NET Framework 4.5.1 會徹底變更的使用者經
     收件者:
 
     `@Html.TextBoxFor(person => person.Age)`
-4. ASP.NET MVC 5 已不再支援部分信任。 專案和 MVC 或 WebAPI 二進位檔連結應該移除[SecurityTransparent](https://msdn.microsoft.com/en-us/library/system.security.securitytransparentattribute.aspx)屬性和[AllowPartiallyTrustedCallers](https://msdn.microsoft.com/en-us/library/system.security.allowpartiallytrustedcallersattribute.aspx)屬性。 移除這些屬性會消除編譯器錯誤，如下所示。
+4. ASP.NET MVC 5 已不再支援部分信任。 專案和 MVC 或 WebAPI 二進位檔連結應該移除[SecurityTransparent](https://msdn.microsoft.com/library/system.security.securitytransparentattribute.aspx)屬性和[AllowPartiallyTrustedCallers](https://msdn.microsoft.com/library/system.security.allowpartiallytrustedcallersattribute.aspx)屬性。 移除這些屬性會消除編譯器錯誤，如下所示。
 
     `Attempt by security transparent method ‘MyComponent' to access security critical type 'System.Web.Mvc.MvcHtmlString' failed. Assembly 'PagedList.Mvc, Version=4.3.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1' is marked with the AllowPartiallyTrustedCallersAttribute, and uses the level 2 security transparency model. Level 2 transparency causes all methods in AllowPartiallyTrustedCallers assemblies to become security transparent by default, which may be the cause of this exception.`
 

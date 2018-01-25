@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 090d0777b9d541003c3115d0da7cd974820c2939
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 191de7546e2ba913fda0c8c8a8bfd3531b53336e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="specifying-the-master-page-programmatically-vb"></a>以程式設計方式指定主版頁面 (VB)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-vb/samples/sample1.aspx)]
 
-[ `Page`類別](https://msdn.microsoft.com/en-us/library/system.web.ui.page.aspx)中`System.Web.UI`命名空間包含[`MasterPageFile`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.page.masterpagefile.aspx)，傳回內容頁面的主版頁面的路徑，則可以由設定這個屬性`@Page`指示詞。 這個屬性也可用來以程式設計方式指定內容頁面的主版頁面。 這個方法很有用，如果您想要以動態方式指派主版頁面根據外部因素，例如瀏覽頁面的使用者。
+[ `Page`類別](https://msdn.microsoft.com/library/system.web.ui.page.aspx)中`System.Web.UI`命名空間包含[`MasterPageFile`屬性](https://msdn.microsoft.com/library/system.web.ui.page.masterpagefile.aspx)，傳回內容頁面的主版頁面的路徑，則可以由設定這個屬性`@Page`指示詞。 這個屬性也可用來以程式設計方式指定內容頁面的主版頁面。 這個方法很有用，如果您想要以動態方式指派主版頁面根據外部因素，例如瀏覽頁面的使用者。
 
 本教學課程中我們會將第二個主版頁面加入至我們的網站，以動態方式決定要在執行階段使用的主版頁面。
 
@@ -54,7 +54,7 @@ ASP.NET 引擎時要求到達網頁伺服器內容頁面 ASP.NET 網頁時，必
 
 在此融合 partakes 哪些主版頁面的值而定`Page`物件的`MasterPageFile`屬性。 設定`MasterPageFile`屬性`@Page`指示詞有指派的淨影響`Page`的`MasterPageFile`在初始化階段，也就是網頁的生命週期的第一個階段的屬性。 我們也可以程式設計方式設定這個屬性。 不過，請務必在圖 1 融合之前設定這個屬性。
 
-在 PreInit 階段開始`Page`物件引發其[`PreInit`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.page.preinit.aspx)並呼叫其[`OnPreInit`方法](https://msdn.microsoft.com/en-us/library/system.web.ui.page.onpreinit.aspx)。 若要以程式設計方式設定主版頁面，然後，我們可以建立事件處理常式`PreInit`事件或覆寫`OnPreInit`方法。 讓我們看看這兩種方法。
+在 PreInit 階段開始`Page`物件引發其[`PreInit`事件](https://msdn.microsoft.com/library/system.web.ui.page.preinit.aspx)並呼叫其[`OnPreInit`方法](https://msdn.microsoft.com/library/system.web.ui.page.onpreinit.aspx)。 若要以程式設計方式設定主版頁面，然後，我們可以建立事件處理常式`PreInit`事件或覆寫`OnPreInit`方法。 讓我們看看這兩種方法。
 
 先開啟`Default.aspx.vb`，我們的網站首頁上的程式碼後置類別檔。 加入頁面的事件處理常式`PreInit`輸入下列程式碼中的事件：
 
@@ -275,8 +275,8 @@ ASP.NET 引擎時要求到達網頁伺服器內容頁面 ASP.NET 網頁時，必
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [ASP.NET 網頁生命週期圖表](http://emanish.googlepages.com/Asp.Net2.0Lifecycle.PNG)
-- [ASP.NET 網頁生命週期概觀](https://msdn.microsoft.com/en-us/library/ms178472.aspx)
-- [ASP.NET 佈景主題和面板概觀](https://msdn.microsoft.com/en-us/library/ykzx33wh.aspx)
+- [ASP.NET 網頁生命週期概觀](https://msdn.microsoft.com/library/ms178472.aspx)
+- [ASP.NET 佈景主題和面板概觀](https://msdn.microsoft.com/library/ykzx33wh.aspx)
 - [主版頁面： 秘訣、 竅門與設陷](http://www.odetocode.com/articles/450.aspx)
 - [在 ASP.NET 中的主題](http://www.odetocode.com/articles/423.aspx)
 

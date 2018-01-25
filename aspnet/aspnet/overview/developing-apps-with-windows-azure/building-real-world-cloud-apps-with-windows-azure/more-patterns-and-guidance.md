@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 2ac18799d214777d098cc85ec6c85fd09f84a782
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a388f2e0ca3e1f0ce24a6def2a2b91711a7bf5a7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>多個模式和指導方針 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -31,18 +31,18 @@ ms.lasthandoff: 11/10/2017
 
 - 移轉至雲端的現有內部部署應用程式。 
 
-    - [移動至雲端的應用程式](https://msdn.microsoft.com/en-us/library/ff728592.aspx)。 由 Microsoft Patterns and Practices 電子書。 同時也隨附[硬碟複製平裝](https://www.amazon.com/dp/1621140202)。
+    - [移動至雲端的應用程式](https://msdn.microsoft.com/library/ff728592.aspx)。 由 Microsoft Patterns and Practices 電子書。 同時也隨附[硬碟複製平裝](https://www.amazon.com/dp/1621140202)。
     - [移轉的 Microsoft ASP.NET 和 IIS.NET](https://go.microsoft.com/fwlink/?LinkId=400656)。 由 Robert McMurray 的案例研究。
     - [移動 4th &amp; Azure Web Sites 的鎮長](http://www.jeff.wilcox.name/2013/04/4thandmayor-azure-websites/)。 部落格文章 Jeff Wilcox chronicling 他從 Amazon Web Services 的 web 應用程式移至 Azure App Service 中的 Web 應用程式的體驗。
-    - [將應用程式移動到 Azure： 哪些變更？](https://azure.microsoft.com/en-us/documentation/videos/web-sites-internals-and-the-file-system/) 簡短的影片，由 Stefan Schackow、 說明 Azure App Service Web 應用程式中的檔案系統存取權。
+    - [將應用程式移動到 Azure： 哪些變更？](https://azure.microsoft.com/documentation/videos/web-sites-internals-and-the-file-system/) 簡短的影片，由 Stefan Schackow、 說明 Azure App Service Web 應用程式中的檔案系統存取權。
     - [Azure 的混合式雲端](https://www.amazon.com/dp/B00EOP4UQW)。 硬拷貝書籍或 Danny Garber、 Jamal Malik，和 Adam Fazio 電子書。
 - 雲端應用程式唯一的安全性、 驗證和授權問題
 
     - [Azure 安全性指引](https://azure.microsoft.com/blog/2014/02/10/best-practices-windows-azure-websites-waws/)
-    - [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱閘道管理員模式中，同盟識別身分的模式。
+    - [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱閘道管理員模式中，同盟識別身分的模式。
     - [Azure 網路安全性](https://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)。 由 Ashin Palekar 詘躩裛。
 
-請參閱其他雲端運算模式與指引[Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。
+請參閱其他雲端運算模式與指引[Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。
 
 <a id="resources"></a>
 ## <a name="resources"></a>資源
@@ -51,11 +51,11 @@ ms.lasthandoff: 11/10/2017
 
 文件
 
-- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
-- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
-- [Azure 指引](https://azure.microsoft.com/en-us/develop/net/guidance/)開發 azure 應用程式與相關的官方文件入口網站頁面。
+- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
+- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 FailSafe 影片系列網頁版本。
+- [Azure 指引](https://azure.microsoft.com/develop/net/guidance/)開發 azure 應用程式與相關的官方文件入口網站頁面。
 
-影片
+視訊
 
 - [建立真實世界雲端應用程式與 Azure-第 1 部分](https://channel9.msdn.com/Events/TechEd/Australia/2013/AZR324)和[第 2 部分](https://channel9.msdn.com/Events/TechEd/Australia/2013/AZR325)。 影片由 Scott Guthrie 這個 e 活頁簿為基礎的簡報。 在 2013 年 9 月，呈現技術 Ed 澳洲在。 較早版本的同一份展示檔已在 2013 年 6 月，傳遞在挪威開發人員會議 (NDC): [NDC 第 1 部分](http://vimeo.com/68215538)， [NDC 第 2 部分](http://vimeo.com/68215602)。
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 提供如何設計雲端應用程式架構的 400 層級檢視。 這一系列著重在理論上和建議的模式; 背後的原因如需作法的詳細資訊，請參閱 Mark Simms 建置大數列。
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/10/2017
 - [Windows Azure 程式設計模式針對創](https://www.amazon.com/dp/1849685606)。 由 Riccardo Becker。
 - [Microsoft Windows Azure 開發 Cookbook](https://www.amazon.com/dp/1849682224)。 由 Neil Mackenzie。
 
-最後，當您開始建置真實世界應用程式，以及在 Azure 中執行它們，很快您可能需要來自專家的協助。 您可以詢問下列問題的社群網站[Azure 論壇或 StackOverflow](https://azure.microsoft.com/en-us/support/forums/)，或您可以直接對 Azure 支援人員連絡 Microsoft。 Microsoft 提供數個層級的技術支援 Azure： 如需摘要和比較選項，請參閱[Azure 支援](https://azure.microsoft.com/en-us/support/plans/)。
+最後，當您開始建置真實世界應用程式，以及在 Azure 中執行它們，很快您可能需要來自專家的協助。 您可以詢問下列問題的社群網站[Azure 論壇或 StackOverflow](https://azure.microsoft.com/support/forums/)，或您可以直接對 Azure 支援人員連絡 Microsoft。 Microsoft 提供數個層級的技術支援 Azure： 如需摘要和比較選項，請參閱[Azure 支援](https://azure.microsoft.com/support/plans/)。
 
 <a id="acknowledgments"></a>
 ## <a name="acknowledgments"></a>通知
@@ -128,7 +128,7 @@ DGAC 的其他成員檢閱，並加上初步大綱註解：
 - Jason Oliveira
 - Alberto Poblacion
 - Ryan Riley
-- 裴瑞茲 Jones Tsisah
+- Perez Jones Tsisah
 - Roger Whitehead
 - Pawel Wilkosz
 

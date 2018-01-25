@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 11fc0363c20b179a4d74f29c4dafed81ca692ef2
-ms.sourcegitcommit: 77b8025c30ec2fd46d85ee2a2b497c44435d3009
+ms.openlocfilehash: b59965b2fab00cb64db06574d5ca3c6388daa7c8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
@@ -38,17 +38,17 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 藉由新增一些驗證邏輯，以開始，您將`Movie`類別。
 
-開啟 *Movie.cs* 檔案。 請注意[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間不包含`System.Web`。 DataAnnotations 提供一組內建的驗證屬性，您可以以宣告方式套用至任何類別或屬性。 (它也包含格式設定的屬性，例如[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)協助進行格式化，而且沒有提供任何驗證。)
+開啟 *Movie.cs* 檔案。 請注意[ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間不包含`System.Web`。 DataAnnotations 提供一組內建的驗證屬性，您可以以宣告方式套用至任何類別或屬性。 (它也包含格式設定的屬性，例如[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)協助進行格式化，而且沒有提供任何驗證。)
 
-立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)， [RegularExpression](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)，和[`Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性。 取代`Movie`具有下列類別：
+立即更新`Movie`類別，以充分利用內建[ `Required` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)， [ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)， [RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)，和[`Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)驗證屬性。 取代`Movie`具有下列類別：
 
 [!code-csharp[Main](adding-validation/samples/sample1.cs?highlight=5,13-15,18-19,22-23)]
 
-[ `StringLength` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性設定的最大長度字串，它會在資料庫上設定這項限制，因此將會變更資料庫結構描述。 以滑鼠右鍵按一下**電影**資料表中**伺服器總管**按一下**開啟資料表定義**:
+[ `StringLength` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性設定的最大長度字串，它會在資料庫上設定這項限制，因此將會變更資料庫結構描述。 以滑鼠右鍵按一下**電影**資料表中**伺服器總管**按一下**開啟資料表定義**:
 
 ![](adding-validation/_static/image1.png)
 
-在上圖中，您可以看到所有字串欄位會設定為[NVARCHAR (MAX)](https://technet.microsoft.com/en-us/library/ms186939.aspx)。 我們將使用 移轉更新結構描述。 建置方案，然後再開啟**Package Manager Console**視窗並輸入下列命令：
+在上圖中，您可以看到所有字串欄位會設定為[NVARCHAR (MAX)](https://technet.microsoft.com/library/ms186939.aspx)。 我們將使用 移轉更新結構描述。 建置方案，然後再開啟**Package Manager Console**視窗並輸入下列命令：
 
 [!code-console[Main](adding-validation/samples/sample2.cmd)]
 
@@ -64,9 +64,9 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 null。
 
-驗證屬性會指定您想要強制執行模型屬性套用的行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 [RegularExpression](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)屬性用來限制的字元可以是輸入。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 [ `Range` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性會限制要在指定範圍內的值。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值類型 (例如`decimal, int, float, DateTime`) 原本就是需要而且不需要`Required`屬性。
+驗證屬性會指定您想要強制執行模型屬性套用的行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 [RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)屬性用來限制的字元可以是輸入。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 [ `Range` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性會限制要在指定範圍內的值。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值類型 (例如`decimal, int, float, DateTime`) 原本就是需要而且不需要`Required`屬性。
 
-程式碼第一次可確保您的模型類別指定的驗證規則會強制執行之前會先應用程式資料庫中儲存的變更。 例如，下列程式碼將會擲回[DbEntityValidationException](https://msdn.microsoft.com/en-us/library/system.data.entity.validation.dbentityvalidationexception(v=vs.103).aspx)例外狀況時`SaveChanges`呼叫方法，因為數個需要`Movie`遺漏了屬性值：
+程式碼第一次可確保您的模型類別指定的驗證規則會強制執行之前會先應用程式資料庫中儲存的變更。 例如，下列程式碼將會擲回[DbEntityValidationException](https://msdn.microsoft.com/library/system.data.entity.validation.dbentityvalidationexception(v=vs.103).aspx)例外狀況時`SaveChanges`呼叫方法，因為數個需要`Movie`遺漏了屬性值：
 
 [!code-csharp[Main](adding-validation/samples/sample4.cs)]
 
@@ -92,7 +92,7 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 實際的好處是： 您不需要變更單一行中的程式碼`MoviesController`類別或*Create.cshtml*才能啟用這項驗證 UI 的檢視。 您稍早在本教學課程中建立的控制器和檢視會自動拾取您指定的驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 `Edit` 動作方法測試驗證，即會套用相同的驗證。
 
-直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 您可以使用，將中斷點放在 HTTP Post 方法，來確認這[fiddler 工具](http://fiddler2.com/fiddler2/)，或 IE [F12 開發人員工具](https://msdn.microsoft.com/en-us/ie/aa740478)。
+直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 您可以使用，將中斷點放在 HTTP Post 方法，來確認這[fiddler 工具](http://fiddler2.com/fiddler2/)，或 IE [F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)。
 
 ## <a name="how-validation-occurs-in-the-create-view-and-create-action-method"></a>如何驗證會在中建立檢視，並建立動作方法
 
@@ -128,13 +128,13 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 ## <a name="using-datatype-attributes"></a>使用 DataType 屬性
 
-開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 我們已經套用[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DataType` ](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性。
+開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 [ `System.ComponentModel.DataAnnotations` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間提供除了一組內建的驗證屬性的格式屬性。 我們已經套用[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)發行日期和價格欄位的列舉值。 下列程式碼會示範`ReleaseDate`和`Price`具有適當的屬性[ `DataType` ](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性。
 
 [!code-csharp[Main](adding-validation/samples/sample7.cs)]
 
-[資料型別](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和`<a>`url 的和`<a href="mailto:EmailAddress.com">`電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。 [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型，而是***不***驗證屬性。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
+[資料型別](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和`<a>`url 的和`<a href="mailto:EmailAddress.com">`電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型，而是***不***驗證屬性。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
 
-`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/en-us/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
+`DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -144,20 +144,20 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 `ApplyFormatInEditMode`設定指定指定的格式應該也套用時的值會顯示在文字方塊中進行編輯。 (您可能不想要的某些欄位，例如，貨幣值，您可能不想在文字方塊中的貨幣符號進行編輯。)
 
-您可以使用[DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性本身，但它通常是最好使用[DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)也屬性。 `DataType`屬性傳達*語意*的資料做為相對於如何呈現在畫面上，並提供下列優點，就無法取得與`DisplayFormat`:
+您可以使用[DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性本身，但它通常是最好使用[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)也屬性。 `DataType`屬性傳達*語意*的資料做為相對於如何呈現在畫面上，並提供下列優點，就無法取得與`DisplayFormat`:
 
 - 瀏覽器可以啟用 HTML5 功能 （例如顯示日曆控制項、 地區設定適當的貨幣符號、 電子郵件連結等等）。
-- 根據預設，瀏覽器將會轉譯資料使用正確的格式，根據您[地區設定](https://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx)。
-- [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性可以讓 MVC 選擇正確的欄位範本轉譯資料 ( [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)如果由本身使用字串的範本)。 如需詳細資訊，請參閱 Brad Wilson 的[ASP.NET MVC 2 範本](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html)。 （針對 MVC 2 所撰寫，不過這篇文章仍適用於目前版本的 ASP.NET MVC。）
+- 根據預設，瀏覽器將會轉譯資料使用正確的格式，根據您[地區設定](https://msdn.microsoft.com/library/vstudio/wyzd2bce.aspx)。
+- [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性可以讓 MVC 選擇正確的欄位範本轉譯資料 ( [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)如果由本身使用字串的範本)。 如需詳細資訊，請參閱 Brad Wilson 的[ASP.NET MVC 2 範本](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html)。 （針對 MVC 2 所撰寫，不過這篇文章仍適用於目前版本的 ASP.NET MVC。）
 
 如果您使用`DataType`屬性使用 [日期] 欄位中，您必須指定`DisplayFormat`屬性也以確保欄位在 Chrome 瀏覽器中正確轉譯。 如需詳細資訊，請參閱[這個 StackOverflow 執行緒](http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-ie)。
 
 > [!NOTE]
-> jQuery 驗證無法搭配[範圍](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性和[DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx)。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
+> jQuery 驗證無法搭配[範圍](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性和[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx)。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
 > 
 > [!code-csharp[Main](adding-validation/samples/sample9.cs)]
 > 
-> 您將需要停用使用 jQuery 日期驗證[範圍](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性附帶[DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx)。 它通常不是最好的作法是編譯您的模型，因此使用中的硬式日期[範圍](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性和[DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx)不建議使用。
+> 您將需要停用使用 jQuery 日期驗證[範圍](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性附帶[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx)。 它通常不是最好的作法是編譯您的模型，因此使用中的硬式日期[範圍](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.rangeattribute.aspx)屬性和[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx)不建議使用。
 
 
 下列程式碼會顯示一行上的結合屬性：

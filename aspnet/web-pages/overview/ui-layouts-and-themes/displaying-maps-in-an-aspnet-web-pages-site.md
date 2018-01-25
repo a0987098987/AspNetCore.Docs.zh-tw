@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: a802e4fed81fadca195c8aa83c37c7100ac5cbec
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6f3e6a0cfb8c08cd971e88986d0f059dd8237aab
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>顯示 ASP.NET Web Pages (Razor) 網站中的對應
 ====================
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/10/2017
     您可以指定您想要使用的索引鍵**評估/測試**。 如果您正在使用 WebMatrix 和 IIS Express 自己電腦上測試對應函式，請移至**網站**工作區中，注意您網站的 URL (例如， `http://localhost:50408`，不過您的連接埠號碼可能會不同)。 您可以使用這個*localhost*為當您註冊的站台的位址。
 2. 您已註冊的帳戶之後，請移至 Bing 地圖服務帳戶中心，然後按一下**建立或檢視表的索引鍵**:
 
-    ![對應-2](displaying-maps-in-an-aspnet-web-pages-site/_static/image1.png)
+    ![mapping-2](displaying-maps-in-an-aspnet-web-pages-site/_static/image1.png)
 3. 記錄的 Bing 所建立的索引鍵。
 
 ## <a name="creating-a-map-based-on-an-address-using-google"></a>建立對應，根據位址 （使用 Google）
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/10/2017
     - 若要呼叫`@Maps.GetGoogleHtml`網頁主體中。 若要對應的位址，您必須傳遞位址字串。 其他對應引擎方法的運作方式類似 (`@Maps.GetYahooHtml`， `@Maps.GetMapQuestHtml`)。
 - 執行網頁，並輸入位址。 頁面會顯示地圖中，根據 Google 地圖顯示您所指定的位置。
 
-    ![對應 1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
+    ![mapping-1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
 
 ## <a name="creating-a-map-based-on-latitude-and-longitude-coordinates-using-bing"></a>建立對應，根據經度和緯度座標 （使用 Bing）
 
@@ -108,10 +108,10 @@ ms.lasthandoff: 11/10/2017
 
     會顯示頁面，使用您指定的座標。
 
-    ![對應-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
+    ![mapping-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>其他資源
 
 
-[Microsoft.Maps API 參考](https://msdn.microsoft.com/en-us/library/gg427611.aspx)
+[Microsoft.Maps API 參考](https://msdn.microsoft.com/library/gg427611.aspx)

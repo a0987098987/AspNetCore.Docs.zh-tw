@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/view-components
-ms.openlocfilehash: 2d93dcee102009661af708b9a9066e8af0bdbb17
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 65074ca02a1365db278d348d4e024121a6eb4634
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="view-components"></a>檢視元件
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="introducing-view-components"></a>介紹檢視元件
 
-新的 ASP.NET Core MVC 中，以檢視元件類似於部分檢視，但它們是更為強大。 檢視元件不使用模型繫結，並僅相依於呼叫它時，您所提供的資料。 檢視元件：
+新的 ASP.NET Core MVC 中，以檢視元件類似於部分檢視，但它們更強大。 檢視元件不使用模型繫結，並僅相依於呼叫它時，您所提供的資料。 檢視元件：
 
 * 呈現區塊 (chunk)，而不是完整的回應
 * 包含的考量相同隔離-和控制器和檢視之間的可測試性優點
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/19/2018
 * 定義`InvokeAsync`方法會傳回`IViewComponentResult`
 * 通常初始化模型，並將其傳遞到檢視中，藉由呼叫`ViewComponent``View`方法
 * 參數會來自呼叫的方法，而不是 HTTP、 沒有模型繫結
-* 會無法連線到做為 HTTP 端點，即會叫用您的程式碼 （通常是在檢視中）。 檢視元件永遠不會處理要求
+* 會無法連線到做為 HTTP 端點，它們從叫用您的程式碼 （通常是在檢視中）。 檢視元件永遠不會處理要求
 * 多載簽章，而不是從目前的 HTTP 要求的任何詳細資料
 
 ### <a name="view-search-path"></a>檢視搜尋路徑
@@ -152,7 +152,7 @@ ms.lasthandoff: 01/19/2018
 
 * 檢視元件類別可以包含在**任何**專案資料夾中的。
 * 因為的類別名稱 PriorityList**ViewComponent**結束的尾碼**ViewComponent**，參考從檢視表的類別元件時，執行階段會使用字串"PriorityList"。 我將說明的詳細更新版本。
-* `[ViewComponent]`屬性可以變更用來參考的檢視元件的名稱。 例如，我們無法已命名類別`XYZ`和套用`ViewComponent`屬性：
+* `[ViewComponent]`屬性可以變更用來參考的檢視元件的名稱。 例如，我們無法了名為類別`XYZ`和套用`ViewComponent`屬性：
 
   ```csharp
   [ViewComponent(Name = "PriorityList")]
@@ -212,17 +212,17 @@ ms.lasthandoff: 01/19/2018
 
 ![優先順序檢視元件](view-components/_static/pvc.png)
 
-如果 PVC 檢視不會轉譯，請確認您要呼叫的檢視元件，優先順序為 4 或更新版本。
+如果 PVC 檢視不會呈現，請確認您要呼叫的檢視元件，優先順序為 4 或更新版本。
 
 ### <a name="examine-the-view-path"></a>請檢查檢視路徑
 
-* 為三個或更小，則不會傳回 priority 檢視，變更優先順序參數。
+* 優先順序將參數變更為三個或更小所以 priority 檢視未傳回。
 * 暫時重新命名*Views/Todo/Components/PriorityList/Default.cshtml*至*1Default.cshtml*。
 * 測試應用程式，您會收到下列錯誤：
 
    ```
    An unhandled exception occurred while processing the request.
-   InvalidOperationException: The view 'Components/PriorityList/Default' was not found. The following locations were searched:
+   InvalidOperationException: The view 'Components/PriorityList/Default' wasn't found. The following locations were searched:
    /Views/ToDo/Components/PriorityList/Default.cshtml
    /Views/Shared/Components/PriorityList/Default.cshtml
    EnsureSuccessful

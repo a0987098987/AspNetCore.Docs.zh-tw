@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: 97910940f9de26ca71b111b945581d2de6650b02
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 01f72e0240e84944f8ffece9a2dbc5802be4646b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署至測試
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何在 ASP.NET web 應用程式部署至 IIS 在本機電腦上。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 
 選項 2 最可靠的方式，來測試，而如果您這樣做，您不一定需要執行選項 1。 不過，如果您要部署到協力廠商裝載提供者選項 2 可能不可行，或可能高度耗費資源，因此這個教學課程 數列會顯示這兩種方法。 選項 2 的指南中提供[部署到生產環境](deploying-to-production.md)教學課程。
 
-如需有關使用 Visual Studio 中的網頁伺服器的詳細資訊，請參閱[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)。
+如需有關使用 Visual Studio 中的網頁伺服器的詳細資訊，請參閱[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)。
 
 提示： 如果您收到錯誤訊息，或當您瀏覽教學課程，項目無法運作，請務必檢查[疑難排解頁面](troubleshooting.md)。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
     [![Inetmgr_showing_4.0_app_pools](deploying-to-iis/_static/image3.png)](deploying-to-iis/_static/image2.png)
 4. 如果您看到只有兩個應用程式集區，而這兩種都設定為.NET Framework 2.0，您必須安裝在 IIS 中的 ASP.NET 4。
 
-    適用於 Windows 8，請參閱指示，在舊版區段中針對已安裝並確定該 ASP.NET 4.5，或請參閱[這篇知識庫文章](https://support.microsoft.com/kb/2736284)。 Windows 7 中，開啟命令提示字元視窗以滑鼠右鍵按一下**命令提示字元**windows**啟動**功能表，然後選取**系統管理員身分執行**。 然後執行[aspnet\_regiis.exe](https://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx)在 IIS 中，使用下列命令安裝 ASP.NET 4。 （在 32 位元系統中，取代"Framework64"與"架構"）。
+    適用於 Windows 8，請參閱指示，在舊版區段中針對已安裝並確定該 ASP.NET 4.5，或請參閱[這篇知識庫文章](https://support.microsoft.com/kb/2736284)。 Windows 7 中，開啟命令提示字元視窗以滑鼠右鍵按一下**命令提示字元**windows**啟動**功能表，然後選取**系統管理員身分執行**。 然後執行[aspnet\_regiis.exe](https://msdn.microsoft.com/library/k6h9cz8h.aspx)在 IIS 中，使用下列命令安裝 ASP.NET 4。 （在 32 位元系統中，取代"Framework64"與"架構"）。
 
     [!code-console[Main](deploying-to-iis/samples/sample1.cmd)]
 
@@ -94,9 +94,9 @@ IIS 現在準備好要發行的 web 應用程式，但可以這樣做之前您�
 
 LocalDB 不被為了在 IIS 中運作，因此您需要擁有 SQL Server Express 安裝您的測試環境。 如果您使用 Visual Studio 2010 SQL Server Express 中預設已安裝。 如果您使用 Visual Studio 2012，您必須安裝它。
 
-若要安裝 SQL Server Express，將它從安裝[Download Center: Microsoft SQL Server 2012 Express](https://www.microsoft.com/en-us/download/details.aspx?id=29062)按一下[ENU\x64\SQLEXPR\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLEXPR_x64_ENU.exe)或[ENU\x86\SQLEXPR\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLEXPR_x86_ENU.exe)。 如果您選擇錯誤的其中一個用於您的系統，它將無法安裝，而且您可以嘗試另一個。
+若要安裝 SQL Server Express，將它從安裝[Download Center: Microsoft SQL Server 2012 Express](https://www.microsoft.com/download/details.aspx?id=29062)按一下[ENU\x64\SQLEXPR\_x64\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLEXPR_x64_ENU.exe)或[ENU\x86\SQLEXPR\_x86\_ENU.exe](https://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLEXPR_x86_ENU.exe)。 如果您選擇錯誤的其中一個用於您的系統，它將無法安裝，而且您可以嘗試另一個。
 
-在 SQL Server 安裝中心] 的第一個頁面上，按一下 [**新的 SQL Server 獨立安裝或將功能加入現有安裝**，並遵循指示，接受預設選項。 安裝精靈 中接受預設設定。 如需有關安裝選項的詳細資訊，請參閱[從安裝精靈 （安裝程式） 安裝 SQL Server 2012](https://msdn.microsoft.com/en-us/library/ms143219.aspx)。
+在 SQL Server 安裝中心] 的第一個頁面上，按一下 [**新的 SQL Server 獨立安裝或將功能加入現有安裝**，並遵循指示，接受預設選項。 安裝精靈 中接受預設設定。 如需有關安裝選項的詳細資訊，請參閱[從安裝精靈 （安裝程式） 安裝 SQL Server 2012](https://msdn.microsoft.com/library/ms143219.aspx)。
 
 ## <a name="create-sql-server-express-databases-for-the-test-environment"></a>建立測試環境的 SQL Server Express 資料庫
 
@@ -233,7 +233,7 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
 
 當 Visual Studio 偵測到 Entity Framework`DbContext`類別，它會建立中的項目**資料庫**區段**執行 Code First 移轉**核取方塊，而不是**更新資料庫**核取方塊。 在此教學課程中，您將使用該核取方塊來指定 Code First 移轉部署。
 
-在某些情況下，您也可以使用`DbContext`資料庫中，但是想要將資料庫部署，而不是移轉使用 dbDacFx 提供者。 在此情況下，請參閱[如何部署 Code First 移轉沒有資料庫？](https://msdn.microsoft.com/en-us/library/ee942158.aspx#deploy_code_first_without_migrations)在 ASP.NET Web 部署常見問題集 MSDN 上。
+在某些情況下，您也可以使用`DbContext`資料庫中，但是想要將資料庫部署，而不是移轉使用 dbDacFx 提供者。 在此情況下，請參閱[如何部署 Code First 移轉沒有資料庫？](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations)在 ASP.NET Web 部署常見問題集 MSDN 上。
 
 下列步驟適用於**SchoolContext**資料庫**資料庫**對話方塊的區段。
 
@@ -332,7 +332,7 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
 
 - [IIS Express 概觀](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)IIS.net 網站上。
 - [導入 IIS Express](https://weblogs.asp.net/scottgu/archive/2010/06/28/introducing-iis-express.aspx) Scott Guthrie 的部落格上。
-- [Web 伺服器，在 Visual Studio 中的，ASP.NET Web 專案](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)。
+- [Web 伺服器，在 Visual Studio 中的，ASP.NET Web 專案](https://msdn.microsoft.com/library/58wxa9w5.aspx)。
 - [核心 IIS 之間的差異和 ASP.NET 程式開發伺服器](../../older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md)ASP.NET 網站上。
 
 在中度信任執行的應用程式時，可能會引發哪些問題的相關資訊，請參閱[裝載在中度信任 ASP.NET 應用程式](http://www.4guysfromrolla.com/articles/100307-1.aspx)4 Guy 從 Rolla 站台上。

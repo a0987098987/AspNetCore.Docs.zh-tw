@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 4e2a3176aaedccd40ef6b619efa3c4052dd8470b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a549bd62bd78573c368784fd1529a830e009b0d4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-2"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 第 2 部分
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 
 [![Image18](the-entity-framework-and-aspnet-getting-started-part-2/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image5.png)
 
-請注意，此應用程式中您將不會將加入的輸入的驗證，這些頁面會更新資料庫，某些錯誤處理不會那麼穩固，就會需要在實際執行的應用程式。 會將焦點放在 Entity Framework 的教學課程，而且可防止它取得太長。 如需有關如何將這些功能加入至您的應用程式的詳細資訊，請參閱[驗證使用者輸入中的 ASP.NET Web Pages](https://msdn.microsoft.com/en-us/library/7kh55542.aspx)和[Error Handling in ASP.NET 網頁和應用程式](https://msdn.microsoft.com/en-us/library/w16865z6.aspx)。
+請注意，此應用程式中您將不會將加入的輸入的驗證，這些頁面會更新資料庫，某些錯誤處理不會那麼穩固，就會需要在實際執行的應用程式。 會將焦點放在 Entity Framework 的教學課程，而且可防止它取得太長。 如需有關如何將這些功能加入至您的應用程式的詳細資訊，請參閱[驗證使用者輸入中的 ASP.NET Web Pages](https://msdn.microsoft.com/library/7kh55542.aspx)和[Error Handling in ASP.NET 網頁和應用程式](https://msdn.microsoft.com/library/w16865z6.aspx)。
 
 ## <a name="adding-and-configuring-the-entitydatasource-control"></a>加入和設定 EntityDataSource 控制項
 
@@ -157,13 +157,13 @@ ms.lasthandoff: 11/10/2017
 
 - 效能較佳。 當`EntityDataSource`控制項初始化資料模型使用`ConnectionString`和`DefaultContainerName`屬性，它會執行其他工作，以載入每個要求的中繼資料。 這並非必要，如果您指定`ContextTypeName`屬性。
 - 產生的物件內容類別中的預設會開啟消極式載入 (例如`SchoolEntities`在本教學課程) 在 Entity Framework 4.0。 這表示導覽屬性會載入與相關資料會自動在需要時，權限。 消極式載入更詳細說明，稍後在本教學課程。
-- 已套用到物件內容類別的任何自訂 (在此情況下，`SchoolEntities`類別) 可供使用的控制項`EntityDataSource`控制項。 自訂物件內容類別是進階的主題未涵蓋在本教學課程系列。 如需詳細資訊，請參閱[擴充實體架構產生的型別](https://msdn.microsoft.com/en-us/library/dd456844.aspx)。
+- 已套用到物件內容類別的任何自訂 (在此情況下，`SchoolEntities`類別) 可供使用的控制項`EntityDataSource`控制項。 自訂物件內容類別是進階的主題未涵蓋在本教學課程系列。 如需詳細資訊，請參閱[擴充實體架構產生的型別](https://msdn.microsoft.com/library/dd456844.aspx)。
 
 標記現在會類似下列的範例 （屬性順序可能會不同）：
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-2/samples/sample6.aspx)]
 
-`EnableFlattening`屬性是指因為外部索引鍵資料行並不會公開為實體的屬性，在舊版的 Entity Framework 所需的功能。 目前的版本會讓您能夠使用*外部索引鍵關聯*，這表示外部索引鍵屬性以外的所有多對多關聯的公開。 如果您的實體有外部索引鍵屬性，且沒有[複雜型別](https://msdn.microsoft.com/en-us/library/bb738472.aspx)，您可以將這個屬性設為`False`。 未移除的屬性標記，因為預設值為`True`。 如需詳細資訊，請參閱[簡維物件 (EntityDataSource)](https://msdn.microsoft.com/en-us/library/ee404746.aspx)。
+`EnableFlattening`屬性是指因為外部索引鍵資料行並不會公開為實體的屬性，在舊版的 Entity Framework 所需的功能。 目前的版本會讓您能夠使用*外部索引鍵關聯*，這表示外部索引鍵屬性以外的所有多對多關聯的公開。 如果您的實體有外部索引鍵屬性，且沒有[複雜型別](https://msdn.microsoft.com/library/bb738472.aspx)，您可以將這個屬性設為`False`。 未移除的屬性標記，因為預設值為`True`。 如需詳細資訊，請參閱[簡維物件 (EntityDataSource)](https://msdn.microsoft.com/library/ee404746.aspx)。
 
 執行網頁，您會看到一份學生的員工 （您將篩選只學生在下一個教學課程）。 名字和姓氏會一起顯示。
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/10/2017
 
 [![Image16](the-entity-framework-and-aspnet-getting-started-part-2/_static/image48.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image47.png)
 
-在**選擇資料來源**步驟中，選取**DepartmentsEntityDataSource**做為資料來源中，按一下 **重新整理結構描述**，然後選取**名稱**做為要顯示的資料欄位和**DepartmentID**為數值資料欄位。 按一下 [確定]。
+在**選擇資料來源**步驟中，選取**DepartmentsEntityDataSource**做為資料來源中，按一下 **重新整理結構描述**，然後選取**名稱**做為要顯示的資料欄位和**DepartmentID**為數值資料欄位。 按一下 [確定 **Deploying Office Solutions**]。
 
 [![Image17](the-entity-framework-and-aspnet-getting-started-part-2/_static/image50.png)](the-entity-framework-and-aspnet-getting-started-part-2/_static/image49.png)
 

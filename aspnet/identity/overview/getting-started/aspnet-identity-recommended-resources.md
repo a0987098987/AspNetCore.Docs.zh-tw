@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: 8050d37cfea91701e1cae0413feb41ca9a68baff
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb6e378d6b1de7d43bbc4272b64f9029f4e92924
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET 識別建議使用的資源
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 
 - [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)本教學課程會示範如何撰寫 ASP.NET MVC 5 應用程式使用 Facebook 和 Google OAuth 2 」 授權。 它也會示範如何加入識別資料庫中的其他資料。
 - [將成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 應用程式部署至 Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 本教學課程將加入 Azure 部署時，如何保護您的應用程式角色、 如何使用成員資格應用程式開發介面來新增使用者和角色，以及其他安全性功能。
-- [ASP.NET 識別簡介](introduction-to-aspnet-identity.md)
+- [ASP.NET Identity 簡介](introduction-to-aspnet-identity.md)
 - [使用登入電子郵件確認和密碼重設建立安全的 ASP.NET MVC 5 web 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)
 - [使用 SMS 和電子郵件雙因素驗證的 ASP.NET MVC 5 應用程式](../../../mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md)
 
@@ -59,11 +59,11 @@ ms.lasthandoff: 11/10/2017
 ## <a name="intermediate-aspnet-identity"></a>中繼 ASP.NET Identity
 
 - [帳戶確認和 ASP.NET 識別的密碼復原](../features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
-- [SMS 和電子郵件使用 ASP.NET Identity 的雙因素驗證](../features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
-- [從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
-- [加入 ASP.NET Identity 至空的或現有的 Web Form 專案](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
-- MSDN Magazine[外部驗證與 ASP.NET Identity](https://msdn.microsoft.com/en-us/magazine/dn745860.aspx) Dino Esposito 由
-- MSDN Magazine[初探 ASP.NET Identity](https://msdn.microsoft.com/en-us/magazine/dn605872.aspx) Dino Esposito 由
+- [使用 SMS 的雙因素驗證和使用 ASP.NET Identity 的電子郵件](../features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
+- [將現有的網站從 SQL 成員資格移轉至 ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
+- [將 ASP.NET Identity 新增至空的或現有的 Web Form 專案](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)
+- MSDN Magazine[外部驗證與 ASP.NET Identity](https://msdn.microsoft.com/magazine/dn745860.aspx) Dino Esposito 由
+- MSDN Magazine[初探 ASP.NET Identity](https://msdn.microsoft.com/magazine/dn605872.aspx) Dino Esposito 由
 - [ASP.NET Identity – 使用者鎖定](http://tech.trailmax.info/2014/06/asp-net-identity-user-lockout/)
 
 <a id="samp"></a>
@@ -123,7 +123,7 @@ ms.lasthandoff: 11/10/2017
 - [從 ASP.NET 成員資格將移至 ASP.NET Identity](http://webdojo.sharepoint.com/ajmatthews/_layouts/15/start.aspx#/Lists/Posts/Post.aspx?ID=2) Alistair 騏宇由
 
 <a id="video"></a>
-## <a name="videos"></a>影片
+## <a name="videos"></a>視訊
 
 - Channel 9[保護 ASP.NET 應用程式和服務： 安全性現代應用程式的外觀](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B421#fbid=PhVT9E1WRtr?hashlink=fbid)謝 Flatow 由
 - Channel 9 [ASP.NET Identity 簡介](https://channel9.msdn.com/Events/dotnetConf/2014/ASP-NET-Identity-Security)Pranav Rastogi 由

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-and-web-tools-20122-release-notes
 msc.type: content
-ms.openlocfilehash: e6c940aa507d72928d71019070ded5197458a763
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 52559a47f86e572f873d4eaaab50e87eb51722fd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET 及 Web 工具 2012.2 版本資訊
 ====================
@@ -152,7 +152,7 @@ ASP.NET Web API OData 目前支援下列功能：
 
 #### <a name="aspnet-web-api-tracing"></a>ASP.NET Web API 追蹤
 
-ASP.NET Web API 追蹤與.NET 追蹤整合，從您的 web 應用程式開發介面的追蹤資料。 它現在預設會啟用 Web API 專案範本中。 追蹤資料，為您的 web 應用程式開發介面會傳送至 [輸出] 視窗，並可透過 IntelliTrace。 ASP.NET Web API 追蹤功能可讓您將您的 Web API 時透過整合 Windows Azure 上裝載的追蹤資訊[Windows Azure 診斷](https://msdn.microsoft.com/en-us/library/windowsazure/hh411529.aspx)。 您也可以安裝並使用 ASP.NET Web API 追蹤的 NuGet 套件的任何應用程式中啟用 ASP.NET Web API Tracing ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing))。
+ASP.NET Web API 追蹤與.NET 追蹤整合，從您的 web 應用程式開發介面的追蹤資料。 它現在預設會啟用 Web API 專案範本中。 追蹤資料，為您的 web 應用程式開發介面會傳送至 [輸出] 視窗，並可透過 IntelliTrace。 ASP.NET Web API 追蹤功能可讓您將您的 Web API 時透過整合 Windows Azure 上裝載的追蹤資訊[Windows Azure 診斷](https://msdn.microsoft.com/library/windowsazure/hh411529.aspx)。 您也可以安裝並使用 ASP.NET Web API 追蹤的 NuGet 套件的任何應用程式中啟用 ASP.NET Web API Tracing ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing))。
 
 如需有關設定和使用 ASP.NET Web API Tracing [https://go.microsoft.com/fwlink/?LinkID=269874](https://go.microsoft.com/fwlink/?LinkID=269874)。
 
@@ -283,7 +283,7 @@ Facebook 應用程式範本可讓使用者輕鬆地建立此 Web API 控制器�
 
 todoList.prototype.addTodo 函式中，加入下列 blacked 的文字：  
  **self.isSelected(true);**  
- self.newTodoTitle (&quot;&quot;);
+ self.newTodoTitle(&quot;&quot;);
 
 檔案 index.cshtml 中，加入下列 blacked 的文字：  
  &lt;資料繫結會形成 =&quot;提交： addTodo&quot;&gt;  

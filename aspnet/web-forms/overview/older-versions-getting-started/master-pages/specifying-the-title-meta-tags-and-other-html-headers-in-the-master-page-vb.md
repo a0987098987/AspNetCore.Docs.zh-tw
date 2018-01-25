@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1bbc2efc67d2d828dd0a5c1fcfe95145e8ffb2cb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6d004a0ee0b46e2984aec8d0a99835dbf414ed9d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb"></a>指定標題、 Meta 標記和其他 HTML 標頭在主版頁面 (VB)
 ====================
@@ -42,7 +42,7 @@ Visual Studio 2008 所建立之預設主版網頁檔案包含下列標記中的�
 
 [!code-aspx[Main](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/samples/sample1.aspx)]
 
-請注意，`<head>`元素包含`runat="server"`屬性，表示伺服器控制項 （而非靜態 HTML）。 所有的 ASP.NET 網頁衍生自[`Page`類別](https://msdn.microsoft.com/en-us/library/system.web.ui.page.aspx)，位於`System.Web.UI`命名空間。 這個類別包含[`Header`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.page.header.aspx)可提供存取網頁的`<head>`區域。 使用`Header`屬性，我們可以設定 ASP.NET 網頁的標題，或將額外的標記新增至呈現`<head>`> 一節。 它是可行的然後自訂內容頁面的`<head>`元素在頁面中撰寫許多程式碼的`Page_Load`事件處理常式。 我們檢驗如何以程式設計方式在步驟 1 中設定頁面的標題。
+請注意，`<head>`元素包含`runat="server"`屬性，表示伺服器控制項 （而非靜態 HTML）。 所有的 ASP.NET 網頁衍生自[`Page`類別](https://msdn.microsoft.com/library/system.web.ui.page.aspx)，位於`System.Web.UI`命名空間。 這個類別包含[`Header`屬性](https://msdn.microsoft.com/library/system.web.ui.page.header.aspx)可提供存取網頁的`<head>`區域。 使用`Header`屬性，我們可以設定 ASP.NET 網頁的標題，或將額外的標記新增至呈現`<head>`> 一節。 它是可行的然後自訂內容頁面的`<head>`元素在頁面中撰寫許多程式碼的`Page_Load`事件處理常式。 我們檢驗如何以程式設計方式在步驟 1 中設定頁面的標題。
 
 中所顯示的標記`<head>`上述項目也包含名為的 ContentPlaceHolder 控制項`head`。 當內容頁面可以新增自訂內容，並非必要，這個 ContentPlaceHolder 控制項`<head>`項目以程式設計的方式。 會很有用，不過，在內容頁面要加入至靜態標記的情況下`<head>`對應的內容控制項而不是以程式設計方式為靜態標記的項目也可以以宣告方式新增。
 
@@ -69,7 +69,7 @@ ASP.NET 網頁可以下列方式之一，指定其標題：
 
 ### <a name="setting-the-pages-title-declaratively"></a>以宣告方式設定頁面的標題
 
-以宣告方式透過設定內容頁面的標題`Title`屬性[`<%@ Page %>`指示詞](https://msdn.microsoft.com/en-us/library/ydy4x04a.aspx)。 這個屬性可以設定直接修改`<%@ Page %>`指示詞，或透過 [屬性] 視窗。 讓我們看看這兩種方法。
+以宣告方式透過設定內容頁面的標題`Title`屬性[`<%@ Page %>`指示詞](https://msdn.microsoft.com/library/ydy4x04a.aspx)。 這個屬性可以設定直接修改`<%@ Page %>`指示詞，或透過 [屬性] 視窗。 讓我們看看這兩種方法。
 
 從原始碼檢視中，找出`<%@ Page %>`指示詞，也就是在網頁的宣告式標記的頂端。 `<%@ Page %>`指示詞`Default.aspx`遵循：
 
@@ -96,7 +96,7 @@ ASP.NET 網頁可以下列方式之一，指定其標題：
 
 ### <a name="setting-the-pages-title-programmatically"></a>以程式設計方式設定頁面的標題
 
-主版頁面的`<head runat="server">`標記會轉譯成[`HtmlHead`類別](https://msdn.microsoft.com/en-us/library/system.web.ui.htmlcontrols.htmlhead.aspx)ASP.NET 引擎所呈現的頁面時執行個體。 `HtmlHead`類別具有[`Title`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.htmlcontrols.htmlhead.title.aspx)其值會反映在轉譯`<title>`項目。 這個屬性是可從 ASP.NET 網頁的程式碼後置類別透過存取`Page.Header.Title`; 此相同屬性也可以透過存取`Page.Title`。
+主版頁面的`<head runat="server">`標記會轉譯成[`HtmlHead`類別](https://msdn.microsoft.com/library/system.web.ui.htmlcontrols.htmlhead.aspx)ASP.NET 引擎所呈現的頁面時執行個體。 `HtmlHead`類別具有[`Title`屬性](https://msdn.microsoft.com/library/system.web.ui.htmlcontrols.htmlhead.title.aspx)其值會反映在轉譯`<title>`項目。 這個屬性是可從 ASP.NET 網頁的程式碼後置類別透過存取`Page.Header.Title`; 此相同屬性也可以透過存取`Page.Title`。
 
 若要練習以程式設計方式設定頁面的標題，請瀏覽至`About.aspx`網頁的程式碼後置類別，並建立網頁的事件處理常式`Load`事件。 接下來，設定頁面的標題為 「 主版頁面教學課程:: 有關::*日期*"，其中*日期*是目前日期。 加入此程式碼之後您`Page_Load`事件處理常式看起來應該類似下列：
 
@@ -189,7 +189,7 @@ ASP.NET 提供了強固的站台對應架構，可讓網頁開發人員在外部
 
 ### <a name="creating-the-site-map"></a>建立站台對應
 
-站台對應系統建置在之上[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)，其中以減少站台對應應用程式開發介面會序列化記憶體和持續性存放區之間的站台對應資訊的邏輯。 .NET Framework 隨附[`XmlSiteMapProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.xmlsitemapprovider.aspx)，這是預設站台地圖提供者。 正如其名，`XmlSiteMapProvider`做為其站台對應存放區使用的 XML 檔案。 讓我們使用此提供者來定義我們網站地圖。
+站台對應系統建置在之上[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)，其中以減少站台對應應用程式開發介面會序列化記憶體和持續性存放區之間的站台對應資訊的邏輯。 .NET Framework 隨附[`XmlSiteMapProvider`類別](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx)，這是預設站台地圖提供者。 正如其名，`XmlSiteMapProvider`做為其站台對應存放區使用的 XML 檔案。 讓我們使用此提供者來定義我們網站地圖。
 
 藉由建立名為網站的根資料夾中的站台對應檔案啟動`Web.sitemap`。 若要完成此動作，以滑鼠右鍵按一下方案總管] 中的網站名稱，選擇 [加入新項目並選取網站地圖範本。 請確定檔案命名為`Web.sitemap`並按一下 [新增]。
 
@@ -247,7 +247,7 @@ ASP.NET 提供了強固的站台對應架構，可讓網頁開發人員在外部
 **圖 09**： 課程 > 一節包含單一的清單項目 ([按一下以檢視完整大小的影像](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/_static/image17.png))
 
 
-若要顯示多個層級能以巢狀內的多個 Listview `ItemTemplate`。 這項技術有密切關係中[*主版頁面和站台瀏覽*教學課程](../../data-access/introduction/master-pages-and-site-navigation-vb.md)的我[使用資料的教學課程系列](../../data-access/index.md)。 不過，此教學課程系列我們網站地圖將包含只兩個層級： 首頁 （最上層）;及首頁的子系為每個課程。 製作巢狀的 ListView，我們可以改用指示來設定傳回開始節點 Treeview 其[`ShowStartingNode`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx)至`False`。 最後的結果會是 Treeview 開始透過傳回第二層的站台對應的節點。
+若要顯示多個層級能以巢狀內的多個 Listview `ItemTemplate`。 這項技術有密切關係中[*主版頁面和站台瀏覽*教學課程](../../data-access/introduction/master-pages-and-site-navigation-vb.md)的我[使用資料的教學課程系列](../../data-access/index.md)。 不過，此教學課程系列我們網站地圖將包含只兩個層級： 首頁 （最上層）;及首頁的子系為每個課程。 製作巢狀的 ListView，我們可以改用指示來設定傳回開始節點 Treeview 其[`ShowStartingNode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemapdatasource.showstartingnode.aspx)至`False`。 最後的結果會是 Treeview 開始透過傳回第二層的站台對應的節點。
 
 這項變更，清單檢視會顯示關於項目符號項目並使用多個 ContentPlaceHolder 控制項課程，但省略 Home 的項目。 若要補救這種情況，我們可以明確加入項目中的家用`LayoutTemplate`:
 
@@ -279,7 +279,7 @@ ASP.NET 提供了強固的站台對應架構，可讓網頁開發人員在外部
 
 如往常一般，`OnLoadComplete`方法會啟動，判斷是否已明確設定頁面的標題。 如果`Page.Title`是`Nothing`，空字串，或被指派的值未命名頁面 」，則程式碼會自動指派值到`Page.Title`。
 
-若要判斷使用的標題，程式碼會啟動藉由參考[`SiteMap`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemap.aspx)的[`CurrentNode`屬性](https://msdn.microsoft.com/en-us/library/system.web.sitemap.currentnode.aspx)。 `CurrentNode`傳回[ `SiteMapNode` ](https://msdn.microsoft.com/en-us/library/system.web.sitemapnode.aspx)站台對應，對應至目前要求的頁面中的執行個體。 假設目前要求的頁面內站台對應，發現`SiteMapNode`的`Title`屬性指派給頁面的標題。 如果目前要求的頁面不是站台對應，`CurrentNode`傳回`Nothing`和要求的網頁檔名做為標題 （為 「 已完成步驟 2 中）。
+若要判斷使用的標題，程式碼會啟動藉由參考[`SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)的[`CurrentNode`屬性](https://msdn.microsoft.com/library/system.web.sitemap.currentnode.aspx)。 `CurrentNode`傳回[ `SiteMapNode` ](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx)站台對應，對應至目前要求的頁面中的執行個體。 假設目前要求的頁面內站台對應，發現`SiteMapNode`的`Title`屬性指派給頁面的標題。 如果目前要求的頁面不是站台對應，`CurrentNode`傳回`Nothing`和要求的網頁檔名做為標題 （為 「 已完成步驟 2 中）。
 
 圖 12 顯示`MultipleContentPlaceHolders.aspx`頁面上透過瀏覽器檢視時。 因為未明確設定此頁面的標題，會改為使用其對應站台對應節點的標題。
 
@@ -320,10 +320,10 @@ A `<meta>` description 項目具有下列格式：
 
 [!code-vb[Main](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/samples/sample15.vb)]
 
-上述程式碼會加入`<meta>`keywords 項目至`<head>`區域，而提供的關鍵字，描述頁面以逗號分隔清單。 請注意，若要加入`<meta>`您所建立的標記[ `HtmlMeta` ](https://msdn.microsoft.com/en-us/library/system.web.ui.htmlcontrols.htmlmeta.aspx)執行個體、 將其`Name`和`Content`屬性，然後將它新增到`Header`的`Controls`集合。 同樣地，若要以程式設計方式加入`<link>`項目，建立[ `HtmlLink` ](https://msdn.microsoft.com/en-us/library/system.web.ui.htmlcontrols.htmllink.aspx)物件、 設定其屬性，並再將它加入`Header`的`Controls`集合。
+上述程式碼會加入`<meta>`keywords 項目至`<head>`區域，而提供的關鍵字，描述頁面以逗號分隔清單。 請注意，若要加入`<meta>`您所建立的標記[ `HtmlMeta` ](https://msdn.microsoft.com/library/system.web.ui.htmlcontrols.htmlmeta.aspx)執行個體、 將其`Name`和`Content`屬性，然後將它新增到`Header`的`Controls`集合。 同樣地，若要以程式設計方式加入`<link>`項目，建立[ `HtmlLink` ](https://msdn.microsoft.com/library/system.web.ui.htmlcontrols.htmllink.aspx)物件、 設定其屬性，並再將它加入`Header`的`Controls`集合。
 
 > [!NOTE]
-> 若要新增任意的標記，請建立[ `LiteralControl` ](https://msdn.microsoft.com/en-us/library/system.web.ui.literalcontrol.aspx)執行個體、 將其`Text`屬性，然後將它新增到`Header`的`Controls`集合。
+> 若要新增任意的標記，請建立[ `LiteralControl` ](https://msdn.microsoft.com/library/system.web.ui.literalcontrol.aspx)執行個體、 將其`Text`屬性，然後將它新增到`Header`的`Controls`集合。
 
 
 ## <a name="summary"></a>總結

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: ac780c6cd522f9216cafe3b5f23772ef6ebf5d11
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 226c28622f76e866fba1fc33cf9b9b7a01e5295b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a>將資料庫角色成員資格部署到測試環境
 ====================
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> 如需有關 sqlcmd 命令列選項的詳細資訊，請參閱[sqlcmd 公用程式](https://msdn.microsoft.com/en-us/library/ms162773.aspx)。
+> 如需有關 sqlcmd 命令列選項的詳細資訊，請參閱[sqlcmd 公用程式](https://msdn.microsoft.com/library/ms162773.aspx)。
 
 
 此命令嵌入 MSBuild 目標之前，您需要考慮在哪些情況下您想要執行的指令碼：
@@ -130,7 +130,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關使用 VSDBCMD 部署資料庫專案的詳細資訊，請參閱[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。 如需自訂不同的目標環境的資料庫部署的指引，請參閱[自訂資料庫部署多個環境](customizing-database-deployments-for-multiple-environments.md)。 如需使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。 如需有關 sqlcmd 命令列選項的詳細資訊，請參閱[sqlcmd 公用程式](https://msdn.microsoft.com/en-us/library/ms162773.aspx)。
+如需有關使用 VSDBCMD 部署資料庫專案的詳細資訊，請參閱[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。 如需自訂不同的目標環境的資料庫部署的指引，請參閱[自訂資料庫部署多個環境](customizing-database-deployments-for-multiple-environments.md)。 如需使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。 如需有關 sqlcmd 命令列選項的詳細資訊，請參閱[sqlcmd 公用程式](https://msdn.microsoft.com/library/ms162773.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](customizing-database-deployments-for-multiple-environments.md)

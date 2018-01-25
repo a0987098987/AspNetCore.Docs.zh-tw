@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 7e495ba56958012713836c1dd75ac0c5a8bff942
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 873e4592ba668bbcb22f761c2a547a2a27d7e443
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、 讀取、 更新和刪除-EF Core 與 ASP.NET Core MVC 教學課程 (2 / 10)
 
@@ -46,7 +46,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 `Include`和`ThenInclude`方法會造成載入內容`Student.Enrollments`導覽屬性，以及在每個註冊內`Enrollment.Course`導覽屬性。  您將進一步了解這些方法進行[讀取相關的資料](read-related-data.md)教學課程。
 
-`AsNoTracking`方法可改善的案例，其中傳回的實體將不會更新在目前內容的存留期間的效能。 您將深入了解`AsNoTracking`在本教學課程結尾處。
+`AsNoTracking`方法可改善的案例，其中傳回的實體不會更新在目前內容的存留期間的效能。 您將深入了解`AsNoTracking`在本教學課程結尾處。
 
 ### <a name="route-data"></a>路由資料
 
@@ -176,7 +176,7 @@ public class Student
 
 [!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
 
-這些變更實作安全性最佳作法，以防止 overposting。 產生 scaffolder`Bind`屬性和加入的實體集與模型繫結器所建立的實體`Modified`旗標。 程式碼不建議用於許多案例因為`Bind`屬性清除任何預先存在的資料中未列出的欄位中`Include`參數。
+這些變更實作安全性最佳作法，以防止 overposting。 產生 scaffolder`Bind`屬性和加入的實體集與模型繫結器所建立的實體`Modified`旗標。 程式碼不建議用於許多案例，因為`Bind`屬性清除任何預先存在的資料中未列出的欄位中`Include`參數。
 
 新的程式碼會讀取現有的實體和呼叫`TryUpdateModel`更新中擷取之實體的欄位[根據使用者輸入中已張貼的表單資料](xref:mvc/models/model-binding#how-model-binding-works)。 Entity Framework 自動變更追蹤設定`Modified`旗標變更表單輸入的欄位。 當`SaveChanges`呼叫方法時，Entity Framework 建立 SQL 陳述式來更新資料庫的資料列。 並行衝突，系統會忽略，只有使用者已更新的資料表資料行在更新資料庫。 （之後的教學課程示範如何處理並行存取衝突）。
 
@@ -200,7 +200,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 實體可能處於下列狀態其中之一：
 
-* `Added`. 在資料庫中尚未存在的實體。 `SaveChanges`方法發出的 INSERT 陳述式。
+* `Added`. 實體還不存在資料庫中。 `SaveChanges`方法發出的 INSERT 陳述式。
 
 * `Unchanged`. 與這個實體所完成，不需要`SaveChanges`方法。 當您從資料庫讀取實體時，實體開始於此狀態。
 
@@ -216,7 +216,7 @@ Scaffold 的程式碼使用的建立和附加方法，但只會攔截`DbUpdateCo
 
 但如果您不想要執行額外的讀取作業，您必須使用模型繫結器所建立的實體物件。  若要這樣做最簡單的方式是將實體狀態設定修改，如同您在稍早所示的替代 HttpPost 編輯程式碼。 然後當您呼叫`SaveChanges`，Entity Framework 更新的資料庫資料列的所有資料行，因為內容中有無從得知您已變更的屬性。
 
-如果您想要避免讀取第一個方法，但您也想要更新的使用者實際上已變更的欄位更新 SQL 陳述式，程式碼是更複雜。 您必須將原始值儲存在某些方面 (例如使用隱藏的欄位)，以便他們可以使用時 HttpPost`Edit`方法呼叫。 然後您可以建立使用原始值，也就是呼叫學生實體`Attach`方法的原始版本，在實體的實體的值更新為新的值，然後呼叫`SaveChanges`。
+如果您想要避免讀取第一個方法，但您也想要更新的使用者實際上已變更的欄位更新 SQL 陳述式，程式碼是更複雜。 您必須將原始值儲存在某些方面 (例如使用隱藏的欄位)，使其更可用時 HttpPost`Edit`方法呼叫。 然後您可以建立使用原始值，也就是呼叫學生實體`Attach`方法的原始版本，在實體的實體的值更新為新的值，然後呼叫`SaveChanges`。
 
 ### <a name="test-the-edit-page"></a>測試 編輯頁面
 

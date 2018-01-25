@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 60301e1e3eb96f51e86ef9f8be61f5fd8a4c009c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6fc356d8ecc1b699269286f244000b493e48a2c5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core HTTP.sys web 伺服器實作
 
@@ -140,7 +140,7 @@ HTTP.sys 會使用[HTTP 伺服器 API UrlPrefix 字串格式](https://msdn.micro
 
 ## <a name="preregister-url-prefixes-and-configure-ssl"></a>__'Asverify'__ URL 前置詞及設定 SSL
 
-IIS 和 HTTP.sys 依賴接聽要求的基礎 Http.Sys 核心模式驅動程式，並執行初始處理。 在 IIS 中，管理 UI 可讓您很輕鬆地設定所有項目。 不過，您需要自行設定 Http.Sys。 內建的工具，也就是執行*netsh.exe*。 
+IIS 和 HTTP.sys 依賴接聽要求的基礎 Http.Sys 核心模式驅動程式，並執行初始處理。 在 IIS 中，管理 UI 可讓您很輕鬆地設定所有項目。 不過，您需要自行設定 Http.Sys。 這樣的內建工具的*netsh.exe*。 
 
 與*netsh.exe*就可以保留 URL 首碼，並指派 SSL 憑證。 此工具需要系統管理權限。
 

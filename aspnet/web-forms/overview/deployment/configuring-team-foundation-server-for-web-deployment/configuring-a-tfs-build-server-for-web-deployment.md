@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 505cca303b5569b2f676adab767d742cb5cd21a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de31a9dffb95b863a4ec38b74fd2c6e03f287a7f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>設定用於 Web 部署的 TFS 組建伺服器
 ====================
@@ -58,13 +58,13 @@ ms.lasthandoff: 11/10/2017
 - 建立*組建控制器*和一或多個*組建代理程式*。 每個組建控制器會管理一組組建代理程式。 當您的組建排入佇列時，組建控制器的組建將工作指派給可用的組建代理程式。 在 TFS 中的每一個 team 專案集合對應至單一的組建控制器。
 - 設定您的組建輸出，將置放資料夾。 這是網路共用。 任何組建輸出，例如 web 部署套件，會傳送到卸除資料夾。
 
-[管理 Team Foundation Build](https://msdn.microsoft.com/en-us/library/ms252495.aspx) MSDN 上的章節包含您需要才能執行這些工作的所有資源：
+[管理 Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx) MSDN 上的章節包含您需要才能執行這些工作的所有資源：
 
-- Team Foundation Build 的概念性概觀，包括組建服務、 組建控制器和組建代理程式，請參閱[了解 Team Foundation 建置系統](https://msdn.microsoft.com/en-us/library/dd793166.aspx)。
-- 如需安裝及設定組建服務的詳細資訊，請參閱[設定組建電腦](https://msdn.microsoft.com/en-us/library/ms181712.aspx)。
-- 如需建立組建控制器的資訊，請參閱[建立和使用組建的控制器工作](https://msdn.microsoft.com/en-us/library/ee330987.aspx)。
-- 如需建立組建代理程式的資訊，請參閱[建立和使用組建代理程式工作](https://msdn.microsoft.com/en-us/library/bb399135.aspx)。
-- 如需建立及設定置放資料夾的資訊，請參閱[設定置放資料夾](https://msdn.microsoft.com/en-us/library/bb778394.aspx)。
+- Team Foundation Build 的概念性概觀，包括組建服務、 組建控制器和組建代理程式，請參閱[了解 Team Foundation 建置系統](https://msdn.microsoft.com/library/dd793166.aspx)。
+- 如需安裝及設定組建服務的詳細資訊，請參閱[設定組建電腦](https://msdn.microsoft.com/library/ms181712.aspx)。
+- 如需建立組建控制器的資訊，請參閱[建立和使用組建的控制器工作](https://msdn.microsoft.com/library/ee330987.aspx)。
+- 如需建立組建代理程式的資訊，請參閱[建立和使用組建代理程式工作](https://msdn.microsoft.com/library/bb399135.aspx)。
+- 如需建立及設定置放資料夾的資訊，請參閱[設定置放資料夾](https://msdn.microsoft.com/library/bb778394.aspx)。
 
 ## <a name="install-required-products-and-components"></a>安裝必要的產品和元件
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>進一步閱讀
 
-一般工作與 Team Build 的詳細指引，請參閱[管理 Team Foundation Build](https://msdn.microsoft.com/en-us/library/ms252495.aspx)。
+一般工作與 Team Build 的詳細指引，請參閱[管理 Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](adding-content-to-source-control.md)

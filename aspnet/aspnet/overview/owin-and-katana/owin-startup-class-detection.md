@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-startup-class-detection
 msc.type: authoredcontent
-ms.openlocfilehash: a6ac34307b7558ad13684448f339ca74ade9e997
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 618f8fa23630dcf9821a54415766dc015694e535
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="owin-startup-class-detection"></a>OWIN 啟動類別偵測
 ====================
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample8.cs?highlight=5,7,15-28,31-34)]
   
- `app.Use` Lambda 運算式用來註冊指定的中介軟體元件至 OWIN 管線。 在此情況下我們正在設定的連入要求的連入要求回應之前的記錄。 `next`參數是委派 ( [Func](https://msdn.microsoft.com/en-us/library/bb534960(v=vs.100).aspx) &lt; [工作](https://msdn.microsoft.com/en-us/library/dd321424(v=vs.100).aspx) &gt; ) 管線中的下一個元件。 `app.Run` Lambda 運算式內送要求管線連結，並提供回應機制。
+ `app.Use` Lambda 運算式用來註冊指定的中介軟體元件至 OWIN 管線。 在此情況下我們正在設定的連入要求的連入要求回應之前的記錄。 `next`參數是委派 ( [Func](https://msdn.microsoft.com/library/bb534960(v=vs.100).aspx) &lt; [工作](https://msdn.microsoft.com/library/dd321424(v=vs.100).aspx) &gt; ) 管線中的下一個元件。 `app.Run` Lambda 運算式內送要求管線連結，並提供回應機制。
      > [!NOTE]
      > 上述程式碼我們已標記為註解`OwinStartup`屬性和我們依賴執行名為類別的慣例`Startup`。-按***F5***執行應用程式。 點擊 重新整理數次。  
   

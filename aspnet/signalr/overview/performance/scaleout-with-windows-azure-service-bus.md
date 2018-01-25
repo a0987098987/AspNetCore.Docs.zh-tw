@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 857fc8baa61549e2fabbb8da012b1fa23950237d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7cb68d578fee8d6ee036f8fb096ba45e0c8ef3d6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Azure 服務匯流排與 SignalR 範圍外
 ====================
@@ -32,13 +32,13 @@ ms.lasthandoff: 11/10/2017
 - [Windows Azure SDK](https://go.microsoft.com/fwlink/?linkid=254364&amp;clcid=0x409)。
 - Visual Studio 2012 或 2013年。
 
-服務匯流排後擋板也是與相容[Service Bus for Windows Server](https://msdn.microsoft.com/en-us/library/windowsazure/dn282144.aspx)，1.1 版。 不過，不相容 1.0 版的 Service Bus for Windows Server。
+服務匯流排後擋板也是與相容[Service Bus for Windows Server](https://msdn.microsoft.com/library/windowsazure/dn282144.aspx)，1.1 版。 不過，不相容 1.0 版的 Service Bus for Windows Server。
 
 ## <a name="pricing"></a>Pricing
 
 服務匯流排後擋板用來傳送訊息的主題。 最新定價的資訊，請參閱[Service Bus](https://azure.microsoft.com/pricing/details/service-bus/)。 在撰寫本文時，您可以傳送每個月 1000000 訊息小於 $ 1。 後擋板傳送 SignalR 中樞方法的每次叫用的服務匯流排訊息。 也有某些控制項的訊息連線、 中斷連接、 聯結或讓群組和其他等等。 大多數的應用程式中大部分的訊息流量將中樞方法叫用。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 我們可以詳細的教學課程之前，以下是您將執行的快速概觀。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](scaleout-with-windows-azure-service-bus/samples/sample1.cs)]
 
-此程式碼使用的預設值，來設定後擋板[TopicCount](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx)和[MaxQueueLength](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的資訊，請參閱[SignalR 效能： 向外延展度量](signalr-performance.md#scaleout_metrics)。
+此程式碼使用的預設值，來設定後擋板[TopicCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.servicebusscaleoutconfiguration.topiccount(v=vs.118).aspx)和[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的資訊，請參閱[SignalR 效能： 向外延展度量](signalr-performance.md#scaleout_metrics)。
 
 每個應用程式，挑選不同值的"YourAppName"。 請勿在多個應用程式使用相同的值。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 556b90f5e29f30756a4bd3b16be9608011558c4d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad578d5d5fb1ef0ac63d3cbde3f307535ea3d98c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-data-access-layer-vb"></a>建立資料存取層 (VB)
 ====================
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 若要傳回強型別物件，開發人員可以建立自己的自訂商務物件或使用型別資料集。 類別，其屬性通常會反映基礎資料庫資料表的商務物件的資料行表示為開發人員所實作的商務物件。 型別資料集是由基礎資料庫結構描述和其成員的強型別根據此結構描述上的 Visual Studio 為您產生的類別。 輸入資料集本身包含的擴充 ADO.NET 資料集、 DataTable 和 DataRow 類別的類別。 除了強型別 Datatable，具類型資料集現在也包含 TableAdapters，也就是具有填入資料集的 Datatable 和傳播回資料庫中的 Datatable 修改方法的類別。
 
 > [!NOTE]
-> 如需有關使用型別資料集與自訂商務物件的優缺點的詳細資訊，請參閱[設計的資料層元件和傳遞資料透過層](https://msdn.microsoft.com/en-us/library/ms978496.aspx)。
+> 如需有關使用型別資料集與自訂商務物件的優缺點的詳細資訊，請參閱[設計的資料層元件和傳遞資料透過層](https://msdn.microsoft.com/library/ms978496.aspx)。
 
 
 這些教學課程架構，我們會使用強型別資料集。 圖 3 說明使用具類型資料集的應用程式的不同層之間的工作流程。
@@ -293,7 +293,7 @@ Beverages.aspx.vb
 **圖 21**： 每個插入、 更新和刪除要求傳送至立即資料庫 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-vb/_static/image57.png))
 
 
-其他模式，它會參照為批次更新模式，是更新整個資料集、 資料表或其中一個方法呼叫中的資料行集合。 此模式與開發人員刪除、 插入、 修改 DataTable 中的資料行以及然後將這些資料行或資料表傳遞轉換成更新的方法。 然後此方法列舉傳入資料行，判斷是否已被修改、 加入，或刪除這些 (透過 DataRow [RowState 屬性](https://msdn.microsoft.com/en-us/library/system.data.datarow.rowstate.aspx)值)，並會發出適當的資料庫要求的每一筆記錄。
+其他模式，它會參照為批次更新模式，是更新整個資料集、 資料表或其中一個方法呼叫中的資料行集合。 此模式與開發人員刪除、 插入、 修改 DataTable 中的資料行以及然後將這些資料行或資料表傳遞轉換成更新的方法。 然後此方法列舉傳入資料行，判斷是否已被修改、 加入，或刪除這些 (透過 DataRow [RowState 屬性](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx)值)，並會發出適當的資料庫要求的每一筆記錄。
 
 
 [![與資料庫同步的所有變更時叫用 Update 方法](creating-a-data-access-layer-vb/_static/image59.png)](creating-a-data-access-layer-vb/_static/image58.png)
@@ -339,7 +339,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 **圖 25**： 建立方法以加入新的資料列至`Products`資料表 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-vb/_static/image69.png))
 
 
-在下一個畫面`InsertCommand`的`CommandText`隨即出現。 藉由新增擴充此查詢`SELECT SCOPE_IDENTITY()`在查詢的結束時，它會傳回插入的最後一個識別值`IDENTITY`相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/en-us/library/ms190315.aspx)如需有關`SCOPE_IDENTITY()`以及為什麼您可能想要[使用範圍\_@ 替代 IDENTITY()@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx)。)請確定您結束`INSERT`以分號分隔的陳述式，然後再加入`SELECT`陳述式。
+在下一個畫面`InsertCommand`的`CommandText`隨即出現。 藉由新增擴充此查詢`SELECT SCOPE_IDENTITY()`在查詢的結束時，它會傳回插入的最後一個識別值`IDENTITY`相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/library/ms190315.aspx)如需有關`SCOPE_IDENTITY()`以及為什麼您可能想要[使用範圍\_@ 替代 IDENTITY()@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx)。)請確定您結束`INSERT`以分號分隔的陳述式，然後再加入`SELECT`陳述式。
 
 
 [![加強查詢傳回 scope_identity （） 值](creating-a-data-access-layer-vb/_static/image71.png)](creating-a-data-access-layer-vb/_static/image70.png)
@@ -520,18 +520,18 @@ SuppliersAndProducts.aspx.vb
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [建置 DAL，使用強型別 Tableadapter 和 VS 2005 和 ASP.NET 2.0 中的 Datatable](https://weblogs.asp.net/scottgu/435498)
-- [設計資料層元件和傳遞的資料層](https://msdn.microsoft.com/en-us/library/ms978496.aspx)
+- [設計資料層元件和傳遞的資料層](https://msdn.microsoft.com/library/ms978496.aspx)
 - [建置 Visual Studio 2005 DataSet 設計工具與資料存取層](http://www.theserverside.net/articles/showarticle.tss?id=DataSetDesigner)
 - [加密組態資訊，在 ASP.NET 2.0 應用程式](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)
-- [TableAdapter 概觀](https://msdn.microsoft.com/en-us/library/bz9tthwx.aspx)
-- [使用具類型資料集](https://msdn.microsoft.com/en-us/library/esbykkzb.aspx)
+- [TableAdapter 概觀](https://msdn.microsoft.com/library/bz9tthwx.aspx)
+- [使用具類型資料集](https://msdn.microsoft.com/library/esbykkzb.aspx)
 - [使用 Visual Studio 2005 和 ASP.NET 2.0 中的強型別資料存取](http://aspnet.4guysfromrolla.com/articles/020806-1.aspx)
 - [如何擴充 TableAdapter 方法](https://blogs.msdn.com/vbteam/archive/2005/05/04/ExtendingTableAdapters.aspx)
 - [從預存程序擷取純量的資料](http://aspnet.4guysfromrolla.com/articles/062905-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
 
-- [ASP.NET 應用程式中的資料存取層級](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
+- [ASP.NET 應用程式中的資料存取層](../../../videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications.md)
 - [如何以手動方式將資料集繫結到資料格](../../../videos/data-access/adonet-data-services/how-to-manually-bind-a-dataset-to-a-datagrid.md)
 - [如何從 ASP 應用程式與資料集和篩選的工作](../../../videos/data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application.md)
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e6ee3f9c055a15b13c27f94675006b9a7e804f1b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 118233338112a71216b909b1dabed2333bfa235e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>實作 ASP.NET MVC 5 應用程式 (11 12 個) 的 Entity Framework 6 的繼承
 ====================
@@ -43,13 +43,13 @@ ms.lasthandoff: 11/10/2017
 
 有幾種的方式可能會表示此繼承結構，在資料庫中。 您可能會有`Person`包含學生和講師單一資料表中的相關資訊的資料表。 某些資料行可以只對講師套用 (`HireDate`)，有些則只能學生 (`EnrollmentDate`)，有一些兩個 (`LastName`， `FirstName`)。 一般而言，您就必須*鑑別子*指出哪種類型的每個資料列的資料行代表。 例如，鑑別子資料行可能會有 「 講師 」 講師和 「 學生 」 學生版。
 
-![資料表每個 hierarchy_example](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+![Table-per-hierarchy_example](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
 這種模式的單一資料庫資料表產生實體繼承結構會呼叫*資料表每個階層*(TPH) 繼承。
 
 替代方法是讓資料庫起來更繼承結構。 例如，您無法在只有名稱欄位`Person`資料表，並有個別`Instructor`和`Student`日期欄位的資料表。
 
-![資料表每個 type_inheritance](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+![Table-per-type_inheritance](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
 此模式的資料庫資料表的每個實體類別就稱為*資料表每個型別*(TPT) 繼承。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 
 TPC 和 TPH 繼承模式通常傳遞更佳的效能比 TPT 繼承的模式，Entity Framework 中因為 TPT 模式可能會導致複雜聯結的查詢。
 
-本教學課程會示範如何實作 TPH 繼承。 TPH 已在 Entity Framework 中，預設繼承的模式，所以您只需要建立`Person`類別中，變更`Instructor`和`Student`類別衍生自`Person`，將新的類別加入`DbContext`，並建立移轉。 (如需如何實作其他的繼承模式的詳細資訊，請參閱[對應每個類型的資料表 (TPT) 繼承](https://msdn.microsoft.com/en-us/data/jj591617#2.5)和[對應資料表每個具象類別 (TPC) 繼承](https://msdn.microsoft.com/en-us/data/jj591617#2.6)MSDN 中Entity Framework 文件。）
+本教學課程會示範如何實作 TPH 繼承。 TPH 已在 Entity Framework 中，預設繼承的模式，所以您只需要建立`Person`類別中，變更`Instructor`和`Student`類別衍生自`Person`，將新的類別加入`DbContext`，並建立移轉。 (如需如何實作其他的繼承模式的詳細資訊，請參閱[對應每個類型的資料表 (TPT) 繼承](https://msdn.microsoft.com/data/jj591617#2.5)和[對應資料表每個具象類別 (TPC) 繼承](https://msdn.microsoft.com/data/jj591617#2.6)MSDN 中Entity Framework 文件。）
 
 ## <a name="create-the-person-class"></a>建立個人類別
 
@@ -159,7 +159,7 @@ TPC 和 TPH 繼承模式通常傳遞更佳的效能比 TPT 繼承的模式，Ent
 
 ## <a name="summary"></a>總結
 
-您已實作的每個階層的資料表繼承`Person`， `Student`，和`Instructor`類別。 如需有關這個主題以及其他的繼承結構的詳細資訊，請參閱[TPT 繼承模式](https://msdn.microsoft.com/en-us/data/jj618293)和[TPH 繼承模式](https://msdn.microsoft.com/en-us/data/jj618292)MSDN 上。 在下一個教學課程中，您會看到如何處理各種不同的相對較進階的 Entity Framework 案例。
+您已實作的每個階層的資料表繼承`Person`， `Student`，和`Instructor`類別。 如需有關這個主題以及其他的繼承結構的詳細資訊，請參閱[TPT 繼承模式](https://msdn.microsoft.com/data/jj618293)和[TPH 繼承模式](https://msdn.microsoft.com/data/jj618292)MSDN 上。 在下一個教學課程中，您會看到如何處理各種不同的相對較進階的 Entity Framework 案例。
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

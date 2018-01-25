@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 5054f932d05fb612a6e18a81274719d7e249b77b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4de0b52e0b4ae7ce00e7b07bce2decfc5068964a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>建立真實世界雲端應用程式與 Azure
 ====================
@@ -103,7 +103,7 @@ ms.lasthandoff: 11/10/2017
     - 啟用高可用性，並透過鬆散結合的 web 和背景工作層提升可調適性。
     - 示範： 修正它應用程式中的 Azure 儲存體佇列。
 - [多個雲端應用程式模式和指引](more-patterns-and-guidance.md)。
-- [附錄︰ 修正它範例應用程式](the-fix-it-sample-application.md)
+- [附錄︰修正範例應用程式](the-fix-it-sample-application.md)
 
     - 已知問題
     - 最佳作法
@@ -155,7 +155,7 @@ ms.lasthandoff: 11/10/2017
 
 這會自動發生。 您只需要是建立網站和部署應用程式，使用 Windows PowerShell、 Visual Studio 中或在 Azure 管理入口網站。
 
-如需快速且輕鬆逐步教學課程示範如何在 Visual Studio 中建立 web 應用程式，並將它部署至 Azure 網站，請參閱[開始使用 Azure 和 ASP.NET](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/)。
+如需快速且輕鬆逐步教學課程示範如何在 Visual Studio 中建立 web 應用程式，並將它部署至 Azure 網站，請參閱[開始使用 Azure 和 ASP.NET](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)。
 
 <a id="summary"></a>
 ## <a name="summary"></a>總結
@@ -168,13 +168,13 @@ ms.lasthandoff: 11/10/2017
 
 文件集：
 
-- [Web 應用程式在 Azure App Service 中的](https://azure.microsoft.com/en-us/services/app-service/web/)。 如需 Web 應用程式的 Azure 文件入口網站頁面。
-- [Web 應用程式、 雲端服務和 Vm： 使用時機？](https://azure.microsoft.com/en-us/documentation/articles/choose-web-site-cloud-service-vm/) 如本章所示的 WAWS-DEV.JSON 只是三種方式，您可以在 Azure 中執行 web 應用程式。 本文說明的三種方式之間的差異，並提供有關如何選擇哪一種最適合您案例的指引。 Web Sites 中，例如雲端服務是 Azure PaaS 功能。 Vm 是 IaaS 功能。 如需 PaaS 和 IaaS 的說明，請參閱[資料選項](data-storage-options.md#paasiaas)章節。
+- [Web 應用程式在 Azure App Service 中的](https://azure.microsoft.com/services/app-service/web/)。 如需 Web 應用程式的 Azure 文件入口網站頁面。
+- [Web 應用程式、 雲端服務和 Vm： 使用時機？](https://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/) 如本章所示的 WAWS-DEV.JSON 只是三種方式，您可以在 Azure 中執行 web 應用程式。 本文說明的三種方式之間的差異，並提供有關如何選擇哪一種最適合您案例的指引。 Web Sites 中，例如雲端服務是 Azure PaaS 功能。 Vm 是 IaaS 功能。 如需 PaaS 和 IaaS 的說明，請參閱[資料選項](data-storage-options.md#paasiaas)章節。
 
 影片：
 
-- [Scott Guthrie 開始步驟 0-什麼是 Azure 雲端作業系統？](https://azure.microsoft.com/en-us/documentation/videos/what-is-the-cloud-os-scottgu/)
-- [Web Sites 架構-與 Stefan Schackow](https://azure.microsoft.com/en-us/documentation/videos/why-azure-web-sites-plus-architecture/)。
+- [Scott Guthrie 開始步驟 0-什麼是 Azure 雲端作業系統？](https://azure.microsoft.com/documentation/videos/what-is-the-cloud-os-scottgu/)
+- [Web Sites 架構-與 Stefan Schackow](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/)。
 - [Azure Web Sites 內部項目與 Nir Mashkowski](https://channel9.msdn.com/Shows/Web+Camps+TV/Windows-Azure-Web-Sites-Internals-with-Nir-Mashkowski)。
 
 >[!div class="step-by-step"]

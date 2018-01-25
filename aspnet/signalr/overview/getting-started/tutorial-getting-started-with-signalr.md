@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 3bec32b9b21325cde461541d7a313f401a0cfce7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8be851f5a2b1cca39f5f8f284ff1c002c486d7e8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-getting-started-with-signalr-2"></a>教學課程： 開始使用 SignalR 2
 ====================
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 此教學課程介紹 SignalR 開發，以顯示如何建立簡單的瀏覽器為基礎的交談應用程式。 您會加入空的 ASP.NET web 應用程式中的 SignalR 程式庫、 建立中樞類別將訊息傳送至用戶端，並建立 HTML 網頁，可讓使用者傳送及接收交談的訊息。 示範如何在 MVC 5 中建立交談應用程式使用 MVC 檢視的類似教學課程，請參閱[SignalR 2 和 MVC 5 入門](tutorial-getting-started-with-signalr-and-mvc.md)。
 
@@ -82,7 +82,7 @@ SignalR 簡化建立即時應用程式的程序。 它包含 ASP.NET server 程�
 - [設定專案](#setup)
 - [執行範例](#run)
 - [檢查程式碼](#code)
-- [接下來的步驟](#next)
+- [後續步驟](#next)
 
 <a id="setup"></a>
 
@@ -92,7 +92,7 @@ SignalR 簡化建立即時應用程式的程序。 它包含 ASP.NET server 程�
 
 必要條件：
 
-- Visual Studio 2013。 如果您沒有 Visual Studio，請參閱[ASP.NET 下載](https://www.asp.net/downloads)取得免費 Visual Studio 2013 Express 開發的工具。
+- Visual Studio 2013. 如果您沒有 Visual Studio，請參閱[ASP.NET 下載](https://www.asp.net/downloads)取得免費 Visual Studio 2013 Express 開發的工具。
 
 下列步驟使用 Visual Studio 2013 建立的 ASP.NET 空 Web 應用程式，並新增 SignalR library:
 
@@ -207,7 +207,7 @@ HTML 網頁中的程式碼範例示範如何使用 SignalR jQuery 程式庫與 S
 
 您已學習 SignalR 是建置即時 web 應用程式的架構。 您也學到幾個 SignalR 開發工作： 如何將 ASP.NET 應用程式中的 SignalR、 如何建立中樞類別，以及如何傳送和接收來自中樞的訊息。
 
-如需如何部署範例 SignalR 應用程式至 Azure 的逐步解說，請參閱[與 Azure App Service 中的 Web 應用程式的使用 SignalR](../deployment/using-signalr-with-azure-web-sites.md)。 如需如何部署 Visual Studio web 專案至 Windows Azure 網站的詳細資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/)。
+如需如何部署範例 SignalR 應用程式至 Azure 的逐步解說，請參閱[與 Azure App Service 中的 Web 應用程式的使用 SignalR](../deployment/using-signalr-with-azure-web-sites.md)。 如需如何部署 Visual Studio web 專案至 Windows Azure 網站的詳細資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)。
 
 深入了解更多進階的 SignalR 發展概念，請造訪下列網站 SignalR 原始碼和資源：
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/cross-site-scripting
-ms.openlocfilehash: af73a86aa6bcde084ecbe1a3fb5711c7da55871c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3aaab9d4fecd3f0d0da6a0df4d83bee090b329ea
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="preventing-cross-site-scripting"></a>防止跨網站指令碼
 
@@ -141,11 +141,11 @@ ms.lasthandoff: 01/19/2018
    ```
 
 >[!WARNING]
-> 請勿串連在 JavaScript 中建立 DOM 項目，不受信任的輸入。 您應該使用`createElement()`適當例如指派屬性值和`node.TextContent=`，或使用`element.SetAttribute()` / `element[attribute]=`否則 exception-declaration DOM 式 XSS。
+> 不要串連在 JavaScript 中建立 DOM 項目，不受信任的輸入。 您應該使用`createElement()`適當例如指派屬性值和`node.TextContent=`，或使用`element.SetAttribute()` / `element[attribute]=`否則 exception-declaration DOM 式 XSS。
 
 ## <a name="accessing-encoders-in-code"></a>存取程式碼中的編碼器
 
-HTML、 JavaScript 和 URL 編碼器可以使用您的程式碼有兩種，您可以將它們透過插入[相依性插入](../fundamentals/dependency-injection.md#fundamentals-dependency-injection)或者您可以使用中所包含的預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，然後在套用至字元範圍的任何處理為安全不會生效-預設編碼器使用最安全的編碼規則可能。
+HTML、 JavaScript 和 URL 編碼器可以使用您的程式碼有兩種，您可以將它們透過插入[相依性插入](../fundamentals/dependency-injection.md#fundamentals-dependency-injection)或者您可以使用中所包含的預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，則要套用的任何字元視為為安全的範圍不會生效-預設編碼器使用最安全的編碼規則可能。
 
 若要使用的可設定的編碼器，透過 DI 您建構函式應該採用*HtmlEncoder*， *JavaScriptEncoder*和*UrlEncoder*適當的參數。 例如，
 
@@ -228,4 +228,4 @@ services.AddSingleton<HtmlEncoder>(
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>做為 XSS 防護技巧的驗證
 
-驗證是相當有用的工具，在限制 XSS 攻擊。 例如，包含只有字元 0-9 的簡單數值字串不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能。 MarkDown 和其他的文字格式將豐富的輸入更安全的選項。 您永遠不應該依賴單獨的驗證。 不受信任的輸入，輸出前先編碼，無論何種驗證您已經執行。
+驗證是相當有用的工具，在限制 XSS 攻擊。 例如，包含只有字元 0-9 的簡單數值字串就不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能。 MarkDown 和其他的文字格式將豐富的輸入更安全的選項。 您永遠不應該依賴單獨的驗證。 不受信任的輸入，輸出前先編碼，無論何種驗證您已經執行。

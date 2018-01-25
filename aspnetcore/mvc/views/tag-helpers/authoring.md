@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/authoring
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9aaf40377e07e53fd0b7ebb177bcbb2df52b7553
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a1f1b2c2e60a1337c15f019185c764d0a9ada1b5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="author-tag-helpers-in-aspnet-core-a-walkthrough-with-samples"></a>在 ASP.NET Core，範例與逐步解說中的作者標記協助程式
 
@@ -164,7 +164,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 3.  執行應用程式。 您可以使用您最愛的瀏覽器檢查來源，並確認標記。
 
-    `[HtmlTargetElement]`上述的屬性只能為目標的 HTML 標記，提供的 「 粗體 」 的屬性名稱。 `<bold>`標記協助程式 」 所未修改項目。
+    `[HtmlTargetElement]`上述的屬性只能為目標的 HTML 標記，提供的 「 粗體 」 的屬性名稱。 `<bold>`項目未標記協助程式 」 所修改。
 
 4. 標記為註解`[HtmlTargetElement]`屬性行，它會預設為目標`<bold>`標記，也就是表單的 HTML 標記`<bold>`。 請記住，預設命名慣例將符合類別名稱**粗體**至 TagHelper`<bold>`標記。
 
@@ -208,13 +208,13 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [HtmlTargetElement("WebsiteInformation")]
     ```
     
-    較低的 kebab case 標籤`<website-information />`也不會相符。 如果您想使用`[HtmlTargetElement]`屬性，您會使用 kebab 案例，如下所示：
+    較低的 kebab case 標籤`<website-information />`不相符。 如果您想使用`[HtmlTargetElement]`屬性，您會使用 kebab 案例，如下所示：
     
     ```csharp
     [HtmlTargetElement("Website-Information")]
     ```
     
-    * 不能自我結尾的項目有內容。 此範例中，Razor 標記將會使用自我結尾標記，但標記協助程式會建立[區段](http://www.w3.org/TR/html5/sections.html#the-section-element)項目 (不是自我結尾，而且您要撰寫內部內容`section`項目)。 因此，您需要設定`TagMode`至`StartTagAndEndTag`來寫入輸出。 或者，您可以註解線條設定`TagMode`和寫入結尾標記的標記。 （稍後在本教學課程會提供範例標記）。
+    * 不能自我結尾的項目有內容。 此範例中，Razor 標記將會使用自我結尾標記，但標記協助程式會建立[> 一節](http://www.w3.org/TR/html5/sections.html#the-section-element)項目 (這不是自我結尾，而且您要撰寫內部內容`section`項目)。 因此，您需要設定`TagMode`至`StartTagAndEndTag`來寫入輸出。 或者，您可以註解線條設定`TagMode`和寫入結尾標記的標記。 （稍後在本教學課程會提供範例標記）。
     
     * `$` （貨幣符號） 下面這一行會使用[以內插值取代字串](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings):
     
@@ -321,7 +321,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     >
     >上述程式碼會檢查已修改的內容，如果有，從輸出緩衝區取得內容。
 
-6.  執行應用程式，並確認兩個連結在如預期般運作。 雖然可能會顯示為我們自動連結器標記協助程式即會正確且完整，它有微妙的問題。 如果 WWW 標記協助程式會先執行，將無法正確 www 連結。 更新程式碼加入`Order`控制標記以執行順序的多載。 `Order`屬性會決定相對於其他標記協助程式，以相同的項目為目標的執行順序。 預設順序值為 0，且執行個體具有較低值會優先執行。
+6.  執行應用程式，並確認兩個連結在如預期般運作。 雖然可能會顯示為我們自動連結器標記協助程式即會正確且完整，它有微妙的問題。 如果 WWW 標記協助程式會先執行，www 連結不是正確的。 更新程式碼加入`Order`控制標記以執行順序的多載。 `Order`屬性會決定相對於其他標記協助程式，以相同的項目為目標的執行順序。 預設順序值為 0，且執行個體具有較低值會優先執行。
 
     [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8&range=8-15)]
     
@@ -333,8 +333,8 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 -  結果`GetChildContentAsync`可以附加至`output.Content`。
 -  您可以檢查的結果`GetChildContentAsync`與`GetContent`。
--  如果您修改`output.Content`，不會執行或轉譯，除非您呼叫 TagHelper 主體`GetChildContentAsync`如我們自動連結器範例所示：
+-  如果您修改`output.Content`，TagHelper 主體不會執行，或者除非您呼叫呈現`GetChildContentAsync`如我們自動連結器範例所示：
 
 [!code-csharp[Main](../../views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10&range=8-21)]
 
--  多個呼叫`GetChildContentAsync`會傳回相同的值，而不會重新執行`TagHelper`主體，除非您參數中傳遞 false 表示不使用快取的結果。
+-  多個呼叫`GetChildContentAsync`傳回相同的值並不會重新執行`TagHelper`主體，除非您不想使用快取的結果，表示 false 參數中傳遞。

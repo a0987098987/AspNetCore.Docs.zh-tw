@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
 msc.type: authoredcontent
-ms.openlocfilehash: afac083c96c1396ad60275fcb55a0ec9c4c0bd44
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: be1000f0cbc2f509f5014789c2bc47ce2b12fb2f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-a-specific-build"></a>部署特定的組建
 ====================
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/en-us/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/en-us/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/en-us/library/ms181722.aspx)。
+如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/library/ms181722.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](creating-a-build-definition-that-supports-deployment.md)

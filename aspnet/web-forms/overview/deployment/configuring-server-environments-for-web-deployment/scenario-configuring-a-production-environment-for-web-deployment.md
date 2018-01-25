@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: d5574ee353ff41205e9029e4aa5d139a5aa0e959
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cdd13f96ddf08ff86b01ef9de17ea82cf038ab28
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>案例： 設定用於 Web 部署的實際執行環境
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 - 對應用程式會部署較不頻繁地比測試或預備環境部署。
 
 > [!NOTE]
-> 擴充資料庫部署到多部伺服器已超出本教學課程的範圍。 如需有關此區域的詳細資訊，請參閱[SQL Server 線上叢書 》](https://technet.microsoft.com/en-us/library/ms130214.aspx)。
+> 擴充資料庫部署到多部伺服器已超出本教學課程的範圍。 如需有關此區域的詳細資訊，請參閱[SQL Server 線上叢書 》](https://technet.microsoft.com/library/ms130214.aspx)。
 
 
 例如，在我們[教學課程案例](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)，Team Build server 包含讓使用者建立連絡人管理員解決方案，並將它部署到預備環境中單一步驟的組建定義。 當應用程式隨時可供部署至生產環境，因為安全性需求和網路基礎結構中，所加諸的條件約束的實際執行環境的系統管理員必須手動複製到實際執行 web 伺服器上的 web 套件並匯入它透過網際網路資訊服務 (IIS) 管理員。

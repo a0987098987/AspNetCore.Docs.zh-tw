@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/creating-a-connection-string
 msc.type: authoredcontent
-ms.openlocfilehash: 41f1f30d86406580ab9fc7278a94d9c291913f9a
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: 25d1c1c9954baaca9ef91eff3dd3c853930a5893
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>建立的連接字串和使用 SQL Server LocalDB
 ====================
@@ -36,7 +36,7 @@ SQL Server Express 不建議用於生產環境 web 應用程式。 LocalDB 特�
 
 在 Visual Studio 2017，LocalDB 被安裝預設會隨 Visual Studio。
 
-根據預設，Entity Framework 會尋找名為與物件內容類別相同的連接字串 (`MovieDBContext`這個專案)。 如需詳細資訊，請參閱[ASP.NET Web 應用程式的 SQL Server 連接字串](https://msdn.microsoft.com/en-us/library/jj653752.aspx)。
+根據預設，Entity Framework 會尋找名為與物件內容類別相同的連接字串 (`MovieDBContext`這個專案)。 如需詳細資訊，請參閱[ASP.NET Web 應用程式的 SQL Server 連接字串](https://msdn.microsoft.com/library/jj653752.aspx)。
 
 開啟應用程式根目錄*Web.config*檔案如下所示。 (不*Web.config*檔案*檢視*資料夾。)
 
@@ -56,11 +56,11 @@ SQL Server Express 不建議用於生產環境 web 應用程式。 LocalDB 特�
 
 兩個連接字串都很相似。 第一個連接字串名為`DefaultConnection`並用它來控制可以存取應用程式的成員資格資料庫。 已新增的連接字串會指定名為 LocalDB 資料庫*Movie.mdf*位於*應用程式\_資料*資料夾。 我們將不會使用成員資格資料庫，在本教學課程，如需成員資格、 驗證和安全性詳細資訊，請參閱我教學課程[驗證與 SQL 資料庫中建立 ASP.NET MVC 應用程式並部署至 Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。
 
-連接字串的名稱必須符合的名稱[DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.103).aspx)類別。
+連接字串的名稱必須符合的名稱[DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)類別。
 
 [!code-csharp[Main](creating-a-connection-string/samples/sample3.cs?highlight=15)]
 
-您不需要新增`MovieDBContext`連接字串。 如果您未指定連接字串，Entity Framework 的完整限定名稱的使用者目錄中會建立 LocalDB 資料庫[DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.103).aspx)類別 (在此情況下`MvcMovie.Models.MovieDBContext`)。 您可以為資料庫命名任何想要的話，因為它具有*。MDF*後置詞。 例如，我們無法為資料庫命名*MyFilms.mdf*。
+您不需要新增`MovieDBContext`連接字串。 如果您未指定連接字串，Entity Framework 的完整限定名稱的使用者目錄中會建立 LocalDB 資料庫[DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)類別 (在此情況下`MvcMovie.Models.MovieDBContext`)。 您可以為資料庫命名任何想要的話，因為它具有*。MDF*後置詞。 例如，我們無法為資料庫命名*MyFilms.mdf*。
 
 接下來，您將建置新`MoviesController`類別可用來顯示電影，並允許使用者建立新的電影清單。
 

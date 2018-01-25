@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 62be7c9636fb74c40bec812e9ac76b360995da50
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cea805c86f0764c7443ccc5c9f89248860a6a842
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="performing-a-what-if-deployment"></a>執行"What If"部署
 ====================
@@ -52,7 +52,7 @@ Web Deploy 包含可讓您執行 「 假設 」 的部署中的功能 （或試�
 當您滿意您 「 如果 」 部署的結果時，您可以移除**– whatif**旗標，以執行實際的部署。
 
 > [!NOTE]
-> 如需有關 MSDeploy.exe 命令列選項的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx)。
+> 如需有關 MSDeploy.exe 命令列選項的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。
 
 
 如果您使用*。 deploy.cmd*檔案中，您可以藉由執行 「 假設 」 部署**/t**旗標 （試用模式） 旗標，而不是**/y**中的旗標 （"yes"或更新模式）您的命令。 例如，若要評估執行部署 ContactManager.Mvc.zip 封裝會發生什麼事*。 deploy.cmd*檔案中，您的命令應該會與以下相似：
@@ -68,7 +68,7 @@ Web Deploy 包含可讓您執行 「 假設 」 的部署中的功能 （或試�
 
 
 > [!NOTE]
-> 如需命令列選項的詳細資訊*。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/en-us/library/ff356104.aspx)。 如果您執行*。 deploy.cmd*檔案但未指定任何旗標，命令提示字元會顯示可用旗標的清單。
+> 如需命令列選項的詳細資訊*。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如果您執行*。 deploy.cmd*檔案但未指定任何旗標，命令提示字元會顯示可用旗標的清單。
 
 
 ## <a name="performing-a-what-if-deployment-for-databases"></a>執行"What If"部署的資料庫
@@ -142,7 +142,7 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關 Web Deploy 命令列語法的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx)。 如需命令列選項，當您使用的指引*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/en-us/library/ff356104.aspx)。 如需 VSDBCMD 命令列語法的指引，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/en-us/library/dd193283.aspx)。
+如需有關 Web Deploy 命令列語法的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。 如需命令列選項，當您使用的指引*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如需 VSDBCMD 命令列語法的指引，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)。
 
 >[!div class="step-by-step"]
 [上一頁](advanced-enterprise-web-deployment.md)

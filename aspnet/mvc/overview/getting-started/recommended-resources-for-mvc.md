@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 2aa7ded558ff52f252468ef3412c719b4596c79f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d08ee5c2bf56611caa483337af0ec1bd7cf982c0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="mvc-recommended-resources"></a>MVC 建議使用的資源
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> 本主題提供有關 ASP.NET MVC 5 的文件資源的連結。 如果您知道好的部落格文章， [stackoverflow](http://stackoverflow.com/)執行緒或任何其他連結，會很有用，傳送[我](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link)含有連結的電子郵件。 此處提供的連結會定期更新。 您可以找到舊 （但在許多情況下仍然相關） 上的 ASP.NET MVC 連結[MSDN 內容地圖](https://msdn.microsoft.com/en-us/library/gg416514(v=vs.108).aspx)。
+> 本主題提供有關 ASP.NET MVC 5 的文件資源的連結。 如果您知道好的部落格文章， [stackoverflow](http://stackoverflow.com/)執行緒或任何其他連結，會很有用，傳送[我](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link)含有連結的電子郵件。 此處提供的連結會定期更新。 您可以找到舊 （但在許多情況下仍然相關） 上的 ASP.NET MVC 連結[MSDN 內容地圖](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx)。
 > 
 > 取得您問題的解答，或尋找問題的解決方案的理想位置是在[ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx/1?MVC)或在[stackoverflow](http://stackoverflow.com/questions/tagged/mvc+asp.net-mvc)。
 <a id="gettingstarted"></a>
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 - [建立 ASP.NET MVC 5 應用程式使用 Facebook 和 Google OAuth2 登入](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [了解 ASP.NET MVC 篩選和屬性](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
 - [ASP.NET MVC 5 應用程式生命週期](lifecycle-of-an-aspnet-mvc-5-application.md)(PDF)
-- [不執行在 ASP.NET 中，以及應該改用哪個程式](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
+- [在 ASP.NET 中不該做什麼以及該做什麼](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [釋放 SocialGoal-參考 Web 的應用程式的 ASP.NET MVC 5，6 EF 程式碼第一次，AutoMapper、 Autofac、 TDD 和 DDD](https://weblogs.asp.net/shijuvarghese/archive/2014/01/24/releasing-socialgoal-reference-web-app-for-asp-net-mvc-5-ef-6-code-first-automapper-autofac-tdd-and-ddd.aspx)
 - [建立真實世界雲端應用程式與 Azure](../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction.md)
 - [詳細的 ASP.NET MVC 管線](http://www.dotnet-tricks.com/Tutorial/mvc/LYHK270114-Detailed-ASP.NET-MVC-Pipeline.html)
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="security"></a>安全性
 
 - [建立 ASP.NET MVC 5 應用程式使用 Facebook 和 Google OAuth2 登入](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
-- [不執行在 ASP.NET 中，以及應該改用哪個程式](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
+- [在 ASP.NET 中不該做什麼以及該做什麼](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [建置 （以及不需建置） 的安全 [記住我] 功能](http://www.troyhunt.com/2013/07/how-to-build-and-how-not-to-build.html)由特洛伊搜尋
 - 影片： [Web、 行動裝置版和 Lucas Adams，Stuart Kwan 雲端應用程式的新驗證模型](https://channel9.msdn.com/Events/Build/2014/2-601)
 - [視訊： 建置企業和 SaaS Web 應用程式和 Web 應用程式開發介面使用的登入 Vittorio Bertocci 由 Azure Active Directory](https://channel9.msdn.com/Events/Build/2014/3-599)
@@ -103,13 +103,13 @@ ms.lasthandoff: 11/10/2017
 - [ASP.NET MVC 中的安全性](http://www.codeproject.com/Articles/654846/Security-In-ASP-NET-MVC)
 - [保護您的 ASP.NET MVC 4 應用程式](https://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)
 - [安全性作法 Pluralsight 視訊概觀](http://www.pluralsight-training.net/microsoft/players/PSODPlayer?author=scott-allen&amp;name=mvc3-building-security&amp;mode=live&amp;clip=0&amp;course=aspdotnet-mvc3-intro)
-- [在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護](../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)
+- [ASP.NET MVC 和 ASP.NET Web Pages 中的 XSRF/CSRF 防護](../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)
 - [適用於.NET 開發人員 OWASP 前 10 個](http://www.troyhunt.com/2010/05/owasp-top-10-for-net-developers-part-1.html)
-- [MVC 4 搭配使用 OAuth 提供者](../older-versions/using-oauth-providers-with-mvc.md)
-- [Hack 校訂您 ASP.NET 應用程式](https://msdn.microsoft.com/en-us/magazine/hh580736.aspx)2011 年 12 月由 Adam Tuliper 的 MSDN Magazine 文件
-- [保護您的 ASP.NET 應用程式](https://msdn.microsoft.com/en-us/magazine/hh708755.aspx)2012 年 1 月由 Adam Tuliper 的 MSDN Magazine 文件
+- [使用 OAuth 提供者與 MVC 4](../older-versions/using-oauth-providers-with-mvc.md)
+- [Hack 校訂您 ASP.NET 應用程式](https://msdn.microsoft.com/magazine/hh580736.aspx)2011 年 12 月由 Adam Tuliper 的 MSDN Magazine 文件
+- [保護您的 ASP.NET 應用程式](https://msdn.microsoft.com/magazine/hh708755.aspx)2012 年 1 月由 Adam Tuliper 的 MSDN Magazine 文件
 - [無法開啟重新導向攻擊](../security/preventing-open-redirection-attacks.md)
-- [如何建立使用 ASP.NET MVC 內部網路網站](https://msdn.microsoft.com/en-us/library/gg703322(v=vs.98).aspx)
+- [如何建立使用 ASP.NET MVC 內部網路網站](https://msdn.microsoft.com/library/gg703322(v=vs.98).aspx)
 - [加密的查詢字串的 ASP.NET MVC 值提供者](http://www.dotnetexpertguide.com/2013/01/aspnet-mvc-value-provider-for-encrypted-query-string.html?utm_source=dlvr.it&amp;utm_medium=twitter&amp;utm_campaign=Feed:_Dotnetexpertguide)
 - [HaaHa 顯示： Microsoft ASP.NET MVC 安全性 Haack 與 Hanselman](https://channel9.msdn.com/Events/MIX/MIX10/FT05) （影片）
 - [在 ASP.NET 中的宣告感知的使用者身分識別](http://brockallen.com/2013/01/26/replacing-forms-authentication-with-wifs-session-authentication-module-sam-to-enable-claims-aware-identity/)
@@ -142,7 +142,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="data-access-in-aspnet-mvc"></a>ASP.NET MVC 中的資料存取
 
 - [Entity Framework 使用 ASP.NET MVC 使用者入門](getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-- [ASP.NET 資料存取內容對應](https://msdn.microsoft.com/en-us/library/6759sth4.aspx)
+- [ASP.NET 資料存取內容對應](https://msdn.microsoft.com/library/6759sth4.aspx)
 - [建置 ASP.NET MVC4 應用程式使用 EF 和 Web API](http://net.tutsplus.com/tutorials/building-an-asp-net-mvc4-application-with-ef-and-webapi/)
 - [DataList ASP.NET MVC 中的&amp;KnockoutJS](http://www.devcurry.com/2013/04/datalist-in-aspnet-mvc-knockoutjs.html)
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="web-forms-to-mvc"></a>Mvc web Form
 
-- [移轉至 MVC 模式使用 ASP.NET Web API 的 ASP.NET Web Form](https://msdn.microsoft.com/en-us/magazine/jj991978.aspx)
+- [移轉至 MVC 模式使用 ASP.NET Web API 的 ASP.NET Web Form](https://msdn.microsoft.com/magazine/jj991978.aspx)
 - Matthew Kane 視訊[深層整合的 MVC 和 WebForms](https://channel9.msdn.com/Events/aspConf/aspConf/Deep-Integration-of-MVC-and-WebForms)
 - [ASP.NET MVC-住在 Web Form World](http://www.eworldui.net/blog/post/2008/05/09/ASPNET-MVC-Living-in-a-Web-Forms-World.aspx)
 - [Mvc web Form](http://www.davepaquette.com/archive/2013/12/30/so-you-inherited-an-asp-net-web-forms-application.aspx)
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/10/2017
 
 - 影片：[深入探討： 改善效能，您的 ASP.NET 應用程式中](https://channel9.msdn.com/Events/Build/2014/3-605)Levi Broderick 由
 - 影片：[尋找縮放與效能的 Charles 英鎊使用雲端架構負載測試服務和 Application Insights](https://channel9.msdn.com/Events/Build/2014/3-595)
-- [ASP.NET MVC 4 中使用非同步方法](../performance/using-asynchronous-methods-in-aspnet-mvc-4.md)
+- [使用 ASP.NET MVC 4 中的非同步方法](../performance/using-asynchronous-methods-in-aspnet-mvc-4.md)
 - [統合縮製及最佳化](../performance/bundling-and-minification.md)
 - [使用 Cdn，而且已過期來改善網站效能](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx)
 - [非同步檔案上傳在 MVC 中](https://weblogs.asp.net/bryansampica/archive/2013/01/15/AsyncMVCFileUpload.aspx)
@@ -194,7 +194,7 @@ ms.lasthandoff: 11/10/2017
 
 <a id="KO"></a>
 
-## <a name="angularjs-knockout-knockoutjs"></a>AngularJS、 Knockout、 KnockoutJS
+## <a name="angularjs-knockout-knockoutjs"></a>AngularJS, Knockout, KnockoutJS
 
 - [Knockout](http://knockoutjs.com/)
 - [開始使用 ASP.NET MVC 中 KnockoutJS](http://www.dotnetcurry.com/ShowArticle.aspx?ID=933)
@@ -217,10 +217,10 @@ ms.lasthandoff: 11/10/2017
 - [使用自訂的資料儲存在 ASP.NET MVC 中的 JSON 資料屬性](http://www.binaryintellect.net/articles/8b993a74-a84a-42bd-9127-e701a03f5885.aspx)
 - MVC 4 連結仍與 MVC 5
 - [將 JSON 傳送至動作方法](http://haacked.com/archive/2010/04/15/sending-json-to-an-asp-net-mvc-action-method-argument.aspx)
-- [建置豐富使用者介面使用 jQuery](https://msdn.microsoft.com/en-us/magazine/dd722809.aspx)
+- [建置豐富使用者介面使用 jQuery](https://msdn.microsoft.com/magazine/dd722809.aspx)
 - [自動填入 DataTable 資料行至 ASP.NET MVC 中檢視](http://www.dotnetfunda.com/articles/show/2669/auto-populate-datatable-columns-to-the-views-in-aspnet-mvc)Sheo Narayan 由
 - [使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC](../older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1.md)
-- [使用 ASP.NET MVC 的 DropDownList Helper](../older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc.md)
+- [使用 DropDownList 協助程式與 ASP.NET MVC](../older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc.md)
 - [DropDownListFor 搭配 ASP.NET MVC](http://odetocode.com/blogs/scott/archive/2013/03/11/dropdownlistfor-with-asp-net-mvc.aspx)
 - [ASP.NET MVC 中的 DropDownList Helper 資料繫結](http://www.itorian.com/2013/02/dropdownlist-helper-data-binding-in-mvc.html)
 - [顯示如何使用 JavaScript 和 Ajax Pluralsight 視訊](http://www.pluralsight-training.net/microsoft/players/PSODPlayer?author=scott-allen&amp;name=mvc3-building-ajax&amp;mode=live&amp;clip=0&amp;course=aspdotnet-mvc3-intro)
@@ -237,9 +237,9 @@ ms.lasthandoff: 11/10/2017
 ## <a name="html5"></a>HTML5
 
 - [使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC](../older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1.md)
-- [設計與 HTML5 的協助工具](https://msdn.microsoft.com/en-us/magazine/jj863135.aspx)
-- [建立與 ASP.NET MVC 4 和 jQuery Mobile 的行動設備友善 HTML5 表單](https://msdn.microsoft.com/en-us/magazine/hh848259.aspx)
-- [將 HTML5 整合至現有的 ASP.NET Web Form 和 MVC 應用程式](https://msdn.microsoft.com/en-us/magazine/jj129609.aspx)
+- [設計與 HTML5 的協助工具](https://msdn.microsoft.com/magazine/jj863135.aspx)
+- [建立與 ASP.NET MVC 4 和 jQuery Mobile 的行動設備友善 HTML5 表單](https://msdn.microsoft.com/magazine/hh848259.aspx)
+- [將 HTML5 整合至現有的 ASP.NET Web Form 和 MVC 應用程式](https://msdn.microsoft.com/magazine/jj129609.aspx)
 
 <a id="Routing"></a>
 
@@ -272,7 +272,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="azure-and-aspnet-mvc"></a>Azure 和 ASP.NET MVC
 
 - [使用儲存體資料表、 佇列和 Blob 的多層式應用程式](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)
-- [Windows Azure Web Sites： 快速輕鬆裝載為服務](https://msdn.microsoft.com/en-us/magazine/jj883953.aspx)
+- [Windows Azure Web Sites： 快速輕鬆裝載為服務](https://msdn.microsoft.com/magazine/jj883953.aspx)
 - [ASP.NET MVC 4 的 Azure 網站上的設定秘訣](http://odetocode.com/Blogs/scott/archive/2012/08/07/configuration-tips-for-asp-net-mvc-4-on-a-windows.aspx)
 - [時段 85-Azure、 Windows 8 和 MVC 4 示範](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-85-Windows-Azure-Sample-Content-Review)（影片）
 - [部署 ASP.NET 網站至 Azure Visual Studio 2012 中從 Git 儲存機制直接](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)
@@ -285,11 +285,11 @@ ms.lasthandoff: 11/10/2017
 - [[影片]建置使用 MVC 4 行動好記的網站](https://www.bitcast.io/v/building-mobile-friendly-websites-with-mvc-4)
 - [建立高效能行動網站](http://mobile.smashingmagazine.com/2013/08/12/creating-high-performance-mobile-websites/)
 - [在 ASP.NET MVC 4 中建立行動裝置最佳化的檢視](https://msdn.microsoft.com/en-gb/magazine/dn296507.aspx)
-- [建立與 ASP.NET MVC 4 和 jQuery Mobile 的行動設備友善 HTML5 表單](https://msdn.microsoft.com/en-us/magazine/hh848259.aspx)
-- [JQuery Mobile 整合 MVC Web 應用程式](https://msdn.microsoft.com/en-us/magazine/jj650891.aspx)
-- [JQuery Mobile 深入剖析](https://msdn.microsoft.com/en-us/magazine/jj906416.aspx)
-- [ASP.NET MVC 4 中的行動裝置開發的新功能](https://msdn.microsoft.com/en-us/magazine/hh975347.aspx)
-- [開發混合式原生和行動 Web 應用程式](https://msdn.microsoft.com/en-us/magazine/hh852592.aspx)
+- [建立與 ASP.NET MVC 4 和 jQuery Mobile 的行動設備友善 HTML5 表單](https://msdn.microsoft.com/magazine/hh848259.aspx)
+- [JQuery Mobile 整合 MVC Web 應用程式](https://msdn.microsoft.com/magazine/jj650891.aspx)
+- [JQuery Mobile 深入剖析](https://msdn.microsoft.com/magazine/jj906416.aspx)
+- [ASP.NET MVC 4 中的行動裝置開發的新功能](https://msdn.microsoft.com/magazine/hh975347.aspx)
+- [開發混合式原生和行動 Web 應用程式](https://msdn.microsoft.com/magazine/hh852592.aspx)
 - [讓 ASP.NET MVC 4 和 jQuery Mobile 的桌面和行動裝置可切換網站](http://www.hanselman.com/blog/MakingASwitchableDesktopAndMobileSiteWithASPNETMVC4AndJQueryMobile.aspx)
 - [MVC 4 行動好記的 Web 應用程式](http://www.codeproject.com/Articles/455627/MVC4-Mobile-Friendly-Web-Applications)
 - [ASP.NET MVC 4 行動裝置](https://channel9.msdn.com/Events/aspConf/aspConf/ASP-NET-MVC-4-Mobile)
@@ -298,7 +298,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="single-page-application-spa"></a>單一頁面應用程式 (SPA)
 
-- [單一頁面應用程式的.NET 開發人員入門](https://msdn.microsoft.com/en-us/magazine/dn605877.aspx)MSDN Magazine
+- [單一頁面應用程式的.NET 開發人員入門](https://msdn.microsoft.com/magazine/dn605877.aspx)MSDN Magazine
 - [使用 AngularJS 的單一頁面應用程式和 ASP.NET MVC 4](http://tarkus.me/post/32121691785/angularjs-with-asp-net-mvc-4)
 - [在 ASP.NET 單一頁面應用程式範本](http://www.johnpapa.net/inside-the-asp-net-single-page-apps-template/)
 - [MVC 單一頁面應用程式範本更新適用於 ASP.NET 和 Web 工具 2012.2 RC](https://blogs.msdn.com/b/webdev/archive/2012/12/19/mvc-single-page-template-update-for-asp-net-and-web-tools-2012-2-rc.aspx)
@@ -327,14 +327,14 @@ ms.lasthandoff: 11/10/2017
 - [測試驅動 ASP.NET MVC](https://channel9.msdn.com/Events/aspConf/aspConf/Test-Driving-ASP-NET-MVC) （影片）
 - [整合測試與 SpecsFor.Mvc – Steroids 測試 ASP.NET MVC ！](https://channel9.msdn.com/Events/aspConf/aspConf/Integration-Testing-With-SpecsFor-Mvc-ASP-NET-MVC-Testing-on-Steroids) （影片）
 - [在 ASP.NET MVC-初級開發人員教學課程中建立單元測試應用程式](http://www.codeproject.com/Articles/579035/Creating-Unit-Testable-Applications-in-ASP-NET-MVC)
-- [逐步解說： 使用 TDD 搭配 ASP.NET MVC](https://msdn.microsoft.com/en-us/library/gg416511(v=vs.98).aspx) (MVC 3)
+- [逐步解說： 使用 TDD 搭配 ASP.NET MVC](https://msdn.microsoft.com/library/gg416511(v=vs.98).aspx) (MVC 3)
 - [釋放 SocialGoal-參考 Web 的應用程式的 ASP.NET MVC 5，6 EF 程式碼第一次，AutoMapper、 Autofac、 TDD 和 DDD](https://weblogs.asp.net/shijuvarghese/archive/2014/01/24/releasing-socialgoal-reference-web-app-for-asp-net-mvc-5-ef-6-code-first-automapper-autofac-tdd-and-ddd.aspx)
 
 <a id="best"></a>
 
 ## <a name="best-practices"></a>最佳作法
 
-- [不執行在 ASP.NET 中，以及應該改用哪個程式](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
+- [在 ASP.NET 中不該做什麼以及該做什麼](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [Web 開發人員檢查清單](http://webdevchecklist.com/aspnet)
 - [影片： 不要這麼做，執行這個步驟 ！](http://vimeo.com/68390507)
 - [ASP.NET MVC 方案的最佳作法](https://channel9.msdn.com/Events/aspConf/aspConf/ASP-NET-MVC-Solution-Best-Practices)（影片）
@@ -365,7 +365,7 @@ ms.lasthandoff: 11/10/2017
 
 - [如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2](../releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md)
 - [了解 ASP.NET MVC 篩選和屬性](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
-- [ASP.NET MVC 開發人員的內容交涉和 Web API](https://msdn.microsoft.com/en-us/magazine/dn574797.aspx)
+- [ASP.NET MVC 開發人員的內容交涉和 Web API](https://msdn.microsoft.com/magazine/dn574797.aspx)
 - [WebP 映像服務與 ASP.NET MVC](http://friism.com/serving-webp-images-with-asp-net-mvc)
 - [詳細的 ASP.NET MVC 管線](http://www.dotnet-tricks.com/Tutorial/mvc/LYHK270114-Detailed-ASP.NET-MVC-Pipeline.html)
 - [在 MVC 中的巢狀配置](http://astutelogic.com/nesting-layouts-in-mvc/)羅美惠由
@@ -378,23 +378,23 @@ ms.lasthandoff: 11/10/2017
 - [上傳和下載檔案使用 ASP.NET MVC](http://rachelappel.com/upload-and-download-files-using-asp.net-mvc#)
 - [取得 ASP.NET MVC 中的編譯時期檢視錯誤](http://blog.falafel.com/Blogs/JonathanTower/j-tower/2013/12/02/get-compile-time-view-errors-in-asp-net-mvc)
 - [使用 ASP.NET MVC fluent 應用程式開發的驗證](http://www.beabigrockstar.com/using-fluent-validation-with-asp-net-mvc-part-1-the-basics/)
-- [ASP.NET MVC 其實部分下\_1](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-1) [MvcHandler](https://msdn.microsoft.com/en-us/library/system.web.mvc.mvchandler(v=vs.108).aspx)，負責處理要求的 ASP.NET MVC 的物件。
+- [ASP.NET MVC 其實部分下\_1](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-1) [MvcHandler](https://msdn.microsoft.com/library/system.web.mvc.mvchandler(v=vs.108).aspx)，負責處理要求的 ASP.NET MVC 的物件。
 - [ASP.NET MVC 其實部分下\_2](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-2)
 - [ASP.NET MVC 其實第 3 部分下](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-3)尋找控制器類型
 - [ASP.NET MVC 其實第 4 部分下](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-4)TempData
-- [ASP.NET MVC 其實第 5 部分下](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-5) [ActionInvoker](https://msdn.microsoft.com/en-us/library/system.web.mvc.controller.actioninvoker(v=vs.108).aspx)
+- [ASP.NET MVC 其實第 5 部分下](http://www.pieterg.com/2013/4/aspnet-mvc-under-the-hood-part-5) [ActionInvoker](https://msdn.microsoft.com/library/system.web.mvc.controller.actioninvoker(v=vs.108).aspx)
 - [ASP.NET MVC 下其實第 6 單元](http://www.pieterg.com/2013/5/aspnet-mvc-under-the-hood-part-6)如何 Actionfilter 會探索和套用的方式
 - [ASP.NET mvc 中建立您自己自訂的 ViewWebPage](http://www.love2dev.com/#!article/Create-Your-Own-Custom-ViewWebPage-for-ASPNET-MVC)
 - [ASP.NET MVC Razor 檢視中的追蹤](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)
 - [轉譯之外進行重新瀏覽的 MVC ASP.NET MVC Razor 檢視](http://www.west-wind.com/weblog/posts/2013/Jul/15/Rendering-ASPNET-MVC-Razor-Views-outside-of-MVC-revisited)
 - [五個基本前端工具，應搭配現代的 MVC 專案](http://www.adamtibi.net/06-2013/five-essential-front-end-tools-that-should-be-used-with-modern-mvc-projects)
-- [功能和缺點的 ASP.NET MVC 模型繫結](https://msdn.microsoft.com/en-us/magazine/hh781022.aspx)
+- [功能和缺點的 ASP.NET MVC 模型繫結](https://msdn.microsoft.com/magazine/hh781022.aspx)
 - [Asp.Net MVC4 中控制工作階段行為](http://www.dotnet-tricks.com/Tutorial/mvc/906b060113-Controlling-Session-Behavior-in-Asp.Net-MVC4.html)
 - [RenderPartial vs RenderAction vs 部分 vs MVC Razor 中的動作](http://www.dotnet-tricks.com/Tutorial/mvc/Q8V2130113-RenderPartial-vs-RenderAction-vs-Partial-vs-Action-in-MVC-Razor.html)
 - [路由來解決模稜兩可的控制器錯誤](http://www.dotnet-tricks.com/Tutorial/mvc/30HJ010113-Resolve-Ambiguous-Controller-Error-by-routes.html)
 - [Cookie 架構 TempData 提供者](http://brockallen.com/2012/06/11/cookie-based-tempdata-provider/)
 - [共用單一\_ViewStart 跨 ASP.NET MVC 中的區域](http://brockallen.com/2012/08/31/sharing-a-single-_viewstart-across-areas-in-asp-net-mvc/)
-- [ASP.NET MVC 中的篩選](https://msdn.microsoft.com/en-us/library/gg416513(VS.98).aspx)
+- [ASP.NET MVC 中的篩選](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
 - [在 ASP.NET MVC 3 使用 HandleError 了解動作篩選條件取得](https://channel9.msdn.com/Shows/DevNuggets/Get2KnowActionFiltersUsingHandleError)（影片）
 - [MVC-自訂篩選器的工作階段逾時處理](http://codeblockdrive.blogspot.in/2012/12/mvc-custom-filters-session-timeout.html)
 - [自訂的 MVC 4 範本逐步解說](https://blogs.msdn.com/b/yjhong/archive/2012/12/13/custom-mvc-4-template-walkthrough.aspx)

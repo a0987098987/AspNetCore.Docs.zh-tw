@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/introduction
-ms.openlocfilehash: b98027ee0e7c63bac23054d7623f28294388dede
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b02ef9121e50ab9d9f24032d32f1e65fe73049c0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-data-protection"></a>資料保護簡介
 
@@ -23,7 +23,7 @@ ASP.NET Core 資料保護堆疊設計來做為長期取代<machineKey>ASP.NET �
 
 ## <a name="problem-statement"></a>問題陳述式
 
-整體問題陳述式可以簡潔說明中的單一句子： 我需要保存受信任的資訊供日後擷取，但不是信任的持續性機制。 在 web 詞彙中，這可能會寫入如 「 我需要透過不受信任的用戶端的來回行程信任狀態 」。
+整體問題陳述式可以簡潔說明中的單一句子： 我需要保存可靠的資訊供日後擷取，但是我不信任的持續性機制。 在 web 詞彙中，這可能會寫入如 「 我需要透過不受信任的用戶端的來回行程信任狀態 」。
 
 標準範例是驗證 cookie 或持有人權杖。 伺服器會產生 「 我 Groot 而且的使用權限 xyz"語彙基元，並將它交付給用戶端。 在未來的某個日期，用戶端會出示該權杖至伺服器，但伺服器需要某種保證用戶端尚未偽造 token。 因此第一項需求： 真實性 （也稱為 完整性、 竄改）。
 
@@ -31,7 +31,7 @@ ASP.NET Core 資料保護堆疊設計來做為長期取代<machineKey>ASP.NET �
 
 最後，在現代應用程式元件化，因為我們已經看到是個別的元件會想要在系統中充分利用此系統，而不考慮其他元件。 比方說，如果承載語彙基元的元件會使用此堆疊，它應該作業不受干擾，從一種反 CSRF 機制，也可能使用相同的堆疊。 因此最後的需求： 隔離。
 
-我們可以提供進一步的條件約束以縮小範圍我們的需求。 我們假設內加密系統都運作的所有服務都都同樣地受到信任，並產生或取用外部我們直接控制下的服務不需要的資料。 此外，我們需要作業會盡快，因為每個要求至 web 服務可能會加密系統都有一或多次。 這會使得對稱式密碼編譯適合我們的案例中，與我們可以折扣非對稱密碼編譯之前如有需要的時間。
+我們可以提供進一步的條件約束以縮小範圍我們的需求。 我們假設內加密系統都運作的所有服務都都同樣地受到信任，並產生或取用我們直接控制權服務之外，不需要資料。 此外，我們需要作業會盡快，因為每個要求至 web 服務可能會加密系統都有一或多次。 這會使得對稱式密碼編譯適合我們的案例中，與我們可以折扣非對稱密碼編譯直到例如所需的時間。
 
 ## <a name="design-philosophy"></a>設計原理
 

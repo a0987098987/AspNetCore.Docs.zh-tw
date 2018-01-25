@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b193fa3256e5886481c7b36d88aa09c1fa7017c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60ef1f93efea777e9309ad8c664a2c6645f1ce80
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>設定生產環境 Web 應用程式使用實際執行資料庫 (VB)
 ====================
@@ -37,7 +37,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 
 ## <a name="examining-the-connection-string-information"></a>檢查連接字串資訊
 
-活頁簿檢閱 web 應用程式所使用的連接字串儲存在應用程式的組態檔， `Web.config`。 `Web.config`包含儲存連接字串，命名相似的特殊區段[ &lt;connectionStrings&gt;](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)。 `Web.config`檔案書籍檢閱網站有一個名為此區段中定義的連接字串`ReviewsConnectionString`:
+活頁簿檢閱 web 應用程式所使用的連接字串儲存在應用程式的組態檔， `Web.config`。 `Web.config`包含儲存連接字串，命名相似的特殊區段[ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx)。 `Web.config`檔案書籍檢閱網站有一個名為此區段中定義的連接字串`ReviewsConnectionString`:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-vb/samples/sample1.xml)]
 
@@ -46,7 +46,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 - `Data Source`-指定資料庫伺服器和資料庫伺服器執行個體名稱的位置 （如果有的話）。 值， `.\SQLEXPRESS`，就是資料庫伺服器和執行個體名稱。 期間指定的資料庫伺服器位於與此應用程式; 相同的電腦執行個體名稱是`SQLEXPRESS`。
 - `AttachDbFilename`-指定資料庫檔案的位置。 值包含預留位置`|DataDirectory|`，這是解析為 s 的應用程式的完整路徑`App_Data`在執行階段 資料夾。
 - `Integrated Security`-布林值，指出是否要連接到資料庫 (false) 或目前 Windows 帳戶認證 (true) 時，使用指定的使用者名稱/密碼。
-- `User Instance`-表示是否允許本機電腦上的非系統管理使用者連接和連接到 SQL Server Express Edition 資料庫的 SQL Server Express Edition 的特定組態選項。 請參閱[SQL Server Express 使用者執行個體](https://msdn.microsoft.com/en-us/library/ms254504.aspx)如需有關這項設定。
+- `User Instance`-表示是否允許本機電腦上的非系統管理使用者連接和連接到 SQL Server Express Edition 資料庫的 SQL Server Express Edition 的特定組態選項。 請參閱[SQL Server Express 使用者執行個體](https://msdn.microsoft.com/library/ms254504.aspx)如需有關這項設定。
   
 
 允許的連接字串選項取決於您所連接的資料庫和[ADO.NET](http://ADO.NET)所使用的資料庫提供者。 例如，連接字串連接到 Microsoft SQL Server 資料庫與不同，用來連接到 Oracle 資料庫。 同樣地，連接到 Microsoft SQL Server 資料庫使用 SqlClient 提供者會使用不同的連接字串比時使用的 OLE DB 提供者。
@@ -71,7 +71,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 
 生產環境資料庫現在應該會顯示在 [伺服器總管] 中。 從 [伺服器總管] 中選取資料庫，並移至 [屬性] 視窗。 您將找到名為資料庫的連接字串與連接字串的屬性。 假設您在生產環境和 SqlClient 提供者上使用 Microsoft SQL Server 資料庫連接字串看起來應該如下所示：
 
-**資料來源 =*serverName*;初始目錄 =*databaseName*;保存安全性資訊 = True;使用者 ID =*username*;密碼 =*密碼***
+**資料來源 =*serverName*;初始目錄 =*databaseName*;保存安全性資訊 = True;使用者 ID =*username*;密碼 = * 密碼***
 
 其中*serverName*， *databaseName*， *username*，和*密碼*與資料庫伺服器名稱，資料庫的值名稱，以及使用者名稱和密碼提供給您的 web 主機公司。
 
@@ -120,7 +120,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 此時`ConfigSections`資料夾應包含三個檔案 （請參閱圖 4）。 DatabaseConnectionStrings.dev.config 和 databaseConnectionStrings.production.config 檔案分別包含開發和生產環境中，連接字串。 DatabaseConnectionStrings.config 檔案包含將 web 應用程式在執行階段所使用的連接字串資訊。 因此，databaseConnectionStrings.config 檔案應該相同 databaseConnectionStrings.dev.config 檔案，在開發環境中，而實際執行 databaseConnectionStrings.config 檔案應該相同databaseConnectionStrings.production.config。
 
 
-[![C](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image11.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image10.jpg) 
+[![ConfigSections](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image11.jpg)](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image10.jpg) 
 
 **圖 4**: C ([按一下以檢視完整大小的影像](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image12.jpg))
 
@@ -147,10 +147,10 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [連接字串和組態檔](https://msdn.microsoft.com/en-us/library/ms254494.aspx)
+- [連接字串和組態檔](https://msdn.microsoft.com/library/ms254494.aspx)
 - [資料庫組態字串資訊 @ ConnectionStrings.com](http://www.connectionstrings.com/)
 - [設定移出 Web.config 檔案](http://www.asp101.com/tips/index.asp?id=154)
-- [技術文件&lt;connectionStrings&gt;項目](https://msdn.microsoft.com/en-us/library/bf7sd233.aspx)
+- [技術文件&lt;connectionStrings&gt;項目](https://msdn.microsoft.com/library/bf7sd233.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](deploying-a-database-vb.md)

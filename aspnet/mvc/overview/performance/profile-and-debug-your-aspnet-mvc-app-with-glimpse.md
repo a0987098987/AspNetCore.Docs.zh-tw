@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 98b21a54ba00a8c82c3be7ba4e39d44041ed42c6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9cfdced21251b482ca527dda9c3a698de77cc8ca
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>分析和偵錯使用 glimpse 進行 ASP.NET MVC 應用程式
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> 初探是蓬勃發展和成長系列的開放原始碼 NuGet 套件，提供詳細的效能、 偵錯和診斷資訊的 ASP.NET 應用程式。 它是 trivial 安裝、 輕量級超快，並在每一頁底部顯示關鍵效能度量。 它可讓您向下鑽研至您的應用程式時您需要了解在伺服器上運作。 初探提供許多有用的資訊我們建議您在整個開發週期，包括 Azure 測試環境使用它。 雖然[Fiddler](http://www.telerik.com/fiddler)和[F-12 開發工具](https://msdn.microsoft.com/en-us/library/ie/gg589512(v=vs.85).aspx)提供用戶端 檢視中，瀏覽提供從伺服器的詳細的檢視。 本教學課程著重於使用 glimpse 進行 ASP.NET MVC 和 EF 封裝，但是許多其他封裝可以使用。 盡可能將連結至適當[以前並未使用過的文件](http://getglimpse.com/Docs/)這可協助維護。 初探開放原始碼專案，您太可以參與原始碼及文件。
+> 初探是蓬勃發展和成長系列的開放原始碼 NuGet 套件，提供詳細的效能、 偵錯和診斷資訊的 ASP.NET 應用程式。 它是 trivial 安裝、 輕量級超快，並在每一頁底部顯示關鍵效能度量。 它可讓您向下鑽研至您的應用程式時您需要了解在伺服器上運作。 初探提供許多有用的資訊我們建議您在整個開發週期，包括 Azure 測試環境使用它。 雖然[Fiddler](http://www.telerik.com/fiddler)和[F-12 開發工具](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx)提供用戶端 檢視中，瀏覽提供從伺服器的詳細的檢視。 本教學課程著重於使用 glimpse 進行 ASP.NET MVC 和 EF 封裝，但是許多其他封裝可以使用。 盡可能將連結至適當[以前並未使用過的文件](http://getglimpse.com/Docs/)這可協助維護。 初探開放原始碼專案，您太可以參與原始碼及文件。
 
 
 - [安裝初探](#ig)
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 此單獨的變更，任何使用者可以看到遠端站台上的瀏覽資料。 請考慮將上方的標記加入至發行設定檔，因此有只部署套用時使用的發行設定檔的 (程式例如，是 Azure 測試 proifle。)若要限制瀏覽資料，我們將加入`canViewGlimpseData`角色並只允許使用者在此角色，以檢視瀏覽資料。
 
-移除從註解*GlimpseSecurityPolicy.cs*檔案，並且變更[IsInRole](https://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx)從呼叫`Administrator`至`canViewGlimpseData`角色：
+移除從註解*GlimpseSecurityPolicy.cs*檔案，並且變更[IsInRole](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole(v=vs.110).aspx)從呼叫`Administrator`至`canViewGlimpseData`角色：
 
 [!code-csharp[Main](profile-and-debug-your-aspnet-mvc-app-with-glimpse/samples/sample4.cs?highlight=6)]
 
@@ -121,10 +121,10 @@ ms.lasthandoff: 11/10/2017
 > 安全性-瀏覽所提供的豐富資料可能會公開您的應用程式的安全性。 Microsoft 不用於生產應用程式上執行安全性稽核的 Glimpse。
 
 
-如需加入角色的資訊，請參閱我[成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 web 應用程式部署至 Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)教學課程。
+如需加入角色的資訊，請參閱我[成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 web 應用程式部署至 Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)教學課程。
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>其他資源
 
-- [將成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 應用程式部署至 Azure](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
+- [將成員資格、 OAuth、 與 SQL Database 的安全的 ASP.NET MVC 5 應用程式部署至 Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
 - [以前並未設定使用過](http://getglimpse.com/Docs/Configuration)-設定索引標籤中，執行階段原則、 記錄和多個文件頁面。

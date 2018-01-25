@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/anti-request-forgery
-ms.openlocfilehash: d7df8f91e88290509c8751a4b69804b60138846e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3831bf737186d10eb1b298f5ec2da1fd33ebedd9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="what-attack-does-anti-forgery-prevent"></a>防偽防止何種攻擊？
 
-跨站台要求偽造 (也稱為 XSRF 或 CSRF，唸成*，請參閱衝浪*) 是 web 裝載的應用程式讓惡意網站可能會影響用戶端瀏覽器和信任的網站之間的互動攻擊該瀏覽器。 這些攻擊都可能因為 web 瀏覽器傳送到網站的某些類型的驗證權杖會自動與每個要求。 這種攻擊形式就是所謂*單鍵攻擊*或*工作階段乘載*，因為使用者的攻擊會利用先前的驗證工作階段。
+跨站台要求偽造 (也稱為 XSRF 或 CSRF，唸成*，請參閱衝浪*) 是 web 裝載的應用程式讓惡意網站可能會影響用戶端瀏覽器和信任的網站之間的互動攻擊該瀏覽器。 這些攻擊都可能因為 web 瀏覽器傳送到網站的某些類型的驗證權杖會自動與每個要求。 這種形式的攻擊也稱為的*單鍵攻擊*或*工作階段乘載*，因為使用者的攻擊會利用先前的驗證工作階段。
 
 CSRF 攻擊的範例：
 
@@ -51,13 +51,13 @@ CSRF 攻擊的範例：
 * 以 AJAX 要求中傳送的表單提交。 
 * Css 使用隱藏的表單。 
 
-使用 SSL 並無法避免 CSRF 攻擊，惡意的站台可以傳送`https://`要求。 
+使用 SSL 不會防止 CSRF 攻擊，惡意的站台可以傳送`https://`要求。 
 
 部分攻擊目標站台端點回應`GET`要求，在其中案例之影像標記可以用來執行 （這種攻擊是常見的允許映像，但會封鎖 JavaScript 論壇網站） 的動作。 變更狀態時，使用的應用程式`GET`要求而受到損害受到惡意的攻擊。
 
 CSRF 攻擊可能會進行對網站使用 cookie 進行驗證，因為瀏覽器傳送到目標網站的所有相關的 cookie。 不過，不限於利用 cookie CSRF 攻擊。 比方說，也是很容易遭受基本和摘要式驗證。 在使用者登入基本或摘要式驗證後，瀏覽器將會自動傳送認證到工作階段結束為止。
 
-注意： 在此情況下，*工作階段*指的是用戶端工作階段期間會驗證使用者。 它是與伺服器端工作階段或[工作階段中介軟體](xref:fundamentals/app-state)。
+注意： 在此情況下，*工作階段*指的是用戶端工作階段期間會驗證使用者。 它是不相關的伺服器端工作階段或[工作階段中介軟體](xref:fundamentals/app-state)。
 
 使用者可以防範 CSRF 缺失：
 * 記錄遠離網站時使用它們完成。
@@ -171,7 +171,7 @@ public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
 
 ### <a name="autovalidateantiforgerytoken"></a>AutoValidateAntiforgeryToken
 
-ASP.NET Core 應用程式通常不會產生 antiforgery 的語彙基元的安全 HTTP 方法 （GET、 HEAD、 選項和追蹤）。 而不是廣泛套用``ValidateAntiForgeryToken``屬性，然後將它與覆寫``IgnoreAntiforgeryToken``屬性，您可以使用``AutoValidateAntiforgeryToken``屬性。 這個屬性的運作方式和``ValidateAntiForgeryToken``屬性，不同之處在於它不需要使用下列的 HTTP 方法所提出之要求的語彙基元：
+ASP.NET Core 應用程式通常不產生 antiforgery 的語彙基元的安全 HTTP 方法 （GET、 HEAD、 選項和追蹤）。 而不是廣泛套用``ValidateAntiForgeryToken``屬性，然後將它與覆寫``IgnoreAntiforgeryToken``屬性，您可以使用``AutoValidateAntiforgeryToken``屬性。 這個屬性的運作方式和``ValidateAntiForgeryToken``屬性，不同之處在於它不需要使用下列的 HTTP 方法所提出之要求的語彙基元：
 
 * GET
 * HEAD
@@ -323,7 +323,7 @@ services.AddAntiforgery(options =>
 
 <!-- QAfix fix table -->
 
-|選項        | 說明 |
+|選項        | 描述 |
 |------------- | ----------- |
 |CookieDomain  | Cookie 的網域。 預設值為 `null`。 |
 |CookieName    | Cookie 的名稱。 如果未設定，系統會產生唯一的名稱開頭`DefaultCookiePrefix`(」。AspNetCore.Antiforgery。")。 |
@@ -337,7 +337,7 @@ Https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieau
 
 ### <a name="extending-antiforgery"></a>擴充 Antiforgery
 
-[IAntiForgeryAdditionalDataProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider)類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 [GetAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_GetAdditionalData_Microsoft_AspNetCore_Http_HttpContext_)每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能傳回的時間戳記、 nonce 或任何其他值，然後呼叫[ValidateAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_ValidateAdditionalData_Microsoft_AspNetCore_Http_HttpContext_System_String_)驗證語彙基元時驗證這項資料。 用戶端的使用者名稱已內嵌在產生的語彙基元，因此不需要加入這項資訊。 如果語彙基元包含補充資料但不是`IAntiForgeryAdditionalDataProvider`已經過設定，補充資料不會驗證。
+[IAntiForgeryAdditionalDataProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider)類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 [GetAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_GetAdditionalData_Microsoft_AspNetCore_Http_HttpContext_)每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能傳回的時間戳記、 nonce 或任何其他值，然後呼叫[ValidateAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_ValidateAdditionalData_Microsoft_AspNetCore_Http_HttpContext_System_String_)驗證語彙基元時驗證這項資料。 用戶端的使用者名稱已內嵌在產生的語彙基元，因此不需要加入這項資訊。 如果語彙基元包含補充資料但不是`IAntiForgeryAdditionalDataProvider`已經過設定，未驗證的補充資料。
 
 ## <a name="fundamentals"></a>Fundamentals
 
@@ -345,7 +345,7 @@ CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie �
 
 ### <a name="cookie-based-authentication"></a>Cookie 為基礎的驗證
 
-一旦使用者已使用使用者名稱和密碼驗證時，它們就會發出可用來識別及驗證他們已經過驗證的語彙基元。 權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。 產生和驗證此 cookie 是由 cookie 驗證中介軟體。 ASP.NET Core 提供 cookie[中介軟體](../fundamentals/middleware.md)的序列化經過加密的 cookie 的使用者主體，然後在後續要求中，驗證 cookie，會重新建立主體，並將其指派給`User`屬性`HttpContext`.
+一旦使用者已使用使用者名稱和密碼驗證時，它們被發行可用來識別及驗證他們已經過驗證的語彙基元。 權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。 產生和驗證此 cookie 是由 cookie 驗證中介軟體。 ASP.NET Core 提供 cookie[中介軟體](../fundamentals/middleware.md)的序列化經過加密的 cookie 的使用者主體，然後在後續要求中，驗證 cookie，會重新建立主體，並將其指派給`User`屬性`HttpContext`.
 
 使用 cookie 時，驗證 cookie 只是一個容器的表單驗證票證。 票證傳遞做為表單驗證 cookie，隨著每項要求的值，並為表單驗證，在伺服器上，用來識別已驗證的使用者。
 
@@ -353,7 +353,7 @@ CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie �
 
 ### <a name="user-tokens"></a>使用者語彙基元
 
-權杖型驗證不會儲存在伺服器上的工作階段。 相反地，當使用者登入他們就會發出的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含驗證權杖所需的所有資料。 它也包含使用者資訊，請在表單的[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 此權杖不是*加密*; 而是*編碼*。 在伺服器端權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，您可以儲存它在瀏覽器的本機儲存體，或在 cookie 中。 您不必擔心 XSRF 弱點，如果您的權杖會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
+權杖型驗證不會儲存在伺服器上的工作階段。 相反地，當使用者登入它們正在發行的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含所有已驗證權杖所需的資料。 它也包含使用者資訊，請在表單的[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 這個語彙基元不*加密*; 而是*編碼*。 在伺服器端權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，您可以儲存它在瀏覽器的本機儲存體，或在 cookie 中。 您不必擔心 XSRF 弱點，如果您的權杖會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
 
 ### <a name="multiple-applications-are-hosted-in-one-domain"></a>在一個網域中裝載多個應用程式
 

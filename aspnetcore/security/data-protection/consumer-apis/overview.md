@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 5ec11dce3ba485a84b6ce5f7ddaf16430162659c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 2545226314ebf57d7a0d644d8edfb5354dcc6e5e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="consumer-apis-overview"></a>取用者應用程式開發介面概觀
 
@@ -25,13 +25,13 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="idataprotector"></a>IDataProtector
 
-保護裝置介面由呼叫`CreateProtector`，而且這個介面，取用者可用來執行保護且取消保護作業。
+保護裝置介面由呼叫`CreateProtector`，和它的取用者可以用來執行此介面保護且取消保護作業。
 
-若要保護的資料，將資料傳遞給`Protect`方法。 基本的介面會定義哪些將 byte []-> byte []，方法，但另外還有的多載 （提供擴充方法） 將字串轉換]-> [字串。 提供兩種方法的安全性是相同的。開發人員應選擇何種多載版本是最方便的使用大小寫。 不論的多載選擇，保護所傳回的值是方法現在受到 （enciphered 和竄改校訂），並且在應用程式可以將它傳送至不受信任的用戶端。
+若要保護的資料，將資料傳遞給`Protect`方法。 基本的介面會定義哪些將 byte []-> byte []，方法，但沒有多載 （提供擴充方法） 將字串轉換也-> 字串。 提供兩種方法的安全性是相同的。開發人員應選擇何種多載版本是最方便的使用大小寫。 不論的多載選擇，保護所傳回的值是方法現在受到 （enciphered 和竄改校訂），並且在應用程式可以將它傳送至不受信任的用戶端。
 
 若要取消保護先前受保護資料片段，將傳遞至受保護的資料`Unprotect`方法。 (沒有 byte [] 為基礎和以字串為基礎的多載，方便開發人員。)如果受保護的內容由先前呼叫所產生`Protect`此相同`IDataProtector`、`Unprotect`方法會傳回原始未受保護的內容。 如果受保護的內容已遭竄改，或者由不同`IDataProtector`、`Unprotect`方法會擲回 CryptographicException。
 
-相同的概念與不同`IDataProtector`ties 回用途的概念。 如果兩個`IDataProtector`從相同的根產生執行個體`IDataProtectionProvider`透過不同的用途的呼叫中的字串，但`IDataProtectionProvider.CreateProtector`，然後將它們視為[不同的保護裝置](purpose-strings.md)，而且其中一個將無法取消保護其他產生的裝載。
+相同的概念與不同`IDataProtector`ties 回用途的概念。 如果兩個`IDataProtector`從相同的根產生執行個體`IDataProtectionProvider`透過不同的用途的呼叫中的字串，但`IDataProtectionProvider.CreateProtector`，則它們視為[不同的保護裝置](purpose-strings.md)，其中一個將無法取消保護其他產生的裝載。
 
 ## <a name="consuming-these-interfaces"></a>使用這些介面
 
@@ -55,4 +55,4 @@ DI 感知的元件，預定使用方式是元件採取`IDataProtectionProvider`�
 [!code-csharp[Main](./overview/samples/getdataprotector.cs?highlight=15)]
 
 >[!TIP]
-> 執行個體`IDataProtectionProvider`和`IDataProtector`是多個呼叫的執行緒安全。 它是適合的元件取得參考，一旦`IDataProtector`透過呼叫`CreateProtector`，它會使用該參考的多個呼叫`Protect`和`Unprotect`。 呼叫`Unprotect`將會擲回 CryptographicException，如果無法驗證或是用來解密受保護的內容。 某些元件可能會想要忽略的錯誤時取消保護作業;元件會讀取驗證 cookie，可能會處理這種錯誤和任何 cookie 已完全處理要求而徹底要求失敗。 元件的這個行為特別應該攔截 CryptographicException，而不是抑制所有例外狀況。
+> 執行個體`IDataProtectionProvider`和`IDataProtector`是多個呼叫的執行緒安全。 它具有一旦元件取得的參考用的`IDataProtector`透過呼叫`CreateProtector`，它會使用該參考的多個呼叫`Protect`和`Unprotect`。 呼叫`Unprotect`將會擲回 CryptographicException，如果無法驗證或是用來解密受保護的內容。 某些元件可能會想要忽略的錯誤時取消保護作業;元件會讀取驗證 cookie，可能會處理這種錯誤和任何 cookie 已完全處理要求而徹底要求失敗。 元件的這個行為特別應該攔截 CryptographicException，而不是抑制所有例外狀況。

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/filters
-ms.openlocfilehash: db5d6a98d5e6702842e8b036c378ed96aef61b70
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 32bfddde48f5e5de9c06cb159493eb9ba6ede8be
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="filters"></a>篩選條件
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-`IFilterFactory` 會實作 `IFilter`。 因此，`IFilterFactory`執行個體可用來當做`IFilter`篩選管線中的任何位置執行個體。 當架構準備要叫用的篩選時，會嘗試進行轉換， `IFilterFactory`。 如果該轉換成功，`CreateInstance`呼叫方法來建立`IFilter`會叫用的執行個體。 這會提供相當有彈性的設計，因為不需要應用程式啟動時明確設定精確的篩選器管線。
+`IFilterFactory` 會實作 `IFilter`。 因此，`IFilterFactory`執行個體可用來當做`IFilter`篩選管線中的任何位置執行個體。 當架構準備要叫用的篩選時，會嘗試進行轉換， `IFilterFactory`。 如果該轉換成功，`CreateInstance`呼叫方法來建立`IFilter`會叫用的執行個體。 因為不需要精確的篩選器管線的應用程式啟動時明確設定，這會提供相當有彈性的設計。
 
 您可以實作`IFilterFactory`對您自己做為另一種方法來建立篩選的屬性實作：
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 01/19/2018
 
 依類型或執行個體，可以加入篩選條件。 如果您新增執行個體，該執行個體將用於每個要求。 如果您加入類型，它將型別啟動，即會建立執行個體，每個要求，並將會填入任何建構函式相依性[相依性插入](../../fundamentals/dependency-injection.md)(DI)。 加入篩選條件類型相當於`filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`。
 
-篩選器，都實作為屬性直接加入至控制器類別或動作方法不能有建構函式所提供的相依性[相依性插入](../../fundamentals/dependency-injection.md)(DI)。 這是因為屬性都必須將它們以套用所提供的建構函式參數。 這是屬性的運作方式的限制。
+篩選器，都實作為屬性直接加入至控制器類別或動作方法不能有建構函式所提供的相依性[相依性插入](../../fundamentals/dependency-injection.md)(DI)。 這是因為屬性都必須將其提供套用所在的建構函式參數。 這是屬性的運作方式的限制。
 
 如果您的篩選沒有相依性，您必須從 DI 存取，有數種支援的方法。 您可以將篩選器套用至類別或動作方法，使用下列其中一項：
 
@@ -207,9 +207,9 @@ System.InvalidOperationException: No service for type
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 
-`TypeFilterAttribute`非常類似於`ServiceFilterAttribute`(也會實作`IFilterFactory`)，但其類型未解析直接從 DI 容器。 相反地，它會具現化型別使用`Microsoft.Extensions.DependencyInjection.ObjectFactory`。
+`TypeFilterAttribute`非常類似於`ServiceFilterAttribute`(也會實作`IFilterFactory`)，但其類型不會直接從 DI 容器已解決。 相反地，它會具現化型別使用`Microsoft.Extensions.DependencyInjection.ObjectFactory`。
 
-由於此差別，使用參考的型別`TypeFilterAttribute`不需要先註冊與容器 （但仍必須由容器及其相依性）。 此外，`TypeFilterAttribute`可以選擇性地接受問題類型的建構函式引數。 下列範例示範如何將引數傳遞至型別，使用`TypeFilterAttribute`:
+由於此差別，使用參考的型別`TypeFilterAttribute`不必先向容器 （但是它們仍然會由容器及其相依性）。 此外，`TypeFilterAttribute`可以選擇性地接受問題類型的建構函式引數。 下列範例示範如何將引數傳遞至型別，使用`TypeFilterAttribute`:
 
 [!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?name=snippet_TypeFilter&highlight=1,2)]
 
@@ -252,7 +252,7 @@ System.InvalidOperationException: No service for type
 * `Canceled`-將如果動作執行的最少運算的另一個篩選，則為 true。
 * `Exception`-將會為非 null 的動作或後續的動作篩選條件項擲回例外狀況。 設定這個屬性為 null，有效地 'handles' 例外狀況，以及`Result`會執行，如同它已正常傳回從動作方法。
 
-如`IAsyncActionFilter`，呼叫`ActionExecutionDelegate`執行任何後續的動作篩選條件和動作方法，傳回`ActionExecutedContext`。 最短路徑，請指派`ActionExecutingContext.Result`某些結果執行個體，並沒有呼叫`ActionExecutionDelegate`。
+如`IAsyncActionFilter`，呼叫`ActionExecutionDelegate`執行任何後續的動作篩選條件和動作方法，傳回`ActionExecutedContext`。 最短路徑，請指派`ActionExecutingContext.Result`某些結果執行個體，並且不要呼叫`ActionExecutionDelegate`。
 
 架構提供一個抽象`ActionFilterAttribute`可以進行子類別。 
 
@@ -270,14 +270,14 @@ System.InvalidOperationException: No service for type
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?name=snippet_ExceptionFilter&highlight=1,14)]
 
-例外狀況篩選條件不會有兩個事件 （如之前和之後）-只實作`OnException`(或`OnExceptionAsync`)。 
+例外狀況篩選條件不需要兩個事件 （如之前和之後）-只實作`OnException`(或`OnExceptionAsync`)。 
 
 例外狀況篩選條件處理未處理的例外狀況發生在控制站建立[模型繫結](../models/model-binding.md)，動作篩選條件或動作方法。 它們不會攔截例外狀況是發生在資源篩選器、 結果篩選條件，還是 MVC 結果執行。
 
 若要處理的例外狀況，將`ExceptionContext.ExceptionHandled`屬性設為 true，或撰寫回應。 這樣會阻止傳播例外狀況。 請注意例外狀況篩選條件無法開啟到 「 成功 」 例外狀況。 只有動作篩選條件可以這麼做。
 
 > [!NOTE]
-> 在 ASP.NET 1.1 中，會傳送回應您設定如果`ExceptionHandled`為 true**和**撰寫回應。 在該案例中，ASP.NET Core 1.0 並傳送回應，且 ASP.NET Core 1.1.2 會傳回至 1.0 的行為。 如需詳細資訊，請參閱[發出 #5594](https://github.com/aspnet/Mvc/issues/5594) GitHub 儲存機制中。 
+> 在 ASP.NET 1.1 中，如果您設定，未傳送回應`ExceptionHandled`為 true**和**撰寫回應。 在該案例中，ASP.NET Core 1.0 並傳送回應，且 ASP.NET Core 1.1.2 會傳回至 1.0 的行為。 如需詳細資訊，請參閱[發出 #5594](https://github.com/aspnet/Mvc/issues/5594) GitHub 儲存機制中。 
 
 例外狀況篩選條件則適合用於設陷 MVC 動作中發生的例外狀況，但是它們並不具有彈性，錯誤處理中介軟體。 偏好以一般的情況下中, 介軟體，並使用篩選器只需要執行錯誤處理*不同*根據選擇的 MVC 動作。 比方說，您的應用程式可能會有兩個應用程式開發介面端點及檢視/HTML，動作方法。 雖然檢視為基礎的動作會傳回以 HTML 錯誤頁面 API 端點可能會傳回為 JSON，資訊時發生錯誤。
 
@@ -301,13 +301,13 @@ System.InvalidOperationException: No service for type
 
 `ResultExecutedContext.Exception`如果動作結果或接下來的結果篩選器擲回例外狀況將會設定為非 null 值。 設定`Exception`到 null 有效地處理例外狀況，並可避免從正在由 MVC 管線中，稍後重新擲回例外狀況。 當您處理結果篩選條件中的例外狀況時，您可能無法寫入至回應的任何資料。 如果在動作結果會擲回推出透過其執行中，標頭已清除至用戶端，沒有任何可靠的機制，傳送失敗碼。
 
-如`IAsyncResultFilter`呼叫`await next()`上`ResultExecutionDelegate`執行任何後續的結果篩選條件和動作結果。 最短路徑，請將`ResultExecutingContext.Cancel`至 true 並沒有呼叫`ResultExectionDelegate`。
+如`IAsyncResultFilter`呼叫`await next()`上`ResultExecutionDelegate`執行任何後續的結果篩選條件和動作結果。 最短路徑，請將`ResultExecutingContext.Cancel`至 true 並不要呼叫`ResultExectionDelegate`。
 
 架構提供一個抽象`ResultFilterAttribute`可以進行子類別。 [AddHeaderAttribute](#add-header-attribute)稍早所示的類別是結果篩選條件屬性的範例。
 
 ## <a name="using-middleware-in-the-filter-pipeline"></a>篩選管線中使用中介軟體
 
-資源的篩選器一樣[中介軟體](../../fundamentals/middleware.md)在於它們圍繞稍後在管線中出現的所有項目執行。 但與中介軟體，因為它們屬於的 MVC 中，這表示他們擁有存取權 MVC 內容和建構不同的篩選器。
+資源的篩選器一樣[中介軟體](../../fundamentals/middleware.md)在於它們圍繞稍後在管線中出現的所有項目執行。 但與中介軟體，因為它們是一部分的 MVC 中，這表示他們擁有存取權 MVC 內容和建構不同的篩選器。
 
 在 ASP.NET Core 1.1 中，您可以使用篩選器管線中的中介軟體。 您可能想要這樣做，您如有需要存取 MVC 路由資料，或其中一個控制器或動作應該僅針對特定執行中介軟體元件。
 

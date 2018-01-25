@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8d11bf47f8c43040ef30d7132f0bb756748dbacd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d54c0e133bc2f6f2021821dc16cdf86cc23a5667
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>排序、 篩選和分頁與 Entity Framework 中的 ASP.NET MVC 應用程式
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 | 遞增的日期 | ascending | descending |
 | 日期遞減 | ascending | ascending |
 
-此方法會使用[LINQ to Entities](https://msdn.microsoft.com/en-us/library/bb386964.aspx)指定排序所依據的資料行。 程式碼會建立[IQueryable](https://msdn.microsoft.com/en-us/library/bb351562.aspx)變數之前`switch`陳述式，修改在`switch`陳述式，並呼叫`ToList`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 查詢不會執行直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToList`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
+此方法會使用[LINQ to Entities](https://msdn.microsoft.com/library/bb386964.aspx)指定排序所依據的資料行。 程式碼會建立[IQueryable](https://msdn.microsoft.com/library/bb351562.aspx)變數之前`switch`陳述式，修改在`switch`陳述式，並呼叫`ToList`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 查詢不會執行直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToList`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
 
 替代方法來撰寫每個排序順序的不同 LINQ 陳述式中，您可以動態建立 LINQ 陳述式。 如需動態 LINQ 資訊，請參閱[動態 LINQ](https://go.microsoft.com/fwlink/?LinkID=323957)。
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=1,7-11)]
 
-您已新增`searchString`參數`Index`方法。 從文字方塊中，您會加入至索引檢視收到的搜尋字串值。 您也已經加入至 LINQ 陳述式`where`選取其名字或姓氏包含搜尋字串的學生的子句。 加入陳述式[其中](https://msdn.microsoft.com/en-us/library/bb535040.aspx)子句在沒有要搜尋的值時，才會執行。
+您已新增`searchString`參數`Index`方法。 從文字方塊中，您會加入至索引檢視收到的搜尋字串值。 您也已經加入至 LINQ 陳述式`where`選取其名字或姓氏包含搜尋字串的學生的子句。 加入陳述式[其中](https://msdn.microsoft.com/library/bb535040.aspx)子句在沒有要搜尋的值時，才會執行。
 
 > [!NOTE]
 > 在許多情況下，Entity Framework 實體集上，或是當做擴充方法上的記憶體中集合，可以呼叫相同的方法。 結果通常都相同，但在某些情況下可能會不同。
@@ -128,7 +128,7 @@ NuGet **PagedList.Mvc**套件會自動安裝**PagedList**封裝做為相依性�
 
 `Install-Package PagedList.Mvc`
 
-![安裝 PagedList.Mvc](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+![Install PagedList.Mvc](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 建置專案。 
 
@@ -160,7 +160,7 @@ A`ViewBag`屬性提供的檢視，且目前的排序次序中，因為這必須�
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-`ToPagedList`方法會採用頁面數目。 兩個問號代表[null 聯合運算子](https://msdn.microsoft.com/en-us/library/ms173224.aspx)。 Null 聯合運算子定義預設值為 null 的型別。運算式`(page ?? 1)`方法傳回的值`page`它具有的值，或傳回 1，如果`page`為 null。
+`ToPagedList`方法會採用頁面數目。 兩個問號代表[null 聯合運算子](https://msdn.microsoft.com/library/ms173224.aspx)。 Null 聯合運算子定義預設值為 null 的型別。運算式`(page ?? 1)`方法傳回的值`page`它具有的值，或傳回 1，如果`page`為 null。
 
 ### <a name="add-paging-links-to-the-student-index-view"></a>將 Student 索引檢視中的分頁連結
 
@@ -172,11 +172,11 @@ A`ViewBag`屬性提供的檢視，且目前的排序次序中，因為這必須�
 
 `using`陳述式`PagedList.Mvc`可讓 MVC 協助程式的存取 [分頁] 按鈕。
 
-程式碼使用的多載[BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) ，可讓它指定[FormMethod.Get](https://msdn.microsoft.com/en-us/library/system.web.mvc.formmethod(v=vs.100).aspx/css)。
+程式碼使用的多載[BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx) ，可讓它指定[FormMethod.Get](https://msdn.microsoft.com/library/system.web.mvc.formmethod(v=vs.100).aspx/css)。
 
 [!code-cshtml[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cshtml?highlight=1)]
 
-預設值[BeginForm](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx)提交表單與文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式的資料。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 [W3C 指導方針，使用 HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html)建議動作並不會導致更新時，您應該使用 GET。
+預設值[BeginForm](https://msdn.microsoft.com/library/system.web.mvc.html.formextensions.beginform(v=vs.108).aspx)提交表單與文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式的資料。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 [W3C 指導方針，使用 HTTP GET](http://www.w3.org/2001/tag/doc/whenToUseGet.html)建議動作並不會導致更新時，您應該使用 GET。
 
 在文字方塊中會使用目前的搜尋字串初始化，因此當您按一下新的頁面時，您就可以看到目前的搜尋字串。
 

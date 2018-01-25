@@ -12,28 +12,28 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 425f8edff41588db363055d166995d5f563c5a23
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1ef0468d5f5c17480b23ac88983f30fe6f4979c0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>使用 Azure Active Directory 開發的 ASP.NET 應用程式
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> Microsoft ASP.NET 工具的 Azure Active Directory 可簡化針對上主控的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/en-us/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證 Office 365 使用者，從您的組織，從您在內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者。 啟用 Windows Azure 驗證設定您的應用程式驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
+> Microsoft ASP.NET 工具的 Azure Active Directory 可簡化針對上主控的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證 Office 365 使用者，從您的組織，從您在內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者。 啟用 Windows Azure 驗證設定您的應用程式驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
 > 
 >  本教學課程中所編寫的 Rick Anderson[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 
 
-本教學課程會示範如何建立 ASP.NET 應用程式設定為使用登入[Azure Active Directory](https://msdn.microsoft.com/en-us/library/azure/mt168838.aspx) (Azure AD)。 您也將學習如何呼叫 Graph API 來取得目前登入使用者的相關資訊及如何部署 Azure 應用程式。
+本教學課程會示範如何建立 ASP.NET 應用程式設定為使用登入[Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD)。 您也將學習如何呼叫 Graph API 來取得目前登入使用者的相關資訊及如何部署 Azure 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 
 1. [Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express)或[Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)。
-2. [Visual Studio 2013 Update 4](https://www.microsoft.com/en-us/download/details.aspx?id=44921) -3 或更高的更新為必要項。
-3. Azure 帳戶。 [按一下這裡](https://azure.microsoft.com/en-us/pricing/free-trial/)免費試用，如果您沒有帳戶。
+2. [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=44921) -3 或更高的更新為必要項。
+3. Azure 帳戶。 [按一下這裡](https://azure.microsoft.com/pricing/free-trial/)免費試用，如果您沒有帳戶。
 
 ## <a name="add-a-global-administrator-to-your-active-directory"></a>加入您的 Active Directory 的全域管理員
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="create-an-aspnet-application"></a>建立 ASP.NET 應用程式
 
-下列步驟會使用[Visual Studio Express 2013 for Web](https://www.microsoft.com/en-us/download/details.aspx?id=40747)，而且需要[Visual Studio 2013 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=43721)。
+下列步驟會使用[Visual Studio Express 2013 for Web](https://www.microsoft.com/download/details.aspx?id=40747)，而且需要[Visual Studio 2013 Update 3](https://www.microsoft.com/download/details.aspx?id=43721)。
 
 1. 在 Visual Studio 中，按一下 **檔案**然後**新專案**。 在**新專案**對話方塊中，選取 Visual C# Web 專案從左窗格中，按一下**確定**。 您也可以取消核取**加入 Application Insights 加入專案**如果您不想為您的應用程式的功能。
 2. 在**新增 ASP.NET 專案**對話方塊中，選取**MVC**，然後按一下 **變更驗證**。   
@@ -74,17 +74,17 @@ ms.lasthandoff: 11/10/2017
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image8.png)  
 
     > [!NOTE]
-    > 您可以選擇性地設定會依序按一下 Azure AD 中註冊應用程式識別碼 URI**更多選項**。 應用程式識別碼 URI 是應用程式，其 Azure AD 中註冊，並由應用程式用來與 Azure AD 進行通訊時識別本身的唯一識別碼。 如需應用程式識別碼 URI 和已註冊的應用程式的其他屬性的詳細資訊，請參閱[本主題](https://msdn.microsoft.com/en-us/library/azure/dn499820.aspx#BKMK_Registering)。 按一下 [應用程式識別碼 URI] 欄位下方的核取方塊，您也可以選擇使用相同的應用程式識別碼 URI 的 Azure AD 中覆寫現有的註冊。
+    > 您可以選擇性地設定會依序按一下 Azure AD 中註冊應用程式識別碼 URI**更多選項**。 應用程式識別碼 URI 是應用程式，其 Azure AD 中註冊，並由應用程式用來與 Azure AD 進行通訊時識別本身的唯一識別碼。 如需應用程式識別碼 URI 和已註冊的應用程式的其他屬性的詳細資訊，請參閱[本主題](https://msdn.microsoft.com/library/azure/dn499820.aspx#BKMK_Registering)。 按一下 [應用程式識別碼 URI] 欄位下方的核取方塊，您也可以選擇使用相同的應用程式識別碼 URI 的 Azure AD 中覆寫現有的註冊。
 4. 按一下後**確定**、 登入 對話方塊隨即出現，以及您要使用的全域管理員帳戶 （不與您訂用帳戶相關聯的 Microsoft 帳戶） 登入。 如果您先前建立新的系統管理員帳戶，您將必須變更密碼，然後登入一次使用新的密碼。   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image9.png)
-5. 您已成功通過驗證之後，**新增 ASP.NET 專案**對話方塊會顯示您的驗證選項 (**組織**) 並將新的應用程式的目錄註冊 (*aricka0yahoo.onmicrosoft.com*在下圖)。 以下這項資訊，請選取標示的核取方塊**雲端中的主機**。 如果選取此核取方塊，則專案會佈建為 Azure web 應用程式，並將簡單發行更新版本的啟用。 按一下 [確定]。   
+5. 您已成功通過驗證之後，**新增 ASP.NET 專案**對話方塊會顯示您的驗證選項 (**組織**) 並將新的應用程式的目錄註冊 (*aricka0yahoo.onmicrosoft.com*在下圖)。 以下這項資訊，請選取標示的核取方塊**雲端中的主機**。 如果選取此核取方塊，則專案會佈建為 Azure web 應用程式，並將簡單發行更新版本的啟用。 按一下 [確定 **Deploying Office Solutions**]。   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image10.png)
 6. **設定 Azure 網站**對話方塊隨即出現，使用系統自動產生站台名稱和區域。 也請注意您目前登入對話方塊中的帳戶。 您想要確定此帳戶是一個 Azure 訂用帳戶附加到，通常是 Microsoft 帳戶。
 
     > [!NOTE]
-    > 這個專案需要資料庫。 您必須選取其中一個現有的資料庫，或是另外新建一個。 需要資料庫，因為專案已經使用本機資料庫檔案來儲存少量驗證組態資料。 當您部署至 Azure 網站應用程式時，此資料庫未隨附部署，因此您必須選擇一個可存取位於雲端。 按一下 [確定]。
+    > 這個專案需要資料庫。 您必須選取其中一個現有的資料庫，或是另外新建一個。 需要資料庫，因為專案已經使用本機資料庫檔案來儲存少量驗證組態資料。 當您部署至 Azure 網站應用程式時，此資料庫未隨附部署，因此您必須選擇一個可存取位於雲端。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image11.png)
 7. 將建立專案，和您的驗證選項和 web 應用程式選項將會自動設定與專案。 此程序完成後，請執行專案在本機按**^ F5**。 您必須使用您的組織帳戶登入。 提供您稍早建立的帳戶使用者名稱和密碼，然後按一下**登入**。   
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="basics-of-the-graph-api"></a>Graph API 的基本概念
 
-[Graph API](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx)是用來執行 CRUD 和其他物件上的作業，您的 Azure AD 目錄中的程式設計介面。 如果您選取驗證的組織帳戶選項，在 Visual Studio 2013 中建立新的專案時，您的應用程式將已設定為呼叫 Graph API。 本節簡短說明 Graph API 的運作方式。
+[Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx)是用來執行 CRUD 和其他物件上的作業，您的 Azure AD 目錄中的程式設計介面。 如果您選取驗證的組織帳戶選項，在 Visual Studio 2013 中建立新的專案時，您的應用程式將已設定為呼叫 Graph API。 本節簡短說明 Graph API 的運作方式。
 
 1. 在執行的應用程式中按一下頂端的登入的使用者名稱頁面的權限。 這會帶您前往 使用者設定檔頁面上，這可能會在首頁控制器的動作。 您會發現資料表包含您稍早建立的系統管理員帳戶相關的使用者資訊。 這項資訊會儲存在您的目錄，並會呼叫 Graph API 來載入頁面時，擷取這項資訊。   
   
@@ -151,6 +151,6 @@ ms.lasthandoff: 11/10/2017
 ## <a name="more-information"></a>更多資訊
 
 - [深入探討： Azure 網站和組織使用 Azure AD 的驗證](http://rickrainey.com/2014/08/19/deep-dive-azure-websites-and-organizational-authentication-using-azure-ad/)
-- [Azure AD Graph API 概觀](https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx)
-- [在 Azure AD 中的驗證案例](https://msdn.microsoft.com/en-us/library/azure/dn499820.aspx)
+- [Azure AD Graph API 概觀](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+- [在 Azure AD 中的驗證案例](https://msdn.microsoft.com/library/azure/dn499820.aspx)
 - [GitHub 上的 azure AD 程式碼範例](https://github.com/AzureADSamples)

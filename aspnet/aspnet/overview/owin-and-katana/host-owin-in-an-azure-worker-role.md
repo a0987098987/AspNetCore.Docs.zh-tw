@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 647514ae5a92b9d729179327fb97bd8005b0a4b2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8c0fdfdf60ff3bde34b6869adf3f8693b4d9615d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="host-owin-in-an-azure-worker-role"></a>主機 OWIN 的 Azure 背景工作角色
 ====================
@@ -26,13 +26,13 @@ ms.lasthandoff: 11/10/2017
 > 
 > [開啟適用於.NET 的 Web 介面](http://owin.org/)(OWIN) 定義.NET web 伺服器和 web 應用程式之間的抽象概念。 OWIN 以減少從 web 應用程式伺服器，使得 OWIN 適合自我裝載的 web 應用程式，在您自己的處理序，在 IIS 外部 – 例如，在 Azure 工作者角色。
 > 
-> 在此教學課程中，您將學習如何在自我裝載在 Microsoft Azure 背景工作角色內 OWIN 應用程式。 若要了解有關背景工作角色的詳細資訊，請參閱[Azure 執行模型](https://azure.microsoft.com/en-us/documentation/articles/fundamentals-application-models/#CloudServices)。
+> 在此教學課程中，您將學習如何在自我裝載在 Microsoft Azure 背景工作角色內 OWIN 應用程式。 若要了解有關背景工作角色的詳細資訊，請參閱[Azure 執行模型](https://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices)。
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 > 
 > 
 > - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
-> - [Azure SDK for.NET 2.3](https://azure.microsoft.com/en-us/downloads/)
+> - [Azure SDK for .NET 2.3](https://azure.microsoft.com/downloads/)
 > - [Microsoft.Owin.Selfhost 2.1.0](http://www.nuget.org/packages/Microsoft.Owin.SelfHost/2.1.0)
 
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 
 [![](host-owin-in-an-azure-worker-role/_static/image2.png)](host-owin-in-an-azure-worker-role/_static/image1.png)
 
-在**新的 Windows Azure 雲端服務** 對話方塊中，按兩下**背景工作角色**。 保留預設名稱 ("WorkerRole1")。 此步驟會將背景工作角色加入至方案。 按一下 [確定]。
+在**新的 Windows Azure 雲端服務** 對話方塊中，按兩下**背景工作角色**。 保留預設名稱 ("WorkerRole1")。 此步驟會將背景工作角色加入至方案。 按一下 [確定 **Deploying Office Solutions**]。
 
 [![](host-owin-in-an-azure-worker-role/_static/image4.png)](host-owin-in-an-azure-worker-role/_static/image3.png)
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="deploy-to-azure"></a>部署至 Azure
 
-此步驟中，您必須有 Azure 帳戶。 如果您還沒有其中一個，您可以建立免費的試用帳戶只需要幾分鐘的時間。 如需詳細資訊，請參閱[Microsoft Azure 免費試用](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F)。
+此步驟中，您必須有 Azure 帳戶。 如果您還沒有其中一個，您可以建立免費的試用帳戶只需要幾分鐘的時間。 如需詳細資訊，請參閱[Microsoft Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 
 在 [方案總管] 中，以滑鼠右鍵按一下 AzureApp 專案。 選取 [發行]。
 
@@ -151,5 +151,5 @@ Azure 活動記錄 視窗會顯示部署的進度。 部署應用程式時，瀏
 
 ## <a name="additional-resources"></a>其他資源
 
-- [專案 Katana 的概觀](an-overview-of-project-katana.md)
+- [Katana 專案概觀](an-overview-of-project-katana.md)
 - [Katana GitHub 上的專案](https://github.com/aspnet/AspNetKatana/)

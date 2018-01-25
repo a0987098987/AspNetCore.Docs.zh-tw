@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/setting-up-the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: 85468949ee61504d6076a191b70a96e8018c67aa
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b8176b3b8622e21187a91647323322e55582373c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="setting-up-the-contact-manager-solution"></a>設定連絡人管理員解決方案
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
     ![](setting-up-the-contact-manager-solution/_static/image1.png)
 
 > [!NOTE]
-> 如需有關 aspnet\_regsql 公用程式，請參閱[ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe)](https://msdn.microsoft.com/en-us/library/ms229862(v=vs.100).aspx)。
+> 如需有關 aspnet\_regsql 公用程式，請參閱[ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe)](https://msdn.microsoft.com/library/ms229862(v=vs.100).aspx)。
 
 
 下一個步驟是確定連絡管理員方案中的連接字串指向 SQL Server Express 的本機執行個體。

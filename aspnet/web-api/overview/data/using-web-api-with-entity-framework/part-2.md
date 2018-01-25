@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-2
 msc.type: authoredcontent
-ms.openlocfilehash: b75eae11fd99b60864256f79d4770a3007487964
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7e09316f0faaf0731e4cdda48040fdaedc0f244a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="add-models-and-controllers"></a>新增模型和控制站
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="add-model-classes"></a>新增模型類別
 
-在本教學課程中，我們將建立資料庫，使用 Entity Framework (EF) 的 「 程式碼優先 」 方法。 Code first 您撰寫 C# 類別對應至資料庫資料表，並 EF 建立資料庫。 (如需詳細資訊，請參閱[Entity Framework 開發方式](https://msdn.microsoft.com/en-us/library/ms178359%28v=vs.110%29.aspx#dbfmfcf)。)
+在本教學課程中，我們將建立資料庫，使用 Entity Framework (EF) 的 「 程式碼優先 」 方法。 Code first 您撰寫 C# 類別對應至資料庫資料表，並 EF 建立資料庫。 (如需詳細資訊，請參閱[Entity Framework 開發方式](https://msdn.microsoft.com/library/ms178359%28v=vs.110%29.aspx#dbfmfcf)。)
 
 我們一開始定義為 POCOs （純舊 CLR 物件） 的網域物件。 我們將建立下列 POCOs:
 

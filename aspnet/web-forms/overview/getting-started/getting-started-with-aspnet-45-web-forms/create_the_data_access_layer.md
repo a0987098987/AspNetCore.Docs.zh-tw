@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: ebace10dc8a861ab38bd5c834c2225e3373f13fe
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 809609155b06c4632bd4f450082d84c432c7a46f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-the-data-access-layer"></a>建立資料存取層
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="creating-the-data-models"></a>建立資料模型
 
-[Entity Framework](https://msdn.microsoft.com/en-us/data/aa937723)是物件關聯式對應 (ORM) 架構。 它可讓您使用關聯式資料，以排除大部分資料存取程式碼，您通常需要撰寫的物件。 使用 Entity Framework，您可以發出查詢使用[LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx)，然後擷取和操作資料當做強型別物件。 LINQ 提供查詢及更新的資料的模式。 使用 Entity Framework 可讓您專注於建立您的應用程式的其餘部分，而不是將焦點放在資料存取基礎。 稍後在本教學課程的系列，我們將示範如何使用資料來填入瀏覽和產品的查詢。
+[Entity Framework](https://msdn.microsoft.com/data/aa937723)是物件關聯式對應 (ORM) 架構。 它可讓您使用關聯式資料，以排除大部分資料存取程式碼，您通常需要撰寫的物件。 使用 Entity Framework，您可以發出查詢使用[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)，然後擷取和操作資料當做強型別物件。 LINQ 提供查詢及更新的資料的模式。 使用 Entity Framework 可讓您專注於建立您的應用程式的其餘部分，而不是將焦點放在資料存取基礎。 稍後在本教學課程的系列，我們將示範如何使用資料來填入瀏覽和產品的查詢。
 
 Entity Framework 支援呼叫開發架構*Code First*。 程式碼第一次可讓您定義資料模型使用類別。 類別是一種建構，可讓您建立您自己的自訂類型，分組在一起的其他型別、 方法和事件變數。 您可以將類別對應至現有的資料庫，或使用它們來產生資料庫。 在本教學課程中，您將撰寫資料模型類別來建立資料模型。 然後，您會讓 Entity Framework 從這些新的類別上建立資料庫。
 
@@ -181,11 +181,11 @@ Entity Framework Code First 會產生資料庫針對您在預設位置時資料�
 
 ## <a name="additional-resources"></a>其他資源
 
-[Entity Framework 概觀](https://msdn.microsoft.com/en-us/library/bb399567.aspx)   
-[ADO.NET Entity Framework 初學者指南](https://msdn.microsoft.com/en-us/data/ee712907)   
+[Entity Framework 概觀](https://msdn.microsoft.com/library/bb399567.aspx)   
+[ADO.NET Entity Framework 初學者指南](https://msdn.microsoft.com/data/ee712907)   
 [Code First 開發有 Entity Framework](http://www.msteched.com/2010/Europe/DEV212) （影片）   
-[程式碼第一個關聯性 Fluent 應用程式開發介面](https://msdn.microsoft.com/en-us/data/hh134698)   
-[第一個資料註解的程式碼](https://msdn.microsoft.com/en-us/data/gg193958)  
+[程式碼第一個關聯性 Fluent 應用程式開發介面](https://msdn.microsoft.com/data/hh134698)   
+[第一個資料註解的程式碼](https://msdn.microsoft.com/data/gg193958)  
 [Entity Framework 的產能改善功能](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0)
 
 >[!div class="step-by-step"]

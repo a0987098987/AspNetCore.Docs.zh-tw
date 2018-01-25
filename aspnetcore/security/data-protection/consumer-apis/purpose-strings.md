@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/consumer-apis/purpose-strings
-ms.openlocfilehash: b1e95c9d0aa8195aa73fddfb97a4079e67a351bf
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 181d2ae85f38051ea12c7b7ac79198ec05f36bec
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="purpose-strings"></a>目的字串
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/19/2018
 >
 >Contoso 撰寫的元件，負責 minting 持有者權杖可能會使用 Contoso.Security.BearerToken 以其用途的字串。 或者-更好的-它可能會使用 Contoso.Security.BearerToken.v1 以其用途的字串。 附加的版本號碼可以使用 Contoso.Security.BearerToken.v2 做為其用途，未來版本，並為裝載到不同的版本會是彼此完全隔離。
 
-因為目的參數`CreateProtector`是字串陣列，上述無法改為指定為`[ "Contoso.Security.BearerToken", "v1" ]`。 這樣可讓您建立階層的用途，並開啟與資料保護系統的多租用戶案例的可能性。
+因為目的參數`CreateProtector`是字串陣列，上述可能已改為指定為`[ "Contoso.Security.BearerToken", "v1" ]`。 這樣可讓您建立階層的用途，並開啟與資料保護系統的多租用戶案例的可能性。
 
 <a name="data-protection-contoso-purpose"></a>
 
@@ -53,9 +53,9 @@ ms.lasthandoff: 01/19/2018
 
 * 兩個目的引數是相等的如果且只有它們包含相同的字串 （使用序數比較子） 相同的順序。 單一目的引數就相當於對應的單一項目的陣列。
 
-* 兩個`IDataProtector`物件相等，如果且只有在建立對等項目從`IDataProtectionProvider`具有對等用途的參數物件。
+* 兩個`IDataProtector`物件相等，如果且只有從對等項目建立`IDataProtectionProvider`具有對等用途的參數物件。
 
 * 針對給定`IDataProtector`物件、 呼叫`Unprotect(protectedData)`會傳回原始`unprotectedData`如果且只有`protectedData := Protect(unprotectedData)`如需參考相等`IDataProtector`物件。
 
 > [!NOTE]
-> 我們正在不考慮某些元件刻意選擇目的字串，也就是與另一個元件發生衝突的情況。 這類元件會被視為惡意，基本上，此系統不是工作者處理序內已執行惡意程式碼時提供安全性保證。
+> 我們正在不考慮某些元件刻意選擇目的字串，也就是與另一個元件發生衝突的情況。 這類元件會被視為惡意，基本上，此系統不想要在背景工作處理序內的惡意程式碼已在執行時提供安全性保證。

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
 msc.type: authoredcontent
-ms.openlocfilehash: 1c24ccd220bf6df09a958d07b13077f004da0a03
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e3347657fb5c7bf8c7bb4e51a2e810a1edde826a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a>ASP.NET Web Form 連接恢復功能和命令攔截
 ====================
@@ -39,13 +39,13 @@ ms.lasthandoff: 11/10/2017
 
 開始之前，請確定您已在電腦上安裝下列軟體：
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。 會自動安裝.NET Framework。
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。 會自動安裝.NET Framework。
 - Wingtip Toys 範例專案，以便您可以實作在本教學課程，Wingtip Toys 專案中所述的功能。 下列連結提供下載詳細資料：
 
     - [開始使用 ASP.NET 4.5.1 Web Form-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&amp;clcid=0x409) (C#)
 - 之前完成本教學課程，請考慮檢閱相關的教學課程系列，[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013](../getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview.md)。 教學課程將協助您熟悉**WingtipToys**專案和程式碼。
 
-## <a name="connection-resiliency"></a>連接恢復功能
+## <a name="connection-resiliency"></a>連線恢復功能
 
 當您考慮應用程式部署到 Windows Azure 時，要考慮的其中一個選項部署至資料庫**Windows** **Azure SQL Database**，雲端資料庫服務。 當您連線到比當您的 web 伺服器和資料庫伺服器直接連接在一起在相同的資料中心的雲端資料庫服務，暫時性連接錯誤是通常會更頻繁。 即使雲端 web 伺服器和雲端資料庫服務會裝載在相同的資料中心，有更多的網路連線之間可以有問題，例如負載平衡器。
 
@@ -81,7 +81,7 @@ Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfigura
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample3.cs?highlight=14-15,17-22)]
 
-藉由新增`RetryLimitExceededException`例外狀況，您可以提供更好的記錄或顯示錯誤訊息給使用者，他們可以選擇要再試一次程序。 藉由捕捉`RetryLimitExceededException`例外狀況，可能是暫時性的唯一錯誤將已有已嘗試且失敗數次。 傳回實際的例外狀況會包裝在`RetryLimitExceededException`例外狀況。 此外，您也會新增一般 catch 區塊。 如需有關`RetryLimitExceededException`例外狀況，請參閱[Entity Framework 連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/en-us/data/dn456835)。
+藉由新增`RetryLimitExceededException`例外狀況，您可以提供更好的記錄或顯示錯誤訊息給使用者，他們可以選擇要再試一次程序。 藉由捕捉`RetryLimitExceededException`例外狀況，可能是暫時性的唯一錯誤將已有已嘗試且失敗數次。 傳回實際的例外狀況會包裝在`RetryLimitExceededException`例外狀況。 此外，您也會新增一般 catch 區塊。 如需有關`RetryLimitExceededException`例外狀況，請參閱[Entity Framework 連接恢復功能 / 重試邏輯](https://msdn.microsoft.com/data/dn456835)。
 
 ## <a name="command-interception"></a>命令攔截
 

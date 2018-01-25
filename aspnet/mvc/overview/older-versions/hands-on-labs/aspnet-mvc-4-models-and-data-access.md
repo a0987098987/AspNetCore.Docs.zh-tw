@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: bf4bb5c6f9ad8339c3597b0d6666c7077ac476e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 076fa87eff140a3e7ff6855e4876abac40419c57
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 模型和資料存取
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/en-us/download/29843](https://www.microsoft.com/en-us/download/29843)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
 
 
 在**ASP.NET MVC 基礎**實際操作實驗室中，您有已硬式編碼的資料將從傳遞控制站至檢視範本。 但是，才能建立實際的 Web 應用程式，您可能想要使用實際的資料庫。
@@ -235,7 +235,7 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE]
     > 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
     > 
-    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/en-us/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx)。
+    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx)。
 3. 更新**索引**動作方法，以擷取所有內容類型。
 
     (程式碼片段-*模型和資料存取-Ex1 存放區索引*)
@@ -351,7 +351,7 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE]
     > 若要使用程式碼優先 」 慣例，內容類型的類別必須將自動偵測到主索引鍵屬性。
     > 
-    > 閱讀更多關於此程式碼優先 」 慣例[msdn 文章](https://msdn.microsoft.com/en-us/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx)。
+    > 閱讀更多關於此程式碼優先 」 慣例[msdn 文章](https://msdn.microsoft.com/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx)。
 2. 現在，開啟 POCO 模型類別**專輯**從**模型**專案資料夾和包含的外部索引鍵，建立屬性的名稱**GenreId**和**ArtistId**。 這個類別已經有**GenreId**主索引鍵。
 
     (程式碼片段-*模型和資料存取-Ex2 程式碼的第一個專輯*)
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/10/2017
     [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample12.cs)]
 
     > [!NOTE]
-    > 使用 Entity Framework **DbContext**和**DBSet**您將能夠查詢 POCO 類別類型。 藉由擴充**OnModelCreating**方法，就中指定**程式碼**如何將內容類型對應至資料庫資料表。 您可以在 msdn 上的本文中找到有關 DBContext 和 DBSet 詳細資訊：[連結](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.103).aspx)
+    > 使用 Entity Framework **DbContext**和**DBSet**您將能夠查詢 POCO 類別類型。 藉由擴充**OnModelCreating**方法，就中指定**程式碼**如何將內容類型對應至資料庫資料表。 您可以在 msdn 上的本文中找到有關 DBContext 和 DBSet 詳細資訊：[連結](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)
 
 <a id="Ex2Task4"></a>
 
@@ -416,7 +416,7 @@ ms.lasthandoff: 11/10/2017
     > [!NOTE]
     > 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
     > 
-    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/en-us/library/bb397926(v=vs.110).aspx)。
+    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926(v=vs.110).aspx)。
 3. 更新**索引**動作方法，以擷取所有內容類型。
 
     (程式碼片段-*模型和資料存取-Ex2 存放區索引*)
@@ -457,7 +457,7 @@ ms.lasthandoff: 11/10/2017
 在此練習中，您將學習如何查詢資料庫中使用參數，以及如何使用查詢結果成形的功能會減少數字的資料庫會以更有效率的方式存取擷取資料。
 
 > [!NOTE]
-> 如需查詢結果來形成的進一步資訊，請造訪下列[msdn 文章](https://msdn.microsoft.com/en-us/library/bb896272&amp;#040;v=vs.100&amp;#041;.aspx)。
+> 如需查詢結果來形成的進一步資訊，請造訪下列[msdn 文章](https://msdn.microsoft.com/library/bb896272&amp;#040;v=vs.100&amp;#041;.aspx)。
 
 
 <a id="Ex3Task1"></a>

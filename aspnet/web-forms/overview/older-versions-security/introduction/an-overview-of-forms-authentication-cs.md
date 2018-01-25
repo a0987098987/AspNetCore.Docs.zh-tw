@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8d6e6e7dd3ee11876b5237fc69f3b5b2818a88de
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d386a3b6328675fe21f989f8fd36bfc91fc08b32
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="an-overview-of-forms-authentication-c"></a>表單驗證 (C#) 的概觀
 ====================
@@ -39,12 +39,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="understanding-the-forms-authentication-workflow"></a>了解表單驗證工作流程
 
-當 ASP.NET 執行階段處理的要求是 ASP.NET 的資源，例如 ASP.NET 頁面或 ASP.NET Web 服務，要求會在其生命週期引發的事件數目。 沒有在要求的要求已通過驗證和授權，在未處理的例外狀況，以及其他等等的情況下所引發的事件時引發的非常開始和結束時引發的事件。 若要查看事件的完整清單，請參閱[HttpApplication 物件事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication_events.aspx)。
+當 ASP.NET 執行階段處理的要求是 ASP.NET 的資源，例如 ASP.NET 頁面或 ASP.NET Web 服務，要求會在其生命週期引發的事件數目。 沒有在要求的要求已通過驗證和授權，在未處理的例外狀況，以及其他等等的情況下所引發的事件時引發的非常開始和結束時引發的事件。 若要查看事件的完整清單，請參閱[HttpApplication 物件事件](https://msdn.microsoft.com/library/system.web.httpapplication_events.aspx)。
 
 *HTTP 模組*是受管理的程式碼執行以回應要求的生命週期中的特定事件的類別。 ASP.NET 隨附之 HTTP 模組執行基本工作，在幕後的數目。 兩個內建的 HTTP 模組，特別相關討論的是：
 
-- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx)**– 會驗證使用者，藉由檢查表單驗證票證，通常包含在使用者的 cookie 集合。 如果沒有表單驗證票證已存在，就像匿名使用者。
-- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/en-us/library/system.web.security.urlauthorizationmodule.aspx)**– 判斷目前使用者是否獲授權存取要求的 URL。 此模組會判定應用程式的組態檔中指定的授權規則來判斷授權單位。 ASP.NET 也包含[ `FileAuthorizationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.fileauthorizationmodule.aspx) ，查閱要求的檔案 Acl 決定授權單位。
+- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)**– 會驗證使用者，藉由檢查表單驗證票證，通常包含在使用者的 cookie 集合。 如果沒有表單驗證票證已存在，就像匿名使用者。
+- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)**– 判斷目前使用者是否獲授權存取要求的 URL。 此模組會判定應用程式的組態檔中指定的授權規則來判斷授權單位。 ASP.NET 也包含[ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx) ，查閱要求的檔案 Acl 決定授權單位。
 
 `FormsAuthenticationModule`嘗試驗證使用者之前`UrlAuthorizationModule`(和`FileAuthorizationModule`) 執行。 如果提出要求的使用者未獲授權存取要求的資源，授權模組會終止要求，並且傳回[HTTP 401 未經授權](http://www.checkupdown.com/status/E401.html)狀態。 在 Windows 驗證的情況下，會傳回至瀏覽器的 HTTP 401 狀態。 此狀態碼讓瀏覽器會提示使用者輸入其認證能夠透過強制回應對話方塊。 使用表單驗證，不過，HTTP 401 未經授權的狀態會永遠不會傳送至瀏覽器由於 FormsAuthenticationModule 偵測到此狀態，並修改它改為將使用者重新導向至登入頁面 (透過[HTTP 302 重新導向](http://www.checkupdown.com/status/E302.html)狀態)。
 
@@ -76,7 +76,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 ## <a name="step-1-creating-an-aspnet-website-for-this-tutorial-series"></a>步驟 1： 建立用於此教學課程系列的 ASP.NET 網站
 
-若要前往的最大的可能對象，我們將在這一系列整個建置 ASP.NET 網站將會建立與 Microsoft 的免費版本的 Visual Studio 2008， [Visual Web Developer 2008](https://www.microsoft.com/express/vwd/)。 我們會實作`SqlMembershipProvider`使用者存放區中的[Microsoft SQL Server 2005 Express 的 Edition](https://msdn.microsoft.com/en-us/sql/Aa336346.aspx)資料庫。 如果您使用 Visual Studio 2005 或不同版本的 Visual Studio 2008 或 SQL Server，也請別擔心-步驟會幾乎完全相同，指出任何重要的差異。
+若要前往的最大的可能對象，我們將在這一系列整個建置 ASP.NET 網站將會建立與 Microsoft 的免費版本的 Visual Studio 2008， [Visual Web Developer 2008](https://www.microsoft.com/express/vwd/)。 我們會實作`SqlMembershipProvider`使用者存放區中的[Microsoft SQL Server 2005 Express 的 Edition](https://msdn.microsoft.com/sql/Aa336346.aspx)資料庫。 如果您使用 Visual Studio 2005 或不同版本的 Visual Studio 2008 或 SQL Server，也請別擔心-步驟會幾乎完全相同，指出任何重要的差異。
 
 > [!NOTE]
 > 每個教學課程中所示範 web 應用程式是可供下載。 此下載的應用程式是以目標為.NET Framework 3.5 版的 Visual Web Developer 2008 建立的。 應用程式適用於.NET 3.5 為目標，因為其 Web.config 檔案會包含其他、 3.5 特有的組態項目。 長劇本短時，如果您有尚未安裝.NET 3.5，然後下載 web 應用程式的電腦上未先移除 3.5 特定標記從 Web.config，將無法運作。
@@ -85,7 +85,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 我們可以設定表單驗證之前，我們先需要 ASP.NET 網站。 開始建立新檔案系統以 ASP.NET 網站。 若要這麼做，請啟動 Visual Web Developer 然後移至 檔案 功能表，並選擇新的網站，顯示新的網站 對話方塊。 選擇 ASP.NET 網站範本、 設定到檔案系統位置下拉式清單中，選擇要將網站的資料夾和設定的語言為 C#。 這將使用 ASP.NET Default.aspx 頁面上，應用程式建立新的網站\_Data 資料夾，然後 Web.config 檔案。
 
 > [!NOTE]
-> Visual Studio 支援的專案管理的兩種模式： 網站專案和 Web 應用程式專案。 網站專案沒有專案檔中，而 Web 應用程式專案模仿專案架構在 Visual Studio.NET 2002年/2003年-它們包括專案檔和專案的來源的程式碼編譯為放置 /bin 資料夾中的單一組件。 Visual Studio 2005 一開始只支援的網站專案，雖然 Web 應用程式專案模型已經重新引入含 Service Pack 1。Visual Studio 2008 提供這兩個專案的模型。 Visual Web Developer 2005 和 2008年版本，不過，僅支援的網站專案。 我將使用的網站專案模型。 如果您正在使用非 Express edition，而且想要使用[Web 應用程式專案模型](https://msdn.microsoft.com/en-us/library/aa730880%28vs.80%29.aspx)相反地，您可以任意去以執行這項操作，但請注意螢幕和相對於必須採取的步驟上看到的內容之間可能會有些不一致螢幕擷取畫面所示，在這些教學課程所提供的指示。
+> Visual Studio 支援的專案管理的兩種模式： 網站專案和 Web 應用程式專案。 網站專案沒有專案檔中，而 Web 應用程式專案模仿專案架構在 Visual Studio.NET 2002年/2003年-它們包括專案檔和專案的來源的程式碼編譯為放置 /bin 資料夾中的單一組件。 Visual Studio 2005 一開始只支援的網站專案，雖然 Web 應用程式專案模型已經重新引入含 Service Pack 1。Visual Studio 2008 提供這兩個專案的模型。 Visual Web Developer 2005 和 2008年版本，不過，僅支援的網站專案。 我將使用的網站專案模型。 如果您正在使用非 Express edition，而且想要使用[Web 應用程式專案模型](https://msdn.microsoft.com/library/aa730880%28vs.80%29.aspx)相反地，您可以任意去以執行這項操作，但請注意螢幕和相對於必須採取的步驟上看到的內容之間可能會有些不一致螢幕擷取畫面所示，在這些教學課程所提供的指示。
 
 
 [![建立新檔案系統為基礎的網站](an-overview-of-forms-authentication-cs/_static/image3.png)](an-overview-of-forms-authentication-cs/_static/image2.png)
@@ -95,7 +95,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 ### <a name="adding-a-master-page"></a>加入主版頁面
 
-接下來，將新的主版頁面加入至名為 Site.master 的根目錄中的站台。 [主版頁面](https://msdn.microsoft.com/en-us/library/wtxbf3hh.aspx)讓網頁開發人員定義的全站台的範本，可以套用到 ASP.NET 頁面。 主版頁面的主要優點是站台的整體外觀可以定義在單一位置，藉此讓您輕鬆更新或調整網站的版面配置。
+接下來，將新的主版頁面加入至名為 Site.master 的根目錄中的站台。 [主版頁面](https://msdn.microsoft.com/library/wtxbf3hh.aspx)讓網頁開發人員定義的全站台的範本，可以套用到 ASP.NET 頁面。 主版頁面的主要優點是站台的整體外觀可以定義在單一位置，藉此讓您輕鬆更新或調整網站的版面配置。
 
 
 [![加入主版頁面名稱為網站 Site.master](an-overview-of-forms-authentication-cs/_static/image6.png)](an-overview-of-forms-authentication-cs/_static/image5.png)
@@ -149,7 +149,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 ## <a name="step-2-enabling-forms-authentication"></a>步驟 2： 啟用表單驗證
 
-建立 ASP.NET 網站後下, 一步是要啟用表單驗證。 透過指定應用程式的驗證設定[`<authentication>`元素](https://msdn.microsoft.com/en-us/library/532aee0e.aspx)Web.config 中。`<authentication>`元素包含單一屬性，名為指定的應用程式所使用的驗證模型的模式。 這個屬性可以具有下列四個值之一：
+建立 ASP.NET 網站後下, 一步是要啟用表單驗證。 透過指定應用程式的驗證設定[`<authentication>`元素](https://msdn.microsoft.com/library/532aee0e.aspx)Web.config 中。`<authentication>`元素包含單一屬性，名為指定的應用程式所使用的驗證模型的模式。 這個屬性可以具有下列四個值之一：
 
 - **Windows** – 述前述教學課程中，當應用程式使用 Windows 驗證是驗證訪客，web 伺服器的責任，並通常會透過基本、 摘要式或整合式 Windows驗證。
 - **Form**– 透過 web 網頁上的表單驗證使用者。
@@ -220,7 +220,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 在 ASP.NET 2.0 之前開發人員所負責實作自己使用者存放區，並撰寫程式碼以驗證對存放區提供的認證。 大部分的開發人員會實作使用者存放區在資料庫中，建立名為資料表的使用者其資料行，例如使用者名稱、 密碼、 電子郵件、 LastLoginDate，等等。 然後，此資料表中，會有一筆記錄，每個使用者帳戶。 正在驗證的使用者提供的認證會包含查詢比對的使用者名稱的資料庫，然後確保資料庫中的密碼，對應到所提供的密碼。
 
-使用 ASP.NET 2.0 中，開發人員應該使用其中一個成員資格提供者來管理使用者存放區。 在此教學課程中，我們將使用 SqlMembershipProvider，用於使用者存放區中的 SQL Server 資料庫。 當使用 SqlMembershipProvider 我們需要實作的特定資料庫結構描述包括資料表、 檢視和預存程序提供者所預期。 我們將檢查如何實作這個結構描述中的***在 SQL Server 中建立成員資格結構描述***教學課程。 備妥的成員資格提供者，以驗證使用者的認證的很簡單，呼叫[成員資格類別](https://msdn.microsoft.com/en-us/library/system.web.security.membership.aspx)的[ValidateUser (*username*，*密碼*)方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.validateuser.aspx)，它會傳回布林值，指出是否應的有效性*username*和*密碼*組合。 因為我們還沒有實作 SqlMembershipProvider 使用者存放區，我們無法在這一次使用成員資格類別的 ValidateUser 方法。
+使用 ASP.NET 2.0 中，開發人員應該使用其中一個成員資格提供者來管理使用者存放區。 在此教學課程中，我們將使用 SqlMembershipProvider，用於使用者存放區中的 SQL Server 資料庫。 當使用 SqlMembershipProvider 我們需要實作的特定資料庫結構描述包括資料表、 檢視和預存程序提供者所預期。 我們將檢查如何實作這個結構描述中的***在 SQL Server 中建立成員資格結構描述***教學課程。 備妥的成員資格提供者，以驗證使用者的認證的很簡單，呼叫[成員資格類別](https://msdn.microsoft.com/library/system.web.security.membership.aspx)的[ValidateUser (*username*，*密碼*)方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)，它會傳回布林值，指出是否應的有效性*username*和*密碼*組合。 因為我們還沒有實作 SqlMembershipProvider 使用者存放區，我們無法在這一次使用成員資格類別的 ValidateUser 方法。
 
 而不是花一些時間來建立自己自訂的使用者資料庫資料表 （這會是已過時之後我們實作 SqlMembershipProvider,），讓我們改為硬式編碼內登入的有效認證頁面本身。 在 LoginButton Click 事件處理常式，加入下列程式碼：
 
@@ -230,23 +230,23 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 當使用者輸入有效的認證時，我提到，它們會再重新導向到的 「 適當頁面 」。 何謂透過適當的頁面？ 前文提過，當使用者存取他們未獲授權檢視的頁面，FormsAuthenticationModule 自動重新導向至登入頁面。 在此情況下，它會包含透過 ReturnUrl 參數 querystring 中要求的 URL。 也就是說，如果使用者嘗試瀏覽 ProtectedPage.aspx，而且他們未獲授權執行這項操作，FormsAuthenticationModule 會將他們重新導向至：
 
-Login.aspx？ReturnUrl=ProtectedPage.aspx
+Login.aspx?ReturnUrl=ProtectedPage.aspx
 
 在成功登入，使用者應該被重新導向回到 ProtectedPage.aspx。 或者，使用者可能會在他們自己 volition 上瀏覽登入頁面。 在此情況下，在使用者登入之後，它們應該傳送至根資料夾的 Default.aspx 頁面。
 
 ### <a name="logging-in-the-user"></a>登入使用者
 
-假設提供的認證是有效的我們需要建立表單驗證票證，藉此登入至站台的使用者。 [FormsAuthentication 類別](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.aspx)中[System.Web.Security 命名空間](https://msdn.microsoft.com/en-us/library/system.web.security.aspx)提供各種的方法登入和登出使用者透過表單驗證系統。 雖然 FormsAuthentication 類別有數種方法，便會是我們在此時感興趣的三個：
+假設提供的認證是有效的我們需要建立表單驗證票證，藉此登入至站台的使用者。 [FormsAuthentication 類別](https://msdn.microsoft.com/library/system.web.security.formsauthentication.aspx)中[System.Web.Security 命名空間](https://msdn.microsoft.com/library/system.web.security.aspx)提供各種的方法登入和登出使用者透過表單驗證系統。 雖然 FormsAuthentication 類別有數種方法，便會是我們在此時感興趣的三個：
 
-- [GetAuthCookie (*username*， *persistCookie*)](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.getauthcookie.aspx) – 建立所提供之名稱的表單驗證票證*username*。 接下來，此方法會建立，並傳回 HttpCookie 物件，包含驗證 ticket 的內容。 如果*persistCookie*為 true，會建立永續性 cookie。
-- [SetAuthCookie (*username*， *persistCookie*)](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.setauthcookie.aspx) – 呼叫 GetAuthCookie (*username*， *persistCookie*)若要產生表單驗證 cookie 的方法。 此方法接著會將 cookie 傳回 GetAuthCookie （假設 cookie 為基礎的表單驗證正在使用; 否則這個方法會呼叫內部類別，處理 cookie 票證邏輯） 的 Cookie 集合。
-- [RedirectFromLoginPage (*username*， *persistCookie*)](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.redirectfromloginpage.aspx) – 這個方法會呼叫 SetAuthCookie (*username*， *persistCookie*)，並再將使用者重新導向至適當的頁面。
+- [GetAuthCookie (*username*， *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.getauthcookie.aspx) – 建立所提供之名稱的表單驗證票證*username*。 接下來，此方法會建立，並傳回 HttpCookie 物件，包含驗證 ticket 的內容。 如果*persistCookie*為 true，會建立永續性 cookie。
+- [SetAuthCookie (*username*， *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx) – 呼叫 GetAuthCookie (*username*， *persistCookie*)若要產生表單驗證 cookie 的方法。 此方法接著會將 cookie 傳回 GetAuthCookie （假設 cookie 為基礎的表單驗證正在使用; 否則這個方法會呼叫內部類別，處理 cookie 票證邏輯） 的 Cookie 集合。
+- [RedirectFromLoginPage (*username*， *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.redirectfromloginpage.aspx) – 這個方法會呼叫 SetAuthCookie (*username*， *persistCookie*)，並再將使用者重新導向至適當的頁面。
 
 當您需要先寫出的 cookie 的 Cookie 集合中修改驗證票證，GetAuthCookie 很方便。 如果您想要建立表單驗證票證，並將它加入至 Cookie 集合中，但不是想要將使用者重新導向至適當的頁面，SetAuthCookie 很有用。 可能是您想要將它們保存在登入頁面，或將它們傳送給一些其他的頁面。
 
 由於我們想要登入使用者，並將它們重新導向至適當的頁面，讓我們使用 RedirectFromLoginPage。 更新 LoginButton 的按一下事件處理常式，加上註解的兩個 TODO 行取代成下列程式碼行：
 
-FormsAuthentication.RedirectFromLoginPage UserName.Text (RememberMe.Checked）;
+FormsAuthentication.RedirectFromLoginPage(UserName.Text, RememberMe.Checked);
 
 建立表單驗證票證時我們使用表單驗證票證的使用者名稱文字方塊的 Text 屬性*username*參數和 RememberMe 核取方塊的核取的狀態*persistCookie*參數。
 
@@ -282,7 +282,7 @@ FormsAuthentication.RedirectFromLoginPage UserName.Text (RememberMe.Checked）;
 
 您可能已經猜到目前為止，這裡的想法是已驗證的訪客並只為匿名的訪客 AnonymousMessagePanel 顯示只 AuthenticatedMessagePanel。 若要完成這項作業，我們需要設定這些面板根據使用者登入或不可見的屬性。
 
-[Request.IsAuthenticated 屬性](https://msdn.microsoft.com/en-us/library/system.web.httprequest.isauthenticated.aspx)傳回布林值，指出是否已驗證要求。 下列程式碼輸入至網頁\_載入事件處理常式程式碼：
+[Request.IsAuthenticated 屬性](https://msdn.microsoft.com/library/system.web.httprequest.isauthenticated.aspx)傳回布林值，指出是否已驗證要求。 下列程式碼輸入至網頁\_載入事件處理常式程式碼：
 
 [!code-csharp[Main](an-overview-of-forms-authentication-cs/samples/sample7.cs)]
 
@@ -299,20 +299,20 @@ FormsAuthentication.RedirectFromLoginPage UserName.Text (RememberMe.Checked）;
 **圖 12**： 已驗證的使用者會顯示 「 歡迎回來"！ 訊息
 
 
-我們可以判斷目前登入使用者的身分識別，經由[HttpContext 物件](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.aspx)的[使用者屬性](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.user.aspx)。 HttpContext 物件代表目前的要求的相關資訊，和其他項目回應、 要求，以及工作階段中，這類一般 ASP.NET 物件首頁。 使用者屬性表示目前 HTTP 要求和實作的安全性內容[IPrincipal 介面](https://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.aspx)。
+我們可以判斷目前登入使用者的身分識別，經由[HttpContext 物件](https://msdn.microsoft.com/library/system.web.httpcontext.aspx)的[使用者屬性](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx)。 HttpContext 物件代表目前的要求的相關資訊，和其他項目回應、 要求，以及工作階段中，這類一般 ASP.NET 物件首頁。 使用者屬性表示目前 HTTP 要求和實作的安全性內容[IPrincipal 介面](https://msdn.microsoft.com/library/system.security.principal.iprincipal.aspx)。
 
 使用者屬性是由設定 FormsAuthenticationModule。 具體而言，當 FormsAuthenticationModule 傳入要求中找到表單驗證票證，它會建立新的 GenericPrincipal 物件並將它指派給使用者屬性。
 
 Principal 物件 （例如 GenericPrincipal) 提供的使用者身分識別和它們所隸屬的角色的相關資訊。 IPrincipal 介面會定義兩個成員：
 
-- [IsInRole (*roleName*)](https://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.isinrole.aspx) – 傳回布林值，指出主體是否屬於指定角色的方法。
-- [識別](https://msdn.microsoft.com/en-us/library/system.security.principal.iprincipal.identity.aspx)-傳回物件，用於實作的屬性[IIdentity 介面](https://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.aspx)。 IIdentity 介面會定義三個屬性： [AuthenticationType](https://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.authenticationtype.aspx)， [IsAuthenticated](https://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.isauthenticated.aspx)，和[名稱](https://msdn.microsoft.com/en-us/library/system.security.principal.iidentity.name.aspx)。
+- [IsInRole (*roleName*)](https://msdn.microsoft.com/library/system.security.principal.iprincipal.isinrole.aspx) – 傳回布林值，指出主體是否屬於指定角色的方法。
+- [識別](https://msdn.microsoft.com/library/system.security.principal.iprincipal.identity.aspx)-傳回物件，用於實作的屬性[IIdentity 介面](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx)。 IIdentity 介面會定義三個屬性： [AuthenticationType](https://msdn.microsoft.com/library/system.security.principal.iidentity.authenticationtype.aspx)， [IsAuthenticated](https://msdn.microsoft.com/library/system.security.principal.iidentity.isauthenticated.aspx)，和[名稱](https://msdn.microsoft.com/library/system.security.principal.iidentity.name.aspx)。
 
 我們可以判斷目前的訪客使用下列程式碼的名稱：
 
-字串 currentUsersName = User.Identity.Name;
+string currentUsersName = User.Identity.Name;
 
-當使用表單驗證， [FormsIdentity 物件](https://msdn.microsoft.com/en-us/library/system.web.security.formsidentity.aspx)建立 GenericPrincipal 識別屬性。 FormsIdentity 類別一律會傳回字串 「 表單 」 做為 AuthenticationType 屬性，並為其 IsAuthenticated 屬性為 true。 Name 屬性會傳回建立的表單驗證票證時指定的使用者名稱。 這三個屬性，除了 FormsIdentity 包括透過基礎的驗證票證的存取其[票證屬性](https://msdn.microsoft.com/en-us/library/system.web.security.formsidentity.ticket.aspx)。 票證屬性傳回型別的物件[FormsAuthenticationTicket](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationticket.aspx)，其中包含屬性，例如到期、 IsPersistent、 IssueDate、 名稱和等等。
+當使用表單驗證， [FormsIdentity 物件](https://msdn.microsoft.com/library/system.web.security.formsidentity.aspx)建立 GenericPrincipal 識別屬性。 FormsIdentity 類別一律會傳回字串 「 表單 」 做為 AuthenticationType 屬性，並為其 IsAuthenticated 屬性為 true。 Name 屬性會傳回建立的表單驗證票證時指定的使用者名稱。 這三個屬性，除了 FormsIdentity 包括透過基礎的驗證票證的存取其[票證屬性](https://msdn.microsoft.com/library/system.web.security.formsidentity.ticket.aspx)。 票證屬性傳回型別的物件[FormsAuthenticationTicket](https://msdn.microsoft.com/library/system.web.security.formsauthenticationticket.aspx)，其中包含屬性，例如到期、 IsPersistent、 IssueDate、 名稱和等等。
 
 才會離開以下是很重要的一點*username* FormsAuthentication.GetAuthCookie 中指定的參數 (*username*， *persistCookie*)，FormsAuthentication.SetAuthCookie (*username*， *persistCookie*)，和 FormsAuthentication.RedirectFromLoginPage (*username*， *persistCookie*) 方法是 User.Identity.Name 所傳回的相同值。 此外，這些方法所建立的驗證票證將 User.Identity FormsIdentity 物件轉型，然後存取票證屬性會提供：
 
@@ -320,7 +320,7 @@ Principal 物件 （例如 GenericPrincipal) 提供的使用者身分識別和�
 
 讓我們提供更個人化的訊息在 Default.aspx 中。 更新頁面\_載入事件處理常式，讓 WelcomeBackMessage 標籤的 文字屬性指派字串"歡迎回來， *username*！ 」
 
-WelcomeBackMessage.Text ="歡迎回來，"+ User.Identity.Name +"！"。
+WelcomeBackMessage.Text = "Welcome back, " + User.Identity.Name + "!";
 
 圖 13 顯示這項修改的效果 （當使用者 Scott 身分登入）。
 
@@ -334,7 +334,7 @@ WelcomeBackMessage.Text ="歡迎回來，"+ User.Identity.Name +"！"。
 
 已驗證和匿名使用者顯示不同的內容是常見的需求。所以會顯示目前登入使用者的名稱。 因此，ASP.NET 會包含提供相同的功能，顯示在 「 圖 13，但不需要撰寫一行程式碼的兩個 Web 控制項。
 
-[LoginView 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.loginview.aspx)是範本型 Web 控制項，以簡化顯示不同的資料驗證和匿名使用者。 LoginView 包含兩個預先定義的範本：
+[LoginView 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginview.aspx)是範本型 Web 控制項，以簡化顯示不同的資料驗證和匿名使用者。 LoginView 包含兩個預先定義的範本：
 
 - AnonymousTemplate – 任何標記加入至這個範本只會顯示為匿名的訪客。
 - LoggedInTemplate – 此範本的標記顯示只是為了通過驗證的使用者。
@@ -365,7 +365,7 @@ LoginView 與其他登入相關的控制項位於 工具箱 的登入 索引標�
 
 從設計工具或宣告式標記可定義 LoginView 的範本。 從 Visual Studio 設計工具中，展開 LoginView 的智慧標籤，列出在下拉式清單中設定的範本。 輸入文字"Hello，陌生人"成 AnonymousTemplate;接下來，加入超連結控制項，並將設定文字和 NavigateUrl 屬性以 「 記錄檔中"及"~ / Login.aspx"，分別。
 
-設定後 AnonymousTemplate，切換到 LoggedInTemplate 並輸入文字、 「 歡迎回來，"。 然後將 LoginName 控制項從 [工具箱] 拖曳到 LoggedInTemplate，放置 「 歡迎回來，"文字的後面。 [LoginName 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.loginname.aspx)，正如其名，顯示目前登入使用者的名稱。 就內部而言，LoginName 控制項只會輸出 User.Identity.Name 屬性
+設定後 AnonymousTemplate，切換到 LoggedInTemplate 並輸入文字、 「 歡迎回來，"。 然後將 LoginName 控制項從 [工具箱] 拖曳到 LoggedInTemplate，放置 「 歡迎回來，"文字的後面。 [LoginName 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginname.aspx)，正如其名，顯示目前登入使用者的名稱。 就內部而言，LoginName 控制項只會輸出 User.Identity.Name 屬性
 
 LoginView 範本這些新增項目之後，請在標記看起來應該如下所示：
 
@@ -403,9 +403,9 @@ LoginContent ContentPlaceHolder 覆寫預設標記，只要以滑鼠右鍵按一
 
 ## <a name="step-5-logging-out"></a>步驟 5： 登出
 
-我們探討了建置到網站、 登入使用者的登入頁面在步驟 3 中，但我們尚未以了解如何將使用者登出。記錄中的使用者的方法，除了 FormsAuthentication 類別也提供[SignOut 方法](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.signout.aspx)。 SignOut 方法只會終結表單驗證票證，藉此記錄將使用者登出網站。
+我們探討了建置到網站、 登入使用者的登入頁面在步驟 3 中，但我們尚未以了解如何將使用者登出。記錄中的使用者的方法，除了 FormsAuthentication 類別也提供[SignOut 方法](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)。 SignOut 方法只會終結表單驗證票證，藉此記錄將使用者登出網站。
 
-供應項目 [登出] 連結共通功能的 ASP.NET 包含控制項，專門用來將使用者登出。[LoginStatus 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.loginstatus.aspx)顯示 「 登入 」 LinkButton 或 「 登出 」 LinkButton，根據使用者的驗證狀態。 「 登入 」 LinkButton 呈現匿名使用者，而 「 登出 」 LinkButton 已驗證的使用者顯示。 「 登入 」 及 「 登出 」 LinkButtons 文字可以設定透過 LoginStatus LoginText 和 LogoutText 屬性。
+供應項目 [登出] 連結共通功能的 ASP.NET 包含控制項，專門用來將使用者登出。[LoginStatus 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginstatus.aspx)顯示 「 登入 」 LinkButton 或 「 登出 」 LinkButton，根據使用者的驗證狀態。 「 登入 」 LinkButton 呈現匿名使用者，而 「 登出 」 LinkButton 已驗證的使用者顯示。 「 登入 」 及 「 登出 」 LinkButtons 文字可以設定透過 LoginStatus LoginText 和 LogoutText 屬性。
 
 按一下 [登入] LinkButton 導致的回傳，從中發出重新導向至登入頁面。 按一下 「 登出 」 LinkButton 導致 LoginStatus 控制項叫用 FormsAuthentication.SignOff 方法，然後將使用者導向至網頁。 [記錄] 頁面上關閉使用者重新導向至取決於 LogoutAction 屬性，可以指派給三個下列值之一：
 
@@ -456,10 +456,10 @@ LoginContent ContentPlaceHolder 覆寫預設標記，只要以滑鼠右鍵按一
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [IIS6 與 IIS7 安全性之間的變更](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/Changes-between-IIS6-and-IIS7-Security)
-- [登入 ASP.NET 控制項](https://msdn.microsoft.com/en-us/library/d51ttbhx.aspx)
+- [登入 ASP.NET 控制項](https://msdn.microsoft.com/library/d51ttbhx.aspx)
 - [專業 ASP.NET 2.0 安全性、 成員資格和角色管理](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html)(ISBN: 978-0-7645-9698-8)
-- [`<authentication>`項目](https://msdn.microsoft.com/en-us/library/532aee0e.aspx)
-- [`<forms>`項目`<authentication>`](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx)
+- [`<authentication>`項目](https://msdn.microsoft.com/library/532aee0e.aspx)
+- [`<forms>`項目`<authentication>`](https://msdn.microsoft.com/library/1d3t3c61.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
 

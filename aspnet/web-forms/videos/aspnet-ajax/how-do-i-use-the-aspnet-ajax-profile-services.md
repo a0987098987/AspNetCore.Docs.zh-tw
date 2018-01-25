@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-profile-services
 msc.type: video
-ms.openlocfilehash: 33c3e8db8ed481d3d65eca1792edb965c16e3876
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 508ce4d3f3419737a54484e7dcd18dd5ac88353d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="how-do-i-use-the-aspnet-ajax-profile-services"></a>[如何:]使用 ASP.NET AJAX 設定檔服務嗎？
 ====================
 由[Chris Pels](https://twitter.com/chrispels)
 
-ASP.NET 2.0 導入了[設定檔屬性](https://msdn.microsoft.com/en-us/library/at64shx3.aspx)與中，您可以儲存您的 ASP.NET Web 應用程式的每個使用者的詳細資料。 ASP.NET AJAX 服務設定檔可讓您擷取使用者設定檔屬性，從伺服器端 Web 應用程式的用戶端 Web 介面。 這部影片示範如何範例啟用 AJAX 的移動站台可以儲存使用者的移動要求資訊，讓他或她接著瀏覽網站時，就可以擷取詳細資料。
+ASP.NET 2.0 導入了[設定檔屬性](https://msdn.microsoft.com/library/at64shx3.aspx)與中，您可以儲存您的 ASP.NET Web 應用程式的每個使用者的詳細資料。 ASP.NET AJAX 服務設定檔可讓您擷取使用者設定檔屬性，從伺服器端 Web 應用程式的用戶端 Web 介面。 這部影片示範如何範例啟用 AJAX 的移動站台可以儲存使用者的移動要求資訊，讓他或她接著瀏覽網站時，就可以擷取詳細資料。
 
 [&#9654;觀看影片 （11 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-profile-services)
 

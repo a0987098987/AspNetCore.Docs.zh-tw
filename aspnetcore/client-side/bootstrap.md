@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: client-side/bootstrap
-ms.openlocfilehash: aee3304515686fc8e45e8e2aafb79d957219f94a
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 4332dce4c341cb8e5c241a67547048301ae9a8b1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
 
@@ -214,8 +214,8 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ## <a name="javascript-support"></a>JavaScript 支援
 
-啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不會捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的啟動程序 – 若要了解更多，請瀏覽內建 JavaScript 附加[http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)。
+啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的啟動程序 – 若要了解更多，請瀏覽內建 JavaScript 附加[http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)。
 
 ## <a name="summary"></a>總結
 
-啟動程序會提供一種 web 架構，可用來快速且有效率地配置和樣式各種不同的網站和應用程式。 其基本的印刷樣式和樣式提供愉快的外觀及操作，可輕鬆地透過自訂的佈景主題支援，可以對手工或購買商業上操作。 它支援的 web 元件在過去會需要耗費資源的協力廠商控制項，來完成，同時支援現代化和開啟 web 標準的主機。
+啟動程序會提供一種 web 架構，可用來快速且有效率地配置和樣式各種不同的網站和應用程式。 其基本的印刷樣式和樣式提供愉快的外觀及操作，可輕鬆地透過自訂的佈景主題支援，可以對手工或購買商業上操作。 它支援的 web 元件在過去就已經要求昂貴的協力廠商控制項，來完成，同時支援現代化和開啟 web 標準的主機。

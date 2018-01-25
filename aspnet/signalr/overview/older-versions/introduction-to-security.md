@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 04487614b219f8f6f8f0524c3b5f1aa42480c4d3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ebc83098b73902fa3f7a90a38dafc43b413e75fe
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-signalr-security-signalr-1x"></a>SignalR 安全性簡介 (SignalR 1.x)
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > 本文將告訴您開發的 SignalR 應用程式時必須考量的安全性問題。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 
 SignalR 被設計來整合到現有的驗證結構，應用程式。 它不提供任何功能來驗證使用者。 相反地，您驗證使用者，因為您通常會在應用程式中，然後會使用 SignalR 程式碼中的驗證結果。 例如，您可能會使用 ASP.NET 表單驗證，讓使用者通過驗證，並接著在您的中樞，強制執行哪些使用者或角色有權呼叫的方法。 在您的中樞，您也可以傳遞驗證資訊，例如使用者名稱或使用者是否屬於角色，用戶端。
 
-提供 SignalR[授權](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者可以存取的集線器或方法。 您可以套用 Authorize 屬性集線器或中樞中的特定方法。 若沒有授權屬性集線器上的所有公用方法可用來連線至中樞的用戶端。 如需集線器的詳細資訊，請參閱[SignalR 中樞的驗證和授權](../security/hub-authorization.md)。
+提供 SignalR[授權](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者可以存取的集線器或方法。 您可以套用 Authorize 屬性集線器或中樞中的特定方法。 若沒有授權屬性集線器上的所有公用方法可用來連線至中樞的用戶端。 如需集線器的詳細資訊，請參閱[SignalR 中樞的驗證和授權](../security/hub-authorization.md)。
 
 `Authorize`屬性搭配集線器。 若要強制執行時使用授權規則`PersistentConnection`必須覆寫`AuthorizeRequest`方法。 如需持續連線的詳細資訊，請參閱[SignalR 持續連線的驗證和授權](../security/persistent-connection-authorization.md)。
 

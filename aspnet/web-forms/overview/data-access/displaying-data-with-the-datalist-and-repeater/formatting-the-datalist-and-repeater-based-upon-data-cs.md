@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6e5bc0d9ac26801f48560cf07d4a0ab3854d5f74
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 604aa63919a881e828b6a3620360c3d1133c5830
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a>格式化 DataList 和中繼器根據資料 (C#)
 ====================
@@ -40,25 +40,25 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="using-theitemdataboundevent-handler"></a>使用`ItemDataBound`事件處理常式
 
-當資料繫結至資料清單，從資料來源控制項，或是透過程式設計方式將資料指派給控制項 s`DataSource`屬性，並呼叫其`DataBind()`方法中，DataList 的`DataBinding`事件引發時，資料來源列舉與每個資料記錄繫結至資料清單。 資料來源中的每一筆記錄，建立在 DataList [ `DataListItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistitem.aspx)也就是物件，然後繫結至目前的記錄。 在此過程中，DataList 會引發兩個事件：
+當資料繫結至資料清單，從資料來源控制項，或是透過程式設計方式將資料指派給控制項 s`DataSource`屬性，並呼叫其`DataBind()`方法中，DataList 的`DataBinding`事件引發時，資料來源列舉與每個資料記錄繫結至資料清單。 資料來源中的每一筆記錄，建立在 DataList [ `DataListItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx)也就是物件，然後繫結至目前的記錄。 在此過程中，DataList 會引發兩個事件：
 
 - **`ItemCreated`**之後，都會引發`DataListItem`已建立
 - **`ItemDataBound`**目前的記錄繫結至後引發`DataListItem`
 
 下列步驟概述 DataList 控制項的資料繫結程序。
 
-1. DataList s [ `DataBinding`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.control.databinding.aspx)引發
+1. DataList s [ `DataBinding`事件](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx)引發
 2. 資料繫結至資料清單  
   
  資料來源中的每一筆記錄 
 
     1. 建立`DataListItem`物件
-    2. 引發[`ItemCreated`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
+    2. 引發[`ItemCreated`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
     3. 繫結至資料錄`DataListItem`
-    4. 引發[`ItemDataBound`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
+    4. 引發[`ItemDataBound`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
     5. 新增`DataListItem`至`Items`集合
 
-資料繫結至在中繼器控制項中，當執行時透過完全相同的步驟序列。 唯一的差別，而不是`DataListItem`所建立的執行個體，會使用中繼器[ `RepeaterItem` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s。
+資料繫結至在中繼器控制項中，當執行時透過完全相同的步驟序列。 唯一的差別，而不是`DataListItem`所建立的執行個體，會使用中繼器[ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem(VS.80).aspx)s。
 
 > [!NOTE]
 > 精明讀取器可能已注意到有些微的異常狀況之間的時會發生 DataList 中繼器會繫結至資料和 GridView 繫結至資料時的步驟順序。 在資料繫結程序的結尾結束時，引發 GridView`DataBound`事件; 不過，DataList 都中繼器控制項有這類事件。 這是因為之前的前置和後置層級的事件處理常式模式變得常用回中 ASP.NET 1.x 時間範圍內，建立 DataList 和中繼器控制項。
@@ -93,7 +93,7 @@ DataList 控制項，格式變更為整個項目可以使用實作`DataListItem`
 
 [!code-csharp[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample1.cs)]
 
-概念和 DataList s 背後的語意時`ItemDataBound`事件處理常式會與所使用的 GridView s 相同`RowDataBound`中的事件處理常式*自訂格式化時資料*教學課程中，語法與稍微。 當`ItemDataBound`事件引發`DataListItem`剛才對應的事件處理常式，透過傳入繫結至資料`e.Item`(而不是`e.Row`，就像使用 GridView 的`RowDataBound`事件處理常式)。 DataList s`ItemDataBound`事件處理常式引發的*每個*DataList，包括標頭資料列、 頁尾資料列，以及分隔符號資料列加入資料列。 不過，產品資訊只繫結至資料列。 因此，當使用`ItemDataBound`事件，以檢查的資料繫結至資料清單中，我們需要先確定我們重新處理資料的項目。 這可以透過檢查`DataListItem`s [ `ItemType`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx)，且可以包含的其中一個[下列八個值](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.listitemtype.aspx):
+概念和 DataList s 背後的語意時`ItemDataBound`事件處理常式會與所使用的 GridView s 相同`RowDataBound`中的事件處理常式*自訂格式化時資料*教學課程中，語法與稍微。 當`ItemDataBound`事件引發`DataListItem`剛才對應的事件處理常式，透過傳入繫結至資料`e.Item`(而不是`e.Row`，就像使用 GridView 的`RowDataBound`事件處理常式)。 DataList s`ItemDataBound`事件處理常式引發的*每個*DataList，包括標頭資料列、 頁尾資料列，以及分隔符號資料列加入資料列。 不過，產品資訊只繫結至資料列。 因此，當使用`ItemDataBound`事件，以檢查的資料繫結至資料清單中，我們需要先確定我們重新處理資料的項目。 這可以透過檢查`DataListItem`s [ `ItemType`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.itemtype.aspx)，且可以包含的其中一個[下列八個值](https://msdn.microsoft.com/library/system.web.ui.webcontrols.listitemtype.aspx):
 
 - `AlternatingItem`
 - `EditItem`
@@ -104,7 +104,7 @@ DataList 控制項，格式變更為整個項目可以使用實作`DataListItem`
 - `SelectedItem`
 - `Separator`
 
-同時`Item`和`AlternatingItem``DataListItem`的結構 DataList 的資料項目。 假設我們重新使用`Item`或`AlternatingItem`，所以我們存取實際`ProductsRow`已繫結至目前的執行個體`DataListItem`。 `DataListItem` s [ `DataItem`屬性](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.datalistitem.dataitem.aspx)包含參考`DataRowView`物件，其`Row`屬性提供參考實際`ProductsRow`物件。
+同時`Item`和`AlternatingItem``DataListItem`的結構 DataList 的資料項目。 假設我們重新使用`Item`或`AlternatingItem`，所以我們存取實際`ProductsRow`已繫結至目前的執行個體`DataListItem`。 `DataListItem` s [ `DataItem`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.datalistitem.dataitem.aspx)包含參考`DataRowView`物件，其`Row`屬性提供參考實際`ProductsRow`物件。
 
 接下來，我們會檢查`ProductsRow`執行個體的`UnitPrice`屬性。 因為 Products 資料表 s`UnitPrice`欄位可讓`NULL`值，再嘗試存取`UnitPrice`屬性我們應該先檢查是否有`NULL`值使用`IsUnitPriceNull()`方法。 如果`UnitPrice`值不是`NULL`，我們接著查看是否它小於 $20.00 s。 如果它確實會在 $20.00，我們需要套用自訂格式。
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: dfd9c3c0c4e50a99e4f8703b01bd9b384930b87a
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 10aa1b493dbd0672cac789f6e48ddf2f14ba35dc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
 
@@ -277,7 +277,7 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 </cache>
 ```
 
-`priority`屬性並不保證快取保留特定層級。 `CacheItemPriority`是只是建議。 將此屬性設定為`NeverRemove`不保證一定會保留在快取。 請參閱[其他資源](#additional-resources)如需詳細資訊。
+`priority`屬性並不保證快取保留特定層級。 `CacheItemPriority`是只是建議。 將此屬性設定為`NeverRemove`並不保證一定會保留在快取。 請參閱[其他資源](#additional-resources)如需詳細資訊。
 
 快取標記協助程式是依賴[記憶體快取服務](xref:performance/caching/memory)。 如果尚未加入快取標記協助程式就會加入服務。
 

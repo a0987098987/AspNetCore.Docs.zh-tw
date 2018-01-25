@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5b4904037838441942ea266ce71d735642d0a717
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7412b32ac29179dfa319544781d4c7165c58196b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Async 和 Entity framework，ASP.NET MVC 應用程式中的預存程序
 ====================
@@ -128,11 +128,11 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 
     ![部門 Insert 預存程序](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
-程式碼會先建立預設預存程序名稱。 如果您使用現有的資料庫，您可能需要自訂預存程序名稱，才能使用資料庫中已定義的預存程序。 如需如何進行這項資訊，請參閱[Entity Framework 程式碼第一個 Insert/Update/Delete 預存程序](https://msdn.microsoft.com/en-us/data/dn468673)。
+程式碼會先建立預設預存程序名稱。 如果您使用現有的資料庫，您可能需要自訂預存程序名稱，才能使用資料庫中已定義的預存程序。 如需如何進行這項資訊，請參閱[Entity Framework 程式碼第一個 Insert/Update/Delete 預存程序](https://msdn.microsoft.com/data/dn468673)。
 
 如果您想要自訂所產生的預存程序，您可以編輯 scaffold 的程式碼移轉`Up`建立預存程序的方法。 如此一來您的變更會反映每當執行移轉，並會在實際執行部署後自動執行移轉時套用到您的生產資料庫。
 
-如果您想要變更現有的預存程序中的先前移轉所建立，您可以使用 Add-migration 命令來產生空白的移轉，並手動撰寫程式碼呼叫[AlterStoredProcedure](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx)方法.
+如果您想要變更現有的預存程序中的先前移轉所建立，您可以使用 Add-migration 命令來產生空白的移轉，並手動撰寫程式碼呼叫[AlterStoredProcedure](https://msdn.microsoft.com/library/system.data.entity.migrations.dbmigration.alterstoredprocedure.aspx)方法.
 
 ## <a name="deploy-to-azure"></a>部署至 Azure
 

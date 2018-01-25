@@ -1,6 +1,6 @@
 ---
 uid: mvc/mvc3
-title: "ASP.NET MVC 3 |Microsoft 文件"
+title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
 description: "(包含 2011 年 4 月更新工具)ASP.NET MVC 3 是用於建置使用信譽良好的設計模式的可擴充、 以標準為基礎的 web 應用程式的架構..."
 ms.author: aspnetcontent
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/mvc3
 msc.type: content
-ms.openlocfilehash: 1aa059e92b5637b9ba7ce488da4b44322dab6d8e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c7eee987b28a5d7f8b40fe89a7bf7517ec06646f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -165,7 +165,7 @@ Razor 還包含新的 HTML helper，如下所示：
 有時候您會想要執行的邏輯在動作方法執行之前或之後執行的動作方法。 若要支援此作業，ASP.NET MVC 2 會提供動作篩選條件。 動作篩選條件是自訂屬性，提供將動作前和動作後的行為加入至特定控制器動作方法的宣告式方法。 不過，在某些情況下，您可能想要指定動作前或後置動作套用至所有動作方法的行為。 MVC 3 可讓您藉由加入指定全域篩選`GlobalFilters`集合。 如需全域動作篩選條件的詳細資訊，請參閱下列資源：
 
 - [MVC 3 Preview 上 Scott Guthrie 的部落格](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)
-- [ASP.NET MVC 中的篩選](https://msdn.microsoft.com/en-us/library/gg416513(VS.98).aspx)
+- [ASP.NET MVC 中的篩選](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
 
 ### <a name="new-viewbag-property"></a>新的 「 ViewBag 」 屬性
 
@@ -175,9 +175,9 @@ MVC 2 控制器支援`ViewData`可讓您將資料傳遞給使用晚期繫結字�
 
 下列`ActionResult`型別和對應的 helper 方法是新的或增強 MVC 3 中：
 
-- [HttpNotFoundResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx)。 傳回用戶端 404 的 HTTP 狀態碼。
-- [RedirectResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.redirectresult(v=VS.98).aspx)。 傳回暫時重新導向 （HTTP 302 狀態碼） 或根據布林值參數的永久重新導向 （HTTP 301 狀態碼）。 這項變更，搭配[控制器](https://msdn.microsoft.com/en-us/library/system.web.mvc.controller(v=VS.98).aspx)類別現在具有三個方法來執行永久重新導向： `RedirectPermanent`， `RedirectToRoutePermanent`，和`RedirectToActionPermanent`。 這些方法會傳回的執行個體`RedirectResult`與`Permanent`屬性設定為`true`。
-- [HttpStatusCodeResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx)。 傳回使用者指定的 HTTP 狀態碼。
+- [HttpNotFoundResult](https://msdn.microsoft.com/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx)。 傳回用戶端 404 的 HTTP 狀態碼。
+- [RedirectResult](https://msdn.microsoft.com/library/system.web.mvc.redirectresult(v=VS.98).aspx)。 傳回暫時重新導向 （HTTP 302 狀態碼） 或根據布林值參數的永久重新導向 （HTTP 301 狀態碼）。 這項變更，搭配[控制器](https://msdn.microsoft.com/library/system.web.mvc.controller(v=VS.98).aspx)類別現在具有三個方法來執行永久重新導向： `RedirectPermanent`， `RedirectToRoutePermanent`，和`RedirectToActionPermanent`。 這些方法會傳回的執行個體`RedirectResult`與`Permanent`屬性設定為`true`。
+- [HttpStatusCodeResult](https://msdn.microsoft.com/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx)。 傳回使用者指定的 HTTP 狀態碼。
 
 <a id="BM_JavaScript_and_Ajax_Improvements"></a>
 
@@ -199,7 +199,7 @@ MVC 2 控制器支援`ViewData`可讓您將資料傳遞給使用晚期繫結字�
 
 ### <a name="remote-validator"></a>遠端驗證程式
 
-ASP.NET MVC 3 會支援新[RemoteAttribute](https://msdn.microsoft.com/en-us/library/system.web.mvc.remoteattribute(v=VS.98).aspx)類別，可讓您利用 jQuery 驗證外掛程式中的遠端驗證程式的支援。 這可讓用戶端驗證程式庫伺服器端自動呼叫您在伺服器定義才能執行只能進行的驗證邏輯的自訂方法。
+ASP.NET MVC 3 會支援新[RemoteAttribute](https://msdn.microsoft.com/library/system.web.mvc.remoteattribute(v=VS.98).aspx)類別，可讓您利用 jQuery 驗證外掛程式中的遠端驗證程式的支援。 這可讓用戶端驗證程式庫伺服器端自動呼叫您在伺服器定義才能執行只能進行的驗證邏輯的自訂方法。
 
 在下列範例中，`Remote`屬性會指定用戶端驗證，會呼叫名為動作`UserNameAvailable`上`UsersController`類別以驗證`UserName`欄位。
 
@@ -209,7 +209,7 @@ ASP.NET MVC 3 會支援新[RemoteAttribute](https://msdn.microsoft.com/en-us/lib
 
 [!code-csharp[Main](mvc3/samples/sample2.cs)]
 
-如需有關如何使用`Remote`屬性，請參閱[How to： 在 ASP.NET MVC 中實作遠端驗證](https://msdn.microsoft.com/en-us/library/gg508808(VS.98).aspx)MSDN library 中。
+如需有關如何使用`Remote`屬性，請參閱[How to： 在 ASP.NET MVC 中實作遠端驗證](https://msdn.microsoft.com/library/gg508808(VS.98).aspx)MSDN library 中。
 
 ### <a name="json-binding-support"></a>繫結的 JSON 支援
 
@@ -231,9 +231,9 @@ ASP.NET MVC 3 支援`DataAnnotations`等中繼資料屬性`DisplayAttribute`。
 
 ### <a name="validation-interfaces"></a>驗證介面
 
-[IValidatableObject](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.ivalidatableobject.aspx)介面可讓您執行模型層級驗證，而且可讓您提供的驗證錯誤訊息所特有的整體模型中，或在模型中的兩個屬性之間的狀態. MVC 3 現在擷取錯誤`IValidatableObject`介面介面會在模型繫結，並會自動旗標或反白顯示受影響欄位內使用內建 HTML 表單 helper 的檢視。
+[IValidatableObject](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.ivalidatableobject.aspx)介面可讓您執行模型層級驗證，而且可讓您提供的驗證錯誤訊息所特有的整體模型中，或在模型中的兩個屬性之間的狀態. MVC 3 現在擷取錯誤`IValidatableObject`介面介面會在模型繫結，並會自動旗標或反白顯示受影響欄位內使用內建 HTML 表單 helper 的檢視。
 
-[IClientValidatable](https://msdn.microsoft.com/en-us/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx)介面可讓 ASP.NET MVC，若要在執行階段探索驗證程式是否支援用戶端驗證。 這個介面設計，讓它可以與各種不同的驗證架構整合。
+[IClientValidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx)介面可讓 ASP.NET MVC，若要在執行階段探索驗證程式是否支援用戶端驗證。 這個介面設計，讓它可以與各種不同的驗證架構整合。
 
 如需驗證介面的詳細資訊，請參閱**模型驗證改進**區段[Scott Guthrie 的 MVC 3 Preview 部落格文章](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)。 （不過請注意 「 IValidateObject"部落格中的參考應該是"IValidatableObject"）。
 
@@ -278,7 +278,7 @@ ASP.NET MVC 有支援第 1 版後輸出快取的完整頁面回應。 MVC 3 也�
 
 ### <a name="granular-control-over-request-validation"></a>更精確地控制要求驗證
 
-ASP.NET MVC 有自動可協助防止 XSS 和 HTML 資料隱碼攻擊的內建的要求驗證。 不過，有時候您想要明確停用要求驗證，例如，如果您想要讓使用者張貼 HTML 內容 （例如，在部落格文章或 CMS 內容）。 您現在可以新增[AllowHtml](https://msdn.microsoft.com/en-us/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx)屬性模型或檢視停用模型繫結期間的要求驗證每個屬性為基礎的模型。 如需有關要求驗證的詳細資訊，請參閱下列資源：
+ASP.NET MVC 有自動可協助防止 XSS 和 HTML 資料隱碼攻擊的內建的要求驗證。 不過，有時候您想要明確停用要求驗證，例如，如果您想要讓使用者張貼 HTML 內容 （例如，在部落格文章或 CMS 內容）。 您現在可以新增[AllowHtml](https://msdn.microsoft.com/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx)屬性模型或檢視停用模型繫結期間的要求驗證每個屬性為基礎的模型。 如需有關要求驗證的詳細資訊，請參閱下列資源：
 
 - **不顯眼的 JavaScript 和驗證**一節中[Scott Guthrie 的部落格文章，在 MVC 3 發行候選版本](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx)。
 - [MVC 3 版本資訊](../whitepapers/mvc3-release-notes.md)
@@ -303,7 +303,7 @@ ASP.NET MVC 3 scaffolding 範本工作表現較佳的識別模型上的主索引
 
 ### <a name="new-additionalmetadataattribute-class"></a>新的 「 AdditionalMetadataAttribute 」 類別
 
-您可以使用[AdditionalMetadata](https://msdn.microsoft.com/en-us/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx)屬性來填入`ModelMetadata.AdditionalValues`模型屬性的字典。 例如，如果檢視模型應該只會顯示系統管理員的屬性，您可以標註該屬性在下列範例所示：
+您可以使用[AdditionalMetadata](https://msdn.microsoft.com/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx)屬性來填入`ModelMetadata.AdditionalValues`模型屬性的字典。 例如，如果檢視模型應該只會顯示系統管理員的屬性，您可以標註該屬性在下列範例所示：
 
 [!code-csharp[Main](mvc3/samples/sample4.cs)]
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: c7d893fb9633aaa8628f2f46a8db7f2c09f81830
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aac359b26c508784793a67260dc2e65c30db687a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>如何： 將行動網頁加入 ASP.NET Web Form / MVC 應用程式
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="contents"></a>內容
 
-- 概觀
+- 總覽
 - 架構選項
 - 瀏覽器及裝置偵測
 - ASP.NET Web Form 應用程式可以如何呈現行動特定頁面
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 
 如需示範這份技術白皮書的技術，ASP.NET Web Form 和 MVC 的可下載程式碼範例，請參閱[行動應用程式 （& s) 與 ASP.NET](https://docs.microsoft.com/aspnet/mobile/overview)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 – 智慧型手機、 功能手機和平板電腦 – 行動裝置繼續中做為存取 Web 的人氣指數成長。 許多 web 開發人員及 web 導向公司，這表示它是提供絕佳的瀏覽體驗訪客使用這些裝置越來越重要。
 
@@ -104,7 +104,7 @@ ASP.NET 行動控制項為什麼標示為過時的原因是其設計導向周圍
 - 輸入的法 （滑鼠] / [鍵盤、 觸控、 數字鍵台、 搖桿，...）
 - 螢幕大小 （實體和像素為單位）
 - 支援的媒體和資料格式
-- 等等。
+- Etc.
 
 最好是讓特性與模型數目為基礎的決策，因為，然後您會更有能力處理新款裝置。
 
@@ -113,12 +113,12 @@ ASP.NET 行動控制項為什麼標示為過時的原因是其設計導向周圍
 ASP.NET Web Form 和 MVC 的開發人員可以藉由檢查的內容立即探索造訪瀏覽器的重要特性*Request.Browser*物件。 例如，請參閱
 
 - Request.Browser.IsMobileDevice
-- Request.Browser.MobileDeviceManufacturer Request.Browser.MobileDeviceModel
+- Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
 - Request.Browser.ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
 - ..和許多其他
 
-在幕後，ASP.NET 平台符合傳入*User-agent* (UAC) 的 HTTP 標頭，針對一組瀏覽器定義 XML 檔案中的規則運算式。 預設平台包括定義許多常見的行動裝置，而且您可以加入自訂瀏覽器定義檔案代表您想要識別的其他項目。 如需詳細資訊，請參閱 MSDN 頁面[ASP.NET Web 伺服器控制項和瀏覽器能力](https://msdn.microsoft.com/en-us/library/x3k2ssx2.aspx)。
+在幕後，ASP.NET 平台符合傳入*User-agent* (UAC) 的 HTTP 標頭，針對一組瀏覽器定義 XML 檔案中的規則運算式。 預設平台包括定義許多常見的行動裝置，而且您可以加入自訂瀏覽器定義檔案代表您想要識別的其他項目。 如需詳細資訊，請參閱 MSDN 頁面[ASP.NET Web 伺服器控制項和瀏覽器能力](https://msdn.microsoft.com/library/x3k2ssx2.aspx)。
 
 ### <a name="using-the-wurfl-device-database-via-51degreesmobi-foundation"></a>使用透過 51Degrees.mobi Foundation WURFL 裝置資料庫
 
@@ -213,9 +213,9 @@ ASP.NET Web Form 和 MVC 的開發人員可以藉由檢查的內容立即探索�
 
 由於模型-檢視-控制器模式可分隔 （在控制站） 的應用程式邏輯，從呈現邏輯 （在檢視中），您可以選擇從任何下列方式來處理伺服器端程式碼中的行動支援：
 
-1. ***對於桌面和行動裝置版的瀏覽器，使用相同的控制器和檢視，但會呈現每種裝置類型不同的 Razor 版面配置檢視*。** 如果您在所有的裝置上顯示相同的資料，但只想要提供不同的 CSS 樣式表，或是變更幾個最上層的 HTML 項目，行動裝置的 asp.net，這個選項最有用。
+1. ***桌上型電腦和行動瀏覽器，使用相同的控制器和檢視，但會呈現不同的 Razor 版面配置，根據裝置類型 * 檢視。** 如果您在所有的裝置上顯示相同的資料，但只想要提供不同的 CSS 樣式表，或是變更幾個最上層的 HTML 項目，行動裝置的 asp.net，這個選項最有用。
 2. ***對於桌面和行動裝置版的瀏覽器，使用相同的控制站，但會呈現每種裝置類型的不同檢視***。 如果您使用大約顯示相同的資料，對於使用者，提供相同的工作流程，這個選項最有用，但要轉譯非常不同的 HTML 標記，以符合所用的裝置。
-3. ***建立桌面和行動瀏覽器，實作無關的控制器和檢視每個不同的區域*。** 如果您正在顯示非常不同的螢幕，包含不同的資訊，導致使用者透過不同的工作流程適合他們的裝置類型，這個選項最有用。 這可能表示部分重複程式碼，但您可以最小化，析出至基礎的圖層或服務的一般邏輯。
+3. ***建立桌面和行動瀏覽器，實作無關的控制器和檢視每個不同的區域 *。** 如果您正在顯示非常不同的螢幕，包含不同的資訊，導致使用者透過不同的工作流程適合他們的裝置類型，這個選項最有用。 這可能表示部分重複程式碼，但您可以最小化，析出至基礎的圖層或服務的一般邏輯。
 
 如果您想要採取**第一個**選項而有所不同 Razor 版面配置每個裝置類型，是非常簡單。 只需修改您\_ViewStart.cshtml 檔案，如下所示：
 

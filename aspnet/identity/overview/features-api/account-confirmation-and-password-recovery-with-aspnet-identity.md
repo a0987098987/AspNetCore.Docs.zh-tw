@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 5fa7b6227eb88aa6766ab8776bc8a3cc1111b942
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 548baaaa06980fb793c079b66b6edc34422eb579
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原與 ASP.NET Identity (C#)
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 
 1. 建立新的 ASP.NET Web 專案，然後選取 MVC 範本。 Web Form 也支援 ASP.NET Identity，因此您可以依照類似的步驟，在 web form 應用程式。
 2. 保留預設驗證為**個別使用者帳戶**。
-3. 執行應用程式，請按一下**註冊**連結和註冊的使用者。 此時，只有在電子郵件時才驗證與[[EmailAddress]](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx)屬性。
+3. 執行應用程式，請按一下**註冊**連結和註冊的使用者。 此時，只有在電子郵件時才驗證與[[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx)屬性。
 4. 在 伺服器總管瀏覽至**資料 Connections\DefaultConnection\Tables\AspNetUsers**，以滑鼠右鍵按一下並選取**開啟資料表定義**。
 
     下圖顯示`AspNetUsers`結構描述：
@@ -94,7 +94,7 @@ ASP.NET Identity 的預設資料存放區是 Entity Framework 中，但您可以
 
 [OWIN 啟動類別](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md)( *Startup.cs* ) 時呼叫的應用程式啟動，而且會叫用`ConfigureAuth`方法中的*應用程式\_Start\Startup.Auth.cs*，這會設定 OWIN 管線，並初始化 ASP.NET Identity。 檢查`ConfigureAuth`方法。 每個`CreatePerOwinContext`呼叫註冊的回呼 (儲存在`OwinContext`)，將會呼叫一次針對每個要求來建立指定型別的執行個體。 您可以在建構函式中設定中斷點和`Create`每個型別的方法 (`ApplicationDbContext, ApplicationUserManager`)，並確認每個要求上呼叫。 執行個體`ApplicationDbContext`和`ApplicationUserManager`儲存在 OWIN 環境中，可在整個應用程式存取。 ASP.NET Identity 勾點至 OWIN 管線透過 cookie 中介軟體。 如需詳細資訊，請參閱[每個要求存留期管理 UserManager 在 ASP.NET Identity 中的類別](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx)。
 
-當您變更您的安全性設定檔時，會產生新的安全性戳記，並儲存在`SecurityStamp`欄位*AspNetUsers*資料表。 請注意，`SecurityStamp`欄位是不同的安全性 cookie。 安全性 cookie 不會儲存在`AspNetUsers`資料表 （或識別資料庫中的其他地方）。 使用自我簽署的安全性 cookie 語彙基元[DPAPI](https://msdn.microsoft.com/en-us/library/system.security.cryptography.protecteddata.aspx)並建立`UserId, SecurityStamp`和到期時間資訊。
+當您變更您的安全性設定檔時，會產生新的安全性戳記，並儲存在`SecurityStamp`欄位*AspNetUsers*資料表。 請注意，`SecurityStamp`欄位是不同的安全性 cookie。 安全性 cookie 不會儲存在`AspNetUsers`資料表 （或識別資料庫中的其他地方）。 使用自我簽署的安全性 cookie 語彙基元[DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx)並建立`UserId, SecurityStamp`和到期時間資訊。
 
 Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`方法中的`Startup`類別叫用的資料庫，並定期檢查安全性戳記與所指定`validateInterval`。 這只會每隔 30 分鐘 （在我們的範例），除非您變更您的安全性設定檔。 在 30 分鐘的間隔選擇用來存取資料庫的次數降到最低。 請參閱我[雙因素驗證教學課程](index.md)如需詳細資訊。
 
@@ -117,7 +117,7 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 - 雙因素驗證 (2FA)。 在另一個教學課程中，我將討論 2FA 和 SMS。
 - 連結的電子郵件和 SMS 服務。 （我會在另一個教學課程涵蓋 SMS）。
 
-`ApplicationUserManager`類別衍生自泛型`UserManager<ApplicationUser>`類別。 `ApplicationUser`衍生自[IdentityUser](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework.identityuser.aspx)。 `IdentityUser`衍生自泛型`IdentityUser`類別：
+`ApplicationUserManager`類別衍生自泛型`UserManager<ApplicationUser>`類別。 `ApplicationUser`衍生自[IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx)。 `IdentityUser`衍生自泛型`IdentityUser`類別：
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample1.cs)]
 
@@ -131,7 +131,7 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample2.cs?highlight=8-9)]
 
-上述反白顯示的程式碼會產生[ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity.aspx)。 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎，因此架構都需要應用程式產生`ClaimsIdentity`使用者。 `ClaimsIdentity`具有資訊有關的使用者名稱，例如使用者的所有宣告年齡和角色的使用者屬於。 您也可以在這個階段中加入更多的使用者宣告。
+上述反白顯示的程式碼會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎，因此架構都需要應用程式產生`ClaimsIdentity`使用者。 `ClaimsIdentity`具有資訊有關的使用者名稱，例如使用者的所有宣告年齡和角色的使用者屬於。 您也可以在這個階段中加入更多的使用者宣告。
 
 OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用者：
 
@@ -179,13 +179,13 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample6.cs)]
 
-上述程式碼會使用模型資料建立新的使用者帳戶使用的電子郵件和輸入的密碼。 資料存放區中的電子郵件別名時，帳戶建立失敗，會再次顯示表單。 `GenerateEmailConfirmationTokenAsync`方法會建立安全的確認語彙基元，並將它儲存在 ASP.NET Identity 的資料存放區。 [Url.Action](https://msdn.microsoft.com/en-us/library/dd505232(v=vs.118).aspx)方法會建立一個連結，其中包含`UserId`和確認語彙基元。 此連結，然後電子郵件傳送給使用者，使用者可以按一下來確認其帳戶其電子郵件應用程式中的連結。
+上述程式碼會使用模型資料建立新的使用者帳戶使用的電子郵件和輸入的密碼。 資料存放區中的電子郵件別名時，帳戶建立失敗，會再次顯示表單。 `GenerateEmailConfirmationTokenAsync`方法會建立安全的確認語彙基元，並將它儲存在 ASP.NET Identity 的資料存放區。 [Url.Action](https://msdn.microsoft.com/library/dd505232(v=vs.118).aspx)方法會建立一個連結，其中包含`UserId`和確認語彙基元。 此連結，然後電子郵件傳送給使用者，使用者可以按一下來確認其帳戶其電子郵件應用程式中的連結。
 
 <a id="email"></a>
 
 ## <a name="set-up-email-confirmation"></a>設定電子郵件確認
 
-移至[Azure SendGrid 登入頁面](https://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/)並註冊免費帳戶。 加入下列命令來設定 SendGrid 類似的程式碼：
+移至[Azure SendGrid 登入頁面](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/)並註冊免費帳戶。 加入下列命令來設定 SendGrid 類似的程式碼：
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample7.cs?highlight=5)]
 
@@ -193,7 +193,7 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用
 > 電子郵件用戶端經常只接受文字 (無 HTML)。 您應該提供文字和 HTML 中的訊息。 在上述 SendGrid 範例中，做法是使用`myMessage.Text`和`myMessage.Html`如上所示的程式碼。
 
 
-下列程式碼示範如何將傳送電子郵件使用[MailMessage](https://msdn.microsoft.com/en-us/library/system.net.mail.mailmessage.aspx)類別`message.Body`傳回只有的連結。
+下列程式碼示範如何將傳送電子郵件使用[MailMessage](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx)類別`message.Body`傳回只有的連結。
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
@@ -238,8 +238,8 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用
 
 ## <a name="additional-resources"></a>其他資源
 
-- [ASP.NET 識別的自訂儲存體提供者的概觀](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
+- [ASP.NET Identity 的自訂儲存體提供者概觀](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)也示範如何加入使用者資料表中的設定檔資訊。
 - [ASP.NET MVC 和身分識別 2.0： 了解基本概念](http://typecastexception.com/post/2014/04/20/ASPNET-MVC-and-Identity-20-Understanding-the-Basics.aspx)由 John Atten。
-- [ASP.NET 識別簡介](../getting-started/introduction-to-aspnet-identity.md)
+- [ASP.NET Identity 簡介](../getting-started/introduction-to-aspnet-identity.md)
 - [宣告 ASP.NET Identity 2.0.0 的 RTM](https://blogs.msdn.com/b/webdev/archive/2014/03/20/test-announcing-rtm-of-asp-net-identity-2-0-0.aspx)由 Pranav Rastogi。

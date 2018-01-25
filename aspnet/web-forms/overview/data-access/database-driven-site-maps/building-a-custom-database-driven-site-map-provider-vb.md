@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f886936c0033c9fac9c81fe8d2f7905228a9867d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e9b71ed89dce4e973a9096a9e2326d2c16c30673
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="building-a-custom-database-driven-site-map-provider-vb"></a>建置自訂資料庫驅動的站台地圖提供者 (VB)
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="introduction"></a>簡介
 
-ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式的網站導覽某些永續性的媒介，例如，在 XML 檔案。 定義之後，可以透過程式設計方式存取網站導覽資料[`SiteMap`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemap.aspx)中[`System.Web`命名空間](https://msdn.microsoft.com/en-us/library/system.web.aspx)或透過不同的瀏覽 Web 控制項，例如SiteMapPath、 功能表和樹狀檢視控制項。 站台對應系統會使用[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)使不同的站台對應序列化實作可建立及插入 web 應用程式。 ASP.NET 2.0 隨附的預設站台對應提供者保存網站導覽結構中的 XML 檔案。 回到[主版頁面和站台瀏覽](../introduction/master-pages-and-site-navigation-vb.md)教學課程中我們建立了名為`Web.sitemap`，包含此結構，並具有已更新其 XML 與每個新的教學課程 > 一節。
+ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式的網站導覽某些永續性的媒介，例如，在 XML 檔案。 定義之後，可以透過程式設計方式存取網站導覽資料[`SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)中[`System.Web`命名空間](https://msdn.microsoft.com/library/system.web.aspx)或透過不同的瀏覽 Web 控制項，例如SiteMapPath、 功能表和樹狀檢視控制項。 站台對應系統會使用[提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)使不同的站台對應序列化實作可建立及插入 web 應用程式。 ASP.NET 2.0 隨附的預設站台對應提供者保存網站導覽結構中的 XML 檔案。 回到[主版頁面和站台瀏覽](../introduction/master-pages-and-site-navigation-vb.md)教學課程中我們建立了名為`Web.sitemap`，包含此結構，並具有已更新其 XML 與每個新的教學課程 > 一節。
 
 如果網站導覽的結構是靜態的例如針對這些教學課程的運作方式的預設 XML 為基礎的站台對應提供者。 在許多案例中，不過，更具動態網站地圖需要。 請考量圖 1，其中每個分類和產品會顯示為網站結構中的章節中的站台對應。 與此站台對應，對應至根節點的網頁瀏覽可能會列出所有類別，而瀏覽特定分類 s web 網頁會列出該分類產品，並檢視特定產品 s web 網頁會顯示該產品 s 詳細資料。
 
@@ -194,7 +194,7 @@ ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式
 
 ## <a name="step-5-understanding-the-inner-workings-of-a-site-map-provider"></a>步驟 5： 了解站台地圖提供者的內部運作方式
 
-站台地圖以 web 伺服器記憶體中的集合`SiteMapNode`形成階層的執行個體。 必須有一個根，所有的非根節點必須剛好只有一個父節點，而且所有節點都可能都有任意數目的子系。 每個`SiteMapNode`物件表示的區段內的網站的結構; 這些章節通常會有對應的網頁。 因此， [ `SiteMapNode`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemapnode.aspx)具有屬性，例如`Title`， `Url`，和`Description`，提供資訊區段`SiteMapNode`代表。 另外還有`Key`屬性可唯一識別每個`SiteMapNode`階層，以及用來建立此階層的屬性`ChildNodes`， `ParentNode`， `NextSibling`， `PreviousSibling`，依此類推。
+站台地圖以 web 伺服器記憶體中的集合`SiteMapNode`形成階層的執行個體。 必須有一個根，所有的非根節點必須剛好只有一個父節點，而且所有節點都可能都有任意數目的子系。 每個`SiteMapNode`物件表示的區段內的網站的結構; 這些章節通常會有對應的網頁。 因此， [ `SiteMapNode`類別](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx)具有屬性，例如`Title`， `Url`，和`Description`，提供資訊區段`SiteMapNode`代表。 另外還有`Key`屬性可唯一識別每個`SiteMapNode`階層，以及用來建立此階層的屬性`ChildNodes`， `ParentNode`， `NextSibling`， `PreviousSibling`，依此類推。
 
 圖 15 顯示一般網站導覽結構來自圖 1 中，但具有勾勒出詳細程度的實作詳細資料。
 
@@ -204,13 +204,13 @@ ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式
 **圖 15**： 每個`SiteMapNode`有屬性例如`Title`， `Url`，`Key`等等 ([按一下以檢視完整大小的影像](building-a-custom-database-driven-site-map-provider-vb/_static/image17.gif))
 
 
-站台對應是透過可存取[`SiteMap`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemap.aspx)中[`System.Web`命名空間](https://msdn.microsoft.com/en-us/library/system.web.aspx)。 這個類別 s`RootNode`屬性會傳回站台對應的根目錄`SiteMapNode`執行個體。`CurrentNode`傳回`SiteMapNode`其`Url`屬性會比對的目前要求的網頁 URL。 這個類別是由 ASP.NET 2.0 s 瀏覽 Web 控制項的內部使用。
+站台對應是透過可存取[`SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)中[`System.Web`命名空間](https://msdn.microsoft.com/library/system.web.aspx)。 這個類別 s`RootNode`屬性會傳回站台對應的根目錄`SiteMapNode`執行個體。`CurrentNode`傳回`SiteMapNode`其`Url`屬性會比對的目前要求的網頁 URL。 這個類別是由 ASP.NET 2.0 s 瀏覽 Web 控制項的內部使用。
 
-當`SiteMap`類別的屬性存取，它必須將某些永續性的媒體中的站台對應結構序列化至記憶體。 不過，站台對應序列化邏輯不是硬式編碼至`SiteMap`類別。 相反地，在執行階段`SiteMap`類別會決定哪一個站台地圖*提供者*供序列化使用。 根據預設， [ `XmlSiteMapProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.xmlsitemapprovider.aspx)使用時，從格式正確的 XML 檔案讀取站台對應的結構。 不過，利用最少的工作，我們可以建立自己的自訂站台地圖提供者。
+當`SiteMap`類別的屬性存取，它必須將某些永續性的媒體中的站台對應結構序列化至記憶體。 不過，站台對應序列化邏輯不是硬式編碼至`SiteMap`類別。 相反地，在執行階段`SiteMap`類別會決定哪一個站台地圖*提供者*供序列化使用。 根據預設， [ `XmlSiteMapProvider`類別](https://msdn.microsoft.com/library/system.web.xmlsitemapprovider.aspx)使用時，從格式正確的 XML 檔案讀取站台對應的結構。 不過，利用最少的工作，我們可以建立自己的自訂站台地圖提供者。
 
-所有站台對應提供者必須衍生自[`SiteMapProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.sitemapprovider.aspx)、 包含重要的方法和屬性所需的站台對應提供者，但是省略許多實作詳細資料。 第二個類別[ `StaticSiteMapProvider` ](https://msdn.microsoft.com/en-us/library/system.web.staticsitemapprovider.aspx)，擴充`SiteMapProvider`類別，並包含所需的功能較為複雜的實作。 就內部而言，`StaticSiteMapProvider`儲存`SiteMapNode`站台的執行個體對應在`Hashtable`，並提供等方法`AddNode(child, parent)`，`RemoveNode(siteMapNode),`和`Clear()`，加入和移除`SiteMapNode`s 至內部`Hashtable`。 `XmlSiteMapProvider` 衍生自 `StaticSiteMapProvider`。
+所有站台對應提供者必須衍生自[`SiteMapProvider`類別](https://msdn.microsoft.com/library/system.web.sitemapprovider.aspx)、 包含重要的方法和屬性所需的站台對應提供者，但是省略許多實作詳細資料。 第二個類別[ `StaticSiteMapProvider` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.aspx)，擴充`SiteMapProvider`類別，並包含所需的功能較為複雜的實作。 就內部而言，`StaticSiteMapProvider`儲存`SiteMapNode`站台的執行個體對應在`Hashtable`，並提供等方法`AddNode(child, parent)`，`RemoveNode(siteMapNode),`和`Clear()`，加入和移除`SiteMapNode`s 至內部`Hashtable`。 `XmlSiteMapProvider` 衍生自 `StaticSiteMapProvider`。
 
-當建立自訂站台地圖提供者擴充`StaticSiteMapProvider`，有兩種抽象方法，必須覆寫： [ `BuildSiteMap` ](https://msdn.microsoft.com/en-us/library/system.web.staticsitemapprovider.buildsitemap.aspx)和[ `GetRootNodeCore` ](https://msdn.microsoft.com/en-us/library/system.web.sitemapprovider.getrootnodecore.aspx)。 `BuildSiteMap`正如其名，負責從永續性儲存體載入網站導覽結構並建構在記憶體中。 `GetRootNodeCore`傳回站台對應中的根節點。
+當建立自訂站台地圖提供者擴充`StaticSiteMapProvider`，有兩種抽象方法，必須覆寫： [ `BuildSiteMap` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.buildsitemap.aspx)和[ `GetRootNodeCore` ](https://msdn.microsoft.com/library/system.web.sitemapprovider.getrootnodecore.aspx)。 `BuildSiteMap`正如其名，負責從永續性儲存體載入網站導覽結構並建構在記憶體中。 `GetRootNodeCore`傳回站台對應中的根節點。
 
 之前的 web 應用程式可以使用站台對應的提供者，則必須在應用程式的組態中註冊。 根據預設，`XmlSiteMapProvider`名稱註冊類別`AspNetXmlSiteMapProvider`。 若要註冊額外的站台對應提供者，加入下列標記以`Web.config`:
 
@@ -224,7 +224,7 @@ ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式
 效能和延展性的原因，它 s 重要我們快取記憶體中的站台對應的結構，並傳回此快取結構，而非每次重新建立`BuildSiteMap`叫用方法。 `BuildSiteMap`可能會呼叫多次，每個頁面要求每位使用者，根據導覽控制項中使用的頁面及網站導覽結構的深度。 在任何情況下，如果我們不要快取中的站台對應結構`BuildSiteMap`然後我們會需要每次叫用時重新擷取的架構 （這會導致查詢資料庫） 的產品和分類資訊。 如我們所討論在先前的快取教學課程中，快取的資料可能會變成過時。 若要避免此問題，我們可以使用時間-或 SQL 快取相依性為基礎的 expiries。
 
 > [!NOTE]
-> 站台地圖提供者可能會選擇性地覆寫[`Initialize`方法](https://msdn.microsoft.com/en-us/library/system.web.sitemapprovider.initialize.aspx)。 `Initialize`當站台對應提供者會先具現化會傳遞給提供者中的任何自訂屬性時，會叫用`Web.config`中`<add>`類似的項目： `<add name="name" type="type" customAttribute="value" />`。 如果您想要允許網頁開發人員指定各種站台對應提供者相關設定，而不需要修改提供者 s 程式碼，就會很有用。 例如，如果我們已分類和產品資料直接從資料庫讀取與架構中，我們 d 可能想要讓網頁開發人員指定資料庫連接字串透過`Web.config`而不是使用硬式編碼提供者 s 程式碼中的值。 步驟 6 中，我們將建立的自訂站台對應提供者不會覆寫這`Initialize`方法。 如需使用`Initialize`方法，是指[Jeff Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s[儲存在 SQL Server 中的站台對應](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/)發行項。
+> 站台地圖提供者可能會選擇性地覆寫[`Initialize`方法](https://msdn.microsoft.com/library/system.web.sitemapprovider.initialize.aspx)。 `Initialize`當站台對應提供者會先具現化會傳遞給提供者中的任何自訂屬性時，會叫用`Web.config`中`<add>`類似的項目： `<add name="name" type="type" customAttribute="value" />`。 如果您想要允許網頁開發人員指定各種站台對應提供者相關設定，而不需要修改提供者 s 程式碼，就會很有用。 例如，如果我們已分類和產品資料直接從資料庫讀取與架構中，我們 d 可能想要讓網頁開發人員指定資料庫連接字串透過`Web.config`而不是使用硬式編碼提供者 s 程式碼中的值。 步驟 6 中，我們將建立的自訂站台對應提供者不會覆寫這`Initialize`方法。 如需使用`Initialize`方法，是指[Jeff Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s[儲存在 SQL Server 中的站台對應](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/)發行項。
 
 
 ## <a name="step-6-creating-the-custom-site-map-provider"></a>步驟 6： 建立自訂站台地圖提供者
@@ -234,13 +234,13 @@ ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample6.vb)]
 
-可讓開始瀏覽此類別 s 的 s`BuildSiteMap`方法，以開始[`lock`陳述式](https://msdn.microsoft.com/en-us/library/c5kehkcz.aspx)。 `lock`陳述式只允許一個執行緒每次輸入，藉以序列化其程式碼存取，並防止在另一個 s 腳趾算得出來逐步執行兩個並行執行緒。
+可讓開始瀏覽此類別 s 的 s`BuildSiteMap`方法，以開始[`lock`陳述式](https://msdn.microsoft.com/library/c5kehkcz.aspx)。 `lock`陳述式只允許一個執行緒每次輸入，藉以序列化其程式碼存取，並防止在另一個 s 腳趾算得出來逐步執行兩個並行執行緒。
 
 類別層級`SiteMapNode`變數`root`用來快取網站導覽結構。 第一次，或第一次之後已修改基礎資料，建構網站導覽時`root`會`Nothing`和網站導覽結構會在建構。 站台對應的根節點指派給`root`建構期間處理程序，以便在下一次這個方法呼叫時，`root`將不會`Nothing`。 因此，只要`root`不`Nothing`網站導覽結構將傳回給呼叫端，而不必重新建立它。
 
 如果是根`Nothing`，網站導覽結構從產品和分類的資訊建立。 藉由建立建置網站導覽`SiteMapNode`執行個體，然後再建構透過呼叫階層`StaticSiteMapProvider`類別的`AddNode`方法。 `AddNode`執行內部簿記，儲存各種`SiteMapNode`中執行個體`Hashtable`。 我們一開始建構階層之前，我們一開始呼叫`Clear`方法，從內部的項目可清除`Hashtable`。 下一步`ProductsBLL`類別 s`GetProducts`方法，並產生`ProductsDataTable`儲存在本機變數。
 
-站台對應的建構開始建立根節點，並將它指派給`root`。 多載[ `SiteMapNode` s 建構函式](https://msdn.microsoft.com/en-us/library/system.web.sitemapnode.sitemapnode.aspx)使用此處，而這整個`BuildSiteMap`傳遞下列資訊：
+站台對應的建構開始建立根節點，並將它指派給`root`。 多載[ `SiteMapNode` s 建構函式](https://msdn.microsoft.com/library/system.web.sitemapnode.sitemapnode.aspx)使用此處，而這整個`BuildSiteMap`傳遞下列資訊：
 
 - 站台對應提供者的參考 (`Me`)。
 - `SiteMapNode` s `Key`。 需要這個值必須是唯一的每個`SiteMapNode`。
@@ -253,7 +253,7 @@ ASP.NET 2.0 s 站台地圖 功能可讓網頁開發人員定義 web 應用程式
 > 這些資料庫的產品`NULL`值及其`CategoryID`在類別目錄底下的分組`SiteMapNode`其`Title`屬性設定為 None，其`Url`屬性設定為空字串。 我決定設定`Url`設為空字串，因為`ProductBLL`類別 s`GetProductsByCategory(categoryID)`方法目前缺少傳回僅具有產品`NULL``CategoryID`值。 我想要示範導覽控制項的呈現方式的同時，`SiteMapNode`所缺少的值及其`Url`屬性。 建議您延伸本教學課程，讓 無`SiteMapNode`s`Url`屬性會指向`ProductsByCategory.aspx`，但只會顯示與產品`NULL``CategoryID`值。
 
 
-任意的物件新增至使用上的 SQL 快取相依性的資料快取後建構站台對應，`Categories`和`Products`資料表透過`AggregateCacheDependency`物件。 我們已在先前的教學課程中，使用 SQL 快取相依性探索*使用 SQL 快取相依性*。 自訂站台地圖提供者，不過，會使用多載的資料快取的`Insert`方法我們尚未來瀏覽過。 這個多載會接受做為其最終的輸入參數，從快取中移除物件時呼叫委派。 具體來說，我們會傳送新[`CacheItemRemovedCallback`委派](https://msdn.microsoft.com/en-us/library/system.web.caching.cacheitemremovedcallback.aspx)，它會指向`OnSiteMapChanged`方法定義中的進一步向下`NorthwindSiteMapProvider`類別。
+任意的物件新增至使用上的 SQL 快取相依性的資料快取後建構站台對應，`Categories`和`Products`資料表透過`AggregateCacheDependency`物件。 我們已在先前的教學課程中，使用 SQL 快取相依性探索*使用 SQL 快取相依性*。 自訂站台地圖提供者，不過，會使用多載的資料快取的`Insert`方法我們尚未來瀏覽過。 這個多載會接受做為其最終的輸入參數，從快取中移除物件時呼叫委派。 具體來說，我們會傳送新[`CacheItemRemovedCallback`委派](https://msdn.microsoft.com/library/system.web.caching.cacheitemremovedcallback.aspx)，它會指向`OnSiteMapChanged`方法定義中的進一步向下`NorthwindSiteMapProvider`類別。
 
 > [!NOTE]
 > 站台對應的記憶體中表示法會透過類別層級變數快取`root`。 因為只有一個執行個體的自訂站台對應提供者類別，因為該執行個體 web 應用程式中所有執行緒之間共用，此類別變數可做為快取中。 `BuildSiteMap`方法也會使用資料快取，但僅做為基礎資料庫中的資料時收到通知`Categories`或`Products`資料表的變更。 請注意，此值放入資料快取目前的日期和時間。 實際站台地圖資料是*不*放置於資料快取。
@@ -298,7 +298,7 @@ SiteMapPath 控制項顯示階層連結列，指出目前的網頁的位置內�
 **圖 17**： 階層會使用預設的站台地圖提供者 ([按一下以檢視完整大小的影像](building-a-custom-database-driven-site-map-provider-vb/_static/image23.gif))
 
 
-若要加入圖 16 SiteMapPath，使用您在步驟 6 中我們建立的自訂站台對應提供者，請設定其[`SiteMapProvider`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.sitemappath.sitemapprovider.aspx)至 Northwind，我們指派給名稱`NorthwindSiteMapProvider`中`Web.config`。 不幸的是，設計工具會繼續使用預設站台對應提供者，但如果您可透過瀏覽器頁面瀏覽屬性變更之後您會看到階層連結現在會使用自訂站台地圖提供者。
+若要加入圖 16 SiteMapPath，使用您在步驟 6 中我們建立的自訂站台對應提供者，請設定其[`SiteMapProvider`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sitemappath.sitemapprovider.aspx)至 Northwind，我們指派給名稱`NorthwindSiteMapProvider`中`Web.config`。 不幸的是，設計工具會繼續使用預設站台對應提供者，但如果您可透過瀏覽器頁面瀏覽屬性變更之後您會看到階層連結現在會使用自訂站台地圖提供者。
 
 
 [![階層連結現在會使用自訂站台對應提供者 NorthwindSiteMapProvider](building-a-custom-database-driven-site-map-provider-vb/_static/image25.gif)](building-a-custom-database-driven-site-map-provider-vb/_static/image24.gif)
@@ -327,7 +327,7 @@ SiteMapPath 控制項顯示的其他功能的使用者介面中`ProductsByCatego
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample8.vb)]
 
-因為`AspNetXmlSiteMapProvider`是預設提供者應用程式中，如上述程式碼會傳回中所定義的根節點`Web.sitemap`。 若要參考非預設的站台地圖提供者，使用`SiteMap`類別 s [ `Providers`屬性](https://msdn.microsoft.com/en-us/library/system.web.sitemap.providers.aspx)就像這樣：
+因為`AspNetXmlSiteMapProvider`是預設提供者應用程式中，如上述程式碼會傳回中所定義的根節點`Web.sitemap`。 若要參考非預設的站台地圖提供者，使用`SiteMap`類別 s [ `Providers`屬性](https://msdn.microsoft.com/library/system.web.sitemap.providers.aspx)就像這樣：
 
 
 [!code-vb[Main](building-a-custom-database-driven-site-map-provider-vb/samples/sample9.vb)]
@@ -357,7 +357,7 @@ ASP.NET 2.0 s 站台地圖功能包括`SiteMap`類別的數字的內建瀏覽 We
 
 - [在 SQL Server 中儲存站台對應](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/)和[等您 ve SQL 站台地圖提供者](https://msdn.microsoft.com/msdnmag/issues/06/02/wickedcode/default.aspx)
 - [ASP.NET 2.0 看 s 提供者模型](http://aspnet.4guysfromrolla.com/articles/101905-1.aspx)
-- [提供者的工具組](https://msdn.microsoft.com/en-us/asp.net/aa336558.aspx)
+- [提供者的工具組](https://msdn.microsoft.com/asp.net/aa336558.aspx)
 - [檢查 ASP.NET 2.0 的網站瀏覽功能](http://aspnet.4guysfromrolla.com/articles/111605-1.aspx)
 
 ## <a name="about-the-author"></a>關於作者

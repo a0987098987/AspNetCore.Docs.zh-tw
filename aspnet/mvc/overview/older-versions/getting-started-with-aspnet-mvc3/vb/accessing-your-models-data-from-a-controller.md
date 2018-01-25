@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: d0c6976519f4f4bae10fabf4cbf85401de4f58e7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f1a1db907aa1d0a62af9b363fabfc74ac11acc68
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="accessing-your-models-data-from-a-controller-vb"></a>存取您的模型資料的控制站 (VB)
 ====================
@@ -89,7 +89,7 @@ ASP.NET MVC 3 scaffolding 機制會自動建立的 CRUD （建立、 讀取、 �
 
 ASP.NET MVC 也提供將傳遞強的功能類型的資料或檢視表範本的物件。 強型別方法啟用更佳編譯時期檢查您的程式碼和更豐富的 IntelliSense，在 Visual Web Developer 編輯器中。 我們會使用這個方法與`MoviesController`類別和*Index.vbhtml*檢視範本。
 
-請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`從控制器到檢視的清單：
+請注意程式碼如何建立[ `List` ](https://msdn.microsoft.com/library/6sh2ey19.aspx)物件呼叫時，如果`View`中的協助程式方法`Index`動作方法。 在程式碼再通過這`Movies`從控制器到檢視的清單：
 
 [!code-vb[Main](accessing-your-models-data-from-a-controller/samples/sample3.vb)]
 

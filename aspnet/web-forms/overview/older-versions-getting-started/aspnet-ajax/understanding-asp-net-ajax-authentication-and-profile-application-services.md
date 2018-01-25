@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
-ms.openlocfilehash: 7e0ddc15fac9af40a0a20a99979a80517eb1b6a2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 182276f9f91b99beb1ce0fc40dcda1f19376669a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>了解 ASP.NET AJAX 驗證和設定檔的應用程式服務
 ====================
@@ -43,7 +43,7 @@ Microsoft ASP.NET 設定檔和驗證服務所提供的 ASP.NET 表單驗證系�
 
 根據驗證服務所提供的成員資格的使用者資料的儲存體與自動整合，可讓設定檔服務。 Web.config 檔案中，指定儲存的資料和各種不同的程式碼剖析服務提供者處理資料管理。 如同驗證服務，使目前納入 ASP.NET 設定檔服務的功能頁面應該不會因包括 AJAX 支援，是與標準 ASP.NET 設定檔服務相容 AJAX 設定檔服務。
 
-應用程式中併入 ASP.NET 驗證和分析服務本身已超出本白皮書的範圍。 如需有關主題的詳細資訊，請參閱 MSDN Library 參考發行項使用成員資格管理使用者在[https://msdn.microsoft.com/en-us/library/tw292whz.aspx](https://msdn.microsoft.com/en-us/library/tw292whz.aspx)。 ASP.NET 也會包含一個公用程式來自動設定 SQL Server，也就是 ASP.NET 成員資格的預設驗證服務提供者的成員資格。 如需詳細資訊，請參閱文章 ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe) 在[https://msdn.microsoft.com/en-us/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/en-us/library/ms229862(vs.80).aspx).
+應用程式中併入 ASP.NET 驗證和分析服務本身已超出本白皮書的範圍。 如需有關主題的詳細資訊，請參閱 MSDN Library 參考發行項使用成員資格管理使用者在[https://msdn.microsoft.com/library/tw292whz.aspx](https://msdn.microsoft.com/library/tw292whz.aspx)。 ASP.NET 也會包含一個公用程式來自動設定 SQL Server，也就是 ASP.NET 成員資格的預設驗證服務提供者的成員資格。 如需詳細資訊，請參閱文章 ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe) 在[https://msdn.microsoft.com/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
 
 ## <a name="using-the-aspnet-ajax-authentication-service"></a>*使用 ASP.NET AJAX 驗證服務*
 
@@ -65,7 +65,7 @@ Login() 方法開始的要求來驗證使用者的認證。 這個方法是非�
 
 | **參數名稱** | **意義** |
 | --- | --- |
-| userName | 必要項。 要驗證的使用者名稱。 |
+| userName | 必要。 要驗證的使用者名稱。 |
 | 密碼 | 選擇性 （預設為 null）。 使用者的密碼。 |
 | isPersistent | 選擇性 （預設為 false）。 是否應該保存使用者的驗證 cookie，跨工作階段。 如果為 false，使用者將登出時關閉瀏覽器或工作階段到期。 |
 | redirectUrl | 選擇性 （預設為 null）。若要驗證成功後的瀏覽器重新導向 URL。 如果這個參數是 null 或空字串，就會不發生任何重新導向。 |
@@ -341,7 +341,7 @@ ASP.NET AJAX 擴充功能可讓您建立自訂指令碼驗證服務提供者公�
 
 此外，藉由使用等的方法簽章建立簡化的 web 服務實作，開發人員可以建立這些內建 ASP.NET 服務的自訂指令碼提供者。 如需這些技術的支援可簡化豐富型用戶端應用程式，同時開發人員提供各種不同的彈性，以符合特定需求的開發。
 
-## <a name="bio"></a>*簡歷*
+## <a name="bio"></a>*Bio*
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 

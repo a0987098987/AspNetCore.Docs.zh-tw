@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 7d89416626433bf737b63eda4b17e65b089ae142
-ms.sourcegitcommit: 8f42ab93402c1b8044815e1e48d0bb84c81f8b59
+ms.openlocfilehash: aab96b5313a8632950e51f5586612c1d0d3d176e
+ms.sourcegitcommit: 83b5a4715fd25e4eb6f7c8427c0ef03850a7fa07
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="options-pattern-in-aspnet-core"></a>在 ASP.NET Core 選項模式
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-選項模式使用的選項類別來代表一組相關的設定。 當組態設定會隔離到不同的選項類別功能時，應用程式就會遵守兩個重要的軟體工程原則：
+選項模式使用選項類別來代表一組相關的設定。 當組態設定會隔離到不同的選項類別功能時，應用程式就會遵守兩個重要的軟體工程原則：
 
 * [介面隔離原則 」 (ISP)](http://deviq.com/interface-segregation-principle/)： 取決於組態設定的功能 （類別） 取決於它們所使用的組態設定。
 * [重要性分離](http://deviq.com/separation-of-concerns/)： 應用程式的不同部分的設定不相依或彼此結合。
@@ -259,6 +259,12 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 
 [IOptionsMonitorCache&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ASP.NET Core 2.0 或更新版本) 由`IOptionsMonitor`至快取`TOptions`執行個體。 `IOptionsMonitorCache`失效選項在監視器中的執行個體，以便重新計算值 ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove))。 值可以手動導入以及使用[TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd)。 [清除](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear)方法應在需要重新建立所有具名執行個體時使用。
 
-## <a name="see-also"></a>請參閱
+## <a name="accessing-options-during-startup"></a>在啟動期間存取選項
+
+`IOptions`可用於`Configure`，因為服務建立之前`Configure`方法執行。 如果內建的服務提供者`ConfigureServices`若要存取選項，它不包含任何選項之後，內建的服務提供者提供的組態。 因此，可能存在選項不一致狀態，因為服務登錄裝置排序。
+
+組態選項通常會從組態載入，因為可以用於啟動於兩者`Configure`和`ConfigureServices`。 如需使用在啟動期間設定的範例，請參閱[應用程式啟動](xref:fundamentals/startup)主題。
+
+## <a name="see-also"></a>另請參閱
 
 * [組態](xref:fundamentals/configuration/index)

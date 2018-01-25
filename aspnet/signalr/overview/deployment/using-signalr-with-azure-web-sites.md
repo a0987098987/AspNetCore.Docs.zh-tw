@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/deployment/using-signalr-with-azure-web-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 414701159b4e1fa3da9597503b14281a1e9991de
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8386441690a3fb479ffb941ebd7c0b2f83870781
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a>使用 Azure App Service 中的 Web 應用程式中的 SignalR
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="questions-and-comments"></a>問題和註解
 > 
-> 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)， [StackOverflow.com](http://stackoverflow.com/)，或[Microsoft Azure 論壇](https://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?category=windowsazureplatform).
+> 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)， [StackOverflow.com](http://stackoverflow.com/)，或[Microsoft Azure 論壇](https://social.msdn.microsoft.com/Forums/windowsazure/home?category=windowsazureplatform).
 
 
 ## <a name="table-of-contents"></a>目錄
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 - [將 SignalR Web 應用程式部署至 Azure App Service](#deploying)
 - [Azure App Service 上啟用 WebSockets](#websocket)
 - [使用 Azure Redis 快取後擋板](#backplane)
-- [接下來的步驟](#nextsteps)
+- [後續步驟](#nextsteps)
 
 <a id="introduction"></a>
 ## <a name="introduction"></a>簡介
@@ -59,9 +59,9 @@ SignalR 不加入任何特定的複雜應用程式部署到 Azure 與部署至�
 
 **必要條件**
 
-- Visual Studio 2013。 如果您沒有 Visual Studio，Visual Studio 2013 Express for Web 包含在 Azure sdk 安裝。
+- Visual Studio 2013. 如果您沒有 Visual Studio，Visual Studio 2013 Express for Web 包含在 Azure sdk 安裝。
 - [Visual Studio 2013 的 azure SDK 2.3](https://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409)或[for Visual Studio 2012 的 Azure SDK 2.3](https://go.microsoft.com/fwlink/p/?linkid=323511)。
-- 若要完成本教學課程，您需要 Azure 訂用帳戶。 您可以[啟動您的 MSDN 訂閱者權益](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)，或[註冊試用訂用帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/)。
+- 若要完成本教學課程，您需要 Azure 訂用帳戶。 您可以[啟動您的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，或[註冊試用訂用帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="deploying-a-signalr-web-app-to-azure"></a>將 SignalR web 應用程式部署至 Azure
 
@@ -115,4 +115,4 @@ WebSockets 必須明確啟用 web 應用程式中使用中的 SignalR 應用程�
 <a id="nextsteps"></a>
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure App Service 中的 Web 應用程式的詳細資訊，請參閱[Web 應用程式的概觀](https://azure.microsoft.com/en-us/documentation/articles/app-service-web-overview/)。
+如需有關 Azure App Service 中的 Web 應用程式的詳細資訊，請參閱[Web 應用程式的概觀](https://azure.microsoft.com/documentation/articles/app-service-web-overview/)。

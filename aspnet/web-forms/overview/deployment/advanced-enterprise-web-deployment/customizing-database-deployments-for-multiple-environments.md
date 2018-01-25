@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 449c448d1be237f3f95a437bb2c0415bd8ed0d99
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f3ca344c2466d9d538f55cd8ff0a5bf5b7bac808
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>自訂資料庫部署多個環境
 ====================
@@ -69,9 +69,9 @@ ms.lasthandoff: 11/10/2017
 
 下表顯示不同的目的地環境的一般的部署設定。 不過，您的設定可能是您實際需求而有所不同。
 
-|  | 開發/測試 | 臨時/整合 | 生產環境 |
+|  | Developer/Test | 臨時/整合 | 生產環境 |
 | --- | --- | --- | --- |
-| **部署比較定序** | 來源 | 目標 | 目標 |
+| **部署比較定序** | 原始程式檔 | 目標 | 目標 |
 | **部署資料庫屬性** | True | 只有第一次 | 只有第一次 |
 | **永遠重新建立資料庫** | True | False | False |
 | **如果可能遺失資料請封鎖累加部署** | False | 可能是 | True |
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/10/2017
   
 
 > [!NOTE]
-> 如需有關資料庫部署屬性和環境的考量因素的詳細資訊，請參閱[概觀的資料庫專案設定](https://msdn.microsoft.com/en-us/library/aa833291(v=VS.100).aspx)， [How to： 設定部署詳細資料屬性](https://msdn.microsoft.com/en-us/library/dd172125.aspx)， [建置和部署資料庫至隔離的開發環境](https://msdn.microsoft.com/en-us/library/dd193409.aspx)，和[建置，並將資料庫部署到預備環境或生產環境](https://msdn.microsoft.com/en-us/library/dd193413.aspx)。
+> 如需有關資料庫部署屬性和環境的考量因素的詳細資訊，請參閱[概觀的資料庫專案設定](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx)， [How to： 設定部署詳細資料屬性](https://msdn.microsoft.com/library/dd172125.aspx)， [建置和部署資料庫至隔離的開發環境](https://msdn.microsoft.com/library/dd193409.aspx)，和[建置，並將資料庫部署到預備環境或生產環境](https://msdn.microsoft.com/library/dd193413.aspx)。
 
 
 若要支援多個目的地的資料庫專案的部署，您應該建立每個目標環境的部署組態檔。
@@ -94,7 +94,7 @@ ms.lasthandoff: 11/10/2017
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
 3. 在**新的部署組態檔**對話方塊方塊中，讓檔案有意義的名稱 (例如， **TestEnvironment.sqldeployment**)，然後按一下 **儲存**。
-4. 在*[Filename]***.sqldeployment**頁面上，設定部署屬性，以符合環境需求的目的地，並儲存檔案。
+4. 在*[Filename] * * *.sqldeployment** 頁面上，設定部署屬性，以符合環境需求的目的地，並儲存檔案。
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
 5. 請注意新的檔案加入資料庫專案中的 [屬性] 資料夾。
@@ -141,10 +141,10 @@ ms.lasthandoff: 11/10/2017
 
 MSDN 上的這些文章提供資料庫部署更一般的指導方針：
 
-- [資料庫專案設定概觀](https://msdn.microsoft.com/en-us/library/aa833291(v=VS.100).aspx)
-- [如何： 設定的部署詳細資料屬性](https://msdn.microsoft.com/en-us/library/dd172125.aspx)
-- [建置和部署資料庫至隔離的開發環境](https://msdn.microsoft.com/en-us/library/dd193409.aspx)
-- [建置並將資料庫部署到預備環境或生產環境](https://msdn.microsoft.com/en-us/library/dd193413.aspx)
+- [資料庫專案設定概觀](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx)
+- [如何： 設定的部署詳細資料屬性](https://msdn.microsoft.com/library/dd172125.aspx)
+- [建置和部署資料庫至隔離的開發環境](https://msdn.microsoft.com/library/dd193409.aspx)
+- [建置並將資料庫部署到預備環境或生產環境](https://msdn.microsoft.com/library/dd193413.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](performing-a-what-if-deployment.md)

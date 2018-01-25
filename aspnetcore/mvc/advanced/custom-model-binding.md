@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: d8b94f53954c5ab63ccf3aab4eb7a7a7dbea487b
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 85d5ca18944e774d1f2577459c6c45acde01e4d9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-model-binding"></a>自訂的模型繫結
 
@@ -100,11 +100,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 [!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo2&highlight=2)]
 
-`ModelBinder`屬性可以用來套用`AuthorEntityBinder`參數不是使用預設慣例：
+`ModelBinder`屬性可以用來套用`AuthorEntityBinder`不使用預設慣例的參數：
 
 [!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-在此範例中，不是預設值的引數名稱。 自`authorId`，同時指定參數使用`ModelBinder`屬性。 請注意，控制器和動作方法會簡化相較於查詢中的動作方法的實體。 若要擷取作者使用 Entity Framework 核心的邏輯會移至模型繫結器。 當您有數種方法，繫結至在作者模式下，並可協助您進行時，這可以是相當大的簡化[乾原則](http://deviq.com/don-t-repeat-yourself/)。
+在此範例中，不預設引數的名稱。 自`authorId`，同時指定參數使用`ModelBinder`屬性。 請注意，控制器和動作方法會簡化相較於查詢中的動作方法的實體。 若要擷取作者使用 Entity Framework 核心的邏輯會移至模型繫結器。 當您有數種方法，繫結至在作者模式下，並可協助您進行時，這可以是相當大的簡化[乾原則](http://deviq.com/don-t-repeat-yourself/)。
 
 您可以套用`ModelBinder`屬性設定為個別的模型屬性 (例如 viewmodel 上) 或動作方法參數來指定特定模型繫結器或模型名稱，只要該類型或動作。
 
@@ -135,4 +135,4 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 自訂模型繫結器：
 - 不應嘗試設定狀態碼，或傳回的結果 （例如，404 找不到）。 如果模型繫結失敗，[動作篩選條件](xref:mvc/controllers/filters)或邏輯在動作方法本身內應該處理失敗。
 - 是最適用於不重複的程式碼和跨領域考量的動作方法。
-- 通常不應將字串轉換成自訂型別， [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter)通常是較好的選擇。
+- 通常不應該用來將字串轉換成自訂型別， [ `TypeConverter` ](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter)通常是較好的選擇。

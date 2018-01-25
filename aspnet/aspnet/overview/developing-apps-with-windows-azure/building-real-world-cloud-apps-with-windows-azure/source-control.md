@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: f244e6bd1cd8abd23b64d07ccafcef5c4db1029b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e3ce68b949199db35c18a09771d99d38562b74e9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="source-control-building-real-world-cloud-apps-with-azure"></a>原始檔控制 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -137,9 +137,9 @@ Azure 可讓您的替代選項**appSettings**和連接字串的區段*Web.config
 
 [Git](http://git-scm.com/)是 DVCS 變得非常受歡迎。 當您使用 Git 原始檔控制時，您在本機電腦上有其記錄的所有儲存機制的完整複本。 許多人喜歡，因為這樣比較簡單繼續工作時您未連接到網路-您可以繼續執行認可及回復，建立和切換分支，以及進行其他操作。 即使您連線到網路，很輕鬆且快速建立分支，並切換分支，當所有項目是本機。 您也可以執行而不會影響其他開發人員在本機認可及回復。 您可以批次認可，然後才傳送到伺服器。
 
-[Microsoft Visual Studio Online](https://www.visualstudio.com/)(VSO)，先前稱為 Team Foundation Service，提供兩個 Git 和[Team Foundation 版本控制](https://msdn.microsoft.com/en-us/library/ms181237(v=vs.120).aspx)(TFVC; 集中式原始檔控制)。 在 Microsoft Azure 的群組中有些小組使用集中式的原始檔控制，散佈，有些使用和某些使用混合 （集中式針對某些專案與發佈適用於其他專案）。 最多 5 位使用者可以免費 VSO 服務。 您可以註冊免費方案[這裡](https://go.microsoft.com/fwlink/?LinkId=307137)。
+[Microsoft Visual Studio Online](https://www.visualstudio.com/)(VSO)，先前稱為 Team Foundation Service，提供兩個 Git 和[Team Foundation 版本控制](https://msdn.microsoft.com/library/ms181237(v=vs.120).aspx)(TFVC; 集中式原始檔控制)。 在 Microsoft Azure 的群組中有些小組使用集中式的原始檔控制，散佈，有些使用和某些使用混合 （集中式針對某些專案與發佈適用於其他專案）。 最多 5 位使用者可以免費 VSO 服務。 您可以註冊免費方案[這裡](https://go.microsoft.com/fwlink/?LinkId=307137)。
 
-Visual Studio 2013 包含內建的第一級[Git 支援](https://msdn.microsoft.com/en-us/library/hh850437.aspx); 以下是快速的運作方式的示範。
+Visual Studio 2013 包含內建的第一級[Git 支援](https://msdn.microsoft.com/library/hh850437.aspx); 以下是快速的運作方式的示範。
 
 使用 Visual Studio 2013 中開啟專案，以滑鼠右鍵按一下方案中的**方案總管] 中**，然後選擇 [**將方案加入至原始檔控制**。
 
@@ -187,7 +187,7 @@ Visual Studio 會自動認可的專案檔案的所有階段，而且列在**Team
 
 這個簡單的範例如何快速建立分支及分支之間來回翻轉。 此功能可讓高敏捷式軟體開發工作流程使用的分支結構和自動化指令碼所示[一切自動化](automate-everything.md)章節。 例如，您可以使用 「 開發 」 分支，建立主要問題修正分支、 切換至新分支、 讓您的變更和認可，然後切換到 「 開發 」 分支並繼續您所執行的動作。
 
-您已在此看到為您搭配 Visual Studio 中的本機 Git 儲存機制的運作方式。 在小組環境中您通常也將變更推送到通用儲存機制。 Visual Studio 工具也可讓您以指向遠端 Git 儲存機制。 您可以使用 GitHub.com 基於這個目的，或者您可以使用[在 Visual Studio Online 中的 Git](https://msdn.microsoft.com/en-us/library/hh850437.aspx)與所有其他 Visual Studio Online 功能，例如工作項目和 bug 追蹤整合。
+您已在此看到為您搭配 Visual Studio 中的本機 Git 儲存機制的運作方式。 在小組環境中您通常也將變更推送到通用儲存機制。 Visual Studio 工具也可讓您以指向遠端 Git 儲存機制。 您可以使用 GitHub.com 基於這個目的，或者您可以使用[在 Visual Studio Online 中的 Git](https://msdn.microsoft.com/library/hh850437.aspx)與所有其他 Visual Studio Online 功能，例如工作項目和 bug 追蹤整合。
 
 這不是您可以實作敏捷式軟體開發的分支策略，當然的唯一方式。 您可以啟用相同的敏捷式軟體開發工作流程，以使用集中式的原始檔控制儲存機制。
 
@@ -202,14 +202,14 @@ Visual Studio 會自動認可的專案檔案的所有階段，而且列在**Team
 
 如需 （集中式的版本控制） TFVC 和 Git （分散式的版本控制） 的詳細資訊，請參閱下列資源：
 
-- [應該使用的版本控制系統： TFVC 或 Git？](https://msdn.microsoft.com/en-us/library/vstudio/ms181368.aspx#tfvc_or_git_summary) MSDN 文件，包含彙總的差異 TFVC 和 Git 的資料表。
+- [應該使用的版本控制系統： TFVC 或 Git？](https://msdn.microsoft.com/library/vstudio/ms181368.aspx#tfvc_or_git_summary) MSDN 文件，包含彙總的差異 TFVC 和 Git 的資料表。
 - [嗯，我喜歡 Team Foundation Server 和我喜歡 Git，但是何者較佳嗎？](https://blogs.msdn.com/b/visualstudiouk/archive/2013/08/05/well-i-like-team-foundation-server-and-i-like-git-but-which-is-better.aspx) Git 和 TFVC 的比較。
 
 如需分支策略的詳細資訊，請參閱下列資源：
 
-- [建立與 Team Foundation Server 2012 的發行管線](https://msdn.microsoft.com/en-us/library/dn449957.aspx)。 Microsoft Patterns and Practices 文件。 請參閱第 6 章分支策略的討論。 如果使用功能的分支，倡導人士等保持其存留較短 （小時或天最多） 與切換功能分支透過代言人功能。
+- [建立與 Team Foundation Server 2012 的發行管線](https://msdn.microsoft.com/library/dn449957.aspx)。 Microsoft Patterns and Practices 文件。 請參閱第 6 章分支策略的討論。 如果使用功能的分支，倡導人士等保持其存留較短 （小時或天最多） 與切換功能分支透過代言人功能。
 - [版本控制指南](https://aka.ms/vsarsolutions)。 ALM Ranger 所引導分支策略。 在 [下載] 索引標籤上，請參閱分支 Strategies.pdf。
-- [軟體開發功能切換](https://msdn.microsoft.com/en-us/magazine/dn683796.aspx)。 MSDN Magazine 文件。
+- [軟體開發功能切換](https://msdn.microsoft.com/magazine/dn683796.aspx)。 MSDN Magazine 文件。
 - [功能切換](http://martinfowler.com/bliki/FeatureToggle.html)。 簡介功能切換/Martin Fowler 部落格上的功能旗標。
 - [功能切換 vs 功能分支](http://geekswithblogs.net/Optikal/archive/2013/02/10/152069.aspx)。 關於功能切換，Dylan smith 的另一個部落格文章。
 

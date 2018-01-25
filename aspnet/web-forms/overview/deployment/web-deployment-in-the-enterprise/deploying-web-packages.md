@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: db24fbf4a3486a1349ac47e55cfa495fdf1a166c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cd2bfa07262155b68ac4605fc7e9748d276d3193
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-web-packages"></a>部署 Web 封裝
 ====================
@@ -61,22 +61,22 @@ ms.lasthandoff: 11/10/2017
 
 您必須指定**/T**旗標或**/Y**旗標，指出您是否要分別執行試用或即時部署 （請勿在相同命令中使用這兩個旗標）。 下表說明每個這些旗標的用途。
 
-| 旗標 | 說明 |
+| 旗標 | 描述 |
 | --- | --- |
 | **/T** | 呼叫 MSDeploy.exe 與**– whatif**旗標，指出嘗試執行。 而不是部署封裝，它會建立一份您未部署封裝會發生什麼事。 |
 | **/Y** | 呼叫不含 MSDeploy.exe **– whatif**旗標。 這會將封裝部署到本機電腦或指定的目的地伺服器。 |
 | **/M** | 指定目的地伺服器名稱，或服務 URL。 如需有關您可以在這裡提供的值的詳細資訊，請參閱**端點考量**本主題中的區段。 如果您省略**/M**旗標，封裝將會部署到本機電腦。 |
-| **/ A** | 指定 MSDeploy.exe 應該用來執行部署的驗證類型。 可能的值為**NTLM**和**基本**。 如果您省略**/A**旗標的驗證類型預設為**NTLM**部署至 Web 部署遠端代理程式服務和**基本**以部署至 Web Deploy處理常式。 |
+| **/A** | 指定 MSDeploy.exe 應該用來執行部署的驗證類型。 可能的值為**NTLM**和**基本**。 如果您省略**/A**旗標的驗證類型預設為**NTLM**部署至 Web 部署遠端代理程式服務和**基本**以部署至 Web Deploy處理常式。 |
 | **/U** | 指定使用者名稱。 這僅適用於您使用基本驗證。 |
-| **/ P** | 指定密碼。 這僅適用於您使用基本驗證。 |
+| **/P** | 指定密碼。 這僅適用於您使用基本驗證。 |
 | **/L** | 表示封裝應該要部署到本機 IIS Express 執行個體。 |
-| **/G** | 指定封裝使用部署[tempAgent 提供者設定](https://technet.microsoft.com/en-us/library/ee517345(WS.10).aspx)。 如果您省略**/G**旗標，則值預設為**false**。 |
+| **/G** | 指定封裝使用部署[tempAgent 提供者設定](https://technet.microsoft.com/library/ee517345(WS.10).aspx)。 如果您省略**/G**旗標，則值預設為**false**。 |
 
 > [!NOTE]
 > 每次建置程序會建立 web 封裝，它也會建立名為*[專案名稱].deploy readme.txt*來說明這些部署選項。
 
 
-除了這些旗標，您可以指定 Web Deploy 作業設定為其他*。 deploy.cmd*參數。 您指定任何其他設定會直接傳遞至基礎 MSDeploy.exe 命令。 如需有關這些設定的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx)。
+除了這些旗標，您可以指定 Web Deploy 作業設定為其他*。 deploy.cmd*參數。 您指定任何其他設定會直接傳遞至基礎 MSDeploy.exe 命令。 如需有關這些設定的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。
 
 假設您想要執行的測試環境中部署 ContactManager.Mvc web 應用程式專案*。 deploy.cmd*檔案。 您的測試環境設定為使用 Web 部署遠端代理程式服務中所述[設定 Web 伺服器進行 Web 部署發行 （遠端代理程式）](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)。 若要部署 web 應用程式，您需要完成下一個步驟。
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 [!code-console[Main](deploying-web-packages/samples/sample3.cmd)]
 
 
-如需有關使用*。 deploy.cmd*檔案來部署 web 封裝，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/en-us/library/ff356104.aspx)。
+如需有關使用*。 deploy.cmd*檔案來部署 web 封裝，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
 
 ## <a name="using-msdeployexe"></a>使用 MSDeploy.exe
 
@@ -115,21 +115,21 @@ ms.lasthandoff: 11/10/2017
 
 - A **– 來源**參數，指出您的資料來自何處。
 - A **– 目的地**參數，指出您的資料移至的位置。
-- A **– 動詞**參數，指出[作業](https://technet.microsoft.com/en-us/library/dd568989(WS.10).aspx)您想要執行。
+- A **– 動詞**參數，指出[作業](https://technet.microsoft.com/library/dd568989(WS.10).aspx)您想要執行。
 
-MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/en-us/library/dd569040(WS.10).aspx)來處理來源和目的地的資料。 Web Deploy 包含代表的範圍就能夠使用的應用程式和資料來源 & #x 2014年的提供者大量; 例如，有 SQL Server 資料庫、 IIS web 伺服器、 憑證、 全域組件快取 (GAC) 組件，提供者不同不同的組態檔，以及許多其他類型的資料。 這兩個**– 來源**參數和**– 目的地**參數必須指定提供者，在表單中**– 來源**: [*providerName*] = [*位置*]。 當您要將 web 套件部署至 IIS 網站時，您應該使用這些值：
+MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/library/dd569040(WS.10).aspx)來處理來源和目的地的資料。 Web Deploy 包含代表的範圍就能夠使用的應用程式和資料來源 & #x 2014年的提供者大量; 例如，有 SQL Server 資料庫、 IIS web 伺服器、 憑證、 全域組件快取 (GAC) 組件，提供者不同不同的組態檔，以及許多其他類型的資料。 這兩個**– 來源**參數和**– 目的地**參數必須指定提供者，在表單中**– 來源**: [*providerName*] = [*位置*]。 當您要將 web 套件部署至 IIS 網站時，您應該使用這些值：
 
-- **– 來源**提供者一律是[封裝](https://technet.microsoft.com/en-us/library/dd569019(WS.10).aspx)。 例如: 
+- **– 來源**提供者一律是[封裝](https://technet.microsoft.com/library/dd569019(WS.10).aspx)。 例如: 
 
     [!code-console[Main](deploying-web-packages/samples/sample4.cmd)]
-- **– 目的地**提供者一律是[自動](https://technet.microsoft.com/en-us/library/dd569016(WS.10).aspx)。例如: 
+- **– 目的地**提供者一律是[自動](https://technet.microsoft.com/library/dd569016(WS.10).aspx)。例如: 
 
     [!code-console[Main](deploying-web-packages/samples/sample5.cmd)]
 - **– 動詞**一律**同步**。
 
     [!code-console[Main](deploying-web-packages/samples/sample6.cmd)]
 
-此外，您必須指定各種其他[提供者專屬的設定](https://technet.microsoft.com/en-us/library/dd569001(WS.10).aspx)和一般[作業設定](https://technet.microsoft.com/en-us/library/dd569089(WS.10).aspx)。 例如，假設您想要部署到預備環境 ContactManager.Mvc web 應用程式。 部署目標 Web 部署處理常式，而且必須使用基本驗證。 若要部署 web 應用程式，您需要完成下一個步驟。
+此外，您必須指定各種其他[提供者專屬的設定](https://technet.microsoft.com/library/dd569001(WS.10).aspx)和一般[作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。 例如，假設您想要部署到預備環境 ContactManager.Mvc web 應用程式。 部署目標 Web 部署處理常式，而且必須使用基本驗證。 若要部署 web 應用程式，您需要完成下一個步驟。
 
 **若要部署使用 MSDeploy.exe 的 web 應用程式**
 
@@ -145,7 +145,7 @@ MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/en-us/li
 - **– 來源**參數會指定**封裝**提供者，並指出 web 封裝的位置。
 - **– 目的地**參數會指定**自動**提供者。 **ComputerName**設定目的地伺服器上提供的 Web 部署的處理常式服務 URL。 **a**設定表示您想要使用基本驗證，因此您需要提供**username**和**密碼**。 最後， **includeAcls ="False"**設定表示您不想要複製到目的地伺服器的來源 web 應用程式中的檔案的存取控制清單 (Acl)。
 - **– 動詞命令： 同步處理**引數指出您想要將目的地伺服器上的來源內容複寫。
-- **– DisableLink**引數表示您不想複寫應用程式集區、 虛擬目錄設定或目的地伺服器上的安全通訊端層 (SSL) 憑證。 如需詳細資訊，請參閱[Web 部署連結延伸](https://technet.microsoft.com/en-us/library/dd569028(WS.10).aspx)。
+- **– DisableLink**引數表示您不想複寫應用程式集區、 虛擬目錄設定或目的地伺服器上的安全通訊端層 (SSL) 憑證。 如需詳細資訊，請參閱[Web 部署連結延伸](https://technet.microsoft.com/library/dd569028(WS.10).aspx)。
 - **– SetParamFile**參數提供的位置*SetParameters.xml*檔案。
 - **-AllowUntrusted**參數指出 Web Deploy 應該接受不受信任的憑證授權單位所發出的 SSL 憑證。 如果您要部署至 Web 部署處理常式，而且您使用自我簽署的憑證來保護服務 URL，您需要包含此參數。
 

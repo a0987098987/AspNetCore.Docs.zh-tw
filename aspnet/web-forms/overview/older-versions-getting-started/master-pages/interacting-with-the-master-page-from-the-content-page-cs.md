@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 054c67ec7d7eec38d46933417930161a0edd5a60
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 977cdea38d240bcae284968de7d780ec59ab6dfd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-c"></a>互動主版頁面，從 [內容] 頁面 (C#)
 ====================
@@ -192,9 +192,9 @@ Label 控制項會實作為主版頁面內的受保護的成員變數，因為�
 
 ### <a name="using-the-loosely-typedpagemasterproperty"></a>使用鬆散型別`Page.Master`屬性
 
-所有的 ASP.NET web pages 必須衍生自`Page`類別位於`System.Web.UI`命名空間。 `Page`類別包含[`Master`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.page.master.aspx)傳回網頁的主版頁面的參考。 如果頁面沒有主版頁面`Master`傳回`null`。
+所有的 ASP.NET web pages 必須衍生自`Page`類別位於`System.Web.UI`命名空間。 `Page`類別包含[`Master`屬性](https://msdn.microsoft.com/library/system.web.ui.page.master.aspx)傳回網頁的主版頁面的參考。 如果頁面沒有主版頁面`Master`傳回`null`。
 
-`Master`屬性會傳回型別的物件[ `MasterPage` ](https://msdn.microsoft.com/en-us/library/system.web.ui.masterpage.aspx) (同樣位於`System.Web.UI`命名空間) 即從衍生自所有主版頁面的基底類型。 因此，若要使用的公用屬性或方法定義在我們的網站的主版頁面我們必須轉換`MasterPage`從傳回的物件`Master`適當類型的屬性。 因為我們名為我們的主版頁面檔案`Site.master`，程式碼後置類別命名為`Site`。 因此，下列程式碼轉換`Page.Master`網站類別的執行個體的屬性。
+`Master`屬性會傳回型別的物件[ `MasterPage` ](https://msdn.microsoft.com/library/system.web.ui.masterpage.aspx) (同樣位於`System.Web.UI`命名空間) 即從衍生自所有主版頁面的基底類型。 因此，若要使用的公用屬性或方法定義在我們的網站的主版頁面我們必須轉換`MasterPage`從傳回的物件`Master`適當類型的屬性。 因為我們名為我們的主版頁面檔案`Site.master`，程式碼後置類別命名為`Site`。 因此，下列程式碼轉換`Page.Master`網站類別的執行個體的屬性。
 
 
 [!code-csharp[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample8.cs)]
@@ -217,7 +217,7 @@ Label 控制項會實作為主版頁面內的受保護的成員變數，因為�
 
 每當瀏覽 ASP.NET 網頁時就會發生自動程式碼產生微不足道部分而不是相關且實用的可能性。 在主版頁面中，如果我們告訴我們內容的頁面正在使用哪些主版頁面的 ASP.NET 引擎就會產生強型別`Master`為我們的屬性。
 
-使用[`@MasterType`指示詞](https://msdn.microsoft.com/en-us/library/ms228274.aspx)，告知 ASP.NET 引擎的內容頁面的主版頁面類型。 `@MasterType`指示詞可接受主版頁面的型別名稱，或是其檔案路徑。 若要指定`AddProduct.aspx`頁面使用`Site.master`做為其主版頁面的頂端加入下列指示詞`AddProduct.aspx`:
+使用[`@MasterType`指示詞](https://msdn.microsoft.com/library/ms228274.aspx)，告知 ASP.NET 引擎的內容頁面的主版頁面類型。 `@MasterType`指示詞可接受主版頁面的型別名稱，或是其檔案路徑。 若要指定`AddProduct.aspx`頁面使用`Site.master`做為其主版頁面的頂端加入下列指示詞`AddProduct.aspx`:
 
 
 [!code-aspx[Main](interacting-with-the-master-page-from-the-content-page-cs/samples/sample9.aspx)]

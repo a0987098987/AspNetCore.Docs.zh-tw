@@ -1,6 +1,6 @@
 ---
 uid: whitepapers/mvc4-release-notes
-title: "ASP.NET MVC 4 |Microsoft 文件"
+title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
 description: "本文件說明 ASP.NET MVC 4 的版本。"
 ms.author: aspnetcontent
@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-release-notes
 msc.type: content
-ms.openlocfilehash: fb9d2eaa83fe7486279815c21aec204bdfdf122d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 399fbe3fa1e71a9ffa7c5e6dfeca7ccab7294d1b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
     - [資料庫移轉](#_Toc303253818)
     - [空白專案範本](#_Toc303253819)
     - [將控制器加入的任何專案資料夾](#_Toc303253820)
-    - [統合及縮製](#_Toc303253821)
+    - [統合和縮製](#_Toc303253821)
     - [啟用從 Facebook 和其他站台使用 OAuth 和 OpenID 登入](#_Toc303253822)
 - [ASP.NET MVC 3 專案升級至 ASP.NET MVC 4](#_Toc303253806)
 - [從 ASP.NET MVC 4 發行候選版本變更](#_Toc303253817)
@@ -271,7 +271,7 @@ ASP.NET MVC 4 發行候選版本資訊可以在這裡找到：
     [!code-xml[Main](mvc4-release-notes/samples/sample6.xml)]
 - **NuGet 套件管理員安裝嘗試安裝 ASP.NET MVC 4 的 Visual Studio 2010 和 Visual Web Developer 2010 的並存安裝時失敗。** 若要執行 Visual Studio 2010 和 Visual Web Developer 2010 並存 ASP.NET MVC 4 中，您必須安裝 ASP.NET MVC 4 之後已安裝 Visual Studio 的兩個版本。
 - **如果已經已解除安裝先決條件，解除安裝 ASP.NET MVC 4 會失敗。** 若要完全解除安裝 ASP.NET MVC 4you 必須解除安裝 ASP.NET MVC 4，然後再解除安裝 Visual Studio。
-- **安裝 ASP.NET MVC 4 中斷 ASP.NET MVC 3 RTM 應用程式。** ASP.NET MVC 3 應用程式所建立 rtm 發行 (不能搭配[ASP.NET MVC 3 Tools Update](https://www.microsoft.com/en-us/download/details.aspx?id=1491)版本) 才能與 ASP.NET MVC 4 並存需要下列變更。 建置專案，而不需要進行這些更新的結果中的編譯錯誤。 
+- **安裝 ASP.NET MVC 4 中斷 ASP.NET MVC 3 RTM 應用程式。** ASP.NET MVC 3 應用程式所建立 rtm 發行 (不能搭配[ASP.NET MVC 3 Tools Update](https://www.microsoft.com/download/details.aspx?id=1491)版本) 才能與 ASP.NET MVC 4 並存需要下列變更。 建置專案，而不需要進行這些更新的結果中的編譯錯誤。 
 
     **必要的更新**
 

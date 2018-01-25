@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 msc.type: authoredcontent
-ms.openlocfilehash: fcdded3a7e80ee797eae445f347735f0f7b3d7ad
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8579c444fd19d1a366349cc09f9f768de23055f8
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a>使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單
 ====================
@@ -134,12 +134,12 @@ ASP.NET Web 網頁會提供更多選項，驗證使用者輸入，包括自動�
     `value`屬性`<input>`項目已設定為以動態方式讀取欄位值，超出`Request.Form`物件。 第一次要求頁面時中的值`Request.Form`是所有空的物件。 這是沒問題，因為如此一來表單是空白。
 2. 啟動網頁瀏覽器中的，填寫表單的欄位或將它們留白，然後按一下**送出**。 會顯示頁面，其中顯示送出的值。
 
-    ![form 5](4-working-with-forms/_static/image5.jpg)
+    ![forms-5](4-working-with-forms/_static/image5.jpg)
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>其他資源
 
-- [若要取得的 Web 使用者輸入 1,001 方法](https://msdn.microsoft.com/en-us/library/ms971057.aspx)
-- [使用表單和處理使用者輸入](https://msdn.microsoft.com/en-us/library/ms525182(VS.90).aspx)
-- [ASP.NET Web Pages 站台中中驗證使用者輸入](https://go.microsoft.com/fwlink/?LinkId=253002)
-- [在 HTML 表單中使用自動完成](https://msdn.microsoft.com/en-us/library/ms533032(VS.85).aspx)
+- [若要取得的 Web 使用者輸入 1,001 方法](https://msdn.microsoft.com/library/ms971057.aspx)
+- [使用表單和處理使用者輸入](https://msdn.microsoft.com/library/ms525182(VS.90).aspx)
+- [在 ASP.NET Web Pages 網站中驗證使用者輸入](https://go.microsoft.com/fwlink/?LinkId=253002)
+- [在 HTML 表單中使用自動完成](https://msdn.microsoft.com/library/ms533032(VS.85).aspx)

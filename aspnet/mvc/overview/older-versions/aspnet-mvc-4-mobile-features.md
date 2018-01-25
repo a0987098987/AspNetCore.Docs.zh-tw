@@ -12,28 +12,28 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: e660595d66d81069fa47b77387509e73b1ec834e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d47d8f61dc7af6e1dc5887338be862ea81d7bb17
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 Mobile 功能
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> 現在是使用程式碼範例，在本教學課程的 MVC 5 版本[ASP.NET MVC 5 Mobile Web 應用程式部署在 Azure 網站](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/)。
+> 現在是使用程式碼範例，在本教學課程的 MVC 5 版本[ASP.NET MVC 5 Mobile Web 應用程式部署在 Azure 網站](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/)。
 
 
-本教學課程將告訴您如何使用 ASP.NET MVC 4 Web 應用程式中的行動裝置功能的基本概念。 此教學課程中，您可以使用[Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express)或 Visual Web Developer 2010 Express Service Pack 1 (&quot;Visual Web Developer 或 VWD&quot;)。 如果您已經有的您可以使用 Visual Studio professional 版。
+本教學課程將告訴您如何使用 ASP.NET MVC 4 Web 應用程式中的行動裝置功能的基本概念。 此教學課程中，您可以使用[Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express)或 Visual Web Developer 2010 Express Service Pack 1 (&quot;Visual Web Developer 或 VWD&quot;)。 如果您已經有的您可以使用 Visual Studio professional 版。
 
 開始之前，請確定您已安裝下面所列的必要條件。
 
-- [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/en-us/products/express) （建議選項） 或 Visual Studio Web Developer Express SP1。 Visual Studio 2012 包含 ASP.NET MVC 4。 如果您使用 Visual Web Developer 2010，您必須安裝[ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392)。
+- [Visual Studio Express 2012](https://www.microsoft.com/visualstudio/11/products/express) （建議選項） 或 Visual Studio Web Developer Express SP1。 Visual Studio 2012 包含 ASP.NET MVC 4。 如果您使用 Visual Web Developer 2010，您必須安裝[ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392)。
 
 您也需要行動電話瀏覽器模擬器。 下列其中一項工作將會：
 
-- [Windows 7 Phone 模擬器](https://msdn.microsoft.com/en-us/library/ff402563(VS.92).aspx)。 （這是用於此教學課程中大部分的螢幕擷取畫面中的模擬器）。
+- [Windows 7 Phone 模擬器](https://msdn.microsoft.com/library/ff402563(VS.92).aspx)。 （這是用於此教學課程中大部分的螢幕擷取畫面中的模擬器）。
 - 變更模擬 iPhone 的使用者代理字串。 請參閱[這](http://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/)部落格文章。
 - [Opera Mobile 模擬器](http://www.opera.com/developer/tools/mobile/)
 - [Apple Safari](http://www.apple.com/safari/download/)設 iPhone 使用者代理程式。 如需如何將使用者代理程式在 Safari 中設定為"iPhone 」 的指示，請參閱[如何讓 Safari 假裝其 IE](http://www.davidalison.com/2008/05/how-to-let-safari-pretend-its-ie.html) David Alison 部落格上。
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="what-youll-build"></a>您將建置
 
-此教學課程中，您會加入 mobile 功能中提供的簡單會議清單應用程式至[入門專案](https://go.microsoft.com/fwlink/?LinkId=228307)。 下列螢幕擷取畫面會顯示完成的應用程式的標記頁面中所見[Windows 7 Phone 模擬器](https://msdn.microsoft.com/en-us/library/ff402563(VS.92).aspx)。 請參閱[鍵盤對應的 Windows Phone 模擬器](https://msdn.microsoft.com/en-us/library/ff754352(v=vs.92).aspx)簡化鍵盤輸入。
+此教學課程中，您會加入 mobile 功能中提供的簡單會議清單應用程式至[入門專案](https://go.microsoft.com/fwlink/?LinkId=228307)。 下列螢幕擷取畫面會顯示完成的應用程式的標記頁面中所見[Windows 7 Phone 模擬器](https://msdn.microsoft.com/library/ff402563(VS.92).aspx)。 請參閱[鍵盤對應的 Windows Phone 模擬器](https://msdn.microsoft.com/library/ff754352(v=vs.92).aspx)簡化鍵盤輸入。
 
 [![p1_Tags_CompletedProj](aspnet-mvc-4-mobile-features/_static/image2.png)](aspnet-mvc-4-mobile-features/_static/image1.png)
 
@@ -215,7 +215,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample11.cs?highlight=26)]
 
 > [!NOTE]
-> 如果您使用 Internet Explorer 9，而且您沒有看到`BundleMobileConfig`以黃色反白顯示列上方，按一下[相容性檢視 按鈕](https://windows.microsoft.com/en-US/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![（關閉） 的相容性檢視 按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")讓變更從大綱圖示 ie ![（關閉） 的相容性檢視 按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")為純色![(on) 相容性檢視 按鈕的圖片](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "(on) 相容性檢視 按鈕的圖片")。 或者，您可以在 FireFox 或 Chrome 檢視本教學課程。
+> 如果您使用 Internet Explorer 9，而且您沒有看到`BundleMobileConfig`以黃色反白顯示列上方，按一下[相容性檢視 按鈕](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![（關閉） 的相容性檢視 按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")讓變更從大綱圖示 ie ![（關閉） 的相容性檢視 按鈕的圖片](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "（關閉） 的相容性檢視 按鈕的圖片")為純色![(on) 相容性檢視 按鈕的圖片](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "(on) 相容性檢視 按鈕的圖片")。 或者，您可以在 FireFox 或 Chrome 檢視本教學課程。
 
 
 開啟*MvcMobile\Views\Shared\\_Layout.Mobile.cshtml*檔案，然後加入下列標記直接之後`Html.Partial`呼叫：
@@ -393,7 +393,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 - 行動應用程式檢視切換程式 widget 檢視比也可以在桌面檢視中顯示。
 - 支援特定瀏覽器，例如 iPhone 瀏覽器支援。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [jQuery Mobile](http://jquerymobile.com)站台。
 - [jQuery Mobile 概觀](http://jquerymobile.com/demos/1.0b3/docs/about/intro.html)

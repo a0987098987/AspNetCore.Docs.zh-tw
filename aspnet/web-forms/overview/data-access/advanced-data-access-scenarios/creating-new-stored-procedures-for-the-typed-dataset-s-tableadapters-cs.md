@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4e8b4e6a12c010b227ee9a236130cbfd26d75657
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 715f7e3fae89e773b686faa7c49522c587693eec
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-c"></a>建立新的預存程序的具類型資料集的 Tableadapter (C#)
 ====================
@@ -47,7 +47,7 @@ Tableadapter 所執行的 SQL 命令可以是任一個特定 SQL 陳述式，例
 > 預存程序通常稱為 sprocs 或預存程序。
 
 
-使用建立預存程序[ `CREATE PROCEDURE` ](https://msdn.microsoft.com/en-us/library/aa258259(SQL.80).aspx) T-SQL 陳述式。 例如，下列 T-SQL 指令碼會建立名為預存程序`GetProductsByCategoryID`會採用單一參數，名為`@CategoryID`並傳回`ProductID`， `ProductName`， `UnitPrice`，和`Discontinued`中資料行的欄位`Products`資料表具有相符的`CategoryID`值：
+使用建立預存程序[ `CREATE PROCEDURE` ](https://msdn.microsoft.com/library/aa258259(SQL.80).aspx) T-SQL 陳述式。 例如，下列 T-SQL 指令碼會建立名為預存程序`GetProductsByCategoryID`會採用單一參數，名為`@CategoryID`並傳回`ProductID`， `ProductName`， `UnitPrice`，和`Discontinued`中資料行的欄位`Products`資料表具有相符的`CategoryID`值：
 
 
 [!code-sql[Main](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs/samples/sample1.sql)]
@@ -384,7 +384,7 @@ Tableadapter 中具類型資料集可以存取資料，使用特定 SQL 陳述�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [建立和維護預存程序](https://msdn.microsoft.com/en-us/library/aa214299(SQL.80).aspx)
+- [建立和維護預存程序](https://msdn.microsoft.com/library/aa214299(SQL.80).aspx)
 - [從預存程序擷取純量的資料](http://aspnet.4guysfromrolla.com/articles/062905-1.aspx)
 - [SQL Server 預存程序的基本概念](http://www.awprofessional.com/articles/article.asp?p=25288&amp;rl=1)
 - [預存程序： 概觀](http://www.sqlteam.com/item.asp?ItemID=563)

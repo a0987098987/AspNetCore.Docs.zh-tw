@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 53adb067751917a9539a310bb7d91e599696f213
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9c4d293355e26d8bf5ba1360b070a7b9809bfe56
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="key-management"></a>金鑰管理
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="key-expiration-and-rolling"></a>金鑰到期時間和循環
 
-建立金鑰時，它會自動採用 {now + 2 天} 啟用日和到期日的 {now + 90 天}。 2 天之前的延遲啟動提供的索引鍵的時間才能傳播到整個系統。 也就是說，它可讓其他應用程式指向備份存放區來觀察在其下一步 自動重新整理期間，索引鍵，因此最大化，金鑰環變成沒有作用中傳播到它時可能需要的所有應用程式使用它的機會。
+建立金鑰時，它會自動具 {now + 2 天} 啟用日和到期日的 {now + 90 天}。 2 天之前的延遲啟動提供的索引鍵的時間才能傳播到整個系統。 也就是說，它可讓其他應用程式指向備份存放區來觀察在其下一步 自動重新整理期間，索引鍵，因此最大化，金鑰環變成沒有作用中傳播到它時可能需要的所有應用程式使用它的機會。
 
 如果預設金鑰將在 2 天內過期，而鑰匙圈還沒有將會啟用在到期時的預設索引鍵的索引鍵，資料保護系統將會自動保存鑰匙圈新的金鑰。 這個新的金鑰已啟用的日期 {預設金鑰到期日} 和 {now + 90 天} 的到期日。 這可讓系統自動復原不中斷服務的定期的索引鍵。
 

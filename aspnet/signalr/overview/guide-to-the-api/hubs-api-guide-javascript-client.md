@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 65e369a393a8c5d2d1bba11b5c71347df8f9c69d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 794ab576d3c6600911f331bab7c335476e45a0c9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR 中樞 API 指南 JavaScript 用戶端
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -142,7 +142,7 @@ ASP.NET Web Form 應用程式中，使用`ResolveClientUrl`檔案參考您的 pr
 
 [!code-aspx[Main](hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-一般而言，使用相同的方法來指定您用於 CSS 或 JavaScript 檔案的 「 signalr/中樞 」 URL。 如果您指定的 URL，而不使用波狀符號，在某些情況下您的應用程式正常運作時，您在 Visual Studio 中使用 IIS Express 測試，但部署至完整 IIS 時，會因 404 錯誤。 如需詳細資訊，請參閱**根層級資源的解析參考**中[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)MSDN 網站上的。
+一般而言，使用相同的方法來指定您用於 CSS 或 JavaScript 檔案的 「 signalr/中樞 」 URL。 如果您指定的 URL，而不使用波狀符號，在某些情況下您的應用程式正常運作時，您在 Visual Studio 中使用 IIS Express 測試，但部署至完整 IIS 時，會因 404 錯誤。 如需詳細資訊，請參閱**根層級資源的解析參考**中[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)MSDN 網站上的。
 
 當您執行 Visual Studio 2013 中 web 專案在偵錯模式中，如果您使用 Internet Explorer 瀏覽器，您可以看到在 proxy 檔**方案總管 中**下**指令碼文件**，如下所示下圖。
 
@@ -308,10 +308,10 @@ SignalR 1.x，跨網域要求由單一 EnableCrossDomain 中的旗標。 這個�
 
 您可以使用下列值來指定傳輸方法：
 
-- 「 webSockets"
-- 「 foreverFrame"
-- 「 serverSentEvents"
-- 「 longPolling"
+- "webSockets"
+- "foreverFrame"
+- "serverSentEvents"
+- "longPolling"
 
 下列範例顯示如何找出連接正在使用哪一種傳輸方法。
 

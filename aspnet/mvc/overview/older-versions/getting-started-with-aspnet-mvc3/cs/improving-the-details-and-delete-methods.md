@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: d23110944642686b3e62aef1c324847de57a07c4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e46616d45ad0e4a0ab861e6fb53f33bc567cbdea
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="improving-the-details-and-delete-methods-c"></a>改進的詳細資料和 Delete 方法 (C#)
 ====================
@@ -77,13 +77,13 @@ Common language runtime (CLR) 需要有唯一的簽章 （名稱相同，不同�
 
 如果您想要部署應用程式，則第一項測試您的本機 IIS 7 伺服器上的應用程式很有幫助。 您可以使用這個[Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=ASPNET;)連結，以啟用 ASP.NET 應用程式的 IIS 設定。 請參閱下列的部署連結：
 
-- [ASP.NET 部署內容地圖](https://msdn.microsoft.com/en-us/library/dd394698.aspx)
+- [ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/dd394698.aspx)
 - [啟用 IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
-- [Web 應用程式專案部署](https://msdn.microsoft.com/en-us/library/dd394698.aspx)
+- [Web 應用程式專案部署](https://msdn.microsoft.com/library/dd394698.aspx)
 
-現在鼓勵您移到我們的中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)和[MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md)教學課程中，瀏覽[ASP.NETMSDN 上的發行項](https://msdn.microsoft.com/en-us/library/gg416514(VS.98).aspx)，和簽出許多視訊和資源的[https://asp.net/mvc](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！ [ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)是一個很好詢問的問題。
+現在鼓勵您移到我們的中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)和[MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md)教學課程中，瀏覽[ASP.NETMSDN 上的發行項](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)，和簽出許多視訊和資源的[https://asp.net/mvc](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！ [ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)是一個很好詢問的問題。
 
-享受 ！
+敬祝您使用愉快！
 
 — Scott Hanselman ([http://hanselman.com](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上) 以及 Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
 

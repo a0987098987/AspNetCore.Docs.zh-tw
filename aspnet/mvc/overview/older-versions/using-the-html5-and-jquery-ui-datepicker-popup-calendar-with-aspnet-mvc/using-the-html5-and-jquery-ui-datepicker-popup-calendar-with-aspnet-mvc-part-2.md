@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 271c244ab0b9e2524a33ea6ff4d41893ce22472f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69fbaa7761c97895ffee770f6feb9ce6b745d186
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 2 部分
 ====================
@@ -27,15 +27,15 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-an-automatic-datetime-template"></a>新增自動的日期時間範本
 
-在本教學課程的第一個部分，您已看到如何將屬性加入至模型，以明確指定的格式，以及如何明確地指定用來呈現模型的範本。 例如， [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性，在下列程式碼明確指定的格式`ReleaseDate`屬性。
+在本教學課程的第一個部分，您已看到如何將屬性加入至模型，以明確指定的格式，以及如何明確地指定用來呈現模型的範本。 例如， [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性，在下列程式碼明確指定的格式`ReleaseDate`屬性。
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample1.cs)]
 
-在下列範例中， [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype.aspx)屬性，使用`Date`列舉型別，可讓您指定日期範本，應該用來呈現模型。 如果您的專案沒有日期範本，則會使用內建日期範本。
+在下列範例中， [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)屬性，使用`Date`列舉型別，可讓您指定日期範本，應該用來呈現模型。 如果您的專案沒有日期範本，則會使用內建日期範本。
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample2.cs)]
 
-不過，ASP。MVC 可以執行型別比對使用慣例移轉組態，藉由尋找符合型別名稱的範本。 這可讓您建立的範本，而不需要完全使用任何屬性或程式碼，自動格式化資料。 此部分的教學課程中，您將建立會自動套用至類型的模型內容的範本[DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx)。 您不需要使用屬性或其他設定來指定應該使用的範本來呈現所有類型的模型內容[DateTime](https://msdn.microsoft.com/en-us/library/system.datetime.aspx)。
+不過，ASP。MVC 可以執行型別比對使用慣例移轉組態，藉由尋找符合型別名稱的範本。 這可讓您建立的範本，而不需要完全使用任何屬性或程式碼，自動格式化資料。 此部分的教學課程中，您將建立會自動套用至類型的模型內容的範本[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx)。 您不需要使用屬性或其他設定來指定應該使用的範本來呈現所有類型的模型內容[DateTime](https://msdn.microsoft.com/library/system.datetime.aspx)。
 
 您也將學習來自訂個別屬性或甚至個別欄位的顯示方式。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/_static/image3.png)
 
-開啟*Views\Shared\DisplayTemplates\DateTime.cshtml*檔案，然後加入下列標記，會使用[String.Format](https://msdn.microsoft.com/en-us/library/system.string.format.aspx)屬性格式化為不含時間日期的方法。 (`{0:d}`格式指定簡短日期格式。)
+開啟*Views\Shared\DisplayTemplates\DateTime.cshtml*檔案，然後加入下列標記，會使用[String.Format](https://msdn.microsoft.com/library/system.string.format.aspx)屬性格式化為不含時間日期的方法。 (`{0:d}`格式指定簡短日期格式。)
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample5.cs)]
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="using-uihint-to-specify-a-display-template"></a>使用 UIHint 指定顯示範本
 
-如果您的 web 應用程式有許多`DateTime`欄位和您想要顯示所有或大部分的這些日期的格式，預設*DateTime.cshtml*範本是最佳方法。 但如果您有幾個日期您想要顯示完整日期和時間的地方嗎？ 沒問題。 您可以建立額外的範本，並使用[UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性來指定完整日期和時間的格式。 您接著可以選擇性地套用該範本。 您可以使用[UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性在模型層級，或者您可以指定內檢視的範本。 在本節中，您會看到如何使用`UIHint`屬性選擇性地變更某些日期時間欄位的執行個體的格式。
+如果您的 web 應用程式有許多`DateTime`欄位和您想要顯示所有或大部分的這些日期的格式，預設*DateTime.cshtml*範本是最佳方法。 但如果您有幾個日期您想要顯示完整日期和時間的地方嗎？ 沒問題。 您可以建立額外的範本，並使用[UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性來指定完整日期和時間的格式。 您接著可以選擇性地套用該範本。 您可以使用[UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性在模型層級，或者您可以指定內檢視的範本。 在本節中，您會看到如何使用`UIHint`屬性選擇性地變更某些日期時間欄位的執行個體的格式。
 
 開啟*Views\Movies\DisplayTemplates\LoudDateTime.cshtml*檔案，然後以下列取代現有的程式碼：
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/10/2017
 
 這樣會導致顯示完整日期和時間，並將會使文字綠色和大型的 CSS 類別。
 
-開啟*Movie.cs*檔案，然後加入[UIHint](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性`ReleaseDate`屬性，如下列範例所示：
+開啟*Movie.cs*檔案，然後加入[UIHint](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx)屬性`ReleaseDate`屬性，如下列範例所示：
 
 [!code-csharp[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample8.cs)]
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/10/2017
 
 返回`UIHint`屬性*Movie.cs*檔案，並加以註解化因此*LoudDateTime.cshtml*將不會使用範本。 再次執行應用程式。 發行日期時，不會顯示大型和綠色。 這會驗證*Views\Shared\DisplayTemplates\DateTime.cshtml* 索引 和 詳細資料檢視會使用範本。
 
-如先前所述，您也可以套用範本中的檢視，可讓您將範本套用到個別的執行個體的一些資料。 開啟*Views\Movies\Details.cshtml*檢視。 新增`"LoudDateTime"`做為第二個參數的[Html.DisplayFor](https://msdn.microsoft.com/en-us/library/ee407420.aspx)呼叫`ReleaseDate`欄位。 已完成的程式碼看起來像這樣：
+如先前所述，您也可以套用範本中的檢視，可讓您將範本套用到個別的執行個體的一些資料。 開啟*Views\Movies\Details.cshtml*檢視。 新增`"LoudDateTime"`做為第二個參數的[Html.DisplayFor](https://msdn.microsoft.com/library/ee407420.aspx)呼叫`ReleaseDate`欄位。 已完成的程式碼看起來像這樣：
 
 [!code-cshtml[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-2/samples/sample9.cshtml)]
 

@@ -12,15 +12,15 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/katana-samples
 msc.type: authoredcontent
-ms.openlocfilehash: 5540164bda8db31c4e78b49ecb7f7c573acca013
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 815355c00c9c15cfefa5f98dc89da676743b0390
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="katana-samples"></a>Katana 範例
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 ## <a name="katana-samples"></a>Katana 範例
 
@@ -52,4 +52,4 @@ OWIN 是 HTTP 伺服器 API 的抽象概念，設定跨越各種伺服器啟用�
 這個範例示範如何裝載在 IIS 中的 OWIN，並將 Web API 新增至 OWIN 管線。
 
 **Web 通訊端範例** | [原始碼](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/Katana/WebSocketSample/WebSocketServer/Startup.cs)   
-示範如何透過 OWIN 中支援 Web 通訊端[System.Net.WebSockets.WebSocket](https://msdn.microsoft.com/en-us/library/system.net.websockets.websocket(v=vs.110).aspx)類別。
+示範如何透過 OWIN 中支援 Web 通訊端[System.Net.WebSockets.WebSocket](https://msdn.microsoft.com/library/system.net.websockets.websocket(v=vs.110).aspx)類別。

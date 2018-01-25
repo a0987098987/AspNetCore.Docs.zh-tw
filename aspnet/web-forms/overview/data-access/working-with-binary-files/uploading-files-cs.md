@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8002253ef40c7786a5dada95b7e8d0dc070409fd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 629c1154683a0370e3e650873edf29dc9f22b4bc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="uploading-files-c"></a>上傳檔案 (C#)
 ====================
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/10/2017
 直接在資料庫中儲存二進位資料的主要優點是二進位資料和資料庫記錄之間的緊密結合。 這可以大幅簡化資料庫管理工作，例如備份或將資料庫移至不同的網站或伺服器。 此外，自動刪除記錄會刪除對應的二進位資料。 也有二進位資料儲存在資料庫中的許多微妙的優點。 請參閱[儲存二進位檔案直接在資料庫使用 ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/120606-1.aspx)如更深入的討論。
 
 > [!NOTE]
-> 在 Microsoft SQL Server 2000 及更新版本、`varbinary`資料型別有最大限制為 8000 個位元組。 若要儲存多達 2 GB 的二進位資料[`image`資料型別](https://msdn.microsoft.com/en-us/library/ms187993.aspx)需要改為使用。 加上的`MAX`在 SQL Server 2005，不過，`image`資料型別已被取代。 它 s 仍支援回溯相容性，但 Microsoft 已宣布， `image` SQL Server 的未來版本將移除的資料型別。
+> 在 Microsoft SQL Server 2000 及更新版本、`varbinary`資料型別有最大限制為 8000 個位元組。 若要儲存多達 2 GB 的二進位資料[`image`資料型別](https://msdn.microsoft.com/library/ms187993.aspx)需要改為使用。 加上的`MAX`在 SQL Server 2005，不過，`image`資料型別已被取代。 它 s 仍支援回溯相容性，但 Microsoft 已宣布， `image` SQL Server 的未來版本將移除的資料型別。
 
 
 如果您正在使用較舊的資料模型可能會看到`image`資料型別。 Northwind 資料庫 s`Categories`資料表有`Picture`可以用來儲存類別目錄的映像檔的二進位資料的資料行。 Northwind 資料庫有其 Microsoft Access 和舊版的 SQL Server 中的根，因為此資料行是類型`image`。
@@ -210,7 +210,7 @@ Categories 資料表目前有只能有四個資料行： `CategoryID`， `Catego
 
 當收集二進位資料，有時候這項資料是由使用者提供。 若要擷取這項資訊，使用者必須能夠從他們的電腦到 web 伺服器將檔案上傳。 然後上傳的資料必須與資料模型，這可能表示將檔案儲存至 web 伺服器的檔案系統和加入資料庫中的檔案路徑或二進位內容直接寫入資料庫的整合。 在此步驟中我們將探討如何讓使用者從他們的電腦與伺服器的檔案上傳。 在下一個教學課程中我們將會開啟我們注意到整合資料模型上傳的檔案。
 
-ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/en-us/library/ms227677(VS.80).aspx)提供一個機制，讓使用者從他們的電腦傳送檔案到 web 伺服器。 檔案上傳控制項轉譯為`<input>`項目其`type`屬性設為瀏覽器以瀏覽按鈕的文字方塊所顯示的檔案。 按一下 [瀏覽] 按鈕會顯示的對話方塊，使用者可以從中選取檔案。 回傳的表單，當選取的檔案的內容會傳送以及回傳。 伺服器端上傳檔案的相關資訊是透過檔案上傳控制內容存取。
+ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/library/ms227677(VS.80).aspx)提供一個機制，讓使用者從他們的電腦傳送檔案到 web 伺服器。 檔案上傳控制項轉譯為`<input>`項目其`type`屬性設為瀏覽器以瀏覽按鈕的文字方塊所顯示的檔案。 按一下 [瀏覽] 按鈕會顯示的對話方塊，使用者可以從中選取檔案。 回傳的表單，當選取的檔案的內容會傳送以及回傳。 伺服器端上傳檔案的相關資訊是透過檔案上傳控制內容存取。
 
 若要上傳的檔案進行示範，請開啟`FileUpload.aspx`頁面`BinaryData`資料夾中，將檔案上傳控制項從工具箱拖曳至設計工具中，並設定控制 s`ID`屬性`UploadTest`。 接下來，加入按鈕 Web 控制項設定其`ID`和`Text`屬性`UploadButton`並分別上傳選取的檔案。 最後，將標籤 Web 控制項下方的按鈕，清除其`Text`屬性並設定其`ID`屬性`UploadDetails`。
 
@@ -233,13 +233,13 @@ ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/en-us/
 
 [!code-csharp[Main](uploading-files-cs/samples/sample5.cs)]
 
-檔案上傳控制項提供各種屬性，使用 上傳的資料。 比方說， [ `HasFile`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.fileupload.hasfile.aspx)指出檔案是否已由使用者上傳時[`FileBytes`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.fileupload.filebytes.aspx)為位元組陣列提供已上傳二進位資料的存取權。 `Click`事件處理常式一開始會確保已上傳的檔案。 如果已上傳檔案，標籤會顯示上傳的檔案，以位元組為單位，其大小和其內容類型的名稱。
+檔案上傳控制項提供各種屬性，使用 上傳的資料。 比方說， [ `HasFile`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.fileupload.hasfile.aspx)指出檔案是否已由使用者上傳時[`FileBytes`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.fileupload.filebytes.aspx)為位元組陣列提供已上傳二進位資料的存取權。 `Click`事件處理常式一開始會確保已上傳的檔案。 如果已上傳檔案，標籤會顯示上傳的檔案，以位元組為單位，其大小和其內容類型的名稱。
 
 > [!NOTE]
 > 若要確保使用者可以檢查檔案上傳`HasFile`屬性並顯示警告，如果它 s `false`，或使用[RequiredFieldValidator 控制項](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/validation/default.aspx)改為。
 
 
-檔案上傳 s`SaveAs(filePath)`將上傳的檔案儲存至指定*filePath*。 *filePath*必須*實體路徑*(`C:\Websites\Brochures\SomeFile.pdf`) 而非*虛擬**路徑*(`/Brochures/SomeFile.pdf`)。 [ `Server.MapPath(virtPath)`方法](https://msdn.microsoft.com/en-us/library/system.web.httpserverutility.mappath.aspx)虛擬路徑，並傳回其對應的實體路徑。 此處的虛擬路徑是`~/Brochures/fileName`，其中*fileName*是上傳的檔案名稱。 請參閱[使用 Server.MapPath](http://www.4guysfromrolla.com/webtech/121799-1.shtml)如需有關虛擬和實體路徑，並使用`Server.MapPath`。
+檔案上傳 s`SaveAs(filePath)`將上傳的檔案儲存至指定*filePath*。 *filePath*必須*實體路徑*(`C:\Websites\Brochures\SomeFile.pdf`) 而非*虛擬**路徑*(`/Brochures/SomeFile.pdf`)。 [ `Server.MapPath(virtPath)`方法](https://msdn.microsoft.com/library/system.web.httpserverutility.mappath.aspx)虛擬路徑，並傳回其對應的實體路徑。 此處的虛擬路徑是`~/Brochures/fileName`，其中*fileName*是上傳的檔案名稱。 請參閱[使用 Server.MapPath](http://www.4guysfromrolla.com/webtech/121799-1.shtml)如需有關虛擬和實體路徑，並使用`Server.MapPath`。
 
 完成之後`Click`事件處理常式，請花一點時間瀏覽器中測試。 按一下瀏覽按鈕並選取您的硬碟中的檔案，然後按一下 [上傳選取檔案] 按鈕。 回傳會傳送選取的檔案內容的 web 伺服器，然後將會顯示檔案的相關資訊，然後再將它儲存至`~/Brochures`資料夾。 後上傳檔案時，返回 Visual Studio 並按一下 [方案總管] 的 [重新整理] 按鈕。 您應該會看到您剛剛上傳 ~/Brochures 資料夾中的檔案 ！
 
@@ -264,7 +264,7 @@ ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/en-us/
 
 ## <a name="challenges-involved-with-very-large-amounts-of-binary-data"></a>處理非常大量的二進位資料的挑戰
 
-這些教學課程假設擷取二進位資料的大小太大。 使用非常大量的二進位資料檔案的數個 mb 或更大導入了新的挑戰，已超出這些教學課程的範圍。 例如，根據預設 ASP.NET 將會拒絕上的傳超過 4 mb，雖然這可以透過設定[`<httpRuntime>`元素](https://msdn.microsoft.com/en-us/library/e1f13641.aspx)中`Web.config`。 IIS 會為它自己的檔案上傳大小的限制，太。 請參閱[IIS 上傳檔案大小](http://vandamme.typepad.com/development/2005/09/iis_upload_file.html)如需詳細資訊。 此外，若要上傳大型檔案所花費的時間可能會 110 ASP.NET 會等待要求的秒數超過預設值。 另外還有處理大型檔案時，會發生的記憶體和效能問題。
+這些教學課程假設擷取二進位資料的大小太大。 使用非常大量的二進位資料檔案的數個 mb 或更大導入了新的挑戰，已超出這些教學課程的範圍。 例如，根據預設 ASP.NET 將會拒絕上的傳超過 4 mb，雖然這可以透過設定[`<httpRuntime>`元素](https://msdn.microsoft.com/library/e1f13641.aspx)中`Web.config`。 IIS 會為它自己的檔案上傳大小的限制，太。 請參閱[IIS 上傳檔案大小](http://vandamme.typepad.com/development/2005/09/iis_upload_file.html)如需詳細資訊。 此外，若要上傳大型檔案所花費的時間可能會 110 ASP.NET 會等待要求的秒數超過預設值。 另外還有處理大型檔案時，會發生的記憶體和效能問題。
 
 大型檔案上傳的檔案上傳控制項不切實際。 檔案的內容張貼至伺服器，因為使用者必須耐心等待不用任何確認其上傳的進度。 處理較小的檔案可以在幾秒鐘上, 傳，但可以處理較大可能需要分鐘來上傳的檔案時，會發生問題時，這是不太多問題。 有各種不同的第三方檔案較適合處理大量上傳的上傳控制項，而且許多這些廠商提供進度指標和 ActiveX 上傳提供更精美的使用者經驗的管理員。
 
@@ -280,7 +280,7 @@ ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/en-us/
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [使用大數值資料類型](https://msdn.microsoft.com/en-us/library/ms178158.aspx)
+- [使用大數值資料類型](https://msdn.microsoft.com/library/ms178158.aspx)
 - [檔案上傳控制項快速入門](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/standard/fileupload.aspx)
 - [ASP.NET 2.0 的檔案上傳伺服器控制項](http://www.wrox.com/WileyCDA/Section/id-292158.html)
 - [在檔案上傳深色的一端](http://www.aspnetresources.com/articles/dark_side_of_file_uploads.aspx)

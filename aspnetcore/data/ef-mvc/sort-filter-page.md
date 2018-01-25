@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 6da2073b18f6fff9738808c84441e59240caefe3
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 60ac1844e7747002d72aa892a47490cb7a416359
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、 篩選、 分頁和群組-EF Core 與 ASP.NET Core MVC 教學課程 (10-3)
 
@@ -53,7 +53,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 | 遞增的日期       | ascending           | descending     |
 | 日期遞減      | ascending           | ascending      |
 
-方法會使用 LINQ to Entities，來指定排序所依據的資料行。 程式碼會建立`IQueryable`變數 switch 陳述式前的加以修改在 switch 陳述式，並呼叫`ToListAsync`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 查詢不會執行直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToListAsync`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
+方法會使用 LINQ to Entities，來指定排序所依據的資料行。 程式碼會建立`IQueryable`變數 switch 陳述式前的加以修改在 switch 陳述式，並呼叫`ToListAsync`方法之後`switch`陳述式。 當您建立和修改`IQueryable`變數沒有查詢傳送至資料庫。 不執行查詢，直到您將轉換`IQueryable`物件加入集合中所呼叫的方法，例如`ToListAsync`。 因此，此程式碼會產生單一查詢，將會等到執行`return View`陳述式。
 
 此程式碼可以取得詳細資訊，使用大量的資料行。 [此系列中的最後一個教學課程](advanced.md#dynamic-linq)示範如何撰寫程式碼，可讓您傳遞的名稱`OrderBy`字串變數中的資料行。
 
@@ -92,7 +92,7 @@ Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Core MVC web 應
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-此程式碼使用`<form>`[標記協助程式](xref:mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 此動作不會導致更新時，就會收到 W3C 指導方針建議，您應該使用。
+此程式碼使用`<form>`[標記協助程式](xref:mvc/views/tag-helpers/intro)加入搜尋文字方塊和按鈕。 根據預設，`<form>`標記協助程式送出表單資料的文章時，這表示，參數傳遞的 HTTP 訊息本文，而不是在 URL 查詢字串的形式。 當您指定 HTTP GET 時，表單資料會在 URL 中當做傳遞查詢字串，可讓使用者 URL 加入書籤。 更新並不會造成此動作時，就會收到 W3C 指導方針建議，您應該使用。
 
 執行應用程式中，選取**學生**索引標籤，輸入搜尋字串，然後按一下 [搜尋] 以確認篩選可以運作。
 

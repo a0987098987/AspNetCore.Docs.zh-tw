@@ -12,22 +12,22 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 68870caf1608e596962650cf653e5b455b82382a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29b45c07b5498542abbf22c4c3001b1cee41edc9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 使用者清單的範例 web 應用程式示範如何建立 ASP.NET MVC 3 應用程式使用 Razor 檢視引擎是簡單。 範例應用程式示範如何使用新的 Razor 檢視引擎，使用 ASP.NET MVC 3 版和 Visual Studio 2010 來建立虛構的使用者清單網站包含功能，例如建立、 顯示、 編輯和刪除使用者。
 > 
 > 本教學課程描述才能建立使用者清單的範例 ASP.NET MVC 3 應用程式所採取的步驟。 本主題隨附了與 C# 和 VB 原始碼的 Visual Studio 專案：[下載](https://code.msdn.microsoft.com/aspnetmvcsamples/Release/ProjectReleases.aspx?ReleaseId=5114)。 如果您有本教學課程有關的問題，請張貼到[MVC 論壇](https://forums.asp.net/1146.aspx)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 您將建置的應用程式是一個簡單的使用者清單的網站。 使用者可以輸入、 檢視和更新使用者資訊。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 
 - *Controllers\AccountController*
 - *Models\AccountModels*
-- *_Layout.cshtml\\_LogOnPartial*
+- *Views\Shared\\_LogOnPartial*
 - *Views\Account* （及此目錄中的所有檔案）
 
 ![Soln Exp](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image5.png)
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample2.cs)]
 
-`UserModel`類別代表使用者。 類別的每個成員都以註解[需要](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)屬性從[DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間。 中的屬性[DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)命名空間提供 web 應用程式的自動用戶端和伺服器端驗證。
+`UserModel`類別代表使用者。 類別的每個成員都以註解[需要](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)屬性從[DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間。 中的屬性[DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)命名空間提供 web 應用程式的自動用戶端和伺服器端驗證。
 
 開啟`HomeController`類別，然後將`using`指示詞，好讓您可以存取`UserModel`和`Users`類別：
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample8.cs)]
 
-以滑鼠右鍵按一下`Details`方法，然後選取**加入檢視**。 確認**檢視資料類別**方塊包含**Mvc3Razor.Models.UserModel***。* 設定**檢視內容**至**詳細資料**，然後按一下 **新增**。
+以滑鼠右鍵按一下`Details`方法，然後選取**加入檢視**。 確認**檢視資料類別**方塊包含 **Mvc3Razor.Models.UserModel***。* 設定**檢視內容**至**詳細資料**，然後按一下 **新增**。
 
 ![加入詳細資料檢視](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image11.png)
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 11/10/2017
 
 前兩個 jQuery 指令碼會裝載由 Microsoft Ajax 內容傳遞網路 (CDN)。 利用 Microsoft Ajax CDN，您可以大幅改善應用程式的第一個叫用次數效能。
 
-執行應用程式，然後按一下 [編輯] 連結。 在瀏覽器中檢視網頁原始檔。 瀏覽器來源顯示表單的許多屬性`data-val`（適用於資料驗證）。 啟用用戶端驗證和不顯眼的 JavaScript 時，與用戶端驗證規則的輸入的欄位會包含`data-val="true"`觸發不顯眼的用戶端驗證的屬性。 比方說，`City`模型中的欄位以裝飾[需要](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute.aspx)屬性，這會產生 HTML，下列範例所示：
+執行應用程式，然後按一下 [編輯] 連結。 在瀏覽器中檢視網頁原始檔。 瀏覽器來源顯示表單的許多屬性`data-val`（適用於資料驗證）。 啟用用戶端驗證和不顯眼的 JavaScript 時，與用戶端驗證規則的輸入的欄位會包含`data-val="true"`觸發不顯眼的用戶端驗證的屬性。 比方說，`City`模型中的欄位以裝飾[需要](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)屬性，這會產生 HTML，下列範例所示：
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample15.cshtml)]
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 11/10/2017
 
 ![所需的縣 （市)](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image14.png)
 
-同樣地，用戶端驗證規則中每一個參數，將屬性加入具有表單`data-val-rulename-paramname=paramvalue`。 例如，`FirstName`附註屬性[StringLength](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性，並且指定最小長度為 3 和最大長度為 8。 資料驗證規則，名為`length`具有參數名稱`max`和參數值 8。 下圖顯示針對所產生的 HTML`FirstName`欄位編輯一位使用者時：
+同樣地，用戶端驗證規則中每一個參數，將屬性加入具有表單`data-val-rulename-paramname=paramvalue`。 例如，`FirstName`附註屬性[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性，並且指定最小長度為 3 和最大長度為 8。 資料驗證規則，名為`length`具有參數名稱`max`和參數值 8。 下圖顯示針對所產生的 HTML`FirstName`欄位編輯一位使用者時：
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample16.cshtml)]
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/preventing-open-redirects
-ms.openlocfilehash: e57ae429e9af54ade74485361ba591cb75c16752
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6ecf2440ac7073bdad098f6fe48f6c788ba7795a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>防止 ASP.NET Core 應用程式中開啟的重新導向攻擊
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="what-is-an-open-redirect-attack"></a>什麼是開啟的重新導向攻擊？
 
-Web 應用程式經常將使用者重新導向至登入頁面存取需要驗證的資源時。 包含重新導向 typlically `returnUrl` querystring 參數，以便使用者可以傳回至原本要求的 URL 之後使用者成功登入。 使用者驗證之後，它們會重新導向至其原先要求的 URL。
+Web 應用程式經常將使用者重新導向至登入頁面存取需要驗證的資源時。 包含重新導向 typlically `returnUrl` querystring 參數，以便使用者可以傳回至原本要求的 URL 之後使用者成功登入。 使用者驗證之後，它們是重新導向至其原先要求的 URL。
 
 因為要求的 querystring 中指定的目的地 URL，惡意的使用者無法修改查詢字串。 遭竄改的查詢字串可能會允許將使用者重新導向至外部，惡意的站台的站台。 這項技術稱為開啟重新導向 （或重新導向） 攻擊。
 
@@ -36,7 +36,7 @@ Web 應用程式經常將使用者重新導向至登入頁面存取需要驗證�
 3. 使用者重新導向 （由站台） 至``http://nerddiner.com/Account/LogOn``（看起來像真正的站台的惡意網站）。
 4. 使用者再次登入 （提供惡意網站他們的認證） 會重新導向至實際站台。
 
-使用者將可能認為其第一次嘗試登入失敗，且其第二個是成功。 將最有可能仍不知道他們的認證遭洩漏。
+使用者將可能認為其第一次嘗試登入失敗，且其第二個是成功。 它們很可能仍不知道他們的認證遭洩漏。
 
 ![開啟的重新導向攻擊程序](preventing-open-redirects/_static/open-redirection-attack-process.png)
 

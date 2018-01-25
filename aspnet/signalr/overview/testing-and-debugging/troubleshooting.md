@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: d7a1dcc04baaa5ab27aecf95936d943f5a9b3f0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2394ee81f4592417a034e47db6eefd3e4b91a9af
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-troubleshooting"></a>SignalR 疑難排解
 ====================
@@ -192,7 +192,7 @@ SignalR 的伺服器不知道，是否用戶端是無作用或不，而它們是
 
 - **中樞 proxy 位址參照的格式不正確：**如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 請確認中樞位址的參考都正確。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
 - **將路由加入至應用程式，然後再加入中樞路由：**如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapSignalR`。
-- **無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：**使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。 您可以找到更新[這裡](https://support.microsoft.com/kb/980368/en-us)。
+- **無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：**使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。 您可以找到更新[這裡](https://support.microsoft.com/kb/980368)。
 - **IIS 快取已過期或已損毀：**若要確認快取內容不是已過期，請在 PowerShell 視窗中，清除快取中輸入下列命令：
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]
@@ -311,7 +311,7 @@ jQuery Mobile 的`initializePage`函式會強制重新執行，每一頁中的�
 
 如果您使用程式碼從舊版的文件或部落格，可能會看到這個錯誤。 請確認未參考的已變更或已被取代的方法名稱 (例如`OnConnectedAsync`)。
 
-### <a name="hostcontextextensionswebsocketserverurl-is-null"></a>HostContextExtensions.WebSocketServerUrl 為 null
+### <a name="hostcontextextensionswebsocketserverurl-is-null"></a>HostContextExtensions.WebSocketServerUrl is null
 
 這種行為是設計上的預期行為。 這個成員已被取代，不應使用。
 

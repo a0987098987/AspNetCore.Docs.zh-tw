@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: d3ef613f625d862314eb0bb60f083f60bb2317e5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9b229de60e09b94189f62a6bb6fa61a9973d637b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="caching"></a>快取
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解快取，請務必在執行良好的 ASP.NET 應用程式。 ASP.NET 1.x 提供三種不同的選項，為快取。輸出快取、 片段快取和快取 API。
 
@@ -77,7 +77,7 @@ SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 �
 
 | **命令列參數** | **目的** |
 | --- | --- |
-| -S*伺服器* | 指定伺服器名稱。 |
+| -S *server* | 指定伺服器名稱。 |
 | -ed | 指定資料庫應該啟用 SQL 快取相依性。 |
 | -d*資料庫\_名稱* | 指定應該啟用 SQL 快取相依性的資料庫名稱。 |
 | -E | 指定該 aspnet\_regsql 連接至資料庫時，應該使用 Windows 驗證。 |
@@ -102,7 +102,7 @@ SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 �
 | AspNet\_SqlCacheUpdateChangeIdStoredProcedure | 更新通知資料表已變更的資料表 changeId 是遞增。 ASP.NET 會使用此值來判斷資料是否已變更。 下面所指出，此預存程序會執行觸發程序啟用的資料表時建立。 |
 
 
-- SQL Server 觸發程序呼叫***資料表\_名稱*\_AspNet\_SqlCacheNotification\_觸發程序**建立資料表。 這個觸發程序執行 AspNet\_SqlCacheUpdateChangeIdStoredProcedure 資料表上執行插入、 更新或刪除時。
+- SQL Server 觸發程序稱為 ***資料表\_名稱 *\_AspNet\_SqlCacheNotification\_觸發程序**建立資料表。 這個觸發程序執行 AspNet\_SqlCacheUpdateChangeIdStoredProcedure 資料表上執行插入、 更新或刪除時。
 - SQL Server 角色呼叫**aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess**加入至資料庫。
 
 **Aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess** SQL Server 角色具有 EXEC 權限以 AspNet\_SqlCachePollingStoredProcedure。 為了讓輪詢模型，才能正確運作，您必須加入您的處理序帳戶 aspnet\_ChangeNotification\_ReceiveNotificationsOnlyAccess 角色。 Aspnet\_regsql.exe 工具將不會進行這讓您。
@@ -144,7 +144,7 @@ SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 �
 
 [!code-csharp[Main](caching/samples/sample11.cs)]
 
-更多資訊： [https://msdn.microsoft.com/en-us/library/t9x04ed2.aspx](https://msdn.microsoft.com/en-us/library/t9x04ed2.aspx)
+更多資訊： [https://msdn.microsoft.com/library/t9x04ed2.aspx](https://msdn.microsoft.com/library/t9x04ed2.aspx)
 
 ## <a name="query-based-sql-cache-dependencies-sql-server-2005-only"></a>以查詢為基礎的 SQL 快取相依性 (SQL Server 2005)
 
@@ -188,7 +188,7 @@ ASP.NET Substitution control 指定的快取的頁面，是以動態方式建立
 
 ### <a name="substitution-api"></a>替代的 API
 
-若要以程式設計方式建立動態內容快取的頁面，您可以呼叫[WriteSubstitution](https://msdn.microsoft.com/en-us/library/system.web.httpresponse.writesubstitution.aspx)網頁程式碼，將它當做參數傳遞的方法名稱中的方法。 處理動態內容的建立方法接受單一[HttpContext](https://msdn.microsoft.com/en-us/library/system.web.httpcontext.aspx)參數並傳回字串。 傳回的字串會是內容，其會取代在指定的位置。 呼叫 WriteSubstitution 方法，而不是以宣告方式使用替代控制項的優點是您可以呼叫任何任意物件，而不是呼叫頁面或 UserControl 物件的靜態方法的方法。
+若要以程式設計方式建立動態內容快取的頁面，您可以呼叫[WriteSubstitution](https://msdn.microsoft.com/library/system.web.httpresponse.writesubstitution.aspx)網頁程式碼，將它當做參數傳遞的方法名稱中的方法。 處理動態內容的建立方法接受單一[HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.aspx)參數並傳回字串。 傳回的字串會是內容，其會取代在指定的位置。 呼叫 WriteSubstitution 方法，而不是以宣告方式使用替代控制項的優點是您可以呼叫任何任意物件，而不是呼叫頁面或 UserControl 物件的靜態方法的方法。
 
 呼叫 WriteSubstitution 方法會導致用戶端快取性必須變更為伺服器快取性，以便將不在用戶端上快取頁面。 這可確保未來的要求頁面呼叫的方法，以產生動態內容。
 
@@ -198,15 +198,15 @@ ASP.NET Substitution control 指定的快取的頁面，是以動態方式建立
 
 ## <a name="controlcachepolicy-class"></a>ControlCachePolicy 類別
 
-ControlCachePolicy 類別可讓您以程式設計方式控制的片段快取使用使用者控制項。 ASP.NET 會內嵌在使用者控制項[BasePartialCachingControl](https://msdn.microsoft.com/en-us/library/system.web.ui.basepartialcachingcontrol.aspx)執行個體。 BasePartialCachingControl 類別代表已啟用快取輸出的使用者控制項。
+ControlCachePolicy 類別可讓您以程式設計方式控制的片段快取使用使用者控制項。 ASP.NET 會內嵌在使用者控制項[BasePartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.aspx)執行個體。 BasePartialCachingControl 類別代表已啟用快取輸出的使用者控制項。
 
-當您存取[BasePartialCachingControl.CachePolicy](https://msdn.microsoft.com/en-us/library/system.web.ui.basepartialcachingcontrol.cachepolicy.aspx)屬性[PartialCachingControl](https://msdn.microsoft.com/en-us/library/system.web.ui.partialcachingcontrol.aspx)控制項，您一定會收到有效的 ControlCachePolicy 物件。 不過，如果您存取[UserControl.CachePolicy](https://msdn.microsoft.com/en-us/library/system.web.ui.usercontrol.cachepolicy.aspx)屬性[UserControl](https://msdn.microsoft.com/en-us/library/system.web.ui.usercontrol.aspx)控制項，您會收到有效 ControlCachePolicy 物件只由已包裝的使用者控制項BasePartialCachingControl 控制項。 如果並未包裝，屬性所傳回的 ControlCachePolicy 物件將會擲回例外狀況時操作它，因為它並沒有相關聯的 BasePartialCachingControl。 若要判斷 UserControl 的執行個體是否支援快取而不會產生例外狀況，檢查[SupportsCaching](https://msdn.microsoft.com/en-us/library/system.web.ui.controlcachepolicy.supportscaching.aspx)屬性。
+當您存取[BasePartialCachingControl.CachePolicy](https://msdn.microsoft.com/library/system.web.ui.basepartialcachingcontrol.cachepolicy.aspx)屬性[PartialCachingControl](https://msdn.microsoft.com/library/system.web.ui.partialcachingcontrol.aspx)控制項，您一定會收到有效的 ControlCachePolicy 物件。 不過，如果您存取[UserControl.CachePolicy](https://msdn.microsoft.com/library/system.web.ui.usercontrol.cachepolicy.aspx)屬性[UserControl](https://msdn.microsoft.com/library/system.web.ui.usercontrol.aspx)控制項，您會收到有效 ControlCachePolicy 物件只由已包裝的使用者控制項BasePartialCachingControl 控制項。 如果並未包裝，屬性所傳回的 ControlCachePolicy 物件將會擲回例外狀況時操作它，因為它並沒有相關聯的 BasePartialCachingControl。 若要判斷 UserControl 的執行個體是否支援快取而不會產生例外狀況，檢查[SupportsCaching](https://msdn.microsoft.com/library/system.web.ui.controlcachepolicy.supportscaching.aspx)屬性。
 
 使用 ControlCachePolicy 類別是下列其中一種您可以啟用輸出快取。 下列清單描述您可用來啟用輸出快取的方法：
 
-- 使用[@ OutputCache](https://msdn.microsoft.com/en-us/library/hdxfb6cy.aspx)指示詞，以啟用輸出快取中宣告的案例。
-- 使用[PartialCachingAttribute](https://msdn.microsoft.com/en-us/library/system.web.ui.partialcachingattribute.aspx)啟用快取做為程式碼後置檔案中的使用者控制項的屬性。
-- 使用您已啟用快取使用先前的方法之一並以動態方式載入使用BasePartialCachingControl執行個體使用的程式設計案例中指定快取設定ControlCachePolicy類別[System.Web.UI.TemplateControl.LoadControl](https://msdn.microsoft.com/en-us/library/system.web.ui.templatecontrol.loadcontrol.aspx)方法。
+- 使用[@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx)指示詞，以啟用輸出快取中宣告的案例。
+- 使用[PartialCachingAttribute](https://msdn.microsoft.com/library/system.web.ui.partialcachingattribute.aspx)啟用快取做為程式碼後置檔案中的使用者控制項的屬性。
+- 使用您已啟用快取使用先前的方法之一並以動態方式載入使用BasePartialCachingControl執行個體使用的程式設計案例中指定快取設定ControlCachePolicy類別[System.Web.UI.TemplateControl.LoadControl](https://msdn.microsoft.com/library/system.web.ui.templatecontrol.loadcontrol.aspx)方法。
 
 ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Init 和 PreRender 階段之間。 如果您修改 ControlCachePolicy 物件 PreRender 階段之後，ASP.NET 擲回例外狀況，因為之後要呈現控制項所做的任何變更實際上不會影響快取設定 （在呈現階段期間，會快取控制項）。 最後，使用者控制項的執行個體 （以及其 ControlCachePolicy 物件） 適用於以程式設計方式操作時才會真的呈現。
 
@@ -214,9 +214,9 @@ ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Ini
 
 有數個 ASP.NET 2.0 中的快取組態變更。 &lt;快取&gt;ASP.NET 2.0 的新項目，並可讓您在組態檔中進行快取的組態變更。 使用下列屬性。
 
-| **目** | **說明** |
+| **目** | **描述** |
 | --- | --- |
-| **快取** | 選擇性項目。 定義通用的應用程式快取設定。 |
+| **cache** | 選擇性項目。 定義通用的應用程式快取設定。 |
 | **outputCache** | 選擇性項目。 指定整個應用程式的輸出快取設定。 |
 | **outputCacheSettings** | 選擇性項目。 指定可以套用至應用程式中的頁面輸出快取設定。 |
 | **sqlCacheDependency** | 選擇性項目。 設定 ASP.NET 應用程式的 SQL 快取相依性。 |
@@ -225,7 +225,7 @@ ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Ini
 
 中的下列屬性可用&lt;快取&gt;項目：
 
-| **屬性** | **說明** |
+| **屬性** | **描述** |
 | --- | --- |
 | **disableMemoryCollection** | 選擇性**布林**屬性。 取得或設定值，指出是否要停用電腦記憶體不足的壓力時，就會發生快取記憶體回收。 |
 | **disableExpiration** | 選擇性**布林**屬性。 取得或設定值，指出是否要停用快取逾期。 停用時，快取項目不會過期，背景清除已過期的快取項目不會發生。 |
@@ -237,10 +237,10 @@ ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Ini
 
 下列屬性可供&lt;outputCache&gt;項目。
 
-| **屬性** | **說明** |
+| **屬性** | **描述** |
 | --- | --- |
 | **enableOutputCache** | 選擇性**布林**屬性。 啟用/停用頁面輸出快取。 如果停用，不會快取不論以程式設計方式或宣告式設定。 預設值是**true**。 |
-| **enableFragmentCache** | 選擇性**布林**屬性。 啟用/停用應用程式片段快取。 如果停用，頁面會快取，不論[@ OutputCache](https://msdn.microsoft.com/en-us/library/hdxfb6cy.aspx)指示詞或快取使用的設定檔。 包含快取控制標頭，指出，上游 proxy 伺服器，以及瀏覽器用戶端不應嘗試快取頁面輸出。 預設值是**false**。 |
+| **enableFragmentCache** | 選擇性**布林**屬性。 啟用/停用應用程式片段快取。 如果停用，頁面會快取，不論[@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx)指示詞或快取使用的設定檔。 包含快取控制標頭，指出，上游 proxy 伺服器，以及瀏覽器用戶端不應嘗試快取頁面輸出。 預設值是**false**。 |
 | **sendCacheControlHeader** | 選擇性**布林**屬性。 取得或設定值，指出是否**快取的控制項： 私用**標頭傳送預設輸出快取模組。 預設值是**false**。 |
 | **omitVaryStar** | 選擇性**布林**屬性。 啟用/停用 Http 傳送 「**Vary: \*** 「 回應中的標頭。 預設值為 false，使用"**Vary: \*** "標頭傳送的輸出快取頁面。 Vary 標頭傳送時，它可讓您不同快取的版本為基礎的 Vary 標頭中指定的內容。 例如， *Vary： 使用者-代理程式*會儲存不同版本的頁面，根據發出要求的使用者代理程式。 預設值是**false**。 |
 
@@ -252,9 +252,9 @@ ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Ini
 
 下列屬性可供&lt;sqlCacheDependency&gt;項目。
 
-| **屬性** | **說明** |
+| **屬性** | **描述** |
 | --- | --- |
-| **已啟用** | 需要**布林**屬性。 表示輪詢變更。 |
+| **enabled** | 需要**布林**屬性。 表示輪詢變更。 |
 | **pollTime** | 選擇性**Int32**屬性。 設定與 SqlCacheDependency 輪詢有變更的資料庫資料表的頻率。 此值對應至連續輪詢之間的毫秒數。 它不能設定為小於 500 毫秒。 預設值為 1 分鐘。 |
 
 ### <a name="more-information"></a>更多資訊

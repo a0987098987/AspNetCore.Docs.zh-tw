@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: aa70a35ad938fff6911367ee9d12aac9d575be7e
-ms.sourcegitcommit: efc9e5b5fffa0e13957131a0da52cc1532a87651
-ms.translationtype: HT
+ms.openlocfilehash: 5978094083a098a771f5dca103434ea8fcce7777
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-the-react-project-template-release-candidate"></a>使用 React 專案範本 （發行候選版本）
 

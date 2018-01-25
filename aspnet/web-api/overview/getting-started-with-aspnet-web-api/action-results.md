@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 68b82661b97434795e1c306b168033dfcde529bc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d0db5c6d45020861d7295ab1db989caee525fff9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="action-results-in-web-api-2"></a>Web API 2 中的動作結果
 ====================
@@ -56,7 +56,7 @@ HTTP 回應：
 
 ## <a name="httpresponsemessage"></a>HttpResponseMessage
 
-如果動作傳回[HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage.aspx)，Web API 傳回的值直接將 HTTP 回應訊息，使用轉換的內容**HttpResponseMessage**來擴展物件回應。
+如果動作傳回[HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx)，Web API 傳回的值直接將 HTTP 回應訊息，使用轉換的內容**HttpResponseMessage**來擴展物件回應。
 
 此選項可讓您大量控制回應訊息。 例如，下列的控制器動作設定快取控制標頭。
 
@@ -98,9 +98,9 @@ Web 應用程式開發介面會使用 Accept 標頭在要求中選擇的格式�
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
-通常，您將使用**IHttpActionResult**中定義的實作 **[System.Web.Http.Results](https://msdn.microsoft.com/en-us/library/system.web.http.results.aspx)** 命名空間。 **ApiController**類別會定義 helper 方法會傳回這些內建動作結果。
+通常，您將使用**IHttpActionResult**中定義的實作 **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** 命名空間。 **ApiController**類別會定義 helper 方法會傳回這些內建動作結果。
 
-在下列範例中，如果要求不符合現有的產品識別碼，控制器會呼叫[ApiController.NotFound](https://msdn.microsoft.com/en-us/library/system.web.http.apicontroller.notfound.aspx)建立 404 （找不到） 回應。 否則，會呼叫控制器[ApiController.OK](https://msdn.microsoft.com/en-us/library/dn314591.aspx)，它會建立回應 200 （確定），包含產品。
+在下列範例中，如果要求不符合現有的產品識別碼，控制器會呼叫[ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx)建立 404 （找不到） 回應。 否則，會呼叫控制器[ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx)，它會建立回應 200 （確定），包含產品。
 
 [!code-csharp[Main](action-results/samples/sample10.cs)]
 

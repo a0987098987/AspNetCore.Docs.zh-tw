@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: a0c59245eedbf53f367949e12dd83e2611f44fc4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1c262ec7b834107524a18c6552b171f731452c91
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>函式使用 Web 應用程式離線 Web 部署
 ====================
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 > 下一個程序假設您要自訂的 MSBuild 專案檔使用來控制您的部署程序，如下所示[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 如果您要部署直接從 Visual Studio，您必須使用不同的方式。 Sayed Ibrahim Hashimi 描述中的其中一個這類方法[如何取得您 Web 應用程式離線期間發佈](http://sedodream.com/2012/01/08/HowToTakeYourWebAppOfflineDuringPublishing.aspx)。
 
 
-若要部署*應用程式\_離線*檔案到目的地的 IIS 網站，您需要叫用使用 MSDeploy.exe [Web Deploy **contentPath**提供者](https://technet.microsoft.com/en-us/library/dd569034(WS.10).aspx)。 **ContentPath**提供者支援的實體目錄路徑和 IIS 網站或應用程式路徑，使其同步處理 Visual Studio 專案資料夾與 IIS web 應用程式之間的檔案的理想選擇。 若要部署的檔案，MSDeploy 命令應該會與以下相似：
+若要部署*應用程式\_離線*檔案到目的地的 IIS 網站，您需要叫用使用 MSDeploy.exe [Web Deploy **contentPath**提供者](https://technet.microsoft.com/library/dd569034(WS.10).aspx)。 **ContentPath**提供者支援的實體目錄路徑和 IIS 網站或應用程式路徑，使其同步處理 Visual Studio 專案資料夾與 IIS web 應用程式之間的檔案的理想選擇。 若要部署的檔案，MSDeploy 命令應該會與以下相似：
 
 
 [!code-console[Main](taking-web-applications-offline-with-web-deploy/samples/sample1.cmd)]
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample3.xml)]
 3. **SourceRoot**中其他位置定義屬性*Publish.proj*檔案。 它會指出相對於目前路徑 & #x 2014年; 換句話說的位置相對的來源內容的根資料夾的位置*Publish.proj*檔案。
-4. **ContentPath**提供者將不接受相對檔案路徑，因此您需要取得原始程式檔的絕對路徑，才能部署它。 您可以使用[ConvertToAbsolutePath](https://msdn.microsoft.com/en-us/library/bb882668.aspx)工作來執行這項操作。
+4. **ContentPath**提供者將不接受相對檔案路徑，因此您需要取得原始程式檔的絕對路徑，才能部署它。 您可以使用[ConvertToAbsolutePath](https://msdn.microsoft.com/library/bb882668.aspx)工作來執行這項操作。
 5. 加入新**目標**名**GetAppOfflineAbsolutePath**。 在此目標，使用**ConvertToAbsolutePath**工作來取得的絕對路徑*應用程式\_離線範本*專案資料夾中的檔案。
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample4.xml)]
@@ -148,7 +148,7 @@ Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProj
 1. Visual Studio 2010 中開啟您的方案。
 2. 在**方案總管] 中**視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (比方說， **ContactManager.Mvc**)，指向**新增**，然後按一下 [ **新項目**。
 3. 在**加入新項目**對話方塊中，選取**XML 檔案**範本。
-4. 在**名稱**方塊中，輸入*[專案名稱]***。 wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下  **新增**。
+4. 在**名稱**方塊中，輸入*[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image4.png)
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/environments
-ms.openlocfilehash: 83d1593d46761b1c00aa431cfdcde59cb3b28b65
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 60a1543ce11d08490e6df0eb84f980672ecfe672
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-multiple-environments"></a>使用多個環境
 
@@ -83,7 +83,7 @@ Visual Studio**偵錯** 索引標籤提供的 GUI，若要編輯*launchSettings.
 專案設定檔所做的變更可能不會生效，直到重新啟動 web 伺服器。 Kestrel 必須重新啟動它就會偵測到它的環境所做的變更。
 
 >[!WARNING]
-> *launchSettings.json*應該儲存機密資料。 [密碼管理員工具](xref:security/app-secrets)可以用來儲存本機開發的密碼。
+> *launchSettings.json*不應儲存機密資料。 [密碼管理員工具](xref:security/app-secrets)可以用來儲存本機開發的密碼。
 
 ### <a name="production"></a>生產環境
 
@@ -97,7 +97,7 @@ Visual Studio**偵錯** 索引標籤提供的 GUI，若要編輯*launchSettings.
 
 ## <a name="setting-the-environment"></a>設定環境
 
-通常會很有用來設定特定的環境進行測試。 如果未設定環境，它會預設為`Production`表示停用大部分的偵錯功能。
+通常會很有用來設定特定的環境進行測試。 如果您的環境未設定，它會預設為`Production`表示停用大部分的偵錯功能。
 
 設定環境的方法取決於作業系統。
 

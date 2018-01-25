@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 15d3d2c70346abad5addab5c29d4af9f238b39da
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c0c32c3dd24be5edfea3e17695753973f3fad30a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-your-site-using-visual-studio-c"></a>部署您的網站使用 Visual Studio (C#)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 
 > [!NOTE]
-> Visual Studio 所提供其他部署相關的工具包括[Web 安裝專案](https://msdn.microsoft.com/en-us/library/wx3b589t.aspx)和[Web 部署專案](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en)增益集。 Web 安裝專案封裝的網站內容與組態資訊成單一的 MSI 檔案。 此選項便會在內部部署的網站或公司販售客戶安裝在他們自己的網頁伺服器的預先封裝的 web 應用程式的最有用的。 Web 部署專案增益集是 Visual Studio 增益集，可促進差異指定組態建置開發環境和生產環境。 本教學課程系列; 將不會討論 web 安裝專案Web 部署專案會摘要在[*通用組態差異之間開發和生產*](common-configuration-differences-between-development-and-production-cs.md)教學課程。
+> Visual Studio 所提供其他部署相關的工具包括[Web 安裝專案](https://msdn.microsoft.com/library/wx3b589t.aspx)和[Web 部署專案](https://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&amp;displaylang=en)增益集。 Web 安裝專案封裝的網站內容與組態資訊成單一的 MSI 檔案。 此選項便會在內部部署的網站或公司販售客戶安裝在他們自己的網頁伺服器的預先封裝的 web 應用程式的最有用的。 Web 部署專案增益集是 Visual Studio 增益集，可促進差異指定組態建置開發環境和生產環境。 本教學課程系列; 將不會討論 web 安裝專案Web 部署專案會摘要在[*通用組態差異之間開發和生產*](common-configuration-differences-between-development-and-production-cs.md)教學課程。
 
 
 ## <a name="deploying-your-site-using-the-copy-web-site-tool"></a>部署您的網站使用複製網站工具
@@ -149,11 +149,11 @@ Visual Studio 複製網站工具是獨立的 FTP 用戶端類似的功能。 簡
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [複製網站複製網站工具](https://msdn.microsoft.com/en-us/library/1cc82atw.aspx)
+- [複製網站複製網站工具](https://msdn.microsoft.com/library/1cc82atw.aspx)
 - [I： 如何部署網站使用複製網站工具](../../../videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-site-tool.md)（影片）
-- [如何： 發行 Web 應用程式專案](https://msdn.microsoft.com/en-us/library/aa983453.aspx)
-- [如何： 發行網站](https://msdn.microsoft.com/en-us/library/20yh9f1b.aspx)
-- [安裝和部署專案，Visual Studio 中](https://msdn.microsoft.com/en-us/library/wx3b589t.aspx)
+- [如何： 發行 Web 應用程式專案](https://msdn.microsoft.com/library/aa983453.aspx)
+- [如何： 發行網站](https://msdn.microsoft.com/library/20yh9f1b.aspx)
+- [安裝和部署專案，Visual Studio 中](https://msdn.microsoft.com/library/wx3b589t.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](deploying-your-site-using-an-ftp-client-cs.md)

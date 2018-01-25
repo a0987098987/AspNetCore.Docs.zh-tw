@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 42beb4ffcff9974230ba0c4a2f243020bcd4f99d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8f5d223a5944d8adb9fe65c89e87829d18d1c7ee
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 在瀏覽器中顯示結果：
 
-![Razor Img1](introducing-razor-syntax-vb/_static/image1.jpg)
+![Razor-Img1](introducing-razor-syntax-vb/_static/image1.jpg)
 
 > [!TIP] 
 > 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
 在瀏覽器中顯示結果：
 
-![Razor Img2](introducing-razor-syntax-vb/_static/image2.jpg)
+![Razor-Img2](introducing-razor-syntax-vb/_static/image2.jpg)
 
 ### <a name="3-inside-a-block-you-end-each-code-statement-with-a-line-break"></a>3.區塊中，您最後分行符號與每個程式碼陳述式
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 
 在瀏覽器中顯示結果：
 
-![Razor Img3](introducing-razor-syntax-vb/_static/image3.jpg)
+![Razor-Img3](introducing-razor-syntax-vb/_static/image3.jpg)
 
 ### <a name="5-you-enclose-literal-string-values-in-double-quotation-marks"></a>5.您將常值字串值括在雙引號中
 
@@ -109,7 +109,7 @@ A*字串*是會被視為文字的字元序列。 若要指定字串，您將它�
 
 在瀏覽器中顯示結果：
 
-![Razor Img4](introducing-razor-syntax-vb/_static/image4.jpg)
+![Razor-Img4](introducing-razor-syntax-vb/_static/image4.jpg)
 
 ### <a name="6-visual-basic-code-is-not-case-sensitive"></a>6.Visual Basic 程式碼不區分大小寫
 
@@ -133,7 +133,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 在瀏覽器中顯示結果：
 
-![Razor Img5](introducing-razor-syntax-vb/_static/image6.jpg)
+![Razor-Img5](introducing-razor-syntax-vb/_static/image6.jpg)
 
 ### <a name="8-you-can-write-code-that-makes-decisions"></a>8.您可以撰寫程式碼所做的決策
 
@@ -145,7 +145,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 在瀏覽器中顯示的結果 (按一下後**送出**):
 
-![Razor Img6](introducing-razor-syntax-vb/_static/image7.jpg)
+![Razor-Img6](introducing-razor-syntax-vb/_static/image7.jpg)
 
 > [!TIP] 
 > 
@@ -176,7 +176,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
     - `<form>`標記包含`method="post"`屬性。 這會指定當使用者按一下**新增**，頁面將會傳送至使用 HTTP POST 方法的伺服器。 送出頁面時，程式碼`If IsPost`評估為 true，條件式程式碼執行時，顯示加上數字的結果。
 3. 儲存頁面，並在瀏覽器中執行。 (請確定中選取頁面**檔案**才能執行這個工作區。)兩個整數的輸入，然後按一下**新增** 按鈕。
 
-    ![Razor Img7](introducing-razor-syntax-vb/_static/image8.jpg)
+    ![Razor-Img7](introducing-razor-syntax-vb/_static/image8.jpg)
 
 ## <a name="visual-basic-language-and-syntax"></a>Visual Basic 語言和語法
 
@@ -257,7 +257,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 在瀏覽器中顯示結果：
 
-![Razor Img9](introducing-razor-syntax-vb/_static/image9.jpg)
+![Razor-Img9](introducing-razor-syntax-vb/_static/image9.jpg)
 
 ### <a name="converting-and-testing-data-types"></a>轉換和測試資料類型
 
@@ -275,7 +275,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 下表列出一些常見的轉換和測試方法的變數。
 
-| **方法** | **說明** | **範例** |
+| **方法** | **描述** | **範例** |
 | --- | --- | --- |
 | `AsInt(), IsInt()` | 將字串表示之間的整數轉換 (例如&quot;593&quot;) 成整數。 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)] |
 | `AsBool(), IsBool()` | 轉換字串 like &quot;true&quot;或&quot;false&quot;布林型別。 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)] |
@@ -288,7 +288,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 運算子是命令的關鍵字或字元，會告知 ASP.NET 何種在運算式中執行。 Visual Basic 支援許多運算子，但您只需要辨識一些開始進行開發的 ASP.NET web pages。 下表摘要說明最常見的運算子。
 
-| **Operator** | **說明** | **範例** |
+| **Operator** | **描述** | **範例** |
 | --- | --- | --- |
 | `+ - * /` | 數學運算子用在數值運算式。 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)] |
 | `=` | 指派和等號比較。 根據內容，將陳述式右邊的值指派給物件，在左邊，或檢查值相等。 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)] |
@@ -384,7 +384,7 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 在瀏覽器中顯示最後兩個條件式區塊的結果：
 
-![Razor Img10](introducing-razor-syntax-vb/_static/image10.jpg)
+![Razor-Img10](introducing-razor-syntax-vb/_static/image10.jpg)
 
 ### <a name="looping-code"></a>迴圈的程式碼
 
@@ -400,7 +400,7 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 程式碼之間的行`For`和`Next`行包含迴圈的每個反覆項目執行的程式碼。 標記會建立新的段落 (`<p>`元素) 在每次且會將行加入輸出中顯示的值 i （計數器）。 當您執行此頁面時，此範例會建立 11 行顯示輸出，以指出項目編號每一行文字。
 
-![Razor Img11](introducing-razor-syntax-vb/_static/image11.jpg)
+![Razor-Img11](introducing-razor-syntax-vb/_static/image11.jpg)
 
 如果您使用集合或陣列，您通常使用`For Each`迴圈。 集合是一組類似的物件，而`For Each`迴圈可讓您執行集合中每個項目的工作。 這種類型的迴圈很方便的集合，因為與不同的是`For`迴圈中，您不必遞增計數器或設定的限制。 相反地，`For Each`迴圈的程式碼會繼續執行此集合直到完成為止。
 
@@ -410,7 +410,7 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 `For Each`關鍵字後面都代表單一項目集合中的變數 (在範例中， `myItem`)，後面接著`In`關鍵字，後面接著您想要重複使用的集合。 本文的`For Each`迴圈中，您可以存取目前的項目，使用您稍早宣告的變數。
 
-![Razor Img12](introducing-razor-syntax-vb/_static/image12.jpg)
+![Razor-Img12](introducing-razor-syntax-vb/_static/image12.jpg)
 
 若要建立更通用的迴圈，請使用`Do While`陳述式：
 
@@ -451,7 +451,7 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 在瀏覽器中顯示的字串陣列程式碼的輸出：
 
-![Razor Img13](introducing-razor-syntax-vb/_static/image13.jpg)
+![Razor-Img13](introducing-razor-syntax-vb/_static/image13.jpg)
 
 字典是索引鍵/值組的集合，您提供的索引鍵 （或名稱） 來設定或擷取對應的值：
 
@@ -500,7 +500,7 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 在程式設計的詞彙，這些情況下會呼叫*例外狀況*。 如果您的程式碼遇到例外狀況，則會產生 （會擲回） 錯誤訊息也就是，最多只能惱人給使用者。
 
-![Razor Img14](introducing-razor-syntax-vb/_static/image14.jpg)
+![Razor-Img14](introducing-razor-syntax-vb/_static/image14.jpg)
 
 在您的程式碼可能會遇到例外狀況的情況下，以及為了避免此類型的錯誤訊息，您可以使用`Try/Catch`陳述式。 在`Try`陳述式中，執行您正在檢查的程式碼。 一或多個`Catch`陳述式，您可以尋找特定可能發生的錯誤 （特定類型的例外狀況）。 您可以包含最大數量`Catch`陳述式，當您需要尋找您所預期的錯誤。
 
@@ -518,5 +518,5 @@ ASP.NET server 程式碼可讓您根據條件和撰寫程式碼的重複次數�
 
 ### <a name="reference-documentation"></a>參考文件
 
-- [ASP.NET](https://msdn.microsoft.com/en-us/library/ee532866.aspx)
-- [Visual Basic 語言](https://msdn.microsoft.com/en-us/library/2x7h1hfk.aspx)
+- [ASP.NET](https://msdn.microsoft.com/library/ee532866.aspx)
+- [Visual Basic 語言](https://msdn.microsoft.com/library/2x7h1hfk.aspx)

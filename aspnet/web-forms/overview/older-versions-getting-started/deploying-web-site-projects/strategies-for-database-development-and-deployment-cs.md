@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 21d63b175eb52838ac9a12e33efc59fded4ed87d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 551a04296ff92e174a14bd9d2636714e823397e1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="strategies-for-database-development-and-deployment-c"></a>資料庫開發和部署 (C#) 的策略
 ====================
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
 維護文章中的變更記錄檔的主要缺點是缺乏自動化。 在理想情況下，實作生產資料庫，在部署階段的資料庫變更會很簡單，只要按一下按鈕即可執行指令碼，而不是需要以手動方式執行的指示清單。 這類的自動化就可以維護變更記錄檔，其中包含用來改變資料模型的 SQL 命令。
 
-SQL 語法包含數個陳述式來建立和修改各種資料庫物件。 例如， [ *CREATE TABLE 陳述式*](https://msdn.microsoft.com/en-us/library/ms174979.aspx)、 在執行時，建立新的資料表，與指定的資料行和條件約束。 [ *ALTER TABLE 陳述式*](https://msdn.microsoft.com/en-us/library/ms190273.aspx)修改現有的資料表，加入、 移除或修改其資料行或條件約束。 另外還有陳述式來建立、 修改和卸除索引、 檢視、 使用者定義函數、 預存程序、 觸發程序和其他資料庫物件。
+SQL 語法包含數個陳述式來建立和修改各種資料庫物件。 例如， [ *CREATE TABLE 陳述式*](https://msdn.microsoft.com/library/ms174979.aspx)、 在執行時，建立新的資料表，與指定的資料行和條件約束。 [ *ALTER TABLE 陳述式*](https://msdn.microsoft.com/library/ms190273.aspx)修改現有的資料表，加入、 移除或修改其資料行或條件約束。 另外還有陳述式來建立、 修改和卸除索引、 檢視、 使用者定義函數、 預存程序、 觸發程序和其他資料庫物件。
 
 回到先前的範例中，影像加入至新的資料行的已部署應用程式開發期間`Employees`資料表中移除資料行從`Orders`資料表，並加入新的資料表 (`ProductCategories`)。 這類動作會導致下列的 SQL 命令以變更記錄檔：
 

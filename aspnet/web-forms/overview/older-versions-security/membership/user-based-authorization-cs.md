@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/user-based-authorization-cs
 msc.type: authoredcontent
-ms.openlocfilehash: da03a9c3e22f5a2164534ef7896b5558beb8b6f4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5bee98878b5191a096b851c65aaea19ad989f608
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="user-based-authorization-c"></a>使用者為基礎的授權 (C#)
 ====================
@@ -39,9 +39,9 @@ ASP.NET 輕鬆地定義使用者為基礎的授權規則。 中的標記只需�
 
 中所述[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，當 ASP.NET 執行階段會處理要求的 ASP.NET 資源要求在其生命週期期間引發的事件數目。 *HTTP 模組*是受管理的程式碼執行以回應要求的生命週期中的特定事件的類別。 ASP.NET 隨附之 HTTP 模組執行基本工作，在幕後的數目。
 
-一個這類 HTTP 模組是[ `FormsAuthenticationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationmodule.aspx)。 上一個教學課程的主要功能中所述`FormsAuthenticationModule`是要判斷目前的要求識別。 這是藉由檢查表單驗證票證，位於 cookie 或是 URL 中內嵌達成。 這個識別發生期間[`AuthenticateRequest`事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx)。
+一個這類 HTTP 模組是[ `FormsAuthenticationModule` ](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)。 上一個教學課程的主要功能中所述`FormsAuthenticationModule`是要判斷目前的要求識別。 這是藉由檢查表單驗證票證，位於 cookie 或是 URL 中內嵌達成。 這個識別發生期間[`AuthenticateRequest`事件](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)。
 
-另一個重要的 HTTP 模組是[ `UrlAuthorizationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.urlauthorizationmodule.aspx)，這會引發以回應[`AuthorizeRequest`事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authorizerequest.aspx)(也就是之後`AuthenticateRequest`事件)。 `UrlAuthorizationModule`會檢查組態中的標記`Web.config`判斷目前的身分識別是否有授權造訪指定的頁面。 此程序指*URL 授權*。
+另一個重要的 HTTP 模組是[ `UrlAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)，這會引發以回應[`AuthorizeRequest`事件](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx)(也就是之後`AuthenticateRequest`事件)。 `UrlAuthorizationModule`會檢查組態中的標記`Web.config`判斷目前的身分識別是否有授權造訪指定的頁面。 此程序指*URL 授權*。
 
 我們將檢驗 URL 授權規則，在步驟 1 中的語法但首先讓我們看看什麼`UrlAuthorizationModule`並根據要求是否已獲授權或未。 如果`UrlAuthorizationModule`決定要求已獲得授權，則不會執行任何動作，以及要求會繼續透過其生命週期。 不過，如果要求是*不*獲授權，然後在`UrlAuthorizationModule`中止生命週期，並指示`Response`要傳回物件[HTTP 401 未經授權](http://www.checkupdown.com/status/E401.html)狀態。 使用表單驗證此 HTTP 401 狀態會永遠不會傳回至用戶端因為如果`FormsAuthenticationModule`偵測狀態是 HTTP 401 來加以修改[HTTP 302 重新導向](http://www.checkupdown.com/status/E302.html)登入頁面。
 
@@ -70,7 +70,7 @@ ASP.NET 輕鬆地定義使用者為基礎的授權規則。 中的標記只需�
 圖 2 中所述的工作流程可以快速 befuddle 甚至的大部分電腦有訪客。 我們將探討如何避免混淆在步驟 2 中的循環。
 
 > [!NOTE]
-> ASP.NET 會使用兩種機制來判斷目前使用者是否可以存取特定網頁： URL 授權和授權檔案。 檔案授權由實作[ `FileAuthorizationModule` ](https://msdn.microsoft.com/en-us/library/system.web.security.fileauthorizationmodule.aspx)，查閱要求的檔案 Acl 授權單位所決定。 因為 Acl 是套用到 Windows 帳戶的權限，檔案授權是最常用來使用 Windows 驗證。 使用表單驗證時，所有的作業系統和檔案系統層級要求是由相同的 Windows 帳戶，無論使用者瀏覽的網站中執行。 因為這個教學課程系列著重於表單驗證，我們將不會討論檔案授權。
+> ASP.NET 會使用兩種機制來判斷目前使用者是否可以存取特定網頁： URL 授權和授權檔案。 檔案授權由實作[ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx)，查閱要求的檔案 Acl 授權單位所決定。 因為 Acl 是套用到 Windows 帳戶的權限，檔案授權是最常用來使用 Windows 驗證。 使用表單驗證時，所有的作業系統和檔案系統層級要求是由相同的 Windows 帳戶，無論使用者瀏覽的網站中執行。 因為這個教學課程系列著重於表單驗證，我們將不會討論檔案授權。
 
 
 ### <a name="the-scope-of-url-authorization"></a>URL 授權範圍
@@ -87,7 +87,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 ## <a name="step-1-defining-url-authorization-rules-inwebconfig"></a>步驟 1： 定義中的 URL 授權規則`Web.config`
 
-`UrlAuthorizationModule`決定是否要授與或拒絕存取所要求的資源的應用程式的組態中定義的 URL 授權規則所根據的特定身分識別。 授權規則拼中[`<authorization>`元素](https://msdn.microsoft.com/en-us/library/8d82143t.aspx)形式`<allow>`和`<deny>`子項目。 每個`<allow>`和`<deny>`子元素可以指定：
+`UrlAuthorizationModule`決定是否要授與或拒絕存取所要求的資源的應用程式的組態中定義的 URL 授權規則所根據的特定身分識別。 授權規則拼中[`<authorization>`元素](https://msdn.microsoft.com/library/8d82143t.aspx)形式`<allow>`和`<deny>`子項目。 每個`<allow>`和`<deny>`子元素可以指定：
 
 - 特定使用者
 - 以逗號分隔的使用者清單
@@ -230,10 +230,10 @@ URL 授權可讓您輕鬆地指定粗略的授權規則。 如我們所見在步
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample10.cs)]
 
-上述程式碼會使用[`DirectoryInfo`類別](https://msdn.microsoft.com/en-us/library/system.io.directoryinfo.aspx)取得應用程式的根資料夾中的檔案清單。 [ `GetFiles()`方法](https://msdn.microsoft.com/en-us/library/system.io.directoryinfo.getfiles.aspx)陣列形式傳回目錄中的所有檔案[`FileInfo`物件](https://msdn.microsoft.com/en-us/library/system.io.fileinfo.aspx)，然後繫結至 GridView。 `FileInfo`物件具有各種屬性，例如`Name`， `Length`，和`IsReadOnly`，和其他項目。 您可以看到從其宣告的標記，只顯示 GridView`Name`和`Length`屬性。
+上述程式碼會使用[`DirectoryInfo`類別](https://msdn.microsoft.com/library/system.io.directoryinfo.aspx)取得應用程式的根資料夾中的檔案清單。 [ `GetFiles()`方法](https://msdn.microsoft.com/library/system.io.directoryinfo.getfiles.aspx)陣列形式傳回目錄中的所有檔案[`FileInfo`物件](https://msdn.microsoft.com/library/system.io.fileinfo.aspx)，然後繫結至 GridView。 `FileInfo`物件具有各種屬性，例如`Name`， `Length`，和`IsReadOnly`，和其他項目。 您可以看到從其宣告的標記，只顯示 GridView`Name`和`Length`屬性。
 
 > [!NOTE]
-> `DirectoryInfo`和`FileInfo`類別位於[`System.IO`命名空間](https://msdn.microsoft.com/en-us/library/system.io.aspx)。 因此，您必須以其命名空間名稱的這些類別名稱的前面上或匯入類別檔案的命名空間 (透過`using System.IO`)。
+> `DirectoryInfo`和`FileInfo`類別位於[`System.IO`命名空間](https://msdn.microsoft.com/library/system.io.aspx)。 因此，您必須以其命名空間名稱的這些類別名稱的前面上或匯入類別檔案的命名空間 (透過`using System.IO`)。
 
 
 請花一點時間造訪此頁透過瀏覽器。 它會顯示位於應用程式的根目錄中的檔案清單。 按一下任何檢視或刪除 LinkButtons 將會導致回傳，但會發生任何動作，因為我們尚未以建立必要的事件處理常式。
@@ -248,11 +248,11 @@ URL 授權可讓您輕鬆地指定粗略的授權規則。 如我們所見在步
 
 [!code-aspx[Main](user-based-authorization-cs/samples/sample11.aspx)]
 
-接下來，建立事件處理常式的 GridView [ `SelectedIndexChanged`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.selectedindexchanged.aspx)並加入下列程式碼：
+接下來，建立事件處理常式的 GridView [ `SelectedIndexChanged`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindexchanged.aspx)並加入下列程式碼：
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample12.cs)]
 
-此程式碼使用 GridView`SelectedValue`屬性來判斷所選檔案的完整檔案名稱。 就內部而言，`DataKeys`為了取得參考集合`SelectedValue`，因此務必在您設定的 GridView`DataKeyNames`屬性名稱，如稍早在此步驟中所述。 [ `File`類別](https://msdn.microsoft.com/en-us/library/system.io.file.aspx)用來讀取選取的檔案內容到字串，然後指派給`FileContents`文字方塊的`Text`屬性，藉以顯示在頁面上選取的檔案的內容。
+此程式碼使用 GridView`SelectedValue`屬性來判斷所選檔案的完整檔案名稱。 就內部而言，`DataKeys`為了取得參考集合`SelectedValue`，因此務必在您設定的 GridView`DataKeyNames`屬性名稱，如稍早在此步驟中所述。 [ `File`類別](https://msdn.microsoft.com/library/system.io.file.aspx)用來讀取選取的檔案內容到字串，然後指派給`FileContents`文字方塊的`Text`屬性，藉以顯示在頁面上選取的檔案的內容。
 
 
 [![在文字方塊中顯示選取之檔案的內容](user-based-authorization-cs/_static/image23.png)](user-based-authorization-cs/_static/image22.png)
@@ -264,7 +264,7 @@ URL 授權可讓您輕鬆地指定粗略的授權規則。 如我們所見在步
 > 如果您檢視包含 HTML 標記檔案的內容，然後嘗試檢視或刪除檔案時，您會收到`HttpRequestValidationException`錯誤。 會發生這種情況是因為在回傳文字方塊的內容會傳送至 web 伺服器。 根據預設，ASP.NET 就會引發`HttpRequestValidationException`每當有潛在危險回傳的內容，例如 HTML 標記中，偵測到的錯誤。 若要停用這項錯誤發生，請關閉要求驗證頁面加入`ValidateRequest="false"`至`@Page`指示詞。 如需詳細資訊之優點的要求驗證，以及哪些措施，您應該採取時為停用，讀取[要求驗證-防止指令碼攻擊](https://asp.net/learn/whitepapers/request-validation/)。
 
 
-最後，加入下列程式碼的事件處理常式的 GridView 的[`RowDeleting`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx):
+最後，加入下列程式碼的事件處理常式的 GridView 的[`RowDeleting`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowdeleting.aspx):
 
 [!code-csharp[Main](user-based-authorization-cs/samples/sample13.cs)]
 
@@ -358,7 +358,7 @@ LoginView 範本中的 Web 控制項不再直接從程式碼後置類別存取�
 
 在步驟 3 中我們會不允許匿名使用者無法檢視檔案的內容，並禁止所有使用者，但 Tito 刪除檔案。 這是藉由隱藏未經授權的訪客透過宣告方式和程式設計技術的相關聯的使用者介面項目以完成。 簡單範例中，適當地隱藏使用者介面項目已直接，但呢更複雜的站台其中可能有許多不同的方式來執行相同的功能嗎？ 限制使用該功能，未經授權的使用者，萬一我們忘記來隱藏或停用所有適用的使用者介面項目怎麼辦？
 
-以確保未經授權的使用者無法存取一項特定功能的簡單方法是該類別或方法具有裝飾[`PrincipalPermission`屬性](https://msdn.microsoft.com/en-us/library/system.security.permissions.principalpermissionattribute.aspx)。 當.NET 執行階段會使用類別或執行其中一個方法時，它會檢查以確認目前的安全性內容有使用該類別或執行方法的權限。 `PrincipalPermission`屬性提供一個機制，我們可以透過定義這些規則。
+以確保未經授權的使用者無法存取一項特定功能的簡單方法是該類別或方法具有裝飾[`PrincipalPermission`屬性](https://msdn.microsoft.com/library/system.security.permissions.principalpermissionattribute.aspx)。 當.NET 執行階段會使用類別或執行其中一個方法時，它會檢查以確認目前的安全性內容有使用該類別或執行方法的權限。 `PrincipalPermission`屬性提供一個機制，我們可以透過定義這些規則。
 
 讓我們將示範如何使用`PrincipalPermission`屬性在 GridView 的`SelectedIndexChanged`和`RowDeleting`分別禁止匿名使用者與 Tito，以外的使用者所執行的事件處理常式。 我們要做的就是將加入每個函式定義在適當的屬性：
 
@@ -397,13 +397,13 @@ URL 授權架構套用授權規則，在頁面的頁面。 使用 URL 授權的�
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [加入商務和資料層級使用的授權規則`PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
-- [ASP.NET 授權](https://msdn.microsoft.com/en-us/library/wce3kxhd.aspx)
+- [ASP.NET 授權](https://msdn.microsoft.com/library/wce3kxhd.aspx)
 - [IIS6 與 IIS7 安全性之間的變更](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/Changes-between-IIS6-and-IIS7-Security)
-- [設定特定的檔案和子目錄](https://msdn.microsoft.com/en-us/library/6hbkh9s7.aspx)
+- [設定特定的檔案和子目錄](https://msdn.microsoft.com/library/6hbkh9s7.aspx)
 - [限制使用者為基礎的資料修改功能](../../data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs.md)
 - [LoginView 控制項快速入門](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/loginview.aspx)
 - [了解 IIS7 URL 授權](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/URL-Authorization/Understanding-IIS7-URL-Authorization)
-- [`UrlAuthorizationModule`技術文件](https://msdn.microsoft.com/en-us/library/system.web.security.urlauthorizationmodule.aspx)
+- [`UrlAuthorizationModule`技術文件](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
 - [使用 ASP.NET 2.0 中的資料](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>關於作者

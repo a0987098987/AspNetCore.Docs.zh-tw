@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/dependency-injection
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1da3d557c48921747634b08cedb518184fb5f963
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 7a5a0991694b2c7caa79dbc09f6471d614f67dac
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-dependency-injection-in-aspnet-core"></a>在 ASP.NET Core 的相依性插入的簡介
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 01/19/2018
 
 由[Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
-ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core 應用程式可以利用內建架構服務，讓它們插入到啟動類別中的方法，可以將應用程式服務設定以及資料隱碼。 ASP.NET Core 所提供的預設服務容器會提供最少的功能設定，而不是取代其他容器。
+ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core 應用程式可以利用內建架構服務，讓它們插入到啟動類別中的方法，可以將應用程式服務設定以及資料隱碼。 ASP.NET Core 所提供的預設服務容器會提供最少的功能設定，並且不想要取代其他容器。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/dependency-injection/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -30,7 +30,7 @@ ASP.NET Core 被設計，註冊支援，並利用相依性插入。 ASP.NET Core
 
 相依性插入 (DI) 是針對達到物件和共同作業者或相依性之間的鬆散偶合的技術。 而非直接具現化共同作業者，或使用靜態參考，才能執行其動作的類別需要的物件會提供以某些方式中的類別。 大多數情況下，類別會宣告它們的相依性，透過其建構函式，讓他們遵循[明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)。 這種方法稱為 「 建構函式資料隱碼 >。
 
-類別專為 DI 設計，當它們是更鬆散偶合因為他們共同作業者上並沒有直接的硬式編碼相依性。 這會遵循[相依性反向原則](http://deviq.com/dependency-inversion-principle/)，其指出*「 高的層級模組不應該依賴低層級的模組; 兩者都需要具備的抽象概念 」。* 而不是參考特定實作，類別會要求抽象層 (通常`interfaces`) 建構類別時，這提供給它們。 擷取相依性介面，並提供實作這些介面做為參數也是範例[策略設計模式](http://deviq.com/strategy-design-pattern/)。
+類別專為 DI 設計，當它們正在多鬆散耦合因為它們沒有直接的硬式編碼相依性及其共同作業者上。 這會遵循[相依性反向原則](http://deviq.com/dependency-inversion-principle/)，其指出*「 高的層級模組不應該依賴低層級的模組; 兩者都需要具備的抽象概念 」。* 而不是參考特定實作，類別會要求抽象層 (通常`interfaces`) 建構類別時，這提供給它們。 擷取相依性介面，並提供實作這些介面做為參數也是範例[策略設計模式](http://deviq.com/strategy-design-pattern/)。
 
 系統設計為使用 DI，具有許多要求透過其建構函式 （或屬性），及其相依性的類別時有專門用來建立這些類別及其相關聯的相依性的類別幫助。 這些類別統稱為*容器*，更具體來說，[逆轉控制 (IoC)](http://deviq.com/inversion-of-control/)容器或相依性插入 (DI) 容器。 容器是基本上會負責提供向它要求類型的執行個體的 factory。 如果指定的型別已經宣告，它有相依性，容器已設定為提供相依性類型，它會建立在建立要求的執行個體的相依性。 如此一來，可以提供複雜的相依性圖形，而不需要任何硬式編碼的物件建構的類別。 除了建立物件相依性，容器通常會管理應用程式中的物件存留期。
 
@@ -112,7 +112,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 `AddTransient`方法用來將抽象型別對應至具象執行個體化分開，每個物件所需的服務。 這稱為 「 服務*存留期*，和其他的存留期選項說明如下。 請務必選擇適當的存留時間為每個您註冊服務。 應該用於每個要求的類別提供服務的新執行個體嗎？ 應該有一個執行個體用於給定的 web 要求嗎？ 或應該單一執行個體使用的應用程式的存留期間嗎？
 
-在本文範例中，沒有顯示字元的名稱，稱為簡單控制器`CharactersController`。 其`Index`方法會顯示目前的應用程式中所儲存的字元清單，並初始化集合少數幾個字元，如果皆不存在。 請注意，雖然此應用程式使用 Entity Framework Core 和`ApplicationDbContext`其持續性，該 「 無 」 明顯控制器中的類別。 特定資料存取機制相反地，抽象介面背後`ICharacterRepository`，哪些如下所示[儲存機制模式](http://deviq.com/repository-pattern/)。 執行個體`ICharacterRepository`已透過建構函式要求，並指派給私用欄位，然後用來依需要存取的字元。
+在本文範例中，沒有顯示字元的名稱，稱為簡單控制器`CharactersController`。 其`Index`方法會顯示目前的應用程式中所儲存的字元清單，並初始化集合少數幾個字元，如果皆不存在。 請注意，雖然此應用程式使用 Entity Framework Core 和`ApplicationDbContext`其持續性的類別，並明顯控制器中。 特定資料存取機制相反地，抽象介面背後`ICharacterRepository`，哪些如下所示[儲存機制模式](http://deviq.com/repository-pattern/)。 執行個體`ICharacterRepository`已透過建構函式要求，並指派給私用欄位，然後用來依需要存取的字元。
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21-27&range=8-36)]
 
@@ -120,7 +120,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
 
-具象型別，依序實作這個介面`CharacterRepository`，也就是在執行階段使用。
+具象型別，依序實作這個介面`CharacterRepository`，用來在執行階段。
 
 > [!NOTE]
 > 搭配使用的方式 DI`CharacterRepository`類別是您可以依照您的應用程式服務，不只是在 「 儲存機制 」 或 「 資料存取類別的所有一般模型。
@@ -149,7 +149,7 @@ ASP.NET 服務可以使用下列的存留時間設定：
 
 **Transient**
 
-暫時性的存留時間服務會建立每次要求。 此存留時間最適合用於輕量型、 無狀態服務。
+每次在收到要求時，會建立暫時性的存留時間服務。 此存留時間最適合用於輕量型、 無狀態服務。
 
 **範圍**
 
@@ -157,7 +157,7 @@ ASP.NET 服務可以使用下列的存留時間設定：
 
 **Singleton**
 
-單一存留時間服務會建立第一次要求 (或當`ConfigureServices`如果您指定執行個體執行) 然後每個後續的要求將會使用相同的執行個體。 如果您的應用程式需要單一行為，允許 「 服務 」 容器來管理服務的存留期建議而不是實作單一設計模式，並管理您自己的類別中物件的存留期。
+單一存留時間服務會建立第一次在收到要求 (或當`ConfigureServices`如果您指定執行個體執行) 然後每個後續的要求將會使用相同的執行個體。 如果您的應用程式需要單一行為，允許 「 服務 」 容器來管理服務的存留期建議而不是實作單一設計模式，並管理您自己的類別中物件的存留期。
 
 可以與幾種容器登錄服務。 我們已經看過如何藉由指定要使用的具象類型，含指定之類型註冊服務實作。 此外，此處理站可以指定，然後將用來建立隨選執行個體。 第三種方法是直接指定類型的執行個體使用，在其中案例容器將永遠不會嘗試建立執行個體 （也不會將處置的執行個體）。
 
@@ -237,14 +237,14 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<Service2>();
     services.AddSingleton<ISomeService>(sp => new SomeServiceImplementation());
 
-    // container did not create instance so it will NOT dispose it
+    // container didn't create instance so it will NOT dispose it
     services.AddSingleton<Service3>(new Service3());
     services.AddSingleton(new Service3());
 }
 ```
 
 > [!NOTE]
-> 在 1.0 版中，容器會呼叫 dispose 上*所有*`IDisposable`物件，包括未建立。
+> 在 1.0 版中，容器會呼叫 dispose 上*所有*`IDisposable`物件，包括它未建立。
 
 ## <a name="replacing-the-default-services-container"></a>取代預設服務容器
 
@@ -310,7 +310,7 @@ public class DefaultModule : Module
 > [!NOTE]
 > 建議的所有集合，例如您可能會遇到的情況下忽略其中一個必要。 我們發現例外狀況很少見-主要是非常特殊的情況下，架構本身內。
 
-請記住，相依性插入是*替代*靜態/全域物件存取模式。 無法實現 DI 的優點，如果您混具有靜態物件的存取權。
+請記住，相依性插入是*替代*靜態/全域物件存取模式。 您將無法實現 DI 的優點，如果您混具有靜態物件的存取權。
 
 ## <a name="additional-resources"></a>其他資源
 

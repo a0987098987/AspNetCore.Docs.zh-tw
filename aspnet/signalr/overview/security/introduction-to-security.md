@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: ffe71f8ea7105db4d5a0c156e2b4e76d6e40761d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1cb9f15a958028822b50decf4b420c36596ce25e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-signalr-security"></a>SignalR 安全性簡介
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 > 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 
 SignalR 不提供任何功能來驗證使用者。 相反地，您將 SignalR 功能整合到現有的驗證結構，應用程式。 因為您會通常在您的應用程式，並使用您 SignalR 中驗證結果程式碼中，您可以驗證使用者。 例如，您可能會使用 ASP.NET 表單驗證，讓使用者通過驗證，並接著在您的中樞，強制執行哪些使用者或角色有權呼叫的方法。 在您的中樞，您也可以傳遞驗證資訊，例如使用者名稱或使用者是否屬於角色，用戶端。
 
-提供 SignalR[授權](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者可以存取的集線器或方法。 您可以套用 Authorize 屬性集線器或中樞中的特定方法。 若沒有授權屬性集線器上的所有公用方法可用來連線至中樞的用戶端。 如需集線器的詳細資訊，請參閱[SignalR 中樞的驗證和授權](hub-authorization.md)。
+提供 SignalR[授權](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.authorizeattribute(v=vs.111).aspx)屬性來指定哪些使用者可以存取的集線器或方法。 您可以套用 Authorize 屬性集線器或中樞中的特定方法。 若沒有授權屬性集線器上的所有公用方法可用來連線至中樞的用戶端。 如需集線器的詳細資訊，請參閱[SignalR 中樞的驗證和授權](hub-authorization.md)。
 
 您套用`Authorize`屬性中心，但不持續連線。 若要強制執行時使用授權規則`PersistentConnection`必須覆寫`AuthorizeRequest`方法。 如需持續連線的詳細資訊，請參閱[SignalR 持續連線的驗證和授權](persistent-connection-authorization.md)。
 

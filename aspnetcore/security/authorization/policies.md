@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/policies
-ms.openlocfilehash: 1067e97dd6e71021929aa3690b0c3f5bfc6c9724
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c249985a6266483d47f447ac4a232546ed2b2708
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-policy-based-authorization"></a>以原則為基礎的自訂授權
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/19/2018
 
 * 處理常式呼叫來表示成功`context.Succeed(IAuthorizationRequirement requirement)`，傳遞需求已順利通過驗證。
 
-* 處理常式不需一般而言，處理失敗，因為相同的需求的其他處理常式可能會成功。
+* 一般而言，處理失敗，因為可能會成功的相同需求的其他處理常式不需要處理常式。
 
 * 若要保證失敗，即使其他需求的處理常式會成功，呼叫`context.Fail`。
 

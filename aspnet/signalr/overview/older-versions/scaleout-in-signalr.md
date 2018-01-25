@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-in-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: e6230d4d65adb8c9a064545ad761898ca53562bf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ee3384046bf8a0f363aa6801d7a46f68b2bf125a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introduction-to-scaleout-in-signalr-1x"></a>向外延展 SignalR 中簡介 1.x
 ====================
@@ -45,13 +45,13 @@ SignalR 目前提供三個的背板：
 
 下列主題包含每個後擋板逐步教學的課程：
 
-- [Azure 服務匯流排與 SignalR 範圍外](scaleout-with-windows-azure-service-bus.md)
-- [使用 Redis SignalR 範圍外](scaleout-with-redis.md)
-- [與 SQL Server 的 SignalR 範圍外](scaleout-with-sql-server.md)
+- [SignalR 向外延展與 Azure 服務匯流排](scaleout-with-windows-azure-service-bus.md)
+- [SignalR 向外延展與 Redis](scaleout-with-redis.md)
+- [SignalR 向外延展與 SQL Server](scaleout-with-sql-server.md)
 
 ## <a name="implementation"></a>實作
 
-SignalR，每個訊息傳送至訊息匯流排。 訊息匯流排實作[IMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx)介面，可提供發佈/訂閱抽象的。 運作方式是取代預設的背板**IMessageBus**與針對該後擋板匯流排。 比方說，是 redis 訊息匯流排[RedisMessageBus](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.redis.redismessagebus(v=vs.100).aspx)，並使用 Redis [pub/sub](http://redis.io/topics/pubsub)機制來傳送和接收訊息。
+SignalR，每個訊息傳送至訊息匯流排。 訊息匯流排實作[IMessageBus](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.imessagebus(v=vs.100).aspx)介面，可提供發佈/訂閱抽象的。 運作方式是取代預設的背板**IMessageBus**與針對該後擋板匯流排。 比方說，是 redis 訊息匯流排[RedisMessageBus](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.redis.redismessagebus(v=vs.100).aspx)，並使用 Redis [pub/sub](http://redis.io/topics/pubsub)機制來傳送和接收訊息。
 
 每個伺服器執行個體連接到後擋板，已透過匯流排。 當訊息傳送時，它會移至後擋板，並後擋板，已將它傳送至每一部伺服器。 當伺服器收到訊息時從後擋板時，它會將訊息放在其本機快取中。 伺服器再將訊息傳遞至用戶端從其本機快取。
 

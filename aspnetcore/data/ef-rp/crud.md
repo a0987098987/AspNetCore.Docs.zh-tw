@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/crud
-ms.openlocfilehash: c26ba75f6a401d50a6b46bd7ee40500c5736f20f
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: d9b34c141401fbeaafe439fae1a7a75f2fe7b4ae
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>建立、 讀取、 更新和刪除-Razor 頁面 (8 個 2) 使用的 EF 核心
 
@@ -132,7 +132,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 <a id="overpost"></a>
 ### <a name="overposting"></a>Overposting
 
-使用`TryUpdateModel`更新具有已張貼值欄位是安全性最佳作法，因為它會阻止 overposting。 例如，假設 學生實體包含`Secret`這個 web 網頁不應該更新或新增的屬性：
+使用`TryUpdateModel`更新具有已張貼值欄位是安全性最佳作法，因為它會阻止 overposting。 例如，假設 學生實體包含`Secret`這個 web 網頁不應該更新或加入的屬性：
 
 [!code-csharp[Main](intro/samples/cu/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
 
@@ -185,7 +185,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 
 實體可能處於下列狀態其中之一：
 
-* `Added`: 實體不在資料庫中尚未存在。 `SaveChanges`方法發出的 INSERT 陳述式。
+* `Added`： 實體尚未不存在於資料庫中。 `SaveChanges`方法發出的 INSERT 陳述式。
 
 * `Unchanged`： 需要此實體與此一併儲存沒有變更。 從資料庫讀取時，實體具有此狀態。
 

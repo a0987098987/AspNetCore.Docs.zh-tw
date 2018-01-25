@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 2c49e7f6925b1ca172642747c5052ba97d70d036
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: abd3f3f78dd9a9e6394e2f61aa9bd692810ca875
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境
 ====================
@@ -150,7 +150,7 @@ ms.lasthandoff: 01/11/2018
     5. 關閉**設定資料庫更新** 對話方塊。
 10. 在下**SchoolContext**中**資料庫**區段中，選取**執行 Code First 移轉 （在應用程式啟動時執行）**。
 
-    Visual Studio 會顯示**執行 Code First 移轉**而不是**更新資料庫**如`DbContext`類別。 如果您想要使用而不是移轉的 dbDacFx 提供者部署的資料庫，您可以使用存取`DbContext`類別，請參閱[如何部署 Code First 移轉沒有資料庫？](https://msdn.microsoft.com/en-us/library/ee942158.aspx#deploy_code_first_without_migrations)中的 Visual Studio Web 部署常見問題集和 MSDN 上的 ASP.NET。
+    Visual Studio 會顯示**執行 Code First 移轉**而不是**更新資料庫**如`DbContext`類別。 如果您想要使用而不是移轉的 dbDacFx 提供者部署的資料庫，您可以使用存取`DbContext`類別，請參閱[如何部署 Code First 移轉沒有資料庫？](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations)中的 Visual Studio Web 部署常見問題集和 MSDN 上的 ASP.NET。
 
     **設定** 索引標籤現在看起來像下列的範例：
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 01/11/2018
 - 使用模糊化會難以猜測的 URL。
 - 建立*robots.txt*檔案，以確保搜尋引擎在搜尋結果中，，不編目給它的測試應用程式和報表的連結。
 
-這些方法的第一個最有效，但未涵蓋在本教學課程因為將會要求您將部署到 Azure 雲端服務，而不是 Azure 應用程式服務。 在 Azure 中的 IP 限制和雲端服務的相關詳細資訊，請參閱[計算裝載選項所提供 Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)和[封鎖特定 IP 位址存取 Web 角色](https://msdn.microsoft.com/en-us/library/windowsazure/jj154098.aspx)。 如果您要部署到協力廠商主機服務提供者，請連絡提供者，以了解如何實作 IP 限制。
+這些方法的第一個最有效，但未涵蓋在本教學課程因為將會要求您將部署到 Azure 雲端服務，而不是 Azure 應用程式服務。 在 Azure 中的 IP 限制和雲端服務的相關詳細資訊，請參閱[計算裝載選項所提供 Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)和[封鎖特定 IP 位址存取 Web 角色](https://msdn.microsoft.com/library/windowsazure/jj154098.aspx)。 如果您要部署到協力廠商主機服務提供者，請連絡提供者，以了解如何實作 IP 限制。
 
 此教學課程中，您將建立*robots.txt*檔案。
 
@@ -256,7 +256,7 @@ ms.lasthandoff: 01/11/2018
 
 每個*.pubxml*檔案沒有*。 pubxml.user*檔案。 *。 Pubxml.user*檔案包含加密的密碼，如果您選取**儲存密碼**選項，而且依預設就會從專案排除。
 
-A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要設定適用於所有設定檔的設定，您可以建立*。 wpp.targets*檔案。 在建置程序會將這些檔案匯入*.csproj*或*.vbproj*專案檔，因此大部分的設定，您可以設定專案檔中設定這些檔案中。 如需有關*.pubxml*檔案和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio 中的檔案Web 專案](https://msdn.microsoft.com/en-us/library/ff398069.aspx)。
+A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要設定適用於所有設定檔的設定，您可以建立*。 wpp.targets*檔案。 在建置程序會將這些檔案匯入*.csproj*或*.vbproj*專案檔，因此大部分的設定，您可以設定專案檔中設定這些檔案中。 如需有關*.pubxml*檔案和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio 中的檔案Web 專案](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 1. 在**方案總管 中**，依序展開**屬性**展開**PublishProfiles**。
 2. 以滑鼠右鍵按一下*Production.pubxml*按一下**開啟**。
@@ -271,7 +271,7 @@ A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要�
 
     [!code-xml[Main](deploying-to-production/samples/sample4.xml?highlight=18-20)]
 
-    如需如何排除檔案和資料夾的詳細資訊，請參閱[可以我排除特定檔案或資料夾從部署嗎？](https://msdn.microsoft.com/en-us/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)中**適用於 Visual Studio 和 ASP.NET 的 Web 部署常見問題集**MSDN 上。
+    如需如何排除檔案和資料夾的詳細資訊，請參閱[可以我排除特定檔案或資料夾從部署嗎？](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)中**適用於 Visual Studio 和 ASP.NET 的 Web 部署常見問題集**MSDN 上。
 
 ### <a name="deploy-to-production"></a>部署到生產環境
 
@@ -295,7 +295,7 @@ A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要�
 在下一個教學課程中，您將更新應用程式程式碼，並將變更部署到測試、 預備及實際執行環境。
 
 > [!NOTE]
-> 在實際執行環境中使用您的應用程式時您應該實作復原計劃。 也就是說，您應該會定期備份您的資料庫從生產環境應用程式至安全的儲存體位置，並應該保持數個層代的這類備份。 當您更新資料庫時，請立即變更之前的備份複本。 然後，如果您犯了錯誤，並不探索它，直到它部署到生產環境之後，您將仍然能夠將資料庫復原到它損毀前的狀態。 如需詳細資訊，請參閱[Azure SQL Database 備份和還原](https://msdn.microsoft.com/en-us/library/windowsazure/jj650016.aspx)。
+> 在實際執行環境中使用您的應用程式時您應該實作復原計劃。 也就是說，您應該會定期備份您的資料庫從生產環境應用程式至安全的儲存體位置，並應該保持數個層代的這類備份。 當您更新資料庫時，請立即變更之前的備份複本。 然後，如果您犯了錯誤，並不探索它，直到它部署到生產環境之後，您將仍然能夠將資料庫復原到它損毀前的狀態。 如需詳細資訊，請參閱[Azure SQL Database 備份和還原](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx)。
 
 
 > [!NOTE]

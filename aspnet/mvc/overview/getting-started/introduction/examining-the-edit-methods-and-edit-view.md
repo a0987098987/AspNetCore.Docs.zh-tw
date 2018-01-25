@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 84aadccc18e7fa0fb56c7a78e144a1bf1038aac5
-ms.sourcegitcommit: d1d8071d4093bf2444b5ae19d6e45c3d187e338b
+ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/19/2017
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample2.cs?highlight=3)]
 
-接下來的教學課程中將涵蓋 [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)。 [Display](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性指定的資料類型，在此情況下它是日期，因此不會顯示儲存在欄位中的時間資訊。 [DisplayFormat](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性所需的正確轉譯日期格式 Chrome 瀏覽器中的 bug。
+接下來的教學課程中將涵蓋 [DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx)。 [Display](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayattribute.aspx) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性指定的資料類型，在此情況下它是日期，因此不會顯示儲存在欄位中的時間資訊。 [DisplayFormat](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.displayformatattribute.aspx)屬性所需的正確轉譯日期格式 Chrome 瀏覽器中的 bug。
 
 執行應用程式，並瀏覽至`Movies`控制站。 將滑鼠指標**編輯**連結，查看它連結到的 URL。
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 11/19/2017
 
 ![Html.ActionLink](examining-the-edit-methods-and-edit-view/_static/image2.png)
 
-`Html`物件是協助程式上使用屬性公開[System.Web.Mvc.WebViewPage](https://msdn.microsoft.com/en-us/library/gg402107(VS.98).aspx)基底類別。 `ActionLink`方法的協助程式簡化了動態產生 HTML，超連結，連結至動作方法，控制站上。 第一個引數`ActionLink`方法是要呈現的連結文字 (例如， `<a>Edit Me</a>`)。 第二個引數是要叫用的動作方法的名稱 (在此情況下，`Edit`動作)。 最後一個引數是[匿名物件](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx)，產生 （在本例中，識別碼，4） 的路由資料。
+`Html`物件是協助程式上使用屬性公開[System.Web.Mvc.WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx)基底類別。 `ActionLink`方法的協助程式簡化了動態產生 HTML，超連結，連結至動作方法，控制站上。 第一個引數`ActionLink`方法是要呈現的連結文字 (例如， `<a>Edit Me</a>`)。 第二個引數是要叫用的動作方法的名稱 (在此情況下，`Edit`動作)。 最後一個引數是[匿名物件](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx)，產生 （在本例中，識別碼，4） 的路由資料。
 
-產生的連結，如上圖所示為`http://localhost:1234/Movies/Edit/4`。 預設路由 (在中建立*應用程式\_Start\RouteConfig.cs*) 採用的 URL 模式`{controller}/{action}/{id}`。 因此，ASP.NET 會將轉譯`http://localhost:1234/Movies/Edit/4`的要求到`Edit`動作方法的`Movies`控制器會執行參數`ID`等於 4。 檢查下列程式碼從*應用程式\_Start\RouteConfig.cs*檔案。 [MapRoute](../../older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md)方法用來將 HTTP 要求路由至正確的控制器與動作方法並提供選擇性的 ID 參數。 [MapRoute](../../older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md)方法也會使用[HtmlHelpers](https://msdn.microsoft.com/en-us/library/system.web.mvc.htmlhelper(v=vs.108).aspx)例如`ActionLink`來產生 Url 指定的控制器、 動作方法和任何路由資料。
+產生的連結，如上圖所示為`http://localhost:1234/Movies/Edit/4`。 預設路由 (在中建立*應用程式\_Start\RouteConfig.cs*) 採用的 URL 模式`{controller}/{action}/{id}`。 因此，ASP.NET 會將轉譯`http://localhost:1234/Movies/Edit/4`的要求到`Edit`動作方法的`Movies`控制器會執行參數`ID`等於 4。 檢查下列程式碼從*應用程式\_Start\RouteConfig.cs*檔案。 [MapRoute](../../older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md)方法用來將 HTTP 要求路由至正確的控制器與動作方法並提供選擇性的 ID 參數。 [MapRoute](../../older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md)方法也會使用[HtmlHelpers](https://msdn.microsoft.com/library/system.web.mvc.htmlhelper(v=vs.108).aspx)例如`ActionLink`來產生 Url 指定的控制器、 動作方法和任何路由資料。
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample4.cs?highlight=7)]
 
@@ -58,19 +58,19 @@ ms.lasthandoff: 11/19/2017
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample5.cs?highlight=19-21)]
 
-請注意，第二個 `Edit` 動作方法的前面是 `HttpPost` 屬性。 這個屬性指定的多載`Edit`只會針對 POST 要求叫用方法。 您可以套用`HttpGet`第一個屬性編輯方法，但是，因為不需要它是預設值。 (我們將參照動作方法會隱含地指派`HttpGet`屬性做為`HttpGet`方法。)[繫結](https://msdn.microsoft.com/en-us/library/system.web.mvc.bindattribute(v=vs.108).aspx)屬性是防止駭客過度張貼您的模型資料的另一個重要的安全性機制。 您應該只包含您想要變更繫結屬性中的屬性。 您可以閱讀 overposting 和中的繫結屬性我[overposting 安全性注意事項](https://go.microsoft.com/fwlink/?LinkId=317598)。 在此教學課程中使用簡單模型中，我們將繫結模型中的所有資料。 [ValidateAntiForgeryToken](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx)屬性用於防範偽造要求，並使用成對向上`@Html.AntiForgeryToken()`在編輯檢視檔案 (*Views\Movies\Edit.cshtml*)，如下所示的一部分：
+請注意，第二個 `Edit` 動作方法的前面是 `HttpPost` 屬性。 這個屬性指定的多載`Edit`只會針對 POST 要求叫用方法。 您可以套用`HttpGet`第一個屬性編輯方法，但是，因為不需要它是預設值。 (我們將參照動作方法會隱含地指派`HttpGet`屬性做為`HttpGet`方法。)[繫結](https://msdn.microsoft.com/library/system.web.mvc.bindattribute(v=vs.108).aspx)屬性是防止駭客過度張貼您的模型資料的另一個重要的安全性機制。 您應該只包含您想要變更繫結屬性中的屬性。 您可以閱讀 overposting 和中的繫結屬性我[overposting 安全性注意事項](https://go.microsoft.com/fwlink/?LinkId=317598)。 在此教學課程中使用簡單模型中，我們將繫結模型中的所有資料。 [ValidateAntiForgeryToken](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx)屬性用於防範偽造要求，並使用成對向上`@Html.AntiForgeryToken()`在編輯檢視檔案 (*Views\Movies\Edit.cshtml*)，如下所示的一部分：
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample6.cshtml?highlight=9)]
 
 `@Html.AntiForgeryToken()`產生隱藏的表單防偽語彙基元必須完全符合`Edit`方法`Movies`控制站。 閱讀更多關於跨網站要求偽造 （也稱為 XSRF 或 CSRF） 在我的教學課程[MVC 中 XSRF/CSRF 防護](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)。
 
-`HttpGet` `Edit`方法會採用影片 ID 參數在查詢使用 Entity Framework 的電影`Find`方法，並返回編輯檢視中選取的影片。 如果找不到電影， [HttpNotFound](https://msdn.microsoft.com/en-us/library/gg453938(VS.98).aspx)傳回。 當 Scaffolding 系統建立 Edit 檢視時，它會檢查 `Movie` 類別，並建立程式碼為類別的每個屬性轉譯 `<label>` 和 `<input>` 元素。 下列範例顯示 visual studio scaffolding 系統所產生的編輯檢視：
+`HttpGet` `Edit`方法會採用影片 ID 參數在查詢使用 Entity Framework 的電影`Find`方法，並返回編輯檢視中選取的影片。 如果找不到電影， [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx)傳回。 當 Scaffolding 系統建立 Edit 檢視時，它會檢查 `Movie` 類別，並建立程式碼為類別的每個屬性轉譯 `<label>` 和 `<input>` 元素。 下列範例顯示 visual studio scaffolding 系統所產生的編輯檢視：
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]
 
 請注意如何檢視範本都有`@model MvcMovie.Models.Movie`在檔案最上方的陳述式，這會指定檢視預期型別檢視範本模型`Movie`。
 
-Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/en-us/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 可呈現 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
+Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 可呈現 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
 
 執行應用程式，並瀏覽至*/Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 如下所示的 HTML 表單項目。
 
@@ -84,9 +84,9 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample9.cs)]
 
-[ValidateAntiForgeryToken](https://msdn.microsoft.com/en-us/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx)屬性驗證[XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)所產生的語彙基元`@Html.AntiForgeryToken()`檢視中呼叫。
+[ValidateAntiForgeryToken](https://msdn.microsoft.com/library/system.web.mvc.validateantiforgerytokenattribute(v=vs.108).aspx)屬性驗證[XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)所產生的語彙基元`@Html.AntiForgeryToken()`檢視中呼叫。
 
-[ASP.NET MVC 模型繫結器](https://msdn.microsoft.com/en-us/library/dd410405.aspx)採用的已張貼的表單值，並建立`Movie`物件傳遞為`movie`參數。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果是有效的資料，將電影資料會儲存至`Movies`集合`db(MovieDBContext`執行個體)。 將新的電影資料會儲存到資料庫，藉由呼叫`SaveChanges`方法`MovieDBContext`。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
+[ASP.NET MVC 模型繫結器](https://msdn.microsoft.com/library/dd410405.aspx)採用的已張貼的表單值，並建立`Movie`物件傳遞為`movie`參數。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果是有效的資料，將電影資料會儲存至`Movies`集合`db(MovieDBContext`執行個體)。 將新的電影資料會儲存到資料庫，藉由呼叫`SaveChanges`方法`MovieDBContext`。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
 
 只要用戶端驗證決定欄位的值不是有效的則會顯示錯誤訊息。 如果您停用 JavaScript，就不需要用戶端驗證，但是伺服器會偵測已張貼的值不是有效的並會重新顯示表單值，並顯示錯誤訊息。 稍後在本教學課程中，我們會檢查驗證中更多詳細資料。
 
@@ -106,8 +106,8 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 1. 從**工具**功能表上，按一下**NuGetLibrary 封裝管理員**，然後按一下 **管理方案的 NuGet 套件**。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. 在左窗格中，選取**瀏覽*。** * （請參閱下面的影像）。
-3. 在輸入方塊中，輸入*Globalize**。  
+2. 在左窗格中，選取 **瀏覽*。 * * * （請參閱下面的影像）。
+3. 在輸入方塊中，輸入 * Globalize * *。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png)選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至您的專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性的 JavaScript 檔案。 請注意，可能需要五分鐘才能安裝此套件。
 

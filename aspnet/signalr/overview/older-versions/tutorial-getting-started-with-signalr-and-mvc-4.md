@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: e678c85520613fea2a8d00de60aca04d895d6307
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 632e6098a03eae02f2367c6dc1c293dbdb6b6170
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程： 開始使用 SignalR 1.x 和 MVC 4
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > 本教學課程會示範如何使用 ASP.NET SignalR 建立即時聊天的應用程式。 將 SignalR 加入至 MVC 4 應用程式，並建立聊天檢視來傳送，並顯示訊息。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程為您介紹 ASP.NET SignalR 和 ASP.NET MVC 4 的即時 web 應用程式開發。 教學課程使用相同的交談應用程式程式碼做為[SignalR 快速入門教學課程](tutorial-getting-started-with-signalr.md)，但示範如何將它加入至 MVC 4 應用程式以網際網路為範本。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/10/2017
 - [設定專案](#setup)
 - [執行範例](#run)
 - [檢查程式碼](#code)
-- [接下來的步驟](#next)
+- [後續步驟](#next)
 
 <a id="setup"></a>
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 必要條件：
 
 - Visual Studio 2010 SP1、 Visual Studio 2012 或 Visual Studio 2012 Express。 如果您沒有 Visual Studio，請參閱[ASP.NET 下載](https://www.asp.net/downloads)取得免費 Visual Studio 2012 Express 開發的工具。
-- 針對 Visual Studio 2010、 安裝[ASP.NET MVC 4](https://www.microsoft.com/en-us/download/details.aspx?id=30683)。
+- 針對 Visual Studio 2010、 安裝[ASP.NET MVC 4](https://www.microsoft.com/download/details.aspx?id=30683)。
 
 本節說明如何建立 ASP.NET MVC 4 應用程式、 新增 SignalR 程式庫和建立交談應用程式。
 

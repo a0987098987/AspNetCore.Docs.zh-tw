@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 5a852ec2301e63bde9a5ce99db80224dad7fb258
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ae2fddc81f6f4da866ec0719a0e74516bdd2a4d1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="database-first"></a>第一次資料庫
 > 
-> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個資料庫。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf)。
+> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個資料庫。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf)。
 > 
 > ## <a name="web-forms"></a>Web Form
 > 
@@ -39,16 +39,16 @@ ms.lasthandoff: 11/10/2017
 > | **教學課程中所示** | **也可以搭配** |
 > | --- | --- |
 > | Windows 7 | Windows 8 |
-> | Visual Studio 2010 | Visual Studio 2010 Express for Web。 本教學課程尚未經過測試的 Visual Studio 版本。 有許多差異功能表選取項目、 對話方塊和範本。 |
+> | Visual Studio 2010 | Visual Studio 2010 Express for Web. 本教學課程尚未經過測試的 Visual Studio 版本。 有許多差異功能表選取項目、 對話方塊和範本。 |
 > | .NET 4 | .NET 4.5 回溯相容於.NET 4 中，但本教學課程不經過.NET 4.5。 |
 > | Entity Framework 4 | 本教學課程尚未經過測試新的 Entity Framework 的版本。 從 Entity Framework 5 開始，依預設使用 EF`DbContext API`導入的已 EF 4.1。 EntityDataSource 控制項的設計使用`ObjectContext`應用程式開發介面。 如需如何使用 EntityDataSource 控制項`DbContext`API，請參閱[此部落格文章](https://blogs.msdn.com/b/webdev/archive/2012/09/13/how-to-use-the-entitydatasource-control-with-entity-framework-code-first.aspx)。 |
 > 
 > ## <a name="questions"></a>問題
 > 
-> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
+> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 您會在這些教學課程建置的應用程式是簡單的大學網站。
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/10/2017
 
 在本教學課程中使用資料庫第一個方法下, 一個步驟是將資料庫加入至網站。 最簡單的方式是先下載隨附此教學課程專案。 以滑鼠右鍵按一下*應用程式\_資料*資料夾中，選取**加入現有項目**，然後選取*School.mdf*資料庫檔案從下載的專案。
 
-另一個方法是請遵循指示[建立 School 範例資料庫](https://msdn.microsoft.com/en-us/library/bb399731.aspx)。 您下載資料庫或建立它時，是否將複製*School.mdf*下列資料夾中的檔案到您的應用程式*應用程式\_資料*資料夾：
+另一個方法是請遵循指示[建立 School 範例資料庫](https://msdn.microsoft.com/library/bb399731.aspx)。 您下載資料庫或建立它時，是否將複製*School.mdf*下列資料夾中的檔案到您的應用程式*應用程式\_資料*資料夾：
 
 `%PROGRAMFILES%\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQL\DATA`
 

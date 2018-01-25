@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 8c631900c8c5ab6097e0cb9fd4a71abbcba1c88b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 127b336cb628e55bd59481ecb1c4df83960dc25b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="working-with-ssl-in-web-api"></a>使用 Web 應用程式開發介面中的 SSL
 ====================
@@ -72,7 +72,7 @@ SSL 憑證公開金鑰基礎結構來提供驗證。 伺服器必須提供憑證
 
 ### <a name="creating-a-client-certificate-for-testing"></a>建立用戶端憑證以進行測試
 
-為了測試用途，您可以使用[MakeCert.exe](https://msdn.microsoft.com/en-US/library/bfsktky3.aspx)建立用戶端憑證。 首先，建立測試根授權單位：
+為了測試用途，您可以使用[MakeCert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)建立用戶端憑證。 首先，建立測試根授權單位：
 
 [!code-console[Main](working-with-ssl-in-web-api/samples/sample4.cmd)]
 
@@ -95,6 +95,6 @@ Makecert 會提示您輸入私密金鑰的密碼。
 
 ### <a name="using-client-certificates-in-web-api"></a>Web API 中使用用戶端憑證
 
-在伺服器端，您可以取得用戶端憑證，藉由呼叫[GetClientCertificate](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx)要求訊息。 方法會傳回 null，如果沒有用戶端憑證。 否則，它會傳回**X509Certificate2**執行個體。 使用此物件，取得憑證，例如簽發者和主旨的相關資訊。 然後您可以使用這項資訊的驗證及/或授權。
+在伺服器端，您可以取得用戶端憑證，藉由呼叫[GetClientCertificate](https://msdn.microsoft.com/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx)要求訊息。 方法會傳回 null，如果沒有用戶端憑證。 否則，它會傳回**X509Certificate2**執行個體。 使用此物件，取得憑證，例如簽發者和主旨的相關資訊。 然後您可以使用這項資訊的驗證及/或授權。
 
 [!code-csharp[Main](working-with-ssl-in-web-api/samples/sample6.cs)]

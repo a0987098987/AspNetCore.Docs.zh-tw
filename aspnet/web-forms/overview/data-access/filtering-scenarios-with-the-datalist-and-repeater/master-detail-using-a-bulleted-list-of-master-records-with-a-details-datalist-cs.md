@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 91b8139f082704c5b5964087cc1887454c081f09
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb943941ea4dbfbdc9230df4598ad406d4dee0b6
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-c"></a>主要/詳細資料的詳細資料 DataList (C#) 搭配使用的主要記錄項目符號清單
 ====================
@@ -210,7 +210,7 @@ DAL 和 BLL 完成，我們重新準備好將這項資料給繫結`Categories`�
 
 現在我們有`Categories`中繼器以及產品的數目的類別目錄的清單顯示每個類別中。 中繼器使用 LinkButton 每個類別目錄，按一下時，會導致回傳，此時點我們需要顯示所選取的類別目錄中的那些產品`CategoryProducts`DataList。
 
-我們對向的一項挑戰是如何顯示這些產品選取類別目錄資料的清單。 在[主要/詳細說明使用詳細資料 DetailsView 的可選取的主要 GridView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)無法選取教學課程中我們可了解如何建置 GridView 的資料列、 所選取的資料列 s 的詳細資料顯示在相同頁面上的 DetailsView 中。 GridView 的 ObjectDataSource 傳回使用的所有產品的相關資訊`ProductsBLL`s`GetProducts()`方法 DetailsView 的 ObjectDataSource 時擷取所選的產品的使用資訊`GetProductsByProductID(productID)`方法。  *`productID`* 參數值所提供以宣告方式將它與 GridView s 的值關聯`SelectedValue`屬性。 不幸的是，中繼器沒有`SelectedValue`屬性並不能做為參數來源。
+我們對向的一項挑戰是如何顯示這些產品選取類別目錄資料的清單。 在[主要/詳細說明使用詳細資料 DetailsView 的可選取的主要 GridView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)無法選取教學課程中我們可了解如何建置 GridView 的資料列、 所選取的資料列 s 的詳細資料顯示在相同頁面上的 DetailsView 中。 GridView 的 ObjectDataSource 傳回使用的所有產品的相關資訊`ProductsBLL`s`GetProducts()`方法 DetailsView 的 ObjectDataSource 時擷取所選的產品的使用資訊`GetProductsByProductID(productID)`方法。 *`productID`* 參數值所提供以宣告方式將它與 GridView s 的值關聯`SelectedValue`屬性。 不幸的是，中繼器沒有`SelectedValue`屬性並不能做為參數來源。
 
 > [!NOTE]
 > 這是出現在中繼器中使用的 LinkButton 時這些挑戰。 我們使用超連結傳入`CategoryID`透過 querystring 相反地，我們無法用於該查詢字串欄位做為來源參數 s 的值。
@@ -243,9 +243,9 @@ DAL 和 BLL 完成，我們重新準備好將這項資料給繫結`Categories`�
 
 目前， `CategoryProductsDataSource` ObjectDataSource s  *`categoryID`* 永遠不會設定參數，以便檢視頁面時，會不顯示任何產品。 我們需要如何做會將此參數值，設定根據`CategoryID`中繼器中按下類別目錄。 這導入了兩個挑戰： 首先，請勿我們如何判斷當中繼器 s 中的 LinkButton`ItemTemplate`已按下; 和第二個，我們要如何判斷`CategoryID`的 LinkButton 已按下的對應類別目錄？
 
-如同按鈕和 ImageButton 控制項 LinkButton 已`Click`事件和[`Command`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.command.aspx)。 `Click`事件設計只需注意的 LinkButton 已按下。 有時候，不過，除了 LinkButton 已按下您會看到我們也需要一些額外的資訊傳遞至事件處理常式。 如果這種情況，LinkButton s [ `CommandName` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.commandname.aspx)和[ `CommandArgument` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx)屬性可以指派此額外資訊。 然後，當 LinkButton 已按下，其`Command`引發事件 (而不是其`Click`事件) 和事件處理常式傳遞的值`CommandName`和`CommandArgument`屬性。
+如同按鈕和 ImageButton 控制項 LinkButton 已`Click`事件和[`Command`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx)。 `Click`事件設計只需注意的 LinkButton 已按下。 有時候，不過，除了 LinkButton 已按下您會看到我們也需要一些額外的資訊傳遞至事件處理常式。 如果這種情況，LinkButton s [ `CommandName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx)和[ `CommandArgument` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx)屬性可以指派此額外資訊。 然後，當 LinkButton 已按下，其`Command`引發事件 (而不是其`Click`事件) 和事件處理常式傳遞的值`CommandName`和`CommandArgument`屬性。
 
-當`Command`從中繼器，中繼器 s 中的範本內引發事件[`ItemCommand`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater.itemcommand.aspx)引發並傳遞`CommandName`和`CommandArgument`按下後的 LinkButton 的值 (或按鈕或ImageButton)。 因此，若要判斷類別中繼器中 LinkButton 已按一下時，我們需要執行下列作業：
+當`Command`從中繼器，中繼器 s 中的範本內引發事件[`ItemCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeater.itemcommand.aspx)引發並傳遞`CommandName`和`CommandArgument`按下後的 LinkButton 的值 (或按鈕或ImageButton)。 因此，若要判斷類別中繼器中 LinkButton 已按一下時，我們需要執行下列作業：
 
 1. 設定`CommandName`屬性在中繼器的 LinkButton`ItemTemplate`為某個值 (我 ve 用 ListProducts)。 藉由設定此`CommandName`值 LinkButton 的`Command`LinkButton 已按下時，就會引發事件。
 2. 設定 LinkButton s`CommandArgument`屬性設為值的目前項目的`CategoryID`。

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4fb0b71792422a75efa5d936ffc7b88a8ec19a57
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8e8ae3c0fd1d67fba6dff965704b550bdc919c6a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>核心 IIS 與 ASP.NET 程式開發伺服器 (VB) 之間的差異
 ====================
@@ -47,7 +47,7 @@ ASP.NET 程式開發伺服器會將內送要求與目前登入使用者的安全
 [!code-vb[Main](core-differences-between-iis-and-the-asp-net-development-server-vb/samples/sample1.vb)]
 
 > [!NOTE]
-> [ `File.WriteAllText`方法](https://msdn.microsoft.com/en-us/library/system.io.file.writealltext.aspx)建立新檔案，如果它不存在，然後寫入指定的內容。 如果檔案已經存在，則會覆寫它的現有內容。
+> [ `File.WriteAllText`方法](https://msdn.microsoft.com/library/system.io.file.writealltext.aspx)建立新檔案，如果它不存在，然後寫入指定的內容。 如果檔案已經存在，則會覆寫它的現有內容。
 
 
 接下來，請瀏覽*教導您自己 ASP.NET 3.5 24 小時內*使用 ASP.NET 程式開發伺服器開發環境中的活頁簿檢閱頁面。 假設您已登入您的電腦帳戶具有足夠的權限，即可建立和修改文字檔案中的 web 應用程式的根目錄書籍檢閱會顯示與之前相同，但每次頁面瀏覽的日期和時間以及使用者的 IP 位址儲存在`LastTYASP35Access.txt`檔案。 您的瀏覽器指向這個檔案。您應該會看到類似於圖 1 所示的訊息。
@@ -58,7 +58,7 @@ ASP.NET 程式開發伺服器會將內送要求與目前登入使用者的安全
 **圖 1**： 文字檔案包含的最後一個日期和時間書籍檢閱瀏覽 ([按一下以檢視完整大小的影像](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image3.png))
 
 
-部署到生產環境 web 應用程式，然後瀏覽託管*教導您自己 ASP.NET 3.5 24 小時內*書籍 [檢閱] 頁面。 此時您應該看到活頁簿的 [檢閱] 頁面為 normal 或顯示在圖 2 中的錯誤訊息。 有些 web 主機提供者授與匿名 ASP.NET 電腦帳戶，大小寫的頁面將會運作無誤的寫入權限。 如果，不過，您的 web 主機提供者會禁止匿名帳戶的寫入權限則[`UnauthorizedAccessException`例外狀況](https://msdn.microsoft.com/en-us/library/system.unauthorizedaccessexception.aspx)時引發`TYASP35.aspx`網頁嘗試寫入目前的日期和時間`LastTYASP35Access.txt`檔案。
+部署到生產環境 web 應用程式，然後瀏覽託管*教導您自己 ASP.NET 3.5 24 小時內*書籍 [檢閱] 頁面。 此時您應該看到活頁簿的 [檢閱] 頁面為 normal 或顯示在圖 2 中的錯誤訊息。 有些 web 主機提供者授與匿名 ASP.NET 電腦帳戶，大小寫的頁面將會運作無誤的寫入權限。 如果，不過，您的 web 主機提供者會禁止匿名帳戶的寫入權限則[`UnauthorizedAccessException`例外狀況](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)時引發`TYASP35.aspx`網頁嘗試寫入目前的日期和時間`LastTYASP35Access.txt`檔案。
 
 
 [![IIS 所使用的預設電腦帳戶沒有權限可以寫入檔案系統](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image5.png)](core-differences-between-iis-and-the-asp-net-development-server-vb/_static/image4.png)
@@ -90,7 +90,7 @@ ASP.NET 執行階段會執行一些步驟來產生要求的內容，包括驗證
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-vb/samples/sample3.xml)]
 
-使用：
+成為：
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-vb/samples/sample4.xml)]
 
@@ -123,7 +123,7 @@ ASP.NET 執行階段會執行一些步驟來產生要求的內容，包括驗證
 這個標記會指示使用 ASP.NET 為基礎的驗證和授權模組的 IIS 7。 重新部署您的應用程式，然後重新瀏覽 PDF 檔案。 當 IIS 會處理要求這次它可讓 ASP.NET 執行階段驗證及授權邏輯來檢查要求。 因為只有驗證的使用者有權檢視的內容`PrivateDocs`匿名訪客 資料夾，會自動重新導向至登入頁面 （請參閱上一步圖 3）。
 
 > [!NOTE]
-> 如果您的 web 主機提供者仍在使用 IIS 6，您無法使用整合式的管線功能。 解決方法是將私人文件放在禁止的 HTTP 存取的資料夾 (例如`App_Data`)，然後建立頁面，即可提供這些文件。 此頁面可能呼叫`GetPDF.aspx`，並傳遞 PDF 透過查詢字串參數的名稱。 `GetPDF.aspx`頁面會先確認使用者有權檢視檔案，如果是的話，會使用[ `Response.WriteFile(filePath)` ](https://msdn.microsoft.com/en-us/library/system.web.httpresponse.writefile.aspx)方法，以回到要求的用戶端傳送要求的 PDF 檔案的內容。 如果您不想啟用整合式的管線，則這項技術也可以運作適用於 IIS 7。
+> 如果您的 web 主機提供者仍在使用 IIS 6，您無法使用整合式的管線功能。 解決方法是將私人文件放在禁止的 HTTP 存取的資料夾 (例如`App_Data`)，然後建立頁面，即可提供這些文件。 此頁面可能呼叫`GetPDF.aspx`，並傳遞 PDF 透過查詢字串參數的名稱。 `GetPDF.aspx`頁面會先確認使用者有權檢視檔案，如果是的話，會使用[ `Response.WriteFile(filePath)` ](https://msdn.microsoft.com/library/system.web.httpresponse.writefile.aspx)方法，以回到要求的用戶端傳送要求的 PDF 檔案的內容。 如果您不想啟用整合式的管線，則這項技術也可以運作適用於 IIS 7。
 
 
 ## <a name="summary"></a>總結
@@ -138,7 +138,7 @@ ASP.NET 執行階段會執行一些步驟來產生要求的內容，包括驗證
 
 - [與 IIS 7.0 ASP.NET 整合](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 - [與所有類型的內容，在 IIS 7 上使用 ASP.NET 論壇驗證](https://blogs.iis.net/bills/archive/2007/05/19/using-asp-net-forms-authentication-with-all-types-of-content-with-iis7-video.aspx)（影片）
-- [在 Visual Web Developer web 伺服器](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)
+- [在 Visual Web Developer web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)
 
 >[!div class="step-by-step"]
 [上一頁](common-configuration-differences-between-development-and-production-vb.md)

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 10457d154f5fda875f7d1054d48daeeba3a50b7c
-ms.sourcegitcommit: 2b263e87217658caa42eedc4f9d2d21ef0ab5d59
+ms.openlocfilehash: 116f681e14af0a09a4eb1502ef9f057c5db2f97d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="search"></a>搜尋
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/12/2018
 
 [!code-csharp[Main](adding-search/samples/sample1.cs?highlight=1,6-9)]
 
-第一行`Index`方法會建立下列[LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx)查詢，以選取影片：
+第一行`Index`方法會建立下列[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)查詢，以選取影片：
 
 [!code-csharp[Main](adding-search/samples/sample2.cs)]
 
@@ -44,10 +44,10 @@ ms.lasthandoff: 01/12/2018
 
 [!code-csharp[Main](adding-search/samples/sample3.cs)]
 
-上述 `s => s.Title` 程式碼是 [Lambda 運算式](https://msdn.microsoft.com/en-us/library/bb397687.aspx)。 Lambda 會用來在以方法為基礎[LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx)這類查詢做為標準查詢運算子方法引數[其中](https://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx)上述程式碼中使用的方法。 LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例如`Where`或`OrderBy`。 相反地，延後查詢執行，這表示運算式的評估是否延遲到實際反覆查看其實現的值或[ `ToList` ](https://msdn.microsoft.com/en-us/library/bb342261.aspx)方法呼叫。 在`Search`範例中，在執行查詢*Index.cshtml*檢視。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](https://msdn.microsoft.com/en-us/library/bb738633.aspx)。
+上述 `s => s.Title` 程式碼是 [Lambda 運算式](https://msdn.microsoft.com/library/bb397687.aspx)。 Lambda 會用來在以方法為基礎[LINQ](https://msdn.microsoft.com/library/bb397926.aspx)這類查詢做為標準查詢運算子方法引數[其中](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx)上述程式碼中使用的方法。 LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例如`Where`或`OrderBy`。 相反地，延後查詢執行，這表示運算式的評估是否延遲到實際反覆查看其實現的值或[ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx)方法呼叫。 在`Search`範例中，在執行查詢*Index.cshtml*檢視。 如需延後查詢執行的詳細資訊，請參閱[查詢執行](https://msdn.microsoft.com/library/bb738633.aspx)。
 
 > [!NOTE]
-> [Contains](https://msdn.microsoft.com/en-us/library/bb155125.aspx)方法是在資料庫上執行，不是 c# 程式碼上方。 在資料庫上， [Contains](https://msdn.microsoft.com/en-us/library/bb155125.aspx)對應至[SQL LIKE](https://msdn.microsoft.com/en-us/library/ms179859.aspx)，這是不區分大小寫。
+> [Contains](https://msdn.microsoft.com/library/bb155125.aspx)方法是在資料庫上執行，不是 c# 程式碼上方。 在資料庫上， [Contains](https://msdn.microsoft.com/library/bb155125.aspx)對應至[SQL LIKE](https://msdn.microsoft.com/library/ms179859.aspx)，這是不區分大小寫。
 
 現在您可以更新`Index`會向使用者顯示表單的檢視。
 
@@ -123,7 +123,7 @@ Visual Studio 2013 有很棒的改進時顯示與編輯檢視檔案。 當您執
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-程式碼會使用`AddRange`方法屬於泛型`List`將不同的內容類型加入至清單的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 例如，喜劇會加入兩次在我們的範例)。 程式碼再儲存清單中的內容類型`ViewBag.MovieGenre`物件。 儲存類別目錄資料 （這類電影內容類型的） 做為[SelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlist(v=vs.108).aspx)物件存放至`ViewBag`，則存取下拉式清單方塊中的類別目錄資料是一般 MVC 應用程式的方法。
+程式碼會使用`AddRange`方法屬於泛型`List`將不同的內容類型加入至清單的集合。 (不含`Distinct`修飾詞，會加入重複的內容類型 — 例如，喜劇會加入兩次在我們的範例)。 程式碼再儲存清單中的內容類型`ViewBag.MovieGenre`物件。 儲存類別目錄資料 （這類電影內容類型的） 做為[SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx)物件存放至`ViewBag`，則存取下拉式清單方塊中的類別目錄資料是一般 MVC 應用程式的方法。
 
 下列程式碼示範如何檢查`movieGenre`參數。 如果它不是空的再進一步限制電影查詢，以限制選取的影片，以指定的內容類型。
 

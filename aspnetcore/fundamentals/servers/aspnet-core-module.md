@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/servers/aspnet-core-module
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 153c40f0e825ff5826e916c7ea877a25d81954f1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9dc2183ebbdf8b74106fe57a1dd191a57ba5d1bc
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-aspnet-core-module"></a>ASP.NET Core 模組簡介
 
@@ -38,9 +38,9 @@ ANCM 是連結到管線的 IIS，並將流量重新導向到後端 ASP.NET Core 
 
 ![ASP.NET 核心模組](aspnet-core-module/_static/ancm.png)
 
-要求來自網站及叫用核心模式 Http.Sys 驅動程式的路由傳送到 IIS 上的主要連接埠 (80) 或 SSL 連接埠 (443)。 ANCM 將要求轉送至 ASP.NET Core 上的應用程式設定應用程式，不是通訊埠 80/443 的 HTTP 連接埠。
+要求來自網站及叫用核心模式 Http.Sys 驅動程式的路由傳送到 IIS 上的主要連接埠 (80) 或 SSL 連接埠 (443)。 ANCM 將要求轉送至 ASP.NET Core 上的應用程式設定應用程式，這並不是連接埠的 HTTP 連接埠 80/443。
 
-Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，透過的連接埠和[UseIISIntegration](#call-useiisintegration)方法會設定伺服器接聽`http://localhost:{port}`。 沒有額外的檢查拒絕不是從 ANCM 的要求。 （ANCM 不支援 HTTPS 轉送，因此即使透過 HTTPS 接收 IIS 要求都會轉送 over HTTP。）
+Kestrel 會接聽來自 ANCM 流量。  ANCM 指定環境變數在啟動時，透過的連接埠和[UseIISIntegration](#call-useiisintegration)方法會設定伺服器接聽`http://localhost:{port}`。 沒有額外的檢查拒絕不是從 ANCM 的要求。 （ANCM 不支援 HTTPS 轉送，因此即使透過 HTTPS 接收 IIS 要求都會轉送透過 HTTP）。
 
 Kestrel 拾取 ANCM 要求，並將 ASP.NET Core 中介軟體管線，然後處理它們，並將它們當做傳遞`HttpContext`應用程式邏輯的執行個體。 應用程式的回應，接著會傳遞至 IIS，它們回起始要求的 HTTP 用戶端的推播通知。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 213626147424e08d10d6442034ec450174200b09
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f3c56356aaa595e200a16fe0045a8b00dc5823b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>檢查的詳細資料和 Delete 方法
 ====================
@@ -66,7 +66,7 @@ MVC scaffolding 引擎，來建立此動作方法中加入註解顯示叫用方�
 
 ## <a name="next-steps"></a>後續步驟
 
-您已經建置及測試 web 應用程式之後下, 一個步驟是將它提供給其他人透過網際網路使用。 若要這樣做，您必須將它部署至 web 主控提供者。 Microsoft 提供的免費 web 裝載中的最多 10 個 web sites[免費試用版的 Windows Azure 帳戶](https://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604)。 我建議您接著執行我的教學課程[將成員資格、 OAuth、 與 SQL Database 的安全 ASP.NET MVC 應用程式部署至 Windows Azure 網站](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 絕佳的教學課程是 Tom Dykstra 中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 [Stackoverflow](http://stackoverflow.com/help)和[ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)會很大的位置，以詢問的問題。 請遵循[我](https://twitter.com/RickAndMSFT)因此我最新的教學課程中的更新可能會發生在 twitter 上。
+您已經建置及測試 web 應用程式之後下, 一個步驟是將它提供給其他人透過網際網路使用。 若要這樣做，您必須將它部署至 web 主控提供者。 Microsoft 提供的免費 web 裝載中的最多 10 個 web sites[免費試用版的 Windows Azure 帳戶](https://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A443DD604)。 我建議您接著執行我的教學課程[將成員資格、 OAuth、 與 SQL Database 的安全 ASP.NET MVC 應用程式部署至 Windows Azure 網站](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。 絕佳的教學課程是 Tom Dykstra 中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 [Stackoverflow](http://stackoverflow.com/help)和[ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)會很大的位置，以詢問的問題。 請遵循[我](https://twitter.com/RickAndMSFT)因此我最新的教學課程中的更新可能會發生在 twitter 上。
 
 意見反應是 「 歡迎畫面。
 

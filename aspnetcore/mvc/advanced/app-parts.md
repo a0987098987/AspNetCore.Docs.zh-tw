@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 12c34b7a9521835533998c5609870bc712a6d48c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 702d7773374f331b25489060b18f752186d7acea
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="application-parts-in-aspnet-core"></a>在 ASP.NET Core 應用程式組件
 
@@ -40,7 +40,7 @@ services.AddMvc()
 
 根據預設 MVC 會搜尋相依性樹狀結構，並尋找控制站 （即使在其他組件）。 若要載入的任意組件 （比方說，外掛程式不是參考在編譯時期），您可以使用應用程式部分。
 
-您可以使用應用程式組件，以便*避免*找尋特定組件或位置中控制站。 您可以控制哪些組件 （或組件） 可用應用程式藉由修改`ApplicationParts`集合`ApplicationPartManager`。 中的項目順序`ApplicationParts`集合並不重要。 請務必完全設定`ApplicationPartManager`再用來設定服務容器中。 例如，您應該完全設定`ApplicationPartManager`叫用之前`AddControllersAsServices`。 這麼做，代表將會確認應用程式組件中的控制站新增之後將不會影響方法呼叫 （將未取得註冊為服務） 這可能會造成不正確的 bevavior 應用程式。
+您可以使用應用程式組件，以便*避免*找尋特定組件或位置中控制站。 您可以控制哪些組件 （或組件） 可用應用程式藉由修改`ApplicationParts`集合`ApplicationPartManager`。 中的項目順序`ApplicationParts`集合並不重要。 請務必完全設定`ApplicationPartManager`再用來設定服務容器中。 例如，您應該完全設定`ApplicationPartManager`叫用之前`AddControllersAsServices`。 這麼做，該應用程式組件中的控制站之後加入方法呼叫不會受到影響的意義 （將不會取得已註冊為服務） 這可能會造成不正確的 bevavior 應用程式。
 
 如果您有包含控制站，您不想要使用的組件，將它從移除`ApplicationPartManager`:
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: dfcddb4373fbf17ca29c5ab94c6ab3387ed6b526
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8714f673cb0434189ca23d2dda14035d8652a051
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Visual Studio 2013 中的程式碼編輯的 ASP.NET Web Form
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 若要完成這個逐步解說，您將需要：
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。 會自動安裝.NET Framework。 
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。 會自動安裝.NET Framework。 
 
     > [!NOTE] 
     > 
@@ -132,8 +132,8 @@ ms.lasthandoff: 11/10/2017
 ### <a name="to-extract-a-method-in-a-c-page"></a>若要擷取在 C# 頁面方法
 
 1. 切換至**設計**檢視。
-2. 在**工具箱**，從**標準**索引標籤，拖曳[按鈕](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.aspx)拖曳到頁面的控制項。
-3. 按兩下**按鈕**控制項建立的處理常式其[按一下](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.click.aspx)事件，然後加入下列反白顯示的程式碼：
+2. 在**工具箱**，從**標準**索引標籤，拖曳[按鈕](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx)拖曳到頁面的控制項。
+3. 按兩下**按鈕**控制項建立的處理常式其[按一下](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx)事件，然後加入下列反白顯示的程式碼：
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample2.cs?highlight=3-16)]
 
@@ -185,13 +185,13 @@ ms.lasthandoff: 11/10/2017
 
 有許多 Web Form 開發人員經常需要執行的程式碼撰寫工作，因為程式碼編輯器中提供程式碼片段或預先撰寫的程式碼區塊的程式的庫。 您可以將這些程式碼片段插入您的頁面。
 
-您使用 Visual Studio 中的每種語言有插入程式碼片段的方式有些微差異。 插入程式碼片段的相關資訊，請參閱[Visual Basic IntelliSense 程式碼片段](https://msdn.microsoft.com/en-us/library/18yz4be4.aspx)。 如需插入程式碼片段中 Visual C# 中的資訊，請參閱[Visual C# 程式碼片段](https://msdn.microsoft.com/en-us/library/z41h7fat.aspx)。
+您使用 Visual Studio 中的每種語言有插入程式碼片段的方式有些微差異。 插入程式碼片段的相關資訊，請參閱[Visual Basic IntelliSense 程式碼片段](https://msdn.microsoft.com/library/18yz4be4.aspx)。 如需插入程式碼片段中 Visual C# 中的資訊，請參閱[Visual C# 程式碼片段](https://msdn.microsoft.com/library/z41h7fat.aspx)。
 
 ## <a name="next-steps"></a>後續步驟
 
 本逐步解說已說明 Visual Studio 2010 程式碼編輯器的基本功能的程式碼中的錯誤、 重構程式碼、 重新命名變數和程式碼片段插入程式碼。 在編輯器中的其他功能可以確保應用程式開發快速又簡單。 例如，您可能要：
 
-- 進一步了解 IntelliSense，例如修改 IntelliSense 選項、 管理程式碼片段，以及搜尋線上程式碼片段的功能。 如需詳細資訊，請參閱[使用 IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx)。
-- 了解如何建立您自己的程式碼片段。 如需詳細資訊，請參閱[建立和使用 IntelliSense 程式碼片段](https://msdn.microsoft.com/en-us/library/ms165392.aspx)
-- 深入了解 Visual Basic 特定的 IntelliSense 程式碼片段，例如自訂程式碼片段，以及疑難排解功能。 如需詳細資訊，請參閱[Visual Basic IntelliSense 程式碼片段](https://msdn.microsoft.com/en-us/library/18yz4be4.aspx)
-- 深入了解 C# 的特定功能的 IntelliSense，例如重構和程式碼片段。 如需詳細資訊，請參閱[Visual C# IntelliSense](https://msdn.microsoft.com/en-us/library/43f44291.aspx)。
+- 進一步了解 IntelliSense，例如修改 IntelliSense 選項、 管理程式碼片段，以及搜尋線上程式碼片段的功能。 如需詳細資訊，請參閱[使用 IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx)。
+- 了解如何建立您自己的程式碼片段。 如需詳細資訊，請參閱[建立和使用 IntelliSense 程式碼片段](https://msdn.microsoft.com/library/ms165392.aspx)
+- 深入了解 Visual Basic 特定的 IntelliSense 程式碼片段，例如自訂程式碼片段，以及疑難排解功能。 如需詳細資訊，請參閱[Visual Basic IntelliSense 程式碼片段](https://msdn.microsoft.com/library/18yz4be4.aspx)
+- 深入了解 C# 的特定功能的 IntelliSense，例如重構和程式碼片段。 如需詳細資訊，請參閱[Visual C# IntelliSense](https://msdn.microsoft.com/library/43f44291.aspx)。

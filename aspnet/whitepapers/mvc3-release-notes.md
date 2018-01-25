@@ -1,6 +1,6 @@
 ---
 uid: whitepapers/mvc3-release-notes
-title: "ASP.NET MVC 3 |Microsoft 文件"
+title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
 description: 
 ms.author: aspnetcontent
@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: a86fae5698c54a71cb598f508aa91e7d96d1b409
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c1fa5d31f68b44bfdfda61c870a6825eeba18647
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -91,10 +91,10 @@ ms.lasthandoff: 11/10/2017
     - [Bug 修正](#0.1__Toc274034228)
     - [重大變更](#0.1__Toc274034229)
     - [已知問題](#0.1__Toc274034230)
-- [免責聲明](#0.1__Toc274034231)
+- [Disclaimer](#0.1__Toc274034231)
 
 <a id="overview"></a>
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件描述 for Visual Studio 2010 版本的 ASP.NET MVC 3 RTM。 ASP.NET MVC 是使用 「 模型檢視控制器 (MVC) 模式開發 Web 應用程式架構。 ASP.NET MVC 3 安裝程式包含下列元件：
 
@@ -165,7 +165,7 @@ ASP.NET MVC 3 可以在同一部電腦，讓您彈性選擇何時要升級至 AS
     - /Views/Web.config
     - /packages.config
     - /scripts/\*.js
-    - /內容/主題/\*。\*
+    - /Content/themes/\*.\*
 3. 複製*封裝*根目錄中的空白 ASP.NET MVC 3 專案方案根目錄中的方案時，這是方案的.sln 檔案所在的目錄中的資料夾。
 4. 如果您的 ASP.NET MVC 2 專案會包含任何區域，將 /Views/Web.config 檔案複製*檢視*之每個區域的資料夾。
 5. 在這兩個 Web.config 檔案在 ASP.NET MVC 2 專案中，全域搜尋並取代 ASP.NET MVC 版本。 搜尋下列文字： 
@@ -179,7 +179,7 @@ ASP.NET MVC 3 可以在同一部電腦，讓您彈性選擇何時要升級至 AS
 7. 將參考加入至 System.Web.WebPages.dll 和 system.web.helpers.dll 的參考。 這些組件位於下列資料夾： 
 
     - %ProgramFiles%\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies
-    - %ProgramFiles%\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\Assemblies
+    - %ProgramFiles%\ Microsoft ASP.NET\ASP.NET Web Pages\v1.0\Assemblies
 8. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，並選取 卸載專案。 專案名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
 9. 找出*ProjectTypeGuids*項目和取代 {F85E285D-A4E0-4152-9332-AB1D724D3325} 為 {E53F8FEA-EAE0-44A6-8774-FFD645390401}。
 10. 儲存變更，以滑鼠右鍵按一下專案，然後選取重新載入專案。
@@ -251,7 +251,7 @@ Scaffolding 是一種快速產生的控制器和檢視您的應用程式。 在�
 
 專案範本清單中包含新的內部網路應用程式範本。 此範本包含設定來建置 web 應用程式使用 Windows 驗證，而不表單驗證。 因為內部網路應用程式需要部分 IIS 設定無法封裝專案範本中，範本包含讀我檔案，其中包含如何在 IIS 中運作，專案範本的指示。 文件新的內部網路應用程式範本位於 MSDN 網站，位於下列 URL:
 
-[https://msdn.microsoft.com/en-us/library/gg703322 (VS.98).aspx](https://msdn.microsoft.com/en-us/library/gg703322(VS.98).aspx)
+[https://msdn.microsoft.com/library/gg703322(VS.98).aspx](https://msdn.microsoft.com/library/gg703322(VS.98).aspx)
 
 #### <a name="project-templates-are-now-html5-enabled"></a>專案範本現在都已啟用 HTML5
 
@@ -465,7 +465,7 @@ Bug 的修正 where *LabelFor*方法呈現*如*屬性符合*輸入*項目的*名
 - 在舊版 ASP.NET MVC 中，每個要求除了在少數情況下建立動作篩選條件。 這種行為是不保證的行為，但只是實作詳細資料，就是把它視為無狀態篩選器的合約。 在 ASP.NET MVC 3 中，篩選是更積極地快取。 因此，任何自訂動作篩選條件不正確儲存執行個體的狀態可能已損壞。
 - 例外狀況篩選條件的執行順序已變更為具有相同的例外狀況篩選條件*順序*值。 在 ASP.NET MVC 2 和舊版中，例外狀況篩選條件具有相同的控制站上*順序*動作方法上所執行的動作方法上的例外狀況篩選條件之前的值。 這通常會發生此情況時套用例外狀況篩選條件但未指定*順序*值。 在 ASP.NET MVC 3 中，這個順序已顛倒，因此最特定的例外狀況處理常式會先執行。 如同舊版本中，如果*順序*屬性明確指定，則篩選條件會執行指定的順序。
 - 新的屬性，名為*FileExtensions*已新增至*VirtualPathProviderViewEngine*基底類別。 當 ASP.NET 尋找檢視的路徑 （不是依名稱） 時，則會被視為只有檢視與此新屬性所指定的清單中所包含的副檔名。 這是應用程式中的重大變更，自訂組建提供者註冊以啟用 Web 表單檢視自訂檔案的副檔名，而且提供者所使用的完整路徑，而不是名稱參考這些檢視表。 因應措施是要修改的值*FileExtensions*屬性設定為包含自訂檔案的副檔名。
-- 直接實作的自訂控制器 factory 實作*IControllerFactory*介面必須提供新的實作*GetControllerSessionBehavior* *已新增至這一版中的介面方法*。 一般情況下，建議您不要不直接實作這個介面，並且改為衍生您的類別，從*DefaultControllerFactory*。
+- 直接實作的自訂控制器 factory 實作*IControllerFactory*介面必須提供新的實作*GetControllerSessionBehavior * * 已加入至方法在此版本中的介面*。 一般情況下，建議您不要不直接實作這個介面，並且改為衍生您的類別，從*DefaultControllerFactory*。
 
 <a id="_Toc2_KI"></a>
 ## <a name="known-issues"></a>已知問題
@@ -519,7 +519,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員 （之前稱為 NuPack），也就是
 <a id="_Toc276711788"></a>
 ### <a name="sessionless-controllers"></a>無工作階段的控制站
 
-新*ControllerSessionStateAttribute*可讓您更充分掌控工作階段狀態行為的控制站藉由指定[System.Web.SessionState.SessionStateBehavior](https://msdn.microsoft.com/en-us/library/system.web.sessionstate.sessionstatebehavior.aspx)列舉值。
+新*ControllerSessionStateAttribute*可讓您更充分掌控工作階段狀態行為的控制站藉由指定[System.Web.SessionState.SessionStateBehavior](https://msdn.microsoft.com/library/system.web.sessionstate.sessionstatebehavior.aspx)列舉值。
 
 下列範例會示範如何關閉控制站的所有要求的工作階段狀態。
 
@@ -581,7 +581,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員 （之前稱為 NuPack），也就是
 
 在舊版中，這會顯示如下所示：
 
-Namespace.classname 的格式
+Namespace.ClassName
 
 <a id="_Toc276711793"></a>
 ### <a name="granular-request-validation"></a>詳細的要求驗證
@@ -669,7 +669,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合�
 
 新的 ASP.NET Web Pages 技術包含一組可用於將常用的功能加入至檢視和控制器的 helper 方法。 ASP.NET MVC 3 支援使用中控制器和檢視這些 helper 方法 （如適用）。 這些方法都包含在 System.Web.Helpers 組件。 下表列出幾個 ASP.NET Web Pages helper 方法。
 
-| **協助程式** | **說明** |
+| **Helper** | **描述** |
 | --- | --- |
 | 圖表 | 呈現於檢視內的圖表。 包含例如 Chart.ToWebImage、 Chart.Save 和 Chart.Write 方法。 |
 | 密碼編譯 | 雜湊演算法來建立正確的使用 salt 和密碼雜湊處理。 |
@@ -743,7 +743,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 這些方法會使用 JavaScript，叫用動作方法上的伺服器，而不是使用完整的回傳。 這項功能已更新為利用 jQuery 不顯眼的方式。 而不是 intrusively 發出內嵌用戶端指令碼，這些 helper 方法分隔行為從標記發出使用 HTML5 屬性*資料 ajax*前置詞。 然後行為會套用至標記以參考適當的 JavaScript 檔案。 請確定所參考 下列 JavaScript 檔案：
 
-- jquery 1.4.1.js
+- jquery-1.4.1.js
 - jquery.unobtrusive.ajax.js
 
 在 ASP.NET MVC 3 新專案範本中，在 Web.config 檔案中預設會啟用此功能，但現有的專案預設會停用。 如需詳細資訊，請參閱[加入應用程式範圍的旗標，用戶端驗證和不顯眼的 JavaScript](#0.1_AddedApplicationWideFlagsForClientValida)本文件後面。
@@ -760,7 +760,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 也請確定下列 JavaScript 檔案參考。
 
-- jquery 1.4.1.js
+- jquery-1.4.1.js
 - jquery.validate.js
 - jquery.validate.unobtrusive.js
 
@@ -862,8 +862,8 @@ Razor 檢視沒有 IntelliSense 支援，也不語法反白顯示。 它預期�
 
 [!code-xml[Main](mvc3-release-notes/samples/sample43.xml)]
 
-## <a id="0.1__Toc274034231"></a>免責聲明
+## <a id="0.1__Toc274034231"></a>  Disclaimer
 
-© 2011 Microsoft Corporation。 著作權所有，並保留一切權利。 本文件係"做為-是。 」 資訊及檢視在此文件，包括 URL 及其他網際網路網站參考資料，可能會變更恕不另行通知。 貴用戶須自行承擔使用風險。
+© 2011 Microsoft Corporation. 著作權所有，並保留一切權利。 本文件係"做為-是。 」 資訊及檢視在此文件，包括 URL 及其他網際網路網站參考資料，可能會變更恕不另行通知。 貴用戶須自行承擔使用風險。
 
 本文件不提供　貴用戶任何 Microsoft 產品之智慧財產權的法定權利。 貴用戶可以複製本文件供內部參考之用。

@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 56931827a1a1edf003d2662b2d36964b9b6f3761
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f92470b2022f343cfd6d822abb255dc19947b4d1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>SignalR 1.x 集線器 API 指南 JavaScript 用戶端
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > SignalR 也能提供較低層級應用程式開發介面呼叫持續連線。 如需簡介 SignalR、 集線器及持續連線，或示範如何建置完整的 SignalR 應用程式的教學課程，請參閱[SignalR-快速入門](../getting-started/index.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/10/2017
 - [SignalR 中樞 API 指南-伺服器](../guide-to-the-api/hubs-api-guide-server.md)
 - [SignalR 中樞 API 指南-.NET 用戶端](../guide-to-the-api/hubs-api-guide-net-client.md)
 
-應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx)。
+應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx)。
 
 <a id="genproxy"></a>
 
@@ -125,7 +125,7 @@ ASP.NET Web Form 應用程式中，使用`ResolveClientUrl`檔案參考您的 pr
 
 [!code-aspx[Main](signalr-1x-hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-一般而言，使用相同的方法來指定您用於 CSS 或 JavaScript 檔案的 「 signalr/中樞 」 URL。 如果您指定的 URL，而不使用波狀符號，在某些情況下您的應用程式正常運作時，您在 Visual Studio 中使用 IIS Express 測試，但部署至完整 IIS 時，會因 404 錯誤。 如需詳細資訊，請參閱**根層級資源的解析參考**中[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/en-us/library/58wxa9w5.aspx)MSDN 網站上的。
+一般而言，使用相同的方法來指定您用於 CSS 或 JavaScript 檔案的 「 signalr/中樞 」 URL。 如果您指定的 URL，而不使用波狀符號，在某些情況下您的應用程式正常運作時，您在 Visual Studio 中使用 IIS Express 測試，但部署至完整 IIS 時，會因 404 錯誤。 如需詳細資訊，請參閱**根層級資源的解析參考**中[ASP.NET Web 專案的 Visual Studio 中的 Web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)MSDN 網站上的。
 
 當您執行 Visual Studio 2012 中 web 專案在偵錯模式中，如果您使用 Internet Explorer 瀏覽器，您可以看到在 proxy 檔**方案總管 中**下**指令碼文件**，如下所示下圖。
 
@@ -287,10 +287,10 @@ ASP.NET Web Form 應用程式中，使用`ResolveClientUrl`檔案參考您的 pr
 
 您可以使用下列值來指定傳輸方法：
 
-- 「 webSockets"
-- 「 foreverFrame"
-- 「 serverSentEvents"
-- 「 longPolling"
+- "webSockets"
+- "foreverFrame"
+- "serverSentEvents"
+- "longPolling"
 
 下列範例顯示如何找出連接正在使用哪一種傳輸方法。
 

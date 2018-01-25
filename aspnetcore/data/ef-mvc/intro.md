@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/intro
-ms.openlocfilehash: df13726689c430ab19786e104ea7404051107aa9
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: c30556368ba24fb38cf3347dd49f171b5246514c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>開始使用 ASP.NET Core MVC 和 Entity Framework Core 使用 Visual Studio (1 / 10)
 
@@ -74,7 +74,7 @@ EF 核心 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如
 
 * 選取**ASP.NET Core 2.0**和**Web 應用程式 （模型-檢視-控制器）**範本。
 
-  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF 核心 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
+  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF 核心 2.0 或更新版本-請確認**ASP.NET Core 1.1**尚未被選取。
 
 * 請確定**驗證**設**非驗證**。
 
@@ -178,7 +178,7 @@ Entity Framework 會解譯為外部索引鍵屬性屬性如果名稱為`<navigat
 
 此程式碼建立`DbSet`每一個實體集的屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。
 
-您可以省略`DbSet<Enrollment>`和`DbSet<Course>`陳述式，它會運作方式相同。 Entity Framework 會將其包含隱含因為`Student`實體參考`Enrollment`實體和`Enrollment`實體參考`Course`實體。
+您可能已省略`DbSet<Enrollment>`和`DbSet<Course>`陳述式，它會運作方式相同。 Entity Framework 會將其包含隱含因為`Student`實體參考`Enrollment`實體和`Enrollment`實體參考`Course`實體。
 
 EF 建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬性名稱。 集合的屬性名稱通常是複數形式 （學生而不是學生），但開發人員不同意有關不論是否 pluralized 資料表名稱。 如需這些教學課程您都將指定的 DbContext 單數資料表名稱來覆寫預設行為。 若要這樣做，請加入下列反白顯示的程式碼的最後一個 DbSet 屬性之後。
 
@@ -204,7 +204,7 @@ EF 建立資料庫時，會建立具有相同名稱的資料表`DbSet`屬性名�
 
 ### <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，建立 LocalDB *.mdf*資料庫中的檔案`C:/Users/<user>`目錄。
+連接字串會指定 SQL Server LocalDB 資料庫。 LocalDB 是輕量版 SQL Server Express Database Engine 和適用於應用程式開發，而不是生產環境使用。 視需要啟動 LocalDB，並以使用者模式執行，因此沒有複雜的設定。 根據預設，建立 LocalDB *.mdf*資料庫中的檔案`C:/Users/<user>`目錄。
 
 ## <a name="add-code-to-initialize-the-database-with-test-data"></a>加入程式碼以初始化測試資料的資料庫
 

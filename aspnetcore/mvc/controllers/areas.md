@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/controllers/areas
-ms.openlocfilehash: 666be2da6b38ffb538ae3888ea879a4104c8fd12
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 87bf2eaad1c13d21412051be769992411f685e2e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="areas"></a>區域
 
@@ -99,7 +99,7 @@ services.Configure<RazorViewEngineOptions>(options =>
    });
    ```
 
-請注意一件事是，結構*檢視*資料夾就會被視為重要此處，而其餘資料夾的內容要*控制器*和*模型*沒有**不**重要。 例如，您不需要*控制器*和*模型*所有資料夾。 因為內容*控制器*和*模型*是只是程式碼取得編譯成 dll 的內容為*檢視*不要求，直到已進行檢視。
+請注意一件事是，結構*檢視*資料夾就會被視為重要此處，而其餘資料夾的內容要*控制器*和*模型*沒有**不**重要。 例如，您不需要*控制器*和*模型*所有資料夾。 因為內容的*控制器*和*模型*是只是程式碼取得編譯成 dll 的內容為*檢視*為止的要求已進行檢視。
 
 一旦您定義了資料夾階層，您必須告訴 MVC 每個控制站是與區域相關聯。 您執行此作業，而將控制器名稱與`[Area]`屬性。
 
@@ -153,7 +153,7 @@ services.Configure<RazorViewEngineOptions>(options =>
 
   TagHelper 語法：`<a asp-action="Index">Go to Product's Home Page</a>`
 
-  請注意，我們不需要提供 '區域' 和 '控制器 」 值此處，因為它們已在目前要求的內容中使用。 這些類型的值稱為`ambient`值。
+  請注意，我們不需要提供 '區域' 和 '控制器 」 值此處，因為它們已經就可在目前要求的內容。 這些類型的值稱為`ambient`值。
 
 * 產生連結從某個區域中的動作基礎控制站，以在不同的控制站上的另一個動作
 

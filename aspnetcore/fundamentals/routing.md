@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/routing
-ms.openlocfilehash: ffa3178dc4e3aac3ba51c29b7efa3f71eb56bcfe
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 8f6f4fac89afe14d83d629128fc3e4632ae95510
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="routing-in-aspnet-core"></a>在 ASP.NET Core 路由
 
@@ -100,7 +100,7 @@ routes.MapRoute(
 
 此範本會比對 URL 路徑，如`/Products/Details/17`擷取路由值和`{ controller = Products, action = Details, id = 17 }`。 路由會判斷的值分割的 URL 路徑區段，並比對每個含有區段*路由參數*路由範本的名稱。 路由參數為具名。 它們由以大括號括住參數名稱定義`{ }`。
 
-上述範本也比對的 URL 路徑`/`並產生值`{ controller = Home, action = Index }`。 這是因為`{controller}`和`{action}`路由參數有預設值，而`id`路由參數為選用。 Equals`=`號後面接著值之後路由參數名稱定義參數的預設值。 問號`?`路由參數名稱定義為選擇性參數之後。 路由預設值的參數*一律*路由符合-選擇性參數不會產生路由值，如果沒有任何對應的 URL 路徑區段時，產生的路由值。
+上述範本也比對的 URL 路徑`/`並產生值`{ controller = Home, action = Index }`。 這是因為`{controller}`和`{action}`路由參數有預設值，而`id`路由參數為選用。 Equals`=`號後面接著值之後路由參數名稱定義參數的預設值。 問號`?`路由參數名稱定義為選擇性參數之後。 路由預設值的參數*一律*路由符合-選擇性參數將不會產生路由值，如果沒有任何對應的 URL 路徑區段時，產生的路由值。
 
 請參閱[路由範本參考](#route-template-reference)如的路由範本功能和語法的完整描述。
 
@@ -255,7 +255,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 ## <a name="route-template-reference"></a>路由範本參考
 
-大括號內的語彙基元 (`{ }`) 定義*路由參數*它將繫結如果路由會比對。 您可以定義一個以上的路由參數的路由區段中，但必須以常值。 例如`{controller=Home}{action=Index}`不是有效的路由，因為沒有任何常值之間`{controller}`和`{action}`。 這些路由參數必須有名稱，並可能有其他屬性指定。
+大括號內的語彙基元 (`{ }`) 定義*路由參數*它將繫結如果路由會比對。 您可以定義一個以上的路由參數的路由區段中，但必須以常值。 例如`{controller=Home}{action=Index}`不是有效的路徑，因為沒有任何常值之間`{controller}`和`{action}`。 這些路由參數必須有名稱，並可能有其他屬性指定。
 
 不是路由參數的常值文字 (例如， `{id}`) 及路徑分隔符號`/`必須符合在 URL 中的文字。 文字比對是區分大小寫，根據已解碼的表示法的 Url 路徑。 要比對常值的路由參數分隔符號`{`或`}`，它藉由重複的字元逸出 (`{{`或`}}`)。
 
@@ -317,7 +317,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 | `required`  | `{name:required}` | `Rick` |  用來強制執行非參數值，也會顯示 URL 產生期間 |
 
 >[!WARNING]
-> 請確認 URL 的路由條件約束可以轉換成 CLR 型別 (例如`int`或`DateTime`) 一律使用文化特性而異-它們假設的 URL 是不可當地語系化。 Framework 提供的路由條件約束不會修改中的路由值儲存的值。 所有的路由值剖析從 URL 會儲存為字串。 例如， [Float 路由條件約束](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60)會嘗試將路由值轉換成浮點數，但轉換的值只能用來確認它可以轉換成浮點數。
+> 請確認 URL 的路由條件約束可以轉換成 CLR 型別 (例如`int`或`DateTime`) 一律使用文化特性而異-它們假設的 URL 是不可當地語系化。 提供架構的路由條件約束不要修改中的路由值儲存的值。 所有的路由值剖析從 URL 會儲存為字串。 例如， [Float 路由條件約束](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60)會嘗試將路由值轉換成浮點數，但轉換的值只能用來確認它可以轉換成浮點數。
 
 ## <a name="regular-expressions"></a>規則運算式 
 

@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
 title: "什麼是 Entity Framework 4.0 新功能 |Microsoft 文件"
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 我..."
+description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
 msc.type: authoredcontent
-ms.openlocfilehash: 4c89ca004ad4c9d731868e868cf6723aa4ed625d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c114627388217e892c84d6b76366d0fa96b0b70c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="whats-new-in-the-entity-framework-40"></a>什麼是 Entity Framework 4.0 新功能
 ====================
@@ -90,7 +90,7 @@ Entity Framework 3.5 版包含導覽屬性，但其中不包含資料模型中�
 
 (如果您想要設定的信用額度數目設回其原始值，在*UpdateCredits.aspx.cs*變更`Credits * {0}`至`Credits / {0}`並重新執行 頁面上，輸入 10 做為除數。)
 
-如需有關如何執行您在程式碼中定義的查詢的詳細資訊，請參閱[如何： 直接執行命令對資料來源](https://msdn.microsoft.com/en-us/library/ee358769.aspx)。
+如需有關如何執行您在程式碼中定義的查詢的詳細資訊，請參閱[如何： 直接執行命令對資料來源](https://msdn.microsoft.com/library/ee358769.aspx)。
 
 ## <a name="model-first-development"></a>模型優先開發
 
@@ -178,7 +178,7 @@ A *.sql*使用資料定義語言 (DDL) 命令來建立檔案，但您尚未尚�
 
 (注意： 此頁面包含在可下載專案中，但讓它正常運作，您必須在本機 SQL Server Express 執行個體中建立資料庫，則資料庫不包含*.mdf*檔案*應用程式\_資料*資料夾。)
 
-如需有關如何使用 Entity Framework 模型優先 （contract-first） 功能的詳細資訊，請參閱[Entity Framework 4 中的模型優先](https://msdn.microsoft.com/en-us/data/ff830362.aspx)。
+如需有關如何使用 Entity Framework 模型優先 （contract-first） 功能的詳細資訊，請參閱[Entity Framework 4 中的模型優先](https://msdn.microsoft.com/data/ff830362.aspx)。
 
 ## <a name="poco-support"></a>POCO 支援
 
@@ -188,7 +188,7 @@ Entity Framework 4 導入了使用不會繼承的實體類別的能力`EntityObj
 
 如需使用 POCOs Entity Framework 中的詳細資訊，請參閱下列資源：
 
-- [處理 POCO 實體](https://msdn.microsoft.com/en-us/library/dd456853.aspx)。 這是 POCOs，概觀與其他有更詳細資訊的文件連結的 MSDN 文件。
+- [處理 POCO 實體](https://msdn.microsoft.com/library/dd456853.aspx)。 這是 POCOs，概觀與其他有更詳細資訊的文件連結的 MSDN 文件。
 - [逐步解說： POCO Entity Framework 的範本](https://blogs.msdn.com/b/adonet/archive/2010/01/25/walkthrough-poco-template-for-the-entity-framework.aspx)這是 Entity Framework 的開發小組，關於 POCOs 其他部落格文章的連結的部落格文章。
 
 ## <a name="code-first-development"></a>程式碼優先開發
@@ -209,7 +209,7 @@ POCO Entity Framework 4 中的支援仍需要您建立資料模型，並將實�
 
 完成此動作以新增功能在 Entity Framework 與此繼續 Entity Framework 的教學課程系列的概觀。 如需有關 Entity Framework 4 中未涵蓋的新功能的詳細資訊，請參閱下列資源：
 
-- [What's New in ADO.NET](https://msdn.microsoft.com/en-us/library/ex6y04yf.aspx)的 Entity Framework 版本 4 中的新功能的 MSDN 主題。
+- [What's New in ADO.NET](https://msdn.microsoft.com/library/ex6y04yf.aspx)的 Entity Framework 版本 4 中的新功能的 MSDN 主題。
 - [宣佈適用於 Entity Framework 4 版本](https://blogs.msdn.com/b/efdesign/archive/2010/04/12/announcing-the-release-of-entity-framework-4.aspx)中第 4 版新功能相關的 Entity Framework 開發小組的部落格文章。
 
 >[!div class="step-by-step"]

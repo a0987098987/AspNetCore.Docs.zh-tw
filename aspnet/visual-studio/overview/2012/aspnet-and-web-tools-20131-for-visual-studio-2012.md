@@ -12,15 +12,15 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 1e4ee8eb4901305bf6a8c9c5b949dc4ee10290e5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c11e2ef9c33b0cae1f196690533094ce1c342da5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資訊
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 本文件說明的 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 的版本。
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 - [軟體需求](#requirements)
 - 在 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 中的新功能
 
-    - [啟動程序](#bootstrap)
+    - [Bootstrap](#bootstrap)
     - [範本](#templates)
 
         - [ASP.NET MVC 5 範本](#mvc5template)
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="new-features-in-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>在 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 中的新功能
 
 <a id="bootstrap"></a>
-### <a name="bootstrap"></a>啟動程序
+### <a name="bootstrap"></a>Bootstrap
 
 當 add-migration MVC 5 控制器和檢視時，會使用 檢視標記[Bootstrap](http://getbootstrap.com/)。
 
@@ -190,7 +190,7 @@ NuGet 2.7 包含一組豐富的新功能所說明的詳細討論[NuGet 2.7 版�
 
 ![組態錯誤](aspnet-and-web-tools-20131-for-visual-studio-2012/_static/image2.png)
 
-因為 Visual Studio 2012 時安裝這些版本的 Windows 上不會啟用 ASP.NET 4.5 功能，您會看到此錯誤。 若要啟用 ASP.NET 4.5，執行中所述的步驟[開啟或關閉 Windows 功能](https://windows.microsoft.com/en-us/windows-8/turn-windows-features-on-off)。
+因為 Visual Studio 2012 時安裝這些版本的 Windows 上不會啟用 ASP.NET 4.5 功能，您會看到此錯誤。 若要啟用 ASP.NET 4.5，執行中所述的步驟[開啟或關閉 Windows 功能](https://windows.microsoft.com/windows-8/turn-windows-features-on-off)。
 
 ![開啟或關閉 Windows 功能](aspnet-and-web-tools-20131-for-visual-studio-2012/_static/image3.png)
 

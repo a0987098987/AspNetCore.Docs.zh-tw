@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: 8eddb7af2d9032153b30ab54d5e882f0b46cd4ce
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dca016cb6293a346f5622cc272e510b182c86d58
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>資料分割策略 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -101,8 +101,8 @@ ms.lasthandoff: 11/10/2017
 
 文件集：
 
-- [Windows Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
-- [Microsoft Patterns and Practices-雲端設計模式](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱資料分割的指導方針，分區化模式。
+- [Windows Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 Mark Simms 和 Michael Thomassy 詘躩裛。
+- [Microsoft Patterns and Practices-雲端設計模式](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱資料分割的指導方針，分區化模式。
 
 影片：
 

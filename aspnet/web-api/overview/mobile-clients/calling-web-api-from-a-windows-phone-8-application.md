@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 1637af40613f1384bd4adec707a5b1a8a07c704b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6e5a936decb27fd2e3b8cdcea44db8db822c98eb
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>從 Windows Phone 8 應用程式 (C#) 呼叫 Web API
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 在本教學課程中，您將學習如何建立完整的端對端案例，提供給 Windows Phone 8 應用程式的書籍目錄的 ASP.NET Web API 應用程式所組成。
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的架構，藉以簡化建立以 HTTP 為基礎的應用程式開發人員。 而不是建立專屬通訊端通訊協定，通訊，Web API 的開發人員只需要發行他們的應用程式必要的 HTTP 方法 (例如： GET、 POST、 PUT、 DELETE)，而且用戶端應用程式開發人員只需要使用所需的應用程式的 HTTP 方法。
 
@@ -37,7 +37,7 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
 
 - Visual Studio 2013 安裝的 Windows Phone 8 SDK
 - Windows 8 或更新版本上安裝 HYPER-V 的 64 位元系統
-- 如需其他需求，請參閱*系統需求*區段[Windows Phone SDK 8.0](https://www.microsoft.com/en-us/download/details.aspx?id=35471)下載頁面。
+- 如需其他需求，請參閱*系統需求*區段[Windows Phone SDK 8.0](https://www.microsoft.com/download/details.aspx?id=35471)下載頁面。
 
 > [!NOTE]
 > 如果您要測試 Web 應用程式開發介面和您的本機系統上的 Windows Phone 8 專案之間的連線，您必須依照*[連接到 Web API 的應用程式在本機上的 Windows Phone 8 模擬器電腦](https://go.microsoft.com/fwlink/?LinkId=324014)*文件，以設定測試環境。

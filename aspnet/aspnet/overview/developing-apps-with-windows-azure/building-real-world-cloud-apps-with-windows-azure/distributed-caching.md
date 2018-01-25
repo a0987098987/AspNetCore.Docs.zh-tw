@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: 923a8257376e98e6cae10d905f1cb18f7fdb28e7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 24ede9cb9289c84140f6e2573f9d526f19cac64b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>分散式快取 （建置真實世界雲端應用程式與 Azure）
 ====================
@@ -79,12 +79,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="azure-caching-services"></a>Azure 快取服務
 
-Azure 提供下列快取服務： [Azure Redis 快取](https://msdn.microsoft.com/en-us/library/dn690523.aspx)和[Azure 受管理快取](https://msdn.microsoft.com/en-us/library/dn386094.aspx)。 Azure Redis 快取依據熱門[開放式 Redis 快取](http://redis.io/)和大部分的第一個選擇快取案例。
+Azure 提供下列快取服務： [Azure Redis 快取](https://msdn.microsoft.com/library/dn690523.aspx)和[Azure 受管理快取](https://msdn.microsoft.com/library/dn386094.aspx)。 Azure Redis 快取依據熱門[開放式 Redis 快取](http://redis.io/)和大部分的第一個選擇快取案例。
 
 <a id="sessionstate"></a>
 ## <a name="aspnet-session-state-using-a-cache-provider"></a>使用快取提供者的 ASP.NET 工作階段狀態
 
-中所述[web 開發最佳作法章](web-development-best-practices.md)，最佳作法是避免使用工作階段狀態。 如果您的應用程式需要工作階段狀態下, 一步的最佳作法是避免因為未啟用向外延展 （web 伺服器的多個執行個體） 的預設記憶體中的提供者。 ASP.NET SQL Server 工作階段狀態提供者可讓使用工作階段狀態的多個 web 伺服器執行的站台，但它會產生高延遲成本相較於記憶體中提供者。 如果您必須使用工作階段狀態的最佳解決方案是使用快取提供者，例如[Azure 快取的工作階段狀態提供者](https://msdn.microsoft.com/en-us/library/windowsazure/gg185668.aspx)。
+中所述[web 開發最佳作法章](web-development-best-practices.md)，最佳作法是避免使用工作階段狀態。 如果您的應用程式需要工作階段狀態下, 一步的最佳作法是避免因為未啟用向外延展 （web 伺服器的多個執行個體） 的預設記憶體中的提供者。 ASP.NET SQL Server 工作階段狀態提供者可讓使用工作階段狀態的多個 web 伺服器執行的站台，但它會產生高延遲成本相較於記憶體中提供者。 如果您必須使用工作階段狀態的最佳解決方案是使用快取提供者，例如[Azure 快取的工作階段狀態提供者](https://msdn.microsoft.com/library/windowsazure/gg185668.aspx)。
 
 ## <a name="summary"></a>總結
 
@@ -96,13 +96,13 @@ Azure 提供下列快取服務： [Azure Redis 快取](https://msdn.microsoft.co
 
 文件
 
-- [Azure 快取](https://msdn.microsoft.com/en-us/library/gg278356.aspx)。 在 Azure 中的快取的官方 MSDN 文件。
-- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/en-us/library/dn568099.aspx)。 請參閱快取指引和另行快取模式。
-- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/en-us/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 在快取，請參閱 > 一節。
-- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/en-us/library/windowsazure/jj717232.aspx)。 W Mark Simms 和 Michael Thomassy 詘躩裛。 在分散式快取，請參閱 > 一節。
-- [分散式快取延展性的路徑上](https://msdn.microsoft.com/en-us/magazine/dd942840.aspx)。 較舊的 (2009) MSDN Magazine 文件，但一般而言; 分散式的快取的清楚地寫入的簡介進入深入比保全和最佳作法的技術白皮書的快取區段。
+- [Azure 快取](https://msdn.microsoft.com/library/gg278356.aspx)。 在 Azure 中的快取的官方 MSDN 文件。
+- [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱快取指引和另行快取模式。
+- [Failsafe： 具有恢復功能雲端架構指引](https://msdn.microsoft.com/library/windowsazure/jj853352.aspx)。 Marc Mercuri、 Ulrich Homann 和 Andrew Townhill 詘躩裛。 在快取，請參閱 > 一節。
+- [Azure 雲端服務中大規模服務設計的最佳作法](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx)。 W. Mark Simms 和 Michael Thomassy 詘躩裛。 在分散式快取，請參閱 > 一節。
+- [分散式快取延展性的路徑上](https://msdn.microsoft.com/magazine/dd942840.aspx)。 較舊的 (2009) MSDN Magazine 文件，但一般而言; 分散式的快取的清楚地寫入的簡介進入深入比保全和最佳作法的技術白皮書的快取區段。
 
-影片
+視訊
 
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 九部分 Ulrich Homann、 Marc Mercuri 和 Mark Simms 的系列。 提供如何設計雲端應用程式架構的 400 層級檢視。 這一系列著重在理論上，而原因為何。如需作法的詳細資訊，請參閱 Mark Simms 建置大數列。 請參閱在時段 3 開始 1:24:14 快取的討論。
 - [建置大型： 學到來自 Azure 客戶的第 I 部分](https://channel9.msdn.com/Events/Build/2012/3-029)。Simon Davies 討論分散式快取開始 46:00。 類似於保全數列但進入詳細的使用說明。 簡報指定 2012 年 10 月 31 日，因此它未涵蓋的 2013年中所導入的 Azure App Service 中的 Web 應用程式的快取服務。

@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: c375fe6ea98c621012eb55589c8b174c2a95b697
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 2446f4734e9bb1ab6829001f6e7888c4c14ee1b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="creating-a-complex-data-model---ef-core-with-razor-pages-tutorial-5-of-8"></a>建立複雜的資料模型的 EF 核心 Razor 頁面教學課程 (5 8 個)
 
@@ -49,9 +49,9 @@ ms.lasthandoff: 01/19/2018
 * `mailto:`連結會自動建立`DataType.EmailAddress`。
 * 日期選擇器提供`DataType.Date`大部分的瀏覽器中。
 
-`DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器使用的 (唸成的資料 dash) 屬性。 `DataType`屬性是否提供驗證。
+`DataType`屬性發出 HTML 5 `data-` HTML 5 瀏覽器使用的 (唸成的資料 dash) 屬性。 `DataType`屬性沒有提供驗證。
 
-`DataType.Date` 未指定顯示日期的格式。 根據預設，[日期] 欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://docs.microsoft.com/aspnet/core/fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support)。
+`DataType.Date`未指定的格式顯示日期。 根據預設，[日期] 欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://docs.microsoft.com/aspnet/core/fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support)。
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -284,7 +284,7 @@ public Instructor Instructor { get; set; }
 
 EF 核心在模型具有相關實體的導覽屬性時，不需要 FK 屬性的資料模型。
 
-在需要時會 EF 核心會自動在資料庫中建立 FKs。 建立 EF 核心[遮蔽屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)FKs 自動建立的。 在資料模型中具有 FK 可以進行更新，更簡單且更有效率。 例如，假設模型其中 FK 屬性`DepartmentID`是*不*包含。 當課程實體會擷取編輯：
+只要它們仍必要的 EF 核心會自動在資料庫中建立 FKs。 建立 EF 核心[遮蔽屬性](https://docs.microsoft.com/ef/core/modeling/shadow-properties)FKs 自動建立的。 在資料模型中具有 FK 可以進行更新，更簡單且更有效率。 例如，假設模型其中 FK 屬性`DepartmentID`是*不*包含。 當課程實體會擷取編輯：
 
 * `Department`實體為 null，如果未明確載入。
 * 若要更新，在課程實體`Department`必須先擷取實體。
@@ -431,7 +431,7 @@ public Student Student { get; set; }
 
 `Instructor`和`Course`實體具有使用純聯結資料表的多對多關聯性。
 
-注意： EF 6.x 支援多對多關聯性，但 EF 核心隱含聯結資料表並不會。 如需詳細資訊，請參閱[多對多關聯性在 EF 核心 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/)。
+注意： EF 6.x 支援隱含聯結資料表的多對多關聯性，但 EF 核心不會。 如需詳細資訊，請參閱[多對多關聯性在 EF 核心 2.0](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/)。
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 
@@ -638,7 +638,7 @@ dotnet ef database update
 在生產應用程式會：
 
 * 包含程式碼或指令碼，以新增`Department`的資料列和相關`Course`至新的資料列`Department`資料列。
-* 不會使用"Temp"部門的預設值為`Course.DepartmentID `。
+* 使用"Temp"部門或預設值為`Course.DepartmentID`。
 
 下一個教學課程涵蓋相關的資料。
 

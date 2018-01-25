@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 title: "有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式的效能最大化 |Microsoft 文件"
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 我..."
+description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9e257f5061f6bdf14ad0776ff6385fb526d6dcb1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 40a53a110115e5f6342d2a97d21b64470450fd3c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式而言，發揮最佳效能
 ====================
@@ -251,17 +251,17 @@ Visual Studio 會產生的程式碼檔案會建立檢視表中，名為*SchoolMo
 
 如需有關預先產生檢視的詳細資訊，請參閱下列資源：
 
-- [如何： 預先產生檢視，以改善查詢效能](https://msdn.microsoft.com/en-us/library/bb896240.aspx)MSDN 網站上。 說明如何使用`EdmGen.exe`命令列工具來預先產生檢視。
+- [如何： 預先產生檢視，以改善查詢效能](https://msdn.microsoft.com/library/bb896240.aspx)MSDN 網站上。 說明如何使用`EdmGen.exe`命令列工具來預先產生檢視。
 - [隔離效能與先行編譯/前 generated 檢視 Entity Framework 4 中](https://blogs.msdn.com/b/appfabriccat/archive/2010/08/06/isolating-performance-with-precompiled-pre-generated-views-in-the-entity-framework-4.aspx)Windows Server AppFabric 客戶諮詢團隊部落格上。
 
 如此即完成簡介改善使用 Entity Framework 的 ASP.NET web 應用程式中的效能。 如需詳細資訊，請參閱下列資源：
 
-- [效能考量 (Entity Framework)](https://msdn.microsoft.com/en-us/library/cc853327.aspx) MSDN 網站上。
+- [效能考量 (Entity Framework)](https://msdn.microsoft.com/library/cc853327.aspx) MSDN 網站上。
 - [Entity Framework 小組部落格上的效能相關文章](https://blogs.msdn.com/b/adonet/archive/tags/performance/)。
 - [EF 的合併選項和已編譯的查詢](https://blogs.msdn.com/b/dsimmons/archive/2010/01/12/ef-merge-options-and-compiled-queries.aspx)。 說明非預期的行為，已編譯的查詢和合併的部落格文章之類的選項`NoTracking`。 如果您打算使用已編譯的查詢，或管理應用程式中的合併選項設定，讀取此第一次。
 - [Entity Framework 相關張貼資料和模型化客戶諮詢小組部落格中](https://blogs.msdn.com/b/dmcat/archive/tags/entity+framework/)。 包含已編譯的查詢和使用 Visual Studio 2010 分析工具找出效能問題的文章。
-- [具有提升高複雜的查詢效能的建議的實體架構論壇執行緒](https://social.msdn.microsoft.com/Forums/en-US/adodotnetentityframework/thread/ffe8b2ab-c5b5-4331-8988-33a872d0b5f6)。
-- [ASP.NET 狀態管理建議](https://msdn.microsoft.com/en-us/library/z1hkazw7.aspx)。
+- [具有提升高複雜的查詢效能的建議的實體架構論壇執行緒](https://social.msdn.microsoft.com/Forums/adodotnetentityframework/thread/ffe8b2ab-c5b5-4331-8988-33a872d0b5f6)。
+- [ASP.NET 狀態管理建議](https://msdn.microsoft.com/library/z1hkazw7.aspx)。
 - [使用 Entity Framework 和 ObjectDataSource： 自訂分頁](http://geekswithblogs.net/Frez/articles/using-the-entity-framework-and-the-objectdatasource-custom-paging.aspx)。 建置 ContosoUniversity 建立的應用程式在這些教學課程說明如何實作中的分頁的部落格文章*Departments.aspx*頁面。
 
 下一個教學課程會檢閱一些至 Entity Framework 版本 4 中新的重要增強功能。

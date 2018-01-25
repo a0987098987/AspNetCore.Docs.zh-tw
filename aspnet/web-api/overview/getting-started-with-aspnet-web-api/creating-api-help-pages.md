@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 18d04492529e96b6c0e14f1d7a30378b4832f4c8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 37fd26ebaea192cb540c443eff8a07343ab8c15b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>建立 ASP.NET Web API 說明頁面
 ====================
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-api-documentation"></a>加入應用程式開發介面文件
 
-根據預設，說明 頁面會提供文件集的預留位置字串。 您可以使用[XML 文件註解](https://msdn.microsoft.com/en-us/library/b2s063f7.aspx)建立文件。 若要啟用此功能，開啟檔案的 應用程式的區域/HelpPage\_Start/HelpPageConfig.cs 並取消註解下列一行：
+根據預設，說明 頁面會提供文件集的預留位置字串。 您可以使用[XML 文件註解](https://msdn.microsoft.com/library/b2s063f7.aspx)建立文件。 若要啟用此功能，開啟檔案的 應用程式的區域/HelpPage\_Start/HelpPageConfig.cs 並取消註解下列一行：
 
 [!code-csharp[Main](creating-api-help-pages/samples/sample3.cs)]
 

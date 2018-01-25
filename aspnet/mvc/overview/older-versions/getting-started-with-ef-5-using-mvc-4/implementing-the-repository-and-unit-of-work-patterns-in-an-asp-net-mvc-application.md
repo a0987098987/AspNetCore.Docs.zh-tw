@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c920dc8defe18b6f27d122c2cd1a6c6ffdaad608
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 02b1de31b9513247facc92bc6b72247865d176f9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>ASP.NET MVC 應用程式 (9 / 10) 中實作的儲存機制和單位的工作模式
 ====================
@@ -45,15 +45,15 @@ ms.lasthandoff: 11/10/2017
 
 ![Repository_pattern_diagram](https://asp.net/media/2578149/Windows-Live-Writer_8c4963ba1fa3_CE3B_Repository_pattern_diagram_1df790d3-bdf2-4c11-9098-946ddd9cd884.png)
 
-您將不會在此教學課程中建立單元測試。 如簡介 TDD 的 MVC 應用程式會使用儲存機制模式，請參閱[逐步解說： 使用 ASP.NET MVC 中 TDD](https://msdn.microsoft.com/en-us/library/ff847525.aspx)。 如需儲存機制模式的詳細資訊，請參閱下列資源：
+您將不會在此教學課程中建立單元測試。 如簡介 TDD 的 MVC 應用程式會使用儲存機制模式，請參閱[逐步解說： 使用 ASP.NET MVC 中 TDD](https://msdn.microsoft.com/library/ff847525.aspx)。 如需儲存機制模式的詳細資訊，請參閱下列資源：
 
-- [儲存機制模式](https://msdn.microsoft.com/en-us/library/ff649690.aspx)MSDN 上。
+- [儲存機制模式](https://msdn.microsoft.com/library/ff649690.aspx)MSDN 上。
 - [使用儲存機制和工作單位的模式與 Entity Framework 4.0](https://blogs.msdn.com/b/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx) Entity Framework 小組部落格上。
 - [敏捷式軟體開發 Entity Framework 4 儲存機制](http://thedatafarm.com/blog/data-access/agile-entity-framework-4-repository-part-1-model-and-poco-classes/)Julie Lerman 部落格文章系列。
 - [建置瀏覽 HTML5/jQuery 應用程式的帳戶](https://weblogs.asp.net/dwahlin/archive/2011/08/15/building-the-account-at-a-glance-html5-jquery-application.aspx)Dan Wahlin 部落格上。
 
 > [!NOTE]
-> 有許多方式來實作的儲存機制和工作模式的單位。 不論工作類別的一個單位，您可以使用儲存機制類別。 您可以實作所有的實體類型，或另一個用於每種類型的單一儲存機制。 如果您實作每個類型的其中一個，您可以使用個別的類別、 泛型基底類別和衍生的類別，或抽象的基底類別和衍生的類別。 您可以將商務邏輯併入您的儲存機制，或將其限制資料存取邏輯。 您也可以建置成您的資料庫內容類別的抽象層，使用[IDbSet](https://msdn.microsoft.com/en-us/library/gg679233(v=vs.103).aspx)那里介面，而不是[DbSet](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset(v=vs.103).aspx)實體集的類型。 實作抽象層，在此教學課程中所示的方法是其中一個選項，您應考慮所有的案例和環境的建議。
+> 有許多方式來實作的儲存機制和工作模式的單位。 不論工作類別的一個單位，您可以使用儲存機制類別。 您可以實作所有的實體類型，或另一個用於每種類型的單一儲存機制。 如果您實作每個類型的其中一個，您可以使用個別的類別、 泛型基底類別和衍生的類別，或抽象的基底類別和衍生的類別。 您可以將商務邏輯併入您的儲存機制，或將其限制資料存取邏輯。 您也可以建置成您的資料庫內容類別的抽象層，使用[IDbSet](https://msdn.microsoft.com/library/gg679233(v=vs.103).aspx)那里介面，而不是[DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.103).aspx)實體集的類型。 實作抽象層，在此教學課程中所示的方法是其中一個選項，您應考慮所有的案例和環境的建議。
 
 
 ## <a name="creating-the-student-repository-class"></a>建立學生儲存機制類別
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/10/2017
 
 您可以具現化新的內容在儲存機制，但然後如果您使用一個控制器中的多個儲存機制時，每個最後會出現在個別的內容。 稍後您將使用中的多個儲存機制`Course`控制站，而且您會看到一個單位的工作類別如何確保所有儲存機制使用相同的內容。
 
-儲存機制實作[IDisposable](https://msdn.microsoft.com/en-us/library/system.idisposable.aspx)並處置的資料庫內容，因為您將看到稍控制器，而其 CRUD 方法進行呼叫的資料庫內容中稍早所見的相同方式。
+儲存機制實作[IDisposable](https://msdn.microsoft.com/library/system.idisposable.aspx)並處置的資料庫內容，因為您將看到稍控制器，而其 CRUD 方法進行呼叫的資料庫內容中稍早所見的相同方式。
 
 ## <a name="change-the-student-controller-to-use-the-repository"></a>變更為使用儲存機制的學生控制器
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="summary"></a>總結
 
-您現在已實作儲存機制和工作模式的單位。 您使用 lambda 運算式做為泛型之儲存機制中的方法參數。 如需有關如何使用這些運算式與`IQueryable`物件，請參閱[IQueryable(T) 介面 (System.Linq)](https://msdn.microsoft.com/en-us/library/bb351562.aspx) MSDN Library 中。 在下一個教學課程，您將了解如何處理某些進階案例。
+您現在已實作儲存機制和工作模式的單位。 您使用 lambda 運算式做為泛型之儲存機制中的方法參數。 如需有關如何使用這些運算式與`IQueryable`物件，請參閱[IQueryable(T) 介面 (System.Linq)](https://msdn.microsoft.com/library/bb351562.aspx) MSDN Library 中。 在下一個教學課程，您將了解如何處理某些進階案例。
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 

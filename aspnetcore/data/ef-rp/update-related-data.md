@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 817bfd48dce94e7dbad96cb6f822494e3adfae1d
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 236589d0202a7f30f1e1a9d69902000fd9a2dd71
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>更新相關的資料-EF 核心 Razor 頁面 (8 個 7)
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/19/2018
 * 變更從標題**DepartmentID**至**部門**。
 * 取代`"ViewBag.DepartmentID"`與`DepartmentNameSL`（來自基底類別中）。
 * 新增 「 選取部門 」 選項。 這項變更會呈現 「 選取部門 」，而不是第一個部門。
-* 未選取部門時，請新增驗證訊息。
+* 部門尚未被選取時，請新增驗證訊息。
 
 使用 Razor 頁面[選取標記協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper):
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 01/19/2018
 * 變更從標題**DepartmentID**至**部門**。
 * 取代`"ViewBag.DepartmentID"`與`DepartmentNameSL`（來自基底類別中）。
 * 新增 「 選取部門 」 選項。 這項變更會呈現 「 選取部門 」，而不是第一個部門。
-* 未選取部門時，請新增驗證訊息。
+* 部門尚未被選取時，請新增驗證訊息。
 
 此頁面包含隱藏的欄位 (`<input type="hidden">`) 課程編號。 加入`<label>`標記協助程式與`asp-for="Course.CourseID"`不免除為隱藏欄位。 `<input type="hidden">`所要包含在張貼的資料，當使用者按一下的課程編號的**儲存**。
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>AsNoTracking 加入詳細資料，並刪除頁面模型
 
-[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__)不需要追蹤時，可以改善效能。 新增`AsNoTracking`刪除和詳細資料頁面模型。 下列程式碼會顯示更新的 Delete 頁面模型：
+[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__)時不需要追蹤可以改進效能。 新增`AsNoTracking`刪除和詳細資料頁面模型。 下列程式碼會顯示更新的 Delete 頁面模型：
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 01/19/2018
 核取方塊會啟用的課程講師指派給變更。 核取方塊會顯示資料庫中的每個課程。 會檢查講師指派給的課程。 使用者可以選取或清除核取方塊，以變更課程作業。 如果更大的課程數目：
 
 * 您可能會使用不同的使用者介面顯示課程。
-* 操作來建立或刪除關聯性聯結實體的方法就不會變更。
+* 操作來建立或刪除關聯性聯結實體的方法不會變更。
 
 ### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>新增類別，來支援建立和編輯講師頁面
 

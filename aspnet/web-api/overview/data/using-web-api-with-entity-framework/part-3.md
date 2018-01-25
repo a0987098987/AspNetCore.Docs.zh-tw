@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-3
 msc.type: authoredcontent
-ms.openlocfilehash: df75a69644033cc76fee86b5a9692ab65beb4d01
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1ca627397f0f100d13388f9afc27ff481886e098
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>使用 Code First 移轉來植入資料庫
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 
 [下載完成的專案](https://github.com/MikeWasson/BookService)
 
-在本節中，您將使用[Code First 移轉](https://msdn.microsoft.com/en-us/data/jj591621)EF 來植入的測試資料的資料庫中。
+在本節中，您將使用[Code First 移轉](https://msdn.microsoft.com/data/jj591621)EF 來植入的測試資料的資料庫中。
 
 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在 [封裝管理員主控台] 視窗中，輸入下列命令：
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-console[Main](part-3/samples/sample4.cmd)]
 
-第一個命令會產生程式碼會建立資料庫，並且第二個命令執行該程式碼。 資料庫使用本機上，建立[LocalDB](https://msdn.microsoft.com/en-us/library/hh510202.aspx)。
+第一個命令會產生程式碼會建立資料庫，並且第二個命令執行該程式碼。 資料庫使用本機上，建立[LocalDB](https://msdn.microsoft.com/library/hh510202.aspx)。
 
 ![](part-3/_static/image2.png)
 
@@ -70,7 +70,7 @@ Visual Studio 執行時 web 專案，它會指派通訊埠編號。 在下面的
 | 取得應用程式開發介面/作者 / {id} | 取得作者的 id。 |
 | POST/api/作者 | 建立新的作者。 |
 | PUT /api/作者 / {id} | 更新現有作者。 |
-| 刪除 /api/作者 / {id} | 刪除作者。 |
+| DELETE /api/authors/{id} | 刪除作者。 |
 
 | 書籍 |  |
 | --- | -- |

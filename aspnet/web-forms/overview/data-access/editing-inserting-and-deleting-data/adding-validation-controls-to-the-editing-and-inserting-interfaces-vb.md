@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a181be8d07ff15c33818077dc75b5cc6c6bbf65d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 53414aa17514d07083fe05b8c2abcba10a01cf98
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-vb"></a>加入驗證控制項的編輯，並插入介面 (VB)
 ====================
@@ -103,11 +103,11 @@ BoundField 轉換為 TemplateField 透過 [欄位] 對話方塊會產生表現�
 
 建構資料輸入表單時, 很重要，使用者輸入任何必要的欄位和所有提供的輸入是合法、 格式正確的值。 為了協助確保使用者的輸入都有效，ASP.NET 提供專為用來驗證輸入控制項的單一值的五個內建的驗證控制項：
 
-- [RequiredFieldValidator](https://msdn.microsoft.com/en-us/library/5hbw267h(VS.80).aspx)可確保已提供的值
-- [CompareValidator](https://msdn.microsoft.com/en-us/library/db330ayw(VS.80).aspx)驗證值與另一個 Web 控制項值或常數的值，或確保值的格式是合法的指定的資料型別
-- [RangeValidator](https://msdn.microsoft.com/en-us/library/f70d09xt.aspx)確保值的值範圍內
-- [RegularExpressionValidator](https://msdn.microsoft.com/en-US/library/eahwtc9e.aspx)驗證值，以針對[規則運算式](http://en.wikipedia.org/wiki/Regular_expression)
-- [一起](https://msdn.microsoft.com/en-us/library/9eee01cx(VS.80).aspx)驗證值，以符合自訂的使用者定義的方法
+- [RequiredFieldValidator](https://msdn.microsoft.com/library/5hbw267h(VS.80).aspx)可確保已提供的值
+- [CompareValidator](https://msdn.microsoft.com/library/db330ayw(VS.80).aspx)驗證值與另一個 Web 控制項值或常數的值，或確保值的格式是合法的指定的資料型別
+- [RangeValidator](https://msdn.microsoft.com/library/f70d09xt.aspx)確保值的值範圍內
+- [RegularExpressionValidator](https://msdn.microsoft.com/library/eahwtc9e.aspx)驗證值，以針對[規則運算式](http://en.wikipedia.org/wiki/Regular_expression)
+- [一起](https://msdn.microsoft.com/library/9eee01cx(VS.80).aspx)驗證值，以符合自訂的使用者定義的方法
 
 如需有關這些五個控制項的詳細資訊，請參閱[驗證控制項 」 一節](https://quickstarts.asp.net/quickstartv20/aspnet/doc/ctrlref/validation/default.aspx)的[ASP.NET 快速入門教學課程](https://asp.net/QuickStart/aspnet/)。
 
@@ -133,7 +133,7 @@ BoundField 轉換為 TemplateField 透過 [欄位] 對話方塊會產生表現�
 **圖 5**： 新增至 RequiredFieldValidator `ProductName` `EditItemTemplate` ([按一下以檢視完整大小的影像](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image15.png))
 
 
-所有驗證控制項的都運作方式驗證單一 ASP.NET Web 控制項的輸入。 因此，我們需要表示我們剛才加入的 RequiredFieldValidator 應該驗證在文字方塊中`EditItemTemplate`; 這會透過設定驗證控制項的[ControlToValidate 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx)至`ID`適當的 Web 控制項。 文字方塊中目前有而描述性`ID`的`TextBox1`，但我們將它變更為更適當的項目。 在範本中的文字方塊中按一下，然後，從 [屬性] 視窗中，變更`ID`從`TextBox1`至`EditProductName`。
+所有驗證控制項的都運作方式驗證單一 ASP.NET Web 控制項的輸入。 因此，我們需要表示我們剛才加入的 RequiredFieldValidator 應該驗證在文字方塊中`EditItemTemplate`; 這會透過設定驗證控制項的[ControlToValidate 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.controltovalidate(VS.80).aspx)至`ID`適當的 Web 控制項。 文字方塊中目前有而描述性`ID`的`TextBox1`，但我們將它變更為更適當的項目。 在範本中的文字方塊中按一下，然後，從 [屬性] 視窗中，變更`ID`從`TextBox1`至`EditProductName`。
 
 
 [![將文字方塊的識別碼變更為 EditProductName](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image17.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image16.png)
@@ -141,7 +141,7 @@ BoundField 轉換為 TemplateField 透過 [欄位] 對話方塊會產生表現�
 **圖 6**： 變更文字方塊的`ID`至`EditProductName`([按一下以檢視完整大小的影像](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image18.png))
 
 
-接下來，設定 RequiredFieldValidator`ControlToValidate`屬性`EditProductName`。 最後，設定[ErrorMessage 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx)至 「 您必須提供的產品名稱 」 和[Text 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx)至 「\*"。 `Text`屬性值，如果提供，是在驗證失敗時，會將驗證控制項所顯示的文字。 `ErrorMessage`屬性值，這是必要的由 ValidationSummary 控制項; 如果`Text`省略屬性值，則`ErrorMessage`屬性值也是無效的輸入上的驗證控制項所顯示的文字。
+接下來，設定 RequiredFieldValidator`ControlToValidate`屬性`EditProductName`。 最後，設定[ErrorMessage 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.errormessage(VS.80).aspx)至 「 您必須提供的產品名稱 」 和[Text 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basevalidator.text(VS.80).aspx)至 「\*"。 `Text`屬性值，如果提供，是在驗證失敗時，會將驗證控制項所顯示的文字。 `ErrorMessage`屬性值，這是必要的由 ValidationSummary 控制項; 如果`Text`省略屬性值，則`ErrorMessage`屬性值也是無效的輸入上的驗證控制項所顯示的文字。
 
 在設定後的 RequiredFieldValidator 這三個屬性，您的畫面看起來應該類似圖 7。
 
@@ -155,7 +155,7 @@ BoundField 轉換為 TemplateField 透過 [欄位] 對話方塊會產生表現�
 
 我們新增至 CompareValidator 之前`UnitPrice` `EditItemTemplate`，讓我們先將變更從文字方塊中的 Web 控制項的 ID`TextBox2`至`EditUnitPrice`。 新增 CompareValidator，設定變更之後，其`ControlToValidate`屬性`EditUnitPrice`、 其`ErrorMessage`屬性設為 「 價格必須大於或等於零並不能包含貨幣符號 」，並將其`Text`屬性"\*".
 
-表示`UnitPrice`值必須是大於或等於 0，且設定 CompareValidator[運算子屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx)至`GreaterThanEqual`、 其[ValueToCompare 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx)為"0"，而且其[型別屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx)至`Currency`。 下列宣告式語法示範`UnitPrice`TemplateField 的`EditItemTemplate`進行這些變更之後：
+表示`UnitPrice`值必須是大於或等於 0，且設定 CompareValidator[運算子屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.operator(VS.80).aspx)至`GreaterThanEqual`、 其[ValueToCompare 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.comparevalidator.valuetocompare(VS.80).aspx)為"0"，而且其[型別屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basecomparevalidator.type.aspx)至`Currency`。 下列宣告式語法示範`UnitPrice`TemplateField 的`EditItemTemplate`進行這些變更之後：
 
 [!code-aspx[Main](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/samples/sample3.aspx)]
 
@@ -197,9 +197,9 @@ BoundField 轉換為 TemplateField 透過 [欄位] 對話方塊會產生表現�
 
 ## <a name="step-4-summarizing-data-entry-problems"></a>步驟 4： 摘要資料輸入問題
 
-除了五個驗證控制項，包含 ASP.NET [ValidationSummary 控制項](https://msdn.microsoft.com/en-US/library/f9h59855(VS.80).aspx)，用來顯示`ErrorMessage`之偵測到無效的資料，這些驗證控制項。 此摘要的資料可以顯示為網頁上或透過強制回應，用戶端的訊息方塊的文字。 讓我們來提升這個教學課程，包括用戶端 messagebox 摘要的任何驗證問題。
+除了五個驗證控制項，包含 ASP.NET [ValidationSummary 控制項](https://msdn.microsoft.com/library/f9h59855(VS.80).aspx)，用來顯示`ErrorMessage`之偵測到無效的資料，這些驗證控制項。 此摘要的資料可以顯示為網頁上或透過強制回應，用戶端的訊息方塊的文字。 讓我們來提升這個教學課程，包括用戶端 messagebox 摘要的任何驗證問題。
 
-若要達成此目的，拖曳到 ValidationSummary 控制項從 [工具箱] 拖曳至設計工具。 驗證控制項的位置不會真的很重要，因為我們會將它設定為只顯示摘要為 messagebox。 加入控制項之後, 設定其[ShowSummary 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx)至`False`及其[ShowMessageBox 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx)至`True`。 此新增功能，使用任何驗證錯誤摘要說明在用戶端 messagebox 中。
+若要達成此目的，拖曳到 ValidationSummary 控制項從 [工具箱] 拖曳至設計工具。 驗證控制項的位置不會真的很重要，因為我們會將它設定為只顯示摘要為 messagebox。 加入控制項之後, 設定其[ShowSummary 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showsummary(VS.80).aspx)至`False`及其[ShowMessageBox 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.validationsummary.showmessagebox(VS.80).aspx)至`True`。 此新增功能，使用任何驗證錯誤摘要說明在用戶端 messagebox 中。
 
 
 [![驗證錯誤摘要說明在用戶端訊息方塊](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image32.png)](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb/_static/image31.png)

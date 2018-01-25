@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: b8393e1503cb562a46a00f49b51c0cb64ff2cfdc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 278d04aec68e93f3ebfd12d06a96b59f3bcbef4b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>使用 ASP.NET MVC 的 DropDownList Helper
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-本教學課程將告訴您使用的基本[DropDownList](https://msdn.microsoft.com/en-us/library/dd492948.aspx) helper 和[ListBox](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.selectextensions.listbox.aspx) ASP.NET MVC Web 應用程式中的協助程式。 您可以使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，這是要遵循本教學課程的 Microsoft Visual Studio 的免費版本。 開始之前，請確定您已安裝下面所列的必要條件。 您可以安裝全部都按下列連結： [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝的必要條件，使用下列連結：
+本教學課程將告訴您使用的基本[DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) helper 和[ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) ASP.NET MVC Web 應用程式中的協助程式。 您可以使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，這是要遵循本教學課程的 Microsoft Visual Studio 的免費版本。 開始之前，請確定您已安裝下面所列的必要條件。 您可以安裝全部都按下列連結： [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝的必要條件，使用下列連結：
 
 - [Visual Studio Web Developer Express SP1 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)<a id="post"></a>
 - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="what-youll-build"></a>您將建置
 
-動作方法和使用的檢視，您將建立[DropDownList](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.selectextensions.dropdownlist.aspx)選取類別目錄的協助程式。 您也會使用**jQuery**新增插入類別目錄的對話方塊，可以在需要新的類別 （例如內容類型或演出者） 時使用。 以下是 顯示連結來加入新的內容類型以及加入新的演出者建立檢視的螢幕擷取畫面。
+動作方法和使用的檢視，您將建立[DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx)選取類別目錄的協助程式。 您也會使用**jQuery**新增插入類別目錄的對話方塊，可以在需要新的類別 （例如內容類型或演出者） 時使用。 以下是 顯示連結來加入新的內容類型以及加入新的演出者建立檢視的螢幕擷取畫面。
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image1.png)
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/10/2017
 
 以下是您將學習：
 
-- 如何使用[DropDownList](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.selectextensions.dropdownlist.aspx)選取類別目錄資料的協助程式。
+- 如何使用[DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx)選取類別目錄資料的協助程式。
 - 如何新增**jQuery**對話方塊，將新的類別。
 
 ### <a name="getting-started"></a>快速入門
@@ -75,9 +75,9 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample2.cs)]
 
-[DropDownList](https://msdn.microsoft.com/en-us/library/dd492738.aspx)協助程式用來建立 HTML 選取清單需要**IEnumerable&lt;SelectListItem &gt;** ，明確或隱含。 也就是說，您可以傳遞**IEnumerable&lt;SelectListItem &gt;** 明確地[DropDownList](https://msdn.microsoft.com/en-us/library/dd492738.aspx)協助程式也可以將**IEnumerable&lt;SelectListItem &gt;** 至[ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx)使用相同的名稱**SelectListItem**為模型屬性。 傳入**SelectListItem**隱含和明確涵蓋在本教學課程的下一個部分。 上述程式碼會示範最簡單的可能方式建立**IEnumerable&lt;SelectListItem &gt;** 並填入文字和值。 請注意`Comedy` [SelectListItem](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.aspx)具有[選取](https://msdn.microsoft.com/en-us/library/system.web.mvc.selectlistitem.selected.aspx)屬性設定為**true;**這會造成呈現選取清單中，顯示**喜劇**為清單中選取的項目。
+[DropDownList](https://msdn.microsoft.com/library/dd492738.aspx)協助程式用來建立 HTML 選取清單需要**IEnumerable&lt;SelectListItem &gt;** ，明確或隱含。 也就是說，您可以傳遞**IEnumerable&lt;SelectListItem &gt;** 明確地[DropDownList](https://msdn.microsoft.com/library/dd492738.aspx)協助程式也可以將**IEnumerable&lt;SelectListItem &gt;** 至[ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx)使用相同的名稱**SelectListItem**為模型屬性。 傳入**SelectListItem**隱含和明確涵蓋在本教學課程的下一個部分。 上述程式碼會示範最簡單的可能方式建立**IEnumerable&lt;SelectListItem &gt;** 並填入文字和值。 請注意`Comedy` [SelectListItem](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.aspx)具有[選取](https://msdn.microsoft.com/library/system.web.mvc.selectlistitem.selected.aspx)屬性設定為**true;**這會造成呈現選取清單中，顯示**喜劇**為清單中選取的項目。
 
-**IEnumerable&lt;SelectListItem &gt;** 建立上方加入至[ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) MovieType 同名。 這是我們的傳遞方式**IEnumerable&lt;SelectListItem &gt;** 隱含為[DropDownList](https://msdn.microsoft.com/en-us/library/dd492738.aspx) helper 如下所示。
+**IEnumerable&lt;SelectListItem &gt;** 建立上方加入至[ViewBag](https://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx) MovieType 同名。 這是我們的傳遞方式**IEnumerable&lt;SelectListItem &gt;** 隱含為[DropDownList](https://msdn.microsoft.com/library/dd492738.aspx) helper 如下所示。
 
 開啟*Views\Home\SelectCategory.cshtml*檔案，並檢查標記。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 第三行中，我們設定配置為 Views/Shared/\_簡單\_Layout.cshtml，這是標準配置檔的簡化的版本。 我們這麼做可以讓顯示，並呈現 HTML 的簡單。
 
-在此範例中我們並不會變更應用程式狀態，因此我們將使用資料來提交**HTTP GET**，而非**HTTP POST**。 請參閱 W3C 節[快速檢查清單選擇 HTTP GET 或 POST](http://www.w3.org/2001/tag/doc/whenToUseGet.html#checklist)。 我們不會變更應用程式，並張貼的表單，因為我們使用[Html.BeginForm](https://msdn.microsoft.com/en-us/library/dd460344.aspx)可讓我們指定動作方法、 控制器和表單方法的多載 (**HTTP POST**或**HTTP GET**)。 檢視通常包含[Html.BeginForm](https://msdn.microsoft.com/en-us/library/dd505244.aspx)不採用任何參數的多載。 沒有參數版本預設為張貼文章版本相同的動作方法和控制器的表單資料。
+在此範例中我們並不會變更應用程式狀態，因此我們將使用資料來提交**HTTP GET**，而非**HTTP POST**。 請參閱 W3C 節[快速檢查清單選擇 HTTP GET 或 POST](http://www.w3.org/2001/tag/doc/whenToUseGet.html#checklist)。 我們不會變更應用程式，並張貼的表單，因為我們使用[Html.BeginForm](https://msdn.microsoft.com/library/dd460344.aspx)可讓我們指定動作方法、 控制器和表單方法的多載 (**HTTP POST**或**HTTP GET**)。 檢視通常包含[Html.BeginForm](https://msdn.microsoft.com/library/dd505244.aspx)不採用任何參數的多載。 沒有參數版本預設為張貼文章版本相同的動作方法和控制器的表單資料。
 
 下面這行
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample6.cs)]
 
-[列舉](https://msdn.microsoft.com/en-us/library/sbbt4032(VS.80).aspx)`eMovieCategories`擷取四個影片型別。 `SetViewBagMovieType`方法會建立**IEnumerable&lt;SelectListItem &gt;** 從`eMovieCategories`**列舉**，並設定`Selected`從屬性`selectedMovie`參數。 `SelectCategoryEnum`動作方法會使用相同的檢視為`SelectCategory`動作方法。
+[列舉](https://msdn.microsoft.com/library/sbbt4032(VS.80).aspx)`eMovieCategories`擷取四個影片型別。 `SetViewBagMovieType`方法會建立**IEnumerable&lt;SelectListItem &gt;** 從`eMovieCategories`**列舉**，並設定`Selected`從屬性`selectedMovie`參數。 `SelectCategoryEnum`動作方法會使用相同的檢視為`SelectCategory`動作方法。
 
 瀏覽至 [測試] 頁面，按一下`Select Movie Category (Enum)`連結。 這次，而不是所顯示的值 （數字），表示列舉的字串會顯示。
 
@@ -128,7 +128,7 @@ HTML 表單通常用來將資料公佈至伺服器。 下列程式碼會示範`H
 
 ### <a name="creating-a-multiple-section-select-element"></a>建立多個區段選取項目
 
-[ListBox](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.selectextensions.listbox.aspx)將 HTML 呈現的 HTML helper`<select>`具有項目`multiple`屬性，可讓使用者進行多重選取。 瀏覽至 測試連結，然後選取**多重選取國家/地區**連結。 呈現的 UI 可讓您選取多個國家 （地區）。 在下列影像中，會選取加拿大和中國。
+[ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx)將 HTML 呈現的 HTML helper`<select>`具有項目`multiple`屬性，可讓使用者進行多重選取。 瀏覽至 測試連結，然後選取**多重選取國家/地區**連結。 呈現的 UI 可讓您選取多個國家 （地區）。 在下列影像中，會選取加拿大和中國。
 
 ![](using-the-dropdownlist-helper-with-aspnet-mvc/_static/image8.png)
 
@@ -142,7 +142,7 @@ HTML 表單通常用來將資料公佈至伺服器。 下列程式碼會示範`H
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample9.cs)]
 
-1. *項目*: [IEnumerable](https://msdn.microsoft.com/en-us/library/system.collections.ienumerable.aspx)包含在清單中的項目。 在國家/地區清單上方範例。
+1. *項目*: [IEnumerable](https://msdn.microsoft.com/library/system.collections.ienumerable.aspx)包含在清單中的項目。 在國家/地區清單上方範例。
 2. *dataValueField*： 中屬性的名稱**IEnumerable**包含值的清單。 在上述範例`ID`屬性。
 3. *dataTextField*： 中屬性的名稱**IEnumerable**清單，其中包含要顯示的資訊。 在上述範例`name`屬性。
 4. *selectedValues*： 所選取之值的清單。
@@ -151,7 +151,7 @@ HTML 表單通常用來將資料公佈至伺服器。 下列程式碼會示範`H
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample10.cshtml)]
 
-HTML helper [ListBox](https://msdn.microsoft.com/en-us/library/dd470200.aspx)方法採取上面兩個參數，為模型繫結屬性的名稱使用和[MultiSelectList](https://msdn.microsoft.com/en-us/library/system.web.mvc.multiselectlist.aspx)包含選取的選項和值。 `ViewBag.YouSelected`上述程式碼用來顯示您在提交表單時選取的國家/地區的值。 檢查的 HTTP POST 多載`MultiSelectCountry`方法。
+HTML helper [ListBox](https://msdn.microsoft.com/library/dd470200.aspx)方法採取上面兩個參數，為模型繫結屬性的名稱使用和[MultiSelectList](https://msdn.microsoft.com/library/system.web.mvc.multiselectlist.aspx)包含選取的選項和值。 `ViewBag.YouSelected`上述程式碼用來顯示您在提交表單時選取的國家/地區的值。 檢查的 HTTP POST 多載`MultiSelectCountry`方法。
 
 [!code-csharp[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample11.cs)]
 
@@ -193,7 +193,7 @@ HTML helper [ListBox](https://msdn.microsoft.com/en-us/library/dd470200.aspx)方
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-上述程式碼，我們要加入的 HTML 屬性和屬性值`class = "chzn-select"`。 @ 字元前面類別沒有使用 Razor 檢視引擎。 `class`是[C# 關鍵字](https://msdn.microsoft.com/en-us/library/x53a06bb.aspx)。 C# 關鍵字不能作為識別項，除非它們包含做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
+上述程式碼，我們要加入的 HTML 屬性和屬性值`class = "chzn-select"`。 @ 字元前面類別沒有使用 Razor 檢視引擎。 `class`是[C# 關鍵字](https://msdn.microsoft.com/library/x53a06bb.aspx)。 C# 關鍵字不能作為識別項，除非它們包含做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
 
 將參考加入至*Chosen/chosen.jquery.js*和*Chosen/chosen.css*檔案。 *Chosen/chosen.jquery.js*並實作功能的所選外掛程式。 *Chosen/chosen.css*檔案提供可用樣式。 這些將參考加入至底部*Views\Home\MultiSelectCountry.cshtml*檔案。 下列程式碼會示範如何參考所選外掛程式。
 

@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/views/tag-helpers/intro
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 003a22d4b0d9400f3e9effe0892d2d7e03704cde
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3c198ccc3e3e2c11f3e2b9379bc63bd6428dbf69
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-tag-helpers-in-aspnet-core"></a>在 ASP.NET Core 標記協助程式簡介 
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 01/19/2018
 ```cshtml
 @tagHelperPrefix th:
 ```
-在下列程式碼影像，標記協助程式前置詞設定為`th:`，因此只有在使用前置詞的元素`th:`支援標記協助程式 （啟用標記協助程式的項目會有特殊的字型）。 `<label>`和`<input>`元素有標記協助程式前置詞且標記協助程式功能，同時`<span>`元素則否。
+在下列程式碼影像，標記協助程式前置詞設定為`th:`，因此只有在使用前置詞的元素`th:`支援標記協助程式 （啟用標記協助程式的項目會有特殊的字型）。 `<label>`和`<input>`元素有標記協助程式前置詞且標記協助程式功能，同時`<span>`項目不會。
 
 ![影像](intro/_static/thp.png)
 

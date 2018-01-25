@@ -1,19 +1,19 @@
 ---
 title: "在 ASP.NET Core 上的識別簡介"
 author: rick-anderson
-description: "使用身分識別與 ASP.NET Core 應用程式"
+description: "使用身分識別與 ASP.NET Core 應用程式。 包含，設定密碼需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars 等等）。"
 ms.author: riande
 manager: wpickett
-ms.date: 01/02/2018
+ms.date: 01/24/2018
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authentication/identity
-ms.openlocfilehash: 436a5ecfd126c9660591cd55efc1cc52b9493136
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b1dc6d31f44a26a2b91a92dc43032b0315e73cce
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -23,7 +23,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET 核心身分識別。 或者，您可以使用您自己的持續性存放區，例如 Azure 資料表儲存體。 本文件包含適用於 Visual Studio 以及使用 CLI 的指示。
 
-[檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](https://docs.microsoft.com/en-us/aspnet/core/tutorials/index#how-to-download-a-sample)
+[檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](https://docs.microsoft.com/aspnet/core/tutorials/index#how-to-download-a-sample)
 
 ## <a name="overview-of-identity"></a>身分識別的概觀
 
@@ -124,9 +124,10 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     上述程式碼中的呼叫上述`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者的宣告。
  
+<a name="pw"></a>
 6.  組態設定。
 
-    識別有一些您可以在您的應用程式啟動類別中覆寫的預設行為。 您不需要設定``IdentityOptions``如果您使用的預設行為。
+    識別有一些可以在應用程式的啟動類別中覆寫的預設行為。 `IdentityOptions`不需要使用的預設行為時，設定。 下列程式碼會設定數個密碼強度選項：
 
     # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
@@ -194,6 +195,10 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 ## <a name="migrating-to-aspnet-core-identity"></a>移轉至 ASP.NET Core 身分識別
 
 針對其他資訊和指引移轉您現有的身分識別存放區，請參閱[移轉的驗證和身分識別](xref:migration/identity)。
+
+## <a name="setting-password-strength"></a>設定密碼強度
+
+請參閱[組態](#pw)如需設定密碼最小需求的範例。
 
 ## <a name="next-steps"></a>後續步驟
 

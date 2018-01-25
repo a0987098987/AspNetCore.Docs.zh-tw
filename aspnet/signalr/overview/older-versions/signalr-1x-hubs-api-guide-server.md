@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: e594dd1ea4ae027cf0b82574fc5a3eb061b1f2e1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 96155b1c648e5f6092b3ba67a560197f86a593b9
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a>ASP.NET SignalR 中樞 API 指南-伺服器 (SignalR 1.x)
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > SignalR 也能提供較低層級應用程式開發介面呼叫持續連線。 如需簡介 SignalR、 集線器及持續連線，或示範如何建置完整的 SignalR 應用程式的教學課程，請參閱[SignalR-快速入門](index.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文件包含下列章節：
 
@@ -77,13 +77,13 @@ ms.lasthandoff: 11/10/2017
 - [SignalR 中樞 API 指南 JavaScript 用戶端](index.md)
 - [SignalR 中樞 API 指南-.NET 用戶端](index.md)
 
-應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/en-us/library/jj891075(v=vs.100).aspx)。
+應用程式開發介面參考主題的連結是.NET 4.5 版的 API。 如果您使用.NET 4，請參閱[API 主題.NET 4 版本](https://msdn.microsoft.com/library/jj891075(v=vs.100).aspx)。
 
 <a id="route"></a>
 
 ## <a name="how-to-register-the-signalr-route-and-configure-signalr-options"></a>如何登錄至 SignalR 路由並設定 SignalR 選項
 
-若要定義用戶端將用來連接到您的中樞的路由，請呼叫[MapHubs](https://msdn.microsoft.com/en-us/library/system.web.routing.signalrrouteextensions.maphubs(v=vs.111).aspx)應用程式啟動時的方法。 `MapHubs`是[擴充方法](https://msdn.microsoft.com/en-us/library/vstudio/bb383977.aspx)如`System.Web.Routing.RouteCollection`類別。 下列範例示範如何定義中的 SignalR 中樞路由*Global.asax*檔案。
+若要定義用戶端將用來連接到您的中樞的路由，請呼叫[MapHubs](https://msdn.microsoft.com/library/system.web.routing.signalrrouteextensions.maphubs(v=vs.111).aspx)應用程式啟動時的方法。 `MapHubs`是[擴充方法](https://msdn.microsoft.com/library/vstudio/bb383977.aspx)如`System.Web.Routing.RouteCollection`類別。 下列範例示範如何定義中的 SignalR 中樞路由*Global.asax*檔案。
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample1.cs)]
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="how-to-create-and-use-hub-classes"></a>如何建立及使用 Hub 類別
 
-若要建立的中樞時，建立衍生自類別[Microsoft.Aspnet.Signalr.Hub](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)。 下列範例會示範一個簡單的中樞類別交談應用程式。
+若要建立的中樞時，建立衍生自類別[Microsoft.Aspnet.Signalr.Hub](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)。 下列範例會示範一個簡單的中樞類別交談應用程式。
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample8.cs)]
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/10/2017
 
 根據預設，JavaScript 用戶端是指中心所使用的類別名稱的 camel 案例版本。 SignalR 會自動將這項變更，讓 JavaScript 程式碼可以符合 JavaScript 慣例。 前一個範例會稱為`contosoChatHub`JavaScript 程式碼中。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample9.cs?highlight=1)]
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/10/2017
 
 如果您想要指定不同的名稱，讓用戶端使用，所以將`HubName`屬性。 當您使用`HubName`屬性，請為 camel 命名法的大小寫，JavaScript 用戶端上沒有名稱變更。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample11.cs?highlight=1)]
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/10/2017
 
 根據預設，JavaScript 用戶端中樞方法使用參照的方法名稱的 camel 案例版本。 SignalR 會自動將這項變更，讓 JavaScript 程式碼可以符合 JavaScript 慣例。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample15.cs?highlight=1)]
 
@@ -226,7 +226,7 @@ ms.lasthandoff: 11/10/2017
 
 如果您想要指定不同的名稱，讓用戶端使用，所以將`HubMethodName`屬性。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample17.cs?highlight=1)]
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="when-to-execute-asynchronously"></a>以非同步方式執行的時機
 
-如果方法將會是長時間執行，或者要執行的作業，會牽涉到插撥功能，例如資料庫尋查 」 或 「 web 服務呼叫，讓中樞方法以傳回非同步[工作](https://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx)(取代`void`傳回) 或[工作&lt;T&gt; ](https://msdn.microsoft.com/en-us/library/dd321424.aspx)物件 (取代`T`傳回型別)。 當您傳回`Task`從 SignalR 方法的物件會等待`Task`若要完成，然後將進行傳送未包裝的結果傳回用戶端，因此沒有任何差異，在程式碼方法呼叫中用戶端如何。
+如果方法將會是長時間執行，或者要執行的作業，會牽涉到插撥功能，例如資料庫尋查 」 或 「 web 服務呼叫，讓中樞方法以傳回非同步[工作](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)(取代`void`傳回) 或[工作&lt;T&gt; ](https://msdn.microsoft.com/library/dd321424.aspx)物件 (取代`T`傳回型別)。 當您傳回`Task`從 SignalR 方法的物件會等待`Task`若要完成，然後將進行傳送未包裝的結果傳回用戶端，因此沒有任何差異，在程式碼方法呼叫中用戶端如何。
 
 讓中樞方法非同步可避免使用 WebSocket 傳輸時，封鎖連接。 當中樞方法以同步方式執行，而且傳輸 WebSocket 時，後續來自相同用戶端中樞方法叫用會遭到封鎖，直到中樞方法完成為止。
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 11/10/2017
 
 若要從伺服器呼叫用戶端的方法，請使用`Clients`中樞類別中的方法中的屬性。 下列範例示範呼叫的伺服器程式碼`addNewMessageToPage`所有已連線的用戶端及 JavaScript 用戶端中定義之方法的用戶端程式碼。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample22.cs?highlight=5)]
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="selecting-which-clients-will-receive-the-rpc"></a>選取哪些用戶端會收到 RPC
 
-用戶端屬性會傳回[HubConnectionContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)提供數個選項來指定哪些用戶端會收到 RPC 的物件：
+用戶端屬性會傳回[HubConnectionContext](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubconnectioncontext(v=vs.111).aspx)提供數個選項來指定哪些用戶端會收到 RPC 的物件：
 
 - 所有已連線的用戶端。
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="how-to-use-a-string-variable-as-the-method-name"></a>如何使用字串變數，做為方法名稱
 
-如果您想要使用的字串變數的方法名稱，轉換為叫用用戶端方法`Clients.All`(或`Clients.Others`，`Clients.Caller`等等) 要`IClientProxy`，然後呼叫[叫用 （方法名稱、 引數...）](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.iclientproxy.invoke(v=vs.111).aspx).
+如果您想要使用的字串變數的方法名稱，轉換為叫用用戶端方法`Clients.All`(或`Clients.Others`，`Clients.Caller`等等) 要`IClientProxy`，然後呼叫[叫用 （方法名稱、 引數...）](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.iclientproxy.invoke(v=vs.111).aspx).
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample37.cs)]
 
@@ -367,9 +367,9 @@ ms.lasthandoff: 11/10/2017
 
 SignalR 中的群組提供方法，將訊息廣播至連線的用戶端指定的子集。 群組可以有任意數目的用戶端，並在用戶端可以是任意數目的群組成員。
 
-為管理群組成員資格，使用[新增](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)和[移除](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)所提供的方法`Groups`中樞類別的屬性。 下列範例所示`Groups.Add`和`Groups.Remove`方法用於 Hub 方法呼叫的用戶端程式碼，後面接著 JavaScript 用戶端程式碼呼叫它們。
+為管理群組成員資格，使用[新增](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx)和[移除](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx)所提供的方法`Groups`中樞類別的屬性。 下列範例所示`Groups.Add`和`Groups.Remove`方法用於 Hub 方法呼叫的用戶端程式碼，後面接著 JavaScript 用戶端程式碼呼叫它們。
 
-**伺服器**
+**Server**
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample38.cs?highlight=5,10)]
 
@@ -452,7 +452,7 @@ SignalR 追蹤連線，而不是使用者，因此如果您希望使用者是相
 
 ## <a name="how-to-get-information-about-the-client-from-the-context-property"></a>如何取得用戶端的相關資訊，從內容屬性
 
-若要取得用戶端的相關資訊，請使用`Context`中樞類別的屬性。 `Context`屬性會傳回[HubCallerContext](https://msdn.microsoft.com/en-us/library/jj890883(v=vs.111).aspx)物件，其提供下列資訊的存取權：
+若要取得用戶端的相關資訊，請使用`Context`中樞類別的屬性。 `Context`屬性會傳回[HubCallerContext](https://msdn.microsoft.com/library/jj890883(v=vs.111).aspx)物件，其提供下列資訊的存取權：
 
 - 呼叫用戶端連接識別碼。
 
@@ -526,7 +526,7 @@ SignalR 追蹤連線，而不是使用者，因此如果您希望使用者是相
 若要處理中樞類別方法中發生的錯誤，使用其中一個或多個下列方法：
 
 - 將方法的程式碼包裝在 try catch 區塊，並記錄例外狀況物件。 以進行偵錯您可以將例外狀況傳送給用戶端，但不是建議原因的詳細的資訊傳送給用戶端在生產環境中的安全性。
-- 建立中樞管線模組來處理[OnIncomingError](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.hubs.hubpipelinemodule.onincomingerror(v=vs.111).aspx)方法。 下列範例會顯示記錄錯誤，後面接著程式碼中會插入至中樞管線的模組的 Global.asax 管線模組。
+- 建立中樞管線模組來處理[OnIncomingError](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hubs.hubpipelinemodule.onincomingerror(v=vs.111).aspx)方法。 下列範例會顯示記錄錯誤，後面接著程式碼中會插入至中樞管線的模組的 Global.asax 管線模組。
 
     [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample55.cs)]
 
@@ -607,4 +607,4 @@ SignalR 可讓您將自己的程式碼插入中樞管線。 下列範例會顯�
 
 [!code-csharp[Main](signalr-1x-hubs-api-guide-server/samples/sample68.cs?highlight=3)]
 
-有許多不同的方法，您可以覆寫。 如需完整清單，請參閱[HubPipelineModule 方法](https://msdn.microsoft.com/en-us/library/jj918633(v=vs.111).aspx)。
+有許多不同的方法，您可以覆寫。 如需完整清單，請參閱[HubPipelineModule 方法](https://msdn.microsoft.com/library/jj918633(v=vs.111).aspx)。

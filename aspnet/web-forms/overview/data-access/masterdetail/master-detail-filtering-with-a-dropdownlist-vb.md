@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 88e5c65c100bea3cc39b1e08b1aa8a622b4ce7a6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3f66e133b2bc8cdececf55b4d92508e6ff157d95
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>使用 DropDownList (VB) 進行篩選的主要/詳細資料
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 一種常見的報表是*主要/詳細資料報表*中的報表一開始會顯示某些的 「 主要 」 的記錄集。 使用者可以再向下鑽研到其中一個主要記錄中，藉此檢視主要記錄的 「 詳細資料。 」 主要/詳細資料報告會視覺化為一對多關聯性，例如報告的理想選擇顯示所有類別，然後由使用者選取特定的類別，並顯示其相關聯的產品。 此外，主要/詳細資料報表是適用於顯示詳細的資訊，特別是 「 寬的 」 的資料表 （是有很多資料行）。 例如，「 主要 」 的層級的主要/詳細資料報表可能會在資料庫中，顯示只的產品名稱和單位價格的產品和向下切入特定產品，則會顯示其他產品欄位 (類別、 供應商、 每個單位的數量和等等）。
 
-有許多方法可以用實作主要/詳細資料報表。 透過這和接下來三個教學課程介紹各種不同的主要/詳細資料報表。 在本教學課程中，我們會看到如何顯示中的主要記錄[DropDownList 控制項](https://msdn.microsoft.com/en-us/library/dtx91y0z.aspx)和 GridView 中選取的清單項目的詳細資料。 尤其，本教學課程的主要/詳細資料報表會列出分類和產品資訊。
+有許多方法可以用實作主要/詳細資料報表。 透過這和接下來三個教學課程介紹各種不同的主要/詳細資料報表。 在本教學課程中，我們會看到如何顯示中的主要記錄[DropDownList 控制項](https://msdn.microsoft.com/library/dtx91y0z.aspx)和 GridView 中選取的清單項目的詳細資料。 尤其，本教學課程的主要/詳細資料報表會列出分類和產品資訊。
 
 ## <a name="step-1-displaying-the-categories-in-a-dropdownlist"></a>步驟 1: DropDownList 以顯示類別目錄
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 請花一點時間簽出的瀏覽器中的進度。 當第一次造訪的頁面時，這些產品屬於所選類別目錄 （如圖 9 所示），會顯示 （飲料），但變更 DropDownList 不會更新資料。 這是因為更新 GridView 會因發生回傳。 若要完成這項作業中，我們有兩個選項 （其中都不需要撰寫任何程式碼）：
 
-- **設定類別 DropDownList**[AutoPostBack 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.listcontrol.autopostback%28VS.80%29.aspx)**為 True。** （您可以完成此作業藉由檢查 DropDownList 的智慧標籤的 [啟用 AutoPostBack] 選項。）如此將會觸發回傳，只要 DropDownList 的選取項目由使用者變更。 因此，當使用者選取新的類別從 DropDownList 將發生回傳，而且會以新選取的分類的產品更新 GridView。 （這是已在本教學課程使用的方法）。
+- **設定類別 DropDownList**[AutoPostBack 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.listcontrol.autopostback%28VS.80%29.aspx)**為 True。** （您可以完成此作業藉由檢查 DropDownList 的智慧標籤的 [啟用 AutoPostBack] 選項。）如此將會觸發回傳，只要 DropDownList 的選取項目由使用者變更。 因此，當使用者選取新的類別從 DropDownList 將發生回傳，而且會以新選取的分類的產品更新 GridView。 （這是已在本教學課程使用的方法）。
 - **加入按鈕 Web 控制項旁 DropDownList。** 設定其`Text`屬性來重新整理或類似的項目。 使用此方法時，使用者必須選取新的類別，然後按一下 [] 按鈕。 按一下按鈕，將會導致回傳，並更新以列出所選類別的那些產品 GridView。
 
 數字 9 和 10 說明主要/詳細資料中的報表動作。

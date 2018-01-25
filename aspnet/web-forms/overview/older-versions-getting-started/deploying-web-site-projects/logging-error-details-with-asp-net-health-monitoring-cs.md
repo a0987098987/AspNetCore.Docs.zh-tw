@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06f8b57c8973fff5c07e82100cd43f6757d454f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 85a8615bf71f58c58b9565da14bc3b3fbef9d264
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>記錄錯誤的詳細資料與 ASP.NET 健全狀況監視 (C#)
 ====================
@@ -43,13 +43,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="exploring-the-health-monitoring-systems-configuration"></a>探索健全狀況監視系統的設定
 
-健全狀況監視系統行為由其組態資訊時，位於所定義[`<healthMonitoring>`元素](https://msdn.microsoft.com/en-us/library/2fwh2ss9.aspx)中`Web.config`。 這個組態區段會定義，在其他方面，下列三個重要部分的資訊：
+健全狀況監視系統行為由其組態資訊時，位於所定義[`<healthMonitoring>`元素](https://msdn.microsoft.com/library/2fwh2ss9.aspx)中`Web.config`。 這個組態區段會定義，在其他方面，下列三個重要部分的資訊：
 
 1. 健全狀況監視的事件，當引發，應記錄
 2. 記錄檔來源，並
 3. 每個健全狀況監視 (1) 中定義的事件如何對應至記錄檔來源 (2) 中定義。
 
-這項資訊透過三個子系的組態項目指定： [ `<eventMappings>` ](https://msdn.microsoft.com/en-us/library/yc5yk01w.aspx)， [ `<providers>` ](https://msdn.microsoft.com/en-us/library/zaa41kz1.aspx)，和[ `<rules>`](https://msdn.microsoft.com/en-us/library/fe5wyxa0.aspx)分別。
+這項資訊透過三個子系的組態項目指定： [ `<eventMappings>` ](https://msdn.microsoft.com/library/yc5yk01w.aspx)， [ `<providers>` ](https://msdn.microsoft.com/library/zaa41kz1.aspx)，和[ `<rules>`](https://msdn.microsoft.com/library/fe5wyxa0.aspx)分別。
 
 預設健全狀況監視的系統設定資訊位於`Web.config`檔案`%WINDIR%\Microsoft.NET\Framework\version\CONFIG`資料夾。 此預設設定資訊中，為求簡潔，移除某些標記如下所示：
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 2. 登錄中的電子郵件記錄來源提供者`<providers>`項目，並
 3. 新增項目以`<rules>`將 「 所有錯誤 」 事件對應至在步驟 (2) 中新增的記錄檔來源提供者的項目。
 
-監視系統健全狀況包含兩個電子郵件記錄來源提供者類別：`SimpleMailWebEventProvider`和`TemplatedMailWebEventProvider`。 [ `SimpleMailWebEventProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.management.simplemailwebeventprovider.aspx)傳送純文字電子郵件訊息，其中包含事件詳細資料，並提供一些自訂的電子郵件內文。 與[`TemplatedMailWebEventProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.management.templatedmailwebeventprovider.aspx)指定 ASP.NET 網頁，其呈現的標記用於做為主體電子郵件訊息。 [ `TemplatedMailWebEventProvider`類別](https://msdn.microsoft.com/en-us/library/system.web.management.templatedmailwebeventprovider.aspx)讓您的內容和格式的電子郵件訊息，更進一步控制，但需要更多的前方工作因為您需要建立 ASP.NET 網頁，會產生電子郵件訊息的本文。 本教學課程著重於使用`SimpleMailWebEventProvider`類別。
+監視系統健全狀況包含兩個電子郵件記錄來源提供者類別：`SimpleMailWebEventProvider`和`TemplatedMailWebEventProvider`。 [ `SimpleMailWebEventProvider`類別](https://msdn.microsoft.com/library/system.web.management.simplemailwebeventprovider.aspx)傳送純文字電子郵件訊息，其中包含事件詳細資料，並提供一些自訂的電子郵件內文。 與[`TemplatedMailWebEventProvider`類別](https://msdn.microsoft.com/library/system.web.management.templatedmailwebeventprovider.aspx)指定 ASP.NET 網頁，其呈現的標記用於做為主體電子郵件訊息。 [ `TemplatedMailWebEventProvider`類別](https://msdn.microsoft.com/library/system.web.management.templatedmailwebeventprovider.aspx)讓您的內容和格式的電子郵件訊息，更進一步控制，但需要更多的前方工作因為您需要建立 ASP.NET 網頁，會產生電子郵件訊息的本文。 本教學課程著重於使用`SimpleMailWebEventProvider`類別。
 
 更新健全狀況監視系統的`<providers>`中的項目`Web.config`要包含的記錄檔來源檔`SimpleMailWebEventProvider`類別：
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 ASP.NET 健康監視系統的設計可讓系統管理員可以監視已部署的 web 應用程式的健全狀況。 展開某些動作，例如當應用程式停止時，當使用者成功登入站台，或發生未處理的例外狀況時，會引發健全狀況監視的事件。 這些事件可以記錄至任何數量的記錄檔來源。 本教學課程會示範如何透過電子郵件資料庫與記錄的未處理例外狀況詳細資料。
 
-本教學課程著重於使用記錄未處理的例外狀況，但請注意，健全狀況監視設計來測量的已部署的 ASP.NET 應用程式的整體健全狀況，而且包含豐富的健全狀況監視的事件和記錄來源不監視的健全狀況此探索。 什麼是多個項目，您可以建立您自己的健全狀況監視的事件和記錄檔來源，需要發生。 如果您有興趣深入了解健康狀態監控，理想的第一個步驟是閱讀[Erik Reitan](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)的[健全狀況監視常見問題集](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)。 接下來，請參閱[How To： 使用 ASP.NET 2.0 中的健全狀況監視](https://msdn.microsoft.com/en-us/library/ms998306.aspx)。
+本教學課程著重於使用記錄未處理的例外狀況，但請注意，健全狀況監視設計來測量的已部署的 ASP.NET 應用程式的整體健全狀況，而且包含豐富的健全狀況監視的事件和記錄來源不監視的健全狀況此探索。 什麼是多個項目，您可以建立您自己的健全狀況監視的事件和記錄檔來源，需要發生。 如果您有興趣深入了解健康狀態監控，理想的第一個步驟是閱讀[Erik Reitan](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)的[健全狀況監視常見問題集](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)。 接下來，請參閱[How To： 使用 ASP.NET 2.0 中的健全狀況監視](https://msdn.microsoft.com/library/ms998306.aspx)。
 
 祝您程式設計 ！
 
@@ -147,11 +147,11 @@ ASP.NET 健康監視系統的設計可讓系統管理員可以監視已部署的
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 健康監視概觀](https://msdn.microsoft.com/en-us/library/bb398933.aspx)
+- [ASP.NET 健康監視概觀](https://msdn.microsoft.com/library/bb398933.aspx)
 - [設定和自訂監視的 ASP.NET 系統的健全狀況](http://dotnetslackers.com/articles/aspnet/ConfiguringAndCustomizingTheHealthMonitoringSystemOfASPNET.aspx)
 - [常見問題集-健全狀況監視在 ASP.NET 2.0](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)
-- [如何： 傳送健全狀況監視通知的電子郵件](https://msdn.microsoft.com/en-us/library/ms227553.aspx)
-- [如何： 使用 ASP.NET 中的健全狀況監視](https://msdn.microsoft.com/en-us/library/ms998306.aspx)
+- [如何： 傳送健全狀況監視通知的電子郵件](https://msdn.microsoft.com/library/ms227553.aspx)
+- [如何： 使用 ASP.NET 中的健全狀況監視](https://msdn.microsoft.com/library/ms998306.aspx)
 - [在 ASP.NET 監視的健全狀況](http://aspnet.4guysfromrolla.com/articles/031407-1.aspx)
 
 >[!div class="step-by-step"]

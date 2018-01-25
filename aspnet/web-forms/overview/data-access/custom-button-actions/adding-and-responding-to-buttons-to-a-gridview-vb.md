@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ba66c867df93a9e1a0bb7897052ace7300b672af
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8a642a9a8e25d64028df0b5d8741da3008700652
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>加入和回應的 GridView (VB) 的按鈕
 ====================
@@ -199,7 +199,7 @@ ms.lasthandoff: 11/10/2017
 **圖 15**： 將停止所有產品按鈕 Web 控制項加入 FormView s `ItemTemplate` ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image41.png))
 
 
-當按鈕按下使用者造訪的網頁回傳展示和 FormView s [ `ItemCommand`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.formview.itemcommand.aspx)引發。 若要執行自訂程式碼以回應在按下此按鈕，我們可以建立此事件的事件處理常式。 了解，不過，`ItemCommand`事件引發時*任何*FormView 內按下按鈕、 LinkButton 或 ImageButton Web 控制項。 這表示當使用者從一頁移到另 FormView 中`ItemCommand`事件引發，則當使用者按一下 [新增]，[編輯]，或在支援插入、 更新或刪除 FormView 中刪除相同的動作。
+當按鈕按下使用者造訪的網頁回傳展示和 FormView s [ `ItemCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.itemcommand.aspx)引發。 若要執行自訂程式碼以回應在按下此按鈕，我們可以建立此事件的事件處理常式。 了解，不過，`ItemCommand`事件引發時*任何*FormView 內按下按鈕、 LinkButton 或 ImageButton Web 控制項。 這表示當使用者從一頁移到另 FormView 中`ItemCommand`事件引發，則當使用者按一下 [新增]，[編輯]，或在支援插入、 更新或刪除 FormView 中刪除相同的動作。
 
 因為`ItemCommand`引發不論按一下按鈕時，事件處理常式我們需要一個方法來判斷是否按下 [停止所有的產品] 按鈕，或如果是某些其他按鈕。 若要達成此目的，我們可以設定 Button Web 控制項的`CommandName`屬性設為識別值。 當按一下按鈕時，這`CommandName`值會傳遞至`ItemCommand`事件處理常式，讓我們能夠判斷是否 button 已按下 [停止所有的產品] 按鈕。 設定停止所有產品 按鈕的`CommandName`DiscontinueProducts 的屬性。
 
@@ -215,7 +215,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](adding-and-responding-to-buttons-to-a-gridview-vb/samples/sample7.vb)]
 
-請注意， `SupplierID` FormView 中目前選取的供應商可以存取使用 FormView s [ `SelectedValue`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.formview.selectedvalue.aspx)。 `SelectedValue`屬性會傳回第一個資料機碼顯示在 FormView 中記錄的值。 在 FormView s [ `DataKeyNames`屬性](https://msdn.microsoft.com/en-us/system.web.ui.webcontrols.formview.datakeynames.aspx)，指出的資料欄位的資料索引鍵的值取自，自動設定為`SupplierID`繫結至 FormView 後的 ObjectDataSource 時的 Visual studio在步驟 2。
+請注意， `SupplierID` FormView 中目前選取的供應商可以存取使用 FormView s [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.selectedvalue.aspx)。 `SelectedValue`屬性會傳回第一個資料機碼顯示在 FormView 中記錄的值。 在 FormView s [ `DataKeyNames`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.formview.datakeynames.aspx)，指出的資料欄位的資料索引鍵的值取自，自動設定為`SupplierID`繫結至 FormView 後的 ObjectDataSource 時的 Visual studio在步驟 2。
 
 與`ItemCommand`事件處理常式建立，請花一點時間來測試頁面。 瀏覽至 Cooperativa de Quesos ' Las Cabras' 供應商 (它 s 我 FormView 中的第五個供應商)。 此供應商提供這兩項產品，Queso Cabrales 和 Queso Manchego La Pastora，兩者都是*不*已停止。
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-7-adding-the-increase-and-decrease-buttons-to-the-gridview"></a>步驟 7： 加入增加和減少按鈕 GridView
 
-GridView （和 DetailsView） 是兩組成欄位的集合。 除了 BoundFields、 CheckBoxFields 和 TemplateFields，ASP.NET 會包含 ButtonField，其中，正如其名，會轉譯成與按鈕、 LinkButton 或 ImageButton 每個資料列的資料行。 FormView 中，按一下類似*任何*內 GridView 分頁按鈕、 編輯或刪除按鈕，排序按鈕，等等 按鈕會導致回傳，並引發 GridView s [ `RowCommand`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridview.rowcommand.aspx)。
+GridView （和 DetailsView） 是兩組成欄位的集合。 除了 BoundFields、 CheckBoxFields 和 TemplateFields，ASP.NET 會包含 ButtonField，其中，正如其名，會轉譯成與按鈕、 LinkButton 或 ImageButton 每個資料列的資料行。 FormView 中，按一下類似*任何*內 GridView 分頁按鈕、 編輯或刪除按鈕，排序按鈕，等等 按鈕會導致回傳，並引發 GridView s [ `RowCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.rowcommand.aspx)。
 
 具有 ButtonField`CommandName`屬性，將指定的值指派給每個按鈕`CommandName`屬性。 在 FormView 中，例如`CommandName`值由`RowCommand`來判斷哪一個按鈕已按下的事件處理常式。
 
@@ -264,7 +264,7 @@ O d e s 加入兩個新 ButtonFields 至 GridView，其中一個按鈕文字價�
 **圖 18**: GridView 中加入兩個 ButtonFields
 
 
-移動兩個 ButtonFields，使其顯示為前兩個 GridView 欄位。 接下來，設定`Text`屬性 Price + 10%到這些兩個 ButtonFields 和價格-10%和`CommandName`屬性，以便 IncreasePrice 以及 DecreasePrice，分別。 根據預設，ButtonField 會轉譯成 LinkButtons 按鈕的其資料行。 這可以變更，不過，透過 ButtonField s [ `ButtonType`屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.buttonfieldbase.buttontype.aspx)。 將已轉譯為規則的按鈕; 這些兩個 ButtonFields s因此，設定`ButtonType`屬性`Button`。 圖 19 顯示欄位 對話方塊之後已經進行這些變更。下列的是 GridView s 宣告式標記。
+移動兩個 ButtonFields，使其顯示為前兩個 GridView 欄位。 接下來，設定`Text`屬性 Price + 10%到這些兩個 ButtonFields 和價格-10%和`CommandName`屬性，以便 IncreasePrice 以及 DecreasePrice，分別。 根據預設，ButtonField 會轉譯成 LinkButtons 按鈕的其資料行。 這可以變更，不過，透過 ButtonField s [ `ButtonType`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.buttonfieldbase.buttontype.aspx)。 將已轉譯為規則的按鈕; 這些兩個 ButtonFields s因此，設定`ButtonType`屬性`Button`。 圖 19 顯示欄位 對話方塊之後已經進行這些變更。下列的是 GridView s 宣告式標記。
 
 
 ![設定 ButtonFields 文字、 CommandName 和 ButtonType 屬性](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image49.png)

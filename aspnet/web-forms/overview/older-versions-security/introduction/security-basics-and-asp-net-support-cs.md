@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 02c352c6fa1fcd1f60ebfc7b7ebf95151fe8de8c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4080e3ccaffefd02c76b89a77e320e963f854961
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="security-basics-and-aspnet-support-c"></a>安全性基本概念和 ASP.NET 支援 (C#)
 ====================
@@ -102,7 +102,7 @@ Windows 驗證工作流程會使用以下驗證方法的其中一個：
 **圖 2**： 表單驗證工作流程
 
 
-我們將會深入探究在下面兩個教學課程中，更詳細的表單驗證[的表單驗證概觀](an-overview-of-forms-authentication-cs.md)和[表單驗證設定和進階主題](forms-authentication-configuration-and-advanced-topics-cs.md)。 如需有關 ASP。網路的驗證選項，請參閱[ASP.NET 驗證](https://msdn.microsoft.com/en-us/library/eeyk640h.aspx)。
+我們將會深入探究在下面兩個教學課程中，更詳細的表單驗證[的表單驗證概觀](an-overview-of-forms-authentication-cs.md)和[表單驗證設定和進階主題](forms-authentication-configuration-and-advanced-topics-cs.md)。 如需有關 ASP。網路的驗證選項，請參閱[ASP.NET 驗證](https://msdn.microsoft.com/library/eeyk640h.aspx)。
 
 ## <a name="limiting-access-to-web-pages-directories-and-page-functionality"></a>限制存取的網頁、 目錄和頁面功能
 
@@ -113,9 +113,9 @@ ASP.NET 包含兩種方式可判斷特定的使用者是否具有特定檔案或
 
 檔案授權和 URL 授權定義授權規則，以存取特定的 ASP.NET 頁面或適用於所有 ASP.NET 網頁特定目錄中。 我們可以使用這些技術來指示 ASP.NET 特定的頁面上，針對特定的使用者的要求被拒絕或允許存取的一組使用者而拒絕存取其他人。 當所有的使用者可以存取頁面，但在頁面的功能取決於使用者案例呢？ 比方說，許多支援使用者帳戶的站台會有不同的內容或與匿名使用者已驗證使用者的資料顯示的頁面。 匿名使用者可能會看到登入網站的連結，而驗證的使用者會改看到一則訊息，歡迎回來， *Username*以及登出的連結。另一個範例： 檢視項目在拍賣站台時，您會看到不同的資訊，根據您所效勞或 auctioning 項目。
 
-以宣告方式或以程式設計方式，就可以完成這類頁面層級調整。 若要可顯示不同內容的匿名驗證的使用者，只要拖放到比[LoginView 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.loginview.aspx)拖曳到頁面然後其 AnonymousTemplate 和 LoggedInTemplate 範本中輸入適當的內容。 或者，您可以以程式設計方式判斷是否已驗證目前的要求、 身為使用者，以及哪些角色所屬 （如果有的話）。 然後顯示或隱藏資料行在方格或面板頁面上的，您可以使用這項資訊。
+以宣告方式或以程式設計方式，就可以完成這類頁面層級調整。 若要可顯示不同內容的匿名驗證的使用者，只要拖放到比[LoginView 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginview.aspx)拖曳到頁面然後其 AnonymousTemplate 和 LoggedInTemplate 範本中輸入適當的內容。 或者，您可以以程式設計方式判斷是否已驗證目前的要求、 身為使用者，以及哪些角色所屬 （如果有的話）。 然後顯示或隱藏資料行在方格或面板頁面上的，您可以使用這項資訊。
 
-這一系列包含三個教學課程將焦點放在授權。 ***使用者為基礎的授權***檢查如何限制存取特定的使用者帳戶; 頁面或在目錄中的網頁***角色式授權***提供授權規則的角色層級，則最後，會查看***顯示目前登入使用者的內容基礎***修改特定教學課程-探索網頁的內容和使用者瀏覽頁面為基礎的功能。 如需有關 ASP。網路的授權選項，請參閱[ASP.NET 授權](https://msdn.microsoft.com/en-us/library/wce3kxhd.aspx)。
+這一系列包含三個教學課程將焦點放在授權。 ***使用者為基礎的授權***檢查如何限制存取特定的使用者帳戶; 頁面或在目錄中的網頁***角色式授權***提供授權規則的角色層級，則最後，會查看***顯示目前登入使用者的內容基礎***修改特定教學課程-探索網頁的內容和使用者瀏覽頁面為基礎的功能。 如需有關 ASP。網路的授權選項，請參閱[ASP.NET 授權](https://msdn.microsoft.com/library/wce3kxhd.aspx)。
 
 
 ## <a name="user-accounts-and-roles"></a>使用者帳戶和角色
@@ -124,7 +124,7 @@ ASP。網路的表單驗證提供一種基礎結構以便讓使用者登入網�
 
 在 ASP.NET 2.0 之前開發人員所負責建立自己的使用者和角色存放區。 它們也是在設計使用者介面，並撰寫程式的必要的使用者帳戶相關的網頁登入頁面和頁面，即可建立新的帳戶，和其他項目等的勾點。 沒有任何內建的使用者帳戶架構，在 ASP.NET 中，實作的使用者帳戶已到達在自己的設計決策問題，例如，每位開發人員如何我儲存密碼或其他機密資訊？以及何種方針應該我強制密碼長度和強度？
 
-現在，在 ASP.NET 應用程式中實作使用者帳戶是以更簡單感謝您*成員資格 framework*以及內建登入 Web 控制項。 成員資格 framework 是少數幾個類別中[System.Web.Security 命名空間](https://msdn.microsoft.com/en-us/library/system.web.security.aspx)執行必要的使用者帳戶相關的工作提供功能。 索引鍵的類別中的成員資格 framework 是[成員資格類別](https://msdn.microsoft.com/en-us/library/system.web.security.membership.aspx)，其具有類似的方法：
+現在，在 ASP.NET 應用程式中實作使用者帳戶是以更簡單感謝您*成員資格 framework*以及內建登入 Web 控制項。 成員資格 framework 是少數幾個類別中[System.Web.Security 命名空間](https://msdn.microsoft.com/library/system.web.security.aspx)執行必要的使用者帳戶相關的工作提供功能。 索引鍵的類別中的成員資格 framework 是[成員資格類別](https://msdn.microsoft.com/library/system.web.security.membership.aspx)，其具有類似的方法：
 
 - CreateUser
 - DeleteUser
@@ -137,8 +137,8 @@ ASP。網路的表單驗證提供一種基礎結構以便讓使用者登入網�
 
 Microsoft.NET Framework 中隨附兩個成員資格提供者類別：
 
-- [ActiveDirectoryMembershipProvider](https://msdn.microsoft.com/en-us/library/system.web.security.activedirectorymembershipprovider.aspx) -實作成員資格 API，在 Active Directory 和 Active Directory 應用程式模式 (ADAM) 的伺服器。
-- [SqlMembershipProvider](https://msdn.microsoft.com/en-us/library/system.web.security.sqlmembershipprovider.aspx) -SQL Server 資料庫中實作的成員資格 API。
+- [ActiveDirectoryMembershipProvider](https://msdn.microsoft.com/library/system.web.security.activedirectorymembershipprovider.aspx) -實作成員資格 API，在 Active Directory 和 Active Directory 應用程式模式 (ADAM) 的伺服器。
+- [SqlMembershipProvider](https://msdn.microsoft.com/library/system.web.security.sqlmembershipprovider.aspx) -SQL Server 資料庫中實作的成員資格 API。
 
 此教學課程系列專門著重於 SqlMembershipProvider。
 
@@ -148,17 +148,17 @@ Microsoft.NET Framework 中隨附兩個成員資格提供者類別：
 **圖 03**: 提供者模型可讓不同的實作能夠順暢地連接到的 Framework ([按一下以檢視完整大小的影像](security-basics-and-asp-net-support-cs/_static/image5.png))
 
 
-替代執行方式可以由 Microsoft、 協力廠商或開發人員開發而順暢地連接到成員資格 framework 提供者模型的優點。 例如，Microsoft 已發行[Microsoft Access 資料庫的成員資格提供者](https://download.microsoft.com/download/5/5/b/55bc291f-4316-4fd7-9269-dbf9edbaada8/sampleaccessproviders.vsi)。 如需成員資格提供者的詳細資訊，請參閱[提供者 Toolkit](https://msdn.microsoft.com/en-us/asp.net/aa336558.aspx)，其中包含的成員資格提供者、 範例自訂提供者、 超過 100 個頁面上的提供者模型，文件的逐步解說和內建成員資格提供者 （也就是 ActiveDirectoryMembershipProvider 和 SqlMembershipProvider） 的完整原始程式碼。
+替代執行方式可以由 Microsoft、 協力廠商或開發人員開發而順暢地連接到成員資格 framework 提供者模型的優點。 例如，Microsoft 已發行[Microsoft Access 資料庫的成員資格提供者](https://download.microsoft.com/download/5/5/b/55bc291f-4316-4fd7-9269-dbf9edbaada8/sampleaccessproviders.vsi)。 如需成員資格提供者的詳細資訊，請參閱[提供者 Toolkit](https://msdn.microsoft.com/asp.net/aa336558.aspx)，其中包含的成員資格提供者、 範例自訂提供者、 超過 100 個頁面上的提供者模型，文件的逐步解說和內建成員資格提供者 （也就是 ActiveDirectoryMembershipProvider 和 SqlMembershipProvider） 的完整原始程式碼。
 
-ASP.NET 2.0 也導入了角色架構。 成員資格架構，例如角色 framework 是建置在提供者模型之上。 它的 API 會公開透過[角色類別](https://msdn.microsoft.com/en-us/library/system.web.security.roles.aspx)和.NET Framework 隨附於提供者的三個類別：
+ASP.NET 2.0 也導入了角色架構。 成員資格架構，例如角色 framework 是建置在提供者模型之上。 它的 API 會公開透過[角色類別](https://msdn.microsoft.com/library/system.web.security.roles.aspx)和.NET Framework 隨附於提供者的三個類別：
 
-- [AuthorizationStoreRoleProvider](https://msdn.microsoft.com/en-us/library/system.web.security.authorizationstoreroleprovider.aspx) -管理授權管理員原則存放區，例如 Active Directory 或 ADAM 中的角色資訊。
-- [SqlRoleProvider](https://msdn.microsoft.com/en-us/library/system.web.security.sqlroleprovider.aspx) -SQL Server 資料庫中實作角色。
-- [WindowsTokenRoleProvider](https://msdn.microsoft.com/en-us/library/system.web.security.windowstokenroleprovider.aspx) -將相關聯的訪客的 Windows 群組為基礎的角色資訊。 這個方法通常是使用 Windows 驗證。
+- [AuthorizationStoreRoleProvider](https://msdn.microsoft.com/library/system.web.security.authorizationstoreroleprovider.aspx) -管理授權管理員原則存放區，例如 Active Directory 或 ADAM 中的角色資訊。
+- [SqlRoleProvider](https://msdn.microsoft.com/library/system.web.security.sqlroleprovider.aspx) -SQL Server 資料庫中實作角色。
+- [WindowsTokenRoleProvider](https://msdn.microsoft.com/library/system.web.security.windowstokenroleprovider.aspx) -將相關聯的訪客的 Windows 群組為基礎的角色資訊。 這個方法通常是使用 Windows 驗證。
 
 此教學課程系列專門著重於 SqlRoleProvider。
 
-因為提供者模型包含單一的正向 API （成員資格和角色類別），可建置該 API 周圍的功能，而不必擔心實作詳細資料-這些由頁面所選取的提供者開發人員。 這個統一的 API 可讓 Microsoft 和協力廠商所提供介面的成員資格和角色架構建立 Web 控制項。 ASP.NET 隨附許多[登入 Web 控制項](https://msdn.microsoft.com/en-us/library/ms178329.aspx)實作一般使用者帳戶的使用者介面。 例如，[登入控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.aspx)會提示使用者輸入其認證，驗證，並再記錄中透過表單驗證。 [LoginView 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.loginview.aspx)提供範本，來顯示不同的標記，匿名使用者與已驗證的使用者或不同的標記，根據使用者的角色。 和[適用於 CreateUserWizard 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.createuserwizard.aspx)提供逐步的使用者介面建立新的使用者帳戶。
+因為提供者模型包含單一的正向 API （成員資格和角色類別），可建置該 API 周圍的功能，而不必擔心實作詳細資料-這些由頁面所選取的提供者開發人員。 這個統一的 API 可讓 Microsoft 和協力廠商所提供介面的成員資格和角色架構建立 Web 控制項。 ASP.NET 隨附許多[登入 Web 控制項](https://msdn.microsoft.com/library/ms178329.aspx)實作一般使用者帳戶的使用者介面。 例如，[登入控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.aspx)會提示使用者輸入其認證，驗證，並再記錄中透過表單驗證。 [LoginView 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.loginview.aspx)提供範本，來顯示不同的標記，匿名使用者與已驗證的使用者或不同的標記，根據使用者的角色。 和[適用於 CreateUserWizard 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.aspx)提供逐步的使用者介面建立新的使用者帳戶。
 
 基本上與成員資格和角色架構的各種登入控制項進行互動。 大部分的登入控制項可以實作不需要撰寫一行程式碼。 我們將在未來的教學課程，包括擴充及自訂其功能的技術來檢查更詳細的這些控制項。
 
@@ -175,16 +175,16 @@ ASP.NET 2.0 也導入了角色架構。 成員資格架構，例如角色 framew
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [ASP.NET 2.0 的成員資格、 角色、 表單驗證和安全性資源](https://weblogs.asp.net/scottgu/ASP.NET-2.0-Membership_2C00_-Roles_2C00_-Forms-Authentication_2C00_-and-Security-Resources-)
-- [ASP.NET 2.0 的安全性指導方針](https://msdn.microsoft.com/en-us/library/ms998258.aspx)
-- [ASP.NET 驗證](https://msdn.microsoft.com/en-us/library/eeyk640h.aspx)
-- [ASP.NET 授權](https://msdn.microsoft.com/en-us/library/wce3kxhd.aspx)
-- [ASP.NET 登入控制項概觀](https://msdn.microsoft.com/en-us/library/ms178329.aspx)
+- [ASP.NET 2.0 的安全性指導方針](https://msdn.microsoft.com/library/ms998258.aspx)
+- [ASP.NET 驗證](https://msdn.microsoft.com/library/eeyk640h.aspx)
+- [ASP.NET 授權](https://msdn.microsoft.com/library/wce3kxhd.aspx)
+- [ASP.NET 登入控制項概觀](https://msdn.microsoft.com/library/ms178329.aspx)
 - [檢查 ASP.NET 2.0 的成員資格、 角色和設定檔](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
 - [I： 如何保護我的站台使用成員資格和角色？](https://asp.net/learn/videos/video-45.aspx) （影片）
-- [成員資格的簡介](https://msdn.microsoft.com/en-us/library/yh26yfzy.aspx)
-- [MSDN Security Developer Center](https://msdn.microsoft.com/en-us/security/default.aspx)
+- [成員資格的簡介](https://msdn.microsoft.com/library/yh26yfzy.aspx)
+- [MSDN Security Developer Center](https://msdn.microsoft.com/security/default.aspx)
 - [專業 ASP.NET 2.0 安全性、 成員資格和角色管理](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html)(ISBN: 978-0-7645-9698-8)
-- [提供者的工具組](https://msdn.microsoft.com/en-us/asp.net/aa336558.aspx)
+- [提供者的工具組](https://msdn.microsoft.com/asp.net/aa336558.aspx)
 
 ## <a name="about-the-author"></a>關於作者
 

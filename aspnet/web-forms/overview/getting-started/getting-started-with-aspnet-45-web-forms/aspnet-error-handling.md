@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: d5d89a6a82c91b915d61ddc3c350ea0935511c07
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5ec43ac78be4a9452ebaa6495a6883506ac162f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 - 如何顯示不危及安全性的錯誤訊息。
 - 如何實作錯誤記錄模組和處理常式 (ELMAH) 錯誤記錄。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 ASP.NET 應用程式必須能夠處理以一致的方式在執行期間發生的錯誤。 ASP.NET 會使用 common language runtime (CLR)，它提供統一的方式通知應用程式的錯誤方法。 發生錯誤時，會擲回例外狀況。 任何錯誤，條件或未預期的行為，應用程式所遇到之例外狀況。
 
@@ -313,7 +313,7 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 
 ## <a name="tutorial-series-conclusion"></a>教學課程系列的結論
 
-*感謝您沿著下列。我希望這組教學課程，幫助您更熟悉 ASP.NET Web Form。如果您需要適用於 ASP.NET 4.5 和 Visual Studio 2013 的 Web Form 功能的詳細資訊，請參閱* [ *ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊*](../../../../visual-studio/overview/2013/release-notes.md) *.此外，請務必查看本教學課程中所述*  ***接下來的步驟 * * * 區段和 defintely 試用* [*免費試用 Azure*](https://azure.microsoft.com/pricing/free-trial/)*.*
+*感謝您沿著下列。我希望這組教學課程，幫助您更熟悉 ASP.NET Web Form。如果您需要適用於 ASP.NET 4.5 和 Visual Studio 2013 的 Web Form 功能的詳細資訊，請參閱* [ *ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊*](../../../../visual-studio/overview/2013/release-notes.md) *.此外，請務必查看本教學課程中所述* ***接下來的步驟 * * * 區段和 defintely 試用* [*免費試用 Azure*](https://azure.microsoft.com/pricing/free-trial/)*.*
 
 ![感謝您-Erik](aspnet-error-handling/_static/image10.png)  
 
@@ -335,10 +335,10 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 
 我想要感謝下列重大貢獻內容本教學課程系列的人：
 
-- [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.microsoft.com/en-us/mvp/Alberto%20Poblacion%20Bolano-36772)
+- [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - [Alex Thissen、 荷蘭](http://blog.alexthissen.nl/)(twitter: [ @alexthissen ](http://twitter.com/alexthissen))
 - [Andre Tournier，美國](http://andret503.wordpress.com/)
-- Apurva Joshi Microsoft
+- Apurva Joshi, Microsoft
 - [Bojan Vrhovnik、 斯洛維尼亞](http://twitter.com/bvrhovnik)
 - [Bruno Sonnino，巴西](http://msmvps.com/blogs/bsonnino)(twitter: [ @bsonnino ](http://twitter.com/bsonnino))
 - [Carlos dos Santos 巴西](http://www.carloscds.net/)
@@ -349,8 +349,8 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 - [Mitchel 銷售、 美國](http://www.mitchelsellers.com/)(twitter: [ @MitchelSellers ](http://twitter.com/MitchelSellers))
 - [Paul Cociuba Microsoft](http://linqto.me/Links/pcociuba)
 - [Paulo Morgado，葡萄牙](http://paulomorgado.net/)
-- [Pranav Rastogi Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
-- [Tim Ammann、 Microsoft](https://blogs.iis.net/timamm/default.aspx)
+- [Pranav Rastogi, Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
+- [Tim Ammann, Microsoft](https://blogs.iis.net/timamm/default.aspx)
 - [Tom Dykstra Microsoft](https://blogs.msdn.com/aspnetue)
 
 ## <a name="community-contributions"></a>社群投稿

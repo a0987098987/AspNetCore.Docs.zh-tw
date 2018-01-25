@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware
-ms.openlocfilehash: ef130e736e2f32fa134156d979ce5bfbedcae828
-ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
+ms.openlocfilehash: 84f386db4ab96a82011ee2fc0b6c20a1a05b5e4b
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="aspnet-core-middleware-fundamentals"></a>ASP.NET Core 中介軟體的基本概念
 
@@ -55,7 +55,7 @@ ASP.NET Core 要求管線包含一連串要求委派，呼叫其中一個之後�
 [!code-csharp[Main](middleware/sample/Chain/Startup.cs?name=snippet1)]
 
 >[!WARNING]
-> 請勿呼叫`next.Invoke`回應傳送至用戶端之後。 若要變更`HttpResponse`開始回應後將會擲回例外狀況。 例如，變更，例如設定標頭、 狀態碼和其他內容，將會擲回例外狀況。 寫入回應主體之後呼叫`next`:
+> 不要呼叫`next.Invoke`回應傳送至用戶端之後。 若要變更`HttpResponse`開始回應後將會擲回例外狀況。 例如，變更，例如設定標頭、 狀態碼和其他內容，將會擲回例外狀況。 寫入回應主體之後呼叫`next`:
 > - 可能會造成通訊協定違規。 例如，寫入多個述`content-length`。
 > - 可能會損毀的本文格式。 例如，HTML 頁尾寫入 CSS 檔案。
 >
@@ -63,7 +63,7 @@ ASP.NET Core 要求管線包含一連串要求委派，呼叫其中一個之後�
 
 ## <a name="ordering"></a>排序
 
-順序中新增中介軟體元件`Configure`方法定義在要求中，會呼叫的順序和回應的相反順序。 此順序相當重要的安全性、 效能和功能。
+順序中新增中介軟體元件`Configure`方法定義在要求中，要呼叫的順序和回應的相反順序。 此順序相當重要的安全性、 效能和功能。
 
 Configure 方法 （如下所示） 會加入下列的中介軟體元件：
 
@@ -116,11 +116,11 @@ public void Configure(IApplicationBuilder app)
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 
-如果要求不會處理靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseAuthentication`)，它會執行驗證。 身分識別不最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的 Razor 頁面或控制器和動作。
+如果要求未處理由靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseAuthentication`)，它會執行驗證。 識別沒有最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的 Razor 頁面或控制器和動作。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-如果要求不會處理靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseIdentity`)，它會執行驗證。 身分識別不最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的控制器和動作。
+如果要求未處理由靜態檔案中介軟體，它會傳遞給身分識別的中介軟體 (`app.UseIdentity`)，它會執行驗證。 識別沒有最少運算未經驗證的要求。 雖然身分識別進行驗證的要求時，授權 （及拒絕） 後才會 MVC 選取特定的控制器和動作。
 
 -----------
 

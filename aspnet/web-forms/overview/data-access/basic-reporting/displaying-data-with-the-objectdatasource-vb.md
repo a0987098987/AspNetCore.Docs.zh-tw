@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d575c8f597bcb5d2a5d2e27e1145d39110daabe1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9e40ff968f82a9d05fc9441e2399e52a6c55f51
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="displaying-data-with-the-objectdatasource-vb"></a>利用 ObjectDataSource (VB) 顯示資料
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 我們的應用程式架構和網站頁面版面配置完成，我們就可以開始探索如何完成各種不同的資料和報告相關的一般工作。 在先前的教學課程中，我們已經看到如何以程式設計方式從 DAL 和 BLL 的資料繫結至資料之 ASP.NET 網頁中的 Web 控制項。 此語法的資料 Web 控制項指派`DataSource`屬性顯示，然後再呼叫控制項的資料`DataBind()`方法是使用 ASP.NET 1.x 應用程式的模式，而且可以繼續在 2.0 應用程式中使用。 不過，ASP.NET 2.0 的新資料來源控制項提供宣告的方式，來處理資料。 使用這些控制項可以繫結從上一個教學課程中建立，而不需要撰寫一行程式碼 BLL 擷取的資料 ！
 
-ASP.NET 2.0 隨附於五個內建資料來源控制項[SqlDataSource](https://msdn.microsoft.com/en-us/library/dz12d98w%28vs.80%29.aspx)， [AccessDataSource](https://msdn.microsoft.com/en-us/library/8e5545e1.aspx)， [ObjectDataSource](https://msdn.microsoft.com/en-us/library/9a4kyhcx.aspx)， [XmlDataSource](https://msdn.microsoft.com/en-us/library/e8d8587a%28en-US,VS.80%29.aspx)，和[Treeview](https://msdn.microsoft.com/en-us/library/5ex9t96x%28en-US,VS.80%29.aspx)雖然您可以建立您自己[自訂資料來源控制項](https://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnvs05/html/DataSourceCon1.asp)有需要。 因為我們已經教學課程應用程式開發架構，我們將使用 ObjectDataSource 針對我們 BLL 的類別。
+ASP.NET 2.0 隨附於五個內建資料來源控制項[SqlDataSource](https://msdn.microsoft.com/library/dz12d98w%28vs.80%29.aspx)， [AccessDataSource](https://msdn.microsoft.com/library/8e5545e1.aspx)， [ObjectDataSource](https://msdn.microsoft.com/library/9a4kyhcx.aspx)， [XmlDataSource](https://msdn.microsoft.com/library/e8d8587a%28en-US,VS.80%29.aspx)，和[Treeview](https://msdn.microsoft.com/library/5ex9t96x%28en-US,VS.80%29.aspx)雖然您可以建立您自己[自訂資料來源控制項](https://msdn.microsoft.com/library/default.asp?url=/library/dnvs05/html/DataSourceCon1.asp)有需要。 因為我們已經教學課程應用程式開發架構，我們將使用 ObjectDataSource 針對我們 BLL 的類別。
 
 
 ![ASP.NET 2.0 包含五個內建資料來源控制項](displaying-data-with-the-objectdatasource-vb/_static/image1.png)
@@ -90,7 +90,7 @@ ObjectDataSource 設定資料來源精靈提供快速的方式來指定它使用
 
 [!code-aspx[Main](displaying-data-with-the-objectdatasource-vb/samples/sample1.aspx)]
 
-即使您偏好設定資料來源精靈，可能是您需要手動設定 [ObjectDataSource]，因為精靈只列出開發人員建立的類別。 如果您想要這類將 ObjectDataSource 繫結至.NET Framework 中的類別[成員資格類別](https://msdn.microsoft.com/en-us/library/system.web.security.membership.aspx)、 存取使用者帳戶資訊，或[目錄類別](https://msdn.microsoft.com/en-us/library/system.io.directory.aspx)才能使用檔案系統資訊您必須手動設定 ObjectDataSource 的屬性。
+即使您偏好設定資料來源精靈，可能是您需要手動設定 [ObjectDataSource]，因為精靈只列出開發人員建立的類別。 如果您想要這類將 ObjectDataSource 繫結至.NET Framework 中的類別[成員資格類別](https://msdn.microsoft.com/library/system.web.security.membership.aspx)、 存取使用者帳戶資訊，或[目錄類別](https://msdn.microsoft.com/library/system.io.directory.aspx)才能使用檔案系統資訊您必須手動設定 ObjectDataSource 的屬性。
 
 ## <a name="step-2-adding-a-data-web-control-and-binding-it-to-the-objectdatasource"></a>步驟 2： 加入資料 Web 控制項並繫結至 ObjectDataSource
 
@@ -172,7 +172,7 @@ ObjectDataSource 設定資料來源精靈提供快速的方式來指定它使用
 
 [!code-xml[Main](displaying-data-with-the-objectdatasource-vb/samples/sample5.xml)]
 
-這就是這麼簡單 ！ `styleSheetTheme`設定表示佈景主題中所指定的屬性應該*不*覆寫控制層級上指定的屬性。 主題設定應該優先控制設定，請使用`theme`屬性取代`styleSheetTheme`; 不幸的是，Visual Studio 設計檢視中看不到主題設定。 請參閱[ASP.NET 佈景主題和面板概觀](https://msdn.microsoft.com/en-us/library/ykzx33wh.aspx)和[伺服器端樣式使用佈景主題](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx)佈景主題和面板; 上的相關資訊請參閱[How To： 適用於 ASP.NET 主題](https://msdn.microsoft.com/en-us/library/0yy5hxdk%28VS.80%29.aspx)如需詳細資訊設定頁面，即可使用佈景主題。
+這就是這麼簡單 ！ `styleSheetTheme`設定表示佈景主題中所指定的屬性應該*不*覆寫控制層級上指定的屬性。 主題設定應該優先控制設定，請使用`theme`屬性取代`styleSheetTheme`; 不幸的是，Visual Studio 設計檢視中看不到主題設定。 請參閱[ASP.NET 佈景主題和面板概觀](https://msdn.microsoft.com/library/ykzx33wh.aspx)和[伺服器端樣式使用佈景主題](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx)佈景主題和面板; 上的相關資訊請參閱[How To： 適用於 ASP.NET 主題](https://msdn.microsoft.com/library/0yy5hxdk%28VS.80%29.aspx)如需詳細資訊設定頁面，即可使用佈景主題。
 
 
 [![在 GridView 會顯示產品的名稱、 類別、 供應商、 價格和已停止的資訊](displaying-data-with-the-objectdatasource-vb/_static/image31.png)](displaying-data-with-the-objectdatasource-vb/_static/image30.png)
@@ -182,7 +182,7 @@ ObjectDataSource 設定資料來源精靈提供快速的方式來指定它使用
 
 ## <a name="displaying-one-record-at-a-time-in-the-detailsview"></a>在 DetailsView 中一次顯示一筆記錄
 
-在 GridView 會顯示資料來源控制項所繫結所傳回的每一筆記錄的一個資料列。 但有些的時候，不過，當我們可能會想要一次顯示唯一的記錄或只有一項記錄。 [DetailsView 控制項](https://msdn.microsoft.com/en-us/library/s3w1w7t4.aspx)提供這項功能，轉譯為 HTML`<table>`具有兩個資料行和一個資料列，每個資料行或屬性繫結至控制項。 您可以將 DetailsView 視為單一記錄旋轉 90 度的 GridView。
+在 GridView 會顯示資料來源控制項所繫結所傳回的每一筆記錄的一個資料列。 但有些的時候，不過，當我們可能會想要一次顯示唯一的記錄或只有一項記錄。 [DetailsView 控制項](https://msdn.microsoft.com/library/s3w1w7t4.aspx)提供這項功能，轉譯為 HTML`<table>`具有兩個資料行和一個資料列，每個資料行或屬性繫結至控制項。 您可以將 DetailsView 視為單一記錄旋轉 90 度的 GridView。
 
 開始加入的 DetailsView 控制項*上方*中的 GridView `SimpleDisplay.aspx`。 接下來，將它繫結到相同 ObjectDataSource 控制項為 GridView。 Like 與 GridView BoundField 就會加入至 ObjectDataSource 所傳回的物件中每一個屬性 DetailsView`Select`方法。 唯一的差別在於 DetailsView 的 BoundFields 配置時水平而不是垂直。
 
@@ -219,7 +219,7 @@ GridView，像是在 DetailsView 的 BoundFields 可強制提供更多自訂的�
 
 在 DetailsView 是相當固定在 ObjectDataSource 所傳回的每一筆記錄的顯示方式。 我們可能會想更有彈性的資料檢視。 比方說，而不是個別的資料列上顯示的產品名稱、 類別、 供應商、 價格和已停止的資訊，我們可能想要顯示產品名稱，並在價格`<h4>`標題時，出現的類別目錄] 和 [供應商資訊以下的名稱和價格較小的字型大小。 和我們可能不想要顯示值旁邊的屬性名稱 （產品、 分類等等）。
 
-[FormView 控制項](https://msdn.microsoft.com/en-US/library/fyf1dk77.aspx)提供這個層級自訂。 而不是使用欄位 （例如 GridView 和 DetailsView 做到的），在 FormView 會使用範本，可允許混合的 Web 控制項，靜態的 HTML 和[資料繫結語法](http://www.15seconds.com/issue/040630.htm)。 如果您已熟悉 ASP.NET 從中繼器控制項 1.x，您可以想像在 formview 中繼器顯示單一記錄。
+[FormView 控制項](https://msdn.microsoft.com/library/fyf1dk77.aspx)提供這個層級自訂。 而不是使用欄位 （例如 GridView 和 DetailsView 做到的），在 FormView 會使用範本，可允許混合的 Web 控制項，靜態的 HTML 和[資料繫結語法](http://www.15seconds.com/issue/040630.htm)。 如果您已熟悉 ASP.NET 從中繼器控制項 1.x，您可以想像在 formview 中繼器顯示單一記錄。
 
 將 FormView 控制項加入`SimpleDisplay.aspx`頁面的設計介面。 一開始在 FormView 會顯示為灰色區塊，通知我們，我們需要最小值，提供控制項的`ItemTemplate`。
 
@@ -256,12 +256,12 @@ DetailsView，像是 FormView 只會顯示從 ObjectDataSource 傳回第一筆�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [建立您自己的資料來源控制項](https://msdn.microsoft.com/en-us/library/ms364049.aspx)
-- [ASP.NET 2.0 的 GridView 範例](https://msdn.microsoft.com/en-us/library/aa479339.aspx)
+- [建立您自己的資料來源控制項](https://msdn.microsoft.com/library/ms364049.aspx)
+- [ASP.NET 2.0 的 GridView 範例](https://msdn.microsoft.com/library/aa479339.aspx)
 - [簡化並擴充資料繫結在 ASP.NET 2.0 的語法](http://www.15seconds.com/issue/040630.htm)
 - [在 ASP.NET 2.0 的佈景主題](http://www.odetocode.com/Articles/423.aspx)
 - [使用佈景主題的伺服器端樣式](https://quickstarts.asp.net/quickstartv20/aspnet/doc/themes/stylesheettheme.aspx)
-- [如何： 以程式設計方式套用 ASP.NET 主題](https://msdn.microsoft.com/en-us/library/tx35bd89.aspx)
+- [如何： 以程式設計方式套用 ASP.NET 主題](https://msdn.microsoft.com/library/tx35bd89.aspx)
 
 ## <a name="about-the-author"></a>關於作者
 

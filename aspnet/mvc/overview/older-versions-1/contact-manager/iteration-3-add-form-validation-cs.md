@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06c7fc31e138e9009640d20202e4745a61b68eeb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 120c35755784ba5a08a9592fdc58f17879848631
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="iteration-3--add-form-validation-c"></a>反覆項目 #3-加入表單驗證 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-3-add-form-validation-cs/_static/contactmanager_3_cs1.zip)
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 在這個反覆項目，為了讓事情變簡單，我們撰寫所有驗證程式碼以手動方式。 而不必自行撰寫驗證程式碼，我們無法利用驗證架構。 例如，您可以使用 Microsoft 企業程式庫驗證應用程式區塊 (VAB) 來實作 ASP.NET MVC 應用程式的驗證邏輯。 若要深入了解驗證應用程式區塊，請參閱：
 
-[*http://msdn.microsoft.com/en-us/library/dd203099.aspx*](https://msdn.microsoft.com/en-us/library/dd203099.aspx)
+[*http://msdn.microsoft.com/library/dd203099.aspx*](https://msdn.microsoft.com/library/dd203099.aspx)
 
 ## <a name="adding-validation-to-the-create-view"></a>將驗證加入至建立檢視
 
@@ -127,7 +127,7 @@ Edit() 動作來更新連絡人。 Edit() 動作需要執行 create （） 動�
 
 修改過的連絡人控制器類別包含在列出的 3。 這個類別具有新 ValidateContact() 方法呼叫內的 create （） 」 和 「 Edit() 動作。
 
-**列出 3-Controllers\ContactController.cs**
+**Listing 3 - Controllers\ContactController.cs**
 
 [!code-csharp[Main](iteration-3-add-form-validation-cs/samples/sample4.cs)]
 

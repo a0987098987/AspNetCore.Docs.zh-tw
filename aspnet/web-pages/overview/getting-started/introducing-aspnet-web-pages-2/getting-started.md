@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 615ddc31d0d857e5bf9a7f372b7efcf67d185905
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a6789ee75b4ca6e9443681cc7ec0bd3ab94cedcd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>介紹的 ASP.NET Web Pages-快速入門
 ====================
@@ -124,8 +124,8 @@ WebMatrix 是一種工具，整合網頁編輯器、 資料庫公用程式、 we
 
 您需要 Azure 帳戶，以將此方案部署到 Azure。 如果您沒有帳戶，您會有下列選項：
 
-- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
-- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
+- [開啟免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604)-取得信用額度您可以使用試用付費型 Azure 服務，而且即使他們用於之後可以使帳戶保持最多並使用免費的 Azure 服務。
+- [啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)-您的 MSDN 訂用帳戶可讓您信用額度付費型 Azure 服務，您可以使用每個月。
 
 ## <a name="installing-everything"></a>安裝的所有項目
 
@@ -155,7 +155,7 @@ Web Platform Installer 出現時，您可以準備安裝 WebMatrix。 按一下 
 
 完成時，安裝程序就可以自動啟動 WebMatrix。 如果不是，在 Windows 中，從**啟動**功能表，啟動**Microsoft WebMatrix**。
 
-當您第一次啟動 WebMatrix 時，您可以使用您的 Microsoft 帳戶登入 Microsoft Azure 的機率。 只要登入，您會收到 10 的免費 web 應用程式透過 Azure。 這些免費的 web 應用程式提供便利的方式來測試您的應用程式。 如果您還沒有 Azure 帳戶，但您需要具有 MSDN 訂用帳戶，您可以[啟動您的 MSDN 訂用帳戶權益](https://www.windowsazure.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)。 否則，您可以建立免費的試用帳戶只需要幾分鐘的時間。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/free/?WT.mc_id=A443DD604)。
+當您第一次啟動 WebMatrix 時，您可以使用您的 Microsoft 帳戶登入 Microsoft Azure 的機率。 只要登入，您會收到 10 的免費 web 應用程式透過 Azure。 這些免費的 web 應用程式提供便利的方式來測試您的應用程式。 如果您還沒有 Azure 帳戶，但您需要具有 MSDN 訂用帳戶，您可以[啟動您的 MSDN 訂用帳戶權益](https://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604)。 否則，您可以建立免費的試用帳戶只需要幾分鐘的時間。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/free/?WT.mc_id=A443DD604)。
 
 您不必立即登入以繼續進行這個教學課程。 如果您沒有登入現在，您仍然可以選擇稍後登入。 最後一個[主題](publishing.md)在本教學課程系列涵蓋如何將您的網站部署到 Azure; 因此，您必須登入才能完成該主題。
 
@@ -207,7 +207,7 @@ WebMatrix 會顯示一份檔案類型。 選取**CSHTML**，然後在**名稱**�
 
 ![建立新的 CSHTML 頁面命名 HelloWorld.cshtml](getting-started/_static/image15.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 WebMatrix 所建立的網頁，並在編輯器中開啟。
 

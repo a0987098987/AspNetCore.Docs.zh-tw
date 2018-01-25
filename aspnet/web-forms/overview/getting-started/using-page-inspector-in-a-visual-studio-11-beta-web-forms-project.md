@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: a2ac8334e62e6ab7af7042572cfd5950c687001b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ca8a3c194577766e56d0604323fef567d539316c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-page-inspector-for-visual-studio-2012-in-aspnet-web-forms"></a>使用 Page Inspector 的 ASP.NET Web Form 中的 Visual Studio 2012
 ====================
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11/en-us)或[Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。
+- [Visual Studio 2012](https://www.microsoft.com/visualstudio/11)或[Visual Studio Express 2012 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。
 
 > [!NOTE]
 > 若要取得 Page Inspector 的最新版本，請使用[Web Platform Installer](https://go.microsoft.com/fwlink/?LinkId=255386)安裝 Azure SDK for.NET 2.0。
@@ -67,7 +67,7 @@ Page Inspector 隨附 Microsoft Web Developer Tools。 最新版本是 1.3。 �
 
 ![新的 Web Form 應用程式](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image1.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 應用程式中開啟**來源**檢視。
 
@@ -91,7 +91,7 @@ Page Inspector 隨附 Microsoft Web Developer Tools。 最新版本是 1.3。 �
 
 ![清除浮動工具視窗核取方塊以 Visual Studio 和卸除的 Page Inspector 視窗之間的 ALT + TAB](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image5.png)
 
-頁面偵測器視窗的上方窗格會顯示目前的網頁瀏覽器視窗中。 下方窗格會顯示頁面的左側的 HTML 標記中，並在右側，可讓您的某些索引標籤檢查頁面的不同層面。 下方窗格會類似於[F12 開發人員工具](https://msdn.microsoft.com/en-us/ie/aa740478)Internet Explorer 中。 （不過，不同於開發人員工具 中，您可以使用 Page Inspector 在 Visual Studio 中的權限。）
+頁面偵測器視窗的上方窗格會顯示目前的網頁瀏覽器視窗中。 下方窗格會顯示頁面的左側的 HTML 標記中，並在右側，可讓您的某些索引標籤檢查頁面的不同層面。 下方窗格會類似於[F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)Internet Explorer 中。 （不過，不同於開發人員工具 中，您可以使用 Page Inspector 在 Visual Studio 中的權限。）
 
 ![Page Inspector](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image6.png)
 
@@ -289,7 +289,7 @@ Page Inspector 可以立即偵測到變更*Site.css*檔案 （或應用程式中
 
 <a id="_using_page_inspector_1"></a>請注意您方便地重新整理 Page Inspector 瀏覽器直接從 Visual Studio 環境中。 而不外部瀏覽器中使用 Page Inspector 可讓您保持在編輯器中，當您開發 web 應用程式。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [簡介頁面偵測器](https://channel9.msdn.com/posts/visual-studio-vnext-introducing-page-inspector)（Channel 9 影片）
 

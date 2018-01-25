@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1f84558bcc59068f2c6cab390c303ebd97953aaa
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: aa4afbf2200e1167c9f66aeaddb4273e710394b4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>以程式設計方式設定 ObjectDataSource 參數值 (VB)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 有時候，不過，參數值來自其中一個內建資料來源所未佔用之某些來源`Parameter`物件。 如果網站支援的使用者帳戶我們可能會想要設定參數，根據目前登入的訪客的使用者 id。 或者，我們可能需要自訂的參數值，再將它傳送至 ObjectDataSource 基礎物件的方法。
 
-每當 ObjectDataSource`Select`叫用方法時 ObjectDataSource 第一次引發其[Selecting 事件](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx)。 然後叫用 ObjectDataSource 基礎物件的方法。 一旦完成 ObjectDataSource[選取事件](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx)引發 （圖 1 所示的事件，此順序）。 可設定或自訂的事件處理常式的參數值傳入 ObjectDataSource 基礎物件的方法`Selecting`事件。
+每當 ObjectDataSource`Select`叫用方法時 ObjectDataSource 第一次引發其[Selecting 事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selecting%28VS.80%29.aspx)。 然後叫用 ObjectDataSource 基礎物件的方法。 一旦完成 ObjectDataSource[選取事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selected%28VS.80%29.aspx)引發 （圖 1 所示的事件，此順序）。 可設定或自訂的事件處理常式的參數值傳入 ObjectDataSource 基礎物件的方法`Selecting`事件。
 
 
 [![ObjectDataSource 選取及選取事件引發之前和之後其基礎物件的方法會叫用](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image2.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image1.png)
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/10/2017
 **圖 2**： 加入新的查詢，來`EmployeesTableAdapter`([按一下以檢視完整大小的影像](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image6.png))
 
 
-選擇要加入的 SQL 陳述式會傳回資料列。 當您來到 指定`SELECT`陳述式畫面上的預設`SELECT`陳述式`EmployeesTableAdapter`，就會載入。 只要加入在`WHERE`子句： `WHERE DATEPART(m, HireDate) = @Month`。 [DATEPART](https://msdn.microsoft.com/en-us/library/ms174420.aspx)的 T-SQL 函式會傳回特定日期部分的`datetime`類型; 在此情況下，我們會使用`DATEPART`傳回月份的`HireDate`資料行。
+選擇要加入的 SQL 陳述式會傳回資料列。 當您來到 指定`SELECT`陳述式畫面上的預設`SELECT`陳述式`EmployeesTableAdapter`，就會載入。 只要加入在`WHERE`子句： `WHERE DATEPART(m, HireDate) = @Month`。 [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)的 T-SQL 函式會傳回特定日期部分的`datetime`類型; 在此情況下，我們會使用`DATEPART`傳回月份的`HireDate`資料行。
 
 
 [![傳回只有那些資料列位置的 HireDate 資料行小於或等於@HiredBeforeDate參數](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-vb/_static/image7.png)

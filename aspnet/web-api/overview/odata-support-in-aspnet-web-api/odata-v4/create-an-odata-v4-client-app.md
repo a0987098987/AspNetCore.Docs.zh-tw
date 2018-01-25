@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app
 msc.type: authoredcontent
-ms.openlocfilehash: daa39fbbb4ff17d61f71bf2a642a9c2260b353e4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 51a3c7b9c5b6525d6d82b9a45910f58b71268b7f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="create-an-odata-v4-client-app-c"></a>建立 OData v4 用戶端應用程式 (C#)
 ====================
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="generate-the-service-proxy"></a>產生服務 Proxy
 
-服務 proxy 是.NET 類別定義存取 OData 服務的方法。 Proxy 將轉譯成 HTTP 要求的方法呼叫。 您將建立 proxy 類別，藉由執行[T4 範本](https://msdn.microsoft.com/en-us/library/bb126445.aspx)。
+服務 proxy 是.NET 類別定義存取 OData 服務的方法。 Proxy 將轉譯成 HTTP 要求的方法呼叫。 您將建立 proxy 類別，藉由執行[T4 範本](https://msdn.microsoft.com/library/bb126445.aspx)。
 
 以滑鼠右鍵按一下專案。 選取**新增** &gt; **新項目**。
 

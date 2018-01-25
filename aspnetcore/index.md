@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: index
-ms.openlocfilehash: 6535cc2d7eed099804db5d9783e0f7384bc9fcad
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 7d5afd5871316509a385d14bbfe886bfe55d1ff4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -28,7 +28,7 @@ ASP.NET Core 是一種跨平台且高效能的[開放原始碼](https://github.c
 
 ## <a name="why-use-aspnet-core"></a>為何使用 ASP.NET Core？
 
-數百萬的開發人員已使用 (並持續使用) [ASP.NET 4.x](https://docs.microsoft.com/en-us/aspnet/overview) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
+數百萬的開發人員已使用 (並持續使用) [ASP.NET 4.x](https://docs.microsoft.com/aspnet/overview) 來建立 Web 應用程式。 ASP.NET Core 是 ASP.NET 4.x 的重新設計，其架構變更可產生更為精簡且更加模組化的架構。
 
 ASP.NET Core 提供下列優點：
 

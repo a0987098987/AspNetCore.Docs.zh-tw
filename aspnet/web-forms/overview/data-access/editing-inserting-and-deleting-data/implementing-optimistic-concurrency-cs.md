@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 50d02e8da7b7ab489e662b42d8f08ad3a99e66eb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a19e6c320838849e10d2aa397a23a0ee906bac22
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="implementing-optimistic-concurrency-c"></a>實作開放式並行存取 (C#)
 ====================
@@ -257,7 +257,7 @@ DAL 和 BLL 完整，所有剩下的都只有建立 ASP.NET 網頁，可以利�
 > 值`OldValuesParameterFormatString`屬性必須對應到 BLL 中預期的原始值的輸入的參數名稱。 因為我們命名為這些參數`original_productName`， `original_supplierID`，依此類推，您可以保留`OldValuesParameterFormatString`屬性值當成`original_{0}`。 如果，不過，BLL 方法的輸入的參數具有類似名稱`old_productName`， `old_supplierID`，依此類推，您必須更新`OldValuesParameterFormatString`屬性`old_{0}`。
 
 
-沒有一個必須是為了讓正確傳遞的原始值 BLL 方法 ObjectDataSource 的最後一個屬性設定。 ObjectDataSource 具有[ConflictDetection 屬性](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx)可以指派給[兩個值的其中一個](https://msdn.microsoft.com/en-US/library/system.web.ui.conflictoptions.aspx):
+沒有一個必須是為了讓正確傳遞的原始值 BLL 方法 ObjectDataSource 的最後一個屬性設定。 ObjectDataSource 具有[ConflictDetection 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx)可以指派給[兩個值的其中一個](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
 
 - `OverwriteChanges`-預設值。不會傳送到 BLL 方法的原始的輸入參數的原始值
 - `CompareAllValues`-未傳送的原始值 BLL 方法;選擇此選項，當使用開放式並行存取
@@ -342,7 +342,7 @@ ObjectDataSource 正確設定的屬性，讓我們來開啟我們注意到設定
 
 若要確認正在進行同步存取違規，偵測到 （而非產生盲目覆寫資料中），我們要開啟此頁面的兩個瀏覽器視窗。 在這兩個瀏覽器執行個體中，按一下 [編輯] 按鈕的 Chai。 在其中一個瀏覽器，將名稱變更為"Chai 茶杯"然後按一下 [更新]。 更新應該會成功，並傳回其預先編輯狀態，以做為新的產品名稱的 「 Chai 茶杯"GridView。
 
-其他瀏覽器視窗中執行個體中，不過，產品名稱文字方塊中仍會顯示 「 Chai"。 在此第二個瀏覽器視窗中，更新`UnitPrice`至`25.00`。 沒有開放式並行存取支援，按一下第二個瀏覽器執行個體中的更新會將產品名稱改回"Chai 」，藉此覆寫第一個瀏覽器執行個體所做的變更。 使用採用開放式並行存取，不過，按一下第二個瀏覽器執行個體中的 [更新] 按鈕會產生[DBConcurrencyException](https://msdn.microsoft.com/en-us/library/system.data.dbconcurrencyexception.aspx)。
+其他瀏覽器視窗中執行個體中，不過，產品名稱文字方塊中仍會顯示 「 Chai"。 在此第二個瀏覽器視窗中，更新`UnitPrice`至`25.00`。 沒有開放式並行存取支援，按一下第二個瀏覽器執行個體中的更新會將產品名稱改回"Chai 」，藉此覆寫第一個瀏覽器執行個體所做的變更。 使用採用開放式並行存取，不過，按一下第二個瀏覽器執行個體中的 [更新] 按鈕會產生[DBConcurrencyException](https://msdn.microsoft.com/library/system.data.dbconcurrencyexception.aspx)。
 
 
 [![DBConcurrencyException 偵測到並行違規時，就會擲回](implementing-optimistic-concurrency-cs/_static/image48.png)](implementing-optimistic-concurrency-cs/_static/image47.png)

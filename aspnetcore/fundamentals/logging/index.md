@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/logging/index
-ms.openlocfilehash: 387d19af9165d4b54ce3cb1a9b04412271da6fb0
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: af8364c584b686fd5c0fe30a89e241d9d08a30c0
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
 
@@ -43,7 +43,7 @@ ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供�
 
 此範例會建立以 `TodoController` 為「類別」的記錄。 [本文稍後](#log-category)將說明類別。
 
-ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該快速，而使用非同步並不值得。 如果發生與其相反的情況，請考慮變更您的記錄方式。 如果您的資料存放區很慢，請先將記錄訊息寫入至快速存放區，稍後再移至慢速存放區。 例如，記錄至訊息佇列以供其他處理序讀取及保存至慢速儲存體。
+ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快速，因此不值得使用非同步方法。 如果發生與其相反的情況，請考慮變更您的記錄方式。 如果您的資料存放區很慢，請先將記錄訊息寫入至快速存放區，稍後再移至慢速存放區。 例如，記錄至訊息佇列以供其他處理序讀取及保存至慢速儲存體。
 
 ## <a name="how-to-add-providers"></a>如何新增提供者
 
@@ -336,7 +336,7 @@ System.Exception: Item not found exception.
 
 **預設最低層級**
 
-只有組態或程式碼中沒有適用於指定提供者和類別的規則時，最低層級設定才有效。 下列範例示範如何設定最低層級：
+只有組態或程式碼中沒有適用於指定提供者和類別的規則時，最低層級設定才會生效。 下列範例示範如何設定最低層級：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_MinLevel&highlight=3)]
 
@@ -344,7 +344,7 @@ System.Exception: Item not found exception.
 
 **篩選函式**
 
-您可以在篩選函式中撰寫程式碼來套用篩選規則。 系統會針對組態或程式碼未指派規則的所有提供者和類別叫用篩選函式。 函式中的程式碼可存取提供者類型、類別和記錄層級，以判斷是否應該記錄訊息。 例如: 
+您可以在篩選函式中撰寫程式碼來套用篩選規則。 針對組態或程式碼未指派規則的所有提供者和類別，會叫用篩選函式。 函式中的程式碼可存取提供者類型、類別和記錄層級，以判斷是否應該記錄訊息。 例如: 
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 

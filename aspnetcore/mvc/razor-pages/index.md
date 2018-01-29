@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 059dc3a163c646877da40a73bcc9a75eb38fb345
-ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
+ms.openlocfilehash: a08c1b59c7be3a27fc11e6737a1cb4b4208f2901
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -348,7 +348,7 @@ public string Message { get; set; }
 
 [!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
 
-<!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there is no `asp-` attribute   -->
+<!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there's no `asp-` attribute   -->
 
 上例中的表單有兩個提交按鈕，每一個都使用 `FormActionTagHelper` 提交至不同的 URL。 `asp-page-handler` 屬性附隨於 `asp-page`。 `asp-page-handler` 產生的 URL 會提交至頁面所定義的每一個處理常式方法。 因為範例連結至目前的頁面，所以未指定 `asp-page`。
 
@@ -370,7 +370,7 @@ public string Message { get; set; }
 
 上述的路由會將處理常式名稱放入 URL 路徑，而不是放入查詢字串。 跟在 `handler` 後面的 `?` 表示路由參數為選擇性。
 
-您可以使用 `@page` 將額外的區段和參數新增至頁面的路由。 無論什麼都**附加**至頁面的預設路由。 不支援使用絕對或虛擬路徑變更頁面的路由 (例如 `"~/Some/Other/Path"`)。
+您可以使用 `@page` 將額外的區段和參數新增至頁面的路由。 其中包含的所有項目都將**附加**至頁面的預設路由。 不支援使用絕對或虛擬路徑變更頁面的路由 (例如 `"~/Some/Other/Path"`)。
 
 ## <a name="configuration-and-settings"></a>組態與設定
 

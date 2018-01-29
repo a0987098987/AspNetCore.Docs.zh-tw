@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 470b8a5f4a004c85f603c9c5d0766e5826c96e38
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c98e79bf8e9a1fe0899ed6d952c3e411ca472f7e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正它範例應用程式 （建置真實世界雲端應用程式與 Azure）
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 建立真實世界雲端應用程式與 Azure 的電子書本附錄包含下列各節提供有關修正它範例應用程式，您可以下載的其他資訊：
 
 - [已知的問題](#knownissues)
-- [最佳作法](#bestpractices)
+- [最佳做法](#bestpractices)
 - [如何在本機電腦上從 Visual Studio 執行應用程式](#run-in-vs)
 - [如何使用 Windows PowerShell 指令碼，將基底應用程式部署至 Azure App Service Web 應用程式](#deploybase)
 - [疑難排解 Windows PowerShell 指令碼](#troubleshooting)
@@ -62,10 +62,10 @@ ms.lasthandoff: 11/10/2017
 
 佇列中的訊息處理它修正應用程式被設計為簡化，以便說明最小量的程式碼以佇列為主的工作模式。 這個簡單的程式碼不是足夠用於實際執行應用程式。
 
-- 程式碼並不保證會處理一次的每個佇列的訊息。 當您從佇列取得訊息時，但沒有逾時期限，在訊息是看不到其他佇列接聽程式。 如果在逾時過期之前刪除訊息，再次顯示訊息。 因此，如果背景工作角色執行個體花費很長的時間處理訊息，它是相同的訊息處理兩次，理論上可能導致資料庫中的重複工作。 如需有關此問題的詳細資訊，請參閱[使用 Azure 儲存體佇列](https://msdn.microsoft.com/en-us/library/ff803365.aspx#sec7)。
-- 藉由批次處理訊息擷取佇列輪詢邏輯可能更符合成本效益。 每次呼叫[CloudQueue.GetMessageAsync](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync.aspx)，會有交易成本。 相反地，您可以呼叫[CloudQueue.GetMessagesAsync](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessagesasync.aspx) (請注意複數形式的 ')，此 cmdlet 會取得在單一交易中的多個訊息。 Azure 儲存體佇列的交易成本是很低的因此不在大部分情況下大量成本的影響。
+- 程式碼並不保證會處理一次的每個佇列的訊息。 當您從佇列取得訊息時，但沒有逾時期限，在訊息是看不到其他佇列接聽程式。 如果在逾時過期之前刪除訊息，再次顯示訊息。 因此，如果背景工作角色執行個體花費很長的時間處理訊息，它是相同的訊息處理兩次，理論上可能導致資料庫中的重複工作。 如需有關此問題的詳細資訊，請參閱[使用 Azure 儲存體佇列](https://msdn.microsoft.com/library/ff803365.aspx#sec7)。
+- 藉由批次處理訊息擷取佇列輪詢邏輯可能更符合成本效益。 每次呼叫[CloudQueue.GetMessageAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync.aspx)，會有交易成本。 相反地，您可以呼叫[CloudQueue.GetMessagesAsync](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.queue.cloudqueue.getmessagesasync.aspx) (請注意複數形式的 ')，此 cmdlet 會取得在單一交易中的多個訊息。 Azure 儲存體佇列的交易成本是很低的因此不在大部分情況下大量成本的影響。
 - 緊密迴圈中的佇列訊息處理程式碼會使 CPU 親和性，不會有效地使用多核心的 Vm。 更好的設計會使用工作平行處理原則，以平行方式執行幾項非同步工作。
-- 佇列的訊息處理有只初步的例外狀況處理。 例如，程式碼不會處理[有害訊息](https://msdn.microsoft.com/en-us/library/ms789028.aspx)。 （訊息處理就會導致例外狀況，您必須將錯誤記錄，並刪除郵件，或背景工作角色將會嘗試處理它，而迴圈會繼續執行無限期。）
+- 佇列的訊息處理有只初步的例外狀況處理。 例如，程式碼不會處理[有害訊息](https://msdn.microsoft.com/library/ms789028.aspx)。 （訊息處理就會導致例外狀況，您必須將錯誤記錄，並刪除郵件，或背景工作角色將會嘗試處理它，而迴圈會繼續執行無限期。）
 
 ### <a name="sql-queries-are-unbounded"></a>SQL 查詢都不受限制
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="special-handling-for-html-codes-in-user-input"></a>使用者輸入中的 HTML 程式碼的特殊處理
 
-ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者輸入的文字方塊中輸入指令碼嘗試跨網站指令碼的攻擊。 和 MVC`DisplayFor`協助程式用來顯示工作項目和資訊會自動針對它傳送至瀏覽器進行 HTML 編碼的值。 但在生產環境應用程式可能會想要採取其他措施。 如需詳細資訊，請參閱[中 ASP.NET 的要求驗證](https://msdn.microsoft.com/en-us/library/hh882339.aspx)。
+ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者輸入的文字方塊中輸入指令碼嘗試跨網站指令碼的攻擊。 和 MVC`DisplayFor`協助程式用來顯示工作項目和資訊會自動針對它傳送至瀏覽器進行 HTML 編碼的值。 但在生產環境應用程式可能會想要採取其他措施。 如需詳細資訊，請參閱[中 ASP.NET 的要求驗證](https://msdn.microsoft.com/library/hh882339.aspx)。
 
 <a id="bestpractices"></a>
 ## <a name="best-practices"></a>最佳作法
@@ -146,13 +146,13 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 
 ### <a name="mark-private-members-as-readonly-when-they-arent-expected-to-change"></a>將私用成員標記為 readonly，當它們不應該變更
 
-例如，在`DashboardController`類別的執行個體`FixItTaskRepository`建立，且不應該變更，因此我們定義成[readonly](https://msdn.microsoft.com/en-us/library/acdd6hb7.aspx)。
+例如，在`DashboardController`類別的執行個體`FixItTaskRepository`建立，且不應該變更，因此我們定義成[readonly](https://msdn.microsoft.com/library/acdd6hb7.aspx)。
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample9.cs?highlight=3)]
 
 ### <a name="use-listany-instead-of-listcount-gt-0"></a>使用清單。Any （) 而不是清單。Count （) &gt; 0
 
-如果所有的您很重視您的清單中的一個或多個項目是否符合指定的準則，請使用[任何](https://msdn.microsoft.com/en-us/library/bb534972.aspx)方法，它就會傳回找到符合準則的項目，而因為`Count`方法一律必須逐一查看透過每個項目。 儀表板*Index.cshtml*檔案最初的這段程式碼：
+如果所有的您很重視您的清單中的一個或多個項目是否符合指定的準則，請使用[任何](https://msdn.microsoft.com/library/bb534972.aspx)方法，它就會傳回找到符合準則的項目，而因為`Count`方法一律必須逐一查看透過每個項目。 儀表板*Index.cshtml*檔案最初的這段程式碼：
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample10.cshtml)]
 
@@ -166,13 +166,13 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample12.cshtml)]
 
-檢視/動作連結，就像這樣的最好使用[Url.Action](https://msdn.microsoft.com/en-us/library/system.web.mvc.urlhelper.action.aspx) HTML helper，例如：
+檢視/動作連結，就像這樣的最好使用[Url.Action](https://msdn.microsoft.com/library/system.web.mvc.urlhelper.action.aspx) HTML helper，例如：
 
 [!code-cshtml[Main](the-fix-it-sample-application/samples/sample13.cshtml)]
 
 ### <a name="use-taskdelay-instead-of-threadsleep-in-worker-role"></a>背景工作角色，而非 Thread.Sleep 使用 Task.Delay
 
-將新專案範本`Thread.Sleep`在範例程式碼背景工作角色，而造成執行緒睡眠可能會導致執行緒集區繁衍 （spawn） 其他不必要的執行緒。 您可以藉由避免[Task.Delay](https://msdn.microsoft.com/en-us/library/hh139096.aspx)改為。
+將新專案範本`Thread.Sleep`在範例程式碼背景工作角色，而造成執行緒睡眠可能會導致執行緒集區繁衍 （spawn） 其他不必要的執行緒。 您可以藉由避免[Task.Delay](https://msdn.microsoft.com/library/hh139096.aspx)改為。
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample14.cs?highlight=11)]
 
@@ -184,11 +184,11 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample15.cs)]
 
-您應該使用`async void`僅適用於最上層的事件處理常式。 如果您定義將方法當做`async void`，呼叫端無法**await**方法或攔截方法擲回任何例外狀況。 如需詳細資訊，請參閱[中非同步程式設計的最佳作法](https://msdn.microsoft.com/en-us/magazine/jj991977.aspx)。 
+您應該使用`async void`僅適用於最上層的事件處理常式。 如果您定義將方法當做`async void`，呼叫端無法**await**方法或攔截方法擲回任何例外狀況。 如需詳細資訊，請參閱[中非同步程式設計的最佳作法](https://msdn.microsoft.com/magazine/jj991977.aspx)。 
 
 ### <a name="use-a-cancellation-token-to-break-from-worker-role-loop"></a>中斷從背景工作角色迴圈中使用取消語彙基元
 
-一般而言，**執行**工作者角色上的方法包含無限迴圈。 背景工作角色停止時，請[Application_end](https://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx)方法呼叫。 您應該使用這個方法來取消工作內所進行**執行**方法並結束依正常程序。 否則，處理序可能會終止作業當中。
+一般而言，**執行**工作者角色上的方法包含無限迴圈。 背景工作角色停止時，請[Application_end](https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx)方法呼叫。 您應該使用這個方法來取消工作內所進行**執行**方法並結束依正常程序。 否則，處理序可能會終止作業當中。
 
 ### <a name="opt-out-of-automatic-mime-sniffing-procedure"></a>選擇退出自動 MIME 探查程序
 
@@ -219,7 +219,7 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 <a id="runbase"></a>
 ### <a name="run-the-base-application"></a>執行基本的應用程式
 
-1. 安裝[Visual Studio 2013 或 Visual Studio 2013 Express for Web](https://www.visualstudio.com/en-us/downloads)。
+1. 安裝[Visual Studio 2013 或 Visual Studio 2013 Express for Web](https://www.visualstudio.com/downloads)。
 2. 安裝[Azure SDK for.NET for Visual Studio 2013。](https://go.microsoft.com/fwlink/p/?linkid=323510&amp;clcid=0x409)
 3. 下載.zip 檔案從[MSDN Code Gallery](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4)。
 4. 在檔案總管] 中，以滑鼠右鍵按一下.zip 檔案並按一下 [內容]，然後在 [屬性] 視窗中按一下 [解除封鎖。
@@ -228,7 +228,7 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 7. 從 [工具] 功能表中，按一下 [程式庫封裝管理員，則封裝管理員主控台]。
 8. 在 封裝管理員主控台 (PMC)，按一下 還原。
 9. 結束 Visual Studio。
-10. 啟動[Azure 儲存體模擬器](https://msdn.microsoft.com/en-us/library/windowsazure/hh403989.aspx)。
+10. 啟動[Azure 儲存體模擬器](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx)。
 11. 重新啟動 Visual Studio 中，開啟上一個步驟中您關閉方案檔案。
 12. 請確定 FixIt 專案已設定為啟始專案，，然後按 CTRL + F5 執行專案。
 
@@ -240,7 +240,7 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 3. 應用程式中*Web.config*檔案*MyFixIt*專案 （web 專案） 中，變更的值`appSettings/UseQueues`為"true": 
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample19.cmd?highlight=3)]
-4. 如果[Azure 儲存體模擬器](https://msdn.microsoft.com/en-us/library/windowsazure/hh403989.aspx)不是仍在執行中，再次啟動它。
+4. 如果[Azure 儲存體模擬器](https://msdn.microsoft.com/library/windowsazure/hh403989.aspx)不是仍在執行中，再次啟動它。
 5. 同時執行 FixIt web 專案與 MyFixItCloudService 專案。
 
     使用 Visual Studio 2013:
@@ -253,7 +253,7 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
     1. 在 方案總管 FixIt 方案上按一下滑鼠右鍵，然後選取**屬性**。
     2. 選取**多個啟始專案**...
     3. 在**動作**MyFixIt 和 MyFixItCloudService，底下的下拉式清單選取**啟動**。
-    4. 按一下 [確定]。
+    4. 按一下 [確定 **Deploying Office Solutions**]。
     5. 按 F5 執行這兩個專案。
 
     當您執行 MyFixItCloudService 專案時，Visual Studio 會啟動 Azure 計算模擬器。 根據您的防火牆設定，您可能需要允許通過防火牆的模擬器。
@@ -397,7 +397,7 @@ MyFixIt.WorkerRoler\app.config，在底下`connectionStrings`，取代的值`app
 
 [!code-xml[Main](the-fix-it-sample-application/samples/sample34.xml?highlight=3)]
 
-現在您已準備好要部署雲端服務。 在方案總管 中以滑鼠右鍵按一下 MyFixItCloudService 專案，然後選取**發行**。 如需詳細資訊，請參閱 「[部署至 Azure 應用程式](https://www.windowsazure.com/en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz)"，這是在第 2 部分[本教學課程](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)。
+現在您已準備好要部署雲端服務。 在方案總管 中以滑鼠右鍵按一下 MyFixItCloudService 專案，然後選取**發行**。 如需詳細資訊，請參閱 「[部署至 Azure 應用程式](https://www.windowsazure.com/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz)"，這是在第 2 部分[本教學課程](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)。
 
 >[!div class="step-by-step"]
 [上一步](more-patterns-and-guidance.md)

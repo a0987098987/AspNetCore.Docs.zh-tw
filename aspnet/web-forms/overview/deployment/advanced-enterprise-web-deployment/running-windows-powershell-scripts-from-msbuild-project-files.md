@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: 5f6ba0655f5dc1d043b905428a3797ed141b0fed
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: afee7b0621df42a8bc70fc6f7c4a8fd0383fa83a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>MSBuild 專案檔從執行 Windows PowerShell 指令碼
 ====================
@@ -137,10 +137,10 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="executing-a-windows-powershell-script-on-a-remote-computer"></a>在遠端電腦上執行 Windows PowerShell 指令碼
 
-Windows PowerShell 是能夠在遠端電腦上執行指令碼[Windows 遠端管理](https://msdn.microsoft.com/en-us/library/windows/desktop/aa384426.aspx)(WinRM)。 若要這樣做，您需要使用[Invoke-command](https://technet.microsoft.com/en-us/library/dd347578.aspx) cmdlet。 這可讓您執行您的指令碼，對一個或多個遠端電腦，而不將指令碼複製到遠端電腦。 您執行指令碼的本機電腦，會傳回任何結果。
+Windows PowerShell 是能夠在遠端電腦上執行指令碼[Windows 遠端管理](https://msdn.microsoft.com/library/windows/desktop/aa384426.aspx)(WinRM)。 若要這樣做，您需要使用[Invoke-command](https://technet.microsoft.com/library/dd347578.aspx) cmdlet。 這可讓您執行您的指令碼，對一個或多個遠端電腦，而不將指令碼複製到遠端電腦。 您執行指令碼的本機電腦，會傳回任何結果。
 
 > [!NOTE]
-> 在使用之前**Invoke-command**指令程式可執行 Windows PowerShell 指令碼在遠端電腦上，您需要設定 WinRM 接聽程式接受遠端的訊息。 您可以執行命令**winrm quickconfig**遠端電腦上。 如需詳細資訊，請參閱[安裝和設定 Windows 遠端管理的](https://msdn.microsoft.com/en-us/library/windows/desktop/aa384372(v=vs.85).aspx)。
+> 在使用之前**Invoke-command**指令程式可執行 Windows PowerShell 指令碼在遠端電腦上，您需要設定 WinRM 接聽程式接受遠端的訊息。 您可以執行命令**winrm quickconfig**遠端電腦上。 如需詳細資訊，請參閱[安裝和設定 Windows 遠端管理的](https://msdn.microsoft.com/library/windows/desktop/aa384372(v=vs.85).aspx)。
 
 
 Windows PowerShell 視窗中，您會使用此語法來執行**LogDeploy.ps1**遠端電腦上的指令碼：
@@ -179,7 +179,7 @@ Windows PowerShell 視窗中，您會使用此語法來執行**LogDeploy.ps1**�
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需簽署 Windows PowerShell 指令碼和管理執行原則的指示，請參閱[執行 Windows PowerShell 指令碼](https://technet.microsoft.com/en-us/library/ee176949.aspx)。 如需從遠端電腦執行 Windows PowerShell 命令的指引，請參閱[執行遠端命令](https://technet.microsoft.com/en-us/library/dd819505.aspx)。
+如需簽署 Windows PowerShell 指令碼和管理執行原則的指示，請參閱[執行 Windows PowerShell 指令碼](https://technet.microsoft.com/library/ee176949.aspx)。 如需從遠端電腦執行 Windows PowerShell 命令的指引，請參閱[執行遠端命令](https://technet.microsoft.com/library/dd819505.aspx)。
 
 如需使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。
 

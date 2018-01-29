@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e57886250fa98af95b61103d67481f747f44c390
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e3782e3d4acc2db0e744128dad64fdfae1e8766d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-c"></a>保護連接字串和其他組態資訊 (C#)
 ====================
@@ -60,10 +60,10 @@ ASP.NET 2.0 包含受保護的組態系統，來加密和解密組態資訊。 �
 
 .NET Framework 隨附兩個受保護的組態提供者：
 
-- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/en-us/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-使用非對稱[RSA 演算法](http://en.wikipedia.org/wiki/Rsa)加密和解密。
-- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/en-us/system.configuration.dpapiprotectedconfigurationprovider.aspx)-使用 Windows[資料保護 API (DPAPI)](https://msdn.microsoft.com/en-us/library/ms995355.aspx)加密和解密。
+- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-使用非對稱[RSA 演算法](http://en.wikipedia.org/wiki/Rsa)加密和解密。
+- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx)-使用 Windows[資料保護 API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)加密和解密。
 
-因為受保護的組態系統會實作提供者設計模式，所以可以建立自己的受保護的組態提供者，並插入您的應用程式。 請參閱[實作受保護的組態提供者](https://msdn.microsoft.com/en-us/library/wfc2t3az(VS.80).aspx)如需這個程序的詳細資訊。
+因為受保護的組態系統會實作提供者設計模式，所以可以建立自己的受保護的組態提供者，並插入您的應用程式。 請參閱[實作受保護的組態提供者](https://msdn.microsoft.com/library/wfc2t3az(VS.80).aspx)如需這個程序的詳細資訊。
 
 RSA 和 DPAPI 的提供者會將金鑰用於其加密和解密的常式，以及這些金鑰可以儲存在電腦或使用者層級。 電腦層級索引鍵很適合做為它自己專用的伺服器的 web 應用程式執行所在的案例，或是否需要共用的伺服器上的多個應用程式加密的資訊。 使用者層級索引鍵是較安全的選項，在共用裝載環境中，在相同伺服器上的其他應用程式應該不可以解密您的應用程式保護的 s 組態區段。
 
@@ -96,20 +96,20 @@ RSA 和 DPAPI 的提供者會將金鑰用於其加密和解密的常式，以及
 
 [!code-csharp[Main](protecting-connection-strings-and-other-configuration-information-cs/samples/sample1.cs)]
 
-`DisplayWebConfig`方法會使用[`File`類別](https://msdn.microsoft.com/en-us/library/system.io.file.aspx)開啟應用程式 s`Web.config`檔案， [ `StreamReader`類別](https://msdn.microsoft.com/en-us/library/system.io.streamreader.aspx)其內容讀入字串，而[`Path`類別](https://msdn.microsoft.com/en-us/library/system.io.path.aspx)產生的實體路徑`Web.config`檔案。 這三個類別都位在[`System.IO`命名空間](https://msdn.microsoft.com/en-us/library/system.io.aspx)。 因此，您必須新增`using``System.IO`陳述式的程式碼後置類別，或者這些類別具有名稱的前置詞頂端`System.IO.`。
+`DisplayWebConfig`方法會使用[`File`類別](https://msdn.microsoft.com/library/system.io.file.aspx)開啟應用程式 s`Web.config`檔案， [ `StreamReader`類別](https://msdn.microsoft.com/library/system.io.streamreader.aspx)其內容讀入字串，而[`Path`類別](https://msdn.microsoft.com/library/system.io.path.aspx)產生的實體路徑`Web.config`檔案。 這三個類別都位在[`System.IO`命名空間](https://msdn.microsoft.com/library/system.io.aspx)。 因此，您必須新增`using``System.IO`陳述式的程式碼後置類別，或者這些類別具有名稱的前置詞頂端`System.IO.`。
 
 接下來，我們必須加入兩個按鈕控制項的事件處理常式`Click`事件並新增必要的程式碼，來加密和解密`<connectionStrings>`區段電腦層級金鑰使用 DPAPI 提供者。 從設計工具中，按兩下每個要加入按鈕`Click`中程式碼後置的事件處理常式類別，然後再將下列程式碼：
 
 
 [!code-csharp[Main](protecting-connection-strings-and-other-configuration-information-cs/samples/sample2.cs)]
 
-在兩個事件處理常式中使用的程式碼是幾乎完全相同。 藉由取得關於目前應用程式的資訊都啟動`Web.config`檔案透過[`WebConfigurationManager`類別](https://msdn.microsoft.com/en-us/library/system.web.configuration.webconfigurationmanager.aspx)s [ `OpenWebConfiguration`方法](https://msdn.microsoft.com/en-us/library/system.web.configuration.webconfigurationmanager.openwebconfiguration.aspx)。 這個方法會傳回指定的虛擬路徑的 web 組態檔。 下一步`Web.config`檔案 s`<connectionStrings>`區段存取透過[`Configuration`類別](https://msdn.microsoft.com/en-us/library/system.configuration.configuration.aspx)s [ `GetSection(sectionName)`方法](https://msdn.microsoft.com/en-us/library/system.configuration.configuration.getsection.aspx)，它會傳回[ `ConfigurationSection` ](https://msdn.microsoft.com/en-us/library/system.configuration.configurationsection.aspx)物件。
+在兩個事件處理常式中使用的程式碼是幾乎完全相同。 藉由取得關於目前應用程式的資訊都啟動`Web.config`檔案透過[`WebConfigurationManager`類別](https://msdn.microsoft.com/library/system.web.configuration.webconfigurationmanager.aspx)s [ `OpenWebConfiguration`方法](https://msdn.microsoft.com/library/system.web.configuration.webconfigurationmanager.openwebconfiguration.aspx)。 這個方法會傳回指定的虛擬路徑的 web 組態檔。 下一步`Web.config`檔案 s`<connectionStrings>`區段存取透過[`Configuration`類別](https://msdn.microsoft.com/library/system.configuration.configuration.aspx)s [ `GetSection(sectionName)`方法](https://msdn.microsoft.com/library/system.configuration.configuration.getsection.aspx)，它會傳回[ `ConfigurationSection` ](https://msdn.microsoft.com/library/system.configuration.configurationsection.aspx)物件。
 
-`ConfigurationSection`物件包含[`SectionInformation`屬性](https://msdn.microsoft.com/en-us/library/system.configuration.configurationsection.sectioninformation.aspx)，提供其他資訊與相關的組態區段的功能。 為上方顯示的程式碼，我們可以判斷藉由檢查是否已加密的組態區段`SectionInformation`屬性的`IsProtected`屬性。 此外，區段可以加密或解密透過`SectionInformation`屬性 s`ProtectSection(provider)`和`UnprotectSection`方法。
+`ConfigurationSection`物件包含[`SectionInformation`屬性](https://msdn.microsoft.com/library/system.configuration.configurationsection.sectioninformation.aspx)，提供其他資訊與相關的組態區段的功能。 為上方顯示的程式碼，我們可以判斷藉由檢查是否已加密的組態區段`SectionInformation`屬性的`IsProtected`屬性。 此外，區段可以加密或解密透過`SectionInformation`屬性 s`ProtectSection(provider)`和`UnprotectSection`方法。
 
 `ProtectSection(provider)`方法接受做為輸入字串，指定要加密時所使用的受保護的組態提供者的名稱。 在`EncryptConnString`s 按鈕事件處理常式，我們會傳送到 DataProtectionConfigurationProvider`ProtectSection(provider)`方法，以便使用 DPAPI 提供者。 `UnprotectSection`方法可以判斷之前用來加密組態區段，因此不需要任何輸入參數的提供者。
 
-在呼叫`ProtectSection(provider)`或`UnprotectSection`方法，您必須呼叫`Configuration`物件 s [ `Save`方法](https://msdn.microsoft.com/en-us/library/system.configuration.configuration.save.aspx)保存變更。 一旦組態資訊已加密或解密並儲存變更，我們稱之為`DisplayWebConfig`載入更新的`Web.config`到文字方塊控制項的內容。
+在呼叫`ProtectSection(provider)`或`UnprotectSection`方法，您必須呼叫`Configuration`物件 s [ `Save`方法](https://msdn.microsoft.com/library/system.configuration.configuration.save.aspx)保存變更。 一旦組態資訊已加密或解密並儲存變更，我們稱之為`DisplayWebConfig`載入更新的`Web.config`到文字方塊控制項的內容。
 
 當您有上述的程式碼中輸入測試造訪`EncryptingConfigSections.aspx`透過瀏覽器的頁面。 您應該一開始會看到列出的內容頁面`Web.config`與`<connectionStrings>`區段顯示純文字 （請參閱圖 3）。
 
@@ -155,7 +155,7 @@ RSA 和 DPAPI 的提供者會將金鑰用於其加密和解密的常式，以及
 
 ## <a name="step-3-encrypting-configuration-sections-usingaspnetregiisexe"></a>步驟 3： 加密使用的組態區段`aspnet_regiis.exe`
 
-.NET Framework 包含各種不同的命令列工具中`$WINDOWS$\Microsoft.NET\Framework\version\`資料夾。 在[使用 SQL 快取相依性](../caching-data/using-sql-cache-dependencies-cs.md)教學課程中，比方說，我們還在使用`aspnet_regsql.exe`命令列工具來加入所需的 SQL 快取相依性的基礎結構。 在這個資料夾中的另一個有用的命令列工具是[ASP.NET IIS 註冊工具 (`aspnet_regiis.exe`)](https://msdn.microsoft.com/en-us/library/k6h9cz8h(VS.80).aspx)。 正如其名，ASP.NET IIS 註冊工具主要用來向 Microsoft s professional 等級網頁伺服器，IIS 註冊 ASP.NET 2.0 應用程式。 除了及其與 IIS 相關功能時，ASP.NET IIS 註冊工具也可用來加密或解密指定的組態區段中`Web.config`。
+.NET Framework 包含各種不同的命令列工具中`$WINDOWS$\Microsoft.NET\Framework\version\`資料夾。 在[使用 SQL 快取相依性](../caching-data/using-sql-cache-dependencies-cs.md)教學課程中，比方說，我們還在使用`aspnet_regsql.exe`命令列工具來加入所需的 SQL 快取相依性的基礎結構。 在這個資料夾中的另一個有用的命令列工具是[ASP.NET IIS 註冊工具 (`aspnet_regiis.exe`)](https://msdn.microsoft.com/library/k6h9cz8h(VS.80).aspx)。 正如其名，ASP.NET IIS 註冊工具主要用來向 Microsoft s professional 等級網頁伺服器，IIS 註冊 ASP.NET 2.0 應用程式。 除了及其與 IIS 相關功能時，ASP.NET IIS 註冊工具也可用來加密或解密指定的組態區段中`Web.config`。
 
 下列陳述式會顯示用來加密組態區段的一般語法`aspnet_regiis.exe`命令列工具：
 
@@ -203,7 +203,7 @@ Windows 驗證是慣用透過 SQL 驗證，所以更安全。 使用 Windows 驗
 假設有攻擊者就可以檢視您的應用程式 s`Web.config`檔案。 如果您使用 SQL 驗證來連接到資料庫，可透過網際網路存取，攻擊者可以使用此連接字串連接到您的資料庫，透過 SQL Management Studio，或從自己的網站上的 ASP.NET 網頁。 若要降低此威脅，加密連接字串資訊中的`Web.config`使用受保護的組態系統。
 
 > [!NOTE]
-> 如需有關不同 SQL Server 中可用的驗證類型的詳細資訊，請參閱[建構安全 ASP.NET 應用程式： 驗證、 授權和安全通訊](https://msdn.microsoft.com/en-us/library/aa302392.aspx)。 如進一步連接字串範例，說明 Windows 和 SQL 驗證語法之間的差異，請參閱[ConnectionStrings.com](http://www.connectionstrings.com/)。
+> 如需有關不同 SQL Server 中可用的驗證類型的詳細資訊，請參閱[建構安全 ASP.NET 應用程式： 驗證、 授權和安全通訊](https://msdn.microsoft.com/library/aa302392.aspx)。 如進一步連接字串範例，說明 Windows 和 SQL 驗證語法之間的差異，請參閱[ConnectionStrings.com](http://www.connectionstrings.com/)。
 
 
 ## <a name="summary"></a>總結
@@ -218,13 +218,13 @@ Windows 驗證是慣用透過 SQL 驗證，所以更安全。 使用 Windows 驗
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [建立安全的 ASP.NET 應用程式： 驗證、 授權和安全通訊](https://msdn.microsoft.com/en-us/library/aa302392.aspx)
+- [建立安全的 ASP.NET 應用程式： 驗證、 授權和安全通訊](https://msdn.microsoft.com/library/aa302392.aspx)
 - [加密組態資訊，在 ASP.NET 2.0 應用程式](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)
 - [加密`Web.config`ASP.NET 2.0 中的值](https://weblogs.asp.net/scottgu/archive/2006/01/09/434893.aspx)
-- [如何： 加密組態區段，在 ASP.NET 2.0 使用 DPAPI](https://msdn.microsoft.com/en-us/library/ms998280.aspx)
-- [如何： 加密組態區段，在 ASP.NET 2.0 使用 RSA](https://msdn.microsoft.com/en-us/library/ms998283.aspx)
+- [如何： 加密組態區段，在 ASP.NET 2.0 使用 DPAPI](https://msdn.microsoft.com/library/ms998280.aspx)
+- [如何： 加密組態區段，在 ASP.NET 2.0 使用 RSA](https://msdn.microsoft.com/library/ms998283.aspx)
 - [.NET 2.0 中的組態 API](http://www.odetocode.com/Articles/418.aspx)
-- [Windows 資料保護](https://msdn.microsoft.com/en-us/library/ms995355.aspx)
+- [Windows 資料保護](https://msdn.microsoft.com/library/ms995355.aspx)
 
 ## <a name="about-the-author"></a>關於作者
 

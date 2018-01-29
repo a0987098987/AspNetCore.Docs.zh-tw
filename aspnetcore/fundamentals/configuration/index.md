@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: c4f57d1e02ad5f4e235039999af9df9d236756a7
-ms.sourcegitcommit: 3d512ea991ac36dfd4c800b7d1f8a27bfc50635e
+ms.openlocfilehash: ee9bdc66d0bfa6433736fbc55126bdd37ba9d080
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -261,7 +261,7 @@ Left: 1979
 
 若上述條件皆成立，即覆寫所有命令列引數。
 
-ASP.NET Core 2.x 應用程式可以使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 取代 ``CreateDefaultBuilde`。使用 `WebHostBuilder` 時，請以 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 手動設定組態。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
+ASP.NET Core 2.x 應用程式可以使用 WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 而不是 ' CreateDefaultBuilder`. When using `WebHostBuilder'，請手動設定組態與[ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -397,7 +397,7 @@ Left: 1988
 ## <a name="additional-notes"></a>其他備註
 
 * 相依性插入 (DI) 會在叫用 `ConfigureServices` 之後才設定。
-* 組態系統非 DI 感知。
+* 組態系統無法感知 DI。
 * `IConfiguration` 有兩個特製化：
   * `IConfigurationRoot` 用於根節點。 可觸發重新載入。
   * `IConfigurationSection` 代表組態值區段。 `GetSection` 和 `GetChildren` 方法會傳回 `IConfigurationSection`。

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cc7b90c06b2d99b6c540e9650bb4d8515f5c3702
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: df22a7c4aedb5e5fef183817e9d2b1e4c4a919ee
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="performing-batch-updates-vb"></a>執行批次更新 (VB)
 ====================
@@ -66,9 +66,9 @@ DataList s`EditItemIndex`屬性規定哪些`DataListItem`（如果有的話） �
 **圖 3**： 擷取供應商資訊使用`GetSuppliers()`方法 ([按一下以檢視完整大小的影像](performing-batch-updates-vb/_static/image9.png))
 
 
-[![在 [更新] 索引標籤中設定為 （無） 下拉式清單](performing-batch-updates-vb/_static/image11.png)](performing-batch-updates-vb/_static/image10.png)
+[![在 [更新] 索引標籤中設定為（無） 下拉式清單](performing-batch-updates-vb/_static/image11.png)](performing-batch-updates-vb/_static/image10.png)
 
-**圖 4**： 在 [更新] 索引標籤中設定為 （無） 下拉式清單 ([按一下以檢視完整大小的影像](performing-batch-updates-vb/_static/image12.png))
+**圖 4**： 在 [更新] 索引標籤中設定為（無） 下拉式清單 ([按一下以檢視完整大小的影像](performing-batch-updates-vb/_static/image12.png))
 
 
 完成精靈之後，Visual Studio 會自動產生 DataList 的`ItemTemplate`顯示標籤 Web 控制項中的資料來源傳回的每個資料欄位。 我們需要修改此範本，使其改為提供編輯介面。 `ItemTemplate`可以自訂透過使用從 DataList s 智慧標籤的 [編輯樣板] 選項設計工具，或直接透過宣告式語法。
@@ -116,7 +116,7 @@ DataList s`EditItemIndex`屬性規定哪些`DataListItem`（如果有的話） �
 
 所有顯示的編輯介面 DataList s 項目加上的 [全部更新] 按鈕，而所有維持正在寫入的程式碼執行批次更新。 具體而言，我們需要迴圈 DataList s 項目並呼叫`SuppliersBLL`類別的`UpdateSupplierAddress`針對每個方法。
 
-集合`DataListItem`DataList 可以透過 DataList s 該結構的執行個體[`Items`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.datalist.items.aspx)。 參考`DataListItem`，我們可以抓取對應`SupplierID`從`DataKeys`集合並以程式設計方式參考的文字方塊中 Web 控制項內`ItemTemplate`如下列程式碼所示：
+集合`DataListItem`DataList 可以透過 DataList s 該結構的執行個體[`Items`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.items.aspx)。 參考`DataListItem`，我們可以抓取對應`SupplierID`從`DataKeys`集合並以程式設計方式參考的文字方塊中 Web 控制項內`ItemTemplate`如下列程式碼所示：
 
 
 [!code-vb[Main](performing-batch-updates-vb/samples/sample4.vb)]
@@ -131,7 +131,7 @@ DataList s`EditItemIndex`屬性規定哪些`DataListItem`（如果有的話） �
 
 用於此教學課程的呼叫的批次更新演算法`UpdateSupplierAddress`方法*每*供應商在 DataList，不論是否已變更其位址資訊。 這類 blind 更新通常並不是效能問題，而它們可能會導致過多記錄如果作為稽核您變更至資料庫資料表。 例如，如果您使用觸發程序來記錄所有`UPDATE`s`Suppliers`資料表至稽核的資料表，每次使用者按一下 [全部更新] 按鈕，每個供應商在系統中，不論使用者是否進行任何建立新的稽核記錄變更。
 
-ADO.NET DataTable 和資料配接器類別被設計來支援批次更新只修改、 刪除及新的記錄會導致任何資料庫進行通訊。 在 DataTable 中的每個資料列都有[`RowState`屬性](https://msdn.microsoft.com/en-us/library/system.data.datarow.rowstate.aspx)，指出是否已加入至 DataTable，從它修改、 刪除或維持不變的資料列。 當一開始填入 DataTable 時，所有資料列會標示為不變。 變更任何資料列 s 資料行的值標示資料列，為已修改。
+ADO.NET DataTable 和資料配接器類別被設計來支援批次更新只修改、 刪除及新的記錄會導致任何資料庫進行通訊。 在 DataTable 中的每個資料列都有[`RowState`屬性](https://msdn.microsoft.com/library/system.data.datarow.rowstate.aspx)，指出是否已加入至 DataTable，從它修改、 刪除或維持不變的資料列。 當一開始填入 DataTable 時，所有資料列會標示為不變。 變更任何資料列 s 資料行的值標示資料列，為已修改。
 
 在`SuppliersBLL`我們更新成單一的供應商記錄中的第一個讀取指定的供應商 s 地址資訊的類別`SuppliersDataTable`，然後設定`Address`， `City`，和`Country`使用下列程式碼的資料行值：
 

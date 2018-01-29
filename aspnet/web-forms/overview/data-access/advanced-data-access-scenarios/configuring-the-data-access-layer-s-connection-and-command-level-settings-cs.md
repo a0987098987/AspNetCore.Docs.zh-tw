@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5675c1c2a1c8987412ae79707e4c20e29e0e0df6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: be81bde63d66c3a7070f31be830f7d10ba3a5f8e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>設定資料存取層連接和命令層級設定 (C#)
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="working-with-data-using-adonet"></a>使用 ADO.NET 資料搭配使用
 
-Microsoft.NET Framework 包含特別設計來處理資料的類別上的。 這些內找到的類別[`System.Data`命名空間](https://msdn.microsoft.com/en-us/library/system.data.aspx)，稱為*ADO.NET*類別。 某些 ADO.NET 概括性下類別會繫結至特定*資料提供者*。 您可以視為資料提供者可讓資訊 ADO.NET 類別與基礎資料存放區之間的通訊通道。 有一般化的提供者，例如 OleDb 和 ODBC，以及專為特定資料庫系統的提供者。 例如，雖然可以連接到 Microsoft SQL Server 資料庫使用 OleDb 提供者，SqlClient 提供者會更有效率設計並最佳化特別適用於 SQL Server。
+Microsoft.NET Framework 包含特別設計來處理資料的類別上的。 這些內找到的類別[`System.Data`命名空間](https://msdn.microsoft.com/library/system.data.aspx)，稱為*ADO.NET*類別。 某些 ADO.NET 概括性下類別會繫結至特定*資料提供者*。 您可以視為資料提供者可讓資訊 ADO.NET 類別與基礎資料存放區之間的通訊通道。 有一般化的提供者，例如 OleDb 和 ODBC，以及專為特定資料庫系統的提供者。 例如，雖然可以連接到 Microsoft SQL Server 資料庫使用 OleDb 提供者，SqlClient 提供者會更有效率設計並最佳化特別適用於 SQL Server。
 
 當以程式設計方式存取資料時，下列的模式通常會：
 
@@ -45,7 +45,7 @@ Microsoft.NET Framework 包含特別設計來處理資料的類別上的。 這�
 - 發出命令。
 - 如`SELECT`查詢，使用產生的記錄。
 
-有不同的 ADO.NET 類別來執行每個步驟。 若要連接至資料庫，使用 SqlClient 提供者，例如，使用[`SqlConnection`類別](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection(VS.80).aspx)。 要發出`INSERT`， `UPDATE`， `DELETE`，或`SELECT`命令到資料庫，使用[`SqlCommand`類別](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.aspx)。
+有不同的 ADO.NET 類別來執行每個步驟。 若要連接至資料庫，使用 SqlClient 提供者，例如，使用[`SqlConnection`類別](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(VS.80).aspx)。 要發出`INSERT`， `UPDATE`， `DELETE`，或`SELECT`命令到資料庫，使用[`SqlCommand`類別](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx)。
 
 除了[包裝在交易內的資料庫修改](../working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs.md)教學課程中，我們已不需要撰寫任何低階 ADO.NET 程式碼自行因為 Tableadapter 自動產生程式碼包含所需的功能連接到資料庫、 發出命令、 擷取資料，並填入 Datatable 中的該資料。 不過，可能是我們需要來自訂這些低層級的設定。 在接下來的幾個步驟中，我們將檢查如何挖掘內部使用的 Tableadapter 的 ADO.NET 物件。
 
@@ -61,7 +61,7 @@ Microsoft.NET Framework 包含特別設計來處理資料的類別上的。 這�
 
 可讓 s 花點時間 tableadapter 的程式碼檢查`Connection`屬性。 如中所述[建立資料存取層](../introduction/creating-a-data-access-layer-cs.md)教學課程中，我們可以檢視自動產生的 TableAdapter 程式碼移至 [類別檢視] 視窗中，向下適當的類別，鑽研，然後按兩下 成員名稱。
 
-移至 [檢視] 功能表，然後選擇 類別檢視 （或輸入 Ctrl + Shift + C），請瀏覽 [類別檢視] 視窗。 從 [類別檢視] 視窗的上半部，向下鑽研至`NorthwindTableAdapters`命名空間並選取`ProductsTableAdapter`類別。 這會顯示`ProductsTableAdapter`的成員，在 類別檢視中，如圖 2 所示的下半部。 按兩下`Connection`屬性來查看其程式碼。
+移至 檢視 功能表，然後選擇 類別檢視 （或輸入 Ctrl + Shift + C），請瀏覽 類別檢視 視窗。 從 [類別檢視] 視窗的上半部，向下鑽研至`NorthwindTableAdapters`命名空間並選取`ProductsTableAdapter`類別。 這會顯示`ProductsTableAdapter`的成員，在 類別檢視中，如圖 2 所示的下半部。 按兩下`Connection`屬性來查看其程式碼。
 
 
 ![按兩下要檢視其自動產生程式碼的類別檢視中的連接屬性](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image4.png)
@@ -121,7 +121,7 @@ TableAdapter 類別具現化時，成員變數`_connection`等於`null`。 當`C
 
 ## <a name="step-3-examining-the-command-related-properties"></a>步驟 3： 檢查命令相關的屬性
 
-TableAdapter 所組成的主要查詢，根據預設，已自動產生`INSERT`， `UPDATE`，和`DELETE`陳述式。 此主要查詢 s `INSERT`， `UPDATE`，和`DELETE`陳述式的 TableAdapter s 程式碼中實作以 ADO.NET 資料配接器物件透過`Adapter`屬性。 像使用其`Connection`屬性，`Adapter`屬性的資料類型取決於使用的資料提供者。 這些教學課程都使用 SqlClient 提供者，因為`Adapter`屬性屬於型別[ `SqlDataAdapter` ](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqldataadapter(VS.80).aspx)。
+TableAdapter 所組成的主要查詢，根據預設，已自動產生`INSERT`， `UPDATE`，和`DELETE`陳述式。 此主要查詢 s `INSERT`， `UPDATE`，和`DELETE`陳述式的 TableAdapter s 程式碼中實作以 ADO.NET 資料配接器物件透過`Adapter`屬性。 像使用其`Connection`屬性，`Adapter`屬性的資料類型取決於使用的資料提供者。 這些教學課程都使用 SqlClient 提供者，因為`Adapter`屬性屬於型別[ `SqlDataAdapter` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqldataadapter(VS.80).aspx)。
 
 Tableadapter`Adapter`屬性有三個屬性的型別`SqlCommand`，它會使用問題`INSERT`， `UPDATE`，和`DELETE`陳述式：
 
@@ -129,7 +129,7 @@ Tableadapter`Adapter`屬性有三個屬性的型別`SqlCommand`，它會使用�
 - `UpdateCommand`
 - `DeleteCommand`
 
-A`SqlCommand`物件負責傳送至資料庫的特定查詢，其屬性，例如： [ `CommandText` ](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.commandtext.aspx)，其中包含的特定 SQL 陳述式或預存程序，才可執行，並[ `Parameters`](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.parameters.aspx)，這是集合的`SqlParameter`物件。 如我們所見回[建立資料存取層](../introduction/creating-a-data-access-layer-cs.md)這些教學課程中，命令物件可以透過 [屬性] 視窗加以自訂。
+A`SqlCommand`物件負責傳送至資料庫的特定查詢，其屬性，例如： [ `CommandText` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.commandtext.aspx)，其中包含的特定 SQL 陳述式或預存程序，才可執行，並[ `Parameters`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.parameters.aspx)，這是集合的`SqlParameter`物件。 如我們所見回[建立資料存取層](../introduction/creating-a-data-access-layer-cs.md)這些教學課程中，命令物件可以透過 [屬性] 視窗加以自訂。
 
 除了其主要的查詢，TableAdapter 還可以包含多個方法，叫用時，會分派至資料庫指定的命令。 主要查詢的命令物件和所有其他方法的命令物件會儲存在 tableadapter`CommandCollection`屬性。
 
@@ -146,7 +146,7 @@ A`SqlCommand`物件負責傳送至資料庫的特定查詢，其屬性，例如�
 
 因為 TableAdapter 只能有單一`Connection`屬性公開連接層級設定的程式碼是相當簡單。 TableAdapter 可以有多個命令物件，因為修改命令層級設定時事情就會稍微複雜`InsertCommand`， `UpdateCommand`，和`DeleteCommand`，以及變數命令中的物件數目`CommandCollection`屬性。 當更新命令層級設定，這些設定必須傳播到所有的命令物件。
 
-例如，假設花費了異常長時間執行的 TableAdapter 中發生的特定查詢。 當使用 TableAdapter 執行這些查詢的其中一個，我們可能會想要增加命令物件 s [ `CommandTimeout`屬性](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.commandtimeout.aspx)。 這個屬性會指定無限等候命令執行的秒數，且預設值為 30。
+例如，假設花費了異常長時間執行的 TableAdapter 中發生的特定查詢。 當使用 TableAdapter 執行這些查詢的其中一個，我們可能會想要增加命令物件 s [ `CommandTimeout`屬性](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.commandtimeout.aspx)。 這個屬性會指定無限等候命令執行的秒數，且預設值為 30。
 
 若要允許`CommandTimeout`屬性，以調整 BLL，加入下列`public`方法`ProductsDataTable`使用部分類別檔案在步驟 2 中建立 (`ProductsTableAdapter.ConnectionAndCommandSettings.cs`):
 

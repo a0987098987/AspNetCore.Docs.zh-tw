@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 30f6ecef1a03153619df1b3ba4e709f3742c6927
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 93da23d58d1ba73c5b97f42631d036dd364de24d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-c"></a>檢查與插入、 更新和刪除 (C#) 相關聯的事件
 ====================
@@ -162,12 +162,12 @@ ms.lasthandoff: 11/10/2017
 
 不過，更新的產品以貨幣符號的文字方塊中，例如 $19.00 擲回`FormatException`。 GridView 嘗試將使用者提供的值指派給 ObjectDataSource`UpdateParameters`集合無法轉換`UnitPrice`字串"$19.00"`decimal`所需的參數 （請參閱圖 11）。 若要補救這種情況我們可以建立事件處理常式的 GridView`RowUpdating`事件，並讓它剖析使用者提供`UnitPrice`做為貨幣格式化`decimal`。
 
-GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridViewUpdateEventArgs](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.gridviewupdateeventargs(VS.80).aspx)，其中包括`NewValues`字典，因為其中一個保留準備好的使用者提供值的屬性指派給 ObjectDataSource`UpdateParameters`集合。 我們可以覆寫現有`UnitPrice`值`NewValues`使用貨幣格式具有下列幾行中的程式碼的集合，具有十進位值剖析`RowUpdating`事件處理常式：
+GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridViewUpdateEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdateeventargs(VS.80).aspx)，其中包括`NewValues`字典，因為其中一個保留準備好的使用者提供值的屬性指派給 ObjectDataSource`UpdateParameters`集合。 我們可以覆寫現有`UnitPrice`值`NewValues`使用貨幣格式具有下列幾行中的程式碼的集合，具有十進位值剖析`RowUpdating`事件處理常式：
 
 
 [!code-csharp[Main](examining-the-events-associated-with-inserting-updating-and-deleting-cs/samples/sample4.cs)]
 
-如果使用者已經提供`UnitPrice`值 （例如"$19.00")，這個值會覆寫所計算的十進位值[Decimal.Parse](https://msdn.microsoft.com/en-us/library/system.decimal.parse(VS.80).aspx)，剖析為貨幣值。 這將會正確地剖析小數點萬一任何貨幣符號、 逗號、 小數位數，等等，並使用[NumberStyles 列舉](https://msdn.microsoft.com/en-US/library/system.globalization.numberstyles(VS.80).aspx)中[System.Globalization](https://msdn.microsoft.com/en-US/library/abeh092z(VS.80).aspx)命名空間。
+如果使用者已經提供`UnitPrice`值 （例如"$19.00")，這個值會覆寫所計算的十進位值[Decimal.Parse](https://msdn.microsoft.com/library/system.decimal.parse(VS.80).aspx)，剖析為貨幣值。 這將會正確地剖析小數點萬一任何貨幣符號、 逗號、 小數位數，等等，並使用[NumberStyles 列舉](https://msdn.microsoft.com/library/system.globalization.numberstyles(VS.80).aspx)中[System.Globalization](https://msdn.microsoft.com/library/abeh092z(VS.80).aspx)命名空間。
 
 圖 11 顯示這兩個貨幣符號在使用者提供所造成的問題`UnitPrice`，以及如何 GridView`RowUpdating`事件處理常式可以用來正確地剖析這類的輸入。
 
@@ -216,10 +216,10 @@ GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridVie
 
 到目前為止我們已經看到如何使用 GridView`RowUpdating`事件來以程式設計方式變更參數值指派給 ObjectDataSource`UpdateParameters`集合以及如何取消更新完全處理。 這些概念會延續到 DetailsView 和 FormView 控制項，以及也適用於插入及刪除。
 
-這些工作還可以在 ObjectDataSource 層級的事件處理常式透過其`Inserting`， `Updating`，和`Deleting`事件。 這些事件引發之前叫用的基礎物件相關聯的方法，並提供修改輸入的參數集合，或取消作業徹底的最後機會機會。 這三個事件的事件處理常式會傳遞類型的物件[ObjectDataSourceMethodEventArgs](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasourcemethodeventargs(VS.80).aspx)具有感興趣的兩個屬性：
+這些工作還可以在 ObjectDataSource 層級的事件處理常式透過其`Inserting`， `Updating`，和`Deleting`事件。 這些事件引發之前叫用的基礎物件相關聯的方法，並提供修改輸入的參數集合，或取消作業徹底的最後機會機會。 這三個事件的事件處理常式會傳遞類型的物件[ObjectDataSourceMethodEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasourcemethodeventargs(VS.80).aspx)具有感興趣的兩個屬性：
 
-- [取消](https://msdn.microsoft.com/en-US/library/system.componentmodel.canceleventargs.cancel(VS.80).aspx)，而如果設定為`true`、 取消正在執行的作業
-- [在這](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasourcemethodeventargs.inputparameters(VS.80).aspx)，這是集合`InsertParameters`， `UpdateParameters`，或`DeleteParameters`，取決於事件處理常式是否為`Inserting`， `Updating`，或`Deleting`事件
+- [取消](https://msdn.microsoft.com/library/system.componentmodel.canceleventargs.cancel(VS.80).aspx)，而如果設定為`true`、 取消正在執行的作業
+- [在這](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasourcemethodeventargs.inputparameters(VS.80).aspx)，這是集合`InsertParameters`， `UpdateParameters`，或`DeleteParameters`，取決於事件處理常式是否為`Inserting`， `Updating`，或`Deleting`事件
 
 為了說明使用 ObjectDataSource 層級的參數值，讓我們來包含 DetailsView 中我們讓使用者能夠加入新的產品的頁面。 此 DetailsView 將用來提供介面來迅速將新的產品加入至資料庫。 若要保持一致的使用者介面，讓我們加入新的產品可讓使用者只輸入的值時`ProductName`和`UnitPrice`欄位。 根據預設，在 DetailsView 的插入介面中不提供這些值會設定為`NULL`資料庫值。 不過，我們可以使用 ObjectDataSource`Inserting`来插入不同的預設值，我們很快就會看到事件。
 
@@ -237,7 +237,7 @@ GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridVie
 **圖 14**: [插入] 索引標籤的下拉式清單設定為`AddProduct`方法 ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image42.png))
 
 
-[![設定 [刪除] 索引標籤的下拉式清單，為 （無）](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image43.png)
+[![設定 [刪除] 索引標籤的下拉式清單，為（無）](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image43.png)
 
 **圖 15**： 刪除索引標籤的下拉式清單 （無） ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image45.png))
 

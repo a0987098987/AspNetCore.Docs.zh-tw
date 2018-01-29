@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c25ebf472df5dcbc664257cdf8678bfac535d846
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 223dd48bb996de527f20291e4701e7d1b60a539d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > ## <a name="code-first"></a>Code First
 > 
-> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個程式碼。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/en-us/library/ms178359.aspx#dbfmfcf)。
+> 有三種方式，您可以使用 Entity Framework 中的資料： *Database First*， *Model First*，和*Code First*。 本教學課程適用於第一個程式碼。 如需如何選擇適合您案例的這些工作流程和指引之間差異的詳細資訊，請參閱[Entity Framework 的開發工作流程](https://msdn.microsoft.com/library/ms178359.aspx#dbfmfcf)。
 > 
 > ## <a name="mvc"></a>MVC
 > 
@@ -44,14 +44,14 @@ ms.lasthandoff: 11/10/2017
 > | **教學課程中所示** | **也可以搭配** |
 > | --- | --- |
 > | Windows 8 | Windows 7 |
-> | Visual Studio 2012 | Visual Studio 2012 Express for Web。 這會自動安裝 Windows Azure SDK 如果您還沒有 VS 2012 或 VS 2012 Express for Web。 Visual Studio 2013 應該會運作，但本教學課程尚未經過測試，和某些功能表選取項目和對話方塊不同。 [VS 2013 版本的 Windows Azure SDK](https://go.microsoft.com/fwlink/p/?linkid=323510)需要 Windows Azure 部署。 |
+> | Visual Studio 2012 | Visual Studio 2012 Express for Web. 這會自動安裝 Windows Azure SDK 如果您還沒有 VS 2012 或 VS 2012 Express for Web。 Visual Studio 2013 應該會運作，但本教學課程尚未經過測試，和某些功能表選取項目和對話方塊不同。 [VS 2013 版本的 Windows Azure SDK](https://go.microsoft.com/fwlink/p/?linkid=323510)需要 Windows Azure 部署。 |
 > | .NET 4.5 | 在.NET 4 中運作的大多數功能顯示，但有些不會。 例如，在 EF 列舉支援需要.NET 4.5。 |
 > | Entity Framework 5 |  |
 > | [Windows Azure SDK 2.1](https://go.microsoft.com/fwlink/p/?linkid=323511) | 如果您略過 Windows Azure 的部署步驟，您不需要 SDK。 新的 sdk 版本發行時，連結將會安裝較新版本。 在此情況下，您可能必須調整一些新的 UI 和功能的指示。 |
 > 
 > ## <a name="questions"></a>問題
 > 
-> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/en-US/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
+> 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
 > 
 > ## <a name="acknowledgments"></a>通知
 > 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="prerequisites"></a>必要條件
 
-方向和螢幕擷取畫面，在本教學課程假設您使用[Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads)或[Visual Studio 2012 Express for Web](https://go.microsoft.com/fwlink/?LinkID=275131)、 最新的 [更新] 和 Azure SDK for.NET 安裝為準，年 7 月，2013。 您可以取得這些全部都使用下列連結：
+方向和螢幕擷取畫面，在本教學課程假設您使用[Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads)或[Visual Studio 2012 Express for Web](https://go.microsoft.com/fwlink/?LinkID=275131)、 最新的 [更新] 和 [Azure SDK for.NET] 安裝為準，年 7 月，2013。 您可以取得這些全部都使用下列連結：
 
 [Azure SDK for.NET (Visual Studio 2012)](https://go.microsoft.com/fwlink/?LinkId=254364)
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="create-an-mvc-web-application"></a>建立 MVC Web 應用程式
 
-開啟 Visual Studio 並建立新 C# 專案名為"ContosoUniversity 」 使用**ASP.NET MVC 4 Web 應用程式**範本。 請確定您的目標**.NET Framework 4.5** (您將使用[`enum`屬性](https://msdn.microsoft.com/en-us/data/hh859576.aspx)，而且這需要.NET 4.5)。
+開啟 Visual Studio 並建立新 C# 專案名為"ContosoUniversity 」 使用**ASP.NET MVC 4 Web 應用程式**範本。 請確定您的目標**.NET Framework 4.5** (您將使用[`enum`屬性](https://msdn.microsoft.com/data/hh859576.aspx)，而且這需要.NET 4.5)。
 
 ![New_project_dialog_box](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image3.png)
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/10/2017
 
 保留**Razor**檢視引擎選取，並留下**建立單元測試專案**清除核取方塊。
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 ![Project_template_options](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image4.png)
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample5.cs)]
 
-等級屬性是[列舉](https://msdn.microsoft.com/en-us/data/hh859576.aspx)。 問號之後`Grade`型別宣告表示`Grade`屬性是[可為 null](https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx)。 為 null 的等級是不同於零的等級，null 表示等級不未知或尚未被指派。
+等級屬性是[列舉](https://msdn.microsoft.com/data/hh859576.aspx)。 問號之後`Grade`型別宣告表示`Grade`屬性是[可為 null](https://msdn.microsoft.com/library/2cf62fcy.aspx)。 為 null 的等級是不同於零的等級，null 表示等級不未知或尚未被指派。
 
 `StudentID`屬性是外部索引鍵，而對應的導覽屬性是`Student`。 `Enrollment`實體都與一個`Student`實體，所以此屬性只可以保存單一`Student`實體 (不同於`Student.Enrollments`導覽屬性之前看到，而可以包含多個`Enrollment`實體)。
 
@@ -175,19 +175,19 @@ ms.lasthandoff: 11/10/2017
 
 `Enrollments`屬性為導覽屬性。 A`Course`可以與任意數目的相關實體`Enrollment`實體。
 
-我們將更多有關 [[DatabaseGenerated](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([DatabaseGeneratedOption](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx)。無）] 下一個教學課程中的屬性。 基本上，此屬性可讓您輸入的主索引鍵的課程，而不是需要產生它的資料庫。
+我們將更多有關 [[DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([DatabaseGeneratedOption](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx)。無）] 下一個教學課程中的屬性。 基本上，此屬性可讓您輸入的主索引鍵的課程，而不是需要產生它的資料庫。
 
 ## <a name="create-the-database-context"></a>建立的資料庫內容
 
-協調對給定的資料模型的 Entity Framework 功能的主要類別是*資料庫內容*類別。 您建立這個類別衍生自[System.Data.Entity.DbContext](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=VS.103).aspx)類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
+協調對給定的資料模型的 Entity Framework 功能的主要類別是*資料庫內容*類別。 您建立這個類別衍生自[System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx)類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
 
 建立名為的資料夾*DAL* （適用於資料存取層）。 該資料夾中建立新的類別檔案命名為*SchoolContext.cs*，並以下列程式碼取代現有的程式碼：
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample7.cs)]
 
-此程式碼建立[DbSet](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset(v=VS.103).aspx)每一個實體集的屬性。 在 Entity Framework 詞彙*實體集*通常會對應到資料庫資料表，和*實體*對應至資料表中的資料列。
+此程式碼建立[DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=VS.103).aspx)每一個實體集的屬性。 在 Entity Framework 詞彙*實體集*通常會對應到資料庫資料表，和*實體*對應至資料表中的資料列。
 
-`modelBuilder.Conventions.Remove`陳述式中的[OnModelCreating](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx)方法會從正在 pluralized 防止資料表名稱。 如果您沒有這麼做，所產生之資料表就會命名為`Students`， `Courses`，和`Enrollments`。 相反地，資料表名稱會`Student`， `Course`，和`Enrollment`。 針對是否要複數化資料表名稱，開發人員並沒有共識。 本教學課程使用的單數形式，但是很重要的一點是，您可以選取您想要包含或省略這行程式碼的任何表單。
+`modelBuilder.Conventions.Remove`陳述式中的[OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx)方法會從正在 pluralized 防止資料表名稱。 如果您沒有這麼做，所產生之資料表就會命名為`Students`， `Courses`，和`Enrollments`。 相反地，資料表名稱會`Student`， `Course`，和`Enrollment`。 針對是否要複數化資料表名稱，開發人員並沒有共識。 本教學課程使用的單數形式，但是很重要的一點是，您可以選取您想要包含或省略這行程式碼的任何表單。
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
@@ -201,15 +201,15 @@ ms.lasthandoff: 11/10/2017
 
 [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample8.xml)]
 
-根據預設，Entity Framework 會尋找名稱相同的連接字串`DbContext`類別 (`SchoolContext`這個專案)。 已新增的連接字串會指定名為 LocalDB 資料庫*ContosoUniversity.mdf*位於*應用程式\_資料*資料夾。 如需詳細資訊，請參閱[ASP.NET Web 應用程式的 SQL Server 連接字串](https://msdn.microsoft.com/en-us/library/jj653752.aspx)。
+根據預設，Entity Framework 會尋找名稱相同的連接字串`DbContext`類別 (`SchoolContext`這個專案)。 已新增的連接字串會指定名為 LocalDB 資料庫*ContosoUniversity.mdf*位於*應用程式\_資料*資料夾。 如需詳細資訊，請參閱[ASP.NET Web 應用程式的 SQL Server 連接字串](https://msdn.microsoft.com/library/jj653752.aspx)。
 
-實際上，您不需要指定的連接字串。 如果您並未提供的連接字串，Entity Framework 會建立一個。不過，資料庫可能不會在*應用程式\_資料*應用程式資料夾。 會建立此資料庫的資訊，請參閱[Code First 到新的資料庫](https://msdn.microsoft.com/en-us/data/jj193542)。
+實際上，您不需要指定的連接字串。 如果您並未提供的連接字串，Entity Framework 會建立一個。不過，資料庫可能不會在*應用程式\_資料*應用程式資料夾。 會建立此資料庫的資訊，請參閱[Code First 到新的資料庫](https://msdn.microsoft.com/data/jj193542)。
 
 `connectionStrings`集合也具有名為連接字串`DefaultConnection`用的成員資格資料庫。 您將不會在本教學課程使用成員資格資料庫。 兩個連接字串之間唯一的差別是資料庫名稱和 name 屬性值。
 
 ## <a name="set-up-and-execute-a-code-first-migration"></a>設定及執行程式碼的第一次移轉
 
-當您第一次開始開發應用程式時，您的資料模型變更常見問題，以及每次將模型變更，它會取得與資料庫同步處理。 您可以設定 Entity Framework 自動卸除並重新建立每次變更資料模型資料庫。 因為測試資料是容易重新建立，但您已部署至實際執行環境之後，您通常想要更新資料庫結構描述，但不卸除資料庫，這是不及早在開發中的問題。 移轉功能可讓程式碼第一次更新資料庫卸除並重新建立它。 您可能要使用在新專案的開發週期的早期[DropCreateDatabaseIfModelChanges](https://msdn.microsoft.com/en-us/library/gg679604(v=vs.103).aspx)卸除、 重新建立，並重新植入資料庫中，每次將模型變更。 您做好準備以部署您的應用程式的其中一個，您可以將轉換的移轉方法。 此教學課程中只會使用移轉作業。 如需詳細資訊，請參閱[Code First 移轉](https://msdn.microsoft.com/en-us/data/jj591621)和[移轉錄影畫面數列](https://blogs.msdn.com/b/adonet/archive/2014/03/12/migrations-screencast-series.aspx)。
+當您第一次開始開發應用程式時，您的資料模型變更常見問題，以及每次將模型變更，它會取得與資料庫同步處理。 您可以設定 Entity Framework 自動卸除並重新建立每次變更資料模型資料庫。 因為測試資料是容易重新建立，但您已部署至實際執行環境之後，您通常想要更新資料庫結構描述，但不卸除資料庫，這是不及早在開發中的問題。 移轉功能可讓程式碼第一次更新資料庫卸除並重新建立它。 您可能要使用在新專案的開發週期的早期[DropCreateDatabaseIfModelChanges](https://msdn.microsoft.com/library/gg679604(v=vs.103).aspx)卸除、 重新建立，並重新植入資料庫中，每次將模型變更。 您做好準備以部署您的應用程式的其中一個，您可以將轉換的移轉方法。 此教學課程中只會使用移轉作業。 如需詳細資訊，請參閱[Code First 移轉](https://msdn.microsoft.com/data/jj591621)和[移轉錄影畫面數列](https://blogs.msdn.com/b/adonet/archive/2014/03/12/migrations-screencast-series.aspx)。
 
 ### <a name="enable-code-first-migrations"></a>啟用 Code First 移轉
 
@@ -234,9 +234,9 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="set-up-the-seed-method"></a>設定種子方法
 
-[種子](https://msdn.microsoft.com/en-us/library/hh829453(v=vs.103).aspx)方法執行 Code First 移轉建立資料庫時，以及每次它將資料庫更新為最新的移轉。 Seed 方法的目的是讓您能夠將資料插入資料表之前應用程式存取資料庫第一次。
+[種子](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx)方法執行 Code First 移轉建立資料庫時，以及每次它將資料庫更新為最新的移轉。 Seed 方法的目的是讓您能夠將資料插入資料表之前應用程式存取資料庫第一次。
 
-在舊版的第一個程式碼中，發行移轉之前，它是很常見的`Seed`方法來插入測試資料，因為資料庫已完全刪除並從頭開始重新建立每一次在開發期間的模型變更。 Code First 移轉，資料會保留在資料庫變更後的測試，包括中的測試資料[種子](https://msdn.microsoft.com/en-us/library/hh829453(v=vs.103).aspx)方法通常不是必要。 事實上，您不想`Seed`方法插入的測試資料，如果您將使用移轉將資料庫部署到生產環境，因為`Seed`方法會在生產環境中執行。 在此情況下您想`Seed`方法，以您想要在生產環境中要插入的資料插入資料庫。 例如，您可能想要包括在實際的部門名稱的資料庫`Department`資料表在生產環境中可以使用應用程式時。
+在舊版的第一個程式碼中，發行移轉之前，它是很常見的`Seed`方法來插入測試資料，因為資料庫已完全刪除並從頭開始重新建立每一次在開發期間的模型變更。 Code First 移轉，資料會保留在資料庫變更後的測試，包括中的測試資料[種子](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx)方法通常不是必要。 事實上，您不想`Seed`方法插入的測試資料，如果您將使用移轉將資料庫部署到生產環境，因為`Seed`方法會在生產環境中執行。 在此情況下您想`Seed`方法，以您想要在生產環境中要插入的資料插入資料庫。 例如，您可能想要包括在實際的部門名稱的資料庫`Department`資料表在生產環境中可以使用應用程式時。
 
 此教學課程中，您將會使用移轉部署，但您`Seed`方法將還是插入測試資料，以便更輕鬆地查看應用程式的功能而不需要以手動方式插入大量資料的運作方式。
 
@@ -244,11 +244,11 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample11.cs)]
 
-    [種子](https://msdn.microsoft.com/en-us/library/hh829453(v=vs.103).aspx)方法會採用做為輸入參數，為資料庫物件和方法中的程式碼會使用該物件加入資料庫中的新實體。 每個實體類型，程式碼會建立新實體的集合，將它們加入至適當[DbSet](https://msdn.microsoft.com/en-us/library/system.data.entity.dbset(v=vs.103).aspx)屬性，然後按一下 儲存至資料庫的變更。 不需要呼叫[SaveChanges](https://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx)方法之後每個實體群組，做為執行這項，但這麼做可協助您找出問題的來源，如果程式碼寫入資料庫時發生例外狀況。
+    [種子](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx)方法會採用做為輸入參數，為資料庫物件和方法中的程式碼會使用該物件加入資料庫中的新實體。 每個實體類型，程式碼會建立新實體的集合，將它們加入至適當[DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.103).aspx)屬性，然後按一下 儲存至資料庫的變更。 不需要呼叫[SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx)方法之後每個實體群組，做為執行這項，但這麼做可協助您找出問題的來源，如果程式碼寫入資料庫時發生例外狀況。
 
-    某些插入資料的陳述式使用[AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法，以執行 「 更新插入 」 作業。 因為`Seed`方法執行每個移轉，因為您嘗試新增的資料列，就會有第一個移轉建立資料庫之後插入資料。 「 更新插入 」 作業會防止您嘗試要插入的資料列已經存在，但它會發生的錯誤***會覆寫***資料您測試應用程式時所做的任何變更。 測試資料表中的資料部分可能不會想才會發生： 在某些情況下測試時變更資料時要您的資料庫更新後要保持的變更。 在此情況下您要執行條件式的 insert 作業： 插入資料列，只有當其不存在。 Seed 方法會使用這兩種方法。
+    某些插入資料的陳述式使用[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法，以執行 「 更新插入 」 作業。 因為`Seed`方法執行每個移轉，因為您嘗試新增的資料列，就會有第一個移轉建立資料庫之後插入資料。 「 更新插入 」 作業會防止您嘗試要插入的資料列已經存在，但它會發生的錯誤***會覆寫***資料您測試應用程式時所做的任何變更。 測試資料表中的資料部分可能不會想才會發生： 在某些情況下測試時變更資料時要您的資料庫更新後要保持的變更。 在此情況下您要執行條件式的 insert 作業： 插入資料列，只有當其不存在。 Seed 方法會使用這兩種方法。
 
-    第一個參數傳遞至[AddOrUpdate](https://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法會指定用來檢查資料列是否已經存在的屬性。 您提供的測試學生資料`LastName`因為每個清單中的最後一個名稱是唯一的可以針對此用途使用屬性：
+    第一個參數傳遞至[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法會指定用來檢查資料列是否已經存在的屬性。 您提供的測試學生資料`LastName`因為每個清單中的最後一個名稱是唯一的可以針對此用途使用屬性：
 
     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample12.cs)]
 
@@ -258,7 +258,7 @@ ms.lasthandoff: 11/10/2017
 
     如需有關`AddOrUpdate`方法，請參閱[小心以 EF 4.3 AddOrUpdate 方法](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)Julie Lerman 部落格上。
 
-    加入的程式碼`Enrollment`實體不會使用`AddOrUpdate`方法。 它會檢查是否實體已經存在，並將實體，如果不存在。 這種方法將會保留您對註冊等級執行移轉時變更。 此程式碼迴圈的每個成員`Enrollment`[清單](https://msdn.microsoft.com/en-us/library/6sh2ey19.aspx)，如果資料庫中找不到註冊，它會將註冊加入資料庫。 第一次更新資料庫，資料庫將是空的因此它會將加入每個註冊。
+    加入的程式碼`Enrollment`實體不會使用`AddOrUpdate`方法。 它會檢查是否實體已經存在，並將實體，如果不存在。 這種方法將會保留您對註冊等級執行移轉時變更。 此程式碼迴圈的每個成員`Enrollment`[清單](https://msdn.microsoft.com/library/6sh2ey19.aspx)，如果資料庫中找不到註冊，它會將註冊加入資料庫。 第一次更新資料庫，資料庫將是空的因此它會將加入每個註冊。
 
     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample13.cs)]
 
@@ -343,7 +343,7 @@ SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*Contoso
 - 實體屬性名稱會用於資料行名稱。
 - 實體屬性是名為`ID`或*classname* `ID`被當做主索引鍵屬性。
 
-您已看過可覆寫慣例 （例如，您指定資料表名稱不應該 pluralized），您將學習更多關於慣例及如何覆寫在[建立多個複雜資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)教學課程稍後在本系列。 如需詳細資訊，請參閱[程式碼優先 」 慣例](https://msdn.microsoft.com/en-us/data/jj679962)。
+您已看過可覆寫慣例 （例如，您指定資料表名稱不應該 pluralized），您將學習更多關於慣例及如何覆寫在[建立多個複雜資料模型](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)教學課程稍後在本系列。 如需詳細資訊，請參閱[程式碼優先 」 慣例](https://msdn.microsoft.com/data/jj679962)。
 
 ## <a name="summary"></a>總結
 

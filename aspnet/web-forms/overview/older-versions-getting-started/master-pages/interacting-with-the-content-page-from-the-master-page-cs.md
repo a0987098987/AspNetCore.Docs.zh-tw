@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 923d291d84a47e64b31d99bcb13cfe53e5806444
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4d7f6eeac084f3516ab470adf8973351cf08a7f1
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-c"></a>互動內容的頁面上，從主版頁面 (C#)
 ====================
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 接下來，指定資料來源控制項的`SELECT`陳述式，藉由從下拉式清單中選擇 [產品] 資料表，並傳回`ProductName`和`UnitPrice`（請參閱圖 4） 的資料行。 按一下 [下一步]，然後 「 完成 」 以完成設定資料來源精靈。
 
 
-[![傳回從 Products 資料表的 [ProductName] 和 UnitPrice 欄位](interacting-with-the-content-page-from-the-master-page-cs/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image10.png)
+[![傳回從 Products 資料表的 [ProductName] 和 [UnitPrice] 欄位](interacting-with-the-content-page-from-the-master-page-cs/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image10.png)
 
 **圖 04**： 傳回`ProductName`和`UnitPrice`欄位從`Products`資料表 ([按一下以檢視完整大小的影像](interacting-with-the-content-page-from-the-master-page-cs/_static/image12.png))
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 11/10/2017
 傳遞至事件處理常式的第二個參數可以包含其他事件的相關資訊。 雖然基底`EventArgs`沿著任何資訊未通過類別，.NET Framework 包含一些類別會擴充`EventArgs`並包含額外的屬性。 例如，`CommandEventArgs`執行個體傳遞至回應的事件處理常式`Command`事件，並包含兩個參考的屬性：`CommandArgument`和`CommandName`。
 
 > [!NOTE]
-> 如需有關建立的詳細資訊，引發，和處理事件，請參閱[事件和委派](https://msdn.microsoft.com/en-us/library/17sde2xt.aspx)和[簡單 english 事件委派](http://www.codeproject.com/KB/cs/eventdelegates.aspx)。
+> 如需有關建立的詳細資訊，引發，和處理事件，請參閱[事件和委派](https://msdn.microsoft.com/library/17sde2xt.aspx)和[簡單 english 事件委派](http://www.codeproject.com/KB/cs/eventdelegates.aspx)。
 
 
 若要定義事件，請使用下列語法：
@@ -251,7 +251,7 @@ GridView 內容頁面中的重新整理此位置的程式碼，每當`DoublePric
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [存取及更新在 ASP.NET 中的資料](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
-- [事件和委派](https://msdn.microsoft.com/en-us/library/17sde2xt.aspx)
+- [事件和委派](https://msdn.microsoft.com/library/17sde2xt.aspx)
 - [主版頁面內容之間傳遞資訊](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
 - [在 ASP.NET 教學課程中使用的資料](../../data-access/index.md)
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 59becd46684d96f28bec43b7d5b4e0fd50c92117
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f57bc8c32757c1ea25bf6bbb34539570e4c09aad
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>驗證使用者認證，針對成員資格使用者存放區 (VB)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 使用表單驗證的網站，使用者登入網站瀏覽登入頁面，並輸入其認證。 這些認證，然後會針對使用者存放區進行比較。 如果有效，然後授與使用者表單驗證票證，即表示身分識別和真實性的造訪者的安全性權杖。
 
-若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在`username`和`password`-並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
+若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在`username`和`password`-並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
 
 `SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換`password`傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與已從資料庫傳回內容。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-collecting-credentials-through-the-login-web-control"></a>步驟 2： 收集認證透過登入 Web 控制項
 
-[登入 Web 控制項](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.aspx)呈現預設使用者介面非常類似於我們在建立<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程。 使用登入控制項，我們將工作儲存不必建立介面，以收集訪客的認證。 此外，登入控制項自動登入使用者 （假設已提交的認證有效），藉此儲存我們不需要撰寫任何程式碼。
+[登入 Web 控制項](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.aspx)呈現預設使用者介面非常類似於我們在建立<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-vb.md)教學課程。 使用登入控制項，我們將工作儲存不必建立介面，以收集訪客的認證。 此外，登入控制項自動登入使用者 （假設已提交的認證有效），藉此儲存我們不需要撰寫任何程式碼。
 
 讓我們更新`Login.aspx`、 取代手動建立的介面和程式碼與登入控制項。 開始移除現有的標記和程式碼中`Login.aspx`。 您可能會刪除徹底，或只需加以註解化。若要宣告式標記為註解，把它與`<%--`和`--%>`分隔符號。 您可以手動輸入這些分隔符號，或如圖 2 所示，您可以選取要標記為註解，然後按一下 [標記為註解選取的行中的圖示] 工具列的文字。 同樣地，您可以使用註解選取的行圖示標記為註解程式碼後置類別中選取的程式碼。
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/10/2017
 
 - 登入控制項是否登入頁面上所定義的`loginUrl`表單驗證設定; 中設定此設定的預設值是`Login.aspx`
 - 與否`ReturnUrl`querystring 參數
-- 登入控制項的值[`DestinationUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.destinationpageurl.aspx)
+- 登入控制項的值[`DestinationUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.destinationpageurl.aspx)
 - `defaultUrl`指定在表單驗證組態設定的值; 此設定的預設值是 Default.aspx
 
 圖 4 說明如何登入控制項使用這四個參數來到達其適當的頁面的決策。
@@ -131,19 +131,19 @@ ms.lasthandoff: 11/10/2017
 
 登入控制項的預設屬性值呈現使用者介面 （記錄檔中） 的標題、 使用者名稱和密碼輸入，記住我的文字方塊和標籤控制項下, 一次的核取方塊，並登入 按鈕。 所有可透過登入控制項的多個屬性來設定這些項目的外觀。 此外，可以加入額外的使用者介面項目-連結的頁面，即可建立新的使用者帳戶-例如，藉由設定屬性或兩個。
 
-讓我們花幾分鐘的時間 gussy 總我們登入控制項的外觀。 因為`Login.aspx`頁面已經有指出登入頁面頂端的文字，是多餘的登入控制項的標題。 因此，以清除[`TitleText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.titletext.aspx)值，以便移除登入控制項的標題。
+讓我們花幾分鐘的時間 gussy 總我們登入控制項的外觀。 因為`Login.aspx`頁面已經有指出登入頁面頂端的文字，是多餘的登入控制項的標題。 因此，以清除[`TitleText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.titletext.aspx)值，以便移除登入控制項的標題。
 
-使用者名稱： 和密碼： 左邊的兩個文字方塊控制項的標籤可以透過自訂[ `UserNameLabelText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.usernamelabeltext.aspx)和[`PasswordLabelText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.passwordlabeltext.aspx)分別。 讓我們來變更使用者名稱： 讀取使用者名稱的標籤:。 標籤和文字方塊的樣式，則為可透過設定[ `LabelStyle` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.labelstyle.aspx)和[`TextBoxStyle`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.textboxstyle.aspx)分別。
+使用者名稱： 和密碼： 左邊的兩個文字方塊控制項的標籤可以透過自訂[ `UserNameLabelText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.usernamelabeltext.aspx)和[`PasswordLabelText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.passwordlabeltext.aspx)分別。 讓我們來變更使用者名稱： 讀取使用者名稱的標籤:。 標籤和文字方塊的樣式，則為可透過設定[ `LabelStyle` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.labelstyle.aspx)和[`TextBoxStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.textboxstyle.aspx)分別。
 
-記住我可以透過登入控制項的設定下一個時間核取方塊的文字屬性[`RememberMeText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.remembermetext.aspx)，且其預設檢查狀態都可透過設定[`RememberMeSet`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.remembermeset.aspx)（哪些預設為 False）。 請繼續進行，並設定`RememberMeSet`依預設會核取屬性設為 True，讓 記住我下一次核取方塊。
+記住我可以透過登入控制項的設定下一個時間核取方塊的文字屬性[`RememberMeText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.remembermetext.aspx)，且其預設檢查狀態都可透過設定[`RememberMeSet`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.remembermeset.aspx)（哪些預設為 False）。 請繼續進行，並設定`RememberMeSet`依預設會核取屬性設為 True，讓 記住我下一次核取方塊。
 
-登入控制項提供了兩個屬性，以便調整其使用者介面控制項的配置。 [ `TextLayout`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.textlayout.aspx)指出是否將使用者名稱： 和密碼： 標籤會出現在左側的其對應的文字方塊 （預設值），或其上方。 [ `Orientation`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.orientation.aspx)表示是否垂直定位的使用者名稱和密碼的輸入 （一個在彼此上方） 或水平方向。 我要保留其預設值，這兩個屬性，但建議您將再試一次將這兩個屬性設定為非預設值以查看產生的效果。
+登入控制項提供了兩個屬性，以便調整其使用者介面控制項的配置。 [ `TextLayout`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.textlayout.aspx)指出是否將使用者名稱： 和密碼： 標籤會出現在左側的其對應的文字方塊 （預設值），或其上方。 [ `Orientation`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.orientation.aspx)表示是否垂直定位的使用者名稱和密碼的輸入 （一個在彼此上方） 或水平方向。 我要保留其預設值，這兩個屬性，但建議您將再試一次將這兩個屬性設定為非預設值以查看產生的效果。
 
 > [!NOTE]
 > 在下一步 區段中，設定登入控制項的版面配置中，我們將探討使用範本定義確切的版面配置控制項的使用者介面項目配置。
 
 
-藉由設定登入控制項的屬性設定包裝[ `CreateUserText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.createusertext.aspx)和[`CreateUserUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.createuserurl.aspx)成 Not 尚未登錄嗎？ 建立帳戶 ！ 和`~/Membership/CreatingUserAccounts.aspx`分別。 這會將超連結加入登入控制項的介面指向頁面中建立<a id="Tutorial05"> </a>[前述教學課程](creating-user-accounts-vb.md)。 登入控制項[ `HelpPageText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.helppagetext.aspx)和[`HelpPageUrl`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.helppageurl.aspx)和[ `PasswordRecoveryText` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.passwordrecoverytext.aspx)和[ `PasswordRecoveryUrl` 屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.passwordrecoveryurl.aspx)同樣的方式，呈現一份說明網頁和密碼復原頁面的連結中運作。
+藉由設定登入控制項的屬性設定包裝[ `CreateUserText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.createusertext.aspx)和[`CreateUserUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.createuserurl.aspx)成 Not 尚未登錄嗎？ 建立帳戶 ！ 和`~/Membership/CreatingUserAccounts.aspx`分別。 這會將超連結加入登入控制項的介面指向頁面中建立<a id="Tutorial05"> </a>[前述教學課程](creating-user-accounts-vb.md)。 登入控制項[ `HelpPageText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.helppagetext.aspx)和[`HelpPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.helppageurl.aspx)和[ `PasswordRecoveryText` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.passwordrecoverytext.aspx)和[ `PasswordRecoveryUrl` 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.passwordrecoveryurl.aspx)同樣的方式，呈現一份說明網頁和密碼復原頁面的連結中運作。
 
 這些屬性變更後，登入控制項的宣告式標記和外觀看起來應該類似於圖 5 所示。
 
@@ -162,7 +162,7 @@ ms.lasthandoff: 11/10/2017
 1. 更新包含網頁的控制項來收集其他的認證登入控制項的介面。
 2. 覆寫登入控制項的內部驗證邏輯，使其使用者名稱和密碼有效，且其額外的認證有效，太只驗證使用者。
 
-若要完成的第一個工作，我們需要將登入控制項轉換成範本，並新增必要的 Web 控制項。 可以藉由建立控制項的事件處理常式取代與第二項工作，登入控制項的驗證邏輯[`Authenticate`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.authenticate.aspx)。
+若要完成的第一個工作，我們需要將登入控制項轉換成範本，並新增必要的 Web 控制項。 可以藉由建立控制項的事件處理常式取代與第二項工作，登入控制項的驗證邏輯[`Authenticate`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.authenticate.aspx)。
 
 提示使用者輸入其使用者名稱、 密碼及電子郵件地址，使其只會驗證使用者，如果提供電子郵件地址符合檔案上的電子郵件地址，讓我們先更新登入控制項。 首先，我們需要將登入控制項的介面轉換為範本。 從登入控制項的智慧標籤上，選擇 [轉換成範本] 選項。
 
@@ -202,11 +202,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-3-modifying-the-login-controls-authentication-logic"></a>步驟 3： 修改登入控制項的驗證邏輯
 
-當訪客提供其認證並點選 [登入] 按鈕，回傳展示和登入控制其驗證工作流程進展。 藉由引發啟動工作流程[`LoggingIn`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.loggingin.aspx)。 此事件相關聯的任何事件處理常式可能會取消作業中的記錄檔，藉由設定`e.Cancel`屬性`True`。
+當訪客提供其認證並點選 [登入] 按鈕，回傳展示和登入控制其驗證工作流程進展。 藉由引發啟動工作流程[`LoggingIn`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.loggingin.aspx)。 此事件相關聯的任何事件處理常式可能會取消作業中的記錄檔，藉由設定`e.Cancel`屬性`True`。
 
-如果在作業記錄不會取消，工作流程進展藉由引發[`Authenticate`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.authenticate.aspx)。 如果沒有的事件處理常式`Authenticate`事件，然後它會負責決定所提供的認證是否為有效。 如果未不指定任何事件處理常式，則會使用登入控制項`Membership.ValidateUser`方法，以判斷憑證的有效性。
+如果在作業記錄不會取消，工作流程進展藉由引發[`Authenticate`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.authenticate.aspx)。 如果沒有的事件處理常式`Authenticate`事件，然後它會負責決定所提供的認證是否為有效。 如果未不指定任何事件處理常式，則會使用登入控制項`Membership.ValidateUser`方法，以判斷憑證的有效性。
 
-如果提供的認證有效，則表單驗證票證建立時， [ `LoggedIn`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.loggedin.aspx)引發時，使用者會重新導向到適當的頁面。 如果，不過，認證會被視為無效，則[`LoginError`事件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.loginerror.aspx)，就會引發，則會顯示訊息通知使用者他們的認證不正確。 根據預設，在失敗登入控制項只會設定其`FailureText`標籤控制項文字屬性 （登入嘗試不成功失敗訊息。 請再試一次）。 不過，如果登入控制項[`FailureAction`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.failureaction.aspx)設`RedirectToLoginPage`，然後登入控制問題`Response.Redirect`附加 querystring 參數將登入頁面`loginfailure=1`（這會導致登入控制項以顯示失敗的訊息）。
+如果提供的認證有效，則表單驗證票證建立時， [ `LoggedIn`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.loggedin.aspx)引發時，使用者會重新導向到適當的頁面。 如果，不過，認證會被視為無效，則[`LoginError`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.loginerror.aspx)，就會引發，則會顯示訊息通知使用者他們的認證不正確。 根據預設，在失敗登入控制項只會設定其`FailureText`標籤控制項文字屬性 （登入嘗試不成功失敗訊息。 請再試一次）。 不過，如果登入控制項[`FailureAction`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.failureaction.aspx)設`RedirectToLoginPage`，然後登入控制問題`Response.Redirect`附加 querystring 參數將登入頁面`loginfailure=1`（這會導致登入控制項以顯示失敗的訊息）。
 
 圖 9 提供的驗證工作流程的流程圖。
 
@@ -226,11 +226,11 @@ ms.lasthandoff: 11/10/2017
 
 [!code-vb[Main](validating-user-credentials-against-the-membership-user-store-vb/samples/sample3.vb)]
 
-如您所見，`Authenticate`事件處理常式會傳遞類型的物件[ `AuthenticateEventArgs` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.authenticateeventargs.aspx)做為其第二個輸入參數。 `AuthenticateEventArgs`類別包含名為的布林值屬性`Authenticated`用來指定所提供的認證是否有效。 我們的工作，則以撰寫程式碼會判斷所提供的認證是否有效，並設定`e.Authenticate`屬性據此。
+如您所見，`Authenticate`事件處理常式會傳遞類型的物件[ `AuthenticateEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.authenticateeventargs.aspx)做為其第二個輸入參數。 `AuthenticateEventArgs`類別包含名為的布林值屬性`Authenticated`用來指定所提供的認證是否有效。 我們的工作，則以撰寫程式碼會判斷所提供的認證是否有效，並設定`e.Authenticate`屬性據此。
 
 ### <a name="determining-and-validating-the-supplied-credentials"></a>判斷及驗證提供的認證
 
-使用登入控制項的[ `UserName` ](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 以判斷任何額外的 Web 控制項中輸入的值 (例如`Email`文字方塊中，我們加入上一個步驟中)，使用`LoginControlID.FindControl`(「*`controlID`*") 來取得 web 的程式設計參考控制項範本中`ID`屬性等於 *`controlID`* 。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
+使用登入控制項的[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 以判斷任何額外的 Web 控制項中輸入的值 (例如`Email`文字方塊中，我們加入上一個步驟中)，使用`LoginControlID.FindControl`(「*`controlID`*") 來取得 web 的程式設計參考控制項範本中`ID`屬性等於 *`controlID`* 。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
 
 `Dim EmailTextBox As TextBox = CType(myLogin.FindControl("Email"), TextBox)`
 
@@ -239,9 +239,9 @@ ms.lasthandoff: 11/10/2017
 1. 請確定提供的使用者名稱和密碼有效
 2. 請確認輸入的電子郵件地址相符使用者嘗試登入的檔案上的電子郵件地址
 
-若要完成第一次檢查，我們可以直接使用`Membership.ValidateUser`像我們了解在步驟 1 中的方法。 第二個核取，我們要判斷使用者的電子郵件地址，因此，我們可以將它比較所輸入的文字方塊控制項的電子郵件地址。 若要取得特定使用者的相關資訊，請使用`Membership`類別的[`GetUser`方法](https://msdn.microsoft.com/en-us/library/system.web.security.membership.getuser.aspx)。
+若要完成第一次檢查，我們可以直接使用`Membership.ValidateUser`像我們了解在步驟 1 中的方法。 第二個核取，我們要判斷使用者的電子郵件地址，因此，我們可以將它比較所輸入的文字方塊控制項的電子郵件地址。 若要取得特定使用者的相關資訊，請使用`Membership`類別的[`GetUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.getuser.aspx)。
 
-`GetUser`方法有數個多載。 如果使用此選項，而未傳入任何參數，它會傳回目前登入使用者的相關資訊。 若要取得特定使用者的相關資訊，請呼叫`GetUser`傳入其使用者名稱。 無論如何，`GetUser`傳回[`MembershipUser`物件](https://msdn.microsoft.com/en-us/library/system.web.security.membershipuser.aspx)，其中包含屬性，例如`UserName`， `Email`， `IsApproved`， `IsOnline`，依此類推。
+`GetUser`方法有數個多載。 如果使用此選項，而未傳入任何參數，它會傳回目前登入使用者的相關資訊。 若要取得特定使用者的相關資訊，請呼叫`GetUser`傳入其使用者名稱。 無論如何，`GetUser`傳回[`MembershipUser`物件](https://msdn.microsoft.com/library/system.web.security.membershipuser.aspx)，其中包含屬性，例如`UserName`， `Email`， `IsApproved`， `IsOnline`，依此類推。
 
 下列程式碼會實作這些檢查兩個項目。 如果兩者都通過，然後`e.Authenticate`設`True`，否則它會指派`False`。
 
@@ -261,7 +261,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-4-improving-the-login-controls-invalid-credentials-message"></a>步驟 4： 改善登入控制項的認證不正確的訊息
 
-當使用者嘗試使用無效的認證登入時，登入控制項就會顯示訊息，說明的登入嘗試不成功。 特別是，控制項會顯示由指定的訊息其[`FailureText`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.failuretext.aspx)，其具有預設值是您登入嘗試不成功。 請重試。
+當使用者嘗試使用無效的認證登入時，登入控制項就會顯示訊息，說明的登入嘗試不成功。 特別是，控制項會顯示由指定的訊息其[`FailureText`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.failuretext.aspx)，其具有預設值是您登入嘗試不成功。 請重試。
 
 前文提過，有許多使用者的認證可能無效的原因：
 
@@ -304,8 +304,8 @@ ms.lasthandoff: 11/10/2017
 
 - [顯示自訂訊息以使鎖定且未經核准的使用者](http://aspnet.4guysfromrolla.com/articles/050306-1.aspx)
 - [檢查 ASP.NET 2.0 的成員資格、 角色和設定檔](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
-- [如何： 建立 ASP.NET 登入頁面](https://msdn.microsoft.com/en-us/library/ms178331.aspx)
-- [登入控制項的技術文件](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.login.aspx)
+- [如何： 建立 ASP.NET 登入頁面](https://msdn.microsoft.com/library/ms178331.aspx)
+- [登入控制項的技術文件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.aspx)
 - [使用登入控制項](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/security/login.aspx)
 
 ### <a name="about-the-author"></a>關於作者

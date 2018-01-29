@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 7c03453e64cfc065d9f424702cc5af373e9bf536
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9c0edb301de85d15b9a3527382b72211f6f3d3ec
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>部署 ASP.NET Web 應用程式與 SQL Server Compact 使用 Visual Studio： 簡介-12 個 1
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 > 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET 部署論壇](https://forums.asp.net/26.aspx/1?Configuration+and+Deployment)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 這些教學課程將引導您完成部署第一次測試，在本機開發電腦上的 IIS 和協力廠商主機服務提供者。 應用程式資料庫及 ASP.NET 成員資格資料庫，則會使用您要部署的應用程式。 您開始使用 SQL Server Compact 和 SQL Server Compact，部署和更新版本的教學課程示範如何部署資料庫變更，以及如何移轉到 SQL Server。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="deploying-web-site-projects"></a>部署的網站專案
 
-Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方法，在本教學課程所示範的工具不會套用到[網站專案](https://msdn.microsoft.com/en-us/library/dd547590.aspx)。 如需如何部署網站專案的資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/en-us/library/bb386521.aspx#deployment_for_web_site_projects)。
+Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方法，在本教學課程所示範的工具不會套用到[網站專案](https://msdn.microsoft.com/library/dd547590.aspx)。 如需如何部署網站專案的資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521.aspx#deployment_for_web_site_projects)。
 
 ## <a name="deploying-aspnet-mvc-projects"></a>部署 ASP.NET MVC 專案
 
@@ -79,7 +79,7 @@ Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方�
 
 ## <a name="comments-welcome"></a>註解歡迎畫面
 
-教學課程的註解是褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
+教學課程的註解是  褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -87,7 +87,7 @@ Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方�
 
 - [Visual Studio 2010 SP1](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack)
 - [Visual Web Developer Express 2010 SP1](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VWD2010SP1Pack)
-- [Visual Studio 2012 RC 或 Visual Studio Express 2012 RC for Web](https://go.microsoft.com/fwlink/?LinkId=240162)
+- [Visual Studio 2012 RC or Visual Studio Express 2012 RC for Web](https://go.microsoft.com/fwlink/?LinkId=240162)
 
 如果您有 Visual Studio 2010 SP1 或 Visual Web Developer Express 2010 SP1，也安裝下列產品：
 

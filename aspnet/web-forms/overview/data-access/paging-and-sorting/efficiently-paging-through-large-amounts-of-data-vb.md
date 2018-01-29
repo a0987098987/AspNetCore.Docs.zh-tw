@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 00a5358361fa3f37d13ea74d61c437088b388ece
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a1b7fbb1e60c9f1bc6a26ccaeb7d14b4c95219d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-vb"></a>有效率地大量的資料 (VB) 進行分頁
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-2-returning-the-total-number-of-records-being-paged-through"></a>步驟 2： 傳回透過正在呼叫的記錄總數
 
-我們檢驗如何擷取精確的頁面不會再顯示記錄子集時，可讓 s 先看看如何傳回透過正在呼叫的記錄總數。 需要這項資訊才能正確地設定 [分頁] 使用者介面。 可以使用來取得特定的 SQL 查詢所傳回的記錄總數[`COUNT`彙總函式](https://msdn.microsoft.com/en-US/library/ms175997.aspx)。 例如，若要判斷中記錄的總數`Products`資料表中，我們可以使用下列查詢：
+我們檢驗如何擷取精確的頁面不會再顯示記錄子集時，可讓 s 先看看如何傳回透過正在呼叫的記錄總數。 需要這項資訊才能正確地設定 [分頁] 使用者介面。 可以使用來取得特定的 SQL 查詢所傳回的記錄總數[`COUNT`彙總函式](https://msdn.microsoft.com/library/ms175997.aspx)。 例如，若要判斷中記錄的總數`Products`資料表中，我們可以使用下列查詢：
 
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-vb/samples/sample1.sql)]
@@ -120,7 +120,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 有兩個一般使用的技術來有效地將資料列索引關聯的資料進行分頁，藉此讓要擷取的記錄的精確子集：
 
 - **使用 SQL Server 2005 s`ROW_NUMBER()`關鍵字**新增至 SQL Server 2005、`ROW_NUMBER()`關鍵字關聯每個傳回的記錄，取決於一些排序次序。 這個等級可以作為每個資料列的資料列索引。
-- **使用資料表變數和`SET ROWCOUNT`**  SQL Server s [ `SET ROWCOUNT`陳述式](https://msdn.microsoft.com/en-us/library/ms188774.aspx)可以用來指定查詢應該處理終止; 之前的總記錄數[資料表變數](http://www.sqlteam.com/item.asp?ItemID=9454)是本機 T-SQL 變數可以儲存表格式資料、 akin[暫存資料表](http://www.sqlteam.com/item.asp?ItemID=2029)。 這種方法同樣適用於 Microsoft SQL Server 2005 和 SQL Server 2000 (而`ROW_NUMBER()`方法只適用於 SQL Server 2005)。  
+- **使用資料表變數和`SET ROWCOUNT`**  SQL Server s [ `SET ROWCOUNT`陳述式](https://msdn.microsoft.com/library/ms188774.aspx)可以用來指定查詢應該處理終止; 之前的總記錄數[資料表變數](http://www.sqlteam.com/item.asp?ItemID=9454)是本機 T-SQL 變數可以儲存表格式資料、 akin[暫存資料表](http://www.sqlteam.com/item.asp?ItemID=2029)。 這種方法同樣適用於 Microsoft SQL Server 2005 和 SQL Server 2000 (而`ROW_NUMBER()`方法只適用於 SQL Server 2005)。  
   
  這裡的做法是建立資料表變數，其中包含`IDENTITY`資料行和資料行的主索引鍵的資料表正在透過呼叫其資料。 正在透過呼叫其資料的資料表的內容放入資料表變數中，藉此建立關聯的循序資料列索引接下來，傾印 (透過`IDENTITY`資料行) 資料表中的每一筆記錄。 尚未擴展資料表變數，一旦`SELECT`陳述式在資料表變數中，可以執行與基礎資料表聯結，提取出特定的記錄。 `SET ROWCOUNT`陳述式用來以聰明的方式限制需要可傾印以放入資料表變數中的記錄數目。  
   
@@ -275,9 +275,9 @@ BLL 和 DAL 方法存取完整的記錄的特定子集，我們已備妥可建�
 
 若要補救這種情況，我們需要設定要使用自訂分頁 ObjectDataSource。 這可以透過完成下列步驟：
 
-1. **設定 ObjectDataSource s`EnablePaging`屬性`true`**這表示它必須將它傳遞給 ObjectDataSource`SelectMethod`另外兩個參數： 一個用來指定開始的資料列索引 ([ `StartRowIndexParameterName` ](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.startrowindexparametername.aspx))，和一個用來指定最大資料列 ([`MaximumRowsParameterName`](https://msdn.microsoft.com/en-US/library/system.web.ui.webcontrols.objectdatasource.maximumrowsparametername.aspx))。
+1. **設定 ObjectDataSource s`EnablePaging`屬性`true`**這表示它必須將它傳遞給 ObjectDataSource`SelectMethod`另外兩個參數： 一個用來指定開始的資料列索引 ([ `StartRowIndexParameterName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.startrowindexparametername.aspx))，和一個用來指定最大資料列 ([`MaximumRowsParameterName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.maximumrowsparametername.aspx))。
 2. **設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`據以屬性**`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性會指出傳入輸入參數的名稱`SelectMethod`進行自訂分頁. 根據預設，這些參數名稱為`startIndexRow`和`maximumRows`，這是原因、 建立時`GetProductsPaged`方法在 BLL 我用於這些值的輸入參數。 如果您選擇要使用不同的參數名稱 BLL s`GetProductsPaged`方法，例如`startIndex`和`maxRows`的範例，您就必須設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性據以 （例如 startIndex 為`StartRowIndexParameterName`和為 maxRows `MaximumRowsParameterName`)。
-3. **設定 ObjectDataSource s [ `SelectCountMethod`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.selectcountmethod(VS.80).aspx)的總數目的記錄正在分頁透過傳回的方法名稱 (`TotalNumberOfProducts`)**請記得，`ProductsBLL`類別的`TotalNumberOfProducts`方法會傳回透過使用 DAL 方法執行正在呼叫的記錄總數`SELECT COUNT(*) FROM Products`查詢。 Objectdatasource 需要這項資訊才能正確地呈現分頁介面。
+3. **設定 ObjectDataSource s [ `SelectCountMethod`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selectcountmethod(VS.80).aspx)的總數目的記錄正在分頁透過傳回的方法名稱 (`TotalNumberOfProducts`)**請記得，`ProductsBLL`類別的`TotalNumberOfProducts`方法會傳回透過使用 DAL 方法執行正在呼叫的記錄總數`SELECT COUNT(*) FROM Products`查詢。 Objectdatasource 需要這項資訊才能正確地呈現分頁介面。
 4. **移除`startRowIndex`和`maximumRows``<asp:Parameter>`從 ObjectDataSource s 宣告式標記項目**設定時透過精靈 ObjectDataSource，Visual Studio 會自動加入兩個`<asp:Parameter>`項目`GetProductsPaged`方法 s 輸入參數。 藉由設定`EnablePaging`至`true`，這些參數會自動傳遞給; ObjectDataSource 如果他們也會出現在宣告式語法，將會嘗試傳遞*四個*參數`GetProductsPaged`方法與兩個參數來`TotalNumberOfProducts`方法。 如果您忘記要移除這些`<asp:Parameter>`項目，瀏覽頁面透過瀏覽器，您會取得如下的錯誤訊息： *ObjectDataSource 'ObjectDataSource1' 找不到非泛型方法 'TotalNumberOfProducts' 具有參數： startRowIndex、 maximumRows*。
 
 進行這些變更之後，ObjectDataSource s 宣告式語法看起來應該如下所示：
@@ -352,7 +352,7 @@ BLL 和 DAL 方法存取完整的記錄的特定子集，我們已備妥可建�
 
 不幸的是，有 s 不適合大小所有這裡回答。 提升的效能取決於許多因素，最明顯正在透過正在呼叫的記錄和負載數目的兩個放在 web 伺服器和資料庫伺服器之間的資料庫伺服器和通訊通道。 用於具有少數的數十個記錄的小型資料表，效能差異會造成影響。 對於大型資料表，具有數千部數十萬個資料列，來使用的效能差異是，嚴重。
 
-我，發行項[ASP.NET 2.0 與 SQL Server 2005 中的自訂分頁](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx)，包含執行至展現中時包含的資料庫資料表進行分頁這兩種分頁技術之間的效能差異某些效能測試50,000 筆記錄。 我可以在這些測試中檢查這兩個執行 SQL Server 層級查詢的時間 (使用[SQL Profiler](https://msdn.microsoft.com/en-us/library/ms173757.aspx)) 和 ASP.NET 頁面使用[ASP.NET 的追蹤功能](https://msdn.microsoft.com/en-US/library/y13fw6we.aspx)。 請注意，這些測試是在單一的作用中使用者，我開發方塊上執行，因此科學而不會模擬一般網站的負載模式。 不論如何，結果會說明執行時間的預設和自訂分頁中的相對差異使用夠大的資料量時。
+我，發行項[ASP.NET 2.0 與 SQL Server 2005 中的自訂分頁](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx)，包含執行至展現中時包含的資料庫資料表進行分頁這兩種分頁技術之間的效能差異某些效能測試50,000 筆記錄。 我可以在這些測試中檢查這兩個執行 SQL Server 層級查詢的時間 (使用[SQL Profiler](https://msdn.microsoft.com/library/ms173757.aspx)) 和 ASP.NET 頁面使用[ASP.NET 的追蹤功能](https://msdn.microsoft.com/library/y13fw6we.aspx)。 請注意，這些測試是在單一的作用中使用者，我開發方塊上執行，因此科學而不會模擬一般網站的負載模式。 不論如何，結果會說明執行時間的預設和自訂分頁中的相對差異使用夠大的資料量時。
 
 
 |  | **Avg.持續時間 （秒）** | **讀取** |

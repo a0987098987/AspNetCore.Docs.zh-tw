@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ee3e244c4ed29384d11c7acc1440692d3f9b23e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 - Web 應用程式專案 （不是網站專案）
 - Web Form
 - 主版頁面設定
-- 啟動程序
+- Bootstrap
 - Entity Framework Code First，LocalDB
 - 要求驗證
 - 強型別資料控制項建立的模型繫結資料註解，且值提供者
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 - 註冊 web 應用程式的路由
 - 實作錯誤處理與錯誤記錄
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 如果您不熟悉 ASP.NET Web Form 熟悉程式設計概念，但沒有，您有正確的教學課程。 如果您已經熟悉 ASP.NET Web Form，您可以受益於此教學課程系列由 ASP.NET 4.5 的新功能。 如果您不熟悉程式設計概念和 ASP.NET Web Form，請參閱 Web Form 中提供的其他教學課程[入門](../../../index.md)ASP.NET 網站上的一節。
 
@@ -150,7 +150,7 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 開始之前，請確定您已在電腦上安裝下列軟體：
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/en-us/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/en-us/downloads#express-web)。 會自動安裝.NET Framework。
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs)或[Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web)。 會自動安裝.NET Framework。
 
 此教學課程的數列會使用 Microsoft Visual Studio Express 2013 for Web。 若要完成此教學課程系列，您可以使用 Microsoft Visual Studio Express 2013 for Web，或是 Microsoft Visual Studio 2013。
 
@@ -163,7 +163,7 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 > [!NOTE] 
 > 
-> 本逐步解說假設您已經選擇*Web 程式開發*設定的集合，您會啟動 Visual Studio 的第一次。 如需詳細資訊，請參閱[如何： 選取 Web 程式開發環境設定](https://msdn.microsoft.com/en-us/library/ff521558.aspx)。
+> 本逐步解說假設您已經選擇*Web 程式開發*設定的集合，您會啟動 Visual Studio 的第一次。 如需詳細資訊，請參閱[如何： 選取 Web 程式開發環境設定](https://msdn.microsoft.com/library/ff521558.aspx)。
 
 
 ## <a name="download-the-sample-application"></a>下載範例應用程式
@@ -179,7 +179,7 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 下載*.zip*檔案。 若要查看已完成此教學課程建立的專案，尋找並選取*C#*資料夾中的*.zip*檔案。 儲存*C#* folderto 您用於使用 Visual Studio 2013 專案的資料夾。 根據預設，Visual Studio 2013 專案資料夾，如下所示：
 
-**C:\Users\*****&lt;username&gt;* * * \Documents\Visual Studio 2013\Projects**
+**C:\Users\*****&lt;username&gt;*****\Documents\Visual Studio 2013\Projects**
 
 重新命名***C#***資料夾***WingtipToys***。
 
@@ -193,7 +193,7 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 使用隨附於 Q AND A 區段[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 範例的任何問題或意見。
 
-在此教學課程系列的註解是褖畫惎，且致力此教學課程系列更新時進行納入帳戶更正或建議的教學課程的註解中所提供的增強功能。
+在此教學課程系列的註解是  褖畫惎，且致力此教學課程系列更新時進行納入帳戶更正或建議的教學課程的註解中所提供的增強功能。
 
 在開發期間，就會發生錯誤時，或未正確執行的網站，錯誤訊息可能會提供問題的來源複雜線索，或可能不會說明如何修正此問題。 若要協助您解決一些常見的問題案例，您也可以使用[ASP.NET 論壇](https://forums.asp.net/)或隨附 Q AND A 區段[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 範例。 如果您收到錯誤訊息，或當您瀏覽教學課程，項目無法運作，請務必查看上述位置。
 

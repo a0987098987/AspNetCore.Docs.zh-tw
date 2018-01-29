@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: d273eb5e99da6c6b7678e03b1a8973041113744c
-ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
+ms.openlocfilehash: 86887f0dafa31ff3eb6597284c469c4b3053b6b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/09/2018
 
 [!code-csharp[Main](adding-a-view/samples/sample1.cs?highlight=1,3)]
 
-`Index`上述方法，使用檢視範本來產生瀏覽器的 HTML 回應。 控制器方法 (也稱為[動作方法](http://rachelappel.com/asp.net-mvc-actionresults-explained))，例如`Index`上述，方法通常會傳回[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (或類別衍生自[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx))，不是基本型別類似字串。
+`Index`上述方法，使用檢視範本來產生瀏覽器的 HTML 回應。 控制器方法 (也稱為[動作方法](http://rachelappel.com/asp.net-mvc-actionresults-explained))，例如`Index`上述，方法通常會傳回[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx) (或類別衍生自[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx))，不是基本型別類似字串。
 
 以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
   
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/09/2018
 
 版面配置範本可讓您指定 HTML 容器的配置，您的網站在同一個地方，然後將它套用到您的網站中的多個頁面。 找到 `@RenderBody()` 這行。 `RenderBody` 是顯示您建立之所有檢視特定頁面的預留位置，「包裝」&quot;&quot;在版面配置頁中。 例如，如果您選取**有關**連結， *Views\Home\About.cshtml*內呈現檢視`RenderBody`方法。
 
-變更標題元素的內容。 變更[ActionLink](https://msdn.microsoft.com/en-us/library/dd504972(v=vs.108).aspx)版面配置範本&quot;應用程式名稱&quot;至&quot;MVC 影片&quot;和從控制器`Home`至`Movies`。 完成配置檔如下所示：
+變更標題元素的內容。 變更[ActionLink](https://msdn.microsoft.com/library/dd504972(v=vs.108).aspx)版面配置範本&quot;應用程式名稱&quot;至&quot;MVC 影片&quot;和從控制器`Home`至`Movies`。 完成配置檔如下所示：
 
 [!code-cshtml[Main](adding-a-view/samples/sample3.cshtml?highlight=6,20)]
 
@@ -123,11 +123,11 @@ ms.lasthandoff: 01/09/2018
 
 [!code-csharp[Main](adding-a-view/samples/sample8.cs)]
 
-現在`ViewBag`物件包含會自動傳遞到檢視的資料。 接下來，您需要一個歡迎視圖模板！ 在**建置**功能表上，選取**建置方案**（或 Ctrl + Shift + B） 若要確定專案會編譯。 以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
+現在`ViewBag`物件包含會自動傳遞到檢視的資料。 接下來，您需要  褖畫惎檢視範本 ！ 在**建置**功能表上，選取**建置方案**（或 Ctrl + Shift + B） 若要確定專案會編譯。 以滑鼠右鍵按一下*Views\HelloWorld*資料夾，然後按一下**新增**，然後按一下  **MVC 5 檢視頁面 (Razor) 配置與**。
   
 ![](adding-a-view/_static/image10.png)   
   
-在**指定項目的名稱**對話方塊方塊中，輸入*歡迎*，然後按一下 **確定**。   
+在**指定項目的名稱**對話方塊方塊中，輸入* 褖畫惎*，然後按一下 **確定**。   
   
 在**選取版面配置頁** 對話方塊中，接受預設值 **\_Layout.cshtml**按一下**確定**。  
   

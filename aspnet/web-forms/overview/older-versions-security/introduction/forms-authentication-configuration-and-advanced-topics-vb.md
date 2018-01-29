@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e92bb3d67141ba0ce594fd17c266bc69dda3cb5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fe4c421f248e325b69be7cad6c10bcbedf59ae5f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>表單驗證設定和進階的主題 (VB)
 ====================
@@ -35,13 +35,13 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="step-1-examining-the-ltformsgt-configuration-settings"></a>步驟 1： 檢查&lt;form&gt;組態設定
 
-在 ASP.NET 表單驗證系統提供可自訂的應用程式的應用程式為基礎的組態設定的數的字。 這包括設定，例如： 的存留期表單驗證票證。票證; 已套用何種保護在哪些條件 cookie 驗證票證才能使用。登入頁面; 路徑和其他資訊。 若要修改預設值，將[ &lt;form&gt;元素](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx)做為子系[&lt;驗證&gt;元素](https://msdn.microsoft.com/en-us/library/532aee0e.aspx)，指定這些屬性您想要自訂為 XML 屬性值，就像這樣：
+在 ASP.NET 表單驗證系統提供可自訂的應用程式的應用程式為基礎的組態設定的數的字。 這包括設定，例如： 的存留期表單驗證票證。票證; 已套用何種保護在哪些條件 cookie 驗證票證才能使用。登入頁面; 路徑和其他資訊。 若要修改預設值，將[ &lt;form&gt;元素](https://msdn.microsoft.com/library/1d3t3c61.aspx)做為子系[&lt;驗證&gt;元素](https://msdn.microsoft.com/library/532aee0e.aspx)，指定這些屬性您想要自訂為 XML 屬性值，就像這樣：
 
 [!code-xml[Main](forms-authentication-configuration-and-advanced-topics-vb/samples/sample1.xml)]
 
 表 1 摘要說明您可以透過自訂的屬性&lt;form&gt;項目。 Web.config 是一個 XML 檔案，因為在左側的資料行中的屬性名稱會區分大小寫。
 
-| **屬性** | **說明** |
+| **屬性** | **描述** |
 | --- | --- |
 | cookie | 這個屬性會指定在哪些情況下驗證票證會儲存在與 URL 中內嵌的 cookie。 允許值為： UseCookies;UseUri;自動偵測。和 UseDeviceProfile （預設值）。 步驟 2 會檢查此設定在更多詳細資料。 |
 | defaultUrl | 表示使用者在登入後從登入頁面時於 querystring 中指定的 RedirectUrl 值將被導向至的 URL。 預設值是 default.aspx。 |
@@ -52,12 +52,12 @@ ms.lasthandoff: 11/10/2017
 | 路徑 | 當使用 cookie 為基礎的驗證票證時，此設定指定 cookie s path 屬性。 Path 屬性可讓開發人員限制到特定目錄階層 cookie 的範圍。 預設值是/通知要對網域執行任何要求傳送驗證票證 cookie 的瀏覽器。 |
 | 保護 | 指出哪些技術可用來保護表單驗證票證。 允許值為： 全部 （預設）。加密;無。和驗證。 在步驟 3 中詳細討論這些設定。 |
 | requireSSL | 布林值，指出是否需要 SSL 連線來傳送驗證 cookie。 預設值為 false。 |
-| SlidingExpiration | 布林值，指出是否每次重設驗證 cookie s 逾時使用者造訪網站的單一工作階段期間。 預設值為 true。 驗證票證逾時原則中指定的更詳細地討論票證的逾時值 > 一節。 |
+| slidingExpiration | 布林值，指出是否每次重設驗證 cookie s 逾時使用者造訪網站的單一工作階段期間。 預設值為 true。 驗證票證逾時原則中指定的更詳細地討論票證的逾時值 > 一節。 |
 | 逾時 | 指定以分鐘為單位的驗證票證 cookie 過期前的時間。 預設值為 30。 驗證票證逾時原則中指定的更詳細地討論票證的逾時值 > 一節。 |
 
 **表 1**: 摘要&lt;form&gt;元素的屬性
 
-在 ASP.NET 2.0 和更新版本，預設值的表單驗證的值會是硬式編碼 FormsAuthenticationConfiguration 類別在.NET Framework 中。 必須套用的任何修改 Web.config 檔案中的應用程式的應用程式為基礎。 這不同於 ASP.NET 1.x 預設表單驗證值儲存在 machine.config 檔案中 （而因此無法修改透過編輯 machine.config）。 主題的 ASP.NET while 1.x 值得提到的表單驗證系統設定的數字有不同的預設值，在 ASP.NET 2.0 和 ASP.NET 中的比其他 1.x。 如果您要從 ASP.NET 1.x 環境移轉您的應用程式，務必留意這些差異。 請參閱[ &lt;form&gt;技術文件項目](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx)差異的清單。
+在 ASP.NET 2.0 和更新版本，預設值的表單驗證的值會是硬式編碼 FormsAuthenticationConfiguration 類別在.NET Framework 中。 必須套用的任何修改 Web.config 檔案中的應用程式的應用程式為基礎。 這不同於 ASP.NET 1.x 預設表單驗證值儲存在 machine.config 檔案中 （而因此無法修改透過編輯 machine.config）。 主題的 ASP.NET while 1.x 值得提到的表單驗證系統設定的數字有不同的預設值，在 ASP.NET 2.0 和 ASP.NET 中的比其他 1.x。 如果您要從 ASP.NET 1.x 環境移轉您的應用程式，務必留意這些差異。 請參閱[ &lt;form&gt;技術文件項目](https://msdn.microsoft.com/library/1d3t3c61.aspx)差異的清單。
 
 > [!NOTE]
 > 數個表單驗證設定，例如逾時、 網域和路徑中，指定產生的表單驗證票證 cookie 的詳細資料。 如需有關 cookie、 它們如何運作，以及其各種屬性的詳細資訊，請閱讀[本教學課程中的 Cookie](http://www.quirksmode.org/js/cookies.html)。
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/10/2017
 自動偵測及 UseDeviceProfile 設定依賴*裝置設定檔*中演練是否要使用 cookie 為基礎或 cookie 驗證票證。 ASP.NET 會維護資料庫的各種裝置和其功能，例如它們是否支援 cookie，它們支援時，JavaScript 和等等的版本。 每次裝置要求網頁從 web 伺服器，它會傳送沿*使用者代理程式*識別的裝置類型的 HTTP 標頭。 ASP.NET 自動符合其資料庫中指定的對應設定檔提供的使用者代理字串。
 
 > [!NOTE]
-> 裝置功能的這個資料庫會儲存在 XML 檔案的遵守的數字[瀏覽器定義檔案結構描述](https://msdn.microsoft.com/en-us/library/ms228122.aspx)。 預設的裝置設定檔位於 %windir%\microsoft.net\framework\v2.0.50727\config\browsers。 您也可以加入自訂的檔案至您的應用程式的應用程式\_瀏覽器資料夾。 如需詳細資訊，請參閱[How To： 偵測到 ASP.NET Web Pages 中的瀏覽器類型](https://msdn.microsoft.com/en-us/library/3yekbd5b.aspx)。
+> 裝置功能的這個資料庫會儲存在 XML 檔案的遵守的數字[瀏覽器定義檔案結構描述](https://msdn.microsoft.com/library/ms228122.aspx)。 預設的裝置設定檔位於 %windir%\microsoft.net\framework\v2.0.50727\config\browsers。 您也可以加入自訂的檔案至您的應用程式的應用程式\_瀏覽器資料夾。 如需詳細資訊，請參閱[How To： 偵測到 ASP.NET Web Pages 中的瀏覽器類型](https://msdn.microsoft.com/library/3yekbd5b.aspx)。
 
 
 預設值是 UseDeviceProfile，因為其設定檔會報告不支援 cookie 的裝置所造訪的網站時將使用 cookie 的表單驗證票證。
@@ -199,9 +199,9 @@ Microsoft 強烈建議使用的所有設定。
 
 ### <a name="setting-the-validation-and-decryption-keys"></a>設定驗證和解密金鑰
 
-加密和雜湊演算法來加密和驗證的驗證票證使用表單驗證系統會透過可自訂[ &lt;machineKey&gt;元素](https://msdn.microsoft.com/en-us/library/w8h3skw9.aspx)Web.config 中。表 2 概述&lt;machineKey&gt;元素的屬性和可能的值。
+加密和雜湊演算法來加密和驗證的驗證票證使用表單驗證系統會透過可自訂[ &lt;machineKey&gt;元素](https://msdn.microsoft.com/library/w8h3skw9.aspx)Web.config 中。表 2 概述&lt;machineKey&gt;元素的屬性和可能的值。
 
-| **屬性** | **說明** |
+| **屬性** | **描述** |
 | --- | --- |
 | 解密 | 表示用來加密的演算法。 這個屬性可以具有下列四個值之一:-自動-預設值。決定 decryptionKey 屬性的長度為基礎的演算法。 -使用 AES 使用[進階加密標準 (AES)](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard)演算法。 使用 DES-[資料加密標準 (DES)](http://en.wikipedia.org/wiki/Data_Encryption_Standard)這個演算法會被視為弱式運算資源，而且不應使用。 使用-3DES-[三重 DES](http://en.wikipedia.org/wiki/Triple_DES)演算法，其運作方式是將 DES 演算法套用三次。 |
 | decryptionKey | 使用的加密演算法的祕密金鑰。 此值必須是適當的長度 （根據解密中的值）、 自動產生或附加，任一個值的十六進位字串 IsolateApps。 加入 IsolateApps 指示要用於每個應用程式的唯一值的 ASP.NET。 預設為 AutoGenerate，IsolateApps。 |
@@ -223,7 +223,7 @@ Microsoft 強烈建議使用的所有設定。
 
 [!code-xml[Main](forms-authentication-configuration-and-advanced-topics-vb/samples/sample5.xml)]
 
-如需詳細資訊請參閱[How To： 在 ASP.NET 2.0 中的設定 MachineKey](https://msdn.microsoft.com/en-us/library/ms998288.aspx)。
+如需詳細資訊請參閱[How To： 在 ASP.NET 2.0 中的設定 MachineKey](https://msdn.microsoft.com/library/ms998288.aspx)。
 
 > [!NOTE]
 > 從拍攝的 Validationkey 和 validationKey 值[Steve Gibson](http://www.grc.com/stevegibson.htm)的[完美密碼網頁](https://www.grc.com/passwords.htm)，如此就會在每個頁面造訪產生 64 隨機十六進位字元。 若要減少到實際執行應用程式進行一直這些機碼的可能性，即建議取代隨機產生的項目從完美密碼頁面上方的索引鍵。
@@ -233,7 +233,7 @@ Microsoft 強烈建議使用的所有設定。
 
 許多 web 應用程式顯示的相關資訊，或目前登入使用者的基礎頁面的顯示。 例如，網頁可能會顯示使用者的名稱和她上次登入之每個頁面的上方角落中的日期。 表單驗證票證會儲存目前登入使用者的使用者名稱，但時所需的任何其他資訊的頁面必須移至使用者存放區-通常是資料庫-查閱資訊不會儲存在驗證票證。
 
-利用最少的程式碼我們可以將額外的使用者資訊儲存表單驗證票證。 這類資料可以透過表示[FormsAuthenticationTicket 類別](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationticket.aspx)的[UserData 屬性](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthenticationticket.userdata.aspx)。 這是很有用的位置，用來放置通常所需的使用者資訊的資訊量很少。 UserData 屬性中包含的驗證票證 cookie，並像其他票證欄位、 加密，且驗證中指定的值會根據表單驗證系統的組態。 根據預設，UserData 為空字串。
+利用最少的程式碼我們可以將額外的使用者資訊儲存表單驗證票證。 這類資料可以透過表示[FormsAuthenticationTicket 類別](https://msdn.microsoft.com/library/system.web.security.formsauthenticationticket.aspx)的[UserData 屬性](https://msdn.microsoft.com/library/system.web.security.formsauthenticationticket.userdata.aspx)。 這是很有用的位置，用來放置通常所需的使用者資訊的資訊量很少。 UserData 屬性中包含的驗證票證 cookie，並像其他票證欄位、 加密，且驗證中指定的值會根據表單驗證系統的組態。 根據預設，UserData 為空字串。
 
 若要將使用者資料儲存的驗證票證，我們要撰寫許多程式碼會擷取使用者特定資訊，並將它儲存在票證中的登入頁面中。 因為 UserData 是 String 類型的屬性，在其中儲存的資料必須正確序列化為字串。 例如，假設我們使用者存放區包含每個使用者的出生日期和其雇主，名稱，而我們想要儲存這些兩個屬性值中的驗證票證。 我們無法藉由串連使用者的日期的生日的字串以垂直線 (|)，後面接著雇主名稱，將這些值序列化成字串。 使用者的出生上 1974 年 8 月 15，適用於 Northwind Traders，我們會指派 UserData 屬性字串： 1974年-08-15 |Northwind Traders。
 
@@ -263,21 +263,21 @@ Microsoft 強烈建議使用的所有設定。
 
 上述程式碼中複寫這些步驟。 首先，我們最終將儲存在 [UserData] 屬性的字串會形成結合的公司名稱和標題，用來分隔兩個值使用縱線字元 (|)。
 
-Dim userDataString 做為字串 = String.Concat(companyName(i)，"|"，titleAtCompany(i))
+Dim userDataString As String = String.Concat(companyName(i), "|", titleAtCompany(i))
 
 接下來，FormsAuthentication.GetAuthCookie 叫用方法時，會建立驗證 ticket，加密和驗證根據組態設定，並將它放在 HttpCookie 物件。
 
-Dim authCookie 為 HttpCookie = FormsAuthentication.GetAuthCookie （UserName.Text、 RememberMe.Checked）
+Dim authCookie As HttpCookie = FormsAuthentication.GetAuthCookie(UserName.Text, RememberMe.Checked)
 
-若要使用內嵌在 cookie FormAuthenticationTicket，我們要呼叫 FormAuthentication 類別[解密方法](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.decrypt.aspx)，傳入的 cookie 值。
+若要使用內嵌在 cookie FormAuthenticationTicket，我們要呼叫 FormAuthentication 類別[解密方法](https://msdn.microsoft.com/library/system.web.security.formsauthentication.decrypt.aspx)，傳入的 cookie 值。
 
-Dim 票證當做 FormsAuthenticationTicket = FormsAuthentication.Decrypt(authCookie.Value)
+Dim ticket As FormsAuthenticationTicket = FormsAuthentication.Decrypt(authCookie.Value)
 
 然後建立*新*FormsAuthenticationTicket 執行個體根據現有的 FormsAuthenticationTicket 值。 不過，此新票證包含使用者特定資訊 (userDataString)。
 
-Dim newTicket 為 FormsAuthenticationTicket = 新 FormsAuthenticationTicket(ticket.版本票證。名稱為票證。IssueDate、 票證。票證的到期日。IsPersistent userDataString)
+Dim newTicket As FormsAuthenticationTicket = New FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate, ticket.Expiration, ticket.IsPersistent, userDataString)
 
-我們再加密 （及驗證） 新 FormsAuthenticationTicket 執行個體，藉由呼叫[加密方法](https://msdn.microsoft.com/en-us/library/system.web.security.formsauthentication.encrypt.aspx)，並放回到 authCookie 此加密 （及驗證） 的資料。
+我們再加密 （及驗證） 新 FormsAuthenticationTicket 執行個體，藉由呼叫[加密方法](https://msdn.microsoft.com/library/system.web.security.formsauthentication.encrypt.aspx)，並放回到 authCookie 此加密 （及驗證） 的資料。
 
 authCookie.Value = FormsAuthentication.Encrypt(newTicket)
 
@@ -301,7 +301,7 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket)
 
 如果 Request.IsAuthenticated 為 True，則 WelcomeBackMessage Text 屬性第一次設歡迎回來， *username*。 然後，User.Identity 屬性會轉換成 FormsIdentity 物件，以便我們可以存取基礎 FormsAuthenticationTicket。 一旦 FormsAuthenticationTicket，我們會還原序列化的公司名稱和標題的 UserData 屬性。 這被透過分割上縱線字元的字串。 然後，公司名稱和標題會顯示在 WelcomeBackMessage 標籤。
 
-圖 5 顯示這個畫面的螢幕擷取畫面中的動作。 Scott 以登入，就會顯示該褖畫惎的回復訊息中包含 Scott 公司和標題。
+圖 5 顯示這個畫面的螢幕擷取畫面中的動作。 Scott 以登入，就會顯示該  褖畫惎的回復訊息中包含 Scott 公司和標題。
 
 
 [![會顯示目前登入使用者的公司和標題](forms-authentication-configuration-and-advanced-topics-vb/_static/image14.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image13.png)
@@ -322,7 +322,7 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket)
 GenericPrincipal 類別符合大部分的表單型的驗證情況下，不使用角色的需求。 針對沒有足夠的預設角色處理這些情況下，或當您需要將自訂的 IIdentity 物件與使用者產生關聯，您可以在驗證工作流程期間建立自訂的 IPrincipal 物件，並將它指派給 HttpContext.User 屬性。
 
 > [!NOTE]
-> 我們在未來將會看到教學課程中，當 ASP。已啟用網路的角色架構它會建立自訂的主體物件的型別[RolePrincipal](https://msdn.microsoft.com/en-us/library/system.web.security.roleprincipal.aspx)並覆寫的表單驗證建立 GenericPrincipal 物件。 它會以自訂的主體 IsInRole 方法，以與角色架構的應用程式開發介面的介面。
+> 我們在未來將會看到教學課程中，當 ASP。已啟用網路的角色架構它會建立自訂的主體物件的型別[RolePrincipal](https://msdn.microsoft.com/library/system.web.security.roleprincipal.aspx)並覆寫的表單驗證建立 GenericPrincipal 物件。 它會以自訂的主體 IsInRole 方法，以與角色架構的應用程式開發介面的介面。
 
 
 由於我們有不在意自己角色尚未，我們必須在此時建立自訂主體的唯一理由是自訂的識別物件的主體產生關聯。 步驟 4 中我們探討了額外的使用者資訊儲存在驗證票證 UserData 屬性中，特別是，使用者的公司名稱和其標題。 不過，UserData 資訊才會透過驗證票證和唯一，然後為序列化字串時，這表示我們想要檢視使用者資訊儲存在票證每當我們需要剖析 UserData 屬性。
@@ -334,7 +334,7 @@ GenericPrincipal 類別符合大部分的表單型的驗證情況下，不使用
 本教學課程，讓我們來建立自訂的主體和身分識別物件 」 應用程式中\_程式碼資料夾。 藉由新增應用程式啟動\_程式碼加入專案的資料夾-方案總管] 中的專案名稱上按一下滑鼠右鍵，選取加入 ASP.NET 資料夾選項，然後選擇 [應用程式\_程式碼。 應用程式\_程式碼資料夾是特殊的 ASP.NET 資料夾所在類別檔案的特定網站。
 
 > [!NOTE]
-> 應用程式\_管理透過網站專案模型專案時，應該只使用程式碼資料夾。 如果您使用[Web 應用程式專案模型](https://msdn.microsoft.com/en-us/asp.net/Aa336618.aspx)、 建立標準的資料夾，並將類別加入至該。 比方說，您無法加入名為類別的新資料夾，並那里放置您的程式碼。
+> 應用程式\_管理透過網站專案模型專案時，應該只使用程式碼資料夾。 如果您使用[Web 應用程式專案模型](https://msdn.microsoft.com/asp.net/Aa336618.aspx)、 建立標準的資料夾，並將類別加入至該。 比方說，您無法加入名為類別的新資料夾，並那里放置您的程式碼。
 
 
 接下來，將兩個新的類別檔案加入至應用程式\_程式碼資料夾，一個具名的 CustomIdentity.vb，另一個名為 CustomPrincipal.vb。
@@ -359,9 +359,9 @@ CustomIdentity 類別會負責實作 IIdentity 介面，它會定義 Authenticat
 
 我們現在有了延伸要包括 CompanyName 和 Title 屬性的預設識別規格的類別，以及使用自訂身分識別的自訂主體類別。 我們準備好逐步執行的 ASP.NET 管線，而且我們自訂的主體物件指派到連入要求的安全性內容。
 
-接受連入要求的 ASP.NET 管線並進行處理透過幾個步驟。 在每個步驟中，會引發特定事件，讓開發人員挖掘 ASP.NET 管線，並修改在其生命週期中特定點上的要求。 FormsAuthenticationModule，比方說，等候要引發的 ASP.NET [AuthenticateRequest 事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest.aspx)，此時它會檢查連入要求的驗證票證。 如果找到驗證票證，GenericPrincipal 物件建立，並指派給 HttpContext.User 屬性。
+接受連入要求的 ASP.NET 管線並進行處理透過幾個步驟。 在每個步驟中，會引發特定事件，讓開發人員挖掘 ASP.NET 管線，並修改在其生命週期中特定點上的要求。 FormsAuthenticationModule，比方說，等候要引發的 ASP.NET [AuthenticateRequest 事件](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx)，此時它會檢查連入要求的驗證票證。 如果找到驗證票證，GenericPrincipal 物件建立，並指派給 HttpContext.User 屬性。
 
-AuthenticateRequest 事件之後引發的 ASP.NET 管線[PostAuthenticateRequest 事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.postauthenticaterequest.aspx)，它是我們可以在其中取代的執行個體 FormsAuthenticationModule 所建立的 GenericPrincipal 物件我們CustomPrincipal 物件。 圖 7 說明此工作流程。
+AuthenticateRequest 事件之後引發的 ASP.NET 管線[PostAuthenticateRequest 事件](https://msdn.microsoft.com/library/system.web.httpapplication.postauthenticaterequest.aspx)，它是我們可以在其中取代的執行個體 FormsAuthenticationModule 所建立的 GenericPrincipal 物件我們CustomPrincipal 物件。 圖 7 說明此工作流程。
 
 
 [![GenericPrincipal 取代 CustomPrincipal PostAuthenticationRequest 事件中](forms-authentication-configuration-and-advanced-topics-vb/_static/image20.png)](forms-authentication-configuration-and-advanced-topics-vb/_static/image19.png)
@@ -377,13 +377,13 @@ AuthenticateRequest 事件之後引發的 ASP.NET 管線[PostAuthenticateRequest
 **圖 08**: Global.asax 檔案加入您的網站 ([按一下以檢視完整大小的影像](forms-authentication-configuration-and-advanced-topics-vb/_static/image24.png))
 
 
-預設 Global.asax 範本包含的數字的 ASP.NET 管線事件，包括開始時，結束的事件處理常式和[錯誤事件](https://msdn.microsoft.com/en-us/library/system.web.httpapplication.error.aspx)，和其他項目。 請放心地移除這些事件處理常式，因為我們不需要它們為此應用程式。 我們有興趣的事件是 PostAuthenticateRequest。 更新程式 Global.asax 檔案，讓其標記看起來類似下：
+預設 Global.asax 範本包含的數字的 ASP.NET 管線事件，包括開始時，結束的事件處理常式和[錯誤事件](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx)，和其他項目。 請放心地移除這些事件處理常式，因為我們不需要它們為此應用程式。 我們有興趣的事件是 PostAuthenticateRequest。 更新程式 Global.asax 檔案，讓其標記看起來類似下：
 
 [!code-aspx[Main](forms-authentication-configuration-and-advanced-topics-vb/samples/sample11.aspx)]
 
 應用程式\_OnPostAuthenticateRequest 方法執行每個 ASP.NET 執行階段引發 PostAuthenticateRequest 事件，這在每個連入的頁面要求上一次發生的時間。 此事件處理常式會啟動，檢查使用者是否經過驗證，並且透過表單驗證的驗證。 如果是的話，新的 CustomIdentity 物件建立，並在其建構函式中傳遞目前要求的驗證票證。 接下來，會 CustomPrincipal 物件建立，並在其建構函式中傳遞的剛建立 CustomIdentity 物件。 最後，將目前要求的安全性內容會指派給新建立的 CustomPrincipal 物件。
 
-請注意最後一個步驟-建立 CustomPrincipal 物件關聯與要求的安全性內容-會將主體指派給兩個屬性： HttpContext.User 和 Thread.CurrentPrincipal。 這些兩個的指派是必要的因為 ASP.NET 中處理的安全性內容的方式。 .NET Framework 與每個執行中的執行緒; 產生關聯的安全性內容這項資訊可透過 IPrincipal 物件[執行緒物件](https://msdn.microsoft.com/en-us/library/system.threading.thread.aspx)的[CurrentPrincipal 屬性](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentcontext.aspx)。 什麼是令人困惑是 ASP.NET 有它自己的安全性內容資訊 (HttpContext.User)。
+請注意最後一個步驟-建立 CustomPrincipal 物件關聯與要求的安全性內容-會將主體指派給兩個屬性： HttpContext.User 和 Thread.CurrentPrincipal。 這些兩個的指派是必要的因為 ASP.NET 中處理的安全性內容的方式。 .NET Framework 與每個執行中的執行緒; 產生關聯的安全性內容這項資訊可透過 IPrincipal 物件[執行緒物件](https://msdn.microsoft.com/library/system.threading.thread.aspx)的[CurrentPrincipal 屬性](https://msdn.microsoft.com/library/system.threading.thread.currentcontext.aspx)。 什麼是令人困惑是 ASP.NET 有它自己的安全性內容資訊 (HttpContext.User)。
 
 在某些情況下，判斷安全性內容中; 時，會檢查 Thread.CurrentPrincipal 屬性在其他情況下，會使用 HttpContext.User。 例如，.NET 中的安全性功能可讓開發人員以宣告方式狀態哪些使用者或角色可以具現化類別或特定的方法會叫用 (請參閱[企業和資料層使用新增授權規則PrincipalPermissionAttributes](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx))。 基本上，這些宣告式方法會決定透過 Thread.CurrentPrincipal 屬性的安全性內容。
 
@@ -412,13 +412,13 @@ ASP.NET 執行階段自動同步處理為我們的這些屬性值。 不過，�
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
 - [將分解的表單驗證](http://aspnet.4guysfromrolla.com/articles/072005-1.aspx)
-- [說明： 在 ASP.NET 2.0 中的表單驗證](https://msdn.microsoft.com/en-us/library/aa480476.aspx)
-- [如何： 保護表單驗證，在 ASP.NET 2.0](https://msdn.microsoft.com/en-us/library/ms998310.aspx)
+- [說明： 在 ASP.NET 2.0 中的表單驗證](https://msdn.microsoft.com/library/aa480476.aspx)
+- [如何： 保護表單驗證，在 ASP.NET 2.0](https://msdn.microsoft.com/library/ms998310.aspx)
 - [專業 ASP.NET 2.0 安全性、 成員資格和角色管理](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html)(ISBN: 978-0-7645-9698-8)
-- [設定登入控制項的安全性](https://msdn.microsoft.com/en-us/library/ms178346.aspx)
-- [&lt;驗證&gt;項目](https://msdn.microsoft.com/en-us/library/532aee0e.aspx)
-- [&lt;Form&gt;元素&lt;驗證&gt;](https://msdn.microsoft.com/en-us/library/1d3t3c61.aspx)
-- [&lt;MachineKey&gt;項目](https://msdn.microsoft.com/en-us/library/w8h3skw9.aspx)
+- [設定登入控制項的安全性](https://msdn.microsoft.com/library/ms178346.aspx)
+- [&lt;驗證&gt;項目](https://msdn.microsoft.com/library/532aee0e.aspx)
+- [&lt;Form&gt;元素&lt;驗證&gt;](https://msdn.microsoft.com/library/1d3t3c61.aspx)
+- [&lt;MachineKey&gt;項目](https://msdn.microsoft.com/library/w8h3skw9.aspx)
 - [了解的表單驗證票證和 Cookie](https://support.microsoft.com/kb/910443)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
@@ -426,9 +426,9 @@ ASP.NET 執行階段自動同步處理為我們的這些屬性值。 不過，�
 - [如何變更表單驗證屬性](../../../videos/authentication/how-to-change-the-forms-authentication-properties.md)
 - [如何在 ASP.NET 應用程式中的設定並使用 Cookie 無驗證](../../../videos/authentication/how-to-setup-and-use-cookie-less-authentication-in-an-aspnet-application.md)
 - [ASP 表單登入重新配置](../../../videos/authentication/asp-forms-login-relocation.md)
-- [表單登入自訂組態](../../../videos/authentication/forms-login-custom-key-configuration.md)
-- [新增自訂資料的驗證方法](../../../videos/authentication/add-custom-data-to-the-authentication-method.md)
-- [使用自訂主體物件](../../../videos/authentication/use-custom-principal-objects.md)
+- [表單登入自訂金鑰組態](../../../videos/authentication/forms-login-custom-key-configuration.md)
+- [將自訂資料新增至驗證方法](../../../videos/authentication/add-custom-data-to-the-authentication-method.md)
+- [使用自訂的主體物件](../../../videos/authentication/use-custom-principal-objects.md)
 
 ### <a name="about-the-author"></a>關於作者
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c34476f89677fb51abc17bd64602c41dfea8f9c7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d8d43475ae2f05d83d51c53d76de4f07db70ca7a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="masterdetail-filtering-across-two-pages-vb"></a>主從式篩選跨兩個頁面 (VB)
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 
 我們要包含的連結中標題為檢視產品每個 GridView 資料列，按一下時，將使用者帶至`ProductsForSupplierDetails.aspx`中選取的資料列傳遞`SupplierID`透過查詢字串值。 例如，如果使用者按一下東京 Traders 供應商檢視產品連結 (其具有`SupplierID`4 的值)，應傳送至`ProductsForSupplierDetails.aspx?SupplierID=4`。
 
-若要達成此目的，將[HyperLinkField](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.hyperlinkfield.aspx)至 GridView，這樣會將超連結加入每個 GridView 資料列。 按一下 編輯資料行中的連結 GridView 的智慧標籤來啟動。 接下來，HyperLinkField 從清單中選取左上方，然後按一下 [加入] 加入 HyperLinkField GridView 的欄位清單中。
+若要達成此目的，將[HyperLinkField](https://msdn.microsoft.com/library/system.web.ui.webcontrols.hyperlinkfield.aspx)至 GridView，這樣會將超連結加入每個 GridView 資料列。 按一下 編輯資料行中的連結 GridView 的智慧標籤來啟動。 接下來，HyperLinkField 從清單中選取左上方，然後按一下 [加入] 加入 HyperLinkField GridView 的欄位清單中。
 
 
 [![在 GridView 中加入 HyperLinkField](master-detail-filtering-across-two-pages-vb/_static/image9.png)](master-detail-filtering-across-two-pages-vb/_static/image8.png)
@@ -212,7 +212,7 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 
 雖然主要/詳細資料報表可以在單一頁面上會顯示主要和詳細記錄，在許多網站會分隔跨兩個網頁。 在此教學課程中我們討論了如何實作主要/詳細資料報表需要 「 主要 」 的網頁中的 GridView 中列出供應商 和 詳細資料 頁面中所列的相關聯的產品。 主版網頁中的每個供應商資料列所包含的資料列所傳遞的詳細資料頁面的連結`SupplierID`值。 這類特定資料列的連結可以輕鬆地加入使用 GridView HyperLinkField。
 
-藉由叫用已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsBySupplierID(supplierID)`方法。  *`supplierID`* 做為參數的來源使用查詢字串以宣告方式指定參數值。 我們也討論了如何使用程式設計的詳細資料頁面中顯示的供應商的詳細資料。
+藉由叫用已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsBySupplierID(supplierID)`方法。 *`supplierID`* 做為參數的來源使用查詢字串以宣告方式指定參數值。 我們也討論了如何使用程式設計的詳細資料頁面中顯示的供應商的詳細資料。
 
 我們[下一個教學課程](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)是主要/詳細資料報表中的最後一個。 我們會探討如何在每個資料列之選取按鈕的 GridView 中顯示的產品清單。 按一下 [選取] 按鈕會在相同頁面上 DetailsView 控制項中顯示該產品的詳細資料。
 

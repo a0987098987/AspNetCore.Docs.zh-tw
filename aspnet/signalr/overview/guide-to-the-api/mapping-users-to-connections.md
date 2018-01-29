@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: 9b50d8805beabbc48467e20331c7593de9bc4254
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c4f95a3b65c57dd7cb7c5c7f1ee09daa17fa9616
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="mapping-signalr-users-to-connections"></a>將 SignalR 使用者對應至連接
 ====================
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 下列範例顯示如何保留字典，其中會儲存在記憶體中的連接和使用者資訊。 字典使用`HashSet`來儲存連接識別碼。在任何時間使用者可能會有多個連接至 SignalR 應用程式。 比方說，透過多個裝置或多個瀏覽器索引標籤連線的使用者會有一個以上的連線識別碼。
 
-如果應用程式關閉時，所有資訊都會遺失，但它儵蜪填時使用者重新建立其連線。 記憶體中存放裝置無法運作如果您的環境包含一部以上的 web 伺服器，因為每一部伺服器會有不同的連接集合。
+如果應用程式關閉時，所有資訊都會遺失，但它  儵蜪填時使用者重新建立其連線。 記憶體中存放裝置無法運作如果您的環境包含一部以上的 web 伺服器，因為每一部伺服器會有不同的連接集合。
 
 第一個範例會示範管理要連線的使用者對應的類別。 HashSet 的索引鍵會是使用者的名稱。
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/10/2017
 <a id="azure"></a>
 ### <a name="azure-table-storage"></a>Azure 資料表儲存體
 
-下列的 Azure 資料表儲存體範例是類似於資料庫的範例。 它不包含所有您需要開始使用 Azure 資料表儲存體服務的資訊。 如需資訊，請參閱[如何使用資料表儲存體從.NET](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/)。
+下列的 Azure 資料表儲存體範例是類似於資料庫的範例。 它不包含所有您需要開始使用 Azure 資料表儲存體服務的資訊。 如需資訊，請參閱[如何使用資料表儲存體從.NET](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/)。
 
 下列範例示範儲存連接資訊的資料表實體。 它會分割資料依使用者名稱，並識別每個實體的連線識別碼，讓使用者可以隨時都有多個連線。
 

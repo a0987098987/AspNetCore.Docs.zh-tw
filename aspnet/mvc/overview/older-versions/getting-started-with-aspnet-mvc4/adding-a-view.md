@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 4309290294b28d4c177e0193719bcff4b3f2a8cf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60374ddc6754f7e312ad08b420268308a9935bb4
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](adding-a-view/samples/sample1.cs)]
 
-`Index`上述方法，使用檢視範本來產生瀏覽器的 HTML 回應。 控制器方法 (也稱為[動作方法](http://rachelappel.com/asp.net-mvc-actionresults-explained))，例如`Index`上述，方法通常會傳回[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx) (或類別衍生自[ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult.aspx))，不是基本型別類似字串。
+`Index`上述方法，使用檢視範本來產生瀏覽器的 HTML 回應。 控制器方法 (也稱為[動作方法](http://rachelappel.com/asp.net-mvc-actionresults-explained))，例如`Index`上述，方法通常會傳回[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx) (或類別衍生自[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult.aspx))，不是基本型別類似字串。
 
 在專案中，加入您可以使用檢視範本`Index`方法。 若要這樣做，以滑鼠右鍵按一下`Index`方法，然後按一下**加入檢視**。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 現在`ViewBag`物件包含會自動傳遞到檢視的資料。
 
-接下來，您需要褖畫惎檢視範本 ！ 在**建置**功能表上，選取**建置 MvcMovie**確定編譯專案。
+接下來，您需要  褖畫惎檢視範本 ！ 在**建置**功能表上，選取**建置 MvcMovie**確定編譯專案。
 
 然後以滑鼠右鍵按一下`Welcome`方法，然後按一下**加入檢視**。
 

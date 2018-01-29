@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6561fec9ccffbc421dd6a542dcd421acd0af6052
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f0339578291c536a474f1c7314b28668a6519c8c
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>建立以選取一個使用者帳戶從許多 (VB) 介面
 ====================
@@ -134,13 +134,13 @@ ASP.NET 中的分頁`Administration`資料夾僅供系統管理使用者。 我�
 > 使用者名稱的任何字元，包括數字和標點符號可能開頭。 若要檢視這些帳戶，系統管理員必須使用所有的 LinkButton 選項。 或者，您可以加入要傳回以數字開頭的所有使用者帳戶的 LinkButton。 我將保留此為一項工作讀取器。
 
 
-按一下任何篩選 LinkButtons 導致回傳，並引發中繼器`ItemCommand`事件，但不會在方格中的任何變更，因為我們尚未以撰寫任何程式碼，以篩選結果。 `Membership`類別包含[`FindUsersByName`方法](https://technet.microsoft.com/en-us/library/system.web.security.membership.findusersbyname.aspx)傳回其使用者名稱符合指定的搜尋模式的這些使用者帳戶。 我們可以使用這個方法來擷取其使用者名稱的開頭所指定的代號僅擁有使用者帳戶`CommandName`的已篩選的 LinkButton 已按下。
+按一下任何篩選 LinkButtons 導致回傳，並引發中繼器`ItemCommand`事件，但不會在方格中的任何變更，因為我們尚未以撰寫任何程式碼，以篩選結果。 `Membership`類別包含[`FindUsersByName`方法](https://technet.microsoft.com/library/system.web.security.membership.findusersbyname.aspx)傳回其使用者名稱符合指定的搜尋模式的這些使用者帳戶。 我們可以使用這個方法來擷取其使用者名稱的開頭所指定的代號僅擁有使用者帳戶`CommandName`的已篩選的 LinkButton 已按下。
 
 藉由更新開始`ManageUser.aspx`網頁的程式碼後置類別，使其包含一個名為屬性`UsernameToMatch`這個屬性持續在回傳發生使用者名稱篩選條件字串：
 
 [!code-vb[Main](building-an-interface-to-select-one-user-account-from-many-vb/samples/sample8.vb)]
 
-`UsernameToMatch`屬性會儲存其值指派到`ViewState`使用 UsernameToMatch 的索引鍵的集合。 當讀取這個屬性的值時，它會檢查值是否存在中`ViewState`集合; 如果沒有，它會傳回預設值為空字串。 `UsernameToMatch`屬性表現常見的模式，也就保存至檢視狀態，以便對屬性的任何變更會保存在回傳值。 如需此模式的詳細資訊，請參閱[了解 ASP.NET 檢視狀態](https://msdn.microsoft.com/en-us/library/ms972976.aspx)。
+`UsernameToMatch`屬性會儲存其值指派到`ViewState`使用 UsernameToMatch 的索引鍵的集合。 當讀取這個屬性的值時，它會檢查值是否存在中`ViewState`集合; 如果沒有，它會傳回預設值為空字串。 `UsernameToMatch`屬性表現常見的模式，也就保存至檢視狀態，以便對屬性的任何變更會保存在回傳值。 如需此模式的詳細資訊，請參閱[了解 ASP.NET 檢視狀態](https://msdn.microsoftn-us/library/ms972976.aspx)。
 
 接下來，更新`BindUserAccounts`方法的呼叫，而`Membership.GetAllUsers`，它會呼叫`Membership.FindUsersByName`的值傳遞給`UsernameToMatch`屬性加上 SQL 萬用字元 %。
 
@@ -177,7 +177,7 @@ GridView 控制項提供兩種類型的分頁：
 
 若要實作自訂分頁我們首先需要一些機制，用來擷取記錄正在顯示之 GridView 的精確子集。 好消息是`Membership`類別的`FindUsersByName`方法具有多載，可讓您指定的頁面索引和頁面大小，並傳回該記錄的範圍內的使用者帳戶。
 
-特別是，這個多載具有下列簽章： [ `FindUsersByName(usernameToMatch, pageIndex, pageSize, totalRecords)` ](https://msdn.microsoft.com/en-us/library/fa5st8b2.aspx)。
+特別是，這個多載具有下列簽章： [ `FindUsersByName(usernameToMatch, pageIndex, pageSize, totalRecords)` ](https://msdn.microsoft.com/library/fa5st8b2.aspx)。
 
 *PageIndex*參數會指定要傳回; 的使用者帳戶頁面*pageSize*指出每頁顯示的多少筆記錄。 *TotalRecords*參數是`ByRef`在使用者存放區傳回的總使用者帳戶數目的參數。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 653c8303691de28b7619c30e773473ffb37f2a61
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: be3e3d61a6567da3c2cd696c01661146f2da7131
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>建立預存程序和使用者定義函數以 Managed 程式碼 (C#)
 ====================
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/10/2017
 
 基本上，SQL 被針對使用的資料集。 `SELECT`， `UPDATE`，和`DELETE`陳述式原本就是適用於對應資料表中的所有記錄和只受限於其`WHERE`子句。 尚未有許多設計使用一次一筆記錄，並處理純量資料處理的語言功能。 [`CURSOR`s](http://www.sqlteam.com/item.asp?ItemID=553)在 if 透過下列其中一次讓一組記錄。 字串操作函數，例如`LEFT`， `CHARINDEX`，和`PATINDEX`使用純量資料。 SQL 也包含控制流程陳述式，例如`IF`和`WHILE`。
 
-Microsoft SQL Server 2005 之前, 預存程序和 Udf 只可定義為 T-SQL 陳述式的集合。 SQL Server 2005，不過，設計來提供與整合[Common Language Runtime (CLR)](https://msdn.microsoft.com/en-us/netframework/aa497266.aspx)，也就是所有的.NET 組件所使用的執行階段。 因此，預存程序和 Udf 的 SQL Server 2005 資料庫中可以建立使用 managed 程式碼。 也就是說，您可以建立預存程序或 UDF 為 C# 類別的方法。 這可讓這些預存程序和 Udf 利用.NET Framework 中，以及您自己自訂的類別的功能。
+Microsoft SQL Server 2005 之前, 預存程序和 Udf 只可定義為 T-SQL 陳述式的集合。 SQL Server 2005，不過，設計來提供與整合[Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx)，也就是所有的.NET 組件所使用的執行階段。 因此，預存程序和 Udf 的 SQL Server 2005 資料庫中可以建立使用 managed 程式碼。 也就是說，您可以建立預存程序或 UDF 為 C# 類別的方法。 這可讓這些預存程序和 Udf 利用.NET Framework 中，以及您自己自訂的類別的功能。
 
 在此教學課程中我們將檢查如何建立 managed 預存程序和使用者定義函式，以及如何將它們整合到我們的 Northwind 資料庫。 Let s 開始 ！
 
 > [!NOTE]
-> Managed 的資料庫物件會提供一些優於與其 SQL 對應項目。 語言很豐富，並熟悉度及重複使用現有的程式碼和邏輯的功能是將主要優點。 但 managed 的資料庫物件不可能使用不會涉及多程序邏輯的資料集時做比較沒有效率。 如需優點使用 managed 程式碼與 T-SQL 的更完整討論，請參閱[優點的使用 Managed 程式碼建立資料庫物件](https://msdn.microsoft.com/en-us/library/k2e1fb36(VS.80).aspx)。
+> Managed 的資料庫物件會提供一些優於與其 SQL 對應項目。 語言很豐富，並熟悉度及重複使用現有的程式碼和邏輯的功能是將主要優點。 但 managed 的資料庫物件不可能使用不會涉及多程序邏輯的資料集時做比較沒有效率。 如需優點使用 managed 程式碼與 T-SQL 的更完整討論，請參閱[優點的使用 Managed 程式碼建立資料庫物件](https://msdn.microsoft.com/library/k2e1fb36(VS.80).aspx)。
 
 
 ## <a name="step-1-moving-the-northwind-database-out-ofappdata"></a>步驟 1： 移動 Northwind 資料庫`App_Data`
@@ -81,7 +81,7 @@ Microsoft SQL Server 2005 之前, 預存程序和 Udf 只可定義為 T-SQL 陳�
 
 ## <a name="step-2-creating-a-new-solution-and-sql-server-project-in-visual-studio"></a>步驟 2: Visual Studio 中建立新的方案和 SQL Server 專案
 
-SQL Server 2005 中建立 managed 預存程序或 Udf 我們會為類別中的 C# 程式碼撰寫的預存程序和 UDF 邏輯。 一旦在撰寫程式碼，我們必須將此類別編譯為組件 (`.dll`檔案)、 註冊組件與 SQL Server 資料庫，然後再建立預存程序或 UDF 物件中的資料庫，指向對應中的方法組件。 這些步驟可以所有手動執行。 我們可以建立程式碼中的任何文字編輯器、 從命令列使用 C# 編譯器 ([`csc.exe`](https://msdn.microsoft.com/en-us/library/ms379563(vs.80).aspx))，向資料庫使用[ `CREATE ASSEMBLY` ](https://msdn.microsoft.com/en-us/library/ms189524.aspx)命令或從管理Studio 中，並將預存程序或 UDF 物件透過類似的方式。 幸運的是，專業人員和小組的系統版本的 Visual Studio 包含可自動化這些工作的 SQL Server 專案類型。 在此教學課程中我們將逐步引導使用 SQL Server 專案類型來建立 managed 預存程序和 UDF。
+SQL Server 2005 中建立 managed 預存程序或 Udf 我們會為類別中的 C# 程式碼撰寫的預存程序和 UDF 邏輯。 一旦在撰寫程式碼，我們必須將此類別編譯為組件 (`.dll`檔案)、 註冊組件與 SQL Server 資料庫，然後再建立預存程序或 UDF 物件中的資料庫，指向對應中的方法組件。 這些步驟可以所有手動執行。 我們可以建立程式碼中的任何文字編輯器、 從命令列使用 C# 編譯器 ([`csc.exe`](https://msdn.microsoft.com/library/ms379563(vs.80).aspx))，向資料庫使用[ `CREATE ASSEMBLY` ](https://msdn.microsoft.com/library/ms189524.aspx)命令或從管理Studio 中，並將預存程序或 UDF 物件透過類似的方式。 幸運的是，專業人員和小組的系統版本的 Visual Studio 包含可自動化這些工作的 SQL Server 專案類型。 在此教學課程中我們將逐步引導使用 SQL Server 專案類型來建立 managed 預存程序和 UDF。
 
 > [!NOTE]
 > 如果您使用 Visual Web Developer 或 Standard 版本的 Visual Studio，然後您必須改為使用手動方法。 步驟 13 提供手動執行這些步驟的詳細的指示。 建議您閱讀 12 中的步驟 2，再讀取步驟 13，因為這些步驟包括重要必須套用不論您使用 Visual Studio 的哪些版本的 SQL Server 組態指示。
@@ -156,7 +156,7 @@ SQL Server 專案繫結至特定資料庫。 因此，建立新的 SQL Server �
 
 [!code-csharp[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample3.cs)]
 
-所有的 managed 的資料庫物件都具有存取權[`SqlContext`物件](https://msdn.microsoft.com/en-us/library/ms131108.aspx)，代表呼叫端的內容。 `SqlContext`提供存取[`SqlPipe`物件](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlpipe.aspx)透過其[`Pipe`屬性](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlcontext.pipe.aspx)。 這`SqlPipe`物件可用於用渡船 SQL Server 資料庫與呼叫的應用程式的資訊。 正如其名， [ `ExecuteAndSend`方法](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlpipe.executeandsend.aspx)執行傳入的`SqlCommand`物件並將結果傳回用戶端應用程式。
+所有的 managed 的資料庫物件都具有存取權[`SqlContext`物件](https://msdn.microsoft.com/library/ms131108.aspx)，代表呼叫端的內容。 `SqlContext`提供存取[`SqlPipe`物件](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlpipe.aspx)透過其[`Pipe`屬性](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlcontext.pipe.aspx)。 這`SqlPipe`物件可用於用渡船 SQL Server 資料庫與呼叫的應用程式的資訊。 正如其名， [ `ExecuteAndSend`方法](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlpipe.executeandsend.aspx)執行傳入的`SqlCommand`物件並將結果傳回用戶端應用程式。
 
 > [!NOTE]
 > Managed 的資料庫物件是最適合用來預存程序和 Udf 會使用程序邏輯，而不是集合為基礎的邏輯。 程序邏輯牽涉到使用以逐列為基礎的資料集，或使用純量資料。 `GetDiscontinuedProducts`方法剛才所建立，不過，牽涉到任何程序的邏輯。 因此，它會在理想情況下會實作為 T-SQL 預存程序。 它會實為受管理的預存程序，來示範的步驟建立及部署所需的受管理的預存程序。
@@ -214,7 +214,7 @@ SQL Server 專案繫結至特定資料庫。 因此，建立新的 SQL Server �
 
 [!code-sql[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample5.sql)]
 
-如果您重新執行`exec sp_configure`您會看到上述陳述式更新 clr 已啟用設定 s 的設定值，設為 1，但仍執行的值設定為 0。 我們要執行這項組態變更才會生效[`RECONFIGURE`命令](https://msdn.microsoft.com/en-us/library/ms176069.aspx)，它會將執行的值設定為目前的組態值。 只要輸入`RECONFIGURE`在查詢視窗中，按一下工具列中的 [執行] 圖示。 如果您執行`exec sp_configure`現在您應該看到值為 1，clr 已啟用設定 s 組態中，執行值。
+如果您重新執行`exec sp_configure`您會看到上述陳述式更新 clr 已啟用設定 s 的設定值，設為 1，但仍執行的值設定為 0。 我們要執行這項組態變更才會生效[`RECONFIGURE`命令](https://msdn.microsoft.com/library/ms176069.aspx)，它會將執行的值設定為目前的組態值。 只要輸入`RECONFIGURE`在查詢視窗中，按一下工具列中的 [執行] 圖示。 如果您執行`exec sp_configure`現在您應該看到值為 1，clr 已啟用設定 s 組態中，執行值。
 
 Clr 已啟用設定完成後，我們已準備好執行 managed`GetDiscontinuedProducts`預存程序。 在查詢視窗中輸入並執行命令`exec` `GetDiscontinuedProducts`。 叫用預存程序會導致對應的 managed 程式碼中`GetDiscontinuedProducts`方法才能執行。 此程式碼發出`SELECT`查詢以傳回已停用，並傳回呼叫的應用程式，也就是 SQL Server Management Studio，這個執行個體中的這項資料的所有產品。 Management Studio 接收這些結果，並顯示在 [結果] 視窗。
 
@@ -232,7 +232,7 @@ Clr 已啟用設定完成後，我們已準備好執行 managed`GetDiscontinuedP
 
 若要將新的預存程序加入至專案，以滑鼠右鍵按一下`ManagedDatabaseConstructs`專案名稱，然後選擇 加入新的預存程序。 將檔案命名為 `GetProductsWithPriceLessThan.cs`。 如我們所見在步驟 3 中，這將使用名為的方法來建立新的 C# 類別檔案`GetProductsWithPriceLessThan`置於`partial`類別`StoredProcedures`。
 
-更新`GetProductsWithPriceLessThan`方法的定義，讓它接受[ `SqlMoney` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlmoney.aspx)名為輸入的參數`price`撰寫的程式碼來執行並傳回查詢結果：
+更新`GetProductsWithPriceLessThan`方法的定義，讓它接受[ `SqlMoney` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlmoney.aspx)名為輸入的參數`price`撰寫的程式碼來執行並傳回查詢結果：
 
 
 [!code-csharp[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample6.cs)]
@@ -400,19 +400,19 @@ Udf 也可以傳回表格式資料。 例如，我們可以建立 UDF，以傳�
 **圖 25**： 新增到新管理 UDF`ManagedDatabaseConstructs`專案 ([按一下以檢視完整大小的影像](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image61.png))
 
 
-使用者定義函式樣板建立`partial`名為類別`UserDefinedFunctions`與方法，其名稱為類別 s 的檔案名稱相同 (`udf_ComputeInventoryValue_Managed`，這個執行個體中)。 這個方法使用裝飾[`SqlFunction`屬性](https://msdn.microsoft.com/en-us/library/microsoft.sqlserver.server.sqlfunctionattribute.aspx)的旗標的為受管理的 UDF 的方法。
+使用者定義函式樣板建立`partial`名為類別`UserDefinedFunctions`與方法，其名稱為類別 s 的檔案名稱相同 (`udf_ComputeInventoryValue_Managed`，這個執行個體中)。 這個方法使用裝飾[`SqlFunction`屬性](https://msdn.microsoft.com/library/microsoft.sqlserver.server.sqlfunctionattribute.aspx)的旗標的為受管理的 UDF 的方法。
 
 
 [!code-csharp[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample13.cs)]
 
-`udf_ComputeInventoryValue`目前方法會傳回[`SqlString`物件](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlstring.aspx)而且不接受任何輸入參數。 我們需要更新方法定義，以便讓它接受三個輸入參數- `UnitPrice`， `UnitsInStock`，和`Discontinued`-並傳回`SqlMoney`物件。 計算存貨值的邏輯中都有相同的 T-SQL `udf_ComputeInventoryValue` UDF。
+`udf_ComputeInventoryValue`目前方法會傳回[`SqlString`物件](https://msdn.microsoft.com/library/system.data.sqltypes.sqlstring.aspx)而且不接受任何輸入參數。 我們需要更新方法定義，以便讓它接受三個輸入參數- `UnitPrice`， `UnitsInStock`，和`Discontinued`-並傳回`SqlMoney`物件。 計算存貨值的邏輯中都有相同的 T-SQL `udf_ComputeInventoryValue` UDF。
 
 
 [!code-csharp[Main](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/samples/sample14.cs)]
 
-請注意，UDF 方法 s 輸入的參數是其對應的 SQL 型別的：`SqlMoney`如`UnitPrice` 欄位中， [ `SqlInt16` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlint16.aspx)如`UnitsInStock`，和[ `SqlBoolean` ](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlboolean.aspx)如`Discontinued`。 這些資料類型會反映在定義的型別`Products`資料表：`UnitPrice`資料行是類型`money`、`UnitsInStock`類型的資料行`smallint`，而`Discontinued`類型的資料行`bit`。
+請注意，UDF 方法 s 輸入的參數是其對應的 SQL 型別的：`SqlMoney`如`UnitPrice` 欄位中， [ `SqlInt16` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlint16.aspx)如`UnitsInStock`，和[ `SqlBoolean` ](https://msdn.microsoft.com/library/system.data.sqltypes.sqlboolean.aspx)如`Discontinued`。 這些資料類型會反映在定義的型別`Products`資料表：`UnitPrice`資料行是類型`money`、`UnitsInStock`類型的資料行`smallint`，而`Discontinued`類型的資料行`bit`。
 
-程式碼會啟動建立`SqlMoney`名為執行個體`inventoryValue`，指派值為 0。 `Products`資料表可讓資料庫`NULL`值`UnitsInPrice`和`UnitsInStock`資料行。 因此，我們需要先檢查這些值是否包含，請參閱`NULL`s，我們不要透過`SqlMoney`物件 s [ `IsNull`屬性](https://msdn.microsoft.com/en-us/library/system.data.sqltypes.sqlmoney.isnull.aspx)。 如果兩個`UnitPrice`和`UnitsInStock`包含非`NULL`值，那麼我們計算`inventoryValue`是兩個產品。 如果`Discontinued`為 true，則我們一半的值。
+程式碼會啟動建立`SqlMoney`名為執行個體`inventoryValue`，指派值為 0。 `Products`資料表可讓資料庫`NULL`值`UnitsInPrice`和`UnitsInStock`資料行。 因此，我們需要先檢查這些值是否包含，請參閱`NULL`s，我們不要透過`SqlMoney`物件 s [ `IsNull`屬性](https://msdn.microsoft.com/library/system.data.sqltypes.sqlmoney.isnull.aspx)。 如果兩個`UnitPrice`和`UnitsInStock`包含非`NULL`值，那麼我們計算`inventoryValue`是兩個產品。 如果`Discontinued`為 true，則我們一半的值。
 
 > [!NOTE]
 > `SqlMoney`物件只允許兩個`SqlMoney`一起相乘的執行個體。 不允許`SqlMoney`先乘以常值的浮點數的執行個體。 因此，以一半`inventoryValue`我們將它乘以新`SqlMoney`值 0.5 的執行個體。
@@ -559,13 +559,13 @@ Microsoft SQL Server 2005 提供整合與 Common Language Runtime (CLR)，可讓
 - [使用者定義函數的優缺點](http://www.samspublishing.com/articles/article.asp?p=31724&amp;rl=1)
 - [在 Managed 程式碼中建立 SQL Server 2005 物件](https://channel9.msdn.com/Showpost.aspx?postid=142413)
 - [建立觸發程序使用 SQL Server 2005 中的 Managed 程式碼](http://www.15seconds.com/issue/041006.htm)
-- [如何： 建立和執行 CLR SQL Server 預存程序](https://msdn.microsoft.com/en-us/library/5czye81z(VS.80).aspx)
-- [如何： 建立和執行 CLR SQL Server 使用者定義函式](https://msdn.microsoft.com/en-us/library/w2kae45k(VS.80).aspx)
-- [如何： 編輯`Test.sql`執行 SQL 物件的指令碼](https://msdn.microsoft.com/en-us/library/ms233682(VS.80).aspx)
+- [如何： 建立和執行 CLR SQL Server 預存程序](https://msdn.microsoft.com/library/5czye81z(VS.80).aspx)
+- [如何： 建立和執行 CLR SQL Server 使用者定義函式](https://msdn.microsoft.com/library/w2kae45k(VS.80).aspx)
+- [如何： 編輯`Test.sql`執行 SQL 物件的指令碼](https://msdn.microsoft.com/library/ms233682(VS.80).aspx)
 - [簡介使用者定義函數](http://www.sqlteam.com/item.asp?ItemID=1955)
 - [Managed 程式碼和 SQL Server 2005 （影片）](https://channel9.msdn.com/Showpost.aspx?postid=142413)
-- [TRANSACT-SQL 參考](https://msdn.microsoft.com/en-us/library/aa299742(SQL.80).aspx)
-- [逐步解說： 在 Managed 程式碼中建立預存程序](https://msdn.microsoft.com/en-us/library/zxsa8hkf(VS.80).aspx)
+- [TRANSACT-SQL 參考](https://msdn.microsoft.com/library/aa299742(SQL.80).aspx)
+- [逐步解說： 在 Managed 程式碼中建立預存程序](https://msdn.microsoft.com/library/zxsa8hkf(VS.80).aspx)
 
 ## <a name="about-the-author"></a>關於作者
 

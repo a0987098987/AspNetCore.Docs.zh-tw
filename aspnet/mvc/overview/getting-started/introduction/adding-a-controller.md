@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 878d957344a08450b82b0249d8ca2a205810da4a
-ms.sourcegitcommit: 9ecd4e9fb0c40c3693dab079eab1ff94b461c922
+ms.openlocfilehash: c8f317b2ac133f560461917af1588b7a1fa51c4f
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/28/2017
 
 URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld*對應至`HelloWorldController`類別。 URL 的第二個部分會決定要執行的類別上的動作方法。 因此*/HelloWorld/索引*導致`Index`方法`HelloWorldController`類別來執行。 請注意，我們只需要瀏覽至*/HelloWorld*和`Index`方法使用預設值。 這是因為方法名為`Index`是將會在控制站呼叫，如果沒有明確指定的預設方法。 URL 區段的第三個部分 (`Parameters`) 是路由資料。 我們會在本教學課程稍後看到路由資料。
 
-瀏覽至 `http://localhost:xxxx/HelloWorld/Welcome`。 `Welcome`方法會執行，且會傳回字串&quot;這是該褖畫惎動作方法...&quot;. 預設的 MVC 對應是否`/[Controller]/[ActionName]/[Parameters]`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
+瀏覽至 `http://localhost:xxxx/HelloWorld/Welcome`。 `Welcome`方法會執行，且會傳回字串&quot;這是該  褖畫惎動作方法...&quot;. 預設的 MVC 對應是否`/[Controller]/[ActionName]/[Parameters]`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
 ![](adding-a-controller/_static/image6.png)
 
@@ -82,7 +82,7 @@ URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld
 [!code-csharp[Main](adding-a-controller/samples/sample3.cs)]
 
 > [!NOTE]
-> 安全性注意事項： 上方的程式碼會使用[HttpUtility.HtmlEncode](https://msdn.microsoft.com/en-us/library/ee360286(v=vs.110).aspx)為了防止惡意的輸入 (也就是 JavaScript) 的應用程式。 如需詳細資訊，請參閱[How to： 保護對指令碼會利用 Web 應用程式中藉由套用 HTML 編碼字串](https://msdn.microsoft.com/en-us/library/a2a4yykt(v=vs.100).aspx)。
+> 安全性注意事項： 上方的程式碼會使用[HttpUtility.HtmlEncode](https://msdn.microsoft.com/library/ee360286(v=vs.110).aspx)為了防止惡意的輸入 (也就是 JavaScript) 的應用程式。 如需詳細資訊，請參閱[How to： 保護對指令碼會利用 Web 應用程式中藉由套用 HTML 編碼字串](https://msdn.microsoft.com/library/a2a4yykt(v=vs.100).aspx)。
 
 
  執行您的應用程式，並瀏覽至範例 URL (`http://localhost:xxxx/HelloWorld/Welcome?name=Scott&numtimes=4`)。 您可以嘗試不同的值`name`和`numtimes`在 URL 中。 [ASP.NET MVC 模型繫結系統](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx)會自動對應 網址列中的查詢字串中您的方法參數的具名的參數。
@@ -91,7 +91,7 @@ URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld
 
 在範例中，上述的 URL 區段 ( `Parameters`) 不使用`name`和`numTimes`做為參數傳遞[查詢字串](http://en.wikipedia.org/wiki/Query_string)。 ? （問號） 上述 URL 中是分隔符號，並遵循查詢字串。 &amp; 字元可分隔查詢字串。
 
-下列程式碼取代該褖畫惎方法：
+下列程式碼取代該  褖畫惎方法：
 
 [!code-csharp[Main](adding-a-controller/samples/sample4.cs)]
 

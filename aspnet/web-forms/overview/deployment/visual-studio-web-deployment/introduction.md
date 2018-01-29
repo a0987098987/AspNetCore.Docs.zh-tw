@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: e14f3bed001592c85bdbba868f51141bc52a9470
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 51344535e7ff42f1bd6641aeaaf043be6423f1b7
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>使用 Visual Studio 的 ASP.NET Web 部署： 簡介
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 > 此內容也會提供免費電子書中為[TechNet 電子書圖庫](https://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#ASPNETWebDeploymentusingVisualStudio)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 這些教學課程將引導您完成部署 ASP.NET web 應用程式，其中包含 SQL Server 資料庫。 測試，在本機開發電腦上的 iis，然後在 Azure 應用程式服務和 Azure SQL Database。 預備和生產環境中的 Web 應用程式，您會將部署第一次。 您會看到如何使用單鍵發行時，Visual Studio 部署，您會看到如何使用命令列部署。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 從部署[原始檔控制](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control.md)使用[持續傳遞](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md)程序未涵蓋在這些教學課程除了示範如何從命令列部署的一個教學課程。 如需持續傳遞資訊，請參閱下列資源：
 
 - [持續整合與持續傳遞 （使用 Windows Azure 建置實際的雲端應用程式）](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md)
-- [部署在 Azure App Service web 應用程式](https://azure.microsoft.com/en-us/documentation/articles/web-sites-deploy/)
+- [部署在 Azure App Service web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-deploy/)
 - [部署企業案例中的 Web 應用程式](../deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)(教學課程，撰寫 Visual Studio 2010，還有適用於企業環境的實用資訊的較舊 set。)
 
 ## <a name="using-a-third-party-hosting-provider"></a>使用協力廠商主機服務提供者
@@ -110,7 +110,7 @@ Visual Studio 不會與資料庫的任何項目在部署程序。 當部署的�
 
 ## <a name="comments-welcome"></a>歡迎使用註解
 
-教學課程的註解是褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
+教學課程的註解是  褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
 
 <a id="prerequisites"></a>
 
@@ -130,7 +130,7 @@ Visual Studio 不會與資料庫的任何項目在部署程序。 當部署的�
 
 - [Azure SDK for Visual Studio 2010](https://go.microsoft.com/fwlink/?LinkID=254269)
 - [SQL Server Express LocalDB](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=SQLLocalDBOnly_11_0)
-- [SQL Server Data Tools](https://msdn.microsoft.com/en-us/library/hh500335.aspx)。
+- [SQL Server Data Tools](https://msdn.microsoft.com/library/hh500335.aspx)。
 
 根據 SDK 相依性的多少您已經在電腦上，安裝 Azure SDK 可能需要很長的時間，從幾分鐘到半小時或更多。 即使您打算將發佈到協力廠商主機服務提供者而非 Azure，因為 SDK 包含最新的更新 Visual Studio web 發行功能，您需要 Azure SDK。
 

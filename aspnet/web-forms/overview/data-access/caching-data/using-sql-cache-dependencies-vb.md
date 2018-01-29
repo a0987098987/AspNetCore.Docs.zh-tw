@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 46521f48d31414ffff2707986d6f869ca2f9bc9a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: af302d67b009fc25e38fb33a5e2a623f7200bcd5
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="using-sql-cache-dependencies-vb"></a>使用 SQL 快取相依性 (VB)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 當快取資料庫資料、 以時間為基礎的到期通常會選擇易於使用，但通常是不適當的解決方案。 在理想情況下，直到資料庫; 中已修改基礎資料的資料庫資料會維持快取則只會收回快取。 此方法達到最大快取的效能優勢，並將過時資料的持續時間降到最低。 不過，為了享受有這些優點必須知道基礎資料庫資料已修改，且對應的項目從快取的收回的備妥某些系統。 在 ASP.NET 2.0 之前網頁開發人員所負責實作此系統。
 
-ASP.NET 2.0 提供[`SqlCacheDependency`類別](https://msdn.microsoft.com/en-us/library/system.web.caching.sqlcachedependency.aspx)和可以收回必要的基礎結構，以判斷當變更發生在資料庫中，因此對應的快取項目。 有兩種技術，以判斷基礎資料變更時： 告知和輪詢。 討論告知和輪詢之間的差異之後, 我們將建立基礎結構需要支援輪詢，然後瀏覽如何使用`SqlCacheDependency`類別中宣告式和以程式設計方式的案例。
+ASP.NET 2.0 提供[`SqlCacheDependency`類別](https://msdn.microsoft.com/library/system.web.caching.sqlcachedependency.aspx)和可以收回必要的基礎結構，以判斷當變更發生在資料庫中，因此對應的快取項目。 有兩種技術，以判斷基礎資料變更時： 告知和輪詢。 討論告知和輪詢之間的差異之後, 我們將建立基礎結構需要支援輪詢，然後瀏覽如何使用`SqlCacheDependency`類別中宣告式和以程式設計方式的案例。
 
 ## <a name="understanding-notification-and-polling"></a>了解告知和輪詢
 
@@ -55,7 +55,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 [!code-console[Main](using-sql-cache-dependencies-vb/samples/sample1.cmd)]
 
 > [!NOTE]
-> 若要執行這些命令必須在指定的資料庫登入[ `db_securityadmin` ](https://msdn.microsoft.com/en-us/library/ms188685.aspx)和[ `db_ddladmin` ](https://msdn.microsoft.com/en-us/library/ms190667.aspx)角色。 若要檢查 T-SQL 傳送到資料庫`aspnet_regsql.exe`命令列程式，請參閱[此部落格文章](http://scottonwriting.net/sowblog/posts/10709.aspx)。
+> 若要執行這些命令必須在指定的資料庫登入[ `db_securityadmin` ](https://msdn.microsoft.com/library/ms188685.aspx)和[ `db_ddladmin` ](https://msdn.microsoft.com/library/ms190667.aspx)角色。 若要檢查 T-SQL 傳送到資料庫`aspnet_regsql.exe`命令列程式，請參閱[此部落格文章](http://scottonwriting.net/sowblog/posts/10709.aspx)。
 
 
 例如，若要輪詢的基礎結構新增到 Microsoft SQL Server 資料庫中名為`pubs`名為資料庫伺服器上`ScottsServer`使用 Windows 驗證，請導覽至適當的目錄，並且從命令列中，輸入：
@@ -77,7 +77,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 
 ## <a name="step-2-referencing-a-microsoft-sql-server-2005-express-edition-database-inappdata"></a>步驟 2： 參考中的 Microsoft SQL Server 2005 Express Edition 資料庫`App_Data`
 
-`aspnet_regsql.exe`命令列程式需要的資料庫和伺服器名稱，才能新增必要的輪詢基礎結構。 什麼是 Microsoft SQL Server 2005 Express 資料庫所在的資料庫和伺服器名稱，但`App_Data`資料夾嗎？ 而不必探索的資料庫和伺服器名稱是什麼，我已找到最簡單的方式是附加至資料庫`localhost\SQLExpress`資料庫執行個體，並重新命名資料使用[SQL Server Management Studio](https://msdn.microsoft.com/en-us/library/ms174173.aspx)。 如果您有一個在電腦上安裝 SQL Server 2005 的完整版本，然後您可能已經在電腦上安裝 SQL Server Management Studio。 如果您只有 Express 版本，您可以下載免費[Microsoft SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796)。
+`aspnet_regsql.exe`命令列程式需要的資料庫和伺服器名稱，才能新增必要的輪詢基礎結構。 什麼是 Microsoft SQL Server 2005 Express 資料庫所在的資料庫和伺服器名稱，但`App_Data`資料夾嗎？ 而不必探索的資料庫和伺服器名稱是什麼，我已找到最簡單的方式是附加至資料庫`localhost\SQLExpress`資料庫執行個體，並重新命名資料使用[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。 如果您有一個在電腦上安裝 SQL Server 2005 的完整版本，然後您可能已經在電腦上安裝 SQL Server Management Studio。 如果您只有 Express 版本，您可以下載免費[Microsoft SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796)。
 
 關閉 Visual Studio 來啟動。 接下來，開啟 SQL Server Management Studio 並選擇連接到`localhost\SQLExpress`伺服器使用 Windows 驗證。
 
@@ -186,7 +186,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 **圖 8**: ObjectDataSource s`Selecting`事件引發每次被分頁 GridView、 編輯或排序 ([按一下以檢視完整大小的影像](using-sql-cache-dependencies-vb/_static/image10.png))
 
 
-中[快取資料與 ObjectDataSource](caching-data-with-the-objectdatasource-vb.md)教學課程中，設定`EnableCaching`屬性`True`ObjectDataSource 所指定的持續期間快取其資料會導致其`CacheDuration`屬性。 ObjectDataSource 還有[`SqlCacheDependency`屬性](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.objectdatasource.sqlcachedependency.aspx)，這樣會將一個或多個 SQL 快取相依性加入快取的資料使用模式：
+中[快取資料與 ObjectDataSource](caching-data-with-the-objectdatasource-vb.md)教學課程中，設定`EnableCaching`屬性`True`ObjectDataSource 所指定的持續期間快取其資料會導致其`CacheDuration`屬性。 ObjectDataSource 還有[`SqlCacheDependency`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.sqlcachedependency.aspx)，這樣會將一個或多個 SQL 快取相依性加入快取的資料使用模式：
 
 
 [!code-css[Main](using-sql-cache-dependencies-vb/samples/sample9.css)]
@@ -282,7 +282,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 
 此外，當使用 SQL 快取相依性我們需要將做為相依性的多個資料庫資料表產生關聯。 例如，`ProductsDataTable`快取中`ProductsCL`類別包含每個產品類別目錄] 和 [供應商名稱，但`AddCacheItem`方法只使用相依性上`Products`。 在此情況下，如果使用者更新的類別目錄或供應商名稱快取的產品資料會保留在快取，並已過期。 因此，我們想要讓資料快取的產品相依於不只`Products`資料表，但在`Categories`和`Suppliers`也會針對資料表。
 
-[ `AggregateCacheDependency`類別](https://msdn.microsoft.com/en-us/library/system.web.caching.aggregatecachedependency.aspx)提供一種方法將多個相依性與快取項目產生關聯。 藉由建立啟動`AggregateCacheDependency`執行個體。 接下來，加入相依性使用一組`AggregateCacheDependency`s`Add`方法。 當插入項目資料快取之後，傳入`AggregateCacheDependency`執行個體。 當*任何*的`AggregateCacheDependency`s 執行個體的相依性變更，將會收回快取的項目。
+[ `AggregateCacheDependency`類別](https://msdn.microsoft.com/library/system.web.caching.aggregatecachedependency.aspx)提供一種方法將多個相依性與快取項目產生關聯。 藉由建立啟動`AggregateCacheDependency`執行個體。 接下來，加入相依性使用一組`AggregateCacheDependency`s`Add`方法。 當插入項目資料快取之後，傳入`AggregateCacheDependency`執行個體。 當*任何*的`AggregateCacheDependency`s 執行個體的相依性變更，將會收回快取的項目。
 
 下圖顯示更新的程式碼，如`ProductsCL`類別的`AddCacheItem`方法。 此方法會建立`MasterCacheKeyArray`快取相依性，連同`SqlCacheDependency`物件`Products`， `Categories`，和`Suppliers`資料表。 所有結合成一個`AggregateCacheDependency`名為物件`aggregateDependencies`，接著會傳遞至`Insert`方法。
 
@@ -292,7 +292,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 測試這個新的程式碼時。現在會變更為`Products`， `Categories`，或`Suppliers`資料表會導致快取的資料被收回。 此外，`ProductsCL`類別 s`UpdateProduct`方法會呼叫編輯 GridView 透過產品時，收回`MasterCacheKeyArray`快取相依性，這會導致的快取`ProductsDataTable`收回和要在下一次重新擷取資料要求。
 
 > [!NOTE]
-> SQL 快取相依性也可用以[輸出快取](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/caching/output.aspx)。 如需這項功能的示範，請參閱：[使用 ASP.NET 輸出快取與 SQL Server](https://msdn.microsoft.com/en-us/library/e3w8402y(VS.80).aspx)。
+> SQL 快取相依性也可用以[輸出快取](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/caching/output.aspx)。 如需這項功能的示範，請參閱：[使用 ASP.NET 輸出快取與 SQL Server](https://msdn.microsoft.com/library/e3w8402y(VS.80).aspx)。
 
 
 ## <a name="summary"></a>總結
@@ -305,10 +305,10 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [Microsoft SQL Server 2005 中使用查詢通知](https://msdn.microsoft.com/en-us/library/ms175110.aspx)
-- [建立查詢通知](https://msdn.microsoft.com/en-us/library/ms188669.aspx)
-- [在 ASP.NET 中使用快取`SqlCacheDependency`類別](https://msdn.microsoft.com/en-us/library/ms178604(VS.80).aspx)
-- [ASP.NET SQL Server 註冊工具 (`aspnet_regsql.exe`)](https://msdn.microsoft.com/en-us/library/ms229862(vs.80).aspx)
+- [Microsoft SQL Server 2005 中使用查詢通知](https://msdn.microsoft.com/library/ms175110.aspx)
+- [建立查詢通知](https://msdn.microsoft.com/library/ms188669.aspx)
+- [在 ASP.NET 中使用快取`SqlCacheDependency`類別](https://msdn.microsoft.com/library/ms178604(VS.80).aspx)
+- [ASP.NET SQL Server 註冊工具 (`aspnet_regsql.exe`)](https://msdn.microsoft.com/library/ms229862(vs.80).aspx)
 - [概觀`SqlCacheDependency`](http://www.aspnetresources.com/blog/sql_cache_depedency_overview.aspx)
 
 ## <a name="about-the-author"></a>關於作者

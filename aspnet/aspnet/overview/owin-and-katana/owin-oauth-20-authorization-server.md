@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 8842f57df84d841df77b34e9645dbf4909f82d85
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e5968f8d19191c3f44e9bd58f8e22a39d8d8faff
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/24/2018
 ---
 <a name="owin-oauth-20-authorization-server"></a>OWIN OAuth 2.0 授權伺服器
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > | **教學課程中所示** | **也可以搭配** |
 > | --- | --- |
-> | Windows 8.1 | Windows 8、 Windows 7 |
+> | Windows 8.1 | Windows 8, Windows 7 |
 > | [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) | [Visual Studio 2013 Express for Desktop](https://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express)。 Visual Studio 2012 最新的更新應該會運作，但本教學課程尚未經過測試，和某些功能表選取項目和對話方塊不同。 |
 > | .NET 4.5 |  |
 > 
@@ -57,12 +57,12 @@ ms.lasthandoff: 11/10/2017
 ## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-editions)或免費[Visual Studio Express 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-express)，如下所示**軟體版本**頁面的頂端。
-- OWIN 的認識。 請參閱[入門 Katana 專案](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx)和[OWIN 和 Katana 中最新消息](index.md)。
+- OWIN 的認識。 請參閱[入門 Katana 專案](https://msdn.microsoft.com/magazine/dn451439.aspx)和[OWIN 和 Katana 中最新消息](index.md)。
 - 熟悉[OAuth](http://tools.ietf.org/html/rfc6749)術語，包括[角色](http://tools.ietf.org/html/rfc6749#section-1.1)，[通訊協定流程](http://tools.ietf.org/html/rfc6749#section-1.2)，和[授權授與](http://tools.ietf.org/html/rfc6749#section-1.3)。 [OAuth 2.0 簡介](http://tools.ietf.org/html/rfc6749#section-1)提供了絕佳的簡介。
 
 ## <a name="create-an-authorization-server"></a>建立授權伺服器
 
-在本教學課程中，我們大致勾勒出如何使用[OWIN](https://msdn.microsoft.com/en-us/magazine/dn451439.aspx)和 ASP.NET MVC 建立授權伺服器。 我們希望很快就完成的範例中，提供下載，因為本教學課程中不包含每個步驟。 首先，建立名為空 web 應用程式*AuthorizationServer*並安裝下列封裝：
+在本教學課程中，我們大致勾勒出如何使用[OWIN](https://msdn.microsoft.com/magazine/dn451439.aspx)和 ASP.NET MVC 建立授權伺服器。 我們希望很快就完成的範例中，提供下載，因為本教學課程中不包含每個步驟。 首先，建立名為空 web 應用程式*AuthorizationServer*並安裝下列封裝：
 
 - Microsoft.AspNet.Mvc
 - Microsoft.Owin.Host.SystemWeb
@@ -112,7 +112,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 檢閱 IETF OAuth 2[授權碼授與](http://tools.ietf.org/html/rfc6749#section-4.1)現在區段。 
 
-**提供者**（在下表） 是[OAuthAuthorizationServerOptions](https://msdn.microsoft.com/en-us/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx)。型別提供者`OAuthAuthorizationServerProvider`，其中包含所有的 OAuth 伺服器事件。 
+**提供者**（在下表） 是[OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx)。型別提供者`OAuthAuthorizationServerProvider`，其中包含所有的 OAuth 伺服器事件。 
 
 | 從授權碼授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -123,7 +123,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 |  |  |
 | （C） 假設資源擁有者授與存取權，授權伺服器將使用者代理程式重新導向回到用戶端會使用重新導向 URI 提供舊版 （或在要求中用戶端註冊期間）。 ... |  |
 |  |  |
-| （D） 用戶端向授權伺服器的權杖端點要求存取權杖，加上一個步驟中收到的授權碼。 當提出要求，用戶端驗證與授權伺服器。 用戶端中包含重新導向 URI 用來取得授權碼，以便驗證。 | Provider.MatchEndpoint Provider.ValidateClientAuthentication AuthorizationCodeProvider.ReceiveAsync Provider.ValidateTokenRequest Provider.GrantAuthorizationCode Provider.TokenEndpoint AccessTokenProvider.CreateAsyncRefreshTokenProvider.CreateAsync |
+| （D） 用戶端向授權伺服器的權杖端點要求存取權杖，加上一個步驟中收到的授權碼。 當提出要求，用戶端驗證與授權伺服器。 用戶端中包含重新導向 URI 用來取得授權碼，以便驗證。 | Provider.MatchEndpoint Provider.ValidateClientAuthentication AuthorizationCodeProvider.ReceiveAsync Provider.ValidateTokenRequest Provider.GrantAuthorizationCode Provider.TokenEndpoint AccessTokenProvider.CreateAsync RefreshTokenProvider.CreateAsync |
 
 如需範例實作`AuthorizationCodeProvider.CreateAsync`和`ReceiveAsync`來控制建立和驗證授權碼如下所示。
 
@@ -185,7 +185,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 請參閱 IETF OAuth 2[用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)現在區段。
 
- [用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)流程濆迶 6 是流程和對應的 OWIN OAuth 的中介軟體之後。  
+ [用戶端認證授與](http://tools.ietf.org/html/rfc6749#section-4.4)流程  濆迶 6 是流程和對應的 OWIN OAuth 的中介軟體之後。  
 
 | 從用戶端認證授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
@@ -211,7 +211,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 | 從用戶端認證授與區段的流程步驟 | 下載範例會執行這些步驟： |
 | --- | --- |
 |  |  |
-| （G） 用戶端會要求新的存取權杖，向授權伺服器，並提供給重新整理權杖。 用戶端驗證需求會根據用戶端類型和授權伺服器原則。 | Provider.MatchEndpoint Provider.ValidateClientAuthentication RefreshTokenProvider.ReceiveAsync Provider.ValidateTokenRequest Provider.GrantRefreshToken Provider.TokenEndpoint AccessTokenProvider.CreateAsyncRefreshTokenProvider.CreateAsync |
+| （G） 用戶端會要求新的存取權杖，向授權伺服器，並提供給重新整理權杖。 用戶端驗證需求會根據用戶端類型和授權伺服器原則。 | Provider.MatchEndpoint Provider.ValidateClientAuthentication RefreshTokenProvider.ReceiveAsync Provider.ValidateTokenRequest Provider.GrantRefreshToken Provider.TokenEndpoint AccessTokenProvider.CreateAsync RefreshTokenProvider.CreateAsync |
 |  |  |
 | （H） 授權伺服器會驗證用戶端和驗證重新整理權杖，以及如果有效，就會發出新的存取權杖 （並選擇性地將新的重新整理權杖）。 |  |
 
@@ -225,7 +225,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 建立空 web 應用程式專案，並安裝下列專案中的封裝：
 
-- 用於 Microsoft.AspNet.WebApi.Owin
+- Microsoft.AspNet.WebApi.Owin
 - Microsoft.Owin.Host.SystemWeb
 - Microsoft.Owin.Security.OAuth
 

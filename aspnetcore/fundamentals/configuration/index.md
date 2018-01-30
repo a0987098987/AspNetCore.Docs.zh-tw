@@ -10,17 +10,17 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ee9bdc66d0bfa6433736fbc55126bdd37ba9d080
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 20c75d202d67a491890d87cebf549585e0313da0
+ms.sourcegitcommit: 18ff1fdaa3e1ae204ed6a2ba9351ce8cf1371c85
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Mark Michaelis](http://intellitect.com/author/mark-michaelis/)、[Steve Smith](https://ardalis.com/)、[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-組態 API 可讓您根據成對的名稱和數值清單來設定 ASP.NET Core Web 應用程式。 組態是在執行階段讀取自多個來源。 您可以將這些成對的名稱和數值分組為多層階層。
+組態 API 可讓您根據成對的名稱和數值清單來設定 ASP.NET Core Web 應用程式。 組態是在執行階段讀取自多個來源。 成對的名稱和數值可以分組成多重層級階層。
 
 下列項目有組態提供者：
 
@@ -59,7 +59,7 @@ Console.Write($"{Configuration["wizards:0:Name"]}");
 // Output: Gandalf
 ```
 
-寫入內建[組態](/dotnet/api/microsoft.extensions.configuration)提供者的成對名稱和數值**不會**保存。 不過，您可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
+寫入內建[組態](/dotnet/api/microsoft.extensions.configuration)提供者的成對名稱和數值**不會**保存。 不過，可以建立自訂提供者來儲存值。 請參閱[自訂組態提供者](xref:fundamentals/configuration/index#custom-config-providers)。
 
 上述範例使用 Configuration 索引子來讀取值。 若要存取 `Startup` 外部組態，請使用「選項模式」。 如需詳細資訊，請參閱[選項](xref:fundamentals/configuration/options)主題。
 
@@ -93,8 +93,8 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 * `IOptionsSnapshot` 可在組態資料變更時重新載入資料。 如需詳細資訊，請參閱 [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot)。
 * 組態金鑰**不**區分大小寫。
-* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至您的存放庫。 深入了解如何[使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
-* 如果無法在您系統上的環境變數中使用冒號 (`:`)，請以雙底線 (`__`) 取代冒號 (`:`)。
+* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。 深入了解如何[使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
+* 如果無法在系統上的環境變數中使用冒號 (`:`)，請以雙底線 (`__`) 取代冒號 (`:`)。
 
 ## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>記憶體內部提供者和 POCO 類別的繫結
 
@@ -102,7 +102,7 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 [!code-csharp[Main](index/sample/InMemory/Program.cs)]
 
-組態值是以字串傳回，但繫結會啟用物件的建構。 繫結可讓您擷取 POCO 物件，甚至是整個物件圖形。
+組態值是以字串傳回，但繫結會啟用物件的建構。 使用繫結即可擷取 POCO 物件，甚至是整個物件圖形。
 
 ### <a name="getvalue"></a>GetValue
 
@@ -110,11 +110,11 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 [!code-csharp[Main](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
 
-ConfigurationBinder 的 `GetValue<T>` 方法可讓您指定預設值 (在此範例中為 80)。 `GetValue<T>` 適用於簡單的案例，並不會繫結至整個區段。 `GetValue<T>` 會從轉換成特定類型的 `GetSection(key).Value` 取得純量值。
+使用 ConfigurationBinder 的 `GetValue<T>` 方法可指定預設值 (在範例中為 80)。 `GetValue<T>` 適用於簡單的案例，並不會繫結至整個區段。 `GetValue<T>` 會從轉換成特定類型的 `GetSection(key).Value` 取得純量值。
 
 ## <a name="bind-to-an-object-graph"></a>繫結至物件圖形
 
-您可以遞迴繫結至類別中的每個物件。 請考慮下列 `AppSettings` 類別：
+類別中的每個物件都可以遞迴繫結。 請考慮下列 `AppSettings` 類別：
 
 [!code-csharp[Main](index/sample/ObjectGraph/AppSettings.cs)]
 
@@ -185,7 +185,7 @@ public void CanBindObjectTree()
 
 執行範例時，會顯示資料庫中醒目提示的值 ("value_from_ef_1" 和 "value_from_ef_2") 。
 
-您可以新增 `EFConfigSource` 擴充方法來新增組態來源：
+`EFConfigSource` 擴充方法可以用來新增組態來源：
 
 [!code-csharp[Main](index/sample/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
 
@@ -217,7 +217,7 @@ key3=value_from_json_3
 
 # <a name="basic-configurationtabbasicconfiguration"></a>[基本組態](#tab/basicconfiguration)
 
-若要啟用命令列組態，請在 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 的執行個體上呼叫 `AddCommandLine` 擴充方法：
+若要啟用命令列組態，請在 [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) 的執行個體上呼叫 `AddCommandLine` 擴充方法：
 
 [!code-csharp[Main](index/sample_snapshot//CommandLine/Program.cs?highlight=18,21)]
 
@@ -261,7 +261,7 @@ Left: 1979
 
 若上述條件皆成立，即覆寫所有命令列引數。
 
-ASP.NET Core 2.x 應用程式可以使用 WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 而不是 ' CreateDefaultBuilder`. When using `WebHostBuilder'，請手動設定組態與[ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
+ASP.NET Core 2.x 可以使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 來代替 `CreateDefaultBuilder`。 使用 `WebHostBuilder` 時，請以 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 手動進行設定。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -331,7 +331,7 @@ dotnet run -key1 value1 --key2 value2 /key3 value3
 
 ### <a name="switch-mappings"></a>切換對應
 
-使用 `ConfigurationBuilder` 手動建置組態時，您可以選擇性地提供切換對應字典給 `AddCommandLine` 方法。 切換對應可讓您提供索引鍵名稱取代邏輯。
+使用 `ConfigurationBuilder` 手動建置組態時，可以將參數對應字典到 `AddCommandLine` 方法。 參數對應允許索引鍵名稱取代邏輯。
 
 使用切換對應字典時，會檢查字典中是否有任何索引鍵符合命令列引數所提供的索引鍵。 如果在字典中找到命令列索引鍵，則會傳回字典值 (索引鍵取代) 以設定組態。 所有前面加上單虛線 (`-`) 的命令列索引鍵都需要切換對應。
 
@@ -340,7 +340,7 @@ dotnet run -key1 value1 --key2 value2 /key3 value3
 * 切換必須以單虛線 (`-`) 或雙虛線 (`--`) 開頭。
 * 切換對應字典不能包含重複索引鍵。
 
-在下列範例中，`GetSwitchMappings` 方法可讓您的命令列引數使用單虛線 (`-`) 索引鍵前置字元，並避免以子索引鍵前置字元開頭。
+在下列範例中，`GetSwitchMappings` 方法可讓命令列引數使用單虛線 (`-`) 索引鍵前置字元，並避免以子索引鍵前置字元開頭。
 
 [!code-csharp[Main](index/sample/CommandLine/Program.cs?highlight=10-19,32)]
 
@@ -394,6 +394,10 @@ Left: 1988
 
 當您在 IIS 或 IIS Express 中裝載應用程式時，需要 *web.config* 檔案。 *web.config* 中的設定可讓 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)啟動應用程式，並設定其他 IIS 設定和模組。 如果沒有 *web.config* 檔案，而專案檔包含 `<Project Sdk="Microsoft.NET.Sdk.Web">`，發行專案會在已發行的輸出 (*publish* 資料夾) 中建立 *web.config* 檔案。 如需詳細資訊，請參閱[在使用 IIS 的 Windows 上裝載 ASP.NET Core](xref:host-and-deploy/iis/index#webconfig)。
 
+## <a name="accessing-configuration-during-startup"></a>在啟動期間存取組態
+
+若要在啟動期間存取 `ConfigureServices` 或 `Configure` 內的組態，請參閱[應用程式啟動](xref:fundamentals/startup)主題中的範例。
+
 ## <a name="additional-notes"></a>其他備註
 
 * 相依性插入 (DI) 會在叫用 `ConfigureServices` 之後才設定。
@@ -401,7 +405,7 @@ Left: 1988
 * `IConfiguration` 有兩個特製化：
   * `IConfigurationRoot` 用於根節點。 可觸發重新載入。
   * `IConfigurationSection` 代表組態值區段。 `GetSection` 和 `GetChildren` 方法會傳回 `IConfigurationSection`。
-  * 在重新載入組態或需要存取各個提供者時使用 [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot)。 以上皆為罕見案例。
+  * 在重新載入組態或存取各個提供者時使用 [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot)。 以上皆為罕見案例。
 
 ## <a name="additional-resources"></a>其他資源
 

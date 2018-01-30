@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
-ms.openlocfilehash: 4487eb7436c0b6241505f41621a7f31b89c38b28
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16a2fa4b1b6617430703853543cbf29e18ba1103
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>什麼是 ASP.NET 4.5 和 Visual Studio 2012 的新功能
 ====================
@@ -912,7 +912,7 @@ Project.csproj 值是專案的路徑和設定檔名稱是要發行設定檔的�
 
 本文件所提及的主要事務，Microsoft 得擁有專利、專利應用程式、商標、著作權或其他智慧財產權。 除了 Microsoft 於授權合約書中書面提供的之外，本文件所述內容並未賦予您這些專利、商標、著作權、或其他智慧財產的任何授權或使用權利。
 
-除非特別註明，否則本文件中所述，用來舉例之公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所和事件皆為虛構，沒有意圖或不應該推斷為與任何真實存在的公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所或事件有所關聯。
+除非另有說明，範例公司、 組織、 產品、 網域名稱、 電子郵件地址、 標誌、 人員、 地點及事件屬虛構，以及與任何真實的公司、 組織、 產品、 網域名稱、 電子郵件沒有關聯地址、 標誌、 人員、 位置或事件純屬巧合。
 
 (C) 2012 Microsoft Corporation. 著作權所有，並保留一切權利。
 

@@ -2,18 +2,18 @@
 title: "ASP.NET Core MVC EF 核心 CRUD-2 的 10"
 author: tdykstra
 description: 
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 03/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 873e4592ba668bbcb22f761c2a547a2a27d7e443
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a7e0d4ff3d57e42dd7e33ffb5f26f2143520be87
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、 讀取、 更新和刪除-EF Core 與 ASP.NET Core MVC 教學課程 (2 / 10)
 

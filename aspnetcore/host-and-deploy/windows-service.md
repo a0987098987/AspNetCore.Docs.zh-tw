@@ -2,19 +2,19 @@
 title: "在 Windows 服務的主機"
 author: tdykstra
 description: "了解如何裝載 ASP.NET Core 應用程式在 Windows 服務。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/30/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4bf64f54dd9c6d2a1706bd405b0d6d75d7573a7a
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: beda34dbd613f6ffe0afa207ab57dd6ebbc489ee
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="host-an-aspnet-core-app-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core 應用程式
 

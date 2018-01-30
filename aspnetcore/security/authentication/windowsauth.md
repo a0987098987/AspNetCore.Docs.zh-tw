@@ -2,18 +2,18 @@
 title: "在 ASP.NET Core 中設定 Windows 驗證"
 author: ardalis
 description: "本文說明如何在 ASP.NET Core，使用 IIS Express、 IIS、 HTTP.sys 和 WebListener 中設定 Windows 驗證。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/24/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: d4523ca65852de8cfd963838d8bf3caa1d7204cc
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: aaa14e2f2704a7cfa836c5524642d2138a3ae7c8
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>在 ASP.NET Core 應用程式中設定 Windows 驗證
 

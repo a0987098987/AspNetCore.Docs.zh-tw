@@ -2,18 +2,18 @@
 title: "使用 EF 核心並行-8 8 的 razor 頁面"
 author: rick-anderson
 description: "本教學課程會示範如何處理衝突，當多位使用者同時更新相同的實體。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 11/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: b36fb71cba058a3409b30a1d9469159fcd027375
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1c6cdefa1410839606711d7460a8f4d0f1d6c72b
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 en-us/
 
@@ -43,7 +43,7 @@ en-us/
 
 ![將變更為 0 的預算](concurrency/_static/change-budget.png)
 
-Jane 按一下之前**儲存**，John 造訪相同頁面上，並從 2007 年 9 月 1 日的開始日期 欄位變成 2013 年 9 月 1 日。
+Jane 按一下之前**儲存**，John 造訪相同頁面上，並從 2007 年 9 月 1 日的開始日期] 欄位變成 2013 年 9 月 1 日。
 
 ![變更開始日期至 2013](concurrency/_static/change-date.png)
 
@@ -175,7 +175,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 ### <a name="update-the-departments-index-page"></a>更新部門索引頁
 
-建立的 scaffolding 引擎`RowVersion`不應該顯示的索引 頁面上，但該欄位的資料行。 在本教學課程的最後一個位元組`RowVersion`顯示有助於了解並行存取。 最後一個位元組不保證是唯一的。 實際的應用程式不會顯示`RowVersion`或最後一個位元組`RowVersion`。
+建立的 scaffolding 引擎`RowVersion`不應該顯示的索引] 頁面上，但該欄位的資料行。 在本教學課程的最後一個位元組`RowVersion`顯示有助於了解並行存取。 最後一個位元組不保證是唯一的。 實際的應用程式不會顯示`RowVersion`或最後一個位元組`RowVersion`。
 
 更新索引頁：
 
@@ -207,7 +207,7 @@ dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outD
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-下列反白顯示的程式碼集`RowVersion`從 DB 擷取新的值的值。 使用者按一下 下一次**儲存**，時，會發生因為攔截到最後一個顯示的編輯頁面的並行錯誤。
+下列反白顯示的程式碼集`RowVersion`從 DB 擷取新的值的值。 使用者按一下 [下一次**儲存**，時，會發生因為攔截到最後一個顯示的編輯頁面的並行錯誤。
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 

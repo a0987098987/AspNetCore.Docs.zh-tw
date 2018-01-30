@@ -2,18 +2,18 @@
 title: "資料保護金鑰管理和 ASP.NET Core 存留期"
 author: rick-anderson
 description: "了解資料保護的金鑰管理和 ASP.NET Core 存留期。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 139a18411d96c7def7ffced0772649e92b1122d1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b43c14af015d5e03f46200c51a1218a581b1de0c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護金鑰管理和 ASP.NET Core 存留期
 

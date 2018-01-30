@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 97e0aacbf21914bf95f01019cf4dcc9e7ca1c4be
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 17944c0600a174176e3e9940f414b34f0835b800
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="preventing-open-redirection-attacks-c"></a>無法開啟重新導向攻擊 (C#)
 ====================
@@ -43,7 +43,7 @@ ReturnUrl querystring 參數未經過驗證，因為攻擊者可以修改它的�
 
 ### <a name="a-more-complex-open-redirection-attack"></a>更複雜的開啟重新導向攻擊
 
-開啟的重新導向攻擊會特別危險，因為攻擊者可讓您知道我們正在嘗試登入特定網站，讓我們更容易遭受[網路釣魚攻擊](https://www.microsoft.com/protect/fraud/phishing/symptoms.aspx)。 比方說，攻擊者無法傳送惡意電子郵件給網站使用者嘗試擷取其密碼。 讓我們看看 NerdDinner 站台上運作方式。 （請注意，已更新即時 NerdDinner 網站以防止開啟重新導向攻擊）。
+開啟的重新導向攻擊會特別危險，因為攻擊者可讓您知道我們正在嘗試登入特定網站，讓我們更容易遭受[網路釣魚攻擊](https://www.microsoft.com/protect/fraud/phishing/symptoms.aspx)。 例如，攻擊者無法傳送惡意電子郵件給網站使用者嘗試擷取其密碼。 讓我們看看 NerdDinner 站台上運作方式。 （請注意，已更新即時 NerdDinner 網站以防止開啟重新導向攻擊）。
 
 首先，攻擊者會傳送給我們連結登入頁面上，其中包含重新導向至其偽造的頁面 NerdDinner:
 

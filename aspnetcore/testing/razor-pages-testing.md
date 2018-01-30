@@ -2,19 +2,19 @@
 title: "Razor 頁面單位和整合測試 ASP.NET Core"
 author: guardrex
 description: "了解如何建立 Razor 網頁應用程式的單元和整合測試。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 1ecdf010f7c283a0a08b224d570a5bc5cdf536df
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 5891b236306cd3790cbba14919796d6aa894ad53
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Razor 頁面單位和整合測試 ASP.NET Core
 

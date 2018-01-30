@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/set-up-your-development-environment-for-aspnet-20
 msc.type: video
-ms.openlocfilehash: 3286b297bfa5f0c80bcd4a4037fa39d3350cef78
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 85e58bc6c0f296620267bec13cef7bfba31463e4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="set-up-your-development-environment-for-aspnet-20"></a>Asp.net 2.0 設定開發環境
 ====================

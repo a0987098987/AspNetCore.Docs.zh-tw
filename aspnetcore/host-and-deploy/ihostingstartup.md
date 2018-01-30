@@ -2,19 +2,19 @@
 title: "使用 ASP.NET Core IHostingStartup 外部組件加入應用程式功能"
 author: guardrex
 description: "了解如何將功能加入至 ASP.NET Core 應用程式中，使用 IHostingStartup 實作的外部組件。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/ihostingstartup
-ms.openlocfilehash: 6013091d94302f0f9ecbc777d3ef64774b49aebe
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: bd2446d6133e0c06dc14509271c2d17be4c95b63
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="add-app-features-from-an-external-assembly-using-ihostingstartup-in-aspnet-core"></a>使用 ASP.NET Core IHostingStartup 外部組件加入應用程式功能
 

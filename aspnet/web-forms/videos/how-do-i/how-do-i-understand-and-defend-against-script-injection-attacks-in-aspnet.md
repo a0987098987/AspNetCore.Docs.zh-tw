@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet
 msc.type: video
-ms.openlocfilehash: c2be9b513548f395640c2b1a44c000e1e7d520c5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c3dc6b9c1e114f236974560397dfe69d64d11893
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet"></a>如何了解並防範指令碼資料隱碼攻擊的 ASP.NET 中
 ====================

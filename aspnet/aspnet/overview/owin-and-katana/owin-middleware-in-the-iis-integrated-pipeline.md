@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 4e1270f9fb58032d22380117f4ec18b00bd725fc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5f6ed1ae0309e9bdd3ca4ae229195835f20bc729
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>IIS integrated 管線中的 OWIN 中介軟體
 ====================
@@ -78,7 +78,7 @@ Owin 中介軟體元件 (OMC) 可以設定為在下列的 OWIN 管線階段事�
 [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample8.cs)]
 
 1. 根據預設，OMCs 執行在最後一個事件 (`PreHandlerExecute`)。 這就是為什麼我們第一個範例程式碼會顯示 「 PreExecuteRequestHandler"。
-2. 您可以使用`pp.UseStageMarker`中所列的方法，以註冊 OWIN 管線的任何階段之前，執行 OMC`PipelineStage`列舉。
+2. 您可以使用`app.UseStageMarker`中所列的方法，以註冊 OWIN 管線的任何階段之前，執行 OMC`PipelineStage`列舉。
 3. OWIN 管線的管線與 IIS 管線經過排序，因此呼叫`app.UseStageMarker`必須按照順序。 您無法將事件處理常式設定事件之前的最後一個事件以向`app.UseStageMarker`。 例如，*之後*呼叫：
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample9.cmd)]

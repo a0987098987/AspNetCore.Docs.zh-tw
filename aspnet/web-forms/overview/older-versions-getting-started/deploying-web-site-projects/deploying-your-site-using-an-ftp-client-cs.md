@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1edd53b1005449c060ff92fc7ebd02dbe7fa6ac2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3c53dcf40cde244a9df9afc27b20c9e7ef288198
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="deploying-your-site-using-an-ftp-client-c"></a>部署您的網站使用 FTP 用戶端 (C#)
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/24/2018
 
 瀏覽至啟動 BookReviewsWAP 專案`BookReviewsWAP`資料夾，然後按兩下`BookReviewsWAP.sln`檔案。 部署專案之前是建置，請確定已編譯的組件中包含原始程式碼的任何變更。 若要建置專案，請移至 建置 功能表並選擇 建置 BookReviewsWAP 功能表選項。 這會將來源中的程式碼專案編譯成單一組件， `BookReviewsWAP.dll`，這會置於`Bin`資料夾。
 
-我們現在已準備好部署必要的檔案 ！ 啟動您的 FTP 用戶端並連接到您的 web 主機提供者的 web 伺服器。 （當您使用虛擬主機公司註冊它們會傳送電子郵件資訊如何連接到 FTP 伺服器上的，這包含 FTP 伺服器，以及使用者名稱和密碼的位址）。
+我們現在已準備好部署必要的檔案 ！ 啟動您的 FTP 用戶端並連接到您的 web 主機提供者的 web 伺服器。 （當您使用虛擬主機公司註冊它們會以電子郵件傳送您如何連接到 FTP 伺服器的詳細資訊，這包含 FTP 伺服器，以及使用者名稱和密碼的位址）。
 
 從您的桌面的下列檔案複製到您的 web 主機提供者上的根網站資料夾中。 當您進入 web 伺服器的 FTP 在 web 裝載提供者時，可能會在網站的根目錄。 不過，有些 web 主機提供者都有名稱為的子`www`或`wwwroot`做為您的網站檔案的根資料夾。 最後，當 FTPing 檔案時您可能需要在實際執行環境-建立對應的資料夾結構`Bin`資料夾，`Fiction`資料夾，`Images`資料夾中，依此類推。
 

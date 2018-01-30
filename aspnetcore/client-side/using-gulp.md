@@ -2,19 +2,19 @@
 title: "在 ASP.NET Core 中使用 Gulp"
 author: rick-anderson
 description: "了解如何在 ASP.NET Core 中使用 Gulp。"
-ms.author: riande
 manager: wpickett
-ms.date: 02/28/2017
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: client-side/using-gulp
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ccfed42d66ea49c5f2745bc8653d8fb12bf707a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.date: 02/28/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: client-side/using-gulp
+ms.openlocfilehash: f091370bc85a37eeaac1291a2fdc6ea85164f148
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp 簡介 
 
@@ -59,13 +59,13 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 上述程式碼會指定哪一個節點模組所需。 `require`函式匯入每個模組，以便的相依工作可以使用其功能。 每個匯入的模組會指派給變數。 模組可以位於依名稱或路徑。 在此範例中，將模組命名為`gulp`， `rimraf`， `gulp-concat`， `gulp-cssmin`，和`gulp-uglify`會依名稱擷取。 此外，能夠重複使用及工作內所參考的 CSS 和 JavaScript 檔案的位置，會建立一系列的路徑。 下表提供的模組中包含描述*gulpfile.js*。
 
-|模組名稱|描述|
-|---|---|
-|gulp|Gulp 串流建置系統。 如需詳細資訊，請參閱[gulp](https://www.npmjs.com/package/gulp)。|
-|rimraf|節點刪除模組。 如需詳細資訊，請參閱[rimraf](https://www.npmjs.com/package/rimraf)。|
-|gulp-concat|模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。|
-|gulp-cssmin|縮短 CSS 檔案的模組。 如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。|
-|gulp-uglify|縮短模組*.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。|
+| 模組名稱 | 描述 |
+| ----------- | ----------- |
+| gulp        | Gulp 串流建置系統。 如需詳細資訊，請參閱[gulp](https://www.npmjs.com/package/gulp)。 |
+| rimraf      | 節點刪除模組。 如需詳細資訊，請參閱[rimraf](https://www.npmjs.com/package/rimraf)。 |
+| gulp-concat | 模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
+| gulp-cssmin | 縮短 CSS 檔案的模組。 如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |
+| gulp-uglify | 縮短模組*.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
 
 一旦匯入必要模組，您可以指定工作。 這裡有六個工作註冊中，由下列程式碼：
 

@@ -2,19 +2,19 @@
 title: "建立單一頁面應用程式使用 JavaScriptServices"
 author: scottaddie
 description: "深入了解使用 JavaScriptServices 建立單一頁面應用程式 (SPA) 支援的 ASP.NET Core 的優點。"
-ms.author: scaddie
 manager: wpickett
-ms.date: 08/02/2017
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: client-side/spa-services
+ms.author: scaddie
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 514efcdd78957f999e46c521d0266f092f742538
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.date: 08/02/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: client-side/spa-services
+ms.openlocfilehash: bd18d342de7c147e3588bd6daa3aebd68aa81c36
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>使用單一頁面應用程式建立與 ASP.NET Core JavaScriptServices
 
@@ -288,7 +288,7 @@ dotnet run
 
 ## <a name="testing-the-app"></a>測試應用程式
 
-SpaServices 範本是預先設定為執行用戶端測試使用[Karma](https://karma-runner.github.io/1.0/index.html)和[Jasmine](https://jasmine.github.io/)。 Jasmine 是熱門單元測試架構適用 JavaScript 的而 Karma 是這些測試的測試執行器。 Karma 設為搭配[Webpack Dev 中介軟體](#webpack-dev-middleware)使得您不需要停止和執行測試，每次進行變更。 是否為測試案例或測試案例本身上執行的程式碼，會自動執行測試。
+SpaServices 範本是預先設定為執行用戶端測試使用[Karma](https://karma-runner.github.io/1.0/index.html)和[Jasmine](https://jasmine.github.io/)。 Jasmine 是熱門單元測試架構適用 JavaScript 的而 Karma 是這些測試的測試執行器。 Karma 設為搭配[Webpack Dev 中介軟體](#webpack-dev-middleware)，開發人員不需要停止並執行測試，每次進行變更。 是否為測試案例或測試案例本身上執行的程式碼，會自動執行測試。
 
 使用角度的應用程式，例如，兩個 Jasmine 測試案例已提供`CounterComponent`中*counter.component.spec.ts*檔案：
 

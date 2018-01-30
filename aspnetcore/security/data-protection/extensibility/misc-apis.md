@@ -2,18 +2,18 @@
 title: "其他 API"
 author: rick-anderson
 description: "本文概述 ASP.NET Core 資料保護 ISecret 介面。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/extensibility/misc-apis
-ms.openlocfilehash: 88a08a25abf4c4e1ba0746087b05b1cc8fa13024
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 26474de3a1c681a8c7f8b7812e9ef859f5d448bb
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="miscellaneous-apis"></a>其他 API
 

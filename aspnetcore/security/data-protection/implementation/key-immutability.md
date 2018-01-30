@@ -2,18 +2,18 @@
 title: "金鑰的不變性和變更設定"
 author: rick-anderson
 description: "本文概述 ASP.NET Core 資料保護金鑰的不變性應用程式開發介面的實作詳細資料。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/implementation/key-immutability
-ms.openlocfilehash: 425b8ba9769c2b5ac635693b045e52c110f25205
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 98727c7a0c525edcda4fd8d004e0ac584cf0a5e5
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="key-immutability-and-changing-settings"></a>索引鍵不變性和變更設定
 

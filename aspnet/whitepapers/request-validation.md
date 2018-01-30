@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
-ms.openlocfilehash: 61a96b75fdc29bdd1510ed689ee0356ef30e03fc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b24fe2193d2c7a858667505bad9ed0b1d70a328
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="request-validation---preventing-script-attacks"></a>要求驗證-防止指令碼攻擊
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 
 要求驗證，自 1.1 版的 ASP.NET 功能可防止伺服器接受內容包含未編碼的 HTML。 這項功能被設計來協助防止某些指令碼資料隱碼攻擊，讓用戶端指令碼或 HTML 可不知情的情況下提交到伺服器、 儲存，及接著呈現給其他使用者。 仍強烈建議您先驗證所有輸入的資料，以及 HTML 編碼，因此在適當的情況。
 
-例如，您可以建立網頁，要求使用者的電子郵件地址，然後將該電子郵件地址儲存在資料庫中。 如果使用者輸入&lt;指令碼&gt;警示 ("hello 從指令碼 」)&lt;/指令碼&gt;而不是有效的電子郵件地址，該資料時所出現，此指令碼可以執行如果內容未正確編碼。 ASP.NET 的要求驗證功能可防止這種情況。
+例如，您建立使用者的電子郵件地址，然後電子郵件地址在資料庫中的存放區要求的網頁。 如果使用者輸入&lt;指令碼&gt;警示 ("hello 從指令碼 」)&lt;/指令碼&gt;而不是有效的電子郵件地址，該資料時所出現，此指令碼可以執行如果內容未正確編碼。 ASP.NET 的要求驗證功能可防止這種情況。
 
 ## <a name="why-this-feature-is-useful"></a>此功能非常有用的原因
 

@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: ac8e7fee7600dabb8f4970b5bf87ad7a57ebf17f
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 6c233d0957ce9974adbc6112e6194c072aab0b41
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="bundling-and-minification"></a>統合及縮製
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/11/2018
 
 組合和縮製都可套用 web 應用程式中的兩個不同的效能最佳化。 一起使用，統合及縮製改善效能降低伺服器的要求數目以及減少要求的靜態資產的大小。
 
-統合及縮製主要改善第一個頁面要求載入時間。 一旦要求的網頁上，瀏覽器快取靜態資產 （JavaScript、 CSS 和映像）。 因此，統合及縮製不改善效能時要求相同的頁面或頁面，要求相同的資產在相同網站。 如果您不需要設定到期在您的資產上正確的標頭並如果您不使用統合及縮製，瀏覽器的有效期限啟發學習法標示資產過時之後幾天。 此外，瀏覽器會需要為每個資產的驗證要求。 在此情況下，統合及縮製提供改進效能，即使第一個頁面要求。
+統合及縮製主要改善第一個頁面要求載入時間。 一旦要求的網頁上，瀏覽器快取靜態資產 （JavaScript、 CSS 和映像）。 因此，統合及縮製不改善效能時要求相同的頁面或頁面，要求相同的資產在相同網站。 如果到期標頭未正確設定資產並不使用統合及縮製，如果瀏覽器的有效期限啟發學習法標示資產過時幾天之後。 此外，瀏覽器會需要為每個資產的驗證要求。 在此情況下，統合及縮製提供改進效能，即使第一個頁面要求。
 
 ### <a name="bundling"></a>結合在一起
 
@@ -77,7 +77,7 @@ MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每�
 
 設定選項包括：
 
-* `outputFileName`: 要輸出的組合檔案的名稱。 可包含相對路徑*bundleconfig.json*檔案。 **所需**
+* `outputFileName`: 要輸出的組合檔案的名稱。 可包含相對路徑*bundleconfig.json*檔案。 **required**
 * `inputFiles`： 要配套起來的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空值會導致空的輸出檔案。 [通用慣例](http://www.tldp.org/LDP/abs/html/globbingref.html)支援的模式。
 * `minify`： 輸出型別縮製選項。 **選擇性**，*預設值-`minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。

@@ -2,18 +2,18 @@
 title: "核心加密擴充性"
 author: rick-anderson
 description: "說明 IAuthenticatedEncryptor、 IAuthenticatedEncryptorDescriptor、 IAuthenticatedEncryptorDescriptorDeserializer 和最上層的 factory。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 8/11/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: 8a3f4cf267998ddc7f393401059ca9d83ef2d8e7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ead4012236244d88cff0b0520d000d89f93f3355
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="core-cryptography-extensibility"></a>核心加密擴充性
 

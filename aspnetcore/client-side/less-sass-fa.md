@@ -2,18 +2,18 @@
 title: "小於，Sass，並且在 ASP.NET Core 實用的字型"
 author: ardalis
 description: "了解如何使用小於，Sass，並且字型臻 ASP.NET Core 應用程式中。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 764b11bbd301c0116488265d32f7d46dfc5bce27
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7ef82d15de64ef62b952b6c757cb9c35fd40e788
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>樣式應用程式，以更少、 Sass，和字型臻中 ASP.NET Core 簡介
 

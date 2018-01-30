@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/server-controls
 msc.type: authoredcontent
-ms.openlocfilehash: 09f1a2e4de024e5778e69fdd691d9cb0040459f3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 72e9cac7cf9a01791c30783fa56ad7ea205a5a11
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="server-controls"></a>伺服器控制項
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > ASP.NET 2.0 增強伺服器控制項，在許多方面。 在此模組中，我們將討論的一些架構 ASP.NET 2.0 的方式變更，而 Visual Studio 2005 處理的伺服器控制項。
 
@@ -196,7 +196,7 @@ PostedFile 屬性仍可供存取 HttpPostedFile 物件，但某些 HttpPostedFil
 
 它是會遇到 ASP.NET 開發人員掙扎與嘗試收集資訊數列中的 「 頁面 」 使用面板或傳輸 頁面，以相當常見。 常常會，工作是令人沮喪，會耗用的時間。 新的精靈控制項藉由使用中的精靈介面，使用者熟悉的線性和非線性步驟解決的問題。 精靈控制項提供輸入的表單，以一系列的步驟。 每個步驟是控制項的特定類型 StepType 屬性所指定。 可用的步驟類型如下所示：
 
-| **步驟類型** | **說明** |
+| **步驟類型** | **Explanation** |
 | --- | --- |
 | 自動 | 精靈會自動決定它步驟階層內的位置為基礎的步驟的類型。 |
 | 啟動 | 第一個步驟中，通常用來呈現簡介的陳述式。 |
@@ -221,7 +221,7 @@ PostedFile 屬性仍可供存取 HttpPostedFile 物件，但某些 HttpPostedFil
 
 與常值的控制項相似 Localize 控制項。 不過，有 Localize 控制項**模式**控制項加入至它的標記的呈現方式的屬性。 Mode 屬性支援下列值：
 
-| **模式** | **說明** |
+| **模式** | **Explanation** |
 | --- | --- |
 | Transform | 標記是根據提出要求之瀏覽器的通訊協定轉換。 |
 | 通過 | 標記會轉譯為位是。 |
@@ -255,7 +255,7 @@ GridView 控制項是 DataGrid 控制項取代。 此控制項將涵蓋的更新
 
 在 FormView 控制項來顯示資料來源的單一記錄的可設定的介面。 它會在更新版本的模組中的更詳細地討論。
 
-## <a name="accessdatasource-control"></a>AccessDataSource 控制項
+## <a name="accessdatasource-control"></a>AccessDataSource Control
 
 AccessDataSource 控制項是用來存取資料庫的資料繫結。 它會在更新版本的模組中的更詳細地討論。
 
@@ -303,11 +303,11 @@ LoginStatus 控制項顯示使用者的登入狀態。 它會在更新版本的�
 
 LoginName 控制項之後正在登入的 ASP.NET 應用程式顯示使用者的使用者名稱。 它會在更新版本的模組中的更詳細地討論。
 
-## <a name="createuserwizard"></a>適用於 CreateUserWizard
+## <a name="createuserwizard"></a>CreateUserWizard
 
 適用於 CreateUserWizard 是一個可設定的精靈，讓使用者能夠建立 ASP.NET 應用程式中使用的 ASP.NET 成員資格帳戶。 它會在更新版本的模組中的更詳細地討論。
 
-## <a name="changepassword"></a>變更密碼
+## <a name="changepassword"></a>ChangePassword
 
 ChangePassword 控制項可讓使用者變更其密碼，ASP.NET 應用程式。 它會在更新版本的模組中的更詳細地討論。
 

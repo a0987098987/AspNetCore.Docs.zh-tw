@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 85a8615bf71f58c58b9565da14bc3b3fbef9d264
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5bbba0e4e8660dbc60b9f9ad220c923274144b89
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>記錄錯誤的詳細資料與 ASP.NET 健全狀況監視 (C#)
 ====================
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/24/2018
 - 安全性事件，包括登入嘗試失敗，失敗的 URL 授權要求
 - 應用程式錯誤，包括未處理例外狀況，剖析例外狀況、 要求驗證例外狀況，以及在錯誤的其他類型之間的編譯錯誤的檢視狀態。
 
-當健全狀況監視的事件引發時可以記錄至任何數量的指定*記錄來源*。 健全狀況監視系統隨附 Web 事件記錄到至 Windows 事件記錄檔中，或透過電子郵件訊息，和其他項目的 Microsoft SQL Server 資料庫的記錄檔來源。 您也可以建立您自己的記錄檔來源。
+當健全狀況監視的事件引發時可以記錄至任何數量的指定*記錄來源*。 健全狀況監視系統隨附 Web 事件記錄到 Windows 事件記錄，或透過電子郵件和其他項目的 Microsoft SQL Server 資料庫的記錄檔來源。 您也可以建立您自己的記錄檔來源。
 
 事件監視系統健全狀況記錄檔，以及使用，記錄檔來源中定義`Web.config`。 設定標記的幾行中，您可以使用健全狀況監視記錄至資料庫的所有未處理的例外狀況，並通知您透過電子郵件的例外狀況。
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="displaying-the-error-log-in-a-web-page"></a>在網頁中顯示的錯誤記錄檔
 
-網站的目前組態，健全狀況監視系統會記錄到資料庫所有未處理的例外狀況。 但是，健全狀況監視不提供任何機制可檢視錯誤記錄檔，透過網頁。 不過，您可以建立 ASP.NET 網頁，會顯示資料庫的這項資訊。 （我們會暫時發現，您可以選擇將電子郵件傳送給您的錯誤詳細資料。）
+網站的目前組態，健全狀況監視系統會記錄到資料庫所有未處理的例外狀況。 但是，健全狀況監視不提供任何機制可檢視錯誤記錄檔，透過網頁。 不過，您可以建立 ASP.NET 網頁，會顯示資料庫的這項資訊。 （我們會暫時發現，您可以選擇將電子郵件中傳送給您的錯誤詳細資料。）
 
 如果您建立這樣的頁面，請確定您採取步驟，只允許已授權的使用者以檢視錯誤詳細資料。 如果您的網站已經使用使用者帳戶，然後您可以使用 URL 授權規則來限制存取權給特定使用者或角色頁面。 如需有關如何授與或限制存取已登入使用者為基礎的 web 網頁的詳細資訊，請參閱我[網站安全性教學課程](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)。
 
@@ -104,9 +104,9 @@ ms.lasthandoff: 01/24/2018
 > 後續的教學課程會探索名為 ELMAH 替代錯誤記錄和通知系統。 ELMAH 包含內建的機制，以檢視錯誤記錄檔從網頁上以及 RSS 摘要。
 
 
-## <a name="logging-events-to-e-mail"></a>事件記錄到電子郵件
+## <a name="logging-events-to-email"></a>事件記錄到電子郵件
 
-監視系統健全狀況包含在電子郵件訊息 「 記錄 」 事件記錄檔來源提供者。 記錄檔來源包含相同的資訊記錄至電子郵件訊息內文中的資料庫。 您可以使用此記錄檔來源到特定健全狀況監視事件發生時通知開發人員。
+監視系統健全狀況包含 「 記錄 」 事件，以電子郵件訊息的記錄來源提供者。 記錄檔來源包含相同的資訊記錄至電子郵件訊息內文中的資料庫。 您可以使用此記錄檔來源到特定健全狀況監視事件發生時通知開發人員。
 
 讓我們來更新活頁簿檢閱網站的設定，讓我們收到的電子郵件時例外狀況，就會發生。 若要這麼做，我們需要執行三個工作：
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-xml[Main](logging-error-details-with-asp-net-health-monitoring-cs/samples/sample4.xml)]
 
-`<rules>`區段現在包含兩個規則。 第一個，名為 「 所有錯誤以電子郵件 」，會將所有未處理的例外狀況傳送到 「 EmailWebEventProvider 」 記錄檔來源。 此規則的效果網站上的錯誤的相關詳細資料傳送至指定的位址。 「 所有錯誤到資料庫 」 規則會記錄至站台的資料庫的錯誤詳細資料。 因此，每次處理的例外狀況發生時的站台上其詳細資料一併記錄到資料庫及傳送至指定的電子郵件地址。
+`<rules>`區段現在包含兩個規則。 第一個，名為 [所有錯誤以電子郵件]，會將所有未處理的例外狀況傳送到 「 EmailWebEventProvider 」 記錄檔來源。 此規則的效果網站上的錯誤的相關詳細資料傳送至指定的位址。 「 所有錯誤到資料庫 」 規則會記錄至站台的資料庫的錯誤詳細資料。 因此，每次處理的例外狀況發生時的站台上其詳細資料一併記錄到資料庫及傳送至指定的電子郵件地址。
 
 **圖 2**示範所產生的電子郵件`SimpleMailWebEventProvider`類別造訪時`Genre.aspx?ID=foo`。
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="summary"></a>總結
 
-ASP.NET 健康監視系統的設計可讓系統管理員可以監視已部署的 web 應用程式的健全狀況。 展開某些動作，例如當應用程式停止時，當使用者成功登入站台，或發生未處理的例外狀況時，會引發健全狀況監視的事件。 這些事件可以記錄至任何數量的記錄檔來源。 本教學課程會示範如何透過電子郵件資料庫與記錄的未處理例外狀況詳細資料。
+ASP.NET 健康監視系統的設計可讓系統管理員可以監視已部署的 web 應用程式的健全狀況。 展開某些動作，例如當應用程式停止時，當使用者成功登入站台，或發生未處理的例外狀況時，會引發健全狀況監視的事件。 這些事件可以記錄至任何數量的記錄檔來源。 本教學課程示範了如何記錄至資料庫，以及透過電子郵件訊息的未處理例外狀況的詳細資料。
 
 本教學課程著重於使用記錄未處理的例外狀況，但請注意，健全狀況監視設計來測量的已部署的 ASP.NET 應用程式的整體健全狀況，而且包含豐富的健全狀況監視的事件和記錄來源不監視的健全狀況此探索。 什麼是多個項目，您可以建立您自己的健全狀況監視的事件和記錄檔來源，需要發生。 如果您有興趣深入了解健康狀態監控，理想的第一個步驟是閱讀[Erik Reitan](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)的[健全狀況監視常見問題集](https://blogs.msdn.com/erikreitan/archive/2006/05/22/603586.aspx)。 接下來，請參閱[How To： 使用 ASP.NET 2.0 中的健全狀況監視](https://msdn.microsoft.com/library/ms998306.aspx)。
 

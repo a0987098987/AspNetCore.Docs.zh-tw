@@ -1,19 +1,19 @@
 ---
 title: "ASP.NET MVC 從移轉至 ASP.NET Core MVC"
 author: ardalis
-description: 
-ms.author: riande
+description: "了解如何開始將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC。"
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: e3220fb32900aac42cf96497964936ad5b375a86
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 447b13eccf523cab81590405740bb194112b0dad
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
 
 ![在 Microsoft Edge 中開啟的 web 應用程式](mvc/_static/hello-world.png)
 
-請參閱[控制器](../mvc/controllers/index.md)和[檢視](../mvc/views/index.md)如需詳細資訊。
+請參閱[控制器](xref:mvc/controllers/actions)和[檢視](xref:mvc/views/overview)如需詳細資訊。
 
 現在我們有最小的工作 ASP.NET Core 專案時，我們可以開始從 ASP.NET MVC 專案移轉功能。 我們需要將下列：
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 01/24/2018
 
 * 建立*Views/Shared*資料夾。
 
-* *選擇性：*複製*_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*資料夾到 ASP.NET Core 專案*檢視*資料夾。 中的任何命名空間宣告中移除*_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](../mvc/views/tag-helpers/index.md)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
+* *選擇性：*複製*_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*資料夾到 ASP.NET Core 專案*檢視*資料夾。 中的任何命名空間宣告中移除*_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](xref:mvc/views/tag-helpers/intro)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
 
 * 複製*_Layout.cshtml*檔案從舊的 ASP.NET MVC 專案*Views/Shared* ASP.NET Core 專案的資料夾*Views/Shared*資料夾。
 
@@ -191,9 +191,9 @@ ms.lasthandoff: 01/24/2018
 
 在瀏覽器中檢視站台。 它應該現在正確載入，以就地預期的樣式。
 
-* *選擇性：*要再試一次使用新的版面配置檔案。 這個專案的版面配置檔案可以複製*FullAspNetCore*專案。 新的版面配置檔案使用[標記協助程式](../mvc/views/tag-helpers/index.md)且具有其他改進功能。
+* *選擇性：*要再試一次使用新的版面配置檔案。 這個專案的版面配置檔案可以複製*FullAspNetCore*專案。 新的版面配置檔案使用[標記協助程式](xref:mvc/views/tag-helpers/intro)且具有其他改進功能。
 
-## <a name="configure-bundling--minification"></a>設定結合在一起 （& s) 縮製
+## <a name="configure-bundling-and-minification"></a>統合及縮製的設定
 
 如需如何設定統合及縮製的資訊，請參閱[組合和縮製](../client-side/bundling-and-minification.md)。
 
@@ -224,6 +224,5 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 ## <a name="additional-resources"></a>其他資源
 
-* [用戶端開發](../client-side/index.md)
-
-* [標記協助程式](../mvc/views/tag-helpers/index.md)
+* [用戶端開發](xref:client-side/index)
+* [標記協助程式](xref:mvc/views/tag-helpers/intro)

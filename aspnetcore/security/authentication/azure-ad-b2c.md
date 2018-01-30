@@ -2,25 +2,27 @@
 title: "使用 Azure Active Directory B2C 的雲端驗證"
 author: camsoper
 description: "了解如何設定 ASP.NET Core 與 Azure Active Directory B2C 驗證。"
-ms.author: casoper
 manager: wpickett
-ms.date: 01/12/2018
+ms.date: 01/25/2018
 ms.topic: tutorial
 ms.technology: aspnet
 ms.prod: asp.net-core
+ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-custom: mvc
-ms.openlocfilehash: 5c4716022c61e33b0301fa0077f911dcc4b3628c
-ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
+ms.openlocfilehash: d60698b5798e837a5946dbe158a647aae9e149d4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 的雲端驗證
 
 作者 [Cam Soper](https://twitter.com/camsoper)
 
-[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是您的 web 與行動裝置應用程式的雲端身分識別管理解決方案。 服務提供裝載於雲端和內部部署的應用程式的驗證。 驗證類型包括包含個別帳戶，社交網路帳戶以及同盟企業帳戶。  此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
+[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供裝載於雲端和內部部署的應用程式的驗證。 驗證類型包括包含個別帳戶，社交網路帳戶以及同盟企業帳戶。 此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
+
+> [!TIP]
+> Azure Active Directory (Azure AD) 的 Azure AD B2C 是個別產品的供應項目。 Azure AD 租用戶代表組織中，而 Azure AD B2C 租用戶代表與信賴憑證者的合作對象應用程式使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
 
 在本教學課程，了解如何：
 
@@ -34,7 +36,7 @@ ms.lasthandoff: 01/22/2018
 
 此逐步解說需要下列條件：
 
-* [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+* [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) （任何版本）
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>建立 Azure Active Directory B2C 租用戶
@@ -49,7 +51,7 @@ ms.lasthandoff: 01/22/2018
 
 | 設定                       | 值                     | 注意                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **名稱**                      | *\<應用程式名稱\>*            | 輸入**名稱**描述給取用者應用程式的應用程式。                                                                                                                                 |
+| **名稱**                      | *&lt;應用程式名稱&gt;*        | 輸入**名稱**描述給取用者應用程式的應用程式。                                                                                                                                 |
 | **包含 web 應用程式/web 應用程式開發介面** | [是]                       |                                                                                                                                                                                                    |
 | **允許隱含流程**       | [是]                       |                                                                                                                                                                                                    |
 | **回覆 URL**                 | `https://localhost:44300` | 回覆 Url 是端點，其中是 Azure AD B2C 會傳回任何您的應用程式要求的權杖。 Visual Studio 提供要使用的回覆 URL。 現在請輸入`https://localhost:44300`完成表單。 |
@@ -59,7 +61,7 @@ ms.lasthandoff: 01/22/2018
 > [!WARNING]
 > 如果設定非 localhost 回覆 URL，請留意[回覆 URL 清單中所允許的條件約束](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url)。 
 
-註冊應用程式之後，會顯示租用戶中的應用程式的清單。 選取剛才已註冊的應用程式。 選取**複製**圖示右邊的**應用程式識別碼**欄位複製到剪貼簿的應用程式識別碼。
+註冊應用程式之後，會顯示租用戶中的應用程式的清單。 選取剛才已註冊的應用程式。 選取**複製**圖示右邊的**應用程式識別碼**欄位，以將它複製到剪貼簿。
 
 沒有項目比較可以在 Azure AD B2C 租用戶中設定在這個階段，但讓瀏覽器視窗保持開啟。 在建立 ASP.NET Core 應用程式後，就更多的設定。
 
@@ -81,15 +83,15 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 
 5. 完成表單具有下列值：
     
-    | 設定                       | 值                                             |
-    |-------------------------------|---------------------------------------------------|
-    | **網域名稱**               | *\<B2C 租用戶的網域名稱\>*          |
-    | **應用程式識別碼**            | *\<貼上剪貼簿中的應用程式識別碼\>* |
-    | **回呼路徑**             | *\<使用預設值\>*                       |
-    | **註冊或登入的原則** | `B2C_1_SiUpIn`                                    |
-    | **重設密碼原則**     | `B2C_1_SSPR`                                      |
-    | **編輯設定檔原則**       | *\<保留空白\>*                                 |
-
+    | 設定                       | 值                                                 |
+    |-------------------------------|-------------------------------------------------------|
+    | **網域名稱**               | *&lt;B2C 租用戶的網域名稱&gt;*          |
+    | **應用程式識別碼**            | *&lt;貼上剪貼簿中的應用程式識別碼&gt;* |
+    | **回呼路徑**             | *&lt;使用預設值&gt;*                       |
+    | **註冊或登入的原則** | `B2C_1_SiUpIn`                                        |
+    | **重設密碼原則**     | `B2C_1_SSPR`                                          |
+    | **編輯設定檔原則**       | *&lt;保留空白&gt;*                                 |
+    
     選取**複製**連結**回覆 URI**複製到剪貼簿的回覆 URI。 選取**確定**關閉**變更驗證**對話方塊。 選取**確定**建立 web 應用程式。
 
 ## <a name="finish-the-b2c-app-registration"></a>完成 B2C 應用程式註冊
@@ -122,7 +124,7 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您將學習如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Azure Active Directory B2C 租用戶
@@ -137,3 +139,5 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 * [啟用多因素驗證](/azure/active-directory-b2c/active-directory-b2c-reference-mfa)。
 * 設定其他身分識別提供者，例如[Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)， [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app)， [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app)， [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app)， [Twitter](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)，和其他人。
 * [使用 Azure AD Graph API](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet)擷取額外的使用者資訊，例如群組成員資格，從 Azure AD B2C 租用戶。
+* [安全 ASP.NET Core web 應用程式開發介面使用 Azure AD B2C](xref:security/authentication/azure-ad-b2c-api)。
+* [從.NET web 應用程式中使用 Azure AD B2C 呼叫.NET web 應用程式開發介面](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet)。

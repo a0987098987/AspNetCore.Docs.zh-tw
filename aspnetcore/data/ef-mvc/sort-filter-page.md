@@ -4,15 +4,15 @@ author: tdykstra
 description: "在本教學課程中，您要加入排序、 篩選和分頁至網頁的 ASP.NET 核心和實體架構的核心功能。"
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 60ac1844e7747002d72aa892a47490cb7a416359
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: feb4a50c9e5602064e7d493b6991485949903f47
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、 篩選、 分頁和群組-EF Core 與 ASP.NET Core MVC 教學課程 (10-3)
 
@@ -209,9 +209,9 @@ Contoso 大學網站**有關** 頁面上，您要顯示多少學生已註冊的�
 
 ### <a name="create-the-view-model"></a>建立檢視模型
 
-在 models 資料夾中建立 SchoolViewModels 資料夾。
+建立*SchoolViewModels*資料夾中的*模型*資料夾。
 
-在新的資料夾中，新增 EnrollmentDateGroup.cs 的類別檔案並將範本程式碼取代為下列程式碼：
+在新的資料夾中，將類別檔案加入*EnrollmentDateGroup.cs*和範本程式碼取代為下列程式碼：
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

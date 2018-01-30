@@ -2,19 +2,19 @@
 title: "Visual Studio for ASP.NET Core 中的開發階段 IIS 支援"
 author: shirhatti
 description: "探索在 Windows Server 上的 IIS 背後執行時，ASP.NET Core 應用程式的偵錯支援。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 09/13/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 264be49e8aff72f913c22508150e424541d49fa0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a5f727dd21ac0c6702691df2215c42f4adc0ec27
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 

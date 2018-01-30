@@ -2,18 +2,18 @@
 title: "移轉的驗證和身分識別，ASP.NET Core 2.0"
 author: scottaddie
 description: "本文概述了最常見的步驟移轉 ASP.NET Core 1.x 驗證和身分識別為 ASP.NET Core 2.0。"
-ms.author: scaddie
 manager: wpickett
+ms.author: scaddie
 ms.date: 10/26/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 72ad31438a344fb5fa2b357c709b923b8077e742
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: dd48b2b027d22b570aa182e748ca91738e935f49
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-authentication-and-identity-to-aspnet-core-20"></a>移轉的驗證和身分識別，ASP.NET Core 2.0
 
@@ -136,7 +136,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 
     此程式碼片段不會使用身分識別，因此應該藉由傳遞設定的預設配置`JwtBearerDefaults.AuthenticationScheme`至`AddAuthentication`方法。
 
-### <a name="openid-connect-oidc-authentication"></a>OpenID Connect (OIDC) 驗證
+### <a name="openid-connect-oidc-authentication"></a>OpenID 連接 (OIDC) 驗證
 在變更下列*Startup.cs*:
 
 - 取代`UseOpenIdConnectAuthentication`方法呼叫中`Configure`方法`UseAuthentication`:
@@ -161,7 +161,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
 
-### <a name="facebook-authentication"></a>Facebook 驗證
+### <a name="facebook-authentication"></a>facebook 驗證
 在變更下列*Startup.cs*:
 - 取代`UseFacebookAuthentication`方法呼叫中`Configure`方法`UseAuthentication`:
  
@@ -313,7 +313,7 @@ services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 <a name="navigation-properties"></a>
 
-## <a name="add-identityuser-poco-navigation-properties"></a>新增 IdentityUser POCO 導覽屬性
+## <a name="add-identityuser-poco-navigation-properties"></a>新增 POCO IdentityUser 導覽屬性
 基底的 Entity Framework (EF) 核心導覽屬性`IdentityUser`POCO （純舊 CLR 物件） 已經移除。 如果 1.x 專案使用這些屬性，以手動方式將它們加回 2.0 的專案：
 
 ```csharp

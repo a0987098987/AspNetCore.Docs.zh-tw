@@ -2,18 +2,18 @@
 title: "開始使用資料保護應用程式開發介面"
 author: rick-anderson
 description: "本文件說明如何保護和解除資料的應用程式中使用的 ASP.NET Core 資料保護 Api。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: c6a631b6dc4a7855b11031dfcef42b17906754b0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e8c4183f5c47d8ffec8edf163eb1e4d6f2757d9d
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-the-data-protection-apis"></a>開始使用資料保護應用程式開發介面
 

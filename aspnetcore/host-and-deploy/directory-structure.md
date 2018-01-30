@@ -2,19 +2,19 @@
 title: "ASP.NET Core 目錄結構"
 author: guardrex
 description: "請參閱已發行的 ASP.NET Core 應用程式的目錄結構。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/15/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 27f0f40aea1c55315642d7d6f9b9d7be3e111cb4
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 55e1e0dac32609446243098dbb4a4373f06b4212
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="directory-structure-of-published-aspnet-core-apps"></a>已發行的 ASP.NET Core 應用程式的目錄結構
 

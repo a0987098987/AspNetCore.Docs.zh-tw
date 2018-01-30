@@ -2,18 +2,18 @@
 title: "宣告型授權"
 author: rick-anderson
 description: "本文件說明如何加入 ASP.NET Core 應用程式中的宣告授權檢查。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 870bdf79abc2c94745ab5da6997a37ed0e4ea4e2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 76b6566df4a427836eb5060f7d80e1039e479884
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="claims-based-authorization"></a>宣告型授權
 

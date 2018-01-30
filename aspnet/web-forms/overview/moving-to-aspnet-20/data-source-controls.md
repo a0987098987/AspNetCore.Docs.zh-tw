@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-source-controls
 msc.type: authoredcontent
-ms.openlocfilehash: f40189796d3e25e9c337768cf04fdbfa293cdc2f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b1ac7fb62767d61c97fe00338bc0f5087f4863b5
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="data-source-controls"></a>資料來源控制項
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > DataGrid 控制項 1.x 標記在 ASP.NET Web 應用程式中的資料存取的絕佳改進。 不過，它不是因為它有可能的易記。 您仍然需要大量的程式碼，以獲得更實用的功能。 就是這種 1.x 中的所有資料存取努力時中的模型。
 
@@ -119,7 +119,7 @@ SqlDataSource 控制項可讓開發人員存取儲存在任何支援 ADO.NET 的
 
 傳回與 SqlDataSource 控制項相關聯的 SqlDataSourceView 物件的 DeleteCommand 所使用的參數。
 
-### <a name="oldvaluesparameterformatstring"></a>Where
+### <a name="oldvaluesparameterformatstring"></a>OldValuesParameterFormatString
 
 這個屬性用來指定在其中 ConflictDetection 屬性設定為 CompareAllValues 的情況下的原始值參數的格式。 預設為 {0} 表示原始值參數會與原始參數同名。 換句話說，如果 EmployeeID 欄位名稱，則原始值參數為@EmployeeID。
 

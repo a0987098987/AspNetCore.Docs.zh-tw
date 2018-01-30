@@ -1,20 +1,20 @@
 ---
 title: "在 Linux 上使用 Nginx 裝載 ASP.NET Core"
-description: "描述如何設定 Nginx 做 Ubuntu 16.04 轉送 Kestrel 上執行 ASP.NET Core web 應用程式的 HTTP 流量上的反向 proxy。"
 author: rick-anderson
-ms.author: riande
+description: "描述如何設定 Nginx 做 Ubuntu 16.04 轉送 Kestrel 上執行 ASP.NET Core web 應用程式的 HTTP 流量上的反向 proxy。"
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 465f1391ef4ff9492d9aed48cb32da0659ceda41
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9939e420fee41b11e709da911d4051a048e789b3
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="why-use-a-reverse-proxy-server"></a>為何使用反向 Proxy 伺服器？
 
-Kestrel 非常適合提供 ASP.NET Core 的動態內容，但 Web 服務組件不像 IIS、Apache 或 Nginx 等伺服器的功能豐富。 反向 Proxy 伺服器可以卸載像提供靜態內容、快取要求、壓縮要求，以及從 HTTP 伺服器終止 SSL 等工作。 反向 Proxy 伺服器可能位在專用電腦上，或可能與 HTTP 伺服器一起部署。
+Kestrel 適合用來從 ASP.NET Core 提供動態內容。 不過，web 服務功能不是做為伺服器，如 IIS、 Apache 或 Nginx 豐富的功能。 反向 proxy 伺服器可以卸載提供靜態內容、 快取要求、 壓縮要求，以及從 HTTP 伺服器的 SSL 終止的工作。 反向 Proxy 伺服器可能位在專用電腦上，或可能與 HTTP 伺服器一起部署。
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 根據需求，不同的安裝程式可能會選擇。
 

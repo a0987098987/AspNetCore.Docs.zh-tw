@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 28f4c95e1578c5c91cfa1a21af2b4720ba7b286c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e8a2f88490de08f731f9737d15237ae445c5ec0d
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="displaying-a-custom-error-page-vb"></a>顯示自訂錯誤網頁 (VB)
 ====================
@@ -84,7 +84,7 @@ ms.lasthandoff: 01/24/2018
 
 這三個可能的錯誤頁面會顯示根據兩個變數：
 
-- 中的組態資訊`<customErrors>` 區段中，並
+- 中的組態資訊`<customErrors>`] 區段中，並
 - 是否在本機或遠端使用者造訪網站。
 
 [ `<customErrors>`區段](https://msdn.microsoft.com/library/h0hfz6fc.aspx)中`Web.config`具有兩個屬性會影響哪些錯誤頁面會顯示：`defaultRedirect`和`mode`。 `defaultRedirect` 屬性是選擇性的。 如果提供，它會指定自訂錯誤網頁的 URL，並指出自訂錯誤頁面應該會顯示而不是執行階段錯誤 YSOD。 `mode`必要屬性，並接受三個值之一： `On`， `Off`，或`RemoteOnly`。 這些值具有下列行為：

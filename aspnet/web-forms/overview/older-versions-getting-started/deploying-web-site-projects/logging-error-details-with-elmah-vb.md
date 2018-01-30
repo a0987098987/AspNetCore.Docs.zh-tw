@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 41e1f8673b42571a9dcbdae668a30426fe90f42f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b4bba02449debff17422f6b7008247fdf61856c8
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="logging-error-details-with-elmah-vb"></a>記錄錯誤的詳細資料與 ELMAH (VB)
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="introduction"></a>簡介
 
-[前述教學課程](logging-error-details-with-asp-net-health-monitoring-vb.md)檢查 ASP。網路的健全狀況監視系統，可提供現成的方塊程式庫錄製的 Web 事件。 許多開發人員使用健全狀況監視記錄和電子郵件的未處理例外狀況詳細資料。 不過，有幾個痛苦點與此系統。 第一次和最重要 」 表示無任何使用者介面，以檢視所記錄的事件的相關任何的資訊排序。 如果您想要查看摘要，以 10 的最後一個錯誤，或檢視上週發生了錯誤的詳細資料，您必須是透過資料庫查詢、 電子郵件收件匣，透過掃描或建立顯示資訊的 web 網頁`aspnet_WebEvent_Events`資料表。
+[前述教學課程](logging-error-details-with-asp-net-health-monitoring-vb.md)檢查 ASP。網路的健全狀況監視系統，可提供現成的方塊程式庫錄製的 Web 事件。 許多開發人員使用健全狀況監視記錄和電子郵件的未處理例外狀況詳細資料。 不過，有幾個痛苦點與此系統。 第一次和最重要 」 表示無任何使用者介面，以檢視所記錄的事件的相關任何的資訊排序。 如果您想要查看摘要，以 10 的最後一個錯誤，或檢視上週發生了錯誤的詳細資料，您必須是透過資料庫查詢、 掃描您的電子郵件收件匣、 長度或建立顯示資訊的 web 網頁`aspnet_WebEvent_Events`資料表。
 
 另一個痛苦點中心健全狀況監視的複雜性。 可以用來記錄上的不同事件的健全狀況監視，因為有許多不同的選項來指示如何及何時會記錄事件，正確設定監視系統健全狀況是很繁重的工作。 最後，有相容性問題。 健全狀況監視已初次加入至.NET Framework 2.0 版中，因為它不適用於較舊的 web 應用程式使用 ASP.NET 版本建置的 1.x。 此外，`SqlWebEventProvider`類別，可使用資料庫的記錄檔錯誤詳細資料前述教學課程中，只適用於 Microsoft SQL Server 資料庫。 您必須建立自訂記錄提供者類別，您應該要替代的資料存放區，例如 XML 檔案或 Oracle 資料庫中記錄錯誤。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 01/24/2018
 - **HTTP 模組**-HTTP 模組是一個類別來定義事件處理常式`HttpApplication`事件，例如`Error`事件。 ELMAH 包含多個 HTTP 模組，三個最密切關聯的項目正在： 
 
     - `ErrorLogModule`-記錄到記錄檔來源的未處理例外狀況。
-    - `ErrorMailModule`-傳送電子郵件訊息的未處理的例外狀況詳細資料。
+    - `ErrorMailModule`-傳送電子郵件訊息中的未處理的例外狀況詳細資料。
     - `ErrorFilterModule`-適用於開發人員指定的篩選來判斷哪些例外狀況的記錄，以及是會被忽略。
 - **HTTP 處理常式**-HTTP 處理常式是負責產生要求的特定類型的標記的類別。 ELMAH 包括網頁上、 RSS 摘要，或以逗號分隔的檔案 (CSV) 轉譯錯誤的詳細資料的 HTTP 處理常式。
 - **錯誤記錄檔來源**-ELMAH 可以將 Microsoft SQL Server 資料庫，到 Microsoft Access 資料庫，Oracle 資料庫，要的記憶體，錯誤記錄到現成 SQLite 資料庫中，或 Vista DB 資料庫的 XML 檔案。 監視系統健全狀況，例如 ELMAH 的架構是使用提供者模型，這表示您可以用來建立，並密切整合您自己自訂的記錄檔來源提供者中，視所建立的。
@@ -199,17 +199,17 @@ ELMAH 並不會影響哪些內容顯示給使用者時就會發生未處理的�
 
 ELMAH 的`ErrorLogModule`HTTP 模組自動記錄未處理例外狀況指定的記錄檔來源。 或者，您可以記錄錯誤，而不必使用引發未處理例外狀況`ErrorSignal`類別和其`Raise`方法。 `Raise`方法傳遞`Exception`物件，並已擲回該例外狀況，並已達 ASP.NET 執行階段，而不處理加以記錄。 差異，不過，會要求會繼續執行正常之後`Raise`已呼叫方法，而擲回、 未處理的例外狀況中斷要求的正常執行，並讓 ASP.NET 執行階段顯示設定錯誤頁面。
 
-`ErrorSignal`類別會在沒有可能會失敗，某些動作，但其失敗不是重大的整體的作業正在執行的情況下很有用。 比方說，網站可能包含一個表單，會接受使用者輸入，將它儲存在資料庫中，然後傳送電子郵件通知他們使用者他們已處理的資訊。 如果成功，資訊儲存到資料庫，但卻發生錯誤時傳送電子郵件訊息，就應該發生什麼情況？ 其中一個選項，可擲回例外狀況，並傳送給使用者，對錯誤頁面。 不過，這可能會混淆使用者到他們所輸入的資訊未儲存的想法。 另一種方法就是記錄電子郵件相關的錯誤，但不是能更改任何方式中的使用者經驗。 這是 where`ErrorSignal`類別就很有用。
+`ErrorSignal`類別會在沒有可能會失敗，某些動作，但其失敗不是重大的整體的作業正在執行的情況下很有用。 例如，網站可能包含一個表單，會接受使用者輸入，將它儲存在資料庫中，然後將使用者傳送一封電子郵件通知他們確定它們已處理的資訊。 如果成功，資訊儲存到資料庫，但出現錯誤時傳送電子郵件訊息時要採取的動作？ 其中一個選項，可擲回例外狀況，並傳送給使用者，對錯誤頁面。 不過，這可能會混淆使用者到他們所輸入的資訊未儲存的想法。 另一種方法就是記錄電子郵件相關的錯誤，但不是能更改任何方式中的使用者經驗。 這是 where`ErrorSignal`類別就很有用。
 
 [!code-vb[Main](logging-error-details-with-elmah-vb/samples/sample6.vb)]
 
-## <a name="error-notification-via-e-mail"></a>透過電子郵件錯誤通知
+## <a name="error-notification-via-email"></a>透過電子郵件錯誤通知
 
-將錯誤記錄至資料庫，以及 ELMAH 也可以設定電子郵件給指定的收件者的錯誤詳細資料。 這項功能由`ErrorMailModule`HTTP 模組; 因此，您必須註冊此 HTTP 模組`Web.config`才能傳送錯誤詳細資料，透過電子郵件。
+將錯誤記錄至資料庫，以及 ELMAH 也可以設定以電子郵件給指定的收件者的錯誤詳細資料。 這項功能由`ErrorMailModule`HTTP 模組; 因此，您必須註冊此 HTTP 模組`Web.config`才能傳送錯誤詳細資料，透過電子郵件。
 
 [!code-xml[Main](logging-error-details-with-elmah-vb/samples/sample7.xml)]
 
-接下來，指定在錯誤電子郵件的相關資訊`<elmah>`項目的`<errorMail>`區段中，表示電子郵件的寄件者和收件者、 主旨、 電子郵件是否以非同步方式傳送。
+接下來，指定在錯誤的電子郵件相關的資訊`<elmah>`項目的`<errorMail>`區段中，表示電子郵件的寄件者和收件者、 主旨、 電子郵件是否以非同步方式傳送。
 
 [!code-xml[Main](logging-error-details-with-elmah-vb/samples/sample8.xml)]
 

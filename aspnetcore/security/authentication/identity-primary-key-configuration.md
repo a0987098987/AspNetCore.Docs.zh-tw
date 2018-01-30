@@ -2,18 +2,18 @@
 title: "設定身分識別主索引鍵資料類型"
 author: AdrienTorris
 description: "本文概述設定用於 ASP.NET Core 識別主索引鍵的所需的資料類型的步驟。"
-ms.author: scaddie
 manager: wpickett
+ms.author: scaddie
 ms.date: 09/28/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authentication/identity-primary-key-configuration
-ms.openlocfilehash: da46aa90a434a978a55467da982d746eb2d959ee
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 66631e46640e294c934aa563518509b96f5cd158
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="configure-the-aspnet-core-identity-primary-key-data-type"></a>設定 ASP.NET Core 識別主索引鍵資料類型
 

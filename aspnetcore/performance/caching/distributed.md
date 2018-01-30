@@ -2,18 +2,18 @@
 title: "使用分散式快取中 ASP.NET Core"
 author: ardalis
 description: "了解如何使用分散式快取以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: a0af4887143f6ed37a1af982ec21a2ad5eae9515
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 86fd40863f6eeef3c129335141d704769d36b4c1
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="working-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 

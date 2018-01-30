@@ -2,18 +2,18 @@
 title: "建立原生行動應用程式的後端服務"
 author: ardalis
 description: 
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 2edb704ea6875e8aa70e79fe085cc0edbe0c9a55
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ff09f331cff5cca7b42fa89bff55c0ed5c7d82f4
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="creating-backend-services-for-native-mobile-applications"></a>建立原生行動應用程式的後端服務
 

@@ -2,18 +2,18 @@
 title: "使用 EF 核心 CRUD-2 的 8 razor 頁面"
 author: rick-anderson
 description: "示範如何建立、 讀取、 更新、 刪除與 EF 核心"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/crud
-ms.openlocfilehash: d9b34c141401fbeaafe439fae1a7a75f2fe7b4ae
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 757aeb713b645cea0fe633b150784184d2d3571e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>建立、 讀取、 更新和刪除-Razor 頁面 (8 個 2) 使用的 EF 核心
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/24/2018
 
 在本教學課程，scaffold CRUD （建立、 讀取、 更新、 刪除） 的程式碼檢閱並自訂。
 
-注意： 若要降低複雜性並將焦點放在 EF 核心這些教學課程，EF 核心程式碼會使用 Razor 頁面程式碼後置檔案中。 有些開發人員會使用服務層或儲存機制模式中的建立 UI （Razor 頁面） 和資料存取層之間的抽象層。
+注意： 若要降低複雜性並將焦點放在 EF 核心這些教學課程，EF 核心程式碼會使用 Razor 頁面的頁面模型中。 有些開發人員會使用服務層或儲存機制模式中的建立 UI （Razor 頁面） 和資料存取層之間的抽象層。
 
 在本教學課程、 建立、 編輯、 刪除和詳細資料中的 Razor 頁面*學生*資料夾會被修改。
 
@@ -147,7 +147,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 <a name="vm"></a>
 ### <a name="view-model"></a>檢視模型
 
-檢視模型通常包含應用程式所使用的模型中包含的屬性子集。 應用程式模型通常稱為網域模型。 網域模型通常會包含所有需要對應的實體 DB 中的屬性。 檢視模型包含只針對所需的 UI 層 （例如，[建立] 頁面） 的屬性。 除了檢視模型，某些應用程式會使用繫結模型或輸入的模型，Razor 頁面程式碼後置類別和瀏覽器之間傳遞資料。 請考慮下列`Student`檢視模型：
+檢視模型通常包含應用程式所使用的模型中包含的屬性子集。 應用程式模型通常稱為網域模型。 網域模型通常會包含所有需要對應的實體 DB 中的屬性。 檢視模型包含只針對所需的 UI 層 （例如，[建立] 頁面） 的屬性。 除了檢視模型，某些應用程式會使用繫結模型或輸入的模型，Razor 頁面的頁面模型類別和瀏覽器之間傳遞資料。 請考慮下列`Student`檢視模型：
 
 [!code-csharp[Main](intro/samples/cu/Models/StudentVM.cs)]
 
@@ -165,7 +165,7 @@ Scaffold 的程式碼會使用下列模式建立、 編輯和刪除的頁面：
 
 ## <a name="update-the-edit-page"></a>更新編輯頁面
 
-更新編輯頁面程式碼後置檔案：
+更新頁面模型之 編輯頁面：
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Edit.cshtml.cs?name=snippet_OnPostAsync&highlight=20,36)]
 

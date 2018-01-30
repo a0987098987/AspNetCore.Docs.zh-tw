@@ -2,19 +2,19 @@
 title: "Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔"
 author: rick-anderson
 description: "了解如何建立發行 Visual Studio 中的 ASP.NET Core 應用程式設定檔。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 09/26/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 1f403447c39db4ebfe3dafda591602f0dc9db8c3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 138b60d0e7c2a3d8848d534ffed854feaf0f5661
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔
 

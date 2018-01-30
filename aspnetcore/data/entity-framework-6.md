@@ -2,18 +2,18 @@
 title: "開始使用 ASP.NET Core 與 Entity Framework 6"
 author: tdykstra
 description: "本文示範如何使用 Entity Framework 6 ASP.NET Core 應用程式中。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 02/24/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: data/entity-framework-6
-ms.openlocfilehash: 7f3c1f28c1e0b3a68db7f6f84c56b18643b56cc8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7407fe8a976978d7d5077d5e5ac6cc264565621d
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>開始使用 ASP.NET Core 與 Entity Framework 6
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
-如果您要建立新的專案，使用**ASP.NET Core Web 應用程式 (.NET Framework)**範本。
+建立新專案時，使用**ASP.NET Core Web 應用程式 (.NET Framework)**範本。
 
 ## <a name="handle-connection-strings"></a>處理連接字串
 

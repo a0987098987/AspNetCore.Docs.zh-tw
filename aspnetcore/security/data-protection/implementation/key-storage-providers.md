@@ -2,18 +2,18 @@
 title: "金鑰儲存提供者"
 author: rick-anderson
 description: "金鑰儲存提供者"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 01/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: d7cbb4786be0acf9679f43466460c3833f1db6fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4f0e29a94593cd1cbb9890d7ee8bd09cddb4f69c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="key-storage-providers"></a>金鑰儲存提供者
 

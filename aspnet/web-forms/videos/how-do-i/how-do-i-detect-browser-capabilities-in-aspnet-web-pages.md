@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages
 msc.type: video
-ms.openlocfilehash: 119b3c209da8b8469ec2a8fdf8d92c39165ef022
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3c1c644412ffdafd52d1589b7f52188db85fe6ce
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="how-do-i-detect-browser-capabilities-in-aspnet-web-pages"></a>[如何:]在 ASP.NET 網頁中偵測瀏覽器功能
 ====================

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/begin-modifying-dynamic-data-applications-with-url-routing
 msc.type: video
-ms.openlocfilehash: 304baf00faf297a0f9278dff580c44263131eb5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c23facf151802622eb1b7627378e4a359113ac36
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="begin-modifying-dynamic-data-applications-with-url-routing"></a>開始修改 URL 路由的動態資料應用程式
 ====================

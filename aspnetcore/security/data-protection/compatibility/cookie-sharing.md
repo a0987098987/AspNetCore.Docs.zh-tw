@@ -2,19 +2,19 @@
 title: "共用應用程式之間的 cookie"
 author: rick-anderson
 description: "了解如何共用的驗證 cookie 之間 ASP.NET 4.x 和 ASP.NET Core 應用程式。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/compatibility/cookie-sharing
-ms.openlocfilehash: 034c080c3459cd3a9e6b412492d1b19d9e6348a4
-ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
+ms.openlocfilehash: e87caa5ba78c6b4c365facc0dea07d747e7c9589
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="sharing-cookies-among-apps"></a>共用應用程式之間的 cookie
 

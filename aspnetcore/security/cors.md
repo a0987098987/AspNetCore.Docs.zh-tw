@@ -2,18 +2,18 @@
 title: "啟用跨原始要求 (CORS)"
 author: rick-anderson
 description: "本文件介紹的標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 05/17/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/cors
-ms.openlocfilehash: 9f53ce11f1659aa3416fe4fbb94183c64ab0dab5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1c0d87b61882f69dbf2aeb0a896d9294bd029374
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -209,7 +209,7 @@ $.ajax({
 
 如果瀏覽器傳送認證，但回應未包含有效的存取控制-允許-認證標頭，瀏覽器將不會公開至應用程式中，回應和 AJAX 要求失敗。
 
-要非常小心有關允許跨原始認證，因為這表示網站，位於另一個網域可以傳送給您的應用程式使用者的身分登入之使用者的認證不會察覺使用者。 CORS 規格也狀態該設定來源可"*"（所有原始網域） 不正確的存取控制-允許-認證標頭是否存在。
+允許跨原始憑證時要小心。 網站，位於另一個網域可以代表使用者的不知情的情況下的使用者上的應用程式傳送登入之使用者的認證。 CORS 規格也會指出該設定來源可"*"（所有原始網域） 是無效的如果`Access-Control-Allow-Credentials`標頭已存在。
 
 ### <a name="set-the-preflight-expiration-time"></a>預檢到期時間設定
 
@@ -221,11 +221,11 @@ $.ajax({
 
 ## <a name="how-cors-works"></a>CORS 的運作方式
 
-本章節描述 CORS 要求，在 HTTP 訊息的層級中發生的事。 請務必了解 CORS 運作方式，以便您可以正確地設定您的 CORS 原則和疑難排解如果項目不在您預期方式運作。
+本章節描述在 CORS 要求的 HTTP 訊息層級中發生的事。 請務必了解 CORS 搭配運作，如此才能正確設定的 CORS 原則和 troubleshooted 發生非預期的行為。
 
-CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏覽器支援 CORS，它會設定這些標頭會自動針對跨原始要求。您不需要執行任何 JavaScript 程式碼中的特殊的動作。
+CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏覽器支援 CORS，它會設定這些標頭會自動針對跨原始要求。 若要啟用 CORS，無須自訂 JavaScript 程式碼。
 
-以下是跨原始要求的範例。 「 原始 」 標頭提供提出要求的站台的網域：
+以下是跨原始要求的範例。 `Origin`標頭提供提出要求的站台的網域：
 
 ```
 GET http://myservice.azurewebsites.net/api/test HTTP/1.1

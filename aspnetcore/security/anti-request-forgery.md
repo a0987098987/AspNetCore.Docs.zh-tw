@@ -1,19 +1,19 @@
 ---
 title: "防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core"
 author: steve-smith
-ms.author: riande
 description: "防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core"
 manager: wpickett
+ms.author: riande
 ms.date: 7/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3831bf737186d10eb1b298f5ec2da1fd33ebedd9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e076e301004c04b5c516d775353a4b6e50a3f36e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core
 
@@ -43,7 +43,7 @@ CSRF 攻擊的範例：
 請注意，張貼至容易遭受站台，惡意網站的表單動作。 這是 CSRF 的 「 跨網站 」 部分。
 
 4. 使用者按一下 [提交] 按鈕。 瀏覽器會自動包含所要求的網域 （在此情況下很容易遭受站台） 要求的驗證 cookie。
-5. 要求使用者驗證內容與在伺服器上執行，並可以執行已驗證的使用者允許進行的任何動作。
+5. 要求使用者驗證內容與在伺服器上執行，而且可以執行已驗證的使用者允許進行任何動作。
 
 這個範例會要求使用者可以按一下 [表單] 按鈕。 惡意的頁面可以：
 
@@ -353,12 +353,11 @@ CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie �
 
 ### <a name="user-tokens"></a>使用者語彙基元
 
-權杖型驗證不會儲存在伺服器上的工作階段。 相反地，當使用者登入它們正在發行的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含所有已驗證權杖所需的資料。 它也包含使用者資訊，請在表單的[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 這個語彙基元不*加密*; 而是*編碼*。 在伺服器端權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，您可以儲存它在瀏覽器的本機儲存體，或在 cookie 中。 您不必擔心 XSRF 弱點，如果您的權杖會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
+權杖型驗證不會儲存在伺服器上的工作階段。 當使用者登入時，才要發出的權杖 （不 antiforgery 語彙基元）。 這個語彙基元包含已驗證權杖所需的資料。 它也包含使用者資訊的形式[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。 當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。 這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。 這個語彙基元不*加密*; 而是*編碼*。 在伺服器端，權杖可以解碼存取權杖中的原始資訊。 若要在後續要求中傳送的語彙基元，請將它儲存在瀏覽器的本機儲存體，或在 cookie 中。 不必擔心 XSRF 弱點，如果語彙基元會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。
 
 ### <a name="multiple-applications-are-hosted-in-one-domain"></a>在一個網域中裝載多個應用程式
 
-即使`example1.cloudapp.net`和`example2.cloudapp.net`是不同的主控件下的所有主機之間沒有隱含的信任關係`*.cloudapp.net`網域。 這個隱含的信任關係可讓可能不受信任的主機會影響彼此的 cookie （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。 ASP.NET Core 執行階段提供某些風險降低，因為即使惡意的子網域可將覆寫工作階段語彙基元會無法產生使用者的有效的欄位語彙基元欄位語彙基元中，內嵌使用者名稱。 不過，這類環境中裝載時的內建的防 XSRF 常式仍無法防止工作階段攔截或登入 CSRF 攻擊。 共用的裝載環境包括 vunerable 劫持、 登入 CSRF，和其他攻擊。
-
+雖然`example1.cloudapp.net`和`example2.cloudapp.net`是不同的主機，在主機之間沒有隱含的信任關係`*.cloudapp.net`網域。 這個隱含的信任關係可讓可能不受信任的主機會影響彼此的 cookie （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。 ASP.NET Core 執行階段提供某些風險降低，因為欄位語彙基元中內嵌使用者名稱。 即使惡意的子網域是可以覆寫工作階段權杖，它無法產生使用者的有效的欄位語彙基元。 當裝載這類環境中，內建的防 XSRF 常式仍無法防止工作階段攔截或登入 CSRF 攻擊。 共用的裝載環境包括 vunerable 劫持、 登入 CSRF，和其他攻擊。
 
 ### <a name="additional-resources"></a>其他資源
 

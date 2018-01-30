@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: f0224bcd2badc423ba5146feacccc44b8f33a608
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 29d5b2f4c04b899b900427ac202c0a4f57f8076f
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀
 ====================
@@ -1218,9 +1218,9 @@ ASP.NET 4 中的動態資料支援的主要目標是要啟用動態資料的任�
 
 <a id="0.2__Toc224729045"></a><a id="0.2__Toc253429282"></a><a id="0.2__Toc243304653"></a>
 
-### <a name="new-field-templates-for-urls-and-e-mail-addresses"></a>新的 Url 和電子郵件地址欄位範本
+### <a name="new-field-templates-for-urls-and-email-addresses"></a>新的 Url 和電子郵件地址欄位範本
 
-ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。 這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。 如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:*通訊協定。 當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，並建立基本架構的訊息。 物件的型別為*Url*會顯示為一般的超連結。
+ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。 這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。 如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:*通訊協定。 當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，以及建立基本架構的訊息。 物件的型別為*Url*會顯示為一般的超連結。
 
 下列範例示範可以如何標示欄位。
 
@@ -1382,7 +1382,7 @@ Visual Studio 2010 也可讓您使用 IIS 的遠端管理服務 Web 應用程式
 
 本文件所提及的主要事務，Microsoft 得擁有專利、專利應用程式、商標、著作權或其他智慧財產權。 除了 Microsoft 於授權合約書中書面提供的之外，本文件所述內容並未賦予您這些專利、商標、著作權、或其他智慧財產的任何授權或使用權利。
 
-除非特別註明，否則本文件中所述，用來舉例之公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所和事件皆為虛構，沒有意圖或不應該推斷為與任何真實存在的公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所或事件有所關聯。
+除非另有說明，範例公司、 組織、 產品、 網域名稱、 電子郵件地址、 標誌、 人員、 地點及事件屬虛構，以及與任何真實的公司、 組織、 產品、 網域名稱、 電子郵件沒有關聯地址、 標誌、 人員、 位置或事件純屬巧合。
 
 © 2009 Microsoft Corporation。 著作權所有，並保留一切權利。
 

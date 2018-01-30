@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/use-aspnet-ajax-cascading-drop-down-control-to-access-a-database
 msc.type: video
-ms.openlocfilehash: 8e31cc5289309b4d48cf92c9abf84128fa01f403
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e465fb6d490873a71d7adb8b0faecca4f8fdfb7a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="use-aspnet-ajax-cascading-drop-down-control-to-access-a-database"></a>若要存取的資料庫使用 ASP.NET AJAX 階層式下拉式控制項
 ====================

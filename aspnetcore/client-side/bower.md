@@ -2,19 +2,19 @@
 title: "使用 ASP.NET Core 中的 Bower"
 author: rick-anderson
 description: "Bower 管理用戶端封裝。"
-ms.author: riande
 manager: wpickett
-ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: client-side/bower
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e3e936c81126b7ed01332565f997910a2886993
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.date: 02/14/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: client-side/bower
+ms.openlocfilehash: 0205eb34ac7f8b10720b0aa3a19bbdc3a74b545b
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 

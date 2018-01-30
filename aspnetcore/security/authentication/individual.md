@@ -2,18 +2,18 @@
 title: "個別使用者帳戶建立的專案為基礎的發行項"
 author: rick-anderson
 description: "本文件列出個別的使用者帳戶建立的專案為基礎的發行項。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 11/30/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authentication/individual
-ms.openlocfilehash: 844514f2970b761ec65589765eb21421cd1962a1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: aee18fa08fbc5c8452ca2b401d32858edaf55e7c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="articles-based-on-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的專案為基礎的發行項
 

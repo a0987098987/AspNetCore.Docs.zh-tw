@@ -10,11 +10,11 @@ ms.topic: article
 ms.assetid: a55b0d20-9c90-4bd3-a471-20da6f569f0c
 ms.technology: 
 ms.prod: .net-framework
-ms.openlocfilehash: 12acae0883c12698a8f9c2150623ba792303e7ef
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4cf5770a731ef77842eb29b0a66ee0aac5d85d85
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-webhooks-handlers"></a>ASP.NET Webhook 處理常式
 

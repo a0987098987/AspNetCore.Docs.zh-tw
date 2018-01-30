@@ -2,18 +2,18 @@
 title: "使用 EF 核心繼承-9 10 個 ASP.NET Core MVC"
 author: tdykstra
 description: "本教學課程將說明如何在資料模型中，使用 Entity Framework Core ASP.NET Core 應用程式中實作繼承。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 03/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: a4ae696bdd114ab9c36d1218f753fa3d515f2300
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 985cc38b10ef830b8274e40ad5f7050157fd4d86
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>繼承的 EF Core 與 ASP.NET Core MVC 教學課程 (9 / 10)
 

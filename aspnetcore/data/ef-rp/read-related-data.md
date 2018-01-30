@@ -2,18 +2,18 @@
 title: "使用 EF Core-razor 頁面讀取相關的資料-6，8 個"
 author: rick-anderson
 description: "在此教學課程中您可以讀取並顯示相關的資料--也就是，可將 Entity Framework 載入導覽屬性的資料。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 11/05/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 532020a8fe4c5a0312cbd89278e61f614b1825f8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ccb1e95ae2b43fd0a4c4b1ac9ed58a4d474ab3b6
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>讀取的相關資料-Razor 頁面 (8 個 6) 使用的 EF 核心
 

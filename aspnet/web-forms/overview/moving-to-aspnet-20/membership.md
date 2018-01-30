@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: 7e6bff33e9ec1de03c591de6eee2e632c7b7509d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a5a495845b60f9aac51c9776311af67f5dc8767
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="membership"></a>成員資格
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > ASP.NET 成員資格的表單驗證模型的成功組建從 ASP.NET 1.x。 ASP.NET 表單驗證會提供便利的方式來併入您的 ASP.NET 應用程式的登入表單，並驗證使用者針對資料庫或其他資料存放區。
 
@@ -38,7 +38,7 @@ ASP.NET 2.0 中的成員資格是主要的進階透過使用單獨的表單驗�
 3. 決定您想要使用的成員資格儲存區的類型。 選項如下： 
 
     - Microsoft SQL Server （版本 7.0 或更新版本）
-    - Active Directory 存放區
+    - Active Directory Store
     - 自訂成員資格提供者
 4. 設定 ASP.NET 表單驗證的應用程式。 同樣地，成員資格設計成利用表單驗證，但使用表單驗證，就不需要。
 5. 定義成員資格的使用者帳戶，並視需要設定角色。
@@ -120,7 +120,7 @@ LoginView 控制項是根據預設，會提供兩個範本樣板化控制項Anon
 
 ## <a name="passwordrecovery-control"></a>Provider 控制項
 
-Provider 控制項可讓使用者收到電子郵件與目前密碼或重設其密碼。 純文字和加密的密碼可復原，並在電子郵件寄給使用者。 如果密碼已雜湊，就無法復原。 改為使用者就必須執行密碼重設。
+Provider 控制項可讓使用者收到電子郵件，與目前密碼或重設其密碼。 純文字和加密的密碼可復原，並在電子郵件傳送給使用者。 如果密碼已雜湊，就無法復原。 改為使用者就必須執行密碼重設。
 
 ## <a name="loginstatus-control"></a>LoginStatus 控制項
 

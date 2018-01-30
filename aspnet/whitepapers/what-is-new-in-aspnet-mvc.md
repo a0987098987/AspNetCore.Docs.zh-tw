@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
-ms.openlocfilehash: 29692b380f0ad1673459681042610876d152a76f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 808f51b48b31e21848d76e7ded436ca1b17901d2
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="whats-new-in-aspnet-mvc-2"></a>ASP.NET MVC 2 中最新消息
 ====================
@@ -160,7 +160,7 @@ ASP.NET MVC 2 支援使用 RangeAttribute、 出現 RequiredAttribute、 StringL
 
 ### <a id="_TOC3_10"></a>適用於 Visual Studio 2010 的新程式碼片段
 
-ASP.NET MVC 2 的 HTML 程式碼片段的一組會隨 Visual Studio 2010。 若要檢視的這些片段，在 工具 功能表中，選取 程式碼片段管理員。 語言中，選取 HTML 和位置，請選取 ASP.NET MVC 2。 如需如何使用程式碼片段的詳細資訊，請參閱 Visual Studio 文件。
+ASP.NET MVC 2 的 HTML 程式碼片段的一組會隨 Visual Studio 2010。 若要檢視的這些片段，在 [工具] 功能表中，選取 [程式碼片段管理員。 語言中，選取 [HTML] 和位置，請選取 [ASP.NET MVC 2。 如需如何使用程式碼片段的詳細資訊，請參閱 Visual Studio 文件。
 
 ### <a id="_TOC3_11"></a>新的 RequireHttpsAttribute 動作篩選條件
 
@@ -301,7 +301,7 @@ DefaultControllerFactory 類別已修正藉由移除 RequestContext 屬性。 �
 
 本文件所提及的主要事務，Microsoft 得擁有專利、專利應用程式、商標、著作權或其他智慧財產權。 除了 Microsoft 於授權合約書中書面提供的之外，本文件所述內容並未賦予您這些專利、商標、著作權、或其他智慧財產的任何授權或使用權利。
 
-除非特別註明，否則本文件中所述，用來舉例之公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所和事件皆為虛構，沒有意圖或不應該推斷為與任何真實存在的公司、組織、產品、網域名稱、電子郵件地址、標誌、人物、場所或事件有所關聯。
+除非另有說明，範例公司、 組織、 產品、 網域名稱、 電子郵件地址、 標誌、 人員、 地點及事件屬虛構，以及與任何真實的公司、 組織、 產品、 網域名稱、 電子郵件沒有關聯地址、 標誌、 人員、 位置或事件純屬巧合。
 
 © 2010 Microsoft Corporation. 著作權所有，並保留一切權利。
 

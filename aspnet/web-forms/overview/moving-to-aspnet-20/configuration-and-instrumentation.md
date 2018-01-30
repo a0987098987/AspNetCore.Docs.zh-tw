@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
-ms.openlocfilehash: 5780bfde928011f46c3f504aec927f2127f10d0d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16dfe3c899dfa028d8a52b4b5f9c2868887e8fa9
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="configuration-and-instrumentation"></a>組態和測試設備
 ====================
@@ -150,7 +150,7 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 
 | **提供者** | 包含提供者的事件檢視器、 WMI 和 SQL Server 設定。 |
 | --- | --- |
-| **eventMappings** | 包含各種 WebBase 類別的對應。 如果您產生您自己的事件類別，您可以擴充此清單。 產生您自己的事件類別可讓您更精細的資料粒度上您將資訊傳送至的提供者。 例如，您可以設定要傳送您的電子郵件的自訂事件時傳送至 SQL Server 的未處理例外狀況。 |
+| **eventMappings** | 包含各種 WebBase 類別的對應。 如果您產生您自己的事件類別，您可以擴充此清單。 產生您自己的事件類別可讓您更精細的資料粒度上您將資訊傳送至的提供者。 例如，您可以設定電子郵件傳送您的自訂事件時傳送到 SQL Server 的未處理例外狀況。 |
 | **規則** | 提供者 eventMappings 的連結。 |
 | **buffering** | 搭配 SQL Server 和電子郵件提供者，以決定排清至提供者的事件的頻率。 |
 
@@ -196,7 +196,7 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 
 [!code-xml[Main](configuration-and-instrumentation/samples/sample10.xml)]
 
-## <a name="how-to-forward-events-to-e-mail"></a>如何將事件轉寄至電子郵件
+## <a name="how-to-forward-events-to-email"></a>如何將事件轉寄至電子郵件
 
 您也可以轉送電子郵件的事件。 請小心您對應至您的電子郵件提供者，因為您可以不小心傳送給自己的大量資訊的哪些事件規則可能是較適合 SQL Server 或事件記錄檔。 有兩個電子郵件提供者。SimpleMailWebEventProvider 和 TemplatedMailWebEventProvider。 每個有相同的組態屬性，但 「 範本 」 和 「 detailedTemplateErrors"屬性，兩者都是只用於 TemplatedMailWebEventProvider 除外。
 
@@ -208,7 +208,7 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 
 [!code-xml[Main](configuration-and-instrumentation/samples/sample11.xml)]
 
-下列規則也會加入至繫結的電子郵件提供者**所有事件**事件對應：
+下列規則也會加入至繫結在電子郵件提供者**所有事件**事件對應：
 
 [!code-xml[Main](configuration-and-instrumentation/samples/sample12.xml)]
 

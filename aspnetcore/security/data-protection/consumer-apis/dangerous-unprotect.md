@@ -2,18 +2,18 @@
 title: "取消保護裝載之索引鍵已被撤銷。"
 author: rick-anderson
 description: "本文件說明如何取消保護受保護，因為已撤銷，ASP.NET Core 應用程式中的索引鍵的資料。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 08a8ad9b3b3cc2de48751d4149bf39c58954fd90
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 584dbb545c15add4401086b9160d4bf30caf41b5
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>取消保護裝載之索引鍵已被撤銷。
 

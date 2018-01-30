@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 title: "將資料行加入至模型 |Microsoft 文件"
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 您將建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 4a4fc144dcbed8ad14411332df7acccc032ddf46
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 17ee105f596319423ac83cf718683ed293f952f3
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="adding-a-column-to-the-model"></a>將資料行加入至模型
 ====================
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/10/2017
 
 現在鼓勵您移到我們的中繼層級教學課程 」[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)」 以及許多視訊和資源的[https://asp.net/mvc](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！
 
-享受 ！
+敬祝您使用愉快！
 
 - Scott Hanselman- [http://hanselman.com](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上。
 

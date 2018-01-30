@@ -2,18 +2,18 @@
 title: "使用 ASP.NET Core Grunt"
 author: rick-anderson
 description: 
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: client-side/using-grunt
-ms.openlocfilehash: 527373829754757e52ab84b64e04702d649e9062
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c23f170b36ac1b9623835337020f2b5ac9514971
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="using-grunt-in-aspnet-core"></a>使用 ASP.NET Core Grunt 
 
@@ -51,7 +51,7 @@ Grunt 是會自動將指令碼縮製、 TypeScript 編譯、 程式碼品質 「
 
 4.  加入新的資料夾，名為`TypeScript`至專案目錄。
 
-5.  加入之前的任何檔案，請確定 Visual Studio 的選項 '編譯儲存' 的簽入 TypeScript 檔案。 *工具 > 選項 > 文字編輯器 > Typescript > 專案*
+5.  之前新增任何檔案，請確定 Visual Studio 中的選項 '編譯儲存' 的簽入 TypeScript 檔案。 瀏覽至**工具** > **選項** > **文字編輯器** > **Typescript**  > **專案**:
 
     ![設定自動 compliation TypeScript 檔案的選項](using-grunt/_static/typescript-options.png)
 

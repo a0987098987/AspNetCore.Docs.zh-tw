@@ -2,18 +2,18 @@
 title: "防止跨網站指令碼"
 author: rick-anderson
 description: "本文件介紹跨網站指令碼 (XSS) 與技術來處理這個 ASP.NET Core 應用程式中的弱點。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/cross-site-scripting
-ms.openlocfilehash: 3aaab9d4fecd3f0d0da6a0df4d83bee090b329ea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 679d9689fbc2679d9ba20bf9c6dba5c95d76dbce
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="preventing-cross-site-scripting"></a>防止跨網站指令碼
 

@@ -2,19 +2,19 @@
 title: "在 ASP.NET Core 瀏覽器連結"
 author: ncarandini
 description: "說明瀏覽器連結的連結與一或多個 web 瀏覽器的開發環境的 Visual Studio 功能的方式。"
-ms.author: riande
 manager: wpickett
-ms.date: 09/22/2017
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: client-side/using-browserlink
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5db65c268923e96c45b034639437fc3496ccac1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.date: 09/22/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: client-side/using-browserlink
+ms.openlocfilehash: 3e62bdd180bb1f5e2ce0645a8cf13c9ffe76197e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="browser-link-in-aspnet-core"></a>在 ASP.NET Core 瀏覽器連結 
 

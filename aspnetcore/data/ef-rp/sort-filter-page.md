@@ -4,15 +4,15 @@ author: rick-anderson
 description: "在本教學課程中，您要加入排序、 篩選和分頁至網頁的 ASP.NET 核心和實體架構的核心功能。"
 ms.author: riande
 ms.date: 10/22/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 24649374b71da39d638d943617a219d45f064846
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9c1ee6f8c00f3cd501ea86fbf73f51ae540a010a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="sorting-filtering-paging-and-grouping---ef-core-with-razor-pages-3-of-8"></a>排序、 篩選、 分頁和群組的方式-Razor 頁面 (以 8 為 3) 使用的 EF 核心
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/24/2018
 若要加入篩選學生索引頁：
 
 * 文字方塊和送出按鈕加入至 Razor 頁面。 在文字方塊中提供的搜尋字串的第一個或最後一個名稱。
-* 程式碼後置檔案會更新以使用文字方塊的值。
+* 頁面模型會更新以使用文字方塊的值。
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>索引方法中加入篩選功能
 
@@ -245,7 +245,7 @@ http://localhost:5000/Students?SearchString=an
 在此步驟中， *Pages/About.cshtml*已更新為顯示學生數目已達註冊每個註冊日期。 更新使用群組，並包含下列步驟：
 
 * 建立所使用的資料的檢視模型類別**有關**頁面。
-* 修改有關 Razor 頁面和程式碼後置檔案。
+* 修改有關 Razor 頁面和頁面模型。
 
 ### <a name="create-the-view-model"></a>建立檢視模型
 
@@ -255,7 +255,7 @@ http://localhost:5000/Students?SearchString=an
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="update-the-about-code-behind-page"></a>更新關於程式碼後置頁面
+### <a name="update-the-about-page-model"></a>關於頁面模型更新
 
 更新*Pages/About.cshtml.cs*以下列程式碼檔案：
 

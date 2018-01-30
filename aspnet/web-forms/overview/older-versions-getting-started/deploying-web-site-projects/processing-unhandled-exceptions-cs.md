@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 95102e5e6b3e8b78e2757a2bdee39976003011e3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7be257faa350476bef9f6d372ea4f140fff8d136
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 <a name="processing-unhandled-exceptions-c"></a>處理未處理的例外狀況 (C#)
 ====================
@@ -90,7 +90,7 @@ Visual Studio 通用應用程式類別範本所建立的事件處理常式並不
 
 在生產環境中發生未處理的例外狀況時務必提醒開發小組，讓它們可以評估錯誤，並判斷必須採取的動作。 比方說，如果沒有中連接到資料庫，則您必須為 double 的錯誤檢查您的連接字串，而且可能是，使用虛擬主機公司提出支援票證。 如果例外狀況發生的程式設計錯誤，可能需要額外的程式碼或驗證邏輯加入至預防這類錯誤的。
 
-.NET Framework 中的類別[`System.Net.Mail`命名空間](https://msdn.microsoft.com/library/system.net.mail.aspx)輕鬆傳送電子郵件。 [ `MailMessage`類別](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx)代表電子郵件訊息，並具有屬性，例如`To`， `From`， `Subject`， `Body`，和`Attachments`。 `SmtpClass`用來傳送`MailMessage`物件使用指定的 SMTP 伺服器，則可以透過程式設計方式或以宣告方式在指定的 SMTP 伺服器設定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)中`Web.config file`。 如需有關傳送電子郵件中的 ASP.NET 應用程式的訊息簽出我的文件： [ASP.NET 中的 傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)，而[System.Net.Mail 常見問題集](http://systemnetmail.com/)。
+.NET Framework 中的類別[`System.Net.Mail`命名空間](https://msdn.microsoft.com/library/system.net.mail.aspx)輕鬆傳送電子郵件。 [ `MailMessage`類別](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx)代表電子郵件訊息，並具有屬性，例如`To`， `From`， `Subject`， `Body`，和`Attachments`。 `SmtpClass`用來傳送`MailMessage`物件使用指定的 SMTP 伺服器，則可以透過程式設計方式或以宣告方式在指定的 SMTP 伺服器設定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)中`Web.config file`。 如需有關傳送電子郵件中的 ASP.NET 應用程式的訊息簽出我的文件： [ASP.NET 中的 [傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)，而[System.Net.Mail 常見問題集](http://systemnetmail.com/)。
 
 > [!NOTE]
 > `<system.net>`元素包含所使用的 SMTP 伺服器設定`SmtpClient`類別時傳送電子郵件。 虛擬主機公司可能會有您可以使用從您的應用程式傳送電子郵件的 SMTP 伺服器。 您應該使用 web 應用程式中的 SMTP 伺服器設定的詳細資訊，請參閱 web 主機的支援 > 一節。
@@ -102,15 +102,15 @@ Visual Studio 通用應用程式類別範本所建立的事件處理常式並不
 
 相當冗長，上述程式碼時，大量建立顯示的 HTML 傳送給開發人員的電子郵件中。 程式碼參考開始`HttpException`傳回`GetLastError`方法 (`lastErrorWrapper`)。 實際要求所引發的例外狀況透過擷取`lastErrorWrapper.InnerException`和指派給變數`lastError`。 類型、 訊息和堆疊追蹤資訊會從`lastError`並儲存在三個字串變數。
 
-下一步`MailMessage`名為物件`mm`建立。 電子郵件內文是 HTML 格式，並顯示要求網頁的 URL，目前登入的使用者，以及例外狀況 （類型、 訊息和堆疊追蹤） 的相關資訊的名稱。 其中一個最有趣的事情有關`HttpException`類別是您可以產生用來建立例外狀況詳細資料黃色螢幕的死亡 (YSOD) 藉由呼叫的 HTML [GetHtmlErrorMessage 方法](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx)。 這個方法是此處用來擷取例外狀況詳細資料 YSOD 標記，並將它加入做為附件的電子郵件。 一個單字，需要注意的事項： 如果例外狀況，觸發`Error`事件未以 HTTP 為基礎的例外狀況 （例如不存在的網頁要求） 則`GetHtmlErrorMessage`方法會傳回`null`。
+下一步]`MailMessage`名為物件`mm`建立。 電子郵件內文是 HTML 格式，並顯示要求網頁的 URL，目前登入的使用者，以及例外狀況 （類型、 訊息和堆疊追蹤） 的相關資訊的名稱。 其中一個最有趣的事情有關`HttpException`類別是您可以產生用來建立例外狀況詳細資料黃色螢幕的死亡 (YSOD) 藉由呼叫的 HTML [GetHtmlErrorMessage 方法](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx)。 這個方法是此處用來擷取例外狀況詳細資料 YSOD 標記，並將它加入做為附件的電子郵件。 一個單字，需要注意的事項： 如果例外狀況，觸發`Error`事件未以 HTTP 為基礎的例外狀況 （例如不存在的網頁要求） 則`GetHtmlErrorMessage`方法會傳回`null`。
 
 最後一個步驟是傳送`MailMessage`。 這樣做，建立新`SmtpClient`方法，並呼叫其`Send`方法。
 
 > [!NOTE]
-> 在 web 應用程式中使用此程式碼之前您要變更中的值`ToAddress`和`FromAddress`常數support@example.com錯誤通知電子郵件應該傳送至和來自任何電子郵件地址。 您還需要指定 SMTP 伺服器設定中的`<system.net>`一節中`Web.config`。 請參閱您的 web 主機提供者，來判斷要使用的 SMTP 伺服器設定。
+> 在 web 應用程式中使用此程式碼之前您要變更中的值`ToAddress`和`FromAddress`常數support@example.com錯誤通知電子郵件地址應傳送至和來自任何電子郵件。 您還需要指定 SMTP 伺服器設定中的`<system.net>`一節中`Web.config`。 請參閱您的 web 主機提供者，來判斷要使用的 SMTP 伺服器設定。
 
 
-這個程式碼的位置錯誤每當開發人員會傳送電子郵件訊息，摘要說明此錯誤，並包含 YSOD。 在先前的教學課程示範的執行階段錯誤是前往 Genre.aspx，傳入無效的`ID`值透過查詢字串，例如`Genre.aspx?ID=foo`。 瀏覽的頁面`Global.asax`就地檔案會產生相同的使用者經驗，如在先前的教學課程-在開發環境中您必須繼續時，您就可在生產環境，請參閱例外狀況詳細資料黃色螢幕的死，請參閱自訂錯誤網頁。 除了這個現有的行為，開發人員會傳送電子郵件。
+這個程式碼的地方每當錯誤開發人員會傳送電子郵件訊息，摘要說明此錯誤，並包含 YSOD。 在先前的教學課程示範的執行階段錯誤是前往 Genre.aspx，傳入無效的`ID`值透過查詢字串，例如`Genre.aspx?ID=foo`。 瀏覽的頁面`Global.asax`就地檔案會產生相同的使用者經驗，如在先前的教學課程-在開發環境中您必須繼續時，您就可在生產環境，請參閱例外狀況詳細資料黃色螢幕的死，請參閱自訂錯誤網頁。 除了這個現有的行為，開發人員會傳送一封電子郵件。
 
 **圖 2**顯示造訪時收到的電子郵件`Genre.aspx?ID=foo`。 電子郵件本文摘要說明例外狀況資訊，而`YSOD.htm`附件會顯示例外狀況詳細資料 YSOD 中所顯示的內容 (請參閱**圖 3**)。
 

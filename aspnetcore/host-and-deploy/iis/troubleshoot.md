@@ -2,19 +2,19 @@
 title: "疑難排解在 IIS 上的 ASP.NET Core"
 author: guardrex
 description: "了解如何診斷問題的 IIS 的 ASP.NET Core 應用程式的部署。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/13/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 2e42d5904e2be8c031c5c6d4bbc104a251b699f2
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: c68070a9cba5667504d1ad4927b02b73f83e6573
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>疑難排解在 IIS 上的 ASP.NET Core
 

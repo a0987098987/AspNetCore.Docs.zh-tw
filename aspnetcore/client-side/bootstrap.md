@@ -2,18 +2,18 @@
 title: "建置美麗、 可回應網站與啟動程序"
 author: ardalis
 description: 
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: 4332dce4c341cb8e5c241a67547048301ae9a8b1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dfed5c7a8e103973048295b7607008ecc7e90eeb
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
 

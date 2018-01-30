@@ -2,18 +2,18 @@
 title: "授權簡介"
 author: rick-anderson
 description: "本文件提供授權的基本說明，並說明授權與 ASP.NET Core 關聯的方式。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: 6f4f1fb4f2776db10a1640049885e31e9a54011a
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: a6bd81a4e5796c1d0a0033c2b8d5a6ba9282564c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction"></a>簡介
 

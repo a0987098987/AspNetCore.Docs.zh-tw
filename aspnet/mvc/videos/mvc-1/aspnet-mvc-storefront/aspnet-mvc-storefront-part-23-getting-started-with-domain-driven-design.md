@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design
 msc.type: video
-ms.openlocfilehash: 215f631a04a59f9d6054db75d8b2784ec0e19c6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d20b39cdd4739335bb12b3c23ab78481c9fcabaf
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design"></a>ASP.NET MVC Storefront 一部分 23： 網域導向設計使用者入門
 ====================

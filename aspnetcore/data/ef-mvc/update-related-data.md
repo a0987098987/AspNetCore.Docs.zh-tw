@@ -2,18 +2,18 @@
 title: "ASP.NET Core MVC EF Core-更新與相關資料-10-7"
 author: tdykstra
 description: "在本教學課程中，您要更新相關的資料藉由更新外部索引鍵欄位，而且導覽屬性。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 03/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 3cdd36ae03824645e09f97cae85cc55956679390
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4085ca9340291f6ab594285360f3b65738699098
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>更新相關的資料-EF Core 與 ASP.NET Core MVC 教學課程 (10-7)
 
@@ -89,7 +89,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 ### <a name="test-the-course-pages"></a>測試課程頁面
 
-執行應用程式中，選取**課程**索引標籤上，按一下 **新建**，並輸入新的課程資料：
+執行應用程式中，選取**課程**索引標籤上，按一下 [**新建**，並輸入新的課程資料：
 
 ![課程建立頁面](update-related-data/_static/course-create.png)
 
@@ -151,7 +151,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 - 將變更儲存至資料庫。
 
-### <a name="update-the-instructor-edit-view"></a>更新 Instructor 編輯檢視
+### <a name="update-the-instructor-edit-view"></a>更新 [Instructor 編輯檢視
 
 在*Views/Instructors/Edit.cshtml*，加入新欄位來編輯辦公室位置，在結束之前**儲存**按鈕：
 
@@ -213,7 +213,7 @@ HttpGet`Edit`方法設定選取的項目，根據已指派給正在編輯的課�
 
 ### <a name="update-the-instructor-views"></a>更新講師檢視
 
-在*Views/Instructors/Edit.cshtml*，新增**課程**欄位與陣列中加入下列的核取方塊的程式碼後立即`div`項目**Office**欄位，以及之前`div`元素**儲存** 按鈕。
+在*Views/Instructors/Edit.cshtml*，新增**課程**欄位與陣列中加入下列的核取方塊的程式碼後立即`div`項目**Office**欄位，以及之前`div`元素**儲存**] 按鈕。
 
 <a id="notepad"></a>
 > [!NOTE] 
@@ -281,7 +281,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 如果您修改`CourseAssignments`屬性如此一來，您可以移除控制器中的明確的屬性初始化程式碼。
 
-在*Views/Instructor/Create.cshtml*、 新增辦公室位置 文字方塊和核取方塊之前送出按鈕的課程。 如果是 編輯頁面上，[修正格式時將它貼入 Visual Studio 重新格式化程式碼如果](#notepad)。
+在*Views/Instructor/Create.cshtml*、 新增辦公室位置] 文字方塊和核取方塊之前送出按鈕的課程。 如果是 [編輯頁面上，[修正格式時將它貼入 Visual Studio 重新格式化程式碼如果](#notepad)。
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 

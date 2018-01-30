@@ -2,18 +2,18 @@
 title: "使用 Entity Framework Core 8 的教學課程 1 的 razor 頁面"
 author: rick-anderson
 description: "示範如何建立使用 Entity Framework Core 的 Razor 網頁應用程式"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 11/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-rp/intro
-ms.openlocfilehash: 6d36c0f0cabaf99195470a212091bd5e35c8eb30
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 091f34da347d52ba8e3e87779ddc4aeb790c2800
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio-1-of-8"></a>開始使用 Razor 頁面與使用 Visual Studio (以 8 為 1) 的 Entity Framework Core
 
@@ -62,7 +62,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 
 ## <a name="set-up-the-site-style"></a>設定站台樣式
 
-有一些變更設定的網站 功能表、 配置和首頁。
+有一些變更設定的網站] 功能表、 配置和首頁。
 
 開啟*Pages/_Layout.cshtml*並進行下列變更：
 
@@ -217,7 +217,7 @@ EF 核心會建立空的資料庫。 在本節中，*種子*會寫入測試的�
 
 從 [工具] 功能表中，選取 [NuGet 套件管理員] > [套件管理員主控台]。
 
-在 封裝管理員主控台 (PMC)，請輸入下列命令：
+在 [封裝管理員主控台 (PMC)，請輸入下列命令：
 
 ```powershell
 Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -282,13 +282,13 @@ No executable found matching command "dotnet-aspnet-codegenerator"
 應用程式啟動時，`DbInitializer.Initialize`呼叫`EnsureCreated`。 `EnsureCreated`如果資料庫存在，而且若有需要，請建立一個偵測。 如果在 DB 中，沒有任何學生`Initialize`方法會將學生。
 
 開啟**SQL Server 物件總管**(SSOX) 從**檢視**Visual Studio 中的功能表。
-在 SSOX，按一下  **(localdb) \MSSQLLocalDB > 資料庫 > ContosoUniversity1**。
+在 [SSOX，按一下 [ **(localdb) \MSSQLLocalDB > 資料庫 > ContosoUniversity1**。
 
 展開**資料表**節點。
 
 以滑鼠右鍵按一下**學生**資料表，並按一下**檢視資料**若要查看建立的資料行和資料列插入資料表。
 
-*.Mdf*和*.ldf* DB 檔案位於*C:\Users\\ <yourusername>* 資料夾。
+*.Mdf*和*.ldf* DB 檔案位於*C:\Users\\ <yourusername> *資料夾。
 
 `EnsureCreated`啟動應用程式，可讓下列工作流程上呼叫：
 
@@ -308,7 +308,7 @@ No executable found matching command "dotnet-aspnet-codegenerator"
 
 * 實體屬性會在名為 ID 或 classnameID 辨識為主索引鍵屬性。
 
-* 屬性會解譯為外部索引鍵屬性上，如果名稱為 *<navigation property name> <primary key property name>*  (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性都可以具名 *<primary key property name>*  (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
+* 屬性會解譯為外部索引鍵屬性上，如果名稱為* <navigation property name> <primary key property name> * (例如，`StudentID`如`Student`導覽屬性，因為`Student`實體的主索引鍵是`ID`). 外部索引鍵屬性都可以具名* <primary key property name> * (例如，`EnrollmentID`因為`Enrollment`實體的主索引鍵是`EnrollmentID`)。
 
 傳統行為可以被覆寫。 例如，資料表名稱可以明確指定，如稍早在本教學課程中所示。 可以明確設定資料行名稱。 主索引鍵和外部索引鍵可以明確設定。
 

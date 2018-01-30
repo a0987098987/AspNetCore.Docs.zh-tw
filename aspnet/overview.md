@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: 
 msc.type: content
-ms.openlocfilehash: ed11c882c801248ffaca95b82f16d23c87fb9be7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3d4c34a35e2e34ed78f481c759eda3718edb4da6
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-overview"></a>ASP.NET 概觀
 

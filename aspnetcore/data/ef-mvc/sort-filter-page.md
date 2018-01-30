@@ -209,9 +209,9 @@ Contoso 大學網站**有關** 頁面上，您要顯示多少學生已註冊的�
 
 ### <a name="create-the-view-model"></a>建立檢視模型
 
-建立*SchoolViewModels*資料夾在*models*資料夾中。
+在 models 資料夾中建立 SchoolViewModels 資料夾。
 
-在新的資料夾中，新增*EnrollmentDateGroup.cs*的類別檔案並將範本程式碼取代為下列程式碼：
+在新的資料夾中，新增 EnrollmentDateGroup.cs 的類別檔案並將範本程式碼取代為下列程式碼：
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

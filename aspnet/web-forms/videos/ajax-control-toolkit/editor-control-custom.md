@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/editor-control-custom
 msc.type: video
-ms.openlocfilehash: 817c49198baf165a29d5440c6a4849b9052061a6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6a65a31df0cc59856e568859ef21b56ac5acce8e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
-<a name="editor-control-custom"></a><span data-ttu-id="09591-103">編輯器控制項自訂</span><span class="sxs-lookup"><span data-stu-id="09591-103">Editor Control Custom</span></span>
+<a name="editor-control-custom"></a><span data-ttu-id="0283e-103">編輯器控制項自訂</span><span class="sxs-lookup"><span data-stu-id="0283e-103">Editor Control Custom</span></span>
 ====================
-<span data-ttu-id="09591-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="09591-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="0283e-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="0283e-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="09591-105">此視訊 Joe 中會示範如何建立新的類別，衍生自 AJAX Control Toolkit 的編輯器控制項和實作 「 簡單 」 的使用者。</span><span class="sxs-lookup"><span data-stu-id="09591-105">In this video Joe demonstrates how to create a new class, derived from the AJAX Control Toolkit's Editor control and implementing a "simple" user.</span></span>
+<span data-ttu-id="0283e-105">此視訊 Joe 中會示範如何建立新的類別，衍生自 AJAX Control Toolkit 的編輯器控制項和實作 「 簡單 」 的使用者。</span><span class="sxs-lookup"><span data-stu-id="0283e-105">In this video Joe demonstrates how to create a new class, derived from the AJAX Control Toolkit's Editor control and implementing a "simple" user.</span></span>
 
-[<span data-ttu-id="09591-106">&#9654;觀看影片 （8 分鐘）</span><span class="sxs-lookup"><span data-stu-id="09591-106">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/editor-control-custom)
+[<span data-ttu-id="0283e-106">&#9654;觀看影片 （8 分鐘）</span><span class="sxs-lookup"><span data-stu-id="0283e-106">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/editor-control-custom)
 
 >[!div class="step-by-step"]
-<span data-ttu-id="09591-107">[上一頁](editor-control.md)
-[下一頁](create-a-new-custom-extender.md)</span><span class="sxs-lookup"><span data-stu-id="09591-107">[Previous](editor-control.md)
+<span data-ttu-id="0283e-107">[上一頁](editor-control.md)
+[下一頁](create-a-new-custom-extender.md)</span><span class="sxs-lookup"><span data-stu-id="0283e-107">[Previous](editor-control.md)
 [Next](create-a-new-custom-extender.md)</span></span>

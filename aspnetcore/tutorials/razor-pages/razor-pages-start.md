@@ -2,61 +2,61 @@
 title: "開始使用 ASP.NET Core 中的 Razor 頁面"
 author: rick-anderson
 description: "開始使用 ASP.NET Core 中的 Razor 頁面"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 12/22/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 69a5bc439130ffacf2d267c79b1a6b0347171e49
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 54fa970d136de3903ae08b710b55f15f96f9a012
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="get-started-with-razor-pages-in-aspnet-core"></a><span data-ttu-id="d15f4-103">開始使用 ASP.NET Core 中的 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="d15f4-103">Get started with Razor Pages in ASP.NET Core</span></span>
+# <a name="get-started-with-razor-pages-in-aspnet-core"></a><span data-ttu-id="f2afb-103">開始使用 ASP.NET Core 中的 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="f2afb-103">Get started with Razor Pages in ASP.NET Core</span></span>
 
-<span data-ttu-id="d15f4-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="d15f4-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="f2afb-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="f2afb-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="d15f4-105">本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="d15f4-105">This tutorial teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span> <span data-ttu-id="d15f4-106">Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。</span><span class="sxs-lookup"><span data-stu-id="d15f4-106">Razor Pages is the recommended way to build UI for web apps in ASP.NET Core.</span></span>
+<span data-ttu-id="f2afb-105">本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="f2afb-105">This tutorial teaches the basics of building an ASP.NET Core Razor Pages web app.</span></span> <span data-ttu-id="f2afb-106">Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。</span><span class="sxs-lookup"><span data-stu-id="f2afb-106">Razor Pages is the recommended way to build UI for web apps in ASP.NET Core.</span></span>
 
-<span data-ttu-id="d15f4-107">本教學課程有 3 個版本：</span><span class="sxs-lookup"><span data-stu-id="d15f4-107">There are three versions of this tutorial:</span></span>
+<span data-ttu-id="f2afb-107">本教學課程有 3 個版本：</span><span class="sxs-lookup"><span data-stu-id="f2afb-107">There are three versions of this tutorial:</span></span>
 
-* <span data-ttu-id="d15f4-108">Windows：本教學課程</span><span class="sxs-lookup"><span data-stu-id="d15f4-108">Windows: This tutorial</span></span>
-* <span data-ttu-id="d15f4-109">macOS：[利用 Visual Studio for Mac 開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)</span><span class="sxs-lookup"><span data-stu-id="d15f4-109">MacOS: [Getting started with Razor Pages with Visual Studio for Mac](xref:tutorials/razor-pages-mac/razor-pages-start)</span></span>
-* <span data-ttu-id="d15f4-110">macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)</span><span class="sxs-lookup"><span data-stu-id="d15f4-110">macOS, Linux, and Windows: [Getting started with Razor Pages in ASP.NET Core with Visual Studio Code](xref:tutorials/razor-pages-vsc/razor-pages-start)</span></span>
+* <span data-ttu-id="f2afb-108">Windows：本教學課程</span><span class="sxs-lookup"><span data-stu-id="f2afb-108">Windows: This tutorial</span></span>
+* <span data-ttu-id="f2afb-109">macOS：[利用 Visual Studio for Mac 開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)</span><span class="sxs-lookup"><span data-stu-id="f2afb-109">MacOS: [Getting started with Razor Pages with Visual Studio for Mac](xref:tutorials/razor-pages-mac/razor-pages-start)</span></span>
+* <span data-ttu-id="f2afb-110">macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)</span><span class="sxs-lookup"><span data-stu-id="f2afb-110">macOS, Linux, and Windows: [Getting started with Razor Pages in ASP.NET Core with Visual Studio Code](xref:tutorials/razor-pages-vsc/razor-pages-start)</span></span>
 
-<span data-ttu-id="d15f4-111">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="d15f4-111">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="f2afb-111">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="f2afb-111">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="d15f4-112">必要條件</span><span class="sxs-lookup"><span data-stu-id="d15f4-112">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="f2afb-112">必要條件</span><span class="sxs-lookup"><span data-stu-id="f2afb-112">Prerequisites</span></span>
 
 [!INCLUDE[install 2.0](../../includes/install2.0.md)]
 
-## <a name="create-a-razor-web-app"></a><span data-ttu-id="d15f4-113">建立 Razor Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="d15f4-113">Create a Razor web app</span></span>
+## <a name="create-a-razor-web-app"></a><span data-ttu-id="f2afb-113">建立 Razor Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="f2afb-113">Create a Razor web app</span></span>
 
-* <span data-ttu-id="d15f4-114">從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。</span><span class="sxs-lookup"><span data-stu-id="d15f4-114">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
-* <span data-ttu-id="d15f4-115">建立新的 ASP.NET Core Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="d15f4-115">Create a new ASP.NET Core Web Application.</span></span> <span data-ttu-id="d15f4-116">將專案命名為 **RazorPagesMovie**。</span><span class="sxs-lookup"><span data-stu-id="d15f4-116">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="d15f4-117">請務必將專案命名為 *RazorPagesMovie*，因此當您複製/貼上程式碼時，名稱空間會相符。</span><span class="sxs-lookup"><span data-stu-id="d15f4-117">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy/paste code.</span></span>
-  <span data-ttu-id="d15f4-118">![新增 ASP.NET Core Web 應用程式](../../mvc/razor-pages/index/_static/np.png)</span><span class="sxs-lookup"><span data-stu-id="d15f4-118">![new ASP.NET Core Web Application](../../mvc/razor-pages/index/_static/np.png)</span></span>
-* <span data-ttu-id="d15f4-119">在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。</span><span class="sxs-lookup"><span data-stu-id="d15f4-119">Select **ASP.NET Core 2.0** in the dropdown, and then select **Web Application**.</span></span>
+* <span data-ttu-id="f2afb-114">從 Visual Studio 的 [檔案] 功能表中，選取 [新增] > [專案] 。</span><span class="sxs-lookup"><span data-stu-id="f2afb-114">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="f2afb-115">建立新的 ASP.NET Core Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f2afb-115">Create a new ASP.NET Core Web Application.</span></span> <span data-ttu-id="f2afb-116">將專案命名為 **RazorPagesMovie**。</span><span class="sxs-lookup"><span data-stu-id="f2afb-116">Name the project **RazorPagesMovie**.</span></span> <span data-ttu-id="f2afb-117">請務必將專案命名為 *RazorPagesMovie*，因此當您複製/貼上程式碼時，名稱空間會相符。</span><span class="sxs-lookup"><span data-stu-id="f2afb-117">It's important to name the project *RazorPagesMovie* so the namespaces will match when you copy/paste code.</span></span>
+  <span data-ttu-id="f2afb-118">![新增 ASP.NET Core Web 應用程式](../../mvc/razor-pages/index/_static/np.png)</span><span class="sxs-lookup"><span data-stu-id="f2afb-118">![new ASP.NET Core Web Application](../../mvc/razor-pages/index/_static/np.png)</span></span>
+* <span data-ttu-id="f2afb-119">在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。</span><span class="sxs-lookup"><span data-stu-id="f2afb-119">Select **ASP.NET Core 2.0** in the dropdown, and then select **Web Application**.</span></span>
 
   [!INCLUDE[install 2.0](../../includes/dotnetcore-on-dotnetfx-vs.md)]
 
-<span data-ttu-id="d15f4-120">Visual Studio 範本會建立入門專案：</span><span class="sxs-lookup"><span data-stu-id="d15f4-120">The Visual Studio template creates a starter project:</span></span>
+<span data-ttu-id="f2afb-120">Visual Studio 範本會建立入門專案：</span><span class="sxs-lookup"><span data-stu-id="f2afb-120">The Visual Studio template creates a starter project:</span></span>
 
 ![底下提供說明，包括方案總管](razor-pages-start/_static/se.png)
 
-<span data-ttu-id="d15f4-122">按 **F5** 在偵錯模式中執行應用程式，或按 **Ctrl-F5** 執行而不附加偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="d15f4-122">Press **F5** to run the app in debug mode or **Ctrl-F5** to run without attaching the debugger</span></span>
+<span data-ttu-id="f2afb-122">按 **F5** 在偵錯模式中執行應用程式，或按 **Ctrl-F5** 執行而不附加偵錯工具。</span><span class="sxs-lookup"><span data-stu-id="f2afb-122">Press **F5** to run the app in debug mode or **Ctrl-F5** to run without attaching the debugger</span></span>
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home.png)
 
-* <span data-ttu-id="d15f4-124">Visual Studio 會啟動 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。</span><span class="sxs-lookup"><span data-stu-id="d15f4-124">Visual Studio starts [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) and runs your app.</span></span> <span data-ttu-id="d15f4-125">位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。</span><span class="sxs-lookup"><span data-stu-id="d15f4-125">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="d15f4-126">這是因為 `localhost` 是本機電腦的標準主機名稱。</span><span class="sxs-lookup"><span data-stu-id="d15f4-126">That's because `localhost` is the standard hostname for your local computer.</span></span> <span data-ttu-id="d15f4-127">Localhost 只會為來自本機電腦的 Web 要求提供服務。</span><span class="sxs-lookup"><span data-stu-id="d15f4-127">Localhost only serves web requests from the local computer.</span></span> <span data-ttu-id="d15f4-128">當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。</span><span class="sxs-lookup"><span data-stu-id="d15f4-128">When Visual Studio creates a web project, a random port is used for the web server.</span></span> <span data-ttu-id="d15f4-129">在上述影像中，連接埠編號為 5000。</span><span class="sxs-lookup"><span data-stu-id="d15f4-129">In the preceding image, the port number is 5000.</span></span> <span data-ttu-id="d15f4-130">當您執行應用程式時，會看到不同的連接埠編號。</span><span class="sxs-lookup"><span data-stu-id="d15f4-130">When you run the app, you'll see a different port number.</span></span>
-* <span data-ttu-id="d15f4-131">使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。</span><span class="sxs-lookup"><span data-stu-id="d15f4-131">Launching the app with **Ctrl+F5** (non-debug mode) allows you to make code changes, save the file, refresh the browser, and see the code changes.</span></span> <span data-ttu-id="d15f4-132">許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。</span><span class="sxs-lookup"><span data-stu-id="d15f4-132">Many developers prefer to use non-debug mode to quickly launch the app and view changes.</span></span>
+* <span data-ttu-id="f2afb-124">Visual Studio 會啟動 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行您的應用程式。</span><span class="sxs-lookup"><span data-stu-id="f2afb-124">Visual Studio starts [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) and runs your app.</span></span> <span data-ttu-id="f2afb-125">位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。</span><span class="sxs-lookup"><span data-stu-id="f2afb-125">The address bar shows `localhost:port#` and not something like `example.com`.</span></span> <span data-ttu-id="f2afb-126">這是因為 `localhost` 是本機電腦的標準主機名稱。</span><span class="sxs-lookup"><span data-stu-id="f2afb-126">That's because `localhost` is the standard hostname for your local computer.</span></span> <span data-ttu-id="f2afb-127">Localhost 只會為來自本機電腦的 Web 要求提供服務。</span><span class="sxs-lookup"><span data-stu-id="f2afb-127">Localhost only serves web requests from the local computer.</span></span> <span data-ttu-id="f2afb-128">當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。</span><span class="sxs-lookup"><span data-stu-id="f2afb-128">When Visual Studio creates a web project, a random port is used for the web server.</span></span> <span data-ttu-id="f2afb-129">在上述影像中，連接埠編號為 5000。</span><span class="sxs-lookup"><span data-stu-id="f2afb-129">In the preceding image, the port number is 5000.</span></span> <span data-ttu-id="f2afb-130">當您執行應用程式時，會看到不同的連接埠編號。</span><span class="sxs-lookup"><span data-stu-id="f2afb-130">When you run the app, you'll see a different port number.</span></span>
+* <span data-ttu-id="f2afb-131">使用 **Ctrl + F5** (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。</span><span class="sxs-lookup"><span data-stu-id="f2afb-131">Launching the app with **Ctrl+F5** (non-debug mode) allows you to make code changes, save the file, refresh the browser, and see the code changes.</span></span> <span data-ttu-id="f2afb-132">許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。</span><span class="sxs-lookup"><span data-stu-id="f2afb-132">Many developers prefer to use non-debug mode to quickly launch the app and view changes.</span></span>
 
 [!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 >[!div class="step-by-step"]
-[<span data-ttu-id="d15f4-133">下一步：新增模型</span><span class="sxs-lookup"><span data-stu-id="d15f4-133">Next: Adding a model</span></span>](xref:tutorials/razor-pages/model)
+[<span data-ttu-id="f2afb-133">下一步：新增模型</span><span class="sxs-lookup"><span data-stu-id="f2afb-133">Next: Adding a model</span></span>](xref:tutorials/razor-pages/model)
 
 >[!div class="step-by-step"]
-[<span data-ttu-id="d15f4-134">下一步：新增模型</span><span class="sxs-lookup"><span data-stu-id="d15f4-134">Next: Adding a model</span></span>](xref:tutorials/razor-pages/model)
+[<span data-ttu-id="f2afb-134">下一步：新增模型</span><span class="sxs-lookup"><span data-stu-id="f2afb-134">Next: Adding a model</span></span>](xref:tutorials/razor-pages/model)

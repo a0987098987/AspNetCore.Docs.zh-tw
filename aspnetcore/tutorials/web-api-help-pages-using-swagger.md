@@ -2,18 +2,18 @@
 title: "使用 Swagger 的 ASP.NET Core Web API 說明頁面"
 author: spboyer
 description: "本教學課程提供新增 Swagger，以產生 Web API 應用程式之文件和說明頁面的逐步解說。"
-ms.author: spboyer
 manager: wpickett
+ms.author: spboyer
 ms.date: 09/01/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: d044c820057dba762d3a0f621855a8f4e298ab23
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 911504d9472ae78a0d1d002f1feb57f3a160d5bf
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-core-web-api-help-pages-using-swagger"></a>使用 Swagger 的 ASP.NET Core Web API 說明頁面
 
@@ -363,4 +363,4 @@ UI 是由產生的 JSON 檔案所驅動，該檔案中也包含這些註解：
 
 ![含有自訂標頭標題的 Swagger UI](web-api-help-pages-using-swagger/_static/custom-header.png)
 
-還有更多可以在頁面中執行的功能。 請在 [Swagger UI GitHub 儲存機制](https://github.com/swagger-api/swagger-ui)中查看 UI 資源的完整功能。
+您還可以透過此頁面進行更多功能。 請在 [Swagger UI GitHub 儲存機制](https://github.com/swagger-api/swagger-ui)中查看 UI 資源的完整功能。

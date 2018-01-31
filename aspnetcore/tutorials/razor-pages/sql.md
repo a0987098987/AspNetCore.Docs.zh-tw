@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 90aa194eda1c52afb1f299a0b95c7040e32a02fc
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 07f024e2e178828c4488adfd866fc6eec3b251dd
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
@@ -31,7 +31,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 是輕量版的 SQL Server Express Database Engine，以程式開發為目標。 LocalDB 會視需要啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
+LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
 
 <a name="ssox"></a>
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。

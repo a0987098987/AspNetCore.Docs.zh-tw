@@ -39,7 +39,7 @@
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
-* 以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。 在此範例中，控制器類別名稱是 **Todo**Controller，而根名稱是 "todo"。 ASP.NET Core [傳送](xref:mvc/controllers/routing)不區分大小寫。
+* 以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。 在此範例中，控制器類別名稱是 **Todo**Controller，而根名稱是 "todo"。 ASP.NET Core [路由傳送](xref:mvc/controllers/routing)不區分大小寫。
 * 如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("/products")]`)，請將其附加到路徑。 此範例不使用範本。 如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性傳送](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。
 
 在 `GetById` 方法中：

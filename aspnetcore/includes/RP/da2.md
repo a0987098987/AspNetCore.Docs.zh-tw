@@ -1,53 +1,12 @@
----
-title: "更新產生的頁面"
-author: rick-anderson
-description: "以更好的顯示方式更新產生的網頁。"
-ms.author: riande
-manager: wpickett
-ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: tutorials/razor-pages/da1
-ms.openlocfilehash: abf6839536150f29eaa2d07dafbe0d0c1a08e280
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
----
-# <a name="updating-the-generated-pages"></a>更新產生的頁面
-
-作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
-
-剛開始使用此電影應用程式還不錯，但其呈現效果卻不理想。 我們不想看到時間 (下圖的 12:00:00 AM)，而且 **ReleaseDate** 應該是 **Release Date** (兩個分開的字)。
-
-![在 Chrome 中開啟的電影應用程式顯示電影資料](sql/_static/m55.png)
-
-## <a name="update-the-generated-code"></a>更新產生的程式碼
-
-開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：
-
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
-
-以滑鼠右鍵按一下紅色曲線 > **[快速動作與重構]**。
-
-  ![操作功能表隨即顯示 **> [Quick Actions and Refactorings] (快速控制項目及重構)**。](da1/qa.png)
-
-選取 `using System.ComponentModel.DataAnnotations;`。
-
-  ![使用清單頂端的 System.ComponentModel.DataAnnotations](da1/da.png)
-
-  Visual Studio 即會新增 `using System.ComponentModel.DataAnnotations;`。
-
 接下來的教學課程中將涵蓋 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。 [Display](https://docs.microsoft.com//aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](../../tutorials/razor-pages/da1/edit7.png)
 
 在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
-[!code-cshtml[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
+[!code-cshtml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:mvc/razor-pages/index#url-generation-for-pages)。
 
@@ -83,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 
 在 *Pages/Movies/Edit.cshtml.cs* 檔案中更新 `OnPostAsync` 方法。 下列醒目提示的程式碼示範這些變更：
 
-[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
+[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
 
 當第一個並行用戶端刪除電影，而第二個並行用戶端發佈對電影的變更時，先前的程式碼只會偵測並行存取例外狀況。
 
@@ -98,7 +57,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="posting-and-binding-review"></a>發佈和繫結檢閱內容
 
-檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：[!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
+檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：
 
@@ -121,7 +80,3 @@ ms.lasthandoff: 01/24/2018
 Index、Create 和 Delete Razor 頁面中的 HTTP GET 方法都會依循類似的模式。 Create Razor 頁面中的 HTTP POST `OnPostAsync` 方法，會依循與 Edit Razor 頁面中的 `OnPostAsync` 方法類似的模式。
 
 搜尋會在接下來的教學課程中新增。
-
->[!div class="step-by-step"]
-[上一步：使用 SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-[新增搜尋](xref:tutorials/razor-pages/search)

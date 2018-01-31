@@ -2,18 +2,18 @@
 title: "Mac、Linux 或 Windows 上的 ASP.NET Core MVC 簡介"
 author: rick-anderson
 description: "Mac、Linux 和 Windows 上的 ASP.NET Core MVC 與 Visual Studio Code 使用者入門"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 07/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/start-mvc
-ms.openlocfilehash: dae1b0f7c8700bbd99080752fb4bb37f93441c9a
-ms.sourcegitcommit: 18ff1fdaa3e1ae204ed6a2ba9351ce8cf1371c85
+ms.openlocfilehash: 4771555b66f328a819f17a32eb3959f9ecf33d44
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc--on-mac-linux-or-windows"></a>Mac、Linux 或 Windows 上的 ASP.NET Core MVC 使用者入門
 

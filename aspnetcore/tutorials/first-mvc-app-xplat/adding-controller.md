@@ -2,18 +2,18 @@
 title: "新增控制器"
 author: rick-anderson
 description: "如何將控制器新增至簡易的 ASP.NET Core MVC 應用程式"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 02/28/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/adding-controller
-ms.openlocfilehash: d8925b327d479cc704f7325468b738d7df4c7ae6
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6773c7610c4821ead62ff37d5e630ff6b8f6287e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="adding-a-controller-to-an-aspnet-core-mvc-app-with-visual-studio-code"></a>使用 Visual Studio Code 將控制器新增至 ASP.NET Core MVC 應用程式
 

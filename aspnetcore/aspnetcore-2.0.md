@@ -9,11 +9,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: aspnetcore-2.0
-ms.openlocfilehash: 992afc2766e817ef007e20ade44e3ddd1d404f90
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: ca02de7954002dcbc125898c9f570438f88db818
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -44,7 +44,7 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NET Standard 2.0 程式庫參考，並可在與 .NET Standard 2.0 相容的 .NET 實作上執行，包括 .NET Core 2.0 和 .NET Framework 4.6.1。 
 
-`Microsoft.AspNetCore.All` 中繼套件只以 .NET Core 2.0 為目標，因為它原本就要搭配 .NET Core 2.0 執行階段存放區。
+因為 `Microsoft.AspNetCore.All` 中繼套件預計搭配 .NET Core 2.0 執行階段存放區使用，所以只鎖定 .NET Core 2.0 作為目標。
 
 ## <a name="configuration-update"></a>組態更新
 
@@ -108,7 +108,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 傳回給訪客的檔案，`ETag` 和 `LastModified` 值會以適當的 HTTP 標頭裝飾。
 
-如果應用程式訪客要求內容與範圍要求標頭，ASP.NET 會辨識並處理該標頭。 如果要求的內容可以部分傳送，ASP.NET 會適當略過，並只傳回要求的位元組集合。  您不需要將任何特殊的處理常式寫入方法，以調整或處理這項功能；它會為您自動處理。
+如果應用程式訪客要求內容與範圍要求標頭，ASP.NET 會辨識並處理該標頭。 如果要求的內容可以部分傳送，ASP.NET 會適當略過，並只傳回要求的位元組集合。  您不需要將任何特殊的處理常式寫入方法，來調整或處理這項功能；會為您自動處理。
 
 ## <a name="hosting-startup-and-application-insights"></a>裝載啟動和 Application Insights
 

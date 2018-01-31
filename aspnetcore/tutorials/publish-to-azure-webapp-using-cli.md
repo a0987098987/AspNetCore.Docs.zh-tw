@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.custom: mvc
 ms.devlang: dotnet
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 4797260f95443954e86aae1614140c0caa5ca8bd
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: de05c1688d7de6126434395042103d803ee3064e
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deploy-an-aspnet-core-application-to-azure-app-service-from-the-command-line"></a>從命令列將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -150,7 +150,7 @@ git push azure master
 ```
 ---
 
-Git 會提示您輸入先前設定的部署認證。  驗證之後，應用程式就會被推送到遠端位置，然後進行建置及部署。
+Git 會提示您輸入先前設定的部署認證。 驗證之後，應用程式就會被推送到遠端位置，然後進行建置及部署。
 
 ![Git 部署輸出](publish-to-azure-webapp-using-cli/_static/post_deploy.png)
 

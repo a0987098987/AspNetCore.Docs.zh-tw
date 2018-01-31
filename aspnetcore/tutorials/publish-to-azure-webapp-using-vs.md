@@ -2,21 +2,19 @@
 title: "使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure"
 author: rick-anderson
 description: "了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 12/16/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: dd31e3a9583a0c152e97ae7cf6b215389298a20c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 14d8dd0a5e6a99bacce3bf50b0468b20e0dddb96
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-/zh-TW
-
 # <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Cesar Blum Silveira](https://github.com/cesarbs) 及 [Rachel Appel](https://twitter.com/rachelappel) 共同編纂
@@ -25,7 +23,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="set-up"></a>設定
 
-* 如果沒有帳戶，請開啟[免費的 Azure 帳戶](https://aka.ms/K5y5yh)。 
+* 如果您沒有帳戶，請開啟[免費的 Azure 帳戶](https://aka.ms/K5y5yh)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -115,7 +113,7 @@ Visual Studio 會建立解決方案。
 * 輸入系統管理員使用者名稱與密碼，然後選取 [確定]。 您可以保留預設的**伺服器名稱**。 
 
 > [!NOTE]
-> "admin" 不允許作為系統管理員使用者名稱。
+> 不得使用 "admin" 作為系統管理員的使用者名稱。
 
 ![[設定 SQL Server] 對話方塊](publish-to-azure-webapp-using-vs/_static/conf_servername.png)
 
@@ -184,6 +182,6 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 
 ## <a name="additonal-resources"></a>其他資源
 
-* [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-overview)
-* [Azure 資源群組](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups)
-* [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/)
+* [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+* [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
+* [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)

@@ -18,7 +18,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
-驗證屬性會指定您想要強制執行模型屬性套用的行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
+驗證屬性會指定您想要對套用目標之模型屬性，強制執行之行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
 
 擁有 ASP.NET 自動強制執行的驗證規則有助於讓應用程式更穩固。 它也確保您不會忘記要驗證某些項目，不小心讓不正確的資料進入資料庫。
 
@@ -37,7 +37,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 最明顯的好處是，您不需要為了啟用這項驗證 UI 而變更 `MoviesController` 類別或 *Create.cshtml* 檢視的程式碼，一行都不用。 您稍早在本教學課程中建立的控制器和檢視會自動拾取您指定的驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 `Edit` 動作方法測試驗證，即會套用相同的驗證。
 
-直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
+要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料傳送到伺服器。 藉由使用 [Fiddler 工具](http://www.telerik.com/fiddler)，或 [F12 開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，您可以將中斷點放入 `HTTP Post` 方法來驗證。
 
 ## <a name="how-validation-works"></a>驗證的運作方式
 
@@ -45,7 +45,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
-第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個 `Create` 方法 (`[HttpPost]` 版本) 會呼叫`ModelState.IsValid` 檢查電影是否有任何驗證錯誤。 呼叫此方法會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤，則 `Create` 方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，當用戶端偵測到驗證錯誤時，表單不是張貼至伺服器；有用戶端驗證錯誤時，絕不會呼叫第二個 `Create` 方法。 如果您停用瀏覽器的 JavaScript，用戶端驗證也會停用，而且您可以測試 HTTP POST `Create` 方法 `ModelState.IsValid` 偵測任何驗證錯誤。
+第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個 `Create` 方法 (`[HttpPost]` 版本) 會呼叫`ModelState.IsValid` 檢查電影是否有任何驗證錯誤。 呼叫此方法會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤，則 `Create` 方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，在用戶端上偵測到驗證錯誤時，表單不會發佈至伺服器；出現用戶端驗證錯誤時，一定不會呼叫第二個 `Create` 方法。 如果您停用瀏覽器的 JavaScript，用戶端驗證也會停用，而且您可以測試 HTTP POST `Create` 方法 `ModelState.IsValid` 偵測任何驗證錯誤。
 
 您可以在 `[HttpPost] Create` 方法中設定中斷點，並確認永遠不會呼叫該方法，用戶端驗證就不會在偵測到驗證錯誤時，提交表單資料。 如果您停用瀏覽器的 JavaScript，然後提交有錯誤的表單，就會叫用中斷點。 您仍可使用沒有 JavaScript 的完整驗證。 
 
@@ -77,7 +77,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
-`DataType` 屬性只提供檢視引擎格式化資料的提示 (並提供用於 URL 的 `<a>` 和用於電子郵件的 `<a href="mailto:EmailAddress.com">` 等屬性)。 您可使用 `RegularExpression` 屬性来驗證資料的格式。 `DataType` 屬性用來指定比資料庫內建類型更特殊的資料類型，它們不是驗證屬性。 本例中，我們只想要追蹤日期，不追蹤時間。 `DataType` 列舉提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
+`DataType` 屬性只會提供檢視引擎格式化資料的提示 (同時會提供一些項目/屬性，例如 URL 的 `<a>` 以及用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 您可使用 `RegularExpression` 屬性来驗證資料的格式。 `DataType`屬性用於指定比資料庫內建類型更特定的資料類型，這些並非驗證屬性。 本例中，我們只想要追蹤日期，不追蹤時間。 `DataType` 列舉提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
@@ -88,7 +88,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 public DateTime ReleaseDate { get; set; }
 ```
 
-`ApplyFormatInEditMode` 設定可指定在文字方塊中顯示值以供編輯時，也應該套用的格式。 (有些欄位可能不想要它，例如貨幣值，您可能不想在文字方塊中編輯貨幣符號。)
+`ApplyFormatInEditMode` 設定可指定在文字方塊中顯示值以供編輯時，也應該套用的格式。 (您也許不想讓它出現在某些欄位中，例如貨幣值，可能會不希望在文字方塊中出現貨幣符號可進行編輯。)
 
 您可單獨使用 `DisplayFormat` 屬性，但通常最好是使用 `DataType` 屬性。 `DataType` 屬性會傳逹資料的語意，而不是在螢幕上呈現資料的方式，並提供下列使用 DisplayFormat 無法取得的優點：
 
@@ -99,7 +99,7 @@ public DateTime ReleaseDate { get; set; }
 * `DataType` 屬性可以讓 MVC 選擇正確的欄位範本來轉譯資料 (如果單獨使用，`DisplayFormat` 會使用字串範本)。
 
 > [!NOTE]
-> jQuery 驗證不適用於 `Range` 屬性和 `DateTime`。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
+> jQuery 驗證無法用於 `Range` 屬性與 `DateTime`。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
 
 ```csharp
 [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]

@@ -2,18 +2,18 @@
 title: "使用 Visual Studio for Mac 將模型新增至 Razor 頁面應用程式"
 author: rick-anderson
 description: "使用 Visual Studio for Mac 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 08/27/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: 7b1b2d54e9c68b0a6f2b1355726d0d1cb484f69e
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: b8e5d65e195f9824602ec15d05dc013faa2a8dc9
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>使用 Visual Studio for Mac 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 ### <a name="entity-framework-core-nuget-packages-for-migrations"></a>用於移轉的 Entity Framework Core NuGet 套件
 
-[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF 工具。 若要安裝這個套件，請將它新增至 *.csproj* 檔案中的 `DotNetCliToolReference` 集合。 **注意：**您必須藉由編輯 *.csproj* 檔案來安裝這個套件；而不能使用 `install-package` 命令或套件管理員 GUI。
+[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF 工具。 按一下 [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 連結以取得要使用的版本號碼。 若要安裝這個套件，請將它新增至 *.csproj* 檔案中的 `DotNetCliToolReference` 集合。 **注意：**您必須藉由編輯 *.csproj* 檔案來安裝這個套件；而不能使用 `install-package` 命令或套件管理員 GUI。
 
 若要編輯 *.csproj* 檔案：
 
@@ -54,7 +54,9 @@ ms.lasthandoff: 01/19/2018
 
 將 `Microsoft.EntityFrameworkCore.Tools.DotNet` 工具參考新增到第二個 **\<ItemGroup >**：
 
-[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?range=12-16&highlight=4)]
+[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+
+顯示於下方程式碼中的版本號碼，在寫入時為正確。
 
 [!INCLUDE[model3](../../includes/RP/model3.md)]
 [!INCLUDE[model 4x](../../includes/RP/model4x.md)]
@@ -73,4 +75,4 @@ ms.lasthandoff: 01/19/2018
 
 >[!div class="step-by-step"]
 [上一步：開始使用](xref:tutorials/razor-pages-mac/razor-pages-start)
-[下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)
+[下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages-mac/page)

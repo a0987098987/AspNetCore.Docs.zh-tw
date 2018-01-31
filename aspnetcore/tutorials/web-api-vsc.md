@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 manager: wpickett
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: e5e0f7c5704036057db33bc8a705da9d4cd8c004
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 9fec8904cf05fc486160c0641731c6336fe2766a
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-code-on-linux-macos-and-windows"></a>在 macOS、Linux 和 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建立 Web API
 
@@ -65,7 +65,7 @@ dotnet new webapi
 
 ## <a name="add-support-for-entity-framework-core"></a>新增 Entity Framework Core 的支援
 
-在 .NET Core 2.0 中建立新專案會在 *TodoApi.csproj* 檔案中新增 'Microsoft.AspNetCore.All' 提供者。 不必另行安裝 [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
+在 .NET Core 2.0 中建立新專案會在 *TodoApi.csproj* 檔案中新增 'Microsoft.AspNetCore.All' 提供者。 無須另行安裝 [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
 
 [!code-xml[Main](web-api-vsc/sample/TodoApi/TodoApi.csproj?highlight=12)]
 

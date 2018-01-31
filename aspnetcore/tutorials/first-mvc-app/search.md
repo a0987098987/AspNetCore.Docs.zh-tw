@@ -2,18 +2,18 @@
 title: "新增搜尋"
 author: rick-anderson
 description: "示範如何將搜尋新增至簡易的 ASP.NET Core MVC 應用程式"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: aaa00a9eedda73a2c66da30b5ace3b5b5a7760b2
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3ab9086275ec4c3651383c4c845e40db55f67f4c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/search1.md)]
 

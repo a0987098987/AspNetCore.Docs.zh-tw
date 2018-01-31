@@ -2,18 +2,18 @@
 title: "將模型加新增至 ASP.NET Core MVC 應用程式。"
 author: rick-anderson
 description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
+manager: wpickett
 ms.author: riande
 ms.date: 09/18/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
-manager: wpickett
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/adding-model
-ms.openlocfilehash: 32677b8232e907e8431e05a3727fe7a2e5717ec4
-ms.sourcegitcommit: 83b5a4715fd25e4eb6f7c8427c0ef03850a7fa07
+ms.openlocfilehash: 81511b05a3cc11a58b93452d3c6e5305e7ee4357
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/30/2018
 ---
 [!INCLUDE[adding-model1](../../includes/mvc-intro/adding-model1.md)]
 

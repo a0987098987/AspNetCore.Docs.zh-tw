@@ -30,7 +30,7 @@ MVC 也提供將強型別模型物件傳遞至檢視的能力。 強型別方法
 
 `http://localhost:1234/movies/details?id=1`
 
-如果未提供識別碼值，`id` 參數會定義為[可為 Null 的型別](https://docs.microsoft.com/dotnet/csharp/programming-guide/nullable-types/index) (`int?`)。
+若未提供識別碼值，`id` 參數會定義為[可為 Null 的型別](https://docs.microsoft.com/dotnet/csharp/programming-guide/nullable-types/index) (`int?`)。
 
 [Lambda 運算式](https://docs.microsoft.com/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions)會傳遞至 `SingleOrDefaultAsync`，以選取符合路由資料或查詢字串值的電影實體。
 

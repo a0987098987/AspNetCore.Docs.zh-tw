@@ -6,7 +6,7 @@
 
 您可以使用 Razor 建立檢視範本檔案。 以 Razor 為基礎的檢視範本具有 *.cshtml* 副檔名。 它們提供了一種使用 C# 建立 HTML 輸出的簡潔方式。
 
-目前，`Index` 方法會傳回字串，內含在控制器類別中硬式編碼的訊息。 在 `HelloWorldController` 類別中，以下列程式碼取代 `Index` 方法：
+`Index` 方法目前會傳回字串，內含在控制器類別中已直接書寫好的固定訊息。 在 `HelloWorldController` 類別中，以下列程式碼取代 `Index` 方法：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 

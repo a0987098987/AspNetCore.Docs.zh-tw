@@ -2,18 +2,18 @@
 title: "檢查 Details 和 Delete 方法"
 author: rick-anderson
 description: "基本 ASP.NET Core MVC 應用程式中的 Details 控制器方法和檢視。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 03/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 1b091cc479accfad5ad570a006d7395ef8d62a08
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 4a0004fc79f8e1d334e3acb96b28b2954d19f0a1
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/19/2018
 
 [!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
-EF 可讓您輕鬆使用 `SingleOrDefaultAsync` 方法來搜尋資料。 此方法內建一項重要的安全性功能：程式碼會先驗證搜尋方法是否已找到電影，之後才嘗試對其執行任何動作。 比方說，駭客可能會將透過 `http://localhost:xxxx/Movies/Details/1` 連結建立的 URL 變更為類似 `http://localhost:xxxx/Movies/Details/12345` (或不代表實際電影的其他值)，導致站台發生錯誤。 如果您未檢查是否有 null 的電影，應用程式會擲回例外狀況。
+EF 可讓您輕鬆使用 `SingleOrDefaultAsync` 方法來搜尋資料。 此方法內建一項重要的安全性功能：程式碼會先驗證搜尋方法是否已找到電影，之後才嘗試對其執行任何動作。 比方說，駭客可能會將透過 `http://localhost:xxxx/Movies/Details/1` 連結建立的 URL 變更為類似 `http://localhost:xxxx/Movies/Details/12345` (或不代表實際電影的其他值)，導致站台發生錯誤。 如果並未檢查是否電影是否為 null，應用程式就會擲回例外狀況。
 
 檢查 `Delete` 和 `DeleteConfirmed` 方法。
 

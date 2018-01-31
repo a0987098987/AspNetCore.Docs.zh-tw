@@ -4,7 +4,7 @@
 
 本教學課程會將新欄位新增至 `Movies` 資料表。 我們會在變更結構描述 (新增欄位) 時，卸除資料庫並建立一個新的資料庫。 在開發早期我們不需要保存任何生產環境資料時，這個工作流程可正常運作。
 
-一旦部署了應用程式，而且有需要保存的資料後，在需要變更結構描述時就無法卸除資料庫。 Entity Framework [Code First 移轉](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)可讓您更新結構描述並移轉資料庫，而不會遺失資料。 移轉是使用 SQL Server 時的常用功能，但 SQLlite 不支援許多移轉結構描述作業，因此只能執行非常簡單的移轉。 如需詳細資訊，請參閱 [SQLite 限制](https://docs.microsoft.com/ef/core/providers/sqlite/limitations)。
+一旦部署了應用程式，而且有需要保存的資料後，在需要變更結構描述時就無法卸除資料庫。 Entity Framework [Code First 移轉](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)可讓您更新結構描述並移轉資料庫，而不會遺失資料。 移轉是使用 SQL Server 時常用的功能，但 SQLlite 不支援許多移轉結構描述作業，因此只能執行移轉。 如需詳細資訊，請參閱 [SQLite 限制](https://docs.microsoft.com/ef/core/providers/sqlite/limitations)。
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>將 Rating 屬性新增至電影模型
 

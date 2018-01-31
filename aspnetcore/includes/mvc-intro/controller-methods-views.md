@@ -1,5 +1,5 @@
 
-接下來的教學課程中將涵蓋 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。 [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的型別 (Date)，因此不會顯示儲存在欄位中的時間資訊。
+接下來的教學課程中將涵蓋 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。 [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。
 
 瀏覽至 `Movies` 控制器，並將滑鼠指標停留在 **Edit** 連結，以查看目標 URL。
 
@@ -77,11 +77,11 @@ ASP.NET Core 會將 `http://localhost:1234/Movies/Edit/4` 轉譯成對 `Movies` 
 
 [模型繫結](xref:mvc/models/model-binding)系統採用已發佈的表單值，並建立以 `movie` 參數傳遞的 `Movie` 物件。 `ModelState.IsValid` 方法會驗證表單中提交的資料可用於修改 (編輯或更新) `Movie` 物件。 如果資料有效，則會進行儲存。 藉由呼叫資料庫內容的 `SaveChangesAsync` 方法，更新 (編輯) 的電影資料會儲存到資料庫。 儲存資料之後，程式碼將使用者重新導向至 `MoviesController` 類別的 `Index` 動作方法，此方法會顯示電影集合，包括剛剛所進行的變更。
 
-在表單發佈至伺服器之前，用戶端驗證會對欄位檢查任何驗證規則。 如果有任何驗證錯誤，則會顯示錯誤訊息，而且不會發佈表單。 如果已停用 JavaScript，就不會進行用戶端驗證，但伺服器偵測到無效的發佈值，因此會重新顯示表單值並顯示錯誤訊息。 稍後在本教學課程中，我們會更詳細檢查[模型驗證](xref:mvc/models/validation)。 *Views/Movies/Edit.cshtml* 檢視範本中的[驗證標記協助程式](xref:mvc/views/working-with-forms)負責顯示適當的錯誤訊息。
+在表單發佈至伺服器之前，用戶端驗證會對欄位檢查任何驗證規則。 如果出現任何驗證錯誤，即會顯示錯誤訊息，且不會發佈該表單。 如果已停用 JavaScript，就不會進行用戶端驗證，但伺服器偵測到無效的發佈值，因此會重新顯示表單值並顯示錯誤訊息。 稍後在本教學課程中，我們會更詳細檢查[模型驗證](xref:mvc/models/validation)。 *Views/Movies/Edit.cshtml* 檢視範本中的[驗證標記協助程式](xref:mvc/views/working-with-forms)負責顯示適當的錯誤訊息。
 
 ![Edit 檢視：Price 值 abc 不正確的例外狀況指出 Price 欄位必須是數字。 Release Date 值 xyz 不正確的例外狀況指出請輸入有效的日期。](../../tutorials/first-mvc-app/controller-methods-views/_static/val.png)
 
-電影控制器中的所有 `HttpGet` 方法都遵循類似的模式。 他們會取得電影物件 (如果是 `Index`則為物件清單)，並將此物件 (模型) 傳遞至檢視。 `Create` 方法會將空白電影物件傳遞至 `Create` 檢視。 建立、編輯、刪除或以其他方式修改資料的所有方法都會在方法的 `[HttpPost]` 多載中執行這個動作。 修改 `HTTP GET` 方法中的資料會造成安全性風險。 修改 `HTTP GET` 方法中的資料也違反 HTTP 最佳做法和架構 [REST](http://rest.elkstein.org/) 模式，此模式指定 GET 要求不應該變更應用程式的狀態。 也就是說，執行 GET 作業應該是安全的作業，沒有任何副作用，而且不會修改您的保存資料。
+電影控制器中的所有 `HttpGet` 方法都遵循類似的模式。 他們會取得電影物件 (如果是 `Index`則為物件清單)，並將此物件 (模型) 傳遞至檢視。 `Create` 方法會將空白電影物件傳遞至 `Create` 檢視。 建立、編輯、刪除或以其他方式修改資料的所有方法都會在方法的 `[HttpPost]` 多載中執行這個動作。 修改 `HTTP GET` 方法中的資料會造成安全性風險。 修改 `HTTP GET` 方法中的資料，也違反 HTTP 最佳做法及架構式 [REST](http://rest.elkstein.org/) 模式，此模式指定 GET 要求不應該變更應用程式的狀態。 也就是說，執行 GET 作業應該是安全的作業，沒有任何副作用，而且不會修改您的保存資料。
 
 ## <a name="additional-resources"></a>其他資源
 

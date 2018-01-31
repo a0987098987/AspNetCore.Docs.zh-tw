@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 2c7473647f23daf20ce7b204f621fb34f1a528c2
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 43d9ecacc479dac3eff35cc745b30d859c5cfd1d
+ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
 
@@ -59,7 +59,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor 頁面會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
 
-在沒有任何用戶端驗證錯誤之後，表單資料才會發佈至伺服器。 請確認表單資料不會透過下列一個或多個方法發佈：
+要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料發佈到伺服器。 請確認表單資料不會經由下列一或多種方式發佈：
 
 * 將中斷點放置在 `OnPostAsync` 方法中。 提交表單 (選取 [建立] 或 [儲存])。 永遠不會叫用中斷點。
 * 使用 [Fiddler 工具](http://www.telerik.com/fiddler)。
@@ -99,7 +99,7 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
-`DataType` 屬性只提供檢視引擎將資料格式化的提示 (以及提供一些屬性，例如用於 URL 的 `<a>` 和用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 使用 `RegularExpression` 屬性來驗證資料的格式。 `DataType` 屬性用來指定比資料庫內建類型更特殊的資料類型。 `DataType` 屬性不是驗證屬性。 在範例應用程式中，只會顯示日期，而不含時間。
+`DataType` 屬性只提供檢視引擎將資料格式化的提示 (以及提供一些屬性，例如用於 URL 的 `<a>` 和用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 使用 `RegularExpression` 屬性來驗證資料的格式。 `DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 `DataType` 屬性不是驗證屬性。 在範例應用程式中，只會顯示日期，而不含時間。
 
 `DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `DataType.EmailAddress` 建立 `mailto:` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType` 屬性會發出 HTML 5 瀏覽器使用的 HTML 5 `data-` (唸成的 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
@@ -112,7 +112,7 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 public DateTime ReleaseDate { get; set; }
 ```
 
-`ApplyFormatInEditMode` 設定可指定當顯示值以供編輯時，應該套用的格式。 但在某些欄位中，您可能不想要套用該行為。 例如，在貨幣值中，您可能不想在編輯 UI 中顯示貨幣符號。
+`ApplyFormatInEditMode` 設定可指定當顯示值以供編輯時，應該套用的格式。 但在某些欄位中，您可能不想要套用該行為。 例如，在貨幣值中，應該不會希望編輯 UI 中出現貨幣符號。
 
 `DisplayFormat` 屬性可以單獨使用，但通常最好是使用 `DataType` 屬性。 `DataType` 屬性會傳逹資料的語意，而不是在螢幕上呈現資料的方式，並提供下列使用 DisplayFormat 無法取得的優點：
 
@@ -120,7 +120,7 @@ public DateTime ReleaseDate { get; set; }
 * 根據預設，瀏覽器將根據您的地區設定，使用正確的格式呈現資料。
 * `DataType` 屬性可以啟用 ASP.NET Core 架構，來選擇用於呈現資料的正確欄位範本。 `DisplayFormat` 若是單獨使用，則會使用字串範本。
 
-注意：jQuery 驗證不適用於 `Range` 屬性和 `DateTime`。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
+請注意：jQuery 驗證不適用於 `Range` 屬性與 `DateTime`。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
 
 ```csharp
 [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]

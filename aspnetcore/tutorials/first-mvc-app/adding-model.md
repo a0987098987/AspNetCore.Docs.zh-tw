@@ -2,18 +2,18 @@
 title: "將模型加新增至 ASP.NET Core MVC 應用程式"
 author: rick-anderson
 description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 12/8/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: c2cd3cc81221c146dec70e487a17b33360eb6112
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 1819aff0e6ae68ad3c609466e52fcb6510fe1dcd
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
 
@@ -97,7 +97,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-**注意：**如果使用 `Install-Package` 命令但收到錯誤，請開啟 NuGet 套件管理員，並搜尋 `Microsoft.EntityFrameworkCore.Tools` 套件。 這可讓您安裝該套件，或檢查其是否已安裝。 此外，若您有 PMC 的問題，可以參閱 [CLI 方法](#cli)。
+**注意：**如果使用 `Install-Package` 命令但收到錯誤，請開啟 NuGet 套件管理員，並搜尋 `Microsoft.EntityFrameworkCore.Tools` 套件。 您可利用此安裝該套件，或檢查其是否已安裝。 此外，若您有 PMC 的問題，可以參閱 [CLI 方法](#cli)。
 
 `Add-Migration` 命令會建立程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (位在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選擇描述移轉的名稱。 如需詳細資訊，請參閱[移轉簡介](xref:data/ef-mvc/migrations#introduction-to-migrations)。
 

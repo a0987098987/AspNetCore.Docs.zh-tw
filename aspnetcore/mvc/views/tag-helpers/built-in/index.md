@@ -2,18 +2,18 @@
 title: "ASP.NET Core 內建的標記協助程式"
 author: pkellner
 description: "ASP.NET Core 內建的標記協助程式"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/13/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 8ffc748ec3d4eed35871543f5ceccc86aadee661
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 09024bf0d6c87fce9eba9b70bebefa11d2ff0a44
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>ASP.NET Core 內建的標記協助程式
 

@@ -2,18 +2,18 @@
 title: "移轉至 ASP.NET Core"
 author: rick-anderson
 description: "描述如何從 ASP.NET 移轉至 ASP.NET Core，包括 ASP.NET 4.x 和 ASP.NET Core 2"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 07/27/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/index
-ms.openlocfilehash: c794f31a1e92909f45dc1f9fceb2a2e35d6f2813
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 6350dc43a2b5e63083a9e707dff74bf6407a0c94
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migration-to-aspnet-core-including-aspnet-4x-aspnet-core-2"></a>移轉至 ASP.NET Core，包括 ASP.NET 4.x、ASP.NET Core 2
 

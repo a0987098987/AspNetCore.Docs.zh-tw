@@ -2,18 +2,18 @@
 title: "ASP.NET Core MVC 與 EF Core - 教學課程系列"
 author: tdykstra
 description: 
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 10/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: data/ef-mvc/index
-ms.openlocfilehash: e697f29989583924b1b9524bedeb2da549c1b55c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 4666148edcf77fa7b3dec40f1672d491998c870a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio"></a>使用 Visual Studio 的 ASP.NET Core MVC 與 Entity Framework Core 使用者入門
 

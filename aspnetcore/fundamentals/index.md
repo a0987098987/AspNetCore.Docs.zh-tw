@@ -2,19 +2,19 @@
 title: "ASP.NET Core 基本概念"
 author: rick-anderson
 description: "探索用於建置 ASP.NET Core 應用程式的基本概念。"
-ms.author: riande
 manager: wpickett
-ms.date: 09/30/2017
-ms.topic: get-started-article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: fundamentals/index
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d977c13eb5f4cbe8bac261733bdc747e6c19b2a
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.date: 09/30/2017
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
+uid: fundamentals/index
+ms.openlocfilehash: 946ccc80915c5de60976a98cbbb253cb8dfacaca
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 

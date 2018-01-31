@@ -2,18 +2,18 @@
 title: "ASP.NET Core 中的測試及偵錯"
 author: ardalis
 description: "可連結至 ASP.NET Core 應用程式的測試和偵錯資源。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 11/20/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: testing/index
-ms.openlocfilehash: 800f8bff83d8c76e20666e16d82e6f2c52a7ed4c
-ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
+ms.openlocfilehash: 5cf482941e0a45c349d21b27a8cdcc2068e45056
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="test-and-debug-in-aspnet-core"></a>ASP.NET Core 中的測試及偵錯
 

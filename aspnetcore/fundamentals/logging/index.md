@@ -2,18 +2,18 @@
 title: "ASP.NET Core 中的記錄"
 author: ardalis
 description: "了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。"
-ms.author: tdykstra
 manager: wpickett
+ms.author: tdykstra
 ms.date: 12/15/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: af8364c584b686fd5c0fe30a89e241d9d08a30c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c8152b94311acb672e9810828b634c744cb46eae
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
 

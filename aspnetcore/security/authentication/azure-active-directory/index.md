@@ -2,18 +2,18 @@
 title: Azure Active Directory
 author: rick-anderson
 description: "本文件是與 ASP.NET Core 相關之各種 Azure Active Directory 主題的目錄。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 10/4/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: 4c8c24c257d766ae1347085f4c8d41dd75ac7c01
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 3bc8991ff6c2017be43d9fd43ac22e5334b62681
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="azure-active-directory"></a>Azure Active Directory
 

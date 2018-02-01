@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 title: "加入檢視 |Microsoft 文件"
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 您將建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: 509dd301eef7c00431eae194a0df69d70e6d80f8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8725d054861c857ceac10a42b0cc3f2afe056aea
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -97,9 +97,9 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](getting-started-with-mvc-part3/samples/sample8.cs)]
 
-即使是在多行上，我們褖畫惎方法實際上是只有兩個程式碼陳述式。 我們到 ViewModel 物件，而第二個階段的兩個參數封裝的第一個陳述式在檢視上產生的物件。
+即使是在多行上，我們 褖畫惎方法實際上是只有兩個程式碼陳述式。 我們到 ViewModel 物件，而第二個階段的兩個參數封裝的第一個陳述式在檢視上產生的物件。
 
-現在我們需要褖畫惎檢視範本 ！ 以滑鼠右鍵按一下該褖畫惎方法中，然後選取 加入檢視。 這次我們會檢查 「 建立強型別檢視 」，並且從下拉式清單中選取 WelcomeViewModel 類別。 這個新的檢視只會知道 WelcomeViewModels 和其他類型的物件。
+現在我們需要 褖畫惎檢視範本 ！ 以滑鼠右鍵按一下該 褖畫惎方法中，然後選取 加入檢視。 這次我們會檢查 「 建立強型別檢視 」，並且從下拉式清單中選取 WelcomeViewModel 類別。 這個新的檢視只會知道 WelcomeViewModels 和其他類型的物件。
 
 > *注意： 您將需要編譯一次後才會出現在下拉式清單中加入您的 WelcomeViewModel。*
 

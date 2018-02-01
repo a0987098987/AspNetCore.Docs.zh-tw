@@ -28,6 +28,21 @@
 ### [檢查 Details 和 Delete 方法](tutorials/first-mvc-app/details.md)
 
 ## [跨平台教學課程](xref:tutorials/xplat)
+### [Mac 上的 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-mac/index)
+#### [開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
+#### [新增模型](xref:tutorials/razor-pages-mac/model)
+#### [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-mac/page)
+#### [使用 SQLite](xref:tutorials/razor-pages-mac/sql)
+#### [更新頁面](xref:tutorials/razor-pages-mac/da1)
+#### [新增搜尋](xref:tutorials/razor-pages-mac/search)
+
+
+### [使用 VS Code 建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-vsc/index)
+#### [開始使用 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
+#### [新增模型](xref:tutorials/razor-pages-vsc/model)
+#### [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-vsc/page)
+#### [使用 SQLite](xref:tutorials/razor-pages-vsc/sql)
+#### [更新頁面](xref:tutorials/razor-pages-vsc/da1)
 
 ### [使用 Visual Studio for Mac 建立 MVC Web 應用程式](xref:tutorials/first-mvc-app-mac/index)
 #### [快速入門](xref:tutorials/first-mvc-app-mac/start-mvc)
@@ -41,7 +56,7 @@
 #### [新增驗證](xref:tutorials/first-mvc-app-mac/validation)
 #### [檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)
 
-### [使用 Mac 或 Linux 版 Visual Studio Code 建立 Web 應用程式](xref:tutorials/first-mvc-app-xplat/index)
+### [在 Mac 或 Linux 上使用 Visual Studio Code 建置 Web 應用程式](xref:tutorials/first-mvc-app-xplat/index)
 #### [快速入門](tutorials/first-mvc-app-xplat/start-mvc.md)
 #### [新增控制器](tutorials/first-mvc-app-xplat/adding-controller.md)
 #### [新增檢視](tutorials/first-mvc-app-xplat/adding-view.md)
@@ -52,15 +67,6 @@
 #### [新增欄位](tutorials/first-mvc-app-xplat/new-field.md)
 #### [新增驗證](tutorials/first-mvc-app-xplat/validation.md)
 #### [檢查 Details 和 Delete 方法](tutorials/first-mvc-app/details.md)
-
-
-### [Mac 上的 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-mac/index)
-#### [開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
-#### [新增模型](xref:tutorials/razor-pages-mac/model)
-#### [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-mac/page)
-### [使用 VS Code 建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-vsc/index)
-#### [開始使用 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
-#### [新增模型](xref:tutorials/razor-pages-vsc/model)
 
 ### [使用 Visual Studio for Mac 建立 Web API](xref:tutorials/first-web-api-mac)
 ### [使用 Visual Studio Code 建立 Web API](xref:tutorials/web-api-vsc)
@@ -244,6 +250,7 @@
 ### [Azure Active Directory](xref:security/authentication/azure-active-directory/index)
 #### [Integrate Azure AD Into an ASP.NET Core web app](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/) (將 Azure AD 整合到 ASP.NET Core Web 應用程式)
 #### [將 Azure AD B2C 整合到與使用者互動的 ASP.NET Core Web 應用程式](xref:security/authentication/azure-ad-b2c)
+#### [將 Azure AD B2C 整合到 ASP.NET Core Web API](xref:security/authentication/azure-ad-b2c-webapi)
 #### [Call a ASP.NET Core Web API from a WPF app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/) (使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API)
 #### [Call a Web API in an ASP.NET Core web app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/) (使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API)
 ### [使用 IdentityServer4 保護 ASP.NET Core 應用程式](https://identityserver4.readthedocs.io/)

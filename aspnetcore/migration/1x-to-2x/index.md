@@ -2,18 +2,18 @@
 title: "從 ASP.NET Core 1.x 移轉至 2.0"
 author: scottaddie
 description: "本文概述將 ASP.NET Core 1.x 專案移轉至 ASP.NET Core 2.0 的必要條件和最常見步驟。"
-ms.author: scaddie
 manager: wpickett
+ms.author: scaddie
 ms.date: 10/03/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 2ab6d72ca57332eb25435a144d77ea43203a7b4c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a88d22c88689d20376fec748b05fc4b5ecca3510
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0
 
@@ -146,7 +146,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="view-compilation"></a>
 
-## <a name="review-your-razor-view-compilation-setting"></a>檢閱 Razor 檢視編譯設定
+## <a name="review-razor-view-compilation-setting"></a>檢閱 Razor 檢視編譯設定
 更快速的應用程式啟動時間和較小的發行組合對您而言極為重要。 基於這些原因，預設會在 ASP.NET Core 2.0 中啟用 [Razor 檢視編譯](xref:mvc/views/view-compilation)。
 
 已不再需要將 `MvcRazorCompileOnPublish` 屬性設定為 true。 除非您停用檢視編譯，否則屬性可能會從 *.csproj* 檔案中移除。
@@ -157,7 +157,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="app-insights"></a>
 
-## <a name="rely-on-application-insights-light-up-features"></a>依賴 Application Insights 的「啟動」功能
+## <a name="rely-on-application-insights-light-up-features"></a>依賴 Application Insights「啟動」功能
 輕鬆安裝應用程式效能檢測很重要。 您現在可以依賴 Visual Studio 2017 工具中提供的 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)「啟動」功能。
 
 根據預設，在 Visual Studio 2017 中建立的 ASP.NET Core 1.1 專案已新增 Application Insights。 如果您不要直接使用 Application Insights SDK，請在 *Program.cs* 和 *Startup.cs* 之外，遵循下列步驟：
@@ -178,8 +178,9 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="auth-and-identity"></a>
 
-## <a name="adopt-authentication--identity-improvements"></a>採用驗證/身分識別的增強功能
+## <a name="adopt-authenticationidentity-improvements"></a>採用驗證/身分識別的改進功能
 ASP.NET Core 2.0 具有新的驗證模型和對 ASP.NET Core 身分識別的一些重大變更。 如果您在啟用個別使用者帳戶的情況下建立專案，或如果已手動新增驗證或身分識別，請參閱[將驗證和身分識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)。
 
 ## <a name="additional-resources"></a>其他資源
-- [ASP.NET Core 2.0 的重大變更](https://github.com/aspnet/announcements/issues?page=1&q=is%3Aissue+is%3Aopen+label%3A2.0.0+label%3A%22Breaking+change%22&utf8=%E2%9C%93)
+
+* [ASP.NET Core 2.0 的重大變更](https://github.com/aspnet/announcements/issues?page=1&q=is%3Aissue+is%3Aopen+label%3A2.0.0+label%3A%22Breaking+change%22&utf8=%E2%9C%93)

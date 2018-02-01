@@ -1,19 +1,19 @@
 ---
-title: "ASP.NET Core 安全性概觀 | Microsoft Docs"
+title: "ASP.NET Core 安全性概觀"
 author: rachelappel
-description: "了解 ASP.NET Core 的驗證、授權和安全性基本概念"
-ms.author: rachelap
+description: "了解 ASP.NET Core 的驗證、授權和安全性基本概念。"
 manager: wpickett
+ms.author: rachelap
 ms.date: 11/01/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: security/index
-ms.openlocfilehash: a4558162158ddb6746aa45a29310b42224d6e7fe
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e1aaae09fe69e6b65a917785b436f927fac5345d
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 

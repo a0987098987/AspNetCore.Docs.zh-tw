@@ -997,7 +997,7 @@
 ##### [檢查 Details 和 Delete 方法](mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods.md)
 #### [開始使用使用 MVC 5 的 EF 6](mvc/overview/getting-started/getting-started-with-ef-using-mvc/index.md)
 ##### [建立 Entity Framework 資料模型](mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-##### [實作基本 CRUD 功能](mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+##### [實作基本的 CRUD 功能](mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
 ##### [排序、篩選與分頁](mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 ##### [連線恢復功能和命令攔截](mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 ##### [Code First 移轉和部署](mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)

@@ -2,18 +2,18 @@
 title: "ASP.NET Core 中的 Razor 頁面簡介"
 author: Rick-Anderson
 description: "在 Razor 頁面上的 ASP.NET Core 教學課程。 包含 MVC Core、ASP.NET Core 2.x、網頁程式開發簡介及 Visual Studio 2017。 此文件提供在 ASP.NET Core 中使用 Razor 頁面的概觀，以便於以頁面為焦點的案例之開發。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/12/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: a08c1b59c7be3a27fc11e6737a1cb4b4208f2901
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c16959189448337b12dc4902300516b25c200eee
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
 
@@ -76,7 +76,7 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 
 [!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
-*Pages/Index2.cshtml.cs*「程式碼後置」檔案：
+*Pages/Index2.cshtml.cs* 頁面模型：
 
 [!code-cs[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
@@ -116,7 +116,7 @@ DB 內容：
 
 [!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml)]
 
-*Pages/Create.cshtml.cs* 程式碼後置檔案供檢視之用：
+*Pages/Create.cshtml.cs* 頁面模型：
 
 [!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
@@ -332,7 +332,7 @@ ASP.NET Core 公開[控制器](https://docs.microsoft.com/aspnet/core/api/micros
 <h3>Msg: @Model.Message</h3>
 ```
 
-*Pages/Customers/Index.cshtml.cs* 程式碼後置檔案會將 `[TempData]` 屬性 (attribute) 套用到 `Message` 屬性 (property)。
+*Pages/Customers/Index.cshtml.cs* 頁面模型會將 `[TempData]` 屬性 (attribute) 套用到 `Message` 屬性 (property)。
 
 ```cs
 [TempData]
@@ -352,7 +352,7 @@ public string Message { get; set; }
 
 上例中的表單有兩個提交按鈕，每一個都使用 `FormActionTagHelper` 提交至不同的 URL。 `asp-page-handler` 屬性附隨於 `asp-page`。 `asp-page-handler` 產生的 URL 會提交至頁面所定義的每一個處理常式方法。 因為範例連結至目前的頁面，所以未指定 `asp-page`。
 
-程式碼後置檔案：
+頁面模型：
 
 [!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml.cs?highlight=20,32)]
 

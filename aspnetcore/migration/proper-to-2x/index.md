@@ -1,19 +1,19 @@
 ---
 title: "從 ASP.NET 移轉至 ASP.NET Core 2.0"
 author: isaac2004
-description: "此參考文件會提供從現有的 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0 的指引。"
-ms.author: scaddie
+description: "取得將現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0 的指導。"
 manager: wpickett
+ms.author: scaddie
 ms.date: 08/27/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 2263f8e9936389cf8cf18ff0c6d1d07018650e14
-ms.sourcegitcommit: 09b342b45e7372ba9ebf17f35eee331e5a08fb26
+ms.openlocfilehash: d6050c7946aa45b4c1b878b96baa1b082d0c8f71
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="migrating-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 移轉至 ASP.NET Core 2.0
 
@@ -77,7 +77,7 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 **注意：**如需 ASP.NET Core 啟動和中介軟體的深入參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)。
 
-## <a name="storing-configurations"></a>儲存組態
+## <a name="storing-configurations"></a>正在儲存組態
 ASP.NET 支援儲存設定。 例如，這些設定是用來支援要部署應用程式的環境。 過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：
 
 [!code-xml[Main](samples/webconfig-sample.xml)]
@@ -148,4 +148,5 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 **注意：**如需在 ASP.NET Core 中提供靜態檔案的更深入參考，請參閱[在 ASP.NET Core 中使用靜態檔案的簡介](xref:fundamentals/static-files)。
 
 ## <a name="additional-resources"></a>其他資源
-* [將程式庫移轉到 .NET Core](https://docs.microsoft.com/dotnet/core/porting/libraries)
+
+* [將程式庫移轉到 .NET Core](/dotnet/core/porting/libraries)

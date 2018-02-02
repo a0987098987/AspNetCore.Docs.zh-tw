@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: ebae76da01e1b24466174179a9d4bbe826202cc3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a5f14e11de6ed91f67808c3ea8c78a7b1d43b03
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="integration-testing-in-aspnet-core"></a>整合測試 ASP.NET Core
 
@@ -127,7 +127,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 要考慮的其中一個選項將加入[MVC](xref:mvc/overview)應用程式，以及建立控制站來處理的基本檢查。 不過，假設您目前不需要任何其他 MVC 功能，位元 overkill。
 
-您可以不過，利用 ASP.NET Core[中介軟體](xref:fundamentals/middleware)，這將協助我們封裝質數檢查它自己的類別中的邏輯，並達成更好[的重要性分離](http://deviq.com/separation-of-concerns/)中`Configure`方法。
+您可以不過，利用 ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)，這將協助我們封裝質數檢查它自己的類別中的邏輯，並達成更好[的重要性分離](http://deviq.com/separation-of-concerns/)中`Configure`方法。
 
 您想要允許讓中介軟體類別必須是做為參數，指定用於中介軟體路徑`RequestDelegate`和`PrimeCheckerOptions`其建構函式中的執行個體。 如果要求路徑不符合此中介軟體的是設定為預期，您只需呼叫鏈結中的下一個中介軟體，並且進行進一步動作。 中的實作程式碼的其餘部分`Configure`現在處於`Invoke`方法。
 
@@ -150,5 +150,5 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ## <a name="resources"></a>資源
 
 * [單元測試](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [中介軟體](xref:fundamentals/middleware)
+* [中介軟體](xref:fundamentals/middleware/index)
 * [測試控制器](xref:mvc/controllers/testing)

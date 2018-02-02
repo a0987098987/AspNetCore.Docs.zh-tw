@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: c79f1152afd2f55f53bf5deb9208fa5b4d5ef64d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a63bfc26bb6b0f5ea1c64641d6f57a3555d7f401
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 的雲端驗證
 
@@ -101,7 +101,8 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 
 在 Visual Studio 執行應用程式開發介面。 Visual Studio 會啟動瀏覽器指向的 API 根目錄 URL。 請注意網址列中的 URL，並將保留在背景執行的 API。
 
-> [!NOTE] 因為不沒有定義根目錄 URL 的任何控制器，則瀏覽器會顯示 404 （找不到頁面） 錯誤。 這是正常的現象。
+> [!NOTE]
+> 因為不沒有定義根目錄 URL 的任何控制器，則瀏覽器會顯示 404 （找不到頁面） 錯誤。 這是正常的現象。
 
 ## <a name="use-postman-to-get-a-token-and-test-the-api"></a>使用郵差取得權杖，並測試應用程式開發介面
 

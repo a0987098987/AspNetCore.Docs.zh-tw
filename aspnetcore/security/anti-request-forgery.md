@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: e076e301004c04b5c516d775353a4b6e50a3f36e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 079c36535b8c9e7229952a2f7bcd53174effa6af
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨網站要求偽造 (XSRF/CSRF) 攻擊中 ASP.NET Core
 
@@ -345,7 +345,7 @@ CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie �
 
 ### <a name="cookie-based-authentication"></a>Cookie 為基礎的驗證
 
-一旦使用者已使用使用者名稱和密碼驗證時，它們被發行可用來識別及驗證他們已經過驗證的語彙基元。 權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。 產生和驗證此 cookie 是由 cookie 驗證中介軟體。 ASP.NET Core 提供 cookie[中介軟體](../fundamentals/middleware.md)的序列化經過加密的 cookie 的使用者主體，然後在後續要求中，驗證 cookie，會重新建立主體，並將其指派給`User`屬性`HttpContext`.
+一旦使用者已使用使用者名稱和密碼驗證時，它們被發行可用來識別及驗證他們已經過驗證的語彙基元。 權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。 產生和驗證此 cookie 是由 cookie 驗證中介軟體。 ASP.NET Core 提供 cookie[中介軟體](xref:fundamentals/middleware/index)的序列化經過加密的 cookie 的使用者主體，然後在後續要求中，驗證 cookie，會重新建立主體，並將其指派給`User`屬性`HttpContext`.
 
 使用 cookie 時，驗證 cookie 只是一個容器的表單驗證票證。 票證傳遞做為表單驗證 cookie，隨著每項要求的值，並為表單驗證，在伺服器上，用來識別已驗證的使用者。
 

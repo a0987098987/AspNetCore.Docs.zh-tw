@@ -9,11 +9,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: d60698b5798e837a5946dbe158a647aae9e149d4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4815155ad238c31316e00471cf87beb3dd262613
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 的雲端驗證
 
@@ -139,5 +139,5 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 * [啟用多因素驗證](/azure/active-directory-b2c/active-directory-b2c-reference-mfa)。
 * 設定其他身分識別提供者，例如[Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)， [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app)， [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app)， [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app)， [Twitter](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)，和其他人。
 * [使用 Azure AD Graph API](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet)擷取額外的使用者資訊，例如群組成員資格，從 Azure AD B2C 租用戶。
-* [安全 ASP.NET Core web 應用程式開發介面使用 Azure AD B2C](xref:security/authentication/azure-ad-b2c-api)。
+* [安全 ASP.NET Core web 應用程式開發介面使用 Azure AD B2C](xref:security/authentication/azure-ad-b2c-webapi)。
 * [從.NET web 應用程式中使用 Azure AD B2C 呼叫.NET web 應用程式開發介面](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet)。

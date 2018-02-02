@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 9f8b5b2df43b03fa9200bd52a01d5d388153212b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 78fa8fbe70eb7d6461b6e7340c6d57e330157911
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -139,7 +139,7 @@ if (responseCachingFeature != null)
 ## <a name="additional-resources"></a>其他資源
 
 * [應用程式啟動](xref:fundamentals/startup)
-* [中介軟體](xref:fundamentals/middleware)
+* [中介軟體](xref:fundamentals/middleware/index)
 * [記憶體內部快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)

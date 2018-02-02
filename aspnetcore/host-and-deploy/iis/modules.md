@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 1b5391c113ca0b980eb3c47bcce0717d4a4739ed
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b7c81f2851a932cd12553af4a2655eb9f1f7bc64
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-iis-modules-with-aspnet-core"></a>使用 IIS 模組與 ASP.NET Core
 
@@ -44,8 +44,8 @@ Module | .NET core 作用中 | ASP.NET Core Option
 **HTTP 重新導向**<br>`HttpRedirectionModule` | [是] | [URL 重寫中介軟體](xref:fundamentals/url-rewriting)
 **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | [是] | 
 **IP 及網域限制**<br>`IpRestrictionModule` | [是] | 
-**ISAPI 篩選器**<br>`IsapiFilterModule` | [是] | [中介軟體](xref:fundamentals/middleware)
-**ISAPI**<br>`IsapiModule` | [是] | [中介軟體](xref:fundamentals/middleware)
+**ISAPI 篩選器**<br>`IsapiFilterModule` | [是] | [中介軟體](xref:fundamentals/middleware/index)
+**ISAPI**<br>`IsapiModule` | [是] | [中介軟體](xref:fundamentals/middleware/index)
 **通訊協定支援**<br>`ProtocolSupportModule` | [是] | 
 **要求篩選**<br>`RequestFilteringModule` | [是] | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule)
 **要求監視器**<br>`RequestMonitorModule` | [是] | 

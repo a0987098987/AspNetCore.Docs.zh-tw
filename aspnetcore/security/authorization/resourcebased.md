@@ -11,21 +11,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 708f306da740870b106cbeeb96879480f8745439
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 723e371e0d0b4877f96898c68cd59b433fa97dc1
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="resource-based-authorization"></a>資源為基礎的授權
-
-作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
 授權策略取決於所存取的資源。 請考慮具有 author 屬性的文件。 只有作者可更新的文件。 因此，在文件之前必須擷取從資料存放區授權評估可能會發生。
 
 資料繫結之前以及執行網頁處理常式或動作，它會載入文件之前，就會出現屬性評估。 基於這些理由，宣告式授權搭配`[Authorize]`屬性不敷使用。 相反地，您可以叫用自訂授權方法&mdash;樣式，稱為必要授權。
 
 使用[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample)) 來瀏覽本主題中所述的功能。
+
+[建立 ASP.NET Core 應用程式與受保護的授權的使用者資料](xref:security/authorization/secure-data)包含範例應用程式使用的資源為基礎的授權。
 
 ## <a name="use-imperative-authorization"></a>使用必要的授權
 

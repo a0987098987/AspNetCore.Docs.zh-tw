@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 76b6566df4a427836eb5060f7d80e1039e479884
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 608aaa469c5ca20fab8250025804e28e7808122d
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="claims-based-authorization"></a>宣告型授權
 
 <a name="security-authorization-claims-based"></a>
 
-建立身分識別時它可能會指派一個或多個受信任的合作對象所發出的宣告。 宣告是名稱值組，表示何種主體，則為，沒有什麼主體可以執行。 例如，您可能駕駛執照，推動授權本機的授權單位所核發。 您的驅動程式授權上有您的出生日期。 在此情況下會宣告名稱`DateOfBirth`，宣告值會是您的日期的生日，例如`8th June 1970`簽發者就會推動授權授權單位。 在最簡單的宣告式授權會檢查宣告的值，並允許值為基礎的資源存取。 例如，如果您想要存取晚上社團授權程序可能會是：
+建立身分識別時它可能會指派一個或多個受信任的合作對象所發出的宣告。 宣告是代表什麼主體名稱值組，則為，沒有什麼主體可以。 例如，您可能駕駛執照，推動授權本機的授權單位所核發。 您的驅動程式授權上有您的出生日期。 在此情況下會宣告名稱`DateOfBirth`，宣告值會是您的日期的生日，例如`8th June 1970`簽發者就會推動授權授權單位。 在最簡單的宣告式授權會檢查宣告的值，並允許值為基礎的資源存取。 例如，如果您想要存取晚上社團授權程序可能會是：
 
 媒體櫃門的安全主管有關會評估您的生日的宣告，以及其是否彼此信任的簽發者 （推動 「 授權 」 授權） 授與您存取之前的日期值。
 

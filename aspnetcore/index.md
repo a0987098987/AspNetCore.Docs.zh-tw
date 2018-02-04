@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: index
-ms.openlocfilehash: d7957bdc6fa982790141bac9b73ad7d3b1dd3d8a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 42bf005a29a8723233a0d9e5532827f7522f0e75
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
+# <a name="aspnet-core"></a>ASP.NET Core
 
 由 [Daniel Roth](https://github.com/danroth27)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Shaun Luttin](https://twitter.com/dicshaunary) 提供
 
@@ -65,6 +65,7 @@ ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angul
 
 如需詳細資訊，請參閱下列資源：
 
+* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
 * [ASP.NET Core 教學課程](xref:tutorials/index)
 * [ASP.NET Core 基本概念](xref:fundamentals/index)
 * [每週的 ASP.NET 社群之聲](https://live.asp.net/) \(英文\) 涵蓋了小組的進度和計劃， 並提供新的部落格和協力廠商軟體。

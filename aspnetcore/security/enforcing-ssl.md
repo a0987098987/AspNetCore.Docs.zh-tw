@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 2e0a2f4732e574c80ceef8fd21a530a11aef254c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3b72cddb7a240ad6d6e1427796e9bb4f7003a3f7
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="enforcing-ssl-in-an-aspnet-core-app"></a>強制執行的 ASP.NET Core 應用程式中的 SSL
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 01/30/2018
 
 將下列程式碼加入`ConfigureServices`中`Startup`:
 
-[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-)]
+[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
 上述反白顯示的程式碼需要的所有要求都使用`HTTPS`，因此 HTTP 要求都會被忽略。 下列反白顯示的程式碼會將所有 HTTP 要求重新都導向至 HTTPS:
 
-[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-)]
+[!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
 請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)如需詳細資訊。
 

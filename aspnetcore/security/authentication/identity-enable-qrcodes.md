@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: ae2d8eb938c00a26cf7ffb5f2fff0b9e0d22148b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cf941314d54aa4a7bd1724805dc62c763ca71dfb
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
 
@@ -86,8 +86,6 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 
 * `AuthenticatorUri`模型的屬性。
 * `data-url`中的屬性`qrCodeData`項目。 
-
-使用`@Html.Raw`存取檢視中的模型屬性 （否則會雙重編碼 url 中的連字號和 QR 代碼的標籤參數將被忽略）。
 
 ## <a name="totp-client-and-server-time-skew"></a>TOTP 用戶端和伺服器時間誤差
 

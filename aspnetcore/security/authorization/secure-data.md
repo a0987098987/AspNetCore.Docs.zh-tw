@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 944886a7d55af8966dc51424d16bec5ff58dbc05
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6333082a2b2b4f6d3f1ce2afc600b4203a0f5dca
+ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/30/2018
 * [授權](xref:security/authorization/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-本教學課程中的 ASP.NET Core 1.1 版本處於[這](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾。 ASP.NET Core 範例處於 1.1[範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)。
+請參閱[此 PDF 檔案](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf)ASP.NET Core MVC 版本。 本教學課程中的 ASP.NET Core 1.1 版本處於[這](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data)資料夾。 ASP.NET Core 範例處於 1.1[範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2)。
 
 ## <a name="the-starter-and-completed-app"></a>起始和已完成的應用程式
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/30/2018
 
 使用 ASP.NET[識別](xref:security/authentication/identity)的使用者識別碼以確保使用者可以編輯其資料，但沒有其他使用者資料。 新增`OwnerID`和`ContactStatus`至`Contact`模型：
 
-[!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-)]
+[!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
 `OwnerID`這是使用者的識別碼，從`AspNetUser`資料表中[識別](xref:security/authentication/identity)資料庫。 `Status`欄位可讓您判斷是否為一般使用者可以檢視連絡人。
 
@@ -104,7 +104,7 @@ dotnet ef database update
 
 在`ConfigureServices`方法*Startup.cs* file、 add [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute)授權篩選條件：
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-999)]
 
 如果您使用 Visual Studio，請啟用 SSL。
 
@@ -116,7 +116,7 @@ dotnet ef database update
 
 設定為需要驗證使用者的預設驗證原則。 您可以選擇不使用 Razor 頁面、 控制器或動作的方法層級驗證`[AllowAnonymous]`屬性。 設定為需要驗證使用者的預設驗證原則能保護新加入的 Razor 頁面和控制站。 具有所需的預設驗證比上新的控制站及 Razor 頁面，以包含安全`[Authorize]`屬性。 將下列內容加入`ConfigureServices`方法*Startup.cs*檔案：
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-999)]
 
 新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引，因此他們註冊之前，匿名使用者可以取得站台的相關資訊的相關，以及連絡頁面。 
 
@@ -177,7 +177,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 使用 Entity Framework 的核心服務必須登錄[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/aspnet/core/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。 `ContactIsOwnerAuthorizationHandler`使用 ASP.NET Core[識別](xref:security/authentication/identity)，這建置在 Entity Framework Core。 登錄處理常式與服務的集合，所以可`ContactsController`透過[相依性插入](xref:fundamentals/dependency-injection)。 將下列程式碼加入至結尾`ConfigureServices`:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 
 `ContactAdministratorsAuthorizationHandler`和`ContactManagerAuthorizationHandler`會新增為 singleton。 它們是 singleton，因為它們不使用 EF 和所需的資訊位於`Context`參數`HandleRequirementAsync`方法。
 
@@ -246,7 +246,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 更新**編輯**和**刪除**中連結*Pages/Contacts/Index.cshtml*讓它們只呈現具有適當的權限的使用者：
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-)]
+[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-999)]
 
 > [!WARNING]
 > 隱藏不需要變更資料的權限的使用者連結，並不安全應用程式。 隱藏連結，讓應用程式更容易使用顯示唯一有效的連結。 使用者可以 hack 叫用 編輯和刪除作業沒有自己的資料產生的 Url。 Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。
@@ -255,7 +255,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 更新詳細資料檢視，讓管理員可以核准或拒絕連絡人：
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-)]
+[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-999)]
 
 更新詳細資料頁面模型：
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 13aab58e86829a8d4accd1d304420dcb34ffa472
-ms.sourcegitcommit: ec9371e2fbfcb8d62e7e7cae69e7752f3f205385
+ms.openlocfilehash: 79f136257119a8600a65e8d7c5f6e99cb9abceae
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/05/2018
 ---
 <a name="adding-a-model"></a>加入模型
 ====================
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/23/2017
 
 ![](adding-a-model/_static/image2.png)
 
-注意： 幾個未使用`using`陳述式已被移除。 Visual Studio 會顯示為灰色的未使用的相依性。 您可以移除 unnused 相依性，將滑鼠游標停留於灰色的相依性，請按一下`Show potential fixes`按一下**移除未使用的 using。**
+注意： 幾個未使用`using`陳述式已被移除。 Visual Studio 會顯示為灰色的未使用的相依性。 您可以移除未使用的相依性，將滑鼠游標停留於灰色的相依性，請按一下`Show potential fixes`按一下**移除未使用的 using。**
 
 ![](adding-a-model/_static/image3.png)
 

@@ -12,16 +12,16 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
 msc.type: video
-ms.openlocfilehash: 37ac339db5cee04ee998c090ac8d36853f3bca5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f40a174d2046f64cc98382df031cc2803a9a07db
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/05/2018
 ---
 <a name="how-do-i-use-cascading-style-sheets-for-web-page-layout"></a>[如何:]頁面配置，請使用階層式樣式表嗎？
 ====================
 由[Chris Pels](https://twitter.com/chrispels)
 
-在這段影片中，我們了解如何使用&amp;lt; div&amp;gt; 結合階層式樣式表 (CSS) 來建立強固且更高的效能網頁中的項目。 &amp;Lt; div&amp;gt; 方法會將比較&amp;lt; 資料表&amp;gt; 基礎配置方法，透過近年來使用大部分的網站。 然後，CSS 為基礎的數種方法，也會顯示範圍從絕對定位到浮點數的項目。 我們也了解與使用 CSS 設計區隔開結構 HTML 的好處。
+在這段影片中，我們了解如何使用`<div>`階層式樣式表 (CSS) 以建立強固且更高的效能網頁的組合中的項目。 `<div>`方法會將比較`<table>`為基礎的配置方法，透過近年來使用大部分的網站。 然後，CSS 為基礎的數種方法，也會顯示範圍從絕對定位到浮點數的項目。 我們也了解與使用 CSS 設計區隔開結構 HTML 的好處。
 
 [&#9654;觀看影片 （29 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-cascading-style-sheets-for-web-page-layout)

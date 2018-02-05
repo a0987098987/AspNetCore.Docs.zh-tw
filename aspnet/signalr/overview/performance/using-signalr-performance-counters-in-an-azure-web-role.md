@@ -13,11 +13,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
 msc.type: authoredcontent
-ms.openlocfilehash: 0d2717eb318d282e21e9aa8622a205f556e3a4ee
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2f6c6feb030fc17f95e7862c39029569f3d8c5dc
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/05/2018
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a>使用 Azure Web 角色中的 SignalR 效能計數器
 
@@ -35,13 +35,13 @@ SignalR 效能計數器可用來監視 Azure Web 角色中的應用程式的效�
 
 1. 開啟 Visual Studio 2015。
 
-2. 在 Visual Studio 2015 中，選取**檔案&gt;新增&gt;專案**。
+2. 在 Visual Studio 2015 中，選取**檔案** > **新增** > **專案**。
 
 3. 在**範本**窗格**新專案**視窗下的**Visual C#**節點中，選取**雲端**節點，然後選取**Azure 雲端服務**範本。 將應用程式命名**SignalRPerfCounters**選取**確定**。
 
    ![新的雲端應用程式](using-signalr-performance-counters-in-an-azure-web-role/_static/image1.png)
     
-4. 在**新 Microsoft Azure 雲端服務**對話方塊中，選取**ASP.NET Web 角色**選取 **&gt;** 按鈕，將角色加入至專案。 選取 [確定]。
+4. 在**新 Microsoft Azure 雲端服務**對話方塊中，選取**ASP.NET Web 角色**選取 > 按鈕，將角色加入至專案。 選取 [確定]。
 
    ![新增 ASP.NET Web 角色](using-signalr-performance-counters-in-an-azure-web-role/_static/image2.png)
     
@@ -57,21 +57,21 @@ SignalR 效能計數器可用來監視 Azure Web 角色中的應用程式的效�
 
    [!code-xml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample1.xml)]
     
-8. 開啟**Package Manager Console**從**工具&gt;NuGet 套件管理員**。 輸入下列命令來安裝 SignalR 和 SignalR 的公用程式套件的最新版本：
+8. 開啟**Package Manager Console**從**工具** > **NuGet 套件管理員**。 輸入下列命令來安裝 SignalR 和 SignalR 的公用程式套件的最新版本：
 
    [!code-powershell[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample2.ps1)]
     
-9. 設定應用程式啟動或回收時，安裝 SignalR 效能計數器到角色執行個體。 在**方案總管 中**，以滑鼠右鍵按一下**WebRole1**專案，然後選取**新增&gt;新資料夾**。 將新的資料夾命名*啟動*。
+9. 設定應用程式啟動或回收時，安裝 SignalR 效能計數器到角色執行個體。 在**方案總管 中**，以滑鼠右鍵按一下**WebRole1**專案，然後選取**新增** > **新資料夾**。 將新的資料夾命名*啟動*。
 
    ![新增 [啟動] 資料夾](using-signalr-performance-counters-in-an-azure-web-role/_static/image5.png)
     
-10. 複製*signalr.exe*檔案 (使用新增**Microsoft.AspNet.SignalR.Utils**封裝) 從**&lt;專案資料夾&gt;\SignalRPerfCounters\packages\Microsoft.AspNet.SignalR.Utils。&lt;版本&gt;\tools**至*啟動*您在上一個步驟中建立的資料夾。
+10. 複製*signalr.exe*檔案 (使用新增**Microsoft.AspNet.SignalR.Utils**封裝) 從\<專案資料夾 > / SignalRPerfCounters/packages/Microsoft.AspNet.SignalR.Utils。\<版本 > 工具來 /*啟動*您在上一個步驟中建立的資料夾。
 
-11. 在**方案總管 中**，以滑鼠右鍵按一下*啟動*資料夾，然後選取**新增&gt;現有項目**。 在出現的對話方塊，選取*signalr.exe*選取**新增**。
+11. 在**方案總管 中**，以滑鼠右鍵按一下*啟動*資料夾，然後選取**新增** > **現有項目**。 在出現的對話方塊，選取*signalr.exe*選取**新增**。
 
     ![將 signalr.exe 加入至專案](using-signalr-performance-counters-in-an-azure-web-role/_static/image6.png)
     
-12. 以滑鼠右鍵按一下*啟動*您建立的資料夾。 選取**新增&gt;新項目**。 選取**一般**節點中，選取**文字檔**，並命名新的項目*SignalRPerfCounterInstall.cmd*。 此命令檔將 web 角色安裝 SignalR 效能計數器。
+12. 以滑鼠右鍵按一下*啟動*您建立的資料夾。 選取 [新增] > [新增項目]。 選取**一般**節點中，選取**文字檔**，並命名新的項目*SignalRPerfCounterInstall.cmd*。 此命令檔將 web 角色安裝 SignalR 效能計數器。
 
     ![建立 SignalR 效能計數器安裝批次檔](using-signalr-performance-counters-in-an-azure-web-role/_static/image7.png)
      
@@ -106,7 +106,7 @@ SignalR 效能計數器可用來監視 Azure Web 角色中的應用程式的效�
 
     [!code-cshtml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample6.cshtml)]
     
-21. 建立新的資料夾中**WebRole1**專案名為*集線器*。 以滑鼠右鍵按一下*集線器*資料夾中的**方案總管 中**，選取**Web &gt; SignalR**，然後選取**SignalR 中樞類別 (v2)**. 命名新的中樞*MyHub.cs*選取**新增**。
+21. 建立新的資料夾中**WebRole1**專案名為*集線器*。 以滑鼠右鍵按一下*集線器*資料夾中的**方案總管 中**，選取**Web** > **SignalR**，然後選取**SignalR 中樞類別 (v2)**。 命名新的中樞*MyHub.cs*選取**新增**。
 
     ![將 SignalR 中樞類別加入至中樞中的資料夾加入新項目對話方塊](using-signalr-performance-counters-in-an-azure-web-role/_static/image13.png)
 
@@ -114,7 +114,7 @@ SignalR 效能計數器可用來監視 Azure Web 角色中的應用程式的效�
 
     [!code-csharp[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample7.cs)]
     
-23. *[Crank.exe](signalr-connection-density-testing-with-crank.md)* 是測試工具提供與 SignalR 程式碼基底連接密度。 由於區軸需要持續連線，您加入一個參考至您的網站使用的測試時。 新增資料夾到**WebRole1**專案，稱為*PersistentConnections*。 以滑鼠右鍵按一下此資料夾，然後選取**新增&gt;類別**。 將新的類別檔案*MyPersistentConnections.cs*選取**新增**。
+23. *[Crank.exe](signalr-connection-density-testing-with-crank.md)* 是測試工具提供與 SignalR 程式碼基底連接密度。 由於區軸需要持續連線，您加入一個參考至您的網站使用的測試時。 新增資料夾到**WebRole1**專案，稱為*PersistentConnections*。 以滑鼠右鍵按一下此資料夾，然後選取**新增** > **類別**。 將新的類別檔案*MyPersistentConnections.cs*選取**新增**。
 
 24. Visual Studio 會開啟*MyPersistentConnections.cs*主視窗中的檔案。 下列程式碼，以取代內容，然後儲存並關閉檔案：
 
@@ -133,7 +133,7 @@ SignalR 效能計數器可用來監視 Azure Web 角色中的應用程式的效�
 
     [!code-xml[Main](using-signalr-performance-counters-in-an-azure-web-role/samples/sample12.xml?highlight=3,7)]
     
-27. 等候約 1 分鐘。 在 Visual Studio 中開啟 Cloud Explorer 工具視窗 (**檢視&gt;Cloud Explorer**) 並展開路徑`(Local)\Storage Accounts\(Development)\Tables`。 按兩下**WADPerformanceCountersTable**。 您應該會看到的資料表資料中的 SignalR 計數器。 如果您沒有看到資料表，您可能需要重新輸入您的 Azure 儲存體認證。 您可能需要選取**重新整理** 按鈕，請參閱表格**Cloud Explorer**或選取**重新整理**按鈕的開啟資料表視窗中，以查看資料表中的資料。
+27. 等候約 1 分鐘。 在 Visual Studio 中開啟 Cloud Explorer 工具視窗 (**檢視** > **Cloud Explorer**) 並展開路徑`(Local)/Storage Accounts/(Development)/Tables`。 按兩下**WADPerformanceCountersTable**。 您應該會看到的資料表資料中的 SignalR 計數器。 如果您沒有看到資料表，您可能需要重新輸入您的 Azure 儲存體認證。 您可能需要選取**重新整理** 按鈕，請參閱表格**Cloud Explorer**或選取**重新整理**按鈕的開啟資料表視窗中，以查看資料表中的資料。
 
     ![在 Visual Studio Cloud Explorer 中選取 WAD 效能計數器資料表](using-signalr-performance-counters-in-an-azure-web-role/_static/image11.png)
 

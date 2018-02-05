@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: 8256240b46873d53bf1a6f6616ea5b520cfadf2e
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 7c6d629ea94dd7c79a2f4e24fd4d0ff797f7e516
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/05/2018
 ---
 # <a name="in-memory-caching-in-aspnet-core"></a>記憶體中快取中 ASP.NET Core
 
@@ -30,7 +30,7 @@ ASP.NET Core 支援數個不同的快取。 最簡單的快取根據[IMemoryCach
 
 Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.md)以避免快取一致性問題。 對於某些應用程式中，分散式快取可以支援更高範圍外比記憶體中快取。 使用分散式快取卸載到外部處理序的快取記憶體。 
 
-`IMemoryCache`快取將會收回快取記憶體不足壓力下的項目，除非[快取優先順序](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheitempriority)設`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整優先順序快取收回記憶體不足壓力下的項目。
+`IMemoryCache`快取將會收回快取記憶體不足壓力下的項目，除非[快取優先順序](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheitempriority)設`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整與快取收回項目記憶體不足壓力下的優先順序。
 
 記憶體中快取可以儲存任何物件。分散式快取介面僅限於`byte[]`。
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: c1fa5d31f68b44bfdfda61c870a6825eeba18647
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 92a6dee24b8942d721e3537a712be141155e61df
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/05/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -232,7 +232,7 @@ Scaffolding 是一種快速產生的控制器和檢視您的應用程式。 在�
 
 如*資料內容類別*，您可以進行下列選擇：
 
-- 如果您想要使用程式碼優先 」 而沒有現有的資料內容類別中，選擇*&lt;新的資料內容...&gt;*". 然後會為您產生資料內容類別。
+- 如果您想要使用程式碼優先 」 而沒有現有的資料內容類別中，選擇 * * 新的資料內容 * *。 然後會為您產生資料內容類別。
 - 如果您想要使用 Code First 和現有的資料內容類別，請在此選擇。 它會進行更新以保存您選取的模型類別。
 - 如果您使用 Database First 或 Model First，選擇您的物件內容類別。
 
@@ -255,7 +255,7 @@ Scaffolding 是一種快速產生的控制器和檢視您的應用程式。 在�
 
 #### <a name="project-templates-are-now-html5-enabled"></a>專案範本現在都已啟用 HTML5
 
-[新增專案] 對話方塊現在包含一個選項以將 HTML5 專屬功能加入至專案範本。 選取此選項可讓要產生的檢視包含新的 HTML5 *&lt;標頭&gt;*， *&lt;頁尾&gt;*，和 *&lt;瀏覽&gt;*項目。
+[新增專案] 對話方塊現在包含一個選項以將 HTML5 專屬功能加入至專案範本。 選取此選項可讓要產生的檢視包含新的 HTML5 `<header>`， `<footer>`，和`<navigation>`項目。 項目。
 
 請注意，舊版的瀏覽器不支援 HTML5 專屬標記。 若要解決這項限制，HTML5 專案範本包含 Modernizr 程式庫的參考。 （請參閱下一節）。
 
@@ -293,7 +293,7 @@ ADO.NET Entity Framework 4.1 包含第一個程式碼的功能。 程式碼第�
 
 例如，提供新的 jQuery 版本的頻率，專案範本中所包含的 jQuery 版本在某個時間點會過期。 不過，因為 jQuery 是隨附安裝的 NuGet 套件，系統會通知您 NuGet 對話方塊中可用的 jQuery 新版時。
 
-因為 jQuery 在檔案名稱中包含的版本號碼，jQuery 更新為最新版本也需要更新*&lt;指令碼&gt;*參考 jQuery 檔案，才能使用新的檔案名稱的標記。 其他內含的指令碼程式庫不包含版本號碼中的指令碼名稱，因此可以更輕鬆地其最新版本更新。
+因為 jQuery 在檔案名稱中包含的版本號碼，jQuery 更新為最新版本也需要更新`<script>`參考 jQuery 檔案，才能使用新的檔案名稱的標記。 其他內含的指令碼程式庫不包含版本號碼中的指令碼名稱，因此可以更輕鬆地其最新版本更新。
 
 <a id="tu-KI"></a>
 ## <a name="known-issues"></a>已知問題
@@ -353,7 +353,7 @@ RC2 版本的 ASP.NET MVC 3 引進*CachedDataAnnotationsMetadataProvider*類別�
 - 時已安裝 ReSharper，Razor 語法的 IntelliSense 不會無法運作。 如果您已安裝 ReSharper 且想要利用 ASP.NET MVC 3 中的 Razor IntelliSense 支援，請參閱文章[Razor Intellisense 和 ReSharper](http://blogs.jetbrains.com/dotnet/2010/11/razor-intellisense-and-resharper/) （英文） 部落格上的討論如何一起搭配使用今天。
 - 建立 ASP.NET MVC 3 的 Beta 版本的 CCSHTML 和 VBHTML 檢視並沒有正確地設定其建置動作，與這些檢視的結果類型會省略發行專案時。 這些檔案的建置動作值應該設定為 「 內容 」 中。 ASP.NET MVC 3 RTM 修正此問題，對於新的檔案，但不會更正專案發行前版本建立的現有檔案的設定。
 - ![](mvc3-release-notes/_static/image3.png)
-- EULA 接受對話方塊在安裝期間，會小於的視窗中顯示的授權條款 / l i。&gt;
+- 在安裝期間，EULA 接受對話方塊會比預期較小視窗中顯示的授權條款。
 - 當您在編輯 Razor 檢視 （.cshtml 檔案） 時，請移至控制器功能表項目，在 Visual Studio 中的將無法使用，而且沒有任何程式碼片段。
 - 如果在安裝 ASP.NET MVC 3 for Visual Web Developer Express，其中未安裝 Visual Studio，在電腦上，然後再安裝 Visual Studio，您必須重新安裝 ASP.NET MVC 3。 Visual Studio 和 Visual Web Developer Express 共用的 ASP.NET MVC 3 安裝程式會升級的元件。 如果您沒有 Visual Web Developer Express 以及然後再安裝 Visual Web Developer Express 的電腦上安裝適用於 Visual Studio ASP.NET MVC 3，就會發生相同問題。
 
@@ -398,7 +398,7 @@ ASP.NET MVC 3 的專案範本現在包含最新版的 jQuery、 jQuery、 驗證
 <a id="_Toc2_4"></a>
 ### <a name="added-htmlraw-method"></a>加入的 Html.Raw 方法
 
-根據預設，Razor 檢視引擎將 HTML 編碼所有的值。 例如，下列程式碼片段將編碼的問候語變數內的 HTML，使它顯示在網頁中做&amp;lt; 強式&amp;gt;Hello World ！&amp;lt; / strong>&amp;gt;。
+根據預設，Razor 檢視引擎將 HTML 編碼所有的值。 例如，下列程式碼片段將編碼的問候語變數內的 HTML，使它顯示在網頁中做`<strong>Hello World!</strong>`。
 
 [!code-cshtml[Main](mvc3-release-notes/samples/sample10.cshtml)]
 
@@ -621,7 +621,7 @@ Namespace.ClassName
 - 安裝程式可能需要更長的時間比舊版 ASP.NET MVC 完成，因為它會更新 Visual Studio 2010 的元件。
 - 當選取"Edit"的強型別檢視 scaffold 加入檢視 scaffolding 唯讀屬性。 同樣地，唯寫屬性會建立 「 顯示 」 檢視的結構。
 - 在安裝期間，EULA 接受對話方塊會比預期較小視窗中顯示的授權條款。
-- 安裝[Visual Studio 非同步 CTP](https://www.microsoft.com/downloads/en/details.aspx?FamilyID=18712f38-fcd2-4e9f-9028-8373dc5732b2&amp;displaylang=en)導致衝突，會包含在工具安裝 ASP.NET MVC 3 Razor 版本。 請確定您未嘗試在同一部電腦上安裝 Visual Studio 非同步 CTP 和 Razor 版本。
+- 安裝 Visual Studio 非同步 CTP 中包含的工具安裝 ASP.NET MVC 3 Razor 版本導致衝突。 請確定您未嘗試在同一部電腦上安裝 Visual Studio 非同步 CTP 和 Razor 版本。
 - 當您在編輯 Razor 檢視 （.cshtml 檔案） 時，請移至控制器功能表項目，在 Visual Studio 中的將無法使用，而且沒有任何程式碼片段。
 
 <a id="TOC_ASP_NET_3_Beta"></a>
@@ -852,7 +852,7 @@ Razor 檢視沒有 IntelliSense 支援，也不語法反白顯示。 它預期�
 
 當使用@model語法來指定強型別的 CSHTML 檢視中，類型的語言特定快速鍵無法辨識。 例如， @model int 將無法運作，但@modelInt32 運作。 此錯誤的因應措施是當您指定的模型型別時使用的實際型別名稱。
 
-當使用@model語法來指定強型別的 CSHTML 檢視 (或@ModelType指定強型別的 VBHTML 檢視)，不支援可為 null 的類型和陣列宣告。 例如， @model int？ 不支援。 請改用@modelNullable&lt;Int32&gt;。 語法@modelstring [] 也不支援; 請改用@modelIList&lt;字串&gt;。
+當使用@model語法來指定強型別的 CSHTML 檢視 (或@ModelType指定強型別的 VBHTML 檢視)，不支援可為 null 的類型和陣列宣告。 例如， @model int？ 不支援。 請改用`@model Nullable<Int32>`。 語法@modelstring [] 也不支援; 請改用`@model IList<string>`。
 
 當您將 ASP.NET MVC 2 專案升級至 ASP.NET MVC 3 時，請確定 Web.config 檔的 appSettings 區段中加入下列：
 

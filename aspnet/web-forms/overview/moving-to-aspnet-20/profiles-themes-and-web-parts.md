@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: c9fe97dbd5fe10cbde25b9daf5ddd35b2d7eaab5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c6ba11799a5a9be3d8c0037fad5d79d8177c0e8
+ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/05/2018
 ---
 <a name="profiles-themes-and-web-parts"></a>設定檔、 主題和 Web 組件
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓您以程式設計方式進行組態變更。 此外，許多新的組態設定存在允許新的設定和測試設備。
 
@@ -96,13 +96,13 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 
 ### <a name="providerbase-members"></a>ProviderBase 成員
 
-| **成員** | **說明** |
+| **成員** | **描述** |
 | --- | --- |
 | Initialize 方法 | 會提供者執行個體的名稱和組態設定的 NameValueCollection 的輸入。 用來設定選項和屬性值的提供者執行個體，包括實作特定值和電腦組態檔或 Web.config 檔案中指定的選項。 |
 
 ### <a name="settingsprovider-members"></a>SettingsProvider 成員
 
-| **成員** | **說明** |
+| **成員** | **描述** |
 | --- | --- |
 | ApplicationName 屬性 | 每個設定檔會儲存在應用程式名稱。 設定檔提供者會使用應用程式名稱來儲存設定檔資訊，分別為每個應用程式。 這可讓多個 ASP.NET 應用程式使用相同的資料來源，而不發生衝突，不同的應用程式中建立相同的使用者名稱。 或者，多個 ASP.NET 應用程式可以共用的設定檔資料來源指定相同的應用程式名稱。 |
 | GetPropertyValues 方法 | 使用做為輸入 SettingsContext 和 SettingsPropertyCollection 的物件。 **SettingsContext**提供之使用者的相關資訊。 您可以使用主索引鍵的資訊來擷取使用者設定檔屬性資訊。 使用**SettingsContext**来取得的使用者名稱和使用者是否已驗證或匿名物件。 **SettingsPropertyCollection**包含 SettingsProperty 物件的集合。 每個**SettingsProperty**物件提供的名稱和類型的屬性，以及其他資訊，例如屬性和屬性是唯讀的預設值。 **GetPropertyValues**方法為基礎的 SettingsPropertyValue 物件中填入 SettingsPropertyValueCollection **SettingsProperty**物件提供作為輸入。 每個指定之使用者資料來源的值指派給 PropertyValue 屬性**SettingsPropertyValue**物件並將整個集合傳回。 呼叫方法也會更新指定的使用者設定檔的 LastActivityDate 值為目前的日期和時間。 |
@@ -110,7 +110,7 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 
 ### <a name="profileprovider-members"></a>ProfileProvider 成員
 
-| **成員** | **說明** |
+| **成員** | **描述** |
 | --- | --- |
 | DeleteProfiles 方法 | 使用做為字串陣列的使用者名稱和刪除資料來源的所有設定檔資訊和屬性值的指定名稱的輸入其中的應用程式名稱符合**ApplicationName**屬性值。 如果您的資料來源支援交易，建議您在交易中包含所有的刪除作業，而且您回復交易任何刪除作業失敗時擲回例外狀況。 |
 | DeleteProfiles 方法 | 使用做為輸入 ProfileInfo 集合物件和資料來源的所有設定檔資訊和屬性值的每個設定檔會刪除其中的應用程式名稱符合**ApplicationName**屬性值。 如果您的資料來源支援交易，建議您在交易中包含所有的刪除作業並回復交易和任何刪除作業失敗時擲回例外狀況。 |
@@ -119,7 +119,7 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 | GetAllInactiveProfiles 方法 | 輸入**ProfileAuthenticationOption**值**DateTime**物件、 指定的頁面索引的整數、 整數，指定頁面大小，以及將會設定為整數的參考若要設定檔的總計數。 傳回**ProfileInfoCollection**包含**ProfileInfo**其中上次活動日期是小於或等於指定的資料來源中的所有設定檔物件**日期時間** ，其中的應用程式名稱必須符合**ApplicationName**屬性值。 **ProfileAuthenticationOption**參數會指定是否只匿名設定檔，只會驗證設定檔，或會傳回所有設定檔。 所傳回的結果**GetAllInactiveProfiles**方法受到的頁面索引和頁面大小值。 頁面大小值指定最大數目**ProfileInfo**物件中傳回**ProfileInfoCollection**。 頁面索引值會指定要傳回，其中 1 代表第一頁的結果的分頁。 記錄總數的參數是 out 參數 (您可以使用**ByRef**在 Visual Basic 中) 設定為設定檔的總數。 例如，如果資料存放區包含 13 應用程式設定檔和頁面索引值為 5，頁面大小的 2 **ProfileInfoCollection**傳回包含第 6 到第十個設定檔。 方法傳回時，會記錄總數值設定為 13。 |
 | FindProfilesByUserName 方法 | 輸入**ProfileAuthenticationOption**值字串，包含使用者名稱、 指定的頁面索引的整數、 整數，指定頁面大小，以及將會設定為的總計數的整數的參考設定檔。 傳回**ProfileInfoCollection**包含**ProfileInfo**物件，其中的使用者名稱符合指定的使用者名稱，其中的應用程式名稱必須符合，來源資料中的所有設定檔**ApplicationName**屬性值。 **ProfileAuthenticationOption**參數會指定是否只匿名設定檔，只會驗證設定檔，或會傳回所有設定檔。 如果您的資料來源支援其他的搜尋功能，例如萬用字元，您可以提供更廣泛的搜尋功能的使用者名稱。 所傳回的結果**FindProfilesByUserName**方法受到的頁面索引和頁面大小值。 頁面大小值指定最大數目**ProfileInfo**物件中傳回**ProfileInfoCollection**。 頁面索引值會指定要傳回，其中 1 代表第一頁的結果的分頁。 記錄總數的參數是 out 參數 (您可以使用**ByRef**在 Visual Basic 中) 設定為設定檔的總數。 例如，如果資料存放區包含 13 應用程式設定檔和頁面索引值為 5，頁面大小的 2 **ProfileInfoCollection**傳回包含第 6 到第十個設定檔。 方法傳回時，會記錄總數值設定為 13。 |
 | FindInactiveProfilesByUserName 方法 | 輸入**ProfileAuthenticationOption**值、 字串，包含使用者名稱， **DateTime**物件、 指定的頁面索引的整數、 整數，指定頁面大小，以及將設定檔的總計數的整數的參考。 傳回**ProfileInfoCollection**包含**ProfileInfo**其中的使用者名稱符合指定的使用者名稱，其中的上次活動日期是在資料來源中的所有設定檔的物件少於或等於指定**DateTime**，和其中的應用程式名稱符合**ApplicationName**屬性值。 **ProfileAuthenticationOption**參數會指定是否只匿名設定檔，只會驗證設定檔，或會傳回所有設定檔。 如果您的資料來源支援其他的搜尋功能，例如萬用字元，您可以提供更廣泛的搜尋功能的使用者名稱。 所傳回的結果**FindInactiveProfilesByUserName**方法受到的頁面索引和頁面大小值。 頁面大小值指定最大數目**ProfileInfo**物件中傳回**ProfileInfoCollection**。 頁面索引值會指定要傳回，其中 1 代表第一頁的結果的分頁。 記錄總數的參數是 out 參數 (您可以使用**ByRef**在 Visual Basic 中) 設定為設定檔的總數。 例如，如果資料存放區包含 13 應用程式設定檔和頁面索引值為 5，頁面大小的 2 **ProfileInfoCollection**傳回包含第 6 到第十個設定檔。 方法傳回時，會記錄總數值設定為 13。 |
-| GetNumberOfInActiveProfiles 方法 | 輸入**ProfileAuthenticationOption**值和**DateTime**物件，並傳回其中上次活動日期是小於或等於指定資料來源中的所有設定檔的計數**DateTime** ，其中的應用程式名稱必須符合**ApplicationName**屬性值。 **ProfileAuthenticationOption**參數會指定是否只匿名設定檔，只會驗證設定檔，或所有設定檔是要計算個數。 |
+| GetNumberOfInActiveProfiles method | 輸入**ProfileAuthenticationOption**值和**DateTime**物件，並傳回其中上次活動日期是小於或等於指定資料來源中的所有設定檔的計數**DateTime** ，其中的應用程式名稱必須符合**ApplicationName**屬性值。 **ProfileAuthenticationOption**參數會指定是否只匿名設定檔，只會驗證設定檔，或所有設定檔是要計算個數。 |
 
 ### <a name="applicationname"></a>ApplicationName
 
@@ -139,14 +139,14 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 
 `C:\WINDOWS\Microsoft.NET\Framework\v2.x.xxxxx\ASP.NETClientFiles\Themes\<Theme_Name>`
 
-特定應用程式特有的佈景主題會儲存在應用程式\_佈景主題\&lt;佈景主題\_名稱&gt;目錄中的網站的根目錄。
+特定應用程式特有的佈景主題會儲存在`App\_Themes\<Theme\_Name>`目錄中的網站的根目錄。
 
 > [!NOTE]
 > 面板檔案只應修改影響外觀的伺服器控制項屬性。
 
 全域主題是可以套用到任何應用程式或網頁伺服器上執行的網站的佈景主題。 這些主題會儲存為 v2.x.xxxxx 目錄內的 ASP.NETClientfiles\Themes 目錄中的預設值。 或者，您可以在這裡將佈景主題檔案移入 aspnet\_用戶端/系統\_web / [version] /Themes/ [佈景主題\_名稱] 中您的網站的根資料夾。
 
-特定應用程式佈景主題只會套用至檔案所在的應用程式。 這些檔案會儲存在應用程式\_佈景主題 /&lt;佈景主題\_名稱&gt;目錄中的網站的根目錄。
+特定應用程式佈景主題只會套用至檔案所在的應用程式。 這些檔案會儲存在`App\_Themes/<theme\_name>`目錄中的網站的根目錄。
 
 ## <a name="the-components-of-a-theme"></a>佈景主題的元件
 
@@ -258,7 +258,7 @@ ASP.NET 設定檔使用的提供者模型。 預設的提供者會將資訊儲�
 
 如果您想要能夠使用佈景主題的面板檔案中定義的屬性會覆寫屬性中指定設計工具中，您可以使用**StyleSheetTheme**屬性，而非佈景主題屬性。 StyleSheetTheme 屬性等同於佈景主題屬性不同之處在於它不會覆寫所有屬性明確設定佈景主題屬性類似。
 
-若要查看此動作中，開啟 web.config 檔案從專案中練習 1 並將變更&lt;頁面&gt;下的項目：
+若要查看此動作中，開啟 web.config 檔案從專案中練習 1 並將變更`<pages>`下的項目：
 
 [!code-xml[Main](profiles-themes-and-web-parts/samples/sample19.xml)]
 
@@ -308,13 +308,13 @@ Web 組件的 UI 控制項，全部都是衍生自**一部分**類別中，由 W
 
 Web 組件控制項集合很大，但某些控制是不可或缺，因為所需要的 Web 組件來運作，或是因為是最常用的 Web 組件頁面上的控制項。 當您開始使用 Web 組件並建立基本的 Web 組件頁面，最好先熟悉下列表格中所述的基本 Web 組件控制項。
 
-| **Web 組件控制項** | **說明** |
+| **Web 組件控制項** | **描述** |
 | --- | --- |
 | WebPartManager | 管理頁面上的所有 Web 組件控制項。 一個 （且只有一個） **WebPartManager**控制項無須針對每個 Web 組件頁面。 |
 | CatalogZone | 包含 CatalogPart 控制項。 使用這個區域建立類別目錄 Web 組件控制項的使用者可以從中選取要新增至網頁的控制項。 |
 | EditorZone | 包含 EditorPart 控制項。 使用這個區域，讓使用者可以編輯並個人化 Web 組件頁面上的控制項。 |
 | WebPartZone | 包含並提供撰寫的主要 UI 頁面的 web 組件控制項的整個版面配置。 當您建立 Web 組件控制項的網頁時，請使用這個區域。 網頁可以包含一或多個區域。 |
-| Connectionszone 的動詞命令 | 包含 WebPartConnection 控制項，並提供使用者介面管理連接。 |
+| ConnectionsZone | 包含 WebPartConnection 控制項，並提供使用者介面管理連接。 |
 | Web 組件 (GenericWebPart) | 呈現的主要 UI。大部分的網頁組件的 UI 控制項歸類到此類別。 最大以程式設計方式控制，您可以建立自訂 Web 組件控制項衍生自基底**WebPart**控制項。 您也可以使用現有的伺服器控制項，使用者控制項或自訂控制項做為 Web 組件控制項。 任何這些控制項放置在區域中，每當**WebPartManager**控制項自動換行以**GenericWebPart**控制項在執行階段，因此，您可以使用 Web 組件功能。 |
 | CatalogPart | 包含提供使用者可以加入至頁面的 Web 組件控制項的清單。 |
 | WebPartConnection | 建立兩個頁面上的 Web 組件控制項之間的連接。 連接會定義 Web 組件控制項的其中一個為資料提供者 （），和另一個則為取用者。 |
@@ -338,11 +338,11 @@ Web 組件控制項集合很大，但某些控制是不可或缺，因為所需�
 1. 關閉 [預設] 頁面，並將新頁面加入至名為 WebPartsDemo.aspx 的網站。
 2. 切換至**設計**檢視。
 3. 從**檢視**功能表上，請確定**隱藏式控制項**和**詳細資料**選項已選取，所以您可以查看配置標記和沒有 UI 的控制項。
-4. 將插入點之前 **&lt;div&gt;** 標記放在設計介面，然後按 ENTER 即可加入新的一行上。 將新行字元前面的插入點，請按一下**區塊格式**下拉式清單控制項的功能表上，然後選取**標題 1**選項。 在標題中，將文字加入**網頁組件示範**。
-5. 從**WebParts**  索引標籤的 工具箱 拖曳**WebPartManager**控制項拖曳到頁面上，只在新行字元之後再放置在 **&lt;div&gt;**標記。   
+4. 將插入點之前`<div>`標記放在設計介面，然後按 ENTER 即可加入新的一行上。 將新行字元前面的插入點，請按一下**區塊格式**下拉式清單控制項的功能表上，然後選取**標題 1**選項。 在標題中，將文字加入**網頁組件示範**。
+5. 從**WebParts**  索引標籤的 工具箱 拖曳**WebPartManager**控制項拖曳到頁面上，只在新行字元之後再放置在`<div>`標記。   
   
  **WebPartManager**控制項不會呈現任何輸出，因此它會顯示為設計工具介面上的灰色方塊。
-6. 插入點內 **&lt;div&gt;** 標記。
+6. 插入點內`<div>`標記。
 7. 在**配置**功能表上，按一下 **插入表格**，並建立新的資料表具有一個資料列和三個資料行。 按一下**資料格屬性**按鈕，選取**頂端**從**垂直對齊**下拉式清單中，按一下 **確定**，按一下**確定**再次來建立資料表。
 8. WebPartZone 控制項拖曳至左側的資料表資料行。 以滑鼠右鍵按一下**WebPartZone**控制項、 選擇 **屬性**，並設定下列屬性：   
   
@@ -358,13 +358,13 @@ Web 組件控制項集合很大，但某些控制是不可或缺，因為所需�
 
 您的網頁現在有兩個不同的區域，您可以個別控制。 不過，兩個區域都任何內容，是建立內容的下一個步驟。 這個逐步解說中，您使用 Web 組件的控制項，僅顯示靜態內容。
 
-所指定的 Web 組件區域配置 **&lt;zonetemplate&gt;** 項目。 在區域範本中，您可以加入任何 ASP.NET 控制項，是否為自訂的 Web 組件控制項、 使用者控制項或現有的伺服器控制項。 請注意，此處使用的標籤控制項，您只要加入靜態文字。 當您將一般的伺服器控制項中**WebPartZone**區域，ASP.NET 會視為控制項 Web 組件控制項在執行階段，可讓控制項上的 Web 組件功能。
+所指定的 Web 組件區域配置&lt;zonetemplate&gt;項目。 在區域範本中，您可以加入任何 ASP.NET 控制項，是否為自訂的 Web 組件控制項、 使用者控制項或現有的伺服器控制項。 請注意，此處使用的標籤控制項，您只要加入靜態文字。 當您將一般的伺服器控制項中**WebPartZone**區域，ASP.NET 會視為控制項 Web 組件控制項在執行階段，可讓控制項上的 Web 組件功能。
 
 **若要建立主要區域的內容**
 
 1. 在**設計**檢視中，拖曳**標籤**控制項從**標準**到內部網路區域的 [內容] 區域的 [工具箱] 索引標籤的**識別碼**屬性設定為 MainZone。
-2. 切換至**來源**檢視。 請注意，  **&lt;zonetemplate&gt;** 項目已加入至包裝**標籤**MainZone 中的控制項。
-3. 加入名為屬性**標題**至 **&lt;asp： 標籤&gt;**項目，並將其值設定為內容。 移除文字 ="Label"屬性，從 **&lt;asp： 標籤&gt;**項目。 開頭和結尾標記之間 **&lt;asp： 標籤&gt;**項目，例如加入一些文字**歡迎使用我的首頁**內的一組 **&lt;h2&gt;** 項目標記。 您的程式碼應如下所示。 
+2. 切換至**來源**檢視。 請注意， &lt;zonetemplate&gt;項目已加入至包裝**標籤**MainZone 中的控制項。
+3. 加入名為屬性**標題**至&lt;asp： 標籤&gt;項目，並將其值設定為內容。 移除文字 ="Label"屬性，從&lt;asp： 標籤&gt;項目。 開頭和結尾標記之間&lt;asp： 標籤&gt;項目，例如加入一些文字**歡迎使用我的首頁**內的一組&lt;h2&gt;項目標記。 您的程式碼應如下所示。 
 
     [!code-aspx[Main](profiles-themes-and-web-parts/samples/sample21.aspx)]
 4. 儲存檔案。
@@ -396,7 +396,7 @@ Web 組件控制項集合很大，但某些控制是不可或缺，因為所需�
 3. 使用者控制您建立的網頁，SearchUserControl.ascx，拖曳**方案總管 中**進入區域其**識別碼**屬性設定為 SidebarZone，而且那里卸除它。
 4. 儲存 WebPartsDemo.aspx 網頁。
 5. 切換至**來源**檢視。
-6. 內部 **&lt;asp: webpartzone&gt;**  SidebarZone，正上方加入使用者控制項，參考的項目加入 **&lt;asp： 標籤&gt;**包含連結，如下列範例所示的項目。 此外，請加入**標題**屬性加入使用者控制項的標記，其值為**搜尋**，如下所示。 
+6. 內部&lt;asp: webpartzone&gt; SidebarZone，正上方加入使用者控制項，參考的項目加入&lt;asp： 標籤&gt;具有項目所包含的連結，如下列範例所示。 此外，請加入**標題**屬性加入使用者控制項的標記，其值為**搜尋**，如下所示。 
 
     [!code-aspx[Main](profiles-themes-and-web-parts/samples/sample23.aspx)]
 7. 儲存並關閉檔案。
@@ -417,7 +417,7 @@ Web 組件控制項集合很大，但某些控制是不可或缺，因為所需�
 
 Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控制項的版面配置功能。 除了可讓使用者移動**WebPart**到另一個區域從控制項，您可以允許使用者編輯控制項，包括其外觀、 配置和行為的各種特性。 Web 組件控制項集合提供基本的編輯功能，如**WebPart**控制項。 雖然您並不是在本逐步解說，您也可以建立自訂編輯器控制項，可讓使用者編輯的功能**WebPart**控制項。 如同變更的位置**WebPart**控制項中，編輯控制項的屬性依賴 ASP.NET 個人化，以儲存使用者所做的變更。
 
-在這個部分的逐步解說中，您加入要編輯的基本特性的任何使用者的能力**WebPart**頁面上的控制項。 若要啟用這些功能，您將另一個自訂使用者控制項加入頁面中，連同 **&lt;asp: editorzone&gt;** 項目和兩個編輯控制項。
+在這個部分的逐步解說中，您加入要編輯的基本特性的任何使用者的能力**WebPart**頁面上的控制項。 若要啟用這些功能，您將另一個自訂使用者控制項加入頁面中，連同&lt;asp: editorzone&gt;項目和兩個編輯控制項。
 
 ### <a name="to-create-a-user-control-that-enables-changing-page-layout"></a>若要建立使用者控制項，可讓變更頁面配置
 
@@ -501,7 +501,7 @@ Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控�
 4. 從**WebParts**區段的 [工具箱] 拖曳至 DeclarativeCatalogPart 控制項的內容區域的**CatalogZone**控制項。
 5. 按一下右上角的箭號**DeclarativeCatalogPart**公開其工作功能表上，控制，然後選取 **編輯樣板**。
 6. 從**標準**區段的 [工具箱] 拖曳**檔案上傳**控制項和**行事曆**控制項放入**WebPartsTemplate**區段**DeclarativeCatalogPart**控制項。
-7. 切換至**來源**檢視。 檢查來源的程式碼的 **&lt;asp: catalogzone&gt;** 項目。 請注意， **DeclarativeCatalogPart**控制項包含 **&lt;webpartstemplate&gt;** 具有兩個括住的伺服器控制項，您可以加入到頁面項目從類別目錄。
+7. 切換至**來源**檢視。 檢查來源的程式碼的&lt;asp: catalogzone&gt;項目。 請注意， **DeclarativeCatalogPart**控制項包含&lt;webpartstemplate&gt;具有兩個括住的伺服器控制項，您將能夠加入至您的頁面從類別目錄項目。
 8. 新增**標題**屬性為每個控制項，您加入至類別目錄中，使用每個項目在下列程式碼範例顯示的字串值。 即使不是屬性標題。 您可以正常上設定這些兩種伺服器控制項在設計階段，當使用者將這些控制項，以**WebPartZone**區域從執行階段類別目錄，它們是每個各加**GenericWebPart**控制項。 這可讓它們當做 Web 組件控制項，因此他們將無法顯示標題。   
   
  兩個控制項中所包含的程式碼**DeclarativeCatalogPart**控制項看起來應該如下。 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 946ccc80915c5de60976a98cbbb253cb8dfacaca
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7f0e30b3ac7f9cc3a32bd96f45d83ba13505a475
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -71,7 +71,7 @@ public class Startup
 }
 ```
 
-`ConfigureServices` 會定義應用程式所使用的[服務](#dependency-injection-services) (例如 ASP.NET Core MVC、Entity Framework Core、Identity 等)。 `Configure` 則會定義要求管線的[中介軟體](xref:fundamentals/middleware)。
+`ConfigureServices` 會定義應用程式所使用的[服務](#dependency-injection-services) (例如 ASP.NET Core MVC、Entity Framework Core、Identity 等)。 `Configure` 則會定義要求管線的[中介軟體](xref:fundamentals/middleware/index)。
 
 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
@@ -91,9 +91,9 @@ public class Startup
 
 ## <a name="middleware"></a>中介軟體
 
-在 ASP.NET Core 中，您可以使用[中介軟體](xref:fundamentals/middleware)來撰寫要求管線。 ASP.NET Core 中介軟體會對 `HttpContext` 執行非同步邏輯，然後叫用序列中的下一個中介軟體或直接終止要求。 透過在 `Configure` 方法中叫用 `UseXYZ` 擴充方法，新增稱為 "XYZ" 的中介軟體元件。
+在 ASP.NET Core 中，您可以使用[中介軟體](xref:fundamentals/middleware/index)來撰寫要求管線。 ASP.NET Core 中介軟體會對 `HttpContext` 執行非同步邏輯，然後叫用序列中的下一個中介軟體或直接終止要求。 透過在 `Configure` 方法中叫用 `UseXYZ` 擴充方法，新增稱為 "XYZ" 的中介軟體元件。
 
-ASP.NET Core 隨附一組豐富的內建中介軟體：
+ASP.NET Core 內含一組豐富的內建中介軟體：
 
 * [靜態檔案](xref:fundamentals/static-files)
 * [路由傳送](xref:fundamentals/routing)
@@ -103,7 +103,7 @@ ASP.NET Core 隨附一組豐富的內建中介軟體：
 
 ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介軟體，您也可以自行撰寫自訂的中介軟體。
 
-如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
+如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
 
 ## <a name="environments"></a>環境
 

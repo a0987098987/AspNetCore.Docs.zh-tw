@@ -36,13 +36,13 @@
 #### [更新頁面](xref:tutorials/razor-pages-mac/da1)
 #### [新增搜尋](xref:tutorials/razor-pages-mac/search)
 
-
 ### [使用 VS Code 建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-vsc/index)
 #### [開始使用 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
 #### [新增模型](xref:tutorials/razor-pages-vsc/model)
 #### [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-vsc/page)
 #### [使用 SQLite](xref:tutorials/razor-pages-vsc/sql)
 #### [更新頁面](xref:tutorials/razor-pages-vsc/da1)
+#### [新增搜尋](xref:tutorials/razor-pages-vsc/search)
 
 ### [使用 Visual Studio for Mac 建立 MVC Web 應用程式](xref:tutorials/first-mvc-app-mac/index)
 #### [快速入門](xref:tutorials/first-mvc-app-mac/start-mvc)
@@ -102,7 +102,9 @@
 # [基礎概念](fundamentals/index.md)
 ## [應用程式啟動](fundamentals/startup.md)
 ## [相依性插入 (服務)](fundamentals/dependency-injection.md)
-## [中介軟體](fundamentals/middleware.md)
+## [中介軟體](xref:fundamentals/middleware/index)
+### [中介軟體](xref:fundamentals/middleware/index)
+### [Factory 式中介軟體](xref:fundamentals/middleware/extensibility)
 ## [使用靜態檔案](fundamentals/static-files.md)
 ## [路由傳送](fundamentals/routing.md)
 ## [URL 重寫中介軟體](fundamentals/url-rewriting.md)

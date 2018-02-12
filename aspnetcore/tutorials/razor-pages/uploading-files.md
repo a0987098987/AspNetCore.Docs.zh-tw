@@ -2,18 +2,18 @@
 title: "將檔案上傳至 ASP.NET Core 的 Razor 頁面"
 author: guardrex
 description: "了解如何將檔案上傳至 Razor 頁面。"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/12/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: a29043ac5d28ae8efcbbd6919e73e3774ba22699
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 24eaa0dd9293cc932c51d280300308e835a0840e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -76,9 +76,9 @@ Update-Database
 
 每個表單群組包含驗證 **\<範圍>**。 如果使用者的輸入不符合 `FileUpload` 類別中所設的內容屬性，或若有任何 `ProcessFormFile` 方法的檔案驗證檢查失敗，則模型驗證會失敗。 模型驗證失敗時，系統會顯示對使用者很有幫助的驗證訊息。 例如，系統會將 `Title` 屬性附註 `[Required]` 和 `[StringLength(60, MinimumLength = 3)]`。 如果使用者未提供標題，則會收到訊息，指出該值為必要項目。 如果使用者輸入的值少於 3 個字元或超過 60 個字元，則會收到訊息，指出該值的長度有誤。 如果提供的檔案沒有任何內容，則會顯示訊息，指出檔案為空白。
 
-## <a name="add-the-code-behind-file"></a>新增程式碼後置檔案
+## <a name="add-the-page-model"></a>新增頁面模型
 
-將程式碼後置檔案 (*Index.cshtml.cs*) 新增至 *Schedules* 資料夾：
+將頁面模型 (*Index.cshtml.cs*) 新增至 *Schedules* 資料夾：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs)]
 
@@ -110,7 +110,7 @@ Update-Database
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
 
-程式碼後置檔案 (*Delete.cshtml.cs*) 會將 `id` 所識別的單一排程載入要求的路由資料中。 將 *Delete.cshtml.cs* 檔案新增至 *Schedules* 資料夾：
+頁面模型 (*Delete.cshtml.cs*) 會將 `id` 所識別的單一排程載入要求的路由資料中。 將 *Delete.cshtml.cs* 檔案新增至 *Schedules* 資料夾：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs)]
 

@@ -1,26 +1,26 @@
 ---
 title: "使用 ASP.NET Core 和 Visual Studio for Mac 建立 Web API"
-description: "使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API"
 author: rick-anderson
+description: "使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API"
+helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
+manager: wpickett
 ms.author: riande
 ms.date: 09/15/2017
-ms.topic: get-started-article
 ms.prod: asp.net-core
-uid: tutorials/first-web-api-mac
-helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
 ms.technology: aspnet
-manager: wpickett
-ms.openlocfilehash: 4f2643a91e1523008b68df670a9734e3d4dea5a8
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.topic: get-started-article
+uid: tutorials/first-web-api-mac
+ms.openlocfilehash: b0e1a331fe3229119f4669fa336b6af4822785bf
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Mike Wasson](https://github.com/mikewasson) 提供
 
-在本教學課程中，您將建置 Web API 來管理「待辦事項」項目清單， 而不會建置 UI。
+在本教學課程中，請建置 Web API 來管理「待辦事項」項目清單。 不會建構 UI。
 
 本教學課程有 3 個版本：
 

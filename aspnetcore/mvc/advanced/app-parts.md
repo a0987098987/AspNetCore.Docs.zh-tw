@@ -1,29 +1,29 @@
 ---
-title: "在 ASP.NET Core 應用程式組件"
+title: "ASP.NET Core 的應用程式組件"
 author: ardalis
-description: "了解如何使用應用程式組件，也就是 abstrations 透過應用程式的資源，設定您的應用程式探索，或避免功能載入的組件。"
-ms.author: riande
+description: "了解如何使用應用程式組件 (也就是應用程式資源的抽象概念)、設定您的應用程式以探索或避免載入組件的功能。"
 manager: wpickett
+ms.author: riande
 ms.date: 01/04/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 702d7773374f331b25489060b18f752186d7acea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 6b855f8725dacc89a7e0607224ef3c19ab9f5676
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="application-parts-in-aspnet-core"></a>在 ASP.NET Core 應用程式組件
+# <a name="application-parts-in-aspnet-core"></a>ASP.NET Core 的應用程式組件
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-*應用程式部分*是的抽象概念的應用程式中，然後再從中 MVC 等功能的控制站，檢視元件的資源，或可能會發現標記協助程式。 應用程式一部分的其中一個範例是 AssemblyPart，封裝組件參考和公開型別和編譯的參考。 *功能提供者*使用應用程式組件，以填入 ASP.NET Core MVC 應用程式的功能。 主要使用案例的應用程式組件可讓您設定您的應用程式探索 （或避免載入） MVC 組件中的功能。
+「應用程式組件」是應用程式資源的抽象概念，其中您可以探索到控制器、檢視元件或標籤協助程式等 MVC 功能。 應用程式組件的其中一個範例是 AssemblyPart，其會封裝組件參考，並將類型與編譯參考公開。 「功能提供者」會使用應用程式組件，來填入 ASP.NET Core MVC 應用程式的功能。 應用程式組件的主要使用案例是讓您設定應用程式，以探索 (或避免載入) 組件中的 MVC 功能。
 
-## <a name="introducing-application-parts"></a>介紹應用程式組件
+## <a name="introducing-application-parts"></a>應用程式組件簡介
 
-MVC 應用程式載入從其功能[應用程式組件](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart)。 特別是， [AssemblyPart](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart)類別代表組件所支援的應用程式部分。 您可以使用這些類別來探索及載入 MVC 功能，例如控制器、 檢視元件、 標記協助程式和 razor 編譯來源。 [ApplicationPartManager](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager)負責追蹤 MVC 應用程式的應用程式組件和功能提供者。 您可以互動`ApplicationPartManager`中`Startup`MVC 的設定時：
+MVC 應用程式會從[應用程式組件](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart)載入其功能。 值得注意的是，[AssemblyPart](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) 類別代表組件所支援的應用程式組件。 您可以使用這些類別來探索及載入 MVC 功能，例如控制器、檢視元件、標籤協助程式和 Razor 編譯來源。 [ApplicationPartManager](/aspnet/core/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) 負責追蹤適用於 MVC 應用程式的應用程式組件和功能提供者。 您可以在設定 MVC 時與 `Startup` 中的 `ApplicationPartManager` 互動：
 
 ```csharp
 // create an assembly part from a class's assembly
@@ -38,11 +38,11 @@ services.AddMvc()
     .ConfigureApplicationPartManager(apm => p.ApplicationParts.Add(part));
 ```
 
-根據預設 MVC 會搜尋相依性樹狀結構，並尋找控制站 （即使在其他組件）。 若要載入的任意組件 （比方說，外掛程式不是參考在編譯時期），您可以使用應用程式部分。
+MVC 預設會搜尋相依性樹狀結構，並尋找控制器 (即使位於其他組件中)。 您可以使用應用程式組件，來載入任意組件 (例如來自未於編譯時期參考的外掛程式)。
 
-您可以使用應用程式組件，以便*避免*找尋特定組件或位置中控制站。 您可以控制哪些組件 （或組件） 可用應用程式藉由修改`ApplicationParts`集合`ApplicationPartManager`。 中的項目順序`ApplicationParts`集合並不重要。 請務必完全設定`ApplicationPartManager`再用來設定服務容器中。 例如，您應該完全設定`ApplicationPartManager`叫用之前`AddControllersAsServices`。 這麼做，該應用程式組件中的控制站之後加入方法呼叫不會受到影響的意義 （將不會取得已註冊為服務） 這可能會造成不正確的 bevavior 應用程式。
+您可以使用應用程式組件，來「避免」尋找特定組件或位置中的控制器。 藉由修改 `ApplicationPartManager` 的 `ApplicationParts` 集合，您可以控制要提供給應用程式哪些組件。 `ApplicationParts` 集合中的項目順序並不重要。 請務必完全設定 `ApplicationPartManager` 之後，再用它來設定容器中的服務。 例如，您應該完全設定 `ApplicationPartManager` 之後，再叫用 `AddControllersAsServices`。 如果您沒有這麼做，於呼叫該方法之後才新增的應用程式組件控制器就不會受到影響 (亦無法註冊為服務)，而這可能會造成應用程式的行為異常。
 
-如果您有包含控制站，您不想要使用的組件，將它從移除`ApplicationPartManager`:
+如果組件包含您不想使用的控制器，請將它從 `ApplicationPartManager` 移除：
 
 ```csharp
 services.AddMvc()
@@ -58,22 +58,22 @@ services.AddMvc()
     })
 ```
 
-除了專案的組件和其相依的組件，`ApplicationPartManager`將包含組件，以便`Microsoft.AspNetCore.Mvc.TagHelpers`和`Microsoft.AspNetCore.Mvc.Razor`預設。
+除了專案的組件和其相依組件，`ApplicationPartManager` 還預設包含 `Microsoft.AspNetCore.Mvc.TagHelpers` 和 `Microsoft.AspNetCore.Mvc.Razor` 的組件。
 
 ## <a name="application-feature-providers"></a>應用程式功能提供者
 
-應用程式功能提供者會檢查應用程式組件，並對這些組件提供的功能。 有下列的 MVC 功能內建功能提供者：
+應用程式功能提供者會檢查應用程式組件，並對這些組件提供功能。 下列 MVC 功能均內建功能提供者：
 
 * [控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
 * [中繼資料參考](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
 * [標記協助程式](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [檢視元件](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
-功能提供者繼承自`IApplicationFeatureProvider<T>`，其中`T`功能的類型。 您可以實作您自己上面所列的任何 MVC 的功能類型提供者的功能。 功能中的提供者順序`ApplicationPartManager.FeatureProviders`集合可能會很重要，因為更新的提供者可以做出回應之前的提供者所採取的動作。
+繼承自 `IApplicationFeatureProvider<T>` 的功能提供者，其中 `T` 是功能的類型。 針對上述所列的任何 MVC 功能類型，您可以實作自己的功能提供者。 在 `ApplicationPartManager.FeatureProviders` 集合中，功能提供者順序可能相當重要，因為更新版本的提供者可以依據舊版提供者所採取的動作做出回應。
 
-### <a name="sample-generic-controller-feature"></a>範例： 泛型控制器功能
+### <a name="sample-generic-controller-feature"></a>範例：泛型控制器功能
 
-根據預設，ASP.NET Core MVC 會忽略一般控制站 (例如， `SomeController<T>`)。 這個範例會使用預設提供者之後執行，並將指定之清單的類型的泛型控制器執行個體的控制站功能提供者 (定義於`EntityTypes.Types`):
+根據預設，ASP.NET Core MVC 會忽略泛型控制器 (例如 `SomeController<T>`)。 這個範例使用的控制器功能提供者，會在預設提供者之後執行，並新增指定類型清單 (定義於 `EntityTypes.Types`) 的泛型控制器執行個體：
 
 [!code-csharp[Main](./app-parts/sample/AppPartsSample/GenericControllerFeatureProvider.cs?highlight=13&range=18-36)]
 
@@ -81,7 +81,7 @@ services.AddMvc()
 
 [!code-csharp[Main](./app-parts/sample/AppPartsSample/Model/EntityTypes.cs?range=6-16)]
 
-功能提供者就會加入`Startup`:
+系統會將功能提供者新增至 `Startup`：
 
 ```csharp
 services.AddMvc()
@@ -89,24 +89,24 @@ services.AddMvc()
         p.FeatureProviders.Add(new GenericControllerFeatureProvider()));
 ```
 
-根據預設，用於路由的泛用的控制器名稱可能會在表單的*GenericController'1 [Widget]*而不是*Widget*。 下列屬性用來修改要對應至控制器所使用的泛型類型的名稱：
+根據預設，用於路由的泛用控制器名稱格式為 *GenericController'1[Widget]* 而不是 *Widget*。 您可以使用下列屬性修改名稱，以對應至控制器所使用的泛型型別：
 
 [!code-csharp[Main](./app-parts/sample/AppPartsSample/GenericControllerNameConvention.cs)]
 
-`GenericController`類別：
+`GenericController` 類別：
 
 [!code-csharp[Main](./app-parts/sample/AppPartsSample/GenericController.cs?highlight=5-6)]
 
-結果中，要求相符的路由時：
+要求相符路由時的結果為：
 
-![輸出範例應用程式中的範例會讀取的 'Hello 從泛型 Sproket 控制器'。](app-parts/_static/generic-controller.png)
+![來自範例應用程式的輸出範例會顯示 'Hello from a generic Sproket controller'。](app-parts/_static/generic-controller.png)
 
-### <a name="sample-display-available-features"></a>範例： 顯示可用的功能
+### <a name="sample-display-available-features"></a>範例：顯示可用的功能
 
-您可以逐一填入可用的功能加入至應用程式要求`ApplicationPartManager`透過[相依性插入](../../fundamentals/dependency-injection.md)並使用它來填入適當的功能的執行個體：
+您可以透過[相依性插入](../../fundamentals/dependency-injection.md)要求 `ApplicationPartManager`，並使用它來填入適當的功能執行個體，以逐一查看適用於應用程式的已填入功能：
 
 [!code-csharp[Main](./app-parts/sample/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
 範例輸出：
 
-![範例應用程式中的範例輸出](app-parts/_static/available-features.png)
+![來自範例應用程式的範例輸出](app-parts/_static/available-features.png)

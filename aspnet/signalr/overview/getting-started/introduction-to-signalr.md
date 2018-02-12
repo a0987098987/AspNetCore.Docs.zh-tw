@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 27150d314b6861f1098e6ef4a7de94e7b371a78e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 64ac4e3575f69c164ba053943984ef25f906d7f4
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/11/2018
 ---
 <a name="introduction-to-signalr"></a>SignalR 的簡介
 ====================
@@ -35,7 +35,7 @@ ASP.NET SignalR 是 ASP.NET 開發人員的程式庫，可簡化將即時 web �
 
 SignalR 可用來將任何類型的 「 即時 」 web 功能新增至您的 ASP.NET 應用程式。 雖然交談通常會使用做為範例中，您可以一大堆多。 每當使用者重新整理網頁即可看到新的資料，或頁面實作[長輪詢](http://en.wikipedia.org/wiki/Push_technology#Long_polling)擷取新的資料，它是使用 SignalR 的候選。 範例包括儀表板和監視應用程式、 共同作業應用程式 （例如同時編輯的文件），工作進度更新和即時的表單。
 
-SignalR 也可讓支援全新的 web 應用程式需要在伺服器上，從高頻率更新類型，例如即時遊戲。 這樣的絕佳範例，請參閱[ShootR 遊戲。](http://shootr.signalr.net/)
+SignalR 也可讓支援全新的 web 應用程式需要在伺服器上，從高頻率更新類型，例如即時遊戲。
 
 SignalR 提供一個簡單 API 來建立伺服器到用戶端的遠端程序呼叫 (RPC) 從伺服器端.NET 程式碼呼叫 JavaScript 函式，在用戶端瀏覽器 （和其他用戶端平台）。 SignalR 也包含連接管理 API （例如，連接和中斷連線事件），及群組的連線。
 

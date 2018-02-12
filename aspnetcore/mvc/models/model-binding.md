@@ -1,50 +1,50 @@
 ---
 title: "模型繫結"
 author: rachelappel
-description: "在 ASP.NET Core MVC 模型繫結的相關資訊"
-ms.author: rachelap
+description: "ASP.NET Core MVC 中的模型繫結資訊"
 manager: wpickett
-ms.date: 01/22/2018
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
+ms.author: rachelap
+ms.date: 01/22/2018
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/models/model-binding
-ms.openlocfilehash: 26c4c016548cc3e465991c5ebf16893d4022145d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: d64d2792d7c682f9112133be1b9d129b2fc8a048
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="model-binding"></a>模型繫結
 
-由[Rachel Appel](https://github.com/rachelappel)
+作者：[Rachel Appel](https://github.com/rachelappel)
 
-## <a name="introduction-to-model-binding"></a>模型繫結的簡介
+## <a name="introduction-to-model-binding"></a>模型繫結簡介
 
-在 ASP.NET Core MVC 模型繫結會對應至動作方法參數的資料從 HTTP 要求。 參數可能是簡單類型，例如字串、 整數或浮點數，或者可能是複雜類型。 這是 MVC 的絕佳功能，因為內送資料對應到對應的是經常重複的情況下，無論資料的大小或複雜度。 MVC 再抽離繫結，因此開發人員不需要保留重寫稍有不同版本的每個應用程式中相同的程式碼，來解決這個問題。 撰寫您自己的文字類型轉換子的程式碼過於冗長，而且容易產生錯誤。
+ASP.NET Core MVC 中的模型繫結會將 HTTP 要求中的資料對應至動作方法參數。 參數可能是簡單類型，例如字串、整數或浮點數，或者可能是複雜類型。 這是 MVC 的絕佳功能，因為將內送資料對應至對應項目是經常重複的情況，而不論資料的大小或複雜度。 MVC 解決此問題的方式是抽離繫結，讓開發人員不需要持續重寫每個應用程式中相同程式碼的略稍不同版本。 撰寫您自己的文字類型轉換器程式碼十分冗長，而且容易發生錯誤。
 
-## <a name="how-model-binding-works"></a>模型繫結的運作方式
+## <a name="how-model-binding-works"></a>模型繫結運作方式
 
-MVC 收到 HTTP 要求時，它將其路由至特定的動作方法的控制器。 它會判斷要根據執行的路由資料中的動作方法，則它將值繫結從 HTTP 要求到該動作方法的參數。 例如，請考慮下列 URL:
+MVC 在收到 HTTP 要求時，會將它路由至控制器的特定動作方法。 它會根據路由資料中的內容來判斷要執行的動作方法，然後將 HTTP 要求中的值繫結至該動作方法的參數。 例如，請考慮下列 URL：
 
 `http://contoso.com/movies/edit/2`
 
-因為路由範本看起來像這樣， `{controller=Home}/{action=Index}/{id?}`，`movies/edit/2`會路由傳送至`Movies`控制站，且其`Edit`動作方法。 它也可接受選擇性參數呼叫`id`。 動作方法的程式碼看起來應該像這樣：
+因為路由範本與 `{controller=Home}/{action=Index}/{id?}` 類似，所以 `movies/edit/2` 會路由至 `Movies` 控制器和其 `Edit` 動作方法。 它也接受稱為 `id` 的選擇性參數。 動作方法的程式碼應該如下：
 
 ```csharp
 public IActionResult Edit(int? id)
    ```
 
-注意： 不區分大小寫的字串中的 URL 路由。
+注意：URL 路由中的字串不區分大小寫。
 
-MVC 會嘗試要求將資料繫結至動作參數名稱。 MVC 會尋找每個參數值使用的參數名稱和公用的可設定屬性的名稱。 在上述範例中，唯一的動作參數之所以名為`id`，後者則 MVC 繫結至具有相同名稱的路由值的值。 除了路由值 MVC 將資料從繫結要求的各個部分，而不按照順序。 以下是在模型繫結會透過它們的順序中的資料來源的清單：
+MVC 會嘗試依名稱將要求資料繫結至動作參數。 MVC 會使用參數名稱以及其公用 settable 屬性的名稱來尋找每個參數的值。 在上述範例中，唯一的動作參數命名為 `id`，而 MVC 會繫結至路由值中同名的值。 除了路由值之外，MVC 會繫結要求各部分的資料，並且依設定的順序執行。 以下是資料來源清單，而其順序就是模型繫結查看它們的順序：
 
-1. `Form values`： 這些是在使用 POST 方法的 HTTP 要求的表單值。 （包括 jQuery POST 要求）。
+1. `Form values`：這些是使用 POST 方法查看 HTTP 要求的表單值  (包括 jQuery POST 要求)。
 
-2. `Route values`： 所提供的路由值的集合[路由](xref:fundamentals/routing)
+2. `Route values`：[路由](xref:fundamentals/routing)所提供的一組路由值
 
-3. `Query strings`: URI 查詢字串組件。
+3. `Query strings`：URI 的查詢字串組件。
 
 <!-- DocFX BUG
 The link works but generates an error when building with DocFX
@@ -52,67 +52,67 @@ The link works but generates an error when building with DocFX
 [Routing](xref:fundamentals/routing)
 -->
 
-注意： 表單值、 路由資料和查詢字串會儲存為名稱 / 值組。
+注意：表單值、路由資料和查詢字串都是儲存為名稱/值組。
 
-由於模型繫結要求名為`id`任何名為`id`表單值，它進入尋找該索引鍵的路由值。 在本例中，相符。 繫結發生，並將值轉換為 2 的整數。 使用 編輯 (字串 id) 相同的要求會將轉換成"2"的字串。
+因為模型繫結要求名為 `id` 的索引鍵，而且表單值中沒有名為 `id` 的項目，所以會繼續尋找該索引鍵的路由值。 在我們的範例中，它是相符項目。 進行繫結，並且將值轉換成整數 2。 使用 Edit(string id) 的相同要求會轉換成字串 "2"。
 
-到目前為止的範例會使用簡單類型。 在 MVC 簡單類型會是任何.NET 基本型別或字串型別轉換子的型別。 如果動作方法的參數是類別，例如`Movie`型別，其中包含簡單和複雜類型，如同屬性，MVC 的模型繫結仍會妥善處理。 它會使用反映和遞迴周遊尋找相符的複雜類型的屬性。 模型繫結會尋找模式*parameter_name.property_name*繫結至屬性的值。 如果找不到相符的值，這種形式的它會嘗試使用屬性名稱進行繫結。 針對這些類型，例如`Collection`型別，模型繫結會尋找相符項目*parameter_name [index]*或簡稱*[index]*。 模型繫結會視為`Dictionary`同樣地，類型要求*parameter_name [key]*或簡稱*[key]*，只要索引鍵是簡單類型。 支援的索引鍵符合欄位名稱 HTML 和標記協助程式產生相同的模型型別。 這可讓反覆存取值，讓表單欄位時，維持填滿與使用者的輸入，其方便起見，比方說，從建立或編輯繫結的資料未通過驗證。
+到目前為止，範例會使用簡單類型。 在 MVC 中，簡單類型是任何 .NET 基本類型或是包含字串類型轉換子的類型。 如果動作方法的參數是類別 (例如將簡單和複雜類型包含為屬性的 `Movie` 類型)，則仍會妥善地處理 MVC 的模型繫結。 它會使用反映和遞迴以周遊尋找相符項目之複雜類型的屬性。 模型繫結會尋找模式 *parameter_name.property_name*，以將值繫結至屬性。 如果找不到此表單的相符值，則會嘗試只使用屬性名稱進行繫結。 針對這些類型 (例如 `Collection` 類型)，模型繫結會尋找 *parameter_name[index]* 或只尋找 *[index]* 的相符項目。 模型繫結會以同樣地方式處理 `Dictionary` 類型，並要求 *parameter_name[key]* 或只要求 *[key]*，只要索引鍵是簡單類型即可。 所支援的索引鍵符合針對相同模型類型所產生的欄位名稱 HTML 和標籤協助程式。 這會啟用反覆存取值，讓表單欄位持續填入使用者輸入，以方便使用；例如，從建立或編輯所繫結的資料未通過驗證時。
 
-順序，就可能發生的繫結的類別必須具有公用預設建構函式，並繫結的成員必須是公用的可寫入屬性。 當模型繫結發生時，此類別將只使用具現化公用預設建構函式時，可以設定的屬性。
+若要進行繫結，類別必須具有公用預設建構函式，而要繫結的成員必須是公用可寫入屬性。 發生模型繫結時，只會使用公用預設建構函式來具現化此類別，接著可以設定屬性。
 
-參數繫結，模型繫結會停止尋找具有該名稱的值，它會移至下一個參數繫結。 否則，預設模型繫結行為會將參數設為預設值根據其類型而定：
+繫結參數時，模型繫結會停止尋找具有該名稱的值，並繼續繫結下一個參數。 否則，預設模型繫結行為會將參數設定為其預設值 (視其類型而定)：
 
-* `T[]`： 使用的陣列型別的`byte[]`，繫結會設定參數的型別`T[]`至`Array.Empty<T>()`。 類型的陣列`byte[]`設為`null`。
+* `T[]`：繫結會將類型 `T[]` 的參數設定為 `Array.Empty<T>()`，但類型 `byte[]` 陣列除外。 類型 `byte[]` 陣列會設定為 `null`。
 
-* 參考型別： 繫結建立執行個體類別的預設建構函式未設定屬性。 不過，模型繫結設定`string`參數`null`。
+* 參考類型：繫結會建立具有預設建構函式的類別執行個體，但未設定屬性。 不過，模型繫結會將 `string` 參數設定為 `null`。
 
-* 可為 null 的類型： 可為 Null 的型別會設定為`null`。 在上述範例中，模型繫結設定`id`至`null`因為它是型別`int?`。
+* 可為 Null 的類型：可為 Null 的類型設定為 `null`。 在上述範例中，模型繫結會將 `id` 設定為 `null`，因為它的類型為 `int?`。
 
-* 實值型別： 不可為 null 值類型的型別`T`設為`default(T)`。 例如，模型繫結會設定參數`int id`設為 0。 請考慮使用模型驗證或可為 null 的類型，而不要依賴預設值。
+* 實值型別：類型為 `T` 的不可為 Null 的實值型別會設定為 `default(T)`。 例如，模型繫結會將參數 `int id` 設定為 0。 請考慮使用模型驗證或可為 Null 的類型，而不要依賴預設值。
 
-如果繫結失敗時，MVC 不會擲回錯誤。 可接受使用者輸入的每一個動作應該檢查`ModelState.IsValid`屬性。
+如果繫結失敗，則 MVC 不會擲回錯誤。 接受使用者輸入的每一個動作都應該檢查 `ModelState.IsValid` 屬性。
 
-注意： 每個項目中的控制站`ModelState`屬性是`ModelStateEntry`包含`Errors`屬性。 它是很少會需要自行查詢此集合。 請改用 `ModelState.IsValid`。
+注意：控制器 `ModelState` 屬性中的每個項目都是包含 `Errors` 屬性的 `ModelStateEntry`。 很少需要自行查詢此集合。 請改用 `ModelState.IsValid`。
 
-此外，還有當 MVC 模型繫結時，必須考量某些特殊的資料類型：
+此外，MVC 必須在執行模型繫結時考量一些特殊資料類型：
 
-* `IFormFile``IEnumerable<IFormFile>`： 一或多個上傳的檔案的 HTTP 要求的一部分。
+* `IFormFile`、`IEnumerable<IFormFile>`：屬於 HTTP 要求一部分的一或多個已上傳檔案。
 
-* `CancellationToken`： 用來取消非同步控制器中的活動。
+* `CancellationToken`：用來取消非同步控制器中的活動。
 
-這些型別可以繫結至動作參數或屬性的類別類型。
+這些類型可以繫結至類別類型上的動作參數或屬性。
 
-模型繫結完成時，[驗證](validation.md)，就會發生。 預設模型繫結的運作方式很適合用於大部分的開發案例。 它也是可延伸因此如果您有唯一的需求，您可以自訂內建行為。
+完成模型繫結之後，會進行[驗證](validation.md)。 預設模型繫結最適用於大部分的開發案例。 它也可以擴充，因此，如果您有唯一的需求，則可以自訂內建行為。
 
-## <a name="customize-model-binding-behavior-with-attributes"></a>自訂屬性的模型繫結行為
+## <a name="customize-model-binding-behavior-with-attributes"></a>使用屬性來自訂模型繫結行為
 
-MVC 包含數個屬性可讓您將導向至不同來源的預設模型繫結行為。 例如，您可以指定繫結是否需要屬性，則它應該永遠不會發生完全使用`[BindRequired]`或`[BindNever]`屬性。 或者，您可以覆寫預設的資料來源，並指定模型繫結器的資料來源。 以下是一份模型繫結屬性：
+MVC 會包含數個屬性，可用來將其預設模型繫結行為導向至不同的來源。 例如，您可以指定屬性是否需要繫結，或者使用 `[BindRequired]` 或 `[BindNever]` 屬性，讓它根本不應該發生。 或者，您可以覆寫預設資料來源，並指定模型繫結器的資料來源。 以下是模型繫結屬性清單：
 
-* `[BindRequired]`： 如果無法繫結這個屬性會將模型狀態錯誤。
+* `[BindRequired]`：如果無法繫結，則此屬性會新增模型狀態錯誤。
 
-* `[BindNever]`： 會告知模型繫結器將永遠不會繫結至這個參數。
+* `[BindNever]`：告知模型繫結器永遠不要繫結至此參數。
 
-* `[FromHeader]``[FromQuery]`， `[FromRoute]`， `[FromForm]`： 用來指定您想要套用的確切繫結來源。
+* `[FromHeader]`、`[FromQuery]`、`[FromRoute]`、`[FromForm]`：使用這些來指定您想要套用的確切繫結來源。
 
-* `[FromServices]`： 這個屬性會使用[相依性插入](../../fundamentals/dependency-injection.md)將從服務繫結參數。
+* `[FromServices]`：此屬性會使用[相依性插入](../../fundamentals/dependency-injection.md)，以從服務繫結參數。
 
-* `[FromBody]`： 將資料繫結從要求主體中使用設定的格式器。 根據要求的內容類型選取格式器。
+* `[FromBody]`：使用已設定的格式器，來繫結要求本文中的資料。 格式器是根據要求的內容類型進行選取。
 
-* `[ModelBinder]`： 用來覆寫預設模型繫結器、 繫結來源和名稱。
+* `[ModelBinder]`：用來覆寫預設模型繫結器、繫結來源及名稱。
 
-當您需要覆寫預設行為的模型繫結時，屬性是很有幫助的工具。
+當您需要覆寫模型繫結的預設行為時，屬性是很有幫助的工具。
 
-## <a name="bind-formatted-data-from-the-request-body"></a>繫結的要求主體中的格式化的資料
+## <a name="bind-formatted-data-from-the-request-body"></a>繫結要求本文中的格式化資料
 
-要求的資料可以來自各種不同的格式，包括 JSON、 XML 及其他等等。 當您使用 [FromBody] 屬性來指出您想要將參數繫結至的要求主體中的資料時，MVC 會使用設定的格式器來處理要求資料，根據其內容的型別。 根據預設，MVC 包含`JsonInputFormatter`類別處理 JSON 資料，但是您可以新增其他的格式器來處理 XML 和其他自訂格式。
-
-> [!NOTE]
-> 有最多可達一個參數，每個動作以裝飾`[FromBody]`。 ASP.NET Core MVC 執行階段委派要求資料流讀取的格式器的責任。 一旦參數讀取要求資料流時，它通常不可能是讀取要求資料流，再為其他繫結`[FromBody]`參數。
+要求資料可以有各種不同的格式，包括 JSON、XML 及其他項目。 當您使用 [FromBody] 屬性指出您想要將參數繫結至要求本文中的資料時，MVC 會使用一組已設定的格式器，以根據其內容類型來處理要求資料。 根據預設，MVC 包括 `JsonInputFormatter` 類別來處理 JSON 資料，但是您可以新增其他格式器來處理 XML 及其他自訂格式。
 
 > [!NOTE]
-> `JsonInputFormatter`是預設的格式器，並且根據[Json.NET](https://www.newtonsoft.com/json)。
+> 一個以 `[FromBody]` 裝飾的動作最多可以有一個參數。 ASP.NET Core MVC 執行階段會將讀取要求資料流的責任委派給格式器。 讀取參數的要求資料流之後，一般無法重新讀取要求資料流，以繫結其他 `[FromBody]` 參數。
 
-ASP.NET 選取輸入的格式器基礎[Content-type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html)標頭和參數的型別除非套用，否則為指定的屬性。 如果您想要使用 XML 或另一種格式必須設定在*Startup.cs*檔案，但您可能需要取得的參考`Microsoft.AspNetCore.Mvc.Formatters.Xml`使用 NuGet。 您的啟始程式碼看起來應該像這樣：
+> [!NOTE]
+> `JsonInputFormatter` 是預設格式器，並且根據 [Json.NET](https://www.newtonsoft.com/json)。
+
+除非另外套用屬性，否則 ASP.NET 會根據 [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) 標頭和參數類型來選取輸入格式器。 如果您想要使用 XML 或另一種格式，則必須在 *Startup.cs* 檔案中設定它，但您可能需要先使用 NuGet 來取得 `Microsoft.AspNetCore.Mvc.Formatters.Xml` 的參考。 啟動程式碼應該如下：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -122,8 +122,8 @@ public void ConfigureServices(IServiceCollection services)
    }
 ```
 
-中的程式碼*Startup.cs*檔案包含`ConfigureServices`方法`services`引數可用來建置您的 ASP.NET 應用程式的服務。 在範例中，我們會將 XML 格式器加入為 MVC 會提供此應用程式的服務。 `options`引數傳遞至`AddMvc`方法可讓您新增及管理篩選器、 格式器，以及其他系統選項從 MVC 應用程式啟動時。 然後套用`Consumes`屬性到控制器類別或動作方法，才能使用您想要的格式。
+*Startup.cs* 檔案中的程式碼包含具有 `services` 引數的 `ConfigureServices` 方法，以用來建置 ASP.NET 應用程式的服務。 在範例中，我們會將 XML 格式器新增為 MVC 針對此應用程式所提供的服務。 傳入 `AddMvc` 方法的 `options` 引數，可讓您在應用程式啟動時從 MVC 新增和管理篩選、格式器以及其他系統選項。 然後將 `Consumes` 屬性套用至控制器類別或動作方法，以使用您想要的格式。
 
-### <a name="custom-model-binding"></a>自訂的模型繫結
+### <a name="custom-model-binding"></a>自訂模型繫結
 
-您可以透過撰寫您自己自訂的模型繫結器擴充模型繫結。 深入了解[自訂模型繫結](../advanced/custom-model-binding.md)。
+您可以撰寫自己的自訂模型繫結器來擴充模型繫結。 深入了解[自訂模型繫結](../advanced/custom-model-binding.md)。

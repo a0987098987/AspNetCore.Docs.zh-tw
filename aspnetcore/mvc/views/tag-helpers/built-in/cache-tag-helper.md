@@ -1,39 +1,39 @@
 ---
-title: "快取中 ASP.NET Core MVC 標記協助程式"
+title: "ASP.NET Core MVC 中的快取標籤協助程式"
 author: pkellner
-description: "示範如何使用快取標記協助程式"
-ms.author: riande
+description: "示範如何使用快取標籤協助程式"
 manager: wpickett
+ms.author: riande
 ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 10aa1b493dbd0672cac789f6e48ddf2f14ba35dc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 51811ee1669a24a0fc4ce9bc67e782b61bff655c
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="cache-tag-helper-in-aspnet-core-mvc"></a>快取中 ASP.NET Core MVC 標記協助程式
+# <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
 
-快取標記協助程式提供了可大幅改善其內部的 ASP.NET Core 快取提供者的內容快取的 ASP.NET Core 應用程式的效能。
+快取標籤協助程式可將 ASP.NET Core 應用程式內容快取至內部 ASP.NET Core 快取提供者，因此大幅提升應用程式的效能。
 
-Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
+Razor 檢視引擎將預設的 `expires-after` 設定為 20 分鐘。
 
-下列的 Razor 標記會快取的日期/時間：
+下列 Razor 標記會快取日期/時間：
 
 ```cshtml
 <cache>@DateTime.Now</cache>
 ```
 
-包含頁面的第一個要求`CacheTagHelper`會顯示目前的日期/時間。 其他要求會顯示快取的值，直到快取到期 （預設值 20 分鐘），或者由記憶體不足的壓力移出記憶體。
+第一個對包含 `CacheTagHelper` 之頁面的要求會顯示目前的日期/時間。 其他要求則會顯示在快取過期 (預設為 20 分鐘) 或因記憶體不足而撤銷之前的快取值。
 
-您可以設定快取期間具有下列屬性：
+您可以使用下列屬性來設定快取期間：
 
-## <a name="cache-tag-helper-attributes"></a>快取標記協助程式屬性
+## <a name="cache-tag-helper-attributes"></a>快取標籤協助程式屬性
 
 - - -
 
@@ -42,11 +42,11 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 | 屬性類型    | 有效值      |
 |----------------   |----------------   |
-| boolean           | "true"（預設值）  |
+| boolean           | "true" (預設)  |
 |                   | "false"   |
 
 
-決定是否要快取內容快取標記協助程式 」 所括住。 預設值為 `true`。  如果設定為`false`此快取標記協助程式不會影響快取上轉譯的輸出。
+判斷是否快取以快取標籤協助程式括住的內容。 預設為 `true`。  如果設定為 `false`，此快取標籤協助程式將不會對轉譯輸出有任何快取影響。
 
 範例：
 
@@ -65,7 +65,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 | DateTimeOffset    | "@new DateTime(2025,1,29,17,02,0)"    |
 
 
-設定絕對到期日。 下列範例將快取的快取標記協助程式內容，直到 2025 年 1 月 29，下午 5:02。
+設定絕對到期日。 下列範例會快取 2025 年 1 月 29 日下午 5:02 以前的快取標籤協助程式內容。
 
 範例：
 
@@ -84,7 +84,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 | TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
 
 
-從快取內容的第一個要求時間設定時間的長度。 
+設定從第一個要求時間到快取內容的時間長度。 
 
 範例：
 
@@ -103,7 +103,7 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 | TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
 
 
-設定應該收回快取項目，如果它尚未被存取的時間。
+設定快取項目多久未被存取時應該撤銷。
 
 範例：
 
@@ -115,14 +115,14 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 - - -
 
-### <a name="vary-by-header"></a>改變-依標頭
+### <a name="vary-by-header"></a>vary-by-header
 
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
 | String            | "User-Agent"                  |
 |                   | "User-Agent,content-encoding" |
 
-接受單一標頭值或其變更時觸發快取重新整理的標頭值的逗號分隔清單。 下列範例會監視的標頭值`User-Agent`。 此範例會將快取內容的每個不同`User-Agent`呈現給 web 伺服器。
+接受單一標頭值或標頭值的逗號分隔清單在變更時，觸發快取重新整理。 下列範例會監視標頭值 `User-Agent`。 此範例會快取展示給網頁伺服器之每個不同 `User-Agent` 的內容。
 
 範例：
 
@@ -138,10 +138,10 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
-| String            | 「 讓 」                |
-|                   | 「 請模型 」 |
+| String            | "Make"                |
+|                   | "Make,Model" |
 
-接受單一標頭值或以逗號分隔清單的標頭值變更時觸發快取重新整理的標頭值。 下列範例會查看值`Make`和`Model`。
+接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。 下列範例會查看 `Make` 和 `Model` 的值。
 
 範例：
 
@@ -157,10 +157,10 @@ Razor 檢視引擎設定的預設`expires-after`為 20 分鐘。
 
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
-| String            | 「 讓 」                |
-|                   | 「 請模型 」 |
+| String            | "Make"                |
+|                   | "Make,Model" |
 
-接受單一標頭值或路由資料的參數值變更時觸發快取重新整理的標頭值的逗號分隔清單。 範例：
+接受單一標頭值或標頭值的逗號分隔清單在路由資料參數值變更時，觸發快取重新整理。 範例：
 
 *Startup.cs* 
 
@@ -187,7 +187,7 @@ routes.MapRoute(
 | String            | ".AspNetCore.Identity.Application"                |
 |                   | ".AspNetCore.Identity.Application,HairColor" |
 
-接受單一標頭值或標頭值 (s) 變更時觸發快取重新整理的標頭值的逗號分隔清單。 下列範例會查看與 ASP.NET 識別相關聯的 cookie。 當使用者通過驗證設定要求 cookie 觸發快取重新整理。
+接受單一標頭值或標頭值的逗號分隔清單在標頭值變更時，觸發快取重新整理。 下列範例會查看與 ASP.NET 識別建立關聯的 Cookie。 當使用者經過驗證時，待設定的要求 Cookie 會觸發快取重新整理。
 
 範例：
 
@@ -204,11 +204,11 @@ routes.MapRoute(
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
 | Boolean             | "true"                  |
-|                     | "false"（預設值） |
+|                     | "false" (預設) |
 
-指定已登入使用者 （或內容主體） 變更時，應該重設快取。 目前的使用者就是所謂的要求內容主體，而且可以藉由參考檢視 Razor 檢視`@User.Identity.Name`。
+指定當登入的使用者 (或內容主體) 變更時，是否應該重設快取。 目前的使用者也稱為要求內容主體，可在 Razor 檢視中藉由參考 `@User.Identity.Name` 進行檢視。
 
-下列範例會查看目前的登入的使用者。  
+下列範例會查看目前登入的使用者。  
 
 範例：
 
@@ -218,7 +218,7 @@ routes.MapRoute(
 </cache>
 ```
 
-使用這個屬性會維護透過在登入和登出循環的快取中的內容。  當使用`vary-by-user="true"`，登入和登出的動作會導致無效的快取驗證的使用者。  快取無效，因為登入，產生新的唯一的 cookie 值。 快取保留匿名狀態時沒有任何 cookie，或已過期。 這表示如果沒有使用者登入，仍會維護快取。
+使用此屬性可保留登入再登出週期內的快取內容。  使用 `vary-by-user="true"` 時，經過驗證之使用者的登入再登出動作會使快取失效。  快取失效是由於登入時會產生新的唯一 Cookie 值所致。 如果沒有任何 Cookie 或 Cookie 已過期，則會以匿名狀態保留快取。 這表示如果沒有任何使用者登入，則會保留快取。
 
 - - -
 
@@ -229,9 +229,9 @@ routes.MapRoute(
 | String             | "@Model"                 |
 
 
-可讓您自訂的哪些資料取得快取。 更新屬性的字串值的變更，快取標記協助程式的內容所參考的物件時。 通常模型值的字串串連會指派給這個屬性。  實際上，這表示，串連的值的任何更新的快取失效。
+可自訂要快取哪些資料。 當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。 通常會對此屬性指派模型值的字串串連。  實際上，這表示更新任何串連值都會使快取失效。
 
-下列範例假設控制器方法轉譯檢視加總兩個路由參數的整數值`myParam1`和`myParam2`，並傳回，當做單一模型屬性。 當這個總和變更時，快取標記協助程式的內容轉譯，而且一次快取。  
+下列範例假設轉譯檢視的控制器方法加總兩個路由參數 `myParam1` 和 `myParam2` 的整數值，並傳回一個模型屬性。 當此總和變更時，快取標籤協助程式的內容會重新轉譯和快取。  
 
 範例：
 
@@ -262,12 +262,12 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 
 | 屬性類型    | 範例值                |
 |----------------   |----------------               |
-| CacheItemPriority  | 「 高 」                   |
-|                    | 「 低 」 |
+| CacheItemPriority  | "High"                   |
+|                    | "Low" |
 |                    | "NeverRemove" |
 |                    | "Normal" |
 
-提供了內建的快取提供者快取收回的指引。 網頁伺服器將會收回`Low`時更新快取項目第一次記憶體不足壓力下。
+提供快取撤銷指引給內建快取提供者。 當記憶體不足時，網頁伺服器會先撤銷 `Low` 快取項目。
 
 範例：
 
@@ -277,11 +277,11 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 </cache>
 ```
 
-`priority`屬性並不保證快取保留特定層級。 `CacheItemPriority`是只是建議。 將此屬性設定為`NeverRemove`並不保證一定會保留在快取。 請參閱[其他資源](#additional-resources)如需詳細資訊。
+`priority` 屬性並不保證特定快取保留層級。 `CacheItemPriority` 僅供建議。 將此屬性設定為 `NeverRemove` 並不保證一定會保留快取。 如需詳細資訊，請參閱[其他資源](#additional-resources)。
 
-快取標記協助程式是依賴[記憶體快取服務](xref:performance/caching/memory)。 如果尚未加入快取標記協助程式就會加入服務。
+快取標籤協助程式相依於[記憶體快取服務](xref:performance/caching/memory)。 如果尚未新增此服務，快取標籤協助程式會予以新增。
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:performance/caching/memory>
-* <xref:security/authentication/identity>
+* [記憶體內部快取](xref:performance/caching/memory)
+* [身分識別簡介](xref:security/authentication/identity)

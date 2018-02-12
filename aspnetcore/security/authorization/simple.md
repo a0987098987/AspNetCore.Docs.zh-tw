@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/simple
-ms.openlocfilehash: 3299a8fcbd8d8e089d8d7f95e46551c102bcc054
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 503ebc665efd460a85f49844ddc847eb12114308
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="simple-authorization"></a>簡單的授權
 
@@ -55,7 +55,7 @@ public class AccountController : Controller
 
 現在已驗證的使用者可以存取`Logout`函式。
 
-您也可以使用`AllowAnonymousAttribute`允許未經驗證的使用者，對個別動作所存取的屬性。 例如: 
+您也可以使用`AllowAnonymous`允許未經驗證的使用者，對個別動作所存取的屬性。 例如: 
 
 ```csharp
 [Authorize]

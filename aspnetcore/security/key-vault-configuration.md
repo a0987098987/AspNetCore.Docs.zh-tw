@@ -8,11 +8,11 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 1318ae855154dd8fc91ff0c19b0ab111d86c71e6
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1a91a87fb90d4d4651e07f32415e4364c8e2d993
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Azure 金鑰保存庫的組態提供者
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/30/2018
 `AddAzureKeyVault`也會提供多載，可接受的實作`IKeyVaultSecretManager`，可讓您控制如何金鑰保存庫密碼會轉換成組態機碼。 例如，您可以實作的介面，根據您在應用程式啟動時提供的前置詞值的密碼值載入。 這可讓您，例如，若要載入的應用程式版本為基礎的密碼。
 
 > [!WARNING]
-> 將多個應用程式的秘密資訊放入相同的金鑰保存庫，或將環境的機密資料，不使用前置詞在金鑰保存庫密碼 (例如，*開發*verus*生產*密碼) 放在同一個保存庫。 我們建議不同的應用程式和開發/生產環境使用不同的金鑰保存庫來隔離應用程式環境，最高的層級的安全性。
+> 將多個應用程式的秘密資訊放入相同的金鑰保存庫，或將環境的機密資料，不使用前置詞在金鑰保存庫密碼 (例如，*開發*與*生產*密碼) 放在同一個保存庫。 我們建議不同的應用程式和開發/生產環境使用不同的金鑰保存庫來隔離應用程式環境，最高的層級的安全性。
 
 使用第二個範例應用程式，您會建立金鑰保存庫，以在執行密碼`5000-AppSecret`（期間不允許在金鑰保存庫密碼名稱） 代表應用程式的版本 5.0.0.0 應用程式密碼。 如需其他版本，5.1.0.0，您建立的密碼`5100-AppSecret`。 每個應用程式版本會將其設定為載入它自己的密碼值`AppSecret`、 清除關閉版本載入密碼。 範例的實作如下所示：
 

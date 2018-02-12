@@ -2,18 +2,18 @@
 title: "ASP.NET Core 2.0 的新功能"
 author: rick-anderson
 description: "ASP.NET Core 2.0 的新功能"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 07/10/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: aspnetcore-2.0
-ms.openlocfilehash: ca02de7954002dcbc125898c9f570438f88db818
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 35d57abd07e83cd5b190572962fbf43aef03a534
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
@@ -82,7 +82,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 ## <a name="kestrel-improvements"></a>Kestrel 改善
 
-Kestrel 網頁伺服器的新功能，讓它更適合作為網際網路對向伺服器。 我們已在 `KestrelServerOptions` 類別的新 `Limits` 屬性中新增多個伺服器條件約束組態選項。 您現在可以新增下列限制：
+Kestrel 網頁伺服器的新功能，讓它更適合作為網際網路對向伺服器。 已在 `KestrelServerOptions` 類別的新 `Limits` 屬性中新增多個伺服器條件約束組態選項。 請新增下列限制：
 
 - 用戶端連線數目上限
 - 要求主體大小上限
@@ -120,7 +120,7 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 ## <a name="automatic-use-of-anti-forgery-tokens"></a>自動使用防偽權杖
 
-根據預設，ASP.NET Core 一律協助以 HTML 編碼內容，但在新版本中，我們要採用額外的步驟，協助防止跨網站要求偽造 (XSRF) 攻擊。 ASP.NET Core 現在預設會發出防偽權杖，並對表單 POST 動作和頁面驗證它們，不需要額外組態。
+根據預設，ASP.NET Core 一律協助以 HTML 編碼的內容，但在新版本中，會採用額外的步驟，協助防止跨網站要求偽造 (XSRF) 攻擊。 ASP.NET Core 現在預設會發出防偽權杖，並對表單 POST 動作和頁面驗證它們，不需要額外組態。
 
 如需詳細資訊，請參閱[防止 ASP.NET Core 中的跨網站要求偽造 (XSRF/CSRF) 攻擊](xref:security/anti-request-forgery)。
 
@@ -158,4 +158,4 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 
 如需完整的變更清單，請參閱 [ASP.NET Core 2.0 版本資訊](https://github.com/aspnet/Home/releases/tag/2.0.0)。
 
-如果您想要了解 ASP.NET Core 開發小組的進度和計劃，請收聽每週的 [ASP.NET Community Standup](https://live.asp.net/) (ASP.NET 社群之聲)。
+若要了解 ASP.NET Core 開發小組的進度和計劃，請收聽 [ASP.NET Community Standup](https://live.asp.net/) (ASP.NET 社群之聲)。

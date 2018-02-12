@@ -1,61 +1,61 @@
 ---
-title: "影像標記協助程式 |Microsoft 文件"
+title: "ASP.NET Core 的影像標籤協助程式"
 author: pkellner
-description: "示範如何使用影像標記協助程式"
-ms.author: riande
+description: "示範如何使用影像標籤協助程式"
 manager: wpickett
+ms.author: riande
 ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: d0857e1926c341b2357bc824fa379c4fc30affbc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 75bddd01a95f3ae0b1ea19de0eb64ad3b9066319
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="imagetaghelper"></a>ImageTagHelper
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
 
-影像標記協助程式增強`img`(`<img>`) 標記。 它需要`src`標記以及`boolean`屬性`asp-append-version`。
+影像標籤協助程式強化了 `img` (`<img>`) 標籤。 它需要使用 `src` 標籤以及 `boolean` 屬性 `asp-append-version`。
 
-如果影像來源 (`src`) 是靜態檔案主機 web 伺服器上唯一快取 busting 字串會附加當做映像來源的查詢參數。 這可確保，如果主機 web 伺服器上的檔案變更時，唯一的要求 URL 會產生包含已更新的要求參數。 快取 busting 字串是代表靜態影像檔案的雜湊的唯一值。
+如果影像來源 (`src`) 是主網頁伺服器上的靜態檔案，則會以查詢參數形式，將唯一的快取破壞 (cache busting) 字串附加至影像來源。 這樣即可確保，當主網頁 伺服器上的檔案變更時，會產生唯一的要求 URL，以包含更新的要求參數。 快取破壞 (cache busting) 字串是代表靜態影像檔案的雜湊的唯一值。
 
-如果影像來源 (`src`) 不是靜態的檔案 （例如遠端 URL 或檔案伺服器不存在），`<img>`標記之`src`busting 查詢字串參數無快取的產生屬性。
+如果影像來源 (`src`) 不是靜態的檔案 (例如遠端 URL 或不存在於伺服器的檔案)，產生的 `<img>` 標籤 `src` 屬性即不含快取破壞 (cache busting) 查詢字串參數。
 
-## <a name="image-tag-helper-attributes"></a>映像標記協助程式屬性
+## <a name="image-tag-helper-attributes"></a>影像標籤協助程式屬性
 
 
 ### <a name="asp-append-version"></a>asp-append-version
 
-當指定連同`src`影像標記協助程式的屬性，會叫用。
+使用 `src` 屬性加以指定時，即會叫用影像標籤協助程式。
 
-有效範例`img`標記協助程式：
+有效的 `img` 標籤協助程式範例為：
 
 ```cshtml
 <img src="~/images/asplogo.png" 
     asp-append-version="true"  />
 ```
 
-如果靜態檔案存在於目錄*...wwwroot/images/asplogo.png*產生的 html 是類似下列 （雜湊會不同）：
+如果靜態檔案存在於 *...wwwroot/images/asplogo.png* 目錄中，產生的 HTML 類似如下 (雜湊則不同)：
 
 ```html
 <img 
     src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM"/>
 ```
 
-指派給參數的值`v`是磁碟上檔案的雜湊值。 如果 web 伺服器無法取得讀取權限靜態參考的檔案，沒有`v`將參數加入到`src`屬性。
+指派給 `v` 參數的值是磁碟上檔案的雜湊值。 如果網頁伺服器無法取得所參考的靜態檔案讀取權限，就不會將 `v` 參數新增至 `src` 屬性。
 
 - - -
 
 ### <a name="src"></a>src
 
-若要啟用影像標記協助程式，需要的 src 屬性`<img>`項目。 
+若要啟用影像標籤協助程式，`<img>` 項目上需要 src 屬性。 
 
 > [!NOTE]
-> 使用影像標記協助程式`Cache`本機 web 伺服器上的提供者儲存導出`Sha512`的指定的檔案。 如果檔案一次要求`Sha512`不需要重新計算。 快取都無效的檔案監看員，附加至檔案時檔案的`Sha512`計算。
+> 影像標籤協助程式會使用本機網頁伺服器上的 `Cache` 提供者，來儲存指定檔案計算出的 `Sha512`。 如果再次要求檔案，即不需要重新計算 `Sha512`。 當檔案的 `Sha512` 計算得出時，附加至檔案的檔案監看員會讓快取失效。
 
 ## <a name="additional-resources"></a>其他資源
 

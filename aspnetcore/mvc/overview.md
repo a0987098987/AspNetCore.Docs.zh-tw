@@ -1,65 +1,65 @@
 ---
 title: "ASP.NET Core MVC 概觀"
 author: ardalis
-description: "了解如何 ASP.NET Core MVC 是用於建置 web 應用程式的豐富架構以及應用程式開發介面使用模型檢視控制器設計模式。"
-ms.author: riande
+description: "了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。"
 manager: wpickett
+ms.author: riande
 ms.date: 01/08/2018
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/overview
-ms.openlocfilehash: 3c3279e7d25704f5e70bbd83cf9feebda8319203
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 16fd1b5e71cde4364f02640f504d42218ed680df
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 建立 web 應用程式的豐富架構，而且應用程式開發介面使用模型檢視控制器設計模式。
+ASP.NET Core MVC 是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
 
 ## <a name="what-is-the-mvc-pattern"></a>什麼是 MVC 模式？
 
-模型檢視控制器 (MVC) 架構模式可將三個主要元件的群組，將應用程式： 模型、 檢視和控制器。 這個模式有助於達到[的重要性分離](http://deviq.com/separation-of-concerns/)。 使用此模式，使用者要求會路由至控制器負責使用模型執行使用者動作和 （或） 擷取查詢的結果。 控制器會選擇檢視將顯示給使用者，並提供與它需要的任何模型資料。
+模型檢視控制器 (MVC) 架構模式可將一個應用程式劃分成三組主要元件：模型、檢視和控制器。 此模式有助於 [Separation of Concerns](http://deviq.com/separation-of-concerns/) (關注點分離)。 透過此模式，使用者要求會路由傳送至控制器，再由其負責使用模型來執行使用者動作及 (或) 擷取查詢結果。 控制器會選擇要向使用者顯示的檢視，並在其中提供任何所需的模型資料。
 
-下圖顯示三個主要元件，以及哪些參考其他：
+下圖顯示三個主要元件及彼此的參考關係：
 
 ![MVC 模式](overview/_static/mvc.png)
 
-此的責任就可協助您擴充應用程式複雜度，因為它是您更輕鬆地編寫、 偵錯和測試的項目 （模型、 檢視或控制站） 的單一作業 (且後面會跟[單一責任原則](http://deviq.com/single-responsibility-principle/)). 它是更難更新、 測試及偵錯程式碼具有相依性跨越兩個或多個三個區域。 例如，使用者介面邏輯通常會比商務邏輯經常變更。 如果呈現程式碼和商務邏輯結合在單一物件中時，您必須修改包含商務邏輯，每當您變更使用者介面的物件。 這是可能會造成錯誤，而且需要重新測試所有的商務邏輯的每個的簡潔使用者介面變更之後。
+此職責劃分有助於您根據複雜度來調整應用程式，因為如果模型、檢視或控制器只有一項作業 (且遵循 [Single Responsibility Principle](http://deviq.com/single-responsibility-principle/) (單一職責原則))，就會更容易撰寫程式碼、進行偵錯和測試。 如果程式碼相依於這三個區域當中兩個以上，就很難進行更新、測試及偵錯。 例如，使用者介面邏輯通常比商務邏輯更常變更。 如果將展示程式碼和商務邏輯結合成一個物件，則每次使用者介面變更時，都必須修改含有商務邏輯的物件。 這通常會導致錯誤，而需要在每次使用者介面微幅變更之後重新測試商務邏輯。
 
 > [!NOTE]
-> 檢視和控制器取決於模型。 不過，模型會取決於檢視都控制器。 這是其中一個分隔的索引鍵的優點。 此分隔可讓您的視覺呈現獨立建置和測試模型。
+> 檢視和控制器都相依於模型。 不過，模型並不相依於檢視或控制器。 這是分離的主要優點之一。 此分離可讓模型在建立與測試時獨立於視覺展示。
 
-### <a name="model-responsibilities"></a>模型的責任
+### <a name="model-responsibilities"></a>模型職責
 
-在 MVC 應用程式中的模型代表應用程式和任何的商務邏輯或應該由它來執行作業的狀態。 商務邏輯應該封裝在模型中，以及任何實作邏輯，來保存應用程式的狀態。 強型別檢視通常會使用該檢視上顯示的設計成包含資料的 ViewModel 型別。 控制站會建立並填入從模型這些 ViewModel 執行個體。
-
-> [!NOTE]
-> 有許多方式來組織中使用 MVC 架構模式的應用程式的模型。 深入了解一些[不同種類的模型型別](http://deviq.com/kinds-of-models/)。
-
-### <a name="view-responsibilities"></a>檢視的責任
-
-檢視必須負責透過使用者介面中呈現內容。 他們使用[Razor 檢視引擎](#razor-view-engine)HTML 標記中內嵌的.NET 程式碼。 應該在檢視內的最小邏輯，以及它們中的任何邏輯應該與關聯呈現內容。 如果您發現需要執行更多的邏輯檢視中的檔案以顯示複雜模型中的資料，請考慮使用[檢視元件](views/view-components.md)，ViewModel，或檢視表範本來簡化檢視。
-
-### <a name="controller-responsibilities"></a>控制器的責任
-
-控制器會處理使用者互動、 處理模型，並且在最後選擇要呈現檢視的元件。 MVC 應用程式中，檢視只能顯示資訊。控制器會處理和回應使用者輸入和互動。 在 MVC 模式中，控制器初始的進入點，而且會負責選取哪一個模型類型來處理和轉譯的檢視 (它可控制其名稱-因此應用程式的給定要求的回應方式)。
+MVC 應用程式中的模型代表應用程式的狀態，以及應用程式應該執行的任何商務邏輯或作業。 商務邏輯應該與保存應用程式狀態的任何實作邏輯，一起封裝在模型中。 強型別檢視通常會使用 ViewModel 類型，其設計目的是為了包含要在該檢視上顯示的資料。 控制器會從模型建立並填入這些 ViewModel 執行個體。
 
 > [!NOTE]
-> 控制站不應該是過於複雜的太多的責任。 若要防止控制器邏輯變得過於複雜，請使用[單一責任原則](http://deviq.com/single-responsibility-principle/)從控制站移至網域模型的推播的商務邏輯。
+> 您可以透過許多方法來組織使用 MVC 架構模式之應用程式中的模型。 深入了解一些[各種不同的模型類型](http://deviq.com/kinds-of-models/)。
+
+### <a name="view-responsibilities"></a>檢視職責
+
+檢視會負責透過使用者介面展示內容。 其使用 [Razor 檢視引擎](#razor-view-engine)將 .NET 程式碼內嵌於 HTML 標記。 檢視內應該有基本邏輯，而且其中的任何邏輯都應該與展示內容相關。 如果您需要在檢視檔案中執行大量邏輯以便顯示複雜模型中的資料，請考慮使用[檢視元件](views/view-components.md)、ViewModel 或檢視範本來簡化檢視。
+
+### <a name="controller-responsibilities"></a>控制器職責
+
+控制器是處理使用者互動、使用模型，並在最終選取要呈現之檢視的元件。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。 在 MVC 模式中，控制器是初始進入點，負責選取要使用的模型類型及要呈現的檢視 (如其名稱所指，它會控制應用程式回應指定要求的方式)。
+
+> [!NOTE]
+> 控制器不應該因太多職責而過於複雜。 若要防止控制器邏輯變得過於複雜，請使用 [Single Responsibility Principle](http://deviq.com/single-responsibility-principle/) (單一職責原則)，將控制器中的商務邏輯推送到領域模型中。
 
 >[!TIP]
-> 如果您發現控制器動作經常執行的動作類型，您可以依照[不要重複自行原則](http://deviq.com/don-t-repeat-yourself/)移動這些常見的動作，藉以[篩選](#filters)。
+> 如果您發現控制器動作經常執行相同的動作類型，您可以遵循 [Don't Repeat Yourself](http://deviq.com/don-t-repeat-yourself/) (不重複) 原則，將這些常見的動作移到[篩選](#filters)中。
 
-## <a name="what-is-aspnet-core-mvc"></a>ASP.NET Core MVC 是什麼
+## <a name="what-is-aspnet-core-mvc"></a>什麼是 ASP.NET Core MVC
 
-ASP.NET Core MVC 架構是輕量型、 開放來源時，可高度測試展示架構針對 ASP.NET Core 與使用方式最佳化。
+ASP.NET Core MVC 架構是輕量型、開放原始碼且可高度測試的展示架構，並已經過最佳化可搭配 ASP.NET Core 使用。
 
-ASP.NET Core MVC 提供模式為準的方式建置動態網站，可讓清楚的重要性分離。 它可讓您完全掌控標記，支援 tdd 的開發，並使用最新 web 標準。
+ASP.NET Core MVC 可讓您透過模式建立動態網站，以清楚關注點分離。 它可讓您完全掌控標記，支援適合 TDD 的開發，並使用最新的網站標準。
 
 ## <a name="features"></a>功能
 
@@ -71,24 +71,24 @@ ASP.NET Core MVC 包括下列各項：
 * [相依性插入](../fundamentals/dependency-injection.md)
 * [篩選](#filters)
 * [區域](#areas)
-* [Web 應用程式開發介面](#web-apis)
+* [Web API](#web-apis)
 * [可測試性](#testability)
 * [Razor 檢視引擎](#razor-view-engine)
-* [強型別的檢視](#strongly-typed-views)
+* [強型別檢視](#strongly-typed-views)
 * [標記協助程式](#tag-helpers)
 * [檢視元件](#view-components)
 
 ### <a name="routing"></a>路由
 
-最上層的建置 ASP.NET Core MVC [ASP.NET Core 路由](../fundamentals/routing.md)、 功能強大的 URL 對映元件，可讓您建置包含易於且可搜尋的 Url 的應用程式。 這可讓您定義您的應用程式 URL 命名模式，適用於搜尋引擎最佳化 (SEO) 和連結的產生，而不考慮如何組織您的網頁伺服器上的檔案。 您可以定義您的路由使用方便的路由範本語法支援路由值條件約束、 預設值和選擇性的值。
+ASP.NET Core MVC 是以 [ASP.NET Core 路由](../fundamentals/routing.md)為建置基礎且功能強大的 URL 對應元件，可讓您建置具有可理解且可搜尋之 URL 的應用程式。 這可讓您定義適用於搜尋引擎最佳化 (SEO) 和連結產生的應用程式 URL 命名模式，而不需要考慮如何在網頁伺服器上組織檔案。 您可以使用方便且支援路由值條件約束、預設值和選用值的路由範本語法，來定義您的路由。
 
-*慣例為基礎的路由*可讓您全域定義的 URL 格式，在您的應用程式接受和每個格式的方式會對應至特定的動作方法上指定的控制器。 收到的連入要求時，路由引擎會剖析 URL 和符合以其中一種已定義的 URL 格式，然後再呼叫相關聯的控制器動作方法。
+「以慣例為基礎的路由」可讓您全域定義應用程式接受的的 URL 格式，以及每種格式如何對應至指定控制器上的特定動作方法。 當收到內送要求時，路由引擎會剖析 URL 定並將它對應至其中一個已定義的 URL 格式，再呼叫關聯控制器的動作方法。
 
 ```csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
 ```
 
-*屬性路由*可讓您指定的路由資訊，而將您的控制器和動作以定義您的應用程式路由的屬性。 這表示路由定義會緊控制器和動作與它們相關聯。
+「屬性路由」可讓您指定路由資訊，方法是使用定義應用程式路由的屬性來裝飾控制器和動作。 這表示路由定義會緊接著其所關聯的控制器和動作。
 
 ```csharp
 [Route("api/[controller]")]
@@ -104,7 +104,7 @@ public class ProductsController : Controller
 
 ### <a name="model-binding"></a>模型繫結
 
-ASP.NET Core MVC[模型繫結](models/model-binding.md)將表單值、 路由資料、 查詢字串參數 （HTTP 標頭），用戶端要求資料轉換為控制器可以處理的物件。 如此一來，控制器邏輯不需要執行工作的理解內送的要求資料。它只會有做為它的動作方法參數的資料。
+ASP.NET Core MVC [模型繫結](models/model-binding.md)會將用戶端要求資料 (表單值、路由資料、查詢字串參數、HTTP 標頭)，轉換成控制器可以處理的物件。 因此，您的控制器邏輯不必理解內送要求資料，它只會將資料當作其動作方法的參數。
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
@@ -112,7 +112,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 ### <a name="model-validation"></a>模型驗證
 
-ASP.NET Core MVC 支援[驗證](models/validation.md)而將您的模型物件與資料註解驗證屬性。 驗證屬性值在公佈到伺服器之前，先檢查用戶端，以及呼叫控制器動作之前，伺服器上。
+ASP.NET Core MVC 支援使用資料註解驗證屬性來裝置模型物件，藉此進行[驗證](models/validation.md)。 這些驗證屬性會在用戶端進行檢查，再將其值張貼至伺服器，而且會在伺服器上進行檢查，再呼叫控制器動作。
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -131,7 +131,7 @@ public class LoginViewModel
 }
 ```
 
-控制器的動作：
+控制器動作：
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -145,13 +145,13 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 }
 ```
 
-架構會處理驗證要求資料在用戶端和伺服器上。 模型類型上指定的驗證邏輯加入至不顯眼的附註形式呈現的檢視，並強制執行瀏覽器中使用[jQuery 驗證](https://jqueryvalidation.org/)。
+此架構會在用戶端和伺服器上處理驗證要求資料。 模型類型上所指定的驗證邏輯會以不顯眼的註解形式新增呈現的檢視，並使用 [jQuery 驗證](https://jqueryvalidation.org/)在瀏覽器中強制執行。
 
 ### <a name="dependency-injection"></a>相依性插入
 
-ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-injection.md)。 在 ASP.NET Core MVC 中，[控制器](controllers/dependency-injection.md)可以要求所需服務透過其建構函式，讓他們遵循[明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)。
+ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.md) 支援。 在 ASP.NET Core MVC 中，[控制器](controllers/dependency-injection.md)可以透過其建構函式要求所需服務，以便遵循 [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/) (明確的相依性原則)。
 
-您的應用程式也可以使用[檢視中檔案的相依性插入](views/dependency-injection.md)，並使用`@inject`指示詞：
+您的應用程式也可以使用 `@inject` 指示詞，[在檢視檔案中使用相依性插入](views/dependency-injection.md)：
 
 ```cshtml
 @inject SomeService ServiceName
@@ -168,7 +168,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 ### <a name="filters"></a>篩選條件
 
-[篩選](controllers/filters.md)協助開發人員封裝跨領域的考量，例如例外狀況處理或授權。 篩選會啟用動作方法執行自訂的前置和後置處理邏輯，並可設定在給定的要求執行管線內的特定點上執行。 篩選條件可以套用至控制器或動作做為屬性 （或可以全域執行）。 多個篩選器 (例如`Authorize`) 隨附的架構。
+[篩選](controllers/filters.md)可協助開發人員封裝交叉關注，例如例外狀況處理或授權。 篩選可執行動作方法的自訂處理前後邏輯，並可設定為在指定要求之執行管線內的特定時間點執行。 篩選可當作屬性套用至控制器或動作 (也可全域執行)。 此架構隨附數個篩選 (例如`Authorize`)。
 
 
 ```csharp
@@ -179,23 +179,23 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 
 ### <a name="areas"></a>區域
 
-[區域](controllers/areas.md)提供資料的大型 ASP.NET Core MVC Web 應用程式分割成較小功能群組的方式。 一個區域是在應用程式內的一個 MVC 結構。 在 MVC 專案中，邏輯元件，例如模型、 控制器和檢視保留在不同的資料夾，而且若要建立這些元件之間的關聯性則 MVC 會使用命名慣例。 大型應用程式中，它可能比較有利分割成個別高功能層級區域的 應用程式。 例如，電子商務應用程式與多個業務單位，例如簽出、 帳單和搜尋等。每個這些單位具有自己的邏輯元件檢視、 控制器、 和模型。
+[區域](controllers/areas.md)可讓您將大型 ASP.NET Core MVC Web 應用程式分割成較小的功能群組。 一個區域是應用程式內的一個 MVC 結構。 在 MVC 專案中，模型、控制器和檢視等邏輯元件會保留在不同的資料夾中，而且 MVC 會使用命名慣例來建立這些元件之間的關聯性。 針對大型應用程式，將應用程式分割成個別高功能層級區域可能較有利。 例如，一個電子商務應用程式可分成多個業務單位，例如結帳、計費和搜尋等。每個單位各有自己的檢視、控制器和模型邏輯元件。
 
 ### <a name="web-apis"></a>Web API
 
-正在建立網站的絕佳平台，除了 ASP.NET Core MVC 會有絕佳的支援，來建置 Web 應用程式開發介面。 您可以建立連線的用戶端，包括瀏覽器和行動裝置的較大範圍的服務。
+ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web API 提供絕佳的支援。 您可以建置可供廣大用戶端使用的服務，包括瀏覽器和行動裝置。
 
-此架構包含支援的內建支援的 HTTP 內容交涉[格式化資料](models/formatting.md)為 JSON 或 XML。 寫入[自訂格式器](advanced/custom-formatters.md)加入自己的格式支援。
+此架構包含 HTTP 內容交涉支援，並內建[格式化資料](models/formatting.md)為 JSON 或 XML 的支援。 撰寫[自訂格式器](advanced/custom-formatters.md)可新增您專屬格式的支援。
 
-用於啟用支援超連結產生。 輕鬆啟用支援[跨原始資源共用 (CORS)](http://www.w3.org/TR/cors/) ，讓您的 Web Api 可以橫跨多個 Web 應用程式。
+使用連結產生可支援超媒體。 輕鬆就可支援[跨原始來源資源共用 (CORS)](http://www.w3.org/TR/cors/) ，讓您的 Web API 可跨多個 Web 應用程式共用。
 
 ### <a name="testability"></a>可測試性
 
-架構的使用介面和相依性插入會導致它適用於單元測試，並架構包含功能 （例如 Entity Framework TestHost 和 InMemory 提供者），使[整合測試](../testing/integration-testing.md)快速簡便也。 深入了解[測試控制器邏輯](controllers/testing.md)。
+此架構使用介面和相依性插入，因此相當適用於單元測試，而此架構所包含的功能 (例如 Entity Framework 的 TestHost 和 InMemory 提供者) 也讓您可以輕鬆快速地進行[整合測試](../testing/integration-testing.md)。 深入了解[測試控制器邏輯](controllers/testing.md)。
 
 ### <a name="razor-view-engine"></a>Razor 檢視引擎
 
-[ASP.NET Core MVC 檢視](views/overview.md)使用[Razor 檢視引擎](views/razor.md)來呈現檢視。 Razor 是壓縮、 易懂和流暢的範本標記語言來定義使用內嵌的 C# 程式碼的檢視。 Razor 用於動態產生的 web 內容伺服器上。 您完全可以混合伺服端程式碼使用用戶端端內容和作業程式碼。
+[ASP.NET Core MVC 檢視](views/overview.md)使用 [Razor 檢視引擎](views/razor.md)來呈現檢視。 Razor 是簡潔、易懂且流暢的範本標記語言，使用內嵌 C# 程式碼來定義檢視。 Razor 可用來動態產生伺服器上的 Web 內容。 您可以完全混合伺服端程式碼以及用戶端內容和程式碼。
 
 ```text
 <ul>
@@ -205,13 +205,13 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 </ul>
 ```
 
-使用 Razor 檢視引擎，您可以定義[配置](views/layout.md)，[部分檢視](views/partial.md)和可取代的區段。
+您可以使用 Razor 檢視引擎，定義[配置](views/layout.md)、[部分檢視](views/partial.md)及可取代的區段。
 
-### <a name="strongly-typed-views"></a>強型別的檢視
+### <a name="strongly-typed-views"></a>強型別檢視
 
-在 MVC razor 檢視可以是強型別根據您的模型。 控制站可以強型別的模型傳遞至檢視，讓您檢視，以具有型別檢查和 IntelliSense 支援。
+根據您的模型，MVC 中的 Razor 檢視可能是強型別。 控制器可以將強型別模型傳遞至檢視，讓您的檢視具有類型檢查和 IntelliSense 支援。
 
-例如，下列檢視呈現的模型型別`IEnumerable<Product>`:
+例如，下列檢視會呈現 `IEnumerable<Product>` 類型的模型：
 
 ```cshtml
 @model IEnumerable<Product>
@@ -223,11 +223,11 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 </ul>
 ```
 
-### <a name="tag-helpers"></a>標記協助程式
+### <a name="tag-helpers"></a>標籤協助程式
 
-[標記協助程式](views/tag-helpers/intro.md)啟用建立和呈現 HTML Razor 檔案中的項目加入伺服器端程式碼。 您可用來定義自訂標籤標記協助程式 (例如， `<environment>`) 或修改現有的標籤行為 (例如， `<label>`)。 標記協助程式繫結至特定項目名稱和其屬性為基礎的項目。 它們提供伺服器端轉譯，同時仍然保留 HTML 編輯經驗的優點。
+[標籤協助程式](views/tag-helpers/intro.md)可讓伺服器端程式碼參與建立及轉譯 Razor 檔案中 HTML 元素的過程。 您可以使用標籤協助程式定義自訂標籤 (例如 `<environment>`)，或修改現有標籤 (例如 `<label>`) 的行為。 標籤協助程式會根據元素名稱及其屬性，繫結至特定元素。 其提供伺服器端轉譯優點，同時仍然保留 HTML 編輯體驗。
 
-有許多內建的標記協助程式的一般工作-例如建立表單、 連結、 載入資產和更多的和更多可用公用 GitHub 儲存機制中以及 NuGet 封裝。 標記協助程式以 C# 中，撰寫，與它們目標項目名稱、 屬性名稱，或父標記的 HTML 項目。 例如，內建 LinkTagHelper 可以用來建立的連結`Login`動作`AccountsController`:
+有許多適用於一般工作 (例如建立表單和連結、載入資產等) 的內建標籤協助程式，還有更多位於公用 GitHub 存放庫及作為 NuGet 套件來提供。 標籤協助程式是以 C# 撰寫，並根據元素名稱、屬性名稱或上層標籤來設定目標 HTML 元素。 例如，內建 LinkTagHelper 可用來建立 `AccountsController` 之 `Login` 動作的連結：
 
 ```cshtml
 <p>
@@ -236,7 +236,7 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 </p>
 ```
 
-`EnvironmentTagHelper`可用來在您檢視 （例如 raw 或縮短） 為基礎的執行階段環境，例如開發、 預備或生產環境中包含不同的指令碼：
+`EnvironmentTagHelper` 可根據執行階段環境 (例如開發、預備或生產)，將不同的指令碼加入檢視：
 
 ```cshtml
 <environment names="Development">
@@ -250,8 +250,8 @@ ASP.NET Core 已內建支援[相依性插入 (DI)](../fundamentals/dependency-in
 </environment>
 ```
 
-標記協助程式提供 HTML 易用的開發經驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建的標記協助程式和目標現有的 HTML 元素的元素提供伺服器端的屬性。
+標籤協助程式提供適合 HTML 的開發體驗和豐富的 IntelliSense 環境，以建立 HTML 和 Razor 標記。 大部分的內建標籤協助程式都是以現有的 HTML 元素為目標，並提供元素的伺服器端屬性。
 
 ### <a name="view-components"></a>檢視元件
 
-[檢視元件](views/view-components.md)可讓您封裝呈現邏輯和整個應用程式中重複加以使用。 它們類似於[部分檢視](views/partial.md)，但具有相關聯的邏輯。
+[檢視元件](views/view-components.md)可讓您封裝轉譯邏輯，並在整個應用程式中重複使用。 其類似於[部分檢視](views/partial.md)，但具有相關聯的邏輯。

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/configuration
-ms.openlocfilehash: 23b96ad11201f9b82cbd9fb832757d905407d228
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f258e12a95770909bff24fd5dd3611324179596f
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="migrating-configuration"></a>移轉設定
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 不會再使用 ASP.NET Core *Global.asax*和*web.config*舊版 ASP.NET 所使用的檔案。 在舊版 ASP.NET 中，應用程式啟動邏輯已放置在`Application_StartUp`方法內*Global.asax*。 接著，在 ASP.NET MVC *Startup.cs*檔案會包含在專案的根目錄，和應用程式啟動時呼叫。 ASP.NET Core 已完全採用這種方法，藉由放置在所有的啟動邏輯*Startup.cs*檔案。
 
-*Web.config*也已取代檔案中 ASP.NET Core。 設定本身可以現在設定，做為應用程式的啟動程序中所述的一部分*Startup.cs*。 組態仍然可以利用 XML 檔案，但通常 ASP.NET Core 專案將組態值的檔案中放置 JSON 格式，例如*appsettings.json*。 ASP.NET Core 組態系統可以也很容易存取環境變數，可提供更安全完善的位置環境專屬的值。 這是特別有用，例如連接字串和不應該簽入原始檔控制的 API 金鑰的密碼。 請參閱[組態](xref:fundamentals/configuration/index)若要深入了解 ASP.NET Core 中組態。
+*Web.config*也已取代檔案中 ASP.NET Core。 設定本身可以現在設定，做為應用程式的啟動程序中所述的一部分*Startup.cs*。 組態仍然可以利用 XML 檔案，但通常 ASP.NET Core 專案將組態值的檔案中放置 JSON 格式，例如*appsettings.json*。 ASP.NET Core 組態系統可以輕鬆存取環境變數，可提供[更安全完善的位置](xref:security/app-secrets)環境專用的值。 這是特別有用，例如連接字串和不應該簽入原始檔控制的 API 金鑰的密碼。 請參閱[組態](xref:fundamentals/configuration/index)若要深入了解 ASP.NET Core 中組態。
 
 如本文中，我們開始使用中的部分移轉 ASP.NET Core 專案[前一篇文章](mvc.md)。 安裝程式組態，將下列建構函式和屬性加入至*Startup.cs*專案的根目錄中找到的檔案：
 

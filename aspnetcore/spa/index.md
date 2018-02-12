@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/index
-ms.openlocfilehash: bfb00386af0e775b4c03a71567703ed87a785ce2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2017c2ada835eb7206dcfd195f6e2c032909f9ef
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="use-the-single-page-application-templates-release-candidate"></a>使用單頁應用程式範本 (候選版)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/24/2018
 執行下列命令以安裝 Angular、React 與 React with Redux 的 ASP.NET Core 範本**候選版**：
 
 ```console
-dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-rc1-final
+dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.0.0-rc2-final
 ```
 
 ## <a name="use-the-templates"></a>使用範本

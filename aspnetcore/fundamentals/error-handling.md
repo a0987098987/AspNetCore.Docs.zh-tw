@@ -2,58 +2,58 @@
 title: "ASP.NET Core 中的錯誤處理"
 author: ardalis
 description: "了解如何在 ASP.NET Core 應用程式中處理錯誤。"
-ms.author: tdykstra
 manager: wpickett
-ms.date: 11/30/2016
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: fundamentals/error-handling
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019e31fa749a950db48575e1f4e8d4d26d1cde75
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.date: 11/30/2016
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: fundamentals/error-handling
+ms.openlocfilehash: 5b0cda7b79b8a9523d1ba6a9b321d22d3ccc753a
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="introduction-to-error-handling-in-aspnet-core"></a>Introduction to ASP.NET Core 中的錯誤處理
+# <a name="introduction-to-error-handling-in-aspnet-core"></a>ASP.NET Core 中的錯誤處理簡介
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Tom Dykstra](https://github.com/tdykstra/)
 
-本文涵蓋常見 appoaches 處理 ASP.NET Core 應用程式中的錯誤。
+本文涵蓋處理 ASP.NET Core 應用程式錯誤的常見方法。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="the-developer-exception-page"></a>[開發人員的例外狀況] 頁面
+## <a name="the-developer-exception-page"></a>開發人員例外狀況頁面
 
-若要設定應用程式顯示一個頁面，會顯示例外狀況的相關詳細的資訊，請安裝`Microsoft.AspNetCore.Diagnostics`NuGet 封裝，並將一條線[啟動類別中設定方法](startup.md):
+若要設定應用程式以顯示例外狀況的詳細資訊頁面，請安裝 `Microsoft.AspNetCore.Diagnostics` NuGet 套件，並於[在 Startup 類別中設定方法](startup.md)中新增一行文字：
 
 [!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=7)]
 
-Put`UseDeveloperExceptionPage`之前您要攔截例外狀況中，例如任何中介軟體`app.UseMvc`。
+將 `UseDeveloperExceptionPage` 放在任何您要攔截例外狀況到其中的中介軟體之前，例如 `app.UseMvc`。
 
 >[!WARNING]
-> 啟用開發人員例外狀況頁面**只有應用程式在執行時在開發環境中**。 您不想在生產環境中執行的應用程式時，公開共用詳細例外狀況資訊。 [深入了解設定環境](environments.md)。
+> **僅有當應用程式是在開發環境中執行時**，才啟用開發人員例外狀況頁面。 當應用程式在生產環境中執行時，您不會想要公開共用例外狀況的詳細資訊。 [進一步了解環境的設定](environments.md)。
 
-若要查看 [開發人員的例外狀況] 頁面，執行範例應用程式的環境設定為`Development`，並加入`?throw=true`基底 url 的應用程式。 此頁面包含例外狀況，並要求的相關資訊的數個索引標籤。 第一個索引標籤包含堆疊追蹤。 
+若要查看開發人員例外狀況頁面，請將環境設定為 `Development`，並將 `?throw=true` 新增至應用程式的基底 URL，以執行範例應用程式。 此頁面包含數個索引標籤，內含例外狀況與要求的相關資訊。 第一個索引標籤包含堆疊追蹤。 
 
 ![堆疊追蹤](error-handling/_static/developer-exception-page.png)
 
-如果有的話，[下一步] 索引標籤將顯示的查詢字串參數。
+下一個索引標籤則會顯示查詢字串參數 (如果有的話)。
 
 ![查詢字串參數](error-handling/_static/developer-exception-page-query.png)
 
-此要求沒有任何 cookie，但如果有，它們會出現在上**Cookie**  索引標籤。您可以看到最後一個索引標籤中所傳遞的標頭。
+此要求沒有任何 Cookie；但如果有，它們會出現在 [Cookie] 索引標籤上。您可以看到傳遞至最後一個索引標籤的標頭。
 
 ![標頭](error-handling/_static/developer-exception-page-headers.png)
 
 ## <a name="configuring-a-custom-exception-handling-page"></a>設定自訂的例外狀況處理頁面
 
-它是個不錯的主意設定例外狀況處理常式網頁應用程式不在執行時所要使用`Development`環境。
+當應用程式不在 `Development` 環境中執行時，建議您設定使用例外處理常式頁面。
 
 [!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
-在 MVC 應用程式中不明確裝飾錯誤處理常式的動作方法，以 HTTP 方法的屬性，例如`HttpGet`。 使用明確的動詞命令無法防止某些要求的方法。
+在 MVC 應用程式中，請不要使用 HTTP 方法屬性 (例如 `HttpGet`) 明確裝飾錯誤處理常式的動作方法。 使用明確的動詞時，可能會導致方法收不到某些要求。
 
 ```csharp
 [Route("/Error")]
@@ -63,19 +63,19 @@ public IActionResult Index()
 }
 ```
 
-## <a name="configuring-status-code-pages"></a>設定狀態的字碼頁
+## <a name="configuring-status-code-pages"></a>設定狀態碼頁面
 
-根據預設，您的應用程式將不會提供 HTTP 狀態碼 500 （內部伺服器錯誤） 或 404 （找不到） 等豐富狀態字碼頁。 您可以設定`StatusCodePagesMiddleware`將這一行加入`Configure`方法：
+根據預設，您的應用程式不會提供 HTTP 狀態碼 500 (內部伺服器錯誤) 或 404 (找不到) 等豐富的狀態碼頁面。 您可以將這一行新增至 `Configure` 方法，以設定 `StatusCodePagesMiddleware`：
 
 ```csharp
 app.UseStatusCodePages();
 ```
 
-根據預設，此中介軟體會加入常見狀態碼 404 等簡單、 純文字的處理常式：
+根據預設，此中介軟體會針對常見狀態碼 (如 404) 新增簡單的純文字處理常式：
 
 ![404 頁面](error-handling/_static/default-404-status-code.png)
 
-中介軟體可支援幾種不同的擴充方法。 另一個則採用 lambda 運算式，另一個採用內容類型和格式字串。
+中介軟體可支援幾種不同的擴充方法。 其中一種是採用 Lambda 運算式，另一個則是採用內容類型和格式字串，
 
 [!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_StatusCodePages)]
 
@@ -83,7 +83,7 @@ app.UseStatusCodePages();
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
 
-也有重新導向的擴充方法。 其中一個會 302 狀態碼傳送給用戶端，而其中一個原始的狀態碼傳回給用戶端，但也會重新導向 URL 執行此處理常式。
+也有重新導向的擴充方法。 其中一個會將 302 狀態碼傳送給用戶端，而另一個會將原始的狀態碼傳回給用戶端，同時也會針對重新導向 URL 執行處理常式。
 
 [!code-csharp[Main](error-handling/sample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
@@ -91,7 +91,7 @@ app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 app.UseStatusCodePagesWithReExecute("/error/{0}");
 ```
 
-如果您需要停用狀態的特定要求的字碼頁，您可以這樣做：
+如果您需要停用特定要求的狀態碼頁面，您可以這樣做：
 
 ```csharp
 var statusCodePagesFeature = context.Features.Get<IStatusCodePagesFeature>();
@@ -103,36 +103,36 @@ if (statusCodePagesFeature != null)
 
 ## <a name="exception-handling-code"></a>例外狀況處理程式碼
 
-例外狀況處理網頁中的程式碼，可擲回例外狀況。 它通常是個不錯的主意，生產環境錯誤頁來組成純粹靜態內容。
+例外狀況處理頁面中的程式碼，可擲回例外狀況。 一般來說，較好的做法是讓生產環境的錯誤頁面由純靜態內容組成。
 
-此外，請注意，一旦傳送回應標頭之後，您無法變更回應的狀態碼，也不可以任何例外狀況網頁或處理常式執行。 回應必須完成或中止連線。
+另請注意，一旦傳送回應標頭之後，您就無法變更回應的狀態碼，也不能執行任何例外狀況頁面或處理常式。 回應必須完成，否則會中止連線。
 
 ## <a name="server-exception-handling"></a>伺服器例外狀況處理
 
-除了例外狀況處理應用程式中的邏輯[伺服器](servers/index.md)裝載您的應用程式會執行一些例外狀況處理。 如果標頭傳送之前，伺服器會攔截例外狀況，伺服器會傳送 500 內部伺服器錯誤回應，且沒有主體。 如果傳送的標頭後，伺服器會攔截例外狀況，伺服器就會關閉連接。 不由您的應用程式的要求是由伺服器處理。 任何發生的例外狀況由伺服器的例外狀況處理。 任何設定自訂錯誤網頁，或例外狀況處理中介軟體或篩選器不會影響這個行為。
+除了應用程式中的例外狀況處理邏輯，裝載應用程式的[伺服器](servers/index.md)也會執行一些例外狀況處理。 如果伺服器在標頭傳送之前攔截到例外狀況，則伺服器會傳送「500 內部伺服器錯誤」回應，且沒有內內文。 如果伺服器在標頭傳送之後攔截到例外狀況，則伺服器會關閉連線。 應用程式未處理的要求會由伺服器來處理。 任何發生的例外狀況均由伺服器的例外狀況功能來處理。 任何已設定的自訂錯誤頁面、例外狀況處理中介軟體或篩選條件並不會影響這個行為。
 
 ## <a name="startup-exception-handling"></a>啟動例外狀況處理
 
-只裝載層可以處理應用程式啟動期間發生的例外狀況。 您可以[設定主應用程式的運作方式的錯誤回應在啟動期間](hosting.md#detailed-errors)使用`captureStartupErrors`和`detailedErrors`索引鍵。
+只有裝載層可以處理應用程式啟動期間發生的例外狀況。 您可以使用 `captureStartupErrors` 和 `detailedErrors` 索引鍵，[設定主機對啟動期間所發生錯誤的回應行為](hosting.md#detailed-errors)。
 
-裝載可以只會顯示錯誤頁面擷取的啟動錯誤，如果主機位址/連接埠繫結之後，就會發生錯誤。 如果任何繫結失敗，因為任何原因，裝載層記錄重大例外狀況 dotnet 處理序損毀，並不顯示任何錯誤頁面。
+如果錯誤是在主機位址/連接埠繫結之後發生，則裝載層只會顯示擷取到的啟動錯誤的錯誤頁面。 如果繫結因為任何原因失敗，裝載層會記錄 dotnet 處理序損毀的重大例外狀況，但不會顯示任何錯誤頁面。
 
-## <a name="aspnet-mvc-error-handling"></a>ASP.NET MVC 的錯誤處理
+## <a name="aspnet-mvc-error-handling"></a>ASP.NET MVC 錯誤處理
 
-[MVC](../mvc/index.md)應用程式有錯誤，例如設定例外狀況篩選條件，以及執行模型驗證處理一些其他選項。
+[MVC](xref:mvc/overview) 應用程式提供一些其他選項以處理錯誤，例如設定例外狀況篩選條件，以及執行模型驗證。
 
 ### <a name="exception-filters"></a>例外狀況篩選條件
 
-全域或根據每個控制站或每個動作的 MVC 應用程式中，可以設定例外狀況篩選條件。 這些篩選器處理控制器動作，或另一個篩選，在執行期間發生任何未處理例外狀況，而不會呼叫否則。 深入了解例外狀況篩選條件中[篩選](../mvc/controllers/filters.md)。
+在 MVC 應用程式中，您可以全域設定例外狀況篩選條件，或以每個控制器或每個動作基準來設定。 這些篩選條件會處理任何在控制器動作或其他篩選條件執行期間發生但未處理的例外狀況；否則的話，就不會呼叫這些篩選條件。 如需深入了解例外狀況篩選條件，請參閱[篩選條件](../mvc/controllers/filters.md)。
 
 >[!TIP]
-> 例外狀況篩選條件則適合用於設陷 MVC 動作中發生的例外狀況，但是它們並不具有彈性，錯誤處理中介軟體。 偏好以一般的情況下中, 介軟體，並使用篩選器只需要執行錯誤處理*不同*根據選擇的 MVC 動作。
+> 例外狀況篩選條件適合用來截獲 MVC 動作中發生的例外狀況，但是它們並不像錯誤處理中介軟體那麼有彈性。 一般情況下通常使用中介軟體；只有當您需要根據選擇的 MVC 動作執行「不同的」錯誤處理時，才使用篩選條件。
 
 ### <a name="handling-model-state-errors"></a>處理模型狀態錯誤
 
-[模型驗證](../mvc/models/validation.md)發生之前所叫用每個控制器動作和動作方法必須負責檢查`ModelState.IsValid`和作出適當回應。
+在叫用每個控制器動作之前，會先進行[模型驗證](../mvc/models/validation.md)，而動作方法必須負責檢查 `ModelState.IsValid` 並做出適當回應。
 
-某些應用程式都可以選擇在此情況下遵循標準處理模型驗證錯誤，慣例[篩選](../mvc/controllers/filters.md)可能是適當的位置，實作這類的原則。 您應該測試您的動作具有無效的模型狀態的行為方式。 進一步了解[測試控制器邏輯](../mvc/controllers/testing.md)。
+某些應用程式會選擇遵循標準慣例來處理模型驗證錯誤；在這種情況下，就很適合在[篩選條件](../mvc/controllers/filters.md)中實作這類原則。 您應該測試您的動作在無效模型狀態中有何行為。 深入了解[測試控制器邏輯](../mvc/controllers/testing.md)。
 
 
 

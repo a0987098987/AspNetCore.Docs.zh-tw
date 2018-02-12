@@ -1,45 +1,45 @@
 ---
-title: "在 ASP.NET Core 選項模式"
+title: "ASP.NET Core 中的選項模式"
 author: guardrex
-description: "了解如何使用選項模式來代表一組相關的設定，ASP.NET Core 應用程式中。"
-ms.author: riande
+description: "了解如何使用選項模式來代表 ASP.NET Core 應用程式中的一組相關設定。"
 manager: wpickett
+ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/configuration/options
-ms.openlocfilehash: aab96b5313a8632950e51f5586612c1d0d3d176e
-ms.sourcegitcommit: 83b5a4715fd25e4eb6f7c8427c0ef03850a7fa07
-ms.translationtype: MT
+ms.openlocfilehash: abb3b92af07a7b3b199712fcfdc459ca283d0017
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="options-pattern-in-aspnet-core"></a>在 ASP.NET Core 選項模式
+# <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-選項模式使用選項類別來代表一組相關的設定。 當組態設定會隔離到不同的選項類別功能時，應用程式就會遵守兩個重要的軟體工程原則：
+選項模式使用選項類別來代表一組相關的設定。 當組態設定依功能隔離到不同的選項類別時，應用程式會遵守兩個重要的軟體工程準則：
 
-* [介面隔離原則 」 (ISP)](http://deviq.com/interface-segregation-principle/)： 取決於組態設定的功能 （類別） 取決於它們所使用的組態設定。
-* [重要性分離](http://deviq.com/separation-of-concerns/)： 應用程式的不同部分的設定不相依或彼此結合。
+* [介面隔離準則 (ISP)](http://deviq.com/interface-segregation-principle/)：相依於組態設定的功能 (類別) 只會相依於它們使用的組態設定。
+* [關注點分離](http://deviq.com/separation-of-concerns/) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample)) 這篇文章會更輕鬆地遵循範例應用程式使用。
+[檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
 
-## <a name="basic-options-configuration"></a>基本選項設定
+## <a name="basic-options-configuration"></a>基本選項組態
 
-範例示範基本的選項組態&num;1[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+基本選項範例組態是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;1 來示範。
 
-必須非抽象的選項類別。 具有公用的無參數建構函式。 下列類別`MyOptions`，有兩個屬性，`Option1`和`Option2`。 設定預設值是選擇性的但在下列範例中的類別建構函式設定的預設值`Option1`。 `Option2`直接初始化屬性所設定的預設值 (*Models/MyOptions.cs*):
+選項類別必須為非抽象，且具有公用的無參數建構函式。 下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。 設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。 `Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：
 
 [!code-csharp[Main](options/sample/Models/MyOptions.cs?name=snippet1)]
 
-`MyOptions`類別加入至服務容器具有[IConfigureOptions&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1)和繫結至設定：
+`MyOptions` 類別使用 [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) 新增至服務容器，並繫結至組態：
 
 [!code-csharp[Main](options/sample/Startup.cs?name=snippet_Example1)]
 
-下列頁面上的模型使用[建構函式相依性插入](xref:fundamentals/dependency-injection#what-is-dependency-injection)與[IOptions&lt;TOptions&gt; ](/dotnet/api/Microsoft.Extensions.Options.IOptions-1)存取設定 (*Pages/Index.cshtml.cs*):
+下列頁面模型使用[建構函式相依性插入](xref:fundamentals/dependency-injection#what-is-dependency-injection)搭配 [IOptions&lt;TOptions&gt;](/dotnet/api/Microsoft.Extensions.Options.IOptions-1) 來存取設定 (*Pages/Index.cshtml.cs*)：
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=9)]
 
@@ -47,29 +47,29 @@ ms.lasthandoff: 01/25/2018
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-此範例*appsettings.json*檔案指定的值`option1`和`option2`:
+範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：
 
 [!code-json[Main](options/sample/appsettings.json)]
 
-當應用程式執行時，頁面模型`OnGet`方法會傳回字串，顯示的選項類別值：
+當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：
 
 ```html
 option1 = value1_from_json, option2 = -1
 ```
 
-## <a name="configure-simple-options-with-a-delegate"></a>將委派設定簡單的選項
+## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 
-設定簡單的選項，將委派與範例會示範&num;2[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+使用委派設定簡單的選項是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;2 來示範。
 
-您可以使用委派來設定選項值。 範例應用程式會使用`MyOptionsWithDelegateConfig`類別 (*Models/MyOptionsWithDelegateConfig.cs*):
+使用委派來設定選項值。 範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：
 
 [!code-csharp[Main](options/sample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
-下列程式碼中，第二個`IConfigureOptions<TOptions>`服務新增至服務容器。 它使用委派來設定的繫結`MyOptionsWithDelegateConfig`:
+在下列程式碼中，第二個 `IConfigureOptions<TOptions>` 服務新增至服務容器。 它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：
 
 [!code-csharp[Main](options/sample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs*：
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=10)]
 
@@ -77,39 +77,39 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以加入多個組態提供者。 使用 NuGet 封裝中的組態提供者。 它們被套用順序來進行登錄。
+您可以新增多個設定提供者。 設定提供者提供於 NuGet 套件中。 它們會以註冊的順序套用。
 
-每次呼叫[設定&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1.configure)新增`IConfigureOptions<TOptions>`服務的服務容器。 在上述範例中，值`Option1`和`Option2`中已指定*appsettings.json*，但值`Option1`和`Option2`會覆寫設定的委派。
+每次呼叫 [Configure&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1.configure) 會新增 `IConfigureOptions<TOptions>` 服務至服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 
-啟用多個設定服務時，要指定最後一個組態來源*wins*並設定組態值。 當應用程式執行時，頁面模型`OnGet`方法會傳回字串，顯示的選項類別值：
+啟用多個設定服務時，最後一個指定的設定來源會「勝出」並設定此組態值。 當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：
 
 ```html
 delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 ```
 
-## <a name="suboptions-configuration"></a>Suboptions 組態
+## <a name="suboptions-configuration"></a>子選項組態
 
-範例將示範 suboptions 組態&num;3[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+子選項組態是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;3 來示範。
 
-應用程式應該建立屬於特定的功能群組 （類別） 的應用程式中的選項類別。 應用程式需要的組態值的組件應該只能存取他們使用的組態值。
+應用程式應該建立屬於應用程式中特定功能群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
-當繫結組態選項，選項類型中的每一個屬性繫結至表單的組態機碼`property[:sub-property:]`。 比方說，`MyOptions.Option1`屬性繫結索引鍵`Option1`，這會從讀取`option1`屬性*appsettings.json*。
+將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。 例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。
 
-下列程式碼，而第三個`IConfigureOptions<TOptions>`服務新增至服務容器。 它會繫結`MySubOptions`區段`subsection`的*appsettings.json*檔案：
+在下列程式碼中，第三個 `IConfigureOptions<TOptions>` 服務新增至服務容器。 它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：
 
 [!code-csharp[Main](options/sample/Startup.cs?name=snippet_Example3)]
 
-`GetSection`擴充方法需要[Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) NuGet 封裝。 如果應用程式使用[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) metapackage，封裝會自動包含。
+`GetSection` 擴充方法需要 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) NuGet 套件。 如果應用程式使用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) 中繼套件，則會自動包含套件。
 
-此範例*appsettings.json*檔案會定義`subsection`成員索引鍵與`suboption1`和`suboption2`:
+範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
 [!code-json[Main](options/sample/appsettings.json?highlight=4-7)]
 
-`MySubOptions`類別定義的屬性，`SubOption1`和`SubOption2`，來保存的子選項值 (*Models/MySubOptions.cs*):
+`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存子選項值 (*Models/MySubOptions.cs*)：
 
 [!code-csharp[Main](options/sample/Models/MySubOptions.cs?name=snippet1)]
 
-頁面模型`OnGet`方法以傳回字串的子選項值 (*Pages/Index.cshtml.cs*):
+頁面模型的 `OnGet` 方法會傳回字串與子選項值 (*Pages/Index.cshtml.cs*)：
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=11)]
 
@@ -117,17 +117,17 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example3)]
 
-當應用程式執行時，`OnGet`方法會傳回字串，顯示類別值的子選項：
+當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：
 
 ```html
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>提供的檢視模型或直接檢視資料隱碼的選項
+## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>檢視模型提供的選項或使用直接檢視插入提供的選項
 
-提供的檢視模型或直接檢視資料隱碼的選項也示範了範例&num;4[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+檢視模型提供的選項或使用直接檢視插入提供的選項是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;4 來示範。
 
-您可以提供選項，檢視模型中，或是將，以便`IOptions<TOptions>`直接插入檢視 (*Pages/Index.cshtml.cs*):
+可以在檢視模型中提供選項，或藉由將 `IOptions<TOptions>` 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=9)]
 
@@ -135,23 +135,23 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example4)]
 
-用於直接插入插入`IOptions<MyOptions>`與`@inject`指示詞：
+對於直接插入，請使用 `@inject` 指示詞插入 `IOptions<MyOptions>`：
 
 [!code-cshtml[Main](options/sample/Pages/Index.cshtml?range=1-10&highlight=5)]
 
-執行應用程式時，轉譯的頁面顯示的選項值：
+執行應用程式時，轉譯的頁面中會顯示選項值：
 
-![選項值選項 1: value1_from_json 和選項 2： 從模型和檢視插入載入-1。](options/_static/view.png)
+![選項值 Option1:：value1_from_json 和 Option2: -1 是從模型藉由插入至檢視來載入。](options/_static/view.png)
 
-## <a name="reload-configuration-data-with-ioptionssnapshot"></a>重新載入 IOptionsSnapshot 組態資料
+## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-重新載入組態資料與`IOptionsSnapshot`範例所示&num;5[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+使用 `IOptionsSnapshot` 重新載入組態資料是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;5 來示範。
 
 *需要 ASP.NET Core 1.1 或更新版本。*
 
-[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1)支援重新載入選項的最小處理負擔。 在 ASP.NET Core 1.1 中，`IOptionsSnapshot`是快照集的[IOptionsMonitor&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1)和更新自動每當監視就會觸發根據的資料來源變更的變更。 ASP.NET Core 2.0 版及更新版本中，選項會針對每個要求時存取並快取要求的存留期計算一次。
+[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) 支援以最小的處理負擔來重新載入選項。 在 ASP.NET Core 1.1 中，`IOptionsSnapshot` 是 [IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) 的快照集，每當監視器根據資料來源變更觸發變更時便會自動更新。 ASP.NET Core 2.0 版及更新版本中，選項會在要求的存留期內存取及快取時，針對每個要求計算一次。
 
-下列範例會示範如何為新`IOptionsSnapshot`之後，會建立*appsettings.json*變更 (*Pages/Index.cshtml.cs*)。 伺服器的多個要求會傳回所提供的常數值*appsettings.json*直到檔案變更，並設定重新載入檔案。
+下列範例示範在 *appsettings.json* 變更之後如何建立新的 `IOptionsSnapshot` (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=12)]
 
@@ -159,29 +159,29 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-下圖顯示初始`option1`和`option2`值載入從*appsettings.json*檔案：
+下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-變更中的值*appsettings.json*檔案`value1_from_json UPDATED`和`200`。 儲存*appsettings.json*檔案。 重新整理瀏覽器，以查看選項值，會更新：
+將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 儲存 *appsettings.json* 檔案。 重新整理瀏覽器，以查看選項值更新：
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
-## <a name="named-options-support-with-iconfigurenamedoptions"></a>名為 IConfigureNamedOptions 選項支援
+## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
-名為選項支援[IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1)範例會示範&num;6[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)。
+[IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) 的具名選項支援是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;6 來示範。
 
 *需要 ASP.NET Core 2.0 或更新版本。*
 
-*名為選項*支援可讓應用程式，以區別命名的選項設定。 範例應用程式，以宣告具名的選項[ConfigureNamedOptions&lt;TOptions&gt;。設定](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure)方法：
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，具名選項使用 [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure) 方法來宣告：
 
 [!code-csharp[Main](options/sample/Startup.cs?name=snippet_Example6)]
 
-範例應用程式存取具名的選項與[IOptionsSnapshot&lt;TOptions&gt;。取得](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1.get)(*Pages/Index.cshtml.cs*):
+範例應用程式會使用[IOptionsSnapshot&lt;TOptions&gt;.Get](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1.get) 來存取具名選項 (*Pages/Index.cshtml.cs*)：
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?range=13-14)]
 
@@ -189,19 +189,19 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 [!code-csharp[Main](options/sample/Pages/Index.cshtml.cs?name=snippet_Example6)]
 
-執行範例應用程式，會傳回具名的選項：
+執行範例應用程式後，會傳回具名選項：
 
 ```html
 named_options_1: option1 = value1_from_json, option2 = -1
 named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 ```
 
-`named_options_1`值會提供從組態中，這會從載入*appsettings.json*檔案。 `named_options_2`所提供的值：
+`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。 `named_options_2` 值是由以下提供：
 
-* `named_options_2`委派中`ConfigureServices`如`Option1`。
-* 預設值為`Option2`提供`MyOptions`類別。
+* `ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。
+* `MyOptions` 類別所提供的 `Option2` 預設值。
 
-設定所有具有選項的具名執行個體[OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall)方法。 下列程式碼會設定`Option1`所有名為具有共通的值的組態執行個體。 手動加入下列程式碼`Configure`方法：
+使用 [OptionsServiceCollectionExtensions.ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 方法設定所有具名選項執行個體。 下列程式碼會為具有共通值的所有具名組態執行個體設定 `Option1`。 將下列程式碼手動新增至 `Configure` 方法：
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -210,7 +210,7 @@ services.ConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-執行範例應用程式加入程式碼之後，就會產生下列結果：
+新增程式碼之後執行範例應用程式，就會產生下列結果：
 
 ```html
 named_options_1: option1 = ConfigureAll replacement value, option2 = -1
@@ -218,13 +218,13 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> ASP.NET Core 2.0 版及更新版本中，所有選項都被都具名執行個體。 現有`IConfigureOption`執行個體視為目標`Options.DefaultName`執行個體，也就是`string.Empty`。 `IConfigureNamedOptions`也會實作`IConfigureOptions`。 預設實作[IOptionsFactory&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) ([參考來源](https://github.com/aspnet/Options/blob/release/2.0.0/src/Microsoft.Extensions.Options/OptionsFactory.cs)) 已適當地使用每個邏輯。 `null`具名的選項用來為目標的所有具名的執行個體，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall)和[PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall)使用此慣例時)。
+> 在 ASP.NET Core 2.0 版及更新版本中，所有選項都是具名執行個體。 現有的 `IConfigureOption` 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。 `IConfigureNamedOptions` 也會實作 `IConfigureOptions`。 [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 的預設實作 ([參考來源](https://github.com/aspnet/Options/blob/release/2.0.0/src/Microsoft.Extensions.Options/OptionsFactory.cs)) 有邏輯可適當地使用每一者。 `null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 和 [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 使用此慣例)。
 
 ## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
 
 *需要 ASP.NET Core 2.0 或更新版本。*
 
-設定與 postconfiguration [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1)。 在所有執行 postconfiguration [IConfigureOptions&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1)便會進行設定：
+使用 [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1) 設定後置組態。 後置組態會在所有 [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) 組態都發生之後執行：
 
 ```csharp
 services.PostConfigure<MyOptions>(myOptions =>
@@ -233,7 +233,7 @@ services.PostConfigure<MyOptions>(myOptions =>
 });
 ```
 
-[PostConfigure&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1.postconfigure)是可供後續設定具名的選項：
+[PostConfigure&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1.postconfigure) 可以用來後置設定具名選項：
 
 ```csharp
 services.PostConfigure<MyOptions>("named_options_1", myOptions =>
@@ -242,7 +242,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-使用[PostConfigureAll&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall)後設定所有名為組態執行個體：
+使用 [PostConfigureAll&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 後置設定所有具名組態執行個體：
 
 ```csharp
 services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
@@ -251,19 +251,19 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-## <a name="options-factory-monitoring-and-cache"></a>選項 factory、 監視和快取
+## <a name="options-factory-monitoring-and-cache"></a>選項 Factory、監視和快取
 
-[IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1)用於通知時`TOptions`變更執行個體。 `IOptionsMonitor`支援 reloadable 選項，變更通知，以及`IPostConfigureOptions`。
+[IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) 用於 `TOptions` 執行個體變更時的通知。 `IOptionsMonitor` 支援可重新載入的選項、變更通知，以及 `IPostConfigureOptions`。
 
-[IOptionsFactory&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) (ASP.NET Core 2.0 或更新版本) 負責建立新的選項執行個體。 它有單一[建立](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create)方法。 預設實作會採用所有已註冊`IConfigureOptions`和`IPostConfigureOptions`並執行所有可設定第一次，後面接著後設定。 它會區別`IConfigureNamedOptions`和`IConfigureOptions`，只會呼叫適當的介面。
+[IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) (ASP.NET Core 2.0 或更新版本) 負責建立新的選項執行個體。 它有一個 [Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create) 方法。 預設實作會採用所有已註冊的 `IConfigureOptions` 和 `IPostConfigureOptions`，並先執行所有設定，接著執行後置設定。 它會區別 `IConfigureNamedOptions` 和 `IConfigureOptions`，且只會呼叫適當的介面。
 
-[IOptionsMonitorCache&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ASP.NET Core 2.0 或更新版本) 由`IOptionsMonitor`至快取`TOptions`執行個體。 `IOptionsMonitorCache`失效選項在監視器中的執行個體，以便重新計算值 ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove))。 值可以手動導入以及使用[TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd)。 [清除](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear)方法應在需要重新建立所有具名執行個體時使用。
+[IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ASP.NET Core 2.0 或更新版本) 由 `IOptionsMonitor` 用來快取 `TOptions` 執行個體。 `IOptionsMonitorCache` 會使監視器中的選項執行個體失效，以便重新計算值 ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove))。 值可以手動導入，也能使用 [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd)。 [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) 方法用於應該視需要重新建立所有具名執行個體時。
 
 ## <a name="accessing-options-during-startup"></a>在啟動期間存取選項
 
-`IOptions`可用於`Configure`，因為服務建立之前`Configure`方法執行。 如果內建的服務提供者`ConfigureServices`若要存取選項，它不包含任何選項之後，內建的服務提供者提供的組態。 因此，可能存在選項不一致狀態，因為服務登錄裝置排序。
+`IOptions` 可用於 `Configure`，因為服務是在 `Configure` 方法執行之前建置。 如果在 `ConfigureServices` 建置服務提供者以存取選項，它將不會包含建置服務提供者之後提供的任何選項組態。 因此，可能會因為服務註冊的順序而有不一致的選項狀態存在。
 
-組態選項通常會從組態載入，因為可以用於啟動於兩者`Configure`和`ConfigureServices`。 如需使用在啟動期間設定的範例，請參閱[應用程式啟動](xref:fundamentals/startup)主題。
+因為選項通常會從組態載入，所以組態可以在啟動時用於 `Configure` 和 `ConfigureServices`。 如需在啟動期間使用組態的範例，請參閱[應用程式啟動](xref:fundamentals/startup)主題。
 
 ## <a name="see-also"></a>另請參閱
 

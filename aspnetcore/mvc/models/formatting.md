@@ -1,97 +1,97 @@
 ---
-title: "ASP.NET Core MVC 中的格式化回應資料"
+title: "在 ASP.NET Core MVC 中格式化回應資料"
 author: ardalis
-description: "了解如何設定 ASP.NET Core MVC 中的回應資料的格式。"
-ms.author: riande
+description: "了解如何在 ASP.NET Core MVC 中格式化回應資料。"
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: mvc/models/formatting
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddda494e0db22031af9d20325e14e8458756cbfd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.date: 10/14/2016
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: mvc/models/formatting
+ms.openlocfilehash: 36231cd2bf59408e9c858ea99355c1e8dd859e6e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="introduction-to-formatting-response-data-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的格式化回應資料簡介
+# <a name="introduction-to-formatting-response-data-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中格式化回應資料簡介
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 有內建支援來格式化回應資料，使用固定的格式，或在偵測到用戶端規格。
+ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應資料格式化支援。
 
-[檢視或從 GitHub 下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/formatting/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/formatting/sample)。
 
-## <a name="format-specific-action-results"></a>特定格式的動作結果
+## <a name="format-specific-action-results"></a>格式特定動作結果
 
-某些動作結果型別特有的特定格式，例如`JsonResult`和`ContentResult`。 動作可傳回特定結果永遠以特定方式格式化。 例如，傳回`JsonResult`會傳回 JSON 格式的資料，用戶端喜好設定無關。 同樣地，傳回`ContentResult`（如將只傳回一個字串），就會傳回純文字格式的字串資料。
+某些動作結果類型是特定格式所特有的，例如 `JsonResult` 和 `ContentResult`。 動作可以傳回一律以特定方式格式化的特定結果。 例如，不論用戶端喜好設定為何，傳回 `JsonResult` 都會傳回 JSON 格式化資料。 同樣地，傳回 `ContentResult` 將會傳回純文字格式化字串資料 (就像只傳回字串一樣)。
 
 > [!NOTE]
-> 不需要採取動作，來傳回任何特定的型別。MVC 支援任何物件的傳回值。 如果動作傳回`IActionResult`實作與 「 控制器 」 繼承自`Controller`，開發人員有許多對應至數個選項的 helper 方法。 傳回物件的動作結果不是`IActionResult`型別會使用適當的序列化`IOutputFormatter`實作。
+> 不需要採取動作，就會傳回任何特定類型；MVC 支援任何物件傳回值。 如果動作傳回 `IActionResult` 實作，而且控制器繼承自 `Controller`，則開發人員有許多對應至多個選項的協助程式方法。 傳回類型不是 `IActionResult` 之物件的動作結果，將會使用適當的 `IOutputFormatter` 實作進行序列化。
 
-若要以特定格式傳回資料的控制站，繼承自`Controller`基底類別，請使用內建的協助程式方法`Json`傳回 JSON 和`Content`純文字。 動作方法應該傳回特定結果型別 (例如， `JsonResult`) 或`IActionResult`。
+若要從繼承自 `Controller` 基底類別的控制器傳回特定格式的資料，請使用內建協助程式方法 `Json` 傳回 JSON 和 `Content` (針對純文字)。 動作方法應該會傳回特定結果類型 (例如，`JsonResult`) 或 `IActionResult`。
 
-傳回 JSON 格式的資料：
+傳回 JSON 格式化資料：
 
 [!code-csharp[Main](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=21-26)]
 
-從這個動作的範例回應：
+此動作的範例回應：
 
-![網路索引標籤的開發人員工具的 Microsoft Edge 顯示回應的內容類型為 application/json](formatting/_static/json-response.png)
+![Microsoft Edge 中 [開發人員工具] 的 [網路] 索引標籤，顯示回應的內容類型為 application/json](formatting/_static/json-response.png)
 
-請注意，回應的內容類型為`application/json`，清單中的網路要求和回應標頭區段中所示。 也請注意顯示 （在此情況下，Microsoft Edge） Accept 標頭在要求標頭 區段中，瀏覽器選項的清單。 目前的技術會忽略此標頭。以下將討論服從它。
+請注意，在網路要求清單及 [回應標頭] 區段中，回應的內容類型都是 `application/json`。 另請注意，在 [要求標頭] 區段的 Accept 標頭中瀏覽器 (在此情況下為 Microsoft Edge) 所呈現的選項清單。 目前技術將會忽略此標頭。下面會討論其遵守方式。
 
-若要傳回格式化的純文字資料，請使用`ContentResult`和`Content`helper:
+若要傳回純文字格式化資料，請使用 `ContentResult` 和 `Content` 協助程式：
 
 [!code-csharp[Main](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=47-52)]
 
-來自此動作的回應：
+此動作的回應：
 
-![在 Microsoft Edge 顯示回應的內容類型的開發人員工具的 [網路] 索引標籤是文字/純文字](formatting/_static/text-response.png)
+![Microsoft Edge 中 [開發人員工具] 的 [網路] 索引標籤，顯示回應的內容類型為 text/plain](formatting/_static/text-response.png)
 
-請注意在此情況下`Content-Type`傳回`text/plain`。 您也可以達到相同的行為使用剛才字串回應類型：
+請注意，在此情況下，所傳回的 `Content-Type` 是 `text/plain`。 只要使用字串回應類型，也可以達到這個相同的行為：
 
 [!code-csharp[Main](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3,5&range=54-59)]
 
 >[!TIP]
-> 非簡單式具有多個動作的傳回類型或選項 （例如，根據所執行作業的結果不同的 HTTP 狀態碼）、 偏好`IActionResult`當做傳回型別。
+> 針對具有多個傳回類型或選項 (例如，根據所執行作業結果的不同 HTTP 狀態碼) 的非一般動作，偏好使用 `IActionResult` 作為傳回類型。
 
 ## <a name="content-negotiation"></a>內容交涉
 
-內容交涉 (*conneg*簡稱) 發生於用戶端指定[Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。 使用 ASP.NET Core MVC 的預設格式為 JSON。 內容交涉由實作`ObjectResult`。 它也內建的 helper 方法的傳回特定的動作結果的狀態碼 (其中都以基礎`ObjectResult`)。 您也可以傳回的模型型別 （類別已定義為您的資料傳輸類型） 和架構會自動將其包裝在`ObjectResult`您。
+用戶端指定 [Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)時，會進行內容交涉 (簡稱 *conneg*)。 ASP.NET Core MVC 所使用的預設格式為 JSON。 內容交涉是由 `ObjectResult` 所實作。 它也會內建到從協助程式方法 (全部都是根據 `ObjectResult`) 所傳回的狀態碼特定動作結果。 您也可以傳回模型類型 (已定義為資料傳輸類型的類別)，而且架構會自動將它包裝在 `ObjectResult` 中。
 
-下列動作方法會使用`Ok`和`NotFound`helper 方法：
+下列動作方法使用 `Ok` 和 `NotFound` 協助程式方法：
 
 [!code-csharp[Main](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=8,10&range=28-38)]
 
-除非要求另一種格式，而且伺服器可以傳回要求的格式，將會傳回 JSON 格式的回應。 您可以使用這類工具[Fiddler](http://www.telerik.com/fiddler)建立包含 Accept 標頭的要求，並指定另一種格式。 在此情況下，如果伺服器有*格式器*可以產生的回應要求的格式，將會傳回結果中的用戶端慣用的格式。
+除非要求另一種格式，而且伺服器可以傳回所要求的格式，否則會傳回 JSON 格式的回應。 您可以使用 [Fiddler](http://www.telerik.com/fiddler) 這類工具建立包含 Accept 標頭的要求，以及指定另一種格式。 在此情況下，如果伺服器的「格式器」可以使用所要求的格式產生回應，則會以用戶端慣用的格式傳回結果。
 
-![Fiddler 主控台顯示手動建立取得與應用程式/xml 的 Accept 標頭值的要求](formatting/_static/fiddler-composer.png)
+![Fiddler 主控台，顯示 Accept 標頭值為 application/xml 的手動建立 GET 要求](formatting/_static/fiddler-composer.png)
 
-在上面的螢幕擷取畫面，Fiddler 編輯器已經用來產生要求，指定`Accept: application/xml`。 根據預設，ASP.NET Core MVC 僅支援 JSON，所以即使指定另一種格式，則傳回的結果時，仍 JSON 格式。 您會看到如何在下一節中加入其他格式子。
+在上面的螢幕擷取畫面中，已使用 Fiddler Composer 來產生要求，並指定 `Accept: application/xml`。 ASP.NET Core MVC 預設僅支援 JSON；因此，即使指定另一種格式，所傳回的結果仍然會是 JSON 格式。 您將在下節中看到如何新增其他格式器。
 
-控制器動作可以傳回 POCOs （純舊 CLR 物件），將會自動建立 ASP.NET MVC`ObjectResult`您會包裝物件。 用戶端會取得格式化的序列化的物件 （JSON 格式是預設值; 您可以設定 XML 或其他格式）。 如果物件傳回為`null`，則會傳回架構`204 No Content`回應。
+控制器動作可以傳回 POCO (純舊 CLR 物件)，在此情況下，ASP.NET MVC 會自動建立可包裝物件的 `ObjectResult`。 用戶端會取得格式化的序列化物件 (JSON 格式是預設值；您可以設定 XML 或其他格式)。 如果所傳回的物件是 `null`，則架構將傳回 `204 No Content` 回應。
 
-傳回的物件類型：
+傳回物件類型：
 
 [!code-csharp[Main](./formatting/sample/Controllers/Api/AuthorsController.cs?highlight=3&range=40-45)]
 
-在範例中，有效的作者別名的要求將會接收 200 OK 回應作者的資料。 無效的別名的要求將會收到 「 204 沒有內容的回應。 螢幕擷取畫面顯示回應 XML 和 JSON 的格式如下所示。
+在此範例中，有效作者別名的要求將會收到包含作者資料的 200 OK 回應。 無效別名的要求將會收到「204 沒有內容」回應。 下面顯示以 XML 和 JSON 格式顯示回應的螢幕擷取畫面。
 
 ### <a name="content-negotiation-process"></a>內容交涉程序
 
-內容*交涉*才只會發生`Accept`標頭會出現在要求中。 當要求包含 accept 標頭時，架構會列舉 accept 標頭中的喜好設定順序中的媒體類型，並會嘗試尋找可能會產生其中一種 accept 標頭所指定格式的回應格式器。 如果找到不到格式器可以滿足用戶端的要求，架構會嘗試尋找第一個可能會產生回應的格式器 (除非開發人員已設定選項上`MvcOptions`傳回 406 無法接受改為)。 如果要求指定的 XML，但尚未設定的 XML 格式器，則會使用 JSON 格式器。 較常見地，如果設定不到格式器，可以提供要求的格式，然後使用可以格式化物件的第一個格式器。 如果沒有標頭，可以處理的物件要傳回的第一個格式器將用來序列化回應中。 在此情況下，沒有任何交涉進行-伺服器會判斷它會使用何種格式。
+只有在 `Accept` 標頭出現在要求中時，才會進行「內容交涉」。 要求包含 Accept 標頭時，架構會依喜好設定順序來列舉 Accept 標頭中的媒體類型，並嘗試尋找可產生回應的格式器，而回應的格式為 Accept 標頭所指定的其中一種格式。 如果找不到可滿足用戶端要求的格式器，架構會嘗試尋找第一個可產生回應的格式器 (除非開發人員已在 `MvcOptions` 上設定選項，改為傳回「406 無法接受」)。 如果要求指定 XML，但尚未設定 XML 格式器，則會使用 JSON 格式器。 更常見地是，如果未設定格式器來提供所要求的格式，則會使用可格式化物件的第一個格式器。 如果未指定標頭，則會使用可處理要傳回之物件的第一個格式器來序列化回應。 在此情況下，無法進行任何交涉，伺服器將會判斷所使用的格式。
 
 > [!NOTE]
-> 如果 Accept 標頭包含`*/*`，將忽略標頭，除非`RespectBrowserAcceptHeader`設為 true `MvcOptions`。
+> 如果 Accept 標頭包含 `*/*`，則除非 `MvcOptions` 上的 `RespectBrowserAcceptHeader` 設定為 true，否則會忽略標頭。
 
 ### <a name="browsers-and-content-negotiation"></a>瀏覽器和內容交涉
 
-不同於一般的 API 用戶端 web 瀏覽器通常會提供`Accept`包含廣泛的格式，包括萬用字元的標頭。 根據預設，當架構偵測到在要求來自瀏覽器中，它將會忽略`Accept`頁首和改為傳回應用程式中的內容所設定的預設格式 (JSON 除非否則設定)。 當您使用不同的瀏覽器中使用 Api 時，這會提供更一致的經驗。
+與一般 API 用戶端不同，網頁瀏覽器會提供 `Accept` 標頭，內含廣泛的格式陣列 (包括萬用字元)。 根據預設，架構偵測到要求來自瀏覽器時，將會忽略 `Accept` 標頭，並改為傳回應用程式中已設定預設格式 (除非另外設定，否則為 JSON ) 的內容。 使用不同的瀏覽器來採用 API 時，這提供更一致的經驗。
 
-如果您想要使用您的應用程式實行瀏覽器 accept 標頭，您可以設定這為 MVC 的組態一部分藉由設定`RespectBrowserAcceptHeader`至`true`中`ConfigureServices`方法中的*Startup.cs*。
+如果您想要應用程式採用瀏覽器 Accept 標頭，則可以將這設定為 MVC 組態的一部分，方法是在 *Startup.cs* 的 `ConfigureServices` 方法中將 `RespectBrowserAcceptHeader` 設定為 `true`。
 
 ```csharp
 services.AddMvc(options =>
@@ -102,17 +102,17 @@ services.AddMvc(options =>
 
 ## <a name="configuring-formatters"></a>設定格式器
 
-若您的應用程式需要支援 JSON 的預設值以外的其他格式，您可以新增 NuGet 封裝，並設定 MVC 支援它們。 有個別的輸入和輸出的格式器。 輸入的格式器所使用的[模型繫結](model-binding.md); 輸出格式器會用來格式化回應。 您也可以設定[自訂格式器](../advanced/custom-formatters.md)。
+如果您的應用程式需要支援 JSON 預設值以外的其他格式，則可以新增 NuGet 套件，並設定 MVC 來支援它們。 輸入和輸出有個別的格式器。 [模型繫結](model-binding.md)會使用輸入格式器；輸出格式器是用來格式化回應。 您也可以設定[自訂格式器](../advanced/custom-formatters.md)。
 
-### <a name="adding-xml-format-support"></a>加入 XML 格式的支援
+### <a name="adding-xml-format-support"></a>新增 XML 格式支援
 
-若要新增為 XML 格式的支援，請安裝`Microsoft.AspNetCore.Mvc.Formatters.Xml`NuGet 封裝。
+若要新增 XML 格式支援，請安裝 `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet 套件。
 
-MVC 的設定中新增 XmlSerializerFormatters *Startup.cs*:
+將 XmlSerializerFormatters 新增至 *Startup.cs* 中的 MVC 組態：
 
 [!code-csharp[Main](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
 
-或者，您可以加入只輸出格式器：
+或者，您可以只新增輸出格式器：
 
 ```csharp
 services.AddMvc(options =>
@@ -121,7 +121,7 @@ services.AddMvc(options =>
 });
 ```
 
-這兩種方法將序列化結果使用`System.Xml.Serialization.XmlSerializer`。 如果您想要的話，您可以使用`System.Runtime.Serialization.DataContractSerializer`加上其相關聯的格式器：
+這兩種方法將使用 `System.Xml.Serialization.XmlSerializer` 來序列化結果。 如果想要的話，可以新增其相關聯的格式器來使用 `System.Runtime.Serialization.DataContractSerializer`：
 
 ```csharp
 services.AddMvc(options =>
@@ -130,32 +130,32 @@ services.AddMvc(options =>
 });
 ```
 
-一旦您已經加入支援 XML 格式，控制器方法應該傳回適當的格式會根據要求`Accept`標頭，為這個範例示範的 Fiddler:
+新增 XML 格式支援之後，控制器方法應該會根據要求的 `Accept` 標頭來傳回適當的格式，如這個 Fiddler 範例所示範：
 
-![Fiddler 主控台： 要求的原始索引標籤會顯示 Accept 標頭值為 application/xml。 未經處理的索引標籤，回應會顯示應用程式/xml 的內容類型標頭值。](formatting/_static/xml-response.png)
+![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值 application/xml。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/xml。](formatting/_static/xml-response.png)
 
-您可以在 [偵測器] 索引標籤將未經處理的 GET 要求進行時看到`Accept: application/xml`標頭集合。 回應 窗格顯示`Content-Type: application/xml`標頭，而`Author`物件序列化為 XML。
+您可以在 [偵測器] 索引標籤中看到已設定 `Accept: application/xml` 標頭來提出原始 GET 要求。 回應窗格會顯示 `Content-Type: application/xml` 標頭，並已將 `Author` 物件序列化為 XML。
 
-使用編輯器索引標籤，將要求修改成指定`application/json`中`Accept`標頭。 執行要求，並將會格式化為 JSON 的回應：
+使用 [編輯器] 索引標籤，修改在 `Accept` 標頭中指定 `application/json` 的要求。 執行要求，並將回應格式化為 JSON：
 
-![Fiddler 主控台： 要求的原始索引標籤會顯示 Accept 標頭值為 application/json。 未經處理的索引標籤，回應會顯示應用程式/json 的 Content-type 標頭值。](formatting/_static/json-response-fiddler.png)
+![Fiddler 主控台：要求的 [原始] 索引標籤會顯示 Accept 標頭值 application/json。 回應的 [原始] 索引標籤會顯示 Content-Type 標頭值 application/json。](formatting/_static/json-response-fiddler.png)
 
-在這個螢幕擷取畫面中，您可以看到要求設定的標頭`Accept: application/json`並回應指定相同其`Content-Type`。 `Author`物件如下所示的 JSON 格式的回應主體。
+在此螢幕擷取畫面中，您可以看到要求設定 `Accept: application/json` 標頭，而回應指定與其 `Content-Type` 相同的值。 `Author` 物件會以 JSON 格式顯示在回應本文中。
 
-### <a name="forcing-a-particular-format"></a>強制執行特定的格式
+### <a name="forcing-a-particular-format"></a>強制執行特定格式
 
-如果您想要限制特定動作的回應格式可以您可以套用`[Produces]`篩選器。 `[Produces]`篩選條件會指定特定的動作 （或控制站） 的回應格式。 像大部分[篩選](../controllers/filters.md)，這可套用在動作、 控制器或全域範圍。
+如果您想要限制特定動作的回應格式，則可以套用 `[Produces]` 篩選。 `[Produces]` 篩選可指定特定動作 (或控制器) 的回應格式。 與大部分[篩選](../controllers/filters.md)類似，這可以套用至動作、控制器或全域範圍。
 
 ```csharp
 [Produces("application/json")]
 public class AuthorsController
 ```
 
-`[Produces]`篩選將會強制執行內的所有動作`AuthorsController`傳回 JSON 格式的回應，如果應用程式和用戶端提供的已設定為其他格式子`Accept`要求不同的標頭可用格式。 請參閱[篩選](../controllers/filters.md)如需詳細資訊，包括如何套用篩選器。
+`[Produces]` 篩選將強制執行 `AuthorsController` 內的所有動作，以傳回 JSON 格式化回應，即使已設定應用程式和用戶端的其他格式器也是一樣，但前提是 `Accept` 標頭要求不同且可用的格式。 若要深入了解，請參閱[篩選](../controllers/filters.md) (包括如何全域套用篩選)。
 
-### <a name="special-case-formatters"></a>特殊案例的格式器
+### <a name="special-case-formatters"></a>特殊案例格式器
 
-會實作某些特殊情況下，使用內建的格式器。 根據預設，`string`傳回型別將會格式化為*text/plain* (*text/html*要求透過`Accept`標頭)。 此行為可以藉由移除移除`TextOutputFormatter`。 移除中的格式器`Configure`方法中的*Startup.cs* （如下所示）。 有模型物件的動作傳回型別時將會傳回 204 沒有內容的回應傳回`null`。 此行為可以藉由移除移除`HttpNoContentOutputFormatter`。 下列程式碼移除`TextOutputFormatter`和`HttpNoContentOutputFormatter`。
+有些特殊案例是使用內建格式器所實作。 根據預設，`string` 傳回類型將會格式化為 *text/plain* (如果透過 `Accept` 標頭要求，則為 *text/html*)。 移除 `TextOutputFormatter`，即可移除此行為。 您可以在 *Startup.cs* 的 `Configure` 方法中移除格式器 (如下所示)。 傳回 `null` 時，具有模型物件傳回類型的動作會傳回「204 沒有內容」回應。 移除 `HttpNoContentOutputFormatter`，即可移除此行為。 下列程式碼會移除 `TextOutputFormatter` 和 `HttpNoContentOutputFormatter`。
 
 ```csharp
 services.AddMvc(options =>
@@ -165,13 +165,13 @@ services.AddMvc(options =>
 });
 ```
 
-不含`TextOutputFormatter`，`string`傳回型別傳回 406 無法接受的例如。 請注意，如果存在 XML 格式器，它將會格式化`string`傳回型別，如果`TextOutputFormatter`已移除。
+例如，如果沒有 `TextOutputFormatter`，則 `string` 傳回類型會傳回「406 無法接受」。 請注意，如果存在 XML 格式器，則移除 `TextOutputFormatter` 時，會格式化 `string` 傳回類型。
 
-不含`HttpNoContentOutputFormatter`，null 物件的格式設定的格式器。 比方說，JSON 格式器只會傳回的回應主體包含`null`，而 XML 格式器將會傳回空的 XML 項目與屬性`xsi:nil="true"`設定。
+如果沒有 `HttpNoContentOutputFormatter`，則會使用已設定的格式器來格式化 Null 物件。 例如，JSON 格式器只會傳回本文為 `null` 的回應，而 XML 格式器將會傳回已設定屬性 `xsi:nil="true"` 的空白 XML 項目。
 
-## <a name="response-format-url-mappings"></a>回應格式的 URL 對應
+## <a name="response-format-url-mappings"></a>回應格式 URL 對應
 
-用戶端可以要求特定格式一部分使用的 URL，例如查詢字串或組件的路徑，或使用特定格式的檔案副檔名，例如.xml 或.json 中。 從要求路徑對應應指定應用程式開發介面使用的路由。 例如: 
+用戶端可以要求特定格式作為 URL 的一部分 (例如在查詢字串中或作為路徑的一部分)，或是使用格式特定副檔名 (例如 .xml 或 .json)。 應該在 API 所使用的路由中指定要求路徑的對應。 例如: 
 
 ```csharp
 [FormatFilter]
@@ -181,10 +181,10 @@ public class ProductsController
     public Product GetById(int id)
 ```
 
-此路由會讓要求的格式指定為選擇性的副檔名。 `[FormatFilter]`屬性檢查中的格式值是否存在`RouteData`和建立回應時，將對應的回應格式至適當的格式器。
+此路由可將所要求的格式指定為選擇性副檔名。 `[FormatFilter]` 屬性會檢查 `RouteData` 中是否有格式值，並在建立回應時將回應格式對應至適當的格式器。
 
 | 路由                      | 格式器                          |
 | -------------------------- | ---------------------------------- |
-| `/products/GetById/5`      | 預設的輸出格式器       |
-| `/products/GetById/5.json` | JSON 格式子 （如果有設定） |
-| `/products/GetById/5.xml`  | XML 格式器 （如果有設定）  |
+| `/products/GetById/5`      | 預設輸出格式器       |
+| `/products/GetById/5.json` | JSON 格式器 (如果已設定) |
+| `/products/GetById/5.xml`  | XML 格式器 (如果已設定)  |

@@ -1,40 +1,40 @@
 ---
 title: "設定可攜式物件當地語系化"
 author: sebastienros
-description: "本文介紹可攜式物件檔案，並且摘要說明 Orchard 核心架構的 ASP.NET Core 應用程式中使用它們的步驟。"
-ms.author: scaddie
+description: "本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。"
 manager: wpickett
+ms.author: scaddie
 ms.date: 09/26/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: ad68c8a7df5a8ea0f7ef42137c29cd3b37657052
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 6fefbd9b28d481184e358e7d66af68d112c63696
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="configure-portable-object-localization-with-orchard-core"></a>設定可攜式物件當地語系化 Orchard 核心
+# <a name="configure-portable-object-localization-with-orchard-core"></a>使用 Orchard Core 設定可攜式物件當地語系化
 
-由[Sébastien Ros](https://github.com/sebastienros)和[Scott Addie](https://twitter.com/Scott_Addie)
+作者：[Sébastien Ros](https://github.com/sebastienros) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
-本文逐步使用可攜式物件 (PO) 檔案的 ASP.NET Core 應用程式中的步驟[Orchard 核心](https://github.com/OrchardCMS/OrchardCore)架構。
+本文將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
 
-**注意：** Orchard 核心不是一項 Microsoft 產品。 因此，Microsoft 不提供支援這項功能。
+**注意：**Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>什麼是 PO 檔案？
 
-發佈 PO 檔案為文字檔案，其中包含給定語言的翻譯的字串。 改為使用 PO 檔案的一些優點*.resx*檔案包括：
-- PO 檔案支援複數表示。*.resx*檔案不支援複數表示。
-- PO 檔案不像編譯*.resx*檔案。 因此，特製化的工具與建置步驟不需要。
-- PO 檔案適用於的共同作業的線上編輯工具。
+PO 檔案以文字檔的形式散發，其中包含給定語言的翻譯字串。 使用 PO 檔案而不是使用 *.resx* 檔案的一些優點包括：
+- PO 檔案支援複數表示；*.resx* 檔案不支援複數表示。
+- PO 檔案不會像 *.resx* 檔案一樣進行編譯。 因此，不需要特殊化工具與建置步驟。
+- PO 檔案適用於共同作業的線上編輯工具。
 
 ### <a name="example"></a>範例
 
-以下是範例 PO 檔案包含兩個字串以法文顯示，包括另一個複數形式的翻譯：
+以下是範例 PO 檔案，其中包含兩個字串的法文翻譯，包括其複數形式的字串：
 
 *fr.po*
 
@@ -50,71 +50,71 @@ msgstr[0] "L'adresse email est \"{0}\"."
 msgstr[1] "Les adresses email sont \"{0}\""
 ```
 
-這個範例會使用下列語法：
+此範例使用下列語法：
 
-- `#:`: 指出要翻譯的字串內容的註解。 相同的字串可能會以不同的方式轉譯，其中它會依據所使用。
-- `msgid`: 轉譯的字串。
-- `msgstr`： 用來轉換的字串。
+- `#:`：指出所要翻譯之字串內容的註解。 相同的字串可能會根據其使用位置而翻譯為不同內容。
+- `msgid`：未翻譯的字串。
+- `msgstr`：已翻譯的字串。
 
-在複數表示支援的情況下可以定義多個項目。
+在支援複數表示的情況下，可以定義多個項目。
 
-- `msgid_plural`： 用來轉譯複數字串。
-- `msgstr[0]`： 0 的情況已翻譯的字串。
-- `msgstr[N]`: 大小 n 翻譯的字串
+- `msgid_plural`：未翻譯的複數字串。
+- `msgstr[0]`：案例 0 的已翻譯字串。
+- `msgstr[N]`：案例 N 的已翻譯字串。
 
-您可以找到 PO 檔案規格[這裡](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html)。
+您可以在[這裡](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html)找到 PO 檔案規格。
 
-## <a name="configuring-po-file-support-in-aspnet-core"></a>設定在 ASP.NET Core PO 檔案支援
+## <a name="configuring-po-file-support-in-aspnet-core"></a>在 ASP.NET Core 中設定 PO 檔案支援
 
-這個範例根據從 Visual Studio 2017 專案範本產生 ASP.NET Core MVC 應用程式。
+這個範例是根據從 Visual Studio 2017 專案範本產生的 ASP.NET Core MVC 應用程式。
 
-### <a name="referencing-the-package"></a>參考封裝
+### <a name="referencing-the-package"></a>參考套件
 
-將參考加入`OrchardCore.Localization.Core`NuGet 封裝。 它是用於[MyGet](https://www.myget.org/)在下列的封裝來源： https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+將參考新增至 `OrchardCore.Localization.Core` NuGet 套件。 它可從 [MyGet](https://www.myget.org/) 的下列套件來源取得：https://www.myget.org/F/orchardcore-preview/api/v3/index.json
 
-*.Csproj*檔案現在會包含與下列相似的一行 （版本號碼可能不同）：
+*.csproj* 檔案現在包含與下列內容類似的一行 (版本號碼可能不同)：
 
 [!code-xml[Main](localization/sample/POLocalization/POLocalization.csproj?range=9)]
 
 ### <a name="registering-the-service"></a>註冊服務
 
-加入必要的服務，可`ConfigureServices`方法*Startup.cs*:
+將所需的服務新增至 *Startup.cs* 的 `ConfigureServices` 方法：
 
 [!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-加入必要的中介軟體到`Configure`方法*Startup.cs*:
+將必要的中介軟體新增至 *Startup.cs* 的 `Configure` 方法：
 
 [!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-將下列程式碼加入至所選擇的 Razor 檢視。 *About.cshtml*此範例中使用。
+將下列程式碼新增至所選擇的 Razor 檢視。 此範例中使用 *About.cshtml*。
 
 [!code-cshtml[Main](localization/sample/POLocalization/Views/Home/About.cshtml)]
 
-`IViewLocalizer`執行個體是插入的程式，用於翻譯文字"Hello world ！"。
+將會插入 `IViewLocalizer` 執行個體，用來翻譯文字 "Hello world!"。
 
 ### <a name="creating-a-po-file"></a>建立 PO 檔案
 
-建立名為 *<culture code>.po*應用程式根資料夾中。 在此範例中，檔案名稱是*fr.po*因為法文語言用來：
+在應用程式根資料夾中建立名為 *<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
 [!code-text[Main](localization/sample/POLocalization/fr.po)]
 
-這個檔案會儲存要翻譯的字串和法文翻譯的字串。 翻譯會還原為其父文化特性，如有必要的範圍。 在此範例中， *fr.po*如果要求的文化特性，則會使用檔案`fr-FR`或`fr-CA`。
+這個檔案會同時儲存要翻譯的字串和法文的翻譯字串。 如有必要，翻譯會還原為其父文化特性。 在此範例中，如果所要求的文化特性是 `fr-FR` 或 `fr-CA`，則會使用 *fr.po* 檔案。
 
 ### <a name="testing-the-application"></a>測試應用程式
 
-執行您的應用程式，並瀏覽至 URL `/Home/About`。 文字**Hello world ！** 隨即出現。
+執行您的應用程式，並巡覽至 `/Home/About` URL。 文字 **Hello world!** 隨即顯示。
 
-瀏覽至 URL `/Home/About?culture=fr-FR`。 文字**le、 全球、 宇宙 Bonjour ！** 隨即出現。
+巡覽至 `/Home/About?culture=fr-FR`RL。 文字 **Bonjour le monde!** 隨即顯示。
 
 ## <a name="pluralization"></a>複數表示
 
-PO 檔案支援複數表示表單會在相同的字串必須轉譯根據基數時很有用。 這項工作中進行複雜的每一種語言定義自訂規則以選取要使用的字串會根據基數的事實。
+PO 檔案支援複數表示格式，如果相同的字串必須根據基數翻譯為不同的內容，這個檔案很有用。 由於每一種語言都會定義自訂規則來選取要根據基數使用的字串，因此這項工作變得複雜。
 
 Orchard 當地語系化套件會提供 API，以自動叫用這些不同的複數形式。
 
 ### <a name="creating-pluralization-po-files"></a>建立複數表示 PO 檔案
 
-將下列內容加入至先前所述*fr.po*檔案：
+將下列內容新增至先前所述的 *fr.po* 檔案：
 
 ```text
 msgid "There is one item."
@@ -123,19 +123,19 @@ msgstr[0] "Il y a un élément."
 msgstr[1] "Il y a {0} éléments."
 ```
 
-請參閱[PO 檔案是什麼？](#what-is-a-po-file)需在此範例中的每個項目所代表的意義的說明。
+如需此範例中每個項目所代表意義的說明，請參閱[什麼是 PO 檔案？](#what-is-a-po-file)。
 
-### <a name="adding-a-language-using-different-pluralization-forms"></a>新增語言，使用不同的複數表示表單
+### <a name="adding-a-language-using-different-pluralization-forms"></a>新增使用不同複數表示格式的語言
 
-在上述範例中，已使用英文和法文字串。 英文和法文有只有兩個複數表示表單而共用相同的格式規則，這是基數為一會對應到第一個複數形式。 任何其他基數被對應到第二個複數形式。
+在上述範例中，已使用英文和法文字串。 英文和法文只有兩種複數表示格式，因此共用相同的格式規則，即基數一對應到第一個複數形式。 任何其他基數都對應到第二個複數形式。
 
-並非所有語言都共用相同的規則。 以下是使用捷克文語言有三個複數形式。
+並非所有語言都共用相同的規則。 以下是使用捷克文語言的說明，它有三種複數形式。
 
-建立`cs.po`檔案，如下所示，並記下複數表示需要三個不同的轉譯的方式：
+如下所示建立 `cs.po` 檔案，並記下複數表示需要三種不同翻譯的方式：
 
 [!code-text[Main](localization/sample/POLocalization/cs.po)]
 
-若要接受捷克文的當地語系化資源，請加入`"cs"`中支援的文化特性的清單`ConfigureServices`方法：
+若要接受捷克文的當地語系化，請將 `"cs"` 新增至 `ConfigureServices` 方法所支援的文化特性清單中：
 
 ```csharp
 var supportedCultures = new List<CultureInfo>
@@ -148,7 +148,7 @@ var supportedCultures = new List<CultureInfo>
 };
 ```
 
-編輯*Views/Home/About.cshtml*來呈現數個基數的當地語系化的複數字串的檔案：
+編輯 *Views/Home/About.cshtml* 檔案來呈現數個基數的當地語系化複數字串：
 
 ```cshtml
 <p>@Localizer.Plural(1, "There is one item.", "There are {0} items.")</p>
@@ -156,9 +156,9 @@ var supportedCultures = new List<CultureInfo>
 <p>@Localizer.Plural(5, "There is one item.", "There are {0} items.")</p>
 ```
 
-**注意：**在真實世界案例中，變數會用來代表的計數。 在這裡，我們會重複相同的程式碼具有三個不同的值，以公開非常特定的大小寫。
+**注意：**在現實世界的案例中，變數將用來代表計數。 在這裡，我們會重複使用具有三個不同值的相同程式碼，以公開非常特殊的情況。
 
-切換文化特性而有所不同，您可以看到下列：
+切換文化特性後，您會看到下列內容：
 
 針對 `/Home/About`：
 
@@ -184,17 +184,17 @@ Existují 2 položky.
 Existuje 5 položek.
 ```
 
-請注意，捷克文文化特性中，三個翻譯不同。 法文和英文的文化特性會共用相同的兩個的最後一個翻譯字串的建構。
+請注意，在捷克文文化特性中，這三種翻譯都不同。 法文和英文的文化特性則會對最後兩個翻譯字串共用相同的建構。
 
-## <a name="advanced-tasks"></a>進階的工作
+## <a name="advanced-tasks"></a>進階工作
 
-### <a name="contextualizing-strings"></a>Contextualizing 字串
+### <a name="contextualizing-strings"></a>內容化字串
 
-應用程式通常會包含要在幾個位置中轉譯的字串。 相同的字串中 （Razor 檢視或類別檔案） 的應用程式內的特定位置，可能有不同的轉譯。 PO 檔案支援的檔案內容，可用來分類所表示的字串。 使用檔案內容，字串將不同的轉譯，根據檔案內容 （或缺乏的檔案內容）。
+應用程式通常包含要在數個位置中翻譯的字串。 相同的字串可能在應用程式內的特定位置 (Razor 檢視或類別檔案) 具有不同的翻譯。 PO 檔案支援檔案內容的概念，可用來對所表示的字串進行分類。 使用檔案內容，字串可以根據檔案內容 (或缺乏檔案內容) 翻譯成不同的內容。
 
-PO 當地語系化服務使用完整的類別或檢視轉譯的字串時所使用的名稱。 這是上設定的值`msgctxt`項目。
+PO 當地語系化服務會使用翻譯字串時所使用的完整類別或檢視的名稱。 這是透過在 `msgctxt` 項目上設定值來完成的。
 
-考慮先前的次要新增*fr.po*範例。 Razor 檢視位於*Views/Home/About.cshtml*可以藉由設定保留定義的檔案內容為`msgctxt`項目的值：
+考慮對先前的 *fr.po* 範例進行微幅新增。 位於 *Views/Home/About.cshtml* 的 Razor 檢視，可以藉由設定保留的 `msgctxt` 項目值來定義為檔案內容：
 
 ```text
 msgctxt "Views.Home.About"
@@ -202,28 +202,28 @@ msgid "Hello world!"
 msgstr "Bonjour le monde!"
 ```
 
-與`msgctxt`設定在這種情況，文字轉譯時發生瀏覽至`/Home/About?culture=fr-FR`。 若要瀏覽時，就不會發生轉譯`/Home/Contact?culture=fr-FR`。
+`msgctxt` 如此設定後，當巡覽至 `/Home/About?culture=fr-FR` 時，就會進行文字翻譯。 而巡覽至 `/Home/Contact?culture=fr-FR` 時，不會進行翻譯。
 
-沒有特定的項目會與指定的檔案內容比對，Orchard 核心後援機制會尋找適當的 PO 檔案沒有內容。 假設有已定義的任何特定的檔案內容*Views/Home/Contact.cshtml*、 瀏覽至`/Home/Contact?culture=fr-FR`載入 PO 檔案，例如：
+沒有特定項目與給定的檔案內容相符時，Orchard Core 的後援機制會在沒有內容的情況下尋找適當的 PO 檔案。 假設沒有針對 *Views/Home/Contact.cshtml* 所定義的特定檔案內容，請巡覽至 `/Home/Contact?culture=fr-FR` 以載入 PO 檔案，例如：
 
 [!code-text[Main](localization/sample/POLocalization/fr.po)]
 
 ### <a name="changing-the-location-of-po-files"></a>變更 PO 檔案的位置
 
-PO 檔案的預設位置可以變更在`ConfigureServices`:
+PO 檔案的預設位置可以在 `ConfigureServices` 中變更：
 
 ```csharp
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-在此範例中，從載入 PO 檔案*當地語系化*資料夾。
+在此範例中，從 *Localization* 資料夾載入 PO 檔案。
 
-### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>實作自訂的邏輯，以尋找當地語系化檔案
+### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>實作自訂邏輯，以尋找當地語系化檔案
 
-要尋找 PO 檔案需要更複雜的邏輯時`OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider`介面可以實作，並註冊為服務。 當 PO 檔案可以儲存在不同的位置或檔案具有要尋找的資料夾階層內時，這非常有用。
+如果尋找 PO 檔案需要更複雜的邏輯，則可以實作 `OrchardCore.Localization.PortableObject.ILocalizationFileLocationProvider` 介面並將其註冊為服務。 當 PO 檔案可以儲存在不同位置或檔案必須位在資料夾階層內時，這非常有用。
 
-### <a name="using-a-different-default-pluralized-language"></a>使用 pluralized 不同預設語言
+### <a name="using-a-different-default-pluralized-language"></a>使用不同的預設複數化語言
 
-封裝包含`Plural`屬於兩個複數形式的擴充方法。 對於需要更多的複數形式的語言，建立擴充方法。 使用擴充方法，您不需要提供任何預設語言的當地語系化檔案&mdash;的原始字串已直接在程式碼中，您可以使用。
+此套件包含兩個複數形式特有的 `Plural` 擴充方法。 如果是需要更多複數形式的語言，請建立擴充方法。 利用擴充方法，您不需要提供預設語言的任何當地語系化檔案 &mdash; 原始字串已經可以直接在程式碼中使用。
 
-您可以使用多個泛型`Plural(int count, string[] pluralForms, params object[] arguments)`多載會接受字串陣列中的翻譯。
+您可以使用更通用的 `Plural(int count, string[] pluralForms, params object[] arguments)` 多載，其可接受翻譯的字串陣列。

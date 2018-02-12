@@ -1,104 +1,104 @@
 ---
-title: "ASP.NET Core MVC web 應用程式開發介面中的自訂格式器"
+title: "ASP.NET Core MVC 中的 Web API 自訂格式器"
 author: tdykstra
-description: "了解如何建立和使用 ASP.NET Core 中的 web Api 的自訂格式器。"
-ms.author: tdykstra
+description: "了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格式器。"
 manager: wpickett
+ms.author: tdykstra
 ms.date: 02/08/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: 3a6474fdae29b170978226de74d523b20a16cd0c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: 8a42f2d885bd0a0c6d2bd05f9c589def2e15d50a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>ASP.NET Core MVC web 應用程式開發介面中的自訂格式器
+# <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>ASP.NET Core MVC 中的 Web API 自訂格式器
 
-由[Tom Dykstra](https://github.com/tdykstra)
+作者：[Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core MVC web 應用程式開發介面中有內建支援的資料交換，使用 JSON、 XML 或純文字格式。 本文將說明如何藉由建立自訂的格式器加入其他格式的支援。
+ASP.NET Core MVC 內建支援在 Web API 中使用 JSON、XML 或純文字格式的資料交換。 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。
 
-[檢視或從 GitHub 下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)。
 
-## <a name="when-to-use-custom-formatters"></a>使用自訂的格式器的時機
+## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
-當您想使用自訂的格式器[內容交涉](xref:mvc/models/formatting)支援內容類型不支援的內建的格式器 （JSON、 XML 和純文字） 的程序。
+如果您希望[內容交涉](xref:mvc/models/formatting)程序支援某些內容類型，但內建的格式器 (JSON、 XML 和純文字) 不支援這些內容類型時，即可使用自訂的格式器。
 
-例如，如果您的 web API 的用戶端的部分可以處理[Protobuf](https://github.com/google/protobuf)格式，您可以使用 Protobuf 這些用戶端，因為它是更有效率。  您可能會想要傳送連絡人的姓名和地址中的 web API 或者[vCard](https://wikipedia.org/wiki/VCard) ，常用的格式來交換連絡人的資料格式。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
+例如，您有些 Web API 用戶端可以處理 [Protobuf](https://github.com/google/protobuf) 格式，因此您希望搭配使用 Protobuf 與這些用戶端，以便更有效率。  或者，您可能會想要 Web API 以 [vCard](https://wikipedia.org/wiki/VCard) 格式 (其為交換連絡人資料的常用格式) 來傳送連絡人名稱和地址。 本文提供的範例應用程式會實作簡單的 vCard 格式器。
 
-## <a name="overview-of-how-to-use-a-custom-formatter"></a>如何使用自訂的格式器的概觀
+## <a name="overview-of-how-to-use-a-custom-formatter"></a>如何使用自訂格式器的概觀
 
-建立及使用自訂格式子，步驟如下：
+自訂格式器的建立與使用步驟如下：
 
-* 如果您想要將資料序列化至傳送到用戶端，請建立輸出格式子類別。
-* 如果您想要從用戶端收到的資料還原序列化，請建立輸入格式子類別。 
-* 您要的格式器的執行個體加入`InputFormatters`和`OutputFormatters`中的集合[MvcOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.mvcoptions)。
+* 如果您想要將資料序列化以傳送到用戶端，請建立輸出格式器類別。
+* 如果您想要將從用戶端接收的資料還原序列化，請建立輸入格式器類別。 
+* 將您的格式器執行個體新增至 [MvcOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.mvcoptions) 中的 `InputFormatters` 和 `OutputFormatters` 集合。
 
-下列章節將提供指導方針與範例程式碼的每個步驟。
+下列各節將提供每個步驟的指引與程式碼範例。
 
-## <a name="how-to-create-a-custom-formatter-class"></a>如何建立自訂格式子類別
+## <a name="how-to-create-a-custom-formatter-class"></a>如何建立自訂格式器類別
 
 若要建立格式器：
 
-* 衍生自適當的基底類別的類別。
-* 建構函式中指定有效的媒體類型和編碼。
-* 覆寫`CanReadType` / `CanWriteType`方法
-* 覆寫`ReadRequestBodyAsync` / `WriteResponseBodyAsync`方法
+* 請從適當的基底類別衍生類別。
+* 在建構函式中指定有效的媒體類型和編碼方式。
+* 覆寫 `CanReadType`/`CanWriteType` 方法
+* 覆寫 `ReadRequestBodyAsync`/`WriteResponseBodyAsync` 方法
   
-### <a name="derive-from-the-appropriate-base-class"></a>衍生自適當的基底類別
+### <a name="derive-from-the-appropriate-base-class"></a>從適當的基底類別衍生
 
-文字媒體類型 (例如，vCard)，衍生自[TextInputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textinputformatter)或[TextOutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter)基底類別。
+如需文字媒體類型 (例如 vCard)，請從 [TextInputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) 或 [TextOutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) 基底類別來衍生。
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-二進位型別，衍生自[InputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.inputformatter)或[OutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformatter)基底類別。
+如需二進位類型，請從 [InputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。
 
-### <a name="specify-valid-media-types-and-encodings"></a>指定有效的媒體類型和編碼
+### <a name="specify-valid-media-types-and-encodings"></a>指定有效的媒體類型和編碼方式
 
-在建構函式，方法是加入指定有效的媒體類型和編碼`SupportedMediaTypes`和`SupportedEncodings`集合。
+在建構函式中，您可以新增 `SupportedMediaTypes` 和 `SupportedEncodings` 集合，以指定有效的媒體類型和編碼方式。
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
 
 > [!NOTE]  
-> 您無法在格式子類別的建構函式相依性插入。 例如，您無法取得記錄器所加入的記錄器參數的建構函式。 若要存取服務，您必須使用取得傳遞至方法的內容物件。 程式碼範例[下方](#read-write)示範如何執行這項操作。
+> 您無法在格式器類別中執行建構函式的相依性插入。 舉例來說，您無法藉由將記錄器參數新增至建構函式，而取得記錄器。 若要存取服務，您必須使用可傳入方法的內容物件。 [下列](#read-write)程式碼範例會示範這項操作。
 
 ### <a name="override-canreadtypecanwritetype"></a>覆寫 CanReadType/CanWriteType 
 
-指定的類型，您可以還原序列化，或藉由覆寫序列化從`CanReadType`或`CanWriteType`方法。 例如，您可能只能夠建立從 vCard 文字`Contact`型別，反之亦然。
+您可以覆寫 `CanReadType` 或 `CanWriteType` 方法，以指定要序列化或還原序列化的類型。 例如，您可能只能透過 `Contact` 類型建立 vCard 文字，反之亦然。
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
 #### <a name="the-canwriteresult-method"></a>CanWriteResult 方法
 
-在某些情況下，您必須覆寫`CanWriteResult`而不是`CanWriteType`。 使用`CanWriteResult`如果下列條件成立：
+在某些情況下，您必須覆寫 `CanWriteResult` 而不是 `CanWriteType`。 如果符合下列所有條件，請使用 `CanWriteResult`：
 
-  * 動作方法傳回的模型類別。
-  * 有可能會在執行階段傳回的衍生的類別。
-  * 您需要知道在執行階段，衍生類別的動作所傳回。  
+  * 您的動作方法會傳回模型類別。
+  * 在執行階段期間，可能會傳回衍生的類別。
+  * 您必須知道在執行階段期間，動作傳回的衍生類別是哪一個。  
 
-例如，假設您的動作方法簽章傳回`Person`類型，但它可能會傳回`Student`或`Instructor`衍生自型別`Person`。 如果您想要您的格式子，只處理`Student`物件，請檢查類型[物件](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)提供給內容物件中`CanWriteResult`方法。 請注意，不需要使用`CanWriteResult`動作方法傳回時`IActionResult`; 在此情況下，`CanWriteType`方法會接收的執行階段類型。
+例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Person` 的 `Student` 或 `Instructor` 類型。 如果您希望格式器只處理 `Student` 物件，請檢查您提供給 `CanWriteResult` 方法之內容物件中的[物件](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)類型。 請注意，當動作方法傳回 `IActionResult` 時，您不需要使用 `CanWriteResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。
 
 <a id="read-write"></a>
-### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>Override ReadRequestBodyAsync/WriteResponseBodyAsync 
+### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>覆寫 ReadRequestBodyAsync/WriteResponseBodyAsync 
 
-進行還原序列化，或序列化中的實際工作`ReadRequestBodyAsync`或`WriteResponseBodyAsync`。  反白顯示的行，在下列範例示範如何取得服務從相依性插入容器 （您無法從取得建構函式參數）。
+您可以在 `ReadRequestBodyAsync` 或 `WriteResponseBodyAsync` 中進行還原序列化或序列化的實際工作。  下列範例中，醒目標示的程式碼行示範如何透過相依性插入容器以取得服務 (您無法透過建構函式參數來取得)。
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
 
-## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>如何設定要使用自訂的格式器的 MVC
+## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>如何設定 MVC 以使用自訂格式器
  
-若要使用自訂格式子，新增到格式器類別的執行個體`InputFormatters`或`OutputFormatters`集合。
+若要使用自訂格式器，請將格式器類別的執行個體新增至 `InputFormatters` 或 `OutputFormatters` 集合。
 
 [!code-csharp[Main](custom-formatters/sample/Startup.cs?name=mvcoptions&highlight=3-4)]
 
-格式器會將其插入的順序進行評估。 第一個會優先使用。 
+系統會依據您插入格式器的順序進行評估。 第一個會優先使用。 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)，它會實作簡單的 vCard 輸入和輸出格式器。  應用程式讀取並寫入 vCards 看起來像下列的範例：
+請參閱[應用程式範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。  應用程式會讀取並寫入 vCard，如下範例所示：
 
 ```
 BEGIN:VCARD
@@ -109,6 +109,6 @@ UID:20293482-9240-4d68-b475-325df4a83728
 END:VCARD
 ```
 
-若要查看 vCard 輸出、 執行應用程式和傳送 Get 要求的接受標頭 」 文字/vcard" `http://localhost:63313/api/contacts/` （執行時從 Visual Studio） 或`http://localhost:5000/api/contacts/`（當從命令列執行）。
+若要查看 vCard 的輸出，請執行應用程式，並使用 Accept 標頭 "text/vcard" 將 Get 要求傳送給 `http://localhost:63313/api/contacts/` (從 Visual Studio 執行時) 或 `http://localhost:5000/api/contacts/` (從命令列執行時)。
 
-若要加入 vCard 連絡人的記憶體中集合，Post 要求傳送至相同的 URL，Content-type 標頭 」 文字/vcard"與 vCard 在主體中，如上述範例格式化的文字。
+若要將 vCard 新增至連絡人的記憶體內部集合，請使用 Content-Type 標頭 "text/vcard" 與主體中的 vCard 文字 (如上述範例的格式)，將 Post 要求傳送至相同的 URL。

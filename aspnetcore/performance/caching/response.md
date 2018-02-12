@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: c38f9b9a1bf1c523951e2cf1f3070858fe5daf04
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 37592c3b2099c2cb74dc42ad4a7937b32c281f65
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
@@ -68,7 +68,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 ### <a name="distributed-cache"></a>分散式快取
 
-若要將資料儲存在記憶體中，當應用程式裝載於雲端或伺服器陣列中使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交要求已處理的任何群組中的伺服器和用戶端快取資料是可用。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
+若要將資料儲存在記憶體中，當應用程式裝載於雲端或伺服器陣列中使用分散式快取。 處理要求的伺服器之間共用快取。 用戶端可以提交要求，如果用戶端快取的資料可由群組中的任何伺服器。 ASP.NET Core 提供 SQL Server 和分散式的 Redis 快取。
 
 如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。
 
@@ -86,12 +86,14 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 ## <a name="responsecache-attribute"></a>ResponseCache 屬性
 
-`ResponseCacheAttribute`指定在回應快取中設定適當的標頭的必要參數。 請參閱[ResponseCacheAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.responsecacheattribute)參數的描述。
+[ResponseCacheAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.ResponseCacheAttribute)指定在回應快取中設定適當的標頭的必要參數。
 
 > [!WARNING]
 > 停用快取內容，其中包含已驗證的用戶端的資訊。 快取，才應該啟用並不會變更使用者的身分識別或使用者是否登入為基礎的內容。
 
-`VaryByQueryKeys string[]`（需要 ASP.NET Core 1.1 版和更新版本）： 設定時，回應快取中介軟體會因預存的回應指定的查詢索引鍵清單的值。 必須啟用回應快取中介軟體，才能設定`VaryByQueryKeys`屬性; 否則擲回執行階段例外狀況。 沒有對應的 HTTP 標頭`VaryByQueryKeys`屬性。 這個屬性是 HTTP 功能由回應快取中介軟體。 中介軟體提供快取回的應，查詢字串和查詢字串值必須符合先前的要求。 例如，請考慮要求和結果下表所示的順序。
+[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys)預存的回應因指定的查詢索引鍵清單的值。 單一值時`*`是所有的回應要求查詢字串參數提供中介軟體而有所不同。 `VaryByQueryKeys`需要 ASP.NET Core 1.1 或更新版本。
+
+必須啟用回應快取中介軟體，才能設定`VaryByQueryKeys`屬性; 否則擲回執行階段例外狀況。 沒有對應的 HTTP 標頭的`VaryByQueryKeys`屬性。 屬性是 HTTP 功能由回應快取中介軟體。 中介軟體提供快取回的應，查詢字串和查詢字串值必須符合先前的要求。 例如，請考慮要求和結果下表所示的順序。
 
 | 要求                          | 結果                   |
 | -------------------------------- | ------------------------ |
@@ -101,7 +103,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 第一個要求是由伺服器傳回，而且快取中介軟體。 第二個要求會傳回由中介軟體，因為查詢字串比對前一個要求。 第三項要求不在的中介軟體快取中，因為查詢字串值不符合先前的要求。 
 
-`ResponseCacheAttribute`用來設定並建立 (透過`IFilterFactory`) `ResponseCacheFilter`。 `ResponseCacheFilter`執行的工作更新適當的 HTTP 標頭和回應的功能。 篩選器：
+`ResponseCacheAttribute`用來設定並建立 (透過`IFilterFactory`) [ResponseCacheFilter](/dotnet/api/microsoft.aspnetcore.mvc.internal.responsecachefilter)。 `ResponseCacheFilter`執行的工作更新適當的 HTTP 標頭和回應的功能。 篩選器：
 
 * 移除任何現有的標頭的`Vary`， `Cache-Control`，和`Pragma`。 
 * 寫出在設定的屬性為根據適當的標頭`ResponseCacheAttribute`。 

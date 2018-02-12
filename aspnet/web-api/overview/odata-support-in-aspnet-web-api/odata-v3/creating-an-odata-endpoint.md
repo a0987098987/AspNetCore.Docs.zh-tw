@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: cb466124aacf6b13c1ade22ad8b865b83e6351e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 33fe4d764bf9bf64c852f1269255925b5cc42536
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>建立與 Web API 2 OData v3 端點
 ====================
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](creating-an-odata-endpoint/_static/image1.png)
 
-在**新增 ASP.NET 專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考...&quot;，檢查**Web API**。 按一下 [確定]。
+在**新增 ASP.NET 專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考...&quot;，檢查**Web API**。 按一下 [確定 **Deploying Office Solutions**]。
 
 ![](creating-an-odata-endpoint/_static/image2.png)
 

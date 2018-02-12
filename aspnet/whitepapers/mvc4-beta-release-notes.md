@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 58ae178a0e6578d8353e1a4e9d67fc1026e99f55
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d6797d1dbacff7503f74782d325ff5a9598970c0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -295,7 +295,7 @@ ASP.NET MVC 4 Beta 支援年 9 月 2011 1.5 版的 Windows Azure sdk。
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
     - *MvcVBRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
-- **當 WebMatrix.WebData.dll 隨附於 ASP.NET MVC 4 應用程式的 /bin 目錄中時，因此它會接管表單驗證的 URL。** WebMatrix.WebData.dll 組件加入至應用程式 （例如，藉由使用 [新增可部署的相依性] 對話方塊時，請選取 「 ASP.NET Web 網頁使用 Razor 語法 」） 將會覆寫/帳戶/登入驗證登入重新導向而 /帳戶/登入以預期的 ASP.NET MVC 帳戶控制器的預設方式。 要避免這種行為，並使用 web.config 的 [驗證] 區段中已指定的 URL，您可以加入稱為 PreserveLoginUrl appSetting 並將它設定為 true: 
+- **當 ASP.NET MVC 4 應用程式的 /bin 目錄中包含 WebMatrix.WebData.dll 時，它會高於表單驗證的 URL。** WebMatrix.WebData.dll 組件加入至應用程式 （例如，藉由使用 [新增可部署的相依性] 對話方塊時，請選取 「 ASP.NET Web 網頁使用 Razor 語法 」） 將會覆寫/帳戶/登入驗證登入重新導向而 /帳戶/登入以預期的 ASP.NET MVC 帳戶控制器的預設方式。 要避免這種行為，並使用 web.config 的 [驗證] 區段中已指定的 URL，您可以加入稱為 PreserveLoginUrl appSetting 並將它設定為 true: 
 
     [!code-xml[Main](mvc4-beta-release-notes/samples/sample13.xml)]
 - **NuGet 套件管理員安裝嘗試安裝 ASP.NET MVC 4 的 Visual Studio 2010 和 Visual Web Developer 2010 的並存安裝時失敗。** 若要執行 Visual Studio 2010 和 Visual Web Developer 2010 並存 ASP.NET MVC 4 中，您必須安裝 ASP.NET MVC 4 之後已安裝 Visual Studio 的兩個版本。

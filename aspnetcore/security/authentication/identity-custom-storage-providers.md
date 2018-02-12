@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 8541fe47207c0af232ca81ae45da6af201d94799
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8cadb550eaa2dbc4541f945dc8d8d49fa757d4d3
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
 ASP.NET Core 身分識別是可擴充的系統可讓您建立自訂的儲存提供者，然後連接到您的應用程式。 本主題描述如何建立 ASP.NET Core 身分識別的自訂儲存體提供者。 它涵蓋建立自己的儲存體提供者的重要概念，但不是逐步解說。
 
-[檢視或從 GitHub 下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
+[從 GitHub 檢視或下載範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
 
 ## <a name="introduction"></a>簡介
 
@@ -126,7 +126,7 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ## <a name="customize-the-user-store"></a>自訂使用者存放區
 
-建立`UserStore`提供的所有使用者資料作業方式的類別。 這個類別就相當於[UserStore<TUser> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1)類別。 在您`UserStore`類別，實作`IUserStore<TUser>`和所需的選用介面。 您選取要實作的選擇性介面上根據您的應用程式中提供的功能。
+建立`UserStore`提供的所有使用者資料作業方式的類別。 這個類別就相當於[UserStore<TUser> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1)類別。 在您`UserStore`類別，實作`IUserStore<TUser>`和所需的選用介面。 您選取要實作的選擇性介面根據您的應用程式中提供的功能。
 
 ### <a name="optional-interfaces"></a>選擇性介面
 

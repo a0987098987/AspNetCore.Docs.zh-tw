@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 93b4df5fcbde8d87866d00dffda8a241d0dd596b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6de7d279677c7bbf220b956767a97aaaff8da9a1
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/24/2018
 > > 本教學課程的更新的版本時使用[這裡](../../getting-started/introduction/getting-started.md)使用 ASP.NET MVC 5 和 Visual Studio 2013。 它更安全、 容易遵循，及示範更多的功能。
 
 
-在這個本節您會將驗證邏輯加入`Movie`模型，而您要確保驗證規則會強制執行任何使用者嘗試建立或編輯電影使用應用程式的時間。
+這一節中，您會將驗證邏輯加入`Movie`模型，而您要確保驗證規則會強制執行任何使用者嘗試建立或編輯電影使用應用程式的時間。
 
 ## <a name="keeping-things-dry"></a>保留項目乾
 
@@ -133,7 +133,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 這種方法的優點是，控制器和建立檢視表範本都不知道的任何項目有關強制執行的實際驗證規則或顯示的特定錯誤訊息。 驗證規則和錯誤字串只在 `Movie` 類別中指定。 這些相同的驗證規則會自動套用編輯檢視和任何其他檢視範本可能會建立編輯您的模型。
 
-如果您想要稍後變更驗證邏輯，您可以在一個位置藉由加入至模型的驗證屬性 (在此範例中，`movie`類別)。 您不必擔心應用程式的不同部分會與規則強制執行的方式不一致，所有的驗證邏輯都是在同一個地方定義，用於所有位置。 這會讓程式碼非常整齊乾淨，容易維護及發展。 這表示，您可以完全接受乾原則。
+如果您想要稍後變更驗證邏輯，您可以在一個位置藉由加入至模型的驗證屬性 (在此範例中，`movie`類別)。 您不必擔心應用程式的不同部分會與規則強制執行的方式不一致，所有的驗證邏輯都是在同一個地方定義，用於所有位置。 這會讓程式碼非常整齊乾淨，容易維護及發展。 這表示您會完全接受 DRY 原則。
 
 ## <a name="adding-formatting-to-the-movie-model"></a>加入影片模型格式設定
 

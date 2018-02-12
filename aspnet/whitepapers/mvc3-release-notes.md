@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: 92a6dee24b8942d721e3537a712be141155e61df
-ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
+ms.openlocfilehash: 058b7c6fe6eeeea4403e7e5fdc05bb44d2ba1300
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -255,7 +255,7 @@ Scaffolding 是一種快速產生的控制器和檢視您的應用程式。 在�
 
 #### <a name="project-templates-are-now-html5-enabled"></a>專案範本現在都已啟用 HTML5
 
-[新增專案] 對話方塊現在包含一個選項以將 HTML5 專屬功能加入至專案範本。 選取此選項可讓要產生的檢視包含新的 HTML5 `<header>`， `<footer>`，和`<navigation>`項目。 項目。
+[新增專案] 對話方塊現在包含一個選項以將 HTML5 專屬功能加入至專案範本。 選取此選項可讓要產生的檢視包含新的 HTML5 `<header>`， `<footer>`，和`<navigation>`項目。
 
 請注意，舊版的瀏覽器不支援 HTML5 專屬標記。 若要解決這項限制，HTML5 專案範本包含 Modernizr 程式庫的參考。 （請參閱下一節）。
 
@@ -608,7 +608,7 @@ Namespace.ClassName
 ## <a name="breaking-changes"></a>重大變更
 
 - 例外狀況篩選條件的執行順序已變更為具有相同的例外狀況篩選條件*順序*值。 在 ASP.NET MVC 2 和舊版中，例外狀況篩選條件具有相同的控制站上*順序*動作方法上所執行的動作方法上的例外狀況篩選條件之前。 這通常會發生此情況時套用例外狀況篩選條件但未指定*順序*值。 在 ASP.NET MVC 3 中，這個順序已顛倒，因此最特定的例外狀況處理常式會先執行。 如同舊版本中，如果*順序*屬性明確指定，則篩選條件會執行指定的順序。
-- 加入新的屬性，名為*FileExtensions*至*VirtualPathProviderViewEngine*基底類別。 查閱時檢視路徑 （而不是名稱），只檢視中所包含的檔案副檔名為會被視為新的屬性所指定的清單。 這是一項重大變更的人員註冊自訂組建提供者才能啟用 web 表單檢視的自訂檔案延伸模組，並使用完整路徑，而不是名稱來參考這些檢視。 因應措施是要修改的值*FileExtensions*屬性設定為包含自訂檔案的副檔名。
+- 加入新的屬性，名為*FileExtensions*至*VirtualPathProviderViewEngine*基底類別。 查閱時檢視路徑 （而不是名稱），只檢視中所包含的檔案副檔名為會被視為新的屬性所指定的清單。 這是一項重大變更的人員註冊自訂的組建提供者啟用自訂檔案延伸模組的 web 表單檢視和使用完整路徑，而不是名稱參考這些檢視表。 因應措施是要修改的值*FileExtensions*屬性設定為包含自訂檔案的副檔名。
 
 <a id="_Toc276711795"></a>
 ## <a name="known-issues"></a>已知問題

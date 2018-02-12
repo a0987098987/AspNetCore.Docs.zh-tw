@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-database-update
 msc.type: authoredcontent
-ms.openlocfilehash: 3fd29a5b26c564d88e4128d1904fab00b57a3b7c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8e875a4282df78ec647579e74c3fbeabd2495fc2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-database-update"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署資料庫更新
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程中，您在資料庫變更及相關的程式碼變更，在 Visual Studio 中，測試所做的變更，然後將更新部署到測試、 預備及實際執行環境。
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 6. 在**Web 一個按一下 Publish**工具列上，按一下**生產**發行設定檔，然後按一下 **發行 Web**。
 7. 執行**講師**生產環境，以確認更新已成功部署中的頁面。
 
-    針對包含資料庫變更的實際生產應用程式更新您通常也需要應用程式離線在部署期間使用*應用程式\_offline.htm*，如您在上一個教學課程中看到。
+    包含資料庫變更的實際生產應用程式更新為您可以通常也會採用應用程式離線在部署期間使用*應用程式\_offline.htm*，如您在上一個教學課程中看到。
 
 ## <a name="deploy-a-database-update-by-using-the-dbdacfx-provider"></a>將資料庫更新部署使用 dbDacFx 提供者
 

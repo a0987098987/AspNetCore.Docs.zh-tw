@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: 737773ab424b3ec3b6139b8c238a60ca23de2e69
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: abd9b5c09e942b966eb3eaaebe1b315c30b8e0c0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>檢查 ASP.NET MVC 如何 scaffolds DropDownList Helper
 ====================
@@ -202,7 +202,7 @@ HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/l
 
 顯示所有的三種方法是 acceptible。 許多開發人員偏好使用至 explictily 階段`SelectList`至`DropDownList`使用`ViewBag`。 這個方法有優點，提供使用更適合的名稱集合的彈性。 一個需要注意的是無法命名`ViewBag SelectList`物件同名的模型屬性。
 
-有些開發人員偏好 ViewModel 方法。 其他考量更詳細的資訊標記和產生的 HTML 的 ViewModel 方法的缺點。
+有些開發人員偏好 ViewModel 方法。 其他考量更多詳細資料的標記，產生 HTML ViewModel 方法的缺點。
 
 這一節中，我們已經學會使用三種方法**DropDownList**與類別目錄資料。 在下一步 區段中，我們將示範如何新增新的類別。
 

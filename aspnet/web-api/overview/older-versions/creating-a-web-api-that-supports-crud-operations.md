@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: a91bf065c9ce0fc5bd9b7115340edabea975a7e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>啟用 ASP.NET Web API 1 中的 CRUD 作業
 ====================
@@ -42,11 +42,11 @@ ms.lasthandoff: 11/10/2017
 | 動作 | HTTP 方法 | 相對 URI |
 | --- | --- | --- |
 | 取得所有產品的清單 | GET | / api/產品 |
-| 取得產品識別碼 | GET | /api/產品/*識別碼* |
-| 取得產品類別目錄 | GET | 產品/api /？ category =*類別* |
+| 取得產品識別碼 | GET | /api/products/*id* |
+| 取得產品類別目錄 | GET | /api/products?category=*category* |
 | 建立新的產品 | POST | / api/產品 |
-| 產品更新 | PUT | /api/產品/*識別碼* |
-| 刪除產品 | DELETE | /api/產品/*識別碼* |
+| 產品更新 | PUT | /api/products/*id* |
+| 刪除產品 | DELETE | /api/products/*id* |
 
 請注意，部分 Uri 的路徑中包含產品識別碼。 例如，若要取得其識別碼為 28 的產品，用戶端會傳送 GET 要求`http://hostname/api/products/28`。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 | 資源 | URI |
 | --- | --- |
 | 所有產品的清單。 | / api/產品 |
-| 個別產品。 | /api/產品/*識別碼* |
+| 個別產品。 | /api/products/*id* |
 
 ### <a name="methods"></a>方法
 
@@ -158,8 +158,8 @@ ProductStore API 會公開數個&quot;讀取&quot;HTTP GET 方法的動作。 �
 | 動作 | HTTP 方法 | 相對 URI |
 | --- | --- | --- |
 | 取得所有產品的清單 | GET | / api/產品 |
-| 取得產品識別碼 | GET | /api/產品/*識別碼* |
-| 取得產品類別目錄 | GET | 產品/api /？ category =*類別* |
+| 取得產品識別碼 | GET | /api/products/*id* |
+| 取得產品類別目錄 | GET | /api/products?category=*category* |
 
 若要取得所有產品的清單，請將此方法加入`ProductsController`類別：
 

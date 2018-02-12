@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 71f87043be064d24bdfb203380fb6cf651527e30
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1caf836f8c92cbc9ab95e0aa990f81493e577a27
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="part-9-registration-and-checkout"></a>部分 9： 註冊並簽出
 ====================
@@ -119,7 +119,7 @@ CheckoutController 會有下列的控制器動作：
 
 ## <a name="adding-the-addressandpayment-view"></a>加入 AddressAndPayment 檢視
 
-現在，讓我們來建立 AddressAndPayment 檢視。 以滑鼠右鍵按一下其中一個 AddressAndPayment 控制器動作並新增名為 AddressAndPayment 強型別為訂單，並且使用 編輯範本，如下所示的檢視。
+現在，讓我們來建立 AddressAndPayment 檢視。 以滑鼠右鍵按一下其中一個 AddressAndPayment 控制器動作，並加入名為 AddressAndPayment 強型別為訂單，並且使用 編輯範本，如下所示的檢視。
 
 ![](mvc-music-store-part-9/_static/image6.png)
 

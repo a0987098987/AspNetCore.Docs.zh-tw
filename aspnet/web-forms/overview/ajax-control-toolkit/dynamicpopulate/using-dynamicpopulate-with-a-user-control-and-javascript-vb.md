@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 69066edc18b58cc3148a738fe8dd48cb92a84f11
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 495a3917ca5fa28bc833ccc666b1a5e6db7bf7f2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-vb"></a>使用 DynamicPopulate 使用者控制和 JavaScript (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標控制項在頁面上，如果沒有頁面重新整理。 它也可觸發程序使用自訂用戶端 JavaScript 程式碼的母體擴展。 不過特別注意有 extender 位於使用者控制項時。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `DynamicPopulate` ASP.NET AJAX Control Toolkit 中的控制呼叫 web 服務 （或頁面的方法），並填入目標控制項在頁面上，如果沒有頁面重新整理所產生的值。 它也可觸發程序使用自訂用戶端 JavaScript 程式碼的母體擴展。 不過特別注意有 extender 位於使用者控制項時。
 
@@ -67,7 +67,7 @@ A &lt; `label` &gt;項目會用來顯示來自伺服器的資料。
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-vb/samples/sample8.aspx)]
 
-就是這麼容易！ 頁面在如預期般運作： 使用者按一下選項按鈕，此工具組中的控制項呼叫 web 服務和所需的格式顯示目前的日期。
+就是這麼容易！ 頁面在如預期般運作： 使用者按一下其中一個選項按鈕，此工具組中的控制項呼叫 web 服務和所需的格式顯示目前的日期。
 
 
 [![選項按鈕位於使用者控制項](using-dynamicpopulate-with-a-user-control-and-javascript-vb/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-vb/_static/image1.png)

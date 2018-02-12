@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: ac254abcb756d048d159a9b67967a581f35ac871
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 82341724286a53f7883df324a391beeae3a9e2bd
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET 識別： 使用 MySQL 儲存體使用 EntityFramework MySQL 提供者 (C#)
 ====================
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="update-the-entity-framework-assembly-for-your-project"></a>更新您的專案的 Entity Framework 組件
 
-從 Visual Studio 2013 範本建立的 MVC 應用程式包含的參考[EntityFramework 6.0.0](http://www.nuget.org/packages/EntityFramework)封裝，但那里已更新自發行以來該組件包含重要效能改善。 若要在應用程式中使用這些最新的更新，請使用下列步驟。
+從 Visual Studio 2013 範本建立的 MVC 應用程式包含的參考[EntityFramework 6.0.0](http://www.nuget.org/packages/EntityFramework)封裝，但必須已包含該組件，因為其版本更新的重要效能改善。 若要在應用程式中使用這些最新的更新，請使用下列步驟。
 
 1. Visual Studio 2013 中開啟 MVC 專案。
 2. 按一下**工具**，然後按一下 **程式庫套件管理員**，然後按一下  **Package Manager Console**:  
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="creating-a-custom-entityframework-initializer-for-applicationdbcontext"></a>建立 ApplicationDbContext 自訂 EntityFramework 初始設定式
 
-在本教學課程顯示為精選 MySQL 提供者目前不支援 Entity Framework 移轉，因此您必須使用模型初始設定式，才能連接到資料庫。 因為本教學課程在 Azure 上使用的 MySQL 執行個體，您將需要建立自訂的 Entity Framework 初始設定式。
+在本教學課程顯示為精選 MySQL 提供者目前不支援 Entity Framework 移轉，因此您必須使用模型初始設定式，才能連接到資料庫。 因為本教學課程在 Azure 上使用的 MySQL 執行個體，您必須建立自訂的 Entity Framework 初始設定式。
 
 > [!NOTE]
 > 如果您要連接到 Azure，或如果您使用內部部署裝載的資料庫上的 SQL Server 執行個體，就不需要此步驟。

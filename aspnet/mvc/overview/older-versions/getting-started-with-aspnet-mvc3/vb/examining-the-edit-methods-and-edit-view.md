@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 9a933324b48d4117d5d4c806920f1691a7ef7849
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 25ba5887a9fd179e75a45d4e140592d0ea66184a
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>檢查編輯方法與編輯檢視 (VB)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-vb[Main](examining-the-edit-methods-and-edit-view/samples/sample3.vb)]
 
-請注意，第二個 `Edit` 動作方法的前面是 `HttpPost` 屬性。 這個屬性指定的多載的`Edit`只會針對 POST 要求叫用方法。 您可以套用`HttpGet`第一個屬性編輯方法，但是，因為不需要它是預設值。 (我們將參照動作方法會隱含地指派`HttpGet`屬性做為`HttpGet`方法。)
+請注意，第二個 `Edit` 動作方法的前面是 `HttpPost` 屬性。 這個屬性會指定該多載的`Edit`只會針對 POST 要求叫用方法。 您可以套用`HttpGet`第一個屬性編輯方法，但是，因為不需要它是預設值。 (我們將參照動作方法會隱含地指派`HttpGet`屬性做為`HttpGet`方法。)
 
 `HttpGet` `Edit`方法會採用影片 ID 參數在查詢使用 Entity Framework 的電影`Find`方法，並返回編輯檢視中選取的影片。 當 Scaffolding 系統建立 Edit 檢視時，它會檢查 `Movie` 類別，並建立程式碼為類別的每個屬性轉譯 `<label>` 和 `<input>` 元素。 下列範例會顯示產生的編輯檢視：
 

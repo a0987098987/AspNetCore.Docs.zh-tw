@@ -10,17 +10,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: a63bfc26bb6b0f5ea1c64641d6f57a3555d7f401
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: d768e2daf2464b282b097e935ef6c5f85e8705f5
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 的雲端驗證
 
 作者 [Cam Soper](https://twitter.com/camsoper)
 
-[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供裝載於雲端和內部部署的應用程式的驗證。 驗證類型包括包含個別帳戶，社交網路帳戶以及同盟企業帳戶。 此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
+[Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供裝載於雲端和內部部署的應用程式的驗證。 驗證類型包括個別帳戶，社交網路帳戶，以及同盟企業帳戶。 此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
 
 > [!TIP]
 > Azure Active Directory (Azure AD) 的 Azure AD B2C 是個別產品的供應項目。 Azure AD 租用戶代表組織中，而 Azure AD B2C 租用戶代表與信賴憑證者的合作對象應用程式使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。

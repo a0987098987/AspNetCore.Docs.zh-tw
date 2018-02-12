@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: 5d6e6727f387d047e7b41a6efa0d2dadf467558e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 744396cb0c95d1887f259b1e2e890bd06ef7d049
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a>外部驗證服務與 ASP.NET Web 應用程式開發介面 (C#)
 ====================
@@ -263,7 +263,7 @@ Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵
     1. 在視窗中開啟提升權限的命令提示字元。
     2. 輸入下列命令：
 
-        <kbd>在 [記事本] %WinDir%\system32\drivers\etc\hosts</kbd>
+        <kbd>notepad %WinDir%\system32\drivers\etc\hosts</kbd>
     3. 將類似下列的項目加入至主機檔案：
 
         <kbd>127.0.0.1 www.wingtiptoys.com</kbd>
@@ -281,7 +281,7 @@ Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵
         <kbd>cd /d &quot;%ProgramFiles%\IIS Express&quot;</kbd>
     3. 輸入下列命令以將 FQDN 新增到您的應用程式：
 
-        <kbd>appcmd.exe 設定組態-section:system.applicationHost/sites / +&quot;[名稱 = 'WebApplication1'].bindings。 [通訊協定 = 'http'，bindingInformation ='*:80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
+        <kbd>appcmd.exe set config -section:system.applicationHost/sites /+&quot;[name='WebApplication1'].bindings.[protocol='http',bindingInformation='*:80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
 
  其中**WebApplication1**是您的專案名稱和**bindingInformation**包含您想要用於測試的通訊埠編號和 FQDN。
 
@@ -303,7 +303,7 @@ Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵
 <a id="DISABLE"></a>
 ### <a name="optional-disable-local-registration"></a>選擇性： 停用本機註冊
 
-目前 ASP.NET 本機註冊功能不會防止自動的程式 (bot) 建立成員的帳戶。例如，藉由使用 bot 防止和驗證技術，例如[CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md)。 因為這個緣故，您應該移除登入頁面上的本機登入表單和註冊連結。 若要這樣做，請開啟 *\_Login.cshtml*在專案中，頁面上，然後再標記為註解的線本機登入面板和註冊連結。 結果頁面應該類似下列的程式碼範例類似：
+目前 ASP.NET 本機註冊功能不會防止自動的程式 (bot) 建立成員的帳戶。例如，藉由使用 bot 防止和驗證技術，例如[CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md)。 因為這個緣故，您應該移除登入頁面上的本機登入表單和註冊連結。 若要這樣做，請開啟 *\_Login.cshtml*在專案中，頁面上，然後再標記為註解的線本機登入面板和註冊連結。 結果頁面應看起來像下列程式碼範例：
 
 [!code-html[Main](external-authentication-services/samples/sample10.html)]
 

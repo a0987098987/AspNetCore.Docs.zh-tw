@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 6bce4a5d889f548cb1faec15842310703d7077b8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1e1235972d1e16153faee113af09edaa676d70d8
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================
@@ -101,7 +101,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 這種方法的優點是，控制器和建立檢視表範本都不知道的任何項目有關強制執行的實際驗證規則或顯示的特定錯誤訊息。 驗證規則和錯誤字串只在 `Movie` 類別中指定。
 
-如果您想要稍後變更驗證邏輯，您可以在一個地方。 您不必擔心應用程式的不同部分會與規則強制執行的方式不一致，所有的驗證邏輯都是在同一個地方定義，用於所有位置。 這會讓程式碼非常整齊乾淨，容易維護及發展。 這表示，您可以完全接受乾原則。
+如果您想要稍後變更驗證邏輯，您可以在一個地方。 您不必擔心應用程式的不同部分會與規則強制執行的方式不一致，所有的驗證邏輯都是在同一個地方定義，用於所有位置。 這會讓程式碼非常整齊乾淨，容易維護及發展。 這表示您會完全接受 DRY 原則。
 
 ## <a name="adding-formatting-to-the-movie-model"></a>加入影片模型格式設定
 

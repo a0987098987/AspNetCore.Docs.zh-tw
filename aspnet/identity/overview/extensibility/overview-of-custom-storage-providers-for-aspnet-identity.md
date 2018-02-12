@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: f43f0a2dd80e26ecff15e5742e18264ddb5b26aa
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: bbc1f6ef291eddd7488531943b146bb67ae7ee02
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>ASP.NET 識別的自訂儲存體提供者的概觀
 ====================
@@ -128,7 +128,7 @@ IdentityUser 類別會實作 IUser，並包含額外的屬性或建構函式，�
 <a id="userstore"></a>
 ## <a name="customize-the-user-store"></a>自訂使用者存放區
 
-您也可以建立 UserStore 類別提供之使用者的所有資料作業方法。 這個類別就相當於[UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx)類別[Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx)命名空間。 在您 UserStore 的類別，您會實作[IUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx)以及任何選擇性的介面。 您選取要實作的選擇性介面上根據您想要提供您的應用程式中的功能。
+您也可以建立 UserStore 類別提供之使用者的所有資料作業方法。 這個類別就相當於[UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx)類別[Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx)命名空間。 在您 UserStore 的類別，您會實作[IUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx)以及任何選擇性的介面。 您選取要實作的選擇性介面根據您想要提供您的應用程式中的功能。
 
 下圖顯示您必須建立 UserStore 類別和相關的介面。
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 0dd1717ff1051f18a78fe77402c7603008b9b486
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fce1a20f9d1093b6c60542d8a786ddf54fdc922c
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="part-8-final-pages-exception-handling-and-conclusion"></a>組件 8： 最後的頁面、 例外狀況處理，以及結束時
 ====================
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a id="_Toc260221683"></a>結論
 
-我們已看到，該 ASP.NET WebForms 輕鬆建立複雜的網站與資料庫存取權，成員資格、 AJAX 等。 很快。
+我們已看到，ASP.NET WebForms 輕鬆建立複雜的網站與資料庫存取權，成員資格、 AJAX 等。 很快。
 
 希望本教學課程已提供您要開始建置您自己的 ASP.NET WebForms 應用程式所需的工具 ！
 

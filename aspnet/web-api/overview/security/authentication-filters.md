@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 7c704cc351876b49ec143a49b25cc0ca83876e06
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16e451f52799625983368bc938091eff47019b52
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的驗證篩選條件
 ====================
@@ -160,7 +160,7 @@ ms.lasthandoff: 01/24/2018
 
 「 主機層級驗證 」 是由主應用程式 （例如 IIS) 執行的驗證要求到達 Web API framework 之前。
 
-通常，您可能要啟用您的應用程式的其餘部分的主機層級驗證，但停用您的 Web API 控制器。 例如，典型的案例是要啟用表單驗證，在主機層級，但用於 Web API 的權杖型驗證。
+通常，您可以啟用您的應用程式的其餘部分的主機層級驗證，但停用 Web API 控制器。 例如，典型的案例是要啟用表單驗證，在主機層級，但用於 Web API 的權杖型驗證。
 
 若要停用 Web API 管線內的主機層級驗證，請呼叫`config.SuppressHostPrincipal()`組態中。 這會導致 Web API 來移除**IPrincipal**從任何輸入 Web API 管線的要求。 實際上，它&quot;取消-驗證&quot;要求。
 

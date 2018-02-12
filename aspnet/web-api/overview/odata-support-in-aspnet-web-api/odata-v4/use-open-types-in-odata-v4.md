@@ -12,15 +12,15 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: c2d7454534ff0e9e0a80365793800ab7c45d3b6e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fe67b9a11a82b55d5f3e0e5f1b0cee10a58833d2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>在使用 ASP.NET Web API OData v4 開啟類型
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 在 OData v4*開啟輸入*stuctured 型別，其中包含動態內容，以及任何型別定義中宣告的屬性。 開放式類型可讓您加入的彈性資料模型。 本教學課程會示範如何使用 ASP.NET Web API OData 中開啟的型別。
 > 
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="query-an-entity"></a>查詢實體
 
-若要取得 ISBN 的書本等於"978-0-7356-7942-9"，傳送 GET 要求傳送至`~/Books('978-0-7356-7942-9')`。 回應主體看起來應該如下所示。 （縮排，讓它更容易閱讀。）
+若要取得 ISBN 的書本等於"978-0-7356-7942-9"，傳送 GET 要求來`~/Books('978-0-7356-7942-9')`。 回應主體看起來應該如下所示。 （縮排，讓它更容易閱讀。）
 
 [!code-console[Main](use-open-types-in-odata-v4/samples/sample7.cmd?highlight=8-13,15-23)]
 

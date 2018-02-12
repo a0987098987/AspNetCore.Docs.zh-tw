@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 7200899d54585cd09e0a648e3aaaf839db2649e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form-第 5 部分
 ====================
@@ -77,7 +77,7 @@ Entity Framework 會負責將新增到本課程的`Courses`相關聯的導覽屬
 
 ## <a name="working-with-many-to-many-relationships"></a>使用 多對多關聯性
 
-之間的關聯性`Courses`實體集和`People`實體集是多對多關聯性。 A`Course`實體具有名為的導覽屬性`People`可以包含零個、 一個或多個相關`Person`（代表指派給教導該課程講師） 的實體。 和`Person`實體具有名為的導覽屬性`Courses`可以包含零個、 一個或多個相關`Course`（代表課程教導指派該講師） 的實體。 一個講師可能教導多個課程中，並可能由多個講師教一個課程。 本節的逐步解說中，您會加入及移除之間的關聯性`Person`和`Course`藉由更新相關實體的導覽屬性的實體。
+之間的關聯性`Courses`實體集和`People`實體集是多對多關聯性。 A`Course`實體具有名為的導覽屬性`People`可以包含零個、 一個或多個相關`Person`（代表指派給教導該課程講師） 的實體。 和`Person`實體具有名為的導覽屬性`Courses`可以包含零個、 一個或多個相關`Course`實體 (代表課程教導指派該講師)。 一個講師可能教導多個課程中，並可能由多個講師教一個課程。 本節的逐步解說中，您會加入及移除之間的關聯性`Person`和`Course`藉由更新相關實體的導覽屬性的實體。
 
 建立名為的新網頁*InstructorsCourses.aspx*使用*Site.Master*主版頁面，並加入下列標記以`Content`控制項，名為`Content2`:
 
@@ -123,7 +123,7 @@ Entity Framework 會負責將新增到本課程的`Courses`相關聯的導覽屬
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-選取 [instructor]。 **指派課程**下拉式清單會顯示不會教導講師，課程和**移除課程**下拉式清單會顯示已指派給講師的課程。 在**指派課程**區段中，選取課程，然後按一下**指派**。 本課程會移至**移除課程**下拉式清單。 選取在課程**移除課程**區段，然後按一下**移除***。* 本課程會移至**指派課程**下拉式清單。
+選取 [instructor]。 **指派課程**下拉式清單會顯示不會教導講師，課程和**移除課程**下拉式清單會顯示已指派給講師的課程。 在**指派課程**區段中，選取課程，然後按一下**指派**。 本課程會移至**移除課程**下拉式清單。 選取在課程**移除課程**區段，然後按一下 **移除 * * *。* 本課程會移至**指派課程**下拉式清單。
 
 您現在有一些更多的方法來處理相關的資料。 在下列的教學課程中，您將學習如何使用資料模型中的繼承，以改善您的應用程式的可維護性。
 

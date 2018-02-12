@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 9939e420fee41b11e709da911d4051a048e789b3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1044a87a4dcc7636413078b0fc09ade206c97d0a
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -55,13 +55,13 @@ Kestrel 適合用來從 ASP.NET Core 提供動態內容。 不過，web 服務�
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 根據需求，不同的安裝程式可能會選擇。
 
-因為反向 Proxy 會轉送要求，請從 `Microsoft.AspNetCore.HttpOverrides` 套件使用 `ForwardedHeaders` 中介軟體。 此中介軟體會使用 `X-Forwarded-Proto` 標頭更新 `Request.Scheme`，讓重新導向 URI 和其他安全性原則正確運作。
+要求會透過反向 proxy 來轉送的因為使用轉送標頭中介軟體從[Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)封裝。 中介軟體更新`Request.Scheme`，並使用`X-Forwarded-Proto`標頭，以便讓該重新導向 Uri 和其他的安全性原則運作正確。
 
-設定反向 Proxy 伺服器時，驗證中介軟體需要 `UseForwardedHeaders` 先執行。 這種排序可確保驗證中介軟體能夠取用受影響的值，並產生正確的重新導向 URI。
+使用任何類型的驗證中介軟體時，必須先執行轉送標頭中介軟體。 這種排序可確保驗證中介軟體可以取用的標頭值，並產生正確的重新導向 Uri。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-先叫用 `UseForwardedHeaders` 方法 (在 *Startup.cs* 的 `Configure`方法中)，再呼叫 `UseAuthentication` 或類似的驗證配置中介軟體：
+叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication)或類似的驗證配置中介軟體：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -74,7 +74,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-先叫用 `UseForwardedHeaders` 方法 (在 *Startup.cs* 的 `Configure` 方法中)，再呼叫 `UseIdentity` 和 `UseFacebookAuthentication` 或類似的驗證配置中介軟體：
+叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity)和[UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication)或類似的驗證配置中介軟體：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -91,6 +91,8 @@ app.UseFacebookAuthentication(new FacebookOptions()
 ```
 
 ---
+
+如果沒有[ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)指定給中介軟體，轉送的預設標頭`None`。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 

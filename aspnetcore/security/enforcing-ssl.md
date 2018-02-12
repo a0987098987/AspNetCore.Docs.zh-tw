@@ -1,41 +1,45 @@
 ---
-title: "強制執行的 ASP.NET Core 應用程式中的 SSL"
+title: "ASP.NET Core 應用程式中強制使用 HTTPS"
 author: rick-anderson
-description: "示範如何要求使用 SSL 在 ASP.NET Core web 應用程式"
+description: "示範如何要求 HTTPS/TLS 中 ASP.NET Core web 應用程式。"
 manager: wpickett
 ms.author: riande
-ms.date: 07/19/2017
+ms.date: 2/9/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 3b72cddb7a240ad6d6e1427796e9bb4f7003a3f7
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 636077ea21581716308384ebf8d47c1e417a256a
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="enforcing-ssl-in-an-aspnet-core-app"></a><span data-ttu-id="0fb5b-103">強制執行的 ASP.NET Core 應用程式中的 SSL</span><span class="sxs-lookup"><span data-stu-id="0fb5b-103">Enforcing SSL in an ASP.NET Core app</span></span>
+# <a name="enforcing-https-in-an-aspnet-core-app"></a><span data-ttu-id="5e55c-103">ASP.NET Core 應用程式中強制使用 HTTPS</span><span class="sxs-lookup"><span data-stu-id="5e55c-103">Enforcing HTTPS in an ASP.NET Core app</span></span>
 
-<span data-ttu-id="0fb5b-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="0fb5b-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="5e55c-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="5e55c-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="0fb5b-105">本文件說明如何：</span><span class="sxs-lookup"><span data-stu-id="0fb5b-105">This document shows how to:</span></span>
+<span data-ttu-id="5e55c-105">本文件說明如何：</span><span class="sxs-lookup"><span data-stu-id="5e55c-105">This document shows how to:</span></span>
 
-- <span data-ttu-id="0fb5b-106">需要 SSL （HTTPS 要求） 的所有要求。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-106">Require SSL for all requests (HTTPS requests only).</span></span>
-- <span data-ttu-id="0fb5b-107">將所有 HTTP 要求重新都導向至 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-107">Redirect all HTTP requests to HTTPS.</span></span>
+- <span data-ttu-id="5e55c-106">所有要求需要 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="5e55c-106">Require HTTPS for all requests.</span></span>
+- <span data-ttu-id="5e55c-107">將所有 HTTP 要求重新都導向至 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="5e55c-107">Redirect all HTTP requests to HTTPS.</span></span>
 
-## <a name="require-ssl"></a><span data-ttu-id="0fb5b-108">需要 SSL</span><span class="sxs-lookup"><span data-stu-id="0fb5b-108">Require SSL</span></span>
+> [!WARNING]
+> <span data-ttu-id="5e55c-108">請勿**不**使用`RequireHttpsAttribute`上接收機密資訊的 Web Api。</span><span class="sxs-lookup"><span data-stu-id="5e55c-108">Do **not** use `RequireHttpsAttribute` on Web APIs that receive sensitive information.</span></span> <span data-ttu-id="5e55c-109">`RequireHttpsAttribute`從 HTTP 至 HTTPS 的瀏覽器重新導向會使用 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="5e55c-109">`RequireHttpsAttribute` uses HTTP status codes to redirect browsers from HTTP to HTTPS.</span></span> <span data-ttu-id="5e55c-110">API 用戶端可能不了解，或是遵循從 HTTP 重新導向至 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="5e55c-110">API clients may not understand or obey redirects from HTTP to HTTPS.</span></span> <span data-ttu-id="5e55c-111">這類用戶端可能會透過 HTTP 傳送資訊。</span><span class="sxs-lookup"><span data-stu-id="5e55c-111">Such clients may send information over HTTP.</span></span> <span data-ttu-id="5e55c-112">Web 應用程式開發介面應執行下列之一：</span><span class="sxs-lookup"><span data-stu-id="5e55c-112">Web APIs should either:</span></span>
+>
+>* <span data-ttu-id="5e55c-113">不在 HTTP 上接聽。</span><span class="sxs-lookup"><span data-stu-id="5e55c-113">Not listen on HTTP.</span></span>
+>* <span data-ttu-id="5e55c-114">關閉與狀態碼 400 （不正確的要求） 的連線，並不會處理要求。</span><span class="sxs-lookup"><span data-stu-id="5e55c-114">Close the connection with status code 400 (Bad Request) and not serve the request.</span></span>
 
-<span data-ttu-id="0fb5b-109">[RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute)用來要求 SSL。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-109">The [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) is used to require SSL.</span></span> <span data-ttu-id="0fb5b-110">可以用來裝飾控制器或具有此屬性的方法，或者您可以將它套用全域如下所示：</span><span class="sxs-lookup"><span data-stu-id="0fb5b-110">You can decorate controllers or methods with this attribute or you can apply it globally as shown below:</span></span>
+## <a name="require-https"></a><span data-ttu-id="5e55c-115">需要 HTTPS</span><span class="sxs-lookup"><span data-stu-id="5e55c-115">Require HTTPS</span></span>
 
-<span data-ttu-id="0fb5b-111">將下列程式碼加入`ConfigureServices`中`Startup`:</span><span class="sxs-lookup"><span data-stu-id="0fb5b-111">Add the following code to `ConfigureServices` in `Startup`:</span></span>
+<span data-ttu-id="5e55c-116">[RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute)用來要求 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="5e55c-116">The [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute) is used to require HTTPS.</span></span> <span data-ttu-id="5e55c-117">`[RequireHttpsAttribute]`可以裝飾控制器或方法，或可以全域套用。</span><span class="sxs-lookup"><span data-stu-id="5e55c-117">`[RequireHttpsAttribute]` can decorate controllers or methods, or can be applied globally.</span></span> <span data-ttu-id="5e55c-118">若要全域套用的屬性，加入下列程式碼加入`ConfigureServices`中`Startup`:</span><span class="sxs-lookup"><span data-stu-id="5e55c-118">To apply the attribute globally, add the following code to `ConfigureServices` in `Startup`:</span></span>
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
-<span data-ttu-id="0fb5b-112">上述反白顯示的程式碼需要的所有要求都使用`HTTPS`，因此 HTTP 要求都會被忽略。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-112">The highlighted code above requires all requests use `HTTPS`, therefore HTTP requests are ignored.</span></span> <span data-ttu-id="0fb5b-113">下列反白顯示的程式碼會將所有 HTTP 要求重新都導向至 HTTPS:</span><span class="sxs-lookup"><span data-stu-id="0fb5b-113">The following highlighted code redirects all HTTP requests to HTTPS:</span></span>
+<span data-ttu-id="5e55c-119">上述的反白顯示程式碼需要的所有要求都使用`HTTPS`; 因此，HTTP 要求會被忽略。</span><span class="sxs-lookup"><span data-stu-id="5e55c-119">The preceding highlighted code requires all requests use `HTTPS`; therefore, HTTP requests are ignored.</span></span> <span data-ttu-id="5e55c-120">下列反白顯示的程式碼會將所有 HTTP 要求重新都導向至 HTTPS:</span><span class="sxs-lookup"><span data-stu-id="5e55c-120">The following highlighted code redirects all HTTP requests to HTTPS:</span></span>
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
-<span data-ttu-id="0fb5b-114">請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-114">See [URL Rewriting Middleware](xref:fundamentals/url-rewriting) for more information.</span></span>
+<span data-ttu-id="5e55c-121">如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。</span><span class="sxs-lookup"><span data-stu-id="5e55c-121">For more information, see [URL Rewriting Middleware](xref:fundamentals/url-rewriting).</span></span>
 
-<span data-ttu-id="0fb5b-115">全域需要 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-115">Requiring HTTPS globally (`options.Filters.Add(new RequireHttpsAttribute());`) is a security best practice.</span></span> <span data-ttu-id="0fb5b-116">套用`[RequireHttps]`所有控制器的屬性不會被視為安全全域需要 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-116">Applying the `[RequireHttps]` attribute to all controller isn't considered as secure as requiring HTTPS globally.</span></span> <span data-ttu-id="0fb5b-117">您無法保證新的控制站新增至您的應用程式將會記住要套用`[RequireHttps]`屬性。</span><span class="sxs-lookup"><span data-stu-id="0fb5b-117">You can't guarantee new controllers added to your app will remember to apply the `[RequireHttps]` attribute.</span></span>
+<span data-ttu-id="5e55c-122">全域需要 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。</span><span class="sxs-lookup"><span data-stu-id="5e55c-122">Requiring HTTPS globally (`options.Filters.Add(new RequireHttpsAttribute());`) is a security best practice.</span></span> <span data-ttu-id="5e55c-123">套用`[RequireHttps]`所有控制器/Razor 頁面的屬性不被視為安全全域需要 HTTPS。</span><span class="sxs-lookup"><span data-stu-id="5e55c-123">Applying the `[RequireHttps]` attribute to all controllers/Razor Pages isn't considered as secure as requiring HTTPS globally.</span></span> <span data-ttu-id="5e55c-124">您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。</span><span class="sxs-lookup"><span data-stu-id="5e55c-124">You can't guarantee the `[RequireHttps]` attribute is applied when new controllers and Razor Pages are added.</span></span>

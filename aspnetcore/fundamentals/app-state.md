@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/app-state
-ms.openlocfilehash: 7aa200d3612f766ab633ccab807421b9c5393975
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f4ed38f7395e3f4fe939584c1f3f5b0dba93724c
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>ASP.NET Core 中的工作階段與應用程式狀態簡介
 
@@ -84,7 +84,7 @@ Cookie 資料使用 [Base64UrlTextEncoder](https://docs.microsoft.com/dotnet/api
 
 ---
 
-順序對中介軟體元件來說很重要。 在上述範例中，如果在 `UseMvcWithDefaultRoute` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　類型的例外狀況。 如需詳細資料，請參閱[中介軟體順序](xref:fundamentals/middleware#ordering)。
+順序對中介軟體元件來說很重要。 在上述範例中，如果在 `UseMvcWithDefaultRoute` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　類型的例外狀況。 如需詳細資料，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。
 
 > [!IMPORTANT]
 > 如果目標為 .NET Framework 且使用工作階段架構提供者，請將 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session) NuGet 套件新增至您的專案。
@@ -189,7 +189,7 @@ Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂�
 
 `HttpContext` 抽象支援 `IDictionary<object, object>` 類型的字典集合，稱為 `Items`。 此集合可在 *HttpRequest* 的開頭取得，並於每個要求的結尾處捨棄。 透過將值指派給索引鍵項目，或要求特定索引鍵的值，即可存取它。
 
-在下列範例中，[中介軟體](middleware.md)將 `isVerified` 新增至 `Items` 集合。
+在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將 `isVerified` 新增至 `Items` 集合。
 
 ```csharp
 app.Use(async (context, next) =>

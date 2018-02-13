@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 24eaa0dd9293cc932c51d280300308e835a0840e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a2c6da6ed698d1a65ee51bd00a557e607f012da
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 
@@ -23,11 +23,29 @@ ms.lasthandoff: 01/30/2018
 
 在本教學課程中，[Razor 頁面電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
 
-在下列步驟中，您可以將電影排程檔案上傳功能新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
+在下列步驟中，電影排程檔案上傳功能會新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
+
+## <a name="security-considerations"></a>安全性考量
+
+為使用者提供將檔案上傳到伺服器的能力時，請特別注意。 攻擊者可能會對系統發動[拒絕服務](/windows-hardware/drivers/ifs/denial-of-service)等攻擊。 以下安全性步驟可減少攻擊成功的可能性：
+
+* 將檔案上傳至系統上的專用檔案上傳區域，可讓您更輕鬆地對上傳內容實施安全性措施。 允許檔案上傳時，請確保上傳位置的執行權限已停用。
+* 使用應用程式認為安全的檔案名稱，而不使用使用者輸入或上傳檔的檔名。
+* 僅允許特定一組核准的副檔名。
+* 確認用戶端檢查在伺服器上執行。 用戶端檢查很容易規避。
+* 檢查上傳項目的大小，並防止上傳超過預期的大小。
+* 對上傳內容執行病毒/惡意程式碼掃描器。
+
+> [!WARNING]
+> 將惡意程式碼上傳至系統經常是執行程式碼的第一步，該程式碼可能：
+> * 完全侵占系統。
+> * 使系統超載，導致系統全面失效。
+> * 洩漏使用者或系統資料。
+> * 在公用介面上塗鴉。
 
 ## <a name="add-a-fileupload-class"></a>新增 FileUpload 類別
 
-在本節中，您將建立 Razor 頁面來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
+您可以建立 Razor 頁面來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
 
@@ -38,6 +56,23 @@ ms.lasthandoff: 01/30/2018
 若要避免處理已上傳之排程檔案的程式碼有所重複，您可以新增靜態 Helper 方法。 在應用程式中，建立 *Utilities* 資料夾，並使用下列內容新增 *FileHelpers.cs* 檔案。 `ProcessFormFile` Helper 方法會採用 [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) 和 [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary)，並傳回包含檔案大小及內容的字串。 系統會檢查內容類型和長度。 如果檔案未通過驗證檢查，`ModelState` 就會新增一項錯誤。
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Utilities/FileHelpers.cs)]
+
+### <a name="save-the-file-to-disk"></a>將檔案儲存至磁碟
+
+範例應用程式會將檔案的內容儲存至資料庫欄位。 若要將檔案的內容儲存至磁碟，請使用 [FileStream](/dotnet/api/system.io.filestream)：
+
+```csharp
+using (var fileStream = new FileStream(filePath, FileMode.Create))
+{
+    await formFile.CopyToAsync(fileStream);
+}
+```
+
+背景工作處理序必須具備 `filePath` 指定之位置的寫入權限。
+
+### <a name="save-the-file-to-azure-blob-storage"></a>將檔案儲存至 Azure Blob 儲存體
+
+若要將檔案內容上傳至 Azure Blob 儲存體，請參閱[以 .NET 開始使用 Azure Blob 儲存體](/azure/storage/blobs/storage-dotnet-how-to-use-blobs)。 本主題會示範如何使用 [UploadFromStream](/dotnet/api/microsoft.windowsazure.storage.file.cloudfile.uploadfromstreamasync) 將 [FileStream](/dotnet/api/system.io.filestream) 儲存至 Blob 儲存體。
 
 ## <a name="add-the-schedule-class"></a>新增 Schedule 類別
 
@@ -106,7 +141,7 @@ Update-Database
 
 ## <a name="add-a-page-to-confirm-schedule-deletion"></a>新增用來確認刪除排程的頁面
 
-當使用者按一下刪除排程時，您會希望他們有機會取消作業。 將刪除確認頁面 (*Delete.cshtml*) 新增至 *Schedules* 資料夾：
+當使用者按一下 [刪除排程] 時，系統會提供取消作業的機會。 將刪除確認頁面 (*Delete.cshtml*) 新增至 *Schedules* 資料夾：
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
 
@@ -144,7 +179,7 @@ Update-Database
 
 如需針對 `IFormFile` 上傳進行疑難排解的資訊，請參閱 [ASP.NET Core 的檔案上傳：疑難排解](xref:mvc/models/file-uploads#troubleshooting)。
 
-感謝您看完這份 Razor 頁面簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
+感謝您看完這份 Razor 頁面簡介。 感謝您提供意見反應。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 

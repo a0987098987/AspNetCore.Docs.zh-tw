@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: 2897eb3a756654c61e38e847f5a8e1f8ca4f0b7c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d35c24347e8e06ed85e2af8addcc1f8cf28dc47a
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/30/2018
 
 一般而言，應用程式有一個路由集合。 當要求到達時，會依序處理路由集合。 傳入要求會在路由集合的每個可用路由上呼叫 `RouteAsync` 方法，藉以尋找符合所要求 URL 的路由。 相反地，回應可以根據路由資訊使用路由來產生 URL (例如，針對重新導向或連結)，因此不需要硬式編碼的 URL，這有助於可維護性。
 
-路由會透過 `RouterMiddleware` 類別連線到[中介軟體](middleware.md)管線。 [ASP.NET MVC](../mvc/overview.md) 會將路由新增至中介軟體管線，作為其組態的一部分。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#using-routing-middleware)。
+路由會透過 `RouterMiddleware` 類別連線到[中介軟體](xref:fundamentals/middleware/index)管線。 [ASP.NET Core MVC](xref:mvc/overview) 會將路由新增至中介軟體管線，作為其組態的一部分。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#using-routing-middleware)。
 
 <a name="url-matching-ref"></a>
 

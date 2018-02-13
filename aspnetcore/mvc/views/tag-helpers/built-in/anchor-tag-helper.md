@@ -1,252 +1,274 @@
 ---
-title: "ASP.NET Core 中的錨點標籤協助程式"
+title: "錨點標籤協助程式"
 author: pkellner
-description: "示範如何使用錨點標籤協助程式"
+description: "探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。"
 manager: wpickett
-ms.author: riande
-ms.date: 12/20/2017
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 01/31/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 404fc7bc3b35114066f035e1ac28d10a8279ccbc
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f3b704174c3287edda12725b7973a2464e485bac
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="anchor-tag-helper"></a>錨點標籤協助程式
 
-由 [Peter Kellner](http://peterkellner.net) 提供 
+由 [Peter Kellner](http://peterkellner.net) 與 [Scott Addie](https://github.com/scottaddie) 撰寫
 
-錨點標籤協助程式藉由新增新的屬性，來增強 HTML 錨點 (`<a ... ></a>`) 標籤。 產生的連結 (在 `href` 標籤上) 是使用新的屬性所建立。 該 URL 可包含選擇性通訊協定，例如 https。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tag-helpers/built-in/samples/TagHelpersBuiltInAspNetCore) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-本文件的所有範例中都會使用下列喇叭控制器。
+[錨點標籤協助程式](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper)藉由新增新的屬性，來增強標準 HTML 錨點 (`<a ... ></a>`) 標籤。 依照慣例，屬性名稱的開頭會加上 `asp-`。 所轉譯錨點元素的 `href` 屬性值取決於 `asp-` 屬性的值。
 
-**SpeakerController.cs** 
+這整份文件的範例皆使用 *SpeakerController*：
 
-[!code-csharp[SpeakerController](sample/TagHelpersBuiltInAspNetCore/src/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs)]
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
+`asp-` 屬性如下所列。
 
-## <a name="anchor-tag-helper-attributes"></a>錨點標籤協助程式屬性
+## <a name="asp-controller"></a>asp-controller
 
-### <a name="asp-controller"></a>asp-controller
+[asp-controller](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.controller) 屬性指派用於產生 URL 的控制器。 下列標記列出所有喇叭：
 
-`asp-controller` 可用來與用於產生 URL 的控制器建立關聯。 指定的控制器必須存在於目前的專案中。 下列程式碼列出所有喇叭： 
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspController)]
 
-```cshtml
-<a asp-controller="Speaker" asp-action="Index">All Speakers</a>
-```
-
-產生的標記會是：
+產生的 HTML：
 
 ```html
 <a href="/Speaker">All Speakers</a>
 ```
 
-如果指定了 `asp-controller` 但未指定 `asp-action`，預設的 `asp-action` 會是目前執行檢視的預設控制器方法。 換句話說，在上述範例中，如果省略 `asp-action`，而且此錨點標籤協助程式是從 *HomeController* 的 `Index` 檢視 (**/Home**) 所產生，則產生的標記會是：
+若僅指定 `asp-controller` 屬性而未指定 `asp-action`，則預設的 `asp-action` 值即為與目前所執行之檢視相關的控制器動作。 若在上述的標記中省略 `asp-action`，且在 *HomeController*'s *Index* 檢視 (*/Home*) 使用錨點標籤協助程式，則產生的 HTML 即為：
 
 ```html
 <a href="/Home">All Speakers</a>
 ```
 
-### <a name="asp-action"></a>asp-action
+## <a name="asp-action"></a>asp-action
 
-`asp-action` 是控制器中的動作方法名稱，將會包含在產生的 `href` 中。 例如，下列程式碼會設定產生的 `href` 以指向喇叭詳細資料頁面：
+[asp-action](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.action) 屬性值代表所產生 `href` 屬性中包含的控制器動作名稱。 下列標記會將產生的 `href` 屬性值設為喇叭評估頁面：
 
-```html
-<a asp-controller="Speaker" asp-action="Detail">Speaker Detail</a>
-```
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
-產生的標記會是：
+產生的 HTML：
 
 ```html
-<a href="/Speaker/Detail">Speaker Detail</a>
+<a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-如果未指定任何 `asp-controller` 屬性，則會使用呼叫檢視並執行目前檢視的預設控制器。  
- 
-如果屬性 `asp-action` 為 `Index`，則不會將任何動作附加至 URL，而導致呼叫預設的 `Index` 方法。 指定的動作 (或預設的動作) 必須存在於 `asp-controller` 所參考的控制器中。
+若未指定任何 `asp-controller` 屬性，則會使用呼叫執行目前檢視之檢視的預設控制器。
 
-### <a name="asp-page"></a>asp-page
+若 `asp-action` 屬性值為 `Index`，就不會將任何動作附加至 URL，而導致引動預設的 `Index` 動作。 指定的動作 (或預設的動作) 必須存在於 `asp-controller` 所參考的控制器中。
 
-在錨點標籤中使用 `asp-page` 屬性可設定其 URL 以指向特定頁面。 在頁面名稱前面加上正斜線 "/" 以建立 URL。 下面範例中的 URL 會指向目前目錄中的「喇叭」頁面。
+## <a name="asp-route-value"></a>asp-route-{value}
+
+[asp-route-{value}](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) 屬性可使用萬用字元路由首碼。 任何佔用 `{value}` 預留位置的值都會解譯為潛在的路由參數。 如果找不到預設路由，則會將此路由首碼附加至產生的 `href` 屬性，作為要求參數與值。 否則會在路由範本中加以取代。
+
+請考慮下列控制器動作：
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
+
+使用 *Startup.Configure* 中定義的預設路由範本：
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
+
+MVC 檢視會使用動作提供的模型，如下所示：
 
 ```cshtml
-<a asp-page="/Speakers">All Speakers</a>
-```
-
-上述程式碼範例中的 `asp-page` 屬性會在檢視中轉譯 HTML 輸出，如下列程式碼片段所示：
-
-```html
-<a href="/items?page=%2FSpeakers">Speakers</a>
-```
-
-`asp-page` 屬性與 `asp-route`、`asp-controller` 以及 `asp-action` 屬性互斥。 不過，`asp-page` 可以搭配 `asp-route-id` 來控制路由，如下列程式碼範例所示：
-
-```cshtml
-<a asp-page="/Speaker" asp-route-id="@speaker.Id">View Speaker</a>
-```
-
-`asp-route-id` 會產生下列輸出：
-
-```html
-https://localhost:44399/Speakers/Index/2?page=%2FSpeaker
-```
-
-> [!NOTE]
-> 若要在 Razor 頁面中使用 `asp-page` 屬性，URL 必須是相對路徑，例如 `"./Speaker"`。 `asp-page` 屬性中的相對路徑無法在 MVC 檢視中使用。 針對 MVC 檢視，請改用 "/" 語法。
-
-### <a name="asp-route-value"></a>asp-route-{value}
-
-`asp-route-` 是路由前置萬用字元。 您放在行尾破折號後面的任何值都會解譯為潛在路由參數。 如果找不到預設路由，則會在產生的 href 附加此路由前置字元作為要求參數和值。 否則會在路由範本中加以取代。
-
-假設您有定義如下的控制器方法：
-
-```csharp
-public IActionResult AnchorTagHelper(string id)
-{
-    var speaker = new SpeakerData()
-    {
-        SpeakerId = 12
-    };
-    return View(viewName, speaker);
-}
-```
-
-並在 *Startup.cs* 中定義了預設路由範本，如下所示：
-
-```csharp
-app.UseMvc(routes =>
-{
-   routes.MapRoute(
-    name: "default",
-    template: "{controller=Home}/{action=Index}/{id?}");
-});
-
-```
-
-下列 **cshtml** 檔案包含使用從控制器傳入檢視的 **speaker** 模型參數所需的錨點標籤協助程式：
-
-```cshtml
-@model SpeakerData
+@model Speaker
 <!DOCTYPE html>
-<html><body>
-<a asp-controller='Speaker' asp-action='Detail' asp-route-id=@Model.SpeakerId>SpeakerId: @Model.SpeakerId</a>
-<body></html>
+<html>
+<body>
+    <a asp-controller="Speaker"
+       asp-action="Detail" 
+       asp-route-id="@Model.SpeakerId">SpeakerId: @Model.SpeakerId</a>
+</body>
+</html>
 ```
 
-由於預設路由中找不到 **id**，因此產生的 HTML 會如下所示。
+預設路由的 `{id?}` 預留位置相符。 產生的 HTML：
 
 ```html
-<a href='/Speaker/Detail/12'>SpeakerId: 12</a>
+<a href="/Speaker/Detail/12">SpeakerId: 12</a>
 ```
 
-如果路由前置字元不屬於所找到的路由範本，在本例中為下列 **cshtml** 檔案：
+假設路由首碼不屬於相符路由範本的一部份，如同下列 MVC 檢視：
 
 ```cshtml
-@model SpeakerData
+@model Speaker
 <!DOCTYPE html>
-<html><body>
-<a asp-controller='Speaker' asp-action='Detail' asp-route-speakerid=@Model.SpeakerId>SpeakerId: @Model.SpeakerId</a>
-<body></html>
+<html>
+<body>
+    <a asp-controller="Speaker" 
+       asp-action="Detail" 
+       asp-route-speakerid="@Model.SpeakerId">SpeakerId: @Model.SpeakerId</a>
+<body>
+</html>
 ```
 
-由於符合的路由中找不到 **speakerid**，因此產生的 HTML 會如下所示：
+因為在相符路由中找不到 `speakerid`，所以產生了下列 HTML：
 
 ```html
-<a href='/Speaker/Detail?speakerid=12'>SpeakerId: 12</a>
+<a href="/Speaker/Detail?speakerid=12">SpeakerId: 12</a>
 ```
 
-如果未指定 `asp-controller` 或 `asp-action`，則會遵循與 `asp-route` 屬性相同的預設處理。
+如果未指定 `asp-controller` 或 `asp-action`，則會遵循與 `asp-route` 屬性中相同的預設處理。
 
-### <a name="asp-route"></a>asp-route
+## <a name="asp-route"></a>asp-route
 
-`asp-route` 可讓您建立直接連結至具名路由的 URL。 使用路由屬性，路由可以如 `SpeakerController` 中所示命名並用於其 `Evaluations` 方法。
+[asp-route](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.route) 屬性用於建立直接連結至具名路由的 URL。 使用[路由屬性](xref:mvc/controllers/routing#attribute-routing)，路由可以如 `SpeakerController` 中所示命名並用於其 `Evaluations` 動作：
 
-`Name = "speakerevals"` 會指示錨點標籤協助程式使用 URL `/Speaker/Evaluations`，來產生該控制器方法的直接路由。 如果除了 `asp-route`，還指定了 `asp-controller` 或 `asp-action`，產生的路由可能不如預期。 `asp-route` 不應該搭配屬性 `asp-controller` 或 `asp-action` 使用，以免發生路由衝突。
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=22-24)]
 
-### <a name="asp-all-route-data"></a>asp-all-route-data
+在下列標記中，`asp-route` 屬性參考了具名路由：
 
-`asp-all-route-data` 可建立索引鍵/值組的字典，其中索引鍵是參數名稱，而值是與該索引鍵建立關聯的值。
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
-如下範例所示，會建立內嵌字典並將資料傳遞至 Razor 檢視。 您也可以使用模型來傳入資料。
-
-```cshtml
-@{
-    var dict =
-        new Dictionary<string, string>
-        {
-            {"speakerId", "11"},
-            {"currentYear", "true"}
-        };
-}
-<a asp-route="speakerevalscurrent"
-asp-all-route-data="dict">SpeakerEvals</a>
-```
-
-上述程式碼會產生下列 URL：http://localhost/Speaker/EvaluationsCurrent?speakerId=11&currentYear=true
-
-按一下連結時，會呼叫控制器方法 `EvaluationsCurrent`。 因為該控制器有兩個字串參數符合 `asp-all-route-data` 字典中已建立的字串參數，所以會呼叫此方法。
-
-如果字典中有任何索引鍵符合路由參數，這些值會在路由中被適當取代，並會產生其他不相符的值作為要求參數。
-
-### <a name="asp-fragment"></a>asp-fragment
-
-`asp-fragment` 定義要附加至 URL 的 URL 片段。 錨點標籤協助程式會新增雜湊字元 (#)。 如果您建立一個標籤：
-
-```cshtml
-<a asp-action="Evaluations" asp-controller="Speaker"  
-   asp-fragment="SpeakerEvaluations">About Speaker Evals</a>
-```
-
-產生的 URL 會是：http://localhost/Speaker/Evaluations#SpeakerEvaluations
-
-# 標籤在建置用戶端應用程式時會很有用。 例如，您可以使用這些標籤在 JavaScript 中輕鬆標記和搜尋。
-
-### <a name="asp-area"></a>asp-area
-
-`asp-area` 會設定 ASP.NET Core 用來設定適當路由的區域名稱。 以下是區域屬性如何造成路由重新對應的範例。 將 `asp-area` 設定為 Blogs 會在 此錨點標籤的相關聯控制器和檢視路由前面加上字典 `Areas/Blogs`。
-
-* 專案名稱
-  * wwwroot
-  * 區域
-    * 部落格
-      * 控制器
-        * HomeController.cs
-      * 檢視
-        * 首頁
-          * Index.cshtml
-          * AboutBlog.cshtml
-  * 控制器
-
-參考 ```AboutBlog.cshtml``` 檔案時指定有效的區域標籤 (例如 ```area="Blogs"```) 會類似使用下列的錨點標籤協助程式。
-
-```cshtml
-<a asp-action="AboutBlog" asp-controller="Home" asp-area="Blogs">Blogs About</a>
-```
-
-產生的 HTML 會包含區域區段，如下所示：
+錨點標記協助程式會使用 URL */Speaker/Evaluations*，直接對該控制器動作產生路由。 產生的 HTML：
 
 ```html
-<a href="/Blogs/Home/AboutBlog">Blogs About</a>
+<a href="/Speaker/Evaluations">Speaker Evaluations</a>
+```
+
+如果除了 `asp-route`，還指定了 `asp-controller` 或 `asp-action`，產生的路由可能不如預期。 為避免路由衝突，請勿將 `asp-route` 與 `asp-controller` 及 `asp-action` 屬性搭配使用。
+
+## <a name="asp-all-route-data"></a>asp-all-route-data
+
+[asp-all-route-data](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.routevalues) 屬性支援建立機碼值組的字典。 機碼為參數名稱，值則為參數值。
+
+在下列範例中，字典會經過初始化並傳遞至 Razor 檢視。 或者，您也可以使用自己的模型來傳遞資料。
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
+
+上述程式碼會產生下列 HTML：
+
+```html
+<a href="/Speaker/EvaluationsCurrent?speakerId=11&currentYear=true">Speaker Evaluations</a>
+```
+
+`asp-all-route-data` 字典已經過扁平化，以產生符合多載 `Evaluations` 動作之需求的查詢字串。
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=26-30)]
+
+若字典中有任何機碼符合路由參數，這些值在路由中會受到適當地取代。 其他不相符的值則產生作為要求參數。
+
+## <a name="asp-fragment"></a>asp-fragment
+
+[asp-fragment](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.fragment) 屬性定義要附加至 URL 的 URL 片段。 錨點標籤協助程式會新增雜湊字元 (#)。 請考慮下列標記：
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspFragment)]
+
+產生的 HTML：
+
+```html
+<a href="/Speaker/Evaluations#SpeakerEvaluations">Speaker Evaluations</a>
+```
+
+雜湊標籤在建置用戶端應用程式時很實用。 例如，您可以使用這些標籤在 JavaScript 中輕鬆標記和搜尋。
+
+## <a name="asp-area"></a>asp-area
+
+[asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) 屬性設定區域名稱，用以設定合適的路由。 下列範例描述了區域屬性如何造成路由重新對應。 將 `asp-area` 設定為 "Blogs" 會在 此錨點標籤之相關控制器和檢視的路由前面加上目錄 *Areas/Blogs*。
+
+* **<專案名稱\>**
+  * **wwwroot**
+  * **區域**
+    * **部落格**
+      * **控制器**
+        * *HomeController.cs*
+      * **檢視**
+        * **Home**
+          * *AboutBlog.cshtml*
+          * *Index.cshtml*
+        * *_ViewStart.cshtml*
+  * **控制器**
+
+以上述目錄階層為例，要參考 *AboutBlog.cshtml* 檔案的標記即為：
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspArea)]
+
+產生的 HTML：
+
+```html
+<a href="/Blogs/Home/AboutBlog">About Blog</a>
 ```
 
 > [!TIP]
-> 若要讓 MVC 區域在 Web 應用程式中正常運作，路由範本必須包含區域的參考 (若存在)。 該範本 (也就是 `routes.MapRoute` 方法呼叫的第二個參數) 會顯示為：`template: '"{area:exists}/{controller=Home}/{action=Index}"'`
+> 若要讓區域在 MVC 應用程式中正常運作，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
-### <a name="asp-protocol"></a>asp-protocol
+## <a name="asp-protocol"></a>asp-protocol
 
-`asp-protocol` 適用於在您的 URL 中指定通訊協定 (例如 `https`)。 包含通訊協定的範例錨點標籤協助程式如下所示：
+[asp-protocol](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.protocol) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如: 
 
-```<a asp-protocol="https" asp-action="About" asp-controller="Home">About</a>```
+[!code-cshtml[samples/TagHelpersBuiltInAspNetCore/Views/Index.cshtml?name=snippet_AspProtocol]]
 
-並將產生 HTML，如下所示：
+產生的 HTML：
 
-```<a href="https://localhost/Home/About">About</a>```
+```html
+<a href="https://localhost/Home/About">About</a>
+```
 
-此範例中的網域為 localhost，但錨點標籤協助程式使用網站的公用網域來產生 URL。
+此範例中的主機名稱為 localhost，但錨點標籤協助程式在產生 URL 時使用網站的公用網域。
+
+## <a name="asp-host"></a>asp-host
+
+[asp-host](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.host) 屬性用於在您的 URL 中指定主機名稱。 例如: 
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspHost)]
+
+產生的 HTML：
+
+```html
+<a href="https://microsoft.com/Home/About">About</a>
+```
+
+## <a name="asp-page"></a>asp-page
+
+[asp-page](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.page) 屬性與 Razor 頁面搭配使用。 您可用其將錨點標籤的 `href` 屬性值設定為特定頁面。 在頁面名稱的開頭加上正斜線 ("/") 即可建立 URL。
+
+下列範例指向出席者 Razor 頁面：
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPage)]
+
+產生的 HTML：
+
+```html
+<a href="/Attendee">All Attendees</a>
+```
+
+`asp-page` 屬性與 `asp-route`、`asp-controller` 以及 `asp-action` 屬性互斥。 但是，`asp-page` 可以搭配 `asp-route-{value}` 使用來控制路由，如下列標記所示：
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
+
+產生的 HTML：
+
+```html
+<a href="/Attendee?attendeeid=10">View Attendee</a>
+```
+
+## <a name="asp-page-handler"></a>asp-page-handler
+
+[asp-page-handler](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.pagehandler) 屬性與 Razor 頁面搭配使用。 其用途為建立特定頁面處理常式的連結。
+
+請考慮下列頁面處理常式：
+
+[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
+
+頁面模型的相關標記會連結到 `OnGetProfile` 頁面處理常式。 請注意，`asp-page-handler` 屬性值中會省略頁面處理常式方法名稱的 `On<Verb>` 首碼。 如果這是非同步方法，則 `Async` 尾碼也會一併省略。
+
+[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
+
+產生的 HTML：
+
+```html
+<a href="/Attendee?attendeeid=12&handler=Profile">Attendee Profile</a>
+```
 
 ## <a name="additional-resources"></a>其他資源
 
 * [區域](xref:mvc/controllers/areas)
+* [Razor 頁面簡介](xref:mvc/razor-pages/index)

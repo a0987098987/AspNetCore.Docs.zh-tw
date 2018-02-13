@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 51344535e7ff42f1bd6641aeaaf043be6423f1b7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a7c5b348e44a88a56680237b0cac75c999901ec3
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>使用 Visual Studio 的 ASP.NET Web 部署： 簡介
 ====================
@@ -110,7 +110,7 @@ Visual Studio 不會與資料庫的任何項目在部署程序。 當部署的�
 
 ## <a name="comments-welcome"></a>歡迎使用註解
 
-教學課程的註解是  褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
+教學課程的註解是 褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
 
 <a id="prerequisites"></a>
 
@@ -195,7 +195,7 @@ Visual Studio 不會與資料庫的任何項目在部署程序。 當部署的�
 - 應用程式會使用 ASP.NET 成員資格系統，將使用者帳戶資訊儲存在 SQL Server 資料庫。 應用程式定義的系統管理員使用者，有一些限制的資訊的存取權。 您要部署的成員資格資料庫，不具測試帳戶，但以系統管理員帳戶。
 - 應用程式會使用第三方錯誤記錄和報告公用程式。 必須與應用程式部署的組件中提供這個公用程式。
 - 錯誤記錄公用程式將錯誤資訊寫入 XML 檔案中的檔案資料夾。 您必須確定 ASP.NET 中已部署的站台執行的帳戶具有寫入權限到此資料夾，而且您必須從部署中排除此資料夾。 （否則從測試環境的錯誤記錄檔資料可能會部署到生產環境和/或生產環境錯誤記錄檔可能已刪除。）
-- 應用程式包括在部署中必須變更某些設定*Web.config*根據目的地環境 （測試、 預備或生產），以及根據組建必須變更其他設定檔組態 （偵錯或發行）。
+- 應用程式包含必須變更某些設定中已部署*Web.config*根據目的地環境 （測試、 預備或生產），以及根據組建必須變更其他設定檔組態 （偵錯或發行）。
 - Visual Studio 方案可包含的類別庫專案。 應該部署此專案會產生的組件，而非專案本身。
 
 ## <a name="summary"></a>總結

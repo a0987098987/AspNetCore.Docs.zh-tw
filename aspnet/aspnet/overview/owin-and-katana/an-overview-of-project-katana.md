@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 8f28116f88f3cf5143d3d5c9821519d62c4e5452
-ms.sourcegitcommit: 6541c8b11001dd617adf5eb04c814cda165070b9
+ms.openlocfilehash: ceb7d3a7d1cb1685c0f1e62698f508c9a73e77c2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="an-overview-of-project-katana"></a>專案 Katana 的概觀
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/07/2017
 
  不論是否其中一個討論開發人員 framework 或使用者產品，務必了解建立基礎的升級過程中的與產品包含了解產品所建立。 請注意兩個客戶最初建立 ASP.NET。   
   
-**第一個群組的客戶是傳統 ASP 開發人員。** 同時，ASP 就是一種主要的技術，用於建立網站和應用程式動態的資料導向 interweaving 標記和伺服器端指令碼。 ASP 執行階段提供抽象的基礎 HTTP 通訊協定和 Web 伺服器的核心層面，並且提供存取至其他服務這類工作階段和應用程式的狀態管理，快取，等等之物件的一組伺服器端指令碼。雖然強大、 傳統 ASP 應用程式變得容易管理，因為它們成長的大小和複雜度。 這是結構的主要是結構的因為沒有在指令碼結合所產生的程式碼和標記的交錯情形的程式碼的重複的環境中找到。 為了處理某些其挑戰時利用傳統 ASP 的優勢，ASP.NET 利用語言提供的物件導向的.NET framework 同時也保留的伺服器端程式設計模型的程式碼組織哪些傳統 asp 開發人員已成長習慣。
+**第一個群組的客戶是傳統 ASP 開發人員。** 同時，ASP 就是一種主要的技術，用於建立網站和應用程式動態的資料導向 interweaving 標記和伺服器端指令碼。 ASP 執行階段提供抽象的基礎 HTTP 通訊協定和 Web 伺服器的核心層面，並且提供存取至其他服務這類工作階段和應用程式的狀態管理，快取，等等之物件的一組伺服器端指令碼。雖然強大、 傳統 ASP 應用程式變得容易管理，因為它們成長的大小和複雜度。 這是結構的主要是結構的因為缺少的指令碼結合所產生的程式碼和標記的交錯情形的程式碼的重複的環境中找到。 為了處理某些其挑戰時利用傳統 ASP 的優勢，ASP.NET 利用語言提供的物件導向的.NET framework 同時也保留的伺服器端程式設計模型的程式碼組織哪些傳統 asp 開發人員已成長習慣。
 
 **適用於 ASP.NET 的目標客戶的第二個群組是 Windows 商務應用程式開發人員。** 不同於傳統 ASP 開發人員已習慣寫入 HTML 標記和程式碼，以產生更多的 HTML 標記，WinForms （如同之前 VB6 開發人員） 的開發人員已習慣於設計階段體驗包含畫布與一組豐富的使用者控制項的介面。 第一個版本的 ASP.NET – 也稱為 「 Web 表單 」 提供類似的設計階段經驗以及使用者介面元件的伺服器端事件模型和基礎結構功能 （例如 ViewState) 的一組以建立無縫式的開發人員體驗用戶端和伺服器端程式設計之間 Web Form 有效 hid Web 的無狀態的本質，在已熟悉 WinForms 開發人員可設定狀態的事件模型。
 
@@ -109,7 +109,7 @@ JavaScript 和.NET 開發之間的明顯差異是編譯器的目前狀態 （或
 
 [![](an-overview-of-project-katana/_static/image1.png)](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)
 
-接下來，我們將會安裝[Microsoft.Owin.Host.SystemWeb](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)專案將 NuGet 封裝。 此封裝提供在 ASP.NET 要求管線中執行的 OWIN 伺服器。 您可以找到上[NuGet gallery](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb) ，可以使用 Visual Studio 封裝管理員 對話方塊或 [封裝管理員] 主控台使用下列命令安裝：
+接下來，我們將會安裝[Microsoft.Owin.Host.SystemWeb](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)專案將 NuGet 封裝。 此封裝提供在 ASP.NET 要求管線中執行的 OWIN 伺服器。 您可以找到上[NuGet gallery](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb) ，可以使用 Visual Studio 封裝管理員] 對話方塊或 [封裝管理員] 主控台使用下列命令安裝：
 
 [!code-console[Main](an-overview-of-project-katana/samples/sample2.cmd)]
 

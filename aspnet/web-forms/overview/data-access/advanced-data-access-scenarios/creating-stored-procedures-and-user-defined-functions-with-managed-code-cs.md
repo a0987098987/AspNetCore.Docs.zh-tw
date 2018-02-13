@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be3e3d61a6567da3c2cd696c01661146f2da7131
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6daa0dec764e2e9248cac97ba7d7b6df0da3208f
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>建立預存程序和使用者定義函數以 Managed 程式碼 (C#)
 ====================
@@ -420,7 +420,7 @@ Udf 也可以傳回表格式資料。 例如，我們可以建立 UDF，以傳�
 
 ## <a name="step-11-deploying-the-managed-udf"></a>步驟 11： 部署受管理的 UDF
 
-現在，已建立受管理的 UDF，我們已準備好將它部署到 Northwind 資料庫。 如我們所見步驟 4 中，會部署在 SQL Server 專案中的受管理的物件 [方案總管] 中的專案名稱上按一下滑鼠右鍵，然後從內容功能表選擇 [部署] 選項。
+現在建立受管理的 UDF 之後，我們就可以準備將它部署到 Northwind 資料庫。 如我們所見步驟 4 中，會部署在 SQL Server 專案中的受管理的物件 [方案總管] 中的專案名稱上按一下滑鼠右鍵，然後從內容功能表選擇 [部署] 選項。
 
 一旦部署專案之後，返回 SQL Server Management Studio，並重新整理的純量值函式的資料夾。 您現在應該會看到兩個項目：
 

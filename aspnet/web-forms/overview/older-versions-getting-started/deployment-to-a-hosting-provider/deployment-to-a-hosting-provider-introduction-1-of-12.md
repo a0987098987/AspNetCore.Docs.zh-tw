@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 9c0edb301de85d15b9a3527382b72211f6f3d3ec
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a0f38c83bd9231dbd37d3d505c90316af521b336
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>部署 ASP.NET Web 應用程式與 SQL Server Compact 使用 Visual Studio： 簡介-12 個 1
 ====================
@@ -79,7 +79,7 @@ Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方�
 
 ## <a name="comments-welcome"></a>註解歡迎畫面
 
-教學課程的註解是  褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
+教學課程的註解是 褖畫惎，且致力更新本教學課程時進行納入帳戶修正或改善教學課程的註解中所提供的建議。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -137,7 +137,7 @@ Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方�
 - 應用程式會使用 Entity Framework 5.0 存取應用程式資料庫中的資料。 包含 Entity Framework 5.0 的組件必須部署與應用程式。
 - 應用程式會使用第三方錯誤記錄和報告公用程式。 必須與應用程式部署的組件中提供這個公用程式。
 - 錯誤記錄公用程式將錯誤資訊寫入 XML 檔案中的檔案資料夾。 您必須確定 ASP.NET 中已部署的站台執行的帳戶具有寫入權限到此資料夾，而且您必須從部署中排除此資料夾。 （否則從測試環境的錯誤記錄檔資料可能會部署到生產環境和/或生產環境錯誤記錄檔可能已刪除。）
-- 應用程式包括在部署中必須變更某些設定*Web.config*根據目的地環境 （測試或生產），以及根據組建必須變更其他設定檔組態 （偵錯或發行）。
+- 應用程式包含必須變更某些設定中已部署*Web.config*根據目的地環境 （測試或生產），以及根據組建必須變更其他設定檔組態 （偵錯或發行）。
 - Visual Studio 方案可包含的類別庫專案。 應該部署此專案會產生的組件，而非專案本身。
 
 在此數列中的第一個教學課程，您已下載範例 Visual Studio 專案，並檢閱影響您如何部署應用程式的網站功能。 下列教學課程中，在您準備進行部署的下列步驟來自動處理某些設定。 其他您以手動方式處理。

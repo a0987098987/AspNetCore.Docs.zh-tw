@@ -1,305 +1,298 @@
 ---
 title: "帳戶確認和 ASP.NET Core 中的密碼復原"
 author: rick-anderson
-description: "示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。"
+description: "了解如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。"
 manager: wpickett
 ms.author: riande
-ms.date: 12/1/2017
+ms.date: 2/11/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 14c7fdfc1ed8b87aac8ca937298c7da6373bf06d
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: e8f73d58bdf626910b2101ef310385f588315e26
+ms.sourcegitcommit: 725cb18ad23013e15d3dbb527958481dee79f9f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a><span data-ttu-id="5d614-103">帳戶確認和 ASP.NET Core 中的密碼復原</span><span class="sxs-lookup"><span data-stu-id="5d614-103">Account confirmation and password recovery in ASP.NET Core</span></span>
+# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a><span data-ttu-id="3b786-103">帳戶確認和 ASP.NET Core 中的密碼復原</span><span class="sxs-lookup"><span data-stu-id="3b786-103">Account confirmation and password recovery in ASP.NET Core</span></span>
 
-<span data-ttu-id="5d614-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="5d614-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span> 
+<span data-ttu-id="3b786-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="3b786-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
 
-<span data-ttu-id="5d614-105">本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d614-105">This tutorial shows you how to build an ASP.NET Core app with email confirmation and password reset.</span></span>
+<span data-ttu-id="3b786-105">本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="3b786-105">This tutorial shows you how to build an ASP.NET Core app with email confirmation and password reset.</span></span> <span data-ttu-id="3b786-106">這個教學課程**不**開頭主題。</span><span class="sxs-lookup"><span data-stu-id="3b786-106">This tutorial is **not** a beginning topic.</span></span> <span data-ttu-id="3b786-107">您應該熟悉：</span><span class="sxs-lookup"><span data-stu-id="3b786-107">You should be familiar with:</span></span>
 
-## <a name="create-a-new-aspnet-core-project"></a><span data-ttu-id="5d614-106">建立新的 ASP.NET Core 專案</span><span class="sxs-lookup"><span data-stu-id="5d614-106">Create a New ASP.NET Core Project</span></span>
+* [<span data-ttu-id="3b786-108">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="3b786-108">ASP.NET Core</span></span>](xref:tutorials/first-mvc-app/start-mvc)
+* [<span data-ttu-id="3b786-109">驗證</span><span class="sxs-lookup"><span data-stu-id="3b786-109">Authentication</span></span>](xref:security/authentication/index)
+* [<span data-ttu-id="3b786-110">帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="3b786-110">Account Confirmation and Password Recovery</span></span>](xref:security/authentication/accconfirm)
+* [<span data-ttu-id="3b786-111">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="3b786-111">Entity Framework Core</span></span>](xref:data/ef-mvc/intro)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-107">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-107">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+<span data-ttu-id="3b786-112">請參閱[此 PDF 檔案](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf)ASP.NET Core MVC 1.1 和 2.x 版。</span><span class="sxs-lookup"><span data-stu-id="3b786-112">See [this PDF file](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) for the ASP.NET Core MVC 1.1 and 2.x versions.</span></span>
 
-<span data-ttu-id="5d614-108">這個步驟適用於在 Windows 上的 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="5d614-108">This step applies to Visual Studio on Windows.</span></span> <span data-ttu-id="5d614-109">請參閱下一節的 CLI 指示。</span><span class="sxs-lookup"><span data-stu-id="5d614-109">See the next section for CLI instructions.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3b786-113">必要條件</span><span class="sxs-lookup"><span data-stu-id="3b786-113">Prerequisites</span></span>
 
-<span data-ttu-id="5d614-110">此教學課程需要 Visual Studio 2017 Preview 2 或更新版本。</span><span class="sxs-lookup"><span data-stu-id="5d614-110">The tutorial requires Visual Studio 2017 Preview 2 or later.</span></span>
+<span data-ttu-id="3b786-114">[.NET core 2.1.4 SDK](https://www.microsoft.com/net/core)或更新版本。</span><span class="sxs-lookup"><span data-stu-id="3b786-114">[.NET Core 2.1.4 SDK](https://www.microsoft.com/net/core) or later.</span></span>
 
-* <span data-ttu-id="5d614-111">在 Visual Studio 中建立新的 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="5d614-111">In Visual Studio, create a New Web Application Project.</span></span>
-* <span data-ttu-id="5d614-112">選取**ASP.NET Core 2.0**。</span><span class="sxs-lookup"><span data-stu-id="5d614-112">Select **ASP.NET Core 2.0**.</span></span> <span data-ttu-id="5d614-113">下圖顯示**.NET Core**選取，但您可以選取**.NET Framework**。</span><span class="sxs-lookup"><span data-stu-id="5d614-113">The following image show **.NET Core** selected, but you can select **.NET Framework**.</span></span>
-* <span data-ttu-id="5d614-114">選取**變更驗證**並將設定為**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="5d614-114">Select **Change Authentication** and set to **Individual User Accounts**.</span></span>
-* <span data-ttu-id="5d614-115">保留預設值**儲存使用者帳戶在應用程式**。</span><span class="sxs-lookup"><span data-stu-id="5d614-115">Keep the default **Store user accounts in-app**.</span></span>
+## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a><span data-ttu-id="3b786-115">建立新的 ASP.NET Core 專案，而.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="3b786-115">Create a new ASP.NET Core project with the .NET Core CLI</span></span>
 
-![顯示選取"個別使用者帳戶 radio"的新 [專案] 對話方塊](accconfirm/_static/2.png)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="3b786-116">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="3b786-116">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-117">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-117">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+```console
+dotnet new razor --auth Individual -o WebPWrecover
+cd WebPWrecover
+```
 
-<span data-ttu-id="5d614-118">此教學課程需要 2017年或更新版本的 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="5d614-118">The tutorial requires Visual Studio 2017 or later.</span></span>
+* <span data-ttu-id="3b786-117">`--auth Individual` 指定個別的使用者帳戶的專案範本。</span><span class="sxs-lookup"><span data-stu-id="3b786-117">`--auth Individual` specifies the Individual User Accounts project template.</span></span>
+* <span data-ttu-id="3b786-118">在 Windows 中，加入`-uld`選項。</span><span class="sxs-lookup"><span data-stu-id="3b786-118">On Windows, add the `-uld` option.</span></span> <span data-ttu-id="3b786-119">它會指定應該使用 LocalDB，而不是 SQLite。</span><span class="sxs-lookup"><span data-stu-id="3b786-119">It specifies LocalDB should be used instead of SQLite.</span></span>
+* <span data-ttu-id="3b786-120">執行`new mvc --help`取得此命令的說明。</span><span class="sxs-lookup"><span data-stu-id="3b786-120">Run `new mvc --help` to get help on this command.</span></span>
 
-* <span data-ttu-id="5d614-119">在 Visual Studio 中建立新的 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="5d614-119">In Visual Studio, create a New Web Application Project.</span></span>
-* <span data-ttu-id="5d614-120">選取**變更驗證**並將設定為**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="5d614-120">Select **Change Authentication** and set to **Individual User Accounts**.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="3b786-121">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="3b786-121">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-![顯示選取"個別使用者帳戶 radio"的新 [專案] 對話方塊](accconfirm/_static/indiv.png)
-
----
-
-### <a name="net-core-cli-project-creation-for-macos-and-linux"></a><span data-ttu-id="5d614-122">.NET core CLI 專案建立 macOS 和 Linux</span><span class="sxs-lookup"><span data-stu-id="5d614-122">.NET Core CLI project creation for macOS and Linux</span></span>
-
-<span data-ttu-id="5d614-123">如果您使用 CLI 或 SQLite，在命令視窗執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="5d614-123">If you're using the CLI or SQLite, run the following in a command window:</span></span>
+<span data-ttu-id="3b786-122">如果您使用 CLI 或 SQLite，在命令視窗執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="3b786-122">If you're using the CLI or SQLite, run the following in a command window:</span></span>
 
 ```console
 dotnet new mvc --auth Individual
 ```
 
-* <span data-ttu-id="5d614-124">`--auth Individual`指定的個別使用者帳戶的範本。</span><span class="sxs-lookup"><span data-stu-id="5d614-124">`--auth Individual` specifies the Individual User Accounts template.</span></span>
-* <span data-ttu-id="5d614-125">在 Windows 中，加入`-uld`選項。</span><span class="sxs-lookup"><span data-stu-id="5d614-125">On Windows, add the `-uld` option.</span></span> <span data-ttu-id="5d614-126">`-uld`選項建立 LocalDB 的連接字串，而不是 SQLite 資料庫。</span><span class="sxs-lookup"><span data-stu-id="5d614-126">The `-uld` option creates a LocalDB connection string rather than a SQLite DB.</span></span>
-* <span data-ttu-id="5d614-127">執行`new mvc --help`取得此命令的說明。</span><span class="sxs-lookup"><span data-stu-id="5d614-127">Run `new mvc --help` to get help on this command.</span></span>
+* <span data-ttu-id="3b786-123">`--auth Individual` 指定個別的使用者帳戶的專案範本。</span><span class="sxs-lookup"><span data-stu-id="3b786-123">`--auth Individual` specifies the Individual User Accounts project template.</span></span>
+* <span data-ttu-id="3b786-124">在 Windows 中，加入`-uld`選項。</span><span class="sxs-lookup"><span data-stu-id="3b786-124">On Windows, add the `-uld` option.</span></span> <span data-ttu-id="3b786-125">它會指定應該使用 LocalDB，而不是 SQLite。</span><span class="sxs-lookup"><span data-stu-id="3b786-125">It specifies LocalDB should be used instead of SQLite.</span></span>
+* <span data-ttu-id="3b786-126">執行`new mvc --help`取得此命令的說明。</span><span class="sxs-lookup"><span data-stu-id="3b786-126">Run `new mvc --help` to get help on this command.</span></span>
 
-## <a name="test-new-user-registration"></a><span data-ttu-id="5d614-128">測試新的使用者註冊</span><span class="sxs-lookup"><span data-stu-id="5d614-128">Test new user registration</span></span>
+---
 
-<span data-ttu-id="5d614-129">執行應用程式中，選取**註冊**連結，並登錄使用者。</span><span class="sxs-lookup"><span data-stu-id="5d614-129">Run the app, select the **Register** link, and register a user.</span></span> <span data-ttu-id="5d614-130">請依照下列指示執行 Entity Framework Core 移轉。</span><span class="sxs-lookup"><span data-stu-id="5d614-130">Follow the instructions to run Entity Framework Core migrations.</span></span> <span data-ttu-id="5d614-131">此時，只有在電子郵件時才驗證與[[EmailAddress]](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。</span><span class="sxs-lookup"><span data-stu-id="5d614-131">At this  point, the only validation on the email is with the [[EmailAddress]](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) attribute.</span></span> <span data-ttu-id="5d614-132">提交註冊後，您登入的應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d614-132">After you submit the registration, you are logged into the app.</span></span> <span data-ttu-id="5d614-133">稍後在教學課程中，我們將會變更這讓新的使用者無法登入，直到他們的電子郵件已通過驗證。</span><span class="sxs-lookup"><span data-stu-id="5d614-133">Later in the tutorial, we'll change this so new users cannot log in until their email has been validated.</span></span>
+<span data-ttu-id="3b786-127">或者，您可以使用 Visual Studio 建立新的 ASP.NET Core 專案：</span><span class="sxs-lookup"><span data-stu-id="3b786-127">Alternatively, you can create a new ASP.NET Core project with Visual Studio:</span></span>
 
-## <a name="view-the-identity-database"></a><span data-ttu-id="5d614-134">檢視識別資料庫</span><span class="sxs-lookup"><span data-stu-id="5d614-134">View the Identity database</span></span>
+* <span data-ttu-id="3b786-128">在 Visual Studio 中，建立新**Web 應用程式**專案。</span><span class="sxs-lookup"><span data-stu-id="3b786-128">In Visual Studio, create a new **Web Application** project.</span></span>
+* <span data-ttu-id="3b786-129">選取**ASP.NET Core 2.0**。</span><span class="sxs-lookup"><span data-stu-id="3b786-129">Select **ASP.NET Core 2.0**.</span></span> <span data-ttu-id="3b786-130">**.NET core**選取在下列影像中，但您可以選取**.NET Framework**。</span><span class="sxs-lookup"><span data-stu-id="3b786-130">**.NET Core** is selected in the following image, but you can select **.NET Framework**.</span></span>
+* <span data-ttu-id="3b786-131">選取**變更驗證**並將設定為**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="3b786-131">Select **Change Authentication** and set to **Individual User Accounts**.</span></span>
+* <span data-ttu-id="3b786-132">保留預設值**儲存使用者帳戶在應用程式**。</span><span class="sxs-lookup"><span data-stu-id="3b786-132">Keep the default **Store user accounts in-app**.</span></span>
 
-# <a name="sql-servertabsql-server"></a>[<span data-ttu-id="5d614-135">SQL Server</span><span class="sxs-lookup"><span data-stu-id="5d614-135">SQL Server</span></span>](#tab/sql-server)
+![顯示選取"個別使用者帳戶 radio"的新 [專案] 對話方塊](accconfirm/_static/2.png)
 
-* <span data-ttu-id="5d614-136">從**檢視**功能表上，選取**SQL Server 物件總管**(SSOX)。</span><span class="sxs-lookup"><span data-stu-id="5d614-136">From the **View** menu, select **SQL Server Object Explorer** (SSOX).</span></span> 
-* <span data-ttu-id="5d614-137">瀏覽至**(localdb) (SQL Server 13) MSSQLLocalDB**。</span><span class="sxs-lookup"><span data-stu-id="5d614-137">Navigate to **(localdb)MSSQLLocalDB(SQL Server 13)**.</span></span> <span data-ttu-id="5d614-138">以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:</span><span class="sxs-lookup"><span data-stu-id="5d614-138">Right-click on **dbo.AspNetUsers** > **View Data**:</span></span>
+## <a name="test-new-user-registration"></a><span data-ttu-id="3b786-134">測試新的使用者註冊</span><span class="sxs-lookup"><span data-stu-id="3b786-134">Test new user registration</span></span>
+
+<span data-ttu-id="3b786-135">執行應用程式中，選取**註冊**連結，並登錄使用者。</span><span class="sxs-lookup"><span data-stu-id="3b786-135">Run the app, select the **Register** link, and register a user.</span></span> <span data-ttu-id="3b786-136">請依照下列指示執行 Entity Framework Core 移轉。</span><span class="sxs-lookup"><span data-stu-id="3b786-136">Follow the instructions to run Entity Framework Core migrations.</span></span> <span data-ttu-id="3b786-137">此時，只有在電子郵件時才驗證與[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。</span><span class="sxs-lookup"><span data-stu-id="3b786-137">At this point, the only validation on the email is with the [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) attribute.</span></span> <span data-ttu-id="3b786-138">在提交註冊之後, 您登入應用程式。</span><span class="sxs-lookup"><span data-stu-id="3b786-138">After submitting the registration, you are logged into the app.</span></span> <span data-ttu-id="3b786-139">稍後在教學課程中，會更新程式碼，所以新的使用者無法登入，直到他們的電子郵件已通過驗證。</span><span class="sxs-lookup"><span data-stu-id="3b786-139">Later in the tutorial, the code is updated so new users can't log in until their email has been validated.</span></span>
+
+## <a name="view-the-identity-database"></a><span data-ttu-id="3b786-140">檢視識別資料庫</span><span class="sxs-lookup"><span data-stu-id="3b786-140">View the Identity database</span></span>
+
+<span data-ttu-id="3b786-141">請參閱[在 ASP.NET Core MVC 專案中使用的 SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)如需如何檢視 SQLite 資料庫的指示。</span><span class="sxs-lookup"><span data-stu-id="3b786-141">See [Working with SQLite in an ASP.NET Core MVC project](xref:tutorials/first-mvc-app-xplat/working-with-sql) for instructions on how to view the SQLite database.</span></span>
+
+<span data-ttu-id="3b786-142">Visual studio:</span><span class="sxs-lookup"><span data-stu-id="3b786-142">For Visual Studio:</span></span>
+
+* <span data-ttu-id="3b786-143">從**檢視**功能表上，選取**SQL Server 物件總管**(SSOX)。</span><span class="sxs-lookup"><span data-stu-id="3b786-143">From the **View** menu, select **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="3b786-144">瀏覽至**(localdb) (SQL Server 13) MSSQLLocalDB**。</span><span class="sxs-lookup"><span data-stu-id="3b786-144">Navigate to **(localdb)MSSQLLocalDB(SQL Server 13)**.</span></span> <span data-ttu-id="3b786-145">以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:</span><span class="sxs-lookup"><span data-stu-id="3b786-145">Right-click on **dbo.AspNetUsers** > **View Data**:</span></span>
 
 ![SQL Server 物件總管 中的 AspNetUsers 資料表上的內容功能表](accconfirm/_static/ssox.png)
 
-<span data-ttu-id="5d614-140">請注意`EmailConfirmed`欄位是`False`。</span><span class="sxs-lookup"><span data-stu-id="5d614-140">Note the `EmailConfirmed` field is `False`.</span></span>
+<span data-ttu-id="3b786-147">請注意，資料表的`EmailConfirmed`欄位是`False`。</span><span class="sxs-lookup"><span data-stu-id="3b786-147">Note the table's `EmailConfirmed` field is `False`.</span></span>
 
-<span data-ttu-id="5d614-141">您可以在這封電子郵件一次在下一個步驟時使用應用程式會傳送確認電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-141">You might want to use this email again in the next step when the app sends a confirmation email.</span></span> <span data-ttu-id="5d614-142">以滑鼠右鍵按一下資料列，然後選取**刪除**。</span><span class="sxs-lookup"><span data-stu-id="5d614-142">Right-click on the row and select **Delete**.</span></span> <span data-ttu-id="5d614-143">刪除電子郵件別名現在更容易在下列步驟。</span><span class="sxs-lookup"><span data-stu-id="5d614-143">Deleting the email alias now will make it easier in the following steps.</span></span>
-
-# <a name="sqlitetabsqlite"></a>[<span data-ttu-id="5d614-144">SQLite</span><span class="sxs-lookup"><span data-stu-id="5d614-144">SQLite</span></span>](#tab/sqlite)
-
-<span data-ttu-id="5d614-145">請參閱[在 ASP.NET Core MVC 專案中使用的 SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)如需有關如何檢視 SQLite DB 指示。</span><span class="sxs-lookup"><span data-stu-id="5d614-145">See [Working with SQLite in an ASP.NET Core MVC project](xref:tutorials/first-mvc-app-xplat/working-with-sql) for instructions on how to view the SQLite DB.</span></span> 
+<span data-ttu-id="3b786-148">您可以在這封電子郵件一次在下一個步驟時使用應用程式會傳送確認電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-148">You might want to use this email again in the next step when the app sends a confirmation email.</span></span> <span data-ttu-id="3b786-149">以滑鼠右鍵按一下資料列，然後選取**刪除**。</span><span class="sxs-lookup"><span data-stu-id="3b786-149">Right-click on the row and select **Delete**.</span></span> <span data-ttu-id="3b786-150">刪除電子郵件別名容易在下列步驟。</span><span class="sxs-lookup"><span data-stu-id="3b786-150">Deleting the email alias makes it easier in the following steps.</span></span>
 
 ---
 
-## <a name="require-ssl-and-setup-iis-express-for-ssl"></a><span data-ttu-id="5d614-146">需要 SSL 和 SSL 設定 IIS Express</span><span class="sxs-lookup"><span data-stu-id="5d614-146">Require SSL and setup IIS Express for SSL</span></span>
+## <a name="require-https"></a><span data-ttu-id="3b786-151">需要 HTTPS</span><span class="sxs-lookup"><span data-stu-id="3b786-151">Require HTTPS</span></span>
 
-<span data-ttu-id="5d614-147">請參閱[強制 SSL](xref:security/enforcing-ssl)。</span><span class="sxs-lookup"><span data-stu-id="5d614-147">See [Enforcing SSL](xref:security/enforcing-ssl).</span></span>
+<span data-ttu-id="3b786-152">請參閱[需要 HTTPS](xref:security/enforcing-ssl)。</span><span class="sxs-lookup"><span data-stu-id="3b786-152">See [Require HTTPS](xref:security/enforcing-ssl).</span></span>
 
 <a name="prevent-login-at-registration"></a>
-## <a name="require-email-confirmation"></a><span data-ttu-id="5d614-148">需要電子郵件確認</span><span class="sxs-lookup"><span data-stu-id="5d614-148">Require email confirmation</span></span>
+## <a name="require-email-confirmation"></a><span data-ttu-id="3b786-153">需要電子郵件確認</span><span class="sxs-lookup"><span data-stu-id="3b786-153">Require email confirmation</span></span>
 
-<span data-ttu-id="5d614-149">若要確認新的使用者註冊，以確認它們不模擬其他人的電子郵件的最佳作法是 （也就是它們未向其他人的電子郵件）。</span><span class="sxs-lookup"><span data-stu-id="5d614-149">It's a best practice to confirm the email of a new user registration to verify they're not impersonating someone else (that is, they haven't registered with someone else's email).</span></span> <span data-ttu-id="5d614-150">假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com。 」</span><span class="sxs-lookup"><span data-stu-id="5d614-150">Suppose you had a discussion forum, and you wanted to prevent "yli@example.com" from registering as "nolivetto@contoso.com."</span></span> <span data-ttu-id="5d614-151">電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式取得垃圾電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-151">Without email confirmation, "nolivetto@contoso.com" could get unwanted email from your app.</span></span> <span data-ttu-id="5d614-152">假設使用者不小心註冊為 「ylo@example.com"而且未注意到拼字錯誤的 「 yli 」，它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-152">Suppose the user accidentally registered as "ylo@example.com" and hadn't noticed the misspelling of "yli," they wouldn't be able to use password recovery because the app doesn't have their correct email.</span></span> <span data-ttu-id="5d614-153">電子郵件確認從 bot 提供有限的保護，並不會從擁有多的工作電子郵件別名，他們可以使用登錄來決定垃圾提供保護。</span><span class="sxs-lookup"><span data-stu-id="5d614-153">Email confirmation provides only limited protection from bots and doesn't provide protection from determined spammers who have many working email aliases they can use to register.</span></span>
+<span data-ttu-id="3b786-154">最好確認新的使用者註冊的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-154">It's a best practice to confirm the email of a new user registration.</span></span> <span data-ttu-id="3b786-155">確認可協助確認它們不模擬其他人的電子郵件 （也就是它們未向其他人的電子郵件）。</span><span class="sxs-lookup"><span data-stu-id="3b786-155">Email confirmation helps to verify they're not impersonating someone else (that is, they haven't registered with someone else's email).</span></span> <span data-ttu-id="3b786-156">假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com。 」</span><span class="sxs-lookup"><span data-stu-id="3b786-156">Suppose you had a discussion forum, and you wanted to prevent "yli@example.com" from registering as "nolivetto@contoso.com."</span></span> <span data-ttu-id="3b786-157">電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式接收垃圾電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-157">Without email confirmation, "nolivetto@contoso.com" could receive unwanted email from your app.</span></span> <span data-ttu-id="3b786-158">假設使用者不小心註冊為 「ylo@example.com"而且未注意到的"yli 」 的拼字錯誤。</span><span class="sxs-lookup"><span data-stu-id="3b786-158">Suppose the user accidentally registered as "ylo@example.com" and hadn't noticed the misspelling of "yli".</span></span> <span data-ttu-id="3b786-159">它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-159">They wouldn't be able to use password recovery because the app doesn't have their correct email.</span></span> <span data-ttu-id="3b786-160">電子郵件確認從 bot 提供有限的保護。</span><span class="sxs-lookup"><span data-stu-id="3b786-160">Email confirmation provides only limited protection from bots.</span></span> <span data-ttu-id="3b786-161">電子郵件確認不提供保護，防範惡意使用者與多個電子郵件帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b786-161">Email confirmation doesn't provide protection from malicious users with many email accounts.</span></span>
 
-<span data-ttu-id="5d614-154">您通常想要讓新的使用者張貼到您的網站的任何資料之前確認電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-154">You generally want to prevent new users from posting any data to your web site before they have a confirmed email.</span></span> 
+<span data-ttu-id="3b786-162">您通常想要讓新的使用者張貼到您的網站的任何資料之前確認電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-162">You generally want to prevent new users from posting any data to your web site before they have a confirmed email.</span></span>
 
-<span data-ttu-id="5d614-155">更新`ConfigureServices`要求確認電子郵件：</span><span class="sxs-lookup"><span data-stu-id="5d614-155">Update `ConfigureServices` to require a confirmed email:</span></span>
+<span data-ttu-id="3b786-163">更新`ConfigureServices`要求確認電子郵件：</span><span class="sxs-lookup"><span data-stu-id="3b786-163">Update `ConfigureServices` to require a confirmed email:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-156">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-156">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+[!code-csharp[Main](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
 
-[!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=6-9)]
+<span data-ttu-id="3b786-164">`config.SignIn.RequireConfirmedEmail = true;` 防止已註冊的使用者登入，直到確認他們的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-164">`config.SignIn.RequireConfirmedEmail = true;` prevents registered users from logging in until their email is confirmed.</span></span>
 
+### <a name="configure-email-provider"></a><span data-ttu-id="3b786-165">設定電子郵件提供者</span><span class="sxs-lookup"><span data-stu-id="3b786-165">Configure email provider</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-157">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-157">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+<span data-ttu-id="3b786-166">在本教學課程，SendGrid 用來傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-166">In this tutorial, SendGrid is used to send email.</span></span> <span data-ttu-id="3b786-167">您需要 SendGrid 帳戶和金鑰來傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-167">You need a SendGrid account and key to send email.</span></span> <span data-ttu-id="3b786-168">您可以使用其他電子郵件提供者。</span><span class="sxs-lookup"><span data-stu-id="3b786-168">You can use other email providers.</span></span> <span data-ttu-id="3b786-169">ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-169">ASP.NET Core 2.x includes `System.Net.Mail`, which allows you to send email from your app.</span></span> <span data-ttu-id="3b786-170">我們建議您傳送電子郵件使用 SendGrid 或另一個電子郵件服務。</span><span class="sxs-lookup"><span data-stu-id="3b786-170">We recommend you use SendGrid or another email service to send email.</span></span> <span data-ttu-id="3b786-171">SMTP 是難以保護，並正確設定。</span><span class="sxs-lookup"><span data-stu-id="3b786-171">SMTP is difficult to secure and set up correctly.</span></span>
 
-[!code-csharp[Main](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=13-16)]
+<span data-ttu-id="3b786-172">[選項模式](xref:fundamentals/configuration/options)用來存取使用者帳戶和金鑰設定。</span><span class="sxs-lookup"><span data-stu-id="3b786-172">The [Options pattern](xref:fundamentals/configuration/options) is used to access the user account and key settings.</span></span> <span data-ttu-id="3b786-173">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="3b786-173">For more information, see [configuration](xref:fundamentals/configuration/index).</span></span>
 
----
+<span data-ttu-id="3b786-174">建立可擷取保護電子郵件的索引鍵的類別。</span><span class="sxs-lookup"><span data-stu-id="3b786-174">Create a class to fetch the secure email key.</span></span> <span data-ttu-id="3b786-175">此範例中，`AuthMessageSenderOptions`中建立類別*Services/AuthMessageSenderOptions.cs*檔案：</span><span class="sxs-lookup"><span data-stu-id="3b786-175">For this sample, the `AuthMessageSenderOptions` class is created in the *Services/AuthMessageSenderOptions.cs* file:</span></span>
 
- 
-```csharp
-config.SignIn.RequireConfirmedEmail = true;
-```
-<span data-ttu-id="5d614-158">前一行會防止之前確認他們的電子郵件登入已註冊的使用者。</span><span class="sxs-lookup"><span data-stu-id="5d614-158">The preceding line prevents registered users from being logged in until their email is confirmed.</span></span> <span data-ttu-id="5d614-159">不過，該行不讓新的使用者從他們在註冊後登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-159">However, that line doesn't prevent new users from being logged in after they register.</span></span> <span data-ttu-id="5d614-160">它們在註冊後，預設程式碼會登入使用者。</span><span class="sxs-lookup"><span data-stu-id="5d614-160">The default code logs in a user after they register.</span></span> <span data-ttu-id="5d614-161">一旦他們登出他們將無法再次登入之前他們註冊。</span><span class="sxs-lookup"><span data-stu-id="5d614-161">Once they log out, they won't be able to log in again until they register.</span></span> <span data-ttu-id="5d614-162">稍後在教學課程中我們將會變更程式碼，因此新註冊的使用者是**不**登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-162">Later in the tutorial we'll change the code so newly registered user are **not** logged in.</span></span>
+[!code-csharp[Main](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-### <a name="configure-email-provider"></a><span data-ttu-id="5d614-163">設定電子郵件提供者</span><span class="sxs-lookup"><span data-stu-id="5d614-163">Configure email provider</span></span>
+<span data-ttu-id="3b786-176">設定`SendGridUser`和`SendGridKey`與[密碼管理員工具](xref:security/app-secrets)。</span><span class="sxs-lookup"><span data-stu-id="3b786-176">Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](xref:security/app-secrets).</span></span> <span data-ttu-id="3b786-177">例如: </span><span class="sxs-lookup"><span data-stu-id="3b786-177">For example:</span></span>
 
-<span data-ttu-id="5d614-164">在本教學課程，SendGrid 用來傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-164">In this tutorial, SendGrid is used to send email.</span></span> <span data-ttu-id="5d614-165">您需要 SendGrid 帳戶和金鑰來傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-165">You need a SendGrid account and key to send email.</span></span> <span data-ttu-id="5d614-166">您可以使用其他電子郵件提供者。</span><span class="sxs-lookup"><span data-stu-id="5d614-166">You can use other email providers.</span></span> <span data-ttu-id="5d614-167">ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-167">ASP.NET Core 2.x includes `System.Net.Mail`, which allows you to send email from your app.</span></span> <span data-ttu-id="5d614-168">我們建議您傳送電子郵件使用 SendGrid 或另一個電子郵件服務。</span><span class="sxs-lookup"><span data-stu-id="5d614-168">We recommend you use SendGrid or another email service to send email.</span></span> <span data-ttu-id="5d614-169">SMTP 是難以保護，並正確設定。</span><span class="sxs-lookup"><span data-stu-id="5d614-169">SMTP is difficult to secure and set up correctly.</span></span>
-
-<span data-ttu-id="5d614-170">[選項模式](xref:fundamentals/configuration/options)用來存取使用者帳戶和金鑰設定。</span><span class="sxs-lookup"><span data-stu-id="5d614-170">The [Options pattern](xref:fundamentals/configuration/options) is used to access the user account and key settings.</span></span> <span data-ttu-id="5d614-171">如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="5d614-171">For more information, see [configuration](xref:fundamentals/configuration/index).</span></span>
-
-<span data-ttu-id="5d614-172">建立可擷取保護電子郵件的索引鍵的類別。</span><span class="sxs-lookup"><span data-stu-id="5d614-172">Create a class to fetch the secure email key.</span></span> <span data-ttu-id="5d614-173">此範例中，`AuthMessageSenderOptions`中建立類別*Services/AuthMessageSenderOptions.cs*檔案。</span><span class="sxs-lookup"><span data-stu-id="5d614-173">For this sample, the `AuthMessageSenderOptions` class is created in the *Services/AuthMessageSenderOptions.cs* file.</span></span>
-
-[!code-csharp[Main](accconfirm/sample/WebApp1/Services/AuthMessageSenderOptions.cs?name=snippet1)]
-
-<span data-ttu-id="5d614-174">設定`SendGridUser`和`SendGridKey`與[密碼管理員工具](../app-secrets.md)。</span><span class="sxs-lookup"><span data-stu-id="5d614-174">Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-secrets.md).</span></span> <span data-ttu-id="5d614-175">例如: </span><span class="sxs-lookup"><span data-stu-id="5d614-175">For example:</span></span>
-
-```none
+```console
 C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-<span data-ttu-id="5d614-176">在 Windows 中，密碼管理員會儲存您的索引鍵/值組*secrets.json* %APPDATA%/Microsoft/UserSecrets/ < WebAppName userSecretsId > 目錄中的檔案。</span><span class="sxs-lookup"><span data-stu-id="5d614-176">On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file in the %APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId> directory.</span></span>
+<span data-ttu-id="3b786-178">在 Windows 中，密碼管理員存放中的索引鍵/值組*secrets.json*檔案`%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`目錄。</span><span class="sxs-lookup"><span data-stu-id="3b786-178">On Windows, Secret Manager stores keys/value pairs in a *secrets.json* file in the `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` directory.</span></span>
 
-<span data-ttu-id="5d614-177">內容*secrets.json*檔案不會加密。</span><span class="sxs-lookup"><span data-stu-id="5d614-177">The contents of the *secrets.json* file are not encrypted.</span></span> <span data-ttu-id="5d614-178">*Secrets.json*檔案如下所示 (`SendGridKey`已移除值。)</span><span class="sxs-lookup"><span data-stu-id="5d614-178">The *secrets.json* file is shown below (the `SendGridKey` value has been removed.)</span></span>
+<span data-ttu-id="3b786-179">內容*secrets.json*檔案未加密。</span><span class="sxs-lookup"><span data-stu-id="3b786-179">The contents of the *secrets.json* file aren't encrypted.</span></span> <span data-ttu-id="3b786-180">*Secrets.json*檔案如下所示 (`SendGridKey`已移除值。)</span><span class="sxs-lookup"><span data-stu-id="3b786-180">The *secrets.json* file is shown below (the `SendGridKey` value has been removed.)</span></span>
 
-  ```json
+ ```json
   {
     "SendGridUser": "RickAndMSFT",
     "SendGridKey": "<key removed>"
   }
   ```
 
-### <a name="configure-startup-to-use-authmessagesenderoptions"></a><span data-ttu-id="5d614-179">設定要使用 AuthMessageSenderOptions 啟動</span><span class="sxs-lookup"><span data-stu-id="5d614-179">Configure startup to use AuthMessageSenderOptions</span></span>
+### <a name="configure-startup-to-use-authmessagesenderoptions"></a><span data-ttu-id="3b786-181">設定要使用 AuthMessageSenderOptions 啟動</span><span class="sxs-lookup"><span data-stu-id="3b786-181">Configure startup to use AuthMessageSenderOptions</span></span>
 
-<span data-ttu-id="5d614-180">新增`AuthMessageSenderOptions`至結尾處的服務容器`ConfigureServices`方法中的*Startup.cs*檔案：</span><span class="sxs-lookup"><span data-stu-id="5d614-180">Add `AuthMessageSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:</span></span>
+<span data-ttu-id="3b786-182">新增`AuthMessageSenderOptions`至結尾處的服務容器`ConfigureServices`方法中的*Startup.cs*檔案：</span><span class="sxs-lookup"><span data-stu-id="3b786-182">Add `AuthMessageSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-181">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-181">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="3b786-183">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="3b786-183">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-[!code-csharp[Main](accconfirm/sample/WebPW/Startup.cs?name=snippet1&highlight=18)]
+[!code-csharp[Main](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet2&highlight=28)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-182">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-182">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="3b786-184">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="3b786-184">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
 [!code-csharp[Main](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
 
 ---
 
-### <a name="configure-the-authmessagesender-class"></a><span data-ttu-id="5d614-183">設定 AuthMessageSender 類別</span><span class="sxs-lookup"><span data-stu-id="5d614-183">Configure the AuthMessageSender class</span></span>
+### <a name="configure-the-authmessagesender-class"></a><span data-ttu-id="3b786-185">設定 AuthMessageSender 類別</span><span class="sxs-lookup"><span data-stu-id="3b786-185">Configure the AuthMessageSender class</span></span>
 
-<span data-ttu-id="5d614-184">本教學課程示範如何透過電子郵件通知加入[SendGrid](https://sendgrid.com/)，不過您可以傳送電子郵件使用 SMTP 和其他機制。</span><span class="sxs-lookup"><span data-stu-id="5d614-184">This tutorial shows how to add email notifications through [SendGrid](https://sendgrid.com/), but you can send email using SMTP and other mechanisms.</span></span>
+<span data-ttu-id="3b786-186">本教學課程示範如何透過電子郵件通知加入[SendGrid](https://sendgrid.com/)，不過您可以傳送電子郵件使用 SMTP 和其他機制。</span><span class="sxs-lookup"><span data-stu-id="3b786-186">This tutorial shows how to add email notifications through [SendGrid](https://sendgrid.com/), but you can send email using SMTP and other mechanisms.</span></span>
 
-* <span data-ttu-id="5d614-185">安裝`SendGrid`NuGet 封裝。</span><span class="sxs-lookup"><span data-stu-id="5d614-185">Install the `SendGrid` NuGet package.</span></span> <span data-ttu-id="5d614-186">從 [封裝管理員] 主控台中，輸入下列下列命令：</span><span class="sxs-lookup"><span data-stu-id="5d614-186">From the Package Manager Console,  enter the following the following command:</span></span>
+<span data-ttu-id="3b786-187">安裝`SendGrid`NuGet 封裝：</span><span class="sxs-lookup"><span data-stu-id="3b786-187">Install the `SendGrid` NuGet package:</span></span>
 
-  `Install-Package SendGrid`
+* <span data-ttu-id="3b786-188">從命令列：</span><span class="sxs-lookup"><span data-stu-id="3b786-188">From the command line:</span></span>
 
-* <span data-ttu-id="5d614-187">請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)註冊免費的 SendGrid 帳戶。</span><span class="sxs-lookup"><span data-stu-id="5d614-187">See [Get Started with SendGrid for Free](https://sendgrid.com/free/) to register for a free SendGrid account.</span></span>
+    `dotnet add package SendGrid`
 
-#### <a name="configure-sendgrid"></a><span data-ttu-id="5d614-188">設定 SendGrid</span><span class="sxs-lookup"><span data-stu-id="5d614-188">Configure SendGrid</span></span>
+* <span data-ttu-id="3b786-189">從 [封裝管理員] 主控台中，輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="3b786-189">From the Package Manager Console, enter the following command:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-189">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-189">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+ `Install-Package SendGrid`
 
-* <span data-ttu-id="5d614-190">將程式碼中的加入*Services/EmailSender.cs*如下所示設定 SendGrid:</span><span class="sxs-lookup"><span data-stu-id="5d614-190">Add code in *Services/EmailSender.cs* similar to the following to configure SendGrid:</span></span>
+<span data-ttu-id="3b786-190">請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)註冊免費的 SendGrid 帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b786-190">See [Get Started with SendGrid for Free](https://sendgrid.com/free/) to register for a free SendGrid account.</span></span>
 
-[!code-csharp[Main](accconfirm/sample/WebPW/Services/EmailSender.cs)]
+#### <a name="configure-sendgrid"></a><span data-ttu-id="3b786-191">設定 SendGrid</span><span class="sxs-lookup"><span data-stu-id="3b786-191">Configure SendGrid</span></span>
 
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="3b786-192">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="3b786-192">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-191">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-191">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
-* <span data-ttu-id="5d614-192">將程式碼中的加入*Services/MessageServices.cs*如下所示設定 SendGrid:</span><span class="sxs-lookup"><span data-stu-id="5d614-192">Add code in *Services/MessageServices.cs* similar to the following to configure SendGrid:</span></span>
+<span data-ttu-id="3b786-193">若要設定 SendGrid，將類似下列的程式碼加入*Services/EmailSender.cs*:</span><span class="sxs-lookup"><span data-stu-id="3b786-193">To configure SendGrid, add code similar to the following in *Services/EmailSender.cs*:</span></span>
+
+[!code-csharp[Main](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="3b786-194">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="3b786-194">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+* <span data-ttu-id="3b786-195">將程式碼中的加入*Services/MessageServices.cs*如下所示設定 SendGrid:</span><span class="sxs-lookup"><span data-stu-id="3b786-195">Add code in *Services/MessageServices.cs* similar to the following to configure SendGrid:</span></span>
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
 
 ---
 
-## <a name="enable-account-confirmation-and-password-recovery"></a><span data-ttu-id="5d614-193">啟用帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="5d614-193">Enable account confirmation and password recovery</span></span>
+## <a name="enable-account-confirmation-and-password-recovery"></a><span data-ttu-id="3b786-196">啟用帳戶確認和密碼復原</span><span class="sxs-lookup"><span data-stu-id="3b786-196">Enable account confirmation and password recovery</span></span>
 
-<span data-ttu-id="5d614-194">範本的帳戶確認和密碼復原程式碼。</span><span class="sxs-lookup"><span data-stu-id="5d614-194">The template has the code for account confirmation and password recovery.</span></span> <span data-ttu-id="5d614-195">尋找`[HttpPost] Register`方法中的*AccountController.cs*檔案。</span><span class="sxs-lookup"><span data-stu-id="5d614-195">Find the `[HttpPost] Register` method in the  *AccountController.cs* file.</span></span>
+<span data-ttu-id="3b786-197">範本的帳戶確認和密碼復原程式碼。</span><span class="sxs-lookup"><span data-stu-id="3b786-197">The template has the code for account confirmation and password recovery.</span></span> <span data-ttu-id="3b786-198">尋找`OnPostAsync`方法中的*Pages/Account/Register.cshtml.cs*。</span><span class="sxs-lookup"><span data-stu-id="3b786-198">Find the `OnPostAsync` method in *Pages/Account/Register.cshtml.cs*.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-196">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-196">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="3b786-199">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="3b786-199">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="5d614-197">防止新註冊的使用者自動登入註解下列一行：</span><span class="sxs-lookup"><span data-stu-id="5d614-197">Prevent newly registered users from being automatically logged on by commenting out the following line:</span></span>
+<span data-ttu-id="3b786-200">防止新註冊的使用者自動登入註解下列一行：</span><span class="sxs-lookup"><span data-stu-id="3b786-200">Prevent newly registered users from being automatically logged on by commenting out the following line:</span></span>
 
-```csharp 
+```csharp
 await _signInManager.SignInAsync(user, isPersistent: false);
 ```
 
-<span data-ttu-id="5d614-198">反白顯示的已變更的程式行顯示完整的方法：</span><span class="sxs-lookup"><span data-stu-id="5d614-198">The complete method is shown with the changed line highlighted:</span></span>
+<span data-ttu-id="3b786-201">反白顯示的已變更的程式行顯示完整的方法：</span><span class="sxs-lookup"><span data-stu-id="3b786-201">The complete method is shown with the changed line highlighted:</span></span>
 
-[!code-csharp[Main](accconfirm/sample/WebPW/Controllers/AccountController.cs?highlight=19&name=snippet_Register)]
+[!code-csharp[Main](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
 
-<span data-ttu-id="5d614-199">注意： 先前的程式碼將會失敗如果您實作`IEmailSender`並傳送純文字電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-199">Note: The previous code will fail if you implement `IEmailSender` and send a plain text email.</span></span> <span data-ttu-id="5d614-200">請參閱[此問題](https://github.com/aspnet/Home/issues/2152)如需詳細資訊和因應措施。</span><span class="sxs-lookup"><span data-stu-id="5d614-200">See [this issue](https://github.com/aspnet/Home/issues/2152) for more information and a workaround.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="3b786-202">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="3b786-202">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-201">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-201">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
-
-<span data-ttu-id="5d614-202">取消註解的程式碼，若要啟用帳戶確認。</span><span class="sxs-lookup"><span data-stu-id="5d614-202">Uncomment the code to enable account confirmation.</span></span>
+<span data-ttu-id="3b786-203">若要啟用帳戶確認，請取消註解下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="3b786-203">To enable account confirmation, uncomment the following code:</span></span>
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
 
-<span data-ttu-id="5d614-203">注意： 我們正在也防止新註冊的使用者自動登入註解下列一行：</span><span class="sxs-lookup"><span data-stu-id="5d614-203">Note: We're also preventing a newly-registered user from being automatically logged on by commenting out the following line:</span></span>
+<span data-ttu-id="3b786-204">**注意：**程式碼會使得新註冊的使用者無法自動登入註解下列一行：</span><span class="sxs-lookup"><span data-stu-id="3b786-204">**Note:** The code is preventing a newly registered user from being automatically logged on by commenting out the following line:</span></span>
 
-```csharp 
+```csharp
 //await _signInManager.SignInAsync(user, isPersistent: false);
 ```
 
-<span data-ttu-id="5d614-204">取消註解中的程式碼中啟用密碼復原`ForgotPassword`中的動作*Controllers/AccountController.cs*檔案。</span><span class="sxs-lookup"><span data-stu-id="5d614-204">Enable password recovery by uncommenting the code in the `ForgotPassword` action in the *Controllers/AccountController.cs* file.</span></span>
+<span data-ttu-id="3b786-205">取消註解中的程式碼中啟用密碼復原`ForgotPassword`動作*Controllers/AccountController.cs*:</span><span class="sxs-lookup"><span data-stu-id="3b786-205">Enable password recovery by uncommenting the code in the `ForgotPassword` action of *Controllers/AccountController.cs*:</span></span>
 
 [!code-csharp[Main](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=17-23&name=snippet_ForgotPassword)]
 
-<span data-ttu-id="5d614-205">請取消註解中的表單項目*Views/Account/ForgotPassword.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="5d614-205">Uncomment the form element in *Views/Account/ForgotPassword.cshtml*.</span></span> <span data-ttu-id="5d614-206">您可能想要移除`<p> For more information on how to enable reset password ... </p>`項目，其中包含這篇文章的連結。</span><span class="sxs-lookup"><span data-stu-id="5d614-206">You might want to remove the `<p> For more information on how to enable reset password ... </p>` element which contains a link to this article.</span></span>
+<span data-ttu-id="3b786-206">請取消註解中的表單項目*Views/Account/ForgotPassword.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="3b786-206">Uncomment the form element in *Views/Account/ForgotPassword.cshtml*.</span></span> <span data-ttu-id="3b786-207">您可能想要移除`<p> For more information on how to enable reset password ... </p>`元素，其中包含這篇文章的連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-207">You might want to remove the `<p> For more information on how to enable reset password ... </p>` element, which contains a link to this article.</span></span>
 
-[!code-html[Main](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
+[!code-cshtml[Main](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
 
 ---
 
-## <a name="register-confirm-email-and-reset-password"></a><span data-ttu-id="5d614-207">註冊、 確認電子郵件，及重設密碼</span><span class="sxs-lookup"><span data-stu-id="5d614-207">Register, confirm email, and reset password</span></span>
+## <a name="register-confirm-email-and-reset-password"></a><span data-ttu-id="3b786-208">註冊、 確認電子郵件，及重設密碼</span><span class="sxs-lookup"><span data-stu-id="3b786-208">Register, confirm email, and reset password</span></span>
 
-<span data-ttu-id="5d614-208">執行 web 應用程式，並測試的帳戶確認和密碼復原流程。</span><span class="sxs-lookup"><span data-stu-id="5d614-208">Run the web app, and test the account confirmation and password recovery flow.</span></span>
+<span data-ttu-id="3b786-209">執行 web 應用程式，並測試的帳戶確認和密碼復原流程。</span><span class="sxs-lookup"><span data-stu-id="3b786-209">Run the web app, and test the account confirmation and password recovery flow.</span></span>
 
-* <span data-ttu-id="5d614-209">執行應用程式並註冊新的使用者</span><span class="sxs-lookup"><span data-stu-id="5d614-209">Run the app and register a new user</span></span>
+* <span data-ttu-id="3b786-210">執行應用程式並註冊新的使用者</span><span class="sxs-lookup"><span data-stu-id="3b786-210">Run the app and register a new user</span></span>
 
  ![Web 應用程式註冊帳戶檢視](accconfirm/_static/loginaccconfirm1.png)
 
-* <span data-ttu-id="5d614-211">請檢查您的帳戶確認連結的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-211">Check your email for the account confirmation link.</span></span> <span data-ttu-id="5d614-212">請參閱[偵錯電子郵件](#debug)如果您未收到電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-212">See [Debug email](#debug) if you don't get the email.</span></span>
-* <span data-ttu-id="5d614-213">按一下連結，以確認您的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-213">Click the link to confirm your email.</span></span>
-* <span data-ttu-id="5d614-214">登入您的電子郵件和密碼。</span><span class="sxs-lookup"><span data-stu-id="5d614-214">Log in with your email and password.</span></span>
-* <span data-ttu-id="5d614-215">登出。</span><span class="sxs-lookup"><span data-stu-id="5d614-215">Log off.</span></span>
+* <span data-ttu-id="3b786-212">請檢查您的帳戶確認連結的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-212">Check your email for the account confirmation link.</span></span> <span data-ttu-id="3b786-213">請參閱[偵錯電子郵件](#debug)如果您未收到電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-213">See [Debug email](#debug) if you don't get the email.</span></span>
+* <span data-ttu-id="3b786-214">按一下連結，以確認您的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-214">Click the link to confirm your email.</span></span>
+* <span data-ttu-id="3b786-215">登入您的電子郵件和密碼。</span><span class="sxs-lookup"><span data-stu-id="3b786-215">Log in with your email and password.</span></span>
+* <span data-ttu-id="3b786-216">登出。</span><span class="sxs-lookup"><span data-stu-id="3b786-216">Log off.</span></span>
 
-### <a name="view-the-manage-page"></a><span data-ttu-id="5d614-216">檢視 [管理] 頁面</span><span class="sxs-lookup"><span data-stu-id="5d614-216">View the manage page</span></span>
+### <a name="view-the-manage-page"></a><span data-ttu-id="3b786-217">檢視 [管理] 頁面</span><span class="sxs-lookup"><span data-stu-id="3b786-217">View the manage page</span></span>
 
-<span data-ttu-id="5d614-217">在瀏覽器中選取您的使用者名稱：![瀏覽器視窗中使用的使用者名稱](accconfirm/_static/un.png)</span><span class="sxs-lookup"><span data-stu-id="5d614-217">Select your user name in the browser: ![browser window with user name](accconfirm/_static/un.png)</span></span>
+<span data-ttu-id="3b786-218">在瀏覽器中選取您的使用者名稱：![瀏覽器視窗中使用的使用者名稱](accconfirm/_static/un.png)</span><span class="sxs-lookup"><span data-stu-id="3b786-218">Select your user name in the browser: ![browser window with user name](accconfirm/_static/un.png)</span></span>
 
-<span data-ttu-id="5d614-218">您可能需要展開以查看使用者名稱導覽列。</span><span class="sxs-lookup"><span data-stu-id="5d614-218">You might need to expand the navbar to see user name.</span></span>
+<span data-ttu-id="3b786-219">您可能需要展開以查看使用者名稱導覽列。</span><span class="sxs-lookup"><span data-stu-id="3b786-219">You might need to expand the navbar to see user name.</span></span>
 
 ![導覽列](accconfirm/_static/x.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="5d614-220">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5d614-220">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="3b786-221">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="3b786-221">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="5d614-221">[管理] 頁面會顯示與**設定檔**選取的索引標籤。</span><span class="sxs-lookup"><span data-stu-id="5d614-221">The manage page is displayed with the **Profile** tab selected.</span></span> <span data-ttu-id="5d614-222">**電子郵件**顯示核取方塊，指出電子郵件已確認。</span><span class="sxs-lookup"><span data-stu-id="5d614-222">The **Email** shows a check box indicating the email has been confirmed.</span></span> 
+<span data-ttu-id="3b786-222">[管理] 頁面會顯示與**設定檔**選取的索引標籤。</span><span class="sxs-lookup"><span data-stu-id="3b786-222">The manage page is displayed with the **Profile** tab selected.</span></span> <span data-ttu-id="3b786-223">**電子郵件**顯示核取方塊，指出電子郵件已確認。</span><span class="sxs-lookup"><span data-stu-id="3b786-223">The **Email** shows a check box indicating the email has been confirmed.</span></span>
 
 ![管理頁面](accconfirm/_static/rick2.png)
 
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="3b786-225">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="3b786-225">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="5d614-224">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="5d614-224">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
-
-<span data-ttu-id="5d614-225">稍後在本教學課程中，我們將討論此頁面。</span><span class="sxs-lookup"><span data-stu-id="5d614-225">We'll talk about this page later in the tutorial.</span></span>
-<span data-ttu-id="5d614-226">![管理頁面](accconfirm/_static/rick2.png)</span><span class="sxs-lookup"><span data-stu-id="5d614-226">![manage page](accconfirm/_static/rick2.png)</span></span>
+<span data-ttu-id="3b786-226">這是稍後在本教學課程中所述。</span><span class="sxs-lookup"><span data-stu-id="3b786-226">This is mentioned later in the tutorial.</span></span>
+<span data-ttu-id="3b786-227">![管理頁面](accconfirm/_static/rick2.png)</span><span class="sxs-lookup"><span data-stu-id="3b786-227">![manage page](accconfirm/_static/rick2.png)</span></span>
 
 ---
 
-### <a name="test-password-reset"></a><span data-ttu-id="5d614-227">測試密碼重設</span><span class="sxs-lookup"><span data-stu-id="5d614-227">Test password reset</span></span>
+### <a name="test-password-reset"></a><span data-ttu-id="3b786-228">測試密碼重設</span><span class="sxs-lookup"><span data-stu-id="3b786-228">Test password reset</span></span>
 
-* <span data-ttu-id="5d614-228">如果您登入，選取**登出**。</span><span class="sxs-lookup"><span data-stu-id="5d614-228">If you're logged in, select **Logout**.</span></span>  
-* <span data-ttu-id="5d614-229">選取**登入**連結，並選取**忘記密碼？**連結。</span><span class="sxs-lookup"><span data-stu-id="5d614-229">Select the **Log in** link and select the **Forgot your password?** link.</span></span>
-* <span data-ttu-id="5d614-230">輸入您用來註冊帳戶的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-230">Enter the email you used to register the account.</span></span>
-* <span data-ttu-id="5d614-231">將會傳送一封電子郵件以重設密碼的連結。</span><span class="sxs-lookup"><span data-stu-id="5d614-231">An email with a link to reset your password will be sent.</span></span> <span data-ttu-id="5d614-232">請檢查您的電子郵件並按一下連結以重設密碼。</span><span class="sxs-lookup"><span data-stu-id="5d614-232">Check your email and click the link to reset your password.</span></span>  <span data-ttu-id="5d614-233">已成功重設您的密碼之後，您可以使用您的電子郵件和新密碼登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-233">After your password has been successfully reset, you can login with your email and new password.</span></span>
+* <span data-ttu-id="3b786-229">如果您登入，選取**登出**。</span><span class="sxs-lookup"><span data-stu-id="3b786-229">If you're logged in, select **Logout**.</span></span>
+* <span data-ttu-id="3b786-230">選取**登入**連結，並選取**忘記密碼？**連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-230">Select the **Log in** link and select the **Forgot your password?** link.</span></span>
+* <span data-ttu-id="3b786-231">輸入您用來註冊帳戶的電子郵件。</span><span class="sxs-lookup"><span data-stu-id="3b786-231">Enter the email you used to register the account.</span></span>
+* <span data-ttu-id="3b786-232">會傳送一封電子郵件以重設密碼的連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-232">An email with a link to reset your password is sent.</span></span> <span data-ttu-id="3b786-233">請檢查您的電子郵件並按一下連結以重設密碼。</span><span class="sxs-lookup"><span data-stu-id="3b786-233">Check your email and click the link to reset your password.</span></span> <span data-ttu-id="3b786-234">已成功重設您的密碼之後，您可以登入您的電子郵件和新密碼。</span><span class="sxs-lookup"><span data-stu-id="3b786-234">After your password has been successfully reset, you can log in with your email and new password.</span></span>
 
 <a name="debug"></a>
 
-### <a name="debug-email"></a><span data-ttu-id="5d614-234">偵錯電子郵件</span><span class="sxs-lookup"><span data-stu-id="5d614-234">Debug email</span></span>
+### <a name="debug-email"></a><span data-ttu-id="3b786-235">偵錯電子郵件</span><span class="sxs-lookup"><span data-stu-id="3b786-235">Debug email</span></span>
 
-<span data-ttu-id="5d614-235">如果您無法取得電子郵件工作：</span><span class="sxs-lookup"><span data-stu-id="5d614-235">If you can't get email working:</span></span>
+<span data-ttu-id="3b786-236">如果您無法取得電子郵件工作：</span><span class="sxs-lookup"><span data-stu-id="3b786-236">If you can't get email working:</span></span>
 
-* <span data-ttu-id="5d614-236">檢閱[電子郵件 」 活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。</span><span class="sxs-lookup"><span data-stu-id="5d614-236">Review the [Email Activity](https://sendgrid.com/docs/User_Guide/email_activity.html) page.</span></span>
-* <span data-ttu-id="5d614-237">請檢查垃圾郵件資料夾。</span><span class="sxs-lookup"><span data-stu-id="5d614-237">Check your spam folder.</span></span>
-* <span data-ttu-id="5d614-238">請嘗試不同的電子郵件提供者 （Microsoft、 Yahoo、 Gmail 等等） 上的另一個電子郵件別名</span><span class="sxs-lookup"><span data-stu-id="5d614-238">Try another email alias on a different email provider (Microsoft, Yahoo, Gmail, etc.)</span></span>
-* <span data-ttu-id="5d614-239">建立[主控台應用程式傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)。</span><span class="sxs-lookup"><span data-stu-id="5d614-239">Create a [console app to send email](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).</span></span>
-* <span data-ttu-id="5d614-240">請嘗試傳送到不同的電子郵件帳戶。</span><span class="sxs-lookup"><span data-stu-id="5d614-240">Try sending to different email accounts.</span></span>
+* <span data-ttu-id="3b786-237">建立[主控台應用程式傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)。</span><span class="sxs-lookup"><span data-stu-id="3b786-237">Create a [console app to send email](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).</span></span>
+* <span data-ttu-id="3b786-238">檢閱[電子郵件 」 活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。</span><span class="sxs-lookup"><span data-stu-id="3b786-238">Review the [Email Activity](https://sendgrid.com/docs/User_Guide/email_activity.html) page.</span></span>
+* <span data-ttu-id="3b786-239">請檢查垃圾郵件資料夾。</span><span class="sxs-lookup"><span data-stu-id="3b786-239">Check your spam folder.</span></span>
+* <span data-ttu-id="3b786-240">請嘗試不同的電子郵件提供者 （Microsoft、 Yahoo、 Gmail 等等） 上的另一個電子郵件別名</span><span class="sxs-lookup"><span data-stu-id="3b786-240">Try another email alias on a different email provider (Microsoft, Yahoo, Gmail, etc.)</span></span>
+* <span data-ttu-id="3b786-241">請嘗試傳送到不同的電子郵件帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b786-241">Try sending to different email accounts.</span></span>
 
-<span data-ttu-id="5d614-241">**注意：**安全性最佳作法是不要使用實際執行測試和開發中的機密資料。</span><span class="sxs-lookup"><span data-stu-id="5d614-241">**Note:** A security best practice is to not use production secrets in test and development.</span></span> <span data-ttu-id="5d614-242">如果您將應用程式發行至 Azure 時，您可以設定 SendGrid 密碼做為 Azure Web 應用程式入口網站中的應用程式設定。</span><span class="sxs-lookup"><span data-stu-id="5d614-242">If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal.</span></span> <span data-ttu-id="5d614-243">組態系統是以讀取環境變數中的索引鍵的安裝程式。</span><span class="sxs-lookup"><span data-stu-id="5d614-243">The configuration system is setup to read keys from environment variables.</span></span>
+<span data-ttu-id="3b786-242">**安全性最佳作法**是**不**使用生產環境中測試和開發的密碼。</span><span class="sxs-lookup"><span data-stu-id="3b786-242">**A security best practice** is to **not** use production secrets in test and development.</span></span> <span data-ttu-id="3b786-243">如果您將應用程式發行至 Azure 時，您可以設定 SendGrid 密碼做為 Azure Web 應用程式入口網站中的應用程式設定。</span><span class="sxs-lookup"><span data-stu-id="3b786-243">If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal.</span></span> <span data-ttu-id="3b786-244">設定系統設定來讀取環境變數中的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="3b786-244">The configuration system is set up to read keys from environment variables.</span></span>
 
-## <a name="prevent-login-at-registration"></a><span data-ttu-id="5d614-244">避免在註冊的登入</span><span class="sxs-lookup"><span data-stu-id="5d614-244">Prevent login at registration</span></span>
+## <a name="combine-social-and-local-login-accounts"></a><span data-ttu-id="3b786-245">結合社交和本機登入帳戶</span><span class="sxs-lookup"><span data-stu-id="3b786-245">Combine social and local login accounts</span></span>
 
-<span data-ttu-id="5d614-245">目前的範本，一旦使用者完成註冊表單中，使用者要登入 （驗證）。</span><span class="sxs-lookup"><span data-stu-id="5d614-245">With the current templates, once a user completes the registration form, they're logged in (authenticated).</span></span> <span data-ttu-id="5d614-246">您通常想要確認他們的電子郵件才能加以登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-246">You generally want to confirm their email before logging them in.</span></span> <span data-ttu-id="5d614-247">下方區段中，我們將會修改程式碼，需要使用者正在登入之前，新的使用者有確認電子郵件。</span><span class="sxs-lookup"><span data-stu-id="5d614-247">In the section below, we will modify the code to require new users have a confirmed email before they're logged in.</span></span> <span data-ttu-id="5d614-248">更新`[HttpPost] Login`中的動作*AccountController.cs*下列反白顯示變更的檔案。</span><span class="sxs-lookup"><span data-stu-id="5d614-248">Update the `[HttpPost] Login` action in the *AccountController.cs* file with the following highlighted changes.</span></span>
+<span data-ttu-id="3b786-246">若要完成本章節，您必須先啟用外部驗證提供者。</span><span class="sxs-lookup"><span data-stu-id="3b786-246">To complete this section, you must first enable an external authentication provider.</span></span> <span data-ttu-id="3b786-247">請參閱[啟用驗證使用 Facebook、 Google、 和其他外部提供者](social/index.md)。</span><span class="sxs-lookup"><span data-stu-id="3b786-247">See [Enabling authentication using Facebook, Google, and other external providers](social/index.md).</span></span>
 
-[!code-csharp[Main](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=11-21&name=snippet_Login)]
-
-<span data-ttu-id="5d614-249">**注意：**安全性最佳作法是不要使用實際執行測試和開發中的機密資料。</span><span class="sxs-lookup"><span data-stu-id="5d614-249">**Note:** A security best practice is to not use production secrets in test and development.</span></span> <span data-ttu-id="5d614-250">如果您將應用程式發行至 Azure 時，您可以設定 SendGrid 密碼做為 Azure Web 應用程式入口網站中的應用程式設定。</span><span class="sxs-lookup"><span data-stu-id="5d614-250">If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal.</span></span> <span data-ttu-id="5d614-251">組態系統是以讀取環境變數中的索引鍵的安裝程式。</span><span class="sxs-lookup"><span data-stu-id="5d614-251">The configuration system is setup to read keys from environment variables.</span></span>
-
-
-## <a name="combine-social-and-local-login-accounts"></a><span data-ttu-id="5d614-252">結合社交和本機登入帳戶</span><span class="sxs-lookup"><span data-stu-id="5d614-252">Combine social and local login accounts</span></span>
-
-<span data-ttu-id="5d614-253">注意： 本節僅適用於 ASP.NET Core 1.x。</span><span class="sxs-lookup"><span data-stu-id="5d614-253">Note: This section applies only to ASP.NET Core 1.x.</span></span> <span data-ttu-id="5d614-254">適用於 ASP.NET Core 2.x，請參閱[這](https://github.com/aspnet/Docs/issues/3753)問題。</span><span class="sxs-lookup"><span data-stu-id="5d614-254">For ASP.NET Core 2.x, see [this](https://github.com/aspnet/Docs/issues/3753) issue.</span></span>
-
-<span data-ttu-id="5d614-255">若要完成本章節，您必須先啟用外部驗證提供者。</span><span class="sxs-lookup"><span data-stu-id="5d614-255">To complete this section, you must first enable an external authentication provider.</span></span> <span data-ttu-id="5d614-256">請參閱[啟用驗證使用 Facebook、 Google 和其他外部提供者](social/index.md)。</span><span class="sxs-lookup"><span data-stu-id="5d614-256">See [Enabling authentication using Facebook, Google and other external providers](social/index.md).</span></span>
-
-<span data-ttu-id="5d614-257">您可以結合本機和社交帳戶按一下電子郵件連結。</span><span class="sxs-lookup"><span data-stu-id="5d614-257">You can combine local and social accounts by clicking on your email link.</span></span> <span data-ttu-id="5d614-258">以下列順序，在"RickAndMSFT@gmail.com"第一次建立為本機的登入; 不過，您可以為社交登入，請先建立帳戶，然後加入本機的登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-258">In the following sequence, "RickAndMSFT@gmail.com" is first created as a local login; however, you can create the account as a social login first, then add a local login.</span></span>
+<span data-ttu-id="3b786-248">您可以結合本機和社交帳戶按一下電子郵件連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-248">You can combine local and social accounts by clicking on your email link.</span></span> <span data-ttu-id="3b786-249">以下列順序，在"RickAndMSFT@gmail.com"第一次建立為本機的登入; 不過，您可以為社交登入，請先建立帳戶，然後加入本機的登入。</span><span class="sxs-lookup"><span data-stu-id="3b786-249">In the following sequence, "RickAndMSFT@gmail.com" is first created as a local login; however, you can create the account as a social login first, then add a local login.</span></span>
 
 ![Web 應用程式：RickAndMSFT@gmail.com已驗證的使用者](accconfirm/_static/rick.png)
 
-<span data-ttu-id="5d614-260">按一下**管理**連結。</span><span class="sxs-lookup"><span data-stu-id="5d614-260">Click on the **Manage** link.</span></span> <span data-ttu-id="5d614-261">請注意 0 外部 （社交登入） 與此帳戶相關聯。</span><span class="sxs-lookup"><span data-stu-id="5d614-261">Note the 0 external (social logins) associated with this account.</span></span>
+<span data-ttu-id="3b786-251">按一下**管理**連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-251">Click on the **Manage** link.</span></span> <span data-ttu-id="3b786-252">請注意 0 外部 （社交登入） 與此帳戶相關聯。</span><span class="sxs-lookup"><span data-stu-id="3b786-252">Note the 0 external (social logins) associated with this account.</span></span>
 
 ![管理檢視](accconfirm/_static/manage.png)
 
-<span data-ttu-id="5d614-263">按一下連結以另一個登入服務，並接受要求的應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d614-263">Click the link to another login service and accept the app requests.</span></span> <span data-ttu-id="5d614-264">在下面的影像中，Facebook 會是外部驗證提供者：</span><span class="sxs-lookup"><span data-stu-id="5d614-264">In the image below, Facebook is the external authentication provider:</span></span>
+<span data-ttu-id="3b786-254">按一下連結以另一個登入服務，並接受要求的應用程式。</span><span class="sxs-lookup"><span data-stu-id="3b786-254">Click the link to another login service and accept the app requests.</span></span> <span data-ttu-id="3b786-255">在下圖中，Facebook 會是外部驗證提供者：</span><span class="sxs-lookup"><span data-stu-id="3b786-255">In the following image, Facebook is the external authentication provider:</span></span>
 
 ![管理您列出 Facebook 的外部登入檢視](accconfirm/_static/fb.png)
 
-<span data-ttu-id="5d614-266">已合併兩個帳戶。</span><span class="sxs-lookup"><span data-stu-id="5d614-266">The two accounts have been combined.</span></span> <span data-ttu-id="5d614-267">您可以使用任一個帳戶登入。</span><span class="sxs-lookup"><span data-stu-id="5d614-267">You will be able to log on with either account.</span></span> <span data-ttu-id="5d614-268">您可能會想讓使用者加入本機帳戶，以防使用者社交的記錄檔中驗證服務已關閉，或可能比較他們遺失了存取其社交帳戶。</span><span class="sxs-lookup"><span data-stu-id="5d614-268">You might want your users to add local accounts in case their social log in authentication service is down, or more likely they've lost access to their social account.</span></span>
+<span data-ttu-id="3b786-257">已合併兩個帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b786-257">The two accounts have been combined.</span></span> <span data-ttu-id="3b786-258">也可以使用任一個帳戶登入。</span><span class="sxs-lookup"><span data-stu-id="3b786-258">You are able to log on with either account.</span></span> <span data-ttu-id="3b786-259">您可能想要其社交登入驗證服務已關閉，或可能比較他們遺失了存取其社交帳戶加入本機帳戶使用者。</span><span class="sxs-lookup"><span data-stu-id="3b786-259">You might want your users to add local accounts in case their social login authentication service is down, or more likely they've lost access to their social account.</span></span>
+
+## <a name="enable-account-confirmation-after-a-site-has-users"></a><span data-ttu-id="3b786-260">啟用帳戶確認之後某個網站的使用者</span><span class="sxs-lookup"><span data-stu-id="3b786-260">Enable account confirmation after a site has users</span></span>
+
+<span data-ttu-id="3b786-261">啟用帳戶確認站台的使用者與鎖定所有現有的使用者。</span><span class="sxs-lookup"><span data-stu-id="3b786-261">Enabling account confirmation on a site with users locks out all the existing users.</span></span> <span data-ttu-id="3b786-262">現有的使用者遭到鎖定，因為未確認他們的帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b786-262">Existing users are locked out because their accounts aren't confirmed.</span></span> <span data-ttu-id="3b786-263">若要暫時解決結束使用者鎖定，請使用下列方法之一：</span><span class="sxs-lookup"><span data-stu-id="3b786-263">To work around exiting user lockout, use one of the following approaches:</span></span>
+
+* <span data-ttu-id="3b786-264">更新將標示為正在確認的所有現有使用者資料庫</span><span class="sxs-lookup"><span data-stu-id="3b786-264">Update the database to mark all existing users as being confirmed</span></span>
+* <span data-ttu-id="3b786-265">請確認現有的使用者。</span><span class="sxs-lookup"><span data-stu-id="3b786-265">Confirm exiting users.</span></span> <span data-ttu-id="3b786-266">例如，批次傳送電子郵件以確認連結。</span><span class="sxs-lookup"><span data-stu-id="3b786-266">For example, batch-send emails with confirmation links.</span></span>

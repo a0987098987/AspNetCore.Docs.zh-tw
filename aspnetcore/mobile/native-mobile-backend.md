@@ -1,5 +1,5 @@
 ---
-title: "建立原生行動應用程式的後端服務"
+title: "建立原生行動裝置應用程式的後端服務"
 author: ardalis
 description: 
 manager: wpickett
@@ -10,40 +10,40 @@ ms.technology: aspnet
 ms.topic: article
 uid: mobile/native-mobile-backend
 ms.openlocfilehash: ff09f331cff5cca7b42fa89bff55c0ed5c7d82f4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="creating-backend-services-for-native-mobile-applications"></a>建立原生行動應用程式的後端服務
+# <a name="creating-backend-services-for-native-mobile-applications"></a>建立原生行動裝置應用程式的後端服務
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
-行動裝置應用程式可以輕鬆地進行通訊與 ASP.NET Core 後端服務。
+行動裝置應用程式可以輕鬆的與 ASP.NET Core 後端服務進行通訊。
 
-[檢視或下載後端服務程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[檢視或下載簡易後端服務程式碼範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
-## <a name="the-sample-native-mobile-app"></a>範例原生行動應用程式
+## <a name="the-sample-native-mobile-app"></a>原生行動應用程式範例
 
-本教學課程會示範如何建立使用 ASP.NET Core MVC 支援原生行動應用程式的後端服務。 它會使用[Xamarin Forms ToDoRest 應用程式](https://developer.xamarin.com/guides/xamarin-forms/web-services/consuming/rest/)為其原生用戶端，包括 Android、 iOS、 Windows 通用和 Windows Phone 裝置的個別原生用戶端。 您可以依照連結的教學課程，若要建立原生應用程式 （並安裝所需的免費 Xamarin 工具），以及下載 Xamarin 範例方案。 Xamarin 範例包含 ASP.NET Web API 2 services 專案，這篇文章 ASP.NET Core 應用程式取代 （用戶端所需的任何變更）。
+本教學課程會示範如何使用 ASP.NET Core MVC 建立後端服務，以支援原生行動裝置應用程式。 它會使用 [Xamarin Forms ToDoRest 應用程式](https://developer.xamarin.com/guides/xamarin-forms/web-services/consuming/rest/) 作為其原生用戶端，其包含了適用於 Android、iOS、Windows 通用，以及 Windows Phone 裝置的個別原生用戶端。 您可以遵循連結的教學課程來建立原生應用程式 (並安裝必要的免費 Xamarin 工具)，也可以下載 Xamarin 範例解決方案。 Xamarin 範例包含了 ASP.NET Web API 2 服務專案。該專案已由此文章的 ASP.NET Core 應用程式取代 (但用戶端不需要進行任何變更)。
 
-![若要執行的 Rest 應用程式在 Android 手機上執行](native-mobile-backend/_static/todo-android.png)
+![To Do Rest 應用程式在 Android 智慧型手機上執行](native-mobile-backend/_static/todo-android.png)
 
 ### <a name="features"></a>功能
 
-ToDoRest 應用程式支援清單、 加入、 刪除和更新待辦項目。 每個項目有識別碼、 名稱、 提示和屬性，指出是否已完成尚未。
+ToDoRest 應用程式支援列出、新增、刪除和更新待辦項目。 每個項目都有識別碼、名稱、記事和標示其是否已完成的屬性。
 
-主要檢視的項目，如上所示，列出每個項目名稱，並指出它透過核取記號。
+項目的主要檢視，如上所示，會列出每個項目的名稱，並使用勾選記號表示其是否已完成。
 
-點選`+`圖示會開啟 [新增項目] 對話方塊：
+點選 `+` 圖示便會開啟 [新增項目] 對話方塊：
 
-![新增項目 對話方塊](native-mobile-backend/_static/todo-android-new-item.png)
+![[新增項目] 對話方塊](native-mobile-backend/_static/todo-android-new-item.png)
 
-點選 [主要清單] 畫面上的項目會開啟編輯對話方塊，其中的項目名稱、 提示和完成的設定，您可以修改，或者刪除項目：
+在主要清單畫面中點選項目，便會開啟 [編輯] 對話方塊，讓使用者修改項目的名稱、記事及完成狀態，或是刪除該項目：
 
 ![[編輯項目] 對話方塊](native-mobile-backend/_static/todo-android-edit-item.png)
 
-這個範例會使用後端服務裝載於 developer.xamarin.com，允許唯讀作業的預設設定。 若要測試自己對您的電腦上執行的下一節中所建立的 ASP.NET Core 應用程式，您將需要更新的應用程式`RestUrl`常數。 瀏覽至`ToDoREST`專案，並開啟*Constants.cs*檔案。 取代`RestUrl`具有 URL，其中包含您的電腦 IP 位址 （不 localhost 或 127.0.0.1，因為此位址是使用從裝置模擬器，不是從您的電腦）。 包含連接埠號碼 (5000)。 若要測試您的服務使用的裝置，請確定您沒有使用中防火牆封鎖這個連接埠的存取。
+這個範例根據預設已設定為使用託管於 developer.xamarin.com 上的後端服務，允許唯讀操作。 若要自行測試您在下一個章節建立的，於您的電腦上執行的 ASP.NET Core 應用程式，您必須更新應用程式的 `RestUrl` 常數。 巡覽至 `ToDoREST` 專案並開啟 *Constants.cs* 檔案。 將 `RestUrl` 取代為包含您電腦 IP 位址的 URL (不是 localhost 或 127.0.0.1，因為這些位址僅用於裝置模擬器，而非您的電腦)。 在其中包含連接埠號碼 (5000)。 為了測試您的服務可以在裝置上運作，請確認您沒有作用中的防火牆正在封鎖此連接埠的存取。
 
 ```csharp
 // URL of REST service (Xamarin ReadOnly Service)
@@ -55,102 +55,102 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>建立 ASP.NET Core 專案
 
-Visual Studio 中建立新的 ASP.NET Core Web 應用程式。 選擇 Web API 範本和非驗證。 將專案命名*ToDoApi*。
+在 Visual Studio 中建立新的 ASP.NET Core Web 應用程式。 選擇 [Web API template] (Web API 範本) 及 [No Authentication] (無驗證)。 將專案命名為 *ToDoApi*。
 
-![新的 ASP.NET Web 應用程式 對話方塊，以選取的 Web API 專案範本](native-mobile-backend/_static/web-api-template.png)
+![新的 ASP.NET Web 應用程式對話方塊，當中已選取了 Web API 專案範本](native-mobile-backend/_static/web-api-template.png)
 
-應用程式應該回應建立到 5000 之間的所有要求。 更新*Program.cs*包含`.UseUrls("http://*:5000")`為了達成此目的：
+應用程式現在應該會回應所有傳送到連接埠 5000 的要求。 更新 *Program.cs*，使其包含 `.UseUrls("http://*:5000")`。若要完成這項操作：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Program.cs?range=10-16&highlight=3)]
 
 > [!NOTE]
-> 請確定您執行應用程式直接管理，而不是後置 IIS Express，預設情況下忽略非本機要求。 執行`dotnet run`從命令提示字元，或從 Visual Studio 工具列中的偵錯目標下拉式清單中選擇應用程式名稱設定檔。
+> 請確定您是直接執行應用程式，而非在 IIS Express 之後執行，因為其根據預設會忽略所有非本機的要求。 在命令提示字元中執行 `dotnet run`，或從 Visual Studio 工具列的 [偵錯目標] 下拉式功能表中選擇應用程式名稱設定檔。
 
-將模型類別來代表待辦項目。 標記所需的欄位使用`[Required]`屬性：
+新增一個模型類別來代表待辦項目。 使用 `[Required]` 屬性來標記必要欄位：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
-API 方法需要某種方式來處理資料。 使用相同`IToDoRepository`介面原始 Xamarin 範例會使用：
+API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使用的相同 `IToDoRepository` 介面：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
 
-此範例中，實作只會使用私用集合的項目：
+此範例中，實作只會使用私用項目集合：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
-設定中的實作*Startup.cs*:
+設定 *Startup.cs* 中的實作：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
 
-此時，您可以建立*ToDoItemsController*。
+此時，您已準備就緒可建立 *ToDoItemsController*。
 
 > [!TIP]
-> 了解有關建立多個 web 應用程式開發介面中的[建置您第一個 Web 應用程式開發介面使用 ASP.NET Core MVC 和 Visual Studio](../tutorials/first-web-api.md)。
+> 在[使用 ASP.NET Core MVC 及 Visual Studio 建置您的第一個 Web API](../tutorials/first-web-api.md) 中深入了解建立 Web API。
 
 ## <a name="creating-the-controller"></a>建立控制器
 
-將新的控制站新增至專案， *ToDoItemsController*。 它應該是繼承自 Microsoft.AspNetCore.Mvc.Controller。 新增`Route`屬性來指出控制器將會處理做為開頭的路徑的要求`api/todoitems`。 `[controller]`路由中的權杖會由控制器的名稱取代 (省略`Controller`尾碼)，並對全域路由來說特別有用。 深入了解[路由](../fundamentals/routing.md)。
+將新的控制器新增到專案，*ToDoItemsController*。 它應該繼承自 Microsoft.AspNetCore.Mvc.Controller。 新增一個 `Route` 屬性來表示控制器將會處理所有傳送到以 `api/todoitems` 開頭之路徑的要求。 路由中的 `[controller]` 權杖會由控制器的名稱取代 (省略 `Controller` 尾碼)，特別在全域路由時將會非常有幫助。 深入了解[路由](../fundamentals/routing.md)。
 
-控制器必須`IToDoRepository`至函式，請要求此類型透過控制站的建構函式的執行個體。 在執行階段，這個執行個體將會提供使用 framework 支援的[相依性插入](../fundamentals/dependency-injection.md)。
+控制器需要一個 `IToDoRepository` 才能發揮功能，請在控制器的建構函式中要求此類型的執行個體。 在執行階段，這個執行個體會使用架構的[相依性插入](../fundamentals/dependency-injection.md)支援提供。
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=1-17&highlight=9,14)]
 
-這個 API 支援四種不同的 HTTP 動詞命令，以資料來源上執行 CRUD （建立、 讀取、 更新、 刪除） 作業。 這些最簡單的是對應至 HTTP GET 要求的 「 讀取 」 操作。
+這個 API 支援四種不同的 HTTP 動詞命令來在資料來源上執行 CRUD (建立、讀取、更新、刪除) 作業。 其中最簡單的便是「讀取」作業，其對應到 HTTP GET 要求。
 
 ### <a name="reading-items"></a>讀取項目
 
-要求的項目清單會在 GET 要求來完成`List`方法。 `[HttpGet]`屬性`List`方法會指出此動作，才應該處理 GET 要求。 此動作的路由為控制器上指定的路由。 您不一定需要的動作名稱做為路由的一部分。 您只需要確保每個動作都有唯一且明確的路由。 路由的屬性可以套用在控制器和方法層級，來建立特定的路由。
+您可以藉由對 `List` 方法傳送 GET 要求來要求項目清單。 `List` 方法上的 `[HttpGet]` 屬性表示這項動作應該僅用於處理 GET 要求。 此動作的路由為在控制器上指定的路由。 您不見得需要使用動作名稱作為路由的一部分。 您只需要確認每個動作都有一個唯一且明確的路由。 路由屬性可套用在控制器和方法層級上，以建置特定的路由。
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
 
-`List`方法會傳回 200 OK 回應程式碼和所有 ToDo 項目，序列化為 JSON。
+`List` 方法會傳回一個 200 OK 回應碼，以及所有已序列化為 JSON 的待辦項目。
 
-您可以測試您新的應用程式開發介面方法，使用各種工具，例如[郵差](https://www.getpostman.com/docs/)，如下所示：
+您可以使用各種不同的工具測試您的新 API 方法，例如 [Postman](https://www.getpostman.com/docs/)，如這裡所示：
 
-![郵差主控台顯示 todoitems 和顯示三個項目，傳回的 JSON 回應主體的 GET 要求](native-mobile-backend/_static/postman-get.png)
+![Postman 主控台會顯示針對待辦項目的 GET 要求，以及顯示傳回了三個項目之 JSON 的回應主體](native-mobile-backend/_static/postman-get.png)
 
 ### <a name="creating-items"></a>建立項目
 
-依照慣例，建立新資料的項目會對應至 HTTP POST 動詞命令。 `Create`方法有`[HttpPost]`屬性套用至其中，並接受`ToDoItem`執行個體。 因為`item`引數會傳遞給在 post 要求主體中，這個參數以裝飾`[FromBody]`屬性。
+根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create` 方法套用了一個 `[HttpPost]` 屬性，並且接受一個 `ToDoItem` 執行個體。 由於 `item` 引數會在 POST 主體中傳遞，此參數會使用 `[FromBody]` 屬性進行修飾。
 
-在方法內，會檢查有效性和資料存放區中的預先存在的項目，如果不發生任何問題，就會加入使用儲存機制。 檢查`ModelState.IsValid`執行[模型驗證](../mvc/models/validation.md)，而且應該在每個應用程式開發介面方法可接受使用者輸入。
+在方法中，項目會經過有效性的檢查，以及是否先前存在過資料存放區中。若沒有發現任何問題，則該項目便會新增至存放庫中。 檢查 `ModelState.IsValid` 會執行 [模型驗證](../mvc/models/validation.md)，並且應該要在每個接受使用者輸入的 API 方法中執行。
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=25-46)]
 
-此範例會使用列舉，包含錯誤代碼會傳遞給行動用戶端：
+此範例使用了一個包含了傳遞給行動裝置用戶端錯誤代碼的列舉：
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=91-99)]
 
-測試加入新項目使用郵差選擇 POST 動詞命令，提供要求主體中的 JSON 格式中的新物件。 您也應該將要求標頭，指定`Content-Type`的`application/json`。
+藉由選擇 POST 動詞並在要求主體中使用 JSON 格式提供新物件，來使用 Postman 測試新增新項目。 您也應該新增一個要求標頭，將 `Content-Type` 指定為 `application/json`。
 
-![郵差主控台顯示 POST 和回應](native-mobile-backend/_static/postman-post.png)
+![Postman 主控台顯示 POST 及回應](native-mobile-backend/_static/postman-post.png)
 
 方法會在回應中傳回新建立的項目。
 
-### <a name="updating-items"></a>更新的項目
+### <a name="updating-items"></a>更新項目
 
-修改記錄使用 HTTP PUT 要求。 這項變更，以外`Edit`方法是幾乎完全相同`Create`。 請注意，如果找不到記錄、`Edit`動作將會傳回`NotFound`(404) 回應。
+修改記錄會使用到 HTTP PUT 要求。 除了這項變更之外，`Edit` 方法與 `Create` 方法基本上都完全相同。 請注意，若找不到記錄，`Edit` 動作會傳回一個 `NotFound` (404) 回應。
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=48-69)]
 
-若要測試郵差，變更 PUT 動詞命令。 要求主體中指定更新的物件資料。
+若要使用 Postman 進行測試，請將動詞變更為 PUT。 在要求主體中指定更新物件資料。
 
-![郵差主控台顯示 PUT 和回應](native-mobile-backend/_static/postman-put.png)
+![Postman 主控台顯示 PUT 及回應](native-mobile-backend/_static/postman-put.png)
 
-這個方法會傳回`NoContent`(204) 回應成功時，與現有的應用程式開發介面的一致性。
+這個方法會在成功時傳回一個 `NoContent` (204) 回應 (為了與先前存在的 API 保持一致)。
 
 ### <a name="deleting-items"></a>刪除項目
 
-刪除資料錄被透過對服務進行的 DELETE 要求，並傳遞要刪除的項目 ID。 使用更新時，會收到不存在之項目的要求時`NotFound`回應。 否則，成功的要求將會得到`NoContent`(204) 回應。
+刪除記錄可透過傳送 DELETE 要求到服務，並傳遞要刪除之項目的識別碼來完成。 與更新時一樣，若要求項目不存在，使用者便會接收到 `NotFound` 回應。 否則，成功的要求會取得一個 `NoContent` (204) 回應。
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=71-88)]
 
-請注意，在測試時的刪除功能，執行任何動作都需要在要求主體。
+請注意，當測試刪除功能時，要求主體中不需要任何內容。
 
-![郵差主控台顯示的刪除和回應](native-mobile-backend/_static/postman-delete.png)
+![Postman 主控台顯示 DELETE 及回應](native-mobile-backend/_static/postman-delete.png)
 
-## <a name="common-web-api-conventions"></a>常見的 Web API 慣例
+## <a name="common-web-api-conventions"></a>常見 Web API 慣例
 
-當您開發應用程式後端服務時，您會想要的一組一致的慣例或處理跨碼橫切入顧慮的原則。 例如，如上所示，在服務中要求的特定記錄，找不到接收`NotFound`回應，而非`BadRequest`回應。 同樣地，對這項服務的繫結的模型類型一律檢查傳入的命令`ModelState.IsValid`並傳回`BadRequest`無效的模型型別。
+當您為您的應用程式開發後端服務時，您可能會想要想出一個一致的慣例組或原則來處理跨領域關注。 例如，在上述的服務中，要求找不到的特定記錄會讓使用者接收到 `NotFound` 回應，而非 `BadRequest` 回應。 同樣地，傳送到此服務的命令在傳遞到模型繫結類型時，也會檢查 `ModelState.IsValid`並針對無效的模型類型傳回 `BadRequest`。
 
-一旦您已經為您的應用程式開發介面識別通用的原則，您可以通常封裝在[篩選](../mvc/controllers/filters.md)。 深入了解[如何封裝 ASP.NET Core MVC 應用程式中常見的 API 原則](https://msdn.microsoft.com/magazine/mt767699.aspx)。
+當您找到了適用於您 API 的常見原則時，您通常可以在[篩選條件](../mvc/controllers/filters.md)中封裝它。 深入了解[如何在 ASP.NET Core MVC 應用程式中封裝常見的 API 原則](https://msdn.microsoft.com/magazine/mt767699.aspx)。

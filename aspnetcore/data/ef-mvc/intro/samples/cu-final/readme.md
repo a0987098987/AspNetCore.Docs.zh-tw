@@ -1,11 +1,11 @@
 # <a name="contoso-university-sample-app"></a>Contoso 大學範例應用程式
 
-Contoso 大學示範如何使用 Entity Framework Core ASP.NET Core MVC web 應用程式中。
+Contoso 大學將示範如何在 ASP.NET Core MVC Web 應用程式中使用 Entity Framework Core。
 
-## <a name="build-it-from-scratch"></a>從頭開始建置它
+## <a name="build-it-from-scratch"></a>從頭開始建置
 
-您可以建置應用程式中的步驟[一系列的教學課程](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)。
+您可以遵循[一系列教學課程](https://docs.microsoft.com/aspnet/core/data/ef-mvc/intro)中的步驟來建置應用程式。
 
-## <a name="download-it"></a>下載該套件
+## <a name="download-it"></a>下載
 
-下載[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)從 GitHub 下載或再製[aspnet/文件儲存機制](https://github.com/aspnet/Docs)以及巡覽至`aspnetcore\data\ef-mvc\intro\samples\cu-final`本機檔案系統中。  下載專案之後, 輸入來建立資料庫`dotnet ef database update`在命令列提示字元。 或者，您可以使用**Package Manager Console** -如需詳細資訊，請參閱[vs 命令列介面 (CLI)。Package Manager Console (PMC)](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#command-line-interface-cli-vs-package-manager-console-pmc)。
+從 GitHub 下載或複製 [aspnet/Docs 存放庫](https://github.com/aspnet/Docs)，並巡覽至本機檔案系統中的 `aspnetcore\data\ef-mvc\intro\samples\cu-final`，以下載[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。  下載專案之後，請在命令列提示字元輸入 `dotnet ef database update` 來建立資料庫。 或者，您可以使用**套件管理員主控台** -- 如需詳細資訊，請參閱[命令列介面 (CLI) 與套件管理員主控台 (PMC)](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#command-line-interface-cli-vs-package-manager-console-pmc)。

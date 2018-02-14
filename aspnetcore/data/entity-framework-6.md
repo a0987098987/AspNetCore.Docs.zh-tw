@@ -1,7 +1,7 @@
 ---
-title: "開始使用 ASP.NET Core 與 Entity Framework 6"
+title: "ASP.NET Core 與 Entity Framework 6 使用者入門"
 author: tdykstra
-description: "本文示範如何使用 Entity Framework 6 ASP.NET Core 應用程式中。"
+description: "本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。"
 manager: wpickett
 ms.author: tdykstra
 ms.date: 02/24/2017
@@ -10,87 +10,87 @@ ms.technology: aspnet
 ms.topic: article
 uid: data/entity-framework-6
 ms.openlocfilehash: 7407fe8a976978d7d5077d5e5ac6cc264565621d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>開始使用 ASP.NET Core 與 Entity Framework 6
+# <a name="getting-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
-由[Paweł Grudzień](https://github.com/pgrudzien12)， [Damien Pontifex](https://github.com/DamienPontifex)，和[Tom Dykstra](https://github.com/tdykstra)
+作者：[Paweł Grudzień](https://github.com/pgrudzien12)、[Damien Pontifex](https://github.com/DamienPontifex) 和 [Tom Dykstra](https://github.com/tdykstra)
 
-本文示範如何使用 Entity Framework 6 ASP.NET Core 應用程式中。
+本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
 
 ## <a name="overview"></a>總覽
 
-若要使用 Entity Framework 6，您的專案具有.NET Framework，根據編譯為 Entity Framework 6 不支援.NET Core。 如果您需要跨平台功能必須升級至[Entity Framework Core](https://docs.microsoft.com/ef/)。
+若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](https://docs.microsoft.com/ef/)。
 
-使用 Entity Framework 6 ASP.NET Core 應用程式中的建議的方式是將 EF6 內容和類別庫中的模型類別專案的目標為完整 framework。 加入 ASP.NET Core 專案中的類別庫的參考。 請參閱範例[EF6 和 ASP.NET Core 專案與 Visual Studio 方案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)。
+在 ASP.NET Core 應用程式中使用 Entity Framework 6 的建議方式是，將 EF6 內容和模型類別置於目標為完整 Framework 的類別庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
 
-您無法暫停 EF6 內容 ASP.NET Core 專案中，因為.NET Core 專案不支援的所有功能，例如命令 EF6 *Enable-migrations*需要。
+您無法將 EF6 內容置於 ASP.NET Core 專案中，因為 .NET Core 專案不支援 EF6 命令 (例如 *Enable-Migrations*) 需要的所有功能。
 
-不論您找出 EF6 內容的專案類型、 EF6 命令列工具使用 EF6 內容。 例如，`Scaffold-DbContext`僅供以 Entity Framework Core。 如果您需要執行 EF6 模型反向工程的資料庫，請參閱[Code First 到現有的資料庫](https://msdn.microsoft.com/jj200620)。
+不論您放置 EF6 內容的專案類型為何，只有 EF6 命令列工具才適用於 EF6 內容。 例如，`Scaffold-DbContext` 僅可用於 Entity Framework Core。 如果您需要執行資料庫到 EF6 模型的還原工程，請參閱[Code First to an Existing Database](https://msdn.microsoft.com/jj200620) (現有資料庫的 Code First)。
 
-## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>參考完整的 framework 和 EF6 ASP.NET Core 專案中
+## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>在 ASP.NET Core 專案中參考完整 Framework 和 EF6
 
-您的 ASP.NET Core 專案必須參考.NET framework 和 EF6。 例如， *.csproj* ASP.NET Core 專案檔看起來類似下列範例 （顯示檔案相關的部分）。
+您的 ASP.NET Core 專案必須參考 .NET Framework 和 EF6。 例如，ASP.NET Core 專案的 *.csproj* 檔案看起來類似下列範例 (只顯示檔案的相關部分)。
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
-建立新專案時，使用**ASP.NET Core Web 應用程式 (.NET Framework)**範本。
+建立新專案時，請使用 **ASP.NET Core Web 應用程式 (.NET Framework)** 範本。
 
 ## <a name="handle-connection-strings"></a>處理連接字串
 
-EF6 命令列工具，您將使用 EF6 類別庫專案中需要預設建構函式，因此它們可以具現化內容。 但是，您可能會想要指定連接字串，在 ASP.NET Core 專案中，在此情況下使用內容的建構函式必須要有可讓您在連接字串中傳遞的參數。 以下是範例。
+您將在 EF6 類別庫專案中使用的 EF6 命令列工具需要預設建構函式，因此它們可以具現化內容。 但是，您可能想要指定連接字串以用於 ASP.NET Core 專案；在此情況下，內容建構函式必須要有可讓您以連接字串傳遞的參數。 範例如下。
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContext.cs?name=snippet_Constructor)]
 
-因為 EF6 內容沒有無參數建構函式，必須提供實作 EF6 專案[IDbContextFactory](https://msdn.microsoft.com/library/hh506876)。 EF6 命令列工具會尋找並使用該實作，因此它們可以具現化內容。 以下是範例。
+因為 EF6 內容沒有無參數建構函式，您的 EF6 專案必須提供 [IDbContextFactory](https://msdn.microsoft.com/library/hh506876) 的實作。 EF6 命令列工具將尋找並使用該實作，因此它們可以具現化內容。 範例如下。
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContextFactory.cs?name=snippet_IDbContextFactory)]
 
-在此範例程式碼，`IDbContextFactory`硬式編碼的連接字串中傳遞實作。 這是命令列工具將使用的連接字串。 您要實作以確保類別庫會使用相同的連接字串呼叫的應用程式所使用的策略。 例如，您可以從這兩個專案中的環境變數取得值。
+在此範例程式碼中，`IDbContextFactory` 實作將以硬式編碼的連接字串傳遞。 這是命令列工具將使用的連接字串。 您需要實作策略，以確保類別庫使用的連接字串與呼叫端應用程式所使用的連接字串相同。 例如，您可以在這兩個專案中從環境變數取得值。
 
 ## <a name="set-up-dependency-injection-in-the-aspnet-core-project"></a>設定 ASP.NET Core 專案中的相依性插入
 
-在核心專案的*Startup.cs*檔案，在中設定相依性插入 (DI) 的 EF6 內容`ConfigureServices`。 應該範圍內的每個要求存留期的 EF 內容物件。
+在 Core 專案的 *Startup.cs* 檔案中，在 `ConfigureServices` 內設定相依性插入 (DI) 的 EF6 內容。 EF 內容物件的範圍應該設為每個要求的存留期。
 
 [!code-csharp[](entity-framework-6/sample/MVCCore/Startup.cs?name=snippet_ConfigureServices&highlight=5)]
 
-然後就可以內容的執行個體中的控制站使用 DI。 程式碼會類似於您要撰寫 EF 核心內容：
+然後，您就可以使用 DI，在控制器中取得內容的執行個體。 此程式碼類似於您將針對 EF Core 內容撰寫的程式碼：
 
 [!code-csharp[](entity-framework-6/sample/MVCCore/Controllers/StudentsController.cs?name=snippet_ContextInController)]
 
 ## <a name="sample-application"></a>範例應用程式
 
-可用的範例應用程式，請參閱[範例 Visual Studio 方案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)，本文章。
+如需可用的範例應用程式，請參閱本文所隨附的 [Visual Studio 方案範例 ](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)。
 
-此範例可以從頭開始建立由 Visual Studio 中的下列步驟：
+此範例可以透過 Visual Studio 中的下列步驟從頭開始建立：
 
 * 建立方案。
 
-* **加入新的專案 > 網路 > ASP.NET Core Web 應用程式 (.NET Framework)**
+* **[新增專案] > [網路] > [ASP.NET Core Web 應用程式 (.NET Framework)]**
 
-* **加入新的專案 > 的傳統 Windows 桌面 > 類別庫 (.NET Framework)**
+* **[新增專案] > [Windows 傳統桌面] > [類別庫 (.NET Framework)]**
 
-* 在**Package Manager Console** (PMC) 這兩個專案中，執行命令`Install-Package Entityframework`。
+* 在這兩個專案的 [套件管理員主控台] (PMC) 中，執行 `Install-Package Entityframework` 命令。
 
-* 在類別庫專案中，建立資料模型類別和內容類別的實作`IDbContextFactory`。
+* 在類別庫專案中，建立資料模型類別和內容類別，以及 `IDbContextFactory` 的實作。
 
-* 在類別庫專案的 PMC，執行命令`Enable-Migrations`和`Add-Migration Initial`。 如果您已經設定 ASP.NET Core 專案為啟始專案，加入`-StartupProjectName EF6`這些命令。
+* 在類別庫專案的 PMC 中，執行 `Enable-Migrations` 和 `Add-Migration Initial` 命令。 如果您已設定 ASP.NET Core 專案作為啟始專案，請將 `-StartupProjectName EF6` 新增至這些命令。
 
-* 在 [核心] 專案中，加入類別庫專案的專案參考。
+* 在 Core 專案中，將專案參考新增至類別庫專案中。
 
-* 在核心專案中，在*Startup.cs*，DI 註冊內容。
+* 在 Core 專案的 *Startup.cs* 中，登錄 DI 的內容。
 
-* 在核心專案中，在*appsettings.json*，加入連接字串。
+* 在 Core 專案的 *appsettings.json* 中，新增連接字串。
 
-* 在 [核心] 專案中，加入控制器，並確認您可以讀取和寫入資料的檢視表。 （請注意，ASP.NET Core MVC scaffolding 不會使用 EF6 內容類別庫的參考。）
+* 在 Core 專案中，新增控制器和檢視，以確認您可以讀取和寫入資料。 (請注意，ASP.NET Core MVC Scaffolding 不會使用參考自類別庫的 EF6 內容。)
 
 ## <a name="summary"></a>總結
 
-本文提供的基本指導方針 ASP.NET Core 應用程式中使用 Entity Framework 6。
+本文針對在 ASP.NET Core 應用程式中使用 Entity Framework 6 提供了基本指導方針。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Entity Framework 的程式碼為基礎的設定](https://msdn.microsoft.com/data/jj680699.aspx)
+* [Entity Framework - Code-Based Configuration](https://msdn.microsoft.com/data/jj680699.aspx) (Entity Framework - 以程式碼為基礎的組態)

@@ -1,1 +1,1 @@
-Contoso 大學 web 應用程式示範如何建立使用 EF 核心和 Visual Studio 的 Razor 頁面 web 應用程式。 教學課程系列的相關資訊，請參閱[第一個教學課程](xref:data/ef-rp/intro)。
+Contoso 大學 Web 應用程式將示範如何以 EF Core 和 Visual Studio 來建立 Razor 頁面 Web 應用程式。 如需教學課程系列的資訊，請參閱[第一個教學課程](xref:data/ef-rp/intro)。

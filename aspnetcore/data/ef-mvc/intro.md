@@ -31,7 +31,7 @@ EF Core 2.0 是 EF 的最新版本，但還未包括所有 EF 6.x 的功能。 �
 
 > [!NOTE]
 > * 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
-> * 如需本教學課程的 Visual Studio 2015 版本，請參閱 [PDF 格式的 VS 2015 版本 ASP.NET 核心文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)。
+> * 如需本教學課程的 Visual Studio 2015 版本，請參閱[PDF 格式的 VS 2015 版本 ASP.NET Core 文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -74,7 +74,7 @@ EF Core 2.0 是 EF 的最新版本，但還未包括所有 EF 6.x 的功能。 �
 
 * 選取 [ASP.NET Core 2.0] 及 [Web Application (Model-View-Controller] (Web 應用程式 (模型-檢視-控制器)) 範本。
 
-  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 及更新版本；請確認您選取的不是 [ASP.NET Core 1.1]。
+  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
 
 * 確認 [驗證] 已設為 [No Authentication] (無驗證)。
 

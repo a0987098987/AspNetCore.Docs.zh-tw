@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 自訂以原則為基礎的授權"
+title: "在 ASP.NET Core 原則為基礎的授權"
 author: rick-anderson
-description: "了解如何建立及使用自訂授權原則的處理常式來強制執行的 ASP.NET Core 應用程式中的授權需求。"
+description: "了解如何建立和使用授權原則的處理常式來強制執行的 ASP.NET Core 應用程式中的授權需求。"
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,21 +10,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/policies
-ms.openlocfilehash: 0eb5451828a51771d9388c2db610ede6231ced51
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a9ee7e6fd06fa88485d7f578a9df74cbf87d9540
+ms.sourcegitcommit: 7ee6e7582421195cbd675355c970d3d292ee668d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="custom-policy-based-authorization"></a>以原則為基礎的自訂授權
+# <a name="policy-based-authorization"></a>以原則為基礎的授權
 
 基本上，[角色為基礎的授權](xref:security/authorization/roles)和[宣告型授權](xref:security/authorization/claims)使用需求、 要求處理常式和預先設定的原則。 這些建置組塊支援程式碼中的授權評估的運算式。 結果會是更豐富、 可重複使用、 可測試性授權結構。
 
-授權原則是由一或多個需求所組成。 在將它註冊為授權服務的組態，`ConfigureServices`方法`Startup`類別：
+授權原則是由一或多個需求所組成。 在將它註冊為授權服務的組態，`Startup.ConfigureServices`方法：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63,72)]
 
-在上述範例中，會建立 「 AtLeast21 」 原則。 它有一個需求的最低存在時間，其提供做為參數的需求。
+在上述範例中，會建立 「 AtLeast21 」 原則。 它有一個需求&mdash;的最低存在時間，提供做為參數的需求。
 
 原則適用於使用`[Authorize]`原則名稱的屬性。 例如: 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="requirements"></a>需求
 
-授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。 在我們的 「 AtLeast21 」 原則的需求是單一參數&mdash;的最低存在時間。 需求實作`IAuthorizationRequirement`，這是空白標記的介面。 參數化的最低年齡要求實作，如下所示：
+授權需求是原則可以用來評估目前的使用者主體的資料參數的集合。 在我們的 「 AtLeast21 」 原則的需求是單一參數&mdash;的最低存在時間。 需求實作[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空白標記的介面。 參數化的最低年齡要求實作，如下所示：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
@@ -43,15 +43,27 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="authorization-handlers"></a>授權的處理常式
 
-授權處理常式負責需求之屬性的評估。 授權的處理常式會評估需求，提供對`AuthorizationHandlerContext`來判斷是否允許存取。 可以有一項需求[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式繼承`AuthorizationHandler<T>`，其中`T`是要處理的需求。
+授權處理常式負責需求之屬性的評估。 授權的處理常式會評估需求，提供對[AuthorizationHandlerContext](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext)來判斷是否允許存取。
+
+可以有一項需求[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式可能會繼承[AuthorizationHandler\<TRequirement >](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1)，其中`TRequirement`是要處理的需求。 或者，處理常式可能會實作[IAuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler)來處理多個類型的需求。
+
+### <a name="use-a-handler-for-one-requirement"></a>使用的一項需求的處理常式
 
 <a name="security-authorization-handler-example"></a>
 
-最短使用期限處理常式可能如下所示：
+最短使用期限處理常式會利用一個需求是一對一關聯性的範例如下：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/MinimumAgeHandler.cs?name=snippet_MinimumAgeHandlerClass)]
 
-上述程式碼會判斷目前的使用者主體已宣告已知且受信任的簽發者所發出的出生日期。 宣告遺漏時，無法進行授權，在此情況下會傳回已完成的工作。 當宣告存在時，會計算使用者的年齡。 如果使用者符合此需求所定義的最低存在時間，授權會被視為成功。 當授權是否成功，`context.Succeed`用來叫用做為參數的滿足需求。
+上述程式碼會判斷目前的使用者主體已宣告已知且受信任的簽發者所發出的出生日期。 宣告遺漏時，無法進行授權，在此情況下會傳回已完成的工作。 當宣告存在時，會計算使用者的年齡。 如果使用者符合此需求所定義的最低存在時間，授權會被視為成功。 當授權是否成功，`context.Succeed`以滿足需求做為其唯一參數叫用。
+
+### <a name="use-a-handler-for-multiple-requirements"></a>使用多個需求的處理常式
+
+權限的處理常式會利用三個需求的一對多關聯性的範例如下：
+
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/PermissionHandler.cs?name=snippet_PermissionHandlerClass)]
+
+上述程式碼會周遊[PendingRequirements](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.pendingrequirements#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_PendingRequirements)&mdash;標記為成功不包含要求的屬性。 如果使用者具有讀取權限，他或她必須是擁有者或贊助者來存取要求的資源。 如果使用者編輯或刪除權限，他或她必須存取要求之資源的擁有者。 當授權是否成功，`context.Succeed`以滿足需求做為其唯一參數叫用。
 
 <a name="security-authorization-policies-based-handler-registration"></a>
 
@@ -73,7 +85,7 @@ ms.lasthandoff: 01/30/2018
 
 * 若要保證失敗，即使其他需求的處理常式會成功，呼叫`context.Fail`。
 
-不論您呼叫您的處理常式內，將原則需要需求時呼叫之需求的所有處理常式。 這可讓具有副作用，例如記錄，就會一律進行需求即使`context.Fail()`已經在另一個處理常式中呼叫。
+當設定為`false`、 [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性 （可在 ASP.NET Core 1.1 及更新版本） short-circuits 的處理常式執行時`context.Fail`呼叫。 `InvokeHandlersAfterFailure` 預設為`true`，在此情況下會呼叫所有的處理常式。 這可讓以產生副作用，例如記錄，一律會發生需求即使`context.Fail`已經在另一個處理常式中呼叫。
 
 <a name="security-authorization-policies-based-multiple-handlers"></a>
 

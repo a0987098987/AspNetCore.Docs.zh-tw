@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 5891b236306cd3790cbba14919796d6aa894ad53
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f9e986c34f41fe96beb492680106f725bc1e2f9
+ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Razor 頁面單位和整合測試 ASP.NET Core
 
@@ -71,7 +71,7 @@ dotnet test
 | ------------------ | ----------- |
 | *IntegrationTests* | <ul><li>*IndexPageTest.cs*包含索引頁的整合測試。</li><li>*TestFixture.cs*建立測試訊息的應用程式的測試主機。</li></ul> |
 | *UnitTests*        | <ul><li>*DataAccessLayerTest.cs* DAL 包含單元測試。</li><li>*IndexPageTest.cs*包含單元測試，索引頁面模型。</li></ul> |
-| *公用程式*        | *Utilities.cs*包含:<ul><li>`TestingDbContextOptions`用來建立新的資料庫內容的每個 DAL 單元測試的選項，使資料庫重設為其基準條件，針對每個測試方法。</li><li>`GetRequestContentAsync`方法可用來準備`HttpClient`和整合測試期間傳送至訊息的應用程式要求的內容。</li></ul>
+| *公用程式*        | *Utilities.cs*包含:<ul><li>`TestingDbContextOptions` 用來建立新的資料庫內容的每個 DAL 單元測試的選項，使資料庫重設為其基準條件，針對每個測試方法。</li><li>`GetRequestContentAsync` 方法可用來準備`HttpClient`和整合測試期間傳送至訊息的應用程式要求的內容。</li></ul>
 
 測試架構是[xUnit](https://xunit.github.io/)。 模擬架構的物件是[Moq](https://github.com/moq/moq4)。 搜尋整合測試都會使用[ASP.NET Core 測試主機](xref:testing/integration-testing#the-test-host)。
 
@@ -102,7 +102,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
-使用`DbContextOptions`DAL 單元測試可讓每個測試，以自動執行全新的資料庫執行個體：
+使用`DbContextOptions`DAL 單元測試可讓與全新資料庫的執行個體以不可分割方式執行每個測試：
 
 ```csharp
 using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
@@ -176,7 +176,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/UnitTests/IndexPageTest.cs?name=snippet2)]
 
-`IndexPage`頁面模型`OnGetAsync`方法 (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*):
+`IndexPage` 頁面模型`OnGetAsync`方法 (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*):
 
 [!code-csharp[Main](razor-pages-testing/sample/src/RazorPagesTestingSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -212,7 +212,7 @@ using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
 * 對應用程式中的 POST 要求。
 * 檢查回應重新導向至索引頁面。
 
-`Post_AddMessageHandler_ReturnsRedirectToRoot `方法 (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*):
+`Post_AddMessageHandler_ReturnsRedirectToRoot ` 方法 (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*):
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs?name=snippet2)]
 

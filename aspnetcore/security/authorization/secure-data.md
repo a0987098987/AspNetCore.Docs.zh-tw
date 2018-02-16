@@ -1,7 +1,7 @@
 ---
 title: "建立 ASP.NET Core 應用程式與受保護的授權的使用者資料"
 author: rick-anderson
-description: "了解如何建立 Razor 頁面的應用程式與受保護的授權的使用者資料。 包含 SSL、 驗證、 安全性、 ASP.NET Core 身分識別。"
+description: "了解如何建立 Razor 頁面的應用程式與受保護的授權的使用者資料。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。"
 manager: wpickett
 ms.author: riande
 ms.date: 01/24/2018
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 6333082a2b2b4f6d3f1ce2afc600b4203a0f5dca
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: e186adef2e72f852543a92ddce0e82be2a3bcd12
+ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/03/2018
 
 [!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`這是使用者的識別碼，從`AspNetUser`資料表中[識別](xref:security/authentication/identity)資料庫。 `Status`欄位可讓您判斷是否為一般使用者可以檢視連絡人。
+`OwnerID` 這是使用者的識別碼，從`AspNetUser`資料表中[識別](xref:security/authentication/identity)資料庫。 `Status`欄位可讓您判斷是否為一般使用者可以檢視連絡人。
 
 建立新的移轉，並更新資料庫：
 
@@ -96,7 +96,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="require-ssl-and-authenticated-users"></a>需要 SSL 和已驗證的使用者
+### <a name="require-https-and-authenticated-users"></a>需要 HTTPS 和已驗證的使用者
 
 新增[IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment)至`Startup`:
 
@@ -104,19 +104,26 @@ dotnet ef database update
 
 在`ConfigureServices`方法*Startup.cs* file、 add [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute)授權篩選條件：
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=19-999)]
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=10-999)]
 
-如果您使用 Visual Studio，請啟用 SSL。
+如果您使用 Visual Studio，請啟用 HTTPS。
 
-若要將 HTTP 要求重新導向至 HTTPS，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。 如果您是使用 Visual Studio 程式碼，或在本機的平台上測試，不包含測試憑證，針對 SSL:
+若要將 HTTP 要求重新導向至 HTTPS，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。 若您是使用 Visual Studio 程式碼，或在本機的平台上測試，不包含測試憑證，為 HTTPS:
 
   設定`"LocalTest:skipSSL": true`中*appsettings。Developement.json*檔案。
 
 ### <a name="require-authenticated-users"></a>需要已驗證的使用者
 
-設定為需要驗證使用者的預設驗證原則。 您可以選擇不使用 Razor 頁面、 控制器或動作的方法層級驗證`[AllowAnonymous]`屬性。 設定為需要驗證使用者的預設驗證原則能保護新加入的 Razor 頁面和控制站。 具有所需的預設驗證比上新的控制站及 Razor 頁面，以包含安全`[Authorize]`屬性。 將下列內容加入`ConfigureServices`方法*Startup.cs*檔案：
+設定為需要驗證使用者的預設驗證原則。 您可以選擇不使用 Razor 頁面、 控制器或動作的方法層級驗證`[AllowAnonymous]`屬性。 設定為需要驗證使用者的預設驗證原則能保護新加入的 Razor 頁面和控制站。 具有所需的預設驗證比上新的控制站及 Razor 頁面，以包含安全`[Authorize]`屬性。 
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=31-999)]
+與驗證，所有使用者的需求[AuthorizeFolder](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizefolder?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_AuthorizeFolder_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_String_System_String_)和[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage?view=aspnetcore-2.0)呼叫並非必要項。
+
+更新`ConfigureServices`以下列變更：
+
+* 標記為註解`AuthorizeFolder`和`AuthorizePage`。
+* 設定為需要驗證使用者的預設驗證原則。
+
+[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=23-27,31-999)]
 
 新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引，因此他們註冊之前，匿名使用者可以取得站台的相關資訊的相關，以及連絡頁面。 
 
@@ -155,11 +162,11 @@ dotnet user-secrets set SeedUserPW <PW>
 `ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)如果目前已驗證的使用者是連絡人的擁有者。 授權的處理常式通常：
 
 * 傳回`context.Succeed`有符合的需求。
-* 傳回`Task.CompletedTask`時並不符合需求。 `Task.CompletedTask`都不成功或失敗&mdash;它可讓執行其他授權的處理常式。
+* 傳回`Task.CompletedTask`時並不符合需求。 `Task.CompletedTask` 都不成功或失敗&mdash;它可讓執行其他授權的處理常式。
 
 如果您需要明確地使失敗，傳回[內容。失敗](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail)。
 
-應用程式可讓連絡人的擁有者可以編輯/刪除/建立自己的資料。 `ContactIsOwnerAuthorizationHandler`不需要檢查需求參數中的作業。
+應用程式可讓連絡人的擁有者可以編輯/刪除/建立自己的資料。 `ContactIsOwnerAuthorizationHandler` 不需要檢查需求參數中的作業。
 
 ### <a name="create-a-manager-authorization-handler"></a>建立授權管理員的處理常式
 
@@ -179,7 +186,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 [!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 
-`ContactAdministratorsAuthorizationHandler`和`ContactManagerAuthorizationHandler`會新增為 singleton。 它們是 singleton，因為它們不使用 EF 和所需的資訊位於`Context`參數`HandleRequirementAsync`方法。
+`ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為 singleton。 它們是 singleton，因為它們不使用 EF 和所需的資訊位於`Context`參數`HandleRequirementAsync`方法。
 
 ## <a name="support-authorization"></a>支援授權
 
@@ -263,9 +270,9 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 
-如果您是使用 Visual Studio 程式碼，或在本機的平台上測試，不包含測試憑證，針對 SSL:
+若您是使用 Visual Studio 程式碼，或在本機的平台上測試，不包含測試憑證，為 HTTPS:
 
-* 設定`"LocalTest:skipSSL": true`中*appsettings。Developement.json*檔案以略過 SSL 需求。 略過 SSL，只在開發電腦上。
+* 設定`"LocalTest:skipSSL": true`中*appsettings。Developement.json*檔案以略過的 HTTPS 要求。 略過只在開發電腦上的 HTTPS。
 
 如果應用程式的連絡人：
 
@@ -300,7 +307,7 @@ dotnet user-secrets set SeedUserPW <PW>
   dotnet new razor -o ContactManager -au Individual -uld
   ```
 
-  * `-uld`指定 LocalDB，而不是 SQLite
+  * `-uld` 指定 LocalDB，而不是 SQLite
 
 * 加入下列`Contact`模型：
 

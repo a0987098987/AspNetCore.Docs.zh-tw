@@ -36,10 +36,10 @@ ms.lasthandoff: 02/11/2018
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
-上述的反白顯示程式碼需要的所有要求都使用`HTTPS`; 因此，HTTP 要求會被忽略。 下列反白顯示的程式碼會將所有 HTTP 要求重新都導向至 HTTPS:
+上述的反白顯示程式碼需要的所有要求都使用`HTTPS`; 因此，HTTP 要求會被忽略。 而下列反白顯示的程式碼會將所有 HTTP 要求都重新導向至 HTTPS:
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
 如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。
 
-全域需要 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 套用`[RequireHttps]`所有控制器/Razor 頁面的屬性不被視為安全全域需要 HTTPS。 您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。
+全域使用 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 套用`[RequireHttps]`所有控制器/Razor 頁面的屬性不被視為安全全域需要 HTTPS。 您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。

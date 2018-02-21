@@ -233,7 +233,7 @@
 ## [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [目錄結構](xref:host-and-deploy/directory-structure)
 ## [Azure App Service 和 IIS 常見的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
-## [使用 IHostingStartup 從外部組件新增應用程式功能](xref:host-and-deploy/ihostingstartup)
+## [使用平台特定組態來新增應用程式功能](xref:host-and-deploy/platform-specific-configuration)
 
 # [安全性](xref:security/index)
 ## [驗證](xref:security/authentication/index)

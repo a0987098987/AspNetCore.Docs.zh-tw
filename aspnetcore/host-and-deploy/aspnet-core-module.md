@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c1a05c3e40e6aab0f2e4a97c0b3bb9eca8a08a41
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5addaada33364d044d89359196bd1d316590c517
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -41,7 +41,7 @@ ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並
 </configuration>
 ```
 
-*Web.config*下列範例是針對[獨立的部署](https://docs.microsoft.com/dotnet/articles/core/deploying/#self-contained-deployments-scd)至[Azure App Service](https://azure.microsoft.com/services/app-service/)。 如需詳細資訊，請參閱[與 IIS 的 Windows 上的主機](xref:host-and-deploy/iis/index)。 請參閱[子應用程式的組態](xref:host-and-deploy/iis/index#configuration-of-sub-applications)的組態相關的重要注意事項*web.config*子應用程式中的檔案。
+*Web.config*下列範例是針對[獨立的部署](https://docs.microsoft.com/dotnet/articles/core/deploying/#self-contained-deployments-scd)至[Azure App Service](https://azure.microsoft.com/services/app-service/)。 如需詳細資訊，請參閱[與 IIS 的 Windows 上的主機](xref:host-and-deploy/iis/index)。 請參閱[子應用程式的組態](xref:host-and-deploy/iis/index#sub-application-configuration)的組態相關的重要注意事項*web.config*子應用程式中的檔案。
 
 ```xml
 <configuration>
@@ -75,7 +75,7 @@ ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並
 
 ASP.NET 核心模組可以讓您指定環境變數中指定的處理序`processPath`中一或多個指定這些屬性`environmentVariable`子項目的`environmentVariables`集合項目底下`aspNetCore`項目。 此區段中設定的環境變數優先於系統處理序的環境變數。
 
-下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT`將應用程式的環境設定成`Development`。 開發人員可能會暫時將此值設定*web.config*檔案，以便強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入偵錯應用程式例外狀況時。 `CONFIG_DIR`是使用者定義的環境變數的範例，開發人員已撰寫的程式碼會讀取啟動，以形成才能載入的應用程式組態檔的路徑上的值。
+下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT` 將應用程式的環境設定成`Development`。 開發人員可能會暫時將此值設定*web.config*檔案，以便強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入偵錯應用程式例外狀況時。 `CONFIG_DIR` 是使用者定義的環境變數的範例，開發人員已撰寫的程式碼會讀取啟動，以形成才能載入的應用程式組態檔的路徑上的值。
 
 ```xml
 <aspNetCore processPath="dotnet"

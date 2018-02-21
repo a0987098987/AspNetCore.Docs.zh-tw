@@ -1,7 +1,7 @@
 ---
 title: "Visual Studio for ASP.NET Core 中的開發階段 IIS 支援"
 author: shirhatti
-description: "探索在 Windows Server 上的 IIS 背後執行時，ASP.NET Core 應用程式的偵錯支援。"
+description: "探索 Windows 伺服器上執行 IIS 後方時，偵錯 ASP.NET Core 應用程式的支援。"
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a5f727dd21ac0c6702691df2215c42f4adc0ec27
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
 作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-本文說明在 Windows Server 上的 IIS 背後執行時，ASP.NET Core 應用程式的 [Visual Studio](https://www.visualstudio.com/vs/) 偵錯支援。 本主題引導啟用此功能，以及設定專案。
+本文說明[Visual Studio](https://www.visualstudio.com/vs/)支援 Windows Server 上執行後 IIS 的 ASP.NET Core 應用程式偵錯。 本主題引導啟用此功能，以及設定專案。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 01/30/2018
 
 ![Windows 功能會以黑色方塊 (而非勾選記號) 顯示選取的 [Internet Information Services] 核取方塊，表示已啟用部分 IIS 功能](development-time-iis-support/_static/enable_iis.png)
 
-如果 IIS 安裝需要重新開機，請重新啟動系統。
+如果 IIS 安裝需要重新啟動，請重新啟動系統。
 
 ## <a name="enable-development-time-iis-support"></a>啟用開發階段 IIS 支援
 
-安裝 IIS 之後，請啟動 Visual Studio 安裝程式來修改現有的 Visual Studio 安裝。 在安裝程式中，選取 [開發階段 IIS 支援] 元件。 該元件會在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，列為選擇性元件。 這會安裝 [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module)，這是執行 ASP.NET Core 應用程式的必要原生 IIS 模組。
+啟動 Visual Studio 安裝程式。 選取**支援 IIS 的開發時間**元件。 元件會列在為選擇性**摘要** 面板的**ASP.NET 及 web 開發**工作負載。 這會安裝[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)，這是執行 ASP.NET Core 應用程式所需的原生 IIS 模組。
 
 ![修改 Visual Studio 功能：選取 [工作負載] 索引標籤。 在 [Web and Cloud]\(Web 與雲端\) 區段中，選取 [ASP.NET 與網頁程式開發] 面板。 在右側的選擇性摘要面板區域中，沒有核取方塊適用於 IIS 支援開發時間。](development-time-iis-support/_static/development_time_support.png)
 
@@ -73,8 +73,6 @@ ms.lasthandoff: 01/30/2018
 ```
 
 如果未以系統管理員身分執行 visual Studio 可能會提示重新啟動。 若收到提示，請重新啟動 Visual Studio。
-
-恭喜您！ 此時，專案被設定供開發時間 IIS 支援。 
 
 ## <a name="additional-resources"></a>其他資源
 

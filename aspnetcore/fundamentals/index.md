@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 7f0e30b3ac7f9cc3a32bd96f45d83ba13505a475
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 85d3eaf033eafbd24c71110ccd7f21ffcc8b0c82
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -180,6 +180,12 @@ ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 
 有關 HTTP 要求和回應的網頁伺服器實作詳細資料，定義於介面中。 伺服器實作與中介軟體會使用這些介面，建立及修改應用程式的裝載管線。
 
 如需詳細資訊，請參閱[要求功能](xref:fundamentals/request-features)。
+
+## <a name="background-tasks"></a>背景工作
+
+背景工作會實作為*託管服務*。 託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
+
+如需詳細資訊，請參閱[搭配託管服務的背景工作](xref:fundamentals/hosted-services)。
 
 ## <a name="open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN)
 

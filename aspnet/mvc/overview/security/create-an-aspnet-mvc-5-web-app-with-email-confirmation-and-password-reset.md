@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 5689031015279484cc616090a767a8c25eefa3c1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d55b34135d5bab98ab8de31cc4b12dcc272cbc0a
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/20/2018
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET MVC 5 web 應用程式與記錄檔中，電子郵件確認和密碼重設 (C#)
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/24/2018
 1. 在 Package Manager Console 中，輸入下列下列命令： 
 
     [!code-console[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample1.cmd)]
-2. 移至[Azure SendGrid 登入頁面](https://go.microsoft.com/fwlink/?linkid=271033&clcid=0x409)並註冊免費的 SendGrid 帳戶。 加入下列命令來設定 SendGrid 類似的程式碼：
+2. 移至[Azure SendGrid 登入頁面](https://go.microsoft.com/fwlink/?linkid=271033&clcid=0x409)並註冊免費的 SendGrid 帳戶。 設定 SendGrid 將類似下列的程式碼加入*App_Start/IdentityConfig.cs*:
 
     [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample2.cs?highlight=3,5)]
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample7.cs?highlight=14-15,23-30)]
 
-註解`SignInAsync`方法，使用者將未簽署註冊。 `TempData["ViewBagLink"] = callbackUrl;`行可以用來[偵錯應用程式](#dbg)和測試不會傳送電子郵件的註冊。 `ViewBag.Message`用來顯示的確認指示。 [下載範例](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952)包含程式碼以測試電子郵件確認，而不需設定電子郵件，而且也可用來偵錯應用程式。
+註解`SignInAsync`方法，使用者將未簽署註冊。 `TempData["ViewBagLink"] = callbackUrl;`行可以用來[偵錯應用程式](#dbg)和測試不會傳送電子郵件的註冊。 `ViewBag.Message` 用來顯示的確認指示。 [下載範例](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952)包含程式碼以測試電子郵件確認，而不需設定電子郵件，而且也可用來偵錯應用程式。
 
 建立`Views\Shared\Info.cshtml`檔案，然後加入下列的 razor 標記：
 

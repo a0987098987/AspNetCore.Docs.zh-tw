@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: cf7dcdb80f5edf9e10960cb08957793c36829a69
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.openlocfilehash: 0ec223ce06ff116c36182b8de507138e96a277a4
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="configure-identity"></a>設定身分識別
 
@@ -35,7 +35,7 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 ---
 
-`IdentityOptions.Password`具有下列屬性：
+`IdentityOptions.Password` 具有下列屬性：
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
@@ -51,7 +51,7 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,39-42,50-52)]
 
-`IdentityOptions.Lockout`具有下列屬性：
+`IdentityOptions.Lockout` 具有下列屬性：
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
@@ -63,7 +63,7 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,44-46,50-52)]
 
-`IdentityOptions.SignIn`具有下列屬性：
+`IdentityOptions.SignIn` 具有下列屬性：
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
@@ -74,7 +74,7 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,48-52)]
 
-`IdentityOptions.User`具有下列屬性：
+`IdentityOptions.User` 具有下列屬性：
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
@@ -98,7 +98,7 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 
 ---
 
-`CookieAuthenticationOptions`具有下列屬性：
+`CookieAuthenticationOptions` 具有下列屬性：
 
 | 屬性                | 描述                       | 預設 |
 | ----------------------- | --------------------------------- | ------- |
@@ -107,8 +107,8 @@ ASP.NET Core 2.0 加入`RequiredUniqueChars`屬性。 否則，選項會從 ASP.
 | `ExpireTimeSpan`  | 控制儲存在 cookie 中的驗證票證的時間會維持有效從其建立點。  | 14 天  |
 | `LoginPath`  | 未經授權的使用者時，則會重新導向至登入此路徑。 | / 帳戶/登入  |
 | `LogoutPath`  | 在使用者登出時，則會重新導向到這個路徑。  | /Account/Logout  |
-| `AccessDeniedPath`  | 當使用者失敗時的授權檢查時，則會重新導向到這個路徑。  |   |
-| `SlidingExpiration`  | 若為 true，將會與新的到期時間，當目前 cookie 是多個到期視窗的中間發出新的 cookie。  | /Account/AccessDenied |
-| `ReturnUrlParameter`  | 判斷當 401 未授權的狀態的程式碼變更為 302 重新導向至登入路徑時，由中介軟體附加的查詢字串參數的名稱。  |  true |
+| `AccessDeniedPath`  | 當使用者失敗時的授權檢查時，則會重新導向到這個路徑。  |  /Account/AccessDenied |
+| `SlidingExpiration`  | 若為 true，將會與新的到期時間，當目前 cookie 是多個到期視窗的中間發出新的 cookie。  | true |
+| `ReturnUrlParameter`  | 判斷當 401 未授權的狀態的程式碼變更為 302 重新導向至登入路徑時，由中介軟體附加的查詢字串參數的名稱。  | ReturnUrl |
 | `AuthenticationScheme`  | 這只是適用於 ASP.NET Core 相關 1.x。 特定的驗證配置的邏輯名稱。 |  |
 | `AutomaticAuthenticate`  | 這個旗標僅適用於 ASP.NET Core 相關 1.x。 若為 true，cookie 驗證應執行每個要求，並嘗試驗證，重新建構建立它的任何序列化的主體。  |  |

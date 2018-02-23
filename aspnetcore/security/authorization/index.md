@@ -1,38 +1,41 @@
 ---
 title: "ASP.NET Core 的授權"
 author: rick-anderson
-description: "本文件是各種 ASP.NET Core 授權主題的目錄。"
+description: "探索說明如何提供權限給應用程式使用者的 ASP.NET Core 授權主題。"
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 02/19/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/index
-ms.openlocfilehash: ee408afab55a80d28291a3a44e0fd1513ff34e45
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 652a01d58f7a7d19faa8531b61ea780bc379c428
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
-# <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a>ASP.NET Core 的授權：簡單授權、角色型授權、宣告式授權和自訂授權
+# <a name="authorization-in-aspnet-core"></a>ASP.NET Core 的授權
 
-* [簡介](introduction.md)
+* [簡介](xref:security/authorization/introduction)
+
+* [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
 
 * [Razor 頁面授權](xref:security/authorization/razor-pages-authorization)
 
-* [簡單授權](simple.md)
+* [簡單授權](xref:security/authorization/simple)
 
-* [角色型授權](roles.md)
+* [角色型授權](xref:security/authorization/roles)
 
-* [宣告式授權](claims.md)
+* [宣告式授權](xref:security/authorization/claims)
 
-* [原則式授權](policies.md)
+* [原則式授權](xref:security/authorization/policies)
 
-* [要求處理常式中的相依性插入](dependencyinjection.md)
+* [要求處理常式中的相依性插入](xref:security/authorization/dependencyinjection)
 
-* [資源型授權](resourcebased.md)
+* [資源型授權](xref:security/authorization/resourcebased)
 
-* [檢視型授權](views.md)
+* [檢視型授權](xref:security/authorization/views)
 
-* [以配置限制身分識別](limitingidentitybyscheme.md)
+* [使用特定配置進行授權](xref:security/authorization/limitingidentitybyscheme)

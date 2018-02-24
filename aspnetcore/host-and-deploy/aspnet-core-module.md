@@ -1,30 +1,32 @@
 ---
 title: "ASP.NET 核心模組的組態參考"
 author: guardrex
-description: "如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組。"
+description: "了解如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組。"
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/07/2017
+ms.date: 02/15/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 5addaada33364d044d89359196bd1d316590c517
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: c01abed767a226eae68725c1c53d922eac2f705e
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
 由[Luke Latham](https://github.com/guardrex)， [Rick Anderson](https://twitter.com/RickAndMSFT)，和[Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-本文件提供有關如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組的詳細資料。 如需 ASP.NET Core 模組和安裝指示的簡介，請參閱[ASP.NET Core 模組概觀](xref:fundamentals/servers/aspnet-core-module)。
+本文件提供有關如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組的指示。 如需 ASP.NET Core 模組和安裝指示的簡介，請參閱[ASP.NET Core 模組概觀](xref:fundamentals/servers/aspnet-core-module)。
 
-## <a name="configuration-via-webconfig"></a>透過 web.config 設定
+## <a name="configuration-with-webconfig"></a>Web.config 組態
 
-ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並有它自己`aspNetCore`組態區段內`system.webServer`。 以下是範例*web.config*檔`Microsoft.NET.Sdk.Web`SDK 會提供當專案發行時[framework 相依的部署](https://docs.microsoft.com/dotnet/articles/core/deploying/#framework-dependent-deployments-fdd)使用預留位置`processPath`和`arguments`:
+設定 ASP.NET 核心模組`aspNetCore`區段`system.webServer`中站台的節點*web.config*檔案。
+
+下列*web.config*發行檔案以進行[framework 相依的部署](/dotnet/articles/core/deploying/#framework-dependent-deployments-fdd)和設定 ASP.NET 核心模組，以處理站台的要求：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,49 +35,54 @@ ASP.NET 核心模組已透過站台或應用程式設定*web.config*檔案，並
     <handlers>
       <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified" />
     </handlers>
-    <aspNetCore processPath="%LAUNCHER_PATH%" 
-        arguments="%LAUNCHER_ARGS%" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
+    <aspNetCore processPath="dotnet" 
+                arguments=".\MyApp.dll" 
+                stdoutLogEnabled="false" 
+                stdoutLogFile=".\logs\stdout" />
   </system.webServer>
 </configuration>
 ```
 
-*Web.config*下列範例是針對[獨立的部署](https://docs.microsoft.com/dotnet/articles/core/deploying/#self-contained-deployments-scd)至[Azure App Service](https://azure.microsoft.com/services/app-service/)。 如需詳細資訊，請參閱[與 IIS 的 Windows 上的主機](xref:host-and-deploy/iis/index)。 請參閱[子應用程式的組態](xref:host-and-deploy/iis/index#sub-application-configuration)的組態相關的重要注意事項*web.config*子應用程式中的檔案。
+下列*web.config*發行以供[獨立的部署](/dotnet/articles/core/deploying/#self-contained-deployments-scd):
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <system.webServer>
     <handlers>
       <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified" />
     </handlers>
     <aspNetCore processPath=".\MyApp.exe" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile="\\?\%home%\LogFiles\stdout" />
+                stdoutLogEnabled="false" 
+                stdoutLogFile=".\logs\stdout" />
   </system.webServer>
 </configuration>
 ```
 
+當應用程式部署至[Azure App Service](https://azure.microsoft.com/services/app-service/)、`stdoutLogFile`路徑會設定為`\\?\%home%\LogFiles\stdout`。 路徑會將 stdout 記錄檔，以儲存*LogFiles*資料夾中，這是放置位置自動服務所建立的。
+
+請參閱[子應用程式組態](xref:host-and-deploy/iis/index#sub-application-configuration)的組態相關的重要注意事項*web.config*子應用程式中的檔案。
+
 ### <a name="attributes-of-the-aspnetcore-element"></a>AspNetCore 元素的屬性
 
-| 屬性 | 描述 |
-| --- | --- |
-| processPath | <p>必要的字串屬性。</p><p>將會啟動接聽 HTTP 要求的處理序的可執行檔的路徑。 支援相對路徑。 如果路徑是以開頭 '。 '，路徑會被視為相對於網站根目錄。</p><p>沒有預設值。</p> |
-| 引數 | <p>選擇性字串屬性。</p><p>可執行檔中指定的引數**processPath**。</p><p>預設值為空字串。</p> |
-| startupTimeLimit | <p>選擇性整數屬性。</p><p>此模組，可開始接聽連接埠之處理序的等候秒持續時間。 如果超過此時間限制，此模組會終止處理序。 此模組會嘗試啟動處理序，當它收到新的要求，並將繼續嘗試重新啟動的程序，在後續的內送要求，除非應用程式無法啟動**rapidFailsPerMinute**數目最後一個循環分鐘的時間。</p><p>預設值為 120。</p> |
-| shutdownTimeLimit | <p>選擇性整數屬性。</p><p>持續時間 （秒） 模組將會等候到正常關機狀態的可執行檔時*app_offline.htm*偵測到的檔案。</p><p>預設值為 10。</p> |
-| rapidFailsPerMinute | <p>選擇性整數屬性。</p><p>指定處理程序中指定的次數**processPath**允許每分鐘的損毀。 如果超過此限制，此模組會停止啟動該分鐘的剩餘的處理程序。</p><p>預設值為 10。</p> |
-| requestTimeout | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組將等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>預設值為 "00:02:00"。</p><p>`requestTimeout`必須指定以分鐘為單位，否則它會預設為 2 分鐘。</p> |
-| stdoutLogEnabled | <p>選擇性的 Boolean 屬性。</p><p>如果為 true， **stdout**和**stderr**中指定的處理序**processPath**會重新導向至指定的檔案**stdoutLogFile**.</p><p>預設值為 false。</p> |
-| stdoutLogFile | <p>選擇性字串屬性。</p><p>指定的相對或絕對檔案路徑的**stdout**和**stderr**中指定的處理序從**processPath**將記錄。 相對路徑會相對於網站根目錄。 從任何路徑 '。 ' 將會相對於網站根目錄和所有其他路徑將會被視為絕對路徑。 提供的路徑中任何資料夾必須存在於要建立的記錄檔之模組的順序。 處理序識別碼，時間戳記 (*yyyyMdhms*)，和副檔名 (*.log*) 加上底線分隔符號會加入至最後一個區段**stdoutLogFile**提供。</p><p>預設值是 `aspnetcore-stdout`。</p> |
-| forwardWindowsAuthToken | true 或 false。</p><p>如果為 true，權杖會轉送子處理序做為每個要求的標頭 ' MS-ASPNETCORE-WINAUTHTOKEN' 接聽 %aspnetcore_port%。 它負責這個語彙基元，每個要求上呼叫 CloseHandle 該程序。</p><p>預設值為 true。</p> |
-| disableStartUpErrorPage | true 或 false。</p><p>如果為 true， **502.5-處理序失敗**頁面將會隱藏，而且 502 狀態字碼頁設定在您*web.config*更高的優先順序。</p><p>預設值為 false。</p> |
+| 屬性 | 描述 | 預設 |
+| --------- | ----------- | :-----: |
+| `arguments` | <p>選擇性字串屬性。</p><p>可執行檔中指定的引數**processPath**。</p>| |
+| `disableStartUpErrorPage` | true 或 false。</p><p>如果為 true， **502.5-處理序失敗**隱藏頁面時，且狀態 502 字碼頁設定*web.config*優先。</p> | `false` |
+| `forwardWindowsAuthToken` | true 或 false。</p><p>如果為 true，則會將權杖轉送到接聽 %aspnetcore_port%做為每個要求的標頭 ' MS-ASPNETCORE-WINAUTHTOKEN' 的子處理序。 它負責這個語彙基元，每個要求上呼叫 CloseHandle 該程序。</p> | `true` |
+| `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求的處理序的可執行檔的路徑。 支援相對路徑。 如果路徑是以開頭`.`，路徑會被視為相對於網站根目錄。</p> | |
+| `rapidFailsPerMinute` | <p>選擇性整數屬性。</p><p>指定處理程序中指定的次數**processPath**允許每分鐘的損毀。 如果超過此限制時，模組會停止啟動該分鐘的剩餘的處理程序。</p> | `10` |
+| `requestTimeout` | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>`requestTimeout`必須指定以分鐘為單位，否則它會預設為 2 分鐘。</p> | `00:02:00` |
+| `shutdownTimeLimit` | <p>選擇性整數屬性。</p><p>持續時間，以秒為單位的模組，可依正常程序關閉時*app_offline.htm*偵測到的檔案。</p> | `10` |
+| `startupTimeLimit` | <p>選擇性整數屬性。</p><p>以秒為單位的模組，可開始接聽連接埠之處理序的持續時間。 如果超過此時間限制，此模組會清除程序。 模組會嘗試重新啟動處理程序，當它接收新要求，並會繼續嘗試重新啟動的程序，在後續的內送要求，除非應用程式無法啟動**rapidFailsPerMinute**在上一次循環的分鐘。</p> | `120` |
+| `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true， **stdout**和**stderr**中指定的處理序**processPath**會重新導向至指定的檔案**stdoutLogFile**。</p> | `false` |
+| `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定的相對或絕對檔案路徑的**stdout**和**stderr**中指定的處理序從**processPath**記錄。 相對路徑會相對於網站根目錄。 從任何路徑`.`是相對於網站根目錄和所有其他路徑會被視為絕對路徑。 提供的路徑中任何資料夾必須存在於要建立的記錄檔之模組的順序。 使用底線分隔符號、 時間戳記、 處理序識別碼和副檔名 (*.log*) 會加入至最後一個區段**stdoutLogFile**路徑。 如果`.\logs\stdout`提供為數值，而範例 stdout 記錄會儲存為*stdout_20180205194132_1934.log*中*記錄*資料夾時儲存在 2/5/2018年 19:41:32 與 1934年的處理序識別碼。</p> | `aspnetcore-stdout` |
 
 ### <a name="setting-environment-variables"></a>設定環境變數
 
-ASP.NET 核心模組可以讓您指定環境變數中指定的處理序`processPath`中一或多個指定這些屬性`environmentVariable`子項目的`environmentVariables`集合項目底下`aspNetCore`項目。 此區段中設定的環境變數優先於系統處理序的環境變數。
+中的程序可以指定環境變數`processPath`屬性。 指定的環境變數`environmentVariable`子項目`environmentVariables`集合項目。 此區段中設定的環境變數優先於系統環境變數。
 
-下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT` 將應用程式的環境設定成`Development`。 開發人員可能會暫時將此值設定*web.config*檔案，以便強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入偵錯應用程式例外狀況時。 `CONFIG_DIR` 是使用者定義的環境變數的範例，開發人員已撰寫的程式碼會讀取啟動，以形成才能載入的應用程式組態檔的路徑上的值。
+下列範例會設定兩個環境變數。 `ASPNETCORE_ENVIRONMENT` 設定應用程式的環境`Development`。 開發人員可能會暫時將此值設定*web.config*檔案，以便強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入偵錯應用程式例外狀況時。 `CONFIG_DIR` 是使用者定義的環境變數的範例，開發人員已寫入讀取的值，在啟動時形成一個載入的應用程式組態檔路徑的程式碼的位置。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -89,25 +96,28 @@ ASP.NET 核心模組可以讓您指定環境變數中指定的處理序`processP
 </aspNetCore>
 ```
 
+> [!WARNING]
+> 只能設定`ASPNETCORE_ENVIRONMENT`envirnonment 變數`Development`籌畫與測試無法存取不受信任的網路，例如網際網路的伺服器上。
+
 ## <a name="appofflinehtm"></a>app_offline.htm
 
-如果您將檔案名稱*app_offline.htm*根目錄中的 web 應用程式目錄，ASP.NET 核心模組將會嘗試依正常程序關閉應用程式，並停止處理內送要求。 如果應用程式仍在執行`shutdownTimeLimit`數秒的 ASP.NET 核心模組會終止執行的處理序。
+如果同名的檔案*app_offline.htm*偵測到應用程式的根目錄中 ASP.NET 核心模組嘗試依正常程序關閉應用程式，然後停止處理內送要求。 如果應用程式仍在執行中定義的秒數後`shutdownTimeLimit`，ASP.NET 核心模組會清除執行的處理序。
 
-雖然*app_offline.htm*檔案是否存在，ASP.NET 核心模組會回應要求傳送回內容*app_offline.htm*檔案。 一次*app_offline.htm*會移除檔案，在下一個要求載入應用程式，然後回應要求。
+雖然*app_offline.htm*檔案是否存在，ASP.NET 核心模組回應要求傳送回內容*app_offline.htm*檔案。 當*app_offline.htm*會移除檔案，在下一個要求會啟動應用程式。
 
 ## <a name="start-up-error-page"></a>啟動錯誤頁面
 
-如果 ASP.NET 核心模組無法啟動後端程序或後端程序會啟動但無法在設定的連接埠上接聽，您會看到 HTTP 502.5 狀態字碼頁。 若要隱藏這個頁面，並還原至預設 IIS 502 狀態字碼頁，請使用`disableStartUpErrorPage`屬性。 如需有關如何設定自訂錯誤訊息的詳細資訊，請參閱[HTTP 錯誤`<httpErrors>` ](https://docs.microsoft.com/iis/configuration/system.webServer/httpErrors/)。
+如果 ASP.NET 核心模組無法啟動後端程序或後端程序會啟動但無法在設定的連接埠上接聽*502.5 的處理序失敗*狀態程式碼 頁面隨即出現。 若要隱藏這個頁面，並還原至預設 IIS 502 狀態字碼頁，請使用`disableStartUpErrorPage`屬性。 如需有關如何設定自訂錯誤訊息的詳細資訊，請參閱[HTTP 錯誤`<httpErrors>` ](/iis/configuration/system.webServer/httpErrors/)。
 
-![502 狀態 頁面](aspnet-core-module/_static/ANCM-502_5.png)
+![502.5 程序失敗狀態的字碼頁](aspnet-core-module/_static/ANCM-502_5.png)
 
 ## <a name="log-creation-and-redirection"></a>記錄檔的建立和重新導向
 
-ASP.NET 核心模組重新導向`stdout`和`stderr`記錄檔磁碟，如果您設定`stdoutLogEnabled`和`stdoutLogFile`屬性`aspNetCore`項目。 中的任何資料夾`stdoutLogFile`路徑必須存在於要建立的記錄檔之模組的順序。 建立記錄檔時，會自動加入時間戳記與檔案的副檔名。 記錄檔不會進行旋轉，除非處理序回收/重新啟動，就會發生。 它是主機服務提供者來限制記錄檔使用的磁碟空間的責任。 使用`stdout`疑難排解應用程式啟動問題而非一般應用程式記錄用途只建議記錄檔。
+ASP.NET 核心模組重新導向`stdout`和`stderr`磁碟的記錄檔`stdoutLogEnabled`和`stdoutLogFile`屬性`aspNetCore`設定項目。 中的任何資料夾`stdoutLogFile`路徑必須存在於要建立的記錄檔之模組的順序。 建立記錄檔時，會自動加入時間戳記與檔案的副檔名。 不旋轉記錄檔，除非處理序回收/重新啟動，就會發生。 它是主機服務提供者來限制記錄檔使用的磁碟空間的責任。 使用`stdout`記錄只建議用於疑難排解應用程式啟動問題。 一般應用程式記錄檔，請勿使用 stdout 記錄檔。 例行記錄中的 ASP.NET Core 應用程式、 使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-記錄檔名稱由附加的處理序識別碼 (PID)，時間戳記 (*yyyyMdhms*)，和副檔名 (*.log*) 的最後一個區段以`stdoutLogFile`路徑 (通常*stdout*) 底線字元分隔。 例如如果`stdoutLogFile`路徑的結尾*stdout*，記錄檔的應用程式，但在 8/10/2017年端建立 12:05:02 10652 PID 有檔案名稱*stdout_10652_20178101252.log*。
+記錄檔名稱由附加的時間戳記、 處理序識別碼和副檔名 (*.log*) 的最後一個區段以`stdoutLogFile`路徑 (通常*stdout*) 底線字元分隔。 如果`stdoutLogFile`路徑的結尾*stdout*，記錄檔的應用程式，但在 2/5/2018年端建立 19:42:32 1934 PID 有檔案名稱*stdout_20180205194132_1934.log*。
 
-以下是範例`aspNetCore`設定項目`stdout`記錄。 `stdoutLogFile`範例所示的路徑是否適用於 Azure 應用程式服務。 本機路徑或網路共用路徑是可接受的本機記錄。 確認應用程式集區使用者識別必須提供路徑的寫入權限。
+下列範例`aspNetCore`項目會設定`stdout`Azure App Service 中裝載的應用程式的記錄功能。 本機路徑或網路共用路徑是可接受的本機記錄。 確認應用程式集區使用者識別必須提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -116,13 +126,28 @@ ASP.NET 核心模組重新導向`stdout`和`stderr`記錄檔磁碟，如果您�
     stdoutLogFile="\\?\%home%\LogFiles\stdout">
 </aspNetCore>
 ```
-請參閱[透過 web.config 組態](#configuration-via-webconfig)的範例，`aspNetCore`中的項目*web.config*檔案。
+
+請參閱[web.config 組態](#configuration-with-webconfig)的範例，`aspNetCore`中的項目*web.config*檔案。
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>IIS 與 ASP.NET Core 模組共用設定
 
-ASP.NET 核心模組安裝程式會執行與的權限**系統**帳戶。 因為本機系統帳戶不會有修改 IIS 共用設定所使用的共用路徑的權限，安裝程式會叫用拒絕存取錯誤時嘗試設定中的模組設定*applicationHost.config*共用上。
+ASP.NET 核心模組安裝程式會執行與的權限**系統**帳戶。 安裝程式的本機系統帳戶不會有修改 IIS 共用設定所使用的共用路徑的權限，因為遇到拒絕存取錯誤時嘗試設定中的模組設定*applicationHost.config*共用上。 當使用 IIS 共用設定，請遵循下列步驟：
 
-不支援的因應措施是停用 IIS 共用設定，執行安裝程式、 匯出更新*applicationHost.config*檔案共用，並重新啟用 IIS 共用設定。
+1. 停用 IIS 共用的設定。
+1. 執行安裝程式。
+1. 匯出已更新*applicationHost.config*共用的檔案。
+1. 重新啟用 IIS 共用的設定。
+
+## <a name="module-version-and-hosting-bundle-installer-logs"></a>模組版本，以及裝載配套安裝程式記錄檔
+
+若要判斷已安裝的 ASP.NET 核心模組版本：
+
+1. 在主機系統上，瀏覽至*%windir%\System32\inetsrv*。
+1. 找出*aspnetcore.dll*檔案。
+1. 以滑鼠右鍵按一下檔案，然後選取**屬性**從內容功能表。
+1. 選取**詳細資料** 索引標籤。**檔案版本**和**產品版本**代表已安裝之模組的版本。
+
+模組的 Windows 伺服器裝載配套安裝程式記錄檔會位於*c:\\使用者\\%username%\\AppData\\本機\\Temp*。檔案命名為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64.log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、 結構描述和組態檔的位置
 
@@ -160,4 +185,4 @@ ASP.NET 核心模組安裝程式會執行與的權限**系統**帳戶。 因為�
 
    * .vs\config\applicationHost.config
 
-您可以搜尋*aspnetcore.dll*中*applicationHost.config*檔案。 IIS express， *applicationHost.config*根據預設，檔案不存在。 檔案建立在*{應用程式根目錄}\.vs\config*當您啟動任何 web 應用程式專案中的 Visual Studio 方案。
+可以找到檔案，藉由搜尋*aspnetcore.dll*中*applicationHost.config*檔案。 IIS express， *applicationHost.config*根據預設，檔案不存在。 檔案建立在 *\<application_root >\\.vs\\config*時啟動 Visual Studio 方案中的任何 web 應用程式專案。

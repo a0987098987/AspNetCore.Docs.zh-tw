@@ -1,26 +1,26 @@
 ---
 title: "使用 React 專案範本"
 author: SteveSandersonMS
-description: "了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 發行候選版本專案範本 React，以及建立 react 應用程式。"
+description: "了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 專案範本 React，以及建立 react 應用程式。"
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: 5978094083a098a771f5dca103434ea8fcce7777
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e093a47159fd8278ff3705bb2c53571a8e27fab8
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-react-project-template-release-candidate"></a>使用 React 專案範本 （發行候選版本）
+# <a name="use-the-react-project-template"></a>使用 React 專案範本
 
 > [!NOTE]
-> 這份文件不需發行 React 專案範本。 **這份文件是關於 React 範本的發行候選版本。** 我們希望在早期 2018年出貨的發行的版本。
+> 這份文件不需 React 專案範本包含 ASP.NET Core 2.0。 它是有關，您可以手動更新較新的回應範本。 預設範本包含 ASP.NET Core 2.1。
 
 更新的 React 專案範本提供方便的起點適用於 ASP.NET Core 應用程式使用 React 和[建立 react 應用程式](https://github.com/facebookincubator/create-react-app)(CRA) 慣例，來實作豐富的用戶端使用者介面 (UI)。
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-若要開始使用，請確定您已經[安裝更新後的 React 專案範本](xref:spa/index#installation)。 這些指示不適用於先前的 React 專案範本包含在.NET Core 2.0.x 版 SDK。
+如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新後的 React 專案範本](xref:spa/index#installation)。 如果您有 ASP.NET Core 2.1，沒有需要安裝它。
 
 建立新的專案，從命令提示字元使用命令`dotnet new react`空的目錄中。 例如，下列命令會建立應用程式在*my-新的應用程式*目錄並切換到該目錄：
 

@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: aaa14e2f2704a7cfa836c5524642d2138a3ae7c8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c229537e7f533eea2173dbc51b8d0d0e097d434a
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>在 ASP.NET Core 應用程式中設定 Windows 驗證
 
-由[Steve Smith](https://ardalis.com)和[Scott Addie](https://twitter.com/Scott_Addie)
+作者：[Steve Smith](https://ardalis.com) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
 可以針對以 IIS 裝載的 ASP.NET Core 應用程式設定 Windows 驗證[HTTP.sys](xref:fundamentals/servers/httpsys)，或[WebListener](xref:fundamentals/servers/weblistener)。
 
@@ -111,6 +111,9 @@ IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module
 啟用 Windows 驗證和匿名存取，當使用`[Authorize]`和`[AllowAnonymous]`屬性。 `[Authorize]`屬性可讓您保護應用程式確實需要 Windows 驗證的片段。 `[AllowAnonymous]`屬性覆寫`[Authorize]`屬性允許匿名存取的應用程式內的用法。 請參閱[簡單授權](xref:security/authorization/simple)的屬性使用方式詳細資料。
 
 在 ASP.NET Core 2.x，`[Authorize]`屬性需要額外的設定中*Startup.cs*挑戰 Windows 驗證的匿名要求。 建議的組態設定稍微依據所使用的 web 伺服器而異。
+
+> [!NOTE]
+> 根據預設，使用者沒有授權存取的網頁會呈現空白文件。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
 
 #### <a name="iis"></a>IIS
 

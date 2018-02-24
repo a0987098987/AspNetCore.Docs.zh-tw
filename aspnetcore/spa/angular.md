@@ -1,34 +1,34 @@
 ---
 title: "使用角度的專案範本"
 author: SteveSandersonMS
-description: "了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 發行候選版本專案範本 Angular 和有角度的方向 CLI。"
+description: "了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 專案範本 Angular 和有角度的方向 CLI。"
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: 4162b1c26e9d278c811f691c4277d4de25adb204
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f81130b67d61ee063b697f19862449c3054d547d
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-angular-project-template-release-candidate"></a>使用角度的專案範本 （發行候選版本）
+# <a name="use-the-angular-project-template"></a>使用角度的專案範本
 
 > [!NOTE]
-> 這份文件不需發行角度專案範本。 **這份文件是範本的關於發行候選版本的角度。** 我們希望在早期 2018年出貨的發行的版本。
+> 這份文件不需角度的專案範本包含 ASP.NET Core 2.0。 所以，您可以手動更新較新的角度範本的相關。 預設範本包含 ASP.NET Core 2.1。
 
-已更新的角度專案範本提供方便的起點 ASP.NET Core 應用程式使用角度 5 和有角度的方向 CLI 實作豐富的用戶端使用者介面 (UI)。
+已更新的角度專案範本提供方便的起點 ASP.NET Core 應用程式使用 Angular 和有角度的方向 CLI 來實作豐富的用戶端使用者介面 (UI)。
 
 範本就相當於建立 ASP.NET Core 專案作為 API 後端和有角度的方向 CLI 專案做為使用者介面。 範本提供了裝載單一應用程式專案中的這兩種專案類型。 因此，應用程式專案可以建立並發佈成單一單位。
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-若要開始使用，請確定您已經[安裝更新的角度專案範本](xref:spa/index#installation)。 這些指示不適用於先前的角度的專案範本包含在.NET Core 2.0.x 版 SDK。
+如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新的角度專案範本](xref:spa/index#installation)。 如果您有 ASP.NET Core 2.1，沒有需要安裝它。
 
 建立新的專案，從命令提示字元使用命令`dotnet new angular`空的目錄中。 例如，下列命令會建立應用程式在*my-新的應用程式*目錄並切換到該目錄：
 

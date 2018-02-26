@@ -21,13 +21,13 @@ ms.lasthandoff: 01/31/2018
 
 本教學課程的 Razor 頁面版本位於[這裡](xref:data/ef-rp/intro)。 此 Razor 頁面版本更容易遵循，並涵蓋更多 EF 功能。 我們建議您遵循[此教學課程的 Razor 頁面版本](xref:data/ef-rp/intro)。
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 來建立 ASP.NET Core 2.0 MVC Web 應用程式。
+Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
 [下載或檢視已完成的應用程式。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-EF Core 2.0 是 EF 的最新版本，但還未包括所有 EF 6.x 的功能。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 若您選擇 EF 6.x，請參閱[此教學課程的先前版本系列](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
+EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
 > * 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
@@ -39,7 +39,7 @@ EF Core 2.0 是 EF 的最新版本，但還未包括所有 EF 6.x 的功能。 �
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您遭遇無法解決的問題，將您的程式碼與[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)作比較，通常可以找到解答。 如需常見錯誤和如何解決這些問題的清單，請參閱[ 本系列最後一個教學課程中的疑難排解一節](advanced.md#common-errors)。 如果您在那裡找不到所需的資訊，可以將問題張貼至 StackOverflow.com 中的 [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 或 [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
+如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[ 數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 或 [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
 > [!TIP] 
 > 這是 10 個教學的系列課程，當中的每一個課程都是建置於先前教學課程的成果上。 成功完成每一個教學課程後，請儲存專案的複本。 如果您遇到問題，您可以從上一個教學課程來重新開始，而不需從系列的一開始從頭來過。
@@ -331,7 +331,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 ## <a name="asynchronous-code"></a>非同步程式碼
 
-非同步程式設計在 ASP.NET Core 和 EF Core 中是預設模式。
+非同步程式設計是預設的 ASP.NET Core 和 EF Core 模式。
 
 網頁伺服器的可用執行緒數量有限，而且在高負載情況下，可能會使用所有可用的執行緒。 發生此情況時，伺服器將無法處理新的要求，直到執行緒空出來。 使用同步程式碼，許多執行緒可能在實際上並未執行任何工作時受到占用，原因是在等候 I/O 完成。 使用非同步程式碼，處理程序在等候 I/O 完成時，其執行緒將會空出來以讓伺服器處理其他要求。 因此，非同步程式碼可讓伺服器資源更有效率地使用，而且伺服器可處理更多流量而不會造成延遲。
 

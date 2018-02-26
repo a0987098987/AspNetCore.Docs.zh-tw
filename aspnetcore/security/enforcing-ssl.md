@@ -42,4 +42,4 @@ ms.lasthandoff: 02/11/2018
 
 如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。
 
-全域使用 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 套用`[RequireHttps]`所有控制器/Razor 頁面的屬性不被視為安全全域需要 HTTPS。 您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。
+全域使用 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 將`[RequireHttps]`屬性套用至所有控制器，不會比全域使用 HTTPS 來的安全。 您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。

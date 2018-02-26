@@ -29,7 +29,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 某些動作結果類型是特定格式所特有的，例如 `JsonResult` 和 `ContentResult`。 動作可以傳回一律以特定方式格式化的特定結果。 例如，不論用戶端喜好設定為何，傳回 `JsonResult` 都會傳回 JSON 格式化資料。 同樣地，傳回 `ContentResult` 將會傳回純文字格式化字串資料 (就像只傳回字串一樣)。
 
 > [!NOTE]
-> 不需要採取動作，就會傳回任何特定類型；MVC 支援任何物件傳回值。 如果動作傳回 `IActionResult` 實作，而且控制器繼承自 `Controller`，則開發人員有許多對應至多個選項的協助程式方法。 傳回類型不是 `IActionResult` 之物件的動作結果，將會使用適當的 `IOutputFormatter` 實作進行序列化。
+> 動作不要求任何特定的型別，MVC 支援任何物件的傳回值。 如果動作回傳 `IActionResult` 的實作並且「控制器」 繼承自 `Controller`，開發人員會有許多對應至多種選項的輔助方法。 回傳物件的動作結果不是 `IActionResult` 型別會使用適當的序列化 `IOutputFormatter` 實作。
 
 若要從繼承自 `Controller` 基底類別的控制器傳回特定格式的資料，請使用內建協助程式方法 `Json` 傳回 JSON 和 `Content` (針對純文字)。 動作方法應該會傳回特定結果類型 (例如，`JsonResult`) 或 `IActionResult`。
 
@@ -60,7 +60,7 @@ ASP.NET Core MVC 具有使用固定格式或回應用戶端規格的內建回應
 
 ## <a name="content-negotiation"></a>內容交涉
 
-用戶端指定 [Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)時，會進行內容交涉 (簡稱 *conneg*)。 ASP.NET Core MVC 所使用的預設格式為 JSON。 內容交涉是由 `ObjectResult` 所實作。 它也會內建到從協助程式方法 (全部都是根據 `ObjectResult`) 所傳回的狀態碼特定動作結果。 您也可以傳回模型類型 (已定義為資料傳輸類型的類別)，而且架構會自動將它包裝在 `ObjectResult` 中。
+用戶端指定 [Accept 標頭](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)時，會進行內容交涉 (簡稱 *conneg*)。 ASP.NET Core MVC 預設使用 JSON 格式。 內容交涉是由 `ObjectResult` 所實作。 它也會內建到從協助程式方法 (全部都是根據 `ObjectResult`) 所傳回的狀態碼特定動作結果。 您也可以傳回模型類型 (已定義為資料傳輸類型的類別)，而且架構會自動將它包裝在 `ObjectResult` 中。
 
 下列動作方法使用 `Ok` 和 `NotFound` 協助程式方法：
 

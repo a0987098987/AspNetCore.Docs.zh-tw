@@ -1,7 +1,7 @@
 ---
-title: "開始使用 ASP.NET Core 中的 Razor 頁面"
+title: "開始使用 ASP.NET Core 中的 Razor Pages"
 author: rick-anderson
-description: "開始使用 ASP.NET Core 中的 Razor 頁面"
+description: "開始使用 ASP.NET Core 中的 Razor Pages"
 manager: wpickett
 ms.author: riande
 ms.date: 12/22/2017
@@ -15,17 +15,17 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="get-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor 頁面
+# <a name="get-started-with-razor-pages-in-aspnet-core"></a>開始使用 ASP.NET Core 中的 Razor Pages
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+本教學課程將教導您建置 ASP.NET Core Razor Pages 之 Web 應用程式的基本概念。 Razor Pages 是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
 本教學課程有 3 個版本：
 
 * Windows：本教學課程
-* macOS：[利用 Visual Studio for Mac 開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
-* macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面](xref:tutorials/razor-pages-vsc/razor-pages-start)
+* macOS：[利用 Visual Studio for Mac 開始使用 Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
+* macOS、Linux 和 Windows：[利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

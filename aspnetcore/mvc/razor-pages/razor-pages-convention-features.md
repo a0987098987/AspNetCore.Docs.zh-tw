@@ -1,5 +1,5 @@
 ---
-title: "ASP.NET Core 中的 Razor 頁面路由和應用程式慣例功能"
+title: "ASP.NET Core 中的 Razor Pages 路由和應用程式慣例功能"
 author: guardrex
 description: "探索路由和應用程式模型提供者慣例功能如何協助您控制頁面路由、探索與處理。"
 manager: wpickett
@@ -15,11 +15,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="razor-pages-route-and-app-convention-features-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例功能
+# <a name="razor-pages-route-and-app-convention-features-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 路由和應用程式慣例功能
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-了解如何使用頁面路由和應用程式模型提供者慣例功能，來控制 Razor 頁面應用程式中的頁面路由、探索與處理。 當您需要設定個別頁面的自訂頁面路由時，請使用本主題稍後所述的 [AddPageRoute 慣例](#configure-a-page-route)來設定路由至頁面。
+了解如何使用頁面路由和應用程式模型提供者慣例功能，來控制 Razor Pages 應用程式中的頁面路由、探索與處理。 當您需要設定個別頁面的自訂頁面路由時，請使用本主題稍後所述的 [AddPageRoute 慣例](#configure-a-page-route)來設定路由至頁面。
 
 使用[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/razor-pages/razor-pages-convention-features/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample)) 來瀏覽本主題中所述的功能。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="add-route-and-app-model-conventions"></a>新增路由和應用程式模型慣例
 
-新增 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 的委派，以新增套用至 Razor 頁面的路由和應用程式模型慣例。
+新增 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 的委派，以新增套用至 Razor Pages 的路由和應用程式模型慣例。
 
 **將路由模型慣例新增至所有頁面**
 
@@ -171,7 +171,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 使用頁面應用程式模型，可針對指向 *OtherPages* 資料夾內 Page2 頁面的區段檢查相對路徑。 如果通過條件，則會新增標頭。 如果沒有，則會套用 `EmptyFilter`。
 
-`EmptyFilter` 是[動作篩選條件](xref:mvc/controllers/filters#action-filters)。 由於 Razor 頁面會忽略動作篩選條件，因此如果路徑未包含 `OtherPages/Page2`，則 `EmptyFilter` 不會如預期般生效。
+`EmptyFilter` 是[動作篩選條件](xref:mvc/controllers/filters#action-filters)。 由於 Razor Pages 會忽略動作篩選條件，因此如果路徑未包含 `OtherPages/Page2`，則 `EmptyFilter` 不會如預期般生效。
 
 在 `localhost:5000/OtherPages/Page2` 上要求範例的 Page2 頁面，並檢查標頭來檢視結果：
 
@@ -179,7 +179,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 **設定篩選條件 Factory**
 
-[ConfigureFilter](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.configurefilter?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_ConfigureFilter_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_Func_Microsoft_AspNetCore_Mvc_ApplicationModels_PageApplicationModel_Microsoft_AspNetCore_Mvc_Filters_IFilterMetadata__) 可設定指定的 Factory，以將[篩選條件](xref:mvc/controllers/filters)套用至所有 Razor 頁面。
+[ConfigureFilter](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.configurefilter?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_PageConventionCollectionExtensions_ConfigureFilter_Microsoft_AspNetCore_Mvc_ApplicationModels_PageConventionCollection_System_Func_Microsoft_AspNetCore_Mvc_ApplicationModels_PageApplicationModel_Microsoft_AspNetCore_Mvc_Filters_IFilterMetadata__) 可設定指定的 Factory，以將[篩選條件](xref:mvc/controllers/filters)套用至所有 Razor Pages。
 
 範例應用程式示範如何以應用程式頁面的兩個值新增標頭 `FilterFactoryHeader` 來使用[篩選條件 Factory](xref:mvc/controllers/filters#ifilterfactory)：
 
@@ -195,7 +195,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 ## <a name="replace-the-default-page-app-model-provider"></a>取代預設頁面應用程式模型提供者
 
-Razor 頁面使用 `IPageApplicationModelProvider` 介面來建立 [DefaultPageApplicationModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.internal.defaultpageapplicationmodelprovider)。 您可以繼承自預設模型提供者，以提供您自己的實作邏輯來進行處理常式探索和處理。 預設實作 ([參考來源](https://github.com/aspnet/Mvc/blob/rel/2.0.1/src/Microsoft.AspNetCore.Mvc.RazorPages/Internal/DefaultPageApplicationModelProvider.cs)) 會建立「未具名」和「具名」處理常式命名的慣例，如下所述。
+Razor Pages 使用 `IPageApplicationModelProvider` 介面來建立 [DefaultPageApplicationModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.internal.defaultpageapplicationmodelprovider)。 您可以繼承自預設模型提供者，以提供您自己的實作邏輯來進行處理常式探索和處理。 預設實作 ([參考來源](https://github.com/aspnet/Mvc/blob/rel/2.0.1/src/Microsoft.AspNetCore.Mvc.RazorPages/Internal/DefaultPageApplicationModelProvider.cs)) 會建立「未具名」和「具名」處理常式命名的慣例，如下所述。
 
 **預設的未具名處理常式方法**
 
@@ -262,7 +262,7 @@ HTTP 指令動詞的處理常式方法 (「未具名」處理常式方法) 遵�
 
 [!code-csharp[Main](razor-pages-convention-features/sample/Startup.cs?name=snippet10)]
 
-*Index.cshtml.cs* 中的頁面模型顯示一般處理常式方法的命名慣例如何針對應用程式中的頁面變更。 移除了與 Razor 頁面搭配使用的一般 "On" 前置詞命名。 初始化頁面狀態的方法現在已命名為 `Get`。 如果您針對任一頁面開啟任何頁面模型，則可以看到在整個應用程式中使用的這個慣例。
+*Index.cshtml.cs* 中的頁面模型顯示一般處理常式方法的命名慣例如何針對應用程式中的頁面變更。 移除了與 Razor Pages 搭配使用的一般 "On" 前置詞命名。 初始化頁面狀態的方法現在已命名為 `Get`。 如果您針對任一頁面開啟任何頁面模型，則可以看到在整個應用程式中使用的這個慣例。
 
 每個其他方法會以描述其處理的 HTTP 指令動詞為開頭。 以 `Delete` 開頭的兩個方法通常會視為 DELETE HTTP 指令動詞，但 `TryParseHandlerMethod` 中的邏輯會針對這兩個處理常式將指令動詞明確設定為 POST。
 
@@ -278,7 +278,7 @@ HTTP 指令動詞的處理常式方法 (「未具名」處理常式方法) 遵�
 
 ## <a name="mvc-filters-and-the-page-filter-ipagefilter"></a>MVC 篩選條件和頁面篩選條件 (IPageFilter)
 
-Razor 頁面會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#action-filters)，因為 Razor 頁面使用處理常式方法。 其他類型的 MVC 篩選條件可供您使用：[Authorization](xref:mvc/controllers/filters#authorization-filters)、[Exception](xref:mvc/controllers/filters#exception-filters)、[Resource](xref:mvc/controllers/filters#resource-filters) 和 [Result](xref:mvc/controllers/filters#result-filters)。 如需詳細資訊，請參閱[篩選條件](xref:mvc/controllers/filters)主題。
+Razor Pages 會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#action-filters)，因為 Razor Pages 使用處理常式方法。 其他類型的 MVC 篩選條件可供您使用：[Authorization](xref:mvc/controllers/filters#authorization-filters)、[Exception](xref:mvc/controllers/filters#exception-filters)、[Resource](xref:mvc/controllers/filters#resource-filters) 和 [Result](xref:mvc/controllers/filters#result-filters)。 如需詳細資訊，請參閱[篩選條件](xref:mvc/controllers/filters)主題。
 
 頁面篩選條件 ([IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter)) 是可套用至 Razor 頁面的篩選條件。 它會環繞頁面處理常式方法的執行。 它可讓您在頁面處理常式方法的執行階段處理自訂程式碼。 以下是範例應用程式中的範例：
 
@@ -296,4 +296,4 @@ Razor 頁面會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#acti
 
 ## <a name="see-also"></a>另請參閱
 
-* [Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization)
+* [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)

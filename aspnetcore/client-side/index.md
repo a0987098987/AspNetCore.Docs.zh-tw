@@ -4,16 +4,16 @@ author: rick-anderson
 description: 
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 02/21/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/index
-ms.openlocfilehash: 41cf3ce972de5e330dbe303e6a42fe215f3ac7a5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a4b42f7f4de07351e4e9a48ebc59bab2f187cedd
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="client-side-development-in-aspnet-core"></a>ASP.NET Core 的用戶端開發
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/30/2018
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [使用瀏覽器連結](xref:client-side/using-browserlink)
 - [針對 SPA 使用 JavaScriptServices](xref:client-side/spa-services)
-- [使用 SPA 專案範本 (RC)](xref:spa/index)
+- [使用 SPA 專案範本](xref:spa/index)
     - [Angular 專案範本](xref:spa/angular)
     - [React 專案範本](xref:spa/react)
     - [React with Redux 專案範本](xref:spa/react-with-redux)

@@ -1,7 +1,7 @@
 ---
-title: "將新欄位新增至 Razor 頁面"
+title: "將新欄位新增至 Razor Pages"
 author: rick-anderson
-description: "示範如何使用 Entity Framework Core 將新欄位新增至 Razor 頁面"
+description: "示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages"
 manager: wpickett
 ms.author: riande
 ms.date: 08/07/2017
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor 頁面
+# <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor Pages
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

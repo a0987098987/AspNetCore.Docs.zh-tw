@@ -1,7 +1,7 @@
 ---
-title: "將檔案上傳至 ASP.NET Core 的 Razor 頁面"
+title: "將檔案上傳至 ASP.NET Core 的 Razor Pages"
 author: guardrex
-description: "了解如何將檔案上傳至 Razor 頁面。"
+description: "了解如何將檔案上傳至 Razor Pages。"
 manager: wpickett
 ms.author: riande
 ms.date: 09/12/2017
@@ -19,9 +19,9 @@ ms.lasthandoff: 02/01/2018
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-本節會示範如何使用 Razor 頁面上傳檔案。
+本節會示範如何使用 Razor Page 上傳檔案。
 
-在本教學課程中，[Razor 頁面電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
+在本教學課程中，[Razor Pages 電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
 
 在下列步驟中，電影排程檔案上傳功能會新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="add-a-fileupload-class"></a>新增 FileUpload 類別
 
-您可以建立 Razor 頁面來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
+您可以建立 Razor Page 來處理一對檔案上傳。 新增 `FileUpload` 類別，以繫結至頁面並取得排程資料。 以滑鼠右鍵按一下 *Models* 資料夾。 選取 [新增] > [類別]。 將類別命名為 **FileUpload** 並新增下列屬性：
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
 
@@ -101,7 +101,7 @@ Add-Migration AddScheduleTable
 Update-Database
 ```
 
-## <a name="add-a-file-upload-razor-page"></a>新增檔案上傳 Razor 頁面
+## <a name="add-a-file-upload-razor-page"></a>新增檔案上傳 Razor Page
 
 在 *Pages* 資料夾中，建立 *Schedules* 資料夾。 在 *Schedules* 資料夾中，建立名為 *Index.cshtml* 的頁面，以上傳排程與下列內容：
 
@@ -133,7 +133,7 @@ Update-Database
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
 
-## <a name="link-the-file-upload-razor-page"></a>連結檔案上傳 Razor 頁面
+## <a name="link-the-file-upload-razor-page"></a>連結檔案上傳 Razor Page
 
 開啟 *_Layout.cshtml*，然後將連結新增至導覽列以存取檔案上傳頁面：
 
@@ -155,11 +155,11 @@ Update-Database
 
 成功刪除排程之後，`RedirectToPage` 會將使用者送回排程的 *Index.cshtml* 頁面。
 
-## <a name="the-working-schedules-razor-page"></a>運作中的排程 Razor 頁面
+## <a name="the-working-schedules-razor-page"></a>運作中的排程 Razor Page
 
 載入頁面時，排程標題的標籤和輸入、公用排程和私用排程都會顯示提交按鈕：
 
-![初始載入的排程 Razor 頁面，其中不含任何驗證錯誤和空白欄位](uploading-files/_static/browser1.png)
+![初始載入的排程 Razor Page，其中不含任何驗證錯誤和空白欄位](uploading-files/_static/browser1.png)
 
 如果任何欄位未填妥就選取 [上傳] 按鈕，即會違反模型上的 `[Required]` 屬性。 `ModelState` 無效。 使用者會看到驗證錯誤訊息：
 
@@ -179,7 +179,7 @@ Update-Database
 
 如需針對 `IFormFile` 上傳進行疑難排解的資訊，請參閱 [ASP.NET Core 的檔案上傳：疑難排解](xref:mvc/models/file-uploads#troubleshooting)。
 
-感謝您看完這份 Razor 頁面簡介。 感謝您提供意見反應。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
+感謝您看完這份 Razor Pages 簡介。 感謝您提供意見反應。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
 
 ## <a name="additional-resources"></a>其他資源
 

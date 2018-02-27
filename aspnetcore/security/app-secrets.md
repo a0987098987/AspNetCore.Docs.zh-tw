@@ -25,7 +25,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="environment-variables"></a>環境變數
 
-若要避免在程式碼，或在本機的組態檔中儲存應用程式密碼，您可以將密碼儲存在環境變數中。 您可以設定[組態](xref:fundamentals/configuration/index)架構，以讀取環境變數中的值，藉由呼叫`AddEnvironmentVariables`。 然後，您可以使用環境變數覆寫所有先前指定的設定來源的組態值。
+若要避免將應用程式密碼儲存在程式碼或本機的組態檔中，可以將密碼儲存在環境變數中。 您可以先將 [組態](xref:fundamentals/configuration/index) 架構設定為透過呼叫`AddEnvironmentVariables`來讀取環境變數中的值`AddEnvironmentVariables`。 接著便能使用環境變數，來為所有先前已指定的組態來源複寫組態值。
 
 例如，當您透過個別使用者帳戶建立新的 ASP.NET Core web 應用程式時，系統會將預設的連接字串`DefaultConnection`新增至專案裡具有索引鍵的*appsettings.json*檔案中。 預設的連接字串會使用 LocalDB，而 LocalDB 會在使用者模式下執行，且不需要密碼。 當您將應用程式部署到測試或正式伺服器時，就可以覆寫預設連接字串`DefaultConnection`的值，設定成包含測試或正式執行資料庫的連接字串（潛在機密的認證）的伺服器環境變數。
 
@@ -114,11 +114,11 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 密碼管理員工具會將實作的詳細資料加以抽象，包括各值儲存的位置和方式。 不需要知道這些實作細節也可以使用此工具。 在目前版本中，這些值會使用[JSON](http://json.org/)組態檔儲存在使用者設定檔的目錄中：
 
-* Windows:`%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
+* Windows: `%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
 
-* Linux:`~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
+* Linux: `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 
-* Mac:`~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
+* Mac: `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 
 上述路經中，其`userSecretsId`值是來自*.csproj*檔案。
 

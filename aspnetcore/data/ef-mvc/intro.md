@@ -88,7 +88,7 @@ EF Core 2.0 是 EF 的最新版本，但還未包括所有 EF 6.x 的功能。 �
 
 開啟 *Views/Shared/_Layout.cshtml* 並進行下列變更：
 
-* 將每一個 "ContosoUniversity" 變更為 "Contoso University"。
+* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。共出現三次。
 
 * 為 **Students**、**Courses**、**Instructors**、**Departments** 新增功能表項目，並刪除 **Contact** 功能表項目。
 

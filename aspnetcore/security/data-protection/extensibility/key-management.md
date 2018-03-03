@@ -9,143 +9,143 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 68f590dffe8bb98813f974a5ecb9b270a5419ddf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="key-management-extensibility"></a><span data-ttu-id="a5ce9-103">金鑰管理的擴充性</span><span class="sxs-lookup"><span data-stu-id="a5ce9-103">Key management extensibility</span></span>
+# <a name="key-management-extensibility"></a><span data-ttu-id="8d709-103">金鑰管理的擴充性</span><span class="sxs-lookup"><span data-stu-id="8d709-103">Key management extensibility</span></span>
 
 <a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
-> <span data-ttu-id="a5ce9-104">讀取[金鑰管理](../implementation/key-management.md#data-protection-implementation-key-management)閱讀本節中，因為它會說明這些 Api 的基本概念的某些之前 > 一節。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-104">Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management) section before reading this section, as it explains some of the fundamental concepts behind these APIs.</span></span>
+> <span data-ttu-id="8d709-104">讀取[金鑰管理](../implementation/key-management.md#data-protection-implementation-key-management)閱讀本節中，因為它會說明這些 Api 的基本概念的某些之前 > 一節。</span><span class="sxs-lookup"><span data-stu-id="8d709-104">Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management) section before reading this section, as it explains some of the fundamental concepts behind these APIs.</span></span>
 
 >[!WARNING]
-> <span data-ttu-id="a5ce9-105">實作下列介面的型別應該是安全執行緒的多個呼叫端。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-105">Types that implement any of the following interfaces should be thread-safe for multiple callers.</span></span>
+> <span data-ttu-id="8d709-105">實作下列介面的型別應該是安全執行緒的多個呼叫端。</span><span class="sxs-lookup"><span data-stu-id="8d709-105">Types that implement any of the following interfaces should be thread-safe for multiple callers.</span></span>
 
-## <a name="key"></a><span data-ttu-id="a5ce9-106">Key</span><span class="sxs-lookup"><span data-stu-id="a5ce9-106">Key</span></span>
+## <a name="key"></a><span data-ttu-id="8d709-106">Key</span><span class="sxs-lookup"><span data-stu-id="8d709-106">Key</span></span>
 
-<span data-ttu-id="a5ce9-107">`IKey`介面是加密系統都中的索引鍵的基本表示法。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-107">The `IKey` interface is the basic representation of a key in cryptosystem.</span></span> <span data-ttu-id="a5ce9-108">這裡使用的詞彙的索引鍵是抽象的意義而言，不是處於 「 密碼編譯金鑰內容 」 的常值的意義。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-108">The term key is used here in the abstract sense, not in the literal sense of "cryptographic key material".</span></span> <span data-ttu-id="a5ce9-109">索引鍵具有下列屬性：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-109">A key has the following properties:</span></span>
+<span data-ttu-id="8d709-107">`IKey`介面是加密系統都中的索引鍵的基本表示法。</span><span class="sxs-lookup"><span data-stu-id="8d709-107">The `IKey` interface is the basic representation of a key in cryptosystem.</span></span> <span data-ttu-id="8d709-108">這裡使用的詞彙的索引鍵是抽象的意義而言，不是處於 「 密碼編譯金鑰內容 」 的常值的意義。</span><span class="sxs-lookup"><span data-stu-id="8d709-108">The term key is used here in the abstract sense, not in the literal sense of "cryptographic key material".</span></span> <span data-ttu-id="8d709-109">索引鍵具有下列屬性：</span><span class="sxs-lookup"><span data-stu-id="8d709-109">A key has the following properties:</span></span>
 
-* <span data-ttu-id="a5ce9-110">啟用、 建立和到期日期</span><span class="sxs-lookup"><span data-stu-id="a5ce9-110">Activation, creation, and expiration dates</span></span>
+* <span data-ttu-id="8d709-110">啟用、 建立和到期日期</span><span class="sxs-lookup"><span data-stu-id="8d709-110">Activation, creation, and expiration dates</span></span>
 
-* <span data-ttu-id="a5ce9-111">撤銷狀態</span><span class="sxs-lookup"><span data-stu-id="a5ce9-111">Revocation status</span></span>
+* <span data-ttu-id="8d709-111">撤銷狀態</span><span class="sxs-lookup"><span data-stu-id="8d709-111">Revocation status</span></span>
 
-* <span data-ttu-id="a5ce9-112">金鑰識別碼 (GUID)</span><span class="sxs-lookup"><span data-stu-id="a5ce9-112">Key identifier (a GUID)</span></span>
+* <span data-ttu-id="8d709-112">金鑰識別碼 (GUID)</span><span class="sxs-lookup"><span data-stu-id="8d709-112">Key identifier (a GUID)</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-113">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-113">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-113">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-113">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-<span data-ttu-id="a5ce9-114">此外，`IKey`公開`CreateEncryptor`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-114">Additionally, `IKey` exposes a `CreateEncryptor` method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance tied to this key.</span></span>
+<span data-ttu-id="8d709-114">此外，`IKey`公開`CreateEncryptor`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。</span><span class="sxs-lookup"><span data-stu-id="8d709-114">Additionally, `IKey` exposes a `CreateEncryptor` method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance tied to this key.</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-115">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-115">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-115">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-115">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="a5ce9-116">此外，`IKey`公開`CreateEncryptorInstance`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-116">Additionally, `IKey` exposes a `CreateEncryptorInstance` method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance tied to this key.</span></span>
+<span data-ttu-id="8d709-116">此外，`IKey`公開`CreateEncryptorInstance`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。</span><span class="sxs-lookup"><span data-stu-id="8d709-116">Additionally, `IKey` exposes a `CreateEncryptorInstance` method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance tied to this key.</span></span>
 
 ---
 
 > [!NOTE]
-> <span data-ttu-id="a5ce9-117">沒有任何 API 來擷取未經處理的密碼編譯內容，從`IKey`執行個體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-117">There's no API to retrieve the raw cryptographic material from an `IKey` instance.</span></span>
+> <span data-ttu-id="8d709-117">沒有任何 API 來擷取未經處理的密碼編譯內容，從`IKey`執行個體。</span><span class="sxs-lookup"><span data-stu-id="8d709-117">There's no API to retrieve the raw cryptographic material from an `IKey` instance.</span></span>
 
-## <a name="ikeymanager"></a><span data-ttu-id="a5ce9-118">IKeyManager</span><span class="sxs-lookup"><span data-stu-id="a5ce9-118">IKeyManager</span></span>
+## <a name="ikeymanager"></a><span data-ttu-id="8d709-118">IKeyManager</span><span class="sxs-lookup"><span data-stu-id="8d709-118">IKeyManager</span></span>
 
-<span data-ttu-id="a5ce9-119">`IKeyManager`介面代表負責一般金鑰儲存、 擷取及管理的物件。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-119">The `IKeyManager` interface represents an object responsible for general key storage, retrieval, and manipulation.</span></span> <span data-ttu-id="a5ce9-120">它會公開三個高階的作業：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-120">It exposes three high-level operations:</span></span>
+<span data-ttu-id="8d709-119">`IKeyManager`介面代表負責一般金鑰儲存、 擷取及管理的物件。</span><span class="sxs-lookup"><span data-stu-id="8d709-119">The `IKeyManager` interface represents an object responsible for general key storage, retrieval, and manipulation.</span></span> <span data-ttu-id="8d709-120">它會公開三個高階的作業：</span><span class="sxs-lookup"><span data-stu-id="8d709-120">It exposes three high-level operations:</span></span>
 
-* <span data-ttu-id="a5ce9-121">建立新的金鑰，並將它保存到儲存體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-121">Create a new key and persist it to storage.</span></span>
+* <span data-ttu-id="8d709-121">建立新的金鑰，並將它保存到儲存體。</span><span class="sxs-lookup"><span data-stu-id="8d709-121">Create a new key and persist it to storage.</span></span>
 
-* <span data-ttu-id="a5ce9-122">從存放區中取得所有索引鍵。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-122">Get all keys from storage.</span></span>
+* <span data-ttu-id="8d709-122">從存放區中取得所有索引鍵。</span><span class="sxs-lookup"><span data-stu-id="8d709-122">Get all keys from storage.</span></span>
 
-* <span data-ttu-id="a5ce9-123">撤銷一或多個金鑰，並將保存到儲存體的撤銷資訊。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-123">Revoke one or more keys and persist the revocation information to storage.</span></span>
+* <span data-ttu-id="8d709-123">撤銷一或多個金鑰，並將保存到儲存體的撤銷資訊。</span><span class="sxs-lookup"><span data-stu-id="8d709-123">Revoke one or more keys and persist the revocation information to storage.</span></span>
 
 >[!WARNING]
-> <span data-ttu-id="a5ce9-124">撰寫`IKeyManager`的非常進階的工作，而且大部分的開發人員不應該嘗試它。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-124">Writing an `IKeyManager` is a very advanced task, and the majority of developers shouldn't attempt it.</span></span> <span data-ttu-id="a5ce9-125">相反地，大部分的開發人員應利用所提供的功能[XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager)類別。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-125">Instead, most developers should take advantage of the facilities offered by the [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) class.</span></span>
+> <span data-ttu-id="8d709-124">撰寫`IKeyManager`的非常進階的工作，而且大部分的開發人員不應該嘗試它。</span><span class="sxs-lookup"><span data-stu-id="8d709-124">Writing an `IKeyManager` is a very advanced task, and the majority of developers shouldn't attempt it.</span></span> <span data-ttu-id="8d709-125">相反地，大部分的開發人員應利用所提供的功能[XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager)類別。</span><span class="sxs-lookup"><span data-stu-id="8d709-125">Instead, most developers should take advantage of the facilities offered by the [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) class.</span></span>
 
 <a name="data-protection-extensibility-key-management-xmlkeymanager"></a>
 
-## <a name="xmlkeymanager"></a><span data-ttu-id="a5ce9-126">XmlKeyManager</span><span class="sxs-lookup"><span data-stu-id="a5ce9-126">XmlKeyManager</span></span>
+## <a name="xmlkeymanager"></a><span data-ttu-id="8d709-126">XmlKeyManager</span><span class="sxs-lookup"><span data-stu-id="8d709-126">XmlKeyManager</span></span>
 
-<span data-ttu-id="a5ce9-127">`XmlKeyManager`型別是內建的具象實作`IKeyManager`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-127">The `XmlKeyManager` type is the in-box concrete implementation of `IKeyManager`.</span></span> <span data-ttu-id="a5ce9-128">它提供數個實用的功能，包括金鑰委付和加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-128">It provides several useful facilities, including key escrow and encryption of keys at rest.</span></span> <span data-ttu-id="a5ce9-129">在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview))。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-129">Keys in this system are represented as XML elements (specifically, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).</span></span>
+<span data-ttu-id="8d709-127">`XmlKeyManager`型別是內建的具象實作`IKeyManager`。</span><span class="sxs-lookup"><span data-stu-id="8d709-127">The `XmlKeyManager` type is the in-box concrete implementation of `IKeyManager`.</span></span> <span data-ttu-id="8d709-128">它提供數個實用的功能，包括金鑰委付和加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="8d709-128">It provides several useful facilities, including key escrow and encryption of keys at rest.</span></span> <span data-ttu-id="8d709-129">在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview))。</span><span class="sxs-lookup"><span data-stu-id="8d709-129">Keys in this system are represented as XML elements (specifically, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).</span></span>
 
-<span data-ttu-id="a5ce9-130">`XmlKeyManager`在完成其工作過程中的其他數個元件而定：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-130">`XmlKeyManager` depends on several other components in the course of fulfilling its tasks:</span></span>
+<span data-ttu-id="8d709-130">`XmlKeyManager` 在完成其工作過程中的其他數個元件而定：</span><span class="sxs-lookup"><span data-stu-id="8d709-130">`XmlKeyManager` depends on several other components in the course of fulfilling its tasks:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-131">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-131">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-131">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-131">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
-* <span data-ttu-id="a5ce9-132">`AlgorithmConfiguration`其中指出新的金鑰所使用的演算法。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-132">`AlgorithmConfiguration`, which dictates the algorithms used by new keys.</span></span>
+* <span data-ttu-id="8d709-132">`AlgorithmConfiguration`其中指出新的金鑰所使用的演算法。</span><span class="sxs-lookup"><span data-stu-id="8d709-132">`AlgorithmConfiguration`, which dictates the algorithms used by new keys.</span></span>
 
-* <span data-ttu-id="a5ce9-133">`IXmlRepository`其中索引鍵會保存在儲存體中的控制項。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-133">`IXmlRepository`, which controls where keys are persisted in storage.</span></span>
+* <span data-ttu-id="8d709-133">`IXmlRepository`其中索引鍵會保存在儲存體中的控制項。</span><span class="sxs-lookup"><span data-stu-id="8d709-133">`IXmlRepository`, which controls where keys are persisted in storage.</span></span>
 
-* <span data-ttu-id="a5ce9-134">`IXmlEncryptor`[選用]，可讓加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-134">`IXmlEncryptor` [optional], which allows encrypting keys at rest.</span></span>
+* <span data-ttu-id="8d709-134">`IXmlEncryptor` [選用]，可讓加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="8d709-134">`IXmlEncryptor` [optional], which allows encrypting keys at rest.</span></span>
 
-* <span data-ttu-id="a5ce9-135">`IKeyEscrowSink`[選用]，以提供金鑰委付服務。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-135">`IKeyEscrowSink` [optional], which provides key escrow services.</span></span>
+* <span data-ttu-id="8d709-135">`IKeyEscrowSink` [選用]，以提供金鑰委付服務。</span><span class="sxs-lookup"><span data-stu-id="8d709-135">`IKeyEscrowSink` [optional], which provides key escrow services.</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-136">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-136">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-136">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-136">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-* <span data-ttu-id="a5ce9-137">`IXmlRepository`其中索引鍵會保存在儲存體中的控制項。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-137">`IXmlRepository`, which controls where keys are persisted in storage.</span></span>
+* <span data-ttu-id="8d709-137">`IXmlRepository`其中索引鍵會保存在儲存體中的控制項。</span><span class="sxs-lookup"><span data-stu-id="8d709-137">`IXmlRepository`, which controls where keys are persisted in storage.</span></span>
 
-* <span data-ttu-id="a5ce9-138">`IXmlEncryptor`[選用]，可讓加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-138">`IXmlEncryptor` [optional], which allows encrypting keys at rest.</span></span>
+* <span data-ttu-id="8d709-138">`IXmlEncryptor` [選用]，可讓加密在靜止的索引鍵。</span><span class="sxs-lookup"><span data-stu-id="8d709-138">`IXmlEncryptor` [optional], which allows encrypting keys at rest.</span></span>
 
-* <span data-ttu-id="a5ce9-139">`IKeyEscrowSink`[選用]，以提供金鑰委付服務。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-139">`IKeyEscrowSink` [optional], which provides key escrow services.</span></span>
+* <span data-ttu-id="8d709-139">`IKeyEscrowSink` [選用]，以提供金鑰委付服務。</span><span class="sxs-lookup"><span data-stu-id="8d709-139">`IKeyEscrowSink` [optional], which provides key escrow services.</span></span>
 
 ---
 
-<span data-ttu-id="a5ce9-140">以下是高層級圖，這表示如何這些元件有線內的一起`XmlKeyManager`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-140">Below are high-level diagrams which indicate how these components are wired together within `XmlKeyManager`.</span></span>
+<span data-ttu-id="8d709-140">以下是高層級圖，這表示如何這些元件有線內的一起`XmlKeyManager`。</span><span class="sxs-lookup"><span data-stu-id="8d709-140">Below are high-level diagrams which indicate how these components are wired together within `XmlKeyManager`.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-141">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-141">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-141">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-141">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
    ![建立金鑰](key-management/_static/keycreation2.png)
 
-   <span data-ttu-id="a5ce9-143">*金鑰建立 / CreateNewKey*</span><span class="sxs-lookup"><span data-stu-id="a5ce9-143">*Key Creation / CreateNewKey*</span></span>
+   <span data-ttu-id="8d709-143">*金鑰建立 / CreateNewKey*</span><span class="sxs-lookup"><span data-stu-id="8d709-143">*Key Creation / CreateNewKey*</span></span>
 
-<span data-ttu-id="a5ce9-144">實作中`CreateNewKey`、`AlgorithmConfiguration`元件用來建立唯一`IAuthenticatedEncryptorDescriptor`，其接著會序列化為 XML。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-144">In the implementation of `CreateNewKey`, the `AlgorithmConfiguration` component is used to create a unique `IAuthenticatedEncryptorDescriptor`, which is then serialized as XML.</span></span> <span data-ttu-id="a5ce9-145">如果金鑰委付接收存在時，原始 （未加密） 的 XML 供接收長期儲存。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-145">If a key escrow sink is present, the raw (unencrypted) XML is provided to the sink for long-term storage.</span></span> <span data-ttu-id="a5ce9-146">然後透過執行未加密的 XML `IXmlEncryptor` （如有必要） 來產生加密的 XML 文件。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-146">The unencrypted XML is then run through an `IXmlEncryptor` (if required) to generate the encrypted XML document.</span></span> <span data-ttu-id="a5ce9-147">這個加密的文件會保存長期的儲存體透過`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-147">This encrypted document is persisted to long-term storage via the `IXmlRepository`.</span></span> <span data-ttu-id="a5ce9-148">(如果有任何`IXmlEncryptor`是設定，未加密的文件會持續保留在`IXmlRepository`。)</span><span class="sxs-lookup"><span data-stu-id="a5ce9-148">(If no `IXmlEncryptor` is configured, the unencrypted document is persisted in the `IXmlRepository`.)</span></span>
+<span data-ttu-id="8d709-144">實作中`CreateNewKey`、`AlgorithmConfiguration`元件用來建立唯一`IAuthenticatedEncryptorDescriptor`，其接著會序列化為 XML。</span><span class="sxs-lookup"><span data-stu-id="8d709-144">In the implementation of `CreateNewKey`, the `AlgorithmConfiguration` component is used to create a unique `IAuthenticatedEncryptorDescriptor`, which is then serialized as XML.</span></span> <span data-ttu-id="8d709-145">如果金鑰委付接收存在時，原始 （未加密） 的 XML 供接收長期儲存。</span><span class="sxs-lookup"><span data-stu-id="8d709-145">If a key escrow sink is present, the raw (unencrypted) XML is provided to the sink for long-term storage.</span></span> <span data-ttu-id="8d709-146">然後透過執行未加密的 XML `IXmlEncryptor` （如有必要） 來產生加密的 XML 文件。</span><span class="sxs-lookup"><span data-stu-id="8d709-146">The unencrypted XML is then run through an `IXmlEncryptor` (if required) to generate the encrypted XML document.</span></span> <span data-ttu-id="8d709-147">這個加密的文件會保存長期的儲存體透過`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="8d709-147">This encrypted document is persisted to long-term storage via the `IXmlRepository`.</span></span> <span data-ttu-id="8d709-148">(如果有任何`IXmlEncryptor`是設定，未加密的文件會持續保留在`IXmlRepository`。)</span><span class="sxs-lookup"><span data-stu-id="8d709-148">(If no `IXmlEncryptor` is configured, the unencrypted document is persisted in the `IXmlRepository`.)</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-149">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-149">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-149">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-149">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
    ![建立金鑰](key-management/_static/keycreation1.png)
 
-   <span data-ttu-id="a5ce9-151">*金鑰建立 / CreateNewKey*</span><span class="sxs-lookup"><span data-stu-id="a5ce9-151">*Key Creation / CreateNewKey*</span></span>
+   <span data-ttu-id="8d709-151">*金鑰建立 / CreateNewKey*</span><span class="sxs-lookup"><span data-stu-id="8d709-151">*Key Creation / CreateNewKey*</span></span>
 
-<span data-ttu-id="a5ce9-152">實作中`CreateNewKey`、`IAuthenticatedEncryptorConfiguration`元件用來建立唯一`IAuthenticatedEncryptorDescriptor`，其接著會序列化為 XML。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-152">In the implementation of `CreateNewKey`, the `IAuthenticatedEncryptorConfiguration` component is used to create a unique `IAuthenticatedEncryptorDescriptor`, which is then serialized as XML.</span></span> <span data-ttu-id="a5ce9-153">如果金鑰委付接收存在時，原始 （未加密） 的 XML 供接收長期儲存。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-153">If a key escrow sink is present, the raw (unencrypted) XML is provided to the sink for long-term storage.</span></span> <span data-ttu-id="a5ce9-154">然後透過執行未加密的 XML `IXmlEncryptor` （如有必要） 來產生加密的 XML 文件。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-154">The unencrypted XML is then run through an `IXmlEncryptor` (if required) to generate the encrypted XML document.</span></span> <span data-ttu-id="a5ce9-155">這個加密的文件會保存長期的儲存體透過`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-155">This encrypted document is persisted to long-term storage via the `IXmlRepository`.</span></span> <span data-ttu-id="a5ce9-156">(如果有任何`IXmlEncryptor`是設定，未加密的文件會持續保留在`IXmlRepository`。)</span><span class="sxs-lookup"><span data-stu-id="a5ce9-156">(If no `IXmlEncryptor` is configured, the unencrypted document is persisted in the `IXmlRepository`.)</span></span>
+<span data-ttu-id="8d709-152">實作中`CreateNewKey`、`IAuthenticatedEncryptorConfiguration`元件用來建立唯一`IAuthenticatedEncryptorDescriptor`，其接著會序列化為 XML。</span><span class="sxs-lookup"><span data-stu-id="8d709-152">In the implementation of `CreateNewKey`, the `IAuthenticatedEncryptorConfiguration` component is used to create a unique `IAuthenticatedEncryptorDescriptor`, which is then serialized as XML.</span></span> <span data-ttu-id="8d709-153">如果金鑰委付接收存在時，原始 （未加密） 的 XML 供接收長期儲存。</span><span class="sxs-lookup"><span data-stu-id="8d709-153">If a key escrow sink is present, the raw (unencrypted) XML is provided to the sink for long-term storage.</span></span> <span data-ttu-id="8d709-154">然後透過執行未加密的 XML `IXmlEncryptor` （如有必要） 來產生加密的 XML 文件。</span><span class="sxs-lookup"><span data-stu-id="8d709-154">The unencrypted XML is then run through an `IXmlEncryptor` (if required) to generate the encrypted XML document.</span></span> <span data-ttu-id="8d709-155">這個加密的文件會保存長期的儲存體透過`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="8d709-155">This encrypted document is persisted to long-term storage via the `IXmlRepository`.</span></span> <span data-ttu-id="8d709-156">(如果有任何`IXmlEncryptor`是設定，未加密的文件會持續保留在`IXmlRepository`。)</span><span class="sxs-lookup"><span data-stu-id="8d709-156">(If no `IXmlEncryptor` is configured, the unencrypted document is persisted in the `IXmlRepository`.)</span></span>
 
 ---
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-157">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-157">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-157">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-157">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
    ![金鑰擷取](key-management/_static/keyretrieval2.png)
    
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-159">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-159">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-159">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-159">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
    ![金鑰擷取](key-management/_static/keyretrieval1.png)
 
 ---
 
-   <span data-ttu-id="a5ce9-161">*索引鍵擷取 / GetAllKeys*</span><span class="sxs-lookup"><span data-stu-id="a5ce9-161">*Key Retrieval / GetAllKeys*</span></span>
+   <span data-ttu-id="8d709-161">*索引鍵擷取 / GetAllKeys*</span><span class="sxs-lookup"><span data-stu-id="8d709-161">*Key Retrieval / GetAllKeys*</span></span>
 
-<span data-ttu-id="a5ce9-162">在實作`GetAllKeys`、 XML 文件代表索引鍵和撤銷讀取基礎`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-162">In the implementation of `GetAllKeys`, the XML documents representing keys and revocations are read from the underlying `IXmlRepository`.</span></span> <span data-ttu-id="a5ce9-163">如果要加密這些文件，系統會自動解密這些檔案。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-163">If these documents are encrypted, the system will automatically decrypt them.</span></span> <span data-ttu-id="a5ce9-164">`XmlKeyManager`建立適當`IAuthenticatedEncryptorDescriptorDeserializer`還原序列化文件的執行個體放回`IAuthenticatedEncryptorDescriptor`執行個體，然後將包裝在個別`IKey`執行個體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-164">`XmlKeyManager` creates the appropriate `IAuthenticatedEncryptorDescriptorDeserializer` instances to deserialize the documents back into `IAuthenticatedEncryptorDescriptor` instances, which are then wrapped in individual `IKey` instances.</span></span> <span data-ttu-id="a5ce9-165">此集合`IKey`執行個體傳回給呼叫者。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-165">This collection of `IKey` instances is returned to the caller.</span></span>
+<span data-ttu-id="8d709-162">在實作`GetAllKeys`、 XML 文件代表索引鍵和撤銷讀取基礎`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="8d709-162">In the implementation of `GetAllKeys`, the XML documents representing keys and revocations are read from the underlying `IXmlRepository`.</span></span> <span data-ttu-id="8d709-163">如果要加密這些文件，系統會自動解密這些檔案。</span><span class="sxs-lookup"><span data-stu-id="8d709-163">If these documents are encrypted, the system will automatically decrypt them.</span></span> <span data-ttu-id="8d709-164">`XmlKeyManager` 建立適當`IAuthenticatedEncryptorDescriptorDeserializer`還原序列化文件的執行個體放回`IAuthenticatedEncryptorDescriptor`執行個體，然後將包裝在個別`IKey`執行個體。</span><span class="sxs-lookup"><span data-stu-id="8d709-164">`XmlKeyManager` creates the appropriate `IAuthenticatedEncryptorDescriptorDeserializer` instances to deserialize the documents back into `IAuthenticatedEncryptorDescriptor` instances, which are then wrapped in individual `IKey` instances.</span></span> <span data-ttu-id="8d709-165">此集合`IKey`執行個體傳回給呼叫者。</span><span class="sxs-lookup"><span data-stu-id="8d709-165">This collection of `IKey` instances is returned to the caller.</span></span>
 
-<span data-ttu-id="a5ce9-166">中可以找到特定的 XML 項目上的進一步資訊[金鑰儲存格式的文件](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format)。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-166">Further information on the particular XML elements can be found in the [key storage format document](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).</span></span>
+<span data-ttu-id="8d709-166">中可以找到特定的 XML 項目上的進一步資訊[金鑰儲存格式的文件](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format)。</span><span class="sxs-lookup"><span data-stu-id="8d709-166">Further information on the particular XML elements can be found in the [key storage format document](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).</span></span>
 
-## <a name="ixmlrepository"></a><span data-ttu-id="a5ce9-167">IXmlRepository</span><span class="sxs-lookup"><span data-stu-id="a5ce9-167">IXmlRepository</span></span>
+## <a name="ixmlrepository"></a><span data-ttu-id="8d709-167">IXmlRepository</span><span class="sxs-lookup"><span data-stu-id="8d709-167">IXmlRepository</span></span>
 
-<span data-ttu-id="a5ce9-168">`IXmlRepository`介面代表可保存到 XML 和 XML 擷取備份存放區的類型。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-168">The `IXmlRepository` interface represents a type that can persist XML to and retrieve XML from a backing store.</span></span> <span data-ttu-id="a5ce9-169">它會公開兩個 Api:</span><span class="sxs-lookup"><span data-stu-id="a5ce9-169">It exposes two APIs:</span></span>
+<span data-ttu-id="8d709-168">`IXmlRepository`介面代表可保存到 XML 和 XML 擷取備份存放區的類型。</span><span class="sxs-lookup"><span data-stu-id="8d709-168">The `IXmlRepository` interface represents a type that can persist XML to and retrieve XML from a backing store.</span></span> <span data-ttu-id="8d709-169">它會公開兩個 Api:</span><span class="sxs-lookup"><span data-stu-id="8d709-169">It exposes two APIs:</span></span>
 
-* <span data-ttu-id="a5ce9-170">GetAllElements(): IReadOnlyCollection<XElement></span><span class="sxs-lookup"><span data-stu-id="a5ce9-170">GetAllElements() : IReadOnlyCollection<XElement></span></span>
+* <span data-ttu-id="8d709-170">GetAllElements(): IReadOnlyCollection<XElement></span><span class="sxs-lookup"><span data-stu-id="8d709-170">GetAllElements() : IReadOnlyCollection<XElement></span></span>
 
-* <span data-ttu-id="a5ce9-171">StoreElement （XElement 項目，字串 friendlyName）</span><span class="sxs-lookup"><span data-stu-id="a5ce9-171">StoreElement(XElement element, string friendlyName)</span></span>
+* <span data-ttu-id="8d709-171">StoreElement （XElement 項目，字串 friendlyName）</span><span class="sxs-lookup"><span data-stu-id="8d709-171">StoreElement(XElement element, string friendlyName)</span></span>
 
-<span data-ttu-id="a5ce9-172">實作`IXmlRepository`不需要剖析 XML 傳遞給它們。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-172">Implementations of `IXmlRepository` don't need to parse the XML passing through them.</span></span> <span data-ttu-id="a5ce9-173">它們應該將視為不透明的 XML 文件，並讓較高層級擔心產生及剖析的文件。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-173">They should treat the XML documents as opaque and let higher layers worry about generating and parsing the documents.</span></span>
+<span data-ttu-id="8d709-172">實作`IXmlRepository`不需要剖析 XML 傳遞給它們。</span><span class="sxs-lookup"><span data-stu-id="8d709-172">Implementations of `IXmlRepository` don't need to parse the XML passing through them.</span></span> <span data-ttu-id="8d709-173">它們應該將視為不透明的 XML 文件，並讓較高層級擔心產生及剖析的文件。</span><span class="sxs-lookup"><span data-stu-id="8d709-173">They should treat the XML documents as opaque and let higher layers worry about generating and parsing the documents.</span></span>
 
-<span data-ttu-id="a5ce9-174">有兩種內建的具象類型實作`IXmlRepository`:`FileSystemXmlRepository`和`RegistryXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-174">There are two built-in concrete types which implement `IXmlRepository`: `FileSystemXmlRepository` and `RegistryXmlRepository`.</span></span> <span data-ttu-id="a5ce9-175">請參閱[金鑰儲存提供者文件](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-175">See the [key storage providers document](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) for more information.</span></span> <span data-ttu-id="a5ce9-176">註冊自訂`IXmlRepository`會是適當的方式來使用不同的備份存放區，例如 Azure Blob 儲存體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-176">Registering a custom `IXmlRepository` would be the appropriate manner to use a different backing store, e.g., Azure Blob Storage.</span></span>
+<span data-ttu-id="8d709-174">有兩種內建的具象類型實作`IXmlRepository`:`FileSystemXmlRepository`和`RegistryXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="8d709-174">There are two built-in concrete types which implement `IXmlRepository`: `FileSystemXmlRepository` and `RegistryXmlRepository`.</span></span> <span data-ttu-id="8d709-175">請參閱[金鑰儲存提供者文件](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="8d709-175">See the [key storage providers document](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) for more information.</span></span> <span data-ttu-id="8d709-176">註冊自訂`IXmlRepository`會是適當的方式來使用不同的備份存放區，例如 Azure Blob 儲存體。</span><span class="sxs-lookup"><span data-stu-id="8d709-176">Registering a custom `IXmlRepository` would be the appropriate manner to use a different backing store, e.g., Azure Blob Storage.</span></span>
 
-<span data-ttu-id="a5ce9-177">若要變更預設儲存機制整個應用程式，註冊自訂`IXmlRepository`執行個體：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-177">To change the default repository application-wide, register a custom `IXmlRepository` instance:</span></span>
+<span data-ttu-id="8d709-177">若要變更預設儲存機制整個應用程式，註冊自訂`IXmlRepository`執行個體：</span><span class="sxs-lookup"><span data-stu-id="8d709-177">To change the default repository application-wide, register a custom `IXmlRepository` instance:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-178">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-178">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-178">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-178">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
    ```csharp
    services.Configure<KeyManagementOptions>(options => options.XmlRepository = new MyCustomXmlRepository());
    ```
    
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-179">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-179">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-179">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-179">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
    ```csharp
    services.AddSingleton<IXmlRepository>(new MyCustomXmlRepository());
@@ -155,31 +155,31 @@ ms.lasthandoff: 01/30/2018
 
 <a name="data-protection-extensibility-key-management-ixmlencryptor"></a>
 
-## <a name="ixmlencryptor"></a><span data-ttu-id="a5ce9-180">IXmlEncryptor</span><span class="sxs-lookup"><span data-stu-id="a5ce9-180">IXmlEncryptor</span></span>
+## <a name="ixmlencryptor"></a><span data-ttu-id="8d709-180">IXmlEncryptor</span><span class="sxs-lookup"><span data-stu-id="8d709-180">IXmlEncryptor</span></span>
 
-<span data-ttu-id="a5ce9-181">`IXmlEncryptor`介面代表可以加密純文字 XML 項目類型。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-181">The `IXmlEncryptor` interface represents a type that can encrypt a plaintext XML element.</span></span> <span data-ttu-id="a5ce9-182">它會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="a5ce9-182">It exposes a single API:</span></span>
+<span data-ttu-id="8d709-181">`IXmlEncryptor`介面代表可以加密純文字 XML 項目類型。</span><span class="sxs-lookup"><span data-stu-id="8d709-181">The `IXmlEncryptor` interface represents a type that can encrypt a plaintext XML element.</span></span> <span data-ttu-id="8d709-182">它會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="8d709-182">It exposes a single API:</span></span>
 
-* <span data-ttu-id="a5ce9-183">加密 (XElement plaintextElement): EncryptedXmlInfo</span><span class="sxs-lookup"><span data-stu-id="a5ce9-183">Encrypt(XElement plaintextElement) : EncryptedXmlInfo</span></span>
+* <span data-ttu-id="8d709-183">加密 (XElement plaintextElement): EncryptedXmlInfo</span><span class="sxs-lookup"><span data-stu-id="8d709-183">Encrypt(XElement plaintextElement) : EncryptedXmlInfo</span></span>
 
-<span data-ttu-id="a5ce9-184">如果序列化`IAuthenticatedEncryptorDescriptor`包含任何項目，然後標示為 「 需要加密 」`XmlKeyManager`會執行這些項目，透過設定`IXmlEncryptor`的`Encrypt`方法，而且它將會保存 enciphered 項目而非以純文字項目`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-184">If a serialized `IAuthenticatedEncryptorDescriptor` contains any elements marked as "requires encryption", then `XmlKeyManager` will run those elements through the configured `IXmlEncryptor`'s `Encrypt` method, and it will persist the enciphered element rather than the plaintext element to the `IXmlRepository`.</span></span> <span data-ttu-id="a5ce9-185">輸出`Encrypt`方法`EncryptedXmlInfo`物件。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-185">The output of the `Encrypt` method is an `EncryptedXmlInfo` object.</span></span> <span data-ttu-id="a5ce9-186">此物件是包裝函式包含兩個結果 enciphered`XElement`代表的類型和`IXmlDecryptor`這可以用來解密的對應元素。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-186">This object is a wrapper which contains both the resultant enciphered `XElement` and the Type which represents an `IXmlDecryptor` which can be used to decipher the corresponding element.</span></span>
+<span data-ttu-id="8d709-184">如果序列化`IAuthenticatedEncryptorDescriptor`包含任何項目，然後標示為 「 需要加密 」`XmlKeyManager`會執行這些項目，透過設定`IXmlEncryptor`的`Encrypt`方法，而且它將會保存 enciphered 項目而非以純文字項目`IXmlRepository`。</span><span class="sxs-lookup"><span data-stu-id="8d709-184">If a serialized `IAuthenticatedEncryptorDescriptor` contains any elements marked as "requires encryption", then `XmlKeyManager` will run those elements through the configured `IXmlEncryptor`'s `Encrypt` method, and it will persist the enciphered element rather than the plaintext element to the `IXmlRepository`.</span></span> <span data-ttu-id="8d709-185">輸出`Encrypt`方法`EncryptedXmlInfo`物件。</span><span class="sxs-lookup"><span data-stu-id="8d709-185">The output of the `Encrypt` method is an `EncryptedXmlInfo` object.</span></span> <span data-ttu-id="8d709-186">此物件是包裝函式包含兩個結果 enciphered`XElement`代表的類型和`IXmlDecryptor`這可以用來解密的對應元素。</span><span class="sxs-lookup"><span data-stu-id="8d709-186">This object is a wrapper which contains both the resultant enciphered `XElement` and the Type which represents an `IXmlDecryptor` which can be used to decipher the corresponding element.</span></span>
 
-<span data-ttu-id="a5ce9-187">有四種內建的具象類型實作`IXmlEncryptor`:</span><span class="sxs-lookup"><span data-stu-id="a5ce9-187">There are four built-in concrete types which implement `IXmlEncryptor`:</span></span>
+<span data-ttu-id="8d709-187">有四種內建的具象類型實作`IXmlEncryptor`:</span><span class="sxs-lookup"><span data-stu-id="8d709-187">There are four built-in concrete types which implement `IXmlEncryptor`:</span></span>
 * `CertificateXmlEncryptor`
 * `DpapiNGXmlEncryptor`
 * `DpapiXmlEncryptor`
 * `NullXmlEncryptor`
 
-<span data-ttu-id="a5ce9-188">請參閱[在其他文件的金鑰加密](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-188">See the [key encryption at rest document](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) for more information.</span></span>
+<span data-ttu-id="8d709-188">請參閱[在其他文件的金鑰加密](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="8d709-188">See the [key encryption at rest document](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) for more information.</span></span>
 
-<span data-ttu-id="a5ce9-189">若要變更預設的索引鍵---靜態加密機制整個應用程式，註冊自訂`IXmlEncryptor`執行個體：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-189">To change the default key-encryption-at-rest mechanism application-wide, register a custom `IXmlEncryptor` instance:</span></span>
+<span data-ttu-id="8d709-189">若要變更預設的索引鍵---靜態加密機制整個應用程式，註冊自訂`IXmlEncryptor`執行個體：</span><span class="sxs-lookup"><span data-stu-id="8d709-189">To change the default key-encryption-at-rest mechanism application-wide, register a custom `IXmlEncryptor` instance:</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="a5ce9-190">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-190">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="8d709-190">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="8d709-190">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
    ```csharp
    services.Configure<KeyManagementOptions>(options => options.XmlEncryptor = new MyCustomXmlEncryptor());
    ```
    
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="a5ce9-191">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="a5ce9-191">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="8d709-191">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="8d709-191">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
    ```csharp
    services.AddSingleton<IXmlEncryptor>(new MyCustomXmlEncryptor());
@@ -187,39 +187,39 @@ ms.lasthandoff: 01/30/2018
 
 ---
 
-## <a name="ixmldecryptor"></a><span data-ttu-id="a5ce9-192">IXmlDecryptor</span><span class="sxs-lookup"><span data-stu-id="a5ce9-192">IXmlDecryptor</span></span>
+## <a name="ixmldecryptor"></a><span data-ttu-id="8d709-192">IXmlDecryptor</span><span class="sxs-lookup"><span data-stu-id="8d709-192">IXmlDecryptor</span></span>
 
-<span data-ttu-id="a5ce9-193">`IXmlDecryptor`介面代表知道如何解密類型`XElement`，已透過 enciphered `IXmlEncryptor`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-193">The `IXmlDecryptor` interface represents a type that knows how to decrypt an `XElement` that was enciphered via an `IXmlEncryptor`.</span></span> <span data-ttu-id="a5ce9-194">它會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="a5ce9-194">It exposes a single API:</span></span>
+<span data-ttu-id="8d709-193">`IXmlDecryptor`介面代表知道如何解密類型`XElement`，已透過 enciphered `IXmlEncryptor`。</span><span class="sxs-lookup"><span data-stu-id="8d709-193">The `IXmlDecryptor` interface represents a type that knows how to decrypt an `XElement` that was enciphered via an `IXmlEncryptor`.</span></span> <span data-ttu-id="8d709-194">它會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="8d709-194">It exposes a single API:</span></span>
 
-* <span data-ttu-id="a5ce9-195">解密 (XElement encryptedElement): XElement</span><span class="sxs-lookup"><span data-stu-id="a5ce9-195">Decrypt(XElement encryptedElement) : XElement</span></span>
+* <span data-ttu-id="8d709-195">解密 (XElement encryptedElement): XElement</span><span class="sxs-lookup"><span data-stu-id="8d709-195">Decrypt(XElement encryptedElement) : XElement</span></span>
 
-<span data-ttu-id="a5ce9-196">`Decrypt`方法復原所執行的加密`IXmlEncryptor.Encrypt`。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-196">The `Decrypt` method undoes the encryption performed by `IXmlEncryptor.Encrypt`.</span></span> <span data-ttu-id="a5ce9-197">一般而言，每個實體`IXmlEncryptor`實作會有對應的具體`IXmlDecryptor`實作。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-197">Generally, each concrete `IXmlEncryptor` implementation will have a corresponding concrete `IXmlDecryptor` implementation.</span></span>
+<span data-ttu-id="8d709-196">`Decrypt`方法復原所執行的加密`IXmlEncryptor.Encrypt`。</span><span class="sxs-lookup"><span data-stu-id="8d709-196">The `Decrypt` method undoes the encryption performed by `IXmlEncryptor.Encrypt`.</span></span> <span data-ttu-id="8d709-197">一般而言，每個實體`IXmlEncryptor`實作會有對應的具體`IXmlDecryptor`實作。</span><span class="sxs-lookup"><span data-stu-id="8d709-197">Generally, each concrete `IXmlEncryptor` implementation will have a corresponding concrete `IXmlDecryptor` implementation.</span></span>
 
-<span data-ttu-id="a5ce9-198">型別實作哪些`IXmlDecryptor`應該有下列兩個公用建構函式的其中一個：</span><span class="sxs-lookup"><span data-stu-id="a5ce9-198">Types which implement `IXmlDecryptor` should have one of the following two public constructors:</span></span>
+<span data-ttu-id="8d709-198">型別實作哪些`IXmlDecryptor`應該有下列兩個公用建構函式的其中一個：</span><span class="sxs-lookup"><span data-stu-id="8d709-198">Types which implement `IXmlDecryptor` should have one of the following two public constructors:</span></span>
 
-* <span data-ttu-id="a5ce9-199">.ctor(IServiceProvider)</span><span class="sxs-lookup"><span data-stu-id="a5ce9-199">.ctor(IServiceProvider)</span></span>
-* <span data-ttu-id="a5ce9-200">.ctor()</span><span class="sxs-lookup"><span data-stu-id="a5ce9-200">.ctor()</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="a5ce9-201">`IServiceProvider`傳遞至建構函式可能是 null。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-201">The `IServiceProvider` passed to the constructor may be null.</span></span>
-
-## <a name="ikeyescrowsink"></a><span data-ttu-id="a5ce9-202">IKeyEscrowSink</span><span class="sxs-lookup"><span data-stu-id="a5ce9-202">IKeyEscrowSink</span></span>
-
-<span data-ttu-id="a5ce9-203">`IKeyEscrowSink`介面代表可執行委付機密資訊的類型。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-203">The `IKeyEscrowSink` interface represents a type that can perform escrow of sensitive information.</span></span> <span data-ttu-id="a5ce9-204">請注意，序列化的項目中可能包含機密資訊 （例如密碼編譯的內容），這會導致所有的簡介[IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor)輸入在第一次。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-204">Recall that serialized descriptors might contain sensitive information (such as cryptographic material), and this is what led to the introduction of the [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor) type in the first place.</span></span> <span data-ttu-id="a5ce9-205">不過，事故發生，而且索引鍵的環形才能刪除或損毀。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-205">However, accidents happen, and key rings can be deleted or become corrupted.</span></span>
-
-<span data-ttu-id="a5ce9-206">委付介面提供緊急逸出之轉換的任何設定前，允許存取原始的序列化 XML 規劃[IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor)。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-206">The escrow interface provides an emergency escape hatch, allowing access to the raw serialized XML before it's transformed by any configured [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor).</span></span> <span data-ttu-id="a5ce9-207">介面會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="a5ce9-207">The interface exposes a single API:</span></span>
-
-* <span data-ttu-id="a5ce9-208">存放區 （Guid keyId、 XElement 項目）</span><span class="sxs-lookup"><span data-stu-id="a5ce9-208">Store(Guid keyId, XElement element)</span></span>
-
-<span data-ttu-id="a5ce9-209">它會`IKeyEscrowSink`實作以商務原則與一致的安全方式處理所提供項目。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-209">It's up to the `IKeyEscrowSink` implementation to handle the provided element in a secure manner consistent with business policy.</span></span> <span data-ttu-id="a5ce9-210">一個可能的實作可用於委付接收加密使用已知的公司 X.509 憑證的 XML 項目，其中憑證的私密金鑰已委付;`CertificateXmlEncryptor`可以協助進行此設定類型。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-210">One possible implementation could be for the escrow sink to encrypt the XML element using a known corporate X.509 certificate where the certificate's private key has been escrowed; the `CertificateXmlEncryptor` type can assist with this.</span></span> <span data-ttu-id="a5ce9-211">`IKeyEscrowSink`實作也會負責適當地保存所提供項目。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-211">The `IKeyEscrowSink` implementation is also responsible for persisting the provided element appropriately.</span></span>
-
-<span data-ttu-id="a5ce9-212">預設沒有委付機制會啟用，但伺服器系統管理員可以[全域設定此](xref:security/data-protection/configuration/machine-wide-policy)。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-212">By default no escrow mechanism is enabled, though server administrators can [configure this globally](xref:security/data-protection/configuration/machine-wide-policy).</span></span> <span data-ttu-id="a5ce9-213">它也可以設定以程式設計方式透過`IDataProtectionBuilder.AddKeyEscrowSink`方法，如下列範例所示。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-213">It can also be configured programmatically via the `IDataProtectionBuilder.AddKeyEscrowSink` method as shown in the sample below.</span></span> <span data-ttu-id="a5ce9-214">`AddKeyEscrowSink`方法多載鏡像`IServiceCollection.AddSingleton`和`IServiceCollection.AddInstance`多載，為`IKeyEscrowSink`執行個體要作為 singleton。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-214">The `AddKeyEscrowSink` method overloads mirror the `IServiceCollection.AddSingleton` and `IServiceCollection.AddInstance` overloads, as `IKeyEscrowSink` instances are intended to be singletons.</span></span> <span data-ttu-id="a5ce9-215">若為多個`IKeyEscrowSink`註冊執行個體，將金鑰在產生期間，呼叫每個，因此可以委付金鑰至多個機制同時。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-215">If multiple `IKeyEscrowSink` instances are registered, each one will be called during key generation, so keys can be escrowed to multiple mechanisms simultaneously.</span></span>
-
-<span data-ttu-id="a5ce9-216">沒有任何 API 來讀取資料，從`IKeyEscrowSink`執行個體。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-216">There's no API to read material from an `IKeyEscrowSink` instance.</span></span> <span data-ttu-id="a5ce9-217">這是一致的委付機制的設計理論： 它已用來讓受信任的授權單位，都能存取金鑰的內容和應用程式本身不是受信任的授權單位，因此不應該有它自己附帶資料的存取。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-217">This is consistent with the design theory of the escrow mechanism: it's intended to make the key material accessible to a trusted authority, and since the application is itself not a trusted authority, it shouldn't have access to its own escrowed material.</span></span>
-
-<span data-ttu-id="a5ce9-218">下列程式碼範例示範建立和註冊`IKeyEscrowSink`，使得只有 「 CONTOSODomain 系統管理員 」 的成員可以復原他們委付金鑰。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-218">The following sample code demonstrates creating and registering an `IKeyEscrowSink` where keys are escrowed such that only members of "CONTOSODomain Admins" can recover them.</span></span>
+* <span data-ttu-id="8d709-199">.ctor(IServiceProvider)</span><span class="sxs-lookup"><span data-stu-id="8d709-199">.ctor(IServiceProvider)</span></span>
+* <span data-ttu-id="8d709-200">.ctor()</span><span class="sxs-lookup"><span data-stu-id="8d709-200">.ctor()</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a5ce9-219">若要執行此範例中，您必須是在已加入網域的 Windows 8 / Windows Server 2012 電腦和網域控制站必須是 Windows Server 2012 或更新版本。</span><span class="sxs-lookup"><span data-stu-id="a5ce9-219">To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.</span></span>
+> <span data-ttu-id="8d709-201">`IServiceProvider`傳遞至建構函式可能是 null。</span><span class="sxs-lookup"><span data-stu-id="8d709-201">The `IServiceProvider` passed to the constructor may be null.</span></span>
 
-[!code-csharp[Main](key-management/samples/key-management-extensibility.cs)]
+## <a name="ikeyescrowsink"></a><span data-ttu-id="8d709-202">IKeyEscrowSink</span><span class="sxs-lookup"><span data-stu-id="8d709-202">IKeyEscrowSink</span></span>
+
+<span data-ttu-id="8d709-203">`IKeyEscrowSink`介面代表可執行委付機密資訊的類型。</span><span class="sxs-lookup"><span data-stu-id="8d709-203">The `IKeyEscrowSink` interface represents a type that can perform escrow of sensitive information.</span></span> <span data-ttu-id="8d709-204">請注意，序列化的項目中可能包含機密資訊 （例如密碼編譯的內容），這會導致所有的簡介[IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor)輸入在第一次。</span><span class="sxs-lookup"><span data-stu-id="8d709-204">Recall that serialized descriptors might contain sensitive information (such as cryptographic material), and this is what led to the introduction of the [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor) type in the first place.</span></span> <span data-ttu-id="8d709-205">不過，事故發生，而且索引鍵的環形才能刪除或損毀。</span><span class="sxs-lookup"><span data-stu-id="8d709-205">However, accidents happen, and key rings can be deleted or become corrupted.</span></span>
+
+<span data-ttu-id="8d709-206">委付介面提供緊急逸出之轉換的任何設定前，允許存取原始的序列化 XML 規劃[IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor)。</span><span class="sxs-lookup"><span data-stu-id="8d709-206">The escrow interface provides an emergency escape hatch, allowing access to the raw serialized XML before it's transformed by any configured [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor).</span></span> <span data-ttu-id="8d709-207">介面會公開單一 API:</span><span class="sxs-lookup"><span data-stu-id="8d709-207">The interface exposes a single API:</span></span>
+
+* <span data-ttu-id="8d709-208">存放區 （Guid keyId、 XElement 項目）</span><span class="sxs-lookup"><span data-stu-id="8d709-208">Store(Guid keyId, XElement element)</span></span>
+
+<span data-ttu-id="8d709-209">它會`IKeyEscrowSink`實作以商務原則與一致的安全方式處理所提供項目。</span><span class="sxs-lookup"><span data-stu-id="8d709-209">It's up to the `IKeyEscrowSink` implementation to handle the provided element in a secure manner consistent with business policy.</span></span> <span data-ttu-id="8d709-210">一個可能的實作可用於委付接收加密使用已知的公司 X.509 憑證的 XML 項目，其中憑證的私密金鑰已委付;`CertificateXmlEncryptor`可以協助進行此設定類型。</span><span class="sxs-lookup"><span data-stu-id="8d709-210">One possible implementation could be for the escrow sink to encrypt the XML element using a known corporate X.509 certificate where the certificate's private key has been escrowed; the `CertificateXmlEncryptor` type can assist with this.</span></span> <span data-ttu-id="8d709-211">`IKeyEscrowSink`實作也會負責適當地保存所提供項目。</span><span class="sxs-lookup"><span data-stu-id="8d709-211">The `IKeyEscrowSink` implementation is also responsible for persisting the provided element appropriately.</span></span>
+
+<span data-ttu-id="8d709-212">預設沒有委付機制會啟用，但伺服器系統管理員可以[全域設定此](xref:security/data-protection/configuration/machine-wide-policy)。</span><span class="sxs-lookup"><span data-stu-id="8d709-212">By default no escrow mechanism is enabled, though server administrators can [configure this globally](xref:security/data-protection/configuration/machine-wide-policy).</span></span> <span data-ttu-id="8d709-213">它也可以設定以程式設計方式透過`IDataProtectionBuilder.AddKeyEscrowSink`方法，如下列範例所示。</span><span class="sxs-lookup"><span data-stu-id="8d709-213">It can also be configured programmatically via the `IDataProtectionBuilder.AddKeyEscrowSink` method as shown in the sample below.</span></span> <span data-ttu-id="8d709-214">`AddKeyEscrowSink`方法多載鏡像`IServiceCollection.AddSingleton`和`IServiceCollection.AddInstance`多載，為`IKeyEscrowSink`執行個體要作為 singleton。</span><span class="sxs-lookup"><span data-stu-id="8d709-214">The `AddKeyEscrowSink` method overloads mirror the `IServiceCollection.AddSingleton` and `IServiceCollection.AddInstance` overloads, as `IKeyEscrowSink` instances are intended to be singletons.</span></span> <span data-ttu-id="8d709-215">若為多個`IKeyEscrowSink`註冊執行個體，將金鑰在產生期間，呼叫每個，因此可以委付金鑰至多個機制同時。</span><span class="sxs-lookup"><span data-stu-id="8d709-215">If multiple `IKeyEscrowSink` instances are registered, each one will be called during key generation, so keys can be escrowed to multiple mechanisms simultaneously.</span></span>
+
+<span data-ttu-id="8d709-216">沒有任何 API 來讀取資料，從`IKeyEscrowSink`執行個體。</span><span class="sxs-lookup"><span data-stu-id="8d709-216">There's no API to read material from an `IKeyEscrowSink` instance.</span></span> <span data-ttu-id="8d709-217">這是一致的委付機制的設計理論： 它已用來讓受信任的授權單位，都能存取金鑰的內容和應用程式本身不是受信任的授權單位，因此不應該有它自己附帶資料的存取。</span><span class="sxs-lookup"><span data-stu-id="8d709-217">This is consistent with the design theory of the escrow mechanism: it's intended to make the key material accessible to a trusted authority, and since the application is itself not a trusted authority, it shouldn't have access to its own escrowed material.</span></span>
+
+<span data-ttu-id="8d709-218">下列程式碼範例示範建立和註冊`IKeyEscrowSink`，使得只有 「 CONTOSODomain 系統管理員 」 的成員可以復原他們委付金鑰。</span><span class="sxs-lookup"><span data-stu-id="8d709-218">The following sample code demonstrates creating and registering an `IKeyEscrowSink` where keys are escrowed such that only members of "CONTOSODomain Admins" can recover them.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="8d709-219">若要執行此範例中，您必須是在已加入網域的 Windows 8 / Windows Server 2012 電腦和網域控制站必須是 Windows Server 2012 或更新版本。</span><span class="sxs-lookup"><span data-stu-id="8d709-219">To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.</span></span>
+
+[!code-csharp[](key-management/samples/key-management-extensibility.cs)]

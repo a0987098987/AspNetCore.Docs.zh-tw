@@ -12,34 +12,32 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 925d659f42496045089ba056e194ac977c37a8de
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 243db3708ac4311d423c4c137f503f072f5553e6
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 Helper、 表單和驗證
-====================
+# <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 Helper、 表單和驗證
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> 在**ASP.NET MVC 4 模型和資料存取**實際操作實驗室中，您已載入和顯示資料的資料庫。 在這個實際操作實驗室中，您將會加入**Music Store**應用程式編輯該資料的功能。
-> 
-> 請注意該目標，您將先建立將支援建立、 讀取、 更新和刪除 (CRUD) 動作的相簿的控制站。 您將會產生運用 ASP.NET MVC 的 scaffolding 功能，以顯示 HTML 表格中的專輯屬性的索引檢視範本。 若要增強該檢視，您將加入將會截斷長描述的自訂 HTML helper。
-> 
-> 之後，您將加入的編輯和建立的檢視表，以供您變更在資料庫中，使用下拉式清單類似的表單項目說明相簿。
-> 
-> 最後，您將會讓使用者可以刪除專輯和您將會防止使用者從輸入錯誤的資料來驗證其輸入。
-> 
-> > [!NOTE]
-> > 這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 基礎**實際操作實驗室。
-> 
-> 
-> 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
-> 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+在**ASP.NET MVC 4 模型和資料存取**實際操作實驗室中，您已載入和顯示資料的資料庫。 在這個實際操作實驗室中，您將會加入**Music Store**應用程式編輯該資料的功能。
 
-<a id="Objectives"></a>
+請注意該目標，您將先建立將支援建立、 讀取、 更新和刪除 (CRUD) 動作的相簿的控制站。 您將會產生運用 ASP.NET MVC 的 scaffolding 功能，以顯示 HTML 表格中的專輯屬性的索引檢視範本。 若要增強該檢視，您將加入將會截斷長描述的自訂 HTML helper。
+
+之後，您將加入的編輯和建立的檢視表，以供您變更在資料庫中，使用下拉式清單類似的表單項目說明相簿。
+
+最後，您將會讓使用者可以刪除專輯和您將會防止使用者從輸入錯誤的資料來驗證其輸入。
+
+這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 基礎**實際操作實驗室。
+
+這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 Helper、 表單和驗證](https://github.com/Microsoft-Web/HOL-MVC4HelpersFormsAndValidation)。
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -659,7 +657,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
     ![驗證的欄位中編輯頁面](aspnet-mvc-4-helpers-forms-and-validation/_static/image19.png)
 
-    *驗證的欄位中編輯頁面*
+    驗證的欄位中編輯頁面
 
 <a id="Exercise7"></a>
 

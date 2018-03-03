@@ -12,24 +12,26 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 15db1589eb90739458b430c35cea38e93e3dec5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 396859463446d95c58271c4b00fc950bcd0d539a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 Entity Framework Scaffolding 和移轉
-====================
+# <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 Entity Framework Scaffolding 和移轉
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> 如果您已熟悉 ASP.NET MVC 4 控制器方法，或已完成&quot;Helper、 表單和驗證&quot;實際操作實驗室中，您應該注意許多邏輯，以建立、 更新、 列出及移除它會重複任何資料實體在應用程式。 更別說，如果您的模型有數個類別以管理，您將會有可能要花很長的時間，寫入每個實體作業，以及每個檢視的 POST 與 GET 動作方法。
-> 
-> 在這個實驗室中，您將學習如何使用 ASP.NET MVC 4 scaffolding 自動產生應用程式的 CRUD （建立、 讀取、 更新和刪除） 的基準線。 從開始從簡單的模型類別，並不需要撰寫一行程式碼，您將建立一個控制站，會包含所有 CRUD 作業，以及所有必要的檢視。 在建置及執行簡單的解決方案之後，您必須產生，以及 MVC 邏輯和資料管理檢視的應用程式資料庫。
-> 
-> 此外，您將學習使用 Entity Framework 移轉執行整個應用程式模型更新是多麼的輕鬆。 Entity Framework 移轉可讓您的模型已變更執行簡單的步驟之後，修改您的資料庫。 進行所有這些動作記住，您將能夠建立及維護的 web 應用程式更有效率地運用 ASP.NET MVC 4 的最新的功能。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+如果您已熟悉 ASP.NET MVC 4 控制器方法，或已完成&quot;Helper、 表單和驗證&quot;實際操作實驗室中，您應該注意許多邏輯，以建立、 更新、 列出及移除它會重複任何資料實體在應用程式。 更別說，如果您的模型有數個類別以管理，您將會有可能要花很長的時間，寫入每個實體作業，以及每個檢視的 POST 與 GET 動作方法。
 
-<a id="Objectives"></a>
+在這個實驗室中，您將學習如何使用 ASP.NET MVC 4 scaffolding 自動產生應用程式的 CRUD （建立、 讀取、 更新和刪除） 的基準線。 從開始從簡單的模型類別，並不需要撰寫一行程式碼，您將建立一個控制站，會包含所有 CRUD 作業，以及所有必要的檢視。 在建置及執行簡單的解決方案之後，您必須產生，以及 MVC 邏輯和資料管理檢視的應用程式資料庫。
+
+此外，您將學習使用 Entity Framework 移轉執行整個應用程式模型更新是多麼的輕鬆。 Entity Framework 移轉可讓您的模型已變更執行簡單的步驟之後，修改您的資料庫。 進行所有這些動作記住，您將能夠建立及維護的 web 應用程式更有效率地運用 ASP.NET MVC 4 的最新的功能。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可從在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 Entity Framework Scaffolding 和移轉](https://github.com/Microsoft-Web/HOL-EntityFrameworkScaffoldingAndMigrations)。
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -91,7 +93,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 #### <a name="task-1--creating-a-new-aspnet-mvc-4-project-using-scaffolding"></a>工作 1-建立新的 ASP.NET MVC 4 專案使用 Scaffolding
 
 1. 如果尚未開啟，啟動**Visual Studio 2012**。
-2. 選取**檔案 |新的專案**。 在 [新增專案] 對話方塊中，在**Visual C# |Web**區段中，選取**ASP.NET MVC 4 Web 應用程式**。 若要將專案命名**MVC4andEFMigrations**並將位置設定為**Source\Ex1 UsingMVC4ScaffoldingEFMigrations**本實驗室的資料夾。 設定**方案名稱**至**開始**，並確定**為方案建立目錄**已核取。 按一下 [確定]。
+2. 選取**檔案 |新的專案**。 在 [新增專案] 對話方塊中，在**Visual C# |Web**區段中，選取**ASP.NET MVC 4 Web 應用程式**。 若要將專案命名**MVC4andEFMigrations**並將位置設定為**Source\Ex1 UsingMVC4ScaffoldingEFMigrations**本實驗室的資料夾。 設定**方案名稱**至**開始**，並確定**為方案建立目錄**已核取。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![新 ASP.NET MVC 4 專案 對話方塊](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image1.png "新 ASP.NET MVC 4 專案 對話方塊")
 
@@ -291,7 +293,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 
     ![接受授權條款](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image23.png)
 
-    *接受授權條款*
+    接受授權條款
 5. 等待直到完成下載和安裝程序。
 
     ![安裝進度](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image24.png)
@@ -301,13 +303,13 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 
     ![安裝已完成](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image25.png)
 
-    *安裝已完成*
+    安裝已完成
 7. 按一下**結束**關閉 Web Platform Installer。
 8. 若要開啟 Visual Studio Express for Web，請移至**啟動**畫面上，並開始書寫&quot; **VS Express**&quot;，然後按一下  **VS Express for Web**並排顯示。
 
     ![VS Express for Web 方塊](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image26.png)
 
-    *VS Express for Web 方塊*
+    VS Express for Web 方塊
 
 <a id="AppendixB"></a>
 

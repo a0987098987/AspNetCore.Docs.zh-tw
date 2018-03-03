@@ -1,7 +1,7 @@
 ---
 title: "使用分散式快取中 ASP.NET Core"
 author: ardalis
-description: "了解如何使用分散式快取以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。"
+description: "了解如何使用 ASP.NET Core 分散式快取以改善應用程式效能和延展性，尤其是在雲端或伺服器的伺服陣列環境。"
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: 877a3e1f8c3282fdd67a389ddf5b4ff49dea3b42
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 635c61cbb72a6a9eb822307bbc80936ee73bedc8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="working-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
 分散式快取可以改善效能和延展性的 ASP.NET Core 應用程式，尤其是裝載於雲端或伺服器的伺服陣列環境中。 本文說明如何使用 ASP.NET Core 內建的分散式快取的抽象概念和實作。
 
@@ -73,13 +73,13 @@ ms.lasthandoff: 02/01/2018
 
 下列範例示範如何使用的執行個體`IDistributedCache`簡單的中介軟體元件：
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
 在上述程式碼快取的值是讀取，但永遠不會寫入。 在此範例中，當伺服器啟動，而且不會變更時，才會設定值。 在多伺服器案例中，最新的伺服器，準備開始將會覆寫任何先前由其他伺服器設定的值。 `Get`和`Set`方法使用`byte[]`型別。 因此，字串值必須轉換使用`Encoding.UTF8.GetString`(如`Get`) 和`Encoding.UTF8.GetBytes`(如`Set`)。
 
 下列程式碼會從*Startup.cs*示範所設定的值：
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
 
 > [!NOTE]
 > 因為`IDistributedCache`中設定`ConfigureServices`方法，您就能夠`Configure`做為參數的方法。 將它加入做為參數，可讓透過 DI 提供設定的執行個體。
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/01/2018
 
 範例程式碼，`RedisCache`設定伺服器時，會使用實作`Staging`環境。 因此`ConfigureStagingServices`方法會設定`RedisCache`:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
 > 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
@@ -103,7 +103,7 @@ SqlServerCache 實作可讓分散式快取，以使用 SQL Server 資料庫做�
 
 若要使用 sql 快取工具，加入`SqlConfig.Tools`至`<ItemGroup>`元素*.csproj*檔，然後執行 dotnet 還原。
 
-[!code-xml[Main](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+[!code-xml[](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
 
 執行下列命令來測試 SqlConfig.Tools
 
@@ -125,7 +125,7 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 所有快取實作，例如您的應用程式應該取得並設定使用的執行個體的快取值`IDistributedCache`，而非`SqlServerCache`。 此範例會實作`SqlServerCache`中`Production`環境 (因此中設定它`ConfigureProductionServices`)。
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
+[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
 
 > [!NOTE]
 > `ConnectionString` (並選擇性地`SchemaName`和`TableName`) 應該通常會儲存在外部原始檔控制 （例如 UserSecrets)，因為它們可能包含認證。

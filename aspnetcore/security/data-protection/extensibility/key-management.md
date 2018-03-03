@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 68f590dffe8bb98813f974a5ecb9b270a5419ddf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="key-management-extensibility"></a>金鑰管理的擴充性
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/30/2018
 
 `XmlKeyManager`型別是內建的具象實作`IKeyManager`。 它提供數個實用的功能，包括金鑰委付和加密在靜止的索引鍵。 在此系統中的索引鍵會表示為 XML 項目 (具體而言， [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview))。
 
-`XmlKeyManager`在完成其工作過程中的其他數個元件而定：
+`XmlKeyManager` 在完成其工作過程中的其他數個元件而定：
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -75,17 +75,17 @@ ms.lasthandoff: 01/30/2018
 
 * `IXmlRepository`其中索引鍵會保存在儲存體中的控制項。
 
-* `IXmlEncryptor`[選用]，可讓加密在靜止的索引鍵。
+* `IXmlEncryptor` [選用]，可讓加密在靜止的索引鍵。
 
-* `IKeyEscrowSink`[選用]，以提供金鑰委付服務。
+* `IKeyEscrowSink` [選用]，以提供金鑰委付服務。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 * `IXmlRepository`其中索引鍵會保存在儲存體中的控制項。
 
-* `IXmlEncryptor`[選用]，可讓加密在靜止的索引鍵。
+* `IXmlEncryptor` [選用]，可讓加密在靜止的索引鍵。
 
-* `IKeyEscrowSink`[選用]，以提供金鑰委付服務。
+* `IKeyEscrowSink` [選用]，以提供金鑰委付服務。
 
 ---
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/30/2018
 
    *索引鍵擷取 / GetAllKeys*
 
-在實作`GetAllKeys`、 XML 文件代表索引鍵和撤銷讀取基礎`IXmlRepository`。 如果要加密這些文件，系統會自動解密這些檔案。 `XmlKeyManager`建立適當`IAuthenticatedEncryptorDescriptorDeserializer`還原序列化文件的執行個體放回`IAuthenticatedEncryptorDescriptor`執行個體，然後將包裝在個別`IKey`執行個體。 此集合`IKey`執行個體傳回給呼叫者。
+在實作`GetAllKeys`、 XML 文件代表索引鍵和撤銷讀取基礎`IXmlRepository`。 如果要加密這些文件，系統會自動解密這些檔案。 `XmlKeyManager` 建立適當`IAuthenticatedEncryptorDescriptorDeserializer`還原序列化文件的執行個體放回`IAuthenticatedEncryptorDescriptor`執行個體，然後將包裝在個別`IKey`執行個體。 此集合`IKey`執行個體傳回給呼叫者。
 
 中可以找到特定的 XML 項目上的進一步資訊[金鑰儲存格式的文件](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format)。
 
@@ -222,4 +222,4 @@ ms.lasthandoff: 01/30/2018
 > [!NOTE]
 > 若要執行此範例中，您必須是在已加入網域的 Windows 8 / Windows Server 2012 電腦和網域控制站必須是 Windows Server 2012 或更新版本。
 
-[!code-csharp[Main](key-management/samples/key-management-extensibility.cs)]
+[!code-csharp[](key-management/samples/key-management-extensibility.cs)]

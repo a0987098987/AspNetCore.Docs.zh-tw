@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: 37592c3b2099c2cb74dc42ad4a7937b32c281f65
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
@@ -78,7 +78,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 如需詳細資訊，請參閱[ASP.NET Core MVC 中的快取標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)。
 
-### <a name="distributed-cache-tag-helper"></a>分散式快取標記協助程式
+### <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
 
 您可以使用分散式快取標記協助程式快取的 MVC 檢視或分散式的雲端或 web 伺服陣列案例中的 Razor 頁面的內容。 分散式快取標記協助程式用來儲存資料的 SQL Server 或 Redis。
 
@@ -91,7 +91,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 > [!WARNING]
 > 停用快取內容，其中包含已驗證的用戶端的資訊。 快取，才應該啟用並不會變更使用者的身分識別或使用者是否登入為基礎的內容。
 
-[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys)預存的回應因指定的查詢索引鍵清單的值。 單一值時`*`是所有的回應要求查詢字串參數提供中介軟體而有所不同。 `VaryByQueryKeys`需要 ASP.NET Core 1.1 或更新版本。
+[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys)預存的回應因指定的查詢索引鍵清單的值。 單一值時`*`是所有的回應要求查詢字串參數提供中介軟體而有所不同。 `VaryByQueryKeys` 需要 ASP.NET Core 1.1 或更新版本。
 
 必須啟用回應快取中介軟體，才能設定`VaryByQueryKeys`屬性; 否則擲回執行階段例外狀況。 沒有對應的 HTTP 標頭的`VaryByQueryKeys`屬性。 屬性是 HTTP 功能由回應快取中介軟體。 中介軟體提供快取回的應，查詢字串和查詢字串值必須符合先前的要求。 例如，請考慮要求和結果下表所示的順序。
 
@@ -113,7 +113,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 此標頭僅寫入時`VaryByHeader`屬性設定。 設定為`Vary`屬性的值。 下列範例會使用`VaryByHeader`屬性：
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
 
 您可以檢視您的瀏覽器網路工具的回應標頭。 下圖顯示輸出的邊緣 F12**網路**索引標籤時`About2`動作方法會重新整理：
 
@@ -121,7 +121,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 ### <a name="nostore-and-locationnone"></a>NoStore 和 Location.None
 
-`NoStore`大部分的其他屬性會覆寫。 當這個屬性設定為`true`、`Cache-Control`標頭設定為`no-store`。 如果`Location`設`None`:
+`NoStore` 大部分的其他屬性會覆寫。 當這個屬性設定為`true`、`Cache-Control`標頭設定為`no-store`。 如果`Location`設`None`:
 
 * `Cache-Control` 設定為 `no-store,no-cache`。
 * `Pragma` 設定為 `no-cache`。
@@ -130,7 +130,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 您通常將`NoStore`至`true`錯誤頁面上。 例如: 
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
 
 這會導致下列標頭：
 
@@ -148,7 +148,7 @@ Pragma: no-cache
 
 以下範例，示範標頭所產生的設定`Duration`並讓預設`Location`值：
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
 
 這會產生下列標頭：
 
@@ -162,11 +162,11 @@ Cache-Control: public,max-age=60
 
 設定快取設定檔：
 
-[!code-csharp[Main](response/sample/Startup.cs?name=snippet1)] 
+[!code-csharp[](response/sample/Startup.cs?name=snippet1)] 
 
 參考快取設定檔：
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
 
 `ResponseCache`屬性可以套用到動作 （方法） 和控制站 （類別）。 方法層級屬性會覆寫類別層級屬性中指定的設定。
 

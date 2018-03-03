@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c01abed767a226eae68725c1c53d922eac2f705e
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: 5aac5cf2b8fd4bc53ba7201645b9bb02a5d1ecae
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -128,6 +128,12 @@ ASP.NET 核心模組重新導向`stdout`和`stderr`磁碟的記錄檔`stdoutLogE
 ```
 
 請參閱[web.config 組態](#configuration-with-webconfig)的範例，`aspNetCore`中的項目*web.config*檔案。
+
+## <a name="proxy-configuration-uses-http-protocol-and-a-pairing-token"></a>Proxy 組態使用 HTTP 通訊協定和配對權杖
+
+在 ASP.NET 核心模組和 Kestrel 之間建立 proxy 會使用 HTTP 通訊協定。 使用 HTTP 是效能最佳化，其中模組和 Kestrel 之間的流量會在回送位址從網路介面。 沒有任何風險竊聽模組和 Kestrel 從位置不在伺服器之間的流量。
+
+配對權杖用來保證 Kestrel 所接收的要求已由 IIS 代理，而且不是來自其他來源。 建立並設定環境變數配對的語彙基元 (`ASPNETCORE_TOKEN`) 模組。 配對權杖也會設定成每個代理要求的標頭 (`MSAspNetCoreToken`)。 IIS 中介軟體會檢查其收到的每個要求，以確認配對權杖的標頭值符合環境變數值。 如果權杖值不相符，將記錄並拒絕要求。 配對的語彙基元的環境變數和模組和 Kestrel 之間的流量無法存取從出伺服器的位置。 在不知道配對權杖值的情況下，攻擊者無法略過 IIS 中介軟體的檢查送出要求。
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>IIS 與 ASP.NET Core 模組共用設定
 

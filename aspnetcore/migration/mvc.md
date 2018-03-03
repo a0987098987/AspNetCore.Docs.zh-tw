@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: 447b13eccf523cab81590405740bb194112b0dad
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: c9c9f63cd635f364d9b2e081dc051a46a44d3e4f
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
@@ -48,17 +48,17 @@ ms.lasthandoff: 01/30/2018
 
 * 安裝`Microsoft.AspNetCore.Mvc`和`Microsoft.AspNetCore.StaticFiles`NuGet 封裝。
 
-  `Microsoft.AspNetCore.Mvc`是 ASP.NET Core MVC 架構。 `Microsoft.AspNetCore.StaticFiles`是靜態檔案處理常式。 ASP.NET 執行階段是一個模組，以及您必須明確地選擇提供靜態檔案 (請參閱[靜態檔案處理](../fundamentals/static-files.md))。
+  `Microsoft.AspNetCore.Mvc` 是 ASP.NET Core MVC 架構。 `Microsoft.AspNetCore.StaticFiles` 是靜態檔案處理常式。 ASP.NET 執行階段是一個模組，以及您必須明確地選擇提供靜態檔案 (請參閱[靜態檔案處理](../fundamentals/static-files.md))。
 
 * 開啟*.csproj*檔案 (在專案上按一下滑鼠右鍵**方案總管 中**選取**編輯 WebApp1.csproj**) 並加入`PrepareForPublish`目標：
 
-  [!code-xml[Main](mvc/sample/WebApp1.csproj?range=21-23)]
+  [!code-xml[](mvc/sample/WebApp1.csproj?range=21-23)]
 
   `PrepareForPublish`目標所需的取得透過 Bower 用戶端程式庫。 我們將討論的更新版本。
 
 * 開啟*Startup.cs*檔案，並且變更以符合下列程式碼：
 
-  [!code-csharp[Main](mvc/sample/Startup.cs?highlight=14,27-34)]
+  [!code-csharp[](mvc/sample/Startup.cs?highlight=14,27-34)]
 
   `UseStaticFiles`擴充方法新增靜態檔案處理常式。 如先前所述，ASP.NET 執行階段模組化，而且您必須明確地選擇提供靜態檔案。 `UseMvc`擴充方法會將路由。 如需詳細資訊，請參閱[應用程式啟動](../fundamentals/startup.md)和[路由](../fundamentals/routing.md)。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="controllers-and-views"></a>控制器和檢視
 
-* 每個方法複製 ASP.NET MVC`HomeController`新`HomeController`。 請注意，ASP.NET MVC 中內建的範本控制器動作方法傳回型別是[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); 在 ASP.NET Core MVC 動作方法傳回`IActionResult`改為。 `ActionResult`實作`IActionResult`，因此不需要變更您的動作方法的傳回型別。
+* 每個方法複製 ASP.NET MVC`HomeController`新`HomeController`。 請注意，ASP.NET MVC 中內建的範本控制器動作方法傳回型別是[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); 在 ASP.NET Core MVC 動作方法傳回`IActionResult`改為。 `ActionResult` 實作`IActionResult`，因此不需要變更您的動作方法的傳回型別。
 
 * 複製*About.cshtml*， *Contact.cshtml*，和*Index.cshtml* Razor 檢視檔案，從 ASP.NET MVC 專案加入 ASP.NET Core 專案。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/30/2018
 
 ![連絡人頁面](mvc/_static/contact-page.png)
 
-請注意缺乏樣式和功能表項目。 我們將修正的下一節。
+請注意缺乏樣式和功能表項目。 我們將在下節修正該問題。
 
 ## <a name="static-content"></a>靜態內容
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 01/30/2018
 
 * 新增[Bower](https://bower.io/)名為組態檔*bower.json*專案根目錄 (以滑鼠右鍵按一下專案，然後**新增 > 新的項目 > Bower 的組態檔**)。 新增[Bootstrap](http://getbootstrap.com/)和[jQuery](https://jquery.com/)檔案 （請參閱下列反白顯示的程式行）。
 
-  [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
+  [!code-json[](mvc/sample/bower.json?highlight=5-6)]
 
 在儲存檔案，Bower 將會自動下載相依性， *wwwroot/lib*資料夾。 您可以使用**搜尋方案總管**方塊，即可尋找資產的路徑：
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 01/30/2018
 
 * 建立*Views/Shared*資料夾。
 
-* *選擇性：*複製*_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*資料夾到 ASP.NET Core 專案*檢視*資料夾。 中的任何命名空間宣告中移除*_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](xref:mvc/views/tag-helpers/intro)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
+* *選擇性：*複製*_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*ASP.NET Core 專案的資料夾*檢視*資料夾。 中的任何命名空間宣告中移除*_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](xref:mvc/views/tag-helpers/intro)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
 
 * 複製*_Layout.cshtml*檔案從舊的 ASP.NET MVC 專案*Views/Shared* ASP.NET Core 專案的資料夾*Views/Shared*資料夾。
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 01/30/2018
 
 已更新*_Layout.cshtml*檔案如下所示：
 
-[!code-html[Main](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
+[!code-html[](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
 
 在瀏覽器中檢視站台。 它應該現在正確載入，以就地預期的樣式。
 

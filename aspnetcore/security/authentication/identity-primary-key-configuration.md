@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-primary-key-configuration
-ms.openlocfilehash: 66631e46640e294c934aa563518509b96f5cd158
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ff1c3aff3ea833081a25ea5fc4f2c2b65823f536
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-the-aspnet-core-identity-primary-key-data-type"></a>設定 ASP.NET Core 識別主索引鍵資料類型
 
@@ -23,15 +23,15 @@ ASP.NET Core 身分識別可讓您設定用來表示主索引鍵的資料類型�
 
 1. 建立的自訂實作[IdentityUser](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser-1)類別。 它代表要用來建立使用者物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationUser.cs?highlight=4&range=7-13)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationUser.cs?highlight=4&range=7-13)]
 
 1. 建立的自訂實作[IdentityRole](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityrole-1)類別。 它代表要用來建立角色物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
     
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationRole.cs?highlight=3&range=7-12)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationRole.cs?highlight=3&range=7-12)]
     
 1. 建立自訂的資料庫內容類別。 它會繼承自 Entity Framework 資料庫內容類別用於身分識別。 `TUser`和`TRole`引數會參考在前一個步驟中，分別建立的自訂使用者和角色類別。 `Guid`資料型別定義的主索引鍵。
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Data/ApplicationDbContext.cs?highlight=3&range=9-26)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Data/ApplicationDbContext.cs?highlight=3&range=9-26)]
     
 1. 新增身分識別服務應用程式的啟動類別中時，請註冊自訂的資料庫內容類別。
 
@@ -39,13 +39,13 @@ ASP.NET Core 身分識別可讓您設定用來表示主索引鍵的資料類型�
     
     `AddEntityFrameworkStores`方法不會接受`TKey`引數，因為它未在 ASP.NET Core 1.x。 主索引鍵資料類型藉由分析推斷`DbContext`物件。
     
-    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-PrimaryKeysConfig/Startup.cs?highlight=6-8&range=25-37)]
+    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-PrimaryKeysConfig/Startup.cs?highlight=6-8&range=25-37)]
     
     # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
     
     `AddEntityFrameworkStores`方法會接受`TKey`指出主索引鍵的資料型別引數。
     
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?highlight=9-11&range=39-55)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?highlight=9-11&range=39-55)]
     
     ---
 
@@ -53,4 +53,4 @@ ASP.NET Core 身分識別可讓您設定用來表示主索引鍵的資料類型�
 
 完成時的組態變更，表示主索引鍵的屬性會反映新的資料類型。 下列範例示範如何存取此 MVC 控制器中的屬性。
 
-[!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Controllers/AccountController.cs?name=snippet_GetCurrentUserId&highlight=6)]
+[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Controllers/AccountController.cs?name=snippet_GetCurrentUserId&highlight=6)]

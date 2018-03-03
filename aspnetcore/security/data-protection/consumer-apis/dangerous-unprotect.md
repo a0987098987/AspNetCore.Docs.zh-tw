@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 584dbb545c15add4401086b9160d4bf30caf41b5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 37332dda794f898fb866424b38394f5d4441e166
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>取消保護裝載之索引鍵已被撤銷。
 
@@ -30,7 +30,7 @@ ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持�
 > [!NOTE]
 > 並非所有`IDataProtector`執行個體都可以轉換成`IPersistedDataProtector`。 開發人員應該使用 C# 運算子或類似以避免執行階段例外狀況起因是無效的轉型，而且應該有準備好要適當地處理失敗的情況。
 
-`IPersistedDataProtector`會公開下列 API 介面：
+`IPersistedDataProtector` 會公開下列 API 介面：
 
 ```csharp
 DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
@@ -46,4 +46,4 @@ DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
 >[!WARNING]
 > 傳遞時小心`ignoreRevocationErrors: true`至`DangerousUnprotect`方法。 如果呼叫這個方法後的`wasRevoked`值為 true，則用來保護此內容的索引鍵已被撤銷，並裝載的真實性應該被視為有疑問。 在此情況下，只有繼續上未受保護的內容操作，如果您有一些個別的保證，它是真確的例如它來自安全的資料庫，而不是受信任的 web 用戶端所傳送。
 
-[!code-csharp[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]
+[!code-csharp[](dangerous-unprotect/samples/dangerous-unprotect.cs)]

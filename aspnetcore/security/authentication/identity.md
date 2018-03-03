@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: 0c05c636a991371b1a1feec88b5393724a6dc629
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 8cbf002a9280650a08ae8d49b5b6d23bafb8be18
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -61,23 +61,23 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
-    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
+    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
     這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
     
-    識別已啟用應用程式藉由呼叫`UseAuthentication`中`Configure`方法。 `UseAuthentication`加入驗證[中介軟體](xref:fundamentals/middleware/index)要求管線。
+    識別已啟用應用程式藉由呼叫`UseAuthentication`中`Configure`方法。 `UseAuthentication` 加入驗證[中介軟體](xref:fundamentals/middleware/index)要求管線。
     
-    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
+    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
     
     # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
     
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-34)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-34)]
     
     這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
     
-    識別已啟用應用程式藉由呼叫`UseIdentity`中`Configure`方法。 `UseIdentity`新增 cookie 基本驗證[中介軟體](xref:fundamentals/middleware/index)要求管線。
+    識別已啟用應用程式藉由呼叫`UseIdentity`中`Configure`方法。 `UseIdentity` 新增 cookie 基本驗證[中介軟體](xref:fundamentals/middleware/index)要求管線。
         
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
     
     ---
      
@@ -100,7 +100,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
     
     當使用者按一下**註冊**連結，``Register``上叫用動作``AccountController``。 ``Register``動作會建立使用者藉由呼叫`CreateAsync`上`_userManager`物件 (提供給``AccountController``的相依性插入):
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
     如果已成功建立使用者，使用者會登入的呼叫所``_signInManager.SignInAsync``。
 
@@ -112,7 +112,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     ``Login``動作呼叫``PasswordSignInAsync``上``_signInManager``物件 (提供給``AccountController``的相依性插入)。
 
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
  
     基底``Controller``類別會公開``User``從控制器方法可以存取的屬性。 比方說，您可以列舉`User.Claims`和進行授權決策。 如需詳細資訊，請參閱[授權](xref:security/authorization/index)。
  
@@ -120,22 +120,22 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
  
     按一下**登出**連結呼叫`LogOut`動作。
  
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
  
     上述程式碼中的呼叫上述`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者的宣告。
  
 <a name="pw"></a>
 6.  組態設定。
 
-    識別有一些可以在應用程式的啟動類別中覆寫的預設行為。 `IdentityOptions`不需要使用的預設行為時，設定。 下列程式碼會設定數個密碼強度選項：
+    識別有一些可以在應用程式的啟動類別中覆寫的預設行為。 `IdentityOptions` 不需要使用的預設行為時，設定。 下列程式碼會設定數個密碼強度選項：
 
     # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
     
-    [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
+    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-39)]
     
     # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
     
-    [!code-csharp[Main](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-34)]
+    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-34)]
 
     ---
     
@@ -170,13 +170,13 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-    開啟命令視窗並瀏覽至專案的根目錄目錄包含`.csproj`檔案。 執行`dotnet run`執行應用程式的命令：
+    開啟命令視窗並瀏覽至專案的根目錄目錄包含`.csproj`檔案。 執行[dotnet 執行](/dotnet/core/tools/dotnet-run)執行應用程式的命令：
 
     ```cs
     dotnet run 
     ```
 
-    瀏覽的輸出中指定的 URL`dotnet run`命令。 此 URL 應該指向`localhost`產生的連接埠號碼。 瀏覽至**有關**頁面。 已驗證的使用者可以存取**有關**頁面現在，讓 ASP.NET 將您重新導向至登入頁面，來登入或註冊。
+    瀏覽的輸出中指定的 URL [dotnet 執行](/dotnet/core/tools/dotnet-run)命令。 此 URL 應該指向`localhost`產生的連接埠號碼。 瀏覽至**有關**頁面。 已驗證的使用者可以存取**有關**頁面現在，讓 ASP.NET 將您重新導向至登入頁面，來登入或註冊。
 
     ---
 
@@ -186,11 +186,11 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 可用於 ASP.NET Core 應用程式的身分識別系統，會需要這些相依性：
 
-* `Microsoft.AspNetCore.Identity.EntityFrameworkCore`-包含必要的型別，以搭配 Entity Framework Core 的身分識別。
+* `Microsoft.AspNetCore.Identity.EntityFrameworkCore` -包含必要的型別，以搭配 Entity Framework Core 的身分識別。
 
-* `Microsoft.EntityFrameworkCore.SqlServer`實體架構的核心是 Microsoft 的建議的資料存取技術，例如 SQL Server 關聯式資料庫。 為了測試，您可以使用`Microsoft.EntityFrameworkCore.InMemory`。
+* `Microsoft.EntityFrameworkCore.SqlServer` 實體架構的核心是 Microsoft 的建議的資料存取技術，例如 SQL Server 關聯式資料庫。 為了測試，您可以使用`Microsoft.EntityFrameworkCore.InMemory`。
 
-* `Microsoft.AspNetCore.Authentication.Cookies`中介軟體，可讓應用程式使用 cookie 型驗證。
+* `Microsoft.AspNetCore.Authentication.Cookies` 中介軟體，可讓應用程式使用 cookie 型驗證。
 
 ## <a name="migrating-to-aspnet-core-identity"></a>移轉至 ASP.NET Core 身分識別
 
@@ -205,4 +205,4 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 * [移轉驗證和身分識別](xref:migration/identity)
 * [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
 * [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
-* [使用 Facebook、Google 和其他外部提供者啟用驗證](xref:security/authentication/social/index)
+* [Facebook、 Google、 和外部提供者驗證](xref:security/authentication/social/index)

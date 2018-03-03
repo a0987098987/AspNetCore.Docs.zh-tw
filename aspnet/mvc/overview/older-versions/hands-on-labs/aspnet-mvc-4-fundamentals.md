@@ -12,28 +12,28 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: 468f6d5dabb645b1c005680dc5a1ffc4debd63b6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f93f51219403cd5aeca2dd3648444a84690c3d25
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 的基本概念
-====================
+# <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 的基本概念
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> 這個實際操作實驗室是以 MVC （模型檢視控制器） Music Store 教學課程的應用程式的介紹，並逐步說明如何使用 ASP.NET MVC 和 Visual Studio 為基礎。 在實驗室中，您將學習簡單起見，尚未一起使用這些技術的電源。 您將使用簡單的應用程式啟動，將建置直到您正常 ASP.NET MVC 4 Web 應用程式。
-> 
-> 這個實驗室搭配 ASP.NET MVC 4。
-> 
-> 如果您想要瀏覽教學課程的應用程式的 ASP.NET MVC 3 版本，您可以尋找在[MVC Music Store](https://github.com/evilDave/MVC-Music-Store)。
-> 
-> > [!NOTE]
-> > 這個實際操作實驗室假設開發人員體驗中的 Web 開發技術，例如 HTML 和 JavaScript。
-> 
-> 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+這個實際操作實驗室是以 MVC （模型檢視控制器） Music Store 教學課程的應用程式的介紹，並逐步說明如何使用 ASP.NET MVC 和 Visual Studio 為基礎。 在實驗室中，您將學習簡單起見，尚未一起使用這些技術的電源。 您將使用簡單的應用程式啟動，將建置直到您正常 ASP.NET MVC 4 Web 應用程式。
+
+這個實驗室搭配 ASP.NET MVC 4。
+
+如果您想要瀏覽教學課程的應用程式的 ASP.NET MVC 3 版本，您可以尋找在[MVC Music Store](https://github.com/evilDave/MVC-Music-Store)。
+
+這個實際操作實驗室假設開發人員體驗中的 Web 開發技術，例如 HTML 和 JavaScript。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 的基本概念](https://github.com/Microsoft-Web/HOL-MVC4Fundamentals)。
 
 <a id="The_Music_Store_application"></a>
 ### <a name="the-music-store-application"></a>Music Store 應用程式
@@ -51,7 +51,7 @@ Music Store 應用程式將會使用建置**模型檢視控制器 (MVC)**，分�
 
 - **模型**： 模型物件屬於實作網域邏輯之應用程式一部分。 通常，模型物件也擷取並儲存在資料庫中的模型狀態。
 - **檢視：**檢視會顯示應用程式的使用者介面 (UI) 的元件。 一般而言，此 UI 是從模型資料的方式建立。 範例會顯示文字方塊和下拉式清單的專輯物件的目前狀態為基礎的相簿編輯檢視。
-- **控制站：**控制站是可處理使用者互動、 使用模型，以及最後選取的檢視呈現 UI 元件。 MVC 應用程式中，檢視只能顯示資訊。控制器會處理和回應使用者輸入和互動。
+- **控制站：**控制站是可處理使用者互動、 使用模型，以及最後選取的檢視呈現 UI 元件。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。
 
 MVC 模式可協助您建立個別的不同層面的應用程式 （輸入的邏輯、 商務邏輯和 UI 邏輯），同時提供這些項目之間的鬆散偶合的應用程式。 此隔離有助於您管理複雜度，當您建置應用程式，因為它可讓您將焦點放在上一次實作的其中一個層面。 此外，MVC 模式讓您輕鬆地測試應用程式，也鼓勵測試為導向的開發 (TDD) 用於建立應用程式。
 
@@ -173,7 +173,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
 在不使用 MVC 架構的 ASP.NET 應用程式，使用者互動會圍繞網頁以及引發和處理事件從那些頁面加以組織。 相反地，ASP.NET MVC 應用程式的使用者互動會圍繞控制器和動作方法加以組織。
 
-相反地，ASP.NET MVC 架構會將 Url 對應至稱為 「 控制站的類別。 控制站處理傳入的要求、 處理使用者輸入和互動、 執行適當的應用程式邏輯並決定要傳送回用戶端的回應 （顯示 HTML、 下載檔案、 重新導向至不同的 URL，依此類推）。 在顯示 HTML，控制器類別通常會呼叫不同的檢視元件來產生要求的 HTML 標記。 MVC 應用程式中，檢視只能顯示資訊。控制器會處理和回應使用者輸入和互動。
+相反地，ASP.NET MVC 架構會將 Url 對應至稱為 「 控制站的類別。 控制站處理傳入的要求、 處理使用者輸入和互動、 執行適當的應用程式邏輯並決定要傳送回用戶端的回應 （顯示 HTML、 下載檔案、 重新導向至不同的 URL，依此類推）。 在顯示 HTML，控制器類別通常會呼叫不同的檢視元件來產生要求的 HTML 標記。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。
 
 在這項工作，您將加入控制器類別處理 Music Store 網站的首頁 Url。
 
@@ -333,7 +333,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     ![瀏覽 StoreBrowseGenre = Disco](aspnet-mvc-4-fundamentals/_static/image10.png "瀏覽 StoreBrowseGenre = Disco")
 
-    *瀏覽 /Store/Browse 嗎？內容類型 = Disco*
+    *Browsing /Store/Browse?Genre=Disco*
 3. 關閉瀏覽器。
 
 <a id="Ex3Task3"></a>
@@ -818,7 +818,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
     > [!NOTE]
     > 另一種方法就直接連結到頁面上，具有類似下列程式碼：
     > 
-    > &lt;a =&quot;/存放區/瀏覽？ 內容類型 =@genreName&quot;&gt;@genreName &lt; /a&gt;
+    > &lt;a href=&quot;/Store/Browse?genre=@genreName&quot;&gt;@genreName&lt;/a&gt;
     > 
     > 雖然這個方法的效果，它會相依於硬式編碼字串。 如果您稍後重新命名的控制站，您必須手動變更此指示。 較佳替代方式是使用**HTML Helper**方法。 ASP.NET MVC 包括 HTML Helper 方法，這個方法會使用這類工作。 **Html.ActionLink()** helper 方法可讓您輕鬆地建立 HTML  **&lt;&gt;** 連結，並確定具有正確的 URL 路徑 URL 編碼。
     > 
@@ -895,7 +895,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 #### <a name="task-1-exploring-the-aspnet-mvc-4-internet-application-template"></a>工作 1： 瀏覽 ASP.NET MVC 4 網際網路應用程式範本
 
 1. 如果尚未開啟，啟動**VS Express for Web**
-2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇  **ASP.NET MVC 4 Web 應用程式**。 **名稱**專案*MusicStore*並更新**方案名稱**至*開始*，然後選取一個位置 （或保留預設值），按一下  **確定**。
+2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇  **ASP.NET MVC 4 Web 應用程式**。 **名稱**專案*MusicStore*並更新**方案名稱**至*開始*，然後選取一個位置 （或保留預設值），按一下  **確定**.
 
     ![建立新的 ASP.NET MVC 4 專案](aspnet-mvc-4-fundamentals/_static/image36.png "建立新的 ASP.NET MVC 4 專案")
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: ee628ee14aa38969cdb4443718c378fd36192596
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: 67695843846cfaf1619db11a7bffcc65802e0f69
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
@@ -67,13 +67,13 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 開啟*_layout.cshtml\_Layout.cshtml*檔案，然後加入至環境字型實用的 CSS 檔案[標記協助程式](xref:mvc/views/tag-helpers/intro)如`Development`。 從 [方案總管] 中，拖曳和卸除*字型 awesome.css*內`<environment names="Development">`項目。
 
-[!code-html[Main](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
+[!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
 您可以在生產環境應用程式中加入*字型 awesome.min.css*環境標記協助程式，如`Staging,Production`。
 
 取代內容*Views\Home\About.cshtml* Razor 檔案，以下列標記：
 
-[!code-html[Main](bower/sample/About.cshtml)]
+[!code-html[](bower/sample/About.cshtml)]
 
 執行應用程式，並瀏覽至 [關於] 檢視，確認字型實用的封裝可運作。
 
@@ -96,7 +96,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 * 開啟*bower.json*，加入 jquery 和要啟動`dependencies`> 一節。 產生*bower.json*檔案看起來像下列的範例。 版本會隨時間而改變，而不符合下方的影像。
 
-[!code-json[Main](bower/sample/bower.json?highlight=5,6)]
+[!code-json[](bower/sample/bower.json?highlight=5,6)]
 
 * 儲存*bower.json*檔案。
 
@@ -109,7 +109,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 * 新增`Microsoft.AspNetCore.StaticFiles`NuGet 封裝加入專案。
 * 啟用靜態檔案來提供[靜態檔案中介軟體](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions)。 將呼叫加入[UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions)至`Configure`方法`Startup`。
 
-[!code-csharp[Main](bower/sample/Startup.cs?highlight=9)]
+[!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
 ### <a name="reference-packages"></a>參考封裝
 
@@ -119,7 +119,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
  取代內容*Index.html*以下列標記：
 
-[!code-html[Main](bower/sample/Index.html)]
+[!code-html[](bower/sample/Index.html)]
 
 * 執行應用程式，並瀏覽至`http://localhost:<port>/Index.html`。 或者，使用*Index.html*開啟，請按`Ctrl+Shift+W`。 請確認 jumbotron 樣式會套用、 jQuery 程式碼可以回應在按一下按鈕時，以及啟動程序的按鈕狀態變更。
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 53b59045751153cd858e13769b5b42d5700e26d4
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: cd9f8fc310ba0258477db51aa416c03debadeffe
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考
 
@@ -29,6 +29,8 @@ ms.lasthandoff: 02/03/2018
 * ASP.NET 核心模組 stdout 記錄項目
 
 比較下列的一般錯誤的資訊。 如果找到相符項目，請遵循的疑難排解建議。
+
+[!INCLUDE[Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
 ## <a name="installer-unable-to-obtain-vc-redistributable"></a>安裝程式無法取得 VC++ 可轉散發套件
 

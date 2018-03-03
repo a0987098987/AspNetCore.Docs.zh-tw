@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: 1c0d87b61882f69dbf2aeb0a896d9294bd029374
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ee61798fc1bde89ca3712eae9b7c4413e58cf70d
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 01/30/2018
 
 這些 Url 會有兩個不同來源比上一個：
 
-* `http://example.net`為不同的網域
+* `http://example.net` 為不同的網域
 
-* `http://www.example.com/foo.html`為不同的子網域
+* `http://www.example.com/foo.html` 為不同的子網域
 
-* `https://example.com/foo.html`為不同的配置
+* `https://example.com/foo.html` 為不同的配置
 
-* `http://example.com:9000/foo.html`為不同的通訊埠
+* `http://example.com:9000/foo.html` 為不同的通訊埠
 
 > [!NOTE]
 > 比較來源時，Internet Explorer 不會視為連接埠。
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/30/2018
 
 將 CORS 服務加入 Startup.cs 中：
 
-[!code-csharp[Main](cors/sample/CorsExample1/Startup.cs?name=snippet_addcors)]
+[!code-csharp[](cors/sample/CorsExample1/Startup.cs?name=snippet_addcors)]
 
 ## <a name="enabling-cors-with-middleware"></a>啟用 CORS 中介軟體
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/30/2018
 
 加入 CORS 中介軟體使用時，您可以指定跨原始原則`CorsPolicyBuilder`類別。 執行這項作業的方法有兩種。 第一個方法是呼叫 UseCors lambda:
 
-[!code-csharp[Main](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
+[!code-csharp[](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
 
 **注意：**沒有尾端斜線，必須指定的 URL (`/`)。 如果 URL 將會終止並`/`，比較會傳回`false`而且不會傳回不含標頭。
 
@@ -68,11 +68,11 @@ Lambda 會採用`CorsPolicyBuilder`物件。 您可以找到一份[組態選項]
 
 請注意，CorsPolicyBuilder fluent API，因此您可以在方法呼叫鏈結：
 
-[!code-csharp[Main](../security/cors/sample/CorsExample3/Startup.cs?highlight=3&range=29-32)]
+[!code-csharp[](../security/cors/sample/CorsExample3/Startup.cs?highlight=3&range=29-32)]
 
 第二種方法是定義一個或多個具名的 CORS 原則，然後依名稱選取的原則，在執行階段。
 
-[!code-csharp[Main](cors/sample/CorsExample2/Startup.cs?name=snippet_begin)]
+[!code-csharp[](cors/sample/CorsExample2/Startup.cs?name=snippet_begin)]
 
 這個範例會將名為"AllowSpecificOrigin 」 的 CORS 原則。 若要選取的原則，將傳遞至名稱`UseCors`。
 
@@ -84,19 +84,19 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 若要指定特定動作的 CORS 原則將`[EnableCors]`動作屬性。 指定原則名稱。
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnAction)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnAction)]
 
 ### <a name="per-controller"></a>每個控制站
 
 若要指定將特定控制器的 CORS 原則`[EnableCors]`屬性加入控制器類別。 指定原則名稱。
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnController)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=EnableOnController)]
 
 ### <a name="globally"></a>全域
 
 您可以啟用 CORS 全域所有控制器加入`CorsAuthorizationFilterFactory`全域篩選集合的篩選：
 
-[!code-csharp[Main](cors/sample/CorsMVC/Startup2.cs?name=snippet_configureservices)]
+[!code-csharp[](cors/sample/CorsMVC/Startup2.cs?name=snippet_configureservices)]
 
 優先順序是： 全域控制器的動作。 動作層級原則的優先順序高於控制器層級原則和控制器層級原則會優先於全域原則。
 
@@ -104,7 +104,7 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 若要停用 CORS，控制器或動作，使用`[DisableCors]`屬性。
 
-[!code-csharp[Main](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=DisableOnAction)]
+[!code-csharp[](cors/sample/CorsMVC/Controllers/ValuesController.cs?name=DisableOnAction)]
 
 ## <a name="cors-policy-options"></a>CORS 原則選項
 
@@ -128,11 +128,11 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 若要允許一或多個特定的來源：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=19-23)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=19-23)]
 
 若要允許所有來源：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs??range=27-31)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs??range=27-31)]
 
 請仔細考慮，才能允許來自任何來源的要求。 這表示幾乎任何網站，可以進行 AJAX 呼叫您的 api。
 
@@ -140,7 +140,7 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 若要允許所有的 HTTP 方法：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=44-49)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=44-49)]
 
 這會影響事前要求和存取控制-允許-方法標頭。
 
@@ -150,11 +150,11 @@ CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 
 
 白名單特定的標頭：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=53-58)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=53-58)]
 
 若要允許所有撰寫要求標頭：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=62-67)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=62-67)]
 
 瀏覽器不會在它們如何設定存取控制-access-control-request-headers 標完全一致的。 如果您將設定標頭的任何項目不是"*"，您至少應該包含 [接受]，「 內容型別 」 和 「 原始 」，再加上您想要支援的任何自訂標頭。
 
@@ -176,7 +176,7 @@ CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 
 
 CORS 規格會呼叫這些*簡單的回應標頭*。 若要讓其他標頭可用於應用程式：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=71-76)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=71-76)]
 
 ### <a name="credentials-in-cross-origin-requests"></a>跨原始要求中的認證
 
@@ -203,7 +203,7 @@ $.ajax({
 
 此外，伺服器必須允許認證。 若要允許跨原始認證：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=80-85)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=80-85)]
 
 現在 HTTP 回應將包含存取控制-允許-認證標頭，告知瀏覽器伺服器允許跨原始要求的認證。
 
@@ -215,7 +215,7 @@ $.ajax({
 
 存取控制的最大年齡標頭指定可以快取預檢要求的回應的時間長度。 若要設定此標頭：
 
-[!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
 <a name="cors-how-cors-works"></a>
 

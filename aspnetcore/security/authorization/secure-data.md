@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: e186adef2e72f852543a92ddce0e82be2a3bcd12
-ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
+ms.openlocfilehash: 5acb65be078fd39b9e7a17ce2d8167b8f7b7db22
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/15/2018
 
 應用程式所建立[scaffolding](xref:tutorials/first-mvc-app-xplat/adding-model#scaffold-the-moviecontroller)下列`Contact`模型：
 
-[!code-csharp[Main](secure-data/samples/starter2/Models/Contact.cs?name=snippet1)]
+[!code-csharp[](secure-data/samples/starter2/Models/Contact.cs?name=snippet1)]
 
 這個範例包含下列 「 授權 」 處理常式：
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 02/15/2018
 
 使用 ASP.NET[識別](xref:security/authentication/identity)的使用者識別碼以確保使用者可以編輯其資料，但沒有其他使用者資料。 新增`OwnerID`和`ContactStatus`至`Contact`模型：
 
-[!code-csharp[Main](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
+[!code-csharp[](secure-data/samples/final2/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
 `OwnerID` 這是使用者的識別碼，從`AspNetUser`資料表中[識別](xref:security/authentication/identity)資料庫。 `Status`欄位可讓您判斷是否為一般使用者可以檢視連絡人。
 
@@ -100,11 +100,11 @@ dotnet ef database update
 
 新增[IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment)至`Startup`:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_env)]
+[!code-csharp[](secure-data/samples/final2/Startup.cs?name=snippet_env)]
 
 在`ConfigureServices`方法*Startup.cs* file、 add [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute)授權篩選條件：
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=10-999)]
+[!code-csharp[](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=10-999)]
 
 如果您使用 Visual Studio，請啟用 HTTPS。
 
@@ -123,11 +123,11 @@ dotnet ef database update
 * 標記為註解`AuthorizeFolder`和`AuthorizePage`。
 * 設定為需要驗證使用者的預設驗證原則。
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=23-27,31-999)]
+[!code-csharp[](secure-data/samples/final2/Startup.cs?name=snippet_defaultPolicy&highlight=23-27,31-999)]
 
 新增[AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute)索引，因此他們註冊之前，匿名使用者可以取得站台的相關資訊的相關，以及連絡頁面。 
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Index.cshtml.cs?name=snippet&highlight=2)]
+[!code-csharp[](secure-data/samples/final2/Pages/Index.cshtml.cs?name=snippet&highlight=2)]
 
 新增`[AllowAnonymous]`至[LoginModel 和 RegisterModel](https://github.com/aspnet/templating/issues/238)。
 
@@ -141,23 +141,23 @@ dotnet user-secrets set SeedUserPW <PW>
 
 更新`Main`使用測試密碼：
 
-[!code-csharp[Main](secure-data/samples/final2/Program.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/final2/Program.cs?name=snippet)]
 
 ### <a name="create-the-test-accounts-and-update-the-contacts"></a>建立測試帳戶，並更新連絡人
 
 更新`Initialize`方法中的`SeedData`類別來建立測試帳戶：
 
-[!code-csharp[Main](secure-data/samples/final2/Data/SeedData.cs?name=snippet_Initialize)]
+[!code-csharp[](secure-data/samples/final2/Data/SeedData.cs?name=snippet_Initialize)]
 
 新增系統管理員使用者識別碼和`ContactStatus`至連絡人。 請的連絡人 」 已送出 」 和一個 「 已拒絕 」。 加入所有連絡人的使用者識別碼和狀態。 只能有一個連絡人所示：
 
-[!code-csharp[Main](secure-data/samples/final2/Data/SeedData.cs?name=snippet1&highlight=17,18)]
+[!code-csharp[](secure-data/samples/final2/Data/SeedData.cs?name=snippet1&highlight=17,18)]
 
 ## <a name="create-owner-manager-and-administrator-authorization-handlers"></a>建立擁有者、 管理員和系統管理員授權的處理常式
 
 建立`ContactIsOwnerAuthorizationHandler`類別*授權*資料夾。 `ContactIsOwnerAuthorizationHandler`確認作用於資源的使用者擁有的資源。
 
-[!code-csharp[Main](secure-data/samples/final2/Authorization/ContactIsOwnerAuthorizationHandler.cs)]
+[!code-csharp[](secure-data/samples/final2/Authorization/ContactIsOwnerAuthorizationHandler.cs)]
 
 `ContactIsOwnerAuthorizationHandler`呼叫[內容。成功](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_)如果目前已驗證的使用者是連絡人的擁有者。 授權的處理常式通常：
 
@@ -172,19 +172,19 @@ dotnet user-secrets set SeedUserPW <PW>
 
 建立`ContactManagerAuthorizationHandler`類別*授權*資料夾。 `ContactManagerAuthorizationHandler`確認作用於資源的使用者是管理員。 只有經理可以核准或拒絕內容變更 （新增或變更）。
 
-[!code-csharp[Main](secure-data/samples/final2/Authorization/ContactManagerAuthorizationHandler.cs)]
+[!code-csharp[](secure-data/samples/final2/Authorization/ContactManagerAuthorizationHandler.cs)]
 
 ### <a name="create-an-administrator-authorization-handler"></a>建立的系統管理員授權的處理常式
 
 建立`ContactAdministratorsAuthorizationHandler`類別*授權*資料夾。 `ContactAdministratorsAuthorizationHandler`確認作用於資源的使用者是系統管理員。 系統管理員可以執行所有作業。
 
-[!code-csharp[Main](secure-data/samples/final2/Authorization/ContactAdministratorsAuthorizationHandler.cs)]
+[!code-csharp[](secure-data/samples/final2/Authorization/ContactAdministratorsAuthorizationHandler.cs)]
 
 ## <a name="register-the-authorization-handlers"></a>註冊授權的處理常式
 
 使用 Entity Framework 的核心服務必須登錄[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/aspnet/core/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。 `ContactIsOwnerAuthorizationHandler`使用 ASP.NET Core[識別](xref:security/authentication/identity)，這建置在 Entity Framework Core。 登錄處理常式與服務的集合，所以可`ContactsController`透過[相依性插入](xref:fundamentals/dependency-injection)。 將下列程式碼加入至結尾`ConfigureServices`:
 
-[!code-csharp[Main](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
+[!code-csharp[](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 
 `ContactAdministratorsAuthorizationHandler` 和`ContactManagerAuthorizationHandler`會新增為 singleton。 它們是 singleton，因為它們不使用 EF 和所需的資訊位於`Context`參數`HandleRequirementAsync`方法。
 
@@ -196,13 +196,13 @@ dotnet user-secrets set SeedUserPW <PW>
 
 檢閱`ContactOperations`類別。 這個類別包含的需求，應用程式支援：
 
-[!code-csharp[Main](secure-data/samples/final2/Authorization/ContactOperations.cs)]
+[!code-csharp[](secure-data/samples/final2/Authorization/ContactOperations.cs)]
 
 ### <a name="create-a-base-class-for-the-razor-pages"></a>建立 Razor 頁面的基底類別
 
 建立包含連絡人 Razor 頁面中會使用服務的基底類別。 基底類別會將該初始化程式碼在同一個位置：
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/DI_BasePageModel.cs)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/DI_BasePageModel.cs)]
 
 上述程式碼：
 
@@ -214,32 +214,32 @@ dotnet user-secrets set SeedUserPW <PW>
 
 更新建立頁面模型建構函式使用`DI_BasePageModel`基底類別：
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Create.cshtml.cs?name=snippetCtor)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Create.cshtml.cs?name=snippetCtor)]
 
 更新`CreateModel.OnPostAsync`方法：
 
 * 新增使用者識別碼`Contact`模型。
 * 呼叫此授權處理常式，以確定使用者有權限來建立的連絡人。
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Create.cshtml.cs?name=snippet_Create)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Create.cshtml.cs?name=snippet_Create)]
 
 ### <a name="update-the-indexmodel"></a>更新 IndexModel
 
 更新`OnGetAsync`方法，使只有核准的連絡人會向一般使用者顯示：
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Index.cshtml.cs?name=snippet)]
 
 ### <a name="update-the-editmodel"></a>更新 EditModel
 
 新增授權處理常式來驗證使用者擁有的連絡人。 正在驗證資源授權，因為`[Authorize]`屬性不足夠。 應用程式沒有存取資源，要在評估屬性時。 必須命令式資源為基礎的授權。 一旦應用程式在載入頁面模型或是載入在處理常式本身擁有資源的存取權，就必須執行檢查。 您經常存取的資源，藉由傳遞資源索引鍵。
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Edit.cshtml.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Edit.cshtml.cs?name=snippet)]
 
 ### <a name="update-the-deletemodel"></a>更新 DeleteModel
 
 更新刪除頁面模型，以確認使用者擁有連絡人 delete 權限使用授權的處理常式。
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Delete.cshtml.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Delete.cshtml.cs?name=snippet)]
 
 ## <a name="inject-the-authorization-service-into-the-views"></a>授權服務插入檢視
 
@@ -247,13 +247,13 @@ dotnet user-secrets set SeedUserPW <PW>
 
 插入中的授權服務*Views/_ViewImports.cshtml*檔案，因此可使用的所有檢視：
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/_ViewImports.cshtml?highlight=6-9)]
+[!code-cshtml[](secure-data/samples/final2/Pages/_ViewImports.cshtml?highlight=6-9)]
 
 上述標記加入了許多`using`陳述式。
 
 更新**編輯**和**刪除**中連結*Pages/Contacts/Index.cshtml*讓它們只呈現具有適當的權限的使用者：
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-999)]
+[!code-cshtml[](secure-data/samples/final2/Pages/Contacts/Index.cshtml?highlight=34-36,64-999)]
 
 > [!WARNING]
 > 隱藏不需要變更資料的權限的使用者連結，並不安全應用程式。 隱藏連結，讓應用程式更容易使用顯示唯一有效的連結。 使用者可以 hack 叫用 編輯和刪除作業沒有自己的資料產生的 Url。 Razor 頁面或控制站必須強制執行存取檢查，以確保資料的安全。
@@ -262,11 +262,11 @@ dotnet user-secrets set SeedUserPW <PW>
 
 更新詳細資料檢視，讓管理員可以核准或拒絕連絡人：
 
-[!code-cshtml[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-999)]
+[!code-cshtml[](secure-data/samples/final2/Pages/Contacts/Details.cshtml?range=48-999)]
 
 更新詳細資料頁面模型：
 
-[!code-csharp[Main](secure-data/samples/final2/Pages/Contacts/Details.cshtml.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/final2/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
 ## <a name="test-the-completed-app"></a>測試已完成的應用程式
 
@@ -311,7 +311,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 * 加入下列`Contact`模型：
 
-  [!code-csharp[Main](secure-data/samples/starter2/Models/Contact.cs?name=snippet1)]
+  [!code-csharp[](secure-data/samples/starter2/Models/Contact.cs?name=snippet1)]
 
 * Scaffold`Contact`模型：
 
@@ -340,7 +340,7 @@ dotnet ef database update
 
 呼叫`SeedData.Initialize`從`Main`:
 
-[!code-csharp[Main](secure-data/samples/starter2/Program.cs?name=snippet)]
+[!code-csharp[](secure-data/samples/starter2/Program.cs?name=snippet)]
 
 測試應用程式植入資料庫。 請連絡資料庫中有任何資料列，如果種子不執行方法。
 

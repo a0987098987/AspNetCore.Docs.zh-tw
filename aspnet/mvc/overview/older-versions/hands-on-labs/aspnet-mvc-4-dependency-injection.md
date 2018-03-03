@@ -12,21 +12,22 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: 48a7d7fdb670aebb72450fc4eb12a364ef595c53
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c735bbdafe4b8f0423abb6bacd076f173a1be9d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 相依性插入
-====================
+# <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 相依性插入
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> [!NOTE]
-> 這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**和**ASP.NET MVC 4 篩選**。 如果您不使用**ASP.NET MVC 4 篩選**之前，我們建議您在一段**ASP.NET MVC 自訂動作篩選條件**實際操作實驗室。
-> 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**和**ASP.NET MVC 4 篩選**。 如果您不使用**ASP.NET MVC 4 篩選**之前，我們建議您在一段**ASP.NET MVC 自訂動作篩選條件**實際操作實驗室。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可從在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 相依性插入](https://github.com/Microsoft-Web/HOL-MVC4DependencyInjection)。
 
 在**物件導向程式設計**開發架構時，物件一起運作共同作業模型中有 contributors 和取用者。 當然，此通訊模式會產生物件和元件，變得難以管理複雜度增加之間的相依性。
 

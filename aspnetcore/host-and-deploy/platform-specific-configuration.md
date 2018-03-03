@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/platform-specific-configuration
-ms.openlocfilehash: 2663cd1e05be9e8695966df959082e6e574d0b4a
-ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
+ms.openlocfilehash: c36b8acd6f7fcb4e4d11e43013ccaf5ca6d1b0ab
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-app-features-using-a-platform-specific-configuration-in-aspnet-core"></a>新增應用程式中 ASP.NET Core 使用平台專屬組態的功能
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/15/2018
 
 範例應用程式讀取[HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey)到`string`陣列，並在應用程式的索引頁面中顯示結果：
 
-[!code-csharp[Main](platform-specific-configuration/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
+[!code-csharp[](platform-specific-configuration/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
 
 ## <a name="disable-automatic-loading-of-hosting-startup-assemblies"></a>停用自動載入裝載啟動的組件
 
@@ -49,19 +49,19 @@ ms.lasthandoff: 02/15/2018
 
 `IHostingStartup`做為主控台應用程式沒有進入點為基礎的組件部署功能。 組件參考[Microsoft.AspNetCore.Hosting.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.Abstractions/)封裝：
 
-[!code-xml[Main](platform-specific-configuration/snapshot_sample/StartupFeature.csproj)]
+[!code-xml[](platform-specific-configuration/snapshot_sample/StartupFeature.csproj)]
 
 A [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattribute)屬性會識別類別的實作為`IHostingStartup`載入和執行時建置[IWebHost](/dotnet/api/microsoft.aspnetcore.hosting.iwebhost)。 在下列範例中，命名空間是`StartupFeature`，而類別是`StartupFeatureHostingStartup`:
 
-[!code-csharp[Main](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet1)]
+[!code-csharp[](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet1)]
 
 類別會實作`IHostingStartup`。 類別的[設定](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure)方法會使用[IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)將功能加入至應用程式：
 
-[!code-csharp[Main](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet2&highlight=3,5)]
+[!code-csharp[](platform-specific-configuration/snapshot_sample/StartupFeature.cs?name=snippet2&highlight=3,5)]
 
 建置時`IHostingStartup`專案、 相依性檔案 (*\*。 deps.json*) 設定`runtime`之組件的位置*bin*資料夾：
 
-[!code-json[Main](platform-specific-configuration/snapshot_sample/StartupFeature1.deps.json?range=2-13&highlight=8)]
+[!code-json[](platform-specific-configuration/snapshot_sample/StartupFeature1.deps.json?range=2-13&highlight=8)]
 
 部分檔案會顯示。 在範例中的組件名稱是`StartupFeature`。
 
@@ -69,7 +69,7 @@ A [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingstartupattrib
 
 已指定的執行階段位置 *\*。 deps.json*檔案。 為 作用中的功能，`runtime`元素必須指定功能的執行階段組件的位置。 前置詞`runtime`位置`lib/netcoreapp2.0/`:
 
-[!code-json[Main](platform-specific-configuration/snapshot_sample/StartupFeature2.deps.json?range=2-13&highlight=8)]
+[!code-json[](platform-specific-configuration/snapshot_sample/StartupFeature2.deps.json?range=2-13&highlight=8)]
 
 範例應用程式修改 *\*。 deps.json*檔案由執行[PowerShell](/powershell/scripting/powershell-scripting)指令碼。 PowerShell 指令碼會自動觸發建置 」 目標之專案檔中。
 

@@ -12,28 +12,26 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 8b1bdae048afc78399ccc7b0eac7125d9b983c13
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 35f9402ad6090c0441425a23b2b8063350892210
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="whats-new-in-aspnet-mvc-4"></a>ASP.NET MVC 4 中最新消息
-====================
+# <a name="whats-new-in-aspnet-mvc-4"></a>ASP.NET MVC 4 中最新消息
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-[下載 Web 營訓練套件](http://www.microsoft.com/download/29843)
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
-> ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.NET 和.NET framework 的可擴充、 以標準為基礎的 web 應用程式的架構。 這個新，第四個版本的 framework 著重於讓行動裝置 web 應用程式開發更容易。
-> 
-> 一開始，當您建立新的 ASP.NET MVC 4 專案沒有現在可用來建置針對行動裝置的獨立應用程式的行動應用程式專案範本。 此外，與 jQuery Mobile jQuery.Mobile.MVC NuGet 封裝透過整合 ASP.NET MVC 4。 jQuery Mobile 是以 HTML5 為基礎的架構，用於開發 web 應用程式所相容的所有熱門的行動裝置平台，包括 Windows Phone、 iPhone、 Android，依此類推。 不過，如果您需要特製化，ASP.NET MVC 4 也可讓您提供不同裝置的不同檢視，並提供裝置特定的最佳化。
-> 
-> 在這個實際操作實驗室中，您將啟動 ASP.NET MVC 4&quot;網際網路應用程式&quot;建立相片圖庫的應用程式的專案範本。 您將漸進式增強使用 jQuery Mobile 和 ASP.NET MVC 4 的新功能，才能讓它與不同的行動裝置和桌面的網頁瀏覽器相容的應用程式。 您也將了解程式碼產生和 ASP.NET MVC 4 如何讓您更輕鬆地撰寫非同步動作方法，支援工作的新程式碼訣竅&lt;ActionResult&gt;傳回型別。
-> 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
+ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.NET 和.NET framework 的可擴充、 以標準為基礎的 web 應用程式的架構。 這個新，第四個版本的 framework 著重於讓行動裝置 web 應用程式開發更容易。
 
+一開始，當您建立新的 ASP.NET MVC 4 專案沒有現在可用來建置針對行動裝置的獨立應用程式的行動應用程式專案範本。 此外，與 jQuery Mobile jQuery.Mobile.MVC NuGet 封裝透過整合 ASP.NET MVC 4。 jQuery Mobile 是以 HTML5 為基礎的架構，用於開發 web 應用程式所相容的所有熱門的行動裝置平台，包括 Windows Phone、 iPhone、 Android，依此類推。 不過，如果您需要特製化，ASP.NET MVC 4 也可讓您提供不同裝置的不同檢視，並提供裝置特定的最佳化。
 
-<a id="Objectives"></a>
+在這個實際操作實驗室中，您將啟動 ASP.NET MVC 4&quot;網際網路應用程式&quot;建立相片圖庫的應用程式的專案範本。 您將漸進式增強使用 jQuery Mobile 和 ASP.NET MVC 4 的新功能，才能讓它與不同的行動裝置和桌面的網頁瀏覽器相容的應用程式。 您也將了解程式碼產生和 ASP.NET MVC 4 如何讓您更輕鬆地撰寫非同步動作方法，支援工作的新程式碼訣竅&lt;ActionResult&gt;傳回型別。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[What's New in ASP.NET 4.5 Web Form](https://github.com/Microsoft-Web/HOL-ASPNETWebForms)。
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -146,7 +144,7 @@ ms.lasthandoff: 01/24/2018
 
     ![jQuery 驗證](whats-new-in-aspnet-mvc-4/_static/image6.png)
 
-    *jQuery 驗證*
+    jQuery 驗證
 
     > [!NOTE]
     > 請注意這兩個登入中的第一個區段的區段，您可以記錄在使用 registerd 帳戶從站台，您可以 altenativelly 使用登入 google （預設為停用） 等其他的驗證服務的第二個區段中。
@@ -164,7 +162,7 @@ ms.lasthandoff: 01/24/2018
 
     ![在服務中選取記錄檔](whats-new-in-aspnet-mvc-4/_static/image7.png)
 
-    *在服務中選取記錄檔*
+    在服務中選取記錄檔
 10. 使用 Google 帳戶登入。
 11. 允許 Google 帳戶中擷取資訊的站台 (localhost)。
 12. 最後，您必須註冊在 Google 帳戶相關聯的站台。
@@ -258,9 +256,9 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
 媒體查詢的範例： &gt;  **@media所有和 (最大寬度： 1000px) 和 (最小寬度： 700px) {}:** 700px 和 1000px 之間所有解析的。
 
-> **@media螢幕和 (最小寬度： 400px) 和 (最大寬度： 700px) {...}:**只針對螢幕。 解析度必須介於 400 到 700px。
+> **@media 螢幕和 (最小寬度： 400px) 和 (最大寬度： 700px) {...}:**只針對螢幕。 解析度必須介於 400 到 700px。
 > 
-> **@media掌上型和 (最小寬度： 20em)、 螢幕以及 (最小寬度： 20em) {...}:**的掌上型 （行動裝置和裝置） 和畫面。 最小寬度必須大於 20em。
+> **@media 掌上型和 (最小寬度： 20em)、 螢幕以及 (最小寬度： 20em) {...}:**的掌上型 （行動裝置和裝置） 和畫面。 最小寬度必須大於 20em。
 > 
 > 您可以找到相關資訊上[W3C 網站](http://www.w3.org/TR/css3-mediaqueries/)。
 

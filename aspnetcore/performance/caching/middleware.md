@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 29ef3cf3d8bcd6b4ebbf08d831dc146e830fa1ac
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e9a74d8f6c3945b1bc8c62d0ab21145a7c5717fb
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 02/11/2018
 
 在`ConfigureServices`，將中介軟體新增至服務集合。
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
 設定應用程式使用中的介軟體`UseResponseCaching`擴充方法，將中介軟體新增至處理管線的要求。 範例應用程式將[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)標頭至回應的快取的回應會快取多達 10 秒。 此範例傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭設定的中介軟體提供快取回的應才[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)後續要求的標頭與相符的原始要求。
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
 回應快取中介軟體只會快取伺服器的回應，導致 200 （確定） 」 狀態碼。 任何其他回應，包括[錯誤網頁](xref:fundamentals/error-handling)中, 介軟體會被忽略。
 
@@ -125,10 +125,10 @@ if (responseCachingFeature != null)
 * 要求方法必須是 GET 或 HEAD。
 * 終端機的中介軟體，例如[靜態檔案中介軟體](xref:fundamentals/static-files)，必須處理前回應快取中介軟體的回應。
 * `Authorization`標頭不得存在。
-* `Cache-Control`標頭參數必須是有效，而且必須標示為回應`public`且未標記為`private`。
+* `Cache-Control` 標頭參數必須是有效，而且必須標示為回應`public`且未標記為`private`。
 * `Pragma: no-cache`標頭不能有如果`Cache-Control`標頭不是呈現為`Cache-Control`標頭會覆寫`Pragma`標頭時出現。
 * `Set-Cookie`標頭不得存在。
-* `Vary`標頭參數必須是有效且不等於`*`。
+* `Vary` 標頭參數必須是有效且不等於`*`。
 * `Content-Length`標頭值 (如果設定) 必須符合回應主體的大小。
 * [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature)不會使用。
 * 回應不是所指定過時`Expires`標頭和`max-age`和`s-maxage`快取指示詞。

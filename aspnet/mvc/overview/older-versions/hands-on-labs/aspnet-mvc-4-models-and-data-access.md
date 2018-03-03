@@ -12,23 +12,24 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 076fa87eff140a3e7ff6855e4876abac40419c57
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 353419077422516761df56f730352b19b5db5ff2
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 模型和資料存取
-====================
+# <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 模型和資料存取
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> [!NOTE]
-> 這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 4 的基本概念**實際操作實驗室。
-> 
-> 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
-> 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843)。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 4 的基本概念**實際操作實驗室。
+
+這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 模型和資料存取](https://github.com/Microsoft-Web/HOL-MVC4ModelsAndDataAccess)。
 
 在**ASP.NET MVC 基礎**實際操作實驗室中，您有已硬式編碼的資料將從傳遞控制站至檢視範本。 但是，才能建立實際的 Web 應用程式，您可能想要使用實際的資料庫。
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 01/24/2018
 
 ![第一個與資料庫。建立第一個模型](aspnet-mvc-4-models-and-data-access/_static/image1.png "Database First vs。第一次建立模型")
 
-*第一個與資料庫。第一次建立模型*
+*第一個與資料庫。第一次建立模型
 
 之後產生模型，以提供從資料庫中，而不是使用硬式編碼資料的資料存放區檢視 StoreController 中進行適當的調整。 您必須不作任何修改檢視範本 StoreController 會返回相同 ViewModels 檢視範本，因為雖然這次的資料將來自資料庫。
 
@@ -325,7 +326,7 @@ ms.lasthandoff: 01/24/2018
 
     ![Web.config 檔案位置](aspnet-mvc-4-models-and-data-access/_static/image19.png "Web.config 檔案位置")
 
-    *Web.config 檔案位置*
+    *web.config 檔案位置*
 
 
     [!code-xml[Main](aspnet-mvc-4-models-and-data-access/samples/sample7.xml)]
@@ -666,12 +667,12 @@ ms.lasthandoff: 01/24/2018
 
     ![加入用戶端 IP 位址](aspnet-mvc-4-models-and-data-access/_static/image41.png)
 
-    *加入用戶端 IP 位址*
+    加入用戶端 IP 位址
 3. 一次**用戶端 IP 位址**新增至允許的 IP 位址清單中，按一下**儲存**來確認變更。
 
     ![確認變更](aspnet-mvc-4-models-and-data-access/_static/image42.png)
 
-    *確認變更*
+    確認變更
 
 <a id="ApxBTask3"></a>
 

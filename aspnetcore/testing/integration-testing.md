@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: 4a5f14e11de6ed91f67808c3ea8c78a7b1d43b03
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 8c28f1b4f66433eaebd9e474e784ecf3f1ac271b
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="integration-testing-in-aspnet-core"></a>整合測試 ASP.NET Core
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
-整合測試，可確保應用程式的元件正確運作時組合在一起。 ASP.NET Core 支援整合測試使用單元測試架構和內建測試 web 主機，可以用來處理要求網路額外負荷。
+整合測試，可確保應用程式的元件正確運作時組合在一起。 ASP.NET Core 支援使用單元測試架構和內建測試 Web 主機來進行整合測試，此 Web 主機可以用來處理要求而不會有網路額外負荷。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/testing/integration-testing/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -47,7 +47,7 @@ ASP.NET Core 包含可加入至整合測試專案的測試主機來裝載 ASP.NE
 
 一次`Microsoft.AspNetCore.TestHost`封裝包含在專案中，您便可以建立及設定`TestServer`在您的測試。 下列測試顯示如何以確認站台的根提出的要求會傳回"Hello World ！" 和應該成功地對執行預設 Visual Studio 所建立的 ASP.NET Core 空白網站範本。
 
-[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?name=snippet_WebDefault&highlight=7,16,22)]
+[!code-csharp[](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?name=snippet_WebDefault&highlight=7,16,22)]
 
 這項測試會使用排列 Act Assert 模式。 排列步驟會在建構函式，建立的執行個體中完成`TestServer`。 設定`WebHostBuilder`將用來建立`TestHost`; 在此範例中，`Configure`來自待測系統 (SUT) 的方法`Startup`類別會傳遞至`WebHostBuilder`。 這個方法會用來設定的要求管線`TestServer`相同至 SUT 伺服器會設定方式。
 
@@ -55,7 +55,7 @@ ASP.NET Core 包含可加入至整合測試專案的測試主機來裝載 ASP.NE
 
 現在您可以加入一些其他的整合測試，以確認質數檢查功能，適用於透過 web 應用程式：
 
-[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?name=snippet_CheckPrime)]
+[!code-csharp[](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?name=snippet_CheckPrime)]
 
 請注意，您不會真的想要測試正確性的質數檢查程式，而是，但是這些測試與 web 應用程式正在執行您的預期。 您已有單元測試涵蓋範圍，可讓您在中的信心`PrimeService`，您可以在這裡看到如下：
 
@@ -134,13 +134,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 > [!NOTE]
 > 由於中介軟體取決於`PrimeService`服務，您也正在要求的建構函式與此服務執行個體。 架構會提供此服務透過[相依性插入](xref:fundamentals/dependency-injection)，假設它已設定，例如在`ConfigureServices`。
 
-[!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs?highlight=39-63)]
+[!code-csharp[](../testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs?highlight=39-63)]
 
 其路徑會比對時，此中介軟體都可做為要求委派鏈結中的端點，因為沒有要呼叫`_next.Invoke`當此中介軟體會處理要求。
 
 與此中介軟體，而且某些很有幫助擴充方法建立，以簡化設定它，重構的`Configure`方法看起來像這樣：
 
-[!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9&range=19-33)]
+[!code-csharp[](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9&range=19-33)]
 
 這項重構之後, 您確信，web 應用程式仍能運作，因為所有要通過整合測試。
 

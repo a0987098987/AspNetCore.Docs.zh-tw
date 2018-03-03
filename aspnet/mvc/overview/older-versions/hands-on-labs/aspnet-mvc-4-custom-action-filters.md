@@ -12,25 +12,26 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 103cd68c576463d87d0077cc149f9b89c6e028e8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 639815cc92b7cb5f3dfb4e1a198f6b4c2476dc90
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 自訂動作篩選條件
-====================
+# <a name="aspnet-mvc-4-custom-action-filters"></a>ASP.NET MVC 4 自訂動作篩選條件
+
 由[Web 營小組](https://twitter.com/webcamps)
 
-> ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩選邏輯。 動作篩選條件是自訂屬性，提供將動作前和動作後的行為加入控制器動作方法的宣告式方法。
-> 
-> 在這個實際操作實驗室中，您將建立自訂動作篩選條件屬性到 MvcMusicStore 解決方案來攔截控制器的要求，並記錄在站台到資料庫資料表的活動。 您可以將記錄篩選的資料隱碼加入至任何控制器或動作。 最後，您會看到記錄檢視，顯示造訪者的清單。
-> 
-> > [!NOTE]
-> > 這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 4 的基本概念**實際操作實驗室。
+[下載 Web 營訓練套件](https://aka.ms/webcamps-training-kit)
 
+ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩選邏輯。 動作篩選條件是自訂屬性，提供將動作前和動作後的行為加入控制器動作方法的宣告式方法。
 
-<a id="Objectives"></a>
+在這個實際操作實驗室中，您將建立自訂動作篩選條件屬性到 MvcMusicStore 解決方案來攔截控制器的要求，並記錄在站台到資料庫資料表的活動。 您可以將記錄篩選的資料隱碼加入至任何控制器或動作。 最後，您會看到記錄檢視，顯示造訪者的清單。
+
+這個實際操作實驗室假設您擁有的基本知識**ASP.NET MVC**。 如果您不使用**ASP.NET MVC**之前，我們建議您在一段**ASP.NET MVC 4 的基本概念**實際操作實驗室。
+
+> [!NOTE]
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可從在[Microsoft-Web/WebCampTrainingKit 版本](https://aka.ms/webcamps-training-kit)。 這個實驗室中的特定專案將會位於[ASP.NET MVC 4 自訂動作篩選條件](https://github.com/Microsoft-Web/HOL-MVC4CustomActionFilters)。
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -332,7 +333,7 @@ ms.lasthandoff: 01/24/2018
 1. 在**StoreController**類別中，移除**[MyNewCustomActionFilter]**屬性和 [順序] 屬性從**[CustomActionFilter]**。 它看起來應該如下所示：
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample13.cs)]
-2. 開啟**Global.asax**檔案，並尋找**應用程式\_啟動**方法。 請注意，每個 thime 應用程式啟動時，它藉由呼叫註冊全域篩選**RegisterGlobalFilters**方法內**FilterConfig**類別。
+2. 開啟**Global.asax**檔案，並尋找**應用程式\_啟動**方法。 請注意，每次應用程式啟動時，它藉由呼叫註冊全域篩選**RegisterGlobalFilters**方法內**FilterConfig**類別。
 
     ![在 Global.asax 中註冊全域篩選](aspnet-mvc-4-custom-action-filters/_static/image10.png "在 Global.asax 中註冊全域篩選")
 
@@ -484,12 +485,12 @@ ms.lasthandoff: 01/24/2018
 
     ![加入用戶端 IP 位址](aspnet-mvc-4-custom-action-filters/_static/image27.png)
 
-    *加入用戶端 IP 位址*
+    加入用戶端 IP 位址
 3. 一次**用戶端 IP 位址**新增至允許的 IP 位址清單中，按一下**儲存**來確認變更。
 
     ![確認變更](aspnet-mvc-4-custom-action-filters/_static/image28.png)
 
-    *確認變更*
+    確認變更
 
 <a id="ApxBTask3"></a>
 

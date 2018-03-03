@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: c229537e7f533eea2173dbc51b8d0d0e097d434a
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: f6efd838d7b6c837c75f36591a49eab812f9d54c
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>在 ASP.NET Core 應用程式中設定 Windows 驗證
 
@@ -56,7 +56,7 @@ Visual Studio 專案**屬性**網頁的**偵錯** 索引標籤提供 Windows 驗
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用與 IIS Windows 驗證
 
-IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)(ANCM) 來裝載 ASP.NET Core 應用程式。 ANCM 流程 Windows 驗證來 IIS 預設。 於 IIS 時，應用程式專案，會完成設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
+IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 模組流程 Windows 驗證來 IIS 預設。 在 IIS 中，不是應用程式設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
 
 ### <a name="create-a-new-iis-site"></a>建立新的 IIS 站台
 
@@ -113,7 +113,7 @@ IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module
 在 ASP.NET Core 2.x，`[Authorize]`屬性需要額外的設定中*Startup.cs*挑戰 Windows 驗證的匿名要求。 建議的組態設定稍微依據所使用的 web 伺服器而異。
 
 > [!NOTE]
-> 根據預設，使用者沒有授權存取的網頁會呈現空白文件。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
+> 根據預設，缺少授權存取的網頁的使用者會看到空白 HTTP 403 回應。 [StatusCodePages 中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages)可以設定為使用者提供更好的 「 拒絕存取 」 體驗。
 
 #### <a name="iis"></a>IIS
 

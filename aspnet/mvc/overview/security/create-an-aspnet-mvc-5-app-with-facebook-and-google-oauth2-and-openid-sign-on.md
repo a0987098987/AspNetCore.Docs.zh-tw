@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: ccf4329e6684d07570bfaabfaa1a570664fb2ca3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8dc2221ea19a33f1d34ba3aae8c60e365423e140
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -114,6 +114,9 @@ ms.lasthandoff: 01/24/2018
 <a id="goog"></a>
 ## <a name="creating-a-google-app-for-oauth-2-and-connecting-the-app-to-the-project"></a>OAuth 2 建立 Google 應用程式和應用程式連接至專案
 
+> [!WARNING]
+> 目前的 Google OAuth 指示，請參閱[設定 Google 驗證中 ASP.NET Core](/aspnet/core/security/authentication/social/google-logins)。
+
 1. 瀏覽至[Google 開發人員主控台](https://console.developers.google.com/)。
 1. 如果您尚未建立的專案之前，請選取**認證**在左側的索引標籤上，然後選取**建立**。
 1. 在左側的索引標籤上，按一下**認證**。
@@ -158,6 +161,9 @@ ms.lasthandoff: 01/24/2018
 
 <a id="fb"></a>
 ## <a name="creating-the-app-in-facebook-and-connecting-the-app-to-the-project"></a>在 Facebook 中建立應用程式和應用程式連接至專案
+
+> [!WARNING]
+> 目前的 Facebook OAuth2 驗證指示，請參閱[設定 Facebook 驗證](/aspnet/core/security/authentication/social/facebook-logins)
 
 Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 中建立的應用程式。
 

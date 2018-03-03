@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 138b60d0e7c2a3d8848d534ffed854feaf0f5661
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d2c4ec317f235c6d042bd130dbf79f6cb5e2d47d
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="basic-command-line-publishing"></a>基本命令列發行
 
-命令列發行適用於所有.NET Core 支援的平台上，而不需要 Visual Studio。 在下列範例中，`dotnet publish` 命令是從專案目錄執行 (其包含 *.csproj* 檔案)。 如果不是在專案資料夾中，明確地傳入專案檔案路徑。 例如: 
+命令列發行適用於所有.NET Core 支援的平台上，而不需要 Visual Studio。 下列範例中[dotnet 發行](/dotnet/core/tools/dotnet-publish)從專案目錄執行命令 (其中包含*.csproj*檔案)。 如果不是在專案資料夾中，明確地傳入專案檔案路徑。 例如: 
 
 ```console
 dotnet publish c:/webs/web1
@@ -134,7 +134,7 @@ dotnet publish
 
 ---
 
-`dotnet publish` 會產生與類似下列內容的輸出：
+[Dotnet 發行](/dotnet/core/tools/dotnet-publish)命令產生的輸出類似如下：
 
 ```console
 C:\Webs\Web1>dotnet publish
@@ -155,7 +155,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 dotnet publish -c Release -o C:/MyWebs/test
 ```
 
-`dotnet publish`命令呼叫叫用 MSBuild`Publish`目標。 任何參數傳遞至`dotnet publish`傳遞至 MSBuild。 `-c` 參數對應至 `Configuration` MSBuild 屬性。 `-o` 參數對應至 `OutputPath`。
+[Dotnet 發行](/dotnet/core/tools/dotnet-publish)命令呼叫叫用 MSBuild`Publish`目標。 任何參數傳遞至`dotnet publish`傳遞至 MSBuild。 `-c` 參數對應至 `Configuration` MSBuild 屬性。 `-o` 參數對應至 `OutputPath`。
 
 MSBuild 屬性可以使用下列格式傳遞：
 
@@ -196,20 +196,20 @@ MSBuild 屬性可以使用下列格式傳遞：
 
 如需詳細資訊，請參閱[哪些發佈選項適合我？](https://docs.microsoft.com/visualstudio/ide/not-in-toc/web-publish-options)
 
-使用 Visual Studio 中，建立的發行設定檔時*屬性/PublishProfiles/\<發行名稱 >.pubxml*建立 MSBuild 檔案。 這個 *.pubxml* 檔案是 MSBuild 檔案，而且包含發佈組態設定。 自訂建置和發佈程序，可以變更這個檔案。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>`是特殊，因為它是全域屬性，且不應該在組建中匯入任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx)。
+使用 Visual Studio 中，建立的發行設定檔時*屬性/PublishProfiles/\<發行名稱 >.pubxml*建立 MSBuild 檔案。 這個 *.pubxml* 檔案是 MSBuild 檔案，而且包含發佈組態設定。 自訂建置和發佈程序，可以變更這個檔案。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>` 是特殊，因為它是全域屬性，且不應該在組建中匯入任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx)。
 *.Pubxml*檔案不應該簽入原始檔控制，因為它相依於*.user*檔案。 *.user* 檔案絕對不能簽入原始檔控制，因為它可以包含機密資訊，而且只對一位使用者和一部電腦有效。
 
 機密資訊 (例如發佈密碼) 是依每個使用者/電腦加密，且儲存在 *Properties/PublishProfiles/*\<發佈名稱>.pubxml.user 檔案中。 因為這個檔案可以包含機密資訊，所以它「不」應該簽入原始檔控制。
 
 如需如何發行 ASP.NET core web 應用程式的概觀，請參閱[主機和部署](index.md)。 [主機和部署](index.md)是在 https://github.com/aspnet/websdk 開放原始碼專案。
 
-`dotnet publish`可以使用 MSDeploy，資料夾和[KUDU](https://github.com/projectkudu/kudu/wiki)發行設定檔：
+`dotnet publish` 可以使用 MSDeploy，資料夾和[KUDU](https://github.com/projectkudu/kudu/wiki)發行設定檔：
  
-（適用於跨平台） 的資料夾：`dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>`
+（適用於跨平台） 的資料夾： `dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>`
 
-MSDeploy （目前這僅適用於 windows 因為 MSDeploy 並不跨平台）：`dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>`
+MSDeploy （目前這僅適用於 windows 因為 MSDeploy 並不跨平台）： `dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>`
 
-MSDeploy 封裝 （目前這僅適用於 windows 因為 MSDeploy 並不跨平台）：`dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>`
+MSDeploy 封裝 （目前這僅適用於 windows 因為 MSDeploy 並不跨平台）： `dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>`
 
 在先前範例中，**不**傳遞`deployonbuild`至`dotnet publish`。
 
@@ -244,7 +244,7 @@ MSDeploy 封裝 （目前這僅適用於 windows 因為 MSDeploy 並不跨平台
 * `dotnet build /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
 * `msbuild      /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
 
-叫用時`dotnet build`，它會呼叫`msbuild`來執行建置和發佈程序。 呼叫`dotnet build`或`msbuild`時，基本上等同資料夾設定檔中傳遞。 在 Windows 上直接呼叫 MSBuild 時，會使用 MSBuild 的.NET Framework 版本。 MSDeploy 目前僅限於 Windows 電腦進行發佈。 在非資料夾設定檔上呼叫 `dotnet build` 會叫用 MSBuild，而 MSBuild 會在非資料夾設定檔上使用 MSDeploy。 在非資料夾設定檔上呼叫 `dotnet build`，會叫用 MSBuild (使用 MSDeploy) 並造成失敗 (即使是在 Windows 平台上執行)。 若要發佈非資料夾的設定檔，請直接呼叫 MSBuild。
+叫用時[dotnet 組建](/dotnet/core/tools/dotnet-build)，它會呼叫`msbuild`來執行建置和發佈程序。 呼叫`dotnet build`或`msbuild`時，基本上等同資料夾設定檔中傳遞。 在 Windows 上直接呼叫 MSBuild 時，會使用 MSBuild 的.NET Framework 版本。 MSDeploy 目前僅限於 Windows 電腦進行發佈。 在非資料夾設定檔上呼叫 `dotnet build` 會叫用 MSBuild，而 MSBuild 會在非資料夾設定檔上使用 MSDeploy。 在非資料夾設定檔上呼叫 `dotnet build`，會叫用 MSBuild (使用 MSDeploy) 並造成失敗 (即使是在 Windows 平台上執行)。 若要發佈非資料夾的設定檔，請直接呼叫 MSBuild。
 
 下列資料夾發行設定檔是以 Visual Studio 建立並發佈至網路共用：
 
@@ -332,7 +332,7 @@ msbuild "C:\Webs\Web1\Web1.csproj" /p:DeployOnBuild=true
 </ItemGroup>
 ```
 
-`<MsDeploySkipRules>`不會刪除*略過*從部署站台的目標。 `<Content>`目標的檔案與資料夾會從部署網站刪除。 例如，假設已部署的 web 應用程式有下列檔案：
+`<MsDeploySkipRules>` 不會刪除*略過*從部署站台的目標。 `<Content>` 目標的檔案與資料夾會從部署網站刪除。 例如，假設已部署的 web 應用程式有下列檔案：
 
 * *Views/Home/About1.cshtml*
 * *Views/Home/About2.cshtml*

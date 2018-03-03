@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: dfed5c7a8e103973048295b7607008ecc7e90eeb
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e2ade6223cdc56a4f0f00ff0b985ceda4ab5484a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
 
 <a name="bootstrap-index"></a>
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
 最熱門的 web 架構開發能繼續回應的 web 應用程式的目前啟動載入器。 無論您是在前端的設計和開發或專家的新手，它會提供數種功能可以改善您的網站，您的使用者經驗的優點。 啟動安裝程式會部署為一組 CSS 和 JavaScript 檔案，設計用來協助您網站或應用程式的標尺有效率地從手機到桌上型電腦的平板電腦。
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/30/2018
 
 啟動程序加入 ASP.NET Core 專案是簡單的將它加入至*bower.json*做為相依性：
 
-[!code-json[Main](../common/samples/WebApplication1/bower.json?highlight=5)]
+[!code-json[](../common/samples/WebApplication1/bower.json?highlight=5)]
 
 這是建議用來啟動程序加入 ASP.NET Core 專案。
 
@@ -60,7 +60,7 @@ Install-Package bootstrap
 
 如果您正在參考您自己的啟動程序的本機版本，您必須在使用它的任何頁面中參考它們。 在生產環境中，您應該參考使用 CDN 的啟動程序。 在預設的 ASP.NET 網站範本， *_Layout.cshtml*檔案並因此如下所示：
 
-[!code-html[Main](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
+[!code-html[](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
 > [!NOTE]
 > 如果您要使用任何啟動程序的 jQuery 外掛程式，您也必須參考 jQuery。

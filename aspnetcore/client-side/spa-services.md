@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: bd18d342de7c147e3588bd6daa3aebd68aa81c36
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c617f1a563b0eeccea0ab313bba8b90a4c947e28
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="using-javascriptservices-for-creating-single-page-applications-with-aspnet-core"></a>使用單一頁面應用程式建立與 ASP.NET Core JavaScriptServices
 
@@ -96,37 +96,37 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 標記協助程式會在專案的命名空間註冊透過*_ViewImports.cshtml*檔案：
 
-[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
+[!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
 這些標記協助程式立即抽象複雜的通訊直接與低階 Api 運用在 Razor 檢視內部類似 HTML 的語法：
 
-[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
+[!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
 ### <a name="the-asp-prerender-module-tag-helper"></a>`asp-prerender-module`標記協助程式
 
 `asp-prerender-module`標記協助程式，使用在上述程式碼範例中，執行*ClientApp/dist/main-server.js*透過 Node.js 伺服器上。 為了清楚起見， *main 立即轉譯 server.js*檔案是 TypeScript-JavaScript transpilation 工作中的成品[Webpack](http://webpack.github.io/)建置程序。 Webpack 定義的項目點別名`main-server`; 和此別名的相依性圖表的周遊開始*ClientApp/開機-server.ts*檔案：
 
-[!code-javascript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
+[!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 
 在下列的角度範例中， *ClientApp/開機-server.ts*檔案會利用`createServerRenderer`函式和`RenderResult`類型`aspnet-prerendering`設定伺服器轉譯透過 Node.js 的 npm 封裝。 預定要給伺服器端轉譯會傳遞至解析函式呼叫，包裝強型別在 JavaScript 中的 HTML 標記`Promise`物件。 `Promise`物件的重要性是會以非同步方式提供要在 DOM 的預留位置項目插入頁面的 HTML 標記。
 
-[!code-typescript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-34,79-)]
+[!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-34,79-)]
 
 ### <a name="the-asp-prerender-data-tag-helper"></a>`asp-prerender-data`標記協助程式
 
 如果結合`asp-prerender-module`標記 Helper`asp-prerender-data`標記協助程式可以用來從 Razor 檢視的內容資訊傳遞至伺服器端 JavaScript。 例如，下列標記使用者會將資料傳遞至`main-server`模組：
 
-[!code-cshtml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
+[!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
 接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的角度範例中，資料用來建構內的個人化的問候語`h1`項目：
 
-[!code-typescript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
+[!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
 注意： 使用表示屬性名稱中標記協助程式傳遞**PascalCase**標記法。 Javascript 中，會使用以表示相同的屬性名稱相**camelCase**。 預設的 JSON 序列化組態會負責這項差異。
 
 若要展開在上述程式碼範例時，資料可傳遞從伺服器到檢視的 hydrating`globals`屬性提供給`resolve`函式：
 
-[!code-typescript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,57-77,79-)]
+[!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,57-77,79-)]
 
 `postList`陣列內定義`globals`物件附加至瀏覽器的全域`window`物件。 此變數 hoisting 全域範圍排除重複的工作，尤其是它適用於載入相同的資料一次在伺服器上一次用戶端上。
 
@@ -138,7 +138,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [中介軟體開發人員 」 Webpack](https://webpack.github.io/docs/webpack-dev-middleware.html)引入 Webpack 隨組建資源的藉此簡化的開發工作流程。 中介軟體會自動編譯和瀏覽器中重新載入頁面時，提供用戶端的資源。 替代方法是手動透過叫用 Webpack 專案的 npm 組建指令碼的第三方相依性或自訂程式碼變更時。 Npm 建置指令碼*package.json*檔案在下列範例所示：
 
-[!code-json[Main](../client-side/spa-services/sample/SpaServicesSampleApp/package.json?range=5)]
+[!code-json[](../client-side/spa-services/sample/SpaServicesSampleApp/package.json?range=5)]
 
 ### <a name="prerequisites"></a>必要條件
 
@@ -153,13 +153,13 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 Webpack Dev 中介軟體已註冊至 HTTP 要求管線中的下列程式碼透過*Startup.cs*檔案的`Configure`方法：
 
-[!code-csharp[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=webpack-middleware-registration&highlight=4)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=webpack-middleware-registration&highlight=4)]
 
 `UseWebpackDevMiddleware`之前必須先呼叫擴充方法[註冊靜態檔案裝載](xref:fundamentals/static-files)透過`UseStaticFiles`擴充方法。 基於安全性理由，在開發模式中執行的應用程式時，才登錄中介軟體。
 
 *Webpack.config.js*檔案的`output.publicPath`屬性會告知監看的中介軟體`dist`資料夾是否有變更：
 
-[!code-javascript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,13-16)]
+[!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,13-16)]
 
 <a name="hot-module-replacement"></a>
 
@@ -190,7 +190,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 *Webpack.config.js*檔案必須定義`plugins`陣列，即使它空白：
 
-[!code-javascript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,25)]
+[!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,25)]
 
 載入瀏覽器中的應用程式之後, 的開發人員工具主控台 索引標籤會提供確認 HMR 啟用：
 
@@ -217,7 +217,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 擴充方法，名為`MapSpaFallbackRoute`用於`Configure`方法：
 
-[!code-csharp[Main](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=mvc-routing-table&highlight=7-9)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=mvc-routing-table&highlight=7-9)]
 
 提示： 路由設定的順序會進行評估。 因此，`default`用於模式比對第一次使用上述的程式碼範例中的路由。
 
@@ -244,7 +244,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 | MVC ASP.NET Core React.js 和 Redux  | reactredux | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core 與 Vue.js              | vue        | [C#]     | Web/MVC/SPA | 
 
-若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本`dotnet new`命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC 角度的應用程式：
+若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC 角度的應用程式：
 
 ```console
 dotnet new angular
@@ -282,7 +282,7 @@ dotnet run
 
 ### <a name="running-with-visual-studio-2017"></a>使用 Visual Studio 2017 執行
 
-開啟*.csproj*所產生的檔案`dotnet new`命令。 在專案開啟時自動還原必要的 NuGet 及 npm 封裝。 此還原程序可能需要幾分鐘的時間，和應用程式已準備好完成時執行。 按一下綠色執行的按鈕或按`Ctrl + F5`，和瀏覽器會開啟應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。 
+開啟*.csproj*所產生的檔案[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 在專案開啟時自動還原必要的 NuGet 及 npm 封裝。 此還原程序可能需要幾分鐘的時間，和應用程式已準備好完成時執行。 按一下綠色執行的按鈕或按`Ctrl + F5`，和瀏覽器會開啟應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。 
 
 <a name="app-testing"></a>
 
@@ -292,7 +292,7 @@ SpaServices 範本是預先設定為執行用戶端測試使用[Karma](https://k
 
 使用角度的應用程式，例如，兩個 Jasmine 測試案例已提供`CounterComponent`中*counter.component.spec.ts*檔案：
 
-[!code-typescript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
+[!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
 開啟命令提示字元，在專案的根目錄，然後執行下列命令：
 
@@ -302,7 +302,7 @@ npm test
 
 指令碼會啟動 Karma 測試執行器，讀取中定義的設定*karma.conf.js*檔案。 在其他設定， *karma.conf.js*識別測試檔案執行透過其`files`陣列：
 
-[!code-javascript[Main](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
+[!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 
 <a name="app-publishing"></a>
 
@@ -310,7 +310,7 @@ npm test
 
 將產生的用戶端資產和已發行的 ASP.NET Core 成品結合成已備妥部署的封裝可能會相當繁雜。 幸好 SpaServices 協調整個發行集程序與自訂的 MSBuild 目標，名為`RunWebpack`:
 
-[!code-xml[Main](../client-side/spa-services/sample/SpaServicesSampleApp/SpaServicesSampleApp.csproj?range=31-45)]
+[!code-xml[](../client-side/spa-services/sample/SpaServicesSampleApp/SpaServicesSampleApp.csproj?range=31-45)]
 
 MSBuild 目標具有下列責任：
 1. 還原 npm 封裝

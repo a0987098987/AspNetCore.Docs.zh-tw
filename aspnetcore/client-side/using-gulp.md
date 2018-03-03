@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: f091370bc85a37eeaac1291a2fdc6ea85164f148
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0a3443e8187d46992f55dc537d0f400c6771c50c
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-using-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp 簡介 
 
@@ -204,7 +204,7 @@ gulp.task("min", ["min:js", "min:css"]);
 </Target>
 ```
 
-現在當您執行專案，Visual Studio 中，或從命令提示字元使用，會執行 「 清除 」 工作`dotnet run`命令 (執行`npm install`第一個)。
+現在當您執行專案，Visual Studio 中，或從命令提示字元使用，會執行 「 清除 」 工作[dotnet 執行](/dotnet/core/tools/dotnet-run)命令 (執行`npm install`第一個)。
 
 ## <a name="defining-and-running-a-new-task"></a>定義和執行新工作
 

@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 2a4b5ed8a712b061b4afdf5a3adc9378dd72b37f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9d7cbb9505afb6461ba4c2087d57e9ea0da38ede
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>驗證和授權的 ASP.NET Web API
 ====================
@@ -80,7 +80,7 @@ Web API 會假設該驗證發生在主機中。 適用於虛擬主機，主機�
 
 Web 應用程式開發介面提供的內建的授權篩選條件中， [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx)。 此篩選條件會檢查是否已驗證使用者。 如果沒有，它會傳回 HTTP 狀態碼 401 （未經授權），而不叫用動作。
 
-您可以套用全域，在控制器層級，或 inidivual 動作的層級的篩選條件。
+您可以套用全域，在控制器層級，或個別動作層級的篩選條件。
 
 **全域**： 若要限制每個 Web API 控制器的存取，請加入**AuthorizeAttribute**全域篩選清單中的篩選：
 

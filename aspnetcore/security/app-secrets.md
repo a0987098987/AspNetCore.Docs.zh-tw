@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 337782a0530a37916b04aa562174b5921ddbc46b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 489c53c066af87e02e43ab0b42b0712d80d5ee5a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>在使用 ASP.NET Core 進行開發的期間，安全地儲存應用程式密碼
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="environment-variables"></a>環境變數
 
-若要避免將應用程式密碼儲存在程式碼或本機的組態檔中，可以將密碼儲存在環境變數中。 您可以先將 [組態](xref:fundamentals/configuration/index) 架構設定為透過呼叫`AddEnvironmentVariables`來讀取環境變數中的值`AddEnvironmentVariables`。 接著便能使用環境變數，來為所有先前已指定的組態來源複寫組態值。
+若要避免將應用程式密碼儲存在程式碼或本機的組態檔中，可以將密碼儲存在環境變數中。 您可以先將 [組態](xref:fundamentals/configuration/index) 架構設定為透過呼叫 `AddEnvironmentVariables` 來讀取環境變數中的值。 接著便能使用環境變數，來為所有先前已指定的組態來源複寫組態值。
 
 例如，當您透過個別使用者帳戶建立新的 ASP.NET Core web 應用程式時，系統會將預設的連接字串`DefaultConnection`新增至專案裡具有索引鍵的*appsettings.json*檔案中。 預設的連接字串會使用 LocalDB，而 LocalDB 會在使用者模式下執行，且不需要密碼。 當您將應用程式部署到測試或正式伺服器時，就可以覆寫預設連接字串`DefaultConnection`的值，設定成包含測試或正式執行資料庫的連接字串（潛在機密的認證）的伺服器環境變數。
 
@@ -45,11 +45,11 @@ ms.lasthandoff: 01/30/2018
 
 以滑鼠右鍵按一下方案總管 中的專案，然後選取**編輯\<project_name\>.csproj**從內容功能表。 將反白顯示的行加入*.csproj*檔案，並將儲存到還原相關聯的 NuGet 套件：
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此動作將於*.csproj*檔案中，將新的`UserSecretsId`節點新增至`PropertyGroup`，如下列範例中反白處所示：
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 儲存已修改*.csproj*檔案也會開啟`secrets.json`文字編輯器中的檔案。 使用以下列程式碼取代`secrets.json`的內容：
 
@@ -61,9 +61,9 @@ ms.lasthandoff: 01/30/2018
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-將`Microsoft.Extensions.SecretManager.Tools`新增至*.csproj*檔，然後執行`dotnet restore`。 若要安裝命令列使用的密碼管理員工具，您可以使用相同的步驟。
+新增`Microsoft.Extensions.SecretManager.Tools`至*.csproj*檔，然後執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。 若要安裝命令列使用的密碼管理員工具，您可以使用相同的步驟。
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 測試密碼管理員工具執行下列命令：
 
@@ -80,7 +80,7 @@ dotnet user-secrets -h
 
 新增`UserSecretsId`中的專案*.csproj*檔案：
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
+[!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 您可以使用密碼管理員工具來設定密碼。 例如，在命令視窗從專案目錄中，輸入下列內容：
 
@@ -100,15 +100,15 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 ## <a name="accessing-user-secrets-via-configuration"></a>透過設定存取的使用者密碼
 
-您可以透過組態系統來存取密碼管理員的密碼。 需先新增`Microsoft.Extensions.Configuration.UserSecrets`封裝及執行`dotnet restore`。
+您可以透過組態系統來存取密碼管理員的密碼。 新增`Microsoft.Extensions.Configuration.UserSecrets`封裝及執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。
 
 將使用者密碼設定來源加入`Startup`方法：
 
-[!code-csharp[Main](app-secrets/sample/UserSecrets/Startup.cs?highlight=16-19)]
+[!code-csharp[](app-secrets/sample/UserSecrets/Startup.cs?highlight=16-19)]
 
 您可以透過組態 API 來存取使用者密碼：
 
-[!code-csharp[Main](app-secrets/sample/UserSecrets/Startup.cs?highlight=26-29)]
+[!code-csharp[](app-secrets/sample/UserSecrets/Startup.cs?highlight=26-29)]
 
 ## <a name="how-the-secret-manager-tool-works"></a>密碼管理員工具的運作方式
 

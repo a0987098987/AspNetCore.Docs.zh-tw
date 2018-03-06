@@ -189,7 +189,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 ### <a name="implicit-transitions"></a>隱含轉換
 
-程式碼區塊中的預設語言是 C#，但 Razor 頁面可以轉換回 HTML：
+程式碼區塊中的預設語言是 C#，但 Razor Page 可以轉換回 HTML：
 
 ```cshtml
 @{
@@ -481,7 +481,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 @inherits TypeNameOfClassToInheritFrom
 ```
 
-下列程式碼是自訂 Razor 頁面類型：
+下列程式碼是自訂 Razor Page 類型：
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
@@ -513,11 +513,11 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 ### <a name="inject"></a>@inject
 
 
-`@inject` 指示詞可讓 Razor 頁面從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
+`@inject` 指示詞可讓 Razor Page 從[服務容器](xref:fundamentals/dependency-injection)將服務插入至檢視。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
 
 ### <a name="functions"></a>@functions
 
-`@functions` 指示詞可讓 Razor 頁面將函式階層內容新增至檢視：
+`@functions` 指示詞可讓 Razor Page 將函式階層內容新增至檢視：
 
 ```cshtml
 @functions { // C# Code }
@@ -613,7 +613,7 @@ Razor 檢視引擎會針對檢視執行區分大小寫的查閱。 不過，實�
 
 建議開發人員比對檔案和目錄的大小寫以及下列項目的大小寫：
 
-    * 區域、控制器和動作名稱。 
-    * Razor 頁面。
+* 區域、控制器和動作名稱。 
+* Razor Pages。
     
 比對大小寫可確保不論基礎檔案系統為何，部署作業都能夠找到其值。

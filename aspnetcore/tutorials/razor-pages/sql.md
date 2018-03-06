@@ -92,5 +92,5 @@ if (context.Movie.Any())
 接下來的教學課程將會清除資料的呈現。
 
 >[!div class="step-by-step"]
-[上一步：包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages/page)
+[上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
 [下一步：更新頁面](xref:tutorials/razor-pages/da1)

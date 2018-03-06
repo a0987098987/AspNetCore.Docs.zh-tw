@@ -1,7 +1,7 @@
 ---
-title: "將搜尋新增至 ASP.NET Core Razor 頁面"
+title: "將搜尋新增至 ASP.NET Core Razor Pages"
 author: rick-anderson
-description: "示範如何將搜尋新增至 ASP.NET Core Razor 頁面"
+description: "示範如何將搜尋新增至 ASP.NET Core Razor Pages"
 manager: wpickett
 ms.author: riande
 ms.date: 08/07/2017
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="adding-search-to-a-razor-pages-app"></a>新增搜尋至 Razor 頁面應用程式
+# <a name="adding-search-to-a-razor-pages-app"></a>新增搜尋至 Razor Pages 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

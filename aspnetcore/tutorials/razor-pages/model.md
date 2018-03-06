@@ -1,7 +1,7 @@
 ---
-title: "將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
+title: "將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式"
 author: rick-anderson
-description: "將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
+description: "將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式"
 manager: wpickett
 ms.author: riande
 ms.date: 07/27/2017
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app"></a>將模型新增至 Razor 頁面應用程式
+# <a name="adding-a-model-to-a-razor-pages-app"></a>將模型新增至 Razor Pages 應用程式
 
 [!INCLUDE[model1](../../includes/RP/model1.md)]
 
@@ -92,4 +92,4 @@ Update-Database
 
 >[!div class="step-by-step"]
 [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
-[下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)    
+[下一步：Scaffold Razor Pages](xref:tutorials/razor-pages/page)    

@@ -20,7 +20,7 @@ ms.lasthandoff: 02/01/2018
 
 由[Tom Dykstra](https://github.com/tdykstra)
 
-裝載在 Windows 上的 ASP.NET Core 應用程式，而不使用 IIS 執行它的建議的方式[Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)。 當裝載為 Windows 服務，應用程式可以在重新開機及當機之後自動啟動，而不需要人工介入。
+若要在 Windows 上裝載 ASP.NET Core 應用程式而不使用 IIS， 建議在 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications) 中執行應用程式。當裝載為 Windows 服務，應用程式可以在重新開機及當機之後自動啟動，而不需要人工介入。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))。 如需如何執行範例應用程式的指示，請參閱 「 範例的*README.md*檔案。
 

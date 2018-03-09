@@ -4,16 +4,16 @@ author: AdrienTorris
 description: "了解 ASP.NET Core 識別預設值，並了解如何設定 Identity 屬性以使用自訂值。"
 manager: wpickett
 ms.author: scaddie
-ms.date: 02/21/2018
+ms.date: 03/06/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 6aeb85063b4b6f97822062b523a0c1f7ee6b595c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 469068af2fc12627a0a5d1c5623eb60bef51cea0
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configure-identity"></a>設定身分識別
 
@@ -132,7 +132,7 @@ ASP.NET Core 2.0 加入[RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.id
 | [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge) | 僅適用於 ASP.NET Core 1.x。<br><br> 如果為 true，驗證中介軟體會處理自動挑戰。 如果為 false，驗證中介軟體僅改變回應明確指出時`AuthenticationScheme`。 |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer) | 取得或設定用於所建立的任何宣告的簽發者 (繼承自[AuthenticationSchemeOptions](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions))。 |
 | [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) | 要與 cookie 產生關聯的網域。 |
-| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | 取得或設定 cookie 的壽命。 |
+| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | 取得或設定 HTTP cookie (而不驗證 cookie) 的使用期限。 這個屬性會覆寫[ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan)。 它不應該用於 CookieAuthentication 的內容。 |
 | [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) | 指出是否可供用戶端指令碼存取 cookie。<br><br>預設值是 `true`。 |
 | [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) | Cookie 的名稱。<br><br>預設值是 `.AspNetCore.Cookies`。 |
 | [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) | Cookie 路徑。 |

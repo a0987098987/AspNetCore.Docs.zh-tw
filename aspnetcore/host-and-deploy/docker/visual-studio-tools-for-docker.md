@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: caf0e423d8e6f61fd2470d1f4ea2dd93909c3696
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 590d32342b1724a0cbc937655c35631938eb09b2
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio Tools for Docker
 
@@ -38,7 +38,7 @@ Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-w
 
 ## <a name="add-docker-support-to-an-app"></a>將 Docker 支援新增至應用程式
 
-ASP.NET Core 專案的目標架構決定支援的容器類型。 以 .NET Core 為目標的專案同時支援 Linux 和 Windows 容器。 以 .NET Framework 為目標的專案只支援 Windows 容器。
+若要將 Docker 的支援加入 ASP.NET Core 專案時，專案必須為目標.NET Core。 支援的 Linux 和 Windows 容器。
 
 將 Docker 的支援加入至專案，選擇 Windows 或 Linux 容器。 Docker 主機必須執行相同的容器類型。 若要變更執行中 Docker 執行個體中的容器類型，請以滑鼠右鍵按一下系統匣的 Docker 圖示，然後選擇 [Switch to Windows containers...] (切換至 Windows 容器...) 或 [Switch to Linux containers] (切換至 Linux 容器...)。
 
@@ -67,7 +67,7 @@ Visual Studio Tools for Docker 會將 *docker-compose* 專案新增至方案，�
 
 *Dockerfile*，是用於建立最終 Docker 映像的配方，會新增至專案根目錄。 請參閱 [Dockerfile 參考](https://docs.docker.com/engine/reference/builder/)，以了解其內的命令。 這個特定 *Dockerfile* 使用[多階段建置](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)，內含四個不同的具名建置階段：
 
-[!code-text[](visual-studio-tools-for-docker/samples/HelloDockerTools/HelloDockerTools/Dockerfile?highlight=1,5,14,17)]
+[!code-dockerfile[](visual-studio-tools-for-docker/samples/HelloDockerTools/HelloDockerTools/Dockerfile?highlight=1,5,14,17)]
 
 *Dockerfile* 是根據 [microsoft/aspnetcore](https://hub.docker.com/r/microsoft/aspnetcore) 映像。 此基底映像包含 ASP.NET Core NuGet 套件，已經過預先 JIT 編譯改善啟動效能。
 

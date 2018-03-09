@@ -213,6 +213,9 @@
 # [行動裝置](xref:mobile/index)
 ## [建立原生行動應用程式的後端服務](xref:mobile/native-mobile-backend)
 
+# [SignalR](xref:signalr/index)
+## [開始使用](xref:signalr/get-started-signalr-core)
+
 # [裝載和部署](xref:host-and-deploy/index)
 ## [裝載在 Azure App Service](xref:host-and-deploy/azure-apps/index)
 ### [使用 Visual Studio 發佈至 Azure](xref:tutorials/publish-to-azure-webapp-using-vs)

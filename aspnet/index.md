@@ -1,13 +1,14 @@
 ---
 uid: index
 layout: HubPage
+ms.topic: hub-page
 title: "ASP.NET 文件 | Microsoft Docs"
 description: 
-ms.openlocfilehash: cab0c34cce7a2db0f9f652e7a20578bfe69842ca
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4ab928b65bc91a24d02cd0450e143cd6bd3b639b
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/08/2018
 ---
 <div id="main" class="v2">
     <div class="container">

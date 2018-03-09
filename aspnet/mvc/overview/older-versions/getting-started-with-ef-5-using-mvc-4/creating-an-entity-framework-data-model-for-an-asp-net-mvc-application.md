@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 223dd48bb996de527f20291e4701e7d1b60a539d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8c9971ccc70cb4b966abb64086b1b5420fc6c72a
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/24/2018
 > > A[此教學課程系列的新版](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)可用，Visual Studio 2013、 Entity Framework 6，和 MVC 5。
 > 
 > 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 和 Visual Studio 2012。 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括功能，例如許可學生、 課程建立和講師指派。 此教學課程說明如何建置 Contoso 大學範例應用程式。 您可以[下載完成的應用程式](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 和 Visual Studio 2012。 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 此教學課程說明如何建置 Contoso 大學範例應用程式。 您可以[下載完成的應用程式](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)。
 > 
 > ## <a name="code-first"></a>Code First
 > 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
 > 
-> ## <a name="acknowledgments"></a>通知
+> ## <a name="acknowledgments"></a>感謝
 > 
 > 請參閱中的序列的最後一個教學課程[通知和 VB 的附註](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#acknowledgments)。
 > 
@@ -64,19 +64,19 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="the-contoso-university-web-application"></a>Contoso 大學 Web 應用程式
 
-您會在這些教學課程建置的應用程式是簡單的大學的網站。
+您在這些教學課程中會建置的應用程式為一個簡單的大學網站。
 
-使用者可以檢視和更新學生、 課程、 和講師資訊。 以下是幾個您要建立的畫面。
+使用者可以檢視和更新學生、課程和教師資訊。 以下是您會建立的幾個畫面。
 
 ![Students_Index_page](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
 ![](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image2.png)
 
-此站台的 UI 樣式保留接近內建的範本，所產生的內容，讓本教學課程可以主要還是著重於如何使用 Entity Framework。
+此網站的 UI 樣式與內建範本產生的相當類似，以使此教學課程能聚焦於如何使用 Entity Framework。
 
 ## <a name="prerequisites"></a>必要條件
 
-方向和螢幕擷取畫面，在本教學課程假設您使用[Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads)或[Visual Studio 2012 Express for Web](https://go.microsoft.com/fwlink/?LinkID=275131)、 最新的 [更新] 和 [Azure SDK for.NET] 安裝為準，年 7 月，2013。 您可以取得這些全部都使用下列連結：
+方向和螢幕擷取畫面，在本教學課程假設您使用[Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads)或[Visual Studio 2012 Express for Web](https://go.microsoft.com/fwlink/?LinkID=275131)、 最新的 [更新] 和 Azure SDK for.NET 安裝為準，年 7 月，2013。 您可以取得這些全部都使用下列連結：
 
 [Azure SDK for.NET (Visual Studio 2012)](https://go.microsoft.com/fwlink/?LinkId=254364)
 
@@ -98,13 +98,13 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="set-up-the-site-style"></a>設定站台樣式
 
-有一些簡單的變更將會設定網站 功能表、 配置和首頁。
+一些簡單的變更會設定網站的功能表、配置和首頁。
 
-開啟*_layout.cshtml\\_Layout.cshtml*，並以下列程式碼取代檔案的內容。 所做的變更會反白顯示。
+開啟*_layout.cshtml\\_Layout.cshtml*，並以下列程式碼取代檔案的內容。 所做的變更已醒目提示。
 
 [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample1.cshtml?highlight=5,15,25-28,43)]
 
-此程式碼進行下列變更：
+此程式碼會進行下列變更：
 
 - 取代"Contoso 大學"「 My ASP.NET MVC 應用程式 」 和 「 您的標誌在此 「 的範本執行個體。
 - 新增將稍後在本教學課程中使用的數個動作連結。
@@ -123,13 +123,13 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-the-data-model"></a>建立資料模型
 
-接下來您將建立 Contoso 大學應用程式的實體類別。 會先處理下列三個實體：
+接下來您會為 Contoso 大學應用程式建立實體類別。 會先處理下列三個實體：
 
 ![Class_diagram](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image6.png)
 
-一對多關聯性之間`Student`和`Enrollment`實體，而且沒有之間的一對多關聯性`Course`和`Enrollment`實體。 換句話說，一位學生可以註冊任何數目的課程中，而且一個課程可以有任意數目的學生在它註冊。
+在 `Student` 和 `Enrollment` 實體之間存在一對多關聯性，`Course` 與 `Enrollment` 實體之間也存在一對多關聯性。 換句話說，一位學生可以註冊並參加任何數目的課程，而一個課程也可以有任何數目的學生註冊。
 
-下列各節中，您將建立這些實體的每個類別。
+在下節中，您會為這些實體建立各自的類別。
 
 > [!NOTE]
 > 如果您嘗試編譯專案，才能完成建立所有的這些實體類別時，就會發生編譯器錯誤。
@@ -143,27 +143,27 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample4.cs)]
 
-`StudentID`屬性就會成為主要的索引鍵資料行對應至這個類別的資料庫資料表。 根據預設，Entity Framework 會解譯此屬性，名為`ID`或*classname* `ID`為主索引鍵。
+`StudentID` 屬性會成為資料庫資料表中的主索引鍵資料行，並對應至這個類別。 根據預設，Entity Framework 會解譯此屬性，名為`ID`或*classname* `ID`為主索引鍵。
 
-`Enrollments`屬性是*導覽屬性*。 導覽屬性會保留此實體與相關的其他實體。 在此情況下，`Enrollments`屬性`Student`實體會保存所有`Enrollment`的實體有關的`Student`實體。 換句話說，如果給定`Student`資料庫中的資料列都有兩個相關`Enrollment`資料列 (包含該學生的主索引鍵的資料列中的值及其`StudentID`外部索引鍵資料行)，該`Student`實體的`Enrollments`導覽屬性將會包含這兩者`Enrollment`實體。
+`Enrollments`屬性是*導覽屬性*。 導覽屬性會保留與此實體相關的其他實體。 在此情況下，`Enrollments`屬性`Student`實體會保存所有`Enrollment`的實體有關的`Student`實體。 換句話說，如果給定`Student`資料庫中的資料列都有兩個相關`Enrollment`資料列 (包含該學生的主索引鍵的資料列中的值及其`StudentID`外部索引鍵資料行)，該`Student`實體的`Enrollments`導覽屬性將會包含這兩者`Enrollment`實體。
 
 導覽屬性通常會定義為`virtual`，讓他們可以利用某些 Entity Framework 功能例如*消極式載入*。 (將說明消極式載入稍後在[讀取相關資料](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)教學課程稍後在本系列。
 
-如果導覽屬性都可以保存多個實體 （如同多對多或一對多的關聯性），其類型必須是的清單中的項目可以新增、 刪除和更新，例如`ICollection`。
+若導覽屬性可保有多個實體 (例如在多對多或一對多關聯性中的情況)，其類型必須為一個清單，使得實體可以在該清單中新增、刪除或更新，例如 `ICollection`。
 
 ### <a name="the-enrollment-entity"></a>註冊實體
 
 ![Enrollment_entity](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image8.png)
 
-在*模型*資料夾中，建立*Enrollment.cs* ，並以下列程式碼取代現有的程式碼：
+在 *Models* 資料夾中，建立 *Enrollment.cs*，然後使用下列程式碼取代現有的程式碼：
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample5.cs)]
 
 等級屬性是[列舉](https://msdn.microsoft.com/data/hh859576.aspx)。 問號之後`Grade`型別宣告表示`Grade`屬性是[可為 null](https://msdn.microsoft.com/library/2cf62fcy.aspx)。 為 null 的等級是不同於零的等級，null 表示等級不未知或尚未被指派。
 
-`StudentID`屬性是外部索引鍵，而對應的導覽屬性是`Student`。 `Enrollment`實體都與一個`Student`實體，所以此屬性只可以保存單一`Student`實體 (不同於`Student.Enrollments`導覽屬性之前看到，而可以包含多個`Enrollment`實體)。
+`StudentID` 屬性是外部索引鍵，對應的導覽屬性是 `Student`。 `Enrollment` 實體與一個 `Student` 實體關聯，因此屬性僅能保有單一 `Student` 實體 (不像您先前看到的 `Student.Enrollments` 導覽屬性可保有多個 `Enrollment` 實體)。
 
-`CourseID`屬性是外部索引鍵，而對應的導覽屬性是`Course`。 `Enrollment`實體都與一個`Course`實體。
+`CourseID` 屬性是外部索引鍵，對應的導覽屬性是 `Course`。 一個 `Enrollment` 實體與一個 `Course` 實體建立關聯。
 
 ### <a name="the-course-entity"></a>課程實體
 
@@ -173,13 +173,13 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample6.cs)]
 
-`Enrollments`屬性為導覽屬性。 A`Course`可以與任意數目的相關實體`Enrollment`實體。
+`Enrollments` 屬性為導覽屬性。 `Course` 實體可以與任何數量的 `Enrollment` 實體相關。
 
-我們將更多有關 [[DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([DatabaseGeneratedOption](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx)。無）] 下一個教學課程中的屬性。 基本上，此屬性可讓您輸入的主索引鍵的課程，而不是需要產生它的資料庫。
+我們將更多有關 [[DatabaseGenerated](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedattribute(v=vs.110).aspx)([DatabaseGeneratedOption](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.databasegeneratedoption(v=vs.95).aspx)。無）] 下一個教學課程中的屬性。 基本上，此屬性可讓您為課程輸入主索引鍵，而非讓資料庫產生它。
 
-## <a name="create-the-database-context"></a>建立的資料庫內容
+## <a name="create-the-database-context"></a>建立資料庫內容
 
-協調對給定的資料模型的 Entity Framework 功能的主要類別是*資料庫內容*類別。 您建立這個類別衍生自[System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx)類別。 在程式碼中指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 的行為。 在此專案中，類別會命名為`SchoolContext`。
+協調對給定的資料模型的 Entity Framework 功能的主要類別是*資料庫內容*類別。 您建立這個類別衍生自[System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx)類別。 在您的程式碼中，您會指定資料模型中包含哪些實體。 您也可以自訂某些 Entity Framework 行為。 在此專案中，類別命名為 `SchoolContext`。
 
 建立名為的資料夾*DAL* （適用於資料存取層）。 該資料夾中建立新的類別檔案命名為*SchoolContext.cs*，並以下列程式碼取代現有的程式碼：
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 01/24/2018
 
     ![初始移轉 migrations 資料夾](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
 
-    `Up`方法`InitialCreate`類別會建立對應至資料模型實體集的資料庫資料表和`Down`方法會刪除它們。 移轉呼叫`Up`方法，以實作資料模型變更，以進行移轉。 當您輸入命令，以回復更新、 移轉呼叫`Down`方法。 下列程式碼顯示的內容`InitialCreate`檔案：
+    `Up`方法`InitialCreate`類別會建立對應至資料模型實體集的資料庫資料表和`Down`方法會刪除它們。 Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。 下列程式碼顯示的內容`InitialCreate`檔案：
 
     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
 

@@ -48,10 +48,10 @@ CSRF 攻擊的範例：
 這個範例會要求使用者可以按一下 [表單] 按鈕。 惡意的頁面可以：
 
 * 執行自動送出表單的指令碼。
-* 以 AJAX 要求中傳送的表單提交。
-* Css 使用隱藏的表單。
+* 以 AJAX 要求中傳送的表單提交。 
+* Css 使用隱藏的表單。 
 
-使用 SSL 不會防止 CSRF 攻擊，惡意的站台可以傳送`https://`要求。
+使用 SSL 不會防止 CSRF 攻擊，惡意的站台可以傳送`https://`要求。 
 
 部分攻擊目標站台端點回應`GET`要求，在其中案例之影像標記可以用來執行 （這種攻擊是常見的允許映像，但會封鎖 JavaScript 論壇網站） 的動作。 變更狀態時，使用的應用程式`GET`要求而受到損害受到惡意的攻擊。
 
@@ -70,7 +70,7 @@ CSRF 攻擊可能會進行對網站使用 cookie 進行驗證，因為瀏覽器�
 > [!WARNING]
 > ASP.NET Core 實作反 request 偽造使用[ASP.NET Core 資料保護堆疊](xref:security/data-protection/introduction)。 ASP.NET Core 資料保護必須設定為在伺服器陣列中運作。 請參閱[設定資料保護](xref:security/data-protection/configuration/overview)如需詳細資訊。
 
-ASP.NET Core 反 request 偽造預設資料保護設定
+ASP.NET Core 反 request 偽造預設資料保護設定 
 
 在 ASP.NET Core MVC 2.0 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)插入防偽語彙基元的 HTML 表單元素。 例如，下列標記在 Razor 檔案中將會自動產生防偽語彙基元：
 
@@ -121,7 +121,7 @@ ASP.NET Core 反 request 偽造預設資料保護設定
 
 @using (Html.BeginForm("ChangePassword", "Manage"))
 {
-
+    
 }
 ```
 
@@ -192,7 +192,7 @@ public class ManageController : Controller
 範例 （全域）：
 
 ```csharp
-services.AddMvc(options =>
+services.AddMvc(options => 
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 ```
 
@@ -248,7 +248,7 @@ services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 JavaScript 可以也存取 cookie 中所提供的權杖，然後再使用 cookie 的內容來建立標頭的語彙基元值，如下所示。
 
 ```csharp
-context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken,
+context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
   new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
 ```
 
@@ -280,7 +280,7 @@ $.ajax({
 
 
 ```csharp
-public void Configure(IApplicationBuilder app,
+public void Configure(IApplicationBuilder app, 
     IAntiforgery antiforgery)
 {
     app.Use(next => context =>
@@ -290,10 +290,10 @@ public void Configure(IApplicationBuilder app,
             string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
             string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
         {
-            // We can send the request token as a JavaScript-readable cookie,
+            // We can send the request token as a JavaScript-readable cookie, 
             // and Angular will use it by default.
             var tokens = antiforgery.GetAndStoreTokens(context);
-            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
                 new CookieOptions() { HttpOnly = false });
         }
 
@@ -308,7 +308,7 @@ public void Configure(IApplicationBuilder app,
 您可以自訂[antiforgery 選項](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions#fields_summary)中`ConfigureServices`:
 
 ```csharp
-services.AddAntiforgery(options =>
+services.AddAntiforgery(options => 
 {
     options.CookieDomain = "mydomain.com";
     options.CookieName = "X-CSRF-TOKEN-COOKIENAME";

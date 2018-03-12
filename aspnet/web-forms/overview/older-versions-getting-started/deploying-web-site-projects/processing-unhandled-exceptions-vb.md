@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c5a4d2e3468c9b7db5d3acf9f59fc13a6b791497
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f5bf39bc2433a2fb277cb56554ddf39bea7a9c79
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/12/2018
 ---
 <a name="processing-unhandled-exceptions-vb"></a>處理未處理的例外狀況 (VB)
 ====================
 由[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[下載程式碼](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_12_VB.zip)或[下載 PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial12_ErrorHandling_vb.pdf)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) \(英文\) ([如何下載](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > 在生產環境中的 web 應用程式發生執行階段錯誤時務必通知開發人員，並記錄錯誤，因此可能會在稍後中診斷的時間。 本教學課程提供如何 ASP.NET 處理執行階段錯誤，並查看有自訂程式碼執行時處理的例外狀況 （泡泡） 至 ASP.NET 執行階段的其中一種方式的概觀。
 
@@ -159,7 +159,7 @@ ASP.NET 執行階段中的 ASP.NET web 應用程式發生未處理的例外狀�
 
 - [ASP.NET HTTP 模組和 HTTP 處理常式概觀](https://support.microsoft.com/kb/307985)
 - [依正常程序回應未處理的例外狀況-處理未處理例外狀況](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
-- [`HttpApplication`類別與 ASP.NET 應用程式物件](http://www.eggheadcafe.com/articles/20030211.asp)
+- [`HttpApplication` 類別與 ASP.NET 應用程式物件](http://www.eggheadcafe.com/articles/20030211.asp)
 - [HTTP 處理常式和 ASP.NET 中的 HTTP 模組](http://www.15seconds.com/Issue/020417.htm)
 - [在 ASP.NET 中傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
 - [了解`Global.asax`檔案](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)

@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7be257faa350476bef9f6d372ea4f140fff8d136
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: dda73ca1878396e04b8ff04a255c25bf26ed4eff
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/12/2018
 ---
 <a name="processing-unhandled-exceptions-c"></a>處理未處理的例外狀況 (C#)
 ====================
 由[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[下載程式碼](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_12_CS.zip)或[下載 PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial12_ErrorHandling_cs.pdf)
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs/samples) \(英文\) ([如何下載](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > 在生產環境中的 web 應用程式發生執行階段錯誤時務必通知開發人員，並記錄錯誤，因此可能會在稍後中診斷的時間。 本教學課程提供如何 ASP.NET 處理執行階段錯誤，並查看有自訂程式碼執行時處理的例外狀況 （泡泡） 至 ASP.NET 執行階段的其中一種方式的概觀。
 
@@ -62,7 +62,7 @@ ASP.NET 應用程式中處理的例外狀況時，它會顯示最 ASP.NET 執行
 
 Visual Studio 通用應用程式類別範本所建立的事件處理常式並不詳盡。 您可以加入事件處理常式的任何`HttpApplication`藉由命名事件處理常式的事件`Application_EventName`。 例如，您可以加入下列程式碼加入`Global.asax`檔案以建立事件處理常式[`AuthorizeRequest`事件](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx):
 
-[!code-vb[Main](processing-unhandled-exceptions-cs/samples/sample1.vb)]
+[!code-cs[Main](processing-unhandled-exceptions-cs/samples/sample1.cs)]
 
 同樣地，您可以移除任何事件處理常式的全域應用程式類別範本所建立不需要用到。 此教學課程中，我們只需要的事件處理常式`Error`事件; 逕行移除的其他事件處理常式`Global.asax`檔案。
 
@@ -90,7 +90,7 @@ Visual Studio 通用應用程式類別範本所建立的事件處理常式並不
 
 在生產環境中發生未處理的例外狀況時務必提醒開發小組，讓它們可以評估錯誤，並判斷必須採取的動作。 比方說，如果沒有中連接到資料庫，則您必須為 double 的錯誤檢查您的連接字串，而且可能是，使用虛擬主機公司提出支援票證。 如果例外狀況發生的程式設計錯誤，可能需要額外的程式碼或驗證邏輯加入至預防這類錯誤的。
 
-.NET Framework 中的類別[`System.Net.Mail`命名空間](https://msdn.microsoft.com/library/system.net.mail.aspx)輕鬆傳送電子郵件。 [ `MailMessage`類別](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx)代表電子郵件訊息，並具有屬性，例如`To`， `From`， `Subject`， `Body`，和`Attachments`。 `SmtpClass`用來傳送`MailMessage`物件使用指定的 SMTP 伺服器，則可以透過程式設計方式或以宣告方式在指定的 SMTP 伺服器設定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)中`Web.config file`。 如需有關傳送電子郵件中的 ASP.NET 應用程式的訊息簽出我的文件： [ASP.NET 中的 [傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)，而[System.Net.Mail 常見問題集](http://systemnetmail.com/)。
+.NET Framework 中的類別[`System.Net.Mail`命名空間](https://msdn.microsoft.com/library/system.net.mail.aspx)輕鬆傳送電子郵件。 [ `MailMessage`類別](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx)代表電子郵件訊息，並具有屬性，例如`To`， `From`， `Subject`， `Body`，和`Attachments`。 `SmtpClass`用來傳送`MailMessage`物件使用指定的 SMTP 伺服器，則可以透過程式設計方式或以宣告方式在指定的 SMTP 伺服器設定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)中`Web.config file`。 如需有關傳送電子郵件中的 ASP.NET 應用程式的訊息簽出我的文件： [ASP.NET 中的 傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)，而[System.Net.Mail 常見問題集](http://systemnetmail.com/)。
 
 > [!NOTE]
 > `<system.net>`元素包含所使用的 SMTP 伺服器設定`SmtpClient`類別時傳送電子郵件。 虛擬主機公司可能會有您可以使用從您的應用程式傳送電子郵件的 SMTP 伺服器。 您應該使用 web 應用程式中的 SMTP 伺服器設定的詳細資訊，請參閱 web 主機的支援 > 一節。
@@ -102,7 +102,7 @@ Visual Studio 通用應用程式類別範本所建立的事件處理常式並不
 
 相當冗長，上述程式碼時，大量建立顯示的 HTML 傳送給開發人員的電子郵件中。 程式碼參考開始`HttpException`傳回`GetLastError`方法 (`lastErrorWrapper`)。 實際要求所引發的例外狀況透過擷取`lastErrorWrapper.InnerException`和指派給變數`lastError`。 類型、 訊息和堆疊追蹤資訊會從`lastError`並儲存在三個字串變數。
 
-下一步]`MailMessage`名為物件`mm`建立。 電子郵件內文是 HTML 格式，並顯示要求網頁的 URL，目前登入的使用者，以及例外狀況 （類型、 訊息和堆疊追蹤） 的相關資訊的名稱。 其中一個最有趣的事情有關`HttpException`類別是您可以產生用來建立例外狀況詳細資料黃色螢幕的死亡 (YSOD) 藉由呼叫的 HTML [GetHtmlErrorMessage 方法](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx)。 這個方法是此處用來擷取例外狀況詳細資料 YSOD 標記，並將它加入做為附件的電子郵件。 一個單字，需要注意的事項： 如果例外狀況，觸發`Error`事件未以 HTTP 為基礎的例外狀況 （例如不存在的網頁要求） 則`GetHtmlErrorMessage`方法會傳回`null`。
+下一步`MailMessage`名為物件`mm`建立。 電子郵件內文是 HTML 格式，並顯示要求網頁的 URL，目前登入的使用者，以及例外狀況 （類型、 訊息和堆疊追蹤） 的相關資訊的名稱。 其中一個最有趣的事情有關`HttpException`類別是您可以產生用來建立例外狀況詳細資料黃色螢幕的死亡 (YSOD) 藉由呼叫的 HTML [GetHtmlErrorMessage 方法](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx)。 這個方法是此處用來擷取例外狀況詳細資料 YSOD 標記，並將它加入做為附件的電子郵件。 一個單字，需要注意的事項： 如果例外狀況，觸發`Error`事件未以 HTTP 為基礎的例外狀況 （例如不存在的網頁要求） 則`GetHtmlErrorMessage`方法會傳回`null`。
 
 最後一個步驟是傳送`MailMessage`。 這樣做，建立新`SmtpClient`方法，並呼叫其`Send`方法。
 
@@ -159,7 +159,7 @@ ASP.NET 執行階段中的 ASP.NET web 應用程式發生未處理的例外狀�
 
 - [ASP.NET HTTP 模組和 HTTP 處理常式概觀](https://support.microsoft.com/kb/307985)
 - [依正常程序回應未處理的例外狀況-處理未處理例外狀況](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
-- [`HttpApplication`類別與 ASP.NET 應用程式物件](http://www.eggheadcafe.com/articles/20030211.asp)
+- [`HttpApplication` 類別與 ASP.NET 應用程式物件](http://www.eggheadcafe.com/articles/20030211.asp)
 - [HTTP 處理常式和 ASP.NET 中的 HTTP 模組](http://www.15seconds.com/Issue/020417.htm)
 - [在 ASP.NET 中傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
 - [了解`Global.asax`檔案](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)

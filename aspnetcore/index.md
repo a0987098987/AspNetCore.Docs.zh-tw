@@ -4,16 +4,16 @@ author: rick-anderson
 description: "提供 ASP.NET Core 簡介。"
 manager: wpickett
 ms.author: riande
-ms.date: 12/12/2017
+ms.date: 02/28/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: index
-ms.openlocfilehash: 42bf005a29a8723233a0d9e5532827f7522f0e75
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 112e1e4dc4eed2cf0ee94741a52ce6625e1f42a6
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="aspnet-core"></a>ASP.NET Core
 
@@ -43,7 +43,7 @@ ASP.NET Core 提供下列優點：
 * 能夠在 Windows、macOS 和 Linux 上建置並執行。
 * 開放原始碼和[社群導向](https://live.asp.net/) \(英文\)。
 
-ASP.NET Core 完全以 [NuGet](https://www.nuget.org/) 套件的形式提供。 如此可讓您將應用程式最佳化，使其只包含需要的 NuGet 套件。 事實上，以 .NET Core 為目標的 ASP.NET Core 2.x 應用程式只需要[單一 NuGet 套件](xref:fundamentals/metapackage)。 應用程式介面區較小的優點包括更嚴密的安全性、減少維護工作，以及提升效能。
+ASP.NET Core 完全以 [NuGet](https://www.nuget.org/) 套件的形式提供。 使用 NuGet 套件可讓您將應用程式最佳化，使其僅包含必要相依性。 事實上，以 .NET Core 為目標的 ASP.NET Core 2.x 應用程式只需要[單一 NuGet 套件](xref:fundamentals/metapackage)。 應用程式介面區較小的優點包括更嚴密的安全性、減少維護工作，以及提升效能。
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>使用 ASP.NET Core MVC 建置 Web API 和 Web UI
 
@@ -59,7 +59,21 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](xref:client-side/bootstrap)。 如需詳細資料，請參閱[用戶端開發](xref:client-side/index)。
+ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](xref:client-side/bootstrap)。 如需詳細資訊，請參閱[用戶端開發](xref:client-side/index)。
+
+## <a name="aspnet-core-targeting-net-framework"></a>將目標指向 .NET Framework 的 ASP.NET Core
+
+ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .NET Framework 的 ASP.NET Core 應用程式無法跨平台&mdash;而只能在 Windows 上執行。 目前沒有任何要將 ASP.NET Core 中，以 .NET Framework 為目標之支援移除的計畫。 一般來說，ASP.NET Core 以 [.NET Standard](/dotnet/standard/net-standard) 程式庫組成。 以 .NET Standard 2.0 編寫的應用程式可在任何支援 .NET Standard 2.0 的位置執行。
+
+將目標指向 .NET Core 有多個好處，而這些好處也隨著版本更新越來越多。 NET Core 較 .NET Framework 多的好處包含：
+
+* 跨平台。 可在 macOS、Linux 及 Windows 上執行。
+* 提升效能
+* 並存版本
+* 新的 API
+* 開啟原始檔
+
+我們正致力於縮短 .NET Framework 與 .NET Core 之間的 API 差距。 [Windows 相容性套件](/dotnet/core/porting/windows-compat-pack)在 .NET Core 中發佈了上千個僅供 Windows 使用的 API。 這些 API 並不適用於 .NET Core 1.x。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -210,6 +210,9 @@
 ### [React 專案範本](xref:spa/react)
 ### [React with Redux 專案範本](xref:spa/react-with-redux)
 
+# [SignalR](xref:signalr/introduction-signalr-core)
+## [簡介](xref:signalr/introduction-signalr-core)
+
 # [行動裝置](xref:mobile/index)
 ## [建立原生行動應用程式的後端服務](xref:mobile/native-mobile-backend)
 

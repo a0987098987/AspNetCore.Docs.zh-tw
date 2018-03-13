@@ -72,7 +72,7 @@ CSRF 攻擊可能會進行對網站使用 cookie 進行驗證，因為瀏覽器�
 
 ASP.NET Core 反 request 偽造預設資料保護設定 
 
-在 ASP.NET Core MVC 2.0 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)插入防偽語彙基元的 HTML 表單元素。 例如，下列標記 Razor 檔案中的將會自動產生防偽語彙基元：
+在 ASP.NET Core MVC 2.0 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)插入防偽語彙基元的 HTML 表單元素。 例如，下列標記在 Razor 檔案中將會自動產生防偽語彙基元：
 
 ```html
 <form method="post">

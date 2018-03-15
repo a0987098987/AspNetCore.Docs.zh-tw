@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: bcfd20fcea1e683bcbef00a9e67bb28add4f23be
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 45b00fbc15740fad60202bb7e5ab14beb9ebe495
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
@@ -47,8 +47,11 @@ ms.lasthandoff: 02/03/2018
   * [使用 Visual Studio for Windows 建立 Web API](first-web-api.md)
   * [使用 Visual Studio for Mac 建立 Web API](xref:tutorials/first-web-api-mac)
   * [使用 Visual Studio Code 建立 Web API](web-api-vsc.md)
-  
-* [使用 Swagger 的 ASP.NET Core Web API 說明頁面](web-api-help-pages-using-swagger.md)
+
+* [使用 Swagger 的 ASP.NET Core Web API 說明頁面](xref:tutorials/web-api-help-pages-using-swagger)
+  * [開始使用 NSwag](xref:tutorials/get-started-with-nswag)
+  * [開始使用 Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
+
 * [建立原生行動應用程式的後端 Web 服務](../mobile/native-mobile-backend.md)
 
 ## <a name="data-access-and-storage"></a>資料存取與存放

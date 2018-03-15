@@ -13,54 +13,54 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
 ms.openlocfilehash: 899bbdef82d689be81cd77ea6805e0484fb614aa
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
-<a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a><span data-ttu-id="d087e-104">呈現 ASP.NET Web Pages (Razor) 站台的行動裝置</span><span class="sxs-lookup"><span data-stu-id="d087e-104">Rendering ASP.NET Web Pages (Razor) Sites for Mobile Devices</span></span>
+<a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a><span data-ttu-id="e5eae-104">呈現 ASP.NET Web Pages (Razor) 站台的行動裝置</span><span class="sxs-lookup"><span data-stu-id="e5eae-104">Rendering ASP.NET Web Pages (Razor) Sites for Mobile Devices</span></span>
 ====================
-<span data-ttu-id="d087e-105">由[Tom FitzMacken](https://github.com/tfitzmac)</span><span class="sxs-lookup"><span data-stu-id="d087e-105">by [Tom FitzMacken](https://github.com/tfitzmac)</span></span>
+<span data-ttu-id="e5eae-105">由[Tom FitzMacken](https://github.com/tfitzmac)</span><span class="sxs-lookup"><span data-stu-id="e5eae-105">by [Tom FitzMacken](https://github.com/tfitzmac)</span></span>
 
-> <span data-ttu-id="d087e-106">本文說明如何建立會適當地呈現在行動裝置的 ASP.NET Web Pages (Razor) 網站中的網頁。</span><span class="sxs-lookup"><span data-stu-id="d087e-106">This article describes how to create pages in an ASP.NET Web Pages (Razor) site that will render appropriately on mobile devices.</span></span>
+> <span data-ttu-id="e5eae-106">本文說明如何建立會適當地呈現在行動裝置的 ASP.NET Web Pages (Razor) 網站中的網頁。</span><span class="sxs-lookup"><span data-stu-id="e5eae-106">This article describes how to create pages in an ASP.NET Web Pages (Razor) site that will render appropriately on mobile devices.</span></span>
 > 
-> <span data-ttu-id="d087e-107">您將學習：</span><span class="sxs-lookup"><span data-stu-id="d087e-107">What you'll learn:</span></span>
+> <span data-ttu-id="e5eae-107">您將學習：</span><span class="sxs-lookup"><span data-stu-id="e5eae-107">What you'll learn:</span></span>
 > 
-> - <span data-ttu-id="d087e-108">如何使用命名慣例，以指定頁面所專用的行動裝置。</span><span class="sxs-lookup"><span data-stu-id="d087e-108">How to use a naming convention to specify that a page is designed specifically for mobile devices.</span></span>
+> - <span data-ttu-id="e5eae-108">如何使用命名慣例，以指定頁面所專用的行動裝置。</span><span class="sxs-lookup"><span data-stu-id="e5eae-108">How to use a naming convention to specify that a page is designed specifically for mobile devices.</span></span>
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a><span data-ttu-id="d087e-109">在本教學課程中使用的軟體版本</span><span class="sxs-lookup"><span data-stu-id="d087e-109">Software versions used in the tutorial</span></span>
+> ## <a name="software-versions-used-in-the-tutorial"></a><span data-ttu-id="e5eae-109">在本教學課程中使用的軟體版本</span><span class="sxs-lookup"><span data-stu-id="e5eae-109">Software versions used in the tutorial</span></span>
 > 
 > 
-> - <span data-ttu-id="d087e-110">ASP.NET Web Pages (Razor) 3</span><span class="sxs-lookup"><span data-stu-id="d087e-110">ASP.NET Web Pages (Razor) 3</span></span>
+> - <span data-ttu-id="e5eae-110">ASP.NET Web Pages (Razor) 3</span><span class="sxs-lookup"><span data-stu-id="e5eae-110">ASP.NET Web Pages (Razor) 3</span></span>
 >   
 > 
-> <span data-ttu-id="d087e-111">本教學課程也適用於 ASP.NET Web Pages 2。</span><span class="sxs-lookup"><span data-stu-id="d087e-111">This tutorial also works with ASP.NET Web Pages 2.</span></span>
+> <span data-ttu-id="e5eae-111">本教學課程也適用於 ASP.NET Web Pages 2。</span><span class="sxs-lookup"><span data-stu-id="e5eae-111">This tutorial also works with ASP.NET Web Pages 2.</span></span>
 
 
-<span data-ttu-id="d087e-112">ASP.NET Web 網頁可讓您建立來呈現內容的自訂顯示行動裝置或其他裝置上。</span><span class="sxs-lookup"><span data-stu-id="d087e-112">ASP.NET Web Pages lets you create custom displays for rendering content on mobile or other devices.</span></span>
+<span data-ttu-id="e5eae-112">ASP.NET Web 網頁可讓您建立來呈現內容的自訂顯示行動裝置或其他裝置上。</span><span class="sxs-lookup"><span data-stu-id="e5eae-112">ASP.NET Web Pages lets you create custom displays for rendering content on mobile or other devices.</span></span>
 
-<span data-ttu-id="d087e-113">在 ASP.NET Web Pages 站台中建立裝置的特定頁面的最簡單方式是使用檔案命名模式如下：*檔名。**Mobile**.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="d087e-113">The simplest way to create device-specific page in an ASP.NET Web Pages site is by using a file-naming pattern like this: *FileName.**Mobile**.cshtml*.</span></span> <span data-ttu-id="d087e-114">您可以建立兩個版本的網頁 (例如，一個名為*MyFile.cshtml* ，而另一個名為*MyFile.Mobile.cshtml*)。</span><span class="sxs-lookup"><span data-stu-id="d087e-114">You can create two versions of a page (for example, one named *MyFile.cshtml* and one named *MyFile.Mobile.cshtml*).</span></span> <span data-ttu-id="d087e-115">在執行的階段，當行動裝置的要求*MyFile.cshtml*，ASP.NET 會呈現從內容*MyFile.Mobile.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="d087e-115">At run time, when a mobile device requests *MyFile.cshtml*, ASP.NET renders the content from *MyFile.Mobile.cshtml*.</span></span> <span data-ttu-id="d087e-116">否則， *MyFile.cshtml*轉譯。</span><span class="sxs-lookup"><span data-stu-id="d087e-116">Otherwise, *MyFile.cshtml* is rendered.</span></span>
+<span data-ttu-id="e5eae-113">在 ASP.NET Web Pages 站台中建立裝置的特定頁面的最簡單方式是使用檔案命名模式如下：*檔名。**Mobile**.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="e5eae-113">The simplest way to create device-specific page in an ASP.NET Web Pages site is by using a file-naming pattern like this: *FileName.**Mobile**.cshtml*.</span></span> <span data-ttu-id="e5eae-114">您可以建立兩個版本的網頁 (例如，一個名為*MyFile.cshtml* ，而另一個名為*MyFile.Mobile.cshtml*)。</span><span class="sxs-lookup"><span data-stu-id="e5eae-114">You can create two versions of a page (for example, one named *MyFile.cshtml* and one named *MyFile.Mobile.cshtml*).</span></span> <span data-ttu-id="e5eae-115">在執行的階段，當行動裝置的要求*MyFile.cshtml*，ASP.NET 會呈現從內容*MyFile.Mobile.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="e5eae-115">At run time, when a mobile device requests *MyFile.cshtml*, ASP.NET renders the content from *MyFile.Mobile.cshtml*.</span></span> <span data-ttu-id="e5eae-116">否則， *MyFile.cshtml*轉譯。</span><span class="sxs-lookup"><span data-stu-id="e5eae-116">Otherwise, *MyFile.cshtml* is rendered.</span></span>
 
-<span data-ttu-id="d087e-117">下列範例會示範如何藉由新增行動裝置的內容頁面中啟用行動裝置的轉譯。</span><span class="sxs-lookup"><span data-stu-id="d087e-117">The following example shows how to enable mobile rendering by adding a content page for mobile devices.</span></span> <span data-ttu-id="d087e-118">*Page1.cshtml*包含內容加上導覽提要欄位。</span><span class="sxs-lookup"><span data-stu-id="d087e-118">*Page1.cshtml* contains content plus a navigation sidebar.</span></span> <span data-ttu-id="d087e-119">*Page1.Mobile.cshtml*包含相同的內容，但會省略 [資訊看板]。</span><span class="sxs-lookup"><span data-stu-id="d087e-119">*Page1.Mobile.cshtml* contains the same content, but omits the sidebar.</span></span>
+<span data-ttu-id="e5eae-117">下列範例會示範如何藉由新增行動裝置的內容頁面中啟用行動裝置的轉譯。</span><span class="sxs-lookup"><span data-stu-id="e5eae-117">The following example shows how to enable mobile rendering by adding a content page for mobile devices.</span></span> <span data-ttu-id="e5eae-118">*Page1.cshtml*包含內容加上導覽提要欄位。</span><span class="sxs-lookup"><span data-stu-id="e5eae-118">*Page1.cshtml* contains content plus a navigation sidebar.</span></span> <span data-ttu-id="e5eae-119">*Page1.Mobile.cshtml*包含相同的內容，但會省略 [資訊看板]。</span><span class="sxs-lookup"><span data-stu-id="e5eae-119">*Page1.Mobile.cshtml* contains the same content, but omits the sidebar.</span></span>
 
-1. <span data-ttu-id="d087e-120">在 ASP.NET Web Pages 站台中，建立名為*Page1.cshtml* ，並以下列標記取代目前的內容。</span><span class="sxs-lookup"><span data-stu-id="d087e-120">In an ASP.NET Web Pages site, create a file named *Page1.cshtml* and replace the current content with following markup.</span></span>
+1. <span data-ttu-id="e5eae-120">在 ASP.NET Web Pages 站台中，建立名為*Page1.cshtml* ，並以下列標記取代目前的內容。</span><span class="sxs-lookup"><span data-stu-id="e5eae-120">In an ASP.NET Web Pages site, create a file named *Page1.cshtml* and replace the current content with following markup.</span></span>
 
     [!code-html[Main](rendering-aspnet-web-pages-sites-for-mobile-devices/samples/sample1.html)]
-2. <span data-ttu-id="d087e-121">建立名為*Page1.Mobile.cshtml* ，並以下列標記取代現有的內容。</span><span class="sxs-lookup"><span data-stu-id="d087e-121">Create a file named *Page1.Mobile.cshtml* and replace the existing content with the following markup.</span></span> <span data-ttu-id="d087e-122">請注意行動版的頁面會省略更好的呈現較小螢幕上的瀏覽區段。</span><span class="sxs-lookup"><span data-stu-id="d087e-122">Notice that the mobile version of the page omits the navigation section for better rendering on a smaller screen.</span></span>
+2. <span data-ttu-id="e5eae-121">建立名為*Page1.Mobile.cshtml* ，並以下列標記取代現有的內容。</span><span class="sxs-lookup"><span data-stu-id="e5eae-121">Create a file named *Page1.Mobile.cshtml* and replace the existing content with the following markup.</span></span> <span data-ttu-id="e5eae-122">請注意行動版的頁面會省略更好的呈現較小螢幕上的瀏覽區段。</span><span class="sxs-lookup"><span data-stu-id="e5eae-122">Notice that the mobile version of the page omits the navigation section for better rendering on a smaller screen.</span></span>
 
     [!code-html[Main](rendering-aspnet-web-pages-sites-for-mobile-devices/samples/sample2.html)]
-3. <span data-ttu-id="d087e-123">執行桌面瀏覽器並瀏覽至*Page1.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="d087e-123">Run a desktop browser and browse to *Page1.cshtml*.</span></span> <span data-ttu-id="d087e-124">![mobilesites-1](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="d087e-124">![mobilesites-1](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image1.png)</span></span>
-4. <span data-ttu-id="d087e-125">執行行動瀏覽器 （或行動裝置模擬器），並瀏覽至*Page1.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="d087e-125">Run a mobile browser (or a mobile device emulator) and browse to *Page1.cshtml*.</span></span> <span data-ttu-id="d087e-126">(請注意，不包含*.mobile。*</span><span class="sxs-lookup"><span data-stu-id="d087e-126">(Notice that you do not include *.mobile.*</span></span> <span data-ttu-id="d087e-127">做為 URL 的一部分。）即使該要求是*Page1.cshtml*，ASP.NET 會呈現*Page1.Mobile.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="d087e-127">as part of the URL.) Even though the request is to *Page1.cshtml*, ASP.NET renders *Page1.Mobile.cshtml*.</span></span>
+3. <span data-ttu-id="e5eae-123">執行桌面瀏覽器並瀏覽至*Page1.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="e5eae-123">Run a desktop browser and browse to *Page1.cshtml*.</span></span> <span data-ttu-id="e5eae-124">![mobilesites-1](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="e5eae-124">![mobilesites-1](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image1.png)</span></span>
+4. <span data-ttu-id="e5eae-125">執行行動瀏覽器 （或行動裝置模擬器），並瀏覽至*Page1.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="e5eae-125">Run a mobile browser (or a mobile device emulator) and browse to *Page1.cshtml*.</span></span> <span data-ttu-id="e5eae-126">(請注意，不包含*.mobile。*</span><span class="sxs-lookup"><span data-stu-id="e5eae-126">(Notice that you do not include *.mobile.*</span></span> <span data-ttu-id="e5eae-127">做為 URL 的一部分。）即使該要求是*Page1.cshtml*，ASP.NET 會呈現*Page1.Mobile.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="e5eae-127">as part of the URL.) Even though the request is to *Page1.cshtml*, ASP.NET renders *Page1.Mobile.cshtml*.</span></span>
 
     ![mobilesites-2](rendering-aspnet-web-pages-sites-for-mobile-devices/_static/image2.png)
 
 > [!NOTE]
-> <span data-ttu-id="d087e-129">若要測試行動頁面，您可以使用行動裝置模擬器，桌面的電腦上執行。</span><span class="sxs-lookup"><span data-stu-id="d087e-129">To test mobile pages, you can use a mobile device simulator that runs on a desktop computer.</span></span> <span data-ttu-id="d087e-130">此工具可讓您測試網頁，因為它們會在行動裝置上看起來 （也就是通常具有較小顯示區域）。</span><span class="sxs-lookup"><span data-stu-id="d087e-130">This tool lets you test web pages as they would look on mobile devices (that is, typically with a much smaller display area).</span></span> <span data-ttu-id="d087e-131">模擬器的其中一個範例是[使用者代理程式切換器附加元件](http://addons.mozilla.org/firefox/addon/user-agent-switcher/)Mozilla Firefox，這可讓您模擬 Firefox 桌面版本從各種行動瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="d087e-131">One example of a simulator is the [User Agent Switcher add-on](http://addons.mozilla.org/firefox/addon/user-agent-switcher/) for Mozilla Firefox, which lets you emulate various mobile browsers from a desktop version of Firefox.</span></span>
+> <span data-ttu-id="e5eae-129">若要測試行動頁面，您可以使用行動裝置模擬器，桌面的電腦上執行。</span><span class="sxs-lookup"><span data-stu-id="e5eae-129">To test mobile pages, you can use a mobile device simulator that runs on a desktop computer.</span></span> <span data-ttu-id="e5eae-130">此工具可讓您測試網頁，因為它們會在行動裝置上看起來 （也就是通常具有較小顯示區域）。</span><span class="sxs-lookup"><span data-stu-id="e5eae-130">This tool lets you test web pages as they would look on mobile devices (that is, typically with a much smaller display area).</span></span> <span data-ttu-id="e5eae-131">模擬器的其中一個範例是[使用者代理程式切換器附加元件](http://addons.mozilla.org/firefox/addon/user-agent-switcher/)Mozilla Firefox，這可讓您模擬 Firefox 桌面版本從各種行動瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="e5eae-131">One example of a simulator is the [User Agent Switcher add-on](http://addons.mozilla.org/firefox/addon/user-agent-switcher/) for Mozilla Firefox, which lets you emulate various mobile browsers from a desktop version of Firefox.</span></span>
 
 
 <a id="Additional_Resources"></a>
-## <a name="additional-resources"></a><span data-ttu-id="d087e-132">其他資源</span><span class="sxs-lookup"><span data-stu-id="d087e-132">Additional Resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e5eae-132">其他資源</span><span class="sxs-lookup"><span data-stu-id="e5eae-132">Additional Resources</span></span>
 
 
-<span data-ttu-id="d087e-133">[Windows Phone 模擬器](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)</span><span class="sxs-lookup"><span data-stu-id="d087e-133">[Windows Phone Emulator](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)</span></span>
+<span data-ttu-id="e5eae-133">[Windows Phone 模擬器](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)</span><span class="sxs-lookup"><span data-stu-id="e5eae-133">[Windows Phone Emulator](https://msdn.microsoft.com/library/ff402563(v=VS.92).aspx)</span></span>

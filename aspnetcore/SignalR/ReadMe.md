@@ -1,1 +1,0 @@
-<span data-ttu-id="bf398-101">SignalR 內容的此資料夾。</span><span class="sxs-lookup"><span data-stu-id="bf398-101">This folder if for SignalR content.</span></span> <span data-ttu-id="bf398-102">第一個檔案新增到此目錄時，請刪除此檔案。</span><span class="sxs-lookup"><span data-stu-id="bf398-102">Delete this file when the first file is added to this directory.</span></span>

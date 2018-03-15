@@ -5,16 +5,16 @@ author: spboyer
 manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/19/2016
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: b11bc811b6aefce22b60a28afd72c2a2d0b26955
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 033adddc586b60c9f7453df5434617aa838737f8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -112,27 +112,32 @@ Complete!
 ```
 
 > [!NOTE]
-> 在此範例中，輸出會反映 httpd.86_64 因為 CentOS 7 版本是 64 位元。 若要確認 Apache 的安裝位置，請從命令提示字元執行 `whereis httpd`。 
+> 在此範例中，輸出會反映 httpd.86_64 因為 CentOS 7 版本是 64 位元。 若要確認 Apache 的安裝位置，請從命令提示字元執行 `whereis httpd`。
 
 ### <a name="configure-apache-for-reverse-proxy"></a>設定 Apache 以用於反向 Proxy
 
 Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案*.conf*除了模組組態檔中，依字母順序處理延伸模組`/etc/httpd/conf.modules.d/`，其中包含任何設定檔需要載入模組。
 
-建立名為應用程式組態檔`hellomvc.conf`:
+建立名為組態檔*hellomvc.conf*，應用程式：
 
 ```
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
     ProxyPassReverse / http://127.0.0.1:5000/
-    ErrorLog /var/log/httpd/hellomvc-error.log
-    CustomLog /var/log/httpd/hellomvc-access.log common
+    ServerName www.example.com
+    ServerAlias *.example.com
+    ErrorLog ${APACHE_LOG_DIR}hellomvc-error.log
+    CustomLog ${APACHE_LOG_DIR}hellomvc-access.log common
 </VirtualHost>
 ```
 
-**VirtualHost**節點可在伺服器上的一個或多個檔案中出現多次。 **VirtualHost**設定為使用通訊埠 80 的任何 IP 位址上接聽。 下面兩行 port 5000 到 127.0.0.1 的伺服器根目錄的 proxy 要求會設定。 雙向通訊， *ProxyPass*和*ProxyPassReverse*所需。
+`VirtualHost`區塊可以在伺服器上的一個或多個檔案中出現多次。 在先前的組態檔，Apache 會接受公用連接埠 80 上的流量。 網域`www.example.com`正在處理，而`*.example.com`別名解析成相同的網站。 請參閱[虛擬主機名稱為基礎支援](https://httpd.apache.org/docs/current/vhosts/name-based.html)如需詳細資訊。 要求是 proxy 連接埠 5000 127.0.0.1 在伺服器的根位置。 雙向通訊，`ProxyPass`和`ProxyPassReverse`所需。
 
-記錄可以設定每個**VirtualHost**使用**ErrorLog**和**CustomLog**指示詞。 **錯誤記錄檔**是伺服器記錄錯誤，在其中的位置和**CustomLog**設定檔案名稱和記錄檔格式。 在此情況下，這是記錄要求資訊的位置。 沒有為每個要求的一列。
+> [!WARNING]
+> 無法指定適當的[ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)中**VirtualHost**區塊會公開您的應用程式的安全性漏洞。 子網域萬用字元繫結 (例如， `*.example.com`) 不會造成安全性風險，如果您要控制整個父系網域 (與`*.com`，這是很容易遭受)。 請參閱[rfc7230 區段 5.4](https://tools.ietf.org/html/rfc7230#section-5.4)如需詳細資訊。
+
+記錄可以設定每個`VirtualHost`使用`ErrorLog`和`CustomLog`指示詞。 `ErrorLog` 是伺服器記錄錯誤，在其中的位置和`CustomLog`設定檔案名稱和記錄檔格式。 在此情況下，這是記錄要求資訊的位置。 沒有為每個要求的一列。
 
 儲存檔案並測試組態。 如果所有項目都通過，回應應該是 `Syntax [OK]`。
 

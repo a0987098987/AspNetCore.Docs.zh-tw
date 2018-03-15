@@ -1,7 +1,7 @@
 ---
-title: "從 ASP.NET Web API 移轉"
+title: "從 ASP.NET Web API 移轉至 ASP.NET Core"
 author: ardalis
-description: 
+description: "了解如何從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC。"
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 9eb5f4dfec82ec1c60d33bff94d35857a4c0cfd6
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 929fab90aa88745807761e824a2cf614f078ea36
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="migrating-from-aspnet-web-api"></a>從 ASP.NET Web API 移轉
+# <a name="migrating-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Scott Addie](https://scottaddie.com)
 
@@ -25,7 +25,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 
 ## <a name="review-aspnet-web-api-project"></a>檢閱 ASP.NET Web API 專案
 
-本文使用範例專案， *ProductsApp*建立發行項的[開始使用 ASP.NET Web API](https://docs.microsoft.com/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)做為起點。 在該專案中，簡單的 ASP.NET Web API 專案設定，如下所示。
+本文使用範例專案， *ProductsApp*建立發行項的[開始使用 ASP.NET Web API 2](/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)做為起點。 在該專案中，簡單的 ASP.NET Web API 專案設定，如下所示。
 
 在*Global.asax.cs*，進行呼叫以`WebApiConfig.Register`:
 

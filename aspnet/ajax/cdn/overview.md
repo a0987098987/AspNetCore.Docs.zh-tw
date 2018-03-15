@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: f69f707ba64d13fc372b7bc44718c9dcf8cec6e2
-ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
+ms.openlocfilehash: f1225f06e5218d893e3f49b2ccc67d56365b30e5
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -74,7 +74,7 @@ Microsoft Ajax CDN 也包含由 Microsoft 已上傳的下列程式庫：
 
 Microsoft 不會聲稱此 CDN 上裝載任何協力廠商程式庫的擁有權。 版權擁有者的程式庫會授權給您這些程式庫。 您可能要下載並使用這類程式庫的任何權限會授與完全各著作權擁有人。 因為這些不是 Microsoft 文件庫，Microsoft 提供任何瑕疵責任擔保或財產權限授權 （包括任何隱含的專利權限） 這個 CDN 上裝載的第三方廠商程式庫。
 
-如果您想要提交您的 JavaScript 程式庫，而且您的程式庫是其中一個最上層的 JavaScript 程式庫 （如 http://trends.builtwith.com 上所列） 或延伸模組/外掛程式至這些程式庫 (a) 常用;或 (b) 有助於在 ASP.NET 上使用，請連絡AjaxCDNSubmission@Microsoft.com。
+如果您想要提交您的 JavaScript 程式庫，而且您的程式庫是其中一個最上層的 JavaScript 程式庫 (上所列http://trends.builtwith.com)或延伸模組/外掛程式，以這些程式庫 （a） 常用; 或 （b） 很有幫助在 ASP.NET 上使用，然後請連絡AjaxCDNSubmission@Microsoft.com。
 
 <a id="ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18"></a>
 
@@ -748,7 +748,7 @@ jQuery 1.2.0 版本移轉
 - http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.cultures.js
 
     - 所有文化特性
-- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture。{文化特性代碼}.js
+- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
     - "{文化特性的程式碼取代} 」 所需的文化特性代碼，例如 globalize.culture.en GB.js== Microsoft 檔案 CDN = = 這些 Microsoft 上傳文件庫。
 
@@ -756,7 +756,7 @@ jQuery 1.2.0 版本移轉
 
 ### <a name="respond-releases-on-the-cdn"></a>回應在 CDN 上的版本
 
-下列版本的[https://github.com/scottjehl/Respond](https://github.com/scottjehl/Respond "https://github.com/scottjehl/Respond")回應裝載在 CDN 上：
+下列版本的[ https://github.com/scottjehl/Respond ] (https://github.com/scottjehl/Respond " https://github.com/scottjehl/Respond ")回應裝載在 CDN 上：
 
 #### <a name="respond-version-142"></a>回應版本 1.4.2
 
@@ -792,6 +792,19 @@ jQuery 1.2.0 版本移轉
 ### <a name="bootstrap-releases-on-the-cdn"></a>啟動程序在 CDN 上的版本
 
 下列版本的[getbootstrap.com](http://getbootstrap.com "getbootstrap.com")啟動程序在 CDN:
+
+#### <a name="bootstrap-version-400"></a>啟動程序 4.0.0 版
+
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css.map
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.eot
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.svg
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.ttf
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff
+- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-337"></a>啟動程序版本 3.3.7
 
@@ -1026,9 +1039,9 @@ jQuery 1.2.0 版本移轉
 
 ### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>在 CDN 上的啟動程序 TouchCarousel 版本
 
-下列版本的[https://github.com/ixisio/bootstrap-touch-carousel](https://github.com/ixisio/bootstrap-touch-carousel "https://github.com/ixisio/bootstrap-touch-carousel") Bootstrap TouchCarousel 版本在 CDN:
+下列版本的[ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") CDN 上裝載啟動程序 TouchCarousel 版本：
 
-#### <a name="bootstrap-touchcarousel-version-080"></a>啟動程序 TouchCarousel 0.8.0 版
+#### <a name="bootstrap-touchcarousel-version-080"></a>Bootstrap TouchCarousel version 0.8.0
 
 - http://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
 - http://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js
@@ -1037,7 +1050,7 @@ jQuery 1.2.0 版本移轉
 
 ### <a name="hammerjs-releases-on-the-cdn"></a>在 CDN 上 Hammer.js 版本
 
-下列版本的[http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") Hammer.js 版本裝載在 CDN 上：
+下列版本的[ http://hammerjs.github.io/ ] (http://hammerjs.github.io/ " http://hammerjs.github.io/ ") Hammer.js 版本裝載在 CDN 上：
 
 #### <a name="hammerjs-version-204"></a>Hammer.js 版本 2.0.4
 

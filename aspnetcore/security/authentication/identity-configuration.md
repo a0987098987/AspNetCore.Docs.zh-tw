@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 469068af2fc12627a0a5d1c5623eb60bef51cea0
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: f8be8a555454a99a3e75b5cd3d42c11e1d7b2b7e
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="configure-identity"></a>設定身分識別
 
@@ -36,7 +36,18 @@ ASP.NET Core 身分識別會使用預設組態的密碼原則、 鎖定的時間
 
 ### <a name="lockout"></a>鎖定
 
+鎖定使用者一段時間之後指定失敗的存取嘗試次數 (預設： 5 存取嘗試失敗後的 5 分鐘鎖定)。 驗證成功重設失敗的存取嘗試次數和重設時鐘。
+
+下列範例顯示的預設值：
+
 [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,39-42,50-52)]
+
+確認[PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync)設定`lockoutOnFailure`至`true`:
+
+```csharp
+var result = await _signInManager.PasswordSignInAsync(
+                 Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+```
 
 [IdentityOptions.Lockout](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout)指定[LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions)表所示的屬性。
 

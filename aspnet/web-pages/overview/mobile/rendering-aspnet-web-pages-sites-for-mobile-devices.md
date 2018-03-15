@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 msc.type: authoredcontent
 ms.openlocfilehash: 899bbdef82d689be81cd77ea6805e0484fb614aa
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="rendering-aspnet-web-pages-razor-sites-for-mobile-devices"></a>呈現 ASP.NET Web Pages (Razor) 站台的行動裝置
 ====================

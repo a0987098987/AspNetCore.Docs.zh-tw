@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample6.cshtml?highlight=9)]
 
-`@Html.AntiForgeryToken()`產生隱藏的表單防偽語彙基元必須完全符合`Edit`方法`Movies`控制站。 閱讀更多關於跨網站要求偽造 （也稱為 XSRF 或 CSRF） 在我的教學課程[MVC 中 XSRF/CSRF 防護](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)。
+`@Html.AntiForgeryToken()` 產生隱藏的表單防偽語彙基元必須完全符合`Edit`方法`Movies`控制站。 閱讀更多關於跨網站要求偽造 （也稱為 XSRF 或 CSRF） 在我的教學課程[MVC 中 XSRF/CSRF 防護](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)。
 
 `HttpGet` `Edit`方法會採用影片 ID 參數在查詢使用 Entity Framework 的電影`Find`方法，並返回編輯檢視中選取的影片。 如果找不到電影， [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx)傳回。 當 Scaffolding 系統建立 Edit 檢視時，它會檢查 `Movie` 類別，並建立程式碼為類別的每個屬性轉譯 `<label>` 和 `<input>` 元素。 下列範例顯示 visual studio scaffolding 系統所產生的編輯檢視：
 
@@ -100,7 +100,7 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 
 
 > [!NOTE]
-> 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文 （美國） 的日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 您可以從 NuGet 來取得 jQuery 非英文驗證。 （請勿安裝 Globalize 如果您使用英文地區設定。）
+> 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文 （美國） 的日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 您可以從 NuGet 來取得 jQuery 非英文驗證。 （請勿安裝 Globalize 如果您使用英文地區設定。）
 
 
 1. 從**工具**功能表上，按一下**NuGetLibrary 封裝管理員**，然後按一下 **管理方案的 NuGet 套件**。  
@@ -109,7 +109,7 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 2. 在左窗格中，選取 **瀏覽*。 * * * （請參閱下面的影像）。
 3. 在輸入方塊中，輸入 * Globalize * *。  
   
-    ![](examining-the-edit-methods-and-edit-view/_static/image6.png)選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至您的專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性的 JavaScript 檔案。 請注意，可能需要五分鐘才能安裝此套件。
+    ![](examining-the-edit-methods-and-edit-view/_static/image6.png) 選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至您的專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性的 JavaScript 檔案。 請注意，可能需要五分鐘才能安裝此套件。
 
  下列程式碼顯示 Views\Movies\Edit.cshtml 檔案的修改： 
 
@@ -123,7 +123,7 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 
 [!code-xml[Main](examining-the-edit-methods-and-edit-view/samples/sample11.xml)]
 
-<a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a>在下一個教學課程中，我們將實作搜尋功能。
+<a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a> 在下一個教學課程中，我們將實作搜尋功能。
 
 >[!div class="step-by-step"]
 [上一頁](accessing-your-models-data-from-a-controller.md)

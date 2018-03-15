@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
 ms.openlocfilehash: 4d30a6803b1478014a2afb814ac317df27394446
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="create-a-new-aspnet-mvc-project"></a>建立新的 ASP.NET MVC 專案
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -63,14 +63,14 @@ ms.lasthandoff: 11/10/2017
 
 預設的 ASP.NET MVC 專案有六個最上層目錄：
 
-| **目錄** | **目的** |
+| **Directory** | **目的** |
 | --- | --- |
-| **/ 控制站** | 您在其中放置處理 URL 要求的控制器類別 |
-| **/ 模型** | 您在其中放置代表和操作資料的類別 |
-| **/ 檢視表** | 您在其中放置所負責轉譯輸出 UI 範本檔案 |
-| **或指令碼** | 您可在此將 JavaScript 程式庫檔案和指令碼 (.js) |
-| **/ 內容** | 您在其中放置 CSS 和映像檔，以及其他非-動態/非-JavaScript 內容 |
-| **/ 應用程式\_資料** | 將資料檔案儲存在您要讀取/寫入。 |
+| **/Controllers** | 您在其中放置處理 URL 要求的控制器類別 |
+| **/Models** | 您在其中放置代表和操作資料的類別 |
+| **/Views** | 您在其中放置所負責轉譯輸出 UI 範本檔案 |
+| **/Scripts** | 您可在此將 JavaScript 程式庫檔案和指令碼 (.js) |
+| **/Content** | 您在其中放置 CSS 和映像檔，以及其他非-動態/非-JavaScript 內容 |
+| **/App\_Data** | 將資料檔案儲存在您要讀取/寫入。 |
 
 ASP.NET MVC 不需要這個結構。 事實上，大型應用程式開發人員將通常分割應用程式設定跨多個專案，使其更易管理 (例如： 資料模型類別通常從移至個別的類別庫專案中的 web 應用程式)。 不過，預設專案結構，並提供好的預設目錄慣例我們可以用來保留全新我們的應用程式考量。
 

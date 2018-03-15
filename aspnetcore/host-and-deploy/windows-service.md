@@ -1,5 +1,5 @@
 ---
-title: "在 Windows 服務的主機"
+title: "裝載在 Windows 服務的 ASP.NET Core"
 author: tdykstra
 description: "了解如何裝載在 Windows 服務的 ASP.NET Core 應用程式。"
 manager: wpickett
@@ -10,19 +10,19 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: c14a1f62bce4d06be3b8e6356f45cd5e330a0751
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: f3455e47cfc06a4492dc4e34871b348184c6ecfb
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="host-an-aspnet-core-app-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core 應用程式
+# <a name="host-aspnet-core-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core
 
-由[Tom Dykstra](https://github.com/tdykstra)
+作者：[Tom Dykstra](https://github.com/tdykstra)
 
-若要在 Windows 上裝載 ASP.NET Core 應用程式而不使用 IIS， 建議在 [Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications) 中執行應用程式。當裝載為 Windows 服務，應用程式可以在重新開機及當機之後自動啟動，而不需要人工介入。
+裝載在 Windows 上的 ASP.NET Core 應用程式，而不使用 IIS 執行它的建議的方式[Windows 服務](/dotnet/framework/windows-services/introduction-to-windows-service-applications)。 當裝載為 Windows 服務，應用程式可以自動啟動之後重新開機，而不需要人為介入損毀。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample)([如何下載](xref:tutorials/index#how-to-download-a-sample))。 如需如何執行範例應用程式的指示，請參閱 「 範例的*README.md*檔案。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/windows-service/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))。 如需如何執行範例應用程式的指示，請參閱 「 範例的*README.md*檔案。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -32,11 +32,11 @@ ms.lasthandoff: 02/01/2018
 
   使用 Visual Studio 中建立專案時**ASP.NET Core 應用程式 (.NET Framework)**範本。
 
-* 如果應用程式需要從網際網路 （不只是從內部網路）接收要求，則必須使用[HTTP.sys](xref:fundamentals/servers/httpsys)網頁伺服器 (在 ASP.NET Core 1.x 應用程式稱為[WebListener](xref:fundamentals/servers/weblistener)) 而不是[Kestrel](xref:fundamentals/servers/kestrel)。IIS 建議是作為反向 proxy 伺服器使用 Kestrel 邊緣部署。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
+* 如果應用程式接收要求，從網際網路 （不只是從內部網路），則必須使用[HTTP.sys](xref:fundamentals/servers/httpsys)網頁伺服器 (以前稱為[WebListener](xref:fundamentals/servers/weblistener) ASP.NET Core 1.x 應用程式) 而不是[Kestrel](xref:fundamentals/servers/kestrel)。 IIS 建議是作為反向 proxy 伺服器使用 Kestrel 邊緣部署。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
 
-## <a name="getting-started"></a>使用者入門
+## <a name="get-started"></a>開始使用
 
-本節說明將現有的 ASP.NET Core 專案設定為以服務執行所需的最小變更。
+本節說明將現有的 ASP.NET Core 專案設定為在服務執行所需的最小變更。
 
 1. 安裝 NuGet 套件[Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices/)。
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 02/01/2018
 
 [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=Logging&highlight=7)]
 
-## <a name="acknowledgments"></a>通知
+## <a name="acknowledgments"></a>感謝
 
 撰寫本文時的協助的已發行的來源：
 

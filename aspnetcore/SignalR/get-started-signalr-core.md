@@ -1,20 +1,20 @@
 ---
 title: "開始使用 ASP.NET Core 的 SignalR"
 author: rachelappel
-ms.author: rachelap
-description: "在本教學課程中，您可以建立使用 SignalR 的 ASP.NET Core 應用程式。"
+description: "了解建置適用於 ASP.NET Core 使用 SignalR 的即時應用程式的基本概念。"
 manager: wpickett
-ms.date: 03/06/2018
-ms.topic: tutorial
-ms.technology: dotnet-signalr
-ms.prod: aspnet-core
+ms.author: rachelap
 ms.custom: mvc
+ms.date: 03/06/2018
+ms.prod: aspnet-core
+ms.technology: dotnet-signalr
+ms.topic: tutorial
 uid: signalr/get-started-signalr-core
-ms.openlocfilehash: 4afb9785fc3d0f472226a745537acbc77adefb4c
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: 79af59fc8c2ada71d764ada95a431e10f4f00f27
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="tutorial-get-started-with-signalr-for-aspnet-core"></a>教學課程： 開始使用 SignalR for ASP.NET Core
 

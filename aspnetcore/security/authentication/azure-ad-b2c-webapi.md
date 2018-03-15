@@ -1,5 +1,5 @@
 ---
-title: "在 web 應用程式開發介面與 Azure Active Directory B2C 的雲端驗證"
+title: "在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證"
 author: camsoper
 description: "了解如何設定 Azure Active Directory B2C 驗證與 ASP.NET Core Web API。 測試已驗證的 web 應用程式開發介面與郵差。"
 ms.author: casoper
@@ -10,13 +10,13 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: d768e2daf2464b282b097e935ef6c5f85e8705f5
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 1213f7eb25fb6525f98d83dff0956a841ae686a7
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 的雲端驗證
+# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證
 
 作者 [Cam Soper](https://twitter.com/camsoper)
 

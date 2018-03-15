@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction-signalr-core
-ms.openlocfilehash: d4ad9bb1910a3339ac8d0d8ff740417f4e7262b7
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: 3fa70c957b246787d4e457c74f90ad797b3af766
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="introduction-to-signalr"></a>SignalR 的簡介
 
@@ -39,7 +39,7 @@ SignalR 的 ASP.NET Core:
 * 同時廣播給所有連接的用戶端的訊息啟用。 例如，小組室。
 * 能夠將訊息傳送至特定的用戶端或用戶端的群組。
 * 是開放在[GitHub](https://github.com/aspnet/signalr)。
-* 可妥善調整。
+* 可擴充的。
 
 用戶端與伺服器之間的連線是持續性的不同的 HTTP 連線。
 

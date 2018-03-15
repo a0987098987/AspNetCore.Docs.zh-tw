@@ -76,7 +76,7 @@
 #### [新增搜尋](xref:tutorials/razor-pages-vsc/search)
 
 ### [使用 Visual Studio for Mac 建立 MVC Web 應用程式](xref:tutorials/first-mvc-app-mac/index)
-#### [快速入門](xref:tutorials/first-mvc-app-mac/start-mvc)
+#### [開始使用](xref:tutorials/first-mvc-app-mac/start-mvc)
 #### [新增控制器](xref:tutorials/first-mvc-app-mac/adding-controller)
 #### [新增檢視](xref:tutorials/first-mvc-app-mac/adding-view)
 #### [新增模型](xref:tutorials/first-mvc-app-mac/adding-model)
@@ -88,7 +88,7 @@
 #### [檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)
 
 ### [在 Mac 或 Linux 上使用 Visual Studio Code 建置 Web 應用程式](xref:tutorials/first-mvc-app-xplat/index)
-#### [快速入門](tutorials/first-mvc-app-xplat/start-mvc.md)
+#### [開始使用](tutorials/first-mvc-app-xplat/start-mvc.md)
 #### [新增控制器](tutorials/first-mvc-app-xplat/adding-controller.md)
 #### [新增檢視](tutorials/first-mvc-app-xplat/adding-view.md)
 #### [新增模型](tutorials/first-mvc-app-xplat/adding-model.md)
@@ -313,7 +313,6 @@
 #### [金鑰儲存體格式](xref:security/data-protection/implementation/key-storage-format)
 #### [暫時資料保護提供者](xref:security/data-protection/implementation/key-storage-ephemeral)
 ### [相容性](xref:security/data-protection/compatibility/index)
-#### [在應用程式間共用 Cookie](xref:security/data-protection/compatibility/cookie-sharing)
 #### [取代 ASP.NET 中的 <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)
 ## [強制使用 HTTPS](xref:security/enforcing-ssl)
 ## [在開發期間安全儲存應用程式密碼](xref:security/app-secrets)
@@ -322,6 +321,7 @@
 ## [防止開啟重新導向攻擊](xref:security/preventing-open-redirects)
 ## [防止跨網站指令碼攻擊](xref:security/cross-site-scripting)
 ## [啟用跨原始來源要求 (CORS)](xref:security/cors)
+## [在應用程式間共用 Cookie](xref:security/cookie-sharing)
 
 # [效能](xref:performance/index)
 ## [快取](xref:performance/caching/index)

@@ -1,5 +1,5 @@
 ---
-title: "Azure 金鑰保存庫的組態提供者"
+title: "在 ASP.NET Core azure 金鑰保存庫的組態提供者"
 author: guardrex
 description: "了解如何使用 Azure 金鑰保存庫的組態提供者設定應用程式使用在執行階段載入的名稱 / 值組。"
 manager: wpickett
@@ -8,13 +8,13 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 1a91a87fb90d4d4651e07f32415e4364c8e2d993
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e1a4be77417f0a74182f1b123bfba429737d4330
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="azure-key-vault-configuration-provider"></a>Azure 金鑰保存庫的組態提供者
+# <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>在 ASP.NET Core azure 金鑰保存庫的組態提供者
 
 由[Luke Latham](https://github.com/guardrex)和[Andrew Stanton 護士](https://github.com/anurse)
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/11/2018
 ![透過 Azure 金鑰保存庫的組態提供者載入瀏覽器視窗中顯示密碼的值](key-vault-configuration/_static/sample1.png)
 
 ## <a name="creating-prefixed-key-vault-secrets-and-loading-configuration-values-key-name-prefix-sample"></a>建立帶有前置詞的金鑰保存庫密碼並載入組態值 （索引鍵-名稱-前置詞的範例）
-`AddAzureKeyVault`也會提供多載，可接受的實作`IKeyVaultSecretManager`，可讓您控制如何金鑰保存庫密碼會轉換成組態機碼。 例如，您可以實作的介面，根據您在應用程式啟動時提供的前置詞值的密碼值載入。 這可讓您，例如，若要載入的應用程式版本為基礎的密碼。
+`AddAzureKeyVault` 也會提供多載，可接受的實作`IKeyVaultSecretManager`，可讓您控制如何金鑰保存庫密碼會轉換成組態機碼。 例如，您可以實作的介面，根據您在應用程式啟動時提供的前置詞值的密碼值載入。 這可讓您，例如，若要載入的應用程式版本為基礎的密碼。
 
 > [!WARNING]
 > 將多個應用程式的秘密資訊放入相同的金鑰保存庫，或將環境的機密資料，不使用前置詞在金鑰保存庫密碼 (例如，*開發*與*生產*密碼) 放在同一個保存庫。 我們建議不同的應用程式和開發/生產環境使用不同的金鑰保存庫來隔離應用程式環境，最高的層級的安全性。

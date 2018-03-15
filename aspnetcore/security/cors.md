@@ -1,7 +1,7 @@
 ---
-title: "啟用跨原始要求 (CORS)"
+title: "啟用 ASP.NET Core 中的跨原始要求 (CORS)"
 author: rick-anderson
-description: "本文件介紹的標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
+description: "深入了解如何以標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
 manager: wpickett
 ms.author: riande
 ms.date: 05/17/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: ee61798fc1bde89ca3712eae9b7c4413e58cf70d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64d939033fee14fad37a08c60da608898e20c01b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="enabling-cross-origin-requests-cors"></a>啟用跨原始要求 (CORS)
+# <a name="enabling-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始要求 (CORS)
 
 由[Mike Wasson](https://github.com/mikewasson)， [Shayne Boyer](https://twitter.com/spboyer)，和[Tom Dykstra](https://github.com/tdykstra)
 
@@ -160,7 +160,7 @@ CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 
 
 ### <a name="set-the-exposed-response-headers"></a>設定公開的回應標頭
 
-根據預設，瀏覽器不會公開所有的應用程式的回應標頭。 (請參閱[http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header)。)預設可用的回應標頭如下：
+根據預設，瀏覽器不會公開所有的應用程式的回應標頭。 (請參閱[ http://www.w3.org/TR/cors/#simple-response-header ](http://www.w3.org/TR/cors/#simple-response-header)。)預設可用的回應標頭如下：
 
 * Cache-Control
 

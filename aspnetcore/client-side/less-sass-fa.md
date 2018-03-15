@@ -9,15 +9,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 7ef82d15de64ef62b952b6c757cb9c35fd40e788
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e00a0929db9dff6c97c4b22468156f621a1a3820
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>樣式應用程式，以更少、 Sass，和字型臻中 ASP.NET Core 簡介
 
-由[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/)
 
 以設定樣式及整體體驗時，web 應用程式的使用者會有越來越多高的期望。 現代化 web 應用程式經常會運用豐富的工具及架構定義和管理其外觀及操作，以一致的方式。 架構喜歡[Bootstrap](http://getbootstrap.com/)可以對定義一組常用的樣式和網站的版面配置選項。 不過，大部分的非一般站台也可以從能夠有效地定義和維護樣式和階層式樣式表 (CSS) 檔案，以及輕鬆存取協助讓站台的介面更直覺的非影像圖示。 這是 where 語言和支援的工具[較少](http://lesscss.org/)和[Sass](http://sass-lang.com/)，如同程式庫和[字型臻](http://fontawesome.io/)，有。
 
@@ -97,9 +97,9 @@ body {
 .bgDark2    {color:@darker2}
 ```
 
-`@base`和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 較少的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
+`@base` 和其他@-prefixed項目是變數。 每個代表色彩。 除了`@base`，設定色彩函式的使用： 淡化、 暗化，和微調。 淡化和暗化執行幾乎不如預期。微調的數字為度 （大約是色彩滾輪） 以調整色彩的色調。 較少的處理器是聰明，可以忽略不使用的變數，因此我們需要來示範這些變數的運作方式，使用這些位置。 類別`.baseColor`，等將示範每個變數所產生的 CSS 檔案中的導出的值。
 
-### <a name="getting-started"></a>使用者入門
+### <a name="get-started"></a>開始使用
 
 建立**npm 組態檔**(*package.json*) 在您的專案資料夾和編輯，以參考`gulp`和`gulp-less`:
 

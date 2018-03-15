@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 60ef1f93efea777e9309ad8c664a2c6645f1ce80
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>設定生產環境 Web 應用程式使用實際執行資料庫 (VB)
 ====================
@@ -37,16 +37,16 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 
 ## <a name="examining-the-connection-string-information"></a>檢查連接字串資訊
 
-活頁簿檢閱 web 應用程式所使用的連接字串儲存在應用程式的組態檔， `Web.config`。 `Web.config`包含儲存連接字串，命名相似的特殊區段[ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx)。 `Web.config`檔案書籍檢閱網站有一個名為此區段中定義的連接字串`ReviewsConnectionString`:
+活頁簿檢閱 web 應用程式所使用的連接字串儲存在應用程式的組態檔， `Web.config`。 `Web.config` 包含儲存連接字串，命名相似的特殊區段[ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx)。 `Web.config`檔案書籍檢閱網站有一個名為此區段中定義的連接字串`ReviewsConnectionString`:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-vb/samples/sample1.xml)]
 
 連接字串的資料來源 =。 \SQLEXPRESS。AttachDbFilename = |DataDirectory|\Reviews.mdf;Integrated 安全性 = True;使用者執行個體 = True-組成選項和值的數目，與選項/值組，以分號和每個選項分隔和等號分隔的值。 此連接字串中使用的四個選項如下：
 
-- `Data Source`-指定資料庫伺服器和資料庫伺服器執行個體名稱的位置 （如果有的話）。 值， `.\SQLEXPRESS`，就是資料庫伺服器和執行個體名稱。 期間指定的資料庫伺服器位於與此應用程式; 相同的電腦執行個體名稱是`SQLEXPRESS`。
-- `AttachDbFilename`-指定資料庫檔案的位置。 值包含預留位置`|DataDirectory|`，這是解析為 s 的應用程式的完整路徑`App_Data`在執行階段 資料夾。
-- `Integrated Security`-布林值，指出是否要連接到資料庫 (false) 或目前 Windows 帳戶認證 (true) 時，使用指定的使用者名稱/密碼。
-- `User Instance`-表示是否允許本機電腦上的非系統管理使用者連接和連接到 SQL Server Express Edition 資料庫的 SQL Server Express Edition 的特定組態選項。 請參閱[SQL Server Express 使用者執行個體](https://msdn.microsoft.com/library/ms254504.aspx)如需有關這項設定。
+- `Data Source` -指定資料庫伺服器和資料庫伺服器執行個體名稱的位置 （如果有的話）。 值， `.\SQLEXPRESS`，就是資料庫伺服器和執行個體名稱。 期間指定的資料庫伺服器位於與此應用程式; 相同的電腦執行個體名稱是`SQLEXPRESS`。
+- `AttachDbFilename` -指定資料庫檔案的位置。 值包含預留位置`|DataDirectory|`，這是解析為 s 的應用程式的完整路徑`App_Data`在執行階段 資料夾。
+- `Integrated Security` -布林值，指出是否要連接到資料庫 (false) 或目前 Windows 帳戶認證 (true) 時，使用指定的使用者名稱/密碼。
+- `User Instance` -表示是否允許本機電腦上的非系統管理使用者連接和連接到 SQL Server Express Edition 資料庫的 SQL Server Express Edition 的特定組態選項。 請參閱[SQL Server Express 使用者執行個體](https://msdn.microsoft.com/library/ms254504.aspx)如需有關這項設定。
   
 
 允許的連接字串選項取決於您所連接的資料庫和[ADO.NET](http://ADO.NET)所使用的資料庫提供者。 例如，連接字串連接到 Microsoft SQL Server 資料庫與不同，用來連接到 Oracle 資料庫。 同樣地，連接到 Microsoft SQL Server 資料庫使用 SqlClient 提供者會使用不同的連接字串比時使用的 OLE DB 提供者。
@@ -125,7 +125,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 **圖 4**: C ([按一下以檢視完整大小的影像](configuring-the-production-web-application-to-use-the-production-database-vb/_static/image12.jpg))
 
 
-我們現在需要指示`Web.config`databaseConnectionStrings.config 檔案用於其連接字串存放區。 開啟`Web.config`並取代現有`<connectionStrings>`具有下列項目：
+我們現在需要指示`Web.config`databaseConnectionStrings.config 檔案用於其連接字串存放區。 開啟 `Web.config` 並使用下列內容取代現有的 `<connectionStrings>` 元素：
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-vb/samples/sample4.xml)]
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 27a46446e9bf63e96eecc392e6d6863e27b34730
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e6a8404d3fe96a0136d7f874107b2cdf63e8e890
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>疑難排解 Azure App Service 上的 ASP.NET Core
 
@@ -184,4 +184,5 @@ ASP.NET 核心模組 stdout 記錄通常會記錄應用程式事件日誌中找�
 * [疑難排解 「 502 不正確的閘道 」 和 「 503 服務無法使用 「 Azure web 應用程式中的 HTTP 錯誤](/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Azure App Service 中的速度慢的 web 應用程式效能問題的疑難排解](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [在 Azure 中的 Web 應用程式的應用程式效能常見問題集](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
+* [Azure Web 應用程式沙箱 （應用程式服務執行階段執行限制）](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
 * [Azure Friday：Azure App Service 診斷和疑難排解體驗 (12 分鐘的影片)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)

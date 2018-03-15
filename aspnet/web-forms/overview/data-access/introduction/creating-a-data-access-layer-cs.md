@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>建立資料存取層 (C#)
 ====================
@@ -233,7 +233,7 @@ AllProducts.aspx.cs
 **圖 15**： 選擇建立**選取**陳述式的傳回資料列 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image41.png))
 
 
-下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同**選取**陳述式從**GetProducts()**，但加入下列**其中**子句：**其中 CategoryID = @CategoryID** 。 **@CategoryID** 參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
+下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同**選取**陳述式從**GetProducts()**，但加入下列**其中**子句：**其中 CategoryID = @CategoryID** 。  **@CategoryID** 參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
 
 
 [![輸入查詢只傳回指定的類別目錄中的 產品](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
@@ -308,7 +308,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 [![TableAdapter 具有 InsertCommand，UpdateCommand，以及 DeleteCommand 屬性](creating-a-data-access-layer-cs/_static/image62.png)](creating-a-data-access-layer-cs/_static/image61.png)
 
-**圖 23**: tableadapter **InsertCommand**， **UpdateCommand**，和**DeleteCommand**屬性 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image63.png))
+**圖 23**: tableadapter **InsertCommand**， **UpdateCommand**，和**DeleteCommand**屬性 ([按一下以檢視完整大小映像](creating-a-data-access-layer-cs/_static/image63.png))
 
 
 若要檢查或修改任何資料庫命令屬性，請按一下**CommandText**子屬性，將會出現 查詢產生器。
@@ -316,7 +316,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 [![在 查詢產生器中設定 INSERT、 UPDATE 和 DELETE 陳述式](creating-a-data-access-layer-cs/_static/image65.png)](creating-a-data-access-layer-cs/_static/image64.png)
 
-**圖 24**： 設定**插入**，**更新**，和**刪除**查詢產生器中的陳述式 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image66.png))
+**圖 24**： 設定**插入**，**更新**，和**刪除**查詢產生器中的陳述式 ([按一下以檢視完整的影像](creating-a-data-access-layer-cs/_static/image66.png))
 
 
 下列程式碼範例示範如何使用不中斷，且包含 25 個單位庫存或更少的所有產品的價格增加兩倍的批次更新模式：
@@ -537,7 +537,7 @@ SuppliersAndProducts.aspx.cs
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

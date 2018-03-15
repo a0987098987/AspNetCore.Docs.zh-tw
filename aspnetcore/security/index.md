@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/index
-ms.openlocfilehash: 7e5f6bc44241dc6fc11569a145a04340f1b3ee7f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e03256d7b8b442569b0b0126983732c10817e20f
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
 
@@ -97,7 +97,6 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
         *   [金鑰儲存體格式](data-protection/implementation/key-storage-format.md)
         *   [暫時資料保護提供者](data-protection/implementation/key-storage-ephemeral.md)
     *   [相容性](data-protection/compatibility/index.md)
-        *   [在應用程式間共用 Cookie](data-protection/compatibility/cookie-sharing.md)
         *   [取代 ASP.NET 中的 <machineKey>](data-protection/compatibility/replacing-machinekey.md)
 *   [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
 *   [在開發期間安全儲存應用程式密碼](app-secrets.md)
@@ -107,3 +106,4 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
 *   [防止開啟重新導向攻擊](preventing-open-redirects.md)
 *   [防止跨網站指令碼攻擊](cross-site-scripting.md)
 *   [啟用跨原始來源要求 (CORS)](cors.md)
+*   [在應用程式間共用 Cookie](cookie-sharing.md)

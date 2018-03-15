@@ -1,7 +1,7 @@
 ---
-title: "建置美麗、 可回應網站與啟動程序"
+title: "建立啟動程序與 ASP.NET Core 美觀、 可回應站台"
 author: ardalis
-description: 
+description: "了解如何開發 ASP.NET Core 與回應的 web 應用程式時，用於啟動程序。"
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: e2ade6223cdc56a4f0f00ff0b985ceda4ab5484a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c3dfaa53e9e3277d025d014f65004e4c24a5acc4
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap"></a>建置美麗、 可回應網站與啟動程序
+# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>建立啟動程序與 ASP.NET Core 美觀、 可回應站台
 
 <a name="bootstrap-index"></a>
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/02/2018
 
 最熱門的 web 架構開發能繼續回應的 web 應用程式的目前啟動載入器。 無論您是在前端的設計和開發或專家的新手，它會提供數種功能可以改善您的網站，您的使用者經驗的優點。 啟動安裝程式會部署為一組 CSS 和 JavaScript 檔案，設計用來協助您網站或應用程式的標尺有效率地從手機到桌上型電腦的平板電腦。
 
-## <a name="getting-started"></a>使用者入門
+## <a name="get-started"></a>開始使用
 
 有幾種方式來開始使用啟動程序。 如果您在 Visual Studio 中開始新的 web 應用程式，您可以選擇預設的入門範本適用於 ASP.NET Core，案例的啟動程序將會預先安裝：
 
@@ -190,7 +190,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
 ```
 
-如果您想要建置您自己的儀表板，您可以從可用的範例可從這裡開始： [http://getbootstrap.com/examples/dashboard/](http://getbootstrap.com/examples/dashboard/)。
+如果您想要建置您自己的儀表板，您可以從可用的範例可從這裡開始： [ http://getbootstrap.com/examples/dashboard/ ](http://getbootstrap.com/examples/dashboard/)。
 
 ## <a name="components"></a>元件
 
@@ -214,7 +214,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ## <a name="javascript-support"></a>JavaScript 支援
 
-啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的啟動程序 – 若要了解更多，請瀏覽內建 JavaScript 附加[http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)。
+啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的啟動程序 – 若要了解更多，請瀏覽內建 JavaScript 附加[ http://getbootstrap.com/javascript/ ](http://getbootstrap.com/javascript/)。
 
 ## <a name="summary"></a>總結
 

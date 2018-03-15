@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================
@@ -250,7 +250,7 @@ Wingtip Toys 範例應用程式，在一頁會用於顯示錯誤。 錯誤頁面
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample13.cs?highlight=20,22-23)]
 
-上述程式碼會呼叫`LogException`方法中所包含`ExceptionUtility`類別。 您加入*ExceptionUtility.cs*類別檔案，以*邏輯*稍早在本教學課程中的資料夾。 `LogException`方法會採用兩個參數。 第一個參數是例外狀況物件。 第二個參數是用來識別錯誤來源的字串。
+上述程式碼會呼叫`LogException`方法中所包含`ExceptionUtility`類別。 您加入*ExceptionUtility.cs*類別檔案，以*邏輯*稍早在本教學課程中的資料夾。 `LogException` 方法會接受兩個參數。 第一個參數是例外狀況物件。 第二個參數是用來識別錯誤來源的字串。
 
 ### <a name="inspecting-the-error-logging-information"></a>檢查錯誤記錄資訊
 
@@ -301,7 +301,7 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 
 1. 按**CTRL + F5**執行 Wingtip Toys 範例應用程式。
 2. 若要寫入 ELMAH 記錄未處理的例外狀況，請瀏覽至下列 URL （使用連接埠號碼） 瀏覽器中：  
-    `https://localhost:44300/NoPage.aspx`將會顯示錯誤頁面。
+    `https://localhost:44300/NoPage.aspx` 將會顯示錯誤頁面。
 3. 若要顯示 ELMAH 記錄檔，請瀏覽至下列 URL （使用連接埠號碼） 瀏覽器中：  
     `https://localhost:44300/elmah.axd`
 

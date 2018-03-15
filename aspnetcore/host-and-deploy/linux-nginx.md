@@ -5,16 +5,16 @@ description: "描述如何設定 Nginx 做 Ubuntu 16.04 轉送 Kestrel 上執行
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/21/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 5e85cf909c1a360f245bcc83233ccc1347735b26
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: a1de177fcd41c925a85e5aab9a0d236249b7da0b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -22,7 +22,8 @@ ms.lasthandoff: 03/02/2018
 
 本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。
 
-**注意：** For Ubuntu 14.04 *supervisord*建議做為監視 Kestrel 程序的解決方案。 *systemd* Ubuntu 14.04 上無法使用。 [請參閱本文件的舊版本](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)
+> [!NOTE]
+> Ubuntu 14.04 如*supervisord*建議做為監視 Kestrel 程序的解決方案。 *systemd* Ubuntu 14.04 上無法使用。 [請參閱此文件的舊版](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)。
 
 本指南：
 
@@ -113,23 +114,37 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>設定 Nginx
 
-若要設定 Nginx 做為轉寄要求至我們的 ASP.NET Core 應用程式的反向 proxy，修改`/etc/nginx/sites-available/default`。 以文字編輯器開啟它，並以下列項目取代內容：
+若要設定 Nginx 做為轉寄要求至您的 ASP.NET Core 應用程式的反向 proxy，修改*/etc/nginx/sites-available/default*。 以文字編輯器開啟它，並以下列項目取代內容：
 
-```
+```nginx
 server {
-    listen 80;
+    listen        80;
+    server_name   example.com *.example.com;
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass         http://localhost:5000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection keep-alive;
-        proxy_set_header Host $http_host;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $http_host;
         proxy_cache_bypass $http_upgrade;
     }
 }
 ```
 
-此 Nginx 組態檔會將連入的公用流量從連接埠 `80` 轉送到連接埠 `5000`。
+若未`server_name`Nginx 相符項目會使用預設伺服器。 如果沒有預設的伺服器定義，在組態檔中的第一部伺服器是預設伺服器。 最佳作法是新增特定的預設伺服器會傳回狀態碼 444 組態檔中。 預設伺服器組態範例如下：
+
+```nginx
+server {
+    listen   80 default_server;
+    # listen [::]:80 default_server deferred;
+    return   444;
+}
+```
+
+使用上述組態檔案和預設伺服器，Nginx 接受主機標頭的通訊埠 80 上的公用流量`example.com`或`*.example.com`。 要求不符合這些主機將不會取得轉送給 Kestrel。 Nginx 要求轉送給比對在 Kestrel `http://localhost:5000`。 請參閱[nginx 如何處理要求](https://nginx.org/docs/http/request_processing.html)如需詳細資訊。
+
+> [!WARNING]
+> 無法指定適當的[server_name 指示詞](https://nginx.org/docs/http/server_names.html)會公開您的應用程式的安全性漏洞。 子網域萬用字元繫結 (例如， `*.example.com`) 不會造成安全性風險，如果您要控制整個父系網域 (與`*.com`，這是很容易遭受)。 請參閱[rfc7230 區段 5.4](https://tools.ietf.org/html/rfc7230#section-5.4)如需詳細資訊。
 
 一旦建立 Nginx 組態之後，執行`sudo nginx -t`驗證組態檔的語法。 如果組態檔測試成功時，強制以收取這些變更藉由執行 Nginx `sudo nginx -s reload`。
 

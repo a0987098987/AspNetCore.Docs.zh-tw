@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>從部署中排除檔案和資料夾
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您建置 Visual Studio 2010 中的 web 應用程式專案時，Web 發行管線 (WPP) 可讓您擴充這個建置流程所編譯的 web 應用程式分成可部署 web 封裝的封裝。 然後，您可以用於網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 將此 web 封裝部署到遠端的 IIS 網頁伺服器，或匯入 web 套件手動透過 IIS 管理員。 此封裝程序中會說明[建置和封裝 Web 應用程式專案](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md)。
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/10/2017
 1. Visual Studio 2010 中開啟您的方案。
 2. 在**方案總管] 中**視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (比方說， **ContactManager.Mvc**)，指向**新增**，然後按一下 [ **新項目**。
 3. 在**加入新項目**對話方塊中，選取**XML 檔案**範本。
-4. 在**名稱**方塊中，輸入*[專案名稱]***。 wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下  **新增**。
+4. 在**名稱**方塊中，輸入*[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 

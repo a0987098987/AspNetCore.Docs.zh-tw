@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment
 msc.type: authoredcontent
 ms.openlocfilehash: f27b8376b332ff21185be0fd5c00ced7d40a20bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-deployment-properties-for-a-target-environment"></a>設定的目標環境的部署屬性
 ====================
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
 | **MSDeployAuth** Web Deploy 應該用來驗證遠端電腦的方法。 | 這應該設定為**NTLM**或**基本**。 通常，您會使用**NTLM**如果您要部署至遠端代理程式服務和**基本**如果您要部署至 Web 部署處理常式。 如果您使用基本驗證，您也需要指定使用者名稱和密碼，才能執行這種部署應該模擬的 IIS Web Deployment Tool (Web Deploy)。 在此範例中，這些值透過提供**MSDeployUsername**和**MSDeployPassword**屬性。 如果您使用 NTLM 驗證，您可以省略這些屬性，或將其保留空白。 |
 | **MSDeployUsername**如果您使用基本驗證時，Web Deploy 會使用此帳戶在遠端電腦上。 | 此格式應為*網域*\*username * (例如， **FABRIKAM\matt**)。 如果您指定基本驗證，才使用這個值。 如果您使用 NTLM 驗證，則可省略的屬性。 如果提供值，將會忽略它。 |
 | **MSDeployPassword**如果您使用基本驗證時，Web Deploy 將使用此密碼在遠端電腦上。 | 這是您在中指定的使用者帳戶的密碼**MSDeployUsername**屬性。 如果您指定基本驗證，才使用這個值。 如果您使用 NTLM 驗證，則可省略的屬性。 如果提供值，將會忽略它。 |
-| **ContactManagerIisPath**您要部署連絡人管理員 MVC 應用程式的 IIS 路徑。 | 這應該是路徑，因為它出現在 [IIS 管理員] 中，在表單中 [*IIS 網站名稱*] / [*web**應用程式名稱*]。 請記住，IIS 網站必須存在才能部署您的應用程式。 比方說，如果您已建立名為 DemoSite 的 IIS 網站，您可以為 DemoSite/ContactManager 指定 MVC 應用程式的 IIS 路徑。 |
+| **ContactManagerIisPath**您要部署連絡人管理員 MVC 應用程式的 IIS 路徑。 | 這應該是路徑，因為它出現在 [IIS 管理員] 中，在表單中 [*IIS 網站名稱*] / [*web * * 應用程式名稱*]。 請記住，IIS 網站必須存在才能部署您的應用程式。 比方說，如果您已建立名為 DemoSite 的 IIS 網站，您可以為 DemoSite/ContactManager 指定 MVC 應用程式的 IIS 路徑。 |
 | **ContactManagerServiceIisPath**您要部署連絡人管理員 WCF 服務的 IIS 路徑。 | 例如，如果您已建立名為 DemoSite 的 IIS 網站，您可以指定做為 WCF 服務的 IIS 路徑**DemoSite/ContactManagerService**。 |
 | **ContactManagerTargetUrl**可以到達 WCF 服務的 URL。 | 這需要表單 [*IIS 網站的根 URL*] / [*服務應用程式名稱*] / [*服務端點*]。 例如，如果您已建立 IIS 網站在連接埠 85，URL 會的形式`http://localhost:85/ContactManagerService/ContactService.svc`。 請記住，在 MVC 應用程式和 WCF 服務會部署至相同的伺服器。 如此一來，從電腦安裝僅存取此 URL。 因此，最好是在 URL 中使用 localhost 或 IP 位址，而非電腦名稱或主機標頭。 如果您使用的電腦名稱或主機標頭，[回送核取](https://go.microsoft.com/?linkid=9805131)在 IIS 中的安全性功能可能會封鎖的 URL，並傳回**HTTP 401.1-未經授權**錯誤。 |
 | **CmDatabaseConnectionString**資料庫伺服器的連接字串。 | 連接字串會判斷這兩種認證 VSDBCMD 將用來連線到資料庫伺服器和建立資料庫和 web 伺服器應用程式集區會使用連線到資料庫伺服器，與資料庫互動的認證。 基本上有兩個選擇這裡。 您可以指定**整合式安全性 = true**，在此情況下使用整合式的 Windows 驗證：**資料來源 = TESTDB1; Integrated Security = true**在此情況下，將會建立此資料庫使用執行可執行檔 VSDBCMD 的使用者和應用程式的認證會存取 web 伺服器電腦帳戶的身分識別的資料庫。 或者，您可以指定使用者名稱和 SQL Server 帳戶的密碼。 在此情況下，SQL Server 認證可用來建立資料庫 VSDBCMD 和應用程式集區與資料庫互動：**資料來源 = TESTDB1;使用者 Id = ASqlUser;密碼 = Pa$ $w0rd**本主題中的逐步解說假設您將使用整合式的 Windows 驗證。 |

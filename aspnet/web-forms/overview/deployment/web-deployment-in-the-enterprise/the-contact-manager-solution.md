@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 msc.type: authoredcontent
 ms.openlocfilehash: b7f691a1ee855788f6a57616aea35d960e4c85c7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="the-contact-manager-solution"></a>請連絡管理員解決方案
 ====================
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/10/2017
 
 ![](the-contact-manager-solution/_static/image1.png)
 
-- **ContactManager.Mvc**。 這是 ASP.NET MVC 3 web 應用程式專案，表示方案的進入點。 它提供一些基本 web 應用程式功能，例如使用者提供的功能，以建立及檢視連絡人詳細資料。 應用程式依賴 Windows Communication Foundation (WCF) 服務來管理連絡人及管理驗證和授權的 ASP.NET 應用程式服務資料庫。
-- **ContactManager.Database**。 這是 Visual Studio 資料庫專案。 專案定義的商店連絡人詳細資料的資料庫結構描述。
-- **ContactManager.Service**。 這是 WCF web 服務專案。 WCF 服務會公開端點，可讓呼叫端執行建立、 擷取、 更新和刪除 (CRUD) 作業上**ContactManager**資料庫。 服務會仰賴**ContactManager**資料庫和**ContactManager.Common.dll**組件。
-- **ContactManager.Common**。 這是類別庫專案。 WCF 服務依賴這個組件中定義的型別。
+- **ContactManager.Mvc**. 這是 ASP.NET MVC 3 web 應用程式專案，表示方案的進入點。 它提供一些基本 web 應用程式功能，例如使用者提供的功能，以建立及檢視連絡人詳細資料。 應用程式依賴 Windows Communication Foundation (WCF) 服務來管理連絡人及管理驗證和授權的 ASP.NET 應用程式服務資料庫。
+- **ContactManager.Database**. 這是 Visual Studio 資料庫專案。 專案定義的商店連絡人詳細資料的資料庫結構描述。
+- **ContactManager.Service**. 這是 WCF web 服務專案。 WCF 服務會公開端點，可讓呼叫端執行建立、 擷取、 更新和刪除 (CRUD) 作業上**ContactManager**資料庫。 服務會仰賴**ContactManager**資料庫和**ContactManager.Common.dll**組件。
+- **ContactManager.Common**. 這是類別庫專案。 WCF 服務依賴這個組件中定義的型別。
 
 解決方案也會包含名為發行的方案資料夾。 這包含各種自訂專案檔和示範如何控制和管理組建與部署處理序的命令檔。 這些是稍後在本教學課程涵蓋更多詳細資料。
 

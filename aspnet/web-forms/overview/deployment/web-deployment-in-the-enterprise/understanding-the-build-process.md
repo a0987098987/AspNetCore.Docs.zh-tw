@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
 ms.openlocfilehash: 3efcefc40dc135ff42f55911036f8b38b5aa13b1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="understanding-the-build-process"></a>了解建置程序
 ====================
@@ -210,7 +210,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
 
 
-在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和**%(DbPublishPackages.FullPath)**參照中繼資料值的**DbPublishPackages**項目集合。 **\_Cmd**屬性供**Exec**工作中，叫用命令。
+在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和**%(DbPublishPackages.FullPath)**參照中繼資料值的**DbPublishPackages**項目集合。  **\_Cmd**屬性供**Exec**工作中，叫用命令。
 
 
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]

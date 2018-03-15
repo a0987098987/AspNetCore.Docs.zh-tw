@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/advanced-enterprise-web-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: c3cb7f63cf7c0246a0c4da6038a65a6ac43a7b59
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="advanced-enterprise-web-deployment"></a>進階的企業 Web 部署
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 > 本教學課程會示範如何執行必要或適合在許多企業部署案例的各種工作。
 > 
-> 這些教學課程的義大利文的翻譯，請瀏覽[http://www.lucamorelli.it](http://www.lucamorelli.it)。
+> 這些教學課程的義大利文的翻譯，請瀏覽[ http://www.lucamorelli.it ](http://www.lucamorelli.it)。
 
 
 這會形成一系列以名為 Fabrikam，Inc.的虛構公司的企業部署需求基礎的教學課程的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)方案 & #x 2014; 代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式Communication Foundation (WCF) 服務，與資料庫專案。

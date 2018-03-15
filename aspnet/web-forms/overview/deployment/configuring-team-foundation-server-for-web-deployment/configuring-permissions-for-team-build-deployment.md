@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: cb3d013d69e36f97335ea31dd6e4997772ba2d8e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>設定的權限給小組建置部署
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 需要 Windows 驗證，並想要自動化使用 Team Build，任何部署工作會使用組建服務身分識別來執行。 因此，您必須在您的 web 伺服器和資料庫伺服器上任何必要的權限授與組建服務識別。
 
 > [!NOTE]
-> 網路服務帳戶使用電腦帳戶驗證至其他電腦。 電腦帳戶會採用*[網域名稱]\[電腦名稱]***$**（& c) 2014年 #x; 例如， **FABRIKAM\TFSBUILD$**。 因此，如果組建服務會使用 Network Service 識別執行，您應該授的電腦帳戶識別任何必要權限與針對您的組建伺服器。
+> 網路服務帳戶使用電腦帳戶驗證至其他電腦。 電腦帳戶會採用 * [網域名稱]\[電腦名稱] ***$**（& c) 2014年 #x; 例如， **FABRIKAM\TFSBUILD$**。 因此，如果組建服務會使用 Network Service 識別執行，您應該授的電腦帳戶識別任何必要權限與針對您的組建伺服器。
 
 
 ## <a name="configuring-web-server-permissions"></a>設定 Web 伺服器權限

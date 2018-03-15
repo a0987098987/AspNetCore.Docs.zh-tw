@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 72f60841a1381380c0ea6167077420f960180dc7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>設定用於 Web 部署的 Team Foundation Server
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 > - 如何建立組建定義，其中包含部署邏輯。
 > - 如何設定用於自動化部署的權限。
 > 
-> 這些教學課程的義大利文的翻譯，請瀏覽[http://www.lucamorelli.it](http://www.lucamorelli.it)。
+> 這些教學課程的義大利文的翻譯，請瀏覽[ http://www.lucamorelli.it ](http://www.lucamorelli.it)。
 
 
 本教學課程假設您安裝 TFS 2010，並建立 team 專案集合初始設定程序的一部分。 [For Visual Studio 2010 Team Foundation 安裝指南](https://go.microsoft.com/?linkid=9805132)提供這些工作的廣泛的指引。

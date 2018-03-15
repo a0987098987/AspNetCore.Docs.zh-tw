@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: e6c0c45bed098a8a1160ff11e4f77244bf55ffd3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="single-page-application-knockoutjs-template"></a>單一網頁應用程式： KnockoutJS 範本
 ====================
@@ -94,7 +94,7 @@ Entity Framework (EF) 是 O/RM 層。 它會調解物件導向的世界 ASP.NET 
 
 **TodoItem TodoList**
 
-這些是資料庫模型的 Entity Framework Code First。 請注意，這些模型會有個點的內容。 `ToDoList`包含的 ToDoItems，以及每個集合`ToDoItem`ToDoList 其父代參考。 這些屬性稱為導覽屬性，它們代表的一對多關聯性，其待辦項目和待辦事項清單。
+這些是資料庫模型的 Entity Framework Code First。 請注意，這些模型會有個點的內容。 `ToDoList` 包含的 ToDoItems，以及每個集合`ToDoItem`ToDoList 其父代參考。 這些屬性稱為導覽屬性，它們代表的一對多關聯性，其待辦項目和待辦事項清單。
 
 `ToDoItem`類別也會使用**[ForeignKey]**屬性來指定`ToDoListId`是外部索引鍵`ToDoList`資料表。 這會告訴 EF 外部索引鍵條件約束加入資料庫。
 
@@ -162,7 +162,7 @@ SPA 範本使用 EF Code First。 在 Code First 開發中，您定義模型，�
 
 ## <a name="mvc-controllers-and-views"></a>MVC 控制器和檢視
 
-MVC 控制器也位於 [控制器] 資料夾的方案。 `HomeController`應用程式的主要 HTML 呈現。 Views/Home/Index.cshtml 中定義的檢視主控制器。 [首頁] 檢視會呈現不同的內容，根據使用者是否登入：
+MVC 控制器也位於 [控制器] 資料夾的方案。 `HomeController` 應用程式的主要 HTML 呈現。 Views/Home/Index.cshtml 中定義的檢視主控制器。 [首頁] 檢視會呈現不同的內容，根據使用者是否登入：
 
 [!code-cshtml[Main](knockoutjs-template/samples/sample4.cshtml)]
 

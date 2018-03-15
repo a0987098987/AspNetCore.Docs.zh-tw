@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
 ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>在企業中的 web 部署
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 > 本教學課程說明如何符合許多管理企業規模 web 應用程式部署至開發、 測試、 預備及生產環境時，您會遇到的挑戰。 本教學課程包含參考方案以及概念和工作導向的內容，引導您完成各種常見的工作和程序的混合。
 > 
-> 這些教學課程的義大利文的翻譯，請瀏覽[http://www.lucamorelli.it](http://www.lucamorelli.it)。
+> 這些教學課程的義大利文的翻譯，請瀏覽[ http://www.lucamorelli.it ](http://www.lucamorelli.it)。
 
 
 ## <a name="enterprise-deployment-challenges"></a>企業部署挑戰
@@ -68,19 +68,19 @@ ms.lasthandoff: 11/10/2017
 
 這些主題會介紹參考方案 & #x 2014年; 請連絡管理員解決方案 & #x 2014;，並說明如何下載並設定在本機電腦上：
 
-- [請連絡管理員解決方案](the-contact-manager-solution.md)
-- [設定連絡人管理員解決方案](setting-up-the-contact-manager-solution.md)
+- [連絡管理員解決方案](the-contact-manager-solution.md)
+- [設定連絡管理員解決方案](setting-up-the-contact-manager-solution.md)
 
 這些主題會介紹 MSBuild 專案檔，說明如何建立和使用自訂的專案檔，並逐步解說，請連絡管理員方案的部署程序：
 
 - [了解專案檔](understanding-the-project-file.md)
-- [了解建置程序](understanding-the-build-process.md)
+- [了解建置流程](understanding-the-build-process.md)
 
 這些主題會描述 web 應用程式部署，包括如何建置和封裝程序運作、 如何與 Web 發行管線整合建置流程、 如何修改部署的參數，以及如何將 web 套件部署到目的地環境：
 
-- [建立和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)
-- [用於 Web 套件部署中設定參數](configuring-parameters-for-web-package-deployment.md)
-- [部署 Web 封裝](deploying-web-packages.md)
+- [建置和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)
+- [設定網頁套件部署的參數](configuring-parameters-for-web-package-deployment.md)
+- [部署網頁套件](deploying-web-packages.md)
 
 - [部署資料庫專案](deploying-database-projects.md)描述不同的技術，可用來部署 Visual Studio 資料庫專案，以及每一種方法的優缺點。 [建立和執行部署指令檔](creating-and-running-a-deployment-command-file.md)說明如何建立簡單的命令檔封裝部署邏輯，可讓您將複雜的方案部署為單一步驟的程序。
 - 最後，[手動安裝 Web 封裝](manually-installing-web-packages.md)總結教學課程，以顯示您將 IIS web 封裝匯入。

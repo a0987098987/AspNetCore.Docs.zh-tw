@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
 ms.openlocfilehash: 460af471a1b0650f8d782d582ce6cd9a06664d5c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>簡介使用的資料庫中 ASP.NET Web Pages (Razor) 站台
 ====================
@@ -54,9 +54,9 @@ ms.lasthandoff: 11/10/2017
 
 像這樣的圖片資料的典型方式是為包含資料列和資料行的資料表。 在資料庫詞彙中，每個資料列通常稱為一筆記錄。 每個資料行 （有時候稱為欄位） 包含每種類型的資料值： 名字、 最後一個名稱和等等。
 
-| **ID** | **名字** | **LastName** | **地址** | **電子郵件** | **電話** |
+| **ID** | **FirstName** | **LastName** | **Address** | **電子郵件** | **Phone** |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Jim | Abrus | 210 100 St SE Orcas 98031 WA | jim@contoso.com | 555 0100 |
+| 1 | Jim | Abrus | 210 100th St SE Orcas WA 98031 | jim@contoso.com | 555 0100 |
 | 2 | Terry | Adams | 1234 Main St.Seattle WA 99011 | terry@cohowinery.com | 555 0101 |
 
 對於大部分的資料庫資料表，資料表必須具有包含唯一識別碼，例如客戶編號、 帳戶號碼等的資料行。這稱為資料表的*主索引鍵*，並用它來識別資料表中的每個資料列。 在範例中，識別碼資料行是主索引鍵的通訊錄。
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/10/2017
     正如其名，**是主索引鍵**告知的資料庫，這會是資料表的主索引鍵。 **識別**告知的資料庫自動建立每一筆新記錄的識別碼號碼，以及將它指派下一個循序編號 （從 1 開始）。
 10. 按一下 下一列。 編輯器會啟動新的資料行定義。
 11. 名稱值中，輸入&quot;名稱&quot;。
-12. 如**資料型別**，選擇&quot;nvarchar&quot;並將長度設定為 50。 *Var*屬於`nvarchar`告訴資料庫，此資料行的資料將會大小可能會記錄記錄不同的字串。 (  *n* 前置詞代表*national*，指出欄位可以保存字元資料，代表任何字母，或寫入系統 &#8212; 也就是說，該欄位就會保留 Unicode資料）。
+12. 如**資料型別**，選擇&quot;nvarchar&quot;並將長度設定為 50。 *Var*屬於`nvarchar`告訴資料庫，此資料行的資料將會大小可能會記錄記錄不同的字串。 ( *n*前置詞代表*國家 （地區)*，指出欄位可控制代表任何字母的字元資料或書寫系統&#8212;亦即，欄位就會保留 Unicode 資料。)
 13. 設定**允許 Null**選項設定為**否**。 這將會強制執行的*名稱*資料行不保留空白。
 14. 使用這個相同的程序，建立名為資料行*描述*。 設定**資料型別**"nvarchar"和長度，以及設定為 50**允許 Null**設為 false。
 15. 建立名為資料行*價格*。 設定**"money"資料類型**並設定**允許 Null**設為 false。
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/10/2017
 2. 以滑鼠右鍵按一下 產品 資料表，然後按一下 **資料**。
 3. 在 [編輯] 窗格中，輸入下列記錄：
 
-    | **Name** | **說明** | **價格** |
+    | **名稱** | **描述** | **價格** |
     | --- | --- | --- |
     | 麵包 | 確定最新狀態每一天。 | 2.99 |
     | 草霉 Shortcake | 與有機 strawberries 從此我們處理序區。 | 9.99 |
@@ -136,7 +136,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-cshtml[Main](5-working-with-data/samples/sample1.cshtml)]
 
-    在第一個程式碼區塊中，開啟*SmallBakery.sdf*您稍早建立的檔案 （資料庫）。 `Database.Open`方法會假設*.sdf*檔案位於您的網站*應用程式\_資料*資料夾。 (請注意，您不需要指定*.sdf*延伸 &#8212; 事實上，如果您這樣做，`Open`方法將無法運作。)
+    在第一個程式碼區塊中，開啟*SmallBakery.sdf*您稍早建立的檔案 （資料庫）。 `Database.Open`方法會假設*.sdf*檔案位於您的網站*應用程式\_資料*資料夾。 (請注意，您不需要指定*.sdf*延伸&#8212;事實上，如果您這樣做，`Open`方法將無法運作。)
 
     > [!NOTE]
     > *應用程式\_資料*資料夾是用來儲存資料檔案的 ASP.NET 中的特殊資料夾。 如需詳細資訊，請參閱[連接至資料庫](#SB_ConnectingToADatabase)本文稍後。
@@ -145,7 +145,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-sql[Main](5-working-with-data/samples/sample2.sql)]
 
-    在陳述式，`Product`識別要查詢的資料表。 `*`字元會指定查詢應該從資料表傳回所有資料行。 （您可能也列出資料行個別，以逗號分隔，如果您想要查看只是某些資料行。）`Order By`子句會指出應該如何排序資料 &#8212; 在此情況下，由*名稱*資料行。 這表示資料已排序的值依字母順序根據*名稱*每個資料列的資料行。
+    在陳述式，`Product`識別要查詢的資料表。 `*`字元會指定查詢應該從資料表傳回所有資料行。 （您可能也列出資料行個別，以逗號分隔，如果您想要查看只是某些資料行。）`Order By`子句指出資料應該如何排序&#8212;在此情況下，由*名稱*資料行。 這表示資料已排序的值依字母順序根據*名稱*每個資料列的資料行。
 
     在網頁主體中，標記會建立可用於顯示資料的 HTML 表格。 內部`<tbody>`項目，使用`foreach`迴圈，以分別取得每個查詢所傳回的資料列。 每個資料列，您會建立一個 HTML 資料表資料列 (`<tr>`項目)。 然後您會建立 HTML 資料表儲存格 (`<td>`項目) 的每個資料行。 每當您瀏覽迴圈下, 一個可用的資料列，從資料庫處於`row`變數 (您設定此項目`foreach`陳述式)。 若要取得個別資料行從資料列，您可以使用`row.Name`或`row.Description`或名稱是資料行的您想要。
 4. 執行網頁瀏覽器中。 (請確定中選取頁面**檔案**才能執行這個工作區。)頁面會顯示清單，如下所示：
@@ -258,7 +258,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-html[Main](5-working-with-data/samples/sample12.html)]
 
-    請注意，`href`屬性設為`UpdateProducts/n`，其中 *n* 是產品的數字。 當使用者按一下其中一個連結時，產生的 URL 看起來會像這樣：
+    請注意，`href`屬性設為`UpdateProducts/n`，其中*n*是產品的數字。 當使用者按一下其中一個連結時，產生的 URL 看起來會像這樣：
 
     `http://localhost:18816/UpdateProducts/6`
 
@@ -384,7 +384,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > [!code-cshtml[Main](5-working-with-data/samples/sample28.cshtml)]
 > 
-> 如前所述，`Database.Open`方法可讓您將資料庫名稱或連接字串，它會找出要使用。 這會非常有用的當您部署 （發行） 您的網站。 您可以使用*.sdf*檔案*應用程式\_資料*資料夾，當您開發並測試您的網站。 當您將您的站台移至實際伺服器時，您可以使用連接字串中的*Web.config*檔案具有相同名稱做為您*.sdf*檔案，但指向裝載提供者的資料庫 &#8212;所有不需要變更您的程式碼。
+> 如前所述，`Database.Open`方法可讓您將資料庫名稱或連接字串，它會找出要使用。 這會非常有用的當您部署 （發行） 您的網站。 您可以使用*.sdf*檔案*應用程式\_資料*資料夾，當您開發並測試您的網站。 當您將您的站台移至實際伺服器時，您可以使用連接字串中的*Web.config*檔案具有相同名稱做為您*.sdf*檔案，但指向裝載提供者的資料庫&#8212;完全不必變更程式碼。
 > 
 > 最後，如果您想要直接使用連接字串，您可以呼叫`Database.OpenConnectionString`方法，然後傳遞其實際的連接字串而不只在其中一個的名稱*Web.config*檔案。 這可能會很有用，因為某些原因您沒有存取權連接字串的情況下 (或值，例如*.sdf*檔案名稱) 直到網頁執行時。 不過，大部分情況下，您可以使用`Database.Open`這篇文章中所述。
 
@@ -393,4 +393,4 @@ ms.lasthandoff: 11/10/2017
 
 - [SQL Server Compact](https://www.microsoft.com/sqlserver/2008/en/us/compact.aspx)
 - [連接到 SQL Server 或 WebMatrix 的 MySQL 資料庫](https://go.microsoft.com/fwlink/?LinkId=208661)
-- [ASP.NET Web Pages 站台中中驗證使用者輸入](https://go.microsoft.com/fwlink/?LinkId=253002)
+- [在 ASP.NET Web Pages 網站中驗證使用者輸入](https://go.microsoft.com/fwlink/?LinkId=253002)

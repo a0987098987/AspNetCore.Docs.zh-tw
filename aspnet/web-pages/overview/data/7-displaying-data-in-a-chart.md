@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
 ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>顯示資料在圖表中以 ASP.NET Web Pages (Razor)
 ====================
@@ -41,7 +41,7 @@ by [Microsoft](https://github.com/microsoft)
 <a id="The_Chart_Helper"></a>
 ## <a name="the-chart-helper"></a>圖表協助程式
 
-當您想要的資料顯示在圖形表單中時，您可以使用`Chart`協助程式。 `Chart` Helper 可以呈現影像中各種不同的圖表類型顯示資料。 格式化及標示支援許多選項。 `Chart` Helper 可以轉譯 30 個以上類型的圖表，包括所有您可能已經熟悉 Microsoft Excel 或其他工具中的圖表類型 &#8212; 區域圖、 橫條圖、 直條圖、 直線圖和圓餅圖以及具有多特殊的圖表，例如股票圖。
+當您想要的資料顯示在圖形表單中時，您可以使用`Chart`協助程式。 `Chart` Helper 可以呈現影像中各種不同的圖表類型顯示資料。 格式化及標示支援許多選項。 `Chart` Helper 可以轉譯 30 個以上類型的圖表，包括所有類型的圖表，您可能已經熟悉 Microsoft Excel 或其他工具中&#8212;區域圖、 橫條圖、 直條圖、 折線圖、 和圓餅圖，以及多個特殊的圖表，例如股票圖。
 
 | **區域圖**![描述： 區域圖類型的圖片](7-displaying-data-in-a-chart/_static/image1.jpg) | **橫條圖**![描述： 橫條圖類型的圖片](7-displaying-data-in-a-chart/_static/image2.jpg) |
 | --- | --- |
@@ -122,7 +122,7 @@ by [Microsoft](https://github.com/microsoft)
 
     程式碼會先建立`DataSet`物件。 此物件用來管理的資料會從 XML 檔案讀取，並組織根據結構描述檔案中的資訊。 (請注意程式碼的頂端包含陳述式`using SystemData`。 這為了能夠使用必要`DataSet`物件。 如需詳細資訊，請參閱[&quot;使用&quot;陳述式和完整名稱](#SB_UsingStatements)本文稍後。)
 
-    接下來，程式碼建立`DataView`資料集為基礎的物件。 資料檢視會提供圖表可以繫結至物件 &#8212;亦即，讀取和繪製。 圖表會繫結至資料使用`AddSeries`方法，為您稍早時看見圖表陣列資料，但這次`xValue`和`yValues`參數已設為`DataView`物件。
+    接下來，程式碼建立`DataView`資料集為基礎的物件。 資料檢視提供的物件，圖表可以繫結至&#8212;亦即，讀取和繪製。 圖表會繫結至資料使用`AddSeries`方法，為您稍早時看見圖表陣列資料，但這次`xValue`和`yValues`參數已設為`DataView`物件。
 
     此範例也示範如何指定特定圖表類型。 在 加入資料時`AddSeries`方法，`chartType`參數也會設為顯示圓形圖。
 7. 執行網頁瀏覽器中。 
@@ -136,7 +136,7 @@ by [Microsoft](https://github.com/microsoft)
 > 
 > 含有 Razor 語法的 ASP.NET Web Pages 根據.NET Framework 包含數千個元件 （類別）。 若要使用所有這些類別可管理，它們組織成*命名空間*，其中會有些許類似文件庫。 例如，`System.Web`命名空間包含類別，可支援瀏覽器/伺服器通訊，`System.Xml`命名空間包含類別，可用來建立和讀取 XML 檔案和`System.Data`命名空間包含類別，可讓您處理與資料。
 > 
-> 若要存取.NET Framework 中的任何特定的類別，程式碼需要知道不只是類別名稱，但也表示類別仍在命名空間。 例如，若要使用`Chart`helper，若要尋找的程式碼需要`System.Web.Helpers.Chart`類別，其結合了命名空間 (`System.Web.Helpers`) 與類別名稱 (`Chart`)。 這就所謂的類別*完整*名稱 &#8212; 其完整的明確位置 vastness 內的.NET framework。 在程式碼，這看起來會如下所示：
+> 若要存取.NET Framework 中的任何特定的類別，程式碼需要知道不只是類別名稱，但也表示類別仍在命名空間。 例如，若要使用`Chart`helper，若要尋找的程式碼需要`System.Web.Helpers.Chart`類別，其結合了命名空間 (`System.Web.Helpers`) 與類別名稱 (`Chart`)。 這就所謂的類別*完整*名稱&#8212;其完整的明確位置 vastness 內的.NET framework。 在程式碼，這看起來會如下所示：
 > 
 > `var myChart = new System.Web.Helpers.Chart(width: 600, height: 400) // etc.`
 > 
@@ -235,11 +235,11 @@ by [Microsoft](https://github.com/microsoft)
 
     [!code-cshtml[Main](7-displaying-data-in-a-chart/samples/sample13.cshtml)]
 
-    程式碼首先檢查任何項目是否已傳遞做為查詢字串中的索引鍵值。 如果這個程式碼，會嘗試藉由呼叫讀取快取圖表`GetFromCache`方法，並將其傳遞索引鍵。 如果證明，沒有在該索引鍵 （這會發生第一次要求圖表） 快取中的項目，程式碼會如往常般建立圖表。 圖表完成時，程式碼將它儲存至快取藉由呼叫`SaveToCache`。 該方法需要索引鍵 （因此稍後可以要求圖表） 和圖表應儲存在快取中的時間量。 （您會快取圖表的確切時間會取決於您認為它所代表的資料可能變更的頻率）。`SaveToCache`方法也需要`slidingExpiration`參數 &#8212; 如果設定為 true，在逾時計數器會重設每次存取時的圖表。 在此情況下，其作用中表示圖表的快取項目過期有人存取圖表上一次之後的 2 分鐘。 （滑動期限的替代方式是絕對期限，表示快取項目會到期完全 2 分鐘後它已放入快取中，不論其頻率必須存取）。
+    程式碼首先檢查任何項目是否已傳遞做為查詢字串中的索引鍵值。 如果這個程式碼，會嘗試藉由呼叫讀取快取圖表`GetFromCache`方法，並將其傳遞索引鍵。 如果證明，沒有在該索引鍵 （這會發生第一次要求圖表） 快取中的項目，程式碼會如往常般建立圖表。 圖表完成時，程式碼將它儲存至快取藉由呼叫`SaveToCache`。 該方法需要索引鍵 （因此稍後可以要求圖表） 和圖表應儲存在快取中的時間量。 （您會快取圖表的確切時間會取決於您認為它所代表的資料可能變更的頻率）。`SaveToCache`方法也需要`slidingExpiration`參數&#8212;如果設定為 true，在逾時計數器會重設每次存取時的圖表。 在此情況下，其作用中表示圖表的快取項目過期有人存取圖表上一次之後的 2 分鐘。 （滑動期限的替代方式是絕對期限，表示快取項目會到期完全 2 分鐘後它已放入快取中，不論其頻率必須存取）。
 
     最後，程式碼會使用`WriteFromCache`方法來擷取和轉譯來自快取的圖表。 請注意，這個方法是外部`if`檢查快取，因為圖表已有一開始還是必須產生並儲存在快取，它會從快取取得圖表的區塊。
 
-    請注意，在範例中，`AddTitle`方法包含時間戳記。 （它會加上目前的日期和時間 &#8212;`DateTime.Now` &#8212; 標題。)
+    請注意，在範例中，`AddTitle`方法包含時間戳記。 (它會將目前的日期和時間&#8212; `DateTime.Now` &#8212;標題。)
 5. 建立名為的新頁面*ClearCache.cshtml*和其內容取代為下列：
 
     [!code-cshtml[Main](7-displaying-data-in-a-chart/samples/sample14.cshtml)]

@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
 ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013
 ====================
@@ -187,13 +187,13 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 > 如果您已經有一個名為資料夾*WingtipToys*在專案資料夾中，暫時重新命名該現有的資料夾重新命名之前*C#*資料夾*WingtipToys*。
 
 
-若要執行已完成的專案，開啟*WingtipToys*資料夾，然後按兩下*WingtipToys.sln*檔案。 Visual Studio 2013 將開啟的專案。 接下來，以滑鼠右鍵按一下*Default.aspx*檔案在 方案總管 視窗中，並從滑鼠右鍵功能表中按一下 瀏覽器中檢視。
+若要執行已完成的專案，開啟*WingtipToys*資料夾，然後按兩下*WingtipToys.sln*檔案。 Visual Studio 2013 將開啟的專案。 接下來，以滑鼠右鍵按一下*Default.aspx*檔案在 [方案總管] 視窗中，並從滑鼠右鍵功能表中按一下 瀏覽器中檢視。
 
 ### <a name="tutorial-support-and-comments"></a>教學課程的支援和註解
 
 使用隨附於 Q AND A 區段[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 範例的任何問題或意見。
 
-在此教學課程系列的註解是  褖畫惎，且致力此教學課程系列更新時進行納入帳戶更正或建議的教學課程的註解中所提供的增強功能。
+在此教學課程系列的註解是 褖畫惎，且致力此教學課程系列更新時進行納入帳戶更正或建議的教學課程的註解中所提供的增強功能。
 
 在開發期間，就會發生錯誤時，或未正確執行的網站，錯誤訊息可能會提供問題的來源複雜線索，或可能不會說明如何修正此問題。 若要協助您解決一些常見的問題案例，您也可以使用[ASP.NET 論壇](https://forums.asp.net/)或隨附 Q AND A 區段[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 範例。 如果您收到錯誤訊息，或當您瀏覽教學課程，項目無法運作，請務必查看上述位置。
 

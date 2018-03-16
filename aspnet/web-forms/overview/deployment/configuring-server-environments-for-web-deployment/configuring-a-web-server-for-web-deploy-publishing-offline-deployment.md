@@ -2,7 +2,7 @@
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 title: "設定 Web 伺服器的 Web Deploy 發行 （離線部署） |Microsoft 文件"
 author: jrjlee
-description: "本主題描述如何設定 IIS web 伺服器支援離線網頁發佈和部署。 當您使用 Internet Information Services (我。..."
+description: "本主題描述如何設定 IIS web 伺服器支援離線網頁發佈和部署。 當您使用 Internet Information Services (我..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: dfd3ab41e44a3b000bf2c25a5a71db4344617bf2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>設定 Web 伺服器的 Web Deploy 發行 （離線部署）
 ====================

@@ -2,7 +2,7 @@
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 title: "MSBuild 專案檔從執行 Windows PowerShell 指令碼 |Microsoft 文件"
 author: jrjlee
-description: "本主題描述如何建置和部署處理程序的一部分執行的 Windows PowerShell 指令碼。 您可以在本機執行指令碼 (換句話說，在 b。..."
+description: "本主題描述如何建置和部署處理程序的一部分執行的 Windows PowerShell 指令碼。 您可以在本機執行指令碼 (換句話說，在 b..."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
 ms.openlocfilehash: afee7b0621df42a8bc70fc6f7c4a8fd0383fa83a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>MSBuild 專案檔從執行 Windows PowerShell 指令碼
 ====================
@@ -111,9 +111,9 @@ ms.lasthandoff: 01/24/2018
 
 最後，您需要逸出任何保留的 XML 字元，會發生在 Windows PowerShell 命令：
 
-- 取代單一引號 **&amp;a p o s;**
-- 取代以雙引號括住 **&amp;q u o t;**
-- 取代連字號與 **&amp;amp;**
+- 取代單一引號**&amp;a p o s;**
+- 取代以雙引號括住**&amp;q u o t;**
+- 取代連字號與**&amp;amp;**
 
 - 當您進行這些變更時，您的命令將會與以下相似：
 

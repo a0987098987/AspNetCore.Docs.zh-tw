@@ -21,21 +21,21 @@ ms.lasthandoff: 03/02/2018
 
 作者：[Steve Smith](https://ardalis.com/)
 
-Bootstrap 是目前用來開發響應式 web 應用程式的最熱門框架。無論您在前端的設計和開發方面是新手或專家，它都提供了數種功能可以協助您改善網站的使用者體驗。Bootstrap 在部署的時候會是一組 CSS 和 JavaScript 檔案，這些檔案可以協助您更有效率地將網站從手機延伸到平板和桌上型電腦。
+Bootstrap 是目前用來開發響應式 Web 應用程式的最熱門 Web 架構。無論您在前端的設計和開發方面是新手或專家，它都提供了數種功能可以協助您改善網站的使用者體驗。Bootstrap 在部署的時候會是一組 CSS 和 JavaScript 檔案，這些檔案可以協助您讓網站和應用程式更有效率地延伸到手機、平板和桌上型電腦。
 
 ## <a name="getting-started"></a>使用者入門
 
-有幾種方式來開始使用 Bootstrap。 如果您在 Visual Studio 中開始新的 web 應用程式，您可以選擇預設的入門範本適用於 ASP.NET Core，案例的 Bootstrap 將會預先安裝：
+有幾種方式來開始使用 Bootstrap。 如果您在 Visual Studio 中開始新的 Web 應用程式，您可以選擇 ASP.NET Core 的預設入門範本，其中將會預先安裝 Bootstrap：
 
 ![啟動載入入門範本方案檢視中](bootstrap/_static/bootstrap-in-starter-template.png)
 
-Bootstrap 加入 ASP.NET Core 專案是簡單的將它加入至*bower.json*做為相依性：
+若要將 Bootstrap 加入 ASP.NET Core 專案，只要將它加入 *bower.json* 做為相依性即可：
 
 [!code-json[](../common/samples/WebApplication1/bower.json?highlight=5)]
 
 建議採用這種方式來將 Bootstrap 加入 ASP.NET Core 專案。
 
-您也可以安裝使用其中一種數個封裝管理員，例如 Bower、 npm 或 NuGet 的 Bootstrap。在每個案例中，流程是基本上相同：
+您也可以使用 Bower、npm 或 NuGet 等套件管理員來安裝 Bootstrap。不管使用何種方式，流程基本上相同：
 
 ### <a name="bower"></a>Bower
 
@@ -58,7 +58,7 @@ Install-Package bootstrap
 > [!NOTE]
 > 在 ASP.NET Core 中安裝如 Bootstrap 這類用戶端相依性的建議作法，是透過 Bower（使用*bower.json*，如上所示）。npm/NuGet 的範例則展示了 Bootstrap 也可以很容易加入其他類型的 web 應用程式，包括較早版本的 ASP.NET。
 
-如果您正在參考您自己的 Bootstrap 的本機版本，您必須在使用它的任何頁面中參考它們。 在生產環境中，您應該參考 CDN 的 Bootstrap。在預設的 ASP.NET 網站範本， *_Layout.cshtml* 檔案便是採用這種做法：
+如果您正在參考您自己的 Bootstrap 本機版本，您必須在使用它的任何頁面中參考它們。 在生產環境中，您應該使用 CDN 來參考 Bootstrap。在預設的 ASP.NET 網站範本中， *_Layout.cshtml* 檔案便是採用這種做法：
 
 [!code-html[](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
@@ -67,7 +67,7 @@ Install-Package bootstrap
 
 ## <a name="basic-templates-and-features"></a>基本的範本和功能
 
-最基本的 Bootstrap 範本看起來很像*_Layout.cshtml*檔案顯示更新的版本，並直接包含基本的功能表，用於導覽及呈現網頁的其餘的地方。
+最基本的 Bootstrap 範本看起來很像上列 *_Layout.cshtml* 檔案，其中僅包含基本的導覽功能表，以及用於及呈現其餘網頁的空間。
 
 ### <a name="basic-navigation"></a>基本導覽
 
@@ -95,13 +95,13 @@ Install-Package bootstrap
 
 ### <a name="typography-and-links"></a>印刷樣式和連結
 
-Bootstrap 設定站台的基本的印刷樣式、 色彩和格式化其 CSS 檔案中的連結。 這個 CSS 檔案中包含的資料表、 按鈕、 表單項目、 影像和多個預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 一個特別有用的功能是格線版面配置系統，接下來涵蓋。
+Bootstrap 在其 CSS 檔案中設定了站台的基本印刷樣式、色彩和連結格式。這個 CSS 檔案中包含了表格、按鈕、表單元素、影像等等的預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 接下來將說明一個特別有用的功能，亦即格線版面配置系統。
 
 ### <a name="grids"></a>格線
 
-Bootstrap 的最受歡迎的功能之一是其格線版面配置系統。 現代化 web 應用程式應該避免使用`<table>`配置，請改為使用這個項目限制實際的表格式資料的標記。 相反地，資料行和資料列可配置使用的一系列`<div>`項目和適當的 CSS 類別。 有幾個這種方法，包括可調整的版面配置的方格顯示垂直上窄的畫面，例如手機上的好處。
+BBootstrap 的最受歡迎的功能之一是其格線版面配置系統。現代化 Web 應用程式應該避免使用 `<table>` 版面配置，而只有針對實際的表格資料來使用此元素。 相反地，使用的一系列 `<div>` 元素和適當的 CSS 類別便能配置資料行和資料列。此方法有數個優點，包括可以調整格線的版面配置，以便在手機等窄螢幕上垂直顯示。
 
-[Bootstrap 的格線版面配置系統](http://getbootstrap.com/css/#grid)12 個資料欄為基礎。 這個數字已選擇，因為它可分為平均 1、 2、 3 或 4 的資料行和資料行的寬度可能會以 1 內/12 的垂直螢幕的寬度。 若要開始使用格線版面配置系統，您應該開始使用容器`<div>`然後再加入一個資料列`<div>`，如下所示：
+[Bootstrap 的格線版面配置系統](http://getbootstrap.com/css/#grid)是以 12 個資料欄為基礎。 會選擇這個數字是因為它可被整除而成為 1、2、3 或 4 資料行，且資料行的寬度可以在螢幕垂直寬度的 1/12 內變化。 若要開始使用格線版面配置系統，您應該開始使用容器 `<div>`，然後如下所示新增一個資料列 `<div>`：
 
 ```html
 <div class="container">
@@ -122,7 +122,7 @@ col-lg- | 較大的桌面顯示 | >= 1200px
 
 當指定的兩個資料行都與 「 資料行-md-6 」 產生的配置將會在桌面的解析度上，兩個資料行，但這兩個資料行上較小裝置 （或較窄的瀏覽器視窗，在桌面上），讓使用者能夠輕鬆地檢視轉譯時就會垂直堆疊而不需要水平捲動內容。
 
-Bootstrap 總是預設為單一資料行配置，因此您只需要指定資料行，當您想要多個資料行。 您會想要明確指定的唯一時間`<div>`需要所有的 12 個資料行，就是覆寫較大的裝置層的行為。 當指定多個裝置層類別，您可能需要重設資料行的呈現特定時間點。 將只會顯示某些區內 clearfix div 可以達到這個目的，如下所示：
+Bootstrap 總是預設為單一資料行配置，因此只有當您想要多個資料行時，才需要指定資料行。若要覆寫較大的裝置層行為，才需要明確指定 `<div>` 需要所有 12 個資料行。當指定多個裝置層類別時，可能需要在某些地方重設資料行的呈現。如下所示，新增只能在特定檢視區中看到的 clearfix div，便可以達到這個目的：
 
 ![窄和寬的檢視區方格](bootstrap/_static/narrow-and-wide-viewport-grid.png)
 
@@ -130,7 +130,7 @@ Bootstrap 總是預設為單一資料行配置，因此您只需要指定資料�
 
 ![不使用 clearfix 方格](bootstrap/_static/grid-without-clearfix.png)
 
-在此範例中，單一資料列`<div>`被使用，並且 Bootstrap 仍然大部分未正確配置和資料行的堆疊方面的事。 一般而言，您應該指定一個資料列`<div>`每個水平資料列需要您的配置，以及當然您可以巢狀 Bootstrap 內另一個方格。 當您這樣做時，每個巢狀的方格會佔用 100%的元件，它用來放置，可以再細分使用類別資料行的寬度。
+在此範例中，只使用了單一資料列`<div>`，且 Bootstrap 對於版面配置和資料行堆疊大致正確。 一般而言，您應該為版面配置所需的每個水平列指定一個資料列 `<div>`，而且 Bootstrap 格線當然可以使用巢狀架構。 當您這樣做時，每個巢狀格線會佔用所在元素的 100% 寬度，其中可以再使用資料行類別加以分區。
 
 ### <a name="jumbotron"></a>Jumbotron
 
@@ -158,7 +158,7 @@ Bootstrap 總是預設為單一資料行配置，因此您只需要指定資料�
 
 ### <a name="navbars-and-menus"></a>Navbars 和功能表
 
-我們的版面配置已包含標準的導覽列中，但 Bootstrap 的佈景主題皆支援其他樣式選項。 我們也很容易可以選擇垂直顯示導覽列，而非水平如果有慣用的也會為新增的副導覽中的項目彈出式視窗功能表。 最上層的內建索引標籤帶狀線，例如簡單的瀏覽功能表 <ul> 項目。 可以建立非常簡單，只讓他們能夠以 CSS 類別 」 nav 」 和 「 瀏覽索引標籤 」:
+我們的版面配置已包含標準的導覽列，但 Bootstrap 的佈景主題支援額外的樣式選項。我們也可以很容易地依偏好來選擇垂直顯示導覽列，而非水平顯示，同時也可以新增子導覽項目至彈出式視窗功能表。索引標籤區域之類的簡單瀏覽功能表是建立在 <ul> 元素之上。要建立十分容易，只要提供 CSS 類別 "nav" 和 "nav-tabs" 即可：
 
 ![佈景主題 tabstrips](bootstrap/_static/theme-tabstrips.png)
 
@@ -168,17 +168,17 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ### <a name="additional-elements"></a>其他項目
 
-預設佈景主題也可用來呈現 HTML 表格格式樣式，包括支援等量的檢視中。 標籤一共有使用類似於按鈕的樣式。 您可以建立自訂支援標準 HTML 以外的其他樣式選項的下拉式功能表`<select>`項目，以及 Navbars 類似我們預設入門網站已在使用中。 如果您需要將進度列，有數種樣式，以供選擇，以及列出群組和包含標題與內容的面板。 瀏覽標準 Bootstrap 主題這裡內的其他選項：
+預設佈景主題也可使用優美的格式來呈現 HTML 表格，包括條紋狀檢視。還有具有樣式的標籤，類似於按鈕的樣式。您可以建立自訂下拉式功能表，以支援超出標準 HTML `<select>` 元素的額外樣式選項，以及類似我們預設入門網站所用的瀏覽列。如果您需要將進度列，也有數種樣式可供選擇，以及包含標題與內容的清單群組及面板。此處可以探索標準 Bootstrap 主題中的其他選項：
 
 [http://getbootstrap.com/examples/theme/](http://getbootstrap.com/examples/theme/)
 
 ## <a name="more-themes"></a>更多主題
 
-您可以擴充標準 Bootstrap 的主題，藉由覆寫部分或所有其 CSS 調整色彩和樣式，以符合您自己的應用程式的需求。 如果您想要從現成的佈景主題開始，有數個主題組件庫提供線上，在 Bootstrap 的佈景主題，例如 WrapBootstrap.com （這有各種不同的商業佈景主題） 和 Bootswatch.com （其提供可用的佈景主題） 中的特製化。 某些可用的付費範本提供許多基本的 Bootstrap 佈景主題，例如豐富的支援系統管理功能表和儀表板頂端的功能豐富的圖表和量測計。 熱門付費範本的範例是 Inspinia，目前 $18，其中包含除了 AngularJS 和靜態的 HTML 版本的 ASP.NET MVC5 範本的銷售。 範例螢幕擷取畫面所示。
+您可以覆寫部分或所有 Bootstrap 主題的 CSS、調整色彩和樣式以符合應用程式需求，藉此擴充標準 Bootstrap 主題。如果您想要從現成的主題開始，網路上有數個針對 Bootstrap 主題的主題庫，例如 WrapBootstrap.com (有各種不同的商業主題) 和 Bootswatch.com (有免費主題)。某些付費範本提供基本 Bootstrap 主題之外的許多功能，例如支援眾多系統管理功能表，以及具有多種圖表和量測計的儀表板。熱門付費範本之一便是 Inspinia，目前訂價 $18，其中包含 ASP.NET MVC5 範本，再加上 AngularJS 和靜態 HTML 版本。 以下為螢幕擷取畫面範例。
 
 ![範例主題 inspinia](bootstrap/_static/theme-inspinia.png)
 
-如果您想要變更您的 Bootstrap 主題，請將放*bootstrap.css*中您要的佈景主題檔案**wwwroot/css**資料夾，並變更中的參考*_Layout.cshtml*指向它。 變更用於所有環境的連結：
+如果您想要變更您的 Bootstrap 主題，請將所要主題的 *bootstrap.css* 檔案放在 **wwwroot/css** 資料夾中，並變更 *_Layout.cshtml* 中的參考以指向該檔案。 變更所有環境的連結：
 
 ```html
 <environment names="Development">
@@ -198,7 +198,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ### <a name="glyphicons"></a>Glyphicons
 
-Bootstrap 包含一組來自 Glyphicons 的圖示集 ([http://glyphicons.com](http://glyphicons.com))，其中超過 200 個圖示可以免費使用於你的 web 應用程式。以下是只是個小範例：
+Bootstrap 包含一組來自 Glyphicons 的圖示集 ([http://glyphicons.com](http://glyphicons.com))，其中有超過 200 個圖示可以免費使用於您已啟用 Bootstrap 的 Web 應用程式。以下是一個小範例：
 
 ![Glyphicons](bootstrap/_static/theme-glyphicons.png)
 
@@ -210,12 +210,12 @@ Bootstrap 包含一組來自 Glyphicons 的圖示集 ([http://glyphicons.com](ht
 
 ### <a name="breadcrumbs"></a>階層連結列
 
-階層連結列會用來顯示使用者，其最新歷程記錄或網站的導覽階層內的深度的通用 UI 元件。 透過將"階層連結 」 類別套用至任何輕鬆地新增`<ol>`清單項目。 包含內建支援分頁上使用 「 重新編頁 」 類別`<ul>`內的項目`<nav>`。 將能繼續回應的內嵌投影片及視訊新增使用`<iframe>`， `<embed>`， `<video>`，或`<object>`項目，則 Bootstrap 會自動設定樣式。 使用特定的類別，例如 「 內嵌-回應-16by9"來指定特定的長寬比。
+階層連結列是常見的 UI 元件，可用來顯示使用者最近的歷程記錄或網站導覽階層的深度。若要新增階層連結列，只要將 "breadcrumb" 類別套用至任何 `<ol>` 清單元素即可。若要包含內建的分頁支援，請在 `<nav>` 中的 `<ul>` 元素上使用 "pagination" 類別。 若要新增回應式內嵌投影片與視訊，請使用 `<iframe>`、`<embed>`、`<video>` 或 `<object>` 元素，Bootstrap 會自動設定這些元素的樣式。若要指定特定的長寬比，請使用如 "embed-responsive-16by9" 的特定類別。
 
 ## <a name="javascript-support"></a>JavaScript 支援
 
-啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的 BBootstrap – 若要了解更多，請瀏覽內建 JavaScript 附加[http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)。
+Bootstrap 的 JavaScript 程式庫提供了所包含元件的 API 支援，可讓您在應用程式中以程式設計的方式來控制其行為。此外，*bootstrap.js* 包含十多個自訂 jQuery 外掛程式，提供額外的功能，例如轉換、強制回應對話方塊、捲動偵測 (根據使用者捲動文件的位置來更新樣式)、摺疊行為、浮動切換，以及將功能表固定至視窗，以免被捲動而超出螢幕。此處無法詳述 Bootstrap 內建的 JavaScript 附加元件。若要深入了解，請瀏覽 [http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/)。
 
 ## <a name="summary"></a>總結
 
-Bootstrap 提供了一種 web 框架，可用來快速且有效率地配置和樣式各種不同的網站和應用程式。其基本的印刷樣式和樣式提供愉快的外觀及操作，可輕鬆地透過自訂的佈景主題支援，可以對手工或購買商業上操作。它支援的 web 元件在過去就已經要求昂貴的協力廠商控制項，來完成，同時支援現代化和開啟 web 標準的主機。
+Bootstrap 提供了一種 Web 架構，可用來快速且有效率地為各種不同的網站和應用程式設定版面配置和樣式。Bootstrap 的基本印刷樣式和樣式便能提供不錯的外觀，並可透過自行開發或購買現成的自訂主題來輕鬆地操控。它支援許多以往需要昂貴的協力廠商控制項才能完成的 Web 元件，同時支援現代化和開放的 Web 標準。

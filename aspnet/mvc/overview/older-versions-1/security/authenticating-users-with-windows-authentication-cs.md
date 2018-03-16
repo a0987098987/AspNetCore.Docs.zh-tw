@@ -25,29 +25,32 @@ by [Microsoft](https://github.com/microsoft)
 > 了解如何在 MVC 應用程式的內容中使用 Windows 驗證。 您了解如何啟用您的應用程式 web 組態檔中的 Windows 驗證以及如何設定 iis 驗證。 最後，您會學習如何使用 [Authorize] 屬性來限制存取權給特定的 Windows 使用者或群組的控制器動作。
 
 
-本教學課程的目標是要說明如何，您可以充分利用的安全性功能內建於網際網路資訊服務的密碼保護在 MVC 應用程式中的檢視。 您了解如何允許只能由特定的 Windows 使用者或特定的 Windows 群組的成員使用者叫用非同步控制器動作。
+本教學課程的目標是要說明，如何利用內建於網際網路資訊服務的安全性功能，以藉由密碼來保護 MVC 應用程式中的檢視。您將了解如何只讓特定 Windows 使用者或特定 Windows 群組成員來叫用控制器動作。
 
-使用 Windows 驗證就有意義，當您建立內部的公司網站 （內部網路網站） 和您想讓使用者能夠存取網站時，使用標準的 Windows 使用者名稱及密碼。 如果您要建置 outwards 對向網站 （網際網路網站），請考慮改為使用表單驗證。
+當您建立公司內部的網站 （內部網路網站）並且想讓使用者能夠使用標準的 Windows 使用者名稱及密碼存取網站時，使用 Windows 驗證就很合理。如果您要建置對外網站 （網際網路網站），請考慮改用表單驗證。
 
 #### <a name="enabling-windows-authentication"></a>啟用 Windows 驗證
 
-當您建立新的 ASP.NET MVC 應用程式時，預設不啟用 Windows 驗證。 預設的驗證類型為 MVC 應用程式啟用表單驗證。 您必須修改 MVC 應用程式的 web 組態檔 (web.config)，以啟用 Windows 驗證。 尋找&lt;驗證&gt;區段，並將它修改為使用 Windows，而不是表單驗證，就像這樣：
+當您建立新的 ASP.NET MVC 應用程式時，預設是不啟用 Windows 驗證的。 表單驗證是MVC 應用程式預設啟用的驗證類型。 您必須修改 MVC 應用程式的 web 組態檔 (web.config)，以啟用 Windows 驗證。 尋找&lt;authentication&gt;區段，並將它修改為使用 Windows，以取代表單驗證，就像這樣：
 
 [!code-xml[Main](authenticating-users-with-windows-authentication-cs/samples/sample1.xml)]
 
-當您啟用 Windows 驗證時，您的網頁伺服器會變成負責驗證使用者。 通常，有兩種不同的網頁伺服器時建立及部署 ASP.NET MVC 應用程式使用。
+當您啟用 Windows 驗證時，您的網頁伺服器會負責驗證使用者。 通常，當在建立及部署 ASP.NET MVC 應用程式時，會使用兩種不同的網頁伺服器。
 
-首先，在開發 MVC 應用程式時，您會使用 Visual Studio 隨附的 ASP.NET 程式開發 Web 伺服器。 根據預設，ASP.NET 開發 Web 伺服器會執行目前的 Windows 帳戶 （不論您用來登入 Windows 帳戶） 的內容中所有頁面。
+首先，在開發 MVC 應用程式時，您會使用 Visual Studio 隨附的 ASP.NET 程式開發 Web 伺服器。 根據預設，ASP.NET 開發 Web 伺服器會以目前的 Windows 帳戶 （不論您登入 Windows 的帳戶） 執行所有頁面。
 
-ASP.NET 開發 Web 伺服器也支援 NTLM 驗證。 您可以滑鼠右鍵按一下方案總管] 視窗中的專案名稱，然後選取 [屬性，以啟用 NTLM 驗證。 接下來，選取 [Web] 索引標籤，然後選取 NTLM 核取方塊 （請參閱圖 1）。
+ASP.NET 開發 Web 伺服器也支援 NTLM 驗證。 您可以滑鼠右鍵按一下[方案總管] 視窗中的專案名稱，然後選取 [屬性]，以啟用 NTLM 驗證。 接下來，選取 [Web] 頁籤，並勾選 NTLM 核取方塊 （請參閱圖 1）。
 
 **圖 1 – 啟用 ASP.NET 開發 Web 伺服器的 NTLM 驗證**
 
 ![clip_image002](authenticating-users-with-windows-authentication-cs/_static/image1.jpg)
 
-生產環境 web 應用程式中，指針，在您使用 IIS 做為 web 伺服器。 IIS 支援數種類型的驗證包括：
+相較之下，在正式環境的 web 應用程式中，則使用 IIS 做為網頁伺服器。 IIS 支援的各種驗證類型有：
 
-- 基本驗證 – 定義為 HTTP 1.0 通訊協定的一部分。 使用者名稱和密碼以純文字 (以 Base64 編碼) 透過網際網路傳送。 摘要式驗證 – 傳送密碼，而不是密碼本身，在網際網路上的雜湊。 -整合的 Windows (NTLM) 驗證 – 最佳的型別要使用 windows 內部網路環境中使用的驗證。 -驗證-啟用驗證使用用戶端憑證的憑證。 此憑證對應至 Windows 使用者帳戶。
+- 基本驗證 – 定義為 HTTP 1.0 通訊協定的一部分。 使用者名稱和密碼以純文字 (以 Base64 編碼) 透過網際網路傳送。 
+- 摘要式驗證 – 傳送密碼，而不是密碼本身，在網際網路上的雜湊。
+- 整合的 Windows (NTLM) 驗證 – 最佳的型別要使用 windows 內部網路環境中使用的驗證。
+- 憑證驗證 – 使用用戶端憑證驗證。 此憑證對應至 Windows 使用者帳戶。
 
 > [!NOTE] 
 > 

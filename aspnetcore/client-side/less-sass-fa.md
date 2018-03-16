@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: e00a0929db9dff6c97c4b22468156f621a1a3820
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 979f5639e382560d952df45ba6e0b8af3b132c2d
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>樣式應用程式，以更少、 Sass，和字型臻中 ASP.NET Core 簡介
 
@@ -323,7 +323,7 @@ CSS 檔案，特別是針對大型網站 （而且特別是如果使用媒體查
 
 Sass 很少類似提供支援的許多相同的功能，但稍微不同的語法。 它內建使用 Ruby，而非 JavaScript 中，並且擁有不同的安裝需求。 原始的 Sass 語言並未使用大括號或分號分隔，而定義使用泛空白字元和縮排的範圍。 中的 Sass 第 3 版，引進一種新語法， **SCSS** (「 Sassy CSS")。 SCSS 是類似於 CSS，在於，它會忽略縮排層級和空白字元，並改為使用分號和大括號。
 
-若要安裝 Sass，通常您會先安裝 Ruby （預先安裝在 Mac 上），並接著執行：
+若要安裝 Sass，通常您會先安裝 Ruby （預先安裝於 macOS），並接著執行：
 
 ```console
 gem install sass

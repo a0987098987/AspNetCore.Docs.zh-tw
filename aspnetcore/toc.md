@@ -28,7 +28,7 @@
 ### [檢查 Details 和 Delete 方法](tutorials/first-mvc-app/details.md)
 
 ## [建置 Web API](mvc/web-api/index.md)
-### [在 Mac 上建立 Web API](xref:tutorials/first-web-api-mac)
+### [在 macOS 上建立 Web API](xref:tutorials/first-web-api-mac)
 ### [使用 Swagger 的 ASP.NET Core Web API 說明頁面](xref:tutorials/web-api-help-pages-using-swagger)
 #### [開始使用 NSwag](xref:tutorials/get-started-with-nswag)
 #### [開始使用 Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
@@ -59,7 +59,7 @@
 #### [進階主題](data/ef-mvc/advanced.md)
 
 ## [跨平台教學課程](xref:tutorials/xplat)
-### [Mac 上的 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-mac/index)
+### [macOS 上的 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages-mac/index)
 #### [開始使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
 #### [新增模型](xref:tutorials/razor-pages-mac/model)
 #### [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-mac/page)
@@ -87,7 +87,7 @@
 #### [新增驗證](xref:tutorials/first-mvc-app-mac/validation)
 #### [檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)
 
-### [在 Mac 或 Linux 上使用 Visual Studio Code 建置 Web 應用程式](xref:tutorials/first-mvc-app-xplat/index)
+### [macOS 或 Linux 上具備 Visual Studio Code 的 MVC Web 應用程式](xref:tutorials/first-mvc-app-xplat/index)
 #### [開始使用](tutorials/first-mvc-app-xplat/start-mvc.md)
 #### [新增控制器](tutorials/first-mvc-app-xplat/adding-controller.md)
 #### [新增檢視](tutorials/first-mvc-app-xplat/adding-view.md)

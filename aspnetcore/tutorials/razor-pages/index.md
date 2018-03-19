@@ -9,15 +9,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 162fa4e0a6d5b6fdda7f043c9d106838a1c19954
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a437d98c2229e69bd2b66a7c9c868bf221aea94a
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>使用 ASP.NET Core 建立 Razor 頁面 Web 應用程式
 
-本系列會說明使用 Visual Studio 的 ASP.NET Core 來建置 Razor 頁面 Web 應用程式的基本概念。 此系列的其他版本包括 [Mac 版本](xref:tutorials/razor-pages-mac/index)與 [Visual Studio Code 版本](xref:tutorials/razor-pages-vsc/index)。
+本系列會說明使用 Visual Studio 的 ASP.NET Core 來建置 Razor 頁面 Web 應用程式的基本概念。 此系列的其他版本包括 [macOS 版本](xref:tutorials/razor-pages-mac/index)與 [Visual Studio Code 版本](xref:tutorials/razor-pages-vsc/index)。
 
 1. [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
 1. [將模型新增至 Razor 頁面應用程式](xref:tutorials/razor-pages/model)

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: 45b00fbc15740fad60202bb7e5ab14beb9ebe495
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: fd58a6a3e35a706d503603790fa1c726e6c865d6
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
@@ -26,15 +26,15 @@ ms.lasthandoff: 03/12/2018
 * [ASP.NET Core 中的 Razor 頁面簡介](xref:mvc/razor-pages/index)
 * 使用 ASP.NET Core 建立 Razor 頁面 Web 應用程式
 
-   * [Razor Pages 在 Windows 上](xref:tutorials/razor-pages/index)
-   * [Razor Pages 在 Mac 上](xref:tutorials/razor-pages-mac/index)
+   * [Razor 頁面 (Windows 上)](xref:tutorials/razor-pages/index)
+   * [Razor 頁面 (macOS 上)](xref:tutorials/razor-pages-mac/index)
    * [Razor Pages 與 VS Code 的搭配應用](xref:tutorials/razor-pages-vsc/index)  
 
 * 建立 ASP.NET Core MVC Web 應用程式
 
    * [使用 Visual Studio for Windows 建立 Web 應用程式](first-mvc-app/index.md)
    * [使用 Visual Studio for Mac 建立 Web 應用程式](first-mvc-app-mac/index.md)
-   * [使用 Mac 或 Linux 版 Visual Studio Code 建立 Web 應用程式](first-mvc-app-xplat/index.md)
+   * [在 macOS 或 Linux 上具備 Visual Studio Code 的 Web 應用程式](first-mvc-app-xplat/index.md)
 
 * [使用 Visual Studio 開始使用 ASP.NET Core 與 Entity Framework Core](../data/ef-mvc/index.md)
 * [建立標記協助程式](../mvc/views/tag-helpers/authoring.md)

@@ -9,26 +9,26 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/index
-ms.openlocfilehash: e2b4d06c18352995ddeeea5f83ee42a50d75cce2
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2892ed629bea048ac0fd31848c001760c986c1bc
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="create-a-razor-pages-web-app-with-aspnet-core-and-visual-studio-code"></a><span data-ttu-id="de94e-103">使用 ASP.NET Core 和 Visual Studio Code 建立 Razor 頁面 Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="de94e-103">Create a Razor Pages web app with ASP.NET Core and Visual Studio Code</span></span>
+# <a name="create-a-razor-pages-web-app-with-aspnet-core-and-visual-studio-code"></a><span data-ttu-id="15aa1-103">使用 ASP.NET Core 和 Visual Studio Code 建立 Razor 頁面 Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="15aa1-103">Create a Razor Pages web app with ASP.NET Core and Visual Studio Code</span></span>
 
-<span data-ttu-id="de94e-104">這項工作正在進行中。</span><span class="sxs-lookup"><span data-stu-id="de94e-104">This is a work in progress.</span></span>
+<span data-ttu-id="15aa1-104">這項工作正在進行中。</span><span class="sxs-lookup"><span data-stu-id="15aa1-104">This is a work in progress.</span></span>
 
-<span data-ttu-id="de94e-105">本系列說明使用 Visual Studio Code 的 ASP.NET Core 來建置 Razor 頁面 Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="de94e-105">This series explains the basics of building a Razor Pages web app with ASP.NET Core using Visual Studio Code.</span></span>
+<span data-ttu-id="15aa1-105">本系列說明使用 Visual Studio Code 的 ASP.NET Core 來建置 Razor 頁面 Web 應用程式的基本概念。</span><span class="sxs-lookup"><span data-stu-id="15aa1-105">This series explains the basics of building a Razor Pages web app with ASP.NET Core using Visual Studio Code.</span></span>
 
-1. [<span data-ttu-id="de94e-106">開始使用 Razor 頁面與 VS Code</span><span class="sxs-lookup"><span data-stu-id="de94e-106">Getting started with Razor Pages with VS Code</span></span>](xref:tutorials/razor-pages-vsc/razor-pages-start)
-1. [<span data-ttu-id="de94e-107">將模型新增至 Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="de94e-107">Adding a model to a Razor Pages app</span></span>](xref:tutorials/razor-pages-vsc/model)
-1. <span data-ttu-id="de94e-108">[Scaffold Razor 頁面]         (xref:tutorials/razor-pages-vsc/page)</span><span class="sxs-lookup"><span data-stu-id="de94e-108">[Scaffolded Razor Pages]         (xref:tutorials/razor-pages-vsc/page)</span></span>
-1. [<span data-ttu-id="de94e-109">使用 SQLite</span><span class="sxs-lookup"><span data-stu-id="de94e-109">Working with SQLite</span></span>](xref:tutorials/razor-pages-vsc/sql)
-1. [<span data-ttu-id="de94e-110">更新頁面</span><span class="sxs-lookup"><span data-stu-id="de94e-110">Update the pages</span></span>](xref:tutorials/razor-pages-vsc/da1)
-1. [<span data-ttu-id="de94e-111">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="de94e-111">Adding search</span></span>](xref:tutorials/razor-pages-vsc/search)
+1. [<span data-ttu-id="15aa1-106">開始以 VS Code 使用 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="15aa1-106">Get started with Razor Pages with VS Code</span></span>](xref:tutorials/razor-pages-vsc/razor-pages-start)
+1. [<span data-ttu-id="15aa1-107">將模型新增至 Razor 頁面應用程式</span><span class="sxs-lookup"><span data-stu-id="15aa1-107">Adding a model to a Razor Pages app</span></span>](xref:tutorials/razor-pages-vsc/model)
+1. <span data-ttu-id="15aa1-108">[Scaffold Razor 頁面]         (xref:tutorials/razor-pages-vsc/page)</span><span class="sxs-lookup"><span data-stu-id="15aa1-108">[Scaffolded Razor Pages]         (xref:tutorials/razor-pages-vsc/page)</span></span>
+1. [<span data-ttu-id="15aa1-109">使用 SQLite</span><span class="sxs-lookup"><span data-stu-id="15aa1-109">Working with SQLite</span></span>](xref:tutorials/razor-pages-vsc/sql)
+1. [<span data-ttu-id="15aa1-110">更新頁面</span><span class="sxs-lookup"><span data-stu-id="15aa1-110">Update the pages</span></span>](xref:tutorials/razor-pages-vsc/da1)
+1. [<span data-ttu-id="15aa1-111">新增搜尋</span><span class="sxs-lookup"><span data-stu-id="15aa1-111">Adding search</span></span>](xref:tutorials/razor-pages-vsc/search)
 
-<span data-ttu-id="de94e-112">在下一節完成之前，請遵循 Visual Studio for Windows 版本。</span><span class="sxs-lookup"><span data-stu-id="de94e-112">Until the next section is complete, follow the Visual Studio for Windows version.</span></span>
+<span data-ttu-id="15aa1-112">在下一節完成之前，請遵循 Visual Studio for Windows 版本。</span><span class="sxs-lookup"><span data-stu-id="15aa1-112">Until the next section is complete, follow the Visual Studio for Windows version.</span></span>
 
-1. [<span data-ttu-id="de94e-113">新增欄位</span><span class="sxs-lookup"><span data-stu-id="de94e-113">Adding a new field</span></span>](xref:tutorials/razor-pages/new-field)
-1. [<span data-ttu-id="de94e-114">新增驗證</span><span class="sxs-lookup"><span data-stu-id="de94e-114">Adding validation</span></span>](xref:tutorials/razor-pages/validation)
+1. [<span data-ttu-id="15aa1-113">新增欄位</span><span class="sxs-lookup"><span data-stu-id="15aa1-113">Adding a new field</span></span>](xref:tutorials/razor-pages/new-field)
+1. [<span data-ttu-id="15aa1-114">新增驗證</span><span class="sxs-lookup"><span data-stu-id="15aa1-114">Adding validation</span></span>](xref:tutorials/razor-pages/validation)

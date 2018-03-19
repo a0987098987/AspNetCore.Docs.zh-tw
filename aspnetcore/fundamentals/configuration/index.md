@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 8f52f2dc9515761510de870f10ad0975401db74a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 7c41621db835b452c9aad9463a9ffccdf0c06484
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
 
@@ -24,13 +24,13 @@ ms.lasthandoff: 03/02/2018
 
 下列項目有組態提供者：
 
-* 檔案格式 (INI、JSON 和 XML)
-* 命令列引數
-* 環境變數
-* 記憶體內部 .NET 物件
-* 加密的使用者存放區
-* [Azure Key Vault](xref:security/key-vault-configuration)
-* 自訂提供者 (已安裝或已建立)
+* 檔案格式 (INI、JSON 及 XML)。
+* 命令列引數。
+* 環境變數。
+* 記憶體內部 .NET 物件。
+* 未加密的[祕密管理員](xref:security/app-secrets)儲存體。
+* 類似 [Azure Key Vault](xref:security/key-vault-configuration)的加密使用者存放區。
+* 自訂提供者 (已安裝或已建立)。
 
 每個組態值會對應至一個字串索引鍵。 還有內建繫結支援可將設定還原序列化為自訂 [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) 物件 (具有屬性的簡單 .NET 類別)。
 

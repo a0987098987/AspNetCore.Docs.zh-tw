@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 42906e95d17f76f69dddc40f351b41e6cbdd087c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: ebc4efdedd60c38280a0d37b20313e09671f7f9d
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="migrating-from-aspnet-core-1x-to-aspnet-core-20"></a>從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/02/2018
 <a name="prerequisites"></a>
 
 ## <a name="prerequisites"></a>必要條件
-請參閱 [ASP.NET Core 使用者入門](xref:getting-started)。
+請參閱[開始使用 ASP.NET Core](xref:getting-started)。
 
 <a name="tfm"></a>
 

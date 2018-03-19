@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 8da97b2148c0a784e3b1fdfe210db35e3fcceade
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: cefbc27c8091a2ed1441663e3779d67aae2c64dd
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -45,6 +45,9 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 [使用 VSTS 持續部署到 Azure](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure)  
 設定 ASP.NET Core 應用程式的 CI 組建，然後建立連續部署發行至 Azure App Service。
+
+[Azure Web 應用程式沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
+探索 Azure 應用程式平台強制實施的 Azure App Service 執行階段執行限制。
 
 ## <a name="application-configuration"></a>應用程式組態
 
@@ -99,4 +102,4 @@ Windows Server 上的 Azure App Service 使用 [Internet Information Services (I
 * [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
 * [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
 * [使用 IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)
-* [Microsoft TechNet Library：Windows Server](https://docs.microsoft.com/windows-server/windows-server-versions)
+* [Microsoft TechNet Library：Windows Server](/windows-server/windows-server-versions)

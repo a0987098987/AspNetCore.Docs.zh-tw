@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/index
-ms.openlocfilehash: ea3a8d88a202028890cdf6ffbbd0151fba7e0a65
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8ea847c760d2b09210ffc209b5331c6153f0a512
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="getting-started-with-razor-pages-and-entity-framework-core-using-visual-studio"></a>使用 Visual Studio 開始使用 Razor 頁面與 Entity Framework Core
+# <a name="get-started-with-razor-pages-and-entity-framework-core-using-visual-studio"></a>使用 Visual Studio 開始使用 Razor 頁面與 Entity Framework Core
 
 這一系列的教學課程將教導您如何建立使用 Entity Framework (EF) Core 進行資料存取的 ASP.NET Core Razor Pages Web 應用程式。 這些教學課程需要 Visual Studio 2017。
 
-1. [快速入門](xref:data/ef-rp/intro)
+1. [開始使用](xref:data/ef-rp/intro)
 1. [建立、讀取、更新和刪除作業](xref:data/ef-rp/crud)
 1. [排序、篩選、分頁與群組](xref:data/ef-rp/sort-filter-page)
 1. [移轉](xref:data/ef-rp/migrations)

@@ -1,21 +1,21 @@
 ---
-title: "新增驗證"
+title: 新增驗證
 author: rick-anderson
-description: "說明如何將驗證新增至 Razor 頁面。"
-ms.author: riande
+description: 說明如何將驗證新增至 Razor Pages。
 manager: wpickett
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 43d9ecacc479dac3eff35cc745b30d859c5cfd1d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 770b930373888c8b4bd578ba6d2524546549800e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor 頁面
+# <a name="adding-validation-to-a-razor-page"></a>將驗證新增至 Razor Pages
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -23,9 +23,9 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="validation"></a>驗證
 
-軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor 頁面可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
+軟體開發的核心原則稱為 [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself)("**D**on't **R**epeat **Y**ourself", 不重複原則)。 Razor Pages可促進開發，只要指定功能一次，就能在整個應用程式中運用。 DRY 有助於降低應用程式中的程式碼數量。 DRY 可使程式碼較少出現錯誤，而且更容易進行測試和維護。
 
-Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
+Razor Pages 和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶佳範例。 驗證規則是在單一位置 (在模型類別中) 以宣告方式指定，而規則可在應用程式的任何位置強制執行。
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>將驗證規則新增至電影模型
 
@@ -44,7 +44,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 擁有 ASP.NET Core 自動強制執行的驗證規則有助於讓應用程式更穩固。 對模型的自動驗證可協助保護應用程式，因為您不需要在新增新程式碼時記得加以套用。
 
-### <a name="validation-error-ui-in-razor-pages"></a>Razor 頁面中的驗證錯誤 UI
+### <a name="validation-error-ui-in-razor-pages"></a>Razor Pages 中的驗證錯誤 UI
 
 執行應用程式，並巡覽至 Pages/Movies。
 
@@ -57,7 +57,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 請注意表單在包含無效值的每個欄位中自動呈現驗證錯誤訊息的方式。 用戶端 (使用 JavaScript 和 jQuery) 與伺服器端 (當使用者已停用 JavaScript 時) 都會強制執行這些錯誤。
 
-明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor 頁面會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
+明顯的好處是：**不**需要在 Create 或 Edit 頁面中進行程式碼變更。 一旦 DataAnnotations 套用至模型，就會啟用驗證 UI。 本教學課程中建立的 Razor Pages 會自動拾取驗證規則 (在 `Movie` 模型類別的屬性 (property) 上使用驗證屬性 (attribute))。 使用 Edit 頁面測試驗證，會套用相同的驗證。
 
 要一直到沒有任何用戶端驗證錯誤之後，才會將表單資料發佈到伺服器。 請確認表單資料不會經由下列一或多種方式發佈：
 
@@ -89,7 +89,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 [輸入標記協助程式](xref:mvc/views/working-with-forms)會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
-Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor 頁面。
+Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中才能指定驗證規則和錯誤字串。 這些驗證規則會自動套用至編輯 `Movie` 模型的 Razor Pages。
 
 當驗證邏輯需要變更時，它只會在模型中進行。 驗證會一致地套用在整個應用程式中(驗證邏輯定義於一個位置)。 位於一個位置的驗證有助於讓程式碼保持整潔，並可讓您更容易進行維護和更新。
 
@@ -132,7 +132,7 @@ public DateTime ReleaseDate { get; set; }
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-[開始使用 Razor 頁面和 EF Core](xref:data/ef-rp/intro) 中說明使用 Razor 頁面執行的進階 EF Core 作業。
+[開始使用 Razor Pages 和 EF Core](xref:data/ef-rp/intro) 中說明使用 Razor Pages 執行的進階 EF Core 作業。
 
 ### <a name="publish-to-azure"></a>發佈至 Azure
 

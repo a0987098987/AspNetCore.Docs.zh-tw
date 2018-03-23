@@ -179,7 +179,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ![範例主題 inspinia](bootstrap/_static/theme-inspinia.png)
 
-如果您想要變更您的啟動程序主題，請將放*bootstrap.css*中您要的佈景主題檔案**wwwroot/css**資料夾，並變更中的參考*_Layout.cshtml*指向它。 變更用於所有環境的連結：
+如果您想要變更您的 Bootstrap 主題，請將所要主題的 *bootstrap.css* 檔案放在**wwwroot/css**資料夾中，並變更*_Layout.cshtml* 中的參考以指向該檔案。 變更所有環境的連結： 變更用於所有環境的連結：
 
 ```html
 <environment names="Development">
@@ -199,7 +199,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ### <a name="glyphicons"></a>Glyphicons
 
-啟動程序包括從 Glyphicons 圖示集 ([http://glyphicons.com](http://glyphicons.com))，有超過 200 圖示免費內啟動安裝程式啟用 web 應用程式使用。 以下是只是小型的範例：
+Bootstrap 包含一組來自 Glyphicons 的圖示集 ([http://glyphicons.com](http://glyphicons.com))，其中有超過 200 個圖示可以免費使用於您已啟用 Bootstrap 的 Web 應用程式。以下是一個小範例： 以下是只是小型的範例：
 
 ![Glyphicons](bootstrap/_static/theme-glyphicons.png)
 
@@ -211,12 +211,12 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ### <a name="breadcrumbs"></a>階層連結列
 
-階層連結列會用來顯示使用者，其最新歷程記錄或網站的導覽階層內的深度的通用 UI 元件。 透過將"階層連結 」 類別套用至任何輕鬆地新增`<ol>`清單項目。 包含內建支援分頁上使用 「 重新編頁 」 類別`<ul>`內的項目`<nav>`。 將能繼續回應的內嵌投影片及視訊新增使用`<iframe>`， `<embed>`， `<video>`，或`<object>`項目，則啟動程序會自動設定樣式。 使用特定的類別，例如 「 內嵌-回應-16by9"來指定特定的長寬比。
+階層連結列是常見的 UI 元件，可用來顯示使用者最近的歷程記錄或網站導覽階層的深度。 若要新增階層連結列，只要將 "breadcrumb" 類別套用至任何`<ol>`清單元素即可。 若要包含內建的分頁支援，請在`<ul>`中的 `<nav>`元素上使用  "pagination" 類別。 若要新增回應式內嵌投影片與視訊，請使用 `<iframe>`， `<embed>`， `<video>`，或`<object>`元素，Bootstrap 會自動設定這些元素的樣式。 若要指定特定的長寬比，請使用如 "embed-responsive-16by9" 的特定類別。
 
 ## <a name="javascript-support"></a>JavaScript 支援
 
-啟動安裝程式的 JavaScript 程式庫包含共用的元件，可讓您控制它們的行為，以程式設計方式在應用程式中的應用程式開發介面支援。 此外， *bootstrap.js*包含鋮自訂 jQuery 外掛程式，提供額外的功能，例如轉換之後，強制回應對話方塊中，捲動偵測 （更新樣式根據使用者已捲動文件中的位置），摺疊行為，可提領轉盤，並加至視窗，因此它們不捲動超出螢幕的功能表。 沒有足夠空間可以涵蓋所有的啟動程序 – 若要了解更多，請瀏覽內建 JavaScript 附加[ http://getbootstrap.com/javascript/ ](http://getbootstrap.com/javascript/)。
+Bootstrap 的 JavaScript 程式庫提供了所包含元件的 API 支援，可讓您在應用程式中以程式設計的方式來控制其行為。 此外， *bootstrap.js*包含十多個自訂 jQuery 外掛程式，提供額外的功能，例如轉換、強制回應對話方塊、捲動偵測 (根據使用者捲動文件的位置來更新樣式)、摺疊行為、浮動切換，以及將功能表固定至視窗，以免被捲動而超出螢幕。 此處無法詳述 Bootstrap 內建的 JavaScript 附加元件。若要深入了解，請瀏覽[ http://getbootstrap.com/javascript/ ](http://getbootstrap.com/javascript/)。
 
 ## <a name="summary"></a>總結
 
-啟動程序會提供一種 web 架構，可用來快速且有效率地配置和樣式各種不同的網站和應用程式。 其基本的印刷樣式和樣式提供愉快的外觀及操作，可輕鬆地透過自訂的佈景主題支援，可以對手工或購買商業上操作。 它支援的 web 元件在過去就已經要求昂貴的協力廠商控制項，來完成，同時支援現代化和開啟 web 標準的主機。
+Bootstrap 提供了一種 Web 架構，可用來快速且有效率地為各種不同的網站和應用程式設定版面配置和樣式。 Bootstrap 的基本印刷樣式和樣式便能提供不錯的外觀，並可透過自行開發或購買現成的自訂主題來輕鬆地操控。 它支援許多以往需要昂貴的協力廠商控制項才能完成的 Web 元件，同時支援現代化和開放的 Web 標準。

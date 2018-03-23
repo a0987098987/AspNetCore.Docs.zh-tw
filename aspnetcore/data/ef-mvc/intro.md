@@ -1,7 +1,7 @@
-﻿---
-title: "ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10"
+---
+title: ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 author: tdykstra
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -88,7 +88,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 開啟 *Views/Shared/_Layout.cshtml* 並進行下列變更：
 
-* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。共出現三次。
+* 將每個出現的 "ContosoUniversity" 都變更為 "Contoso University"。 共出現三次。
 
 * 為 **Students**、**Courses**、**Instructors**、**Departments** 新增功能表項目，並刪除 **Contact** 功能表項目。
 

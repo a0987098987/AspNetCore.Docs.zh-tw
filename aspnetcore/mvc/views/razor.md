@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的 Razor 語法參考"
+title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
-description: "了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。"
+description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
 manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
@@ -613,7 +613,7 @@ Razor 檢視引擎會針對檢視執行區分大小寫的查閱。 不過，實�
 
 建議開發人員比對檔案和目錄的大小寫以及下列項目的大小寫：
 
-* 區域、控制器和動作名稱。 
-* Razor Pages。
+    * 區域、控制器和動作名稱。 
+    * Razor Pages。
     
 比對大小寫可確保不論基礎檔案系統為何，部署作業都能夠找到其值。

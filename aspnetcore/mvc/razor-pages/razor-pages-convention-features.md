@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的 Razor Pages 路由和應用程式慣例功能"
+title: ASP.NET Core 中的 Razor Pages 路由和應用程式慣例功能
 author: guardrex
-description: "探索路由和應用程式模型提供者慣例功能如何協助您控制頁面路由、探索與處理。"
+description: 探索路由和應用程式模型提供者慣例功能如何協助您控制頁面路由、探索與處理。
 manager: wpickett
 ms.author: riande
 ms.date: 10/23/2017
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="add-route-and-app-model-conventions"></a>新增路由和應用程式模型慣例
 
-新增 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 的委派，以新增套用至 Razor Pages 的路由和應用程式模型慣例。
+新增 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 的委派，以新增套用至 Razor Pages 的路由和應用程式模型慣例
 
 **將路由模型慣例新增至所有頁面**
 

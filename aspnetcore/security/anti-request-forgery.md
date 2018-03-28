@@ -1,7 +1,7 @@
 ---
-title: "防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core"
+title: 防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core
 author: steve-smith
-description: "了解如何防止攻擊，其中惡意網站可能會影響用戶端瀏覽器和應用程式之間的互動的 web 應用程式。"
+description: 了解如何防止攻擊，其中惡意網站可能會影響用戶端瀏覽器和應用程式之間的互動的 web 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 7/14/2017
@@ -11,7 +11,7 @@ ms.topic: article
 uid: security/anti-request-forgery
 ms.openlocfilehash: 80651a3c3e4c722e0cb96d7cc07de366819f8d1d
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/02/2018
 ---

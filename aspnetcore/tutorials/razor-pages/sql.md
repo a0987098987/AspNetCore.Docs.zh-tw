@@ -1,19 +1,19 @@
 ---
-title: "使用 SQL Server LocalDB 與 ASP.NET Core"
+title: 使用 SQL Server LocalDB 與 ASP.NET Core
 author: rick-anderson
-description: "說明如何使用 SQL Server LocalDB 與 ASP.NET Core。"
-ms.author: riande
+description: 說明如何使用 SQL Server LocalDB 與 ASP.NET Core。
 manager: wpickett
+ms.author: riande
 ms.date: 08/07/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 07f024e2e178828c4488adfd866fc6eec3b251dd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3bec0b7b547443dbb20c7e3a7422262c05f93975
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
@@ -31,7 +31,7 @@ ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `Con
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/*\<使用者\> 目錄中建立 "\*.mdf" 檔案。
+LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發為其目標。 LocalDB 會依需求啟動，並以使用者模式執行，因此沒有複雜的組態。 根據預設，LocalDB 資料庫會在 *C:/Users/\<使用者\>* 目錄中建立 "\*.mdf" 檔案。
 
 <a name="ssox"></a>
 * 從 [檢視] 功能表中，開啟 [SQL Server 物件總管] (SSOX)。

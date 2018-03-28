@@ -1,7 +1,7 @@
 ---
-title: "將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式"
+title: 將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式
 author: rick-anderson
-description: "將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式"
+description: 將模型新增至 ASP.NET Core 中的 Razor Pages 應用程式
 manager: wpickett
 ms.author: riande
 ms.date: 07/27/2017

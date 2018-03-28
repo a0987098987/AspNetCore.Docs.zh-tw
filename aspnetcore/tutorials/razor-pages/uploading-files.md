@@ -1,7 +1,7 @@
 ---
-title: "將檔案上傳至 ASP.NET Core 的 Razor Pages"
+title: 將檔案上傳至 ASP.NET Core 的 Razor Page
 author: guardrex
-description: "了解如何將檔案上傳至 Razor Pages。"
+description: 了解如何將檔案上傳至 Razor Page。
 manager: wpickett
 ms.author: riande
 ms.date: 09/12/2017
@@ -15,13 +15,13 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/01/2018
 ---
-# <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
+# <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor Page
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 本節會示範如何使用 Razor Page 上傳檔案。
 
-在本教學課程中，[Razor Pages 電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
+在本教學課程中，[Razor Page 電影範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie)會使用簡單的模型繫結上傳檔案；這種方法很適合用來上傳小型檔案。 如需串流大型檔案的資訊，請參閱[使用串流上傳大型檔案](xref:mvc/models/file-uploads#uploading-large-files-with-streaming)。
 
 在下列步驟中，電影排程檔案上傳功能會新增至範例應用程式。 電影排程是由 `Schedule` 類別表示。 此類別包含兩個版本的排程。 `PublicSchedule` 為提供給客戶的版本， 而另一個 `PrivateSchedule` 版本則用於公司員工。 每個版本都會以個別的檔案上傳。 本教學課程示範如何使用單一 POST 將兩個檔案從頁面上傳到伺服器。
 
@@ -133,7 +133,7 @@ Update-Database
 
 [!code-csharp[Main](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
 
-## <a name="link-the-file-upload-razor-page"></a>連結檔案上傳 Razor Page
+## <a name="link-the-file-upload-razor-page"></a>連結檔案上傳 Razor 頁面
 
 開啟 *_Layout.cshtml*，然後將連結新增至導覽列以存取檔案上傳頁面：
 

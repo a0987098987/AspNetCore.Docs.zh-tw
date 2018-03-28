@@ -1,7 +1,7 @@
 ---
-title: "開始使用 ASP.NET Core 中的 Razor Pages"
+title: 開始使用 ASP.NET Core 中的 Razor Pages
 author: rick-anderson
-description: "開始使用 ASP.NET Core 中的 Razor Pages"
+description: 開始使用 ASP.NET Core 中的 Razor Pages
 manager: wpickett
 ms.author: riande
 ms.date: 12/22/2017
@@ -19,7 +19,7 @@ ms.lasthandoff: 01/30/2018
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程將教導您建置 ASP.NET Core Razor Pages 之 Web 應用程式的基本概念。 Razor Pages 是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
+本教學課程將教導您建置 ASP.NET Core Razor Pages之 Web 應用程式的基本概念。 Razor Pages 是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
 本教學課程有 3 個版本：
 

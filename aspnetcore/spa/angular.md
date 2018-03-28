@@ -59,7 +59,7 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中瀏覽此 url。
 
-應用程式啟動的角度 CLI 伺服器在背景中執行個體設定。 會記錄類似下列的訊息：*NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上 http://localhost:&lt;otherport&gt; /*. 忽略此訊息&mdash;它有**不**結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
+應用程式在背景中啟動了 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息：*NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上 http://localhost:&lt;otherport&gt; /*. 忽略此訊息&mdash;它有**不**結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
 
 ---
 

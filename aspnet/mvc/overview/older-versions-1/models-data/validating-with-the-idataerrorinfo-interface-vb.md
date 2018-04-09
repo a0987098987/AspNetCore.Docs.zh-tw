@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-vb
-title: "驗證與 IDataErrorInfo 介面 (VB) |Microsoft 文件"
+title: 驗證與 IDataErrorInfo 介面 (VB) |Microsoft 文件
 author: StephenWalther
-description: "作者： Stephen Walther 會示範如何在模型類別中實作 IDataErrorInfo 介面中顯示自訂的驗證錯誤訊息。"
+description: 作者： Stephen Walther 會示範如何在模型類別中實作 IDataErrorInfo 介面中顯示自訂的驗證錯誤訊息。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1439d470a7fa3cb1171dbdd0b7eec6a6aa52912d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60df0f934432484e0c97e0caef25c15605beb14f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-the-idataerrorinfo-interface-vb"></a>驗證與 IDataErrorInfo 介面 (VB)
 ====================
@@ -37,8 +37,8 @@ ms.lasthandoff: 11/10/2017
 | **資料行名稱** | **資料類型** | **允許 null 值** |
 | --- | --- | --- |
 | ID | Int | False |
-| 標題 | Nvarchar （100) | False |
-| 導向器 | Nvarchar （100) | False |
+| 標題 | Nvarchar(100) | False |
+| 導向器 | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/10/2017
 
 我們會使用清單電影主控制器，並建立新的電影。 這個類別的程式碼會包含在程式碼範例 1。
 
-**列出 1-Controllers\HomeController.vb**
+**Listing 1 - Controllers\HomeController.vb**
 
 [!code-vb[Main](validating-with-the-idataerrorinfo-interface-vb/samples/sample1.vb)]
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/10/2017
 > 部分方法是，您就不需要實作在類別中定義的方法。 如果您不要只實作部分方法，編譯器會移除方法簽章，並因此方法的所有呼叫都都沒有與部分方法相關聯的執行階段成本。 在 Visual Studio 程式碼編輯器中，您可以輸入關鍵字加入部分方法*部分*後面接著一個空格，以檢視來實作 partials 的清單。
 
 
-**列出 3-Models\Movie.vb**
+**Listing 3 - Models\Movie.vb**
 
 [!code-vb[Main](validating-with-the-idataerrorinfo-interface-vb/samples/sample4.vb)]
 
@@ -161,6 +161,6 @@ DefaultModelBinder 也會檢查 IDataErrorInfo.Error 屬性。 這個屬性會�
 
 在本教學課程中，您將學會如何使用 IDataErrorInfo 介面來產生驗證錯誤訊息。 首先，我們建立擴充功能的 Entity Framework 所產生的部分影片類別的部分影片類別。 接下來，我們加入驗證邏輯的電影類別 OnTitleChanging() 和 OnDirectorChanging() 部分方法。 最後，我們會實作 IDataErrorInfo 介面以公開至 ASP.NET MVC framework 這些驗證訊息。
 
->[!div class="step-by-step"]
-[上一頁](performing-simple-validation-vb.md)
-[下一頁](validating-with-a-service-layer-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](performing-simple-validation-vb.md)
+> [下一頁](validating-with-a-service-layer-vb.md)

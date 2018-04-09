@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
-title: "購物車 |Microsoft 文件"
+title: 購物車 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
-ms.openlocfilehash: 9fe6f28685d6a423b03f9c7abe753283b89344e1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a8e96da7737cdf649575711a464c4f7726cb6ded
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="shopping-cart"></a>購物車
 ====================
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/24/2018
     ![購物車-加入新項目 對話方塊](shopping-cart/_static/image2.png)
 3. 這個新類別命名*CartItem.cs*。
 4. 按一下 [加入] 。  
- 在編輯器中，會顯示新的類別檔案。
+   在編輯器中，會顯示新的類別檔案。
 5. 下列程式碼取代預設程式碼：   
 
     [!code-csharp[Main](shopping-cart/samples/sample1.cs)]
@@ -136,7 +136,7 @@ ms.lasthandoff: 01/24/2018
 #### <a name="to-create-the-add-to-cart-functionality"></a>若要建立購物車新增功能：
 
 1. 在**方案總管] 中**，以滑鼠右鍵按一下**WingtipToys**專案中，按一下 [**新增** - &gt; **新項目**。  
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 加入指定的應用程式的標準新的頁面 （Web 表單） *AddToCart.aspx*。 
 
     ![購物車-加入 Web 表單](shopping-cart/_static/image4.png)
@@ -154,7 +154,7 @@ ms.lasthandoff: 01/24/2018
 *ShoppingCart.aspx*頁面將顯示的使用者新增至購物車的產品。 它也會提供了可新增、 移除和更新購物車中的項目。
 
 1. 在**方案總管] 中**，以滑鼠右鍵按一下**WingtipToys**，按一下 [**新增** - &gt; **新項目**。  
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 加入新的頁面 （Web 表單），其中包含所選取的主版頁面**使用主版頁面的 Web Form**。 將新頁面*ShoppingCart.aspx*。
 3. 選取**Site.Master**附加到新建立的主版頁面*.aspx*頁面。
 4. 在*ShoppingCart.aspx*頁面上，以下列標記取代現有的標記：   
@@ -323,6 +323,6 @@ ms.lasthandoff: 01/24/2018
 
 [ASP.NET 工作階段狀態概觀](https://msdn.microsoft.com/library/ms178581.aspx)
 
->[!div class="step-by-step"]
-[上一頁](display_data_items_and_details.md)
-[下一頁](checkout-and-payment-with-paypal.md)
+> [!div class="step-by-step"]
+> [上一頁](display_data_items_and_details.md)
+> [下一頁](checkout-and-payment-with-paypal.md)

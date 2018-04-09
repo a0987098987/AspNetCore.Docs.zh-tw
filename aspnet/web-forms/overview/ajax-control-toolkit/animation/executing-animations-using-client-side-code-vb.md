@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-vb
-title: "執行動畫使用用戶端程式碼 (VB) |Microsoft 文件"
+title: 執行動畫使用用戶端程式碼 (VB) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c97ce87addd566ed1ba63ccdb81206c6449f49a2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e2b8c499edaccc70d439a576feb80e91cb28c1c7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="executing-animations-using-client-side-code-vb"></a>使用用戶端程式碼 (VB) 執行動畫
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行也可能使用自訂用戶端 JavaScript 程式碼會觸發。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行也可能使用自訂用戶端 JavaScript 程式碼會觸發。
 
@@ -70,6 +70,6 @@ ms.lasthandoff: 11/10/2017
 
 動畫會立即執行，而按一下滑鼠 ([按一下以檢視完整大小的影像](executing-animations-using-client-side-code-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](modifying-animations-from-the-server-side-vb.md)
-[下一頁](changing-an-animation-using-client-side-code-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](modifying-animations-from-the-server-side-vb.md)
+> [下一頁](changing-an-animation-using-client-side-code-vb.md)

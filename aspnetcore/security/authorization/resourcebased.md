@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 資源為基礎的授權"
+title: 在 ASP.NET Core 資源為基礎的授權
 author: scottaddie
-description: "了解如何授權屬性不敷使用時，ASP.NET Core 應用程式中實作資源為基礎的授權。"
+description: 了解如何授權屬性不敷使用時，ASP.NET Core 應用程式中實作資源為基礎的授權。
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 723e371e0d0b4877f96898c68cd59b433fa97dc1
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 5eac8ecf9de074d0a009690969de5beb4f284341
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="resource-based-authorization"></a>資源為基礎的授權
+# <a name="resource-based-authorization-in-aspnet-core"></a>在 ASP.NET Core 資源為基礎的授權
 
 授權策略取決於所存取的資源。 請考慮具有 author 屬性的文件。 只有作者可更新的文件。 因此，在文件之前必須擷取從資料存放區授權評估可能會發生。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/03/2018
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Controllers/DocumentController.cs?name=snippet_IAuthServiceDI&highlight=6)]
 
-`IAuthorizationService`有兩個`AuthorizeAsync`方法多載： 一個接受資源和原則名稱以及其他資源，以及一份需求來評估所接受。
+`IAuthorizationService` 有兩個`AuthorizeAsync`方法多載： 一個接受資源和原則名稱以及其他資源，以及一份需求來評估所接受。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -66,30 +66,24 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > 下列程式碼範例假設已執行驗證，以及組`User`屬性。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
----
-
+* * *
 ## <a name="write-a-resource-based-handler"></a>寫入資源為基礎的處理常式
 
 撰寫處理常式的資源為基礎的授權沒有很多不同[撰寫一般需求的處理常式](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler)。 建立自訂需求類別，並實作需求的處理常式類別。 此處理常式類別會指定需求和資源類型。 例如，處理常式利用`SameAuthorRequirement`需求和`Document`資源看起來像這樣：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
----
-
+* * *
 註冊需求和處理常式中的`Startup.ConfigureServices`方法：
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=3-7,9)]
@@ -102,16 +96,13 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 
 此處理常式，如下所示，使用實作`OperationAuthorizationRequirement`需求和`Document`資源：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
----
-
+* * *
 上述的處理常式驗證作業使用的資源、 使用者的身分識別和需求之`Name`屬性。
 
 若要呼叫的作業資源的處理常式，指定的作業時叫用`AuthorizeAsync`網頁處理常式或動作中。 下列範例會判斷是否允許已驗證的使用者檢視提供的文件。
@@ -119,16 +110,14 @@ Task<bool> AuthorizeAsync(ClaimsPrincipal user,
 > [!NOTE]
 > 下列程式碼範例假設已執行驗證，以及組`User`屬性。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
 
 如果授權成功，則會傳回檢視文件的頁面。 如果授權失敗，但使用者進行驗證時，傳回`ForbidResult`通知授權失敗的任何驗證中介軟體。 A`ChallengeResult`必須執行驗證時，會傳回。 互動式瀏覽器用戶端，可能適合將使用者重新導向至登入頁面。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
 
 如果授權成功，則會傳回文件的檢視。 如果授權失敗，傳回`ChallengeResult`告知任何驗證中介軟體，，授權失敗，且中介軟體可以採取適當的回應。 適當的回應可以傳回 401 或 403 狀態碼。 互動式瀏覽器用戶端，這可能表示將使用者重新導向至登入頁面。
 
----
+* * *

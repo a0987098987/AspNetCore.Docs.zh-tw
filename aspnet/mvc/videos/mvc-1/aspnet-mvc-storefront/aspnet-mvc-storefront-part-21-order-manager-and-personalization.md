@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization
-title: "ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化 |Microsoft 文件"
+title: ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化 |Microsoft 文件
 author: robconery
-description: "在本集中我建立訂單管理員頁面，並討論 「 訂單履行 」 與相關的各種問題。 此外在介紹個人化功能..."
+description: 在本集中我建立訂單管理員頁面，並討論 「 訂單履行 」 與相關的各種問題。 此外在介紹個人化功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization
 msc.type: video
-ms.openlocfilehash: bb4652675b7e23953807044e42f771be1c10ed1f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 31027dbede77e1b14509ac321a4e73a89486627f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-storefront-part-21-order-manager-and-personalization"></a>ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （43 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-21-order-manager-and-personalization)
 
->[!div class="step-by-step"]
-[上一頁](aspnet-mvc-storefront-part-20-logging.md)
-[下一頁](aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal.md)
+> [!div class="step-by-step"]
+> [上一頁](aspnet-mvc-storefront-part-20-logging.md)
+> [下一頁](aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal.md)

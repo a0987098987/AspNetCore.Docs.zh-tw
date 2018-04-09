@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs
-title: "控制在內容頁 (C#) 命名識別碼 |Microsoft 文件"
+title: 控制在內容頁 (C#) 命名識別碼 |Microsoft 文件
 author: rick-anderson
-description: "說明如何 ContentPlaceHolder 控制項做為命名的容器，因此做以程式設計方式使用 （透過 FindConrol) 困難控制項..."
+description: 說明如何 ContentPlaceHolder 控制項做為命名的容器，因此做以程式設計方式使用 （透過 FindConrol) 困難控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0c0db7fd76a7a486ff45085329ef7c77b0af5ebe
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1e834c38457c8477e0c81598d32f1e98473949d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="control-id-naming-in-content-pages-c"></a>在內容頁 (C#) 命名的控制項 ID
 ====================
@@ -121,7 +121,7 @@ Visual Studio 會自動建立每個主版頁面的四個 ContentPlaceHolders 的
 
 每個 ASP.NET 伺服器控制項包括`FindControl("controlID")`方法，會搜尋控制項，名為的控制項的下階*controlID*。 如果找到這類控制項，它會傳回。如果找不到任何相符的控制項，`FindControl`傳回`null`。
 
-`FindControl`當您需要存取控制項，但您不需要直接參考它的案例中很有用。 GridView 的欄位內的控制項時使用的 Web 控制項，例如 GridView，比方說，資料會一次定義在宣告式語法中，但在執行階段建立控制項的執行個體的每個 GridView 資料列。 因此，在執行階段產生的控制項，但我們並沒有可從程式碼後置類別的直接參考。 因此我們需要使用`FindControl`以程式設計的方式與 GridView 的欄位內特定的控制項。 (如需有關使用`FindControl`若要存取資料 Web 控制項範本中的控制項，請參閱[自訂格式化時資料](../../data-access/custom-formatting/custom-formatting-based-upon-data-cs.md)。)以動態方式將 Web 控制項加入至 Web 表單時，就會發生這種狀況下，主題中討論[建立動態資料輸入使用者介面](https://msdn.microsoft.com/library/aa479330.aspx)。
+`FindControl` 當您需要存取控制項，但您不需要直接參考它的案例中很有用。 GridView 的欄位內的控制項時使用的 Web 控制項，例如 GridView，比方說，資料會一次定義在宣告式語法中，但在執行階段建立控制項的執行個體的每個 GridView 資料列。 因此，在執行階段產生的控制項，但我們並沒有可從程式碼後置類別的直接參考。 因此我們需要使用`FindControl`以程式設計的方式與 GridView 的欄位內特定的控制項。 (如需有關使用`FindControl`若要存取資料 Web 控制項範本中的控制項，請參閱[自訂格式化時資料](../../data-access/custom-formatting/custom-formatting-based-upon-data-cs.md)。)以動態方式將 Web 控制項加入至 Web 表單時，就會發生這種狀況下，主題中討論[建立動態資料輸入使用者介面](https://msdn.microsoft.com/library/aa479330.aspx)。
 
 為了說明使用`FindControl`方法來搜尋控制項在內容頁面，建立事件處理常式`SubmitButton`的`Click`事件。 事件處理常式中加入下列程式碼，以程式設計方式參考`Age`文字方塊和`Results`標籤使用`FindControl`方法，然後顯示中的訊息`Results`根據使用者輸入。
 
@@ -256,7 +256,7 @@ Visual Studio 會自動建立每個主版頁面的四個 ContentPlaceHolders 的
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [ASP.NET 主版頁面和`FindControl`](http://www.west-wind.com/WebLog/posts/5127.aspx)
+- [ASP.NET 主版頁面和 `FindControl`](http://www.west-wind.com/WebLog/posts/5127.aspx)
 - [建立動態資料的項目使用者介面](https://msdn.microsoft.com/library/aa479330.aspx)
 - [擴充基底型別功能與擴充方法](http://aspnet.4guysfromrolla.com/articles/120507-1.aspx)
 - [如何： 參考 ASP.NET 主版頁面內容](https://msdn.microsoft.com/library/xxwa0ff0.aspx)
@@ -265,12 +265,12 @@ Visual Studio 會自動建立每個主版頁面的四個 ContentPlaceHolders 的
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Zack Jones 和 Suchi Barnerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](urls-in-master-pages-cs.md)
-[下一頁](interacting-with-the-master-page-from-the-content-page-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](urls-in-master-pages-cs.md)
+> [下一頁](interacting-with-the-master-page-from-the-content-page-cs.md)

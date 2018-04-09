@@ -1,7 +1,7 @@
 ---
-title: "個別使用者帳戶建立的專案為基礎的發行項"
+title: 個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
 author: rick-anderson
-description: "本文件列出個別的使用者帳戶建立的專案為基礎的發行項。"
+description: 探索與個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項。
 manager: wpickett
 ms.author: riande
 ms.date: 11/30/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/individual
-ms.openlocfilehash: aee18fa08fbc5c8452ca2b401d32858edaf55e7c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 40715debb48c0a7121ce84d7843b8517b0973e74
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="articles-based-on-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的專案為基礎的發行項
+# <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>個別使用者帳戶建立的 ASP.NET Core 專案為基礎的發行項
 
 ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使用者帳戶 」 選項。
 

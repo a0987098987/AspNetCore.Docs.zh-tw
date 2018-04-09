@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
-title: "將新欄位加入至電影模型和資料表 |Microsoft 文件"
+title: 將新欄位加入至電影模型和資料表 |Microsoft 文件
 author: Rick-Anderson
-description: "注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範..."
+description: 注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: 9965c8a755857a8e8cb8ecbc6c467a6c856aa83d
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: d8a42e9acdce687ab6e9742071dd2949f244622f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>將新欄位加入至電影模型和資料表
 ====================
@@ -107,7 +107,7 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 既然您已更新`Model`類別，您也需要更新*\Views\Movies\Index.cshtml*和*\Views\Movies\Create.cshtml*檢視範本以顯示新`Rating`瀏覽器檢視中的屬性。
 
-開啟*\Views\Movies\Index.cshtml*檔案，然後加入`<th>Rating</th>`欄名後方**價格**資料行。 然後加入`<td>`即將要呈現之範本的結束欄`@item.Rating`值。 以下是哪些更新*Index.cshtml*檢視範本外觀就像：
+開啟<em>\Views\Movies\Index.cshtml</em>檔案，然後加入`<th>Rating</th>`欄名後方<strong>價格</strong>資料行。 然後加入`<td>`即將要呈現之範本的結束欄`@item.Rating`值。 以下是哪些更新<em>Index.cshtml</em>檢視範本外觀就像：
 
 [!code-cshtml[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample5.cshtml?highlight=26-28,46-48)]
 
@@ -173,6 +173,6 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 本節中您已看到如何修改模型物件和資料庫中與變更保持同步。 您也學到如何填入新建立的資料庫中的範例資料，因此您可以嘗試的案例。 接下來，讓我們看看如何將更豐富的驗證邏輯加入至模型類別，並啟用某些商務規則，以強制執行。
 
->[!div class="step-by-step"]
-[上一頁](examining-the-edit-methods-and-edit-view.md)
-[下一頁](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [上一頁](examining-the-edit-methods-and-edit-view.md)
+> [下一頁](adding-validation-to-the-model.md)

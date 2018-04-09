@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
-title: "企業 Web 部署： 案例概觀 |Microsoft 文件"
+title: 企業 Web 部署： 案例概觀 |Microsoft 文件
 author: jrjlee
-description: "這組教學課程使用實際的層級的複雜性，以及虛構的企業部署案例中，範例方案，提供 ref..."
+description: 這組教學課程使用實際的層級的複雜性，以及虛構的企業部署案例中，範例方案，提供 ref...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
 msc.type: authoredcontent
-ms.openlocfilehash: f90db22bf98456661c530e728e854ce109aec6fd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 20f6e206d6aa4bebb4936246468f5ada0e213236
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enterprise-web-deployment-scenario-overview"></a>企業 Web 部署： 案例概觀
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 這組教學課程會使用範例方案實際的層級的複雜性，以及虛構的企業部署案例中，以提供參考實作，以及提供的工作和逐步解說的一般內容。 本主題描述教學課程案例，並介紹範例方案。
 
 
-## <a name="scenario-description"></a>案例描述
+## <a name="scenario-description"></a>Scenario Description
 
 Fabrikam，Inc.的虛構的公司，正在建立解決方案，可讓遠端銷售團隊，儲存和擷取連絡資訊從 web 介面。
 
@@ -78,10 +78,10 @@ Fabrikam，Inc.的虛構的公司，正在建立解決方案，可讓遠端銷�
 
 ![](enterprise-web-deployment-scenario-overview/_static/image2.png)
 
-- **ContactManager.Mvc**。 這是 ASP.NET MVC3 web 應用程式專案，表示方案的進入點。 它提供一些基本 web 應用程式功能，例如使用者提供的功能，以建立及檢視連絡人詳細資料。 應用程式依賴 Windows Communication Foundation (WCF) 服務來管理連絡人及管理驗證和授權的 ASP.NET 應用程式服務資料庫。
-- **ContactManager.Database**。 這是 Visual Studio 2010 資料庫專案。 專案定義的商店連絡人詳細資料的資料庫結構描述。
-- **ContactManager.Service**。 這是 WCF web 服務專案。 建立允許執行的呼叫端的端點，WCF 會公開擷取、 更新和刪除 (CRUD) 作業，請連絡管理員資料庫上。 服務會仰賴連絡人管理員資料庫和 ContactManager.Common.dll 組件。
-- **ContactManager.Common**。 這是類別庫專案。 WCF 服務依賴這個組件中定義的型別。
+- **ContactManager.Mvc**. 這是 ASP.NET MVC3 web 應用程式專案，表示方案的進入點。 它提供一些基本 web 應用程式功能，例如使用者提供的功能，以建立及檢視連絡人詳細資料。 應用程式依賴 Windows Communication Foundation (WCF) 服務來管理連絡人及管理驗證和授權的 ASP.NET 應用程式服務資料庫。
+- **ContactManager.Database**. 這是 Visual Studio 2010 資料庫專案。 專案定義的商店連絡人詳細資料的資料庫結構描述。
+- **ContactManager.Service**. 這是 WCF web 服務專案。 建立允許執行的呼叫端的端點，WCF 會公開擷取、 更新和刪除 (CRUD) 作業，請連絡管理員資料庫上。 服務會仰賴連絡人管理員資料庫和 ContactManager.Common.dll 組件。
+- **ContactManager.Common**. 這是類別庫專案。 WCF 服務依賴這個組件中定義的型別。
 
 本系列，第一個教學課程中所提供的方案和其部署需求的完整檢閱[企業中的 Web 部署](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md)。
 
@@ -122,6 +122,6 @@ Fabrikam，Inc.的虛構的公司，正在建立解決方案，可讓遠端銷�
 - 您想要記錄部署活動。 部署程序應該傳送給指定的收件者的電子郵件通知的成功或失敗的部署。
 - 如果自動化的部署失敗，部署程序應該重試目前的部署，或改為部署先前 web 套件。
 
->[!div class="step-by-step"]
-[上一頁](deploying-web-applications-in-enterprise-scenarios.md)
-[下一頁](application-lifecycle-management-from-development-to-production.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-web-applications-in-enterprise-scenarios.md)
+> [下一頁](application-lifecycle-management-from-development-to-production.md)

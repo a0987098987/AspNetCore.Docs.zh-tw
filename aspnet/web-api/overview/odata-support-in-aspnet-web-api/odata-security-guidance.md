@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance
-title: "安全性指導方針，ASP.NET web API 2 OData |Microsoft 文件"
+title: 安全性指導方針，ASP.NET web API 2 OData |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/06/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 799e2a0c742b545acf3b5cd27531d734aa7def80
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 41b05f2a2f8247853d8358e6cc1246c8b438a6db
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a>安全性指導方針，ASP.NET web API 2 OData
 ====================
@@ -70,8 +70,8 @@ ms.lasthandoff: 03/15/2018
     [!code-csharp[Main](odata-security-guidance/samples/sample9.cs)]
 - 請考慮限制 $filter 查詢撰寫已針對您的資料庫進行自訂的驗證程式。 例如，請考慮這兩個查詢： 
 
-    - 最後一個名稱開頭為 'A' 的執行者的所有電影。
-    - 所有的影片，1994 年發行。
+  - 最後一個名稱開頭為 'A' 的執行者的所有電影。
+  - 所有的影片，1994 年發行。
 
     除非電影會由動作項目編製索引，第一個查詢可能需要掃描整個清單的電影資料庫引擎。 而第二個查詢都可能是可接受的此時是假設的電影的索引是由發行年份。
 

@@ -1,7 +1,7 @@
 ---
-title: "疑難排解在 IIS 上的 ASP.NET Core"
+title: 疑難排解在 IIS 上的 ASP.NET Core
 author: guardrex
-description: "了解如何診斷問題的網際網路資訊服務 (IIS) 的 ASP.NET Core 應用程式的部署。"
+description: 了解如何診斷問題的網際網路資訊服務 (IIS) 的 ASP.NET Core 應用程式的部署。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 65173e0101a17c64f4cde583e5bbb9fb0a9c7718
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e44892d2022ca1a176cee9d027e220e196c6572d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>疑難排解在 IIS 上的 ASP.NET Core
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/11/2018
 [針對 Azure App Service 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)  
 雖然應用程式服務會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)和 IIS 主控件應用程式，請參閱應用程式服務的特定指示的專用的主題。
 
-[錯誤處理](xref:fundamentals/error-handling)  
+[處理錯誤](xref:fundamentals/error-handling)  
 了解如何在本機系統上的開發期間處理 ASP.NET Core 應用程式中的錯誤。
 
 [了解使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger)  
@@ -96,20 +96,20 @@ ASP.NET 核心模組嘗試啟動背景工作處理序，但無法啟動。 處�
 
 1. 瀏覽至主機系統上的站台的部署資料夾。
 1. 如果*記錄*資料夾不存在、 建立資料夾。 如需如何啟用 MSBuild 的指示來建立*記錄*部署中的資料夾自動執行，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
-1. 編輯*web.config*檔案。 設定**stdoutLogEnabled**至`true`並變更**stdoutLogFile**路徑以指向*記錄檔*資料夾 (例如， `.\logs\stdout`)。 `stdout`在路徑中會記錄檔案名稱前置詞。 時間戳記、 處理序識別碼，以及檔案延伸模組會自動加入時建立記錄檔。 使用`stdout`一般記錄檔檔案名稱前置詞，以名為*stdout_20180205184032_5412.log*。 
+1. 編輯*web.config*檔案。 設定**stdoutLogEnabled**至`true`並變更**stdoutLogFile**路徑以指向*記錄檔*資料夾 (例如， `.\logs\stdout`)。 `stdout` 在路徑中會記錄檔案名稱前置詞。 時間戳記、 處理序識別碼，以及檔案延伸模組會自動加入時建立記錄檔。 使用`stdout`一般記錄檔檔案名稱前置詞，以名為*stdout_20180205184032_5412.log*。 
 1. 儲存已更新*web.config*檔案。
 1. 應用程式提出要求。
 1. 瀏覽至*記錄*資料夾。 尋找並開啟最近 stdout 記錄檔。
 1. 研究記錄的錯誤。
 
-**重要 ！** 停用 stdout 記錄完成疑難排解時。
+**重要！** 停用 stdout 記錄完成疑難排解時。
 
 1. 編輯*web.config*檔案。
 1. 設定**stdoutLogEnabled**至`false`。
 1. 儲存檔案。
 
 > [!WARNING]
-> 若要停用 stdout 記錄的失敗可能會導致應用程式或伺服器失敗。 沒有記錄檔的大小沒有限制或建立的記錄檔的數目。
+> 若要停用 stdout 記錄的失敗可能會導致應用程式或伺服器失敗。 因為它並沒有記錄檔大小或數量上的限制。
 >
 > 例行記錄中的 ASP.NET Core 應用程式、 使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 

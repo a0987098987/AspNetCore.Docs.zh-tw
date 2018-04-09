@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
-title: "防止 JavaScript 插入式攻擊 (C#) |Microsoft 文件"
+title: 防止 JavaScript 插入式攻擊 (C#) |Microsoft 文件
 author: StephenWalther
-description: "防止 JavaScript 插入式攻擊和跨網站指令碼處理攻擊發生給您。 在此教學課程中，作者： Stephen Walther 會說明如何輕鬆地 de..."
+description: 防止 JavaScript 插入式攻擊和跨網站指令碼處理攻擊發生給您。 在此教學課程中，作者： Stephen Walther 會說明如何輕鬆地 de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 67f53162cb1bb0771d632ba7a3f5960db00e2744
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fbec58c009640164d908db5a45557c9e50041173
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="preventing-javascript-injection-attacks-c"></a>防止 JavaScript 插入式攻擊 (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 客戶意見反應網站會使用`controller`列表 1 中。 這`controller`包含名為兩個動作`Index()`和`Create()`。
 
-**列出 1 –`HomeController.cs`**
+**列出 1 – `HomeController.cs`**
 
 [!code-csharp[Main](preventing-javascript-injection-attacks-cs/samples/sample1.cs)]
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 `Index`檢視包含在清單 2。
 
-**列出 2 –`Index.aspx`**
+**列出 2 – `Index.aspx`**
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-cs/samples/sample2.aspx)]
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-html[Main](preventing-javascript-injection-attacks-cs/samples/sample3.html)]
 
-這段文字表示的 JavaScript 指令碼，會顯示警示訊息方塊。 有人將此指令碼提交至意見反應之後形成，訊息*Boo ！*任何人拜訪客戶意見反應網站將來 （請參閱圖 2） 時，會出現。
+這段文字表示的 JavaScript 指令碼，會顯示警示訊息方塊。 有人將此指令碼提交至意見反應之後形成，訊息<em>Boo ！</em>任何人拜訪客戶意見反應網站將來 （請參閱圖 2） 時，會出現。
 
 
 [![JavaScript 資料隱碼](preventing-javascript-injection-attacks-cs/_static/image5.png)](preventing-javascript-injection-attacks-cs/_static/image4.png)
@@ -121,6 +121,6 @@ ms.lasthandoff: 11/10/2017
 
 本教學課程的用途是為了嚇到您的 JavaScript 插入式攻擊的潛在相關。 本教學課程所討論的防禦 JavaScript 資料隱碼攻擊您的 ASP.NET MVC 應用程式的兩種方法： 可以是 HTML 編碼提交的使用者資料的檢視，或者您可以 HTML 編碼使用者提交控制器中的資料。
 
->[!div class="step-by-step"]
-[上一頁](authenticating-users-with-windows-authentication-cs.md)
-[下一頁](authenticating-users-with-forms-authentication-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](authenticating-users-with-windows-authentication-cs.md)
+> [下一頁](authenticating-users-with-forms-authentication-vb.md)

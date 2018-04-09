@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-7
-title: "建立檢視 (UI) |Microsoft 文件"
+title: 建立檢視 (UI) |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 8c5cc662e2e3c9cb07ca9e30ff57eb084d58e1bb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5052d7cca4a5c12a9ea56eb929d4794b19e82603
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-view-ui"></a>建立檢視 (UI)
 ====================
@@ -54,6 +54,6 @@ ms.lasthandoff: 11/10/2017
 
 書籍清單會以非同步方式載入後在頁面載入。 現在，&quot;詳細資料&quot;連結沒有作用。 我們會將這項功能新增下一節。
 
->[!div class="step-by-step"]
-[上一頁](part-6.md)
-[下一頁](part-8.md)
+> [!div class="step-by-step"]
+> [上一頁](part-6.md)
+> [下一頁](part-8.md)

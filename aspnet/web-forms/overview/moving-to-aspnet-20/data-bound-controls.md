@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/data-bound-controls
-title: "資料繫結控制項 |Microsoft 文件"
+title: 資料繫結控制項 |Microsoft 文件
 author: microsoft
-description: "大部分的 ASP.NET 應用程式依賴某種程度的後端資料來源的資料簡報。 資料繫結控制項有關鍵的互動 w..."
+description: 大部分的 ASP.NET 應用程式依賴某種程度的後端資料來源的資料簡報。 資料繫結控制項有關鍵的互動 w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-bound-controls
 msc.type: authoredcontent
-ms.openlocfilehash: 3ebb0f9a7a2f071b7bf7aa3855920f1a5784a61f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5c3f6aad4b87450149189352e86106f46c765fb8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-bound-controls"></a>資料繫結控制項
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 大部分的 ASP.NET 應用程式依賴某種程度的後端資料來源的資料簡報。 資料繫結控制項已動態 Web 應用程式中的資料互動的關鍵部分。 ASP.NET 2.0 導入了一些大幅改善，用於資料繫結控制項，包括新 BaseDataBoundControl 類別，與宣告式語法。
 
@@ -89,16 +89,16 @@ AdRotator 控制項使用的 XML 檔案或資料表的資料庫中的資料。 �
 
 如果您選擇要做為資料來源的資料庫資料表用於 AdRotator 控制項，您必須使用下列結構描述的資料庫設定：
 
-| **資料行名稱** | **資料類型** | **說明** |
+| **資料行名稱** | **資料類型** | **描述** |
 | --- | --- | --- |
-| ID | int | 主索引鍵。 此資料行可以具有任何名稱。 |
-| ImageUrl | nvarchar (*長度*) | 相對或絕對的影像 URL 来顯示的廣告。 |
-| NavigateUrl | nvarchar (*長度*) | Ad 目標 URL。 如果您未提供值，ad 不是超連結。 |
-| AlternateText | nvarchar (*長度*) | 如果找不到映像所顯示的文字。 在某些瀏覽器中，會顯示為工具提示的文字。 替代文字是也用來協助工具，讓使用者能夠看圖形聽見大聲地讀出來閱讀其說明。 |
-| 關鍵字 | nvarchar (*長度*) | 頁面上可以篩選在其上的廣告類別。 |
-| 感想 | int （4) | 數字，指出廣告顯示頻率的可能性。 較大的數目，越常 ad 將會顯示。 XML 檔案中的所有感想值的總和不得超過 2,048,000,000-1。 |
-| 寬度 | int （4) | 單位為像素影像的寬度。 |
-| 高度 | int （4) | 單位為像素影像的高度。 |
+| 識別碼 | int | 主索引鍵。 此資料行可以具有任何名稱。 |
+| ImageUrl | nvarchar(*length*) | 相對或絕對的影像 URL 来顯示的廣告。 |
+| NavigateUrl | nvarchar(*length*) | Ad 目標 URL。 如果您未提供值，ad 不是超連結。 |
+| AlternateText | nvarchar(*length*) | 如果找不到映像所顯示的文字。 在某些瀏覽器中，會顯示為工具提示的文字。 替代文字是也用來協助工具，讓使用者能夠看圖形聽見大聲地讀出來閱讀其說明。 |
+| 關鍵字 | nvarchar(*length*) | 頁面上可以篩選在其上的廣告類別。 |
+| 感想 | int(4) | 數字，指出廣告顯示頻率的可能性。 較大的數目，越常 ad 將會顯示。 XML 檔案中的所有感想值的總和不得超過 2,048,000,000-1。 |
+| 寬度 | int(4) | 單位為像素影像的寬度。 |
+| 高度 | int(4) | 單位為像素影像的高度。 |
 
 在已經有具有不同的結構描述的資料庫的情況下，您可以使用**AlternateTextField**， **ImageUrlField**，和**NavigateUrlField**可對應的屬性AdRotator 屬性，將您現有的資料庫。 若要在 AdRotator 控制項中顯示資料庫中的資料，加入網頁中的資料來源控制項、 設定資料來源控制項，以指向您資料庫的連接字串及設定 AdRotator 控制項**DataSourceID**資料來源控制項的 id 屬性。 在其中您需要以程式設計方式設定 AdRotator 廣告的情況下，使用 AdCreated 事件。 AdCreated 事件會採用兩個參數。其中一個物件，以及其他 AdCreatedEventArgs 的執行個體。 AdCreatedEventArgs 是正在建立 ad 的參考。
 
@@ -112,7 +112,7 @@ AdRotator 控制項使用的 XML 檔案或資料表的資料庫中的資料。 �
 
 資料繫結清單控制項，加入網頁中的資料來源控制項。 指定資料來源控制項的選取命令，然後將清單控制項中的 [DataSourceID] 屬性設定為資料來源控制項的 ID。 使用**DataTextField**和**DataValueField**屬性來定義的顯示文字和控制項的值。 此外，您可以使用**DataTextFormatString**屬性來控制顯示文字的外觀，如下所示：
 
-| **運算式** | **說明** |
+| **運算式** | **描述** |
 | --- | --- |
 | Price: {0:C} | 針對數值/十進位資料。 顯示常值"Price: 」 後面的貨幣格式的數字。 貨幣格式取決於在文化特性屬性中指定的文化特性設定**頁面**指示詞或 Web.config 檔案中。 |
 | {0:D4} | 適用於整數資料。 不能與十進位數字。 整數被顯示在以零填補的欄位有四個字元寬。 |
@@ -142,7 +142,7 @@ DataControlField 物件所代表 GridView 控制項中的每個資料行。 根�
 
 下表列出可用的不同的資料行欄位型別。
 
-| **資料行欄位類型** | **說明** |
+| **資料行欄位類型** | **描述** |
 | --- | --- |
 | BoundField | 顯示資料來源中的欄位的值。 這是預設資料行的 GridView 控制項類型。 |
 | ButtonField | GridView 控制項中顯示每個項目在命令按鈕。 這可讓您建立的資料行的自訂按鈕控制項，例如 [新增] 或 [移除] 按鈕。 |
@@ -185,7 +185,7 @@ GridView 控制項提供許多的內建功能可讓使用者排序、 更新、 
 
 您可以設定控制項的不同部分的樣式屬性，來自訂 GridView 控制項的外觀。 下表列出不同的樣式屬性。
 
-| **樣式屬性** | **說明** |
+| **樣式屬性** | **描述** |
 | --- | --- |
 | AlternatingRowStyle | 在 GridView 控制項中的交替資料列樣式設定。 當設定這個屬性時，資料列會顯示交替 RowStyle 設定和**AlternatingRowStyle**設定。 |
 | EditRowStyle | 編輯 GridView 控制項中的資料列樣式設定。 |
@@ -198,7 +198,7 @@ GridView 控制項提供許多的內建功能可讓使用者排序、 更新、 
 
 您也可以顯示或隱藏的控制項的不同部分。 下表列出可控制哪些部分要顯示或隱藏的屬性。
 
-| **Property** | **說明** |
+| **Property** | **描述** |
 | --- | --- |
 | ShowFooter | 顯示或隱藏 GridView 控制項的頁尾區段。 |
 | ShowHeader | 顯示或隱藏 GridView 控制項的標頭區段。 |
@@ -207,7 +207,7 @@ GridView 控制項提供許多的內建功能可讓使用者排序、 更新、 
 
 GridView 控制項提供數個事件，您可以程式設計的。 這可讓您在事件發生時執行自訂的常式。 下表列出支援的 GridView 控制項的事件。
 
-| **Event** | **說明** |
+| **Event** | **描述** |
 | --- | --- |
 | PageIndexChanged | 發生於按下一個頁面巡覽區按鈕時，但之後 GridView 控制項控點的分頁作業。 當您需要執行的工作之後使用者巡覽至控制項中的不同頁面, 時，通常使用這個事件。 |
 | PageIndexChanging | 發生於按下一個頁面巡覽區按鈕時，但之前 GridView 控制項負責的分頁作業。 此事件通常用於取消的分頁作業。 |
@@ -240,14 +240,14 @@ GridView 控制項提供數個事件，您可以程式設計的。 這可讓您�
 
 在 FormView 控制項來顯示內容，您需要建立控制項的不同部分的範本。 大部分的範本是選擇性的。不過，您必須建立的範本，以及設定控制項的模式。 例如，支援記錄插入 FormView 控制項必須有定義的插入項目範本。 下表列出您可以建立不同的範本。
 
-| **範本類型** | **說明** |
+| **範本類型** | **描述** |
 | --- | --- |
 | EditItemTemplate | FormView 控制項處於編輯模式時，請定義的資料列的內容。 此範本通常包含輸入的控制項和命令按鈕的使用者可以編輯現有的記錄。 |
 | EmptyDataTemplate | 定義顯示 FormView 控制項繫結至資料來源不包含任何記錄時，空白資料列的內容。 此範本通常包含來提醒使用者資料來源不包含任何記錄的內容。 |
 | FooterTemplate | 定義頁尾資料列的內容。 此範本通常包含您想要顯示頁尾資料列中的任何其他內容。 或者，您可以只指定 FooterText 屬性設定頁尾資料列中顯示的文字。 |
 | HeaderTemplate | 定義標頭資料列的內容。 此範本通常包含您想要在標頭資料列中顯示的任何其他內容。 或者，您可以只指定要藉由設定 HeaderText 屬性標頭列中顯示的文字。 |
 | ItemTemplate | FormView 控制項處於唯讀模式時，請定義的資料列的內容。 此範本通常包含用來顯示現有記錄的值。 |
-| 上 | FormView 控制項處於插入模式時，請定義的資料列的內容。 此範本通常包含輸入的控制項和命令按鈕的使用者可以加入新的記錄。 |
+| InsertItemTemplate | FormView 控制項處於插入模式時，請定義的資料列的內容。 此範本通常包含輸入的控制項和命令按鈕的使用者可以加入新的記錄。 |
 | PagerTemplate | 定義啟用分頁功能時顯示的頁面巡覽列的內容 (當 AllowPaging 屬性設定為**true**)。 此範本通常包含的控制項的使用者可以瀏覽至另一筆記錄。 |
 
 編輯項目樣板和插入項目樣板中的輸入的控制項可以繫結至資料來源的欄位使用雙向繫結運算式。 這可讓 FormView 控制項自動擷取更新的輸入控制項的值或插入作業。 雙向繫結運算式也可以讓輸入的控制項中自動顯示原始欄位值的編輯項目範本。
@@ -265,12 +265,12 @@ GridView 控制項提供數個事件，您可以程式設計的。 這可讓您�
 
 在 FormView 控制項使用的範本，因為它不提供自動產生命令按鈕來執行更新、 刪除或插入作業。 您必須手動加入這些命令按鈕，在適當的樣板。 在 FormView 控制項辨認某些按鈕具有其**CommandName**屬性設定為特定值。 下表列出 FormView 控制項辨認的命令按鈕。
 
-| **Button** | **Commandname 值** | **說明** |
+| **Button** | **Commandname 值** | **描述** |
 | --- | --- | --- |
 | 取消 | [取消] | 取消作業，並捨棄使用者所輸入的值，更新或插入作業中使用。 在 FormView 控制項然後回到 DefaultMode 屬性所指定的模式。 |
 | 刪除 | "Delete" | 用於刪除作業，以刪除資料來源中顯示的記錄。 引發 ItemDeleting 和 ItemDeleted 事件。 |
 | Edit | [編輯] | 用於更新作業，以在 FormView 控制項置於編輯模式。 在指定的內容**EditItemTemplate**屬性會顯示為資料列。 |
-| Insert | 「 插入 」 | 用於插入作業，以嘗試使用由使用者所提供的值的資料來源中插入新的記錄。 引發 ItemInserting 和 ItemInserted 事件。 |
+| Insert | "Insert" | 用於插入作業，以嘗試使用由使用者所提供的值的資料來源中插入新的記錄。 引發 ItemInserting 和 ItemInserted 事件。 |
 | 新增 | "New" | 用於插入作業，以將 FormView 控制項放在插入模式。 在指定的內容**上**屬性會顯示為資料列。 |
 | 頁面 | 「 頁面 」 | 用於分頁作業，以代表執行分頁的頁面巡覽列中按鈕。 指定的分頁作業，請設定**CommandArgument** 下一步 」、 「 Prev"、"First"、 「 最後 」，或要瀏覽頁面的索引按鈕的屬性。 引發 PageIndexChanging 和 PageIndexChanged 事件。 |
 | 更新 | 「 更新 」 | 用於更新作業，以嘗試更新資料來源中顯示的記錄，使用者所提供的值。 引發 ItemUpdating 和 ItemUpdated 事件。 |
@@ -285,7 +285,7 @@ GridView 控制項提供數個事件，您可以程式設計的。 這可讓您�
 
 您可以設定控制項的不同部分的樣式屬性，來自訂 FormView 控制項的外觀。 下表列出不同的樣式屬性。
 
-| **樣式屬性** | **說明** |
+| **樣式屬性** | **描述** |
 | --- | --- |
 | EditRowStyle | 樣式設定為資料列時 FormView 控制項處於編輯模式。 |
 | EmptyDataRowStyle | 在 FormView 在控制項中顯示資料來源不包含任何記錄時，空白資料列樣式設定。 |
@@ -299,7 +299,7 @@ GridView 控制項提供數個事件，您可以程式設計的。 這可讓您�
 
 在 FormView 控制項提供數個事件，您可以程式設計的。 這可讓您在事件發生時執行自訂的常式。 下表列出 FormView 控制項所支援的事件。
 
-| **Event** | **說明** |
+| **Event** | **描述** |
 | --- | --- |
 | ItemCommand | 在 FormView 控制項按鈕時發生。 此事件通常用於在控制項中按下按鈕時執行工作。 |
 | ItemCreated | 在 FormView 控制項中建立所有 FormViewRow 物件之後發生。 此事件通常用於顯示之前修改記錄的值。 |
@@ -329,7 +329,7 @@ DetailsView 控制項用來從資料來源的單一記錄顯示在資料表中�
 
 在 DetailsView 控制項中的每個資料列會藉由宣告欄位控制項建立。 不同的資料列欄位型別決定控制項中的資料列的行為。 欄位控制項衍生自 DataControlField。 下表列出可用的不同的資料列欄位型別。
 
-| **資料行欄位類型** | **說明** |
+| **資料行欄位類型** | **描述** |
 | --- | --- |
 | BoundField | 以文字中顯示資料來源中欄位的值。 |
 | ButtonField | 在 DetailsView 控制項中顯示命令按鈕。 這可讓您顯示具有自訂按鈕控制項，例如新增或移除按鈕的資料列。 |
@@ -374,7 +374,7 @@ DetailsView 控制項用來從資料來源的單一記錄顯示在資料表中�
 
 您可以設定控制項的不同部分的樣式屬性，來自訂 DetailsView 控制項的外觀。 下表列出不同的樣式屬性。
 
-| **樣式屬性** | **說明** |
+| **樣式屬性** | **描述** |
 | --- | --- |
 | AlternatingRowStyle | 在 DetailsView 控制項中的交替資料列樣式設定。 當設定這個屬性時，資料列會顯示交替 RowStyle 設定和**AlternatingRowStyle**設定。 |
 | CommandRowStyle | 包含內建的命令按鈕 DetailsView 控制項中的資料列樣式設定。 |
@@ -391,7 +391,7 @@ DetailsView 控制項用來從資料來源的單一記錄顯示在資料表中�
 
 在 DetailsView 控制項提供數個事件，您可以程式設計的。 這可讓您在事件發生時執行自訂的常式。 下表列出 DetailsView 控制項所支援的事件。 在 DetailsView 控制項也會繼承這些事件及其基底類別： 資料繫結、 資料繫結、 處置、 Init、 負載、 PreRender，以及轉譯。
 
-| **Event** | **說明** |
+| **Event** | **描述** |
 | --- | --- |
 | ItemCommand | DetailsView 控制項中按下按鈕時，就會發生。 |
 | ItemCreated | 在 DetailsView 控制項中建立所有 DetailsViewRow 物件之後發生。 此事件通常用於顯示之前修改記錄的值。 |
@@ -511,7 +511,7 @@ TreeView 控制項有數個會影響操作控制項的屬性。 最明顯的屬�
 
 **ShowCheckBoxes**屬性會影響是否節點會顯示核取方塊呈現時。 這個屬性的有效值為**無**，**根**，**父**，**分葉**，和**所有**。 這些會影響樹狀檢視控制項，如下所示：
 
-| **屬性值** | **效果** |
+| **屬性值** | **Effect** |
 | --- | --- |
 | 無 | 核取方塊不會顯示在任何節點上。 這是預設設定。 |
 | 根 | 核取方塊才會顯示在根節點上。 |
@@ -560,10 +560,10 @@ TreeView 控制項提供許多屬性控制與樣式控制項的外觀。 使用�
 | **屬性名稱** | **控制項** |
 | --- | --- |
 | HoverNodeStyle | 當滑鼠停留在其上控制節點的樣式。 |
-| 示 | 控制的分葉節點的樣式。 |
-| 有 | 控制的所有節點的樣式。 特定節點 （例如示） 的樣式會覆寫此樣式。 |
-| 如上 | 控制所有父節點的樣式。 |
-| 文字左邊 | 控制根節點的樣式。 |
+| LeafNodeStyle | 控制的分葉節點的樣式。 |
+| NodeStyle | 控制的所有節點的樣式。 特定節點 （例如示） 的樣式會覆寫此樣式。 |
+| ParentNodeStyle | 控制所有父節點的樣式。 |
+| RootNodeStyle | 控制根節點的樣式。 |
 | SelectedNodeStyle | 控制選取之節點的樣式。 |
 
 每一個屬性是唯讀狀態。 不過，他們將每個傳回**這些影像會呈現**物件，該物件的內容可以修改和使用*屬性子屬性*格式。 例如，若要設定**ForeColor**屬性**SelectedNodeStyle**，您可以使用下列語法：
@@ -621,8 +621,8 @@ SiteMapPath 控制項有兩個不衍生自 Control 類別; 事件**ItemCreated**
 | **屬性名稱** | **控制項** |
 | --- | --- |
 | CurrentNodeStyle | 控制目前節點的文字的樣式。 |
-| 文字左邊 | 控制文字的根節點的樣式。 |
-| 有 | 控制假設 CurrentNodeStyle 或文字左邊不適用的所有節點文字的樣式。 |
+| RootNodeStyle | 控制文字的根節點的樣式。 |
+| NodeStyle | 控制假設 CurrentNodeStyle 或文字左邊不適用的所有節點文字的樣式。 |
 
 有屬性會覆寫 CurrentNodeStyle 或文字的左邊。 每一個屬性是唯讀的並傳回**樣式**物件。 若要影響使用這些屬性的其中一個節點的外觀，您必須設定傳回樣式物件的屬性。 例如，下列程式碼變更的目前節點的前景色彩屬性。
 
@@ -699,24 +699,24 @@ SiteMapPath 控制項有兩個不衍生自 Control 類別; 事件**ItemCreated**
 
     **Figure 4**
 16. 按一下**編輯資料行**連結，並確定**自動產生欄位**已核取。
-17. 按一下 [確定]。
+17. 按一下 [確定 **Deploying Office Solutions**]。
 18. 選取的 GridView 控制項，按一下  按鈕旁邊**DataKeyNames**屬性 窗格中的屬性。
-19. 選取**ProductID**從**可用的資料欄位**清單，然後按一下 **&gt;** 按鈕將其加入。
+19. 選取**ProductID**從**可用的資料欄位**清單，然後按一下**&gt;**按鈕將其加入。
 20. 按一下 [確定]。
 21. 將新的 SqlDataSource 控制項加入至頁面。
 22. 變更 SqlDataSource 控制項的 ID**詳細資料**。
 23. 從 SqlDataSource 工作] 功能表中，選擇 [**設定資料來源**。
 24. 選擇**Northwind**從下拉式清單中，按一下**下一步**。
-25. 選取**產品**從**名稱**下拉式清單中，並檢查 **\*** 中的核取方塊**資料行**清單方塊中。
+25. 選取<strong>產品</strong>從<strong>名稱</strong>下拉式清單中，並檢查<strong> \<n g > * 中的核取方塊<strong>資料行</strong>清單方塊中。
 26. 按一下**其中** 按鈕。
 27. 選取**ProductID**從**資料行**下拉式清單。
-28. 選取 **=** 運算子下拉式清單中。
+28. 選取**=**運算子下拉式清單中。
 29. 選取**控制項**從**來源**下拉式清單。
 30. 選取**GridView1**從**控制項 ID**下拉式清單。
 31. 按一下**新增**按鈕即可加入 WHERE 子句。
-32. 按一下 [確定]。
+32. 按一下 [確定 **Deploying Office Solutions**]。
 33. 按一下**進階**按鈕，然後檢查**產生 INSERT、 UPDATE 和 DELETE 陳述式**核取方塊。
-34. 按一下 [確定]。
+34. 按一下 [確定 **Deploying Office Solutions**]。
 35. 按一下**下一步**按一下**完成**。
 36. 在 DetailsView 控制項加入至網頁。
 37. 在**選擇資料來源**下拉式清單中，選擇**詳細資料**。

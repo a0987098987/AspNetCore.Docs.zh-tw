@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
-title: "將通用的提供者的資料移轉成員資格和使用者設定檔，以 ASP.NET Identity (C#) |Microsoft 文件"
+title: 將通用的提供者的資料移轉成員資格和使用者設定檔，以 ASP.NET Identity (C#) |Microsoft 文件
 author: rustd
-description: "本教學課程中說明的步驟所需移轉使用者和角色的資料，以及使用通用的提供者的現有應用程式所建立的使用者設定檔資料..."
+description: 本教學課程中說明的步驟所需移轉使用者和角色的資料，以及使用通用的提供者的現有應用程式所建立的使用者設定檔資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/13/2013
 ms.topic: article
 ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: e00bcfc111425d5dd26c7ff341eaf87fd969e089
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f65f93b20543d06ea70a9009b6921e297477c99e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>將通用的提供者的資料移轉成員資格和使用者設定檔，以 ASP.NET Identity (C#)
 ====================
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/10/2017
 例如，我們將開始使用 Visual Studio 2012 中使用的提供者模型所建立的 web 應用程式。 我們將則加入管理設定檔的程式碼、 註冊的使用者、 新增使用者的設定檔資料、 移轉資料庫結構描述，然後變更應用程式使用的識別系統的使用者和角色管理。 移轉的測試，以使用通用的提供者所建立的使用者應該能夠登入和新的使用者應該能夠註冊。
 
 > [!NOTE]
-> 您可以找到完整的範例： [https://github.com/suhasj/UniversalProviders-Identity-Migrations](https://github.com/suhasj/UniversalProviders-Identity-Migrations)。
+> 您可以找到完整的範例： [ https://github.com/suhasj/UniversalProviders-Identity-Migrations ](https://github.com/suhasj/UniversalProviders-Identity-Migrations)。
 
 
 ## <a name="profile-data-migration-summary"></a>設定檔資料移轉摘要
@@ -61,11 +61,11 @@ ms.lasthandoff: 11/10/2017
 
     [!code-html[Main](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/samples/sample3.html)]
 
- 在程式碼中加入下列程式碼：
+   在程式碼中加入下列程式碼：
 
     [!code-csharp[Main](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/samples/sample4.cs)]
 
- 加入命名空間下的 AppProfile 類別定義移除編譯錯誤。
+   加入命名空間下的 AppProfile 類別定義移除編譯錯誤。
 6. 執行應用程式，並以使用者名稱建立新的使用者 '**olduser'。** 巡覽至 'AddProfileData' 頁面，並新增使用者設定檔資訊。  
     ![](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/_static/image2.png)
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 
 ![](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/_static/image5.png)
 
-貼上的 SQL 指令碼，從[https://raw.github.com/suhasj/UniversalProviders-Identity-Migrations/master/Migration.txt](https://raw.github.com/suhasj/UniversalProviders-Identity-Migrations/master/Migration.txt)並執行它。 如果重新整理 'DefaultConnection' 時，我們可以看到新資料表隨即加入。 您可以檢查以查看已移轉的資訊的資料表內的資料。
+貼上的 SQL 指令碼，從[ https://raw.github.com/suhasj/UniversalProviders-Identity-Migrations/master/Migration.txt ](https://raw.github.com/suhasj/UniversalProviders-Identity-Migrations/master/Migration.txt)並執行它。 如果重新整理 'DefaultConnection' 時，我們可以看到新資料表隨即加入。 您可以檢查以查看已移轉的資訊的資料表內的資料。
 
 ![](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/_static/image6.png)
 
@@ -97,14 +97,14 @@ ms.lasthandoff: 11/10/2017
     - Microsoft.Owin.Security.MicrosoftAccount
     - Microsoft.Owin.Security.Twitter
 
- 在 管理 Nuget 封裝的詳細資訊可以找到[這裡](http://docs.nuget.org/docs/start-here/Managing-NuGet-Packages-Using-The-Dialog)
+   在 管理 Nuget 封裝的詳細資訊可以找到[這裡](http://docs.nuget.org/docs/start-here/Managing-NuGet-Packages-Using-The-Dialog)
 2. 若要使用資料表中的現有資料，我們需要建立模型類別將對應至資料表，並將它們連結身分識別系統中。 識別合約的一部分，模型類別應實作 Identity.Core dll 中定義的介面，或者也可以擴充現有 Microsoft.AspNet.Identity.EntityFramework 用於這些介面的實作。 我們會針對角色、 使用者登入和使用者宣告使用現有的類別。 我們需要自訂的使用者使用我們的範例。 以滑鼠右鍵按一下專案，並建立新資料夾 'IdentityModels'。 加入新的 「 使用者 」 類別，如下所示：
 
     [!code-csharp[Main](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/samples/sample5.cs)]
 
- 請注意，'ProfileInfo' 現在是使用者類別上的屬性。 因此，我們可以直接使用設定檔資料使用的使用者類別。
+   請注意，'ProfileInfo' 現在是使用者類別上的屬性。 因此，我們可以直接使用設定檔資料使用的使用者類別。
 
-在將檔案複製**IdentityModels**和**IdentityAccount**下載來源的資料夾 ( [https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations](https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations) )。 這些有剩餘的模型類別和新使用者和角色管理使用 ASP.NET 識別應用程式開發介面所需的頁面。 可以找到詳細的說明和使用的方法是類似 SQL 的成員資格[這裡](migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)。
+在將檔案複製**IdentityModels**和**IdentityAccount**下載來源的資料夾 ( [ https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations ](https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations) )。 這些有剩餘的模型類別和新使用者和角色管理使用 ASP.NET 識別應用程式開發介面所需的頁面。 可以找到詳細的說明和使用的方法是類似 SQL 的成員資格[這裡](migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)。
 
 ## <a name="copying-profile-data-to-the-new-tables"></a>將設定檔資料複製到新的資料表
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/samples/sample6.cs)]
 
- 部分使用的模型定義於 'IdentityModels' 資料夾的 web 應用程式專案中，因此您必須將包含對應的命名空間。
+   部分使用的模型定義於 'IdentityModels' 資料夾的 web 應用程式專案中，因此您必須將包含對應的命名空間。
 5. 上述程式碼適用於應用程式中的資料庫檔案\_在先前步驟中建立的 web 應用程式專案的儲存資料夾。 若要參考的請使用 web 應用程式的 web.config 中的連接字串更新主控台應用程式的 app.config 檔案中的連接字串。 也提供 'AttachDbFilename' 屬性中的完整實體路徑。
 6. 開啟命令提示字元並瀏覽至上面的主控台應用程式的 bin 資料夾。 執行可執行檔，並檢閱記錄檔輸出，如下列影像所示。  
     ![](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/_static/image3.jpg)

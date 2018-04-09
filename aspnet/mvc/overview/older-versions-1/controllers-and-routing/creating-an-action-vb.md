@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
-title: "建立動作 (VB) |Microsoft 文件"
+title: 建立動作 (VB) |Microsoft 文件
 author: microsoft
-description: "了解如何將新的動作加入至 ASP.NET MVC 控制器。 深入了解將動作方法的需求。"
+description: 了解如何將新的動作加入至 ASP.NET MVC 控制器。 深入了解將動作方法的需求。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3d1d355599c17df597f9c08d9d7f129fffc1a2e4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c77e4738444c61d60bdd78a50b36f98be41fc271
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-action-vb"></a>建立動作 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何將新的動作加入至 ASP.NET MVC 控制器。 深入了解將動作方法的需求。
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/10/2017
 
 您加入新的動作，您可以控制站將新方法加入至控制器。 例如，列表 1 中的控制站包含名為 index （） 的動作，以及名為 SayHello() 的動作。 這兩種方法會公開為動作。
 
-**列出 1-Controllers\HomeController.vb**
+**Listing 1 - Controllers\HomeController.vb**
 
 [!code-vb[Main](creating-an-action-vb/samples/sample1.vb)]
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 如果您要在控制器類別中建立的公用方法，而且不想公開做為控制器動作方法則可防止方法叫用使用&lt;NonAction&gt;屬性。 例如，列表 2 中的控制站包含名為 CompanySecrets() 裝飾的公用方法&lt;NonAction&gt;屬性。
 
-**列出 2-Controllers\WorkController.vb**
+**Listing 2 - Controllers\WorkController.vb**
 
 [!code-vb[Main](creating-an-action-vb/samples/sample2.vb)]
 
@@ -64,6 +64,6 @@ ms.lasthandoff: 11/10/2017
 
 **圖 01**： 叫用 NonAction 方法 ([按一下以檢視完整大小的影像](creating-an-action-vb/_static/image2.png))
 
->[!div class="step-by-step"]
-[上一頁](creating-a-controller-vb.md)
-[下一頁](aspnet-mvc-controllers-overview-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-controller-vb.md)
+> [下一頁](aspnet-mvc-controllers-overview-cs.md)

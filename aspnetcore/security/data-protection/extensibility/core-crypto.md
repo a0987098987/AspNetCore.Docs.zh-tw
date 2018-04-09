@@ -1,7 +1,7 @@
 ---
-title: "核心加密擴充性"
+title: 在 ASP.NET Core 核心加密擴充性
 author: rick-anderson
-description: "說明 IAuthenticatedEncryptor、 IAuthenticatedEncryptorDescriptor、 IAuthenticatedEncryptorDescriptorDeserializer 和最上層的 factory。"
+description: 深入了解 IAuthenticatedEncryptor、 IAuthenticatedEncryptorDescriptor、 IAuthenticatedEncryptorDescriptorDeserializer 和最上層的 factory。
 manager: wpickett
 ms.author: riande
 ms.date: 8/11/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: ead4012236244d88cff0b0520d000d89f93f3355
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b5a0dbc9120a8032dbb8d8eee74684495a982ac1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="core-cryptography-extensibility"></a>核心加密擴充性
+# <a name="core-cryptography-extensibility-in-aspnet-core"></a>在 ASP.NET Core 核心加密擴充性
 
 <a name="data-protection-extensibility-core-crypto"></a>
 
@@ -123,7 +123,7 @@ IAuthenticatedEncryptor 與 IAuthenticatedEncryptorDescriptor 之間的主要差
 
 描述元可以透過其 ExportToXml 常式進行序列化。 這個常式會傳回包含兩個屬性 XmlSerializedDescriptorInfo： 描述項和類型表示的 XElement 表示[IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer)它可以是用來重新啟動指定對應的 XElement 此描述元。
 
-序列化的描述元可能包含機密資訊，例如密碼編譯金鑰內容。 資料保護系統沒有內建支援來之前它已經保存到儲存體加密的資訊。 若要利用這個，描述元應該將標記包含機密資訊為屬性名稱"requiresEncryption 」 (xmlns"http://schemas.asp.net/2015/03/dataProtection")，值"true"的項目。
+序列化的描述元可能包含機密資訊，例如密碼編譯金鑰內容。 資料保護系統沒有內建支援來之前它已經保存到儲存體加密的資訊。 若要利用這個，描述元應該將標記包含機密資訊的屬性名稱"requiresEncryption"的元素 (xmlns"<http://schemas.asp.net/2015/03/dataProtection>")，值"true"。
 
 >[!TIP]
 > 沒有適用於設定這個屬性的協助程式 API。 呼叫 XElement.MarkAsRequiresEncryption() 位於命名空間 Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel 擴充方法。
@@ -161,7 +161,7 @@ AlgorithmConfiguration 視為最上層的 factory。 設定做為範本。 它�
 
 當 CreateNewDescriptor 稱為，全新金錀會建立僅供此呼叫，而且會產生新的 IAuthenticatedEncryptorDescriptor 包裝此金鑰的內容和取用所需的資料所需的演算法資訊。 金鑰內容可能會在軟體中建立 （和保留在記憶體中），所以無法建立且保留在 HSM，依此類推。 重要的重點是 CreateNewDescriptor 任何兩個呼叫應該永遠不會建立對等 IAuthenticatedEncryptorDescriptor 執行個體。
 
-AlgorithmConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在 KeyManagementOptions 中設定 AuthenticatedEncryptorConfiguration 屬性。
+AlgorithmConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在 KeyManagementOptions 中設定 AuthenticatedEncryptorConfiguration 屬性。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -173,6 +173,6 @@ IAuthenticatedEncryptorConfiguration 視為最上層的 factory。 設定做為�
 
 當 CreateNewDescriptor 稱為，全新金錀會建立僅供此呼叫，而且會產生新的 IAuthenticatedEncryptorDescriptor 包裝此金鑰的內容和取用所需的資料所需的演算法資訊。 金鑰內容可能會在軟體中建立 （和保留在記憶體中），所以無法建立且保留在 HSM，依此類推。 重要的重點是 CreateNewDescriptor 任何兩個呼叫應該永遠不會建立對等 IAuthenticatedEncryptorDescriptor 執行個體。
 
-IAuthenticatedEncryptorConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](../implementation/key-management.md#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在服務容器中註冊單一 IAuthenticatedEncryptorConfiguration。
+IAuthenticatedEncryptorConfiguration 類型做為索引鍵建立常式的進入點例如[自動金鑰輪換](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling)。 若要變更的所有未來的索引鍵的實作，請在服務容器中註冊單一 IAuthenticatedEncryptorConfiguration。
 
 ---

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
-title: "部署您使用 FTP 用戶端 (C#) 的網站 |Microsoft 文件"
+title: 部署您使用 FTP 用戶端 (C#) 的網站 |Microsoft 文件
 author: rick-anderson
-description: "部署 ASP.NET 應用程式的最簡單方式是手動從開發環境的必要檔案複製到生產環境。 此..."
+description: 部署 ASP.NET 應用程式的最簡單方式是手動從開發環境的必要檔案複製到生產環境。 此...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c53dcf40cde244a9df9afc27b20c9e7ef288198
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3b7add6765374fc3e5dba2c90239102354da3922
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-your-site-using-an-ftp-client-c"></a>部署您的網站使用 FTP 用戶端 (C#)
 ====================
@@ -161,6 +161,6 @@ Web 應用程式部署需要從開發環境的必要檔案複製到實際執行�
 - [應用程式\_Offline.htm 和解決 「 IE 易記錯誤 」 功能](https://weblogs.asp.net/scottgu/App_5F00_Offline.htm-and-working-around-the-_2200_IE-Friendly-Errors_2200_-feature)
 - [工作階段狀態模式](https://msdn.microsoft.com/library/ms178586.aspx)
 
->[!div class="step-by-step"]
-[上一頁](determining-what-files-need-to-be-deployed-cs.md)
-[下一頁](deploying-your-site-using-visual-studio-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](determining-what-files-need-to-be-deployed-cs.md)
+> [下一頁](deploying-your-site-using-visual-studio-cs.md)

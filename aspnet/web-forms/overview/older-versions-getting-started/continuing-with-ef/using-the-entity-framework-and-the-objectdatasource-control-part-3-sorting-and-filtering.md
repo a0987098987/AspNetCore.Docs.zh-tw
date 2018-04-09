@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering
-title: "使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 3 部分： 排序和篩選 |Microsoft 文件"
+title: 使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 3 部分： 排序和篩選 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 我..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering
 msc.type: authoredcontent
-ms.openlocfilehash: 4accd3381a66bde1f87f0dc7dd95beeb54fcc6a2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e412d3ad98a37931e7190a4909cb09fa2abfb3d0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-3-sorting-and-filtering"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 3 部分： 排序和篩選
 ====================
@@ -154,6 +154,6 @@ ms.lasthandoff: 11/10/2017
 
 如此即完成排序、 篩選，和主版詳細資料案例簡介。 在下一個教學課程中，您會看到如何處理並行存取。
 
->[!div class="step-by-step"]
-[上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
-[下一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+> [下一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)

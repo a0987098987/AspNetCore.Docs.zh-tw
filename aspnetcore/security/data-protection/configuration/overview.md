@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 中設定資料保護"
+title: 設定 ASP.NET Core 資料保護
 author: rick-anderson
-description: "了解如何設定 ASP.NET Core 中的資料保護。"
+description: 了解如何設定 ASP.NET Core 中的資料保護。
 manager: wpickett
 ms.author: riande
 ms.date: 07/17/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0fe1fd7b81a0e5aa00ae14c7e6fdbd9cc88ec4fe
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3a19cec2ce4387ca44ca120f031a072269b93454
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="configuring-data-protection-in-aspnet-core"></a>在 ASP.NET Core 中設定資料保護
+# <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 當初始化資料保護系統時，它會套用[預設設定](xref:security/data-protection/configuration/default-settings)根據作業環境。 這些設定是通常適用於在單一機器上執行的應用程式。 沒有開發人員可能的想来變更的預設設定，可能是因為其應用程式分散在多部電腦，或基於相容性因素。 這些案例中，資料保護系統會提供豐富的組態 API。
 
-擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder`會公開，您可以鏈結在一起選項來設定資料保護的擴充方法。
+擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開，您可以鏈結在一起選項來設定資料保護的擴充方法。
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
-title: "第 8 部分： 購物車 Ajax 更新 |Microsoft 文件"
+title: 第 8 部分： 購物車 Ajax 更新 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 8 部涵蓋使用 Ajax 更新購物車。"
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 8 部涵蓋使用 Ajax 更新購物車。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 75e1dff96f8b56d74c28ff9d522f4766fbad669f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 195c01ff0d71b2bfd0c00e71244d47a166330921
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a>第 8 部： 與 Ajax 更新購物車
 ====================
@@ -161,6 +161,6 @@ ShoppingCart 類別會公開下列方法：
 我們已建置出購物車，可讓使用者取消註冊項目加入購物車可運作。 在下列區段中，我們將允許註冊，並且完成簽出程序。
 
 
->[!div class="step-by-step"]
-[上一頁](mvc-music-store-part-7.md)
-[下一頁](mvc-music-store-part-9.md)
+> [!div class="step-by-step"]
+> [上一頁](mvc-music-store-part-7.md)
+> [下一頁](mvc-music-store-part-9.md)

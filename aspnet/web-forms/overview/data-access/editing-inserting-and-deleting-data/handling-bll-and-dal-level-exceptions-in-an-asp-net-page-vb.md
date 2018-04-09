@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb
-title: "BLL 和 DAL 層級中處理例外狀況是 ASP.NET 網頁 (VB) |Microsoft 文件"
+title: BLL 和 DAL 層級中處理例外狀況是 ASP.NET 網頁 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們會看到如何顯示好記且有意義的錯誤訊息應該插入、 更新或刪除作業期間發生例外狀況..."
+description: 在本教學課程中，我們會看到如何顯示好記且有意義的錯誤訊息應該插入、 更新或刪除作業期間發生例外狀況...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2269458cbc41fd3a483aaade0f07288ee805bdd1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b76554b6e8c00dbe3b33de8158b925d7314afb72
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-vb"></a>ASP.NET 網頁 (VB) 中的 BLL 和 DAL 層級例外狀況處理
 ====================
@@ -155,9 +155,9 @@ ms.lasthandoff: 01/24/2018
 
 此事件處理常式的第二個輸入的參數是類型的物件[GridViewUpdatedEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx)，其具有三個處理例外狀況的感興趣的屬性：
 
-- `Exception`擲回的例外狀況; 的參考如果已擲不回任何例外狀況，此屬性會有的值`null`
-- `ExceptionHandled`布林值，指出是否已處理的例外狀況中`RowUpdated`事件處理常式; 如果`false`（預設值），例外狀況會重新擲回，percolating 至 ASP.NET 執行階段
-- `KeepInEditMode`如果設定為`true`編輯的 GridView 資料列處於編輯模式; 如果`false`（預設）、 GridView 資料列會還原回其為唯讀模式
+- `Exception` 擲回的例外狀況; 的參考如果已擲不回任何例外狀況，此屬性會有的值 `null`
+- `ExceptionHandled` 布林值，指出是否已處理的例外狀況中`RowUpdated`事件處理常式; 如果`false`（預設值），例外狀況會重新擲回，percolating 至 ASP.NET 執行階段
+- `KeepInEditMode` 如果設定為`true`編輯的 GridView 資料列處於編輯模式; 如果`false`（預設）、 GridView 資料列會還原回其為唯讀模式
 
 然後，我們的程式碼，應該檢查是否`Exception`不`null`，這表示執行作業時引發的例外狀況。 如果這種情況，我們想要：
 
@@ -224,12 +224,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Liz Shulok。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)
-[下一頁](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)
+> [下一頁](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md)

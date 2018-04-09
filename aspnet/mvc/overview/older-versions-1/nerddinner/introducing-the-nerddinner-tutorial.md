@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
-title: "簡介 NerdDinner 教學課程 |Microsoft 文件"
+title: 簡介 NerdDinner 教學課程 |Microsoft 文件
 author: shanselman
-description: "若要深入了解新的架構，最好是建立它的項目。 本教學課程逐步解說如何建置使用 ASP.NE 很小，但完整的應用程式..."
+description: 若要深入了解新的架構，最好是建立它的項目。 本教學課程逐步解說如何建置使用 ASP.NE 很小，但完整的應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
 msc.type: authoredcontent
-ms.openlocfilehash: 57eedb224e26867c78cc399b89f91b95f722074d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d925a7dc89fc0c742468653c5c138a0f1d71231
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-the-nerddinner-tutorial"></a>簡介 NerdDinner 教學課程
 ====================
@@ -88,5 +88,5 @@ NerdDinner 可讓您建立、 編輯和刪除 dinners 註冊的使用者。 它�
 
 我們一開始會使用檔案-&gt;建立 NerdDinner 應用程式的 Visual Studio 中的新專案。
 
->[!div class="step-by-step"]
-[下一步](create-a-new-aspnet-mvc-project.md)
+> [!div class="step-by-step"]
+> [下一步](create-a-new-aspnet-mvc-project.md)

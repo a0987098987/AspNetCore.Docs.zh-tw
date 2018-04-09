@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
-title: "使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 加入商務邏輯層和單元測試 |Microsoft 文件"
+title: 使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 加入商務邏輯層和單元測試 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 msc.type: authoredcontent
-ms.openlocfilehash: df37acd8901b457f7887afe767d42d53e45e4815
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ecdfb2bdc546f55778ec4cc1f61aa66e129134ea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 加入商務邏輯層和單元測試
 ====================
@@ -225,6 +225,6 @@ ms.lasthandoff: 01/24/2018
 
 下列教學課程中，您會看到如何加入排序和篩選應用程式的功能。
 
->[!div class="step-by-step"]
-[上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
-[下一頁](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+> [下一頁](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)

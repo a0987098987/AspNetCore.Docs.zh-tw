@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/creating-unit-tests-for-aspnet-mvc-applications
-title: "建立 ASP.NET MVC 應用程式的單元測試 |Microsoft 文件"
+title: 建立 ASP.NET MVC 應用程式的單元測試 |Microsoft 文件
 author: StephenWalther
-description: "了解如何建立適用於控制器動作的單元測試。 在本教學課程中，作者： Stephen Walther 會示範如何測試是否控制器動作傳回 parti..."
+description: 了解如何建立適用於控制器動作的單元測試。 在本教學課程中，作者： Stephen Walther 會示範如何測試是否控制器動作傳回 parti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/20/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-unit-tests-for-aspnet-mvc-applications
 msc.type: video
-ms.openlocfilehash: ed7a9f62db9d46e79ec409c6553e889907c07fde
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 11403f974ebbeff76976de0540511e606548ade6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications"></a>建立 ASP.NET MVC 應用程式的單元測試
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （15 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-unit-tests-for-aspnet-mvc-applications)
 
->[!div class="step-by-step"]
-[上一頁](preventing-javascript-injection-attacks.md)
-[下一頁](creating-custom-html-helpers.md)
+> [!div class="step-by-step"]
+> [上一頁](preventing-javascript-injection-attacks.md)
+> [下一頁](creating-custom-html-helpers.md)

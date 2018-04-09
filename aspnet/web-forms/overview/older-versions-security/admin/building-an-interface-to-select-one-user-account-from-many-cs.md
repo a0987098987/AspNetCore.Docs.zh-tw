@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs
-title: "建立介面，以選取一個使用者帳戶從許多 (C#) |Microsoft 文件"
+title: 建立介面，以選取一個使用者帳戶從許多 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將建置使用者介面與分頁、 可篩選方格。 特別是，我們的使用者介面將會包含一系列的 LinkButtons..."
+description: 在本教學課程中，我們將建置使用者介面與分頁、 可篩選方格。 特別是，我們的使用者介面將會包含一系列的 LinkButtons...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 42a8fb48b8c8cfb653ac4d64f6efe011f92b966b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 304505b18e330425ea1dc8df87a552f3d8cd15f3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-c"></a>建立介面，以選取一個使用者帳戶從許多 (C#)
 ====================
@@ -258,11 +258,11 @@ GridView 控制項提供兩種類型的分頁：
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Alicja Maziarz。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Alicja Maziarz。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](recovering-and-changing-passwords-cs.md)
+> [!div class="step-by-step"]
+> [下一步](recovering-and-changing-passwords-cs.md)

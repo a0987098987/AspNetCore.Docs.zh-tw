@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-title: "ASP.NET MVC 應用程式 (9 / 10) 中實作的儲存機制和單位的工作模式 |Microsoft 文件"
+title: ASP.NET MVC 應用程式 (9 / 10) 中實作的儲存機制和單位的工作模式 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio..."
+description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 02b1de31b9513247facc92bc6b72247865d176f9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f870b61658686769304a7809bde62e66da3bd0c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>ASP.NET MVC 應用程式 (9 / 10) 中實作的儲存機制和單位的工作模式
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [下載完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 教學課程系列的相關資訊，請參閱[系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
 > 
 > > [!NOTE] 
 > > 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="the-repository-and-unit-of-work-patterns"></a>儲存機制和單位的工作模式
 
-儲存機制和工作模式的單位被要建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可以協助您隔離您的應用程式資料存放區中的變更，以及有助於自動化的單元測試為導向的開發 (TDD)。
+儲存機制和工作模式的單位被要建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可協助隔離您的應用程式與資料存放區中的變更，並可促進自動化單元測試或測試驅動開發 (TDD)。
 
 在本教學課程中，您將實作每個實體類型的儲存機制類別。 如`Student`實體類型，您將建立的儲存機制介面及儲存機制類別。 時，在控制器初始化儲存機制，您將使用的介面，以便控制器將會接受實作儲存機制介面的任何物件的參考。 當控制器會執行 web 伺服器 下時，它就會收到適用於 Entity Framework 的儲存機制。 當控制器會執行單元測試類別下時，它就會收到適用於您就可以輕鬆地操作進行測試，例如記憶體中集合的方式儲存資料的儲存機制。
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="change-the-student-controller-to-use-the-repository"></a>變更為使用儲存機制的學生控制器
 
-在*StudentController.cs*，目前在類別中的程式碼取代下列程式碼。 所做的變更會反白顯示。
+在*StudentController.cs*，目前在類別中的程式碼取代下列程式碼。 所做的變更已醒目提示。
 
 [!code-csharp[Main](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=13-18,44,75,77,102-103,120,137-138,159,172-174,186)]
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 01/24/2018
 
 程式碼，原始的版本中`students`型別為`IQueryable`物件。 查詢不傳送至資料庫，直到它會轉換成集合，例如使用方法`ToList`，這並不會發生之前的索引檢視存取學生模型。 `Where`上述原始的程式碼中的方法會變成`WHERE`傳送至資料庫的 SQL 查詢中的子句。 而表示選取的實體會傳回資料庫中。 不過，因為變更而`context.Students`至`studentRepository.GetStudents()`、`students`這個陳述式之後的變數`IEnumerable`包括在所有學生的資料庫中的集合。 套用的最終結果`Where`方法相同，但是工作現在都是在 web 伺服器上，而不是由資料庫的記憶體中。 傳回的大量資料的查詢，這可能會沒有效率。
 
-> [!TIP] 
+> [!TIP]
 > 
 > **IQueryable vs。IEnumerable**
 > 
@@ -249,6 +249,6 @@ ms.lasthandoff: 01/24/2018
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
->[!div class="step-by-step"]
-[上一頁](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[下一頁](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+> [!div class="step-by-step"]
+> [上一頁](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [下一頁](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)

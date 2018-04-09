@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
-title: "使用 DropDownList (C#) 進行篩選的主要/詳細資料 |Microsoft 文件"
+title: 使用 DropDownList (C#) 進行篩選的主要/詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們會看到如何 DropDownList 控制項和 GridView 中選取的清單項目的詳細資料中顯示的主要記錄。"
+description: 在本教學課程中，我們會看到如何 DropDownList 控制項和 GridView 中選取的清單項目的詳細資料中顯示的主要記錄。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cf3058ac095bc2ed728a716e70f962e260eef5a2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 42a6a76b0b05045bed1ada227b7c32a51600b760
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>主從式篩選搭配 DropDownList (C#)
 ====================
@@ -87,12 +87,12 @@ ms.lasthandoff: 01/24/2018
 **圖 7**： 選取`GetProductsByCategoryID(categoryID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-cs/_static/image21.png))
 
 
-選擇這個方法之後，ObjectDataSource 精靈會提示輸入我們方法的值 *`categoryID`* 參數。 若要使用的所選值`categories`DropDownList 項目設定參數來源控制與以 ControlID `Categories`。
+選擇這個方法之後，ObjectDataSource 精靈會提示輸入我們方法的值*`categoryID`*參數。 若要使用的所選值`categories`DropDownList 項目設定參數來源控制與以 ControlID `Categories`。
 
 
 [![CategoryID 參數值設定為類別 DropDownList](master-detail-filtering-with-a-dropdownlist-cs/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image22.png)
 
-**圖 8**： 設定 *`categoryID`* 參數的值`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
+**圖 8**： 設定*`categoryID`*參數的值`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
 
 
 請花一點時間簽出的瀏覽器中的進度。 當第一次造訪的頁面時，這些產品屬於所選類別目錄 （如圖 9 所示），會顯示 （飲料），但變更 DropDownList 不會更新資料。 這是因為更新 GridView 會因發生回傳。 若要完成這項作業中，我們有兩個選項 （其中都不需要撰寫任何程式碼）：
@@ -145,11 +145,11 @@ DropDownList 中加入新的清單項目，請前往 [屬性] 視窗，按一下
 **圖 13**： 上初始頁面載入不會顯示產品 ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-cs/_static/image37.png))
 
 
-因為 「-選擇分類-」 清單項目被選取時顯示任何產品的原因是因為它的值是`-1`和含有資料庫中沒有產品`CategoryID`的`-1`。 如果這是您想在此時完成時的行為 ！ 如果您想要顯示的但是*所有*一個類別目錄選取 「-選擇分類-」 清單項目時，返回`ProductsBLL`類別和自訂`GetProductsByCategoryID(categoryID)`方法，使它會叫用`GetProducts()`方法如果傳入中 *`categoryID`* 參數小於零：
+因為 「-選擇分類-」 清單項目被選取時顯示任何產品的原因是因為它的值是`-1`和含有資料庫中沒有產品`CategoryID`的`-1`。 如果這是您想在此時完成時的行為 ！ 如果您想要顯示的但是*所有*一個類別目錄選取 「-選擇分類-」 清單項目時，返回`ProductsBLL`類別和自訂`GetProductsByCategoryID(categoryID)`方法，使它會叫用`GetProducts()`方法如果傳入中*`categoryID`*參數小於零：
 
 [!code-csharp[Main](master-detail-filtering-with-a-dropdownlist-cs/samples/sample2.cs)]
 
-這裡使用的技巧是類似的方法，我們用來顯示所有供應商回[宣告式參數](../basic-reporting/declarative-parameters-cs.md)教學課程，雖然此範例中，我們會使用值為`-1`表示應該所有記錄擷取與`null`。 這是因為 *`categoryID`* 參數`GetProductsByCategoryID(categoryID)`方法應為整數值傳入，而宣告式參數教學課程中我們所傳入的字串輸入參數。
+這裡使用的技巧是類似的方法，我們用來顯示所有供應商回[宣告式參數](../basic-reporting/declarative-parameters-cs.md)教學課程，雖然此範例中，我們會使用值為`-1`表示應該所有記錄擷取與`null`。 這是因為*`categoryID`*參數`GetProductsByCategoryID(categoryID)`方法應為整數值傳入，而宣告式參數教學課程中我們所傳入的字串輸入參數。
 
 圖 14 顯示的螢幕擷取畫面`FilterByDropDownList.aspx`如果選取 「-選擇分類-」 的選項。 在這裡，根據預設，會顯示所有產品，使用者可以選擇特定的類別目錄來縮小顯示。
 
@@ -169,7 +169,7 @@ DropDownList 中加入新的清單項目，請前往 [屬性] 視窗，按一下
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[下一步](master-detail-filtering-with-two-dropdownlists-cs.md)
+> [!div class="step-by-step"]
+> [下一步](master-detail-filtering-with-two-dropdownlists-cs.md)

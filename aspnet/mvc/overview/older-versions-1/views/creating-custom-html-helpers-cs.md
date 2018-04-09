@@ -1,8 +1,8 @@
 ---
 uid: aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs
-title: "建立自訂 HTML Helper (C#) |Microsoft 文件"
+title: 建立自訂 HTML Helper (C#) |Microsoft 文件
 author: microsoft
-description: "本教學課程的目標是為了示範如何建立您可以使用 MVC 檢視中的自訂 HTML Helper。 利用 HTML Helper..."
+description: 本教學課程的目標是為了示範如何建立您可以使用 MVC 檢視中的自訂 HTML Helper。 利用 HTML Helper...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a0b6d67eb7aab51ba2b422fab0788e34255f2c8c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ebc9aa2aa8dbc02dc01833d671c3bfd19141ba74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-custom-html-helpers-c"></a>建立自訂 HTML Helper (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_9_CS.pdf)
 
@@ -57,7 +57,7 @@ ASP.NET MVC 架構包括下列的標準 （這不是完整的清單） 的 HTML 
 **圖 01**： 以 HTML Helper 呈現的頁面 ([按一下以檢視完整大小的影像](creating-custom-html-helpers-cs/_static/image3.png))
 
 
-**列出 1 –`Views\Home\Index.aspx`**
+**列出 1 – `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-cs/samples/sample1.aspx)]
 
@@ -72,7 +72,7 @@ Html.BeginForm() Helper 方法用來建立的開頭和結尾 HTML`<form>`標記�
 
 ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您必須擴充 MVC 架構，以自訂 HTML Helper。 在本教學課程的其餘部分，您會學習建立自訂的 HTML Helper 的兩個方法。
 
-**列出 2 –`Index.aspx Source`**
+**列出 2 – `Index.aspx Source`**
 
 [!code-aspx[Main](creating-custom-html-helpers-cs/samples/sample2.aspx)]
 
@@ -80,7 +80,7 @@ ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您
 
 若要建立新的 HTML Helper 的最簡單方式是建立靜態方法會傳回字串。 例如，假設，您決定要建立新的 HTML Helper 呈現 HTML`<label>`標記。 您可以列出 2 中使用類別來呈現`<label>`。
 
-**列出 2 –`Helpers\LabelHelper.cs`**
+**列出 2 – `Helpers\LabelHelper.cs`**
 
 [!code-csharp[Main](creating-custom-html-helpers-cs/samples/sample3.cs)]
 
@@ -88,7 +88,7 @@ ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您
 
 使用修改的索引檢視表中列出的 3`LabelHelper`來呈現 HTML`<label>`標記。 請注意，檢視包含`<%@ imports %>`匯入的指示詞`Application1.Helpers`命名空間。
 
-**列出 2 –`Views\Home\Index2.aspx`**
+**列出 2 – `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-cs/samples/sample4.aspx)]
 
@@ -100,7 +100,7 @@ ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您
 
 第二，請注意，第一個參數`Label()`方法加上關鍵字`this`。 擴充方法的第一個參數會指出延伸模組方法所擴充的類別。
 
-**列出 3 –`Helpers\LabelExtensions.cs`**
+**列出 3 – `Helpers\LabelExtensions.cs`**
 
 [!code-csharp[Main](creating-custom-html-helpers-cs/samples/sample5.cs)]
 
@@ -114,7 +114,7 @@ ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您
 
 修改的索引檢視表中列出的 4 會使用 Html.Label() 擴充方法的所有呈現其`<label>`標記。
 
-**列出 4 –`Views\Home\Index3.aspx`**
+**列出 4 – `Views\Home\Index3.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-cs/samples/sample6.aspx)]
 
@@ -124,6 +124,6 @@ ASP.NET MVC framework 會包含較少的協助程式。 最可能的原因，您
 
 在本教學課程中，我會著重於建立非常簡單的 HTML Helper 方法。 請注意，HTML Helper 就是您想要一樣複雜。 您可以建置豐富的內容，例如樹狀檢視、 功能表、 或資料表的資料庫資料的呈現的 HTML Helper。
 
->[!div class="step-by-step"]
-[上一頁](asp-net-mvc-views-overview-cs.md)
-[下一頁](using-the-tagbuilder-class-to-build-html-helpers-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](asp-net-mvc-views-overview-cs.md)
+> [下一頁](using-the-tagbuilder-class-to-build-html-helpers-cs.md)

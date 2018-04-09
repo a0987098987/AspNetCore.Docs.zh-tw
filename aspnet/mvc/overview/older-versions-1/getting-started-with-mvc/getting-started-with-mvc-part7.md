@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part7
-title: "將驗證加入至模型 |Microsoft 文件"
+title: 將驗證加入至模型 |Microsoft 文件
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part7
 msc.type: authoredcontent
-ms.openlocfilehash: 5616c3c3bc77be0a770540d04cc2ae48ba9eedff
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 78dd6bdd81fcb51a3a21a8f1ee12b4b2bfc37db5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================
@@ -72,6 +72,6 @@ ms.lasthandoff: 01/30/2018
 
 正在尋找良好 ！ 我們現在將一個額外的資料行加入資料庫。
 
->[!div class="step-by-step"]
-[上一頁](getting-started-with-mvc-part6.md)
-[下一頁](getting-started-with-mvc-part8.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started-with-mvc-part6.md)
+> [下一頁](getting-started-with-mvc-part8.md)

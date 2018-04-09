@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
-title: "第 1 部分： 概觀和檔案]-> [新增專案 |Microsoft 文件"
+title: 第 1 部分： 概觀和檔案]-> [新增專案 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和檔案]-> [新的專案。"
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和檔案]-> [新的專案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 1e3373a21c7d1766cfad390a7ba68b1363d8d895
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2082927d18c95563893da199d60347fa15952446
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-overview-and-file-new-project"></a>第 1 部分： 概觀和檔案]-> [新增專案
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 1 部分涵蓋的概觀和檔案-&gt;新的專案。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 MVC Music Store 是介紹並逐步說明如何使用 ASP.NET MVC 和 Visual Web Developer web 程式開發的教學課程應用程式。 我們將會啟動慢，因此初學者層級的 web 程式開發體驗也沒關係。
 
@@ -115,15 +115,15 @@ MVC Music Store 是介紹並逐步說明如何使用 ASP.NET MVC 和 Visual Web 
 
 ASP.NET MVC 會使用一些基本的命名慣例的資料夾名稱：
 
-| **資料夾** | **目的** |
+| **Folder** | **目的** |
 | --- | --- |
-| **/ 控制站** | 控制站回應從瀏覽器中輸入時，決定要用來執行工作，並將回應傳回至使用者。 |
-| **/ 檢視表** | 檢視保存我們 UI 的範本 |
-| **/ 模型** | 模型保存和操作資料 |
-| **/ 內容** | 此資料夾包含我們影像、 CSS 和任何其他靜態內容 |
-| **或指令碼** | 此資料夾包含我們的 JavaScript 檔案 |
+| **/Controllers** | 控制站回應從瀏覽器中輸入時，決定要用來執行工作，並將回應傳回至使用者。 |
+| **/Views** | 檢視保存我們 UI 的範本 |
+| **/Models** | 模型保存和操作資料 |
+| **/Content** | 此資料夾包含我們影像、 CSS 和任何其他靜態內容 |
+| **/Scripts** | 此資料夾包含我們的 JavaScript 檔案 |
 
 因為預設的 ASP.NET MVC framework 會使用 「 透過組態的慣例 」 的方法，而讓某些資料夾的命名慣例為基礎的預設假設甚至空的 ASP.NET MVC 應用程式中包含這些資料夾。 比方說，控制站預設會尋找檢視 [檢視] 資料夾中的您不必明確指定這項程式碼中。 會繼續使用預設慣例減少程式碼，您需要撰寫，也可讓它更容易了解您的專案的其他開發人員。 我們將說明當我們建立我們的應用程式的多個這些慣例。
 
->[!div class="step-by-step"]
-[下一步](mvc-music-store-part-2.md)
+> [!div class="step-by-step"]
+> [下一步](mvc-music-store-part-2.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
-title: "成員資格和管理 |Microsoft 文件"
+title: 成員資格和管理 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: a10dbfe1ca49baee1604aac8dd9a1f93ccfcb7f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 166bc642ea2083f455be0648e424f0b0ae3b082c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="membership-and-administration"></a>成員資格和管理
 ====================
@@ -66,14 +66,14 @@ ASP.NET Web Form 提供成員資格功能。 使用預設範本，您需要內�
 
     [!code-csharp[Main](membership-and-administration/samples/sample2.cs?highlight=11,26-28)]
 6. 請注意，`AddUserAndRole`會以紅色加上底線。 按兩下 AddUserAndRole 程式碼。  
- 加上底線的字母"A"，反白顯示方法的開頭。
+   加上底線的字母"A"，反白顯示方法的開頭。
 7. 將滑鼠停留在字母"A"，然後按一下 UI，可讓您產生方法 stub`AddUserAndRole`方法。 
 
     ![成員資格和 Advministration-產生方法虛設常式](membership-and-administration/_static/image1.png)
 8. 按一下標題為的選項：  
     `Generate method stub for "AddUserAndRole" in "WingtipToys.Logic.RoleActions"`
 9. 開啟*RoleActions.cs*檔案從*邏輯*資料夾。  
- `AddUserAndRole`方法已經加入至類別檔案。
+   `AddUserAndRole`方法已經加入至類別檔案。
 10. 修改*RoleActions.cs*藉由移除檔案`NotImplementedeException`及新增以黃色反白顯示程式碼，使其顯示，如下所示：  
 
     [!code-csharp[Main](membership-and-administration/samples/sample3.cs?highlight=5-7,15-51)]
@@ -120,8 +120,8 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 1. 以滑鼠右鍵按一下專案名稱 (**Wingtip Toys**) 中**方案總管 中**選取**新增** - &gt; **新資料夾**.
 2. 將新的資料夾命名*Admin*。
 3. 以滑鼠右鍵按一下*Admin*資料夾，然後選取**新增** - &gt; **新項目**。   
- 隨即顯示 [ 新增項目] 對話方塊。
-4. 選取**Visual C#** - &gt; **Web**左側的 [範本] 群組。 從 中間 清單中選取**使用主版頁面的 Web Form**，其命名*AdminPage.aspx***，** ，然後選取 **新增**。
+   隨即顯示 [ 新增項目] 對話方塊。
+4. 選取<strong>Visual C#</strong> - &gt; <strong>Web</strong>左側的 [範本] 群組。 從 中間 清單中選取<strong>使用主版頁面的 Web Form</strong>，其命名<em>AdminPage.aspx</em><strong>，</strong> ，然後選取 <strong>新增</strong>。
 5. 選取*Site.Master*主版頁面中，為檔案，然後選擇 **確定**。
 
 #### <a name="add-a-webconfig-file"></a>加入 Web.config 檔案
@@ -129,8 +129,8 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 藉由新增*Web.config*檔案*Admin*資料夾中，您可以限制存取包含在資料夾中的頁面。
 
 1. 以滑鼠右鍵按一下*Admin*資料夾，然後選取**新增** - &gt; **新項目**。  
- 隨即顯示 [ 新增項目] 對話方塊。
-2. 從 Visual C# web 範本清單中，選取**Web 組態檔**從中間的清單中，接受預設名稱*Web.config***，** ]，然後選取 [ **新增**。
+   隨即顯示 [ 新增項目] 對話方塊。
+2. 從 Visual C# web 範本清單中，選取<strong>Web 組態檔</strong>從中間的清單中，接受預設名稱<em>Web.config</em><strong>，</strong> ]，然後選取 [ <strong>新增</strong>。
 3. 取代現有的 XML 內容中*Web.config*以下列檔案：  
 
     [!code-xml[Main](membership-and-administration/samples/sample4.xml)]
@@ -167,9 +167,9 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 在程式碼中所輸入的*AdminPage.aspx.cs*程式碼後置檔案，一種類別稱為`AddProducts`執行這項產品加入資料庫中的實際工作。 這個類別還不存在，因此將立即建立。
 
 1. 在**方案總管 中**，以滑鼠右鍵按一下*邏輯*資料夾，然後選取**新增** - &gt; **新項目**。   
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 選取**Visual C#**  - &gt; **程式碼**左側的 [範本] 群組。 然後，選取**類別**中間清單並將其命名*AddProducts.cs*。   
- 會顯示新的類別檔案。
+   會顯示新的類別檔案。
 3. 將現有的程式碼取代為下列程式碼：  
 
     [!code-csharp[Main](membership-and-administration/samples/sample9.cs)]
@@ -235,15 +235,15 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 您可以在購物車中執行應用程式現在若要查看您可以加入、 刪除和更新項目。 購物車總計會反映在購物車中的所有項目的總成本。
 
 1. 在 [方案總管] 中，按**F5**執行 Wingtip Toys 範例應用程式。  
- 瀏覽器隨即開啟並顯示*Default.aspx*頁面。
+   瀏覽器隨即開啟並顯示*Default.aspx*頁面。
 2. 按一下**登入**在頁面頂端的連結。 
 
     ![成員資格和系統管理-登入連結](membership-and-administration/_static/image2.png)
 
- *Login.aspx*頁面隨即顯示。
+   *Login.aspx*頁面隨即顯示。
 3. 使用下列的使用者名稱和密碼：  
- 使用者名稱：canEditUser@wingtiptoys.com  
- 密碼： Pa $$ word1 
+   使用者名稱： canEditUser@wingtiptoys.com  
+   密碼： Pa $$ word1 
 
     ![成員資格和系統管理-登入頁面](membership-and-administration/_static/image3.png)
 4. 按一下**登入**靠近頁面底部的按鈕。
@@ -254,7 +254,7 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 
     ![成員資格和系統管理-管理頁面](membership-and-administration/_static/image5.png)
 
- 請注意，必要的欄位會顯示的訊息。
+   請注意，必要的欄位會顯示的訊息。
 7. 加入新的產品的詳細資料，然後按一下 [**新增產品**] 按鈕。 
 
     ![成員資格和系統管理-新增產品](membership-and-administration/_static/image6.png)
@@ -268,7 +268,7 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
     ![成員資格和系統管理-移除產品](membership-and-administration/_static/image8.png)
 12. 選取**產品**從頂端導覽功能表上，確認已移除該產品。
 13. 按一下**登出**存在的系統管理模式。   
- 請注意，不會再顯示在上方瀏覽窗格**Admin**功能表項目。
+    請注意，不會再顯示在上方瀏覽窗格**Admin**功能表項目。
 
 ## <a name="summary"></a>總結
 
@@ -281,6 +281,6 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 [將具有成員資格、 OAuth、 和 SQL Database 的安全的 ASP.NET Web Form 應用程式部署至 Azure 網站](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure-免費試用版](https://azure.microsoft.com/pricing/free-trial/)
 
->[!div class="step-by-step"]
-[上一頁](checkout-and-payment-with-paypal.md)
-[下一頁](url-routing.md)
+> [!div class="step-by-step"]
+> [上一頁](checkout-and-payment-with-paypal.md)
+> [下一頁](url-routing.md)

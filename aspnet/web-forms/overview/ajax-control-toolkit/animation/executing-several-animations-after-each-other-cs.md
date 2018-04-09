@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-cs
-title: "執行數個動畫之後彼此 (C#) |Microsoft 文件"
+title: 執行數個動畫之後彼此 (C#) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9d4322690132fe3829e3454f0aa7ff38acd8eb04
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 836f0bba890a03e74ae62c2df029b7525b34275c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="executing-several-animations-after-each-other-c"></a>執行數個動畫之後彼此 (C#)
 ====================
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-css[Main](executing-several-animations-after-each-other-cs/samples/sample3.css)]
 
-接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要`runat="server":`
+接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要 `runat="server":`
 
 [!code-aspx[Main](executing-several-animations-after-each-other-cs/samples/sample4.aspx)]
 
@@ -63,6 +63,6 @@ ms.lasthandoff: 11/10/2017
 
 然後就會減少高度 ([按一下以檢視完整大小的影像](executing-several-animations-after-each-other-cs/_static/image6.png))
 
->[!div class="step-by-step"]
-[上一頁](executing-several-animations-at-the-same-time-cs.md)
-[下一頁](animation-depending-on-a-condition-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](executing-several-animations-at-the-same-time-cs.md)
+> [下一頁](animation-depending-on-a-condition-cs.md)

@@ -1,7 +1,7 @@
 ---
-title: "金鑰的儲存體格式"
+title: 在 ASP.NET Core 金鑰的儲存體格式
 author: tdykstra
-description: "本文件說明 ASP.NET Core 資料保護的金鑰儲存格式的實作詳細資料。"
+description: 了解 ASP.NET Core 資料保護金鑰的儲存格式的實作詳細資料。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: 66783eb7264a4551eafdd9d5c7d99b014701a6de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: abe23da3de70107aa4f4d84f4da27aadfe7b2061
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-storage-format"></a>金鑰的儲存體格式
+# <a name="key-storage-format-in-aspnet-core"></a>在 ASP.NET Core 金鑰的儲存體格式
 
 <a name="data-protection-implementation-key-storage-format"></a>
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="the-encryptedsecret-element"></a>\<EncryptedSecret > 項目
 
-<encryptedSecret>包含加密的秘密金鑰材料表單項目可能會存在於如果[啟用加密的密碼在靜止](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)。 屬性 decryptorType 會實作 IXmlDecryptor 類型的組件限定名稱。 此類型是負責讀取內部<encryptedKey>項目，來復原原始的純文字解密。
+<encryptedSecret>包含加密的秘密金鑰材料表單項目可能會存在於如果[啟用加密的密碼在靜止](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)。 屬性 decryptorType 會實作 IXmlDecryptor 類型的組件限定名稱。 此類型是負責讀取內部<encryptedKey>項目，來復原原始的純文字解密。
 
 如同\<描述元 >，特定的格式<encryptedSecret>項目相依於使用中的靜止加密機制。 在上述範例中，為每個註解中使用 Windows DPAPI 加密主要金鑰。
 

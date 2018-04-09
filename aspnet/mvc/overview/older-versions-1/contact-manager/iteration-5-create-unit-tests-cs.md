@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-cs
-title: "反覆項目 #5 – 建立單元測試 (C#) |Microsoft 文件"
+title: '反覆項目 #5 – 建立單元測試 (C#) |Microsoft 文件'
 author: microsoft
-description: "第五個反覆項目中，我們在我們的應用程式更輕鬆地維護及修改加入單元測試。 我們模擬資料模型類別，並建立單元測試的 o..."
+description: 第五個反覆項目中，我們在我們的應用程式更輕鬆地維護及修改加入單元測試。 我們模擬資料模型類別，並建立單元測試的 o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f9b2d05ec8756d68f6bd2f387c85faf03abd167e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7a61b5791a40088df9d27f7b1bd37df1831ef22b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-5--create-unit-tests-c"></a>反覆項目 #5 – 建立單元測試 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-5-create-unit-tests-cs/_static/contactmanager_5_cs1.zip)
 
@@ -105,9 +105,9 @@ ms.lasthandoff: 11/10/2017
 
 Visual Studio 不包含模擬物件架構。 不過，有數個商業和開放原始碼模擬物件架構適用於.NET framework:
 
-1. Moq-此架構可開放原始碼 BSD 授權。 您可以下載從 Moq [https://code.google.com/p/moq/](https://code.google.com/p/moq/)。
-2. Rhino Mocks-此架構才可使用的開放原始碼 BSD 授權。 您可以下載從 Mocks Rhino [http://ayende.com/projects/rhino-mocks.aspx](http://ayende.com/projects/rhino-mocks.aspx)。
-3. Typemock 絕緣器-這是商業架構。 您可以下載從試用版[http://www.typemock.com/](http://www.typemock.com/)。
+1. Moq-此架構可開放原始碼 BSD 授權。 您可以下載從 Moq [ https://code.google.com/p/moq/ ](https://code.google.com/p/moq/)。
+2. Rhino Mocks-此架構才可使用的開放原始碼 BSD 授權。 您可以下載從 Mocks Rhino [ http://ayende.com/projects/rhino-mocks.aspx ](http://ayende.com/projects/rhino-mocks.aspx)。
+3. Typemock 絕緣器-這是商業架構。 您可以下載從試用版[ http://www.typemock.com/ ](http://www.typemock.com/)。
 
 在本教學課程中，我決定使用 Moq。 不過，您可以輕鬆地使用 Rhino Mocks 或 Typemock 絕緣器來建立模擬物件連絡人管理員應用程式。
 
@@ -158,7 +158,7 @@ Visual Studio 不包含模擬物件架構。 不過，有數個商業和開放�
 
 這些測試的程式碼會包含在程式碼範例 1。
 
-**列出 1-Models\ContactManagerServiceTest.cs**
+**Listing 1 - Models\ContactManagerServiceTest.cs**
 
 [!code-csharp[Main](iteration-5-create-unit-tests-cs/samples/sample1.cs)]
 
@@ -222,12 +222,12 @@ ASP.NETMVC 應用程式會控制流程的使用者互動。 在測試控制器�
 
 相反地，傳回的檢視就像這樣：
 
-傳回 View("Create");
+return View("Create");
 
 如果您不明確傳回檢視時 ViewResult.ViewName 屬性會傳回空字串。
 
 
-**列出 2-Controllers\ContactControllerTest.cs**
+**Listing 2 - Controllers\ContactControllerTest.cs**
 
 [!code-csharp[Main](iteration-5-create-unit-tests-cs/samples/sample6.cs)]
 
@@ -239,6 +239,6 @@ ASP.NETMVC 應用程式會控制流程的使用者互動。 在測試控制器�
 
 中的下一個反覆項目中，我們會修改連絡人管理員應用程式，使它支援連絡人群組。 我們會將這項新功能新增至我們的應用程式使用稱為 「 測試驅動開發軟體設計程序。
 
->[!div class="step-by-step"]
-[上一頁](iteration-4-make-the-application-loosely-coupled-cs.md)
-[下一頁](iteration-6-use-test-driven-development-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-4-make-the-application-loosely-coupled-cs.md)
+> [下一頁](iteration-6-use-test-driven-development-cs.md)

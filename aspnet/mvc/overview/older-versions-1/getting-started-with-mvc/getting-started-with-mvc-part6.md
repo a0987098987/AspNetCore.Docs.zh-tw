@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
-title: "加入建立方法，並建立檢視 |Microsoft 文件"
+title: 加入建立方法，並建立檢視 |Microsoft 文件
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 36b3d6ef0432292f21ecd8f29ea2d88ee8867436
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 48e656a0c394b9db5baaec9c557ec38c4020d41b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-create-method-and-create-view"></a>加入建立方法，並建立檢視
 ====================
@@ -65,6 +65,6 @@ ms.lasthandoff: 01/30/2018
 
 我們不檢查是否我們電影是正確的不過，而且資料庫將不會讓我們將電影儲存沒有標題。 如果我們無法告訴使用者的資料庫之前擲回錯誤，它應該不錯。 我們將會執行這個下一步，方法是加入我們的應用程式的驗證支援。
 
->[!div class="step-by-step"]
-[上一頁](getting-started-with-mvc-part5.md)
-[下一頁](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started-with-mvc-part5.md)
+> [下一頁](getting-started-with-mvc-part7.md)

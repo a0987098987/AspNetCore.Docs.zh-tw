@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site
-title: "社交網路加入 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 社交網路加入 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本章節說明如何將您的網站與社交網路服務的整合。 在本章中，您將學習如何讓人書籤連結您的網站..."
+description: 本章節說明如何將您的網站與社交網路服務的整合。 在本章中，您將學習如何讓人書籤連結您的網站...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: 2c43fa7d286e43f3a4581662ce421c7435e1871f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2d1f0074edf473c4be06adaa32598dd828a7552c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-social-networking-to-aspnet-web-pages-razor-sites"></a>加入社交網路的 ASP.NET Web Pages (Razor) 站台
 ====================
@@ -57,10 +57,10 @@ ms.lasthandoff: 11/10/2017
     [!code-cshtml[Main](13-adding-social-networking-to-your-web-site/samples/sample1.cshtml)]
 
     在此範例中，當`LinkShare`協助程式執行時，頁面標題會傳遞做為參數，接著再將傳遞至社交網路網站的頁面標題。 不過，您可以傳入您想要的任何字串。 此範例也會指定要包含在清單中的社交網站。 您可以指定與您的網站相關的社交網路網站。
-- 執行*ListLinkShare.cshtml*瀏覽器中的。 (請確定中選取頁面**檔案**才能執行這個工作區。)
-- 按一下其中一個已註冊的站台的圖像。 此連結會帶您到頁面上選取的社交網路網站，您可以共用連結。 例如，如果您按一下 Reddit 連結，則前往`submit to reddit`Reddit 網站頁面。
+2. 執行*ListLinkShare.cshtml*瀏覽器中的。 (請確定中選取頁面**檔案**才能執行這個工作區。)
+3. 按一下其中一個已註冊的站台的圖像。 此連結會帶您到頁面上選取的社交網路網站，您可以共用連結。 例如，如果您按一下 Reddit 連結，則前往`submit to reddit`Reddit 網站頁面。
 
-    ![圖片 2](13-adding-social-networking-to-your-web-site/_static/image2.jpg)
+     ![圖片 2](13-adding-social-networking-to-your-web-site/_static/image2.jpg)
 
 <a id="Adding_a_Twitter_Feed"></a>
 ## <a name="adding-a-twitter-feed"></a>加入 Twitter 摘要
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/10/2017
 <a id="Rendering_a_Gravatar_Image"></a>
 ## <a name="rendering-a-gravatar-image"></a>轉譯 Gravatar 映像
 
-A *Gravatar* (&quot;全域可辨識的虛擬人偶&quot;) 映像，可以用於多個網站作為您的顯示圖片 &#8212; 也就是說，代表您的影像。 比方說，Gravatar 可識別論壇文章、 部落格的註解中的人員，依此類推。 (您可以註冊自己 Gravatar Gravatar 網站在[http://www.gravatar.com/](http://www.gravatar.com/)。)如果您想要在您的網站上顯示人的名稱或電子郵件地址旁邊的映像，您可以使用 Gravatar 協助程式。
+A *Gravatar* (&quot;全域可辨識的虛擬人偶&quot;) 是可以使用多個網站，為您的顯示圖片的映像&#8212;也就是代表您的影像。 比方說，Gravatar 可識別論壇文章、 部落格的註解中的人員，依此類推。 (您可以註冊自己 Gravatar Gravatar 網站在[ http://www.gravatar.com/ ](http://www.gravatar.com/)。)如果您想要在您的網站上顯示人的名稱或電子郵件地址旁邊的映像，您可以使用 Gravatar 協助程式。
 
 在此範例中，您使用單一的 Gravatar 表示自己。 另一種使用 Gravatar 是可讓您指定其 Gravatar 位址當他們註冊您的網站上。 (您可以了解如何讓使用者在註冊[加入安全性和 ASP.NET Web Pages 站台中的成員資格](https://go.microsoft.com/fwlink/?LinkId=202904)。)然後當您顯示該使用者的資訊，您可以加入 Gravatar 您用來顯示使用者的名稱。
 

@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/aspnet4/breaking-changes
-title: "ASP.NET 4 的重大變更 |Microsoft 文件"
+title: ASP.NET 4 的重大變更 |Microsoft 文件
 author: rick-anderson
-description: "本文件說明已為.NET Framework 版本 4 可能會影響使用所建立的應用程式的發行版本的變更..."
+description: 本文件說明已為.NET Framework 版本 4 可能會影響使用所建立的應用程式的發行版本的變更...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: d68723b52ae1ee80142fb1aca3b0b10de34332d1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7eea51add6b05684357314e3d6aa5087383c6408
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 的重大變更
 ====================
@@ -180,7 +180,7 @@ ASP.NET 使用加密和雜湊演算法來協助保護資料，例如表單驗證
 
 第一個案例的因應措施是，更新應用程式層級`Web.config`檔案中的未定案設定文字，藉以`Web.config`由 Visual Studio 2008 會自動產生的檔案。
 
-替代的解決方法的第一個案例是在電腦上安裝 Service Pack 2 for Vista 或 Windows Server 2008 或 hotfix KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)) 若要修正的不正確IIS 組態系統的組態合併行為。 不過，您執行這些動作之後，您的應用程式可能會遇到的組態錯誤，因為第二個案例所述的問題。
+替代的解決方法的第一個案例是在電腦上安裝 Service Pack 2 for Vista 或 Windows Server 2008 或 hotfix KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)) 若要修正的不正確的組態合併行為IIS 組態系統。 不過，您執行這些動作之後，您的應用程式可能會遇到的組態錯誤，因為第二個案例所述的問題。
 
 第二個案例的因應措施是將其刪除或標記為註解所有**system.web.extensions**組態區段定義和組態區段群組中應用程式層級定義`Web.config`檔案。 這些定義通常是在應用程式層級頂端`Web.config`檔案，並可以藉由識別**c**元素和其子系。
 
@@ -192,8 +192,8 @@ ASP.NET 使用加密和雜湊演算法來協助保護資料，例如表單驗證
 
 因為發生組態或編譯錯誤，所以可能無法啟動設定為執行舊版 ASP.NET 之應用程式子系的 ASP.NET 4 應用程式。 下列範例會顯示受影響的應用程式的目錄結構。
 
-`/parentwebapp`（設定為使用 ASP.NET 2.0 或 ASP.NET 3.5）  
-`/childwebapp`（設定為使用 ASP.NET 4）
+`/parentwebapp` （設定為使用 ASP.NET 2.0 或 ASP.NET 3.5）  
+`/childwebapp` （設定為使用 ASP.NET 4）
 
 中的應用程式`childwebapp`資料夾將無法啟動 IIS 7 或 IIS 7.5 上，並會回報組態錯誤。 錯誤文字將包含類似下列訊息：
 
@@ -272,15 +272,15 @@ ASP.NET 使用加密和雜湊演算法來協助保護資料，例如表單驗證
 
 在舊版 ASP.NET， **HttpRequest**屬性有下列值：
 
-**HttpRequest.FilePath**:`/testapp/Action.mvc/SomeAction`
+**HttpRequest.FilePath**: `/testapp/Action.mvc/SomeAction`
 
 **HttpRequest.PathInfo**: （空白）
 
 在 ASP.NET 4 **HttpRequest**屬性改為包含下列值：
 
-**HttpRequest.FilePath**:`/testapp/Action.mvc`
+**HttpRequest.FilePath**: `/testapp/Action.mvc`
 
-**HttpRequest.PathInfo**:`SomeAction`
+**HttpRequest.PathInfo**: `SomeAction`
 
 <a id="0.1__Toc252995493"></a><a id="0.1__Toc255587642"></a><a id="0.1__Toc256770153"></a><a id="0.1__Toc245724861"></a>
 
@@ -323,13 +323,13 @@ ASP.NET 4 啟用 IIS 6 上之後，在 IIS 6 （在 Windows Server 2003 或 Wind
 
 ## <a name="event-handlers-might-not-be-not-raised-in-a-default-document-in-iis-7-or-iis-75-integrated-mode"></a>事件處理常式可能不會不引發 IIS 7 或 IIS 7.5 中的預設文件在整合模式
 
-ASP.NET 4 包含變更的修改如何**動作**屬性的 html**表單**項目會呈現時的無副檔名 URL 解析為預設文件。 無副檔名 URL 解析為預設文件的範例是[http://contoso.com/](http://contoso.com/)，產生的要求中[http://contoso.com/Default.aspx](http://contoso.com/Default.aspx)。
+ASP.NET 4 包含變更的修改如何**動作**屬性的 html**表單**項目會呈現時的無副檔名 URL 解析為預設文件。 無副檔名 URL 解析為預設文件的範例是[ http://contoso.com/ ](http://contoso.com/)，產生的要求中[ http://contoso.com/Default.aspx ](http://contoso.com/Default.aspx)。
 
-ASP.NET 4 現在會呈現 HTML**表單**項目的**動作**至已對應到它的預設文件的無副檔名 URL 提出要求時，屬性值為空字串。 例如，在較舊版本的 ASP.NET，要求[http://contoso.com](http://contoso.com)的要求會導致`Default.aspx`。 在文件中開啟**表單**會呈現標記，如下列範例所示：
+ASP.NET 4 現在會呈現 HTML**表單**項目的**動作**至已對應到它的預設文件的無副檔名 URL 提出要求時，屬性值為空字串。 例如，在較舊版本的 ASP.NET，要求[ http://contoso.com ](http://contoso.com)的要求會導致`Default.aspx`。 在文件中開啟**表單**會呈現標記，如下列範例所示：
 
 `<form action="Default.aspx" />`
 
-在 ASP.NET 4 中，要求[http://contoso.com](http://contoso.com)也會導致的要求`Default.aspx`。 不過，ASP.NET 現在會呈現 HTML 開啟**表單**標記，如下列範例所示：
+在 ASP.NET 4 中，要求[ http://contoso.com ](http://contoso.com)也會導致的要求`Default.aspx`。 不過，ASP.NET 現在會呈現 HTML 開啟**表單**標記，如下列範例所示：
 
 `<form action="" />`
 
@@ -370,7 +370,7 @@ ASP.NET 2.0 中，並由延伸模組 3.5 中所加入的 ASP.NET 功能會使用
 - 允許在單一應用程式定義域中的多個不同的權限集。
 - 不需要的組件在 GAC 中，會在堆疊上只有 ASP.NET 或其他.NET Framework 程式碼時叫用明確的權限的判斷提示。
 
-無法還原情形的情境之一，在.NET Framework 4： 非 Web 部分信任應用程式不再可以呼叫 System.Web.dll 與 System.Web.Extensions.dll 中的某些 Api。 在舊版的.NET framework 中，是讓非 Web 部分信任應用程式，可以明確授與**AspNetHostingPermission**權限。 這些應用程式無法再使用**System.Web.HttpUtility**中的型別**System.Web.ClientServices。\***命名空間和類型與成員資格、 角色和設定檔。 不再支援.NET Framework 4 中從非 Web 部分信任應用程式呼叫這些類型。
+無法還原情形的情境之一，在.NET Framework 4： 非 Web 部分信任應用程式不再可以呼叫 System.Web.dll 與 System.Web.Extensions.dll 中的某些 Api。 在舊版的.NET framework 中，是讓非 Web 部分信任應用程式，可以明確授與<strong>AspNetHostingPermission</strong>權限。 這些應用程式無法再使用<strong>System.Web.HttpUtility</strong>中的型別<strong>System.Web.ClientServices。\<n g > * 命名空間和類型與成員資格、 角色和設定檔。 不再支援.NET Framework 4 中從非 Web 部分信任應用程式呼叫這些類型。
 
 > [!NOTE]
 > **HtmlEncode**和**HtmlDecode**功能**System.Web.HttpUtility**類別已移至新的.NET Framework 4 **System.Net.WebUtility**類別。 如果這是所使用的唯一 ASP.NET 功能，修改為使用新的應用程式的程式碼**WebUtility**類別。

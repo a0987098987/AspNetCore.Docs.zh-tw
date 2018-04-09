@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
-title: "利用 ObjectDataSource (VB) 顯示資料 |Microsoft 文件"
+title: 利用 ObjectDataSource (VB) 顯示資料 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會使用這個控制項，您可以將擷取自 BLL havi 沒有先前的教學課程中建立資料繫結 ObjectDataSource 控制項查看..."
+description: 本教學課程會使用這個控制項，您可以將擷取自 BLL havi 沒有先前的教學課程中建立資料繫結 ObjectDataSource 控制項查看...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c9e40ff968f82a9d05fc9441e2399e52a6c55f51
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ec3be56e1bb4294402351ff05e9209fe97510748
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-with-the-objectdatasource-vb"></a>利用 ObjectDataSource (VB) 顯示資料
 ====================
@@ -265,12 +265,12 @@ DetailsView，像是 FormView 只會顯示從 ObjectDataSource 傳回第一筆�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)
-[下一頁](declarative-parameters-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](programmatically-setting-the-objectdatasource-s-parameter-values-cs.md)
+> [下一頁](declarative-parameters-vb.md)

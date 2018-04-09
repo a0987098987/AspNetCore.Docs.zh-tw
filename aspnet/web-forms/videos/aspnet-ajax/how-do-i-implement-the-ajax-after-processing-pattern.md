@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-after-processing-pattern
-title: "[如何:]在處理模式之後，實作 AJAX 嗎？ | Microsoft Docs"
+title: '[如何:]在處理模式之後，實作 AJAX 嗎？ | Microsoft Docs'
 author: JoeStagner
-description: "ASP.NET AJAX 架構可讓您的伺服器端程式碼中攔截並回應各種用戶端事件。 在這段影片中，我們了解如何實作 Aft..."
+description: ASP.NET AJAX 架構可讓您的伺服器端程式碼中攔截並回應各種用戶端事件。 在這段影片中，我們了解如何實作 Aft...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-after-processing-pattern
 msc.type: video
-ms.openlocfilehash: da0e15fcefd2837fe8b3601e89851431978f9b51
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 55cbb15003c391360f2d5d4dc7dbd9328da1c674
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-implement-the-ajax-after-processing-pattern"></a>[如何:]在處理模式之後，實作 AJAX 嗎？
 ====================
@@ -26,6 +26,6 @@ ASP.NET AJAX 架構可讓您的伺服器端程式碼中攔截並回應各種用�
 
 [&#9654;觀看影片 （5 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-ajax-after-processing-pattern)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-aspnet-ajax-history-control.md)
-[下一頁](how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-aspnet-ajax-history-control.md)
+> [下一頁](how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/changing-the-database
-title: "第一個使用 ASP.NET MVC 的 EF 資料庫： 變更的資料庫 |Microsoft 文件"
+title: 第一個使用 ASP.NET MVC 的 EF 資料庫： 變更的資料庫 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/01/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/changing-the-database
 msc.type: authoredcontent
-ms.openlocfilehash: 1ffe753812e5eef817f03ab488a28ae5fcefd41e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 63ee8768a43dbdac80922e3adbedd3378c10da73
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-changing-the-database"></a>第一個使用 ASP.NET MVC 的 EF 資料庫： 資料庫進行變更
 ====================
@@ -63,6 +63,6 @@ ms.lasthandoff: 11/10/2017
 
 在下一步 區段中，您將加入程式碼來自訂顯示學生記錄的詳細檢視。
 
->[!div class="step-by-step"]
-[上一頁](generating-views.md)
-[下一頁](customizing-a-view.md)
+> [!div class="step-by-step"]
+> [上一頁](generating-views.md)
+> [下一頁](customizing-a-view.md)

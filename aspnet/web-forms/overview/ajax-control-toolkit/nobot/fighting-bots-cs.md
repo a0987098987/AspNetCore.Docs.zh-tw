@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
-title: "對抗 Bot (C#) |Microsoft 文件"
+title: 對抗 Bot (C#) |Microsoft 文件
 author: wenz
-description: "自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Con NoBot 控制..."
+description: 自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Con NoBot 控制...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b8eedff4691c1115e242be884f9e74663dc0b4f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1ea3aaa5461c2f58a927ae975568f18a34a4729b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="fighting-bots-c"></a>對抗 Bot (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/10/2017
 
 有數個優點和缺點，這種方法，但對此的討論超出本教學課程的範圍。 不過這會產生 ASP.NET AJAX Control Toolkit 會提供類似的方法中的控制項： `NoBot`。 它比較容易克服比 CAPTCHA，但非常容易使用及 fares 非常好上類似，它會被視為成功如果大部分垃圾郵件嘗試的部落格網站會被破壞，其中`NoBot`控制可以執行。
 
-`NoBot`如果符合下列情況之一時，會攔截目前的 ASP.NET web form 回傳：
+`NoBot` 如果符合下列情況之一時，會攔截目前的 ASP.NET web form 回傳：
 
 - 不能解決 JavaScript 拼圖的瀏覽器 （例如當 JavaScript 停用時）
 - 使用者提交表單，以快速
@@ -45,9 +45,9 @@ ms.lasthandoff: 11/10/2017
 
 若要檢查這些條件，`NoBot`控制項需要這些屬性 （全部選用）：
 
-- `ResponseMinimumDelaySeconds`最小數量回傳之間的秒數
-- `CutoffWindowSeconds`在其中一個 IP 從回傳是量值的時間間隔的長度
-- `CutoffMaximumInstances`每個時間間隔的秒數的最大數量
+- `ResponseMinimumDelaySeconds` 最小數量回傳之間的秒數
+- `CutoffWindowSeconds` 在其中一個 IP 從回傳是量值的時間間隔的長度
+- `CutoffMaximumInstances` 每個時間間隔的秒數的最大數量
 
 下列標記要求該至少兩秒經過回傳之間並沒有只有五個回傳或小於 30 秒的時間間隔內：
 
@@ -72,5 +72,5 @@ ms.lasthandoff: 11/10/2017
 
 這則錯誤訊息可能因為由 bot ([按一下以檢視完整大小的影像](fighting-bots-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](fighting-bots-vb.md)
+> [!div class="step-by-step"]
+> [下一步](fighting-bots-vb.md)

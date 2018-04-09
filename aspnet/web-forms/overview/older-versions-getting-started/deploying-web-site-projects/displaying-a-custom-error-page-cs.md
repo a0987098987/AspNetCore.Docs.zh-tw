@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs
-title: "顯示自訂錯誤網頁 (C#) |Microsoft 文件"
+title: 顯示自訂錯誤網頁 (C#) |Microsoft 文件
 author: rick-anderson
-description: "沒有使用者看到的內容中的 ASP.NET web 應用程式發生執行階段錯誤時？ 答案需視如何網站&lt;customErrors&gt;組態..."
+description: 沒有使用者看到的內容中的 ASP.NET web 應用程式發生執行階段錯誤時？ 答案需視如何網站&lt;customErrors&gt;組態...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8d68dedfc1f606cc6f0381bcbdb3f65c1ea3b2e5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f01a0f3af3680d53639512d7a86ac1a8645d00e2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-a-custom-error-page-c"></a>顯示自訂錯誤網頁 (C#)
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/30/2018
 
 另一種 YSOD 是執行階段錯誤 YSOD 中，並如下所示**圖 2**。 執行階段錯誤 YSOD 通知執行階段錯誤的訪客，但它不包含任何擲回的例外狀況的相關資訊。 (它，不過，提供有關如何進行修改的可檢視錯誤詳細資料的指示`Web.config`檔案，即構成這類 YSOD 看起來不夠專業的一部分。)
 
-根據預設，執行階段錯誤 YSOD 顯示給使用者的瀏覽 （透過遠端 http://www.yoursite.com) 方式做為在瀏覽器的網址列中的 url 辨識**圖 2**: `http://httpruntime.web703.discountasp.net/Genre.aspx?ID=foo`。 兩個不同的 YSOD 畫面存在，因為開發人員有興趣了解錯誤詳細資料，但這類資訊不應該顯示即時的站台上為潛在的安全性漏洞或其他機密資訊的訪客的任何人，它可能會顯示您站台。
+根據預設，執行階段錯誤 YSOD 顯示給使用者的瀏覽遠端 (透過http://www.yoursite.com)，如在瀏覽器的網址列中的 url 辨識項**圖 2**: `http://httpruntime.web703.discountasp.net/Genre.aspx?ID=foo`。 兩個不同的 YSOD 畫面存在，因為開發人員有興趣了解錯誤詳細資料，但這類資訊不應該顯示即時的站台上為潛在的安全性漏洞或其他機密資訊的訪客的任何人，它可能會顯示您站台。
 
 > [!NOTE]
 > 如果步驟一路做，而且使用 DiscountASP.NET 做 web 主機，您可能會注意到，執行階段錯誤 YSOD 時不會顯示瀏覽即時網站。 這是因為 DiscountASP.NET 具有其預設設定來顯示例外狀況詳細資料 YSOD 的伺服器。 好消息是，您可以覆寫此預設行為加入`<customErrors>`區段您`Web.config`檔案。 「 設定的錯誤網頁顯示 」 一節會檢查`<customErrors>`> 一節中詳細資料。
@@ -89,11 +89,11 @@ ms.lasthandoff: 01/30/2018
 
 [ `<customErrors>`區段](https://msdn.microsoft.com/library/h0hfz6fc.aspx)中`Web.config`具有兩個屬性會影響哪些錯誤頁面會顯示：`defaultRedirect`和`mode`。 `defaultRedirect` 屬性是選擇性的。 如果提供，它會指定自訂錯誤網頁的 URL，並指出自訂錯誤頁面應該會顯示而不是執行階段錯誤 YSOD。 `mode`必要屬性，並接受三個值之一： `On`， `Off`，或`RemoteOnly`。 這些值具有下列行為：
 
-- `On`-表示自訂錯誤網頁或執行階段錯誤 YSOD，會顯示所有造訪者，不論是本機或遠端。
-- `Off`-指定例外狀況詳細資料 YSOD 會顯示所有造訪者，不論是本機或遠端。
-- `RemoteOnly`-表示自訂錯誤網頁或執行階段錯誤 YSOD 顯示為遠端的訪客，而例外狀況詳細資料 YSOD 則顯示為本機的訪客。
+- `On` -表示自訂錯誤網頁或執行階段錯誤 YSOD，會顯示所有造訪者，不論是本機或遠端。
+- `Off` -指定例外狀況詳細資料 YSOD 會顯示所有造訪者，不論是本機或遠端。
+- `RemoteOnly` -表示自訂錯誤網頁或執行階段錯誤 YSOD 顯示為遠端的訪客，而例外狀況詳細資料 YSOD 則顯示為本機的訪客。
 
-除非您另外指定，ASP.NET 會像是您已將 mode 屬性設定為`RemoteOnly`且具有未指定`defaultRedirect`值。 換句話說的預設行為是例外狀況詳細資料 YSOD 會顯示為本機的訪客，而執行階段錯誤 YSOD 就會顯示遠端訪客。 您可以藉由新增覆寫此預設行為`<customErrors>`區段，以您的 web 應用程式`Web.config file.`
+除非您另外指定，ASP.NET 會像是您已將 mode 屬性設定為`RemoteOnly`且具有未指定`defaultRedirect`值。 換句話說的預設行為是例外狀況詳細資料 YSOD 會顯示為本機的訪客，而執行階段錯誤 YSOD 就會顯示遠端訪客。 您可以藉由新增覆寫此預設行為`<customErrors>`區段，以您的 web 應用程式 `Web.config file.`
 
 ## <a name="using-a-custom-error-page"></a>使用自訂錯誤網頁
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 01/30/2018
 > 簽出[404 錯誤網頁，一個多階段](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/)如需建立有效的 404 錯誤網頁的指引。
 
 
-[![](displaying-a-custom-error-page-cs/_static/image19.png)](displaying-a-custom-error-page-cs/_static/image18.png)**圖 7**： 自訂 404 錯誤頁面會顯示比更目標的訊息`Oops.aspx`  
+[![](displaying-a-custom-error-page-cs/_static/image19.png)](displaying-a-custom-error-page-cs/_static/image18.png)**圖 7**： 自訂 404 錯誤頁面會顯示比更目標的訊息 `Oops.aspx`  
  ([按一下以檢視完整大小的影像](displaying-a-custom-error-page-cs/_static/image20.png)) 
 
 因為您已了解`404.aspx`使用者找不到頁面的要求時，只有到達頁面中，您可以加強這個自訂錯誤網頁包含可協助使用者解決這種錯誤的特定類型的功能。 例如，您無法建置對應已知良好的 Url 不正確的 Url 資料庫資料表，而則有`404.aspx`執行針對查詢的資料表，並建議使用者可能會嘗試連線到的網頁的自訂錯誤網頁。
@@ -173,6 +173,6 @@ ms.lasthandoff: 01/30/2018
 - [處理和擲回例外狀況](https://msdn.microsoft.com/library/5b2yeyab.aspx)
 - [正確地在 ASP.NET 中使用自訂錯誤網頁](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
 
->[!div class="step-by-step"]
-[上一頁](strategies-for-database-development-and-deployment-cs.md)
-[下一頁](processing-unhandled-exceptions-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](strategies-for-database-development-and-deployment-cs.md)
+> [下一頁](processing-unhandled-exceptions-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
-title: "在 TFS 中建立 Team 專案 |Microsoft 文件"
+title: 在 TFS 中建立 Team 專案 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何建立新的 team 專案的 Team Foundation Server (TFS) 2010年中。"
+description: 本主題描述如何建立新的 team 專案的 Team Foundation Server (TFS) 2010年中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: ef8cddb7733c1f8cacd24c5cf341a42741d25a95
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 79c069a601c0eafd84ae142241895428052acd29
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-team-project-in-tfs"></a>在 TFS 中建立 Team 專案
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/24/2018
 > 本主題描述如何建立新的 team 專案的 Team Foundation Server (TFS) 2010年中。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -107,11 +107,11 @@ ms.lasthandoff: 01/24/2018
 
     ![](creating-a-team-project-in-tfs/_static/image9.png)
 
-    > [!NOTE]
-    > 您可能會收到**HTTP 404 找不到**錯誤，因為有雙重 HTTP 編碼錯誤。 如果發生這種情況，請與這個取代 URL:   
-    > [*網站集合 URL*] /\_layouts/permsetup.aspx  
-    > 例如:   
-    > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
+   > [!NOTE]
+   > 您可能會收到<strong>HTTP 404 找不到</strong>錯誤，因為有雙重 HTTP 編碼錯誤。 如果發生這種情況，請與這個取代 URL:   
+   > [<em>網站集合 URL</em>] /\_layouts/permsetup.aspx  
+   > 例如:   
+   > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
 8. 上**設定組成群組為此站台**頁面上，新增的使用者，將建立 team 專案，**擁有者**群組，然後再按一下**確定**。
 
     ![](creating-a-team-project-in-tfs/_static/image10.png)
@@ -202,6 +202,6 @@ ms.lasthandoff: 01/24/2018
 
 如需更廣泛指引在 TFS 中建立 team 專案的詳細資訊，請參閱[建立 Team 專案](https://msdn.microsoft.com/library/ms181477(v=VS.100).aspx)。 如需有關如何讓使用者可以建立 team 專案集合中的新 team 專案的詳細資訊，請參閱[設定 Team 專案集合的系統管理員權限](https://msdn.microsoft.com/library/dd547204.aspx)。 如需有關如何將使用者加入至 team 專案的詳細資訊，請參閱[將使用者加入 Team 專案](https://msdn.microsoft.com/library/bb558971.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](configuring-team-foundation-server-for-web-deployment.md)
-[下一頁](adding-content-to-source-control.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-team-foundation-server-for-web-deployment.md)
+> [下一頁](adding-content-to-source-control.md)

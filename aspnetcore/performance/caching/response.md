@@ -1,18 +1,18 @@
 ---
-title: "回應快取中 ASP.NET Core"
+title: 回應快取中 ASP.NET Core
 author: rick-anderson
-description: "了解如何使用快取以較低的頻寬需求的回應，並增加 ASP.NET Core 應用程式的效能。"
+description: 了解如何使用快取以較低的頻寬需求的回應，並增加 ASP.NET Core 應用程式的效能。
 manager: wpickett
 ms.author: riande
 ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: cc1ec50155398ba4143a2bf697ca26435c228c49
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
@@ -64,7 +64,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 記憶體中快取使用伺服器記憶體來儲存快取的資料。 這種類型的快取是適用於單一伺服器或多部伺服器使用*黏性工作階段*。 自黏工作階段表示，從用戶端要求一律將路由傳送至相同的伺服器進行處理。
 
-如需詳細資訊，請參閱[介紹記憶體中快取中 ASP.NET Core](xref:performance/caching/memory)。
+如需詳細資訊，請參閱[快取記憶體中](xref:performance/caching/memory)。
 
 ### <a name="distributed-cache"></a>分散式快取
 
@@ -180,9 +180,9 @@ Cache-Control: public,max-age=60
 
 ## <a name="additional-resources"></a>其他資源
 
-* [快取 http 規格](https://tools.ietf.org/html/rfc7234#section-3)
+* [將回應儲存在快取](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [記憶體內部快取](xref:performance/caching/memory)
+* [快取記憶體中](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取中介軟體](xref:performance/caching/middleware)

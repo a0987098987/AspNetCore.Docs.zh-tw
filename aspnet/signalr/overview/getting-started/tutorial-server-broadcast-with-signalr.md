@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
-title: "教學課程： 使用 SignalR 2 廣播的伺服器 |Microsoft 文件"
+title: 教學課程： 使用 SignalR 2 廣播的伺服器 |Microsoft 文件
 author: tdykstra
-description: "本教學課程會示範如何建立使用 ASP.NET SignalR 2 提供廣播的伺服器功能的 web 應用程式。 伺服器廣播表示該 commun..."
+description: 本教學課程會示範如何建立使用 ASP.NET SignalR 2 提供廣播的伺服器功能的 web 應用程式。 伺服器廣播表示該 commun...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 98a7ce4991d58181177cf56976888e9fd1526987
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: de4ccb4f0865e250fa0d78a9707fe5129c78e764
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程： 使用 SignalR 2 廣播的伺服器
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/24/2018
 
 ![StockTicker 初始版本](tutorial-server-broadcast-with-signalr/_static/image1.png)
 
-定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和 **%** 動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
+定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和**%**動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
 
 本教學課程包含下列各節：
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 01/24/2018
 
     指令碼標記指定 jQuery 指令碼檔案、 SignalR core 指令碼檔案、 SignalR proxy 指令碼檔案及更新版本，您將建立 StockTicker 指令碼檔案。 SignalR proxy 指令碼檔案，指定 「 signalr/中樞 」 URL，以動態方式產生，並在中樞類別、 方法的 proxy 方法定義在此情況下 StockTickerHub.GetAllStocks。 如果您想要的話，您可以產生這個 JavaScript 檔案手動使用[SignalR 的公用程式](http://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/)和停用動態檔案建立 MapHubs 方法呼叫中的。
 3. > [!IMPORTANT]
- > 請確定 JavaScript 檔案參考中*StockTicker.html*正確無誤。 也就是確定您的指令碼標記 (在範例 1.10.2) 中的 jQuery 版本是在您的專案中的 jQuery 版本相同*指令碼*資料夾，並確定指令碼標記中的 SignalR 版本是 SignalR 相同在您的專案版本*指令碼*資料夾。 如有必要，請變更指令碼標記中的檔案名稱。
+   > 請確定 JavaScript 檔案參考中*StockTicker.html*正確無誤。 也就是確定您的指令碼標記 (在範例 1.10.2) 中的 jQuery 版本是在您的專案中的 jQuery 版本相同*指令碼*資料夾，並確定指令碼標記中的 SignalR 版本是 SignalR 相同在您的專案版本*指令碼*資料夾。 如有必要，請變更指令碼標記中的檔案名稱。
 4. 在**方案總管] 中**，以滑鼠右鍵按一下*StockTicker.html*，然後按一下 [**設定為起始頁**。
 5. 在專案資料夾中建立新的 JavaScript 檔案並將其命名*StockTicker.js*...
 6. 取代為下列程式碼中的範本程式碼：

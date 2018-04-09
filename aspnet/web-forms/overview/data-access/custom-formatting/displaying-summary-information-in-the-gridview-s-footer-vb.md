@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
-title: "在 GridView 的頁尾 (VB) 中顯示摘要資訊 |Microsoft 文件"
+title: 在 GridView 的頁尾 (VB) 中顯示摘要資訊 |Microsoft 文件
 author: rick-anderson
-description: "底部的摘要資料列中的報表通常顯示摘要資訊。 GridView 控制項可以包含頁尾資料列至其儲存格，我們可以 pr..."
+description: 底部的摘要資料列中的報表通常顯示摘要資訊。 GridView 控制項可以包含頁尾資料列至其儲存格，我們可以 pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e5b7e39a44d43a857c62842ea3e1dddcacf05c9b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d9a1a3f3c680f367395f984254da6cdcdd3c08d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-vb"></a>在 GridView 的頁尾 (VB) 中顯示摘要資訊
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 [![從選取類別 DropDownList 取得 categoryID 參數值](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image23.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image22.png)
 
-**圖 8**： 取得 *`categoryID`* 參數值，從選取類別 DropDownList ([按一下以檢視完整大小的影像](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
+**圖 8**： 取得*`categoryID`*參數值，從選取類別 DropDownList ([按一下以檢視完整大小的影像](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
 
 
 在精靈完成後 GridView 將會有 BoundField 每個產品的屬性。 讓我們來清除這些 BoundFields 使得只有`ProductName`， `UnitPrice`， `UnitsInStock`，和`UnitsOnOrder`BoundFields 會顯示。 歡迎剩餘 BoundFields 中加入任何欄位層級設定 (例如格式化`UnitPrice`為貨幣)。 進行這些變更之後，GridView 的宣告式標記看起來應該如下所示：
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 [![從選取類別 DropDownList 取得 categoryID 參數值](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image26.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image25.png)
 
-**圖 9**： 取得 *`categoryID`* 參數值，從選取類別 DropDownList ([按一下以檢視完整大小的影像](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
+**圖 9**： 取得*`categoryID`*參數值，從選取類別 DropDownList ([按一下以檢視完整大小的影像](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
 
 
 ## <a name="step-2-displaying-a-footer-in-the-gridview"></a>步驟 2： 在 GridView 中顯示頁尾
@@ -177,10 +177,10 @@ GridView 控制項可以顯示頁首和頁尾資料列。 這些資料列會顯�
 
 為了維護執行總數中，我們需要定義變數超出範圍的事件處理常式。 建立下列四個的頁面層級變數：
 
-- `_totalUnitPrice`型別`Decimal`
-- `_totalNonNullUnitPriceCount`型別`Integer`
-- `_totalUnitsInStock`型別`Integer`
-- `_totalUnitsOnOrder`型別`Integer`
+- `_totalUnitPrice`型別 `Decimal`
+- `_totalNonNullUnitPriceCount`型別 `Integer`
+- `_totalUnitsInStock`型別 `Integer`
+- `_totalUnitsOnOrder`型別 `Integer`
 
 接下來，撰寫程式碼中的每個資料列時發生遞增這些三個變數`RowDataBound`事件處理常式。
 
@@ -221,7 +221,7 @@ GridView 控制項可以顯示頁首和頁尾資料列。 這些資料列會顯�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一步](using-the-formview-s-templates-vb.md)
+> [!div class="step-by-step"]
+> [上一步](using-the-formview-s-templates-vb.md)

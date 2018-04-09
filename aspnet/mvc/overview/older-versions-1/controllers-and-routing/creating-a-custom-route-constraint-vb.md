@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-vb
-title: "建立自訂路由條件約束 (VB) |Microsoft 文件"
+title: 建立自訂路由條件約束 (VB) |Microsoft 文件
 author: StephenWalther
-description: "作者： Stephen Walther 示範如何建立自訂的路由條件約束。 我們會實作簡單的自訂條件約束可以防止路由相符 w..."
+description: 作者： Stephen Walther 示範如何建立自訂的路由條件約束。 我們會實作簡單的自訂條件約束可以防止路由相符 w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 41b04c1fea267e7ee9f8a0b1c2f0d4fe4bb96d15
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 094077fa0cb546f4cc91dbf074f8014e62b3b19c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-custom-route-constraint-vb"></a>建立自訂路由條件約束 (VB)
 ====================
@@ -53,5 +53,5 @@ Localhost 條件約束被包含在程式碼範例 1。
 
 請注意，預設路由已從 Global.asax 檔案中列出 2 略過。 如果您包含預設路由，則預設路由會符合管理控制器的要求。 在此情況下，遠端使用者可能仍叫用的管理控制器的動作即使其要求不符合系統管理員路由。
 
->[!div class="step-by-step"]
-[上一步](creating-a-route-constraint-vb.md)
+> [!div class="step-by-step"]
+> [上一步](creating-a-route-constraint-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
-title: "自訂資料清單的編輯介面 (C#) |Microsoft 文件"
+title: 自訂資料清單的編輯介面 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中我們會建立更豐富的編輯介面 DataList，其中包括 DropDownLists 和核取方塊。"
+description: 在本教學課程中我們會建立更豐富的編輯介面 DataList，其中包括 DropDownLists 和核取方塊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ffd649bc5a1af4d211c8b331004cb39c7a591d7a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad603b7cb80d2266e84d4a521a1748a1e09a5bed
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-the-datalists-editing-interface-c"></a>自訂資料清單的編輯介面 (C#)
 ====================
@@ -192,12 +192,12 @@ Northwind 資料庫允許用於`NULL`值`Products`資料表 s`CategoryID`和`Sup
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Dennis Patterson、 David Suru 和袁 Schmidt。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)
-[下一頁](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)
+> [下一頁](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)

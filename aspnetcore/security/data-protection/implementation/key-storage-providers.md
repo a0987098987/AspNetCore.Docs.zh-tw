@@ -1,7 +1,7 @@
 ---
-title: "金鑰儲存提供者"
+title: 在 ASP.NET Core 金鑰儲存提供者
 author: rick-anderson
-description: "深入了解 ASP.NET Core 及如何設定金鑰的儲存體位置中的金鑰儲存提供者。"
+description: 深入了解 ASP.NET Core 及如何設定金鑰的儲存體位置中的金鑰儲存提供者。
 manager: wpickett
 ms.author: riande
 ms.date: 01/14/2017
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 83e02a19e465b3ff81a0c0c62c2c8b090bfab052
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: e8b7804e93b812c2e710ab15510c2fbaa7c4866d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-storage-providers"></a>金鑰儲存提供者
+# <a name="key-storage-providers-in-aspnet-core"></a>在 ASP.NET Core 金鑰儲存提供者
 
 <a name="data-protection-implementation-key-storage-providers"></a>
 
 根據預設資料保護系統[採用啟發學習法](xref:security/data-protection/configuration/default-settings)來判斷應該保存密碼編譯金鑰內容的位置。 開發人員可以覆寫啟發學習法，並以手動方式指定的位置。
 
 > [!NOTE]
-> 如果您指定明確的金鑰持續性位置時，資料保護系統將會取消註冊預設金鑰加密，在其餘的機制，提供啟發學習法，讓金鑰無法再進行加密在靜止。 建議您另外[指定明確的金鑰加密機制](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)實際執行應用程式。
+> 如果您指定明確的金鑰持續性位置時，資料保護系統將會取消註冊預設金鑰加密，在其餘的機制，提供啟發學習法，讓金鑰無法再進行加密在靜止。 建議您另外[指定明確的金鑰加密機制](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers)實際執行應用程式。
 
 資料保護系統隨附數個內建金鑰儲存提供者。
 
@@ -36,7 +36,7 @@ sc.AddDataProtection()
        .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp-keys\"));
    ```
 
-`DirectoryInfo`可以指向本機電腦上的目錄，或可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄 （和的案例是在本機電腦上的應用程式必須使用這個儲存機制），請考慮使用[Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)來加密在靜止的索引鍵。 否則，請考慮使用[X.509 憑證](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)來加密在靜止的金鑰。
+`DirectoryInfo`可以指向本機電腦上的目錄，或可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄 （和的案例是在本機電腦上的應用程式必須使用這個儲存機制），請考慮使用[Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)來加密在靜止的索引鍵。 否則，請考慮使用[X.509 憑證](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)來加密在靜止的金鑰。
 
 ## <a name="azure-and-redis"></a>Azure 與 Redis
 
@@ -84,7 +84,7 @@ public void ConfigureServices(IServiceCollection services)
        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys"));
    ```
 
-如果您使用系統登錄做為持續性機制，請考慮使用[Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)來加密在靜止的索引鍵。
+如果您使用系統登錄做為持續性機制，請考慮使用[Windows DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)來加密在靜止的索引鍵。
 
 ## <a name="custom-key-repository"></a>自訂金鑰儲存機制
 

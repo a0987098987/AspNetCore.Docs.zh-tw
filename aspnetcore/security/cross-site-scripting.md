@@ -1,7 +1,7 @@
 ---
-title: "防止跨網站指令碼 (XSS) 中 ASP.NET Core"
+title: 防止跨網站指令碼 (XSS) 中 ASP.NET Core
 author: rick-anderson
-description: "了解跨網站指令碼 (XSS) 和技術來處理這個 ASP.NET Core 應用程式中的弱點。"
+description: 了解跨網站指令碼 (XSS) 和技術來處理這個 ASP.NET Core 應用程式中的弱點。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cross-site-scripting
-ms.openlocfilehash: 9e54ee0b1169c01629c3cd91a378509a73c53904
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: d9263a2c1bb6a376008b7d8a55864e4d15e77cee
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="preventing-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) 中 ASP.NET Core
+# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) 中 ASP.NET Core
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼方式
 
-自動使用 MVC Razor 引擎會將編碼所有輸出來自於變數，除非您真的硬碟以防止它執行這項作業。 它會使用 HTML 屬性編碼規則，每當您使用 *@* 指示詞。 為 HTML 屬性編碼為 HTML 編碼這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標記協助程式也會編碼的輸入您在標記參數中使用。
+自動使用 MVC Razor 引擎會將編碼所有輸出來自於變數，除非您真的硬碟以防止它執行這項作業。 它會使用 HTML 屬性編碼規則，每當您使用*@*指示詞。 為 HTML 屬性編碼為 HTML 編碼這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標記協助程式也會編碼的輸入您在標記參數中使用。
 
 採取下列 Razor 檢視;
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="accessing-encoders-in-code"></a>存取程式碼中的編碼器
 
-HTML、 JavaScript 和 URL 編碼器可以使用您的程式碼有兩種，您可以將它們透過插入[相依性插入](../fundamentals/dependency-injection.md#fundamentals-dependency-injection)或者您可以使用中所包含的預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，則要套用的任何字元視為為安全的範圍不會生效-預設編碼器使用最安全的編碼規則可能。
+HTML、 JavaScript 和 URL 編碼器可以使用您的程式碼有兩種，您可以將它們透過插入[相依性插入](xref:fundamentals/dependency-injection#fundamentals-dependency-injection)或者您可以使用中所包含的預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，則要套用的任何字元視為為安全的範圍不會生效-預設編碼器使用最安全的編碼規則可能。
 
 若要使用的可設定的編碼器，透過 DI 您建構函式應該採用*HtmlEncoder*， *JavaScriptEncoder*和*UrlEncoder*適當的參數。 例如，
 

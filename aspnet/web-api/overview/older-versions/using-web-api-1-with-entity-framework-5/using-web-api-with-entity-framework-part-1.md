@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-1
-title: "第 1 部分： 概觀和建立專案 |Microsoft 文件"
+title: 第 1 部分： 概觀和建立專案 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 47af34c72f1959756f5d68e0e80052e700c7b19c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f9cdff0cb0cad9adad546c8f8d46ba9b010e1079
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-overview-and-creating-the-project"></a>第 1 部分： 概觀和建立專案
 ====================
@@ -94,5 +94,5 @@ Entity Framework 是/物件關聯式對應架構。 則會對應到關聯式資�
 
 [!code-css[Main](using-web-api-with-entity-framework-part-1/samples/sample1.css)]
 
->[!div class="step-by-step"]
-[下一步](using-web-api-with-entity-framework-part-2.md)
+> [!div class="step-by-step"]
+> [下一步](using-web-api-with-entity-framework-part-2.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
-title: "設定資料庫伺服器的 Web Deploy 發行 |Microsoft 文件"
+title: 設定資料庫伺服器的 Web Deploy 發行 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何設定 SQL Server 2008 R2 資料庫伺服器以支援 web 部署和發行。 本主題中所述的工作會共同..."
+description: 本主題描述如何設定 SQL Server 2008 R2 資料庫伺服器以支援 web 部署和發行。 本主題中所述的工作會共同...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
 msc.type: authoredcontent
-ms.openlocfilehash: 98fd728f48f6fb64a61686bc58824b9fb3a28b13
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a2340c0d561ed274e281b5f6d942af0a2027315a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-database-server-for-web-deploy-publishing"></a>設定 Web Deploy 發行變更資料庫伺服器
 ====================
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2018
 
 > 本主題描述如何設定 SQL Server 2008 R2 資料庫伺服器以支援 web 部署和發行。
 > 
-> 本主題中所述的工作通用於每個部署案例 & #x 2014年; 不論您的 web 伺服器設定為使用 IIS Web Deployment Tool (Web Deploy) 的遠端代理程式服務、 Web 部署的處理常式或離線部署或單一 web 伺服器或伺服器陣列上執行您的應用程式。 部署資料庫的方式會根據安全性需求和其他考量可能會變更。 比方說，您可以部署資料庫，不論範例資料，而您可能會部署角色的使用者對應，或部署後手動設定。 不過，您將資料庫伺服器設定的方式也維持不變。
+> 本主題中所述的工作通用於每個部署情況&#x2014;不論您的 web 伺服器設定為使用 IIS Web Deployment Tool (Web Deploy) 的遠端代理程式服務、 Web 部署的處理常式或離線部署或在單一網頁伺服器或伺服器陣列上執行應用程式。 部署資料庫的方式會根據安全性需求和其他考量可能會變更。 比方說，您可以部署資料庫，不論範例資料，而您可能會部署角色的使用者對應，或部署後手動設定。 不過，您將資料庫伺服器設定的方式也維持不變。
 
 
 您沒有安裝任何其他產品或工具，以設定要支援 web 部署的資料庫伺服器。 假設您的資料庫伺服器和網頁伺服器執行於不同電腦，您只需要：
@@ -65,8 +65,8 @@ SQL Server 會使用 TCP/IP 的遠端電腦進行通訊。 如果您的資料庫
 1. 上**啟動**功能表上，指向**所有程式**，按一下  **Microsoft SQL Server 2008 R2**，按一下 **組態工具**，然後按一下**SQL Server 組態管理員**。
 2. 在樹狀檢視窗格中，依序展開**SQL Server 網路組態**，然後按一下  **MSSQLSERVER 的通訊協定**。
 
-    > [!NOTE]
-    > 如果您已安裝多個 SQL Server 執行個體，您會看到 **通訊協定 * * * [執行個體名稱]*每個執行個體的項目。 您要設定執行個體的執行個體為基礎的網路設定。
+   > [!NOTE]
+   > 如果您已安裝多個 SQL Server 執行個體，您會看到<strong>通訊協定</strong><em>[執行個體名稱]</em>每個執行個體的項目。 您要設定執行個體的執行個體為基礎的網路設定。
 3. 在詳細資料窗格中，以滑鼠右鍵按一下**TCP/IP**資料列，然後再按一下**啟用**。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image1.png)
@@ -130,7 +130,7 @@ SQL Server 會使用 TCP/IP 的遠端電腦進行通訊。 如果您的資料庫
 
 ## <a name="configure-logins-and-database-permissions"></a>設定登入和資料庫權限
 
-當您部署 web 應用程式到網際網路資訊服務 (IIS) 時，應用程式會使用執行的應用程式集區身分識別。 在網域環境中，應用程式集區識別使用其執行存取網路資源所在伺服器的電腦帳戶。 電腦帳戶會採用 * [網域名稱]***\** * [電腦名稱]***$ * * & #x 2014; 例如， **FABRIKAM\TESTWEB1$**。 若要讓 web 應用程式透過網路存取的資料庫，您需要：
+當您部署 web 應用程式到網際網路資訊服務 (IIS) 時，應用程式會使用執行的應用程式集區身分識別。 在網域環境中，應用程式集區識別使用其執行存取網路資源所在伺服器的電腦帳戶。 電腦帳戶會採用<em>[網域名稱]</em><strong>\<n g ><em>[電腦名稱]</em><strong>$</strong>&#x2014;，例如<strong>FABRIKAM\TESTWEB1$</strong>。 若要讓 web 應用程式透過網路存取的資料庫，您需要：
 
 - 將 web 伺服器電腦帳戶的登入加入至 SQL Server 執行個體。
 - 將電腦帳戶登入對應到任何必要的資料庫角色 (通常**db\_datareader**和**db\_datawriter**)。
@@ -231,6 +231,6 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
 
 如需部署資料庫專案的指引，請參閱[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。 如需指引，以執行部署後指令碼建立資料庫角色成員資格，請參閱[部署資料庫角色成員資格測試環境](../advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments.md)。 如需有關如何符合成員資格資料庫造成的唯一部署挑戰的指引，請參閱[部署至企業環境的成員資格資料庫](../advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments.md)。
 
->[!div class="step-by-step"]
-[上一頁](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
-[下一頁](creating-a-server-farm-with-the-web-farm-framework.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
+> [下一頁](creating-a-server-farm-with-the-web-farm-framework.md)

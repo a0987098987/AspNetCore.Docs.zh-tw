@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/installing-helpers
-title: "安裝協助程式中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 安裝協助程式中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本文說明如何安裝 ASP.NET Web Pages (Razor) 網站中的協助程式。 協助程式是包含程式碼和標記每個可重複使用元件..."
+description: 本文說明如何安裝 ASP.NET Web Pages (Razor) 網站中的協助程式。 協助程式是包含程式碼和標記每個可重複使用元件...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/installing-helpers
 msc.type: authoredcontent
-ms.openlocfilehash: 842c5a56d14314217c1e6ad6d48ded28d3cc5b4e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 766fbb87ae8bcb8917eb8fa7f552c00792242cf6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>安裝 ASP.NET Web Pages (Razor) 網站中的協助程式
 ====================
@@ -49,10 +49,10 @@ ASP.NET Web 網頁會有幾個內建的協助程式。 然而，許多協助程�
 2. 這會啟動 NuGet 封裝管理員，並顯示可用的封裝。 在 [搜尋] 方塊中，輸入您想要安裝的協助程式的關鍵字。
 
     ![在 WebMatrix NuGet Gallery 對話方塊](installing-helpers/_static/image2.png)
-- 選取封裝，然後按一下**安裝**。 按一下**是**當系統詢問您要安裝封裝，並指出您接受條款。
+3. 選取封裝，然後按一下**安裝**。 按一下**是**當系統詢問您要安裝封裝，並指出您接受條款。
 
-    如果這是您已安裝的協助程式第一次，NuGet 會構成協助程式程式碼的網站中建立資料夾。
-- 若要解除安裝協助程式，請按一下**圖庫**按鈕，再按一下**已安裝**索引標籤，然後挑選您想要解除安裝的封裝。
+     如果這是您已安裝的協助程式第一次，NuGet 會構成協助程式程式碼的網站中建立資料夾。
+4. 若要解除安裝協助程式，請按一下**圖庫**按鈕，再按一下**已安裝**索引標籤，然後挑選您想要解除安裝的封裝。
 
 ## <a name="installing-the-twitter-helper"></a>安裝 Twitter helper
 

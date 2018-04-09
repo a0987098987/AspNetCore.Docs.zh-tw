@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/authentication/adding-users-to-your-membership-system
-title: "將使用者加入至成員資格系統 |Microsoft 文件"
+title: 將使用者加入至成員資格系統 |Microsoft 文件
 author: JoeStagner
-description: "在這段影片中，Joe stagner 以示範如何將新使用者加入至成員資格儲存機制。"
+description: 在這段影片中，Joe stagner 以示範如何將新使用者加入至成員資格儲存機制。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/29/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/authentication/adding-users-to-your-membership-system
 msc.type: video
-ms.openlocfilehash: e6fd5bea2a78734187907b65c0eeb64f42d2a3e7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: de07eeea84de0bd5bc1d100ce882cff038397692
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-users-to-your-membership-system"></a>將使用者加入成員資格系統
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （47 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/adding-users-to-your-membership-system)
 
->[!div class="step-by-step"]
-[上一頁](validating-users-with-the-login-control.md)
-[下一頁](logging-users-into-your-membership-system.md)
+> [!div class="step-by-step"]
+> [上一頁](validating-users-with-the-login-control.md)
+> [下一頁](logging-users-into-your-membership-system.md)

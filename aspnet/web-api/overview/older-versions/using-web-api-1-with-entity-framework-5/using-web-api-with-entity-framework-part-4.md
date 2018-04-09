@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
-title: "第 4 部分： 加入系統管理員檢視 |Microsoft 文件"
+title: 第 4 部分： 加入系統管理員檢視 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 2960eee37201655a9e4632bf0196ba18a0e2e82a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cbf42f1dbd744d7b85dde7d2dcd99a13c6208a13
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-4-adding-an-admin-view"></a>第 4 部分： 加入系統管理員檢視
 ====================
@@ -86,6 +86,6 @@ ms.lasthandoff: 11/10/2017
 
 現在只有系統管理員可以檢視管理頁面。 此外，如果您的系統管理控制站來傳送 HTTP 要求，要求必須包含驗證 cookie。 如果沒有，則伺服器會傳送 HTTP 401 （未經授權） 回應。 您可以在看到 Fiddler 的 GET 要求傳送到`http://localhost:*port*/api/admin`。
 
->[!div class="step-by-step"]
-[上一頁](using-web-api-with-entity-framework-part-3.md)
-[下一頁](using-web-api-with-entity-framework-part-5.md)
+> [!div class="step-by-step"]
+> [上一頁](using-web-api-with-entity-framework-part-3.md)
+> [下一頁](using-web-api-with-entity-framework-part-5.md)

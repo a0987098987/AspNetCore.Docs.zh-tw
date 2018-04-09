@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-search
-title: "搜尋 |Microsoft 文件"
+title: 搜尋 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 116f681e14af0a09a4eb1502ef9f057c5db2f97d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8afa72d4dbc4695e7d26c6ef4052be08a7c69080
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="search"></a>搜尋
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>加入搜尋方法和搜尋檢視
 
@@ -157,6 +157,6 @@ Visual Studio 2013 有很棒的改進時顯示與編輯檢視檔案。 當您執
 
 這一節中建立和檢視，讓使用者可以搜尋電影標題和內容類型的搜尋動作方法。 在下一步 區段中，您會看到如何將屬性加入`Movie`模型以及如何將會自動建立測試資料庫的初始設定式。
 
->[!div class="step-by-step"]
-[上一頁](examining-the-edit-methods-and-edit-view.md)
-[下一頁](adding-a-new-field.md)
+> [!div class="step-by-step"]
+> [上一頁](examining-the-edit-methods-and-edit-view.md)
+> [下一頁](adding-a-new-field.md)

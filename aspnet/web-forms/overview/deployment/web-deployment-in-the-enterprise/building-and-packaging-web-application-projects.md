@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
-title: "建立和封裝 Web 應用程式專案 |Microsoft 文件"
+title: 建立和封裝 Web 應用程式專案 |Microsoft 文件
 author: jrjlee
-description: "當您想要將 web 應用程式專案部署到遠端伺服器環境時，您的第一個工作是建置專案，並產生 web 部署 packa..."
+description: 當您想要將 web 應用程式專案部署到遠端伺服器環境時，您的第一個工作是建置專案，並產生 web 部署 packa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: c05f725c9e6b493a6af8f5b5d20dbc9ff73a1ef8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d630e1776607bd0bd7c61e1f0f7234ef58c7533b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-and-packaging-web-application-projects"></a>建立和封裝 Web 應用程式專案
 ====================
@@ -59,8 +59,8 @@ ms.lasthandoff: 11/10/2017
 **封裝**中定義目標*Microsoft.Web.Publishing.targets*檔案。 基本上，此目標會採用您的 web 應用程式專案的建置輸出，並將它轉換成可以發行至 IIS web 伺服器的 web 部署封裝。
 
 > [!NOTE]
-> 若要檢視的專案檔 (例如， *ContactManager.Mvc.csproj*) 在 Visual Studio 2010 中，您必須先卸載專案，從您的方案。 在**方案總管 中**視窗中，以滑鼠右鍵按一下專案節點，然後**卸載專案**。 同樣地，以滑鼠右鍵按一下專案節點，然後按一下**編輯***[專案檔]*)。 未經處理的 XML 格式，將會開啟專案檔。 請記住，當您完成時重新載入專案。  
-> 如需 MSBuild 目標，工作詳細資訊和**匯入**陳述式，請參閱[了解專案檔](understanding-the-project-file.md)。 專案檔和 WPP 的更深入簡介，請參閱[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi 和 William Bartholomew，ISBN: 978-0-7356-4524-0。
+> 若要檢視的專案檔 (例如， <em>ContactManager.Mvc.csproj</em>) 在 Visual Studio 2010 中，您必須先卸載專案，從您的方案。 在<strong>方案總管 中</strong>視窗中，以滑鼠右鍵按一下專案節點，然後<strong>卸載專案</strong>。 同樣地，以滑鼠右鍵按一下專案節點，然後按一下<strong>編輯</strong><em>[專案檔]</em>)。 未經處理的 XML 格式，將會開啟專案檔。 請記住，當您完成時重新載入專案。  
+> 如需 MSBuild 目標，工作詳細資訊和<strong>匯入</strong>陳述式，請參閱[了解專案檔](understanding-the-project-file.md)。 專案檔和 WPP 的更深入簡介，請參閱[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi 和 William Bartholomew，ISBN: 978-0-7356-4524-0。
 
 
 ## <a name="what-is-a-web-deployment-package"></a>Web 部署套件為何？
@@ -104,6 +104,6 @@ Web 部署套件，以及建置程序會產生兩個檔案，可協助您使用�
 
 專案檔和 WPP 的更深入簡介，請參閱[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi 和 William Bartholomew，ISBN: 978-0-7356-4524-0。
 
->[!div class="step-by-step"]
-[上一頁](understanding-the-build-process.md)
-[下一頁](configuring-parameters-for-web-package-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-the-build-process.md)
+> [下一頁](configuring-parameters-for-web-package-deployment.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
-title: "使用控制器和檢視來實作詳細資料清單/UI |Microsoft 文件"
+title: 使用控制器和檢視來實作詳細資料清單/UI |Microsoft 文件
 author: microsoft
-description: "步驟 4 說明如何利用我們的模型中為使用者提供的資料清單/詳細資料瀏覽體驗的應用程式中新增的控制站..."
+description: 步驟 4 說明如何利用我們的模型中為使用者提供的資料清單/詳細資料瀏覽體驗的應用程式中新增的控制站...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 2f9148a2d419863229e2c5a2a0c98984001fcee5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ac3568941eeef24bd9857c5787471aadea15fc7f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>使用控制器和檢視來實作詳細資料清單/UI
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 11/10/2017
 | **URL** | **目的** |
 | --- | --- |
 | */Dinners/* | 顯示即將 dinners HTML 清單 |
-| */Dinners/詳細資料 / [id]* | 顯示有關特定的 dinner 內嵌於 URL-會比對的資料庫中 dinner DinnerID 「 識別碼 」 參數所指示的詳細資料。 例如： /Dinners/Details/2 會顯示的 HTML 網頁 Dinner DinnerID 值為 2 的相關詳細資料。 |
+| */Dinners/Details/[id]* | 顯示有關特定的 dinner 內嵌於 URL-會比對的資料庫中 dinner DinnerID 「 識別碼 」 參數所指示的詳細資料。 例如： /Dinners/Details/2 會顯示的 HTML 網頁 Dinner DinnerID 值為 2 的相關詳細資料。 |
 
 我們將發佈這些 Url 初始的實作兩個公用 「 執行方法 」 類別新增為我們 DinnersController 類似如下：
 
@@ -92,15 +92,15 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 「 路由。MapRoute()"上述的方法呼叫註冊將傳入 Url 對應至控制器類別使用的 URL 格式的預設路由規則: 「 / {controller} / {action} / {id}"– 其中 「 控制器 」 是具現化，控制器類別的名稱 「 動作 」 是的名稱公用方法來叫用，「 識別碼 」 是可以做為引數傳遞給方法的 URL 中內嵌的選擇性參數。 傳遞到 「 MapRoute()"方法呼叫的第三個參數是一組用於控制器/動作識別碼值，它們不會出現在 URL 中的預設值 (控制器 ="Home"，動作 ="Index"，識別碼 ="")。
 
-以下是使用預設對應的資料表，示範如何在各種不同的 Url"*/ {控制器} / {action} / {id}"*路由規則：
+以下是使用預設對應的資料表，示範如何在各種不同的 Url"<em>/ {控制器} / {action} / {id}"</em>路由規則：
 
 | **URL** | **控制器類別** | **動作方法** | **傳遞參數** |
 | --- | --- | --- | --- |
-| */ Dinners/詳細資料/2* | DinnersController | Details(id) | 識別碼 = 2 |
-| */ Dinners/編輯/5* | DinnersController | Edit(id) | 識別碼 = 5 |
-| */ Dinners/建立* | DinnersController | Create （) | N/A |
-| */ Dinners* | DinnersController | Index （) | N/A |
-| */ 首頁* | HomeController | Index （) | N/A |
+| */Dinners/Details/2* | DinnersController | Details(id) | id=2 |
+| */Dinners/Edit/5* | DinnersController | Edit(id) | id=5 |
+| */Dinners/Create* | DinnersController | Create （) | N/A |
+| */Dinners* | DinnersController | Index （) | N/A |
+| */Home* | HomeController | Index （) | N/A |
 | */* | HomeController | Index （) | N/A |
 
 最後三個資料列會顯示預設值 (控制器 = 首頁，動作 = 索引，Id ="") 正在使用。 因為 「 索引 」 方法註冊為預設動作名稱，如果沒有指定，"/ Dinners"和"/home"Url 原因 index 動作方法的控制器類別上叫用。 「 組織 」 控制站登錄為預設的控制站中，如果未指定，因為"/"的 URL，則會導致要建立、 HomeController 和 index 動作方法上叫用。
@@ -301,6 +301,6 @@ Html.ActionLink() helper 方法的第一個參數是要顯示的連結文字 （
 
 我們現在啟用編輯支援的 CRUD （建立、 讀取、 更新、 刪除） 資料格式。
 
->[!div class="step-by-step"]
-[上一頁](build-a-model-with-business-rule-validations.md)
-[下一頁](provide-crud-create-read-update-delete-data-form-entry-support.md)
+> [!div class="step-by-step"]
+> [上一頁](build-a-model-with-business-rule-validations.md)
+> [下一頁](provide-crud-create-read-update-delete-data-form-entry-support.md)

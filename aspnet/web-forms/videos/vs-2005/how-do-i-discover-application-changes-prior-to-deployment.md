@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-discover-application-changes-prior-to-deployment
-title: "[如何:]探索部署之前，先變更應用程式？ | Microsoft Docs"
+title: '[如何:]探索部署之前，先變更應用程式？ | Microsoft Docs'
 author: pjhacker
-description: "了解如何使用 Visual Studio Team System 從原始檔控制總管探索 Web 應用程式，以及 ensur 所做的變更..."
+description: 了解如何使用 Visual Studio Team System 從原始檔控制總管探索 Web 應用程式，以及 ensur 所做的變更...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/25/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-discover-application-changes-prior-to-deployment
 msc.type: video
-ms.openlocfilehash: 83ff78852be2b4ae423bb86a5168813ea71e6605
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29c13582b41408a318f6cab0eeef516778554b4a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-discover-application-changes-prior-to-deployment"></a>[如何:]探索部署之前，先變更應用程式？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （5 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-discover-application-changes-prior-to-deployment)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-publish-and-analyze-test-results.md)
-[下一頁](how-do-i-implement-continuous-integration-with-team-foundation.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-publish-and-analyze-test-results.md)
+> [下一頁](how-do-i-implement-continuous-integration-with-team-foundation.md)

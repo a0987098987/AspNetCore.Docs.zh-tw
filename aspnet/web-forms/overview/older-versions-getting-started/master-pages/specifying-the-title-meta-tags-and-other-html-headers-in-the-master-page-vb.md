@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb
-title: "主版頁面 (VB) 中指定的標題、 Meta 標記，以及其他 HTML 標頭 |Microsoft 文件"
+title: 主版頁面 (VB) 中指定的標題、 Meta 標記，以及其他 HTML 標頭 |Microsoft 文件
 author: rick-anderson
-description: "查看定義各種不同的技術&lt;head&gt;主版頁面，從 [內容] 頁面中的項目。"
+description: 查看定義各種不同的技術&lt;head&gt;主版頁面，從 [內容] 頁面中的項目。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6d004a0ee0b46e2984aec8d0a99835dbf414ed9d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b8bf9d32eee3e35ffc84521f7f82f7beecc99a0c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb"></a>指定標題、 Meta 標記和其他 HTML 標頭在主版頁面 (VB)
 ====================
@@ -130,7 +130,7 @@ ASP.NET 網頁可以下列方式之一，指定其標題：
 
 ![新增 App_Code 資料夾，名為 BasePage 類別](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/_static/image4.png)
 
-**圖 04**： 新增`App_Code`資料夾和類別，名為`BasePage`
+**圖 04**： 新增`App_Code`資料夾和類別，名為 `BasePage`
 
 
 > [!NOTE]
@@ -279,7 +279,7 @@ ASP.NET 提供了強固的站台對應架構，可讓網頁開發人員在外部
 
 如往常一般，`OnLoadComplete`方法會啟動，判斷是否已明確設定頁面的標題。 如果`Page.Title`是`Nothing`，空字串，或被指派的值未命名頁面 」，則程式碼會自動指派值到`Page.Title`。
 
-若要判斷使用的標題，程式碼會啟動藉由參考[`SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)的[`CurrentNode`屬性](https://msdn.microsoft.com/library/system.web.sitemap.currentnode.aspx)。 `CurrentNode`傳回[ `SiteMapNode` ](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx)站台對應，對應至目前要求的頁面中的執行個體。 假設目前要求的頁面內站台對應，發現`SiteMapNode`的`Title`屬性指派給頁面的標題。 如果目前要求的頁面不是站台對應，`CurrentNode`傳回`Nothing`和要求的網頁檔名做為標題 （為 「 已完成步驟 2 中）。
+若要判斷使用的標題，程式碼會啟動藉由參考[`SiteMap`類別](https://msdn.microsoft.com/library/system.web.sitemap.aspx)的[`CurrentNode`屬性](https://msdn.microsoft.com/library/system.web.sitemap.currentnode.aspx)。 `CurrentNode` 傳回[ `SiteMapNode` ](https://msdn.microsoft.com/library/system.web.sitemapnode.aspx)站台對應，對應至目前要求的頁面中的執行個體。 假設目前要求的頁面內站台對應，發現`SiteMapNode`的`Title`屬性指派給頁面的標題。 如果目前要求的頁面不是站台對應，`CurrentNode`傳回`Nothing`和要求的網頁檔名做為標題 （為 「 已完成步驟 2 中）。
 
 圖 12 顯示`MultipleContentPlaceHolders.aspx`頁面上透過瀏覽器檢視時。 因為未明確設定此頁面的標題，會改為使用其對應站台對應節點的標題。
 
@@ -345,12 +345,12 @@ A `<meta>` description 項目具有下列格式：
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Zack Jones 和 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](multiple-contentplaceholders-and-default-content-vb.md)
-[下一頁](urls-in-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](multiple-contentplaceholders-and-default-content-vb.md)
+> [下一頁](urls-in-master-pages-vb.md)

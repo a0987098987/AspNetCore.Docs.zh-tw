@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
-title: "在 DataList 或中繼器控制項中 (C#) 中的報表資料分頁 |Microsoft 文件"
+title: 在 DataList 或中繼器控制項中 (C#) 中的報表資料分頁 |Microsoft 文件
 author: rick-anderson
-description: "DataList 都中繼器的供應項目自動分頁或時排序支援，本教學課程會示範如何將分頁支援新增至 DataList 或中繼器..."
+description: DataList 都中繼器的供應項目自動分頁或時排序支援，本教學課程會示範如何將分頁支援新增至 DataList 或中繼器...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4952adff752ec834b8be5f190181be98a034ccfd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 43b1370e1411858cef02bca534d082a3c105e51e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>DataList 或中繼器控制項中 (C#) 中的分頁報表資料
 ====================
@@ -100,10 +100,10 @@ ms.lasthandoff: 01/24/2018
 
 將方法加入`ProductsBLL`名為類別`GetProductsAsPagedDataSource`會採用兩個整數的輸入參數：
 
-- `pageIndex`若要顯示，頁面的索引編製索引零，並
-- `pageSize`每頁顯示的記錄數目。
+- `pageIndex` 若要顯示，頁面的索引編製索引零，並
+- `pageSize` 每頁顯示的記錄數目。
 
-`GetProductsAsPagedDataSource`一開始會擷取*所有*記錄的`GetProducts()`。 然後它會建立`PagedDataSource`物件，並設定其`CurrentPageIndex`和`PageSize`屬性之值的傳入`pageIndex`和`pageSize`參數。 此方法結束時，會傳回這設定`PagedDataSource`:
+`GetProductsAsPagedDataSource` 一開始會擷取*所有*記錄的`GetProducts()`。 然後它會建立`PagedDataSource`物件，並設定其`CurrentPageIndex`和`PageSize`屬性之值的傳入`pageIndex`和`pageSize`參數。 此方法結束時，會傳回這設定`PagedDataSource`:
 
 
 [!code-csharp[Main](paging-report-data-in-a-datalist-or-repeater-control-cs/samples/sample2.cs)]
@@ -275,11 +275,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Liz Shulok、 Ken Pespisa 和 Bernadette Leigh。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](sorting-data-in-a-datalist-or-repeater-control-cs.md)
+> [!div class="step-by-step"]
+> [下一步](sorting-data-in-a-datalist-or-repeater-control-cs.md)

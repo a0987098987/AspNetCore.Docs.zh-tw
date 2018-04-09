@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-write-code-more-quickly-with-unit-tests
-title: "[如何:]撰寫程式碼更快速地使用單元測試？ | Microsoft Docs"
+title: '[如何:]撰寫程式碼更快速地使用單元測試？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片帶領您學習如何執行單元測試可能會增加產能簡化偵錯的程序。 我們會了解 Visual Studio Team System 可以如何產生 U..."
+description: 在這段影片帶領您學習如何執行單元測試可能會增加產能簡化偵錯的程序。 我們會了解 Visual Studio Team System 可以如何產生 U...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-write-code-more-quickly-with-unit-tests
 msc.type: video
-ms.openlocfilehash: eb695d62fb595fea8935d91fc1d59fda79320073
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e7eed90313ae8acd9b2f31e1e572cb24e04f41bd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-write-code-more-quickly-with-unit-tests"></a>[如何:]撰寫程式碼更快速地使用單元測試？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （8 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-write-code-more-quickly-with-unit-tests)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-create-my-own-bug-work-item.md)
-[下一頁](how-do-i-practice-test-driven-development.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-create-my-own-bug-work-item.md)
+> [下一頁](how-do-i-practice-test-driven-development.md)

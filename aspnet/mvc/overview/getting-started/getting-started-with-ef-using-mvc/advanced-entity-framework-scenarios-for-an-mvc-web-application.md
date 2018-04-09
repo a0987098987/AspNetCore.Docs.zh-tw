@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
-title: "進階 MVC 5 Web 應用程式 (12 / 12) 的 Entity Framework 6 案例 |Microsoft 文件"
+title: 進階 MVC 5 Web 應用程式 (12 / 12) 的 Entity Framework 6 案例 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 5 應用程式使用 Entity Framework 6 Code First 和 Visual Studio..."
+description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 5 應用程式使用 Entity Framework 6 Code First 和 Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 85276377671b96e65406639c8584d9ebf8d77ff7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 50987b30a49173605e7aeb8eb65ff1fe5d5e5753
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>MVC 5 Web 應用程式 (12 / 12) 的進階的 Entity Framework 6 案例
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [下載完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
 
-> Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 教學課程系列的相關資訊，請參閱[系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 在上一個教學課程中，您會實作資料表每個階層繼承。 本教學課程包含介紹幾個有用，可注意當您超越開發使用 Entity Framework Code First 的 ASP.NET web 應用程式的基本概念的主題。 逐步解說會引導您完成程式碼和使用 Visual Studio 的下列主題：
@@ -59,12 +59,12 @@ ms.lasthandoff: 01/24/2018
 Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫的 SQL 命令的方法。 下列選項可供您選擇：
 
 - 使用[DbSet.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx)查詢來傳回實體類型的方法。 傳回的物件必須是所預期的類型`DbSet`物件，而且它們會自動追蹤對資料庫內容所除非您關閉追蹤。 (請參閱下一節有關[AsNoTracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx)方法。)
-- 使用[Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx)方法的傳回類型不是實體的查詢。 即使您使用這個方法來擷取實體類型不被追蹤的資料庫內容，傳回的資料。
+- 使用[Database.SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx)方法的傳回類型不是實體的查詢。 即使您使用這個方法來擷取實體類型，資料庫內容也不會追蹤傳回的資料。
 - 使用[Database.ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx)非查詢命令。
 
-使用 Entity Framework 的優點之一是它可避免中斷您太接近儲存資料的特定方法的程式碼。 它會產生 SQL 查詢和命令，這也讓您不必自行撰寫。 但有例外狀況時，您需要執行特定 SQL 查詢，以手動方式建立，而且這些方法可讓您處理這類例外狀況。
+使用 Entity Framework 的優點之一，是它可避免將程式碼繫結至太接近儲存資料之特定方法的位置。 它可透過產生 SQL 查詢和命令來達成此目的，同時這也可讓您不必自行撰寫。 但有例外狀況時，您需要執行特定 SQL 查詢，以手動方式建立，而且這些方法可讓您處理這類例外狀況。
 
-因為永遠是 true 時您 web 應用程式中執行 SQL 命令，您必須採取一些預防措施以保護您的網站，SQL 資料隱碼攻擊。 方法之一是使用參數化的查詢，以確定網頁所提交的字串，無法解譯為 SQL 命令。 在本教學課程中，您將使用參數化的查詢時將使用者輸入整合到查詢。
+如同在 Web 應用程式中執行 SQL 命令一樣，您必須採取一些預防措施，以保護您的網站免於遭受 SQL 插入式攻擊。 執行這項操作的方法之一是使用參數化查詢，以確定網頁所提交的字串無法解譯為 SQL 命令。 在本教學課程中，您會在將使用者輸入整合到查詢時，使用參數化查詢。
 
 ### <a name="calling-a-query-that-returns-entities"></a>呼叫查詢會傳回實體
 
@@ -74,13 +74,13 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample1.cs?highlight=8-14)]
 
-若要確認新的程式碼正常運作，請選取**部門** 索引標籤，然後**詳細資料**其中一個部門。
+若要確認新的程式碼運作正常，請選取 [部門]  索引標籤，然後針對其中一個部門選取 [詳細資料] 。
 
 ![部門詳細資料](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image2.png)
 
 ### <a name="calling-a-query-that-returns-other-types-of-objects"></a>呼叫查詢傳回其他類型的物件
 
-先前您建立學生統計資料方格中，以顯示每個註冊日期的學生總數一樣的 「 關於 」 頁面。 在程式碼*HomeController.cs*使用 LINQ:
+先前您已針對顯示每個註冊日期之學生數目的 About 頁面，建立學生統計資料方格。 在程式碼*HomeController.cs*使用 LINQ:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample2.cs)]
 
@@ -90,13 +90,13 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample3.cs?highlight=3-18)]
 
-執行 「 關於 」 頁面。 它會顯示相同的資料以前一樣。
+執行 「 關於 」 頁面。 它會顯示與之前相同的資料。
 
 ![About_page](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image3.png)
 
 ### <a name="calling-an-update-query"></a>呼叫更新查詢
 
-假設 Contoso 大學系統管理員想要能夠執行大量變更，在資料庫中，例如變更的每個課程信用額度的數目。 如果該大學有大量的課程，很效率不佳，擷取這些全部都做為實體，並將它們個別變更。 在本節中，您將實作網頁，可讓使用者能夠指定所要依據變更的所有課程，信用額度數目的因素，您會變更執行 SQL`UPDATE`陳述式。 網頁看起來像下圖：
+假設 Contoso 大學系統管理員想要能夠執行大量變更，在資料庫中，例如變更的每個課程信用額度的數目。 如果該大學有大量的課程，擷取全部課程作為實體並個別進行變更的效率不佳。 在本節中，您將實作網頁，可讓使用者能夠指定所要依據變更的所有課程，信用額度數目的因素，您會變更執行 SQL`UPDATE`陳述式。 網頁看起來將如下圖所示：
 
 ![Update_Course_Credits_initial_page](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image4.png)
 
@@ -118,7 +118,7 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 [!code-cshtml[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample5.cshtml)]
 
-執行`UpdateCourseCredits`方法藉由選取**課程** 索引標籤，然後再新增 「 / UpdateCourseCredits"瀏覽器的網址列中的 URL 的結尾 (例如： `http://localhost:50205/Course/UpdateCourseCredits`)。 在文字方塊中輸入的數字：
+藉由選取 [課程]  索引標籤，然後將 "/UpdateCourseCredits" 新增至瀏覽器位址列中的 URL 結尾 (例如：`http://localhost:50205/Course/UpdateCourseCredits`)，以執行 `UpdateCourseCredits` 方法。 在文字方塊中輸入數目：
 
 ![Update_Course_Credits_initial_page_with_2_entered](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image7.png)
 
@@ -126,7 +126,7 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 
 ![Update_Course_Credits_rows_affected_page](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image8.png)
 
-按一下**返回清單**若要查看課程信用額度的修訂編號取代清單。
+按一下 [回到清單]，以查看課程與已修訂學分數的清單。
 
 ![Courses_Index_page_showing_revised_credits](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image9.png)
 
@@ -135,19 +135,19 @@ Entity Framework 程式碼的第一個 API 包含可讓您將直接對資料庫�
 <a id="notracking"></a>
 ## <a name="no-tracking-queries"></a>不追蹤查詢
 
-當資料庫內容中擷取資料表資料列，並建立代表的實體物件時，依預設它會追蹤的是否與資料庫中的實體記憶體中保持同步。 記憶體中的資料做為快取，並更新實體時，會使用。 這種快取，所以通常不必要的 web 應用程式通常存留較短 （新的其中一個是建立及處置每個要求） 以及內容的內容執行個體讀取實體通常處置之前會再次使用該實體。
+當資料庫內容擷取資料表資料列並建立代表他們的實體物件時，根據預設，它會追蹤在記憶體中的實體是否與資料庫中的內容保持同步。 記憶體中的資料所扮演的角色是一個快取，並會在您更新實體時使用。 這個快取通常在 Web 應用程式當中是不需要的，因為內容執行個體通常壽命都很短 (每次要求都會建立一個新的並進行處置)，並且通常讀取實體的內容都會在實體重新獲得利用前遭到處置。
 
-您可以使用停用記憶體中的實體物件的追蹤[AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)方法。 您可以執行此作業的一般案例包括下列：
+您可以使用停用記憶體中的實體物件的追蹤[AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)方法。 您會想要進行這項操作的常見案例包括下列情況：
 
 - 查詢會擷取這類大量的資料，關閉追蹤可能會大幅提升效能。
-- 您想要將實體附加以更新，但您稍早擷取同一個實體用於不同用途。 因為實體已經受到追蹤的資料庫內容，您無法附加您想要變更的實體。 若要處理這種情況的一種方式為使用`AsNoTracking`與前面的查詢選項。
+- 您想要將實體附加以更新，但您稍早擷取同一個實體用於不同用途。 由於實體已由資料庫內容進行追蹤，您無法連結到您想要變更的實體。 若要處理這種情況的一種方式為使用`AsNoTracking`與前面的查詢選項。
 
 如需範例，示範如何使用[AsNoTracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx)方法，請參閱[本教學課程的舊版](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)。 此版的教學課程不會修改旗標上設定繫結器建立模型中實體的編輯方法，讓它不需要`AsNoTracking`。
 
 <a id="sql"></a>
 ## <a name="examining-sql-sent-to-the-database"></a>檢查 SQL 傳送至資料庫
 
-有時候很有幫助能夠看到實際傳送至資料庫的 SQL 查詢。 在先前的教學課程中您可了解如何在攔截器的程式碼; 執行現在您會看到一些不寫入攔截器程式碼。 再試一次時，您將查看簡單查詢，並查看您新增這類 eager 載入、 篩選和排序選項，它會發生什麼事。
+有時能夠看到傳送至資料庫的實際 SQL 查詢很有幫助。 在先前的教學課程中您可了解如何在攔截器的程式碼; 執行現在您會看到一些不寫入攔截器程式碼。 再試一次時，您將查看簡單查詢，並查看您新增這類 eager 載入、 篩選和排序選項，它會發生什麼事。
 
 在*控制器/CourseController*，取代`Index`方法取代下列程式碼中，若要暫時停止積極式載入：
 
@@ -193,12 +193,12 @@ A`SelectList`集合，其中包含所有部門傳遞至檢視的下拉式清單�
 
 <a id="repo"></a>
 
-## <a name="repository-and-unit-of-work-patterns"></a>儲存機制和單位的工作模式
+## <a name="repository-and-unit-of-work-patterns"></a>存放庫和工作單元模式
 
-許多開發人員撰寫程式碼以搭配 Entity Framework 的程式碼周圍的包裝函式實作的儲存機制和工作模式的單位。 這些模式被用來建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可以協助您隔離您的應用程式資料存放區中的變更，以及有助於自動化的單元測試為導向的開發 (TDD)。 不過，撰寫額外的程式碼來實作這些模式做不一定有數種原因使用 EF，應用程式的最佳選擇：
+許多開發人員撰寫程式碼以實作存放庫和工作單元模式，作為使用 Entity Framework 之程式碼周圍的包裝函式。 這些模式主要用來建立資料存取層和應用程式的商務邏輯層之間的抽象層。 實作這些模式可協助隔離您的應用程式與資料存放區中的變更，並可促進自動化單元測試或測試驅動開發 (TDD)。 不過，撰寫額外的程式碼來實作這些模式做不一定有數種原因使用 EF，應用程式的最佳選擇：
 
-- EF 內容類別本身，以隔離您的程式碼，從資料存放區特有的程式碼。
-- EF 內容類別可做為資料庫的工作單位的類別可讓您更新您不要使用 EF。
+- EF 內容類別本身會隔離您的程式碼與資料存放區特有的程式碼。
+- EF 內容類別可作為您使用 EF 進行之資料庫更新的工作單元類別。
 - Entity Framework 6 中導入的功能可讓您更輕鬆地實作 TDD，而不需要撰寫的程式碼儲存機制。
 
 如需如何實作儲存機制和單位的工作模式的詳細資訊，請參閱[此教學課程系列的 Entity Framework 5 新版](../../older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application.md)。 在 Entity Framework 6 中實作 TDD 的方式的相關資訊，請參閱下列資源：
@@ -229,7 +229,7 @@ A`SelectList`集合，其中包含所有部門傳遞至檢視的下拉式清單�
 <a id="changedetection"></a>
 ## <a name="automatic-change-detection"></a>自動變更偵測
 
-Entity Framework 藉由比較原始值與實體的目前值，決定如何變更實體 （並因此需要哪些更新傳送至資料庫）。 查詢或附加的實體時，會儲存原始值。 會導致變更自動偵測的方法如下所示：
+Entity Framework 藉由比較實體的目前值與原始值，判斷實體如何變更 (以及因此需要將哪些更新傳送至資料庫)。 查詢或附加實體時，會儲存原始值。 會導致自動變更偵測的一些方法如下：
 
 - `DbSet.Find`
 - `DbSet.Local`
@@ -262,7 +262,7 @@ Entity Framework 藉由比較原始值與實體的目前值，決定如何變更
 
 Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/EntityFramework6)。 您可以檔 bug，而且您可能會造成您自己的 EF 原始碼的增強功能。
 
-雖然開啟原始碼時，Entity Framework 則完全支援以 Microsoft 產品。 Microsoft Entity Framework 小組將控制接受哪些比重保留，並測試所有的程式碼變更，以確保每次發行的品質。
+雖然開啟原始碼時，Entity Framework 則完全支援以 Microsoft 產品。 Microsoft Entity Framework 小組將控制接受哪些貢獻，並測試所有的程式碼變更以確保每次發行的品質。
 
 <a id="summary"></a>
 ## <a name="summary"></a>總結
@@ -274,7 +274,7 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 如需有關 MVC、 驗證和授權，例如其他主題，請參閱[ASP.NET MVC-建議資源](../recommended-resources-for-mvc.md)。
 
 <a id="acknowledgments"></a>
-## <a name="acknowledgments"></a>通知
+## <a name="acknowledgments"></a>感謝
 
 - Tom Dykstra 寫入此教學課程中的原始版本、 共同撰寫 EF 5 更新，並撰寫 EF 6 更新。 Tom 是資深的開發寫入器上的 Microsoft Web 平台和工具的內容團隊。
 - [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (twitter [ @RickAndMSFT ](http://twitter.com/RickAndMSFT)) 未的大部分工作更新的教學課程 EF 5 和 MVC 4 和共同撰寫 EF 6 更新。 Rick 是將焦點放在 Azure 和 MVC Microsoft 資深程式寫入器。
@@ -333,16 +333,16 @@ Entity Framework 6 的原始程式碼位於[GitHub](https://github.com/aspnet/En
 
 您可以取得此錯誤的其中一種方式是方案的從多個複本時，每個使用相同的連接埠號碼。 您通常可以結束 Visual Studio 中的所有執行個體，然後重新啟動的專案正努力解決這個問題。 如果無法解決問題，請變更通訊埠編號。 以滑鼠右鍵按一下專案檔，然後按一下 屬性。 選取**Web**索引標籤，然後變更 連接埠號碼**專案 Url**文字方塊。
 
-### <a name="error-locating-sql-server-instance"></a>尋找 SQL Server 執行個體時發生錯誤
+### <a name="error-locating-sql-server-instance"></a>搜尋 SQL Server 執行個體時發生錯誤
 
 錯誤訊息：
 
-> 建立 SQL Server 的連接時發生網路相關或執行個體特定錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者： SQL 網路介面，錯誤： 26-尋找指定時發生錯誤伺服器/執行個體)
+> 建立與 SQL Server　的連線時，發生與網路相關的錯誤或是執行個體特有的錯誤。 找不到或無法存取伺服器。 確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線 (提供者：SQL 網路介面，錯誤：26 - 搜尋指定的伺服器/執行個體時發生錯誤)
 
 
 方案
 
-請檢查連接字串。 如果您已經手動刪除資料庫，變更建構字串的資料庫名稱。
+檢查連接字串。 如果您已經手動刪除資料庫，變更建構字串的資料庫名稱。
 
->[!div class="step-by-step"]
-[上一步](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [上一步](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)

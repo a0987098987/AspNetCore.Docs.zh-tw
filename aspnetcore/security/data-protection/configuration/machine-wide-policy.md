@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 支援的資料保護整部機器的原則"
+title: 在 ASP.NET Core 支援的資料保護整部機器的原則
 author: rick-anderson
-description: "了解支援的設定預設的全機器原則針對取用 ASP.NET Core 資料保護的所有應用程式。"
+description: 了解支援的設定預設的全機器原則針對取用 ASP.NET Core 資料保護的所有應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: 53ded37e9fd5f1a2eaa37935d1c52efb1e9231ac
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c2d5760cd18f4e3ecaf0261f36414c9298e3f4c5
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>在 ASP.NET Core 支援的資料保護整部機器的原則
 
@@ -71,4 +71,4 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 如果 EncryptionType null 以外的任何其他值或空的資料保護系統會擲回例外狀況在啟動時。
 
 > [!WARNING]
-> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用的應用程式。 這表示，如桌面 CLR 上執行的應用程式，包含這些類型的組件應會出現在全域組件快取 (GAC) 中。 針對 ASP.NET Core 應用程式上執行[.NET Core](https://www.microsoft.com/net/core)，應安裝包含這些類型的封裝。
+> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用的應用程式。 這表示，如桌面 CLR 上執行的應用程式，包含這些類型的組件應會出現在全域組件快取 (GAC) 中。 針對.NET 核心上執行的 ASP.NET Core 應用程式，應安裝包含這些類型的封裝。

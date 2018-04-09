@@ -1,6 +1,6 @@
 ---
-title: "在 Linux 上使用 Apache 裝載 ASP.NET Core"
-description: "了解如何設定 Apache 為反向 proxy 伺服器上 CentOS HTTP 流量重新導向 Kestrel 上執行的 ASP.NET Core web 應用程式。"
+title: 在 Linux 上使用 Apache 裝載 ASP.NET Core
+description: 了解如何設定 Apache 為反向 proxy 伺服器上 CentOS HTTP 流量重新導向 Kestrel 上執行的 ASP.NET Core web 應用程式。
 author: spboyer
 manager: wpickett
 ms.author: spboyer
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 033adddc586b60c9f7453df5434617aa838737f8
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 5a8a035ff3f127d01655888d4f83a871645b0bf5
+ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/15/2018
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication)或類似的驗證配置中介軟體：
+叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication)或類似的驗證配置中介軟體。 設定要轉寄的中介軟體`X-Forwarded-For`和`X-Forwarded-Proto`標頭：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -59,7 +59,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity)和[UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication)或類似的驗證配置中介軟體：
+叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity)和[UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication)或類似的驗證配置中介軟體。 設定要轉寄的中介軟體`X-Forwarded-For`和`X-Forwarded-Proto`標頭：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -78,6 +78,8 @@ app.UseFacebookAuthentication(new FacebookOptions()
 ---
 
 如果沒有[ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)指定給中介軟體，轉送的預設標頭`None`。
+
+額外的設定可能需要的 proxy 伺服器和負載平衡器後方託管應用程式。 如需詳細資訊，請參閱[使用 proxy 伺服器及負載平衡器設定 ASP.NET Core](xref:host-and-deploy/proxy-load-balancer)。
 
 ### <a name="install-apache"></a>安裝 Apache
 
@@ -135,7 +137,7 @@ Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案*.con
 `VirtualHost`區塊可以在伺服器上的一個或多個檔案中出現多次。 在先前的組態檔，Apache 會接受公用連接埠 80 上的流量。 網域`www.example.com`正在處理，而`*.example.com`別名解析成相同的網站。 請參閱[虛擬主機名稱為基礎支援](https://httpd.apache.org/docs/current/vhosts/name-based.html)如需詳細資訊。 要求是 proxy 連接埠 5000 127.0.0.1 在伺服器的根位置。 雙向通訊，`ProxyPass`和`ProxyPassReverse`所需。
 
 > [!WARNING]
-> 無法指定適當的[ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)中**VirtualHost**區塊會公開您的應用程式的安全性漏洞。 子網域萬用字元繫結 (例如， `*.example.com`) 不會造成安全性風險，如果您要控制整個父系網域 (與`*.com`，這是很容易遭受)。 請參閱[rfc7230 區段 5.4](https://tools.ietf.org/html/rfc7230#section-5.4)如需詳細資訊。
+> 無法指定適當的[ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)中**VirtualHost**區塊會公開您的應用程式的安全性漏洞。 子網域萬用字元繫結 (例如， `*.example.com`) 不會造成安全性風險，如果您要控制整個父系網域 (與`*.com`，這是很容易遭受)。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 記錄可以設定每個`VirtualHost`使用`ErrorLog`和`CustomLog`指示詞。 `ErrorLog` 是伺服器記錄錯誤，在其中的位置和`CustomLog`設定檔案名稱和記錄檔格式。 在此情況下，這是記錄要求資訊的位置。 沒有為每個要求的一列。
 

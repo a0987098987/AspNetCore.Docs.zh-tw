@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
-title: "啟用自動化單元測試 |Microsoft 文件"
+title: 啟用自動化單元測試 |Microsoft 文件
 author: microsoft
-description: "步驟 12 示範如何開發自動化的單元測試可確認我們 NerdDinner 功能，並讓我們進行變更的信心套件..."
+description: 步驟 12 示範如何開發自動化的單元測試可確認我們 NerdDinner 功能，並讓我們進行變更的信心套件...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 1a4258054d90b2d5bcc06a63fb6f3b4673a4837d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fede08be7e06327c6d04fa5d36f7dd818d79b380
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enable-automated-unit-testing"></a>啟用自動化的單元測試
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -45,7 +45,7 @@ Confronts 您，當您抵達電腦的問題是 – 「 安全方式是，使這�
 
 ASP.NET MVC 架構可讓您輕鬆自然的單元測試應用程式功能。 它也可讓測試驅動開發 (TDD) 工作流程，可讓 「 測試先行 」 開發。
 
-### <a name="nerddinnertests-project"></a>NerdDinner.Tests 專案
+### <a name="nerddinnertests-project"></a>NerdDinner.Tests Project
 
 當我們在本教學課程的開頭建立我們 NerdDinner 應用程式時，我們已收到提示對話方塊，詢問是否我們想要建立單元測試專案中，移以及應用程式專案：
 
@@ -234,7 +234,7 @@ Visual Studio 2008 Professional （和更高的版本） 包含可以用來執�
 
 模擬架構會讓測試更為容易讓我們以動態方式建立假支援我們的測試中的相依性物件的版本。 例如，我們可以在我們的編輯動作測試使用模擬架構，以動態方式建立我們 DinnersController 可以用來查閱模擬的使用者名稱的使用者物件。 這樣可避免從我們執行我們的測試時，所擲回的 null 參考。
 
-有許多.NET 模擬可以搭配 ASP.NET MVC 的架構 (您可以看到這些設定的清單這裡： [http://www.mockframeworks.com/](http://www.mockframeworks.com/))。 為了測試，我們會使用模擬架構，稱為 「 Moq"的開放原始碼我們 NerdDinner 應用程式，它可以免費下載從[http://www.mockframeworks.com/moq](http://www.mockframeworks.com/moq)。
+有許多.NET 模擬可以搭配 ASP.NET MVC 的架構 (您可以看到這些設定的清單這裡： [ http://www.mockframeworks.com/ ](http://www.mockframeworks.com/))。 為了測試，我們會使用模擬架構，稱為 「 Moq"的開放原始碼我們 NerdDinner 應用程式，它可以免費下載從[ http://www.mockframeworks.com/moq ](http://www.mockframeworks.com/moq)。
 
 在下載後，我們會參考專案中加入我們 NerdDinner.Tests Moq.dll 組件：
 
@@ -285,6 +285,6 @@ Visual Studio 2008 Professional （和更高的版本） 包含可以用來執�
 
 註解設定某些最終換行。
 
->[!div class="step-by-step"]
-[上一頁](use-ajax-to-implement-mapping-scenarios.md)
-[下一頁](nerddinner-wrap-up.md)
+> [!div class="step-by-step"]
+> [上一頁](use-ajax-to-implement-mapping-scenarios.md)
+> [下一頁](nerddinner-wrap-up.md)

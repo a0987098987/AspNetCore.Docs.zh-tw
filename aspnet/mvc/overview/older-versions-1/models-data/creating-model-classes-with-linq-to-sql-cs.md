@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
-title: "建立模型類別搭配 LINQ to SQL (C#) |Microsoft 文件"
+title: 建立模型類別搭配 LINQ to SQL (C#) |Microsoft 文件
 author: microsoft
-description: "本教學課程的目標是以說明一個方法來建立 ASP.NET MVC 應用程式的模型類別。 在本教學課程中，您可以了解如何建置模型 c..."
+description: 本教學課程的目標是以說明一個方法來建立 ASP.NET MVC 應用程式的模型類別。 在本教學課程中，您可以了解如何建置模型 c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c640007a75f2421e0f6c1e86e525de4834bbc8e4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1f30ff6c97e565059c57c55f26d2dff477774aeb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>建立模型類別搭配 LINQ to SQL (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
 
@@ -109,7 +109,7 @@ MVC 模型包含的所有未包含在 MVC 檢視或 MVC 控制器中的應用程
 
 首先，我們需要修改 HomeController 類別。 這個類別可以找到您的應用程式的 [控制器] 資料夾中。 修改類別，讓它看起來像是列表 1 中的類別。
 
-**列出 1 –`Controllers\HomeController.cs`**
+**列出 1 – `Controllers\HomeController.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample1.cs)]
 
@@ -119,7 +119,7 @@ LINQ 查詢來擷取所有從電影 DataContext 針對執行`tblMovies`資料庫
 
 若要顯示電影，我們接下來要修改索引檢視表。 您可以找到的索引檢視`Views\Home\`資料夾。 更新索引檢視，讓它看起來像是列表 2 中的檢視。
 
-**列出 2 –`Views\Home\Index.aspx`**
+**列出 2 – `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample2.aspx)]
 
@@ -161,19 +161,19 @@ LINQ 查詢來擷取所有從電影 DataContext 針對執行`tblMovies`資料庫
 
 介面中列出的 3 名為`IMovieRepository`，而它代表單一方法，名為`ListAll()`。
 
-**列出 3 –`Models\IMovieRepository.cs`**
+**列出 3 – `Models\IMovieRepository.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample3.cs)]
 
 實作儲存機制中的類別清單 4`IMovieRepository`介面。 請注意，它包含方法，名為`ListAll()`對應於所需的方法`IMovieRepository`介面。
 
-**列出 4 –`Models\MovieRepository.cs`**
+**列出 4 – `Models\MovieRepository.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample4.cs)]
 
 最後，`MoviesController`列出 5 中的類別會使用儲存機制模式。 它不會再使用 LINQ to SQL 類別直接。
 
-**列出 5 –`Controllers\MoviesController.cs`**
+**列出 5 – `Controllers\MoviesController.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample5.cs)]
 
@@ -197,6 +197,6 @@ LINQ 查詢來擷取所有從電影 DataContext 針對執行`tblMovies`資料庫
 
 接下來，我們已探索的稍微更困難，但更明確地正向，顯示資料庫資料路徑。 我們已利用儲存機制模式，所有資料庫存取邏輯放在不同的儲存機制類別。 中我們控制站，我們會寫入所有我們的程式碼，根據介面而不是具象類別。 儲存機制模式的優點是它可讓我們來輕鬆地在未來變更資料庫存取技術，可讓我們來輕鬆地測試控制器類別。
 
->[!div class="step-by-step"]
-[上一頁](creating-model-classes-with-the-entity-framework-cs.md)
-[下一頁](displaying-a-table-of-database-data-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-model-classes-with-the-entity-framework-cs.md)
+> [下一頁](displaying-a-table-of-database-data-cs.md)

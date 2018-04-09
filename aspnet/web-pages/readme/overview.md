@@ -1,8 +1,8 @@
 ---
 uid: web-pages/readme/overview
-title: "WebMatrix 讀我檔案 |Microsoft 文件"
+title: WebMatrix 讀我檔案 |Microsoft 文件
 author: rick-anderson
-description: "WebMatrix 和 ASP.NET Web Pages (Razor) 1.0 版讀我檔案"
+description: WebMatrix 和 ASP.NET Web Pages (Razor) 1.0 版讀我檔案
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/06/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme
 msc.type: content
-ms.openlocfilehash: b8402aa3db1b2566878c4d56212facbbb2925eec
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c65ee58b8c13b0b4acb6e7c9b631c8235e791506
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="webmatrix-readme"></a>WebMatrix 讀我檔案
 ====================
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/24/2018
 - [變更](#Changes)
 - [問題](#Issues)
 
-#### <a id="NewFeatures"></a>新功能
+#### <a id="NewFeatures"></a>  新功能
 
 #### <a name="new-configuration-setting-added-to-disable-the-package-manager"></a>組態設定加入至停用封裝管理員的新增項目：
 
@@ -135,14 +135,14 @@ ms.lasthandoff: 01/24/2018
 > [!code-xml[Main](overview/samples/sample1.xml)]
 
 
-#### <a id="Changes"></a>變更
+#### <a id="Changes"></a>  變更
 
 #### <a name="change-webpagesadminfoldervirtualpath-key-renamed-to-aspadminfoldervirtualpath"></a>變更:"Webpages"索引鍵重新命名為"asp: AdminFolderVirtualPath"
 
 > `webPages:AdminFolderVirtualPath`可以加入的索引鍵*web.config*指定的封裝管理員位置的檔案重新命名為使用`asp:`命名空間，而不是`webPages`命名空間。 如果您已經使用這個項目，您必須在組態檔重新命名它。
 
 
-#### <a id="Issues"></a>已知的問題
+#### <a id="Issues"></a>  已知的問題
 
 #### <a name="issue-passwords-for-membership-users-no-longer-recognized"></a>問題： 無法再辨識成員資格使用者的密碼
 
@@ -226,7 +226,7 @@ ms.lasthandoff: 01/24/2018
 > 如果您解除安裝.NET Framework 第 4 版，然後重新安裝時，會停用含有 Razor 語法的 ASP.NET Web Pages。 頁面*.cshtml*延伸模組無法正確執行。 ASP.NET Web Pages 電腦根目錄中註冊組件*web.config*檔案，並移除.NET Framework 中移除該檔案。 重新安裝.NET Framework 會安裝新版本的組態檔中，但不會新增 ASP.NET Web Pages 組件的參考。
 > 
 > **因應措施**之後重新安裝.NET Framework，請重新安裝 ASP.NET Web Pages 含有 Razor 語法。 這樣會加入下列項目加入*web.config*電腦根目錄，這通常在下列位置中的檔案：  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config (32-bit)`  
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
@@ -236,9 +236,9 @@ ms.lasthandoff: 01/24/2018
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>問題： 沒有副檔名的 Url 會找不到在 IIS 7 或 IIS 7.5 上的.cshtml/.vbhtml 檔案
 
 > 在 IIS 7 或 IIS 7.5 上，具有類似下列的 URL 不要求找不到具有頁面*.cshtml*或*.vbhtml*延伸模組：  
->   
+> 
 > `http://www.example.com/ExampleSite/ExampleFile`  
->   
+> 
 > 因為 URL 重寫沒有啟用預設的 IIS 7 或 IIS 7.5，就會發生此問題。 Likeliest 案例是看不到問題時測試使用在本機 IIS Express，但它時遇到您將您的網站部署至裝載的網站。
 > 
 > **Workaround**
@@ -257,10 +257,11 @@ ms.lasthandoff: 01/24/2018
 > 
 > 1. 資料庫引擎組件，以複製*Bin*資料夾 （及其子資料夾） 的目標電腦上的應用程式：  
 > 
->     - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
->         **to** *\Bin*
->     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\* * * 若要 * * * \Bin\x86*
->     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **至 * * * \Bin\amd64*
+>    - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
+>        **to** *\Bin*
+>    - 複製<em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\</em><strong><em>至</em></strong>\Bin\x86*
+>    - 複製<em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\</em>* <strong>至</strong><em>\Bin\amd64</em>
+> 
 > 2. 在網站的根資料夾中，建立或開啟*web.config*檔案。 (在 WebMatrix 1.0，此檔案類型才可用如果您按一下**所有**中**選擇檔案型別** 對話方塊。)
 > 3. 將下列項目新增為子系`<configuration>`項目 (不是在內`<system.web>`項目):
 > 
@@ -279,7 +280,7 @@ ms.lasthandoff: 01/24/2018
 
 #### <a name="issue-applicationpart-resources-are-externally-accessible"></a>問題: 「 ApplicationPart 」 資源可供外部存取
 
-> 如果組件包含的物件，衍生自`ApplicationPart`類別、 組件的資源由`ResourceRouteHandler`類別。 例如，請考慮下列 URL:  
+> 如果組件包含的物件，衍生自`ApplicationPart`類別、 組件的資源由`ResourceRouteHandler`類別。 例如，請考慮下列 URL：  
 >   
 > `~/r.ashx/System.Web.WebPages.Administration/Resources/AdminResources.resources`  
 >   
@@ -412,7 +413,7 @@ SQL Server Compact 都有它自己讀我檔案，將會位於下列 URL:
 
 WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資訊，請參閱[WebMatrix 安裝問題](#Known_Issues_Installation)稍早在這份文件。
 
-### <a id="Known_Issues_Installing_Applications"></a>安裝應用程式
+### <a id="Known_Issues_Installing_Applications"></a>  安裝應用程式
 
 #### <a name="issue-installing-an-application-can-take-a-long-time-if-the-users-my-documents-folder-is-redirected-to-a-network-share"></a>問題： 安裝應用程式可能需要很長的時間。 如果使用者的 [我的文件] 資料夾重新導向到網路共用
 
@@ -420,7 +421,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 > 無。 應用程式可能需要一段，若要安裝，但會正確安裝。
 
 
-### <a id="Known_Issues_Publishing_Applications"></a>發行應用程式
+### <a id="Known_Issues_Publishing_Applications"></a>  發行應用程式
 
 #### <a name="issue-required-permissions-cannot-be-acquired-error-when-publishing-a-sql-compact-database"></a>問題: 「 要求無法取得的權限 」 的錯誤時發佈 SQL Compact 資料庫
 

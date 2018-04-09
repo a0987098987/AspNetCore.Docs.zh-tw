@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
-title: "ASP.NET MVC 控制器概觀 (C#) |Microsoft 文件"
+title: ASP.NET MVC 控制器概觀 (C#) |Microsoft 文件
 author: StephenWalther
-description: "在本教學課程中，作者： Stephen Walther 向您介紹 ASP.NET MVC 控制器。 您了解如何建立新的控制站，並傳回不同類型的動作 res..."
+description: 在本教學課程中，作者： Stephen Walther 向您介紹 ASP.NET MVC 控制器。 您了解如何建立新的控制站，並傳回不同類型的動作 res...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9e4ca745fa068b1813e01b131d53a0199cc47d5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95e7c555a52c8c3b765a6fffab15276491cf5714
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-controller-overview-c"></a>ASP.NET MVC 控制器概觀 (C#)
 ====================
@@ -37,7 +37,7 @@ MVC 控制器負責回應對 ASP.NET MVC 網站提出的要求。 每個瀏覽�
 
 清單 1 包含名為 ProductController 簡單控制器。
 
-**Listing1-Controllers\ProductController.cs**
+**Listing1 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](aspnet-mvc-controllers-overview-cs/samples/sample1.cs)]
 
@@ -75,7 +75,7 @@ ASP.NET MVC 架構支援數種類型的動作結果，包括：
 
 在大部分情況下，控制器動作傳回 ViewResult。 例如，列出 2 中的 Index 控制器動作傳回 ViewResult。
 
-**列出 2-Controllers\BookController.cs**
+**Listing 2 - Controllers\BookController.cs**
 
 [!code-csharp[Main](aspnet-mvc-controllers-overview-cs/samples/sample2.cs)]
 
@@ -118,6 +118,6 @@ Index （） 中的動作清單 5 會傳回 DateTime 物件。 ASP.NET MVC 架�
 
 本教學課程的目的是為您介紹的概念 ASP.NET MVC 控制器、 控制器動作，以及控制器動作結果。 在第一個區段中，您將學會如何將新的控制站新增至 ASP.NET MVC 專案。 接下來，您學到如何公用方法，控制站都會公開至 universe 當做控制器的動作。 最後，我們將討論不同類型的可從控制器動作傳回的動作結果。 特別是，我們將討論如何從控制器動作傳回 ViewResult、 RedirectToActionResult 和 ContentResult。
 
->[!div class="step-by-step"]
-[上一頁](creating-an-action-vb.md)
-[下一頁](creating-custom-routes-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-an-action-vb.md)
+> [下一頁](creating-custom-routes-cs.md)

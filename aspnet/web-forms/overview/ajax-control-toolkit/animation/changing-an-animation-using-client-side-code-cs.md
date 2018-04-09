@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
-title: "變更使用用戶端程式碼 (C#) 動畫 |Microsoft 文件"
+title: 變更使用用戶端程式碼 (C#) 動畫 |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫也可以..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫也可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6dcaeac073f54b0804fe3acf7ec22491b1cbbba5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2f572efeb012d88ab15740bab7b0e4383572f3f7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="changing-an-animation-using-client-side-code-c"></a>變更動畫使用用戶端程式碼 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫也可以使用自訂用戶端 JavaScript 程式碼會變更。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫也可以使用自訂用戶端 JavaScript 程式碼會變更。
 
@@ -78,6 +78,6 @@ ms.lasthandoff: 11/10/2017
 
 動畫會立即執行，而按一下滑鼠 （和以非常少的標記） ([按一下以檢視完整大小的影像](changing-an-animation-using-client-side-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](executing-animations-using-client-side-code-cs.md)
-[下一頁](animating-an-updatepanel-control-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](executing-animations-using-client-side-code-cs.md)
+> [下一頁](animating-an-updatepanel-control-cs.md)

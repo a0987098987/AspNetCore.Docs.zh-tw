@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
-title: "表單驗證 (C#) 的概觀 |Microsoft 文件"
+title: 表單驗證 (C#) 的概觀 |Microsoft 文件
 author: rick-anderson
-description: "建立的自訂路由"
+description: 建立的自訂路由
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d386a3b6328675fe21f989f8fd36bfc91fc08b32
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f64384d403f3cf81ffa3327a81b635bc71e2b44
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-forms-authentication-c"></a>表單驗證 (C#) 的概觀
 ====================
@@ -43,8 +43,8 @@ ms.lasthandoff: 01/24/2018
 
 *HTTP 模組*是受管理的程式碼執行以回應要求的生命週期中的特定事件的類別。 ASP.NET 隨附之 HTTP 模組執行基本工作，在幕後的數目。 兩個內建的 HTTP 模組，特別相關討論的是：
 
-- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)**– 會驗證使用者，藉由檢查表單驗證票證，通常包含在使用者的 cookie 集合。 如果沒有表單驗證票證已存在，就像匿名使用者。
-- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)**– 判斷目前使用者是否獲授權存取要求的 URL。 此模組會判定應用程式的組態檔中指定的授權規則來判斷授權單位。 ASP.NET 也包含[ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx) ，查閱要求的檔案 Acl 決定授權單位。
+- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)** – 會驗證使用者，藉由檢查表單驗證票證，通常包含在使用者的 cookie 集合。 如果沒有表單驗證票證已存在，就像匿名使用者。
+- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)** – 判斷目前使用者是否獲授權存取要求的 URL。 此模組會判定應用程式的組態檔中指定的授權規則來判斷授權單位。 ASP.NET 也包含[ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx) ，查閱要求的檔案 Acl 決定授權單位。
 
 `FormsAuthenticationModule`嘗試驗證使用者之前`UrlAuthorizationModule`(和`FileAuthorizationModule`) 執行。 如果提出要求的使用者未獲授權存取要求的資源，授權模組會終止要求，並且傳回[HTTP 401 未經授權](http://www.checkupdown.com/status/E401.html)狀態。 在 Windows 驗證的情況下，會傳回至瀏覽器的 HTTP 401 狀態。 此狀態碼讓瀏覽器會提示使用者輸入其認證能夠透過強制回應對話方塊。 使用表單驗證，不過，HTTP 401 未經授權的狀態會永遠不會傳送至瀏覽器由於 FormsAuthenticationModule 偵測到此狀態，並修改它改為將使用者重新導向至登入頁面 (透過[HTTP 302 重新導向](http://www.checkupdown.com/status/E302.html)狀態)。
 
@@ -459,7 +459,7 @@ LoginContent ContentPlaceHolder 覆寫預設標記，只要以滑鼠右鍵按一
 - [登入 ASP.NET 控制項](https://msdn.microsoft.com/library/d51ttbhx.aspx)
 - [專業 ASP.NET 2.0 安全性、 成員資格和角色管理](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html)(ISBN: 978-0-7645-9698-8)
 - [`<authentication>`項目](https://msdn.microsoft.com/library/532aee0e.aspx)
-- [`<forms>`項目`<authentication>`](https://msdn.microsoft.com/library/1d3t3c61.aspx)
+- [`<forms>`項目 `<authentication>`](https://msdn.microsoft.com/library/1d3t3c61.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
 
@@ -467,12 +467,12 @@ LoginContent ContentPlaceHolder 覆寫預設標記，只要以滑鼠右鍵按一
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝...
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已數列已經過許多有用的檢閱者檢閱本教學課程。 前導檢閱者在此教學課程包含 Alicja Maziarz、 John Suru 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](security-basics-and-asp-net-support-cs.md)
-[下一頁](forms-authentication-configuration-and-advanced-topics-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](security-basics-and-asp-net-support-cs.md)
+> [下一頁](forms-authentication-configuration-and-advanced-topics-cs.md)

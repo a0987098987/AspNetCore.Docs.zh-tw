@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
-title: "函式使用 Web 應用程式離線 Web 部署 |Microsoft 文件"
+title: 函式使用 Web 應用程式離線 Web 部署 |Microsoft 文件
 author: jrjlee
-description: "本主題說明如何取得 web 應用程式離線期間自動化部署使用網際網路資訊服務 (IIS) Web 高於..."
+description: 本主題說明如何取得 web 應用程式離線期間自動化部署使用網際網路資訊服務 (IIS) Web 高於...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: 1c262ec7b834107524a18c6552b171f731452c91
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 511201dc5646340b21023430fa319417f2b53ae2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>函式使用 Web 應用程式離線 Web 部署
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > 本主題描述如何取得 web 應用程式離線以自動化部署使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 的持續時間。 瀏覽至 web 應用程式的使用者重新導向至*應用程式\_offline.htm*檔案部署完成之前。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 03/15/2018
 2. 在根**專案**項目，建立新**PropertyGroup**項目儲存為變數*應用程式\_離線*部署：
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample3.xml)]
-3. **SourceRoot**中其他位置定義屬性*Publish.proj*檔案。 它會指出相對於目前路徑 & #x 2014年; 換句話說的位置相對的來源內容的根資料夾的位置*Publish.proj*檔案。
+3. **SourceRoot**中其他位置定義屬性*Publish.proj*檔案。 它會指出相對於目前路徑的來源內容的根資料夾的位置&#x2014;換句話說，相對於位置*Publish.proj*檔案。
 4. **ContentPath**提供者將不接受相對檔案路徑，因此您需要取得原始程式檔的絕對路徑，才能部署它。 您可以使用[ConvertToAbsolutePath](https://msdn.microsoft.com/library/bb882668.aspx)工作來執行這項操作。
 5. 加入新**目標**名**GetAppOfflineAbsolutePath**。 在此目標，使用**ConvertToAbsolutePath**工作來取得的絕對路徑*應用程式\_離線範本*專案資料夾中的檔案。
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="adding-an-appoffline-file-to-deployment-packages"></a>加入應用程式\_至部署套件的離線檔案
 
-視您如何設定您的部署中，任何現有的內容在目的地 IIS web 應用程式 & #x 2014; 例如*應用程式\_offline.htm*檔案 & #x 2014; 當您部署 web 時可能會自動刪除目的地的封裝。 若要確保*應用程式\_offline.htm*檔案持續作用，部署期間，您需要將檔案直接在開始部署請另外包含本身的 web 部署套件中的檔案部署程序。
+根據您設定您的部署方式，任何現有內容目的地 IIS web 應用程式&#x2014;像*應用程式\_offline.htm*檔案&#x2014;web 部署時可能會自動刪除目的地的封裝。 若要確保*應用程式\_offline.htm*檔案持續作用，部署期間，您需要將檔案直接在開始部署請另外包含本身的 web 部署套件中的檔案部署程序。
 
 - 如果您已經遵循本主題中先前的工作，您會加入*應用程式\_offline.htm*至不同的檔案名稱底下的 web 應用程式專案的檔案 (我們使用*應用程式\_離線 template.htm*)，您將已設定的建置動作為**無**。 這些變更是為了避免干擾開發和偵錯中的檔案。 如此一來，您需要自訂封裝程序，以確保*應用程式\_offline.htm* web 部署套件中包含檔案。
 
@@ -125,7 +125,7 @@ Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProj
 1. 建立自訂專案檔名為*[專案名稱].wpp.targets*專案檔相同資料夾中。
 
     > [!NOTE]
-    > *。 Wpp.targets*檔案必須放在與您的 web 應用程式專案檔 & #x 2014; 相同的資料夾，例如*ContactManager.Mvc.csproj*（& d) 做為任何 #x 2014; 而在同一個資料夾您用來控制組建和部署程序的自訂專案檔案。
+    > *。 Wpp.targets*檔案必須與您的 web 應用程式專案檔相同的資料夾中移&#x2014;，例如*ContactManager.Mvc.csproj*&#x2014;而不是任何自訂相同資料夾中您用來控制組建和部署程序的專案檔案。
 2. 在*。 wpp.targets*檔案中，建立新的 MSBuild 目標執行*之前* **CopyAllFilesToSingleFolderForPackage**目標。 這是建立要包含在封裝中的項目清單 WPP 目標。
 3. 在新的目標建立**ItemGroup**項目。
 4. 在**ItemGroup**項目，加入**FilesForPackagingFromProject**項目，並指定*應用程式\_offline.htm*檔案。
@@ -175,6 +175,6 @@ Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProj
 
 如果您發行您的 web 應用程式，直接從 Visual Studio 中，而不是使用這些教學課程中所述的自訂 MSBuild 專案檔案方法，您必須使用稍微不同的方法來採取應用程式離線發行期間程序。 如需詳細資訊，請參閱[發行期間進行 web 應用程式離線](https://go.microsoft.com/?linkid=9805135)（部落格文章）。
 
->[!div class="step-by-step"]
-[上一頁](excluding-files-and-folders-from-deployment.md)
-[下一頁](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [!div class="step-by-step"]
+> [上一頁](excluding-files-and-folders-from-deployment.md)
+> [下一頁](running-windows-powershell-scripts-from-msbuild-project-files.md)

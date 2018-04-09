@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
-title: "加入 ASP.NET Identity 至空的或現有的 Web Form 專案 |Microsoft 文件"
+title: 加入 ASP.NET Identity 至空的或現有的 Web Form 專案 |Microsoft 文件
 author: raquelsa
-description: "本教學課程會示範如何將 ASP.NET Identity （新的成員資格系統適用於 ASP.NET） 加入至 ASP.NET 應用程式。 當您建立新的 Web Form 或 MVC..."
+description: 本教學課程會示範如何將 ASP.NET Identity （新的成員資格系統適用於 ASP.NET） 加入至 ASP.NET 應用程式。 當您建立新的 Web Form 或 MVC...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/23/2013
 ms.topic: article
 ms.assetid: 1cbc0ed2-5bd6-4b62-8d34-4c193dcd8b25
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: 3ab67b93a32106c0b79f9e8d739d47835391edb5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8961e596f0d6cc4810e2439be1ec2915bddb8c78
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>加入 ASP.NET Identity 至空的或現有的 Web Form 專案
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image2.png)  
   
- 請注意**變更驗證**按鈕已停用，並提供此範本中沒有驗證支援。 Web Form、 MVC 和 Web API 範本可讓您選取驗證方法。 如需詳細資訊，請參閱[概觀的驗證](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#auth)。
+   請注意**變更驗證**按鈕已停用，並提供此範本中沒有驗證支援。 Web Form、 MVC 和 Web API 範本可讓您選取驗證方法。 如需詳細資訊，請參閱[概觀的驗證](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#auth)。
 
 ## <a name="adding-identity-packages-to-your-app"></a>識別封裝加入您的應用程式
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image4.png)
 2. 在**指定項目的名稱**對話方塊中，命名新的 web form**註冊**，然後按一下  **確定**
-3. 取代所產生的標記*Register.aspx*下列程式碼檔案。 程式碼變更會反白顯示。   
+3. 取代所產生的標記*Register.aspx*下列程式碼檔案。 程式碼變更已醒目提示。   
 
     [!code-aspx[Main](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/samples/sample1.aspx?highlight=9,12-40)]
 
@@ -152,20 +152,20 @@ ms.lasthandoff: 01/24/2018
     > - `Page_Load`現在會檢查目前使用者的狀態，並且會根據其`Context.User.Identity.IsAuthenticated`狀態。  
     >     **在 使用者名稱顯示間隔**: Microsoft ASP.NET Identity Framework 已加入的擴充方法上[System.Security.Principal.IIdentity](https://msdn.microsoft.com/library/system.security.principal.iidentity.aspx) ，可讓您取得`UserName`和`UserId`的登入的使用者。 這些擴充方法中定義`Microsoft.AspNet.Identity.Core`組件。 這些擴充方法會取代[HttpContext.User.Identity.Name](https://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) 。
     > - 登入方法：   
-    >     `This`方法會取代先前`CreateUser_Click`方法，在這個範例和現在已成功建立使用者之後，在使用者的符號。   
+    >     `This` 方法會取代先前`CreateUser_Click`方法，在這個範例和現在已成功建立使用者之後，在使用者的符號。   
     >  Microsoft OWIN 架構有加入擴充方法上`System.Web.HttpContext`，可讓您取得的參考`IOwinContext`。 這些擴充方法中定義`Microsoft.Owin.Host.SystemWeb`組件。 `OwinContext`類別會公開`IAuthenticationManager`屬性，代表目前要求中可取的驗證中介軟體功能。  
     >  您可以使用登入使用者`AuthenticationManager`OWIN 並呼叫從`SignIn`和傳入`ClaimsIdentity`如上所示。   
     >  因為 ASP.NET Identity 和 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構都需要應用程式產生`ClaimsIdentity`使用者。   
     >  `ClaimsIdentity`有使用者，例如使用者所屬的角色的所有宣告的相關資訊。 您也可以在這個階段新增更多的使用者宣告  
     >  這段程式碼將會在使用者登入，並產生以及 cookie。 這個呼叫是類似於[FormAuthentication.SetAuthCookie](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx)供[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)模組。
-    > - `SignOut`方法：   
+    > - `SignOut` 方法：   
     >  取得參考`AuthenticationManager`OWIN 並呼叫從`SignOut`。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)模組。
 5. 按**Ctrl + F5**建置並執行 web 應用程式。 輸入新的使用者名稱和密碼，然後按一下 上**註冊**。  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image13.png)  
- 注意： 此時，新的使用者建立並登入。
+   注意： 此時，新的使用者建立並登入。
 6. 按一下**登出** 按鈕。安裝程式會重新導向至表單中的記錄檔。
 7. 輸入使用者名稱無效或密碼並按一下上**登入** 按鈕。   
- `UserManager.Find`方法會傳回 null，且錯誤訊息: 「*無效的使用者名稱或密碼*」 將會顯示。  
+   `UserManager.Find`方法會傳回 null，且錯誤訊息: 「*無效的使用者名稱或密碼*」 將會顯示。  
   
     ![](adding-aspnet-identity-to-an-empty-or-existing-web-forms-project/_static/image14.png)

@@ -1,7 +1,7 @@
 ---
-title: "使用 ASP.NET Core 中的 Bower"
+title: 管理用戶端封裝，以在 ASP.NET Core Bower
 author: rick-anderson
-description: "Bower 管理用戶端封裝。"
+description: Bower 管理用戶端封裝。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 67695843846cfaf1619db11a7bffcc65802e0f69
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 81244cfb71194876071c64899d627c296aad3802
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/02/2018
 
 * 在**Bower:\<專案名稱\>**視窗中，按一下 [瀏覽] 索引標籤中，並輸入，以篩選封裝清單`font-awesome`[搜尋] 方塊中：
 
- ![管理 bower 封裝](bower/_static/manage-bower-packages.png)
+  ![管理 bower 封裝](bower/_static/manage-bower-packages.png)
 
 * 確認 」 將變更儲存*bower.json*」 核取方塊。 從下拉式清單中選取版本，然後按一下**安裝** 按鈕。 **輸出** 視窗會顯示安裝詳細資料。
 
@@ -100,9 +100,9 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 * 儲存*bower.json*檔案。
 
- 請確認專案包含*啟動程序*和*jQuery*中的目錄*wwwroot/lib*。 Bower 使用*.bowerrc*檔案，以安裝中的資產*wwwroot/lib*。
+  請確認專案包含*啟動程序*和*jQuery*中的目錄*wwwroot/lib*。 Bower 使用*.bowerrc*檔案，以安裝中的資產*wwwroot/lib*。
 
- 注意: < 管理 Bower 封裝 > UI 提供替代檔案手動編輯。
+  注意: < 管理 Bower 封裝 > UI 提供替代檔案手動編輯。
 
 ### <a name="enable-static-files"></a>啟用靜態檔案
 
@@ -117,10 +117,10 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 * 加入名為新的 HTML 頁面*Index.html*至*wwwroot*資料夾。 注意： 您必須加入至 HTML 檔*wwwroot*資料夾。 根據預設，無法提供靜態內容之外*wwwroot*。 請參閱[靜態檔案處理](xref:fundamentals/static-files)如需詳細資訊。
 
- 取代內容*Index.html*以下列標記：
+  取代內容*Index.html*以下列標記：
 
 [!code-html[](bower/sample/Index.html)]
 
 * 執行應用程式，並瀏覽至`http://localhost:<port>/Index.html`。 或者，使用*Index.html*開啟，請按`Ctrl+Shift+W`。 請確認 jumbotron 樣式會套用、 jQuery 程式碼可以回應在按一下按鈕時，以及啟動程序的按鈕狀態變更。
 
- ![套用 jumbotron 樣式](bower/_static/jumbotron.png)
+  ![套用 jumbotron 樣式](bower/_static/jumbotron.png)

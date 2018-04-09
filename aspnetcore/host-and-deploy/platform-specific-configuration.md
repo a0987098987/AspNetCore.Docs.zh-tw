@@ -1,7 +1,7 @@
 ---
-title: "新增應用程式中 ASP.NET Core 使用平台專屬組態的功能"
+title: 在 ASP.NET Core 中加入平台專屬組態應用程式的功能
 author: guardrex
-description: "了解如何將功能加入至 ASP.NET Core 應用程式中，使用 IHostingStartup 實作的外部組件。"
+description: 了解如何將功能加入至 ASP.NET Core 應用程式中，使用 IHostingStartup 實作的外部組件。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/platform-specific-configuration
-ms.openlocfilehash: c36b8acd6f7fcb4e4d11e43013ccaf5ca6d1b0ab
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 9dd7774a1885a9c6c702b5b46fa1f88c86f7f7ac
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="add-app-features-using-a-platform-specific-configuration-in-aspnet-core"></a>新增應用程式中 ASP.NET Core 使用平台專屬組態的功能
+# <a name="add-app-features-with-a-platform-specific-configuration-in-aspnet-core"></a>在 ASP.NET Core 中加入平台專屬組態應用程式的功能
 
 作者：[Luke Latham](https://github.com/guardrex)
 
@@ -143,7 +143,7 @@ DOTNET\_其他\_DEPS
 %UserProfile%\.dotnet\x64\additionalDeps\StartupDiagnostics\
 ```
 
-如需如何設定各種作業系統的環境變數的範例，請參閱[使用多個環境](xref:fundamentals/environments)。
+如需如何設定各種作業系統的環境變數的範例，請參閱[搭配多個環境](xref:fundamentals/environments)。
 
 ## <a name="sample-app"></a>範例應用程式
 

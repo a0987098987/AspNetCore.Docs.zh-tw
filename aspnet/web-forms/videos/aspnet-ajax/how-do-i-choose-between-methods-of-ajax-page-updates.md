@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-choose-between-methods-of-ajax-page-updates
-title: "[如何:]選擇方法的 AJAX 頁面上的更新嗎？ | Microsoft Docs"
+title: '[如何:]選擇方法的 AJAX 頁面上的更新嗎？ | Microsoft Docs'
 author: JoeStagner
-description: "在這段影片 Joe stagner 以比較執行 ASP.NET 應用程式中的 AJAX 型頁面更新兩種主要方法。 第一個方法是使用 Upd..."
+description: 在這段影片 Joe stagner 以比較執行 ASP.NET 應用程式中的 AJAX 型頁面更新兩種主要方法。 第一個方法是使用 Upd...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-choose-between-methods-of-ajax-page-updates
 msc.type: video
-ms.openlocfilehash: cc3721c24c9fed0cb028d755330a5c6189b613b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b86471b93b7e3a1ed371288195f09fa28353ab36
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-choose-between-methods-of-ajax-page-updates"></a>[如何:]選擇方法的 AJAX 頁面上的更新嗎？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （11 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-choose-between-methods-of-ajax-page-updates)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax.md)
-[下一頁](how-do-i-use-other-javascript-user-interface-libraries-with-aspnet-ajax.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax.md)
+> [下一頁](how-do-i-use-other-javascript-user-interface-libraries-with-aspnet-ajax.md)

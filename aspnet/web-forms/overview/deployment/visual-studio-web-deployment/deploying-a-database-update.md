@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-database-update
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 部署資料庫更新 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 部署資料庫更新 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-database-update
 msc.type: authoredcontent
-ms.openlocfilehash: 8e875a4282df78ec647579e74c3fbeabd2495fc2
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 3020cfa19bf12f21c6d42a77ed257595431b4e86
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-database-update"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署資料庫更新
 ====================
@@ -170,6 +170,6 @@ ms.lasthandoff: 02/12/2018
 
 下一個教學課程會示範如何使用命令列執行部署。
 
->[!div class="step-by-step"]
-[上一頁](deploying-a-code-update.md)
-[下一頁](command-line-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-a-code-update.md)
+> [下一頁](command-line-deployment.md)

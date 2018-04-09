@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
-title: "UI 和瀏覽 |Microsoft 文件"
+title: UI 和瀏覽 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 7f1d8a1a473820a7c8da4c8086904cc41c86fd2a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d2d4101455a85c53e016e567c0cf1337642f1863
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ui-and-navigation"></a>UI 和導覽
 ====================
@@ -54,7 +54,7 @@ ASP.NET Web Forms 可讓您建立 Web 應用程式的動態內容。 每個 ASP.
     [!code-aspx[Main](ui_and_navigation/samples/sample2.aspx)]
 5. 儲存*Default.aspx*頁面中的選取**儲存 Default.aspx**從**檔案**功能表。
 
- 產生*Default.aspx*頁面會出現，如下所示： 
+   產生*Default.aspx*頁面會出現，如下所示： 
 
 [!code-aspx[Main](ui_and_navigation/samples/sample3.aspx)]
 
@@ -62,7 +62,7 @@ ASP.NET Web Forms 可讓您建立 Web 應用程式的動態內容。 每個 ASP.
 
 範例頁面包含構成 ASP.NET Web 網頁的基本項目。 此頁面包含靜態文字，因為您可能需要在 HTML 網頁，以及 ASP.NET 特定的項目。 中所包含的內容*Default.aspx*頁面將會與主版頁面內容，這將在稍後在本教學課程說明整合。
 
-### <a name="page-directive"></a>@Page指示詞
+### <a name="page-directive"></a>@Page 指示詞
 
 ASP.NET Web Form 通常會包含指示詞可讓您指定網頁的網頁內容和組態資訊。 指示詞會使用 ASP.NET 作為指示如何處理序 頁面上，但是不會轉譯傳送到瀏覽器標記的一部分。
 
@@ -166,8 +166,8 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 2. 以滑鼠右鍵按一下*bootstrap.css*檔案，並在它重新命名為*bootstrap original.css*。
 3. 重新命名*bootstrap.min.css*至*bootstrap original.min.css*。
 4. 在**方案總管 中**，以滑鼠右鍵按一下*內容*資料夾，然後選取**在檔案總管 中開啟資料夾**。  
- [檔案總管] 隨即出現。 您會將下載的啟動程序 CSS 檔案儲存至這個位置。
-5. 在您的瀏覽器，移至[http://Bootswatch.com](http://bootswatch.com/)。
+   [檔案總管] 隨即出現。 您會將下載的啟動程序 CSS 檔案儲存至這個位置。
+5. 在您的瀏覽器，移至[ http://Bootswatch.com ](http://bootswatch.com/)。
 6. 捲動瀏覽器視窗中，直到您看到 Cerulean 佈景主題。 
 
     ![UI 和瀏覽-Cerulean 佈景主題](ui_and_navigation/_static/image5.png)
@@ -176,9 +176,9 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 
     ![UI 和瀏覽-方案總管](ui_and_navigation/_static/image6.png)
 
- 您會看到兩個新的 CSS 檔案中**內容**資料夾，但請注意，每個檔案名稱旁邊的圖示會變成灰色。這表示，該檔案尚未尚未加入至專案。
+   您會看到兩個新的 CSS 檔案中**內容**資料夾，但請注意，每個檔案名稱旁邊的圖示會變成灰色。這表示，該檔案尚未尚未加入至專案。
 9. 以滑鼠右鍵按一下*bootstrap.css*和*bootstrap.min.css*檔案，然後選取**包含在專案**。   
- 當您稍後在本教學課程執行 Wingtip Toys 應用程式時，將會顯示新的使用者介面。
+   當您稍後在本教學課程執行 Wingtip Toys 應用程式時，將會顯示新的使用者介面。
 
 > [!NOTE] 
 > 
@@ -292,6 +292,6 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 [ASP.NET Web 伺服器控制項概觀](https://msdn.microsoft.com/library/zsyt68f1.aspx)   
 [CSS 教學課程](http://www.w3schools.com/css/default.asp)
 
->[!div class="step-by-step"]
-[上一頁](create_the_data_access_layer.md)
-[下一頁](display_data_items_and_details.md)
+> [!div class="step-by-step"]
+> [上一頁](create_the_data_access_layer.md)
+> [下一頁](display_data_items_and_details.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
-title: "使用 SqlDataSource (VB) 中使用參數化的查詢 |Microsoft 文件"
+title: 使用 SqlDataSource (VB) 中使用參數化的查詢 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們會繼續我們查看 SqlDataSource 控制項，並了解如何定義參數化的查詢。 參數可以指定兩個 decla..."
+description: 在本教學課程中，我們會繼續我們查看 SqlDataSource 控制項，並了解如何定義參數化的查詢。 參數可以指定兩個 decla...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b1cda18620a970c45b05039dd380c393e3854889
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a7442ef3bebb2742cc36d695914b745aa2dfa721
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>使用 SqlDataSource (VB) 中使用參數化的查詢
 ====================
@@ -235,7 +235,7 @@ O d e s 為了說明使用 SqlDataSource 中預存程序，在名為 Northwind �
 
 [!code-sql[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample10.sql)]
 
-`ORDER BY NEWID()`傳回以隨機順序排序的記錄 (請參閱[使用`NEWID()`隨機排序記錄](http://www.sqlteam.com/item.asp?ItemID=8747))。 `SELECT TOP 1`從結果集傳回第一筆記錄。 放在一起，此查詢會傳回`CategoryID`和`CategoryName`從單一的隨機選取的分類資料行值。
+`ORDER BY NEWID()` 傳回以隨機順序排序的記錄 (請參閱[使用`NEWID()`隨機排序記錄](http://www.sqlteam.com/item.asp?ItemID=8747))。 `SELECT TOP 1` 從結果集傳回第一筆記錄。 放在一起，此查詢會傳回`CategoryID`和`CategoryName`從單一的隨機選取的分類資料行值。
 
 若要顯示類別目錄 s`CategoryName`值、 標籤 Web 控制項加入網頁，請設定其`ID`屬性`CategoryNameLabel`，並以清除其`Text`屬性。 若要從 SqlDataSource 控制項，以程式設計方式擷取資料，我們要叫用其`Select()`方法。 [ `Select()`方法](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.select.aspx)單一輸入的參數的型別必須要有[ `DataSourceSelectArguments` ](https://msdn.microsoft.com/library/system.web.ui.datasourceselectarguments.aspx)，以指定如何將資料應該依現狀在傳回之前。 這可以包含指示排序及篩選資料，而且由 Web 控制項時排序，或從 SqlDataSource 控制項的資料進行分頁的資料。 我們的範例，我們不 t 需要資料在傳回之前修改，因此將會傳入`DataSourceSelectArguments.Empty`物件。
 
@@ -246,7 +246,7 @@ O d e s 為了說明使用 SqlDataSource 中預存程序，在名為 Northwind �
 
 [!code-vb[Main](using-parameterized-queries-with-the-sqldatasource-vb/samples/sample11.vb)]
 
-`randomCategoryView(0)`傳回第一個`DataRowView`在 DataView 中。 `randomCategoryView(0)("CategoryName")`傳回的值`CategoryName`此第一個資料列中的資料行。 請注意，在 DataView 鬆散型別。 若要參考特定資料行值，我們需要傳入資料行做為字串 （類別名稱，在此情況下）。 圖 13 顯示中顯示的訊息`CategoryNameLabel`檢視網頁時。 當然，顯示的實際類別目錄名稱會隨機選取`RandomCategoryDataSource`SqlDataSource 每個開啟的頁面 （包括回傳）。
+`randomCategoryView(0)` 傳回第一個`DataRowView`在 DataView 中。 `randomCategoryView(0)("CategoryName")` 傳回的值`CategoryName`此第一個資料列中的資料行。 請注意，在 DataView 鬆散型別。 若要參考特定資料行值，我們需要傳入資料行做為字串 （類別名稱，在此情況下）。 圖 13 顯示中顯示的訊息`CategoryNameLabel`檢視網頁時。 當然，顯示的實際類別目錄名稱會隨機選取`RandomCategoryDataSource`SqlDataSource 每個開啟的頁面 （包括回傳）。
 
 
 [![名稱會顯示在隨機選取的類別 s](using-parameterized-queries-with-the-sqldatasource-vb/_static/image13.gif)](using-parameterized-queries-with-the-sqldatasource-vb/_static/image25.png)
@@ -306,12 +306,12 @@ SqlDataSource 可讓網頁開發人員定義參數化的查詢，其參數值可
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Scott 西與克萊德 Randell Schmidt，Ken Pespisa。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](querying-data-with-the-sqldatasource-control-vb.md)
-[下一頁](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](querying-data-with-the-sqldatasource-control-vb.md)
+> [下一頁](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)

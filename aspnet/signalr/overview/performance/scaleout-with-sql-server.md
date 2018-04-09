@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-with-sql-server
-title: "SignalR 範圍外的 SQL Server |Microsoft 文件"
+title: SignalR 範圍外的 SQL Server |Microsoft 文件
 author: MikeWasson
-description: "軟體版本本主題中使用 Visual Studio 2013.NET 4.5 SignalR 第 2 版舊版的此主題的較早版本的相關資訊..."
+description: 軟體版本本主題中使用 Visual Studio 2013.NET 4.5 SignalR 第 2 版舊版的此主題的較早版本的相關資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 18ce212f5cb7849d522248f9c462b5b48e3487ed
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b3189c36fc076333c0c6007bd039b12e03d63bc8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="signalr-scaleout-with-sql-server"></a>與 SQL Server 的 SignalR 範圍外
 ====================
@@ -62,7 +62,7 @@ Microsoft SQL Server 2005 或更新版本。 後擋板支援桌上型電腦和�
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
- 此程式碼使用的預設值，來設定後擋板[TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx)和[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的資訊，請參閱[SignalR 效能： 向外延展度量](signalr-performance.md#scaleout_metrics)。 
+   此程式碼使用的預設值，來設定後擋板[TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx)和[MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx)。 如需變更這些值的資訊，請參閱[SignalR 效能： 向外延展度量](signalr-performance.md#scaleout_metrics)。 
 
 ## <a name="configure-the-database"></a>設定資料庫
 

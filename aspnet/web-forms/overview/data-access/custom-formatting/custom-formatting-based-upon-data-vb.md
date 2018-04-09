@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
-title: "自訂格式會根據資料 (VB) |Microsoft 文件"
+title: 自訂格式會根據資料 (VB) |Microsoft 文件
 author: rick-anderson
-description: "以多種方式可以完成調整 GridView、 DetailsView 或根據繫結至它的資料在 FormView 的格式。 在本教學課程中，我們會 l..."
+description: 以多種方式可以完成調整 GridView、 DetailsView 或根據繫結至它的資料在 FormView 的格式。 在本教學課程中，我們會 l...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 43aed94fe5b1095af37abdae2cb4c9e67b7d7f6f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a5c7f99b863697cc49a5bc9831dae861f51e129d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>自訂格式會根據資料 (VB)
 ====================
@@ -221,19 +221,19 @@ ms.lasthandoff: 01/24/2018
 
 在步驟的 2 GridView 會列舉資料來源，以及每個記錄，建立`GridViewRow`執行個體，並繫結到它的目前記錄。 每個`GridViewRow`加入至 GridView，會引發兩個事件：
 
-- **`RowCreated`**之後，都會引發`GridViewRow`已建立
-- **`RowDataBound`**目前的記錄繫結至後引發`GridViewRow`。
+- **`RowCreated`** 之後，都會引發`GridViewRow`已建立
+- **`RowDataBound`** 目前的記錄繫結至後引發`GridViewRow`。
 
 Gridview，然後，資料繫結是更精確地分為下列一連串步驟：
 
 1. GridView`DataBinding`事件引發。
 2. 資料繫結至 GridView。   
   
- 資料來源中的每一筆記錄 
+   資料來源中的每一筆記錄 
 
     1. 建立`GridViewRow`物件
     2. 引發`RowCreated`事件
-    3. 繫結至資料錄`GridViewRow`
+    3. 繫結至資料錄 `GridViewRow`
     4. 引發`RowDataBound`事件
     5. 新增`GridViewRow`至`Rows`集合
 3. GridView`DataBound`事件引發。
@@ -279,12 +279,12 @@ Gridview，然後，資料繫結是更精確地分為下列一連串步驟：
 
 當使用`RowDataBound`務必記住 GridView 組成不同類型的資料列，而且此事件針對引發的事件處理常式*所有*資料列型別。 A`GridViewRow`的類型由其`RowType`屬性，且可以有一個可能的值：
 
-- `DataRow`繫結至資料錄從 GridView 的資料列`DataSource`
-- `EmptyDataRow`如果顯示的資料列的 GridView`DataSource`是空的
-- `Footer`頁尾資料列。顯示的如果 GridView`ShowFooter`屬性設定為`True`
-- `Header`標頭資料列，顯示是否 GridView ShowHeader 屬性會設定為`True`（預設值）
-- `Pager`會實作的 GridView 的分頁，顯示分頁介面的資料列
-- `Separator`不會用於 GridView，但使用`RowType`DataList 和中繼器內容控制項，兩個資料中，我們會討論在未來教學課程的 Web 控制項
+- `DataRow` 繫結至資料錄從 GridView 的資料列 `DataSource`
+- `EmptyDataRow` 如果顯示的資料列的 GridView`DataSource`是空的
+- `Footer` 頁尾資料列。顯示的如果 GridView`ShowFooter`屬性設定為 `True`
+- `Header` 標頭資料列，顯示是否 GridView ShowHeader 屬性會設定為`True`（預設值）
+- `Pager` 會實作的 GridView 的分頁，顯示分頁介面的資料列
+- `Separator` 不會用於 GridView，但使用`RowType`DataList 和中繼器內容控制項，兩個資料中，我們會討論在未來教學課程的 Web 控制項
 
 因為`EmptyDataRow`， `Header`， `Footer`，和`Pager`與相關聯的資料列不是`DataSource`記錄，它們會一直有一個值的`Nothing`針對其`DataItem`屬性。 基於這個原因，然後再嘗試將工作與目前`GridViewRow`的`DataItem`屬性，我們必須先確定我們正在處理的`DataRow`。 這可以透過檢查`GridViewRow`的`RowType`屬性如下所示：
 
@@ -323,12 +323,12 @@ Gridview，然後，資料繫結是更精確地分為下列一連串步驟：
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 本教學課程總計 E.R.導致檢閱者 Gilmore，Dennis Patterson 和 Dan Jagers。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](displaying-summary-information-in-the-gridview-s-footer-cs.md)
-[下一頁](using-templatefields-in-the-gridview-control-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](displaying-summary-information-in-the-gridview-s-footer-cs.md)
+> [下一頁](using-templatefields-in-the-gridview-control-vb.md)

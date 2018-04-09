@@ -1,7 +1,7 @@
 ---
-title: "使用 React 專案範本"
+title: 使用 ASP.NET Core React 專案範本
 author: SteveSandersonMS
-description: "了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 專案範本 React，以及建立 react 應用程式。"
+description: 了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 專案範本 React，以及建立 react 應用程式。
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,16 +11,16 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: cda9f52d1f5fa1d240e210488bf1bd5c76e49be7
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 4dcfef2bbb99873a9d716a4942f39123944f495c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="use-the-react-project-template"></a>使用 React 專案範本
+# <a name="use-the-react-project-template-with-aspnet-core"></a>使用 ASP.NET Core React 專案範本
 
 > [!NOTE]
-> 這份文件不需 React 專案範本包含 ASP.NET Core 2.0。 它是有關，您可以手動更新較新的回應範本。 預設範本包含 ASP.NET Core 2.1。
+> 這份文件不需 React 專案範本包含 ASP.NET Core 2.0。 它是有關，您可以手動更新較新的回應範本。 此範本預設包含在 ASP.NET Core 2.1 之中。
 
 更新的 React 專案範本提供方便的起點適用於 ASP.NET Core 應用程式使用 React 和[建立 react 應用程式](https://github.com/facebookincubator/create-react-app)(CRA) 慣例，來實作豐富的用戶端使用者介面 (UI)。
 
@@ -28,16 +28,16 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新後的 React 專案範本](xref:spa/index#installation)。 如果您有 ASP.NET Core 2.1，沒有需要安裝它。
+如果使用 ASP.NET Core 2.0，請確定您已經[安裝更新後的 React 專案範本](xref:spa/index#installation)。 如果您有 ASP.NET Core 2.1，不需要額外安裝它。
 
-建立新的專案，從命令提示字元使用命令`dotnet new react`空的目錄中。 例如，下列命令會建立應用程式在*my-新的應用程式*目錄並切換到該目錄：
+在空目錄中使用命令`dotnet new react`以從命令提示字元建立新的專案。 例如，下列命令會在*my-new-app*目錄中建立應用程式並切換到該目錄：
 
 ```console
 dotnet new react -o my-new-app
 cd my-new-app
 ```
 
-執行應用程式，從 Visual Studio 或.NET Core CLI:
+使用 Visual Studio 或 .NET Core CLI 執行應用程式:
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -55,7 +55,7 @@ cd my-new-app
 
 ---
 
-專案範本建立 ASP.NET Core 應用程式與 React 應用程式。 ASP.NET Core 應用程式被要用於資料存取、 授權和其他伺服器端的問題。 回應應用程式時，位於*ClientApp*子目錄，要用於所有 UI 疑慮。
+專案範本建立 ASP.NET Core 應用程式與 React 應用程式。 ASP.NET Core 應用程式應用於資料存取、 授權和其他伺服器端的問題。 回應應用程式時，位於*ClientApp*子目錄，要用於所有 UI 疑慮。
 
 ## <a name="add-pages-images-styles-modules-etc"></a>新增頁面、 影像、 樣式、 模組、 等等。
 
@@ -63,7 +63,7 @@ cd my-new-app
 
 有此範本所建立的 React 應用程式和屬性之間建立 CRA 本身; 有些微的差異不過，應用程式的功能並不會變更。 範本所建立的應用程式包含[Bootstrap](https://getbootstrap.com/)為基礎的配置和基本的路由範例。
 
-## <a name="install-npm-packages"></a>安裝 npm 封裝
+## <a name="install-npm-packages"></a>安裝 npm 套件
 
 若要安裝協力廠商 npm 封裝，請使用 命令提示字元中*ClientApp*子目錄。 例如: 
 
@@ -84,7 +84,7 @@ npm install --save <package_name>
 
 專案已設定為在背景中啟動 CRA 程式開發伺服器執行個體各自獨立，ASP.NET Core 應用程式開發模式中啟動。 這是很方便，因為這表示您不必手動執行不同的伺服器。
 
-沒有這個預設安裝的缺點。 每當您修改 C# 程式碼，您必須重新啟動，應用程式的 ASP.NET 核心 CRA 伺服器重新啟動。 幾秒鐘的時間才能重新啟動。 如果您正在經常 C# 程式碼編輯，而且不想等候 CRA 伺服器重新啟動，CRA 伺服器外部外獨立執行的 ASP.NET 核心程序。 若要這樣做：
+這個預設設定有個缺點。 每當您修改 C# 程式碼，您必須重新啟動，應用程式的 ASP.NET 核心 CRA 伺服器重新啟動。 幾秒鐘的時間才能重新啟動。 如果您正在經常 C# 程式碼編輯，而且不想等候 CRA 伺服器重新啟動，CRA 伺服器外部外獨立執行的 ASP.NET 核心程序。 若要這樣做：
 
 1. 在命令提示字元切換至*ClientApp*子目錄，並啟動 CRA 程式開發伺服器：
 
@@ -93,10 +93,10 @@ npm install --save <package_name>
     npm start
     ```
 
-2. 修改您的 ASP.NET Core 應用程式，而不是啟動其自己的其中一個使用外部 CRA 伺服器執行個體。 在您*啟動*類別中，取代`spa.UseReactDevelopmentServer`引動過程為下列：
+2. 修改您的 ASP.NET Core 應用程式，而不是啟動其自己的其中一個使用外部 CRA 伺服器執行個體。 在您的*Startup*類別中，以下列程式碼來取代 `spa.UseReactDevelopmentServer`叫用：
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
     ```
 
-當您啟動 ASP.NET Core 應用程式，它將不會啟動 CRA 伺服器。 改為使用您以手動方式啟動的執行個體。 這可讓它啟動並重新啟動速度。 不會再等候 React 應用程式以重建每一次。
+當您啟動 ASP.NET Core 應用程式，它將不會啟動 CRA 伺服器。 而是改為使用您以手動方式啟動的執行個體。 這可讓它更快地啟動與重新啟動。 不會再等候 React 應用程式以重建每一次。

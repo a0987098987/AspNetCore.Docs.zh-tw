@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-vb
-title: "改善效能與輸出快取 (VB) |Microsoft 文件"
+title: 改善效能與輸出快取 (VB) |Microsoft 文件
 author: microsoft
-description: "在此教學課程中，您學會如何您可以大幅改善效能的 ASP.NET MVC web 應用程式藉由運用輸出快取。 您..."
+description: 在此教學課程中，您學會如何您可以大幅改善效能的 ASP.NET MVC web 應用程式藉由運用輸出快取。 您...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3bd4b6c3ac52577cbee451d2986f1167e441f0e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8ee933b477307f5c3f2377e112a1a98d3d6bc337
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-performance-with-output-caching-vb"></a>使用輸出快取 (VB) 改善效能
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 在此教學課程中，您學會如何您可以大幅改善效能的 ASP.NET MVC web 應用程式藉由運用輸出快取。 您了解如何快取，因此相同的內容不需要建立新的使用者叫用的動作，每次從控制器動作傳回的結果。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 [!code-vb[Main](improving-performance-with-output-caching-vb/samples/sample1.vb)]
 
 
-ASP.NET MVC 的 Beta 版本，在輸出快取不適用於 URL，例如[http://www.MySite.com/](http://www.mysite.com/)。 相反地，您必須輸入 URL，例如[http://www.MySite.com/Home/Index](http://www.mysite.com/Home/Index)。
+ASP.NET MVC 的 Beta 版本，在輸出快取不適用於 URL，例如[ http://www.MySite.com/ ](http://www.mysite.com/)。 相反地，您必須輸入 URL，例如[ http://www.MySite.com/Home/Index ](http://www.mysite.com/Home/Index)。
 
 
 在清單 1 中，index （） 動作的輸出快取 10 秒。 如果您想要的話，您可以指定較長的快取持續時間。 例如，如果您想要快取輸出的控制器動作，一天然後您可以指定快取持續時間為 86400 秒 (60 秒\*60 分鐘\*24 小時)。
@@ -134,7 +134,7 @@ Details() 動作包括 VaryByParam 屬性與值 「 識別碼 」。 不同的 I
 
 您可以設定 VaryByParam 屬性為下列值：
 
-> \*= 表單或查詢字串參數而有所不同時，請建立不同的快取的版本。
+> \* = 表單或查詢字串參數而有所不同時，請建立不同的快取的版本。
 > 
 > none = 永不建立不同的快取的版本
 > 
@@ -157,7 +157,7 @@ Details() 動作包括 VaryByParam 屬性與值 「 識別碼 」。 不同的 I
 
 列出 7 中的控制站將說明如何將 Cache1Hour 設定檔套用至控制器動作與&lt;OutputCache&gt;屬性。
 
-**列出 7 – Controllers\ProfileController.vb**
+**Listing 7 – Controllers\ProfileController.vb**
 
 [!code-vb[Main](improving-performance-with-output-caching-vb/samples/sample7.vb)]
 
@@ -167,6 +167,6 @@ Details() 動作包括 VaryByParam 屬性與值 「 識別碼 」。 不同的 I
 
 輸出快取可以提供大幅改善效能的 ASP.NET MVC 應用程式的簡單方法。 在本教學課程中，您學會如何使用&lt;OutputCache&gt;控制器動作的輸出快取的屬性。 您也學到如何修改屬性&lt;OutputCache&gt;例如持續時間和 VaryByParam 屬性來修改內容取得快取的屬性。 最後，您學會如何在 web 組態檔中定義快取設定檔。
 
->[!div class="step-by-step"]
-[上一頁](understanding-action-filters-vb.md)
-[下一頁](adding-dynamic-content-to-a-cached-page-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-action-filters-vb.md)
+> [下一頁](adding-dynamic-content-to-a-cached-page-vb.md)

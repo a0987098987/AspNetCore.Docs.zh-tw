@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
-title: "ASP.NET MVC 4 Entity Framework Scaffolding 和移轉 |Microsoft 文件"
+title: ASP.NET MVC 4 Entity Framework Scaffolding 和移轉 |Microsoft 文件
 author: rick-anderson
-description: "如果您已熟悉 ASP.NET MVC 4 控制器方法，或已完成&quot;Helper、 表單和驗證&quot;實際操作實驗室中，您應該注意..."
+description: 如果您已熟悉 ASP.NET MVC 4 控制器方法，或已完成&quot;Helper、 表單和驗證&quot;實際操作實驗室中，您應該注意...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 396859463446d95c58271c4b00fc950bcd0d539a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 548afe1926eed49841251832d54dc213da0cb753
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 Entity Framework Scaffolding 和移轉
 
@@ -98,7 +98,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
     ![新 ASP.NET MVC 4 專案 對話方塊](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image1.png "新 ASP.NET MVC 4 專案 對話方塊")
 
     *新增 ASP.NET MVC 4 專案對話方塊*
-3. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**網際網路應用程式**範本，並確定**Razor**是所選**檢視引擎**. 按一下**確定**建立專案。
+3. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**網際網路應用程式**範本，並確定**Razor**是所選**檢視引擎**. 按一下 [確定] 建立專案。
 
     ![新的 ASP.NET MVC 4 網際網路應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image2.png "新 ASP.NET MVC 4 網際網路應用程式")
 
@@ -109,7 +109,9 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
     (程式碼片段- *ASP.NET MVC 4 和實體架構移轉 Ex1 人員屬性*)
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
 6. 按一下**建置 |建置方案**以儲存變更，並建置專案。
 
     ![建置應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "建置應用程式")
@@ -118,14 +120,14 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 7. 在 [方案總管] 中，以滑鼠右鍵按一下 [控制器] 資料夾，然後選取**新增 |控制器**。
 8. 控制器*PersonController*並完成**Scaffolding 選項**具有下列值。
 
-    1. 在**範本**下拉式清單中，選取**具有讀取/寫入動作和檢視表、 使用 Entity Framework 的 MVC 控制器**選項。
-    2. 在**模型類別**下拉式清單中，選取**人員**類別。
-    3. 在**資料內容類別**清單中，選取**&lt;新的資料內容...&gt;**. 選擇的任何名稱，然後按一下**確定**。
-    4. 在**檢視**下拉式清單中，請確定**Razor**已選取。
+   1. 在**範本**下拉式清單中，選取**具有讀取/寫入動作和檢視表、 使用 Entity Framework 的 MVC 控制器**選項。
+   2. 在**模型類別**下拉式清單中，選取**人員**類別。
+   3. 在**資料內容類別**清單中，選取**&lt;新的資料內容...&gt;**. 選擇的任何名稱，然後按一下**確定**。
+   4. 在**檢視**下拉式清單中，請確定**Razor**已選取。
 
-    ![新增人員控制器的 scaffolding](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "加入 scaffolding 人員控制器")
+      ![新增人員控制器的 scaffolding](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "加入 scaffolding 人員控制器")
 
-    *新增人員控制器的 scaffolding*
+      *新增人員控制器的 scaffolding*
 9. 按一下**新增**scaffolding 人員建立新的控制站。 現在您已經有產生控制器動作，以及檢視。
 
     ![使用 scaffolding 建立人員控制站之後](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image5.png "使用 scaffolding 建立人員控制站之後")
@@ -133,9 +135,9 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
     *使用 scaffolding 建立人員控制站之後*
 10. 開啟**PersonController**類別。 請注意，已自動產生完整的 CRUD 動作方法。
 
-    ![內部的人員控制站](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "內人員控制站")
+   ![內部的人員控制站](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "內人員控制站")
 
-    *內部的人員控制站*
+   *內部的人員控制站*
 
 <a id="Ex1Task2"></a>
 
@@ -195,11 +197,15 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 3. 開啟**configuration.cs 中**Migrations 資料夾中的檔案。 尋找類別建構函式並將變更**AutomaticMigrationsEnabled**值設定為*true*。
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
 4. 開啟 Person 類別並加入個人的中間名的屬性。 利用此新屬性，您要變更模型。
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
 5. 選取**建置 |建置方案**上建置應用程式的功能表。
 
     ![建置應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image13.png "建置應用程式")
@@ -247,9 +253,9 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
     *更新控制器*
 10. 按一下 [加入] 。 然後，選取 值**覆寫 PersonController.cs**和**覆寫相關聯的檢視**按一下**確定**。
 
-    ![加入控制器覆寫](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
+   ![加入控制器覆寫](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
 
-    *更新控制器*
+   *更新控制器*
 
 <a id="Ex1Task4"></a>
 
@@ -280,9 +286,9 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
-1. 移至[ [https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; *Visual Studio Express 2012 for Web 與 Windows Azure SDK*&quot;。
+1. 移至[ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
 3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
 
@@ -293,7 +299,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 
     ![接受授權條款](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image23.png)
 
-    接受授權條款
+    *接受授權條款*
 5. 等待直到完成下載和安裝程序。
 
     ![安裝進度](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image24.png)
@@ -303,13 +309,13 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 
     ![安裝已完成](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image25.png)
 
-    安裝已完成
+    *安裝已完成*
 7. 按一下**結束**關閉 Web Platform Installer。
 8. 若要開啟 Visual Studio Express for Web，請移至**啟動**畫面上，並開始書寫&quot; **VS Express**&quot;，然後按一下  **VS Express for Web**並排顯示。
 
     ![VS Express for Web 方塊](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image26.png)
 
-    VS Express for Web 方塊
+    *VS Express for Web 方塊*
 
 <a id="AppendixB"></a>
 

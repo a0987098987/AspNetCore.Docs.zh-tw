@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
-title: "呼叫 Web API，從 Windows Phone 8 應用程式 (C#) |Microsoft 文件"
+title: 呼叫 Web API，從 Windows Phone 8 應用程式 (C#) |Microsoft 文件
 author: rmcmurray
-description: "建立完整的端對端案例，提供給 Windows Phone 8 應用程式的書籍目錄的 ASP.NET Web API 應用程式所組成。"
+description: 建立完整的端對端案例，提供給 Windows Phone 8 應用程式的書籍目錄的 ASP.NET Web API 應用程式所組成。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/09/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 2025f31f369153b93cd293884880c97635fc8ab8
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 7d0486b4cab85ffe77fda87d4b34dd3ec0a9e8fe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>從 Windows Phone 8 應用程式 (C#) 呼叫 Web API
 ====================
@@ -52,15 +52,21 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
 2. 按一下**檔案**，然後**新**，然後**專案**。
 3. 當**新專案** 對話方塊隨即顯示，接著展開**已安裝**，然後**範本**，然後**Visual C#**，，然後**Web**。
 
-    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
-    | --- |
-    | 按一下以展開的影像 |
+
+   | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
+   |-----------------------------------------------------------------------------------------------------------------------------------------------------|
+   |                                                                按一下以展開的影像                                                                |
+
+
 4. 反白顯示**ASP.NET Web 應用程式**，輸入**BookStore**為專案名稱，然後按一下**確定**。
 5. 當**新增 ASP.NET 專案**對話方塊隨即出現，請選取**Web API**範本，然後再按一下**確定**。
 
-    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
-    | --- |
-    | 按一下以展開的影像 |
+
+   | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
+   |-----------------------------------------------------------------------------------------------------------------------------------------------------|
+   |                                                                按一下以展開的影像                                                                |
+
+
 6. 當 Web API 專案開啟時，請從專案移除範例控制器：
 
     1. 展開**控制器**在 [方案總管] 中的資料夾。
@@ -68,30 +74,33 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
     3. 按一下**確定**當系統提示您確認刪除。
 7. 將 XML 資料檔加入至 Web API 專案。這個檔案包含 bookstore 目錄的內容：
 
-    1. 以滑鼠右鍵按一下**應用程式\_資料**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **新項目**。
-    2. 當**加入新項目**對話方塊隨即出現，請反白**XML 檔案**範本。
-    3. 將檔案命名**Books.xml**，然後按一下 **新增**。
-    4. 當**Books.xml**開啟檔案、 程式碼檔案中的取代的範例 XML **books.xml** MSDN 上的檔案： 
+   1. 以滑鼠右鍵按一下**應用程式\_資料**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **新項目**。
+   2. 當**加入新項目**對話方塊隨即出現，請反白**XML 檔案**範本。
+   3. 將檔案命名**Books.xml**，然後按一下 **新增**。
+   4. 當**Books.xml**開啟檔案、 程式碼檔案中的取代的範例 XML **books.xml** MSDN 上的檔案： 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample1.xml)]
-    5. 儲存並關閉 XML 檔案。
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample1.xml)]
+   5. 儲存並關閉 XML 檔案。
+
 8. Bookstore 模型加入至 Web API 專案;此模型包含 bookstore 應用程式的建立、 讀取、 更新和刪除 (CRUD) 邏輯：
 
-    1. 以滑鼠右鍵按一下**模型**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **類別**。
-    2. 當**加入新項目**] 對話方塊隨即顯示，將類別檔案**BookDetails.cs**，然後按一下 [**新增**。
-    3. 當**BookDetails.cs**開啟檔案、 檔案中的程式碼替換成下列： 
+   1. 以滑鼠右鍵按一下**模型**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **類別**。
+   2. 當**加入新項目**] 對話方塊隨即顯示，將類別檔案**BookDetails.cs**，然後按一下 [**新增**。
+   3. 當**BookDetails.cs**開啟檔案、 檔案中的程式碼替換成下列： 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample2.cs)]
-    4. 儲存並關閉**BookDetails.cs**檔案。
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample2.cs)]
+   4. 儲存並關閉**BookDetails.cs**檔案。
+
 9. 將 bookstore 控制器加入至 Web API 專案：
 
-    1. 以滑鼠右鍵按一下**控制器**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **控制器**。
-    2. 當**新增 Scaffold**對話方塊隨即出現，請反白**Web API 2 控制器空白**，然後按一下 **新增**。
-    3. 當**加入控制器**] 對話方塊隨即顯示，接著控制器**BooksController**，然後按一下 [**新增**。
-    4. 當**BooksController.cs**開啟檔案、 檔案中的程式碼替換成下列： 
+   1. 以滑鼠右鍵按一下**控制器**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **控制器**。
+   2. 當**新增 Scaffold**對話方塊隨即出現，請反白**Web API 2 控制器空白**，然後按一下 **新增**。
+   3. 當**加入控制器**] 對話方塊隨即顯示，接著控制器**BooksController**，然後按一下 [**新增**。
+   4. 當**BooksController.cs**開啟檔案、 檔案中的程式碼替換成下列： 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample3.cs)]
-    5. 儲存並關閉**BooksController.cs**檔案。
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample3.cs)]
+   5. 儲存並關閉**BooksController.cs**檔案。
+
 10. 建置的 Web API 應用程式檢查有錯誤。
 
 <a id="STEP2"></a>
@@ -111,41 +120,45 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
     5. 當安裝完成後時，按一下 **關閉**。
 5. 新增**BookDetails**模型到**BookCatalog**專案; 這個項目包含 bookstore 類別的一般模型：
 
-    1. 以滑鼠右鍵按一下**BookCatalog**方案總管 中的專案，然後按一下 **新增**，然後按一下 **新資料夾**。
-    2. 將新的資料夾命名**模型**。
-    3. 以滑鼠右鍵按一下**模型**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **類別**。
-    4. 當**加入新項目**] 對話方塊隨即顯示，將類別檔案**BookDetails.cs**，然後按一下 [**新增**。
-    5. 當**BookDetails.cs**開啟檔案、 檔案中的程式碼替換成下列： 
+   1. 以滑鼠右鍵按一下**BookCatalog**方案總管 中的專案，然後按一下 **新增**，然後按一下 **新資料夾**。
+   2. 將新的資料夾命名**模型**。
+   3. 以滑鼠右鍵按一下**模型**資料夾在 方案總管 中，然後按一下**新增**，然後按一下 **類別**。
+   4. 當**加入新項目**] 對話方塊隨即顯示，將類別檔案**BookDetails.cs**，然後按一下 [**新增**。
+   5. 當**BookDetails.cs**開啟檔案、 檔案中的程式碼替換成下列： 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample4.cs)]
-    6. 儲存並關閉**BookDetails.cs**檔案。
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample4.cs)]
+   6. 儲存並關閉**BookDetails.cs**檔案。
+
 6. 更新**MainViewModel.cs**類別，以包含 BookStore Web API 應用程式進行通訊的功能：
 
-    1. 展開**ViewModels**方案總管 中，然後按兩下資料夾**MainViewModel.cs**檔案。
-    2. 當**MainViewModel.cs**開啟檔案時，取代為下列程式碼檔案中的; 請注意，您將需要更新的值`apiUrl`常數，其 Web API 的實際 URL: 
+   1. 展開**ViewModels**方案總管 中，然後按兩下資料夾**MainViewModel.cs**檔案。
+   2. 當**MainViewModel.cs**開啟檔案時，取代為下列程式碼檔案中的; 請注意，您將需要更新的值`apiUrl`常數，其 Web API 的實際 URL: 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
-    3. 儲存並關閉**MainViewModel.cs**檔案。
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
+   3. 儲存並關閉**MainViewModel.cs**檔案。
+
 7. 更新**MainPage.xaml**檔案以自訂應用程式名稱：
 
-    1. 按兩下**MainPage.xaml**在 [方案總管] 中的檔案。
-    2. 當**MainPage.xaml**開啟檔案時，找出下列幾行程式碼： 
+   1. 按兩下**MainPage.xaml**在 [方案總管] 中的檔案。
+   2. 當**MainPage.xaml**開啟檔案時，找出下列幾行程式碼： 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
-    3. 以下列內容取代這些行： 
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
+   3. 以下列內容取代這些行： 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample7.xml)]
-    4. 儲存並關閉**MainPage.xaml**檔案。
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample7.xml)]
+   4. 儲存並關閉**MainPage.xaml**檔案。
+
 8. 更新**DetailsPage.xaml**檔案來自訂顯示的項目：
 
-    1. 按兩下**DetailsPage.xaml**在 [方案總管] 中的檔案。
-    2. 當**DetailsPage.xaml**開啟檔案時，找出下列幾行程式碼： 
+   1. 按兩下**DetailsPage.xaml**在 [方案總管] 中的檔案。
+   2. 當**DetailsPage.xaml**開啟檔案時，找出下列幾行程式碼： 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
-    3. 以下列內容取代這些行： 
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
+   3. 以下列內容取代這些行： 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample9.xml)]
-    4. 儲存並關閉**DetailsPage.xaml**檔案。
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample9.xml)]
+   4. 儲存並關閉**DetailsPage.xaml**檔案。
+
 9. 建置 Windows Phone 應用程式檢查有錯誤。
 
 ### <a name="step-3-testing-the-end-to-end-solution"></a>步驟 3： 測試端對端解決方案
@@ -184,6 +197,8 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
 
 如果您點選 錯誤訊息上，將會顯示任何錯誤的其他詳細資料：
 
+
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image16.png)](calling-web-api-from-a-windows-phone-8-application/_static/image15.png) |
-| --- |
-| 按一下以展開的影像 |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                 按一下以展開的影像                                                                 |
+

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
-title: "重複使用 UI 使用主版頁面和 Partials |Microsoft 文件"
+title: 重複使用 UI 使用主版頁面和 Partials |Microsoft 文件
 author: microsoft
-description: "步驟 7 會查看我們排除程式碼重複，使用部分檢視的範本和主版頁面的檢視範本內的方式，我們可以使用最低 ' 乾 '。"
+description: 步驟 7 會查看我們排除程式碼重複，使用部分檢視的範本和主版頁面的檢視範本內的方式，我們可以使用最低 ' 乾 '。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
 msc.type: authoredcontent
-ms.openlocfilehash: c42cd6aca40b08a9f8461532fbfd0589901b64ad
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ade655f3a4a429360b678d02fb564ac9cf255d42
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="re-use-ui-using-master-pages-and-partials"></a>重複使用使用主版頁面和 Partials UI
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -137,6 +137,6 @@ Partials 和主版頁面提供富彈性，可讓您完全組織檢視的選項�
 
 我們現在再次瀏覽我們稍早建立的清單案例，並啟用可擴充的分頁支援。
 
->[!div class="step-by-step"]
-[上一頁](use-viewdata-and-implement-viewmodel-classes.md)
-[下一頁](implement-efficient-data-paging.md)
+> [!div class="step-by-step"]
+> [上一頁](use-viewdata-and-implement-viewmodel-classes.md)
+> [下一頁](implement-efficient-data-paging.md)

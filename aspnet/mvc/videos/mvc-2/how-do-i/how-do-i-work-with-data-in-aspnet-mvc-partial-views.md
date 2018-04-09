@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views
-title: "如何： 使用 ASP.NET MVC 部分檢視中的資料嗎？ | Microsoft Docs"
+title: 如何： 使用 ASP.NET MVC 部分檢視中的資料嗎？ | Microsoft Docs
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何將組織，並將資料傳遞至 MVC 應用程式中的部分檢視。 MVC 應用程式範例會建立包含網域..."
+description: 在這個視訊 Chris Pels 示範如何將組織，並將資料傳遞至 MVC 應用程式中的部分檢視。 MVC 應用程式範例會建立包含網域...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views
 msc.type: video
-ms.openlocfilehash: 8c8f79de21b188e958518a47f6cf18f8207ba695
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 85a93e43e400e4292ee41952a0f83c3a15d35ff3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-work-with-data-in-aspnet-mvc-partial-views"></a>如何： 使用 ASP.NET MVC 部分檢視中的資料嗎？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （20 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-work-with-data-in-aspnet-mvc-partial-views)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
-[下一頁](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
+> [下一頁](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
-title: "第 3 部分： 版面配置和類別目錄功能表 |Microsoft 文件"
+title: 第 3 部分： 版面配置和類別目錄功能表 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 3 部分說明如何加入版面配置和類別目錄功能表。"
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 3 部分說明如何加入版面配置和類別目錄功能表。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 57c0342efb67b94a0d8c8b06dc13a727e7184db8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 27a493173b03f813ee3dcbbfafd8bc52fb0b9771
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-layout-and-category-menu"></a>第 3 部分： 版面配置和類別目錄功能表
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 3 部分說明如何加入版面配置和類別目錄功能表。
 
 
-## <a id="_Toc260221669"></a>加入一些版面配置和類別目錄功能表
+## <a id="_Toc260221669"></a>  加入一些版面配置和類別目錄功能表
 
 在我們的站台主版頁面中，我們會將新增 div 左側資料行包含我們的產品類別目錄功能表。
 
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/10/2017
 
 請注意，現在會顯示我們的產品類別目錄功能表以及當我們將滑鼠停留在一個類別目錄功能表項目，我們可以看到功能表項目連結指向的頁面，我們必須尚未實作名為 ProductsList.aspx，我們有建置動態查詢字串引數，包含 類別目錄識別碼。
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-2.md)
-[下一頁](tailspin-spyworks-part-4.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-2.md)
+> [下一頁](tailspin-spyworks-part-4.md)

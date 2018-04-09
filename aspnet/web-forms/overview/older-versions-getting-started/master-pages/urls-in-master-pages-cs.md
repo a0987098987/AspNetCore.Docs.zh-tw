@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
-title: "主版頁面 (C#) 中的 Url |Microsoft 文件"
+title: 主版頁面 (C#) 中的 Url |Microsoft 文件
 author: rick-anderson
-description: "解決方式中的主版頁面的 Url 可能會中斷由於是在不同的相對目錄的內容頁面之外的主版頁面檔案。 查看重定基底..."
+description: 解決方式中的主版頁面的 Url 可能會中斷由於是在不同的相對目錄的內容頁面之外的主版頁面檔案。 查看重定基底...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b01f0ac780121c4e0941df6016220a1cb1ed2d1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 494338f1a0705c8d7e15bc693ae1ec6362b26d64
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="urls-in-master-pages-c"></a>主版頁面 (C#) 中的 Url
 ====================
@@ -182,12 +182,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
-[下一頁](control-id-naming-in-content-pages-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
+> [下一頁](control-id-naming-in-content-pages-cs.md)

@@ -1,7 +1,7 @@
 ---
-title: "使用分散式快取中 ASP.NET Core"
+title: 使用分散式快取中 ASP.NET Core
 author: ardalis
-description: "了解如何使用 ASP.NET Core 分散式快取以改善應用程式效能和延展性，尤其是在雲端或伺服器的伺服陣列環境。"
+description: 了解如何使用 ASP.NET Core 分散式快取以改善應用程式效能和延展性，尤其是在雲端或伺服器的伺服陣列環境。
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: 635c61cbb72a6a9eb822307bbc80936ee73bedc8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d9c7c1c3b2c052ba11f9ea5eaaa424d69bc43eb2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="working-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
+# <a name="work-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
 作者：[Steve Smith](https://ardalis.com/)
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/02/2018
 [!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
-> 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
+> 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
 
 ## <a name="using-a-sql-server-distributed-cache"></a>使用 SQL Server 分散式快取
 
@@ -138,7 +138,7 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 * [Redis 快取，在 Azure 上](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [在 Azure 上的 SQL 資料庫](https://azure.microsoft.com/documentation/services/sql-database/)
-* [記憶體內部快取](xref:performance/caching/memory)
+* [快取記憶體中](xref:performance/caching/memory)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)

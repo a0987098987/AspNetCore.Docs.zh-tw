@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-部分 8 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-部分 8 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 323ee44f43f6d4081bd9ba50791755696bc9128f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 035cce022d1b3697b825a96487529dbc9675d90e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 一部分 8
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 01/24/2018
 
 套用至中繼資料類別中屬性的屬性指定的格式、 驗證、 規則和錯誤訊息。 如下所示的屬性將會產生下列結果：
 
-- `EnrollmentDate`將會顯示為日期 （而不是時間）。
+- `EnrollmentDate` 將會顯示為日期 （而不是時間）。
 - 這兩個名稱欄位必須是 25 個字元，或小於長度，以及自訂錯誤訊息中提供。
 - 這兩個名稱欄位是必要的並提供自訂錯誤訊息。
 
@@ -132,5 +132,5 @@ ms.lasthandoff: 01/24/2018
 - [MSDN 上的實體架構論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/)
 - [Julie Lerman 部落格](http://thedatafarm.com/blog/)
 
->[!div class="step-by-step"]
-[上一步](the-entity-framework-and-aspnet-getting-started-part-7.md)
+> [!div class="step-by-step"]
+> [上一步](the-entity-framework-and-aspnet-getting-started-part-7.md)

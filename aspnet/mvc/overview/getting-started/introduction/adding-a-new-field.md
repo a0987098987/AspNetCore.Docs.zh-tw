@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-new-field
-title: "加入新欄位 |Microsoft 文件"
+title: 加入新欄位 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 453fbf68aa2f3a1d9ea708355c06c53d4f1eabd0
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 0dac798eba586cdcc232cedd262e610b954004df
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field"></a>新增欄位
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 這一節中，您將使用 Entity Framework Code First 移轉來移轉至模型類別的某些變更，因此變更套用至資料庫。
 
@@ -62,7 +62,7 @@ Visual Studio 隨即開啟*configuration.cs 中*檔案。 取代`Seed`方法中�
 
 [!code-csharp[Main](adding-a-new-field/samples/sample2.cs)]
 
-> [!NOTE] 
+> [!NOTE]
 > 
 > Code First 移轉呼叫`Seed`方法之後每個移轉 (也就呼叫**更新資料庫**Package Manager Console 中)，這個方法會更新已經插入，或如果將它們插入的資料列和它們不存在。
 > 
@@ -71,15 +71,15 @@ Visual Studio 隨即開啟*configuration.cs 中*檔案。 取代`Seed`方法中�
 > [!code-csharp[Main](adding-a-new-field/samples/sample3.cs)]
 > 
 > 因為[種子](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx)方法執行每個移轉，因為您嘗試新增的資料列，就會有第一個移轉建立資料庫之後插入資料。 「[Upsert](http://en.wikipedia.org/wiki/Upsert)」 作業會讓您嘗試要插入的資料列已經存在，會發生的錯誤，但是它會覆寫任何您所做測試應用程式時的資料變更。 測試資料表中的資料部分可能不會想才會發生： 在某些情況下測試時變更資料時要您的資料庫更新後要保持的變更。 在此情況下您要執行條件式的 insert 作業： 插入資料列，只有當其不存在。   
->   
+> 
 > 第一個參數傳遞至[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法會指定用來檢查資料列是否已經存在的屬性。 您提供的測試電影資料`Title`因為清單中的每個書名是唯一的可以針對此用途使用屬性：
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample4.cs)]
 > 
 > 此程式碼假設項目都是唯一的。 如果您手動加入重複的標題，您會取得下列的例外狀況下一次執行移轉。   
->   
+> 
 >  *序列包含一個以上的項目*  
->   
+> 
 > 如需有關[AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx)方法，請參閱[小心以 EF 4.3 AddOrUpdate 方法](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/)...
 
 
@@ -191,6 +191,6 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 本節中您已看到如何修改模型物件和資料庫中與變更保持同步。 您也學到如何填入新建立的資料庫中的範例資料，因此您可以嘗試的案例。 這是只為第一個程式碼快速簡介，請參閱[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)更完整的教學課程主題上。 接下來，讓我們看看如何將更豐富的驗證邏輯加入至模型類別，並啟用某些商務規則，以強制執行。
 
->[!div class="step-by-step"]
-[上一頁](adding-search.md)
-[下一頁](adding-validation.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-search.md)
+> [下一頁](adding-validation.md)

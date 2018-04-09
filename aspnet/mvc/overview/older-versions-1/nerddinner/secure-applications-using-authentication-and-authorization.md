@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
-title: "安全使用驗證和授權的應用程式 |Microsoft 文件"
+title: 安全使用驗證和授權的應用程式 |Microsoft 文件
 author: microsoft
-description: "步驟 9 示範如何加入驗證和授權來保護 NerdDinner 應用程式中，以便使用者註冊需要和站台才能建立登入..."
+description: 步驟 9 示範如何加入驗證和授權來保護 NerdDinner 應用程式中，以便使用者註冊需要和站台才能建立登入...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: a23b2cf4d1728624698c0db49c25ea7efd3af67d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4a9b1e6d7d453bd8dc5a61b1f1cec4617af7d693
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="secure-applications-using-authentication-and-authorization"></a>安全使用驗證和授權的應用程式
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -155,6 +155,6 @@ ASP.NET MVC 支援建立 「 動作篩選 」 可以用來實作可重複使用�
 
 我們現在看我們如何啟用使用 AJAX dinners 的 RSVP 經過驗證的使用者。
 
->[!div class="step-by-step"]
-[上一頁](implement-efficient-data-paging.md)
-[下一頁](use-ajax-to-deliver-dynamic-updates.md)
+> [!div class="step-by-step"]
+> [上一頁](implement-efficient-data-paging.md)
+> [下一頁](use-ajax-to-deliver-dynamic-updates.md)

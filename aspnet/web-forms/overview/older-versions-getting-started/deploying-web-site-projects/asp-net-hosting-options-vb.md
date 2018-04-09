@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
-title: "ASP.NET 裝載選項 (VB) |Microsoft 文件"
+title: ASP.NET 裝載選項 (VB) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET web 應用程式通常設計、 建立，在本機開發環境中測試和要部署到實際執行環境 o..."
+description: ASP.NET web 應用程式通常設計、 建立，在本機開發環境中測試和要部署到實際執行環境 o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54bac82a96a35d871d764849856c8e31f6570666
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0e99423ec803927d0f621c88f3d814578fec11f5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-vb"></a>ASP.NET 裝載選項 (VB)
 ====================
@@ -61,7 +61,7 @@ Web 應用程式的組態資訊通常位於`Web.config`檔案，並包含資料�
 Web 應用程式組態變更，除了步驟 1 也可能需要將 web 伺服器和資料庫的組態。 比方說，如果建立 ASP.NET 網頁，或從 web 伺服器上的目錄中刪除檔案然後網頁伺服器必須設定為允許修改這些檔案系統。 同樣地，可能需要進行資料庫的權限或驗證設定。
 
 
-步驟 2 包含一組基本的 ASP.NET 網頁和支援檔案，在開發和生產環境之間進行同步處理。 ASP 特定集。網路相關的檔案，需要兩個環境之間同步處理取決於您在 Visual Studio 中，建立並在下一個教學課程中，討論的專案類型*[決定需要的檔案部署](determining-what-files-need-to-be-deployed-vb.md)*. 第三個和第四個教學課程- *[部署您的網站使用 FTP](deploying-your-site-using-an-ftp-client-vb.md)*和*[部署您的網站使用 Visual Studio](deploying-your-site-using-visual-studio-vb.md)*  -檢查不同的工具和技術用於同步處理這些檔案。
+步驟 2 包含一組基本的 ASP.NET 網頁和支援檔案，在開發和生產環境之間進行同步處理。 ASP 特定集。網路相關的檔案，需要兩個環境之間同步處理取決於您在 Visual Studio 中，建立並在下一個教學課程中，討論的專案類型<em>[決定需要的檔案部署](determining-what-files-need-to-be-deployed-vb.md)</em>. 第三個和第四個教學課程- <em>[部署您的網站使用 FTP](deploying-your-site-using-an-ftp-client-vb.md)</em>和<em>[部署您的網站使用 Visual Studio](deploying-your-site-using-visual-studio-vb.md)</em>  -檢查不同的工具和技術用於同步處理這些檔案。
 
 當建置資料導向應用程式正在使用的資料庫通常有兩個： 一個用於開發和另一個在生產環境。 在開發期間，開發資料庫結構描述也可以修改成包含新的資料表、 資料行、 預存程序和觸發程序，或可能修改移除或重新命名現有的資料庫物件。 進行這些變更的時間，應用程式部署到生產環境的時間之間的開發和生產資料庫未同步。此非同步需要修正在部署程序。 在未來的教學課程會檢查這些挑戰。
 
@@ -95,6 +95,6 @@ ASP.NET web 應用程式通常會設計、 建立，並在本機開發環境中�
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](users-and-roles-on-the-production-website-cs.md)
-[下一頁](determining-what-files-need-to-be-deployed-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](users-and-roles-on-the-production-website-cs.md)
+> [下一頁](determining-what-files-need-to-be-deployed-vb.md)

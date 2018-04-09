@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
-title: "了解專案檔 |Microsoft 文件"
+title: 了解專案檔 |Microsoft 文件
 author: jrjlee
-description: "Microsoft Build Engine (MSBuild) 專案檔之間的組建和部署程序的核心。 本主題一開始的 MSBuild 概觀..."
+description: Microsoft Build Engine (MSBuild) 專案檔之間的組建和部署程序的核心。 本主題一開始的 MSBuild 概觀...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
-ms.openlocfilehash: 09c3793e9cdddb7c42cf966f2d079245f441540c
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 49d1d4fbe48cd4f073e774d8a9c6c0c011bd3319
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-the-project-file"></a>了解專案檔
 ====================
@@ -36,9 +36,9 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="msbuild-and-the-project-file"></a>MSBuild 和專案檔
 
-當您建立並建置 Visual Studio 中的方案時，Visual Studio 會使用 MSBuild 建置您的方案中每個專案。 每個 Visual Studio 專案包含 MSBuild 專案檔，副檔名為檔案，以反映專案 & #x 2014年的類型; 例如，C# 專案 (.csproj)、 Visual Basic.NET 專案 (.vbproj) 或資料庫專案 (.dbproj)。 若要建置專案時，MSBuild 必須處理與專案相關的專案檔。 專案檔是 XML 文件，其中包含所有資訊和指示 MSBuild 能夠建置您的專案，例如平台需求、 版本設定資訊、 web 伺服器或資料庫伺服器設定，包括內容和必須執行的工作。
+當您建立並建置 Visual Studio 中的方案時，Visual Studio 會使用 MSBuild 建置您的方案中每個專案。 每個 Visual Studio 專案包含 MSBuild 專案檔，以反映的專案類型的副檔名&#x2014;，例如 C# 專案 (.csproj)、 Visual Basic.NET 專案 (.vbproj) 或資料庫專案 (.dbproj)。 若要建置專案時，MSBuild 必須處理與專案相關的專案檔。 專案檔是 XML 文件，其中包含所有資訊和指示 MSBuild 能夠建置您的專案，例如平台需求、 版本設定資訊、 web 伺服器或資料庫伺服器設定，包括內容和必須執行的工作。
 
-MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/library/5dy88c2e.aspx)，如此一來，在建置程序是完全開啟和透明和。 此外，您不需要安裝 Visual Studio 時才能使用 MSBuild 引擎 & #x 2014年; MSBuild.exe 可執行檔是.NET framework 的一部分，而且您可以從命令提示字元中執行它。 身為開發人員，您就可以建立您自己的 MSBuild 專案檔，使用 MSBuild XML 結構描述來強制執行精密且更細緻控制如何建立與部署您的專案。 這些自訂專案檔案在 Visual Studio 會自動產生的專案檔案完全相同的方式。
+MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/library/5dy88c2e.aspx)，如此一來，在建置程序是完全開啟和透明和。 此外，您不需要安裝 Visual Studio 時才能使用 MSBuild 引擎&#x2014;MSBuild.exe 可執行檔是.NET framework 的一部分，而且您可以從命令提示字元中執行它。 身為開發人員，您就可以建立您自己的 MSBuild 專案檔，使用 MSBuild XML 結構描述來強制執行精密且更細緻控制如何建立與部署您的專案。 這些自訂專案檔案在 Visual Studio 會自動產生的專案檔案完全相同的方式。
 
 > [!NOTE]
 > 您也可以與 Team Build 服務 Team Foundation Server (TFS) 中使用 MSBuild 專案檔。 例如，您可以使用持續整合 (CI) 案例中的專案檔來自動化部署至測試環境，新的程式碼簽入時。 如需詳細資訊，請參閱[用於自動化 Web 部署設定 Team Foundation Server](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)。
@@ -93,7 +93,7 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 [!code-xml[Main](understanding-the-project-file/samples/sample2.xml)]
 
 
-若要擷取屬性值，您可以使用格式 **$(***PropertyName***) * * *。*例如，若要擷取的值**ServerName**屬性，您會輸入：
+若要擷取屬性值，您可以使用格式<strong>$(</strong><em>PropertyName</em><strong>)</strong><em>。</em>例如，若要擷取的值<strong>ServerName</strong>屬性，您會輸入：
 
 
 [!code-powershell[Main](understanding-the-project-file/samples/sample3.ps1)]
@@ -113,7 +113,7 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 > 如需有關引數和參數，您可以使用 MSBuild.exe 的詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
 
-您可以使用相同的屬性語法，以取得環境變數和內建的專案屬性的值。 針對您所定義的許多常用的屬性，您可以使用這些專案檔中包括相關的參數名稱。 例如，若要擷取目前的專案平台 & #x 2014; 例如， **x86**或**AnyCpu**（& s) #x 2014; 可以包含**$(Platform)**中的屬性參考您的專案檔。 如需詳細資訊，請參閱[建置命令和屬性的巨集](https://msdn.microsoft.com/library/c02as0cs.aspx)，[一般 MSBuild 專案屬性](https://msdn.microsoft.com/library/bb629394.aspx)，和[保留的屬性](https://msdn.microsoft.com/library/ms164309.aspx)。
+您可以使用相同的屬性語法，以取得環境變數和內建的專案屬性的值。 針對您所定義的許多常用的屬性，您可以使用這些專案檔中包括相關的參數名稱。 例如，若要擷取目前的專案平台&#x2014;，例如**x86**或**AnyCpu**&#x2014;可以包含**$(Platform)**中的屬性參考您的專案檔。 如需詳細資訊，請參閱[建置命令和屬性的巨集](https://msdn.microsoft.com/library/c02as0cs.aspx)，[一般 MSBuild 專案屬性](https://msdn.microsoft.com/library/bb629394.aspx)，和[保留的屬性](https://msdn.microsoft.com/library/ms164309.aspx)。
 
 屬性通常用於搭配*條件*。 大部分的 MSBuild 項目支援**條件**屬性，可讓您指定的準則的 MSBuild 應評估項目。 例如，請考慮此屬性定義：
 
@@ -121,13 +121,13 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 [!code-xml[Main](understanding-the-project-file/samples/sample5.xml)]
 
 
-當 MSBuild 處理此屬性定義時，它會先檢查以查看是否**$(OutputRoot)**就可使用屬性值。 如果屬性值為空白 & #x 2014; 也就是說，使用者未提供值的這個屬性 & #x 2014年; 條件評估為**true**和屬性值設定為**...\Publish\Out**。如果使用者已經提供值，這個屬性，條件評估為**false**並不會使用靜態屬性值。
+當 MSBuild 處理此屬性定義時，它會先檢查以查看是否**$(OutputRoot)**就可使用屬性值。 如果屬性值為空白&#x2014;換言之，使用者尚未為這個屬性提供值&#x2014;條件評估為**true**和屬性值設定為**...\Publish\Out**。如果使用者已經提供值，這個屬性，條件評估為**false**並不會使用靜態屬性值。
 
 如需您可在指定條件的不同方式的詳細資訊，請參閱[MSBuild 條件](https://msdn.microsoft.com/library/7szfhaft.aspx)。
 
 ### <a name="items-and-item-groups"></a>項目和項目群組
 
-其中一個重要的角色專案檔是定義建置流程的輸入。 一般來說，這些輸入是檔案 & #x 2014年; 程式碼檔案、 組態檔、 指令檔和任何其他您需要處理，或做為複製的檔案組件在建置程序。 在 MSBuild 專案結構描述，以表示這些輸入[項目](https://msdn.microsoft.com/library/ms164283.aspx)項目。 在專案檔中，項目必須在定義內[ItemGroup](https://msdn.microsoft.com/library/646dk05y.aspx)項目。 就像**屬性**項目，您可以命名**項目**元素不過嗎。 不過，您必須指定**Include**屬性識別的檔案或項目所表示的萬用字元。
+其中一個重要的角色專案檔是定義建置流程的輸入。 一般而言，這些輸入都檔&#x2014;程式碼檔案、 組態檔、 指令檔和任何其他您需要處理，或做為複製的檔案在建置程序的一部分。 在 MSBuild 專案結構描述，以表示這些輸入[項目](https://msdn.microsoft.com/library/ms164283.aspx)項目。 在專案檔中，項目必須在定義內[ItemGroup](https://msdn.microsoft.com/library/646dk05y.aspx)項目。 就像**屬性**項目，您可以命名**項目**元素不過嗎。 不過，您必須指定**Include**屬性識別的檔案或項目所表示的萬用字元。
 
 
 [!code-xml[Main](understanding-the-project-file/samples/sample6.xml)]
@@ -139,7 +139,7 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 [!code-xml[Main](understanding-the-project-file/samples/sample7.xml)]
 
 
-如此一來，專案檔會指示 MSBuild 建構來處理相同的方法 & #x 2014; 需要的檔案清單**參考**清單含有組件必須先準備就緒，成功的組建， **編譯**清單包含必須編譯的程式碼檔案和**內容**清單包含必須複製的資源不變。 我們會探討如何建置程序參考，但在本主題稍後會使用這些項目。
+如此一來，專案檔會指示 MSBuild 建構需要相同的方式處理的檔案清單&#x2014;**參考**清單含有組件必須先準備就緒，成功的組建， **編譯**清單包含必須編譯的程式碼檔案和**內容**清單包含必須複製的資源不變。 我們會探討如何建置程序參考，但在本主題稍後會使用這些項目。
 
 也可以包含項目[ItemMetadata](https://msdn.microsoft.com/library/ms164284.aspx)子項目。 這些是使用者定義的索引鍵-值組，基本上表示該項目特有的屬性。 例如，許多**編譯**專案檔中的項目包含**DependentUpon**子項目。
 
@@ -195,11 +195,11 @@ MSBuild 結構描述中[工作](https://msdn.microsoft.com/library/77f2hx1s.aspx
 
 一般而言，當您建立有用的工作和目標，您將需要的屬性和項目已在其他位置中定義的專案檔，請參閱：
 
-- 若要使用的屬性值，輸入**$(***PropertyName***)**，其中*PropertyName*名稱**屬性**項目或名稱參數。
-- 若要使用的項目，請輸入**@(***ItemName***)**，其中*ItemName*名稱**項目**項目。
+- 若要使用的屬性值，輸入<strong>$(</strong><em>PropertyName</em><strong>)</strong>，其中<em>PropertyName</em>名稱<strong>屬性</strong>項目或參數的名稱。
+- 若要使用的項目，請輸入<strong>@(</strong><em>ItemName</em><strong>)</strong>，其中<em>ItemName</em>名稱<strong>項目</strong>項目。
 
 > [!NOTE]
-> 請記住您建立多個項目具有相同名稱時，是否您要建置清單。 相反地，如果您建立多個屬性具有相同名稱時，您提供的最後一個屬性值將會覆寫任何先前的屬性相同的名稱 & #x 2014年; 屬性只能包含單一值。
+> 請記住您建立多個項目具有相同名稱時，是否您要建置清單。 相反地，如果您建立多個屬性具有相同名稱時，您提供的最後一個屬性值將會覆寫任何先前的屬性具有相同名稱&#x2014;屬性只能包含單一值。
 
 
 例如，在*Publish.proj*檔案範例方案中，看看**BuildProjects**目標。
@@ -227,7 +227,7 @@ MSBuild 結構描述中[工作](https://msdn.microsoft.com/library/77f2hx1s.aspx
 
 ## <a name="splitting-project-files-to-support-multiple-environments"></a>分割的專案檔，以支援多個環境
 
-假設您想要能夠將方案部署到多個環境，例如測試伺服器、 暫存的平台和實際執行環境。 組態可能因本質上這些環境 & #x 2014年; 不只根據伺服器名稱、 連接字串等等，但也可能根據認證、 安全性設定，以及許多其他因素。 如果您需要定期執行這項操作，並不真的有利編輯專案檔中的多個屬性，每次切換的目標環境。 也不是理想的解決方案需要的屬性值，以提供給建置處理序無止盡的清單。
+假設您想要能夠將方案部署到多個環境，例如測試伺服器、 暫存的平台和實際執行環境。 這些環境之間可能會大幅不同組態&#x2014;不只根據伺服器名稱、 連接字串等等，但也可能根據認證、 安全性設定，以及許多其他因素。 如果您需要定期執行這項操作，並不真的有利編輯專案檔中的多個屬性，每次切換的目標環境。 也不是理想的解決方案需要的屬性值，以提供給建置處理序無止盡的清單。
 
 所幸還有另一個方法。 MSBuild 可讓您跨多個專案檔案分割您的組建組態。 若要查看其運作方式，在範例方案，請注意，有兩個自訂專案檔案：
 
@@ -266,6 +266,6 @@ MSBuild 結構描述中[工作](https://msdn.microsoft.com/library/77f2hx1s.aspx
 
 專案檔和 WPP 的更深入簡介，請參閱[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://amzn.com/0735645248) Sayed Ibrahim Hashimi 和 William Bartholomew，ISBN: 978-0-7356-4524-0。
 
->[!div class="step-by-step"]
-[上一頁](setting-up-the-contact-manager-solution.md)
-[下一頁](understanding-the-build-process.md)
+> [!div class="step-by-step"]
+> [上一頁](setting-up-the-contact-manager-solution.md)
+> [下一頁](understanding-the-build-process.md)

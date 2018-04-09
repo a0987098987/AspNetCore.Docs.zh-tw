@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
-title: "驗證使用者使用表單驗證 (C#) |Microsoft 文件"
+title: 驗證使用者使用表單驗證 (C#) |Microsoft 文件
 author: microsoft
-description: "了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理太..."
+description: 了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理太...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 17bcf02e1351587d64b72ee2b40393e0f748f23e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e1def84bbf48847339e89b239b026d053640b935
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-c"></a>驗證使用者使用表單驗證 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理工具來建立及管理使用者和角色。 您也會了解如何設定使用者帳戶和角色的資訊儲存在何處。
 
@@ -152,5 +152,5 @@ ASP.NET SQL Server 安裝精靈可讓您選取網路上的 SQL Server 資料庫�
 
 在本教學課程中，您學會如何建立 ASP.NET MVC 應用程式時，使用表單驗證。 首先，您學到如何利用網站管理工具建立新的使用者和角色。 接下來，您學會如何使用 [Authorize] 屬性，以避免未經授權的使用者叫用控制器的動作。 最後，您學會如何設定您的 MVC 應用程式，將使用者和角色資訊儲存在實際執行的資料庫。
 
->[!div class="step-by-step"]
-[下一步](authenticating-users-with-windows-authentication-cs.md)
+> [!div class="step-by-step"]
+> [下一步](authenticating-users-with-windows-authentication-cs.md)

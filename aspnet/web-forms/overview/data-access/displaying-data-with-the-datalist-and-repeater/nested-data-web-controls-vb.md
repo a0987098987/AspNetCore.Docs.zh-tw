@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
-title: "巢狀的資料 Web 控制項 (VB) |Microsoft 文件"
+title: 巢狀的資料 Web 控制項 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在此教學課程中我們將探討如何使用中繼器在另一個中繼器巢狀。 這些範例將說明如何填入內部中繼器這兩個 d..."
+description: 在此教學課程中我們將探討如何使用中繼器在另一個中繼器巢狀。 這些範例將說明如何填入內部中繼器這兩個 d...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 944f208d6fe4f9fde13b530fb236ecc69ff5e9cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d8bb5eae2003273fa8d8a06cc4adaa959378f1e2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nested-data-web-controls-vb"></a>巢狀的資料 Web 控制項 (VB)
 ====================
@@ -93,14 +93,14 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="accessing-the-data-declaratively-with-an-objectdatasource-control-and-theitemdataboundevent-handler"></a>存取以宣告方式使用 ObjectDataSource 控制項的資料和`ItemDataBound`事件處理常式
 
-因為我們已使用廣泛地在此教學課程系列最合理的選擇，以存取資料，如這個範例是堅持使用 ObjectDataSource ObjectDataSource。 `ProductsBLL`類別具有`GetProductsByCategoryID(categoryID)`方法會傳回屬於指定這些產品的相關資訊 *`categoryID`* 。 因此，我們可以加入至 ObjectDataSource`CategoryList`中繼器的`ItemTemplate`並將它設定為從這個類別的方法存取它的資料。
+因為我們已使用廣泛地在此教學課程系列最合理的選擇，以存取資料，如這個範例是堅持使用 ObjectDataSource ObjectDataSource。 `ProductsBLL`類別具有`GetProductsByCategoryID(categoryID)`方法會傳回屬於指定這些產品的相關資訊*`categoryID`*。 因此，我們可以加入至 ObjectDataSource`CategoryList`中繼器的`ItemTemplate`並將它設定為從這個類別的方法存取它的資料。
 
 不幸的是，中繼器不允許其範本，因此我們必須以手動方式加入此 ObjectDataSource 控制項的宣告式語法，透過 [設計] 檢視進行編輯。 下列語法顯示`CategoryList`中繼器 s`ItemTemplate`加入此新 ObjectDataSource 之後 (`ProductsByCategoryDataSource`):
 
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample3.aspx)]
 
-我們使用 ObjectDataSource 方法時要設定`ProductsByCategoryList`中繼器 s`DataSourceID`屬性`ID`的 ObjectDataSource (`ProductsByCategoryDataSource`)。 此外，請注意，我們 ObjectDataSource 具有`<asp:Parameter>`項目，指定 *`categoryID`* 值，會傳遞至`GetProductsByCategoryID(categoryID)`方法。 但我們該如何指定這個值嗎？ 在理想情況下，我們 d 可以只設定`DefaultValue`屬性`<asp:Parameter>`使用資料繫結語法項目如下所示：
+我們使用 ObjectDataSource 方法時要設定`ProductsByCategoryList`中繼器 s`DataSourceID`屬性`ID`的 ObjectDataSource (`ProductsByCategoryDataSource`)。 此外，請注意，我們 ObjectDataSource 具有`<asp:Parameter>`項目，指定*`categoryID`*值，會傳遞至`GetProductsByCategoryID(categoryID)`方法。 但我們該如何指定這個值嗎？ 在理想情況下，我們 d 可以只設定`DefaultValue`屬性`<asp:Parameter>`使用資料繫結語法項目如下所示：
 
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample4.aspx)]
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/10/2017
 
 中繼器 s`DataSource`屬性以表示其資料來自於使用資料繫結語法`GetProductsInCategory(categoryID)`方法。 因為`Eval("CategoryID")`傳回值的型別`Object`，我們將物件轉換成`Integer`傳遞到前`GetProductsInCategory(categoryID)`方法。 請注意，`CategoryID`存取透過資料繫結語法如下`CategoryID`中*外部*中繼器 (`CategoryList`)，一個 s 繫結中的記錄至`Categories`資料表。 因此，我們知道`CategoryID`不是資料庫`NULL`值，這就是為什麼我們可以盲目地轉型`Eval`方法，而不檢查是否我們重新處理`DBNull`。
 
-使用此方法時，我們需要建立`GetProductsInCategory(categoryID)`方法並擷取適當的產品提供提供一組 *`categoryID`* 。 可以執行此作業，只傳回`ProductsDataTable`傳回`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 可讓建立`GetProductsInCategory(categoryID)`方法的程式碼後置類別中我們`NestedControls.aspx`頁面。 請使用下列程式碼：
+使用此方法時，我們需要建立`GetProductsInCategory(categoryID)`方法並擷取適當的產品提供提供一組*`categoryID`*。 可以執行此作業，只傳回`ProductsDataTable`傳回`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 可讓建立`GetProductsInCategory(categoryID)`方法的程式碼後置類別中我們`NestedControls.aspx`頁面。 請使用下列程式碼：
 
 
 [!code-vb[Main](nested-data-web-controls-vb/samples/sample7.vb)]
@@ -179,11 +179,11 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Zack Jones 和 Liz Shulok。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](showing-multiple-records-per-row-with-the-datalist-control-vb.md)
+> [!div class="step-by-step"]
+> [上一步](showing-multiple-records-per-row-with-the-datalist-control-vb.md)

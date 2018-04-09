@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/caching
-title: "快取 |Microsoft 文件"
+title: 快取 |Microsoft 文件
 author: microsoft
-description: "了解快取，請務必在執行良好的 ASP.NET 應用程式。 ASP.NET 1.x 提供三種不同的選項，為快取。輸出快取..."
+description: 了解快取，請務必在執行良好的 ASP.NET 應用程式。 ASP.NET 1.x 提供三種不同的選項，為快取。輸出快取...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 9b229de60e09b94189f62a6bb6fa61a9973d637b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 90faaae75cc85585efa05e6e50eabe8c990d076e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching"></a>快取
 ====================
@@ -59,7 +59,7 @@ ASP.NET 1.x 開發人員哭的自訂快取相依性。 在 ASP.NET 中 1.x Cache
 
 請注意，做為快取索引鍵的項目索引鍵必須新增到陣列中的快取索引鍵的值相同。
 
-## <a name="polling-based-sql-cache-dependenciesalso-called-table-based-dependencies"></a>以輪詢為基礎的 SQL 快取相依性*（也稱為資料表為基礎的相依性）*
+## <a name="polling-based-sql-cache-dependenciesemalso-called-table-based-dependenciesem"></a>以輪詢為基礎的 SQL 快取相依性<em>（也稱為資料表為基礎的相依性）</em>
 
 SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 輪詢為基礎的模型資料表中的資料變更時觸發的資料庫資料表上使用觸發程序。 觸發更新**changeId** ASP.NET 會定期檢查通知資料表中的欄位。 如果**changeId**欄位已更新，ASP.NET 知道資料已變更，並不會使失效快取的資料。
 
@@ -144,7 +144,7 @@ SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 �
 
 [!code-csharp[Main](caching/samples/sample11.cs)]
 
-更多資訊： [https://msdn.microsoft.com/library/t9x04ed2.aspx](https://msdn.microsoft.com/library/t9x04ed2.aspx)
+詳細資訊： [https://msdn.microsoft.com/library/t9x04ed2.aspx](https://msdn.microsoft.com/library/t9x04ed2.aspx)
 
 ## <a name="query-based-sql-cache-dependencies-sql-server-2005-only"></a>以查詢為基礎的 SQL 快取相依性 (SQL Server 2005)
 
@@ -170,7 +170,7 @@ SQL Server 7 及 2000年用於 SQL 快取相依性輪詢為基礎的模型。 �
 
 [!code-csharp[Main](caching/samples/sample14.cs)]
 
-更多資訊： [https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp](https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp)
+詳細資訊： [https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp](https://msdn.microsoft.com/library/default.asp?url=/library/enus/dnvs05/html/querynotification.asp)
 
 ## <a name="post-cache-substitution"></a>快取後替換
 
@@ -237,12 +237,13 @@ ControlCachePolicy 執行個體可以成功操作只會控制生命週期的 Ini
 
 下列屬性可供&lt;outputCache&gt;項目。
 
-| **屬性** | **描述** |
-| --- | --- |
-| **enableOutputCache** | 選擇性**布林**屬性。 啟用/停用頁面輸出快取。 如果停用，不會快取不論以程式設計方式或宣告式設定。 預設值是**true**。 |
-| **enableFragmentCache** | 選擇性**布林**屬性。 啟用/停用應用程式片段快取。 如果停用，頁面會快取，不論[@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx)指示詞或快取使用的設定檔。 包含快取控制標頭，指出，上游 proxy 伺服器，以及瀏覽器用戶端不應嘗試快取頁面輸出。 預設值是**false**。 |
-| **sendCacheControlHeader** | 選擇性**布林**屬性。 取得或設定值，指出是否**快取的控制項： 私用**標頭傳送預設輸出快取模組。 預設值是**false**。 |
-| **omitVaryStar** | 選擇性**布林**屬性。 啟用/停用 Http 傳送 「**Vary: \*** 「 回應中的標頭。 預設值為 false，使用"**Vary: \*** "標頭傳送的輸出快取頁面。 Vary 標頭傳送時，它可讓您不同快取的版本為基礎的 Vary 標頭中指定的內容。 例如， *Vary： 使用者-代理程式*會儲存不同版本的頁面，根據發出要求的使用者代理程式。 預設值是**false**。 |
+
+|       <strong>屬性</strong>        |                                                                                                                                                                                                                                                       <strong>描述</strong>                                                                                                                                                                                                                                                       |
+|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   <strong>enableOutputCache</strong>    |                                                                                                                                                          選擇性<strong>布林</strong>屬性。 啟用/停用頁面輸出快取。 如果停用，不會快取不論以程式設計方式或宣告式設定。 預設值是<strong>true</strong>。                                                                                                                                                           |
+|  <strong>enableFragmentCache</strong>   |                                                選擇性<strong>布林</strong>屬性。 啟用/停用應用程式片段快取。 如果停用，頁面會快取，不論[@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx)指示詞或快取使用的設定檔。 包含快取控制標頭，指出，上游 proxy 伺服器，以及瀏覽器用戶端不應嘗試快取頁面輸出。 預設值是<strong>false</strong>。                                                 |
+| <strong>sendCacheControlHeader</strong> |                                                                                                                                                      選擇性<strong>布林</strong>屬性。 取得或設定值，指出是否<strong>快取的控制項： 私用</strong>標頭傳送預設輸出快取模組。 預設值是<strong>false</strong>。                                                                                                                                                      |
+|      <strong>omitVaryStar</strong>      | 選擇性<strong>布林</strong>屬性。 啟用/停用 Http 傳送 「<strong>Vary: \<n g ><em>「 回應中的標頭。預設值為 false，使用"</em>* Vary: \* <strong>"標頭傳送的輸出快取頁面。Vary 標頭傳送時，它可讓您不同快取的版本為基礎的 Vary 標頭中指定的內容。例如， <em>Vary： 使用者-代理程式</em>會儲存不同版本的頁面，根據發出要求的使用者代理程式。預設值是 * * false</strong>。 |
 
 ### <a name="the-ltoutputcachesettingsgt-element"></a>&lt;OutputCacheSettings&gt;項目
 

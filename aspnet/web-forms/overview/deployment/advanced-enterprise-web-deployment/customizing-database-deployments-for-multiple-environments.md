@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
-title: "自訂資料庫部署多個環境 |Microsoft 文件"
+title: 自訂資料庫部署多個環境 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何修改資料庫至特定目標環境的屬性做為部署程序的一部分。 注意： 本主題假設 th..."
+description: 本主題描述如何修改資料庫至特定目標環境的屬性做為部署程序的一部分。 注意： 本主題假設 th...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: f3ca344c2466d9d538f55cd8ff0a5bf5b7bac808
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 06f22bc9a3068ee5621df62ee5ed1bea06d7e9e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>自訂資料庫部署多個環境
 ====================
@@ -35,9 +35,9 @@ ms.lasthandoff: 03/15/2018
 > 在 Visual Studio 2010 資料庫專案中，部署設定都包含在部署組態 (.sqldeployment) 檔案。 本主題將說明如何建立環境特定部署組態檔案，並指定您的想来用來當作 VSDBCMD 參數。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -146,6 +146,6 @@ MSDN 上的這些文章提供資料庫部署更一般的指導方針：
 - [建置和部署資料庫至隔離的開發環境](https://msdn.microsoft.com/library/dd193409.aspx)
 - [建置並將資料庫部署到預備環境或生產環境](https://msdn.microsoft.com/library/dd193413.aspx)
 
->[!div class="step-by-step"]
-[上一頁](performing-a-what-if-deployment.md)
-[下一頁](deploying-database-role-memberships-to-test-environments.md)
+> [!div class="step-by-step"]
+> [上一頁](performing-a-what-if-deployment.md)
+> [下一頁](deploying-database-role-memberships-to-test-environments.md)

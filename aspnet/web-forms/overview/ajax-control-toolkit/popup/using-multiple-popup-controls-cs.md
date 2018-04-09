@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
-title: "使用多個快顯視窗控制項 (C#) |Microsoft 文件"
+title: 使用多個快顯視窗控制項 (C#) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 此外，也可以使用 m..."
+description: AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 此外，也可以使用 m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d8c9742bb39b655115cb1862ff6e867989e63665
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7acd1b53e1b3e3e0d09d248b68941b166da3e81e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-multiple-popup-controls-c"></a>使用多個快顯視窗控制項 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 它也可用於在單一頁面上的多個 popup 控制項。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 它也可用於在單一頁面上的多個 popup 控制項。
 
@@ -56,5 +56,5 @@ AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何�
 
 當使用者按一下的文字方塊中，就會出現日曆 ([按一下以檢視完整大小的影像](using-multiple-popup-controls-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+> [!div class="step-by-step"]
+> [下一步](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)

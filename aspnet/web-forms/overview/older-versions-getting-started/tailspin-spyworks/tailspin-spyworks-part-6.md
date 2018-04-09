@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
-title: "第 6 單元： ASP.NET 成員資格 |Microsoft 文件"
+title: 第 6 單元： ASP.NET 成員資格 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 6 單元新增 ASP.NET 成員資格。"
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 6 單元新增 ASP.NET 成員資格。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: efb0e2bed1172f42c7f1539f016fba305c47e3eb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 83e9bc780ea8face3e0f55fdf8c00e13b60f80a7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-6-aspnet-membership"></a>第 6 單元： ASP.NET 成員資格
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 6 單元新增 ASP.NET 成員資格。
 
 
-## <a id="_Toc260221672"></a>使用 ASP.NET 成員資格
+## <a id="_Toc260221672"></a>  使用 ASP.NET 成員資格
 
 ![](tailspin-spyworks-part-6/_static/image1.png)
 
@@ -112,6 +112,6 @@ SubmitOrder 將會：
 
 執行應用程式現在將會允許我們購物程序從開始到完成的測試。
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-5.md)
-[下一頁](tailspin-spyworks-part-7.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-5.md)
+> [下一頁](tailspin-spyworks-part-7.md)

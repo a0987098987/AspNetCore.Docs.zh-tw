@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
-title: "資料庫修改 (VB) 在交易內文繞圖 |Microsoft 文件"
+title: 資料庫修改 (VB) 在交易內文繞圖 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程是四個查看更新、 刪除和插入的資料批次中的第一個。 在此教學課程中我們了解資料庫交易如何允許..."
+description: 本教學課程是四個查看更新、 刪除和插入的資料批次中的第一個。 在此教學課程中我們了解資料庫交易如何允許...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f054445091edbc27263127fb3b7b851776ec617f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2005561755b22f5811d011bd3146853f6cd184af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="wrapping-database-modifications-within-a-transaction-vb"></a>包裝資料庫修改 (VB) 在交易內
 ====================
@@ -117,7 +117,7 @@ SQL 陳述式，用來建立、 認可和回復時撰寫 SQL 指令碼或建立�
 
 ![加入名為 TransactionSupport 的資料夾和名為 ProductsTableAdapter.TransactionSupport.vb 類別檔案](wrapping-database-modifications-within-a-transaction-vb/_static/image4.gif)
 
-**圖 4**： 新增名為資料夾`TransactionSupport`和名為的類別檔案`ProductsTableAdapter.TransactionSupport.vb`
+**圖 4**： 新增名為資料夾`TransactionSupport`和名為的類別檔案 `ProductsTableAdapter.TransactionSupport.vb`
 
 
 輸入下列程式碼`ProductsTableAdapter.TransactionSupport.vb`檔案：
@@ -127,7 +127,7 @@ SQL 陳述式，用來建立、 認可和回復時撰寫 SQL 指令碼或建立�
 
 `Partial`類別宣告中的關鍵字指示編譯器中新增的成員會加入至`ProductsTableAdapter`類別`NorthwindTableAdapters`命名空間。 請注意`Imports System.Data.SqlClient`在檔案最上方的陳述式。 由於 TableAdapter 已設定為使用 SqlClient 提供者，在內部使用[ `SqlDataAdapter` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqldataadapter.aspx)其命令發出至資料庫的物件。 因此，我們需要使用`SqlTransaction`類別來開始交易，然後加以認可或回復它。 如果您使用 Microsoft SQL Server 以外的資料存放區，您必須使用適當的提供者。
 
-這些方法提供啟動，復原所需的建置組塊，並認可交易。 它們就會標示`Public`，好讓他們能夠從內使用`ProductsTableAdapter`、 從另一個類別中 DAL 或從另一層的架構，例如 BLL 中。 `BeginTransaction`開啟內部 tableadapter `SqlConnection` （如有需要），開始的交易，並將其指派給`Transaction`屬性，並將交易附加至內部`SqlDataAdapter`s`SqlCommand`物件。 `CommitTransaction`和`RollbackTransaction`呼叫`Transaction`物件 s`Commit`和`Rollback`方法，分別之前關閉內部`Connection`物件。
+這些方法提供啟動，復原所需的建置組塊，並認可交易。 它們就會標示`Public`，好讓他們能夠從內使用`ProductsTableAdapter`、 從另一個類別中 DAL 或從另一層的架構，例如 BLL 中。 `BeginTransaction` 開啟內部 tableadapter `SqlConnection` （如有需要），開始的交易，並將其指派給`Transaction`屬性，並將交易附加至內部`SqlDataAdapter`s`SqlCommand`物件。 `CommitTransaction` 和`RollbackTransaction`呼叫`Transaction`物件 s`Commit`和`Rollback`方法，分別之前關閉內部`Connection`物件。
 
 ## <a name="step-3-adding-methods-to-update-and-delete-data-under-the-umbrella-of-a-transaction"></a>步驟 3： 加入方法來更新及刪除起交易資料
 
@@ -247,18 +247,18 @@ SQL 陳述式，用來建立、 認可和回復時撰寫 SQL 指令碼或建立�
 
 - [維護資料庫與交易的一致性](http://aspnet.4guysfromrolla.com/articles/072705-1.aspx)
 - [管理 SQL Server 中的交易預存程序](http://www.4guysfromrolla.com/webtech/080305-1.shtml)
-- [交易更容易：`System.Transactions`](https://blogs.msdn.com/florinlazar/archive/2004/07/23/192239.aspx)
+- [交易更容易： `System.Transactions`](https://blogs.msdn.com/florinlazar/archive/2004/07/23/192239.aspx)
 - [TransactionScope 和 Dataadapter](http://andyclymer.blogspot.com/2007/01/transactionscope-and-dataadapters.html)
 - [在.NET 中使用 Oracle 資料庫交易](http://www.oracle.com/technology/pub/articles/price_dbtrans_dotnet.html)
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Dave Gardner、 Hilton Giesenow 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](batch-inserting-cs.md)
-[下一頁](batch-updating-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](batch-inserting-cs.md)
+> [下一頁](batch-updating-vb.md)

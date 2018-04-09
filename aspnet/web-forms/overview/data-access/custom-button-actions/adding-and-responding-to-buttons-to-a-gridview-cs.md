@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs
-title: "加入和按鈕的 GridView (C#) 來回應 |Microsoft 文件"
+title: 加入和按鈕的 GridView (C#) 來回應 |Microsoft 文件
 author: rick-anderson
-description: "在此教學課程中我們將探討如何將自訂按鈕，新增至範本和 GridView 或 DetailsView 控制項的欄位。 特別是，我們會 bui..."
+description: 在此教學課程中我們將探討如何將自訂按鈕，新增至範本和 GridView 或 DetailsView 控制項的欄位。 特別是，我們會 bui...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4f2a31f406bb1ed98e3620e216b4ad14fe59b32f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 90648e10d5d058ea2e4aa5b3d8c4ed7448ea7166
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-c"></a>加入和回應的 GridView (C#) 的按鈕
 ====================
@@ -127,7 +127,7 @@ ms.lasthandoff: 01/24/2018
 
 [![表示讓 supplierID 參數應該都來自供應商 FormView 控制項](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image24.png)
 
-**圖 10**： 表示 *`supplierID`* 參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image26.png))
+**圖 10**： 表示*`supplierID`*參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image26.png))
 
 
 完成 ObjectDataSource 精靈之後，GridView 會包含 BoundField 或 CheckBoxField 每個產品的資料欄位。 讓我們修剪這顯示只`ProductName`和`UnitPrice`連同 BoundFields `Discontinued` CheckBoxField; 此外，我們來格式化`UnitPrice`BoundField 使其文字會格式化為貨幣。 您的 GridView 和`SuppliersProductsDataSource`ObjectDataSource 的宣告式標記看起來應該類似下列標記：
@@ -154,7 +154,7 @@ ms.lasthandoff: 01/24/2018
 **圖 12**： 建立 DAL 方法使用特定 SQL 陳述式 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image32.png))
 
 
-接下來，精靈會提示我們來建立查詢的類型。 因為`DiscontinueAllProductsForSupplier(supplierID)`方法將需要更新`Products`資料庫資料表時，設定`Discontinued`欄位設為 1，指定所提供的所有產品 *`supplierID`* ，我們要建立查詢，以更新資料。
+接下來，精靈會提示我們來建立查詢的類型。 因為`DiscontinueAllProductsForSupplier(supplierID)`方法將需要更新`Products`資料庫資料表時，設定`Discontinued`欄位設為 1，指定所提供的所有產品*`supplierID`*，我們要建立查詢，以更新資料。
 
 
 [![選擇 更新查詢類型](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image34.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image33.png)
@@ -178,7 +178,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](adding-and-responding-to-buttons-to-a-gridview-cs/samples/sample5.cs)]
 
-這個方法只會呼叫向下`DiscontinueAllProductsForSupplier(supplierID)`中 DAL 提供傳遞方法 *`supplierID`* 參數值。 如果沒有任何商務規則，只允許在某些情況下停止的供應商的產品，這些規則應該在這裡，在實作 BLL。
+這個方法只會呼叫向下`DiscontinueAllProductsForSupplier(supplierID)`中 DAL 提供傳遞方法*`supplierID`*參數值。 如果沒有任何商務規則，只允許在某些情況下停止的供應商的產品，這些規則應該在這裡，在實作 BLL。
 
 > [!NOTE]
 > 不同於`UpdateProduct`中多載`ProductsBLL`類別`DiscontinueAllProductsForSupplier(supplierID)`方法簽章不包含`DataObjectMethodAttribute`屬性 (`<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, Boolean)>`)。 如此即無需`DiscontinueAllProductsForSupplier(supplierID)`從 ObjectDataSource 設定資料來源精靈的 [更新] 索引標籤中的下拉式清單的方法。我已省略此屬性，因為我們將會呼叫`DiscontinueAllProductsForSupplier(supplierID)`直接從我們的 ASP.NET 網頁中的事件處理常式方法。
@@ -198,7 +198,7 @@ ms.lasthandoff: 01/24/2018
 
 因為`ItemCommand`引發不論按一下按鈕時，事件處理常式我們需要一個方法來判斷是否按下 [停止所有的產品] 按鈕，或如果是某些其他按鈕。 若要達成此目的，我們可以設定按鈕 Web 控制項的`CommandName`屬性設為識別值。 當按一下按鈕時，這`CommandName`值會傳遞至`ItemCommand`事件處理常式，讓我們能夠判斷是否 button 已按下 [停止所有的產品] 按鈕。 設定 [中斷所有產品] 按鈕的`CommandName`DiscontinueProducts 的屬性。
 
-最後，我們使用用戶端確認對話方塊以確保使用者確實想要停止選取的供應商產品。 如我們所見中[新增用戶端確認時刪除](../editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs.md)教學課程，即可達成這位元的 JavaScript。 特別是，將按鈕 Web 控制項的 OnClientClick 屬性設定為`return confirm('This will mark _all_ of this supplier\'s products as discontinued. Are you certain you want to do this?');`
+最後，我們使用用戶端確認對話方塊以確保使用者確實想要停止選取的供應商產品。 如我們所見中[新增用戶端確認時刪除](../editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs.md)教學課程，即可達成這位元的 JavaScript。 特別是，將按鈕 Web 控制項的 OnClientClick 屬性設定為 `return confirm('This will mark _all_ of this supplier\'s products as discontinued. Are you certain you want to do this?');`
 
 進行這些變更之後，在 FormView 的宣告式語法看起來應該如下所示：
 
@@ -304,7 +304,7 @@ GridView （和 DetailsView） 是兩組成欄位的集合。 除了 BoundFields
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[下一步](adding-and-responding-to-buttons-to-a-gridview-vb.md)
+> [!div class="step-by-step"]
+> [下一步](adding-and-responding-to-buttons-to-a-gridview-vb.md)

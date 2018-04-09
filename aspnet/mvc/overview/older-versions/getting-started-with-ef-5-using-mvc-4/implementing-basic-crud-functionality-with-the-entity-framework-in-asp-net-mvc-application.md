@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
-title: "在 ASP.NET MVC 應用程式 (2 / 10) 中實作與 Entity Framework 的基本 CRUD 功能 |Microsoft 文件"
+title: 在 ASP.NET MVC 應用程式 (2 / 10) 中實作與 Entity Framework 的基本 CRUD 功能 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio..."
+description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: d031cd760fb578d29626933eed39fe987ef796d7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: acec5c9641b1de230956478c4396d1d541fcb0eb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-basic-crud-functionality-with-the-entity-framework-in-aspnet-mvc-application-2-of-10"></a>在 ASP.NET MVC 應用程式 (2 / 10) 中實作與 Entity Framework 的基本 CRUD 功能
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [下載完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 教學課程系列的相關資訊，請參閱[系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
 > 
 > > [!NOTE] 
 > > 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 在上一個教學課程中，您建立 MVC 應用程式儲存和使用 Entity Framework 和 SQL Server LocalDB 顯示資料。 在本教學課程，您將檢閱並自訂 CRUD （建立、 讀取、 更新、 刪除） MVC scaffolding 自動為您建立控制器和檢視中的程式碼。
 
 > [!NOTE]
-> 它是常見的作法，若要建立您的控制器和資料存取層之間的抽象層實作儲存機制模式。 為了簡化這些教學課程，您將不會實作儲存機制之前在這一系列之後的教學課程。
+> 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了簡化這些教學課程，您將不會實作儲存機制之前在這一系列之後的教學課程。
 
 
 在本教學課程中，您將建立下列網頁：
@@ -64,8 +64,8 @@ ms.lasthandoff: 01/24/2018
 
     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample3.cshtml?highlight=4-22)]
 
-    此程式碼執行迴圈中的實體`Enrollments`導覽屬性。 每個`Enrollment`實體中的屬性，它會顯示課程標題以及等級。 正在從擷取課程標題`Course`實體中所儲存`Course`導覽屬性`Enrollments`實體。 這項資料是從擷取的所有資料庫會自動在需要時。 （換句話說，您正在使用延遲載入此處。 您未指定*積極式載入*如`Courses`導覽屬性，使您嘗試存取該屬性的第一次，查詢會傳送到資料庫擷取資料。 閱讀更多有關消極式載入和中的積極式載入[讀取相關資料](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)教學課程稍後在本系列。)
-3. 執行選取的頁面**學生** 索引標籤，然後按一下**詳細資料**Alexander Carson 的連結。 您的選取學生看到 courses 以及等級清單：
+    此程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 每個`Enrollment`實體中的屬性，它會顯示課程標題以及等級。 正在從擷取課程標題`Course`實體中所儲存`Course`導覽屬性`Enrollments`實體。 這項資料是從擷取的所有資料庫會自動在需要時。 （換句話說，您正在使用延遲載入此處。 您未指定*積極式載入*如`Courses`導覽屬性，使您嘗試存取該屬性的第一次，查詢會傳送到資料庫擷取資料。 閱讀更多有關消極式載入和中的積極式載入[讀取相關資料](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)教學課程稍後在本系列。)
+3. 執行選取的頁面**學生** 索引標籤，然後按一下**詳細資料**Alexander Carson 的連結。 您會看到選取學生的課程及成績清單：
 
     ![Student_Details_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image5.png)
 
@@ -133,17 +133,17 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="entity-states-and-the-attach-and-savechanges-methods"></a>實體狀態的附加和 SaveChanges 方法
 
-是否在記憶體中的實體會在資料庫中，其對應的資料列和同步，這項資訊會決定當您呼叫時，會發生什麼情況，會持續追蹤的資料庫內容`SaveChanges`方法。 例如，當您傳遞至新的實體[新增](https://msdn.microsoft.com/library/system.data.entity.dbset.add(v=vs.103).aspx)方法中，實體的狀態設為`Added`。 然後當您呼叫[SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx)方法，將資料庫內容發出 SQL`INSERT`命令。
+資料庫內容會追蹤實體在記憶體中是否與其在資料庫中相對應的資料列保持同步，並且此項資訊會決定當您呼叫 `SaveChanges` 方法時會發生什麼事情。 例如，當您傳遞至新的實體[新增](https://msdn.microsoft.com/library/system.data.entity.dbset.add(v=vs.103).aspx)方法中，實體的狀態設為`Added`。 然後當您呼叫[SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx)方法，將資料庫內容發出 SQL`INSERT`命令。
 
 實體可能是其中一種[遵循狀態](https://msdn.microsoft.com/library/system.data.entitystate.aspx):
 
 - `Added`. 在資料庫中尚未存在的實體。 `SaveChanges`方法必須發出`INSERT`陳述式。
-- `Unchanged`. 與這個實體所完成，不需要`SaveChanges`方法。 當您從資料庫讀取實體時，實體開始於此狀態。
-- `Modified`. 修改部分或所有實體的屬性值。 `SaveChanges`方法必須發出`UPDATE`陳述式。
-- `Deleted`. 實體已被標示為刪除。 `SaveChanges`方法必須發出`DELETE`陳述式。
-- `Detached`. 不追蹤實體的資料庫內容。
+- `Unchanged`. `SaveChanges` 方法針對這個實體不需要進行任何動作。 當您從資料庫讀取一個實體時，實體便會以此狀態開始。
+- `Modified`. 實體中一部分或全部的屬性值已經過修改。 `SaveChanges`方法必須發出`UPDATE`陳述式。
+- `Deleted`. 實體已遭標示刪除。 `SaveChanges`方法必須發出`DELETE`陳述式。
+- `Detached`. 實體未獲得資料庫內容追蹤。
 
-在桌面應用程式，會通常是自動設定的狀態變更。 在桌面應用程式的類型中，您可以閱讀實體，並變更它的某些屬性值。 這會導致其實體狀態，以自動變更為`Modified`。 然後當您呼叫`SaveChanges`，Entity Framework 會產生 SQL`UPDATE`陳述式可更新只針對您所變更的實際屬性。
+在桌面應用程式中，狀態變更通常會自動進行設定。 在桌面應用程式的類型中，您可以閱讀實體，並變更它的某些屬性值。 這會使得其實體狀態自動變更為 `Modified`。 然後當您呼叫`SaveChanges`，Entity Framework 會產生 SQL`UPDATE`陳述式可更新只針對您所變更的實際屬性。
 
 中斷連接的 web 應用程式的本質，不允許此連續順序。 [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx)讀取呈現頁面之後，會處置實體。 當`HttpPost``Edit`呼叫動作方法，建立新的要求，而且您必須的新執行個體[DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=VS.103).aspx)，因此您必須手動將實體狀態設定為`Modified.`然後當您呼叫`SaveChanges`，Entity Framework 會更新資料庫資料列的所有資料行，因為內容中有無從得知您已變更的屬性。
 
@@ -155,15 +155,15 @@ ms.lasthandoff: 01/24/2018
 
 ![Student_Edit_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image10.png)
 
-變更部分的資料和按一下**儲存**。 您會看到 [索引] 頁面中變更的資料。
+變更一部分的資料，然後按一下 [儲存]。 您會看到 [索引] 頁面中變更的資料。
 
 ![Students_Index_page_after_edit](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image11.png)
 
 ## <a name="updating-the-delete-page"></a>更新刪除頁面
 
-在*Controllers\StudentController.cs*，範本程式碼`HttpGet``Delete`方法會使用`Find`方法來擷取所選`Student`實體，當您在中所見`Details`和`Edit`方法。 不過，若要實作自訂的錯誤訊息時呼叫`SaveChanges`失敗，您會加入一些功能至這個方法，其對應的檢視。
+在*Controllers\StudentController.cs*，範本程式碼`HttpGet``Delete`方法會使用`Find`方法來擷取所選`Student`實體，當您在中所見`Details`和`Edit`方法。 然而，若要在呼叫 `SaveChanges` 失敗時實作自訂錯誤訊息，您需要將一些功能新增至此方法及其對應的檢視。
 
-當您看到更新，並建立作業，刪除作業都需要兩個動作方法。 呼叫以回應 GET 要求的方法會顯示可讓使用者有機會核准或取消刪除作業的檢視。 如果使用者核准時，會建立 POST 要求。 當發生這種情況時， `HttpPost` `Delete`方法呼叫，然後該方法會實際執行刪除作業。
+如同您在更新及建立作業中所看到的，刪除作業需要兩個動作方法。 呼叫以回應 GET 要求的方法會顯示可讓使用者有機會核准或取消刪除作業的檢視。 若使用者核准，則便會建立 POST 要求。 當發生這種情況時， `HttpPost` `Delete`方法呼叫，然後該方法會實際執行刪除作業。
 
 您要加入`try-catch`封鎖`HttpPost``Delete`方法來處理資料庫的更新時可能會發生任何錯誤。 如果發生錯誤， `HttpPost` `Delete`方法呼叫`HttpGet``Delete`方法，將其傳遞的參數，表示已發生錯誤。 `HttpGet Delete`方法然後重新顯示 [確認] 頁面，以及錯誤訊息，讓使用者有機會取消，或再試一次。
 
@@ -172,27 +172,27 @@ ms.lasthandoff: 01/24/2018
     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample9.cs)]
 
     此程式碼接受[選擇性](https://msdn.microsoft.com/library/dd264739.aspx)布林值參數，指出是否已呼叫失敗，以儲存變更之後。 這個參數是`false`時`HttpGet``Delete`呼叫方法時沒有先前的失敗。 呼叫此方法時`HttpPost``Delete`資料庫更新錯誤的回應中的方法參數是`true`和錯誤訊息會傳遞至檢視。
-- 取代`HttpPost``Delete`動作方法 (名為`DeleteConfirmed`) 取代下列程式碼，這會執行實際的刪除作業和攔截的任何資料庫更新錯誤。
+2. 取代`HttpPost``Delete`動作方法 (名為`DeleteConfirmed`) 取代下列程式碼，這會執行實際的刪除作業和攔截的任何資料庫更新錯誤。
 
-    [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs)]
+     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample10.cs)]
 
-    此程式碼會擷取選取的實體，然後呼叫[移除](https://msdn.microsoft.com/library/system.data.entity.dbset.remove(v=vs.103).aspx)實體的狀態設為方法`Deleted`。 當`SaveChanges`呼叫時，SQL`DELETE`命令產生。 您也已經變更的動作方法名稱`DeleteConfirmed`至`Delete`。 名為 scaffold 的程式碼`HttpPost``Delete`方法`DeleteConfirmed`以便`HttpPost`方法唯一的簽章。 （在 CLR 需要有不同的方法參數的多載的方法）。現在，簽章是唯一的您可以盡可能使用 MVC 慣例，並使用相同的名稱`HttpPost`和`HttpGet`刪除方法。
+     此程式碼會擷取選取的實體，然後呼叫[移除](https://msdn.microsoft.com/library/system.data.entity.dbset.remove(v=vs.103).aspx)實體的狀態設為方法`Deleted`。 當`SaveChanges`呼叫時，SQL`DELETE`命令產生。 您也將動作方法的名稱從 `DeleteConfirmed` 變更為 `Delete`。 名為 scaffold 的程式碼`HttpPost``Delete`方法`DeleteConfirmed`以便`HttpPost`方法唯一的簽章。 （在 CLR 需要有不同的方法參數的多載的方法）。現在，簽章是唯一的您可以盡可能使用 MVC 慣例，並使用相同的名稱`HttpPost`和`HttpGet`刪除方法。
 
-    如果改善大量的應用程式中的效能是優先考量，就可以避免不必要的 SQL 查詢來擷取資料列取代呼叫的程式碼字行`Find`和`Remove`黃色中所示為下列程式碼的方法反白顯示：
+     如果改善大量的應用程式中的效能是優先考量，就可以避免不必要的 SQL 查詢來擷取資料列取代呼叫的程式碼字行`Find`和`Remove`黃色中所示為下列程式碼的方法反白顯示：
 
-    [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample11.cs)]
+     [!code-csharp[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample11.cs)]
 
-    此程式碼會具現化`Student`使用只主索引鍵值的實體，然後將實體狀態設定為`Deleted`。 這是所有 Entity Framework 必須以刪除實體。
+     此程式碼會具現化`Student`使用只主索引鍵值的實體，然後將實體狀態設定為`Deleted`。 這便是 Entity Framework 要刪除實體所需要的一切資訊。
 
-    如前所述， `HttpGet` `Delete`方法不會刪除資料。 執行 delete 作業，以回應 GET 要求 （或就此而言，在執行任何的編輯作業，建立作業或變更資料的其他任何作業） 會產生安全性風險。 如需詳細資訊，請參閱[ASP.NET MVC 秘訣 #46-請勿使用刪除連結，因為它們會產生安全性漏洞](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx)Stephen Walther 部落格上。
-- 在*Views\Student\Delete.cshtml*，新增一則錯誤訊息之間`h2`標題和`h3`標題之下，如下列範例所示：
+     如前所述， `HttpGet` `Delete`方法不會刪除資料。 執行 delete 作業，以回應 GET 要求 （或就此而言，在執行任何的編輯作業，建立作業或變更資料的其他任何作業） 會產生安全性風險。 如需詳細資訊，請參閱[ASP.NET MVC 秘訣 #46-請勿使用刪除連結，因為它們會產生安全性漏洞](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx)Stephen Walther 部落格上。
+3. 在*Views\Student\Delete.cshtml*，新增一則錯誤訊息之間`h2`標題和`h3`標題之下，如下列範例所示：
 
-    [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample12.cshtml?highlight=2)]
+     [!code-cshtml[Main](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/samples/sample12.cshtml?highlight=2)]
 
-    執行選取的頁面**學生** 索引標籤，然後按一下**刪除**超連結：
+     執行選取的頁面**學生** 索引標籤，然後按一下**刪除**超連結：
 
-    ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image12.png)
-- 按一下**刪除**。 索引頁會顯示不含已刪除的學生。 (您會看到錯誤處理程式碼中的動作中的範例[處理並行](../../getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)教學課程稍後在本系列。)
+     ![Student_Delete_page](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application/_static/image12.png)
+4. 按一下 [刪除]。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會看到錯誤處理程式碼中的動作中的範例[處理並行](../../getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)教學課程稍後在本系列。)
 
 ## <a name="ensuring-that-database-connections-are-not-left-open"></a>確保資料庫連接不會保持開啟狀態
 
@@ -210,6 +210,6 @@ ms.lasthandoff: 01/24/2018
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
->[!div class="step-by-step"]
-[上一頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
-[下一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)
+> [下一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)

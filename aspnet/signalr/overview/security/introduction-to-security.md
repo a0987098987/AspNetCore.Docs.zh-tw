@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/security/introduction-to-security
-title: "SignalR 安全性簡介 |Microsoft 文件"
+title: SignalR 安全性簡介 |Microsoft 文件
 author: pfletcher
-description: "描述開發 SignalR 應用程式時，您必須考量的安全性問題。"
+description: 描述開發 SignalR 應用程式時，您必須考量的安全性問題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 1cb9f15a958028822b50decf4b420c36596ce25e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9a4f09c8036d6d662dfdc44d7c7feaba0101e0c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr-security"></a>SignalR 安全性簡介
 ====================
@@ -115,7 +115,7 @@ CSRF 攻擊的範例如下：
 
     [!code-html[Main](introduction-to-security/samples/sample1.html)]
 
- 請注意，張貼至容易遭受站台，惡意網站的表單動作。 這是 CSRF 的 「 跨網站 」 部分。
+   請注意，張貼至容易遭受站台，惡意網站的表單動作。 這是 CSRF 的 「 跨網站 」 部分。
 4. 使用者按一下 [提交] 按鈕。 瀏覽器包含與要求的驗證 cookie。
 5. 要求 example.com 與使用者的驗證內容，在伺服器上執行，並可以執行已驗證的使用者允許進行的任何動作。
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
-title: "使用現有的預存程序的具類型資料集的 Tableadapter (VB) |Microsoft 文件"
+title: 使用現有的預存程序的具類型資料集的 Tableadapter (VB) |Microsoft 文件
 author: rick-anderson
-description: "在上一個教學課程中我們學到如何使用 TableAdapter 精靈來產生新的預存程序。 在此教學課程中我們了解如何在相同 TableAdapter..."
+description: 在上一個教學課程中我們學到如何使用 TableAdapter 精靈來產生新的預存程序。 在此教學課程中我們了解如何在相同 TableAdapter...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5d1be6c30cda5a06087516210a77f48b6a3fe45b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ac319b67c9215c5dde8e7507076ed45a1f7825c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>使用現有的預存程序的具類型資料集的 Tableadapter (VB)
 ====================
@@ -56,7 +56,7 @@ Visual Studio 輕鬆地將新的預存程序加入至資料庫。 O d e s 傳回
 
 此指令碼，在執行時，會將新的預存程序加入至名為 Northwind 資料庫`Products_SelectByCategoryID`。 這個預存程序會接受單一輸入的參數 (`@CategoryID`，型別`int`)，它會傳回所有符合這些產品欄位`CategoryID`值。
 
-若要執行此`CREATE PROCEDURE`指令碼和預存程序加入至資料庫、 按一下工具列中的 [儲存] 圖示或按 Ctrl + S。 這樣做之後，預存程序資料夾重新整理，顯示新建立預存程序。 此外，在視窗中的指令碼將變更從微妙的地方`CREATE PROCEDURE dbo.Products_SelectProductByCategoryID`至`ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`。 `CREATE PROCEDURE`在資料庫中，加入新的預存程序時`ALTER PROCEDURE`更新現有。 因為指令碼開頭已變更為`ALTER PROCEDURE`，變更預存程序輸入參數或 SQL 陳述式，並按一下 [儲存] 圖示將會使用這些變更更新預存程序。
+若要執行此`CREATE PROCEDURE`指令碼和預存程序加入至資料庫、 按一下工具列中的 [儲存] 圖示或按 Ctrl + S。 這樣做之後，預存程序資料夾重新整理，顯示新建立預存程序。 此外，在視窗中的指令碼將變更從微妙的地方`CREATE PROCEDURE dbo.Products_SelectProductByCategoryID`至`ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`。 `CREATE PROCEDURE` 在資料庫中，加入新的預存程序時`ALTER PROCEDURE`更新現有。 因為指令碼開頭已變更為`ALTER PROCEDURE`，變更預存程序輸入參數或 SQL 陳述式，並按一下 [儲存] 圖示將會使用這些變更更新預存程序。
 
 圖 2 顯示 Visual Studio 之後`Products_SelectByCategoryID`尚未儲存預存程序。
 
@@ -273,12 +273,12 @@ Visual Studio 輕鬆地將新的預存程序加入至資料庫。 O d e s 傳回
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Hilton Geisenow、 S ren 因此 Lauritsen 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-[下一頁](updating-the-tableadapter-to-use-joins-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+> [下一頁](updating-the-tableadapter-to-use-joins-vb.md)

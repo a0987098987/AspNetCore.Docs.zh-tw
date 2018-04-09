@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-cs
-title: "修改動畫從伺服器端 (C#) |Microsoft 文件"
+title: 修改動畫從伺服器端 (C#) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 也可能動畫..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 也可能動畫...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e1f9bda03b3e3edf3bbdc591cde9858944d39321
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6946875552c885ffb1f2a2eb7e728b85d7dd3973
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="modifying-animations-from-the-server-side-c"></a>修改動畫從伺服器端 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 可能也會在伺服器端變更動畫
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 可能也會在伺服器端變更動畫
 
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 使用伺服器端 C# /VB 程式碼來建立動畫 ([按一下以檢視完整大小的影像](modifying-animations-from-the-server-side-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](triggering-an-animation-in-another-control-cs.md)
-[下一頁](executing-animations-using-client-side-code-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](triggering-an-animation-in-another-control-cs.md)
+> [下一頁](executing-animations-using-client-side-code-cs.md)

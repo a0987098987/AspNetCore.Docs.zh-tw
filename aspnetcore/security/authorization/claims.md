@@ -1,7 +1,7 @@
 ---
-title: "宣告型授權"
+title: ASP.NET Core 中宣告型授權
 author: rick-anderson
-description: "本文件說明如何加入 ASP.NET Core 應用程式中的宣告授權檢查。"
+description: 了解如何加入 ASP.NET Core 應用程式中的宣告授權檢查。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 608aaa469c5ca20fab8250025804e28e7808122d
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: da308b67be046395bb1baa0f272e767cccbc99c8
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="claims-based-authorization"></a>宣告型授權
+# <a name="claims-based-authorization-in-aspnet-core"></a>ASP.NET Core 中宣告型授權
 
 <a name="security-authorization-claims-based"></a>
 
@@ -122,4 +122,4 @@ public class SalaryController : Controller
 
 在上述範例中，可滿足任何身分識別`EmployeeOnly`原則可以存取`Payslip`控制站上的動作與該原則會強制執行。 不過若要呼叫`UpdateSalary`身分識別必須達到的動作*兩者*`EmployeeOnly`原則和`HumanResources`原則。
 
-如果您想更複雜的原則，例如使日期的生日的宣告，計算年齡從它，然後檢查年齡 21 或更舊版本則需要撰寫[自訂原則的處理常式](policies.md)。
+如果您想更複雜的原則，例如使日期的生日的宣告，計算年齡從它，然後檢查年齡 21 或更舊版本則需要撰寫[自訂原則的處理常式](xref:security/authorization/policies)。

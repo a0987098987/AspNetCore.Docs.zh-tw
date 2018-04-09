@@ -1,7 +1,7 @@
 ---
-title: "金鑰管理"
+title: 在 ASP.NET Core 金鑰管理
 author: rick-anderson
-description: "本文件概述的 ASP.NET Core 資料保護金鑰管理應用程式開發介面的實作詳細資料。"
+description: 了解 ASP.NET Core 資料保護金鑰管理應用程式開發介面的實作詳細資料。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: a1fd7c55ec94d5def569bb407c064f4fd2fe9695
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 1b073d8779547a828c17e825b0663b26efb61d14
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management"></a>金鑰管理
+# <a name="key-management-in-aspnet-core"></a>在 ASP.NET Core 金鑰管理
 
 <a name="data-protection-implementation-key-management"></a>
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/02/2018
 
 * 撤銷-金鑰受到危害，且必須不適用於新的保護作業。
 
-建立、 使用中和已過期的索引鍵可能都可以用來取消保護內送裝載。 依預設已撤銷的索引鍵不能取消保護裝載，但應用程式開發人員可以[覆寫這個行為](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect)如有必要。
+建立、 使用中和已過期的索引鍵可能都可以用來取消保護內送裝載。 依預設已撤銷的索引鍵不能取消保護裝載，但應用程式開發人員可以[覆寫這個行為](xref:security/data-protection/consumer-apis/dangerous-unprotect#data-protection-consumer-apis-dangerous-unprotect)如有必要。
 
 >[!WARNING]
 > 開發人員可能會想要從索引鍵環刪除機碼 （例如，藉由從檔案系統中刪除對應的檔案）。 此時，金鑰所保護的所有資料都都會永久觸，並都沒有緊急覆寫沒有使用已撤銷的索引鍵。 刪除索引鍵是真正破壞性的行為，因此資料保護系統會公開任何第一級的 API 執行此作業。
@@ -83,6 +83,6 @@ services.AddDataProtection()
 
 資料保護系統有啟發學習法，它會嘗試自動推算適當金鑰的儲存位置和 rest 機制加密。 這也是由應用程式開發人員可設定。 下列文件將討論這些機制的內建實作：
 
-* [內建金鑰儲存提供者](key-storage-providers.md#data-protection-implementation-key-storage-providers)
+* [內建金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers)
 
-* [在其他提供者的內建金鑰加密](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)
+* [在其他提供者的內建金鑰加密](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers)

@@ -1,7 +1,7 @@
 ---
-title: "從 ASP.NET 移轉至 ASP.NET Core 2.0"
+title: 移轉 ASP.NET ASP.NET Core 2.0
 author: isaac2004
-description: "可接受現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0。"
+description: 可接受現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0。
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc2
-ms.openlocfilehash: 9424234011525afdba35824b6b324f5175ba023f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 58fac7642dbfdad58fef99f04d17de33e7218524
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 移轉至 ASP.NET Core 2.0
+# <a name="migrate-from-aspnet-to-aspnet-core-20"></a>移轉 ASP.NET ASP.NET Core 2.0
 
 作者：[Isaac Levin](https://isaaclevin.com)
 
@@ -23,7 +23,12 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="prerequisites"></a>必要條件
 
-* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 或更新版本。
+安裝**一個**從以下的[.NET 下載： Windows](https://www.microsoft.com/net/download/windows):
+
+* .NET Core SDK
+* Visual Studio for Windows
+  * **ASP.NET 及 web 開發**工作負載
+  * **.NET core 跨平台開發**工作負載
 
 ## <a name="target-frameworks"></a>目標 Framework
 ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework 或兩者為目標。 請參閱[針對伺服器應用程式在 .NET Core 和 .NET Framework 之間進行選擇](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)，判斷哪些目標架構最適合。
@@ -145,7 +150,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
-**注意：**如需在 ASP.NET Core 中提供靜態檔案的更深入參考，請參閱[在 ASP.NET Core 中使用靜態檔案的簡介](xref:fundamentals/static-files)。
+**注意：**提供靜態檔案中 ASP.NET Core 的更深入參考，請參閱[使用靜態檔案中 ASP.NET Core](xref:fundamentals/static-files)。
 
 ## <a name="additional-resources"></a>其他資源
 

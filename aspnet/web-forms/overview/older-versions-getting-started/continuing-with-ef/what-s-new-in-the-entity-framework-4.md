@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
-title: "什麼是 Entity Framework 4.0 新功能 |Microsoft 文件"
+title: 什麼是 Entity Framework 4.0 新功能 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
 msc.type: authoredcontent
-ms.openlocfilehash: c114627388217e892c84d6b76366d0fa96b0b70c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 04444ce98fa60045cf617a6c518dd55677258148
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-the-entity-framework-40"></a>什麼是 Entity Framework 4.0 新功能
 ====================
@@ -203,7 +203,7 @@ POCO Entity Framework 4 中的支援仍需要您建立資料模型，並將實�
 - [MVC Music Store 教學課程-第 4 部分： 模型和資料存取](../../../../mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4.md)
 - [開始使用 MVC 3-第 4 部分： Entity Framework 程式碼優先開發](../../../../mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model.md)
 
-此外，新的 MVC 程式碼的第一個教學課程可建立類似於 Contoso 大學應用程式的應用程式預計在 2011 年的 spring 中發行[https://asp.net/entity-framework/tutorials](../../../../entity-framework.md)
+此外，新的 MVC 程式碼的第一個教學課程可建立類似於 Contoso 大學應用程式的應用程式預計在 2011 年的 spring 中發行 [https://asp.net/entity-framework/tutorials](../../../../entity-framework.md)
 
 ## <a name="more-information"></a>更多資訊
 
@@ -212,5 +212,5 @@ POCO Entity Framework 4 中的支援仍需要您建立資料模型，並將實�
 - [What's New in ADO.NET](https://msdn.microsoft.com/library/ex6y04yf.aspx)的 Entity Framework 版本 4 中的新功能的 MSDN 主題。
 - [宣佈適用於 Entity Framework 4 版本](https://blogs.msdn.com/b/efdesign/archive/2010/04/12/announcing-the-release-of-entity-framework-4.aspx)中第 4 版新功能相關的 Entity Framework 開發小組的部落格文章。
 
->[!div class="step-by-step"]
-[上一步](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [!div class="step-by-step"]
+> [上一步](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)

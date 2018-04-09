@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-部分 7 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-部分 7 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: aeea122636f5235364e6a40cb6e041b1fe221317
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cb84f4f3e130fedb3e2f1a17d630767ff65bfa05
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-7"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 一部分 7
 ====================
@@ -51,7 +51,7 @@ Entity Framework 可讓您指定它應該使用預存程序進行資料庫存取
 
 [![image14](the-entity-framework-and-aspnet-getting-started-part-7/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image3.png)
 
-`Student`實體有四個屬性： `PersonID`， `LastName`， `FirstName`，和`EnrollmentDate`。 此資料庫會自動產生的識別碼值和預存程序會接受其他三個參數。 預存程序會傳回新的資料列記錄索引鍵的值，讓 Entity Framework 可以追蹤的它會保存在記憶體中的實體版本。
+`Student` 實體有四個屬性： `PersonID`， `LastName`， `FirstName`，和`EnrollmentDate`。 此資料庫會自動產生的識別碼值和預存程序會接受其他三個參數。 預存程序會傳回新的資料列記錄索引鍵的值，讓 Entity Framework 可以追蹤的它會保存在記憶體中的實體版本。
 
 儲存並關閉 [預存程序] 視窗。
 
@@ -139,6 +139,6 @@ Entity Framework 不會自動執行預存程序這類`GetCourses`，而且您無
 
 在下一個教學課程中，您將學習如何使用動態資料功能，更輕鬆地程式和測試資料格式和驗證規則。 而不是指定每個網頁規則，例如資料格式字串，以及為必要欄位，您可以在資料模型中繼資料中指定這類規則，它們會自動套用每一頁上。
 
->[!div class="step-by-step"]
-[上一頁](the-entity-framework-and-aspnet-getting-started-part-6.md)
-[下一頁](the-entity-framework-and-aspnet-getting-started-part-8.md)
+> [!div class="step-by-step"]
+> [上一頁](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [下一頁](the-entity-framework-and-aspnet-getting-started-part-8.md)

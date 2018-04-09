@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model
-title: "加入模型 (C#) |Microsoft 文件"
+title: 加入模型 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範..."
+description: 注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 32f2fcdae9d92b84dcd9be8746e416cdf9a14c48
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a7f9206ddd43b4a3b4f96240ee48b9414450da22
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-model-c"></a>加入模型 (C#)
 ====================
@@ -91,6 +91,6 @@ ms.lasthandoff: 11/10/2017
 
 接下來，您將建置新`MoviesController`類別可用來顯示電影，並允許使用者建立新的電影清單。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-view.md)
-[下一頁](accessing-your-models-data-from-a-controller.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-view.md)
+> [下一頁](accessing-your-models-data-from-a-controller.md)

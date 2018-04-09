@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
-title: "以程式設計方式設定 ObjectDataSource 參數值 (C#) |Microsoft 文件"
+title: 以程式設計方式設定 ObjectDataSource 參數值 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程，我們將探討將方法加入我們的 DAL 和 BLL 可接受單一輸入的參數和傳回資料。 此範例會將此參數設定..."
+description: 在本教學課程，我們將探討將方法加入我們的 DAL 和 BLL 可接受單一輸入的參數和傳回資料。 此範例會將此參數設定...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7694c56fa5c50ff75db931e88c2334f560631d74
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1bd1fd63e5aae74459675d45dd399e449d7897b8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-c"></a>以程式設計方式設定 ObjectDataSource 參數值 (C#)
 ====================
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="step-1-adding-a-method-toemployeestableadapter"></a>步驟 1： 將方法加入`EmployeesTableAdapter`
 
-此第一個範例中我們需要加入方法來擷取這些員工其`HireDate`發生指定的月份。 若要提供此功能，根據我們必須先建立中的方法，我們架構`EmployeesTableAdapter`對應至適當的 SQL 陳述式。 若要這麼做，首先開啟 Northwind 型別資料集。 以滑鼠右鍵按一下`EmployeesTableAdapter`加上標籤，然後選擇 加入查詢。
+此第一個範例中我們需要加入方法來擷取這些員工其`HireDate`發生指定的月份。 若要提供此功能，根據我們必須先建立中的方法，我們架構`EmployeesTableAdapter`對應至適當的 SQL 陳述式。 若要這麼做，首先開啟 Northwind 型別資料集。 以滑鼠右鍵按一下`EmployeesTableAdapter`加上標籤，然後選擇 [加入查詢。
 
 
 [![將新的查詢加入至 EmployeesTableAdapter](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image5.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image4.png)
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/24/2018
 **圖 2**： 加入新的查詢，來`EmployeesTableAdapter`([按一下以檢視完整大小的影像](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image6.png))
 
 
-選擇要加入的 SQL 陳述式會傳回資料列。 當您來到 指定`SELECT`陳述式畫面上的預設`SELECT`陳述式`EmployeesTableAdapter`，就會載入。 只要加入在`WHERE`子句： `WHERE DATEPART(m, HireDate) = @Month`。 [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)的 T-SQL 函式會傳回特定日期部分的`datetime`類型; 在此情況下，我們會使用`DATEPART`傳回月份的`HireDate`資料行。
+選擇要加入的 SQL 陳述式會傳回資料列。 當您來到 [指定`SELECT`陳述式畫面上的預設`SELECT`陳述式`EmployeesTableAdapter`，就會載入。 只要加入在`WHERE`子句： `WHERE DATEPART(m, HireDate) = @Month`。 [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)的 T-SQL 函式會傳回特定日期部分的`datetime`類型; 在此情況下，我們會使用`DATEPART`傳回月份的`HireDate`資料行。
 
 
 [![傳回只有那些資料列位置的 HireDate 資料行小於或等於@HiredBeforeDate參數](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image8.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image7.png)
@@ -71,7 +71,7 @@ ms.lasthandoff: 01/24/2018
 **圖 4**： 選擇更適當方法的名稱比`FillBy`和`GetDataBy`([按一下以檢視完整大小的影像](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image12.png))
 
 
-按一下 完成 5d; 以完成精靈並返回 資料集的設計介面。 `EmployeesTableAdapter`現在應該包含一組新的方法來存取指定月份中雇用的員工。
+按一下 [完成] 5d; 以完成精靈並返回 [資料集的設計介面。 `EmployeesTableAdapter`現在應該包含一組新的方法來存取指定月份中雇用的員工。
 
 
 [![新的方法會出現在設計介面中的資料集](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image14.png)](programmatically-setting-the-objectdatasource-s-parameter-values-cs/_static/image13.png)
@@ -124,7 +124,7 @@ ms.lasthandoff: 01/24/2018
 **圖 9**： 按一下 [屬性] 視窗，列出 Web 控制項的事件中閃電圖示
 
 
-這兩種方法是加入新的事件處理常式用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters[parameterName]`，其中 *`parameterName`* 值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters[index]`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
+這兩種方法是加入新的事件處理常式用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters[parameterName]`，其中* `parameterName` *值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters[index]`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
 
 
 [!code-csharp[Main](programmatically-setting-the-objectdatasource-s-parameter-values-cs/samples/sample3.cs)]
@@ -141,18 +141,18 @@ ms.lasthandoff: 01/24/2018
 
 ObjectDataSource 參數值通常會設定以宣告方式，而不需要程式碼時很容易就能以程式設計方式設定參數值。 我們要做為事件處理常式建立 ObjectDataSource`Selecting`基礎物件的方法是叫用，而且手動設定透過一或多個參數的值之前引發的事件`InputParameters`集合。
 
-本教學課程結束時的基本報表區段。 [下一個教學課程](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)篩選和主版詳細資料案例 區段中，我們將查看允許的訪問項來篩選資料的技術，並向下鑽研從主報表的詳細資料報表就會啟動。
+本教學課程結束時的基本報表區段。 [下一個教學課程](../masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md)篩選和主版詳細資料案例] 區段中，我們將查看允許的訪問項來篩選資料的技術，並向下鑽研從主報表的詳細資料報表就會啟動。
 
 祝您程式設計 ！
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](declarative-parameters-cs.md)
-[下一頁](displaying-data-with-the-objectdatasource-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](declarative-parameters-cs.md)
+> [下一頁](displaying-data-with-the-objectdatasource-vb.md)

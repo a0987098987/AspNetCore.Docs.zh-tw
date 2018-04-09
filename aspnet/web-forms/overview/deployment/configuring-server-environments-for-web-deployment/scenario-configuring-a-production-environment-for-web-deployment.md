@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
-title: "案例： 設定的生產環境 Web 部署 |Microsoft 文件"
+title: 案例： 設定的生產環境 Web 部署 |Microsoft 文件
 author: jrjlee
-description: "本主題說明在實際執行環境的一般 web 部署案例，並說明您必須完成才能設定類似的工作..."
+description: 本主題說明在實際執行環境的一般 web 部署案例，並說明您必須完成才能設定類似的工作...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cdd13f96ddf08ff86b01ef9de17ea82cf038ab28
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4de5b1f20f3adcb53765c7cb9765c0d90a80e677
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>案例： 設定用於 Web 部署的實際執行環境
 ====================
@@ -59,6 +59,6 @@ ms.lasthandoff: 01/24/2018
 
 如需設定的一般開發人員測試環境的指引，請參閱[案例： 在測試環境設定用於 Web 部署](scenario-configuring-a-test-environment-for-web-deployment.md)。 如需設定一般的預備環境的指引，請參閱[案例： 設定用於 Web 部署的預備環境](scenario-configuring-a-staging-environment-for-web-deployment.md)。
 
->[!div class="step-by-step"]
-[上一頁](scenario-configuring-a-staging-environment-for-web-deployment.md)
-[下一頁](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
+> [!div class="step-by-step"]
+> [上一頁](scenario-configuring-a-staging-environment-for-web-deployment.md)
+> [下一頁](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
-title: "將內容加入至原始檔控制 |Microsoft 文件"
+title: 將內容加入至原始檔控制 |Microsoft 文件
 author: jrjlee
-description: "本主題說明如何將內容加入至 Team Foundation Server (TFS) 2010年中的原始檔控制。 說明如何將方案和專案加入至小組 proje..."
+description: 本主題說明如何將內容加入至 Team Foundation Server (TFS) 2010年中的原始檔控制。 說明如何將方案和專案加入至小組 proje...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: d46e2697d10ca27f8e08533350a6e7f2354b4a43
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c9c3a506d2745a6793661453a293732429d3e46e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-content-to-source-control"></a>將內容加入至原始檔控制
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/15/2018
 > 本主題說明如何將內容加入至 Team Foundation Server (TFS) 2010年中的原始檔控制。 說明如何將方案和專案加入至 TFS 中 team 專案，並說明如何將組件架構等外部相依性加入至原始檔控制。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -157,6 +157,6 @@ ms.lasthandoff: 03/15/2018
 
 更廣泛使用在 TFS 中的原始檔控制的詳細資訊，請參閱[使用版本控制](https://msdn.microsoft.com/library/ms181368.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-team-project-in-tfs.md)
-[下一頁](configuring-a-tfs-build-server-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-team-project-in-tfs.md)
+> [下一頁](configuring-a-tfs-build-server-for-web-deployment.md)

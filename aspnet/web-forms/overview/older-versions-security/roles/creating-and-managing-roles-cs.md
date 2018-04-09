@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs
-title: "建立及管理角色 (C#) |Microsoft 文件"
+title: 建立及管理角色 (C#) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會檢查設定角色架構的必要步驟。 接下來，我們將建立的網頁以建立和刪除角色。"
+description: 本教學課程會檢查設定角色架構的必要步驟。 接下來，我們將建立的網頁以建立和刪除角色。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/24/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b2b13a2a3b242877060aaec2257b2a742ac8d674
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a4ea7e76e023cd436d1d8ac52307a3ac17267fef
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-and-managing-roles-c"></a>建立及管理角色 (C#)
 ====================
@@ -96,8 +96,8 @@ ASP.NET 提供了角色架構定義的角色和與使用者帳戶建立關聯。
 
 因此，如果我們只是未指定任何提供者資訊，在我們的應用程式中啟用角色架構`Web.config`檔案，應用程式使用已註冊的預設角色提供者， `AspNetSqlRoleProvider`。 如果`~/App_Data/aspnet.mdf`資料庫不存在，ASP.NET 執行階段會自動建立它，並新增應用程式服務結構描述。 不過，我們不想使用`aspnet.mdf`資料庫; 相反地，我們想要使用`SecurityTutorials.mdf`我們已經建立並加入至應用程式服務結構描述的資料庫。 其中一種方式可以完成這項修改：
 
-- **指定的值 * * *`LocalSqlServer`* * * 中的連接字串名稱 * * *`Web.config`* * *。** 藉由覆寫`LocalSqlServer`中的連接字串名稱值`Web.config`，我們可以使用已註冊的預設角色提供者 (`AspNetSqlRoleProvider`)，並讓它正確使用`SecurityTutorials.mdf`資料庫。 如需有關這項技術的詳細資訊，請參閱[Scott Guthrie](https://weblogs.asp.net/scottgu/)的部落格文章：[設定 ASP.NET 2.0 應用程式服務設定為使用 SQL Server 2000 或 SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)。
-- **加入新的已註冊提供者的類型 * * *`SqlRoleProvider`* * * 並設定其 * * *`connectionStringName`* * * 設定為指向 * * *`SecurityTutorials.mdf`* * * 資料庫。** 這是我建議，並在中使用的方式<a id="_msoanchor_7"> </a> [*在 SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-cs.md)教學課程中，且會將在本教學課程中使用的方法。
+- <strong>指定的值</strong><strong>`LocalSqlServer`</strong><strong>中的連接字串名稱</strong><strong>`Web.config`</strong><strong>。</strong> 藉由覆寫`LocalSqlServer`中的連接字串名稱值`Web.config`，我們可以使用已註冊的預設角色提供者 (`AspNetSqlRoleProvider`)，並讓它正確使用`SecurityTutorials.mdf`資料庫。 如需有關這項技術的詳細資訊，請參閱[Scott Guthrie](https://weblogs.asp.net/scottgu/)的部落格文章：[設定 ASP.NET 2.0 應用程式服務設定為使用 SQL Server 2000 或 SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)。
+- <strong>新增已註冊的型別提供者</strong><strong>`SqlRoleProvider`</strong><strong>並設定其</strong><strong>`connectionStringName`</strong><strong>設定為指向</strong><strong>`SecurityTutorials.mdf`</strong><strong>資料庫。</strong> 這是我建議，並在中使用的方式<a id="_msoanchor_7"> </a> [*在 SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-cs.md)教學課程中，且會將在本教學課程中使用的方法。
 
 加入至下列角色組態標記`Web.config`檔案。 這個標記會註冊新的提供者，名為`SecurityTutorialsSqlRoleProvider`。
 
@@ -215,8 +215,8 @@ GridView 會顯示標示為項目，因為唯一資料行的 GridView`AutoGenera
 
 使用者可以建立新的角色與檢視所有現有的角色從此時`ManageRoles.aspx`頁面。 讓我們可讓使用者若要同時刪除角色。 `Roles.DeleteRole`方法有兩個多載：
 
-- [`DeleteRole(roleName)`](https://msdn.microsoft.com/library/ek4sywc0.aspx)-刪除的角色*roleName*。 如果角色包含一個或多個成員，則會擲回例外狀況。
-- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/library/38h6wf59.aspx)-刪除的角色*roleName*。 如果*throwOnPopulateRole*是`true`，則會擲回例外狀況，如果角色包含一個或多個成員。 如果*throwOnPopulateRole*是`false`，然後刪除角色後是否或不包含任何成員。 就內部而言，`DeleteRole(roleName)`方法呼叫`DeleteRole(roleName, true)`。
+- [`DeleteRole(roleName)`](https://msdn.microsoft.com/library/ek4sywc0.aspx) -刪除的角色*roleName*。 如果角色包含一個或多個成員，則會擲回例外狀況。
+- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/library/38h6wf59.aspx) -刪除的角色*roleName*。 如果*throwOnPopulateRole*是`true`，則會擲回例外狀況，如果角色包含一個或多個成員。 如果*throwOnPopulateRole*是`false`，然後刪除角色後是否或不包含任何成員。 就內部而言，`DeleteRole(roleName)`方法呼叫`DeleteRole(roleName, true)`。
 
 `DeleteRole`方法也會擲回例外狀況如果*roleName*是`null`或空字串或*roleName*包含逗號。 如果*roleName*不存在於系統`DeleteRole`失敗時以無訊息模式，而不會引發例外狀況。
 
@@ -263,11 +263,11 @@ GridView 會顯示標示為項目，因為唯一資料行的 GridView`AutoGenera
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 前導檢閱者在此教學課程包含 Alicja Maziarz、 Suchi Banerjee 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 前導檢閱者在此教學課程包含 Alicja Maziarz、 Suchi Banerjee 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](assigning-roles-to-users-cs.md)
+> [!div class="step-by-step"]
+> [下一步](assigning-roles-to-users-cs.md)

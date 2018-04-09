@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
-title: "設計存留失敗 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 設計存留失敗 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: 62a16e9a99cd1298b0db5f8099092212f9f6850b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 01883cb0be3e7c7b5dc8d32b784ccb3a28652f1e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>設計存留失敗 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -131,6 +131,6 @@ Azure 的目標是要讓所有的失敗中來得簡單許多，這類的處理�
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 九部分 Ulrich Homann、 Marc Mercuri 和 Mark Simms 的系列。 高層級概念與架構原則非常可存取且有趣的方式，呈現劇本取自與實際客戶的 Microsoft 客戶諮詢團隊 (CAT) 體驗。 1 到 8 個劇集深度進入設計雲端應用程式不受失敗的原因。 另請參閱節流時段 2 開始 49:57、 的失敗點和失敗模式中的片段 2 開始 56:05，討論和斷路器中的時段 3 開始 40:55 討論中的待處理的討論。
 - [建置大型： 學到來自 Azure 客戶-II](https://channel9.msdn.com/Events/Build/2012/3-030)。 Mark Simms 交談有關失敗的設計和檢測的所有項目。 類似於保全數列但進入詳細的使用說明。
 
->[!div class="step-by-step"]
-[上一頁](unstructured-blob-storage.md)
-[下一頁](monitoring-and-telemetry.md)
+> [!div class="step-by-step"]
+> [上一頁](unstructured-blob-storage.md)
+> [下一頁](monitoring-and-telemetry.md)

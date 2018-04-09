@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
-title: "根據條件 (C#) 動畫 |Microsoft 文件"
+title: 根據條件 (C#) 動畫 |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫的是否..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫的是否...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 13366a86be01f41e27db1869b93192520190387a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b530239e76654bc68a8fa6ac900a20df1d5699b0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animation-depending-on-a-condition-c"></a>動畫根據條件 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行時或不可以也會取決於一些 JavaScript 程式碼的表單中的條件。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫執行時或不可以也會取決於一些 JavaScript 程式碼的表單中的條件。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-css[Main](animation-depending-on-a-condition-cs/samples/sample3.css)]
 
-接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要`runat="server":`
+接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要 `runat="server":`
 
 [!code-aspx[Main](animation-depending-on-a-condition-cs/samples/sample4.aspx)]
 
@@ -60,6 +60,6 @@ ms.lasthandoff: 11/10/2017
 
 面板淡出沒有調整大小，因此未在第二個動畫執行，第一個 ([按一下以檢視完整大小的影像](animation-depending-on-a-condition-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](executing-several-animations-after-each-other-cs.md)
-[下一頁](picking-one-animation-out-of-a-list-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](executing-several-animations-after-each-other-cs.md)
+> [下一頁](picking-one-animation-out-of-a-list-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
-title: "教學課程： 開始使用 SignalR 1.x 和 MVC 4 |Microsoft 文件"
+title: 教學課程： 開始使用 SignalR 1.x 和 MVC 4 |Microsoft 文件
 author: pfletcher
-description: "使用 ASP.NET SignalR 和 ASP.NET MVC 4 建置即時聊天的應用程式。"
+description: 使用 ASP.NET SignalR 和 ASP.NET MVC 4 建置即時聊天的應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/29/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 632e6098a03eae02f2367c6dc1c293dbdb6b6170
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1ae330be5caf00c3cac7451f326398c0958538af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>教學課程： 開始使用 SignalR 1.x 和 MVC 4
 ====================
@@ -63,17 +63,17 @@ ms.lasthandoff: 01/24/2018
         > 在 VS 2010 中，選取**.NET Framework 4** Framework 版本下拉式控制項中。 在.NET Framework 4 和 4.5 版上執行 SignalR 程式碼。
 
         ![建立 mvc web](tutorial-getting-started-with-signalr-and-mvc-4/_static/image3.png)
-    2. 選取 網際網路應用程式範本，請清除選項以**建立單元測試專案**，按一下 確定。
+      2. 選取 網際網路應用程式範本，請清除選項以**建立單元測試專案**，按一下 確定。
 
-        ![建立 mvc 網際網路站台](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
-    3. 開啟**工具 |程式庫套件管理員 |Package Manager Console** ，然後執行下列命令。 這個步驟可將一組指令碼檔案和啟用 SignalR 功能的組件參考加入至專案。
+         ![建立 mvc 網際網路站台](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
+      3. 開啟**工具 |程式庫套件管理員 |Package Manager Console** ，然後執行下列命令。 這個步驟可將一組指令碼檔案和啟用 SignalR 功能的組件參考加入至專案。
 
-        `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
-    4. 在**方案總管 中**展開指令碼 資料夾。 請注意 SignalR 的指令碼程式庫已加入至專案。
+         `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
+      4. 在**方案總管 中**展開指令碼 資料夾。 請注意 SignalR 的指令碼程式庫已加入至專案。
 
-        ![程式庫參考](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
-    5. 在**方案總管 中**，以滑鼠右鍵按一下專案，選取**新增 |新的資料夾**，並加入新的資料夾，名為**集線器**。
-    6. 以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |類別**，並建立新的 C# 類別名稱為**ChatHub.cs**。 您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。
+         ![程式庫參考](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
+      5. 在**方案總管 中**，以滑鼠右鍵按一下專案，選取**新增 |新的資料夾**，並加入新的資料夾，名為**集線器**。
+      6. 以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |類別**，並建立新的 C# 類別名稱為**ChatHub.cs**。 您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。
 
 > [!NOTE]
 > 如果您使用 Visual Studio 2012，而且已安裝[ASP.NET 和 Web 工具 2012.2 更新](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation)，您可以使用新的 SignalR 項目範本建立中樞類別。 若要這樣做，請以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |新項目**，選取**SignalR 中樞類別 (v1)**，並加以**ChatHub.cs**。
@@ -117,7 +117,7 @@ ms.lasthandoff: 01/24/2018
 6. 下列螢幕擷取畫面顯示瀏覽器中執行之交談應用程式。
 
     ![對談瀏覽器](tutorial-getting-started-with-signalr-and-mvc-4/_static/image11.png)
-7. 在**方案總管 中**，檢查**指令碼文件**節點執行的應用程式。 如果您使用 Internet Explorer 瀏覽器，此節點會顯示在偵錯模式。 沒有名為指令碼檔案**集線器**SignalR library 動態產生在執行階段。 這個檔案會管理 jQuery 指令碼和伺服器端程式碼之間的通訊。 如果您使用非 Internet Explorer 的瀏覽器，您也可以存取動態**集線器**瀏覽至它直接管理，例如 http://mywebsite/signalr/hubs 檔案。
+7. 在**方案總管 中**，檢查**指令碼文件**節點執行的應用程式。 如果您使用 Internet Explorer 瀏覽器，此節點會顯示在偵錯模式。 沒有名為指令碼檔案**集線器**SignalR library 動態產生在執行階段。 這個檔案會管理 jQuery 指令碼和伺服器端程式碼之間的通訊。 如果您使用非 Internet Explorer 的瀏覽器，您也可以存取動態**集線器**檔案瀏覽至它直接管理，例如http://mywebsite/signalr/hubs。
 
     ![產生的中樞指令碼](tutorial-getting-started-with-signalr-and-mvc-4/_static/image13.png)
 

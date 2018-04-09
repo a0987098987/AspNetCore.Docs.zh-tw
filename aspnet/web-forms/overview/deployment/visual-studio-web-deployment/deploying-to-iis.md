@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 部署至測試 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 部署至測試 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/23/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: 01f72e0240e84944f8ffece9a2dbc5802be4646b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dc11072e053cbddd089e5df4bcea6d2a7af864fc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署至測試
 ====================
@@ -52,15 +52,15 @@ ms.lasthandoff: 01/24/2018
 
     若要執行 Web Platform Installer 安裝 IIS 和 Web Deploy，請使用下列連結。 如果您已安裝 IIS、 Web Deploy 或任何必要的元件，會安裝 Web Platform Installer，只會遺失。
 
-    - [安裝 IIS 和 Web Deploy 使用 WebPI，](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
+   - [安裝 IIS 和 Web Deploy 使用 WebPI，](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
 
-    您會看到訊息，指出將會安裝 IIS 7。 IIS 8 中在 Windows 8 中，但適用於 Windows 8，連結運作確定執行下列步驟來確認已安裝 ASP.NET 4.5:
+     您會看到訊息，指出將會安裝 IIS 7。 IIS 8 中在 Windows 8 中，但適用於 Windows 8，連結運作確定執行下列步驟來確認已安裝 ASP.NET 4.5:
 
-    1. 開啟**控制台**，**程式和功能**，**開啟或關閉 Windows 功能**。
-    2. 展開**Internet Information Services**， **World Wide Web 服務**，和**應用程式開發功能**。
-    3. 請確定**ASP.NET 4.5**已選取。
+   - 開啟**控制台**，**程式和功能**，**開啟或關閉 Windows 功能**。
+   - 展開**Internet Information Services**， **World Wide Web 服務**，和**應用程式開發功能**。
+   - 請確定**ASP.NET 4.5**已選取。
 
-        ![選取 ASP.NET 4.5](deploying-to-iis/_static/image1.png)
+      ![選取 ASP.NET 4.5](deploying-to-iis/_static/image1.png)
 
 安裝 IIS 之後, 執行**IIS 管理員**，確定.NET Framework 第 4 版預設應用程式集區指派。
 
@@ -178,7 +178,7 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
     精靈會自動移到**連接** 索引標籤。
 4. 在**服務 URL**方塊中，輸入*localhost*。
 5. 在**網站/應用程式**方塊中，輸入*預設網站/ContosoUniversity*
-6. 在**目的地 URL**方塊中，輸入`http://localhost/ContosoUniversity`
+6. 在**目的地 URL**方塊中，輸入 `http://localhost/ContosoUniversity`
 
     **目的地 URL**設定不是必要的。 當 Visual Studio 完成部署應用程式時，它會自動開啟預設的瀏覽器對這個 URL。 如果您不想要在部署後會自動開啟瀏覽器，將此方塊保留空白。
 7. 按一下**驗證連線**確認設定正確無誤，而且您可以在本機電腦上連接到 IIS。
@@ -337,6 +337,6 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
 
 在中度信任執行的應用程式時，可能會引發哪些問題的相關資訊，請參閱[裝載在中度信任 ASP.NET 應用程式](http://www.4guysfromrolla.com/articles/100307-1.aspx)4 Guy 從 Rolla 站台上。
 
->[!div class="step-by-step"]
-[上一頁](project-properties.md)
-[下一頁](setting-folder-permissions.md)
+> [!div class="step-by-step"]
+> [上一頁](project-properties.md)
+> [下一頁](setting-folder-permissions.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
-title: "用於 Web 套件部署中設定參數 |Microsoft 文件"
+title: 用於 Web 套件部署中設定參數 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何設定參數值，例如網際網路資訊服務 (IIS) web 應用程式名稱、 連接字串，以及服務端點..."
+description: 本主題描述如何設定參數值，例如網際網路資訊服務 (IIS) web 應用程式名稱、 連接字串，以及服務端點...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 12a4ba8ad30df43e7192500ad4514dfa9679f899
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7be08f1a1fb7232911a44cf64e2e784dbb95ff48
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>用於 Web 套件部署中設定參數
 ====================
@@ -92,7 +92,7 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 
 ## <a name="modifying-the-setparametersxml-file"></a>修改 SetParameters.xml 檔案
 
-如果您打算以手動方式部署 web 應用程式套件 & #x 2014年; 藉由執行*。 deploy.cmd*檔案，或從命令列 & #x 2014; 執行 MSDeploy.exe 沒有阻止您以手動方式編輯*SetParameters.xml*之前部署的檔案。 不過，如果您使用企業規模方案，您可能需要較大，自動化組建和部署程序的一部分部署 web 應用程式套件。 在此案例中，您需要 Microsoft Build Engine (MSBuild) 修改*SetParameters.xml*為您的檔案。 您可以使用 MSBuild **XmlPoke**工作。
+如果您打算以手動方式部署 web 應用程式封裝&#x2014;藉由執行*。 deploy.cmd*檔案或從命令列執行 MSDeploy.exe&#x2014;沒有阻止您以手動方式編輯*SetParameters.xml*之前部署的檔案。 不過，如果您使用企業規模方案，您可能需要較大，自動化組建和部署程序的一部分部署 web 應用程式套件。 在此案例中，您需要 Microsoft Build Engine (MSBuild) 修改*SetParameters.xml*為您的檔案。 您可以使用 MSBuild **XmlPoke**工作。
 
 [連絡人管理員範例方案](the-contact-manager-solution.md)說明此程序。 以下程式碼範例都已經過編輯，以顯示與此範例的詳細資料。
 
@@ -148,6 +148,6 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 
 一般參數化的 Web Deploy 的詳細資訊，請參閱[動作中的 Web 部署參數化](https://go.microsoft.com/?linkid=9805119)（部落格文章）。
 
->[!div class="step-by-step"]
-[上一頁](building-and-packaging-web-application-projects.md)
-[下一頁](deploying-web-packages.md)
+> [!div class="step-by-step"]
+> [上一頁](building-and-packaging-web-application-projects.md)
+> [下一頁](deploying-web-packages.md)

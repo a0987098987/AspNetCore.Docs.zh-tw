@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/code-editing-in-web-forms-pages
-title: "編輯程式碼的 Visual Studio 2013 中的 ASP.NET Web Form |Microsoft 文件"
+title: 編輯程式碼的 Visual Studio 2013 中的 ASP.NET Web Form |Microsoft 文件
 author: Erikre
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/03/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 8714f673cb0434189ca23d2dda14035d8652a051
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 79b10df04432490d6338dadb8f7ddd36192beb3e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Visual Studio 2013 中的程式碼編輯的 ASP.NET Web Form
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/24/2018
     >   
     > 如果您使用 Visual Studio，本逐步解說假設您已經選擇**Web 程式開發**設定的集合，您會啟動 Visual Studio 的第一次。 如需詳細資訊，請參閱[如何： 選取 Web 程式開發環境設定](https://msdn.microsoft.com/library/ff521558.aspx)。
 
- 如需 Visual Studio 和 ASP.NET 的簡介，請參閱[在 Visual Studio 2013 中建立基本的 ASP.NET 4.5 Web Form 頁面](creating-a-basic-web-forms-page.md)。   
+  如需 Visual Studio 和 ASP.NET 的簡介，請參閱[在 Visual Studio 2013 中建立基本的 ASP.NET 4.5 Web Form 頁面](creating-a-basic-web-forms-page.md)。   
  
 
 ## <a name="creating-a-web-application-project-and-a-page"></a>建立 Web 應用程式專案和頁面
@@ -98,19 +98,19 @@ ms.lasthandoff: 01/24/2018
 
 
 1. 在**設計**檢視中，按兩下空白網頁，以建立的處理常式**負載**網頁事件。   
-您使用只做為位置的事件處理常式撰寫一些程式碼。
+   您使用只做為位置的事件處理常式撰寫一些程式碼。
 2. 內部處理常式中，輸入下列行，其中包含錯誤和按**ENTER**:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample1.cs)]
 
- 當您按**ENTER**，程式碼編輯器中放置綠色及紅色底線 (通常呼叫&quot;曲線&quot;行) 下的程式碼有問題的區域。 綠色的底線表示警告。 紅色底線指出您必須修正的錯誤。 
+   當您按**ENTER**，程式碼編輯器中放置綠色及紅色底線 (通常呼叫&quot;曲線&quot;行) 下的程式碼有問題的區域。 綠色的底線表示警告。 紅色底線指出您必須修正的錯誤。 
 
     將滑鼠指標`myStr`查看會告訴您有關警告的工具提示。 此外，請將滑鼠指標上的紅色底線，以查看錯誤訊息。
 
     下圖顯示的程式碼以底線表示。
 
     ![在 [設計] 檢視中的歡迎文字](code-editing-in-web-forms-pages/_static/image5.png "設計 檢視中的歡迎文字")  
- 必須先修正錯誤，加上分號`;`到一行的結尾。 警告只是通知您您未使用`myStr`尚未變數。  
+   必須先修正錯誤，加上分號`;`到一行的結尾。 警告只是通知您您未使用`myStr`尚未變數。  
 
     > [!NOTE] 
     > 
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample2.cs?highlight=3-16)]
 
- 程式碼會建立**ArrayList**物件，若要載入的值，會使用迴圈，然後再使用另一個迴圈顯示的內容**ArrayList**物件。
+   程式碼會建立**ArrayList**物件，若要載入的值，會使用迴圈，然後再使用另一個迴圈顯示的內容**ArrayList**物件。
 4. 按**CTRL + F5**來執行網頁，然後按一下**按鈕**先確定您會看到下列輸出：   
 
     [!code-html[Main](code-editing-in-web-forms-pages/samples/sample3.html)]

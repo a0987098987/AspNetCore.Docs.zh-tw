@@ -1,7 +1,7 @@
 ---
-title: "移轉的驗證和身分識別，ASP.NET Core"
+title: 將驗證和身分識別移轉至 ASP.NET Core
 author: ardalis
-description: "了解如何將驗證和身分識別從 ASP.NET MVC 專案移轉至 ASP.NET Core MVC 專案。"
+description: 了解如何將驗證和身分識別從 ASP.NET MVC 專案移轉至 ASP.NET Core MVC 專案。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/identity
-ms.openlocfilehash: bf452ad3969863f8f058b29a31f19af13cb2fc6b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 320f5e079316114832e639d62c780a0639df0c61
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-authentication-and-identity-to-aspnet-core"></a>移轉的驗證和身分識別，ASP.NET Core
+# <a name="migrate-authentication-and-identity-to-aspnet-core"></a>將驗證和身分識別移轉至 ASP.NET Core
 
 <a name="migration-identity"></a>
 

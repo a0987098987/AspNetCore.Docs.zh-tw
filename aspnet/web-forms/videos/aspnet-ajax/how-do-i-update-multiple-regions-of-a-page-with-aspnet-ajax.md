@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax
-title: "[如何:]更新與 ASP.NET AJAX 的網頁的多個區域？ | Microsoft Docs"
+title: '[如何:]更新與 ASP.NET AJAX 的網頁的多個區域？ | Microsoft Docs'
 author: scottgolightly
-description: "在這段影片我們了解 ASP.NET AJAX UpdatePanel 控制項提供您可以使用更新的 Web 網頁 respons 中的多個區域的兩個屬性..."
+description: 在這段影片我們了解 ASP.NET AJAX UpdatePanel 控制項提供您可以使用更新的 Web 網頁 respons 中的多個區域的兩個屬性...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: a0ddbbdcc061c4d2a69e1bbf9aeb4a50ebd519fc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d48f90bb57a796aeaa842a964688b8fdad64196
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax"></a>[如何:]更新與 ASP.NET AJAX 的網頁的多個區域？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （7 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-implement-the-ajax-after-processing-pattern.md)
-[下一頁](how-do-i-choose-between-methods-of-ajax-page-updates.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-implement-the-ajax-after-processing-pattern.md)
+> [下一頁](how-do-i-choose-between-methods-of-ajax-page-updates.md)

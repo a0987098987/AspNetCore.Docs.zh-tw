@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
-title: "建立使用商務規則驗證模型 |Microsoft 文件"
+title: 建立使用商務規則驗證模型 |Microsoft 文件
 author: microsoft
-description: "步驟 3 說明如何建立模型，我們可以使用這兩個查詢，並更新資料庫中我們 NerdDinner 應用程式。"
+description: 步驟 3 說明如何建立模型，我們可以使用這兩個查詢，並更新資料庫中我們 NerdDinner 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
 msc.type: authoredcontent
-ms.openlocfilehash: dbe6370979f218988c168df3e80314ef9b338fbd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5a482474fd2f41836f70952306ada5cd9136455
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="build-a-model-with-business-rule-validations"></a>建立使用商務規則驗證模型
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -228,6 +228,6 @@ NerdDinner 應用程式中，我們會定義 DinnerRepository 類別具有下列
 
 我們現在加入某些控制器和檢視的專案，我們可以使用它來建立其周圍的 HTML UI 體驗。
 
->[!div class="step-by-step"]
-[上一頁](create-a-database.md)
-[下一頁](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [!div class="step-by-step"]
+> [上一頁](create-a-database.md)
+> [下一頁](use-controllers-and-views-to-implement-a-listingdetails-ui.md)

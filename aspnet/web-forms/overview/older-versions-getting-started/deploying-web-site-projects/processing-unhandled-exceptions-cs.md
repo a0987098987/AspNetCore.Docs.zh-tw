@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
-title: "處理未處理的例外狀況 (C#) |Microsoft 文件"
+title: 處理未處理的例外狀況 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在生產環境中的 web 應用程式就會發生執行階段錯誤時，務必通知開發人員，並記錄錯誤，因此可能會在中診斷 a la..."
+description: 在生產環境中的 web 應用程式就會發生執行階段錯誤時，務必通知開發人員，並記錄錯誤，因此可能會在中診斷 a la...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dda73ca1878396e04b8ff04a255c25bf26ed4eff
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: fccd529f5c489ed28f3cb01f07ffdc4452ead36d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="processing-unhandled-exceptions-c"></a>處理未處理的例外狀況 (C#)
 ====================
@@ -167,6 +167,6 @@ ASP.NET 執行階段中的 ASP.NET web 應用程式發生未處理的例外狀�
 - [使用 ASP.NET`Global.asax`檔案](http://articles.techrepublic.com.com/5100-10878_11-5771721.html)
 - [使用`HttpApplication`執行個體](https://msdn.microsoft.com/library/a0xez8f2.aspx)
 
->[!div class="step-by-step"]
-[上一頁](displaying-a-custom-error-page-cs.md)
-[下一頁](logging-error-details-with-asp-net-health-monitoring-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](displaying-a-custom-error-page-cs.md)
+> [下一頁](logging-error-details-with-asp-net-health-monitoring-cs.md)

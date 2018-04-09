@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
-title: "驗證使用者使用表單驗證 (VB) |Microsoft 文件"
+title: 驗證使用者使用表單驗證 (VB) |Microsoft 文件
 author: microsoft
-description: "了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理太..."
+description: 了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理太...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c7d52e51158575c674264efd19c81de9b077d27b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ff425a4c9728de2eec3d0c94e76cb51a15de487
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-vb"></a>驗證使用者使用表單驗證 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何使用 [Authorize] 屬性以密碼保護的 MVC 應用程式中的特定頁面。 您了解如何使用網站管理工具來建立及管理使用者和角色。 您也會了解如何設定使用者帳戶和角色的資訊儲存在何處。
 
@@ -33,25 +33,25 @@ ms.lasthandoff: 11/10/2017
 
 **圖 1 – 啟動網站管理工具**
 
-![clip_image002 [4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
+![clip_image002[4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
 
 在網站管理工具中，您可以選取 [安全性] 索引標籤建立新的使用者和角色。按一下**建立使用者**連結，以建立名為 Stephen 的新使用者 （請參閱圖 2）。 作者： Stephen 使用者提供您想要的任何密碼 (例如，*密碼*)。
 
 **圖 2 – 建立新的使用者**
 
-![clip_image004 [4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
+![clip_image004[4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
 
 您可以建立新的角色啟用角色，定義一個或多個角色。 按一下 啟用角色**啟用角色**連結。 接下來，建立名為的角色*管理員*按一下**建立或管理角色**連結 （請參閱圖 3）。
 
 **圖 3 – 建立新的角色**
 
-![clip_image006 [4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
+![clip_image006[4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
 
 最後，建立名為 Sally 的新使用者並 Sally 關聯的系統管理員角色，按一下 [建立使用者] 連結，然後建立 Sally 時，請選取系統管理員 （請參閱圖 4）。
 
 **圖 4-新增使用者至角色**
 
-![clip_image008 [4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
+![clip_image008[4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
 
 當完成後時，您應該有兩個名為 Stephen 和 Sally 的新使用者。 您也應該擁有名為系統管理員的新角色。 Sally 是系統管理員角色的成員，且 Stephen。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/10/2017
 
 **圖 5-登入檢視**
 
-![clip_image010 [4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
+![clip_image010[4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
 
 輸入您的使用者名稱和密碼，您可以使用登入檢視。 如果您不是已註冊的使用者，則您可以按一下**註冊**連結以瀏覽至登錄檢視 （請參閱圖 6）。 您可以使用 [暫存器] 檢視來建立新的使用者帳戶。
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/10/2017
 
 您可以使用 [Authorize] 屬性來限制控制器動作，以一組特定的使用者或一組特定的使用者角色存取。 例如，修改的主控制器清單 2 中包含兩個名為 StephenSecrets() 和 AdministratorSecrets() 的新動作。
 
-**列出 2 – Controllers\HomeController.vb**
+**Listing 2 – Controllers\HomeController.vb**
 
 [!code-vb[Main](authenticating-users-with-forms-authentication-vb/samples/sample2.vb)]
 
@@ -117,8 +117,8 @@ ASP.NET SQL Server 安裝精靈可讓您選取網路上的 SQL Server 資料庫�
 
 > [!NOTE]
 > 如果您不想要使用 ASP.NET SQL Server 安裝精靈，您可以新增應用程式服務的資料庫物件的下列資料夾中找到 SQL 指令碼：
-
-
+> 
+> 
 > C:\Windows\Microsoft.NET\Framework\v2.0.50727
 
 
@@ -152,6 +152,6 @@ ASP.NET SQL Server 安裝精靈可讓您選取網路上的 SQL Server 資料庫�
 
 在本教學課程中，您學會如何建立 ASP.NET MVC 應用程式時，使用表單驗證。 首先，您學到如何利用網站管理工具建立新的使用者和角色。 接下來，您學會如何使用 [Authorize] 屬性，以避免未經授權的使用者叫用控制器的動作。 最後，您學會如何設定您的 MVC 應用程式，將使用者和角色資訊儲存在實際執行的資料庫。
 
->[!div class="step-by-step"]
-[上一頁](preventing-javascript-injection-attacks-cs.md)
-[下一頁](authenticating-users-with-windows-authentication-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](preventing-javascript-injection-attacks-cs.md)
+> [下一頁](authenticating-users-with-windows-authentication-vb.md)

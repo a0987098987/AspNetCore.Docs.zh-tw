@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/unit-testing-signalr-applications
-title: "單元測試 SignalR 應用程式 |Microsoft 文件"
+title: 單元測試 SignalR 應用程式 |Microsoft 文件
 author: pfletcher
-description: "本文說明如何使用 SignalR 2.0 的單元測試功能。"
+description: 本文說明如何使用 SignalR 2.0 的單元測試功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: d767e1a9d27670387133e5a48a8f92f5bdd39d9e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cff866716cb1179e02b930f33cb0f8c33d4a6cf0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="unit-testing-signalr-applications"></a>單元測試的 SignalR 應用程式
 ====================
@@ -72,11 +72,11 @@ XUnit.net 會用來控制測試。Moq 將用來建立[模擬](http://en.wikipedi
     ![加入專案參考](unit-testing-signalr-applications/_static/image3.png)
 6. 將 SignalR、 Moq 和 XUnit 封裝加入**TestLibrary**專案。 在**Package Manager Console**，將**預設專案**下拉式清單來**TestLibrary**。 在主控台視窗中執行下列命令：
 
-    - `Install-Package Microsoft.AspNet.SignalR`
-    - `Install-Package Moq`
-    - `Install-Package XUnit`
+   - `Install-Package Microsoft.AspNet.SignalR`
+   - `Install-Package Moq`
+   - `Install-Package XUnit`
 
-    ![安裝封裝](unit-testing-signalr-applications/_static/image4.png)
+     ![安裝封裝](unit-testing-signalr-applications/_static/image4.png)
 7. 建立測試檔案。 以滑鼠右鍵按一下**TestLibrary**專案，然後按一下**新增...**，**類別**。 將新類別**Tests.cs**。
 8. Tests.cs 的內容取代為下列程式碼。
 

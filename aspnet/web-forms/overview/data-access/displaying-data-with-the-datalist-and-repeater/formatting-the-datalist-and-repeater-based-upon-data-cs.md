@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs
-title: "格式化 DataList 和中繼器根據資料 (C#) |Microsoft 文件"
+title: 格式化 DataList 和中繼器根據資料 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程，我們將逐步完成我們如何格式化 DataList 和中繼器控制項，藉由使用格式化的功能與外觀的範例..."
+description: 在本教學課程，我們將逐步完成我們如何格式化 DataList 和中繼器控制項，藉由使用格式化的功能與外觀的範例...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 604aa63919a881e828b6a3620360c3d1133c5830
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00dac460ad905d34632bca3249e019ddc626e440
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a>格式化 DataList 和中繼器根據資料 (C#)
 ====================
@@ -42,19 +42,19 @@ ms.lasthandoff: 01/24/2018
 
 當資料繫結至資料清單，從資料來源控制項，或是透過程式設計方式將資料指派給控制項 s`DataSource`屬性，並呼叫其`DataBind()`方法中，DataList 的`DataBinding`事件引發時，資料來源列舉與每個資料記錄繫結至資料清單。 資料來源中的每一筆記錄，建立在 DataList [ `DataListItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalistitem.aspx)也就是物件，然後繫結至目前的記錄。 在此過程中，DataList 會引發兩個事件：
 
-- **`ItemCreated`**之後，都會引發`DataListItem`已建立
-- **`ItemDataBound`**目前的記錄繫結至後引發`DataListItem`
+- **`ItemCreated`** 之後，都會引發`DataListItem`已建立
+- **`ItemDataBound`** 目前的記錄繫結至後引發 `DataListItem`
 
 下列步驟概述 DataList 控制項的資料繫結程序。
 
 1. DataList s [ `DataBinding`事件](https://msdn.microsoft.com/library/system.web.ui.control.databinding.aspx)引發
 2. 資料繫結至資料清單  
   
- 資料來源中的每一筆記錄 
+   資料來源中的每一筆記錄 
 
     1. 建立`DataListItem`物件
     2. 引發[`ItemCreated`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemcreated.aspx)
-    3. 繫結至資料錄`DataListItem`
+    3. 繫結至資料錄 `DataListItem`
     4. 引發[`ItemDataBound`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.itemdatabound.aspx)
     5. 新增`DataListItem`至`Items`集合
 
@@ -172,7 +172,7 @@ DataList 控制項，格式變更為整個項目可以使用實作`DataListItem`
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample5.aspx)]
 
-在 DataList s `ItemTemplate` `ProductNameLabel`標籤 Web 控制項目前顯示的產品的名稱藉由指派其`Text`屬性結果的`<%# Eval("ProductName") %>`。 若要讓它顯示的名稱加上的文字 [DISCONTINUED]，如有需要更新宣告式語法，使改為將指派`Text`屬性值的`DisplayProductNameAndDiscontinuedStatus`方法。 當此情況下，我們就必須傳入 s 產品名稱和已停止的值使用`Eval("columnName")`語法。 `Eval`傳回值的型別`Object`，但`DisplayProductNameAndDiscontinuedStatus`方法預期輸入的參數的型別`String`和`Boolean`; 因此，我們必須將傳回的值轉型`Eval`方法預期的輸入的參數類型，就像這樣：
+在 DataList s `ItemTemplate` `ProductNameLabel`標籤 Web 控制項目前顯示的產品的名稱藉由指派其`Text`屬性結果的`<%# Eval("ProductName") %>`。 若要讓它顯示的名稱加上的文字 [DISCONTINUED]，如有需要更新宣告式語法，使改為將指派`Text`屬性值的`DisplayProductNameAndDiscontinuedStatus`方法。 當此情況下，我們就必須傳入 s 產品名稱和已停止的值使用`Eval("columnName")`語法。 `Eval` 傳回值的型別`Object`，但`DisplayProductNameAndDiscontinuedStatus`方法預期輸入的參數的型別`String`和`Boolean`; 因此，我們必須將傳回的值轉型`Eval`方法預期的輸入的參數類型，就像這樣：
 
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-cs/samples/sample6.aspx)]
@@ -200,12 +200,12 @@ DataList 控制項，格式變更為整個項目可以使用實作`DataListItem`
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 本教學課程中的前導檢閱者已 Yaakov Ellis、 袁 Schmidt 和 Liz Shulok。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](displaying-data-with-the-datalist-and-repeater-controls-cs.md)
-[下一頁](showing-multiple-records-per-row-with-the-datalist-control-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](displaying-data-with-the-datalist-and-repeater-controls-cs.md)
+> [下一頁](showing-multiple-records-per-row-with-the-datalist-control-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/mvc5
-title: "ASP.NET MVC 5 |Microsoft 文件"
+title: ASP.NET MVC 5 | Microsoft Docs
 author: rick-anderson
-description: "ASP.NET MVC 5 ASP.NET MVC 5 是建置可擴充、 以標準為基礎的 web 應用程式使用信譽良好的設計模式與強大的 AS.架構..."
+description: ASP.NET MVC 5 ASP.NET MVC 5 是建置可擴充、 以標準為基礎的 web 應用程式使用信譽良好的設計模式與強大的 AS.架構...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/mvc5
 msc.type: content
-ms.openlocfilehash: e57163469ae4606df0fc17e3e054b7696782a084
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1b3f920b51a70757ec0e20e36fa8e7dc329e663d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="aspnet-mvc-5"></a>ASP.NET MVC 5
 ====================
@@ -32,21 +32,21 @@ Web MVC 專案範本緊密整合新的一個 ASP.NET 體驗中。 您可以自�
 
 要用於驗證和身分識別管理 ASP.NET 識別的 MVC 專案範本已更新。 將 Facebook 和 Google 驗證和新的成員資格應用程式開發介面設為特色的教學課程，請參閱[建立 ASP.NET MVC 5 應用程式與 Facebook、 Google OAuth2 和 OpenID 登入](overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)和[部署安全的 ASP.NET MVC 應用程式成員資格、 OAuth、 及 Windows Azure 網站的 SQL Database](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)。
 
-### <a name="bootstrap"></a>啟動程序
+### <a name="bootstrap"></a>Bootstrap
 
 MVC 專案範本已更新為使用[Bootstrap](http://getbootstrap.com/)提供精緻且回應迅速外觀及操作，您可以輕鬆地自訂。 如需詳細資訊，請參閱[啟動 Visual Studio 2013 的 web 專案範本中的程序](../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap)。
 
 ### <a name="authentication-filters"></a>驗證篩選條件
 
-[驗證篩選條件](http://www.dotnetcurry.com/showarticle.aspx?ID=957)是一種新的 ASP.NET MVC 管線中的授權篩選條件之前執行，並允許您指定驗證邏輯每個動作，ASP.NET MVC 中篩選每個控制器，或全域的所有控制站。 驗證篩選條件處理要求中的認證，並提供對應的主體。 驗證篩選條件也可以將驗證挑戰回應未經授權的要求。 請參閱[ASP.NET MVC 5 驗證篩選條件](http://www.dotnetcurry.com/showarticle.aspx?ID=957)，[驗證篩選條件，在 ASP.NET MVC 5](http://theshravan.net/blog/authentication-filters-in-asp-net-mvc-5/)和[最後新 ASP.NET MVC 5 驗證篩選條件 ！](http://hackwebwith.net/finally-the-new-asp-net-mvc-5-authentication-filters/)。
+[驗證篩選條件](http://www.dotnetcurry.com/showarticle.aspx?ID=957)是一種新的 ASP.NET MVC 管線中的授權篩選條件之前執行，並允許您指定驗證邏輯每個動作，ASP.NET MVC 中篩選每個控制器，或全域的所有控制站。 驗證篩選條件處理要求中的認證，並提供對應的主體。 驗證篩選條件也可以將驗證挑戰回應未經授權的要求。 請參閱[ASP.NET MVC 5 驗證篩選條件](http://www.dotnetcurry.com/showarticle.aspx?ID=957)， [ASP.NET MVC 5 中的驗證篩選條件](http://theshravan.net/blog/authentication-filters-in-asp-net-mvc-5/)。
 
 ### <a name="filter-overrides"></a>篩選會覆寫
 
 您可以現在覆寫的篩選會套用至指定的動作方法或控制器藉由指定[覆寫篩選](http://www.davidhayden.me/blog/filter-overrides-in-asp-net-mvc-5)。 覆寫篩選條件會指定一組篩選器型別，且不應該執行給定的範圍 （動作或控制器）。 這可讓您設定篩選器，全域套用，但無法套用至特定動作或控制器中排除某些全域篩選器。 請參閱[新篩選器會覆寫功能，在 ASP.NET MVC 5 和 ASP.NET Web API 2](https://weblogs.asp.net/imranbaloch/archive/2013/09/25/new-filter-overrides-in-asp-net-mvc-5-and-asp-net-web-api-2.aspx)，[如何使用 ASP.NET MVC 5 篩選會覆寫功能](http://hackwebwith.net/how-to-use-the-asp-net-mvc-5-filter-overrides-feature/)，和[篩選會覆寫在 ASP.NET MVC 5](http://www.davidhayden.me/blog/filter-overrides-in-asp-net-mvc-5)
 
-### <a name="attribute-routing"></a>路由屬性
+### <a name="attribute-routing"></a>屬性路由
 
-ASP.NET MVC 現在支援[屬性路由](https://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx)，這點受惠 Tim McCall，作者比重[http://attributerouting.net](http://attributerouting.net)。 路由屬性中，您可以指定您的路由加上附註您的動作與控制器。
+ASP.NET MVC 現在支援[屬性路由](https://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx)，這點受惠 Tim McCall，作者比重[ http://attributerouting.net ](http://attributerouting.net)。 路由屬性中，您可以指定您的路由加上附註您的動作與控制器。
 
 ## <a name="new-web-project-experience"></a>新的 Web 專案經驗
 

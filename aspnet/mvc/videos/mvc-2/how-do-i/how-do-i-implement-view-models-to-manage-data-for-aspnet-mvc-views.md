@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
-title: "如何： 實作檢視模型，以管理 ASP.NET MVC 檢視的資料嗎？ | Microsoft Docs"
+title: 如何： 實作檢視模型，以管理 ASP.NET MVC 檢視的資料嗎？ | Microsoft Docs
 author: rick-anderson
-description: "在這段影片 Chris Pels 示範如何使用的概念&quot;檢視模型&quot;管理 ASP.NET MVC 檢視表的資料。 首先，範例 MVC 專案正在建立..."
+description: 在這段影片 Chris Pels 示範如何使用的概念&quot;檢視模型&quot;管理 ASP.NET MVC 檢視表的資料。 首先，範例 MVC 專案正在建立...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
 msc.type: video
-ms.openlocfilehash: a2ca17065d1db0dceb4210d18ddd7547d9b1d960
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95be7e6bdbefe3f988fbc4065a8298395fb3ac89
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-implement-view--models-to-manage-data-for-aspnet-mvc-views"></a>如何： 實作檢視模型，以管理 ASP.NET MVC 檢視的資料嗎？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （21 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-[下一頁](how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
+> [下一頁](how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)

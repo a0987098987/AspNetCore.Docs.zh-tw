@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
-title: "導入 ASP.NET Web Pages-顯示資料 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-顯示資料 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何在 WebMatrix 中建立資料庫，以及如何顯示在網頁中的資料庫資料，當您使用 ASP.NET Web Pages (Razor)。 它會假設 y..."
+description: 本教學課程會示範如何在 WebMatrix 中建立資料庫，以及如何顯示在網頁中的資料庫資料，當您使用 ASP.NET Web Pages (Razor)。 它會假設 y...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: fdb9af0ba87c7802c63451ac7aa422e0020b5719
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6c66e5fb0a1a49da411286e19c7954f83055c3fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---displaying-data"></a>導入的 ASP.NET Web Pages-顯示資料
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > 功能/技術討論：
 > 
 > - WebMatrix 資料庫工具。
-> - `WebGrid`協助程式。
+> - `WebGrid` 協助程式。
 
 
 ## <a name="what-youll-build"></a>您將建置
@@ -338,6 +338,6 @@ WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站�
 
 - [使用 Razor 語法的 ASP.NET Web 程式設計簡介](https://go.microsoft.com/fwlink/?LinkID=202890)
 
->[!div class="step-by-step"]
-[上一頁](intro-to-web-pages-programming.md)
-[下一頁](form-basics.md)
+> [!div class="step-by-step"]
+> [上一頁](intro-to-web-pages-programming.md)
+> [下一頁](form-basics.md)

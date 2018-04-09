@@ -1,28 +1,28 @@
 ---
 uid: aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
-title: "開始使用 OWIN 與 Katana |Microsoft 文件"
+title: 開始使用 OWIN 與 Katana |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/27/2013
 ms.topic: article
 ms.assetid: 6dae249f-5ac6-4f6e-bc49-13bcd5a54a70
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 8922aada723da9b149ec111902fcd883c8241dfb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ac0302ef1a786f6b1eef8119b3134a965f01c533
+ms.sourcegitcommit: 5ab5c5f4bfdb0150f42ba84c2770eadf540cae48
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 <a name="getting-started-with-owin-and-katana"></a>OWIN 和 Katana 入門
 ====================
 由[Mike Wasson](https://github.com/MikeWasson)
 
-[開啟 Web 介面的.NET (OWIN)](http://owin.org/)定義.NET web 伺服器和 web 應用程式之間的抽象概念。 透過分離應用程式的 web 伺服器，OWIN 可讓您更輕鬆地建立適用於.NET web 開發的中介軟體。 OWIN 此外，可以更輕鬆地 web 應用程式移植到其他主機 &#8212; 例如，在 Windows 服務或其他處理程序中自我裝載。
+[開啟 Web 介面的.NET (OWIN)](http://owin.org/)定義.NET web 伺服器和 web 應用程式之間的抽象概念。 透過分離應用程式的 web 伺服器，OWIN 可讓您更輕鬆地建立適用於.NET web 開發的中介軟體。 OWIN 此外，可以更輕鬆地連接埠的 web 應用程式的其他主機&#8212;，例如 Windows 服務或其他處理程序中自我裝載。
 
 OWIN 是社群所擁有的規格，而不實作。 Katana 專案是由 Microsoft 開發的開放原始碼 OWIN 元件的一組。 OWIN 和 Katana 的一般概觀，請參閱[的專案 Katana 概觀](an-overview-of-project-katana.md)。 在本文中，我將直接跳至程式碼以開始。
 
@@ -54,7 +54,7 @@ OWIN 是社群所擁有的規格，而不實作。 Katana 專案是由 Microsoft
 
 ![](getting-started-with-owin-and-katana/_static/image4.png)
 
-將下列程式碼加入至 `Startup1.Configuration` 方法中：
+將下列程式碼加入 `Startup1.Configuration` 方法：
 
 [!code-csharp[Main](getting-started-with-owin-and-katana/samples/sample1.cs?highlight=3)]
 
@@ -74,7 +74,7 @@ OWIN 是社群所擁有的規格，而不實作。 Katana 專案是由 Microsoft
 
 ## <a name="self-host-owin-in-a-console-application"></a>主控台應用程式中自我裝載的 OWIN
 
-所以可以輕鬆地將此應用程式的自訂處理序中自我裝載的 IIS 裝載。 使用 IIS 裝載時，IIS 可作為 HTTP 伺服器和處理序主控伺服器。 具有自我裝載，您的應用程式會建立處理程序並使用**HttpListener**與 HTTP 伺服器的類別。
+所以可以輕鬆地將此應用程式的自訂處理序中自我裝載的 IIS 裝載。 以 IIS 裝載時，IIS 會做為 HTTP 伺服器，以及裝載服務的處理序。 具有自我裝載，您的應用程式會建立處理程序並使用**HttpListener**與 HTTP 伺服器的類別。
 
 在 Visual Studio 中建立新的主控台應用程式。 在 [封裝管理員主控台] 視窗中，輸入下列命令：
 

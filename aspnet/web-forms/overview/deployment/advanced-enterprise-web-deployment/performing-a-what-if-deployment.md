@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
-title: "執行是什麼，若部署 |Microsoft 文件"
+title: 執行是什麼，若部署 |Microsoft 文件
 author: jrjlee
-description: "本主題說明如何執行 '該怎麼辦' （或模擬） 使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 和 V 部署..."
+description: 本主題說明如何執行 '該怎麼辦' （或模擬） 使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 和 V 部署...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cea805c86f0764c7443ccc5c9f89248860a6a842
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c1a13f38c8e629bcd615190b00104109e25fb289
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-a-what-if-deployment"></a>執行"What If"部署
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > 本主題說明如何執行 「 假設 」 （或模擬） 使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 與 VSDBCMD 部署。 這可讓您判斷特定的目標環境上部署邏輯的影響之前您實際部署應用程式。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，請在它的組建和部署程序由兩個專案檔 & #x 2014年; one 包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，兩個專案檔案中的組建和部署程序控制由&#x2014;其中一個包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="performing-a-what-if-deployment-for-web-packages"></a>執行"What If"部署 Web 封裝
 
@@ -41,7 +41,7 @@ Web Deploy 包含可讓您執行 「 假設 」 的部署中的功能 （或試�
 
 因為 「 如果 」 部署不會實際變更目的地伺服器上，什麼它不一定會執行作業的任何項目是預測是否會成功部署。
 
-中所述[部署 Web 封裝](../web-deployment-in-the-enterprise/deploying-web-packages.md)，您可以部署 web 封裝，使用 Web Deploy; 中兩個方式 & #x 2014年使用 MSDeploy.exe 命令列公用程式直接或透過執行*。 deploy.cmd*在建置程序會產生的檔案。
+中所述[部署 Web 封裝](../web-deployment-in-the-enterprise/deploying-web-packages.md)，您可以部署 web 封裝使用兩種方式的 Web Deploy&#x2014;使用 MSDeploy.exe 命令列公用程式，直接或透過執行*。 deploy.cmd*檔案會產生建置程序。
 
 如果您直接使用 MSDeploy.exe，您可以藉由新增執行 「 假設 」 部署**– whatif**旗標設為您的命令。 例如，若要評估您部署到預備環境的 ContactManager.Mvc.zip 封裝會發生什麼事，MSDeploy 命令應該與以下相似：
 
@@ -122,7 +122,7 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 [!code-xml[Main](performing-a-what-if-deployment/samples/sample6.xml)]
 
 
-同樣地下, 一個目標會使用 VSDBCMD 公用程式來部署資料庫。 根據預設， **/dd**未包含參數。 這表示 VSDBCMD 會產生部署指令碼，但不是會部署資料庫 & #x 2014; 也就是說，「 假設 」 狀況。 如果**WhatIf**屬性未設定為**true**、 **/dd**加入參數及 VSDBCMD 會部署資料庫。
+同樣地下, 一個目標會使用 VSDBCMD 公用程式來部署資料庫。 根據預設， **/dd**未包含參數。 這表示 VSDBCMD 會產生部署指令碼，但不是會將部署資料庫&#x2014;換句話說，「 假設 」 狀況。 如果**WhatIf**屬性未設定為**true**、 **/dd**加入參數及 VSDBCMD 會部署資料庫。
 
 
 [!code-xml[Main](performing-a-what-if-deployment/samples/sample7.xml)]
@@ -144,6 +144,6 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 
 如需有關 Web Deploy 命令列語法的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。 如需命令列選項，當您使用的指引*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如需 VSDBCMD 命令列語法的指引，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](advanced-enterprise-web-deployment.md)
-[下一頁](customizing-database-deployments-for-multiple-environments.md)
+> [!div class="step-by-step"]
+> [上一頁](advanced-enterprise-web-deployment.md)
+> [下一頁](customizing-database-deployments-for-multiple-environments.md)

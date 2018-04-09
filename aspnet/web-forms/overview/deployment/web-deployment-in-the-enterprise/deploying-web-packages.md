@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
-title: "部署 Web 封裝 |Microsoft 文件"
+title: 部署 Web 封裝 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何發行 web 部署套件到遠端伺服器使用網際網路資訊服務 (IIS) Web Deployment Tool (Web..."
+description: 本主題描述如何發行 web 部署套件到遠端伺服器使用網際網路資訊服務 (IIS) Web Deployment Tool (Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: cd2bfa07262155b68ac4605fc7e9748d276d3193
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 5d3af0fdcc6e7ae20194ba658e0cf72ad22c1234
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-web-packages"></a>部署 Web 封裝
 ====================
@@ -43,10 +43,10 @@ ms.lasthandoff: 03/15/2018
 
 執行 [*專案名稱*]*。 deploy.cmd*檔案是最簡單的方式部署 web 封裝。 特別是，使用*。 deploy.cmd*檔案可提供透過直接使用 MSDeploy.exe 的下列優點：
 
-- 您不需要指定的 web 部署套件 & #x 2014; 位置*。 deploy.cmd*檔案已經知道其所在。
-- 您不需要指定的位置*SetParameters.xml*檔案 & #x 2014; *。 deploy.cmd*檔案已經知道其所在。
-- 您不需要指定來源和目的地 MSDeploy 提供者 & #x 2014; *。 deploy.cmd*檔案已經知道要使用的值。
-- 您不需要指定 MSDeploy 作業設定 & #x 2014; *。 deploy.cmd*檔案常需要的值給 MSDeploy.exe 命令會自動新增。
+- 您不需要指定的 web 部署套件的位置&#x2014; *。 deploy.cmd*檔案已經知道其所在。
+- 您不需要指定的位置*SetParameters.xml*檔案&#x2014; *。 deploy.cmd*檔案已經知道其所在。
+- 您不需要指定來源和目的地的 MSDeploy 提供者&#x2014; *。 deploy.cmd*檔案已經知道要使用的值。
+- 您不需要指定 MSDeploy 作業設定&#x2014; *。 deploy.cmd*檔案常需要的值給 MSDeploy.exe 命令會自動新增。
 
 在使用之前*。 deploy.cmd*檔案來部署 web 封裝時，您應該確保：
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/15/2018
 在這個範例中：
 
 - **/Y**旗標指出您想要實際部署封裝，而不是執行使用試用版執行。
-- **/M**旗標，指出您想要將封裝部署到名為 TESTWEB1 的伺服器。 此值，從 MSDeploy.exe 會嘗試將封裝部署到 http://TESTWEB1/MSDeployAgentService 的 Web 部署遠端代理程式服務。
+- **/M**旗標，指出您想要將封裝部署到名為 TESTWEB1 的伺服器。 此值，從 MSDeploy.exe 會嘗試將封裝部署至 Web 部署遠端代理程式服務在http://TESTWEB1/MSDeployAgentService。
 - **/A**旗標，指出您想要使用 NTLM 驗證。 因此，您不需要指定使用者名稱和密碼。
 
 說明如何使用*。 deploy.cmd*檔案可簡化部署程序，看看 MSDeploy.exe 命令取得產生並執行當您執行*ContactManager.Mvc.deploy.cmd*使用以上所顯示的選項。
@@ -117,7 +117,7 @@ ms.lasthandoff: 03/15/2018
 - A **– 目的地**參數，指出您的資料移至的位置。
 - A **– 動詞**參數，指出[作業](https://technet.microsoft.com/library/dd568989(WS.10).aspx)您想要執行。
 
-MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/library/dd569040(WS.10).aspx)來處理來源和目的地的資料。 Web Deploy 包含代表的範圍就能夠使用的應用程式和資料來源 & #x 2014年的提供者大量; 例如，有 SQL Server 資料庫、 IIS web 伺服器、 憑證、 全域組件快取 (GAC) 組件，提供者不同不同的組態檔，以及許多其他類型的資料。 這兩個**– 來源**參數和**– 目的地**參數必須指定提供者，在表單中**– 來源**: [*providerName*] = [*位置*]。 當您要將 web 套件部署至 IIS 網站時，您應該使用這些值：
+MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/library/dd569040(WS.10).aspx)來處理來源和目的地的資料。 Web Deploy 包含代表的範圍就能夠使用的應用程式和資料來源的提供者大量&#x2014;比方說，有 SQL Server 資料庫、 IIS web 伺服器、 憑證、 全域組件快取 (GAC) 組件，提供者不同不同的組態檔，以及許多其他類型的資料。 這兩個**– 來源**參數和**– 目的地**參數必須指定提供者，在表單中**– 來源**: [*providerName*] = [*位置*]。 當您要將 web 套件部署至 IIS 網站時，您應該使用這些值：
 
 - **– 來源**提供者一律是[封裝](https://technet.microsoft.com/library/dd569019(WS.10).aspx)。 例如: 
 
@@ -213,6 +213,6 @@ MSDeploy.exe 依賴[Web Deploy 提供者](https://technet.microsoft.com/library/
 
 如需如何建立及參數化 web 部署套件的指引，請參閱[建置和封裝 Web 應用程式專案](building-and-packaging-web-application-projects.md)和[Web 封裝部署的設定參數](configuring-parameters-for-web-package-deployment.md)。 如需如何建置和部署 web 封裝，從 Team Foundation Server (TFS) 執行個體的指引，請參閱[用於自動化 Web 部署設定 Team Foundation Server](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)。 如需如何自訂及部署程序的疑難排解資訊，請參閱[排除檔案和資料夾從部署](../advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment.md)。
 
->[!div class="step-by-step"]
-[上一頁](configuring-parameters-for-web-package-deployment.md)
-[下一頁](deploying-database-projects.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-parameters-for-web-package-deployment.md)
+> [下一頁](deploying-database-projects.md)

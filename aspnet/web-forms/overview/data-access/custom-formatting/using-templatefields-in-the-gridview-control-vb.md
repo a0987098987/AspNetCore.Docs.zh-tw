@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
-title: "在 GridView 控制項 (VB) 中使用 TemplateFields |Microsoft 文件"
+title: 在 GridView 控制項 (VB) 中使用 TemplateFields |Microsoft 文件
 author: rick-anderson
-description: "若要提供彈性，GridView 提供 TemplateField，呈現 使用範本。 範本可以包含靜態的 HTML、 Web 控制項的混合和..."
+description: 若要提供彈性，GridView 提供 TemplateField，呈現 使用範本。 範本可以包含靜態的 HTML、 Web 控制項的混合和...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 337765988cc6ec92384bec09a72fd00505d9a039
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f236c1cfaaeaa00f30b6a90553ad4e468e05ca23
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-templatefields-in-the-gridview-control-vb"></a>在 GridView 控制項 (VB) 中使用 TemplateFields
 ====================
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample2.aspx)]
 
-如您所見，TemplateField 所組成的兩個範本`ItemTemplate`具有標籤其`Text`屬性設定的值為`FirstName`資料欄位和`EditItemTemplate`與文字方塊控制項`Text`屬性也設定若要`FirstName`資料欄位。 資料繫結語法- `<%# Bind("fieldName") %>` -指出資料欄位 *`fieldName`* 繫結至指定的 Web 控制項屬性。
+如您所見，TemplateField 所組成的兩個範本`ItemTemplate`具有標籤其`Text`屬性設定的值為`FirstName`資料欄位和`EditItemTemplate`與文字方塊控制項`Text`屬性也設定若要`FirstName`資料欄位。 資料繫結語法- `<%# Bind("fieldName") %>` -指出資料欄位*`fieldName`*繫結至指定的 Web 控制項屬性。
 
 若要加入`LastName`資料欄位值，我們需要加入另一個標籤 Web 控制項，在此 TemplateField`ItemTemplate`並繫結其`Text`屬性`LastName`。 這可以手動或透過設計工具完成。 若要以手動方式執行，只要加入至適當的宣告式語法`ItemTemplate`:
 
@@ -239,7 +239,7 @@ TemplateFields 第三個使用中顯示有關 GridView 的中繼資料為基礎�
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-vb/samples/sample6.aspx)]
 
-`Container.DataItem`傳回`DataRowView`物件對應至`DataSource`記錄繫結至`GridViewRow`。 其`Row`屬性會傳回強型別`Northwind.EmployeesRow`，傳遞給`DisplayDaysOnJob`方法。 此資料繫結語法會直接在`ItemTemplate`（如下列宣告式語法中所示） 或可指派給`Text`標籤 Web 控制項的屬性。
+`Container.DataItem` 傳回`DataRowView`物件對應至`DataSource`記錄繫結至`GridViewRow`。 其`Row`屬性會傳回強型別`Northwind.EmployeesRow`，傳遞給`DisplayDaysOnJob`方法。 此資料繫結語法會直接在`ItemTemplate`（如下列宣告式語法中所示） 或可指派給`Text`標籤 Web 控制項的屬性。
 
 > [!NOTE]
 > 或者，而不是傳入`EmployeesRow`執行個體，我們可以只傳入`HireDate`值使用`<%# DisplayDaysOnJob(Eval("HireDate")) %>`。 不過，`Eval`方法會傳回`Object`，因此我們必須變更我們`DisplayDaysOnJob`接受類型的輸入的參數的方法簽章`Object`請改用。 我們無法盲目轉換`Eval("HireDate")`呼叫`DateTime`因為`HireDate`中的資料行`Employees`資料表可以包含`NULL`值。 因此，我們需要接受`Object`做為輸入參數的`DisplayDaysOnJob`方法，檢查是否有資料庫`NULL`值 (這可以透過`Convert.IsDBNull(objectToCheck)`)，然後據以繼續。
@@ -276,12 +276,12 @@ TemplateFields 第三個使用中顯示有關 GridView 的中繼資料為基礎�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Dan Jagers。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](custom-formatting-based-upon-data-vb.md)
-[下一頁](using-templatefields-in-the-detailsview-control-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](custom-formatting-based-upon-data-vb.md)
+> [下一頁](using-templatefields-in-the-detailsview-control-vb.md)

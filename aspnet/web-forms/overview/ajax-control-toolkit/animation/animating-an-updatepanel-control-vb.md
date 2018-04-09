@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-vb
-title: "建立動畫 UpdatePanel 控制項 (VB) |Microsoft 文件"
+title: 建立動畫 UpdatePanel 控制項 (VB) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0d1056fc798e22254e94e5cad54436576a297f7d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2c1114b74fd152a4ea85aa10850860f75573adee
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-an-updatepanel-control-vb"></a>建立動畫 UpdatePanel 控制項 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 UpdatePanel 的內容，特殊的擴充項存在，高度依賴動畫 framework: UpdatePanelAnimation。 本教學課程會示範如何設定這類動畫的 UpdatePanel。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容的`UpdatePanel`，特殊的擴充項存在，高度依賴動畫 framework: `UpdatePanelAnimation`。 本教學課程示範如何設定這類的動畫`UpdatePanel`。
 
@@ -43,8 +43,8 @@ ms.lasthandoff: 11/10/2017
 
 所需的標記`UpdatePanelAnimationExtender`控制項是相當類似於使用的標記`AnimationExtender`。 在`TargetControlID`屬性我們提供`ID`的`UpdatePanel`以動畫方式顯示; 內`UpdatePanelAnimationExtender`控制項，`<Animations>`項目會保存 XML 標記的動畫。 但是沒有一項差異： 事件和事件處理常式的數量會限制於`AnimationExtender`。 如`UpdatePanels`，只有兩個其中存在：
 
-- `<OnUpdated>`UpdatePanel 更新時
-- `<OnUpdating>`UpdatePanel 開始更新
+- `<OnUpdated>` UpdatePanel 更新時
+- `<OnUpdating>` UpdatePanel 開始更新
 
 在此案例中，新的內容`UpdatePanel`（之後回傳） 應該會淡入。 這是必要的標記：
 
@@ -57,6 +57,6 @@ ms.lasthandoff: 11/10/2017
 
 下一個精靈步驟淡入 ([按一下以檢視完整大小的影像](animating-an-updatepanel-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](changing-an-animation-using-client-side-code-vb.md)
-[下一頁](dynamically-controlling-updatepanel-animations-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](changing-an-animation-using-client-side-code-vb.md)
+> [下一頁](dynamically-controlling-updatepanel-animations-vb.md)

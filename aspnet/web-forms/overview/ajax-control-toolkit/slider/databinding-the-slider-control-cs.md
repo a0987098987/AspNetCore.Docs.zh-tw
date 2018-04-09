@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
-title: "資料繫結滑桿控制項 (C#) |Microsoft 文件"
+title: 資料繫結滑桿控制項 (C#) |Microsoft 文件
 author: wenz
-description: "滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 這是可以繫結目前 positio..."
+description: 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 這是可以繫結目前 positio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2aa770bce5969a4ab57893d5ceecc127cf7f7872
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7644c991cd88868235511ba372be1f5b47c68fea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="databinding-the-slider-control-c"></a>資料繫結滑桿控制項 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 您可將繫結至其他 ASP.NET 控制項的滑桿的目前位置。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 您可將繫結至其他 ASP.NET 控制項的滑桿的目前位置。
 
@@ -52,6 +52,6 @@ ms.lasthandoff: 11/10/2017
 
 滑桿和文字方塊為同步 ([按一下以檢視完整大小的影像](databinding-the-slider-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](using-the-slider-control-with-auto-postback-cs.md)
-[下一頁](using-the-slider-control-with-auto-postback-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-slider-control-with-auto-postback-cs.md)
+> [下一頁](using-the-slider-control-with-auto-postback-vb.md)

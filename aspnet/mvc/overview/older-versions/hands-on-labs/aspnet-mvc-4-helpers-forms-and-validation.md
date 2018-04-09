@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
-title: "ASP.NET MVC 4 Helper、 表單和驗證 |Microsoft 文件"
+title: ASP.NET MVC 4 Helper、 表單和驗證 |Microsoft 文件
 author: rick-anderson
-description: "在 ASP.NET MVC 4 模型和資料存取實際操作實驗室中，您已載入和顯示資料的資料庫。 在這個實際操作實驗室中，您將會加入..."
+description: 在 ASP.NET MVC 4 模型和資料存取實際操作實驗室中，您已載入和顯示資料的資料庫。 在這個實際操作實驗室中，您將會加入...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 243db3708ac4311d423c4c137f503f072f5553e6
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 4cfa98144919c3f1bdb3608970af1a7952fe6ea7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 Helper、 表單和驗證
 
@@ -112,12 +112,12 @@ ms.lasthandoff: 03/02/2018
 
 1. 開啟**開始**方案位於**來源/Ex1CreatingTheStoreManagerController/開始/**資料夾。
 
-    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 加入新的控制器。 若要這樣做，請以滑鼠右鍵按一下**控制器**資料夾在方案總管中，選取**新增**然後**控制器**命令。 變更**控制器****名稱**至**StoreManagerController** ，並確定選項**MVC 控制器具有空白讀取/寫入動作**已選取。 按一下 [加入] 。
 
     ![加入控制器 對話方塊](aspnet-mvc-4-helpers-forms-and-validation/_static/image1.png "加入控制器 對話方塊")
@@ -231,14 +231,14 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex2AddingAnHTMLHelper/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 開啟 StoreManager 的索引檢視。 若要這樣做，請在 [方案總管] 中展開**檢視**資料夾，然後在**StoreManager**並開啟**Index.cshtml**檔案。
-3. 加入下列程式碼下方 **@model** 指示詞來定義**Truncate** helper 方法。
+3. 加入下列程式碼下方<strong>@model</strong>指示詞來定義<strong>Truncate</strong> helper 方法。
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample7.cshtml)]
 
@@ -288,12 +288,12 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex3CreatingTheEditView/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 開啟**StoreManagerController**類別。 若要這樣做，請展開**控制器**資料夾，然後按兩下**StoreManagerController.cs**。
 3. 取代**HTTP-GET 編輯**動作方法，以下列程式碼來擷取適當**專輯**以及**內容類型**和**演出者**列出。
 
@@ -425,12 +425,12 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex4AddingACreateView/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 開啟**StoreManagerController**類別。 若要這樣做，請展開**控制器**資料夾，然後按兩下**StoreManagerController.cs**。
 3. 取代**建立**動作方法的程式碼以下列：
 
@@ -524,12 +524,12 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex5HandlingDeletion/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 開啟**StoreManagerController**類別。 若要這樣做，請展開**控制器**資料夾，然後按兩下**StoreManagerController.cs**。
 3. 刪除控制器動作正是先前存放區詳細資料控制器動作相同： 它會查詢**專輯**物件從資料庫使用**識別碼**中提供 URL 與傳回適當**檢視**。 若要這樣做，取代 HTTP GET**刪除**動作方法的程式碼以下列：
 
@@ -613,12 +613,12 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex6AddingValidation/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 開啟**Album.cs**從**模型**資料夾。
 3. 取代**Album.cs**內容以反白顯示的程式碼，使它看起來如下所示：
 
@@ -657,7 +657,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
     ![驗證的欄位中編輯頁面](aspnet-mvc-4-helpers-forms-and-validation/_static/image19.png)
 
-    驗證的欄位中編輯頁面
+    *驗證的欄位中編輯頁面*
 
 <a id="Exercise7"></a>
 
@@ -679,12 +679,12 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 1. 開啟**開始**方案位於**來源/Ex7UnobtrusivejQueryValidation/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 按 **F5** 執行應用程式。
 3. 在首頁上，啟動專案。 瀏覽**/StoreManager/建立**按一下**建立**沒有填滿表單，以確認您看到驗證訊息：
 
@@ -739,24 +739,24 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
     [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample23.html)]
 
-    > [!NOTE]
-    > 每個用戶端驗證規則不顯眼的 jQuery 加入資料屬性-val-*rulename*=&quot;*訊息*&quot;。 以下是一份標記該 Unobtrusive jQuery 插入 html 輸入欄位，以執行用戶端驗證：
-    > 
-    > - 資料值
-    > - Data-val-number
-    > - 資料 val 範圍
-    > - 資料 val 範圍-min/資料 val-range max
-    > - Data-val-required
-    > - 資料 val 長度
-    > - 資料值的長度上限/資料 val 長度-分鐘
-    > 
-    > 所有的資料值會填入模型**資料註解**。 然後，在伺服器端的所有邏輯可以都執行用戶端。 例如，價格屬性都具有下列資料註解模型中：
-    > 
-    > [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample24.cs)]
-    > 
-    > 使用不顯眼的 jQuery 之後, 產生的程式碼是：
-    >  
-    > [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample25.html)]
+   > [!NOTE]
+   > 每個用戶端驗證規則不顯眼的 jQuery 加入資料屬性-val-*rulename*=&quot;*訊息*&quot;。 以下是一份標記該 Unobtrusive jQuery 插入 html 輸入欄位，以執行用戶端驗證：
+   > 
+   > - 資料值
+   > - Data-val-number
+   > - 資料 val 範圍
+   > - 資料 val 範圍-min/資料 val-range max
+   > - Data-val-required
+   > - 資料 val 長度
+   > - 資料值的長度上限/資料 val 長度-分鐘
+   > 
+   > 所有的資料值會填入模型**資料註解**。 然後，在伺服器端的所有邏輯可以都執行用戶端。 例如，價格屬性都具有下列資料註解模型中：
+   > 
+   > [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample24.cs)]
+   > 
+   > 使用不顯眼的 jQuery 之後, 產生的程式碼是：
+   > 
+   > [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample25.html)]
 
 * * *
 
@@ -781,9 +781,9 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
-1. 移至[ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; *Visual Studio Express 2012 for Web 與 Windows Azure SDK*&quot;。
+1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
 3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
 

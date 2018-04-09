@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/creating-and-using-an-ajax-enabled-web-service-in-a-web-site
-title: "建立和使用的網站中啟用 AJAX 的 Web 服務 |Microsoft 文件"
+title: 建立和使用的網站中啟用 AJAX 的 Web 服務 |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio 2008 可讓您建立 ASP.NET 自訂 Web 服務，您可以從用戶端指令碼存取。 這個逐步解說將示範如何建立 AJ..."
+description: Visual Studio 2008 可讓您建立 ASP.NET 自訂 Web 服務，您可以從用戶端指令碼存取。 這個逐步解說將示範如何建立 AJ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/creating-and-using-an-ajax-enabled-web-service-in-a-web-site
 msc.type: video
-ms.openlocfilehash: 35b5d8e5562fd9498ea60b753a79923a942f7f25
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 643e67c713cceb3daad0f51cfecaa91945e89874
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-and-using-an-ajax-enabled-web-service-in-a-web-site"></a>建立和使用的網站中啟用 AJAX 的 Web 服務
 ====================
@@ -26,6 +26,6 @@ Visual Studio 2008 可讓您建立 ASP.NET 自訂 Web 服務，您可以從用�
 
 [&#9654;觀看影片 （12 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-and-using-an-ajax-enabled-web-service-in-a-web-site)
 
->[!div class="step-by-step"]
-[上一頁](adding-ajax-functionality-to-an-existing-aspnet-page.md)
-[下一頁](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-ajax-functionality-to-an-existing-aspnet-page.md)
+> [下一頁](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)

@@ -1,7 +1,7 @@
 ---
-title: "簡單的授權"
+title: 在 ASP.NET Core 簡單的授權
 author: rick-anderson
-description: "本文件說明如何使用授權屬性來限制對 ASP.NET Core 控制器和動作的存取。"
+description: 了解如何使用授權屬性來限制對 ASP.NET Core 控制器和動作的存取。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/simple
-ms.openlocfilehash: 503ebc665efd460a85f49844ddc847eb12114308
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: cef5cb146c6c1ff052430748a9a64c6a822d6fa3
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="simple-authorization"></a>簡單的授權
+# <a name="simple-authorization-in-aspnet-core"></a>在 ASP.NET Core 簡單的授權
 
 <a name="security-authorization-simple"></a>
 
@@ -75,4 +75,4 @@ public class AccountController : Controller
 這樣可讓只有經過驗證的使用者`AccountController`，除了`Login`動作，都可以存取所有人不論他們已驗證或未驗證 / 匿名的狀態。
 
 >[!WARNING]
-> `[AllowAnonymous]`會略過所有授權陳述式。 如果您套用結合`[AllowAnonymous]`和任何`[Authorize]`屬性然後 Authorize 屬性將永遠會被忽略。 例如，如果您套用`[AllowAnonymous]`在控制器層級任何`[Authorize]`屬性相同的控制站，或在其中任何動作將會被忽略。
+> `[AllowAnonymous]` 會略過所有授權陳述式。 如果您套用結合`[AllowAnonymous]`和任何`[Authorize]`屬性然後 Authorize 屬性將永遠會被忽略。 例如，如果您套用`[AllowAnonymous]`在控制器層級任何`[Authorize]`屬性相同的控制站，或在其中任何動作將會被忽略。

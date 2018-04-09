@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
-title: "將動畫加入至控制項 (VB) |Microsoft 文件"
+title: 將動畫加入至控制項 (VB) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 本教學課程示範如何..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 本教學課程示範如何...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c2d6971ade89405245c8d23cafb6fd8bb9468639
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3da98e478c45213875b3829e51351d03571a05b8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-animation-to-a-control-vb"></a>將動畫加入至控制項 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 本教學課程會示範如何設定這類動畫。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 本教學課程會示範如何設定這類動畫。
 
@@ -51,22 +51,22 @@ ms.lasthandoff: 11/10/2017
 
 整個動畫套用瞬間以宣告方式，使用 XML 語法，不幸的是 Visual Studio intellisense 目前不完全支援。 根節點是`<Animations>;`在此節點中，數個事件會允許用來決定當動畫 take(s) 位置：
 
-- `OnClick`（按一下滑鼠）
-- `OnHoverOut`（當滑鼠離開控制項）
-- `OnHoverOver`(當滑鼠停留在控制項上，停止`OnHoverOut`動畫)
-- `OnLoad`（當已經載入頁面）
-- `OnMouseOut`（當滑鼠離開控制項）
-- `OnMouseOver`(當滑鼠停留在控制項上時，不停止`OnMouseOut`動畫)
+- `OnClick` （按一下滑鼠）
+- `OnHoverOut` （當滑鼠離開控制項）
+- `OnHoverOver` (當滑鼠停留在控制項上，停止`OnHoverOut`動畫)
+- `OnLoad` （當已經載入頁面）
+- `OnMouseOut` （當滑鼠離開控制項）
+- `OnMouseOver` (當滑鼠停留在控制項上時，不停止`OnMouseOut`動畫)
 
 架構隨附一組自己的 XML 元素所代表的每個動畫。 以下是選取項目：
 
-- `<Color>`（變更一種色彩）
-- `<FadeIn>`（淡入）
-- `<FadeOut>`（淡出）
-- `<Property>`（變更控制項的屬性）
-- `<Pulse>`(pulsating)
-- `<Resize>`（變更大小）
-- `<Scale>`（按比例變更大小）
+- `<Color>` （變更一種色彩）
+- `<FadeIn>` （淡入）
+- `<FadeOut>` （淡出）
+- `<Property>` （變更控制項的屬性）
+- `<Pulse>` (pulsating)
+- `<Resize>` （變更大小）
+- `<Scale>` （按比例變更大小）
 
 在此範例中，[面板] 中應該淡出。動畫應採用 1.5 秒 (`Duration`屬性)，顯示每秒 24 畫面格數 （動畫步驟） (`Fps` attributs)。 以下是完整標記`AnimationExtender`控制項：
 
@@ -79,6 +79,6 @@ ms.lasthandoff: 11/10/2017
 
 面板淡出 ([按一下以檢視完整大小的影像](adding-animation-to-a-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](dynamically-controlling-updatepanel-animations-cs.md)
-[下一頁](executing-several-animations-at-the-same-time-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](dynamically-controlling-updatepanel-animations-cs.md)
+> [下一頁](executing-several-animations-at-the-same-time-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
-title: "建立自訂路由 (C#) |Microsoft 文件"
+title: 建立自訂路由 (C#) |Microsoft 文件
 author: microsoft
-description: "了解如何將自訂的路由新增至 ASP.NET MVC 應用程式。 在本教學課程中，您會學習如何修改預設的路由表，在 Global.asax 檔案中。"
+description: 了解如何將自訂的路由新增至 ASP.NET MVC 應用程式。 在本教學課程中，您會學習如何修改預設的路由表，在 Global.asax 檔案中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d1542103298f2fa09dc71706284afb18d8381403
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 573b6a3360124feea92788ff7a3de363840fa1ef
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-custom-routes-c"></a>建立自訂路由 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何將自訂的路由新增至 ASP.NET MVC 應用程式。 在本教學課程中，您會學習如何修改預設的路由表，在 Global.asax 檔案中。
 
@@ -73,6 +73,6 @@ Global.asax 檔案中列出的 1 會包含新的自訂路由，名為部落格�
 
 本教學課程的目標是為了示範如何建立自訂的路由。 您已學習如何將自訂的路由加入至 Global.asax 檔案代表部落格文章中的路由表。 我們將討論如何將要求的部落格項目對應至名為 ArchiveController 控制器和名為 Entry() 控制器動作。
 
->[!div class="step-by-step"]
-[上一頁](aspnet-mvc-controllers-overview-cs.md)
-[下一頁](creating-a-route-constraint-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](aspnet-mvc-controllers-overview-cs.md)
+> [下一頁](creating-a-route-constraint-cs.md)

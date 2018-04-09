@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
-title: "ASP.NET MVC 4 相依性插入 |Microsoft 文件"
+title: ASP.NET MVC 4 相依性插入 |Microsoft 文件
 author: rick-anderson
-description: "注意： 這個實際操作實驗室假設您擁有的 ASP.NET MVC 與 ASP.NET MVC 4 的篩選條件的基本知識。 如果您沒有使用 ASP.NET MVC 4 的篩選器之前，我們建議..."
+description: 注意： 這個實際操作實驗室假設您擁有的 ASP.NET MVC 與 ASP.NET MVC 4 的篩選條件的基本知識。 如果您沒有使用 ASP.NET MVC 4 的篩選器之前，我們建議...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: c735bbdafe4b8f0423abb6bacd076f173a1be9d8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e6c24d03039f0e6005948a73348589627c9df2df
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 相依性插入
 
@@ -158,12 +158,12 @@ ms.lasthandoff: 03/02/2018
 
 1. 開啟**開始**方案位於**Source\Ex01 插入 Controller\Begin**。
 
-    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 按**Ctrl + F5**執行應用程式，但不偵錯。 您會收到錯誤訊息&quot;**沒有為這個物件定義的無參數建構函式**&quot;:
 
     ![執行 ASP.NET MVC 開始應用程式時發生錯誤](aspnet-mvc-4-dependency-injection/_static/image3.png "執行 ASP.NET MVC 開始應用程式時發生錯誤")
@@ -265,14 +265,14 @@ ms.lasthandoff: 03/02/2018
 
 1. 開啟**開始**方案位於**Source\Ex02 插入 View\Begin**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
-    > 
-    > 如需詳細資訊，請參閱這篇文章： [http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > 
+      > 如需詳細資訊，請參閱這篇文章： [ http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages ](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
 2. 包含**MessageService.cs**和**IMessageService.cs**類別位於**來源 \Assets**資料夾中的**/Services**。 若要這樣做，請以滑鼠右鍵按一下**服務**資料夾，然後選取**加入現有項目**。 瀏覽至檔案的位置，並將它們包含。
 
     ![新增訊息服務和服務介面](aspnet-mvc-4-dependency-injection/_static/image8.png "加入訊息服務與服務介面")
@@ -290,7 +290,7 @@ ms.lasthandoff: 03/02/2018
 
     [!code-cshtml[Main](aspnet-mvc-4-dependency-injection/samples/sample8.cshtml)]
 5. 在**瀏覽**檢視中，將呼叫加入**MessageService**来顯示的映像和服務所擷取的訊息。
-(C#)
+   (C#)
 
     [!code-cshtml[Main](aspnet-mvc-4-dependency-injection/samples/sample9.cshtml)]
 
@@ -305,7 +305,7 @@ ms.lasthandoff: 03/02/2018
 > ASP.NET MVC 3，因為相依性插入的實作已簡化註冊服務的介面。 **IDependencyResolver**和**IViewPageActivator**屬於的 ASP.NET MVC 3 的功能相依性插入。
 > 
 > **-IDependencyResolver**介面取代先前 IMvcServiceLocator。 IDependencyResolver 的實作者必須傳回服務或服務集合的執行個體。
->
+> 
 > 
 > [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample10.cs)]
 > 
@@ -404,14 +404,14 @@ ms.lasthandoff: 03/02/2018
 
 1. 開啟**開始**方案位於**Source\Ex03-插入動作 Filter\Begin**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
-    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
-    > 
-    > 如需詳細資訊，請參閱這篇文章： [http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > 
+      > 如需詳細資訊，請參閱這篇文章： [ http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages ](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
 2. 包含**TraceActionFilter.cs**檔案從**/來源/資產**至**/篩選**資料夾。
 
     [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample18.cs)]
@@ -509,9 +509,9 @@ ms.lasthandoff: 03/02/2018
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
-1. 移至[ [https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; *Visual Studio Express 2012 for Web 與 Windows Azure SDK*&quot;。
+1. 移至[ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
 3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
 

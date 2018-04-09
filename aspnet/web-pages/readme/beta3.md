@@ -1,8 +1,8 @@
 ---
 uid: web-pages/readme/beta3
-title: "Web 矩陣和 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案 |Microsoft 文件"
+title: Web 矩陣和 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案 |Microsoft 文件
 author: rick-anderson
-description: "Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案"
+description: Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/10/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: def2f4b3e54c8de539e10c1b526a1dababeca8fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5ef7a6f44758cf94fc19d6fbab3cc4b7bce8e8e5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Web Matrix 及 ASP.NET Web Pages (Razor) Beta 3 版讀我檔案
 ====================
@@ -283,9 +283,9 @@ ms.lasthandoff: 01/24/2018
 > 如果您解除安裝.NET Framework 第 4 版，然後重新安裝時，會停用含有 Razor 語法的 ASP.NET Web Pages。 頁面*.cshtml*延伸模組無法正確執行。 ASP.NET Web Pages 電腦根目錄中註冊組件*Web.config*檔案，並移除.NET Framework 中移除該檔案。 重新安裝.NET Framework 會安裝新版本的組態檔中，但不會新增 ASP.NET Web Pages 組件的參考。
 > 
 > **因應措施**之後重新安裝.NET Framework，請重新安裝 ASP.NET Web Pages 含有 Razor 語法。 這樣會加入下列項目加入*Web.config*電腦根目錄，這通常在下列位置中的檔案：  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config (32-bit)`  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
 > [!code-xml[Main](beta3/samples/sample6.xml)]
@@ -302,9 +302,9 @@ ms.lasthandoff: 01/24/2018
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>問題： 沒有副檔名的 Url 會找不到在 IIS 7 或 IIS 7.5 上的.cshtml/.vbhtml 檔案
 
 > 在 IIS 7 或 IIS 7.5 上，具有類似下列的 URL 不要求找不到具有頁面*.cshtml*或*.vbhtml*延伸模組：  
->   
+> 
 > `http://www.example.com/ExampleSite/ExampleFile`  
->   
+> 
 > 因為 URL 重寫沒有啟用預設的 IIS 7 或 IIS 7.5，就會發生此問題。 Likeliest 案例是看不到問題時測試使用在本機 IIS Express，但它時遇到您將您的網站部署至裝載的網站。
 > 
 > **Workaround**
@@ -344,7 +344,7 @@ ms.lasthandoff: 01/24/2018
 >     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\** **至** *\Bin\x86*
 >     - 複製*C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **至** *\Bin\amd64*
 > 2. 在網站的根資料夾中，建立或開啟*Web.config*檔案。 (在 WebMatrix Beta 3 中，此檔案類型才可用如果您按一下**所有**中**選擇檔案型別** 對話方塊。)
-> 3. 將下列項目新增為子系**&lt;組態&gt;**項目 (不是在內 **&lt;system.web&gt;** 項目):
+> 3. 將下列項目新增為子系**&lt;組態&gt;**項目 (不是在內**&lt;system.web&gt;**項目):
 > 
 > 
 > [!code-xml[Main](beta3/samples/sample10.xml)]
@@ -366,21 +366,21 @@ ms.lasthandoff: 01/24/2018
 > 
 > **Workaround**  
 > 使用`Encryption Mode`屬性`SqlCeConnection`類別來加密 SQL Server Compact 4.0 資料庫檔案。 下列範例示範如何建立加密的 SQL Server Compact 4.0 資料庫使用`Encryption Mode`屬性：
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample11.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample12.vb)]
 > 
 > 若要變更現有的 SQL Server Compact 4.0 資料庫的加密模式，執行下列作業：
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample13.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample14.vb)]
 > 
 > 若要加密的未加密的 SQL Server Compact 4.0 資料庫，執行下列作業：
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample15.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample16.vb)]
 
 
@@ -537,7 +537,7 @@ ms.lasthandoff: 01/24/2018
 > 明確地設定參數的資料類型，例如`SqlDbType`或`DbType`。 這一點十分重要，在 BLOB 資料類型的情況下 (`image`和`ntext`)。 使用程式碼如下所示：
 > 
 > [!code-sql[Main](beta3/samples/sample20.sql)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample21.vb)]
 
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-1
-title: "使用 Entity Framework 6 與 Web API 2 |Microsoft 文件"
+title: 使用 Entity Framework 6 與 Web API 2 |Microsoft 文件
 author: MikeWasson
-description: "本教學課程將告訴您建立以 ASP.NET Web API 的 web 應用程式的基本概念後端。 教學課程會使用 Entity Framework 6 資料配置..."
+description: 本教學課程將告訴您建立以 ASP.NET Web API 的 web 應用程式的基本概念後端。 教學課程會使用 Entity Framework 6 資料配置...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-1
 msc.type: authoredcontent
-ms.openlocfilehash: cceefa128f90b4c3e23dd31119f44e6ffc55f46f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8e6d381509a121e3036ca3af91ea3b9bd0be33c2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>使用 Entity Framework 6 與 Web API 2
 ====================
@@ -76,7 +76,7 @@ AJAX 不是新的但現在有更輕鬆地建立及維護的大型複雜的 SPA �
 
 如果您想要裝載在 Azure App Service 中的專案，將保留**雲端中的主機**核取方塊。
 
-按一下**確定**建立專案。
+按一下 [確定] 建立專案。
 
 ## <a name="configure-azure-settings-optional"></a>設定 Azure （選擇性）
 
@@ -88,5 +88,5 @@ AJAX 不是新的但現在有更輕鬆地建立及維護的大型複雜的 SPA �
 
 [![](part-1/_static/image10.png)](part-1/_static/image9.png)
 
->[!div class="step-by-step"]
-[下一步](part-2.md)
+> [!div class="step-by-step"]
+> [下一步](part-2.md)

@@ -1,7 +1,7 @@
 ---
-title: "開始使用資料保護應用程式開發介面"
+title: 開始使用 ASP.NET Core 中的資料保護應用程式開發介面
 author: rick-anderson
-description: "本文件說明如何保護和解除資料的應用程式中使用的 ASP.NET Core 資料保護 Api。"
+description: 了解如何保護和解除資料的應用程式中使用的 ASP.NET Core 資料保護 Api。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: ff72773fce28ba75aa8777eea321ed2bfb8f7e54
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 3a69abd2b58e02f87ccaf2317b0a8a2a7e9d7b4a
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="get-started-with-the-data-protection-apis"></a>開始使用資料保護應用程式開發介面
+# <a name="get-started-with-the-data-protection-apis-in-aspnet-core"></a>開始使用 ASP.NET Core 中的資料保護應用程式開發介面
 
 <a name="security-data-protection-getting-started"></a>
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/15/2018
 
 [!code-csharp[](../../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-當您建立保護裝置時必須提供一個或多個[目的字串](consumer-apis/purpose-strings.md)。 目的字串之間提供隔離取用者。 例如，使用 「 綠色 」 的目的字串建立的保護裝置就無法取消保護的保護裝置所提供的目的為 「 紫色"的資料。
+當您建立保護裝置時必須提供一個或多個[目的字串](xref:security/data-protection/consumer-apis/purpose-strings)。 目的字串之間提供隔離取用者。 例如，使用 「 綠色 」 的目的字串建立的保護裝置就無法取消保護的保護裝置所提供的目的為 「 紫色"的資料。
 
 >[!TIP]
 > 執行個體`IDataProtectionProvider`和`IDataProtector`是多個呼叫的執行緒安全。 它具有一旦元件取得的參考用的`IDataProtector`透過呼叫`CreateProtector`，它會使用該參考的多個呼叫`Protect`和`Unprotect`。

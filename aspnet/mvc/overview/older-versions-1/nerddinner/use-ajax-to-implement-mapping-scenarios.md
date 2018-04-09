@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
-title: "若要實作對應實例中使用 AJAX |Microsoft 文件"
+title: 若要實作對應實例中使用 AJAX |Microsoft 文件
 author: microsoft
-description: "步驟 11 會示範如何將 AJAX 對應支援整合到我們的 NerdDinner 應用程式，讓使用者建立、 編輯或檢視以查看 l dinners..."
+description: 步驟 11 會示範如何將 AJAX 對應支援整合到我們的 NerdDinner 應用程式，讓使用者建立、 編輯或檢視以查看 l dinners...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: cc55560ce691826b6d52971b16d0515ed73d72a6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4b3f1e46886c4c1f054e43768b0a44695d71bf09
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-ajax-to-implement-mapping-scenarios"></a>用於 AJAX 實作對應實例
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -115,7 +115,7 @@ JavaScript 函式我們已加入至部分會使用 jQuery 附加至 「 位址 �
 
 ![](use-ajax-to-implement-mapping-scenarios/_static/image7.png)
 
-我們一開始會藉由實作有效率地執行 Dinners 位置為主的 radius 搜尋我們資料庫和資料儲存機制層內的支援。 我們可以使用新[地理空間功能的 SQL 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx)來實作，或者我們可以使用以下文章中討論的 Gary Dryden SQL 函式方法： [http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx)和 Rob Conery 龐大的網友有關這裡使用 linq to SQL: [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
+我們一開始會藉由實作有效率地執行 Dinners 位置為主的 radius 搜尋我們資料庫和資料儲存機制層內的支援。 我們可以使用新[地理空間功能的 SQL 2008](https://www.microsoft.com/sqlserver/2008/en/us/spatial-data.aspx)來實作，或者我們可以使用以下文章中討論的 Gary Dryden SQL 函式方法： [ http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx ](http://www.codeproject.com/KB/cs/distancebetweenlocations.aspx)和 Rob Conery這裡使用 linq to SQL 相關龐大的網友： [http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/](http://blog.wekeroad.com/2007/08/30/linq-and-geocoding/)
 
 若要實作這項技術，我們會開啟 「 伺服器總管 」 在 Visual Studio 中選取 NerdDinner 資料庫，並以滑鼠右鍵按一下其下的 < 函數 > 子節點上，選擇建立新 「 純量值的函式 」:
 
@@ -193,6 +193,6 @@ SearchController SearchByLocation 動作方法內部 FindByLocation 上呼叫方
 
 我們現在已實作 NerdDinner 應用程式的所有應用程式的功能。 讓我們看看我們如何啟用自動化單元現在它的測試。
 
->[!div class="step-by-step"]
-[上一頁](use-ajax-to-deliver-dynamic-updates.md)
-[下一頁](enable-automated-unit-testing.md)
+> [!div class="step-by-step"]
+> [上一頁](use-ajax-to-deliver-dynamic-updates.md)
+> [下一頁](enable-automated-unit-testing.md)

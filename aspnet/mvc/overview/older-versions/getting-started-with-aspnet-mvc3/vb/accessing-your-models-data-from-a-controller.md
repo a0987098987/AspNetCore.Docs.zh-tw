@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-your-models-data-from-a-controller
-title: "存取您的模型資料的控制站 (VB) |Microsoft 文件"
+title: 存取您的模型資料的控制站 (VB) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: f1a1db907aa1d0a62af9b363fabfc74ac11acc68
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 030e7cc966078b76b5f96229d437c9990f17656a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller-vb"></a>存取您的模型資料的控制站 (VB)
 ====================
@@ -139,6 +139,6 @@ Entity Framework Code First 偵測到提供的資料庫連接字串指向`Movies
 
 現在您有資料庫的簡單清單頁面，即可顯示來自它的內容。 在下一個教學課程中，我們會檢查 scaffold 的程式碼的其餘部分，並新增`SearchIndex`方法和`SearchIndex`可讓您搜尋的電影，此資料庫中的檢視。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-model.md)
-[下一頁](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-model.md)
+> [下一頁](examining-the-edit-methods-and-edit-view.md)

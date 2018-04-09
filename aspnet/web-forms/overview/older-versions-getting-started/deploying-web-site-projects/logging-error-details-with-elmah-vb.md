@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb
-title: "記錄錯誤的詳細資料與 ELMAH (VB) |Microsoft 文件"
+title: 記錄錯誤的詳細資料與 ELMAH (VB) |Microsoft 文件
 author: rick-anderson
-description: "錯誤記錄模組和處理常式 (ELMAH) 提供了另一個執行階段錯誤記錄在生產環境中的方法。 ELMAH 是免費的開放原始錯誤..."
+description: 錯誤記錄模組和處理常式 (ELMAH) 提供了另一個執行階段錯誤記錄在生產環境中的方法。 ELMAH 是免費的開放原始錯誤...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b4bba02449debff17422f6b7008247fdf61856c8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 584791a944c9e8eb0113da68719292f448573980
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="logging-error-details-with-elmah-vb"></a>記錄錯誤的詳細資料與 ELMAH (VB)
 ====================
@@ -70,9 +70,9 @@ ms.lasthandoff: 01/30/2018
 
 - **HTTP 模組**-HTTP 模組是一個類別來定義事件處理常式`HttpApplication`事件，例如`Error`事件。 ELMAH 包含多個 HTTP 模組，三個最密切關聯的項目正在： 
 
-    - `ErrorLogModule`-記錄到記錄檔來源的未處理例外狀況。
-    - `ErrorMailModule`-傳送電子郵件訊息中的未處理的例外狀況詳細資料。
-    - `ErrorFilterModule`-適用於開發人員指定的篩選來判斷哪些例外狀況的記錄，以及是會被忽略。
+    - `ErrorLogModule` -記錄到記錄檔來源的未處理例外狀況。
+    - `ErrorMailModule` -傳送電子郵件訊息中的未處理的例外狀況詳細資料。
+    - `ErrorFilterModule` -適用於開發人員指定的篩選來判斷哪些例外狀況的記錄，以及是會被忽略。
 - **HTTP 處理常式**-HTTP 處理常式是負責產生要求的特定類型的標記的類別。 ELMAH 包括網頁上、 RSS 摘要，或以逗號分隔的檔案 (CSV) 轉譯錯誤的詳細資料的 HTTP 處理常式。
 - **錯誤記錄檔來源**-ELMAH 可以將 Microsoft SQL Server 資料庫，到 Microsoft Access 資料庫，Oracle 資料庫，要的記憶體，錯誤記錄到現成 SQLite 資料庫中，或 Vista DB 資料庫的 XML 檔案。 監視系統健全狀況，例如 ELMAH 的架構是使用提供者模型，這表示您可以用來建立，並密切整合您自己自訂的記錄檔來源提供者中，視所建立的。
 
@@ -257,6 +257,6 @@ ELMAH 提供簡單，但功能強大的機制，ASP.NET web 應用程式中記�
 - [使用 HTTP 模組和處理常式來建立隨插即用的 ASP.NET 元件](https://msdn.microsoft.com/library/aa479332.aspx)
 - [網站安全性教學課程](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
->[!div class="step-by-step"]
-[上一頁](logging-error-details-with-asp-net-health-monitoring-vb.md)
-[下一頁](precompiling-your-website-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](logging-error-details-with-asp-net-health-monitoring-vb.md)
+> [下一頁](precompiling-your-website-vb.md)

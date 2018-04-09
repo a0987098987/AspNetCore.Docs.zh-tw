@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-title: "建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型 |Microsoft 文件"
+title: 建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列的較新版本可用，Visual Studio 2013、 Entity Framework 6 和 MVC 5。 Contoso 大學範例 web 應用程式 de..."
+description: 此教學課程系列的較新版本可用，Visual Studio 2013、 Entity Framework 6 和 MVC 5。 Contoso 大學範例 web 應用程式 de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8c9971ccc70cb4b966abb64086b1b5420fc6c72a
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: a963f26b408f2a54bd9cd3e852bc1e368f86c41f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型
 ====================
@@ -311,29 +311,29 @@ SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*Contoso
 
 1. 若要建立`Student`控制站，以滑鼠右鍵按一下**控制站**資料夾中的**方案總管] 中**，選取**新增**，然後按一下 [**控制器**. 在**加入控制器**對話方塊方塊中，請選取下列項目，然後按一下**新增**: 
 
-    - 控制器名稱： **StudentController**。
-    - 範本：**具有讀取/寫入動作和檢視表、 使用 Entity Framework 的 MVC 控制器**。
-    - 模型類別：**學生 (ContosoUniversity.Models)**。 （如果您沒有看到下拉式清單中的這個選項，建置專案並再試一次）。
-    - 資料內容類別： **SchoolContext (ContosoUniversity.Models)**。
-    - 檢視： **Razor (CSHTML)**。 （預設值。）
+   - 控制器名稱： **StudentController**。
+   - 範本：**具有讀取/寫入動作和檢視表、 使用 Entity Framework 的 MVC 控制器**。
+   - 模型類別：**學生 (ContosoUniversity.Models)**。 （如果您沒有看到下拉式清單中的這個選項，建置專案並再試一次）。
+   - 資料內容類別： **SchoolContext (ContosoUniversity.Models)**。
+   - 檢視： **Razor (CSHTML)**。 （預設值。）
 
-    ![Add_Controller_dialog_box_for_Student_controller](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image20.png)
-- Visual Studio 隨即開啟*Controllers\StudentController.cs*檔案。 您會看到已建立的資料庫內容物件具現化類別變數：
+     ![Add_Controller_dialog_box_for_Student_controller](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image20.png)
+2. Visual Studio 隨即開啟*Controllers\StudentController.cs*檔案。 您會看到已建立的資料庫內容物件具現化類別變數：
 
-    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample16.cs)]
+     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample16.cs)]
 
-    `Index`動作方法會取得一份學生*學生*實體集藉由讀取`Students`的資料庫內容執行個體的屬性：
+     `Index`動作方法會取得一份學生*學生*實體集藉由讀取`Students`的資料庫內容執行個體的屬性：
 
-    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample17.cs)]
+     [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample17.cs)]
 
-    *Student\Index.cshtml*檢視會顯示在資料表中的這份清單：
+     *Student\Index.cshtml*檢視會顯示在資料表中的這份清單：
 
-    [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample18.cshtml)]
-- 按 CTRL+F5 執行專案。
+     [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample18.cshtml)]
+3. 按 CTRL+F5 執行專案。
 
-    按一下**學生**索引標籤，查看測試資料的`Seed`插入的方法。
+     按一下**學生**索引標籤，查看測試資料的`Seed`插入的方法。
 
-    ![學生索引頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image21.png)
+     ![學生索引頁](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image21.png)
 
 ## <a name="conventions"></a>慣例
 
@@ -351,5 +351,5 @@ SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*Contoso
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
->[!div class="step-by-step"]
-[下一步](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [下一步](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)

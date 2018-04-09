@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/adonet-data-services/how-to-manually-bind-a-dataset-to-a-datagrid
-title: "如何以手動方式將資料集繫結到資料格 |Microsoft 文件"
+title: 如何以手動方式將資料集繫結到資料格 |Microsoft 文件
 author: JoeStagner
-description: "在這段影片，3，第 2 部分 Joe stagner 以會使用範例 ASP 應用程式建立第一部，示範如何以手動方式將資料集繫結到資料格。 如需..."
+description: 在這段影片，3，第 2 部分 Joe stagner 以會使用範例 ASP 應用程式建立第一部，示範如何以手動方式將資料集繫結到資料格。 如需...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/adonet-data-services/how-to-manually-bind-a-dataset-to-a-datagrid
 msc.type: video
-ms.openlocfilehash: d49aef7b88cc0afb198c30744cd4abdae0999e72
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f1662c68b9783cb810bd85766afc29e10c0d2db6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-manually-bind-a-dataset-to-a-datagrid"></a>如何以手動方式將資料集繫結到資料格
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （7 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-manually-bind-a-dataset-to-a-datagrid)
 
->[!div class="step-by-step"]
-[上一頁](data-access-layers-in-aspnet-applications.md)
-[下一頁](how-to-work-with-datasets-and-filters-from-an-asp-application.md)
+> [!div class="step-by-step"]
+> [上一頁](data-access-layers-in-aspnet-applications.md)
+> [下一頁](how-to-work-with-datasets-and-filters-from-an-asp-application.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
-title: "刪除 (C#) 時新增用戶端確認 |Microsoft 文件"
+title: 刪除 (C#) 時新增用戶端確認 |Microsoft 文件
 author: rick-anderson
-description: "我們建立了到目前為止的介面，使用者不小心刪除資料他們在想要按一下 [編輯] 按鈕時，按一下 [刪除] 按鈕。 在此 t..."
+description: 我們建立了到目前為止的介面，使用者不小心刪除資料他們在想要按一下 [編輯] 按鈕時，按一下 [刪除] 按鈕。 在此 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c5e8ee76224a48d3132597016b81099bd70a1776
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 72b15d498e45cc519a14ecfe39111b224db88c30
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-client-side-confirmation-when-deleting-c"></a>刪除 (C#) 時新增用戶端確認
 ====================
@@ -75,7 +75,7 @@ JavaScript`confirm(string)`函式會顯示其字串輸入的參數為強制回�
 
 ## <a name="step-2-calling-the-confirmstring-function-from-the-delete-buttons-client-side-onclick-event"></a>步驟 2： 從刪除按鈕用戶端 onclick 事件呼叫 confirm(string) 函式
 
-在 FormView 建立時，使用最後一個步驟是設定 [刪除] 按鈕這類，當它 s 按一下訪客，JavaScript`confirm(string)`函式會叫用。 用戶端指令碼加入按鈕、 LinkButton 或 ImageButton 的用戶端`onclick`事件即可使用`OnClientClick property`，這是為 ASP.NET 2.0 的新功能。 因為我們想要的數值`confirm(string)`函式傳回時，只需將此屬性設定：`return confirm('Are you certain that you want to delete this product?');`
+在 FormView 建立時，使用最後一個步驟是設定 [刪除] 按鈕這類，當它 s 按一下訪客，JavaScript`confirm(string)`函式會叫用。 用戶端指令碼加入按鈕、 LinkButton 或 ImageButton 的用戶端`onclick`事件即可使用`OnClientClick property`，這是為 ASP.NET 2.0 的新功能。 因為我們想要的數值`confirm(string)`函式傳回時，只需將此屬性設定： `return confirm('Are you certain that you want to delete this product?');`
 
 這項變更後刪除 LinkButton s 宣告式語法看起來應該像這樣：
 
@@ -156,8 +156,8 @@ JavaScript`confirm(string)`函式是控制表單送出工作流程的常用的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](implementing-optimistic-concurrency-cs.md)
-[下一頁](limiting-data-modification-functionality-based-on-the-user-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](implementing-optimistic-concurrency-cs.md)
+> [下一頁](limiting-data-modification-functionality-based-on-the-user-cs.md)

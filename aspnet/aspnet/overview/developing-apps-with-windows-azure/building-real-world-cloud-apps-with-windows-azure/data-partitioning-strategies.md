@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
-title: "資料分割策略 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 資料分割策略 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: dca016cb6293a346f5622cc272e510b182c86d58
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9ff7f37a03d8d3dfab50e8007a6645bb0d88f453
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>資料分割策略 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -113,6 +113,6 @@ ms.lasthandoff: 01/24/2018
 
 - [雲端服務基本概念，在 Windows Azure 中的](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。 包含分區化資料庫的範例應用程式。 如需實作的分區化配置的說明，請參閱[DAL – 分區化的 RDBMS](https://blogs.msdn.com/b/windowsazure/archive/2013/09/05/dal-sharding-of-rdbms.aspx) Windows Azure 部落格上。
 
->[!div class="step-by-step"]
-[上一頁](data-storage-options.md)
-[下一頁](unstructured-blob-storage.md)
+> [!div class="step-by-step"]
+> [上一頁](data-storage-options.md)
+> [下一頁](unstructured-blob-storage.md)

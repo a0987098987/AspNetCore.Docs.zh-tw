@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
-title: "加入其他 DataTable 資料行 (C#) |Microsoft 文件"
+title: 加入其他 DataTable 資料行 (C#) |Microsoft 文件
 author: rick-anderson
-description: "當使用 TableAdapter 精靈來建立具類型資料集，對應的資料表會包含主要資料庫查詢所傳回的資料行。 但有..."
+description: 當使用 TableAdapter 精靈來建立具類型資料集，對應的資料表會包含主要資料庫查詢所傳回的資料行。 但有...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2982af897b433706889cb4eda79dcb4e76baea62
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9c2232c9867fc605a5b5d3973d4dbe31895841ca
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-additional-datatable-columns-c"></a>加入其他 DataTable 資料行 (C#)
 ====================
@@ -41,9 +41,9 @@ ms.lasthandoff: 01/24/2018
 
 在*建立新預存程序型別資料集 s Tableadapter*教學課程中我們建立了名為具類型資料集`NorthwindWithSprocs`。 此資料集目前包含兩個 Datatable:`ProductsDataTable`和`EmployeesDataTable`。 `ProductsTableAdapter`具有下列三種方法：
 
-- `GetProducts`-主要的查詢傳回的所有記錄`Products`資料表
-- `GetProductsByCategoryID(categoryID)`-傳回具有指定的所有產品*categoryID*。
-- `GetProductByProductID(productID)`-傳回指定的特定產品*productID*。
+- `GetProducts` -主要的查詢傳回的所有記錄`Products`資料表
+- `GetProductsByCategoryID(categoryID)` -傳回具有指定的所有產品*categoryID*。
+- `GetProductByProductID(productID)` -傳回指定的特定產品*productID*。
 
 所有主要的查詢和兩個額外的方法傳回同一組資料欄位，也就是所有資料行從`Products`資料表。 有任何相互關聯子查詢或`JOIN`提取相關的資料之來源的 s`Categories`或`Suppliers`資料表。 因此，`ProductsDataTable`對應的資料行中每個欄位`Products`資料表。
 
@@ -209,12 +209,12 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已袁 Schmidt、 Jacky Goor、 Bernadette Leigh 和 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](updating-the-tableadapter-to-use-joins-cs.md)
-[下一頁](working-with-computed-columns-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](updating-the-tableadapter-to-use-joins-cs.md)
+> [下一頁](working-with-computed-columns-cs.md)

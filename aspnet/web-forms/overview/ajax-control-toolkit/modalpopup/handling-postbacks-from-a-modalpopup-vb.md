@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
-title: "處理回傳 ModalPopup (VB) |Microsoft 文件"
+title: 處理回傳 ModalPopup (VB) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 必須採取特別注意，當 pos..."
+description: AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 必須採取特別注意，當 pos...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7915d555fef363f41aa51bd77f0183c97c2f3769
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1aa2c42deb67015dd0b35edf4ba72d8d667ec88c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-modalpopup-vb"></a>處理回傳 ModalPopup (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 從快顯內建立回傳時，必須採取特別注意。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 從快顯內建立回傳時，必須採取特別注意。
 
@@ -62,6 +62,6 @@ AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用
 
 強制回應的快顯視窗會回傳 ([按一下以檢視完整大小的影像](handling-postbacks-from-a-modalpopup-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](using-modalpopup-with-a-repeater-control-vb.md)
-[下一頁](positioning-a-modalpopup-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-modalpopup-with-a-repeater-control-vb.md)
+> [下一頁](positioning-a-modalpopup-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
-title: "ASP.NET MVC 中使用不同版本的 IIS (VB) |Microsoft 文件"
+title: ASP.NET MVC 中使用不同版本的 IIS (VB) |Microsoft 文件
 author: microsoft
-description: "在本教學課程中，您可以了解如何使用 ASP.NET MVC 和 URL 路由，處理不同版本的 Internet Information Services。 您了解不同的策略..."
+description: 在本教學課程中，您可以了解如何使用 ASP.NET MVC 和 URL 路由，處理不同版本的 Internet Information Services。 您了解不同的策略...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6c9c3bf004b13677728c7c6bf2f5adf6a264dc49
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a131d5ae540356251e8d05178f8eef95be0ace39
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>ASP.NET MVC 中使用不同版本的 IIS (VB)
 ====================
@@ -33,7 +33,7 @@ ASP.NET MVC framework 取決於 ASP.NET 路由瀏覽器要求路由至控制器�
 - IIS 7.0 （傳統模式）-您需要執行特殊的設定，若要使用 ASP.NET 路由。
 - IIS 6.0 或以下-您需要執行特殊的設定，若要使用 ASP.NET 路由。
 
-最新的 IIS 版本是版本 7.5 （在 Win7)。 IIS 的 IIS 7 是包含 Windows Server 2008 和 VISTA/SP1 及更高版本。 您也可以安裝 IIS 7.0 上 Vista 作業系統 Home Basic 以外的任何版本 (請參閱[https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx))。
+最新的 IIS 版本是版本 7.5 （在 Win7)。 IIS 的 IIS 7 是包含 Windows Server 2008 和 VISTA/SP1 及更高版本。 您也可以安裝 IIS 7.0 上 Vista 作業系統 Home Basic 以外的任何版本 (請參閱[ https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx ](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx))。
 
 IIS 7.0 支援兩種模式來處理要求。 您可以使用整合式的模式或傳統模式。 您不需要執行任何特殊組態步驟，在整合模式中使用 IIS 7.0 時。 不過，您需要使用傳統模式的 IIS 7.0 時執行其他設定。
 
@@ -66,7 +66,7 @@ IIS 7.0 可處理要求使用兩種不同的要求處理模式： 整合和傳�
 
 - 升級至 Windows Vista 和 Windows Server 2008-上的 IIS 7.0 ASP.NET 1.1 [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
 
-- 與 IIS 7.0 的 ASP.NET 整合[https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
+- 與 IIS 7.0 的 ASP.NET 整合 [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 
 
 如果 ASP.NET 應用程式使用 DefaultAppPool，您不需要執行任何額外的步驟，以取得 ASP.NET 路由 （以及 ASP.NET MVC） 運作。 不過，如果 ASP.NET 應用程式設定成使用傳統的.NET 應用程式集區，然後繼續閱讀，您會有更多工作來執行。
@@ -109,7 +109,7 @@ IIS 7.0 可處理要求使用兩種不同的要求處理模式： 整合和傳�
 
 因此，若要取得 ASP.NET 路由運作，我們必須修改預設路由，使其包含對應至 ASP.NET framework 的副檔名。
 
-這是使用名為指令碼`registermvc.wsf`。 隨附的 ASP.NET MVC 1 版`C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`，但 ASP.NET 2 為準，此指令碼已移至 ASP.NET 未來位於[http://aspnet.codeplex.com/releases/view/39978](http://aspnet.codeplex.com/releases/view/39978)。
+這是使用名為指令碼`registermvc.wsf`。 隨附的 ASP.NET MVC 1 版`C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`，但 ASP.NET 2 為準，此指令碼已移至 ASP.NET 未來位於[ http://aspnet.codeplex.com/releases/view/39978 ](http://aspnet.codeplex.com/releases/view/39978)。
 
 執行此指令碼向 IIS 註冊新的.mvc 副檔名。 註冊.mvc 副檔名之後，您可以修改您在 Global.asax 檔案中的路由，以便路由使用.mvc 副檔名。
 
@@ -228,5 +228,5 @@ Global.asax 檔案中列出的 3 是完全相同的與先前的 Global.asax 檔�
 
 第二個選項是建立萬用字元指令碼對應。 此第二個選項的優點是，您不需要修改您的 Url。 這個第二個選項的缺點是它可能會影響您的 ASP.NET MVC 應用程式的效能。
 
->[!div class="step-by-step"]
-[上一步](using-asp-net-mvc-with-different-versions-of-iis-cs.md)
+> [!div class="step-by-step"]
+> [上一步](using-asp-net-mvc-with-different-versions-of-iis-cs.md)

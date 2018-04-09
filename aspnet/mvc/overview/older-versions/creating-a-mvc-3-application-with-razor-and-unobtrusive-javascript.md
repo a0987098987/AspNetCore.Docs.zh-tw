@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
-title: "建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript |Microsoft 文件"
+title: 建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript |Microsoft 文件
 author: microsoft
-description: "使用者清單的範例 web 應用程式示範如何建立 ASP.NET MVC 3 應用程式使用 Razor 檢視引擎是簡單。 範例應用程式 s 中..."
+description: 使用者清單的範例 web 應用程式示範如何建立 ASP.NET MVC 3 應用程式使用 Razor 檢視引擎是簡單。 範例應用程式 s 中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/01/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 29b45c07b5498542abbf22c4c3001b1cee41edc9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9b273f6827cad2078b581d6da7b127198dfddaa5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript
 ====================
@@ -54,7 +54,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ![Soln Exp](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image5.png)
 
-編輯 *\_Layout.cshtml*檔案，並將內部標記`<div>`名`logindisplay`訊息 *&quot;*登入已停用&quot;. 下列範例會顯示新標記：
+編輯 <em>\_Layout.cshtml</em>檔案，並將內部標記`<div>`名`logindisplay`訊息 <em>&quot;</em>登入已停用&quot;. 下列範例會顯示新標記：
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample1.cshtml)]
 
@@ -122,7 +122,7 @@ by [Microsoft](https://github.com/microsoft)
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample8.cs)]
 
-以滑鼠右鍵按一下`Details`方法，然後選取**加入檢視**。 確認**檢視資料類別**方塊包含 **Mvc3Razor.Models.UserModel***。* 設定**檢視內容**至**詳細資料**，然後按一下 **新增**。
+以滑鼠右鍵按一下`Details`方法，然後選取<strong>加入檢視</strong>。 確認<strong>檢視資料類別</strong>方塊包含<strong>Mvc3Razor.Models.UserModel</strong><em>。</em> 設定<strong>檢視內容</strong>至<strong>詳細資料</strong>，然後按一下 <strong>新增</strong>。
 
 ![加入詳細資料檢視](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image11.png)
 

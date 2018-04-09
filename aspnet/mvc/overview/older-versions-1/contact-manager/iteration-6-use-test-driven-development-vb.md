@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-vb
-title: "反覆項目 #6 – 使用測試為導向的開發 (VB) |Microsoft 文件"
+title: '反覆項目 #6 – 使用測試為導向的開發 (VB) |Microsoft 文件'
 author: microsoft
-description: "這個第六個反覆項目中我們將新功能加入我們的應用程式藉由撰寫單元測試的第一次，並撰寫單元測試的程式碼。 在這個反覆項目，..."
+description: 這個第六個反覆項目中我們將新功能加入我們的應用程式藉由撰寫單元測試的第一次，並撰寫單元測試的程式碼。 在這個反覆項目，...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9b558df9c0b44f5f76115270d361b6022658f9f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 71b3425c5ca8cbfc1b89493c7afb26681f8bdc9d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-6--use-test-driven-development-vb"></a>反覆項目 #6 – 使用測試為導向的開發 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-6-use-test-driven-development-vb/_static/contactmanager_6_vb1.zip)
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 11/10/2017
 
 第一個單元測試會包含在程式碼範例 1。 這項測試會驗證群組控制器的 index （） 方法傳回的一組群組。 測試會驗證，要資料檢視中傳回群組的集合。
 
-**列出 1-Controllers\GroupControllerTest.vb**
+**Listing 1 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample1.vb)]
 
@@ -133,18 +133,18 @@ ms.lasthandoff: 11/10/2017
 
 列出 2 中的群組控制器類別包含程式碼將單元測試所需的最低限度。 Index 動作傳回群組 （群組類別定義中列出的 3） 以靜態方式自動程式碼的的清單。
 
-**列出 2-Controllers\GroupController.vb**
+**Listing 2 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample2.vb)]
 
-**列出 3-Models\Group.vb**
+**Listing 3 - Models\Group.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample3.vb)]
 
 我們將為 GroupController 和群組類別加入至受測專案之後，第一個單元測試成功完成 （請參閱圖 2）。 我們已經通過的測試所需的最小工作。 它是慶祝的時間。
 
 
-[![成功 ！](iteration-6-use-test-driven-development-vb/_static/image2.jpg)](iteration-6-use-test-driven-development-vb/_static/image3.png)
+[![Success!](iteration-6-use-test-driven-development-vb/_static/image2.jpg)](iteration-6-use-test-driven-development-vb/_static/image3.png)
 
 **圖 02**： 成功 ！ ([按一下以檢視完整大小的影像](iteration-6-use-test-driven-development-vb/_static/image4.png))
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 11/10/2017
 
 列出的 4 中的測試會驗證函式呼叫 create （） 方法與新的群組將群組加入至群組 index （） 方法所傳回的清單。 換句話說，如果建立新的群組則我應該能夠從 index （） 方法所傳回的群組的清單取得新的群組。
 
-**列出 4-Controllers\GroupControllerTest.vb**
+**Listing 4 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample4.vb)]
 
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/10/2017
 
 已修改的群組控制站，列出 5 中所包含變更傳遞新的測試所需的最低限度。
 
-**列出 5-Controllers\GroupController.vb**
+**Listing 5 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample5.vb)]
 
@@ -177,17 +177,17 @@ ms.lasthandoff: 11/10/2017
 
 列出 6 包含新的測試表達此意圖。 這項測試會驗證嘗試建立群組，而不需要提供名稱會導致模型狀態中的驗證錯誤訊息。
 
-**列出 6-Controllers\GroupControllerTest.vb**
+**Listing 6 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample6.vb)]
 
 為了滿足這項測試，我們需要將 Name 屬性新增至群組類別 （請參閱程式碼範例 7）。 此外，我們需要將稍微不同的驗證邏輯加入至群組 controller s create （） 動作 （請參閱列出 8）。
 
-**列出 7-Models\Group.vb**
+**Listing 7 - Models\Group.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample7.vb)]
 
-**列出 8-Controllers\GroupController.vb**
+**Listing 8 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample8.vb)]
 
@@ -207,15 +207,15 @@ ms.lasthandoff: 11/10/2017
 
 列出 11 包含新的 FakeContactManagerRepository 類別可實作 IContactManagerRepository 介面。 不同於 EntityContactManagerRepository 類別也實作 IContactManagerRepository 介面，新 FakeContactManagerRepository 類別不會不會與資料庫通訊。 FakeContactManagerRepository 類別會做為 proxy 的記憶體中集合使用資料庫。 我們將在我們的單元測試中使用這個類別，像是假的儲存機制的層級。
 
-**列出 9-Controllers\GroupController.vb**
+**Listing 9 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample9.vb)]
 
-**列出 10-Controllers\ContactManagerService.vb**
+**Listing 10 - Controllers\ContactManagerService.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample10.vb)]
 
-**列出 11-Controllers\FakeContactManagerRepository.vb**
+**Listing 11 - Controllers\FakeContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample11.vb)]
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 11/10/2017
 
 最後，這些變更，我們的應用程式的設計會要求我們對我們的單元測試中進行一些修改。 我們現在需要執行單元測試時使用 FakeContactManagerRepository。 更新的 GroupControllerTest 類別被包含在列出 12。
 
-**列出 12-Controllers\GroupControllerTest.vb**
+**Listing 12 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample13.vb)]
 
@@ -319,7 +319,7 @@ ms.lasthandoff: 11/10/2017
 
 虛設常式方法會啟用我們編譯我們的應用程式，並傳遞單元測試。 不過，現在它是以實際實作這些方法的時間。 EntityContactManagerRepository 類別的最終版本會包含在列出 13。
 
-**列出 13-Models\EntityContactManagerRepository.vb**
+**Listing 13 - Models\EntityContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample16.vb)]
 
@@ -360,6 +360,6 @@ ms.lasthandoff: 11/10/2017
 
 在下一個反覆項目-最後一個反覆項目-我們重新撰寫以善用 Ajax 應用程式。 利用 Ajax，我們將會改善回應性和連絡人管理員應用程式的效能。
 
->[!div class="step-by-step"]
-[上一頁](iteration-5-create-unit-tests-vb.md)
-[下一頁](iteration-7-add-ajax-functionality-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-5-create-unit-tests-vb.md)
+> [下一頁](iteration-7-add-ajax-functionality-vb.md)

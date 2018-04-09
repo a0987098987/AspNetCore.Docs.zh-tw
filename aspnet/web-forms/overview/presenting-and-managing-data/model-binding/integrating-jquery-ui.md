@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
-title: "使用模型繫結和 web form 整合 JQuery UI 日期選擇器 |Microsoft 文件"
+title: 使用模型繫結和 web form 整合 JQuery UI 日期選擇器 |Microsoft 文件
 author: tfitzmac
-description: "此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-..."
+description: 此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: da3c8f347a709a4c9a47fd0ecce5201d9b0cd1b1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 126262b440f3e914a7fac3f0b7eeadb4f648d2bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>使用模型繫結和 web form 整合 JQuery UI 日期選擇器
 ====================
@@ -115,6 +115,6 @@ JQuery UI 日期選擇器小工具可讓使用者輕鬆地從使用者互動的�
 
 在接下來[教學課程](using-query-string-values-to-retrieve-data.md)，選取資料時，您將使用的查詢字串值。
 
->[!div class="step-by-step"]
-[上一頁](sorting-paging-and-filtering-data.md)
-[下一頁](using-query-string-values-to-retrieve-data.md)
+> [!div class="step-by-step"]
+> [上一頁](sorting-paging-and-filtering-data.md)
+> [下一頁](using-query-string-values-to-retrieve-data.md)

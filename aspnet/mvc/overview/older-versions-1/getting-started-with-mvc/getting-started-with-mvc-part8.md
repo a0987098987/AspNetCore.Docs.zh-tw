@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
-title: "將資料行加入至模型 |Microsoft 文件"
+title: 將資料行加入至模型 |Microsoft 文件
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 17ee105f596319423ac83cf718683ed293f952f3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7a0b64ce00fc5ee6d49990f1d4d93a154c467bf5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-column-to-the-model"></a>將資料行加入至模型
 ====================
@@ -77,11 +77,11 @@ ms.lasthandoff: 01/30/2018
 
 此基本教學課程了您開始進行控制站，檢視與建立關聯，並傳遞硬式編碼的資料。 然後我們建立及設計資料庫，並將一些資料放在。 我們會從資料庫擷取資料，並顯示 HTML 表格中。 然後我們會加入可讓使用者將資料加入至資料庫本身從 Web 應用程式內建立新表單。 我們加入驗證，然後進行驗證用戶端使用 JavaScript。 最後，我們變更了資料庫以包含新的資料行的資料，然後更新我們來建立並顯示這項新資料的兩個頁面。
 
-現在鼓勵您移到我們的中繼層級教學課程 」[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)」 以及許多視訊和資源的[https://asp.net/mvc](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！
+現在鼓勵您移到我們的中繼層級教學課程 」[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)」 以及許多視訊和資源的[ https://asp.net/mvc ](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！
 
 敬祝您使用愉快！
 
-- Scott Hanselman- [http://hanselman.com](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上。
+- Scott Hanselman- [ http://hanselman.com ](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上。
 
->[!div class="step-by-step"]
-[上一步](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [上一步](getting-started-with-mvc-part7.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
-title: "更新和刪除現有的二進位資料 (VB) |Microsoft 文件"
+title: 更新和刪除現有的二進位資料 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在先前的教學課程中，我們看到 GridView 控制項如何讓輕鬆地編輯及刪除文字資料。 在本教學課程中，我們看到 GridView 控制項也讓..."
+description: 在先前的教學課程中，我們看到 GridView 控制項如何讓輕鬆地編輯及刪除文字資料。 在本教學課程中，我們看到 GridView 控制項也讓...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8baf187d484424aeaee57f8c57ac391a0ae9e946
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 37e32167cccd1b9a98b629179cdaeb9e193f88b7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-and-deleting-existing-binary-data-vb"></a>更新和刪除現有的二進位資料 (VB)
 ====================
@@ -264,8 +264,8 @@ RadioButtonList 下方加入名為的檔案上傳控制項`BrochureUpload`。 �
 
 當完成所需的步驟 RadioButtonList s`SelectedValue`是 3 幾乎是相同的所使用的 DetailsView 的`ItemInserting`事件處理常式。 這個事件處理常式執行時從我們在加入 DetailsView 控制項加入新的類別目錄記錄[上一個教學課程](including-a-file-upload-option-when-adding-a-new-record-vb.md)。 因此，它 behooves 我們重構出此功能分成不同的方法。 特別是，我移出的通用功能分成兩個方法：
 
-- `ProcessBrochureUpload(FileUpload, out bool)`接受做為輸入檔案上傳控制項執行個體和輸出布林值，指定是否刪除或編輯作業應該繼續進行，或如果應該取消發生某個驗證錯誤。 這個方法會傳回儲存的檔案路徑或`null`如果沒有檔案已儲存。
-- `DeleteRememberedBrochurePath`刪除的頁面變數中的路徑所指定的檔案`deletedCategorysPdfPath`如果`deletedCategorysPdfPath`不`null`。
+- `ProcessBrochureUpload(FileUpload, out bool)` 接受做為輸入檔案上傳控制項執行個體和輸出布林值，指定是否刪除或編輯作業應該繼續進行，或如果應該取消發生某個驗證錯誤。 這個方法會傳回儲存的檔案路徑或`null`如果沒有檔案已儲存。
+- `DeleteRememberedBrochurePath` 刪除的頁面變數中的路徑所指定的檔案`deletedCategorysPdfPath`如果`deletedCategorysPdfPath`不`null`。
 
 這兩種方法的程式碼後面。 請注意之間的相似度`ProcessBrochureUpload`和 DetailsView 的`ItemInserting`從上一個教學課程的事件處理常式。 在本教學課程中，我已更新 DetailsView 的事件處理常式，才能使用這些新方法。 下載此教學課程，請參閱 DetailsView 的事件處理常式的修改相關聯的程式碼。
 
@@ -362,11 +362,11 @@ ImageField 轉換為 TemplateField 以這種方式，就會產生兩個範本具
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](including-a-file-upload-option-when-adding-a-new-record-vb.md)
+> [!div class="step-by-step"]
+> [上一步](including-a-file-upload-option-when-adding-a-new-record-vb.md)

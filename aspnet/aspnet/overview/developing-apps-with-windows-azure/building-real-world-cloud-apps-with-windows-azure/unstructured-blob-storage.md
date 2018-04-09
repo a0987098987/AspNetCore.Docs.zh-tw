@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
-title: "非結構化的 Blob 儲存體 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 非結構化的 Blob 儲存體 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/30/2015
 ms.topic: article
 ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: 489769533a26c99404c6a5186d66f560385dcffd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c2c82a579feb586287c40bb82eba53c5f84afaba
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>非結構化的 Blob 儲存體 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -148,6 +148,6 @@ Azure 不會將資料複寫到地理政治界限： 如果主要位置是在美�
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 高層級概念與架構原則非常可存取且有趣的方式，呈現劇本取自與實際客戶的 Microsoft 客戶諮詢團隊 (CAT) 體驗。 如需 Azure 儲存體服務和 blob 的討論，請參閱 35:13 時段 5 開始。
 - [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱附屬金鑰模式。
 
->[!div class="step-by-step"]
-[上一頁](data-partitioning-strategies.md)
-[下一頁](design-to-survive-failures.md)
+> [!div class="step-by-step"]
+> [上一頁](data-partitioning-strategies.md)
+> [下一頁](design-to-survive-failures.md)

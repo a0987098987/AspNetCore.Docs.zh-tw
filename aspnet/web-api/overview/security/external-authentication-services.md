@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/external-authentication-services
-title: "外部驗證服務與 ASP.NET Web 應用程式開發介面 (C#) |Microsoft 文件"
+title: 外部驗證服務與 ASP.NET Web 應用程式開發介面 (C#) |Microsoft 文件
 author: rmcmurray
-description: "描述如何使用 ASP.NET Web API 中的外部驗證服務。"
+description: 描述如何使用 ASP.NET Web API 中的外部驗證服務。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: 744396cb0c95d1887f259b1e2e890bd06ef7d049
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 406a85db7055910cb7a4e15fec8ef68dff5a19dc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a>外部驗證服務與 ASP.NET Web 應用程式開發介面 (C#)
 ====================
@@ -119,7 +119,7 @@ Visual Studio 2013 已完成建立您的專案，開啟*Startup.Auth.cs*檔案�
 <a id="FACEBOOK"></a>
 ## <a name="enabling-facebook-authentication"></a>啟用 Facebook 驗證
 
-使用 Facebook 驗證會要求您建立 Facebook 開發人員帳戶，且您的專案需要應用程式識別碼和來自 Facebook 的祕密金鑰才能運作。 如需建立 Facebook 開發人員帳戶，並取得您的應用程式識別碼和祕密金鑰資訊，請參閱[https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166)。
+使用 Facebook 驗證會要求您建立 Facebook 開發人員帳戶，且您的專案需要應用程式識別碼和來自 Facebook 的祕密金鑰才能運作。 如需建立 Facebook 開發人員帳戶，並取得您的應用程式識別碼和祕密金鑰資訊，請參閱[ https://go.microsoft.com/fwlink/?LinkID=252166 ](https://go.microsoft.com/fwlink/?LinkID=252166)。
 
 一旦您取得您的應用程式識別碼和祕密金鑰，請使用下列步驟啟用 Facebook 驗證 web 應用程式：
 
@@ -180,7 +180,7 @@ Google 是到目前為止最簡單的啟用，因為它不需要開發人員帳�
 <a id="MICROSOFT"></a>
 ## <a name="enabling-microsoft-authentication"></a>啟用 Microsoft 驗證
 
-Microsoft 驗證需要您建立開發人員帳戶，而且需要用戶端識別碼和用戶端密碼才能運作。 如需建立 Microsoft 開發人員帳戶，並取得您的用戶端識別碼和用戶端密碼資訊，請參閱[https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070)。
+Microsoft 驗證需要您建立開發人員帳戶，而且需要用戶端識別碼和用戶端密碼才能運作。 如需建立 Microsoft 開發人員帳戶，並取得您的用戶端識別碼和用戶端密碼資訊，請參閱[ https://go.microsoft.com/fwlink/?LinkID=144070 ](https://go.microsoft.com/fwlink/?LinkID=144070)。
 
 一旦您取得您的取用者索引鍵和取用者密碼，請使用下列步驟啟用 web 應用程式的 Microsoft 驗證：
 
@@ -212,7 +212,7 @@ Microsoft 驗證需要您建立開發人員帳戶，而且需要用戶端識別�
 <a id="TWITTER"></a>
 ## <a name="enabling-twitter-authentication"></a>啟用 Twitter 驗證
 
-Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵和取用者秘密才能運作。 如需建立 Twitter 開發人員帳戶，並取得您的取用者索引鍵和取用者秘密資訊，請參閱[https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166)。
+Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵和取用者秘密才能運作。 如需建立 Twitter 開發人員帳戶，並取得您的取用者索引鍵和取用者秘密資訊，請參閱[ https://go.microsoft.com/fwlink/?LinkID=252166 ](https://go.microsoft.com/fwlink/?LinkID=252166)。
 
 一旦您取得您的取用者索引鍵和取用者密碼，請使用下列步驟啟用 Twitter 驗證 web 應用程式：
 
@@ -260,19 +260,21 @@ Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵
 
 - 新增靜態 FQDN，對應的主機檔案：
 
-    1. 在視窗中開啟提升權限的命令提示字元。
-    2. 輸入下列命令：
+  1. 在視窗中開啟提升權限的命令提示字元。
+  2. 輸入下列命令：
 
-        <kbd>notepad %WinDir%\system32\drivers\etc\hosts</kbd>
-    3. 將類似下列的項目加入至主機檔案：
+      <kbd>notepad %WinDir%\system32\drivers\etc\hosts</kbd>
+  3. 將類似下列的項目加入至主機檔案：
 
-        <kbd>127.0.0.1 www.wingtiptoys.com</kbd>
-    4. 儲存並關閉主機檔案。
+      <kbd>127.0.0.1 www.wingtiptoys.com</kbd>
+  4. 儲存並關閉主機檔案。
+
 - 設定 Visual Studio 專案以使用 FQDN:
 
-    1. 在 Visual Studio 2013 中開啟您的專案時，請按一下**專案**功能表，然後選取您的專案屬性。 例如，您可能會選取**WebApplication1 屬性**。
-    2. 選取**Web**  索引標籤。
-    3. 輸入的 FQDN**專案 Url**。 例如，您會輸入<kbd>http://www.wingtiptoys.com</kbd>如果這是您加入至主機檔案的 FQDN 對應。
+  1. 在 Visual Studio 2013 中開啟您的專案時，請按一下**專案**功能表，然後選取您的專案屬性。 例如，您可能會選取**WebApplication1 屬性**。
+  2. 選取**Web**  索引標籤。
+  3. 輸入的 FQDN<strong>專案 Url</strong>。 例如，您會輸入<kbd> <http://www.wingtiptoys.com> </kbd>如果這是您加入至主機檔案的 FQDN 對應。
+
 - 設定 IIS Express 應用程式使用 FQDN:
 
     1. 在視窗中開啟提升權限的命令提示字元。
@@ -283,14 +285,14 @@ Twitter 驗證需要您建立開發人員帳戶，而且需要取用者索引鍵
 
         <kbd>appcmd.exe set config -section:system.applicationHost/sites /+&quot;[name='WebApplication1'].bindings.[protocol='http',bindingInformation='*:80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
 
- 其中**WebApplication1**是您的專案名稱和**bindingInformation**包含您想要用於測試的通訊埠編號和 FQDN。
+  其中**WebApplication1**是您的專案名稱和**bindingInformation**包含您想要用於測試的通訊埠編號和 FQDN。
 
 <a id="OBTAIN"></a>
 ### <a name="how-to-obtain-your-application-settings-for-microsoft-authentication"></a>如何取得 Microsoft 驗證的應用程式設定
 
 連結至 Windows Live Microsoft 驗證的應用程式是簡單的程序。 如果您未連結至 Windows Live 應用程式，您可以使用下列步驟：
 
-1. 瀏覽至[https://go.microsoft.com/fwlink/?LinkID=144070](https://go.microsoft.com/fwlink/?LinkID=144070)並輸入您的 Microsoft 帳戶名稱和密碼提示時，然後按一下**登入**:
+1. 瀏覽至[ https://go.microsoft.com/fwlink/?LinkID=144070 ](https://go.microsoft.com/fwlink/?LinkID=144070)並輸入您的 Microsoft 帳戶名稱和密碼提示時，然後按一下**登入**:
 
     [![](external-authentication-services/_static/image64.png "按一下以展開映像")](external-authentication-services/_static/image63.png)
 2. 輸入的名稱和出現提示時，您的應用程式的語言，然後按一下**我接受**:

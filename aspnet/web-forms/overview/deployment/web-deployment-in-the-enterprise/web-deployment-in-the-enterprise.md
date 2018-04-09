@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
-title: "Web 企業中的部署 |Microsoft 文件"
+title: Web 企業中的部署 |Microsoft 文件
 author: jrjlee
-description: "本教學課程說明如何符合許多管理對內企業規模的 web 應用程式的部署時，就會發生的驗證題目..."
+description: 本教學課程說明如何符合許多管理對內企業規模的 web 應用程式的部署時，就會發生的驗證題目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
-ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: fc463cb689f4f63a12788b80958c9fc8fe20119d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>在企業中的 web 部署
 ====================
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/15/2018
 
 本教學課程涵蓋的主題可分為四個主要區域。
 
-這些主題會介紹參考方案 & #x 2014年; 請連絡管理員解決方案 & #x 2014;，並說明如何下載並設定在本機電腦上：
+這些主題會介紹參考方案&#x2014;連絡人管理員解決方案&#x2014;以及描述如何下載並設定在本機電腦上：
 
 - [連絡管理員解決方案](the-contact-manager-solution.md)
 - [設定連絡管理員解決方案](setting-up-the-contact-manager-solution.md)
@@ -104,5 +104,5 @@ ms.lasthandoff: 03/15/2018
 - [設定用於 Web 部署的 Team Foundation Server](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)。 本教學課程說明如何設定 TFS 以支援各種部署案例，包括自動化的部署 CI 程序的一部分，以及手動觸發部署的特定組建。
 - [進階企業 Web 部署](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md)。 本教學課程說明如何完成各種更進階的部署工作，例如自訂的多個環境的資料庫部署、 檔案和資料夾排除在部署中，和部署程序期間取得 web 應用程式離線.
 
->[!div class="step-by-step"]
-[下一步](the-contact-manager-solution.md)
+> [!div class="step-by-step"]
+> [下一步](the-contact-manager-solution.md)

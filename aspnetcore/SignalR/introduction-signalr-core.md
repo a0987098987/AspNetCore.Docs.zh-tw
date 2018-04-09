@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的 SignalR 簡介"
+title: ASP.NET Core 的 SignalR 簡介
 author: rachelappel
-description: "了解如何 ASP.NET Core SignalR 程式庫可簡化將即時 web 功能加入至應用程式。"
+description: 了解如何 ASP.NET Core SignalR 程式庫可簡化將即時 web 功能加入至應用程式。
 manager: wpickett
 ms.author: rachelap
 ms.custom: mvc
@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction-signalr-core
 ms.openlocfilehash: 3fa70c957b246787d4e457c74f90ad797b3af766
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="introduction-to-signalr"></a>SignalR 的簡介
 

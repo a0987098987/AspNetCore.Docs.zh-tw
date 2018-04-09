@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
-title: "將驗證加入至模型 |Microsoft 文件"
+title: 將驗證加入至模型 |Microsoft 文件
 author: Rick-Anderson
-description: "注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範..."
+description: 注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 6de7d279677c7bbf220b956767a97aaaff8da9a1
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 39d1d9d4cb8b11f7ce5a3a85c51f652115d79db7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================
@@ -81,7 +81,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 ![8_validationErrors](adding-validation-to-the-model/_static/image1.png)
 
 > [!NOTE]
-> 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 下列程式碼將示範使用 Views\Movies\Edit.cshtml 檔案所做的修改&quot;FR-FR&quot;文化特性：
+> 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 下列程式碼將示範使用 Views\Movies\Edit.cshtml 檔案所做的修改&quot;FR-FR&quot;文化特性：
 
 
 [!code-cshtml[Main](adding-validation-to-the-model/samples/sample6.cshtml)]
@@ -94,10 +94,10 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 1. 欄位 索引標籤。
 2. 輸入一些文字。
-3. 索引標籤時。
+3. 按下 Tab 鍵切換至下一個欄位。
 4. 回到欄位 索引標籤。
 5. 移除文字。
-6. 索引標籤時。
+6. 按下 Tab 鍵切換至下一個欄位。
 
 上述順序將會觸發必要的驗證，而不叫用 [提交] 按鈕。 只要不需要輸入的任何欄位按下 [提交] 按鈕，將會觸發用戶端驗證。 直到沒有任何用戶端驗證錯誤後，表單資料才會傳送至伺服器。 您可以藉由將中斷點放在 HTTP Post 方法，或使用測試[fiddler 工具](http://fiddler2.com/fiddler2/)或 IE 9 [F12 開發人員工具](https://msdn.microsoft.com/ie/aa740478)。
 
@@ -165,6 +165,6 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 在數列的下一個部分中，我們會檢閱應用程式，並對自動產生的 `Details` 和 `Delete` 方法進行一些改良。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-new-field-to-the-movie-model-and-table.md)
-[下一頁](examining-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-new-field-to-the-movie-model-and-table.md)
+> [下一頁](examining-the-details-and-delete-methods.md)

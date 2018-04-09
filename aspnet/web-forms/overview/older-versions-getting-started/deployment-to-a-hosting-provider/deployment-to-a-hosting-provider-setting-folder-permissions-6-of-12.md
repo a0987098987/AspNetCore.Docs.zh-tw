@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 12 個 6-設定資料夾權限 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 12 個 6-設定資料夾權限 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 42085fff5f1aed1440f49e1e2ceee0cf0e751e2c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 573e75221a1c0018bded7544e584b0c75f47d607
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-setting-folder-permissions---6-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 12 個 6-設定資料夾權限
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，您可以設定的資料夾權限*Elmah*資料夾中已部署的 web 站台，好讓應用程式可以在該資料夾中建立記錄檔。
 
@@ -83,6 +83,6 @@ ms.lasthandoff: 11/10/2017
 
 如需如何授與應用程式集區識別的權限的詳細資訊，請參閱[應用程式集區識別](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)和[安全的內容在檔案系統 Acl 透過 IIS](https://www.iis.net/learn/get-started/planning-for-security/secure-content-in-iis-through-file-system-acls) IIS.net 網站上。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)

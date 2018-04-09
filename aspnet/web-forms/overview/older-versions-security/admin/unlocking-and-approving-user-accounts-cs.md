@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
-title: "解除鎖定並核准使用者帳戶 (C#) |Microsoft 文件"
+title: 解除鎖定並核准使用者帳戶 (C#) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程示範如何建置網頁，讓系統管理員管理使用者的鎖定，核准狀態。 我們也會看到如何核准新使用者 o..."
+description: 本教學課程示範如何建置網頁，讓系統管理員管理使用者的鎖定，核准狀態。 我們也會看到如何核准新使用者 o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f22a745f42dae66cd64dc38df28c59b910c17070
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8b3d69e96513192bc73a2a6a7cbb4c6e33eb610b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="unlocking-and-approving-user-accounts-c"></a>解除鎖定和核准的使用者帳戶 (C#)
 ====================
@@ -208,12 +208,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝...
 
-許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](recovering-and-changing-passwords-cs.md)
-[下一頁](building-an-interface-to-select-one-user-account-from-many-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](recovering-and-changing-passwords-cs.md)
+> [下一頁](building-an-interface-to-select-one-user-account-from-many-vb.md)

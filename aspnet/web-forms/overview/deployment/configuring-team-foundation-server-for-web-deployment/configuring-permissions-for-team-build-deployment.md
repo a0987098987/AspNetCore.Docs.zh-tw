@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
-title: "設定的權限給小組建置部署 |Microsoft 文件"
+title: 設定的權限給小組建置部署 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何設定以啟用您的組建伺服器，做為自動化 b 的一部分，將內容部署至 web 伺服器和資料庫伺服器的權限..."
+description: 本主題描述如何設定以啟用您的組建伺服器，做為自動化 b 的一部分，將內容部署至 web 伺服器和資料庫伺服器的權限...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cb3d013d69e36f97335ea31dd6e4997772ba2d8e
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4698349d664816ec49475bbfe71fb32af79ea96d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>設定的權限給小組建置部署
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > 本主題描述如何設定讓您自動化的建置程序的一部分，將內容部署至 web 伺服器和資料庫伺服器的組建伺服器的權限。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/15/2018
 需要 Windows 驗證，並想要自動化使用 Team Build，任何部署工作會使用組建服務身分識別來執行。 因此，您必須在您的 web 伺服器和資料庫伺服器上任何必要的權限授與組建服務識別。
 
 > [!NOTE]
-> 網路服務帳戶使用電腦帳戶驗證至其他電腦。 電腦帳戶會採用 * [網域名稱]\[電腦名稱] ***$**（& c) 2014年 #x; 例如， **FABRIKAM\TFSBUILD$**。 因此，如果組建服務會使用 Network Service 識別執行，您應該授的電腦帳戶識別任何必要權限與針對您的組建伺服器。
+> 網路服務帳戶使用電腦帳戶驗證至其他電腦。 電腦帳戶會採用 * [網域名稱]\[電腦名稱] ***$**&#x2014;，例如**FABRIKAM\TFSBUILD$**。 因此，如果組建服務會使用 Network Service 識別執行，您應該授的電腦帳戶識別任何必要權限與針對您的組建伺服器。
 
 
 ## <a name="configuring-web-server-permissions"></a>設定 Web 伺服器權限
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/15/2018
 
 遠端代理程式會在此情況下有兩個索引鍵的限制：
 
-- 遠端代理程式只支援 NTLM 驗證。 換句話說，此部署必須使用的組建服務識別 & #x 2014年，您就無法模擬另一個帳戶。
+- 遠端代理程式只支援 NTLM 驗證。 換句話說，此部署必須使用組建服務識別&#x2014;您無法模擬另一個帳戶。
 - 若要使用遠端代理程式，執行部署的帳戶必須是目標伺服器的系統管理員。
 
 在一起，這些兩個的限制進行遠端代理程式的方法讓人困擾的自動化 Team Build 部署。 若要使用這種方法，您需要讓系統管理員帳戶在任何目標 web 伺服器上的組建服務。
@@ -93,5 +93,5 @@ ms.lasthandoff: 03/15/2018
 
 如需有關設定以支援遠端部署 Windows server 環境的詳細資訊，請參閱[用於 Web 部署設定伺服器環境](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md)。
 
->[!div class="step-by-step"]
-[上一步](deploying-a-specific-build.md)
+> [!div class="step-by-step"]
+> [上一步](deploying-a-specific-build.md)

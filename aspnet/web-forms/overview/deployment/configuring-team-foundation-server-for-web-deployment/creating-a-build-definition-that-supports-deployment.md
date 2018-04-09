@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
-title: "建立組建定義支援部署 |Microsoft 文件"
+title: 建立組建定義支援部署 |Microsoft 文件
 author: jrjlee
-description: "如果您想要執行任何種類的組建 Team Foundation Server (TFS) 2010年中，您需要建立 team 專案中的組建定義。 此主題 des..."
+description: 如果您想要執行任何種類的組建 Team Foundation Server (TFS) 2010年中，您需要建立 team 專案中的組建定義。 此主題 des...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: e5610753968328e5d0f1dba4cbbfed08480fd773
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c5ea0bd9f01bb57b96abd349741f304c0093d887
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>建立組建定義支援的部署
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 01/24/2018
 > 如果您想要執行任何種類的組建 Team Foundation Server (TFS) 2010年中，您需要建立 team 專案中的組建定義。 本主題描述如何在 TFS 中建立新的組建定義，以及如何控制 web 部署在 Team Build 中建置程序的一部分。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，請在它的組建和部署程序由兩個專案檔 & #x 2014年; one 包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，兩個專案檔案中的組建和部署程序控制由&#x2014;其中一個包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/24/2018
 下一節說明如何實作這個程序，藉由建立新的組建定義。
 
 > [!NOTE]
-> 此程序 & #x 2014; 單一的自動化程序會建立在其中，測試，並部署方案 & #x 2014年; 可能是最適合部署到測試環境。 針對預備與生產環境您很可能想將內容從某一個組建，您已驗證並驗證測試環境中部署。 這種方法在下一個主題中，說明[部署特定建置](deploying-a-specific-build.md)。
+> 此程序&#x2014;在單一的自動程序建置、 測試和部署解決方案&#x2014;很可能是最適合部署到測試環境。 針對預備與生產環境您很可能想將內容從某一個組建，您已驗證並驗證測試環境中部署。 這種方法在下一個主題中，說明[部署特定建置](deploying-a-specific-build.md)。
 
 
 ### <a name="who-performs-this-procedure"></a>誰會執行此程序？
@@ -133,7 +133,7 @@ ms.lasthandoff: 01/24/2018
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image10.png)
 
-若要檢閱的進度和結果的組建 & #x 2014年; 不論它是否已觸發手動或自動 & #x 2014; 按兩下組建定義中的**Team Explorer**視窗。 這會開啟**Build 總管** 索引標籤。
+若要檢閱進度與結果的組建&#x2014;不論它是否已觸發手動或自動&#x2014;按兩下組建定義中的**Team Explorer**視窗。 這會開啟**Build 總管** 索引標籤。
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image11.png)
 
@@ -161,6 +161,6 @@ TFS 提供廣泛的功能，可協助您監視在建置程序。 例如，TFS �
 
 如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/library/ms181722.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](configuring-a-tfs-build-server-for-web-deployment.md)
-[下一頁](deploying-a-specific-build.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-a-tfs-build-server-for-web-deployment.md)
+> [下一頁](deploying-a-specific-build.md)

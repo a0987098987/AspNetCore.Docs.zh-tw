@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
-title: "導入 ASP.NET Web Pages-輸入資料庫的資料，使用表單 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-輸入資料庫的資料，使用表單 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何建立項目表單，然後輸入 得到的資料從表單到資料庫資料表時使用 ASP.NET Web Pages （..."
+description: 本教學課程會示範如何建立項目表單，然後輸入 得到的資料從表單到資料庫資料表時使用 ASP.NET Web Pages （...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
-ms.openlocfilehash: b74eecb16b2c4695bb417816b90f701f724cc9d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bbccf8134e90c19e29efaa5afe1e46e15320c189
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>導入 ASP.NET Web Pages-使用表單中輸入資料庫的資料
 ====================
@@ -101,7 +101,7 @@ ms.lasthandoff: 11/10/2017
 
 要插入的資料行已經列在命令中 — `(Title, Genre, Year)`。 有趣的部分，就是您從文字方塊中，到取得的值`VALUES`命令的一部分。 而不是實際的值，您會看到`@0`， `@1`，和`@2`，當然，這是預留位置。 當您執行命令 (在`db.Execute`列)，傳遞所得的文字方塊的值。
 
-**重要 ！** 請記住，您應該永遠包含線上使用者輸入的 SQL 陳述式中的資料的唯一方式是使用預留位置，如下所示 (`VALUES(@0, @1, @2)`)。 串連成 SQL 陳述式的使用者輸入時，如果您自行開啟 SQL 插入式攻擊，如所述[表單基本 ASP.NET Web Pages 中](https://go.microsoft.com/fwlink/?LinkId=251581)（上一個教學課程）。
+**重要！** 請記住，您應該永遠包含線上使用者輸入的 SQL 陳述式中的資料的唯一方式是使用預留位置，如下所示 (`VALUES(@0, @1, @2)`)。 串連成 SQL 陳述式的使用者輸入時，如果您自行開啟 SQL 插入式攻擊，如所述[表單基本 ASP.NET Web Pages 中](https://go.microsoft.com/fwlink/?LinkId=251581)（上一個教學課程）。
 
 仍內部`if`封鎖，加入下列一行之後`db.Execute`行：
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/10/2017
 
 ![瀏覽器中的 [新增電影] 頁面](entering-data/_static/image2.png)
 
-(如果您得到不同的網頁瀏覽器中，請確定 URL 是`http://localhost:nnnnn/AddMovie`)，其中 *nnnnn* 是您所使用的連接埠號碼。)
+(如果您得到不同的網頁瀏覽器中，請確定 URL 是`http://localhost:nnnnn/AddMovie`)，其中*nnnnn*是您所使用的連接埠號碼。)
 
 您未取得錯誤網頁嗎？ 如果是的話，請仔細閱讀，並確定該程式碼看起來完全什麼先前已列出。
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 11/10/2017
 
 很明顯地，您不想要讓使用者輸入半空白電影資訊到資料庫。 解決方法是驗證使用者的輸入。 一開始，驗證將會只是確定使用者已為所有欄位都輸入的值 （也就是無一包含空字串）。
 
-> [!TIP] 
+> [!TIP]
 > 
 > **Null 和空字串**
 > 
@@ -260,6 +260,6 @@ ASP.NET 網頁包括 helper &mdash; `Validation` helper&mdash;可用來確定使
 - [SQL INSERT INTO 陳述式](http://www.w3schools.com/sql/sql_insert.asp)W3Schools 站台上
 - [驗證使用者輸入，在 ASP.NET Web Pages 站台](https://go.microsoft.com/fwlink/?LinkId=253002)。 使用的詳細資訊`Validation`協助程式。
 
->[!div class="step-by-step"]
-[上一頁](form-basics.md)
-[下一頁](updating-data.md)
+> [!div class="step-by-step"]
+> [上一頁](form-basics.md)
+> [下一頁](updating-data.md)

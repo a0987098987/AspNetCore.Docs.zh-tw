@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
-title: "單一登入 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 單一登入 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: b3640c94a8ae9ede330c0fe6a392acb5843cb65c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 82f2f99154d94074b03d580a0f491053d6f53bde
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>單一登入 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -130,7 +130,7 @@ ms.lasthandoff: 01/24/2018
 
 您只能有一個在組織中，在 Windows 2003 或更新版本的網域控制站上執行此。 也不需要重新開機。 當您完成時，所有使用者都在雲端，而且您可以執行單一登入從任何 web 或行動應用程式，使用 SAML、 OAuth、 或 Ws-fed。
 
-有時候我們取得要求這是有關安全-沒有 Microsoft 用於它自己的敏感的商業資料？ 就的是我們所執行。 例如，如果您移至內部 Microsoft SharePoint 站台[https://microsoft.sharepoint.com/](https://microsoft.sharepoint.com/)，系統提示您取得登入。
+有時候我們取得要求這是有關安全-沒有 Microsoft 用於它自己的敏感的商業資料？ 就的是我們所執行。 例如，如果您移至內部 Microsoft SharePoint 站台[ https://microsoft.sharepoint.com/ ](https://microsoft.sharepoint.com/)，系統提示您取得登入。
 
 ![Office 365 登入](single-sign-on/_static/image20.png)
 
@@ -193,6 +193,6 @@ Visual Studio 可讓您輕鬆建立使用 Azure AD 進行單一登入，應用�
 - [Azure Active Directory Graph API 部落格](https://blogs.msdn.com/b/aadgraphteam/)。
 - [存取控制在 BYOD 和混合式身分識別基礎結構中的目錄整合](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/PCIT-B213#fbid=)。 技術 Ed 2014 工作階段視訊 Gayana Bagdasaryan。
 
->[!div class="step-by-step"]
-[上一頁](web-development-best-practices.md)
-[下一頁](data-storage-options.md)
+> [!div class="step-by-step"]
+> [上一頁](web-development-best-practices.md)
+> [下一頁](data-storage-options.md)

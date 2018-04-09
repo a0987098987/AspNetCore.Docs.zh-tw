@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
-title: "裝載 ASP.NET Web API 2 中的 Azure 背景工作角色 |Microsoft 文件"
+title: 裝載 ASP.NET Web API 2 中的 Azure 背景工作角色 |Microsoft 文件
 author: MikeWasson
-description: "本教學課程會示範如何裝載 Azure 背景工作角色中的 ASP.NET Web API 使用 OWIN 自我裝載的 Web API framework。 開啟 Web 介面的.NET (OWIN) de..."
+description: 本教學課程會示範如何裝載 Azure 背景工作角色中的 ASP.NET Web API 使用 OWIN 自我裝載的 Web API framework。 開啟 Web 介面的.NET (OWIN) de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 9a7f8242bf482e81513accfe05e10a64ae0ca0b2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7ba1dc850e2f9d9c88e6ddf263a796e1867a98be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>裝載 ASP.NET Web API 2 中的 Azure 背景工作角色
 ====================
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/24/2018
 
 [![](host-aspnet-web-api-in-an-azure-worker-role/_static/image11.png)](host-aspnet-web-api-in-an-azure-worker-role/_static/image10.png)
 
-尋找 IP 位址在服務部署、 部署 [識別碼]，服務詳細資料。 開啟網頁瀏覽器並瀏覽至 http://*位址*/測試/1，其中*位址*是由計算模擬器; 指派的 IP 位址，例如`http://127.0.0.1:80/test/1`。 您應該會看到來自 Web API 控制器的回應：
+尋找 IP 位址在服務部署、 部署 [識別碼]，服務詳細資料。 開啟網頁瀏覽器並瀏覽至 http://<em>位址</em>/測試/1，其中<em>位址</em>是由計算模擬器; 指派的 IP 位址，例如`http://127.0.0.1:80/test/1`。 您應該會看到來自 Web API 控制器的回應：
 
 ![](host-aspnet-web-api-in-an-azure-worker-role/_static/image12.png)
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 01/24/2018
 
 [![](host-aspnet-web-api-in-an-azure-worker-role/_static/image20.png)](host-aspnet-web-api-in-an-azure-worker-role/_static/image19.png)
 
-Azure 活動記錄 視窗會顯示部署的進度。 部署應用程式時，瀏覽至 http://appname.cloudapp.net/test/1。
+Azure 活動記錄 視窗會顯示部署的進度。 部署應用程式時，瀏覽至http://appname.cloudapp.net/test/1。
 
 ![](host-aspnet-web-api-in-an-azure-worker-role/_static/image21.png)
 

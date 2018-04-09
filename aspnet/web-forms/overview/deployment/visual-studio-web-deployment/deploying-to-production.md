@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: abd3f3f78dd9a9e6394e2f61aa9bd692810ca875
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f3b3898bd003ace100ba05619f2c45ca808462df
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境
 ====================
@@ -144,10 +144,10 @@ ms.lasthandoff: 01/24/2018
 9. 1. 選取**更新資料庫**。
 
         **遠端的連接字串**方塊的正下方**DefaultConnection**填寫.publishsettings 檔案的連接字串。連接字串包含 SQL Server 認證，會以純文字儲存*.pubxml*檔案。 如果您不想將它們儲存到永久那里，您可以部署資料庫之後從發行設定檔移除它們，並將其儲存在 Azure 中。 如需詳細資訊，請參閱[如何保護您的 ASP.NET 資料庫連接字串安全從來源部署至 Azure 時](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx)Scott Hanselman 部落格上。
-    2. 按一下**設定資料庫更新**。
-    3. 在**設定資料庫更新**對話方塊中，按一下 **加入 SQL 指令碼**。
-    4. 在**加入 SQL 指令碼**方塊中，瀏覽至*aspnet-資料-prod.sql*指令碼，您稍早儲存的方案資料夾中，然後按一下**開啟**。
-    5. 關閉**設定資料庫更新** 對話方塊。
+      2. 按一下**設定資料庫更新**。
+      3. 在**設定資料庫更新**對話方塊中，按一下 **加入 SQL 指令碼**。
+      4. 在**加入 SQL 指令碼**方塊中，瀏覽至*aspnet-資料-prod.sql*指令碼，您稍早儲存的方案資料夾中，然後按一下**開啟**。
+      5. 關閉**設定資料庫更新** 對話方塊。
 10. 在下**SchoolContext**中**資料庫**區段中，選取**執行 Code First 移轉 （在應用程式啟動時執行）**。
 
     Visual Studio 會顯示**執行 Code First 移轉**而不是**更新資料庫**如`DbContext`類別。 如果您想要使用而不是移轉的 dbDacFx 提供者部署的資料庫，您可以使用存取`DbContext`類別，請參閱[如何部署 Code First 移轉沒有資料庫？](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations)中的 Visual Studio Web 部署常見問題集和 MSDN 上的 ASP.NET。
@@ -296,11 +296,11 @@ A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要�
 
 > [!NOTE]
 > 在實際執行環境中使用您的應用程式時您應該實作復原計劃。 也就是說，您應該會定期備份您的資料庫從生產環境應用程式至安全的儲存體位置，並應該保持數個層代的這類備份。 當您更新資料庫時，請立即變更之前的備份複本。 然後，如果您犯了錯誤，並不探索它，直到它部署到生產環境之後，您將仍然能夠將資料庫復原到它損毀前的狀態。 如需詳細資訊，請參閱[Azure SQL Database 備份和還原](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx)。
-
-
+> 
+> 
 > [!NOTE]
 > 在本教學課程 SQL Server 版本，您要部署為 Azure SQL Database。 部署程序類似於其他 SQL Server 版本時，真正的實際執行應用程式可能在某些情況下就 for Azure SQL Database 需要特殊的程式碼。 如需詳細資訊，請參閱[使用 Azure SQL Database](../../../../whitepapers/aspnet-data-access-content-map.md#ssdb)和[SQL Server 和 Azure SQL Database 之間選擇](../../../../whitepapers/aspnet-data-access-content-map.md#ssdbchoosing)。
-
->[!div class="step-by-step"]
-[上一頁](setting-folder-permissions.md)
-[下一頁](deploying-a-code-update.md)
+> 
+> [!div class="step-by-step"]
+> [上一頁](setting-folder-permissions.md)
+> [下一頁](deploying-a-code-update.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
-title: "Async 和 Entity framework，ASP.NET MVC 應用程式中的預存程序 |Microsoft 文件"
+title: Async 和 Entity framework，ASP.NET MVC 應用程式中的預存程序 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 5 應用程式使用 Entity Framework 6 Code First 和 Visual Studio..."
+description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 5 應用程式使用 Entity Framework 6 Code First 和 Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/07/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 7412b32ac29179dfa319544781d4c7165c58196b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 84cf427c7da7905444568ac34534e9ed98a7d8c8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Async 和 Entity framework，ASP.NET MVC 應用程式中的預存程序
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [下載完成的專案](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)或[下載 PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
 
-> Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 教學課程系列的相關資訊，請參閱[系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 2013 的 ASP.NET MVC 5 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
 在較早的教學課程中，您學會如何讀取和更新使用同步程式撰寫模型的資料。 在本教學課程，您會了解如何實作非同步程式設計模型。 非同步程式碼可協助執行更好，因為它可更妥善運用伺服器資源的應用程式。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2018
 
 最後，您將會重新部署至 Azure，以及所有您已實作自第一次您部署的資料庫變更的應用程式。
 
-下圖顯示一些您將使用的頁面。
+下列圖例顯示了您將操作的一些頁面。
 
 ![部門頁面](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="why-bother-with-asynchronous-code"></a>以非同步的程式碼費
 
-Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下的所有可用的執行緒可能正在使用中。 當發生這種情況時，伺服器無法處理新的要求，直到執行緒釋放。 使用同步程式碼，許多執行緒可能會將繫結起來雖然它們實際上並不執行任何工作，因為他們正在等候 I/O 完成。 使用非同步程式碼，當處理程序在等候 I/O 完成，它的執行緒釋放針對伺服器將用於處理其他要求。 如此一來，非同步程式碼可讓伺服器資源使用更有效率，而且伺服器已啟用以處理更多流量不會造成延遲。
+網頁伺服器的可用執行緒數量有限，而且在高負載情況下，可能會使用所有可用的執行緒。 發生此情況時，伺服器將無法處理新的要求，直到執行緒空出來。 使用同步程式碼，許多執行緒可能在實際上並未執行任何工作時受到占用，原因是在等候 I/O 完成。 使用非同步程式碼，處理程序在等候 I/O 完成時，其執行緒將會空出來以讓伺服器處理其他要求。 如此一來，非同步程式碼可讓伺服器資源使用更有效率，而且伺服器已啟用以處理更多流量不會造成延遲。
 
 在舊版的.NET 中，撰寫和測試非同步程式碼很複雜，容易出錯，而且容易進行偵錯。 .NET 4.5 中撰寫、 測試和偵錯非同步程式碼會因此比較容易，您應該通常撰寫非同步程式碼除非您有理由不。 非同步程式碼會導致少量的額外負荷，但效能的衝擊並不顯著，同時針對高流量的情況低流量的情況下，可能的效能提升的很大。
 
@@ -99,7 +99,7 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 要注意當您使用 Entity Framework 使用非同步程式設計的一些事項：
 
 - 非同步程式碼不是安全執行緒。 換句話說，也就是說，不要嘗試執行多個作業以平行方式使用相同的內容執行個體。
-- 如果您想要充分利用非同步程式碼的效能優點，請確定任何程式庫封裝，您只使用 （例如分頁），也使用非同步呼叫會造成查詢傳送至資料庫的任何 Entity Framework 方法。
+- 若您想要充分利用非同步程式碼帶來的效能優點，請確保任何您正在使用的程式庫 (例如分頁) 也使用了非同步 (若它們有呼叫任何可能會傳送查詢到資料庫的 Entity Framework 方法的話)。
 
 ## <a name="use-stored-procedures-for-inserting-updating-and-deleting"></a>用於插入、 更新和刪除的預存程序
 
@@ -117,16 +117,16 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
     開啟*移轉\&lt; 時間戳記&gt;\_DepartmentSP.cs*查看程式碼中的`Up`方法建立 Insert、 Update 和 Delete 預存程序：
 
     [!code-csharp[Main](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs?highlight=3-4,26-27,42-43)]
-- 在封裝管理主控台中，輸入下列命令：
+3. 在封裝管理主控台中，輸入下列命令：
 
-    `update-database`
-- 在偵錯模式執行應用程式，請按一下**部門**索引標籤，然後再按一下**新建**。
-- 新的部門，輸入資料，然後按一下**建立**。
+     `update-database`
+4. 在偵錯模式執行應用程式，請按一下**部門**索引標籤，然後再按一下**新建**。
+5. 新的部門，輸入資料，然後按一下**建立**。
 
-    ![建立部門](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-- 在 Visual Studio 中，檢視記錄檔中**輸出**視窗，請參閱 < 預存程序用來插入新的部門資料列。
+     ![建立部門](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+6. 在 Visual Studio 中，檢視記錄檔中**輸出**視窗，請參閱 < 預存程序用來插入新的部門資料列。
 
-    ![部門 Insert 預存程序](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+     ![部門 Insert 預存程序](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 程式碼會先建立預設預存程序名稱。 如果您使用現有的資料庫，您可能需要自訂預存程序名稱，才能使用資料庫中已定義的預存程序。 如需如何進行這項資訊，請參閱[Entity Framework 程式碼第一個 Insert/Update/Delete 預存程序](https://msdn.microsoft.com/data/dn468673)。
 
@@ -152,6 +152,6 @@ Web 伺服器的有限的數目的執行緒可用，而且在高負載情況下�
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取-建議資源](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
->[!div class="step-by-step"]
-[上一頁](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[下一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [上一頁](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [下一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

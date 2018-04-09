@@ -1,7 +1,7 @@
 ---
-title: "已驗證的加密詳細資料"
+title: 已驗證的加密中 ASP.NET Core 的詳細資料
 author: rick-anderson
-description: "此文件大綱 ASP.NET Core 資料保護的實作詳細資料來進行驗證加密。"
+description: 了解 ASP.NET Core 資料保護驗證加密的實作詳細資料。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/authenticated-encryption-details
-ms.openlocfilehash: b58f36a5f0353da69d6f1ef4db542aba8267027a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3ca5231e84156ede59793825e1a3e3bea0313055
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="authenticated-encryption-details"></a>已驗證的加密詳細資料
+# <a name="authenticated-encryption-details-in-aspnet-core"></a>已驗證的加密中 ASP.NET Core 的詳細資料
 
 <a name="data-protection-implementation-authenticated-encryption-details"></a>
 
@@ -31,7 +31,7 @@ IDataProtector.Protect 會採用 byte [] 的純文字參數，並產生的位元
 
 * 128 位元金鑰的識別碼，可識別用來保護此特定內容的索引鍵。
 
-* 受保護內容的其餘部分是[特有加密此金鑰由封裝程式](subkeyderivation.md#data-protection-implementation-subkey-derivation)。 在下列範例中的索引鍵所代表的 256 位 AES-CBC + HMACSHA256 加密程式，並裝載進一步細分，如下所示: * 為 128 位元金鑰的修飾詞。 * 128 位元的初始化向量。 * 256-AES-CBC 輸出 48 個位元組。 * HMACSHA256 驗證的標記。
+* 受保護內容的其餘部分是[特有加密此金鑰由封裝程式](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation)。 在下列範例中的索引鍵所代表的 256 位 AES-CBC + HMACSHA256 加密程式，並裝載進一步細分，如下所示: * 為 128 位元金鑰的修飾詞。 * 128 位元的初始化向量。 * 256-AES-CBC 輸出 48 個位元組。 * HMACSHA256 驗證的標記。
 
 下圖說明範例受保護的內容。
 

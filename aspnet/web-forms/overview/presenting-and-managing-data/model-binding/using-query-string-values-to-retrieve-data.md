@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
-title: "使用查詢字串值來篩選資料與模型繫結和 web form |Microsoft 文件"
+title: 使用查詢字串值來篩選資料與模型繫結和 web form |Microsoft 文件
 author: tfitzmac
-description: "此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-..."
+description: 此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: 2e5328ccda019462163b984da3661f7322b738df
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 03d20decf0eeff6062fbc6f8dd66f644b405c7cc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>使用模型繫結和 web form 中的查詢字串值來篩選資料
 ====================
@@ -85,6 +85,6 @@ ms.lasthandoff: 11/10/2017
 
 在接下來[教學課程](adding-business-logic-layer.md)，您也會將程式碼從程式碼後置檔案中，移到商務邏輯層和資料存取層。
 
->[!div class="step-by-step"]
-[上一頁](integrating-jquery-ui.md)
-[下一頁](adding-business-logic-layer.md)
+> [!div class="step-by-step"]
+> [上一頁](integrating-jquery-ui.md)
+> [下一頁](adding-business-logic-layer.md)

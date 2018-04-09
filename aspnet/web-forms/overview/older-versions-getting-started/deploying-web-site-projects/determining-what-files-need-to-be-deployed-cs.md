@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
-title: "判斷檔案必須為部署 (C#) |Microsoft 文件"
+title: 判斷檔案必須為部署 (C#) |Microsoft 文件
 author: rick-anderson
-description: "需要從開發環境部署到生產環境的檔案部分取決於 ASP.NET 應用程式建置時是否我們..."
+description: 需要從開發環境部署到生產環境的檔案部分取決於 ASP.NET 應用程式建置時是否我們...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d58956323275a46b44b36d4f19db4d2f607e3916
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ff5f1d7d156efa12d97382db56211a07c43178fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a>判斷檔案必須為部署 (C#)
 ====================
@@ -80,14 +80,14 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 - 七個不同的 ASP.NET 頁面： 
 
     - ~`/Default.aspx`-網站首頁。
-    - ~`/About.aspx`-「 相關網站 」 頁面。
-    - ~`/Fiction/Default.aspx`-列出已檢閱小說書籍的頁面。 
+    - ~`/About.aspx` -「 相關網站 」 頁面。
+    - ~`/Fiction/Default.aspx` -列出已檢閱小說書籍的頁面。 
 
-        - ~`/Fiction/Blaze.aspx`-檢閱 Richard Bachman novel *Blaze*。
-    - ~/`Tech/Default.aspx`-列出已檢閱技術書籍的頁面。 
+        - ~`/Fiction/Blaze.aspx` -檢閱 Richard Bachman novel *Blaze*。
+    - ~/`Tech/Default.aspx` -列出已檢閱技術書籍的頁面。 
 
         - ~/`Tech/CYOW.aspx`-檢閱*建立您自己的網站*。
-        - ~/`Tech/TYASP35.aspx`-檢閱*教導您自己 ASP.NET 3.5 24 小時內*。
+        - ~/`Tech/TYASP35.aspx` -檢閱*教導您自己 ASP.NET 3.5 24 小時內*。
 - 三個不同 CSS 檔案中 [Styles] 資料夾。
 - 四個影像檔-提供的 ASP.NET 標誌和映像的過程中的三個檢閱書籍-所有位於`Images`資料夾。
 - A`Web.sitemap`檔案，此站台對應會定義用來顯示功能表中的檔案`Default.aspx`的根目錄中的頁面和`Fiction`和`Tech`資料夾。
@@ -185,6 +185,6 @@ Web 應用程式專案模型會使用明確編譯，並將專案的程式碼編�
 - [Visual Studio 2005 的網站專案系統： 它是什麼，以及未我們為什麼它嗎？](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
 - [逐步解說： 將網站專案轉換成 Visual Studio 中的 Web 應用程式專案](https://msdn.microsoft.com/library/aa983476.aspx)
 
->[!div class="step-by-step"]
-[上一頁](asp-net-hosting-options-cs.md)
-[下一頁](deploying-your-site-using-an-ftp-client-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](asp-net-hosting-options-cs.md)
+> [下一頁](deploying-your-site-using-an-ftp-client-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
-title: "了解 ASP.NET AJAX 驗證和設定檔的應用程式服務 |Microsoft 文件"
+title: 了解 ASP.NET AJAX 驗證和設定檔的應用程式服務 |Microsoft 文件
 author: scottcate
-description: "驗證服務可讓使用者提供認證以接收驗證 cookie，且閘道服務，讓自訂使用者..."
+description: 驗證服務可讓使用者提供認證以接收驗證 cookie，且閘道服務，讓自訂使用者...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
-ms.openlocfilehash: 182276f9f91b99beb1ce0fc40dcda1f19376669a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0bf6538d0c4ae9488e6ac29ccba6d4b243cf070e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>了解 ASP.NET AJAX 驗證和設定檔的應用程式服務
 ====================
@@ -43,7 +43,7 @@ Microsoft ASP.NET 設定檔和驗證服務所提供的 ASP.NET 表單驗證系�
 
 根據驗證服務所提供的成員資格的使用者資料的儲存體與自動整合，可讓設定檔服務。 Web.config 檔案中，指定儲存的資料和各種不同的程式碼剖析服務提供者處理資料管理。 如同驗證服務，使目前納入 ASP.NET 設定檔服務的功能頁面應該不會因包括 AJAX 支援，是與標準 ASP.NET 設定檔服務相容 AJAX 設定檔服務。
 
-應用程式中併入 ASP.NET 驗證和分析服務本身已超出本白皮書的範圍。 如需有關主題的詳細資訊，請參閱 MSDN Library 參考發行項使用成員資格管理使用者在[https://msdn.microsoft.com/library/tw292whz.aspx](https://msdn.microsoft.com/library/tw292whz.aspx)。 ASP.NET 也會包含一個公用程式來自動設定 SQL Server，也就是 ASP.NET 成員資格的預設驗證服務提供者的成員資格。 如需詳細資訊，請參閱文章 ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe) 在[https://msdn.microsoft.com/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
+應用程式中併入 ASP.NET 驗證和分析服務本身已超出本白皮書的範圍。 如需有關主題的詳細資訊，請參閱 MSDN Library 參考發行項使用成員資格管理使用者在[ https://msdn.microsoft.com/library/tw292whz.aspx ](https://msdn.microsoft.com/library/tw292whz.aspx)。 ASP.NET 也會包含一個公用程式來自動設定 SQL Server，也就是 ASP.NET 成員資格的預設驗證服務提供者的成員資格。 如需詳細資訊，請參閱文章 ASP.NET SQL Server 註冊工具 (Aspnet\_regsql.exe) 在[ https://msdn.microsoft.com/library/ms229862(vs.80).aspx ](https://msdn.microsoft.com/library/ms229862(vs.80).aspx)。
 
 ## <a name="using-the-aspnet-ajax-authentication-service"></a>*使用 ASP.NET AJAX 驗證服務*
 
@@ -131,7 +131,7 @@ Logout() 方法移除認證 cookie，並從 web 應用程式目前的使用者�
 
 | **參數名稱** | **意義** |
 | --- | --- |
-| validCredentials | 指定使用者提供有效的認證。 `true`如果使用者成功登入。否則`false`。 |
+| validCredentials | 指定使用者提供有效的認證。 `true` 如果使用者成功登入。否則`false`。 |
 | userContext | 指定登入函式呼叫時所提供的使用者內容資訊。 |
 | 方法名稱 | 呼叫方法的名稱。 |
 
@@ -345,6 +345,6 @@ ASP.NET AJAX 擴充功能可讓您建立自訂指令碼驗證服務提供者公�
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[上一頁](understanding-asp-net-ajax-updatepanel-triggers.md)
-[下一頁](understanding-asp-net-ajax-localization.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-asp-net-ajax-updatepanel-triggers.md)
+> [下一頁](understanding-asp-net-ajax-localization.md)

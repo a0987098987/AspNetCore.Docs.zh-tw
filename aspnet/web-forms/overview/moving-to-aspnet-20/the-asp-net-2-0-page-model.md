@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
-title: "ASP.NET 2.0 頁面模型 |Microsoft 文件"
+title: ASP.NET 2.0 頁面模型 |Microsoft 文件
 author: microsoft
-description: "在 ASP.NET 中 1.x，開發人員就必須是內嵌程式碼模型與程式碼後置程式碼模型之間的選擇。 使用任一個 Src attr 實作程式碼後置..."
+description: 在 ASP.NET 中 1.x，開發人員就必須是內嵌程式碼模型與程式碼後置程式碼模型之間的選擇。 使用任一個 Src attr 實作程式碼後置...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
-ms.openlocfilehash: e008f197cf08bec81c560018f2d42306598f9e6d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fda85ec03f845cafa7720382bf85652937932c44
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-aspnet-20-page-model"></a>ASP.NET 2.0 頁面模型
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 在 ASP.NET 中 1.x，開發人員就必須是內嵌程式碼模型與程式碼後置程式碼模型之間的選擇。 無法使用的 Src 屬性或程式碼後置屬性的實作程式碼後置@Page指示詞。 在 ASP.NET 2.0 中，開發人員仍然可以內嵌程式碼和程式碼後置之間選擇，但是已有程式碼後置模型的重大增強功能。
 
@@ -77,7 +77,7 @@ CodeFile 屬性會取代程式碼後置屬性在 Visual Studio 2002/2003年。
 
 在您想要從單一基底類別衍生的多個頁面的情況下使用 CodeFileBaseClass 屬性。 由於在 ASP.NET 中，若沒有這個屬性的部分類別的實作會使用共用通用的欄位來參考 ASPX 頁面中宣告控制項的基底類別會無法正確運作，因為 ASP。通道編譯引擎會自動建立新成員 頁面中的控制項為基礎。 因此，如果您想要在 ASP.NET 中的兩個或多個頁面通用基底類別，您必須定義 CodeFileBaseClass 屬性中指定基底類別，然後再衍生自該基底類別的每個頁面的類別。 這個屬性使用時，也需要 CodeFile 屬性。
 
-## <a name="compilationmode"></a>compilationMode
+## <a name="compilationmode"></a>CompilationMode
 
 這個屬性可讓您設定 ASPX 頁面的 CompilationMode 屬性。 CompilationMode 屬性是包含值的列舉**永遠**，**自動**，和**永不**。 預設值是**永遠**。 **自動**設定會防止 ASP.NET 動態盡可能編譯網頁。 排除動態編譯的頁面，可增加效能。 不過，如果已排除的頁面包含必須編譯該程式碼，將會擲回錯誤瀏覽頁面時。
 
@@ -144,11 +144,11 @@ CodeFile 屬性會取代程式碼後置屬性在 Visual Studio 2002/2003年。
 
 ## <a name="apprelativetemplatesourcedirectory"></a>AppRelativeTemplateSourceDirectory
 
-回到網頁或控制項的應用程式的相對路徑。 例如，針對位於 http://app/folder/page.aspx 頁面上，屬性會傳回 ~ / 資料夾 /。
+回到網頁或控制項的應用程式的相對路徑。 例如，針對位於頁面http://app/folder/page.aspx，屬性會傳回 ~ / 資料夾 /。
 
 ## <a name="apprelativevirtualpath"></a>AppRelativeVirtualPath
 
-回到網頁或控制項的相對虛擬目錄路徑。 如需範例頁面位於 http://app/folder/page.aspx，屬性會傳回 ~ / folder/page.aspx。
+回到網頁或控制項的相對虛擬目錄路徑。 例如對於頁面位於http://app/folder/page.aspx，屬性會傳回 ~ / folder/page.aspx。
 
 ## <a name="asynctimeout"></a>AsyncTimeout
 
@@ -218,7 +218,7 @@ CodeFile 屬性會取代程式碼後置屬性在 Visual Studio 2002/2003年。
 
 傳回修改的頁面要求瀏覽器 PageAdapter 物件的參考。
 
-## <a name="previouspage"></a>上一頁
+## <a name="previouspage"></a>PreviousPage
 
 在 Server.Transfer 或跨網頁回傳的情況下會傳回前一個頁面的參考。
 
@@ -600,11 +600,13 @@ RegisterStartupScript 方法會採用 RegisterClientScriptBlock 方法相同的�
 
 以下是一些 ClientScriptManager 類別的其他有用的方法。
 
-| **GetCallbackEventReference** | 請參閱稍早在此模組中的指令碼回呼。 |
-| --- | --- |
-| **GetPostBackClientHyperlink** | 取得 JavaScript 參考 (javascript:&lt;呼叫&gt;)，可以用來從用戶端事件公佈。 |
-| **GetPostBackEventReference** | 取得可用來從用戶端的 post 的字串。 |
-| **GetWebResourceUrl** | 內嵌組件中的資源傳回的 URL。 必須用於搭配**RegisterClientScriptResource**。 |
-| **RegisterClientScriptResource** | 註冊 Web 資源的網頁。 這些是內嵌在組件，而且新 WebResource.axd 處理常式所處理的資源。 |
-| **RegisterHiddenField** | 與網頁註冊隱藏的欄位。 |
-| **RegisterOnSubmitStatement** | 註冊用戶端 HTML 表單送出時執行的程式碼。 |
+
+|  <strong>GetCallbackEventReference</strong>   |                                                 請參閱稍早在此模組中的指令碼回呼。                                                 |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|  <strong>GetPostBackClientHyperlink</strong>  |                取得 JavaScript 參考 (javascript:&lt;呼叫&gt;)，可以用來從用戶端事件公佈。                 |
+|  <strong>GetPostBackEventReference</strong>   |                                   取得可用來從用戶端的 post 的字串。                                    |
+|      <strong>GetWebResourceUrl</strong>       | 內嵌組件中的資源傳回的 URL。 必須用於搭配<strong>RegisterClientScriptResource</strong>。 |
+| <strong>RegisterClientScriptResource</strong> |     註冊 Web 資源的網頁。 這些是內嵌在組件，而且新 WebResource.axd 處理常式所處理的資源。      |
+|     <strong>RegisterHiddenField</strong>      |                                                 與網頁註冊隱藏的欄位。                                                 |
+|  <strong>RegisterOnSubmitStatement</strong>   |                                  註冊用戶端 HTML 表單送出時執行的程式碼。                                   |
+

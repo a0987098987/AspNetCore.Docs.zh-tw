@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/performing-simple-validation-vb
-title: "執行簡單驗證 (VB) |Microsoft 文件"
+title: 執行簡單驗證 (VB) |Microsoft 文件
 author: StephenWalther
-description: "了解如何在 ASP.NET MVC 應用程式中執行驗證。 在本教學課程中，作者： Stephen Walther 導入您模型狀態，以及驗證 HTML helper..."
+description: 了解如何在 ASP.NET MVC 應用程式中執行驗證。 在本教學課程中，作者： Stephen Walther 導入您模型狀態，以及驗證 HTML helper...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2bc4cdbcd267bcdd3e71abc4c52664ae62c5c02e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: efb98d87106e332fffb158e5f382d57fea778957
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-simple-validation-vb"></a>執行簡單驗證 (VB)
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/10/2017
 我不建議將您的資料庫或驗證邏輯加入至控制器。 控制器應該包含應用程式流程控制相關的邏輯。 我們會執行簡單的捷徑。
 
 
-**列出 1-Controllers\ProductController.vb**
+**Listing 1 - Controllers\ProductController.vb**
 
 [!code-vb[Main](performing-simple-validation-vb/samples/sample1.vb)]
 
@@ -71,7 +71,7 @@ ASP.NET MVC 架構包括兩個驗證 helper: Html.ValidationMessage() helper 和
 
 完成這些步驟之後，您會取得列表 2 中建立檢視。
 
-**列出 2-Views\Product\Create.aspx**
+**Listing 2 - Views\Product\Create.aspx**
 
 [!code-aspx[Main](performing-simple-validation-vb/samples/sample2.aspx)]
 
@@ -130,6 +130,6 @@ Html.ValidationMessage() helper 會呼叫每個 HTML 表單欄位旁邊。 此�
 
 本教學課程的目標是驗證的為了說明基本的 ASP.NET MVC 架構中機制。 您已學習如何使用模型狀態和驗證 HTML helper。 我們也將討論 prebinding 和 postbinding 驗證之間的差別。 在其他教學課程中，我們將討論各種不同的策略來移動驗證程式碼從您的控制站移至您的模型類別。
 
->[!div class="step-by-step"]
-[上一頁](displaying-a-table-of-database-data-vb.md)
-[下一頁](validating-with-the-idataerrorinfo-interface-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](displaying-a-table-of-database-data-vb.md)
+> [下一頁](validating-with-the-idataerrorinfo-interface-vb.md)

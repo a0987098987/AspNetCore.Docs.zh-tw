@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
-title: "應用程式生命週期管理： 從開發到生產環境 |Microsoft 文件"
+title: 應用程式生命週期管理： 從開發到生產環境 |Microsoft 文件
 author: jrjlee
-description: "本主題將說明如何虛構的公司管理的 ASP.NET web 應用程式透過測試、 預備及生產環境長條上方，以部署..."
+description: 本主題將說明如何虛構的公司管理的 ASP.NET web 應用程式透過測試、 預備及生產環境長條上方，以部署...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: f7ffff1c3434ce98c70265e4bf64047fd44252d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8beeffb374df09c6695a1845199d30006ddcc1b7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="application-lifecycle-management-from-development-to-production"></a>應用程式生命週期管理： 從開發到生產環境
 ====================
@@ -26,13 +26,13 @@ ms.lasthandoff: 11/10/2017
 
 > 本主題將說明如何虛構的公司管理 ASP.NET web 應用程式的測試、 預備及生產環境透過連續的開發程序的一部分部署。 在主題中，會提供進一步資訊及如何執行特定工作的逐步解說的連結。
 > 
-> 本主題旨在提供高層級概觀[系列的教學課程](deploying-web-applications-in-enterprise-scenarios.md)在企業中的 web 部署。 如果您不熟悉的概念，此處所述 & #x 2014年某些擔心; 教學課程，請依照下列提供所有這些工作與技術的詳細的資訊。
+> 本主題旨在提供高層級概觀[系列的教學課程](deploying-web-applications-in-enterprise-scenarios.md)在企業中的 web 部署。 如果您不熟悉的一些概念，此處所述，別擔心&#x2014;遵循教學課程提供的詳細的資訊，所有這些工作和技巧。
 > 
 > > [!NOTE]
 > > 簡單明瞭的註冊起見，本主題不討論更新資料庫做為部署程序的一部分。 不過，對資料庫功能進行累加式更新是許多的企業部署案例的需求，而且您可以找到如何完成這項作業，稍後在本教學課程系列的相關指引。 如需詳細資訊，請參閱[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 如下圖所示的部署程序為基礎的 Fabrikam，Inc.部署案例中所述[企業 Web 部署： 案例概觀](enterprise-web-deployment-scenario-overview.md)。 您先研究本主題之前，您應該閱讀案例概觀。 基本上，此案例會檢查組織管理相當複雜的 web 應用程式的部署方式[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)，透過在一般企業環境中的各種階段。
 
@@ -95,7 +95,7 @@ Matt 世昕建立各種自訂 MSBuild 專案檔，使用分割專案檔案描述
 
 > [!NOTE]
 > 這些自訂專案檔案的運作的方式與您用於叫用 MSBuild 的機制無關。 例如，您可以使用 MSBuild 命令列直接中所述[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 中所述，您可以從 命令檔，執行專案檔[建立和執行部署指令檔](../web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file.md)。 或者，您可以執行專案檔從 TFS 中的組建定義中所述[建立組建定義該支援部署](../configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md)。  
-> 每個案例中的最終結果是相同 & #x 2014;MSBuild 執行合併的專案檔，並將方案部署至目標環境。 這可以讓您有極大的彈性觸發您發佈程序的方式。
+> 每個案例中的最終結果是相同&#x2014;MSBuild 執行合併的專案檔，並將方案部署至目標環境。 這可以讓您有極大的彈性觸發您發佈程序的方式。
 
 
 他已建立自訂專案檔案，一旦 Matt 將它們加入至方案資料夾，並簽入至原始檔控制。
@@ -185,7 +185,7 @@ Matt 世昕建立各種自訂 MSBuild 專案檔，使用分割專案檔案描述
 [!code-console[Main](application-lifecycle-management-from-development-to-production/samples/sample3.cmd)]
 
 
-內*Publish.proj*檔案， **WhatIf**屬性會指出部署的所有資源應經過都發佈在 「 如果 」 模式。 換句話說，如同部署方面，但不實際變更目的地環境中，會產生記錄檔。 這可讓您評估建議的部署 & #x 2014年的影響; 特別是，功能將會加入和功能將會更新，並會刪除項目 & #x 2014; 實際進行任何變更之前。
+內*Publish.proj*檔案， **WhatIf**屬性會指出部署的所有資源應經過都發佈在 「 如果 」 模式。 換句話說，如同部署方面，但不實際變更目的地環境中，會產生記錄檔。 這可讓您評估建議的部署影響&#x2014;特定、 項目會加入，功能將會更新，和會刪除項目中&#x2014;實際進行任何變更之前。
 
 > [!NOTE]
 > 如需有關如何設定 「 如果 」 部署的詳細資訊，請參閱[執行 「 假設 」 部署](../advanced-enterprise-web-deployment/performing-a-what-if-deployment.md)。
@@ -227,5 +227,5 @@ IIS 管理員包含匯入應用程式套件精靈，以簡化將 web 套件發�
 - [設定適用於 Team Foundation Server 自動 Web 部署](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md)。 本教學課程提供如何將部署邏輯整合到 TFS 的建置程序指引。
 - [進階企業 Web 部署](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md)。 本教學課程提供指引如何符合某些更複雜的部署挑戰該組織字體。
 
->[!div class="step-by-step"]
-[上一步](enterprise-web-deployment-scenario-overview.md)
+> [!div class="step-by-step"]
+> [上一步](enterprise-web-deployment-scenario-overview.md)

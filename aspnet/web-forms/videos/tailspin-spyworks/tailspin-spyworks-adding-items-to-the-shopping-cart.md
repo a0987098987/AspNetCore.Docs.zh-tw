@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-shopping-cart
-title: "Tailspin Spyworks-將項目加入至購物車 |Microsoft 文件"
+title: Tailspin Spyworks-將項目加入至購物車 |Microsoft 文件
 author: JoeStagner
-description: "Joe stagner 以建置 加入至購物車 Tailspin Spyworks 範例 Web Form 應用程式的函式。"
+description: Joe stagner 以建置 加入至購物車 Tailspin Spyworks 範例 Web Form 應用程式的函式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/29/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: c74544a4fb1d359d9c1e9681e466ff9af9ae1262
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c1a7cfdd42f882200ee9fee94d5969de2e55505f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tailspin-spyworks---adding-items-to-the-shopping-cart"></a>Tailspin Spyworks-將項目加入至購物車
 ====================
@@ -26,6 +26,6 @@ Joe stagner 以建置 加入至購物車 Tailspin Spyworks 範例 Web Form 應�
 
 [&#9654;觀看影片 （24 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-adding-items-to-the-shopping-cart)
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-display-per-product-details.md)
-[下一頁](tailspin-spyworks-display-shopping-cart.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-display-per-product-details.md)
+> [下一頁](tailspin-spyworks-display-shopping-cart.md)

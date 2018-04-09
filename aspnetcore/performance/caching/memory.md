@@ -1,7 +1,7 @@
 ---
-title: "記憶體中快取中 ASP.NET Core"
+title: 快取在記憶體中的 ASP.NET Core
 author: rick-anderson
-description: "了解如何快取在記憶體中 ASP.NET Core 的資料。"
+description: 了解如何快取在記憶體中 ASP.NET Core 的資料。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: 64635235c11b55818da02d63d044334f4b2cdb08
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: c2eae83219e8995a614b2933b1290d061f1b7869
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="in-memory-caching-in-aspnet-core"></a>記憶體中快取中 ASP.NET Core
+# <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [John Luo](https://github.com/JunTaoLuo)，和[Steve Smith](https://ardalis.com/)
 

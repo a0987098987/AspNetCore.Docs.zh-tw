@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
-title: "使用在 FormView 的範本 (VB) |Microsoft 文件"
+title: 使用在 FormView 的範本 (VB) |Microsoft 文件
 author: rick-anderson
-description: "不同於在 DetailsView 中，欄位不被由 FormView。 相反地，在 FormView 呈現使用範本。 在本教學課程中，我們將檢驗使用 F..."
+description: 不同於在 DetailsView 中，欄位不被由 FormView。 相反地，在 FormView 呈現使用範本。 在本教學課程中，我們將檢驗使用 F...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 05e97ce5efeaf72192ed294b946e2249c60007d1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 16293960f5d8758c93646844bd159547f5e0f38c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-formviews-templates-vb"></a>使用在 FormView 的範本 (VB)
 ====================
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/10/2017
 
 不同於在 DetailsView 中，欄位不被由 FormView。 您無法加入 BoundField 或 TemplateField FormView。 相反地，在 FormView 呈現使用範本。 在 FormView 視為包含單一 TemplateField DetailsView 控制項。 在 FormView 支援下列範本：
 
-- `ItemTemplate`用來呈現特定 FormView 中顯示的資料錄
-- `HeaderTemplate`用來指定選擇性標頭資料列
-- `FooterTemplate`用來指定選擇性頁尾資料列
-- `EmptyDataTemplate`當在 FormView 的`DataSource`缺少任何記錄，`EmptyDataTemplate`用來取代`ItemTemplate`呈現控制項的標記
-- `PagerTemplate`可用來啟用分頁的 FormViews 自訂分頁介面
-- `EditItemTemplate` / `InsertItemTemplate`用來支援這類功能的 FormViews 自訂編輯介面或插入介面
+- `ItemTemplate` 用來呈現特定 FormView 中顯示的資料錄
+- `HeaderTemplate` 用來指定選擇性標頭資料列
+- `FooterTemplate` 用來指定選擇性頁尾資料列
+- `EmptyDataTemplate` 當在 FormView 的`DataSource`缺少任何記錄，`EmptyDataTemplate`用來取代`ItemTemplate`呈現控制項的標記
+- `PagerTemplate` 可用來啟用分頁的 FormViews 自訂分頁介面
+- `EditItemTemplate` / `InsertItemTemplate` 用來支援這類功能的 FormViews 自訂編輯介面或插入介面
 
 在此教學課程中我們將檢驗使用 FormView 控制項來顯示產品的較不顯示。 而不是欄位名稱、 類別、 供應商和等等，在 FormView 的`ItemTemplate`會顯示這些值使用的標頭項目組合和`<table>`（請參閱圖 1）。
 
@@ -111,12 +111,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 本教學課程是 E.R.導致檢閱者 Gilmore。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](using-templatefields-in-the-detailsview-control-vb.md)
-[下一頁](displaying-summary-information-in-the-gridview-s-footer-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-templatefields-in-the-detailsview-control-vb.md)
+> [下一頁](displaying-summary-information-in-the-gridview-s-footer-vb.md)

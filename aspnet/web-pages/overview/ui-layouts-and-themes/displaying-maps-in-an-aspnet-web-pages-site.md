@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
-title: "顯示對應中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 顯示對應中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "這篇文章說明如何在根據對應提供 Bing、 Google、 Ma 服務的 ASP.NET Web Pages (Razor) 網站中的頁面上顯示互動式地圖..."
+description: 這篇文章說明如何在根據對應提供 Bing、 Google、 Ma 服務的 ASP.NET Web Pages (Razor) 網站中的頁面上顯示互動式地圖...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: 6f3e6a0cfb8c08cd971e88986d0f059dd8237aab
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 608dab8760bad7b877ab6fd4f89b21e980f5b1db
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>顯示 ASP.NET Web Pages (Razor) 網站中的對應
 ====================
@@ -89,9 +89,9 @@ ms.lasthandoff: 01/24/2018
         > [!NOTE]
         > 如果您使用不同版本的 jQuery 程式庫，請確定您指向該版本正確。
     - 若要呼叫`@Maps.GetGoogleHtml`網頁主體中。 若要對應的位址，您必須傳遞位址字串。 其他對應引擎方法的運作方式類似 (`@Maps.GetYahooHtml`， `@Maps.GetMapQuestHtml`)。
-- 執行網頁，並輸入位址。 頁面會顯示地圖中，根據 Google 地圖顯示您所指定的位置。
+3. 執行網頁，並輸入位址。 頁面會顯示地圖中，根據 Google 地圖顯示您所指定的位置。
 
-    ![mapping-1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
+     ![mapping-1](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
 
 ## <a name="creating-a-map-based-on-latitude-and-longitude-coordinates-using-bing"></a>建立對應，根據經度和緯度座標 （使用 Bing）
 
@@ -103,12 +103,12 @@ ms.lasthandoff: 01/24/2018
 2. 取代`your-key-here`所您先前產生的 Bing 地圖服務金鑰取代。
 3. 執行*MapCoordinates.cshtml*頁面上，輸入緯度和經度座標，然後按一下**Map It ！** 按鈕。 （如果您不知道任何座標，請嘗試下列。 這是 Microsoft Redmond 校園上的位置）。
 
-    - 緯度： 47.6781005859375
-    - 經度：-122.158317565918
+   - 緯度： 47.6781005859375
+   - 經度：-122.158317565918
 
-    會顯示頁面，使用您指定的座標。
+     會顯示頁面，使用您指定的座標。
 
-    ![mapping-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
+     ![mapping-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>其他資源

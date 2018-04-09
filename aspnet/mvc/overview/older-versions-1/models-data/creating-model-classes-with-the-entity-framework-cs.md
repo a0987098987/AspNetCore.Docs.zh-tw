@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
-title: "建立模型類別與 Entity Framework (C#) |Microsoft 文件"
+title: 建立模型類別與 Entity Framework (C#) |Microsoft 文件
 author: microsoft
-description: "在本教學課程中，您可以了解如何使用 ASP.NET MVC 與 Microsoft Entity Framework。 您了解如何使用實體精靈來建立 ADO.NET 實體資料..."
+description: 在本教學課程中，您可以了解如何使用 ASP.NET MVC 與 Microsoft Entity Framework。 您了解如何使用實體精靈來建立 ADO.NET 實體資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8a897f671de73d9991189e32a5d86b513051ef05
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b0a79da580f14d5ae6bcfaaa00d3900234dc662e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-the-entity-framework-c"></a>建立模型類別與 Entity Framework (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 在本教學課程中，您可以了解如何使用 ASP.NET MVC 與 Microsoft Entity Framework。 您了解如何使用實體精靈來建立 ADO.NET 實體資料模型。 在本教學課程的過程中，我們會建置說明如何選取、 插入、 更新和刪除資料庫的資料使用 Entity Framework 的 web 應用程式。
 
@@ -48,8 +48,8 @@ Microsoft Entity Framework 是物件關聯式對應 (O/RM) 工具，可讓您從
 | 資料行名稱 | 資料類型 | 允許 null 值嗎？ | 是主索引鍵嗎？ |
 | --- | --- | --- | --- |
 | ID | int | False | True |
-| 標題 | Nvarchar （100) | False | False |
-| 導向器 | Nvarchar （100) | False | False |
+| 標題 | nvarchar(100) | False | False |
+| 導向器 | nvarchar(100) | False | False |
 
 您可以加入至 ASP.NET MVC 專案的這個資料表，依照下列步驟：
 
@@ -221,5 +221,5 @@ Delete 動作會先擷取符合識別碼的實體傳遞給動作的電影。 接
 
 首先，我們將討論如何使用實體資料模型精靈來產生實體資料模型從 Visual Studio 中。 接下來，您會了解如何使用 LINQ to Entities 從資料庫資料表擷取一組資料庫記錄。 最後，我們會使用 Entity Framework 來插入、 更新和刪除資料庫的記錄。
 
->[!div class="step-by-step"]
-[下一步](creating-model-classes-with-linq-to-sql-cs.md)
+> [!div class="step-by-step"]
+> [下一步](creating-model-classes-with-linq-to-sql-cs.md)

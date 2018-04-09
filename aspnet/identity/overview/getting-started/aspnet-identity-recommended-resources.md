@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-recommended-resources
-title: "ASP.NET Identity 建議資源 |Microsoft 文件"
+title: ASP.NET Identity 建議資源 |Microsoft 文件
 author: Rick-Anderson
-description: "本主題提供有關如何使用 ASP.NET Identity 的文件資源的連結。 如果您知道的絕佳的部落格文章、 stackoverflow 執行緒或任何其他連結..."
+description: 本主題提供有關如何使用 ASP.NET Identity 的文件資源的連結。 如果您知道的絕佳的部落格文章、 stackoverflow 執行緒或任何其他連結...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2015
 ms.topic: article
 ms.assetid: 0f78aec2-f509-46fa-b20f-d5208425d8ec
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: cb6e378d6b1de7d43bbc4272b64f9029f4e92924
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f2e1693a32fce6956ddb1e095e6f208b9f0faab6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET 識別建議使用的資源
 ====================
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
     - [了解 Owin 外部驗證管線](http://coding.abel.nu/2014/06/understanding-the-owin-external-authentication-pipeline/)
     - [ASP.NET Identity 和 Owin 概觀](http://coding.abel.nu/2014/06/asp-net-identity-and-owin-overview/)
 
- 由[K.Scott Allen](https://twitter.com/OdeToCode)上 beethoven 的 Ode 程式碼
+  由[K.Scott Allen](https://twitter.com/OdeToCode)上 beethoven 的 Ode 程式碼
 
     - [ASP.NET Core 識別](http://odetocode.com/blogs/scott/archive/2013/11/25/asp-net-core-identity.aspx)這篇部落格會檢查的核心抽象概念，包括 IUser、 IUserStore 和 I\*存放區介面。
     - [有了 Entity Framework 的 ASP.NET Identity](http://odetocode.com/blogs/scott/archive/2014/01/03/asp-net-identity-with-the-entity-framework.aspx) MVC 5、 Web API 和 SPA 應用程式、 連接字串和管理內容中的個別使用者帳戶
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/24/2018
 - [Pranav Rastogi](https://twitter.com/rustd)
 
     - [從社交提供者取得詳細資訊](https://blogs.msdn.com/b/webdev/archive/2013/10/16/get-more-information-from-social-providers-used-in-the-vs-2013-project-templates.aspx)
-- [@beabigrockstar](https://twitter.com/beabigrockstar)(Jerrie Pelser)
+- [@beabigrockstar](https://twitter.com/beabigrockstar) (Jerrie Pelser)
 
     - [2 因素驗證](http://www.beabigrockstar.com/blog/2-factor-authentication-with-asp-net-identity-2-0-beta-1/)
     - [使用 ASP.NET Identity 的 Google 驗證器](http://www.beabigrockstar.com/blog/using-google-authenticator-asp-net-identity/)
@@ -132,7 +132,7 @@ ms.lasthandoff: 01/24/2018
 - Channel 9[保護您的網站與 ASP.NET Identity](https://channel9.msdn.com/Events/TechDays/Techdays-2014-the-Netherlands/Securing-your-website-with-ASP-NET-Identity)由 Alex Thissen
 - [使用現有的資料庫模型上的 ASP.NET Identity](https://www.youtube.com/watch?v=elfqejow5hM) Alexander Schmidt 由
 - [一個 ASP.NET Identity](https://www.youtube.com/watch?v=w8GD-QIusKk)由 Ivaylo Kenov Telerik 的
-- [捷克文 ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY)在此課程中，我們將示範如何部署基本驗證、 如何加入外部身分識別提供者，例如 Twitter 或 Facebook、 支援和如何使用單次密碼 (OTP)。 [ASP.NET Identity je nástupce 成員資格的角色提供者 &#367; v ASP.NET、 tedy knihovna pro zajišt &#283; ní autentizace uživatel &#367;。 V této &#345; ednášce si ukážeme 的賈克 nasad]
+- [捷克文 ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY)在此課程中，我們將示範如何部署基本驗證、 如何加入外部身分識別提供者，例如 Twitter 或 Facebook、 支援和如何使用單次密碼 (OTP)。 [ASP.NET Identity je nástupce 角色提供者的成員資格&#367;v ASP.NET、 tedy knihovna pro zajišt&#283;ní autentizace uživatel&#367;。 V této p&#345;ednášce si ukážeme 的賈克 nasad]
 
 <a id="cust"></a>
 ## <a name="custom-storage-providers-for-aspnet-identity"></a>ASP.NET 識別的自訂儲存體提供者

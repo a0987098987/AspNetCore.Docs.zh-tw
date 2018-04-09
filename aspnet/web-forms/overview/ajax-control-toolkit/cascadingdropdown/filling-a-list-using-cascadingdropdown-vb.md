@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
-title: "填滿使用 CascadingDropDown (VB) 的清單 |Microsoft 文件"
+title: 填滿使用 CascadingDropDown (VB) 的清單 |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯 anoth 中的值..."
+description: AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯 anoth 中的值...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1c5cb23be4366365c73ce4774e6a53e452e2a6c0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e488a30443970d5e2ce825abd96d8e4a027585d1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="filling-a-list-using-cascadingdropdown-vb"></a>填滿使用 CascadingDropDown (VB) 的清單
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 （比方說，一份清單會提供一份我們狀態，而且下一個清單然後填入處於該狀態中的主要城市）。若要實際填入下拉式清單中使用此控制項是第一項挑戰，若要解決。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 （比方說，一份清單會提供一份我們狀態，而且下一個清單然後填入處於該狀態中的主要城市）。若要實際填入下拉式清單中使用此控制項是第一項挑戰，若要解決。
 
@@ -68,6 +68,6 @@ JavaScript 程式碼來自`CascadingDropDown`extender 呼叫 web 服務方法具
 
 清單會自動填入 ([按一下以檢視完整大小的影像](filling-a-list-using-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](using-auto-postback-with-cascadingdropdown-cs.md)
-[下一頁](using-cascadingdropdown-with-a-database-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-auto-postback-with-cascadingdropdown-cs.md)
+> [下一頁](using-cascadingdropdown-with-a-database-vb.md)

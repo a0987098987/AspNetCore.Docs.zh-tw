@@ -1,26 +1,31 @@
 ---
 uid: ajax/cdn/overview
-title: "Microsoft Ajax 內容傳遞網路 |Microsoft 文件"
+title: Microsoft Ajax 內容傳遞網路 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: f1225f06e5218d893e3f49b2ccc67d56365b30e5
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: bc5f40746ad6b1ed8a74bcb75def9ff8f08fb789
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/03/2018
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
-注意： Microsoft Ajax CDN 有沒有超過使用 Azure CDN 的 SLA。
+> [!WARNING]
+> 實際執行應用程式不應該接受 CDN 資產的硬式相依性。 應用程式應該測試 CDN 資產參考，並無法使用 CDN 時，請使用後援的資產。 
+>
+> Microsoft Ajax CDN 有沒有超過使用 Azure CDN 的 SLA。
+>
+> 使用[此 GitHub 問題](https://github.com/aspnet/Docs/issues/5832)報告問題，Microsoft Ajax CDN 使用。
 
 ## <a name="table-of-contents"></a>目錄
 
@@ -82,8 +87,8 @@ Microsoft 不會聲稱此 CDN 上裝載任何協力廠商程式庫的擁有權�
 
 CDN 用於使用 microsoft.com 網域名稱，而且已變更為使用 aspnetcdn.com 網域名稱。 這項變更已對提升效能，因為瀏覽器參考 microsoft.com 網域時它會隨著每項要求網路上從該網域傳送任何 cookie。 重新命名以外 microsoft.com 網域名稱可以提高效能的最多 25%。 請注意 ajax.microsoft.com 仍會繼續運作，但 ajax.aspnetcdn.com 建議。
 
-- 舊的格式： http://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
-- 新的格式： http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
+- 舊的格式： https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
+- 新的格式： https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
 
 <a id="Visual_Studio_vsdoc_Support_19"></a>
 
@@ -163,359 +168,359 @@ CDN 裝載一些最受歡迎的第三方 JavaScript 程式庫。 Microsoft 不�
 下列版本的 jQuery 裝載在 CDN 上：
 
 #### <a name="jquery-version-331"></a>jQuery 版本 3.3.1
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.slim.min.map
 
 #### <a name="jquery-version-321"></a>jQuery 版本 3.2.1
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.slim.min.map
 
 #### <a name="jquery-version-320"></a>jQuery 版本 3.2.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.slim.min.map
 
 #### <a name="jquery-version-311"></a>3.1.1 的 jQuery 版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.slim.min.map
 
 #### <a name="jquery-version-310"></a>jQuery 3.1.0 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.map
 
 #### <a name="jquery-version-300"></a>jQuery 版本 3.0.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.map
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.slim.min.map
 
 #### <a name="jquery-version-224"></a>jQuery 版本 2.2.4
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.map
 
 #### <a name="jquery-version-223"></a>jQuery 版本 2.2.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.map
 
 #### <a name="jquery-version-222"></a>jQuery 版本 2.2.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.min.map
 
 #### <a name="jquery-version-221"></a>jQuery 2.2.1 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.map
 
 #### <a name="jquery-version-220"></a>jQuery 版本 2.2.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.map
 
 #### <a name="jquery-version-214"></a>jQuery 版本 2.1.4
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.map
 
 #### <a name="jquery-version-213"></a>jQuery 版本 2.1.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.map
 
 #### <a name="jquery-version-212"></a>jQuery 版本 2.1.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.min.js
 
 #### <a name="jquery-version-211"></a>jQuery 版本 2.1.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.map
 
 #### <a name="jquery-version-210"></a>jQuery 版本 2.1.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.map
 
 #### <a name="jquery-version-203"></a>jQuery 版本 2.0.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.map
 
 #### <a name="jquery-version-202"></a>jQuery 版本 2.0.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.map
 
 #### <a name="jquery-version-201"></a>jQuery 版本 2.0.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.map
 
 #### <a name="jquery-version-200"></a>jQuery 2.0.0 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.map
 
 #### <a name="jquery-version-1124"></a>jQuery 版本 1.12.4
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.map
 
 #### <a name="jquery-version-1123"></a>jQuery 版本 1.12.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.map
 
 #### <a name="jquery-version-1122"></a>jQuery 版本 1.12.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.map
 
 #### <a name="jquery-version-1121"></a>jQuery 版本 1.12.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.1.min.map
 
 #### <a name="jquery-version-1120"></a>jQuery 版本 1.12.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.map
 
 #### <a name="jquery-version-1113"></a>jQuery 版本 1.11.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.map
 
 #### <a name="jquery-version-1112"></a>jQuery 版本 1.11.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.map
 
 #### <a name="jquery-version-1111"></a>jQuery 版本 1.11.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.map
 
 #### <a name="jquery-version-1110"></a>jQuery 版本 1.11.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.map
 
 #### <a name="jquery-version-1102"></a>jQuery 1.10.2 的版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.map
 
 #### <a name="jquery-version-1101"></a>jQuery 版本 1.10.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.map
 
 #### <a name="jquery-version-1100"></a>jQuery 版本 1.10.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.map
 
 #### <a name="jquery-version-191"></a>jQuery 版本 1.9.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.map
 
 #### <a name="jquery-version-190"></a>jQuery 版本 1.9.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.map
 
 #### <a name="jquery-version-183"></a>jQuery 版本 1.8.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3-vsdoc.js
 
 #### <a name="jquery-version-182"></a>jQuery 版本 1.8.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2-vsdoc.js
 
 #### <a name="jquery-version-181"></a>1.8.1 的 jQuery 版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1-vsdoc.js
 
 #### <a name="jquery-version-180"></a>jQuery 版本 1.8.0
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0-vsdoc.js
 
 #### <a name="jquery-version-172"></a>jQuery 版本 1.7.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js
 
 #### <a name="jquery-version-171"></a>jQuery 版本 1.7.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1-vsdoc.js
 
 #### <a name="jquery-version-17"></a>jQuery 1.7 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7-vsdoc.js
 
 #### <a name="jquery-version-164"></a>jQuery 版本 1.6.4
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4-vsdoc.js
 
 #### <a name="jquery-version-163"></a>jQuery 版本 1.6.3
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.3-vsdoc.js
 
 #### <a name="jquery-version-162"></a>jQuery 版本 1.6.2
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2-vsdoc.js
 
 #### <a name="jquery-version-161"></a>jQuery 版本 1.6.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1-vsdoc.js
 
 #### <a name="jquery-version-16"></a>jQuery 1.6 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6-vsdoc.js
 
 #### <a name="jquery-version-152"></a>1.5.2 的 jQuery 版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2-vsdoc.js
 
 #### <a name="jquery-version-151"></a>1.5.1 的 jQuery 版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1-vsdoc.js
 
 #### <a name="jquery-version-15"></a>jQuery 1.5 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5-vsdoc.js
 
 #### <a name="jquery-version-144"></a>jQuery 版本 1.4.4
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.4-vsdoc.js
 
 #### <a name="jquery-version-143"></a>jQuery 版本 1.4.3 將
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3-vsdoc.js
 
 #### <a name="jquery-version-142"></a>1.4.2 的 jQuery 版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2-vsdoc.js
 
 #### <a name="jquery-version-141"></a>jQuery 版本 1.4.1
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1-vsdoc.js
 
 #### <a name="jquery-version-14"></a>jQuery 1.4 版
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.min.js
 
 #### <a name="jquery-version-132"></a>jQuery 1.3.2 的版本
 
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.min.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2-vsdoc.js
-- http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.min-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2-vsdoc.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.min-vsdoc.js
 
 <a id="jQuery_Migrate_Releases_on_the_CDN_1"></a>
 
@@ -525,33 +530,33 @@ CDN 裝載一些最受歡迎的第三方 JavaScript 程式庫。 Microsoft 不�
 
 #### <a name="jquery-migrate-version-300"></a>jQuery 3.0.0 版本移轉
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.min.js
 
 #### <a name="jquery-migrate-version-121"></a>jQuery 移轉 1.2.1 版
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js
 
 jQuery 1.2.0 版本移轉
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.min.js
 
 #### <a name="jquery-migrate-version-111"></a>jQuery 1.1.1 版本移轉
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.min.js
 
 #### <a name="jquery-migrate-version-110"></a>jQuery 移轉 1.1.0 版
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.min.js
 
 #### <a name="jquery-migrate-version-100"></a>jQuery 移轉 1.0.0 版
 
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.0.0.js
-- http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.0.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.0.0.js
+- https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.0.0.min.js
 
 <a id="jQuery_UI_Releases_on_the_CDN_2"></a>
 
@@ -682,12 +687,12 @@ jQuery 1.2.0 版本移轉
 
 下列版本的[Modernizr](http://www.modernizr.com "Modernizr")裝載在 CDN 上：
 
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.1.js
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.6.2.js
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js
-- http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.1.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.6.2.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js
+- https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js
 
 <a id="JSHint_Releases_on_the_CDN_10"></a>
 
@@ -695,7 +700,7 @@ jQuery 1.2.0 版本移轉
 
 下列版本的[JSHint](http://www.jshint.com "JSHint")裝載在 CDN 上：
 
-- http://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js
+- https://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js
 
 <a id="Knockout_Releases_on_the_CDN_11"></a>
 
@@ -703,26 +708,26 @@ jQuery 1.2.0 版本移轉
 
 下列版本的[Knockout](http://www.knockoutjs.com "Knockout")裝載在 CDN 上：
 
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.2.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.2.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.debug.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js
-- http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.2.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.2.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.debug.js
 
 <a id="Globalize_Releases_on_the_CDN_12"></a>
 
@@ -732,23 +737,23 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="globalize-version-100"></a>全球化 1.0.0 版
 
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/node-main.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/currency.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/date.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/message.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/number.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/plural.js
-- http://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/relative-time.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/node-main.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/currency.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/date.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/message.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/number.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/plural.js
+- https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize/relative-time.js
 
 #### <a name="globalize-version-011"></a>全球化版本 0.1.1
 
-- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js
-- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.js
-- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.cultures.js
+- https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js
+- https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.js
+- https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.cultures.js
 
     - 所有文化特性
-- http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
+- https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
     - "{文化特性的程式碼取代} 」 所需的文化特性代碼，例如 globalize.culture.en GB.js== Microsoft 檔案 CDN = = 這些 Microsoft 上傳文件庫。
 
@@ -760,32 +765,32 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="respond-version-142"></a>回應版本 1.4.2
 
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.min.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.matchmedia.addListener.min.js
 
 #### <a name="respond-version-141"></a>回應版本 1.4.1
 
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.min.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.min.js
 
 #### <a name="respond-version-140"></a>回應版本 1.4.0
 
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.min.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.js
-- http://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.min.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.min.js
 
 #### <a name="respond-version-130"></a>回應版本 1.3.0
 
-- http://ajax.aspnetcdn.com/ajax/respond/1.3.0/respond.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.3.0/respond.js
 
 #### <a name="respond-version-120"></a>回應版本 1.2.0
 
-- http://ajax.aspnetcdn.com/ajax/respond/1.2.0/respond.js
+- https://ajax.aspnetcdn.com/ajax/respond/1.2.0/respond.js
 
 <a id="Bootstrap_Releases_on_the_CDN_14"></a>
 
@@ -795,245 +800,245 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="bootstrap-version-400"></a>啟動程序 4.0.0 版
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-337"></a>啟動程序版本 3.3.7
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-336"></a>啟動程序版本 3.3.6
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-335"></a>啟動程序版本 3.3.5
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-334"></a>啟動程序版本 3.3.4 章
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-332"></a>啟動程序版本第 3.3.2
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff2
 
 #### <a name="bootstrap-version-331"></a>啟動程序版本 3.3.1
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-330"></a>啟動程序版本 3.3.0
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-320"></a>啟動程序版本 3.2.0
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-311"></a>啟動程序版本 3.1.1
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-310"></a>啟動程序 3.1.0 版
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.css.map
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-303"></a>啟動程序版本 3.0.3
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.3/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-302"></a>啟動程序版本 3.0.2
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-301"></a>啟動程序版本 3.0.1
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-300"></a>啟動程序版本 3.0.0
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap-theme.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap-theme.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf
-- http://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap-theme.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap-theme.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf
+- https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff
 
 #### <a name="bootstrap-version-232"></a>啟動程序版本 2.3.2
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap-responsive.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap-responsive.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings.png
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings-white.png
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap-responsive.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap-responsive.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings.png
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings-white.png
 
 #### <a name="bootstrap-version-231"></a>啟動程序版本 2.3.1
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.min.js
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap-responsive.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap-responsive.min.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/img/glyphicons-halflings.png
-- http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/img/glyphicons-halflings-white.png
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap-responsive.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/css/bootstrap-responsive.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/img/glyphicons-halflings.png
+- https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/img/glyphicons-halflings-white.png
 
 <a id="BootstrapTouchCarousel_Releases_on_the_CDN_18"></a>
 
@@ -1043,8 +1048,8 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="bootstrap-touchcarousel-version-080"></a>Bootstrap TouchCarousel version 0.8.0
 
-- http://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
-- http://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js
 
 <a id="Hammerjs_Releases_on_the_CDN_19"></a>
 
@@ -1054,9 +1059,9 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="hammerjs-version-204"></a>Hammer.js 版本 2.0.4
 
-- http://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.js
-- http://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js
-- http://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.map
+- https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.js
+- https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js
+- https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.map
 
 <a id="ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15"></a>
 
@@ -1076,42 +1081,42 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="aspnet-mvc-523"></a>ASP.NET MVC 5.2.3
 
-- http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js
-- http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js
 
 #### <a name="aspnet-mvc-51"></a>ASP.NET MVC 5.1
 
-- http://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.js
-- http://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js
 
 #### <a name="aspnet-mvc-50"></a>ASP.NET MVC 5.0
 
-- http://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.js
-- http://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.js
+- https://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.min.js
 
 #### <a name="aspnet-mvc-40"></a>ASP.NET MVC 4.0
 
-- http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.js
-- http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.js
+- https://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js
 
 #### <a name="aspnet-mvc-30"></a>ASP.NET MVC 3.0
 
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.js
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.js
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.js
-- http://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.debug.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.js
+- https://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.debug.js
 
 #### <a name="aspnet-mvc-20"></a>ASP.NET MVC 2.0
 
-- http://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.js
-- http://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.debug.js
+- https://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.js
+- https://ajax.aspnetcdn.com/ajax/mvc/2.0/MicrosoftMvcAjax.debug.js
 
 #### <a name="aspnet-mvc-10"></a>ASP.NET MVC 1.0
 
-- http://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.js
-- http://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.debug.js
+- https://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.js
+- https://ajax.aspnetcdn.com/ajax/mvc/1.0/MicrosoftMvcAjax.debug.js
 
 <a id="ASPNET_SignalR_Releases_on_the_CDN_17"></a>
 
@@ -1121,67 +1126,67 @@ jQuery 1.2.0 版本移轉
 
 #### <a name="aspnet-signalr-222"></a>ASP.NET SignalR 2.2.2
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.js
 
 #### <a name="aspnet-signalr-221"></a>ASP.NET SignalR 2.2.1
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.js
 
 #### <a name="aspnet-signalr-220"></a>ASP.NET SignalR 2.2.0
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.js
 
 #### <a name="aspnet-signalr-210"></a>ASP.NET SignalR 2.1.0
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.js
 
 #### <a name="aspnet-signalr-203"></a>ASP.NET SignalR 2.0.3
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.js
 
 #### <a name="aspnet-signalr-202"></a>ASP.NET SignalR 2.0.2
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.2.js
 
 #### <a name="aspnet-signalr-201"></a>ASP.NET SignalR 2.0.1
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.js
 
 #### <a name="aspnet-signalr-200"></a>ASP.NET SignalR 2.0.0
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.0.js
 
 #### <a name="aspnet-signalr-113"></a>ASP.NET SignalR 1.1.3
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.3.js
 
 #### <a name="aspnet-signalr-112"></a>ASP.NET SignalR 1.1.2
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.2.js
 
 #### <a name="aspnet-signalr-111"></a>ASP.NET SignalR 1.1.1
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.1.js
 
 #### <a name="aspnet-signalr-110"></a>ASP.NET SignalR 1.1.0
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.0.js
 
 #### <a name="aspnet-signalr-101"></a>ASP.NET SignalR 1.0.1
 
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.min.js
-- http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.min.js
+- https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.js
 
 如需使用條款 CDN 的資訊，請參閱[Microsoft Ajax CDN 使用規定](https://www.asp.net/terms-of-use "Microsoft Ajax CDN 使用規定")。

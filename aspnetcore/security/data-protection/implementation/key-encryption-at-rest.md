@@ -1,7 +1,7 @@
 ---
-title: "金鑰加密在靜止"
+title: 在 ASP.NET Core 待用的金鑰加密
 author: rick-anderson
-description: "本文概述 ASP.NET Core 資料保護加密在靜止的實作詳細資料。"
+description: 了解 ASP.NET Core 資料保護的金鑰加密在靜止的實作詳細資料。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: c66430bfe547cf061e9e79a703ac665a968bbe0b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9247b141a44c958f34529e5a42a0ddc8c8893cb0
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-encryption-at-rest"></a>金鑰加密在靜止
+# <a name="key-encryption-at-rest-in-aspnet-core"></a>在 ASP.NET Core 待用的金鑰加密
 
 <a name="data-protection-implementation-key-encryption-at-rest"></a>
 
 根據預設，資料保護系統[採用啟發學習法](xref:security/data-protection/configuration/default-settings)來判斷如何密碼編譯金鑰內容應該加密在靜止。 開發人員可以覆寫啟發學習法，並以手動方式指定索引鍵應該如何加密在靜止。
 
 > [!NOTE]
-> 如果您指定明確的金鑰加密，在其餘的機制，資料保護系統將會取消註冊啟發學習法所提供的預設金鑰儲存機制。 您必須[指定明確的金鑰儲存機制](key-storage-providers.md#data-protection-implementation-key-storage-providers)，否則資料保護系統將無法啟動。
+> 如果您指定明確的金鑰加密，在其餘的機制，資料保護系統將會取消註冊啟發學習法所提供的預設金鑰儲存機制。 您必須[指定明確的金鑰儲存機制](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers)，否則資料保護系統將無法啟動。
 
 <a name="data-protection-implementation-key-encryption-at-rest-providers"></a>
 
@@ -95,7 +95,7 @@ sc.AddDataProtection()
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>憑證為基礎的加密與 Windows DPAPI-NG 中
 
-如果您執行 Windows 8.1 / Windows Server 2012 R2 或更新版本中，您可以使用 Windows DPAPI NG 執行憑證架構的加密，即使應用程式執行[.NET Core](https://www.microsoft.com/net/core)。 若要利用這一點，使用 規則描述項字串"憑證 = HashId:thumbprint"，其中的憑證指紋是要使用的憑證十六進位編碼 SHA1 指紋。 如需範例，請參閱下方內容。
+如果您執行 Windows 8.1 / Windows Server 2012 R2 或更新版本中，您可以使用 Windows DPAPI NG 執行憑證架構的加密，即使應用程式在.NET Core 上執行。 若要利用這一點，使用 規則描述項字串"憑證 = HashId:thumbprint"，其中的憑證指紋是要使用的憑證十六進位編碼 SHA1 指紋。 如需範例，請參閱下方內容。
 
 ```csharp
 sc.AddDataProtection()

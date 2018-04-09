@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-incremental-page-display-pattern
-title: "[如何:]實作 AJAX 累加頁面顯示模式？ | Microsoft Docs"
+title: '[如何:]實作 AJAX 累加頁面顯示模式？ | Microsoft Docs'
 author: JoeStagner
-description: "傳統上要求網頁時，使用者必須稍候整個頁面會從的伺服器之後，[完成] 頁面出現 sudde..."
+description: 傳統上要求網頁時，使用者必須稍候整個頁面會從的伺服器之後，[完成] 頁面出現 sudde...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/05/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-ajax-incremental-page-display-pattern
 msc.type: video
-ms.openlocfilehash: 778c946474508d7af6269c50830547a473d97459
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ccfb2da67d8bb186f5cbbc14040c964dfbbfff10
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-implement-the-ajax-incremental-page-display-pattern"></a>[如何:]實作 AJAX 累加頁面顯示模式？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （11 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-ajax-incremental-page-display-pattern)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-implement-the-ajax-paging-pattern.md)
-[下一頁](how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-implement-the-ajax-paging-pattern.md)
+> [下一頁](how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post.md)

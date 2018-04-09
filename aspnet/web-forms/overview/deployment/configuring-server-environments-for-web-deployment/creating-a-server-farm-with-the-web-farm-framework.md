@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
-title: "建立伺服器陣列與 Web 伺服陣列架構 |Microsoft 文件"
+title: 建立伺服器陣列與 Web 伺服陣列架構 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何使用 Web 伺服陣列架構 (WFF) 2.0 來建立及設定 web 伺服器陣列中伺服器的集合。"
+description: 本主題描述如何使用 Web 伺服陣列架構 (WFF) 2.0 來建立及設定 web 伺服器陣列中伺服器的集合。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
 msc.type: authoredcontent
-ms.openlocfilehash: c592ed78a7332834923ce2290af77919fb3c7576
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 53a91660953795f2c55edcd795b053641d308dfe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-server-farm-with-the-web-farm-framework"></a>建立伺服器陣列與 Web 伺服陣列架構
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/15/2018
 > 本主題描述如何使用 Web 伺服陣列架構 (WFF) 2.0 來建立及設定 web 伺服器陣列中伺服器的集合。
 
 
-WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產品和元件、 web 應用程式、 網站和組態設定。 在案例中您需要一個以上的 web 伺服器，例如預備與生產環境中，這可大幅簡化您的部署和設定程序。 您可以部署 web 應用程式的單一伺服器 & #x 2014;*主要伺服器*（& c) 2014; #x 和 WFF 會自動複寫所有其他 web 伺服器上的伺服器陣列中的該 web 應用程式。
+WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產品和元件、 web 應用程式、 網站和組態設定。 在案例中您需要一個以上的 web 伺服器，例如預備與生產環境中，這可大幅簡化您的部署和設定程序。 您可以部署單一伺服器的 web 應用程式&#x2014;*主要伺服器*&#x2014;和 WFF 會自動複寫所有其他 web 伺服器上的伺服器陣列中的該 web 應用程式。
 
 ## <a name="understanding-the-web-farm-framework"></a>了解 Web 伺服陣列架構
 
@@ -51,7 +51,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
 
 ## <a name="task-overview"></a>工作概觀
 
-若要完成的工作和本主題中的逐步解說，您將需要至少三個伺服器 & #x 2014; 一個 WFF 控制站、 伺服器陣列的一個主要 web 伺服器和伺服器陣列的一個或多個次要的網頁伺服器。 您可以加入更多的次要伺服器 WFF 伺服器陣列在任何時間。 在高層級，來建立及設定 WFF 伺服器陣列，您將需要您預備或生產環境：
+若要完成的工作和本主題中的逐步解說，您需要至少三個伺服器&#x2014;一個 WFF 控制站、 伺服器陣列，一個主要 web 伺服器和伺服器陣列的一個或多個次要的網頁伺服器。 您可以加入更多的次要伺服器 WFF 伺服器陣列在任何時間。 在高層級，來建立及設定 WFF 伺服器陣列，您將需要您預備或生產環境：
 
 - 藉由安裝網際網路資訊服務 (IIS) 7.5 和 WFF 2.0 中建立控制站伺服器。
 - 建立一般的系統管理員帳戶和設定防火牆例外，以準備主要和次要伺服器。
@@ -78,7 +78,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
 2. 在頂端**Web Platform Installer 3.0**視窗中，按一下 **產品**。
 3. 在左邊視窗中，瀏覽窗格中按一下 **伺服器**。
 4. 在**IIS 7 建議組態**資料列中，按一下 **新增**。
-5. 在 **Web 伺服陣列架構 2。 * * * x*資料列中，按一下 **新增**。
+5. 在<strong>Web 伺服陣列架構 2。</strong><em>x</em>資料列中，按一下 <strong>新增</strong>。
 
     ![](creating-a-server-farm-with-the-web-farm-framework/_static/image2.png)
 6. 按一下 [安裝] 。 請注意，Web Platform Installer 已加入 Web Deployment Tool，各種其他相依性，以及安裝清單中。
@@ -96,7 +96,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
 
 如需有關如何設定 Windows 防火牆中的這些防火牆例外狀況的詳細資訊，請參閱[系統和 Web Farm Framework 2.0，適用於 IIS 7 的平台需求](https://go.microsoft.com/?linkid=9805128)。 適用於其他防火牆系統，請參閱產品文件。
 
-您可以使用下一個程序，將網域帳戶新增至 Windows Server 2008 R2 中的本機 administrators 群組。 您應該在您想要新增至伺服器陣列 & #x 2014; 每一部伺服器上執行此程序亦即，將相同的網域帳戶加入至主要伺服器和每個次要伺服器上的本機 administrators 群組。
+您可以使用下一個程序，將網域帳戶新增至 Windows Server 2008 R2 中的本機 administrators 群組。 您應該在您想要新增至伺服器陣列的每部伺服器上執行此程序&#x2014;換句話說，將相同的網域帳戶加入至主要伺服器和每個次要伺服器上的本機 administrators 群組。
 
 **將網域帳戶新增至本機 administrators 群組**
 
@@ -111,7 +111,7 @@ WFF 可讓您跨多個負載平衡 web 伺服器同步處理的 web platform 產
     ![](creating-a-server-farm-with-the-web-farm-framework/_static/image5.png)
 6. 在**系統管理員屬性**對話方塊中，按一下 **確定**。
 
-您的伺服器現在已準備好新增至伺服器陣列。 如果主要伺服器中，您可以設定伺服器以符合之前或之後建立的伺服器陣列 & #x 2014年的應用程式的需求; 在這兩種情況下，WFF 會同步處理伺服器所部署的相同產品的元件，或次要伺服器的組態。 為了簡單起見，本教學課程假設您會將主要伺服器設定完成後建立伺服器陣列。
+您的伺服器現在已準備好新增至伺服器陣列。 如果主要伺服器中，您可以設定伺服器以符合之前或之後建立伺服器陣列的應用程式的需求&#x2014;在這兩種情況下，WFF 會藉由部署相同的產品、 元件或設定同步伺服器次要伺服器。 為了簡單起見，本教學課程假設您會將主要伺服器設定完成後建立伺服器陣列。
 
 ## <a name="create-the-wff-server-farm"></a>建立 WFF 伺服器陣列
 
@@ -225,12 +225,12 @@ WFF 被設計來與 IIS ARR 緊密整合 若要利用這項整合，您需要安
 
 ## <a name="conclusion"></a>結論
 
-WFF 伺服器陣列時，現在應該可以啟動並執行。 您可以設定主要伺服器，以支援任何您偏好的部署方法 & #x 2014年，請參閱 「 進一步閱讀區段以瞭解詳細資料 （& s） #x 2014; 和您的設定會複寫伺服器陣列中每個次要伺服器上。
+WFF 伺服器陣列時，現在應該可以啟動並執行。 您可以設定主要伺服器，以支援您偏好何種部署方法&#x2014;進一步閱讀區段，如需詳細資訊請參閱 <<c1>而且您的設定會複寫到伺服器陣列中每個次要伺服器上。</c1>
 
 ## <a name="further-reading"></a>進一步閱讀
 
 如需詳細的設定和使用 WFF 所有層面的詳細指引，請參閱[Microsoft Web Farm Framework 2.0 適用於 IIS 7](https://go.microsoft.com/?linkid=9805129)網站。
 
->[!div class="step-by-step"]
-[上一頁](configuring-a-database-server-for-web-deploy-publishing.md)
-[下一頁](configuring-deployment-properties-for-a-target-environment.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-a-database-server-for-web-deploy-publishing.md)
+> [下一頁](configuring-deployment-properties-for-a-target-environment.md)

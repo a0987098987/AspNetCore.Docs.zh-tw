@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
-title: "設定檔，然後使用 glimpse 進行 ASP.NET MVC 應用程式進行偵錯 |Microsoft 文件"
+title: 設定檔，然後使用 glimpse 進行 ASP.NET MVC 應用程式進行偵錯 |Microsoft 文件
 author: Rick-Anderson
-description: "初探是蓬勃發展和成長系列的開放原始碼 NuGet 套件，提供詳細的效能、 偵錯和 ASP.NET 的診斷資訊..."
+description: 初探是蓬勃發展和成長系列的開放原始碼 NuGet 套件，提供詳細的效能、 偵錯和 ASP.NET 的診斷資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 9cfdced21251b482ca527dda9c3a698de77cc8ca
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6ac23256c57116de81c7bf690d5ce743301c75ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>分析和偵錯使用 glimpse 進行 ASP.NET MVC 應用程式
 ====================
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/24/2018
 <a id="eg"></a>
 ## <a name="enable-glimpse-for-localhost"></a>啟用初探 localhost
 
-瀏覽至 http://localhost:&lt;連接埠 #&gt;/glimpse.axd，然後按一下**開啟初探上** 按鈕。
+瀏覽至http://localhost:&lt;連接埠 #&gt;/glimpse.axd，然後按一下<strong>開啟初探上</strong> 按鈕。
 
 ![初探 axd-isapid-2.0-64 頁面](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
 

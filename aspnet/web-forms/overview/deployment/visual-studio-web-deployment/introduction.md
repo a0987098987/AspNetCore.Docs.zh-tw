@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/introduction
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 簡介 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 簡介 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式，Azure App Service Web 應用程式或協力廠商裝載提供者，藉由使用 V..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式，Azure App Service Web 應用程式或協力廠商裝載提供者，藉由使用 V...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: a7c5b348e44a88a56680237b0cac75c999901ec3
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 1ff4cc3b0fa6ce7e6cdc833a0c2f7fea2050c4e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>使用 Visual Studio 的 ASP.NET Web 部署： 簡介
 ====================
@@ -202,5 +202,5 @@ Visual Studio 不會與資料庫的任何項目在部署程序。 當部署的�
 
 在此數列中的第一個教學課程，您已下載範例 Visual Studio 專案，並檢閱影響您如何部署應用程式的網站功能。 下列教學課程中，在您準備進行部署的下列步驟來自動處理某些設定。 其他您以手動方式處理。
 
->[!div class="step-by-step"]
-[下一步](preparing-databases.md)
+> [!div class="step-by-step"]
+> [下一步](preparing-databases.md)

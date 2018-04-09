@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
-title: "第 3 部分： 建立系統管理控制站 |Microsoft 文件"
+title: 第 3 部分： 建立系統管理控制站 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 6fadfb6e96ae287fc5f81516b7535e03853c7e6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 588d9d1b5d27759692cd840faabf2c3549c309d6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-creating-an-admin-controller"></a>第 3 部分： 建立系統管理控制站
 ====================
@@ -68,13 +68,13 @@ A **DbSet**代表一組可查詢的實體。 以下是完整清單`OrdersContext
 
 `AdminController`類別會定義五種實作基本 CRUD 功能的方法。 每個方法會對應至用戶端可以叫用的 URI:
 
-| 控制器方法 | 說明 | URI | HTTP 方法 |
+| 控制器方法 | 描述 | URI | HTTP 方法 |
 | --- | --- | --- | --- |
 | GetProducts | 取得所有產品。 | 應用程式開發介面/產品 | GET |
-| GetProduct | 找到的產品識別碼。 | 應用程式開發介面/產品/*識別碼* | GET |
-| PutProduct | 更新的產品。 | 應用程式開發介面/產品/*識別碼* | PUT |
+| GetProduct | 找到的產品識別碼。 | api/products/*id* | GET |
+| PutProduct | 更新的產品。 | api/products/*id* | PUT |
 | PostProduct | 建立新的產品。 | 應用程式開發介面/產品 | POST |
-| DeleteProduct | 刪除產品。 | 應用程式開發介面/產品/*識別碼* | DELETE |
+| DeleteProduct | 刪除產品。 | api/products/*id* | DELETE |
 
 每個方法呼叫`OrdersContext`查詢資料庫。 修改集合 （PUT、 POST 和 DELETE） 的方法呼叫`db.SaveChanges`保存到資料庫變更。 控制站建立每個 HTTP 要求，然後處置，因此需要保存的變更，方法傳回之前。
 
@@ -102,6 +102,6 @@ Entity Framework 必須方便的功能可讓您在啟動時，在資料庫中填
 
 [!code-console[Main](using-web-api-with-entity-framework-part-3/samples/sample6.cmd)]
 
->[!div class="step-by-step"]
-[上一頁](using-web-api-with-entity-framework-part-2.md)
-[下一頁](using-web-api-with-entity-framework-part-4.md)
+> [!div class="step-by-step"]
+> [上一頁](using-web-api-with-entity-framework-part-2.md)
+> [下一頁](using-web-api-with-entity-framework-part-4.md)

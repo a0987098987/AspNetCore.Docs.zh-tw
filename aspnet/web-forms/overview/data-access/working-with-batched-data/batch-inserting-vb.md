@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
-title: "批次插入 (VB) |Microsoft 文件"
+title: 批次插入 (VB) |Microsoft 文件
 author: rick-anderson
-description: "了解如何在單一作業中插入多個資料庫的記錄。 使用者介面層級中，我們會延伸以允許使用者輸入多個 n GridView..."
+description: 了解如何在單一作業中插入多個資料庫的記錄。 使用者介面層級中，我們會延伸以允許使用者輸入多個 n GridView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f09b5fd86c1cc6641fb42a466b07da161c1dd35
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a25c889784ccc6cee3ae01df59bd489b48114e74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-inserting-vb"></a>批次插入 (VB)
 ====================
@@ -203,7 +203,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-vb[Main](batch-inserting-vb/samples/sample5.vb)]
 
-同時`Click`只需呼叫事件處理常式`ReturnToDisplayInterface`方法中，雖然我們將傳回要新增的產品出貨從`Click`步驟 4 中的事件處理常式，並將程式碼加入儲存的產品。 `ReturnToDisplayInterface`藉由傳回啟動`Suppliers`和`Categories`DropDownLists 其第一個選項。 兩個常數`firstControlID`和`lastControlID`標記的起始和結束控制項用來命名的產品名稱和單位價格中插入文字方塊介面，並使用的界限內的索引值`For`設定的迴圈`Text`文字方塊控制項的內容傳回空字串。 最後，面板`Visible`屬性重設，以便插入介面隱藏和顯示介面所示。
+同時`Click`只需呼叫事件處理常式`ReturnToDisplayInterface`方法中，雖然我們將傳回要新增的產品出貨從`Click`步驟 4 中的事件處理常式，並將程式碼加入儲存的產品。 `ReturnToDisplayInterface` 藉由傳回啟動`Suppliers`和`Categories`DropDownLists 其第一個選項。 兩個常數`firstControlID`和`lastControlID`標記的起始和結束控制項用來命名的產品名稱和單位價格中插入文字方塊介面，並使用的界限內的索引值`For`設定的迴圈`Text`文字方塊控制項的內容傳回空字串。 最後，面板`Visible`屬性重設，以便插入介面隱藏和顯示介面所示。
 
 請花一點時間，若要測試此頁面，在瀏覽器中。 當第一次瀏覽頁面時您應該會看到顯示介面已在 「 圖 5 所示。 按一下處理程序的產品出貨按鈕。 頁面會回傳，您現在應該會看到插入介面圖 12 中所示。 按一下任一個加入的產品出貨 或 取消 5d; 按鈕會傳回顯示介面。
 
@@ -269,11 +269,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 導致檢閱者在此教學課程已 Hilton Giesenow 和 S ren 因此 Lauritsen。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](batch-deleting-vb.md)
+> [!div class="step-by-step"]
+> [上一步](batch-deleting-vb.md)

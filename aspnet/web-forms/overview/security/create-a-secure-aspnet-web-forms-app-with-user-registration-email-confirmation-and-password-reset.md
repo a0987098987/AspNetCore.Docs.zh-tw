@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
-title: "建立安全的 ASP.NET Web Form 應用程式與使用者註冊電子郵件確認和密碼重設 (C#) |Microsoft 文件"
+title: 建立安全的 ASP.NET Web Form 應用程式與使用者註冊電子郵件確認和密碼重設 (C#) |Microsoft 文件
 author: Erikre
-description: "本教學課程會示範如何建立 ASP.NET Web Form 應用程式，但使用者註冊、 電子郵件確認和密碼重設使用 ASP.NET Identity 成員..."
+description: 本教學課程會示範如何建立 ASP.NET Web Form 應用程式，但使用者註冊、 電子郵件確認和密碼重設使用 ASP.NET Identity 成員...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: ed39295ed1bcaa924336a1faf52049e291abeadb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1dc7ace69473b45432fd942b9cf1ba32332cb707
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET Web Form 應用程式與使用者註冊電子郵件確認和密碼重設 (C#)
 ====================
@@ -104,9 +104,9 @@ ms.lasthandoff: 01/24/2018
 2. 在**方案總管 中**，以滑鼠右鍵按一下*Default.aspx*選取**設定為起始頁**。
 3. 執行應用程式按**F5。** 頁面顯示之後，請按一下**註冊**連結可以顯示 [註冊] 頁面。
 4. 輸入您的電子郵件和密碼，然後按一下 [**註冊**透過 SendGrid 將電子郵件訊息傳送] 按鈕。  
- 您的專案和程式碼的目前狀態將會允許使用者登入在完成註冊表單中，即使它們尚未確認其帳戶。
+   您的專案和程式碼的目前狀態將會允許使用者登入在完成註冊表單中，即使它們尚未確認其帳戶。
 5. 檢查您的電子郵件帳戶，然後按一下連結來確認您的電子郵件。  
- 一旦您提交註冊表單時，您將登入。  
+   一旦您提交註冊表單時，您將登入。  
     ![範例網站-登入](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image4.png)
 
 <a id="require"></a>
@@ -146,9 +146,9 @@ ms.lasthandoff: 01/24/2018
 4. 執行應用程式按**F5。** 頁面顯示之後，請按一下**登入**連結。
 5. 按一下**忘記密碼？**連結可以顯示**忘記密碼**頁面。
 6. 輸入您的電子郵件地址，然後按一下**送出**傳送電子郵件地址，讓您重設密碼 按鈕。   
- 檢查您的電子郵件帳戶，然後按一下連結可顯示**重設密碼**頁面。
+   檢查您的電子郵件帳戶，然後按一下連結可顯示**重設密碼**頁面。
 7. 在**重設密碼**頁面上，輸入您的電子郵件、 密碼和確認的密碼。 然後按下**重設** 按鈕。  
- 當您已成功重設您的密碼，**密碼變更**將會顯示頁面。 現在您可以登入您的新密碼。
+   當您已成功重設您的密碼，**密碼變更**將會顯示頁面。 現在您可以登入您的新密碼。
 
 <a id="rsend"></a>
 ## <a name="resend-email-confirmation-link"></a>重新傳送電子郵件確認連結
@@ -167,7 +167,7 @@ ms.lasthandoff: 01/24/2018
 4. 刪除中的任何帳戶**AspNetUsers**包含您想要測試的電子郵件別名的資料表。
 5. 執行應用程式 (**F5**)，並註冊您的電子郵件地址。
 6. 確認新的帳戶透過剛被傳送的電子郵件之前, 嘗試新的帳戶登入。  
- 您會看到您是無法登入，而且您必須確認電子郵件帳戶。 此外，您現在可以重新確認訊息傳送給您電子郵件帳戶。
+   您會看到您是無法登入，而且您必須確認電子郵件帳戶。 此外，您現在可以重新確認訊息傳送給您電子郵件帳戶。
 7. 輸入您的電子郵件地址和密碼，然後按下**重新傳送確認** 按鈕。
 8. 一旦您確認您根據新的已傳送的電子郵件訊息的電子郵件地址，請登入應用程式。
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-7-routing-and-ui-work
-title: "ASP.NET MVC Storefront 一部分 7： 路由和 UI 工作 |Microsoft 文件"
+title: ASP.NET MVC Storefront 一部分 7： 路由和 UI 工作 |Microsoft 文件
 author: robconery
-description: "Rob 與 Scott Hanselman 示範如何設定路由，並接著會實作使用者介面。"
+description: Rob 與 Scott Hanselman 示範如何設定路由，並接著會實作使用者介面。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-7-routing-and-ui-work
 msc.type: video
-ms.openlocfilehash: 034afc1d1230a4bf7e5ace1ed15c79b2775317ed
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 18acf244c29f3b698eb3588640ac1b0491b360b2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-storefront-part-7-routing-and-ui-work"></a>ASP.NET MVC Storefront 一部分 7： 路由和 UI 工作
 ====================
@@ -26,6 +26,6 @@ Rob 與 Scott Hanselman 示範如何設定路由，並接著會實作使用者�
 
 [&#9654;觀看影片 （25 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-7-routing-and-ui-work)
 
->[!div class="step-by-step"]
-[上一頁](aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work.md)
-[下一頁](aspnet-mvc-storefront-part-8-testing-controllers-iteration-1-complete.md)
+> [!div class="step-by-step"]
+> [上一頁](aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work.md)
+> [下一頁](aspnet-mvc-storefront-part-8-testing-controllers-iteration-1-complete.md)

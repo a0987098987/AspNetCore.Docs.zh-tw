@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
-title: "巢狀主版頁面 (VB) |Microsoft 文件"
+title: 巢狀主版頁面 (VB) |Microsoft 文件
 author: rick-anderson
-description: "示範如何巢狀另一個主版頁面。"
+description: 示範如何巢狀另一個主版頁面。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9059e358311cc80b6a64aa3ee1168f4ffcd4e94c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8c0123c12bb653a7f680154e2155eae0eb129428
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nested-master-pages-vb"></a>巢狀主版頁面 (VB)
 ====================
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="step-2-creating-a-simple-nested-master-page"></a>步驟 2： 建立簡單的巢狀主版頁面
 
-`Simple.master`包含兩個 ContentPlaceHolder 控制項： `MainContent` ContentPlaceHolder 我們加入表單中之 Web 連同`head`中的 ContentPlaceHolder`<head>`項目。 如果我們建立的內容頁面，並將它繫結`Simple.master`內容頁面將會有兩個參考兩個 ContentPlaceHolders 的內容控制項。 同樣地，如果我們建立巢狀主版頁面，並將它繫結`Simple.master`巢狀主版頁面將會有兩個內容控制項。
+`Simple.master` 包含兩個 ContentPlaceHolder 控制項： `MainContent` ContentPlaceHolder 我們加入表單中之 Web 連同`head`中的 ContentPlaceHolder`<head>`項目。 如果我們建立的內容頁面，並將它繫結`Simple.master`內容頁面將會有兩個參考兩個 ContentPlaceHolders 的內容控制項。 同樣地，如果我們建立巢狀主版頁面，並將它繫結`Simple.master`巢狀主版頁面將會有兩個內容控制項。
 
 讓我們加入至新的巢狀主版頁面`NestedMasterPages`資料夾名為`SimpleNested.master`。 以滑鼠右鍵按一下`NestedMasterPages`資料夾，然後選擇 加入新項目。 這會開啟 [加入新項目] 對話方塊，在圖 2 所示。 選取的主版頁面範本類型和新的主版頁面名稱的類型。 若要表示新的主版頁面應該是巢狀主版頁面，選取 「 選取的主版頁面 」 核取方塊。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-aspx[Main](nested-master-pages-vb/samples/sample4.aspx)]
 
-此新增之後，請儲存巢狀主版頁面，然後加入新的內容頁面以`NestedMasterPages`資料夾名為`Default.aspx`，並將它繫結`SimpleNested.master`主版頁面。 加入此頁面時您可能會對以查看它包含沒有內容的控制項 （請參閱圖 4） 程式碼 ！ 內容頁面只能存取其*父*主頁面的 ContentPlaceHolders。 `SimpleNested.master`不包含任何 ContentPlaceHolder 控制項。因此，任何繫結至這個主版頁面的內容頁面不能包含任何內容的控制項。
+此新增之後，請儲存巢狀主版頁面，然後加入新的內容頁面以`NestedMasterPages`資料夾名為`Default.aspx`，並將它繫結`SimpleNested.master`主版頁面。 加入此頁面時您可能會對以查看它包含沒有內容的控制項 （請參閱圖 4） 程式碼 ！ 內容頁面只能存取其*父*主頁面的 ContentPlaceHolders。 `SimpleNested.master` 不包含任何 ContentPlaceHolder 控制項。因此，任何繫結至這個主版頁面的內容頁面不能包含任何內容的控制項。
 
 
 [![新的內容頁面不包含內容控制項](nested-master-pages-vb/_static/image11.png)](nested-master-pages-vb/_static/image10.png)
@@ -258,7 +258,7 @@ ms.lasthandoff: 01/24/2018
 
 每當我們將新的內容頁面加入至 [管理] 區段，我們需要將它繫結`AdminNested.master`剛才所建立的主版頁面。 但怎麼的現有內容頁？ 目前，在站台中的所有內容頁面是衍生自`BasePage`類別，以程式設計方式在執行階段設定內容頁面的主版頁面。 這不是我們想要在 [管理] 區段中的內容頁面的行為。 相反地，我們想要一律使用這些內容頁面`AdminNested.master`頁面。 它將會選擇在執行階段權限最上層的內容頁面的巢狀主版頁面的責任。
 
-最佳的方式來達成這所需的行為是建立新的自訂基礎頁面類別，名為`AdminBasePage`延伸`BasePage`類別。 `AdminBasePage`接著可以覆寫`SetMasterPageFile`並設定`Page`物件的`MasterPageFile`硬式編碼值"~ / Admin/AdminNested.master"。 如此一來，任何分頁，衍生自`AdminBasePage`將使用`AdminNested.master`，而任何分頁，衍生自`BasePage`會有其`MasterPageFile`屬性設定為動態"~ / Site.master"或"~ / Alternate.master"的值為基礎`MyMasterPage`工作階段變數。
+最佳的方式來達成這所需的行為是建立新的自訂基礎頁面類別，名為`AdminBasePage`延伸`BasePage`類別。 `AdminBasePage` 接著可以覆寫`SetMasterPageFile`並設定`Page`物件的`MasterPageFile`硬式編碼值"~ / Admin/AdminNested.master"。 如此一來，任何分頁，衍生自`AdminBasePage`將使用`AdminNested.master`，而任何分頁，衍生自`BasePage`會有其`MasterPageFile`屬性設定為動態"~ / Site.master"或"~ / Alternate.master"的值為基礎`MyMasterPage`工作階段變數。
 
 將新的類別檔案來開始`App_Code`資料夾名為`AdminBasePage.vb`。 具有`AdminBasePage`擴充`BasePage`，然後覆寫`SetMasterPageFile`方法。 在該方法會將指派`MasterPageFile`值"~ / Admin/AdminNested.master"。 這些變更後您的類別檔案看起來應該如下所示：
 
@@ -358,11 +358,11 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](specifying-the-master-page-programmatically-vb.md)
+> [!div class="step-by-step"]
+> [上一步](specifying-the-master-page-programmatically-vb.md)

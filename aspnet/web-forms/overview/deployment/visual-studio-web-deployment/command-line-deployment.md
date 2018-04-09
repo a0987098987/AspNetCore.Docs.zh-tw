@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 8446b3fc05e3ef4a5a30c753c989252fd7f1a56f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: acc4a0e7f4744a3759b90e0f1b159da68b7c7362
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用 Visual Studio 2012 或 Visual Studio 2010。 數列的相關資訊，請參閱[系列的第一個教學課程](introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程會示範如何叫用 Visual Studio web 發行管線就會從命令列。 這是適用於您想要的案例[自動化部署程序](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery.md)而不以手動方式在 Visual Studio 中進行，通常使用[原始程式碼版本控制系統](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control.md)。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 執行專案並選取**有關**頁面。
 
-![有關頁面](command-line-deployment/_static/image2.png)
+![About 頁面](command-line-deployment/_static/image2.png)
 
 ## <a name="deploy-to-test-by-using-the-command-line"></a>使用命令列部署至測試
 
@@ -98,9 +98,9 @@ Visual Studio 2010 的版本號碼為 10.0。 如需詳細資訊，請參閱[Vis
 
 三個發行方法支援的命令列發行：
 
-- `MSDeploy`-使用 Web Deploy 發行。
-- `Package`藉由建立 Web 部署套件發佈。 您必須從 MSBuild 命令會建立個別安裝套件。
-- `FileSystem`-發行檔案複製到指定的資料夾。
+- `MSDeploy` -使用 Web Deploy 發行。
+- `Package` 藉由建立 Web 部署套件發佈。 您必須從 MSBuild 命令會建立個別安裝套件。
+- `FileSystem` -發行檔案複製到指定的資料夾。
 
 ### <a name="specifying-the-build-configuration-and-platform"></a>指定組建組態與平台
 
@@ -144,6 +144,6 @@ Visual Studio 2010 的版本號碼為 10.0。 如需詳細資訊，請參閱[Vis
 
 在下一個教學課程中，您會看到範例說明如何擴充 web 發行管線。 此範例將說明如何部署不包含在專案中的檔案。
 
->[!div class="step-by-step"]
-[上一頁](deploying-a-database-update.md)
-[下一頁](deploying-extra-files.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-a-database-update.md)
+> [下一頁](deploying-extra-files.md)

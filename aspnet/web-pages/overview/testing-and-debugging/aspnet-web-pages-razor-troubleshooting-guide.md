@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
-title: "ASP.NET Web Pages (Razor) 疑難排解指南 |Microsoft 文件"
+title: ASP.NET Web Pages (Razor) 疑難排解指南 |Microsoft 文件
 author: tfitzmac
-description: "本文說明使用 ASP.NET Web Pages (Razor) 和一些建議的解決方案時可能發生的問題。 軟體版本的 ASP.NET Web Pag..."
+description: 本文說明使用 ASP.NET Web Pages (Razor) 和一些建議的解決方案時可能發生的問題。 軟體版本的 ASP.NET Web Pag...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
 msc.type: authoredcontent
-ms.openlocfilehash: 2e25e9c7cea937016301e0f11919adb9647ca216
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ec51169ccea0016712de3fdb28a16a174150a8bd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a>ASP.NET Web Pages (Razor) 疑難排解指南
 ====================
@@ -144,12 +144,12 @@ ms.lasthandoff: 01/30/2018
     *連接嘗試失敗，因為連線對象並未正確回應之後一段時間，或已建立的連線失敗，因為已連線的主機無法回應*
 
     此錯誤通常表示應用程式無法連線到 SMTP 伺服器。 請檢查伺服器名稱和連接埠號碼。
-- *信箱無法使用。伺服器回應為： 5.1.0 &lt; someuser@invaliddomain &gt;拒絕寄件者： 無效的寄件者網域*
+- <em>信箱無法使用。伺服器回應為： 5.1.0 &lt; someuser@invaliddomain &gt;拒絕寄件者： 無效的寄件者網域</em>
 
     此訊息可能表示`From`位址不正確或遺失。
 - *指定的字串不是所需的電子郵件地址的格式。*
 
-    這個錯誤可能表示的值`To`或`From`屬性不會被視為電子郵件地址。 (ASP.NET 無法檢查電子郵件地址是否有效，只有它的正確格式，例如 *name@domain.com* 。)
+    這個錯誤可能表示的值`To`或`From`屬性不會被視為電子郵件地址。 (ASP.NET 無法檢查電子郵件地址是否有效，只有它的正確格式，例如*name@domain.com*。)
 
 > [!NOTE]
 > 移除的標記，就會顯示錯誤 (`@errorMessage`) 頁面發佈到即時網站之前。 它不是個不錯的主意，讓使用者看到您從伺服器取得的錯誤訊息。

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-vb
-title: "ASP.NET MVC Routing 概觀 (VB) |Microsoft 文件"
+title: ASP.NET MVC Routing 概觀 (VB) |Microsoft 文件
 author: StephenWalther
-description: "在本教學課程中，作者： Stephen Walther 會顯示 ASP.NET MVC 架構將瀏覽器要求對應至控制器動作的方式。"
+description: 在本教學課程中，作者： Stephen Walther 會顯示 ASP.NET MVC 架構將瀏覽器要求對應至控制器動作的方式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1e4c74e61b1a0d5f5020154756e34dd2fa507034
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3de0e21552a4aa03aa21f21a4e26028f1475f3e9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-routing-overview-vb"></a>ASP.NET MVC Routing 概觀 (VB)
 ====================
@@ -47,7 +47,7 @@ MVC 應用程式第一次啟動時，應用程式\_呼叫 start （） 方法。
 
 假設您在網頁瀏覽器的網址列輸入下列 URL:
 
-/ Home/Index/3
+/Home/Index/3
 
 預設路由會將這個 URL 對應到下列參數：
 
@@ -55,7 +55,7 @@ MVC 應用程式第一次啟動時，應用程式\_呼叫 start （） 方法。
 
 - 動作 = 索引
 
-- 識別碼 = 3
+- id = 3
 
 當您要求 URL /Home/索引/3 時，會執行下列程式碼：
 
@@ -109,6 +109,6 @@ URL /Home/索引/3，相反地，具有索引控制器動作，列出 5 中正�
 
 本教學課程的目標是為您提供 ASP.NET 路由的簡介。 我們會檢查您取得新的 ASP.NET MVC 應用程式的預設路由表。 您已學習如何預設路由將 Url 對應至控制器的動作。
 
->[!div class="step-by-step"]
-[上一頁](creating-an-action-cs.md)
-[下一頁](understanding-action-filters-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-an-action-cs.md)
+> [下一頁](understanding-action-filters-vb.md)

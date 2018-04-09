@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
-title: "檢查編輯方法與編輯檢視 |Microsoft 文件"
+title: 檢查編輯方法與編輯檢視 |Microsoft 文件
 author: Rick-Anderson
-description: "注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範..."
+description: 注意： 本教學課程中的更新的版本這裡會提供使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 容易遵循，以及示範...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 315914056c0a666fdf23cf82a314a999e03114b6
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 304d3c1efbce8949fd9385529f2a16b07e05ffdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -212,6 +212,6 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 
 本節中您可以檢查的 CRUD 動作方法和架構所產生的檢視。 您可以建立和檢視，讓使用者可以搜尋電影標題和內容類型的搜尋動作方法。 在下一步 區段中，您會看到如何將屬性加入`Movie`模型以及如何將會自動建立測試資料庫的初始設定式。
 
->[!div class="step-by-step"]
-[上一頁](accessing-your-models-data-from-a-controller.md)
-[下一頁](adding-a-new-field-to-the-movie-model-and-table.md)
+> [!div class="step-by-step"]
+> [上一頁](accessing-your-models-data-from-a-controller.md)
+> [下一頁](adding-a-new-field-to-the-movie-model-and-table.md)

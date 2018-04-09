@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
-title: "ASP.NET Web Form 連接恢復功能和命令攔截 |Microsoft 文件"
+title: ASP.NET Web Form 連接恢復功能和命令攔截 |Microsoft 文件
 author: Erikre
-description: "本教學課程說明如何修改範例應用程式支援連接恢復功能和命令攔截。"
+description: 本教學課程說明如何修改範例應用程式支援連接恢復功能和命令攔截。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
 msc.type: authoredcontent
-ms.openlocfilehash: e3347657fb5c7bf8c7bb4e51a2e810a1edde826a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d5c4e46209e1b21a303fdf1fb16c6c868b3ca923
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a>ASP.NET Web Form 連接恢復功能和命令攔截
 ====================
@@ -102,9 +102,9 @@ Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfigura
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample4.cs)]
 
- 介面會提供三個追蹤層級，以指出記錄檔的相對重要性，設計來提供外部服務呼叫，例如資料庫查詢的延遲資訊的另一個。 記錄方法具有多載，可讓您傳遞例外狀況。 這是使類別實作的介面，而不是依賴在整個應用程式的每一個記錄方法呼叫完成後可靠地記錄包括堆疊追蹤和內部例外狀況的例外狀況資訊。  
+   介面會提供三個追蹤層級，以指出記錄檔的相對重要性，設計來提供外部服務呼叫，例如資料庫查詢的延遲資訊的另一個。 記錄方法具有多載，可讓您傳遞例外狀況。 這是使類別實作的介面，而不是依賴在整個應用程式的每一個記錄方法呼叫完成後可靠地記錄包括堆疊追蹤和內部例外狀況的例外狀況資訊。  
   
- `TraceApi`方法可讓您追蹤每次呼叫外部的服務，例如 SQL Database 的延遲。
+   `TraceApi`方法可讓您追蹤每次呼叫外部的服務，例如 SQL Database 的延遲。
 3. 在*記錄*資料夾中，建立名為的類別檔案*Logger.cs* ，並以下列程式碼取代預設程式碼：  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample5.cs)]
@@ -121,20 +121,20 @@ Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfigura
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample6.cs)]
 
- 對於成功的查詢或命令，此程式碼會寫入的資訊記錄檔與延遲資訊。 對於例外狀況，它會建立錯誤記錄檔。
+   對於成功的查詢或命令，此程式碼會寫入的資訊記錄檔與延遲資訊。 對於例外狀況，它會建立錯誤記錄檔。
 2. 若要建立將會產生空的暫時性錯誤，當您輸入的攔截器類別&quot;擲回&quot;中**名稱**此頁面上的文字方塊中*AdminPage.aspx*，建立類別檔名為*InterceptorTransientErrors.cs*中*邏輯*資料夾並取代預設程式碼取代下列程式碼：  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample7.cs)]
 
     此程式碼只覆寫`ReaderExecuting`方法，也就所謂的查詢可傳回多個資料列。 如果您想要檢查連接恢復功能的其他類型的查詢，您可能也覆寫`NonQueryExecuting`和`ScalarExecuting`方法記錄攔截器一樣。  
   
- 稍後，您將"Admin"身分登入，並且選取**Admin**上方導覽列上的連結。 然後，在*AdminPage.aspx*頁面，您會加入名為 product&quot;擲回&quot;。 程式碼會建立空的 SQL 資料庫例外狀況，錯誤號碼 20，通常是暫時性的已知型別。 其他目前辨識為暫時性的錯誤號碼 64、 233、 10053、 10054、 10060、 10928、 10929、 40197、 40501、 和 40613，但這些是 SQL Database 的新版本中可能會變更。 將會重新命名為"TransientErrorExample 」，您可以遵循的程式碼中的產品*InterceptorTransientErrors.cs*檔案。  
+   稍後，您將"Admin"身分登入，並且選取**Admin**上方導覽列上的連結。 然後，在*AdminPage.aspx*頁面，您會加入名為 product&quot;擲回&quot;。 程式碼會建立空的 SQL 資料庫例外狀況，錯誤號碼 20，通常是暫時性的已知型別。 其他目前辨識為暫時性的錯誤號碼 64、 233、 10053、 10054、 10060、 10928、 10929、 40197、 40501、 和 40613，但這些是 SQL Database 的新版本中可能會變更。 將會重新命名為"TransientErrorExample 」，您可以遵循的程式碼中的產品*InterceptorTransientErrors.cs*檔案。  
   
- 程式碼傳回 Entity Framework，而不是執行查詢，並將結果傳遞例外狀況。 會傳回暫時性例外狀況*四個*時間，然後將程式碼會還原為資料庫傳遞查詢的正常程序。
+   程式碼傳回 Entity Framework，而不是執行查詢，並將結果傳遞例外狀況。 會傳回暫時性例外狀況*四個*時間，然後將程式碼會還原為資料庫傳遞查詢的正常程序。
 
     因為記錄的所有項目時，您可以請參閱 Entity Framework 會嘗試在最終成功前, 四次執行查詢，和應用程式中的唯一差異是，花費更長時間才能呈現含有查詢結果的頁面。  
   
- Entity Framework 將會重試次數是可設定;程式碼會指定四次，因為這是 SQL Database 執行原則的預設值。 如果您變更執行原則時，您必須也變更的程式碼這裡指定所產生的暫時性錯誤的次數。 您也可以變更程式碼以產生更多的例外狀況，因此 Entity Framework 將會擲回`RetryLimitExceededException`例外狀況。
+   Entity Framework 將會重試次數是可設定;程式碼會指定四次，因為這是 SQL Database 執行原則的預設值。 如果您變更執行原則時，您必須也變更的程式碼這裡指定所產生的暫時性錯誤的次數。 您也可以變更程式碼以產生更多的例外狀況，因此 Entity Framework 將會擲回`RetryLimitExceededException`例外狀況。
 3. 在*Global.asax*，加入下列 using 陳述式：  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample8.cs)]
@@ -158,16 +158,16 @@ Entity Framework 自動執行衍生自的類別中找到的程式碼`DbConfigura
 2. 選取**Admin**從上方導覽列。
 3. 輸入新的產品，名為 「 擲回 」 與適當的描述、 價格和映像檔案。
 4. 按**新增產品** 按鈕。  
- 您會注意到瀏覽器似乎 Entity Framework 正在重試查詢多次時的幾秒鐘的時間停止回應。 第一個重試會立即完成，然後增加每個額外的重試前的等候。 這個程序的呼叫每次重試之前，請等候再*指數型輪詢*。
+   您會注意到瀏覽器似乎 Entity Framework 正在重試查詢多次時的幾秒鐘的時間停止回應。 第一個重試會立即完成，然後增加每個額外的重試前的等候。 這個程序的呼叫每次重試之前，請等候再*指數型輪詢*。
 5. 請等候頁面不再 atttempting 載入。
 6. 停止專案，並查看 Visual Studio**輸出**視窗來查看追蹤輸出。 您可以找到**輸出**視窗選取**偵錯** - &gt; **Windows**  - &gt; **輸出**。 您可能必須捲動完您記錄器所撰寫的其他數個記錄檔。  
   
- 請注意，您可以查看實際傳送至資料庫的 SQL 查詢。 您會看到一些初始查詢和命令的 Entity Framework 處理開始之前，檢查資料庫版本和移轉歷程記錄資料表。   
+   請注意，您可以查看實際傳送至資料庫的 SQL 查詢。 您會看到一些初始查詢和命令的 Entity Framework 處理開始之前，檢查資料庫版本和移轉歷程記錄資料表。   
     ![輸出視窗](aspnet-web-forms-connection-resiliency-and-command-interception/_static/image1.png)   
- 請注意，除非您停止應用程式，並重新啟動它不能重複這項測試。 如果您想要能夠在應用程式的單一執行多次測試連接恢復功能，您可以撰寫程式碼中的錯誤計數器重設`InterceptorTransientErrors`。
+   請注意，除非您停止應用程式，並重新啟動它不能重複這項測試。 如果您想要能夠在應用程式的單一執行多次測試連接恢復功能，您可以撰寫程式碼中的錯誤計數器重設`InterceptorTransientErrors`。
 7. 若要查看差異的執行策略 （重試原則） 標示，註解`SetExecutionStrategy`中一行*WingtipToysConfiguration.cs*檔案*邏輯*資料夾中，執行**系統管理員**頁面偵錯模式中上一次，並新增名為 「 產品&quot;擲回&quot;一次。  
   
- 這次嘗試第一次執行查詢時，立即上第一個產生的例外狀況, 所停止偵錯工具。  
+   這次嘗試第一次執行查詢時，立即上第一個產生的例外狀況, 所停止偵錯工具。  
     ![偵錯-檢視詳細資料](aspnet-web-forms-connection-resiliency-and-command-interception/_static/image2.png)
 8. 請取消註解`SetExecutionStrategy`中一行*WingtipToysConfiguration.cs*檔案。
 

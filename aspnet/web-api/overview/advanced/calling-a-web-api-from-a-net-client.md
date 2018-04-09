@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/calling-a-web-api-from-a-net-client
-title: "從.NET 用戶端 (C#) 呼叫 Web API |Microsoft 文件"
+title: 從.NET 用戶端 (C#) 呼叫 Web API |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/24/2017
@@ -11,11 +11,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 44e02888b53ee372ab93db5f90acb691f26b7519
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: a243eeb982ba581e237263c4e31e130d634aff0e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>呼叫 Web API，從.NET 用戶端 (C#)
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/12/2018
 
 上述程式碼是完整的用戶端應用程式。
 
-`RunAsync`執行，並封鎖，直到它完成。 大部分**HttpClient**方法都是非同步，因為它們執行網路 I/O。 所有的非同步工作完成內`RunAsync`。 一般應用程式不會封鎖主執行緒，但此應用程式不允許任何互動。
+`RunAsync` 執行，並封鎖，直到它完成。 大部分**HttpClient**方法都是非同步，因為它們執行網路 I/O。 所有的非同步工作完成內`RunAsync`。 一般應用程式不會封鎖主執行緒，但此應用程式不允許任何互動。
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_run)]
 
@@ -109,7 +109,7 @@ Json.NET 是常用的高效能 JSON framework for.NET。
 
 **GetAsync**方法會傳送 HTTP GET 要求。 此方法完成時，它會傳回**HttpResponseMessage** ，其中包含 HTTP 回應。 在回應中的狀態碼是否成功的程式碼，回應主體會包含產品的 JSON 表示法。 呼叫**ReadAsAsync**還原序列化 JSON 裝載`Product`執行個體。 **ReadAsAsync**方法是非同步的因為回應主體可以是任意大。
 
-**HttpClient** HTTP 回應包含錯誤程式碼時，不會擲回例外狀況。 相反地， **IsSuccessStatusCode**屬性是**false**如果狀態為錯誤碼。 如果您想要將 HTTP 錯誤碼都視為例外狀況，呼叫[HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx)回應物件上。 `EnsureSuccessStatusCode`擲回例外狀況，如果狀態碼超出範圍 200&ndash;299。 請注意， **HttpClient**可以擲回例外狀況，因為其他原因而&mdash;比方說，如果要求逾時。
+**HttpClient** HTTP 回應包含錯誤程式碼時，不會擲回例外狀況。 相反地， **IsSuccessStatusCode**屬性是**false**如果狀態為錯誤碼。 如果您想要將 HTTP 錯誤碼都視為例外狀況，呼叫[HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx)回應物件上。 `EnsureSuccessStatusCode` 擲回例外狀況，如果狀態碼超出範圍 200&ndash;299。 請注意， **HttpClient**可以擲回例外狀況，因為其他原因而&mdash;比方說，如果要求逾時。
 
 <a id="MediaTypeFormatters"></a>
 ### <a name="media-type-formatters-to-deserialize"></a>若要還原序列化的媒體類型格式器
@@ -173,10 +173,10 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 3. 執行用戶端應用程式。 會產生下列輸出：
 
- ```console
- Created at http://localhost:64195/api/products/4
-Name: Gizmo     Price: 100.0    Category: Widgets
-Updating price...
-Name: Gizmo     Price: 80.0     Category: Widgets
-Deleted (HTTP Status = 204)
-```
+   ```console
+   Created at http://localhost:64195/api/products/4
+   Name: Gizmo     Price: 100.0    Category: Widgets
+   Updating price...
+   Name: Gizmo     Price: 80.0     Category: Widgets
+   Deleted (HTTP Status = 204)
+   ```

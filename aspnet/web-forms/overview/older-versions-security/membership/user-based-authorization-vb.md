@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/user-based-authorization-vb
-title: "使用者為基礎的授權 (VB) |Microsoft 文件"
+title: 使用者為基礎的授權 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在此教學課程中我們將探討限制存取頁面，並限制頁面層級功能，透過不同的技術。"
+description: 在此教學課程中我們將探討限制存取頁面，並限制頁面層級功能，透過不同的技術。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/user-based-authorization-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5579292930da97b142ff6db5d34d33be77aeea4b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4073f349c7965a89b39a4b1b672f0e84fc96f287
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="user-based-authorization-vb"></a>使用者為基礎的授權 (VB)
 ====================
@@ -168,7 +168,7 @@ ASP.NET 輕鬆地在網站定義不同的檔案和資料夾的其他授權規則
 
 ### <a name="a-look-at-how-theurlauthorizationmoduleuses-the-authorization-rules-to-grant-or-deny-access"></a>看看如何`UrlAuthorizationModule`使用授權規則授與或拒絕存取
 
-`UrlAuthorizationModule`判斷是否授權特定 URL 的特定識別，藉由分析 URL 授權規則一次，從第一個啟動，然後向下進行工作。 找到相符項目，因為使用者被授與或拒絕存取，取決於如果比對中找不到`<allow>`或`<deny>`項目。 **如果找到相符項目，授與使用者存取。** 因此，如果您想要限制存取，務必您使用`<deny>`URL 授權設定中的最後一個元素的項目。 **如果您省略 * * *`<deny>`* * * 元素中，所有使用者會被授都與存取。**
+`UrlAuthorizationModule`判斷是否授權特定 URL 的特定識別，藉由分析 URL 授權規則一次，從第一個啟動，然後向下進行工作。 找到相符項目，因為使用者被授與或拒絕存取，取決於如果比對中找不到`<allow>`或`<deny>`項目。 <strong>如果找到相符項目，授與使用者存取。</strong> 因此，如果您想要限制存取，務必您使用`<deny>`URL 授權設定中的最後一個元素的項目。 <strong>如果您省略</strong><strong>`<deny>`</strong><strong>元素中，所有使用者會被授都與存取。</strong>
 
 若要深入了解使用的程序`UrlAuthorizationModule`若要判斷授權單位，假設我們探討了稍早在此步驟中的 URL 授權規則。 第一個規則`<allow>`元素，讓您存取 Tito 與 Scott。 第二個規則都是`<deny>`每個人都拒絕存取的項目。 如果匿名使用者造訪，`UrlAuthorizationModule`是匿名的啟動要求，Scott 或 Tito 嗎？ 回應，很明顯地，為 [否]，讓它繼續進行第二個規則。 是匿名集中的每一個人？ 因為回應以下是 [是]，`<deny>`規則會置於作用中，而且造訪者會重新導向至登入頁面。 同樣地，如果正在造訪 Jisun`UrlAuthorizationModule`啟動要求，是 Jisun Scott 或 Tito 嗎？ 因為她是不是，`UrlAuthorizationModule`繼續進行第二個問題，是 Jisun 集中的每一個人？ 她是，因此，也就無法存取。 最後，如果 Tito 造訪時，第一個問題所造成`UrlAuthorizationModule`是肯定的回應，因此 Tito 被授與存取。
 
@@ -400,24 +400,24 @@ URL 授權架構套用授權規則，在頁面的頁面。 使用 URL 授權的�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [加入商務和資料層級使用的授權規則`PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
+- [加入商務和資料層級使用的授權規則 `PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
 - [ASP.NET 授權](https://msdn.microsoft.com/library/wce3kxhd.aspx)
 - [IIS6 與 IIS7 安全性之間的變更](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/Changes-between-IIS6-and-IIS7-Security)
 - [設定特定的檔案和子目錄](https://msdn.microsoft.com/library/6hbkh9s7.aspx)
 - [限制使用者為基礎的資料修改功能](../../data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb.md)
 - [LoginView 控制項快速入門](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/loginview.aspx)
 - [了解 IIS7 URL 授權](https://www.iis.net/articles/view.aspx/IIS7/Managing-IIS7/Configuring-Security/URL-Authorization/Understanding-IIS7-URL-Authorization)
-- [`UrlAuthorizationModule`技術文件](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
+- [`UrlAuthorizationModule` 技術文件](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)
 - [使用 ASP.NET 2.0 中的資料](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](validating-user-credentials-against-the-membership-user-store-vb.md)
-[下一頁](storing-additional-user-information-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](validating-user-credentials-against-the-membership-user-store-vb.md)
+> [下一頁](storing-additional-user-information-vb.md)

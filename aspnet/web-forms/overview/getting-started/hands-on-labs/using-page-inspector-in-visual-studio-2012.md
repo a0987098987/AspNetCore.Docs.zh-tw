@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
-title: "在 Visual Studio 2012 中使用 Page Inspector |Microsoft 文件"
+title: 在 Visual Studio 2012 中使用 Page Inspector |Microsoft 文件
 author: rick-anderson
-description: "在這個實際操作實驗室中，您會發現新的工具，尋找並修正 Visual Studio-Page Inspector 中的網頁上的問題。 Page Inspector 這項新工具的 b..."
+description: 在這個實際操作實驗室中，您會發現新的工具，尋找並修正 Visual Studio-Page Inspector 中的網頁上的問題。 Page Inspector 這項新工具的 b...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 1a9e093faae2cea1c27c582e22aebc908f78addb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 052d29dba170d403c2b1c1667c55fc2c34045615
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>Page Inspector 使用 Visual Studio 2012 中
 ====================
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 > 
 > 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409)。
 
 
 <a id="Objectives"></a>
@@ -96,12 +96,12 @@ ms.lasthandoff: 11/10/2017
 
 1. 開啟**開始**方案位於**來源/Ex1MVC4/開始/**資料夾。
 
-    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 在 [方案總管] 中，找出**Index.cshtml**檢視下**/檢視表/首頁**專案資料夾中，以滑鼠右鍵按一下並選取**Page Inspector 中的檢視**。
 
     ![選取要在 Page Inspector 中預覽檔案](using-page-inspector-in-visual-studio-2012/_static/image1.png "選取要在 Page Inspector 中的檔案")
@@ -121,14 +121,14 @@ ms.lasthandoff: 11/10/2017
 
     您會看到所撰寫的索引頁面的所有原始程式檔。 這項功能有助於識別您一眼的所有項目，特別是當您正在使用的部分檢視和範本。 請注意，您也可以開啟每個檔案是否按的連結。
 
-    ![檔案-索引標籤](using-page-inspector-in-visual-studio-2012/_static/image3.png)
+    ![The-Files-tab](using-page-inspector-in-visual-studio-2012/_static/image3.png)
 
     *[檔案] 索引標籤*
 5. 按一下**切換檢查模式**位於索引標籤左邊的按鈕。
 
     此工具可讓您選取網頁的任何項目，並查看其 HTML 和 Razor 程式碼。
 
-    ![切換檢查-模式按鈕](using-page-inspector-in-visual-studio-2012/_static/image4.png)
+    ![Toggle-Inspection-Mode-button](using-page-inspector-in-visual-studio-2012/_static/image4.png)
 
     *切換檢查模式按鈕*
 6. 在 Page Inspector 瀏覽器中，滑鼠指標移到頁面項目上。 當您移動滑鼠指標移到所呈現頁面的任意處時，就會顯示項目類型和對應的來源標記或程式碼會反白顯示在 Visual Studio 編輯器中。
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/10/2017
 2. 切換檢查模式中選取，按一下 [關閉] 以，但不是能在註冊連結以開啟其程式碼。
 
     請注意，連結的原始程式碼位於 **\_LoginPartial.cshtml**檔案，不 Index.cshtml 和\_Layout.cshtml，也就是您可能會在第一個位置中尋找的位置。 您在已直接在正確的來源檔案中放置。
-3. 在**樣式**索引標籤上，找出並按一下 **<section> #login</section>** 是這些連結的 HTML 容器項目。
+3. 在**樣式**索引標籤上，找出並按一下**<section> #login</section>**是這些連結的 HTML 容器項目。
 
     請注意， **#login**樣式自動位於**Site.css**按一下之後。 此外，程式碼現在會反白。
 
@@ -242,7 +242,7 @@ ms.lasthandoff: 11/10/2017
     ![更新的頁面](using-page-inspector-in-visual-studio-2012/_static/image18.png)
 
     *更新的頁面*
-6. 使用檢查模式中，選取任一 **&lt;li&gt;** 包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
+6. 使用檢查模式中，選取任一**&lt;li&gt;**包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
 
     ![尋找樣式](using-page-inspector-in-visual-studio-2012/_static/image19.png "尋找樣式")
 
@@ -287,12 +287,12 @@ ms.lasthandoff: 11/10/2017
 
 1. 開啟**開始**方案位於**來源/Ex2WebForms/開始/**資料夾。
 
-    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
-    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-    3. 最後，按一下 建置方案**建置** | **建置方案**。
+   1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
+   2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
+   3. 最後，按一下 建置方案**建置** | **建置方案**。
 
-    > [!NOTE]
-    > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
+      > [!NOTE]
+      > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 在 [方案總管] 中，找出**Default.aspx**頁面上，以滑鼠右鍵按一下它，然後選取**Page Inspector 中的檢視**。
 
     ![Page inspector 開啟 Default.aspx](using-page-inspector-in-visual-studio-2012/_static/image24.png "Page inspector 開啟 Default.aspx")
@@ -433,7 +433,7 @@ ms.lasthandoff: 11/10/2017
     ![更新的頁面](using-page-inspector-in-visual-studio-2012/_static/image41.png)
 
     *更新的頁面*
-6. 使用檢查模式中，選取任一 **&lt;li&gt;** 包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
+6. 使用檢查模式中，選取任一**&lt;li&gt;**包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
 
     ![尋找樣式](using-page-inspector-in-visual-studio-2012/_static/image42.png "尋找樣式")
 
@@ -474,9 +474,9 @@ ms.lasthandoff: 11/10/2017
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
-1. 移至[ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; *Visual Studio Express 2012 for Web 與 Windows Azure SDK*&quot;。
+1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
 3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
 

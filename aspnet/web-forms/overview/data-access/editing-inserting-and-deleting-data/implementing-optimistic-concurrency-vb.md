@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
-title: "實作開放式並行存取 (VB) |Microsoft 文件"
+title: 實作開放式並行存取 (VB) |Microsoft 文件
 author: rick-anderson
-description: "允許多個使用者編輯資料的 web 應用程式，會有兩位使用者，編輯相同的資料一次的風險。 在此 tutori..."
+description: 允許多個使用者編輯資料的 web 應用程式，會有兩位使用者，編輯相同的資料一次的風險。 在此 tutori...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a31ce101c3264d10ec80a45718d9222fc18c093c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 056d907e80b5bdfa1848b4b31cb03702ca823583
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-vb"></a>實作開放式並行存取 (VB)
 ====================
@@ -259,8 +259,8 @@ DAL 和 BLL 完整，所有剩下的都只有建立 ASP.NET 網頁，可以利�
 
 沒有一個必須是為了讓正確傳遞的原始值 BLL 方法 ObjectDataSource 的最後一個屬性設定。 ObjectDataSource 具有[ConflictDetection 屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx)可以指派給[兩個值的其中一個](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
 
-- `OverwriteChanges`-預設值。不會傳送到 BLL 方法的原始的輸入參數的原始值
-- `CompareAllValues`-未傳送的原始值 BLL 方法;選擇此選項，當使用開放式並行存取
+- `OverwriteChanges` -預設值。不會傳送到 BLL 方法的原始的輸入參數的原始值
+- `CompareAllValues` -未傳送的原始值 BLL 方法;選擇此選項，當使用開放式並行存取
 
 請花一點時間設定`ConflictDetection`屬性`CompareAllValues`。
 
@@ -429,8 +429,8 @@ BLL 方法的傳回值可以透過 ObjectDataSource 後續層級的事件處理�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](customizing-the-data-modification-interface-vb.md)
-[下一頁](adding-client-side-confirmation-when-deleting-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](customizing-the-data-modification-interface-vb.md)
+> [下一頁](adding-client-side-confirmation-when-deleting-vb.md)

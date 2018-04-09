@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
-title: "將驗證加入至模型 (C#) |Microsoft 文件"
+title: 將驗證加入至模型 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "建立控制站"
+description: 建立控制站
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 1e1235972d1e16153faee113af09edaa676d70d8
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: cdfe76f440e34ca7356af193186f90d2231b9db6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================
@@ -127,6 +127,6 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 在數列的下一個部分中，我們會檢閱應用程式，並對自動產生的 `Details` 和 `Delete` 方法進行一些改良。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-new-field.md)
-[下一頁](improving-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-new-field.md)
+> [下一頁](improving-the-details-and-delete-methods.md)

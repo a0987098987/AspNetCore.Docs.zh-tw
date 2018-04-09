@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
-title: "使用 LINQ to SQL 中建立模型類別 |Microsoft 文件"
+title: 使用 LINQ to SQL 中建立模型類別 |Microsoft 文件
 author: StephenWalther
-description: "了解如何藉由運用 Microsoft LINQ to SQL 中建立資料存取類別。 在此影片教學課程中，您會學習如何使用 LINQ to SQL DataContext..."
+description: 了解如何藉由運用 Microsoft LINQ to SQL 中建立資料存取類別。 在此影片教學課程中，您會學習如何使用 LINQ to SQL DataContext...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/20/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
 msc.type: video
-ms.openlocfilehash: 94be03de482a750d8569c1f4d22c960fb561e35f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 99db1ae9f4763dc32f560a36b692ce87b0774b62
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql"></a>使用 LINQ to SQL 中建立模型類別
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （24 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-model-classes-with-linq-to-sql)
 
->[!div class="step-by-step"]
-[上一頁](creating-custom-html-helpers.md)
-[下一頁](displaying-a-table-of-database-data.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-custom-html-helpers.md)
+> [下一頁](displaying-a-table-of-database-data.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
-title: "實作開放式並行存取使用 SqlDataSource (C#) |Microsoft 文件"
+title: 實作開放式並行存取使用 SqlDataSource (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程，我們檢閱必要的開放式並行存取控制，然後瀏覽如何實作使用 SqlDataSource 控制項。"
+description: 在本教學課程，我們檢閱必要的開放式並行存取控制，然後瀏覽如何實作使用 SqlDataSource 控制項。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b089a0b25aa5a520f3e20af8ec5212072ad7c7bf
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 246e8d0c2aee7358680fbca7229cc9b05ceca1cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a>使用 SqlDataSource (C#) 實作開放式並行存取
 ====================
@@ -116,7 +116,7 @@ Web 應用程式允許多個使用者同時編輯或刪除相同的資料，有�
 
 除了加強`WHERE`子句`UpdateCommand`和`DeleteCommand`屬性 （和個別的參數集合中加入額外的參數），選取 使用樂觀並行選項會調整其他兩個屬性：
 
-- 變更[`ConflictDetection`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx)從`OverwriteChanges`（預設） 至`CompareAllValues`
+- 變更[`ConflictDetection`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx)從`OverwriteChanges`（預設） 至 `CompareAllValues`
 - 變更[`OldValuesParameterFormatString`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.oldvaluesparameterformatstring.aspx)從 {0} （預設值） 的原始\_{0}。
 
 當資料 Web 控制項叫用 SqlDataSource s`Update()`或`Delete()`方法，它會將傳遞的原始值。 如果 SqlDataSource s`ConflictDetection`屬性設定為`CompareAllValues`，這些原始值都會加入至命令。 `OldValuesParameterFormatString`屬性提供對這些原始值參數所使用的命名模式。 設定資料來源精靈會使用原始\_{0} 與名稱中的每個原始參數`UpdateCommand`和`DeleteCommand`屬性和`UpdateParameters`和`DeleteParameters`集合據此。
@@ -231,8 +231,8 @@ Web 應用程式允許多個使用者同時編輯或刪除相同的資料，有�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)
-[下一頁](querying-data-with-the-sqldatasource-control-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md)
+> [下一頁](querying-data-with-the-sqldatasource-control-vb.md)

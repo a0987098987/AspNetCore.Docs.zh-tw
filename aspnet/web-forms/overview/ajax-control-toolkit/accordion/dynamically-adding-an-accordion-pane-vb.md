@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
-title: "以動態方式加入 Accordion 窗格 (VB) |Microsoft 文件"
+title: 以動態方式加入 Accordion 窗格 (VB) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常會宣告 w..."
+description: AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常會宣告 w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6adc0b7985e5ba3da1684b645ae1b71b5112594a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 68c60ba6d4be5eb6709f7558d6be4165f8232a4f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-adding-an-accordion-pane-vb"></a>以動態方式加入 Accordion 窗格 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常會宣告本身，在頁面內，但伺服器端程式碼可用來達到相同的結果。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常會宣告本身，在頁面內，但伺服器端程式碼可用來達到相同的結果。
 
@@ -62,5 +62,5 @@ Accordion 控制項會公開伺服器端程式碼的所有重要屬性。 在其
 
 依伺服器端程式碼以動態方式加入 accordion 設定中的資料 ([按一下以檢視完整大小的影像](dynamically-adding-an-accordion-pane-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](databinding-to-an-accordion-vb.md)
+> [!div class="step-by-step"]
+> [上一步](databinding-to-an-accordion-vb.md)

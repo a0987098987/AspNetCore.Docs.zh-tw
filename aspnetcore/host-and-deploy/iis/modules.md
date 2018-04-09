@@ -1,7 +1,7 @@
 ---
-title: "使用 IIS 模組與 ASP.NET Core"
+title: 使用 ASP.NET Core 的 IIS 模組
 author: guardrex
-description: "探索使用中和非使用中的 IIS 模組 ASP.NET Core 應用程式，以及如何管理 IIS 模組。"
+description: 探索使用中和非使用中的 IIS 模組 ASP.NET Core 應用程式，以及如何管理 IIS 模組。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: a6610e33abdc3eafb5908728b3299e95e6e7183f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d9b3de915df333153255f91649f9169f76ba2fe0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-iis-modules-with-aspnet-core"></a>使用 IIS 模組與 ASP.NET Core
+# <a name="iis-modules-with-aspnet-core"></a>使用 ASP.NET Core 的 IIS 模組
 
 作者：[Luke Latham](https://github.com/guardrex)
 
@@ -106,21 +106,21 @@ IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 II
 
 1. 解除鎖定伺服器層級的模組。 選取 IIS 伺服器上 IIS Manager 中**連線**[資訊看板]。 開啟**模組**中**IIS**區域。 在清單中選取的模組。 在**動作**在右側，資訊看板選取**Unlock**。 解除鎖定數量的模組，當您規劃要移除*web.config*更新版本。
 
-1. 部署應用程式不含**\<模組 >**一節中*web.config*。如果應用程式部署與*web.config*包含**\<模組 >**區段，而不需要解除鎖定區段第一次在 IIS 管理員中，Configuration Manager 就會擲回例外狀況當嘗試解除鎖定的區段。 因此，部署應用程式不含**\<模組 >** > 一節。
+2. 部署應用程式不含**\<模組 >**一節中*web.config*。如果應用程式部署與*web.config*包含**\<模組 >**區段，而不需要解除鎖定區段第一次在 IIS 管理員中，Configuration Manager 就會擲回例外狀況當嘗試解除鎖定的區段。 因此，部署應用程式不含**\<模組 >** > 一節。
 
-1. 解除鎖定**\<模組 >**區段*web.config*。在**連線**提要欄位中，選取的網站**網站**。 在**管理**區域中，開啟**組態編輯器**。 使用瀏覽控制項，來選取`system.webServer/modules`> 一節。 在**動作**來選取在右側，資訊看板**Unlock** > 一節。
+3. 解除鎖定**\<模組 >**區段*web.config*。在**連線**提要欄位中，選取的網站**網站**。 在**管理**區域中，開啟**組態編輯器**。 使用瀏覽控制項，來選取`system.webServer/modules`> 一節。 在**動作**來選取在右側，資訊看板**Unlock** > 一節。
 
-1. 此時， **\<模組 >**區段可以新增至*web.config*檔案搭配**\<移除 >**從模組移除的項目應用程式。 多個**\<移除 >**項目可以加入要移除多個模組。 如果*web.config*伺服器上進行變更，立即進行相同的變更，在專案的*web.config*在本機檔案。 這種方式移除模組不會影響其他應用程式伺服器上之模組的使用。
+4. 此時， **\<模組 >**區段可以新增至*web.config*檔案搭配**\<移除 >**從模組移除的項目應用程式。 多個**\<移除 >**項目可以加入要移除多個模組。 如果*web.config*伺服器上進行變更，立即進行相同的變更，在專案的*web.config*在本機檔案。 這種方式移除模組不會影響其他應用程式伺服器上之模組的使用。
 
-  ```xml
-  <configuration> 
+   ```xml
+   <configuration> 
     <system.webServer> 
       <modules> 
         <remove name="MODULE_NAME" /> 
       </modules> 
     </system.webServer> 
-  </configuration>
-  ```
+   </configuration>
+   ```
 
 IIS 安裝使用預設安裝的模組，請使用下列**\<模組 >**區段，以移除預設的模組。
 

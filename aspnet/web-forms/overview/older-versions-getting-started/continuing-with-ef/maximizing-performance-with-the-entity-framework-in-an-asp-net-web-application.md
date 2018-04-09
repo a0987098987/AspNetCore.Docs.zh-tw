@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
-title: "有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式的效能最大化 |Microsoft 文件"
+title: 有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式的效能最大化 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 40a53a110115e5f6342d2a97d21b64470450fd3c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b85645eebf2822b33df944692736ea9d9b69b9aa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式而言，發揮最佳效能
 ====================
@@ -54,11 +54,11 @@ ms.lasthandoff: 01/24/2018
 
 有數種方式，Entity Framework 可以將實體的導覽屬性載入相關的資料：
 
-- *消極式載入*。 第一次讀取實體時，不被擷取相關的資料。 不過，第一次您嘗試存取的導覽屬性，該導覽屬性所需的資料自動擷取。 這會導致多個查詢傳送至資料庫，一個用於實體本身，一個必須擷取每個相關實體資料的時間。 
+- *消極式載入*。 第一次讀取實體時，不會擷取相關資料。 不過，第一次嘗試存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 這會導致多個查詢傳送至資料庫，一個用於實體本身，一個必須擷取每個相關實體資料的時間。 
 
     [![Image05](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image2.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image1.png)
 
-*積極式載入*。 實體讀取時，同時擷取的相關的資料。 這通常會導致單一聯結查詢以擷取所有所需的資料。 使用指定積極式載入`Include`方法，為您上文所述在這些教學課程。
+*積極式載入*。 讀取實體時，將會同時擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 使用指定積極式載入`Include`方法，為您上文所述在這些教學課程。
 
 [![Image07](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image4.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image3.png)
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 01/24/2018
 
 Web 應用程式中消極式載入的相對較小的值，因為可能在未連線至物件內容呈現網頁瀏覽器中的使用者動作將會影響相關資料的需求進行。 相反地，當您進行資料繫結控制項，您通常知道哪些資料，也因此它通常是最佳選擇積極式載入或延後的載入，根據什麼是適用於每個案例。
 
-此外，資料繫結控制項在處置物件內容之後，可能會使用實體物件。 在此情況下，延遲載入的導覽屬性嘗試會失敗。 您收到的錯誤訊息會很明確：&quot;`The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.`&quot;
+此外，資料繫結控制項在處置物件內容之後，可能會使用實體物件。 在此情況下，延遲載入的導覽屬性嘗試會失敗。 您收到的錯誤訊息會很明確： &quot;`The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.`&quot;
 
 `EntityDataSource`控制項預設會停用延遲載入。 如`ObjectDataSource`控制您使用目前的教學課程 （或如果您從網頁程式碼存取的物件內容），有數種方式，您可以進行延遲載入預設停用。 當您具現化物件內容，您可以停止它。 例如，您可以加入下行建構函式方法的`SchoolRepository`類別：
 
@@ -266,6 +266,6 @@ Visual Studio 會產生的程式碼檔案會建立檢視表中，名為*SchoolMo
 
 下一個教學課程會檢閱一些至 Entity Framework 版本 4 中新的重要增強功能。
 
->[!div class="step-by-step"]
-[上一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
-[下一頁](what-s-new-in-the-entity-framework-4.md)
+> [!div class="step-by-step"]
+> [上一頁](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [下一頁](what-s-new-in-the-entity-framework-4.md)

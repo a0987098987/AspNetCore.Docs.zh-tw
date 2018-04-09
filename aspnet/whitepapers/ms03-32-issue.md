@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/ms03-32-issue
-title: "修正 「 無法使用伺服器應用程式 」 錯誤之後套用安全性更新 IE |Microsoft 文件"
+title: 修正 「 無法使用伺服器應用程式 」 錯誤之後套用安全性更新 IE |Microsoft 文件
 author: rick-anderson
-description: "本白皮書說明 MS03 32 安全性更新可以修正這個問題會影響 ASP.NET 1.0 Wi-fi 上執行的應用程式的 Internet explorer 的修補程式..."
+description: 本白皮書說明 MS03 32 安全性更新可以修正這個問題會影響 ASP.NET 1.0 Wi-fi 上執行的應用程式的 Internet explorer 的修補程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: 1365eebb-bdf7-4a05-8d18-7f200531be55
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/ms03-32-issue
 msc.type: content
-ms.openlocfilehash: 8658e387aeb4ea0340080666906b2b89db49a31a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dd1a564cd347364abc3ca5ac0a9ffda448bcede8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>修正 「 無法使用伺服器應用程式 」 錯誤 IE 的安全性更新
 ====================
@@ -41,20 +41,20 @@ Microsoft Internet Explorer 的安全性修補程式 MS03 32 安全性更新與 
 4. 重新登錄 ASP.NET。 這會建立新的隨機密碼的帳戶，並套用預設 ASP.NET 存取控制設定，
 5. 重新啟動 IIS 服務
 
-批次檔會包含硬式編碼暫時密碼的 「**1pass@word**」 將會提示您輸入 runas 命令批次檔執行時。 Runas 命令完成之後，ASPNET 帳戶密碼會重新建立強式隨機值。 請注意，如果硬式編碼密碼不符合密碼複雜性需求，您的環境中，批次檔可能會失敗。 如果是這樣，您可以變更適用於您環境的另一個值。
+批次檔會包含硬式編碼暫時密碼的 「<strong>1pass@word</strong>」 將會提示您輸入 runas 命令批次檔執行時。 Runas 命令完成之後，ASPNET 帳戶密碼會重新建立強式隨機值。 請注意，如果硬式編碼密碼不符合密碼複雜性需求，您的環境中，批次檔可能會失敗。 如果是這樣，您可以變更適用於您環境的另一個值。
 
-*> [!IMPORTANT]*如果您加入自訂存取控制設定或 ASPNET 帳戶的資料庫帳戶權限，他們必須完成這個批次檔後重新建立。 這是因為當帳戶重新建立，它會取得新的安全性識別碼 (SID)。
+*> [!IMPORTANT]* 如果您加入自訂存取控制設定或 ASPNET 帳戶的資料庫帳戶權限，他們必須完成這個批次檔後重新建立。 這是因為當帳戶重新建立，它會取得新的安全性識別碼 (SID)。
 
-*> [!IMPORTANT]*如果您執行 ASP.NET 工作者處理序，以自訂帳戶，ASPNET 帳戶以外，那麼您不應該執行此批次檔。 相反地，您應該以互動方式登入，或使用 runas 命令，與該帳戶將會建立該帳戶的使用者設定檔。
+*> [!IMPORTANT]* 如果您執行 ASP.NET 工作者處理序，以自訂帳戶，ASPNET 帳戶以外，那麼您不應該執行此批次檔。 相反地，您應該以互動方式登入，或使用 runas 命令，與該帳戶將會建立該帳戶的使用者設定檔。
 
 批次檔隨附於下面的自我解壓縮的封存。 若要使用它：
 
 1. 您必須以系統管理權限執行身分帳戶
 2. [下載並開啟自動解壓縮可執行檔](ms03-32-issue/_static/fixup1.exe)
 3. 擷取到 c:\ 的內容
-4. 選取 [執行] 從 [開始] 功能表，然後輸入`cmd.exe`
+4. 選取 [執行] 從 [開始] 功能表，然後輸入 `cmd.exe`
 5. 在 開啟 命令 視窗中，輸入`c:\fixup.cmd`。
-6. 出現提示時，輸入 **1pass@word** 做為密碼。
+6. 出現提示時，輸入<strong>1pass@word</strong>做為密碼。
 7. 如果您有先前自訂的存取控制設定或 ASPNET 帳戶的資料庫帳戶權限，您要立即重新套用這些設定。
 
 在您的不便，這導致許多此。 可用時，我們將會張貼的其他資訊。
@@ -65,7 +65,7 @@ Microsoft Internet Explorer 的安全性修補程式 MS03 32 安全性更新與 
 | --- | --- | --- |
 | 1.0 版 | Windows 2000 Professional | 否 |
 | 1.0 版 | Windows 2000 Server | 否 |
-| 1.0 版 | Windows XP Professional | 是 |
+| 1.0 版 | Windows XP Professional | [是] |
 | 1.0 版 | Windows Server 2003 | 否 |
 | 1.0 版 | Windows XP 家用版與 Cassini | 否 |
 | 1.1 版 | Windows 2000 Professional | 否 |

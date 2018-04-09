@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
-title: "實作有效率的資料分頁 |Microsoft 文件"
+title: 實作有效率的資料分頁 |Microsoft 文件
 author: microsoft
-description: "步驟 8 示範如何將分頁支援新增至我們 /Dinners URL，以便而不是顯示 1000 個 dinners 一次，我們只會顯示在 10 即將 dinners..."
+description: 步驟 8 示範如何將分頁支援新增至我們 /Dinners URL，以便而不是顯示 1000 個 dinners 一次，我們只會顯示在 10 即將 dinners...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
 msc.type: authoredcontent
-ms.openlocfilehash: 0b0fba604f97d3bb72d2d403e643b422b9ce48bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0188e21438820adf2adbe05b047fdb772540e1a0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implement-efficient-data-paging"></a>實作有效率的資料分頁
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -139,6 +139,6 @@ IQueryable&lt;Dinner&gt;我們 FindUpcomingDinners() 方法所傳回的物件會
 
 我們現在看我們可以將驗證和授權支援新增至我們的應用程式的方式。
 
->[!div class="step-by-step"]
-[上一頁](re-use-ui-using-master-pages-and-partials.md)
-[下一頁](secure-applications-using-authentication-and-authorization.md)
+> [!div class="step-by-step"]
+> [上一頁](re-use-ui-using-master-pages-and-partials.md)
+> [下一頁](secure-applications-using-authentication-and-authorization.md)

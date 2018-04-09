@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 4 部分 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 4 部分 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 06d129384fc78db21ad1b9224781deab6a0e91a5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6bea5f4faeb0a9c11a406a7e4e87c4929eda6a18
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 第 4 部分
 ====================
@@ -165,6 +165,6 @@ ms.lasthandoff: 11/10/2017
 
 您現在有幾個方法來處理相關的資料。 在下列的教學課程中，您將學習如何加入現有的實體之間的關聯性如何移除關聯性，以及如何加入新的實體有現有的實體關聯性。
 
->[!div class="step-by-step"]
-[上一頁](the-entity-framework-and-aspnet-getting-started-part-3.md)
-[下一頁](the-entity-framework-and-aspnet-getting-started-part-5.md)
+> [!div class="step-by-step"]
+> [上一頁](the-entity-framework-and-aspnet-getting-started-part-3.md)
+> [下一頁](the-entity-framework-and-aspnet-getting-started-part-5.md)

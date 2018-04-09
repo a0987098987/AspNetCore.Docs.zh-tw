@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/http-cookies
-title: "ASP.NET Web API 中的 HTTP Cookie |Microsoft 文件"
+title: ASP.NET Web API 中的 HTTP Cookie |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/17/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: e17c51946a268aa13ec035d18dc516928c9f4419
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 363ca975cf75b635b766a53eeda87cf957eed60c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="http-cookies-in-aspnet-web-api"></a>ASP.NET Web API 中的 HTTP Cookie
 ====================
@@ -36,7 +36,7 @@ Cookie 是一份伺服器會傳送 HTTP 回應中的資料。 用戶端 （選�
 
 [!code-powershell[Main](http-cookies/samples/sample2.ps1)]
 
-若要返回 cookie 在伺服器上，用戶端包含 Cookie 標頭之後的要求中。
+若要返回伺服器的 cookie，用戶端會在更新要求中包含 Cookie 標頭。
 
 [!code-console[Main](http-cookies/samples/sample3.cmd)]
 
@@ -79,7 +79,7 @@ A **CookieHeaderValue**包含的集合**CookieState**執行個體。 每個**Coo
 
 ## <a name="structured-cookie-data"></a>結構化的 Cookie 資料
 
-許多瀏覽器限制，它們會儲存多少 cookie &#8212; 同時總數，以及每個網域的數目。 因此，可用來將結構化的資料放入單一的 cookie，而不是設定多個 cookie。
+許多瀏覽器限制多少 cookie，它們會儲存&#8212;總數，以及每個網域的數目。 因此，可用來將結構化的資料放入單一的 cookie，而不是設定多個 cookie。
 
 > [!NOTE]
 > RFC 6265 未定義 cookie 資料的結構。

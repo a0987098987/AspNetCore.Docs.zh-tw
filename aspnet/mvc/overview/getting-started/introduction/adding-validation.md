@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-validation
-title: "加入驗證 |Microsoft 文件"
+title: 加入驗證 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 8d768727772738264d088315e605cca72db8de0a
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: d084c5c7e232b92c8cfe2230e076752d42d8da5d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 這一節中，您會將驗證邏輯加入`Movie`模型，而您要確保驗證規則會強制執行任何使用者嘗試建立或編輯電影使用應用程式的時間。
 
@@ -132,7 +132,7 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 [!code-csharp[Main](adding-validation/samples/sample7.cs)]
 
-[資料型別](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和`<a>`url 的和`<a href="mailto:EmailAddress.com">`電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型，而是***不***驗證屬性。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
+[資料型別](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性只會提供檢視引擎將資料格式化的提示 (例如提供屬性和`<a>`url 的和`<a href="mailto:EmailAddress.com">`電子郵件。 您可以使用[RegularExpression](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.regularexpressionattribute.aspx)来驗證的資料格式屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型，而是***不***驗證屬性。 在此案例中，我們只想要追蹤日期，而非日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
 
@@ -166,6 +166,6 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 在數列的下一個部分中，我們會檢閱應用程式，並對自動產生的 `Details` 和 `Delete` 方法進行一些改良。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-new-field.md)
-[下一頁](examining-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-new-field.md)
+> [下一頁](examining-the-details-and-delete-methods.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/improving-the-details-and-delete-methods
-title: "改善的詳細資料和 Delete 方法 (VB) |Microsoft 文件"
+title: 改善的詳細資料和 Delete 方法 (VB) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: e057d9f106aaa8afbe521d8185a06dfbf48e46fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0c662510ce9a80e0e808af0eec2561ecdaa12c01
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-the-details-and-delete-methods-vb"></a>改善的詳細資料和 Delete 方法 (VB)
 ====================
@@ -57,7 +57,7 @@ ms.lasthandoff: 01/24/2018
 
 Common language runtime (CLR) 需要有唯一的簽章 （名稱相同，不同的參數清單） 的多載的方法。 不過，您需要在這裡兩種刪除方法-一個用於 GET-，另一個用於 POST 兩者都需要相同的簽章。 (它們都需要接受單一整數作為參數)。
 
-若要排序時，您可以執行兩件事。 其中一個是讓方法不同的名稱。 這是我們在他前面範例。 不過，這麼做會導致一個小問題：ASP.NET 會依名稱將 URL 區段與動作方法對應，一旦您重新命名方法，路由通常就會找不到這個方法。 解決辦法正如您看到的這個範例：將 `ActionName("Delete")` 屬性新增至 `DeleteConfirmed` 方法。 這會有效地執行對應的路由系統，讓 URL 包含*/Delete/*POST 要求會發現`DeleteConfirmed`方法。
+若要排序時，您可以執行兩件事。 其中一個是讓方法不同的名稱。 這是我們在他前面範例。 不過，這麼做會導致一個小問題：ASP.NET 會依名稱將 URL 區段與動作方法對應，一旦您重新命名方法，路由通常就會找不到這個方法。 解決辦法正如您看到的這個範例：將 `ActionName("Delete")` 屬性新增至 `DeleteConfirmed` 方法。 這會有效地執行對應的路由系統，讓 URL 包含<em>/Delete/</em>POST 要求會發現`DeleteConfirmed`方法。
 
 若要避免具有相同名稱和簽章的方法有問題的另一個方法是以人為方式變更為包含未使用的參數 POST 方法的簽章。 比方說，有些開發人員將參數類型`FormCollection`傳遞至 POST 方法，然後只要不使用參數：
 
@@ -77,11 +77,11 @@ Common language runtime (CLR) 需要有唯一的簽章 （名稱相同，不同�
 - [啟用 IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
 - [Web 應用程式專案部署](https://msdn.microsoft.com/library/dd394698.aspx)
 
-現在鼓勵您移到我們的中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)和[MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md)教學課程中，瀏覽[ASP.NETMSDN 上的發行項](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)，和簽出許多視訊和資源的[https://asp.net/mvc](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！ [ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)是一個很好詢問的問題。
+現在鼓勵您移到我們的中繼層級[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)和[MVC Music Store](../../mvc-music-store/mvc-music-store-part-1.md)教學課程中，瀏覽[ASP.NETMSDN 上的發行項](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)，和簽出許多視訊和資源的[ https://asp.net/mvc ](https://asp.net/mvc)若要了解更多關於 ASP.NET MVC ！ [ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx)是一個很好詢問的問題。
 
 敬祝您使用愉快！
 
-— Scott Hanselman ([http://hanselman.com](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上) 以及 Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
+— Scott Hanselman ([ http://hanselman.com ](http://hanselman.com)和[ @shanselman ](http://twitter.com/shanselman) Twitter 上) 以及 Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
 
->[!div class="step-by-step"]
-[上一步](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [上一步](adding-validation-to-the-model.md)

@@ -12,15 +12,15 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/top-features-in-web-pages-2
 msc.type: authoredcontent
-ms.openlocfilehash: e8fc758936953970ff3e9ba289516925dee9ef45
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f0d32edd3ab54c55aa06c803cd91e01cbbb8f08a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-top-features-in-aspnet-web-pages-2"></a>在 ASP.NET Web Pages 2 上的功能
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 本文章提供在 ASP.NET Web Pages 2 RC 中，隨附於的輕量型 web 程式設計架構最上層的新功能的概觀[Microsoft WebMatrix 2 Rc<](https://www.microsoft.com/web/)。
 > 
@@ -62,9 +62,9 @@ ms.lasthandoff: 11/10/2017
     如果您使用 Internet Explorer，請移至下一個步驟。 如果您使用不同的瀏覽器，如 Mozilla Firefox 或 Google Chrome，提示您儲存*Webmatrix.exe*檔案儲存到電腦。 儲存檔案，然後按一下以啟動安裝程式。
 3. 執行安裝程式，並選擇**安裝** 按鈕。 這會安裝 WebMatrix 及網頁。
 
-## <a id="New_and_Enhanced_Features"></a>新功能和增強功能
+## <a id="New_and_Enhanced_Features"></a>  新功能和增強功能
 
-### <a id="Changes_for_the_RC_Version"></a>RC 版本 (年 6 月 2012) 的變更
+### <a id="Changes_for_the_RC_Version"></a>  RC 版本 (年 6 月 2012) 的變更
 
 2012 年 6 月的 RC 版本版有已於 2012 年 3 月發行的 Beta 版本重新整理的一些變更。 這些變更包括：
 
@@ -94,8 +94,8 @@ ms.lasthandoff: 11/10/2017
     `<a href="~/Default.cshtml">Home</a>`
 - `Scripts`已取代為資產 （資源） 管理的協助程式`Assets`helper，有稍微不同的方法，如下所示：
 
-    - 如`Scripts.Add`，使用`Assets.AddScript`
-    - 如`Scripts.GetScriptTags`，使用`Assets.GetScripts`
+  - 如`Scripts.Add`，使用 `Assets.AddScript`
+  - 如`Scripts.GetScriptTags`，使用 `Assets.GetScripts`
 
     這是一項重大變更。`Scripts`類別不是 Beta 版中。 這項變更已更新此文件的程式碼範例使用資產管理。
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/10/2017
 
 若要存取**個人網站**範本中，選擇**範本**上 WebMatrix**快速入門**螢幕。
 
-[![topseven personalsite 1](top-features-in-web-pages-2/_static/image2.png)](top-features-in-web-pages-2/_static/image1.png)
+[![topseven-personalsite-1](top-features-in-web-pages-2/_static/image2.png)](top-features-in-web-pages-2/_static/image1.png)
 
 在**範本**對話方塊方塊中，選擇**個人網站**範本。
 
@@ -149,13 +149,13 @@ ms.lasthandoff: 11/10/2017
 
 這些步驟便足以實作伺服器端驗證。 如果您想要新增用戶端驗證，請執行下列此外。
 
-加入下列指令碼檔參考內部`<head>`web 頁面的區段。 前兩個指令碼參考會指向內容傳遞網路 (CDN) 伺服器上的遠端檔案。 第三個參考會指向本機指令碼檔案。
+加入下列指令碼檔參考內部`<head>`web 頁面的區段。 前兩個指令碼參考會指向內容傳遞網路 (CDN) 伺服器上的遠端檔案。 第三個參考會指向本機指令碼檔案。 無法使用 CDN 時，實際執行應用程式應該實作後援。 測試此後援。
 
 [!code-html[Main](top-features-in-web-pages-2/samples/sample5.html)]
 
 若要取得的本機副本最簡單的方式*jquery.validate.unobtrusive.min.js*程式庫是建立新的 Web Pages 站台中，根據其中一個網站範本 （例如入門網站）。 在範本所建立的站台包含*jquery.validate.unobtrusive.js*資料夾中檔案的指令碼，從中您可以將它複製到您的網站。
 
-如果您的網站使用*\_SiteLayout*來控制頁面版面配置頁面上，您可以包含這些指令碼參考在該頁面，以便驗證是否能夠使用所有的內容頁面。 如果您想要執行驗證，只在特定的頁面上，您可以使用的資產管理員註冊在只有這些頁面上的指令碼。 若要這樣做，請呼叫`Assets.AddScript(path)`在頁面中您想要驗證，並參考每個指令碼檔案。 然後將呼叫加入`Assets.GetScripts`中 *\_SiteLayout*頁面呈現註冊所`<script>`標記。 如需詳細資訊，請參閱下節[與資產管理員註冊的指令碼](#resmanagement)。
+如果您的網站使用<em>\_SiteLayout</em>來控制頁面版面配置頁面上，您可以包含這些指令碼參考在該頁面，以便驗證是否能夠使用所有的內容頁面。 如果您想要執行驗證，只在特定的頁面上，您可以使用的資產管理員註冊在只有這些頁面上的指令碼。 若要這樣做，請呼叫`Assets.AddScript(path)`在頁面中您想要驗證，並參考每個指令碼檔案。 然後將呼叫加入`Assets.GetScripts`中 <em>\_SiteLayout</em>頁面呈現註冊所`<script>`標記。 如需詳細資訊，請參閱下節[與資產管理員註冊的指令碼](#resmanagement)。
 
 在標記中的個別項目，呼叫`Validation.For`方法。 這個方法會發出屬性該 jQuery 可以攔截以便提供用戶端驗證。 例如: 
 
@@ -172,15 +172,15 @@ ms.lasthandoff: 11/10/2017
 
 當使用者提交有效的輸入，以下是頁面：
 
-[![topSeven 有效 1](top-features-in-web-pages-2/_static/image8.png)](top-features-in-web-pages-2/_static/image7.png)
+[![topSeven-valid-1](top-features-in-web-pages-2/_static/image8.png)](top-features-in-web-pages-2/_static/image7.png)
 
 當使用者提交它具有必要的欄位保留空白，以下是頁面：
 
-[![topSeven 有效 2](top-features-in-web-pages-2/_static/image10.png)](top-features-in-web-pages-2/_static/image9.png)
+[![topSeven-valid-2](top-features-in-web-pages-2/_static/image10.png)](top-features-in-web-pages-2/_static/image9.png)
 
 當使用者將它提交使用中的整數以外的項目時，以下是頁面**信用額度**欄位：
 
-[![topSeven 有效 3](top-features-in-web-pages-2/_static/image12.png)](top-features-in-web-pages-2/_static/image11.png)
+[![topSeven-valid-3](top-features-in-web-pages-2/_static/image12.png)](top-features-in-web-pages-2/_static/image11.png)
 
 如需詳細資訊，請參閱下列部落格文章：
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 11/10/2017
 
 - 名為的自訂 helper `MakeNote`。 此 helper 來呈現的方塊內的字串換行`div`項目周圍的框線及新增具有樣式&quot;附註：&quot;它。 Helper 也會呼叫的 JavaScript 檔案新增至便箋的執行階段行為。 而不是使用指令碼的參考`<script>`標記，協助專家登錄的指令碼，藉由呼叫`Assets.AddScript`。
 - JavaScript 檔案。 這是檔案所呼叫的協助程式，而且會暫時增加附註項目時的字型大小`mouseover`事件。
-- 內容頁面上，即在參考*\_SiteLayout*  頁面上，呈現在主體中，某些內容，然後呼叫`MakeNote`協助程式。
+- 內容頁面上，即在參考<em>\_SiteLayout</em>  頁面上，呈現在主體中，某些內容，然後呼叫`MakeNote`協助程式。
 - A  *\_SiteLayout*頁面。 此頁面提供的通用標頭和頁面配置結構。 它也包含呼叫`Assets.GetScripts`，即資產管理員如何轉譯指令碼會呼叫在網頁中。
 
 若要執行範例：
@@ -241,7 +241,7 @@ ms.lasthandoff: 11/10/2017
 
 下列螢幕擷取畫面顯示*ContentPage.cshtml*當您透過便箋滑鼠指標在瀏覽器中：
 
-[![topSeven resmgr 1](top-features-in-web-pages-2/_static/image14.png)](top-features-in-web-pages-2/_static/image13.png)
+[![topSeven-resmgr-1](top-features-in-web-pages-2/_static/image14.png)](top-features-in-web-pages-2/_static/image13.png)
 
 <a id="oauthsetup"></a>
 ### <a name="enabling-logins-from-facebook-and-other-sites-using-oauth-and-openid"></a>啟用從 Facebook 和其他站台使用 OAuth 和 OpenID 登入
@@ -294,7 +294,7 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 
     程式碼來驗證使用者使用 Google 語彙基元，並會返回此頁面，在您的網站。 此頁面可讓使用者將其 Google 登入與現有的帳戶，在您的網站產生關聯，或他們可以註冊新的帳戶產生關聯的外部登入您的站台上。
 
-    [![topSeven oauth 5](top-features-in-web-pages-2/_static/image20.png)](top-features-in-web-pages-2/_static/image19.png)
+    [![topSeven-oauth-5](top-features-in-web-pages-2/_static/image20.png)](top-features-in-web-pages-2/_static/image19.png)
 5. 選擇**關聯** 按鈕。 瀏覽器會返回應用程式的首頁。
 
     [![topSeven-oauth-3](top-features-in-web-pages-2/_static/image22.png)](top-features-in-web-pages-2/_static/image21.png)
@@ -335,12 +335,12 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 
     網頁上將要求重新導向至 Facebook 登入頁面。
 
-    [![topSeven oauth 2](top-features-in-web-pages-2/_static/image26.png)](top-features-in-web-pages-2/_static/image25.png)
+    [![topSeven-oauth-2](top-features-in-web-pages-2/_static/image26.png)](top-features-in-web-pages-2/_static/image25.png)
 3. 登入 Facebook 帳戶。 
 
     程式碼來驗證您使用 Facebook 語彙基元，然後傳回頁面您可以在其中將與您的網站登入您的 Facebook 登入。 使用者名稱或電子郵件地址填入**電子郵件**欄位在表單上。
 
-    [![topSeven oauth 5](top-features-in-web-pages-2/_static/image28.png)](top-features-in-web-pages-2/_static/image27.png)
+    [![topSeven-oauth-5](top-features-in-web-pages-2/_static/image28.png)](top-features-in-web-pages-2/_static/image27.png)
 4. 選擇**關聯** 按鈕。 
 
     瀏覽器會返回 [首頁] 頁面，並在登入。
@@ -387,7 +387,7 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 3. 登入 Twitter 帳戶。
 4. 程式碼來驗證使用者使用 Twitter 語彙基元，然後傳回您的頁面您可在關聯與您網站的帳戶登入。 您的名稱或電子郵件地址填入**電子郵件**欄位在表單上。
 
-    [![topSeven oauth 5](top-features-in-web-pages-2/_static/image34.png)](top-features-in-web-pages-2/_static/image33.png)
+    [![topSeven-oauth-5](top-features-in-web-pages-2/_static/image34.png)](top-features-in-web-pages-2/_static/image33.png)
 5. 選擇**關聯** 按鈕。 
 
     瀏覽器會返回 [首頁] 頁面，並在登入。
@@ -430,7 +430,7 @@ Web Pages 2 包括附加的 ASP.NET Web Helpers Library，這個 Web Pages 站�
 1. 執行網頁*MapAddress.cshtml*檔案。
 2. 輸入街道地址、 狀態或市和郵遞區號，包括完整位址字串，然後選擇**Map It**  按鈕。 頁面會從 Google 地圖呈現對應： 
 
-    [![topseven maphelper 1](top-features-in-web-pages-2/_static/image38.png)](top-features-in-web-pages-2/_static/image37.png)
+    [![topseven-maphelper-1](top-features-in-web-pages-2/_static/image38.png)](top-features-in-web-pages-2/_static/image37.png)
 3. 尋找特定位置的緯度和經度座標的集合。
 4. 執行網頁*MapCoordinates.cshtml*。 輸入座標，然後選擇**Map It**  按鈕。 頁面會引導模式轉譯來自 Bing 地圖服務： 
 
@@ -447,7 +447,7 @@ Web Pages 2 還新增了可執行應用程式並存。 這可讓您繼續執行�
 - 如果您想要執行站台使用網頁版本 1 （而不是預設值，如同先前的點），您可以設定站台執行此作業。 如果還沒有網站*web.config*檔根目錄中的站台、 建立一個新並將下列 XML 複製到其中，覆寫現有的內容。 如果網站已包含*web.config* file、 add`<appSettings>`元素類似下列的其中一個來`<configuration>`> 一節。
 
     [!code-xml[Main](top-features-in-web-pages-2/samples/sample22.xml)]
-'-如果您未指定的版本中*web.config*檔案，網站會部署為第 2 版的站台。 (第 2 版組件會複製到*bin*資料夾中已部署的站台。)
+  '-如果您未指定的版本中*web.config*檔案，網站會部署為第 2 版的站台。 (第 2 版組件會複製到*bin*資料夾中已部署的站台。)
 - 您使用 Web Matrix 2 Beta 包含在網站的網頁版本 2 組件的版本中的網站範本所建立的新應用程式*bin*資料夾。
 
 一般情況下，您一律可以控制哪個版本的網頁使用與您的網站使用 NuGet 將適當的組件安裝到站台的*bin*資料夾。 若要尋找的封裝，請瀏覽[NuGet.org](http://NuGet.org)。
@@ -459,7 +459,7 @@ Web Pages 2 可讓您建立來呈現內容的自訂顯示行動裝置或其他�
 
 `System.Web.WebPages`命名空間包含下列類別，可讓您使用的顯示模式： `DefaultDisplayMode`， `DisplayInfo`，和`DisplayModes`。 您可以直接使用這些類別，並撰寫呈現特定裝置的正確輸出的程式碼。
 
-或者，您可以建立裝置的特定頁面所使用的檔案命名模式如下：*檔名。**行動**.cshtml*。 例如，您可以建立兩個版本的頁面上，一個名為*MyFile.cshtml* ，而另一個名為*MyFile.Mobile.cshtml*。 在執行的階段，當行動裝置的要求*MyFile.cshtml*，網頁呈現內容從*MyFile.Mobile.cshtml*。 否則， *MyFile.cshtml*轉譯。
+或者，您可以建立裝置的特定頁面所使用的檔案命名模式如下：<em>檔名。</em><em>行動</em><em>.cshtml</em>。 例如，您可以建立兩個版本的頁面上，一個名為<em>MyFile.cshtml</em> ，而另一個名為<em>MyFile.Mobile.cshtml</em>。 在執行的階段，當行動裝置的要求<em>MyFile.cshtml</em>，網頁呈現內容從<em>MyFile.Mobile.cshtml</em>。 否則， <em>MyFile.cshtml</em>轉譯。
 
 下列範例會示範如何藉由新增行動裝置的內容頁面中啟用行動裝置的轉譯。 *Page1.cshtml*包含內容加上導覽提要欄位。 *Page1.Mobile.cshtml*包含相同的內容，但會省略 [資訊看板]。
 
@@ -483,7 +483,7 @@ Web Pages 2 可讓您建立來呈現內容的自訂顯示行動裝置或其他�
 
 *Page1.cshtml*桌面瀏覽器中呈現：
 
-[![topseven displaymodes 1](top-features-in-web-pages-2/_static/image42.png)](top-features-in-web-pages-2/_static/image41.png)
+[![topseven-displaymodes-1](top-features-in-web-pages-2/_static/image42.png)](top-features-in-web-pages-2/_static/image41.png)
 
 *Page1.Mobile.cshtml* Apple iPhone 模擬器檢視中 Firefox 瀏覽器中顯示。 即使該要求是*Page1.cshtml*，應用程式呈現*Page1.Mobile.cshtml*。
 
@@ -502,5 +502,5 @@ Web Pages 2 可讓您建立來呈現內容的自訂顯示行動裝置或其他�
 ### <a name="webmatrix-resources"></a>WebMatrix 資源
 
 - [WebMatrix 2 最新消息](http://webmatrix.com/next)
-- [Microsoft WebMatrix 網站](https://go.microsoft.com/fwlink/?LinkID=195076)
+- [Microsoft WebMatrix Site](https://go.microsoft.com/fwlink/?LinkID=195076)
 - [從 Microsoft WebMatrix Web 程式開發](https://msdn.microsoft.com/en-us/library/hh145669(v=VS.99).aspx)（包括完整的範例網頁應用程式）

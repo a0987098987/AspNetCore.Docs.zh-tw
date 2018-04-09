@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/security/hub-authorization
-title: "SignalR 中樞的驗證和授權 |Microsoft 文件"
+title: SignalR 中樞的驗證和授權 |Microsoft 文件
 author: pfletcher
-description: "本主題描述如何限制哪些使用者或角色可以存取中樞方法。 本主題中使用的軟體版本 Visual Studio 2013.NET 4.5 SignalR ve..."
+description: 本主題描述如何限制哪些使用者或角色可以存取中樞方法。 本主題中使用的軟體版本 Visual Studio 2013.NET 4.5 SignalR ve...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/05/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: cb0f06a3ca2b39a4a952c33cea70136c7c5af7a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8e3bc8889efb1be80c57084fb04dc8030b386601
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authentication-and-authorization-for-signalr-hubs"></a>SignalR 中樞的驗證和授權
 ====================
@@ -73,10 +73,10 @@ ms.lasthandoff: 01/24/2018
 
 下列範例會處理不同的授權案例：
 
-- `[Authorize]`– 僅限驗證的使用者
-- `[Authorize(Roles = "Admin,Manager")]`– 僅限驗證的使用者指定的角色
-- `[Authorize(Users = "user1,user2")]`– 僅限驗證的使用者指定的使用者名稱
-- `[Authorize(RequireOutgoing=false)]`– 只有經過驗證的使用者可以叫用中樞，但從伺服器傳回給用戶端的呼叫不受限制的授權，例如，只有特定使用者可以傳送訊息，但其他所有項目可以接收訊息時。 RequireOutgoing 屬性只能套用至整個中樞，不是在中樞內的個人版方法。 RequireOutgoing 未設定為 false，會從伺服器呼叫符合授權需求的使用者。
+- `[Authorize]` – 僅限驗證的使用者
+- `[Authorize(Roles = "Admin,Manager")]` – 僅限驗證的使用者指定的角色
+- `[Authorize(Users = "user1,user2")]` – 僅限驗證的使用者指定的使用者名稱
+- `[Authorize(RequireOutgoing=false)]` – 只有經過驗證的使用者可以叫用中樞，但從伺服器傳回給用戶端的呼叫不受限制的授權，例如，只有特定使用者可以傳送訊息，但其他所有項目可以接收訊息時。 RequireOutgoing 屬性只能套用至整個中樞，不是在中樞內的個人版方法。 RequireOutgoing 未設定為 false，會從伺服器呼叫符合授權需求的使用者。
 
 <a id="requireauth"></a>
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](hub-authorization/samples/sample7.cs)]
 
-主控台應用程式將張貼到認證**www.contoso.com/RemoteLogin**其無法參考包含下列程式碼後置檔案的空白頁面。
+主控台應用程式將張貼到認證<strong>www.contoso.com/RemoteLogin</strong>其無法參考包含下列程式碼後置檔案的空白頁面。
 
 [!code-csharp[Main](hub-authorization/samples/sample8.cs)]
 

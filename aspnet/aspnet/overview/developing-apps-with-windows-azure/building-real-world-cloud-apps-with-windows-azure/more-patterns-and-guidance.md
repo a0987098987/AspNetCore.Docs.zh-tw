@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
-title: "多個模式和指導方針 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 多個模式和指導方針 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 7e97cfc3-d830-4002-8ff7-5790d1ff49e6
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: a388f2e0ca3e1f0ce24a6def2a2b91711a7bf5a7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5da5110afc50fa02fcfae551a18741821f18fcbb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>多個模式和指導方針 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/24/2018
 最後，當您開始建置真實世界應用程式，以及在 Azure 中執行它們，很快您可能需要來自專家的協助。 您可以詢問下列問題的社群網站[Azure 論壇或 StackOverflow](https://azure.microsoft.com/support/forums/)，或您可以直接對 Azure 支援人員連絡 Microsoft。 Microsoft 提供數個層級的技術支援 Azure： 如需摘要和比較選項，請參閱[Azure 支援](https://azure.microsoft.com/support/plans/)。
 
 <a id="acknowledgments"></a>
-## <a name="acknowledgments"></a>通知
+## <a name="acknowledgments"></a>感謝
 
 這個內容已撰寫 Tom Dykstra、 Rick Anderson 的 Mike Wasson。 大部分的原始內容來自[Scott Guthrie](https://weblogs.asp.net/scottgu/)，以及他接著在上繪製資料從 Mark Simms 和 Microsoft 客戶諮詢團隊 (CAT)。
 
@@ -132,6 +132,6 @@ DGAC 的其他成員檢閱，並加上初步大綱註解：
 - Roger Whitehead
 - Pawel Wilkosz
 
->[!div class="step-by-step"]
-[上一頁](queue-centric-work-pattern.md)
-[下一頁](the-fix-it-sample-application.md)
+> [!div class="step-by-step"]
+> [上一頁](queue-centric-work-pattern.md)
+> [下一頁](the-fix-it-sample-application.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-cs
-title: "反覆項目 #3-加入表單驗證 (C#) |Microsoft 文件"
+title: '反覆項目 #3-加入表單驗證 (C#) |Microsoft 文件'
 author: microsoft
-description: "第三個反覆項目中，我們會加入基本表單驗證。 我們可以防止使用者提交表單，而不會完成必要的表單欄位。 我們也會驗證 emai..."
+description: 第三個反覆項目中，我們會加入基本表單驗證。 我們可以防止使用者提交表單，而不會完成必要的表單欄位。 我們也會驗證 emai...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-3-add-form-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 120c35755784ba5a08a9592fdc58f17879848631
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b9353c32b2839fd760513982c5742bb8f521e94a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-3--add-form-validation-c"></a>反覆項目 #3-加入表單驗證 (C#)
 ====================
@@ -118,7 +118,7 @@ by [Microsoft](https://github.com/microsoft)
 
 > [!NOTE] 
 > 
-> 我收到的驗證電話號碼和電子郵件地址的規則運算式儲存機制從規則運算式[ *http://regexlib.com*](http://regexlib.com)
+> 我收到驗證電話號碼和電子郵件地址的規則運算式儲存機制從規則的運算式 [*http://regexlib.com*](http://regexlib.com)
 
 
 ## <a name="adding-validation-logic-to-the-edit-action"></a>將驗證邏輯加入至 編輯動作
@@ -139,6 +139,6 @@ Edit() 動作來更新連絡人。 Edit() 動作需要執行 create （） 動�
 
 中的下一個反覆項目中，我們將我們控制器重構我們的驗證邏輯和資料庫存取邏輯。 我們將利用數種軟體設計原則，讓我們來建立更多彈性，且更易於維護，應用程式。
 
->[!div class="step-by-step"]
-[上一頁](iteration-2-make-the-application-look-nice-cs.md)
-[下一頁](iteration-4-make-the-application-loosely-coupled-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-2-make-the-application-look-nice-cs.md)
+> [下一頁](iteration-4-make-the-application-loosely-coupled-cs.md)

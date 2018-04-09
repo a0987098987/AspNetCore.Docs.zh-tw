@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 中使用 Gulp"
+title: 在 ASP.NET Core 中使用 Gulp
 author: rick-anderson
-description: "了解如何在 ASP.NET Core 中使用 Gulp。"
+description: 了解如何在 ASP.NET Core 中使用 Gulp。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: 0a3443e8187d46992f55dc537d0f400c6771c50c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: f776b2025b6ebfeff28d3903aaeac4d7d89665b3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="introduction-to-using-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp 簡介 
+# <a name="use-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp
 
 由[Erik Reitan](https://github.com/Erikre)， [Scott Addie](https://scottaddie.com)，[奧 Roth](https://github.com/danroth27)，和[Shayne Boyer](https://twitter.com/spboyer)
 
@@ -183,6 +183,9 @@ gulp.task("min", ["min:js", "min:css"]);
     **工作執行器總管**顯示 Gulp 工作的清單。 (您可能必須按一下**重新整理**會顯示專案名稱的左邊的按鈕。)
     
     ![工作執行器總管](using-gulp/_static/03-TaskRunnerExplorer.png)
+    
+    > [!IMPORTANT]
+    > **工作執行器總管**才會出現內容功能表項目*gulpfile.js*根專案目錄中。
 
 4.  下面**工作**中**工作執行器總管**，以滑鼠右鍵按一下**全新**，然後選取**執行**從快顯功能表。
 
@@ -228,7 +231,7 @@ gulp.task("min", ["min:js", "min:css"]);
 
     ![執行第一項工作的工作執行器總管](using-gulp/_static/06-TaskRunner-First.png)
 
-    您會看到輸出文字會顯示。 如果您有興趣的常見案例為基礎的範例，請參閱的 Gulp 的配方。
+    輸出文字會顯示。 若要查看根據常見的案例的範例，請參閱[Gulp 配方](#gulp-recipes)。
 
 ## <a name="defining-and-running-tasks-in-a-series"></a>定義並執行序列中的工作
 
@@ -323,7 +326,7 @@ IntelliSense 提供程式碼完成功能、 參數說明和其他功能，以提
 
     請注意，樣式表連結指向 unminified CSS 檔案的版本。
 
-如需 ASP.NET Core 的環境相關的資訊，請參閱[使用多個環境](../fundamentals/environments.md)。
+如需 ASP.NET Core 的環境相關的資訊，請參閱[搭配多個環境](../fundamentals/environments.md)。
 
 ## <a name="task-and-module-details"></a>工作和模組的詳細資料
 
@@ -346,4 +349,4 @@ Gulp 社群也提供 Gulp[配方](https://github.com/gulpjs/gulp/blob/master/doc
 
 * [Gulp 文件](https://github.com/gulpjs/gulp/blob/master/docs/README.md)
 * [統合及縮製中 ASP.NET Core](bundling-and-minification.md)
-* [使用 ASP.NET Core Grunt](using-grunt.md)
+* [用於 ASP.NET Core Grunt](using-grunt.md)

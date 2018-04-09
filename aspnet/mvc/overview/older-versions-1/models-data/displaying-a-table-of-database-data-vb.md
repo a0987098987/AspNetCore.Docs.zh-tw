@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
-title: "顯示資料表的資料庫資料 (VB) |Microsoft 文件"
+title: 顯示資料表的資料庫資料 (VB) |Microsoft 文件
 author: microsoft
-description: "在本教學課程中，我會示範兩種方法可以顯示一組資料庫記錄。 我會顯示兩種格式的 HTML 中的資料庫記錄的一組 ta..."
+description: 在本教學課程中，我會示範兩種方法可以顯示一組資料庫記錄。 我會顯示兩種格式的 HTML 中的資料庫記錄的一組 ta...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6dc0aa91cfb68d308ed098f429d3251d424ab778
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dd871520f98aaae2d7b33d83b1646eb9eee88821
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>顯示資料表的資料庫資料 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_11_VB.pdf)
 
@@ -185,6 +185,6 @@ RenderPartial() 方法是比大多數其他 helper 方法不同，因為它不�
 
 本教學課程的目的是要說明如何顯示一組資料庫記錄，以及在 HTML 表格中。 首先，您學會如何從控制器動作傳回的一組資料庫記錄，藉由運用 Microsoft Entity Framework。 接下來，您學會如何使用 Visual Studio scaffolding 產生檢視自動顯示的項目集合。 最後，您會學到如何利用部分簡化檢視。 您已學習如何使用部分做為範本，以便您可以格式化每個資料庫的記錄。
 
->[!div class="step-by-step"]
-[上一頁](creating-model-classes-with-linq-to-sql-vb.md)
-[下一頁](performing-simple-validation-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-model-classes-with-linq-to-sql-vb.md)
+> [下一頁](performing-simple-validation-vb.md)

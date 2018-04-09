@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
-title: "URL 路由 |Microsoft 文件"
+title: URL 路由 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 279617e4ebb475d935c0d1e01e08a3a2def0f9e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a195b36517bcae4bbeaf43fe7386e7787fd00212
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="url-routing"></a>URL 路由
 ====================
@@ -153,6 +153,6 @@ URL 模式可以包含常值和變數的預留位置 （稱為 URL 參數）。 
 [將具有成員資格、 OAuth、 和 SQL Database 的安全的 ASP.NET Web Form 應用程式部署至 Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure-免費試用版](https://azure.microsoft.com/pricing/free-trial/)
 
->[!div class="step-by-step"]
-[上一頁](membership-and-administration.md)
-[下一頁](aspnet-error-handling.md)
+> [!div class="step-by-step"]
+> [上一頁](membership-and-administration.md)
+> [下一頁](aspnet-error-handling.md)

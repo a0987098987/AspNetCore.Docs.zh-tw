@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs
-title: "編輯和刪除 DataList (C#) 中的資料的概觀 |Microsoft 文件"
+title: 編輯和刪除 DataList (C#) 中的資料的概觀 |Microsoft 文件
 author: rick-anderson
-description: "在 DataList 沒有內建的編輯和刪除功能，而在此教學課程中我們會看到如何建立支援編輯和刪除 o DataList..."
+description: 在 DataList 沒有內建的編輯和刪除功能，而在此教學課程中我們會看到如何建立支援編輯和刪除 o DataList...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b3067c5a6bcf81a35f66d43886c9b116a0ef7d8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: be86707980b11453ef78fdbddead73ab9808b54d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-c"></a>編輯和刪除 DataList (C#) 中的資料的概觀
 ====================
@@ -249,7 +249,7 @@ DataList s 自`EditCommand`時會引發事件，按一下 [編輯] 按鈕時，�
 
 若要讓 DataList 呈現其所有項在唯讀模式中，我們需要：
 
-1. 設定 DataList s [ `EditItemIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx)索引不存在的`DataListItem`索引。 `-1`因為是安全的選擇，`DataListItem`索引開始`0`。
+1. 設定 DataList s [ `EditItemIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx)索引不存在的`DataListItem`索引。 `-1` 因為是安全的選擇，`DataListItem`索引開始`0`。
 2. 重新繫結資料清單的資料。 因為沒有`DataListItem` `ItemIndex` es 對應至 DataList 的`EditItemIndex`，整個 DataList 會呈現在唯讀模式。
 
 下列事件處理常式程式碼就可完成下列步驟：
@@ -263,7 +263,7 @@ DataList s 自`EditCommand`時會引發事件，按一下 [編輯] 按鈕時，�
 
 1. 以程式設計方式存取的使用者輸入的產品名稱和價格，以及編輯的產品的`ProductID`。
 2. 起始更新程序，透過呼叫適當`UpdateProduct`中多載`ProductsBLL`類別。
-3. 設定 DataList s [ `EditItemIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx)索引不存在的`DataListItem`索引。 `-1`因為是安全的選擇，`DataListItem`索引開始`0`。
+3. 設定 DataList s [ `EditItemIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx)索引不存在的`DataListItem`索引。 `-1` 因為是安全的選擇，`DataListItem`索引開始`0`。
 4. 重新繫結資料清單的資料。 因為沒有`DataListItem` `ItemIndex` es 對應至 DataList 的`EditItemIndex`，整個 DataList 會呈現在唯讀模式。
 
 步驟 1 和 2 負責儲存使用者的變更;步驟 3 和 4 返回 DataList 預先編輯狀態所做的變更已儲存並與相同執行中的步驟之後`CancelCommand`事件處理常式。
@@ -339,11 +339,11 @@ DataList 缺少點，然後按一下 編輯和刪除滿意的 GridView 的支援
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Zack Jones、 Ken Pespisa 和袁 Schmidt。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](performing-batch-updates-cs.md)
+> [!div class="step-by-step"]
+> [下一步](performing-batch-updates-cs.md)

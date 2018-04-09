@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
-title: "以程式設計方式設定 ObjectDataSource 參數值 (VB) |Microsoft 文件"
+title: 以程式設計方式設定 ObjectDataSource 參數值 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程，我們將探討將方法加入我們的 DAL 和 BLL 可接受單一輸入的參數和傳回資料。 此範例會將此參數設定..."
+description: 在本教學課程，我們將探討將方法加入我們的 DAL 和 BLL 可接受單一輸入的參數和傳回資料。 此範例會將此參數設定...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aa4afbf2200e1167c9f66aeaddb4273e710394b4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ac53d651601829b6e7d2ce312a084618a8afbb61
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>以程式設計方式設定 ObjectDataSource 參數值 (VB)
 ====================
@@ -124,7 +124,7 @@ ms.lasthandoff: 01/24/2018
 **圖 9**： 按一下 [屬性] 視窗，列出 Web 控制項的事件中閃電圖示
 
 
-所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中 *`parameterName`* 值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
+所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中*`parameterName`*值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample3.vb)]
@@ -147,11 +147,11 @@ ObjectDataSource 參數值通常會設定以宣告方式，而不需要程式碼
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](declarative-parameters-vb.md)
+> [!div class="step-by-step"]
+> [上一步](declarative-parameters-vb.md)

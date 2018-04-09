@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs
-title: "在 DetailsView 控制項 (C#) 中使用 TemplateFields |Microsoft 文件"
+title: 在 DetailsView 控制項 (C#) 中使用 TemplateFields |Microsoft 文件
 author: rick-anderson
-description: "適用於 GridView 的相同 TemplateFields 功能也會提供與 DetailsView 控制項的。 在本教學課程中，我們會顯示一個產品..."
+description: 適用於 GridView 的相同 TemplateFields 功能也會提供與 DetailsView 控制項的。 在本教學課程中，我們會顯示一個產品...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8004937b758ee1bdb2a2df84c5ea40d47e89dd1c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f1d2e8312451c0bd1b3aba448963317f5fe06029
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-templatefields-in-the-detailsview-control-c"></a>使用 TemplateFields DetailsView 控制項中 (C#)
 ====================
@@ -129,7 +129,7 @@ TemplateField 提供較高的轉譯資料的彈性比 BoundField、 CheckBoxFiel
 
 新增的 static 標記、 標籤 Web 控制項和資料繫結語法，這樣的價格和清查 TemplateField 顯示的價格和清查資訊就像這樣：
 
-*單價*  
+*UnitPrice*  
 (**順序上 / 庫存：** *UnitsInStock* / *UnitsOnOrder*)
 
 執行這項工作後 DetailsView 的宣告式標記看起來應該如下所示：
@@ -199,12 +199,12 @@ TemplateField 提供較高的轉譯資料的彈性比 BoundField、 CheckBoxFiel
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Dan Jagers。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](using-templatefields-in-the-gridview-control-cs.md)
-[下一頁](using-the-formview-s-templates-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](using-templatefields-in-the-gridview-control-cs.md)
+> [下一頁](using-the-formview-s-templates-cs.md)

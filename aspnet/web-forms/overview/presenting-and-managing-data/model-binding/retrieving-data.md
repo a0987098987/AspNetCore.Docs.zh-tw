@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
-title: "擷取並顯示與資料模型繫結和 web form |Microsoft 文件"
+title: 擷取並顯示與資料模型繫結和 web form |Microsoft 文件
 author: tfitzmac
-description: "此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-..."
+description: 此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: e750250285fcb0088da284588d721ac21e73820c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 26873efa5dbfdbdab39a52cfb9cfd5a65c8231a3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Web form 模型繫結與資料擷取和顯示
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 > 
 > 
-> - Microsoft Visual Studio 2013 或 Microsoft Visual Studio Express 2013 for Web
+> - Microsoft Visual Studio 2013 or Microsoft Visual Studio Express 2013 for Web
 >   
 > 
 > 本教學課程也會搭配 Visual Studio 2012，但會在使用者介面和專案範本中的一些差異。
@@ -182,5 +182,5 @@ Visual Studio 不僅會在程式碼後置具有適當簽章，建立方法，也
 
 在接下來[教學課程](updating-deleting-and-creating-data.md)在此數列，您將啟用更新、 刪除和建立的資料。
 
->[!div class="step-by-step"]
-[下一步](updating-deleting-and-creating-data.md)
+> [!div class="step-by-step"]
+> [下一步](updating-deleting-and-creating-data.md)

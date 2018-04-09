@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
-title: "開發與 Azure Active Directory 的 ASP.NET 應用程式 |Microsoft 文件"
+title: 開發與 Azure Active Directory 的 ASP.NET 應用程式 |Microsoft 文件
 author: Rick-Anderson
-description: "Azure Active Directory 的 Microsoft ASP.NET tools 可讓您更簡單，好讓在 Azure 上裝載的 web 應用程式的驗證。 您可以使用 Azure 驗證..."
+description: Azure Active Directory 的 Microsoft ASP.NET tools 可讓您更簡單，好讓在 Azure 上裝載的 web 應用程式的驗證。 您可以使用 Azure 驗證...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2014
 ms.topic: article
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 1ef0468d5f5c17480b23ac88983f30fe6f4979c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44bf29e099583bf9d49f2715d3ff4f748728ad8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>使用 Azure Active Directory 開發的 ASP.NET 應用程式
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 > Microsoft ASP.NET 工具的 Azure Active Directory 可簡化針對上主控的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證 Office 365 使用者，從您的組織，從您在內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者。 啟用 Windows Azure 驗證設定您的應用程式驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
 > 
->  本教學課程中所編寫的 Rick Anderson[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+>  本教學課程中所編寫的 Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 
 
 本教學課程會示範如何建立 ASP.NET 應用程式設定為使用登入[Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD)。 您也將學習如何呼叫 Graph API 來取得目前登入使用者的相關資訊及如何部署 Azure 應用程式。
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image4.png)  
   
- 儲存密碼，您必須變更密碼之後的第一個記錄檔中。 下圖顯示新的系統管理員帳戶。 您必須使用 Azure Active Directory 登入您的應用程式，而不是 Microsoft 帳戶也會顯示此頁面上。  
+   儲存密碼，您必須變更密碼之後的第一個記錄檔中。 下圖顯示新的系統管理員帳戶。 您必須使用 Azure Active Directory 登入您的應用程式，而不是 Microsoft 帳戶也會顯示此頁面上。  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image5.png)
 
@@ -65,11 +65,11 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image6.png)
 3. 在**變更驗證**對話方塊中，選取**組織帳戶**。 這些選項可用來自動向 Azure AD 中註冊您的應用程式，以及自動設定您的應用程式與 Azure AD 整合。 您不必使用**變更驗證**對話方塊來註冊及設定您的應用程式，但它可以更容易。 如果您使用 Visual Studio 2012 比方說，您就可以仍然可以手動在 Azure 管理入口網站中註冊應用程式，並更新其設定以使用 Azure AD 整合。  
- 在下拉式功能表中，選取**雲端-單一組織**和**單一登入，讀取目錄資料**。 為您的 Azure AD 目錄，例如 （在下列映像） 輸入的網域*aricka0yahoo.onmicrosoft.com*，然後按一下 **確定**。 您可以從 [網域] 索引標籤預設目錄，在 azure 入口網站來取得網域名稱 （請參閱下圖中，向下）。   
+   在下拉式功能表中，選取**雲端-單一組織**和**單一登入，讀取目錄資料**。 為您的 Azure AD 目錄，例如 （在下列映像） 輸入的網域*aricka0yahoo.onmicrosoft.com*，然後按一下 **確定**。 您可以從 [網域] 索引標籤預設目錄，在 azure 入口網站來取得網域名稱 （請參閱下圖中，向下）。   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image7.png)  
   
- 下圖顯示從 Azure 入口網站的網域名稱。  
+   下圖顯示從 Azure 入口網站的網域名稱。  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image8.png)  
 
@@ -94,11 +94,11 @@ ms.lasthandoff: 01/24/2018
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image13.png)  
   
- 如果您收到錯誤：  
- 值不可為 null 或空白。 參數名稱： Externallink>   
+   如果您收到錯誤：  
+   值不可為 null 或空白。 參數名稱： Externallink>   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image14.png)  
   
- 請參閱[偵錯](#dbg)教學課程的最後一節。
+   請參閱[偵錯](#dbg)教學課程的最後一節。
 
 ## <a name="basics-of-the-graph-api"></a>Graph API 的基本概念
 

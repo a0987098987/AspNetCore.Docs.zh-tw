@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
-title: "第一個使用 ASP.NET MVC 的 EF 資料庫： 建立 Web 應用程式和資料模型 |Microsoft 文件"
+title: 第一個使用 ASP.NET MVC 的 EF 資料庫： 建立 Web 應用程式和資料模型 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/01/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: f495bfa3aa5332e4ca3e44c2ffbfb760fbbeafc8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 04ccc00fa48702608fdc7b5b00d73778985852f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-creating-the-web-application-and-data-models"></a>第一個使用 ASP.NET MVC 的 EF 資料庫： 建立 Web 應用程式和資料模型
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 ![建立專案](creating-the-web-application/_static/image1.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 在 [新增 ASP.NET 專案] 視窗中，選取**MVC**範本。 您可以清除**雲端中的主機**現在選項，因為您將部署之後到雲端應用程式。 按一下**確定**建立應用程式。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
 
 ![設定連接屬性](creating-the-web-application/_static/image8.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 現在會顯示正確的連接屬性。 您可以在 Web.Config 檔案中使用連接的預設名稱
 
@@ -101,6 +101,6 @@ ms.lasthandoff: 11/10/2017
 
 進行本教學課程前，先建置專案。 在下一步 區段中，將會產生資料模型為基礎的程式碼，但如果無法建置專案，將無法運作 > 一節。
 
->[!div class="step-by-step"]
-[上一頁](setting-up-database.md)
-[下一頁](generating-views.md)
+> [!div class="step-by-step"]
+> [上一頁](setting-up-database.md)
+> [下一頁](generating-views.md)

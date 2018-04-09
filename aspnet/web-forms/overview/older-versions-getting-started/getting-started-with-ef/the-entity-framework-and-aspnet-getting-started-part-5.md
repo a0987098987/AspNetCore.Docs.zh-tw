@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 5 部分 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 5 部分 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7f351718123e881e832f4ac95af506ed601d3337
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form-第 5 部分
 ====================
@@ -123,10 +123,10 @@ Entity Framework 會負責將新增到本課程的`Courses`相關聯的導覽屬
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-選取 [instructor]。 **指派課程**下拉式清單會顯示不會教導講師，課程和**移除課程**下拉式清單會顯示已指派給講師的課程。 在**指派課程**區段中，選取課程，然後按一下**指派**。 本課程會移至**移除課程**下拉式清單。 選取在課程**移除課程**區段，然後按一下 **移除 * * *。* 本課程會移至**指派課程**下拉式清單。
+選取 [instructor]。 <strong>指派課程</strong>下拉式清單會顯示不會教導講師，課程和<strong>移除課程</strong>下拉式清單會顯示已指派給講師的課程。 在<strong>指派課程</strong>區段中，選取課程，然後按一下<strong>指派</strong>。 本課程會移至<strong>移除課程</strong>下拉式清單。 選取在課程<strong>移除課程</strong>區段，然後按一下<strong>移除</strong><em>。</em> 本課程會移至<strong>指派課程</strong>下拉式清單。
 
 您現在有一些更多的方法來處理相關的資料。 在下列的教學課程中，您將學習如何使用資料模型中的繼承，以改善您的應用程式的可維護性。
 
->[!div class="step-by-step"]
-[上一頁](the-entity-framework-and-aspnet-getting-started-part-4.md)
-[下一頁](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [!div class="step-by-step"]
+> [上一頁](the-entity-framework-and-aspnet-getting-started-part-4.md)
+> [下一頁](the-entity-framework-and-aspnet-getting-started-part-6.md)

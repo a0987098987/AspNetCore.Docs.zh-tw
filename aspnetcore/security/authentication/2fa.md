@@ -1,7 +1,7 @@
 ---
-title: "使用 SMS 中 ASP.NET Core 雙因素驗證"
+title: 使用 SMS 中 ASP.NET Core 雙因素驗證
 author: rick-anderson
-description: "了解如何設定雙因素驗證 (2FA) 與 ASP.NET Core 應用程式。"
+description: 了解如何設定雙因素驗證 (2FA) 與 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 08/15/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/2fa
-ms.openlocfilehash: c328c6f4b674695dd1f2db8145a7ac1b8f12d36d
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 1c4acc4e4be593051d30793b7f73ad90ce727283
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>使用 SMS 中 ASP.NET Core 雙因素驗證
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/15/2018
 
 此教學課程適用於 ASP.NET Core 只 1.x。 請參閱[啟用 QR 代碼產生的驗證器應用程式中 ASP.NET Core](xref:security/authentication/identity-enable-qrcodes) ASP.NET Core 2.0 和更新版本。
 
-本教學課程會示範如何設定使用 SMS 進行雙因素驗證 (2FA)。 針對給定指示[twilio](https://www.twilio.com/)和[ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/)，但是您可以使用任何其他 SMS 提供者。 我們建議您完成[帳戶確認和密碼復原](accconfirm.md)再開始本教學課程。
+本教學課程會示範如何設定使用 SMS 進行雙因素驗證 (2FA)。 針對給定指示[twilio](https://www.twilio.com/)和[ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/)，但是您可以使用任何其他 SMS 提供者。 我們建議您完成[帳戶確認和密碼復原](xref:security/authentication/accconfirm)再開始本教學課程。
 
 檢視[完成的範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA)。 [如何下載](xref:tutorials/index#how-to-download-a-sample)。
 

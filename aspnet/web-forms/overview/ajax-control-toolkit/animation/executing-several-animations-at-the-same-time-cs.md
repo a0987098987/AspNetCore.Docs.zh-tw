@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs
-title: "在相同的時間 (C#) 執行數個動畫 |Microsoft 文件"
+title: 在相同的時間 (C#) 執行數個動畫 |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b7ee9c2da392bed512e259b44237e5ff997dca23
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ecd822f7fa00a24e97b9aa14888798825624617
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="executing-several-animations-at-the-same-time-c"></a>執行數個動畫在相同的時間 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓以平行方式執行數個動畫。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓以平行方式執行數個動畫。
 
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 面板是淡出並調整大小 （包括其內容，這點受惠瀏覽器的轉譯引擎） ([按一下以檢視完整大小的影像](executing-several-animations-at-the-same-time-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](adding-animation-to-a-control-cs.md)
-[下一頁](executing-several-animations-after-each-other-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-animation-to-a-control-cs.md)
+> [下一頁](executing-several-animations-after-each-other-cs.md)

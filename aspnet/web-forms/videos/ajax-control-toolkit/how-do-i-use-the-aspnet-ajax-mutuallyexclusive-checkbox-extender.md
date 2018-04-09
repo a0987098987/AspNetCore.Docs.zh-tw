@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender
-title: "[如何:]使用 ASP.NET AJAX MutuallyExclusive 核取方塊的擴充項嗎？ | Microsoft Docs"
+title: '[如何:]使用 ASP.NET AJAX MutuallyExclusive 核取方塊的擴充項嗎？ | Microsoft Docs'
 author: JoeStagner
-description: "從 ASP.NET AJAX Control Toolkit MutuallyExclusive 控制項開發人員用來設定多個核取方塊互為獨佔，哪些電子..."
+description: 從 ASP.NET AJAX Control Toolkit MutuallyExclusive 控制項開發人員用來設定多個核取方塊互為獨佔，哪些電子...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender
 msc.type: video
-ms.openlocfilehash: bab922bf24cc6e42cf95a89846657fe4af1fb029
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8de022c371949b5c107d524d9c2b0050e5253557
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender"></a>[如何:]使用 ASP.NET AJAX MutuallyExclusive 核取方塊的擴充項嗎？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （10 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-mutuallyexclusive-checkbox-extender)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-aspnet-ajax-maskededit-controls.md)
-[下一頁](how-do-i-use-the-aspnet-ajax-nobot-control.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-aspnet-ajax-maskededit-controls.md)
+> [下一頁](how-do-i-use-the-aspnet-ajax-nobot-control.md)

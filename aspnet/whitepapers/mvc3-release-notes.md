@@ -2,21 +2,21 @@
 uid: whitepapers/mvc3-release-notes
 title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/06/2010
 ms.topic: article
 ms.assetid: f44c166e-7e91-48a0-a6f8-d9285f3594e5
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: 058b7c6fe6eeeea4403e7e5fdc05bb44d2ba1300
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 0bfe9cdc215226457ccfafff2b85ace87325b91b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -262,7 +262,7 @@ Scaffolding 是一種快速產生的控制器和檢視您的應用程式。 在�
 <a id="tu-Modernizr"></a>
 ### <a name="project-templates-now-include-modernizr-17"></a>專案範本現在包含 Modernizr 1.7
 
-Modernizr 是 JavaScript 程式庫可支援 CSS 3 和 HTML5 的瀏覽器目前還不支援這些功能。 此程式庫是在 ASP.NET MVC 3 專案範本中預先安裝的 NuGet 套件。 如需 Modernizr 的詳細資訊，請參閱[http://www.modernizr.com/](http://www.modernizr.com/)。
+Modernizr 是 JavaScript 程式庫可支援 CSS 3 和 HTML5 的瀏覽器目前還不支援這些功能。 此程式庫是在 ASP.NET MVC 3 專案範本中預先安裝的 NuGet 套件。 如需 Modernizr 的詳細資訊，請參閱[ http://www.modernizr.com/ ](http://www.modernizr.com/)。
 
 <a id="tu-UpdatedJQuery"></a>
 ### <a name="project-templates-include-updated-versions-of-jquery-jquery-ui-and-jquery-validation"></a>專案範本包含 jQuery、 jQuery UI 和 jQuery 的更新的版本驗證
@@ -373,7 +373,7 @@ RC2 版本的 ASP.NET MVC 3 引進*CachedDataAnnotationsMetadataProvider*類別�
 <a id="_Toc2_1"></a>
 ### <a name="project-templates-changed-to-include-jquery-144-jquery-validation-17-and-jquery-ui-186"></a>專案範本變更為包含 jQuery 1.4.4、 jQuery 驗證 1.7 和 jQuery UI 1.8.6
 
-ASP.NET MVC 3 的專案範本現在包含最新版的 jQuery、 jQuery、 驗證和 jQuery UI。 jQuery UI 是新增至專案範本，並提供實用的使用者介面的 widget。 如需 jQuery UI 的詳細資訊，請瀏覽其/首頁： [http://jqueryui.com/](http://jqueryui.com/)。
+ASP.NET MVC 3 的專案範本現在包含最新版的 jQuery、 jQuery、 驗證和 jQuery UI。 jQuery UI 是新增至專案範本，並提供實用的使用者介面的 widget。 如需 jQuery UI 的詳細資訊，請瀏覽其/首頁： [ http://jqueryui.com/ ](http://jqueryui.com/)。
 
 <a id="_Toc2_2"></a>
 ### <a name="added-additionalmetadataattribute-class"></a>已新增 「 AdditionalMetadataAttribute 」 類別
@@ -438,7 +438,7 @@ ASP.NET MVC 3 的專案範本現在包含最新版的 jQuery、 jQuery、 驗證
 <a id="_Toc2_10"></a>
 ### <a name="fixed-model-declaration-to-not-add-whitespace-to-the-document"></a>固定@model不要將空白字元加入至文件的宣告
 
-在舊版中，  *@model* 檢視頂端的宣告新增至呈現的 HTML 輸出的空白行。 此問題已修正，讓宣告不會產生空白字元。
+在舊版中， <em>@model</em>檢視頂端的宣告新增至呈現的 HTML 輸出的空白行。 此問題已修正，讓宣告不會產生空白字元。
 
 <a id="_Toc2_11"></a>
 ### <a name="added-fileextensions-property-to-view-engines-to-support-engine-specific-file-names"></a>已新增 「 FileExtensions"屬性，以檢視引擎，以支援引擎特定檔案名稱
@@ -465,7 +465,7 @@ Bug 的修正 where *LabelFor*方法呈現*如*屬性符合*輸入*項目的*名
 - 在舊版 ASP.NET MVC 中，每個要求除了在少數情況下建立動作篩選條件。 這種行為是不保證的行為，但只是實作詳細資料，就是把它視為無狀態篩選器的合約。 在 ASP.NET MVC 3 中，篩選是更積極地快取。 因此，任何自訂動作篩選條件不正確儲存執行個體的狀態可能已損壞。
 - 例外狀況篩選條件的執行順序已變更為具有相同的例外狀況篩選條件*順序*值。 在 ASP.NET MVC 2 和舊版中，例外狀況篩選條件具有相同的控制站上*順序*動作方法上所執行的動作方法上的例外狀況篩選條件之前的值。 這通常會發生此情況時套用例外狀況篩選條件但未指定*順序*值。 在 ASP.NET MVC 3 中，這個順序已顛倒，因此最特定的例外狀況處理常式會先執行。 如同舊版本中，如果*順序*屬性明確指定，則篩選條件會執行指定的順序。
 - 新的屬性，名為*FileExtensions*已新增至*VirtualPathProviderViewEngine*基底類別。 當 ASP.NET 尋找檢視的路徑 （不是依名稱） 時，則會被視為只有檢視與此新屬性所指定的清單中所包含的副檔名。 這是應用程式中的重大變更，自訂組建提供者註冊以啟用 Web 表單檢視自訂檔案的副檔名，而且提供者所使用的完整路徑，而不是名稱參考這些檢視表。 因應措施是要修改的值*FileExtensions*屬性設定為包含自訂檔案的副檔名。
-- 直接實作的自訂控制器 factory 實作*IControllerFactory*介面必須提供新的實作*GetControllerSessionBehavior * * 已加入至方法在此版本中的介面*。 一般情況下，建議您不要不直接實作這個介面，並且改為衍生您的類別，從*DefaultControllerFactory*。
+- 直接實作的自訂控制器 factory 實作<em>IControllerFactory</em>介面必須提供新的實作<em>GetControllerSessionBehavior</em> <em>已新增至這一版中的介面方法</em>。 一般情況下，建議您不要不直接實作這個介面，並且改為衍生您的類別，從<em>DefaultControllerFactory</em>。
 
 <a id="_Toc2_KI"></a>
 ## <a name="known-issues"></a>已知問題
@@ -629,11 +629,11 @@ Namespace.ClassName
 
 ASP.NET MVC 3 Beta 已於 2010 年 10 月 6 日發行。 下列附註僅供測試版，，而且受限於的任何更新或變更上述 ASP.NET MVC 3 發行候選版本 > 一節中所參考。
 
-## <a id="0.1__Toc274034215"></a>新的 Featuresin ASP.NET MVC 3 Beta
+## <a id="0.1__Toc274034215"></a>  新的 Featuresin ASP.NET MVC 3 Beta
 
 <a id="0.1__Default_validation_system"></a>本節說明已引進的功能在 ASP.NET MVC 3 Beta 版本。
 
-### <a id="0.1__Toc274034216"></a>NuGet 封裝管理員
+### <a id="0.1__Toc274034216"></a>  NuGet 封裝管理員
 
 ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合式的封裝管理工具和 Visual Studio 專案的工具。 大部分的情況下，它會自動取得其來源樹狀結構的程式庫現在開發人員，採取的步驟。
 
@@ -641,7 +641,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合�
 
 如需 NuGet 的詳細資訊，請參閱[NuGet 文件](https://docs.microsoft.com/nuget/)。
 
-### <a id="0.1__Toc274034217"></a>改善 新增專案對話方塊
+### <a id="0.1__Toc274034217"></a>  改善 新增專案對話方塊
 
 當您建立新的專案時，[新增專案] 對話方塊現在可讓您指定的檢視引擎，以及 ASP.NET MVC 專案類型。
 
@@ -655,7 +655,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合�
 
 網際網路應用程式。 包含範例示範如何使用 ASP.NET MVC 中的成員資格提供者的功能。
 
-### <a id="0.1__Toc274034218"></a>簡化的方式指定強類型模型在 Razor 檢視
+### <a id="0.1__Toc274034218"></a>  簡化的方式指定強類型模型在 Razor 檢視
 
 指定強型別 Razor 檢視的模型類型的方法已經過簡化，使用新@modelCSHTML 檢視的指示詞和@ModelTypeVBHTML 檢視的指示詞。 在舊版 ASP.NET MVC 中，您會指定 Razor 的強型別的模型檢視這種方式：
 
@@ -665,7 +665,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合�
 
 [!code-cshtml[Main](mvc3-release-notes/samples/sample26.cshtml)]
 
-### <a id="0.1__Toc274034219"></a>Helper 方法支援新的 ASP.NET Web 網頁
+### <a id="0.1__Toc274034219"></a>  Helper 方法支援新的 ASP.NET Web 網頁
 
 新的 ASP.NET Web Pages 技術包含一組可用於將常用的功能加入至檢視和控制器的 helper 方法。 ASP.NET MVC 3 支援使用中控制器和檢視這些 helper 方法 （如適用）。 這些方法都包含在 System.Web.Helpers 組件。 下表列出幾個 ASP.NET Web Pages helper 方法。
 
@@ -681,7 +681,7 @@ ASP.NET MVC 3 包含 NuGet 封裝管理員，也就是新增程式庫的整合�
 
 [https://www.asp.net/webmatrix/tutorials/asp-net-web-pages-api-reference](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
 
-### <a id="0.1__Toc274034220"></a>其他相依性插入的支援
+### <a id="0.1__Toc274034220"></a>  其他相依性插入的支援
 
 建置在 ASP.NET MVC 3 Preview 1 版本上，目前的版本會包含已加入的支援的兩個新的服務和四個現有的服務和改良的相依性解析和通用服務定位程式支援。
 
@@ -732,7 +732,7 @@ DefaultControllerFactory 類別具有新的建構函式可接受 IControllerFact
 - 值提供者。 類別可實作 ValueProviderFactory 可以註冊相依性解析程式中，系統會使用它們來建立控制器和模型繫結期間所使用的值提供者。
 - 模型繫結器。 類別可實作 IModelBinderProvider 可以註冊相依性解析程式中，系統會使用它們來建立模型繫結器所使用的模型繫結系統。
 
-### <a id="0.1__Toc274034221"></a>新的不顯眼的 jQuery 為基礎的 Ajax 支援
+### <a id="0.1__Toc274034221"></a>  新的不顯眼的 jQuery 為基礎的 Ajax 支援
 
 ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
@@ -748,7 +748,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 在 ASP.NET MVC 3 新專案範本中，在 Web.config 檔案中預設會啟用此功能，但現有的專案預設會停用。 如需詳細資訊，請參閱[加入應用程式範圍的旗標，用戶端驗證和不顯眼的 JavaScript](#0.1_AddedApplicationWideFlagsForClientValida)本文件後面。
 
-### <a id="0.1__Toc274034222"></a>不顯眼的 jQuery 驗證的新支援
+### <a id="0.1__Toc274034222"></a>  不顯眼的 jQuery 驗證的新支援
 
 根據預設，ASP.NET MVC 3 Beta 會使用 jQuery 驗證以執行用戶端驗證不顯眼的方式。 若要啟用不顯眼的用戶端驗證，請如下所示從檢視表中的呼叫：
 
@@ -768,7 +768,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 <a id="0.1__Toc274034223"></a>
 
-### <a id="0.1_AddedApplicationWideFlagsForClientValida"></a>新應用程式範圍的旗標，用戶端驗證和不顯眼的 JavaScript
+### <a id="0.1_AddedApplicationWideFlagsForClientValida"></a>  新應用程式範圍的旗標，用戶端驗證和不顯眼的 JavaScript
 
 您可以啟用或停用用戶端驗證和不顯眼的 JavaScript 全域使用靜態成員的 HtmlHelper 類別，如下列範例所示：
 
@@ -784,7 +784,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 回溯相容性，這兩種功能預設為停用。
 
-### <a id="0.1__Toc274034224"></a>檢視執行之前，所執行的程式碼的新支援
+### <a id="0.1__Toc274034224"></a>  檢視執行之前，所執行的程式碼的新支援
 
 您現在可以將名為\_viewstart.cshtml (或\_viewstart.vbhtml) 檢視目錄中，請加入程式碼，將該目錄及其子目錄中的 在多個檢視之間共用。 例如，下列程式碼可能會放入\_viewstart.cshtml 頁面 ~/Views 資料夾中：
 
@@ -794,7 +794,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 根據預設中的程式碼\_viewstart.cshtml 檔案也會套用至任何子資料夾中的檢視。 不過，個別的子資料夾可以有自己版本的\_viewstart.cshtml 檔案; 該中的情況下，會優先使用本機版本。 例如，若要執行 HomeController 所有檢視都通用的程式碼，放入\_viewstart.cshtml ~/Views/Home 資料夾中的檔案。
 
-### <a id="0.1__Toc274034225"></a>新 VBHTML Razor 語法的支援
+### <a id="0.1__Toc274034225"></a>  新 VBHTML Razor 語法的支援
 
 先前的 ASP.NET MVC preview 包含檢視使用根據 C# 的 Razor 語法的支援。 這些檢視會使用.cshtml 檔案的副檔名。 支援 Razor 的進行中工作的一部分，ASP.NET MVC 3 beta 版導入了在 Visual Basic，會使用.vbhtml 副檔名 Razor 語法的支援。
 
@@ -802,7 +802,7 @@ ASP.NET MVC 包括 Ajax helper 方法，如下所示：
 
 [https://www.asp.net/webmatrix/tutorials/asp-net-web-pages-visual-basic](../web-pages/overview/getting-started/introducing-razor-syntax-vb.md)
 
-### <a id="0.1__Toc274034226"></a>更精確地控制從而 validateinputattribute 套用
+### <a id="0.1__Toc274034226"></a>  更精確地控制從而 validateinputattribute 套用
 
 ASP.NET MVC 一律具有包含 validateinputattribute 套用類別，可叫用核心 ASP.NET 要求驗證基礎結構，並確定內送要求不包含可能是惡意的輸入。 根據預設，會啟用輸入的驗證。 您可使用 validateinputattribute 套用屬性，如下列範例所示，停用要求驗證：
 
@@ -814,7 +814,7 @@ ASP.NET MVC 一律具有包含 validateinputattribute 套用類別，可叫用�
 
 [!code-csharp[Main](mvc3-release-notes/samples/sample38.cs)]
 
-### <a id="0.1__Toc274034227"></a>協助程式轉換成底線連字號為使用匿名物件指定的 HTML 屬性名稱
+### <a id="0.1__Toc274034227"></a>  協助程式轉換成底線連字號為使用匿名物件指定的 HTML 屬性名稱
 
 Helper 方法可讓您指定屬性名稱/值組，使用匿名物件，如下列範例所示：
 
@@ -830,7 +830,7 @@ Helper 方法可讓您指定屬性名稱/值組，使用匿名物件，如下列
 
 [!code-html[Main](mvc3-release-notes/samples/sample41.html)]
 
-## <a id="0.1__Toc274034228"></a>Bug 修正
+## <a id="0.1__Toc274034228"></a>  Bug 修正
 
 EditorFor 和 DisplayFor 範本協助程式的預設物件範本現在支援 DisplayAttribute.Order 屬性中指定的順序。 （在舊版中，順序設定已無法使用。）
 
@@ -838,11 +838,11 @@ EditorFor 和 DisplayFor 範本協助程式的預設物件範本現在支援 Dis
 
 預設現在會註冊的 JsonValueProviderFactory。
 
-## <a id="0.1__Toc274034229"></a>重大變更
+## <a id="0.1__Toc274034229"></a>  重大變更
 
 具有相同的順序值的例外狀況篩選條件已經變更的例外狀況篩選條件執行順序。 在 ASP.NET MVC 2 和舊版中，例外狀況的篩選具有相同的順序控制器動作方法上所執行的動作方法上的例外狀況篩選條件之前。 例外狀況篩選條件已套用沒有指定的順序值，這通常會是大小寫。 在 ASP.NET MVC 3 中，這個順序已顛倒，因此最特定的例外狀況處理常式會先執行。 如同舊版本中，如果明確指定 Order 屬性，篩選條件會執行指定的順序。
 
-## <a id="0.1__Toc274034230"></a>已知的問題
+## <a id="0.1__Toc274034230"></a>  已知的問題
 
 在安裝期間，EULA 接受對話方塊會比預期較小視窗中顯示的授權條款。
 

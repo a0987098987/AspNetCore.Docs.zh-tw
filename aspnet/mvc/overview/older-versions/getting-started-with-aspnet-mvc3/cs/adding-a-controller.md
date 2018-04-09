@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
-title: "加入控制器 (C#) |Microsoft 文件"
+title: 加入控制器 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express 服務組件 1，哪些 i 的 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express 服務組件 1，哪些 i 的 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 77bfc8f3778dcf75453c216579e50a016b1ac971
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 963d3bbbadf408d7045c50bfd693069e4097d45d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller-c"></a>加入控制器 (C#)
 ====================
@@ -85,6 +85,6 @@ URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld
 
 在這些範例中這兩個控制器已執行 MVC"VC"部份，也就是，則檢視和控制器的工作。 控制器直接傳回 HTML。 通常您不想直接傳回 HTML，因為變得很麻煩的程式碼的控制站。 改為我們通常會使用不同的檢視範本檔案協助產生 HTML 回應。 讓我們來看我們如何執行這在下一步。
 
->[!div class="step-by-step"]
-[上一頁](intro-to-aspnet-mvc-3.md)
-[下一頁](adding-a-view.md)
+> [!div class="step-by-step"]
+> [上一頁](intro-to-aspnet-mvc-3.md)
+> [下一頁](adding-a-view.md)

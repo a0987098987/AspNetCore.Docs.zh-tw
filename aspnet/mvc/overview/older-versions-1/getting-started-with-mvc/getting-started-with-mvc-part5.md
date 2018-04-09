@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
-title: "存取您的模型資料從控制器 |Microsoft 文件"
+title: 存取您的模型資料從控制器 |Microsoft 文件
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
 msc.type: authoredcontent
-ms.openlocfilehash: cf81d351aef45af3640f5d113eb3619911e03606
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2ba1b73f40a920e27e4a03d9f703e62054d3f25c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
@@ -63,6 +63,6 @@ ms.lasthandoff: 01/30/2018
 
 我們現在有我們電影資料的簡單清單。 不過，如果我們按一下 「 建立新 」 的連結，我們會先出現的錯誤，因為它不會接到 ！ 讓我們實作建立動作方法，並且讓使用者在資料庫中輸入新的電影。
 
->[!div class="step-by-step"]
-[上一頁](getting-started-with-mvc-part4.md)
-[下一頁](getting-started-with-mvc-part6.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started-with-mvc-part4.md)
+> [下一頁](getting-started-with-mvc-part6.md)

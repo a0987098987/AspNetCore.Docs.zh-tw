@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
-title: "第 4 部分： 列出產品 |Microsoft 文件"
+title: 第 4 部分： 列出產品 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 4 部分涵蓋 GridView contr.清單的產品..."
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 4 部分涵蓋 GridView contr.清單的產品...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 420cdbcc002bcbfff619d399a7a374009999d754
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b26344e6dcdbf27e94da90ad5d6cd79f27ccd3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-4-listing-products"></a>第 4 部分： 列出產品
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 4 部分涵蓋的 GridView 控制項的產品清單。
 
 
-## <a id="_Toc260221670"></a>列出產品與 GridView 控制項
+## <a id="_Toc260221670"></a>  列出產品與 GridView 控制項
 
 讓我們開始實作我們 ProductsList.aspx 頁面 」 以滑鼠右鍵按一下 「 我們的解決方案，然後選取 「 新增 」 和 「 新的項目 」。
 
@@ -100,6 +100,6 @@ ms.lasthandoff: 11/10/2017
 
 另外值得注意的是，我們將建立簡單購物車和內嵌的購物車顯示購物車邏輯。 我們也可能會選擇實作我們的購物車中完全不同的商務層。
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-3.md)
-[下一頁](tailspin-spyworks-part-5.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-3.md)
+> [下一頁](tailspin-spyworks-part-5.md)

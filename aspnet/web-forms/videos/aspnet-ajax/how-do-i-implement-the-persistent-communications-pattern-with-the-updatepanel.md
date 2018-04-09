@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel
-title: "[如何:]實作與 UpdatePanel 的持續性通訊模式？ | Microsoft Docs"
+title: '[如何:]實作與 UpdatePanel 的持續性通訊模式？ | Microsoft Docs'
 author: JoeStagner
-description: "在傳統的網站上瀏覽器和伺服器不會維護進行中的通訊，但只會在使用者執行動作的回應通訊..."
+description: 在傳統的網站上瀏覽器和伺服器不會維護進行中的通訊，但只會在使用者執行動作的回應通訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/01/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel
 msc.type: video
-ms.openlocfilehash: 97b653d024c4f109014e2b98025274fa51c15827
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b7572369b461e5261e549c260648dafa6254e246
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel"></a>[如何:]實作與 UpdatePanel 的持續性通訊模式？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （12 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-conditional-updatemode-of-the-updatepanel.md)
-[下一頁](how-do-i-localize-an-aspnet-ajax-application.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-conditional-updatemode-of-the-updatepanel.md)
+> [下一頁](how-do-i-localize-an-aspnet-ajax-application.md)

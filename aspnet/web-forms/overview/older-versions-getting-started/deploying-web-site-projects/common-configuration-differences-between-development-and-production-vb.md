@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
-title: "一般組態差異開發和生產環境 (VB) |Microsoft 文件"
+title: 一般組態差異開發和生產環境 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在先前的教學課程中我們會藉由將從開發環境的所有相關檔案複製到生產環境部署我們的網站。 不過，我..."
+description: 在先前的教學課程中我們會藉由將從開發環境的所有相關檔案複製到生產環境部署我們的網站。 不過，我...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b53565e4ae09b007029bdab7cc8724e2d7d193fe
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 079f6c5a67ec378991ff63694c30e94ed8011bb4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="common-configuration-differences-between-development-and-production-vb"></a>一般組態差異開發和生產環境 (VB)
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/30/2018
 偵錯屬性是最重要的屬性中的其中一個`<compilation>`項目。 如果`debug`屬性設定為"true"，則在已編譯的組件包含偵錯 Visual Studio 中的應用程式時，所需要的偵錯符號。 但偵錯符號增加組件的大小，並執行程式碼時造成額外的記憶體需求。 此外，當`debug`屬性設定為"true"傳回的任何內容`WebResource.axd`未快取，這表示，每次使用者存取他們需要重新下載所傳回的靜態內容網頁`WebResource.axd`。
 
 > [!NOTE]
-> `WebResource.axd`是內建的 HTTP 處理常式在 ASP.NET 2.0 引進伺服器控制項用來擷取內嵌的資源，例如指令碼檔案、 影像、 CSS 檔案和其他內容。 如需有關如何`WebResource.axd`運作以及如何使用它來存取內嵌的資源的自訂伺服器控制項，請參閱[存取內嵌資源透過 URL 使用`WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx)。
+> `WebResource.axd` 是內建的 HTTP 處理常式在 ASP.NET 2.0 引進伺服器控制項用來擷取內嵌的資源，例如指令碼檔案、 影像、 CSS 檔案和其他內容。 如需有關如何`WebResource.axd`運作以及如何使用它來存取內嵌的資源的自訂伺服器控制項，請參閱[存取內嵌資源透過 URL 使用`WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx)。
 
 
 `<compilation>`項目的`debug`屬性通常設定為"true"開發環境中。 事實上，這個屬性必須設定為"true"，才能偵錯 web 應用程式。如果您嘗試偵錯 ASP.NET 應用程式從 Visual Studio 和`debug`屬性設定為"false"時，Visual Studio 會顯示訊息，說明應用程式，無法偵錯直到`debug`屬性設為"true"，並將若要進行這項變更為您的方案。
@@ -136,6 +136,6 @@ ASP.NET 應用程式中發生未處理的例外狀況時它會顯示最多三個
 - [VS 2008 Web 部署專案](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [VS 2008 Web 部署專案支援發行](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
 - [Web 部署專案](https://msdn.microsoft.com/magazine/cc163448.aspx)
 
->[!div class="step-by-step"]
-[上一頁](deploying-your-site-using-visual-studio-vb.md)
-[下一頁](core-differences-between-iis-and-the-asp-net-development-server-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-your-site-using-visual-studio-vb.md)
+> [下一頁](core-differences-between-iis-and-the-asp-net-development-server-vb.md)

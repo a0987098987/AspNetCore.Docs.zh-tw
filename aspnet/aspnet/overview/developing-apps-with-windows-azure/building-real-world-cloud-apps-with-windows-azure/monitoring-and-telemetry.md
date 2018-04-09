@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
-title: "監控與遙測 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 監控與遙測 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2015
 ms.topic: article
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: 9baddd1836323385239206a3cf49e5938bbaff58
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d58c495b3888c146a2a9bc831865cf7cc0d94c7b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監控與遙測 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -292,6 +292,6 @@ Azure 支援下列種類的[登入雲端服務](https://docs.microsoft.com/azure
 
 - [雲端服務在 Azure 中的基本概念](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。 Microsoft Azure 客戶諮詢小組所建立的範例應用程式。 示範下列文件中所述的遙測及記錄作法。 此範例會實作應用程式記錄使用[NLog](http://nlog-project.org/)。 如需相關的文件，請參閱[四個有關遙測和記錄的 TechNet wiki 文章系列](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx#Telemetry_coming_soon)。
 
->[!div class="step-by-step"]
-[上一頁](design-to-survive-failures.md)
-[下一頁](transient-fault-handling.md)
+> [!div class="step-by-step"]
+> [上一頁](design-to-survive-failures.md)
+> [下一頁](transient-fault-handling.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
-title: "反覆項目 #1 – 建立應用程式 (C#) |Microsoft 文件"
+title: '反覆項目 #1 – 建立應用程式 (C#) |Microsoft 文件'
 author: microsoft
-description: "在第一次反覆運算中，我們建立連絡人管理員簡單的方式可能。 我們加入基本資料庫作業的支援： 建立、 讀取、 更新和 D..."
+description: 在第一次反覆運算中，我們建立連絡人管理員簡單的方式可能。 我們加入基本資料庫作業的支援： 建立、 讀取、 更新和 D...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 12927250595a8f3130328d2fe219280a13349787
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30f626511164363fea2195a05e73aeee5764933b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-1--create-the-application-c"></a>反覆項目 #1 – 建立應用程式 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-1-create-the-application-cs/_static/contactmanager_1_cs1.zip)
 
@@ -80,13 +80,13 @@ ASP.NET MVC 架構。 您可以從下列網址下載 ASP.NET MVC 架構：
 
 在本教學課程中，我們可以使用 Microsoft Entity Framework 來存取資料庫。 Entity Framework 隨附於.NET Framework 3.5 Service Pack 1。 您可以從下列位置下載這個 service pack:
 
-[https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang = en](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
+[https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
 
 為執行每一個這些下載的替代方案，您可以利用 Web Platform Installer (Web PI)。 您可以從下列網址下載 Web PI:
 
 [https://www.asp.net/downloads/essential/](https://www.asp.net/downloads/essential)
 
-## <a name="aspnet-mvc-project"></a>ASP.NET MVC 專案
+## <a name="aspnet-mvc-project"></a>ASP.NET MVC Project
 
 ASP.NET MVC Web 應用程式專案。 啟動 Visual Studio，然後選取功能表選項**檔案、 新的專案**。 **新專案**對話方塊隨即出現 （請參閱圖 1）。 選取**Web**專案類型和**ASP.NET MVC Web 應用程式**範本。 為新專案命名*ContactManager* ，然後按一下 [確定] 按鈕。
 
@@ -171,11 +171,11 @@ ASP.NET MVC 架構與任何新型態的資料庫，包括 Microsoft SQL Server�
 
 | **資料行名稱** | **資料類型** | **允許 null 值** |
 | --- | --- | --- |
-| ID | int | false |
-| FirstName | Nvarchar （50) | false |
-| LastName | Nvarchar （50) | false |
-| 電話 | Nvarchar （50) | false |
-| 電子郵件 | nvarchar （255) | false |
+| ID | int | False |
+| FirstName | Nvarchar （50) | False |
+| LastName | Nvarchar （50) | False |
+| 電話 | Nvarchar （50) | False |
+| Email | nvarchar （255) | False |
 
 
 第一個資料行中，Id 資料行是特殊的。 您需要將識別碼資料行標示為識別資料行和主索引鍵資料行。 您指定的資料行是識別資料行的擴充資料行屬性 （圖 6 底部尋找），並捲動到 [識別規格] 屬性。 設定**（為識別）**屬性設為值**是**。
@@ -262,7 +262,7 @@ ASP.NET MVC 應用程式是由模型、 檢視和控制站所組成。 我們一
 
 主控制器已經包含 index （） 動作。 我們需要修改這個方法，讓它看起來像是列出 2。
 
-**列出 2-Controllers\HomeController.cs**
+**Listing 2 - Controllers\HomeController.cs**
 
 [!code-csharp[Main](iteration-1-create-the-application-cs/samples/sample2.cs)]
 
@@ -419,7 +419,7 @@ Entity Framework 用來儲存至資料庫修改過的連絡人。 必須從資�
 
 我們要修改索引檢視，使其包含的連結，刪除 （請參閱圖 21） 的連絡人記錄。 您需要將下列程式碼加入至相同的資料表儲存格，其中包含編輯連結：
 
-Html.ActionLink ({id = 項目。識別碼}） %&gt;
+Html.ActionLink( { id=item.Id }) %&gt;
 
 
 [![新增專案 對話方塊](iteration-1-create-the-application-cs/_static/image21.jpg)](iteration-1-create-the-application-cs/_static/image41.png)
@@ -490,5 +490,5 @@ Html.ActionLink ({id = 項目。識別碼}） %&gt;
 
 最後，並最重要的是，請連絡系統管理員應用程式的目前反覆項目無法輕鬆地修改或維護。 例如，將資料庫存取邏輯被本意右邊控制器動作。 這表示，我們無法修改資料存取程式碼，而不需修改我們控制站。 在稍後的反覆項目，我們會探討軟體設計樣式是我們可以實作以進行更有彈性，若要變更連絡管理員。
 
->[!div class="step-by-step"]
-[下一步](iteration-2-make-the-application-look-nice-cs.md)
+> [!div class="step-by-step"]
+> [下一步](iteration-2-make-the-application-look-nice-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-6
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 6 單元 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 6 單元 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 164c2002a119420555d2c7065c5a79a5f433a725
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b76be25501275ba676c9a9acca8e73333439ee70
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-6"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 第 6 單元
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="implementing-table-per-hierarchy-inheritance"></a>實作每個階層的資料表繼承
 
-在上一個教學課程中您在使用相關的資料加入和刪除關聯性並新增至現有的實體的關聯性的實體。 本教學課程會示範如何實作資料模型中的繼承。
+在上一個教學課程中您在使用相關的資料加入和刪除關聯性並新增至現有的實體的關聯性的實體。 本教學課程將示範如何在資料模型中實作繼承。
 
 在物件導向程式設計中，您可以使用繼承，讓您更輕鬆地使用相關的類別。 例如，您可以建立`Instructor`和`Student`類別衍生自`Person`基底類別。 Entity Framework 中，您可以建立相同的實體之間的繼承結構類型。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="adding-instructor-and-student-entities"></a>加入講師和學生實體
 
-開啟*SchoolModel.edmx*檔案中，以滑鼠右鍵按一下未佔用的區域，在設計師中，選取**新增**，然後選取**實體***。*
+開啟<em>SchoolModel.edmx</em>檔案中，以滑鼠右鍵按一下未佔用的區域，在設計師中，選取<strong>新增</strong>，然後選取<strong>實體</strong><em>。</em>
 
 [![image01](the-entity-framework-and-aspnet-getting-started-part-6/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image5.png)
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 [![image02](the-entity-framework-and-aspnet-getting-started-part-6/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image7.png)
 
-按一下 [確定]。 在設計工具建立`Instructor`衍生自實體`Person`實體。 新的實體還沒有任何屬性。
+按一下 [確定 **Deploying Office Solutions**]。 在設計工具建立`Instructor`衍生自實體`Person`實體。 新的實體還沒有任何屬性。
 
 [![image03](the-entity-framework-and-aspnet-getting-started-part-6/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image9.png)
 
@@ -161,6 +161,6 @@ ms.lasthandoff: 11/10/2017
 
 您現在已經瞭解如何實作 Entity Framework 中的繼承模式。 在下列的教學課程中，您將學習如何使用預存程序，以便更充分掌控 Entity Framework 存取之資料庫的方式。
 
->[!div class="step-by-step"]
-[上一頁](the-entity-framework-and-aspnet-getting-started-part-5.md)
-[下一頁](the-entity-framework-and-aspnet-getting-started-part-7.md)
+> [!div class="step-by-step"]
+> [上一頁](the-entity-framework-and-aspnet-getting-started-part-5.md)
+> [下一頁](the-entity-framework-and-aspnet-getting-started-part-7.md)

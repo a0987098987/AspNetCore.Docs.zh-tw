@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
-title: "建立專案 |Microsoft 文件"
+title: 建立專案 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: 094733dcbe31486385dda2f8b44ba77a17486c82
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b42e62b560e01d592c9f4cb61ea6199a15dc8bb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-project"></a>建立專案
 ====================
@@ -195,6 +195,6 @@ Visual Studio 中的主視窗包含**方案總管 中**、**伺服器總管**(**
 [與網站專案的 web 應用程式專案](https://msdn.microsoft.com/library/dd547590.aspx)   
 [ASP.NET Web Form 頁面概觀](https://msdn.microsoft.com/library/428509ah.aspx)
 
->[!div class="step-by-step"]
-[上一頁](introduction-and-overview.md)
-[下一頁](create_the_data_access_layer.md)
+> [!div class="step-by-step"]
+> [上一頁](introduction-and-overview.md)
+> [下一頁](create_the_data_access_layer.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 5296bc1ca3fd0b24123bd79a550a7e2cffc34a44
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7e2d430bd8e07ed7d97d11a00c61d90beeac005f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12
 ====================
@@ -190,7 +190,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 當您第一次部署站台時，因此常會排除大部分或所有您針對測試建立的使用者帳戶。 在此情況下，您要部署的系統管理員帳戶並沒有使用者帳戶。 而不是以手動方式刪除測試帳戶，您將建立新的成員資格資料庫，其只有一位系統管理員使用者帳戶，您需要在生產環境中。
 
 > [!NOTE]
-> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)**  Web.config 檔案中的項目。
+> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一部電腦帳戶，您必須確定雜湊常式不產生目的地伺服器上的不同雜湊，比在來源電腦上。 則會產生相同雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性**[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)** Web.config 檔案中的項目。
 
 
 成員資格資料庫不由 Code First 移轉，維護，而且沒有任何自動的初始設定式植入的資料庫測試帳戶，（因為沒有 School 資料庫）。 因此，要保留測試資料使用之前建立一個新會建立一份測試資料庫。
@@ -245,6 +245,6 @@ SQL Server Compact 資料庫引擎和這兩個資料庫現在會是隨時可供�
 
 如需 NuGet 的詳細資訊，請參閱[管理專案程式庫與 NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx)和[NuGet 文件](http://docs.nuget.org/docs/start-here/overview)。 如果您不想要使用 NuGet，您必須了解如何分析 NuGet 封裝來判斷其用途在安裝時。 (例如，它可能會設定*Web.config*轉換設定為在建置時間等等時執行的 PowerShell 指令碼。)若要了解有關 NuGet 的運作方式的詳細資訊，請參閱特別[建立和發佈封裝](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package)和[組態檔和來源的程式碼轉換](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations)。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-introduction-1-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-introduction-1-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
-title: "疑難排解封裝程序 |Microsoft 文件"
+title: 疑難排解封裝程序 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何使用 EnablePackageProcessLoggingAndAssert 屬性 M 中可以收集在封裝程序的詳細的資訊..."
+description: 本主題描述如何使用 EnablePackageProcessLoggingAndAssert 屬性 M 中可以收集在封裝程序的詳細的資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
 msc.type: authoredcontent
-ms.openlocfilehash: 977077357eb5774193a40c55fabee9733dd5ab2f
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 816ab77c44b52c6449a139475f2ef8546bd38071
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="troubleshooting-the-packaging-process"></a>疑難排解封裝程序
 ====================
@@ -38,9 +38,9 @@ ms.lasthandoff: 03/15/2018
 > > **EnablePackageProcessLoggingAndAssert**屬性只有在您建置的專案使用**偵錯**組態。 在其他組態中會忽略此屬性。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="understanding-the-enablepackageprocessloggingandassert-property"></a>了解 EnablePackageProcessLoggingAndAssert 屬性
 
@@ -115,5 +115,5 @@ ms.lasthandoff: 03/15/2018
 
 如需使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。 如需有關 WPP 及如何管理封裝程序的詳細資訊，請參閱[建置和封裝 Web 應用程式專案](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md)。 如需如何從 web 部署套件中排除特定檔案和資料夾的指引，請參閱[排除檔案和資料夾從部署](excluding-files-and-folders-from-deployment.md)。
 
->[!div class="step-by-step"]
-[上一步](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [!div class="step-by-step"]
+> [上一步](running-windows-powershell-scripts-from-msbuild-project-files.md)

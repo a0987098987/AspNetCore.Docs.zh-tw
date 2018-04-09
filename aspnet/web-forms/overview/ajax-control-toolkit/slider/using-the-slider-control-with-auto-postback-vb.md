@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb
-title: "使用滑桿控制項具有自動回傳 (VB) |Microsoft 文件"
+title: 使用滑桿控制項具有自動回傳 (VB) |Microsoft 文件
 author: wenz
-description: "滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 它可能是進行滑桿張貼..."
+description: 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 它可能是進行滑桿張貼...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fedd3ff947c6f5d5d4d00791087e9fd825fdf9d3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: edb8fa13716c3c0beb7cf86dd3843caaec939483
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-slider-control-with-auto-postback-vb"></a>使用滑桿控制項具有自動回傳 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 它可能是進行滑桿 autopostback 一次其值變更。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 滑桿控制項在 AJAX Control Toolkit 提供圖形化的滑桿，可以使用滑鼠來控制。 它可能是進行滑桿 autopostback 一次其值變更。
 
@@ -63,6 +63,6 @@ ms.lasthandoff: 11/10/2017
 
 這項變更的日期之後，以標籤 ([按一下以檢視完整大小的影像](using-the-slider-control-with-auto-postback-vb/_static/image6.png))
 
->[!div class="step-by-step"]
-[上一頁](databinding-the-slider-control-cs.md)
-[下一頁](databinding-the-slider-control-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](databinding-the-slider-control-cs.md)
+> [下一頁](databinding-the-slider-control-vb.md)

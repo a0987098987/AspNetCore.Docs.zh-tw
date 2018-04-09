@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/creating-a-basic-web-forms-page
-title: "建立基本的 ASP.NET 4.5 Web Form 頁面中的 Visual Studio 2013 |Microsoft 文件"
+title: 建立基本的 ASP.NET 4.5 Web Form 頁面中的 Visual Studio 2013 |Microsoft 文件
 author: Erikre
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/03/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 6b699cc939292b7ab0167dba7cfa6a00b681ef3a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0dbd3063c9be3564637fad34e60f62c1662dcc07
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>建立基本的 ASP.NET 4.5 Web Form 頁面中的 Visual Studio 2013
 ====================
@@ -231,7 +231,7 @@ Visual Studio 提供各種方式來設定頁面上的控制項屬性。 在這�
 2. 按兩下[按鈕](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx)控制項。
 
     根據預設，Visual Studio 會切換成程式碼後置檔案並建立的基本架構的事件處理常式[按鈕](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx)控制項的預設事件，[按一下](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx)事件。 程式碼後置檔案 （例如 C# 中) 的伺服器程式碼可將您 UI 的標記 （例如 HTML)。   
-游標會加入此事件處理常式的程式碼。
+   游標會加入此事件處理常式的程式碼。
 
     > [!NOTE] 
     > 
@@ -268,7 +268,7 @@ Visual Studio 提供各種方式來設定頁面上的控制項屬性。 在這�
     您輸入的名稱會顯示在[標籤](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx)控制項。 請注意，當您按一下按鈕時，網頁回傳至 Web 伺服器。 ASP.NET 然後重新建立頁面時，便會執行您的程式碼 (在此情況下，[按鈕](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx)控制項的[按一下](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx)事件處理常式的執行)，然後傳送至瀏覽器的 新頁面。 如果您觀察瀏覽器中的 [狀態] 列，您可以看到的頁面正在進行往返到 Web 伺服器每次您按一下按鈕。
 3. 在瀏覽器中檢視您正在執行的頁面上按一下滑鼠右鍵，然後選取網頁的原始檔**檢視原始檔**。
 
-    頁面在原始程式碼中，您會看到 HTML 沒有任何伺服器程式碼。 具體來說，看不到 **&lt;asp:&gt;** 中所使用的項目**來源**檢視。 頁面執行時，ASP.NET 處理伺服器控制項，並會呈現 HTML 項目頁面執行代表控制項的功能。 例如，  **&lt;asp： 按鈕&gt;**控制項會轉譯為 HTML **&lt;輸入類型 =&quot;提交&quot;&gt;** 項目。
+    頁面在原始程式碼中，您會看到 HTML 沒有任何伺服器程式碼。 具體來說，看不到**&lt;asp:&gt;**中所使用的項目**來源**檢視。 頁面執行時，ASP.NET 處理伺服器控制項，並會呈現 HTML 項目頁面執行代表控制項的功能。 例如，  **&lt;asp： 按鈕&gt;**控制項會轉譯為 HTML **&lt;輸入類型 =&quot;提交&quot;&gt;** 項目。
 4. 關閉瀏覽器。
 
 
@@ -316,10 +316,12 @@ Visual Studio 提供各種方式來設定頁面上的控制項屬性。 在這�
 2. 完成[SelectionChanged](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selectionchanged.aspx)為下列程式碼的事件處理常式。
 
 
-    [!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
+~~~
+[!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
 
 
-    [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
+[!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
+~~~
 
  上述程式碼會設定標籤控制項的文字選取日期的日曆控制項。
 

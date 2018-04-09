@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
-title: "新功能 ASP.NET Web Pages 3.2 |Microsoft 文件"
+title: 新功能 ASP.NET Web Pages 3.2 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/30/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
 msc.type: authoredcontent
-ms.openlocfilehash: cdb0e259bbf27d1d3dcf6ada11e6636c9cefcc9c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 80421018e0508d430b6142cd3cee1727d1d17b7e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-aspnet-web-pages-32"></a>什麼是 ASP.NET Web Pages 3.2 的新功能
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 本主題描述適用於 ASP.NET Web Pages 3.2 網頁 3.2.2 最新消息和[網頁 3.2.3 beta1](https://blogs.msdn.com/b/webdev/archive/2014/12/17/asp-net-mvc-5-2-3-web-pages-5-2-3-and-web-api-5-2-3-beta-releases.aspx)
 
@@ -50,11 +50,11 @@ ms.lasthandoff: 11/10/2017
 
 下表示範分析的結果是[perfview](https://channel9.msdn.com/Series/PerfView-Tutorial)執行。 在呈現大型分頁時，會保留在約 68%，常數 CPU。 下表顯示幾乎完全消除第 2 代集合數目，其結果較高的要求率和相當大減少因為記憶體回收而暫停。
 
-| **區域** | **Before (3.2)** | **之後 (3.2.1)** | **差異 %** |
+| **區域** | **Before (3.2)** | **之後 (3.2.1)** | **Delta %** |
 | --- | --- | --- | --- |
 | 要求總數 （計數） | 26,986 | 32,591 | <font style="background-color: #4bacc6">20.80%</font> |
 | 追蹤持續期間 （秒） | 196.20 | 198.60 | 1.20% |
-| 要求/秒 | 137.53 | 164.10 | <font style="background-color: #4bacc6">19.30%</font> |
+| Request/second | 137.53 | 164.10 | <font style="background-color: #4bacc6">19.30%</font> |
 | CPU 負載 | 68.80% | 68.50% |  -0.40% |
 | GC CPU 範例 | 124,323 | 17,543 | <font style="background-color: #4bacc6">-85.90%</font> |
 | 總配置 （計數） | 55,357,146 | 57,222,949 | 3.40% |
@@ -65,7 +65,8 @@ ms.lasthandoff: 11/10/2017
 | CPU / 要求 （範例/要求） | 19.73 | 16.47 | -16.50% |
 
 | 色彩編碼： | <font style="background-color: #00ff00">核心改進</font> | <font style="background-color: #4bacc6">對效能產生正面的影響</font> |
-| --- | --- | --- |
+|---------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
+|               |                                                                 |                                                                               |
 
 ## <a name="aspnet-web-pages-323-beta1"></a>ASP.NET Web Pages 3.2.3 beta1
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
-title: "使用資料註解驗證程式 (VB) 驗證 |Microsoft 文件"
+title: 使用資料註解驗證程式 (VB) 驗證 |Microsoft 文件
 author: microsoft
-description: "利用資料的附註模型繫結器來執行 ASP.NET MVC 應用程式中的驗證。 了解如何使用不同類型的驗證程式..."
+description: 利用資料的附註模型繫結器來執行 ASP.NET MVC 應用程式中的驗證。 了解如何使用不同類型的驗證程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 227c1acb5e478047c4e5cdc7dbddedd703e91292
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d1987182a44a0ad3f91f455342dc934d1dd50267
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validation-with-the-data-annotation-validators-vb"></a>使用資料註解驗證程式 (VB) 驗證
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 利用資料的附註模型繫結器來執行 ASP.NET MVC 應用程式中的驗證。 了解如何使用不同類型的驗證程式屬性，並在 Microsoft Entity Framework 中使用它們。
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 
 > [!NOTE] 
 > 
-> 如果您想要自訂驗證程式所顯示的錯誤訊息然後您就可以指派自訂錯誤訊息給驗證程式的錯誤訊息屬性，就像這樣：`<Required(ErrorMessage:="This field needs a value!")>`
+> 如果您想要自訂驗證程式所顯示的錯誤訊息然後您就可以指派自訂錯誤訊息給驗證程式的錯誤訊息屬性，就像這樣： `<Required(ErrorMessage:="This field needs a value!")>`
 
 
 您可以使用中的產品類別**列出 1** create （） 的控制器動作中**列出 2**。 模型狀態中包含的任何錯誤時，此控制器動作重新顯示建立檢視。
@@ -153,5 +153,5 @@ ms.lasthandoff: 11/10/2017
 
 在本教學課程中，您學會如何充分利用資料的附註模型繫結器來執行 ASP.NET MVC 應用程式中的驗證。 您已學習如何使用不同的驗證程式屬性，例如 Required 和 StringLength 屬性類型。 您也學到如何使用 Microsoft Entity Framework 時，使用這些屬性。
 
->[!div class="step-by-step"]
-[上一步](validating-with-a-service-layer-vb.md)
+> [!div class="step-by-step"]
+> [上一步](validating-with-a-service-layer-vb.md)

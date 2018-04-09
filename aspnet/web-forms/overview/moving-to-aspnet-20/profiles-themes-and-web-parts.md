@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
-title: "設定檔、 主題和 Web 組件 |Microsoft 文件"
+title: 設定檔、 主題和 Web 組件 |Microsoft 文件
 author: microsoft
-description: "有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓設定變更，可供 pr..."
+description: 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓設定變更，可供 pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: 2c6ba11799a5a9be3d8c0037fad5d79d8177c0e8
-ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
+ms.openlocfilehash: b749ed093fbaacf45b60f2826a2c20bac219a5c7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="profiles-themes-and-web-parts"></a>設定檔、 主題和 Web 組件
 ====================
@@ -341,19 +341,19 @@ Web 組件控制項集合很大，但某些控制是不可或缺，因為所需�
 4. 將插入點之前`<div>`標記放在設計介面，然後按 ENTER 即可加入新的一行上。 將新行字元前面的插入點，請按一下**區塊格式**下拉式清單控制項的功能表上，然後選取**標題 1**選項。 在標題中，將文字加入**網頁組件示範**。
 5. 從**WebParts**  索引標籤的 工具箱 拖曳**WebPartManager**控制項拖曳到頁面上，只在新行字元之後再放置在`<div>`標記。   
   
- **WebPartManager**控制項不會呈現任何輸出，因此它會顯示為設計工具介面上的灰色方塊。
+   **WebPartManager**控制項不會呈現任何輸出，因此它會顯示為設計工具介面上的灰色方塊。
 6. 插入點內`<div>`標記。
 7. 在**配置**功能表上，按一下 **插入表格**，並建立新的資料表具有一個資料列和三個資料行。 按一下**資料格屬性**按鈕，選取**頂端**從**垂直對齊**下拉式清單中，按一下 **確定**，按一下**確定**再次來建立資料表。
 8. WebPartZone 控制項拖曳至左側的資料表資料行。 以滑鼠右鍵按一下**WebPartZone**控制項、 選擇 **屬性**，並設定下列屬性：   
   
- ID: SidebarZone   
+   ID: SidebarZone   
   
- HeaderText: [資訊看板]
+   HeaderText: [資訊看板]
 9. 拖曳第二個**WebPartZone**控制項放入中間的資料表資料行，並設定下列屬性：   
   
- ID: MainZone   
+   ID: MainZone   
   
- HeaderText： 主要
+   HeaderText： 主要
 10. 儲存檔案。
 
 您的網頁現在有兩個不同的區域，您可以個別控制。 不過，兩個區域都任何內容，是建立內容的下一個步驟。 這個逐步解說中，您使用 Web 組件的控制項，僅顯示靜態內容。
@@ -462,10 +462,10 @@ Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控�
 2. 若要示範個人化可運作，關閉瀏覽器，然後再重新載入頁面。 您所做的變更會儲存供未來的瀏覽器工作階段。
 3. 從**顯示模式**功能表上，選取**編輯**。   
   
- 每個頁面上的控制項現在會顯示其標題列，其中包含動詞命令下拉式功能表中的向下箭號。
+   每個頁面上的控制項現在會顯示其標題列，其中包含動詞命令下拉式功能表中的向下箭號。
 4. 按一下箭頭以顯示上的動詞命令功能表**我的連結**控制項。 按一下**編輯**動詞命令。   
   
- **EditorZone**控制項隨即出現，您加入顯示 EditorPart 控制項。
+   **EditorZone**控制項隨即出現，您加入顯示 EditorPart 控制項。
 5. 在**外觀**> 一節的編輯控制項，變更**標題**我的最愛 使用**色彩類型**下拉式清單來選取**僅顯示標題**，然後按一下 **套用**。 下列螢幕擷取畫面顯示頁面處於編輯模式。
 
 ### <a name="web-parts-demo-page-in-edit-mode"></a>Web 組件示範頁面處於編輯模式
@@ -496,7 +496,7 @@ Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控�
 1. 開啟 WebPartsDemo.aspx 頁面上，並切換至**設計**檢視。
 2. 從**WebParts**  索引標籤的 工具箱 拖曳至 CatalogZone 控制項右邊的資料行的資料表，下方**EditorZone**控制項。   
   
- 兩個控制項可以是相同的資料表資料格，因為不會顯示在相同的時間。
+   兩個控制項可以是相同的資料表資料格，因為不會顯示在相同的時間。
 3. 在 [屬性] 窗格中，將字串指派**新增網頁組件**的 HeaderText 屬性**CatalogZone**控制項。
 4. 從**WebParts**區段的 [工具箱] 拖曳至 DeclarativeCatalogPart 控制項的內容區域的**CatalogZone**控制項。
 5. 按一下右上角的箭號**DeclarativeCatalogPart**公開其工作功能表上，控制，然後選取 **編輯樣板**。
@@ -504,7 +504,7 @@ Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控�
 7. 切換至**來源**檢視。 檢查來源的程式碼的&lt;asp: catalogzone&gt;項目。 請注意， **DeclarativeCatalogPart**控制項包含&lt;webpartstemplate&gt;具有兩個括住的伺服器控制項，您將能夠加入至您的頁面從類別目錄項目。
 8. 新增**標題**屬性為每個控制項，您加入至類別目錄中，使用每個項目在下列程式碼範例顯示的字串值。 即使不是屬性標題。 您可以正常上設定這些兩種伺服器控制項在設計階段，當使用者將這些控制項，以**WebPartZone**區域從執行階段類別目錄，它們是每個各加**GenericWebPart**控制項。 這可讓它們當做 Web 組件控制項，因此他們將無法顯示標題。   
   
- 兩個控制項中所包含的程式碼**DeclarativeCatalogPart**控制項看起來應該如下。 
+   兩個控制項中所包含的程式碼**DeclarativeCatalogPart**控制項看起來應該如下。 
 
     [!code-aspx[Main](profiles-themes-and-web-parts/samples/sample26.aspx)]
 9. 儲存網頁。
@@ -516,12 +516,12 @@ Web 組件可讓使用者從一個區域拖曳到另一個變更 Web 組件控�
 1. 載入瀏覽器中。
 2. 按一下**顯示模式**下拉功能表並選取**目錄**。   
   
- 標題為 「 類別目錄**新增網頁組件**隨即出現。
+   標題為 「 類別目錄**新增網頁組件**隨即出現。
 3. 拖曳**我的最愛**回到頂端的 [資訊看板] 區域中，控制從主要區域，並將它放到那里。
 4. 在**新增網頁組件**目錄中，選取兩個核取方塊，並選取**Main**從下拉式清單，其中包含可用的區域。
 5. 按一下**新增**目錄中。 控制項會加入至 Main 區域。 如果您想，您可以加入多個控制項的執行個體從類別目錄網頁。   
   
- 下列螢幕擷取畫面顯示在主要區域檔案上傳控制項和行事曆。 
+   下列螢幕擷取畫面顯示在主要區域檔案上傳控制項和行事曆。 
 
 ![從類別目錄加入至主要區域的控制項](profiles-themes-and-web-parts/_static/image7.gif)
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
-title: "ASP.NET MVC 應用程式 (10-4) 中建立更複雜的資料模型 |Microsoft 文件"
+title: ASP.NET MVC 應用程式 (10-4) 中建立更複雜的資料模型 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio..."
+description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: accb5ddab8df67dfa29038541dc0cd72eaac173c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c8f01b33c18ce77d91ee2f0db5e561b047c1891c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-more-complex-data-model-for-an-aspnet-mvc-application-4-of-10"></a>ASP.NET MVC 應用程式 (10-4) 中建立更複雜的資料模型
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 [下載完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 教學課程系列的相關資訊，請參閱[系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 您可以從頭開始教學課程系列或[下載本章節的入門專案](building-the-ef5-mvc4-chapter-downloads.md)和從這裡開始。
 > 
 > > [!NOTE] 
 > > 
@@ -33,23 +33,23 @@ ms.lasthandoff: 01/24/2018
 
 在先前的教學課程中您使用過的簡單資料模型的三個實體所組成。 在本教學課程，您可以加入多個實體和關聯性，您將自訂資料模型，藉由指定的格式、 驗證和資料庫對應規則。 您會看到兩種方式可以自訂資料模型： 藉由加入屬性至實體類別，並將程式碼加入至資料庫內容類別。
 
-當您完成時，實體類別會構成完成的資料模型，如下圖所示：
+當您完成時，實體類別會構成如下列圖例中所顯示的完整資料模型：
 
 ![School_class_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="customize-the-data-model-by-using-attributes"></a>自訂資料模型使用屬性
+## <a name="customize-the-data-model-by-using-attributes"></a>使用屬性自訂資料模型
 
-本節中，您會看到如何自訂資料模型使用指定的格式、 驗證和資料庫對應規則的屬性。 然後會在下列章節的幾個您建立完整`School`加入資料模型屬性類別已建立並建立新的類別，在模型中剩餘的實體類型。
+在本節中，您會了解到如何使用指定格式、驗證和資料庫對應規則的屬性來自訂資料模型。 然後會在下列章節的幾個您建立完整`School`加入資料模型屬性類別已建立並建立新的類別，在模型中剩餘的實體類型。
 
 ### <a name="the-datatype-attribute"></a>資料類型屬性
 
-學生註冊日期，所有的網頁目前顯示的時間和日期，不過關心這個欄位是日期。 使用資料註解屬性，您可以進行一將修復的顯示格式來顯示資料的每個檢視中變更程式碼。 若要查看如何執行作業，您會加入至屬性的範例`EnrollmentDate`屬性`Student`類別。
+針對學生的註冊日期，所有網頁目前都會同時顯示時間和日期，即使您針對此欄位只需要日期而已。 使用資料註解屬性，您可以透過僅對一個程式碼進行變更，來修正每個顯示資料的檢視上的顯示格式。 為了查看如何進行此操作的範例，您將會新增一個屬性至 `Student` 類別中的 `EnrollmentDate` 屬性。
 
 在*Models\Student.cs*，新增`using`陳述式`System.ComponentModel.DataAnnotations`命名空間和新增`DataType`和`DisplayFormat`屬性至`EnrollmentDate`屬性，如下列範例所示：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample1.cs?highlight=3,13-14)]
 
-[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型。 在此情況下我們只想要追蹤的日期，不的日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
+[DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性用來指定資料庫內建型別比更特定的資料類型。 在此案例中，我們只想要追蹤日期，而非日期和時間。 [DataType 列舉](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)提供許多資料類型，例如*日期、 時間、 電話號碼、 貨幣、 EmailAddress*等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 比方說，`mailto:`可建立連結的[DataType.EmailAddress](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)，而且可以提供日期選擇器[DataType.Date](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatype.aspx)支援的瀏覽器[HTML5](http://html5.org/). [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性發出 HTML 5[資料-](http://ejohn.org/blog/html-5-data-attributes/) (phishing 英文發音如*資料虛線*) 能夠辨識的 html5 瀏覽器的屬性。 [DataType](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.datatypeattribute.aspx)屬性不提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，資料欄位會顯示根據基礎在伺服器上的預設格式[CultureInfo](https://msdn.microsoft.com/library/vstudio/system.globalization.cultureinfo(v=vs.110).aspx)。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="the-stringlengthattribute"></a>StringLengthAttribute
 
-您也可以指定資料的驗證規則和使用屬性的訊息。 假設您想要確保使用者不要輸入超過 50 個字元的名稱。 若要加入這項限制，加入[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性至`LastName`和`FirstMidName`屬性，如下列範例所示：
+您也可以指定資料的驗證規則和使用屬性的訊息。 假設您想要確保使用者不會在名稱中輸入超過 50 個字元。 若要加入這項限制，加入[StringLength](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)屬性至`LastName`和`FirstMidName`屬性，如下列範例所示：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample3.cs?highlight=10,12)]
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 01/24/2018
 
 資料庫模型已變更，則需要在資料庫結構描述變更的方式和 Entity Framework 偵測到。 您將使用移轉，而不會遺失任何資料，使用 UI 新增到資料庫中更新結構描述。 如果您變更資料所建立的`Seed`方法，將會變更回其原始狀態，因為[AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx)中使用的方法`Seed`方法。 ([AddOrUpdate](https://msdn.microsoft.com/library/hh846520(v=vs.103).aspx)等於從資料庫詞彙中的 「 更新插入 」 作業。)
 
-在 封裝管理員主控台 (PMC)，請輸入下列命令：
+請在套件管理員主控台 (PMC) 中輸入下列命令：
 
 [!code-console[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample4.cmd)]
 
@@ -103,9 +103,9 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="the-column-attribute"></a>資料行屬性
 
-您也可以使用屬性來控制您的類別和屬性如何對應到資料庫。 假設您使用名稱`FirstMidName`，第一個名稱欄位，因為欄位也可能包含中間名。 但您想要命名的資料庫欄`FirstName`，因為使用者將會寫入資料庫的臨機操作查詢習慣於該名稱。 若要讓此對應，您可以使用`Column`屬性。
+您也可以使用屬性控制您的類別和屬性對應到資料庫的方式。 假設您已針對名字欄位使用 `FirstMidName` 作為名稱，因為欄位中可能也會包含中間名。 但您想要將資料庫資料行命名為 `FirstName`，因為撰寫臨機操作查詢資料庫的使用者比較習慣該名稱。 若要進行此對應，您可以使用 `Column` 屬性。
 
-`Column`屬性指定當建立資料庫時，資料行`Student`對應到資料表`FirstMidName`屬性會被命名為`FirstName`。 換句話說，當您的程式碼是指`Student.FirstMidName`，資料將來自，或在更新`FirstName`資料行`Student`資料表。 如果您未指定資料行名稱，會收到相同的名稱與屬性名稱。
+`Column` 屬性指定當建立資料庫時，`Student` 資料表中對應到 `FirstMidName` 屬性的資料行會命名為 `FirstName`。 換句話說，當您的程式碼參照 `Student.FirstMidName` 時，資料便會來自 `Student` 資料表中的 `FirstName` 資料行或在其中更新。 如果您未指定資料行名稱，會收到相同的名稱與屬性名稱。
 
 加入 using 陳述式[System.ComponentModel.DataAnnotations.Schema](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.aspx)和資料行名稱屬性來`FirstMidName`屬性，如下列反白顯示的程式碼所示：
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 01/24/2018
 > 如果您嘗試編譯，才能完成建立所有的這些實體類別，您可能會收到編譯器錯誤。
 
 
-## <a name="create-the-instructor-entity"></a>建立 [Instructor] 實體
+## <a name="create-the-instructor-entity"></a>建立 Instructor 實體
 
 ![Instructor_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image6.png)
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample7.cs)]
 
-請注意一些屬性，在相同`Student`和`Instructor`實體。 在[實作繼承](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)稍後在本系列的教學課程，您將會重構使用繼承，若要消除這種冗餘。
+請注意，當中有幾個屬性跟 `Student` 和 `Instructor` 實體中的一樣。 在[實作繼承](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)稍後在本系列的教學課程，您將會重構使用繼承，若要消除這種冗餘。
 
 ### <a name="the-required-and-display-attributes"></a>所需，並顯示屬性
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample8.cs)]
 
-[StringLength 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)設定資料庫中的最大長度，並提供用戶端和伺服器端的 ASP.NET MVC 驗證。 您也可以指定最小字串長度，此屬性，但資料庫結構描述的最小值沒有任何影響。 [必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)不需要使用實值類型，例如 DateTime、 int、 double、 和 float。 因此它們都是原本就是必要，實值類型無法指派 null 值。 您也可以移除[必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)並取代的最小長度參數`StringLength`屬性：
+[StringLength 屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute.aspx)設定資料庫中的最大長度，並提供用戶端和伺服器端的 ASP.NET MVC 驗證。 您也可以在此屬性中指定最小字串長度，但最小值不會對資料庫結構描述造成任何影響。 [必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)不需要使用實值類型，例如 DateTime、 int、 double、 和 float。 因此它們都是原本就是必要，實值類型無法指派 null 值。 您也可以移除[必要的屬性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.requiredattribute.aspx)並取代的最小長度參數`StringLength`屬性：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample9.cs?highlight=2)]
 
@@ -155,13 +155,13 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="the-fullname-calculated-property"></a>FullName 計算內容
 
-`FullName`是傳回值，由串連兩個其他屬性的導出的屬性。 因此只有`get`存取子，且沒有`FullName`會在資料庫中產生資料行。
+`FullName` 為一個計算屬性，會傳回藉由串連兩個其他屬性而建立的值。 因此只有`get`存取子，且沒有`FullName`會在資料庫中產生資料行。
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample11.cs)]
 
 ### <a name="the-courses-and-officeassignment-navigation-properties"></a>課程和 OfficeAssignment 導覽屬性
 
-`Courses`和`OfficeAssignment`屬性為導覽屬性。 已稍早所述，它們通常會定義為[虛擬](https://msdn.microsoft.com/library/9fkccyh4(v=vs.110).aspx)，讓他們可以利用稱為 Entity Framework 功能[消極式載入](https://msdn.microsoft.com/magazine/hh205756.aspx)。 此外，如果導覽屬性都可以保存多個實體，其類型必須實作[ICollection&lt;T&gt; ](https://msdn.microsoft.com/library/92t2ye13.aspx)介面。 (例如[IList&lt;T&gt; ](https://msdn.microsoft.com/library/5y536ey6.aspx)但不是會限定[IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/library/9eekhta0.aspx)因為`IEnumerable<T>`不會實作[新增](https://msdn.microsoft.com/library/63ywd54z.aspx).
+`Courses` 和 `OfficeAssignment` 屬性為導覽屬性。 已稍早所述，它們通常會定義為[虛擬](https://msdn.microsoft.com/library/9fkccyh4(v=vs.110).aspx)，讓他們可以利用稱為 Entity Framework 功能[消極式載入](https://msdn.microsoft.com/magazine/hh205756.aspx)。 此外，如果導覽屬性都可以保存多個實體，其類型必須實作[ICollection&lt;T&gt; ](https://msdn.microsoft.com/library/92t2ye13.aspx)介面。 (例如[IList&lt;T&gt; ](https://msdn.microsoft.com/library/5y536ey6.aspx)但不是會限定[IEnumerable&lt;T&gt; ](https://msdn.microsoft.com/library/9eekhta0.aspx)因為`IEnumerable<T>`不會實作[新增](https://msdn.microsoft.com/library/63ywd54z.aspx).
 
 講師可以教導任意數目的課程，因此`Courses`做為集合定義`Course`實體。 我們的商務規則狀態講師只能使用最多一個辦事處的資料，因此`OfficeAssignment`定義為單一`OfficeAssignment`實體 (它可能是`null`如果被不指派任何 office)。
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="the-key-attribute"></a>索引鍵屬性
 
-以 0 或-1 一個之間沒有關聯性`Instructor`和`OfficeAssignment`實體。 Office 指派相對於講師指派，才會存在，因此其主索引鍵也是其外部索引鍵`Instructor`實體。 Entity Framework 無法自動辨識，但是`InstructorID`為主要索引鍵此實體的因為其名稱未遵循`ID`或*classname* `ID`命名慣例。 因此，`Key`屬性用來識別索引鍵：
+以 0 或-1 一個之間沒有關聯性`Instructor`和`OfficeAssignment`實體。 Office 指派相對於講師指派，才會存在，因此其主索引鍵也是其外部索引鍵`Instructor`實體。 Entity Framework 無法自動辨識，但是`InstructorID`為主要索引鍵此實體的因為其名稱未遵循`ID`或*classname* `ID`命名慣例。 因此，必須使用 `Key` 屬性將其識別為 PK：
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample14.cs)]
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 01/24/2018
 
 您無法將`[Required]`講師導覽屬性，指定必須有相關的講師，但您不需要這樣做，因為 InstructorID 外部索引鍵 （這也是這個資料表的索引鍵） 是不可為 null 的屬性。
 
-## <a name="modify-the-course-entity"></a>修改課程實體
+## <a name="modify-the-course-entity"></a>修改 Course 實體
 
 ![Course_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image8.png)
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample15.cs)]
 
-課程實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`實體，且具有`Department`導覽屬性。 Entity Framework 不需要具有相關實體的導覽屬性時，將外部索引鍵屬性加入至您的資料模型。 在需要時會 EF 會自動在資料庫中建立外部索引鍵。 但是，具有資料模型中的外部索引鍵可進行更新，更簡單且更有效率。 例如，當您擷取課程實體，若要編輯，`Department`實體為 null 如果您不載入它，因此當您更新課程實體中，您必須先擷取`Department`實體。 當外部索引鍵屬性`DepartmentID`是否包含在資料模型，您不需要擷取`Department`實體之後才更新。
+課程實體具有外部索引鍵屬性`DepartmentID`指向相關`Department`實體，且具有`Department`導覽屬性。 當您針對相關實體具有一個導覽屬性時，Entity Framework 便不需要您為資料模型新增一個外部索引鍵屬性。 在需要時會 EF 會自動在資料庫中建立外部索引鍵。 但在資料模型中擁有外部索引鍵，可讓更新變得更為簡單和有效率。 例如，當您擷取課程實體，若要編輯，`Department`實體為 null 如果您不載入它，因此當您更新課程實體中，您必須先擷取`Department`實體。 當外部索引鍵屬性`DepartmentID`是否包含在資料模型，您不需要擷取`Department`實體之後才更新。
 
 ### <a name="the-databasegenerated-attribute"></a>DatabaseGenerated 屬性
 
@@ -215,19 +215,19 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample16.cs)]
 
-根據預設，Entity Framework 會假設資料庫會產生主索引鍵值。 這是您想在大多數情況下。 不過，對於`Course`實體，您會使用使用者指定課程數字，例如 1000年一連串一個部門，另一個部門，2000年數列等等。
+根據預設，Entity Framework 會假設資料庫會產生主索引鍵值。 這是您在大多數案例下所希望的情況。 不過，對於`Course`實體，您會使用使用者指定課程數字，例如 1000年一連串一個部門，另一個部門，2000年數列等等。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵和導覽屬性
 
 外部索引鍵屬性和導覽屬性中的`Course`實體反映的下列關聯性：
 
-- 課程指派給一個部門，所以`DepartmentID`外部索引鍵和`Department`導覽屬性，如上面所提的原因。 
+- 課程會指派給一個部門，因此基於上述理由，會有一個 `DepartmentID` 外部索引鍵和一個 `Department` 導覽屬性。 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample17.cs)]
-- 課程可以有任意數目的學生註冊，所以`Enrollments`導覽屬性是集合： 
+- 由於課程可由任何數量的學生進行註冊，因此 `Enrollments` 導覽屬性為一個集合： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample18.cs)]
-- 課程會教由多個講師，所以`Instructors`導覽屬性是集合： 
+- 課程可由多個講師進行教授，因此 `Instructors` 導覽屬性為一個集合： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample19.cs)]
 
@@ -245,21 +245,21 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample21.cs)]
 
-資料行對應通常是不必要的因為 Entity Framework 通常會選擇根據您定義屬性的 CLR 類型的適當 SQL Server 資料類型。 CLR`decimal`類型會對應至 SQL Server`decimal`型別。 但在此情況下您知道貨幣金額將會保留資料行和[money](https://msdn.microsoft.com/library/ms179882.aspx)資料類型是更適合的。
+資料行對應通常是不必要的因為 Entity Framework 通常會選擇根據您定義屬性的 CLR 類型的適當 SQL Server 資料類型。 CLR `decimal` 類型會對應到 SQL Server 的 `decimal` 類型。 但在此情況下您知道貨幣金額將會保留資料行和[money](https://msdn.microsoft.com/library/ms179882.aspx)資料類型是更適合的。
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵和導覽屬性
 
-外部索引鍵和導覽屬性會反映的下列關聯性：
+外部索引鍵及導覽屬性反映了下列關聯性：
 
-- 部門可能會或可能不會為系統管理員，而且系統管理員永遠是講師。 因此`InstructorID`屬性是包含外部索引鍵為`Instructor`後面會加上的實體以及問號`int`輸入指定將標示為可為 null 的屬性。導覽屬性名為`Administrator`但保留`Instructor`實體： 
+- 部門可以有或沒有一位系統管理員，而系統管理員一律為講師。 因此`InstructorID`屬性是包含外部索引鍵為`Instructor`後面會加上的實體以及問號`int`輸入指定將標示為可為 null 的屬性。導覽屬性名為`Administrator`但保留`Instructor`實體： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample22.cs)]
 - 部門可能有許多課程，所以`Courses`導覽屬性： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample23.cs)]
 
- > [!NOTE]
- > 依照慣例，Entity Framework 可讓 cascade delete 不可為 null 的外部索引鍵和多對多關聯性。 這會導致循環的串聯刪除規則，您的初始設定式程式碼執行時，會導致例外狀況。 例如，如果您未定義`Department.InstructorID`屬性做為可為 null，初始設定式執行時，會收到下列例外狀況訊息: 「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`成不可為 null 的屬性，您必須使用下列 fluent API 停用串聯刪除關聯性上： 
+  > [!NOTE]
+  > 根據慣例，Entity Framework 會為不可為 Null 的外部索引鍵和多對多關聯性啟用串聯刪除。 這會導致循環的串聯刪除規則，您的初始設定式程式碼執行時，會導致例外狀況。 例如，如果您未定義`Department.InstructorID`屬性做為可為 null，初始設定式執行時，會收到下列例外狀況訊息: 「 參考關聯性將會導致不允許循環參考。 」 如果您的商務規則所需`InstructorID`成不可為 null 的屬性，您必須使用下列 fluent API 停用串聯刪除關聯性上： 
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample24.cs)]
 
@@ -268,7 +268,7 @@ ms.lasthandoff: 01/24/2018
 
 ![Student_entity](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 
-在*Models\Student.cs*，稍早為下列程式碼取代您所加入的程式碼。 所做的變更會反白顯示。
+在*Models\Student.cs*，稍早為下列程式碼取代您所加入的程式碼。 所做的變更已醒目提示。
 
 [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample25.cs?highlight=12,15,24-27)]
 
@@ -280,12 +280,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵和導覽屬性
 
-外部索引鍵屬性和導覽屬性會反映下列關聯性：
+外部索引鍵屬性及導覽屬性反映了下列關聯性：
 
-- 註冊記錄是單一的課程中，所以沒有`CourseID`外部索引鍵屬性和`Course`導覽屬性： 
+- 註冊記錄乃針對單一課程，因此當中包含了一個 `CourseID` 外部索引鍵屬性及一個 `Course` 導覽屬性： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample27.cs)]
-- 註冊記錄是單一的學生，所以沒有`StudentID`外部索引鍵屬性和`Student`導覽屬性： 
+- 註冊記錄乃針對單一學生，因此當中包含了一個 `StudentID` 外部索引鍵屬性及一個 `Student` 導覽屬性： 
 
     [!code-csharp[Main](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/samples/sample28.cs)]
 
@@ -293,7 +293,7 @@ ms.lasthandoff: 01/24/2018
 
 多對多關聯性之間`Student`和`Course`實體，而`Enrollment`實體做為多對多聯結資料表*裝載*資料庫中。 這表示`Enrollment`資料表包含額外的資料以外的聯結資料表的外部索引鍵 (在這個情況下，主索引鍵和`Grade`屬性)。
 
-下圖顯示這些關聯性中的實體圖表的外觀。 (此圖表使用產生的[Entity Framework Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d); 建立圖表不屬於本教學課程，正只為一個實例。)
+下列圖例展示了在實體圖表中這些關聯性的樣子。 (此圖表使用產生的[Entity Framework Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d); 建立圖表不屬於本教學課程，正只為一個實例。)
 
 ![Student-Course_many-to-many_relationship](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
@@ -309,9 +309,9 @@ ms.lasthandoff: 01/24/2018
 
 Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和更新的讀取和更新的間接`Instructor.Courses`和`Course.Instructors`導覽屬性。
 
-## <a name="entity-diagram-showing-relationships"></a>實體圖表顯示關聯性
+## <a name="entity-diagram-showing-relationships"></a>顯示關聯性的實體圖表
 
-下圖顯示已完成的 School 模型的 Entity Framework Power Tools 建立的圖表。
+下列圖例顯示了 Entity Framework Power Tools 為完成的 School 模型建立的圖表。
 
 ![School_data_model_diagram](creating-a-more-complex-data-model-for-an-asp-net-mvc-application/_static/image13.png)
 
@@ -321,9 +321,9 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 接下來您要加入新的實體來`SchoolContext`類別和自訂的對應使用某些[fluent API](https://msdn.microsoft.com/data/jj591617)呼叫。 （應用程式開發介面是"fluent 應用程式開發 「 的因為它通常由串連成單一陳述式在一起的方法呼叫的一系列函式）。
 
-在本教學課程中，您將使用 fluent API 僅適用於資料庫對應時，您不能與屬性。 不過，您也可以使用 fluent 應用程式開發的應用程式開發介面指定大部分的格式設定、 驗證和您可以使用屬性的對應規則。 某些屬性，例如`MinimumLength`fluent 應用程式開發的應用程式開發介面無法套用。 如前所述，`MinimumLength`並不會變更結構描述中，它只適用於用戶端和伺服器端驗證規則
+在本教學課程中，您將使用 fluent API 僅適用於資料庫對應時，您不能與屬性。 然而，您也可以使用 Fluent API 指定大部分透過屬性可完成的格式、驗證及對應規則。 某些屬性 (例如 `MinimumLength`) 無法使用 Fluent API 來套用。 如前所述，`MinimumLength`並不會變更結構描述中，它只適用於用戶端和伺服器端驗證規則
 
-有些開發人員偏好使用 fluent 應用程式開發的應用程式開發介面，以獨佔方式，讓它們可保留他們的實體類別 「 清除 」。 您如果想要的話，且有少數自訂項目才可使用 fluent API，可以混合屬性和 fluent 應用程式開發的應用程式開發介面，但一般建議的作法是選擇其中一個這兩種方法，並使用，以一致的方式盡量。
+某些開發人員偏好單獨使用 Fluent API，使其實體類別保持「整潔」。 若想要的話，您也可以混合使用屬性和 Fluent API，並且有一些自訂項目只能使用 Fluent API 完成。但一般來說，建議的做法是在這兩種方法中選擇其中一項，然後盡可能的一致使用該方法。
 
 若要加入新的實體資料模型，並執行您未使用屬性做的資料庫對應，取代中的程式碼*DAL\SchoolContext.cs*為下列程式碼：
 
@@ -341,7 +341,7 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 如需 「 fluent API 」 陳述式在幕後的執行資訊，請參閱[Fluent API](https://blogs.msdn.com/b/aspnetue/archive/2011/05/04/entity-framework-code-first-tutorial-supplement-what-is-going-on-in-a-fluent-api-call.aspx)部落格文章。
 
-## <a name="seed-the-database-with-test-data"></a>種子使用的測試資料的資料庫
+## <a name="seed-the-database-with-test-data"></a>使用測試資料植入資料庫
 
 中的程式碼取代*Migrations\Configuration.cs*檔案取代下列程式碼，以針對您已建立新的實體提供種子資料。
 
@@ -395,10 +395,10 @@ Entity Framework 會自動建立`CourseInstructor`資料表，以及您讀取和
 
 ## <a name="summary"></a>總結
 
-您現在有更複雜的資料模型和對應的資料庫。 下列教學課程中您會深入了解不同的方式來存取相關的資料。
+您現在已有了更複雜的資料模型和對應的資料庫。 下列教學課程中您會深入了解不同的方式來存取相關的資料。
 
 Entity Framework 中的其他資源連結位於[ASP.NET 資料存取內容對應](../../../../whitepapers/aspnet-data-access-content-map.md)。
 
->[!div class="step-by-step"]
-[上一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[下一頁](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [上一頁](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [下一頁](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)

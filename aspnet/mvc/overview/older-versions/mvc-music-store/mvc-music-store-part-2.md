@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
-title: "第 2 部分： 控制站 |Microsoft 文件"
+title: 第 2 部分： 控制站 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 2 部分涵蓋控制站。"
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 2 部分涵蓋控制站。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: bdafd751e996e759d516d0fa25b09eff21241ed7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 680cdea388d9b01961bd626643c0fd91c9205ed7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-controllers"></a>第 2 部分： 控制站
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 現在讓我們來執行網站。 我們可以開始我們的 web 伺服器，然後再次嘗試使用任何下列網站::
 
 - 選擇偵錯 ⇨ 開始偵錯 功能表項目
-- 按一下工具列中的綠色箭頭按鈕![](mvc-music-store-part-2/_static/image2.jpg)
+- 按一下工具列中的綠色箭頭按鈕 ![](mvc-music-store-part-2/_static/image2.jpg)
 - 使用鍵盤快速鍵，F5。
 
 使用任何上述的步驟會編譯專案，並則會導致是內建 Visual Web Developer，才能啟動 ASP.NET 程式開發伺服器。 表示 ASP.NET 程式開發伺服器已啟動，將螢幕的右下角會出現通知，並會用來顯示它在下執行的連接埠號碼。
@@ -102,7 +102,7 @@ Visual Web Developer 然後會自動開啟瀏覽器視窗，其 URL 指到我們
 
 重新執行專案，然後瀏覽下列 Url:
 
-- / 存放區
+- /Store
 - / 存放區/瀏覽
 - / 存放區/詳細資料
 
@@ -116,7 +116,7 @@ Visual Web Developer 然後會自動開啟瀏覽器視窗，其 URL 指到我們
 
 [!code-csharp[Main](mvc-music-store-part-2/samples/sample4.cs)]
 
-*注意： 我們會使用 HttpUtility.HtmlEncode 公用程式方法來處理使用者輸入。如此可防止使用者將 Javascript 插入我們檢視以便 /Store/Browse 類似的連結嗎？內容類型 =&lt;指令碼&gt;window.location= 'http://hackersite.com'&lt;/指令碼&gt;。*
+*注意： 我們會使用 HttpUtility.HtmlEncode 公用程式方法來處理使用者輸入。如此可防止使用者將 Javascript 插入我們檢視以便 /Store/Browse 類似的連結嗎？內容類型 =&lt;指令碼&gt;window.location='http://hackersite.com'&lt;/指令碼&gt;。*
 
 現在讓我們來瀏覽至存放區/瀏覽？內容類型 = Disco
 
@@ -141,6 +141,6 @@ ASP.NET MVC 可讓我們能夠輕鬆地執行這項操作而不需要設定任�
 - 我們已將動作方法加入至我們控制站會回應 URL 要求，並傳回至瀏覽器的文字
 
 
->[!div class="step-by-step"]
-[上一頁](mvc-music-store-part-1.md)
-[下一頁](mvc-music-store-part-3.md)
+> [!div class="step-by-step"]
+> [上一頁](mvc-music-store-part-1.md)
+> [下一頁](mvc-music-store-part-3.md)

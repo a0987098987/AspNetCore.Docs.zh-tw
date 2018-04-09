@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/intro-to-aspnet-mvc-3
-title: "ASP.NET MVC 3 (VB) 簡介 |Microsoft 文件"
+title: ASP.NET MVC 3 (VB) 簡介 |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/intro-to-aspnet-mvc-3
 msc.type: authoredcontent
-ms.openlocfilehash: f0717e8d635818322be8b3242efe756a20351340
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3be0de6ea6d49f9c0de659398190b71c36ba222a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc-3-vb"></a>ASP.NET MVC 3 (VB) 簡介
 ====================
@@ -81,7 +81,7 @@ Visual Web Developer 是 IDE 或整合式的開發環境。 就像您使用 Micr
 
 ![1InternetAppRazor_SM](intro-to-aspnet-mvc-3/_static/image8.png)
 
-按一下 [確定]。 Visual Web Developer 中使用您剛才建立的 ASP.NET MVC 專案的預設範本，因此您有可用的應用程式立即而不做任何事 ！ 這是簡單"Hello World ！" 專案和它的啟動您的應用程式的好地方。
+按一下 [確定 **Deploying Office Solutions**]。 Visual Web Developer 中使用您剛才建立的 ASP.NET MVC 專案的預設範本，因此您有可用的應用程式立即而不做任何事 ！ 這是簡單"Hello World ！" 專案和它的啟動您的應用程式的好地方。
 
 [![](intro-to-aspnet-mvc-3/_static/image10.png)](intro-to-aspnet-mvc-3/_static/image9.png)
 
@@ -97,5 +97,5 @@ F5 會導致啟動開發 web 伺服器和執行 web 應用程式的 Visual Web D
 
 現成提供的這個預設範本提供您兩個頁面瀏覽和基本登入頁面。 讓我們來變更這個應用程式的運作方式和程序中更了解 ASP.NET MVC。 關閉瀏覽器，並讓我們將變更一些程式碼。
 
->[!div class="step-by-step"]
-[下一步](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [下一步](adding-a-controller.md)

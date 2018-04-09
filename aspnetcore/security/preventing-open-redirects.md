@@ -1,7 +1,7 @@
 ---
-title: "防止 ASP.NET Core 應用程式中開啟的重新導向攻擊"
+title: 防止 ASP.NET Core 中開啟的重新導向攻擊
 author: ardalis
-description: "示範如何防止對 ASP.NET Core 應用程式的開啟重新導向攻擊"
+description: 示範如何防止對 ASP.NET Core 應用程式的開啟重新導向攻擊
 manager: wpickett
 ms.author: riande
 ms.date: 07/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/preventing-open-redirects
-ms.openlocfilehash: d6cd65a2516c4d5e41428f0c1f2dbbe913ac2123
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a210b8bb8091e7c036d4bc98306e3b3f90d7d46
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>防止 ASP.NET Core 應用程式中開啟的重新導向攻擊
+# <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中開啟的重新導向攻擊
 
 重新導向至指定的要求，例如查詢字串或表單資料透過 URL 的 web 應用程式將使用者重新導向至外部、 惡意 URL 可能遭竄改。 這種竄改稱為開啟重新導向攻擊。
 
@@ -57,11 +57,11 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-``LocalRedirect``如果指定非本機 URL，則會擲回例外狀況。 否則，它的行為就像是``Redirect``方法。
+``LocalRedirect`` 如果指定非本機 URL，則會擲回例外狀況。 否則，它的行為就像是``Redirect``方法。
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-使用[IsLocalUrl](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iurlhelper#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_)方法來測試之前將重新導向的 Url:
+使用[IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_)方法來測試之前將重新導向的 Url:
 
 下列範例會示範如何檢查 URL 是否本機，然後才將重新導向。
 

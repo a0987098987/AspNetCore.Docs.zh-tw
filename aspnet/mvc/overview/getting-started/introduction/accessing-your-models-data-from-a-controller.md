@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
-title: "存取您的模型資料從控制器 |Microsoft 文件"
+title: 存取您的模型資料從控制器 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 91bfa5fe3c5bd3029b7d7c12c8831e1653fb1d2b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d3dfa079c334e04f368531456ec2ec4e9728f893
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 在本節中，您將建立新`MoviesController`類別，並撰寫程式碼，擷取電影資料並將它顯示在瀏覽器中使用檢視範本。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/24/2018
 - 選取**MovieDBContext (MvcMovie.Models)**資料內容類別。
 - 控制器名稱的輸入**MoviesController**。
 
- 下圖顯示已完成的對話方塊。  
+  下圖顯示已完成的對話方塊。  
   
 ![](accessing-your-models-data-from-a-controller/_static/image3.png)   
 
@@ -64,7 +64,7 @@ Visual Studio 會自動建立[CRUD](http://en.wikipedia.org/wiki/Create,_read,_u
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> 您可能無法在 [價格] 欄位中輸入十進位小數點或逗號。 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文 （美國） 的日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 我將示範如何執行這項操作，在下一個教學課程。 現在，只要輸入如 10 之類的整數。
+> 您可能無法在 [價格] 欄位中輸入十進位小數點或逗號。 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文 （美國） 的日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 我將示範如何執行這項操作，在下一個教學課程。 現在，只要輸入如 10 之類的整數。
 
 
 按一下**建立**按鈕會導致表單張貼至伺服器，電影資訊儲存在資料庫中的位置。 您重新導向至*/Movies* URL，您可以在其中看到新建立的電影清單中。
@@ -157,6 +157,6 @@ Entity Framework Code First 偵測到提供的資料庫連接字串指向`Movies
 
 您現在擁有一個資料庫和多個頁面，可用來顯示、編輯、更新和刪除資料。 在下一個教學課程中，我們會檢查 scaffold 的程式碼的其餘部分，並新增`SearchIndex`方法和`SearchIndex`可讓您搜尋的電影，此資料庫中的檢視。 如需有關搭配 MVC 使用 Entity Framework 的詳細資訊，請參閱[建立 ASP.NET MVC 應用程式的 Entity Framework 資料模型](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-connection-string.md)
-[下一頁](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-connection-string.md)
+> [下一頁](examining-the-edit-methods-and-edit-view.md)

@@ -1,22 +1,22 @@
 ---
 uid: visual-studio/overview/2013/release-notes
-title: "ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊 |Microsoft 文件"
+title: ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊 |Microsoft 文件
 author: microsoft
-description: "本文件說明 Visual Studio 2013 ASP.NET 及 Web 工具版本。"
+description: 本文件說明 Visual Studio 2013 ASP.NET 及 Web 工具版本。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 7f38a0f2693aeb2a4884b9c03719b583423957a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e9ddd96f186564834ff6bb2c30cf0ed5444cbf1b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊
 ====================
@@ -199,16 +199,16 @@ MVC 專案範本已更新為使用[Bootstrap](http://getbootstrap.com/)提供精
 
 您現在可以覆寫的篩選會套用至指定的動作方法或控制器藉由指定覆寫篩選條件。 覆寫篩選條件會指定一組篩選器型別，且不應該執行給定的範圍 （動作或控制器）。 這可讓您設定篩選器，全域套用，但無法套用至特定動作或控制器中排除某些全域篩選器。
 
-### <a name="attribute-routing"></a>路由屬性
+### <a name="attribute-routing"></a>屬性路由
 
-ASP.NET MVC 現在支援路由屬性，這點受惠 Tim McCall，作者比重[http://attributerouting.net](http://attributerouting.net)。 路由屬性中，您可以指定您的路由加上附註您的動作與控制器。
+ASP.NET MVC 現在支援路由屬性，這點受惠 Tim McCall，作者比重[ http://attributerouting.net ](http://attributerouting.net)。 路由屬性中，您可以指定您的路由加上附註您的動作與控制器。
 
 <a id="TOC11"></a>
 ## <a name="aspnet-web-api-2"></a>ASP.NET Web API 2
 
-### <a name="attribute-routing"></a>路由屬性
+### <a name="attribute-routing"></a>屬性路由
 
-ASP.NET Web API 現在支援路由屬性，這點受惠 Tim McCall，作者比重[http://attributerouting.net](http://attributerouting.net)。 屬由路由中，您可以指定您的 Web API 路由加上附註您的動作和控制站，像這樣：
+ASP.NET Web API 現在支援路由屬性，這點受惠 Tim McCall，作者比重[ http://attributerouting.net ](http://attributerouting.net)。 屬由路由中，您可以指定您的 Web API 路由加上附註您的動作和控制站，像這樣：
 
 [!code-csharp[Main](release-notes/samples/sample1.cs)]
 
@@ -332,7 +332,7 @@ ASP.NET Web API 現在完全支援 OWIN，並可以在任何 OWIN 功能的主�
 
 ### <a name="maphubs-and-mapconnection-are-now-mapsignalr"></a>MapHubs 和 MapConnection 現在是 MapSignalR
 
-為了與 OWIN 標準相容，這些方法已重新命名為`MapSignalR`。 `MapSignalR`呼叫沒有參數會對應所有中樞 (做為`MapHubs`中版本 1.x); 若要將都對應個別**PersistentConnection**物件，指定連接類型為型別參數，以及做為連線的 URL 擴充功能第一個引數。
+為了與 OWIN 標準相容，這些方法已重新命名為`MapSignalR`。 `MapSignalR` 呼叫沒有參數會對應所有中樞 (做為`MapHubs`中版本 1.x); 若要將都對應個別**PersistentConnection**物件，指定連接類型為型別參數，以及做為連線的 URL 擴充功能第一個引數。
 
 `MapSignalR` Owin 啟動類別中呼叫方法。 Visual Studio 2013 包含 Owin 啟動類別; 事件類別的新範本若要使用此範本，執行下列作業：
 
@@ -392,7 +392,7 @@ SignalR 1.x，跨網域要求由單一 EnableCrossDomain 中的旗標。 這個�
 
 已新增支援適用於 iOS 和 Android 的用戶端使用 MonoTouch 和 MonoDroid 元件從[Xamarin 程式庫](https://xamarin.com/)。 如需使用方式的詳細資訊，請參閱[使用 Xamarin 元件](https://github.com/SignalR/SignalR/wiki/Building-Mono.Mobile.sln)。 這些元件可在[Xamarin 市集](https://store.xamarin.com/)SignalR RTW 發行時使用。
 
-<a id="portable"></a># # # 可攜式.NET 用戶端
+<a id="portable"></a> # # # 可攜式.NET 用戶端
 
 以更好地簡化跨平台開發、 Silverlight、 WinRT 和 Windows Phone 用戶端已取代為單一可攜式.NET 用戶端支援下列平台：
 
@@ -580,8 +580,8 @@ ASP.NET Razor 3 包含下列新功能：
 - 支援編輯索引標籤。 Preivously，**格式化文件**命令、 自動縮排，並自動在 Visual Studio 中格式化未正確運作時使用**保留定位點**選項。 這項變更就會更正格式的格式設定 索引標籤的 Razor 程式碼的 Visual Studio。
 - 支援 URL 重寫規則時產生連結。
 - 安全性透明屬性中移除。
- > [!NOTE]
- > 這是一項重大變更，並使 Razor 3 相容 MVC4 和舊版中，Razor 2 時與 MVC5 或針對 MVC5 編譯的組件不相容。
+  > [!NOTE]
+  > 這是一項重大變更，並使 Razor 3 相容 MVC4 和舊版中，Razor 2 時與 MVC5 或針對 MVC5 編譯的組件不相容。
 
 修正 Visual Studio 2013 中，從發行前版本的 razor 3 問題可以找到[這裡](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&status=Resolved%7cClosed&type=All&priority=All&release=All%7cv5.0%2bPreview%7cv5.0%2bRC%7cv5.0%2bRTM&assignedTo=All&component=Web%2bPages%252fRazor&reasonClosed=Fixed&sortField=LastUpdatedDate&sortDirection=Descending&page=0)。
 
@@ -603,7 +603,7 @@ ASP.NET 應用程式暫停是.NET Framework 4.5.1 會徹底變更的使用者經
 
 ### <a name="aspnet-web-api"></a>ASP.NET Web API
 
-1. `ODataQueryOptions<T>.ApplyTo(IQueryable)`不會傳回`IQueryable<T>`一律，我們加入了支援`$select`和`$expand`。
+1. `ODataQueryOptions<T>.ApplyTo(IQueryable)` 不會傳回`IQueryable<T>`一律，我們加入了支援`$select`和`$expand`。
 
     我們先前的範例如`ODataQueryOptions<T>`一律轉型的傳回值從`ApplyTo`至`IQueryable<T>`。 此查詢選項，因為先前使用過我們支援早 (`$filter`， `$orderby`， `$skip`， `$top`) 不會變更查詢的圖形。 現在，我們支援`$select`和`$expand`的傳回值`ApplyTo`將不會`IQueryable<T>`一律。
 
@@ -632,7 +632,7 @@ ASP.NET 應用程式暫停是.NET Framework 4.5.1 會徹底變更的使用者經
 
     *'/' 應用程式中的伺服器錯誤。*
 
-    *之宣告的型別 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier' 或 'http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider' 不存在於上提供的身分識別。若要啟用防偽語彙基元支援使用宣告式驗證，請確認已設定的宣告提供者會提供這兩個身分識別執行個體就會產生這些宣告。如果已設定的宣告提供者改為使用不同的宣告類型做為唯一的識別項，則它可以設定的靜態屬性 AntiForgeryConfig.UniqueClaimTypeIdentifier 設定。*
+    <em>宣告類型 '<http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier>'或'<http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider>' 不存在於上提供的身分識別。若要啟用防偽語彙基元支援使用宣告式驗證，請確認已設定的宣告提供者會提供這兩個身分識別執行個體就會產生這些宣告。如果已設定的宣告提供者改為使用不同的宣告類型做為唯一的識別項，則它可以設定的靜態屬性 AntiForgeryConfig.UniqueClaimTypeIdentifier 設定。</em>
 
     **因應措施**：
 
@@ -647,14 +647,14 @@ ASP.NET 應用程式暫停是.NET Framework 4.5.1 會徹底變更的使用者經
 
     若要修正上述錯誤，請開啟*所有*中的 Web.config 檔案 （包括 [檢視] 資料夾中） 您的專案並執行下列：
 
-    1. 更新版本的"4.0.0.0 」"system.web.mvc 的參考 」 到 「 5.0.0.0 」 的所有項目。
-    2. 更新 「 System.Web.Helpers"，版本"2.0.0.0"的所有項目&quot;System.Web.WebPages&quot;和&quot;System.Web.WebPages.Razor&quot;至 「 3.0.0.0"
+   1. 更新版本的"4.0.0.0 」"system.web.mvc 的參考 」 到 「 5.0.0.0 」 的所有項目。
+   2. 更新 「 System.Web.Helpers"，版本"2.0.0.0"的所有項目&quot;System.Web.WebPages&quot;和&quot;System.Web.WebPages.Razor&quot;至 「 3.0.0.0"
 
-    例如，您進行上述變更之後，組件繫結看起來應該像這樣：
+      例如，您進行上述變更之後，組件繫結看起來應該像這樣：
 
-    [!code-xml[Main](release-notes/samples/sample24.xml)]
+      [!code-xml[Main](release-notes/samples/sample24.xml)]
 
-    將 MVC 4 專案升級至 MVC 5 的資訊，請參閱[如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2](../../../mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md)。
+      將 MVC 4 專案升級至 MVC 5 的資訊，請參閱[如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2](../../../mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md)。
 3. 當使用 jQuery 驗證不顯眼的用戶端驗證，驗證訊息有時不正確的 HTML input 元素，具有類型 = 'number'。 驗證錯誤必要值 （「 時間欄位必要 」) 會顯示無效的數字輸入而不是正確的有效數字是必要的訊息時。
 
     此問題通常找到具有 scaffold 的程式碼的整數屬性上建立與編輯檢視的模型。
@@ -697,13 +697,13 @@ Web Form Scaffolding 已經移除了 VS2013，並將可在 Visual Studio 的未�
 - 若要修正這個錯誤 mvc 中，加入新的 scaffold 項目，然後選取 MVC 5 相依性 （基本或完整）。 此程序將會加入所有必要的變更您的專案。
 - 若要修正這個錯誤 Web api:
 
-    1. 視情況將類別加入至您的專案。
+  1. 視情況將類別加入至您的專案。
 
-        [!code-csharp[Main](release-notes/samples/sample25.cs)]
+      [!code-csharp[Main](release-notes/samples/sample25.cs)]
 
-        [!code-vb[Main](release-notes/samples/sample26.vb)]
-    2. 在應用程式中設定 WebApiConfig.Register\_，如下所示在 Global.asax 中啟動方法：
+      [!code-vb[Main](release-notes/samples/sample26.vb)]
+  2. 在應用程式中設定 WebApiConfig.Register\_，如下所示在 Global.asax 中啟動方法：
 
-        [!code-csharp[Main](release-notes/samples/sample27.cs)]
+      [!code-csharp[Main](release-notes/samples/sample27.cs)]
 
-        [!code-vb[Main](release-notes/samples/sample28.vb)]
+      [!code-vb[Main](release-notes/samples/sample28.vb)]

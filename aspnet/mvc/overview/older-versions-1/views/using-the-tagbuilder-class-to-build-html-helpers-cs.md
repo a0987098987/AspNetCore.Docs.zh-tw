@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
-title: "使用 TagBuilder 類別來建立 HTML Helper (C#) |Microsoft 文件"
+title: 使用 TagBuilder 類別來建立 HTML Helper (C#) |Microsoft 文件
 author: StephenWalther
-description: "作者： Stephen Walther 為您介紹 TagBuilder 類別命名為 ASP.NET MVC 架構中非常有用的公用程式類別。 您可以輕鬆地使用 TagBuilder 類別..."
+description: 作者： Stephen Walther 為您介紹 TagBuilder 類別命名為 ASP.NET MVC 架構中非常有用的公用程式類別。 您可以輕鬆地使用 TagBuilder 類別...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 63f07c3f95c520dbc74f3568aa65dc6a6f34a901
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 6c0e8e4e3a733f2cc8690dc85e3006bce6c661d2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-c"></a>使用 TagBuilder 類別來建立 HTML Helper (C#)
 ====================
@@ -77,6 +77,6 @@ TagBuilder 類別有四個重要的屬性：
 
 [!code-aspx[Main](using-the-tagbuilder-class-to-build-html-helpers-cs/samples/sample3.aspx)]
 
->[!div class="step-by-step"]
-[上一頁](creating-custom-html-helpers-cs.md)
-[下一頁](creating-page-layouts-with-view-master-pages-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-custom-html-helpers-cs.md)
+> [下一頁](creating-page-layouts-with-view-master-pages-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
-title: "ASP.NET 健康監視 (VB) 與記錄錯誤的詳細資料 |Microsoft 文件"
+title: ASP.NET 健康監視 (VB) 與記錄錯誤的詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "Microsoft 的健全狀況監視系統會提供簡單可自訂的方式記錄各種 web 事件，包括未處理的例外狀況。 本教學課程會逐步引導 thr..."
+description: Microsoft 的健全狀況監視系統會提供簡單可自訂的方式記錄各種 web 事件，包括未處理的例外狀況。 本教學課程會逐步引導 thr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 83f7504e3aeb02ed222712e7e51f612f7ffd5744
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0a457d4b8773f0f4ed343f5005c76f48a5cc178f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>記錄錯誤的詳細資訊與 ASP.NET 健全狀況監視 (VB)
 ====================
@@ -154,6 +154,6 @@ ASP.NET 健康監視系統的設計可讓系統管理員可以監視已部署的
 - [如何： 使用 ASP.NET 中的健全狀況監視](https://msdn.microsoft.com/library/ms998306.aspx)
 - [在 ASP.NET 監視的健全狀況](http://aspnet.4guysfromrolla.com/articles/031407-1.aspx)
 
->[!div class="step-by-step"]
-[上一頁](processing-unhandled-exceptions-vb.md)
-[下一頁](logging-error-details-with-elmah-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](processing-unhandled-exceptions-vb.md)
+> [下一頁](logging-error-details-with-elmah-vb.md)

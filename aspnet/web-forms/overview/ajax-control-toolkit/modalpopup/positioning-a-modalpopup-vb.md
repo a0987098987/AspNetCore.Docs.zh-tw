@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-vb
-title: "定位 ModalPopup (VB) |Microsoft 文件"
+title: 定位 ModalPopup (VB) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 但是控制項不提供..."
+description: AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 但是控制項不提供...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4b9c0790d1696bcf478bcdea089d4d3d92450369
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2d20888674dfedee7a7af85efd8df118c8394c6c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="positioning-a-modalpopup-vb"></a>定位 ModalPopup (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 但是控制項不提供內建的功能，將快顯視窗。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用戶端表示強制回應的快顯。 但是控制項不提供內建的功能，將快顯視窗。
 
@@ -62,5 +62,5 @@ AJAX Control Toolkit ModalPopup 控制項提供簡單的方式來建立使用用
 
 強制回應的快顯視窗會出現在指定的位置 ([按一下以檢視完整大小的影像](positioning-a-modalpopup-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](handling-postbacks-from-a-modalpopup-vb.md)
+> [!div class="step-by-step"]
+> [上一步](handling-postbacks-from-a-modalpopup-vb.md)

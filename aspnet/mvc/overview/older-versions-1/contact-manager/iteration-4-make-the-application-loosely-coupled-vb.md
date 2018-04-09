@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-vb
-title: "反覆項目 #4 – 讓應用程式偶合鬆散 (VB) |Microsoft 文件"
+title: '反覆項目 #4 – 讓應用程式偶合鬆散 (VB) |Microsoft 文件'
 author: microsoft
-description: "在此第三個反覆項目中，我們利用數種軟體設計模式，讓您更輕鬆地維護及修改連絡人管理員應用程式。 如需..."
+description: 在此第三個反覆項目中，我們利用數種軟體設計模式，讓您更輕鬆地維護及修改連絡人管理員應用程式。 如需...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9c11c89710723c133a306aaf56cc8797cc036475
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d953a1b786c802c070619e553e27d88f2ded149c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-vb"></a>反覆項目 #4 – 讓應用程式偶合鬆散 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-4-make-the-application-loosely-coupled-vb/_static/contactmanager_4_vb1.zip)
 
@@ -82,13 +82,13 @@ ms.lasthandoff: 11/10/2017
 
 首先，我們需要建立說明資料存取方法，我們需要執行的所有介面。 IContactManagerRepository 介面包含在程式碼範例 1。 此介面描述五種方法： CreateContact()、 DeleteContact()、 EditContact()、 GetContact 和 ListContacts()。
 
-**列出 1-Models\IContactManagerRepository.vb**
+**Listing 1 - Models\IContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample1.vb)]
 
 接下來，我們必須建立實作 IContactManagerRepository 介面的具象類別。 因為我們使用 Microsoft Entity Framework 來存取資料庫，我們將建立名為 EntityContactManagerRepository 的新類別。 此類別被包含在清單 2。
 
-**列出 2-Models\EntityContactManagerRepository.vb**
+**Listing 2 - Models\EntityContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample2.vb)]
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/10/2017
 
 修改過的連絡人控制器被包含在列出的 3。
 
-**列出 3-Controllers\ContactController.vb**
+**Listing 3 - Controllers\ContactController.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample3.vb)]
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/10/2017
 
 ContactManagerService 都包含在列出的 4。 其中包含驗證邏輯，從連絡人控制器類別。
 
-**列出 4-Models\ContactManagerService.vb**
+**Listing 4 - Models\ContactManagerService.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample4.vb)]
 
@@ -150,13 +150,13 @@ ContactManagerService 都包含在列出的 4。 其中包含驗證邏輯，從�
 
 列出 5 包含 IContactManagerService 介面。
 
-**列出 5-Models\IContactManagerService.vb**
+**Listing 5 - Models\IContactManagerService.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample5.vb)]
 
 修改過的連絡人控制器類別包含在程式碼範例 6。 請注意，連絡人控制站不會再互動 ContactManager 儲存機制。 相反地，請連絡控制器與 ContactManager 服務互動。 每個圖層的隔離之盡可能從其他圖層。
 
-**列出 6-Controllers\ContactController.vb**
+**Listing 6 - Controllers\ContactController.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample6.vb)]
 
@@ -172,11 +172,11 @@ ContactManagerService 都包含在列出的 4。 其中包含驗證邏輯，從�
 
 裝飾項目的模式可讓您將現有的類別中的新類別，才能實作介面。 我們的連絡管理員專案會包含列出 7 中所含的 ModelStateWrapper 類別。 ModelStateWrapper 類別會實作介面中列出 8。
 
-**列出 7-Models\Validation\ModelStateWrapper.vb**
+**Listing 7 - Models\Validation\ModelStateWrapper.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample7.vb)]
 
-**列出 8-Models\Validation\IValidationDictionary.vb**
+**Listing 8 - Models\Validation\IValidationDictionary.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample8.vb)]
 
@@ -196,6 +196,6 @@ ContactManagerService 都包含在列出的 4。 其中包含驗證邏輯，從�
 
 最後，我們利用一種軟體設計模式，名為相依性插入模式。 此模式可讓我們進行程式設計的介面 （抽象） 而不是具象類別。 實作相依性插入的設計模式也可讓我們的程式碼更多測試。 中的下一個反覆項目中，我們加入受測專案的單元測試。
 
->[!div class="step-by-step"]
-[上一頁](iteration-3-add-form-validation-vb.md)
-[下一頁](iteration-5-create-unit-tests-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-3-add-form-validation-vb.md)
+> [下一頁](iteration-5-create-unit-tests-vb.md)

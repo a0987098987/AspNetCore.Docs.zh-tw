@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/aspnet-web-pages-2-developer-preview-readme
-title: "ASP.NET Web Pages 2 開發人員預覽讀我檔案 |Microsoft 文件"
+title: ASP.NET Web Pages 2 開發人員預覽讀我檔案 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/14/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/aspnet-web-pages-2-developer-preview-readme
 msc.type: authoredcontent
-ms.openlocfilehash: 119265c62abb3f3110cdc7f0b94a7c9b16b4251c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1a43b2b12af9cd223d8a3622239743f7c431f617
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-pages-2-developer-preview-readme"></a>ASP.NET Web Pages 2 開發人員預覽讀我檔案
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 ## <a name="aspnet-web-pages-2-developer-preview-readme"></a>ASP.NET Web Pages 2 開發人員預覽讀我檔案
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="contents"></a>內容
 
-#### <a id="_Toc303701284"></a>安裝注意事項
+#### <a id="_Toc303701284"></a>  安裝注意事項
 
 若要安裝 Web Pages 2 Developer Preview，您有下列選項：
 
@@ -38,15 +38,15 @@ ms.lasthandoff: 11/10/2017
 
 ASP.NET Web Pages 2 Developer Preview 可以安裝，並且可以執行的並行與 ASP.NET Web Pages 1。 <a id="a"></a>如需詳細資訊，請參閱 < > 一節 「 執行網頁應用程式的並存 」 中[Web Pages 2 開發人員指南預覽中的 Top 功能](https://go.microsoft.com/fwlink/?LinkID=227824)。
 
-#### <a id="_Toc303701285"></a>文件
+#### <a id="_Toc303701285"></a>  文件
 
 教學課程和其他資訊有關 ASP.NET Web 網頁上可用的 ASP.NET 網站的 [網頁] 頁面 ([https://www.asp.net/web-pages/](../../index.md))。 如需新功能和 Web Pages 2 中的增強功能的資訊，請參閱[Web Pages 2 開發人員指南預覽中的 Top 功能](https://go.microsoft.com/fwlink/?LinkID=227824)。
 
-#### <a id="_Toc303701286"></a>支援
+#### <a id="_Toc303701286"></a>  Support
 
-<a id="_Toc209852135"></a><a id="_Toc255833657"></a>這是預覽版本，而且未正式支援。 如果您有關於使用此版本的問題，張貼至 ASP.NET Web Pages 論壇 ([https://forums.asp.net/1224.aspx/1?WebMatrix](https://forums.asp.net/1224.aspx/1?WebMatrix) )，其中的 ASP.NET 社群成員可經常提供非正式的支援。
+<a id="_Toc209852135"></a><a id="_Toc255833657"></a> 這是預覽版本，而且未正式支援。 如果您有關於使用此版本的問題，張貼至 ASP.NET Web Pages 論壇 ([ https://forums.asp.net/1224.aspx/1?WebMatrix ](https://forums.asp.net/1224.aspx/1?WebMatrix) )，其中的 ASP.NET 社群成員可經常提供非正式的支援。
 
-#### <a id="_Toc303701287"></a>軟體需求
+#### <a id="_Toc303701287"></a>  軟體需求
 
 ASP.NET Web Pages 2 需要.NET Framework 4。 它也可搭配.NET Framework 4.5 Developer Preview 版本。
 
@@ -67,11 +67,11 @@ ASP.NET Web Pages 2 需要.NET Framework 4。 它也可搭配.NET Framework 4.5 
 
     [!code-csharp[Main](aspnet-web-pages-2-developer-preview-readme/samples/sample2.cs)]
 
- 不過，我們建議，如果您使用新的輸入的驗證方法，請勿使用*ModelState.IsValid*。 相反地，建構您的程式碼，就像這樣： 
+  不過，我們建議，如果您使用新的輸入的驗證方法，請勿使用*ModelState.IsValid*。 相反地，建構您的程式碼，就像這樣： 
 
     [!code-csharp[Main](aspnet-web-pages-2-developer-preview-readme/samples/sample3.cs)]
 - **在 Internet Explorer 7 和 Internet Explorer 8 中，用戶端驗證無法運作**。 用戶端驗證無法運作由於不相容的 jQuery 1.6.2，而隨附的預設專案範本。 （伺服器端驗證運作。）。
 
-#### <a id="_Toc303701289"></a>免責聲明
+#### <a id="_Toc303701289"></a>  Disclaimer
 
-© 2011 Microsoft Corporation。 著作權所有，並保留一切權利。 本文件係"做為-是。 」 資訊及檢視在此文件，包括 URL 及其他網際網路網站參考資料，可能會變更恕不另行通知。 貴用戶須自行承擔使用風險。
+© 2011 Microsoft Corporation. 著作權所有，並保留一切權利。 本文件係"做為-是。 」 資訊及檢視在此文件，包括 URL 及其他網際網路網站參考資料，可能會變更恕不另行通知。 貴用戶須自行承擔使用風險。

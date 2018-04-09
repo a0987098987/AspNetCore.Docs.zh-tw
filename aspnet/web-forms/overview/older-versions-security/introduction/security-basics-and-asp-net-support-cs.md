@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
-title: "安全性基本概念和 ASP.NET 支援 (C#) |Microsoft 文件"
+title: 安全性基本概念和 ASP.NET 支援 (C#) |Microsoft 文件
 author: rick-anderson
-description: "這是一系列將探索驗證訪客透過 web 表單的存取權 partic 授權技術的教學課程中的第一個教學課程..."
+description: 這是一系列將探索驗證訪客透過 web 表單的存取權 partic 授權技術的教學課程中的第一個教學課程...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/13/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4080e3ccaffefd02c76b89a77e320e963f854961
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2b89a8b0dd88505c1d63054db508590c26684158
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="security-basics-and-aspnet-support-c"></a>安全性基本概念和 ASP.NET 支援 (C#)
 ====================
@@ -188,11 +188,11 @@ ASP.NET 2.0 也導入了角色架構。 成員資格架構，例如角色 framew
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已數列已經過許多有用的檢閱者檢閱本教學課程。 前導檢閱者在此教學課程包含 Alicja Maziarz、 John Suru 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](an-overview-of-forms-authentication-cs.md)
+> [!div class="step-by-step"]
+> [下一步](an-overview-of-forms-authentication-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
-title: "建立全站台的版面配置使用主版頁面 (C#) |Microsoft 文件"
+title: 建立全站台的版面配置使用主版頁面 (C#) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會顯示主版頁面的基本概念。 也就是為何主版頁面的運作方式之一建立主版頁面、 什麼是內容預留位置的運作方式一個 cr..."
+description: 本教學課程會顯示主版頁面的基本概念。 也就是為何主版頁面的運作方式之一建立主版頁面、 什麼是內容預留位置的運作方式一個 cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8061a2aff318d397116cbc0bc0a8ce24ef35c7fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 72f870e07a4f7754e352dc3478d9c86d4cb43994
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-c"></a>建立全站台的版面配置使用主版頁面 (C#)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 
 [![Www.asp.net 網站所有頁面採用一致的外觀及操作](creating-a-site-wide-layout-using-master-pages-cs/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-cs/_static/image1.png)
 
-**圖 01**: www.asp.net 網站採用一致的外觀和感覺跨所有頁面 ([按一下以檢視完整大小的影像](creating-a-site-wide-layout-using-master-pages-cs/_static/image3.png))
+<strong>圖 01</strong>: www.asp.net 網站採用一致的外觀和感覺跨所有頁面 ([按一下以檢視完整大小的影像](creating-a-site-wide-layout-using-master-pages-cs/_static/image3.png))
 
 
 設計良好的站台的另一個屬性是的簡易可以變更站台的外觀。 圖 1 顯示在 www.asp.net 首頁上，從 2008 年 3 月開始，但現在與本教學課程中的發行集，之間可能變更外觀與風格。 可能會展開上方的功能表項目，包括 MVC 架構的新區段。 否則可能會市嶄新的設計，含有不同的色彩、 字型和配置。 將這類變更套用至整個站台，應該是網頁的既快速又簡單的程序不需要修改數千個組成該網站。
@@ -281,11 +281,11 @@ ASP.NET 引擎時呈現內容頁面，必須將網頁的內容使用其主版頁
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[下一步](multiple-contentplaceholders-and-default-content-cs.md)
+> [!div class="step-by-step"]
+> [下一步](multiple-contentplaceholders-and-default-content-cs.md)

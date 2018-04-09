@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs
-title: "偵錯預存程序 (C#) |Microsoft 文件"
+title: 偵錯預存程序 (C#) |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio Professional 和 Team System 的版本可讓您設定中斷點，然後逐步執行至 SQL Server 中的預存程序進行偵錯預存..."
+description: Visual Studio Professional 和 Team System 的版本可讓您設定中斷點，然後逐步執行至 SQL Server 中的預存程序進行偵錯預存...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3c5f797691a6920c65db7e3906aa5fd3b348b54b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 52bb409798dae550c664b78521f0fb4793464833
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="debugging-stored-procedures-c"></a>偵錯預存程序 (C#)
 ====================
@@ -167,7 +167,7 @@ Visual Studio 輕鬆地直接偵錯資料庫物件。 將 s 看看如何使用�
 
 第二項工作需要您使用偵錯應用程式的 Windows 使用者帳戶是有效的登入遠端資料庫上。 但是，機率是您登入您的工作站使用的 Windows 帳戶不是有效的登入 SQL Server 上。 而不是將您的特定登入帳戶加入至 SQL Server，就是比較好的選擇將某些 Windows 使用者帳戶指定為 SQL Server 偵錯帳戶。 然後，若要偵錯的遠端 SQL Server 執行個體的資料庫物件，您會執行 Visual Studio 中使用該 Windows 登入帳戶的認證。
 
-範例應該有助於釐清項目。 假設是名為的 Windows 帳戶`SQLDebug`Windows 網域內。 此帳戶會想要新增至遠端 SQL Server 執行個體做為有效的登入，且成員的身分`sysadmin`角色。 然後偵錯遠端 SQL Server 執行個體，從 Visual Studio，我們將需要執行 Visual Studio，做為`SQLDebug`使用者。 無法做到這超出我們工作站上，記錄中記錄為`SQLDebug`，，然後啟動 Visual Studio 中，但更簡單的方法會是我們工作站使用自己的認證來登入，然後使用`runas.exe`啟動 Visual Studio，做為`SQLDebug`使用者。 `runas.exe`可讓執行不同的使用者帳戶冒充特定應用程式。 若要啟動 Visual Studio，做為`SQLDebug`，您可以輸入下列陳述式，在命令列：
+範例應該有助於釐清項目。 假設是名為的 Windows 帳戶`SQLDebug`Windows 網域內。 此帳戶會想要新增至遠端 SQL Server 執行個體做為有效的登入，且成員的身分`sysadmin`角色。 然後偵錯遠端 SQL Server 執行個體，從 Visual Studio，我們將需要執行 Visual Studio，做為`SQLDebug`使用者。 無法做到這超出我們工作站上，記錄中記錄為`SQLDebug`，，然後啟動 Visual Studio 中，但更簡單的方法會是我們工作站使用自己的認證來登入，然後使用`runas.exe`啟動 Visual Studio，做為`SQLDebug`使用者。 `runas.exe` 可讓執行不同的使用者帳戶冒充特定應用程式。 若要啟動 Visual Studio，做為`SQLDebug`，您可以輸入下列陳述式，在命令列：
 
 
 [!code-console[Main](debugging-stored-procedures-cs/samples/sample2.cmd)]
@@ -190,8 +190,8 @@ Visual Studio 輕鬆地直接偵錯資料庫物件。 將 s 看看如何使用�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](protecting-connection-strings-and-other-configuration-information-cs.md)
-[下一頁](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](protecting-connection-strings-and-other-configuration-information-cs.md)
+> [下一頁](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md)

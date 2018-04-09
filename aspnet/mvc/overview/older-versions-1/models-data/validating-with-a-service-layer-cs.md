@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
-title: "驗證與服務層 (C#) |Microsoft 文件"
+title: 驗證與服務層 (C#) |Microsoft 文件
 author: StephenWalther
-description: "了解如何將驗證邏輯，從控制器動作移至個別的服務層移。 在此教學課程中，說明作者： Stephen Walther 如何您..."
+description: 了解如何將驗證邏輯，從控制器動作移至個別的服務層移。 在此教學課程中，說明作者： Stephen Walther 如何您...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f36301aef4377c6c00cb4fc33dbc5c57b1c426a9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 06042ac197cc54da767a94a44c57eb09bb3db9fa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-a-service-layer-c"></a>驗證與服務層 (C#)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/10/2017
 
 列表 2 中的控制站會使用儲存機制層在 [動作] 其 index 和 create （）。 請注意，此控制站不包含任何資料庫的邏輯。 建立儲存機制層可讓您維護清楚的重要性分離。 控制站會負責使用應用程式的流程控制邏輯和儲存機制會負責資料存取邏輯。
 
-**列出 2-Controllers\ProductController.cs**
+**Listing 2 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample2.cs)]
 
@@ -51,13 +51,13 @@ ms.lasthandoff: 11/10/2017
 
 例如，產品的服務層中列出的 3 具有 CreateProduct() 方法。 CreateProduct() 方法呼叫 ValidateProduct() 方法來驗證新產品，然後將產品傳遞至產品儲存機制。
 
-**列出 3-Models\ProductService.cs**
+**Listing 3 - Models\ProductService.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample3.cs)]
 
 已更新 Product 控制器中列出的 4，以使用服務層，而不是儲存機制層。 控制器層級交談的服務層。 儲存機制層交談服務層。 每個圖層都有個別的責任。
 
-**列出 4-Controllers\ProductController.cs**
+**Listing 4 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample4.cs)]
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 
 在列出 5，使其不再使用的模型狀態已更新服務層。 相反地，它會使用任何實作 IValidationDictionary 介面的類別。
 
-**列出 5-Models\ProductService.cs （分隔）**
+**Listing 5 - Models\ProductService.cs (decoupled)**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample5.cs)]
 
@@ -89,7 +89,7 @@ IValidationDictionary 介面被定義在程式碼範例 6。 這個簡單的介�
 
 最後，在列出 8 更新的控制器會使用 ModelStateWrapper 在其建構函式中建立服務層時。
 
-**列出 8-Controllers\ProductController.cs**
+**Listing 8 - Controllers\ProductController.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample8.cs)]
 
@@ -99,6 +99,6 @@ IValidationDictionary 介面被定義在程式碼範例 6。 這個簡單的介�
 
 本教學課程的目標是為了討論在 ASP.NET MVC 應用程式中執行驗證的其中一個方法。 在本教學課程中，您學會如何將所有驗證邏輯從您的控制站移至個別的服務層的移動。 您也學到如何建立 ModelStateWrapper 類別隔離您的服務層，從控制器層。
 
->[!div class="step-by-step"]
-[上一頁](validating-with-the-idataerrorinfo-interface-cs.md)
-[下一頁](validation-with-the-data-annotation-validators-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](validating-with-the-idataerrorinfo-interface-cs.md)
+> [下一頁](validation-with-the-data-annotation-validators-cs.md)

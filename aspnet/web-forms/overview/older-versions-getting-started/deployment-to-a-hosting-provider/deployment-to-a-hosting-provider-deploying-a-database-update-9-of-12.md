@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署資料庫更新-9 / 12 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署資料庫更新-9 / 12 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 44faca6ac2cdb9193f5c7f6b1d7f5a26e6e22248
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0a00f9d3ed284ebbc1d83c1b5696436e5ba00f4b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-database-update---9-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署資料庫更新-9 / 12
 ====================
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/10/2017
 > 顯示部署 Visual Studio 2012 RC 發行之後，引進的功能，示範如何將 SQL Server Compact 以外的 SQL Server 版本的部署和示範如何將部署至 Azure App Service Web 應用程式的教學課程，請參閱[ASP.NET Web 部署使用 Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程中，您在資料庫變更及相關的程式碼變更，在 Visual Studio 中，測試所做的變更，然後將更新部署到測試和實際執行環境。
 
@@ -99,6 +99,6 @@ Visual Studio 會部署更新的應用程式，並瀏覽器開啟至首頁。 �
 
 您現在已部署應用程式更新包含測試與實際的資料庫變更。 下一個教學課程會示範如何將資料庫從 SQL Server Compact 移轉至 SQL Server Express 和 SQL Server。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12.md)

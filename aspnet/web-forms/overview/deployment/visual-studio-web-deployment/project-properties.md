@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/project-properties
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 專案屬性 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 專案屬性 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
-ms.openlocfilehash: 85b6dbcc8d40c168a49513ef6b549f9ec7fa5097
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fba3f089bf1693eec873b08b4bc50e3accba06ee
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>使用 Visual Studio 的 ASP.NET Web 部署： 專案屬性
 ====================
@@ -68,6 +68,6 @@ ms.lasthandoff: 01/24/2018
 
 您現在已完成所有的部署設定工作。 在下一個教學課程中，將 Contoso 大學網站部署到測試環境和測試其存在。
 
->[!div class="step-by-step"]
-[上一頁](web-config-transformations.md)
-[下一頁](deploying-to-iis.md)
+> [!div class="step-by-step"]
+> [上一頁](web-config-transformations.md)
+> [下一頁](deploying-to-iis.md)

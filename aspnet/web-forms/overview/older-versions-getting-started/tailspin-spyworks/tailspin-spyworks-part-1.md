@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
-title: "第 1 部分： 檔案]-> [新增專案 |Microsoft 文件"
+title: 第 1 部分： 檔案]-> [新增專案 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和檔案/新增的專案。"
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和檔案/新增的專案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: bd840f9f3f5d723e6bc1bb35955a7770634e9483
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a1b9681516e626b6a0eec420b168a74e05d88afb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-file--new-project"></a>第 1 部分： 檔案]-> [新增專案
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和檔案/新增的專案。
 
 
-## <a id="_Toc260221666"></a>概觀
+## <a id="_Toc260221666"></a>  概觀
 
 本教學課程是 ASP.NET WebForms 的簡介。 我們將會啟動慢，因此初學者層級的 web 程式開發體驗也沒關係。
 
@@ -61,11 +61,11 @@ ms.lasthandoff: 11/10/2017
 
 我們一開始會藉由在 Visual Studio 2010 中，建立新的 ASP.NET WebForms 專案，我們將以累加方式新增至建立的完整運作應用程式的功能。 過程中，我們將討論資料庫存取權、 清單和格線檢視、 資料更新頁面、 資料驗證、 主版頁面使用一致的頁面配置、 AJAX、 驗證、 使用者成員資格，等等。
 
-您可以展開冒險逐步解說，或者，您可以下載完成的應用程式從[http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
+您可以展開冒險逐步解說，或者，您可以下載從完成的應用程式 [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
 
-您可以使用 Visual Studio 2010 或從可用 Visual Web Developer 2010 [https://www.microsoft.com/express/Web/](https://www.microsoft.com/express/Web/)。 若要建置應用程式，您可以使用 SQL Server 或免費 SQL Server Express 來裝載資料庫。
+您可以使用 Visual Studio 2010 或從可用 Visual Web Developer 2010 [ https://www.microsoft.com/express/Web/ ](https://www.microsoft.com/express/Web/)。 若要建置應用程式，您可以使用 SQL Server 或免費 SQL Server Express 來裝載資料庫。
 
-## <a id="_Toc260221667"></a>檔案 / 新增專案
+## <a id="_Toc260221667"></a>  檔案 / 新增專案
 
 我們會先從 Visual Studio 中的 [檔案] 功能表中選取新的專案。 這會開啟 [新增專案] 對話方塊。
 
@@ -105,5 +105,5 @@ ms.lasthandoff: 11/10/2017
 
 之後這樣我們就必須變更主版頁面中所有的.aspx 檔案參考產生預設的 ASP.NET WebForms 網頁。
 
->[!div class="step-by-step"]
-[下一步](tailspin-spyworks-part-2.md)
+> [!div class="step-by-step"]
+> [下一步](tailspin-spyworks-part-2.md)

@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core Google 外部登入安裝程式"
+title: 在 ASP.NET Core Google 外部登入安裝程式
 author: rick-anderson
-description: "本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Google 帳戶使用者驗證。"
+description: 本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Google 帳戶使用者驗證。
 manager: wpickett
 ms.author: riande
 ms.date: 08/02/2017
@@ -9,21 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: 1ca63593a7cf2b0eff1e52c0beda7ef2b826d474
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ab49eb1c45d69ff918b25190d7b94a105ff13972
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configuring-google-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Google 驗證
+# <a name="google-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Google 外部登入安裝程式
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何讓使用者使用 Google + 帳戶使用範例 ASP.NET Core 2.0 專案上建立登入[上一頁](index.md)。 遵循我們啟動[官方步驟](https://developers.google.com/identity/sign-in/web/devconsole-project)在 Google API 主控台中建立新的應用程式。
+本教學課程會示範如何讓使用者使用 Google + 帳戶使用範例 ASP.NET Core 2.0 專案上建立登入[上一頁](xref:security/authentication/social/index)。 遵循我們啟動[官方步驟](https://developers.google.com/identity/sign-in/web/devconsole-project)在 Google API 主控台中建立新的應用程式。
 
 ## <a name="create-the-app-in-google-api-console"></a>在 Google API 主控台中建立應用程式
 
-* 瀏覽至[https://console.developers.google.com/projectselector/apis/library](https://console.developers.google.com/projectselector/apis/library)並登入。 如果您還沒有 Google 帳戶，使用**更多選項** > **[建立帳戶](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**建立一個連結：
+* 瀏覽至[ https://console.developers.google.com/projectselector/apis/library ](https://console.developers.google.com/projectselector/apis/library)並登入。 如果您還沒有 Google 帳戶，使用**更多選項** > **[建立帳戶](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**建立一個連結：
 
 ![Google API 主控台](index/_static/GoogleConsoleLogin.png)
 
@@ -80,14 +80,13 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="store-google-clientid-and-clientsecret"></a>存放區 Google ClientID 和 ClientSecret
 
-連結機密設定，例如 Google`Client ID`和`Client Secret`您應用程式組態使用[密碼管理員](../../app-secrets.md)。 基於本教學課程的目的，名稱語彙基元`Authentication:Google:ClientId`和`Authentication:Google:ClientSecret`。
+連結機密設定，例如 Google`Client ID`和`Client Secret`您應用程式組態使用[密碼管理員](xref:security/app-secrets)。 基於本教學課程的目的，名稱語彙基元`Authentication:Google:ClientId`和`Authentication:Google:ClientSecret`。
 
 這些語彙基元的值可以在下一個步驟中下載 JSON 檔案中找到`web.client_id`和`web.client_secret`。
 
 ## <a name="configure-google-authentication"></a>設定 Google 驗證
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 加入在 Google 服務`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -102,10 +101,9 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 });
 ```
 
-[!INCLUDE[default settings configuration](includes/default-settings.md)]
+[!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 在本教學課程中使用的專案範本，可確保[Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)安裝封裝。
 
  * 若要安裝此套件與 Visual Studio 2017，以滑鼠右鍵按一下專案，然後選取**管理 NuGet 封裝**。
@@ -123,8 +121,7 @@ app.UseGoogleAuthentication(new GoogleOptions()
 });
 ```
 
----
-
+* * *
 請參閱[GoogleOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.googleoptions) API 參考，如需 Google 驗證所支援的組態選項的詳細資訊。 這可以用於要求的使用者不同的資訊。
 
 ## <a name="sign-in-with-google"></a>使用 Google 登入
@@ -151,7 +148,7 @@ app.UseGoogleAuthentication(new GoogleOptions()
 
 ## <a name="next-steps"></a>後續步驟
 
-* 這篇文章會示範您可以向 Google。 您可以依照類似的方法，來向其他提供者列在[上一頁](index.md)。
+* 這篇文章會示範您可以向 Google。 您可以依照類似的方法，來向其他提供者列在[上一頁](xref:security/authentication/social/index)。
 
 * 一旦您將您的網站發行至 Azure web 應用程式時，您應該重設`ClientSecret`Google API 主控台中。
 

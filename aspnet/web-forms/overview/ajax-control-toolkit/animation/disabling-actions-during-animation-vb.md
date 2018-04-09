@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
-title: "動畫 (VB) 期間停用動作 |Microsoft 文件"
+title: 動畫 (VB) 期間停用動作 |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它也支援動作..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它也支援動作...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0f68d27f60e9b224a7cc0d598962553afeb3f28f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9e2a0517800e90788bb67c1d75482a3d9340674b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="disabling-actions-during-animation-vb"></a>停用的動作，在動畫中的 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它也支援的動作，例如滑鼠點按。 不過當滑鼠點按開始播放動畫，最好在動畫期間停用滑鼠點按動作。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它也支援的動作，例如滑鼠點按。 不過當滑鼠點按開始播放動畫，最好在動畫期間停用滑鼠點按動作。
 
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 動畫執行時，會停用按鈕 ([按一下以檢視完整大小的影像](disabling-actions-during-animation-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](animating-in-response-to-user-interaction-vb.md)
-[下一頁](triggering-an-animation-in-another-control-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](animating-in-response-to-user-interaction-vb.md)
+> [下一頁](triggering-an-animation-in-another-control-vb.md)

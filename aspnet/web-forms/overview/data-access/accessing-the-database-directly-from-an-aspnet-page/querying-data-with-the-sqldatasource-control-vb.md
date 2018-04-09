@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb
-title: "查詢資料與 SqlDataSource 控制項 (VB) |Microsoft 文件"
+title: 查詢資料與 SqlDataSource 控制項 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在先前的教學課程中，我們會使用 ObjectDataSource 控制項將完全分開資料存取層中的展示層。 從這個老師..."
+description: 在先前的教學課程中，我們會使用 ObjectDataSource 控制項將完全分開資料存取層中的展示層。 從這個老師...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a3832bd9847ec8e789b71d13b30a673c8779f4ac
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6f886ca85a2a4dea5daeff109370bedc1a3f7265
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="querying-data-with-the-sqldatasource-control-vb"></a>查詢資料與 SqlDataSource 控制項 (VB)
 ====================
@@ -201,7 +201,7 @@ SqlDataSource 可以設定為傳回 DataReader 而不是資料集，藉由變更
 
 ![建立名為 ProductsWithCategoryInfoDataSource 新 SqlDataSource 控制項](querying-data-with-the-sqldatasource-control-vb/_static/image18.gif)
 
-**圖 12**： 建立新的 SqlDataSource 控制項，名為`ProductsWithCategoryInfoDataSource`
+**圖 12**： 建立新的 SqlDataSource 控制項，名為 `ProductsWithCategoryInfoDataSource`
 
 
 下一個畫面會詢問您指定的資料庫。 我們在上一步濆迶 7 選取`NORTHWINDConnectionString`從下拉式清單，然後按一下 [下一步]。 在 設定 Select 陳述式畫面中，自訂 SQL 陳述式或預存程序 選項按鈕，選擇 指定，按一下 下一步。 這會顯示定義自訂陳述式或預存程序螢幕，可提供選取、 更新、 插入和刪除標示為索引標籤。 每個索引標籤中，您可以在文字方塊中輸入自訂的 SQL 陳述式，或從下拉式清單中選擇 預存程序。 在此教學課程中我們將探討輸入自訂的 SQL 陳述式。下一個教學課程包含的範例會使用預存程序。
@@ -256,12 +256,12 @@ SqlDataSource 可以設定為傳回 DataReader 而不是資料集，藉由變更
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Susan Connery、 Bernadette Leigh 和 David Suru。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)
-[下一頁](using-parameterized-queries-with-the-sqldatasource-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)
+> [下一頁](using-parameterized-queries-with-the-sqldatasource-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
-title: "允許文字方塊 (C#) 中的某些字元 |Microsoft 文件"
+title: 允許文字方塊 (C#) 中的某些字元 |Microsoft 文件
 author: wenz
-description: "ASP.NET 驗證控制項可以確保特定的字元，允許在使用者輸入。 不過這仍無法防止使用者輸入不正確..."
+description: ASP.NET 驗證控制項可以確保特定的字元，允許在使用者輸入。 不過這仍無法防止使用者輸入不正確...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 246c3b5dd55ceb0f47ad1f4982ae5b3bf855e747
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d2ffc4b741bd0c7f9c456b6e76017f5350ab6378
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-c"></a>允許文字方塊 (C#) 中的某些字元
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > ASP.NET 驗證控制項可以確保特定的字元，允許在使用者輸入。 不過這仍不會無法防止使用者輸入無效的字元，而且嘗試送出表單。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 ASP.NET 驗證控制項可以確保特定的字元，允許在使用者輸入。 不過這仍不會無法防止使用者輸入無效的字元，而且嘗試送出表單。
 
@@ -45,10 +45,10 @@ ASP.NET AJAX Control Toolkit 包含`FilteredTextBox`擴充文字方塊控制項�
 
 最後，`FilteredTextBoxExtender`控制項負責限制允許使用者輸入的字元。 首先，設定`TargetControlID`屬性`ID`的`TextBox`控制項。 然後，選擇其中一個可用`FilterType`值：
 
-- `Custom`預設值;您必須提供有效的字元的清單
-- `LowercaseLetters`只使用小寫字母
-- `Numbers`只有數字
-- `UppercaseLetters`只有大寫的字母
+- `Custom` 預設值;您必須提供有效的字元的清單
+- `LowercaseLetters` 只使用小寫字母
+- `Numbers` 只有數字
+- `UppercaseLetters` 只有大寫的字母
 
 如果`Custom FilterType`使用時，`ValidChars`屬性必須設定，並提供一份可能輸入的字元。 方式： 如果您嘗試將文字貼到文字方塊中，會移除所有無效的字元。
 
@@ -63,5 +63,5 @@ ASP.NET AJAX Control Toolkit 包含`FilteredTextBox`擴充文字方塊控制項�
 
 可能會輸入只有數字 ([按一下以檢視完整大小的影像](allowing-only-certain-characters-in-a-text-box-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](allowing-only-certain-characters-in-a-text-box-vb.md)
+> [!div class="step-by-step"]
+> [下一步](allowing-only-certain-characters-in-a-text-box-vb.md)

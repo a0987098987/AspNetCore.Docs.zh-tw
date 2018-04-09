@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
-title: "建立 ASP.NET Web Form 應用程式與 SMS 雙因素驗證 (C#) |Microsoft 文件"
+title: 建立 ASP.NET Web Form 應用程式與 SMS 雙因素驗證 (C#) |Microsoft 文件
 author: Erikre
-description: "本教學課程會示範如何建置使用雙因素驗證的 ASP.NET Web Form 應用程式。 本教學課程是設計用來補充本教學課程的標題為 Cr..."
+description: 本教學課程會示範如何建置使用雙因素驗證的 ASP.NET Web Form 應用程式。 本教學課程是設計用來補充本教學課程的標題為 Cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/09/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: b1f0ec0fdefa12eb7f7b2714dbc224fef735f4bb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6c040fd3e0592b8cfd230dcd85ed3293f0a22ba7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>建立 ASP.NET Web Form 應用程式與 SMS 雙因素驗證 (C#)
 ====================
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/24/2018
 2. 從**儀表板**Twilio 帳戶、 複製的索引標籤**帳戶 SID**和**驗證語彙基元。** 您會將它們加入您的應用程式更新版本。
 3. 從**數字**索引標籤上，複製您的 Twilio**電話號碼**以及。
 4. 請 Twilio**帳戶 SID**，**驗證語彙基元**和**電話號碼**可用應用程式。 為了簡單起見，您會儲存這些值*web.config*檔案。 當您部署至 Azure 時，您可以儲存在安全的值**appSettings**區段上的網站設定 索引標籤。此外，當您新增的電話號碼，只使用數字。   
- 請注意，您也可以加入的 SendGrid 認證。 SendGrid 是電子郵件通知服務。 如需如何啟用 SendGrid 的詳細資訊，請參閱標題為 「 教學課程的 ' 攔截向上 SendGrid' 區段[建立安全 ASP.NET Web Form 應用程式與使用者註冊、 電子郵件確認和密碼重設。](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
+   請注意，您也可以加入的 SendGrid 認證。 SendGrid 是電子郵件通知服務。 如需如何啟用 SendGrid 的詳細資訊，請參閱標題為 「 教學課程的 ' 攔截向上 SendGrid' 區段[建立安全 ASP.NET Web Form 應用程式與使用者註冊、 電子郵件確認和密碼重設。](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
 
     [!code-xml[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample1.xml?highlight=2,6-10)]
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample6.cs?highlight=3-4,13)]
 
- 藉由進行變更，上述程式碼，包含驗證選項的 「 提供者 > DropDownList 不會重設第一個值。 這可讓使用者順利選取所有選項，使用驗證時，不只是第一個。
+   藉由進行變更，上述程式碼，包含驗證選項的 「 提供者 > DropDownList 不會重設第一個值。 這可讓使用者順利選取所有選項，使用驗證時，不只是第一個。
 10. 在**方案總管 中**，以滑鼠右鍵按一下*Default.aspx*選取**設定為起始頁**。
 11. 藉由測試您的應用程式，第一次建置應用程式 (**Ctrl**+**Shift**+**B**)，然後執行應用程式 (**F5**) 和請選取**註冊**若要建立新的使用者帳戶，或選取**登入**如果已註冊的使用者帳戶。
 12. 一旦您 （以使用者的身分） 登入，按一下巡覽列，以顯示在使用者識別碼 （電子郵件地址）**管理帳戶**頁面 (Manage.aspx)。  
@@ -94,7 +94,7 @@ ms.lasthandoff: 01/24/2018
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image3.png)
 14. 新增電話號碼，其中 （如使用者） 您想要接收簡訊 （文字訊息），然後按一下**送出** 按鈕。   
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image4.png)  
- 此時，應用程式將使用的認證從*Web.config*連絡 Twilio。 SMS 訊息 （文字訊息） 會傳送到行動電話的使用者帳戶相關聯。 您可以確認 Twilio 訊息已傳送的檢視 Twilio 儀表板。
+    此時，應用程式將使用的認證從*Web.config*連絡 Twilio。 SMS 訊息 （文字訊息） 會傳送到行動電話的使用者帳戶相關聯。 您可以確認 Twilio 訊息已傳送的檢視 Twilio 儀表板。
 15. 幾分鐘後，使用者帳戶相關聯的電話會收到包含驗證碼的文字訊息。 輸入驗證碼和按**送出**。  
      ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image5.png)
 

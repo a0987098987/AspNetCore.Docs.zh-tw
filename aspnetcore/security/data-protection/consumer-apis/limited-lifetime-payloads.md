@@ -1,7 +1,7 @@
 ---
-title: "限制受保護的裝載的存留期"
+title: 限制受保護 ASP.NET Core 中裝載的存留期
 author: rick-anderson
-description: "本文件說明如何限制使用 ASP.NET Core 資料保護 Api 的受保護內容的存留期。"
+description: 了解如何限制使用 ASP.NET Core 資料保護 Api 的受保護內容的存留期。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: d631851b5b933d75c37a308f492840e3442e6f1a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 324887b3d29de989ad855c4e78fd5a235fdb560e
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="limiting-the-lifetime-of-protected-payloads"></a>限制受保護的裝載的存留期
+# <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>限制受保護 ASP.NET Core 中裝載的存留期
 
 沒有應用程式開發人員要建立一段時間之後過期的受保護的內容的案例。 例如，受保護的內容可能代表一小時只能為有效的密碼重設語彙基元。 很可能建立自己裝載格式，其中包含內嵌的到期日，開發人員和進階開發人員可能會想要這樣做，但對於大部分的開發人員管理這些到期日的成長繁瑣。
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="api-usage"></a>API 使用方式
 
-`ITimeLimitedDataProtector`介面是保護和解除時間限制 / 即將過期自我裝載的核心介面。 若要建立的執行個體`ITimeLimitedDataProtector`，您必須先執行個體的一般[IDataProtector](overview.md)特定目的所建構。 一次`IDataProtector`執行個體可用時，請呼叫`IDataProtector.ToTimeLimitedDataProtector`擴充方法，讓回復保護裝置具有內建到期功能。
+`ITimeLimitedDataProtector`介面是保護和解除時間限制 / 即將過期自我裝載的核心介面。 若要建立的執行個體`ITimeLimitedDataProtector`，您必須先執行個體的一般[IDataProtector](xref:security/data-protection/consumer-apis/overview)特定目的所建構。 一次`IDataProtector`執行個體可用時，請呼叫`IDataProtector.ToTimeLimitedDataProtector`擴充方法，讓回復保護裝置具有內建到期功能。
 
 `ITimeLimitedDataProtector` 會公開下列 API 介面和擴充方法：
 
-* CreateProtector （字串用途）： 這個 API 已類似現有 ITimeLimitedDataProtector- `IDataProtectionProvider.CreateProtector` ，它可以用來建立[用途鏈結](purpose-strings.md)從根時間限制保護裝置。
+* CreateProtector （字串用途）： 這個 API 已類似現有 ITimeLimitedDataProtector- `IDataProtectionProvider.CreateProtector` ，它可以用來建立[用途鏈結](xref:security/data-protection/consumer-apis/purpose-strings)從根時間限制保護裝置。
 
 * Protect(byte[] plaintext, DateTimeOffset expiration) : byte[]
 
@@ -56,6 +56,6 @@ ms.lasthandoff: 03/02/2018
 >[!WARNING]
 > 它已不建議使用這些 Api 來保護裝載需要長期或無限期的持續性。 「 可我負擔的月份是永久無法復原受保護的內容嗎？ 」 可以做為最佳經驗法則;如果答案是沒有然後開發人員應該考慮替代的 Api。
 
-使用下列的範例[非 DI 程式碼路徑](../configuration/non-di-scenarios.md)具現化的資料保護系統。 若要執行此範例，請確認您有第一次加入 Microsoft.AspNetCore.DataProtection.Extensions 封裝的參考。
+使用下列的範例[非 DI 程式碼路徑](xref:security/data-protection/configuration/non-di-scenarios)具現化的資料保護系統。 若要執行此範例，請確認您有第一次加入 Microsoft.AspNetCore.DataProtection.Extensions 封裝的參考。
 
 [!code-csharp[](limited-lifetime-payloads/samples/limitedlifetimepayloads.cs)]

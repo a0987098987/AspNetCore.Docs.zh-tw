@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
-title: "建立資料存取層 (C#) |Microsoft 文件"
+title: 建立資料存取層 (C#) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程中我們會從一開始啟動並建立資料存取層 (DAL)，使用具類型資料集，來存取資料庫中的資訊。"
+description: 本教學課程中我們會從一開始啟動並建立資料存取層 (DAL)，使用具類型資料集，來存取資料庫中的資訊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/05/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7e1a457c23ef659bf7ee9c15b66dc5c2d8a31416
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>建立資料存取層 (C#)
 ====================
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/15/2018
 
 這些方法，叫用時，將連接到資料庫、 發出適當的查詢，並傳回結果。 我們決定傳回這些結果的方式很重要。 這些方法可能只會傳回資料集或 DataReader 填入資料庫查詢，但在理想情況下這些結果應該傳回使用*強型別物件*。 強型別物件是在編譯時期，嚴格定義其結構描述而相反，是透過鬆散型別的物件，則是其中一個執行階段之前不知道其結構描述。
 
-比方說，DataReader 和 （依預設） 資料集是透過鬆散型別物件，因為其結構描述由用來填入資料庫查詢所傳回的資料行所定義。 若要從鬆散型別的 DataTable，我們需要使用類似下面的語法存取特定資料行: ***DataTable*。資料列 [*索引*] ["*columnName *"]**。 DataTable 的鬆散型別在此範例中會顯示我們需要存取使用字串或序數索引的資料行名稱的事實。 強型別 DataTable，相反地，會有每個實作為屬性，其資料行導致程式碼所示： ***DataTable*。資料列 [*索引*]。*columnName***。
+比方說，DataReader 和 （依預設） 資料集是透過鬆散型別物件，因為其結構描述由用來填入資料庫查詢所傳回的資料行所定義。 若要從鬆散型別的 DataTable，我們需要使用類似下面的語法存取特定資料行：  <strong><em>DataTable</em>。資料列 [<em>索引</em>] ["<em>columnName</em>"]</strong>。 DataTable 的鬆散型別在此範例中會顯示我們需要存取使用字串或序數索引的資料行名稱的事實。 強型別 DataTable，相反地，會有每個實作為屬性，其資料行導致程式碼所示：  <strong><em>DataTable</em>。資料列 [<em>索引</em>]。*columnName</strong>*。
 
 若要傳回強型別物件，開發人員可以建立自己的自訂商務物件或使用型別資料集。 類別，其屬性通常會反映基礎資料庫資料表的商務物件的資料行表示為開發人員所實作的商務物件。 型別資料集是由基礎資料庫結構描述和其成員的強型別根據此結構描述上的 Visual Studio 為您產生的類別。 輸入資料集本身包含的擴充 ADO.NET 資料集、 DataTable 和 DataRow 類別的類別。 除了強型別 Datatable，具類型資料集現在也包含 TableAdapters，也就是具有填入資料集的 Datatable 和傳播回資料庫中的 Datatable 修改方法的類別。
 
@@ -124,7 +124,7 @@ TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫�
 **圖 5**： 從下拉式清單中選擇 Northwind 資料庫 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image13.png))
 
 
-之後選取資料庫，然後按一下 下一步，您將需要在想要儲存的連接字串中**Web.config**檔案。 儲存連接字串中，您可避免將它永久的自動程式碼中的 TableAdapter 類別，可簡化作業，如果連接字串資訊在未來變更。 如果您選擇將連接字串儲存在組態檔中將它放在 **&lt;connectionStrings&gt;** 區段中，它可以是[選擇性地加密](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)以改進安全性或修改過，稍後透過在 IIS GUI 管理工具中，這是系統管理員更理想新的 ASP.NET 2.0 屬性頁。
+之後選取資料庫，然後按一下 下一步，您將需要在想要儲存的連接字串中**Web.config**檔案。 儲存連接字串中，您可避免將它永久的自動程式碼中的 TableAdapter 類別，可簡化作業，如果連接字串資訊在未來變更。 如果您選擇將連接字串儲存在組態檔中將它放在**&lt;connectionStrings&gt;**區段中，它可以是[選擇性地加密](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)以改進安全性或修改過，稍後透過在 IIS GUI 管理工具中，這是系統管理員更理想新的 ASP.NET 2.0 屬性頁。
 
 
 [![將連接字串儲存至 Web.config](creating-a-data-access-layer-cs/_static/image15.png)](creating-a-data-access-layer-cs/_static/image14.png)
@@ -233,7 +233,7 @@ AllProducts.aspx.cs
 **圖 15**： 選擇建立**選取**陳述式的傳回資料列 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image41.png))
 
 
-下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同**選取**陳述式從**GetProducts()**，但加入下列**其中**子句：**其中 CategoryID = @CategoryID** 。  **@CategoryID** 參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
+下一個步驟是定義用來存取資料的 SQL 查詢。 由於我們想要傳回屬於特定類別的產品，我會使用相同<strong>選取</strong>陳述式從<strong>GetProducts()</strong>，但加入下列<strong>其中</strong>子句：<strong>其中 CategoryID = @CategoryID</strong> 。 <strong>@CategoryID</strong>參數表示 TableAdapter 精靈正在建立的方法，將會要求輸入的參數的對應型別 （也就是可為 null 整數）。
 
 
 [![輸入查詢只傳回指定的類別目錄中的 產品](creating-a-data-access-layer-cs/_static/image43.png)](creating-a-data-access-layer-cs/_static/image42.png)
@@ -241,7 +241,7 @@ AllProducts.aspx.cs
 **圖 16**： 輸入查詢只傳回產品中指定的類別目錄 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image44.png))
 
 
-最後一個步驟中，我們可以選擇資料存取模式來使用，以及自訂方法產生的名稱。 填滿模式，讓我們將名稱變更為**FillByCategoryID**和傳回的 DataTable 傳回模式 (**取得 * X*** 方法)，讓我們使用**GetProductsByCategoryID**.
+最後一個步驟中，我們可以選擇資料存取模式來使用，以及自訂方法產生的名稱。 填滿模式，讓我們將名稱變更為<strong>FillByCategoryID</strong>和傳回的 DataTable 傳回模式 (<strong>取得*X</strong>* 方法)，讓我們使用<strong>GetProductsByCategoryID</strong>。
 
 
 [![選擇的 TableAdapter 方法的名稱](creating-a-data-access-layer-cs/_static/image46.png)](creating-a-data-access-layer-cs/_static/image45.png)
@@ -403,48 +403,48 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 - **ProductsTableAdapter**
 
-    - **GetProducts**: 
+  - **GetProducts**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample10.sql)]
-    - **GetProductsByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample10.sql)]
+  - **GetProductsByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample11.sql)]
-    - **GetProductsBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample11.sql)]
+  - **GetProductsBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample12.sql)]
-    - **GetProductByProductID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample12.sql)]
+  - **GetProductByProductID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample13.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample13.sql)]
 - **CategoriesTableAdapter**
 
-    - **GetCategories**: 
+  - **GetCategories**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample14.sql)]
-    - **GetCategoryByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample14.sql)]
+  - **GetCategoryByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample15.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample15.sql)]
 - **SuppliersTableAdapter**
 
-    - **GetSuppliers**: 
+  - **GetSuppliers**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample16.sql)]
-    - **GetSuppliersByCountry**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample16.sql)]
+  - **GetSuppliersByCountry**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample17.sql)]
-    - **GetSupplierBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample17.sql)]
+  - **GetSupplierBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample18.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample18.sql)]
 - **EmployeesTableAdapter**
 
-    - **GetEmployees**: 
+  - **GetEmployees**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample19.sql)]
-    - **GetEmployeesByManager**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample19.sql)]
+  - **GetEmployeesByManager**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample20.sql)]
-    - **GetEmployeeByEmployeeID**: 
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample20.sql)]
+  - **GetEmployeeByEmployeeID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample21.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample21.sql)]
 
 
 [![DataSet 設計工具之後已加入四個 TableAdapters](creating-a-data-access-layer-cs/_static/image84.png)](creating-a-data-access-layer-cs/_static/image83.png)
@@ -543,5 +543,5 @@ SuppliersAndProducts.aspx.cs
 
 許多有用的檢閱者已檢閱本教學課程系列。 會導致此教學課程中的檢閱者已 Ron 綠色、 Hilton Giesenow、 Dennis Patterson、 Liz Shulok、 Abel Gomez 和 Carlos Santos。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](creating-a-business-logic-layer-cs.md)
+> [!div class="step-by-step"]
+> [下一步](creating-a-business-logic-layer-cs.md)

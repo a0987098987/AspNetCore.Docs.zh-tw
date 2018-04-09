@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
-title: "快取資料中的架構 (C#) |Microsoft 文件"
+title: 快取資料中的架構 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在上一個教學課程中，我們學到如何套用展示層的快取的內容。 本教學課程中我們會了解如何利用我們的分層 architectu..."
+description: 在上一個教學課程中，我們學到如何套用展示層的快取的內容。 本教學課程中我們會了解如何利用我們的分層 architectu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0b068b3020b5c454519950e436115a7efa044fb4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9ca91ecdaed536fe69196e0f726138590d7a9b77
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching-data-in-the-architecture-c"></a>快取資料中的架構 (C#)
 ====================
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/24/2018
 
 ![加入新的資料夾，名為 CL 和名為 ProductsCL.cs 類別](caching-data-in-the-architecture-cs/_static/image2.png)
 
-**圖 2**： 加入新的資料夾，名為`CL`和類別，名為`ProductsCL.cs`
+**圖 2**： 加入新的資料夾，名為`CL`和類別，名為 `ProductsCL.cs`
 
 
 `ProductsCL`類別應包含相同的資料存取和修改方法，在其對應的商務邏輯層類別集 (`ProductsBLL`)。 而不是建立所有這些方法，可讓的 s 建構 CL 幾個這裡的操作有初步的模式使用。 特別是，我們會將新增`GetProducts()`和`GetProductsByCategoryID(categoryID)`步驟 3 中的方法和`UpdateProduct`步驟 4 中的多載。 您可以加入其餘`ProductsCL`方法和`CategoriesCL`， `EmployeesCL`，和`SuppliersCL`在閒暇類別。
@@ -62,7 +62,7 @@ ObjectDataSource 快取內部瀏覽先前的教學課程中的功能會使用 AS
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample1.cs)]
 
-[ `Cache`類別](https://msdn.microsoft.com/library/system.web.caching.cache.aspx)s [ `Insert`方法](https://msdn.microsoft.com/library/system.web.caching.cache.insert.aspx)的數目多載。 `Cache["key"] = value`和`Cache.Insert(key, value)`同義，同時將項目至快取使用未定義的到期的指定的金鑰。 一般而言，我們想要指定到期時將項目加入快取中，當做相依性、 以時間為基礎的到期，或兩者。 使用其中一個其他`Insert`的方法多載，以提供相依性或時間為基礎的過期資訊。
+[ `Cache`類別](https://msdn.microsoft.com/library/system.web.caching.cache.aspx)s [ `Insert`方法](https://msdn.microsoft.com/library/system.web.caching.cache.insert.aspx)的數目多載。 `Cache["key"] = value` 和`Cache.Insert(key, value)`同義，同時將項目至快取使用未定義的到期的指定的金鑰。 一般而言，我們想要指定到期時將項目加入快取中，當做相依性、 以時間為基礎的到期，或兩者。 使用其中一個其他`Insert`的方法多載，以提供相依性或時間為基礎的過期資訊。
 
 快取層需要先檢查 如果要求的資料會快取中，若是如此，s 方法會傳回它從該處。 如果要求的資料不是快取中，適當的 BLL 方法需要叫用。 其傳回的值應該快取，並將傳回，如下列順序圖表所示。
 
@@ -113,7 +113,7 @@ ObjectDataSource 快取內部瀏覽先前的教學課程中的功能會使用 AS
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample6.cs)]
 
-`GetCacheItem(key)`不會使用*金鑰*值加以提供，而是呼叫`GetCacheKey(key)`方法，這個方法會傳回*金鑰*ProductsCache-前面加上。 `MasterCacheKeyArray`，其中保留字串 ProductsCache，也會使用`AddCacheItem(key, value)`方法中，我們將會立即看到。
+`GetCacheItem(key)` 不會使用*金鑰*值加以提供，而是呼叫`GetCacheKey(key)`方法，這個方法會傳回*金鑰*ProductsCache-前面加上。 `MasterCacheKeyArray`，其中保留字串 ProductsCache，也會使用`AddCacheItem(key, value)`方法中，我們將會立即看到。
 
 從 ASP.NET 頁面 s 程式碼後置類別，讓資料快取可使用存取`Page`類別 s [ `Cache`屬性](https://msdn.microsoft.com/library/system.web.ui.page.cache.aspx)，並允許類似下面的語法`Cache["key"] = value`，如步驟 2 所述。 架構中的類別，從資料快取可使用`HttpRuntime.Cache`或`HttpContext.Current.Cache`。 [Peter Johnson](https://weblogs.asp.net/pjohnson/default.aspx)的部落格項目[HttpRuntime.Cache vs。HttpContext.Current.Cache](https://weblogs.asp.net/pjohnson/httpruntime-cache-vs-httpcontext-current-cache)資訊使用的輕微的效能優點`HttpRuntime`而不是`HttpContext.Current`; 因此，`ProductsCL`使用`HttpRuntime`。
 
@@ -126,7 +126,7 @@ ObjectDataSource 快取內部瀏覽先前的教學課程中的功能會使用 AS
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample7.cs)]
 
-`DateTime.Now.AddSeconds(CacheDuration)`指定以時間為基礎的到期日期 60 秒的未來 while [ `System.Web.Caching.Cache.NoSlidingExpiration` ](https://msdn.microsoft.com/library/system.web.caching.cache.noslidingexpiration(vs.80).aspx)指出那里 s 沒有滑動期限。 雖然這`Insert`方法多載具有輸入參數的兩個絕對和滑動過期，您可以只提供兩個的其中一個。 如果您嘗試將指定的絕對時間和時間範圍內，`Insert`方法會擲回`ArgumentException`例外狀況。
+`DateTime.Now.AddSeconds(CacheDuration)` 指定以時間為基礎的到期日期 60 秒的未來 while [ `System.Web.Caching.Cache.NoSlidingExpiration` ](https://msdn.microsoft.com/library/system.web.caching.cache.noslidingexpiration(vs.80).aspx)指出那里 s 沒有滑動期限。 雖然這`Insert`方法多載具有輸入參數的兩個絕對和滑動過期，您可以只提供兩個的其中一個。 如果您嘗試將指定的絕對時間和時間範圍內，`Insert`方法會擲回`ArgumentException`例外狀況。
 
 > [!NOTE]
 > 這項實作`AddCacheItem(key, value)`方法目前有一些缺點。 我們將地址，並克服這些問題，在步驟 4。
@@ -150,7 +150,7 @@ ObjectDataSource 快取內部瀏覽先前的教學課程中的功能會使用 AS
 
 [!code-csharp[Main](caching-data-in-the-architecture-cs/samples/sample9.cs)]
 
-`MasterCacheKeyArray`是保存的 ProductsCache 的值的字串陣列。 首先，快取項目加入至快取，並指派給目前的日期和時間。 如果快取項目已經存在，它會更新。 接下來，會建立快取相依性。 [ `CacheDependency`類別](https://msdn.microsoft.com/library/system.web.caching.cachedependency(VS.80).aspx)s 建構函式有多種多載，但在這裡使用的一個必須要有兩個`string`陣列的輸入。 第一個指定檔案，可做為相依性的集合。 因為我們不想使用以檔案為基礎的相依性，值為`null`用於第一個輸入參數。 第二個輸入的參數會指定要做為相依性的快取索引鍵集。 我們在這裡指定我們的單一相依性， `MasterCacheKeyArray`。 `CacheDependency`然後傳入`Insert`方法。
+`MasterCacheKeyArray` 是保存的 ProductsCache 的值的字串陣列。 首先，快取項目加入至快取，並指派給目前的日期和時間。 如果快取項目已經存在，它會更新。 接下來，會建立快取相依性。 [ `CacheDependency`類別](https://msdn.microsoft.com/library/system.web.caching.cachedependency(VS.80).aspx)s 建構函式有多種多載，但在這裡使用的一個必須要有兩個`string`陣列的輸入。 第一個指定檔案，可做為相依性的集合。 因為我們不想使用以檔案為基礎的相依性，值為`null`用於第一個輸入參數。 第二個輸入的參數會指定要做為相依性的快取索引鍵集。 我們在這裡指定我們的單一相依性， `MasterCacheKeyArray`。 `CacheDependency`然後傳入`Insert`方法。
 
 若要進行此項修改`AddCacheItem(key, value)`invaliding、 快取很簡單，只移除相依性。
 
@@ -198,12 +198,12 @@ ObjectDataSource 快取內部瀏覽先前的教學課程中的功能會使用 AS
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已本文 Murph。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](caching-data-with-the-objectdatasource-cs.md)
-[下一頁](caching-data-at-application-startup-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](caching-data-with-the-objectdatasource-cs.md)
+> [下一頁](caching-data-at-application-startup-cs.md)

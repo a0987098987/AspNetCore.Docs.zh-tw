@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/enhancing-data-validation
-title: "第一個使用 ASP.NET MVC 的 EF 資料庫： 強化資料驗證 |Microsoft 文件"
+title: 第一個使用 ASP.NET MVC 的 EF 資料庫： 強化資料驗證 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/29/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 842496c2d3ec56fb81f2409dd7d05d800f83799b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8ea2e94db7956b76c5ccf0a139ac024e38910b49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a>第一個使用 ASP.NET MVC 的 EF 資料庫： 強化資料驗證
 ====================
@@ -87,6 +87,6 @@ Metadata.cs 中的程式碼取代為下列程式碼。
 
 開啟 Student.cs 檔案或 Enrollment.cs 檔案，並請注意，先前所套用的資料驗證屬性不再是檔案中。 不過，執行應用程式，並注意當您輸入的資料仍會套用驗證規則。
 
->[!div class="step-by-step"]
-[上一頁](customizing-a-view.md)
-[下一頁](publish-to-azure.md)
+> [!div class="step-by-step"]
+> [上一頁](customizing-a-view.md)
+> [下一頁](publish-to-azure.md)

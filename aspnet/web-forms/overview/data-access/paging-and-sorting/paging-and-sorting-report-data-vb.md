@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb
-title: "分頁和排序報表資料 (VB) |Microsoft 文件"
+title: 分頁和排序報表資料 (VB) |Microsoft 文件
 author: rick-anderson
-description: "分頁和排序的兩個常見的功能，在線上的應用程式中顯示資料。 在此教學課程中我們將加入排序第一眼和..."
+description: 分頁和排序的兩個常見的功能，在線上的應用程式中顯示資料。 在此教學課程中我們將加入排序第一眼和...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 23dbd63110092b2e91b7f3f9f6b602ef917c5527
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c5e7e110d436caa7b7526eae105fde601367007a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="paging-and-sorting-report-data-vb"></a>分頁和排序報表資料 (VB)
 ====================
@@ -115,13 +115,13 @@ DetailsView 和 FormView 控制項只會顯示每個頁面的單一記錄。 在
 
 使用下列屬性可以自訂此 GridView、 DetailsView 和 FormView 的分頁介面：
 
-- `PagerStyle`表示樣式資訊的分頁介面。可以指定設定，例如`BackColor`， `ForeColor`， `CssClass`， `HorizontalAlign`，依此類推。
-- `PagerSettings`包含屬性，可以自訂分頁介面; 功能的 first`PageButtonCount`表示數值頁面 （預設值為 10） 的分頁介面中顯示的數字的最大數目; [ `Mode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pagersettings.mode.aspx)表示分頁介面如何運作，且可以設定為： 
+- `PagerStyle` 表示樣式資訊的分頁介面。可以指定設定，例如`BackColor`， `ForeColor`， `CssClass`， `HorizontalAlign`，依此類推。
+- `PagerSettings` 包含屬性，可以自訂分頁介面; 功能的 first`PageButtonCount`表示數值頁面 （預設值為 10） 的分頁介面中顯示的數字的最大數目; [ `Mode`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.pagersettings.mode.aspx)表示分頁介面如何運作，且可以設定為： 
 
-    - `NextPrevious`顯示下一個] 和 [上一步的按鈕，讓使用者逐步向前或向後一頁
-    - `NextPreviousFirstLast`除了下一步 和 上一步 按鈕，第一個和最後一個 按鈕也會包含，讓使用者快速移至第一個或最後一頁的資料
-    - `Numeric`顯示一系列的頁碼，讓使用者立即跳至任何頁面
-    - `NumericFirstLast`列印的頁碼，除了包含 第一個和最後一個按鈕，讓使用者快速移至第一個或最後一頁的資料;第一個/最後一個按鈕只會顯示於所有數字的頁碼不能配合
+    - `NextPrevious` 顯示下一個] 和 [上一步的按鈕，讓使用者逐步向前或向後一頁
+    - `NextPreviousFirstLast` 除了下一步 和 上一步 按鈕，第一個和最後一個 按鈕也會包含，讓使用者快速移至第一個或最後一頁的資料
+    - `Numeric` 顯示一系列的頁碼，讓使用者立即跳至任何頁面
+    - `NumericFirstLast` 列印的頁碼，除了包含 第一個和最後一個按鈕，讓使用者快速移至第一個或最後一頁的資料;第一個/最後一個按鈕只會顯示於所有數字的頁碼不能配合
 
 此外，GridView、 DetailsView 和所有提供的 FormView`PageIndex`和`PageCount`屬性，分別表示目前正在檢視的頁面和資料的總頁數。 `PageIndex`屬性具有索引 0，表示檢視資料的第一頁時開始`PageIndex`會等於 0。 `PageCount`相反地，啟動 計數 1，表示`PageIndex`僅限於的值介於 0 和`PageCount - 1`。
 
@@ -245,7 +245,7 @@ Web 控制項的資料提供許多可用來加強使用者的分頁體驗的屬�
 
 1. GridView s [Sorting 事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sorting(VS.80).aspx)引發
 2. GridView s [ `SortExpression`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sortexpression.aspx)設`SortExpression`欄位的 LinkButton 已按下其排序的標頭
-3. ObjectDataSource 重新擷取的所有資料從 BLL，，然後排序的資料，使用 GridView s`SortExpression`
+3. ObjectDataSource 重新擷取的所有資料從 BLL，，然後排序的資料，使用 GridView s `SortExpression`
 4. GridView 的`PageIndex`屬性重設為 0，表示排序使用者時傳回第一頁的資料 （假設已實作的分頁支援）
 5. GridView s [ `Sorted`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.sorted(VS.80).aspx)引發
 
@@ -306,8 +306,8 @@ Web 控制項的資料提供許多可用來加強使用者的分頁體驗的屬�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-customized-sorting-user-interface-cs.md)
-[下一頁](efficiently-paging-through-large-amounts-of-data-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-customized-sorting-user-interface-cs.md)
+> [下一頁](efficiently-paging-through-large-amounts-of-data-vb.md)

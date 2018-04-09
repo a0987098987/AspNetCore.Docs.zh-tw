@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs
-title: "快取資料在應用程式啟動 (C#) |Microsoft 文件"
+title: 快取資料在應用程式啟動 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在任何 Web 應用程式資料會經常使用，將不常使用某些資料。 我們可以改進我們的 ASP.NET 應用程式 b 效能..."
+description: 在任何 Web 應用程式資料會經常使用，將不常使用某些資料。 我們可以改進我們的 ASP.NET 應用程式 b 效能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3a618ad702763a59b87336784afd1cb74de06d4c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8d962a182b5136d3e44ce678a355c9679b4c8be1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching-data-at-application-startup-c"></a>快取資料在應用程式啟動 (C#)
 ====================
@@ -129,11 +129,11 @@ Web 應用程式初次啟動時執行程式碼，我們必須建立名為的特�
 
 預設值`Global.asax`檔案範本包含五種方法在伺服器端內`<script>`標記：
 
-- **`Application_Start`**web 應用程式第一次啟動時執行
-- **`Application_End`**應用程式正在關機而關閉時執行
-- **`Application_Error`**執行時處理的例外狀況到達應用程式
-- **`Session_Start`**建立新的工作階段時執行
-- **`Session_End`**執行工作階段已過期或已放棄時
+- **`Application_Start`** web 應用程式第一次啟動時執行
+- **`Application_End`** 應用程式正在關機而關閉時執行
+- **`Application_Error`** 執行時處理的例外狀況到達應用程式
+- **`Session_Start`** 建立新的工作階段時執行
+- **`Session_End`** 執行工作階段已過期或已放棄時
 
 `Application_Start` s 應用程式生命週期內一次呼叫事件處理常式。 在應用程式啟動第一次 ASP.NET 資源會從應用程式要求，會繼續執行，直到重新啟動應用程式時，這可能會藉由修改的內容`/Bin`資料夾中，修改`Global.asax`，修改在內容`App_Code`資料夾，或修改`Web.config`檔案，在其他原因。 請參閱[ASP.NET 應用程式生命週期概觀](https://msdn.microsoft.com/library/ms178473.aspx)的應用程式生命週期的更詳細討論。
 
@@ -194,12 +194,12 @@ S 都是這麼簡單 ！ 在應用程式啟動時，`LoadStaticCache()`方法將
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和 Zack Jones。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](caching-data-in-the-architecture-cs.md)
-[下一頁](using-sql-cache-dependencies-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](caching-data-in-the-architecture-cs.md)
+> [下一頁](using-sql-cache-dependencies-cs.md)

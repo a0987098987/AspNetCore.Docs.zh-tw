@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs
-title: "使用 DropDownList (C#) 進行篩選的主要/詳細資料 |Microsoft 文件"
+title: 使用 DropDownList (C#) 進行篩選的主要/詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們看到如何使用 DropDownLists 顯示 'master' 的記錄和資料清單來顯示單一網頁中顯示主要/詳細資料報表..."
+description: 在本教學課程中，我們看到如何使用 DropDownLists 顯示 'master' 的記錄和資料清單來顯示單一網頁中顯示主要/詳細資料報表...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c2199f0957f4cbe1d35dd971744087da9af1abce
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c84902ccf028c976246380abfaebb6a76c573603
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>主從式篩選搭配 DropDownList (C#)
 ====================
@@ -103,12 +103,12 @@ ms.lasthandoff: 11/10/2017
 **圖 7**： 選取`GetProductsByCategoryID(categoryID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image17.png))
 
 
-按一下 下一步之後，ObjectDataSource 精靈會提示我們之值的來源`GetProductsByCategoryID(categoryID)`方法的 *`categoryID`* 參數。 若要使用的所選值`categories`DropDownList 項目設定參數來源控制與以 ControlID `Categories`。
+按一下 下一步之後，ObjectDataSource 精靈會提示我們之值的來源`GetProductsByCategoryID(categoryID)`方法的*`categoryID`*參數。 若要使用的所選值`categories`DropDownList 項目設定參數來源控制與以 ControlID `Categories`。
 
 
 [![CategoryID 參數值設定為類別 DropDownList](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image19.png)](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image18.png)
 
-**圖 8**： 設定 *`categoryID`* 參數的值`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image20.png))
+**圖 8**： 設定*`categoryID`*參數的值`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image20.png))
 
 
 完成設定資料來源精靈，Visual Studio 會自動產生`ItemTemplate`如 DataList 顯示的名稱和每個資料欄位的值。 讓我們來增強改用 DataList`ItemTemplate`顯示只要產品的名稱、 類別、 供應商，每個單位和價格以及數量`SeparatorTemplate`，插入`<hr>`每個項目之間的項目。 我要使用`ItemTemplate`範例從[顯示的資料，以在 DataList 和中繼器控制項](../displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs.md)教學課程中，但可自由使用任何範本標記您找到最視覺上吸引人。
@@ -164,7 +164,7 @@ DropDownList 中加入新的清單項目，請前往 [屬性] 視窗，按一下
 **圖 13**： 選取 「-選擇分類-」 清單項目時，會顯示沒有產品 ([按一下以檢視完整大小的影像](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image31.png))
 
 
-而是會顯示如果*所有*產品的 「-選擇分類-」 選取選項時，使用值`-1`改為。 精明讀取器將會回收該回*主要/詳細資料篩選與 DropDownList*我們已更新的教學課程`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法以便如果 *`categoryID`* 值`-1`未傳回記錄的所有產品中傳遞。
+而是會顯示如果*所有*產品的 「-選擇分類-」 選取選項時，使用值`-1`改為。 精明讀取器將會回收該回*主要/詳細資料篩選與 DropDownList*我們已更新的教學課程`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法以便如果*`categoryID`*值`-1`未傳回記錄的所有產品中傳遞。
 
 ## <a name="summary"></a>總結
 
@@ -176,11 +176,11 @@ DropDownList 中加入新的清單項目，請前往 [屬性] 視窗，按一下
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝...
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已袁 Schmidt。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](master-detail-filtering-acess-two-pages-datalist-cs.md)
+> [!div class="step-by-step"]
+> [下一步](master-detail-filtering-acess-two-pages-datalist-cs.md)

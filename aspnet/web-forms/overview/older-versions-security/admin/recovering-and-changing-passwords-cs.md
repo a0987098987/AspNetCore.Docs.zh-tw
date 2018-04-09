@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
-title: "復原，以及變更密碼 (C#) |Microsoft 文件"
+title: 復原，以及變更密碼 (C#) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET 包含兩個 Web 控制項的協助復原，以及變更密碼。 Provider 控制項可讓訪客復原他遺失的 pa..."
+description: ASP.NET 包含兩個 Web 控制項的協助復原，以及變更密碼。 Provider 控制項可讓訪客復原他遺失的 pa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 76c02a3da7dffad25a7bee03efff6b693f261d85
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7f8b019631eff4840bf1759f8e2752946abcaf80
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="recovering-and-changing-passwords-c"></a>復原，以及變更密碼 (C#)
 ====================
@@ -86,7 +86,7 @@ Provider 控制項包含三種檢視：
 郵件傳遞組態透過指定[`<system.net>`元素](https://msdn.microsoft.com/library/6484zdc1.aspx)的[`<mailSettings>`元素](https://msdn.microsoft.com/library/w355a94k.aspx)。 使用[`<smtp>`元素](https://msdn.microsoft.com/library/ms164240.aspx)指出傳遞方法，而且位址的預設值。 下列標記會設定為使用名為網路 SMTP 伺服器的郵件設定`smtp.example.com`連接埠 25 上且擁有的使用者名稱和密碼的使用者名稱/密碼認證。
 
 > [!NOTE]
-> `<system.net>`是根目錄的子項目`<configuration>`項目和的同層級`<system.web>`。 因此，請不要將`<system.net>`內的項目`<system.web>`項目; 相反地，將其放置在相同層級。
+> `<system.net>` 是根目錄的子項目`<configuration>`項目和的同層級`<system.web>`。 因此，請不要將`<system.net>`內的項目`<system.web>`項目; 相反地，將其放置在相同層級。
 
 
 [!code-xml[Main](recovering-and-changing-passwords-cs/samples/sample1.xml)]
@@ -165,8 +165,8 @@ Provider 控制項所傳送的預設電子郵件是保持單調，而不是 （�
 
 當重設使用者密碼 Provider 控制呼叫`MembershipUser`物件的[`ResetPassword`方法](https://msdn.microsoft.com/library/system.web.security.membershipuser.resetpassword.aspx)。 這個方法有兩個多載：
 
-- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)**-重設使用者的密碼。 如果使用這個多載`RequiresQuestionAndAnswer`為 False。
-- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)**-重設使用者密碼才提供*securityAnswer*正確無誤。 如果使用這個多載`RequiresQuestionAndAnswer`為 True。
+- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)** -重設使用者的密碼。 如果使用這個多載`RequiresQuestionAndAnswer`為 False。
+- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)** -重設使用者密碼才提供*securityAnswer*正確無誤。 如果使用這個多載`RequiresQuestionAndAnswer`為 True。
 
 這兩個多載會傳回新的隨機產生的密碼。
 
@@ -300,16 +300,16 @@ ASP.NET 提供了兩個控制項，可協助使用者管理他們的密碼。 Pr
 - [ChangePassword 控制項快速入門](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/changepassword.aspx)
 - [Provider 控制項快速入門](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/passwordrecovery.aspx)
 - [在 ASP.NET 中傳送電子郵件](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
-- [`System.Net.Mail`常見問題集](http://www.systemnetmail.com/)
+- [`System.Net.Mail` 常見問題集](http://www.systemnetmail.com/)
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者包括 Michael Emmings 和 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者包括 Michael Emmings 和 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](building-an-interface-to-select-one-user-account-from-many-cs.md)
-[下一頁](unlocking-and-approving-user-accounts-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](building-an-interface-to-select-one-user-account-from-many-cs.md)
+> [下一頁](unlocking-and-approving-user-accounts-cs.md)

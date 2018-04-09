@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/create-a-database
-title: "建立資料庫 |Microsoft 文件"
+title: 建立資料庫 |Microsoft 文件
 author: microsoft
-description: "步驟 2 顯示建立資料庫保存所有 dinner 和 RSVP NerdDinner 應用程式資料的步驟。"
+description: 步驟 2 顯示建立資料庫保存所有 dinner 和 RSVP NerdDinner 應用程式資料的步驟。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
-ms.openlocfilehash: 7635722fc357356edd06fb4cff301a8c4dfebbef
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ba28d671bf13ec54b83b876462e2c23f90310037
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-database"></a>建立資料庫
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -131,6 +131,6 @@ ms.lasthandoff: 11/10/2017
 
 我們已完成建立資料庫。 我們現在來建立模型類別，我們可以用來查詢和更新它。
 
->[!div class="step-by-step"]
-[上一頁](create-a-new-aspnet-mvc-project.md)
-[下一頁](build-a-model-with-business-rule-validations.md)
+> [!div class="step-by-step"]
+> [上一頁](create-a-new-aspnet-mvc-project.md)
+> [下一頁](build-a-model-with-business-rule-validations.md)

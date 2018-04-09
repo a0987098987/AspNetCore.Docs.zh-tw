@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
-title: "部分 9： 註冊並簽出 |Microsoft 文件"
+title: 部分 9： 註冊並簽出 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 9 部份涵蓋註冊和簽出。"
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 第 9 部份涵蓋註冊和簽出。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 1caf836f8c92cbc9ab95e0aa990f81493e577a27
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: e7e83b70f2508b6dfc0c078b992747a76e4d0ff2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-9-registration-and-checkout"></a>部分 9： 註冊並簽出
 ====================
@@ -163,6 +163,6 @@ CheckoutController 會有下列的控制器動作：
 [!code-cshtml[Main](mvc-music-store-part-9/samples/sample13.cshtml)]
 
 
->[!div class="step-by-step"]
-[上一頁](mvc-music-store-part-8.md)
-[下一頁](mvc-music-store-part-10.md)
+> [!div class="step-by-step"]
+> [上一頁](mvc-music-store-part-8.md)
+> [下一頁](mvc-music-store-part-10.md)

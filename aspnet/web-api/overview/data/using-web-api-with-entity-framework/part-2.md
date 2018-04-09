@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-2
-title: "新增模型和控制站 |Microsoft 文件"
+title: 新增模型和控制站 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 7e09316f0faaf0731e4cdda48040fdaedc0f244a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 015bb9698d81387d03ea8f9629316fb53232e708
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="add-models-and-controllers"></a>新增模型和控制站
 ====================
@@ -84,8 +84,8 @@ Entity Framework 會使用這些模型來建立資料庫資料表。 每個模�
 
 按一下**新增**完成**加入控制器**對話方塊。 此對話方塊會將兩個類別加入至您的專案：
 
-- `AuthorsController`定義此 Web API 控制器。 控制器會執行 REST API 用戶端用來執行在清單上的 CRUD 作業的作者。
-- `BookServiceContext`在執行階段，其中包含填入物件，包含來自資料庫、 變更追蹤和保存資料與資料庫管理實體的物件。 它繼承自`DbContext`。
+- `AuthorsController` 定義此 Web API 控制器。 控制器會執行 REST API 用戶端用來執行在清單上的 CRUD 作業的作者。
+- `BookServiceContext` 在執行階段，其中包含填入物件，包含來自資料庫、 變更追蹤和保存資料與資料庫管理實體的物件。 它繼承自`DbContext`。
 
 ![](part-2/_static/image7.png)
 
@@ -93,6 +93,6 @@ Entity Framework 會使用這些模型來建立資料庫資料表。 每個模�
 
 ![](part-2/_static/image8.png)
 
->[!div class="step-by-step"]
-[上一頁](part-1.md)
-[下一頁](part-3.md)
+> [!div class="step-by-step"]
+> [上一頁](part-1.md)
+> [下一頁](part-3.md)

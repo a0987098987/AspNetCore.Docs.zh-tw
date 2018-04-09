@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
-title: "使用主版頁面，從 [內容] 頁面 (C#) 互動 |Microsoft 文件"
+title: 使用主版頁面，從 [內容] 頁面 (C#) 互動 |Microsoft 文件
 author: rick-anderson
-description: "會檢查呼叫方法、 從內容頁面中的程式碼中設定屬性的主版頁面等等的方式。"
+description: 會檢查呼叫方法、 從內容頁面中的程式碼中設定屬性的主版頁面等等的方式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 977cdea38d240bcae284968de7d780ec59ab6dfd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b550d8c2a64bb2ad91e1db7b2c25433f73dbd5b7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-c"></a>互動主版頁面，從 [內容] 頁面 (C#)
 ====================
@@ -261,18 +261,18 @@ Label 控制項會實作為主版頁面內的受保護的成員變數，因為�
 
 - [存取及更新在 ASP.NET 中的資料](http://aspnet.4guysfromrolla.com/articles/011106-1.aspx)
 - [ASP.NET 主版頁面： 秘訣、 竅門與設陷](http://www.odetocode.com/articles/450.aspx)
-- [`@MasterType`在 ASP.NET 2.0](http://odetocode.com/Blogs/scott/archive/2005/07/16/1944.aspx)
+- [`@MasterType` 在 ASP.NET 2.0](http://odetocode.com/Blogs/scott/archive/2005/07/16/1944.aspx)
 - [主版頁面內容之間傳遞資訊](http://aspnet.4guysfromrolla.com/articles/013107-1.aspx)
 - [在 ASP.NET 教學課程中使用的資料](../../data-access/index.md)
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Zack Jones。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Zack Jones。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](control-id-naming-in-content-pages-cs.md)
-[下一頁](interacting-with-the-content-page-from-the-master-page-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](control-id-naming-in-content-pages-cs.md)
+> [下一頁](interacting-with-the-content-page-from-the-master-page-cs.md)

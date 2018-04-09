@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
-title: "部署特定的組建 |Microsoft 文件"
+title: 部署特定的組建 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何部署 web 封裝和資料庫指令碼從特定的前一個組建至新的目的地，像是預備或生產環境的流程圖..."
+description: 本主題描述如何部署 web 封裝和資料庫指令碼從特定的前一個組建至新的目的地，像是預備或生產環境的流程圖...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
 msc.type: authoredcontent
-ms.openlocfilehash: be1000f0cbc2f509f5014789c2bc47ce2b12fb2f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 271d084b3c69016df5be28ada032973bf7fd5a49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-a-specific-build"></a>部署特定的組建
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 01/24/2018
 > 本主題描述如何部署 web 封裝和資料庫指令碼至新的目的地，像是預備或生產環境特定的前一個組建。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，請在它的組建和部署程序由兩個專案檔 & #x 2014年; one 包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，兩個專案檔案中的組建和部署程序控制由&#x2014;其中一個包含組建指示適用於每個目的地環境中和包含特定環境的建置和部署設定。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -54,13 +54,13 @@ ms.lasthandoff: 01/24/2018
 [!code-xml[Main](deploying-a-specific-build/samples/sample1.xml)]
 
 
-如果您想專案檔來部署 web 封裝和資料庫指令碼從不同位置 & #x 2014年; 類似的輸出前一個 TFS 組建 & #x 2014; 您只需要覆寫**OutputRoot**屬性。 您應該設定的相關組建資料夾的屬性值 Team Build 的伺服器上。 如果您從命令列執行 MSBuild，您可以指定的值**OutputRoot**做為命令列引數：
+如果您想要部署 web 封裝和資料庫從不同位置的指令碼專案檔&#x2014;喜歡的前一個 TFS 組建輸出&#x2014;您只需要覆寫**OutputRoot**屬性。 您應該設定的相關組建資料夾的屬性值 Team Build 的伺服器上。 如果您從命令列執行 MSBuild，您可以指定的值**OutputRoot**做為命令列引數：
 
 
 [!code-console[Main](deploying-a-specific-build/samples/sample2.cmd)]
 
 
-在實務上，不過，您也想要略過**建置**目標 & #x 2014; 沒有點中建置您的方案，如果您不打算使用組建輸出。 您可以藉由指定您想要從命令列執行的目標來這麼做：
+在實務上，不過，您也想要略過**建置**目標&#x2014;沒有點中建置您的方案，如果您不打算使用組建輸出。 您可以藉由指定您想要從命令列執行的目標來這麼做：
 
 
 [!code-console[Main](deploying-a-specific-build/samples/sample3.cmd)]
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/24/2018
 
 下一個程序描述如何建立組建定義，可讓使用者使用單一命令的預備環境部署觸發程序。
 
-在此情況下，您不想組建定義，以實際建置的任何項目 （& c) 2014年 #x; 您只想要自訂的專案檔中執行部署邏輯。 *Publish.proj*檔案包含條件式邏輯，會略過**建置**目標如果檔案在 Team Build 中執行。 它會透過評估內建**BuildingInTeamBuild**屬性，會自動設為**true**如果您在 Team Build 中執行您的專案檔。 如此一來，您可以略過建置程序，並執行現有的組建部署至專案檔即可。
+在此情況下，您不想要實際建置任何組建定義&#x2014;您只想要自訂的專案檔中執行部署邏輯。 *Publish.proj*檔案包含條件式邏輯，會略過**建置**目標如果檔案在 Team Build 中執行。 它會透過評估內建**BuildingInTeamBuild**屬性，會自動設為**true**如果您在 Team Build 中執行您的專案檔。 如此一來，您可以略過建置程序，並執行現有的組建部署至專案檔即可。
 
 **若要建立組建定義來手動觸發部署**
 
@@ -133,6 +133,6 @@ ms.lasthandoff: 01/24/2018
 
 如需有關如何建立組建定義的詳細資訊，請參閱[建立基本組建定義](https://msdn.microsoft.com/library/ms181716.aspx)和[定義建置流程](https://msdn.microsoft.com/library/ms181715.aspx)。 如需詳細指引佇列組建的詳細資訊，請參閱[組建排入佇列](https://msdn.microsoft.com/library/ms181722.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-build-definition-that-supports-deployment.md)
-[下一頁](configuring-permissions-for-team-build-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-build-definition-that-supports-deployment.md)
+> [下一頁](configuring-permissions-for-team-build-deployment.md)

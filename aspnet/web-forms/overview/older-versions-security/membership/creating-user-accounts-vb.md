@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/creating-user-accounts-vb
-title: "建立使用者帳戶 (VB) |Microsoft 文件"
+title: 建立使用者帳戶 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將探討使用 （透過 SqlMembershipProvider) 的成員資格 framework 來建立新的使用者帳戶。 我們會了解如何建立新我們..."
+description: 在本教學課程中，我們將探討使用 （透過 SqlMembershipProvider) 的成員資格 framework 來建立新的使用者帳戶。 我們會了解如何建立新我們...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 61621ffaae98ac74c16b2ff014ba9d85c2c10b3a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d665e7ba43401da76a88a904c10a587aa4576d4b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-user-accounts-vb"></a>建立使用者帳戶 (VB)
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/24/2018
 我們開始使用的成員資格 framework 之前，請讓我們花一點時間檢閱重要的步驟，我們已達到這個點。 當使用成員資格架構與`SqlMembershipProvider`必須在 web 應用程式中實作的成員資格功能之前會先執行下列步驟在表單型驗證案例中，：
 
 1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*，藉由編輯啟用表單驗證`Web.config`和設定`<authentication>`項目的`mode`屬性`Forms`。 使用表單驗證已啟用，每個傳入要求會檢查*表單驗證票證*，其中，如果出現找出要求者。
-2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。 *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)*教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
+2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。  *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)*教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
 3. **自訂 Web 應用程式的設定步驟 2 中參考的資料庫。** *在 SQL Server 中建立成員資格結構描述*教學課程示範了兩種方式可設定 web 應用程式，讓`SqlMembershipProvider`會使用在步驟 2 中選取的資料庫： 藉由修改`LocalSqlServer`連接字串名稱。或者，透過將新的註冊提供者加入至成員資格 framework 提供者的清單，以及自訂該新的提供者使用的資料庫從步驟 2。
 
 當建置 web 應用程式使用`SqlMembershipProvider`和表單型驗證，您必須使用之前執行這三個步驟`Membership`類別或 ASP.NET 登入 Web 控制項。 因為我們已經執行下列步驟，在先前的教學課程中，我們已準備好開始使用的成員資格 framework ！
@@ -170,11 +170,11 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 為了說明使用`CreateUser`方法，讓我們來建立使用者介面提示輸入使用者輸入其名稱、 密碼、 電子郵件，以及預先定義的安全性問題的回答。 開啟`CreatingUserAccounts.aspx`頁面`Membership`資料夾並將下列 Web 控制項加入至內容控制項：
 
-- 名為文字方塊`Username`
-- 名為文字方塊`Password`、 其`TextMode`屬性設定為`Password`
-- 名為文字方塊`Email`
+- 名為文字方塊 `Username`
+- 名為文字方塊`Password`、 其`TextMode`屬性設定為 `Password`
+- 名為文字方塊 `Email`
 - 名稱為的標籤`SecurityQuestion`具有其`Text`清除屬性
-- 名為文字方塊`SecurityAnswer`
+- 名為文字方塊 `SecurityAnswer`
 - 名為按鈕`CreateAccountButton`其`Text`屬性會設定為建立使用者帳戶
 - 標籤控制項，名為`CreateAccountResults`具有其`Text`清除屬性
 
@@ -196,7 +196,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 [!code-vb[Main](creating-user-accounts-vb/samples/sample6.vb)]
 
-`Click`事件處理常式開始定義變數，名為`createStatus`型別的[ `MembershipCreateStatus` ](https://msdn.microsoft.com/library/system.web.security.membershipcreatestatus.aspx)。 `MembershipCreateStatus`是一種列舉，指出狀態`CreateUser`作業。 例如，如果使用者帳戶建立成功，產生`MembershipCreateStatus`執行個體將會設定為值`Success;`相反地，如果作業失敗，因為已經存在具有相同的使用者名稱的使用者，它就會設定為值`DuplicateUserName`. 在`CreateUser`我們使用多載，我們需要將`MembershipCreateStatus`至方法的執行個體。 此參數設定為適當的值內`CreateUser`方法，所以我們可以檢查它的值來判斷是否已成功建立使用者帳戶在方法呼叫之後。
+`Click`事件處理常式開始定義變數，名為`createStatus`型別的[ `MembershipCreateStatus` ](https://msdn.microsoft.com/library/system.web.security.membershipcreatestatus.aspx)。 `MembershipCreateStatus` 是一種列舉，指出狀態`CreateUser`作業。 例如，如果使用者帳戶建立成功，產生`MembershipCreateStatus`執行個體將會設定為值`Success;`相反地，如果作業失敗，因為已經存在具有相同的使用者名稱的使用者，它就會設定為值`DuplicateUserName`. 在`CreateUser`我們使用多載，我們需要將`MembershipCreateStatus`至方法的執行個體。 此參數設定為適當的值內`CreateUser`方法，所以我們可以檢查它的值來判斷是否已成功建立使用者帳戶在方法呼叫之後。
 
 在呼叫`CreateUser`，並傳入`createStatus`、`Select Case`陳述式用來輸出指派給的值而定有適當錯誤訊息`createStatus`。 圖 7 顯示輸出時已成功建立新的使用者。 未建立使用者帳戶時，數字 8 和 9 顯示輸出。 圖 8 中造訪者輸入五個字母密碼不符合成員資格提供者的組態設定中的密碼強度需求。 圖 9 中造訪者嘗試建立使用者帳戶使用現有的使用者名稱 （圖 7 中建立的一個）。
 
@@ -367,7 +367,7 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [`CreateUser`技術文件](https://msdn.microsoft.com/library/system.web.security.membershipprovider.createuser.aspx)
+- [`CreateUser` 技術文件](https://msdn.microsoft.com/library/system.web.security.membershipprovider.createuser.aspx)
 - [適用於 CreateUserWizard 控制項概觀](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/createuserwizard.aspx)
 - [建立檔案系統為基礎的站台對應提供者](http://aspnet.4guysfromrolla.com/articles/020106-1.aspx)
 - [建立與 ASP.NET 2.0 精靈控制項的逐步使用者介面](http://aspnet.4guysfromrolla.com/articles/061406-1.aspx)
@@ -377,12 +377,12 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4guysfromrolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](creating-the-membership-schema-in-sql-server-vb.md)
-[下一頁](validating-user-credentials-against-the-membership-user-store-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-the-membership-schema-in-sql-server-vb.md)
+> [下一頁](validating-user-credentials-against-the-membership-user-store-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
-title: "儲存額外的使用者資訊 (VB) |Microsoft 文件"
+title: 儲存額外的使用者資訊 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在此教學課程中我們將回答這個問題，藉由建置非常初步的訪客簿應用程式。 在此情況下，我們將探討 modeli 不同的選項..."
+description: 在此教學課程中我們將回答這個問題，藉由建置非常初步的訪客簿應用程式。 在此情況下，我們將探討 modeli 不同的選項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a40238605e8fb3e26d80264af9156eec634affbe
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 9a8673e764ae94b12fbc01f81ef12ea4c133b7d5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="storing-additional-user-information-vb"></a>儲存額外的使用者資訊 (VB)
 ====================
@@ -107,13 +107,13 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 我們現在需要將三個資料行與儲存使用者的家用城鎮、 首頁和簽章，會出現在他的訪客簿註解每個使用者帳戶產生關聯。 有數個不同方式來完成這項作業：
 
-- **加入新資料行 * * *`aspnet_Users`* * * 或 * * *`aspnet_Membership`* * * 的資料表。** 我不會建議這種方法，因為它會修改所使用的結構描述`SqlMembershipProvider`。 這項決策可能回顧天您日後。 例如，如果未來版本的 ASP.NET 會使用不同`SqlMembershipProvider`結構描述。 Microsoft 可能會包含一個工具，可移轉 ASP.NET 2.0`SqlMembershipProvider`資料到新的結構描述，但如果您已經修改 ASP.NET 2.0`SqlMembershipProvider`結構描述中，這類轉換可能不適用。
+- <strong>將新的資料行加入</strong><strong>`aspnet_Users`</strong><strong>或</strong><strong>`aspnet_Membership`</strong><strong>資料表。</strong> 我不會建議這種方法，因為它會修改所使用的結構描述`SqlMembershipProvider`。 這項決策可能回顧天您日後。 例如，如果未來版本的 ASP.NET 會使用不同`SqlMembershipProvider`結構描述。 Microsoft 可能會包含一個工具，可移轉 ASP.NET 2.0`SqlMembershipProvider`資料到新的結構描述，但如果您已經修改 ASP.NET 2.0`SqlMembershipProvider`結構描述中，這類轉換可能不適用。
 
 - **使用 ASP。網路的設定檔架構，定義設定檔屬性，如家用城鎮、 首頁和簽章。** ASP.NET 包含了設定檔架構是設計用來儲存使用者專屬的其他資料。 成員資格架構，例如設定檔 framework 是建置在提供者模型之上。 .NET Framework 隨附`SqlProfileProvider`存放區分析 SQL Server 資料庫中的資料。 事實上，我們的資料庫中已經有資料表由`SqlProfileProvider`(`aspnet_Profile`)，當我們新增回應用程式服務已加入[*在 SQL Server 中建立成員資格結構描述*](creating-the-membership-schema-in-sql-server-vb.md)教學課程。   
- 設定檔架構的主要優點是，它可讓開發人員定義中的設定檔屬性`Web.config`– 沒有程式碼以供需要寫序列化設定檔資料，以及從基礎資料存放區。 簡單地說，是非常簡單，來定義一組設定檔屬性，並在程式碼中使用它們。 不過，設定檔系統不夠令人需要進行版本控制時，如果您的應用程式預期新的使用者特定屬性，以在稍後的時間或要移除或修改現有的加入，然後設定檔架構可能不是 最佳的選項。 此外，`SqlProfileProvider`儲存設定檔屬性以高非正規化的方式下, 一步 無法直接對設定檔資料 （例如，多少使用者擁有 New York 家用城鎮） 執行查詢。   
- 如需有關設定檔架構的詳細資訊，請參閱本教學課程結尾處的 「 進一步讀數 」 一節。
+  設定檔架構的主要優點是，它可讓開發人員定義中的設定檔屬性`Web.config`– 沒有程式碼以供需要寫序列化設定檔資料，以及從基礎資料存放區。 簡單地說，是非常簡單，來定義一組設定檔屬性，並在程式碼中使用它們。 不過，設定檔系統不夠令人需要進行版本控制時，如果您的應用程式預期新的使用者特定屬性，以在稍後的時間或要移除或修改現有的加入，然後設定檔架構可能不是 最佳的選項。 此外，`SqlProfileProvider`儲存設定檔屬性以高非正規化的方式下, 一步 無法直接對設定檔資料 （例如，多少使用者擁有 New York 家用城鎮） 執行查詢。   
+  如需有關設定檔架構的詳細資訊，請參閱本教學課程結尾處的 「 進一步讀數 」 一節。
 
-- **將下列三個資料行加入至資料庫中的新資料表，並建立此資料表之間的一對一關聯性和 * * *`aspnet_Users`* * *。** 這種方法牽涉到更多工作的設定檔架構，但提供了相當大的彈性資料庫中其他使用者屬性所建立的模型。 這是我們將在本教學課程中使用的選項。
+- <strong>將下列三個資料行加入至資料庫中的新資料表，並建立此資料表之間的一對一關聯性和</strong><strong>`aspnet_Users`</strong><strong>。</strong> 這種方法牽涉到更多工作的設定檔架構，但提供了相當大的彈性資料庫中其他使用者屬性所建立的模型。 這是我們將在本教學課程中使用的選項。
 
 我們將建立新的資料表，稱為`UserProfiles`儲存家用城鎮、 首頁上，並為每個使用者的簽章。 在 [資料庫總管] 視窗中的 [資料表] 資料夾上按一下滑鼠右鍵，然後選擇要建立新的資料表。 名稱的第一個資料行`UserId`並將其類型設定為`uniqueidentifier`。 不允許`NULL`值，並標示為主索引鍵資料行。 接下來，加入名為資料行：`HomeTown`型別的`nvarchar(50)`;`HomepageUrl`型別的`nvarchar(100)`; 和類型的簽章`nvarchar(500)`。 每個這些三個資料行可以接受`NULL`值。
 
@@ -428,9 +428,9 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 若要自訂適用於 CreateUserWizard 控制項的介面，以加入其他表單欄位，我們可以：
 
-- **建立新的一或多個 * * *`WizardStep`* * * 以包含額外的使用者介面項目**。 若要將新`WizardStep`至適用於 CreateUserWizard，按一下 「 新增/移除`WizardStep`s 」 連結來啟動其智慧標籤`WizardStep`集合編輯器。 您可以從該處加入、 移除或重新排序精靈中的步驟。 這是我們將使用此教學課程中的方法。
+- <strong>建立新的一或多個</strong><strong>`WizardStep`</strong><strong>以包含額外的使用者介面項目</strong>。 若要將新`WizardStep`至適用於 CreateUserWizard，按一下 「 新增/移除`WizardStep`s 」 連結來啟動其智慧標籤`WizardStep`集合編輯器。 您可以從該處加入、 移除或重新排序精靈中的步驟。 這是我們將使用此教學課程中的方法。
 
-- **轉換 * * *`CreateUserWizardStep`* * * 的可編輯成 * * *`WizardStep`* * *。** 這會取代`CreateUserWizardStep`等同`WizardStep`其標記定義比對的使用者介面`CreateUserWizardStep`' s。 藉由轉換`CreateUserWizardStep`到`WizardStep`我們可以重新調整控制項位置，或將額外的使用者介面項目加入至這個步驟。 要轉換`CreateUserWizardStep`或`CompleteWizardStep`成可編輯`WizardStep`、 按一下 自訂建立使用者步驟 」 或 「 自訂完成逐步 」 連結從控制項的智慧標籤。
+- <strong>轉換</strong><strong>`CreateUserWizardStep`</strong><strong>成可編輯</strong><strong>`WizardStep`</strong><strong>。</strong> 這會取代`CreateUserWizardStep`等同`WizardStep`其標記定義比對的使用者介面`CreateUserWizardStep`' s。 藉由轉換`CreateUserWizardStep`到`WizardStep`我們可以重新調整控制項位置，或將額外的使用者介面項目加入至這個步驟。 要轉換`CreateUserWizardStep`或`CompleteWizardStep`成可編輯`WizardStep`、 按一下 自訂建立使用者步驟 」 或 「 自訂完成逐步 」 連結從控制項的智慧標籤。
 
 - **使用上述兩個選項的一些組合。**
 
@@ -527,11 +527,11 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝...
 
 許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一步](user-based-authorization-vb.md)
+> [!div class="step-by-step"]
+> [上一步](user-based-authorization-vb.md)

@@ -1,7 +1,7 @@
 ---
-title: "疑難排解 Azure App Service 上的 ASP.NET Core"
+title: 疑難排解 Azure App Service 上的 ASP.NET Core
 author: guardrex
-description: "了解如何診斷 ASP.NET Core Azure App Service 部署的問題。"
+description: 了解如何診斷 ASP.NET Core Azure App Service 部署的問題。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: e6a8404d3fe96a0136d7f874107b2cdf63e8e890
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 47056c80c7abf5dd5ad5ae96af7b821d31b21b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>疑難排解 Azure App Service 上的 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 本文說明如何診斷 ASP.NET Core 應用程式使用 Azure 應用程式服務的診斷工具的啟動問題。 如需其他疑難排解建議，請參閱[Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)和[如何： 監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)Azure 文件中。
 
@@ -105,9 +105,9 @@ ASP.NET 核心模組 stdout 記錄通常會記錄應用程式事件日誌中找�
 1. 選取**儲存**儲存檔案。
 
 > [!WARNING]
-> 若要停用 stdout 記錄的失敗可能會導致應用程式或伺服器失敗。 因為它並沒有記錄檔大小或數量上的限制。
+> 若要停用 stdout 記錄的失敗可能會導致應用程式或伺服器失敗。 因為它並沒有記錄檔大小或數量上的限制。 只使用 stdout 記錄應用程式啟動問題進行疑難排解。
 >
-> 例行記錄中的 ASP.NET Core 應用程式、 使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
+> 一般登入的 ASP.NET Core 應用程式在啟動之後，使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
 ## <a name="common-startup-errors"></a>常見的啟動錯誤 
 

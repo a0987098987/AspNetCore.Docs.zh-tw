@@ -1,7 +1,7 @@
 ---
-title: "在要求處理常式中的相依性插入"
+title: 在 ASP.NET Core 需求處理常式中的相依性插入
 author: rick-anderson
-description: "本文件概述如何使用相依性插入的 ASP.NET Core 應用程式中插入授權需求的處理常式。"
+description: 了解如何使用相依性插入的 ASP.NET Core 應用程式中插入授權需求的處理常式。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: 1b7506b49109264a8c628ea2e39ded9f5ace95d3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4de7f0e49ade459968f8c30fbad76ce96a65815f
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="dependency-injection-in-requirement-handlers"></a>在要求處理常式中的相依性插入
+# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a>在 ASP.NET Core 需求處理常式中的相依性插入
 
 <a name="security-authorization-di"></a>
 
-[授權的處理常式必須註冊](policies.md#handler-registration)在設定期間的服務集合中 (使用[相依性插入](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection))。
+[授權的處理常式必須註冊](xref:security/authorization/policies#handler-registration)在設定期間的服務集合中 (使用[相依性插入](xref:fundamentals/dependency-injection#fundamentals-dependency-injection))。
 
 假設您有想要評估之授權的處理常式內部的規則的儲存機制，該儲存機制已登錄在服務集合。 授權會解決，然後將之插入您建構函式。
 

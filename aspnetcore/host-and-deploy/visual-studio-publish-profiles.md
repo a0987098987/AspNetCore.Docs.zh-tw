@@ -1,7 +1,7 @@
 ---
-title: "Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔"
+title: Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔
 author: rick-anderson
-description: "了解如何建立發行 Visual Studio 中的 ASP.NET Core 應用程式設定檔。"
+description: 了解如何建立發行 Visual Studio 中的 ASP.NET Core 應用程式設定檔。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: d2c4ec317f235c6d042bd130dbf79f6cb5e2d47d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64c96f572c42c56480cfe2bd58f926d54eddf35e
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Visual Studio 發行 ASP.NET Core 應用程式部署的設定檔
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 03/02/2018
 * 計算要發佈的檔案
 * 將檔案發佈至目的地
 
-### <a name="compute-project-items"></a>計算專案項目
+## <a name="compute-project-items"></a>計算專案項目
 
 載入專案時，會計算專案項目 (檔案)。 `item type` 屬性會決定如何處理檔案。 根據預設，*.cs* 檔案會包含在 `Compile` 項目清單中。 `Compile` 項目清單中的檔案會予以編譯。
 
@@ -197,11 +197,12 @@ MSBuild 屬性可以使用下列格式傳遞：
 如需詳細資訊，請參閱[哪些發佈選項適合我？](https://docs.microsoft.com/visualstudio/ide/not-in-toc/web-publish-options)
 
 使用 Visual Studio 中，建立的發行設定檔時*屬性/PublishProfiles/\<發行名稱 >.pubxml*建立 MSBuild 檔案。 這個 *.pubxml* 檔案是 MSBuild 檔案，而且包含發佈組態設定。 自訂建置和發佈程序，可以變更這個檔案。 發佈程序會讀取這個檔案。 `<LastUsedBuildConfiguration>` 是特殊，因為它是全域屬性，且不應該在組建中匯入任何檔案中。 如需詳細資訊，請參閱 [MSBuild：如何設定組態屬性](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx)。
+
 *.Pubxml*檔案不應該簽入原始檔控制，因為它相依於*.user*檔案。 *.user* 檔案絕對不能簽入原始檔控制，因為它可以包含機密資訊，而且只對一位使用者和一部電腦有效。
 
 機密資訊 (例如發佈密碼) 是依每個使用者/電腦加密，且儲存在 *Properties/PublishProfiles/*\<發佈名稱>.pubxml.user 檔案中。 因為這個檔案可以包含機密資訊，所以它「不」應該簽入原始檔控制。
 
-如需如何發行 ASP.NET core web 應用程式的概觀，請參閱[主機和部署](index.md)。 [主機和部署](index.md)是在 https://github.com/aspnet/websdk 開放原始碼專案。
+如需如何發行 ASP.NET core web 應用程式的概觀，請參閱[主機和部署](index.md)。 [主機和部署](index.md)是開放原始碼專案在https://github.com/aspnet/websdk。
 
 `dotnet publish` 可以使用 MSDeploy，資料夾和[KUDU](https://github.com/projectkudu/kudu/wiki)發行設定檔：
  
@@ -444,7 +445,7 @@ MSBuild file.
 
 如需更多的部署範例，請參閱 [WebSDK 讀我檔案](https://github.com/aspnet/websdk)。
 
-### <a name="run-a-target-before-or-after-publishing"></a>在發佈之前或之後執行目標
+## <a name="run-a-target-before-or-after-publishing"></a>在發佈之前或之後執行目標
 
 內建`BeforePublish`和`AfterPublish`目標可以用來執行目標之前或之後發行的目標。 下列標記可以新增至發行設定檔，先將訊息記錄至主控台輸出再發佈：
 
@@ -455,6 +456,16 @@ MSBuild file.
   <Target Name="CustomActionsAfterPublish" AfterTargets="AfterPublish">
     <Message Text="Inside AfterPublish" Importance="high" />
 </Target>
+```
+
+## <a name="publish-to-a-server-using-an-untrusted-certificate"></a>發行至伺服器，使用不受信任的憑證
+
+新增`<AllowUntrustedCertificate>`屬性值為`True`至發行設定檔：
+
+```xml
+<PropertyGroup>
+  <AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+</PropertyGroup>
 ```
 
 ## <a name="the-kudu-service"></a>Kudu 服務
@@ -471,4 +482,4 @@ MSBuild file.
 ## <a name="additional-resources"></a>其他資源
 
 * [Web 部署](https://www.iis.net/downloads/microsoft/web-deploy)(MSDeploy) 可簡化部署的 web 應用程式和網站的 IIS 伺服器。
-* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues)：部署的檔案問題及要求功能。
+* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues)： 檔案問題，並要求部署的功能。

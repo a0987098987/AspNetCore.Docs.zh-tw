@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
-title: "建立真實世界雲端應用程式與 Azure |Microsoft 文件"
+title: 建立真實世界雲端應用程式與 Azure |Microsoft 文件
 author: MikeWasson
-description: "這個電子書引領您完成模式為基礎的方法來建置實際雲端解決方案。 在開發程序以及與模式適用於..."
+description: 這個電子書引領您完成模式為基礎的方法來建置實際雲端解決方案。 在開發程序以及與模式適用於...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 4de0b52e0b4ae7ce00e7b07bce2decfc5068964a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5a62818a2dc21128bb0a42a8b296ade460e7b060
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>建立真實世界雲端應用程式與 Azure
 ====================
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/24/2018
     - Web 層保持無狀態的。
     - 示範： 調整和 Azure App Service Web 應用程式中的自動調整。
     - 避免工作階段狀態。
-    - 使用 CDN。
+    - 無法使用 CDN 時，請使用後援 CDN。
     - 使用非同步程式設計模型。
     - 示範： 在 ASP.NET MVC 和 Entity Framework 中的非同步。
 - [單一登入](single-sign-on.md)。 
@@ -177,5 +177,5 @@ ms.lasthandoff: 01/24/2018
 - [Web Sites 架構-與 Stefan Schackow](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/)。
 - [Azure Web Sites 內部項目與 Nir Mashkowski](https://channel9.msdn.com/Shows/Web+Camps+TV/Windows-Azure-Web-Sites-Internals-with-Nir-Mashkowski)。
 
->[!div class="step-by-step"]
-[下一步](automate-everything.md)
+> [!div class="step-by-step"]
+> [下一步](automate-everything.md)

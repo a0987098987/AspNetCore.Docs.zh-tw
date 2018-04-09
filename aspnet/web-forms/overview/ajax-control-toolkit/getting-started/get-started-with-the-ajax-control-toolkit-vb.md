@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
-title: "開始使用 AJAX Control Toolkit (VB) |Microsoft 文件"
+title: 開始使用 AJAX Control Toolkit (VB) |Microsoft 文件
 author: microsoft
-description: "了解您只需要知道要開始使用 AJAX Control Toolkit。"
+description: 了解您只需要知道要開始使用 AJAX Control Toolkit。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0bbf6dc0be8a96ecd47b8620a6ba3220b50f10d4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30653a147bd3bf581af27220e11cdecc2f89fc4a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="get-started-with-the-ajax-control-toolkit-vb"></a>開始使用 AJAX Control Toolkit (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解您只需要知道要開始使用 AJAX Control Toolkit。
 
@@ -89,6 +89,6 @@ AJAX Control Toolkit 包含 30 個以上可用的控制項，您可以在 ASP.NE
 - 二進位檔-從網站的 Bin 資料夾刪除 AjaxControlToolkit.dll 組件的舊版本。
 - 工具箱項目-刪除 AJAX Control Toolkit 索引標籤，並遵循上述步驟，以重新建立具有新版 AjaxControlToolkit.dll 組件的索引標籤。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
-[下一頁](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+> [下一頁](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)

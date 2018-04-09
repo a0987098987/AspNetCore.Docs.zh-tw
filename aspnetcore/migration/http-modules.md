@@ -1,7 +1,7 @@
 ---
-title: "移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組"
+title: 移轉 ASP.NET Core 中介軟體的 HTTP 處理常式和模組
 author: rick-anderson
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 12/07/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/http-modules
-ms.openlocfilehash: 7f08e155491b56933ae183818e9b9ee562ad8286
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e02f3a75269e5e4a4794d1979d3a5add21fe38be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉的 HTTP 處理常式和 ASP.NET Core 中介軟體的模組 
+# <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉 ASP.NET Core 中介軟體的 HTTP 處理常式和模組
 
 由[Matt Perdeck](https://www.linkedin.com/in/mattperdeck)
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/02/2018
 
    * 順序中介軟體的回應時，針對要求，從該反向模組的順序是相同的要求和回應
 
-   * 請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder)
+   * 請參閱[IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![中介軟體](http-modules/_static/middleware.png)
 
@@ -173,17 +173,17 @@ HTTP 處理常式看起來像這樣：
 
 * 使用[選項模式](xref:fundamentals/configuration/options):
 
-1.  建立類別以包裝您的中介軟體選項，例如：
+1. 建立類別以包裝您的中介軟體選項，例如：
 
-    [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
+   [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
 
-2.  儲存選項值
+2. 儲存選項值
 
-    組態系統，可讓您儲存選項任何地方需要的值。 不過，最站台使用*appsettings.json*，因此我們將方法：
+   組態系統，可讓您儲存選項任何地方需要的值。 不過，最站台使用*appsettings.json*，因此我們將方法：
 
-    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
+   [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
-    *MyMiddlewareOptionsSection*以下是區段名稱。 它不一定要與您的選項類別名稱相同。
+   *MyMiddlewareOptionsSection*以下是區段名稱。 它不一定要與您的選項類別名稱相同。
 
 3. 選項值關聯的選項類別
 
@@ -191,25 +191,25 @@ HTTP 處理常式看起來像這樣：
 
     更新您`Startup`類別：
 
-    1.  如果您使用*appsettings.json*，將它加入至組態產生器中`Startup`建構函式：
+   1. 如果您使用*appsettings.json*，將它加入至組態產生器中`Startup`建構函式：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
-    2.  設定選項服務：
+   2. 設定選項服務：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
 
-    3.  將您的選項與選項類別產生關聯：
+   3. 將您的選項與選項類別產生關聯：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=6-8)]
 
-4.  將插入至中介軟體建構函式的選項。 這是類似於插入到控制器的選項。
+4. 將插入至中介軟體建構函式的選項。 這是類似於插入到控制器的選項。
 
-  [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
+   [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
 
-  [UseMiddleware](#http-modules-usemiddleware)擴充方法，將它新增至中的介軟體`IApplicationBuilder`，負責相依性插入。
+   [UseMiddleware](#http-modules-usemiddleware)擴充方法，將它新增至中的介軟體`IApplicationBuilder`，負責相依性插入。
 
-  這並不限於`IOptions`物件。 這種方式可插入您的中介軟體所需要的任何其他物件。
+   這並不限於`IOptions`物件。 這種方式可插入您的中介軟體所需要的任何其他物件。
 
 ## <a name="loading-middleware-options-through-direct-injection"></a>載入經由直接資料隱碼的中介軟體選項
 
@@ -219,21 +219,21 @@ HTTP 處理常式看起來像這樣：
 
 解決方法是取得選項物件中的實際選項值與您`Startup`類別，並傳遞至每個執行個體的中介軟體直接。
 
-1.  新增第二個機碼*appsettings.json*
+1. 新增第二個機碼*appsettings.json*
 
-    若要加入第二組選項以*appsettings.json*檔案中，以唯一識別它使用新的金鑰：
+   若要加入第二組選項以*appsettings.json*檔案中，以唯一識別它使用新的金鑰：
 
-    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
+   [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
-2.  擷取選項值，並將其傳遞至中介軟體。 `Use...` （這會加入到管線的中介軟體） 的擴充方法是將選項值在邏輯上： 
+2. 擷取選項值，並將其傳遞至中介軟體。 `Use...` （這會加入到管線的中介軟體） 的擴充方法是將選項值在邏輯上： 
 
-    [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
+   [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
 
-4.  可讓中介軟體選項參數。 提供的多載`Use...`擴充方法 (採用 options 參數，並將其傳遞給`UseMiddleware`)。 當`UseMiddleware`稱為參數，它將參數傳遞到中介軟體建構函式時，它會具現化中介軟體物件。
+3. 可讓中介軟體選項參數。 提供的多載`Use...`擴充方法 (採用 options 參數，並將其傳遞給`UseMiddleware`)。 當`UseMiddleware`稱為參數，它將參數傳遞到中介軟體建構函式時，它會具現化中介軟體物件。
 
-    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
+   [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
 
-    請注意這會在將選項物件的包裝`OptionsWrapper`物件。 這會實作`IOptions`，如預期般的中介軟體建構函式。
+   請注意這會在將選項物件的包裝`OptionsWrapper`物件。 這會實作`IOptions`，如預期般的中介軟體建構函式。
 
 ## <a name="migrating-to-the-new-httpcontext"></a>移轉至新的 HttpContext
 

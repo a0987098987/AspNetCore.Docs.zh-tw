@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 4.0 和 Visual Studio 2010 的 ASP.NET Web Form 應用程式..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 4.0 和 Visual Studio 2010 的 ASP.NET Web Form 應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: ae2fddc81f6f4da866ec0719a0e74516bdd2a4d1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ad504b02d801f9513787f9fde1a4d00d7b0afff0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form
 ====================
 由[Tom Dykstra](https://github.com/tdykstra)
 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Web Form 應用程式使用 Entity Framework 4.0 和 Visual Studio 2010。 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括功能，例如許可學生、 課程建立和講師指派。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Web Form 應用程式使用 Entity Framework 4.0 和 Visual Studio 2010。 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括的功能有學生入學許可、課程建立、教師指派。
 > 
 > 教學課程會示範 C# 中的範例。 [可下載範例](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a)包含 C# 和 Visual Basic 中的程式碼。
 > 
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/24/2018
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-1/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image1.png)
 
-使用者可以檢視和更新學生、 課程、 和講師資訊。 以下顯示幾個您要建立的畫面。
+使用者可以檢視和更新學生、課程和教師資訊。 以下顯示幾個您要建立的畫面。
 
 [![Image30](the-entity-framework-and-aspnet-getting-started-part-1/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image3.png)
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 01/24/2018
 
     [![Image40](the-entity-framework-and-aspnet-getting-started-part-1/_static/image38.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image37.png)
 
-    在此情況下，`Person`實體可能會或可能沒有相關聯的`StudentGrade`實體。 A`StudentGrade`實體必須與一個`Person`實體。 `StudentGrade`實體實際上代表已註冊此資料庫; 中的課程如果您在課程中註冊一位學生，而且沒有任何等級的棒的是，`Grade`屬性為 null。 換句話說，一位學生可能不會註冊任何課程中，可能會在一個課程中，註冊，或可能會在多個課程中註冊。 在已註冊的過程中的每一年級適用於只有一個學生。
+    在此情況下，`Person`實體可能會或可能沒有相關聯的`StudentGrade`實體。 A`StudentGrade`實體必須與一個`Person`實體。 `StudentGrade` 實體實際上代表已註冊此資料庫; 中的課程如果您在課程中註冊一位學生，而且沒有任何等級的棒的是，`Grade`屬性為 null。 換句話說，一位學生可能不會註冊任何課程中，可能會在一個課程中，註冊，或可能會在多個課程中註冊。 在已註冊的過程中的每一年級適用於只有一個學生。
 - 多對多關聯由 「\*"和"\*"。
 
     [![Image41](the-entity-framework-and-aspnet-getting-started-part-1/_static/image40.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image39.png)
@@ -214,5 +214,5 @@ Entity Framework 會使用 XML 來儲存有關資料庫、 資料模型，以及
 
 現在您已建立網站、 資料庫和資料模型。 在下一個逐步解說開始，您將使用資料模型和 ASP.NET 的資料搭配使用`EntityDataSource`控制項。
 
->[!div class="step-by-step"]
-[下一步](the-entity-framework-and-aspnet-getting-started-part-2.md)
+> [!div class="step-by-step"]
+> [下一步](the-entity-framework-and-aspnet-getting-started-part-2.md)

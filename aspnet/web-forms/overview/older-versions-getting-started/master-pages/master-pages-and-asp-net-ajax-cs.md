@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
-title: "主版頁面和 ASP.NET AJAX (C#) |Microsoft 文件"
+title: 主版頁面和 ASP.NET AJAX (C#) |Microsoft 文件
 author: rick-anderson
-description: "討論使用 ASP.NET AJAX 和主版頁面的選項。 查看使用 ScriptManagerProxy 類別; 事件類別討論如何載入各種 JS 檔案 dependi..."
+description: 討論使用 ASP.NET AJAX 和主版頁面的選項。 查看使用 ScriptManagerProxy 類別; 事件類別討論如何載入各種 JS 檔案 dependi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6e09951be5483ed098b8cab6517335f9962a5d95
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 87e5855354610723823da88ec961e7391c3f705f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="master-pages-and-aspnet-ajax-c"></a>主版頁面和 ASP.NET AJAX (C#)
 ====================
@@ -184,9 +184,9 @@ ASP.NET AJAX 架構包含在指定的時間; 執行回傳的計時器控制項�
 
 若要查看 ScriptManagerProxy 控制項中的動作，讓我們來加強在 UpdatePanel`ShowRandomProduct.aspx`包括使用用戶端指令碼來暫停或繼續計時器控制項的按鈕。 Timer 控制項有三種可用來達成這項功能所需的用戶端方法：
 
-- `_startTimer()`-啟動計時器控制項
-- `_raiseTick()`-回傳和引發，進而導致 「 刻度 」，計時器控制項及其`Tick`的伺服器上事件
-- `_stopTimer()`-停止計時器控制項
+- `_startTimer()` -啟動計時器控制項
+- `_raiseTick()` -回傳和引發，進而導致 「 刻度 」，計時器控制項及其`Tick`的伺服器上事件
+- `_stopTimer()` -停止計時器控制項
 
 讓我們來建立名為的變數的 JavaScript 檔案`timerEnabled`和名為函式`ToggleTimer`。 `timerEnabled`變數會指出是否目前啟用或停用計時器控制項; 它預設為 true。 `ToggleTimer`函式接受兩個輸入參數： 暫停/繼續 按鈕和用戶端的參考`id`計時器控制項的值。 此函式的值會切換`timerEnabled`、 取得計時器控制項的參考、 啟動或停止計時器 (根據的值`timerEnabled`)，並更新 「 暫停 」 或 「 繼續 」 按鈕的顯示文字。 按一下 [暫停/繼續] 按鈕時，會呼叫此函式。
 
@@ -228,7 +228,7 @@ ASP.NET AJAX 架構包含在指定的時間; 執行回傳的計時器控制項�
 
 [!code-aspx[Main](master-pages-and-asp-net-ajax-cs/samples/sample10.aspx)]
 
-這會顯示 「 暫停 」 的文字的按鈕。 只要按一下，JavaScript 函式`ToggleTimer`呼叫時，傳入按鈕和計時器控制項的識別碼值的參考 (`ProductTimer`)。 請注意取得語法`id`計時器控制項的值。 `<%=ProductTimer.ClientID%>`值就會發出`ProductTimer`計時器控制項`ClientID`屬性。 在[*內容頁面中的控制項 ID 命名*](control-id-naming-in-content-pages-cs.md)教學課程中我們將討論伺服器端之間的差異`ID`值和產生的用戶端`id`值，以及如何`ClientID`傳回用戶端`id`。
+這會顯示 「 暫停 」 的文字的按鈕。 只要按一下，JavaScript 函式`ToggleTimer`呼叫時，傳入按鈕和計時器控制項的識別碼值的參考 (`ProductTimer`)。 請注意取得語法`id`計時器控制項的值。 `<%=ProductTimer.ClientID%>` 值就會發出`ProductTimer`計時器控制項`ClientID`屬性。 在[*內容頁面中的控制項 ID 命名*](control-id-naming-in-content-pages-cs.md)教學課程中我們將討論伺服器端之間的差異`ID`值和產生的用戶端`id`值，以及如何`ClientID`傳回用戶端`id`。
 
 圖 11 顯示此頁面，當第一次瀏覽透過瀏覽器。 計時器目前正在執行，並更新顯示的產品資訊每隔 15 秒。 已按下 [暫停] 按鈕之後，圖 12 顯示畫面。 按一下 [暫停] 按鈕會停止計時器，並更新 「 繼續 」 按鈕的文字。 產品資訊將會重新整理 （並繼續重新整理每 15 秒） 之後，使用者按下繼續。
 
@@ -264,12 +264,12 @@ ASP.NET AJAX 架構包含在指定的時間; 執行回傳的計時器控制項�
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](interacting-with-the-content-page-from-the-master-page-cs.md)
-[下一頁](specifying-the-master-page-programmatically-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](interacting-with-the-content-page-from-the-master-page-cs.md)
+> [下一頁](specifying-the-master-page-programmatically-cs.md)

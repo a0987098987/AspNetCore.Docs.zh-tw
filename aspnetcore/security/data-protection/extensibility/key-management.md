@@ -1,7 +1,7 @@
 ---
-title: "金鑰管理的擴充性"
+title: 金鑰管理 ASP.NET Core 中的擴充性
 author: rick-anderson
-description: "本文概述 ASP.NET Core 資料保護金鑰管理的擴充性。"
+description: 深入了解 ASP.NET Core 資料保護金鑰管理的擴充性。
 manager: wpickett
 ms.author: riande
 ms.date: 11/22/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e3042b371cf7be8fa0218c1906042d2810b180e3
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management-extensibility"></a>金鑰管理的擴充性
+# <a name="key-management-extensibility-in-aspnet-core"></a>金鑰管理 ASP.NET Core 中的擴充性
 
 <a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
-> 讀取[金鑰管理](../implementation/key-management.md#data-protection-implementation-key-management)閱讀本節中，因為它會說明這些 Api 的基本概念的某些之前 > 一節。
+> 讀取[金鑰管理](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management)閱讀本節中，因為它會說明這些 Api 的基本概念的某些之前 > 一節。
 
 >[!WARNING]
 > 實作下列介面的型別應該是安全執行緒的多個呼叫端。
@@ -37,11 +37,11 @@ ms.lasthandoff: 03/02/2018
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-此外，`IKey`公開`CreateEncryptor`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。
+此外，`IKey`公開`CreateEncryptor`方法可以用來建立[IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-此外，`IKey`公開`CreateEncryptorInstance`方法可以用來建立[IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。
+此外，`IKey`公開`CreateEncryptorInstance`方法可以用來建立[IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor)這個索引鍵繫結的執行個體。
 
 ---
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/02/2018
 
 在實作`GetAllKeys`、 XML 文件代表索引鍵和撤銷讀取基礎`IXmlRepository`。 如果要加密這些文件，系統會自動解密這些檔案。 `XmlKeyManager` 建立適當`IAuthenticatedEncryptorDescriptorDeserializer`還原序列化文件的執行個體放回`IAuthenticatedEncryptorDescriptor`執行個體，然後將包裝在個別`IKey`執行個體。 此集合`IKey`執行個體傳回給呼叫者。
 
-中可以找到特定的 XML 項目上的進一步資訊[金鑰儲存格式的文件](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format)。
+中可以找到特定的 XML 項目上的進一步資訊[金鑰儲存格式的文件](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format)。
 
 ## <a name="ixmlrepository"></a>IXmlRepository
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 03/02/2018
 
 實作`IXmlRepository`不需要剖析 XML 傳遞給它們。 它們應該將視為不透明的 XML 文件，並讓較高層級擔心產生及剖析的文件。
 
-有兩種內建的具象類型實作`IXmlRepository`:`FileSystemXmlRepository`和`RegistryXmlRepository`。 請參閱[金鑰儲存提供者文件](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers)如需詳細資訊。 註冊自訂`IXmlRepository`會是適當的方式來使用不同的備份存放區，例如 Azure Blob 儲存體。
+有兩種內建的具象類型實作`IXmlRepository`:`FileSystemXmlRepository`和`RegistryXmlRepository`。 請參閱[金鑰儲存提供者文件](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers)如需詳細資訊。 註冊自訂`IXmlRepository`會是適當的方式來使用不同的備份存放區，例如 Azure Blob 儲存體。
 
 若要變更預設儲存機制整個應用程式，註冊自訂`IXmlRepository`執行個體：
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 03/02/2018
 * `DpapiXmlEncryptor`
 * `NullXmlEncryptor`
 
-請參閱[在其他文件的金鑰加密](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest)如需詳細資訊。
+請參閱[在其他文件的金鑰加密](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest)如需詳細資訊。
 
 若要變更預設的索引鍵---靜態加密機制整個應用程式，註冊自訂`IXmlEncryptor`執行個體：
 

@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 目錄結構"
+title: ASP.NET Core 目錄結構
 author: guardrex
-description: "請參閱已發行的 ASP.NET Core 應用程式的目錄結構。"
+description: 請參閱已發行的 ASP.NET Core 應用程式的目錄結構。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,23 +10,25 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 55e1e0dac32609446243098dbb4a4373f06b4212
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2a6ee4fefcc6d23b1c893a40b7b1be9edfcf9732
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="directory-structure-of-published-aspnet-core-apps"></a>已發行的 ASP.NET Core 應用程式的目錄結構
+# <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 在 ASP.NET Core，應用程式目錄，*發行*，組成應用程式檔案、 組態檔、 靜態資產、 封裝和執行階段 （適用於獨立的應用程式）。
 
-| 應用程式類型                       | 目錄結構 |
-| ------------------------------ | ------------------- |
+
+|            應用程式類型            |                                                                                                                                                                                                                                                     目錄結構                                                                                                                                                                                                                                                      |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Framework 相依的部署 | <ul><li>publish\*<ul><li>記錄檔\*（如果包含在 publishOptions）</li><li>refs\*</li><li>執行階段\*</li><li>檢視\*（如果包含在 publishOptions）</li><li>wwwroot\* （如果包含在 publishOptions）</li><li>.dll 檔案</li><li>myapp.deps.json</li><li>myapp.dll</li><li>myapp.pdb</li><li>myapp。PrecompiledViews.dll （如果先行編譯 Razor 檢視）</li><li>myapp。PrecompiledViews.pdb （如果先行編譯 Razor 檢視）</li><li>myapp.runtimeconfig.json</li><li>（如果包含在 publishOptions） 的 web.config</li></ul></li></ul> |
-| 獨立的部署      | <ul><li>publish\*<ul><li>記錄檔\*（如果包含在 publishOptions）</li><li>refs\*</li><li>檢視\*（如果包含在 publishOptions）</li><li>wwwroot\* （如果包含在 publishOptions）</li><li>.dll 檔案</li><li>myapp.deps.json</li><li>myapp.exe</li><li>myapp.pdb</li><li>myapp。PrecompiledViews.dll （如果先行編譯 Razor 檢視）</li><li>myapp。PrecompiledViews.pdb （如果先行編譯 Razor 檢視）</li><li>myapp.runtimeconfig.json</li><li>（如果包含在 publishOptions） 的 web.config</li></ul></li></ul> |
-\*表示目錄
+|   獨立的部署    |          <ul><li>publish\*<ul><li>記錄檔\*（如果包含在 publishOptions）</li><li>refs\*</li><li>檢視\*（如果包含在 publishOptions）</li><li>wwwroot\* （如果包含在 publishOptions）</li><li>.dll 檔案</li><li>myapp.deps.json</li><li>myapp.exe</li><li>myapp.pdb</li><li>myapp。PrecompiledViews.dll （如果先行編譯 Razor 檢視）</li><li>myapp。PrecompiledViews.pdb （如果先行編譯 Razor 檢視）</li><li>myapp.runtimeconfig.json</li><li>（如果包含在 publishOptions） 的 web.config</li></ul></li></ul>           |
+
+\* 表示目錄
 
 內容*發行*目錄代表*內容的根路徑*，也稱為*應用程式基底路徑*的部署。 若要指定任何名稱*發行*部署中的目錄，它的位置做為託管的應用程式伺服器的實體路徑。 *Wwwroot*目錄中，如果有的話，只包含靜態資產。 *記錄*可能藉由建立專案中加入部署中包含目錄`<Target>`項目，如下所示，以您*.csproj*檔案或實體上建立目錄伺服器。
 

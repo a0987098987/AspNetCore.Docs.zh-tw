@@ -2,21 +2,21 @@
 uid: whitepapers/mvc4-release-notes
 title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
-description: "本文件說明 ASP.NET MVC 4 的版本。"
+description: 本文件說明 ASP.NET MVC 4 的版本。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/09/2011
 ms.topic: article
 ms.assetid: f014524f-25c0-4094-b8e1-886d99536f00
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-release-notes
 msc.type: content
-ms.openlocfilehash: bea6f6112388290a2c6b5ed267626ba28fc36671
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: dbcea6090a0376b8732e02c0891721672bfe50f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -103,7 +103,7 @@ ASP.NET Web API 包含下列功能的支援：
 - **Web API 專案範本：**選取新的 Web API 專案表單在新的 MVC 4 專案精靈快速啟動並執行與 ASP.NET Web API。
 - **Scaffolding:**使用**加入控制器**快速 scaffold Entity Framework 為基礎的 web API 控制器的對話方塊架構的模型型別。
 
-如需 ASP.NET Web API 的詳細資訊，請造訪[https://www.asp.net/web-api](../web-api/index.md)。
+如需 ASP.NET Web API 的詳細資訊，請造訪[ https://www.asp.net/web-api ](../web-api/index.md)。
 
 <a id="_Toc303253808"></a>
 ### <a name="enhancements-to-default-project-templates"></a>預設專案範本的增強功能
@@ -245,7 +245,7 @@ ASP.NET MVC 4 發行候選版本資訊可以在這裡找到：
 - **連結產生的改進：** *UrlHelper*不再相依於*HttpControllerContext*。 您現在可以存取*UrlHelper*從任何內容位置*HttpRequestMessage*可用。
 - **訊息處理常式執行順序變更：**它們都以反向順序設定而不是按順序來立即執行訊息處理常式。
 - **訊息處理常式連接 helper:**新*HttpClientFactory* ，可以連接*DelegatingHandlers*並建立*HttpClient*與想要的管線準備就緒。 它也提供連接的替代的內部處理常式的功能 (預設值是*HttpClientHandler*)，以及使用時，請勿將連接*HttpMessageInvoker*或另一個*DelegatingHandler*而不是*HttpClient*做為 top 啟動程式。
-- **支援在 ASP.NET 網頁最佳化 Cdn:** ASP.NET 網頁最佳化現在支援的 CDN 替代路徑，讓您指定每個組合額外的 URL 會指向該內容傳遞網路上的相同資源。 支援 Cdn 可讓您取得您指令碼和樣式組合地理位置較接近結束取用者的 Web 應用程式。
+- **支援在 ASP.NET 網頁最佳化 Cdn:** ASP.NET 網頁最佳化現在支援的 CDN 替代路徑，讓您指定每個組合額外的 URL 會指向該內容傳遞網路上的相同資源。 支援 Cdn 可讓您取得您指令碼和樣式組合地理位置較接近結束取用者的 Web 應用程式。 無法使用 CDN 時，實際執行應用程式應該實作後援。 測試此後援。
 - **ASP.NET Web API 路由並設定移至*WebApiConfig.Register*可以是 resused 測試程式碼中的靜態方法。** ASP.NET Web API 路由先前已加入*RouteConfig.RegisterRoutes*以及標準的 MVC 路由傳送。 ASP.NET Web API 路由的預設和組態現在處理在個別*WebApiConfig.Register*以促進測試方法。
 
 <a id="_Toc303253815"></a>
@@ -261,7 +261,7 @@ ASP.NET MVC 4 發行候選版本資訊可以在這裡找到：
     - *MvcCSharpRazorCodeGenerator*
     - *MvcVBRazorCodeParser*
 
- 也已移除下列方法： 
+  也已移除下列方法： 
 
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
@@ -275,22 +275,23 @@ ASP.NET MVC 4 發行候選版本資訊可以在這裡找到：
 
     **必要的更新**
 
-    1. 在根 Web.config 檔案中，加入新 *&lt;appSettings&gt;* 具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。 
+  1. 在根 Web.config 檔案中，加入新*&lt;appSettings&gt;*具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。 
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample7.xml)]
-    2. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，然後選取 卸載專案。 然後名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
-    3. 找出下列組件參考： 
+      [!code-xml[Main](mvc4-release-notes/samples/sample7.xml)]
+  2. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，然後選取 卸載專案。 然後名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
+  3. 找出下列組件參考： 
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample8.xml)]
+      [!code-xml[Main](mvc4-release-notes/samples/sample8.xml)]
 
-        它們取代成下列：
+      它們取代成下列：
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample9.xml)]
-    4. 儲存變更，請關閉您先前所編輯，然後以滑鼠右鍵按一下專案並選取重新載入專案 (.csproj) 檔案。
+      [!code-xml[Main](mvc4-release-notes/samples/sample9.xml)]
+  4. 儲存變更，請關閉您先前所編輯，然後以滑鼠右鍵按一下專案並選取重新載入專案 (.csproj) 檔案。
+
 - **ASP.NET MVC 4 專案變更為 4.0 目標從 4.5 不會更新 EntityFramework 組件參考：**如果您變更 ASP.NET MVC 4 專案之後以 4.5 EntityFramework 組件的參考仍會指向目標 4.04.5 版本。 若要修正此問題解除安裝，然後重新安裝 EntityFramework NuGet 封裝。
-- **403 禁止從 4.5 變更目標 4.0 之後，在 Azure 上執行 ASP.NET MVC 4 應用程式時：**如果您以 4.5 之後，變更為 4.0 目標的 ASP.NET MVC 4 專案，然後部署至 Azure，您會看到在執行階段 403 禁止錯誤。 若要解決此問題，請將下列內容加入 web.config:`<modules runAllManagedModulesForAllRequests="true" />`
+- **403 禁止從 4.5 變更目標 4.0 之後，在 Azure 上執行 ASP.NET MVC 4 應用程式時：**如果您以 4.5 之後，變更為 4.0 目標的 ASP.NET MVC 4 專案，然後部署至 Azure，您會看到在執行階段 403 禁止錯誤。 若要解決此問題，請將下列內容加入 web.config: `<modules runAllManagedModulesForAllRequests="true" />`
 - **當您輸入時，visual Studio 2012 損毀 '\'字串常值中 Razor 檔案中。** 才能解決此問題輸入右引號字串常值的第一次。
-- **瀏覽至&quot;帳戶/管理&quot;網際網路範本結果中的簡體中文、 TRK 和繁體中文語言執行階段錯誤。** 若要修正此問題修改頁面，來區隔 *@User.Identity.Name* 做為唯一的內容中將它放入*&lt;強式&gt;*標記。
+- <strong>瀏覽至&quot;帳戶/管理&quot;網際網路範本結果中的簡體中文、 TRK 和繁體中文語言執行階段錯誤。</strong> 若要修正此問題修改頁面，來區隔<em>@User.Identity.Name</em>做為唯一的內容中將它放入<em>&lt;強式&gt;</em>標記。
 - **Google 和 LinkedIn 的提供者不支援在 Azure 網站。** 部署至 Azure 網站時，請使用替代驗證提供者。
 - **當使用 UriPathExtensionMapping 具有 IIS 8 Express/IIS 時，您會收到 404 找不到錯誤，當您嘗試使用延伸模組。** 靜態檔案處理常式會干擾到 web 應用程式開發介面中使用的要求*UriPathExtensionMappings*。 設定*runAllManagedModulesForAllRequests = true*在 web.config 中若要解決此問題。
 - **不會再呼叫 Controller.Execute 方法。** 所有 MVC 控制器現在一律以非同步方式都執行。

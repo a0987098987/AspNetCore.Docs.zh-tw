@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
-title: "開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013 |Microsoft 文件"
+title: 開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013 |Microsoft 文件
 author: Erikre
-description: "此逐步教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此逐步教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013
 ====================
@@ -177,9 +177,9 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 [開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 
 
-下載*.zip*檔案。 若要查看已完成此教學課程建立的專案，尋找並選取*C#*資料夾中的*.zip*檔案。 儲存*C#* folderto 您用於使用 Visual Studio 2013 專案的資料夾。 根據預設，Visual Studio 2013 專案資料夾，如下所示：
+下載<em>.zip</em>檔案。 若要查看已完成此教學課程建立的專案，尋找並選取<em>C#</em>資料夾中的<em>.zip</em>檔案。 儲存<em>C#</em> folderto 您用於使用 Visual Studio 2013 專案的資料夾。 根據預設，Visual Studio 2013 專案資料夾，如下所示：
 
-**C:\Users\*****&lt;username&gt;*****\Documents\Visual Studio 2013\Projects**
+<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 重新命名***C#***資料夾***WingtipToys***。
 
@@ -197,5 +197,5 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 在開發期間，就會發生錯誤時，或未正確執行的網站，錯誤訊息可能會提供問題的來源複雜線索，或可能不會說明如何修正此問題。 若要協助您解決一些常見的問題案例，您也可以使用[ASP.NET 論壇](https://forums.asp.net/)或隨附 Q AND A 區段[開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013-Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) 範例。 如果您收到錯誤訊息，或當您瀏覽教學課程，項目無法運作，請務必查看上述位置。
 
->[!div class="step-by-step"]
-[下一步](create-the-project.md)
+> [!div class="step-by-step"]
+> [下一步](create-the-project.md)

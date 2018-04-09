@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
-title: "測試密碼 (VB) 的強度 |Microsoft 文件"
+title: 測試密碼 (VB) 的強度 |Microsoft 文件
 author: wenz
-description: "密碼是必要幾乎任何地方，如此延遲使用者傾向於選擇簡單的密碼，這很容易中斷。 在 ASP PasswordStrength 控制項。N..."
+description: 密碼是必要幾乎任何地方，如此延遲使用者傾向於選擇簡單的密碼，這很容易中斷。 在 ASP PasswordStrength 控制項。N...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7f09a05fd4b5771b7ab532d40476fe45cbd3fe38
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1d46026535f3f5cf82944359599464e8a4725280
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="testing-the-strength-of-a-password-vb"></a>測試密碼 (VB) 的強度
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 密碼是必要幾乎任何地方，如此延遲使用者傾向於選擇簡單的密碼，這很容易中斷。 在 ASP.NET AJAX Control Toolkit PasswordStrength 控制項可以檢查密碼妥當。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 密碼是必要幾乎任何地方，如此延遲使用者傾向於選擇簡單的密碼，這很容易中斷。 `PasswordStrength` ASP.NET AJAX Control Toolkit 中的控制項可以檢查密碼是否妥當。
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/10/2017
 
 `PasswordStrength`控制項延伸文字方塊中，並檢查是否夠好中它的密碼。 它提供豐富的選項，透過屬性;以下是只是某些它們：
 
-- `MinimumNumericCharacters`密碼所需的數字字元數目下限
-- `MinimumSymbolCharacters`密碼所需的符號字元 （沒有字母和數字） 的最小的數目
-- `PreferredPasswordLength`最小密碼長度
-- `RequiresUpperAndLowerCaseCharacters`是否必須使用大寫和小寫字元的密碼
+- `MinimumNumericCharacters` 密碼所需的數字字元數目下限
+- `MinimumSymbolCharacters` 密碼所需的符號字元 （沒有字母和數字） 的最小的數目
+- `PreferredPasswordLength` 最小密碼長度
+- `RequiresUpperAndLowerCaseCharacters` 是否必須使用大寫和小寫字元的密碼
 
 `StrengthIndicatorType`提供的資訊如何呈現的強度密碼，以文字 (值`"Text"`) 或做為一種進度列 (值`"BarIndicator"`)。 在`DisplayPosition`屬性，您將設定在出現的資訊。 以下是完整的範例，包括 ASP.NET AJAX`ScriptManager`控制項，`PasswordStrength`控制項和當然文字方塊中，使用者可以在其中輸入密碼。 為了示範，後者的表單欄位為一般文字和密碼欄位，讓您可以查看在開發期間您輸入。
 
@@ -51,5 +51,5 @@ ms.lasthandoff: 11/10/2017
 
 密碼 （） 好現在 ([按一下以檢視完整大小的影像](testing-the-strength-of-a-password-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](testing-the-strength-of-a-password-cs.md)
+> [!div class="step-by-step"]
+> [上一步](testing-the-strength-of-a-password-cs.md)

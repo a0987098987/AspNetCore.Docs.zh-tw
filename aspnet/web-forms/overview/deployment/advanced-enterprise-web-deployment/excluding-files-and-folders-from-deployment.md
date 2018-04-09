@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
-title: "檔案和資料夾排除部署 |Microsoft 文件"
+title: 檔案和資料夾排除部署 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何您可以排除檔案和資料夾從 web 部署套件時建置及封裝的 web 應用程式專案。"
+description: 本主題描述如何您可以排除檔案和資料夾從 web 部署套件時建置及封裝的 web 應用程式專案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c435448bf057bbef9127d66ffda24a07729f2322
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>從部署中排除檔案和資料夾
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > 本主題描述如何您可以排除檔案和資料夾從 web 部署套件時建置及封裝的 web 應用程式專案。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="overview"></a>總覽
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/15/2018
 1. 建立自訂專案檔名為*[專案名稱].wpp.targets*專案檔相同資料夾中。
 
     > [!NOTE]
-    > *。 Wpp.targets*檔案必須放在與您的 web 應用程式專案檔 & #x 2014; 相同的資料夾，例如*ContactManager.Mvc.csproj*（& d) 做為任何 #x 2014; 而在同一個資料夾您用來控制組建和部署程序的自訂專案檔案。
+    > *。 Wpp.targets*檔案必須與您的 web 應用程式專案檔相同的資料夾中移&#x2014;，例如*ContactManager.Mvc.csproj*&#x2014;而不是任何自訂相同資料夾中您用來控制組建和部署程序的專案檔案。
 2. 在*。 wpp.targets* file、 add **ItemGroup**項目。
 3. 在**ItemGroup**項目，加入**ExcludeFromPackageFolders**和**ExcludeFromPackageFiles**来排除特定檔案和資料夾做為必要項目。
 
@@ -106,16 +106,16 @@ ms.lasthandoff: 03/15/2018
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample2.xml)]
 6. 如果您想要排除資料夾從 web 封裝，加入**ExcludeFromPackageFolders**元素**ItemGroup**項目：
 
-    1. 在**Include**屬性，請提供您想要排除的資料夾以分號分隔清單。
-    2. 在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱*。 wpp.targets*檔案。
+   1. 在**Include**屬性，請提供您想要排除的資料夾以分號分隔清單。
+   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱*。 wpp.targets*檔案。
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
 7. 如果您想要排除的檔案從 web 封裝，加入**ExcludeFromPackageFiles**元素**ItemGroup**項目：
 
-    1. 在**Include**屬性，請提供您想要排除的檔案以分號分隔清單。
-    2. 在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱*。 wpp.targets*檔案。
+   1. 在**Include**屬性，請提供您想要排除的檔案以分號分隔清單。
+   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱*。 wpp.targets*檔案。
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
 8. *[專案名稱].wpp.targets*檔現在應該類似這樣：
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
@@ -131,6 +131,6 @@ ms.lasthandoff: 03/15/2018
 
 如需有關如何使用自訂的 Microsoft Build Engine (MSBuild) 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。 如需有關封裝和部署程序的詳細資訊，請參閱[建置和封裝 Web 應用程式專案](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md)， [Web 封裝部署的設定參數](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md)，和[部署 Web 封裝](../web-deployment-in-the-enterprise/deploying-web-packages.md)。
 
->[!div class="step-by-step"]
-[上一頁](deploying-membership-databases-to-enterprise-environments.md)
-[下一頁](taking-web-applications-offline-with-web-deploy.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-membership-databases-to-enterprise-environments.md)
+> [下一頁](taking-web-applications-offline-with-web-deploy.md)

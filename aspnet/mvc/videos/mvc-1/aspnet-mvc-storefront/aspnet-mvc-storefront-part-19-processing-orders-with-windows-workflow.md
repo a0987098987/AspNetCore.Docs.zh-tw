@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow
-title: "ASP.NET MVC MVC Storefront 一部分 19： 使用 Windows 工作流程處理訂單 |Microsoft 文件"
+title: ASP.NET MVC MVC Storefront 一部分 19： 使用 Windows 工作流程處理訂單 |Microsoft 文件
 author: robconery
-description: "在本集中我介紹 Windows 工作流程，並暴增以查看程度它就能用於在網站中的各種處理程序。"
+description: 在本集中我介紹 Windows 工作流程，並暴增以查看程度它就能用於在網站中的各種處理程序。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow
 msc.type: video
-ms.openlocfilehash: 10cbb024938932d5478a54bb2b2d03be1ed11329
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 9e6682c47367428414319c5c8418f6b118f42e50
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow"></a>ASP.NET MVC MVC Storefront 一部分 19： 處理訂單，使用 Windows 工作流程
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 02/12/2018
 
 [&#9654;觀看影片 （43 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow)
 
->[!div class="step-by-step"]
-[上一頁](aspnet-mvc-storefront-part-18-creating-an-experience.md)
-[下一頁](aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
+> [!div class="step-by-step"]
+> [上一頁](aspnet-mvc-storefront-part-18-creating-an-experience.md)
+> [下一頁](aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)

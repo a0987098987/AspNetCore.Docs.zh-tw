@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/net-4/routing/how-do-i-work-with-urls-in-aspnet-routing
-title: "如何： 使用 ASP.NET 路由中的 Url 嗎？ | Microsoft Docs"
+title: 如何： 使用 ASP.NET 路由中的 Url 嗎？ | Microsoft Docs
 author: rick-anderson
-description: "在這段影片 Chris Pels 會示範如何使用 ASP.NET 路由的網站中指定的 Url。 首先，在建立網站，且路由定義在 Gl...."
+description: 在這段影片 Chris Pels 會示範如何使用 ASP.NET 路由的網站中指定的 Url。 首先，在建立網站，且路由定義在 Gl....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/15/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/routing/how-do-i-work-with-urls-in-aspnet-routing
 msc.type: video
-ms.openlocfilehash: cf79019d52bbf34bc604ab6289fcc3c48533f40c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d87db9589dc5d330a29b3a25546dc65234f5f41
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-work-with-urls-in-aspnet-routing"></a>如何： 使用 ASP.NET 路由中的 Url 嗎？
 ====================
@@ -26,5 +26,5 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （20 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-work-with-urls-in-aspnet-routing)
 
->[!div class="step-by-step"]
-[上一步](how-do-i-use-routing-with-aspnet-web-forms.md)
+> [!div class="step-by-step"]
+> [上一步](how-do-i-use-routing-with-aspnet-web-forms.md)

@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
-title: "ASP.NET 識別的自訂儲存體提供者的概觀 |Microsoft 文件"
+title: ASP.NET 識別的自訂儲存體提供者的概觀 |Microsoft 文件
 author: tfitzmac
-description: "ASP.NET Identity 是可擴充的系統可讓您建立自己的儲存體提供者，並將之插入您的應用程式而不需要重新使用應用程式..."
+description: ASP.NET Identity 是可擴充的系統可讓您建立自己的儲存體提供者，並將之插入您的應用程式而不需要重新使用應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2014
 ms.topic: article
 ms.assetid: 681a9204-462e-4260-9a0b-19f0644d6ad7
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: bbc1f6ef291eddd7488531943b146bb67ae7ee02
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 06e3ad3b74bf94806f56da9f579255bf2917bc48
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>ASP.NET 識別的自訂儲存體提供者的概觀
 ====================
@@ -153,29 +153,29 @@ IdentityUser 類別會實作 IUser，並包含額外的屬性或建構函式，�
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image4.png)
 
 - **IUserStore**  
- [IUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx)介面是唯一的介面，您必須在使用者存放區實作。 它會定義方法來建立、 更新、 刪除和擷取使用者。
+  [IUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx)介面是唯一的介面，您必須在使用者存放區實作。 它會定義方法來建立、 更新、 刪除和擷取使用者。
 - **IUserClaimStore**  
- [IUserClaimStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx)介面會定義方法以啟用使用者宣告您使用者存放區中，您必須實作。 它包含的方法或加入、 移除和擷取使用者宣告。
+  [IUserClaimStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx)介面會定義方法以啟用使用者宣告您使用者存放區中，您必須實作。 它包含的方法或加入、 移除和擷取使用者宣告。
 - **IUserLoginStore**  
- [IUserLoginStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx)定義方法，您必須在您的使用者存放區，以啟用外部驗證提供者中實作。 它包含加入、 移除和擷取使用者登入和擷取使用者為基礎的登入資訊方法的方法。
+  [IUserLoginStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx)定義方法，您必須在您的使用者存放區，以啟用外部驗證提供者中實作。 它包含加入、 移除和擷取使用者登入和擷取使用者為基礎的登入資訊方法的方法。
 - **IUserRoleStore**  
- [IUserRoleStore&lt;，TUser&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx)介面定義的方法在您將使用者對應至角色的使用者存放區中，您必須實作。 它包含方法，以新增、 移除和擷取使用者的角色，並檢查使用者是否指派給角色的方法。
+  [IUserRoleStore&lt;，TUser&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx)介面定義的方法在您將使用者對應至角色的使用者存放區中，您必須實作。 它包含方法，以新增、 移除和擷取使用者的角色，並檢查使用者是否指派給角色的方法。
 - **IUserPasswordStore**  
- [IUserPasswordStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx)介面會定義的方法以保存使用者存放區中，您必須實作雜湊密碼。 它包含方法來取得和設定雜湊的密碼，並指出使用者是否已設定密碼的方法。
+  [IUserPasswordStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx)介面會定義的方法以保存使用者存放區中，您必須實作雜湊密碼。 它包含方法來取得和設定雜湊的密碼，並指出使用者是否已設定密碼的方法。
 - **IUserSecurityStampStore**  
- [IUserSecurityStampStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx)介面會定義您要用於安全性戳記，指出是否已變更的使用者帳戶資訊的使用者存放區中，您必須實作的方法. 當使用者變更密碼，或加入或移除登入，則會更新這個戳記。 它包含方法來取得和設定的安全性戳記。
+  [IUserSecurityStampStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx)介面會定義您要用於安全性戳記，指出是否已變更的使用者帳戶資訊的使用者存放區中，您必須實作的方法. 當使用者變更密碼，或加入或移除登入，則會更新這個戳記。 它包含方法來取得和設定的安全性戳記。
 - **IUserTwoFactorStore**  
- [IUserTwoFactorStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx)介面定義必須實作要實作雙因素驗證的方法。 它包含對取得和設定是否針對使用者啟用雙因素驗證的方法。
+  [IUserTwoFactorStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx)介面定義必須實作要實作雙因素驗證的方法。 它包含對取得和設定是否針對使用者啟用雙因素驗證的方法。
 - **IUserPhoneNumberStore**  
- [IUserPhoneNumberStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx)介面會定義您必須實作以儲存使用者電話號碼的方法。 它包含對取得和設定的電話號碼和電話號碼是否已確認的方法。
+  [IUserPhoneNumberStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx)介面會定義您必須實作以儲存使用者電話號碼的方法。 它包含對取得和設定的電話號碼和電話號碼是否已確認的方法。
 - **IUserEmailStore**  
- [IUserEmailStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx)介面會定義方法，您必須實作以儲存使用者的電子郵件地址。 它包含對取得和設定電子郵件地址和電子郵件是否已確認的方法。
+  [IUserEmailStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx)介面會定義方法，您必須實作以儲存使用者的電子郵件地址。 它包含對取得和設定電子郵件地址和電子郵件是否已確認的方法。
 - **IUserLockoutStore**  
- [IUserLockoutStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx)介面會定義您必須實作以儲存有關鎖定的帳戶資訊的方法。 它包含方法，取得目前失敗的存取嘗試次數、 取得和設定是否鎖定帳戶，取得或設定鎖定結束日期，號碼遞增失敗嘗試，以及重設嘗試失敗次數。
+  [IUserLockoutStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx)介面會定義您必須實作以儲存有關鎖定的帳戶資訊的方法。 它包含方法，取得目前失敗的存取嘗試次數、 取得和設定是否鎖定帳戶，取得或設定鎖定結束日期，號碼遞增失敗嘗試，以及重設嘗試失敗次數。
 - **IQueryableUserStore**  
- [IQueryableUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx)介面會定義您必須實作以提供可查詢使用者存放區的成員。 它包含保存可查詢使用者的屬性。
+  [IQueryableUserStore&lt;TUser、 TKey&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx)介面會定義您必須實作以提供可查詢使用者存放區的成員。 它包含保存可查詢使用者的屬性。
 
- 您在應用程式; 實作所需的介面例如，IUserClaimStore、 IUserLoginStore、 IUserRoleStore、 IUserPasswordStore 和 IUserSecurityStampStore 介面如下所示。 
+  您在應用程式; 實作所需的介面例如，IUserClaimStore、 IUserLoginStore、 IUserRoleStore、 IUserPasswordStore 和 IUserSecurityStampStore 介面如下所示。 
 
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample5.cs)]
 
@@ -218,11 +218,11 @@ Microsoft.AspNet.Identity.EntityFramework 命名空間包含的實作[IdentityUs
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample8.cs)]
 
 - **IRoleStore&lt;TRole&gt;**  
- [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx)介面會定義角色存放區類別中實作的方法。 它包含建立、 更新、 刪除及擷取角色的方法。
+  [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx)介面會定義角色存放區類別中實作的方法。 它包含建立、 更新、 刪除及擷取角色的方法。
 - **RoleStore&lt;TRole&gt;**  
- 若要自訂 RoleStore，請建立實作 IRoleStore 介面的類別。 您只需要實作這個類別，如果想要使用您的系統上的角色。 使用具名參數的建構函式*資料庫*型別的 ExampleDatabase 是只如何傳遞您的資料存取類別中的圖例。 例如，在 MySQL 實作中，這個建構函式接受 MySQLDatabase 類型的參數。  
+  若要自訂 RoleStore，請建立實作 IRoleStore 介面的類別。 您只需要實作這個類別，如果想要使用您的系統上的角色。 使用具名參數的建構函式*資料庫*型別的 ExampleDatabase 是只如何傳遞您的資料存取類別中的圖例。 例如，在 MySQL 實作中，這個建構函式接受 MySQLDatabase 類型的參數。  
   
- 如需完整的實作，請參閱[RoleStore (MySQL)](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/RoleStore.cs) 。
+  如需完整的實作，請參閱[RoleStore (MySQL)](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/RoleStore.cs) 。
 
 <a id="reconfigure"></a>
 ## <a name="reconfigure-application-to-use-new-storage-provider"></a>重新設定應用程式以使用新的存放裝置提供者
@@ -232,7 +232,7 @@ Microsoft.AspNet.Identity.EntityFramework 命名空間包含的實作[IdentityUs
 ### <a name="replace-default-storage-provider-in-mvc-project"></a>取代預設的 MVC 專案中的存放裝置提供者
 
 1. 在**管理 NuGet 封裝**視窗中，解除安裝**Microsoft ASP.NET Identity EntityFramework**封裝。 您可以藉由搜尋已安裝封裝中 Identity.EntityFramework 找到這個封裝。  
-    ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image7.png)您將會詢問您也要解除安裝 Entity Framework。 如果您不需要它的應用程式其他部分中，您就可以將它解除安裝。
+    ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image7.png) 您將會詢問您也要解除安裝 Entity Framework。 如果您不需要它的應用程式其他部分中，您就可以將它解除安裝。
 2. 在 [模型] 資料夾中 IdentityModels.cs 檔案中，刪除或標記為註解**ApplicationUser**和**ApplicationDbContext**類別。 在 MVC 應用程式，您可以刪除整個 IdentityModels.cs 檔案。 在 Web Form 應用程式中，刪除兩個類別，但請確定您保留也位於 IdentityModels.cs 檔案中的協助程式類別。
 3. 如果您的儲存體提供者位於不同的專案中，新增到 web 應用程式的參考。
 4. 取代所有參考`using Microsoft.AspNet.Identity.EntityFramework;`使用存放裝置提供者的命名空間陳述式。

@@ -1,7 +1,7 @@
 ---
-title: "取代 ASP.NET 的電腦金鑰"
+title: 取代 ASP.NET machineKey 中 ASP.NET Core
 author: rick-anderson
-description: "了解如何取代 machineKey ASP.NET 為允許使用更安全的新資料保護系統中。"
+description: 了解如何取代 machineKey ASP.NET 為允許使用更安全的新資料保護系統中。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 8113780dd7b8b3010cf77d14abb45730a2f28959
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 18d14099786929058b17bac2a653eaa1489de7d2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="replace-machinekey-in-aspnet"></a>取代 ASP.NET 的電腦金鑰
+# <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代 ASP.NET machineKey 中 ASP.NET Core
 
 <a name="compatibility-replacing-machinekey"></a>
 

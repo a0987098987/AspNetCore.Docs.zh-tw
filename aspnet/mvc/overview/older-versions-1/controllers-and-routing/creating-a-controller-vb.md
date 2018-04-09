@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-vb
-title: "建立控制站 (VB) |Microsoft 文件"
+title: 建立控制站 (VB) |Microsoft 文件
 author: StephenWalther
-description: "在本教學課程中，作者： Stephen Walther 會示範如何將控制站新增至 ASP.NET MVC 應用程式。"
+description: 在本教學課程中，作者： Stephen Walther 會示範如何將控制站新增至 ASP.NET MVC 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d2caf7fe137b48c016ff3cd52db9e36e1e8001c0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e9a2bbcb09672f5247429064908cd4d2ef67f518
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-controller-vb"></a>建立控制站 (VB)
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/10/2017
 如果您建立遺漏的控制站*控制器*後置詞，則您將無法叫用控制器。 不要執行這個動作--我所浪費我生命週期的無數小時後進行這種錯誤。
 
 
-**列出 1-Controllers\ProductController.vb**
+**Listing 1 - Controllers\ProductController.vb**
 
 [!code-vb[Main](creating-a-controller-vb/samples/sample1.vb)]
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 11/10/2017
 **圖 03**： 建立動作方法會自動 ([按一下以檢視完整大小的影像](creating-a-controller-vb/_static/image6.png))
 
 
-**列出 2-Controllers\CustomerController.vb**
+**Listing 2 - Controllers\CustomerController.vb**
 
 [!code-vb[Main](creating-a-controller-vb/samples/sample2.vb)]
 
@@ -84,7 +84,7 @@ ASP.NET MVC 控制器是只在類別。 如果您想要的話，您可以略過�
 **圖 04**： 建立新的類別 ([按一下以檢視完整大小的影像](creating-a-controller-vb/_static/image8.png))
 
 
-**列出 3-Controllers\PersonController.vb**
+**Listing 3 - Controllers\PersonController.vb**
 
 [!code-vb[Main](creating-a-controller-vb/samples/sample3.vb)]
 
@@ -92,10 +92,10 @@ ASP.NET MVC 控制器是只在類別。 如果您想要的話，您可以略過�
 
 `http://localhost:40071/Person`
 
-> [!NOTE] 
+> [!NOTE]
 > 
 > ASP.NET 程式開發伺服器會使用隨機的連接埠號碼 (例如，40071)。 輸入時要叫用控制器的 URL，您必須提供正確的連接埠號碼。 ASP.NET 程式開發伺服器，Windows 通知區域 （右下方的螢幕） 中將滑鼠停留在圖示，您可以判斷通訊埠編號。
-
->[!div class="step-by-step"]
-[上一頁](adding-dynamic-content-to-a-cached-page-vb.md)
-[下一頁](creating-an-action-vb.md)
+> 
+> [!div class="step-by-step"]
+> [上一頁](adding-dynamic-content-to-a-cached-page-vb.md)
+> [下一頁](creating-an-action-vb.md)

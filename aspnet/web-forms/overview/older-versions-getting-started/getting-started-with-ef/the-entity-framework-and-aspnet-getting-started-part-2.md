@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
-title: "開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 2 部分 |Microsoft 文件"
+title: 開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form-第 2 部分 |Microsoft 文件
 author: tdykstra
-description: "Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是..."
+description: Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework 的 ASP.NET Web Form 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: a549bd62bd78573c368784fd1529a830e009b0d4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a6c95a92aa77e2bb73aa513a207e0469d1aedbd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-2"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 第 2 部分
 ====================
@@ -249,6 +249,6 @@ ms.lasthandoff: 01/24/2018
 
 如此即完成簡介使用`EntityDataSource`控制項。 與這個控制項的工作是使用其他 ASP.NET 資料來源控制項通常沒有不同，不同之處在於您的實體和屬性，而非資料表和資料行的參考。 唯一的例外狀況時，您想要存取導覽屬性。 在下一個教學課程中您會看到語法使用`EntityDataSource`控制項也可能和其他資料來源控制項時篩選、 分組和排序資料。
 
->[!div class="step-by-step"]
-[上一頁](the-entity-framework-and-aspnet-getting-started-part-1.md)
-[下一頁](the-entity-framework-and-aspnet-getting-started-part-3.md)
+> [!div class="step-by-step"]
+> [上一頁](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> [下一頁](the-entity-framework-and-aspnet-getting-started-part-3.md)

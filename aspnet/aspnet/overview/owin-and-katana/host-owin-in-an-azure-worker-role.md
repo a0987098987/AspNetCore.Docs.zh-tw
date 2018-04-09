@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
-title: "裝載 Azure 背景工作角色中的 OWIN |Microsoft 文件"
+title: 裝載 Azure 背景工作角色中的 OWIN |Microsoft 文件
 author: MikeWasson
-description: "本教學課程會示範如何在自我裝載 OWIN Microsoft Azure 背景工作角色中。 開啟 Web 介面的.NET (OWIN) 所定義的.NET web 伺服器之間的抽象概念..."
+description: 本教學課程會示範如何在自我裝載 OWIN Microsoft Azure 背景工作角色中。 開啟 Web 介面的.NET (OWIN) 所定義的.NET web 伺服器之間的抽象概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/11/2014
 ms.topic: article
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 8c0fdfdf60ff3bde34b6869adf3f8693b4d9615d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 13bccc4b2d6f1b22c94446deaf6795dab766275b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="host-owin-in-an-azure-worker-role"></a>主機 OWIN 的 Azure 背景工作角色
 ====================
@@ -119,7 +119,7 @@ ms.lasthandoff: 01/24/2018
 
 [![](host-owin-in-an-azure-worker-role/_static/image10.png)](host-owin-in-an-azure-worker-role/_static/image9.png)
 
-尋找 IP 位址在服務部署、 部署 [識別碼]，服務詳細資料。 開啟網頁瀏覽器並瀏覽至 http://*位址*，其中*位址*是由計算模擬器; 指派的 IP 位址，例如`http://127.0.0.1:80`。 您應該會看到 OWIN 歡迎頁面：
+尋找 IP 位址在服務部署、 部署 [識別碼]，服務詳細資料。 開啟網頁瀏覽器並瀏覽至 http://<em>位址</em>，其中<em>位址</em>是由計算模擬器; 指派的 IP 位址，例如`http://127.0.0.1:80`。 您應該會看到 OWIN 歡迎頁面：
 
 ![](host-owin-in-an-azure-worker-role/_static/image11.png)
 

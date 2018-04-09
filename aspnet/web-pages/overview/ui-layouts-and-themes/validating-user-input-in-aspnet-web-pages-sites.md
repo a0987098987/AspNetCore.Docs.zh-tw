@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
-title: "驗證使用者輸入，在 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 驗證使用者輸入，在 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本文將討論如何驗證您從使用者取得的資訊&mdash;也就是以確定使用者輸入有效 HTML 中的資訊中 form 存新檔..."
+description: 本文將討論如何驗證您從使用者取得的資訊&mdash;也就是以確定使用者輸入有效 HTML 中的資訊中 form 存新檔...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/validating-user-input-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: 3bde2a4ea69577ebcbe3e9e89a7ee07e6ece8dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 34f703e6db70ac79c22f4a50d4cfd4e2326b4c74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-user-input-in-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站中驗證使用者輸入
 ====================
@@ -83,15 +83,15 @@ ms.lasthandoff: 11/10/2017
     若要檢查必要的欄位，請使用`Validation.RequireField(field, [error message])`（適用於個別的欄位） 或`Validation.RequireFields(field1, field2, ...))`（如欄位的清單）。 對於其他類型的驗證，使用`Validation.Add(field, ValidationType)`。 如`ValidationType`，您可以使用這些選項：
 
     `Validator.DateTime ([error message])`  
-`Validator.Decimal([error message])`  
-`Validator.EqualsTo(otherField [, error message])`  
-`Validator.Float([error message])`  
-`Validator.Integer([error message])`  
-`Validator.Range(min, max [, error message])`  
-`Validator.RegEx(pattern [, error message])`  
-`Validator.Required([error message])`  
-`Validator.StringLength(length)`  
-`Validator.Url([error message])`
+   `Validator.Decimal([error message])`  
+   `Validator.EqualsTo(otherField [, error message])`  
+   `Validator.Float([error message])`  
+   `Validator.Integer([error message])`  
+   `Validator.Range(min, max [, error message])`  
+   `Validator.RegEx(pattern [, error message])`  
+   `Validator.Required([error message])`  
+   `Validator.StringLength(length)`  
+   `Validator.Url([error message])`
 3. 當提交頁面時，請檢查驗證是否已通過檢查`Validation.IsValid`:
 
     [!code-csharp[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample1.cs)]
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-html[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample3.html)]
 
- 兩個程式庫是內容傳遞網路 (CDN)，從可載入，因此您不一定需要對您的電腦或伺服器。 不過，您必須擁有的本機副本*jquery.validate.unobtrusive.js*。 如果您沒有已正在使用 WebMatrix 範本 (例如**入門網站**)，其中包含文件庫，請建立 Web Pages 站台中，取決於**入門網站**。 然後將複製*.js*檔案目前的站台。
+   兩個程式庫是內容傳遞網路 (CDN)，從可載入，因此您不一定需要對您的電腦或伺服器。 不過，您必須擁有的本機副本*jquery.validate.unobtrusive.js*。 如果您沒有已正在使用 WebMatrix 範本 (例如**入門網站**)，其中包含文件庫，請建立 Web Pages 站台中，取決於**入門網站**。 然後將複製*.js*檔案目前的站台。
 2. 在標記中，針對您正在驗證時，每個項目加入至呼叫`Validation.For(field)`。 這個方法會發出用戶端驗證所使用的屬性。 (而不是發出實際的 JavaScript 程式碼，方法就會發出屬性，例如`data-val-...`。 這些屬性支援用來執行工作的 jQuery 不顯眼的用戶端驗證）。
 
 下列頁面會顯示如何將用戶端驗證功能新增至先前範例所示。

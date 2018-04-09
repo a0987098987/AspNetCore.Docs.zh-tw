@@ -1,18 +1,18 @@
 ---
-title: "在 ASP.NET Core azure 金鑰保存庫的組態提供者"
+title: 在 ASP.NET Core azure 金鑰保存庫的組態提供者
 author: guardrex
-description: "了解如何使用 Azure 金鑰保存庫的組態提供者設定應用程式使用在執行階段載入的名稱 / 值組。"
+description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應用程式使用在執行階段載入的名稱 / 值組。
 manager: wpickett
 ms.author: riande
 ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: e1a4be77417f0a74182f1b123bfba429737d4330
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 09f28ec3792cf137fbcfdecc593e27ce6b2e7e09
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>在 ASP.NET Core azure 金鑰保存庫的組態提供者
 
@@ -54,20 +54,21 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="creating-key-vault-secrets-and-loading-configuration-values-basic-sample"></a>建立金鑰保存庫密碼並載入組態值 （basic 範例）
 1. 建立金鑰保存庫，並設定下列中的指導方針的應用程式的 Azure Active Directory (Azure AD)[開始使用 Azure 金鑰保存庫](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。
-  * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
-    * 簡單密碼，會建立為名稱 / 值組。 Azure 金鑰保存庫密碼名稱會限制為英數字元及虛線。
-    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
-    * 建立兩個*手動*具有下列名稱 / 值組的密碼。 第一個密碼是簡單名稱和值，並以第二個密碼建立祕密值區段和秘密名稱中的子機碼：
-      * `SecretName`: `secret_value_1`
-      * `Section--SecretName`: `secret_value_2`
-  * 向 Azure Active Directory 中註冊範例應用程式。
-  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
+   * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
+     * 簡單密碼，會建立為名稱 / 值組。 Azure 金鑰保存庫密碼名稱會限制為英數字元及虛線。
+     * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為範例中的分隔符號。 通常用來分隔區段中的，從子機碼中的冒號[ASP.NET Core 組態](xref:fundamentals/configuration/index)，秘密名稱中不允許。 因此，使用兩個破折號和機密資料載入至應用程式的組態時，已還原為冒號。
+     * 建立兩個*手動*具有下列名稱 / 值組的密碼。 第一個密碼是簡單名稱和值，並以第二個密碼建立祕密值區段和秘密名稱中的子機碼：
+       * `SecretName`: `secret_value_1`
+       * `Section--SecretName`: `secret_value_2`
+   * 向 Azure Active Directory 中註冊範例應用程式。
+   * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
+
 2. 更新應用程式的*appsettings.json*檔案使用的數值`Vault`， `ClientId`，和`ClientSecret`。
 3. 執行範例應用程式，會取得從其組態值`IConfigurationRoot`具有相同名稱與密碼的名稱。
-  * 非階層式的值： 的值`SecretName`取得`config["SecretName"]`。
-  * 階層值 （區段）： 使用`:`（冒號） 標記法或`GetSection`擴充方法。 您可以使用任一種方法來取得組態值：
-    * `config["Section:SecretName"]`
-    * `config.GetSection("Section")["SecretName"]`
+   * 非階層式的值： 的值`SecretName`取得`config["SecretName"]`。
+   * 階層值 （區段）： 使用`:`（冒號） 標記法或`GetSection`擴充方法。 您可以使用任一種方法來取得組態值：
+     * `config["Section:SecretName"]`
+     * `config.GetSection("Section")["SecretName"]`
 
 當您執行應用程式時，網頁就會顯示載入的祕密值：
 
@@ -97,13 +98,14 @@ ms.lasthandoff: 03/15/2018
 > 您也可以提供您自己`KeyVaultClient`實作`AddAzureKeyVault`。 提供自訂用戶端，可讓您共用的組態提供者與您的應用程式的其他部分之間的用戶端的單一執行個體。
 
 1. 建立金鑰保存庫，並設定下列中的指導方針的應用程式的 Azure Active Directory (Azure AD)[開始使用 Azure 金鑰保存庫](https://azure.microsoft.com/documentation/articles/key-vault-get-started/)。
-  * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
-    * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為分隔符號。
-    * 建立兩個*手動*具有下列名稱 / 值組的密碼：
-      * `5000-AppSecret`: `5.0.0.0_secret_value`
-      * `5100-AppSecret`: `5.1.0.0_secret_value`
-  * 向 Azure Active Directory 中註冊範例應用程式。
-  * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
+   * 將密碼加入金鑰保存庫使用[AzureRM 金鑰保存庫 PowerShell 模組](/powershell/module/azurerm.keyvault)可從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureRM.KeyVault)、 [Azure 金鑰保存庫 REST API](/rest/api/keyvault/)，或[Azure 入口網站](https://portal.azure.com/)。 密碼會建立為*手動*或*憑證*機密資料。 *憑證*密碼使用的應用程式和服務憑證，但不是支援的組態提供者。 您應該使用*手動*選項建立的組態提供者使用的名稱 / 值組密碼。
+     * 使用階層式的值 （組態區段） `--` （兩個破折號） 做為分隔符號。
+     * 建立兩個*手動*具有下列名稱 / 值組的密碼：
+       * `5000-AppSecret`: `5.0.0.0_secret_value`
+       * `5100-AppSecret`: `5.1.0.0_secret_value`
+   * 向 Azure Active Directory 中註冊範例應用程式。
+   * 授權應用程式存取金鑰保存庫。 當您使用`Set-AzureRmKeyVaultAccessPolicy`PowerShell cmdlet，以授權應用程式存取金鑰保存庫中，提供`List`和`Get`密碼與存取`-PermissionsToSecrets list,get`。
+
 2. 更新應用程式的*appsettings.json*檔案使用的數值`Vault`， `ClientId`，和`ClientSecret`。
 3. 執行範例應用程式，會取得從其組態值`IConfigurationRoot`具有相同名稱做為帶有前置詞的秘密名稱。 在此範例中，前置詞是應用程式的版本，您提供給`PrefixKeyVaultSecretManager`當您加入的 Azure 金鑰保存庫的組態提供者。 值`AppSecret`取得`config["AppSecret"]`。 應用程式所產生的網頁顯示載入的值：
 

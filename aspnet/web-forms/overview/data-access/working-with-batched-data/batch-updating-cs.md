@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
-title: "批次更新 (C#) |Microsoft 文件"
+title: 批次更新 (C#) |Microsoft 文件
 author: rick-anderson
-description: "了解如何更新在單一作業中的多個資料庫記錄。 在使用者介面層級中，我們會建置其中每個資料列都可編輯的 GridView。 在資料..."
+description: 了解如何更新在單一作業中的多個資料庫記錄。 在使用者介面層級中，我們會建置其中每個資料列都可編輯的 GridView。 在資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1210f9048401ca1b4e29d6dde9bf5dbef987091f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9f1bad4f0b58175a8437ebfedf161db057bb2bd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-updating-c"></a>批次更新 (C#)
 ====================
@@ -185,7 +185,7 @@ GridView，像是 ObjectDataSource 的修改功能專為每個資料列為基礎
 請注意如何`<asp:ListItem Value="">`-選取一個-有其`Value`屬性明確設定為空字串。 回頭參考[自訂的資料修改介面](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md)為何需要這個額外的 DropDownList 項目用來處理的更完整討論的教學課程，`NULL`案例和原因指派`Value`屬性為空字串是不可或缺的。
 
 > [!NOTE]
-> 沒有潛在效能和延展性問題值得一提。 因為每個資料列都有使用 DropDownList`CategoriesDataSource`當做其資料來源，`CategoriesBLL`類別 s`GetCategories`方法會呼叫 *n* 瀏覽每個分頁的時間，其中 *n*在 GridView 的資料列數。 這些 *n* 呼叫`GetCategories`導致 *n* 向資料庫查詢。 這樣的影響力，在資料庫上無法減少快取傳回的類別目錄要求每個快取中或透過使用快取相依性或非常短的時間為基礎的到期 SQL 快取層。 如需有關每個要求快取選項，請參閱[`HttpContext.Items`每秒要求的快取存放區](http://aspnet.4guysfromrolla.com/articles/060904-1.aspx)。
+> 沒有潛在效能和延展性問題值得一提。 因為每個資料列都有使用 DropDownList`CategoriesDataSource`當做其資料來源，`CategoriesBLL`類別 s`GetCategories`方法會呼叫*n*瀏覽每個分頁的時間，其中*n*是數目在 GridView 的資料列。 這些*n*呼叫`GetCategories`導致*n*向資料庫查詢。 這樣的影響力，在資料庫上無法減少快取傳回的類別目錄要求每個快取中或透過使用快取相依性或非常短的時間為基礎的到期 SQL 快取層。 如需有關每個要求快取選項，請參閱[`HttpContext.Items`每秒要求的快取存放區](http://aspnet.4guysfromrolla.com/articles/060904-1.aspx)。
 
 
 ## <a name="step-4-completing-the-editing-interface"></a>步驟 4： 完成編輯介面
@@ -270,7 +270,7 @@ GridView s 自編輯介面定義在其 TemplateFields `ItemTemplate` s， `EditI
 
 [!code-csharp[Main](batch-updating-cs/samples/sample7.cs)]
 
-`BatchMethodAlternate`藉由建立新的空白啟動`ProductsDataTable`名為`products`。 接著，它會逐一 GridView s`Rows`集合，在每個資料列取得特定產品資訊使用 BLL 的`GetProductByProductID(productID)`方法。 擷取`ProductsRow`執行個體有以相同的方式，以更新其屬性`BatchUpdate`，但在更新匯入的資料列之後`products``ProductsDataTable`經由 DataTable s [ `ImportRow(DataRow)`方法](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx)。
+`BatchMethodAlternate` 藉由建立新的空白啟動`ProductsDataTable`名為`products`。 接著，它會逐一 GridView s`Rows`集合，在每個資料列取得特定產品資訊使用 BLL 的`GetProductByProductID(productID)`方法。 擷取`ProductsRow`執行個體有以相同的方式，以更新其屬性`BatchUpdate`，但在更新匯入的資料列之後`products``ProductsDataTable`經由 DataTable s [ `ImportRow(DataRow)`方法](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx)。
 
 之後`foreach`迴圈完成時，`products`包含一個`ProductsRow`GridView 中每個資料列的執行個體。 由於每個的`ProductsRow`執行個體已新增至`products`（而不是更新），如果我們盲目地將它傳遞給`UpdateWithTransaction`方法`ProductsTableAdatper`會嘗試每筆記錄插入資料庫。 相反地，我們需要指定這些資料列的每個已修改的 （不會新增）。
 
@@ -289,12 +289,12 @@ GridView s 自編輯介面定義在其 TemplateFields `ItemTemplate` s， `EditI
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和 David Suru。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](wrapping-database-modifications-within-a-transaction-cs.md)
-[下一頁](batch-deleting-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](wrapping-database-modifications-within-a-transaction-cs.md)
+> [下一頁](batch-deleting-cs.md)

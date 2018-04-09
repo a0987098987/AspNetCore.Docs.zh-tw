@@ -1,7 +1,7 @@
 ---
-title: "統合及縮製中 ASP.NET Core"
+title: 在 ASP.NET Core 組合和 minifiy 靜態資產
 author: scottaddie
-description: "了解如何最佳化 ASP.NET Core web 應用程式中的靜態資源套用統合及縮製的技術。"
+description: 了解如何最佳化 ASP.NET Core web 應用程式中的靜態資源套用統合及縮製的技術。
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 6c233d0957ce9974adbc6112e6194c072aab0b41
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="bundling-and-minification"></a>統合及縮製
+# <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>在 ASP.NET Core 組合和 minifiy 靜態資產
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -79,7 +79,7 @@ MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每�
 
 * `outputFileName`: 要輸出的組合檔案的名稱。 可包含相對路徑*bundleconfig.json*檔案。 **required**
 * `inputFiles`： 要配套起來的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空值會導致空的輸出檔案。 [通用慣例](http://www.tldp.org/LDP/abs/html/globbingref.html)支援的模式。
-* `minify`： 輸出型別縮製選項。 **選擇性**，*預設值-`minify: { enabled: true }`*
+* `minify`： 輸出型別縮製選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。
     * [CSS 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [JavaScript 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
@@ -220,28 +220,22 @@ dotnet bundle
 
 下列`environment`標記會呈現未處理的 CSS 檔案中執行時`Development`環境：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
----
-
+* * *
 下列`environment`以外的環境中執行時，標記會轉譯配套並縮短的 CSS 檔案`Development`。 例如，在執行`Production`或`Staging`呈現這些樣式表的觸發程序：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
----
-
+* * *
 ## <a name="consume-bundleconfigjson-from-gulp"></a>使用從 Gulp bundleconfig.json
 
 一些情況下，應用程式的統合及縮製的工作流程需要額外的處理。 範例包括映像最佳化、 快取 busting，及 CDN 資產處理。 為了滿足這些需求，您可以將轉換使用 Gulp 統合及縮製工作流程。

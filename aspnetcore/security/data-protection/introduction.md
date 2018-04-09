@@ -1,7 +1,7 @@
 ---
-title: "資料保護簡介"
+title: ASP.NET Core Data Protection
 author: rick-anderson
-description: "本文件介紹的資料保護概念，並且摘要說明的相關聯的 ASP.NET 核心 Api 的設計原則。"
+description: 了解資料保護的概念和 ASP.NET Core 資料保護應用程式開發介面的設計原則。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/introduction
-ms.openlocfilehash: acd38679390b92705703111b72816f1a5d3ba848
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5526b517ba9f1ac4b041576156b2964217460726
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="introduction-to-data-protection"></a>資料保護簡介
+# <a name="aspnet-core-data-protection"></a>ASP.NET Core Data Protection
 
 Web 應用程式通常需要儲存機密資料。 Windows 桌面應用程式提供 DPAPI，但這並不適合 web 應用程式。 ASP.NET Core 資料保護堆疊提供簡單、 更容易使用密碼編譯 API 為開發人員可用來保護資料，包括金鑰管理和旋轉。
 
@@ -45,7 +45,7 @@ ASP.NET Core 資料保護堆疊設計來做為長期取代<machineKey>ASP.NET �
 
 * 索引鍵都應該在靜止時可能受到保護。 系統應該找出適當的預設保護機制，並將它自動套用。
 
-這些原則，請注意，我們開發簡單、[易用](using-data-protection.md)資料保護堆疊。
+這些原則，請注意，我們開發簡單、[易用](xref:security/data-protection/using-data-protection)資料保護堆疊。
 
 ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持續性。 其他技術喜歡[Windows CNG api，DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx)和[Azure Rights Management](https://docs.microsoft.com/rights-management/)更適合的案例是無限期的儲存體，而且必須跟著強式金鑰的管理功能。 話雖如此，沒有任何開發人員會禁止從 ASP.NET Core 資料保護應用程式開發介面使用的長期保護的機密資料。
 
@@ -53,11 +53,11 @@ ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持�
 
 資料保護系統分為五個主要的封裝。 這些 Api 的各個層面目標三個主要對象。
 
-1. [取用者應用程式開發介面概觀](consumer-apis/overview.md)目標應用程式和 framework 開發人員。
+1. [取用者應用程式開發介面概觀](xref:security/data-protection/consumer-apis/overview)目標應用程式和 framework 開發人員。
 
    「 我不想要了解有關堆疊的運作方式或其設定方式。 我只想要執行中做為簡單的某些作業的方式盡可能高機率的成功使用應用程式開發介面。 」
 
-2. [組態 Api](configuration/overview.md)目標應用程式開發人員和系統管理員。
+2. [組態 Api](xref:security/data-protection/configuration/overview)目標應用程式開發人員和系統管理員。
 
    「 我需要告訴我的環境需要非預設路徑或設定資料保護系統 」。
 
@@ -75,6 +75,6 @@ ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持�
 
 * Microsoft.AspNetCore.DataProtection.Extensions 包含其他應用程式開發介面，開發人員會很有用，但其不屬於此核心套件中。 比方說，此套件包含簡單"具現化的系統沒有相依性資料隱碼安裝程式的特定金鑰的儲存目錄指向 「 應用程式開發介面 （詳細資訊）。 它也包含擴充方法，來限制受保護的內容 （詳細資訊） 的存留期。
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb 可以安裝到現有的 ASP.NET 4.x 應用程式重新導向其<machineKey>改為使用新的資料保護堆疊的作業。 請參閱[相容性](compatibility/replacing-machinekey.md#compatibility-replacing-machinekey)如需詳細資訊。
+* Microsoft.AspNetCore.DataProtection.SystemWeb 可以安裝到現有的 ASP.NET 4.x 應用程式重新導向其<machineKey>改為使用新的資料保護堆疊的作業。 請參閱[相容性](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey)如需詳細資訊。
 
-* Microsoft.AspNetCore.Cryptography.KeyDerivation 提供 PBKDF2 密碼雜湊常式的實作，並可供系統需要安全地處理使用者密碼。 請參閱[密碼雜湊](consumer-apis/password-hashing.md)如需詳細資訊。
+* Microsoft.AspNetCore.Cryptography.KeyDerivation 提供 PBKDF2 密碼雜湊常式的實作，並可供系統需要安全地處理使用者密碼。 請參閱[雜湊密碼](xref:security/data-protection/consumer-apis/password-hashing)如需詳細資訊。

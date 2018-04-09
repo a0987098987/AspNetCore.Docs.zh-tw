@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
-title: "核心 IIS 和 ASP.NET 程式開發伺服器 (VB) 之間的差異 |Microsoft 文件"
+title: 核心 IIS 和 ASP.NET 程式開發伺服器 (VB) 之間的差異 |Microsoft 文件
 author: rick-anderson
-description: "測試的 ASP.NET 應用程式在本機，機率是您使用 ASP.NET 開發 Web 伺服器。 不過，生產性網站是最有可能 pow..."
+description: 測試的 ASP.NET 應用程式在本機，機率是您使用 ASP.NET 開發 Web 伺服器。 不過，生產性網站是最有可能 pow...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8e8ae3c0fd1d67fba6dff965704b550bdc919c6a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 47b1959f9b92d161da0476b274c8154333ad80dc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="core-differences-between-iis-and-the-aspnet-development-server-vb"></a>核心 IIS 與 ASP.NET 程式開發伺服器 (VB) 之間的差異
 ====================
@@ -94,7 +94,7 @@ ASP.NET 執行階段會執行一些步驟來產生要求的內容，包括驗證
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-vb/samples/sample4.xml)]
 
-使用 ASP.NET 程式開發伺服器，請瀏覽的網站，並輸入 PDF 檔案，您的瀏覽器網址列中的其中一個直接的 URL。 如果您已下載此教學課程中的 URL 應該類似相關聯的網站：`http://localhost:portNumber/PrivateDocs/aspnet_tutorial01_Basics_vb.pdf`
+使用 ASP.NET 程式開發伺服器，請瀏覽的網站，並輸入 PDF 檔案，您的瀏覽器網址列中的其中一個直接的 URL。 如果您已下載此教學課程中的 URL 應該類似相關聯的網站： `http://localhost:portNumber/PrivateDocs/aspnet_tutorial01_Basics_vb.pdf`
 
 在網址列輸入此 URL，讓瀏覽器將要求傳送至檔案的 ASP.NET 程式開發伺服器。 ASP.NET 程式開發伺服器遞交 ASP.NET 執行階段進行處理的要求。 因為我們尚未登入，而且`Web.config`中`PrivateDocs`資料夾已設定為拒絕匿名存取，ASP.NET 執行階段自動我們將重新導向登入頁面， `Login.aspx` （請參閱圖 3）。 ASP.NET 時將使用者重新導向至登入頁面，包含`ReturnUrl`querystring 參數，指出頁面使用者嘗試檢視。 已成功登入使用者之後可回到此頁面。
 
@@ -140,6 +140,6 @@ ASP.NET 執行階段會執行一些步驟來產生要求的內容，包括驗證
 - [與所有類型的內容，在 IIS 7 上使用 ASP.NET 論壇驗證](https://blogs.iis.net/bills/archive/2007/05/19/using-asp-net-forms-authentication-with-all-types-of-content-with-iis7-video.aspx)（影片）
 - [在 Visual Web Developer web 伺服器](https://msdn.microsoft.com/library/58wxa9w5.aspx)
 
->[!div class="step-by-step"]
-[上一頁](common-configuration-differences-between-development-and-production-vb.md)
-[下一頁](deploying-a-database-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](common-configuration-differences-between-development-and-production-vb.md)
+> [下一頁](deploying-a-database-vb.md)

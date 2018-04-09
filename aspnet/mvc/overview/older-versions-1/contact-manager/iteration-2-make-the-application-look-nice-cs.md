@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-cs
-title: "反覆項目 #2 – 讓應用程式看起來不錯 (C#) |Microsoft 文件"
+title: '反覆項目 #2 – 讓應用程式看起來不錯 (C#) |Microsoft 文件'
 author: microsoft
-description: "在這個反覆項目，我們可以改進應用程式的外觀修改 ASP.NET MVC 檢視主版頁面的預設值和階層式樣式表。"
+description: 在這個反覆項目，我們可以改進應用程式的外觀修改 ASP.NET MVC 檢視主版頁面的預設值和階層式樣式表。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 10379f5321773155aaff4c384d8e0716d7e0e874
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cad28fb6ff02625674e59674d1ec08d52373c269
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-2--make-the-application-look-nice-c"></a>反覆項目 #2 – 讓應用程式看起來不錯 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-2-make-the-application-look-nice-cs/_static/contactmanager_2_cs1.zip)
 
@@ -115,7 +115,7 @@ ASP.NET MVC 設計庫有良好的不同的設計樣式選取範圍。 組件庫�
 
 不過，您可能需要建立完全獨特的設計為您的網站。 在此情況下，因此才會使用網站設計公司。 我決定採取這種方式為連絡人管理員應用程式的設計。
 
-我壓縮反覆項目 # 1 向上連絡管理員，並傳送到設計公司的專案。 他們並未擁有 Visual Studio （遺憾上 ！），但該 professionals t 出現問題。 它們是能從免費下載 Microsoft Visual Web Developer [https://www.asp.net](https://www.asp.net)網站並開啟連絡人管理員應用程式在 Visual Web Developer。 在幾天，它們必須產生的圖 7 中的設計。
+我壓縮反覆項目 # 1 向上連絡管理員，並傳送到設計公司的專案。 他們並未擁有 Visual Studio （遺憾上 ！），但該 professionals t 出現問題。 它們是能從免費下載 Microsoft Visual Web Developer [ https://www.asp.net ](https://www.asp.net)網站並開啟連絡人管理員應用程式在 Visual Web Developer。 在幾天，它們必須產生的圖 7 中的設計。
 
 
 [![新增專案 對話方塊](iteration-2-make-the-application-look-nice-cs/_static/image7.jpg)](iteration-2-make-the-application-look-nice-cs/_static/image13.png)
@@ -149,7 +149,7 @@ Html.ActionLink() 方法呈現整個 HTML 超連結。 Url.Action() 方法，相
 
 若要支援呈現已選取和取消選取索引標籤，建立名為 MenuItemHelper 的自訂 HTML helper。 這個 helper 方法轉譯是&lt;li&gt;標記或&lt;li 類別 ="選取"&gt;根據目前的控制器和動作是否對應至控制器和動作名稱傳遞給協助專家的標記。 MenuItemHelper 的程式碼會包含在程式碼範例 1。
 
-**列出 1-Helpers\MenuItemHelper.cs**
+**Listing 1 - Helpers\MenuItemHelper.cs**
 
 [!code-csharp[Main](iteration-2-make-the-application-look-nice-cs/samples/sample3.cs)]
 
@@ -163,6 +163,6 @@ MenuItemHelper TagBuilder 類別在內部用來建置&lt;li&gt; HTML 標記。 T
 
 中的下一個反覆項目，我們可以處理非常重要的主體的驗證。 使使用者無法建立新的連絡人，而不需要先提供必要的值，例如個人 s 和姓氏，我們可以加入至我們的應用程式的驗證程式碼。
 
->[!div class="step-by-step"]
-[上一頁](iteration-1-create-the-application-cs.md)
-[下一頁](iteration-3-add-form-validation-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-1-create-the-application-cs.md)
+> [下一頁](iteration-3-add-form-validation-cs.md)

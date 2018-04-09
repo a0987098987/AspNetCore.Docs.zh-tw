@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
-title: "部署您使用 Visual Studio (C#) 的網站 |Microsoft 文件"
+title: 部署您使用 Visual Studio (C#) 的網站 |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio 包含工具部署網站。 深入了解這些工具在本教學課程。"
+description: Visual Studio 包含工具部署網站。 深入了解這些工具在本教學課程。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c0c32c3dd24be5edfea3e17695753973f3fad30a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f06e2fe1fdfb03b106466a1792f6381495f76096
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-your-site-using-visual-studio-c"></a>部署您的網站使用 Visual Studio (C#)
 ====================
@@ -155,6 +155,6 @@ Visual Studio 複製網站工具是獨立的 FTP 用戶端類似的功能。 簡
 - [如何： 發行網站](https://msdn.microsoft.com/library/20yh9f1b.aspx)
 - [安裝和部署專案，Visual Studio 中](https://msdn.microsoft.com/library/wx3b589t.aspx)
 
->[!div class="step-by-step"]
-[上一頁](deploying-your-site-using-an-ftp-client-cs.md)
-[下一頁](common-configuration-differences-between-development-and-production-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-your-site-using-an-ftp-client-cs.md)
+> [下一頁](common-configuration-differences-between-development-and-production-cs.md)

@@ -1,22 +1,22 @@
 ---
 uid: visual-studio/overview/2012/windows-azure-authentication
-title: "Windows Azure Authentication |Microsoft 文件"
+title: Windows Azure Authentication |Microsoft 文件
 author: Rick-Anderson
-description: "Windows Azure Active Directory 的 Microsoft ASP.NET 工具可簡化針對裝載 Windows Azure 網站上的 web 應用程式啟用驗證..."
+description: Windows Azure Active Directory 的 Microsoft ASP.NET 工具可簡化針對裝載 Windows Azure 網站上的 web 應用程式啟用驗證...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2013
 ms.topic: article
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 4deb3536699f1ef3025f8858ee71a76a1c2def18
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 09cb37ceb0132958a48f5f3a5d52dc46c6f0a78d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="windows-azure-authentication"></a>Windows Azure 驗證
 ====================
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/24/2018
 
 1. 從 [專案] 功能表選取**啟用 Windows Azure Authentication**:  
   
- ![](windows-azure-authentication/_static/image2.png)
+   ![](windows-azure-authentication/_static/image2.png)
 
 2. Windows Azure Active Directory 租用戶 (例如 contoso.onmicrosoft.com) 輸入的網域，然後按一下**啟用**:
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/24/2018
 
 3. 在 Web 驗證對話方塊登入 Windows Azure Active Directory 租用戶系統管理員身分：  
   
- ![](windows-azure-authentication/_static/image4.png)
+   ![](windows-azure-authentication/_static/image4.png)
 
 ![](windows-azure-authentication/_static/image5.png)
 

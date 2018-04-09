@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
-title: "將拖放透過 ReorderList (C#) |Microsoft 文件"
+title: 將拖放透過 ReorderList (C#) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 目前的清單順序應該..."
+description: AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 目前的清單順序應該...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6afecfc7330647e6f4944c507e308afec6d2401b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42464d10f119e0ba51d5eebf2a67e76e3e419bda
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="drag-and-drop-via-reorderlist-c"></a>將拖放透過 ReorderList (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 目前的清單順序應該保存在伺服器上。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `ReorderList` AJAX Control Toolkit 中的控制項提供透過拖曳和卸除使用者可以重新排列的清單。 目前的清單順序應該保存在伺服器上。
 
@@ -35,16 +35,16 @@ ms.lasthandoff: 11/10/2017
 
 `ReorderList`控制項支援將資料從資料庫繫結至清單。 最棒的它也支援寫入至資料存放區的清單項目順序的變更。
 
-這個範例會使用 Microsoft SQL Server 2005 Express 的版本做為資料存放區。 資料庫是選擇性 （和免費） 的一部分安裝的 Visual Studio，包括 express edition。 它也會提供在個別下載[https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064)。 此範例中，我們假設 SQL Server 2005 Express Edition 執行個體稱為`SQLEXPRESS`位在同一部電腦與網頁伺服器; 這也是預設的安裝程式。 如果您的設定不同，您必須調整資料庫的連接資訊。
+這個範例會使用 Microsoft SQL Server 2005 Express 的版本做為資料存放區。 資料庫是選擇性 （和免費） 的一部分安裝的 Visual Studio，包括 express edition。 它也會提供在個別下載[ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064)。 此範例中，我們假設 SQL Server 2005 Express Edition 執行個體稱為`SQLEXPRESS`位在同一部電腦與網頁伺服器; 這也是預設的安裝程式。 如果您的設定不同，您必須調整資料庫的連接資訊。
 
 將資料庫設定的最簡單方式是使用 Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) )。 連接到伺服器，請按兩下`Databases`並建立新的資料庫 (以滑鼠右鍵按一下，然後選擇  `New Database`) 呼叫`Tutorials`。
 
 在此資料庫中，建立名為的新資料表`AJAX`具有下列四個資料行：
 
-- `id`(非 NULL 主索引鍵，整數、 身分識別)
-- `char`（char （1)，NULL）
-- `description`（varchar （50)，NULL）
-- `position`(int，NULL)
+- `id` (非 NULL 主索引鍵，整數、 身分識別)
+- `char` （char （1)，NULL）
+- `description` （varchar （50)，NULL）
+- `position` (int，NULL)
 
 
 [![AJAX 資料表配置](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
@@ -90,6 +90,6 @@ AJAX 資料表中的初始資料 ([按一下以檢視完整大小的影像](drag
 
 資料庫變更，根據新的清單中的資料的項目順序 ([按一下以檢視完整大小的影像](drag-and-drop-via-reorderlist-cs/_static/image9.png))
 
->[!div class="step-by-step"]
-[上一頁](using-postbacks-with-reorderlist-cs.md)
-[下一頁](using-postbacks-with-reorderlist-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-postbacks-with-reorderlist-cs.md)
+> [下一頁](using-postbacks-with-reorderlist-vb.md)

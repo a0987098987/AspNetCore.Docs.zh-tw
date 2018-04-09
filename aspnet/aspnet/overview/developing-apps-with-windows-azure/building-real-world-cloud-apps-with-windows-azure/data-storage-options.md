@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
-title: "資料儲存體選項 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 資料儲存體選項 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 88f57244bfbfdf33df3bb265d8aa2c93689b2f24
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d638dca331cb24c340a4471e5964a00b75bb608a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>資料儲存體選項 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -250,7 +250,7 @@ Entity Framework 建立*FixItTasks*資料表中包含的屬性在基礎`FixItTas
 | Azure SQL Database (PaaS) | 虛擬機器 (IaaS) 中的 SQL Server |
 | --- | --- |
 | **專業人員**-您不必建立或管理 Vm、 更新或修補作業系統或 SQL。Azure 會為您。 -內建高可用性，與資料庫層級 SLA。 -因為您只支付您使用 （不需要權限），低總擁有成本 (TCO)。 -適合處理大量的較小的資料庫 (&lt;= 500 GB)。 -您輕鬆地以動態方式建立新的資料庫，以便向外延展。 | ***專業人員***-在內部部署 SQL Server 功能相容。 -可實作 SQL Server[透過 AlwaysOn 高可用性](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx)2 + Vm，VM 層級 SLA 中。 -您對具有完整控制權 SQL 管理的方式。 -可以重複使用您已擁有，或其中一個每小時付費 SQL 授權。 -適用於處理較少但較大 (1 TB +) 資料庫。 |
-| **Cons** -某些功能相較於內部部署 SQL Server 的間距 (缺乏[CLR 整合](https://technet.microsoft.com/library/ms131102.aspx)， [TDE](https://technet.microsoft.com/library/bb934049.aspx)，[壓縮支援](https://technet.microsoft.com/library/cc280449.aspx)， [SQLServer Reporting Services](https://technet.microsoft.com/library/ms159106.aspx)等等)-500 GB 的資料庫大小限制。 | ***Cons*** -更新/修補程式 （作業系統和 SQL） 是您的責任-建立並管理資料庫使用的是，您必須負責-限於約 8000 （透過 16 個資料磁碟機） 的磁碟 IOPS （每秒輸入/輸出作業）。 |
+| **Cons** -某些功能相較於內部部署 SQL Server 的間距 (缺乏[CLR 整合](https://technet.microsoft.com/library/ms131102.aspx)， [TDE](https://technet.microsoft.com/library/bb934049.aspx)，[壓縮支援](https://technet.microsoft.com/library/cc280449.aspx)， [SQL ServerReporting Services](https://technet.microsoft.com/library/ms159106.aspx)等等)-500 GB 的資料庫大小限制。 | ***Cons*** -更新/修補程式 （作業系統和 SQL） 是您的責任-建立並管理資料庫使用的是，您必須負責-限於約 8000 （透過 16 個資料磁碟機） 的磁碟 IOPS （每秒輸入/輸出作業）。 |
 
 如果您想要使用 SQL Server 在 VM 中，您可以使用您自己的 SQL Server 授權或支付每小時的其中一個。 例如，在入口網站或透過 REST API 可以建立新的 VM 使用 SQL Server 映像。
 
@@ -301,6 +301,6 @@ HDInsight (Azure 上的 Hadoop):
 - [Hadoop 和 HDInsight： 在 Azure 中的巨量資料](https://msdn.microsoft.com/magazine/dn385705.aspx)。 Bruno Terkaly 和 Ricardo Villalobos，介紹在 Azure 上的 Hadoop 的 MSDN Magazine 文件。
 - [Microsoft Patterns and Practices-Azure 指引](https://msdn.microsoft.com/library/dn568099.aspx)。 請參閱 MapReduce 模式。
 
->[!div class="step-by-step"]
-[上一頁](single-sign-on.md)
-[下一頁](data-partitioning-strategies.md)
+> [!div class="step-by-step"]
+> [上一頁](single-sign-on.md)
+> [下一頁](data-partitioning-strategies.md)

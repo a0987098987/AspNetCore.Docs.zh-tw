@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
-title: "使用者和角色在生產網站 (VB) |Microsoft 文件"
+title: 使用者和角色在生產網站 (VB) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET 網站管理工具 (WSAT) 提供網頁型使用者介面，來設定成員資格和角色設定，以及如何建立、 編輯、..."
+description: ASP.NET 網站管理工具 (WSAT) 提供網頁型使用者介面，來設定成員資格和角色設定，以及如何建立、 編輯、...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f3bfaa0e14e3e04a7faae1a78b566d7c2067785a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 611a54b9dd5f188fd64c7020bfbf8171fea27a71
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a>使用者和角色在生產網站 (VB)
 ====================
@@ -37,7 +37,7 @@ ASP。網路的應用程式服務並不限於特定的實作。 相反地，您�
 
 ## <a name="using-the-aspnet-web-site-administration-tool"></a>使用 ASP.NET 網頁站台系統管理工具
 
-ASP.NET 包含[網站管理工具](https://msdn.microsoft.com/library/yy40ytx0.aspx)(WSAT)，能讓您輕鬆建立及管理使用者帳戶和角色，並指定使用者和角色為基礎的授權規則。 若要使用 WSAT，按一下 [ASP.NET 組態] 圖示，在 [方案總管] 中，或移至 [網站] 或 [專案] 功能表並選擇 [ASP.NET 組態] 選項。 兩種方法啟動網頁瀏覽器並指向 WSAT 在的地址如下：`http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
+ASP.NET 包含[網站管理工具](https://msdn.microsoft.com/library/yy40ytx0.aspx)(WSAT)，能讓您輕鬆建立及管理使用者帳戶和角色，並指定使用者和角色為基礎的授權規則。 若要使用 WSAT，按一下 [ASP.NET 組態] 圖示，在 [方案總管] 中，或移至 [網站] 或 [專案] 功能表並選擇 [ASP.NET 組態] 選項。 兩種方法啟動網頁瀏覽器並指向 WSAT 在的地址如下： `http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
 
 WSAT 分成三個區段：
 
@@ -119,5 +119,5 @@ ASP.NET 網站管理工具 (WSAT) 可用的成員資格和角色的應用程式�
 - [網站管理工具概觀](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 - [網站安全性教學課程](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
->[!div class="step-by-step"]
-[上一步](precompiling-your-website-vb.md)
+> [!div class="step-by-step"]
+> [上一步](precompiling-your-website-vb.md)

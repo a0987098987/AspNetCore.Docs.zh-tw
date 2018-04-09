@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
-title: "第 5 部分： 商務邏輯 |Microsoft 文件"
+title: 第 5 部分： 商務邏輯 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 5 部分加入某個商務邏輯。"
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 5 部分加入某個商務邏輯。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: e205788e05a2ad94d86d4847c11c40898b1c3113
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e4342e634ef8c4bcf4e0085650a28f414ab23736
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-5-business-logic"></a>第 5 部分： 商務邏輯
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 5 部分加入某個商務邏輯。
 
 
-## <a id="_Toc260221671"></a>加入一些商務邏輯
+## <a id="_Toc260221671"></a>  加入一些商務邏輯
 
 我們想要我們購物的經驗，只要有人瀏覽我們的網站才能使用。 訪客可以瀏覽並加入至購物車的項目，即使未註冊或登入。 在準備簽出時即會獲得驗證選項，如果它們不是尚未成員將會讓它們能夠建立帳戶。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/10/2017
 
 目前我們還沒有實作全域錯誤處理常式，此例外狀況將會進入未處理的應用程式，但我們將會很快解決這個。
 
-也請注意使用陳述式 （可透過 Debug.Fail()`using System.Diagnostics;)`
+也請注意使用陳述式 （可透過 Debug.Fail() `using System.Diagnostics;)`
 
 是在偵錯工具執行應用程式，這個方法會顯示詳細的對話方塊，以及我們在此指定的錯誤訊息的應用程式狀態的相關資訊。
 
@@ -187,6 +187,6 @@ GetValues() 是特殊的協助程式函式，我們將在實作 MyShoppingCart.a
 
 這樣讓我們之前使用 Visual Studio 產生的成員資格資料庫，並將使用者加入成員資格儲存機制。
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-4.md)
-[下一頁](tailspin-spyworks-part-6.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-4.md)
+> [下一頁](tailspin-spyworks-part-6.md)

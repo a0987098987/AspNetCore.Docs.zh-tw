@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database
-title: "[如何:]LINQ to SQL： 更新資料庫 |Microsoft 文件"
+title: '[如何:]LINQ to SQL： 更新資料庫 |Microsoft 文件'
 author: scottstanfield
-description: "在我示範了如何建立這段影片，更新和刪除資料錄透過 LINQ，簡單的交易之間關聯性和自訂資料行的更新和..."
+description: 在我示範了如何建立這段影片，更新和刪除資料錄透過 LINQ，簡單的交易之間關聯性和自訂資料行的更新和...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database
 msc.type: video
-ms.openlocfilehash: 28b974505881a1d35b72c12e0b760d3de521f7a1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ebb884cfd7980462c4d0a8135769f5ba3c35bc96
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-linq-to-sql-updating-the-database"></a>[如何:]LINQ to SQL： 更新資料庫
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （17 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-updating-the-database)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-linq-to-sql-querying-the-database.md)
-[下一頁](how-do-i-linq-to-sql-linqdatasource.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-linq-to-sql-querying-the-database.md)
+> [下一頁](how-do-i-linq-to-sql-linqdatasource.md)

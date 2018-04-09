@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs
-title: "加入 GridView 的資料行的核取方塊 (C#) |Microsoft 文件"
+title: 加入 GridView 的資料行的核取方塊 (C#) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會查看如何核取方塊的資料行加入提供給使用者以直覺的方式，選取代表 g 的多個資料列的 GridView 控制項..."
+description: 本教學課程會查看如何核取方塊的資料行加入提供給使用者以直覺的方式，選取代表 g 的多個資料列的 GridView 控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6f238b8ea8dfbde67dbad7a52d6b4851d67402a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3c9ad4c66c5bdd24df691180acf354f666e6e578
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-gridview-column-of-checkboxes-c"></a>加入 GridView 的資料行的核取方塊 (C#)
 ====================
@@ -158,8 +158,8 @@ GridView s [ `Rows`屬性](https://msdn.microsoft.com/library/system.web.ui.webc
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-gridview-column-of-radio-buttons-cs.md)
-[下一頁](inserting-a-new-record-from-the-gridview-s-footer-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-gridview-column-of-radio-buttons-cs.md)
+> [下一頁](inserting-a-new-record-from-the-gridview-s-footer-cs.md)

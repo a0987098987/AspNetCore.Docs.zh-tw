@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
-title: "檢查 ASP.NET MVC 如何 scaffolds DropDownList Helper |Microsoft 文件"
+title: 檢查 ASP.NET MVC 如何 scaffolds DropDownList Helper |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: abd9b5c09e942b966eb3eaaebe1b315c30b8e0c0
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 09d2d7a0df5e8ffa14160b7d3c16b1e9da905fa1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>檢查 ASP.NET MVC 如何 scaffolds DropDownList Helper
 ====================
@@ -206,6 +206,6 @@ HTML`<select>`元素 (由 HTML 建立[DropDownList](https://msdn.microsoft.com/l
 
 這一節中，我們已經學會使用三種方法**DropDownList**與類別目錄資料。 在下一步 區段中，我們將示範如何新增新的類別。
 
->[!div class="step-by-step"]
-[上一頁](using-the-dropdownlist-helper-with-aspnet-mvc.md)
-[下一頁](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-dropdownlist-helper-with-aspnet-mvc.md)
+> [下一頁](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)

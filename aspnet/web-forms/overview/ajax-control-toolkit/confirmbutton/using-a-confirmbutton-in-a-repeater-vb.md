@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb
-title: "在中繼器 (VB) 中使用 ConfirmButton |Microsoft 文件"
+title: 在中繼器 (VB) 中使用 ConfirmButton |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit ConfirmButton extender 建立 Yes/任何快顯，當使用者按一下按鈕時 （包括 LinkButton 控制項）。 只有當是..."
+description: AJAX Control Toolkit ConfirmButton extender 建立 Yes/任何快顯，當使用者按一下按鈕時 （包括 LinkButton 控制項）。 只有當是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5da8491c157ad6f35c2c25803680f262a35ce6e1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89f412c242a3a5bcd10b72b7f0cbfb23705edb51
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-a-confirmbutton-in-a-repeater-vb"></a>在中繼器 (VB) 中使用 ConfirmButton
 ====================
@@ -27,13 +27,13 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit ConfirmButton extender 建立 Yes/任何快顯，當使用者按一下按鈕時 （包括 LinkButton 控制項）。 只当按一下 [是]，按鈕會執行動作，否則為已取消。 這也是在中繼器中。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit ConfirmButton extender 建立 Yes/任何快顯，當使用者按一下按鈕時 （包括 LinkButton 控制項）。 只当按一下 [是]，按鈕會執行動作，否則為已取消。 這也是在中繼器中。
 
 ## <a name="steps"></a>步驟
 
-首先，資料來源是必要的。 這個範例會使用 AdventureWorks 資料庫和 Microsoft SQL Server 2005 Express Edition。 資料庫是選擇性的一部分 （包括 express edition） 的 Visual Studio 安裝，也會在個別下載[https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064)。 AdventureWorks 資料庫是 SQL Server 2005 範例和範例資料庫的一部分 (從下列網址下載[https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en))。 若要設定資料庫的最簡單方式是使用 Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID = c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) 和附加`AdventureWorks.mdf`資料庫檔案。
+首先，資料來源是必要的。 這個範例會使用 AdventureWorks 資料庫和 Microsoft SQL Server 2005 Express Edition。 資料庫是選擇性的一部分 （包括 express edition） 的 Visual Studio 安裝，也會在個別下載[ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064)。 AdventureWorks 資料庫是 SQL Server 2005 範例和範例資料庫的一部分 (從下列網址下載[ https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e &amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en))。 若要設定資料庫的最簡單方式是使用 Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = en](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) 和附加`AdventureWorks.mdf`資料庫檔案。
 
 此範例中，我們假設 SQL Server 2005 Express Edition 執行個體稱為`SQLEXPRESS`位在同一部電腦與網頁伺服器; 這也是預設的安裝程式。 如果您的設定不同，您必須調整資料庫的連接資訊。
 
@@ -54,5 +54,5 @@ AJAX Control Toolkit ConfirmButton extender 建立 Yes/任何快顯，當使用�
 
 資料來源的每個項目旁邊的 [確認] 按鈕會出現 ([按一下以檢視完整大小的影像](using-a-confirmbutton-in-a-repeater-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](using-a-confirmbutton-in-a-repeater-cs.md)
+> [!div class="step-by-step"]
+> [上一步](using-a-confirmbutton-in-a-repeater-cs.md)

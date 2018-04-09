@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
-title: "摺疊和展開面板從 JavaScript (C#) |Microsoft 文件"
+title: 摺疊和展開面板從 JavaScript (C#) |Microsoft 文件
 author: wenz
-description: "在 ASP.NET AJAX Control Toolkit CollapsiblePanel 控制項延伸面板，並提供功能，可將摺疊其內容，並將其展開..."
+description: 在 ASP.NET AJAX Control Toolkit CollapsiblePanel 控制項延伸面板，並提供功能，可將摺疊其內容，並將其展開...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 666f3e212ccdd5b26b466f4672134ce751dc5dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7baa3be7144946bde7d11afd9b1cb5f14ad9dede
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-c"></a>摺疊和展開面板從 JavaScript (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 在 ASP.NET AJAX Control Toolkit CollapsiblePanel 控制項擴充面板，並提供功能，可將摺疊其內容，並再次將其展開。 從自訂的 JavaScript 程式碼，也會觸發這兩個動作。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在 ASP.NET AJAX Control Toolkit CollapsiblePanel 控制項擴充面板，並提供功能，可將摺疊其內容，並再次將其展開。 從自訂的 JavaScript 程式碼，也會觸發這兩個動作。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-aspx[Main](collapsing-and-expanding-a-panel-from-javascript-cs/samples/sample5.aspx)]
 
-在用戶端 JavaScript 程式碼 (入門`<script type="text/javascript">`)、`$find()`方法需要用來存取`CollapsiblePanelExtender`。 `$find("cpe")`會傳回它的參考。 從該處上特有的方法，即可解決手邊的工作。
+在用戶端 JavaScript 程式碼 (入門`<script type="text/javascript">`)、`$find()`方法需要用來存取`CollapsiblePanelExtender`。 `$find("cpe")` 會傳回它的參考。 從該處上特有的方法，即可解決手邊的工作。
 
 方法為開啟 （展開） [面板] 中稱為`_doOpen()`; 下列程式碼會實作`doOpen()`按一下第一個按鈕時呼叫的函式：
 
@@ -72,5 +72,5 @@ ms.lasthandoff: 11/10/2017
 
 第三個按鈕面板的狀態變更： 從摺疊來擴充和背景 ([按一下以檢視完整大小的影像](collapsing-and-expanding-a-panel-from-javascript-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](collapsing-and-expanding-a-panel-from-javascript-vb.md)
+> [!div class="step-by-step"]
+> [下一步](collapsing-and-expanding-a-panel-from-javascript-vb.md)

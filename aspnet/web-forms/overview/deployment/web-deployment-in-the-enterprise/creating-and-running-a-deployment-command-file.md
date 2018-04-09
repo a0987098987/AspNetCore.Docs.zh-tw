@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
-title: "建立和執行部署指令檔案 |Microsoft 文件"
+title: 建立和執行部署指令檔案 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何建立命令檔，以供您執行使用 Microsoft Build Engine (MSBuild) 專案檔做為單一步驟，重新部署..."
+description: 本主題描述如何建立命令檔，以供您執行使用 Microsoft Build Engine (MSBuild) 專案檔做為單一步驟，重新部署...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: bc31bf55b29661816e0ca9a50b51b0abc3eb2c98
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: e5fb034a67bc9f2ea549af269eae51a49acc4d98
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>建立和執行部署指令檔
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 03/15/2018
 > 本主題描述如何建立命令檔，以供您執行使用 Microsoft Build Engine (MSBuild) 專案檔，以逐步執行、 可重複執行的處理程序的部署。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員](the-contact-manager-solution.md)方案 & #x 2014; 代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員](the-contact-manager-solution.md)方案&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎分割專案檔案描述的方法中[瞭解建置程序](understanding-the-build-process.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[瞭解建置程序](understanding-the-build-process.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="process-overview"></a>處理程序概觀
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="create-an-msbuild-command"></a>建立 MSBuild 命令
 
-中所述[瞭解建置程序](understanding-the-build-process.md)，環境特定專案檔 & #x 2014; 例如， *Env Dev.proj*（& s) #x 2014; 設計來匯入環境無從驗證*Publish.proj*在建置階段檔案。 結合，這兩個檔案，提供一組完整的指示，告知 MSBuild 如何建置和部署您的方案。
+中所述[瞭解建置程序](understanding-the-build-process.md)，環境特定專案檔&#x2014;，例如*Env Dev.proj*&#x2014;設計來匯入環境無從驗證*Publish.proj*在建置階段檔案。 結合，這兩個檔案，提供一組完整的指示，告知 MSBuild 如何建置和部署您的方案。
 
 *Publish.proj*檔案使用**匯入**環境特定專案檔案匯入的項目。
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/15/2018
 5. 如果這是方案部署到此環境的第一次，您必須將測試 web 伺服器機器帳戶，加入**db\_datawriter**和**db\_datareader**角色**ContactManager**資料庫。 此程序所述[設定資料庫伺服器來進行 Web 部署發行](../configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing.md)。
 
     > [!NOTE]
-    > 您只需要建立資料庫時，指派這些權限。 根據預設，在建置程序將無法重新建立每個部署 & #x 2014年上的資料庫; 相反地，它會比較現有的資料庫最新的結構描述並進行所需的變更。 如此一來，您應該只需要將這些資料庫角色對應您部署方案的第一次。
+    > 您只需要建立資料庫時，指派這些權限。 根據預設，在建置程序將無法重新建立每個部署上的資料庫&#x2014;相反地，它會比較現有的資料庫最新的結構描述並進行所需的變更。 如此一來，您應該只需要將這些資料庫角色對應您部署方案的第一次。
 6. 開啟 Internet Explorer 並瀏覽至 連絡人管理員應用程式的 URL (例如， `http://testweb1:85/ContactManager/`)。
 7. 確認應用程式可以正常運作，您可以新增連絡人。
 
@@ -118,6 +118,6 @@ ms.lasthandoff: 03/15/2018
 
 您也可以自訂每個環境的建置程序來覆寫屬性，或在 MSBuild 命令中設定各種其他參數。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](deploying-database-projects.md)
-[下一頁](manually-installing-web-packages.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-database-projects.md)
+> [下一頁](manually-installing-web-packages.md)

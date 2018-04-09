@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-new-field
-title: "將新欄位加入至電影模型和資料庫資料表 (VB) |Microsoft 文件"
+title: 將新欄位加入至電影模型和資料庫資料表 (VB) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 377c667a56bb5c0d58ecef5c3550ca510ec52546
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5927b7d977e375881fe618b4b844cbd708023ba1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-database-table-vb"></a>將新欄位加入至電影模型和資料庫資料表 (VB)
 ====================
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/10/2017
 
 既然您已更新`Model`類別，您也需要更新*\Views\Movies\Index.vbhtml*和*\Views\Movies\Create.vbhtml*檢視範本，以支援新`Rating`屬性。
 
-開啟*\Views\Movies\Index.vbhtml*檔案，然後加入`<th>Rating</th>`欄名後方**價格**資料行。 然後加入`<td>`即將要呈現之範本的結束欄`@item.Rating`值。 以下是哪些更新*Index.vbhtml*檢視範本外觀就像：
+開啟<em>\Views\Movies\Index.vbhtml</em>檔案，然後加入`<th>Rating</th>`欄名後方<strong>價格</strong>資料行。 然後加入`<td>`即將要呈現之範本的結束欄`@item.Rating`值。 以下是哪些更新<em>Index.vbhtml</em>檢視範本外觀就像：
 
 [!code-vbhtml[Main](adding-a-new-field/samples/sample3.vbhtml)]
 
@@ -123,6 +123,6 @@ ms.lasthandoff: 11/10/2017
 
 本節中您已看到如何修改模型物件和資料庫中與變更保持同步。 您也學到如何填入新建立的資料庫中的範例資料，因此您可以嘗試的案例。 接下來，讓我們看看如何將更豐富的驗證邏輯加入至模型類別，並啟用某些商務規則，以強制執行。
 
->[!div class="step-by-step"]
-[上一頁](examining-the-edit-methods-and-edit-view.md)
-[下一頁](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [上一頁](examining-the-edit-methods-and-edit-view.md)
+> [下一頁](adding-validation-to-the-model.md)

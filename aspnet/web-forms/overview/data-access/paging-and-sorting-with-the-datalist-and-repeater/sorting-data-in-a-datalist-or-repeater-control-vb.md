@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
-title: "在 DataList 或中繼器控制項 (VB) 中排序資料 |Microsoft 文件"
+title: 在 DataList 或中繼器控制項 (VB) 中排序資料 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將檢驗如何納入排序 DataList 和中繼器中的支援，以及如何建構資料可以 DataList 或中繼器..."
+description: 在本教學課程中，我們將檢驗如何納入排序 DataList 和中繼器中的支援，以及如何建構資料可以 DataList 或中繼器...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0133a74454a7754f4f7087e2121c7387a1aef8a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 66d6833e69a91aef39cc4a202ef662ecaeeee839
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a>DataList 或中繼器控制項 (VB) 中的排序資料
 ====================
@@ -231,9 +231,9 @@ GridView 控制項有`SortExpression`屬性，其中儲存`SortExpression`GridVi
 
 DataList 範例會檢查在步驟 5 的頁面，透過使用沒有效率的預設分頁技術其資料。 若充分大量的資料進行分頁，務必使用自訂分頁。 回到[有效率地透過大型量的資料分頁](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md)和[排序自訂分頁資料](../paging-and-sorting/sorting-custom-paged-data-vb.md)教學課程中，我們會檢查為 BLL 中預設和自訂分頁以及建立的方法之間的差異使用自訂分頁和排序自訂分頁的資料。 特別是，這些兩個先前的教學課程中我們加入下列三種方法`ProductsBLL`類別：
 
-- `GetProductsPaged(startRowIndex, maximumRows)`傳回開始記錄的特定子集*startRowIndex*和不超過*maximumRows*。
-- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)`傳回記錄依照指定的特定子集*sortExpression*輸入的參數。
-- `TotalNumberOfProducts()`提供的記錄總數`Products`資料庫資料表。
+- `GetProductsPaged(startRowIndex, maximumRows)` 傳回開始記錄的特定子集*startRowIndex*和不超過*maximumRows*。
+- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)` 傳回記錄依照指定的特定子集*sortExpression*輸入的參數。
+- `TotalNumberOfProducts()` 提供的記錄總數`Products`資料庫資料表。
 
 這些方法可用來有效率地頁面上，並使用 DataList 或中繼器控制項中的資料進行排序。 為了說明這點，可讓啟動藉由使用自訂分頁支援; 建立中繼器控制項中的 s然後，我們要加入排序功能。
 
@@ -390,11 +390,11 @@ S 都是這麼簡單 ！ 儘管有幾個步驟來取得自訂分頁和排序實�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 David Suru。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](paging-report-data-in-a-datalist-or-repeater-control-vb.md)
+> [!div class="step-by-step"]
+> [上一步](paging-report-data-in-a-datalist-or-repeater-control-vb.md)

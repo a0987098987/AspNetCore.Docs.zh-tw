@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/recommended-resources-for-mvc
-title: "MVC 建議資源 |Microsoft 文件"
+title: MVC 建議資源 |Microsoft 文件
 author: Rick-Anderson
-description: "本主題提供有關 ASP.NET MVC 5 的文件資源的連結。 如果您知道的絕佳的部落格文章、 stackoverflow 執行緒或任何其他連結，就是..."
+description: 本主題提供有關 ASP.NET MVC 5 的文件資源的連結。 如果您知道的絕佳的部落格文章、 stackoverflow 執行緒或任何其他連結，就是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: d08ee5c2bf56611caa483337af0ec1bd7cf982c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b328b733914b20b0aa3fe529c9a9f999349171ec
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="mvc-recommended-resources"></a>MVC 建議使用的資源
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/24/2018
 > 本主題提供有關 ASP.NET MVC 5 的文件資源的連結。 如果您知道好的部落格文章， [stackoverflow](http://stackoverflow.com/)執行緒或任何其他連結，會很有用，傳送[我](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link)含有連結的電子郵件。 此處提供的連結會定期更新。 您可以找到舊 （但在許多情況下仍然相關） 上的 ASP.NET MVC 連結[MSDN 內容地圖](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx)。
 > 
 > 取得您問題的解答，或尋找問題的解決方案的理想位置是在[ASP.NET MVC 論壇](https://forums.asp.net/1146.aspx/1?MVC)或在[stackoverflow](http://stackoverflow.com/questions/tagged/mvc+asp.net-mvc)。
-<a id="gettingstarted"></a>
+> <a id="gettingstarted"></a>
 
 ## <a name="getting-started-with-aspnet-mvc"></a>ASP.NET MVC 使用者入門
 

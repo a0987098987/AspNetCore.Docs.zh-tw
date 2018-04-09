@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
-title: "插入、 更新和刪除資料 (C#) 的概觀 |Microsoft 文件"
+title: 插入、 更新和刪除資料 (C#) 的概觀 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們會看到如何將對應 ObjectDataSource insert、 update （)，和 BLL 方法 delete （） 方法的類別，以及如何使用組態..."
+description: 在本教學課程中，我們會看到如何將對應 ObjectDataSource insert、 update （)，和 BLL 方法 delete （） 方法的類別，以及如何使用組態...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e483c37cc773a7255f18c26bc3609d68f71dff7d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dbd111f79eda6006cb9aed59d8fd0b0342415833
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-c"></a>插入、 更新和刪除資料 (C#) 的概觀
 ====================
@@ -238,7 +238,7 @@ CommandField 包含數個`ShowXButton`指出哪些系列的按鈕會顯示在 Co
 - 加強`DeleteProduct`方法，將包含邏輯，可刪除指定的產品訂單詳細資料
 - 修改 SQL 查詢的 TableAdapter 用於包含刪除指定的產品訂單詳細資料
 
-讓我們只要刪除所有記錄的`Order Details`規避 foreign key 條件約束的資料表。 請移至 Visual Studio 中的 [伺服器總管]，以滑鼠右鍵按一下`NORTHWND.MDF`] 節點，然後選擇 [新的查詢。 然後，在查詢視窗中，執行下列 SQL 陳述式：`DELETE FROM [Order Details]`
+讓我們只要刪除所有記錄的`Order Details`規避 foreign key 條件約束的資料表。 請移至 Visual Studio 中的 [伺服器總管]，以滑鼠右鍵按一下`NORTHWND.MDF`] 節點，然後選擇 [新的查詢。 然後，在查詢視窗中，執行下列 SQL 陳述式： `DELETE FROM [Order Details]`
 
 
 [![從訂單詳細資料資料表刪除所有記錄](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-cs/_static/image34.png)
@@ -440,7 +440,7 @@ TextBox 控制項中`EditItemTemplate`有其`Text`屬性繫結至其對應的資
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[下一步](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+> [!div class="step-by-step"]
+> [下一步](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)

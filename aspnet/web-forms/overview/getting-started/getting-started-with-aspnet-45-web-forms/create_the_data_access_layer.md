@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
-title: "建立資料存取層 |Microsoft 文件"
+title: 建立資料存取層 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: 809609155b06c4632bd4f450082d84c432c7a46f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 671d1bbf661dfb3e56c6ccd67ce0d383990918d6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-data-access-layer"></a>建立資料存取層
 ====================
@@ -68,13 +68,13 @@ Entity Framework 支援呼叫開發架構*Code First*。 程式碼第一次可�
 
     ![建立資料存取層中的新項目功能表](create_the_data_access_layer/_static/image1.png)
 
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 在下**Visual C#**從**已安裝**左邊的窗格，選取**程式碼**。 
 
     ![建立資料存取層中的新項目功能表](create_the_data_access_layer/_static/image2.png)
 3. 選取**類別**從中間窗格，並命名這個新類別*Product.cs*。
 4. 按一下 [加入] 。  
- 在編輯器中，會顯示新的類別檔案。
+   在編輯器中，會顯示新的類別檔案。
 5. 下列程式碼取代預設程式碼：   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample1.cs)]
@@ -95,7 +95,7 @@ Entity Framework 支援呼叫開發架構*Code First*。 程式碼第一次可�
 此程序會加入新 C# 內容類別來*模型*資料夾。
 
 1. 以滑鼠右鍵按一下*模型*資料夾，然後選取**新增** - &gt; **新項目**。   
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 選取**類別**從中間窗格中，其命名*ProductContext.cs*按一下**新增**。
 3. 取代為下列程式碼類別中包含的預設程式碼：   
 
@@ -188,6 +188,6 @@ Entity Framework Code First 會產生資料庫針對您在預設位置時資料�
 [第一個資料註解的程式碼](https://msdn.microsoft.com/data/gg193958)  
 [Entity Framework 的產能改善功能](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0)
 
->[!div class="step-by-step"]
-[上一頁](create-the-project.md)
-[下一頁](ui_and_navigation.md)
+> [!div class="step-by-step"]
+> [上一頁](create-the-project.md)
+> [下一頁](ui_and_navigation.md)

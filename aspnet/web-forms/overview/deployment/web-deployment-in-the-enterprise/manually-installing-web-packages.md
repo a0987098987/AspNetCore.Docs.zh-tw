@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
-title: "手動安裝 Web 封裝 |Microsoft 文件"
+title: 手動安裝 Web 封裝 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何手動匯入網際網路資訊服務 (IIS) web 部署套件。 主題建置並封裝 Web 某個應用程式..."
+description: 本主題描述如何手動匯入網際網路資訊服務 (IIS) web 部署套件。 主題建置並封裝 Web 某個應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: e06d37c01ab66f0723b687f4ed1ee72561099aef
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4a28ea92b22e4928e41a39a8a91b62bfa4f08175
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="manually-installing-web-packages"></a>手動安裝 Web 封裝
 ====================
@@ -30,10 +30,10 @@ ms.lasthandoff: 03/15/2018
 > 
 > 一旦您已建立 web 部署套件，您可以將它發行至 IIS 伺服器上以各種方式。 在許多案例中，您會想要利用 MSBuild、 WPP，和 Web Deploy 來建立和自動化或單一步驟建置和部署程序的一部分，從遠端安裝 web 封裝之間的整合點。 此程序所述[部署 Web 封裝](deploying-web-packages.md)。 不過，這不可能。 假設您想要部署到網際網路對向的生產環境 web 應用程式。 基於安全性理由，實際執行環境是在非常大可能位於周邊網路 （也稱為 DMZ、 非軍事區域和遮蔽式子網路） 中的組建伺服器，不同的子網路防火牆後方。 在許多情況下，實際執行環境會在另一個網域或實際隔離的網路上。
 > 
-> 在這些情況下，可能是唯一的選擇移植到目的地伺服器上的 web 套件，且以手動方式將它匯入至 IIS。 雖然這種方法，即無需自動化的部署，但它仍然是發行 web 應用程式 & #x 2014年的高效率技術，只要將單一 zip 檔案複製到您的 web 伺服器和使用精靈將引導您完成匯入程序。
+> 在這些情況下，可能是唯一的選擇移植到目的地伺服器上的 web 套件，且以手動方式將它匯入至 IIS。 雖然這種方法，即無需自動化的部署，但它仍然是 web 應用程式發行的高效率技術&#x2014;只要將單一 zip 檔案複製到您的 web 伺服器和使用精靈將引導您完成匯入程序。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -133,5 +133,5 @@ ms.lasthandoff: 03/15/2018
 
 如需如何設定 IIS 網頁伺服器支援手動匯入 web 封裝的指引，請參閱[設定 Web 伺服器進行 Web 部署發行 （離線部署）](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)。 多個一般指引部署 web 封裝的詳細資訊，請參閱[逐步解說： 部署 Web 應用程式的專案使用的 Web 部署套件 (第 1 部分為 4)](https://msdn.microsoft.com/library/dd483479.aspx)。
 
->[!div class="step-by-step"]
-[上一步](creating-and-running-a-deployment-command-file.md)
+> [!div class="step-by-step"]
+> [上一步](creating-and-running-a-deployment-command-file.md)

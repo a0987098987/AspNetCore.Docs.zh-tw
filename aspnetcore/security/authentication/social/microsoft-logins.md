@@ -1,7 +1,7 @@
 ---
-title: "外部登入的 Microsoft 帳戶設定"
+title: 與 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 author: rick-anderson
-description: "本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Microsoft 帳戶使用者驗證。"
+description: 本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Microsoft 帳戶使用者驗證。
 manager: wpickett
 ms.author: riande
 ms.date: 08/24/2017
@@ -9,21 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: d57647da978f7edaaddedba7c9f4c1de8dc07405
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: aabbbe66aee8c8b93140bcc4181b432017cec1d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configuring-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
+# <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>與 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程會示範如何讓使用者使用範例 ASP.NET Core 2.0 專案上建立其 Microsoft 帳戶登入[上一頁](index.md)。
+本教學課程會示範如何讓使用者使用範例 ASP.NET Core 2.0 專案上建立其 Microsoft 帳戶登入[上一頁](xref:security/authentication/social/index)。
 
 ## <a name="create-the-app-in-microsoft-developer-portal"></a>在 Microsoft 開發人員入口網站中建立應用程式
 
-* 瀏覽至[https://apps.dev.microsoft.com](https://apps.dev.microsoft.com)以及建立或登入 Microsoft 帳戶：
+* 瀏覽至[ https://apps.dev.microsoft.com ](https://apps.dev.microsoft.com)以及建立或登入 Microsoft 帳戶：
 
 ![登入對話方塊](index/_static/MicrosoftDevLogin.png)
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/30/2018
 
 ![新產生的密碼對話方塊](index/_static/MicrosoftDevPassword.png)
 
-連結機密設定，例如 Microsoft`Application ID`和`Password`您應用程式組態使用[密碼管理員](../../app-secrets.md)。 基於本教學課程的目的，名稱語彙基元`Authentication:Microsoft:ApplicationId`和`Authentication:Microsoft:Password`。
+連結機密設定，例如 Microsoft`Application ID`和`Password`您應用程式組態使用[密碼管理員](xref:security/app-secrets)。 基於本教學課程的目的，名稱語彙基元`Authentication:Microsoft:ApplicationId`和`Authentication:Microsoft:Password`。
 
 ## <a name="configure-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 
@@ -74,8 +74,7 @@ ms.lasthandoff: 01/30/2018
 
    `dotnet add package Microsoft.AspNetCore.Authentication.MicrosoftAccount`
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 新增 Microsoft 帳戶服務中的`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -90,10 +89,9 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 });
 ```
 
-[!INCLUDE[default settings configuration](includes/default-settings.md)]
+[!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 新增 Microsoft 帳戶中的介軟體中`Configure`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -104,8 +102,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 });
 ```
 
----
-
+* * *
 雖然 Microsoft 開發人員入口網站上所使用的術語命名這些語彙基元`ApplicationId`和`Password`，它們公開為`ClientId`和`ClientSecret`組態 API。
 
 請參閱[MicrosoftAccountOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.microsoftaccountoptions) API 參考，如需有關 Microsoft 帳戶驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
@@ -136,7 +133,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 
 ## <a name="next-steps"></a>後續步驟
 
-* 這篇文章會示範您可以向 Microsoft。 您可以依照類似的方法，來向其他提供者列在[上一頁](index.md)。
+* 這篇文章會示範您可以向 Microsoft。 您可以依照類似的方法，來向其他提供者列在[上一頁](xref:security/authentication/social/index)。
 
 * 一旦您將您的網站發行至 Azure web 應用程式時，您應該建立新`Password`Microsoft 開發人員入口網站中。
 

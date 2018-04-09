@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
-title: "設定 Team Foundation Server Web 部署 |Microsoft 文件"
+title: 設定 Team Foundation Server Web 部署 |Microsoft 文件
 author: jrjlee
-description: "本教學課程將說明如何設定 Team Foundation Server (TFS) 2010年建置解決方案，並將 web 內容部署至各種目標環境。 這..."
+description: 本教學課程將說明如何設定 Team Foundation Server (TFS) 2010年建置解決方案，並將 web 內容部署至各種目標環境。 這...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 72f60841a1381380c0ea6167077420f960180dc7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c4cfac333c9400d9ee613ba88520b0b0439873f5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>設定用於 Web 部署的 Team Foundation Server
 ====================
@@ -39,9 +39,9 @@ ms.lasthandoff: 03/15/2018
 
 ## <a name="context"></a>內容
 
-這會形成名為 Fabrikam，Inc.的虛構公司的企業部署需求為基礎的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)方案 & #x 2014; 代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式Communication Foundation (WCF) 服務，與資料庫專案。
+這會形成名為 Fabrikam，Inc.的虛構公司的企業部署需求為基礎的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)方案&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎分割專案檔案描述的方法中[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="scenario-overview"></a>情節概觀
 
@@ -77,5 +77,5 @@ ms.lasthandoff: 03/15/2018
 - [用於 Web 部署設定伺服器環境](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md)。 本教學課程說明如何設定 Windows servers 以支援各種部署案例，包括使用 Web Deployment Agent Service （遠端代理程式） 或 Web 部署的處理常式和遠端資料庫部署的遠端 web 封裝部署。 它提供有關選擇您自己的環境中，適當的部署方法的指引，並說明如何使用伺服器陣列中的所有 web 伺服器之間複寫部署的 web 應用程式的 Web 伺服陣列架構 (WFF)。
 - [進階企業 Web 部署](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md)。 本教學課程說明如何完成各種更進階的部署工作，例如自訂的多個環境的資料庫部署、 檔案和資料夾排除在部署中，和部署程序期間取得 web 應用程式離線.
 
->[!div class="step-by-step"]
-[下一步](creating-a-team-project-in-tfs.md)
+> [!div class="step-by-step"]
+> [下一步](creating-a-team-project-in-tfs.md)

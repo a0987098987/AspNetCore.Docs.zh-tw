@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application
-title: "如何 i： 傳回 ASP.NET MVC Web 應用程式中 AJAX 呼叫 JSON 格式化的資料？ | Microsoft Docs"
+title: 如何 i： 傳回 ASP.NET MVC Web 應用程式中 AJAX 呼叫 JSON 格式化的資料？ | Microsoft Docs
 author: rick-anderson
-description: "在這段影片 Chris Pels 示範如何使用 JsonResult 和 Json 類別傳回的類別執行個體為 JSON 格式化的資料。 第一個範例 MVC web 應用程式..."
+description: 在這段影片 Chris Pels 示範如何使用 JsonResult 和 Json 類別傳回的類別執行個體為 JSON 格式化的資料。 第一個範例 MVC web 應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/22/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application
 msc.type: video
-ms.openlocfilehash: ad6c2df0496c26302d54103ebda7e3fb3ad37b27
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1431635283dffdcde14c36dc985ccb0817d321ff
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application"></a>如何 i： 傳回 ASP.NET MVC Web 應用程式中 AJAX 呼叫 JSON 格式化的資料？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （15 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application)
 
->[!div class="step-by-step"]
-[上一頁](aspnet-mvc-how-10-minute-technical-video-for-developers.md)
-[下一頁](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
+> [!div class="step-by-step"]
+> [上一頁](aspnet-mvc-how-10-minute-technical-video-for-developers.md)
+> [下一頁](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
-title: "部署 ASP.NET Web 應用程式與 SQL Server Compact 使用 Visual Studio： 簡介-12 個 1 |Microsoft 文件"
+title: 部署 ASP.NET Web 應用程式與 SQL Server Compact 使用 Visual Studio： 簡介-12 個 1 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: a0f38c83bd9231dbd37d3d505c90316af521b336
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 3f1572bb890ee136cdd746040a5efae2ce537116
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>部署 ASP.NET Web 應用程式與 SQL Server Compact 使用 Visual Studio： 簡介-12 個 1
 ====================
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/12/2018
 
 在企業環境中，它是較為典型來實作連續整合程序，而且生產環境通常由公司自己的伺服器。 不同的人通常也會執行不同的角色。 企業部署的相關資訊，請參閱[企業案例中部署 Web 應用程式](../../deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)。
 
-各種規模組織數量也可以部署至 Azure 時，web 應用程式和大部分的這些教學課程所示範的程序也適用於 Azure 應用程式服務 Web 應用程式。 如需 Azure 的簡介，請參閱[https://azure.microsoft.com](https://azure.microsoft.com)。
+各種規模組織數量也可以部署至 Azure 時，web 應用程式和大部分的這些教學課程所示範的程序也適用於 Azure 應用程式服務 Web 應用程式。 如需 Azure 的簡介，請參閱[ https://azure.microsoft.com ](https://azure.microsoft.com)。
 
 ## <a name="the-hosting-provider-shown-in-the-tutorials"></a>教學課程所示範的主控提供者
 
@@ -142,5 +142,5 @@ Contoso 大學是 Visual Studio web 應用程式專案。 大部分的部署方�
 
 在此數列中的第一個教學課程，您已下載範例 Visual Studio 專案，並檢閱影響您如何部署應用程式的網站功能。 下列教學課程中，在您準備進行部署的下列步驟來自動處理某些設定。 其他您以手動方式處理。
 
->[!div class="step-by-step"]
-[下一步](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
+> [!div class="step-by-step"]
+> [下一步](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

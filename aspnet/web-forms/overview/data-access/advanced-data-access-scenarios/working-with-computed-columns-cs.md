@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
-title: "使用計算資料行 (C#) |Microsoft 文件"
+title: 使用計算資料行 (C#) |Microsoft 文件
 author: rick-anderson
-description: "建立資料庫資料表時，Microsoft SQL Server 可讓您定義其值從運算式計算的計算資料行，通常 referen..."
+description: 建立資料庫資料表時，Microsoft SQL Server 可讓您定義其值從運算式計算的計算資料行，通常 referen...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 41206f76f9d9ca68971a53d79e84d82349e92333
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7a67abd2a0c140c0503c07f764549a6d90ef7298
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="working-with-computed-columns-c"></a>使用計算資料行 (C#)
 ====================
@@ -51,7 +51,7 @@ Northwind 資料庫沒有任何計算資料行，因此我們必須加入一個�
 請注意在 SQL 中，可以串連字串使用`+`運算子。 `CASE`可以用來在傳統的程式設計語言中的條件陳述式。 上面的運算式中`CASE`陳述式可以讀取為： 如果`ContactTitle`不`NULL`接著輸出`ContactTitle`以逗號，否則為串連值發出做任何動作。 如需詳細資訊的實用性`CASE`陳述式，請參閱[SQL 電源`CASE`陳述式](http://www.4guysfromrolla.com/webtech/102704-1.shtml)。
 
 > [!NOTE]
-> 而不是使用`CASE`以下陳述式，我們原也可以另外使用`ISNULL(ContactTitle, '')`。 [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx)傳回*checkExpression*如果非 NULL，否則它會傳回*replacementValue*。 而是`ISNULL`或`CASE`運作在本例中，有更複雜的案例其中的彈性`CASE`陳述式就無法比對`ISNULL`。
+> 而不是使用`CASE`以下陳述式，我們原也可以另外使用`ISNULL(ContactTitle, '')`。 [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) 傳回*checkExpression*如果非 NULL，否則它會傳回*replacementValue*。 而是`ISNULL`或`CASE`運作在本例中，有更複雜的案例其中的彈性`CASE`陳述式就無法比對`ISNULL`。
 
 
 新增此計算資料行後您的畫面看起來應該像螢幕擷取畫面中圖 1。
@@ -261,12 +261,12 @@ O d e s 資料存取層在開始工作之前，花點時間檢視`FullContactNam
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Hilton Geisenow 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](adding-additional-datatable-columns-cs.md)
-[下一頁](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-additional-datatable-columns-cs.md)
+> [下一頁](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)

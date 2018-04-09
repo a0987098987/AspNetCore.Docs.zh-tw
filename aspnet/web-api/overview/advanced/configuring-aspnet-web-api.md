@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/configuring-aspnet-web-api
-title: "設定 ASP.NET Web API 2 |Microsoft 文件"
+title: 設定 ASP.NET Web API 2 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f9b471fe2afdce278869a2e4d9b693a78030324b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: de2396710fb9434c84bf14a2faa37b98154f34d8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-aspnet-web-api-2"></a>設定 ASP.NET Web API 2
 ====================
@@ -120,13 +120,13 @@ ASP.NET 應用程式中，設定 Web 應用程式開發介面呼叫[GlobalConfig
 多個執行個體的服務
 
 
-| 服務 | 描述 |
-| --- | --- |
-| **IFilterProvider** | 傳回控制器動作的篩選清單。 |
-| **ModelBinderProvider** | 傳回指定型別的模型繫結。 |
-| **ModelMetadataProvider** | 提供模型中繼資料。 |
-| **ModelValidatorProvider** | 提供模型驗證程式。 |
-| **ValueProviderFactory** | 建立值提供者。 如需詳細資訊，請參閱的 Mike 拖延部落格文章[如何在 WebAPI 中建立的自訂值提供者](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |。
+|                 服務                 |                                                                                                              描述                                                                                                               |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    <strong>IFilterProvider</strong>     |                                                                                           傳回控制器動作的篩選清單。                                                                                           |
+|  <strong>ModelBinderProvider</strong>   |                                                                                                傳回指定型別的模型繫結。                                                                                                |
+| <strong>ModelMetadataProvider</strong>  |                                                                                                     提供模型中繼資料。                                                                                                     |
+| <strong>ModelValidatorProvider</strong> |                                                                                                   提供模型驗證程式。                                                                                                    |
+|  <strong>ValueProviderFactory</strong>  | 建立值提供者。 如需詳細資訊，請參閱的 Mike 拖延部落格文章[如何在 WebAPI 中建立的自訂值提供者](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |
 
 若要加入多個執行個體服務的自訂實作，請呼叫**新增**或**插入**上**服務**集合：
 

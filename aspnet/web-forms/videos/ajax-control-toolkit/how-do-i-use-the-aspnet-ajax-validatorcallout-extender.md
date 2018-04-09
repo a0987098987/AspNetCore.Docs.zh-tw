@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-validatorcallout-extender
-title: "[如何:]使用 ASP.NET AJAX ValidatorCallout Extender？ | Microsoft Docs"
+title: '[如何:]使用 ASP.NET AJAX ValidatorCallout Extender？ | Microsoft Docs'
 author: JoeStagner
-description: "伺服器和用戶端，使用標準 ASP.NET 驗證控制項。 伺服器端驗證會增加您 Web 應用程式，而 c 安全性..."
+description: 伺服器和用戶端，使用標準 ASP.NET 驗證控制項。 伺服器端驗證會增加您 Web 應用程式，而 c 安全性...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-validatorcallout-extender
 msc.type: video
-ms.openlocfilehash: 05e195ee702a6f6022cc86f7408b535c3d918ec5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fdaea70dfb392d1cabe283eccd5d3c91651fd3e1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-aspnet-ajax-validatorcallout-extender"></a>[如何:]使用 ASP.NET AJAX ValidatorCallout Extender？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （11 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-validatorcallout-extender)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-numericupdown-extender-control.md)
-[下一頁](how-do-i-use-the-aspnet-ajax-resizablecontrol-extender.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-numericupdown-extender-control.md)
+> [下一頁](how-do-i-use-the-aspnet-ajax-resizablecontrol-extender.md)

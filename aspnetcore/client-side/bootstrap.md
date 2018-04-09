@@ -1,5 +1,5 @@
 ---
-title: 建立啟動程序與 ASP.NET Core 美觀、 可回應站台
+title: 建置美麗、 可回應網站啟動程序與 ASP.NET Core
 author: ardalis
 description: 了解如何開發 ASP.NET Core 與回應的 web 應用程式時，用於啟動程序。
 manager: wpickett
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: c3dfaa53e9e3277d025d014f65004e4c24a5acc4
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
-ms.translationtype: HT
+ms.openlocfilehash: 142a997fa46f37545ea04971ab6593bff053b1ef
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>建立啟動程序與 ASP.NET Core 美觀、 可回應站台
+# <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>建置美麗、 可回應網站啟動程序與 ASP.NET Core
 
 <a name="bootstrap-index"></a>
 
@@ -96,7 +96,7 @@ Install-Package bootstrap
 
 ### <a name="typography-and-links"></a>印刷樣式和連結
 
-Bootstrap 在其 CSS 檔案中設定了站台的基本印刷樣式、色彩和連結格式。 這個 CSS 檔案中包含了表格、按鈕、表單元素、影像等等的預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 接下來將說明一個特別有用的功能，亦即格線版面配置系統。
+Bootstrap 在其 CSS 檔案中設定了站台的基本印刷樣式、色彩和連結格式。 這個 CSS 檔案中包含的資料表、 按鈕、 表單項目、 影像和多個預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 接下來將說明一個特別有用的功能，亦即格線版面配置系統。
 
 ### <a name="grids"></a>格線
 
@@ -131,7 +131,7 @@ Bootstrap 總是預設為單一資料行配置，因此只有當您想要多個�
 
 ![不使用 clearfix 方格](bootstrap/_static/grid-without-clearfix.png)
 
-在此範例中，只使用了單一資料列`<div>`且 Bootstrap 對於版面配置和資料行堆疊大致正確 一般而言，您應該為版面配置所需的每個水平列指定一個資料列`<div>`而且 Bootstrap 格線當然可以使用巢狀架構。 當您這樣做時，每個巢狀格線會佔用所在元素的 100% 寬度，其中可以再使用資料行類別加以分區。
+在此範例中，只使用了單一資料列`<div>`且 Bootstrap 對於版面配置和資料行堆疊大致正確 一般而言，您應該為版面配置所需的每個水平列指定一個資料列`<div>`而且 Bootstrap 格線當然可以使用巢狀架構。 當您這樣做時，每個巢狀的方格會佔用 100%的元件，它用來放置，可以再細分使用類別資料行的寬度。
 
 ### <a name="jumbotron"></a>Jumbotron
 
@@ -169,13 +169,13 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ### <a name="additional-elements"></a>其他項目
 
-預設佈景主題也可使用優美的格式來呈現 HTML 表格，包括條紋狀檢視。 還有具有樣式的標籤，類似於按鈕的樣式。 您可以建立自訂下拉式功能表，以支援超出標準 HTML`<select>`元素的額外樣式選項，以及類似我們預設入門網站所用的瀏覽列。 如果您需要將進度列，也有數種樣式可供選擇，以及包含標題與內容的清單群組及面板。 此處可以探索標準 Bootstrap 主題中的其他選項：
+預設佈景主題也可用來呈現 HTML 表格格式樣式，包括支援等量的檢視中。 還有具有樣式的標籤，類似於按鈕的樣式。 您可以建立自訂下拉式功能表，以支援超出標準 HTML`<select>`元素的額外樣式選項，以及類似我們預設入門網站所用的瀏覽列。 如果您需要將進度列，有數種樣式，以供選擇，以及列出群組和包含標題與內容的面板。 此處可以探索標準 Bootstrap 主題中的其他選項：
 
 [http://getbootstrap.com/examples/theme/](http://getbootstrap.com/examples/theme/)
 
 ## <a name="more-themes"></a>更多主題
 
-如果您可以覆寫部分或所有 Bootstrap 主題的 CSS、調整色彩和樣式以符合應用程式需求，藉此擴充標準 Bootstrap 主題。 您想要從現成的主題開始，網路上有數個針對 Bootstrap 主題的主題庫，例如 WrapBootstrap.com (有各種不同的商業主題) 和 Bootswatch.com (有免費主題)。 某些可用的付費範本提供許多基本的啟動程序佈景主題，例如豐富的支援系統管理功能表和儀表板頂端的功能豐富的圖表和量測計。 熱門付費範本之一便是 Inspinia，目前訂價 $18，其中包含 ASP.NET MVC5 範本，再加上 AngularJS 和靜態 HTML 版本。 範例螢幕擷取畫面所示。
+如果您可以覆寫部分或所有 Bootstrap 主題的 CSS、調整色彩和樣式以符合應用程式需求，藉此擴充標準 Bootstrap 主題。 您想要從現成的主題開始，網路上有數個針對 Bootstrap 主題的主題庫，例如 WrapBootstrap.com (有各種不同的商業主題) 和 Bootswatch.com (有免費主題)。 某些可用的付費範本提供許多基本的啟動程序佈景主題，例如豐富的支援系統管理功能表和儀表板頂端的功能豐富的圖表和量測計。 熱門付費範本的範例是 Inspinia，目前 $18，其中包含除了 AngularJS 和靜態的 HTML 版本的 ASP.NET MVC5 範本的銷售。 範例螢幕擷取畫面所示。
 
 ![範例主題 inspinia](bootstrap/_static/theme-inspinia.png)
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
-title: "了解動作篩選條件 (VB) |Microsoft 文件"
+title: 了解動作篩選條件 (VB) |Microsoft 文件
 author: microsoft
-description: "本教學課程的目標是以說明動作篩選條件。 動作篩選條件是屬性，您可以套用至控制器動作--或整個控制器..."
+description: 本教學課程的目標是以說明動作篩選條件。 動作篩選條件是屬性，您可以套用至控制器動作--或整個控制器...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 483133ec5db27c2fa1ed4b463e37e17efab12e0f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2796b67cba6a2ddaee7a006a170dfb7e5ff89888
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-action-filters-vb"></a>了解動作篩選條件 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_14_VB.pdf)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/10/2017
 
 例如，資料中的控制站清單 1 會公開名為動作`Index()`，傳回目前的時間。 這個動作以裝飾`OutputCache`動作篩選條件。 此篩選條件會導致快取為 10 秒的動作所傳回的值。
 
-**列出 1 –`Controllers\DataController.vb`**
+**列出 1 – `Controllers\DataController.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample1.vb)]
 
@@ -103,7 +103,7 @@ ASP.NET MVC 架構支援四種不同類型的篩選：
 
 若要說明如何建置自訂動作篩選條件，我們將建立自訂動作篩選條件的記錄檔的階段處理控制器動作，以 Visual Studio 輸出視窗。 我們`LogActionFilter`包含清單 2 中。
 
-**列出 2 –`ActionFilters\LogActionFilter.vb`**
+**列出 2 – `ActionFilters\LogActionFilter.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample2.vb)]
 
@@ -117,7 +117,7 @@ ASP.NET MVC 架構支援四種不同類型的篩選：
 
 Home 控制器中列出的 3 說明如何將記錄動作篩選條件套用至整個控制器類別。 每當任何由主控制器的動作會叫用 – 請`Index()`方法或`About()`方法-動作會記錄至 Visual Studio [輸出] 視窗的處理的階段。
 
-**列出 3 –`Controllers\HomeController.vb`**
+**列出 3 – `Controllers\HomeController.vb`**
 
 [!code-vb[Main](understanding-action-filters-vb/samples/sample3.vb)]
 
@@ -127,6 +127,6 @@ Home 控制器中列出的 3 說明如何將記錄動作篩選條件套用至整
 
 最後，您學會如何實作簡單動作篩選條件。 我們建立記錄檔的階段處理 Visual Studio 輸出 視窗的控制器動作記錄動作篩選條件。
 
->[!div class="step-by-step"]
-[上一頁](asp-net-mvc-routing-overview-vb.md)
-[下一頁](improving-performance-with-output-caching-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](asp-net-mvc-routing-overview-vb.md)
+> [下一頁](improving-performance-with-output-caching-vb.md)

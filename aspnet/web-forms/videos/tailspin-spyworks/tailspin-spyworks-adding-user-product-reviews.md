@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-user-product-reviews
-title: "Tailspin Spyworks-新增使用者 Product Reviews |Microsoft 文件"
+title: Tailspin Spyworks-新增使用者 Product Reviews |Microsoft 文件
 author: JoeStagner
-description: "Joe stagner 以將評論與客戶 Tailspin Spyworks 範例 Web Form 應用程式中的產品詳細資料頁面。"
+description: Joe stagner 以將評論與客戶 Tailspin Spyworks 範例 Web Form 應用程式中的產品詳細資料頁面。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-user-product-reviews
 msc.type: video
-ms.openlocfilehash: 511139fa8351dc75bba2dd60a4dd7aa2dd663930
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5b9efe98468ad59266293b13f5a66006219cb525
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tailspin-spyworks---adding-user-product-reviews"></a>Tailspin Spyworks-新增使用者產品評論
 ====================
@@ -26,6 +26,6 @@ Joe stagner 以將評論與客戶 Tailspin Spyworks 範例 Web Form 應用程式
 
 [&#9654;觀看影片 （41 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-adding-user-product-reviews)
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-final-check-out.md)
-[下一頁](tailspin-spyworks-displaying-user-reviews.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-final-check-out.md)
+> [下一頁](tailspin-spyworks-displaying-user-reviews.md)

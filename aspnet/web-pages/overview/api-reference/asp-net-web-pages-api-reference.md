@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/api-reference/asp-net-web-pages-api-reference
-title: "ASP.NET Web Pages (Razor) API 的快速參考 |Microsoft 文件"
+title: ASP.NET Web Pages (Razor) API 的快速參考 |Microsoft 文件
 author: tfitzmac
-description: "此頁面包含的最常用的物件、 屬性和方法，程式設計含有 Razor 語法的 ASP.NET Web Pages 簡短範例的清單。"
+description: 此頁面包含的最常用的物件、 屬性和方法，程式設計含有 Razor 語法的 ASP.NET Web Pages 簡短範例的清單。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 35f91f4dbea4881d9dabc4ab7c6b96dbb6a01ea2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5f9d84f4d453583d7d4eae12e4fc510275255616
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-pages-razor-api-quick-reference"></a>ASP.NET Web Pages (Razor) API 的快速參考
 ====================
@@ -158,13 +158,13 @@ ms.lasthandoff: 11/10/2017
 
 ### `Request.Form[key]`
 
-取得表單中回傳 （做為字串） 的資料。 `Request[key]`檢查同時`Request.Form`和`Request.QueryString`集合。
+取得表單中回傳 （做為字串） 的資料。 `Request[key]` 檢查同時`Request.Form`和`Request.QueryString`集合。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample19.cs)]
 
 ### `Request.QueryString[key]`
 
-取得指定之 URL 查詢字串中的資料。 `Request[key]`檢查同時`Request.Form`和`Request.QueryString`集合。
+取得指定之 URL 查詢字串中的資料。 `Request[key]` 檢查同時`Request.Form`和`Request.QueryString`集合。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample20.cs)]
 
@@ -692,7 +692,7 @@ SMTP 伺服器設定的密碼。 在設定此屬性通常 *\_AppStart*頁面。
 
 ### `WebMail.SmtpServer`
 
-設定 SMTP 伺服器名稱。 在設定此屬性通常*\_AppStart*頁面。
+設定 SMTP 伺服器名稱。 在設定此屬性通常<em>\_AppStart</em>頁面。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample105.html)]
 

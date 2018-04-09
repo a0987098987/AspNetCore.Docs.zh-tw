@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署到生產環境-7 個 12 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署到生產環境-7 個 12 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 4aa6766c2c7765f499f5c5380962a5fe443e8c9d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ab3b7ba332deddae7d04fc37c7aabc72bdb2d17e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署到生產環境-7 個 12
 ====================
@@ -125,7 +125,7 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 ![發行網站精靈連線 索引標籤](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image26.png)
 
-.Publishsettings 檔案置於 [目的地 URL] 方塊中，站台的計劃永久 URL，但您尚未購買該網域，如果值取代為暫存的 URL。 此範例中，URL 是 *[http://contosouniversity.com.vserver01.cytanium.com](http://contosouniversity.com.vserver01.cytanium.com)。*此方塊的唯一目的是指定何種瀏覽器會開啟自動之後成功部署之後的 URL。 如果保留空白，唯一的結果會是瀏覽器不會自動啟動部署之後。
+.Publishsettings 檔案置於 [目的地 URL] 方塊中，站台的計劃永久 URL，但您尚未購買該網域，如果值取代為暫存的 URL。 此範例中，URL 是 *[ http://contosouniversity.com.vserver01.cytanium.com ](http://contosouniversity.com.vserver01.cytanium.com)。*此方塊的唯一目的是指定何種瀏覽器會開啟自動之後成功部署之後的 URL。 如果保留空白，唯一的結果會是瀏覽器不會自動啟動部署之後。
 
 按一下**驗證連線**確認設定正確無誤，而且您可以連接到伺服器。 如稍早所見，綠色的核取記號會驗證是成功的連線。
 
@@ -137,9 +137,9 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 在**資料庫**區段**設定**索引標籤上，輸入相同的測試輸入值的發行設定檔。 在下拉式清單中，您會發現您需要的連接字串。
 
-- 在連接字串 方塊的**SchoolContext，**選取`Data Source=|DataDirectory|School-Prod.sdf`
+- 在連接字串 方塊的**SchoolContext，**選取 `Data Source=|DataDirectory|School-Prod.sdf`
 - 在下**SchoolContext**，選取**套用 Code First 移轉**。
-- 在連接字串 方塊的**DefaultConnection**，請選取`Data Source=|DataDirectory|aspnet-Prod.sdf`
+- 在連接字串 方塊的**DefaultConnection**，請選取 `Data Source=|DataDirectory|aspnet-Prod.sdf`
 - 在下**DefaultConnection**，保留**更新資料庫**清除。
 
 ![發行網站精靈設定 索引標籤](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image28.png)
@@ -252,6 +252,6 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 下一個教學課程中，您將更新應用程式程式碼，並將您的變更部署到測試和生產環境。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12.md)

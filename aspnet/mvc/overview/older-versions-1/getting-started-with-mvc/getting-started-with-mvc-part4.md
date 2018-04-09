@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
-title: "建立資料庫 |Microsoft 文件"
+title: 建立資料庫 |Microsoft 文件
 author: shanselman
-description: "這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。"
+description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
 msc.type: authoredcontent
-ms.openlocfilehash: 22f1042555d7cdd0ca8d75f1cbde65fbb65d81cc
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ff2a41803cd31ce50bbf79e630d827b6de441ba3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-database"></a>建立資料庫
 ====================
@@ -87,6 +87,6 @@ ms.lasthandoff: 01/30/2018
 
 現在，讓我們來處理一些實際資料 ！
 
->[!div class="step-by-step"]
-[上一頁](getting-started-with-mvc-part3.md)
-[下一頁](getting-started-with-mvc-part5.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started-with-mvc-part3.md)
+> [下一頁](getting-started-with-mvc-part5.md)

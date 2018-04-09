@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
-title: "如何升級 ASP.NET MVC 4 和 Web API 專案，以 ASP.NET MVC 5 和 Web API 2 |Microsoft 文件"
+title: 如何升級 ASP.NET MVC 4 和 Web API 專案，以 ASP.NET MVC 5 和 Web API 2 |Microsoft 文件
 author: Rick-Anderson
-description: "ASP.NET MVC 5 和 Web API 2 將新功能，包括路由屬性、 驗證篩選條件，以及執行更多的主機。"
+description: ASP.NET MVC 5 和 Web API 2 將新功能，包括路由屬性、 驗證篩選條件，以及執行更多的主機。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 05a3189cf105d1230b96e90b46ea5ab60fef1bf1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f61502933a5ba92896ee97cef9cff915fe23831d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> ASP.NET MVC 5 和 Web API 2 將新功能，包括路由屬性、 驗證篩選條件，以及執行更多的主機。 請參閱[https://www.asp.net/vnext](https://www.asp.net/core)如需詳細資訊。
+> ASP.NET MVC 5 和 Web API 2 將新功能，包括路由屬性、 驗證篩選條件，以及執行更多的主機。 請參閱[ https://www.asp.net/vnext ](https://www.asp.net/core)如需詳細資訊。
 > 
 > 本逐步解說會引導您升級為最新版本的應用程式所需的步驟。  
 > 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-csharp[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample1.cs)]
 
- 設為
+   設為
 
     [!code-csharp[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample2.cs)]
 3. 請確定您的專案使用的所有封裝都都與 MVC 5 和 Web API 2 相容。 下列表格顯示 MVC 4 和 Web API 相關封裝比需要變更。 如果您有相依於其中一個下面所列封裝的封裝，請連絡發行者以取得與 MVC 5 和 Web API 2 相容的較新版本。 如果您有這些封裝的原始程式碼，則應該使用新的組件的 MVC 5 和 Web API 2 重新編譯它們。   
@@ -57,18 +57,18 @@ ms.lasthandoff: 11/10/2017
     | Microsoft.AspNet.WebApi.Core | 4.0.x.x | 5.0.0 |
     | Microsoft.AspNet.WebApi.SelfHost | 4.0.x.x | 5.0.0 |
     | Microsoft.AspNet.WebApi.Client | 4.0.x.x | 5.0.0 |
-    | 用於 Microsoft.AspNet.WebApi.OData | 4.0.x.x | 5.0.0 |
+    | Microsoft.AspNet.WebApi.OData | 4.0.x.x | 5.0.0 |
     | Microsoft.AspNet.WebApi | 4.0.x.x | 5.0.0 |
     | Microsoft.AspNet.WebApi.WebHost | 4.0.x.x | 5.0.0 |
-    | 用於 Microsoft.AspNet.WebApi.Tracing | 4.0.x.x | 5.0.0 |
+    | Microsoft.AspNet.WebApi.Tracing | 4.0.x.x | 5.0.0 |
     | Microsoft.AspNet.WebApi.HelpPage | 4.0.x.x | 5.0.0 |
-    | Microsoft.Net.Http | 2.0.x 版。 | 2.2.x。 |
+    | Microsoft.Net.Http | 2.0.x. | 2.2.x. |
     | Microsoft.Data.OData | 5.2.x | 5.6.x |
     | System.Spatial | 5.2.x | 5.6.x |
     | Microsoft.Data.Edm | 5.2.x | 5.6.x |
-    | Microsoft.AspNet.Mvc.FixedDisplayModes | < o: p>< >< / o: p>< > | 已移除 |
-    | Microsoft.AspNet.WebPages.Administration | < o: p>< >< / o: p>< > | 已移除 |
-    | Microsoft Web Helpers | < o: p>< >< / o: p>< > | Microsoft.AspNet.WebHelpers |
+    | Microsoft.AspNet.Mvc.FixedDisplayModes | <o:p> </o:p> | 已移除 |
+    | Microsoft.AspNet.WebPages.Administration | <o:p> </o:p> | 已移除 |
+    | Microsoft-Web-Helpers | <o:p> </o:p> | Microsoft.AspNet.WebHelpers |
 
     > [!NOTE]
     > Microsoft Web Helpers Microsoft.AspNet.WebHelpers 已取代。 您應該先移除舊的封裝，然後再安裝較新的封裝。   
@@ -78,17 +78,17 @@ ms.lasthandoff: 11/10/2017
 5. 移除任何已安裝下列 ASP.NET NuGet 套件。 您將會移除這些使用封裝管理員主控台 (PMC)。 若要開啟 PMC，請選取**工具**功能表，然後選取**程式庫封裝管理員，**然後選取**Package Manager Console**。 您的專案可能不包括所有的這些。
 
     1. `Microsoft.AspNet.WebPages.Administration`  
- 從 MVC 3 升級至 MVC 4 時，通常會將加入此封裝。 若要移除它，請在 PMC 中執行下列命令：  
+   從 MVC 3 升級至 MVC 4 時，通常會將加入此封裝。 若要移除它，請在 PMC 中執行下列命令：  
         `Uninstall-Package -Id Microsoft.AspNet.WebPages.Administration`
     2. `Microsoft-Web-Helpers`   
- 此套件有品牌已重新命名為`Microsoft.AspNet.WebHelpers`。 若要移除它，請在 PMC 中執行下列命令：  
+   此套件有品牌已重新命名為`Microsoft.AspNet.WebHelpers`。 若要移除它，請在 PMC 中執行下列命令：  
         `Uninstall-Package -Id Microsoft-Web-Helpers`
     3. `Microsoft.AspNet.Mvc.FixedDisplayMode`  
- 此套件包含因應措施的 MVC 5 中已修正問題的 MVC 4 中的 bug。 若要移除它，請在 PMC 中執行下列命令：  
+   此套件包含因應措施的 MVC 5 中已修正問題的 MVC 4 中的 bug。 若要移除它，請在 PMC 中執行下列命令：  
         `Uninstall-Package -Id Microsoft.AspNet.Mvc.FixedDisplayModes`
 6. 升級使用 pmc 依存的所有 ASP.NET NuGet 封裝。 在 PMC，執行下列命令：  
     `Update-Package`  
- `Update-Package`命令沒有任何參數將會更新每個套件。 您可以使用識別碼引數，個別更新封裝。 如需有關更新命令的詳細資訊，請執行`get-help update-package`。
+   `Update-Package`命令沒有任何參數將會更新每個套件。 您可以使用識別碼引數，個別更新封裝。 如需有關更新命令的詳細資訊，請執行`get-help update-package`。
 
 ## <a name="update-the-application-webconfig-file"></a>更新應用程式*web.config*檔案
 

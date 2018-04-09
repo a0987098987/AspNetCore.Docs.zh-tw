@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
-title: "反覆項目 #2 – 讓應用程式看起來不錯 (VB) |Microsoft 文件"
+title: '反覆項目 #2 – 讓應用程式看起來不錯 (VB) |Microsoft 文件'
 author: microsoft
-description: "在這個反覆項目，我們可以改進應用程式的外觀修改 ASP.NET MVC 檢視主版頁面的預設值和階層式樣式表。"
+description: 在這個反覆項目，我們可以改進應用程式的外觀修改 ASP.NET MVC 檢視主版頁面的預設值和階層式樣式表。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 07c4eaaf9ae5a389605a98951e970d410ca23122
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8545351b099e52533789b372903cd493f533f834
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-2--make-the-application-look-nice-vb"></a>反覆項目 #2 – 讓應用程式看起來不錯 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-2-make-the-application-look-nice-vb/_static/contactmanager_2_vb1.zip)
 
@@ -115,7 +115,7 @@ ASP.NET MVC 設計庫有良好的不同的設計樣式選取範圍。 組件庫�
 
 不過，您可能需要建立完全獨特的設計為您的網站。 在此情況下，因此才會使用網站設計公司。 我決定採取這種方式為連絡人管理員應用程式的設計。
 
-我壓縮反覆項目 # 1 向上連絡管理員，並傳送到設計公司的專案。 他們並未擁有 Visual Studio （遺憾上 ！），但該 professionals t 出現問題。 它們是能從免費下載 Microsoft Visual Web Developer [https://www.asp.net](https://www.asp.net)網站並開啟連絡人管理員應用程式在 Visual Web Developer。 在幾天，它們必須產生的圖 7 中的設計。
+我壓縮反覆項目 # 1 向上連絡管理員，並傳送到設計公司的專案。 他們並未擁有 Visual Studio （遺憾上 ！），但該 professionals t 出現問題。 它們是能從免費下載 Microsoft Visual Web Developer [ https://www.asp.net ](https://www.asp.net)網站並開啟連絡人管理員應用程式在 Visual Web Developer。 在幾天，它們必須產生的圖 7 中的設計。
 
 
 [![新增專案 對話方塊](iteration-2-make-the-application-look-nice-vb/_static/image7.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image13.png)
@@ -163,6 +163,6 @@ MenuItemHelper TagBuilder 類別在內部用來建置&lt;li&gt; HTML 標記。 T
 
 中的下一個反覆項目，我們可以處理非常重要的主體的驗證。 使使用者無法建立新的連絡人，而不需要先提供必要的值，例如個人 s 和姓氏，我們可以加入至我們的應用程式的驗證程式碼。
 
->[!div class="step-by-step"]
-[上一頁](iteration-1-create-the-application-vb.md)
-[下一頁](iteration-3-add-form-validation-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-1-create-the-application-vb.md)
+> [下一頁](iteration-3-add-form-validation-vb.md)

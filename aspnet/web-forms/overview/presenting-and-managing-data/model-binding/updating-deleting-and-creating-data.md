@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/updating-deleting-and-creating-data
-title: "更新、 刪除和建立資料模型繫結與 web form |Microsoft 文件"
+title: 更新、 刪除和建立資料模型繫結與 web form |Microsoft 文件
 author: tfitzmac
-description: "此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-..."
+description: 此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/updating-deleting-and-creating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 18c065b44524e7738c048b5908fa50c592188064
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e6536f7858afde5faf3aedd34f3cbe95c5ed0d53
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-deleting-and-creating-data-with-model-binding-and-web-forms"></a>更新、 刪除和建立資料模型繫結與 web form
 ====================
@@ -133,6 +133,6 @@ GridView 控制項不包含**InsertMethod**屬性，因此無法用來加入新�
 
 在接下來[教學課程](sorting-paging-and-filtering-data.md)在此數列，您將啟用排序、 分頁和篩選資料。
 
->[!div class="step-by-step"]
-[上一頁](retrieving-data.md)
-[下一頁](sorting-paging-and-filtering-data.md)
+> [!div class="step-by-step"]
+> [上一頁](retrieving-data.md)
+> [下一頁](sorting-paging-and-filtering-data.md)

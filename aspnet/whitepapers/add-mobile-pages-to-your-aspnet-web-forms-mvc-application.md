@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
-title: "如何： 將行動網頁加入 ASP.NET Web Form / MVC 應用程式 |Microsoft 文件"
+title: 如何： 將行動網頁加入 ASP.NET Web Form / MVC 應用程式 |Microsoft 文件
 author: rick-anderson
-description: "此作法 」 說明各種方法來提供適合您的 ASP.NET Web Form 中的行動裝置的網頁 / MVC 應用程式，並建議架構和..."
+description: 此作法 」 說明各種方法來提供適合您的 ASP.NET Web Form 中的行動裝置的網頁 / MVC 應用程式，並建議架構和...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2011
 ms.topic: article
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: aac359b26c508784793a67260dc2e65c30db687a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>如何： 將行動網頁加入 ASP.NET Web Form / MVC 應用程式
 ====================
@@ -185,7 +185,7 @@ ASP.NET Web Form 和 MVC 的開發人員可以藉由檢查的內容立即探索�
 
     [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample4.cs)]
   
- 此程式碼假設您的網頁有稱為 LoginUser，如所示的預設專案範本 」 的登入伺服器控制項。
+  此程式碼假設您的網頁有稱為 LoginUser，如所示的預設專案範本 」 的登入伺服器控制項。
 
 ### <a name="working-with-output-caching"></a>使用輸出快取
 
@@ -243,7 +243,7 @@ ASP.NET Web Form 和 MVC 的開發人員可以藉由檢查的內容立即探索�
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample9.cs)]
 
-現在會離開和 URL http:// 錯誤*您的站台*會到達桌面的首頁和 http:// /*您的站台*/mobile/ 會到達行動首頁。
+現在會離開和 URL http:// 錯誤<em>您的站台</em>會到達桌面的首頁和 http:// /<em>您的站台</em>/mobile/ 會到達行動首頁。
 
 ### <a name="redirecting-mobile-visitors-to-your-mobile-area"></a>重新導向至您行動區域行動訪客
 

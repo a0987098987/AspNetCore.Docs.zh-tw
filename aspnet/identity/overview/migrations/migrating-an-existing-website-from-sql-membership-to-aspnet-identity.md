@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
-title: "從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity |Microsoft 文件"
+title: 從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程說明如何移轉現有的 web 應用程式與使用者和角色建立使用新的 ASP.NET Identity 的 SQL 成員資格的資料..."
+description: 本教學課程說明如何移轉現有的 web 應用程式與使用者和角色建立使用新的 ASP.NET Identity 的 SQL 成員資格的資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/19/2014
 ms.topic: article
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 3638c6779a0fcedaaa49623126b28ecf09a4954f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2790f32bc74cecf450f5a258fc1ff5b280a63923
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity
 ====================
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 3. 建立名為系統管理員的角色，並將 'oldAdminUser' 新增為該角色的使用者。
 
     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image2.png)
-4. 建立站台的系統管理區段 Default.aspx。 若要啟用系統管理員角色中的使用者存取的 web.config 檔案中設定授權標記。 詳細資訊可以在這裡找到[https://www.asp.net/web-forms/tutorials/security/roles/role-based-authorization-cs](../../../web-forms/overview/older-versions-security/roles/role-based-authorization-cs.md)
+4. 建立站台的系統管理區段 Default.aspx。 若要啟用系統管理員角色中的使用者存取的 web.config 檔案中設定授權標記。 可以在這裡找到更多資訊 [https://www.asp.net/web-forms/tutorials/security/roles/role-based-authorization-cs](../../../web-forms/overview/older-versions-security/roles/role-based-authorization-cs.md)
 
     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image3.png)
 5. 在 伺服器總管，以了解 SQL 成員資格系統所建立的資料表檢視的資料庫。 使用者登入的資料儲存在 aspnet\_使用者和 aspnet\_成員資格資料表，而角色資料會儲存在 aspnet\_Roles 資料表。 有關哪些使用者可在哪些角色儲存在 aspnet 資訊\_為 UsersInRoles 資料表。 基本成員資格管理便可移植到 ASP.NET Identity 系統了上述資料表中的資訊。
@@ -67,14 +67,14 @@ ms.lasthandoff: 01/24/2018
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案&gt;**管理 NuGet 封裝**。 在 [搜尋] 方塊中，輸入 「 Asp.net 識別 」。 在結果清單中選取的封裝，並按一下 [安裝]。 按一下 [我接受] 按鈕，接受授權合約。 請注意，此套件會安裝相依性套件： EntityFramework 和 Microsoft ASP.NET Identity Core。 同樣地，請安裝下列封裝 （如果您不想要啟用 OAuth 登入，略過最後 4 OWIN 封裝）：
 
-    - Microsoft.AspNet.Identity.Owin
-    - Microsoft.Owin.Host.SystemWeb
-    - Microsoft.Owin.Security.Facebook
-    - Microsoft.Owin.Security.Google
-    - Microsoft.Owin.Security.MicrosoftAccount
-    - Microsoft.Owin.Security.Twitter
+   - Microsoft.AspNet.Identity.Owin
+   - Microsoft.Owin.Host.SystemWeb
+   - Microsoft.Owin.Security.Facebook
+   - Microsoft.Owin.Security.Google
+   - Microsoft.Owin.Security.MicrosoftAccount
+   - Microsoft.Owin.Security.Twitter
 
-    ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image6.png)
+     ![](migrating-an-existing-website-from-sql-membership-to-aspnet-identity/_static/image6.png)
 
 ### <a name="migrate-database-to-the-new-identity-system"></a>將資料庫移轉至新的身分識別系統
 
@@ -193,7 +193,7 @@ SQL 成員資格使用者資訊有其他內容以及識別使用者模型類別�
 
 ### <a name="create-new-account-management-pages"></a>建立新的帳戶管理頁面
 
-移轉的下一個步驟是新增可讓使用者註冊並登入的帳戶管理頁面。 從 SQL 成員資格的舊帳戶頁面會使用不會用新的身分識別系統的控制項。 若要加入新的使用者管理頁面請依照教學課程中的，在以下連結[https://www.asp.net/identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project](../getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)啟動步驟 '用於註冊您的應用程式的使用者加入 Web Form ' 因為我們已經建立專案並加入 NuGet 套件。
+移轉的下一個步驟是新增可讓使用者註冊並登入的帳戶管理頁面。 從 SQL 成員資格的舊帳戶頁面會使用不會用新的身分識別系統的控制項。 若要加入新的使用者管理頁面請依照教學課程中的，在以下連結[ https://www.asp.net/identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project ](../getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project.md)步驟 「 加入要用於註冊您的應用程式的使用者 Web 表單 」 從開始因為我們已經建立專案並加入 NuGet封裝。
 
 我們需要進行一些變更，才能使用我們在這裡有的專案範例。
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
-title: "ASP.NET 錯誤處理 |Microsoft 文件"
+title: ASP.NET 錯誤處理 |Microsoft 文件
 author: Erikre
-description: "此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念..."
+description: 此教學課程將告訴您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Form 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: ac5508334bf6d471471a719b98618bdcd3214fb5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================
@@ -104,7 +104,7 @@ Try-catch 陳述式包含 try 區塊後面接著一個或多個 catch 子句，�
 之前加入錯誤處理 Wingtip Toys 範例應用程式，您將新增錯誤記錄的支援，藉由新增`ExceptionUtility`類別*邏輯*資料夾。 如此一來，的每當應用程式處理錯誤，錯誤詳細資料加入至錯誤記錄檔。
 
 1. 以滑鼠右鍵按一下*邏輯*資料夾，然後選取**新增** - &gt; **新項目**。   
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 選取**Visual C#**  - &gt; **程式碼**左側的 [範本] 群組。 然後，選取**類別**中間清單並將其命名**ExceptionUtility.cs**。
 3. 選擇 [新增]。 會顯示新的類別檔案。
 4. 將現有的程式碼取代為下列程式碼：  
@@ -118,7 +118,7 @@ Try-catch 陳述式包含 try 區塊後面接著一個或多個 catch 子句，�
 Wingtip Toys 範例應用程式，在一頁會用於顯示錯誤。 錯誤頁面被設計來顯示網站的使用者安全的錯誤訊息。 不過，如果使用者在提出 HTTP 要求提供服務時在本機電腦上的程式碼所在的開發人員，其他錯誤詳細資料會顯示錯誤頁面上。
 
 1. 以滑鼠右鍵按一下專案名稱 (**Wingtip Toys**) 中**方案總管 中**選取**新增** - &gt; **新項目**.   
- 隨即顯示 [ 新增項目] 對話方塊。
+   隨即顯示 [ 新增項目] 對話方塊。
 2. 選取**Visual C#**  - &gt; **Web**左側的 [範本] 群組。 從 [中間] 清單中選取**使用主版頁面的 Web Form**，並將其命名**ErrorPage.aspx**。
 3. 按一下 [加入] 。
 4. 選取*Site.Master*主版頁面中，為檔案，然後選擇 **確定**。
@@ -166,7 +166,7 @@ Wingtip Toys 範例應用程式，在一頁會用於顯示錯誤。 錯誤頁面
 若要確認您的應用程式的運作方式錯誤時，就會發生，在 ASP.NET 中刻意建立錯誤條件。 在 Wingtip Toys 範例應用程式，您會擲回測試例外狀況時若要查看發生的事載入預設頁面。
 
 1. 開啟 程式碼後置的*Default.aspx* Visual Studio 中的頁面。   
- *Default.aspx.cs*將會顯示程式碼後置頁面。
+   *Default.aspx.cs*將會顯示程式碼後置頁面。
 2. 在`Page_Load`處理常式，加入程式碼，這樣的處理常式隨即出現，如下所示：   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample9.cs?highlight=3-4)]
@@ -356,11 +356,11 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 ## <a name="community-contributions"></a>社群投稿
 
 - Graham Mendick ([@grahammendick](http://twitter.com/grahammendick))  
- Visual Studio 2012 相關的 MSDN 上的程式碼範例：[瀏覽 Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
+  Visual Studio 2012 相關的 MSDN 上的程式碼範例：[瀏覽 Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
 - James Chaney ([jchaney@agvance.net](mailto:jchaney@agvance.net))  
- Visual Studio 2012 相關的 MSDN 上的程式碼範例： [ASP.NET 4.5 Web Form 教學課程系列在 Visual Basic 中](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
+  Visual Studio 2012 相關的 MSDN 上的程式碼範例： [ASP.NET 4.5 Web Form 教學課程系列在 Visual Basic 中](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
 - Andrielle Azevedo-Microsoft 技術的對象參與者 (twitter: @driazevedo)  
- Visual Studio 2012 轉譯： [Iniciando com Visão Geral 的 ASP.NET Web Form 4.5-Parte 1-Introdução e](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
+  Visual Studio 2012 轉譯： [Iniciando com Visão Geral 的 ASP.NET Web Form 4.5-Parte 1-Introdução e](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
 
->[!div class="step-by-step"]
-[上一步](url-routing.md)
+> [!div class="step-by-step"]
+> [上一步](url-routing.md)

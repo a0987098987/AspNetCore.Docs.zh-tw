@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
-title: "將資料傳遞至檢視主版頁面 (VB) |Microsoft 文件"
+title: 將資料傳遞至檢視主版頁面 (VB) |Microsoft 文件
 author: microsoft
-description: "本教學課程的目標是要說明如何將資料從控制器檢視主版頁面。 我們會檢查兩種策略將資料傳遞至檢視 m..."
+description: 本教學課程的目標是要說明如何將資料從控制器檢視主版頁面。 我們會檢查兩種策略將資料傳遞至檢視 m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d92a1afe46af124e835b3d59f2b2093402742bbd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fcd7c5baacc00490720d1f82252d81e40c097c88
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="passing-data-to-view-master-pages-vb"></a>將資料傳遞至檢視主版頁面 (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_13_VB.pdf)
 
@@ -53,7 +53,7 @@ MVC 應用程式中，所有的資料傳遞至 – 包括檢視主版頁面 – 
 
 請考慮列出 1 中的控制站。 它會公開兩個動作，名為`Index()`和`Details()`。 `Index()`動作方法會傳回每個影片電影資料庫資料表中。 `Details()`動作方法會傳回每個影片中特定的影片類別目錄。
 
-**列出 1 –`Controllers\HomeController.vb`**
+**列出 1 – `Controllers\HomeController.vb`**
 
 [!code-vb[Main](passing-data-to-view-master-pages-vb/samples/sample1.vb)]
 
@@ -69,13 +69,13 @@ MVC 應用程式中，所有的資料傳遞至 – 包括檢視主版頁面 – 
 
 索引檢視包含在清單 2。 它只是逐一查看的電影中的項目檢視資料所代表的電影清單。
 
-**列出 2 –`Views\Home\Index.aspx`**
+**列出 2 – `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-vb/samples/sample2.aspx)]
 
 檢視主版頁面都包含在列出的 3。 檢視主版頁面反覆運算，並呈現所有以類別目錄項目表示從檢視資料的電影類別。
 
-**列出 3 –`Views\Shared\Site.master`**
+**列出 3 – `Views\Shared\Site.master`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-vb/samples/sample3.aspx)]
 
@@ -91,7 +91,7 @@ ApplicationController 類別被包含在列出的 4。
 
 ApplicationController 類別被包含在列出的 4。
 
-**列出 4 –`Controllers\ApplicationController.vb`**
+**列出 4 – `Controllers\ApplicationController.vb`**
 
 [!code-vb[Main](passing-data-to-view-master-pages-vb/samples/sample4.vb)]
 
@@ -103,7 +103,7 @@ ApplicationController 類別被包含在列出的 4。
 
 電影中的控制站列出 5 繼承自應用程式的控制站。
 
-**列出 5 –`Controllers\MoviesController.vb`**
+**列出 5 – `Controllers\MoviesController.vb`**
 
 [!code-vb[Main](passing-data-to-view-master-pages-vb/samples/sample5.vb)]
 
@@ -117,5 +117,5 @@ ApplicationController 類別被包含在列出的 4。
 
 接下來，我們會檢查較佳策略來加入資料檢視主版頁面才能檢視資料。 而不是新增的檢視資料中每個控制器動作，我們會加入一次檢視資料中的應用程式的控制站。 這樣一來，將資料傳遞到 ASP.NET MVC 應用程式中檢視主版頁面時，可以避免重複的程式碼。
 
->[!div class="step-by-step"]
-[上一步](creating-page-layouts-with-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [上一步](creating-page-layouts-with-view-master-pages-vb.md)

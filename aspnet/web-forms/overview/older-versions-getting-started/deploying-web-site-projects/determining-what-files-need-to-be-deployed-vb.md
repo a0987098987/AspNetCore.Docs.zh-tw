@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
-title: "判斷檔案必須為部署 (VB) |Microsoft 文件"
+title: 判斷檔案必須為部署 (VB) |Microsoft 文件
 author: rick-anderson
-description: "需要從開發環境部署到生產環境的檔案部分取決於 ASP.NET 應用程式建置時是否我們..."
+description: 需要從開發環境部署到生產環境的檔案部分取決於 ASP.NET 應用程式建置時是否我們...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aad0d4d4f7db5942c51255c34f36be73ed0e1f2d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4b9fcdbaaa0c2a6d7610339ecb6018a0fe6895f4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-vb"></a>判斷檔案必須為部署 (VB)
 ====================
@@ -41,7 +41,7 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 
 [!code-vb[Main](determining-what-files-need-to-be-deployed-vb/samples/sample1.vb)]
 
-為了讓 ASP.NET 引擎服務的這個頁面上，在頁面的程式碼部分的要求 (  *`WebPage`*  `.aspx.vb`檔案) 必須先編譯。 明確或自動，則可能會發生這個編譯。
+為了讓 ASP.NET 引擎服務的這個頁面上，在頁面的程式碼部分的要求 ( *`WebPage`* `.aspx.vb`檔案) 必須先編譯。 明確或自動，則可能會發生這個編譯。
 
 如果編譯會明確地發生，則整個應用程式的原始程式碼會編譯成一或多個組件 (`.dll`檔案) 位於應用程式的`Bin`目錄。 如果編譯會自動發生，則所產生的自動產生組件時，根據預設，會變成 「`Temporary ASP.NET Files`資料夾，請參閱`%WINDOWS%\Microsoft.NET\Framework\<version>`，不過這個位置可透過設定[ &lt;編譯&gt;元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中`Web.config`。 使用明確編譯，您必須採取某些動作到 ASP.NET 應用程式的程式碼編譯成組件，並在部署之前，會發生這個步驟。 使用自動編譯編譯處理程序，就會發生在 web 伺服器上第一次存取資源時。
 
@@ -79,15 +79,15 @@ ASP.NET web pages 劃分為宣告式標記和原始程式碼的程式碼。 宣�
 - 主版頁面 (`Site.master`)。
 - 七個不同的 ASP.NET 頁面：
 
-    - ~/`Default.aspx`-網站首頁。
-    - ~/`About.aspx`-「 相關網站 」 頁面。
-    - ~/`Fiction/Default.aspx`-列出已檢閱小說書籍的頁面。
+    - ~/`Default.aspx` -網站首頁。
+    - ~/`About.aspx` -「 相關網站 」 頁面。
+    - ~/`Fiction/Default.aspx` -列出已檢閱小說書籍的頁面。
 
-        - ~/`Fiction/Blaze.aspx`-檢閱 Richard Bachman novel *Blaze*。
-    - ~/`Tech/Default.aspx`-列出已檢閱技術書籍的頁面。
+        - ~/`Fiction/Blaze.aspx` -檢閱 Richard Bachman novel *Blaze*。
+    - ~/`Tech/Default.aspx` -列出已檢閱技術書籍的頁面。
 
-        - ~/`Tech/CYOW.aspx`-檢閱*建立您自己的網站*。
-        - ~/`Tech/TYASP35.aspx`-檢閱*教導您自己 ASP.NET 3.5 24 小時內*。
+        - ~/`Tech/CYOW.aspx` -檢閱*建立您自己的網站*。
+        - ~/`Tech/TYASP35.aspx` -檢閱*教導您自己 ASP.NET 3.5 24 小時內*。
 - 三個不同 CSS 檔案中的`Styles`資料夾。
 - 四個影像檔-提供的 ASP.NET 標誌和映像的過程中的三個檢閱書籍-所有位於`Images`資料夾。
 - A`Web.sitemap`檔案，此站台對應會定義用來顯示功能表中的檔案`Default.aspx`的根目錄中的頁面和`Fiction`和`Tech`資料夾。
@@ -189,6 +189,6 @@ Web 應用程式專案模型會使用明確編譯，並將專案的程式碼編�
 - [Visual Studio 2005 的網站專案系統： 它是什麼，以及未我們為什麼它嗎？](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
 - [逐步解說： 將網站專案轉換成 Visual Studio 中的 Web 應用程式專案](https://msdn.microsoft.com/library/aa983476.aspx)
 
->[!div class="step-by-step"]
-[上一頁](asp-net-hosting-options-vb.md)
-[下一頁](deploying-your-site-using-an-ftp-client-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](asp-net-hosting-options-vb.md)
+> [下一頁](deploying-your-site-using-an-ftp-client-vb.md)

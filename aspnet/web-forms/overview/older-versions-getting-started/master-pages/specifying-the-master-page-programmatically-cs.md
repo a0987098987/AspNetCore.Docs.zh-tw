@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
-title: "以程式設計方式指定主版頁面 (C#) |Microsoft 文件"
+title: 以程式設計方式指定主版頁面 (C#) |Microsoft 文件
 author: rick-anderson
-description: "會查看設定內容頁面的主版頁面，以程式設計方式透過 PreInit 事件處理常式。"
+description: 會查看設定內容頁面的主版頁面，以程式設計方式透過 PreInit 事件處理常式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 15efb8e2f38b7a405da0c0e12e447e5c3146f025
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2294ee2e58e55901d77958e7cf45dd74fc2a1187
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="specifying-the-master-page-programmatically-c"></a>以程式設計方式指定主版頁面 (C#)
 ====================
@@ -139,7 +139,7 @@ ASP.NET 引擎時要求到達網頁伺服器內容頁面 ASP.NET 網頁時，必
 
 ### <a name="testing-the-new-master-page"></a>測試新的主版頁面
 
-若要測試這個新的主版頁面更新`BasePage`類別的`OnPreInit`方法以便`MasterPageFile`將值指派給屬性"~ / Alternate.maser"，然後瀏覽的網站。 每個頁面應該不會發生錯誤，除了兩個函式：`~/Admin/AddProduct.aspx`和`~/Admin/Products.aspx`。 在 detailsview 中新增一項產品`~/Admin/AddProduct.aspx`導致`NullReferenceException`從嘗試設定主版頁面的程式碼行`GridMessageText`屬性。 造訪時`~/Admin/Products.aspx``InvalidCastException`與訊息的頁面載入時擲回: 「 無法將型別的物件轉換 'ASP.alternate\_master' 輸入' ASP.site\_master'。 」
+若要測試這個新的主版頁面更新`BasePage`類別的`OnPreInit`方法以便`MasterPageFile`將值指派給屬性"~ / Alternate.master"，然後瀏覽的網站。 每個頁面應該不會發生錯誤，除了兩個函式：`~/Admin/AddProduct.aspx`和`~/Admin/Products.aspx`。 在 detailsview 中新增一項產品`~/Admin/AddProduct.aspx`導致`NullReferenceException`從嘗試設定主版頁面的程式碼行`GridMessageText`屬性。 造訪時`~/Admin/Products.aspx``InvalidCastException`與訊息的頁面載入時擲回: 「 無法將型別的物件轉換 'ASP.alternate\_master' 輸入' ASP.site\_master'。 」
 
 這些錯誤的發生原因`Site.master`程式碼後置類別包含公用事件、 屬性和方法中未定義`Alternate.master`。 這兩個分頁的標記部分有`@MasterType`指示詞參考`Site.master`主版頁面。
 
@@ -282,12 +282,12 @@ ASP.NET 引擎時要求到達網頁伺服器內容頁面 ASP.NET 網頁時，必
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](master-pages-and-asp-net-ajax-cs.md)
-[下一頁](nested-master-pages-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](master-pages-and-asp-net-ajax-cs.md)
+> [下一頁](nested-master-pages-cs.md)

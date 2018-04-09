@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
-title: "顯示資料，以在 DataList 和中繼器控制項 (VB) |Microsoft 文件"
+title: 顯示資料，以在 DataList 和中繼器控制項 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在先前的教學課程中，我們已使用 GridView 控制項來顯示資料。 從開始本教學課程中，我們會審視建置與一般報表模式..."
+description: 在先前的教學課程中，我們已使用 GridView 控制項來顯示資料。 從開始本教學課程中，我們會審視建置與一般報表模式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 20a092ee2886932664705c22c3aa88d8a2f7f0ef
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6aa7cb76295d18711d88dd9855b43b259b558060
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a>DataList 與中繼器控制項 (VB) 中顯示資料
 ====================
@@ -161,12 +161,12 @@ GridView，像是在 DataList 提供了許多樣式相關的屬性，例如`Font
 
 除了`ItemTemplate`，DataList 支援六個其他選用的範本：
 
-- `HeaderTemplate`如果提供，將標頭資料列加入至輸出，而且用來呈現此資料列
-- `AlternatingItemTemplate`用來呈現替代項目
-- `SelectedItemTemplate`用來呈現選取的項目。選取的項目是項目索引的對應至 DataList s [ `SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
-- `EditItemTemplate`用來呈現正在編輯的項目
-- `SeparatorTemplate`如果提供，將每個項目之間的分隔符號與用來呈現這個分隔符號
-- `FooterTemplate`-如果提供，頁尾資料列加入至輸出，而且用來呈現此資料列
+- `HeaderTemplate` 如果提供，將標頭資料列加入至輸出，而且用來呈現此資料列
+- `AlternatingItemTemplate` 用來呈現替代項目
+- `SelectedItemTemplate` 用來呈現選取的項目。選取的項目是項目索引的對應至 DataList s [ `SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
+- `EditItemTemplate` 用來呈現正在編輯的項目
+- `SeparatorTemplate` 如果提供，將每個項目之間的分隔符號與用來呈現這個分隔符號
+- `FooterTemplate` -如果提供，頁尾資料列加入至輸出，而且用來呈現此資料列
 
 當指定`HeaderTemplate`或`FooterTemplate`，DataList 將額外的頁首或頁尾資料列加入至轉譯的輸出。 類似的 GridView 的頁首和頁尾資料列、 頁首和頁尾中 DataList 未繫結至資料。 因此，在任何資料繫結語法`HeaderTemplate`或`FooterTemplate`嘗試存取繫結的資料就會傳回空白的字串。
 
@@ -210,11 +210,11 @@ GridView，像是在 DataList 提供了許多樣式相關的屬性，例如`Font
 
 如果您不想要發出 HTML `<table>`，但是嗎？ 產生資料 Web 控制項的標記總數和已完整控制，我們必須使用在中繼器控制項。 在 DataList，像是中繼器範本為基礎建構。 中繼器，不過，僅提供下列五個範本：
 
-- `HeaderTemplate`如果提供，，將指定的標記之前的項目
-- `ItemTemplate`用來呈現項目
-- `AlternatingItemTemplate`如果提供，，用來呈現替代項目
-- `SeparatorTemplate`如果提供，，將每個項目之間指定的標記
-- `FooterTemplate`-如果提供，會在項目後面加入指定的標記
+- `HeaderTemplate` 如果提供，，將指定的標記之前的項目
+- `ItemTemplate` 用來呈現項目
+- `AlternatingItemTemplate` 如果提供，，用來呈現替代項目
+- `SeparatorTemplate` 如果提供，，將每個項目之間指定的標記
+- `FooterTemplate` -如果提供，會在項目後面加入指定的標記
 
 在 ASP.NET 中 1.x 中繼器控制項通常用來顯示其資料是來自某個資料來源項目符號清單。 在這種情況下，`HeaderTemplate`和`FooterTemplates`會包含在開頭和結尾`<ul>`標記，分別而`ItemTemplate`會包含`<li>`具有資料繫結語法的項目。 這種方法可以仍可用於 ASP.NET 2.0 中的兩個範例中[主版頁面和站台瀏覽](../introduction/master-pages-and-site-navigation-vb.md)教學課程：
 
@@ -312,12 +312,12 @@ DataList 和中繼器提供更靈活地轉譯的輸出，而他們缺乏許多�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 會導致此教學課程中的檢閱者已 Yaakov Ellis、 Liz Shulok、 袁 Schmidt 和 Stacy 公園。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](nested-data-web-controls-cs.md)
-[下一頁](formatting-the-datalist-and-repeater-based-upon-data-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](nested-data-web-controls-cs.md)
+> [下一頁](formatting-the-datalist-and-repeater-based-upon-data-vb.md)

@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
-title: "在實驗室交給： 容易維護的 Azure 網站： 管理變更和小數位數 |Microsoft 文件"
+title: 在實驗室交給： 容易維護的 Azure 網站： 管理變更和小數位數 |Microsoft 文件
 author: rick-anderson
-description: "在此實驗室中，了解 Microsoft Azure 如何讓您輕鬆地建置和部署網站至生產環境。"
+description: 在此實驗室中，了解 Microsoft Azure 如何讓您輕鬆地建置和部署網站至生產環境。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: 4bce02b2c592ff04e0dbce78d18004c69268e4fd
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a79921681b4e742b5cd23f7119d19f4dd74c3f83
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>在實驗室交給： 容易維護的 Azure 網站： 管理變更和小數位數
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/30/2018
 > 
 > SQL 資料庫是應用的您生產力資料庫保持最新部署程式的新版本時。 要感謝**Entity Framework Code First 移轉**，開發和部署您的資料模型已簡化，以更新您的環境，以分鐘為單位。 這個實際操作實驗室會顯示您的 web 應用程式部署至 Microsoft Azure 中的實際執行環境時，可能會遇到的不同主題。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
 > 
 > 如需本主題的深入涵蓋範圍，請參閱[建置真實世界雲端應用程式與 Azure 的電子書](building-real-world-cloud-apps-with-windows-azure/introduction.md)。
 
@@ -281,13 +281,13 @@ ms.lasthandoff: 01/30/2018
     *自訂新的 web 應用程式*
 5. 指定的資料庫設定的下列資訊：
 
-    - 在**名稱**文字中，輸入資料庫名稱 (例如*geekquiz\_db*)
-    - 在伺服器中**下拉式**清單中，選取**新 SQL database 伺服器**。 或者，您可以選取現有的伺服器。
-    - 在**資料庫使用者名稱**和**資料庫密碼**方塊中，輸入 SQL 資料庫伺服器的系統管理員使用者名稱和密碼。 如果您選取的伺服器已經建立，系統將提示您輸入密碼。
+   - 在**名稱**文字中，輸入資料庫名稱 (例如*geekquiz\_db*)
+   - 在伺服器中**下拉式**清單中，選取**新 SQL database 伺服器**。 或者，您可以選取現有的伺服器。
+   - 在**資料庫使用者名稱**和**資料庫密碼**方塊中，輸入 SQL 資料庫伺服器的系統管理員使用者名稱和密碼。 如果您選取的伺服器已經建立，系統將提示您輸入密碼。
 
-    ![指定的資料庫設定](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
+     ![指定的資料庫設定](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
 
-    *指定的資料庫設定*
+     *指定的資料庫設定*
 6. 按 [下一步]  以繼續。
 7. 選取**本機 Git 儲存機制**原始檔控制，然後按一下**下一步**。
 
@@ -687,7 +687,7 @@ ms.lasthandoff: 01/30/2018
 
 在這個工作中，您將設定**GeekQuiz**解決方案，以使用映像上傳至 Azure Blob 儲存體 （而不是位於 web 應用程式中的影像） 加入 ASP.NET URL 重寫規則，在**web.config**檔案。
 
-1. 在 Visual Studio 中開啟**Web.config**檔案內**GeekQuiz**專案，並找出 **&lt;system.webServer&gt;** 項目。
+1. 在 Visual Studio 中開啟**Web.config**檔案內**GeekQuiz**專案，並找出**&lt;system.webServer&gt;**項目。
 2. 加入下列程式碼，將 URL 重寫規則，更新您的儲存體帳戶名稱的預留位置。
 
     (程式碼片段- *WebSitesInProduction-Ex4-UrlRewriteRule*)
@@ -785,7 +785,7 @@ ms.lasthandoff: 01/30/2018
     ![將要求加入至 WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image81.png "將要求加入至 WebTest1")
 
     *將要求加入至 WebTest1*
-4. 在**屬性**視窗的 [新要求] 節點中，更新**Url**屬性以指向您的 web 應用程式的 URL (例如 *[http://geek-quiz.azurewebsites.net/](http://geek-quiz.azurewebsites.net/)*).
+4. 在**屬性**視窗的 [新要求] 節點中，更新**Url**屬性以指向您的 web 應用程式的 URL (例如*[ http://geek-quiz.azurewebsites.net/ ](http://geek-quiz.azurewebsites.net/)*).
 
     ![變更 Url 屬性](maintainable-azure-websites-managing-change-and-scale/_static/image82.png "變更 Url 屬性")
 
@@ -797,13 +797,13 @@ ms.lasthandoff: 01/30/2018
     *將迴圈加入至 WebTest1*
 6. 在**加入條件式規則和項目迴圈**對話方塊中，選取**For 迴圈 」**規則，並修改下列屬性。
 
-    1. **結束值：** 1000年
-    2. **內容參數名稱：**迭代器
-    3. **遞增值：** 1
+   1. **結束值：** 1000年
+   2. **內容參數名稱：**迭代器
+   3. **遞增值：** 1
 
-    ![選取 For 迴圈 」 規則，並更新屬性](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "選取 For 迴圈 」 規則，並更新屬性")
+      ![選取 For 迴圈 」 規則，並更新屬性](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "選取 For 迴圈 」 規則，並更新屬性")
 
-    *選取 For 迴圈 」 規則，並更新屬性*
+      *選取 For 迴圈 」 規則，並更新屬性*
 7. 在下**迴圈中的項目**區段中，選取您要在迴圈的第一個和最後一個項目先前建立的要求。 按一下 [確定]  繼續操作。
 
     ![選取此迴圈的第一個和最後一個項目](maintainable-azure-websites-managing-change-and-scale/_static/image85.png "選取迴圈的第一個和最後一個項目")

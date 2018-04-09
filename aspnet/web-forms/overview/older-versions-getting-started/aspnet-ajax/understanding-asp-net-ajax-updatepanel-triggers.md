@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
-title: "了解 ASP.NET AJAX UpdatePanel 觸發程序 |Microsoft 文件"
+title: 了解 ASP.NET AJAX UpdatePanel 觸發程序 |Microsoft 文件
 author: scottcate
-description: "當使用 Visual Studio 中的標記編輯器中，您可能會注意到 （從 IntelliSense) 有兩個子項目的 UpdatePanel 控制項。 其中一個北..."
+description: 當使用 Visual Studio 中的標記編輯器中，您可能會注意到 （從 IntelliSense) 有兩個子項目的 UpdatePanel 控制項。 其中一個北...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
-ms.openlocfilehash: 1338ef0763d9bfab451bc30cafa39f715200153d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f30f2ead402d2f49a89b2caf47cc30b6445d4cfb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>了解 ASP.NET AJAX UpdatePanel 觸發程序
 ====================
@@ -57,10 +57,10 @@ Microsoft ASP.NET 技術，帶來物件導向和事件驅動的程式設計模�
 
 *標記下階：*
 
-| **標記** | **說明** |
+| **標記** | **描述** |
 | --- | --- |
-| &lt;asp: AsyncPostBackTrigger&gt; | 指定控制項，可能會造成部分頁面更新，其中包含這個觸發程序參考 UpdatePanel 的事件。 |
-| &lt;asp: PostBackTrigger&gt; | 指定控制項和事件，會造成完整的頁面更新 （完整頁面重新整理）。 這個標記可以用來控制否則會觸發局部呈現時，強制執行完整的重新整理。 |
+| &lt;asp:AsyncPostBackTrigger&gt; | 指定控制項，可能會造成部分頁面更新，其中包含這個觸發程序參考 UpdatePanel 的事件。 |
+| &lt;asp:PostBackTrigger&gt; | 指定控制項和事件，會造成完整的頁面更新 （完整頁面重新整理）。 這個標記可以用來控制否則會觸發局部呈現時，強制執行完整的重新整理。 |
 
 ## <a name="walkthrough-cross-updatepanel-triggers"></a>*逐步解說： 跨 UpdatePanel 觸發程序*
 
@@ -85,7 +85,7 @@ Microsoft ASP.NET 技術，帶來物件導向和事件驅動的程式設計模�
 ([按一下以檢視完整大小的影像](understanding-asp-net-ajax-updatepanel-triggers/_static/image3.png))
 
 
-## <a name="under-the-hood"></a>*背後原理*
+## <a name="under-the-hood"></a>*深入探討*
 
 使用我們剛才建構的範例，我們可以看一下 ASP.NET AJAX 做什麼，以及我們 UpdatePanel 跨面板觸發程序的運作方式。 若要這樣做，我們將使用產生的網頁原始檔 HTML、 以及 Mozilla Firefox 擴充功能呼叫 firebug 這類-有了它，我們可以輕鬆地檢查 AJAX 回傳。 我們也會使用.NET 反映程式工具，以選取 Lutz Roeder。 這兩種工具都在線上，免費提供，並在網際網路上搜尋，即可找到。
 
@@ -151,10 +151,10 @@ ASP.NET AJAX 擴充功能 UpdatePanel 控制項的用途多，而且可以利用
 
 ## <a name="bio"></a>簡歷
 
-Rob Paveza 是資深的.NET 應用程式開發人員，在 Terralever ([www.terralever.com](http://www.terralever.com))，在 Tempe，AZ.前置的互動式行銷公司 他可以在達到[ robpaveza@gmail.com ](mailto:robpaveza@gmail.com)，他的部落格位於[http://geekswithblogs.net/robp/](http://geekswithblogs.net/robp/)。
+Rob Paveza 是資深的.NET 應用程式開發人員，在 Terralever ([www.terralever.com](http://www.terralever.com))，在 Tempe，AZ.前置的互動式行銷公司 他可以在達到[ robpaveza@gmail.com ](mailto:robpaveza@gmail.com)，他的部落格位於[ http://geekswithblogs.net/robp/ ](http://geekswithblogs.net/robp/)。
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[上一頁](understanding-partial-page-updates-with-asp-net-ajax.md)
-[下一頁](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-partial-page-updates-with-asp-net-ajax.md)
+> [下一頁](understanding-asp-net-ajax-authentication-and-profile-application-services.md)

@@ -1,7 +1,7 @@
 ---
-title: "快取中 ASP.NET Core 中的介軟體的回應"
+title: 快取中 ASP.NET Core 中的介軟體的回應
 author: guardrex
-description: "了解如何設定和使用 ASP.NET Core 在回應快取中介軟體。"
+description: 了解如何設定和使用 ASP.NET Core 在回應快取中介軟體。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: e9a74d8f6c3945b1bc8c62d0ab21145a7c5717fb
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: ff92b032fe8bbbcb7bc26a34fdfbc56a0fcc0e2c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -88,7 +88,7 @@ if (responseCachingFeature != null)
 | 頁首 | 詳細資料 |
 | ------ | ------- |
 | 授權 | 如果標頭存在，回應不是快取。 |
-| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取的指示詞。 控制快取包含下列參數：<ul><li>保留時間上限</li><li>max-stale&#8224;</li><li>min 全新</li><li>must-revalidate</li><li>無快取</li><li>no-store</li><li>僅限 if-快取</li><li>private</li><li>public</li><li>s maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224; 若要指定無限制到`max-stale`中, 介軟體會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231： 要求的快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
+| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取的指示詞。 控制快取包含下列參數：<ul><li>保留時間上限</li><li>max-stale&#8224;</li><li>min 全新</li><li>must-revalidate</li><li>無快取</li><li>no-store</li><li>僅限 if-快取</li><li>private</li><li>public</li><li>s maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224;若要指定無限制到`max-stale`中, 介軟體會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231： 要求的快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
 | Pragma | A`Pragma: no-cache`要求標頭會產生相同的效果`Cache-Control: no-cache`。 此標頭中的相關指示詞會覆寫`Cache-Control`標頭，如果有的話。 與 HTTP/1.0 回溯相容性考量。 |
 | Set-Cookie | 如果標頭存在，回應不是快取。 |
 | 而有所不同 | `Vary`標頭由另一個標頭用來變更快取的回應。 比方說，快取的回應編碼方式包括`Vary: Accept-Encoding`快取回應之要求標頭的標頭`Accept-Encoding: gzip`和`Accept-Encoding: text/plain`分開。 回應標頭值是`*`絕對不會儲存。 |
@@ -105,7 +105,7 @@ if (responseCachingFeature != null)
 
 如需更多控制快取行為的詳細資訊，瀏覽 ASP.NET Core 其他快取的功能。 請參閱下列主題：
 
-* [記憶體內部快取](xref:performance/caching/memory)
+* [快取記憶體中](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [快取中 ASP.NET Core MVC 標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
@@ -142,7 +142,7 @@ if (responseCachingFeature != null)
 
 * [應用程式啟動](xref:fundamentals/startup)
 * [中介軟體](xref:fundamentals/middleware/index)
-* [記憶體內部快取](xref:performance/caching/memory)
+* [快取記憶體中](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)

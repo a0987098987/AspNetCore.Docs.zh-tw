@@ -1,8 +1,8 @@
 ---
 uid: aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
-title: "程式設計 ASP.NET Web Pages (Razor) 使用 Visual Studio |Microsoft 文件"
+title: 程式設計 ASP.NET Web Pages (Razor) 使用 Visual Studio |Microsoft 文件
 author: tfitzmac
-description: "此附錄將解釋如何使用 Visual Studio 2010 或 Visual Web Developer 2010 Express 含有 Razor 語法的 ASP.NET Web Pages 程式。"
+description: 此附錄將解釋如何使用 Visual Studio 2010 或 Visual Web Developer 2010 Express 含有 Razor 語法的 ASP.NET Web Pages 程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio
 msc.type: authoredcontent
-ms.openlocfilehash: 5cfeda206eda8fb3fd769d34fb40bae2c3b65093
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eb17c8cc1fab5b552c8495e74bb86ae9dbc5b972
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>使用 Visual Studio 程式設計 ASP.NET Web Pages (Razor)
 ====================
@@ -84,7 +84,7 @@ Visual Studio 2010 不支援預設的 ASP.NET Web Pages。 若要使用 ASP.NET 
 4. 選取**ASP.NET 網站 (Razor)**範本。
 
     ![razor 的站台](program-asp-net-web-pages-in-visual-studio/_static/image3.png)
-5. 按一下 [確定]。
+5. 按一下 [確定 **Deploying Office Solutions**]。
 
 新的專案存在，而且會填入一些預設的網頁以協助您快速入門。
 
@@ -95,9 +95,9 @@ Visual Studio 2010 不支援預設的 ASP.NET Web Pages。 若要使用 ASP.NET 
 1. 在您剛才建立的網站，開啟*Default.cshtml*頁面。
 2. 之後`<h3>`標記在頁面中，輸入`@ServerInfo.`（包括點）。 請注意如何 IntelliSense 會顯示可用的方法`ServerInfo`下拉式清單中的協助程式。 
 
-    ![Intellisense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
+    ![intellisense](program-asp-net-web-pages-in-visual-studio/_static/image4.png)
 3. 選取`GetHtml`中方法的清單，然後按 Enter 鍵。 在方法中的 IntelliSense 會自動填入。 (使用 C# 中的任何方法，您必須新增`()`方法之後的字元。)  
- 已完成的程式碼，如`GetHtml`方法看起來類似下列的範例：  
+   已完成的程式碼，如`GetHtml`方法看起來類似下列的範例：  
 
     [!code-cshtml[Main](program-asp-net-web-pages-in-visual-studio/samples/sample1.cshtml)]
 4. 按 Ctrl + F5 執行頁面。 這是頁面看起來像時顯示在瀏覽器中： 

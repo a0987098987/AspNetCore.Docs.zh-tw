@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs
-title: "操作 DropShadow 屬性，用戶端程式碼 (C#) |Microsoft 文件"
+title: 操作 DropShadow 屬性，用戶端程式碼 (C#) |Microsoft 文件
 author: wenz
-description: "自訂資料清單的編輯介面"
+description: 自訂資料清單的編輯介面
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 59f7d4610ce610ef4357510f0e861f107278b5da
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 37a7784e1d42477e31938e1d15495993ac86fc56
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="manipulating-dropshadow-properties-from-client-code-c"></a>操作 DropShadow 屬性，用戶端程式碼 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 此擴充項的屬性也可以使用用戶端 JavaScript 程式碼會變更。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 此擴充項的屬性也可以使用用戶端 JavaScript 程式碼會變更。
 
@@ -62,6 +62,6 @@ JavaScript 函式`changeOpacity()`然後必須先找到`DropShadowExtender`頁�
 
 在用戶端上變更不透明度 ([按一下以檢視完整大小的影像](manipulating-dropshadow-properties-from-client-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](adjusting-the-z-index-of-a-dropshadow-cs.md)
-[下一頁](adjusting-the-z-index-of-a-dropshadow-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](adjusting-the-z-index-of-a-dropshadow-cs.md)
+> [下一頁](adjusting-the-z-index-of-a-dropshadow-vb.md)

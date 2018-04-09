@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
-title: "使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/01/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: a7a66e7e67539e4b075da6fc054a7b53984b6ce1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 15bda09c59afaf9e5449c68c5206bb28de245541
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解
 ====================
@@ -292,8 +292,8 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 您已順利使用單鍵發行來部署您的應用程式啟動，而您收到這個錯誤：
 
-Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://serverurl.com/msdeploy.axd?site=sitename' 的要求）。  
- 無法完成遠端代理程式 URL 'https://url/msdeploy.axd?site=sitename' 的要求。  
+Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<https://serverurl.com/msdeploy.axd?site=sitename>'。)  
+ 無法完成遠端代理程式的 url 要求 '<https://url/msdeploy.axd?site=sitename>'。  
 此要求已中止： 已取消要求。  
 不能有已經從其基礎 RCW 分離的 COM 物件。
 
@@ -309,7 +309,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;**至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>當應用程式嘗試寫入應用程式的資料夾時，存取被拒錯誤
 
@@ -319,7 +319,7 @@ Web deployment 工作失敗。 （無法完成遠端代理程式 URL 'https://se
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增 **&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;**至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 <a id="aspnet45error"></a>
 
@@ -377,5 +377,5 @@ HTTP 錯誤 404.17-找不到
 
 在您的電腦上可能未安裝 ASP.NET 4.5。 為說明如何安裝 ASP.NET 4.5 這系列中的測試環境教學課程，請參閱 IIS 中部署的步驟。
 
->[!div class="step-by-step"]
-[上一步](deploying-extra-files.md)
+> [!div class="step-by-step"]
+> [上一步](deploying-extra-files.md)

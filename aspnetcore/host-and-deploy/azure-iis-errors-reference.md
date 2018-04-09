@@ -1,7 +1,7 @@
 ---
-title: "Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考"
+title: Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考
 author: guardrex
-description: "裝載 Azure 應用程式服務和 IIS 的 ASP.NET Core 應用程式時，請區分常見的錯誤。"
+description: 裝載 Azure 應用程式服務和 IIS 的 ASP.NET Core 應用程式時，請區分常見的錯誤。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: cd9f8fc310ba0258477db51aa416c03debadeffe
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: fb833ef8797ea7851cbaf53bb5681df248d07a49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/02/2018
 
 比較下列的一般錯誤的資訊。 如果找到相符項目，請遵循的疑難排解建議。
 
-[!INCLUDE[Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
 ## <a name="installer-unable-to-obtain-vc-redistributable"></a>安裝程式無法取得 VC++ 可轉散發套件
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/02/2018
 
 疑難排解：
 
-* 如果安裝伺服器裝載套件組合時，系統無法存取網際網路，導致安裝程式無法取得 *Microsoft Visual C++ 2015 可轉散發套件*，就會發生這個例外狀況。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。 如果安裝程式失敗，伺服器可能不會接收裝載 framework 相依的部署 (與 FDD) 所需的.NET 核心執行階段。 如果裝載與 FDD，確認執行階段是否已安裝的程式中&amp;功能。 如有需要取得執行階段安裝從[.NET 下載](https://www.microsoft.com/net/download/core)。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
+* 如果安裝伺服器裝載套件組合時，系統無法存取網際網路，導致安裝程式無法取得 *Microsoft Visual C++ 2015 可轉散發套件*，就會發生這個例外狀況。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。 如果安裝程式失敗，伺服器可能不會接收裝載 framework 相依的部署 (與 FDD) 所需的.NET 核心執行階段。 如果裝載與 FDD，確認執行階段是否已安裝的程式中&amp;功能。 如有需要取得執行階段安裝從[.NET 所有下載](https://www.microsoft.com/net/download/all)。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>作業系統升級已移除 32 位元的 ASP.NET Core 模組
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 03/02/2018
 
 * 與 FDD 部署和.NET Core 安裝不需要重新啟動 IIS。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動伺服器或重新啟動 IIS。
 
-* 與 FDD 可能部署而不需要在主機系統上安裝.NET 核心執行階段。 如果尚未安裝.NET 核心執行階段，執行**.NET 核心 Windows Server 裝載配套 installer**系統上。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle)。 如果嘗試在沒有網際網路連線的系統上安裝.NET 核心執行階段時，取得執行階段從[.NET 下載](https://www.microsoft.com/net/download/core)並執行裝載配套安裝程式安裝 ASP.NET 核心模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
+* 與 FDD 可能部署而不需要在主機系統上安裝.NET 核心執行階段。 如果尚未安裝.NET 核心執行階段，執行**.NET 核心 Windows Server 裝載配套 installer**系統上。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle)。 如果嘗試在沒有網際網路連線的系統上安裝.NET 核心執行階段時，取得執行階段從[.NET 所有下載](https://www.microsoft.com/net/download/all)並執行裝載配套安裝程式安裝 ASP.NET 核心模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
 
 * 與 FDD 部署和*Microsoft Visual c + + 2015年可轉散發 (x64)*系統上未安裝。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。
 
@@ -211,6 +211,18 @@ ms.lasthandoff: 03/02/2018
 疑難排解
 
 * 請確認子應用程式的 *web.config* 檔案不包含 `<handlers>` 區段。
+
+## <a name="stdout-log-path-incorrect"></a>stdout 的記錄檔路徑不正確
+
+* **瀏覽器：**應用程式通常會回應。
+
+* **應用程式記錄檔：**警告： 無法建立 stdoutLogFile \\？ \C:\_apps\app_folder\bin\Release\netcoreapp2.0\win10-x64\publish\logs\path_doesnt_exist\stdout_8748_201831835937.log，ErrorCode =-2147024893。
+
+* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+
+疑難排解
+
+* `stdoutLogFile`中指定路徑`<aspNetCore>`元素*web.config*不存在。 如需詳細資訊，請參閱[記錄建立和重新導向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)ASP.NET 核心模組的組態參考主題的章節。
 
 ## <a name="application-configuration-general-issue"></a>應用程式組態一般問題
 

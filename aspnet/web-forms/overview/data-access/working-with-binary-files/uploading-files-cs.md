@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/uploading-files-cs
-title: "上傳檔案 (C#) |Microsoft 文件"
+title: 上傳檔案 (C#) |Microsoft 文件
 author: rick-anderson
-description: "了解如何允許使用者 （例如 Word 或 PDF 文件） 的二進位檔案上傳至您的網站，可能會將它們儲存在該伺服器的檔案系統中的其中..."
+description: 了解如何允許使用者 （例如 Word 或 PDF 文件） 的二進位檔案上傳至您的網站，可能會將它們儲存在該伺服器的檔案系統中的其中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 629c1154683a0370e3e650873edf29dc9f22b4bc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3c758e94311817d01b17d27083733f805caf600f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="uploading-files-c"></a>上傳檔案 (C#)
 ====================
@@ -124,9 +124,9 @@ Categories 資料表目前有只能有四個資料行： `CategoryID`， `Catego
 
 中所述*建立資料存取層*，具類型資料集中 Datatable 組成商務物件。 Tableadapter 負責與資料庫通訊，並填入與查詢結果的商務物件。 `CategoriesDataTable`會填入`CategoriesTableAdapter`，其具有三個資料擷取方法：
 
-- `GetCategories()`執行 TableAdapter s 主查詢並傳回`CategoryID`， `CategoryName`，和`Description`內的所有記錄欄位`Categories`資料表。 主要的查詢是什麼由自動產生`Insert`和`Update`方法。
-- `GetCategoryByCategoryID(categoryID)`傳回`CategoryID`， `CategoryName`，和`Description`類別目錄欄位的`CategoryID`等於*categoryID*。
-- `GetCategoriesAndNumberOfProducts()`-傳回`CategoryID`， `CategoryName`，和`Description`欄位中的所有記錄`Categories`資料表。 也會使用子查詢傳回的每個類別目錄相關聯的產品數目。
+- `GetCategories()` 執行 TableAdapter s 主查詢並傳回`CategoryID`， `CategoryName`，和`Description`內的所有記錄欄位`Categories`資料表。 主要的查詢是什麼由自動產生`Insert`和`Update`方法。
+- `GetCategoryByCategoryID(categoryID)` 傳回`CategoryID`， `CategoryName`，和`Description`類別目錄欄位的`CategoryID`等於*categoryID*。
+- `GetCategoriesAndNumberOfProducts()` -傳回`CategoryID`， `CategoryName`，和`Description`欄位中的所有記錄`Categories`資料表。 也會使用子查詢傳回的每個類別目錄相關聯的產品數目。
 
 請注意，其中一個項目查詢傳回`Categories`資料表 s`Picture`或`BrochurePath`資料行; 也無法`CategoriesDataTable`提供`DataColumn`s 這些欄位。 若要使用的圖片和`BrochurePath`屬性，我們需要先將它們加入`CategoriesDataTable`然後更新`CategoriesTableAdapter`類別，以傳回這些資料行。
 
@@ -287,11 +287,11 @@ ASP.NET 2.0 的新[檔案上傳 Web 控制項](https://msdn.microsoft.com/librar
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和 Bernadette Leigh。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[下一步](displaying-binary-data-in-the-data-web-controls-cs.md)
+> [!div class="step-by-step"]
+> [下一步](displaying-binary-data-in-the-data-web-controls-cs.md)

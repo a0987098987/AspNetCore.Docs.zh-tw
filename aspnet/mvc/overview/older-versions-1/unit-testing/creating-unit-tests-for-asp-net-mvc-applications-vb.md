@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
-title: "建立單元測試的 ASP.NET MVC 應用程式 (VB) |Microsoft 文件"
+title: 建立單元測試的 ASP.NET MVC 應用程式 (VB) |Microsoft 文件
 author: StephenWalther
-description: "了解如何建立適用於控制器動作的單元測試。 在本教學課程中，作者： Stephen Walther 會示範如何測試是否控制器動作傳回 parti..."
+description: 了解如何建立適用於控制器動作的單元測試。 在本教學課程中，作者： Stephen Walther 會示範如何測試是否控制器動作傳回 parti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d92ee0c26787e5c482e8695001d8809d3ee9ee30
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 299665f45d72fee33f92344ed53c87dfb1a76d60
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications-vb"></a>建立單元測試的 ASP.NET MVC 應用程式 (VB)
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/10/2017
 
 讓我們開始建立我們想要測試的控制器。 具名的控制站`ProductController`，包含在程式碼範例 1。
 
-**列出 1 –`ProductController.vb`**
+**列出 1 – `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample1.vb)]
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/10/2017
 
 假設我們想要測試是否`ProductController`傳回右方檢視。 我們想要確定當`ProductController.Details()`叫用動作時，會傳回詳細資料檢視。 列出 2 中的測試類別包含單元測試來測試所傳回的檢視`ProductController.Details()`動作。
 
-**列出 2 –`ProductControllerTest.vb`**
+**列出 2 – `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample2.vb)]
 
@@ -67,18 +67,18 @@ ms.lasthandoff: 11/10/2017
 **圖 01**： 方案中執行所有測試 ([按一下以檢視完整大小的影像](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image3.png))
 
 
-[![成功 ！](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image5.png)](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image4.png)
+[![Success!](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image5.png)](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image4.png)
 
 **圖 02**： 成功 ！ ([按一下以檢視完整大小的影像](creating-unit-tests-for-asp-net-mvc-applications-vb/_static/image6.png))
 
 
 ## <a name="testing-the-view-data-returned-by-a-controller"></a>測試檢視資料傳回的控制站
 
-此 MVC 控制器會將資料傳遞至檢視使用所謂 *`View Data`* 。 例如，假設您想要顯示特定產品的詳細資料，當您叫用`ProductController Details()`動作。 在此情況下，您可以建立的執行個體`Product`類別 （定義於您的模型），並傳遞要的執行個體`Details`檢視藉由運用`View Data`。
+此 MVC 控制器會將資料傳遞至檢視使用所謂*`View Data`*。 例如，假設您想要顯示特定產品的詳細資料，當您叫用`ProductController Details()`動作。 在此情況下，您可以建立的執行個體`Product`類別 （定義於您的模型），並傳遞要的執行個體`Details`檢視藉由運用`View Data`。
 
 修改`ProductController`中列出的 3 包含更新`Details()`傳回產品的動作。
 
-**列出 3 –`ProductController.vb`**
+**列出 3 – `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample5.vb)]
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 11/10/2017
 
 您可以撰寫單元測試來測試是否為預期的資料包含在檢視中的資料。 單元測試中列出的 4 測試是否會傳回代表膝上型電腦的產品，當您呼叫`ProductController Details()`動作方法。
 
-**列出 4 –`ProductControllerTest.vb`**
+**列出 4 – `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample6.vb)]
 
@@ -98,13 +98,13 @@ ms.lasthandoff: 11/10/2017
 
 例如，已修改`Details()`列出 5 中的動作傳回`Details`檢視當您將有效的產品識別碼傳遞至動作。 如果您傳遞無效的產品識別碼-識別碼的值小於 1 部--就會重新導向至`Index()`動作。
 
-**列出 5 –`ProductController.vb`**
+**列出 5 – `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample7.vb)]
 
 您可以測試的行為`Details()`與單元測試程式碼範例 6 中的動作。 列出第 6 單元測試會驗證您會重新導向至`Index`檢視時的識別碼值為-1 會傳遞至`Details()`方法。
 
-**列出 6 –`ProductControllerTest.vb`**
+**列出 6 – `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample8.vb)]
 
@@ -118,5 +118,5 @@ ms.lasthandoff: 11/10/2017
 
 最後，我們將討論如何測試是否從控制器動作傳回不同類型的動作結果。 您已學習如何測試是否為控制站傳回`ViewResult`或`RedirectToRouteResult`。
 
->[!div class="step-by-step"]
-[上一步](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
+> [!div class="step-by-step"]
+> [上一步](creating-unit-tests-for-asp-net-mvc-applications-cs.md)

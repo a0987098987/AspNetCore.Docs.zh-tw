@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/performance/bundling-and-minification
-title: "統合及縮製 |Microsoft 文件"
+title: 統合及縮製 |Microsoft 文件
 author: Rick-Anderson
-description: "統合及縮製是兩項技術可用於 ASP.NET 4.5 來改善要求載入時間。 統合及縮製 reducin 藉此改善載入時間..."
+description: 統合及縮製是兩項技術可用於 ASP.NET 4.5 來改善要求載入時間。 統合及縮製 reducin 藉此改善載入時間...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/23/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 7192481de46c36f7de71164766e68afdbba74f6d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 001ebf89cda66a50cddcd7e4944f27b9396d4450
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="bundling-and-minification"></a>統合及縮製
 ====================
@@ -98,7 +98,7 @@ ms.lasthandoff: 01/24/2018
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> 除非`EnableOptimizations`是`true`或中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案設定為`false`，檔案將不會搭配或縮短。 此外，將不會使用檔案的.min 版本，將選取完整的偵錯版本。 `EnableOptimizations`覆寫中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案
+> 除非`EnableOptimizations`是`true`或中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案設定為`false`，檔案將不會搭配或縮短。 此外，將不會使用檔案的.min 版本，將選取完整的偵錯版本。 `EnableOptimizations` 覆寫中的偵錯屬性[compilation 元素](https://msdn.microsoft.com/library/s10awwz0.aspx)中*Web.config*檔案
 
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>使用組合和縮製與 ASP.NET Web Form 和 Web 網頁
@@ -186,7 +186,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
- 萬用字元選取器 」\*.css 」 會在資料夾中，每個 CSS 檔案中包括*Content\themes\base\jquery.ui.all.css*檔案。 *Jquery.ui.all.css*檔匯入其他 CSS 檔案。
+  萬用字元選取器 」\*.css 」 會在資料夾中，每個 CSS 檔案中包括*Content\themes\base\jquery.ui.all.css*檔案。 *Jquery.ui.all.css*檔匯入其他 CSS 檔案。
 
 ## <a name="bundle-caching"></a>快取中組合
 
@@ -233,15 +233,15 @@ ms.lasthandoff: 01/24/2018
 
 `System.Web.Optimization` System.Web.Optimization.DLL 中實作的命名空間。 它會利用 WebGrease 程式庫 (WebGrease.dll) 縮製功能，接著使用 Antlr3.Runtime.dll。
 
-*使用 Twitter 進行快速文章及共用的連結。我 Twitter 控點是*:[@RickAndMSFT](http://twitter.com/RickAndMSFT)
+*使用 Twitter 進行快速文章及共用的連結。我 Twitter 控點是*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
 ## <a name="additional-resources"></a>其他資源
 
 - 影片：[統合及最佳化](https://channel9.msdn.com/Events/aspConf/aspConf/Bundling-and-Optimizing)由[Howard Dierking](https://twitter.com/#!/howard_dierking)
 - [加入 Web Pages 站台中的 Web 最佳化](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx)。
 - [新增組合和縮製到 Web Form](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx)。
-- [效能影響的組合和縮製的網頁瀏覽](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx)由[Henrik F Nielsen](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen)[@frystyk](https://twitter.com/frystyk)
-- [使用 Cdn，而且已過期來改善網站效能](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx)由 Rick anderson 發表[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+- [效能影響的組合和縮製的網頁瀏覽](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx)由[Henrik F Nielsen](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen) [@frystyk](https://twitter.com/frystyk)
+- [使用 Cdn，而且已過期來改善網站效能](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx)由 Rick anderson 發表 [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 - [最小化 RTT （來回行程時間）](https://developers.google.com/speed/docs/best-practices/rtt)
 
 ## <a name="contributors"></a>Contributors

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-validation-to-the-model
-title: "將驗證加入至模型 (VB) |Microsoft 文件"
+title: 將驗證加入至模型 (VB) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: cac86760b90c90a0ea2fad16268f60b5ccf61299
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 86058530aa00ecbc00aeebc6ed7b5cf019fdad72
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model-vb"></a>將驗證加入至模型 (VB)
 ====================
@@ -123,6 +123,6 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 在數列的下一個部分中，我們會檢閱應用程式，並進行一些改良的自動產生`Details`和`Delete`方法...
 
->[!div class="step-by-step"]
-[上一頁](adding-a-new-field.md)
-[下一頁](improving-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-new-field.md)
+> [下一頁](improving-the-details-and-delete-methods.md)

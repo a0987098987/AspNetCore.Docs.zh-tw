@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
-title: "回應使用者互動 (VB) 中建立動畫 |Microsoft 文件"
+title: 回應使用者互動 (VB) 中建立動畫 |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫可以星級..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫可以星級...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3219e9d126b3225bfc78d08fb3ac7ef4cc3dca75
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e12467bfeb88c2ab9d1cfb866506e9e8e7f9ae25
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-in-response-to-user-interaction-vb"></a>回應使用者互動 (VB) 中建立動畫
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫可以自動啟動，或可以觸發使用者互動，例如按一下滑鼠。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 動畫可以自動啟動，或可以觸發使用者互動，例如按一下滑鼠。
 
@@ -51,11 +51,11 @@ ms.lasthandoff: 11/10/2017
 
 內`<Animations>` 節點，有五種方式可以啟動動畫透過使用者互動 (遺漏的項目，則`<OnLoad>`來執行整個頁面完全載入後):
 
-- `<OnClick>`（滑鼠按一下控制項上）
-- `<OnHoverOut>`（滑鼠離開控制項）
-- `<OnHoverOver>`(滑鼠停留在控制項時，停止`<OnHoverOut>`動畫)
-- `<OnMouseOut>`（滑鼠離開控制項）
-- `<OnMouseOver>`(滑鼠停留在控制項時，不停止`<OnMouseOut>`動畫)
+- `<OnClick>` （滑鼠按一下控制項上）
+- `<OnHoverOut>` （滑鼠離開控制項）
+- `<OnHoverOver>` (滑鼠停留在控制項時，停止`<OnHoverOut>`動畫)
+- `<OnMouseOut>` （滑鼠離開控制項）
+- `<OnMouseOver>` (滑鼠停留在控制項時，不停止`<OnMouseOut>`動畫)
 
 在此案例中，`<OnClick>`用。 當使用者按一下 [面板] 中時，它會調整大小，並同時淡出。
 
@@ -66,6 +66,6 @@ ms.lasthandoff: 11/10/2017
 
 按一下滑鼠開始動畫 ([按一下以檢視完整大小的影像](animating-in-response-to-user-interaction-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](picking-one-animation-out-of-a-list-vb.md)
-[下一頁](disabling-actions-during-animation-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](picking-one-animation-out-of-a-list-vb.md)
+> [下一頁](disabling-actions-during-animation-vb.md)

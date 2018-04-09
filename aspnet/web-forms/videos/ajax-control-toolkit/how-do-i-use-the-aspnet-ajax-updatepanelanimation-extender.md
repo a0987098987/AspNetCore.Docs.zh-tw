@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
-title: "[如何:]使用 ASP.NET AJAX UpdatePanelAnimation Extender？ | Microsoft Docs"
+title: '[如何:]使用 ASP.NET AJAX UpdatePanelAnimation Extender？ | Microsoft Docs'
 author: JoeStagner
-description: "將動畫加入至部分頁面更新，我們可以通知使用者，當更新發生問題，而且它已完成。 UpdatePanelAnimation extender..."
+description: 將動畫加入至部分頁面更新，我們可以通知使用者，當更新發生問題，而且它已完成。 UpdatePanelAnimation extender...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
 msc.type: video
-ms.openlocfilehash: 71b1e8f6fb4acfaee69a588c70a8ca5e3c099c13
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f7a96295a3e3f372a3f43fbf47360c88b99433c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[如何:]使用 ASP.NET AJAX UpdatePanelAnimation Extender？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （20 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)
-[下一頁](how-do-i-the-ajax-toolkit-reorder-control.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)
+> [下一頁](how-do-i-the-ajax-toolkit-reorder-control.md)

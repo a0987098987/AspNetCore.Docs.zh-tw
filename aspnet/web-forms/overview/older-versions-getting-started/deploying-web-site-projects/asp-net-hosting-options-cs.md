@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
-title: "ASP.NET 裝載選項 (C#) |Microsoft 文件"
+title: ASP.NET 裝載選項 (C#) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET web 應用程式通常設計、 建立，在本機開發環境中測試和要部署到實際執行環境 o..."
+description: ASP.NET web 應用程式通常設計、 建立，在本機開發環境中測試和要部署到實際執行環境 o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 34e1f9c7ee1ae22bceb614eeeaa1ebe286c1ccad
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f8bb0e5a34d84d448af56285e8761c447229f7d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-c"></a>ASP.NET 裝載選項 (C#)
 ====================
@@ -95,5 +95,5 @@ ASP.NET web 應用程式通常會設計、 建立，並在本機開發環境中�
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[下一步](determining-what-files-need-to-be-deployed-cs.md)
+> [!div class="step-by-step"]
+> [下一步](determining-what-files-need-to-be-deployed-cs.md)

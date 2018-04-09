@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
-title: "組件 10： 瀏覽及站台的設計，結論最後更新 |Microsoft 文件"
+title: 組件 10： 瀏覽及站台的設計，結論最後更新 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 組件 10 涵蓋最後更新瀏覽和 S..."
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 組件 10 涵蓋最後更新瀏覽和 S...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: 2a65e4b793b615c45cdf31166e0a000ae72ee534
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: b40d194c4d08f3564da59bacde4b5d3d7663373a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>瀏覽及站台的設計，結論的組件 10： 最後更新
 ====================
@@ -138,5 +138,5 @@ ms.lasthandoff: 02/12/2018
 我們已看到，ASP.NET MVC 可讓您輕鬆建立複雜的網站與資料庫存取權，成員資格、 AJAX 等。 很快。 希望本教學課程已提供您要開始建置您自己的 ASP.NET MVC 應用程式所需的工具 ！
 
 
->[!div class="step-by-step"]
-[上一步](mvc-music-store-part-9.md)
+> [!div class="step-by-step"]
+> [上一步](mvc-music-store-part-9.md)

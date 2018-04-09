@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
-title: "先行編譯您的網站 (C#) |Microsoft 文件"
+title: 先行編譯您的網站 (C#) |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio 可 ASP.NET 開發人員提供兩種專案類型： Web 應用程式專案 (WAPs) 及網站專案 (WSPs)。 其中一個主要差異 betwe..."
+description: Visual Studio 可 ASP.NET 開發人員提供兩種專案類型： Web 應用程式專案 (WAPs) 及網站專案 (WSPs)。 其中一個主要差異 betwe...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f31f470b4d2b6736b98c0b7d88ea7a53ad1438b9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fe49029d09db99735a181b90e781396929f22d8d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="precompiling-your-website-c"></a>先行編譯您的網站 (C#)
 ====================
@@ -97,7 +97,7 @@ Visual Studio 中開啟活頁簿檢閱 WSP、 移至 [建置] 功能表中，然
 
 [![](precompiling-your-website-cs/_static/image5.png)](precompiling-your-website-cs/_static/image4.png)
 
-**圖 2**： 專案目錄中包含`.aspx`和`.aspx.cs`檔案;`Bin`資料夾只包含`Elmah.dll`  
+**圖 2**： 專案目錄中包含`.aspx`和`.aspx.cs`檔案;`Bin`資料夾只包含 `Elmah.dll`  
  ([按一下以檢視完整大小的影像](precompiling-your-website-cs/_static/image6.png))
 
 **圖 3**顯示其內容所建立的 ASP.NET 編譯工具的目標位置資料夾。 這個資料夾不包含任何程式碼後置檔案。 此外，此資料夾`Bin`目錄都會包括數個組件和兩個`.compiled`檔案除了`Elmah.dll`組件。
@@ -190,6 +190,6 @@ ASP.NET 支援兩種編譯模式： 自動與明確。 如先前的教學課程�
 - [在 ASP.NET 中的先行編譯](http://www.odetocode.com/Articles/417.aspx)
 - [在 ASP.NET 中的 先行編譯的網站選項](http://www.dotnetperls.com/precompiled)
 
->[!div class="step-by-step"]
-[上一頁](logging-error-details-with-elmah-cs.md)
-[下一頁](users-and-roles-on-the-production-website-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](logging-error-details-with-elmah-cs.md)
+> [下一頁](users-and-roles-on-the-production-website-cs.md)

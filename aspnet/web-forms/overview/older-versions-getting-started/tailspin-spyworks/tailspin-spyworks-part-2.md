@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
-title: "第 2 部分： 資料存取層 |Microsoft 文件"
+title: 第 2 部分： 資料存取層 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 2 部分涵蓋新增資料存取層。"
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 2 部分涵蓋新增資料存取層。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 8b07b320640c1bb0074a4d3a04ca7c5b7e7bb6cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9f734b04a0f4cec3c33bc5b42ef283ea64cdb463
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-data-access-layer"></a>第 2 部分： 資料存取層
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 2 部分涵蓋新增資料存取層。
 
 
-## <a id="_Toc260221668"></a>新增資料存取層
+## <a id="_Toc260221668"></a>  新增資料存取層
 
 我們的電子商務應用程式將取決於兩個資料庫。
 
@@ -57,6 +57,6 @@ ms.lasthandoff: 11/10/2017
 
 現在我們已經準備好新增我們的第一項功能 – 產品類別目錄功能表。
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-1.md)
-[下一頁](tailspin-spyworks-part-3.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-1.md)
+> [下一頁](tailspin-spyworks-part-3.md)

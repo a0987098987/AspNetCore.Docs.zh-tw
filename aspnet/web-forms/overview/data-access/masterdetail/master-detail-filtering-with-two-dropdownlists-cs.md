@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs
-title: "使用兩個 DropDownLists (C#) 進行篩選的主要/詳細資料 |Microsoft 文件"
+title: 使用兩個 DropDownLists (C#) 進行篩選的主要/詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會展開主要/詳細資料關聯性加入第三個圖層，以選取所需的父系及祖系 recor 使用兩個 DropDownList 控制項..."
+description: 本教學課程會展開主要/詳細資料關聯性加入第三個圖層，以選取所需的父系及祖系 recor 使用兩個 DropDownList 控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c3898158f251daf0fac899fe7c18ac03322114b7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d971dcb3814dc088202c3a3e4addb03375049ca0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-two-dropdownlists-c"></a>主從式篩選搭配兩個 DropDownLists (C#)
 ====================
@@ -102,12 +102,12 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 **圖 9**： 設定要使用 ObjectDataSource`GetProductsByCategoryID(categoryID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image27.png))
 
 
-我們需要在精靈的最後一個步驟中指定的值 *`categoryID`* 參數。 將此參數指派給選取的項目從`Categories`DropDownList。
+我們需要在精靈的最後一個步驟中指定的值*`categoryID`*參數。 將此參數指派給選取的項目從`Categories`DropDownList。
 
 
 [![從類別 DropDownList 提取 categoryID 參數值](master-detail-filtering-with-two-dropdownlists-cs/_static/image29.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image28.png)
 
-**圖 10**： 提取 *`categoryID`* 參數值從`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
+**圖 10**： 提取*`categoryID`*參數值從`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
 
 
 與設定 ObjectDataSource，剩下的只有指定哪些資料來源欄位可用來顯示和 DropDownList 項目的值。 顯示`ProductName`欄位，並使用`ProductID`欄位做為值。
@@ -141,7 +141,7 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 
 ## <a name="step-3-using-a-detailsview-to-display-details-for-the-selected-product"></a>步驟 3： 使用 DetailsView 以顯示所選產品的詳細資料
 
-最後一個步驟是在 DetailsView 中顯示所選產品的詳細資料。 若要達成此目的，將在 DetailsView 加入頁面中，設定其`ID`屬性`ProductDetails`，並為其建立新的 ObjectDataSource。 設定此 ObjectDataSource 提取資料的來源`ProductsBLL`類別的`GetProductByProductID(productID)`方法使用的選取的值`ProductsByCategory`值的 DropDownList  *`productID`* 參數。
+最後一個步驟是在 DetailsView 中顯示所選產品的詳細資料。 若要達成此目的，將在 DetailsView 加入頁面中，設定其`ID`屬性`ProductDetails`，並為其建立新的 ObjectDataSource。 設定此 ObjectDataSource 提取資料的來源`ProductsBLL`類別的`GetProductByProductID(productID)`方法使用的選取的值`ProductsByCategory`值的 DropDownList *`productID`*參數。
 
 
 [![選擇使用 ProductsBLL 類別](master-detail-filtering-with-two-dropdownlists-cs/_static/image44.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image43.png)
@@ -156,7 +156,7 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 
 [![從 ProductsByCategory DropDownList 提取 productID 參數值](master-detail-filtering-with-two-dropdownlists-cs/_static/image50.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image49.png)
 
-**圖 17**： 提取 *`productID`* 參數值從`ProductsByCategory`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
+**圖 17**： 提取*`productID`*參數值從`ProductsByCategory`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
 
 
 您可以選擇在 DetailsView 中顯示任何可用的欄位。 我已選擇移除`ProductID`， `SupplierID`，和`CategoryID`欄位重新排列及格式化剩下的欄位。 此外，out DetailsView 的清除`Height`和`Width`屬性，可讓 DetailsView 展開至最佳顯示效果所需的寬度，其資料，而不是需要它限制為指定的大小。 完整的標記顯示如下：
@@ -215,12 +215,12 @@ DropDownList 做為主要/詳細資料報表的理想的使用者介面項目之
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](master-detail-filtering-with-a-dropdownlist-cs.md)
-[下一頁](master-detail-filtering-across-two-pages-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](master-detail-filtering-with-a-dropdownlist-cs.md)
+> [下一頁](master-detail-filtering-across-two-pages-cs.md)

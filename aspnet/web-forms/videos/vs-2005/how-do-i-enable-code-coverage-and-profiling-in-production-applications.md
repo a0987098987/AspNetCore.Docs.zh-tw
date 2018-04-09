@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-enable-code-coverage-and-profiling-in-production-applications
-title: "[如何:]啟用程式碼涵蓋範圍，並在實際執行應用程式中進行分析？ | Microsoft Docs"
+title: '[如何:]啟用程式碼涵蓋範圍，並在實際執行應用程式中進行分析？ | Microsoft Docs'
 author: rick-anderson
-description: "了解如何設定程式碼涵蓋範圍和部署的 ASP.NET 應用程式，而不是 Vi 內執行的應用程式程式碼剖析檢測..."
+description: 了解如何設定程式碼涵蓋範圍和部署的 ASP.NET 應用程式，而不是 Vi 內執行的應用程式程式碼剖析檢測...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/22/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-enable-code-coverage-and-profiling-in-production-applications
 msc.type: video
-ms.openlocfilehash: 1d1425783581e18660fc1099c12865fd86a995d6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 430daee2b1c3589439f19a2d11cc164ba66f0377
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-enable-code-coverage-and-profiling-in-production-applications"></a>[如何:]啟用程式碼涵蓋範圍，並在實際執行應用程式中進行分析？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 01/24/2018
 
 [&#9654;觀看影片 （9 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-enable-code-coverage-and-profiling-in-production-applications)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-run-unit-tests-against-a-deployed-database.md)
-[下一頁](web-deployment-projects.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-run-unit-tests-against-a-deployed-database.md)
+> [下一頁](web-deployment-projects.md)

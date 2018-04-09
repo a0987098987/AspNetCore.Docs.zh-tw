@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-modalpopup-extender-control
-title: "[如何:]使用 ASP.NET AJAX ModalPopup 擴充項控制項嗎？ | Microsoft Docs"
+title: '[如何:]使用 ASP.NET AJAX ModalPopup 擴充項控制項嗎？ | Microsoft Docs'
 author: JoeStagner
-description: "了解如何使用 ASP.NET AJAX Control Toolkit 所隨附的 ASP.NET AJAX ModalPopup 擴充項控制項。 在這段影片 ModalPopup 使用擴充性..."
+description: 了解如何使用 ASP.NET AJAX Control Toolkit 所隨附的 ASP.NET AJAX ModalPopup 擴充項控制項。 在這段影片 ModalPopup 使用擴充性...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-modalpopup-extender-control
 msc.type: video
-ms.openlocfilehash: 8185ab20c023d57e30ddf6aa703c1057d4f3675e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f33b48f3f852ef66ca8ea086b25e58f9b0060a7e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-aspnet-ajax-modalpopup-extender-control"></a>[如何:]使用 ASP.NET AJAX ModalPopup 擴充項控制項嗎？
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （10 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-modalpopup-extender-control)
 
->[!div class="step-by-step"]
-[上一頁](how-do-i-use-the-aspnet-ajax-popup-control-extender.md)
-[下一頁](how-do-i-use-the-aspnet-ajax-alwaysvisible-control-extender.md)
+> [!div class="step-by-step"]
+> [上一頁](how-do-i-use-the-aspnet-ajax-popup-control-extender.md)
+> [下一頁](how-do-i-use-the-aspnet-ajax-alwaysvisible-control-extender.md)

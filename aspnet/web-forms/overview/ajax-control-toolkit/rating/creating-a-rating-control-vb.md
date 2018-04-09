@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
-title: "建立評等控制項 (VB) |Microsoft 文件"
+title: 建立評等控制項 (VB) |Microsoft 文件
 author: wenz
-description: "許多網站中，從社群網站、 電子商務提供其使用者速率文件或項目。 這通常需要一些程式碼撰寫的投入時間，但我們沒有..."
+description: 許多網站中，從社群網站、 電子商務提供其使用者速率文件或項目。 這通常需要一些程式碼撰寫的投入時間，但我們沒有...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ff3394865e084c5a24e7e79469a4a7d26aabb552
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c19f36dfe1b72a3954db61ff1845e99c02e47c14
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-rating-control-vb"></a>建立評等控制項 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 許多網站中，從社群網站、 電子商務提供其使用者速率文件或項目。 這通常需要一些程式碼撰寫的投入時間，但我們沒有 Control Toolkit 我們處置。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 許多網站中，從社群網站、 電子商務提供其使用者速率文件或項目。 這通常需要一些程式碼撰寫的投入時間，但我們沒有 Control Toolkit 我們處置。
 
@@ -41,12 +41,12 @@ ms.lasthandoff: 11/10/2017
 
 接著，新增`Rating`從 ASP.NET AJAX Control Toolkit 的控制項。 需要此範例中設定下列屬性：
 
-- `CurrentRating`用於初始的評等
-- `MaxRating`最高分級
-- `EmptyStarCssClass`若要使用空白的評等項目 （星號） 時之 CSS 類別
-- `FilledStarCssClass`若要使用的評等項目 （星號） 填寫時之 CSS 類別
-- `StarCssClass`若要使用的可見狀態之 CSS 類別
-- `WaitingStarCssClass`使用星級評等會傳送至伺服器時的 CSS 類別
+- `CurrentRating` 用於初始的評等
+- `MaxRating` 最高分級
+- `EmptyStarCssClass` 若要使用空白的評等項目 （星號） 時之 CSS 類別
+- `FilledStarCssClass` 若要使用的評等項目 （星號） 填寫時之 CSS 類別
+- `StarCssClass` 若要使用的可見狀態之 CSS 類別
+- `WaitingStarCssClass` 使用星級評等會傳送至伺服器時的 CSS 類別
 
 以下是會建立具有五個評等控制項的標記項目 (smileys) 的無填滿出一開始：
 
@@ -73,5 +73,5 @@ ms.lasthandoff: 11/10/2017
 
 使用最少的程式碼建立分級系統 ([按一下以檢視完整大小的影像](creating-a-rating-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](creating-a-rating-control-cs.md)
+> [!div class="step-by-step"]
+> [上一步](creating-a-rating-control-cs.md)

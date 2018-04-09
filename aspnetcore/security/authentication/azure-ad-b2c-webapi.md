@@ -1,7 +1,7 @@
 ---
-title: "在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證"
+title: 在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證
 author: camsoper
-description: "了解如何設定 Azure Active Directory B2C 驗證與 ASP.NET Core Web API。 測試已驗證的 web 應用程式開發介面與郵差。"
+description: 了解如何設定 Azure Active Directory B2C 驗證與 ASP.NET Core Web API。 測試已驗證的 web 應用程式開發介面與郵差。
 ms.author: casoper
 manager: wpickett
 ms.date: 01/25/2018
@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 1213f7eb25fb6525f98d83dff0956a841ae686a7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 621290f7e303f9157577b5c1b32646b750ed5159
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/15/2018
 [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) 是 web 和行動裝置應用程式的雲端身分識別管理解決方案。 服務提供裝載於雲端和內部部署的應用程式的驗證。 驗證類型包括個別帳戶，社交網路帳戶，以及同盟企業帳戶。 此外，Azure AD B2C 可提供多重要素驗證，以最低組態。
 
 > [!TIP]
-> Azure Active Directory (Azure AD) 的 Azure AD B2C 是個別產品的供應項目。 Azure AD 租用戶代表組織中，而 Azure AD B2C 租用戶代表與信賴憑證者的合作對象應用程式使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
+> Azure Active Directory (Azure AD) 和 Azure AD B2C 會個別產品的供應項目。 Azure AD 租用戶代表組織中，而 Azure AD B2C 租用戶代表與信賴憑證者的合作對象應用程式使用的身分識別的集合。 若要進一步了解，請參閱[Azure AD B2C： 常見問題集 (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs)。
 
 Web 應用程式開發介面不會有使用者介面，因為它們無法將使用者重新導向至 Azure AD B2C 這類安全權杖服務。 相反地，API 會從呼叫的應用程式，這已經過驗證的使用者的 Azure AD B2C 傳遞持有人權杖。 接著，應用程式開發介面來驗證沒有直接的使用者互動的語彙基元。
 
@@ -78,21 +78,21 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 1. 建立新的 ASP.NET Core Web 應用程式。 
 2. 選取**Web API**從範本清單。
 3. 選取**變更驗證** 按鈕。
-    
+
     ![變更 [驗證] 按鈕](./azure-ad-b2c-webapi/change-auth-button.png)
 
 4. 在**變更驗證**對話方塊中，選取**個別使用者帳戶**，然後選取**連接到雲端中現有的使用者存放區**下拉式清單中。 
-    
+
     ![變更 [驗證] 對話方塊](./azure-ad-b2c-webapi/change-auth-dialog.png)
 
 5. 完成表單具有下列值：
-    
+
     | 設定                       | 值                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **網域名稱**               | *&lt;B2C 租用戶的網域名稱&gt;*          |
     | **應用程式識別碼**            | *&lt;貼上剪貼簿中的應用程式識別碼&gt;* |
     | **註冊或登入的原則** | `B2C_1_SiUpIn`                                        |
-    
+
     選取**確定**關閉**變更驗證**對話方塊。 選取**確定**建立 web 應用程式。
 
 Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，傳回硬式編碼值為 GET 要求。 類別以裝飾[Authorize 屬性](xref:security/authorization/simple)，因此所有要求均都需要驗證。
@@ -140,17 +140,17 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 從**新建**對話方塊：
 
 1. 選取**要求**。
-    
+
     ![要求按鈕](./azure-ad-b2c-webapi/postman-create-new.png)
 
 2. 輸入*取得的值*中**要求名稱**方塊。
 3. 選取**+ 建立集合**來建立新的集合，用於儲存要求。 名稱集合*ASP.NET Core 教學課程*，然後選取核取記號。
-    
+
     ![建立新的集合](./azure-ad-b2c-webapi/postman-create-collection.png)
 
 4. 選取**儲存 ASP.NET Core 教學課程** 按鈕。
 
-### <a name="test-the-web-api-withoutauthentication"></a>測試 web 應用程式開發介面 withoutauthentication
+### <a name="test-the-web-api-without-authentication"></a>測試 web 應用程式開發介面不需驗證
 
 若要確認 web API 需要驗證，首先請未經驗證的要求。
 
@@ -165,34 +165,36 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 若要讓已驗證的要求至 web API，持有人權杖。 郵差輕鬆地登入 Azure AD B2C 租用戶，並取得權杖。
 
 1. 在**授權**索引標籤的**類型**下拉式清單中，選取**OAuth 2.0**。 在**授權將資料加入至**下拉式清單中，選取**要求標頭**。 選取**取得新存取權杖**。
-    
+
     ![授權與 [設定] 索引標籤](./azure-ad-b2c-webapi/postman-auth-tab.png)
 
 2. 完成**取得新的存取權杖**對話方塊，如下所示：
-    
-    | 設定                   | 值                                                                                         | 注意                                                                                      |
-    |---------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-    | **語彙基元名稱**            | *&lt;語彙基元名稱&gt;*                                                                          | 輸入語彙基元的描述性名稱。                                                    |
-    | **授與類型**            | 隱含                                                                                      |                                                                                            |
-    | **回呼 URL**          | `https://getpostman.com/postman`                                                              |                                                                                            |
-    | **驗證 URL**              | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` | 取代*&lt;租用戶網域名稱&gt;*與不含括弧的租用戶的網域名稱。 |
-    | **用戶端識別碼**             | *&lt;輸入郵差應用程式的<b>應用程式識別碼</b>&gt;*                                       |                                                                                            |
-    | **用戶端密碼**         | *&lt;保留空白&gt;*                                                                         |                                                                                            |
-    | **範圍**                 | `https://<tenant domain name>/api/user_impersonation openid offline_access`                   | 取代*&lt;租用戶網域名稱&gt;*與不含括弧的租用戶的網域名稱。 |
-    | **用戶端驗證** | 在本文中傳送用戶端認證                                                               |                                                                                            |
-    
+
+
+   |                設定                 |                                             值                                             |                                                                                                                                    注意                                                                                                                                     |
+   |----------------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+   |      <strong>語彙基元名稱</strong>       |                                  <em>&lt;語彙基元名稱&gt;</em>                                  |                                                                                                                   輸入語彙基元的描述性名稱。                                                                                                                    |
+   |      <strong>授與類型</strong>       |                                           隱含                                            |                                                                                                                                                                                                                                                                              |
+   |     <strong>回呼 URL</strong>      |                               `https://getpostman.com/postman`                                |                                                                                                                                                                                                                                                                              |
+   |       <strong>驗證 URL</strong>        | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |                                                                                                  取代<em>&lt;租用戶網域名稱&gt;</em>租用戶的網域名稱。                                                                                                  |
+   |       <strong>用戶端識別碼</strong>       |                <em>&lt;輸入郵差應用程式的<b>應用程式識別碼</b>&gt;</em>                 |                                                                                                                                                                                                                                                                              |
+   |     <strong>用戶端密碼</strong>     |                                 <em>&lt;保留空白&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
+   |         <strong>範圍</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | 取代<em>&lt;租用戶網域名稱&gt;</em>租用戶的網域名稱。 取代<em>&lt;api&gt;</em> Web API 專案名稱。 您也可以使用應用程式識別碼。 URL 的模式是： <em>https://{tenant}.onmicrosoft.com/{app_name_or_id}/{scope 名稱}</em>。 |
+   | <strong>用戶端驗證</strong> |                                在本文中傳送用戶端認證                                |                                                                                                                                                                                                                                                                              |
+
+
 3. 選取**要求語彙基元** 按鈕。
 
 4. 郵差開啟新視窗包含 Azure AD B2C 租用戶的登入對話方塊。 （如果已建立一個測試原則），使用現有的帳戶登入，或選取**立即註冊**來建立新的帳戶。 **忘記密碼？**連結用來重設忘記的密碼。
 
 5. 已成功登入之後，關閉視窗而**管理存取權杖**對話方塊隨即出現。 捲動到底部，然後選取**使用語彙基元** 按鈕。
-    
+
     ![如何尋找 「 使用語彙基元 」 按鈕](./azure-ad-b2c-webapi/postman-access-token.png)
 
 ### <a name="test-the-web-api-with-authentication"></a>測試 web 應用程式開發介面使用驗證
 
 選取**傳送** 按鈕，再傳送要求。 此時，回應狀態是*200 確定* ，JSON 裝載回應上看到**主體** 索引標籤。
-    
+
 ![裝載及成功與否的狀態](./azure-ad-b2c-webapi/postman-success.png)
 
 ## <a name="next-steps"></a>後續步驟

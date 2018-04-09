@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
-title: "設定 TFS 組建伺服器，用於 Web 部署 |Microsoft 文件"
+title: 設定 TFS 組建伺服器，用於 Web 部署 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何準備建置和部署您的方案使用 Team Build 及網際網路 Informat Team Foundation Server (TFS) 組建伺服器..."
+description: 本主題描述如何準備建置和部署您的方案使用 Team Build 及網際網路 Informat Team Foundation Server (TFS) 組建伺服器...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: de31a9dffb95b863a4ec38b74fd2c6e03f287a7f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7b3130ca7d36ffec457e1871fa62c1077b5e3174
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>設定用於 Web 部署的 TFS 組建伺服器
 ====================
@@ -27,9 +27,9 @@ ms.lasthandoff: 01/24/2018
 > 本主題描述如何準備建置和部署您的方案使用 Team Build 和網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 的 Team Foundation Server (TFS) 組建伺服器。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 01/24/2018
 7. 在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 **新增**。
 8. 在導覽窗格中，按一下**伺服器**。
 9. 在**Web 部署工具 2.1**資料列中，按一下 **新增**。
-10. 按一下 [安裝] 。 Web Platform Installer 會為您顯示; 以及任何相關聯的相依性 & #x 2014;，也要安裝的產品 & #x 2014年的清單，並將會提示您接受授權條款。
+10. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。
 11. 檢閱授權條款，然後如果您同意條款，按一下**我接受**。
 12. 當安裝完成時，按一下 **完成**，然後關閉**Web Platform Installer 3.0**視窗。
 
@@ -116,6 +116,6 @@ ms.lasthandoff: 01/24/2018
 
 一般工作與 Team Build 的詳細指引，請參閱[管理 Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](adding-content-to-source-control.md)
-[下一頁](creating-a-build-definition-that-supports-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-content-to-source-control.md)
+> [下一頁](creating-a-build-definition-that-supports-deployment.md)

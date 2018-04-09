@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
-title: "佇列為主的工作模式 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 佇列為主的工作模式 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: cc1ad51b-40c3-4c68-8620-9aaa0fd1f6cf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
-ms.openlocfilehash: ccfbaa26cbf610f847811e6f3c612458277046ed
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 124e673206ecea2eac5efb8c2802a32a690fa104
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>佇列為主的工作模式 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -194,6 +194,6 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 - [FailSafe： 建置可擴充、 彈性的雲端服務](https://channel9.msdn.com/Series/FailSafe)。 Ulrich Homann、 Marc Mercuri 和 Mark Simms 九部影片系列。 高層級概念與架構原則非常可存取且有趣的方式，呈現劇本取自與實際客戶的 Microsoft 客戶諮詢團隊 (CAT) 體驗。 如需 Azure 儲存體服務和佇列的簡介，請參閱時段 5 開始 35:13。
 
->[!div class="step-by-step"]
-[上一頁](distributed-caching.md)
-[下一頁](more-patterns-and-guidance.md)
+> [!div class="step-by-step"]
+> [上一頁](distributed-caching.md)
+> [下一頁](more-patterns-and-guidance.md)

@@ -1,7 +1,7 @@
 ---
-title: "內容標頭"
+title: 在 ASP.NET Core 內容標頭
 author: rick-anderson
-description: "本文概述 ASP.NET Core 資料保護內容標頭的實作詳細資料。"
+description: 了解 ASP.NET Core 資料保護的內容標頭的實作詳細資料。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: c047c54efdcdb6192e4d38d2822c1077ee0a73e1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5ba247a74e11408145e1f6e87c7cfa251c66707f
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="context-headers"></a>內容標頭
+# <a name="context-headers-in-aspnet-core"></a>在 ASP.NET Core 內容標頭
 
 <a name="data-protection-implementation-context-headers"></a>
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 逐步執行，我們決定我們已從方向錯誤接近問題。 OID 告訴您此演算法的是，但我們不實際在意這。 如果我們需要兩個不同的演算法中安全地使用單一 entropic 值，它不需要讓我們知道演算法實際上是。 什麼我們實際關注的是它們的行為。 任何不錯對稱的區塊加密演算法也是強式的虛擬隨機排列 (PRP): 修正 （索引鍵，鏈結模式，IV，純文字） 的輸入，然後加密文字輸出會與過度機率是不同於任何其他對稱的區塊編碼器演算法提供相同的輸入。 同樣地，任何不錯的金鑰雜湊函式也是強式的虛擬隨機函式 (PRF)，而且指定的一組固定的輸入它的輸出會相當不同於任何其他索引鍵的雜湊函式。
 
-我們使用強式 PRPs 和 PRFs 的概念來建立的內容標頭。 此內容標頭實質上會當做穩定的憑證指紋的演算法，對於任何給定的作業，用於透過並提供資料保護系統所需的加密彈性。 這個標頭是可重現和稍後會使用一部分[子機碼衍生的程序](subkeyderivation.md#data-protection-implementation-subkey-derivation)。 有兩種不同的方式來建置內容標頭，根據的作業模式基礎的演算法而定。
+我們使用強式 PRPs 和 PRFs 的概念來建立的內容標頭。 此內容標頭實質上會當做穩定的憑證指紋的演算法，對於任何給定的作業，用於透過並提供資料保護系統所需的加密彈性。 這個標頭是可重現和稍後會使用一部分[子機碼衍生的程序](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation)。 有兩種不同的方式來建置內容標頭，根據的作業模式基礎的演算法而定。
 
 ## <a name="cbc-mode-encryption--hmac-authentication"></a>CBC 模式加密 + HMAC 驗證
 

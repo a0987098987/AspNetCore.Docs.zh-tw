@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/testing-and-debugging/introduction-to-debugging
-title: "Introduction to 偵錯 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: Introduction to 偵錯 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "偵錯是尋找和修正錯誤字碼頁中的程序。 本章示範的一些工具和技巧可用來偵錯並 analyz..."
+description: 偵錯是尋找和修正錯誤字碼頁中的程序。 本章示範的一些工具和技巧可用來偵錯並 analyz...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: 0b6b5a886efe515b434948dade1ae840ddaecd42
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c28d63acda6e585f4aa64f294049c1790faac850
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Introduction to 偵錯 ASP.NET Web Pages (Razor) 站台
 ====================
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2018
 > 這些是發行項中所引進的 ASP.NET 功能：
 > 
 > - `ServerInfo`協助程式。
-> - `ObjectInfo`協助程式。
+> - `ObjectInfo` 協助程式。
 >   
 > 
 > ## <a name="software-versions"></a>軟體版本
@@ -66,12 +66,12 @@ ms.lasthandoff: 01/24/2018
 
     `ServerInfo` Helper 在頁面中顯示四個資料表的資訊：
 
-    - 伺服器組態。 本節提供裝載的 web 伺服器，包括電腦名稱、 您正在執行的 ASP.NET、 網域名稱和伺服器時間的相關資訊。
-    - ASP.NET 伺服器變數。 本節提供有關許多的 HTTP 通訊協定詳細資料 （稱為 HTTP 變數） 及值是每個網頁要求的一部分。
-    - HTTP 執行階段資訊。 本章節提供詳細的 Microsoft.NET Framework 下執行您的網頁、 路徑、 詳細資料快取，等等的新版。 (因為您了解在[ASP.NET Web 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890)、 使用的 Razor 語法在 Microsoft ASP.NET web 伺服器技術，也就是根據廣泛的軟體本身建立的 ASP.NET Web Pages開發程式庫呼叫.NET Framework。）
-    - 環境變數。 本節提供在 web 伺服器上的所有本機的環境變數及其值的清單。
+   - 伺服器組態。 本節提供裝載的 web 伺服器，包括電腦名稱、 您正在執行的 ASP.NET、 網域名稱和伺服器時間的相關資訊。
+   - ASP.NET 伺服器變數。 本節提供有關許多的 HTTP 通訊協定詳細資料 （稱為 HTTP 變數） 及值是每個網頁要求的一部分。
+   - HTTP 執行階段資訊。 本章節提供詳細的 Microsoft.NET Framework 下執行您的網頁、 路徑、 詳細資料快取，等等的新版。 (因為您了解在[ASP.NET Web 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890)、 使用的 Razor 語法在 Microsoft ASP.NET web 伺服器技術，也就是根據廣泛的軟體本身建立的 ASP.NET Web Pages開發程式庫呼叫.NET Framework。）
+   - 環境變數。 本節提供在 web 伺服器上的所有本機的環境變數及其值的清單。
 
-    所有伺服器及要求資訊的完整說明超出本文的範圍，但您可以看到`ServerInfo`協助程式傳回的診斷資訊很多。 如需值的詳細資訊，`ServerInfo`傳回時，請參閱[辨識環境變數](https://technet.microsoft.com/library/dd560744(WS.10).aspx)Microsoft TechNet 網站上和[IIS 伺服器變數](https://msdn.microsoft.com/library/ms524602(VS.90).aspx)MSDN 網站上。
+     所有伺服器及要求資訊的完整說明超出本文的範圍，但您可以看到`ServerInfo`協助程式傳回的診斷資訊很多。 如需值的詳細資訊，`ServerInfo`傳回時，請參閱[辨識環境變數](https://technet.microsoft.com/library/dd560744(WS.10).aspx)Microsoft TechNet 網站上和[IIS 伺服器變數](https://msdn.microsoft.com/library/ms524602(VS.90).aspx)MSDN 網站上。
 
 ## <a name="embedding-output-expressions-to-display-page-values"></a>內嵌的輸出運算式，以顯示頁面的值
 
@@ -115,10 +115,10 @@ ms.lasthandoff: 01/24/2018
 
     在此範例中， `ObjectInfo` helper 會顯示兩個項目：
 
-    - 類型。 第一個變數，型別是`DayOfWeek`。 針對第二個變數的類型是`String`。
-    - 數值。 在此情況下，因為您已經在頁面中顯示的問候語變數的值，該值會再次顯示當您將變數傳遞給`ObjectInfo`。
+   - 類型。 第一個變數，型別是`DayOfWeek`。 針對第二個變數的類型是`String`。
+   - 數值。 在此情況下，因為您已經在頁面中顯示的問候語變數的值，該值會再次顯示當您將變數傳遞給`ObjectInfo`。
 
-    對於更複雜的物件，`ObjectInfo`協助程式可以顯示的詳細資訊 &#8212; 基本上，它可以顯示的類型和值的所有物件的屬性。
+     對於更複雜的物件，`ObjectInfo`協助程式可以顯示的詳細資訊&#8212;基本上，它可以顯示的類型和值的所有物件的屬性。
 
 ## <a name="using-debugging-tools-in-visual-studio"></a>使用 Visual Studio 中偵錯工具
 

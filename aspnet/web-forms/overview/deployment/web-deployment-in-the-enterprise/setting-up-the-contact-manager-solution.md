@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/setting-up-the-contact-manager-solution
-title: "設定連絡人管理員解決方案 |Microsoft 文件"
+title: 設定連絡人管理員解決方案 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何下載及設定連絡人管理員解決方案開發人員工作站上本機執行。"
+description: 本主題描述如何下載及設定連絡人管理員解決方案開發人員工作站上本機執行。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/setting-up-the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: b8176b3b8622e21187a91647323322e55582373c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e8fb24f5b2d96d864d1aa6bc0f78644773de00ab
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="setting-up-the-contact-manager-solution"></a>設定連絡人管理員解決方案
 ====================
@@ -125,6 +125,6 @@ ms.lasthandoff: 01/24/2018
 
 下一個主題[了解專案檔](understanding-the-project-file.md)，說明如何使用自訂 Microsoft Build Engine (MSBuild) 專案檔，請連絡管理員方案內控制部署程序。
 
->[!div class="step-by-step"]
-[上一頁](the-contact-manager-solution.md)
-[下一頁](understanding-the-project-file.md)
+> [!div class="step-by-step"]
+> [上一頁](the-contact-manager-solution.md)
+> [下一頁](understanding-the-project-file.md)

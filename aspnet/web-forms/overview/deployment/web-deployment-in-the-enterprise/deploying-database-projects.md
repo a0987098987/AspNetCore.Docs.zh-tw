@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
-title: "部署資料庫專案 |Microsoft 文件"
+title: 部署資料庫專案 |Microsoft 文件
 author: jrjlee
-description: "注意： 在許多企業部署案例，您需要將累加更新發行到已部署資料庫的能力。 替代方法是重新建立..."
+description: 注意： 在許多企業部署案例，您需要將累加更新發行到已部署資料庫的能力。 替代方法是重新建立...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
 msc.type: authoredcontent
-ms.openlocfilehash: 9b1f9a19c76e33b5d996cb4d562cf0c1a3e2f83b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a0b3871ea098b549271bce2b9d5f0c24f9ca8a9c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-database-projects"></a>部署資料庫專案
 ====================
@@ -92,8 +92,8 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 
 - **/A** (或**/Action**) 參數指定您想要 VSDBCMD。 您可以設定為**匯入**或**部署**。 **匯入**選項用來產生.dbschema 檔案從現有的資料庫，而**部署**選項用來將.dbschema 檔案部署到目標資料庫。
 - **/資訊清單**(或**/ManifestFile**) 參數識別您想要部署的.deploymanifest 檔案。 如果您想要改用.dbschema 檔案，您會使用**/模型**(或**/ModelFile**) 切換。
-- **/Cs** (或**/ConnectionString**) 交換器提供目標資料庫伺服器的連接字串。 請注意這不包含名稱的資料庫 & #x 2014;VSDBCMD 需要連接到伺服器，以建立資料庫。它不需要連接到個別的資料庫。 如果.deploymanifest 檔案包含連接字串，您可以省略這個參數。 如果您要使用參數，參數值會覆寫.deploymanifest 值。
-- **/P:TargetDatabase**屬性提供您想要指派到目標資料庫上建立的名稱。 這會覆寫的值**TargetDatabase** .deploymanifest 檔案中的屬性。 您可以使用**/p:** *[屬性名稱]*.sqlcmdvars 檔案中宣告的語法來設定各種不同的部署屬性，並覆寫任何 SQLCMD 變數。
+- **/Cs** (或**/ConnectionString**) 交換器提供目標資料庫伺服器的連接字串。 請注意，這不包含資料庫的名稱&#x2014;VSDBCMD 需要連接到伺服器，以建立資料庫。它不需要連接到個別的資料庫。 如果.deploymanifest 檔案包含連接字串，您可以省略這個參數。 如果您要使用參數，參數值會覆寫.deploymanifest 值。
+- <strong>/P:TargetDatabase</strong>屬性提供您想要指派到目標資料庫上建立的名稱。 這會覆寫的值<strong>TargetDatabase</strong> .deploymanifest 檔案中的屬性。 您可以使用<strong>/p:</strong> <em>[屬性名稱]</em>.sqlcmdvars 檔案中宣告的語法來設定各種不同的部署屬性，並覆寫任何 SQLCMD 變數。
 - **/Dd+** (或**/DeployToDatabase+**) 參數表示您想要建立部署，並將它部署至目標環境。 如果您指定**/dd-**，或省略這個參數，VSDBCMD 將會產生部署指令碼，但不是將它部署至目標環境。 此參數通常是混淆的來源，並且會在下一節中詳細說明。
 - **/指令碼**(或**/DeploymentScriptFile**) 參數指定您想要用來產生部署指令碼。 此值不會影響部署程序。
 
@@ -150,6 +150,6 @@ MSDN 上的這些主題會提供更廣泛的指導方針和 Visual Studio 資料
 - [如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/library/dd193258.aspx)
 - [資料庫建置和部署的概觀](https://msdn.microsoft.com/library/aa833165.aspx)
 
->[!div class="step-by-step"]
-[上一頁](deploying-web-packages.md)
-[下一頁](creating-and-running-a-deployment-command-file.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-web-packages.md)
+> [下一頁](creating-and-running-a-deployment-command-file.md)

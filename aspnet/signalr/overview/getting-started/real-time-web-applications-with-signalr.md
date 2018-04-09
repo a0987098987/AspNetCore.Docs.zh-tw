@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/real-time-web-applications-with-signalr
-title: "實習： 與 SignalR 即時 Web 應用程式 |Microsoft 文件"
+title: 實習： 與 SignalR 即時 Web 應用程式 |Microsoft 文件
 author: rick-anderson
-description: "即時 Web 應用程式功能的伺服器端將內容推至連線的用戶端時，即時的能力。 ASP.NET 開發人員，ASP..."
+description: 即時 Web 應用程式功能的伺服器端將內容推至連線的用戶端時，即時的能力。 ASP.NET 開發人員，ASP...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 22123a9c61e6830f3f9f66a45182e1e923950341
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5a2bc120ded18ad2302fd6c5cde65a5323e86ca8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>與 SignalR 實習： 即時 Web 應用程式
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > ![SignalR 架構](real-time-web-applications-with-signalr/_static/image1.png)
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
 
 
 <a id="Overview"></a>
@@ -160,12 +160,12 @@ ms.lasthandoff: 01/24/2018
 
     *SignalR 套件安裝*
 
-    > [!NOTE]
-    > 安裝時**SignalR** NuGet 封裝版本 2.0.2 從全新的 MVC 5 應用程式，您必須手動更新**OWIN** 2.0.1 版的封裝 （或更新版本） 安裝 SignalR 之前。 若要這樣做，您可以執行下列指令碼中的**Package Manager Console**:
-    > 
-    > [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample2.ps1)]
-    > 
-    > 在 SignalR 的未來版本中，將會自動更新 OWIN 相依性。
+   > [!NOTE]
+   > 安裝時**SignalR** NuGet 封裝版本 2.0.2 從全新的 MVC 5 應用程式，您必須手動更新**OWIN** 2.0.1 版的封裝 （或更新版本） 安裝 SignalR 之前。 若要這樣做，您可以執行下列指令碼中的**Package Manager Console**:
+   > 
+   > [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample2.ps1)]
+   > 
+   > 在 SignalR 的未來版本中，將會自動更新 OWIN 相依性。
 3. 在**方案總管 中**，依序展開**指令碼**資料夾，請注意，SignalR *js*檔案加入至方案。
 
     ![SignalR JavaScript 參考](real-time-web-applications-with-signalr/_static/image10.png "SignalR JavaScript 參考")

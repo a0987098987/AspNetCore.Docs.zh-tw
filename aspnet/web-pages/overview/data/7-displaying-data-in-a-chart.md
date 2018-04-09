@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/7-displaying-data-in-a-chart
-title: "顯示資料在圖表中以 ASP.NET Web Pages (Razor) |Microsoft 文件"
+title: 顯示資料在圖表中以 ASP.NET Web Pages (Razor) |Microsoft 文件
 author: microsoft
-description: "本章節將說明如何在圖表中顯示資料。 在先前章節中，您將學會如何以手動方式，在方格中顯示資料。 本章說明..."
+description: 本章節將說明如何在圖表中顯示資料。 在先前章節中，您將學會如何以手動方式，在方格中顯示資料。 本章說明...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 5cf17e54408d585e9a375b302b61b4e28d9b022a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>顯示資料在圖表中以 ASP.NET Web Pages (Razor)
 ====================
@@ -129,7 +129,7 @@ by [Microsoft](https://github.com/microsoft)
 
     ![](7-displaying-data-in-a-chart/_static/image10.jpg)
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_UsingStatements"></a>
 > ### <a name="using-statements-and-fully-qualified-names"></a>"Using"陳述式和完整限定的名稱

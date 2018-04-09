@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs
-title: "以動態方式填入控制項 (C#) |Microsoft 文件"
+title: 以動態方式填入控制項 (C#) |Microsoft 文件
 author: wenz
-description: "在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標上的控制項 t..."
+description: 在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標上的控制項 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a1868a0e4cec4a95d4175ce255fea2e200692075
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 113b8c043c14e4ebc476b021884dd1430757452a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-populating-a-control-c"></a>以動態方式填入控制項 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標控制項在頁面上，如果沒有頁面重新整理。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `DynamicPopulate` ASP.NET AJAX Control Toolkit 中的控制呼叫 web 服務 （或頁面的方法），並填入目標控制項在頁面上，如果沒有頁面重新整理所產生的值。 本教學課程會示範如何設定此項目。
 
@@ -55,12 +55,12 @@ Web 服務然後儲存為`DynamicPopulate.cs.asmx`。 或者，您可以實作`g
 
 最後，我們需要`DynamicPopulateExtender`網路進行的控制項。 將設定下列屬性 (除了明顯的`ID`和`runat` = `"server"`):
 
-- `TargetControlID`要放置從 web 服務呼叫的結果
-- `ServicePath`web 服務的路徑 （如果您想要使用的頁面方法省略）
-- `ServiceMethod`web 方法或頁面的方法名稱
-- `ContextKey`內容資訊傳送至 web 服務
-- `PopulateTriggerControlID`web 服務呼叫觸發程序項目
-- `ClearContentsDuringUpdate`是否要在 web 服務呼叫期間清空目標項目
+- `TargetControlID` 要放置從 web 服務呼叫的結果
+- `ServicePath` web 服務的路徑 （如果您想要使用的頁面方法省略）
+- `ServiceMethod` web 方法或頁面的方法名稱
+- `ContextKey` 內容資訊傳送至 web 服務
+- `PopulateTriggerControlID` web 服務呼叫觸發程序項目
+- `ClearContentsDuringUpdate` 是否要在 web 服務呼叫期間清空目標項目
 
 如您所見，控制項需要一些資訊，但將所有資料放入定位，並相當簡單。 以下是標記`DynamicPopulateExtender`控制項中目前的狀況：
 
@@ -73,5 +73,5 @@ Web 服務然後儲存為`DynamicPopulate.cs.asmx`。 或者，您可以實作`g
 
 按一下按鈕從伺服器擷取日期 ([按一下以檢視完整大小的影像](dynamically-populating-a-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](dynamically-populating-a-control-using-javascript-code-cs.md)
+> [!div class="step-by-step"]
+> [下一步](dynamically-populating-a-control-using-javascript-code-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
-title: "了解 ASP.NET AJAX Web 服務 |Microsoft 文件"
+title: 了解 ASP.NET AJAX Web 服務 |Microsoft 文件
 author: scottcate
-description: "Web 服務是.NET framework 的跨平台解決方案提供分散式系統之間交換資料中不可或缺的一部分。 雖然 Web..."
+description: Web 服務是.NET framework 的跨平台解決方案提供分散式系統之間交換資料中不可或缺的一部分。 雖然 Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
-ms.openlocfilehash: 8eb3486c9b3f4ddb6a8bc2c1cdcac774a6852574
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0b9f61f895fea1960ebd25780454b86d5c3ba1bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-web-services"></a>了解 ASP.NET AJAX Web 服務
 ====================
@@ -51,7 +51,7 @@ Visual Studio 2008 建立新的網站專案時，web.config 檔的數目可能�
 
 [!code-json[Main](understanding-asp-net-ajax-web-services/samples/sample2.json)]
 
-> *>[!NOTE]作業名稱定義為 web 服務 URL 的一部分; 此外，要求訊息不一定提交透過 JSON。Web 服務可以利用 ScriptMethod 屬性 UseHttpGet 參數設為 true 時，這會導致透過傳遞參數的查詢字串參數。*
+> *> [!NOTE] 作業名稱被定義為在 web 服務 URL 的一部分此外，要求訊息不一定提交透過 JSON。Web 服務可以利用 ScriptMethod 屬性 UseHttpGet 參數設為 true 時，這會導致透過傳遞參數的查詢字串參數。*
 
 
 **列出 3。Web 服務的回應訊息序列化為 JSON**
@@ -160,7 +160,7 @@ ResponseFormat 屬性也可以搭配 XmlSerializeString 屬性。 XmlSerializeSt
 
 [!code-html[Main](understanding-asp-net-ajax-web-services/samples/sample14.html)]
 
-> *>[!NOTE]如果您想要查看實際 JavaScript proxy 的程式碼會產生您可以 Internet Explorer 網址方塊中輸入所需的.NET Web 服務的 URL，並將 /js 附加至結尾。*
+> *> [!NOTE] 如果您想要查看實際 JavaScript proxy 的程式碼會產生您可以 Internet Explorer 網址方塊中輸入所需的.NET Web 服務的 URL，並將 /js 附加至結尾。*
 
 
 如果 JavaScript proxy 的偵錯版本會內嵌在網頁中做的 web.config 中啟用偵錯時顯示 下一步：
@@ -263,7 +263,7 @@ ASP.NET AJAX 提供另一個機制來呼叫 Web 服務類似不需建立獨立.a
 
 ## <a name="the-autocompleteextender-and-the-aspnet-ajax-toolkit"></a>AutoCompleteExtender 和 ASP.NET AJAX 工具組
 
-ASP.NET AJAX Toolkit (可從[http://ajax.asp.net](http://ajax.asp.net)) 提供數個控制項，可用來存取 Web 服務。 具體而言，此工具組包含有用的控制項，名為`AutoCompleteExtender`，可以用來呼叫 Web 服務，並在頁面中顯示資料，而不需要撰寫任何 JavaScript 程式碼完全。
+ASP.NET AJAX Toolkit (可從[ http://ajax.asp.net ](http://ajax.asp.net)) 提供數個控制項，可用來存取 Web 服務。 具體而言，此工具組包含有用的控制項，名為`AutoCompleteExtender`，可以用來呼叫 Web 服務，並在頁面中顯示資料，而不需要撰寫任何 JavaScript 程式碼完全。
 
 AutoCompleteExtender 控制項可用來擴充現有功能的文字方塊，並幫助使用者更輕鬆地找到自己要找的資料。 當他們在文字方塊中輸入的控制項可以用來查詢 Web 服務，並以動態方式顯示文字方塊底下的結果。 圖 4 顯示使用 AutoCompleteExtender 控制項來顯示支援應用程式的客戶 id 的範例。 當使用者在文字方塊中輸入不同的字元，就會顯示不同的項目下方根據其輸入。 然後，使用者可以選取所需的客戶識別碼。
 
@@ -309,6 +309,6 @@ Dan Wahlin （Microsoft 最有價值專家適用於 ASP.NET 和 XML Web Service�
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[上一頁](understanding-asp-net-ajax-localization.md)
-[下一頁](understanding-asp-net-ajax-debugging-capabilities.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-asp-net-ajax-localization.md)
+> [下一頁](understanding-asp-net-ajax-debugging-capabilities.md)

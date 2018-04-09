@@ -1,7 +1,7 @@
 ---
-title: "啟用 ASP.NET Core 中的跨原始要求 (CORS)"
+title: 啟用跨原始要求 (CORS) 中 ASP.NET Core
 author: rick-anderson
-description: "深入了解如何以標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。"
+description: 深入了解如何以標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始要求的 CORS。
 manager: wpickett
 ms.author: riande
 ms.date: 05/17/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: 64d939033fee14fad37a08c60da608898e20c01b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 3c5d0840426c7ed52353a7832a1a1959027121de
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="enabling-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始要求 (CORS)
+# <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用跨原始要求 (CORS) 中 ASP.NET Core
 
 由[Mike Wasson](https://github.com/mikewasson)， [Shayne Boyer](https://twitter.com/spboyer)，和[Tom Dykstra](https://github.com/tdykstra)
 
@@ -148,7 +148,7 @@ MVC 或者可用來套用特定的 CORS，每個動作，每個控制站，或�
 
 CORS 預檢要求可能會包含存取控制-頭 access-control-request-headers 標頭，列出應用程式所設定的 HTTP 標頭 (所謂的 「 撰寫要求標頭 」)。
 
-白名單特定的標頭：
+允許清單特定的標頭：
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=53-58)]
 

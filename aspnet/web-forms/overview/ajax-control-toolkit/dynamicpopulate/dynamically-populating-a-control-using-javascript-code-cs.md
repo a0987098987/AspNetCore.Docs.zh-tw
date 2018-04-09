@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
-title: "以動態方式填入控制項，使用 JavaScript 程式碼 (C#) |Microsoft 文件"
+title: 以動態方式填入控制項，使用 JavaScript 程式碼 (C#) |Microsoft 文件
 author: wenz
-description: "在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標上的控制項 t..."
+description: 在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標上的控制項 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5b3b23e16f2e4dd26f50eb3e07f35d078dd19a19
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9fd11ea0348eb7fe9a7634f7b26031339146828
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-populating-a-control-using-javascript-code-c"></a>以動態方式填入控制項，使用 JavaScript 程式碼 (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 在 ASP.NET AJAX Control Toolkit DynamicPopulate 控制項呼叫 web 服務 （或頁面的方法），並產生的值填入目標控制項在頁面上，如果沒有頁面重新整理。 它也可觸發程序使用自訂用戶端 JavaScript 程式碼的母體擴展。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `DynamicPopulate` ASP.NET AJAX Control Toolkit 中的控制呼叫 web 服務 （或頁面的方法），並填入目標控制項在頁面上，如果沒有頁面重新整理所產生的值。 它也可觸發程序使用自訂用戶端 JavaScript 程式碼的母體擴展。
 
@@ -62,6 +62,6 @@ ms.lasthandoff: 11/10/2017
 
 按一下按鈕從伺服器中所指定的格式擷取日期 ([按一下以檢視完整大小的影像](dynamically-populating-a-control-using-javascript-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](dynamically-populating-a-control-cs.md)
-[下一頁](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](dynamically-populating-a-control-cs.md)
+> [下一頁](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)

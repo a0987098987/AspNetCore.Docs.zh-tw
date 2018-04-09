@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynamicdata-data-grids
-title: "如何移除動態資料格的資料行 |Microsoft 文件"
+title: 如何移除動態資料格的資料行 |Microsoft 文件
 author: JoeStagner
-description: "在這段影片中，您會看到如何充分利用完整的資料行 scaffolding，但是仍然排除您不希望出現使用者 interfac 的資料表資料行..."
+description: 在這段影片中，您會看到如何充分利用完整的資料行 scaffolding，但是仍然排除您不希望出現使用者 interfac 的資料表資料行...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynamicdata-data-grids
 msc.type: video
-ms.openlocfilehash: ef4a639098e56a02d87354399e9178b01ac716c8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ce8bda35e91a1bf6f2388408e321b4c30c42ece9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-remove-columns-from-your-dynamicdata-data-grids"></a>如何移除動態資料格的資料行
 ====================
@@ -26,6 +26,6 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （5 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-remove-columns-from-your-dynamicdata-data-grids)
 
->[!div class="step-by-step"]
-[上一頁](how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c.md)
-[下一頁](how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application.md)
+> [!div class="step-by-step"]
+> [上一頁](how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c.md)
+> [下一頁](how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application.md)

@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/an-overview-of-project-katana
-title: "專案 Katana 概觀 |Microsoft 文件"
+title: 專案 Katana 概觀 |Microsoft 文件
 author: howarddierking
-description: "ASP.NET 架構之已超過十年，並在平台啟用無數網站和服務的開發。 為 Web 應用程式..."
+description: ASP.NET 架構之已超過十年，並在平台啟用無數網站和服務的開發。 為 Web 應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2013
 ms.topic: article
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: ceb7d3a7d1cb1685c0f1e62698f508c9a73e77c2
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 3c2bcbbc6e506af759f6d77af17d015278cc0bdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-project-katana"></a>專案 Katana 的概觀
 ====================
@@ -109,7 +109,7 @@ JavaScript 和.NET 開發之間的明顯差異是編譯器的目前狀態 （或
 
 [![](an-overview-of-project-katana/_static/image1.png)](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)
 
-接下來，我們將會安裝[Microsoft.Owin.Host.SystemWeb](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)專案將 NuGet 封裝。 此封裝提供在 ASP.NET 要求管線中執行的 OWIN 伺服器。 您可以找到上[NuGet gallery](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb) ，可以使用 Visual Studio 封裝管理員] 對話方塊或 [封裝管理員] 主控台使用下列命令安裝：
+接下來，我們將會安裝[Microsoft.Owin.Host.SystemWeb](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb)專案將 NuGet 封裝。 此封裝提供在 ASP.NET 要求管線中執行的 OWIN 伺服器。 您可以找到上[NuGet gallery](http://nuget.org/packages/Microsoft.Owin.Host.SystemWeb) ，可以使用 Visual Studio 封裝管理員 對話方塊或 [封裝管理員] 主控台使用下列命令安裝：
 
 [!code-console[Main](an-overview-of-project-katana/samples/sample2.cmd)]
 
@@ -144,7 +144,7 @@ JavaScript 和.NET 開發之間的明顯差異是編譯器的目前狀態 （或
 - 管理基礎程序。
 - 會處理選取的伺服器，以及哪些要求透過 OWIN 管線建構會導致工作流程整合，以完成。
 
- 目前，有 3 Katana 基礎的應用程式的主要裝載選項：  
+  目前，有 3 Katana 基礎的應用程式的主要裝載選項：  
   
 **ASP.NET**： 使用標準的 HttpModule 和 HttpHandler 型別，OWIN 管線可以在 IIS 上執行的 ASP.NET 要求流程的一部分。 Microsoft.AspNet.Host.SystemWeb NuGet 封裝安裝到 Web 應用程式專案時，會啟用 ASP.NET 裝載支援。 此外，因為 IIS 做為主機和伺服器，OWIN 伺服器/主控件區別 」 混為一談是在此 NuGet 封裝中，這表示如果使用的 SystemWeb 主機，開發人員無法替換替代伺服器實作。  
   
@@ -221,7 +221,7 @@ Katana 2.0 中介軟體元件主要焦點放在提供不同的驗證方式。 �
 
 ## <a name="for-more-information-about-katana"></a>如需有關 Katana
 
-- GitHub 上的 Katana 專案： [https://github.com/aspnet/AspNetKatana/](https://github.com/aspnet/AspNetKatana/)。
+- GitHub 上的 Katana 專案： [ https://github.com/aspnet/AspNetKatana/ ](https://github.com/aspnet/AspNetKatana/)。
 - 影片： [Katana 專案-適用於 ASP.NET 的 OWIN](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET)，由 Howard Dierking。
 
 ## <a name="acknowledgements"></a>謝誌

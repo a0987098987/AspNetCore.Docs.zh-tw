@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
-title: "在 DataList 和中繼器 (VB) 中的自訂按鈕 |Microsoft 文件"
+title: 在 DataList 和中繼器 (VB) 中的自訂按鈕 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將建立一種介面，用於在系統中，列出分類，且每個分類提供按鈕，顯示其 associ 中繼器..."
+description: 在本教學課程中，我們將建立一種介面，用於在系統中，列出分類，且每個分類提供按鈕，顯示其 associ 中繼器...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fc6c297f08790cdcc74867df21e32258017c5a7d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6e470590252102c486bb72ff46f516180aa09ba8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>在 DataList 和中繼器 (VB) 中的自訂按鈕
 ====================
@@ -104,8 +104,8 @@ DataList 控制項，Visual Studio 會建立預設值與`ItemTemplate`根據資�
 
 在 DataList 或中繼器中按一下按鈕時，有時候我們需要將傳遞的 button 已按下 （在案例中可能會有多個按鈕，在控制項內，例如兩個的編輯和刪除 按鈕） 和其他資訊 （例如主索引鍵值的 button 已按下的項目）。 按鈕、 LinkButton 和 ImageButton 提供兩個屬性，其值會傳遞給`ItemCommand`事件處理常式：
 
-- `CommandName`字串，通常用來識別每個範本中的按鈕
-- `CommandArgument`通常用來保留某些資料欄位，例如主索引鍵值的值
+- `CommandName` 字串，通常用來識別每個範本中的按鈕
+- `CommandArgument` 通常用來保留某些資料欄位，例如主索引鍵值的值
 
 這個範例中，將設定 LinkButton s`CommandName`屬性設為 ShowProducts 並繫結的目前記錄 s 主索引鍵值`CategoryID`至`CommandArgument`屬性使用的資料繫結語法`CategoryArgument='<%# Eval("CategoryID") %>'`。 指定這兩個屬性之後, LinkButton s 宣告式語法看起來應該如下所示：
 
@@ -116,10 +116,10 @@ DataList 控制項，Visual Studio 會建立預設值與`ItemTemplate`根據資�
 
 建立事件處理常式的中繼器 s`ItemCommand`事件，請注意第二個參數傳遞至事件處理常式 (名稱為`e`)。 這個第二個參數的型別是[ `RepeaterCommandEventArgs` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeatercommandeventargs.aspx)而且具有下列四個屬性：
 
-- `CommandArgument`按下按鈕的值`CommandArgument`屬性
-- `CommandName`按鈕的值`CommandName`屬性
-- `CommandSource`已按下按鈕控制項的參考
-- `Item`若要參考[ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx)包含已按下的按鈕; 繫結至中繼器每一筆記錄，會顯示為`RepeaterItem`
+- `CommandArgument` 按下按鈕的值`CommandArgument`屬性
+- `CommandName` 按鈕的值`CommandName`屬性
+- `CommandSource` 已按下按鈕控制項的參考
+- `Item` 若要參考[ `RepeaterItem` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.repeateritem.aspx)包含已按下的按鈕; 繫結至中繼器每一筆記錄，會顯示為 `RepeaterItem`
 
 因為選取的類別 s`CategoryID`透過傳入`CommandArgument`屬性，我們可以得到的選取類別目錄中相關聯的產品集`ItemCommand`事件處理常式。 這些產品則會至設定 BulletedList 的控制項繫結`ItemTemplate`(哪些我們將尚未發生)。 所有維持狀態，然後是加入 BulletedList，參考在`ItemCommand`事件處理常式，並繫結至其產品，我們將會處理在步驟 4 中所選取類別目錄的集合。
 
@@ -162,11 +162,11 @@ DataList 和中繼器控制項可以包含任意數目的按鈕、 LinkButtons �
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Dennis Patterson。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](custom-buttons-in-the-datalist-and-repeater-cs.md)
+> [!div class="step-by-step"]
+> [上一步](custom-buttons-in-the-datalist-and-repeater-cs.md)

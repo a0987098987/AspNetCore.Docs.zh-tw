@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
-title: "第 7 部分： 成員資格和授權 |Microsoft 文件"
+title: 第 7 部分： 成員資格和授權 |Microsoft 文件
 author: jongalloway
-description: "此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 7 部分涵蓋的成員資格和授權。"
+description: 此教學課程系列詳細列出所有建置 ASP.NET MVC 商店範例應用程式所採取的步驟。 7 部分涵蓋的成員資格和授權。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: db459de687db862be00a9b59ff5b1b238fa75061
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a0f599da4691c5bb7c8e6f01625fc0e94ce0eac8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-membership-and-authorization"></a>第 7 部分： 成員資格和授權
 ====================
@@ -110,6 +110,6 @@ ms.lasthandoff: 01/30/2018
 
 我們新的系統管理員帳戶登入之後, 您可以前往專輯編輯畫面上做為前。
 
->[!div class="step-by-step"]
-[上一頁](mvc-music-store-part-6.md)
-[下一頁](mvc-music-store-part-8.md)
+> [!div class="step-by-step"]
+> [上一頁](mvc-music-store-part-6.md)
+> [下一頁](mvc-music-store-part-8.md)

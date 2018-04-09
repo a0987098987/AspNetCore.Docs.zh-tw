@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
-title: "二進位資料顯示在資料 Web 控制項 (C#) |Microsoft 文件"
+title: 二進位資料顯示在資料 Web 控制項 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中我們查看要呈現在網頁上，包括顯示的映像檔和 [下載] 5d 連結 f 的佈建的二進位資料的選項..."
+description: 在本教學課程中我們查看要呈現在網頁上，包括顯示的映像檔和 [下載] 5d 連結 f 的佈建的二進位資料的選項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d66079f784792a2514eefabf57f70826aab5dcf1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c5b56fc45ea8fb5aee934530fc62e23b9d364242
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a>二進位資料顯示在 Web 控制項的資料 (C#)
 ====================
@@ -89,7 +89,7 @@ ms.lasthandoff: 01/24/2018
 
 ![加入 BrochurePath HyperLinkField](displaying-binary-data-in-the-data-web-controls-cs/_static/image6.gif)
 
-**圖 6**： 新增的 HyperLinkField`BrochurePath`
+**圖 6**： 新增的 HyperLinkField `BrochurePath`
 
 
 如圖 7 所示，這會新增至 GridView，連結的資料行。 按一下檢視冊連結將會是直接在瀏覽器中顯示 PDF 或提示使用者下載的檔案，根據是否已安裝 PDF 閱讀程式和瀏覽器的設定。
@@ -226,12 +226,12 @@ TemplateField HyperLinkField 變成選取`BrochurePath`HyperLinkField，然後�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和 Dave Gardner。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](uploading-files-cs.md)
-[下一頁](including-a-file-upload-option-when-adding-a-new-record-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](uploading-files-cs.md)
+> [下一頁](including-a-file-upload-option-when-adding-a-new-record-cs.md)

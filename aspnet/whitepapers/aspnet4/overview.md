@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/aspnet4/overview
-title: "ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀 |Microsoft 文件"
+title: ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀 |Microsoft 文件
 author: rick-anderson
-description: "本文件會包含在.net Framework 4 和 Visual Studio 2010 中的 asp.net 提供許多新功能的概觀。"
+description: 本文件會包含在.net Framework 4 和 Visual Studio 2010 中的 asp.net 提供許多新功能的概觀。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 29d5b2f4c04b899b900427ac202c0a4f57f8076f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6ce52c387ff835eda46bc1882b8b974889e2d4af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 **內容**
 
-**[核心服務](#0.2__Toc253429238 "_Toc253429238")**  
+**[Core Services](#0.2__Toc253429238 "_Toc253429238")**  
 [重構的 Web.config 檔案](#0.2__Toc253429239 "_Toc253429239")  
 [可延伸的輸出快取](#0.2__Toc253429240 "_Toc253429240")  
 [自動啟動 Web 應用程式](#0.2__Toc253429241 "_Toc253429241")  
@@ -38,14 +38,14 @@ ms.lasthandoff: 01/30/2018
 [物件快取，以及將物件快取的擴充性](#0.2__Toc253429246 "_Toc253429246")  
 [可延伸的 HTML、 URL 和 HTTP 標頭編碼](#0.2__Toc253429247 "_Toc253429247")  
 [效能監視個別的應用程式中的單一工作者處理序](#0.2__Toc253429248 "_Toc253429248")  
-[多目標](#0.2__Toc253429249 "_Toc253429249")
+[Multi-Targeting](#0.2__Toc253429249 "_Toc253429249")
 
 **[Ajax](#0.2__Toc253429250 "_Toc253429250")**  
 [包括在 Web Form 和 MVC 的 jQuery](#0.2__Toc253429251 "_Toc253429251")  
 [內容傳遞網路支援](#0.2__Toc253429252 "_Toc253429252")  
-[ScriptManager 明確指令碼](#0.2__Toc253429253 "_Toc253429253")
+[ScriptManager Explicit Scripts](#0.2__Toc253429253 "_Toc253429253")
 
-**[Web Form](#0.2__Toc253429256 "_Toc253429256")**  
+**[Web Forms](#0.2__Toc253429256 "_Toc253429256")**  
 [設定以 Page.MetaKeywords 和 Page.MetaDescription 屬性的中繼標籤](#0.2__Toc253429257 "_Toc253429257")  
 [啟用檢視狀態的個別控制項](#0.2__Toc253429258 "_Toc253429258")  
 [變更瀏覽器功能](#0.2__Toc253429259 "_Toc253429259")  
@@ -69,9 +69,9 @@ ms.lasthandoff: 01/30/2018
 [資料註解屬性驗證支援](#0.2__Toc253429276 "_Toc253429276")  
 [樣板化 Helper](#0.2__Toc253429277 "_Toc253429277")
 
-**[動態資料](#0.2__Toc253429278 "_Toc253429278")**  
+**[Dynamic Data](#0.2__Toc253429278 "_Toc253429278")**  
 [現有的專案啟用動態資料](#0.2__Toc253429279 "_Toc253429279")  
-[宣告式 DynamicDataManager 控制項語法](#0.2__Toc253429280 "_Toc253429280")  
+[Declarative DynamicDataManager Control Syntax](#0.2__Toc253429280 "_Toc253429280")  
 [實體範本](#0.2__Toc253429281 "_Toc253429281")  
 [新的 Url 和電子郵件地址欄位範本](#0.2__Toc253429282 "_Toc253429282")  
 [建立與 dynamichyperlink 的關聯控制項的連結](#0.2__Toc253429283 "_Toc253429283")  
@@ -86,13 +86,13 @@ ms.lasthandoff: 01/30/2018
 [JavaScript IntelliSense 的增強功能](#0.2__Toc253429291 "_Toc253429291")
 
 **[Web 應用程式部署使用 Visual Studio 2010](#0.2__Toc253429292 "_Toc253429292")**  
-[Web 封裝](#0.2__Toc253429293 "_Toc253429293")  
-[Web.config 轉換](#0.2__Toc253429294 "_Toc253429294")  
+[Web Packaging](#0.2__Toc253429293 "_Toc253429293")  
+[Web.config Transformation](#0.2__Toc253429294 "_Toc253429294")  
 [資料庫部署](#0.2__Toc253429295 "_Toc253429295")  
 [單鍵發行 Web 應用程式的](#0.2__Toc253429296 "_Toc253429296")  
-[資源](#0.2__Toc253429297 "_Toc253429297")
+[Resources](#0.2__Toc253429297 "_Toc253429297")
 
-**[免責聲明](#0.2__Toc253429298 "_Toc253429298")**
+**[Disclaimer](#0.2__Toc253429298 "_Toc253429298")**
 
 <a id="0.2__Toc224729018"></a><a id="0.2__Toc253429238"></a><a id="0.2__Toc243304612"></a>
 
@@ -199,13 +199,13 @@ ASP.NET 4 導入了新擴充的應用程式 Url 大小的選項。 舊版 ASP.NE
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改 *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要讓長或短的查詢字串，修改的值 *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
+若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)*屬性。 若要讓長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)*屬性。
 
 ASP.NET 4 也可讓您設定的 URL 字元檢查所使用的字元。 當 ASP.NET 之 url 的路徑部分中找到無效的字元時，它會拒絕要求，並發出 HTTP 400 錯誤。 在舊版 ASP.NET 中，URL 字元檢查已限制為一組固定的字元。 在 ASP.NET 4 中，您可以自訂的一組使用新的有效字元*requestPathInvalidChars*屬性*httpRuntime*組態項目，如下列範例所示：
 
 [!code-xml[Main](overview/samples/sample11.xml)]
 
-根據預設， *requestPathInvalidChars*屬性定義為無效的八個字元。 (已指派給字串中*requestPathInvalidChars*預設*，*小於 (&lt;)、 大於 (&gt;)，和連字號 (&amp;) 字元編碼，因為`Web.config`檔案是 XML 檔案。)您可以視需要自訂的一組無效的字元。
+根據預設， <em>requestPathInvalidChars</em>屬性定義為無效的八個字元。 (已指派給字串中<em>requestPathInvalidChars</em>預設<em>，</em>小於 (&lt;)、 大於 (&gt;)，和連字號 (&amp;) 字元編碼，因為`Web.config`檔案是 XML 檔案。)您可以視需要自訂的一組無效的字元。
 
 > [!NOTE]
 > ASP.NET 4 一律會拒絕包含字元 0x00 到 0x1F、 ASCII 範圍中的 URL 路徑，因為這些是無效的 URL 字元的 IETF RFC 2396 中所定義的附註 ([http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt))。 在 Windows Server 版本上執行的 IIS 6 或更新版本中，http.sys 通訊協定的裝置驅動程式會自動拒絕的 Url 以這些字元。
@@ -326,6 +326,8 @@ Microsoft Ajax 內容傳遞網路 (CDN) 可讓您輕鬆地將 ASP.NET Ajax 和 j
 
 Microsoft Ajax 內容傳遞網路支援 SSL (HTTPS)，以防您需要提供使用 Secure Sockets Layer 的網頁。
 
+無法使用 CDN 時，請實作後援。 測試此後援。
+
 若要深入了解 Microsoft Ajax CDN，請造訪下列網站：
 
 [https://www.asp.net/ajaxlibrary/CDN.ashx](../../ajax/cdn/overview.md)
@@ -412,13 +414,13 @@ ASP.NET 4 兩個將屬性加入至*頁面*類別*MetaKeywords*和*MetaDescriptio
 
 這些設定的影響是當第一次載入頁面，在瀏覽器中顯示下列輸出：
 
-已停用`: [DynamicValue]`
+已停用 `: [DynamicValue]`
 
 啟用：`[DynamicValue]`
 
 之後回傳，不過，會顯示下列輸出：
 
-已停用`: [DeclaredValue]`
+已停用 `: [DeclaredValue]`
 
 啟用：`[DynamicValue]`
 
@@ -629,7 +631,7 @@ ASP.NET 會自動運作出正確的路由 （亦即，它會產生正確的 URL�
 
 [!code-aspx[Main](overview/samples/sample46.aspx)]
 
-在此情況下，路由參數 searchterm 值將用於@companyname中的參數*選取*陳述式。
+在此情況下，路由參數 searchterm 值將用於@companyname中的參數<em>選取</em>陳述式。
 
 <a id="0.2__Toc224729037"></a><a id="0.2__Toc253429261"></a><a id="0.2__Toc243304635"></a>
 
@@ -982,12 +984,12 @@ ASP.NET 2.0 和更新版本呈現系統的特定隱藏欄位 (例如*隱藏*用�
 
 根據預設，下列 ASP.NET Web 伺服器控制項支援範本自動將包裝在用來套用內嵌樣式的外部資料表：
 
-- *在 FormView*
-- *登入*
-- *Provider*
-- *變更密碼*
-- *精靈*
-- *適用於 CreateUserWizard*
+- *FormView*
+- *Login*
+- *PasswordRecovery*
+- *ChangePassword*
+- *Wizard*
+- *CreateUserWizard*
 
 新的屬性，名為*RenderOuterTable*已加入到這些控制項，可讓外部資料表從標記中移除。 例如，請考慮下列的範例*FormView*控制項：
 
@@ -1329,7 +1331,7 @@ Visual Studio 2010 提供內建的 MSBuild 工作和建立 Web 封裝的目標�
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
-### <a name="webconfig-transformation"></a>Web.config 轉換
+### <a name="webconfig-transformation"></a>Web.config Transformation
 
 用於 Web 應用程式部署，Visual Studio 2010 導入了[XML 文件轉換 (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html)，這是一項功能，可讓您轉換`Web.config`開發設定生產環境設定的檔案。 轉換設定指定於轉換檔名為`web.debug.config`， `web.release.config`，依此類推。 （這些檔案的名稱符合 MSBuild 組態）。轉換檔包含只變更，您必須先部署`Web.config`檔案。 您可以使用簡單的語法，以指定所做的變更。
 
@@ -1363,9 +1365,9 @@ Visual Studio 2010 也可讓您使用 IIS 的遠端管理服務 Web 應用程式
 
 - [ASP.NET 4](https://msdn.microsoft.com/library/ee532866%28VS.100%29.aspx) — MSDN 網站上的 ASP.NET 4 的官方文件。
 - [https://www.asp.net/](https://www.asp.net/) — ASP.NET 小組自己的網站。
-- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx)和[ASP.NET 動態資料內容地圖](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx)— ASP.NET 小組網站和 ASP.NET Dynamic Data 的官方文件中的線上資源。
-- [https://www.asp.net/ajax/](../../ajax/index.md) — ASP.NET Ajax 開發的主要 Web 資源。
-- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) — 其中包括功能的資訊，Visual Studio 2010 中的 Visual Web Developer 團隊部落格。
+- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx) 和[ASP.NET 動態資料內容地圖](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx)— ASP.NET 小組網站和 ASP.NET Dynamic Data 的官方文件中的線上資源。
+- [https://www.asp.net/ajax/](../../ajax/index.md) — ASP.NET Ajax 開發主要 Web 資源。
+- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) -Visual Web Developer 小組部落格，其中包括功能的資訊，Visual Studio 2010 中。
 - [ASP.NET WebStack](https://github.com/aspnet/AspNetWebStack) — 主要 Web 資源的預覽版本的 ASP.NET。
 
 <a id="0.2__Toc224729061"></a><a id="0.2__Toc253429298"></a><a id="0.2__Toc243304669"></a>
@@ -1384,7 +1386,7 @@ Visual Studio 2010 也可讓您使用 IIS 的遠端管理服務 Web 應用程式
 
 除非另有說明，範例公司、 組織、 產品、 網域名稱、 電子郵件地址、 標誌、 人員、 地點及事件屬虛構，以及與任何真實的公司、 組織、 產品、 網域名稱、 電子郵件沒有關聯地址、 標誌、 人員、 位置或事件純屬巧合。
 
-© 2009 Microsoft Corporation。 著作權所有，並保留一切權利。
+© 2009 Microsoft Corporation. 著作權所有，並保留一切權利。
 
 Microsoft 和 Windows 是 Microsoft Corporation 在美國及/或其他國家/地區的註冊商標或商標。
 

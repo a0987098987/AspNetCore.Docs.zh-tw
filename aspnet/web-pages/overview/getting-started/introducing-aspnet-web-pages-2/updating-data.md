@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
-title: "導入 ASP.NET Web Pages-更新資料庫資料 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-更新資料庫資料 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何更新現有的資料庫 （變更） 項目，當您使用 ASP.NET Web Pages (Razor)。 它會假設您已經完成數列 th..."
+description: 本教學課程會示範如何更新現有的資料庫 （變更） 項目，當您使用 ASP.NET Web Pages (Razor)。 它會假設您已經完成數列 th...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/02/2018
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: b016231975bf8d359f4c390b0b478edc383117d4
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.openlocfilehash: e889cd27e2267a08f7b6ea708c92e35edbdd7a1a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>導入的 ASP.NET Web Pages-更新資料庫的資料
 ====================
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/10/2018
 
 資料行包含*只*呈現連結的標記，再加上一些資訊 (ID)，從擷取的資料列的資料庫記錄。
 
-> [!TIP] 
+> [!TIP]
 > 
 > **具名的參數和方法的位置參數**
 > 
@@ -173,7 +173,7 @@ ms.lasthandoff: 01/10/2018
 
 此程式碼將示範不同的方法來驗證資訊。 在上一個教學課程中，您在使用`Validation`協助程式。 註冊若要驗證，欄位和 ASP.NET 自動未驗證，並顯示錯誤使用`Html.ValidationMessage`和`Html.ValidationSummary`。 在此情況下，不過，您正在並未真正驗證使用者輸入。 相反地，您要驗證已傳遞至網頁中其他位置的值。 `Validation`協助程式並不會為您。
 
-因此，您自行確認值，藉由測試它與`if(!Request.QueryString["ID"].IsEmpty()`)。 如果沒有問題，您可以使用顯示錯誤`Html.ValidationSummary`，如同您一樣`Validation`協助程式。 若要這樣做，請呼叫`Validation.AddFormError`並將它傳遞要顯示的訊息。 `Validation.AddFormError`是內建方法，可讓您定義自訂驗證系統，您已熟悉相結合的訊息。 （在本教學課程稍後我們將討論如何進行此驗證程序更穩固。）
+因此，您自行確認值，藉由測試它與`if(!Request.QueryString["ID"].IsEmpty()`)。 如果沒有問題，您可以使用顯示錯誤`Html.ValidationSummary`，如同您一樣`Validation`協助程式。 若要這樣做，請呼叫`Validation.AddFormError`並將它傳遞要顯示的訊息。 `Validation.AddFormError` 是內建方法，可讓您定義自訂驗證系統，您已熟悉相結合的訊息。 （在本教學課程稍後我們將討論如何進行此驗證程序更穩固。）
 
 確定電影識別碼之後，程式碼會在資料庫中，尋找用於只有單一資料庫的項目。 (您可能已注意到一般資料庫作業模式： 開啟資料庫、 定義 SQL 陳述式，並執行陳述式。)目前，SQL`Select`陳述式包含`WHERE ID = @0`。 識別碼是唯一的因為只有一筆記錄可能會傳回。
 
@@ -311,6 +311,6 @@ ms.lasthandoff: 01/10/2018
 - [使用 Razor 語法的 ASP.NET Web 程式設計簡介](../../getting-started/introducing-razor-syntax-c.md)
 - [SQL UPDATE 陳述式](http://www.w3schools.com/sql/sql_update.asp)W3Schools 站台上
 
->[!div class="step-by-step"]
-[上一頁](entering-data.md)
-[下一頁](deleting-data.md)
+> [!div class="step-by-step"]
+> [上一頁](entering-data.md)
+> [下一頁](deleting-data.md)

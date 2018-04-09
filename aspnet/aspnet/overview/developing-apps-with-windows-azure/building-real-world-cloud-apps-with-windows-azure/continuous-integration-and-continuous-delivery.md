@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
-title: "持續整合與持續傳遞 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: 持續整合與持續傳遞 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 4a5433a7dd70e27b59163822ba427b026c3f4ce0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4d482aaa0d25d6e6baaf196df4b4bb9335408e46
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>持續整合與持續傳遞 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -76,6 +76,6 @@ VSTS 提供功能，可協助您從規劃到部署的應用程式開發的數的
 - [持續傳遞： 透過組建、 測試和自動化部署可靠軟體釋放](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1377126361)。 Jez 卑微書。
 - [釋放它 ！設計和部署可實際執行的軟體](https://www.amazon.com/Release-It-Production-Ready-Pragmatic-Programmers/dp/0978739213)。 本書由 Michael T Nygard。
 
->[!div class="step-by-step"]
-[上一頁](source-control.md)
-[下一頁](web-development-best-practices.md)
+> [!div class="step-by-step"]
+> [上一頁](source-control.md)
+> [下一頁](web-development-best-practices.md)

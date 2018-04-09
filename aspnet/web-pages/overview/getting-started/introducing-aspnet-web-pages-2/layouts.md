@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
-title: "導入 ASP.NET Web Pages-建立一致的版面配置 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-建立一致的版面配置 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何使用配置，以使用 ASP.NET Web Pages 站台建立外觀一致的頁面。 它會假設您已經完成..."
+description: 本教學課程會示範如何使用配置，以使用 ASP.NET Web Pages 站台建立外觀一致的頁面。 它會假設您已經完成...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
-ms.openlocfilehash: 692adc5a03892f27c91fe8868c8eab6ce08f49cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c2d5c4d8ed8a71979c16d484ab90d283a45de537
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>導入的 ASP.NET Web Pages-建立一致的版面配置
 ====================
@@ -149,7 +149,7 @@ ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 wh
 
 `Page`物件可供所有使用*.cshtml*頁面，並且是基於此目的，也就是它的版面配置和網頁之間共用資訊。
 
-開啟*\_Layout.cshtml*頁面。 變更`<title>`讓它看起來像是這個標記的項目：
+開啟<em>\_Layout.cshtml</em>頁面。 變更`<title>`讓它看起來像是這個標記的項目：
 
 [!code-html[Main](layouts/samples/sample9.html)]
 
@@ -237,6 +237,6 @@ ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 wh
 - [建立一致的外觀](https://go.microsoft.com/fwlink/?LinkID=202891)— 使用配置提供更多詳細資料的發行項。 它也會說明如何將值傳遞至版面配置頁的顯示或隱藏的某些內容。
 - [巢狀配置頁面 Razor](http://www.mikesdotnetting.com/Article/164/Nested-Layout-Pages-with-Razor) — 的 Mike Brind 部落格如何巢狀化版面配置頁的範例。 （包括頁面下載）。
 
->[!div class="step-by-step"]
-[上一頁](deleting-data.md)
-[下一頁](publishing.md)
+> [!div class="step-by-step"]
+> [上一頁](deleting-data.md)
+> [下一頁](publishing.md)

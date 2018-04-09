@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/generating-views
-title: "第一個使用 ASP.NET MVC 的 EF 資料庫： 產生檢視 |Microsoft 文件"
+title: 第一個使用 ASP.NET MVC 的 EF 資料庫： 產生檢視 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/29/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: 5fccb3c56af0945ec448becff777a3e92dc160d7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b60e89a187a879255eb051dc87241714cef6fa63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>第一個使用 ASP.NET MVC 的 EF 資料庫： 產生檢視表
 ====================
@@ -109,6 +109,6 @@ ActionLink 方法中，第一個參數是要顯示在連結的文字。 第二�
 
 您已驗證自動產生的檢視，讓使用者使用的資料庫中的資料。 在此系列的下一個教學課程，您將會更新資料庫和對應變更 web 應用程式中。
 
->[!div class="step-by-step"]
-[上一頁](creating-the-web-application.md)
-[下一頁](changing-the-database.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-the-web-application.md)
+> [下一頁](changing-the-database.md)

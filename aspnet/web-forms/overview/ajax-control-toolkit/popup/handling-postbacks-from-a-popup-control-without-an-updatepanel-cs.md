@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
-title: "處理回傳從快顯視窗控制項沒有 UpdatePanel (C#) |Microsoft 文件"
+title: 處理回傳從快顯視窗控制項沒有 UpdatePanel (C#) |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 當回傳 su 中..."
+description: AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 當回傳 su 中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
-ms.openlocfilehash: df43052950b6186908fe1baf04808f40cb926f69
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 59ffa05945289de6e01e2c21dd5a0f82ca1fa374
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>處理回傳從快顯視窗控制項沒有 UpdatePanel (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 回傳發生這類面板中，在頁面上有數個面板時很難判斷已按下的面板。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何其他控制項時，觸發快顯視窗。 回傳發生這類面板中，在頁面上有數個面板時很難判斷已按下的面板。
 
@@ -61,6 +61,6 @@ AJAX Control Toolkit PopupControl extender 提供簡單的方式來啟動任何�
 
 按一下日期將它放在文字方塊中 ([按一下以檢視完整大小的影像](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png))
 
->[!div class="step-by-step"]
-[上一頁](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-[下一頁](using-multiple-popup-controls-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+> [下一頁](using-multiple-popup-controls-vb.md)

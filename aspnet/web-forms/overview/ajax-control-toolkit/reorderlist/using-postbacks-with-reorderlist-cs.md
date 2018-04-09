@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
-title: "ReorderList (C#) 搭配使用回傳 |Microsoft 文件"
+title: ReorderList (C#) 搭配使用回傳 |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 已重新排列清單，每當 po..."
+description: AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 已重新排列清單，每當 po...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5f5c5e253f6d85203a488152c5ad908157e6ee0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed01c30c0721c8f1cd8ccb3fea0735ea8fa4f0a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-postbacks-with-reorderlist-c"></a>回傳使用 ReorderList (C#)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit ReorderList 控制項提供透過拖曳和卸除使用者可以重新排列的清單。 已重新排列清單，每當回傳應該通知變更的伺服器。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `ReorderList` AJAX Control Toolkit 中的控制項提供透過拖曳和卸除使用者可以重新排列的清單。 已重新排列清單，每當回傳應該通知變更的伺服器。
 
@@ -69,5 +69,5 @@ ms.lasthandoff: 11/10/2017
 
 每個重新排列觸發回傳 ([按一下以檢視完整大小的影像](using-postbacks-with-reorderlist-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[下一步](drag-and-drop-via-reorderlist-cs.md)
+> [!div class="step-by-step"]
+> [下一步](drag-and-drop-via-reorderlist-cs.md)

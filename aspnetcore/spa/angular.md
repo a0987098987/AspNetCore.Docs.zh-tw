@@ -1,5 +1,5 @@
 ---
-title: 使用 Angular 專案範本
+title: 使用 ASP.NET Core 角度的專案範本
 author: SteveSandersonMS
 description: 了解如何開始使用 ASP.NET Core 單一頁面應用程式 (SPA) 專案範本，包含 Angular 和 Angular CLI。
 manager: wpickett
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: 07cfd20809acb67bdae6561b6ccd6edf1e70a3fe
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: e3956bedbc243578f6dfdc09f5f043327de7c66b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-the-angular-project-template"></a>使用 Angular 專案範本
+# <a name="use-the-angular-project-template-with-aspnet-core"></a>使用 ASP.NET Core 角度的專案範本
 
 > [!NOTE]
 > 這份文件不討論 ASP.NET Core 2.0 中的的 Angular 專案範本。 而是關於您可以手動更新的較新 Angular 範本。 此範本預設包含在 ASP.NET Core 2.1 之中。
@@ -39,14 +39,12 @@ cd my-new-app
 
 使用 Visual Studio 或 .NET Core CLI 執行應用程式:
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 開啟產生*.csproj*檔案，並從該處，像平常一樣執行應用程式。
 
 在建置程序還原第一次執行，可能需要幾分鐘的 npm 相依性。 後續建置會更快。
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-
+#### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 請確定您有環境變數呼叫`ASPNETCORE_Environment`值是`Development`。 在 Windows 上 （在非 PowerShell 提示） 中，執行`SET ASPNETCORE_Environment=Development`。 在 Linux 或 macOS 上，執行`export ASPNETCORE_Environment=Development`。
 
 執行[dotnet 組建](/dotnet/core/tools/dotnet-build)以確認應用程式建置正確。 在第一個執行中，在建置程序還原 npm 相依性，這可能要花費幾分鐘的時間。 後續建置會更快。
@@ -59,10 +57,9 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中瀏覽此 url。
 
-應用程式在背景中啟動了 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息：*NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上 http://localhost:&lt;otherport&gt; /*. 忽略此訊息&mdash;它有**不**結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
+應用程式在背景中啟動了 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： <em>NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上http://localhost: &lt;otherport&gt; /</em>. 忽略此訊息&mdash;它有<strong>不</strong>結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
 
----
-
+* * *
 專案範本會建立 ASP.NET Core 應用程式與 Angular 應用程式。 ASP.NET Core 應用程式應用於資料存取、 授權和其他伺服器端的問題。 位於*ClientApp*子目錄的 Angular 應用程式應用於所有 UI 問題。
 
 ## <a name="add-pages-images-styles-modules-etc"></a>新增頁面、 影像、 樣式、 模組、 等等。
@@ -83,7 +80,7 @@ cd ClientApp
 
 如果您尚未安裝`ng`工具，請改為執行`npm run ng`。 例如，您可以執行`npm run ng lint`或`npm run ng test`。
 
-## <a name="install-npm-packages"></a>安裝 npm 封裝
+## <a name="install-npm-packages"></a>安裝 npm 套件
 
 若要安裝協力廠商 npm 封裝，請使用 命令提示字元中*ClientApp*子目錄。 例如: 
 
@@ -96,7 +93,7 @@ npm install --save <package_name>
 
 在開發中，應用程式以方便開發人員最佳化模式執行。 例如，JavaScript 組合會包含來源對應 （以便偵錯時，您可以看到原始的 TypeScript 程式碼）。 應用程式監控的 TypeScript、 HTML 和 CSS 檔案變更，在磁碟上自動重新編譯並重新載入時看到這些變更的檔案。
 
-在生產環境中，提供您已針對效能最佳化的應用程式版本。 這會設定為自動進行。 當您發行時，組建組態會發出用戶端程式碼的極簡化預先編譯 (AoT) 組建。 不同於開發組建中，正式組建不需要在伺服器上安裝 Node.js (除非您已啟用[伺服器端預先轉譯](#server-side-rendering))。
+在生產環境中，提供您已針對效能最佳化的應用程式的版本的服務。 這會設定為自動進行。 當您發行時，組建組態會發出用戶端程式碼的極簡化預先編譯 (AoT) 組建。 不同於開發組建中，正式組建不需要在伺服器上安裝 Node.js (除非您已啟用[伺服器端預先轉譯](#server-side-rendering))。
 
 您可以使用標準[ASP.NET Core 裝載和部署方法](xref:host-and-deploy/index)。
 

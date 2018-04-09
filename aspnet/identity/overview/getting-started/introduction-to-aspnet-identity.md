@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/getting-started/introduction-to-aspnet-identity
-title: "ASP.NET Identity 簡介 |Microsoft 文件"
+title: ASP.NET Identity 簡介 |Microsoft 文件
 author: jongalloway
-description: "ASP.NET 成員資格系統中引入 ASP.NET 2.0 後在 2005 中，而由於然後中已有許多變更方法的 web 應用程式 typicall..."
+description: ASP.NET 成員資格系統中引入 ASP.NET 2.0 後在 2005 中，而由於然後中已有許多變更方法的 web 應用程式 typicall...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 7c7dcb7903b0d0772acc560161ff39c6869c599a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 59272f4659256e108ee99b22eb3bd3e2583a617c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-aspnet-identity"></a>ASP.NET 識別簡介
 ====================
@@ -112,37 +112,37 @@ ASP.NET Identity 是使用下列程序來實作。 本文的目的是要讓您�
 2. 建立的專案包含 ASP.NET Identity 的下列三個封裝。
 
     - [`Microsoft.AspNet.Identity.EntityFramework`](http://www.nuget.org/packages/Microsoft.AspNet.Identity.EntityFramework/)  
- 此套件有 ASP.NET 識別，它將會保存到 SQL Server 結構描述與 ASP.NET 識別資料的實體架構實作。
+   此套件有 ASP.NET 識別，它將會保存到 SQL Server 結構描述與 ASP.NET 識別資料的實體架構實作。
     - [`Microsoft.AspNet.Identity.Core`](http://www.nuget.org/packages/Microsoft.AspNet.Identity.Core/)  
- 此套件具有 ASP.NET Identity 的核心介面。 此封裝可以用來寫入 ASP.NET 識別的目標的其他持續性存放區，例如 Azure 資料表儲存體，NoSQL 資料庫等實作。
+   此套件具有 ASP.NET Identity 的核心介面。 此封裝可以用來寫入 ASP.NET 識別的目標的其他持續性存放區，例如 Azure 資料表儲存體，NoSQL 資料庫等實作。
     - [`Microsoft.AspNet.Identity.OWIN`](http://www.nuget.org/packages/Microsoft.AspNet.Identity.Owin/)  
- 此套件包含用來插入 OWIN 驗證中使用 ASP.NET Identity 在 ASP.NET 應用程式的功能。 當您將記錄功能加入至應用程式和產生 cookie OWIN 的 Cookie 驗證中介軟體呼叫，會使用這項目。
+   此套件包含用來插入 OWIN 驗證中使用 ASP.NET Identity 在 ASP.NET 應用程式的功能。 當您將記錄功能加入至應用程式和產生 cookie OWIN 的 Cookie 驗證中介軟體呼叫，會使用這項目。
 3. 建立使用者。  
- 啟動應用程式，然後按一下**註冊**連結，以建立使用者。 下圖顯示 [註冊] 頁面會收集使用者名稱和密碼。  
+   啟動應用程式，然後按一下**註冊**連結，以建立使用者。 下圖顯示 [註冊] 頁面會收集使用者名稱和密碼。  
   
     ![](introduction-to-aspnet-identity/_static/image2.png)  
   
- 當使用者按一下**註冊** 按鈕，`Register`帳戶控制器的動作會建立使用者藉由呼叫 ASP.NET 識別的 API，以反白顯示，如下：
+   當使用者按一下**註冊** 按鈕，`Register`帳戶控制器的動作會建立使用者藉由呼叫 ASP.NET 識別的 API，以反白顯示，如下：
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample1.cs?highlight=8-9)]
 4. 登入。  
- 如果使用者已成功建立，她中會記錄由`SignInAsync`方法。  
+   如果使用者已成功建立，她中會記錄由`SignInAsync`方法。  
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample2.cs?highlight=12)]
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample3.cs?highlight=5-6)]
 
- 在上方的反白顯示程式碼`SignInAsync`方法會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 因為 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構就會需要應用程式，以產生使用者的 ClaimsIdentity。 身分識別的使用者，例如使用者所屬的角色的所有宣告資訊。 您也可以在這個階段中加入更多的使用者宣告。  
+   在上方的反白顯示程式碼`SignInAsync`方法會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 因為 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎的系統，架構就會需要應用程式，以產生使用者的 ClaimsIdentity。 身分識別的使用者，例如使用者所屬的角色的所有宣告資訊。 您也可以在這個階段中加入更多的使用者宣告。  
   
- 在 反白顯示下列程式碼`SignInAsync`方法登入使用者呼叫與 OWIN AuthenticationManager`SignIn`並傳入 ClaimsIdentity。  
+   在 反白顯示下列程式碼`SignInAsync`方法登入使用者呼叫與 OWIN AuthenticationManager`SignIn`並傳入 ClaimsIdentity。  
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample4.cs?highlight=8-11)]
 5. 登出。  
- 按一下**登出**連結帳戶控制器中呼叫登出動作。 
+   按一下**登出**連結帳戶控制器中呼叫登出動作。 
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample5.cs?highlight=6)]
 
- 反白顯示程式碼顯示上述 OWIN`AuthenticationManager.SignOut`方法。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) Web Form 中的模組。
+   反白顯示程式碼顯示上述 OWIN`AuthenticationManager.SignOut`方法。 這是類似於[FormsAuthentication.SignOut](https://msdn.microsoft.com/library/system.web.security.formsauthentication.signout.aspx)所使用的方法[FormsAuthentication](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx) Web Form 中的模組。
 
 ## <a name="components-of-aspnet-identity"></a>ASP.NET 識別的元件
 

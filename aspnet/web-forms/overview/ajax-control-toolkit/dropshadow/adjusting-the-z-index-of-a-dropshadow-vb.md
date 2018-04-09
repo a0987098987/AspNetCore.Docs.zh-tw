@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb
-title: "調整 DropShadow (VB) Z-索引 |Microsoft 文件"
+title: 調整 DropShadow (VB) Z-索引 |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 不過此陰影有時會與其他控制項，如 insta 衝突..."
+description: AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 不過此陰影有時會與其他控制項，如 insta 衝突...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 844ea00c2ef1c974aa72c7dd627819b0429d612e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b484dc6bfa6f67bd6b70f7c36c2eb2ec7143edaf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adjusting-the-z-index-of-a-dropshadow-vb"></a>調整 DropShadow (VB) Z-索引
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 不過此陰影有時會與其他控制項，例如 ASP.NET 功能表控制項衝突。 當功能表項目快顯，它會出現在下拉式陰影後面。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 不過此陰影有時會與其他控制項，例如 ASP.NET 功能表控制項衝突。 當功能表項目快顯，它會出現在下拉式陰影後面。
 
@@ -68,6 +68,6 @@ AJAX Control Toolkit DropShadow 控制項擴充有陰影的面板。 不過此�
 
 之後： 會出現功能表項目 ([按一下以檢視完整大小的影像](adjusting-the-z-index-of-a-dropshadow-vb/_static/image6.png))
 
->[!div class="step-by-step"]
-[上一頁](manipulating-dropshadow-properties-from-client-code-cs.md)
-[下一頁](manipulating-dropshadow-properties-from-client-code-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](manipulating-dropshadow-properties-from-client-code-cs.md)
+> [下一頁](manipulating-dropshadow-properties-from-client-code-vb.md)

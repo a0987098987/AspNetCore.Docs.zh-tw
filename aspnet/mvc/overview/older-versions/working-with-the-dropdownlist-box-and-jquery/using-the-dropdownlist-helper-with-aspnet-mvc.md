@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
-title: "使用 DropDownList Helper 搭配 ASP.NET MVC |Microsoft 文件"
+title: 使用 DropDownList Helper 搭配 ASP.NET MVC |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 278d04aec68e93f3ebfd12d06a96b59f3bcbef4b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 21373deeded801c5cea9e89f6dac0f3542a55ca5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>使用 ASP.NET MVC 的 DropDownList Helper
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 本教學課程將告訴您使用的基本[DropDownList](https://msdn.microsoft.com/library/dd492948.aspx) helper 和[ListBox](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.listbox.aspx) ASP.NET MVC Web 應用程式中的協助程式。 您可以使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，這是要遵循本教學課程的 Microsoft Visual Studio 的免費版本。 開始之前，請確定您已安裝下面所列的必要條件。 您可以安裝全部都按下列連結： [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)。 或者，您可以個別安裝的必要條件，使用下列連結：
 
-- [Visual Studio Web Developer Express SP1 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack)<a id="post"></a>
+- [Visual Studio Web Developer Express SP1 必要條件](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack) <a id="post"></a>
 - [ASP.NET MVC 3 Tools Update](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
 - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)（執行階段 + 工具支援）
 
@@ -193,7 +193,7 @@ HTML helper [ListBox](https://msdn.microsoft.com/library/dd470200.aspx)方法採
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-上述程式碼，我們要加入的 HTML 屬性和屬性值`class = "chzn-select"`。 @ 字元前面類別沒有使用 Razor 檢視引擎。 `class`是[C# 關鍵字](https://msdn.microsoft.com/library/x53a06bb.aspx)。 C# 關鍵字不能作為識別項，除非它們包含做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
+上述程式碼，我們要加入的 HTML 屬性和屬性值`class = "chzn-select"`。 @ 字元前面類別沒有使用 Razor 檢視引擎。 `class` 是[C# 關鍵字](https://msdn.microsoft.com/library/x53a06bb.aspx)。 C# 關鍵字不能作為識別項，除非它們包含做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
 
 將參考加入至*Chosen/chosen.jquery.js*和*Chosen/chosen.css*檔案。 *Chosen/chosen.jquery.js*並實作功能的所選外掛程式。 *Chosen/chosen.css*檔案提供可用樣式。 這些將參考加入至底部*Views\Home\MultiSelectCountry.cshtml*檔案。 下列程式碼會示範如何參考所選外掛程式。
 
@@ -217,5 +217,5 @@ HTML helper [ListBox](https://msdn.microsoft.com/library/dd470200.aspx)方法採
 
 下一節中您會看到如何使用 ASP.NET MVC scaffolding 機制**DropDownList**協助程式。
 
->[!div class="step-by-step"]
-[下一步](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+> [!div class="step-by-step"]
+> [下一步](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)

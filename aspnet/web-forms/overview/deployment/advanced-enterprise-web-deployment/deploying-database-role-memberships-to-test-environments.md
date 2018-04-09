@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
-title: "將資料庫角色成員資格部署到測試環境 |Microsoft 文件"
+title: 將資料庫角色成員資格部署到測試環境 |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何將使用者帳戶新增至資料庫角色做為方案部署到測試環境的一部分。 當您部署方案，包含..."
+description: 本主題描述如何將使用者帳戶新增至資料庫角色做為方案部署到測試環境的一部分。 當您部署方案，包含...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 226c28622f76e866fba1fc33cf9b9b7a01e5295b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4f635153213b0695d7d4b64d09adefaf8ee8e892
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a>將資料庫角色成員資格部署到測試環境
 ====================
@@ -37,9 +37,9 @@ ms.lasthandoff: 03/15/2018
 > 關鍵因素是，這項作業必須是有條件根據目標環境。 如果您要部署至預備或生產環境中，您會想要跳過此作業。 如果您要部署的開發人員或測試環境，您會想要部署不需要其他介入的角色成員資格。 本主題說明您可以使用來解決這個問題的其中一個方法。
 
 
-本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案 & #x 2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)（& s) 來代表實際的層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 與 web 應用程式的 #x 2014;Communication Foundation (WCF) 服務，與資料庫專案。
+本主題根據名為 Fabrikam，Inc.的虛構公司的企業部署需求的教學課程系列的一部分此教學課程使用範例方案&#x2014;[連絡人管理員解決方案](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;來表示實際層級的複雜性，包括 ASP.NET MVC 3 應用程式時，Windows 通訊的 web 應用程式Foundation (WCF) 服務與資料庫專案。
 
-這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，這在建置程序由兩個專案中檔案 & #x 2014; 一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
+這些教學課程的核心的部署方法為基礎所說明的分割專案檔案方法[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，在建置流程控制的兩個專案檔&#x2014;一個包含建置適用於每個目的地環境中和包含特定環境的建置和部署設定的指示。 在建置時，環境特定專案檔就會合併環境無從驗證專案檔來形成一組完整組建指示。
 
 ## <a name="task-overview"></a>工作概觀
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 03/15/2018
 
 - 目標資料庫必須存在才能變更其角色成員資格。 因此，您需要執行此指令碼*之後*資料庫部署。
 - 您必須包含一個條件，以便在測試環境，才會執行指令碼。
-- 如果您執行 「 假設 」 部署 & #x 2014; 換句話說，如果您正在產生部署指令碼，但實際上不會執行它們 & #x 2014; 您不應該執行的 SQL 指令碼。
+- 如果您執行 「 假設 」 部署&#x2014;換句話說，如果您正在產生部署指令碼，但實際上不會執行這些&#x2014;您不應該執行的 SQL 指令碼。
 
 如果您使用分割專案檔案描述的方法中[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)，所示連絡人管理員範例方案，您可以將組建指示分割 SQL 指令碼如下：
 
@@ -132,6 +132,6 @@ ms.lasthandoff: 03/15/2018
 
 如需有關使用 VSDBCMD 部署資料庫專案的詳細資訊，請參閱[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。 如需自訂不同的目標環境的資料庫部署的指引，請參閱[自訂資料庫部署多個環境](customizing-database-deployments-for-multiple-environments.md)。 如需使用自訂的 MSBuild 專案檔來控制部署程序的詳細資訊，請參閱[了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)和[瞭解建置程序](../web-deployment-in-the-enterprise/understanding-the-build-process.md)。 如需有關 sqlcmd 命令列選項的詳細資訊，請參閱[sqlcmd 公用程式](https://msdn.microsoft.com/library/ms162773.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](customizing-database-deployments-for-multiple-environments.md)
-[下一頁](deploying-membership-databases-to-enterprise-environments.md)
+> [!div class="step-by-step"]
+> [上一頁](customizing-database-deployments-for-multiple-environments.md)
+> [下一頁](deploying-membership-databases-to-enterprise-environments.md)

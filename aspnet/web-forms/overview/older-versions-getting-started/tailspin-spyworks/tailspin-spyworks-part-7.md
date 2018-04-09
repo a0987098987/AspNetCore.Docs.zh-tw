@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
-title: "第 7 部分： 加入功能 |Microsoft 文件"
+title: 第 7 部分： 加入功能 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 部分 7 加入其他功能，例如帳戶 revie..."
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 部分 7 加入其他功能，例如帳戶 revie...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 5280de44b3e75f9d1ae85e0248bc3ef6d5444f6d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 17f068155f6726047901e2f7d580d375a4e07c87
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-adding-features"></a>第 7 部分： 新增功能
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 部分 7 加入其他功能，例如帳戶檢閱、 產品評論和 「 熱門項目 」 和 「 也已購買 「 使用者控制項。
 
 
-## <a id="_Toc260221673"></a>加入功能
+## <a id="_Toc260221673"></a>  加入功能
 
 使用者可以瀏覽我們的目錄，將項目放在購物車，並完成簽出程序，還是有一些支援的功能，我們將包含改善我們的網站。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/10/2017
 7. 新增有關頁面。
 8. 全域錯誤
 
-## <a id="_Toc260221674"></a>帳戶檢閱
+## <a id="_Toc260221674"></a>  帳戶檢閱
 
 在 [帳戶] 資料夾中建立一個具名的 OrderList.aspx 和其他具名的 OrderDetails.aspx 的兩個.aspx 頁面
 
@@ -56,7 +56,7 @@ EntityDataSoure Orders 資料表中的使用者名稱上篩選選取記錄 （�
 
 這樣會指定 OrderID 欄位指定為查詢字串參數，以 OrderDetails.aspx 頁面每項產品的訂單詳細資料檢視的連結。
 
-## <a id="_Toc260221675"></a>OrderDetails.aspx
+## <a id="_Toc260221675"></a>  OrderDetails.aspx
 
 我們將使用 EntityDataSource 控制項存取訂單和 FormView 顯示訂單資料，另一個與 GridView EntityDataSource，以顯示所有訂單行項目。
 
@@ -72,7 +72,7 @@ EntityDataSoure Orders 資料表中的使用者名稱上篩選選取記錄 （�
 
 [!code-csharp[Main](tailspin-spyworks-part-7/samples/sample5.cs)]
 
-## <a id="_Toc260221676"></a>[首頁] 頁面
+## <a id="_Toc260221676"></a>  [首頁] 頁面
 
 讓我們來加入靜態內容至 Default.aspx 頁面。
 
@@ -82,7 +82,7 @@ Default.aspx 頁面底部版面配置，加入下列標記。
 
 [!code-aspx[Main](tailspin-spyworks-part-7/samples/sample6.aspx)]
 
-## <a id="_Toc260221677"></a>產品評論
+## <a id="_Toc260221677"></a>  產品評論
 
 第一次我們會將含有連結按鈕新增至表單，讓我們可以輸入的產品評論。
 
@@ -94,7 +94,7 @@ Default.aspx 頁面底部版面配置，加入下列標記。
 
 下一步 讓我們加入名為 ReviewAdd.aspx 頁面
 
-此頁面會使用 ASP.NET AJAX Control Toolkit。 如果您沒有已完成，您可以下載從[DevExpress](http://devexpress.com/act)而上設定 Visual Studio 搭配使用此工具組的指引[https://www.asp.net/learn/ajax-videos/video-76.aspx](../../../videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md).
+此頁面會使用 ASP.NET AJAX Control Toolkit。 如果您沒有已完成，您可以下載從[DevExpress](http://devexpress.com/act)而上設定 Visual Studio 搭配使用此工具組的指引[ https://www.asp.net/learn/ajax-videos/video-76.aspx ](../../../videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md)。
 
 在設計模式中，從 [工具箱] 拖曳控制項和驗證程式，建立如下的表單。
 
@@ -114,7 +114,7 @@ Default.aspx 頁面底部版面配置，加入下列標記。
 
 ![](tailspin-spyworks-part-7/_static/image3.jpg)
 
-## <a id="_Toc260221678"></a>熱門項目控制項 （建立使用者控制項）
+## <a id="_Toc260221678"></a>  熱門項目控制項 （建立使用者控制項）
 
 以增加您的網站上的銷售我們將 「 建議賣出 「 熱門或相關產品加入一組功能。
 
@@ -156,7 +156,7 @@ Default.aspx 頁面底部版面配置，加入下列標記。
 
 ![](tailspin-spyworks-part-7/_static/image6.jpg)
 
-## <a id="_Toc260221679"></a>「 也購買 」 控制 （具有參數的使用者控制項）
+## <a id="_Toc260221679"></a>  「 也購買 」 控制 （具有參數的使用者控制項）
 
 我們將建立第二個使用者控制項將會建議加入內容精確性銷售到下一個層級。
 
@@ -236,6 +236,6 @@ ProductId 將控制項的 「 屬性 」。
 
 ![](tailspin-spyworks-part-7/_static/image7.jpg)
 
->[!div class="step-by-step"]
-[上一頁](tailspin-spyworks-part-6.md)
-[下一頁](tailspin-spyworks-part-8.md)
+> [!div class="step-by-step"]
+> [上一頁](tailspin-spyworks-part-6.md)
+> [下一頁](tailspin-spyworks-part-8.md)

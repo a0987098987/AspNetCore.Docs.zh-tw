@@ -1,22 +1,22 @@
 ---
 uid: single-page-application/overview/introduction/other-libraries
-title: "了解 Knockout 以外的程式庫？ | Microsoft Docs"
+title: 了解 Knockout 以外的程式庫？ | Microsoft Docs
 author: madskristensen
-description: "了解 Knockout 以外的程式庫？"
+description: 了解 Knockout 以外的程式庫？
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/05/2013
 ms.topic: article
 ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
-ms.openlocfilehash: 5a863f50401a4e2bab3f772374b7fd178f6c6cdf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ac260e88fd156bad4b414e93325d5a04c490c88
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="know-a-library-other-than-knockout"></a>了解 Knockout 以外的程式庫？
 ====================
@@ -57,15 +57,17 @@ Ember SPA 範本是使用 EmberJS 和 Handlebars 樣板化的 Knockout SPA 範�
 
 以下是每個 SPA 範本所提供的功能：
 
-|  | ASP.NET SPA | Backbone | 幫助您輕鬆/角度 | 幫助您輕鬆/KO | Ember | 熱毛巾 |
-| --- | --- | --- | --- | --- | --- | --- |
-| ToDo 範例 | &#10003; |  | &#10003; | &#10003; | &#10003; |  |
-| 裸機範本 |  | &#10003; |  |  |  | &#10003; |
-| 瀏覽和歷程記錄 |  | &#10003; | &#10003; |  | &#10003; | &#10003; |
-| 庫 |  |  |  |  |  |  |
-| 角度 |  |  | &#10003; |  |  |  |
-| &#8195;Backbone |  | &#10003; |  |  |  |  |
-| 幫助您輕鬆 |  |  | &#10003; | &#10003; |  | &#10003; |
-| Durandal |  |  |  |  |  | &#10003; |
-| Ember |  |  |  |  | &#10003; |  |
-| knockout | &#10003; |  |  | &#10003; |  | &#10003; |
+
+|                        | ASP.NET SPA | Backbone | 幫助您輕鬆/角度 | 幫助您輕鬆/KO |  Ember   | 熱毛巾 |
+|------------------------|-------------|----------|----------------|-----------|----------|-----------|
+|      ToDo 範例       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
+|     裸機範本      |             | &#10003; |                |           |          | &#10003;  |
+| 瀏覽和歷程記錄 |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
+|        庫        |             |          |                |           |          |           |
+|        角度         |             |          |    &#10003;    |           |          |           |
+|    &#8195;Backbone     |             | &#10003; |                |           |          |           |
+|         幫助您輕鬆         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
+|        Durandal        |             |          |                |           |          | &#10003;  |
+|         Ember          |             |          |                |           | &#10003; |           |
+|        knockout        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |
+

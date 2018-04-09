@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
-title: "多個 ContentPlaceHolders 和預設的內容 (C#) |Microsoft 文件"
+title: 多個 ContentPlaceHolders 和預設的內容 (C#) |Microsoft 文件
 author: rick-anderson
-description: "會檢查如何將多個內容的預留位置加入至主版頁面，以及如何指定預設的內容中內容的預留位置。"
+description: 會檢查如何將多個內容的預留位置加入至主版頁面，以及如何指定預設的內容中內容的預留位置。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 24bfb85b09b8bd5a60e51f57db79544bea7af22b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b60017c21b4cf45081893af08e68186009475fd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="multiple-contentplaceholders-and-default-content-c"></a>多個 ContentPlaceHolders 和預設的內容 (C#)
 ====================
@@ -179,12 +179,12 @@ ASP.NET 主版頁面模型允許任意數目的 ContentPlaceHolders 主版頁面
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](creating-a-site-wide-layout-using-master-pages-cs.md)
-[下一頁](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-a-site-wide-layout-using-master-pages-cs.md)
+> [下一頁](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
-title: "排序、 分頁和篩選資料，包含模型繫結和 web form |Microsoft 文件"
+title: 排序、 分頁和篩選資料，包含模型繫結和 web form |Microsoft 文件
 author: tfitzmac
-description: "此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-..."
+description: 此教學課程系列示範與 ASP.NET Web Form 專案中使用模型繫結的基本層面。 模型繫結進行資料互動詳細直線-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 94fc84533be5fcbcf0612fcdcabea7dee738d89b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d63ebecadd392877e4cb1d1dffe9db2d1d231190
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>排序、 分頁和篩選資料，包含模型繫結和 web form
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 - QueryString
 - RouteData
 - 工作階段
-- 使用者設定檔
+- UserProfile
 - ViewState
 
 在本教學課程中，您將使用控制項的值來篩選在 GridView 中顯示的記錄。 您將加入**控制項**屬性設定為您稍早建立的查詢方法。 在[稍後](using-query-string-values-to-retrieve-data.md)教學課程中，您將會套用**QueryString**屬性設定為指定的參數值來自查詢字串值的參數。
@@ -100,6 +100,6 @@ ms.lasthandoff: 11/10/2017
 
 在接下來[教學課程](integrating-jquery-ui.md)JQuery UI 小工具整合到動態資料範本，您將提升 UI。
 
->[!div class="step-by-step"]
-[上一頁](updating-deleting-and-creating-data.md)
-[下一頁](integrating-jquery-ui.md)
+> [!div class="step-by-step"]
+> [上一頁](updating-deleting-and-creating-data.md)
+> [下一頁](integrating-jquery-ui.md)

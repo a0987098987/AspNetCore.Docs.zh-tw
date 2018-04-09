@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
-title: "檢查編輯方法與編輯檢視 |Microsoft 文件"
+title: 檢查編輯方法與編輯檢視 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 在本節中，您將會檢查所產生`Edit`動作方法和檢視電影控制站。 但會先進行看起來更好的發行日期簡短轉接。 開啟*Models\Movie.cs*檔案，然後加入反白顯示的行，如下所示：
 
@@ -106,12 +106,12 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 1. 從**工具**功能表上，按一下**NuGetLibrary 封裝管理員**，然後按一下 **管理方案的 NuGet 套件**。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. 在左窗格中，選取 **瀏覽*。 * * * （請參閱下面的影像）。
+2. 在左窗格中，選取<strong>瀏覽*。</strong>*（請參閱下面的影像）。
 3. 在輸入方塊中，輸入 * Globalize * *。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) 選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至您的專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性的 JavaScript 檔案。 請注意，可能需要五分鐘才能安裝此套件。
 
- 下列程式碼顯示 Views\Movies\Edit.cshtml 檔案的修改： 
+   下列程式碼顯示 Views\Movies\Edit.cshtml 檔案的修改： 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 
@@ -125,6 +125,6 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 
 <a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a> 在下一個教學課程中，我們將實作搜尋功能。
 
->[!div class="step-by-step"]
-[上一頁](accessing-your-models-data-from-a-controller.md)
-[下一頁](adding-search.md)
+> [!div class="step-by-step"]
+> [上一頁](accessing-your-models-data-from-a-controller.md)
+> [下一頁](adding-search.md)

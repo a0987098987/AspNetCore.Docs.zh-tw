@@ -1,7 +1,7 @@
 ---
-title: "從 ASP.NET Web API 移轉至 ASP.NET Core"
+title: 從 ASP.NET Web API 移轉至 ASP.NET Core
 author: ardalis
-description: "了解如何從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC。"
+description: 了解如何從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 929fab90aa88745807761e824a2cf614f078ea36
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2b9d6ac41266e0e6085153e1302d84a34ee85257
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
+# <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Scott Addie](https://scottaddie.com)
 

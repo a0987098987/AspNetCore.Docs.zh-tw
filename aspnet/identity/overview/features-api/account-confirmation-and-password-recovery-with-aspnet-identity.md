@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
-title: "帳戶確認和密碼復原與 ASP.NET Identity (C#) |Microsoft 文件"
+title: 帳戶確認和密碼復原與 ASP.NET Identity (C#) |Microsoft 文件
 author: HaoK
-description: "執行本教學課程之前，您應該先完成建立安全的 ASP.NET MVC 5 web 應用程式與記錄檔中，電子郵件確認和密碼重設。 本教學課程中..."
+description: 執行本教學課程之前，您應該先完成建立安全的 ASP.NET MVC 5 web 應用程式與記錄檔中，電子郵件確認和密碼重設。 本教學課程中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
 ms.topic: article
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 548baaaa06980fb793c079b66b6edc34422eb579
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0167388cf6b488b72ca36f583a7794690dbf9900
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>帳戶確認和密碼復原與 ASP.NET Identity (C#)
 ====================
@@ -88,7 +88,7 @@ ms.lasthandoff: 01/24/2018
   
     ![](account-confirmation-and-password-recovery-with-aspnet-identity/_static/image10.png)  
   
- 此時不已確認電子郵件。
+   此時不已確認電子郵件。
 
 ASP.NET Identity 的預設資料存放區是 Entity Framework 中，但您可以設定成使用其他資料存放區，並加入其他欄位。 請參閱[其他資源](#addRes)本教學課程的最後一節。
 
@@ -117,7 +117,7 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 - 雙因素驗證 (2FA)。 在另一個教學課程中，我將討論 2FA 和 SMS。
 - 連結的電子郵件和 SMS 服務。 （我會在另一個教學課程涵蓋 SMS）。
 
-`ApplicationUserManager`類別衍生自泛型`UserManager<ApplicationUser>`類別。 `ApplicationUser`衍生自[IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx)。 `IdentityUser`衍生自泛型`IdentityUser`類別：
+`ApplicationUserManager`類別衍生自泛型`UserManager<ApplicationUser>`類別。 `ApplicationUser` 衍生自[IdentityUser](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework.identityuser.aspx)。 `IdentityUser` 衍生自泛型`IdentityUser`類別：
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample1.cs)]
 
@@ -127,11 +127,11 @@ Cookie 中介軟體會檢查每個要求的 cookie。 `SecurityStampValidator`�
 
 ### <a name="applicationuser"></a>ApplicationUser
 
-`ApplicationUser`(`public class ApplicationUserManager : UserManager<ApplicationUser>`) 中定義*Models\IdentityModels.cs*為：
+`ApplicationUser` (`public class ApplicationUserManager : UserManager<ApplicationUser>`) 中定義*Models\IdentityModels.cs*為：
 
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample2.cs?highlight=8-9)]
 
-上述反白顯示的程式碼會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎，因此架構都需要應用程式產生`ClaimsIdentity`使用者。 `ClaimsIdentity`具有資訊有關的使用者名稱，例如使用者的所有宣告年齡和角色的使用者屬於。 您也可以在這個階段中加入更多的使用者宣告。
+上述反白顯示的程式碼會產生[ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx)。 ASP.NET Identity 與 OWIN 的 Cookie 驗證以宣告為基礎，因此架構都需要應用程式產生`ClaimsIdentity`使用者。 `ClaimsIdentity` 具有資訊有關的使用者名稱，例如使用者的所有宣告年齡和角色的使用者屬於。 您也可以在這個階段中加入更多的使用者宣告。
 
 OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用者：
 
@@ -152,7 +152,7 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`和登入使用
 
     [!code-console[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample4.cmd)]
 
- 在此教學課程中，我們將使用[SendGrid](http://sendgrid.com/)傳送電子郵件。 `Identity.Samples`套件會安裝我們即將使用的程式碼。
+   在此教學課程中，我們將使用[SendGrid](http://sendgrid.com/)傳送電子郵件。 `Identity.Samples`套件會安裝我們即將使用的程式碼。
 3. 設定[專案以使用 SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)。
 4. 執行應用程式中，按一下來測試建立本機帳戶**註冊**連結，然後張貼註冊表單。
 5. 按一下模擬電子郵件確認示範電子郵件連結。

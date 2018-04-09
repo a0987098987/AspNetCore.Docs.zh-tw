@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
-title: "ASP.NET MVC 4 簡介 |Microsoft 文件"
+title: ASP.NET MVC 4 簡介 |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程是否可在此處使用 Visual Studio 2013 更新的版本。 新的教學課程會使用 ASP.NET MVC 5 提供許多改良 t..."
+description: 本教學課程是否可在此處使用 Visual Studio 2013 更新的版本。 新的教學課程會使用 ASP.NET MVC 5 提供許多改良 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 92d9e583b6c26fa8c928d33e14593d280702a269
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 519bac22ba2607931c5f3123b9b567859a2b3d1c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc-4"></a>ASP.NET MVC 4 簡介
 ====================
@@ -88,5 +88,5 @@ F5 會導致 Visual Studio 來啟動 IIS Express 並執行您 web 應用程式�
 
 現成這個預設範本可讓您家用、 連絡人和相關頁面。 也提供支援註冊和登入，並連結到 Facebook 和 Twitter。 下一個步驟是變更這個應用程式的運作方式，並了解 ASP.NET MVC 的一點。 關閉瀏覽器，並讓我們將變更一些程式碼。
 
->[!div class="step-by-step"]
-[下一步](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [下一步](adding-a-controller.md)

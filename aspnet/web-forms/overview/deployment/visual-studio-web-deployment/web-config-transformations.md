@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
-title: "使用 Visual Studio 的 ASP.NET Web 部署： Web.config 檔案轉換 |Microsoft 文件"
+title: 使用 Visual Studio 的 ASP.NET Web 部署： Web.config 檔案轉換 |Microsoft 文件
 author: tdykstra
-description: "此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用..."
+description: 此教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web 應用程式或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: a526275d76618c325a6b00f33cc550f28ab0cc00
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 77ed0d8b2fe85adb009a3f4759030b7fba8fb9d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>使用 Visual Studio 的 ASP.NET Web 部署： Web.config 檔案轉換
 ====================
@@ -152,6 +152,6 @@ Contoso 大學網頁讀取的設定中的值`appSettings`中*Web.config*檔案�
 
 如需本教學課程所涵蓋之主題的詳細資訊，請參閱[變更目的地 Web.config 檔或 app.config 檔案中的設定，在部署期間使用 Web.config 轉換](https://go.microsoft.com/fwlink/p/?LinkId=282413#transforms)中 Web 部署的內容對應Visual Studio 和 ASP.NET。
 
->[!div class="step-by-step"]
-[上一頁](preparing-databases.md)
-[下一頁](project-properties.md)
+> [!div class="step-by-step"]
+> [上一頁](preparing-databases.md)
+> [下一頁](project-properties.md)

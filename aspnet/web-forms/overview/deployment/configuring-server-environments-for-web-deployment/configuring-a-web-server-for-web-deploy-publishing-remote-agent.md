@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
-title: "設定 Web 伺服器的 Web Deploy 發行 （遠端代理程式） |Microsoft 文件"
+title: 設定 Web 伺服器的 Web Deploy 發行 （遠端代理程式） |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何設定 Internet Information Services (IIS) web 伺服器，以支援網頁發佈和使用 IIS Web 部署的部署..."
+description: 本主題描述如何設定 Internet Information Services (IIS) web 伺服器，以支援網頁發佈和使用 IIS Web 部署的部署...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: 23195949121cd13ca4b1809b8db91a7320d1fdd2
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 8cad6ee45a8331513c72c4079f300fbb06c1ed77
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>設定 Web 伺服器的 Web Deploy 發行 （遠端代理程式）
 ====================
@@ -102,7 +102,7 @@ ms.lasthandoff: 03/15/2018
 7. 在導覽窗格中，按一下**伺服器**。
 8. 在**IIS 7 建議組態**資料列中，按一下 **新增**。
 9. 在**Web 部署工具 2.1**資料列中，按一下 **新增**。
-10. 按一下 [安裝] 。 Web Platform Installer 會為您顯示; 以及任何相關聯的相依性 & #x 2014;，也要安裝的產品 & #x 2014年的清單，並將會提示您接受授權條款。
+10. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image2.png)
 11. 檢閱授權條款，然後如果您同意條款，按一下**我接受**。
@@ -165,7 +165,7 @@ ms.lasthandoff: 03/15/2018
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image6.png)
 
     > [!NOTE]
-    > 第一個站台繫結可讓您存取在本機使用的 IP 位址和連接埠的站台或`http://localhost:85`。 第二個網站繫結可讓您從使用電腦名稱 (例如，http://testweb1:85) 的網域上的其他電腦存取這個網站。
+    > 第一個站台繫結可讓您存取在本機使用的 IP 位址和連接埠的站台或`http://localhost:85`。 第二個網站繫結可讓您存取網站，從其他電腦上使用電腦名稱的網域 (例如， http://testweb1:85)。
 13. 在**站台繫結**對話方塊中，按一下 **關閉**。
 14. 在**連線**] 窗格中，按一下 [**應用程式集區**。
 15. 在**應用程式集區**] 窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下 [**基本設定**。 根據預設，應用程式集區的名稱會符合網站的名稱 (例如， **DemoSite**)。
@@ -176,11 +176,11 @@ ms.lasthandoff: 03/15/2018
     > [!NOTE]
     > 範例解決方案需要.NET Framework 4.0。 這不是需要 Web Deploy 一般。
 
-為了讓您的網站提供內容，應用程式集區識別必須擁有讀取權限將內容儲存的本機資料夾。 在 IIS 7.5 中應用程式集區具有唯一的應用程式集區身分識別執行預設 （相較於舊版的 IIS，其中應用程式集區通常會使用 Network Service 帳戶）。 應用程式集區識別不是真正的使用者帳戶，並不會顯示任何所列之使用者或群組 & #x 2014年; 相反地，它會動態建立啟動應用程式集區時。 每個應用程式集區識別加入至本機**IIS\_IUSRS**安全性群組做為隱藏的項目。
+為了讓您的網站提供內容，應用程式集區識別必須擁有讀取權限將內容儲存的本機資料夾。 在 IIS 7.5 中應用程式集區具有唯一的應用程式集區身分識別執行預設 （相較於舊版的 IIS，其中應用程式集區通常會使用 Network Service 帳戶）。 應用程式集區識別不是真正的使用者帳戶，並不會顯示任何所列之使用者或群組&#x2014;相反地，它會動態建立啟動應用程式集區時。 每個應用程式集區識別加入至本機**IIS\_IUSRS**安全性群組做為隱藏的項目。
 
 若要授與應用程式集區識別的檔案或資料夾上的權限，您有兩個選項：
 
-- 指派的權限的應用程式集區識別直接使用格式**IIS AppPool\***[應用程式集區名稱] * (例如， **IIS AppPool\DemoSite**)。
+- 指派的權限的應用程式集區識別直接使用格式<strong>IIS AppPool\<n g ><em>[應用程式集區名稱]</em>(例如， <strong>IIS AppPool\DemoSite</strong>).
 - 指派的權限**IIS\_IUSRS**群組。
 
 最常見的作法是將權限指派給本機**IIS\_IUSRS**群組，因為這種方法可讓您變更應用程式集區不需要重新設定檔案系統權限。 下一個程序會使用此群組為基礎的方法。
@@ -198,8 +198,8 @@ ms.lasthandoff: 03/15/2018
 
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image8.png)
 5. 在**選取使用者或群組**] 對話方塊中，輸入**IIS\_IUSRS**，按一下**檢查名稱**，然後按一下 [**確定**。
-6. 在 **權限 * * * [資料夾名稱]*對話方塊中，請注意，新的群組已經被委派**讀取&amp;執行**，**列出資料夾內容**，和**讀取**預設權限。 保留不變，然後按一下**確定**。
-7. 按一下**確定**關閉*[資料夾名稱] * * * 屬性** 對話方塊。
+6. 在<strong>權限</strong><em>[資料夾名稱]</em>對話方塊中，請注意，新的群組已經被委派<strong>讀取&amp;執行</strong>，<strong>清單資料夾內容</strong>，和<strong>讀取</strong>預設權限。 保留不變，然後按一下<strong>確定</strong>。
+7. 按一下<strong>確定</strong>關閉<em>[資料夾名稱]</em><strong>屬性</strong> 對話方塊。
 
 做為最終工作之前您嘗試將任何 web 套件部署到您的伺服器，您應該確認 Web Deployment Agent Service 正在執行。 當您部署封裝，以從遠端電腦時，Web Deployment Agent Service 負責擷取及安裝套件的內容。 當您安裝 Web Deployment Tool，依預設並啟動服務，並會在 Network Service 識別下執行。
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 03/15/2018
 
 根據預設，遠端代理程式服務會接聽 TCP 連接埠 80，這個 url:
 
-http://[*server name*]/MSDEPLOYAGENTSERVICE
+http://[<em>server name</em>]/MSDEPLOYAGENTSERVICE
 
 在大部分情況下，您不需要任何額外的防火牆規則設定為遠端代理程式服務，因為網頁伺服器通常會接聽通訊埠 80 上的 HTTP 要求。 如果您自訂您的安裝以非標準連接埠上接聽，您必須視需要設定防火牆例外狀況。
 
@@ -233,6 +233,6 @@ http://[*server name*]/MSDEPLOYAGENTSERVICE
 
 如需如何設定自訂的 Microsoft Build Engine (MSBuild) 專案檔，以將 web 套件部署到遠端代理程式服務的指引，請參閱[目標環境設定部署屬性](configuring-deployment-properties-for-a-target-environment.md)。
 
->[!div class="step-by-step"]
-[上一頁](scenario-configuring-a-production-environment-for-web-deployment.md)
-[下一頁](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
+> [!div class="step-by-step"]
+> [上一頁](scenario-configuring-a-production-environment-for-web-deployment.md)
+> [下一頁](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)

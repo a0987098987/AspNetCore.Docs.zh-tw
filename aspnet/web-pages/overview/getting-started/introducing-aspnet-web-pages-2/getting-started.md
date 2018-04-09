@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
-title: "導入 ASP.NET Web Pages-開始使用 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-開始使用 |Microsoft 文件
 author: tfitzmac
-description: "WebMatrix 是不建議使用做為整合式的開發環境的 ASP.NET Web Pages。 使用 Visual Studio 或 Visual Studio 程式碼。 本指南..."
+description: WebMatrix 是不建議使用做為整合式的開發環境的 ASP.NET Web Pages。 使用 Visual Studio 或 Visual Studio 程式碼。 本指南...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: a6789ee75b4ca6e9443681cc7ec0bd3ab94cedcd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5fd67a230f76774e102094f42426b8bb126c0cc6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>介紹的 ASP.NET Web Pages-快速入門
 ====================
@@ -289,5 +289,5 @@ WebMatrix 啟動內建的 web 伺服器 (IIS Express) 可讓您測試您的電�
 
 [從頭開始建立 ASP.NET 網站](https://www.microsoft.com/web/post/create-an-aspnet-website-from-scratch)。 這是教學課程，特別是有關使用 WebMatrix (不 ASP.NET Web Pages)。 它會進入有點有關的一些其他功能不包含在此教學課程的集合中的 WebMatrix 的其他詳細資料。
 
->[!div class="step-by-step"]
-[下一步](intro-to-web-pages-programming.md)
+> [!div class="step-by-step"]
+> [下一步](intro-to-web-pages-programming.md)

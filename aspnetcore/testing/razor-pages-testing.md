@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面單位和整合測試 ASP.NET Core"
+title: Razor 頁面單位和整合測試中 ASP.NET Core
 author: guardrex
-description: "了解如何建立 Razor 網頁應用程式的單元和整合測試。"
+description: 了解如何建立 Razor 網頁應用程式的單元和整合測試。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: e4f87a8151e378717aa9198e4629711c4ea6ef77
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: dc5e8651f873b8e86aaa8fdf2527e461bb065424
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Razor 頁面單位和整合測試 ASP.NET Core
+# <a name="razor-pages-unit-and-integration-tests-in-aspnet-core"></a>Razor 頁面單位和整合測試中 ASP.NET Core
 
 作者：[Luke Latham](https://github.com/guardrex)
 
@@ -30,7 +30,7 @@ ASP.NET Core 支援單位和整合測試的 Razor 網頁應用程式。 測試�
 本主題假設您有基本了解 Razor 網頁應用程式、 單元測試，以及整合測試。 如果您熟悉 Razor 網頁應用程式或測試概念，請參閱下列主題：
 
 * [Razor 頁面簡介](xref:mvc/razor-pages/index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 * [整合測試](xref:testing/integration-testing)
 
@@ -59,7 +59,7 @@ dotnet test
 * 應用程式在其資料庫內容類別，包含資料存取層 (DAL) `AppDbContext` (*Data/AppDbContext.cs*)。 DAL 方法標示為`virtual`，可讓模擬測試中使用的方法。
 * 如果資料庫是空的應用程式啟動時，訊息存放區會使用三個訊息中初始化。 這些*植入訊息*也會用於測試。
 
-&#8224;EF 主題[測試 InMemory](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中的資料庫使用 MSTest 進行測試。 本主題使用[xUnit](https://xunit.github.io/)測試架構。 測試概念與測試實作跨不同測試架構很類似的但不是完全相同。
+&#8224;EF 主題[測試與 InMemory](/ef/core/miscellaneous/testing/in-memory)，說明如何使用記憶體中的資料庫使用 MSTest 進行測試。 本主題使用[xUnit](https://xunit.github.io/)測試架構。 測試概念與測試實作跨不同測試架構很類似的但不是完全相同。
 
 雖然此應用程式不會使用[儲存機制模式](http://martinfowler.com/eaaCatalog/repository.html)並不是有效的範例[工作單位 (UoW) 模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)，Razor 頁面支援這些模式開發。 如需詳細資訊，請參閱[設計基礎結構的持續性層級](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)， [ASP.NET MVC 應用程式中實作的儲存機制和工作單元模式](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)，和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（此範例會實作儲存機制模式）。
 

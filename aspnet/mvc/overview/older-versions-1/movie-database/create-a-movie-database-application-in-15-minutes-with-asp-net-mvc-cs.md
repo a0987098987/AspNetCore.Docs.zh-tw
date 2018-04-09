@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs
-title: "建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (C#) |Microsoft 文件"
+title: 建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (C#) |Microsoft 文件
 author: StephenWalther
-description: "作者： Stephen Walther 建置整個資料庫驅動 ASP.NET MVC 應用程式從開始到完成。 本教學課程是不錯的介紹人士新 t..."
+description: 作者： Stephen Walther 建置整個資料庫驅動 ASP.NET MVC 應用程式從開始到完成。 本教學課程是不錯的介紹人士新 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a67ca5422d4353b8c23b3fd804246906b8b6d717
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 81e0ae42bc3e7656c933ba70920eaeeffa4c4bd6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-c"></a>建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (C#)
 ====================
@@ -368,5 +368,5 @@ Visual Studio 檢視列出 5 中會自動產生。 這個檢視包含 HTML 表�
 
 在本教學課程中，我們會檢查 ASP.NET MVC 架構的最基本功能。 在未來的教學課程中，我們深入主題，例如控制器、 控制器的動作、 檢視、 檢視資料和 HTML helper。
 
->[!div class="step-by-step"]
-[下一步](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md)
+> [!div class="step-by-step"]
+> [下一步](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md)

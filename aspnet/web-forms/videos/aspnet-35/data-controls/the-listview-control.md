@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-35/data-controls/the-listview-control
-title: "ListView 控制項 |Microsoft 文件"
+title: ListView 控制項 |Microsoft 文件
 author: JoeStagner
-description: "藉由建立新的網站，我將示範新的清單檢視控制項。 清單檢視是資料磁碟機，因為我們需要的資料來源。 您可以使用任何資料..."
+description: 藉由建立新的網站，我將示範新的清單檢視控制項。 清單檢視是資料磁碟機，因為我們需要的資料來源。 您可以使用任何資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/data-controls/the-listview-control
 msc.type: video
-ms.openlocfilehash: d3c0235dc7fef7785de3c761187dd52458279ebd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 066bcc85b85a0d54d2a3d1f4cb4e3265e5bd2cce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-listview-control"></a>ListView 控制項
 ====================
@@ -26,5 +26,5 @@ ms.lasthandoff: 11/10/2017
 
 [&#9654;觀看影片 （10 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/the-listview-control)
 
->[!div class="step-by-step"]
-[下一步](the-datapager-control.md)
+> [!div class="step-by-step"]
+> [下一步](the-datapager-control.md)

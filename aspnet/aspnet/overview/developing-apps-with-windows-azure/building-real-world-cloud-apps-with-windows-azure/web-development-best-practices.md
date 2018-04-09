@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
-title: "Web 開發最佳作法 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件"
+title: Web 開發最佳作法 （使用 Azure 建置實際的雲端應用程式） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: de536a0ca39cb752c0962f0c4ae36eb00b586bff
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4c43b256018d91e89b3427f90fc5c6cd018641f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web 開發最佳做法 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -165,6 +165,6 @@ CDN:
 - [修正它範例應用程式的最佳作法](the-fix-it-sample-application.md#bestpractices)。 附錄 e-本書列出一些已修正它應用程式中實作的最佳作法。
 - [Web 開發人員檢查清單](http://webdevchecklist.com/asp.net)
 
->[!div class="step-by-step"]
-[上一頁](continuous-integration-and-continuous-delivery.md)
-[下一頁](single-sign-on.md)
+> [!div class="step-by-step"]
+> [上一頁](continuous-integration-and-continuous-delivery.md)
+> [下一頁](single-sign-on.md)

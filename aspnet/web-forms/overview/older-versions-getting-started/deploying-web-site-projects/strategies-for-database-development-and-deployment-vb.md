@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
-title: "資料庫開發和部署 (VB) 的策略 |Microsoft 文件"
+title: 資料庫開發和部署 (VB) 的策略 |Microsoft 文件
 author: rick-anderson
-description: "部署第一次的資料導向應用程式時您盲目地將資料庫複製到生產環境的開發環境中。 B...."
+description: 部署第一次的資料導向應用程式時您盲目地將資料庫複製到生產環境的開發環境中。 B....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 877056dc74e0b5a64d6e0f11d63ed9f642b0a2cd
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 26e6537b7cba704d3513a2e4ae32f9266834e6d3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="strategies-for-database-development-and-deployment-vb"></a>資料庫開發和部署 (VB) 的策略
 ====================
@@ -160,6 +160,6 @@ SQL 比較細分成群組的資料庫物件，快速顯示哪些物件存在於�
 
 祝您程式設計 ！
 
->[!div class="step-by-step"]
-[上一頁](configuring-a-website-that-uses-application-services-vb.md)
-[下一頁](displaying-a-custom-error-page-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-a-website-that-uses-application-services-vb.md)
+> [下一頁](displaying-a-custom-error-page-vb.md)

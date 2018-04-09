@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs
-title: "將動態內容加入至快取的頁面 (C#) |Microsoft 文件"
+title: 將動態內容加入至快取的頁面 (C#) |Microsoft 文件
 author: microsoft
-description: "了解如何混用動態和快取的內容，在相同的頁面。 快取後替換可讓您顯示橫幅廣告 o 之類的動態內容..."
+description: 了解如何混用動態和快取的內容，在相同的頁面。 快取後替換可讓您顯示橫幅廣告 o 之類的動態內容...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bee7e17ee16d75419c215558b1deb7d6f0d79448
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9f91cc07bc531cfb3edf577ab79e91fd94a57a3c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-dynamic-content-to-a-cached-page-c"></a>將動態內容加入至快取的頁面 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何混用動態和快取的內容，在相同的頁面。 快取後替換可讓您顯示橫幅廣告或具有已輸出快取網頁內的新聞項目，例如的動態內容。
 
@@ -101,6 +101,6 @@ RenderBannerInternal() 方法是私用方法。 這個方法不會公開為 help
 
 ## 
 
->[!div class="step-by-step"]
-[上一頁](improving-performance-with-output-caching-cs.md)
-[下一頁](creating-a-controller-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](improving-performance-with-output-caching-cs.md)
+> [下一頁](creating-a-controller-cs.md)

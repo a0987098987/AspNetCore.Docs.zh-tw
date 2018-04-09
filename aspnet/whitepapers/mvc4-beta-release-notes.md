@@ -2,21 +2,21 @@
 uid: whitepapers/mvc4-beta-release-notes
 title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
-description: "本文件說明 ASP.NET MVC 4 Beta for Visual Studio 2010 的版本。"
+description: 本文件說明 ASP.NET MVC 4 Beta for Visual Studio 2010 的版本。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/09/2011
 ms.topic: article
 ms.assetid: 666407bb-81de-4319-89ba-0302c382a208
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: d6797d1dbacff7503f74782d325ff5a9598970c0
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: d29f09d726e835c1eb1fc38e643a4bfe7f00f61c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -139,7 +139,7 @@ ASP.NET Web API 包含下列功能的支援：
 - **程式碼為基礎的組態：**等作業只透過程式碼已完成 Web API 設定、 清除離開您的組態檔。
 - **自我裝載：** Web Api 可以裝載於自己的處理序，除了 IIS 時仍在使用路由的完整功能及其他功能的 Web API。
 
-如需 ASP.NET Web API 的詳細資訊，請造訪[https://www.asp.net/web-api](../web-api/index.md)。
+如需 ASP.NET Web API 的詳細資訊，請造訪[ https://www.asp.net/web-api ](../web-api/index.md)。
 
 <a id="_Toc317096198"></a>
 ### <a name="aspnet-single-page-application"></a>ASP.NET 單一頁面應用程式
@@ -150,7 +150,7 @@ ASP.NET MVC 4 現在包含早期預覽中建置單一頁面應用程式的重要
 - 為單位的工作，以及 DAL 支援的其他 Web API 元件
 - 與以便迅速開始使用 scaffolding MVC 專案範本
 
-針對支援 ASP.NET MVC 4 中的單一頁面應用程式上的更多詳細資料，請瀏覽[https://www.asp.net/single-page-application](../single-page-application/index.md)。
+針對支援 ASP.NET MVC 4 中的單一頁面應用程式上的更多詳細資料，請瀏覽[ https://www.asp.net/single-page-application ](../single-page-application/index.md)。
 
 <a id="_Toc303253808"></a>
 ### <a name="enhancements-to-default-project-templates"></a>預設專案範本的增強功能
@@ -280,9 +280,9 @@ ASP.NET MVC 4 Beta 支援年 9 月 2011 1.5 版的 Windows Azure sdk。
     已修改的 web.config 中的組件繫結項目應該會出現，如下所示：
 
     [!code-xml[Main](mvc4-beta-release-notes/samples/sample12.xml)]
-- **「 新增控制器 」 項目範本在 Visual Basic 專案會產生不正確的命名空間時叫用 * * * 從區域內。** 當您將控制器加入 ASP.NET MVC 專案會使用 Visual Basic 中的區域時，項目範本會插入控制器錯誤的命名空間。 當您巡覽至控制器中的任何動作時，結果會是 「 找不到檔案 」 錯誤。  
+- <strong>「 新增控制器 」 項目範本在 Visual Basic 專案會產生不正確的命名空間時叫用</strong><strong>從區域內。</strong> 當您將控制器加入 ASP.NET MVC 專案會使用 Visual Basic 中的區域時，項目範本會插入控制器錯誤的命名空間。 當您巡覽至控制器中的任何動作時，結果會是 「 找不到檔案 」 錯誤。  
   
- 產生的命名空間會省略所有項目之後的根命名空間。 例如，產生的命名空間是*RootNamespace*但應該是*RootNamespace.Areas.AreaName.Controllers* 。
+  產生的命名空間會省略所有項目之後的根命名空間。 例如，產生的命名空間是*RootNamespace*但應該是*RootNamespace.Areas.AreaName.Controllers* 。
 - **Razor 檢視引擎中的重大變更。** 重寫成的 Razor 剖析器的一部分，下列類型已從移除*System.Web.Mvc.Razor*: 
 
     - *ModelSpan*
@@ -290,7 +290,7 @@ ASP.NET MVC 4 Beta 支援年 9 月 2011 1.5 版的 Windows Azure sdk。
     - *MvcCSharpRazorCodeGenerator*
     - *MvcVBRazorCodeParser*
 
- 也已移除下列方法： 
+  也已移除下列方法： 
 
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
@@ -305,15 +305,15 @@ ASP.NET MVC 4 Beta 支援年 9 月 2011 1.5 版的 Windows Azure sdk。
 
     **必要的更新**
 
-    1. 在根 Web.config 檔案中，加入新 *&lt;appSettings&gt;* 具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。
+  1. 在根 Web.config 檔案中，加入新*&lt;appSettings&gt;*具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample14.xml)]
-    2. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，然後選取 卸載專案。 然後名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
-    3. 找出下列組件參考： 
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample14.xml)]
+  2. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，然後選取 卸載專案。 然後名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
+  3. 找出下列組件參考： 
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample15.xml)]
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample15.xml)]
 
-        它們取代成下列：
+      它們取代成下列：
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample16.xml)]
-    4. 儲存變更，請關閉您先前所編輯，然後以滑鼠右鍵按一下專案並選取重新載入專案 (.csproj) 檔案。
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample16.xml)]
+  4. 儲存變更，請關閉您先前所編輯，然後以滑鼠右鍵按一下專案並選取重新載入專案 (.csproj) 檔案。

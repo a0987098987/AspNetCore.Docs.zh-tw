@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
-title: "在 IIS 中的 OWIN 中介軟體整合管線 |Microsoft 文件"
+title: 在 IIS 中的 OWIN 中介軟體整合管線 |Microsoft 文件
 author: Praburaj
-description: "本文將說明如何執行 OWIN 中介軟體元件 (OMCs) 在 IIS 整合式管線中，如何設定管線事件 OMC 上並執行。 您應該..."
+description: 本文將說明如何執行 OWIN 中介軟體元件 (OMCs) 在 IIS 整合式管線中，如何設定管線事件 OMC 上並執行。 您應該...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/07/2013
 ms.topic: article
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 5f6ed1ae0309e9bdd3ca4ae229195835f20bc729
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5df70c80084a32c5f61ac9288c8cdbfaaa47f124
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>IIS integrated 管線中的 OWIN 中介軟體
 ====================
@@ -83,13 +83,13 @@ Owin 中介軟體元件 (OMC) 可以設定為在下列的 OWIN 管線階段事�
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample9.cmd)]
 
- 呼叫`app.UseStageMarker`傳遞`Authenticate`或`PostAuthenticate`不會接受，而且將會擲回任何例外狀況。 在最新的階段，其預設值是執行 OMCs `PreHandlerExecute`。 階段標記用來使它們執行早。 如果您指定順序階段標記，我們會四捨五入至較早的標記。 換句話說，新增的階段標誌會說 「 不晚於階段 X 執行 」。 在 OWIN 管線中加入後它們最早的階段標誌 OMC 的執行。
+   呼叫`app.UseStageMarker`傳遞`Authenticate`或`PostAuthenticate`不會接受，而且將會擲回任何例外狀況。 在最新的階段，其預設值是執行 OMCs `PreHandlerExecute`。 階段標記用來使它們執行早。 如果您指定順序階段標記，我們會四捨五入至較早的標記。 換句話說，新增的階段標誌會說 「 不晚於階段 X 執行 」。 在 OWIN 管線中加入後它們最早的階段標誌 OMC 的執行。
 4. 若要呼叫的最早階段`app.UseStageMarker`wins。 例如，如果您切換的順序`app.UseStageMarker`呼叫我們先前的範例：
 
     [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample10.cs?highlight=13,19)]
 
- [輸出] 視窗會顯示： 
+   [輸出] 視窗會顯示： 
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample11.cmd)]
 
- 所有執行中 OMCs`AuthenticateRequest`階段，因為最後一個 OMC 向`Authenticate`事件，而`Authenticate`事件位於所有其他事件。
+   所有執行中 OMCs`AuthenticateRequest`階段，因為最後一個 OMC 向`Authenticate`事件，而`Authenticate`事件位於所有其他事件。

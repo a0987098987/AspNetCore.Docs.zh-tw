@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/preventing-open-redirection-attacks
-title: "無法開啟重新導向攻擊 (C#) |Microsoft 文件"
+title: 無法開啟重新導向攻擊 (C#) |Microsoft 文件
 author: jongalloway
-description: "本教學課程說明如何避免開啟重新導向攻擊，以及在 ASP.NET MVC 應用程式中。 本教學課程將告訴您所做的變更..."
+description: 本教學課程說明如何避免開啟重新導向攻擊，以及在 ASP.NET MVC 應用程式中。 本教學課程將告訴您所做的變更...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 17944c0600a174176e3e9940f414b34f0835b800
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ec1cd1791eb6d32e7c1ea50bc6626929cad2960e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="preventing-open-redirection-attacks-c"></a>無法開啟重新導向攻擊 (C#)
 ====================
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/30/2018
 
 **圖 01**： 與開啟的重新導向的登入頁面
 
-ReturnUrl querystring 參數未經過驗證，因為攻擊者可以修改它的任何 URL 位址中插入參數來進行開啟重新導向攻擊。 若要示範這點，我們可以修改的 ReturnUrl 參數[http://bing.com](http://bing.com)，因此會產生登入 URL/帳戶/登入？ ReturnUrl = http://www.bing.com/。 在成功登入至站台，我們會重新導向至[http://bing.com](http://bing.com)。此重新導向未經過驗證，因為它無法改為指向嘗試欺騙使用者惡意網站。
+ReturnUrl querystring 參數未經過驗證，因為攻擊者可以修改它的任何 URL 位址中插入參數來進行開啟重新導向攻擊。 若要示範這點，我們可以修改的 ReturnUrl 參數[ http://bing.com ](http://bing.com)，因此會產生登入 URL/帳戶/登入？ReturnUrl =<http://www.bing.com/>。 在成功登入至站台，我們會重新導向至[ http://bing.com ](http://bing.com)。此重新導向未經過驗證，因為它無法改為指向嘗試欺騙使用者惡意網站。
 
 ### <a name="a-more-complex-open-redirection-attack"></a>更複雜的開啟重新導向攻擊
 
@@ -55,7 +55,7 @@ ReturnUrl querystring 參數未經過驗證，因為攻擊者可以修改它的�
 
 **圖 02**: NerdDinner 與開啟的重新導向的登入頁面
 
-當我們正確登入時，ASP.NET MVC AccountController 登入動作重新導向至我們 returnUrl querystring 參數中指定的 URL。 在此情況下，它是攻擊者有輸入 URL，也就是[http://nerddiner.com/Account/LogOn](http://nerddiner.com/Account/LogOn)。 我們非常戒慎守望，尤其是因為攻擊者已經確定，請小心就很可能是我們不會注意到這一點，除非其偽造的頁面看起來完全合法的登入頁面。 這個登入頁面將包含錯誤訊息，要求，我們登入一次。 同時，我們必須輸入錯誤密碼。
+當我們正確登入時，ASP.NET MVC AccountController 登入動作重新導向至我們 returnUrl querystring 參數中指定的 URL。 在此情況下，它是攻擊者有輸入 URL，也就是[ http://nerddiner.com/Account/LogOn ](http://nerddiner.com/Account/LogOn)。 我們非常戒慎守望，尤其是因為攻擊者已經確定，請小心就很可能是我們不會注意到這一點，除非其偽造的頁面看起來完全合法的登入頁面。 這個登入頁面將包含錯誤訊息，要求，我們登入一次。 同時，我們必須輸入錯誤密碼。
 
 [![](preventing-open-redirection-attacks/_static/image6.png)](preventing-open-redirection-attacks/_static/image5.png)
 
@@ -67,13 +67,13 @@ ReturnUrl querystring 參數未經過驗證，因為攻擊者可以修改它的�
 
 ASP.NET MVC 2 應用程式中的登入動作的程式碼如下所示。 請注意，成功的登入，控制器會傳回重新導向根據 returnurl 進行。 您可以查看針對 returnUrl 參數執行任何驗證。
 
-**列出 1 – 在 ASP.NET MVC 2 登入動作`AccountController.cs`**
+**列出 1 – 在 ASP.NET MVC 2 登入動作 `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample1.cs)]
 
 現在讓我們看看 ASP.NET MVC 3 登入動作所做的變更。 此程式碼已變更為呼叫中名為的 System.Web.Mvc.Url 協助程式類別的新方法來驗證 returnUrl 參數`IsLocalUrl()`。
 
-**列出 2 – 在 ASP.NET MVC 3 登入動作`AccountController.cs`**
+**列出 2 – 在 ASP.NET MVC 3 登入動作 `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample2.cs)]
 
@@ -85,7 +85,7 @@ ASP.NET MVC 2 應用程式中的登入動作的程式碼如下所示。 請注�
 
 UrlHelper IsLocalUrl() 方法實際上只呼叫 System.Web.WebPages，做為此驗證中的方法也會使用 ASP.NET Web Pages 應用程式。
 
-**列出 3 – 從 ASP.NET MVC 3 UrlHelper IsLocalUrl() 方法`class`**
+**列出 3 – 從 ASP.NET MVC 3 UrlHelper IsLocalUrl() 方法 `class`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample3.cs)]
 
@@ -107,7 +107,7 @@ IsUrlLocalToHost 方法包含的實際驗證邏輯，在列出的 4 所示。
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample6.cs)]
 
-現在我們可以嘗試使用外部的傳回 URL 登入來測試開啟重新導向攻擊。 讓我們使用/帳戶/登入？ ReturnUrl = http://www.bing.com/ 一次。
+現在我們可以嘗試使用外部的傳回 URL 登入來測試開啟重新導向攻擊。 讓我們使用 /Account/LogOn 嗎？ReturnUrl =<http://www.bing.com/>一次。
 
 [![](preventing-open-redirection-attacks/_static/image8.png)](preventing-open-redirection-attacks/_static/image7.png)
 

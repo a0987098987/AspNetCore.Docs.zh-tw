@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-vb
-title: "以動態方式控制 UpdatePanel 動畫 (VB) |Microsoft 文件"
+title: 以動態方式控制 UpdatePanel 動畫 (VB) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 75b1f169724d8d3f8bcbc46198d320eeb8e7260c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ff2853b4457a83a7367b4d1072d21929c40a3ed2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-controlling-updatepanel-animations-vb"></a>以動態方式控制 UpdatePanel 動畫 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 UpdatePanel 的內容，特殊的擴充項存在，高度依賴動畫 framework: UpdatePanelAnimation。 它也可以一起 UpdatePanel 觸發程序。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 內容的`UpdatePanel`，特殊的擴充項存在，高度依賴動畫 framework: `UpdatePanelAnimation`。 它也可搭配`UpdatePanel`觸發程序。
 
@@ -65,5 +65,5 @@ ms.lasthandoff: 11/10/2017
 
 目前時間淡入 ([按一下以檢視完整大小的影像](dynamically-controlling-updatepanel-animations-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一步](animating-an-updatepanel-control-vb.md)
+> [!div class="step-by-step"]
+> [上一步](animating-an-updatepanel-control-vb.md)

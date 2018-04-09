@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
-title: "批次刪除 (C#) |Microsoft 文件"
+title: 批次刪除 (C#) |Microsoft 文件
 author: rick-anderson
-description: "瞭解如何刪除單一作業中的多個資料庫記錄。 在使用者介面層，我們建置時建立在稍早 tut 增強 GridView..."
+description: 瞭解如何刪除單一作業中的多個資料庫記錄。 在使用者介面層，我們建置時建立在稍早 tut 增強 GridView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 71c4b323c2604d9e775f75272bb9565505580522
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 59c90dcf373d19aad42250ee6dedba5f09f833b5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-deleting-c"></a>批次刪除 (C#)
 ====================
@@ -109,12 +109,12 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Hilton Giesenow 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](batch-updating-cs.md)
-[下一頁](batch-inserting-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](batch-updating-cs.md)
+> [下一頁](batch-inserting-cs.md)

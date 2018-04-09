@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 應用程式中強制使用 HTTPS"
+title: 強制執行中的 ASP.NET Core HTTPS
 author: rick-anderson
-description: "示範如何要求 HTTPS/TLS 中 ASP.NET Core web 應用程式。"
+description: 示範如何要求 HTTPS/TLS 中 ASP.NET Core web 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 2/9/2018
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: dc320faf0048200412f131ea816f33f29ac023e1
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 2ebb975e1ea17698cee13ca00d3f5df4a5135e38
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="enforcing-https-in-an-aspnet-core-app"></a>ASP.NET Core 應用程式中強制使用 HTTPS
+# <a name="enforce-https-in-an-aspnet-core"></a>強制執行中的 ASP.NET Core HTTPS
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

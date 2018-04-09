@@ -1,7 +1,7 @@
 ---
-title: "授權簡介"
+title: 在 ASP.NET Core 授權簡介
 author: rick-anderson
-description: "本文件提供授權的基本說明，並說明授權與 ASP.NET Core 關聯的方式。"
+description: 了解授權和授權 ASP.NET Core 應用程式中的運作方式的基本概念。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: 3fef6d38672af8871c04b65834789a39a7df8487
-ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
+ms.openlocfilehash: 7ba1966dcaf1ce0510f489cfe0ff11501faffa56
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="introduction"></a>簡介
+# <a name="introduction-to-authorization-in-aspnet-core"></a>在 ASP.NET Core 授權簡介
 
 <a name="security-authorization-introduction"></a>
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/20/2018
 
 ## <a name="authorization-types"></a>授權類型
 
-ASP.NET Core 授權提供簡單、 宣告式[角色](roles.md)和 rich[以原則為基礎](policies.md)模型。 授權需求，以表示和處理常式評估根據需求的使用者宣告。 命令式檢查可以根據簡單的原則或原則評估使用者識別與使用者嘗試存取資源的內容。
+ASP.NET Core 授權提供簡單、 宣告式[角色](xref:security/authorization/roles)和 rich[以原則為基礎](xref:security/authorization/policies)模型。 授權需求，以表示和處理常式評估根據需求的使用者宣告。 命令式檢查可以根據簡單的原則或原則評估使用者識別與使用者嘗試存取資源的內容。
 
 ## <a name="namespaces"></a>命名空間
 

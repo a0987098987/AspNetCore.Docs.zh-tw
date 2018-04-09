@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
-title: "選擇正確的方法，以 Web 部署 |Microsoft 文件"
+title: 選擇正確的方法，以 Web 部署 |Microsoft 文件
 author: jrjlee
-description: "當您使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 2.0 或更新版本時，有三個主要的方法，可用來取得..."
+description: 當您使用網際網路資訊服務 (IIS) Web Deployment Tool (Web Deploy) 2.0 或更新版本時，有三個主要的方法，可用來取得...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: b77aa37160f3822f58908866e44497aea3d3bdc8
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2d690744687af93a69743dc6ce6c853629f61f5d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="choosing-the-right-approach-to-web-deployment"></a>選擇 Web 部署的正確方法
 ====================
@@ -118,7 +118,7 @@ ms.lasthandoff: 03/15/2018
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample6.cmd)]
 
 
-例如，假設建置程序設定為自動部署到預備環境每次成功建置後的 web 應用程式。 如果您使用遠端代理程式的方法，您必須在目的地伺服器上進行建置處理序身分識別系統管理員。 相反地，使用 Web 部署的處理常式方法您可以提供給非系統管理員使用者 & #x 2014;**FABRIKAM\stagingdeployer**特定 IIS 網站，並在建置程序的權限可以在此情況下 & #x 2014; 提供這些認證來部署 web 封裝。
+例如，假設建置程序設定為自動部署到預備環境每次成功建置後的 web 應用程式。 如果您使用遠端代理程式的方法，您必須在目的地伺服器上進行建置處理序身分識別系統管理員。 相反地，使用 Web 部署的處理常式方法您可以提供給非系統管理員使用者&#x2014;**FABRIKAM\stagingdeployer**在此情況下&#x2014;特定 IIS 網站，並在建置程序的權限可以提供這些若要部署 web 封裝的認證。
 
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample7.cmd)]
@@ -150,6 +150,6 @@ Web 部署處理常式提供部署在預備環境、 託管的環境和內部網
 
 多個一般指引，您可以在其中部署 web 封裝，從遠端電腦的不同方式的詳細資訊，請參閱[使用 Web 部署遠端](https://technet.microsoft.com/library/ee461175(WS.10).aspx)。 如需使用 Web 部署隨選安裝的詳細資訊，請參閱[Web 部署隨選](https://technet.microsoft.com/library/ee517345(WS.10).aspx)。
 
->[!div class="step-by-step"]
-[上一頁](configuring-server-environments-for-web-deployment.md)
-[下一頁](scenario-configuring-a-test-environment-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-server-environments-for-web-deployment.md)
+> [下一頁](scenario-configuring-a-test-environment-for-web-deployment.md)

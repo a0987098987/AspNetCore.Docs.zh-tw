@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
-title: "部署 Web 應用程式中使用 Visual Studio 2010 的企業案例 |Microsoft 文件"
+title: 部署 Web 應用程式中使用 Visual Studio 2010 的企業案例 |Microsoft 文件
 author: jrjlee
-description: "這組教學課程描述工具和技術可用來部署 web 應用程式中各種企業案例。 它說明如何充分運用..."
+description: 這組教學課程描述工具和技術可用來部署 web 應用程式中各種企業案例。 它說明如何充分運用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: 99bab371dd34b30f3554843e49bbec7f57c3f96c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 921b1ccd8a1f2109a51f3f75149588422fefb91d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-web-applications-in-enterprise-scenarios-using-visual-studio-2010"></a>部署 Web 應用程式中使用 Visual Studio 2010 的企業案例
 ====================
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 > > 雖然這些教學課程描述 TFS 作為 CI 伺服器，本指南是輕鬆地調整 CI 的任何伺服器。 您不需要詳細的知識的了解並運用教學課程的 TFS。
 > 
 > 
-> 這些教學課程的義大利文的翻譯，請瀏覽[http://www.lucamorelli.it](http://www.lucamorelli.it)。
+> 這些教學課程的義大利文的翻譯，請瀏覽[ http://www.lucamorelli.it ](http://www.lucamorelli.it)。
 
 
 ## <a name="about-the-authors"></a>關於作者
@@ -54,7 +54,7 @@ Benjamin Curry 會與主體 concentrated technology[內容 Master](http://www.co
 若要遵循逐步解說，並執行這些教學課程描述的工作，您將需要在開發電腦上安裝此軟體：
 
 - Visual Studio 2010 Premium 或 Ultimate Edition 含 Service Pack 1
-- .NET framework 4.0
+- .NET Framework 4.0
 - .NET framework 3.5 Service pack 1
 - ASP.NET MVC 3.0
 - IIS 7.5 Express
@@ -80,5 +80,5 @@ Benjamin Curry 會與主體 concentrated technology[內容 Master](http://www.co
 
 這組教學課程會使用範例方案實際的層級的複雜性，以及虛構的企業部署案例中，以提供參考實作，以及提供的工作和逐步解說的一般內容。 下一個主題[企業 Web 部署： 案例概觀](enterprise-web-deployment-scenario-overview.md)，介紹案例和範例方案。 從該處，您可以透過教學課程和主題最符合您的需求。
 
->[!div class="step-by-step"]
-[下一步](enterprise-web-deployment-scenario-overview.md)
+> [!div class="step-by-step"]
+> [下一步](enterprise-web-deployment-scenario-overview.md)

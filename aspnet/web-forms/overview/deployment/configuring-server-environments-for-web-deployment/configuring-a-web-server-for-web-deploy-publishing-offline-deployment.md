@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
-title: "設定 Web 伺服器的 Web Deploy 發行 （離線部署） |Microsoft 文件"
+title: 設定 Web 伺服器的 Web Deploy 發行 （離線部署） |Microsoft 文件
 author: jrjlee
-description: "本主題描述如何設定 IIS web 伺服器支援離線網頁發佈和部署。 當您使用 Internet Information Services (我..."
+description: 本主題描述如何設定 IIS web 伺服器支援離線網頁發佈和部署。 當您使用 Internet Information Services (我...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: dfd3ab41e44a3b000bf2c25a5a71db4344617bf2
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: e28bdea26847d4e660d6ee59b15eb38f749d2314
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>設定 Web 伺服器的 Web Deploy 發行 （離線部署）
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/15/2018
 > 如需有關主要功能、 優點，與這些方法的缺點的詳細資訊，請參閱[選擇 Web 部署的權限方法](choosing-the-right-approach-to-web-deployment.md)。
 
 
-是，如果您的網路基礎結構或安全性限制導致無法遠端部署。 這是最有可能在網際網路對向實際執行環境，其中的 web 伺服器在隔離 & #x 2014; 這種情況可能是實體或透過防火牆和子網路 & #x 2014年; 從您的伺服器基礎結構的其餘部分。
+是，如果您的網路基礎結構或安全性限制導致無法遠端部署。 這是最有可能會發生這個情況，在網際網路對向實際執行環境中，網頁伺服器的隔離&#x2014;是實體或透過防火牆和子網路&#x2014;從您的伺服器基礎結構的其餘部分。
 
 很明顯地，這個方法會變得較不建議，如果您的 web 應用程式會定期更新。 如果您的基礎結構可讓它，您可能要考慮啟用遠端部署，使用 Web 部署處理常式或 Web 部署遠端代理程式服務。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 03/15/2018
 7. 在導覽窗格中，按一下**伺服器**。
 8. 在**IIS 7 建議組態**資料列中，按一下 **新增**。
 9. 在**Web 部署工具 2.1**資料列中，按一下 **新增**。
-10. 按一下 [安裝] 。 Web Platform Installer 會為您顯示; 以及任何相關聯的相依性 & #x 2014;，也要安裝的產品 & #x 2014年的清單，並將會提示您接受授權條款。
+10. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image2.png)
 11. 檢閱授權條款，然後如果您同意條款，按一下**我接受**。
@@ -160,7 +160,7 @@ ms.lasthandoff: 03/15/2018
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image6.png)
 
     > [!NOTE]
-    > 第一個站台繫結可讓您存取在本機使用的 IP 位址和連接埠的站台或`http://localhost:85`。 第二個網站繫結可讓您從使用電腦名稱 (例如，http://proweb1:85) 的網域上的其他電腦存取這個網站。
+    > 第一個站台繫結可讓您存取在本機使用的 IP 位址和連接埠的站台或`http://localhost:85`。 第二個網站繫結可讓您存取網站，從其他電腦上使用電腦名稱的網域 (例如， http://proweb1:85)。
 13. 在**站台繫結**對話方塊中，按一下 **關閉**。
 14. 在**連線**] 窗格中，按一下 [**應用程式集區**。
 15. 在**應用程式集區**] 窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下 [**基本設定**。 根據預設，應用程式集區的名稱會符合網站的名稱 (例如， **DemoSite**)。
@@ -171,11 +171,11 @@ ms.lasthandoff: 03/15/2018
     > [!NOTE]
     > 範例解決方案需要.NET Framework 4.0。 這不是需要 Web Deploy 一般。
 
-為了讓您的網站提供內容，應用程式集區識別必須擁有讀取權限將內容儲存的本機資料夾。 在 IIS 7.5 中應用程式集區具有唯一的應用程式集區身分識別執行預設 （相較於舊版的 IIS，其中應用程式集區通常會使用 Network Service 帳戶）。 應用程式集區識別不是真正的使用者帳戶，並不會顯示任何所列之使用者或群組 & #x 2014年; 相反地，它會動態建立啟動應用程式集區時。 每個應用程式集區識別加入至本機**IIS\_IUSRS**安全性群組做為隱藏的項目。
+為了讓您的網站提供內容，應用程式集區識別必須擁有讀取權限將內容儲存的本機資料夾。 在 IIS 7.5 中應用程式集區具有唯一的應用程式集區身分識別執行預設 （相較於舊版的 IIS，其中應用程式集區通常會使用 Network Service 帳戶）。 應用程式集區識別不是真正的使用者帳戶，並不會顯示任何所列之使用者或群組&#x2014;相反地，它會動態建立啟動應用程式集區時。 每個應用程式集區識別加入至本機**IIS\_IUSRS**安全性群組做為隱藏的項目。
 
 若要授與應用程式集區識別的檔案或資料夾上的權限，您有兩個選項：
 
-- 指派的權限的應用程式集區識別直接使用格式**IIS AppPool\***[應用程式集區名稱] * (例如， **IIS AppPool\DemoSite**)。
+- 指派的權限的應用程式集區識別直接使用格式<strong>IIS AppPool\<n g ><em>[應用程式集區名稱]</em>(例如， <strong>IIS AppPool\DemoSite</strong>).
 - 指派的權限**IIS\_IUSRS**群組。
 
 最常見的作法是將權限指派給本機**IIS\_IUSRS**群組，因為這種方法可讓您變更應用程式集區不需要重新設定檔案系統權限。 下一個程序會使用此群組為基礎的方法。
@@ -193,8 +193,8 @@ ms.lasthandoff: 03/15/2018
 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image8.png)
 5. 在**選取使用者或群組**] 對話方塊中，輸入**IIS\_IUSRS**，按一下**檢查名稱**，然後按一下 [**確定**。
-6. 在 **權限 * * * [資料夾名稱]*對話方塊中，請注意，新的群組已經被委派**讀取&amp;執行**，**列出資料夾內容**，和**讀取**預設權限。 保留不變，然後按一下**確定**。
-7. 按一下**確定**關閉*[資料夾名稱] * * * 屬性** 對話方塊。
+6. 在<strong>權限</strong><em>[資料夾名稱]</em>對話方塊中，請注意，新的群組已經被委派<strong>讀取&amp;執行</strong>，<strong>清單資料夾內容</strong>，和<strong>讀取</strong>預設權限。 保留不變，然後按一下<strong>確定</strong>。
+7. 按一下<strong>確定</strong>關閉<em>[資料夾名稱]</em><strong>屬性</strong> 對話方塊。
 
 ## <a name="disable-the-remote-agent-service"></a>停用遠端代理程式服務
 
@@ -226,6 +226,6 @@ ms.lasthandoff: 03/15/2018
 - 應用程式集區身分識別是否有讀取權限為您的網站的 [來源] 資料夾？
 - 已停止 Web Deployment Agent Service？
 
->[!div class="step-by-step"]
-[上一頁](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
-[下一頁](configuring-a-database-server-for-web-deploy-publishing.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
+> [下一頁](configuring-a-database-server-for-web-deploy-publishing.md)

@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 簡介"
+title: ASP.NET Core 簡介
 author: rick-anderson
-description: "取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。"
+description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 02/28/2018
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: index
-ms.openlocfilehash: 103b7862900e08488dcc0f5fc78c08fefcfa17f3
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 63ea2aaf7b502ee08fc2f5268d17ed459adaee73
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -53,7 +53,7 @@ ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/index#build-web-apis) 
 * [Razor 頁面](xref:mvc/razor-pages/index) (ASP.NET Core 2.0 中的新功能) 是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。
 * [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:mvc/razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
-* [多個資料格式和內容交涉](mvc/models/formatting.md)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
+* [多個資料格式和內容交涉](xref:web-api/advanced/formatting)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
 * [模型繫結](xref:mvc/models/model-binding)會自動將 HTTP 要求中的資料對應至動作方法參數。
 * [模型驗證](xref:mvc/models/validation)會自動執行用戶端和伺服器端驗證。
 
@@ -79,7 +79,7 @@ ASP.NET Core 可將目標指向 NET Core 或 .NET Framework。 將目標指向 .
 
 如需詳細資訊，請參閱下列資源：
 
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [ASP.NET Core 教學課程](xref:tutorials/index)
 * [ASP.NET Core 基本概念](xref:fundamentals/index)
 * [每週的 ASP.NET 社群之聲](https://live.asp.net/) \(英文\) 涵蓋了小組的進度和計劃， 並提供新的部落格和協力廠商軟體。

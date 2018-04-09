@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
-title: "了解 ASP.NET AJAX 當地語系化 |Microsoft 文件"
+title: 了解 ASP.NET AJAX 當地語系化 |Microsoft 文件
 author: scottcate
-description: "當地語系化是設計並將特定語言和文化特性的支援整合到應用程式或應用程式元件的程序。 Mic..."
+description: 當地語系化是設計並將特定語言和文化特性的支援整合到應用程式或應用程式元件的程序。 Mic...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: 5b801586ea77af78284f780fe47fe09cafb984af
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 565b0294f57b784bc592b286b3d8b28504110415
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-localization"></a>了解 ASP.NET AJAX 當地語系化
 ====================
@@ -65,8 +65,8 @@ Microsoft AJAX Framework 指令碼管理以用於部署和測試指令碼支援�
 | --- | --- |
 | Script.js | 發行版本文化特性中性的指令碼。 |
 | Script.debug.js | 偵錯版本文化特性中性的指令碼。 |
-| Script.en US.js | 發行版英文，美國指令碼。 |
-| Script.debug.es CO.js | 偵錯版本西班牙文，哥倫比亞省的指令碼。 |
+| Script.en-US.js | 發行版英文，美國指令碼。 |
+| Script.debug.es-CO.js | 偵錯版本西班牙文，哥倫比亞省的指令碼。 |
 
 ## <a name="walkthrough-create-an-localized-embedded-script"></a>逐步解說： 建立當地語系化的內嵌指令碼
 
@@ -149,10 +149,10 @@ ScriptManager 可讓多個當地語系化的應用程式的自動行為：
 
 .NET Framework 在本質上支援豐富的當地語系化架構，利用附屬組件和 XML 資源 (.resx) 檔案提供統一的方式來尋找資源字串和影像。 ASP.NET AJAX 擴充功能，包括 Microsoft AJAX Framework 和 Microsoft AJAX 指令碼程式庫提供支援對此程式設計模型到用戶端程式碼中，啟用簡單的資源字串查閱。 附屬組件支援在自動包含透過 ScriptResource.axd 指令碼資源 （實際的.js 檔案），只要檔案名稱依照指定的命名配置。 這項支援，ASP.NET AJAX 擴充功能簡化將指令碼的當地語系化和全球化應用程式。
 
-## <a name="bio"></a>*簡歷*
+## <a name="bio"></a>*Bio*
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[上一頁](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
-[下一頁](understanding-asp-net-ajax-web-services.md)
+> [!div class="step-by-step"]
+> [上一頁](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
+> [下一頁](understanding-asp-net-ajax-web-services.md)

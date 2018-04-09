@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
-title: "組件 8： 最後的頁面、 例外狀況處理，以及結論 |Microsoft 文件"
+title: 組件 8： 最後的頁面、 例外狀況處理，以及結論 |Microsoft 文件
 author: JoeStagner
-description: "此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 8 部將加入連絡人的頁面，頁面上，以及例外狀況的相關..."
+description: 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 8 部將加入連絡人的頁面，頁面上，以及例外狀況的相關...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: fce1a20f9d1093b6c60542d8a786ddf54fdc922c
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: f82294aab0616012393cf3e10f932f6d1ad0cdb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-8-final-pages-exception-handling-and-conclusion"></a>組件 8： 最後的頁面、 例外狀況處理，以及結束時
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/12/2018
 > 此教學課程系列詳細列出所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 8 部將加入連絡人的頁面，頁面上和例外狀況處理的相關。 這是數列的結論。
 
 
-## <a id="_Toc260221680"></a>請連絡 頁面 （從 ASP.NET 傳送電子郵件）
+## <a id="_Toc260221680"></a>  請連絡 頁面 （從 ASP.NET 傳送電子郵件）
 
 建立名為 ContactUs.aspx 的新頁面
 
@@ -43,11 +43,11 @@ ms.lasthandoff: 02/12/2018
 
 [!code-xml[Main](tailspin-spyworks-part-8/samples/sample2.xml)]
 
-## <a id="_Toc260221681"></a>有關頁面
+## <a id="_Toc260221681"></a>  有關頁面
 
 建立名為 AboutUs.aspx 的頁面，並新增任何您喜歡的內容。
 
-## <a id="_Toc260221682"></a>全域例外狀況處理常式
+## <a id="_Toc260221682"></a>  全域例外狀況處理常式
 
 最後，我們有整個應用程式擲回例外狀況，並發生未預期的情況下，冷也有我們的 web 應用程式中造成未處理的例外狀況。
 
@@ -75,11 +75,11 @@ ms.lasthandoff: 02/12/2018
 
 [!code-csharp[Main](tailspin-spyworks-part-8/samples/sample6.cs)]
 
-## <a id="_Toc260221683"></a>結論
+## <a id="_Toc260221683"></a>  結論
 
 我們已看到，ASP.NET WebForms 輕鬆建立複雜的網站與資料庫存取權，成員資格、 AJAX 等。 很快。
 
 希望本教學課程已提供您要開始建置您自己的 ASP.NET WebForms 應用程式所需的工具 ！
 
->[!div class="step-by-step"]
-[上一步](tailspin-spyworks-part-7.md)
+> [!div class="step-by-step"]
+> [上一步](tailspin-spyworks-part-7.md)

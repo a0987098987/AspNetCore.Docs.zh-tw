@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
-title: "使用檢視主版頁面 (VB) 建立頁面配置 |Microsoft 文件"
+title: 使用檢視主版頁面 (VB) 建立頁面配置 |Microsoft 文件
 author: microsoft
-description: "在本教學課程中，您會學習如何建立一般的頁面配置多個網頁應用程式中，藉由運用檢視主版頁面。 您可以使用..."
+description: 在本教學課程中，您會學習如何建立一般的頁面配置多個網頁應用程式中，藉由運用檢視主版頁面。 您可以使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5466ea8a33bd2ccfe36c0f01b6b474bbb8d540a3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5208cedd8d24a290a0227bdcbaa84ae6210cd969
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-page-layouts-with-view-master-pages-vb"></a>使用檢視主版頁面 (VB) 建立頁面配置
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_12_VB.pdf)
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 例如，檢視主版頁面中列出的 1 會定義兩欄版面配置。 它包含兩個`<contentplaceholder>`標記。 一個`<ContentPlaceHolder>`每個資料行。
 
-**列出 1 –`Views\Shared\Site.master`**
+**列出 1 – `Views\Shared\Site.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample1.aspx)]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/10/2017
 
 建立新的檢視內容頁面上，並根據 Site.master 主版頁面之後，您會取得列表 2 中的檔案。
 
-**列出 2 –`Views\Home\Index.aspx`**
+**列出 2 – `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample2.aspx)]
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/10/2017
 
 例如，修改的索引檢視表中列出的 3 只包含兩個`<asp:Content>`標記。 每個`<asp:Content>`標記包含一些文字。
 
-**列出 3 –`Views\Home\Index.aspx (modified)`**
+**列出 3 – `Views\Home\Index.aspx (modified)`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample3.aspx)]
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/10/2017
 
 從個別的檢視內容頁面上修改主版頁面內容的替代方法是將您想要修改的區域`<asp:ContentPlaceHolder>`標記。 例如，假設您想要變更標題，不僅 meta 標記，由主版檢視頁面呈現。 主版檢視頁面中列出的 4 包含`<asp:ContentPlaceHolder>`標記內其`<head>`標記。
 
-**列出 4 –`Views\Shared\Site2.master`**
+**列出 4 – `Views\Shared\Site2.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample5.aspx)]
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/10/2017
 
 內容檢視中的頁面列出 5 會覆寫`<asp:ContentPlaceHolder>`才能顯示自訂標題和自訂 meta 標記的標記。
 
-**列出 5 –`Views\Home\Index2.aspx`**
+**列出 5 – `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample6.aspx)]
 
@@ -143,6 +143,6 @@ ms.lasthandoff: 11/10/2017
 
 本教學課程為您提供的基本介紹，檢視主版頁面及內容頁面。 您已學習如何建立新的檢視主版頁面，並建立其為基礎的檢視內容頁面。 我們也會檢查您如何修改檢視主版頁面的特定檢視的內容頁面的內容。
 
->[!div class="step-by-step"]
-[上一頁](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
-[下一頁](passing-data-to-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+> [下一頁](passing-data-to-view-master-pages-vb.md)

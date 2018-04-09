@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb
-title: "如何使用 HTML 編輯器控制項？ (VB) |Microsoft 文件"
+title: 如何使用 HTML 編輯器控制項？ (VB) | Microsoft Docs
 author: microsoft
-description: "HTMLEditor 是 ASP.NET AJAX 控制項，可讓您輕鬆地建立和編輯 HTML 內容，透過在工具列中的按鈕。"
+description: HTMLEditor 是 ASP.NET AJAX 控制項，可讓您輕鬆地建立和編輯 HTML 內容，透過在工具列中的按鈕。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a34b3dd53f031856906eca923b6ad6f43a0aaecc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4833949a54fa9ae12eaf7b596a5fe1ddfd1f7b7a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-html-editor-control-vb"></a>如何使用 HTML 編輯器控制項？ (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > HTMLEditor 是 ASP.NET AJAX 控制項，可讓您輕鬆地建立和編輯 HTML 內容，透過在工具列中的按鈕。
 
@@ -85,7 +85,7 @@ HTML 編輯器內容屬性用來擷取輸入到 HTML 編輯器中的 HTML 內容
 
 您可以衍生自基底的編輯器類別的新的 HTML 編輯器自訂工具列按鈕。 例如，列出 2 中的自訂編輯器只會包含粗體和斜體的工具列按鈕。 已移除所有其他工具列按鈕。 此外，[HTML] 索引標籤已經移除了編輯器底部 （但的設計和預覽索引標籤仍然會有）。
 
-**列出 2-應用程式\_Code\CustomEditor.vb**
+**Listing 2 - App\_Code\CustomEditor.vb**
 
 [!code-vb[Main](how-do-i-use-the-html-editor-control-vb/samples/sample2.vb)]
 
@@ -111,5 +111,5 @@ HTML 編輯器內容屬性用來擷取輸入到 HTML 編輯器中的 HTML 內容
 
 在本教學課程中，您已提供包含 AJAX Control Toolkit 中的 HTML 編輯器控制項的簡短概觀。 您已學習如何使用 HTML 編輯器，以接受來自使用者的豐富內容並提交到伺服器的內容。 我們也將討論您如何自訂顯示 HTML 編輯器的工具列按鈕。 最後，您學會了如何以避免跨網站指令碼處理攻擊來接受潛在惡意的輸入使用 HTML 編輯器時。
 
->[!div class="step-by-step"]
-[上一步](how-do-i-use-the-html-editor-control-cs.md)
+> [!div class="step-by-step"]
+> [上一步](how-do-i-use-the-html-editor-control-cs.md)

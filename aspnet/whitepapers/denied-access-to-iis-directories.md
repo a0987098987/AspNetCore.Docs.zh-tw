@@ -1,26 +1,26 @@
 ---
 uid: whitepapers/denied-access-to-iis-directories
-title: "ASP.NET 拒絕存取 IIS 目錄 |Microsoft 文件"
+title: ASP.NET 拒絕存取 IIS 目錄 |Microsoft 文件
 author: rick-anderson
-description: "本白皮書描述所需的動作如果 ASP.NET 應用程式的要求會傳回錯誤，也就是 「 拒絕存取 DirectoryName 目錄。 無法為 s..."
+description: 本白皮書描述所需的動作如果 ASP.NET 應用程式的要求會傳回錯誤，也就是 「 拒絕存取 DirectoryName 目錄。 無法為 s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: 3cb27b8a-354f-4332-bfe0-232b13bbf8aa
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/denied-access-to-iis-directories
 msc.type: content
-ms.openlocfilehash: 64118ac7a5f280775106d2dc7636923b08f28d89
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d95423776a6b58fc67ae6c791685543dadd2480c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="aspnet-denied-access-to-iis-directories"></a>ASP.NET 拒絕 IIS 目錄的存取
 ====================
-> 本白皮書說明若您的 ASP.NET 應用程式的要求會傳回錯誤，您須執行的作業 「 拒絕存取*DirectoryName*目錄。 無法啟動監視目錄 chaanges。 」
+> 本白皮書說明若您的 ASP.NET 應用程式的要求會傳回錯誤，您須執行的作業 「 拒絕存取*DirectoryName*目錄。 若要開始監視目錄變更失敗。 」
 > 
 > 適用於 ASP.NET 1.0 和 1.1 的 ASP.NET。
 

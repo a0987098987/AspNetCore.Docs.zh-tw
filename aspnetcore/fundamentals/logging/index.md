@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的記錄"
+title: ASP.NET Core 中的記錄
 author: ardalis
-description: "了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。"
+description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 12/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: c8152b94311acb672e9810828b634c744cb46eae
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4cb2cf5b22ed9f5b84638b5f8c4b07d99a17ce1c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="introduction-to-logging-in-aspnet-core"></a>登入 ASP.NET Core 的簡介
+# <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Tom Dykstra](https://github.com/tdykstra)
 
@@ -47,20 +47,18 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快�
 
 ## <a name="how-to-add-providers"></a>如何新增提供者
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 記錄提供者會擷取您使用 `ILogger` 物件建立的訊息，並加以顯示或儲存。 例如，主控台提供者可在主控台中顯示訊息，而 Azure App Service 提供者則可將其儲存在 Azure Blob 儲存體中。
 
 若要使用提供者，請在 *Program.cs* 中呼叫提供者的 `Add<ProviderName>` 擴充方法：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_ExpandDefault&highlight=16,17)]
 
-預設專案範本可使用 [CreateDefaultBuilder](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___) 方法來記錄：
+預設專案範本可使用 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___) 方法來記錄：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 記錄提供者會擷取您使用 `ILogger` 物件建立的訊息，並加以顯示或儲存。 例如，主控台提供者可在主控台中顯示訊息，而 Azure App Service 提供者則可將其儲存在 Azure Blob 儲存體中。
 
 若要使用提供者，請安裝其 NuGet 套件，並在 `ILoggerFactory` 的執行個體上呼叫該提供者的擴充方法，如下列範例所示。
@@ -72,8 +70,7 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
 > [!NOTE]
 > 本文的範例應用程式會在 `Startup` 類別的 `Configure` 方法中新增記錄提供者。 如果您想要從先前稍早執行的程式碼取得記錄輸出，請改為在 `Startup` 類別建構函式中新增記錄提供者。 
 
----
-
+* * *
 您會在本文稍後找到每個[內建記錄提供者](#built-in-logging-providers)的相關資訊，以及[協力廠商記錄提供者](#third-party-logging-providers)的連結。
 
 ## <a name="sample-logging-output"></a>範例記錄輸出
@@ -96,7 +93,7 @@ info: Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker[2]
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
       Request finished in 148.889ms 404
 ```
- 
+
 這些記錄是透過前往 `http://localhost:5000/api/todo/0` 來建立，這會觸發上一節中所示之兩個 `ILogger` 呼叫的執行。
 
 以下是您在 Visual Studio 中執行相同應用程式時，出現在 [偵錯] 視窗中的相同記錄範例：
@@ -117,7 +114,7 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="nuget-packages"></a>NuGet 套件
 
-`ILogger` 和 `ILoggerFactory` 介面位於 [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) 中，其預設實作則位於 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) 中。
+`ILogger` 和 `ILoggerFactory` 介面位於 [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) 中，其預設實作則位於 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/microsoft.extensions.logging/) 中。
 
 ## <a name="log-category"></a>記錄類別
 
@@ -135,15 +132,15 @@ Microsoft.AspNetCore.Hosting.Internal.WebHost:Information: Request finished in 3
 
 ## <a name="log-level"></a>記錄層級
 
-每次寫入記錄，您都會指定其 [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel)。 記錄層級表示嚴重或重要程度。 例如，您可以在某個方法正常結束時寫入 `Information` 記錄，在某個方法傳回 404 傳回碼時寫入 `Warning` 記錄，並在攔截到未預期的例外狀況時寫入 `Error` 記錄。
+每次寫入記錄，您都會指定其 [LogLevel](/dotnet/api/microsoft.extensions.logging.logLevel)。 記錄層級表示嚴重或重要程度。 例如，您可以在某個方法正常結束時寫入 `Information` 記錄，在某個方法傳回 404 傳回碼時寫入 `Warning` 記錄，並在攔截到未預期的例外狀況時寫入 `Error` 記錄。
 
 在下列程式碼範例中，方法的名稱 (例如 `LogWarning`) 會指定記錄層級。 第一個參數是[記錄事件識別碼](#log-event-id)。 第二個參數是[訊息範本](#log-message-template)，其中的預留位置會置入其餘方法參數所提供的引數值。 本文稍後將更詳細說明方法參數。
 
 [!code-csharp[](index/sample//Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
-在方法名稱中包含層級的記錄方法是 [ILogger 的擴充方法](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loggerextensions)。 這些方法會在幕後呼叫接受 `LogLevel` 參數的 `Log` 方法。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 [ILogger Interface](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) (ILogger 介面) 和[記錄器延伸模組的原始程式碼](https://github.com/aspnet/Logging/blob/master/src/Microsoft.Extensions.Logging.Abstractions/LoggerExtensions.cs)。
+在方法名稱中包含層級的記錄方法是 [ILogger 的擴充方法](/dotnet/api/microsoft.extensions.logging.loggerextensions)。 這些方法會在幕後呼叫接受 `LogLevel` 參數的 `Log` 方法。 您可以直接呼叫 `Log` 方法，而不是呼叫其中一個擴充方法，但語法會更複雜。 如需詳細資訊，請參閱 [ILogger Interface](/dotnet/api/microsoft.extensions.logging.ilogger) (ILogger 介面) 和[記錄器延伸模組的原始程式碼](https://github.com/aspnet/Logging/blob/master/src/Microsoft.Extensions.Logging.Abstractions/LoggerExtensions.cs)。
 
-ASP.NET Core 定義下列[記錄層級](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel)，並從最低嚴重性排列到最高嚴重性。
+ASP.NET Core 定義下列[記錄層級](/dotnet/api/microsoft.extensions.logging.loglevel)，並從最低嚴重性排列到最高嚴重性。
 
 * 追蹤 = 0
 
@@ -266,8 +263,7 @@ System.Exception: Item not found exception.
 
 ## <a name="log-filtering"></a>記錄篩選
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 您可以指定特定提供者和類別的最低記錄層級，也可以指定所有提供者或所有類別的最低記錄層級。 最低層級以下的任何記錄都不會傳遞給該提供者，因此不會顯示或儲存。 
 
 如果您想要隱藏所有記錄，您可以指定 `LogLevel.None` 作為最低記錄層級。 `LogLevel.None` 的整數值為 6，高於 `LogLevel.Critical` (5)。
@@ -315,7 +311,7 @@ System.Exception: Item not found exception.
 * 從上一個步驟的結果中，選取具有最長相符類別前置字元的規則。 如果找不到，請選取未指定類別的所有規則。
 * 如果選取了多項規則，請使用**最後**一項。
 * 如果未選取任何規則，請使用 `MinimumLevel`。
- 
+
 例如，假設您有上述規則清單，並建立 "Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine" 類別的 `ILogger` 物件：
 
 * 針對偵錯提供者，規則 1、6 和 8 均適用。 規則 8 最明確，因此會選取此規則。
@@ -348,8 +344,7 @@ System.Exception: Item not found exception.
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 某些記錄提供者可讓您指定何時應該將記錄寫入儲存媒體，何時應該根據記錄層級和類別加以略過。
 
 `AddConsole` 和 `AddDebug` 擴充方法提供多載，可讓您傳入篩選條件。 下列範例程式碼會使主控台提供者略過 `Warning` 層級以下的記錄，而偵錯提供者則會略過架構所建立的記錄。
@@ -366,8 +361,7 @@ System.Exception: Item not found exception.
 
 `WithFilter` 擴充方法是由 [Microsoft.Extensions.Logging.Filter](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Filter) NuGet 套件提供。 此方法會傳回新的 `ILoggerFactory` 執行個體，這會篩選傳遞至用它來註冊之所有記錄器提供者的記錄訊息。 它不會影響任何其他 `ILoggerFactory` 執行個體，包括原始 `ILoggerFactory` 執行個體。
 
----
-
+* * *
 ## <a name="log-scopes"></a>記錄範圍
 
 您可以將某個「範圍」內的一組邏輯作業群組在一起，以便將相同的資料附加至作為該集合一部分建立的每個記錄。 例如，您可能想要將每個記錄建立為處理交易的一部分，以包含交易識別碼。
@@ -378,8 +372,7 @@ System.Exception: Item not found exception.
 
 下列程式碼會啟用主控台提供者的範圍：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 在 *Program.cs* 中：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_Scopes&highlight=4)]
@@ -387,14 +380,12 @@ System.Exception: Item not found exception.
 > [!NOTE]
 > 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。 ASP.NET Core 2.1 版將可使用 *appsettings* 組態檔來設定 `IncludeScopes`。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 在 *Startup.cs* 中：
 
 [!code-csharp[](index/sample/Startup.cs?name=snippet_Scopes&highlight=6)]
 
----
-
+* * *
 每個記錄訊息包含範圍資訊：
 
 ```
@@ -422,19 +413,17 @@ ASP.NET Core 隨附下列提供者：
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) 提供者套件會將記錄輸出傳送至主控台。 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 ```csharp
 logging.AddConsole()
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 ```csharp
 loggerFactory.AddConsole()
 ```
 
-[AddConsole 多載](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.consoleloggerextensions)可讓您傳入最低記錄層級、篩選函式，以及指出是否支援範圍的布林值。 另一個選項是傳入可指定範圍支援和記錄層級的 `IConfiguration` 物件。 
+[AddConsole 多載](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions)可讓您傳入最低記錄層級、篩選函式，以及指出是否支援範圍的布林值。 另一個選項是傳入可指定範圍支援和記錄層級的 `IConfiguration` 物件。 
 
 如果您考慮在生產環境中使用主控台提供者，請注意它對效能有重大影響。
 
@@ -450,12 +439,11 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
----
-
+* * *
 <a id="debug"></a>
 ### <a name="the-debug-provider"></a>偵錯提供者
 
-[Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) 提供者套件使用 [System.Diagnostics.Debug](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.debug#System_Diagnostics_Debug) 類別 (`Debug.WriteLine` 方法呼叫) 來寫入記錄輸出。
+[Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) 提供者套件使用 [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) 類別 (`Debug.WriteLine` 方法呼叫) 來寫入記錄輸出。
 
 在 Linux 上，此提供者會將記錄寫入至 */var/log/message*。
 
@@ -471,7 +459,7 @@ logging.AddDebug()
 loggerFactory.AddDebug()
 ```
 
-[AddDebug 多載](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.debugloggerfactoryextensions)可讓您傳入最低記錄層級或篩選函式。
+[AddDebug 多載](/dotnet/api/microsoft.extensions.logging.debugloggerfactoryextensions)可讓您傳入最低記錄層級或篩選函式。
 
 ---
 
@@ -514,7 +502,7 @@ loggerFactory.AddEventSourceLogger()
   New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
   ```
 
-* 視需要為 [CLR](https://docs.microsoft.com/dotnet/framework/performance/clr-etw-providers)、ASP.NET Core 等新增 ETW 提供者。 ASP.NET Core 提供者 GUID 為 `3ac73b97-af73-50e9-0822-5da4367920d0`。 
+* 視需要為 [CLR](/dotnet/framework/performance/clr-etw-providers)、ASP.NET Core 等新增 ETW 提供者。 ASP.NET Core 提供者 GUID 為 `3ac73b97-af73-50e9-0822-5da4367920d0`。 
 
   ```powershell
   Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
@@ -548,14 +536,14 @@ logging.AddEventLog()
 loggerFactory.AddEventLog()
 ```
 
-[AddEventLog 多載](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.eventloggerfactoryextensions)可讓您傳入 `EventLogSettings` 或最低記錄層級。
+[AddEventLog 多載](/dotnet/api/microsoft.extensions.logging.eventloggerfactoryextensions)可讓您傳入 `EventLogSettings` 或最低記錄層級。
 
 ---
 
 <a id="tracesource"></a>
 ### <a name="the-tracesource-provider"></a>TraceSource 提供者
 
-[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 提供者套件使用 [System.Diagnostics.TraceSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracesource) 程式庫和提供者。
+[Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 提供者套件使用 [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) 程式庫和提供者。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -571,9 +559,9 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 ---
 
-[AddTraceSource 多載](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.tracesourcefactoryextensions)可讓您傳入來源參數和追蹤接聽項。
+[AddTraceSource 多載](/dotnet/api/microsoft.extensions.logging.tracesourcefactoryextensions)可讓您傳入來源參數和追蹤接聽項。
 
-若要使用此提供者，應用程式必須在 .NET Framework (而非 .NET Core) 上執行。 此提供者可讓您將訊息路由傳送至各種不同的[接聽項](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/trace-listeners)，例如範例應用程式中所使用的 [TextWriterTraceListener](https://docs.microsoft.com/dotnet/api/system.diagnostics.textwritertracelistenerr)。
+若要使用此提供者，應用程式必須在 .NET Framework (而非 .NET Core) 上執行。 此提供者可讓您將訊息路由傳送至各種不同的[接聽項](/dotnet/framework/debug-trace-profile/trace-listeners)，例如範例應用程式中所使用的 [TextWriterTraceListener](/dotnet/api/system.diagnostics.textwritertracelistenerr)。
 
 下列範例會設定 `TraceSource` 提供者，將 `Warning` 和更高層級訊息記錄至主控台視窗。
 

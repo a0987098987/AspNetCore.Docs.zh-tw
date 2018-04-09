@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署至 IIS 做為測試環境-12 個 5 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署至 IIS 做為測試環境-12 個 5 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: a7995844ee6ed19efa130c4f6c019214d6652ea7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16050455c161c8ced1f954bfce9c2d9a44c522b4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-iis-as-a-test-environment---5-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署至 IIS 做為測試環境-5 的 12
 ====================
@@ -250,6 +250,6 @@ ms.lasthandoff: 01/24/2018
 
 在中度信任執行的應用程式時，可能會引發哪些問題的相關資訊，請參閱[裝載在中度信任 ASP.NET 應用程式](http://www.4guysfromrolla.com/articles/100307-1.aspx)4 Guy 從 Rolla 站台上。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md)

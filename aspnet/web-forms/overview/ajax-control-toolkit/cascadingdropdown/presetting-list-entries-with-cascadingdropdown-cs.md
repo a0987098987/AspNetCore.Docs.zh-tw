@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-cs
-title: "Presetting CascadingDropDown (C#) 的清單項目 |Microsoft 文件"
+title: Presetting CascadingDropDown (C#) 的清單項目 |Microsoft 文件
 author: wenz
-description: "AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯 anoth 中的值..."
+description: AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯 anoth 中的值...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d86c5887a8b175a60c32a0970482266b7d690162
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d87da6c19f6dbdff70eff410ba7573c3e26884fb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="presetting-list-entries-with-cascadingdropdown-c"></a>Presetting CascadingDropDown (C#) 的清單項目
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 利用最少的程式碼可能會以動態方式載入資料之後的清單項目已預先選取。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 AJAX Control Toolkit CascadingDropDown 控制項擴充 DropDownList 控制項，使一個 DropDownList 載入中的變更相關聯的另一個 DropDownList 中的值。 （比方說，一份清單會提供一份我們狀態，而且下一個清單然後填入處於該狀態中的主要城市）。利用最少的程式碼可能會以動態方式載入資料之後的清單項目已預先選取。
 
@@ -60,6 +60,6 @@ DropDownList 控制項則需要：
 
 填入清單並預先選取自動 ([按一下以檢視完整大小的影像](presetting-list-entries-with-cascadingdropdown-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](using-cascadingdropdown-with-a-database-cs.md)
-[下一頁](using-auto-postback-with-cascadingdropdown-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](using-cascadingdropdown-with-a-database-cs.md)
+> [下一頁](using-auto-postback-with-cascadingdropdown-cs.md)

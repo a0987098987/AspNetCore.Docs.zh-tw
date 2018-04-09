@@ -1,7 +1,7 @@
 ---
-title: "子機碼衍生和已驗證的加密"
+title: 子機碼衍生和 ASP.NET Core 中已驗證的加密
 author: rick-anderson
-description: "本文件說明 ASP.NET Core 資料保護的實作詳細資料衍生子機碼，驗證加密。"
+description: 了解 ASP.NET Core 資料保護的實作詳細資料子機碼衍生和驗證加密。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 4b905bbc7bb064b6ba1741557bd694c8c67ccfa8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8c83da40a524896becc07c94c01d5e2b684e4386
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="subkey-derivation-and-authenticated-encryption"></a>子機碼衍生和已驗證的加密
+# <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>子機碼衍生和 ASP.NET Core 中已驗證的加密
 
 <a name="data-protection-implementation-subkey-derivation"></a>
 
@@ -63,7 +63,7 @@ CBC 模式加密 + HMAC 驗證作業，|K_E |這是對稱的區塊加密金鑰�
 *輸出: = keyModifier | |iv | |E_cbc （K_E，iv，資料） | |HMAC (K_H、 iv | |E_cbc （K_E，iv，資料）)*
 
 > [!NOTE]
-> `IDataProtector.Protect`實作將[magic 標頭和索引鍵的識別碼，前面加上](authenticated-encryption-details.md)輸出傳回給呼叫者之前。 因為 magic 標頭和索引鍵識別碼是隱含的一部分[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)，因為索引鍵的修飾詞做為輸入至 KDF 回饋，這也表示，每個單一位元組的最後一個傳回的內容由 MAC 驗證
+> `IDataProtector.Protect`實作將[magic 標頭和索引鍵的識別碼，前面加上](xref:security/data-protection/implementation/authenticated-encryption-details)輸出傳回給呼叫者之前。 因為 magic 標頭和索引鍵識別碼是隱含的一部分[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)，因為索引鍵的修飾詞做為輸入至 KDF 回饋，這也表示，每個單一位元組的最後一個傳回的內容由 MAC 驗證
 
 ## <a name="galoiscounter-mode-encryption--validation"></a>Galois/計數器模式加密 + 驗證
 
@@ -74,4 +74,4 @@ CBC 模式加密 + HMAC 驗證作業，|K_E |這是對稱的區塊加密金鑰�
 *輸出: = keyModifier | |nonce | |E_gcm （K_E，nonce，資料） | |authTag*
 
 > [!NOTE]
-> 即使 GCM 原生支援 AAD 的概念，我們正在仍饋送 AAD 只以原始 KDF，選擇將其 AAD 參數，傳遞至 GCM 的空字串。 這是一體兩面。 首先，[支援靈活度](context-headers.md#data-protection-implementation-context-headers)我們永遠不會想要直接將 K_M 作為加密金鑰。 此外，GCM 會加諸其輸入上非常嚴格的唯一性。 GCM 加密常式為曾經叫用在兩個或更多相異的可能性設定具有相同 （金鑰、 nonce） 的輸入資料組不能超過 2 ^32。 如果我們修正 K_E 我們無法執行超過 2 ^32 的加密作業之前，我們執行與的 2 ^-32 限制。 這看起來像是非常大量的作業，但高流量的網頁伺服器可以透過 4 10 億個要求，這些機碼正常的存留期間內只天數。 若要保持相容的 2 ^-32 機率限制，我們將繼續使用 128 位元金鑰的修飾詞和 96 位元 nonce，徹底擴充任何給定 K_M 的可用作業計數。 我們在設計的簡易性共用 CBC 及 GCM 作業之間的 KDF 程式碼路徑，因為 AAD KDF 中已被視為不是需要將其轉寄給 GCM 常式。
+> 即使 GCM 原生支援 AAD 的概念，我們正在仍饋送 AAD 只以原始 KDF，選擇將其 AAD 參數，傳遞至 GCM 的空字串。 這是一體兩面。 首先，[支援靈活度](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers)我們永遠不會想要直接將 K_M 作為加密金鑰。 此外，GCM 會加諸其輸入上非常嚴格的唯一性。 GCM 加密常式為曾經叫用在兩個或更多相異的可能性設定具有相同 （金鑰、 nonce） 的輸入資料組不能超過 2 ^32。 如果我們修正 K_E 我們無法執行超過 2 ^32 的加密作業之前，我們執行與的 2 ^-32 限制。 這看起來像是非常大量的作業，但高流量的網頁伺服器可以透過 4 10 億個要求，這些機碼正常的存留期間內只天數。 若要保持相容的 2 ^-32 機率限制，我們將繼續使用 128 位元金鑰的修飾詞和 96 位元 nonce，徹底擴充任何給定 K_M 的可用作業計數。 我們在設計的簡易性共用 CBC 及 GCM 作業之間的 KDF 程式碼路徑，因為 AAD KDF 中已被視為不是需要將其轉寄給 GCM 常式。

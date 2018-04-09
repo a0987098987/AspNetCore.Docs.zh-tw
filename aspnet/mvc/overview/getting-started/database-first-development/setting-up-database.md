@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/setting-up-database
-title: "開始使用 Entity Framework 6 資料庫優先使用 MVC 5 |Microsoft 文件"
+title: 開始使用 Entity Framework 6 資料庫優先使用 MVC 5 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/01/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: cb979333131cc6ac87fd640bf7c96931054a1814
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ae60b5c808d2522c66dc17ccf7d16fefdc65d552
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a>開始使用 Entity Framework 6 資料庫優先使用 MVC 5
 ====================
@@ -111,5 +111,5 @@ Visual Studio 2013 or Visual Studio Express 2013 for Web
 
 您的資料庫現在已設定，並填入資料。 在下一個教學課程中，您將建立資料庫的 web 應用程式。
 
->[!div class="step-by-step"]
-[下一步](creating-the-web-application.md)
+> [!div class="step-by-step"]
+> [下一步](creating-the-web-application.md)

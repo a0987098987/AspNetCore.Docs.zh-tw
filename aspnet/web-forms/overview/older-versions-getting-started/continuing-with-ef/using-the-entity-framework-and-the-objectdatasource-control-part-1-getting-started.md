@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
-title: "使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分： 開始使用 |Microsoft 文件"
+title: 使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分： 開始使用 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 的教學課程系列的 Contoso 大學 web 應用程式。 如果 yo..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 的教學課程系列的 Contoso 大學 web 應用程式。 如果 yo...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 83fe815af9030aee10a5204718b00c79925e9126
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6584767418c898913777b3b1549a816679c8430d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分： 使用者入門
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/24/2018
 
 > 此教學課程系列為基礎所建立的 Contoso 大學 web 應用程式[開始使用 Entity Framework 4.0](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md)教學課程系列。 如果您未完成先前的教學課程，您可以身分本教學課程的起始點來[下載應用程式](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a)您會建立。 您也可以[下載應用程式](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa)完整的教學課程所建立。
 > 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Web Form 應用程式使用 Entity Framework 4.0 和 Visual Studio 2010。 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括功能，例如許可學生、 課程建立和講師指派。
+> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET Web Form 應用程式使用 Entity Framework 4.0 和 Visual Studio 2010。 範例應用程式是針對虛構的 Contoso 大學的網站。 其中包括的功能有學生入學許可、課程建立、教師指派。
 > 
 > 教學課程會示範 C# 中的範例。 [可下載範例](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa)包含 C# 和 Visual Basic 中的程式碼。
 > 
@@ -311,7 +311,7 @@ ms.lasthandoff: 01/24/2018
 使用*DepartmentsAdd.aspx*頁面，即可加入新的部門，然後再執行*Departments.aspx*頁面上，按一下 **編輯**上您所加入的資料列。
 
 > [!NOTE]
-> 不能編輯未加入的資料列 (亦即，均已存在於資料庫)，因為資料庫中的資料無效使用資料庫所建立的資料列的系統管理員是學生。 如果您嘗試要編輯其中一個，就會報告類似錯誤的錯誤頁面`'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
+> 不能編輯未加入的資料列 (亦即，均已存在於資料庫)，因為資料庫中的資料無效使用資料庫所建立的資料列的系統管理員是學生。 如果您嘗試要編輯其中一個，就會報告類似錯誤的錯誤頁面 `'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
 
 
 [![Image10](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image36.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image35.png)
@@ -324,5 +324,5 @@ ms.lasthandoff: 01/24/2018
 
 如此即完成簡介使用`ObjectDataSource`控制基本 crud （建立、 讀取、 更新、 刪除） 作業與 Entity Framework。 您建立簡單的多層式架構應用程式，但是商務邏輯層仍緊密繫結到資料存取層，這讓事情更加自動化的單元測試。 下列教學課程中，您會看到如何實作以便利單元測試儲存機制模式。
 
->[!div class="step-by-step"]
-[下一步](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+> [!div class="step-by-step"]
+> [下一步](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-model
-title: "將模型加入 |Microsoft 文件"
+title: 將模型加入 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 79f136257119a8600a65e8d7c5f6e99cb9abceae
-ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
+ms.openlocfilehash: b3ef871c4d7627a03c8f0fd8cce9d3e97fc1a4ba
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-model"></a>加入模型
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 本節中您要加入一些類別，來管理資料庫中的影片。 這些類別會&quot;模型&quot;ASP.NET MVC 應用程式的一部分。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/05/2018
 
 [!code-csharp[Main](adding-a-model/samples/sample3.cs)]
 
-您可以透過手動方式新增 using 陳述式，或您可以將滑鼠停留在紅色曲線，請按一下`Show potential fixes`按一下`using System.Data.Entity;`
+您可以透過手動方式新增 using 陳述式，或您可以將滑鼠停留在紅色曲線，請按一下`Show potential fixes`按一下 `using System.Data.Entity;`
 
 ![](adding-a-model/_static/image2.png)
 
@@ -64,6 +64,6 @@ ms.lasthandoff: 02/05/2018
 
 最後，我們已加入模型 (MVC 中 M)。 下一節將使用的資料庫連接字串。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-view.md)
-[下一頁](creating-a-connection-string.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-view.md)
+> [下一頁](creating-a-connection-string.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/role-based-authorization-vb
-title: "以角色為基礎的授權 (VB) |Microsoft 文件"
+title: 以角色為基礎的授權 (VB) |Microsoft 文件
 author: rick-anderson
-description: "本教學課程開頭看看如何角色架構會將使用者的角色與他的安全性內容。 然後，它會檢查如何套用以角色為基礎的 URL..."
+description: 本教學課程開頭看看如何角色架構會將使用者的角色與他的安全性內容。 然後，它會檢查如何套用以角色為基礎的 URL...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/24/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 331282dfa3c05dd4bd6fef19dcfe7e5c0adad84d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1ca92fd194ed36f55c58666145efe445fd92823b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="role-based-authorization-vb"></a>以角色為基礎的授權 (VB)
 ====================
@@ -73,18 +73,18 @@ ms.lasthandoff: 01/24/2018
 > 表 1 中所列的組態設定會指定產生的角色快取 cookie 的屬性。 如需有關 cookie、 它們如何運作，以及其各種屬性的詳細資訊，請閱讀[本教學課程中的 Cookie](http://www.quirksmode.org/js/cookies.html)。
 
 
-| **Property** | **描述** |
-| --- | --- |
-| `cacheRolesInCookie` | 布林值，指出是否使用 cookie 快取。 預設值為 `false`。 |
-| `cookieName` | 角色快取 cookie 的名稱。 預設值是"。ASPXROLES"。 |
-| `cookiePath` | 角色名稱 cookie 的路徑。 Path 屬性可讓開發人員限制到特定目錄階層 cookie 的範圍。 預設值是"/"，這會通知要對網域執行任何要求傳送驗證票證 cookie 的瀏覽器。 |
-| `cookieProtection` | 指出哪些技術可用來保護角色快取 cookie。 允許值為： `All` （預設值）。`Encryption`;`None`; 和`Validation`。 步驟 3 會回頭<a id="_anchor_5"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)教學課程，如需有關這些保護層級。 |
-| `cookieRequireSSL` | 布林值，指出是否需要 SSL 連線來傳送驗證 cookie。 預設值是 `false`。 |
-| `cookieSlidingExpiration` | 布林值，指出是否每次重設的 cookie 逾時使用者造訪網站的單一工作階段期間。 預設值是 `false`。 這個值時，才相關`createPersistentCookie`設`true`。 |
-| `cookieTimeout` | 指定以分鐘為單位的驗證票證 cookie 過期前的時間。 預設值是 `30`。 這個值時，才相關`createPersistentCookie`設`true`。 |
-| `createPersistentCookie` | 布林值，指定角色快取 cookie 工作階段 cookie 或永續性 cookie。 如果`false`（預設值），會使用工作階段 cookie、 瀏覽器關閉時，這會刪除。 如果`true`，就會使用永續性 cookie，才會到期`cookieTimeout`數幾分鐘後已建立或之後的值而定的上一個造訪`cookieSlidingExpiration`。 |
-| `domain` | 指定 cookie 的網域值。 預設值為空字串，這會導致瀏覽器使用從中發行 （例如 www.yourdomain.com) 的網域。 在此情況下，cookie 將**不**子網域，例如 admin.yourdomain.com 進行要求時傳送。如果您想要傳遞至所有子網域的 cookie 需要自訂`domain`屬性，將它設定為"yourdomain.com"。 |
-| `maxCachedResults` | 在 cookie 中指定快取的角色名稱的數目上限。 預設值為 25。 `RoleManagerModule`不屬於使用者的 cookie 會建立多個`maxCachedResults`角色。 因此，`RolePrincipal`物件的`IsInRole`方法會使用`Roles`類別以決定使用者的角色。 原因`maxCachedResults`存在是因為許多使用者代理程式不允許 cookie 大於 4096 個位元組。 因此這個端點是用來降低超過此大小限制的可能性。 如果您有很長的角色名稱，您可能要考慮指定更小`maxCachedResults`值; contrariwise，如果您有極短的角色名稱，您可以可能增加這個值。 |
+| <strong>Property</strong> |                                                                                                                                                                                                                                                                                                                                                         <strong>描述</strong>                                                                                                                                                                                                                                                                                                                                                          |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   `cacheRolesInCookie`    |                                                                                                                                                                                                                                                                                                                              布林值，指出是否使用 cookie 快取。 預設值為 `false`。                                                                                                                                                                                                                                                                                                                              |
+|       `cookieName`        |                                                                                                                                                                                                                                                                                                                                     角色快取 cookie 的名稱。 預設值是"。ASPXROLES"。                                                                                                                                                                                                                                                                                                                                     |
+|       `cookiePath`        |                                                                                                                                                                                                                                角色名稱 cookie 的路徑。 Path 屬性可讓開發人員限制到特定目錄階層 cookie 的範圍。 預設值是"/"，這會通知要對網域執行任何要求傳送驗證票證 cookie 的瀏覽器。                                                                                                                                                                                                                                 |
+|    `cookieProtection`     |                                                                                                                                                               指出哪些技術可用來保護角色快取 cookie。 允許值為： `All` （預設值）。`Encryption`;`None`; 和`Validation`。 步驟 3 會回頭<a id="_anchor_5"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)教學課程，如需有關這些保護層級。                                                                                                                                                                |
+|    `cookieRequireSSL`     |                                                                                                                                                                                                                                                                                                   布林值，指出是否需要 SSL 連線來傳送驗證 cookie。 預設值是 `false`。                                                                                                                                                                                                                                                                                                   |
+| `cookieSlidingExpiration` |                                                                                                                                                                                                                                                  布林值，指出是否每次重設的 cookie 逾時使用者造訪網站的單一工作階段期間。 預設值是 `false`。 這個值時，才相關`createPersistentCookie`設`true`。                                                                                                                                                                                                                                                  |
+|      `cookieTimeout`      |                                                                                                                                                                                                                                                                         指定以分鐘為單位的驗證票證 cookie 過期前的時間。 預設值是 `30`。 這個值時，才相關`createPersistentCookie`設`true`。                                                                                                                                                                                                                                                                         |
+| `createPersistentCookie`  |                                                                                                                                                                   布林值，指定角色快取 cookie 工作階段 cookie 或永續性 cookie。 如果`false`（預設值），會使用工作階段 cookie、 瀏覽器關閉時，這會刪除。 如果`true`，就會使用永續性 cookie，才會到期`cookieTimeout`數幾分鐘後已建立或之後的值而定的上一個造訪`cookieSlidingExpiration`。                                                                                                                                                                    |
+|         `domain`          |                                                                                                                                                 指定 cookie 的網域值。 預設值為空字串，這會導致瀏覽器使用從中發行 （例如 www.yourdomain.com) 的網域。 在此情況下，cookie 將<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。如果您想要傳遞至所有子網域的 cookie 需要自訂`domain`屬性，將它設定為"yourdomain.com"。                                                                                                                                                 |
+|    `maxCachedResults`     | 在 cookie 中指定快取的角色名稱的數目上限。 預設值為 25。 `RoleManagerModule`不屬於使用者的 cookie 會建立多個`maxCachedResults`角色。 因此，`RolePrincipal`物件的`IsInRole`方法會使用`Roles`類別以決定使用者的角色。 原因`maxCachedResults`存在是因為許多使用者代理程式不允許 cookie 大於 4096 個位元組。 因此這個端點是用來降低超過此大小限制的可能性。 如果您有很長的角色名稱，您可能要考慮指定更小`maxCachedResults`值; contrariwise，如果您有極短的角色名稱，您可以可能增加這個值。 |
 
 **表 1**： 角色快取 Cookie 組態選項
 
@@ -380,18 +380,18 @@ LoginView 控制項則會顯示不同的瀏覽頁面的使用者角色為基礎�
 
 如需有關在本教學課程所討論的主題的詳細資訊，請參閱下列資源：
 
-- [加入商務和資料層級使用的授權規則`PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
+- [加入商務和資料層級使用的授權規則 `PrincipalPermissionAttributes`](https://weblogs.asp.net/scottgu/archive/2006/10/04/Tip_2F00_Trick_3A00_-Adding-Authorization-Rules-to-Business-and-Data-Layers-using-PrincipalPermissionAttributes.aspx)
 - [檢查 ASP.NET 2.0 的成員資格、 角色和設定檔： 使用角色](http://aspnet.4guysfromrolla.com/articles/121405-1.aspx)
 - [ASP.NET 2.0 的安全性問題清單](https://msdn.microsoft.com/library/ms998375.aspx)
 - [技術文件`<roleManager>`項目](https://msdn.microsoft.com/library/ms164660.aspx)
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝...
 
-許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者包括 Suchi Banerjee 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者包括 Suchi Banerjee 和本文菲。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](assigning-roles-to-users-vb.md)
+> [!div class="step-by-step"]
+> [上一步](assigning-roles-to-users-vb.md)

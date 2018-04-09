@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
-title: "實作自訂 MySQL ASP.NET Identity 的存放裝置提供者 |Microsoft 文件"
+title: 實作自訂 MySQL ASP.NET Identity 的存放裝置提供者 |Microsoft 文件
 author: raquelsa
-description: "ASP.NET Identity 是可擴充的系統可讓您建立自己的儲存體提供者，並將之插入您的應用程式而不需要重新使用應用程式..."
+description: ASP.NET Identity 是可擴充的系統可讓您建立自己的儲存體提供者，並將之插入您的應用程式而不需要重新使用應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
 ms.topic: article
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 3bfbccd91705755fc24bb8305fff171baa26f370
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d843b31e011fe520aad6cfdab0beca2d12477f12
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>實作自訂 MySQL ASP.NET Identity 的存放裝置提供者
 ====================
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/10/2017
 5. 以滑鼠右鍵按一下 IdentityMySQLDemo 專案中，選取**新增**，**參考、 方案、 專案;**選取 AspNet.Identity.MySQL 專案，然後按一下**[確定]**。
 6. 在 IdentityMySQLDemo 專案中，以取代所有參考  
     `using Microsoft.AspNet.Identity.EntityFramework;`  
- 取代為  
+   取代為  
      `using AspNet.Identity.MySQL;`
 7. 集中 IdentityModels.cs， **ApplicationDbContext**衍生自**MySqlDatabase**而且包含需要連接名稱的單一參數建構函式。  
 

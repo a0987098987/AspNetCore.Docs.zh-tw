@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
-title: "處理與 Entity Framework 4.0 ASP.NET 4 Web 應用程式中的並行 |Microsoft 文件"
+title: 處理與 Entity Framework 4.0 ASP.NET 4 Web 應用程式中的並行 |Microsoft 文件
 author: tdykstra
-description: "此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 我..."
+description: 此教學課程系列為基礎所建立的開始使用 Entity Framework 4.0 教學課程系列的 Contoso 大學 web 應用程式。 I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 7bdcf610458631749531ed1279d27e90572f0371
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f40695270006e4f8b0c9ad8e94049e5239f06e63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-concurrency-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>處理並行與 Entity Framework 4.0 ASP.NET 4 Web 應用程式
 ====================
@@ -37,13 +37,13 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="pessimistic-concurrency-locking"></a>封閉式並行存取 （鎖定）
 
-如果您的應用程式需要以防止資料意外遺失並行案例中的，方法之一是使用資料庫鎖定。 這稱為*封閉式並行存取*。 例如，從資料庫讀取資料列之前，您要求的鎖定唯讀或 update 存取權。 如果您鎖定的資料列進行 update 存取權，允許任何其他使用者鎖定資料列的唯讀或更新存取權，因為他們會取得正在變更的資料副本。 如果鎖定為唯讀存取的資料列時，其他人可以唯讀存取權，但不適用於更新也鎖定。
+若您的應用程式確實需要防止在並行案例下發生的意外資料遺失，其中一個方法便是使用資料庫鎖定。 這稱為*封閉式並行存取*。 例如，在您從資料庫讀取一個資料列之前，您會要求唯讀鎖定或更新存取鎖定。 若您鎖定了一個資料列以進行更新存取，其他使用者便無法為了唯讀或更新存取而鎖定該資料列，因為他們會取得一個正在進行變更之資料的複本。 若您鎖定資料列以進行唯讀存取，其他使用者也可以為了唯讀存取將其鎖定，但無法進行更新。
 
-管理鎖定也有一些缺點。 是相當複雜的程式。 這需要大量的資料庫管理資源，而且它會造成效能問題的應用程式的使用者數目增加時 （亦即，將無法妥善調整）。 基於這些理由，並非所有的資料庫管理系統支援封閉式並行存取。 Entity Framework 提供的內建支援，而本教學課程不會顯示您如何實作它。
+管理鎖定也有一些缺點。 其程式可能相當複雜。 這需要大量的資料庫管理資源，而且它會造成效能問題的應用程式的使用者數目增加時 （亦即，將無法妥善調整）。 基於這些理由，不是所有的資料庫管理系統都支援封閉式並行存取。 Entity Framework 提供的內建支援，而本教學課程不會顯示您如何實作它。
 
 ### <a name="optimistic-concurrency"></a>開放式並行存取
 
-封閉式並行存取另一種是*開放式並行存取*。 開放式並行存取表示允許發生並行衝突，然後適當地回應如果沒有的話。 John 會執行，例如*Department.aspx*頁面上，按一下**編輯**連結的歷程記錄 」 部門，並減少**預算**1,000,000.00 $ $ 的數量125,000.00。 （John 管理競爭部門的而且想要釋出其部門的）。
+封閉式並行存取另一種是*開放式並行存取*。 開放式並行存取表示允許並行衝突發生，然後在衝突發生時適當的做出反應。 John 會執行，例如*Department.aspx*頁面上，按一下**編輯**連結的歷程記錄 」 部門，並減少**預算**1,000,000.00 $ $ 的數量125,000.00。 （John 管理競爭部門的而且想要釋出其部門的）。
 
 [![Image07](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image6.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image5.png)
 
@@ -55,15 +55,15 @@ John 按**更新**第一次，然後 Jane 按一下**更新**。 Jane 的瀏覽�
 
 在此案例中，您可以採取的動作包括下列：
 
-- 您可以追蹤的哪些使用者已修改的屬性，並更新只對應的資料行在資料庫中。 在範例案例中，任何資料將不會遺失，因為兩位使用者已更新不同的屬性。 在下一次有人瀏覽歷程記錄部門，他們會看到 1/1/1999年和 $125,000.00。 
+- 您可以追蹤使用者修改的屬性，然後僅在資料庫中更新相對應的資料行。 在範例案例中，將不會發生資料遺失，因為兩名使用者更新的屬性不同。 在下一次有人瀏覽歷程記錄部門，他們會看到 1/1/1999年和 $125,000.00。 
 
     這是 Entity Framework 中的預設行為，而且它可以大幅減少可能會導致資料遺失的衝突數目。 不過，此行為不會避免資料遺失，如果相同的實體屬性進行競爭的變更。 此外，這種行為並不一定都可能;當您為實體型別對應預存程序，所有實體的屬性會更新任何實體變更時在資料庫中。
-- 您可以讓 Jane 的變更覆寫 John 的變更。 Jane 按一下之後**更新**、**預算**量會回到 $1,000,000.00。 這稱為*用戶端獲勝*或*Wins 中的最後一個*案例。 （用戶端的值優先於什麼是資料存放區中。）
-- 您可以防止資料庫中的更新 Jane 的變更。 一般而言，您會顯示錯誤訊息、 顯示她目前狀態的資料，並允許她如果她仍然想要讓它們重新輸入其變更。 您無法進一步自動化程序，透過儲存其輸入，並讓她有機會重新套用而不必重新輸入。 這稱為*存放區 Wins*案例。 （資料存放區的值優先於用戶端所送出的值。）
+- 您可以讓 Jane 的變更覆寫 John 的變更。 Jane 按一下之後**更新**、**預算**量會回到 $1,000,000.00。 這稱之為「用戶端獲勝 (Client Wins)」或「最後寫入為準 (Last in Wins)」案例。 （用戶端的值優先於什麼是資料存放區中。）
+- 您可以防止資料庫中的更新 Jane 的變更。 一般而言，您會顯示錯誤訊息、 顯示她目前狀態的資料，並允許她如果她仍然想要讓它們重新輸入其變更。 您無法進一步自動化程序，透過儲存其輸入，並讓她有機會重新套用而不必重新輸入。 這稱之為「存放區獲勝 (Store Wins)」案例。 (資料存放區的值會優先於用戶端所提交的值。)
 
 ### <a name="detecting-concurrency-conflicts"></a>偵測並行衝突
 
-在 Entity Framework 中，您可以藉由處理解決衝突`OptimisticConcurrencyException`Entity Framework 就會擲回的例外狀況。 若要知道何時擲回這些例外狀況，Entity Framework 必須能夠偵測衝突。 因此，您必須設定資料庫和資料模型適當。 啟用衝突偵測的一些選項如下：
+在 Entity Framework 中，您可以藉由處理解決衝突`OptimisticConcurrencyException`Entity Framework 就會擲回的例外狀況。 若要得知何時應擲回這些例外狀況，Entity Framework 必須能夠偵測衝突。 因此，您必須適當的設定資料庫及資料模型。 一部分啟用衝突偵測的選項包括下列選項：
 
 - 在資料庫中，包含可用來判斷已變更的資料列的資料表資料行。 接著，您可以設定要包含在該資料行的 Entity Framework`Where`子句的 SQL`Update`或`Delete`命令。
 
@@ -302,8 +302,8 @@ John 按**更新**第一次，然後 Jane 按一下**更新**。 Jane 的瀏覽�
 
 [![Image23](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image46.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image45.png)
 
-如此即完成處理並行衝突的簡介。 下一個教學課程將提供如何改善使用 Entity Framework 的 web 應用程式效能的指引。
+如此即完成了處理並行衝突的簡介。 下一個教學課程將提供如何改善使用 Entity Framework 的 web 應用程式效能的指引。
 
->[!div class="step-by-step"]
-[上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
-[下一頁](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [!div class="step-by-step"]
+> [上一頁](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
+> [下一頁](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： Web.Config 檔案轉換為 12 3 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： Web.Config 檔案轉換為 12 3 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: ed78b55d2b0315cf428f137c56ad85b29a95e1c5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 86eb74ca35e8804978127412e2276eeee9d615dc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： Web.Config 檔案轉換為 12 3
 ====================
@@ -136,7 +136,7 @@ Contoso 大學網頁讀取的設定中的值`appSettings`中*Web.config*檔案�
 
 ## <a name="setting-connection-strings"></a>設定連接字串
 
-在大部分情況下您不需要設定連接字串轉換，因為您可以指定連接字串中的發行設定檔。 但有例外狀況時，您要部署的 SQL Server Compact 資料庫，且您使用 Entity Framework Code First 移轉來更新目的地伺服器上的資料庫。 此案例中，您必須指定將在伺服器用來更新資料庫結構描述的其他連接字串。 若要設定此轉換，加入 **&lt;connectionStrings&gt;** 緊接之後開啟項目**&lt;組態&gt;**中兩者都標記*Web.Test.config*和*Web.Production.config*轉換檔案：
+在大部分情況下您不需要設定連接字串轉換，因為您可以指定連接字串中的發行設定檔。 但有例外狀況時，您要部署的 SQL Server Compact 資料庫，且您使用 Entity Framework Code First 移轉來更新目的地伺服器上的資料庫。 此案例中，您必須指定將在伺服器用來更新資料庫結構描述的其他連接字串。 若要設定此轉換，加入**&lt;connectionStrings&gt;**緊接之後開啟項目**&lt;組態&gt;**中兩者都標記*Web.Test.config*和*Web.Production.config*轉換檔案：
 
 [!code-xml[Main](deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12/samples/sample7.xml)]
 
@@ -148,6 +148,6 @@ Contoso 大學網頁讀取的設定中的值`appSettings`中*Web.config*檔案�
 
 如需本教學課程所涵蓋之主題的詳細資訊，請參閱中的 Web.config 轉換案例[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521.aspx)。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12.md)

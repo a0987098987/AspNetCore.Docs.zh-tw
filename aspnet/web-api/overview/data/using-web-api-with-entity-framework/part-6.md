@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-6
-title: "建立 JavaScript 用戶端 |Microsoft 文件"
+title: 建立 JavaScript 用戶端 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: b397c5a413ae213c9b79da1c0e0626efe21c7e21
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29d50e448e6d282c7db06b9d1946ac221347e1ea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-javascript-client"></a>建立 JavaScript 用戶端
 ====================
@@ -58,8 +58,8 @@ Knockout 程式庫會使用模型-檢視-ViewModel (MVVM) 模式：
 
 在 Knockout，`observable`類別可讓資料繫結。 當可觀察的內容變更時，observable，以自行更新通知的所有資料繫結控制項。 (`observableArray`類別是陣列版本*observable*。)開始使用，我們的檢視模型中有兩個可預見值：
 
-- `books`保存書籍的清單。
-- `error`如果 AJAX 呼叫失敗，則包含錯誤訊息。
+- `books` 保存書籍的清單。
+- `error` 如果 AJAX 呼叫失敗，則包含錯誤訊息。
 
 `getAllBooks`方法會 AJAX 呼叫以取得書籍的清單。 然後它會將結果推入`books`陣列。
 
@@ -73,6 +73,6 @@ Knockout 程式庫會使用模型-檢視-ViewModel (MVVM) 模式：
 
 [!code-csharp[Main](part-6/samples/sample3.cs)]
 
->[!div class="step-by-step"]
-[上一頁](part-5.md)
-[下一頁](part-7.md)
+> [!div class="step-by-step"]
+> [上一頁](part-5.md)
+> [下一頁](part-7.md)

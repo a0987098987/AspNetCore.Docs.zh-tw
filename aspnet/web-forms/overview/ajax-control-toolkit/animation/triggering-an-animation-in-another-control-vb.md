@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
-title: "觸發動畫另一個控制項 (VB) |Microsoft 文件"
+title: 觸發動畫另一個控制項 (VB) |Microsoft 文件
 author: wenz
-description: "動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 一般而言，啟動..."
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 一般而言，啟動...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ce1d29cbd06ef8a470780ff4c7bda8039575d59f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 262a17e7521a8ea16c81e8dfdc6d3b6614c18eea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="triggering-an-animation-in-another-control-vb"></a>觸發動畫另一個控制項 (VB)
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/10/2017
 > 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 一般而言，啟動動畫會觸發相同的控制項與使用者互動。 不過也可以與一個控制項，然後動畫互動另一個控制項。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 一般而言，啟動動畫會觸發相同的控制項與使用者互動。 不過也可以與一個控制項，然後動畫互動另一個控制項。
 
@@ -64,6 +64,6 @@ ms.lasthandoff: 11/10/2017
 
 在按鈕上的按一下滑鼠開始面板動畫 ([按一下以檢視完整大小的影像](triggering-an-animation-in-another-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[上一頁](disabling-actions-during-animation-vb.md)
-[下一頁](modifying-animations-from-the-server-side-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](disabling-actions-during-animation-vb.md)
+> [下一頁](modifying-animations-from-the-server-side-vb.md)

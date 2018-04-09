@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/publish-to-azure
-title: "發行至 Azure 的 MVC 資料庫第一個站台 |Microsoft 文件"
+title: 發行至 Azure 的 MVC 資料庫第一個站台 |Microsoft 文件
 author: tfitzmac
-description: "使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里..."
+description: 使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，您可以建立 web 應用程式提供的介面到現有的資料庫。 此教學課程里...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/22/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/publish-to-azure
 msc.type: authoredcontent
-ms.openlocfilehash: eadc0f2b08df29f80fe53d03cf88cd3cdcecfb12
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 839bbceba6f0e098303facd40dbb1496bd449ba3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="publish-mvc-database-first-site-to-azure"></a>發行 MVC 資料庫第一個站台至 Azure
 ====================
@@ -152,7 +152,7 @@ ms.lasthandoff: 01/24/2018
 
 ![新的資料表](publish-to-azure/_static/image22.png)
 
-現在您已準備好要測試 web 應用程式部署至 Azure。 瀏覽至 Azure 上 （例如 http://contosositeexample.azurewebsites.net/) 的 web 應用程式。 按一下 學員清單的連結，您應該會看到學生的索引檢視。
+現在您已準備好要測試 web 應用程式部署至 Azure。 瀏覽至 Azure 上的 web 應用程式 (例如http://contosositeexample.azurewebsites.net/)。 按一下 學員清單的連結，您應該會看到學生的索引檢視。
 
 ![view](publish-to-azure/_static/image23.png)
 
@@ -166,5 +166,5 @@ Code First 開發的簡介範例，請參閱[開始使用 ASP.NET MVC 5](../intr
 
 如需更進階的範例，請參閱[建立 ASP.NET MVC 4 應用程式的 Entity Framework 資料模型](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。 請注意，您用於第一個資料庫中的資料搭配使用 DbContext API 與您用於在第一個程式碼中使用資料的 API 相同。 即使您想要使用第一個資料庫，您可以了解如何處理複雜的案例，例如讀取及更新相關的資料處理並行衝突，從程式碼第一次的教學課程，依此類推。 唯一的差異是在建立資料庫、 內容類別和實體類別的方式。
 
->[!div class="step-by-step"]
-[上一步](enhancing-data-validation.md)
+> [!div class="step-by-step"]
+> [上一步](enhancing-data-validation.md)

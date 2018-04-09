@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
-title: "設定生產環境 Web 應用程式使用實際執行資料庫 (VB) |Microsoft 文件"
+title: 設定生產環境 Web 應用程式使用實際執行資料庫 (VB) |Microsoft 文件
 author: rick-anderson
-description: "如先前的教學課程所述，是很常見的開發和生產環境之間差異的組態資訊。 這是 es..."
+description: 如先前的教學課程所述，是很常見的開發和生產環境之間差異的組態資訊。 這是 es...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 60ef1f93efea777e9309ad8c664a2c6645f1ce80
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: b1741807fe02b4e60db7098cfd46922d3ba50ccd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>設定生產環境 Web 應用程式使用實際執行資料庫 (VB)
 ====================
@@ -71,7 +71,7 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 
 生產環境資料庫現在應該會顯示在 [伺服器總管] 中。 從 [伺服器總管] 中選取資料庫，並移至 [屬性] 視窗。 您將找到名為資料庫的連接字串與連接字串的屬性。 假設您在生產環境和 SqlClient 提供者上使用 Microsoft SQL Server 資料庫連接字串看起來應該如下所示：
 
-**資料來源 =*serverName*;初始目錄 =*databaseName*;保存安全性資訊 = True;使用者 ID =*username*;密碼 = * 密碼***
+<strong>資料來源 =<em>serverName</em>;初始目錄 =<em>databaseName</em>;保存安全性資訊 = True;使用者 ID =<em>username</em>;密碼 =*密碼</strong>*
 
 其中*serverName*， *databaseName*， *username*，和*密碼*與資料庫伺服器名稱，資料庫的值名稱，以及使用者名稱和密碼提供給您的 web 主機公司。
 
@@ -152,6 +152,6 @@ Web 應用程式使用中的資訊*連接字串*建立與資料庫連線。 連�
 - [設定移出 Web.config 檔案](http://www.asp101.com/tips/index.asp?id=154)
 - [技術文件&lt;connectionStrings&gt;項目](https://msdn.microsoft.com/library/bf7sd233.aspx)
 
->[!div class="step-by-step"]
-[上一頁](deploying-a-database-vb.md)
-[下一頁](configuring-a-website-that-uses-application-services-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](deploying-a-database-vb.md)
+> [下一頁](configuring-a-website-that-uses-application-services-vb.md)

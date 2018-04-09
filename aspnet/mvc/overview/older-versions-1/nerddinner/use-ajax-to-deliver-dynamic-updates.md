@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
-title: "提供動態更新使用 AJAX |Microsoft 文件"
+title: 提供動態更新使用 AJAX |Microsoft 文件
 author: microsoft
-description: "步驟 10 實作支援登入的使用者 RSVP 興趣參加 dinner，使用 Ajax 為基礎的方式整合至 dinner 詳細資料..."
+description: 步驟 10 實作支援登入的使用者 RSVP 興趣參加 dinner，使用 Ajax 為基礎的方式整合至 dinner 詳細資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 7b75f8c6cf08112eb77d1a9a40222ed1425ef3a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7cea3ee2ec52261521941efac484e91a53f6310b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>用於 AJAX 傳送動態更新
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/10/2017
 
 *提示： 請確定您已安裝可提供 JavaScript 檔案 （包括 jQuery） 更豐富的 intellisense 支援的 VS 2008 sp1 的 JavaScript intellisense hotfix。您可以下載從： http://tinyurl.com/vs2008javascripthotfix*
 
-通常使用 JQuery 撰寫的程式碼會使用全域"$ （）"JavaScript 方法，可擷取一或多個 HTML 項目，使用 CSS 選取器。 例如， *$("#rsvpmsg")*選取識別碼為 rsvpmsg，任何 HTML 項目時*$(".something")*會選取所有項目 「 結果 」 CSS 類別名稱。 您也可以撰寫更進階的查詢，例如 「 傳回所有選取的選項按鈕 」 使用 「 類似的選取器查詢： *$(「 輸入 [@type= 無線電] [@checked]")*。
+通常使用 JQuery 撰寫的程式碼會使用全域"$ （）"JavaScript 方法，可擷取一或多個 HTML 項目，使用 CSS 選取器。 例如， <em>$("#rsvpmsg")</em>選取識別碼為 rsvpmsg，任何 HTML 項目時<em>$(".something")</em>會選取所有項目 「 結果 」 CSS 類別名稱。 您也可以撰寫更進階的查詢，例如 「 傳回所有選取的選項按鈕 」 使用 「 類似的選取器查詢： <em>$(「 輸入 [@type= 無線電] [@checked]")</em>。
 
 一旦您已選取項目，您可以對它們採取的動作，例如隱藏它們呼叫方法： *$("#rsvpmsg").hide();*
 
@@ -153,6 +153,6 @@ ms.lasthandoff: 11/10/2017
 
 我們現在看我們可以更進一步使用 AJAX 和互動式對應支援將我們的應用程式的方法。
 
->[!div class="step-by-step"]
-[上一頁](secure-applications-using-authentication-and-authorization.md)
-[下一頁](use-ajax-to-implement-mapping-scenarios.md)
+> [!div class="step-by-step"]
+> [上一頁](secure-applications-using-authentication-and-authorization.md)
+> [下一頁](use-ajax-to-implement-mapping-scenarios.md)

@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET MVC 從移轉至 ASP.NET Core MVC"
+title: ASP.NET MVC 從移轉至 ASP.NET Core MVC
 author: ardalis
-description: "了解如何開始將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC。"
+description: 了解如何開始將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC。
 manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: c9c9f63cd635f364d9b2e081dc051a46a44d3e4f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e249be06726b307a1c41a525a132f7e0ab8b50ee
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
+# <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)， [Steve Smith](https://ardalis.com/)，和[Scott Addie](https://scottaddie.com)
 
@@ -220,7 +220,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-請參閱**使用開發人員例外狀況頁面**中[錯誤處理](../fundamentals/error-handling.md)如需詳細資訊。
+請參閱**使用開發人員例外狀況頁面**中[處理錯誤](../fundamentals/error-handling.md)如需詳細資訊。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
-title: "第 7 部分： 建立主頁面 |Microsoft 文件"
+title: 第 7 部分： 建立主頁面 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 4d06e72bc664f707bbbe4603be41347158c58903
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2c378e68a1e6600daf655c19afbfe355e89496d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-creating-the-main-page"></a>第 7 部分： 建立主頁面
 ====================
@@ -59,13 +59,13 @@ ms.lasthandoff: 01/24/2018
 
 `OrderDetailsViewModel`初始化與訂單時，它將 AJAX 要求傳送至伺服器擷取的訂單詳細資料。
 
-另外而且請注意`total`屬性`OrderDetailsViewModel`。 這個屬性是特殊種類的可觀察呼叫[計算 observable](http://knockoutjs.com/documentation/computedObservables.html)。 正如其名，計算的 observable 可讓您資料繫結到計算的值 &#8212; 在此情況下，總成本的順序。
+另外而且請注意`total`屬性`OrderDetailsViewModel`。 這個屬性是特殊種類的可觀察呼叫[計算 observable](http://knockoutjs.com/documentation/computedObservables.html)。 正如其名，計算的 observable 可讓您計算值的資料繫結&#8212;在此情況下，總成本的順序。
 
 接下來，加入這些函式`AppViewModel`:
 
-- `resetCart`移除購物車中的所有項目。
-- `getDetails`取得訂單的詳細資料 (由新 pusing`OrderDetailsViewModel`到`details`清單)。
-- `createOrder`建立新的訂單，並清空購物車。
+- `resetCart` 移除購物車中的所有項目。
+- `getDetails` 取得訂單的詳細資料 (由新 pusing`OrderDetailsViewModel`到`details`清單)。
+- `createOrder` 建立新的訂單，並清空購物車。
 
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample6.js?highlight=4)]
@@ -119,5 +119,5 @@ ms.lasthandoff: 01/24/2018
 - [ASP.NET 資料存取內容對應](https://msdn.microsoft.com/library/6759sth4.aspx)
 - [Entity Framework 開發人員中心](https://msdn.microsoft.com/data/ef)
 
->[!div class="step-by-step"]
-[上一步](using-web-api-with-entity-framework-part-6.md)
+> [!div class="step-by-step"]
+> [上一步](using-web-api-with-entity-framework-part-6.md)

@@ -1,7 +1,7 @@
 ---
-title: "密碼雜湊"
+title: 在 ASP.NET Core 雜湊密碼
 author: rick-anderson
-description: "本文件說明如何使用 ASP.NET Core 資料保護 Api 的密碼雜湊。"
+description: 了解如何使用 ASP.NET Core 資料保護 Api 的密碼雜湊。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: 8e2796108be14ef382f46e6deb3d584517120d27
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 63348da144e84d614f274b5d816cbecb020dcab4
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="password-hashing"></a>密碼雜湊
+# <a name="hash-passwords-in-aspnet-core"></a>在 ASP.NET Core 雜湊密碼
 
 資料保護程式碼基底包含封裝*Microsoft.AspNetCore.Cryptography.KeyDerivation*包含密碼編譯金鑰衍生函式。 此套件是獨立的元件且沒有任何相依性的資料保護系統的其餘部分。 它可以完全獨立使用。 其中存在著來源與資料保護程式碼基底，為了方便起見。
 

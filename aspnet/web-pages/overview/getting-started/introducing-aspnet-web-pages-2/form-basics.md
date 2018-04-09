@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
-title: "簡介 ASP.NET Web 網頁的 HTML 表單的基本概念 |Microsoft 文件"
+title: 簡介 ASP.NET Web 網頁的 HTML 表單的基本概念 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何建立一個輸入的表單，以及如何處理使用者的輸入，當您使用 ASP.NET Web Pages (Razor) 的基本概念。 現在您..."
+description: 本教學課程會示範如何建立一個輸入的表單，以及如何處理使用者的輸入，當您使用 ASP.NET Web Pages (Razor) 的基本概念。 現在您...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 68056759b2e80230e5fd2c0f9b2d2a89b549cf37
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6f44f74774c2fa6338524987779e15f3940d1830
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>簡介 ASP.NET Web 網頁的 HTML 表單的基本概念
 ====================
@@ -88,11 +88,11 @@ ms.lasthandoff: 01/24/2018
 
 大部分的使用者輸入項目會以 HTML`<input>`項目。 它們看起來像是`<input type="type" name="name">,`其中*類型*表示您想要的使用者輸入控制項的類型。 這些項目是常見的：
 
-- 文字方塊中：`<input type="text">`
-- 核取方塊：`<input type="check">`
-- 選項按鈕：`<input type="radio">`
-- 按鈕：`<input type="button">`
-- 送出按鈕：`<input type="submit">`
+- 文字方塊中： `<input type="text">`
+- 核取方塊： `<input type="check">`
+- 選項按鈕： `<input type="radio">`
+- 按鈕： `<input type="button">`
+- 送出按鈕： `<input type="submit">`
 
 您也可以使用`<textarea>`項目來建立多行文字方塊和`<select>`建立下拉式清單或可捲動的清單項目。 (如需有關 HTML 表單項目，請參閱[HTML 表單和輸入](http://www.w3schools.com/html/html_forms.asp)W3Schools 站台上。)
 
@@ -169,9 +169,9 @@ ms.lasthandoff: 01/24/2018
 > 
 > `Request`物件實際上會公開數個子集。 例如: 
 > 
-> - `Request.Form`可讓您從項目內已提交的值`<form>`項目，如果要求是`POST`要求。
-> - `Request.QueryString`URL 查詢字串中，提供您剛才的值。 (例如 URL 中`http://mysite/myapp/page?searchGenre=action&page=2`、 `?searchGenre=action&page=2` URL 區段是查詢字串。)
-> - `Request.Cookies`集合可讓您存取瀏覽器已傳送的 cookie。
+> - `Request.Form` 可讓您從項目內已提交的值`<form>`項目，如果要求是`POST`要求。
+> - `Request.QueryString` URL 查詢字串中，提供您剛才的值。 (例如 URL 中`http://mysite/myapp/page?searchGenre=action&page=2`、 `?searchGenre=action&page=2` URL 區段是查詢字串。)
+> - `Request.Cookies` 集合可讓您存取瀏覽器已傳送的 cookie。
 > 
 > 若要取得您知道值是在送出表單，您可以使用`Request["name"]`。 或者，您可以使用更特定的版本`Request.Form["name"]`(如`POST`要求) 或`Request.QueryString["name"]`(如`GET`要求)。 當然，*名稱*是要取得之項目的名稱。
 > 
@@ -218,7 +218,7 @@ ms.lasthandoff: 01/24/2018
 
 > [!NOTE] 
 > 
-> **重要 ！** 使用預留位置 (例如`@0`) 將值傳遞至 SQL 命令為*極為重要*安全性。 您看到該元件，和預留位置的變數，方法是您應該建構 SQL 命令的唯一方式。
+> **重要！** 使用預留位置 (例如`@0`) 將值傳遞至 SQL 命令為*極為重要*安全性。 您看到該元件，和預留位置的變數，方法是您應該建構 SQL 命令的唯一方式。
 > 
 > 永遠不會以建構 SQL 陳述式放在一起，（串連） 的常值文字和您從使用者取得的值。 串連使用者輸入 SQL 陳述式會開啟您的站台*SQL 資料隱碼攻擊*當惡意使用者送出至您的頁面 hack 資料庫的值。 (您可以讀取多個發行項中[SQL 資料隱碼](https://msdn.microsoft.com/library/ms161953.aspx)MSDN 網站。)
 
@@ -363,6 +363,6 @@ ms.lasthandoff: 01/24/2018
 - [SQL WHERE 子句](http://www.w3schools.com/sql/sql_where.asp)W3Schools 站台上
 - [方法定義](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)W3C 網站上的發行項
 
->[!div class="step-by-step"]
-[上一頁](displaying-data.md)
-[下一頁](entering-data.md)
+> [!div class="step-by-step"]
+> [上一頁](displaying-data.md)
+> [下一頁](entering-data.md)

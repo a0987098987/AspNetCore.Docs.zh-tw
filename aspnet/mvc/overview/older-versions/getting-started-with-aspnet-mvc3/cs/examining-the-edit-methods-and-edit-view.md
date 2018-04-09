@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
-title: "檢查編輯方法與編輯檢視 (C#) |Microsoft 文件"
+title: 檢查編輯方法與編輯檢視 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 137254be69344f31e65e1b4d1318a107ff9d6d47
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 581138bb25b95ef9002a2bd97d1fa28797d96bfa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-c"></a>檢查編輯方法與編輯檢視 (C#)
 ====================
@@ -220,6 +220,6 @@ LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例
 
 本節中您可以檢查的 CRUD 動作方法和架構所產生的檢視。 您可以建立和檢視，讓使用者可以搜尋電影標題和內容類型的搜尋動作方法。 在下一步 區段中，您會看到如何將屬性加入`Movie`模型以及如何將會自動建立測試資料庫的初始設定式。
 
->[!div class="step-by-step"]
-[上一頁](accessing-your-models-data-from-a-controller.md)
-[下一頁](adding-a-new-field.md)
+> [!div class="step-by-step"]
+> [上一頁](accessing-your-models-data-from-a-controller.md)
+> [下一頁](adding-a-new-field.md)

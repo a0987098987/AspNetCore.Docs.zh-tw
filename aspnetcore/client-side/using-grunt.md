@@ -1,7 +1,7 @@
 ---
-title: "使用 ASP.NET Core Grunt"
+title: 用於 ASP.NET Core Grunt
 author: rick-anderson
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-grunt
-ms.openlocfilehash: c23f170b36ac1b9623835337020f2b5ac9514971
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 169552e9b5dd811884ce1c65952677ba83626b58
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-grunt-in-aspnet-core"></a>使用 ASP.NET Core Grunt 
+# <a name="use-grunt-in-aspnet-core"></a>用於 ASP.NET Core Grunt
 
 由[Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
@@ -129,16 +129,16 @@ Grunt 是會自動將指令碼縮製、 TypeScript 編譯、 程式碼品質 「
 
 Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註冊工作，可以手動執行或設定為基礎而執行自動 Visual Studio 中的事件。
 
-1.  以滑鼠右鍵按一下專案，然後選取**新增 > 新的項目**。 選取**Grunt 組態檔**選項，請保留預設名稱， *Gruntfile.js*，然後按一下**新增** 按鈕。
+1. 以滑鼠右鍵按一下專案，然後選取**新增 > 新的項目**。 選取**Grunt 組態檔**選項，請保留預設名稱， *Gruntfile.js*，然後按一下**新增** 按鈕。
 
-    初始程式碼包含模組定義和`grunt.initConfig()`方法。 `initConfig()`用來設定每一個封裝的選項和模組的其餘部分將會載入並註冊工作。
+   初始程式碼包含模組定義和`grunt.initConfig()`方法。 `initConfig()`用來設定每一個封裝的選項和模組的其餘部分將會載入並註冊工作。
     
-    ```javascript
-    module.exports = function (grunt) {
-      grunt.initConfig({
-      });
-    };
-    ```
+   ```javascript
+   module.exports = function (grunt) {
+     grunt.initConfig({
+     });
+   };
+   ```
 
 2. 內部`initConfig()`方法，加入選項`clean`工作範例所示*Gruntfile.js*下方。 「 清除 」 工作會接受目錄字串的陣列。 此工作從 wwwroot/程式庫移除檔案，並移除整個/暫存目錄。
 
@@ -207,16 +207,16 @@ Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註�
     > [!NOTE]
     > 選項"-W069 」 錯誤所產生 jshint JavaScript 使用括號語法來指定的屬性，而不是點標記法，也就是當`Tastes["Sweet"]`而不是`Tastes.Sweet`。 選項會關閉警告，以允許其他處理序繼續進行。
 
-10.  新增`uglify`工作使用下列程式碼。
+10. 新增`uglify`工作使用下列程式碼。
 
     工作縮短*combined.js*檔案找到暫存目錄中，並會將結果檔案建立 wwwroot/lib 遵循標準命名慣例*\<檔案名稱\>。 min.js*.
     
     ```javascript
     uglify: {
-      all: {
-        src: ['temp/combined.js'],
-        dest: 'wwwroot/lib/combined.min.js'
-      }
+     all: {
+       src: ['temp/combined.js'],
+       dest: 'wwwroot/lib/combined.min.js'
+     }
     },
     ```
 
@@ -241,7 +241,7 @@ Grunt 已設定為使用名為資訊清單*Gruntfile.js*定義、 載入和註�
     ![方案總管 在所有工作](using-grunt/_static/solution-explorer-after-all-tasks.png)
     
     > [!NOTE]
-    > 如需有關每個封裝的選項的詳細資訊，請瀏覽[https://www.npmjs.com/](https://www.npmjs.com/)和查閱的主頁面上的 [搜尋] 方塊中的封裝名稱。 例如，您可以查閱 grunt contrib 清除封裝，以取得文件的連結，說明及其所有的參數。
+    > 如需有關每個封裝的選項的詳細資訊，請瀏覽[ https://www.npmjs.com/ ](https://www.npmjs.com/)和查閱的主頁面上的 [搜尋] 方塊中的封裝名稱。 例如，您可以查閱 grunt contrib 清除封裝，以取得文件的連結，說明及其所有的參數。
 
 ### <a name="all-together-now"></a>一堂
 
@@ -255,7 +255,7 @@ grunt.registerTask("all", ['clean', 'concat', 'jshint', 'uglify']);
 
 ![別名 grunt 所完成的工作](using-grunt/_static/alias-tasks.png)
 
-## <a name="watching-for-changes"></a>監看的變更
+## <a name="watching-for-changes"></a>監看變更
 
 A`watch`工作會監看檔案及目錄上的。 監看式自動觸發工作，如果它偵測到變更。 下列程式碼加入監看的變更 initConfig \*TypeScript 目錄中的.js 檔案。 如果變更的 JavaScript 檔案，`watch`將執行`all`工作。
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-vb
-title: "插入、 更新和刪除資料與 SqlDataSource (VB) |Microsoft 文件"
+title: 插入、 更新和刪除資料與 SqlDataSource (VB) |Microsoft 文件
 author: rick-anderson
-description: "在先前的教學課程中我們學到如何 ObjectDataSource 控制項允許的插入、 更新和刪除的資料。 SqlDataSource 控制項支援 t..."
+description: 在先前的教學課程中我們學到如何 ObjectDataSource 控制項允許的插入、 更新和刪除的資料。 SqlDataSource 控制項支援 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4664e15ca6afa14f072e0840354c7f5a48d97ddf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 92d195c3e1e349cd82e0625cf9a6c5a82644b5db
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-vb"></a>插入、 更新和刪除資料與 SqlDataSource (VB)
 ====================
@@ -213,8 +213,8 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](using-parameterized-queries-with-the-sqldatasource-vb.md)
-[下一頁](implementing-optimistic-concurrency-with-the-sqldatasource-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](using-parameterized-queries-with-the-sqldatasource-vb.md)
+> [下一頁](implementing-optimistic-concurrency-with-the-sqldatasource-vb.md)

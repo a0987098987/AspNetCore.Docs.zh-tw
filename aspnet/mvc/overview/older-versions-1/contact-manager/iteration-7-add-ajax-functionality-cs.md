@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
-title: "反覆項目 #7 – 新增 Ajax 功能 (C#) |Microsoft 文件"
+title: '反覆項目 #7 – 新增 Ajax 功能 (C#) |Microsoft 文件'
 author: microsoft
-description: "在第七個反覆項目，改善回應性和效能的應用程式藉由新增 Ajax 支援。"
+description: 在第七個反覆項目，改善回應性和效能的應用程式藉由新增 Ajax 支援。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
 msc.type: authoredcontent
-ms.openlocfilehash: db313d12dfd6a146347f253dc3a1f4a889bee780
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 35d62383a571725749b2fc629bbb17954657b2f6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-7--add-ajax-functionality-c"></a>反覆項目 #7 – 新增 Ajax 功能 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載程式碼](iteration-7-add-ajax-functionality-cs/_static/contactmanager_7_cs1.zip)
 
@@ -103,7 +103,7 @@ Ajax 應用程式中，您不會導致使用者體驗只是為了更新頁面中
 
 第一個步驟是檢視的分隔的部分我們想要以非同步方式更新到不同的部分 （檢視使用者控制項）。 顯示連絡人的索引檢視的區段已移到清單 1 中部分。
 
-**列出 1-Views\Contact\ContactList.ascx**
+**Listing 1 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample2.aspx)]
 
@@ -111,7 +111,7 @@ Ajax 應用程式中，您不會導致使用者體驗只是為了更新頁面中
 
 更新的索引檢視表包含在清單 2。
 
-**列出 2-Views\Contact\Index.aspx**
+**Listing 2 - Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample3.aspx)]
 
@@ -205,7 +205,7 @@ Expando 屬性連絡人群組連結會從擷取的群組識別碼。 連結會�
 
 [刪除] 連結會包含在部分 ContactList。 部分 ContactList 的更新的版本都包含在程式碼範例 6。
 
-**列出 6-Views\Contact\ContactList.ascx**
+**Listing 6 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample10.aspx)]
 
@@ -222,7 +222,7 @@ AjaxOptions 參數有兩個屬性。 首先，確認屬性用來顯示快顯 Jav
 
 列出 7 包含已新增至連絡人控制站的新 AjaxDelete() 動作。
 
-**列出 7-Controllers\ContactController.cs (AjaxDelete)**
+**Listing 7 - Controllers\ContactController.cs (AjaxDelete)**
 
 [!code-csharp[Main](iteration-7-add-ajax-functionality-cs/samples/sample12.cs)]
 
@@ -242,6 +242,6 @@ AjaxDelete() 動作是使用 AcceptVerbs 屬性加以裝飾。 這個屬性會�
 
 最後，我們會建立支援 HTTP DELETE 作業的刪除連結。 藉由執行 Ajax 刪除，我們會讓使用者刪除資料庫記錄而不需要使用者要求額外的刪除確認 頁面。
 
->[!div class="step-by-step"]
-[上一頁](iteration-6-use-test-driven-development-cs.md)
-[下一頁](iteration-1-create-the-application-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](iteration-6-use-test-driven-development-cs.md)
+> [下一頁](iteration-1-create-the-application-vb.md)

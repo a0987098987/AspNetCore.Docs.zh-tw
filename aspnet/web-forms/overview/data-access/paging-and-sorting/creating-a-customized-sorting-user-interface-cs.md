@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
-title: "建立自訂排序的使用者介面 (C#) |Microsoft 文件"
+title: 建立自訂排序的使用者介面 (C#) |Microsoft 文件
 author: rick-anderson
-description: "當顯示一長串的已排序資料時，它可以是很有幫助藉由引進分隔符號資料列群組相關的資料。 在本教學課程中我們會看到如何建立..."
+description: 當顯示一長串的已排序資料時，它可以是很有幫助藉由引進分隔符號資料列群組相關的資料。 在本教學課程中我們會看到如何建立...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dbd2f6c8f1e21529da8a0fbffab212a29f615cc1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c2680f5e47883c9d5fa874a36eb666270c5e406a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>建立自訂排序的使用者介面 (C#)
 ====================
@@ -141,7 +141,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](creating-a-customized-sorting-user-interface-cs/samples/sample4.cs)]
 
-此程式碼會啟動以程式設計方式參考`Table`GridView 的控制項階層架構的根目錄中找到的物件，並建立名為的字串變數`lastValue`。 `lastValue`用來比較目前資料列 s 排序資料行值與上一個資料列的值。 下一步、 GridView s`Rows`會列舉集合，每個資料列已排序的資料行的值會儲存在`currentValue`變數。
+此程式碼會啟動以程式設計方式參考`Table`GridView 的控制項階層架構的根目錄中找到的物件，並建立名為的字串變數`lastValue`。 `lastValue` 用來比較目前資料列 s 排序資料行值與上一個資料列的值。 下一步、 GridView s`Rows`會列舉集合，每個資料列已排序的資料行的值會儲存在`currentValue`變數。
 
 > [!NOTE]
 > 若要判斷特定資料列 s 排序資料行的值使用的儲存格的`Text`屬性。 這適用於 BoundFields，但將不適用 TemplateFields，CheckBoxFields，視等等。 我們會探討如何稍後說明替代 GridView 欄位。
@@ -198,8 +198,8 @@ GridView 不包含許多內建的自訂排序的介面。 不過，在使用的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](sorting-custom-paged-data-cs.md)
-[下一頁](paging-and-sorting-report-data-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](sorting-custom-paged-data-cs.md)
+> [下一頁](paging-and-sorting-report-data-vb.md)

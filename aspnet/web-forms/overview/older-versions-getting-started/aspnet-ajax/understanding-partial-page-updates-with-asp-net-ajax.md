@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
-title: "了解部分頁面更新與 ASP.NET AJAX |Microsoft 文件"
+title: 了解部分頁面更新與 ASP.NET AJAX |Microsoft 文件
 author: scottcate
-description: "可能是最明顯的 ASP.NET AJAX 擴充功能的特色就是能夠進行部分或累加式頁面更新而不會進行完整回傳至 t..."
+description: 可能是最明顯的 ASP.NET AJAX 擴充功能的特色就是能夠進行部分或累加式頁面更新而不會進行完整回傳至 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 1d8d3009df0a264e466d3f7decfb65978d8ae7a4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 91a98bf1c9a71ae84c569f7ae40930422cb652e0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>了解部分頁面更新與 ASP.NET AJAX
 ====================
@@ -52,7 +52,7 @@ Microsoft ASP.NET 技術，帶來物件導向和事件驅動的程式設計模�
 ## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>逐步解說： 將部分呈現整合至現有的專案
 
 
-1. 在 Microsoft Visual Studio 2008 中，建立新的 ASP.NET 網站專案，請前往*檔案* *- &gt;新增* *- &gt;網站*並從對話方塊選取 ASP.NET 網站。 您可以將檔案命名任何您喜歡，並可能會先安裝到檔案系統或到網際網路資訊服務 (IIS)。
+1. 在 Microsoft Visual Studio 2008 中，建立新的 ASP.NET 網站專案，請前往<em>檔案</em> <em>- &gt;新增</em> <em>- &gt;網站</em>並從對話方塊選取 ASP.NET 網站。 您可以將檔案命名任何您喜歡，並可能會先安裝到檔案系統或到網際網路資訊服務 (IIS)。
 2. 您會有基本的 ASP.NET 標記的空白預設頁面 (伺服器端表單和`@Page`指示詞)。 卸除稱為標籤`Label1`和按鈕呼叫`Button1`拖曳到頁面中的表單項目。 您設定的可能以任何您喜歡的 text 屬性。
 3. 在 [設計] 檢視中，按兩下`Button1`產生程式碼後置事件處理常式。 在此事件處理常式中，設定`Label1.Text`至您已按下按鈕 ！ 。
 
@@ -73,11 +73,11 @@ Microsoft ASP.NET 技術，帶來物件導向和事件驅動的程式設計模�
 ([按一下以檢視完整大小的影像](understanding-partial-page-updates-with-asp-net-ajax/_static/image3.png))
 
 
-1. *已知問題：*如果您已經有與 ASP.NET 2.0 AJAX 擴充功能一起安裝的 Visual Studio 2005 的電腦上安裝 Visual Studio 2008，Visual Studio 2008 會匯入 AJAX 擴充功能的工具箱項目。 您可以判斷是否為情況藉由檢查元件; 的工具提示他們應該說 3.5.0.0 版本。 如果他們說 2.0.0.0 版，您已匯入舊的工具箱項目，而且必須以手動方式將其匯入 Visual Studio 中使用 [選擇工具箱項目] 對話方塊。 您無法將透過設計工具的第 2 版控制項。
+1. <em>已知問題：</em>如果您已經有與 ASP.NET 2.0 AJAX 擴充功能一起安裝的 Visual Studio 2005 的電腦上安裝 Visual Studio 2008，Visual Studio 2008 會匯入 AJAX 擴充功能的工具箱項目。 您可以判斷是否為情況藉由檢查元件; 的工具提示他們應該說 3.5.0.0 版本。 如果他們說 2.0.0.0 版，您已匯入舊的工具箱項目，而且必須以手動方式將其匯入 Visual Studio 中使用 [選擇工具箱項目] 對話方塊。 您無法將透過設計工具的第 2 版控制項。
 
-1. 之前`<asp:Label>`開始標記、 建立的空白字元，行和工具箱 中的 UpdatePanel 控制項上按兩下。 請注意，新`@Register`指示詞是否包含在頁面上，指出應該使用會匯 System.Web.UI 命名空間內的控制項頂端`asp:`前置詞。
-2. 拖曳結尾`</asp:UpdatePanel>`標記結尾的按鈕項目，以便使用包裝的標籤和按鈕控制項的項目是語式正確。
-3. 在開啟之後`<asp:UpdatePanel>`標記中，開始開啟新的標記。 請注意，IntelliSense 會提示您有兩個選項。 在此案例中，建立`<ContentTemplate>`標記。 請務必使標記語式正確包裝您的標籤和按鈕周圍此標記。
+2. 之前`<asp:Label>`開始標記、 建立的空白字元，行和工具箱 中的 UpdatePanel 控制項上按兩下。 請注意，新`@Register`指示詞是否包含在頁面上，指出應該使用會匯 System.Web.UI 命名空間內的控制項頂端`asp:`前置詞。
+3. 拖曳結尾`</asp:UpdatePanel>`標記結尾的按鈕項目，以便使用包裝的標籤和按鈕控制項的項目是語式正確。
+4. 在開啟之後`<asp:UpdatePanel>`標記中，開始開啟新的標記。 請注意，IntelliSense 會提示您有兩個選項。 在此案例中，建立`<ContentTemplate>`標記。 請務必使標記語式正確包裝您的標籤和按鈕周圍此標記。
 
 
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image5.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image4.png)
@@ -114,45 +114,45 @@ Visual Studio 2008 似乎不會隨附預先定義的範本，ASP.NET AJAX 能力
 
 啟用標記的屬性：
 
-| **屬性名稱** | **Type** | **說明** |
+| **屬性名稱** | **Type** | **描述** |
 | --- | --- | --- |
-| AllowCustomErrors 重新導向 | Bool | 指定是否要使用 web.config 檔案的自訂錯誤區段，來處理錯誤。 |
-| AsyncPostBackError 訊息 | 字串 | 取得或設定傳送到用戶端，如果發生錯誤時引發的錯誤訊息。 |
-| AsyncPostBack 逾時 | Int32 | 取得或設定預設的用戶端應該等待要完成之非同步要求的時間量。 |
-| EnableScript 全球化 | Bool | 取得或設定是否已啟用指令碼的全球化。 |
-| EnableScript 當地語系化 | Bool | 取得或設定是否已啟用指令碼當地語系化。 |
+| AllowCustomErrors-Redirect | Bool | 指定是否要使用 web.config 檔案的自訂錯誤區段，來處理錯誤。 |
+| AsyncPostBackError-Message | String | 取得或設定傳送到用戶端，如果發生錯誤時引發的錯誤訊息。 |
+| AsyncPostBack-Timeout | Int32 | 取得或設定預設的用戶端應該等待要完成之非同步要求的時間量。 |
+| EnableScript-Globalization | Bool | 取得或設定是否已啟用指令碼的全球化。 |
+| EnableScript-Localization | Bool | 取得或設定是否已啟用指令碼當地語系化。 |
 | ScriptLoadTimeout | Int32 | 決定指令碼載入用戶端所允許的秒數 |
 | ScriptMode | 列舉 （自動、 偵錯、 發行、 繼承） | 取得或設定是否要呈現的指令碼的發行版本 |
-| ScriptPath | 字串 | 取得或設定要傳送至用戶端指令碼檔案位置的根路徑。 |
+| ScriptPath | String | 取得或設定要傳送至用戶端指令碼檔案位置的根路徑。 |
 
 僅限程式碼的屬性：
 
-| **屬性名稱** | **Type** | **說明** |
+| **屬性名稱** | **Type** | **描述** |
 | --- | --- | --- |
-| AuthenticationService | AuthenticationService 管理員 | 取得有關將傳送至用戶端 ASP.NET 驗證服務 proxy 的詳細資料。 |
+| AuthenticationService | AuthenticationService-Manager | 取得有關將傳送至用戶端 ASP.NET 驗證服務 proxy 的詳細資料。 |
 | IsDebuggingEnabled | Bool | 取得是否編寫指令碼和程式碼偵錯已啟用。 |
 | IsInAsyncPostback | Bool | 取得頁面目前是否在非同步回傳要求。 |
-| ProfileService | ProfileService 管理員 | 取得詳細資料會傳送至用戶端的 ASP.NET 程式碼剖析服務 proxy。 |
-| 指令碼 | 集合&lt;指令碼參考&gt; | 取得將傳送至用戶端的指令碼參考的集合。 |
-| 服務 | 集合&lt;服務參考&gt; | 取得將傳送至用戶端的 Web 服務 proxy 參考的集合。 |
+| ProfileService | ProfileService-Manager | 取得詳細資料會傳送至用戶端的 ASP.NET 程式碼剖析服務 proxy。 |
+| 指令碼 | Collection&lt;Script-Reference&gt; | 取得將傳送至用戶端的指令碼參考的集合。 |
+| 服務 | Collection&lt;Service-Reference&gt; | 取得將傳送至用戶端的 Web 服務 proxy 參考的集合。 |
 | SupportsPartialRendering | Bool | 取得指出是否目前的用戶端支援局部呈現。 如果這個屬性會傳回**false**，所有的網頁要求便會是標準的回傳。 |
 
 公用程式碼的方法：
 
-| **方法名稱** | **Type** | **說明** |
+| **方法名稱** | **Type** | **描述** |
 | --- | --- | --- |
 | SetFocus(string) | Void | 當要求完成時，請用戶端將焦點設定至特定控制項。 |
 
 標記下階：
 
-| **標記** | **說明** |
+| **標記** | **描述** |
 | --- | --- |
 | &lt;AuthenticationService&gt; | 提供 ASP.NET 驗證服務 proxy 的詳細資料。 |
 | &lt;ProfileService&gt; | 提供 asp.net 程式碼剖析服務的 proxy 詳細資料。 |
-| &lt;指令碼&gt; | 提供額外的指令碼參考。 |
-| &lt;asp： 指令碼參考&gt; | 代表特定的指令碼參考。 |
-| &lt;服務&gt; | 提供額外的 Web 服務參考其中將包含所產生的 proxy 類別。 |
-| &lt;asp: ServiceReference&gt; | 代表特定的 Web 服務參考。 |
+| &lt;Scripts&gt; | 提供額外的指令碼參考。 |
+| &lt;asp:ScriptReference&gt; | 代表特定的指令碼參考。 |
+| &lt;Service&gt; | 提供額外的 Web 服務參考其中將包含所產生的 proxy 類別。 |
+| &lt;asp:ServiceReference&gt; | 代表特定的 Web 服務參考。 |
 
 ScriptManager 控制項是 ASP.NET AJAX 擴充功能的基本核心。 它提供存取權 （包含大量的用戶端指令碼型別系統） 的指令碼程式庫，支援局部呈現，並提供其他的 ASP.NET 服務 （例如驗證和程式碼剖析，還有其他 Web 服務） 更詳盡的支援。 ScriptManager 控制項也會提供用戶端指令碼的全球化和當地語系化支援。
 
@@ -188,35 +188,35 @@ ScriptManager 控制項來當地語系化的指令碼字串和使用者介面元
 
 啟用標記的屬性：
 
-| **屬性名稱** | **Type** | **說明** |
+| **屬性名稱** | **Type** | **描述** |
 | --- | --- | --- |
 | ChildrenAsTriggers | bool | 指定子控制項是否自動啟動回傳重新整理。 |
 | RenderMode | 列舉 （「 區塊 」、 「 內嵌 」） | 指定將會以視覺化方式呈現內容的方式。 |
-| 更新模式 | 列舉 （Always、 條件式） | 指定 UpdatePanel 是否永遠重新整理部分呈現期間，或如果它只重新整理時叫用觸發程序。 |
+| UpdateMode | 列舉 （Always、 條件式） | 指定 UpdatePanel 是否永遠重新整理部分呈現期間，或如果它只重新整理時叫用觸發程序。 |
 
 僅限程式碼的屬性：
 
-| **屬性名稱** | **Type** | **說明** |
+| **屬性名稱** | **Type** | **描述** |
 | --- | --- | --- |
 | IsInPartialRendering | bool | 取得是否 UpdatePanel 支援局部呈現目前的要求。 |
 | ContentTemplate | ITemplate | 取得標記範本更新要求。 |
 | ContentTemplateContainer | 控制項 | 更新要求中取得的程式設計的範本。 |
-| 觸發程序 | UpdatePanel-TriggerCollection | 取得與目前的 UpdatePanel 相關聯的觸發程序的清單。 |
+| 觸發程序 | UpdatePanel- TriggerCollection | 取得與目前的 UpdatePanel 相關聯的觸發程序的清單。 |
 
 公用程式碼的方法：
 
-| **方法名稱** | **Type** | **說明** |
+| **方法名稱** | **Type** | **描述** |
 | --- | --- | --- |
 | Update （) | Void | 以程式設計方式更新指定的 UpdatePanel。 可讓伺服器要求來觸發其他未觸發的 UpdatePanel 部分呈現。 |
 
 標記下階：
 
-| **標記** | **說明** |
+| **標記** | **描述** |
 | --- | --- |
 | &lt;ContentTemplate&gt; | 指定要用來呈現部分的轉譯結果的標記。 子系&lt;asp: UpdatePanel&gt;。 |
-| &lt;觸發程序&gt; | 指定的集合 *n* 與更新此 UpdatePanel 相關聯的控制項。 子系&lt;asp: UpdatePanel&gt;。 |
-| &lt;asp: AsyncPostBackTrigger&gt; | 指定叫用的給定 UpdatePanel 的部分網頁呈現的觸發程序。 這可能會或可能不是那麼 UpdatePanel 有問題的子系的控制項。 細微的事件名稱。子系&lt;觸發程序&gt;。 |
-| &lt;asp: PostBackTrigger&gt; | 指定的控制項，會導致整個頁面重新整理。 這可能會或可能不是那麼 UpdatePanel 有問題的子系的控制項。 細微的物件。 子系&lt;觸發程序&gt;。 |
+| &lt;觸發程序&gt; | 指定的集合*n*與更新此 UpdatePanel 相關聯的控制項。 子系&lt;asp: UpdatePanel&gt;。 |
+| &lt;asp:AsyncPostBackTrigger&gt; | 指定叫用的給定 UpdatePanel 的部分網頁呈現的觸發程序。 這可能會或可能不是那麼 UpdatePanel 有問題的子系的控制項。 細微的事件名稱。子系&lt;觸發程序&gt;。 |
+| &lt;asp:PostBackTrigger&gt; | 指定的控制項，會導致整個頁面重新整理。 這可能會或可能不是那麼 UpdatePanel 有問題的子系的控制項。 細微的物件。 子系&lt;觸發程序&gt;。 |
 
 `UpdatePanel`控制項是用來分隔，就需要在 AJAX 擴充功能的部分呈現功能的伺服器端內容控制項。 沒有可以在頁面上，UpdatePanel 控制項數目沒有限制，也可以巢狀。 每個 UpdatePanel 遭到隔離，使每個都可以獨立工作 （您可以有兩個 updatepanel 就相同時間執行呈現不同部分的頁面上，獨立於網頁回傳）。
 
@@ -283,15 +283,15 @@ Updatepanel 就不會是所有方案。 相反地，提供特定狀況，包括�
 
 啟用標記的屬性：
 
-| **屬性名稱** | **Type** | **說明** |
+| **屬性名稱** | **Type** | **描述** |
 | --- | --- | --- |
-| AssociatedUpdate PanelID | 字串 | 指定此 UpdateProgress 應該報告的 UpdatePanel 的識別碼。 |
+| AssociatedUpdate-PanelID | String | 指定此 UpdateProgress 應該報告的 UpdatePanel 的識別碼。 |
 | DisplayAfter | Int | 在開始非同步的要求之後，會顯示此控制項之前，請以毫秒為單位指定的逾時。 |
 | DynamicLayout | bool | 指定是否要以動態方式呈現進度。 |
 
 標記下階：
 
-| **標記** | **說明** |
+| **標記** | **描述** |
 | --- | --- |
 | &lt;ProgressTemplate&gt; | 包含設定將與此控制項顯示之內容的控制項範本。 |
 
@@ -317,5 +317,5 @@ UpdateProgress 控制項可讓使用者知道她或他不會被忽略，而幕�
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[下一步](understanding-asp-net-ajax-updatepanel-triggers.md)
+> [!div class="step-by-step"]
+> [下一步](understanding-asp-net-ajax-updatepanel-triggers.md)

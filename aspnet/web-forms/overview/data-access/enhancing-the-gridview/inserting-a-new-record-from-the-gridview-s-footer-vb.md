@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
-title: "插入新的記錄從 GridView 的頁尾 (VB) |Microsoft 文件"
+title: 插入新的記錄從 GridView 的頁尾 (VB) |Microsoft 文件
 author: rick-anderson
-description: "雖然 GridView 控制項未提供插入新的記錄資料的內建支援，本教學課程會示範如何擴充以包含 GridView..."
+description: 雖然 GridView 控制項未提供插入新的記錄資料的內建支援，本教學課程會示範如何擴充以包含 GridView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4d452e15ced52fd9dcac8201598146cb9ef38d7b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 32f3cb23805813135bf463720e7479f5f819deb7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>從 GridView 的頁尾 (VB) 插入新的記錄
 ====================
@@ -140,18 +140,18 @@ ms.lasthandoff: 11/10/2017
 
 下列項目符號清單列舉 GridView 欄位，指定要新增插入介面：
 
-- `ProductID`無。
-- `ProductName`加入文字方塊，並設定其`ID`至`NewProductName`。 若要確定使用者輸入的值，新的產品 s 名稱加入 RequiredFieldValidator 控制項。
-- `SupplierID`無。
-- `CategoryID`無。
-- `QuantityPerUnit`加入文字方塊中，設定其`ID`至`NewQuantityPerUnit`。
-- `UnitPrice`加入名為文字方塊`NewUnitPrice`CompareValidator，以確保輸入的值是貨幣值大於或等於零。
-- `UnitsInStock`使用文字方塊的`ID`設`NewUnitsInStock`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
-- `UnitsOnOrder`使用文字方塊的`ID`設`NewUnitsOnOrder`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
-- `ReorderLevel`使用文字方塊的`ID`設`NewReorderLevel`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
-- `Discontinued`加入核取方塊，設定其`ID`至`NewDiscontinued`。
-- `CategoryName`加入 DropDownList 並設定其`ID`至`NewCategoryID`。 繫結到名為新 ObjectDataSource`CategoriesDataSource`並將它設定為使用`CategoriesBLL`類別的`GetCategories()`方法。 具有 DropDownList s `ListItem` s 顯示`CategoryName`資料欄位中，使用`CategoryID`做為其值的資料欄位。
-- `SupplierName`加入 DropDownList 並設定其`ID`至`NewSupplierID`。 繫結到名為新 ObjectDataSource`SuppliersDataSource`並將它設定為使用`SuppliersBLL`類別的`GetSuppliers()`方法。 具有 DropDownList s `ListItem` s 顯示`CompanyName`資料欄位中，使用`SupplierID`做為其值的資料欄位。
+- `ProductID` 無。
+- `ProductName` 加入文字方塊，並設定其`ID`至`NewProductName`。 若要確定使用者輸入的值，新的產品 s 名稱加入 RequiredFieldValidator 控制項。
+- `SupplierID` 無。
+- `CategoryID` 無。
+- `QuantityPerUnit` 加入文字方塊中，設定其`ID`至`NewQuantityPerUnit`。
+- `UnitPrice` 加入名為文字方塊`NewUnitPrice`CompareValidator，以確保輸入的值是貨幣值大於或等於零。
+- `UnitsInStock` 使用文字方塊的`ID`設`NewUnitsInStock`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
+- `UnitsOnOrder` 使用文字方塊的`ID`設`NewUnitsOnOrder`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
+- `ReorderLevel` 使用文字方塊的`ID`設`NewReorderLevel`。 包含 CompareValidator，以確保輸入的值是大於或等於零的整數值。
+- `Discontinued` 加入核取方塊，設定其`ID`至`NewDiscontinued`。
+- `CategoryName` 加入 DropDownList 並設定其`ID`至`NewCategoryID`。 繫結到名為新 ObjectDataSource`CategoriesDataSource`並將它設定為使用`CategoriesBLL`類別的`GetCategories()`方法。 具有 DropDownList s `ListItem` s 顯示`CategoryName`資料欄位中，使用`CategoryID`做為其值的資料欄位。
+- `SupplierName` 加入 DropDownList 並設定其`ID`至`NewSupplierID`。 繫結到名為新 ObjectDataSource`SuppliersDataSource`並將它設定為使用`SuppliersBLL`類別的`GetSuppliers()`方法。 具有 DropDownList s `ListItem` s 顯示`CompanyName`資料欄位中，使用`SupplierID`做為其值的資料欄位。
 
 針對每個驗證控制項中，清除`ForeColor`屬性以便`FooterStyle`CSS 類別 s 白色的前景色彩將會使用以取代預設紅色。 也使用`ErrorMessage`屬性的詳細說明，但設定`Text`星號的屬性。 若要避免驗證控制項的文字導致插入的介面，以包裝到兩行，將`FooterStyle`s`Wrap`屬性設定為 false 的每個`FooterTemplate`的驗證控制項。 最後，會加入 ValidationSummary 控制項下方的 GridView 和設定其`ShowMessageBox`屬性`True`及其`ShowSummary`屬性`False`。
 
@@ -234,7 +234,7 @@ GridView 本教學課程中使用則不適用的任何排序次序列出的產�
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample9.vb)]
 
-`SendUserToLastPage`頁面層級的布林值變數，一開始是指派的值`False`。 在 GridView s`DataBound`事件處理常式，如果`SendUserToLastPage`為 false，`PageIndex`會更新屬性以傳送給使用者最後一頁。
+`SendUserToLastPage` 頁面層級的布林值變數，一開始是指派的值`False`。 在 GridView s`DataBound`事件處理常式，如果`SendUserToLastPage`為 false，`PageIndex`會更新屬性以傳送給使用者最後一頁。
 
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample10.vb)]
@@ -262,11 +262,11 @@ GridView 本教學課程中使用則不適用的任何排序次序列出的產�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Bernadette Leigh。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](adding-a-gridview-column-of-checkboxes-vb.md)
+> [!div class="step-by-step"]
+> [上一步](adding-a-gridview-column-of-checkboxes-vb.md)

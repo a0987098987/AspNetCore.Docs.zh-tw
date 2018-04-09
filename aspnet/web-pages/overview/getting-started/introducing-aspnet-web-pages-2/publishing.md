@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
-title: "導入 ASP.NET Web Pages-使用 WebMatrix 中發行站台 |Microsoft 文件"
+title: 導入 ASP.NET Web Pages-使用 WebMatrix 中發行站台 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程是導入了 ASP.NET Web Pages 和 Microsoft WebMatrix 的教學課程組中最後一篇。 其中也會討論如何發佈網站 t..."
+description: 本教學課程是導入了 ASP.NET Web Pages 和 Microsoft WebMatrix 的教學課程組中最後一篇。 其中也會討論如何發佈網站 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: 1e718c92a2f94df50fcf7af6859917746a4982ac
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7b9bffac5cc72e1bea3f1b211cc03be2ccb8e499
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>簡介使用 WebMatrix 中發行站台的 ASP.NET Web Pages-
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="about-publishing-your-site"></a>關於發佈您的網站
 
-到目前為止，您所做過您的本機電腦上，包括測試您的網頁的所有工作。 若要執行您*.cshtml*頁面，您已使用的 WebMatrix，IIS Express 也就是內建的 web 伺服器。 但當然沒有人可以看到您已建立您的站台。 若要讓其他人使用您的網站，您必須發佈至網際網路。
+到目前為止，您所做過您的本機電腦上，包括測試您的網頁的所有工作。 若要執行您<em>.cshtml</em>頁面，您已使用的 WebMatrix，IIS Express 也就是內建的 web 伺服器。 但當然沒有人可以看到您已建立您的站台。 若要讓其他人使用您的網站，您必須發佈至網際網路。
 
 除非您已經有公用的 web 伺服器的存取權，表示您所擁有的帳戶具有發佈*雲端平台*或*主機服務提供者*。 雲端平台，例如 Microsoft Azure 提供您的應用程式視基礎結構。 主機服務提供者是的公司擁有可公開存取的網頁伺服器，並可將租用您網站的空間。 主控方案，執行從一個月數美元 （或甚至是免費） 小型網站數以百計的一個月的高容量商業網站 （美元）。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/10/2017
 <a id="defaultpage"></a>
 ## <a name="setting-up-the-default-page"></a>設定預設頁面
 
-當使用者巡覽至您的網站的基底位址時，您的站台的預設頁面會顯示給使用者。 例如，當先前的範例在 www.contoso.com 設定為預設的網頁站台，然後瀏覽至**www.contoso.com**瀏覽至相同**www.contoso.com/Default.htm**。
+當使用者巡覽至您的網站的基底位址時，您的站台的預設頁面會顯示給使用者。 例如，當先前的範例在 www.contoso.com 設定為預設的網頁站台，然後瀏覽至<strong>www.contoso.com</strong>瀏覽至相同<strong>www.contoso.com/Default.htm</strong>。
 
 目前，您的網站會使用**Default.cshtml**為預設的網頁。 此頁面是適合您的預設頁面上，但在本教學課程您尚未加入任何內容至該頁面，它會顯示空白頁面。 開啟 Default.cshtml，並取代為下列程式碼中的內容。
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/10/2017
 
 ![變更站台名稱](publishing/_static/image6.png)
 
-按一下 [確定]。
+按一下 [確定 **Deploying Office Solutions**]。
 
 WebMatrix performss 測試來判斷伺服器是否與您的網站相容。
 
@@ -219,5 +219,5 @@ WebMatrix 會顯示檔案和資料庫，將會發行至網站。 由於這是您
 
 - [ASP.NET WebMatrix ASP.NET Web Pages 論壇](https://forums.asp.net/1224.aspx/1?WebMatrix+and+ASP+NET+Web+Pages)，不妨張貼問題和取得解答。
 
->[!div class="step-by-step"]
-[上一步](layouts.md)
+> [!div class="step-by-step"]
+> [上一步](layouts.md)

@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
-title: "自動化 （建置真實世界雲端應用程式與 Azure） 的所有項目 |Microsoft 文件"
+title: 自動化 （建置真實世界雲端應用程式與 Azure） 的所有項目 |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: aa8bb895ed6eaa0ef4c5752f475ea7c911544ef2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2e30ab7831a10f215a08f74e61adf2d147e76543
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>自動化 （建置真實世界雲端應用程式與 Azure） 的所有項目
 ====================
@@ -128,7 +128,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="create-the-storage-account"></a>建立儲存體帳戶
 
-然後執行主要指令碼*新增 AzureStorage.ps1*指令碼，請指定"*&lt;websitename&gt;*儲存體 」 的儲存體帳戶名稱，和相同資料中心的位置做為web 應用程式。
+然後執行主要指令碼<em>新增 AzureStorage.ps1</em>指令碼，請指定"<em>&lt;websitename&gt;</em>儲存體 」 的儲存體帳戶名稱，和相同資料中心的位置做為web 應用程式。
 
 [!code-powershell[Main](automate-everything/samples/sample4.ps1?highlight=3)]
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 01/24/2018
 
     [!code-powershell[Main](automate-everything/samples/sample10.ps1?highlight=4)]
 
-    `New-PSCredentialFromPlainText`是函式呼叫的指令碼中`ConvertTo-SecureString`指令程式以加密的密碼與傳回`PSCredential`物件相同的型別， `Get-Credential` cmdlet 會傳回。
+    `New-PSCredentialFromPlainText` 是函式呼叫的指令碼中`ConvertTo-SecureString`指令程式以加密的密碼與傳回`PSCredential`物件相同的型別， `Get-Credential` cmdlet 會傳回。
 - 使用建立應用程式資料庫和成員資格資料庫`New-AzureSqlDatabase`cmdlet。
 
     [!code-powershell[Main](automate-everything/samples/sample11.ps1?highlight=2,5)]
@@ -264,6 +264,6 @@ Azure 有此功能可讓您將設定和自動覆寫當它嘗試讀取時傳回�
 - [若要發行至開發和測試環境中使用 Windows PowerShell 指令碼](https://msdn.microsoft.com/library/azure/dn642480.aspx)。 說明如何使用的 MSDN 文件發行 Visual Studio 會自動產生 web 專案的指令碼。
 - [PowerShell Tools for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597)。 在 Visual Studio 中新增的 Windows PowerShell 語言支援的 visual Studio 擴充。
 
->[!div class="step-by-step"]
-[上一頁](introduction.md)
-[下一頁](source-control.md)
+> [!div class="step-by-step"]
+> [上一頁](introduction.md)
+> [下一頁](source-control.md)

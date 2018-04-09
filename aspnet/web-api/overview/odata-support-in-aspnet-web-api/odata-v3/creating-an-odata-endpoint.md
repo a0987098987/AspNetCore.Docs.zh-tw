@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
-title: "建立與 Web API 2 OData v3 端點 |Microsoft 文件"
+title: 建立與 Web API 2 OData v3 端點 |Microsoft 文件
 author: MikeWasson
-description: "開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來組織資料、 查詢資料，以及操作資料..."
+description: 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來組織資料、 查詢資料，以及操作資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: 33fe4d764bf9bf64c852f1269255925b5cc42536
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 227faacd3f42731e08a4cd2b71075776309961b6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>建立與 Web API 2 OData v3 端點
 ====================
@@ -150,7 +150,7 @@ EDM 是抽象的資料模型。 EDM 用來建立中繼資料文件，並定義�
 
 [!code-csharp[Main](creating-an-odata-endpoint/samples/sample4.cs)]
 
-第一個參數是路由的好記名稱。 您的服務的用戶端不會看到此名稱。 第二個參數是端點的 URI 前置詞。 指定此程式碼，Products 實體集的 URI 是 http://*hostname*  /odata/產品。 您的應用程式可以有多個 OData 端點。 針對每個端點，呼叫**MapODataRoute**並提供唯一的路由名稱和唯一的 URI 前置詞。
+第一個參數是路由的好記名稱。 您的服務的用戶端不會看到此名稱。 第二個參數是端點的 URI 前置詞。 指定此程式碼，Products 實體集的 URI 是 http://<em>hostname</em>  /odata/產品。 您的應用程式可以有多個 OData 端點。 針對每個端點，呼叫<strong>MapODataRoute</strong>並提供唯一的路由名稱和唯一的 URI 前置詞。
 
 <a id="seed-db"></a>
 ## <a name="seed-the-database-optional"></a>植入資料庫 （選擇性）

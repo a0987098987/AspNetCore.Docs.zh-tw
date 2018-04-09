@@ -1,7 +1,7 @@
 ---
-title: "Visual Studio for ASP.NET Core 中的開發階段 IIS 支援"
+title: Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 author: shirhatti
-description: "探索 Windows 伺服器上執行 IIS 後方時，偵錯 ASP.NET Core 應用程式的支援。"
+description: 探索 Windows 伺服器上執行 IIS 後方時，偵錯 ASP.NET Core 應用程式的支援。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 218bb2653b92cd7b1cf2c6726b2d4bedbf307a62
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -24,8 +24,7 @@ ms.lasthandoff: 02/19/2018
 
 ## <a name="prerequisites"></a>必要條件
 
-* Visual Studio (2017/版本 15.3 或更新版本)
-* ASP.NET 與網頁程式開發工作負載「或」.NET Core 跨平台開發工作負載
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="enable-iis"></a>啟用 IIS
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 02/19/2018
 
 ![Windows 功能會以黑色方塊 (而非勾選記號) 顯示選取的 [Internet Information Services] 核取方塊，表示已啟用部分 IIS 功能](development-time-iis-support/_static/enable_iis.png)
 
-如果 IIS 安裝需要重新啟動，請重新啟動系統。
+若 IIS 安裝需要重新啟動，請重新啟動系統。
 
 ## <a name="enable-development-time-iis-support"></a>啟用開發階段 IIS 支援
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 02/19/2018
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援。 在 Visual Studio 的**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [屬性]。 選取 [偵錯] 索引標籤。在 [啟動] 下拉式清單中選取 [IIS]。 請確認使用正確的 URL 啟用 [啟動瀏覽器] 功能。
 
-![在 [專案屬性] 視窗中選取 [偵錯] 索引標籤。 [設定檔] 與 [啟動] 的設定皆設為 [IIS]。 使用 http://localhost/WebApplication2 位址啟用 [啟動瀏覽器] 功能。 在 [網頁伺服器設定] 區域的 [應用程式 URL] 欄位也使用了相同的位址，並啟用了 [啟用匿名驗證]。](development-time-iis-support/_static/project_properties.png)
+![在 [專案屬性] 視窗中選取 [偵錯] 索引標籤。 [設定檔] 與 [啟動] 的設定皆設為 [IIS]。 啟動瀏覽器功能已啟用的位址http://localhost/WebApplication2。 在 [網頁伺服器設定] 區域的 [應用程式 URL] 欄位也使用了相同的位址，並啟用了 [啟用匿名驗證]。](development-time-iis-support/_static/project_properties.png)
 
 或者，手動新增至啟動設定檔[launchSettings.json](http://json.schemastore.org/launchsettings)應用程式中的檔案：
 

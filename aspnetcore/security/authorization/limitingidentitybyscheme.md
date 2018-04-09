@@ -1,7 +1,7 @@
 ---
-title: "授權與特定的結構描述中的 ASP.NET Core"
+title: 使用特定的結構描述中 ASP.NET Core 授權
 author: rick-anderson
-description: "本文說明如何使用多個驗證方法時，限制特定的結構描述的識別。"
+description: 本文說明如何使用多個驗證方法時，限制特定的結構描述的識別。
 manager: wpickett
 ms.author: riande
 ms.date: 10/12/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: dd044a0829382f9f7f0c3256c6e669340f2d5240
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 81a01d7de8221fcb3bf90a108d9df6633ca2b696
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="authorize-with-a-specific-scheme"></a>授權與特定的結構描述
+# <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>使用特定的結構描述中 ASP.NET Core 授權
 
 在某些情況下，例如單一頁面應用程式 (SPAs)，它會使用多個驗證方法。 例如，應用程式可能會使用 cookie 基本驗證來登入和 JWT bearer 驗證進行 JavaScript 要求。 在某些情況下，應用程式可能會有多個執行個體的驗證處理常式。 例如，兩個位置其中一個包含基本的身分識別的 cookie 處理常式，另一個會建立時已觸發多因素驗證 (MFA)。 因為使用者要求的作業需要額外的安全性，可能會觸發 MFA。
 

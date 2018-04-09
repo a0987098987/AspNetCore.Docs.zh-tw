@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
-title: "自訂全站台的行為的 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 自訂全站台的行為的 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本章節說明如何讓設定整個網站或整個資料夾，而不是一頁。"
+description: 本章節說明如何讓設定整個網站或整個資料夾，而不是一頁。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/18-customizing-site-wide-behavior
 msc.type: authoredcontent
-ms.openlocfilehash: b1caa26a23517bd976addfefac89375ae965eb91
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4457318bcf1d2886eb8ed68fdd795eea7905368b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站的自訂全站台的行為
 ====================
@@ -93,20 +93,20 @@ ms.lasthandoff: 11/10/2017
 
     修改下列電子郵件的程式碼中的相關的設定：
 
-    - 設定`your-SMTP-host`您具有存取權的 SMTP 伺服器的名稱。
-    - 設定`your-user-name-here`至您的 SMTP 伺服器帳戶的使用者名稱。
-    - 設定`your-account-password`您的 SMTP 伺服器帳戶的密碼。
-    - 設定`your-email-address-here`您自己的電子郵件地址。 這是從訊息傳送的電子郵件地址。 (某些電子郵件提供者不要讓您指定不同`From`位址，且將會使用您的使用者名稱做為`From`位址。)
+   - 設定`your-SMTP-host`您具有存取權的 SMTP 伺服器的名稱。
+   - 設定`your-user-name-here`至您的 SMTP 伺服器帳戶的使用者名稱。
+   - 設定`your-account-password`您的 SMTP 伺服器帳戶的密碼。
+   - 設定`your-email-address-here`您自己的電子郵件地址。 這是從訊息傳送的電子郵件地址。 (某些電子郵件提供者不要讓您指定不同`From`位址，且將會使用您的使用者名稱做為`From`位址。)
 
-    如需 SMTP 設定的詳細資訊，請參閱[設定電子郵件設定](https://go.microsoft.com/fwlink/?LinkID=202899#configuring_email_settings)本文[從 ASP.NET Web Pages (Razor) 站台傳送的電子郵件](https://go.microsoft.com/fwlink/?LinkID=202899)和[問題傳送電子郵件](https://go.microsoft.com/fwlink/?LinkId=253001#email)中[ASP.NET Web Pages (Razor) 疑難排解指南](https://go.microsoft.com/fwlink/?LinkId=253001)。
-- 儲存 *\_AppStart.cshtml*檔案並將它關閉。
-- 在網站的根資料夾中，建立名為新頁面*TestEmail.cshtml*。
-- 以下列內容取代現有的內容： 
+     如需 SMTP 設定的詳細資訊，請參閱[設定電子郵件設定](https://go.microsoft.com/fwlink/?LinkID=202899#configuring_email_settings)本文[從 ASP.NET Web Pages (Razor) 站台傳送的電子郵件](https://go.microsoft.com/fwlink/?LinkID=202899)和[問題傳送電子郵件](https://go.microsoft.com/fwlink/?LinkId=253001#email)中[ASP.NET Web Pages (Razor) 疑難排解指南](https://go.microsoft.com/fwlink/?LinkId=253001)。
+4. 儲存 *\_AppStart.cshtml*檔案並將它關閉。
+5. 在網站的根資料夾中，建立名為新頁面*TestEmail.cshtml*。
+6. 以下列內容取代現有的內容： 
 
-    [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample4.cshtml)]
-- 執行*TestEmail.cshtml*瀏覽器中的。
-- 填寫 傳送電子郵件訊息給自己，然後按一下欄位**傳送**。
-- 請檢查您的電子郵件，請確定您已收到訊息。
+     [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample4.cshtml)]
+7. 執行*TestEmail.cshtml*瀏覽器中的。
+8. 填寫 傳送電子郵件訊息給自己，然後按一下欄位**傳送**。
+9. 請檢查您的電子郵件，請確定您已收到訊息。
 
 這個範例的重點是，您通常不會變更的設定 — 喜歡的 SMTP 伺服器和您的電子郵件認證名稱 — 中設定 *\_AppStart.cshtml*檔案。 如此一來您不需要再次設定它們每一頁中您用來傳送電子郵件。 （雖然如果基於某些原因，您需要變更這些設定，您可以設定它們個別網頁中）。在頁面中，您只會設定每次，例如收件者和電子郵件訊息本文通常會變更的值。
 

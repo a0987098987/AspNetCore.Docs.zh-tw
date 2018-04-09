@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core MVC 檢視為基礎的授權"
+title: 在 ASP.NET Core MVC 檢視為基礎的授權
 author: rick-anderson
-description: "本文件將示範如何插入，並利用授權服務的 ASP.NET Core Razor 檢視內。"
+description: 本文件將示範如何插入，並利用授權服務的 ASP.NET Core Razor 檢視內。
 manager: wpickett
 ms.author: riande
 ms.date: 10/30/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/views
-ms.openlocfilehash: 22754d07882cd704309a4e1a28ad0bf6f69432ea
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: dad59a297efb4648755436fbd07742f95af97fb2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="view-based-authorization"></a>檢視為基礎的授權
+# <a name="view-based-authorization-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 檢視為基礎的授權
 
 開發人員通常會想要顯示、 隱藏或修改目前的使用者識別為基礎的 UI。 您可以存取授權服務會在透過 MVC 檢視內[相依性插入](xref:fundamentals/dependency-injection#fundamentals-dependency-injection)。 若要插入 Razor 檢視授權服務，使用`@inject`指示詞：
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/30/2018
 @inject IAuthorizationService AuthorizationService
 ```
 
-如果您想要授權服務的每個檢視中，放入`@inject`到指示詞*_ViewImports.cshtml*檔案*檢視*目錄。 如需詳細資訊，請參閱[檢視的相依性插入](xref:mvc/views/dependency-injection)。
+如果您想要授權服務的每個檢視中，放入`@inject`到指示詞*_ViewImports.cshtml*檔案*檢視*目錄。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
 
 使用插入的授權服務叫用`AuthorizeAsync`方式完全相同時，您會檢查[資源為基礎的授權](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 

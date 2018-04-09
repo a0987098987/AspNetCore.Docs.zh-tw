@@ -4,313 +4,186 @@ author: steve-smith
 description: 了解如何防止攻擊，其中惡意網站可能會影響用戶端瀏覽器和應用程式之間的互動的 web 應用程式。
 manager: wpickett
 ms.author: riande
-ms.date: 7/14/2017
+ms.custom: mvc
+ms.date: 03/19/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: 80651a3c3e4c722e0cb96d7cc07de366819f8d1d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: ad50f8b261447d40ccc24c0ee006239aa976bf20
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a><span data-ttu-id="72ca3-103">防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="72ca3-103">Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks in ASP.NET Core</span></span>
+# <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a><span data-ttu-id="1c09a-103">防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="1c09a-103">Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks in ASP.NET Core</span></span>
 
-<span data-ttu-id="72ca3-104">[Steve Smith](https://ardalis.com/)， [Fiyaz Hasan](https://twitter.com/FiyazBinHasan)，和[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="72ca3-104">[Steve Smith](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="1c09a-104">由[Steve Smith](https://ardalis.com/)， [Fiyaz Hasan](https://twitter.com/FiyazBinHasan)，和[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="1c09a-104">By [Steve Smith](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-## <a name="what-attack-does-anti-forgery-prevent"></a><span data-ttu-id="72ca3-105">防偽防止何種攻擊？</span><span class="sxs-lookup"><span data-stu-id="72ca3-105">What attack does anti-forgery prevent?</span></span>
+<span data-ttu-id="1c09a-105">跨站台要求偽造 (也稱為 XSRF 或 CSRF，唸成*，請參閱衝浪*) 是 web 裝載的應用程式，惡意的 web 應用程式可能會影響用戶端瀏覽器和信任的 web 應用程式之間的互動攻擊瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="1c09a-105">Cross-site request forgery (also known as XSRF or CSRF, pronounced *see-surf*) is an attack against web-hosted apps whereby a malicious web app can influence the interaction between a client browser and a web app that trusts that browser.</span></span> <span data-ttu-id="1c09a-106">這些攻擊可能會因為網頁瀏覽器傳送到網站的某些類型的驗證權杖會自動與每個要求。</span><span class="sxs-lookup"><span data-stu-id="1c09a-106">These attacks are possible because web browsers send some types of authentication tokens automatically with every request to a website.</span></span> <span data-ttu-id="1c09a-107">這種攻擊形式就是所謂*單鍵攻擊*或*工作階段乘載*使用者因為攻擊利用先前的驗證工作階段。</span><span class="sxs-lookup"><span data-stu-id="1c09a-107">This form of exploit is also known as a *one-click attack* or *session riding* because the attack takes advantage of the user's previously authenticated session.</span></span>
 
-<span data-ttu-id="72ca3-106">跨站台要求偽造 (也稱為 XSRF 或 CSRF，唸成*，請參閱衝浪*) 是 web 裝載的應用程式讓惡意網站可能會影響用戶端瀏覽器和信任的網站之間的互動攻擊該瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="72ca3-106">Cross-site request forgery (also known as XSRF or CSRF, pronounced *see-surf*) is an attack against web-hosted applications whereby a malicious web site can influence the interaction between a client browser and a web site that trusts that browser.</span></span> <span data-ttu-id="72ca3-107">這些攻擊都可能因為 web 瀏覽器傳送到網站的某些類型的驗證權杖會自動與每個要求。</span><span class="sxs-lookup"><span data-stu-id="72ca3-107">These attacks are made possible because web browsers send some types of authentication tokens automatically with every request to a web site.</span></span> <span data-ttu-id="72ca3-108">這種形式的攻擊也稱為的*單鍵攻擊*或*工作階段乘載*，因為使用者的攻擊會利用先前的驗證工作階段。</span><span class="sxs-lookup"><span data-stu-id="72ca3-108">This form of exploit's also known as a *one-click attack* or as *session riding*, because the attack takes advantage of the user's previously authenticated session.</span></span>
+<span data-ttu-id="1c09a-108">CSRF 攻擊的範例：</span><span class="sxs-lookup"><span data-stu-id="1c09a-108">An example of a CSRF attack:</span></span>
 
-<span data-ttu-id="72ca3-109">CSRF 攻擊的範例：</span><span class="sxs-lookup"><span data-stu-id="72ca3-109">An example of a CSRF attack:</span></span>
+1. <span data-ttu-id="1c09a-109">使用者登入`www.good-banking-site.com`使用表單驗證。</span><span class="sxs-lookup"><span data-stu-id="1c09a-109">A user signs into `www.good-banking-site.com` using forms authentication.</span></span> <span data-ttu-id="1c09a-110">伺服器會驗證使用者，並會發出包含驗證 cookie 的回應。</span><span class="sxs-lookup"><span data-stu-id="1c09a-110">The server authenticates the user and issues a response that includes an authentication cookie.</span></span> <span data-ttu-id="1c09a-111">站台是很容易遭受攻擊，因為它信任它會接收一個有效的驗證 cookie 的任何要求。</span><span class="sxs-lookup"><span data-stu-id="1c09a-111">The site is vulnerable to attack because it trusts any request that it receives with a valid authentication cookie.</span></span>
+1. <span data-ttu-id="1c09a-112">使用者造訪惡意網站， `www.bad-crook-site.com`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-112">The user visits a malicious site, `www.bad-crook-site.com`.</span></span>
 
-1. <span data-ttu-id="72ca3-110">使用者登入`www.example.com`，使用表單驗證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-110">A user logs into `www.example.com`, using forms authentication.</span></span>
-2. <span data-ttu-id="72ca3-111">伺服器會驗證使用者，並會發出包含驗證 cookie 的回應。</span><span class="sxs-lookup"><span data-stu-id="72ca3-111">The server authenticates the user and issues a response that includes an authentication cookie.</span></span>
-3. <span data-ttu-id="72ca3-112">使用者造訪惡意網站。</span><span class="sxs-lookup"><span data-stu-id="72ca3-112">The user visits a malicious site.</span></span>
-
-   <span data-ttu-id="72ca3-113">惡意的站台包含 HTML 表單如下所示：</span><span class="sxs-lookup"><span data-stu-id="72ca3-113">The malicious site contains an HTML form similar to the following:</span></span>
+   <span data-ttu-id="1c09a-113">惡意的站台， `www.bad-crook-site.com`，包含 HTML 表單與下列類似：</span><span class="sxs-lookup"><span data-stu-id="1c09a-113">The malicious site, `www.bad-crook-site.com`, contains an HTML form similar to the following:</span></span>
 
    ```html
-   <h1>You Are a Winner!</h1>
-   <form action="http://example.com/api/account" method="post">
+   <h1>Congratulations! You're a Winner!</h1>
+   <form action="http://good-banking-site.com/api/account" method="post">
        <input type="hidden" name="Transaction" value="withdraw">
        <input type="hidden" name="Amount" value="1000000">
-       <input type="submit" value="Click Me">
+       <input type="submit" value="Click to collect your prize!">
    </form>
    ```
 
-<span data-ttu-id="72ca3-114">請注意，張貼至容易遭受站台，惡意網站的表單動作。</span><span class="sxs-lookup"><span data-stu-id="72ca3-114">Notice that the form action posts to the vulnerable site, not to the malicious site.</span></span> <span data-ttu-id="72ca3-115">這是 CSRF 的 「 跨網站 」 部分。</span><span class="sxs-lookup"><span data-stu-id="72ca3-115">This is the “cross-site” part of CSRF.</span></span>
+   <span data-ttu-id="1c09a-114">請注意，表單的`action`文章易受攻擊的站台，不供惡意網站。</span><span class="sxs-lookup"><span data-stu-id="1c09a-114">Notice that the form's `action` posts to the vulnerable site, not to the malicious site.</span></span> <span data-ttu-id="1c09a-115">這是 CSRF 的 「 跨網站 」 部分。</span><span class="sxs-lookup"><span data-stu-id="1c09a-115">This is the "cross-site" part of CSRF.</span></span>
 
-4. <span data-ttu-id="72ca3-116">使用者按一下 [提交] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="72ca3-116">The user clicks the submit button.</span></span> <span data-ttu-id="72ca3-117">瀏覽器會自動包含所要求的網域 （在此情況下很容易遭受站台） 要求的驗證 cookie。</span><span class="sxs-lookup"><span data-stu-id="72ca3-117">The browser automatically includes the authentication cookie for the requested domain (the vulnerable site in this case) with the request.</span></span>
-5. <span data-ttu-id="72ca3-118">要求使用者驗證內容與在伺服器上執行，而且可以執行已驗證的使用者允許進行任何動作。</span><span class="sxs-lookup"><span data-stu-id="72ca3-118">The request runs on the server with the user's authentication context and can perform any action that an authenticated user is allowed to do.</span></span>
+1. <span data-ttu-id="1c09a-116">使用者會選取 [提交] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="1c09a-116">The user selects the submit button.</span></span> <span data-ttu-id="1c09a-117">瀏覽器提出要求，並會自動包含所要求的網域，驗證 cookie `www.good-banking-site.com`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-117">The browser makes the request and automatically includes the authentication cookie for the requested domain, `www.good-banking-site.com`.</span></span>
+1. <span data-ttu-id="1c09a-118">執行要求`www.good-banking-site.com`與使用者的驗證內容的伺服器，而且可以執行已驗證的使用者可以執行任何動作。</span><span class="sxs-lookup"><span data-stu-id="1c09a-118">The request runs on the `www.good-banking-site.com` server with the user's authentication context and can perform any action that an authenticated user is allowed to perform.</span></span>
 
-<span data-ttu-id="72ca3-119">這個範例會要求使用者可以按一下 [表單] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="72ca3-119">This example requires the user to click the form button.</span></span> <span data-ttu-id="72ca3-120">惡意的頁面可以：</span><span class="sxs-lookup"><span data-stu-id="72ca3-120">The malicious page could:</span></span>
+<span data-ttu-id="1c09a-119">當使用者選取按鈕送出表單時，無法惡意網站：</span><span class="sxs-lookup"><span data-stu-id="1c09a-119">When the user selects the button to submit the form, the malicious site could:</span></span>
 
-* <span data-ttu-id="72ca3-121">執行自動送出表單的指令碼。</span><span class="sxs-lookup"><span data-stu-id="72ca3-121">Run a script that automatically submits the form.</span></span>
-* <span data-ttu-id="72ca3-122">以 AJAX 要求中傳送的表單提交。</span><span class="sxs-lookup"><span data-stu-id="72ca3-122">Sends a form submission as an AJAX request.</span></span> 
-* <span data-ttu-id="72ca3-123">Css 使用隱藏的表單。</span><span class="sxs-lookup"><span data-stu-id="72ca3-123">Use a hidden form with CSS.</span></span> 
+* <span data-ttu-id="1c09a-120">執行自動送出表單的指令碼。</span><span class="sxs-lookup"><span data-stu-id="1c09a-120">Run a script that automatically submits the form.</span></span>
+* <span data-ttu-id="1c09a-121">以 AJAX 要求中傳送的表單提交。</span><span class="sxs-lookup"><span data-stu-id="1c09a-121">Sends a form submission as an AJAX request.</span></span> 
+* <span data-ttu-id="1c09a-122">Css 使用隱藏的表單。</span><span class="sxs-lookup"><span data-stu-id="1c09a-122">Use a hidden form with CSS.</span></span> 
 
-<span data-ttu-id="72ca3-124">使用 SSL 不會防止 CSRF 攻擊，惡意的站台可以傳送`https://`要求。</span><span class="sxs-lookup"><span data-stu-id="72ca3-124">Using SSL doesn't prevent a CSRF attack, the malicious site can send an `https://` request.</span></span> 
+<span data-ttu-id="1c09a-123">使用 HTTPS，不會防止 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-123">Using HTTPS doesn't prevent a CSRF attack.</span></span> <span data-ttu-id="1c09a-124">惡意的站台可以傳送`https://www.good-banking-site.com/`要求很容易就可以傳送不安全的要求。</span><span class="sxs-lookup"><span data-stu-id="1c09a-124">The malicious site can send an `https://www.good-banking-site.com/` request just as easily as it can send an insecure request.</span></span>
 
-<span data-ttu-id="72ca3-125">部分攻擊目標站台端點回應`GET`要求，在其中案例之影像標記可以用來執行 （這種攻擊是常見的允許映像，但會封鎖 JavaScript 論壇網站） 的動作。</span><span class="sxs-lookup"><span data-stu-id="72ca3-125">Some attacks target site endpoints that respond to `GET` requests, in which case an image tag can be used to perform the action (this form of attack is common on forum sites that permit images but block JavaScript).</span></span> <span data-ttu-id="72ca3-126">變更狀態時，使用的應用程式`GET`要求而受到損害受到惡意的攻擊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-126">Applications that change state with `GET` requests are vulnerable from malicious attacks.</span></span>
+<span data-ttu-id="1c09a-125">部分攻擊的目標回應至 GET 要求的端點在此情況下之影像標記可以用來執行此動作。</span><span class="sxs-lookup"><span data-stu-id="1c09a-125">Some attacks target endpoints that respond to GET requests, in which case an image tag can be used to perform the action.</span></span> <span data-ttu-id="1c09a-126">這種形式的攻擊常會論壇網站允許映像，但封鎖 JavaScript。</span><span class="sxs-lookup"><span data-stu-id="1c09a-126">This form of attack is common on forum sites that permit images but block JavaScript.</span></span> <span data-ttu-id="1c09a-127">變更狀態的 GET 要求，其中會變更變數或資源，應用程式很容易受到惡意的攻擊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-127">Apps that change state on GET requests, where variables or resources are altered, are vulnerable to malicious attacks.</span></span> <span data-ttu-id="1c09a-128">**變更狀態的 GET 要求是不安全的。最佳做法是永遠不會變更的 GET 要求的狀態。**</span><span class="sxs-lookup"><span data-stu-id="1c09a-128">**GET requests that change state are insecure. A best practice is to never change state on a GET request.**</span></span>
 
-<span data-ttu-id="72ca3-127">CSRF 攻擊可能會進行對網站使用 cookie 進行驗證，因為瀏覽器傳送到目標網站的所有相關的 cookie。</span><span class="sxs-lookup"><span data-stu-id="72ca3-127">CSRF attacks are possible against web sites that use cookies for authentication, because browsers send all relevant cookies to the destination web site.</span></span> <span data-ttu-id="72ca3-128">不過，不限於利用 cookie CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-128">However, CSRF attacks are not limited to exploiting cookies.</span></span> <span data-ttu-id="72ca3-129">比方說，也是很容易遭受基本和摘要式驗證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-129">For example, Basic and Digest authentication are also vulnerable.</span></span> <span data-ttu-id="72ca3-130">在使用者登入基本或摘要式驗證後，瀏覽器將會自動傳送認證到工作階段結束為止。</span><span class="sxs-lookup"><span data-stu-id="72ca3-130">After a user logs in with Basic or Digest authentication, the browser automatically sends the credentials until the session ends.</span></span>
+<span data-ttu-id="1c09a-129">針對 web 應用程式都使用 cookie 進行驗證，因為可能 CSRF 攻擊︰</span><span class="sxs-lookup"><span data-stu-id="1c09a-129">CSRF attacks are possible against web apps that use cookies for authentication because:</span></span>
 
-<span data-ttu-id="72ca3-131">注意： 在此情況下，*工作階段*指的是用戶端工作階段期間會驗證使用者。</span><span class="sxs-lookup"><span data-stu-id="72ca3-131">Note: In this context, *session* refers to the client-side session during which the user is authenticated.</span></span> <span data-ttu-id="72ca3-132">它是不相關的伺服器端工作階段或[工作階段中介軟體](xref:fundamentals/app-state)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-132">It's unrelated to server-side sessions or [session middleware](xref:fundamentals/app-state).</span></span>
+* <span data-ttu-id="1c09a-130">瀏覽器儲存 web 應用程式所發出的 cookie。</span><span class="sxs-lookup"><span data-stu-id="1c09a-130">Browsers store cookies issued by a web app.</span></span>
+* <span data-ttu-id="1c09a-131">預存的 cookie 會包含已驗證的使用者工作階段 cookie。</span><span class="sxs-lookup"><span data-stu-id="1c09a-131">Stored cookies include session cookies for authenticated users.</span></span>
+* <span data-ttu-id="1c09a-132">瀏覽器傳送的所有 cookie 相關聯 web 應用程式網域每個要求，不論在瀏覽器內已產生的應用程式的要求。</span><span class="sxs-lookup"><span data-stu-id="1c09a-132">Browsers send all of the cookies associated with a domain to the web app every request regardless of how the request to app was generated within the browser.</span></span>
 
-<span data-ttu-id="72ca3-133">使用者可以防範 CSRF 缺失：</span><span class="sxs-lookup"><span data-stu-id="72ca3-133">Users can guard against CSRF vulnerabilities by:</span></span>
-* <span data-ttu-id="72ca3-134">記錄遠離網站時使用它們完成。</span><span class="sxs-lookup"><span data-stu-id="72ca3-134">Logging off of web sites when they have finished using them.</span></span>
-* <span data-ttu-id="72ca3-135">定期清除其瀏覽器的 cookie。</span><span class="sxs-lookup"><span data-stu-id="72ca3-135">Clearing their browser's cookies periodically.</span></span>
+<span data-ttu-id="1c09a-133">不過，不限制 CSRF 攻擊利用 cookie。</span><span class="sxs-lookup"><span data-stu-id="1c09a-133">However, CSRF attacks aren't limited to exploiting cookies.</span></span> <span data-ttu-id="1c09a-134">比方說，也是很容易遭受基本和摘要式驗證。</span><span class="sxs-lookup"><span data-stu-id="1c09a-134">For example, Basic and Digest authentication are also vulnerable.</span></span> <span data-ttu-id="1c09a-135">瀏覽器使用者登入基本或摘要式驗證之後，自動傳送直到工作階段的認證&dagger;結束。</span><span class="sxs-lookup"><span data-stu-id="1c09a-135">After a user signs in with Basic or Digest authentication, the browser automatically sends the credentials until the session&dagger; ends.</span></span>
 
-<span data-ttu-id="72ca3-136">不過，CSRF 弱點基本上都是使用 web 應用程式，終端使用者的問題。</span><span class="sxs-lookup"><span data-stu-id="72ca3-136">However, CSRF vulnerabilities are fundamentally a problem with the web app, not the end user.</span></span>
+<span data-ttu-id="1c09a-136">&dagger;在此內容中*工作階段*指的是用戶端工作階段期間會驗證使用者。</span><span class="sxs-lookup"><span data-stu-id="1c09a-136">&dagger;In this context, *session* refers to the client-side session during which the user is authenticated.</span></span> <span data-ttu-id="1c09a-137">它是不相關的伺服器端工作階段或[ASP.NET Core 工作階段中介軟體](xref:fundamentals/app-state)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-137">It's unrelated to server-side sessions or [ASP.NET Core Session Middleware](xref:fundamentals/app-state).</span></span>
 
-## <a name="how-does-aspnet-core-mvc-address-csrf"></a><span data-ttu-id="72ca3-137">ASP.NET Core MVC 如何解決 CSRF？</span><span class="sxs-lookup"><span data-stu-id="72ca3-137">How does ASP.NET Core MVC address CSRF?</span></span>
+<span data-ttu-id="1c09a-138">使用者可以防範 CSRF 弱點，採取預防措施：</span><span class="sxs-lookup"><span data-stu-id="1c09a-138">Users can guard against CSRF vulnerabilities by taking precautions:</span></span>
+
+* <span data-ttu-id="1c09a-139">登出 web 應用程式使用它們。</span><span class="sxs-lookup"><span data-stu-id="1c09a-139">Sign off of web apps when finished using them.</span></span>
+* <span data-ttu-id="1c09a-140">定期清除瀏覽器 cookie。</span><span class="sxs-lookup"><span data-stu-id="1c09a-140">Clear browser cookies periodically.</span></span>
+
+<span data-ttu-id="1c09a-141">不過，CSRF 弱點基本上都是使用 web 應用程式，終端使用者的問題。</span><span class="sxs-lookup"><span data-stu-id="1c09a-141">However, CSRF vulnerabilities are fundamentally a problem with the web app, not the end user.</span></span>
+
+## <a name="authentication-fundamentals"></a><span data-ttu-id="1c09a-142">驗證基本概念</span><span class="sxs-lookup"><span data-stu-id="1c09a-142">Authentication fundamentals</span></span>
+
+<span data-ttu-id="1c09a-143">受歡迎的形式的驗證 cookie 為基礎的驗證。</span><span class="sxs-lookup"><span data-stu-id="1c09a-143">Cookie-based authentication is a popular form of authentication.</span></span> <span data-ttu-id="1c09a-144">權杖型驗證系統會受歡迎情況看出，在不斷增加，特別是針對單一頁面應用程式 (SPAs)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-144">Token-based authentication systems are growing in popularity, especially for Single Page Applications (SPAs).</span></span>
+
+### <a name="cookie-based-authentication"></a><span data-ttu-id="1c09a-145">Cookie 為基礎的驗證</span><span class="sxs-lookup"><span data-stu-id="1c09a-145">Cookie-based authentication</span></span>
+
+<span data-ttu-id="1c09a-146">當使用者使用其使用者名稱和密碼，它們被發行包含可以用於驗證和授權的驗證票證的權杖。</span><span class="sxs-lookup"><span data-stu-id="1c09a-146">When a user authenticates using their username and password, they're issued a token, containing an authentication ticket that can be used for authentication and authorization.</span></span> <span data-ttu-id="1c09a-147">權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。</span><span class="sxs-lookup"><span data-stu-id="1c09a-147">The token is stored as a cookie that accompanies every request the client makes.</span></span> <span data-ttu-id="1c09a-148">產生和驗證此 cookie 是由 Cookie 驗證中介軟體執行。</span><span class="sxs-lookup"><span data-stu-id="1c09a-148">Generating and validating this cookie is performed by the Cookie Authentication Middleware.</span></span> <span data-ttu-id="1c09a-149">[中介軟體](xref:fundamentals/middleware/index)序列化經過加密的 cookie 的使用者主體。</span><span class="sxs-lookup"><span data-stu-id="1c09a-149">The [middleware](xref:fundamentals/middleware/index) serializes a user principal into an encrypted cookie.</span></span> <span data-ttu-id="1c09a-150">在後續要求中中, 介軟體驗證 cookie、 主體，會重新建立並指派主體[使用者](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user)屬性[HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-150">On subsequent requests, the middleware validates the cookie, recreates the principal, and assigns the principal to the [User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) property of [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).</span></span>
+
+### <a name="token-based-authentication"></a><span data-ttu-id="1c09a-151">權杖型驗證</span><span class="sxs-lookup"><span data-stu-id="1c09a-151">Token-based authentication</span></span>
+
+<span data-ttu-id="1c09a-152">當使用者進行驗證時，它們被發行的權杖 （不 antiforgery 語彙基元）。</span><span class="sxs-lookup"><span data-stu-id="1c09a-152">When a user is authenticated, they're issued a token (not an antiforgery token).</span></span> <span data-ttu-id="1c09a-153">權杖包含使用者資訊的形式[宣告](/dotnet/framework/security/claims-based-identity-model)或指向維護應用程式中的使用者狀態的應用程式參考語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-153">The token contains user information in the form of [claims](/dotnet/framework/security/claims-based-identity-model) or a reference token that points the app to user state maintained in the app.</span></span> <span data-ttu-id="1c09a-154">當使用者嘗試存取需要驗證的資源時，權杖會傳送至應用程式與其他授權標頭的持有人權杖的格式。</span><span class="sxs-lookup"><span data-stu-id="1c09a-154">When a user attempts to access a resource requiring authentication, the token is sent to the app with an additional authorization header in form of Bearer token.</span></span> <span data-ttu-id="1c09a-155">這可讓應用程式的無狀態。</span><span class="sxs-lookup"><span data-stu-id="1c09a-155">This makes the app stateless.</span></span> <span data-ttu-id="1c09a-156">在每個後續的要求語彙基元被傳入要求的伺服器端驗證。</span><span class="sxs-lookup"><span data-stu-id="1c09a-156">In each subsequent request, the token is passed in the request for server-side validation.</span></span> <span data-ttu-id="1c09a-157">這個語彙基元不*加密*; 它有*編碼*。</span><span class="sxs-lookup"><span data-stu-id="1c09a-157">This token isn't *encrypted*; it's *encoded*.</span></span> <span data-ttu-id="1c09a-158">在伺服器上，語彙基元解碼成存取其資訊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-158">On the server, the token is decoded to access its information.</span></span> <span data-ttu-id="1c09a-159">若要傳送的語彙基元在後續的要求，將儲存在瀏覽器的本機儲存體的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-159">To send the token on subsequent requests, store the token in the browser's local storage.</span></span> <span data-ttu-id="1c09a-160">如果瀏覽器的本機儲存體中儲存的語彙基元，不會擔心 CSRF 弱點。</span><span class="sxs-lookup"><span data-stu-id="1c09a-160">Don't be concerned about CSRF vulnerability if the token is stored in the browser's local storage.</span></span> <span data-ttu-id="1c09a-161">CSRF 是考量當權杖儲存在 cookie 中。</span><span class="sxs-lookup"><span data-stu-id="1c09a-161">CSRF is a concern when the token is stored in a cookie.</span></span>
+
+### <a name="multiple-apps-hosted-at-one-domain"></a><span data-ttu-id="1c09a-162">裝載在一個網域的多個應用程式</span><span class="sxs-lookup"><span data-stu-id="1c09a-162">Multiple apps hosted at one domain</span></span>
+
+<span data-ttu-id="1c09a-163">共用裝載環境中受到劫持、 登入 CSRF 和其他攻擊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-163">Shared hosting environments are vulnerable to session hijacking, login CSRF, and other attacks.</span></span>
+
+<span data-ttu-id="1c09a-164">雖然`example1.contoso.net`和`example2.contoso.net`是不同的主機，在主機之間沒有隱含的信任關係`*.contoso.net`網域。</span><span class="sxs-lookup"><span data-stu-id="1c09a-164">Although `example1.contoso.net` and `example2.contoso.net` are different hosts, there's an implicit trust relationship between hosts under the `*.contoso.net` domain.</span></span> <span data-ttu-id="1c09a-165">這個隱含的信任關係可讓可能不受信任的主機會影響彼此的 cookie （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。</span><span class="sxs-lookup"><span data-stu-id="1c09a-165">This implicit trust relationship allows potentially untrusted hosts to affect each other's cookies (the same-origin policies that govern AJAX requests don't necessarily apply to HTTP cookies).</span></span>
+
+<span data-ttu-id="1c09a-166">不共用網域就可以阻止利用相同的網域上裝載的應用程式之間的信任的 cookie 的攻擊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-166">Attacks that exploit trusted cookies between apps hosted on the same domain can be prevented by not sharing domains.</span></span> <span data-ttu-id="1c09a-167">當每個應用程式裝載於自己的網域時，就會利用沒有隱含的 cookie 信任關係。</span><span class="sxs-lookup"><span data-stu-id="1c09a-167">When each app is hosted on its own domain, there is no implicit cookie trust relationship to exploit.</span></span>
+
+## <a name="aspnet-core-antiforgery-configuration"></a><span data-ttu-id="1c09a-168">ASP.NET Core antiforgery 組態</span><span class="sxs-lookup"><span data-stu-id="1c09a-168">ASP.NET Core antiforgery configuration</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="72ca3-138">ASP.NET Core 實作反 request 偽造使用[ASP.NET Core 資料保護堆疊](xref:security/data-protection/introduction)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-138">ASP.NET Core implements anti-request-forgery using the [ASP.NET Core data protection stack](xref:security/data-protection/introduction).</span></span> <span data-ttu-id="72ca3-139">ASP.NET Core 資料保護必須設定為在伺服器陣列中運作。</span><span class="sxs-lookup"><span data-stu-id="72ca3-139">ASP.NET Core data protection must be configured to work in a server farm.</span></span> <span data-ttu-id="72ca3-140">請參閱[設定資料保護](xref:security/data-protection/configuration/overview)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-140">See [Configuring data protection](xref:security/data-protection/configuration/overview) for more information.</span></span>
+> <span data-ttu-id="1c09a-169">ASP.NET Core 實作 antiforgery 使用[ASP.NET Core 資料保護](xref:security/data-protection/introduction)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-169">ASP.NET Core implements antiforgery using [ASP.NET Core Data Protection](xref:security/data-protection/introduction).</span></span> <span data-ttu-id="1c09a-170">資料保護堆疊必須設定為在伺服器陣列中運作。</span><span class="sxs-lookup"><span data-stu-id="1c09a-170">The data protection stack must be configured to work in a server farm.</span></span> <span data-ttu-id="1c09a-171">請參閱[設定資料保護](xref:security/data-protection/configuration/overview)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-171">See [Configuring data protection](xref:security/data-protection/configuration/overview) for more information.</span></span>
 
-<span data-ttu-id="72ca3-141">ASP.NET Core 反 request 偽造預設資料保護設定</span><span class="sxs-lookup"><span data-stu-id="72ca3-141">ASP.NET Core anti-request-forgery default data protection configuration</span></span> 
+<span data-ttu-id="1c09a-172">在 ASP.NET Core 2.0 或更新版本， [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)會 antiforgery token 插入至 HTML 表單元素。</span><span class="sxs-lookup"><span data-stu-id="1c09a-172">In ASP.NET Core 2.0 or later, the [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) injects antiforgery tokens into HTML form elements.</span></span> <span data-ttu-id="1c09a-173">Razor 檔案中的下列標記會自動產生 antiforgery 語彙基元：</span><span class="sxs-lookup"><span data-stu-id="1c09a-173">The following markup in a Razor file automatically generates antiforgery tokens:</span></span>
 
-<span data-ttu-id="72ca3-142">在 ASP.NET Core MVC 2.0 [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper)插入防偽語彙基元的 HTML 表單元素。</span><span class="sxs-lookup"><span data-stu-id="72ca3-142">In ASP.NET Core MVC 2.0 the [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) injects anti-forgery tokens for HTML form elements.</span></span> <span data-ttu-id="72ca3-143">例如，下列標記在 Razor 檔案中將會自動產生防偽語彙基元：</span><span class="sxs-lookup"><span data-stu-id="72ca3-143">For example, the following markup in a Razor file will automatically generate anti-forgery tokens:</span></span>
-
-```html
+```cshtml
 <form method="post">
-  <!-- form markup -->
+    ...
 </form>
 ```
 
-<span data-ttu-id="72ca3-144">自動產生的防偽語彙基元的 HTML 表單元素，會發生情況時：</span><span class="sxs-lookup"><span data-stu-id="72ca3-144">The automatic generation of anti-forgery tokens for HTML form elements happens when:</span></span>
+<span data-ttu-id="1c09a-174">同樣地， [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform)依預設會產生 antiforgery 語彙基元，如果表單的方法不是 GET。</span><span class="sxs-lookup"><span data-stu-id="1c09a-174">Similarily, [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) generates antiforgery tokens by default if the form's method isn't GET.</span></span>
 
-* <span data-ttu-id="72ca3-145">`form`標記包含`method="post"`屬性 AND</span><span class="sxs-lookup"><span data-stu-id="72ca3-145">The `form` tag contains the `method="post"` attribute AND</span></span>
+<span data-ttu-id="1c09a-175">自動產生 antiforgery 語彙基元的 HTML 表單元素，會發生情況時`<form>`標記包含`method="post"`屬性和下列任何一個條件成立：</span><span class="sxs-lookup"><span data-stu-id="1c09a-175">The automatic generation of antiforgery tokens for HTML form elements happens when the `<form>` tag contains the `method="post"` attribute and either of the following are true:</span></span>
 
-  * <span data-ttu-id="72ca3-146">動作屬性是空的。</span><span class="sxs-lookup"><span data-stu-id="72ca3-146">The action attribute is empty.</span></span> <span data-ttu-id="72ca3-147">( `action=""`) 或</span><span class="sxs-lookup"><span data-stu-id="72ca3-147">( `action=""`) OR</span></span>
-  * <span data-ttu-id="72ca3-148">未提供的 action 屬性。</span><span class="sxs-lookup"><span data-stu-id="72ca3-148">The action attribute isn't supplied.</span></span> <span data-ttu-id="72ca3-149">(`<form method="post">`)</span><span class="sxs-lookup"><span data-stu-id="72ca3-149">(`<form method="post">`)</span></span>
+  * <span data-ttu-id="1c09a-176">動作屬性是空的 (`action=""`)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-176">The action attribute is empty (`action=""`).</span></span>
+  * <span data-ttu-id="1c09a-177">動作屬性不提供 (`<form method="post">`)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-177">The action attribute isn't supplied (`<form method="post">`).</span></span>
 
-<span data-ttu-id="72ca3-150">您可以停用自動產生的防偽語彙基元的 HTML 表單項目：</span><span class="sxs-lookup"><span data-stu-id="72ca3-150">You can disable automatic generation of anti-forgery tokens for HTML form elements by:</span></span>
+<span data-ttu-id="1c09a-178">您可以停用自動產生 antiforgery 語彙基元的 HTML 表單項目：</span><span class="sxs-lookup"><span data-stu-id="1c09a-178">Automatic generation of antiforgery tokens for HTML form elements can be disabled:</span></span>
 
-* <span data-ttu-id="72ca3-151">明確停用`asp-antiforgery`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-151">Explicitly disabling `asp-antiforgery`.</span></span> <span data-ttu-id="72ca3-152">例如</span><span class="sxs-lookup"><span data-stu-id="72ca3-152">For example</span></span>
+* <span data-ttu-id="1c09a-179">明確停用 antiforgery token 搭配`asp-antiforgery`屬性：</span><span class="sxs-lookup"><span data-stu-id="1c09a-179">Explicitly disable antiforgery tokens with the `asp-antiforgery` attribute:</span></span>
 
-  ```html
+  ```cshtml
   <form method="post" asp-antiforgery="false">
+      ...
   </form>
   ```
 
-* <span data-ttu-id="72ca3-153">使用標記協助程式選擇超出標記協助程式的表單項目[！ 退出符號](xref:mvc/views/tag-helpers/intro#opt-out)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-153">Opt the form element out of Tag Helpers by using the Tag Helper [! opt-out symbol](xref:mvc/views/tag-helpers/intro#opt-out).</span></span>
+* <span data-ttu-id="1c09a-180">Form 項目是選擇向外標記協助程式使用標記協助程式[！ 退出符號](xref:mvc/views/tag-helpers/intro#opt-out):</span><span class="sxs-lookup"><span data-stu-id="1c09a-180">The form element is opted-out of Tag Helpers by using the Tag Helper [! opt-out symbol](xref:mvc/views/tag-helpers/intro#opt-out):</span></span>
 
-  ```html
+  ```cshtml
   <!form method="post">
+      ...
   </!form>
   ```
 
-* <span data-ttu-id="72ca3-154">移除`FormTagHelper`從檢視。</span><span class="sxs-lookup"><span data-stu-id="72ca3-154">Remove the `FormTagHelper` from the view.</span></span> <span data-ttu-id="72ca3-155">您可以移除`FormTagHelper`從下列指示詞加入 Razor 檢視的檢視：</span><span class="sxs-lookup"><span data-stu-id="72ca3-155">You can remove the `FormTagHelper` from a view by adding the following directive to the Razor view:</span></span>
+* <span data-ttu-id="1c09a-181">移除`FormTagHelper`從檢視。</span><span class="sxs-lookup"><span data-stu-id="1c09a-181">Remove the `FormTagHelper` from the view.</span></span> <span data-ttu-id="1c09a-182">`FormTagHelper`可以從檢視移除 Razor 檢視中加入下列指示詞：</span><span class="sxs-lookup"><span data-stu-id="1c09a-182">The `FormTagHelper` can be removed from a view by adding the following directive to the Razor view:</span></span>
 
-  ```html
+  ```cshtml
   @removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
   ```
 
 > [!NOTE]
-> <span data-ttu-id="72ca3-156">[Razor 頁面](xref:mvc/razor-pages/index)XSRF/CSRF 會自動受到保護。</span><span class="sxs-lookup"><span data-stu-id="72ca3-156">[Razor Pages](xref:mvc/razor-pages/index) are automatically protected from XSRF/CSRF.</span></span> <span data-ttu-id="72ca3-157">您不需要撰寫任何額外的程式碼。</span><span class="sxs-lookup"><span data-stu-id="72ca3-157">You don't have to write any additional code.</span></span> <span data-ttu-id="72ca3-158">請參閱[XSRF/CSRF 和 Razor 頁面](xref:mvc/razor-pages/index#xsrf)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-158">See [XSRF/CSRF and Razor Pages](xref:mvc/razor-pages/index#xsrf) for more information.</span></span>
+> <span data-ttu-id="1c09a-183">[Razor 頁面](xref:mvc/razor-pages/index)XSRF/CSRF 會自動受到保護。</span><span class="sxs-lookup"><span data-stu-id="1c09a-183">[Razor Pages](xref:mvc/razor-pages/index) are automatically protected from XSRF/CSRF.</span></span> <span data-ttu-id="1c09a-184">如需詳細資訊，請參閱[XSRF/CSRF 和 Razor 頁面](xref:mvc/razor-pages/index#xsrf)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-184">For more information, see [XSRF/CSRF and Razor Pages](xref:mvc/razor-pages/index#xsrf).</span></span>
 
-<span data-ttu-id="72ca3-159">防禦 CSRF 攻擊的常見方法是同步器 token 模式 (STP)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-159">The most common approach to defending against CSRF attacks is the synchronizer token pattern (STP).</span></span> <span data-ttu-id="72ca3-160">STP 是使用者要求表單資料的頁面時使用的技術。</span><span class="sxs-lookup"><span data-stu-id="72ca3-160">STP is a technique used when the user requests a page with form data.</span></span> <span data-ttu-id="72ca3-161">伺服器傳送至用戶端的目前使用者的身分識別相關聯的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-161">The server sends a token associated with the current user's identity to the client.</span></span> <span data-ttu-id="72ca3-162">用戶端上一步將權杖傳送至伺服器以供驗證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-162">The client sends back the token to the server for verification.</span></span> <span data-ttu-id="72ca3-163">如果伺服器收到不符合已驗證的使用者的身分識別的語彙基元，則會拒絕要求。</span><span class="sxs-lookup"><span data-stu-id="72ca3-163">If the server receives a token that doesn't match the authenticated user's identity, the request is rejected.</span></span> <span data-ttu-id="72ca3-164">權杖的唯一和無法預期。</span><span class="sxs-lookup"><span data-stu-id="72ca3-164">The token is unique and unpredictable.</span></span> <span data-ttu-id="72ca3-165">語彙基元也可用以確保適當排序的一系列的要求 （確保第 1 頁位於第 2 頁位於第 3 頁）。</span><span class="sxs-lookup"><span data-stu-id="72ca3-165">The token can also be used to ensure proper sequencing of a series of requests (ensuring page 1 precedes page 2 which precedes page 3).</span></span> <span data-ttu-id="72ca3-166">ASP.NET Core MVC 範本中的所有表單都產生 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-166">All the forms in ASP.NET Core MVC templates generate antiforgery tokens.</span></span> <span data-ttu-id="72ca3-167">檢視邏輯下列兩個範例會產生 antiforgery 語彙基元：</span><span class="sxs-lookup"><span data-stu-id="72ca3-167">The following two examples of view logic generate antiforgery tokens:</span></span>
+<span data-ttu-id="1c09a-185">防禦 CSRF 攻擊的常見方法是使用*同步器 Token 模式*(STP)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-185">The most common approach to defending against CSRF attacks is to use the *Synchronizer Token Pattern* (STP).</span></span> <span data-ttu-id="1c09a-186">當使用者要求網頁，以與表單資料，請使用 STP:</span><span class="sxs-lookup"><span data-stu-id="1c09a-186">STP is used when the user requests a page with form data:</span></span>
 
-```html
+1. <span data-ttu-id="1c09a-187">伺服器傳送至用戶端的目前使用者的身分識別相關聯的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-187">The server sends a token associated with the current user's identity to the client.</span></span>
+1. <span data-ttu-id="1c09a-188">用戶端上一步將權杖傳送至伺服器以供驗證。</span><span class="sxs-lookup"><span data-stu-id="1c09a-188">The client sends back the token to the server for verification.</span></span>
+1. <span data-ttu-id="1c09a-189">如果伺服器收到不符合已驗證的使用者的身分識別的語彙基元，則會拒絕要求。</span><span class="sxs-lookup"><span data-stu-id="1c09a-189">If the server receives a token that doesn't match the authenticated user's identity, the request is rejected.</span></span>
+
+<span data-ttu-id="1c09a-190">權杖的唯一和無法預期。</span><span class="sxs-lookup"><span data-stu-id="1c09a-190">The token is unique and unpredictable.</span></span> <span data-ttu-id="1c09a-191">語彙基元也可用來確保適當排序的一系列的要求 (例如，確保要求序列的： 第 1 頁&ndash;第 2 頁&ndash;頁面 3)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-191">The token can also be used to ensure proper sequencing of a series of requests (for example, ensuring the request sequence of: page 1 &ndash; page 2 &ndash; page 3).</span></span> <span data-ttu-id="1c09a-192">所有的表單中 ASP.NET Core MVC 和 Razor 頁面範本產生 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-192">All of the forms in ASP.NET Core MVC and Razor Pages templates generate antiforgery tokens.</span></span> <span data-ttu-id="1c09a-193">下列檢視範例組產生 antiforgery 語彙基元：</span><span class="sxs-lookup"><span data-stu-id="1c09a-193">The following pair of view examples generate antiforgery tokens:</span></span>
+
+```cshtml
 <form asp-controller="Manage" asp-action="ChangePassword" method="post">
-
+    ...
 </form>
 
 @using (Html.BeginForm("ChangePassword", "Manage"))
 {
-    
+    ...
 }
 ```
 
-<span data-ttu-id="72ca3-168">您可以明確加入 antiforgery 語彙基元`<form>`項目，而不使用標記協助程式的 HTML helper `@Html.AntiForgeryToken`:</span><span class="sxs-lookup"><span data-stu-id="72ca3-168">You can explicitly add an antiforgery token to a `<form>` element without using tag helpers with the HTML helper `@Html.AntiForgeryToken`:</span></span>
+<span data-ttu-id="1c09a-194">明確地加入 antiforgery 語彙基元`<form>`項目，而不使用標記協助程式的 HTML helper [ @Html.AntiForgeryToken ](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper.antiforgerytoken):</span><span class="sxs-lookup"><span data-stu-id="1c09a-194">Explicitly add an antiforgery token to a `<form>` element without using Tag Helpers with the HTML helper [@Html.AntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper.antiforgerytoken):</span></span>
 
-
-```html
+```cshtml
 <form action="/" method="post">
     @Html.AntiForgeryToken()
 </form>
 ```
 
-<span data-ttu-id="72ca3-169">在每一個上述的情況下，ASP.NET Core 將會加入隱藏的表單欄位，如下所示：</span><span class="sxs-lookup"><span data-stu-id="72ca3-169">In each of the preceding cases, ASP.NET Core will add a hidden form field similar to the following:</span></span>
-```html
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkSldwD9CpLRyOtm6FiJB1Jr_F3FQJQDvhlHoLNJJrLA6zaMUmhjMsisu2D2tFkAiYgyWQawJk9vNm36sYP1esHOtamBEPvSk1_x--Sg8Ey2a-d9CV2zHVWIN9MVhvKHOSyKqdZFlYDVd69XYx-rOWPw3ilHGLN6K0Km-1p83jZzF0E4WU5OGg5ns2-m9Yw">
+<span data-ttu-id="1c09a-195">在每一個上述的情況下，ASP.NET Core 加入隱藏的表單欄位，如下所示：</span><span class="sxs-lookup"><span data-stu-id="1c09a-195">In each of the preceding cases, ASP.NET Core adds a hidden form field similar to the following:</span></span>
+
+```cshtml
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkS ... s2-m9Yw">
 ```
 
-<span data-ttu-id="72ca3-170">ASP.NET Core 包含三個[篩選](xref:mvc/controllers/filters)使用 antiforgery 語彙基元： `ValidateAntiForgeryToken`， `AutoValidateAntiforgeryToken`，和`IgnoreAntiforgeryToken`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-170">ASP.NET Core includes three [filters](xref:mvc/controllers/filters) for working with antiforgery tokens: `ValidateAntiForgeryToken`, `AutoValidateAntiforgeryToken`, and `IgnoreAntiforgeryToken`.</span></span>
+<span data-ttu-id="1c09a-196">ASP.NET Core 包含三個[篩選](xref:mvc/controllers/filters)使用 antiforgery 語彙基元：</span><span class="sxs-lookup"><span data-stu-id="1c09a-196">ASP.NET Core includes three [filters](xref:mvc/controllers/filters) for working with antiforgery tokens:</span></span>
 
-### <a name="validateantiforgerytoken"></a><span data-ttu-id="72ca3-171">ValidateAntiForgeryToken</span><span class="sxs-lookup"><span data-stu-id="72ca3-171">ValidateAntiForgeryToken</span></span>
+* [<span data-ttu-id="1c09a-197">ValidateAntiForgeryToken</span><span class="sxs-lookup"><span data-stu-id="1c09a-197">ValidateAntiForgeryToken</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute)
+* [<span data-ttu-id="1c09a-198">AutoValidateAntiforgeryToken</span><span class="sxs-lookup"><span data-stu-id="1c09a-198">AutoValidateAntiforgeryToken</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute)
+* [<span data-ttu-id="1c09a-199">IgnoreAntiforgeryToken</span><span class="sxs-lookup"><span data-stu-id="1c09a-199">IgnoreAntiforgeryToken</span></span>](/dotnet/api/microsoft.aspnetcore.mvc.ignoreantiforgerytokenattribute)
 
-<span data-ttu-id="72ca3-172">`ValidateAntiForgeryToken`是動作篩選條件可以套用到個別的動作控制站，或全域。</span><span class="sxs-lookup"><span data-stu-id="72ca3-172">The `ValidateAntiForgeryToken` is an action filter that can be applied to an individual action, a controller, or globally.</span></span> <span data-ttu-id="72ca3-173">除非要求包含有效的 antiforgery 語彙基元，將會封鎖套用此篩選條件的動作提出的要求。</span><span class="sxs-lookup"><span data-stu-id="72ca3-173">Requests made to actions that have this filter applied will be blocked unless the request includes a valid antiforgery token.</span></span>
+## <a name="antiforgery-options"></a><span data-ttu-id="1c09a-200">Antiforgery 選項</span><span class="sxs-lookup"><span data-stu-id="1c09a-200">Antiforgery options</span></span>
 
-```csharp
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
-{
-    ManageMessageId? message = ManageMessageId.Error;
-    var user = await GetCurrentUserAsync();
-    if (user != null)
-    {
-        var result = await _userManager.RemoveLoginAsync(user, account.LoginProvider, account.ProviderKey);
-        if (result.Succeeded)
-        {
-            await _signInManager.SignInAsync(user, isPersistent: false);
-            message = ManageMessageId.RemoveLoginSuccess;
-        }
-    }
-    return RedirectToAction(nameof(ManageLogins), new { Message = message });
-}
-```
-
-<span data-ttu-id="72ca3-174">`ValidateAntiForgeryToken`屬性需要裝飾，包括要求至動作方法的語彙基元`HTTP GET`要求。</span><span class="sxs-lookup"><span data-stu-id="72ca3-174">The `ValidateAntiForgeryToken` attribute requires a token for requests to action methods it decorates, including `HTTP GET` requests.</span></span> <span data-ttu-id="72ca3-175">如果您將它套用廣泛，您可以覆寫它與`IgnoreAntiforgeryToken`屬性。</span><span class="sxs-lookup"><span data-stu-id="72ca3-175">If you apply it broadly, you can override it with the `IgnoreAntiforgeryToken` attribute.</span></span>
-
-### <a name="autovalidateantiforgerytoken"></a><span data-ttu-id="72ca3-176">AutoValidateAntiforgeryToken</span><span class="sxs-lookup"><span data-stu-id="72ca3-176">AutoValidateAntiforgeryToken</span></span>
-
-<span data-ttu-id="72ca3-177">ASP.NET Core 應用程式通常不產生 antiforgery 的語彙基元的安全 HTTP 方法 （GET、 HEAD、 選項和追蹤）。</span><span class="sxs-lookup"><span data-stu-id="72ca3-177">ASP.NET Core apps generally don't generate antiforgery tokens for HTTP safe methods (GET, HEAD, OPTIONS, and TRACE).</span></span> <span data-ttu-id="72ca3-178">而不是廣泛套用`ValidateAntiForgeryToken`屬性，然後將它與覆寫`IgnoreAntiforgeryToken`屬性，您可以使用``AutoValidateAntiforgeryToken``屬性。</span><span class="sxs-lookup"><span data-stu-id="72ca3-178">Instead of broadly applying the `ValidateAntiForgeryToken` attribute and then overriding it with `IgnoreAntiforgeryToken` attributes, you can use the ``AutoValidateAntiforgeryToken`` attribute.</span></span> <span data-ttu-id="72ca3-179">這個屬性的運作方式和`ValidateAntiForgeryToken`屬性，不同之處在於它不需要使用下列的 HTTP 方法所提出之要求的語彙基元：</span><span class="sxs-lookup"><span data-stu-id="72ca3-179">This attribute works identically to the `ValidateAntiForgeryToken` attribute, except that it doesn't require tokens for requests made using the following HTTP methods:</span></span>
-
-* <span data-ttu-id="72ca3-180">GET</span><span class="sxs-lookup"><span data-stu-id="72ca3-180">GET</span></span>
-* <span data-ttu-id="72ca3-181">HEAD</span><span class="sxs-lookup"><span data-stu-id="72ca3-181">HEAD</span></span>
-* <span data-ttu-id="72ca3-182">選項</span><span class="sxs-lookup"><span data-stu-id="72ca3-182">OPTIONS</span></span>
-* <span data-ttu-id="72ca3-183">TRACE</span><span class="sxs-lookup"><span data-stu-id="72ca3-183">TRACE</span></span>
-
-<span data-ttu-id="72ca3-184">我們建議您改用`AutoValidateAntiforgeryToken`廣泛的非 API 」 案例。</span><span class="sxs-lookup"><span data-stu-id="72ca3-184">We recommend you use `AutoValidateAntiforgeryToken` broadly for non-API scenarios.</span></span> <span data-ttu-id="72ca3-185">這可確保您張貼的動作依預設受到保護。</span><span class="sxs-lookup"><span data-stu-id="72ca3-185">This ensures your POST actions are protected by default.</span></span> <span data-ttu-id="72ca3-186">替代方案是根據預設，忽略 antiforgery 語彙基元，除非`ValidateAntiForgeryToken`套用至個別動作方法。</span><span class="sxs-lookup"><span data-stu-id="72ca3-186">The alternative is to ignore antiforgery tokens by default, unless `ValidateAntiForgeryToken` is applied to the individual action method.</span></span> <span data-ttu-id="72ca3-187">很可能在此案例中將 POST 動作方法的左未受保護，讓您的應用程式受到 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-187">It's more likely in this scenario for a POST action method to be left unprotected, leaving your app vulnerable to CSRF attacks.</span></span> <span data-ttu-id="72ca3-188">即使匿名文章應該傳送 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-188">Even anonymous POSTS should send the antiforgery token.</span></span>
-
-<span data-ttu-id="72ca3-189">注意： 應用程式開發介面沒有自動化的機制來傳送非 cookie 權杖的一部分。您的實作可能取決於您的用戶端程式碼實作。</span><span class="sxs-lookup"><span data-stu-id="72ca3-189">Note: APIs don't have an automatic mechanism for sending the non-cookie part of the token; your implementation will likely depend on your client code implementation.</span></span> <span data-ttu-id="72ca3-190">某些範例如下所示。</span><span class="sxs-lookup"><span data-stu-id="72ca3-190">Some examples are shown below.</span></span>
-
-<span data-ttu-id="72ca3-191">範例 （類別層級）：</span><span class="sxs-lookup"><span data-stu-id="72ca3-191">Example (class level):</span></span>
-
-```csharp
-[Authorize]
-[AutoValidateAntiforgeryToken]
-public class ManageController : Controller
-{
-```
-
-<span data-ttu-id="72ca3-192">範例 （全域）：</span><span class="sxs-lookup"><span data-stu-id="72ca3-192">Example (global):</span></span>
-
-```csharp
-services.AddMvc(options => 
-    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-```
-
-<a name="iaft"></a>
-
-### <a name="ignoreantiforgerytoken"></a><span data-ttu-id="72ca3-193">IgnoreAntiforgeryToken</span><span class="sxs-lookup"><span data-stu-id="72ca3-193">IgnoreAntiforgeryToken</span></span>
-
-<span data-ttu-id="72ca3-194">`IgnoreAntiforgeryToken`篩選器可用來消除 antiforgery 的權杖，才能在指定的 「 動作 」 （或稱 「 控制器 」） 的需要。</span><span class="sxs-lookup"><span data-stu-id="72ca3-194">The `IgnoreAntiforgeryToken` filter is used to eliminate the need for an antiforgery token to be present for a given action (or controller).</span></span> <span data-ttu-id="72ca3-195">此篩選器套用時，將會覆寫`ValidateAntiForgeryToken`及/或`AutoValidateAntiforgeryToken`（全域或控制站上），在較高層級指定的篩選條件。</span><span class="sxs-lookup"><span data-stu-id="72ca3-195">When applied, this filter will override `ValidateAntiForgeryToken` and/or `AutoValidateAntiforgeryToken` filters specified at a higher level (globally or on a controller).</span></span>
-
-```csharp
-[Authorize]
-[AutoValidateAntiforgeryToken]
-public class ManageController : Controller
-{
-  [HttpPost]
-  [IgnoreAntiforgeryToken]
-  public async Task<IActionResult> DoSomethingSafe(SomeViewModel model)
-  {
-    // no antiforgery token required
-  }
-}
-```
-
-## <a name="javascript-ajax-and-spas"></a><span data-ttu-id="72ca3-196">JavaScript、 AJAX 和 SPAs</span><span class="sxs-lookup"><span data-stu-id="72ca3-196">JavaScript, AJAX, and SPAs</span></span>
-
-<span data-ttu-id="72ca3-197">傳統的 HTML 型應用程式，antiforgery 權杖會傳遞至使用隱藏的表單欄位的伺服器。</span><span class="sxs-lookup"><span data-stu-id="72ca3-197">In traditional HTML-based applications, antiforgery tokens are passed to the server using hidden form fields.</span></span> <span data-ttu-id="72ca3-198">在現代 JavaScript 為基礎的應用程式和單一頁面應用程式 (SPAs) 中，許多要求以程式設計的方式。</span><span class="sxs-lookup"><span data-stu-id="72ca3-198">In modern JavaScript-based apps and single page applications (SPAs), many requests are made programmatically.</span></span> <span data-ttu-id="72ca3-199">這些 AJAX 要求可以使用其他技術 （例如要求標頭或 cookie） 傳送語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-199">These AJAX requests may use other techniques (such as request headers or cookies) to send the token.</span></span> <span data-ttu-id="72ca3-200">如果，使用 cookie 來儲存驗證權杖，並驗證伺服器上的應用程式開發介面要求 CSRF 將會有潛在的問題。</span><span class="sxs-lookup"><span data-stu-id="72ca3-200">If cookies are used to store authentication tokens and to authenticate API requests on the server, then CSRF will be a potential problem.</span></span> <span data-ttu-id="72ca3-201">不過，如果本機儲存體用來儲存的語彙基元，CSRF 的弱點可能會可能會降低，因為從本機儲存體的值不會自動傳送到每個新要求的伺服器。</span><span class="sxs-lookup"><span data-stu-id="72ca3-201">However, if local storage is used to store the token, CSRF vulnerability may be mitigated, since values from local storage are not sent automatically to the server with every new request.</span></span> <span data-ttu-id="72ca3-202">因此，使用本機儲存體來儲存 antiforgery 語彙基元，在用戶端傳送權杖，因為要求標頭是建議的方法。</span><span class="sxs-lookup"><span data-stu-id="72ca3-202">Thus, using local storage to store the antiforgery token on the client and sending the token as a request header is a recommended approach.</span></span>
-
-### <a name="angularjs"></a><span data-ttu-id="72ca3-203">AngularJS</span><span class="sxs-lookup"><span data-stu-id="72ca3-203">AngularJS</span></span>
-
-<span data-ttu-id="72ca3-204">AngularJS 會到位址 CSRF 慣例。</span><span class="sxs-lookup"><span data-stu-id="72ca3-204">AngularJS uses a convention to address CSRF.</span></span> <span data-ttu-id="72ca3-205">如果伺服器傳送的 cookie 名稱`XSRF-TOKEN`，Angular`$http`服務會將加入的值從這個 cookie 標頭將要求傳送到此伺服器時。</span><span class="sxs-lookup"><span data-stu-id="72ca3-205">If the server sends a cookie with the name `XSRF-TOKEN`, the Angular `$http` service will add the value from this cookie to a header when it sends a request to this server.</span></span> <span data-ttu-id="72ca3-206">此程序是自動的。您不需要明確設定的標頭。</span><span class="sxs-lookup"><span data-stu-id="72ca3-206">This process is automatic; you don't need to set the header explicitly.</span></span> <span data-ttu-id="72ca3-207">標頭名稱`X-XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-207">The header name is `X-XSRF-TOKEN`.</span></span> <span data-ttu-id="72ca3-208">伺服器應該偵測此標頭，並驗證其內容。</span><span class="sxs-lookup"><span data-stu-id="72ca3-208">The server should detect this header and validate its contents.</span></span>
-
-<span data-ttu-id="72ca3-209">適用於 ASP.NET Core 應用程式開發介面使用這個慣例：</span><span class="sxs-lookup"><span data-stu-id="72ca3-209">For ASP.NET Core API work with this convention:</span></span>
-
-* <span data-ttu-id="72ca3-210">設定您的應用程式提供語彙基元在呼叫 cookie `XSRF-TOKEN`</span><span class="sxs-lookup"><span data-stu-id="72ca3-210">Configure your app to provide a token in a cookie called `XSRF-TOKEN`</span></span>
-* <span data-ttu-id="72ca3-211">設定 antiforgery 服務，以尋找名為標頭 `X-XSRF-TOKEN`</span><span class="sxs-lookup"><span data-stu-id="72ca3-211">Configure the antiforgery service to look for a header named `X-XSRF-TOKEN`</span></span>
-
-```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
-```
-
-<span data-ttu-id="72ca3-212">[檢視範例](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-212">[View sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample).</span></span>
-
-### <a name="javascript"></a><span data-ttu-id="72ca3-213">JavaScript</span><span class="sxs-lookup"><span data-stu-id="72ca3-213">JavaScript</span></span>
-
-<span data-ttu-id="72ca3-214">使用 JavaScript 與檢視，您可以建立使用從您的檢視中的服務權杖。</span><span class="sxs-lookup"><span data-stu-id="72ca3-214">Using JavaScript with views, you can create the token using a service from within your view.</span></span> <span data-ttu-id="72ca3-215">若要這樣做，您將插入`Microsoft.AspNetCore.Antiforgery.IAntiforgery`到檢視並呼叫服務`GetAndStoreTokens`，如下所示：</span><span class="sxs-lookup"><span data-stu-id="72ca3-215">To do so, you inject the `Microsoft.AspNetCore.Antiforgery.IAntiforgery` service into the view and call `GetAndStoreTokens`, as shown:</span></span>
-
-[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,28)]
-
-<span data-ttu-id="72ca3-216">這個方法不需要直接處理從伺服器中設定 cookie，或從用戶端讀取。</span><span class="sxs-lookup"><span data-stu-id="72ca3-216">This approach eliminates the need to deal directly with setting cookies from the server or reading them from the client.</span></span>
-
-<span data-ttu-id="72ca3-217">上述範例中使用 jQuery AJAX 張貼標頭讀取隱藏的欄位值。</span><span class="sxs-lookup"><span data-stu-id="72ca3-217">The preceding example uses jQuery to read the hidden field value for the AJAX POST header.</span></span> <span data-ttu-id="72ca3-218">若要取得此語彙基元的值中使用 JavaScript， `document.getElementById('RequestVerificationToken').value`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-218">To use JavaScript to obtain the token's value, use `document.getElementById('RequestVerificationToken').value`.</span></span>
-
-<span data-ttu-id="72ca3-219">JavaScript 可以也存取 cookie 中所提供的權杖，然後再使用 cookie 的內容來建立標頭的語彙基元值，如下所示。</span><span class="sxs-lookup"><span data-stu-id="72ca3-219">JavaScript can also access tokens provided in cookies, and then use the cookie's contents to create a header with the token's value, as shown below.</span></span>
-
-```csharp
-context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
-  new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
-```
-
-<span data-ttu-id="72ca3-220">接著，假設您建構指令碼就會要求呼叫標頭中傳送的語彙基元`X-CSRF-TOKEN`，antiforgery 服務設定為尋找`X-CSRF-TOKEN`標頭：</span><span class="sxs-lookup"><span data-stu-id="72ca3-220">Then, assuming you construct your script requests to send the token in a header called `X-CSRF-TOKEN`, configure the antiforgery service to look for the `X-CSRF-TOKEN` header:</span></span>
-
-```csharp
-services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
-```
-
-<span data-ttu-id="72ca3-221">下列範例會使用 jQuery 將 AJAX 要求具有適當的標頭：</span><span class="sxs-lookup"><span data-stu-id="72ca3-221">The following example uses jQuery to make an AJAX request with the appropriate header:</span></span>
-
-```javascript
-var csrfToken = $.cookie("CSRF-TOKEN");
-
-$.ajax({
-    url: "/api/password/changepassword",
-    contentType: "application/json",
-    data: JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }),
-    type: "POST",
-    headers: {
-        "X-CSRF-TOKEN": csrfToken
-    }
-});
-```
-
-## <a name="configuring-antiforgery"></a><span data-ttu-id="72ca3-222">設定 Antiforgery</span><span class="sxs-lookup"><span data-stu-id="72ca3-222">Configuring Antiforgery</span></span>
-
-<span data-ttu-id="72ca3-223">`IAntiforgery` 提供 API 來設定 antiforgery 系統。</span><span class="sxs-lookup"><span data-stu-id="72ca3-223">`IAntiforgery` provides the API to configure the antiforgery system.</span></span> <span data-ttu-id="72ca3-224">可以要求在`Configure`方法`Startup`類別。</span><span class="sxs-lookup"><span data-stu-id="72ca3-224">It can be requested in the `Configure` method of the `Startup` class.</span></span> <span data-ttu-id="72ca3-225">下列範例會使用產生 antiforgery 的語彙基元，並在回應中傳送為 （使用預設角度命名慣例上面所述） cookie 中介軟體應用程式的首頁上：</span><span class="sxs-lookup"><span data-stu-id="72ca3-225">The following example uses middleware from the app's home page to generate an antiforgery token and send it in the response as a cookie (using the default Angular naming convention described above):</span></span>
-
-
-```csharp
-public void Configure(IApplicationBuilder app, 
-    IAntiforgery antiforgery)
-{
-    app.Use(next => context =>
-    {
-        string path = context.Request.Path.Value;
-        if (
-            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
-        {
-            // We can send the request token as a JavaScript-readable cookie, 
-            // and Angular will use it by default.
-            var tokens = antiforgery.GetAndStoreTokens(context);
-            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
-                new CookieOptions() { HttpOnly = false });
-        }
-
-        return next(context);
-    });
-    //
-}
-```
-
-### <a name="options"></a><span data-ttu-id="72ca3-226">選項</span><span class="sxs-lookup"><span data-stu-id="72ca3-226">Options</span></span>
-
-<span data-ttu-id="72ca3-227">您可以自訂[antiforgery 選項](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions#fields_summary)中`ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="72ca3-227">You can customize [antiforgery options](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions#fields_summary) in `ConfigureServices`:</span></span>
+<span data-ttu-id="1c09a-201">自訂[antiforgery 選項](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions)中`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="1c09a-201">Customize [antiforgery options](/dotnet/api/Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 services.AddAntiforgery(options => 
 {
-    options.CookieDomain = "mydomain.com";
+    options.CookieDomain = "contoso.com";
     options.CookieName = "X-CSRF-TOKEN-COOKIENAME";
     options.CookiePath = "Path";
     options.FormFieldName = "AntiforgeryFieldname";
@@ -320,44 +193,216 @@ services.AddAntiforgery(options =>
 });
 ```
 
-<!-- QAfix fix table -->
+| <span data-ttu-id="1c09a-202">選項</span><span class="sxs-lookup"><span data-stu-id="1c09a-202">Option</span></span> | <span data-ttu-id="1c09a-203">描述</span><span class="sxs-lookup"><span data-stu-id="1c09a-203">Description</span></span> |
+| ------ | ----------- |
+| [<span data-ttu-id="1c09a-204">Cookie</span><span class="sxs-lookup"><span data-stu-id="1c09a-204">Cookie</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | <span data-ttu-id="1c09a-205">決定用來建立 antiforgery cookie 的設定。</span><span class="sxs-lookup"><span data-stu-id="1c09a-205">Determines the settings used to create the antiforgery cookies.</span></span> |
+| [<span data-ttu-id="1c09a-206">CookieDomain</span><span class="sxs-lookup"><span data-stu-id="1c09a-206">CookieDomain</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | <span data-ttu-id="1c09a-207">Cookie 的網域。</span><span class="sxs-lookup"><span data-stu-id="1c09a-207">The domain of the cookie.</span></span> <span data-ttu-id="1c09a-208">預設值為 `null`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-208">Defaults to `null`.</span></span> <span data-ttu-id="1c09a-209">這個屬性已經過時，未來版本將移除。</span><span class="sxs-lookup"><span data-stu-id="1c09a-209">This property is obsolete and will be removed in a future version.</span></span> <span data-ttu-id="1c09a-210">建議的替代做法是 Cookie.Domain。</span><span class="sxs-lookup"><span data-stu-id="1c09a-210">The recommended alternative is Cookie.Domain.</span></span> |
+| [<span data-ttu-id="1c09a-211">CookieName</span><span class="sxs-lookup"><span data-stu-id="1c09a-211">CookieName</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | <span data-ttu-id="1c09a-212">Cookie 的名稱。</span><span class="sxs-lookup"><span data-stu-id="1c09a-212">The name of the cookie.</span></span> <span data-ttu-id="1c09a-213">如果未設定，系統會產生唯一的名稱開頭[DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (」。AspNetCore.Antiforgery。")。</span><span class="sxs-lookup"><span data-stu-id="1c09a-213">If not set, the system generates a unique name beginning with the [DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (".AspNetCore.Antiforgery.").</span></span> <span data-ttu-id="1c09a-214">這個屬性已經過時，未來版本將移除。</span><span class="sxs-lookup"><span data-stu-id="1c09a-214">This property is obsolete and will be removed in a future version.</span></span> <span data-ttu-id="1c09a-215">建議的替代做法是 Cookie.Name。</span><span class="sxs-lookup"><span data-stu-id="1c09a-215">The recommended alternative is Cookie.Name.</span></span> |
+| [<span data-ttu-id="1c09a-216">CookiePath</span><span class="sxs-lookup"><span data-stu-id="1c09a-216">CookiePath</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | <span data-ttu-id="1c09a-217">在 cookie 上設定的路徑。</span><span class="sxs-lookup"><span data-stu-id="1c09a-217">The path set on the cookie.</span></span> <span data-ttu-id="1c09a-218">這個屬性已經過時，未來版本將移除。</span><span class="sxs-lookup"><span data-stu-id="1c09a-218">This property is obsolete and will be removed in a future version.</span></span> <span data-ttu-id="1c09a-219">建議的替代做法是 Cookie.Path。</span><span class="sxs-lookup"><span data-stu-id="1c09a-219">The recommended alternative is Cookie.Path.</span></span> |
+| [<span data-ttu-id="1c09a-220">FormFieldName</span><span class="sxs-lookup"><span data-stu-id="1c09a-220">FormFieldName</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | <span data-ttu-id="1c09a-221">Antiforgery 系統用來呈現 antiforgery 語彙基元，在檢視中的隱藏的表單欄位的名稱。</span><span class="sxs-lookup"><span data-stu-id="1c09a-221">The name of the hidden form field used by the antiforgery system to render antiforgery tokens in views.</span></span> |
+| [<span data-ttu-id="1c09a-222">HeaderName</span><span class="sxs-lookup"><span data-stu-id="1c09a-222">HeaderName</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | <span data-ttu-id="1c09a-223">Antiforgery 系統所使用的標頭名稱。</span><span class="sxs-lookup"><span data-stu-id="1c09a-223">The name of the header used by the antiforgery system.</span></span> <span data-ttu-id="1c09a-224">如果`null`，系統會考慮只表單資料。</span><span class="sxs-lookup"><span data-stu-id="1c09a-224">If `null`, the system considers only form data.</span></span> |
+| [<span data-ttu-id="1c09a-225">RequireSsl</span><span class="sxs-lookup"><span data-stu-id="1c09a-225">RequireSsl</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | <span data-ttu-id="1c09a-226">指定 antiforgery 系統是否需要 SSL。</span><span class="sxs-lookup"><span data-stu-id="1c09a-226">Specifies whether SSL is required by the antiforgery system.</span></span> <span data-ttu-id="1c09a-227">如果`true`，非 SSL 要求失敗。</span><span class="sxs-lookup"><span data-stu-id="1c09a-227">If `true`, non-SSL requests fail.</span></span> <span data-ttu-id="1c09a-228">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-228">Defaults to `false`.</span></span> <span data-ttu-id="1c09a-229">這個屬性已經過時，未來版本將移除。</span><span class="sxs-lookup"><span data-stu-id="1c09a-229">This property is obsolete and will be removed in a future version.</span></span> <span data-ttu-id="1c09a-230">建議的替代做法是將設定 Cookie.SecurePolicy。</span><span class="sxs-lookup"><span data-stu-id="1c09a-230">The recommended alternative is to set Cookie.SecurePolicy.</span></span> |
+| [<span data-ttu-id="1c09a-231">SuppressXFrameOptionsHeader</span><span class="sxs-lookup"><span data-stu-id="1c09a-231">SuppressXFrameOptionsHeader</span></span>](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | <span data-ttu-id="1c09a-232">指定是否要隱藏產生`X-Frame-Options`標頭。</span><span class="sxs-lookup"><span data-stu-id="1c09a-232">Specifies whether to suppress generation of the `X-Frame-Options` header.</span></span> <span data-ttu-id="1c09a-233">根據預設，會產生標頭，其值為"Sameorigin 所"。</span><span class="sxs-lookup"><span data-stu-id="1c09a-233">By default, the header is generated with a value of "SAMEORIGIN".</span></span> <span data-ttu-id="1c09a-234">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-234">Defaults to `false`.</span></span> |
 
-|<span data-ttu-id="72ca3-228">選項</span><span class="sxs-lookup"><span data-stu-id="72ca3-228">Option</span></span>        | <span data-ttu-id="72ca3-229">描述</span><span class="sxs-lookup"><span data-stu-id="72ca3-229">Description</span></span> |
-|------------- | ----------- |
-|<span data-ttu-id="72ca3-230">CookieDomain</span><span class="sxs-lookup"><span data-stu-id="72ca3-230">CookieDomain</span></span>  | <span data-ttu-id="72ca3-231">Cookie 的網域。</span><span class="sxs-lookup"><span data-stu-id="72ca3-231">The domain of the cookie.</span></span> <span data-ttu-id="72ca3-232">預設值為 `null`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-232">Defaults to `null`.</span></span> |
-|<span data-ttu-id="72ca3-233">CookieName</span><span class="sxs-lookup"><span data-stu-id="72ca3-233">CookieName</span></span>    | <span data-ttu-id="72ca3-234">Cookie 的名稱。</span><span class="sxs-lookup"><span data-stu-id="72ca3-234">The name of the cookie.</span></span> <span data-ttu-id="72ca3-235">如果未設定，系統會產生唯一的名稱開頭`DefaultCookiePrefix`(」。AspNetCore.Antiforgery。")。</span><span class="sxs-lookup"><span data-stu-id="72ca3-235">If not set, the system will generate a unique name beginning with the `DefaultCookiePrefix` (".AspNetCore.Antiforgery.").</span></span> |
-|<span data-ttu-id="72ca3-236">CookiePath</span><span class="sxs-lookup"><span data-stu-id="72ca3-236">CookiePath</span></span>    | <span data-ttu-id="72ca3-237">在 cookie 上設定的路徑。</span><span class="sxs-lookup"><span data-stu-id="72ca3-237">The path set on the cookie.</span></span> |
-|<span data-ttu-id="72ca3-238">FormFieldName</span><span class="sxs-lookup"><span data-stu-id="72ca3-238">FormFieldName</span></span> | <span data-ttu-id="72ca3-239">Antiforgery 系統用來呈現 antiforgery 語彙基元，在檢視中的隱藏的表單欄位的名稱。</span><span class="sxs-lookup"><span data-stu-id="72ca3-239">The name of the hidden form field used by the antiforgery system to render antiforgery tokens in views.</span></span> |
-|<span data-ttu-id="72ca3-240">HeaderName</span><span class="sxs-lookup"><span data-stu-id="72ca3-240">HeaderName</span></span>    | <span data-ttu-id="72ca3-241">Antiforgery 系統所使用的標頭名稱。</span><span class="sxs-lookup"><span data-stu-id="72ca3-241">The name of the header used by the antiforgery system.</span></span> <span data-ttu-id="72ca3-242">如果`null`，系統會考慮只表單資料。</span><span class="sxs-lookup"><span data-stu-id="72ca3-242">If `null`, the system will consider only form data.</span></span> |
-|<span data-ttu-id="72ca3-243">RequireSsl</span><span class="sxs-lookup"><span data-stu-id="72ca3-243">RequireSsl</span></span>    | <span data-ttu-id="72ca3-244">指定 antiforgery 系統是否需要 SSL。</span><span class="sxs-lookup"><span data-stu-id="72ca3-244">Specifies whether SSL is required by the antiforgery system.</span></span> <span data-ttu-id="72ca3-245">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-245">Defaults to `false`.</span></span> <span data-ttu-id="72ca3-246">如果`true`，非 SSL 要求將會失敗。</span><span class="sxs-lookup"><span data-stu-id="72ca3-246">If `true`, non-SSL requests will fail.</span></span> |
-|<span data-ttu-id="72ca3-247">SuppressXFrameOptionsHeader</span><span class="sxs-lookup"><span data-stu-id="72ca3-247">SuppressXFrameOptionsHeader</span></span> | <span data-ttu-id="72ca3-248">指定是否要隱藏產生`X-Frame-Options`標頭。</span><span class="sxs-lookup"><span data-stu-id="72ca3-248">Specifies whether to suppress generation of the `X-Frame-Options` header.</span></span> <span data-ttu-id="72ca3-249">根據預設，會產生標頭，其值為"Sameorigin 所"。</span><span class="sxs-lookup"><span data-stu-id="72ca3-249">By default, the header is generated with a value of "SAMEORIGIN".</span></span> <span data-ttu-id="72ca3-250">預設值為 `false`。</span><span class="sxs-lookup"><span data-stu-id="72ca3-250">Defaults to `false`.</span></span> |
+<span data-ttu-id="1c09a-235">如需詳細資訊，請參閱[CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-235">For more information, see [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions).</span></span>
 
-<span data-ttu-id="72ca3-251">Https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieauthenticationoptions 如需詳細資訊，請參閱。</span><span class="sxs-lookup"><span data-stu-id="72ca3-251">See https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieauthenticationoptions for more info.</span></span>
+## <a name="configure-antiforgery-features-with-iantiforgery"></a><span data-ttu-id="1c09a-236">使用 IAntiforgery 設定 antiforgery 功能</span><span class="sxs-lookup"><span data-stu-id="1c09a-236">Configure antiforgery features with IAntiforgery</span></span>
 
-### <a name="extending-antiforgery"></a><span data-ttu-id="72ca3-252">擴充 Antiforgery</span><span class="sxs-lookup"><span data-stu-id="72ca3-252">Extending Antiforgery</span></span>
+<span data-ttu-id="1c09a-237">[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery)提供 API 來設定 antiforgery 功能。</span><span class="sxs-lookup"><span data-stu-id="1c09a-237">[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) provides the API to configure antiforgery features.</span></span> <span data-ttu-id="1c09a-238">`IAntiforgery` 可以要求在`Configure`方法`Startup`類別。</span><span class="sxs-lookup"><span data-stu-id="1c09a-238">`IAntiforgery` can be requested in the `Configure` method of the `Startup` class.</span></span> <span data-ttu-id="1c09a-239">下列範例會使用產生 antiforgery 的語彙基元，並在回應中傳送為 （使用預設角度命名慣例在本主題稍後所述） cookie 中介軟體應用程式的首頁上：</span><span class="sxs-lookup"><span data-stu-id="1c09a-239">The following example uses middleware from the app's home page to generate an antiforgery token and send it in the response as a cookie (using the default Angular naming convention described later in this topic):</span></span>
 
-<span data-ttu-id="72ca3-253">[IAntiForgeryAdditionalDataProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider)類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。</span><span class="sxs-lookup"><span data-stu-id="72ca3-253">The [IAntiForgeryAdditionalDataProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider) type allows developers to extend the behavior of the anti-XSRF system by round-tripping additional data in each token.</span></span> <span data-ttu-id="72ca3-254">[GetAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_GetAdditionalData_Microsoft_AspNetCore_Http_HttpContext_)每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-254">The [GetAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_GetAdditionalData_Microsoft_AspNetCore_Http_HttpContext_) method is called each time a field token is generated, and the return value is embedded within the generated token.</span></span> <span data-ttu-id="72ca3-255">實作者可能傳回的時間戳記、 nonce 或任何其他值，然後呼叫[ValidateAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_ValidateAdditionalData_Microsoft_AspNetCore_Http_HttpContext_System_String_)驗證語彙基元時驗證這項資料。</span><span class="sxs-lookup"><span data-stu-id="72ca3-255">An implementer could return a timestamp, a nonce, or any other value and then call [ValidateAdditionalData](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider#Microsoft_AspNetCore_Antiforgery_IAntiforgeryAdditionalDataProvider_ValidateAdditionalData_Microsoft_AspNetCore_Http_HttpContext_System_String_) to validate this data when the token is validated.</span></span> <span data-ttu-id="72ca3-256">用戶端的使用者名稱已內嵌在產生的語彙基元，因此不需要加入這項資訊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-256">The client's username is already embedded in the generated tokens, so there's no need to include this information.</span></span> <span data-ttu-id="72ca3-257">如果語彙基元包含補充資料但不是`IAntiForgeryAdditionalDataProvider`已經過設定，未驗證的補充資料。</span><span class="sxs-lookup"><span data-stu-id="72ca3-257">If a token includes supplemental data but no `IAntiForgeryAdditionalDataProvider` has been configured, the supplemental data isn't validated.</span></span>
+```csharp
+public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
+{
+    app.Use(next => context =>
+    {
+        string path = context.Request.Path.Value;
 
-## <a name="fundamentals"></a><span data-ttu-id="72ca3-258">Fundamentals</span><span class="sxs-lookup"><span data-stu-id="72ca3-258">Fundamentals</span></span>
+        if (
+            string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase))
+        {
+            // The request token can be sent as a JavaScript-readable cookie, 
+            // and Angular uses it by default.
+            var tokens = antiforgery.GetAndStoreTokens(context);
+            context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, 
+                new CookieOptions() { HttpOnly = false });
+        }
 
-<span data-ttu-id="72ca3-259">CSRF 攻擊依賴傳送每個要求對該網域與定義域相關聯的 cookie 的預設瀏覽器的行為。</span><span class="sxs-lookup"><span data-stu-id="72ca3-259">CSRF attacks rely on the default browser behavior of sending cookies associated with a domain with every request made to that domain.</span></span> <span data-ttu-id="72ca3-260">這些 cookie 會儲存在瀏覽器中。</span><span class="sxs-lookup"><span data-stu-id="72ca3-260">These cookies are stored within the browser.</span></span> <span data-ttu-id="72ca3-261">它們通常會包含已驗證的使用者工作階段 cookie。</span><span class="sxs-lookup"><span data-stu-id="72ca3-261">They frequently include session cookies for authenticated users.</span></span> <span data-ttu-id="72ca3-262">受歡迎的形式的驗證 cookie 為基礎的驗證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-262">Cookie-based authentication is a popular form of authentication.</span></span> <span data-ttu-id="72ca3-263">權杖型驗證系統已以受歡迎情況看出，成長特別是針對 SPAs 和其他 「 智慧型用戶端 」 案例。</span><span class="sxs-lookup"><span data-stu-id="72ca3-263">Token-based authentication systems have been growing in popularity, especially for SPAs and other "smart client" scenarios.</span></span>
+        return next(context);
+    });
+}
+```
 
-### <a name="cookie-based-authentication"></a><span data-ttu-id="72ca3-264">Cookie 為基礎的驗證</span><span class="sxs-lookup"><span data-stu-id="72ca3-264">Cookie-based authentication</span></span>
+### <a name="require-antiforgery-validation"></a><span data-ttu-id="1c09a-240">需要 antiforgery 驗證</span><span class="sxs-lookup"><span data-stu-id="1c09a-240">Require antiforgery validation</span></span>
 
-<span data-ttu-id="72ca3-265">一旦使用者已使用使用者名稱和密碼驗證時，它們被發行可用來識別及驗證他們已經過驗證的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-265">Once a user has authenticated using their username and password, they're issued a token that can be used to identify them and validate that they have been authenticated.</span></span> <span data-ttu-id="72ca3-266">權杖是以伴隨著每個要求的用戶端的 cookie 會儲存。</span><span class="sxs-lookup"><span data-stu-id="72ca3-266">The token is stored as a cookie that accompanies every request the client makes.</span></span> <span data-ttu-id="72ca3-267">產生和驗證此 cookie 是由 cookie 驗證中介軟體。</span><span class="sxs-lookup"><span data-stu-id="72ca3-267">Generating and validating this cookie is done by the cookie authentication middleware.</span></span> <span data-ttu-id="72ca3-268">ASP.NET Core 提供 cookie[中介軟體](xref:fundamentals/middleware/index)的序列化經過加密的 cookie 的使用者主體，然後在後續要求中，驗證 cookie，會重新建立主體，並將其指派給`User`屬性`HttpContext`.</span><span class="sxs-lookup"><span data-stu-id="72ca3-268">ASP.NET Core provides cookie [middleware](xref:fundamentals/middleware/index) which serializes a user principal into an encrypted cookie and then, on subsequent requests, validates the cookie, recreates the principal and assigns it to the `User` property on `HttpContext`.</span></span>
+<span data-ttu-id="1c09a-241">[ValidateAntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute)是動作篩選條件可以套用到個別的動作控制站，或全域。</span><span class="sxs-lookup"><span data-stu-id="1c09a-241">[ValidateAntiForgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute) is an action filter that can be applied to an individual action, a controller, or globally.</span></span> <span data-ttu-id="1c09a-242">套用此篩選條件的動作提出的要求會遭到封鎖，除非要求包含有效的 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-242">Requests made to actions that have this filter applied are blocked unless the request includes a valid antiforgery token.</span></span>
 
-<span data-ttu-id="72ca3-269">使用 cookie 時，驗證 cookie 只是一個容器的表單驗證票證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-269">When a cookie is used, The authentication cookie is just a container for the forms authentication ticket.</span></span> <span data-ttu-id="72ca3-270">票證傳遞做為表單驗證 cookie，隨著每項要求的值，並為表單驗證，在伺服器上，用來識別已驗證的使用者。</span><span class="sxs-lookup"><span data-stu-id="72ca3-270">The ticket is passed as the value of the forms authentication cookie with each request and is used by forms authentication, on the server, to identify an authenticated user.</span></span>
+```csharp
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
+{
+    ManageMessageId? message = ManageMessageId.Error;
+    var user = await GetCurrentUserAsync();
 
-<span data-ttu-id="72ca3-271">當使用者登入系統時，使用者工作階段會在伺服器端上建立並儲存在資料庫或其他持續性存放區。</span><span class="sxs-lookup"><span data-stu-id="72ca3-271">When a user is logged in to a system, a user session is created on the server-side and is stored in a database or some other persistent store.</span></span> <span data-ttu-id="72ca3-272">系統會產生指向實際的工作階段資料存放區中的工作階段金鑰，並為用戶端端 cookie 傳送出去。</span><span class="sxs-lookup"><span data-stu-id="72ca3-272">The system generates a session key that points to the actual session in the data store and it's sent as a client side cookie.</span></span> <span data-ttu-id="72ca3-273">使用者要求的資源需要授權的任何時間時，網頁伺服器會檢查此工作階段金鑰。</span><span class="sxs-lookup"><span data-stu-id="72ca3-273">The web server will check this session key any time a user requests a resource that requires authorization.</span></span> <span data-ttu-id="72ca3-274">系統會檢查相關聯的使用者工作階段是否擁有存取所要求的資源的權限。</span><span class="sxs-lookup"><span data-stu-id="72ca3-274">The system checks whether the associated user session has the privilege to access the requested resource.</span></span> <span data-ttu-id="72ca3-275">若是如此，要求將會繼續。</span><span class="sxs-lookup"><span data-stu-id="72ca3-275">If so, the request continues.</span></span> <span data-ttu-id="72ca3-276">否則，要求會傳回為未獲授權。</span><span class="sxs-lookup"><span data-stu-id="72ca3-276">Otherwise, the request returns as not authorized.</span></span> <span data-ttu-id="72ca3-277">這種方法，使用 cookie，以讓應用程式看起來似乎可設定狀態，因為它是可以 「 記住 」 的使用者之前驗證與伺服器。</span><span class="sxs-lookup"><span data-stu-id="72ca3-277">In this approach, cookies are used to make the application appear to be stateful, since it's able to "remember" that the user has previously authenticated with the server.</span></span>
+    if (user != null)
+    {
+        var result = 
+            await _userManager.RemoveLoginAsync(
+                user, account.LoginProvider, account.ProviderKey);
 
-### <a name="user-tokens"></a><span data-ttu-id="72ca3-278">使用者語彙基元</span><span class="sxs-lookup"><span data-stu-id="72ca3-278">User tokens</span></span>
+        if (result.Succeeded)
+        {
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            message = ManageMessageId.RemoveLoginSuccess;
+        }
+    }
 
-<span data-ttu-id="72ca3-279">權杖型驗證不會儲存在伺服器上的工作階段。</span><span class="sxs-lookup"><span data-stu-id="72ca3-279">Token-based authentication doesn't store session on the server.</span></span> <span data-ttu-id="72ca3-280">當使用者登入時，才要發出的權杖 （不 antiforgery 語彙基元）。</span><span class="sxs-lookup"><span data-stu-id="72ca3-280">When a user is logged in, they're issued a token (not an antiforgery token).</span></span> <span data-ttu-id="72ca3-281">這個語彙基元包含已驗證權杖所需的資料。</span><span class="sxs-lookup"><span data-stu-id="72ca3-281">This token holds the data that's required to validate the token.</span></span> <span data-ttu-id="72ca3-282">它也包含使用者資訊的形式[宣告](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-282">It also contains user information in the form of [claims](https://docs.microsoft.com/dotnet/framework/security/claims-based-identity-model).</span></span> <span data-ttu-id="72ca3-283">當使用者想要存取需要驗證的伺服器資源時，權杖會傳送到其他授權標頭形式 Bearer {t} 的伺服器。</span><span class="sxs-lookup"><span data-stu-id="72ca3-283">When a user wants to access a server resource requiring authentication, the token is sent to the server with an additional authorization header in form of Bearer {token}.</span></span> <span data-ttu-id="72ca3-284">這可讓應用程式無狀態因為在每個後續的要求語彙基元，在要求中傳遞伺服器端驗證。</span><span class="sxs-lookup"><span data-stu-id="72ca3-284">This makes the application stateless since in each subsequent request the token is passed in the request for server-side validation.</span></span> <span data-ttu-id="72ca3-285">這個語彙基元不*加密*; 而是*編碼*。</span><span class="sxs-lookup"><span data-stu-id="72ca3-285">This token isn't *encrypted*; rather it's *encoded*.</span></span> <span data-ttu-id="72ca3-286">在伺服器端，權杖可以解碼存取權杖中的原始資訊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-286">On the server-side, the token can be decoded to access the raw information within the token.</span></span> <span data-ttu-id="72ca3-287">若要在後續要求中傳送的語彙基元，請將它儲存在瀏覽器的本機儲存體，或在 cookie 中。</span><span class="sxs-lookup"><span data-stu-id="72ca3-287">To send the token in subsequent requests, either store it in the browser's local storage or in a cookie.</span></span> <span data-ttu-id="72ca3-288">不必擔心 XSRF 弱點，如果語彙基元會儲存在本機儲存體中，但它會是問題，如果語彙基元，儲存在 cookie 中。</span><span class="sxs-lookup"><span data-stu-id="72ca3-288">Don't worry about XSRF vulnerability if the token is stored in the local storage, but it's an issue if the token is stored in a cookie.</span></span>
+    return RedirectToAction(nameof(ManageLogins), new { Message = message });
+}
+```
 
-### <a name="multiple-applications-are-hosted-in-one-domain"></a><span data-ttu-id="72ca3-289">在一個網域中裝載多個應用程式</span><span class="sxs-lookup"><span data-stu-id="72ca3-289">Multiple applications are hosted in one domain</span></span>
+<span data-ttu-id="1c09a-243">`ValidateAntiForgeryToken`屬性裝飾，包括 HTTP GET 要求的動作方法要求需要 token。</span><span class="sxs-lookup"><span data-stu-id="1c09a-243">The `ValidateAntiForgeryToken` attribute requires a token for requests to the action methods it decorates, including HTTP GET requests.</span></span> <span data-ttu-id="1c09a-244">如果`ValidateAntiForgeryToken`屬性套用跨應用程式的控制站，可以使用覆寫`IgnoreAntiforgeryToken`屬性。</span><span class="sxs-lookup"><span data-stu-id="1c09a-244">If the `ValidateAntiForgeryToken` attribute is applied across the app's controllers, it can be overridden with the `IgnoreAntiforgeryToken` attribute.</span></span>
 
-<span data-ttu-id="72ca3-290">雖然`example1.cloudapp.net`和`example2.cloudapp.net`是不同的主機，在主機之間沒有隱含的信任關係`*.cloudapp.net`網域。</span><span class="sxs-lookup"><span data-stu-id="72ca3-290">Although `example1.cloudapp.net` and `example2.cloudapp.net` are different hosts, there's an implicit trust relationship between hosts under the `*.cloudapp.net` domain.</span></span> <span data-ttu-id="72ca3-291">這個隱含的信任關係可讓可能不受信任的主機會影響彼此的 cookie （控管 AJAX 要求的相同原始原則不一定會套用至 HTTP cookie）。</span><span class="sxs-lookup"><span data-stu-id="72ca3-291">This implicit trust relationship allows potentially untrusted hosts to affect each other's cookies (the same-origin policies that govern AJAX requests don't necessarily apply to HTTP cookies).</span></span> <span data-ttu-id="72ca3-292">ASP.NET Core 執行階段提供某些風險降低，因為欄位語彙基元中內嵌使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="72ca3-292">The ASP.NET Core runtime provides some mitigation in that the username is embedded into the field token.</span></span> <span data-ttu-id="72ca3-293">即使惡意的子網域是可以覆寫工作階段權杖，它無法產生使用者的有效的欄位語彙基元。</span><span class="sxs-lookup"><span data-stu-id="72ca3-293">Even if a malicious subdomain is able to overwrite a session token, it can't generate a valid field token for the user.</span></span> <span data-ttu-id="72ca3-294">當裝載這類環境中，內建的防 XSRF 常式仍無法防止工作階段攔截或登入 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-294">When hosted in such an environment, the built-in anti-XSRF routines still can't defend against session hijacking or login CSRF attacks.</span></span> <span data-ttu-id="72ca3-295">共用的裝載環境包括 vunerable 劫持、 登入 CSRF，和其他攻擊。</span><span class="sxs-lookup"><span data-stu-id="72ca3-295">Shared hosting environments are vunerable to session hijacking, login CSRF, and other attacks.</span></span>
+> [!NOTE]
+> <span data-ttu-id="1c09a-245">ASP.NET Core 不支援 GET 要求中自動加入 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-245">ASP.NET Core doesn't support adding antiforgery tokens to GET requests automatically.</span></span>
 
-### <a name="additional-resources"></a><span data-ttu-id="72ca3-296">其他資源</span><span class="sxs-lookup"><span data-stu-id="72ca3-296">Additional resources</span></span>
+### <a name="automatically-validate-antiforgery-tokens-for-unsafe-http-methods-only"></a><span data-ttu-id="1c09a-246">Antiforgery 的語彙基元的不安全的 HTTP 方法只會自動進行驗證</span><span class="sxs-lookup"><span data-stu-id="1c09a-246">Automatically validate antiforgery tokens for unsafe HTTP methods only</span></span>
 
-* <span data-ttu-id="72ca3-297">[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))上[開啟 Web 應用程式安全性專案](https://www.owasp.org/index.php/Main_Page)(OWASP)。</span><span class="sxs-lookup"><span data-stu-id="72ca3-297">[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) on [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP).</span></span>
+<span data-ttu-id="1c09a-247">ASP.NET Core 應用程式不會產生 antiforgery 權杖之安全的 HTTP 方法 （GET、 HEAD、 選項和追蹤）。</span><span class="sxs-lookup"><span data-stu-id="1c09a-247">ASP.NET Core apps don't generate antiforgery tokens for safe HTTP methods (GET, HEAD, OPTIONS, and TRACE).</span></span> <span data-ttu-id="1c09a-248">而不是廣泛套用`ValidateAntiForgeryToken`屬性，然後將它與覆寫`IgnoreAntiforgeryToken`屬性[AutoValidateAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute)屬性可以使用。</span><span class="sxs-lookup"><span data-stu-id="1c09a-248">Instead of broadly applying the `ValidateAntiForgeryToken` attribute and then overriding it with `IgnoreAntiforgeryToken` attributes, the [AutoValidateAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.autovalidateantiforgerytokenattribute) attribute can be used.</span></span> <span data-ttu-id="1c09a-249">這個屬性的運作方式和`ValidateAntiForgeryToken`屬性，不同之處在於它不需要使用下列的 HTTP 方法所提出之要求的語彙基元：</span><span class="sxs-lookup"><span data-stu-id="1c09a-249">This attribute works identically to the `ValidateAntiForgeryToken` attribute, except that it doesn't require tokens for requests made using the following HTTP methods:</span></span>
+
+* <span data-ttu-id="1c09a-250">GET</span><span class="sxs-lookup"><span data-stu-id="1c09a-250">GET</span></span>
+* <span data-ttu-id="1c09a-251">HEAD</span><span class="sxs-lookup"><span data-stu-id="1c09a-251">HEAD</span></span>
+* <span data-ttu-id="1c09a-252">選項</span><span class="sxs-lookup"><span data-stu-id="1c09a-252">OPTIONS</span></span>
+* <span data-ttu-id="1c09a-253">TRACE</span><span class="sxs-lookup"><span data-stu-id="1c09a-253">TRACE</span></span>
+
+<span data-ttu-id="1c09a-254">我們建議使用`AutoValidateAntiforgeryToken`廣泛的非 API 」 案例。</span><span class="sxs-lookup"><span data-stu-id="1c09a-254">We recommend use of `AutoValidateAntiforgeryToken` broadly for non-API scenarios.</span></span> <span data-ttu-id="1c09a-255">這可確保依預設受到保護後動作。</span><span class="sxs-lookup"><span data-stu-id="1c09a-255">This ensures POST actions are protected by default.</span></span> <span data-ttu-id="1c09a-256">替代方案是根據預設，忽略 antiforgery 語彙基元，除非`ValidateAntiForgeryToken`套用至個別動作方法。</span><span class="sxs-lookup"><span data-stu-id="1c09a-256">The alternative is to ignore antiforgery tokens by default, unless `ValidateAntiForgeryToken` is applied to individual action methods.</span></span> <span data-ttu-id="1c09a-257">它比較可能在此案例中剩餘的 POST 動作方法的受保護的錯誤，讓應用程式受到 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-257">It's more likely in this scenario for a POST action method to be left unprotected by mistake, leaving the app vulnerable to CSRF attacks.</span></span> <span data-ttu-id="1c09a-258">所有文章應該都傳送 antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-258">All POSTs should send the antiforgery token.</span></span>
+
+<span data-ttu-id="1c09a-259">應用程式開發介面不需要傳送非 cookie 權杖的一部分的自動機制。</span><span class="sxs-lookup"><span data-stu-id="1c09a-259">APIs don't have an automatic mechanism for sending the non-cookie part of the token.</span></span> <span data-ttu-id="1c09a-260">實作可能取決於用戶端程式碼實作。</span><span class="sxs-lookup"><span data-stu-id="1c09a-260">The implementation probably depends on the client code implementation.</span></span> <span data-ttu-id="1c09a-261">某些範例如下所示：</span><span class="sxs-lookup"><span data-stu-id="1c09a-261">Some examples are shown below:</span></span>
+
+<span data-ttu-id="1c09a-262">類別層級的範例：</span><span class="sxs-lookup"><span data-stu-id="1c09a-262">Class-level example:</span></span>
+
+```csharp
+[Authorize]
+[AutoValidateAntiforgeryToken]
+public class ManageController : Controller
+{
+```
+
+<span data-ttu-id="1c09a-263">全域範例：</span><span class="sxs-lookup"><span data-stu-id="1c09a-263">Global example:</span></span>
+
+```csharp
+services.AddMvc(options => 
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+```
+
+### <a name="override-global-or-controller-antiforgery-attributes"></a><span data-ttu-id="1c09a-264">覆寫全域或控制器 antiforgery 屬性</span><span class="sxs-lookup"><span data-stu-id="1c09a-264">Override global or controller antiforgery attributes</span></span>
+
+<span data-ttu-id="1c09a-265">[IgnoreAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.ignoreantiforgerytokenattribute)篩選條件可用於不需要指定的 「 動作 」 （或稱 「 控制器 」） antiforgery 語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-265">The [IgnoreAntiforgeryToken](/dotnet/api/microsoft.aspnetcore.mvc.ignoreantiforgerytokenattribute) filter is used to eliminate the need for an antiforgery token for a given action (or controller).</span></span> <span data-ttu-id="1c09a-266">套用時，此篩選條件會覆寫`ValidateAntiForgeryToken`和`AutoValidateAntiforgeryToken`（全域或控制站上），在較高層級指定的篩選條件。</span><span class="sxs-lookup"><span data-stu-id="1c09a-266">When applied, this filter overrides `ValidateAntiForgeryToken` and `AutoValidateAntiforgeryToken` filters specified at a higher level (globally or on a controller).</span></span>
+
+```csharp
+[Authorize]
+[AutoValidateAntiforgeryToken]
+public class ManageController : Controller
+{
+    [HttpPost]
+    [IgnoreAntiforgeryToken]
+    public async Task<IActionResult> DoSomethingSafe(SomeViewModel model)
+    {
+        // no antiforgery token required
+    }
+}
+```
+
+## <a name="refresh-tokens-after-authentication"></a><span data-ttu-id="1c09a-267">在驗證之後，重新整理權杖</span><span class="sxs-lookup"><span data-stu-id="1c09a-267">Refresh tokens after authentication</span></span>
+
+<span data-ttu-id="1c09a-268">將使用者重新導向至檢視或 Razor 頁面驗證使用者之後，應該重新整理語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-268">Tokens should be refreshed after the user is authenticated by redirecting the user to a view or Razor Pages page.</span></span>
+
+## <a name="javascript-ajax-and-spas"></a><span data-ttu-id="1c09a-269">JavaScript、 AJAX 和 SPAs</span><span class="sxs-lookup"><span data-stu-id="1c09a-269">JavaScript, AJAX, and SPAs</span></span>
+
+<span data-ttu-id="1c09a-270">在傳統的 HTML 型應用程式，antiforgery 權杖會傳遞至使用隱藏的表單欄位的伺服器。</span><span class="sxs-lookup"><span data-stu-id="1c09a-270">In traditional HTML-based apps, antiforgery tokens are passed to the server using hidden form fields.</span></span> <span data-ttu-id="1c09a-271">在現代 JavaScript 為基礎的應用程式和 SPAs，許多要求以程式設計的方式。</span><span class="sxs-lookup"><span data-stu-id="1c09a-271">In modern JavaScript-based apps and SPAs, many requests are made programmatically.</span></span> <span data-ttu-id="1c09a-272">這些 AJAX 要求可以使用其他技術 （例如要求標頭或 cookie） 傳送語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-272">These AJAX requests may use other techniques (such as request headers or cookies) to send the token.</span></span>
+
+<span data-ttu-id="1c09a-273">Cookie 用來儲存驗證權杖，並驗證伺服器上的應用程式開發介面要求，CSRF 有潛在的問題。</span><span class="sxs-lookup"><span data-stu-id="1c09a-273">If cookies are used to store authentication tokens and to authenticate API requests on the server, CSRF is a potential problem.</span></span> <span data-ttu-id="1c09a-274">如果本機儲存體用來儲存的語彙基元，CSRF 的弱點可能會可能會降低，因為從本機儲存體的值不會自動傳送到每個要求的伺服器。</span><span class="sxs-lookup"><span data-stu-id="1c09a-274">If local storage is used to store the token, CSRF vulnerability might be mitigated because values from local storage aren't sent automatically to the server with every request.</span></span> <span data-ttu-id="1c09a-275">因此，使用本機儲存體來儲存 antiforgery 語彙基元，在用戶端傳送權杖，因為要求標頭是建議的方法。</span><span class="sxs-lookup"><span data-stu-id="1c09a-275">Thus, using local storage to store the antiforgery token on the client and sending the token as a request header is a recommended approach.</span></span>
+
+### <a name="javascript"></a><span data-ttu-id="1c09a-276">JavaScript</span><span class="sxs-lookup"><span data-stu-id="1c09a-276">JavaScript</span></span>
+
+<span data-ttu-id="1c09a-277">檢視與使用 JavaScript，權杖可以建立使用從檢視內的服務。</span><span class="sxs-lookup"><span data-stu-id="1c09a-277">Using JavaScript with views, the token can be created using a service from within the view.</span></span> <span data-ttu-id="1c09a-278">插入[Microsoft.AspNetCore.Antiforgery.IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery)到檢視並呼叫服務[GetAndStoreTokens](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery.getandstoretokens):</span><span class="sxs-lookup"><span data-stu-id="1c09a-278">Inject the [Microsoft.AspNetCore.Antiforgery.IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) service into the view and call [GetAndStoreTokens](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery.getandstoretokens):</span></span>
+
+[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,35-36)]
+
+<span data-ttu-id="1c09a-279">這個方法不需要直接處理從伺服器中設定 cookie，或從用戶端讀取。</span><span class="sxs-lookup"><span data-stu-id="1c09a-279">This approach eliminates the need to deal directly with setting cookies from the server or reading them from the client.</span></span>
+
+<span data-ttu-id="1c09a-280">上述範例使用 JavaScript AJAX 張貼標頭讀取隱藏的欄位值。</span><span class="sxs-lookup"><span data-stu-id="1c09a-280">The preceding example uses JavaScript to read the hidden field value for the AJAX POST header.</span></span>
+
+<span data-ttu-id="1c09a-281">JavaScript 也可以存取 cookie 中的語彙基元，並使用 cookie 的內容建立的語彙基元值的標頭。</span><span class="sxs-lookup"><span data-stu-id="1c09a-281">JavaScript can also access tokens in cookies and use the cookie's contents to create a header with the token's value.</span></span>
+
+```csharp
+context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
+    new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
+```
+
+<span data-ttu-id="1c09a-282">假設指令碼中呼叫的標頭傳送權杖要求`X-CSRF-TOKEN`，antiforgery 服務設定為尋找`X-CSRF-TOKEN`標頭：</span><span class="sxs-lookup"><span data-stu-id="1c09a-282">Assuming the script requests to send the token in a header called `X-CSRF-TOKEN`, configure the antiforgery service to look for the `X-CSRF-TOKEN` header:</span></span>
+
+```csharp
+services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
+```
+
+<span data-ttu-id="1c09a-283">下列範例使用 JavaScript，請使用適當的標頭 AJAX 要求：</span><span class="sxs-lookup"><span data-stu-id="1c09a-283">The following example uses JavaScript to make an AJAX request with the appropriate header:</span></span>
+
+```javascript
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var csrfToken = getCookie("CSRF-TOKEN");
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == XMLHttpRequest.DONE) {
+        if (xhttp.status == 200) {
+            alert(xhttp.responseText);
+        } else {
+            alert('There was an error processing the AJAX request.');
+        }
+    }
+};
+xhttp.open('POST', '/api/password/changepassword', true);
+xhttp.setRequestHeader("Content-type", "application/json");
+xhttp.setRequestHeader("X-CSRF-TOKEN", csrfToken);
+xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
+```
+
+### <a name="angularjs"></a><span data-ttu-id="1c09a-284">AngularJS</span><span class="sxs-lookup"><span data-stu-id="1c09a-284">AngularJS</span></span>
+
+<span data-ttu-id="1c09a-285">AngularJS 會到位址 CSRF 慣例。</span><span class="sxs-lookup"><span data-stu-id="1c09a-285">AngularJS uses a convention to address CSRF.</span></span> <span data-ttu-id="1c09a-286">如果伺服器傳送的 cookie 名稱`XSRF-TOKEN`，AngularJS`$http`服務將 cookie 的值加入標頭將要求傳送到伺服器時。</span><span class="sxs-lookup"><span data-stu-id="1c09a-286">If the server sends a cookie with the name `XSRF-TOKEN`, the AngularJS `$http` service adds the cookie value to a header when it sends a request to the server.</span></span> <span data-ttu-id="1c09a-287">此程序是自動的。</span><span class="sxs-lookup"><span data-stu-id="1c09a-287">This process is automatic.</span></span> <span data-ttu-id="1c09a-288">標頭，不需要明確設定。</span><span class="sxs-lookup"><span data-stu-id="1c09a-288">The header doesn't need to be set explicitly.</span></span> <span data-ttu-id="1c09a-289">標頭名稱`X-XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-289">The header name is `X-XSRF-TOKEN`.</span></span> <span data-ttu-id="1c09a-290">伺服器應該偵測此標頭，並驗證其內容。</span><span class="sxs-lookup"><span data-stu-id="1c09a-290">The server should detect this header and validate its contents.</span></span>
+
+<span data-ttu-id="1c09a-291">適用於 ASP.NET Core 應用程式開發介面使用這個慣例：</span><span class="sxs-lookup"><span data-stu-id="1c09a-291">For ASP.NET Core API work with this convention:</span></span>
+
+* <span data-ttu-id="1c09a-292">設定您的應用程式提供語彙基元在呼叫 cookie `XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-292">Configure your app to provide a token in a cookie called `XSRF-TOKEN`.</span></span>
+* <span data-ttu-id="1c09a-293">設定 antiforgery 服務，以尋找名為標頭`X-XSRF-TOKEN`。</span><span class="sxs-lookup"><span data-stu-id="1c09a-293">Configure the antiforgery service to look for a header named `X-XSRF-TOKEN`.</span></span>
+
+```csharp
+services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+```
+
+<span data-ttu-id="1c09a-294">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="1c09a-294">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+
+## <a name="extend-antiforgery"></a><span data-ttu-id="1c09a-295">擴充 antiforgery</span><span class="sxs-lookup"><span data-stu-id="1c09a-295">Extend antiforgery</span></span>
+
+<span data-ttu-id="1c09a-296">[IAntiForgeryAdditionalDataProvider](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider)類型可讓開發人員以便在往返過程中每個語彙基元的其他資料來擴充反 CSRF 系統的行為。</span><span class="sxs-lookup"><span data-stu-id="1c09a-296">The [IAntiForgeryAdditionalDataProvider](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider) type allows developers to extend the behavior of the anti-CSRF system by round-tripping additional data in each token.</span></span> <span data-ttu-id="1c09a-297">[GetAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.getadditionaldata)每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。</span><span class="sxs-lookup"><span data-stu-id="1c09a-297">The [GetAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.getadditionaldata) method is called each time a field token is generated, and the return value is embedded within the generated token.</span></span> <span data-ttu-id="1c09a-298">實作者可能傳回的時間戳記、 nonce 或任何其他值，然後呼叫[ValidateAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.validateadditionaldata)驗證語彙基元時驗證這項資料。</span><span class="sxs-lookup"><span data-stu-id="1c09a-298">An implementer could return a timestamp, a nonce, or any other value and then call [ValidateAdditionalData](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgeryadditionaldataprovider.validateadditionaldata) to validate this data when the token is validated.</span></span> <span data-ttu-id="1c09a-299">用戶端的使用者名稱已內嵌在產生的語彙基元，因此不需要加入這項資訊。</span><span class="sxs-lookup"><span data-stu-id="1c09a-299">The client's username is already embedded in the generated tokens, so there's no need to include this information.</span></span> <span data-ttu-id="1c09a-300">如果語彙基元包含補充資料但不是`IAntiForgeryAdditionalDataProvider`是設定，未驗證的補充資料。</span><span class="sxs-lookup"><span data-stu-id="1c09a-300">If a token includes supplemental data but no `IAntiForgeryAdditionalDataProvider` is configured, the supplemental data isn't validated.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="1c09a-301">其他資源</span><span class="sxs-lookup"><span data-stu-id="1c09a-301">Additional resources</span></span>
+
+* <span data-ttu-id="1c09a-302">[CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))上[開啟 Web 應用程式安全性專案](https://www.owasp.org/index.php/Main_Page)(OWASP)。</span><span class="sxs-lookup"><span data-stu-id="1c09a-302">[CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) on [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP).</span></span>

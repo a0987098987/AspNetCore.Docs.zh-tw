@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4
-title: "我們的其餘部分的 ASP.NET MVC： 第 4 部分 |Microsoft 文件"
+title: 我們的其餘部分的 ASP.NET MVC： 第 4 部分 |Microsoft 文件
 author: JoeStagner
-description: "在這段影片 Microsoft Joe stagner 以新增至 ASP.NET MVC 應用程式的控制器。"
+description: 在這段影片 Microsoft Joe stagner 以新增至 ASP.NET MVC 應用程式的控制器。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/19/2010
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4
 msc.type: video
-ms.openlocfilehash: 26e80b7945ee4f3c523a7e3a388df2bad6b38ad5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b9498bb546f370279c090a9b3b57ed2543cee234
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="aspnet-mvc-for-the-rest-of-us-part-4"></a><span data-ttu-id="e69aa-103">我們的其餘部分的 ASP.NET MVC： 第 4 部分</span><span class="sxs-lookup"><span data-stu-id="e69aa-103">ASP.NET MVC For the Rest of Us: Part 4</span></span>
+<a name="aspnet-mvc-for-the-rest-of-us-part-4"></a><span data-ttu-id="ec800-103">我們的其餘部分的 ASP.NET MVC： 第 4 部分</span><span class="sxs-lookup"><span data-stu-id="ec800-103">ASP.NET MVC For the Rest of Us: Part 4</span></span>
 ====================
-<span data-ttu-id="e69aa-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="e69aa-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="ec800-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ec800-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="e69aa-105">在這段影片 Microsoft Joe stagner 以新增至 ASP.NET MVC 應用程式的控制器。</span><span class="sxs-lookup"><span data-stu-id="e69aa-105">In this video Microsoft's Joe Stagner adds a controller to an ASP.NET MVC application.</span></span>
+<span data-ttu-id="ec800-105">在這段影片 Microsoft Joe stagner 以新增至 ASP.NET MVC 應用程式的控制器。</span><span class="sxs-lookup"><span data-stu-id="ec800-105">In this video Microsoft's Joe Stagner adds a controller to an ASP.NET MVC application.</span></span>
 
-[<span data-ttu-id="e69aa-106">&#9654;觀看影片 （5 分鐘）</span><span class="sxs-lookup"><span data-stu-id="e69aa-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-for-the-rest-of-us-part-4)
+[<span data-ttu-id="ec800-106">&#9654;觀看影片 （5 分鐘）</span><span class="sxs-lookup"><span data-stu-id="ec800-106">&#9654; Watch video (5 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-for-the-rest-of-us-part-4)
 
->[!div class="step-by-step"]
-[<span data-ttu-id="e69aa-107">上一步</span><span class="sxs-lookup"><span data-stu-id="e69aa-107">Previous</span></span>](aspnet-mvc-for-the-rest-of-us-part-3.md)
+> [!div class="step-by-step"]
+> [<span data-ttu-id="ec800-107">上一步</span><span class="sxs-lookup"><span data-stu-id="ec800-107">Previous</span></span>](aspnet-mvc-for-the-rest-of-us-part-3.md)

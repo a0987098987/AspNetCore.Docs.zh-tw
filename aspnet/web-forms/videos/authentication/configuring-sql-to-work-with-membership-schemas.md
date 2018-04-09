@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/authentication/configuring-sql-to-work-with-membership-schemas
-title: "設定 SQL 工作會使用成員資格的結構描述 |Microsoft 文件"
+title: 設定 SQL 工作會使用成員資格的結構描述 |Microsoft 文件
 author: JoeStagner
-description: "在這個視訊 Joe stagner 以示範如何設定 SQL 執行個體使用特定的 ASP 服務的成員資格設定檔。以及設定應用程式..."
+description: 在這個視訊 Joe stagner 以示範如何設定 SQL 執行個體使用特定的 ASP 服務的成員資格設定檔。以及設定應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/04/2008
@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/authentication/configuring-sql-to-work-with-membership-schemas
 msc.type: video
-ms.openlocfilehash: c704e0302923b015c962315098c7ecf2054c0c2e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e8fa9dadebe66e66ab3691a5087556fb4b50646d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="configuring-sql-to-work-with-membership-schemas"></a><span data-ttu-id="78154-103">使用成員資格的結構描述設定 SQL 工作</span><span class="sxs-lookup"><span data-stu-id="78154-103">Configuring SQL To Work with Membership Schemas</span></span>
+<a name="configuring-sql-to-work-with-membership-schemas"></a><span data-ttu-id="674f6-103">使用成員資格的結構描述設定 SQL 工作</span><span class="sxs-lookup"><span data-stu-id="674f6-103">Configuring SQL To Work with Membership Schemas</span></span>
 ====================
-<span data-ttu-id="78154-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="78154-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="674f6-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="674f6-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="78154-105">在這個視訊 Joe stagner 以示範如何設定 SQL 執行個體使用特定的 ASP 服務的成員資格設定檔。以及設定應用程式，特別是使用 machine.cgf 檔案中的 這個 SQL 執行個體和預設設定。</span><span class="sxs-lookup"><span data-stu-id="78154-105">In this video Joe Stagner demonstrates how to configure a SQL instance to work with a specific ASP Services Membership Profile; as well as configure the application to specifically use this SQL instance and not the default settings in the machine.cgf file.</span></span> <span data-ttu-id="78154-106">如需有關這段影片中，讀取[在 SQL Server 中建立成員資格結構描述](../../overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md)安全性教學課程。</span><span class="sxs-lookup"><span data-stu-id="78154-106">For additional information about this video, read the [Creating the Membership Schema in SQL Server](../../overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md) security tutorial.</span></span>
+<span data-ttu-id="674f6-105">在這個視訊 Joe stagner 以示範如何設定 SQL 執行個體使用特定的 ASP 服務的成員資格設定檔。以及設定應用程式，特別是使用 machine.cgf 檔案中的 這個 SQL 執行個體和預設設定。</span><span class="sxs-lookup"><span data-stu-id="674f6-105">In this video Joe Stagner demonstrates how to configure a SQL instance to work with a specific ASP Services Membership Profile; as well as configure the application to specifically use this SQL instance and not the default settings in the machine.cgf file.</span></span> <span data-ttu-id="674f6-106">如需有關這段影片中，讀取[在 SQL Server 中建立成員資格結構描述](../../overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md)安全性教學課程。</span><span class="sxs-lookup"><span data-stu-id="674f6-106">For additional information about this video, read the [Creating the Membership Schema in SQL Server](../../overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md) security tutorial.</span></span>
 
-[<span data-ttu-id="78154-107">&#9654;觀看影片 （18 分鐘）</span><span class="sxs-lookup"><span data-stu-id="78154-107">&#9654; Watch video (18 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/configuring-sql-to-work-with-membership-schemas)
+[<span data-ttu-id="674f6-107">&#9654;觀看影片 （18 分鐘）</span><span class="sxs-lookup"><span data-stu-id="674f6-107">&#9654; Watch video (18 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/configuring-sql-to-work-with-membership-schemas)
 
->[!div class="step-by-step"]
-<span data-ttu-id="78154-108">[上一頁](understanding-aspnet-memberships.md)
-[下一頁](changing-membership-settings-in-the-default-membership-schema.md)</span><span class="sxs-lookup"><span data-stu-id="78154-108">[Previous](understanding-aspnet-memberships.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="674f6-108">[上一頁](understanding-aspnet-memberships.md)
+> [下一頁](changing-membership-settings-in-the-default-membership-schema.md)</span><span class="sxs-lookup"><span data-stu-id="674f6-108">[Previous](understanding-aspnet-memberships.md)
 [Next](changing-membership-settings-in-the-default-membership-schema.md)</span></span>

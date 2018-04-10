@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs
-title: "使用 AJAX 控制項 Toolkit 控制項和控制項擴充項 (C#) |Microsoft 文件"
+title: 使用 AJAX 控制項 Toolkit 控制項和控制項擴充項 (C#) |Microsoft 文件
 author: microsoft
-description: "了解如何將 AJAX Control Toolkit 控制項和擴充項加入 ASP.NET 網頁。"
+description: 了解如何將 AJAX Control Toolkit 控制項和擴充項加入 ASP.NET 網頁。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 42a210ac41e83e2379aa64979f42ce66c843f878
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d7cea2452db01ca116849ffb17631db3b935668
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-c"></a>使用 AJAX 控制項 Toolkit 控制項和控制項擴充項 (C#)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 了解如何將 AJAX Control Toolkit 控制項和擴充項加入 ASP.NET 網頁。
 
@@ -106,6 +106,6 @@ AJAX Control Toolkit 也包含控制項擴充項。 正如其名，控制項擴�
 
 在單一 ASP.NET 控制項可以由多個控制項擴充項擴充。 擴充控制項的屬性工作表會列出所有與控制項關聯的控制項擴充項。
 
->[!div class="step-by-step"]
-[上一頁](get-started-with-the-ajax-control-toolkit-cs.md)
-[下一頁](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](get-started-with-the-ajax-control-toolkit-cs.md)
+> [下一頁](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)

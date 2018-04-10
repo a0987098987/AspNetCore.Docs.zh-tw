@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/aspnet-mvc-4-mobile-features
-title: "ASP.NET MVC 4 行動功能 |Microsoft 文件"
+title: ASP.NET MVC 4 行動功能 |Microsoft 文件
 author: Rick-Anderson
-description: "現在是在部署 ASP.NET MVC 5 Mobile Web 應用程式在 Azure 網站的程式碼範例使用本教學課程的 MVC 5 版本。"
+description: 現在是在部署 ASP.NET MVC 5 Mobile Web 應用程式在 Azure 網站的程式碼範例使用本教學課程的 MVC 5 版本。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: f4e0e4eb558e0c7b9e94fc83ede986fa4c666739
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 5f38fcdd8e71ce12f7899214b6b2133e21f9910c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 Mobile 功能
 ====================
@@ -190,7 +190,7 @@ ASP.NET MVC 4 中重要的新功能是一個簡單的機制，可讓您覆寫任
 1. 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。
 
     [![p3_packageMgr](aspnet-mvc-4-mobile-features/_static/image20.png)](aspnet-mvc-4-mobile-features/_static/image19.png)
-2. 在**Package Manager Console**，輸入`Install-Package jQuery.Mobile.MVC -version 1.0.0`
+2. 在**Package Manager Console**，輸入 `Install-Package jQuery.Mobile.MVC -version 1.0.0`
 
 下圖顯示加入和變更 MvcMobile 專案 NuGet jQuery.Mobile.MVC 封裝的檔案。 [新增] 的檔案名稱後面加入的檔案。 映像不會顯示 GIF 和 PNG 檔案新增至*Content\images*資料夾。
 
@@ -204,7 +204,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 - jQuery Mobile JavaScript 檔案。
 - JQuery Mobile 樣式的配置檔案 (*_layout.cshtml\\_Layout.Mobile.cshtml*)。
 - 檢視切換器的部分檢視*(MvcMobile\Views\Shared\\_ViewSwitcher.cshtml*)，提供從桌面檢視行動檢視，反之亦然切換每個頁面頂端的連結。
-- 數個*.png*和*.gif*影像檔*Content\images*資料夾。
+- 數個<em>.png</em>和<em>.gif</em>影像檔<em>Content\images</em>資料夾。
 
 開啟*Global.asax*檔案，然後加入下列程式碼的最後一行`Application_Start`方法。
 
@@ -270,7 +270,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample17.cshtml)]
 
-當`RequireConsistentDisplayMode`設`true`，行動裝置的版面配置 (*\_Layout.Mobile.cshtml*) 只適用於行動檢視。 (亦即，檢視檔案是表單的 ***ViewName**。Mobile.cshtml*。)要設定`RequireConsistentDisplayMode`至`true`如果您的行動配置效果不佳非行動檢視。 螢幕擷取畫面所示方式*喇叭*頁面轉譯時`RequireConsistentDisplayMode`設`true`。
+當`RequireConsistentDisplayMode`設`true`，行動裝置的版面配置 (<em>\_Layout.Mobile.cshtml</em>) 只適用於行動檢視。 (亦即，檢視檔案是表單的<em>* * ViewName</em><em>。Mobile.cshtml</em>。)要設定`RequireConsistentDisplayMode`至`true`如果您的行動配置效果不佳非行動檢視。 螢幕擷取畫面所示方式<em>喇叭</em>頁面轉譯時`RequireConsistentDisplayMode`設`true`。
 
 [![p3_speakersConsistent](aspnet-mvc-4-mobile-features/_static/image33.png)](aspnet-mvc-4-mobile-features/_static/image32.png)
 
@@ -393,7 +393,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 - 行動應用程式檢視切換程式 widget 檢視比也可以在桌面檢視中顯示。
 - 支援特定瀏覽器，例如 iPhone 瀏覽器支援。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [jQuery Mobile](http://jquerymobile.com)站台。
 - [jQuery Mobile 概觀](http://jquerymobile.com/demos/1.0b3/docs/about/intro.html)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
-title: "建立 MVC 5 應用程式與 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#) |Microsoft 文件"
+title: 建立 MVC 5 應用程式與 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程會示範如何建置讓使用者能夠登入來自外部的驗證認證搭配使用 OAuth 2.0 的 ASP.NET MVC 5 web 應用程式..."
+description: 本教學課程會示範如何建置讓使用者能夠登入來自外部的驗證認證搭配使用 OAuth 2.0 的 ASP.NET MVC 5 web 應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: 8dc2221ea19a33f1d34ba3aae8c60e365423e140
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/02/2018
 <a id="start"></a>
 ## <a name="getting-started"></a>快速入門
 
-開始安裝並執行[Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058)或[Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566)。 安裝 Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521)或更高版本。 Dropbox、 GitHub、 Linkedin、 Instagram、 緩衝區、 salesforce、 資料流、 堆疊 Exchange、 Tripit、 twitch、 Twitter、 Yahoo 和更多的說明，請參閱此[一個停止指南](http://www.oauthforaspnet.com/)。
+開始安裝並執行[Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058)或[Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566)。 安裝 Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521)或更高版本。 Dropbox、 GitHub、 Linkedin、 Instagram、 緩衝區、 Salesforce、 資料流、 堆疊 Exchange、 Tripit、 Twitch、 Twitter、 yahoo ！ 和更多的說明，請參閱此[範例專案](https://github.com/matthewdunsdon/oauthforaspnet)。
 
 > [!NOTE]
 > 您必須安裝 Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521)或更高版本，才能使用 Google OAuth 2 和偵錯在本機，而 SSL 警告。
@@ -118,9 +118,9 @@ ms.lasthandoff: 03/02/2018
 > 目前的 Google OAuth 指示，請參閱[設定 Google 驗證中 ASP.NET Core](/aspnet/core/security/authentication/social/google-logins)。
 
 1. 瀏覽至[Google 開發人員主控台](https://console.developers.google.com/)。
-1. 如果您尚未建立的專案之前，請選取**認證**在左側的索引標籤上，然後選取**建立**。
-1. 在左側的索引標籤上，按一下**認證**。
-1. 按一下**建立認證**然後**OAuth 用戶端識別碼**。 
+2. 如果您尚未建立的專案之前，請選取**認證**在左側的索引標籤上，然後選取**建立**。
+3. 在左側的索引標籤上，按一下**認證**。
+4. 按一下**建立認證**然後**OAuth 用戶端識別碼**。 
 
     1. 在**建立用戶端識別碼** 對話方塊中，保留預設值**Web 應用程式**應用程式類型。
     2. 設定**授權 JavaScript**來源可您在上面使用的 SSL URL (`https://localhost:44300/`除非您已建立其他 SSL 專案)
@@ -131,7 +131,7 @@ ms.lasthandoff: 03/02/2018
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image15.png)  
   
- 下圖顯示已啟用的應用程式開發介面。  
+   下圖顯示已啟用的應用程式開發介面。  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image16.png)
 7. 從 Google Api API 管理員 中，請瀏覽**認證**索引標籤，以取得**用戶端識別碼**。 下載應用程式密碼儲存在 JSON 檔案。 複製並貼上**ClientId**和**ClientSecret**到`UseGoogleAuthentication`方法中找到*Startup.Auth.cs*檔案*App_Start*資料夾。 **ClientId**和**ClientSecret**值如下所示的範例和沒有作用。
@@ -148,8 +148,8 @@ ms.lasthandoff: 03/02/2018
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image18.png)
 
     > [!NOTE]
-    > 若您遺漏任何上述的步驟會收到 HTTP 401 錯誤。 重新檢查您上述的步驟。 若您遺漏必要的設定 (例如**產品名稱**)、 加入遺漏項目，並且儲存，可能需要幾分鐘，讓驗證才能運作。
-10. 安裝程式會重新導向至 google 站台，您將在其中輸入您的認證。   
+    > 若您遺漏任何上述的步驟會收到 HTTP 401 錯誤。 重新檢查您上述的步驟。 若您遺漏必要的設定 (例如**產品名稱**)、 新增遺失的項目，並儲存，則可能需要幾分鐘，讓驗證才能運作。
+10. 安裝程式會重新導向至 Google 站台，您將在其中輸入您的認證。   
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image19.png)
 11. 輸入您的認證之後，系統會提示您授與您剛才建立的 web 應用程式的權限：
@@ -167,14 +167,14 @@ ms.lasthandoff: 03/02/2018
 
 Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 中建立的應用程式。
 
-1. 在瀏覽器中，瀏覽至[https://developers.facebook.com/apps](https://developers.facebook.com/apps)並輸入您的 Facebook 認證登入。
+1. 在瀏覽器中，瀏覽至[ https://developers.facebook.com/apps ](https://developers.facebook.com/apps)並輸入您的 Facebook 認證登入。
 2. 如果您不已註冊為 Facebook 開發人員，請按一下**身為開發人員註冊**並依照指示進行註冊。
 3. 在**應用程式**索引標籤上，按一下 **建立新的應用程式**。
 
     ![建立新的應用程式](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. 輸入**應用程式名稱**和**類別**，然後按一下 **建立應用程式**。
 
-    這必須是唯一的 Facebook。 **應用程式命名空間**屬於您的應用程式用來存取驗證 (例如，https://apps.facebook.com/ {應用程式命名空間}) 的 Facebook 應用程式的 URL。 如果您未指定**應用程式命名空間**、**應用程式識別碼**將使用的 URL。 **應用程式識別碼**是下一個步驟中，您會看到一個長時間的系統產生數字。
+    這必須是唯一的 Facebook。 <strong>應用程式命名空間</strong>屬於您的應用程式用來存取驗證的 Facebook 應用程式的 URL (例如，https://apps.facebook.com/{App命名空間})。 如果您未指定<strong>應用程式命名空間</strong>、<strong>應用程式識別碼</strong>將使用的 URL。 <strong>應用程式識別碼</strong>是下一個步驟中，您會看到一個長時間的系統產生數字。
 
     ![建立新的應用程式 對話方塊](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. 提交的一般安全性檢查。

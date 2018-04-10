@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view
-title: "加入的檢視 (C#) |Microsoft 文件"
+title: 加入的檢視 (C#) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 46d5494e668dfe156aeb6647ded83e6ce5366714
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 50ce4a2024ffd9e2bbb5526717052d486689ff38
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view-c"></a>加入的檢視 (C#)
 ====================
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/10/2017
 
 [![_LayoutCshtml](adding-a-view/_static/image8.png)](adding-a-view/_static/image7.png)
 
-版面配置範本可讓您指定 HTML 容器的配置，您的網站在同一個地方，然後將它套用到您的網站中的多個頁面。 請注意`@RenderBody()`檔案底部附近的行。 `RenderBody`這是的預留位置，其中您所建立的所有檢視特定頁面會都出現 「 包裝 」 中之版面配置頁。 變更從 「 我 MVC 應用程式 」 到 「 MVC 電影應用程式 」 的版面配置範本中的標題。
+版面配置範本可讓您指定 HTML 容器的配置，您的網站在同一個地方，然後將它套用到您的網站中的多個頁面。 請注意`@RenderBody()`檔案底部附近的行。 `RenderBody` 這是的預留位置，其中您所建立的所有檢視特定頁面會都出現 「 包裝 」 中之版面配置頁。 變更從 「 我 MVC 應用程式 」 到 「 MVC 電影應用程式 」 的版面配置範本中的標題。
 
 [!code-cshtml[Main](adding-a-view/samples/sample3.cshtml)]
 
@@ -113,13 +113,13 @@ ms.lasthandoff: 11/10/2017
 
 目前，`Welcome`中的動作方法`HelloWorldController`類別會採用`name`和`numTimes`參數，然後輸出至瀏覽器直接的值。 而非保有呈現為字串的這個回應的控制站，我們來變更要改為使用檢視範本的控制站。 檢視範本會產生動態回應，這表示您需要將適當數量的資料從控制器傳遞至檢視，以便產生回應。 您可以透過將動態檢視需要的範本中的資料放在控制器`ViewBag`檢視範本可以存取的物件。
 
-返回*HelloWorldController.cs*檔案，並且變更`Welcome`方法，將`Message`和`NumTimes`值設定為`ViewBag`物件。 `ViewBag`是動態的物件，這表示您可以將您所要的任何。`ViewBag`物件沒有任何定義的屬性，直到您將放在它之內的項目。 完整的 *HelloWorldController.cs* 檔案如下所示：
+返回*HelloWorldController.cs*檔案，並且變更`Welcome`方法，將`Message`和`NumTimes`值設定為`ViewBag`物件。 `ViewBag` 是動態的物件，這表示您可以將您所要的任何。`ViewBag`物件沒有任何定義的屬性，直到您將放在它之內的項目。 完整的 *HelloWorldController.cs* 檔案如下所示：
 
 [!code-csharp[Main](adding-a-view/samples/sample6.cs)]
 
 現在`ViewBag`物件包含會自動傳遞到檢視的資料。
 
-接下來，您需要褖畫惎檢視範本 ！ 在**偵錯**功能表上，選取**建置 MvcMovie**確定編譯專案。
+接下來，您需要  褖畫惎檢視範本 ！ 在**偵錯**功能表上，選取**建置 MvcMovie**確定編譯專案。
 
 [![BuildHelloWorld](adding-a-view/_static/image12.png)](adding-a-view/_static/image11.png)
 
@@ -141,6 +141,6 @@ ms.lasthandoff: 11/10/2017
 
 這是一種代表模型的 "M"，但不是資料庫類型。 讓我們運用所學的內容，建立電影的資料庫。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-controller.md)
-[下一頁](adding-a-model.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-controller.md)
+> [下一頁](adding-a-model.md)

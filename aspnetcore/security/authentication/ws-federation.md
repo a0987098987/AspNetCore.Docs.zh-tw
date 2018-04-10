@@ -1,7 +1,7 @@
 ---
-title: "透過 WS-同盟中 ASP.NET Core 驗證使用者"
+title: 透過 WS-同盟中 ASP.NET Core 驗證使用者
 author: chlowell
-description: "本教學課程會示範如何在 ASP.NET Core 應用程式中使用 WS-同盟。"
+description: 本教學課程會示範如何在 ASP.NET Core 應用程式中使用 WS-同盟。
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/ws-federation
-ms.openlocfilehash: 0532f866e9c58b2e45623f522f62438e15017e54
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d4621c7b97678903b9f2562e353da3883334b599
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>透過 WS-同盟中 ASP.NET Core 驗證使用者
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/02/2018
 
 * 開啟伺服器**新增信賴憑證者信任精靈**從 ADFS 管理主控台：
 
-![新增信賴憑證者信任精靈：歡迎](ws-federation/_static/AdfsAddTrust.png)
+![新增信賴憑證者信任精靈：  褖畫惎](ws-federation/_static/AdfsAddTrust.png)
 
 * 選擇以手動方式輸入資料：
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 03/02/2018
      // ...
     ```
 
-[!INCLUDE[default settings configuration](social/includes/default-settings.md)]
+[!INCLUDE [default settings configuration](social/includes/default-settings.md)]
 
 ### <a name="log-in-with-ws-federation"></a>登入 WS-同盟
 

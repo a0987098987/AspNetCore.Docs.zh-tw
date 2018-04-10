@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的 Facebook、Google 及外部提供者驗證"
+title: ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 author: rick-anderson
-description: "本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。"
+description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/social/index
-ms.openlocfilehash: 76433f814d6850a449434c29eb0bd27570ce193a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 93fa42be9c551f5bbdf3851aec1d9e01139fdb76
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/02/2018
 
 本教學課程會示範如何建立 ASP.NET Core 2.x 應用程式，讓使用者使用 OAuth 2.0 與來自外部驗證提供者的認證進行登入。
 
-下列各節涵蓋 [Facebook](facebook-logins.md)、[Twitter](twitter-logins.md)、[Google](google-logins.md) 和 [Microsoft](microsoft-logins.md) 的提供者。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
+下列各節涵蓋 [Facebook](xref:security/authentication/facebook-logins)、[Twitter](xref:security/authentication/twitter-logins)、[Google](xref:security/authentication/google-logins) 和 [Microsoft](xref:security/authentication/microsoft-logins) 的提供者。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
 
 ![Facebook、Twitter、Google+ 和 Windows 的社交媒體圖示](index/_static/social.png)
 
@@ -72,11 +72,11 @@ OAuth 2.0 要求使用 SSL 以透過 HTTPS 通訊協定進行驗證。
 
 若要將應用程式設定為使用相應的提供者，請使用下列主題：
 
-* [Facebook](facebook-logins.md) 指示
-* [Twitter](twitter-logins.md) 指示
-* [Google](google-logins.md) 指示
-* [Microsoft](microsoft-logins.md) 指示
-* [其他提供者](other-logins.md)指示
+* [Facebook](xref:security/authentication/facebook-logins) 指示
+* [Twitter](xref:security/authentication/twitter-logins) 指示
+* [Google](xref:security/authentication/google-logins) 指示
+* [Microsoft](xref:security/authentication/microsoft-logins) 指示
+* [其他提供者](xref:security/authentication/otherlogins)指示
 
 ## <a name="optionally-set-password"></a>選擇性地設定密碼
 

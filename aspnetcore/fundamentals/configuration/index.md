@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的設定"
+title: ASP.NET Core 的設定
 author: rick-anderson
-description: "透過多種方法來使用組態 API 設定 ASP.NET Core 應用程式。"
+description: 透過多種方法來使用組態 API 設定 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 7c41621db835b452c9aad9463a9ffccdf0c06484
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: f272f9629ab1f9e7f7643cafd0d45f19340d5284
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configure-an-aspnet-core-app"></a>設定 ASP.NET Core 應用程式
+# <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Mark Michaelis](http://intellitect.com/author/mark-michaelis/)、[Steve Smith](https://ardalis.com/)、[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/15/2018
 
 [!code-json[](index/sample/ConfigJson/appsettings.json)]
 
-組態是由成對的名稱和數值階層式清單所組成，其中節點是以冒號分隔。 若要擷取值，請使用對應項目的索引鍵來存取 `Configuration` 索引子：
+組態是由成對的名稱和數值階層式清單所組成，其中節點是以冒號分隔 (`:`)。 若要擷取值，請使用對應項目的索引鍵來存取 `Configuration` 索引子：
 
 [!code-csharp[](index/sample/ConfigJson/Program.cs?range=21-22)]
 
@@ -105,15 +105,15 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 
-
 環境通常會設定為 `Development`、`Staging` 或 `Production`。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
 
 組態考量：
 
-* `IOptionsSnapshot` 可在組態資料變更時重新載入資料。 如需詳細資訊，請參閱 [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot)。
+* [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) 可在組態資料變更時重新載入資料。
 * 組態金鑰**不**區分大小寫。
-* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。 深入了解如何[使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
-* 如果無法在系統上的環境變數中使用冒號 (`:`)，請以雙底線 (`__`) 取代冒號 (`:`)。
+* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。 深入了解[如何使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
+* 若為環境變數中指定的階層式組態值，冒號 (`:`) 可能無法在所有平台上運作。 所有平台皆支援雙底線 (`__`)。
+* 與組態 API 互動時，冒號 (`:`) 可在所有平台上運作。
 
 ## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>記憶體內部提供者和 POCO 類別的繫結
 
@@ -234,8 +234,7 @@ key3=value_from_json_3
 
 ### <a name="setup-and-use-the-commandline-configuration-provider"></a>設定及使用命令列組態提供者
 
-# <a name="basic-configurationtabbasicconfiguration"></a>[基本組態](#tab/basicconfiguration)
-
+#### <a name="basic-configurationtabbasicconfiguration"></a>[基本組態](#tab/basicconfiguration/)
 若要啟用命令列組態，請在 [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) 的執行個體上呼叫 `AddCommandLine` 擴充方法：
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program.cs?highlight=18,21)]
@@ -264,8 +263,7 @@ Left: 1979
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?range=11-16&highlight=1,5)]
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 一般 ASP.NET Core 2.x 應用程式會使用靜態簡便方法 `CreateDefaultBuilder` 來建置主應用程式：
 
 [!code-csharp[](index/sample_snapshot//Program.cs?highlight=12)]
@@ -282,14 +280,12 @@ Left: 1979
 
 ASP.NET Core 2.x 可以使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 來代替 `CreateDefaultBuilder`。 使用 `WebHostBuilder` 時，請以 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 手動進行設定。 如需詳細資訊，請參閱 ASP.NET Core 1.x 索引標籤。
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 建立 [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) 並呼叫 `AddCommandLine` 方法來使用命令列組態提供者。 最後呼叫提供者可讓在執行階段傳遞的命令列引數，覆寫之前呼叫之其他組態提供者所設定的組態。 使用 `UseConfiguration` 方法將組態套用至 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)：
 
 [!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?highlight=11,15,19)]
 
----
-
+* * *
 ### <a name="arguments"></a>引數
 
 在命令列上傳遞的引數必須符合下表所示的兩種格式之一：
@@ -413,9 +409,52 @@ Left: 1988
 
 當您在 IIS 或 IIS Express 中裝載應用程式時，需要 *web.config* 檔案。 *web.config* 中的設定可讓 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)啟動應用程式，並設定其他 IIS 設定和模組。 如果沒有 *web.config* 檔案，而專案檔包含 `<Project Sdk="Microsoft.NET.Sdk.Web">`，發行專案會在已發行的輸出 (*publish* 資料夾) 中建立 *web.config* 檔案。 如需詳細資訊，請參閱[在使用 IIS 的 Windows 上裝載 ASP.NET Core](xref:host-and-deploy/iis/index#webconfig-file)。
 
-## <a name="accessing-configuration-during-startup"></a>在啟動期間存取組態
+## <a name="access-configuration-during-startup"></a>在啟動期間存取組態
 
 若要在啟動期間存取 `ConfigureServices` 或 `Configure` 內的組態，請參閱[應用程式啟動](xref:fundamentals/startup)主題中的範例。
+
+## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Razor 頁面或 MVC 檢視中的存取設定
+
+若要在 [Razor 頁面] 頁面或 MVC 檢視中存取組態集，請針對 [Microsoft.Extensions.Configuration 命名空間新增[使用指示詞](xref:mvc/views/razor#using) ([C# 參考：使用指示詞](/dotnet/csharp/language-reference/keywords/using-directive)) ](/dotnet/api/microsoft.extensions.configuration)，並將 [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) 插入頁面或檢視中。
+
+在 [Razor 頁面] 頁面中：
+
+```cshtml
+@page
+@model IndexModel
+
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Access configuration in a Razor Pages page</h1>
+    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+</body>
+</html>
+```
+
+在 MVC 檢視中：
+
+```cshtml
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index View</title>
+</head>
+<body>
+    <h1>Access configuration in an MVC view</h1>
+    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+</body>
+</html>
+```
 
 ## <a name="additional-notes"></a>其他備註
 
@@ -430,7 +469,7 @@ Left: 1988
 
 * [選項](xref:fundamentals/configuration/options)
 * [使用多個環境](xref:fundamentals/environments)
-* [在開發期間安全儲存應用程式密碼](xref:security/app-secrets)
+* [在開發期間安全儲存應用程式祕密](xref:security/app-secrets)
 * [在 ASP.NET Core 中裝載](xref:fundamentals/hosting)
 * [相依性插入](xref:fundamentals/dependency-injection)
 * [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
-title: "建立預存程序和使用者定義函數與 Managed 程式碼 (VB) |Microsoft 文件"
+title: 建立預存程序和使用者定義函數與 Managed 程式碼 (VB) |Microsoft 文件
 author: rick-anderson
-description: "Microsoft SQL Server 2005 整合與.NET Common Language Runtime 可讓開發人員建立透過 managed 程式碼的資料庫物件。 本教學課程中..."
+description: Microsoft SQL Server 2005 整合與.NET Common Language Runtime 可讓開發人員建立透過 managed 程式碼的資料庫物件。 本教學課程中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e30df9ddc094d0390d9e5985ec676713b57feaf4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cb676313b04fab9c7cf9c6d08d08d07852ee1fcb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>建立預存程序和使用者定義函數以 Managed 程式碼 (VB)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/24/2018
 
 如 Microsoft 的 SQL Server 2005 的資料庫使用[Transact-Structured 查詢語言 (T-SQL)](http://en.wikipedia.org/wiki/Transact-SQL)插入、 修改和擷取資料。 大多數的資料庫系統包含群組的 SQL 陳述式，然後以單一、 可重複使用單位必須執行一系列的建構。 預存程序是一個範例。 另一個是*使用者定義函數*(Udf)，我們將在步驟 9 中的更詳細地檢查的建構。
 
-基本上，SQL 被針對使用的資料集。 `SELECT`， `UPDATE`，和`DELETE`陳述式原本就是適用於對應資料表中的所有記錄和只受限於其`WHERE`子句。 尚未有許多設計使用一次一筆記錄，並處理純量資料處理的語言功能。 [`CURSOR`s](http://www.sqlteam.com/item.asp?ItemID=553)在 if 透過下列其中一次讓一組記錄。 字串操作函數，例如`LEFT`， `CHARINDEX`，和`PATINDEX`使用純量資料。 SQL 也包含控制流程陳述式，例如`IF`和`WHILE`。
+基本上，SQL 被針對使用的資料集。 `SELECT`， `UPDATE`，和`DELETE`陳述式原本就是適用於對應資料表中的所有記錄和只受限於其`WHERE`子句。 尚未有許多設計使用一次一筆記錄，並處理純量資料處理的語言功能。 [`CURSOR` s](http://www.sqlteam.com/item.asp?ItemID=553)在 if 透過下列其中一次讓一組記錄。 字串操作函數，例如`LEFT`， `CHARINDEX`，和`PATINDEX`使用純量資料。 SQL 也包含控制流程陳述式，例如`IF`和`WHILE`。
 
 Microsoft SQL Server 2005 之前, 預存程序和 Udf 只可定義為 T-SQL 陳述式的集合。 SQL Server 2005，不過，設計來提供與整合[Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx)，也就是所有的.NET 組件所使用的執行階段。 因此，預存程序和 Udf 的 SQL Server 2005 資料庫中可以建立使用 managed 程式碼。 也就是說，您可以建立預存程序或 UDF 為 Visual Basic 類別中的方法。 這可讓這些預存程序和 Udf 利用.NET Framework 中，以及您自己自訂的類別的功能。
 
@@ -424,8 +424,8 @@ Udf 也可以傳回表格式資料。 例如，我們可以建立 UDF，以傳�
 
 一旦部署專案之後，返回 SQL Server Management Studio，並重新整理的純量值函式的資料夾。 您現在應該會看到兩個項目：
 
-- `dbo.udf_ComputeInventoryValue`-在步驟 9 中，建立 T-SQL UDF 和
-- `dbo.udf ComputeInventoryValue_Managed`-已剛剛所部署的步驟 10 中建立受管理的 UDF。
+- `dbo.udf_ComputeInventoryValue` -在步驟 9 中，建立 T-SQL UDF 和
+- `dbo.udf ComputeInventoryValue_Managed` -已剛剛所部署的步驟 10 中建立受管理的 UDF。
 
 若要測試此受管理的 UDF，執行下列查詢從 Management Studio 中：
 
@@ -569,11 +569,11 @@ Microsoft SQL Server 2005 提供整合與 Common Language Runtime (CLR)，可讓
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 S ren 因此 Lauritsen。 除了檢閱這個發行項，S ren 也建立了此手動編譯 managed 的資料庫物件的發行項的下載中包含 Visual C# Express 版專案。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一步](debugging-stored-procedures-vb.md)
+> [!div class="step-by-step"]
+> [上一步](debugging-stored-procedures-vb.md)

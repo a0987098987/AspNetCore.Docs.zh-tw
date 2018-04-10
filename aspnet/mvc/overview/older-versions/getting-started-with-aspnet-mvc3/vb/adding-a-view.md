@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
-title: "加入的檢視 (VB) |Microsoft 文件"
+title: 加入的檢視 (VB) |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念..."
+description: 本教學課程將告訴您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 7e8564c743510780b93d56bc1215f4c5b1faeb43
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9675eb7776116ecbe910d5515abfe9b4391df22
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view-vb"></a>加入的檢視 (VB)
 ====================
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/10/2017
 
 首先，我們變更文字&quot;我的 MVC 應用程式。&quot;該文字共用，並顯示每一頁上。 它實際上不會顯示僅在一個地方我們的受測專案，即使它是我們的應用程式中的每一頁上。 移至*/檢視表/共用*資料夾中的**方案總管 中**並開啟 *\_Layout.vbhtml*檔案。 這個檔案稱為版面配置頁面，它是共用&quot;殼層&quot;所有其他頁面使用。
 
-請注意`@RenderBody()`檔案底部附近的程式碼行。 `RenderBody`這是的預留位置，其中您所建立的所有頁面會都出現&quot;包裝&quot;版面配置頁面中。 變更`<h1>`標題從 **&quot;** 我的 MVC 應用程式&quot;至&quot;MVC 電影應用程式&quot;。
+請注意`@RenderBody()`檔案底部附近的程式碼行。 `RenderBody` 這是的預留位置，其中您所建立的所有頁面會都出現&quot;包裝&quot;版面配置頁面中。 變更`<h1>`標題從**&quot;**我的 MVC 應用程式&quot;至&quot;MVC 電影應用程式&quot;。
 
 [!code-html[Main](adding-a-view/samples/sample3.html)]
 
@@ -111,11 +111,11 @@ ms.lasthandoff: 11/10/2017
 
 [![3AddWelcomeView](adding-a-view/_static/image12.png "3AddWelcomeView")](adding-a-view/_static/image11.png)
 
-下列程式碼下新增`<h2>`中新項目*褖畫惎。*vbhtml 檔案。 我們將進行迴圈，並假設&quot;Hello&quot;依需求多次使用者可指定我們應該 ！
+下列程式碼下新增`<h2>`中新項目<em> 褖畫惎。</em>vbhtml 檔案。 我們將進行迴圈，並假設&quot;Hello&quot;依需求多次使用者可指定我們應該 ！
 
 [!code-vbhtml[Main](adding-a-view/samples/sample8.vbhtml)]
 
-執行應用程式，並瀏覽至`http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
+執行應用程式，並瀏覽至 `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
 
 現在從 URL 取得及資料自動傳送到控制器。 控制器的封裝將資料`Model`物件，以及檢視該物件傳遞。 檢視比對使用者顯示為 HTML 的資料。
 
@@ -123,6 +123,6 @@ ms.lasthandoff: 11/10/2017
 
 就是一種的&quot;M&quot;的模型，但資料庫類型。 讓我們運用所學的內容，建立電影的資料庫。
 
->[!div class="step-by-step"]
-[上一頁](adding-a-controller.md)
-[下一頁](adding-a-model.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-a-controller.md)
+> [下一頁](adding-a-model.md)

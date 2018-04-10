@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
-title: "有效率地進行大量的資料 (C#) 的分頁 |Microsoft 文件"
+title: 有效率地進行大量的資料 (C#) 的分頁 |Microsoft 文件
 author: rick-anderson
-description: "使用大量的資料，做為其基礎資料來源控制項 retriev 時，不適合資料簡報控制項之預設分頁選項..."
+description: 使用大量的資料，做為其基礎資料來源控制項 retriev 時，不適合資料簡報控制項之預設分頁選項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ac16cc79f2ed6b62bf676553a374180cd0165632
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ea1fd06f8eb7c53c3e9e7fb10c46974eb2af2acd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-c"></a>有效率地進行大量的資料 (C#) 的分頁
 ====================
@@ -122,9 +122,9 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 - **使用 SQL Server 2005 s`ROW_NUMBER()`關鍵字**新增至 SQL Server 2005、`ROW_NUMBER()`關鍵字關聯每個傳回的記錄，取決於一些排序次序。 這個等級可以作為每個資料列的資料列索引。
 - **使用資料表變數和`SET ROWCOUNT`**  SQL Server s [ `SET ROWCOUNT`陳述式](https://msdn.microsoft.com/library/ms188774.aspx)可以用來指定查詢應該處理終止; 之前的總記錄數[資料表變數](http://www.sqlteam.com/item.asp?ItemID=9454)是本機 T-SQL 變數可以儲存表格式資料、 akin[暫存資料表](http://www.sqlteam.com/item.asp?ItemID=2029)。 這種方法同樣適用於 Microsoft SQL Server 2005 和 SQL Server 2000 (而`ROW_NUMBER()`方法只適用於 SQL Server 2005)。  
   
- 這裡的做法是建立資料表變數，其中包含`IDENTITY`資料行和資料行的主索引鍵的資料表正在透過呼叫其資料。 正在透過呼叫其資料的資料表的內容放入資料表變數中，藉此建立關聯的循序資料列索引接下來，傾印 (透過`IDENTITY`資料行) 資料表中的每一筆記錄。 尚未擴展資料表變數，一旦`SELECT`陳述式在資料表變數中，可以執行與基礎資料表聯結，提取出特定的記錄。 `SET ROWCOUNT`陳述式用來以聰明的方式限制需要可傾印以放入資料表變數中的記錄數目。  
+  這裡的做法是建立資料表變數，其中包含`IDENTITY`資料行和資料行的主索引鍵的資料表正在透過呼叫其資料。 正在透過呼叫其資料的資料表的內容放入資料表變數中，藉此建立關聯的循序資料列索引接下來，傾印 (透過`IDENTITY`資料行) 資料表中的每一筆記錄。 尚未擴展資料表變數，一旦`SELECT`陳述式在資料表變數中，可以執行與基礎資料表聯結，提取出特定的記錄。 `SET ROWCOUNT`陳述式用來以聰明的方式限制需要可傾印以放入資料表變數中的記錄數目。  
   
- 這種方法的效率根據所要求的頁面數目為`SET ROWCOUNT`開始的資料列索引，再加上最大資料列的值指派給值。 當透過低編號的頁面，例如第一個分頁的資料幾個頁面則這個方法是非常有效率。 不過，它會表現預設分頁類似效能擷取頁面即將結束時。
+  這種方法的效率根據所要求的頁面數目為`SET ROWCOUNT`開始的資料列索引，再加上最大資料列的值指派給值。 當透過低編號的頁面，例如第一個分頁的資料幾個頁面則這個方法是非常有效率。 不過，它會表現預設分頁類似效能擷取頁面即將結束時。
 
 本教學課程中實作自訂分頁使用`ROW_NUMBER()`關鍵字。 如需有關使用資料表變數和`SET ROWCOUNT`技術，請參閱[詳細有效率的方法之分頁透過大型結果集](http://www.4guysfromrolla.com/webtech/042606-1.shtml)。
 
@@ -133,7 +133,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample3.sql)]
 
-`ROW_NUMBER()`傳回數值，指定每一筆記錄與指定的排序次序。 例如，若要查看每項產品，從最排序次序成本最低，我們可以使用下列查詢：
+`ROW_NUMBER()` 傳回數值，指定每一筆記錄與指定的排序次序。 例如，若要查看每項產品，從最排序次序成本最低，我們可以使用下列查詢：
 
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample4.sql)]
@@ -147,7 +147,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 
 
 > [!NOTE]
-> `ROW_NUMBER()`其中許多新的排名函數是用於 SQL Server 2005。 如需的更完整討論`ROW_NUMBER()`，以及其他排名函數讀取[傳回等級結果與 Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml)。
+> `ROW_NUMBER()` 其中許多新的排名函數是用於 SQL Server 2005。 如需的更完整討論`ROW_NUMBER()`，以及其他排名函數讀取[傳回等級結果與 Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml)。
 
 
 當藉由指定排名結果`ORDER BY`中的資料行`OVER`子句 (`UnitPrice`，在上述範例中)，SQL Server 必須排序結果。 這是快速的作業，如果沒有叢集的索引上的結果，所排序的資料行，或者沒有涵蓋索引，但是可以否則成本更高。 若要協助提升夠大的查詢的效能，請考慮加入非叢集索引的結果依排序的資料行。 請參閱[排名函式和 SQL Server 2005 中的效能](http://www.sql-server-performance.com/ak_ranking_functions.asp)如查看更詳細的效能考量。
@@ -163,7 +163,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 [!code-html[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample6.html)]
 
 > [!NOTE]
-> 我們將會在本教學課程稍後看到 *`StartRowIndex`* 所提供的 ObjectDataSource 編製索引零處開始而`ROW_NUMBER()`SQL Server 2005 所傳回的值從 1 開始索引。 因此，`WHERE`子句傳回的記錄位置`PriceRank`必定大於 *`StartRowIndex`* 且小於或等於 *`StartRowIndex`*   + *`MaximumRows`*.
+> 我們將會在本教學課程稍後看到*`StartRowIndex`*所提供的 ObjectDataSource 編製索引零處開始而`ROW_NUMBER()`SQL Server 2005 所傳回的值從 1 開始索引。 因此，`WHERE`子句傳回的記錄位置`PriceRank`必定大於*`StartRowIndex`*且小於或等於*`StartRowIndex`*  + *`MaximumRows`*.
 
 
 現在我們已討論過如何`ROW_NUMBER()`可以是用來擷取特定的頁面上的啟動的資料列索引和資料列的上限值的資料，我們現在必須實作此邏輯為 DAL 和 BLL 中的方法。
@@ -188,7 +188,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 
 ![輸入一個值@startRowIndex和@maximumRows參數](efficiently-paging-through-large-amounts-of-data-cs/_static/image7.png)
 
-**圖 7**： 輸入的值@startRowIndex和@maximumRows參數
+<strong>圖 7</strong>： 輸入的值@startRowIndex和@maximumRows參數
 
 
 在之後選擇這些輸入參數值時，[輸出] 視窗會顯示結果。 圖 8 顯示兩個 10 中傳遞時的結果`@startRowIndex`和`@maximumRows`參數。
@@ -276,9 +276,9 @@ BLL 和 DAL 方法存取完整的記錄的特定子集，我們已備妥可建�
 若要補救這種情況，我們需要設定要使用自訂分頁 ObjectDataSource。 這可以透過完成下列步驟：
 
 1. **設定 ObjectDataSource s`EnablePaging`屬性`true`**這表示它必須將它傳遞給 ObjectDataSource`SelectMethod`另外兩個參數： 一個用來指定開始的資料列索引 ([ `StartRowIndexParameterName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.startrowindexparametername.aspx))，和一個用來指定最大資料列 ([`MaximumRowsParameterName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.maximumrowsparametername.aspx))。
-2. **設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`據以屬性**`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性會指出傳入輸入參數的名稱`SelectMethod`進行自訂分頁. 根據預設，這些參數名稱為`startIndexRow`和`maximumRows`，這是原因、 建立時`GetProductsPaged`方法在 BLL 我用於這些值的輸入參數。 如果您選擇要使用不同的參數名稱 BLL s`GetProductsPaged`方法，例如`startIndex`和`maxRows`的範例，您就必須設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性據以 （例如 startIndex 為`StartRowIndexParameterName`和為 maxRows `MaximumRowsParameterName`)。
+2. **設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`據以屬性**`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性會指出傳入輸入參數的名稱`SelectMethod`進行自訂分頁。 根據預設，這些參數名稱為`startIndexRow`和`maximumRows`，這是原因、 建立時`GetProductsPaged`方法在 BLL 我用於這些值的輸入參數。 如果您選擇要使用不同的參數名稱 BLL s`GetProductsPaged`方法，例如`startIndex`和`maxRows`的範例，您就必須設定 ObjectDataSource s`StartRowIndexParameterName`和`MaximumRowsParameterName`屬性據以 （例如 startIndex 為`StartRowIndexParameterName`和為 maxRows `MaximumRowsParameterName`)。
 3. **設定 ObjectDataSource s [ `SelectCountMethod`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selectcountmethod(VS.80).aspx)的總數目的記錄正在分頁透過傳回的方法名稱 (`TotalNumberOfProducts`)**請記得，`ProductsBLL`類別的`TotalNumberOfProducts`方法會傳回透過使用 DAL 方法執行正在呼叫的記錄總數`SELECT COUNT(*) FROM Products`查詢。 Objectdatasource 需要這項資訊才能正確地呈現分頁介面。
-4. **移除`startRowIndex`和`maximumRows``<asp:Parameter>`從 ObjectDataSource s 宣告式標記項目**設定時透過精靈 ObjectDataSource，Visual Studio 會自動加入兩個`<asp:Parameter>`項目`GetProductsPaged`方法 s 輸入參數。 藉由設定`EnablePaging`至`true`，這些參數會自動傳遞給; ObjectDataSource 如果他們也會出現在宣告式語法，將會嘗試傳遞*四個*參數`GetProductsPaged`方法與兩個參數來`TotalNumberOfProducts`方法。 如果您忘記要移除這些`<asp:Parameter>`項目，瀏覽頁面透過瀏覽器，您會取得如下的錯誤訊息： *ObjectDataSource 'ObjectDataSource1' 找不到非泛型方法 'TotalNumberOfProducts' 具有參數： startRowIndex、 maximumRows*。
+4. **移除`startRowIndex`和`maximumRows``<asp:Parameter>`從 ObjectDataSource s 宣告式標記項目**設定時透過精靈 ObjectDataSource，Visual Studio 會自動加入兩個`<asp:Parameter>`項目如`GetProductsPaged`方法 s 輸入參數。 藉由設定`EnablePaging`至`true`，這些參數會自動傳遞給; ObjectDataSource 如果他們也會出現在宣告式語法，將會嘗試傳遞*四個*參數`GetProductsPaged`方法與兩個參數來`TotalNumberOfProducts`方法。 如果您忘記要移除這些`<asp:Parameter>`項目，瀏覽頁面透過瀏覽器，您會取得如下的錯誤訊息： *ObjectDataSource 'ObjectDataSource1' 找不到非泛型方法 'TotalNumberOfProducts' 具有參數： startRowIndex、 maximumRows*。
 
 進行這些變更之後，ObjectDataSource s 宣告式語法看起來應該如下所示：
 
@@ -326,7 +326,7 @@ BLL 和 DAL 方法存取完整的記錄的特定子集，我們已備妥可建�
 一旦刪除最後一個產品 GridView*應該*自動移至第八個頁面，以及這類功能使用預設分頁顯示。 使用自訂分頁時，不過，在刪除最後一個產品的最後一頁之後, GridView 只從畫面消失完全。 精確原因*為什麼*發生這種情況都是位元超出本教學課程的範圍，請參閱 <<c4> [ 刪除自訂分頁的 GridView 的最後一筆記錄的最後一頁](http://scottonwriting.net/sowblog/posts/7326.aspx)和來源的低層級的詳細資料這個問題。 在摘要它 s，因為下列一連串步驟，按一下 [刪除] 按鈕時執行的 GridView:
 
 1. 刪除記錄
-2. 取得適當的記錄，以顯示所指定`PageIndex`和`PageSize`
+2. 取得適當的記錄，以顯示所指定`PageIndex`和 `PageSize`
 3. 檢查以確定`PageIndex`不超過資料來源; 中的資料頁面的數目，如果它存在，會自動遞減 GridView 的`PageIndex`屬性
 4. 將適當的頁面資料的繫結至 GridView 使用在步驟 2 中取得的記錄
 
@@ -377,8 +377,8 @@ BLL 和 DAL 方法存取完整的記錄的特定子集，我們已備妥可建�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
->[!div class="step-by-step"]
-[上一頁](paging-and-sorting-report-data-cs.md)
-[下一頁](sorting-custom-paged-data-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](paging-and-sorting-report-data-cs.md)
+> [下一頁](sorting-custom-paged-data-cs.md)

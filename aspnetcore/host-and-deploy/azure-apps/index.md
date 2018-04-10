@@ -1,7 +1,7 @@
 ---
-title: "將 ASP.NET Core 裝載到 Azure App Service"
+title: 將 ASP.NET Core 裝載到 Azure App Service
 author: guardrex
-description: "探索如何在 Azure App Service 中裝載 ASP.NET Core 應用程式，及實用資源的連結。"
+description: 探索如何在 Azure App Service 中裝載 ASP.NET Core 應用程式，及實用資源的連結。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: cefbc27c8091a2ed1441663e3779d67aae2c64dd
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c2675f73880a41ee75f6ec13155419945387e109
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
 [Azure App Service](https://azure.microsoft.com/services/app-service/) 是 [Microsoft 雲端運算平台服務](https://azure.microsoft.com/)，用於裝載 Web 應用程式，包括 ASP.NET Core。
-
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 ## <a name="useful-resources"></a>實用資源
 
@@ -57,6 +55,10 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) 執行 [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics)，以在 `Microsoft.Extensions.Logging.AzureAppServices` 套件中新增 Azure App Service 診斷記錄提供者。
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) 提供記錄器實作以支援 Azure App Service 診斷記錄和記錄串流功能。
 
+## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
+
+用來設定轉送標頭中介軟體及 ASP.NET Core 模組的 IIS Integration 中介軟體會設定為轉送配置 (HTTP/HTTPS) 及發出要求的遠端 IP 位址。 其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
+
 ## <a name="monitoring-and-logging"></a>監視與記錄
 
 如需監視、記錄及疑難排解的資訊，請參閱下列文章：
@@ -89,6 +91,62 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 如需詳細資訊，請參閱[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
+## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>將 ASP.NET Core 預覽版本部署至 Azure App Service
+
+您可以使用下列方法，將 ASP.NET Core 預覽應用程式部署到 Azure App Service：
+
+* [安裝預覽站台擴充功能](#site-x)
+* [部署獨立式應用程式](#self)
+* [將包含 Web 應用程式的 Docker 用於容器](#docker)
+
+如果您在使用預覽網站擴充功能上有任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上開啟問題。
+
+<a name="site-x"></a>
+### <a name="install-the-preview-site-extention"></a>安裝預覽站台擴充功能
+
+* 從 Azure 入口網站中，巡覽至 [App Service] 刀鋒視窗。
+* 在搜尋方塊中輸入 "ex"。
+* 選取 [擴充功能]。
+* 選取 [新增]。
+
+![使用先前步驟的 [Azure App] 刀鋒視窗](index/_static/x1.png)
+
+* 選取 [ASP.NET Core 執行階段擴充功能]。
+* 選取 [確定] > [確定]。
+
+新增作業完成時，系統會安裝最新版的 .NET Core 2.1 預覽。 您可以在主控台中執行 `dotnet --info` 以確認安裝。 從 [App Service] 刀鋒視窗中：
+
+* 在搜尋方塊中輸入 "con"。
+* 選取 [主控台]。
+* 在主控台中輸入 `dotnet --info`。
+
+![使用先前步驟的 [Azure App] 刀鋒視窗](index/_static/cons.png)
+
+在撰寫本文時，以上映像是目前的映像。 您可能會看到不同的版本。
+
+`dotnet --info` 會顯示已安裝 [預覽] 之網站擴充功能的路徑。 它會顯示應用程式是從網站擴充功能執行，而不是從預設的 ProgramFiles 位置執行。 如果您看到 ProgramFiles，請重新啟動網站，然後執行 `dotnet --info`。
+
+#### <a name="use-the-preview-site-extention-with-an-arm-template"></a>使用預覽網站擴充功能搭配 ARM 範本
+
+如果您是使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站擴充功能新增至 Web 應用程式。 例如: 
+
+[!code-json[Main](index/sample/arm.json?highlight=2)]
+
+<a name="self"></a>
+### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
+
+您可以部署[獨立式應用程式](/dotnet/core/deploying/#self-contained-deployments-scd)，其在部署時會帶有預覽執行階段。 部署獨立式應用程式時：
+
+* 您不需要準備網站。
+* 一旦您在伺服器上安裝 SDK 之後，需要使用與部署應用程式時不同的方式來發佈應用程式。
+
+所有 .NET Core 應用程式皆可選配獨立式應用程式。
+
+<a name="docker"></a>
+### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
+
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的 2.1 預覽 Docker 映像。 您可以使用它們作為基礎映像，並像平常一樣部署至用於容器的 Web App。
+
 ## <a name="additional-resources"></a>其他資源
 
 * [Web Apps 概觀 (5 分鐘的概觀影片)](/azure/app-service/app-service-web-overview)
@@ -101,5 +159,5 @@ Windows Server 上的 Azure App Service 使用 [Internet Information Services (I
 * [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
 * [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
 * [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
-* [使用 IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)
+* [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)
 * [Microsoft TechNet Library：Windows Server](/windows-server/windows-server-versions)

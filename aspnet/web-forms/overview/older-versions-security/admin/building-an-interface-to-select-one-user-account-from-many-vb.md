@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb
-title: "建立以選取一個使用者帳戶從許多 (VB) 介面 |Microsoft 文件"
+title: 建立以選取一個使用者帳戶從許多 (VB) 介面 |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將建置使用者介面與分頁、 可篩選方格。 特別是，我們的使用者介面將會包含一系列的 LinkButtons..."
+description: 在本教學課程中，我們將建置使用者介面與分頁、 可篩選方格。 特別是，我們的使用者介面將會包含一系列的 LinkButtons...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f0339578291c536a474f1c7314b28668a6519c8c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 56f4d72993bfcb9629d6b4cd08efe0da6dea2486
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>建立以選取一個使用者帳戶從許多 (VB) 介面
 ====================
@@ -148,7 +148,7 @@ ASP.NET 中的分頁`Administration`資料夾僅供系統管理使用者。 我�
 
 若要顯示僅擁有其使用者名稱開頭為字母 A 的使用者，請設定`UsernameToMatch`到 A 的屬性，然後呼叫`BindUserAccounts`這會導致呼叫`Membership.FindUsersByName("A%")`，這會傳回所有使用者的使用者名稱開頭為 a。 同樣地，若要都傳回*所有*使用者指派至空字串`UsernameToMatch`屬性以便`BindUserAccounts`方法會叫用`Membership.FindUsersByName("%")`，藉此傳回所有使用者帳戶。
 
-建立事件處理常式的中繼器`ItemCommand`事件。 按一下其中一個篩選器 LinkButtons; 時，會引發這個事件它會傳遞按下後的 LinkButton`CommandName`值透過`RepeaterCommandEventArgs`物件。 我們需要指派的適當值`UsernameToMatch`屬性然後再呼叫`BindUserAccounts`方法。 如果`CommandName`為 All，將空字串，以指派`UsernameToMatch`以便顯示所有使用者帳戶。 否則，請指派`CommandName`值設定為`UsernameToMatch`
+建立事件處理常式的中繼器`ItemCommand`事件。 按一下其中一個篩選器 LinkButtons; 時，會引發這個事件它會傳遞按下後的 LinkButton`CommandName`值透過`RepeaterCommandEventArgs`物件。 我們需要指派的適當值`UsernameToMatch`屬性然後再呼叫`BindUserAccounts`方法。 如果`CommandName`為 All，將空字串，以指派`UsernameToMatch`以便顯示所有使用者帳戶。 否則，請指派`CommandName`值設定為 `UsernameToMatch`
 
 [!code-vb[Main](building-an-interface-to-select-one-user-account-from-many-vb/samples/sample10.vb)]
 
@@ -256,12 +256,12 @@ GridView 控制項提供兩種類型的分頁：
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Alicja Maziarz。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行
 
->[!div class="step-by-step"]
-[上一頁](unlocking-and-approving-user-accounts-cs.md)
-[下一頁](recovering-and-changing-passwords-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](unlocking-and-approving-user-accounts-cs.md)
+> [下一頁](recovering-and-changing-passwords-vb.md)

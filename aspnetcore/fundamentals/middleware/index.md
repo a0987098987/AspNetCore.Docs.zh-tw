@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中介軟體"
+title: ASP.NET Core 中介軟體
 author: rick-anderson
-description: "了解 ASP.NET Core 中介軟體和要求管線。"
+description: 了解 ASP.NET Core 中介軟體和要求管線。
 manager: wpickett
 ms.author: riande
 ms.date: 01/22/2018
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 186faa4c02275ae1f4be53f4a2dd4f8325397bd2
-ms.sourcegitcommit: c5ecda3c5b1674b62294cfddcb104e7f0b9ce465
+ms.openlocfilehash: 3312b27f936340a73243224c1a716fe421f178bc
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/05/2018
 
 要求委派的設定方式為使用 [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions)、[Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) 和 [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions) 擴充方法。 您可將個別要求委派指定為內嵌匿名方法 (在內嵌中介軟體中呼叫)，或於可重複使用的類別中加以定義。 這些可重複使用的類別及內嵌匿名方法皆為「中介軟體」，或「中介軟體元件」。 要求管線中的每個中介軟體元件負責叫用管線中的下一個元件，或於適當時，對鏈結執行最少運算。
 
-[將 HTTP 模組移轉至中介軟體](xref:migration/http-modules)說明 ASP.NET Core 和 ASP.NET 4.x 中的要求管線差異，並提供更多中介軟體範例。
+[將 HTTP 模組遷移至中介軟體](xref:migration/http-modules)說明 ASP.NET Core 和 ASP.NET 4.x 之間的要求管線差異，並提供更多中介軟體範例。
 
 ## <a name="creating-a-middleware-pipeline-with-iapplicationbuilder"></a>使用 IApplicationBuilder 建立中介軟體管線
 
@@ -261,8 +261,8 @@ public class MyMiddleware
 
 ## <a name="additional-resources"></a>其他資源
 
-* [將 HTTP 模組移轉至中介軟體](xref:migration/http-modules)
+* [將 HTTP 模組遷移至中介軟體](xref:migration/http-modules)
 * [應用程式啟動](xref:fundamentals/startup)
-* [要求的功能](xref:fundamentals/request-features)
+* [要求功能](xref:fundamentals/request-features)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)
 * [以協力廠商容器啟用中介軟體](xref:fundamentals/middleware/extensibility-third-party-container)

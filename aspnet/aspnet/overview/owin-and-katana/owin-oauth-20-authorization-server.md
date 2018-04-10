@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
-title: "OWIN OAuth 2.0 授權伺服器 |Microsoft 文件"
+title: OWIN OAuth 2.0 授權伺服器 |Microsoft 文件
 author: hongyes
-description: "本教學課程將引導您如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體。 這是進階的教學課程的唯一 outlin..."
+description: 本教學課程將引導您如何實作 OAuth 2.0 授權伺服器使用 OWIN OAuth 中介軟體。 這是進階的教學課程的唯一 outlin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/20/2014
 ms.topic: article
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
 ms.openlocfilehash: e5968f8d19191c3f44e9bd58f8e22a39d8d8faff
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="owin-oauth-20-authorization-server"></a>OWIN OAuth 2.0 授權伺服器
 ====================
@@ -104,7 +104,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 [!code-csharp[Main](owin-oauth-20-authorization-server/samples/sample4.cs?highlight=1)]
 
-`ValidateClientRedirectUri`用來驗證用戶端，其已註冊的重新導向 url。 `ValidateClientAuthentication`檢查基本配置標頭並取得用戶端認證的表單內容。
+`ValidateClientRedirectUri` 用來驗證用戶端，其已註冊的重新導向 url。 `ValidateClientAuthentication` 檢查基本配置標頭並取得用戶端認證的表單內容。
 
 登入頁面如下所示：
 
@@ -241,10 +241,10 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 [!code-csharp[Main](owin-oauth-20-authorization-server/samples/sample13.cs)]
 
-- `UseCors`方法允許所有網域的 CORS。
-- `UseOAuthBearerAuthentication`方法可讓 OAuth 承載權杖驗證中介軟體將會接收及驗證來自授權要求標頭的持有人權杖。
-- `Config.SuppressDefaultHostAuthenticaiton`預設會隱藏主機驗證的主體，從應用程式，因此所有要求將會都是匿名的這個呼叫之後。
-- `HostAuthenticationFilter`啟用驗證，只針對指定的驗證類型。 在此情況下，它是承載驗證類型。
+- `UseCors` 方法允許所有網域的 CORS。
+- `UseOAuthBearerAuthentication` 方法可讓 OAuth 承載權杖驗證中介軟體將會接收及驗證來自授權要求標頭的持有人權杖。
+- `Config.SuppressDefaultHostAuthenticaiton` 預設會隱藏主機驗證的主體，從應用程式，因此所有要求將會都是匿名的這個呼叫之後。
+- `HostAuthenticationFilter` 啟用驗證，只針對指定的驗證類型。 在此情況下，它是承載驗證類型。
 
 為了示範驗證的識別，我們建立 ApiController 輸出目前使用者的宣告。
 
@@ -272,7 +272,7 @@ OAuth 不在意您何處或如何管理您的使用者帳戶資訊。 它有[ASP
 
 [!code-csharp[Main](owin-oauth-20-authorization-server/samples/sample16.cs)]
 
-`DotNetOpenAuth`依預設需要 SSL。 因為我們的示範，使用 HTTP，您需要加入下列組態檔中的設定：
+`DotNetOpenAuth` 依預設需要 SSL。 因為我們的示範，使用 HTTP，您需要加入下列組態檔中的設定：
 
 [!code-xml[Main](owin-oauth-20-authorization-server/samples/sample17.xml?highlight=4-6)]
 

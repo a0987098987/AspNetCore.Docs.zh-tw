@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs
-title: "篩選跨兩個頁面 (C#) 的主要/詳細資料 |Microsoft 文件"
+title: 篩選跨兩個頁面 (C#) 的主要/詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程中我們將會列出供應商的資料庫使用 GridView 實作此模式。 在 GridView 中的每個供應商資料列將包含 Vie..."
+description: 本教學課程中我們將會列出供應商的資料庫使用 GridView 實作此模式。 在 GridView 中的每個供應商資料列將包含 Vie...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3411272896dee0da4d5f89aa2bdda0999d660423
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0858bf9c8dc380898647293825145654ac1dbc34
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-across-two-pages-c"></a>主從式篩選跨兩個頁面 (C#)
 ====================
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="step-1-addingsupplierlistmasteraspxandproductsforsupplierdetailsaspxpages-to-thefilteringfolder"></a>步驟 1： 加入`SupplierListMaster.aspx`和`ProductsForSupplierDetails.aspx`頁面`Filtering`資料夾
 
-我們在第三個教學課程中定義的頁面配置時加入 「 起始 」 中的頁面數目`BasicReporting`， `Filtering`，和`CustomFormatting`資料夾。 不過，我們並未新增起始頁面在此教學課程在該時間，因此請花一點時間加入至兩個新的頁面`Filtering`資料夾：`SupplierListMaster.aspx`和`ProductsForSupplierDetails.aspx`。 `SupplierListMaster.aspx`會列出時的 「 主要 」 記錄 （供應商）`ProductsForSupplierDetails.aspx`將顯示所選的供應商的產品。
+我們在第三個教學課程中定義的頁面配置時加入 「 起始 」 中的頁面數目`BasicReporting`， `Filtering`，和`CustomFormatting`資料夾。 不過，我們並未新增起始頁面在此教學課程在該時間，因此請花一點時間加入至兩個新的頁面`Filtering`資料夾：`SupplierListMaster.aspx`和`ProductsForSupplierDetails.aspx`。 `SupplierListMaster.aspx` 會列出時的 「 主要 」 記錄 （供應商）`ProductsForSupplierDetails.aspx`將顯示所選的供應商的產品。
 
 當建立這兩個新的分頁會使它們與特定`Site.master`主版頁面。
 
@@ -87,7 +87,7 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 5**： 設定 HyperLinkField`Text`屬性來檢視產品 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image13.png))
 
 
-若要設定的文字或 URL 是依據基礎資料繫結至 GridView 資料列的值，指定資料欄位文字或 URL 值應提取從`DataTextField`或`DataNavigateUrlFields`屬性。 `DataTextField`只可以設定為單一資料欄位。`DataNavigateUrlFields`，不過，可以設定為以逗號分隔的資料欄位清單。 我們經常需要基底的文字或目前的資料列資料欄位值和某些 static 標記的組合上的 URL。 在本教學課程中，比方說，我們想要 HyperLinkField 連結的 URL `ProductsForSupplierDetails.aspx?SupplierID=supplierID`，其中 *`supplierID`* 是每個 GridView 資料列`SupplierID`值。 請注意，我們需要這兩個靜態資料導向此處值：`ProductsForSupplierDetails.aspx?SupplierID=`連結 URL 的部分是靜態的而 *`supplierID`* 部分是資料導向因為其值是每個資料列的自己`SupplierID`值。
+若要設定的文字或 URL 是依據基礎資料繫結至 GridView 資料列的值，指定資料欄位文字或 URL 值應提取從`DataTextField`或`DataNavigateUrlFields`屬性。 `DataTextField` 只可以設定為單一資料欄位。`DataNavigateUrlFields`，不過，可以設定為以逗號分隔的資料欄位清單。 我們經常需要基底的文字或目前的資料列資料欄位值和某些 static 標記的組合上的 URL。 在本教學課程中，比方說，我們想要 HyperLinkField 連結的 URL `ProductsForSupplierDetails.aspx?SupplierID=supplierID`，其中*`supplierID`*是每個 GridView 資料列`SupplierID`值。 請注意，我們需要這兩個靜態資料導向此處值：`ProductsForSupplierDetails.aspx?SupplierID=`連結 URL 的部分是靜態的而*`supplierID`*部分是資料導向因為其值是每個資料列的自己`SupplierID`值。
 
 若要表示的靜態和資料驅動的值組合，使用`DataTextFormatString`和`DataNavigateUrlFormatString`屬性。 這些內容中輸入所需的 static 標記，然後使用 標記`{0}`想中指定之欄位的值`DataTextField`或`DataNavigateUrlFields`出現的屬性。 如果`DataNavigateUrlFields`屬性有多個欄位指定的使用`{0}`其中您要插入的第一個欄位值`{1}`的第二個欄位的值，依此類推。
 
@@ -132,12 +132,12 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 10**： 有 ObjectDataSource 叫用`GetProductsBySupplierID(supplierID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image28.png))
 
 
-設定資料來源精靈的最後一個步驟會要求我們提供的來源`GetProductsBySupplierID(supplierID)`方法的 *`supplierID`* 參數。 若要使用的查詢字串值，設 QueryString 參數來源，然後輸入要用於 QueryStringField 文字方塊 querystring 值的名稱 (`SupplierID`)。
+設定資料來源精靈的最後一個步驟會要求我們提供的來源`GetProductsBySupplierID(supplierID)`方法的*`supplierID`*參數。 若要使用的查詢字串值，設 QueryString 參數來源，然後輸入要用於 QueryStringField 文字方塊 querystring 值的名稱 (`SupplierID`)。
 
 
 [![填入 supplierID SupplierID Querystring 值的參數值](master-detail-filtering-across-two-pages-cs/_static/image30.png)](master-detail-filtering-across-two-pages-cs/_static/image29.png)
 
-**圖 11**： 填入 *`supplierID`* 參數值從`SupplierID`Querystring 值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image31.png))
+**圖 11**： 填入*`supplierID`*參數值從`SupplierID`Querystring 值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image31.png))
 
 
 這就是這麼簡單 ！ 圖 12 顯示`ProductsForSupplierDetails.aspx`頁面上，當從東京 Traders 連結，即可瀏覽`SupplierListMaster.aspx`。
@@ -165,12 +165,12 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 14**： 有 ObjectDataSource 叫用`GetSupplierBySupplierID(supplierID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image40.png))
 
 
-如同`ProductsBySupplierDataSource`，有 *`supplierID`* 參數的值指派給`SupplierID`querystring 值。
+如同`ProductsBySupplierDataSource`，有*`supplierID`*參數的值指派給`SupplierID`querystring 值。
 
 
 [![填入 supplierID SupplierID Querystring 值的參數值](master-detail-filtering-across-two-pages-cs/_static/image42.png)](master-detail-filtering-across-two-pages-cs/_static/image41.png)
 
-**圖 15**： 填入 *`supplierID`* 參數值從`SupplierID`Querystring 值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image43.png))
+**圖 15**： 填入*`supplierID`*參數值從`SupplierID`Querystring 值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image43.png))
 
 
 當繫結 [設計] 檢視中 ObjectDataSource FormView，Visual Studio 會自動建立在 FormView 的`ItemTemplate`， `InsertItemTemplate`，和`EditItemTemplate`與每個傳回的資料欄位的標籤和文字方塊中的 Web 控制項ObjectDataSource。 因為我們只是想要顯示供應商資訊逕行移除`InsertItemTemplate`和`EditItemTemplate`。 接下來，使其顯示中的供應商的公司名稱，編輯 ItemTemplate`<h3>`項目、 地址、 縣 （市）、 國家/地區，以及公司名稱下方的電話號碼。 或者，您可以手動設定在 FormView 的`DataSourceID`並建立`ItemTemplate`標記，如同回"[顯示資料與 ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md)」 教學課程。
@@ -212,7 +212,7 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 
 雖然主要/詳細資料報表可以在單一頁面上會顯示主要和詳細記錄，在許多網站會分隔跨兩個網頁。 在此教學課程中我們討論了如何實作主要/詳細資料報表需要 「 主要 」 的網頁中的 GridView 中列出供應商 和 詳細資料 頁面中所列的相關聯的產品。 主版網頁中的每個供應商資料列所包含的資料列所傳遞的詳細資料頁面的連結`SupplierID`值。 這類特定資料列的連結可以輕鬆地加入使用 GridView HyperLinkField。
 
-藉由叫用已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsBySupplierID(supplierID)`方法。 *`supplierID`* 做為參數的來源使用查詢字串以宣告方式指定參數值。 我們也討論了如何使用程式設計的詳細資料頁面中顯示的供應商的詳細資料。
+藉由叫用已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsBySupplierID(supplierID)`方法。 *`supplierID`*做為參數的來源使用查詢字串以宣告方式指定參數值。 我們也討論了如何使用程式設計的詳細資料頁面中顯示的供應商的詳細資料。
 
 我們[下一個教學課程](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)是主要/詳細資料報表中的最後一個。 我們會探討如何在每個資料列之選取按鈕的 GridView 中顯示的產品清單。 按一下 [選取] 按鈕會在相同頁面上 DetailsView 控制項中顯示該產品的詳細資料。
 
@@ -220,12 +220,12 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Hilton Giesenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](master-detail-filtering-with-two-dropdownlists-cs.md)
-[下一頁](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](master-detail-filtering-with-two-dropdownlists-cs.md)
+> [下一頁](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)

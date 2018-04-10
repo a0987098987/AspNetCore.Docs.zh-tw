@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
-title: "加入控制器 |Microsoft 文件"
+title: 加入控制器 |Microsoft 文件
 author: shanselman
-description: "本教學課程是否可在此處使用 Visual Studio 2013 更新的版本。 新的教學課程會使用 ASP.NET MVC 5 提供許多改良 t..."
+description: 本教學課程是否可在此處使用 Visual Studio 2013 更新的版本。 新的教學課程會使用 ASP.NET MVC 5 提供許多改良 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
 msc.type: authoredcontent
-ms.openlocfilehash: 93a362cf83d39b29fcba3f2dee0c28257805a89e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c6ecd1ffdd53a629d0079d57b85c7f6db2f316ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================
@@ -57,19 +57,19 @@ MVC 代表模型、 檢視、 控制站。 MVC 是用於開發應用程式，使
 
 根據傳入的 URL 不同控制器類別 （和其中的不同動作方法），會叫用 ASP.NET MVC。 使用 ASP.NET MVC 的預設對應邏輯來控制哪些程式碼會執行使用的格式如下：
 
-/ [控制器] / [ActionName] / [參數]
+/[Controller]/[ActionName]/[Parameters]
 
 URL 的第一個部分會決定要執行的控制器類別。 因此 /HelloWorld 會對應至 HelloWorldController 類別。 URL 的第二個部分會決定要執行的類別上的動作方法。 /HelloWorld/Index 會導致要執行的 HelloWorldcontroller 類別的 index （） 方法。 請注意，我們只需要瀏覽 /HelloWorld 上述和索引所隱含的方法。 這是因為名為"Index"的方法是將會在控制站呼叫，如果沒有明確指定的預設方法。
 
 [![這是我的預設動作](getting-started-with-mvc-part2/_static/image8.png)](getting-started-with-mvc-part2/_static/image7.png)
 
-現在，讓我們來瀏覽`http://localhost:xx/HelloWorld/Welcome.`現在我們褖畫惎方法在執行，並傳回其 HTML 字串。
+現在，讓我們來瀏覽`http://localhost:xx/HelloWorld/Welcome.`現在我們  褖畫惎方法在執行，並傳回其 HTML 字串。
 
 同樣地，/ [控制器] / [ActionName] / [參數] 因此控制器 HelloWorld 而且歡迎畫面在此情況下是方法。 我們還參數。
 
-[![這是該褖畫惎動作方法](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
+[![這是該  褖畫惎動作方法](getting-started-with-mvc-part2/_static/image10.png)](getting-started-with-mvc-part2/_static/image9.png)
 
-讓我們的範例稍微修改，讓我們可以從 URL 傳遞中的某些資訊至我們的控制站，例如就像這樣: / HelloWorld/歡迎畫面？ name = Scott&amp;numtimes = 4。 變更您褖畫惎方法，將包含兩個參數和它類似下面的的更新。 請注意，我們使用 C# 選擇性參數功能來指示參數 numTimes 應該預設為 1，是否它不會傳遞中。
+讓我們的範例稍微修改，讓我們可以從 URL 傳遞中的某些資訊至我們的控制站，例如就像這樣: / HelloWorld/歡迎畫面？ name = Scott&amp;numtimes = 4。 變更您  褖畫惎方法，將包含兩個參數和它類似下面的的更新。 請注意，我們使用 C# 選擇性參數功能來指示參數 numTimes 應該預設為 1，是否它不會傳遞中。
 
 [!code-csharp[Main](getting-started-with-mvc-part2/samples/sample2.cs)]
 
@@ -77,6 +77,6 @@ URL 的第一個部分會決定要執行的控制器類別。 因此 /HelloWorld
 
 在這些範例中這兩個控制器已執行的所有工作，並具有已傳回 HTML 直接。 通常，我們不希望我們控制站直接-傳回 HTML，因為，最後會在程式碼很麻煩。 改為我們通常會使用不同的檢視範本檔案協助產生 HTML 回應。 讓我們看看如何我們可以執行這項操作。 關閉瀏覽器，並返回 IDE。
 
->[!div class="step-by-step"]
-[上一頁](getting-started-with-mvc-part1.md)
-[下一頁](getting-started-with-mvc-part3.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started-with-mvc-part1.md)
+> [下一頁](getting-started-with-mvc-part3.md)

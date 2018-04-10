@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
-title: "在 SQL Server (VB) 中建立成員資格結構描述 |Microsoft 文件"
+title: 在 SQL Server (VB) 中建立成員資格結構描述 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程一開始會檢查必要的結構描述加入資料庫，才能使用 SqlMembershipProvider 的技術。 接下來，我們 wi-fi..."
+description: 本教學課程一開始會檢查必要的結構描述加入資料庫，才能使用 SqlMembershipProvider 的技術。 接下來，我們 wi-fi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2dadf091c6ae77fdfaf76f4e1bda92fd3e949678
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44458e8022f1f0d52cf136ad7fbaa5dd1f546632
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>在 SQL Server (VB) 中建立成員資格結構描述
 ====================
@@ -155,9 +155,9 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 
 第三個步驟提示的資料庫資訊： 伺服器名稱、 驗證資訊，以及資料庫名稱。 如果您已將其遵循本教學課程，並已加入`SecurityTutorials.mdf`資料庫`App_Data`，附加至`localhost\InstanceName`，和它重新命名為`SecurityTutorialsDatabase`，然後使用下列值：
 
-- 伺服器：`localhost\InstanceName`
+- 伺服器： `localhost\InstanceName`
 - Windows 驗證
-- 資料庫：`SecurityTutorialsDatabase`
+- 資料庫： `SecurityTutorialsDatabase`
 
 
 [![輸入資料庫的資訊](creating-the-membership-schema-in-sql-server-vb/_static/image26.png)](creating-the-membership-schema-in-sql-server-vb/_static/image25.png)
@@ -211,7 +211,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 - `UserName`
 - `ApplicationId`
 
-`UserId`主索引鍵 (且屬於型別`uniqueidentifier`)。 `UserName`型別`nvarchar(256)`和密碼，以及構成使用者的認證。 (使用者的密碼儲存在`aspnet_Membership`資料表。)`ApplicationId`連結中的特定應用程式的使用者帳戶`aspnet_Applications`。 沒有複合[`UNIQUE`條件約束](https://msdn.microsoft.com/library/ms191166.aspx)上`UserName`和`ApplicationId`資料行。 這可確保在給定的應用程式中是唯一的每個使用者名稱，但它可讓具有相同`UserName`以用於不同的應用程式。
+`UserId` 主索引鍵 (且屬於型別`uniqueidentifier`)。 `UserName` 型別`nvarchar(256)`和密碼，以及構成使用者的認證。 (使用者的密碼儲存在`aspnet_Membership`資料表。)`ApplicationId`連結中的特定應用程式的使用者帳戶`aspnet_Applications`。 沒有複合[`UNIQUE`條件約束](https://msdn.microsoft.com/library/ms191166.aspx)上`UserName`和`ApplicationId`資料行。 這可確保在給定的應用程式中是唯一的每個使用者名稱，但它可讓具有相同`UserName`以用於不同的應用程式。
 
 `aspnet_Membership`資料表包含額外的使用者帳戶資訊，例如使用者的密碼、 電子郵件地址、 上次登入日期及時間，以及其他等等。 在記錄之間沒有一對一的對應關係`aspnet_Users`和`aspnet_Membership`資料表。 此關聯性保證的`UserId`欄位`aspnet_Membership`，做為資料表的主索引鍵。 像`aspnet_Users`資料表`aspnet_Membership`包含`ApplicationId`繫結合作對這項資訊至特定應用程式磁碟分割的欄位。
 
@@ -225,7 +225,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 
 取決於所使用的密碼儲存體技巧`SqlMembershipProvider`設定中指定`Web.config`。 我們將探討自訂`SqlMembershipProvider`步驟 4 中的設定。 預設行為是儲存密碼雜湊。
 
-負責將密碼儲存的資料行是`Password`， `PasswordFormat`，和`PasswordSalt`。 `PasswordFormat`為類型的欄位`int`其值會指出用來儲存密碼的技巧： 清除為 0; 1 代表 Hashed 2 加密。 `PasswordSalt`會指派隨機產生的字串，不論使用的密碼儲存體技術值`PasswordSalt`時計算的雜湊的密碼，才使用。 最後，`Password`資料行包含實際的密碼資料，可能是純文字密碼的雜湊的密碼或已加密的密碼。
+負責將密碼儲存的資料行是`Password`， `PasswordFormat`，和`PasswordSalt`。 `PasswordFormat` 為類型的欄位`int`其值會指出用來儲存密碼的技巧： 清除為 0; 1 代表 Hashed 2 加密。 `PasswordSalt` 會指派隨機產生的字串，不論使用的密碼儲存體技術值`PasswordSalt`時計算的雜湊的密碼，才使用。 最後，`Password`資料行包含實際的密碼資料，可能是純文字密碼的雜湊的密碼或已加密的密碼。
 
 表 1 說明這些三個資料行可能如下的各種不同的儲存體技術儲存 MySecret 的密碼時 ！ 。
 
@@ -248,7 +248,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 - `RoleName`
 - `ApplicationId`
 
-`RoleId`主索引鍵 (且屬於型別`uniqueidentifier`)。 `RoleName` 是 `nvarchar(256)` 類型。 和`ApplicationId`連結中的特定應用程式的使用者帳戶`aspnet_Applications`。 沒有複合`UNIQUE`條件約束`RoleName`和`ApplicationId`資料行，確保在給定的應用程式中的每個角色名稱唯一。
+`RoleId` 主索引鍵 (且屬於型別`uniqueidentifier`)。 `RoleName` 是 `nvarchar(256)` 類型。 和`ApplicationId`連結中的特定應用程式的使用者帳戶`aspnet_Applications`。 沒有複合`UNIQUE`條件約束`RoleName`和`ApplicationId`資料行，確保在給定的應用程式中的每個角色名稱唯一。
 
 `aspnet_UsersInRoles`資料表做為使用者和角色之間的對應。 只有兩個資料行-`UserId`和`RoleId`-，它們共同組成複合主索引鍵。
 
@@ -305,8 +305,8 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 
 如果我們並未指定任何成員資格提供者資訊在我們的應用程式中`Web.config`檔案，應用程式使用已註冊的預設成員資格提供者， `AspNetSqlMembershipProvider`。 如果`~/App_Data/aspnet.mdf`資料庫不存在，ASP.NET 執行階段會自動建立它，並新增應用程式服務結構描述。 不過，我們不想使用`aspnet.mdf`資料庫; 相反地，我們想要使用`SecurityTutorials.mdf`我們在步驟 2 中建立的資料庫。 其中一種方式可以完成這項修改：
 
-- **指定的值 * * *`LocalSqlServer`* * * 中的連接字串名稱 * * *`Web.config`* * *。** 藉由覆寫`LocalSqlServer`中的連接字串名稱值`Web.config`，我們可以使用已註冊的預設成員資格提供者 (`AspNetSqlMembershipProvider`)，並讓它正確使用`SecurityTutorials.mdf`資料庫。 如果您是內容所指定的組態設定，不過沒有關係，這個方法是`AspNetSqlMembershipProvider`。 如需有關這項技術的詳細資訊，請參閱[Scott Guthrie](https://weblogs.asp.net/scottgu/)的部落格文章：[設定 ASP.NET 2.0 應用程式服務設定為使用 SQL Server 2000 或 SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)。
-- **加入新的已註冊提供者的類型 * * *`SqlMembershipProvider`* * * 並設定其 * * *`connectionStringName`* * * 設定為指向 * * *`SecurityTutorials.mdf`* * * 資料庫。** 這個方法是在您要自訂其他的組態內容，以及資料庫連接字串的情況下很有用。 我自己的專案中我一律使用這個方法因為它的彈性和可讀性。
+- <strong>指定的值</strong><strong>`LocalSqlServer`</strong><strong>中的連接字串名稱</strong><strong>`Web.config`</strong><strong>。</strong> 藉由覆寫`LocalSqlServer`中的連接字串名稱值`Web.config`，我們可以使用已註冊的預設成員資格提供者 (`AspNetSqlMembershipProvider`)，並讓它正確使用`SecurityTutorials.mdf`資料庫。 如果您是內容所指定的組態設定，不過沒有關係，這個方法是`AspNetSqlMembershipProvider`。 如需有關這項技術的詳細資訊，請參閱[Scott Guthrie](https://weblogs.asp.net/scottgu/)的部落格文章：[設定 ASP.NET 2.0 應用程式服務設定為使用 SQL Server 2000 或 SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)。
+- <strong>新增已註冊的型別提供者</strong><strong>`SqlMembershipProvider`</strong><strong>並設定其</strong><strong>`connectionStringName`</strong><strong>設定為指向</strong><strong>`SecurityTutorials.mdf`</strong><strong>資料庫。</strong> 這個方法是在您要自訂其他的組態內容，以及資料庫連接字串的情況下很有用。 我自己的專案中我一律使用這個方法因為它的彈性和可讀性。
 
 我們可以加入新的已註冊提供者參考之前`SecurityTutorials.mdf`資料庫中，我們必須先將適當的連接字串值中加入`<connectionStrings>`一節中`Web.config`。 下列標記加入新的連接字串，名為`SecurityTutorialsConnectionString`參考 SQL Server 2005 Express Edition`SecurityTutorials.mdf`資料庫`App_Data`資料夾。
 
@@ -348,7 +348,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 - [`<membership>`項目](https://msdn.microsoft.com/library/1b9hw62f.aspx)
 - [`<providers>`成員資格的項目](https://msdn.microsoft.com/library/6d4936ht.aspx)
 - [使用`<clear />`時新增提供者](https://weblogs.asp.net/scottgu/archive/2006/11/20/common-gotcha-don-t-forget-to-clear-when-adding-providers.aspx)
-- [直接使用`SqlMembershipProvider`](http://aspnet.4guysfromrolla.com/articles/091207-1.aspx)
+- [直接使用 `SqlMembershipProvider`](http://aspnet.4guysfromrolla.com/articles/091207-1.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>在本教學課程所包含的主題訓練影片
 
@@ -358,12 +358,12 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Alicja Maziarz。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](storing-additional-user-information-cs.md)
-[下一頁](creating-user-accounts-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](storing-additional-user-information-cs.md)
+> [下一頁](creating-user-accounts-vb.md)

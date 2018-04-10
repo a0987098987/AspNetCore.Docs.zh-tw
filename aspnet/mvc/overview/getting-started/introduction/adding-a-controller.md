@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-controller
-title: "加入控制器 |Microsoft 文件"
+title: 加入控制器 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: c8f317b2ac133f560461917af1588b7a1fa51c4f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3864bab284661b0c44f9e4cb363c2d60eccc7c66
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 代表 MVC*模型-檢視-控制器*。 MVC 是用於開發架構，可測試且容易維護的應用程式的模式。 MVC 架構的應用程式包含：
 
@@ -95,7 +95,7 @@ URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld
 
 [!code-csharp[Main](adding-a-controller/samples/sample4.cs)]
 
-執行應用程式，並輸入下列 URL:`http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
+執行應用程式，並輸入下列 URL: `http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
 
 ![](adding-a-controller/_static/image8.png)
 
@@ -115,6 +115,6 @@ URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld
 
 這些範例中已執行控制器&quot;VC&quot; MVC 部分 — 也就是，則檢視和控制器的工作。 控制器直接傳回 HTML。 通常您不想直接傳回 HTML，因為變得很麻煩的程式碼的控制站。 改為我們通常會使用不同的檢視範本檔案協助產生 HTML 回應。 讓我們來看我們如何執行這在下一步。
 
->[!div class="step-by-step"]
-[上一頁](getting-started.md)
-[下一頁](adding-a-view.md)
+> [!div class="step-by-step"]
+> [上一頁](getting-started.md)
+> [下一頁](adding-a-view.md)

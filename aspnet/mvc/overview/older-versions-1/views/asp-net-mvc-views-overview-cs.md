@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
-title: "ASP.NET MVC 檢視概觀 (C#) |Microsoft 文件"
+title: ASP.NET MVC 檢視概觀 (C#) |Microsoft 文件
 author: StephenWalther
-description: "什麼是 ASP.NET MVC 檢視，以及如何不同的 HTML 網頁？ 在本教學課程中，作者： Stephen Walther 為您介紹檢視，並示範如何 t..."
+description: 什麼是 ASP.NET MVC 檢視，以及如何不同的 HTML 網頁？ 在本教學課程中，作者： Stephen Walther 為您介紹檢視，並示範如何 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9de095b0621af3b6166a2e1cbcb1c63c26a88aa2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5217994168ebac32a4a9754ae09e63e120804813
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC 檢視概觀 (C#)
 ====================
@@ -84,7 +84,7 @@ View();
 
 請注意，清單 2 中的 HTML 網頁的主體會包含下列指令碼：
 
-&lt;%Response.write(datetime.now); %&gt;
+&lt;% Response.Write(DateTime.Now);%&gt;
 
 使用指令碼分隔符號&lt;%和 %&gt;標記開頭和結尾的指令碼。 此指令碼是以 C# 撰寫。 它會顯示目前的日期和時間，藉由呼叫 Response.write 方法轉譯至瀏覽器的內容。 指令碼分隔符號&lt;%和 %&gt;可用來執行一或多個陳述式。
 
@@ -118,7 +118,7 @@ View();
 
 使用 HTML Helper 方法是選擇性的。 它們會簡化您的生活減少的 HTML 和需要撰寫的指令碼。 列出 5 中的檢視而不需使用 HTML Helper 呈現完全相同的形式中列出的 4 的檢視。
 
-**列出 5-\Views\Home\Login.aspx**
+**Listing 5 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample5.aspx)]
 
@@ -136,7 +136,7 @@ View();
 
 列出 7 的檢視從檢視資料擷取訊息，並呈現至瀏覽器的訊息。
 
-**列出 7-\Views\Product\Index.aspx**
+**Listing 7 -- \Views\Product\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample7.aspx)]
 
@@ -152,5 +152,5 @@ View();
 
 本教學課程提供簡介 ASP.NET MVC 檢視、 檢視資料和 HTML Helper。 在第一個區段中，您將學會如何將新的檢視加入至您的專案。 您已了解，您必須加入檢視到正確的資料夾才能呼叫從特定的控制站。 接下來，我們將討論主題的 HTML Helper。 您已學習如何 HTML Helper 可讓您輕鬆地產生標準 HTML 內容。 最後，您會學到如何利用將從控制器的資料傳遞至檢視的檢視資料。
 
->[!div class="step-by-step"]
-[下一步](creating-custom-html-helpers-cs.md)
+> [!div class="step-by-step"]
+> [下一步](creating-custom-html-helpers-cs.md)

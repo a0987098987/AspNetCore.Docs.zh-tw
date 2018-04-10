@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的資料保護"
+title: ASP.NET Core 的資料保護
 author: rick-anderson
-description: "本文件是各種 ASP.NET Core 資料保護主題的目錄。"
+description: 本文件是各種 ASP.NET Core 資料保護主題的目錄。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,70 +9,70 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/index
-ms.openlocfilehash: e08dea63f012c4a758f2e5561c4930d09cfee0ac
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 83b5bb1e6a4942a4d3e5ec0d445fa6e5a21fb533
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="data-protection-in-aspnet-core-consumer-apis-configuration-extensibility-apis-and-implementation"></a>ASP.NET Core 中的資料保護：取用者 API、組態、擴充性 API 和實作
+# <a name="data-protection-in-aspnet-core"></a>ASP.NET Core 的資料保護
 
-* [資料保護簡介](introduction.md)
+* [資料保護簡介](xref:security/data-protection/introduction)
 
-* [資料保護 API 使用者入門](using-data-protection.md)
+* [資料保護 API 使用者入門](xref:security/data-protection/using-data-protection)
 
-* [取用者 API](consumer-apis/index.md)
+* [取用者 API](xref:security/data-protection/consumer-apis/index)
 
-  * [取用者 API 概觀](consumer-apis/overview.md)
+  * [取用者 API 概觀](xref:security/data-protection/consumer-apis/overview)
 
-  * [目的字串](consumer-apis/purpose-strings.md)
+  * [目的字串](xref:security/data-protection/consumer-apis/purpose-strings)
 
-  * [目的階層和多租用戶](consumer-apis/purpose-strings-multitenancy.md)
+  * [目的階層和多租用戶](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
 
-  * [密碼雜湊](consumer-apis/password-hashing.md)
+  * [雜湊密碼](xref:security/data-protection/consumer-apis/password-hashing)
 
-  * [限制受保護承載的存留期](consumer-apis/limited-lifetime-payloads.md)
+  * [限制受保護承載的存留期](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
 
-  * [取消索引鍵已撤銷之承載的保護](consumer-apis/dangerous-unprotect.md)
+  * [取消索引鍵已撤銷之承載的保護](xref:security/data-protection/consumer-apis/dangerous-unprotect)
 
-* [組態](configuration/index.md)
+* [組態](xref:security/data-protection/configuration/index)
 
-  * [設定資料保護](configuration/overview.md)
+  * [設定 ASP.NET Core 資料保護](xref:security/data-protection/configuration/overview)
 
-  * [預設設定](configuration/default-settings.md)
+  * [預設設定](xref:security/data-protection/configuration/default-settings)
 
-  * [整個電腦的原則](configuration/machine-wide-policy.md)
+  * [整個電腦的原則](xref:security/data-protection/configuration/machine-wide-policy)
 
-  * [非 DI 感知案例](configuration/non-di-scenarios.md)
+  * [非 DI 感知案例](xref:security/data-protection/configuration/non-di-scenarios)
 
-* [擴充性 API](extensibility/index.md)
+* [擴充性 API](xref:security/data-protection/extensibility/index)
 
-  * [核心加密擴充性](extensibility/core-crypto.md)
+  * [核心加密擴充性](xref:security/data-protection/extensibility/core-crypto)
 
-  * [金鑰管理擴充性](extensibility/key-management.md)
+  * [金鑰管理擴充性](xref:security/data-protection/extensibility/key-management)
 
-  * [其他 API](extensibility/misc-apis.md)
+  * [其他 API](xref:security/data-protection/extensibility/misc-apis)
 
-* [實作](implementation/index.md)
+* [實作](xref:security/data-protection/implementation/index)
 
-  * [已驗證的加密詳細資料](implementation/authenticated-encryption-details.md)
+  * [已驗證的加密詳細資料](xref:security/data-protection/implementation/authenticated-encryption-details)
 
-  * [子機碼衍生和驗證的加密](implementation/subkeyderivation.md)
+  * [子機碼衍生和驗證的加密](xref:security/data-protection/implementation/subkeyderivation)
 
-  * [內容標頭](implementation/context-headers.md)
+  * [內容標頭](xref:security/data-protection/implementation/context-headers)
 
-  * [金鑰管理](implementation/key-management.md)
+  * [金鑰管理](xref:security/data-protection/implementation/key-management)
 
-  * [金鑰儲存體提供者](implementation/key-storage-providers.md)
+  * [金鑰儲存體提供者](xref:security/data-protection/implementation/key-storage-providers)
 
-  * [待用時加密金鑰](implementation/key-encryption-at-rest.md)
+  * [待用時加密金鑰](xref:security/data-protection/implementation/key-encryption-at-rest)
 
-  * [金鑰的不變性和變更設定](implementation/key-immutability.md)
+  * [金鑰的不變性和設定](xref:security/data-protection/implementation/key-immutability)
 
-  * [金鑰儲存體格式](implementation/key-storage-format.md)
+  * [金鑰儲存體格式](xref:security/data-protection/implementation/key-storage-format)
 
-  * [暫時資料保護提供者](implementation/key-storage-ephemeral.md)
+  * [暫時資料保護提供者](xref:security/data-protection/implementation/key-storage-ephemeral)
 
-* [相容性](compatibility/index.md)
+* [相容性](xref:security/data-protection/compatibility/index)
 
-  * [取代 ASP.NET 中的 <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)
+  * [取代 ASP.NET Core 中的 ASP.NET <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)

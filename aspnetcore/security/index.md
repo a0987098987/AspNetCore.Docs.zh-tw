@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 安全性概觀"
+title: ASP.NET Core 安全性概觀
 author: rachelappel
-description: "了解 ASP.NET Core 的驗證、授權和安全性基本概念。"
+description: 了解 ASP.NET Core 的驗證、授權和安全性基本概念。
 manager: wpickett
 ms.author: rachelap
 ms.date: 11/01/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/index
-ms.openlocfilehash: e03256d7b8b442569b0b0126983732c10817e20f
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: da3829b2d5ae5db1861c7423da5afc7acbee6697
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="aspnet-core-security-overview"></a>ASP.NET Core 安全性概觀
+# <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
 
 ASP.NET Core 可讓開發人員輕鬆設定應用程式的安全性並進行管理。 ASP.NET Core 包含針對認證、授權、資料保護、強制使用 SSL、應用程式密碼、防偽要求保護及 CORS 的管理功能。 這些安全性功能可讓您打造強固又安全的 ASP.NET Core 應用程式。
 
@@ -33,77 +33,77 @@ ASP.NET Core 提供許多工具和程式庫來保護應用程式的安全，包�
 
 ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防範安全性缺口的發生。 下列連結清單可帶您前往如何避免 Web 應用程式中最常見資訊安全漏洞的技術詳細文件：
 
-* [Cross site scripting attacks](https://docs.microsoft.com/aspnet/core/security/cross-site-scripting) (跨網站指令碼攻擊)
+* [Cross site scripting attacks](xref:security/cross-site-scripting) (跨網站指令碼攻擊)
 * [SQL Injection attacks](https://docs.microsoft.com/ef/core/querying/raw-sql) (SQL 插入式攻擊)
-* [Cross-Site Request Forgery (CSRF)](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery) (跨網站偽造要求 (CSRF))
-* [Open redirect attacks](https://docs.microsoft.com/aspnet/core/security/preventing-open-redirects) (開啟重新導向攻擊)
+* [Cross-Site Request Forgery (CSRF)](xref:security/anti-request-forgery) (跨網站偽造要求 (CSRF))
+* [Open redirect attacks](xref:security/preventing-open-redirects) (開啟重新導向攻擊)
 
 除此之外，還有許多弱點是您必須提防的。 如需詳細資訊，請參閱本文件的相關章節 (位於 *ASP.NET 安全性文件*)。
 
 ## <a name="aspnet-security-documentation"></a>ASP.NET 安全性文件
 
-*   [驗證](authentication/index.md)
-    *   [身分識別簡介](authentication/identity.md)
-    *   [使用 Facebook、Google 和其他外部提供者啟用驗證](authentication/social/index.md)
-    *   [以 WS 同盟啟用驗證](authentication/ws-federation.md)
-    * [使用 Windows 驗證](authentication/windowsauth.md)
-    *   [帳戶確認和密碼復原](authentication/accconfirm.md)
-    *   [使用 SMS 的雙因素驗證](authentication/2fa.md)
-    *   [使用沒有身分識別的 Cookie 驗證](authentication/cookie.md)
-    *   [Azure Active Directory](authentication/azure-active-directory/index.md)
+*   [驗證](xref:security/authentication/index)
+    *   [身分識別簡介](xref:security/authentication/identity)
+    *   [使用 Facebook、Google 和其他外部提供者啟用驗證](xref:security/authentication/social/index)
+    *   [以 WS 同盟啟用驗證](xref:security/authentication/ws-federation)
+    * [設定 Windows 驗證](xref:security/authentication/windowsauth)
+    *   [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
+    *   [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
+    *   [使用沒有身分識別的 Cookie 驗證](xref:security/authentication/cookie)
+    *   [Azure Active Directory](xref:security/authentication/azure-active-directory/index)
         *   [Integrate Azure AD Into an ASP.NET Core web app](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/) (將 Azure AD 整合到 ASP.NET Core Web 應用程式)
         *   [Call a ASP.NET Core Web API from a WPF app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/) (使用 Azure AD 從 WPF 應用程式呼叫 ASP.NET Core Web API)
         *   [Call a Web API in an ASP.NET Core web app using Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/) (使用 Azure AD 在 ASP.NET Core Web 應用程式中呼叫 Web API)
         *   [使用 Azure AD B2C 的 ASP.NET Core Web 應用程式](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
     *   [使用 IdentityServer4 保護 ASP.NET Core 應用程式](https://identityserver4.readthedocs.io)
-*   [授權](authorization/index.md)
-    *   [簡介](authorization/introduction.md)
+*   [授權](xref:security/authorization/index)
+    *   [簡介](xref:security/authorization/introduction)
     *   [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
-    *   [簡單授權](authorization/simple.md)
-    *   [角色型授權](authorization/roles.md)
-    *   [宣告式授權](authorization/claims.md)
-    *   [原則式授權](authorization/policies.md)
-    *   [要求處理常式中的相依性插入](authorization/dependencyinjection.md)
-    *   [資源型授權](authorization/resourcebased.md)
-    *   [檢視型授權](authorization/views.md)
-    *   [以配置限制身分識別](authorization/limitingidentitybyscheme.md)
-*   [資料保護](data-protection/index.md)
-    *   [資料保護簡介](data-protection/introduction.md)
-    *   [資料保護 API 使用者入門](data-protection/using-data-protection.md)
-    *   [取用者 API](data-protection/consumer-apis/index.md)
-        *   [取用者 API 概觀](data-protection/consumer-apis/overview.md)
-        *   [目的字串](data-protection/consumer-apis/purpose-strings.md)
-        *   [目的階層和多租用戶](data-protection/consumer-apis/purpose-strings-multitenancy.md)
-        *   [密碼雜湊](data-protection/consumer-apis/password-hashing.md)
-        *   [限制受保護承載的存留期](data-protection/consumer-apis/limited-lifetime-payloads.md)
-        *   [取消索引鍵已撤銷之承載的保護](data-protection/consumer-apis/dangerous-unprotect.md)
-    *   [組態](data-protection/configuration/index.md)
-        *   [設定資料保護](data-protection/configuration/overview.md)
-        *   [預設設定](data-protection/configuration/default-settings.md)
-        *   [整個電腦的原則](data-protection/configuration/machine-wide-policy.md)
-        *   [非 DI 感知案例](data-protection/configuration/non-di-scenarios.md)
-    *   [擴充性 API](data-protection/extensibility/index.md)
-        *   [核心加密擴充性](data-protection/extensibility/core-crypto.md)
-        *   [金鑰管理擴充性](data-protection/extensibility/key-management.md)
-        *   [其他 API](data-protection/extensibility/misc-apis.md)
-    *   [實作](data-protection/implementation/index.md)
-        *   [已驗證的加密詳細資料](data-protection/implementation/authenticated-encryption-details.md)
-        *   [子機碼衍生和驗證的加密](data-protection/implementation/subkeyderivation.md)
-        *   [內容標頭](data-protection/implementation/context-headers.md)
-        *   [金鑰管理](data-protection/implementation/key-management.md)
-        *   [金鑰儲存體提供者](data-protection/implementation/key-storage-providers.md)
-        *   [待用時加密金鑰](data-protection/implementation/key-encryption-at-rest.md)
-        *   [金鑰的不變性和變更設定](data-protection/implementation/key-immutability.md)
-        *   [金鑰儲存體格式](data-protection/implementation/key-storage-format.md)
-        *   [暫時資料保護提供者](data-protection/implementation/key-storage-ephemeral.md)
-    *   [相容性](data-protection/compatibility/index.md)
-        *   [取代 ASP.NET 中的 <machineKey>](data-protection/compatibility/replacing-machinekey.md)
+    *   [簡單授權](xref:security/authorization/simple)
+    *   [角色型授權](xref:security/authorization/roles)
+    *   [宣告式授權](xref:security/authorization/claims)
+    *   [原則式授權](xref:security/authorization/policies)
+    *   [要求處理常式中的相依性插入](xref:security/authorization/dependencyinjection)
+    *   [資源型授權](xref:security/authorization/resourcebased)
+    *   [檢視型授權](xref:security/authorization/views)
+    *   [以配置限制身分識別](xref:security/authorization/limitingidentitybyscheme)
+*   [資料保護](xref:security/data-protection/index)
+    *   [資料保護簡介](xref:security/data-protection/introduction)
+    *   [資料保護 API 使用者入門](xref:security/data-protection/using-data-protection)
+    *   [取用者 API](xref:security/data-protection/consumer-apis/index)
+        *   [取用者 API 概觀](xref:security/data-protection/consumer-apis/overview)
+        *   [目的字串](xref:security/data-protection/consumer-apis/purpose-strings)
+        *   [目的階層和多租用戶](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
+        *   [雜湊密碼](xref:security/data-protection/consumer-apis/password-hashing)
+        *   [限制受保護承載的存留期](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
+        *   [取消索引鍵已撤銷之承載的保護](xref:security/data-protection/consumer-apis/dangerous-unprotect)
+    *   [組態](xref:security/data-protection/configuration/index)
+        *   [設定資料保護](xref:security/data-protection/configuration/overview)
+        *   [預設設定](xref:security/data-protection/configuration/default-settings)
+        *   [整個電腦的原則](xref:security/data-protection/configuration/machine-wide-policy)
+        *   [非 DI 感知案例](xref:security/data-protection/configuration/non-di-scenarios)
+    *   [擴充性 API](xref:security/data-protection/extensibility/index)
+        *   [核心加密擴充性](xref:security/data-protection/extensibility/core-crypto)
+        *   [金鑰管理擴充性](xref:security/data-protection/extensibility/key-management)
+        *   [其他 API](xref:security/data-protection/extensibility/misc-apis)
+    *   [實作](xref:security/data-protection/implementation/index)
+        *   [已驗證的加密詳細資料](xref:security/data-protection/implementation/authenticated-encryption-details)
+        *   [子機碼衍生和驗證的加密](xref:security/data-protection/implementation/subkeyderivation)
+        *   [內容標頭](xref:security/data-protection/implementation/context-headers)
+        *   [金鑰管理](xref:security/data-protection/implementation/key-management)
+        *   [金鑰儲存體提供者](xref:security/data-protection/implementation/key-storage-providers)
+        *   [待用時加密金鑰](xref:security/data-protection/implementation/key-encryption-at-rest)
+        *   [金鑰的不變性和設定](xref:security/data-protection/implementation/key-immutability)
+        *   [金鑰儲存體格式](xref:security/data-protection/implementation/key-storage-format)
+        *   [暫時資料保護提供者](xref:security/data-protection/implementation/key-storage-ephemeral)
+    *   [相容性](xref:security/data-protection/compatibility/index)
+        *   [取代 ASP.NET 中的 <machineKey>](xref:security/data-protection/compatibility/replacing-machinekey)
 *   [建立使用者資料受授權保護的應用程式](xref:security/authorization/secure-data)
-*   [在開發期間安全儲存應用程式密碼](app-secrets.md)
-*   [Azure Key Vault 組態提供者](key-vault-configuration.md)
-*   [強制使用 SSL](enforcing-ssl.md)
-*   [防偽要求](anti-request-forgery.md)
-*   [防止開啟重新導向攻擊](preventing-open-redirects.md)
-*   [防止跨網站指令碼攻擊](cross-site-scripting.md)
-*   [啟用跨原始來源要求 (CORS)](cors.md)
-*   [在應用程式間共用 Cookie](cookie-sharing.md)
+*   [在開發期間安全儲存應用程式祕密](xref:security/app-secrets)
+*   [Azure Key Vault 組態提供者](xref:security/key-vault-configuration)
+*   [強制使用 SSL](xref:security/enforcing-ssl)
+*   [防偽要求](xref:security/anti-request-forgery)
+*   [防止開啟重新導向攻擊](xref:security/preventing-open-redirects)
+*   [防止跨網站指令碼攻擊](xref:security/cross-site-scripting)
+*   [啟用跨原始來源要求 (CORS)](xref:security/cors)
+*   [在應用程式間共用 Cookie](xref:security/cookie-sharing)

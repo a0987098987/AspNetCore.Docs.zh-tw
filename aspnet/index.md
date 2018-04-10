@@ -2,13 +2,13 @@
 uid: index
 layout: HubPage
 ms.topic: hub-page
-title: "ASP.NET 文件 | Microsoft Docs"
-description: 
-ms.openlocfilehash: 4ab928b65bc91a24d02cd0450e143cd6bd3b639b
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+title: ASP.NET 文件 | Microsoft Docs
+description: ''
+ms.openlocfilehash: cc887183fba9d3c46fbb1068d13d612a3e1806e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/08/2018
                             <li>
                                 <div class="container intro">
                                     <p>ASP.NET Core 是一種新的開放原始碼兼跨平台 .NET 架構，用於在 Windows、Mac 或 Linux 上建置新式雲端式 Web 應用程式。</p>
-                                    <p>[了解 ASP.NET Core 與 ASP.NET 的優勢](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)，然後選出最適合您的架構。</p>
+                                    <p><a href="https://docs.microsoft.com/aspnet/core/choose-aspnet-framework" data-raw-source="[Learn the benefits of both ASP.NET Core and ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)">了解 ASP.NET Core 與 ASP.NET 的優勢</a>，然後選出最適合您的架構。</p>
                                 </div>
                             </li>
                             <li>
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/08/2018
                         <ul id="core_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
-                                    <p>精選教學課程 | [檢視所有 ASP.NET Core 教學課程](https://docs.microsoft.com/aspnet/core/tutorials/)</p>
+                                    <p>精選教學課程 | <a href="https://docs.microsoft.com/aspnet/core/tutorials/" data-raw-source="[View all ASP.NET Core tutorials](https://docs.microsoft.com/aspnet/core/tutorials/)">檢視所有 ASP.NET Core 教學課程</a></p>
                                 </div>
                             </li>
                             <li>
@@ -291,7 +291,7 @@ ms.lasthandoff: 03/08/2018
                             <li>
                                 <div class="container intro">
                                     <p>ASP.NET 為發展完備的 Web 平台，為您提供在 Windows 上使用 .NET 建置企業級伺服器 Web 應用程式所需的所有服務。</p>
-                                    <p>[了解 ASP.NET Core 與 ASP.NET 的優勢](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)，然後選出最適合您的架構。</p>
+                                    <p><a href="https://docs.microsoft.com/aspnet/core/choose-aspnet-framework" data-raw-source="[Learn the benefits of both ASP.NET Core and ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)">了解 ASP.NET Core 與 ASP.NET 的優勢</a>，然後選出最適合您的架構。</p>
                                 </div>
                             </li>
                             <li>
@@ -344,7 +344,7 @@ ms.lasthandoff: 03/08/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ASP.NET API 參考</h3>
-                                                    <p>探索 ASP.NET Core 類別庫。</p>
+                                                    <p>探索 ASP.NET 類別庫。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -568,7 +568,7 @@ ms.lasthandoff: 03/08/2018
                         <ul id="aspnet_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
-                                    <p>精選教學課程 | [檢視所有 ASP.NET 教學課程](https://docs.microsoft.com/aspnet/tutorials/)</p>
+                                    <p>精選教學課程 | <a href="https://docs.microsoft.com/aspnet/tutorials/" data-raw-source="[View all ASP.NET tutorials](https://docs.microsoft.com/aspnet/tutorials/)">檢視所有 ASP.NET 教學課程</a></p>
                                 </div>
                             </li>
                             <li>

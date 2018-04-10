@@ -16,7 +16,7 @@ ms.openlocfilehash: 9b273f6827cad2078b581d6da7b127198dfddaa5
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript
 ====================

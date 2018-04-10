@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/working-with-files
-title: "使用 ASP.NET Web Pages (Razor) 網站中的檔案 |Microsoft 文件"
+title: 使用 ASP.NET Web Pages (Razor) 網站中的檔案 |Microsoft 文件
 author: tfitzmac
-description: "本章節將說明如何讀取、 寫入、 附加、 刪除和上傳檔案。"
+description: 本章節將說明如何讀取、 寫入、 附加、 刪除和上傳檔案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
 ms.openlocfilehash: 0f119f8fb4873e55292203f21a2efd8f26793ae4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>使用 ASP.NET Web Pages (Razor) 網站中的檔案
 ====================
@@ -133,9 +133,9 @@ ms.lasthandoff: 01/24/2018
 
     若要這樣做的程式碼位於`if`陳述式。 當您想要讀取的檔案時，最好在其中使用`File.Exists`先判斷檔案是否有可用的方法。 程式碼也會檢查檔案是否為空白。
 
-    頁面主體會包含兩個`foreach`迴圈，其中巢狀方式置於另一個。 外部`foreach`迴圈從資料檔案中一行取得一次。 在此情況下，將行定義由檔案 &#8212; 中的換行也就是說，每個資料項目會的那一行。 外部迴圈會建立新的項目 (`<li>`項目) 內的已排序清單 (`<ol>`項目)。
+    頁面主體會包含兩個`foreach`迴圈，其中巢狀方式置於另一個。 外部`foreach`迴圈從資料檔案中一行取得一次。 在此情況下，線條會由檔案中的分行符號&#8212;亦即，每個資料項目是的那一行。 外部迴圈會建立新的項目 (`<li>`項目) 內的已排序清單 (`<ol>`項目)。
 
-    內部迴圈會將每個資料列分割為使用逗號做為分隔符號項目 （欄位）。 （根據上一個範例，這表示每一行都包含三個欄位 &#8212; 名字、 姓氏和電子郵件地址，每一個逗號分隔）。內部迴圈也會建立`<ul>`清單和顯示一個清單項目資料行中每個欄位。
+    內部迴圈會將每個資料列分割為使用逗號做為分隔符號項目 （欄位）。 (根據上一個範例，這表示每一行都包含三個欄位&#8212;名字、 姓氏和電子郵件地址中，每一個逗號分隔。)內部迴圈也會建立`<ul>`清單和顯示一個清單項目資料行中每個欄位。
 
     程式碼說明如何使用兩種資料類型、 陣列和`char`資料型別。 陣列是必要的因為`File.ReadAllLines`方法會傳回資料當做陣列。 `char`資料類型是必要的因為`Split`方法會傳回`array`，其中每個元素是型別`char`。 (如需陣列的詳細資訊，請參閱[ASP.NET Web 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890#ID_CollectionsAndObjects)。)
 3. 執行網頁瀏覽器中。 會顯示您輸入上一個範例中的資料。 
@@ -194,7 +194,7 @@ ms.lasthandoff: 01/24/2018
 
     您為設定的屬性`FileUpload`helper 指定您想要上傳檔案的單一方塊和您想要讀取的 [提交] 按鈕**上傳**。 （您將在本文稍後新增更多的方塊）。
 
-    當使用者按一下**上傳**，位於頁面頂端的程式碼會取得檔案，並將其儲存。 `Request`您平常用來取得表單欄位值的物件也有`Files`陣列，其中包含檔案 （或檔案），已上傳。 您可以取得超出陣列 &#8212; 中的特定位置的個別檔案比方說，若要取得第一次上傳的檔案，則取得`Request.Files[0]`、 取得第二個檔案中，您取得`Request.Files[1]`，依此類推。 （請記住，在程式設計中，通常計數從零開始）。
+    當使用者按一下**上傳**，位於頁面頂端的程式碼會取得檔案，並將其儲存。 `Request`您平常用來取得表單欄位值的物件也有`Files`陣列，其中包含檔案 （或檔案），已上傳。 您可以取得從陣列中的特定位置的個別檔案&#8212;，若要取得第一次上傳的檔案，您會收到`Request.Files[0]`、 取得第二個檔案中，您取得`Request.Files[1]`，依此類推。 （請記住，在程式設計中，通常計數從零開始）。
 
     當您擷取上傳的檔案時，您將它放在變數中 (在這裡， `uploadedFile`)，讓您可以操作。 若要確定上傳的檔案名稱，您只取得其`FileName`屬性。 不過，當使用者將檔案上傳，`FileName`包含使用者的原始名稱，其中包含的完整路徑。 它看起來可能像這樣：
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 01/24/2018
 
     ![[影像]](working-with-files/_static/image11.jpg)
 
-    若要處理的使用者上傳的檔案，程式碼會使用您在先前的範例 &#8212; 中使用相同的基本技巧取得檔案從`Request.Files`並將其儲存。 （各種的項目包括您需要如何做以讓正確的檔案名稱和路徑。）使用者可能會上載多個檔案，而您不知道許多創新這個時間。 若要了解，您可以取得`Request.Files.Count`。
+    若要處理的使用者上傳的檔案，程式碼會使用您在上一個範例中使用相同的基本技巧&#8212;取得檔案從`Request.Files`並將其儲存。 （各種的項目包括您需要如何做以讓正確的檔案名稱和路徑。）使用者可能會上載多個檔案，而您不知道許多創新這個時間。 若要了解，您可以取得`Request.Files.Count`。
 
     具有手中此數目，您可以逐一`Request.Files`、 擷取每個檔案，並將其儲存。 當您想要透過集合進行已知的次數執行迴圈時，您可以使用`for`迴圈，像這樣：
 

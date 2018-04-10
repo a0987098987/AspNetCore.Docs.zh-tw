@@ -16,7 +16,7 @@ ms.openlocfilehash: 0dba613594686a28b82bc6d7701cda6e24b82e2e
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="checkout-and-payment-with-paypal"></a>簽出和與 PayPal 付款
 ====================
@@ -389,7 +389,7 @@ Wingtip Toys 範例應用程式瀏覽 PayPal 測試網站，然後返回 Wingtip
 
 > [!NOTE] 
 > 
-> **Tip**
+> **秘訣**
 > 
 > 在標記中*CheckoutReview.aspx*頁面上，請注意，`<ItemStyle>`標記用來變更中的項目樣式**DetailsView**靠近頁面底部的控制項。 藉由檢視中的頁面**設計 檢視**(藉由選取**設計**在 Visual Studio 左下角)，然後選取**DetailsView**控制項，然後選取**智慧標籤**(在最上方的箭號圖示右邊的控制項)，您將能夠看到**DetailsView 工作**。
 > 

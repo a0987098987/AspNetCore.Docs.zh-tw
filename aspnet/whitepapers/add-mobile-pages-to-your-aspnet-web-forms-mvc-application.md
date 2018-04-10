@@ -16,13 +16,13 @@ ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>如何： 將行動網頁加入 ASP.NET Web Form / MVC 應用程式
 ====================
 > **適用於**
 > 
-> - ASP.NET Web Form 4.0 版
+> - ASP.NET Web Forms version 4.0
 > - ASP.NET MVC 3.0 版
 > 
 > **摘要**
@@ -104,7 +104,7 @@ ASP.NET 行動控制項為什麼標示為過時的原因是其設計導向周圍
 - 輸入的法 （滑鼠] / [鍵盤、 觸控、 數字鍵台、 搖桿，...）
 - 螢幕大小 （實體和像素為單位）
 - 支援的媒體和資料格式
-- Etc.
+- 等等。
 
 最好是讓特性與模型數目為基礎的決策，因為，然後您會更有能力處理新款裝置。
 
@@ -113,7 +113,7 @@ ASP.NET 行動控制項為什麼標示為過時的原因是其設計導向周圍
 ASP.NET Web Form 和 MVC 的開發人員可以藉由檢查的內容立即探索造訪瀏覽器的重要特性*Request.Browser*物件。 例如，請參閱
 
 - Request.Browser.IsMobileDevice
-- Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
+- Request.Browser.MobileDeviceManufacturer Request.Browser.MobileDeviceModel
 - Request.Browser.ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
 - ..和許多其他

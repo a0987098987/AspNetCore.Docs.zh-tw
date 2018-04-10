@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
-title: "組態和測試設備 |Microsoft 文件"
+title: 組態和測試設備 |Microsoft 文件
 author: microsoft
-description: "有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓設定變更，可供 pr..."
+description: 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓設定變更，可供 pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
 ms.openlocfilehash: 16dfe3c899dfa028d8a52b4b5f9c2868887e8fa9
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="configuration-and-instrumentation"></a>組態和測試設備
 ====================
@@ -80,10 +80,10 @@ ASP.NET 組態應用程式開發介面包含一組可讓您以程式設計方式
 | --- | --- |
 | [System.Configuration](https://msdn.microsoft.com/library/system.configuration.aspx) namespace | 包含所有的.NET Framework 應用程式的主要組態類別。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 這兩種方法為非靜態。 |
 | System.Configuration.Configuration 類別 | 代表一組的電腦、 應用程式、 Web 目錄或其他資源的設定資料。 這個類別包含有用的方法，例如 GetSection 和 GetSectionGroup，更新組態設定和取得參考區段或區段群組。 這個類別用於取得設計階段組態資料，例如 WebConfigurationManager 和 ConfigurationManager 類別方法的方法當做傳回型別。 |
-| System.Web.Configuration namespace | ASP.NET 組態區段會定義在包含區段處理常式類別[ASP.NET 組態設定](https://msdn.microsoft.com/library/b5ysx397.aspx)。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 |
+| System.Web.Configuration 命名空間 | ASP.NET 組態區段會定義在包含區段處理常式類別[ASP.NET 組態設定](https://msdn.microsoft.com/library/b5ysx397.aspx)。 區段處理常式類別可用來從方法，例如 GetSection 和 GetSectionGroup 取得區段的組態資料。 |
 | System.Web.Configuration.WebConfigurationManager class | 提供有用的方法，以取得執行階段和設計階段的組態設定的參考。 這些方法會使用 System.Configuration.Configuration 類別做為傳回類型。 您可以使用這個類別的靜態 GetSection 方法或 System.Configuration.ConfigurationManager 類別非靜態 GetSection 方法交換使用。 對於 Web 應用程式設定，而不是 System.Configuration.ConfigurationManager 類別建議 System.Web.Configuration.WebConfigurationManager 類別。 |
 | [System.Configuration.Provider](https://msdn.microsoft.com/library/system.configuration.provider.aspx) namespace | 提供方法，以自訂和擴充的組態提供者。 這是所有的提供者類別的基底類別中的組態系統。 |
-| [System.Web.Management](https://msdn.microsoft.com/library/system.web.management.aspx) namespace | 包含類別和介面來管理和監視的 Web 應用程式的健全狀況。 嚴格來說，此命名空間不會視為組態 API 的一部分。 比方說，追蹤和事件引發便可達成此命名空間中的類別。 |
+| [System.Web.Management](https://msdn.microsoft.com/library/system.web.management.aspx)命名空間 | 包含類別和介面來管理和監視的 Web 應用程式的健全狀況。 嚴格來說，此命名空間不會視為組態 API 的一部分。 比方說，追蹤和事件引發便可達成此命名空間中的類別。 |
 | [System.Management.Instrumentation](https://msdn.microsoft.com/library/system.management.instrumentation.aspx)命名空間 | 提供的應用程式公開其管理資訊和潛在取用者透過 Windows Management Instrumentation (WMI) 事件檢測所需的類別。 ASP.NET 健康監視使用 WMI 傳遞事件。 嚴格來說，此命名空間不會視為組態 API 的一部分。 |
 
 ## <a name="reading-from-aspnet-configuration-files"></a>ASP.NET 組態檔讀取
@@ -148,10 +148,10 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 
 &lt;HealthMonitoring&gt;全域的 Web.config 檔案區段包含下列項目：
 
-| **提供者** | 包含提供者的事件檢視器、 WMI 和 SQL Server 設定。 |
+| **providers** | 包含提供者的事件檢視器、 WMI 和 SQL Server 設定。 |
 | --- | --- |
 | **eventMappings** | 包含各種 WebBase 類別的對應。 如果您產生您自己的事件類別，您可以擴充此清單。 產生您自己的事件類別可讓您更精細的資料粒度上您將資訊傳送至的提供者。 例如，您可以設定電子郵件傳送您的自訂事件時傳送到 SQL Server 的未處理例外狀況。 |
-| **規則** | 提供者 eventMappings 的連結。 |
+| **rules** | 提供者 eventMappings 的連結。 |
 | **buffering** | 搭配 SQL Server 和電子郵件提供者，以決定排清至提供者的事件的頻率。 |
 
 以下是全域的 Web.config 檔案中的程式碼範例。
@@ -212,7 +212,7 @@ ASP.NET 2.0 使用事件記錄檔提供者--現成的應用程式定義域啟動
 
 [!code-xml[Main](configuration-and-instrumentation/samples/sample12.xml)]
 
-## <a name="aspnet-20-tracing"></a>ASP.NET 2.0 追蹤
+## <a name="aspnet-20-tracing"></a>ASP.NET 2.0 Tracing
 
 有三個主要的增強功能與 ASP.NET 2.0 中的追蹤。
 
@@ -330,7 +330,7 @@ ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模
 
 | **檔案類型** | **編譯器動作** |
 | --- | --- |
-| .ascx、.master.aspx | 這些檔案會分為標記和來源的程式碼，將會包含任何程式碼和程式碼後置檔案包含&lt;指令碼 runat ="server"&gt;項目。 原始程式碼會編譯為組件，以衍生自雜湊演算法的名稱和組件會放在 Bin 目錄。 這就是任何內嵌程式碼，程式碼用括號 **&lt; %** 和 **% &gt;** 括號，會包含在標記並不會編譯。 與原始程式檔同名的新檔案會建立了包含標記，並放在對應的輸出目錄中。 |
+| .ascx, .aspx, .master | 這些檔案會分為標記和來源的程式碼，將會包含任何程式碼和程式碼後置檔案包含&lt;指令碼 runat ="server"&gt;項目。 原始程式碼會編譯為組件，以衍生自雜湊演算法的名稱和組件會放在 Bin 目錄。 這就是任何內嵌程式碼，程式碼用括號**&lt; %**和**% &gt;**括號，會包含在標記並不會編譯。 與原始程式檔同名的新檔案會建立了包含標記，並放在對應的輸出目錄中。 |
 | .ashx、.asmx | 這些檔案不會編譯，並移到輸出目錄，並不會編譯。 如果您想要編譯的處理常式程式碼，將程式碼放到應用程式中的原始程式碼檔\_程式碼目錄。 |
 | .cs、.vb、.jsl、.cpp （不包括程式碼後置檔案，如稍早所列的檔案類型） | 這些檔案，編譯並包含做為參考它們的組件中的資源。 來源檔案不會複製到輸出目錄。 如果未參考的程式碼檔案，則不會編譯它。 |
 | 自訂的檔案類型 | 這些檔案不會編譯。 這些檔案會複製到對應的輸出目錄。 |
@@ -344,7 +344,7 @@ ASP.NET 編譯工具可以編譯的應用程式中的位置，也就是它會模
 
 | **檔案類型** | **編譯器動作** |
 | --- | --- |
-| .aspx、.asmx、.ashx、.master | 這些檔案會分為標記和來源的程式碼，將會包含任何程式碼和程式碼後置檔案包含&lt;指令碼 runat ="server"&gt;項目。 原始程式碼會編譯為組件，以衍生自雜湊演算法的名稱。 產生的組件會放在 Bin 目錄。 這就是任何內嵌程式碼，程式碼用括號 **&lt; %** 和 **% &gt;** 括號，會包含在標記並不會編譯。 編譯器會建立新的檔案包含與原始程式檔的名稱相同的標記。 這些產生的檔案會放置在 Bin 目錄。 編譯器也會建立檔案與原始程式檔的名稱相同但副檔名為。包含對應資訊的編譯。 。編譯的檔案會放置在對應至原始位置的原始程式檔的輸出目錄。 |
+| .aspx、.asmx、.ashx、.master | 這些檔案會分為標記和來源的程式碼，將會包含任何程式碼和程式碼後置檔案包含&lt;指令碼 runat ="server"&gt;項目。 原始程式碼會編譯為組件，以衍生自雜湊演算法的名稱。 產生的組件會放在 Bin 目錄。 這就是任何內嵌程式碼，程式碼用括號**&lt; %**和**% &gt;**括號，會包含在標記並不會編譯。 編譯器會建立新的檔案包含與原始程式檔的名稱相同的標記。 這些產生的檔案會放置在 Bin 目錄。 編譯器也會建立檔案與原始程式檔的名稱相同但副檔名為。包含對應資訊的編譯。 。編譯的檔案會放置在對應至原始位置的原始程式檔的輸出目錄。 |
 | .ascx | 這些檔案會分割成標記和原始程式碼。 原始程式碼會編譯成組件，並放在 Bin 目錄中，以衍生自雜湊演算法的名稱。 不會產生標記檔案。 |
 | .cs、.vb、.jsl、.cpp （不包括程式碼後置檔案，如稍早所列的檔案類型） | 從.ascx、.ashx 或.aspx 檔案產生的組件所參考的程式碼會編譯成組件，並放置於 Bin 目錄。 會不複製任何原始程式檔。 |
 | 自訂的檔案類型 | 這些檔案會編譯像動態檔案。 根據它們所根據的檔案類型，編譯器可以將對應檔案放在輸出目錄中。 |

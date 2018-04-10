@@ -16,7 +16,7 @@ ms.openlocfilehash: 7b3130ca7d36ffec457e1871fa62c1077b5e3174
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>設定用於 Web 部署的 TFS 組建伺服器
 ====================
@@ -72,9 +72,9 @@ ms.lasthandoff: 04/06/2018
 
 若要安裝通用 web 平台元件，最好是使用[Web Platform Installer](https://go.microsoft.com/?linkid=9805118)。 這可確保您正在安裝每項產品的最新版本，它也會自動偵測並安裝任何必要條件，針對每個產品。 如果是[連絡人管理員](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)解決方案，您應該使用 Web Platform Installer，安裝這些產品和元件：
 
-- **.NET framework 4.0**。 如此才能執行此版本的.NET Framework 所建置的應用程式。
+- **.NET Framework 4.0**. 如此才能執行此版本的.NET Framework 所建置的應用程式。
 - **Web Deployment Tool 2.1 或更新版本**。 這會在您的伺服器上安裝 Web Deploy （和其基礎可執行檔，MSDeploy.exe）。 此程序的一部分，它將會安裝並啟動 Web 部署代理程式服務。 此服務可讓您部署 web 封裝，從遠端電腦。
-- **ASP.NET MVC 3**。 這會安裝您要執行 ASP.NET MVC 3 應用程式的組件。
+- **ASP.NET MVC 3**. 這會安裝您要執行 ASP.NET MVC 3 應用程式的組件。
 
 **若要安裝必要的產品和元件**
 
@@ -89,20 +89,20 @@ ms.lasthandoff: 04/06/2018
     > [!NOTE]
     > Visual Studio 2010 Service Pack 1 可解決的錯誤，可以防止 MSBuild 尋找可執行檔 MSDeploy 錯誤。
 3. 下載並啟動[Web Platform Installer](https://go.microsoft.com/?linkid=9805118)。
-4. 在頂端**Web Platform Installer 3.0**視窗中，按一下 **產品**。
-5. 在左邊視窗中，瀏覽窗格中按一下 **架構**。
-6. 在**Microsoft.NET Framework 4**資料列，如果尚未安裝.NET Framework，按一下 **新增**。
+4. 在頂端**Web Platform Installer 3.0**視窗中，按一下 [**產品**。
+5. 在左邊視窗中，瀏覽窗格中按一下 [**架構**。
+6. 在**Microsoft.NET Framework 4**資料列，如果尚未安裝.NET Framework，按一下 [**新增**。
 
     > [!NOTE]
     > 您可能已安裝.NET Framework 4.0，透過 Windows Update。 如果已安裝的產品或元件，Web Platform Installer 將會指示這取代**新增**按鈕的文字**已安裝**。
 
     ![](configuring-a-tfs-build-server-for-web-deployment/_static/image2.png)
-7. 在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 **新增**。
+7. 在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 [**新增**。
 8. 在導覽窗格中，按一下**伺服器**。
-9. 在**Web 部署工具 2.1**資料列中，按一下 **新增**。
+9. 在**Web 部署工具 2.1**資料列中，按一下 [**新增**。
 10. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。
 11. 檢閱授權條款，然後如果您同意條款，按一下**我接受**。
-12. 當安裝完成時，按一下 **完成**，然後關閉**Web Platform Installer 3.0**視窗。
+12. 當安裝完成時，按一下 [**完成**，然後關閉**Web Platform Installer 3.0**視窗。
 
 > [!NOTE]
 > 如果您的部署程序包含使用 VSDBCMD.exe 或 SQLCMD.exe 等工具，您必須確定這些已安裝在您的組建伺服器上。 VSDBCMD.exe 是 Visual Studio 工具，而且通常會新增至伺服器安裝 Team Foundation Build 時。 SQLCMD.exe 是 SQL Server 的工具。 您可以下載從 SQLCMD.exe 單機版[Microsoft SQL Server 2008 R2 功能套件](https://go.microsoft.com/?linkid=9805134)頁面。

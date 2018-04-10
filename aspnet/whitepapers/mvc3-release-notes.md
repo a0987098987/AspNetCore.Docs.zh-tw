@@ -16,7 +16,7 @@ ms.openlocfilehash: 0bfe9cdc215226457ccfafff2b85ace87325b91b
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -91,7 +91,7 @@ ms.lasthandoff: 04/06/2018
     - [Bug 修正](#0.1__Toc274034228)
     - [重大變更](#0.1__Toc274034229)
     - [已知問題](#0.1__Toc274034230)
-- [Disclaimer](#0.1__Toc274034231)
+- [免責聲明](#0.1__Toc274034231)
 
 <a id="overview"></a>
 ## <a name="overview"></a>總覽
@@ -165,7 +165,7 @@ ASP.NET MVC 3 可以在同一部電腦，讓您彈性選擇何時要升級至 AS
     - /Views/Web.config
     - /packages.config
     - /scripts/\*.js
-    - /Content/themes/\*.\*
+    - /內容/主題/\*。\*
 3. 複製*封裝*根目錄中的空白 ASP.NET MVC 3 專案方案根目錄中的方案時，這是方案的.sln 檔案所在的目錄中的資料夾。
 4. 如果您的 ASP.NET MVC 2 專案會包含任何區域，將 /Views/Web.config 檔案複製*檢視*之每個區域的資料夾。
 5. 在這兩個 Web.config 檔案在 ASP.NET MVC 2 專案中，全域搜尋並取代 ASP.NET MVC 版本。 搜尋下列文字： 
@@ -178,7 +178,7 @@ ASP.NET MVC 3 可以在同一部電腦，讓您彈性選擇何時要升級至 AS
 6. 在 [方案總管] 中，刪除其參考*System.Web.Mvc* （指向 DLL 從第 2 版），然後將參考加入*System.Web.Mvc* (v3.0.0.0)。
 7. 將參考加入至 System.Web.WebPages.dll 和 system.web.helpers.dll 的參考。 這些組件位於下列資料夾： 
 
-    - %ProgramFiles%\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies
+    - %ProgramFiles%\ Microsoft ASP.NET\ASP.NET MVC 3\Assemblies
     - %ProgramFiles%\ Microsoft ASP.NET\ASP.NET Web Pages\v1.0\Assemblies
 8. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，並選取 卸載專案。 專案名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。
 9. 找出*ProjectTypeGuids*項目和取代 {F85E285D-A4E0-4152-9332-AB1D724D3325} 為 {E53F8FEA-EAE0-44A6-8774-FFD645390401}。
@@ -862,7 +862,7 @@ Razor 檢視沒有 IntelliSense 支援，也不語法反白顯示。 它預期�
 
 [!code-xml[Main](mvc3-release-notes/samples/sample43.xml)]
 
-## <a id="0.1__Toc274034231"></a>  Disclaimer
+## <a id="0.1__Toc274034231"></a>  免責聲明
 
 © 2011 Microsoft Corporation. 著作權所有，並保留一切權利。 本文件係"做為-是。 」 資訊及檢視在此文件，包括 URL 及其他網際網路網站參考資料，可能會變更恕不另行通知。 貴用戶須自行承擔使用風險。
 

@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn
 msc.type: content
 ms.openlocfilehash: bc5f40746ad6b1ed8a74bcb75def9ff8f08fb789
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -1046,7 +1046,7 @@ jQuery 1.2.0 版本移轉
 
 下列版本的[ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") CDN 上裝載啟動程序 TouchCarousel 版本：
 
-#### <a name="bootstrap-touchcarousel-version-080"></a>Bootstrap TouchCarousel version 0.8.0
+#### <a name="bootstrap-touchcarousel-version-080"></a>啟動程序 TouchCarousel 0.8.0 版
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js

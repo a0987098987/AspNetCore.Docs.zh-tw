@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
-title: "在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護 |Microsoft 文件"
+title: 在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護 |Microsoft 文件
 author: Rick-Anderson
-description: "跨站台要求偽造 （也稱為 XSRF 或 CSRF） 是 web 裝載的應用程式讓惡意網站可能會影響 interacti 攻擊..."
+description: 跨站台要求偽造 （也稱為 XSRF 或 CSRF） 是 web 裝載的應用程式讓惡意網站可能會影響 interacti 攻擊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2013
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 6cf30daa7ed966b11405cec715c5bc803b567249
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護
 ====================
@@ -108,7 +108,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 - 已交換的工作階段權杖和欄位語彙基元。
 - 工作階段權杖和欄位語彙基元包含不相符的安全性權杖。
 - 欄位語彙基元中內嵌使用者名稱不符合目前已登入之使用者的使用者名稱。
-- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* 方法會傳回*false*。
+- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)*方法會傳回*false*。
 
 防 XSRF 設備可能也會執行其他檢查權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS 宣告型驗證](#_WIF_ACS)和**[組態和擴充性](#_Configuration_and_extensibility)**區段，如需詳細資訊。
 
@@ -139,8 +139,8 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 當產生或驗證權杖時，ASP.NET Web 堆疊執行階段會在執行階段嘗試繫結的型別：
 
-- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`（適用於 WIF SDK。)
-- `System.Security.Claims.ClaimsIdentity`（適用於.NET 4.5)。
+- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35` （適用於 WIF SDK。)
+- `System.Security.Claims.ClaimsIdentity` （適用於.NET 4.5)。
 
 如果這些型別存在，且目前使用者的*IIIIdentity*下列其中一種實作或子類型、 身分識別提供者 （名稱識別項），將會使用防 XSRF 設備 tuple 取代產生時，使用者名稱和驗證權杖。 如果沒有這類 tuple 存在時，要求將會失敗，開發人員說明如何設定來了解使用中的特定宣告為基礎的驗證機制的防 XSRF 系統發生錯誤。 請參閱**[組態和擴充性](#_Configuration_and_extensibility)**節的詳細資訊。
 
@@ -175,7 +175,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 ### <a name="iantiforgeryadditionaldataprovider"></a>IAntiForgeryAdditionalDataProvider
 
-*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* 類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
+*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)*類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
 
 同樣地， *ValidateAdditionalData*每次呼叫方法來驗證欄位語彙基元時，並已內嵌在權杖中的 [詳細資料] 字串傳遞給方法。 驗證常式無法實作的逾時 （藉由檢查目前的時間針對建立語彙基元時，已儲存的時間）、 nonce 檢查常式，或任何其他所需的邏輯。
 

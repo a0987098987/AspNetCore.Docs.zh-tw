@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 中的檢視"
+title: ASP.NET Core MVC 中的檢視
 author: ardalis
-description: "了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料呈現和使用者互動。"
+description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料呈現和使用者互動。
 manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: bab08e75652c75b371438581d6e9f56541844a61
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/30/2018
 
 會在 *Views/[ControllerName]* 資料夾中建立控制器特有的檢視。 在控制器之間共用的檢視會放在 *Views/Shared* 資料夾中。 若要建立檢視，請新增檔案，並讓它與建立關聯的控制器動作同名，且副檔名為 *.cshtml*。 若要在 *Home* 控制器中建立與 *About* 動作對應的檢視，請在 *Views/Home* 資料夾中建立 *About.cshtml* 檔案：
 
-[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
 *Razor* 標記的開頭為 `@` 符號。 在大括弧 (`{ ... }`) 所設定的 [Razor 程式碼區塊](xref:mvc/views/razor#razor-code-blocks)內放入 C# 程式碼，即可執行 C# 陳述式。 例如，請參閱上方將 "About" 指派給 `ViewData["Title"]`。 只要使用 `@` 符號參考值，就可以在 HTML 內顯示值。 請參閱上方 `<h2>` 和 `<h3>` 項目的內容。
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/30/2018
 
 *HomeController.cs*
 
-[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
+[!code-csharp[](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
 傳回此動作時，最後一個區段中所顯示的 *About.cshtml* 檢視會轉譯為下列網頁：
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 01/30/2018
 
 如果您使用 `return View();` 以隱含方式傳回 `ViewResult`，或使用 `return View("<ViewName>");` 將檢視名稱明確地傳遞至 `View` 方法，則不重要。 在這兩種情況下，檢視探索會依此順序搜尋相符的檢視檔案：
 
-   1. *Views/\[ControllerName]\[ViewName].cshtml*
+   1. *Views/\[ControllerName]/\[ViewName].cshtml*
    1. *Views/Shared/\[ViewName].cshtml*
 
 可以提供檢視檔案路徑，而不是檢視名稱。 如果使用從應用程式根目錄開始的絕對路徑 (選擇性地開始於 "/" 或 "~/")，則必須指定 *.cshtml* 副檔名：

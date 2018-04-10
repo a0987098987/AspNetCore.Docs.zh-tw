@@ -16,7 +16,7 @@ ms.openlocfilehash: 4073f349c7965a89b39a4b1b672f0e84fc96f287
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="user-based-authorization-vb"></a>使用者為基礎的授權 (VB)
 ====================

@@ -16,7 +16,7 @@ ms.openlocfilehash: 48e656a0c394b9db5baaec9c557ec38c4020d41b
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-create-method-and-create-view"></a>加入建立方法，並建立檢視
 ====================

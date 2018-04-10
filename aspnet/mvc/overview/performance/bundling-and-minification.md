@@ -16,7 +16,7 @@ ms.openlocfilehash: 001ebf89cda66a50cddcd7e4944f27b9396d4450
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="bundling-and-minification"></a>統合及縮製
 ====================
@@ -55,7 +55,7 @@ ms.lasthandoff: 04/06/2018
 
 移除註解和不必要的空白字元，除了下列參數和變數名稱已重新命名 （縮短），如下所示：
 
-| **原始** | **重新命名** |
+| **原始** | **Renamed** |
 | --- | --- |
 | imageTagAndImageID | n |
 | imageContext | t |
@@ -69,7 +69,7 @@ ms.lasthandoff: 04/06/2018
 | --- | --- | --- | --- |
 | **檔案要求** | 9 | 34 | 256% |
 | **KB Sent** | 3.26 | 11.92 | 266% |
-| **KB Received** | 388.51 | 530 | 36% |
+| **接收的 KB** | 388.51 | 530 | 36% |
 | **載入時間** | 510 MS | 780 MS | 53% |
 
 傳送的位元組有大幅降低與結合在一起的瀏覽器相當詳細資訊，以套用要求的 HTTP 標頭。 接收的位元組減少不一樣大因為最大檔案 (*Scripts\jquery-ui-1.8.11.min.js*和*Scripts\jquery-1.7.1.min.js*) 已經縮短。 注意： 上使用的範例程式時機[Fiddler](http://www.fiddler2.com/fiddler2/)工具來模擬慢速網路。 (從 Fiddler**規則**功能表上，選取**效能**然後**模擬數據機速度**。)
@@ -170,7 +170,7 @@ ms.lasthandoff: 04/06/2018
 
 | **Call** | **加入檔案或引發例外狀況** |
 | --- | --- |
-| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
+| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js，ToggleDiv.js，ToggleImg.js* |
 | Include("~/Scripts/Common/T\*.js") | 無效的模式例外狀況。 前置詞或後置詞只允許萬用字元。 |
 | Include("~/Scripts/Common/\*og.\*") | 無效的模式例外狀況。 允許只能有一個萬用字元。 |
 | "Include("~/Scripts/Common/T\*") | *ToggleDiv.js ToggleImg.js* |

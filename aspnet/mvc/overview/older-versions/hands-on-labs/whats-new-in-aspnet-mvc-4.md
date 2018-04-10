@@ -16,7 +16,7 @@ ms.openlocfilehash: 977a6b5a84825ebd087752dcc2ebc0c5410e1657
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>ASP.NET MVC 4 中最新消息
 
@@ -66,7 +66,7 @@ ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.N
 
 若要安裝的程式碼片段：
 
-1. 開啟 Windows 檔案總管 視窗並瀏覽至實驗室**Source\Setup**資料夾。
+1. 開啟 Windows 檔案總管] 視窗並瀏覽至實驗室**Source\Setup**資料夾。
 2. 按兩下**Setup.cmd**安裝 Visual Studio 程式碼片段的這個資料夾中的檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 a： 使用程式碼片段](#AppendixA)&quot;。
@@ -100,7 +100,7 @@ ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.N
 #### <a name="task-1---exploring-the-internet-application-template"></a>工作 1-瀏覽網際網路應用程式範本
 
 1. 開啟**Visual Studio**。
-2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇  **ASP.NET MVC 4 Web 應用程式。** 將專案命名**PhotoGallery**、 選取的位置 （或保留預設值），按一下 **確定**。
+2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇 [ **ASP.NET MVC 4 Web 應用程式。** 將專案命名**PhotoGallery**、 選取的位置 （或保留預設值），按一下 [**確定**。
 
     > [!NOTE]
     > 您稍後將會自訂 PhotoGallery ASP.NET MVC 4 方案，您現在建立。
@@ -126,9 +126,9 @@ ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.N
 
     *ASP.NET MVC 4 重新設定樣式範本*
 
-    ![新的連絡人 頁面](whats-new-in-aspnet-mvc-4/_static/image4.png "新連絡人頁面")
+    ![新的連絡人] 頁面](whats-new-in-aspnet-mvc-4/_static/image4.png "新連絡人頁面")
 
-    *新的連絡人 頁面*
+    *新的連絡人] 頁面*
 
     **調整呈現**
 
@@ -194,11 +194,11 @@ ASP.NET MVC 4 是用於建置使用信譽良好的設計模式與強大的 ASP.N
      > 您可以取得有關 KnockOutJS 此連結中的程式庫的詳細資訊： [ [ http://learn.knockoutjs.com/ ](http://learn.knockoutjs.com/) ](http://learn.knockoutjs.com/)。 此外，您可以了解 jQuery 和 jQuery UI 中[ [ http://docs.jquery.com/ ](http://docs.jquery.com/) ](http://docs.jquery.com/)。
 
 <a id="Task_2_-_Exploring_the_Mobile_Application_Template"></a>
-#### <a name="task-2---exploring-the-mobile-application-template"></a>工作 2-瀏覽 行動應用程式範本
+#### <a name="task-2---exploring-the-mobile-application-template"></a>工作 2-瀏覽 [行動應用程式範本
 
 ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器。 此範本具有相同的應用程式結構，為網際網路應用程式範本 （請注意，控制器的程式碼是幾乎完全相同），但其樣式已修改為在觸控式行動裝置中正確轉譯。
 
-1. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇  **ASP.NET MVC 4 Web 應用程式。** 為專案名稱， **PhotoGallery.Mobile**、 選取的位置 （或保留預設值），選取&quot;將加入至方案&quot;按一下**確定**。
+1. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇 [ **ASP.NET MVC 4 Web 應用程式。** 為專案名稱， **PhotoGallery.Mobile**、 選取的位置 （或保留預設值），選取&quot;將加入至方案&quot;按一下**確定**。
 2. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**行動應用程式**專案範本，然後按一下**確定**。 請確定您已選取 Razor 檢視引擎。
 
     ![建立新 ASP.NET MVC 4 行動應用程式](whats-new-in-aspnet-mvc-4/_static/image11.png "建立新 ASP.NET MVC 4 行動應用程式")
@@ -227,7 +227,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
     *專案範本頁面，在行動裝置*
 8. 新的範本也會使用**檢視區 meta 標記**。 大部分行動瀏覽器定義虛擬瀏覽器視窗的寬度或&quot;檢視區&quot;，其大於行動裝置的實際寬度。 這可讓行動瀏覽器顯示整個網頁內虛擬顯示器。 **檢視區 meta 標記**可讓 web 開發人員在行動裝置上設定的寬度、 高度和小數位數的瀏覽器區域**。** 行動應用程式的 ASP.NET MVC 4 範本將檢視區設定為裝置寬度 (&quot;寬度 = 裝置寬度&quot;) 中的版面配置範本 (*_layout.cshtml\_Layout.cshtml*)，如此所有頁面會有其檢視區設定的裝置的螢幕寬度。 請注意的檢視區 meta 標記，不會變更預設瀏覽器檢視。
-9. 開啟 **\_Layout.cshtml**，位於**檢視 |共用**資料夾和註解的檢視區 meta 標記。 執行應用程式中，如果不是已開啟，且簽出差異。
+9. 開啟** \_Layout.cshtml**，位於**檢視 |共用**資料夾和註解的檢視區 meta 標記。 執行應用程式中，如果不是已開啟，且簽出差異。
 
 
 ~~~
@@ -260,7 +260,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 > 媒體查詢的基本格式為： @media \[範圍： 所有 | 掌上型 | 列印 | 投影 | 螢幕\]([屬性： 值] 和...[屬性： 值]）
 
 
-媒體查詢的範例： &gt;  <strong>@media所有和 (最大寬度： 1000px) 和 (最小寬度： 700px) {}:</strong> 700px 和 1000px 之間所有解析的。
+媒體查詢的範例： &gt; <strong> @media所有和 (最大寬度： 1000px) 和 (最小寬度： 700px) {}:</strong> 700px 和 1000px 之間所有解析的。
 
 > <strong>@media 螢幕和 (最小寬度： 400px) 和 (最大寬度： 700px) {...}:</strong>只針對螢幕。 解析度必須介於 400 到 700px。
 > 
@@ -273,7 +273,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
 1. 開啟**PhotoGallery.sln**方案，您必須建立在工作 1，並選取**PhotoGallery**專案。 按**F5**執行解決方案。
 2. 調整瀏覽器的寬度，設定 windows，一半或少於原始大小的四分之一。 請注意，標頭中的項目會發生什麼事： 某些項目不會出現在標頭的可見區域。
-3. 開啟<strong>Site.css</strong>檔從 Visual Studio 方案總管 中，位於<strong>內容</strong>專案資料夾。 按<strong>CTRL + F</strong>開啟 Visual Studio 整合式的搜尋，和寫入<strong>@media</strong>找出<strong>CSS 媒體查詢</strong>。
+3. 開啟<strong>Site.css</strong>檔從 Visual Studio 方案總管] 中，位於<strong>內容</strong>專案資料夾。 按<strong>CTRL + F</strong>開啟 Visual Studio 整合式的搜尋，和寫入<strong> @media </strong>找出<strong>CSS 媒體查詢</strong>。
 
     此範本中定義的媒體查詢條件適用於以這種方式： 當瀏覽器視窗大小低於**850 px**，套用的 CSS 規則可用來定義在這個媒體區塊內。
 
@@ -314,9 +314,9 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 在這項工作，您將建立相片服務將會顯示在圖庫中的內容擷取來源的模擬。 若要這樣做，您將加入新的控制站，只會傳回 JSON 檔案，含有每張相片的資料。
 
 1. 開啟**Visual Studio**如果尚未開啟。
-2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇  **ASP.NET MVC 4 Web 應用程式。** 將專案命名**PhotoGallery**、 選取的位置 （或保留預設值），按一下 **確定**。 或者，您可以繼續使用您現有的 ASP.NET MVC 4**網際網路應用程式**方案從**練習 1**並略過下一個步驟。
+2. 選取**檔案 |新 |專案**功能表命令。 在**新專案**對話方塊中，選取**Visual C# |Web**在左窗格中的範本樹狀結構，然後選擇 [ **ASP.NET MVC 4 Web 應用程式。** 將專案命名**PhotoGallery**、 選取的位置 （或保留預設值），按一下 [**確定**。 或者，您可以繼續使用您現有的 ASP.NET MVC 4**網際網路應用程式**方案從**練習 1**並略過下一個步驟。
 3. 在**新增 ASP.NET MVC 4 專案**對話方塊中，選取**網際網路應用程式**專案範本，然後按一下**確定**。 請確定您具有 Razor 檢視引擎為選取。
-4. 在**方案總管 中**，以滑鼠右鍵按一下**應用程式\_資料**您的專案，然後選取資料夾**新增 |現有項目**。 瀏覽至**Source\Assets\App\_資料**本實驗室的資料夾並加入**Photos.json**檔案。
+4. 在**方案總管] 中**，以滑鼠右鍵按一下**應用程式\_資料**您的專案，然後選取資料夾**新增 |現有項目**。 瀏覽至**Source\Assets\App\_資料**本實驗室的資料夾並加入**Photos.json**檔案。
 5. 建立新的控制站名稱**PhotoController**。 若要這樣做，以滑鼠右鍵按一下**控制器**資料夾中，移至**新增**選取**控制站。** 完成控制站名稱，請將保留**空白的 MVC 控制器**範本，然後按一下**新增**。
 
     ![加入 PhotoController](whats-new-in-aspnet-mvc-4/_static/image19.png "加入 PhotoController")
@@ -380,7 +380,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 ~~~
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample8.cshtml)]
 ~~~
-8. 在**方案總管 中**，以滑鼠右鍵按一下**內容**您的專案，然後選取資料夾**新增 |現有項目**。 瀏覽至**Source\Assets\Content**本實驗室的資料夾並加入**Site.css**檔案。 您必須確認其取代。 如果您有**Site.css**檔案開啟，您必須確認也重新載入檔案。
+8. 在**方案總管] 中**，以滑鼠右鍵按一下**內容**您的專案，然後選取資料夾**新增 |現有項目**。 瀏覽至**Source\Assets\Content**本實驗室的資料夾並加入**Site.css**檔案。 您必須確認其取代。 如果您有**Site.css**檔案開啟，您必須確認也重新載入檔案。
 9. 開啟檔案總管，並複製整個**相片**資料夾位於下面**Source\Assets**本實驗室中 [方案總管] 中的專案根資料夾的資料夾。
 10. 執行應用程式。 您現在應該會看到顯示相片圖庫中的 [首頁] 頁面。
 
@@ -403,7 +403,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-   3. 最後，按一下 建置方案**建置** | **建置方案**。
+   3. 最後，按一下 [建置方案**建置** | **建置方案**。
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
@@ -426,7 +426,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
     此命令會安裝 jQuery Mobile 和一些協助程式檔案，包括下列：
 
     - **Views/Shared/\_Layout.Mobile.cshtml**： 為 jQuery Mobile 架構版面配置最佳化的較小的螢幕。 當網站從行動裝置瀏覽器收到要求時，它會取代原始的版面配置 (\_Layout.cshtml) 換成這一個。
-    - 檢視切換程式元件： 組成**Views/Shared/\_ViewSwitcher.cshtml**部分檢視和**ViewSwitcherController.cs**控制站。 此元件會顯示行動瀏覽器可讓使用者切換到桌面版本 頁面的連結。  
+    - 檢視切換程式元件： 組成**Views/Shared/\_ViewSwitcher.cshtml**部分檢視和**ViewSwitcherController.cs**控制站。 此元件會顯示行動瀏覽器可讓使用者切換到桌面版本] 頁面的連結。  
         ![相片圖庫的行動支援專案](whats-new-in-aspnet-mvc-4/_static/image23.png "相片圖庫專案使用的行動支援")
 
         *相片圖庫專案使用的行動支援*
@@ -444,7 +444,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
     您會注意到您的應用程式會尋找在 Windows Phone 模擬器中，不同 jQuery.Mobile.MVC 已顯示針對行動裝置最佳化的檢視之專案中建立新的資產。
 
-    請注意上方的電話，顯示 切換到桌面檢視連結的訊息。 此外，  **\_Layout.Mobile.cshtml**由您已安裝的封裝所建立的配置包括應用程式中不同的版面配置。
+    請注意上方的電話，顯示 [切換到桌面檢視連結的訊息。 此外， ** \_Layout.Mobile.cshtml**由您已安裝的封裝所建立的配置包括應用程式中不同的版面配置。
 
     > [!NOTE]
     > 目前為止，沒有任何連結回到行動檢視。 它將會包含在較新版本。
@@ -459,7 +459,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 
 在這項工作，您將建立索引檢視的行動裝置版的行動裝置的較佳 appareance 調整的內容。
 
-1. 複製**Views\Home\Index.cshtml**檢視，並將它貼到 建立複本，請重新命名新的檔案， **Index.Mobile.cshtml**。
+1. 複製**Views\Home\Index.cshtml**檢視，並將它貼到 [建立複本，請重新命名新的檔案， **Index.Mobile.cshtml**。
 2. 開啟新建立**Index.Mobile.cshtml**檢視，並取代現有&lt;ul&gt;標記這個程式碼。 如此一來，您將會更新&lt;ul&gt;使用從 jQuery 行動的佈景主題的 jQuery 行動資料的註解的標記。
 
 
@@ -479,7 +479,7 @@ ASP.NET MVC 4 可加速開發行動應用程式的網站和平板電腦瀏覽器
 > You can learn more about jQuery Mobile conventions in the project documentation: [[http://jquerymobile.com/demos/1.1.1/](http://jquerymobile.com/demos/1.1.1/)](http://jquerymobile.com/demos/1.1.1/)
 ~~~
 3. 按**CTRL + S**儲存的變更。
-4. 切換至**Windows Phone 模擬器**和重新整理網站。 請注意新的外觀與風格的組件庫 清單中，為新的搜尋方塊位於最上方。 然後，在 [搜尋] 方塊中輸入文字 (例如， **Tulips**) 才會開始搜尋相片圖庫中。
+4. 切換至**Windows Phone 模擬器**和重新整理網站。 請注意新的外觀與風格的組件庫] 清單中，為新的搜尋方塊位於最上方。 然後，在 [搜尋] 方塊中輸入文字 (例如， **Tulips**) 才會開始搜尋相片圖庫中。
 
     ![使用已篩選清單檢視樣式的組件庫](whats-new-in-aspnet-mvc-4/_static/image25.png "使用 listview 樣式已篩選的組件庫")
 
@@ -509,7 +509,7 @@ jQuery Mobile 預設佈景主題包含 5 個樣本指定字母 (a、 b、 c、 d
 在這項工作，您將更新要使用與預設值不同的佈景主題的行動配置。
 
 1. 切換回 Visual Studio。
-2. 開啟 **\_Layout.Mobile.cshtml**檔案位於**_layout.cshtml**。
+2. 開啟** \_Layout.Mobile.cshtml**檔案位於**_layout.cshtml**。
 3. 尋找 div 項目設定為資料角色&quot;頁面&quot;並更新**資料佈景主題**至&quot; **e**&quot;。
 
 
@@ -526,7 +526,7 @@ jQuery Mobile 預設佈景主題包含 5 個樣本指定字母 (a、 b、 c、 d
 <a id="Task_4_-_Using_the_View-Switcher_Component_and_the_Browser_Overriding_Features"></a>
 #### <a name="task-4---using-the-view-switcher-component-and-the-browser-overriding-features"></a>工作 4-使用檢視切換程式元件和瀏覽器覆寫功能
 
-行動裝置最佳化網頁的慣例是頁面的加入連結，其文字是頁面的像桌面檢視或完整的網站模式可讓使用者切換到桌面版本。 JQuery.Mobile.MVC 封裝包含的範例，**檢視切換程式**元件用於此用途 **\_Layout.Mobile.cshtml**檢視。
+行動裝置最佳化網頁的慣例是頁面的加入連結，其文字是頁面的像桌面檢視或完整的網站模式可讓使用者切換到桌面版本。 JQuery.Mobile.MVC 封裝包含的範例，**檢視切換程式**元件用於此用途** \_Layout.Mobile.cshtml**檢視。
 
 ![連結切換到桌面檢視](whats-new-in-aspnet-mvc-4/_static/image28.png "連結切換到桌面檢視")
 
@@ -537,14 +537,14 @@ jQuery Mobile 預設佈景主題包含 5 個樣本指定字母 (a、 b、 c、 d
 在這個工作中，您將探索加入 jQuery.Mobile.MVC 和新的瀏覽器覆寫功能的 ASP.NET MVC 4 檢視切換器的範例實作。
 
 1. 切換回 Visual Studio。
-2. 開啟 **\_Layout.Mobile.cshtml**檢視位於**_layout.cshtml**資料夾，請注意為部分檢視所參考的檢視切換程式元件。
+2. 開啟** \_Layout.Mobile.cshtml**檢視位於**_layout.cshtml**資料夾，請注意為部分檢視所參考的檢視切換程式元件。
 
     ![使用檢視切換程式元件的版面配置行動](whats-new-in-aspnet-mvc-4/_static/image29.png "行動使用檢視切換程式元件的版面配置")
 
     *行動裝置使用檢視切換程式元件的版面配置*
-3. 開啟 **\_ViewSwitcher.cshtml**部分檢視。
+3. 開啟** \_ViewSwitcher.cshtml**部分檢視。
 
-    部分檢視會使用新的方法**ViewContext.HttpContext.GetOverriddenBrowser()**判斷 web 要求的來源，並顯示對應的連結，以切換至 桌面 或 行動檢視。
+    部分檢視會使用新的方法**ViewContext.HttpContext.GetOverriddenBrowser()**判斷 web 要求的來源，並顯示對應的連結，以切換至 [桌面] 或 [行動檢視。
 
     **GetOverridenBrowser**方法會傳回**HttpBrowserCapabilitiesBase**對應於目前針對要求設定的使用者代理程式執行個體 （實際或覆寫）。 您可以使用此值來取得屬性，例如**IsMobileDevice**。
 
@@ -567,15 +567,15 @@ jQuery Mobile 預設佈景主題包含 5 個樣本指定字母 (a、 b、 c、 d
 
 1. 重新整理中的站台**Windows Phone 模擬器**。
 2. 按一下**桌面檢視**頂端的組件庫的連結。 請注意在桌面的檢視，以讓您回到 [行動] 檢視中沒有任何檢視切換程式。
-3. 返回 Visual Studio] 和 [開啟 **\_Layout.cshtml**檢視。
-4. 尋找登入區段，然後插入要呈現的呼叫 **\_ViewSwitcher**下方的部分檢視 **\_LogOnPartial**部分檢視。 然後按下**CTRL + S**儲存的變更。
+3. 返回 Visual Studio] 和 [開啟** \_Layout.cshtml**檢視。
+4. 尋找登入區段，然後插入要呈現的呼叫** \_ViewSwitcher**下方的部分檢視** \_LogOnPartial**部分檢視。 然後按下**CTRL + S**儲存的變更。
 
 
 ~~~
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample14.cshtml)]
 ~~~
 5. 按**CTRL + S**儲存的變更。
-6. 重新整理頁面，在 Windows Phone 模擬器中的，按兩下 放大螢幕。 請注意，現在顯示在首頁上**行動檢視**從行動切換到桌面檢視的連結。
+6. 重新整理頁面，在 Windows Phone 模擬器中的，按兩下 [放大螢幕。 請注意，現在顯示在首頁上**行動檢視**從行動切換到桌面檢視的連結。
 
     ![檢視在桌面檢視中呈現的切換器](whats-new-in-aspnet-mvc-4/_static/image32.png "在桌面檢視中呈現的檢視切換程式")
 
@@ -622,8 +622,8 @@ After this code runs, when an iPhone browser generates a request, your applicati
 > [!NOTE]
 > This way of testing the request for iPhone has been simplified for demo purposes and might not work as expected for every iPhone user agent string (for example test is case sensitive).
 ~~~
-4. 建立一份 **\_Layout.Mobile.cshtml**檔案**_layout.cshtml**資料夾，並重新命名複製到&quot;  **\_Layout.iPhone.csthml**&quot;.
-5. 開啟 **\_Layout.iPhone.csthml**您在上一個步驟中建立。
+4. 建立一份** \_Layout.Mobile.cshtml**檔案**_layout.cshtml**資料夾，並重新命名複製到&quot; ** \_Layout.iPhone.csthml**&quot;.
+5. 開啟** \_Layout.iPhone.csthml**您在上一個步驟中建立。
 6. 尋找 div 項目資料角色屬性設定為**頁面**並變更**資料佈景主題**屬性&quot; &quot;。
 
 
@@ -659,7 +659,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
-   3. 最後，按一下 建置方案**建置** | **建置方案**。
+   3. 最後，按一下 [建置方案**建置** | **建置方案**。
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
@@ -687,7 +687,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 ~~~
 6. 取代**用戶端。GetAsync()**呼叫具有完整的非同步版本使用 await 關鍵字，如下所示。
 
-    (程式碼片段- *ASP.NET MVC 4 實驗室-Ex04-GetAsync*)
+    (Code Snippet - *ASP.NET MVC 4 Lab - Ex04 - GetAsync*)
 
 
 ~~~
@@ -700,7 +700,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 ~~~
 7. 程式碼，以繼續新的程式碼行取代成如下所示的非同步實作
 
-    (程式碼片段- *ASP.NET MVC 4 實驗室-Ex04-ReadAsStringAsync*)
+    (Code Snippet - *ASP.NET MVC 4 Lab - Ex04 - ReadAsStringAsync*)
 
 
 ~~~
@@ -808,7 +808,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 1. 將游標放在您想要插入的程式碼。
 2. 開始鍵入片段名稱 （不含空格或連字號）。
 3. 觀察 IntelliSense 會顯示比對程式碼片段的名稱。
-4. 選取正確的程式碼片段 （或直到選取整個程式碼片段名稱時，保留 輸入）。
+4. 選取正確的程式碼片段 （或直到選取整個程式碼片段名稱時，保留 [輸入）。
 5. 按下 Tab 鍵兩次的游標位置插入程式碼片段。
 
 ![開始輸入程式碼片段名稱](whats-new-in-aspnet-mvc-4/_static/image39.png "開始鍵入片段名稱")
@@ -829,9 +829,9 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 2. 選取**插入程式碼片段**後面**我的程式碼片段**。
 3. 透過在按一下挑選清單中，從相關的程式碼片段。
 
-![以滑鼠右鍵按一下您要插入程式碼片段，然後選取 插入程式碼片段](whats-new-in-aspnet-mvc-4/_static/image42.png "以滑鼠右鍵按一下您要插入程式碼片段，然後選取 插入程式碼片段")
+![以滑鼠右鍵按一下您要插入程式碼片段，然後選取 [插入程式碼片段](whats-new-in-aspnet-mvc-4/_static/image42.png "以滑鼠右鍵按一下您要插入程式碼片段，然後選取 [插入程式碼片段")
 
-*以滑鼠右鍵按一下您要插入程式碼片段，然後選取 插入程式碼片段*
+*以滑鼠右鍵按一下您要插入程式碼片段，然後選取 [插入程式碼片段*
 
 ![透過在按一下挑選清單中，從相關的程式碼片段](whats-new-in-aspnet-mvc-4/_static/image43.png "上它即可挑選清單中，從相關的程式碼片段")
 
@@ -842,11 +842,11 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 <a id="Appendix_B_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-b-installing-visual-studio-express-2012-for-web"></a>附錄 b： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用** [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) **. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
 1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
-3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
+3. 一次**Web Platform Installer**開啟時，按一下 [**安裝**，啟動安裝程式。
 
     ![安裝 Visual Studio Express](whats-new-in-aspnet-mvc-4/_static/image44.png "安裝 Visual Studio Express")
 
@@ -867,7 +867,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 
     *安裝已完成*
 7. 按一下**結束**關閉 Web Platform Installer。
-8. 若要開啟 Visual Studio Express for Web，請移至**啟動**畫面上，並開始書寫&quot; **VS Express**&quot;，然後按一下  **VS Express for Web**並排顯示。
+8. 若要開啟 Visual Studio Express for Web，請移至**啟動**畫面上，並開始書寫&quot; **VS Express**&quot;，然後按一下 [ **VS Express for Web**並排顯示。
 
     ![VS Express for Web 方塊](whats-new-in-aspnet-mvc-4/_static/image48.png)
 
@@ -887,7 +887,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 
 1. 移至[ [ https://go.microsoft.com/?linkid=9809776 ](https://go.microsoft.com/?linkid=9809776) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>WebMatrix 2</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
-3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
+3. 一次**Web Platform Installer**開啟時，按一下 [**安裝**，啟動安裝程式。
 
     ![安裝 WebMatrix 2](whats-new-in-aspnet-mvc-4/_static/image49.png "安裝 WebMatrix 2")
 
@@ -953,7 +953,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 
     *瀏覽方式*
 3. 在&quot;瀏覽&quot;] 對話方塊中，按一下 [**新增**。
-4. 在&quot;新增程式&quot; 對話方塊中，使用下列值：
+4. 在&quot;新增程式&quot;] 對話方塊中，使用下列值：
 
    - <strong>程式</strong>: C:\Users\*{CurrentUser}<em>\AppData\Local\Microsoft\WebMatrix\Extensions\20\iPhoneSimulator\ElectricMobileSim\ElectricMobileSim.exe * （據以更新路徑）。</em>
    - **引數**: &quot;1&quot;
@@ -997,11 +997,11 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 3. 按一下**計算** | **網站**。 然後選取**快速建立**選項。 新的網站上提供可用的 URL，然後按一下**建立網站**。
 
     > [!NOTE]
-    > Windows Azure 網站是您可以控制和管理在雲端中執行的 web 應用程式的主機。 快速建立 選項可讓您部署已完成的 web 應用程式至 Windows Azure 網站從入口網站外部。 它不包含設定資料庫的步驟。
+    > Windows Azure 網站是您可以控制和管理在雲端中執行的 web 應用程式的主機。 快速建立] 選項可讓您部署已完成的 web 應用程式至 Windows Azure 網站從入口網站外部。 它不包含設定資料庫的步驟。
 
-    ![建立新的網站使用 快速建立](whats-new-in-aspnet-mvc-4/_static/image63.png "建立新的網站使用 快速建立")
+    ![建立新的網站使用 [快速建立](whats-new-in-aspnet-mvc-4/_static/image63.png "建立新的網站使用 [快速建立")
 
-    *建立新的網站使用 快速建立*
+    *建立新的網站使用 [快速建立*
 4. 等候新**網站**建立。
 5. 建立網站之後按一下底下的連結**URL**資料行。 請檢查新的網站運作。
 
@@ -1017,7 +1017,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
     ![開啟網站管理頁面](whats-new-in-aspnet-mvc-4/_static/image66.png "開啟網站管理頁面")
 
     *開啟網站管理頁面*
-7. 在**儀表板**頁面的 **快速概覽**區段中，按一下**下載發行設定檔**連結。
+7. 在**儀表板**頁面的 [**快速概覽**區段中，按一下**下載發行設定檔**連結。
 
     > [!NOTE]
     > *發行設定檔*包含所有 web 應用程式發行至 Windows Azure 網站的每個已啟用的發行方法所需的資訊。 發行設定檔包含 Url、 使用者認證和資料庫連接，並對每個端點已啟用的發行集的方法進行驗證所需的字串。 **Microsoft WebMatrix 2**， **Microsoft Visual Studio Express for Web**和**Microsoft Visual Studio 2012**支援讀取發行設定檔自動將這些程式的組態web 應用程式發行至 Windows Azure 網站。
@@ -1059,7 +1059,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
 <a id="Task_3_-_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy"></a>
 #### <a name="task-3---publishing-an-aspnet-mvc-4-application-using-web-deploy"></a>工作 3-發行 ASP.NET MVC 4 應用程式使用 Web Deploy
 
-1. 返回至 ASP.NET MVC 4 方案。 在**方案總管 中**，以滑鼠右鍵按一下網站專案，然後選取**發行**。
+1. 返回至 ASP.NET MVC 4 方案。 在**方案總管] 中**，以滑鼠右鍵按一下網站專案，然後選取**發行**。
 
     ![發行應用程式](whats-new-in-aspnet-mvc-4/_static/image73.png "發行應用程式")
 
@@ -1077,7 +1077,7 @@ Microsoft.NET Framework 4.5 引進了新的語言功能，在 C# 和 Visual Basi
     ![驗證連線](whats-new-in-aspnet-mvc-4/_static/image75.png "驗證連線")
 
     *驗證連接*
-4. 在**設定**頁面的 **資料庫**區段中，按一下您的資料庫連接文字方塊旁邊的按鈕 (也就是**DefaultConnection**)。
+4. 在**設定**頁面的 [**資料庫**區段中，按一下您的資料庫連接文字方塊旁邊的按鈕 (也就是**DefaultConnection**)。
 
     ![Web 部署設定](whats-new-in-aspnet-mvc-4/_static/image76.png "Web 部署設定")
 

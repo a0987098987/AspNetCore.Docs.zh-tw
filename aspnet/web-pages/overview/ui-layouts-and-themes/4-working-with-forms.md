@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/4-working-with-forms
-title: "使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單 |Microsoft 文件"
+title: 使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單 |Microsoft 文件
 author: tfitzmac
-description: "表單是您在其中放置使用者輸入的控制，例如文字方塊、 核取方塊、 選項按鈕和下拉式清單的 HTML 文件區段。 使用表單北..."
+description: 表單是您在其中放置使用者輸入的控制，例如文字方塊、 核取方塊、 選項按鈕和下拉式清單的 HTML 文件區段。 使用表單北...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 msc.type: authoredcontent
 ms.openlocfilehash: 8579c444fd19d1a366349cc09f9f768de23055f8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a>使用 ASP.NET Web Pages (Razor) 網站中的 HTML 表單
 ====================
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/24/2018
 
     ![如果螢幕擷取畫面顯示頁面上顯示您所輸入的值。](4-working-with-forms/_static/image2.jpg)
 
-    查看網頁的程式碼。 第一次使用`IsPost`方法，以判斷是否網頁回傳 &#8212; 也就是使用者是否按下**送出** 按鈕。 如果這是使用 post 要求`IsPost`傳回 true。 這是標準方式 ASP.NET Web Pages 中，以判斷是否正在使用的初始要求 （GET 要求） 或回傳 （POST 要求）。 (GET 和 POST 需詳細資訊，請參閱資訊看板 「 HTTP GET 和 POST 和 IsPost 屬性的"，在[ASP.NET Web Pages 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890#SB_HttpGetPost)。)
+    查看網頁的程式碼。 第一次使用`IsPost`方法，以判斷是否要公佈的頁面&#8212;亦即是否使用者按下**送出** 按鈕。 如果這是使用 post 要求`IsPost`傳回 true。 這是標準方式 ASP.NET Web Pages 中，以判斷是否正在使用的初始要求 （GET 要求） 或回傳 （POST 要求）。 (GET 和 POST 需詳細資訊，請參閱資訊看板 「 HTTP GET 和 POST 和 IsPost 屬性的"，在[ASP.NET Web Pages 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=202890#SB_HttpGetPost)。)
 
     接下來，您會取得從填入使用者的值`Request.Form`物件，而您將它們放在變數中供稍後。 `Request.Form`物件包含所有已送出頁面上，每個索引鍵所識別的值。 機碼相當於`name`您想要讀取的表單欄位的屬性。 例如，若要讀取`companyname`欄位 （文字方塊），您使用`Request.Form["companyname"]`。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > HTML 編碼的瀏覽器將解譯成正確的符號的程式碼以取代這些保留的字元。 例如，`<`字元取代`&lt;`和`>`字元取代`&gt;`。 瀏覽器會將這些取代字串轉譯成您想要查看的字元。
 > 
-> 它是個不錯的主意，若要使用 HTML 編碼顯示字串的任何時間 （輸入），您會取得使用者。 如果沒有，使用者可以嘗試取得您的網頁執行惡意指令碼，或做其他事，危害您的站台安全性的或者只是無法預期。 （這是非常重要，如果您需要使用者輸入，將其儲存在某個位置，以及然後顯示於稍後 &#8212; 例如，部落格的註解中，為使用者檢閱，或類似的）。
+> 它是個不錯的主意，若要使用 HTML 編碼顯示字串的任何時間 （輸入），您會取得使用者。 如果沒有，使用者可以嘗試取得您的網頁執行惡意指令碼，或做其他事，危害您的站台安全性的或者只是無法預期。 (這是非常重要的如果您接受使用者輸入、 將其儲存在某個位置，並稍後再顯示&#8212;例如部落格的註解、 使用者檢閱或類似的。)
 > 
 > 為了避免這些問題，ASP.NET Web 網頁會自動將 HTML 編碼的任何文字內容，您從程式碼輸出。 例如，當您顯示變數或運算式，例如使用程式碼的內容`@MyVar`，ASP.NET Web Pages 自動編碼輸出。
 

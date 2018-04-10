@@ -16,7 +16,7 @@ ms.openlocfilehash: c5ea0bd9f01bb57b96abd349741f304c0093d887
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>建立組建定義支援的部署
 ====================
@@ -75,12 +75,12 @@ ms.lasthandoff: 04/06/2018
 
 **若要建立組建定義 CI 和部署**
 
-1. 在 Visual Studio 2010 中，在**Team Explorer**視窗中，展開您的 team 專案節點，以滑鼠右鍵按一下**建置**，然後按一下 **新增組建定義**。
+1. 在 Visual Studio 2010 中，在**Team Explorer**視窗中，展開您的 team 專案節點，以滑鼠右鍵按一下**建置**，然後按一下 [**新增組建定義**。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image2.png)
 2. 在**一般**索引標籤上，為指定的組建定義名稱 (例如， **DeployToTest**) 和選擇性描述。
 3. 在**觸發程序**索引標籤上，選取您要觸發新組建的準則。 例如，如果您想要建置方案，每次簽入新的程式碼的開發人員部署到測試環境，選取**連續整合**。
-4. 在**組建預設值**索引標籤的**複製組建輸出複製至下列置放資料夾**方塊中，輸入 drop 資料夾的通用命名慣例 (UNC) 路徑 (例如，  **\\TFSBUILD\Drops**)。
+4. 在**組建預設值**索引標籤的**複製組建輸出複製至下列置放資料夾**方塊中，輸入 drop 資料夾的通用命名慣例 (UNC) 路徑 (例如， ** \\TFSBUILD\Drops**)。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image3.png)
 
@@ -90,11 +90,11 @@ ms.lasthandoff: 04/06/2018
 6. 在**建置流程參數**資料表中，按一下 [在**要建置的項目**資料列，然後再按一下**省略**] 按鈕。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image4.png)
-7. 在**要建置的項目**對話方塊中，按一下 **新增**。
+7. 在**要建置的項目**對話方塊中，按一下 [**新增**。
 8. 瀏覽至您的方案檔的位置，然後按一下**確定**。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image5.png)
-9. 在**要建置的項目**對話方塊中，按一下 **新增**。
+9. 在**要建置的項目**對話方塊中，按一下 [**新增**。
 10. 在**類型的項目**下拉式清單中選取**MSBuild 專案檔**。
 11. 檔案位置的自訂專案與您控制的部署程序，選取檔案，然後按一下瀏覽**確定**。
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 04/06/2018
 12. **要建置的項目**對話方塊現在應該會顯示兩個項目。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image7.png)
-13. 在**程序**索引標籤的**建置流程參數**資料表中，展開 **進階**> 一節。
+13. 在**程序**索引標籤的**建置流程參數**資料表中，展開 [**進階**> 一節。
 14. 在**MSBuild 引數**資料列中，將任何 MSBuild 命令列引數，*任一*的項目來建立要求。 在連絡人管理員解決方案案例中，這些引數則是必要項目：
 
     [!code-console[Main](creating-a-build-definition-that-supports-deployment/samples/sample1.cmd)]
@@ -133,7 +133,7 @@ ms.lasthandoff: 04/06/2018
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image10.png)
 
-若要檢閱進度與結果的組建&#x2014;不論它是否已觸發手動或自動&#x2014;按兩下組建定義中的**Team Explorer**視窗。 這會開啟**Build 總管** 索引標籤。
+若要檢閱進度與結果的組建&#x2014;不論它是否已觸發手動或自動&#x2014;按兩下組建定義中的**Team Explorer**視窗。 這會開啟**Build 總管**] 索引標籤。
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image11.png)
 

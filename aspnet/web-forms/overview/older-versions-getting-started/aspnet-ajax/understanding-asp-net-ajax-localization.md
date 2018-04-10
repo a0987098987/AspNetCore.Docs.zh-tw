@@ -16,7 +16,7 @@ ms.openlocfilehash: 565b0294f57b784bc592b286b3d8b28504110415
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="understanding-aspnet-ajax-localization"></a>了解 ASP.NET AJAX 當地語系化
 ====================

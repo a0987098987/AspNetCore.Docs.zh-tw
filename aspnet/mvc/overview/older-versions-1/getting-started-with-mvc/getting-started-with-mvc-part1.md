@@ -16,7 +16,7 @@ ms.openlocfilehash: 476d832e389b9b5a26fe2d552ca648c79b100056
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="intro-to-aspnet-mvc"></a>ASP.NET MVC 簡介
 ====================

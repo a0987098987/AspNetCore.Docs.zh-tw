@@ -10,10 +10,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/overview
 ms.openlocfilehash: 5d161ed8fbc39bcf4a970644480b4e909810b555
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>適用於 ASP.NET Core 取用者應用程式開發介面概觀
 

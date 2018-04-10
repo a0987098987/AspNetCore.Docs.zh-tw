@@ -16,7 +16,7 @@ ms.openlocfilehash: 7a0b64ce00fc5ee6d49990f1d4d93a154c467bf5
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-column-to-the-model"></a>將資料行加入至模型
 ====================

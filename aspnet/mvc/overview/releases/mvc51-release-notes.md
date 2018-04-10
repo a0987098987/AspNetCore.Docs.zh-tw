@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/mvc51-release-notes
-title: "ASP.NET MVC 5.1 中最新消息 |Microsoft 文件"
+title: ASP.NET MVC 5.1 中最新消息 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/releases/mvc51-release-notes
 msc.type: authoredcontent
 ms.openlocfilehash: be10486c9fd39738f44cdda4fedb409058017601
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="whats-new-in-aspnet-mvc-51"></a>ASP.NET MVC 5.1 中最新消息
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 本主題說明 ASP.NET Web MVC 5.1 的新功能。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 <a id="documentation"></a>
 ## <a name="documentation"></a>文件
 
-教學課程和 ASP.NET MVC 5.1 RTM 的其他資訊可從 ASP.NET 網頁站台 (https://www.asp.net)。 
+教學課程和 ASP.NET MVC 5.1 RTM 的其他資訊都是從 ASP.NET 網站 ( https://www.asp.net)。 
 
 <a id="new-features"></a>
 ## <a name="new-features-in-aspnet-mvc-51"></a>ASP.NET MVC 5.1 的新功能

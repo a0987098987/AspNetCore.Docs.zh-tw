@@ -1,22 +1,22 @@
 ---
 uid: overview
-title: "ASP.NET 概觀 |Microsoft 文件"
+title: ASP.NET 概觀 |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET，可用的架構，用於建立網站、 web 應用程式和 web Api 的簡介。"
+description: ASP.NET，可用的架構，用於建立網站、 web 應用程式和 web Api 的簡介。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2010
 ms.topic: article
 ms.assetid: 3a309468-f1ca-4e51-b9c3-536af79d7a8b
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
-msc.legacyurl: 
+msc.legacyurl: ''
 msc.type: content
 ms.openlocfilehash: 0ba7814d4004b17e678eab9a2a41a6d6f34773e1
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="aspnet-overview"></a>ASP.NET 概觀
 

@@ -16,7 +16,7 @@ ms.openlocfilehash: 09c133abe4915450e07ab6a4d7e124cec6c6714a
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="working-with-files"></a>使用檔案
 ====================

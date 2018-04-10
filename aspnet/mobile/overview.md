@@ -1,22 +1,22 @@
 ---
 uid: mobile/overview
-title: "行動裝置應用程式和 ASP.NET 的網站 |Microsoft 文件"
+title: 行動裝置應用程式和 ASP.NET 的網站 |Microsoft 文件
 author: rick-anderson
-description: "了解 ASP.NET 如何讓您輕鬆地建置行動 Web 應用程式"
+description: 了解 ASP.NET 如何讓您輕鬆地建置行動 Web 應用程式
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2011
 ms.topic: article
 ms.assetid: 1febce65-cdd4-47da-bdb5-1e6022ccd20a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /mobile
 msc.type: content
 ms.openlocfilehash: de05ede5b7b41f0c44c867b51faf2310ac9fc514
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="mobile-apps--sites-with-aspnet"></a>行動裝置應用程式 （& s) 的 ASP.NET 網站
 ====================

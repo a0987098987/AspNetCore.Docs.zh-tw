@@ -16,7 +16,7 @@ ms.openlocfilehash: 052d29dba170d403c2b1c1667c55fc2c34045615
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>Page Inspector 使用 Visual Studio 2012 中
 ====================

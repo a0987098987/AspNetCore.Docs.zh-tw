@@ -15,7 +15,7 @@ ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>在 ASP.NET Core 組合和 minifiy 靜態資產
 

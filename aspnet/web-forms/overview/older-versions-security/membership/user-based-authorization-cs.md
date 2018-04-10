@@ -16,7 +16,7 @@ ms.openlocfilehash: 9a0d476ffaf1f176c21b245520fa943f66e8c0d5
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="user-based-authorization-c"></a>使用者為基礎的授權 (C#)
 ====================

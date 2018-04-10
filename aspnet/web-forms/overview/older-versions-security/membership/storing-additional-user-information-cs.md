@@ -16,7 +16,7 @@ ms.openlocfilehash: e484f63a82ad9ecf1f376143bdc1924e231e0801
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="storing-additional-user-information-c"></a>儲存額外的使用者資訊 (C#)
 ====================

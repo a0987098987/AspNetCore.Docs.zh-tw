@@ -16,7 +16,7 @@ ms.openlocfilehash: 978d7980274c072ed559b54ed69ab86245b6c5a7
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -112,7 +112,7 @@ ms.lasthandoff: 04/06/2018
 
 另外而且請注意，因為您正在輸入，因為我們會告知這 WelcomeViewModel 有關檢視 （未婚，記得） 嗎？ 我們取得很有幫助我們每次參考我們所見以下螢幕擷取畫面中的模型物件的 Intellisense:
 
-[![NumTime 原始程式碼](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
+[![NumTime Source Code](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
 
 執行您的應用程式，請瀏覽`http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`一次。 現在我們將帶資料從 URL，它會自動傳遞到我們的控制器，Controller ViewModel 資料的封裝，並傳遞到我們檢視該物件。 檢視比對使用者顯示為 HTML 的資料。
 

@@ -189,7 +189,7 @@ Microsoft Entity Framework 是物件關聯式對應 (O/RM) 工具，可讓您從
 
 [!code-vb[Main](creating-model-classes-with-the-entity-framework-vb/samples/sample7.vb)]
 
-接下來，TryUpdateModel() 方法用來將 HTML 表單欄位的值指派給影片實體的屬性。 請注意的白名單提供給指定要更新的確切屬性。
+接下來，TryUpdateModel() 方法用來將 HTML 表單欄位的值指派給影片實體的屬性。 請注意的允許清單提供給指定要更新的確切屬性。
 
 接下來，會執行一些簡單的驗證，來確認電影標題和導向器的屬性有值。 如果任一個屬性遺漏值，然後驗證錯誤訊息加入 ModelState 並 ModelState.IsValid 傳回其值為 false。
 

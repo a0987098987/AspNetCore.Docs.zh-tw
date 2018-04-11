@@ -115,7 +115,7 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 建置應用程式 (Ctrl + Shift + B)。
 
-因為您已將新欄位加入到`Movie`類別，您也需要更新繫結*白名單*以便將包含新的屬性。 更新`bind`屬性`Create`和`Edit`動作方法，以包括`Rating`屬性：
+因為您已將新欄位加入到`Movie`類別，您也需要更新繫結*允許清單*以便將包含新的屬性。 更新`bind`屬性`Create`和`Edit`動作方法，以包括`Rating`屬性：
 
 [!code-csharp[Main](adding-a-new-field/samples/sample7.cs?highlight=1)]
 

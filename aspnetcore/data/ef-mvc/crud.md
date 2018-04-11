@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 和 EF Core - CRUD - 2/10"
+title: ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 author: tdykstra
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -180,7 +180,7 @@ public class Student
 
 新的程式碼會讀取現有的實體，呼叫 `TryUpdateModel` 來[根據使用者在 Post 表單資料中輸入的內容](xref:mvc/models/model-binding#how-model-binding-works)來更新已擷取實體中的欄位。 Entity Framework 的自動變更追蹤會在表單輸入變更的欄位上設定 `Modified` 旗標。 當呼叫 `SaveChanges` 方法時，Entity Framework 會建立 SQL 陳述式來更新資料庫的資料列。 系統會忽略並行衝突，並且只有使用者更新的資料表資料行會在資料庫中獲得更新。 (之後的教學課程會顯示如何處理並行衝突。)
 
-作為防止大量指派的最佳做法，您要允許 [編輯] 頁面更新的欄位會在 `TryUpdateModel` 參數的白名單中。 (參數清單中欄位清單前的空字串是針對與表單欄位名稱一同使用的前置詞。)雖然目前沒有額外保護的欄位，但列出您希望模型繫結器繫結的欄位可確保您於未來將欄位新增到資料模型中時，新增的欄位會自動獲得保護，直到您明確的在這裡新增它們為止。
+作為防止大量指派的最佳做法，您要允許 [編輯] 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 (參數清單中欄位清單前的空字串是針對與表單欄位名稱一同使用的前置詞。)雖然目前沒有額外保護的欄位，但列出您希望模型繫結器繫結的欄位可確保您於未來將欄位新增到資料模型中時，新增的欄位會自動獲得保護，直到您明確的在這裡新增它們為止。
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 

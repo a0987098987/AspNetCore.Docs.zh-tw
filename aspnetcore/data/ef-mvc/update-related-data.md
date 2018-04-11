@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10"
+title: ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10
 author: tdykstra
-description: "在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。"
+description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -127,7 +127,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 -  針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
 
--  使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入白名單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
+-  使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
 
     <!-- Snippets don't play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -195,7 +195,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 方法簽章現在已和 HttpGet `Edit` 方法不同，因此方法名稱會從 `EditPost` 變回 `Edit`。
 
-由於檢視沒有 Course 實體的集合，模型繫結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此您必須從模型繫結器中排除 `CourseAssignments` 屬性。 這並不需要對呼叫 `TryUpdateModel` 的程式碼進行任何變更，因為您使用的是白名單多載，且 `CourseAssignments` 並未位於包含清單中。
+由於檢視沒有 Course 實體的集合，模型繫結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此您必須從模型繫結器中排除 `CourseAssignments` 屬性。 這並不需要對呼叫 `TryUpdateModel` 的程式碼進行任何變更，因為您使用的是允許清單多載，且 `CourseAssignments` 並未位於包含清單中。
 
 若沒有選取任何核取方塊，`UpdateInstructorCourses` 中的程式碼會使用空集合初始化 `CourseAssignments` 導覽屬性並傳回：
 

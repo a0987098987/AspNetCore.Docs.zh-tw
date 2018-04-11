@@ -16,7 +16,7 @@ ms.openlocfilehash: 44458e8022f1f0d52cf136ad7fbaa5dd1f546632
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>在 SQL Server (VB) 中建立成員資格結構描述
 ====================
@@ -269,7 +269,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 > [!NOTE]
 > 表 2 中記下任何預設值參考中定義的預設值`SqlMembershipProvider`類別。 請注意，並非所有的組態設定`AspNetSqlMembershipProvider`對應的預設值到`SqlMembershipProvider`類別。 例如，如果未指定成員資格提供者中`requiresUniqueEmail`設定預設值為 true。 不過，`AspNetSqlMembershipProvider`藉由明確指定的值，這個預設值會覆寫`false`。
 
-| **設定&lt;\_o3a\_p /&gt;** | **Description&lt;\_o3a\_p /&gt;** |
+| **Setting&lt;\_o3a\_p /&gt;** | **Description&lt;\_o3a\_p /&gt;** |
 | --- | --- |
 | `ApplicationName` | 前文提過成員資格架構可讓分割到多個應用程式的單一使用者存放區。 此設定表示成員資格提供者所使用的應用程式磁碟分割的名稱。 如果此值未明確指定，它設定為，在執行階段，應用程式的虛擬根路徑的值。 |
 | `commandTimeout` | 指定的 SQL 命令逾時值 （以秒為單位）。 預設值為 30。 |

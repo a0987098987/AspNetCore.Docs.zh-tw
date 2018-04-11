@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
-title: "執行批次更新 (C#) |Microsoft 文件"
+title: 執行批次更新 (C#) |Microsoft 文件
 author: rick-anderson
-description: "了解如何建立完全可編輯 DataList 其中所有的項目位於編輯模式，而且其值可以儲存 ' 全部更新 按鈕，即可..."
+description: 了解如何建立完全可編輯 DataList 其中所有的項目位於編輯模式，而且其值可以儲存 ' 全部更新 按鈕，即可...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 46db3c5d733b9c8b6e749a9b8ff1aa9a061c36df
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: af19104edb1849272773193befe1f5b2c7347683
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="performing-batch-updates-c"></a>執行批次更新 (C#)
 ====================
@@ -43,8 +43,8 @@ ms.lasthandoff: 01/24/2018
 
 前述教學課程中，我們建立標準的項目層級的可編輯 DataList，我們使用的位置兩個範本：
 
-- `ItemTemplate`包含唯讀的使用者介面 （Label Web 控制項來顯示每個產品的名稱與價格）。
-- `EditItemTemplate`包含編輯模式使用者介面 （兩個文字方塊中的 Web 控制項）。
+- `ItemTemplate` 包含唯讀的使用者介面 （Label Web 控制項來顯示每個產品的名稱與價格）。
+- `EditItemTemplate` 包含編輯模式使用者介面 （兩個文字方塊中的 Web 控制項）。
 
 DataList s`EditItemIndex`屬性規定哪些`DataListItem`（如果有的話） 使用轉譯`EditItemTemplate`。 特別是，`DataListItem`其`ItemIndex`值符合 DataList s`EditItemIndex`屬性使用呈現`EditItemTemplate`。 只有一個項目都是可編輯的時間，但分開的落在建立完全可編輯的資料清單時，此模型會運作。
 
@@ -66,9 +66,9 @@ DataList s`EditItemIndex`屬性規定哪些`DataListItem`（如果有的話） �
 **圖 3**： 擷取供應商資訊使用`GetSuppliers()`方法 ([按一下以檢視完整大小的影像](performing-batch-updates-cs/_static/image9.png))
 
 
-[![在 [更新] 索引標籤中設定為（無） 下拉式清單](performing-batch-updates-cs/_static/image11.png)](performing-batch-updates-cs/_static/image10.png)
+[![在 [更新] 索引標籤中設定為 （無） 下拉式清單](performing-batch-updates-cs/_static/image11.png)](performing-batch-updates-cs/_static/image10.png)
 
-**圖 4**： 在 [更新] 索引標籤中設定為（無） 下拉式清單 ([按一下以檢視完整大小的影像](performing-batch-updates-cs/_static/image12.png))
+**圖 4**： 在 [更新] 索引標籤中設定為 （無） 下拉式清單 ([按一下以檢視完整大小的影像](performing-batch-updates-cs/_static/image12.png))
 
 
 完成精靈之後，Visual Studio 會自動產生 DataList 的`ItemTemplate`顯示標籤 Web 控制項中的資料來源傳回的每個資料欄位。 我們需要修改此範本，使其改為提供編輯介面。 `ItemTemplate`可以自訂透過使用從 DataList s 智慧標籤的 [編輯樣板] 選項設計工具，或直接透過宣告式語法。
@@ -163,12 +163,12 @@ ADO.NET DataTable 和資料配接器類別被設計來支援批次更新只修�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已 Zack Jones，Ken Pespisa。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
-[下一頁](handling-bll-and-dal-level-exceptions-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
+> [下一頁](handling-bll-and-dal-level-exceptions-cs.md)

@@ -146,7 +146,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 ### <a name="oauth--openid-authentication"></a>OAuth / OpenID 驗證
 
-最後，防 XSRF 設備有特殊的應用程式使用 OAuth 或 OpenID 驗證的支援。 這項支援是啟發學習法為基礎： 如果目前*IIdentity.Name*開頭為 http:// 或 https://，然後將完成的使用者名稱比較使用序數比較子，而不是預設 OrdinalIgnoreCase 比較子。
+最後，防 XSRF 設備有特殊的應用程式使用 OAuth 或 OpenID 驗證的支援。 這項支援是啟發學習法為基礎： 如果目前*IIdentity.Name*開頭為 http:// 或 https:// ，然後將完成的使用者名稱比較使用序數比較子，而不是預設 OrdinalIgnoreCase 比較子。
 
 <a id="_Configuration_and_extensibility"></a>
 

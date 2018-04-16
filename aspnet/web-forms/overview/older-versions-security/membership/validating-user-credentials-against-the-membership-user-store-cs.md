@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs
-title: "驗證使用者認證，針對成員資格使用者存放區 (C#) |Microsoft 文件"
+title: 驗證使用者認證，針對成員資格使用者存放區 (C#) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程中，我們將檢查如何驗證使用者的認證，使用程式設計的方式和登入控制項的成員資格使用者存放區..."
+description: 在本教學課程中，我們將檢查如何驗證使用者的認證，使用程式設計的方式和登入控制項的成員資格使用者存放區...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8f8f4db63ba8c1f1c1df7c1c5c1f92184bf6841d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 484a0f16265ee2d887ee08f6ae7ada47047f1f04
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-c"></a>驗證使用者認證，針對成員資格使用者存放區 (C#)
 ====================
@@ -39,9 +39,9 @@ ms.lasthandoff: 01/24/2018
 
 使用表單驗證的網站，使用者登入網站瀏覽登入頁面，並輸入其認證。 這些認證，然後會針對使用者存放區進行比較。 如果有效，然後授與使用者表單驗證票證，即表示身分識別和真實性的造訪者的安全性權杖。
 
-若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在 *`username`* 和 *`password`*  -並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
+若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在*`username`*和*`password`* -並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
 
-`SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換 *`password`* 傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與從傳回什麼資料庫。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
+`SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`*傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與從傳回什麼資料庫。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
 
 讓我們更新我們的登入頁面 (~ /`Login.aspx`)，讓它會驗證成員資格 framework 使用者存放區提供的認證。 我們建立此登入頁面中<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊的使用者名稱和密碼，以建立介面記住我 核取方塊，並登入按鈕 （請參閱圖 1）。 程式碼會驗證輸入的認證，硬式編碼的使用者名稱和密碼組清單 （Scott/密碼、 Jisun/密碼，與 Sam/密碼）。 在<a id="Tutorial03"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)教學課程中我們已更新儲存在表單的其他資訊的登入網頁的程式碼驗證票證`UserData`屬性。
 
@@ -71,8 +71,8 @@ ms.lasthandoff: 01/24/2018
 
 若要防止暴力攻擊，成員資格 framework 鎖定使用者是否有一段時間內失敗的登入嘗試數目。 精確參數是可透過下列兩個成員資格提供者組態設定：
 
-- `maxInvalidPasswordAttempts`-指定多少的無效密碼的使用者帳戶遭到鎖定之前的時間週期內，便允許嘗試。預設值為 5。
-- `passwordAttemptWindow`-表示以分鐘為單位的期間指定的無效的登入嘗試次數將導致帳戶遭到鎖定的時間週期。預設值為 10。
+- `maxInvalidPasswordAttempts` -指定多少的無效密碼的使用者帳戶遭到鎖定之前的時間週期內，便允許嘗試。預設值為 5。
+- `passwordAttemptWindow` -表示以分鐘為單位的期間指定的無效的登入嘗試次數將導致帳戶遭到鎖定的時間週期。預設值為 10。
 
 如果使用者已經鎖定時，她無法登入，直到系統管理員解除鎖定其帳戶。 當使用者遭到鎖定時，`ValidateUser`方法將*一律*傳回`false`，即使提供有效的認證。 雖然這種行為會減少，駭客將至您的網站透過暴力方法中斷的可能性，它可以得到鎖定的有效使用者只需忘記其密碼或不小心具有 Caps Lock 或屬於具有不正確的輸入日期。
 
@@ -110,10 +110,10 @@ ms.lasthandoff: 01/24/2018
 
 登入控制項使用四個因素，來決定適當的頁面，即可重新導向使用者成功登入：
 
-- 登入控制項是否登入頁面上所定義的`loginUrl`表單驗證設定; 中設定此設定的預設值是`Login.aspx`
+- 登入控制項是否登入頁面上所定義的`loginUrl`表單驗證設定; 中設定此設定的預設值是 `Login.aspx`
 - 與否`ReturnUrl`querystring 參數
 - 登入控制項的值[`DestinationUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.destinationpageurl.aspx)
-- `defaultUrl`指定在表單驗證組態設定的值，此設定的預設值是`Default.aspx`
+- `defaultUrl`指定在表單驗證組態設定的值，此設定的預設值是 `Default.aspx`
 
 圖 4 說明如何登入控制項使用這四個參數來到達其適當的頁面的決策。
 
@@ -230,7 +230,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="determining-and-validating-the-supplied-credentials"></a>判斷及驗證提供的認證
 
-使用登入控制項的[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷任何額外的 Web 控制項中輸入的值 (例如`Email`文字方塊中，我們加入上一個步驟中)，使用 *`LoginControlID`*  `.FindControl`(" *`controlID`* ") 來取得程式設計參考範本中的 Web 控制項的`ID`屬性等於 *`controlID`* 。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
+使用登入控制項的[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)和[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷任何額外的 Web 控制項中輸入的值 (例如`Email`文字方塊中，我們加入上一個步驟中)，使用*`LoginControlID`* `.FindControl`("*`controlID`*") 來取得程式設計參考範本中的 Web 控制項的`ID`屬性等於*`controlID`*。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
 
 `TextBox EmailTextBox = myLogin.FindControl("Email") as TextBox;`
 
@@ -310,12 +310,12 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="about-the-author"></a>關於作者
 
-Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+Scott Mitchell，多個 ASP/ASP.NET 書籍的作者和創辦的 4GuysFromRolla.com，具有已經使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿 *[Sam 教導您自己 ASP.NET 2.0 24 小時內](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*。 在可到達 Scott [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和 Michael Olivero。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com ](mailto:mitchell@4guysfromrolla.com)。
 
->[!div class="step-by-step"]
-[上一頁](creating-user-accounts-cs.md)
-[下一頁](user-based-authorization-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](creating-user-accounts-cs.md)
+> [下一頁](user-based-authorization-cs.md)

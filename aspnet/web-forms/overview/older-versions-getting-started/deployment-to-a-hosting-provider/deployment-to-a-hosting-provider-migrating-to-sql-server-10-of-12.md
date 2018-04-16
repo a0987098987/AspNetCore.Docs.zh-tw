@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
-title: "使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 移轉至 SQL Server-10 12 個 |Microsoft 文件"
+title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 移轉至 SQL Server-10 12 個 |Microsoft 文件
 author: tdykstra
-description: "這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu..."
+description: 這一系列的教學課程會示範如何將部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫使用視覺化 Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: b97834e3e287645151bf927996fde63d93ae8356
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 25a829f1d3c730c7bb3b174f075ce8163999e482
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 移轉至 SQL Server-10 12 個
 ====================
@@ -268,7 +268,7 @@ Visual Studio 將應用程式部署和測試環境中開啟網站的首頁瀏覽
 
 現在您已部署到測試環境，您已準備好設定部署至生產環境。 您可以開始與測試環境中，建立要部署到資料庫。 如您從 概觀 Cytanium Lite 主控方案將只允許單一的 SQL Server 資料庫，所以您將設定只能有一個資料庫，而不是兩個。 所有資料表和資料從成員資格和學校 SQL Server Compact 資料庫將會部署至生產環境中的一個 SQL Server 資料庫。
 
-移至的 Cytanium 控制項面板[http://panel.cytanium.com](http://panel.cytanium.com)。上按住滑鼠**資料庫**，然後按一下  **SQL Server 2008**。
+移至的 Cytanium 控制項面板[ http://panel.cytanium.com ](http://panel.cytanium.com)。上按住滑鼠**資料庫**，然後按一下 **SQL Server 2008**。
 
 [![Selecting_Databases_in_Control_Panel](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image22.png)](deployment-to-a-hosting-provider-migrating-to-sql-server-10-of-12/_static/image21.png)
 
@@ -367,7 +367,7 @@ Visual Studio 將應用程式部署和測試環境中開啟網站的首頁瀏覽
 
 按一下**匯入**，並選取您之前下載的.publishsettings 檔案。
 
-在**連接**索引標籤上，變更**目的地 URL**暫存 URL 正確，在此範例是 http://contosouniversity.com.vserver01.cytanium.com。
+在**連接**索引標籤上，變更**目的地 URL**暫存 URL 正確，在此範例是http://contosouniversity.com.vserver01.cytanium.com。
 
 將設定檔重新命名為生產環境。 (選取**設定檔**索引標籤上，按一下 **管理設定檔**若要這樣做)。
 
@@ -380,7 +380,7 @@ Visual Studio 將應用程式部署和測試環境中開啟網站的首頁瀏覽
 
 在**Web 一個按一下 Publish**工具列上，請確定**生產**設定檔已選取，然後按一下**發行**。
 
-如果您上傳*應用程式\_offline.htm*在發行之前，您必須使用**檔案管理員**Cytanium 控制台中刪除公用程式*應用程式\_離線。*htm 才能進行測試。 您也可以同時刪除*.sdf*檔案從*應用程式\_資料*資料夾。
+如果您上傳<em>應用程式\_offline.htm</em>在發行之前，您必須使用<strong>檔案管理員</strong>Cytanium 控制台中刪除公用程式<em>應用程式\_離線。</em>htm 才能進行測試。 您也可以同時刪除<em>.sdf</em>檔案從<em>應用程式\_資料</em>資料夾。
 
 您現在可以開啟瀏覽器並移至您的公用網站 URL，測試應用程式部署到測試環境後的相同方式。
 
@@ -450,6 +450,6 @@ Code First 移轉適用於初始移轉來建立資料庫，然後再套用 AddBi
 
 您現在成功移轉至 SQL Server Express 和 SQL Server 完整版。 在下一個教學課程中您要進行另一個資料庫的變更，而且您會看到如何部署資料庫變更，當您測試與實際的資料庫使用 SQL Server Express 和 SQL Server 完整版。
 
->[!div class="step-by-step"]
-[上一頁](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)
-[下一頁](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)
+> [!div class="step-by-step"]
+> [上一頁](deployment-to-a-hosting-provider-deploying-a-database-update-9-of-12.md)
+> [下一頁](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)

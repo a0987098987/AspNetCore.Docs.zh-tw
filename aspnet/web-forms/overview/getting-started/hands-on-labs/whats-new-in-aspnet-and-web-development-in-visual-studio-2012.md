@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
-title: "在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息 |Microsoft 文件"
+title: 在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息 |Microsoft 文件
 author: rick-anderson
-description: "新版的 Visual Studio 導入了一些增強功能的重點在於提升體驗和效能，當使用 Web 技術..."
+description: 新版的 Visual Studio 導入了一些增強功能的重點在於提升體驗和效能，當使用 Web 技術...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: f0818cce2a82ede80556b3471cec9d965c3e987f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00b43cc548df44edded925521991a095ed856494
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息
 ====================
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > 這個實驗室將引導您完成先前所述將微幅變更套用至來源資料夾中提供的範例 Web 應用程式的新功能與增強功能。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409)。
 
 
 <a id="Objectives"></a>
@@ -147,7 +147,7 @@ Visual Studio 現在包括功能，可協助開發人員存取、 工作及有�
     *色彩選擇器的不透明度*
 
     > [!NOTE]
-    > CSS3 中增加 RGBA （紅、 綠、 藍色、 Alpha） 色彩定義可讓您定義色彩的不透明度值單一項目。 不同於**不透明度-**類似的 CSS 屬性 **-**  RGBA 色彩也會與最新的瀏覽器相容。
+    > CSS3 中增加 RGBA （紅、 綠、 藍色、 Alpha） 色彩定義可讓您定義色彩的不透明度值單一項目。 不同於**不透明度-**類似的 CSS 屬性**-** RGBA 色彩也會與最新的瀏覽器相容。
 
 <a id="Ex1Task3"></a>
 
@@ -156,7 +156,7 @@ Visual Studio 現在包括功能，可協助開發人員存取、 工作及有�
 
 在這項工作，您將學習如何使用跨瀏覽器相容 CSS3 程式碼片段，才能在您的網站中實作某些功能。
 
-1. 在**Site.css**檔案中，找出**標頭**CSS 類別定義 (.header)，並將下列游標 **/\*框線 radius\* /**要加入新的程式碼片段的預留位置。 按**Enter**顯示 IntelliSense 清單和型別**radius**來篩選清單。 選取**框線 radius**從清單中按兩下，與選項，然後再按 **索引標籤**插入程式碼片段的索引鍵。 然後，輸入在像素並按下的 radius 大小**Enter**。 例如，輸入**15px**。
+1. 在**Site.css**檔案中，找出**標頭**CSS 類別定義 (.header)，並將下列游標 **/\*框線 radius\* /**要加入新的程式碼片段的預留位置。 按**Enter**顯示 IntelliSense 清單和型別**radius**來篩選清單。 選取**框線 radius**從清單中按兩下，與選項，然後再按**索引標籤**插入程式碼片段的索引鍵。 然後，輸入在像素並按下的 radius 大小**Enter**。 例如，輸入**15px**。
 
     新增的程式碼片段 CSS3 屬性會呈現大部分 HTML5 的相容性瀏覽器，包括 Mozilla 和 WebKit 瀏覽器中的圓角的邊框。
 
@@ -175,7 +175,7 @@ Visual Studio 現在包括功能，可協助開發人員存取、 工作及有�
     *圓的角*
 4. 關閉瀏覽器，並返回 Visual Studio。
 5. 開啟**Custom.css**檔案位於**樣式**資料夾，並將游標放**div.images u l l i m g**類別定義。
-6. 按 enter 鍵以顯示 IntelliSense 清單中，型別**方塊陰影**按 **索引標籤**鍵兩次以插入類別定義中的預設陰影程式碼片段。 若要設定陰影值**10px 10px 5px #888**。 然後，輸入**框線 radius**和插入程式碼片段。 型別**15px**設定 radius 大小及按**ENTER**。
+6. 按 enter 鍵以顯示 [IntelliSense] 清單中，型別**方塊陰影**按**索引標籤**鍵兩次以插入類別定義中的預設陰影程式碼片段。 若要設定陰影值**10px 10px 5px #888**。 然後，輸入**框線 radius**和插入程式碼片段。 型別**15px**設定 radius 大小及按**ENTER**。
 
     ![圓角以陰影](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image19.png "圓角以陰影")
 
@@ -188,7 +188,7 @@ Visual Studio 現在包括功能，可協助開發人員存取、 工作及有�
     CSS
 
     [!code-css[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample3.css)]
-8. 型別**轉換**按 **索引標籤**兩次，以插入轉換程式碼片段的索引鍵。 然後，輸入**rotate(-15deg)**時暫留在映像變更旋轉角度值。
+8. 型別**轉換**按**索引標籤**兩次，以插入轉換程式碼片段的索引鍵。 然後，輸入**rotate(-15deg)**時暫留在映像變更旋轉角度值。
 
     CSS
 
@@ -260,7 +260,9 @@ Visual Studio 現在更新開啟或關閉您所要編輯成互相匹配項目的
 1. 在**Default.aspx**頁面上，新增**H3**標題 （例如，Visual Studio 2012 岩石 ！） 的項目。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
+~~~
 2. 變更**H3**標記和型別**H2**或**H1。**
 
     請注意，結束標記會自動更新。 您也可以修改若要查看的開始標記會據以更新過的結束標記。
@@ -287,10 +289,12 @@ Visual Studio 現在包含數個 HTML5 的程式碼片段。 在這個工作中�
 3. 更新為指向現有的音訊檔案的音訊的來源。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
 
-    > [!NOTE]
-    > 您必須將音訊檔加入至方案。
+> [!NOTE]
+> You will need to add the audio file to the solution.
+~~~
 4. 按**F5**執行站台，並播放音訊。
 
     ![執行音訊控制項](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image29.png "執行音訊控制項")
@@ -546,28 +550,36 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     請注意，新**Microsoft.Web.Optimization**命名空間已標記為註解檔案的開頭。 取消註解 using 指示詞包含統合及縮製的功能。
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
+~~~
 4. 找出**應用程式\_啟動**方法。
 
     在此方法中，請取消註解 EnableDefaultBundles 呼叫以下程式碼片段所示。 這可讓我們來參考搭售的 CSS 資料夾中的檔案集合使用的路徑，該資料夾，再加上&quot;CSS&quot;或&quot;JS&quot;後置詞。
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
+~~~
 5. 開啟**Optimization.aspx**檔案，並尋找的內容控制項**HeadContent**。
 
     請注意 CSS 檔案和 JS 檔案有一個參考的標記。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
 
-    > [!NOTE]
-    > 此程式碼會用於示範用途。 在理想情況下，您將會參考在 Site.Master 檔組合。 在此範例程式碼中，您會發現，部分配套檔案所要參照的 Site.Master 檔中，進行多餘的這個最後一個參考。
+> [!NOTE]
+> This code is for demo purposes. Ideally, you will reference the bundles in the Site.Master file. In this sample code, you will find that some of the bundled files are also being referenced by the Site.Master file, making this last reference redundant.
+~~~
 6. 請注意，使用連結中的將慣例**href**屬性以取得所有 CSS 或 JS 檔案樣式和 Scripts\custom 資料夾分別。
 
     您可以使用路徑**指令碼/自訂/JS**配套並縮短內的所有 JS 檔案，如下所示**指令碼/自訂**資料夾。 這是預設組合的預設行為。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
+~~~
 7. 開啟**Styles\Site.css**檔案。
 
     請注意，原始的 CSS 檔案包含縮排程式碼、 空格和增加檔案大小的註解。 （也 JavaScript 檔案包含空格和註解）。
@@ -609,13 +621,17 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     請注意，檔案不在相同的位置。這是另一個預設結合在一起的優勢。
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
+~~~
 4. 開啟**Optimization.aspx**檔案。
 
     請注意，連結至**靜態 JS 組合**正在使用您已經宣告 Global.asax.cs 檔案中設定靜態套件組合時的路徑： **/StaticBundle**。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
+~~~
 5. 按**F5**執行應用程式，並瀏覽至**最佳化**頁面。
 6. 按一下**靜態 JS 組合**連結來開啟檔案。
 
@@ -641,7 +657,9 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     您會定義將會使用動態資料夾組合**CoffeeMinify**只會套用到具有檔案的自訂縮製處理器&quot; **.coffee** &quot;延伸模組 (CoffeeScript 檔案）。 請注意，您可以選取要像配套資料夾內檔案使用搜尋模式 '\*.coffee'。
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
+~~~
 3. 開啟 NuGet 封裝管理員主控台。 若要這樣做，請使用功能表**檢視** | **其他視窗** | **Package Manager Console**。
 4. 在**Package Manager Console**類型**Install-package CoffeeSharp**按**ENTER**。
 5. 按一下**顯示所有檔案**按鈕**方案總管 中**視窗
@@ -659,7 +677,9 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     此類別繼承自 JsMinify 来縮短 CoffeeScript 程式碼編譯所產生的 JavaScript 輸出中。 它會呼叫 CoffeeScript 編譯器在第一次，產生的 JavaScript 程式碼，然後它傳送它至 JsMinify.Process 方法，以縮短產生的程式碼。
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
+~~~
 8. 開啟**Script1.coffee**和**Script2.coffee**檔案從**指令碼/配套**資料夾。
 
     這些檔案會包含 CoffeScript 程式碼結合在一起以 CoffeeMinify 類別的執行時編譯。
@@ -677,7 +697,9 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     請注意，連結至**動態 JS 組合**參考**指令碼/配套**資料夾使用**/咖啡**您設定動態資料夾組合的後置詞。
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
+~~~
 10. 按**F5**執行應用程式，並瀏覽至**最佳化**頁面。
 11. 按一下**動態 JS 組合**連結來開啟產生的檔案。
 
@@ -703,9 +725,9 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>附錄 a： 安裝 Visual Studio Express 2012 for Web
 
-您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用 **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
+您可以安裝**Microsoft Visual Studio Express 2012 for Web**或另一個&quot;Express&quot;版本使用**[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. 下列指示將引導您逐步完成安裝所需*Visual studio Express 2012 for Web*使用*Microsoft Web Platform Installer*。
 
-1. 移至[ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; *Visual Studio Express 2012 for Web 與 Windows Azure SDK*&quot;。
+1. 移至[ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169)。 或者，如果您已安裝 Web Platform Installer，您可以開啟它，並搜尋產品&quot; <em>Visual Studio Express 2012 for Web 與 Windows Azure SDK</em>&quot;。
 2. 按一下**立即安裝**。 如果您不需要**Web Platform Installer**您會重新導向至下載並安裝第一次。
 3. 一次**Web Platform Installer**開啟時，按一下 **安裝**，啟動安裝程式。
 
@@ -851,14 +873,14 @@ Visual Studio 已更新，讓程式碼模式，存取與組織承諾的 JavaScri
     *Web 部署設定*
 5. 設定資料庫連接，如下所示：
 
-    - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
-    - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
-    - 在**密碼**輸入伺服器系統管理員身分登入密碼。
-    - 輸入新的資料庫名稱，例如： *MVC4SampleDB*。
+   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
+   - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
+   - 在**密碼**輸入伺服器系統管理員身分登入密碼。
+   - 輸入新的資料庫名稱，例如： *MVC4SampleDB*。
 
-    ![設定目的地連接字串](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image80.png "設定目的地連接字串")
+     ![設定目的地連接字串](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image80.png "設定目的地連接字串")
 
-    *設定目的地連接字串*
+     *設定目的地連接字串*
 6. 然後按一下 [確定]。  當系統提示您建立資料庫依序按一下**是**。
 
     ![建立資料庫](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image81.png "建立的資料庫字串")

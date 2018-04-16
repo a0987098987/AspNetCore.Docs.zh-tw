@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/master-pages
-title: "主版頁面 |Microsoft 文件"
+title: 主版頁面 |Microsoft 文件
 author: microsoft
-description: "其中一個成功的網站的關鍵元件是一致的外觀及操作。 在 ASP.NET 中 1.x，開發人員使用使用者控制項來複寫常見頁面 elem。..."
+description: 其中一個成功的網站的關鍵元件是一致的外觀及操作。 在 ASP.NET 中 1.x，開發人員使用使用者控制項來複寫常見頁面 elem。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/master-pages
 msc.type: authoredcontent
-ms.openlocfilehash: bd9effd4b73a014d4d7bb825b382b8db34d636f1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f45dd9704f665244d2a48ec000326f6e98984e4f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="master-pages"></a>主版頁面
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 其中一個成功的網站的關鍵元件是一致的外觀及操作。 在 ASP.NET 中 1.x，開發人員使用使用者控制項來跨 Web 應用程式複寫共同的頁面項目。 一定是可行的解決方案，使用使用者控制項也有一些缺點。 比方說，使用者控制項的位置中的變更會在站台需要多個頁面的變更。 使用者控制項也不會呈現之後所插入頁面的 [設計] 檢視中。
 
@@ -74,7 +74,7 @@ ASP.NET 2.0 導入了主要頁面的方式來維護一致的外觀與風格，�
 **圖 2**： 建立新的主版頁面
 
 
-請注意，在主版頁面檔案的副檔名是*.master*。 這是一種主版頁面不同於一般的頁面。 其主要的差別在於替代@Page指示詞，主版頁面包含@Master指示詞。 切換至來源檢視的主要頁面上您剛才建立和檢閱的程式碼。
+請注意，在主版頁面檔案的副檔名是<em>.master</em>。 這是一種主版頁面不同於一般的頁面。 其主要的差別在於替代@Page指示詞，主版頁面包含@Master指示詞。 切換至來源檢視的主要頁面上您剛才建立和檢閱的程式碼。
 
 新的主版頁面預設將會擁有一個 ContentPlaceHolder 控制項。 在大部分情況下，它更具意義先建立一般的頁面項目，然後插入 ContentPlaceHolder 控制項至想要自訂內容的地方。 在這些情況下，開發人員會想要刪除預設 ContentPlaceHolder 控制項，並插入新的網頁開發。 ContentPlaceHolder 控制項不是可調整大小，儘管它們並顯示調整大小控點。 ContentPlaceHolder 控制項的大小會自動根據您有一個例外狀況; 它包含的內容如果您將區塊項目內的 ContentPlaceHolder 控制項例如表格儲存格時，它會根據項目的大小調整大小。
 
@@ -142,7 +142,7 @@ ASP.NET 2.0 導入了主要頁面的方式來維護一致的外觀與風格，�
 
 主版頁面和內容頁面之間的關聯可以設定四種不同方式之一：
 
-- **MasterPageFile**屬性@Page指示詞
+- <strong>MasterPageFile</strong>屬性@Page指示詞
 - 設定**Page.MasterPageFile**程式碼中的屬性。
 - **&lt;頁面&gt;**應用程式組態檔 (web.config 應用程式的根資料夾中) 中的項目
 - **&lt;頁面&gt;**子資料夾的組態檔 (位於子資料夾中的 web.config) 中的項目
@@ -157,7 +157,7 @@ MasterPageFile 屬性可讓您能輕鬆套用至特定的 ASP.NET 網頁的主�
 
 ## <a name="using-the-ltpagesgt-element"></a>使用&lt;頁面&gt;項目
 
-您可以為您的網頁設定主版頁面中設定的 masterPageFile 屬性&lt;頁面&gt;web.config 檔案的項目。 使用此方法時，請注意，應用程式結構中較低的 web.config 檔案，可以覆寫此設定。 在中設定任何 MasterPageFile 屬性@Page指示詞也會覆寫此設定。 使用&lt;頁面&gt;項目可簡化建立*主要*會覆寫必要時在特定資料夾或檔案中的主版頁面。
+您可以為您的網頁設定主版頁面中設定的 masterPageFile 屬性&lt;頁面&gt;web.config 檔案的項目。 使用此方法時，請注意，應用程式結構中較低的 web.config 檔案，可以覆寫此設定。 在中設定任何 MasterPageFile 屬性@Page指示詞也會覆寫此設定。 使用&lt;頁面&gt;項目可簡化建立<em>主要</em>會覆寫必要時在特定資料夾或檔案中的主版頁面。
 
 ## <a name="properties-in-master-pages"></a>主版頁面中的屬性
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
-title: "保護連接字串和其他組態資訊 (C#) |Microsoft 文件"
+title: 保護連接字串和其他組態資訊 (C#) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET 應用程式通常會將組態資訊儲存在 Web.config 檔案中。 部分資訊是機密，保證保護。 依命名為 def。..."
+description: ASP.NET 應用程式通常會將組態資訊儲存在 Web.config 檔案中。 部分資訊是機密，保證保護。 依命名為 def。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e3782e3d4acc2db0e744128dad64fdfae1e8766d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 20a18a36cb5d1621b0b718f87c05eb3175110143
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-c"></a>保護連接字串和其他組態資訊 (C#)
 ====================
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/24/2018
 
 ASP.NET 應用程式的組態資訊通常儲存在名為 XML 檔案`Web.config`。 透過這些教學課程的課程，我們已更新`Web.config`少數的次數。 建立時`Northwind`中具類型資料集[第一個教學課程](../introduction/creating-a-data-access-layer-cs.md)，連接字串資訊，例如自動加入至`Web.config`中`<connectionStrings>`> 一節。 稍後在[主版頁面和站台瀏覽](../introduction/master-pages-and-site-navigation-cs.md)教學課程中，我們以手動方式更新`Web.config`、 新增`<pages>`項目，指出應該使用我們的受測專案的 ASP.NET 網頁的所有`DataWebControls`佈景主題。
 
-因為`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全和隱藏從未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*圖 1 所示的訊息。 這表示訪客無法檢視您`Web.config`檔案 s 內容，只要其 s 瀏覽器網址列輸入 http://www.YourServer.com/Web.config。
+因為`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全和隱藏從未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*圖 1 所示的訊息。 這表示訪客無法檢視您`Web.config`檔案 s 內容，只要輸入http://www.YourServer.com/Web.config其 s 瀏覽器網址列。
 
 
 [![瀏覽 Web.config 透過瀏覽器傳回這類頁面不服務訊息](protecting-connection-strings-and-other-configuration-information-cs/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-cs/_static/image1.png)
@@ -60,8 +60,8 @@ ASP.NET 2.0 包含受保護的組態系統，來加密和解密組態資訊。 �
 
 .NET Framework 隨附兩個受保護的組態提供者：
 
-- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-使用非對稱[RSA 演算法](http://en.wikipedia.org/wiki/Rsa)加密和解密。
-- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx)-使用 Windows[資料保護 API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)加密和解密。
+- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx) -使用非對稱[RSA 演算法](http://en.wikipedia.org/wiki/Rsa)加密和解密。
+- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx) -使用 Windows[資料保護 API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx)加密和解密。
 
 因為受保護的組態系統會實作提供者設計模式，所以可以建立自己的受保護的組態提供者，並插入您的應用程式。 請參閱[實作受保護的組態提供者](https://msdn.microsoft.com/library/wfc2t3az(VS.80).aspx)如需這個程序的詳細資訊。
 
@@ -228,12 +228,12 @@ Windows 驗證是慣用透過 SQL 驗證，所以更安全。 使用 Windows 驗
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已本文菲和袁 Schmidt。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
-[下一頁](debugging-stored-procedures-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md)
+> [下一頁](debugging-stored-procedures-cs.md)

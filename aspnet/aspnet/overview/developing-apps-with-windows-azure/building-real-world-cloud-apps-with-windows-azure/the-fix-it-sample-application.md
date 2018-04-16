@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
-title: "附錄︰ 修正它範例應用程式 （建置真實世界雲端應用程式與 Azure） |Microsoft 文件"
+title: 附錄︰ 修正它範例應用程式 （建置真實世界雲端應用程式與 Azure） |Microsoft 文件
 author: MikeWasson
-description: "Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以..."
+description: Scott Guthrie 所開發的簡報是以基礎建置真實世界雲端應用程式與 Azure 的電子書。 它說明 13 模式和做法，他可以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: c98e79bf8e9a1fe0899ed6d952c3e411ca472f7e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9a1fa36b34c4783b101bb27bc6931241e9251e10
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>附錄︰ 修正它範例應用程式 （建置真實世界雲端應用程式與 Azure）
 ====================
@@ -245,18 +245,18 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
 
     使用 Visual Studio 2013:
 
-    1. 按 F5 執行 FixIt 專案。
-    2. 在**方案總管 中**MyFixItCloudService 專案中，按一下滑鼠右鍵，然後按**偵錯** -- **開始新執行個體**。
+   1. 按 F5 執行 FixIt 專案。
+   2. 在**方案總管 中**MyFixItCloudService 專案中，按一下滑鼠右鍵，然後按**偵錯** -- **開始新執行個體**。
 
-    使用 Visual Studio 2013 Express for Web:
+      使用 Visual Studio 2013 Express for Web:
 
-    1. 在 方案總管 FixIt 方案上按一下滑鼠右鍵，然後選取**屬性**。
-    2. 選取**多個啟始專案**...
-    3. 在**動作**MyFixIt 和 MyFixItCloudService，底下的下拉式清單選取**啟動**。
-    4. 按一下 [確定 **Deploying Office Solutions**]。
-    5. 按 F5 執行這兩個專案。
+   3. 在 方案總管 FixIt 方案上按一下滑鼠右鍵，然後選取**屬性**。
+   4. 選取**多個啟始專案**...
+   5. 在**動作**MyFixIt 和 MyFixItCloudService，底下的下拉式清單選取**啟動**。
+   6. 按一下 [確定 **Deploying Office Solutions**]。
+   7. 按 F5 執行這兩個專案。
 
-    當您執行 MyFixItCloudService 專案時，Visual Studio 會啟動 Azure 計算模擬器。 根據您的防火牆設定，您可能需要允許通過防火牆的模擬器。
+      當您執行 MyFixItCloudService 專案時，Visual Studio 會啟動 Azure 計算模擬器。 根據您的防火牆設定，您可能需要允許通過防火牆的模擬器。
 
 <a id="deploybase"></a>
 ## <a name="how-to-deploy-the-base-app-to-azure-app-service-web-apps-by-using-the-windows-powershell-scripts"></a>如何使用 Windows PowerShell 指令碼，將基底應用程式部署至 Azure App Service Web 應用程式
@@ -285,7 +285,7 @@ ASP.NET 會自動防止許多方式在其中惡意使用者可能會在使用者
     這些認證過期一段時間之後，您必須重新執行`Add-AzureAccount`cmdlet。 正在寫入此的電子書，則在認證到期前的時間限制為 12 小時。
 5. 如果您有多個訂閱，可用於選取 AzureSubscription cmdlet 指定您想要建立測試環境中的訂用的帳戶。
 6. 使用匯入相同的 Azure 訂用帳戶的管理憑證`Get-AzurePublishSettingsFile`和`Import-AzurePublishSettingsFile`cmdlet。 這些 cmdlet 的第一個下載的憑證檔案，並在第二個您指定才能將它匯入該檔案的位置。 > [!IMPORTANT]
- > 將下載的檔案保留在安全的位置，或刪除當您完成時，因為它包含可以用來管理您的 Azure 服務的憑證。
+   > 將下載的檔案保留在安全的位置，或刪除當您完成時，因為它包含可以用來管理您的 Azure 服務的憑證。
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample22.cmd)]
 
@@ -399,5 +399,5 @@ MyFixIt.WorkerRoler\app.config，在底下`connectionStrings`，取代的值`app
 
 現在您已準備好要部署雲端服務。 在方案總管 中以滑鼠右鍵按一下 MyFixItCloudService 專案，然後選取**發行**。 如需詳細資訊，請參閱 「[部署至 Azure 應用程式](https://www.windowsazure.com/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz)"，這是在第 2 部分[本教學課程](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)。
 
->[!div class="step-by-step"]
-[上一步](more-patterns-and-guidance.md)
+> [!div class="step-by-step"]
+> [上一步](more-patterns-and-guidance.md)

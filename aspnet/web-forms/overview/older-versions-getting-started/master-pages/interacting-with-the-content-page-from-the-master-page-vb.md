@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
-title: "互動內容的頁面上，從主版頁面 (VB) |Microsoft 文件"
+title: 互動內容的頁面上，從主版頁面 (VB) |Microsoft 文件
 author: rick-anderson
-description: "會檢查呼叫方法、 從主版頁面中的程式碼中設定屬性的 [內容] 頁面等等的方式。"
+description: 會檢查呼叫方法、 從主版頁面中的程式碼中設定屬性的 [內容] 頁面等等的方式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a25f739e5d5717d275554909e1584bb7e7fed302
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9274924b441cb21e33eb57de06ff374428fa036b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>互動內容的頁面上，從主版頁面 (VB)
 ====================
@@ -87,7 +87,7 @@ ms.lasthandoff: 01/24/2018
 接下來，指定資料來源控制項的`SELECT`陳述式，藉由從下拉式清單中選擇 [產品] 資料表，並傳回`ProductName`和`UnitPrice`（請參閱圖 4） 的資料行。 按一下 [下一步]，然後 「 完成 」 以完成設定資料來源精靈。
 
 
-[![傳回從 Products 資料表的 [ProductName] 和 [UnitPrice] 欄位](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
+[![傳回從 Products 資料表的 [ProductName] 和 UnitPrice 欄位](interacting-with-the-content-page-from-the-master-page-vb/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-vb/_static/image10.png)
 
 **圖 04**： 傳回`ProductName`和`UnitPrice`欄位從`Products`資料表 ([按一下以檢視完整大小的影像](interacting-with-the-content-page-from-the-master-page-vb/_static/image12.png))
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 01/24/2018
 藉由建立事件訂閱類別*事件處理常式*，這是執行以回應所引發的事件的方法。 「 發行者 」 定義他藉由定義所引發的事件*事件委派*。 事件委派指定的事件處理常式必須接受輸入的參數。 在.NET Framework 中，事件委派執行不傳回任何值，並接受兩個輸入的參數：
 
 - `Object`，其可識別事件來源，並
-- 衍生自的類別`System.EventArgs`
+- 衍生自的類別 `System.EventArgs`
 
 傳遞至事件處理常式的第二個參數可以包含其他事件的相關資訊。 雖然基底`EventArgs`沿著任何資訊未通過類別，.NET Framework 包含一些類別會擴充`EventArgs`並包含額外的屬性。 例如，`CommandEventArgs`執行個體傳遞至回應的事件處理常式`Command`事件，並包含兩個參考的屬性：`CommandArgument`和`CommandName`。
 
@@ -257,12 +257,12 @@ GridView 內容頁面中的重新整理此位置的程式碼，每當`DoublePric
 
 ### <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[http://ScottOnWriting.NET](http://scottonwriting.net/)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的多個 ASP/ASP.NET 書籍和 4GuysFromRolla.com 的創辦，目前正在使用 Microsoft Web 技術從 1998 年。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 3.5 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco)。 在可到達 Scott [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com)或透過在他的部落格[ http://ScottOnWriting.NET ](http://scottonwriting.net/)。
 
 ### <a name="special-thanks-to"></a>特別感謝
 
-許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+許多有用的檢閱者已檢閱本教學課程系列。 在此教學課程的前導檢閱者已 Suchi Banerjee。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行 [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](interacting-with-the-master-page-from-the-content-page-vb.md)
-[下一頁](master-pages-and-asp-net-ajax-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](interacting-with-the-master-page-from-the-content-page-vb.md)
+> [下一頁](master-pages-and-asp-net-ajax-vb.md)

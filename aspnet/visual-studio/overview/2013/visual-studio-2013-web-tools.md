@@ -1,22 +1,22 @@
 ---
 uid: visual-studio/overview/2013/visual-studio-2013-web-tools
-title: "實習： Visual Studio 2013 Web Tools |Microsoft 文件"
+title: 實習： Visual Studio 2013 Web Tools |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio 是絕佳的開發環境。以網路為基礎的 Windows 和 web 專案。 它包括強大的文字編輯器，可以輕鬆地用於..."
+description: Visual Studio 是絕佳的開發環境。以網路為基礎的 Windows 和 web 專案。 它包括強大的文字編輯器，可以輕鬆地用於...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: 09e82351-816b-402d-acd1-0f9ac6901d16
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-tools
 msc.type: authoredcontent
 ms.openlocfilehash: ef8ab82f9043ef9da3a3e6a146a97f083149534d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a>實習： Visual Studio 2013 Web 工具
 ====================
@@ -30,11 +30,11 @@ ms.lasthandoff: 11/10/2017
 > 
 > 所有的這項強大也是可用的擴充功能，可以很簡單地擴充功能強大的新功能與編輯器，以符合您的需求。 Web Essentials 是 （大多數） 網頁相關的增強功能加入 Visual Studio 的集合。 它包含許多新的 IntelliSense 完成 （特別是針對 CSS)，新的瀏覽器連結功能，自動 JSHint javascript 檔案、 HTML 和 CSS，以及其他許多功能，是不可或缺的現代 web 開發新的警告。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
 
 
 <a id="Overview"></a>
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/10/2017
 
 若要執行這個實際操作實驗室練習，您必須先設定您的環境。
 
-1. 開啟 Windows 檔案總管 視窗並瀏覽至實驗室**來源**資料夾。
+1. 開啟 Windows 檔案總管視窗並瀏覽至實驗室**來源**資料夾。
 2. 以滑鼠右鍵按一下**Setup.cmd**選取**系統管理員身分執行**啟動安裝程序，將會設定您的環境，並安裝這個實驗室的 Visual Studio 程式碼片段。
 3. 如果顯示 [使用者帳戶控制] 對話方塊，確認要繼續進行的動作。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
     *瀏覽功能表選項*
 4. 在**瀏覽**對話方塊，選取**Google Chrome**和**Internet Explorer**按住**CTRL**鍵，然後按一下**設為預設值**。
 
-    ![瀏覽對話方塊](visual-studio-2013-web-tools/_static/image2.png "瀏覽 對話方塊")
+    ![瀏覽對話方塊](visual-studio-2013-web-tools/_static/image2.png "瀏覽對話方塊")
 
     *選取多個預設瀏覽器*
 5. Google Chrome 和 Internet Explorer 現在應該顯示為預設瀏覽器中。 按一下**取消**以關閉對話方塊。
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/10/2017
     *Google Chrome 和 Internet Explorer 作為預設瀏覽器*
 
     > [!NOTE]
-    > 設定預設瀏覽器之後**多個瀏覽器**瀏覽器 功能表中選取選項。
+    > 設定預設瀏覽器之後**多個瀏覽器**瀏覽器功能表中選取選項。
     > 
     > ![多個瀏覽器](visual-studio-2013-web-tools/_static/image4.png "多個瀏覽器")
 6. 按**CTRL** + **F5**執行應用程式，但不偵錯。
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/10/2017
 
 1. 切換回 Visual Studio。
 2. 開啟**Index.cshtml**檔案位於**檢視** | **首頁**資料夾。
-3. 取代 **&lt;！-TODO： 加入選項-&gt;** 註解與下列程式碼，然後按 **索引標籤**。
+3. 取代**&lt;！-TODO： 加入選項-&gt;**註解與下列程式碼，然後按 **索引標籤**。
 
     [!code-css[Main](visual-studio-2013-web-tools/samples/sample1.css)]
 4. 程式碼應該擴展成 HTML。
@@ -180,7 +180,7 @@ ms.lasthandoff: 11/10/2017
     *Lorem Ipsum 自動產生*
 
     > [!NOTE]
-    > Zen 撰寫程式碼的一部分，您現在可以直接在 HTML 編輯器中產生 Lorem Ipsum 程式碼。 只要輸入**lorem**並點擊 **索引標籤**及 30 文字 Lorem Ipsum 會插入文字。 例如： *lorem10*插入 10 Lorem Ipsum 字。
+    > Zen 撰寫程式碼的一部分，您現在可以直接在 HTML 編輯器中產生 Lorem Ipsum 程式碼。 只要輸入**lorem**並點擊 **索引標籤**及 30 文字 Lorem Ipsum 會插入文字。 例如， *lorem10*插入 10 Lorem Ipsum 字。
 10. 將使用另一項新功能中呼叫 Web Essentials 頂端的問題新增商標**Lorem 像素產生器**。 將下列程式碼新增的第一個子元素為**div**具有項目**容器**為**類別**，再按 **索引標籤**。
 
     [!code-css[Main](visual-studio-2013-web-tools/samples/sample3.css)]
@@ -209,7 +209,7 @@ ms.lasthandoff: 11/10/2017
 <a id="Ex1Task3"></a>
 #### <a name="task-3---updating-a-style-property"></a>工作 3-更新樣式屬性
 
-在這個工作中，您將使用的瀏覽器連結**檢查模式**功能偵測到特定的 DOM 項目，產生的位置的確切位置，然後更新 使用色彩選擇器提供的 Web 該元素的色彩屬性基本功能。
+在這個工作中，您將使用的瀏覽器連結**檢查模式**功能偵測到特定的 DOM 項目，產生的位置的確切位置，然後更新使用色彩選擇器提供的 Web 該元素的色彩屬性基本功能。
 
 1. 在 Internet Explorer 瀏覽器中，按**CTRL** + **ALT** + **我**若要啟用檢查的模式。
 2. 將指標移淺藍色框線，然後按一下。
@@ -222,22 +222,22 @@ ms.lasthandoff: 11/10/2017
     ![在 Visual Studio HTML 編輯器中選取 HTML 項目](visual-studio-2013-web-tools/_static/image15.png "Visual Studio HTML 編輯器中選取 HTML 項目")
 
     *在 Visual Studio HTML 編輯器中選取 HTML 項目*
-4. 將立即更新**前端**以變更選取項目的樣式的 CSS 類別。 若要這樣做，請按**CTRL** + **，**開啟**巡覽至**搜尋 方塊。 型別**site.css**按**ENTER**開啟檔案。
+4. 將立即更新**前端**以變更選取項目的樣式的 CSS 類別。 若要這樣做，請按**CTRL** + **，**開啟**巡覽至**搜尋方塊。 型別**site.css**按**ENTER**開啟檔案。
 
     ![開啟檔案 Site.css](visual-studio-2013-web-tools/_static/image16.png "Site.css 的開啟檔案")
 
     *開啟檔案 Site.css*
 5. 按**CTRL** + **F**和型別**.flip 容器.front**尋找 CSS 選取器。
-6. 按一下淺藍色方塊中的類別，以開啟 色彩選擇器的框線屬性。
+6. 按一下淺藍色方塊中的類別，以開啟色彩選擇器的框線屬性。
 
-    ![開啟 色彩選擇器](visual-studio-2013-web-tools/_static/image17.png "開啟 色彩選擇器")
+    ![開啟色彩選擇器](visual-studio-2013-web-tools/_static/image17.png "開啟色彩選擇器")
 
-    *開啟 色彩選擇器*
+    *開啟色彩選擇器*
 7. 按一下 > 形箭號按鈕展開色彩選擇器，並選取新的色彩。
 
-    ![展開 色彩選擇器](visual-studio-2013-web-tools/_static/image18.png "展開色彩選擇器")
+    ![展開色彩選擇器](visual-studio-2013-web-tools/_static/image18.png "展開色彩選擇器")
 
-    *展開 色彩選擇器*
+    *展開色彩選擇器*
 8. 按**CTRL** + **ALT** + **ENTER**重新整理瀏覽器連結。
 9. 切換至 Internet Explorer，並注意如何變更框線的色彩。
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 11/10/2017
 
     ![-webkit 框線半徑屬性 btn 選取器的](visual-studio-2013-web-tools/_static/image21.png "btn 選擇器-webkit 框線半徑屬性")
 
-    *-webkit 框線半徑 btn 選取器 屬性*
+    *-webkit 框線半徑 btn 選取器屬性*
 14. 將放在插入號**-webkit 框線半徑**屬性。 藍線，應該會出現在屬性的第一個單字的第一個字母。 這是**智慧標籤**。
 15. 按**CTRL** + **。** 若要開啟 [建議] 功能表，然後按一下**遺漏標準屬性 (框線 radius) 新增**。
 
@@ -307,7 +307,7 @@ ms.lasthandoff: 11/10/2017
     ![編輯問題](visual-studio-2013-web-tools/_static/image29.png "編輯的問題")
 
     *編輯的問題*
-4. 切換回 Visual Studio] 和 [開啟**Index.cshtml**，如果尚未開啟。 請注意，內部文字 **&lt;p&gt;** 已更新項目。
+4. 切換回 Visual Studio] 和 [開啟**Index.cshtml**，如果尚未開啟。 請注意，內部文字**&lt;p&gt;**已更新項目。
 
     ![HTML 網頁中的更新問題](visual-studio-2013-web-tools/_static/image30.png "HTML 網頁中的更新問題")
 
@@ -320,15 +320,15 @@ ms.lasthandoff: 11/10/2017
 
 1. 移至**檢視**功能表，然後按一下**錯誤清單**開啟**錯誤清單**視窗。
 
-    ![錯誤清單檢視中功能表](visual-studio-2013-web-tools/_static/image31.png "檢視 功能表中的錯誤清單")
+    ![錯誤清單檢視中功能表](visual-studio-2013-web-tools/_static/image31.png "檢視功能表中的錯誤清單")
 
-    *錯誤清單檢視 功能表*
+    *錯誤清單檢視功能表*
 2. 請注意，有通知的 SEO 警告**&lt;中繼&gt;**標記頁面描述遺漏。 按兩下要修正此問題的 SEO 警告項目。
 
     ![錯誤清單視窗](visual-studio-2013-web-tools/_static/image32.png "錯誤清單視窗")
 
     *錯誤清單視窗*
-3. 在**Web Essentials**對話方塊中，按一下 **是**插入描述&lt;中繼&gt;標記。
+3. 在**Web Essentials**對話方塊中，按一下**是**插入描述&lt;中繼&gt;標記。
 
     ![Web Essentials 對話方塊](visual-studio-2013-web-tools/_static/image33.png "Web Essentials 對話方塊")
 
@@ -353,7 +353,7 @@ ms.lasthandoff: 11/10/2017
 在這項工作，您將建立新的 HTML 表單元素包含標籤和輸入的欄位。 然後您會加入**如**屬性至繫結至輸入、 標籤，您會看到 IntelliSense 建議根據的範圍中的輸入識別碼。
 
 1. 開啟**Visual Studio Express 2013 for Web**和**Begin.sln**方案位於**來源/Ex2 TakingAdvantageofCodeSnippetsandIntelliSense/開始**資料夾。 或者，您可以繼續使用解決方案您在上一個練習中取得。
-2. 在**方案總管 中**，開啟**Index.cshtml**檔案位於**檢視** | **首頁**資料夾。
+2. 在**方案總管中**，開啟**Index.cshtml**檔案位於**檢視** | **首頁**資料夾。
 3. 新增下列表單內**&lt;區段&gt;**項目。
 
     (程式碼片段- *VisualStudio2013WebTooling* - *Ex2* - *表單*)
@@ -379,13 +379,13 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     ![插入音訊項目](visual-studio-2013-web-tools/_static/image36.png "插入音訊項目")
 
     *插入音訊項目*
-2. 按 **索引標籤**兩次注意如何在頁面上加入下列程式碼和資料指標置於**src**第一個來源的屬性。
+2. 按**索引標籤**兩次注意如何在頁面上加入下列程式碼和資料指標置於**src**第一個來源的屬性。
 
     [!code-html[Main](visual-studio-2013-web-tools/samples/sample6.html)]
 
     > [!NOTE]
-    > 按下 **索引標籤**金鑰兩次，在程式碼片段插入。 音訊的程式碼片段顯示的標準方式使用*音訊*標記，以改善的支援兩個原始程式檔。
-3. 刪除第二行，並以下列連結來 WebCampsTV Katana 顯示更新的第一行的來源： [http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3](http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3)。 產生的程式碼如下所示。
+    > 按下**索引標籤**金鑰兩次，在程式碼片段插入。 音訊的程式碼片段顯示的標準方式使用*音訊*標記，以改善的支援兩個原始程式檔。
+3. 刪除第二行，並以下列連結來 WebCampsTV Katana 顯示更新的第一行的來源： [ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3 ](http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3)。 產生的程式碼如下所示。
 
     [!code-html[Main](visual-studio-2013-web-tools/samples/sample7.html)]
 
@@ -425,9 +425,9 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     *JavaScript 擷取至檔案的建議*
 5. 在**存**視窗中，選取**指令碼**資料夾，將檔案命名**init.js**按一下**儲存**。
 
-    ![另存新檔 視窗](visual-studio-2013-web-tools/_static/image40.png "另存新檔 視窗")
+    ![另存新檔視窗](visual-studio-2013-web-tools/_static/image40.png "另存新檔視窗")
 
-    *另存新檔 視窗*
+    *另存新檔視窗*
 
     > [!NOTE]
     > **Init.js**建立檔案和指令碼的內容移到檔案。
@@ -440,7 +440,7 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     ![Init.js html 參考](visual-studio-2013-web-tools/_static/image42.png "Init.js html 參考")
 
     *Init.js html 參考*
-7. 移至**方案總管 中**並注意**init.js**檔案會自動包含在方案中。
+7. 移至**方案總管中**並注意**init.js**檔案會自動包含在方案中。
 
     ![Init.js 檔案包含在解決方案中](visual-studio-2013-web-tools/_static/image43.png "Init.js 檔案包含在解決方案中")
 
@@ -470,12 +470,12 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     ![擷取音訊元素](visual-studio-2013-web-tools/_static/image46.png "擷取音訊的項目")
 
     *擷取音訊的項目*
-14. 在**方案總管 中**，以滑鼠右鍵按一下**init.js**檔案**指令碼**資料夾，然後選取**縮短 JavaScript 檔案**從**Web Essentials**功能表。
+14. 在**方案總管中**，以滑鼠右鍵按一下**init.js**檔案**指令碼**資料夾，然後選取**縮短 JavaScript 檔案**從**Web Essentials**功能表。
 
     ![縮短 JavaScript 檔案](visual-studio-2013-web-tools/_static/image47.png "縮短 JavaScript 檔案")
 
     *縮短 JavaScript 檔案*
-15. 當系統提示時按一下 變更來源檔案啟用自動縮製**是**。
+15. 當系統提示時按一下變更來源檔案啟用自動縮製**是**。
 
     ![啟用自動縮製警告](visual-studio-2013-web-tools/_static/image48.png "啟用自動縮製警告")
 
@@ -507,7 +507,7 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     ![更新 Init.min.js 檔案](visual-studio-2013-web-tools/_static/image52.png "Init.min.js 檔案更新")
 
     *更新 Init.min.js 檔案*
-20. 按一下**重新整理瀏覽器連結** 按鈕。
+20. 按一下**重新整理瀏覽器連結**按鈕。
 21. 一旦兩種瀏覽器會重新整理您在前一項工作中看到音訊播放器會開始自動播放。
 
     ![在檢視中的音訊播放器](visual-studio-2013-web-tools/_static/image53.png "在檢視中的音訊播放程式")

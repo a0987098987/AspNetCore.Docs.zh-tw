@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
-title: "如何使用下拉式方塊控制項？ (VB) |Microsoft 文件"
+title: 如何使用下拉式方塊控制項？ (VB) | Microsoft Docs
 author: microsoft
-description: "下拉式方塊是一種 ASP.NET AJAX 控制項，結合的使用者可以從中選擇的選項清單中的文字方塊中的彈性。"
+description: 下拉式方塊是一種 ASP.NET AJAX 控制項，結合的使用者可以從中選擇的選項清單中的文字方塊中的彈性。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54e36cf275dcc4b85253dc3b8bb5b0dbb027af77
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e42844e326cb190502a51c5a85195b4752d7e827
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-combobox-control-vb"></a>如何使用下拉式方塊控制項？ (VB)
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 > 下拉式方塊是一種 ASP.NET AJAX 控制項，結合的使用者可以從中選擇的選項清單中的文字方塊中的彈性。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 第二個選項是加入在開頭和結尾之間的項目清單&lt;asp: ComboBox&gt;來源檢視中的標籤。 程式碼範例 1 中的頁面包含更新具有項目清單的下拉式方塊。
 
-**列出 1-Static.aspx**
+**Listing 1 - Static.aspx**
 
 [!code-aspx[Main](how-do-i-use-the-combobox-control-vb/samples/sample1.aspx)]
 
@@ -172,5 +172,5 @@ DropDownList 值導致 ComboBox 控制項就像標準的 DropDownList 控制項�
 
 在本教學課程中，您學會如何使用下拉式方塊控制項來顯示一組固定的項目。 我們繫結下拉式方塊控制項，同時為靜態設定的項目與資料庫資料表。 最後，您會學到如何藉由設定其 DropDownStyle 而且 AutoCompleteMode 屬性修改下拉式方塊的行為。
 
->[!div class="step-by-step"]
-[上一步](how-do-i-use-the-combobox-control-cs.md)
+> [!div class="step-by-step"]
+> [上一步](how-do-i-use-the-combobox-control-cs.md)

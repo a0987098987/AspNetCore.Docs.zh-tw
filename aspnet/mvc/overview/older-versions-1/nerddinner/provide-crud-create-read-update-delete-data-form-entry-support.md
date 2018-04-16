@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
-title: "提供 CRUD （建立、 讀取、 更新、 刪除） 資料組成項目支援 |Microsoft 文件"
+title: 提供 CRUD （建立、 讀取、 更新、 刪除） 資料組成項目支援 |Microsoft 文件
 author: microsoft
-description: "步驟 5 會示範如何啟用的編輯、 建立及刪除 Dinners 它也支援接受更我們 DinnersController 類別。"
+description: 步驟 5 會示範如何啟用的編輯、 建立及刪除 Dinners 它也支援接受更我們 DinnersController 類別。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: 5a314a1761527d8a2273166a743e3deac012a557
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bd906282db5c620476966ffbe09cecb5ade66ee4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>提供 CRUD （建立、 讀取、 更新、 刪除） 資料組成項目支援
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
@@ -39,22 +39,22 @@ ms.lasthandoff: 11/10/2017
 
 我們先前加入動作方法實作支援兩個 Url 的 DinnersController: */Dinners*和*/Dinners/詳細資料 / [id]*。
 
-| **URL** | **動詞命令** | **目的** |
+| **URL** | **VERB** | **目的** |
 | --- | --- | --- |
 | */Dinners/* | GET | 顯示即將 dinners HTML 清單。 |
-| */Dinners/詳細資料 / [id]* | GET | 顯示有關特定 dinner 詳細資料。 |
+| */Dinners/Details/[id]* | GET | 顯示有關特定 dinner 詳細資料。 |
 
-我們現在會將動作方法，來實作三個額外的 Url: */Dinners/編輯 / [id]、 / Dinners/建立、*和*/Dinners/刪除 / [id]*。 這些 Url 將會啟用編輯現有的 Dinners，建立新的 Dinners 和刪除 Dinners 支援。
+我們現在會將動作方法，來實作三個額外的 Url: <em>/Dinners/編輯 / [id]、 / Dinners/建立、</em>和<em>/Dinners/刪除 / [id]</em>。 這些 Url 將會啟用編輯現有的 Dinners，建立新的 Dinners 和刪除 Dinners 支援。
 
 我們將會支援這些新的 Url 使用 HTTP GET 和 HTTP POST 動詞命令互動。 HTTP GET 要求到這些 Url 會顯示初始的 HTML 檢視的資料 （表單，以在"edit"的情況下 Dinner 資料填入、 空白表單在 「 建立 」 和 「 刪除 」 在刪除確認 畫面）。 HTTP POST 要求到這些 Url 會儲存/更新/刪除 Dinner 資料中我們 DinnerRepository （及從該處資料庫）。
 
-| **URL** | **動詞命令** | **目的** |
+| **URL** | **VERB** | **目的** |
 | --- | --- | --- |
-| */Dinners/編輯 / [id]* | GET | 顯示可編輯 Dinner 資料以填入 HTML 表單。 |
+| */Dinners/Edit/[id]* | GET | 顯示可編輯 Dinner 資料以填入 HTML 表單。 |
 | POST | 儲存至資料庫的特定 Dinner 表單變更。 |
-| */ Dinners/建立* | GET | 顯示空的 HTML 表單，好讓使用者定義新 Dinners。 |
+| */Dinners/Create* | GET | 顯示空的 HTML 表單，好讓使用者定義新 Dinners。 |
 | POST | 建立新的 Dinner，並將它儲存在資料庫中。 |
-| */Dinners/刪除 / [id]* | GET | 顯示刪除確認 畫面中。 |
+| */Dinners/Delete/[id]* | GET | 顯示刪除確認 畫面中。 |
 | POST | 從資料庫刪除指定的 dinner。 |
 
 ### <a name="edit-support"></a>編輯支援
@@ -141,7 +141,7 @@ Html.TextBox() 的第三個參數可以選擇性地用於輸出其他的 HTML �
 
 [!code-csharp[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample9.cs)]
 
-當 [AcceptVerbs] 屬性套用至多載的動作方法時，ASP.NET MVC 會自動處理分派至適當的動作方法會根據傳入的 HTTP 指令動詞的要求。 HTTP POST 要求到*/Dinners/編輯 / [id]* Url 將會移至上述的編輯方法，對所有其他 HTTP 動詞命令要求時*/Dinners/編輯 / [id]*Url 將會移至第一個編輯方法我們實作 （這並未沒有 [AcceptVerbs] 屬性）。
+當 [AcceptVerbs] 屬性套用至多載的動作方法時，ASP.NET MVC 會自動處理分派至適當的動作方法會根據傳入的 HTTP 指令動詞的要求。 HTTP POST 要求到<em>/Dinners/編輯 / [id]</em> Url 將會移至上述的編輯方法，對所有其他 HTTP 動詞命令要求時<em>/Dinners/編輯 / [id]</em>Url 將會移至第一個編輯方法我們實作 （這並未沒有 [AcceptVerbs] 屬性）。
 
 | **側邊主題內容： 原因區分透過 HTTP 指令動詞嗎？** |
 | --- |
@@ -219,7 +219,7 @@ HTML helper 方法-例如 Html.TextBox()-轉譯輸出時，請檢查 ModelState 
 
 ![](provide-crud-create-read-update-delete-data-form-entry-support/_static/image10.png)
 
-##### <a name="htmlvalidationmessage-helper-method"></a>Html.ValidationMessage() Helper 方法
+##### <a name="htmlvalidationmessage-helper-method"></a>Html.ValidationMessage() Helper Method
 
 Html.ValidationMessage() helper 方法可以用來輸出與特定模型屬性相關聯的 ModelState 錯誤訊息：
 
@@ -231,9 +231,9 @@ Html.ValidationMessage() 協助程式方法也支援可讓開發人員覆寫會�
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample18.aspx)]
 
-上述程式碼的輸出：  *&lt;/><span class ="欄位的驗證錯誤的 「&gt;\*&lt;/s p a&gt;*而不是針對有錯誤時的預設錯誤文字EventDate 屬性。
+上述程式碼的輸出：  <em>&lt;/><span class ="欄位的驗證錯誤的 「&gt;\*&lt;/s p a&gt;</em>而不是針對有錯誤時的預設錯誤文字EventDate 屬性。
 
-##### <a name="htmlvalidationsummary-helper-method"></a>Html.ValidationSummary() Helper 方法
+##### <a name="htmlvalidationsummary-helper-method"></a>Html.ValidationSummary() Helper Method
 
 Html.ValidationSummary() helper 方法可以用來呈現摘要錯誤訊息，伴隨著&lt;ul&gt;&lt;li /&gt;&lt;/u l&gt;之所有詳細錯誤訊息清單中ModelState 集合：
 
@@ -427,6 +427,6 @@ ASP.NET MVC 包含數個內建功能可協助完成實作表單張貼案例。 �
 
 我們現在看我們如何使用我們的表單上啟用更豐富的 UI 別的 ViewData 和 ViewModel 類別。
 
->[!div class="step-by-step"]
-[上一頁](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
-[下一頁](use-viewdata-and-implement-viewmodel-classes.md)
+> [!div class="step-by-step"]
+> [上一頁](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [下一頁](use-viewdata-and-implement-viewmodel-classes.md)

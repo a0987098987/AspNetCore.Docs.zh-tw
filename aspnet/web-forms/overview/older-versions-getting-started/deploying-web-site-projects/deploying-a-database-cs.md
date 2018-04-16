@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
-title: "部署資料庫 (C#) |Microsoft 文件"
+title: 部署資料庫 (C#) |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET web 應用程式部署需要取得必要的檔案和資源從開發環境到實際執行環境。 針對 da..."
+description: ASP.NET web 應用程式部署需要取得必要的檔案和資源從開發環境到實際執行環境。 針對 da...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f71e3cd1e81644df7b3dfed363b6f2ca826e610d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 203bf64da887f31e5f0727fc57173d6a573095da
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-a-database-c"></a>部署資料庫 (C#)
 ====================
@@ -41,10 +41,10 @@ ASP.NET web 應用程式部署需要取得必要的檔案和資源從開發環�
 
 `Reviews.mdf`資料庫包含四個資料表：
 
-- `Genres`-包含每個內容類型，例如技術、 小說，以及商務的記錄。
-- `Books`-包含每個檢閱，並具有類似的資料行的記錄`Title`， `GenreId`， `ReviewDate`，和`Review`，和其他項目。
-- `Authors`-包含每個投稿檢閱書籍的作者相關資訊。
-- `BooksAuthors`-指定哪些作者撰寫哪些書籍的多對多聯結資料表。
+- `Genres` -包含每個內容類型，例如技術、 小說，以及商務的記錄。
+- `Books` -包含每個檢閱，並具有類似的資料行的記錄`Title`， `GenreId`， `ReviewDate`，和`Review`，和其他項目。
+- `Authors` -包含每個投稿檢閱書籍的作者相關資訊。
+- `BooksAuthors` -指定哪些作者撰寫哪些書籍的多對多聯結資料表。
   
 
 圖 1 顯示這些四份資料表的 ER 圖表。
@@ -99,9 +99,9 @@ ASP.NET web 應用程式部署需要取得必要的檔案和資源從開發環�
 開啟 Visual Studio，並瀏覽至`Reviews.mdf`資料庫。 如果您使用 Visual Web Developer 中，請移至 [資料庫總管] 中;如果您使用 Visual Studio，請使用 [伺服器總管] 中。 圖 4 顯示`Reviews.mdf`在 Visual Web Developer 的 [資料庫總管] 中的資料庫。 如圖 4 所示，`Reviews.mdf`資料庫由四個資料表、 三個預存程序，和使用者定義函式所組成。
 
 
-[![在 資料庫總管 或 伺服器總管中尋找資料庫](deploying-a-database-cs/_static/image11.jpg)](deploying-a-database-cs/_static/image10.jpg) 
+[![在 [資料庫總管] 或伺服器總管中尋找資料庫](deploying-a-database-cs/_static/image11.jpg)](deploying-a-database-cs/_static/image10.jpg) 
 
-**圖 4**: [資料庫總管] 或 伺服器總管中找出資料庫 ([按一下以檢視完整大小的影像](deploying-a-database-cs/_static/image12.jpg))
+**圖 4**: [資料庫總管] 或伺服器總管中找出資料庫 ([按一下以檢視完整大小的影像](deploying-a-database-cs/_static/image12.jpg))
 
 
 以滑鼠右鍵按一下資料庫名稱，並從內容功能表中選擇 [發佈到提供者] 選項。 這會啟動 「 資料庫發行精靈 」 （請參閱圖 5）。 按一下旁邊提前過去的啟動顯示畫面。
@@ -195,6 +195,6 @@ S 都是這麼簡單 ！ 此時已經重複開發資料庫到生產環境。 如
 - [下載 Microsoft SQL Server 資料庫發行精靈 1.1](https://www.microsoft.com/downloads/details.aspx?familyid=56E5B1C5-BF17-42E0-A410-371A838E570A&amp;displaylang=en)
 - [下載 Microsoft SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?FamilyId=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796&amp;displaylang=en)
 
->[!div class="step-by-step"]
-[上一頁](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
-[下一頁](configuring-the-production-web-application-to-use-the-production-database-cs.md)
+> [!div class="step-by-step"]
+> [上一頁](core-differences-between-iis-and-the-asp-net-development-server-cs.md)
+> [下一頁](configuring-the-production-web-application-to-use-the-production-database-cs.md)

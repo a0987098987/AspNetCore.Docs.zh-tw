@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb
-title: "檢查事件相關聯插入、 更新和刪除 (VB) |Microsoft 文件"
+title: 檢查事件相關聯插入、 更新和刪除 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在本教學課程，我們將檢驗使用事件發生之前、 期間和之後插入、 更新或刪除 ASP.NET 資料 Web 控制項的作業。 W..."
+description: 在本教學課程，我們將檢驗使用事件發生之前、 期間和之後插入、 更新或刪除 ASP.NET 資料 Web 控制項的作業。 W...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 88f6beb3f3514c6a9784d4cb936a5b779ce75ae1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9c6a0ff85567b6e41a62feddc58672f38ad0d75b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a>檢查與插入、 更新和刪除 (VB) 相關聯的事件
 ====================
@@ -237,7 +237,7 @@ GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridVie
 **圖 14**: [插入] 索引標籤的下拉式清單設定為`AddProduct`方法 ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image42.png))
 
 
-[![設定 [刪除] 索引標籤的下拉式清單，為（無）](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image43.png)
+[![設定 [刪除] 索引標籤的下拉式清單，為 （無）](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image43.png)
 
 **圖 15**： 刪除索引標籤的下拉式清單 （無） ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-vb/_static/image45.png))
 
@@ -329,12 +329,12 @@ GridView`RowUpdating`做為其第二個參數接受事件類型的物件[GridVie
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 此教學課程中的前導檢閱者已傑克 Goor 和 Liz Shulok。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](an-overview-of-inserting-updating-and-deleting-data-vb.md)
-[下一頁](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](an-overview-of-inserting-updating-and-deleting-data-vb.md)
+> [下一頁](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb.md)

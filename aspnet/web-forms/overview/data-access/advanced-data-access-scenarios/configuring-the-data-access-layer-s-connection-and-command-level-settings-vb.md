@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb
-title: "設定資料存取層連接和命令層級設定 (VB) |Microsoft 文件"
+title: 設定資料存取層連接和命令層級設定 (VB) |Microsoft 文件
 author: rick-anderson
-description: "在輸入資料集內 Tableadapter 自動處理連接到資料庫中，發出命令，並填入具有結果的 DataTable..."
+description: 在輸入資料集內 Tableadapter 自動處理連接到資料庫中，發出命令，並填入具有結果的 DataTable...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ab392f2a7d9b6cf97da920f899aea23379209f96
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b73c6113e84e290025e5835781fa2f85587289b1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-vb"></a>設定資料存取層連接和命令層級設定 (VB)
 ====================
@@ -59,7 +59,7 @@ Microsoft.NET Framework 包含特別設計來處理資料的類別上的。 這�
 **圖 1**: TableAdapter 組態精靈 的第一個步驟 ([按一下以檢視完整大小的影像](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image3.png))
 
 
-可讓 s 花點時間 tableadapter 的程式碼檢查`Connection`屬性。 如中所述[建立資料存取層](../introduction/creating-a-data-access-layer-vb.md)教學課程中，我們可以檢視自動產生的 TableAdapter 程式碼移至 [類別檢視] 視窗中，向下適當的類別，鑽研，然後按兩下 成員名稱。
+可讓 s 花點時間 tableadapter 的程式碼檢查`Connection`屬性。 如中所述[建立資料存取層](../introduction/creating-a-data-access-layer-vb.md)教學課程中，我們可以檢視自動產生的 TableAdapter 程式碼移至 [類別檢視] 視窗中，向下適當的類別，鑽研，然後按兩下成員名稱。
 
 移至 檢視 功能表，然後選擇 類別檢視 （或輸入 Ctrl + Shift + C），請瀏覽 類別檢視 視窗。 從 [類別檢視] 視窗的上半部，向下鑽研至`NorthwindTableAdapters`命名空間並選取`ProductsTableAdapter`類別。 這會顯示`ProductsTableAdapter`的成員，在 類別檢視中，如圖 2 所示的下半部。 按兩下`Connection`屬性來查看其程式碼。
 
@@ -93,7 +93,7 @@ TableAdapter 類別具現化時，成員變數`_connection`等於`Nothing`。 �
 
 ![加入名為 ConnectionAndCommandSettings 子資料夾](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb/_static/image5.png)
 
-**圖 3**： 加入子資料夾名為`ConnectionAndCommandSettings`
+**圖 3**： 加入子資料夾名為 `ConnectionAndCommandSettings`
 
 
 加入新的類別檔案命名為`ProductsTableAdapter.ConnectionAndCommandSettings.vb`並輸入下列程式碼：
@@ -169,12 +169,12 @@ Tableadapter 在輸入資料集內提供的服務封裝資料存取的詳細資�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 
 許多有用的檢閱者已檢閱本教學課程系列。 導致檢閱者在此教學課程已 Burnadette Leigh，S ren 因此 Lauritsen 本文菲和 Hilton Geisenow。 檢閱我即將推出的 MSDN 文件有興趣嗎？ 如果是這樣，卸除我一行[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[上一頁](working-with-computed-columns-vb.md)
-[下一頁](protecting-connection-strings-and-other-configuration-information-vb.md)
+> [!div class="step-by-step"]
+> [上一頁](working-with-computed-columns-vb.md)
+> [下一頁](protecting-connection-strings-and-other-configuration-information-vb.md)

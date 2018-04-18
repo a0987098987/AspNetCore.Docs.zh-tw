@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
-title: "了解偵錯功能的 ASP.NET AJAX |Microsoft 文件"
+title: 了解偵錯功能的 ASP.NET AJAX |Microsoft 文件
 author: scottcate
-description: "若要偵錯程式碼的功能是每個開發人員應該要有其利器，無論他們所使用的技術的技術。 雖然許多開發人員..."
+description: 若要偵錯程式碼的功能是每個開發人員應該要有其利器，無論他們所使用的技術的技術。 雖然許多開發人員...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: 426d0182978faf7fc7516203fcc84ef0152790ba
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f082e2206f5e691579670e42634f30b57e3b3593
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-debugging-capabilities"></a>了解 ASP.NET AJAX 偵錯功能
 ====================
@@ -58,7 +58,7 @@ Dan Wahlin
 
 偵錯已開啟，您會看到新的功能表項目，會出現在名為指令碼偵錯工具的 [檢視] 功能表。 它在下一個陳述式有兩個選項可用，包括開啟和中斷。 選取開啟時將會提示您進行偵錯 Visual Studio 2008 （請注意，Visual Web Developer Express 也會用於偵錯） 中的頁面。 如果目前正在執行 Visual Studio.NET，您可以選擇使用該執行個體，或建立的新執行個體。 選取下一個陳述式處中斷時將會提示您執行 JavaScript 程式碼時，偵錯網頁。 如果 JavaScript 程式碼執行的 onLoad 事件的頁面中，您可以重新整理頁面以觸發偵錯工作階段。 如果 JavaScript 程式碼執行之後的 button 已按下然後偵錯工具會在按下按鈕之後，立即執行。
 
-> *>[!NOTE]如果您要啟用，使用者存取控制 (UAC) 的 Windows Vista 上執行，而且您擁有設定為系統管理員身分執行 Visual Studio 2008，Visual Studio 將會附加至處理序，當系統提示您附加失敗。若要解決此問題，請啟動 Visual Studio 第一次，並使用該執行個體來偵錯。*
+> *> [!NOTE] 如果您要啟用，使用者存取控制 (UAC) 的 Windows Vista 上執行，而且您擁有設定為系統管理員身分執行 Visual Studio 2008，Visual Studio 將無法附加至處理序，當系統提示您附加。若要解決此問題，請啟動 Visual Studio 第一次，並使用該執行個體來偵錯。*
 
 
 雖然下一節將示範如何偵錯 ASP.NET AJAX 頁面直接從 Visual Studio 2008 中的，使用 Internet Explorer 指令碼偵錯工具選項時，頁面已經開啟，且您想要更完整檢查它。
@@ -101,7 +101,7 @@ Visual Studio 2008 偵錯工具會將內嵌於頁面外部的 JavaScript 檔案�
 
 因為 Visual Studio.NET 不確定如何取得一些此網頁所參考的指令碼的原始碼，會顯示此對話方塊。 這可以是很不方便而在一開始，沒有簡單的修正。 一旦您啟動偵錯工作階段並叫用中斷點，請移至 [偵錯 Windows 指令碼總管] 視窗，在 Visual Studio 2008 功能表上，或使用 Ctrl + Alt + N 快速鍵。
 
-> *>[!NOTE]如果看不到列出的指令碼總管 功能表，請移至 工具**自訂* *Visual Studio.NET 功能表上的命令。在 [類別] 區段中尋找偵錯項目，然後按一下來顯示所有可用的功能表項目。在命令清單中，向下捲動至 [指令碼總管]，然後將其拖曳到偵錯* *Windows 功能表中的先前所述。這樣會提供指令碼總管 功能表項目每次執行 Visual Studio.NET。*
+> *> [!NOTE] 如果看不到列出的指令碼總管功能表，請移至 工具**自訂* *Visual Studio.NET 功能表上的命令。在 [類別] 區段中尋找偵錯項目，然後按一下來顯示所有可用的功能表項目。在命令清單中，向下捲動至 [指令碼總管]，然後將其拖曳到偵錯* *Windows 功能表中的先前所述。這樣會提供指令碼總管 功能表項目每次執行 Visual Studio.NET。*
 
 
 指令碼總管可用來檢視在網頁中使用的所有指令碼，並在程式碼編輯器中開啟它們。 一旦開啟 [指令碼總管] 中，按兩下目前所偵錯程式碼編輯器視窗中開啟.aspx 網頁。 所有其他指令碼總管 中顯示的指令碼執行相同的動作。 所有指令碼已在您可以在程式碼視窗中開啟後按下 F11 （並使用其他的偵錯快速鍵） 來逐步執行程式碼。 圖 3 顯示指令碼總管的範例。 它會列出目前的檔案進行偵錯 (Demo.aspx) 以及兩個自訂指令碼和兩個指令碼以動態方式插入頁面的 ASP.NET AJAX ScriptManager。
@@ -116,11 +116,11 @@ Visual Studio 2008 偵錯工具會將內嵌於頁面外部的 JavaScript 檔案�
 
 當您逐步執行程式碼使用偵錯工具可以滑鼠移過程式碼 檢視時將獲指派的值中的變數。 不過，指令碼偵錯工具有時不會顯示任何項目為滑鼠移過指定的 JavaScript 變數。 若要查看的值，反白顯示陳述式或您嘗試在程式碼編輯器視窗中看到和滑鼠游標移至的變數。 雖然每一種情況不會使用這項技術，許多次您將能夠看到而不需要在不同的偵錯視窗，例如 [區域變數] 視窗中尋找的值。
 
-示範的某些功能這裡所討論的視訊教學課程可以在檢視[http://www.xmlforasp.net](http://www.xmlforasp.net)。
+示範的某些功能這裡所討論的視訊教學課程可以在檢視[ http://www.xmlforasp.net ](http://www.xmlforasp.net)。
 
 ## <a name="debugging-with-web-development-helper"></a>使用 Web 開發協助程式進行偵錯
 
-雖然 Visual Studio 2008 （和 Visual Web Developer Express 2008） 是偵錯工具功能非常強，還有其他選項也可以使用，也就是一個輕量。 釋出最新的工具之一是 Web 開發協助程式。 Microsoft 的 Nikhil Kothari （一個在 Microsoft 索引鍵的 ASP.NET AJAX 架構設計人員） 所撰寫的絕佳工具可以從簡單偵錯，以檢視的 HTTP 要求和回應訊息執行許多不同的工作。 Web 開發協助程式的下載網址[http://projects.nikhilk.net/Projects/WebDevHelper.aspx](http://projects.nikhilk.net/Projects/WebDevHelper.aspx)。
+雖然 Visual Studio 2008 （和 Visual Web Developer Express 2008） 是偵錯工具功能非常強，還有其他選項也可以使用，也就是一個輕量。 釋出最新的工具之一是 Web 開發協助程式。 Microsoft 的 Nikhil Kothari （一個在 Microsoft 索引鍵的 ASP.NET AJAX 架構設計人員） 所撰寫的絕佳工具可以從簡單偵錯，以檢視的 HTTP 要求和回應訊息執行許多不同的工作。 Web 開發協助程式的下載網址[ http://projects.nikhilk.net/Projects/WebDevHelper.aspx ](http://projects.nikhilk.net/Projects/WebDevHelper.aspx)。
 
 這可讓您更方便使用 Internet Explorer 內直接可用 web 開發協助程式。 它會從 Internet Explorer 功能表中選取工具 Web 開發協助程式開始。 這會很好，因為您不必離開執行數個工作，例如，HTTP 要求和回應訊息記錄瀏覽器的瀏覽器的下半部中開啟此工具。 圖 4 顯示 Web 開發協助程式在動作中的外觀。
 
@@ -201,11 +201,11 @@ HTTP 記錄檔檢視器會自動剖析 JSON 物件，並顯示它們使用快速
 **圖 8**： 使用 HTTP 記錄檔檢視器檢視 UpdatePanel 回應訊息。  ([按一下以檢視完整大小的影像](understanding-asp-net-ajax-debugging-capabilities/_static/image24.png))
 
 
-有數個其他工具，可用來檢視 Web 開發協助程式除了要求和回應訊息。 另一個很好的選項是可以免費在 Fiddler [http://www.fiddlertool.com](http://www.fiddlertool.com)。Fiddler 不討論以下，雖然它時也是很好的選擇您要徹底地檢查訊息標頭和資料。
+有數個其他工具，可用來檢視 Web 開發協助程式除了要求和回應訊息。 另一個很好的選項是可以免費在 Fiddler [ http://www.fiddlertool.com ](http://www.fiddlertool.com)。Fiddler 不討論以下，雖然它時也是很好的選擇您要徹底地檢查訊息標頭和資料。
 
 ## <a name="debugging-with-firefox-and-firebug"></a>使用 Firefox 和 firebug 這類偵錯
 
-Internet Explorer 仍是最普遍使用的瀏覽器，而其他瀏覽器，例如 Firefox 變得非常受歡迎，並使用越來越多。 如此一來，您會想要檢視及偵錯您的 ASP.NET AJAX 網頁中 Firefox，以及 Internet Explorer 以確保您的應用程式正常運作。 雖然 Firefox 無法直接在 Visual Studio 2008 有相同的偵錯，但其呼叫可用來偵錯網頁的 firebug 這類延伸模組。 Firebug 這類可以免費下載，請前往[http://www.getfirebug.com](http://www.getfirebug.com)。
+Internet Explorer 仍是最普遍使用的瀏覽器，而其他瀏覽器，例如 Firefox 變得非常受歡迎，並使用越來越多。 如此一來，您會想要檢視及偵錯您的 ASP.NET AJAX 網頁中 Firefox，以及 Internet Explorer 以確保您的應用程式正常運作。 雖然 Firefox 無法直接在 Visual Studio 2008 有相同的偵錯，但其呼叫可用來偵錯網頁的 firebug 這類延伸模組。 Firebug 這類可以免費下載，請前往[ http://www.getfirebug.com ](http://www.getfirebug.com)。
 
 Firebug 這類提供功能完整的偵錯環境，可用來逐步執行逐行程式碼存取網頁內使用的所有指令碼、 檢視 DOM 結構，顯示在網頁中的 CSS 樣式，甚至是追蹤事件發生的。 安裝之後，可以存取 firebug 這類工具 firebug 這類開啟 Firebug 從 Firefox 功能表中選取。 Web 開發的協助程式，例如 firebug 這類都使用直接在瀏覽器中，不過它也可用來當作獨立的應用程式。
 
@@ -245,9 +245,9 @@ Sys.Debug 類別會公開數個不同的函式可用來處理追蹤、 程式碼
 
 **表 1。Sys.Debug 類別函式。**
 
-| **函式名稱** | **說明** |
+| **函式名稱** | **描述** |
 | --- | --- |
-| 判斷提示 （條件、 訊息、 displayCaller） | 判斷提示的條件參數為 true。 如果要測試的條件為 false，訊息方塊會用於顯示訊息的參數值。 如果 displayCaller 參數為 true，則方法也會顯示呼叫者的相關資訊。 |
+| assert(condition, message, displayCaller) | 判斷提示的條件參數為 true。 如果要測試的條件為 false，訊息方塊會用於顯示訊息的參數值。 如果 displayCaller 參數為 true，則方法也會顯示呼叫者的相關資訊。 |
 | clearTrace() | 清除追蹤作業的陳述式輸出。 |
 | fail(message) | 會造成程式停止執行並偵錯工具。 訊息參數可以用來提供失敗的原因。 |
 | trace(message) | 寫入追蹤輸出訊息參數。 |
@@ -355,5 +355,5 @@ Dan Wahlin （Microsoft 最有價值專家適用於 ASP.NET 和 XML Web Service�
 
 Scott 是否已從 1997 年使用 Microsoft Web 技術，且 myKB.com 總統 ([www.myKB.com](http://www.myKB.com)) 擅長撰寫 ASP.NET 架構的重點 Knowledge Base 軟體解決方案的應用程式。 透過在電子郵件，即可以聯繫 Scott [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com)或在他的部落格[ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[上一步](understanding-asp-net-ajax-web-services.md)
+> [!div class="step-by-step"]
+> [上一步](understanding-asp-net-ajax-web-services.md)

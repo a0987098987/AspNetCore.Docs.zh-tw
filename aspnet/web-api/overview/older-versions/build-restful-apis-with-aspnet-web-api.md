@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 320409cd395384a608a07307a56d18105d45de14
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ded549109ca6e7ad806f1c3f53387766527e5a94
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 <a name="build-restful-apis-with-aspnet-web-api"></a>建置 RESTful 應用程式開發介面使用 ASP.NET Web API
 ====================
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/06/2018
 > 近年來，它已經變成清除不是 HTTP： 只能用來提供 HTML 網頁。 它也是功能強大的平台，來建置 Web Api，使用少數幾個動詞命令 （GET、 POST 等） 再加上一些簡單的概念，例如*Uri*和*標頭*。 ASP.NET Web API 是一組簡化 HTTP 程式設計的元件。 因為它內建 ASP.NET MVC 執行階段，Web 應用程式開發介面會自動處理 HTTP 的傳輸低階詳細資料。 同時，Web API 自然會公開 HTTP 程式設計模型。 事實上，Web API 的其中一個目標是要*不*提取出的 HTTP 狀況。 如此一來，Web API 是彈性且易於擴充。 在這個實際操作實驗室中，您將建置簡單的 REST API 連絡人管理員應用程式使用 Web API。 您也將建置用戶端使用的 API。 Rest 架構已證明是利用 HTTP-有效率的方式，雖然不一定唯一有效的方法，為 HTTP。 連絡人的管理員會公開 RESTful 清單、 加入和移除連絡人和其他項目。 這個實驗室需要基本的了解 HTTP，其餘部分，而且假設您有基本的 HTML、 JavaScript 和 jQuery 的實用知識。
 > 
 > > [!NOTE]
-> > ASP.NET 網站有一個專門用來在 ASP.NET Web API framework 的區域[ [ https://asp.net/web-api ](https://asp.net/web-api) ](https://asp.net/web-api)。 此站台會繼續以提供最新的資訊、 範例和新聞與 Web 應用程式開發介面，因此請經常如果您想要更深入地建立自訂 Web 應用程式開發介面使用幾乎任何裝置或開發架構的封面鑽研。
+> > ASP.NET 網站有一個專門用來在 ASP.NET Web API framework 的區域[ https://asp.net/web-api ](https://asp.net/web-api)。 此站台會繼續以提供最新的資訊、 範例和新聞與 Web 應用程式開發介面，因此請經常如果您想要更深入地建立自訂 Web 應用程式開發介面使用幾乎任何裝置或開發架構的封面鑽研。
 > > 
 > > ASP.NET Web API，類似於 ASP.NET MVC 4，已分離可讓您使用數個可用的相依性插入架構相當簡單的控制站的服務層的絕佳彈性。 沒有良好的範例，示範如何使用 ASP.NET Web API 專案中，您可以從下載的相依性插入 Ninject 的 MSDN 中[這裡](https://code.msdn.microsoft.com/ASPNET-Web-API-JavaScript-d0d64dd7)。
 > 
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/06/2018
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 a： 使用程式碼片段](#AppendixA)&quot;。
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/06/2018
 
 在這項工作，您將建立應用程式開發介面方法所在的控制器類別。
 
-1. 以滑鼠右鍵按一下**模型**資料夾，然後選取**新增 |類別...**從內容功能表。
+1. 以滑鼠右鍵按一下**模型**資料夾，然後選取**新增 |類別...** 從內容功能表。
 
     ![將新模型加入至 web 應用程式](build-restful-apis-with-aspnet-web-api/_static/image10.png "將新模型加入至 web 應用程式")
 
@@ -190,7 +190,7 @@ ms.lasthandoff: 04/06/2018
    1. 瀏覽器會開啟之後, 按**F12**如果開發人員工具還未開啟。
    2. 按一下**網路** 索引標籤。
    3. 按**開始擷取** 按鈕。
-   4. 新增 URL 尾碼**/api/連絡人**在位址列中按的 url **Enter**索引鍵。
+   4. 新增 URL 尾碼 **/api/連絡人**在位址列中按的 url **Enter**索引鍵。
    5. 按**移至 [詳細檢視**] 按鈕。
    6. 選取**回應主體** 索引標籤。您應該會看到代表序列化的形式的連絡人執行個體陣列的 JSON 字串。
 
@@ -210,7 +210,7 @@ ms.lasthandoff: 04/06/2018
     ![建立服務 資料夾](build-restful-apis-with-aspnet-web-api/_static/image14.png "建立服務資料夾")
 
     *建立服務 資料夾*
-2. 以滑鼠右鍵按一下**服務**資料夾，然後選取**新增 |類別...**從內容功能表。
+2. 以滑鼠右鍵按一下**服務**資料夾，然後選取**新增 |類別...** 從內容功能表。
 
     ![將新類別加入至 [服務] 資料夾](build-restful-apis-with-aspnet-web-api/_static/image15.png "將新類別加入至 [服務] 資料夾")
 
@@ -291,7 +291,7 @@ ms.lasthandoff: 04/06/2018
 在這項工作，您將準備增強，因此可接受使用者輸入，練習 1 中建立的 Web API 專案。
 
 1. 執行**Visual Studio 2012 Express for Web**，請移至要**啟動**和型別**VS Express for Web**然後按下**Enter**。
-2. 開啟**開始**方案位於**來源/Ex02ReadWriteWebAPI/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+2. 開啟**開始**方案位於**來源/Ex02ReadWriteWebAPI/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -345,7 +345,7 @@ ms.lasthandoff: 04/06/2018
 在這個工作中，您將修改成可支援在 HTML 瀏覽器中顯示現有的連絡人清單需求的 web 應用程式的預設索引檢視。
 
 1. 開啟**Visual Studio 2012 Express for Web**如果它尚未開啟。
-2. 開啟**開始**方案位於**來源/Ex03ConsumingWebAPI/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+2. 開啟**開始**方案位於**來源/Ex03ConsumingWebAPI/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -652,7 +652,7 @@ ASP.NET 網站有一個專門用來在 ASP.NET Web API framework 的區域[ [ ht
     *Web 部署設定*
 5. 設定資料庫連接，如下所示：
 
-   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
+   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:* 前置詞。
    - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
    - 在**密碼**輸入伺服器系統管理員身分登入密碼。
    - 輸入新的資料庫名稱，例如： *MVC4SampleDB*。

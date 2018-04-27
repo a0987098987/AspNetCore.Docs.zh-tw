@@ -9,23 +9,31 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 3a19cec2ce4387ca44ca120f031a072269b93454
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 300feb42dff7f1bb86bab6fedf3f657273ced8be
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-當初始化資料保護系統時，它會套用[預設設定](xref:security/data-protection/configuration/default-settings)根據作業環境。 這些設定是通常適用於在單一機器上執行的應用程式。 沒有開發人員可能的想来變更的預設設定，可能是因為其應用程式分散在多部電腦，或基於相容性因素。 這些案例中，資料保護系統會提供豐富的組態 API。
+當初始化資料保護系統時，它會套用[預設設定](xref:security/data-protection/configuration/default-settings)根據作業環境。 這些設定是通常適用於在單一機器上執行的應用程式。 一些情況下，在開發人員可能想要變更預設設定：
 
-擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開，您可以鏈結在一起選項來設定資料保護的擴充方法。
+* 應用程式則會分散到多部電腦。
+* 基於相容性因素。
+
+這些案例中，資料保護系統會提供豐富的組態 API。
+
+> [!WARNING]
+> 類似於組態檔，資料保護鑰匙圈應受到使用適當的權限。 您可以選擇加密在靜止時，金鑰，但這不會防止攻擊者建立新的金鑰。 因此，您的應用程式安全性會受到影響。 使用資料保護設定的儲存位置應該限制為應用程式本身，您會保護組態檔的方式類似其存取權。 例如，如果您選擇儲存在磁碟上的索引鍵信號，使用檔案系統權限。 確保識別下的執行您 web 應用程式具有讀取、 寫入和建立該目錄的存取權。 如果您使用 Azure 資料表儲存體時，只有 web 應用程式應該有讀取、 寫入或建立新項目中的資料表存放區、 等等的能力。
+>
+> 擴充方法[AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection)傳回[IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder)。 `IDataProtectionBuilder` 會公開，您可以鏈結在一起選項來設定資料保護的擴充方法。
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 
-若要將金鑰儲存在 UNC 共用而不是在*%LOCALAPPDATA%*預設位置，設定與系統[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
+若要將金鑰儲存在 UNC 共用而不是在 *%LOCALAPPDATA%* 預設位置，設定與系統[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -91,7 +99,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="per-application-isolation"></a>每個應用程式隔離
 
-ASP.NET Core 主機所提供資料保護系統時，它會自動會隔離應用程式，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰處理內容。 這是有點像 IsolateApps 修飾詞將來自 System.Web 的 **\<machineKey >**項目。
+ASP.NET Core 主機所提供資料保護系統時，它會自動會隔離應用程式，即使這些應用程式相同的背景工作處理序帳戶下執行，並使用相同的主要金鑰處理內容。 這是有點像 IsolateApps 修飾詞將來自 System.Web 的 **\<machineKey >** 項目。
 
 隔離機制的運作方式是做為唯一的租用戶，考慮在本機電腦上的每個應用程式，因此[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector)根項目，針對任何給定的應用程式會自動包含應用程式識別碼，表示為鑑別子。 應用程式的唯一識別碼來自兩個地方的其中一個：
 

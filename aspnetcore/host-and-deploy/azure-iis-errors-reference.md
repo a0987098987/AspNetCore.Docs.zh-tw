@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: fb833ef8797ea7851cbaf53bb5681df248d07a49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1500f026c245f80de4120d6db4901cb117552966
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 
 疑難排解：
 
-* 如果安裝伺服器裝載套件組合時，系統無法存取網際網路，導致安裝程式無法取得 *Microsoft Visual C++ 2015 可轉散發套件*，就會發生這個例外狀況。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。 如果安裝程式失敗，伺服器可能不會接收裝載 framework 相依的部署 (與 FDD) 所需的.NET 核心執行階段。 如果裝載與 FDD，確認執行階段是否已安裝的程式中&amp;功能。 如有需要取得執行階段安裝從[.NET 所有下載](https://www.microsoft.com/net/download/all)。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
+* 安裝程式而無法取得時，如果系統沒有網際網路存取裝載的配套在安裝時，發生這個例外狀況*Microsoft Visual c + + 2015年可轉散發*。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。 如果安裝程式失敗，伺服器可能不會接收裝載 framework 相依的部署 (與 FDD) 所需的.NET 核心執行階段。 如果裝載與 FDD，確認執行階段是否已安裝的程式中&amp;功能。 如有需要取得執行階段安裝從[.NET 所有下載](https://www.microsoft.com/net/download/all)。 安裝執行階段之後，從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動系統或重新啟動 IIS。
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>作業系統升級已移除 32 位元的 ASP.NET Core 模組
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/06/2018
 
 疑難排解：
 
-* 作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果之前已安裝的 ASP.NET 核心模組作業系統升級，然後任何應用程式集區時執行 32 位元模式在作業系統升級之後，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle)。 選取**修復**執行安裝程式時。
+* 作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果之前已安裝的 ASP.NET 核心模組作業系統升級，然後任何應用程式集區時執行 32 位元模式在作業系統升級之後，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝.NET Core 裝載配套](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。 選取**修復**執行安裝程式時。
 
 ## <a name="platform-conflicts-with-rid"></a>平台發生 RID 衝突
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/06/2018
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[疑難排解](xref:host-and-deploy/iis/troubleshoot)。
 
-* 確認`<PlatformTarget>`中*.csproj* RID 不相衝突。 例如，未指定`<PlatformTarget>`的`x86`和使用的 RID 發行`win10-x64`，藉由使用*dotnet 發行-c 版本-r win10 x64*或藉由設定`<RuntimeIdentifiers>`中*.csproj*至`win10-x64`。 專案發佈時沒有警告或錯誤，但因為上述在系統上記錄的例外狀況而失敗。
+* 確認`<PlatformTarget>`中 *.csproj* RID 不相衝突。 例如，未指定`<PlatformTarget>`的`x86`和使用的 RID 發行`win10-x64`，藉由使用*dotnet 發行-c 版本-r win10 x64*或藉由設定`<RuntimeIdentifiers>`中 *.csproj*至`win10-x64`。 專案發佈時沒有警告或錯誤，但因為上述在系統上記錄的例外狀況而失敗。
 
 * 如果這個例外狀況時發生的 Azure 應用程式的部署升級應用程式和部署較新的組件，以手動方式刪除所有檔案從先前的部署。 部署升級的應用程式時，延遲不相容的組件會導致 `System.BadImageFormatException` 例外狀況。
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="incorrect-website-physical-path-or-app-missing"></a>不正確的網站實體路徑，或遺漏應用程式
 
-* **瀏覽器：** 403 禁止 - 存取被拒**--或--** 403.14 禁止 - 網頁伺服器已設為不列出此目錄的內容。
+* **瀏覽器：** 403 禁止 - 存取被拒 **--或--** 403.14 禁止 - 網頁伺服器已設為不列出此目錄的內容。
 
 * **應用程式記錄檔：**無項目
 
@@ -114,11 +114,11 @@ ms.lasthandoff: 04/06/2018
 
 * 確認已啟用適當的角色。 請參閱 [IIS 組態](xref:host-and-deploy/iis/index#iis-configuration)。
 
-* 請檢查 [程式和功能] 並確認 **Microsoft ASP.NET Core 模組** 已安裝。 如果已安裝的程式清單中沒有 **Microsoft ASP.NET Core 模組**，請安裝此模組。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle)。
+* 請檢查 [程式和功能] 並確認 **Microsoft ASP.NET Core 模組** 已安裝。 如果已安裝的程式清單中沒有 **Microsoft ASP.NET Core 模組**，請安裝此模組。 請參閱[安裝.NET 核心裝載配套](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。
 
 * 請確定**應用程式集區** > **處理序模型** > **識別**設**ApplicationPoolIdentity**或自訂身分識別正確的權限來存取應用程式的部署資料夾。
 
-## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath, 遺失 PATH 變數, 未安裝裝載套件組合, 未重新啟動系統/IIS, 未安裝 VC++ 可轉散發套件, 或 dotnet.exe 存取違規
+## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath、 遺漏 PATH 變數、 裝載未安裝的套件組合，系統/IIS 不會重新啟動、 VC + + 可轉散發套件未安裝，或 dotnet.exe 存取違規
 
 * **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 04/06/2018
 
 * 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱[疑難排解](xref:host-and-deploy/iis/troubleshoot)。
 
-* 請檢查*processPath*屬性`<aspNetCore>`中的項目*web.config*來確認它是*dotnet* framework 相依的部署 (與 FDD) 或*.\{組件}.exe*獨立部署 (SCD)。
+* 請檢查*processPath*屬性`<aspNetCore>`中的項目*web.config*來確認它是*dotnet* framework 相依的部署 (與 FDD) 或 *.\{組件}.exe*獨立部署 (SCD)。
 
 * 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認系統 PATH 設定中有 *C:\Program Files\dotnet\*。
 
@@ -138,9 +138,9 @@ ms.lasthandoff: 04/06/2018
 
 * 與 FDD 部署和.NET Core 安裝不需要重新啟動 IIS。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，重新啟動伺服器或重新啟動 IIS。
 
-* 與 FDD 可能部署而不需要在主機系統上安裝.NET 核心執行階段。 如果尚未安裝.NET 核心執行階段，執行**.NET 核心 Windows Server 裝載配套 installer**系統上。 請參閱[安裝 .NET Core Windows Server 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-windows-server-hosting-bundle)。 如果嘗試在沒有網際網路連線的系統上安裝.NET 核心執行階段時，取得執行階段從[.NET 所有下載](https://www.microsoft.com/net/download/all)並執行裝載配套安裝程式安裝 ASP.NET 核心模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
+* 與 FDD 可能部署而不需要在主機系統上安裝.NET 核心執行階段。 如果尚未安裝.NET 核心執行階段，執行 **.NET Core 裝載配套 installer**系統上。 請參閱[安裝.NET 核心裝載配套](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。 如果嘗試在沒有網際網路連線的系統上安裝.NET 核心執行階段時，取得執行階段從[.NET 所有下載](https://www.microsoft.com/net/download/all)和執行裝載配套的安裝程式安裝 ASP.NET Core 模組。 從命令提示字元依序執行 **net stop was /y** 和 **net start w3svc**，透過重新啟動系統或重新啟動 IIS 來完成安裝。
 
-* 與 FDD 部署和*Microsoft Visual c + + 2015年可轉散發 (x64)*系統上未安裝。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。
+* 與 FDD 部署和*Microsoft Visual c + + 2015年可轉散發 (x64)* 系統上未安裝。 取得從安裝[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53840)。
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>不正確的 \<aspNetCore\> 元素引數
 

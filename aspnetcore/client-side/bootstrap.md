@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: 142a997fa46f37545ea04971ab6593bff053b1ef
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a11ed13c709830795ebfd0e658d3f2fd2fd5a458
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>建置美麗、 可回應網站啟動程序與 ASP.NET Core
 
@@ -68,7 +68,7 @@ Install-Package bootstrap
 
 ## <a name="basic-templates-and-features"></a>基本的範本和功能
 
-最基本的 Bootstrap 範本看起來很像上列*_Layout.cshtml*檔案，其中僅包含基本的導覽功能表，以及用於及呈現其餘網頁的空間。
+最基本的 Bootstrap 範本看起來很像上列 *_Layout.cshtml*檔案，其中僅包含基本的導覽功能表，以及用於及呈現其餘網頁的空間。
 
 ### <a name="basic-navigation"></a>基本導覽
 
@@ -82,7 +82,7 @@ Install-Package bootstrap
 </button>
 ```
 
-它也包含應用程式名稱，它會出現在左上方。 主瀏覽功能表呈現`<ul>`內第二個 div，項目，並包含以首頁、 關於和連絡人的連結。 註冊和登入的其他連結會新增一行 29 _LoginPartial 列。 下方瀏覽，在另一個轉譯的每個頁面主體`<div>`、 標示為 「 容器 」 和 「 本文內容 」 類別。 簡單的預設 _Layout 檔案如下所示，在頁面的內容會轉譯頁面上，然後按一下 簡單與相關聯的特定檢視`<footer>`加入至結尾`<div>`項目。 您可以看到有關頁面內建的顯示方式使用此範本：
+它也包含應用程式名稱，它會出現在左上方。 主瀏覽功能表呈現`<ul>`內第二個 div，項目，並包含以首頁、 關於和連絡人的連結。 下方瀏覽，在另一個轉譯的每個頁面主體`<div>`、 標示為 「 容器 」 和 「 本文內容 」 類別。 簡單的預設 _Layout 檔案如下所示，在頁面的內容會轉譯頁面上，然後按一下 簡單與相關聯的特定檢視`<footer>`加入至結尾`<div>`項目。 您可以看到有關頁面內建的顯示方式使用此範本：
 
 ![有關頁面](bootstrap/_static/about-page-wide.png)
 
@@ -117,9 +117,9 @@ Bootstrap 的最受歡迎的功能之一是其格線版面配置系統。 現代
 CSS 類別的前置詞 | 裝置層 | 寬度
 :---: | :---: | :---:
 col-xs- | 電話 | < 768px
-col-sm- | 平板電腦 | >= 768px
-col-md- | 桌上型電腦 | >= 992px
-col-lg- | 較大的桌面顯示 | >= 1200px
+資料行-sm- | 平板電腦 | >= 768px
+資料行-md- | 桌上型電腦 | >= 992px
+資料行-lg- | 較大的桌面顯示 | > = 1200px
 
 當指定的兩個資料行都與 「 資料行-md-6 」 產生的配置將會在桌面的解析度上，兩個資料行，但這兩個資料行上較小裝置 （或較窄的瀏覽器視窗，在桌面上），讓使用者能夠輕鬆地檢視轉譯時就會垂直堆疊而不需要水平捲動內容。
 
@@ -147,7 +147,7 @@ Bootstrap 總是預設為單一資料行配置，因此只有當您想要多個�
 
 ### <a name="badges"></a>徽章
 
-徽章是指瀏覽項目旁邊的小，通常是數值圖說文字。 這可能是多個訊息或通知等待或更新的存在。 指定這類徽章很簡單，只新增<span>包含文字，有 [徽章] 的類別：
+徽章是指瀏覽項目旁邊的小，通常是數值圖說文字。 這可能是多個訊息或通知等待或更新的存在。 指定這類徽章很簡單，只新增`<span>`包含文字，有 [徽章] 的類別：
 
 ![佈景主題的徽章](bootstrap/_static/theme-badges.png)
 
@@ -159,7 +159,7 @@ Bootstrap 總是預設為單一資料行配置，因此只有當您想要多個�
 
 ### <a name="navbars-and-menus"></a>Navbars 和功能表
 
-我們的版面配置已包含標準的導覽列，但 Bootstrap 的佈景主題支援額外的樣式選項。 我們也可以很容易地依偏好來選擇垂直顯示導覽列，而非水平顯示，同時也可以新增子導覽項目至彈出式視窗功能表。 索引標籤區域之類的簡單瀏覽功能表是建立在 <ul> 項目。 要建立十分容易，只要提供 CSS 類別 "nav" 和 "nav-tabs" 即可：
+我們的版面配置已包含標準的導覽列，但 Bootstrap 的佈景主題支援額外的樣式選項。 我們也可以很容易地依偏好來選擇垂直顯示導覽列，而非水平顯示，同時也可以新增子導覽項目至彈出式視窗功能表。 最上層的內建索引標籤帶狀線，例如簡單的瀏覽功能表`<ul>`項目。 要建立十分容易，只要提供 CSS 類別 "nav" 和 "nav-tabs" 即可：
 
 ![佈景主題 tabstrips](bootstrap/_static/theme-tabstrips.png)
 
@@ -179,7 +179,7 @@ Navbars 同樣地，內建，但會稍微更複雜。 開頭為`<nav>`或`<div>`
 
 ![範例主題 inspinia](bootstrap/_static/theme-inspinia.png)
 
-如果您想要變更您的 Bootstrap 主題，請將所要主題的 *bootstrap.css* 檔案放在**wwwroot/css**資料夾中，並變更*_Layout.cshtml* 中的參考以指向該檔案。 變更所有環境的連結： 變更用於所有環境的連結：
+如果您想要變更您的 Bootstrap 主題，請將所要主題的 *bootstrap.css* 檔案放在**wwwroot/css**資料夾中，並變更 *_Layout.cshtml* 中的參考以指向該檔案。 變更所有環境的連結： 變更用於所有環境的連結：
 
 ```html
 <environment names="Development">

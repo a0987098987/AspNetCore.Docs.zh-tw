@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: 7ba1966dcaf1ce0510f489cfe0ff11501faffa56
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: f969cb26d1fcddeac967b1e3d13e3c06ebc7631f
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-authorization-in-aspnet-core"></a>在 ASP.NET Core 授權簡介
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/22/2018
 
 授權是指程序，決定使用者是否能夠執行。 比方說，允許系統管理使用者建立文件庫，加入文件、 編輯文件，並刪除它們。 使用 程式庫非系統管理使用者只能讀取文件的權限。
 
-授權是垂直和獨立於驗證，這是使用者確實的程序。 驗證可能會建立一或多個目前使用者的身分識別。
+授權是垂直和獨立於驗證。 不過，授權要求的驗證機制。 驗證是演練使用者的程序。 驗證可能會建立一或多個目前使用者的身分識別。
 
 ## <a name="authorization-types"></a>授權類型
 

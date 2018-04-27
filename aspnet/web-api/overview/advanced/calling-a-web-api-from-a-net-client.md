@@ -11,17 +11,17 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: a243eeb982ba581e237263c4e31e130d634aff0e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fdb74b0eb74ce7f387f49a0b25ceebd3fc389da9
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>呼叫 Web API，從.NET 用戶端 (C#)
 ====================
 由[Mike Wasson](https://github.com/MikeWasson)和[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[下載完成的專案](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)
+[下載完成的專案](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)。 [下載指示](/aspnet/core/tutorials/#how-to-download-a-sample)。 
 
 本教學課程示範如何從.NET 應用程式呼叫 web API 使用[System.Net.Http.HttpClient。](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 04/06/2018
 
 | 動作 | HTTP 方法 | 相對 URI |
 | --- | --- | --- |
-| 取得產品識別碼 | GET | /api/products/*id* |
+| 取得產品識別碼 | GET | /api/產品/*識別碼* |
 | 建立新的產品 | POST | / api/產品 |
-| 產品更新 | PUT | /api/products/*id* |
-| 刪除產品 | DELETE | /api/products/*id* |
+| 產品更新 | PUT | /api/產品/*識別碼* |
+| 刪除產品 | DELETE | /api/產品/*識別碼* |
 
 若要深入了解如何實作此 API 與 ASP.NET Web API，請參閱[建立 Web API 的支援 CRUD 操作](xref:web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 )。
@@ -167,7 +167,7 @@ resp.Content.ReadAsAsync<IEnumerable<Product>>(formatters);
 
 若要測試用戶端應用程式：
 
-1. [下載](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server)並執行伺服器應用程式。 [下載指示](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample)。 請確認伺服器應用程式運作。 Exaxmple，如`http://localhost:64195/api/products`應該會傳回一份產品清單。
+1. [下載](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server)並執行伺服器應用程式。 [下載指示](/aspnet/core/tutorials/#how-to-download-a-sample)。 請確認伺服器應用程式運作。 Exaxmple，如`http://localhost:64195/api/products`應該會傳回一份產品清單。
 2. 設定 HTTP 要求的基底 URI。 將連接埠號碼變更為伺服器應用程式中使用的通訊埠。
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

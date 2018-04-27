@@ -3,17 +3,18 @@ title: 使用 ASP.NET Core on macOS 與 Visual Studio for Mac 來建立 Razor �
 author: rick-anderson
 description: 使用 ASP.NET Core 和 EF Core 來建立 Razor 頁面 Web 應用程式。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/26/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/index
-ms.openlocfilehash: b83665bb8ffffd52442cd6bf67b2e23d097581db
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 3e7af4b3cc29bdd86fc780c94a81f7e822a65971
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core-on-macos-with-visual-studio-for-mac"></a>使用 ASP.NET Core on macOS 與 Visual Studio for Mac 來建立 Razor 頁面 Web 應用程式
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 03/22/2018
 
 1. [開始在 macOS 上使用 Razor 頁面](xref:tutorials/razor-pages-mac/razor-pages-start)
 1. [將模型新增至 Razor 頁面應用程式](xref:tutorials/razor-pages-mac/model)
-1. [包含 Scaffold 的 Razor 頁面](xref:tutorials/razor-pages-mac/page)
+1. [包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages-mac/page)
 1. [使用 SQLite](xref:tutorials/razor-pages-mac/sql)
 1. [更新頁面](xref:tutorials/razor-pages-mac/da1)
 1. [新增搜尋](xref:tutorials/razor-pages-mac/search)

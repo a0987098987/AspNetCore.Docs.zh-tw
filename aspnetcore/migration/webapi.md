@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 2b9d6ac41266e0e6085153e1302d84a34ee85257
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2f1d0b43f565dbf6189406bfd65158f809e1f18f
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
 
@@ -36,7 +36,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 [!code-csharp[](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 
-這個類別會設定[屬性路由](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定 ASP.NET Web API 所使用的路由表。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與*{id}*為選擇性。
+這個類別會設定[屬性路由](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定 ASP.NET Web API 所使用的路由表。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與 *{id}* 為選擇性。
 
 *ProductsApp*專案包含一個簡單的控制器，繼承自`ApiController`和公開兩個方法：
 
@@ -66,13 +66,13 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 
 不會再使用 ASP.NET Core *Global.asax*， *web.config*，或*App_Start*資料夾。 相反地，完成所有啟動工作*Startup.cs*專案的根目錄中 (請參閱[應用程式啟動](../fundamentals/startup.md))。 在 ASP.NET Core MVC 中，屬性為基礎的路由現在會包含預設時`UseMvc()`稱為; 而且，這是建議的方法來設定 Web API 路由 （而且是 Web API 入門專案處理路由的方式）。
 
-[!code-none[](../migration/webapi/sample/ProductsCore/Startup.cs?highlight=40)]
+[!code-csharp[](../migration/webapi/sample/ProductsCore/Startup.cs?highlight=40)]
 
 假設您想要使用屬性路由從現在開始在專案中，不需要進行其他設定。 只需套用的屬性視您的控制器和動作，如同您在此範例`ValuesController`Web API 的入門專案中包含的類別：
 
 [!code-csharp[](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
 
-請注意是否存在*[控制器]*第 8 行上。 屬性為基礎的路由現在支援特定語彙基元，例如*[控制器]*和*[動作]*。 這些語彙基元會取代在執行階段的控制器或動作，名稱分別屬性套用。 這是用來減少的識別字串，在專案中，並且確保路由將會保留其對應的控制器和動作與同步處理時自動重新命名重構功能，就會套用。
+請注意是否存在 *[控制器]* 第 8 行上。 屬性為基礎的路由現在支援特定語彙基元，例如 *[控制器]* 和 *[動作]*。 這些語彙基元會取代在執行階段的控制器或動作，名稱分別屬性套用。 這是用來減少的識別字串，在專案中，並且確保路由將會保留其對應的控制器和動作與同步處理時自動重新命名重構功能，就會套用。
 
 若要移轉的產品的 API 控制器，我們必須先將複製*ProductsController*到新的專案。 然後只需要包含在控制器上的路由屬性：
 
@@ -115,7 +115,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 
 [!code-csharp[](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
-您現在應該能夠執行移轉的專案，並瀏覽至*/api/產品*; 而且，您應該會看到 3 產品的完整清單。 瀏覽至*/api/products/1*和您應該會看到第一次的產品。
+您現在應該能夠執行移轉的專案，並瀏覽至 */api/產品*; 而且，您應該會看到 3 產品的完整清單。 瀏覽至 */api/products/1*和您應該會看到第一次的產品。
 
 ## <a name="summary"></a>總結
 

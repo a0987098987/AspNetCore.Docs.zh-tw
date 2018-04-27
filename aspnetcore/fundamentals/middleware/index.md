@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 3312b27f936340a73243224c1a716fe421f178bc
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a410d686b6140a487efb9962e94f64cfbec245f2
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -241,7 +241,7 @@ ASP.NET Core 隨附下列中介軟體元件，以及新增這些元件時必須�
 
 因為中介軟體建構於應用程式啟動時，而非依要求建構，所以在每個要求期間，中介軟體建構函式使用的「已限定範圍」存留期服務不會與其它插入相依性的類型共用。 如果您必須在中介軟體和其他類型間共用「已限定範圍」的服務，請將這些服務新增至 `Invoke` 方法的簽章。 `Invoke` 方法可以接受相依性插入所填入的其他參數。 例如: 
 
-```c#
+```csharp
 public class MyMiddleware
 {
     private readonly RequestDelegate _next;
@@ -263,6 +263,6 @@ public class MyMiddleware
 
 * [將 HTTP 模組遷移至中介軟體](xref:migration/http-modules)
 * [應用程式啟動](xref:fundamentals/startup)
-* [要求功能](xref:fundamentals/request-features)
+* [要求的功能](xref:fundamentals/request-features)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)
 * [以協力廠商容器啟用中介軟體](xref:fundamentals/middleware/extensibility-third-party-container)

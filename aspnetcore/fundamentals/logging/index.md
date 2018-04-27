@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 4cb2cf5b22ed9f5b84638b5f8c4b07d99a17ce1c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aab1190467c13ae121625c377d0908eac2fe8d95
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -487,37 +487,6 @@ loggerFactory.AddEventSourceLogger()
 若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
 
 ![PerfView 的其他提供者](index/_static/perfview-additional-providers.png)
-
-在 Nano 伺服器上擷取事件需要一些額外的設定：
-
-* 將 PowerShell 遠端連線到 Nano 伺服器：
-
-  ```powershell
-  Enter-PSSession [name]
-  ```
-
-* 建立 ETW 工作階段：
-
-  ```powershell
-  New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
-  ```
-
-* 視需要為 [CLR](/dotnet/framework/performance/clr-etw-providers)、ASP.NET Core 等新增 ETW 提供者。 ASP.NET Core 提供者 GUID 為 `3ac73b97-af73-50e9-0822-5da4367920d0`。 
-
-  ```powershell
-  Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
-  Add-EtwTraceProvider -Guid "{3ac73b97-af73-50e9-0822-5da4367920d0}" -SessionName MyAppTrace
-  ```
-
-* 執行網站並進行需要追蹤資訊的任何動作。
-
-* 完成時停止追蹤工作階段：
-
-  ```powershell
-  Stop-EtwTraceSession -Name "MyAppTrace"
-  ```
-
-產生的 *C:\trace.etl* 檔案可以在其他版本的 Windows 上使用 PerfView 進行分析。
 
 <a id="eventlog"></a>
 ### <a name="the-windows-eventlog-provider"></a>Windows EventLog 提供者

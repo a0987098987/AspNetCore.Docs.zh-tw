@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 715e52715fb22b92f94d3d602ec58c29a913426c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aad951a0e4344dbaafbdcc3b3980307a26fa75fc
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -40,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 > 本教學課程也適用於 ASP.NET Web Pages 2。
 
 
-大部分的 ASP.NET 網頁使用 Razor 語法的範例使用 C#。 但 Razor 語法也支援 Visual Basic。 若要程式在 Visual Basic 中 ASP.NET 網頁上，您可以建立與網頁*.vbhtml*檔案的副檔名，然後加入 Visual Basic 程式碼。 這篇文章會提供使用 Visual Basic 語言及語法來建立 ASP.NET 網頁的概觀。
+大部分的 ASP.NET 網頁使用 Razor 語法的範例使用 C#。 但 Razor 語法也支援 Visual Basic。 若要程式在 Visual Basic 中 ASP.NET 網頁上，您可以建立與網頁 *.vbhtml*檔案的副檔名，然後加入 Visual Basic 程式碼。 這篇文章會提供使用 Visual Basic 語言及語法來建立 ASP.NET 網頁的概觀。
 
 > [!NOTE]
 > Microsoft WebMatrix 的預設網站範本 (**由於這家蛋糕店**，**相片圖庫**，和**入門網站**等等) 都有 C# 和 Visual Basic 版本。 您可以安裝 Visual Basic 的範本會以 NuGet 套件。 在您的網站資料夾中的根資料夾中安裝網站範本*Microsoft 範本*。
@@ -133,7 +133,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 在瀏覽器中顯示結果：
 
-![Razor-Img5](introducing-razor-syntax-vb/_static/image6.jpg)
+![Razor Img5](introducing-razor-syntax-vb/_static/image6.jpg)
 
 ### <a name="8-you-can-write-code-that-makes-decisions"></a>8.您可以撰寫程式碼所做的決策
 
@@ -145,7 +145,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 在瀏覽器中顯示的結果 (按一下後**送出**):
 
-![Razor-Img6](introducing-razor-syntax-vb/_static/image7.jpg)
+![Razor Img6](introducing-razor-syntax-vb/_static/image7.jpg)
 
 > [!TIP] 
 > 
@@ -176,13 +176,13 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
     - `<form>`標記包含`method="post"`屬性。 這會指定當使用者按一下**新增**，頁面將會傳送至使用 HTTP POST 方法的伺服器。 送出頁面時，程式碼`If IsPost`評估為 true，條件式程式碼執行時，顯示加上數字的結果。
 3. 儲存頁面，並在瀏覽器中執行。 (請確定中選取頁面**檔案**才能執行這個工作區。)兩個整數的輸入，然後按一下**新增** 按鈕。
 
-    ![Razor-Img7](introducing-razor-syntax-vb/_static/image8.jpg)
+    ![Razor Img7](introducing-razor-syntax-vb/_static/image8.jpg)
 
 ## <a name="visual-basic-language-and-syntax"></a>Visual Basic 語言和語法
 
 您稍早已基本範例如何建立 ASP.NET 網頁，以及如何將伺服器程式碼加入至 HTML 標記。 這裡您將學習使用 Visual Basic 撰寫為使用 Razor 語法的 ASP.NET server 程式碼的基本概念&#8212;也就是程式設計語言規則。
 
-如果您熟悉程式設計 （特別是如果您使用 C、 c + +、 C#、 Visual Basic 或 JavaScript），大部分的讀取這裡都很熟悉。 您可能需要在您自己熟悉只 WebMatrix 程式碼加入至標記中的方式*.vbhtml*檔案。
+如果您熟悉程式設計 （特別是如果您使用 C、 c + +、 C#、 Visual Basic 或 JavaScript），大部分的讀取這裡都很熟悉。 您可能需要在您自己熟悉只 WebMatrix 程式碼加入至標記中的方式 *.vbhtml*檔案。
 
 ### <a id="BM_CombiningTextMarkupAndCode"></a>  結合文字、 標記和程式碼區塊中的程式碼
 
@@ -276,32 +276,78 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 下表列出一些常見的轉換和測試方法的變數。
 
 
-|   <strong>方法</strong>    |                                                                              <strong>描述</strong>                                                                              |                     <strong>範例</strong>                      |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-|      `AsInt(), IsInt()`      |                                                 將字串表示之間的整數轉換 (例如&quot;593&quot;) 成整數。                                                 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)] |
-|     `AsBool(), IsBool()`     |                                                    轉換字串 like &quot;true&quot;或&quot;false&quot;布林型別。                                                     | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)] |
-|    `AsFloat(), IsFloat()`    |                                    將具有類似的十進位值的字串轉換&quot;1.3&quot;或&quot;7.439&quot;浮點數。                                    | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)] |
-|  `AsDecimal(), IsDecimal()`  | 將具有類似的十進位值的字串轉換&quot;1.3&quot;或&quot;7.439&quot;為十進位數字。 （在 ASP.NET、 十進位數字是更精確比浮點數）。 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)] |
-| `AsDateTime(), IsDateTime()` |                                                將 asp.net 代表日期和時間值的字串轉換`DateTime`型別。                                                 | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)] |
-|         `ToString()`         |                                                                       將其他任何資料類型轉換為字串。                                                                        | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)] |
+::: 資料列:::::: 資料行:::<strong>方法</strong>::: 資料行結尾:::::: 資料行:::<strong>描述</strong>::: 資料行結尾:::::: 資料行:::<strong>範例</strong>::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AsInt(), IsInt()` ::: 資料行結尾:::::: 資料行::: 轉換字串表示之間的整數 (例如&quot;593&quot;) 為整數。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AsBool(), IsBool()` ::: 資料行結尾:::::: 資料行::: 轉換字串 like &quot;true&quot;或&quot;false&quot;布林型別。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AsFloat(), IsFloat()` ::: 資料行結尾:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或&quot;7.439&quot;浮點數。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AsDecimal(), IsDecimal()` ::: 資料行結尾:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或&quot;7.439&quot;為十進位數字。 （在 ASP.NET、 十進位數字是更精確比浮點數）。::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AsDateTime(), IsDateTime()` ::: 資料行結尾:::::: 資料行::: 將 asp.net 代表日期和時間值的字串轉換`DateTime`型別。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `ToString()` ::: 資料行結尾:::::: 資料行::: 將其他任何資料類型轉換為字串。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+
 
 ## <a name="operators"></a>運算子
 
 運算子是命令的關鍵字或字元，會告知 ASP.NET 何種在運算式中執行。 Visual Basic 支援許多運算子，但您只需要辨識一些開始進行開發的 ASP.NET web pages。 下表摘要說明最常見的運算子。
 
 
-| <strong>Operator</strong> |                                                                        <strong>描述</strong>                                                                         |                         <strong>範例</strong>                         |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-|         `+ - * /`         |                                                                數學運算子用在數值運算式。                                                                |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]     |
-|            `=`            | 指派和等號比較。 根據內容，將陳述式右邊的值指派給物件，在左邊，或檢查值相等。 |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]     |
-|           `<>`            |                                                           不等。 傳回`True`值是否不相等。                                                           |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]     |
-|        `< > <= >=`        |                                                   小於、 大於、 小於或等於、 與大於或等於。                                                   |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]     |
-|            `&`            |                                                                串連，用來加入字串。                                                                | [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)] |
-|          `+= -=`          |                                       遞增和遞減運算子，其中加入和減去 1 （分別） 變數。                                       |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]     |
-|            `.`            |                                                     點。 用來區別物件及其屬性和方法。                                                      |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]     |
-|           `()`            |                           括號。 群組運算式，用來將參數傳遞至方法，以及存取成員的陣列與集合。                           | [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)] |
-|           `Not`           |                    不是。 反轉，則為 true 的值為 false，反之亦然。 一般而言，若要測試的簡略方法做`False`(也就是針對不`True`)。                     |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]     |
-|     `AndAlso OrElse`      |                                                       邏輯 AND 和 OR，用來連結條件在一起。                                                       |     [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]     |
+::: 資料列:::::: 資料行:::<strong>運算子</strong>::: 資料行結尾:::::: 資料行:::<strong>描述</strong>::: 資料行結尾:::::: 資料行:::<strong>範例</strong>::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `+ - * /` ::: 資料行結尾:::::: 資料行::: 數學運算子用在數值運算式。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `=` ::: 資料行結尾:::::: 資料行::: 指派和等號比較。 根據內容，將陳述式右邊的值指派給物件，在左邊，或檢查值相等。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `<>` ::: 資料行結尾:::::: 資料行::: 不等比較。 傳回`True`值是否不相等。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `< > <= >=` ::: 資料行結尾:::::: 資料行::: 小於、 大於、 小於或等於、 與大於或等於。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `&` ::: 資料行結尾:::::: 資料行::: 用來將字串的串連。
+::: 資料行結尾:::::: 資料行::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `+= -=` ::: 資料行結尾:::::: 資料行::: 遞增和遞減運算子，其中加入和減去 1 （分別） 變數。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `.` ::: 資料行結尾:::::: 資料行::: 點。 用來區別物件及其屬性和方法。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `()` ::: 資料行結尾:::::: 資料行::: 括號。 群組運算式，用來將參數傳遞至方法，以及存取成員的陣列與集合。
+::: 資料行結尾:::::: 資料行::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `Not` ::: 資料行結尾:::::: 資料行::: 沒有。 反轉，則為 true 的值為 false，反之亦然。 一般而言，若要測試的簡略方法做`False`(也就是針對不`True`)。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
+* * *
+::: 資料列:::::: 資料行::: `AndAlso OrElse` ::: 資料行結尾:::::: 資料行::: 邏輯和及用來連結條件在一起。
+::: 資料行結尾:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
+    ::: 資料行結尾:::::: 資料列結束:::
 
 ## <a name="working-with-file-and-folder-paths-in-code"></a>使用檔案和程式碼中的資料夾路徑
 
@@ -329,7 +375,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 ### <a name="converting-virtual-to-physical-paths-the-servermappath-method"></a>轉換虛擬與實體路徑： Server.MapPath 方法
 
-`Server.MapPath`方法會將轉換的虛擬路徑 (例如*/default.cshtml*) 至絕對實體路徑 (例如*C:\WebSites\MyWebSiteFolder\default.cshtml*)。 使用此方法每次您需要完整的實體路徑。 典型的範例是當您正在讀取或寫入文字檔案或 web 伺服器上的映像檔。
+`Server.MapPath`方法會將轉換的虛擬路徑 (例如 */default.cshtml*) 至絕對實體路徑 (例如*C:\WebSites\MyWebSiteFolder\default.cshtml*)。 使用此方法每次您需要完整的實體路徑。 典型的範例是當您正在讀取或寫入文字檔案或 web 伺服器上的映像檔。
 
 您通常不知道您的網站裝載站台伺服器上的絕對實體路徑，這個方法可以將路徑轉換，因此您知道 — 虛擬路徑，您的伺服器上的對應路徑。 您將虛擬路徑傳遞至檔案或資料夾方法，並傳回的實體路徑：
 
@@ -337,7 +383,7 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (像是`Dim`， `
 
 ### <a name="referencing-the-virtual-root-the--operator-and-href-method"></a>參考的虛擬根目錄： ~ 運算子和 Href 方法
 
-在*.cshtml*或*.vbhtml*檔案中，您可以參考虛擬根路徑使用`~`運算子。 這是非常實用，因為您可以移動的頁面，在網站中，而且任何連結至其他頁面包含不會中斷。 如果您曾經將您的網站移至不同的位置很方便。 以下是一些範例：
+在 *.cshtml*或 *.vbhtml*檔案中，您可以參考虛擬根路徑使用`~`運算子。 這是非常實用，因為您可以移動的頁面，在網站中，而且任何連結至其他頁面包含不會中斷。 如果您曾經將您的網站移至不同的位置很方便。 以下是一些範例：
 
 [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample40.vbhtml)]
 

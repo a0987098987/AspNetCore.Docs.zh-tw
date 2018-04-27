@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: 05b0d7f31e167e620f2d168109ffd907ba120a49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fd893b7c62f38442bf5633a956786983763e6f9f
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>若要建立單一頁面應用程式中 ASP.NET Core 使用 JavaScriptServices
 
@@ -95,7 +95,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 ### <a name="configuration"></a>組態
 
-標記協助程式會在專案的命名空間註冊透過*_ViewImports.cshtml*檔案：
+標記協助程式會在專案的命名空間註冊透過 *_ViewImports.cshtml*檔案：
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
@@ -166,7 +166,7 @@ Webpack Dev 中介軟體已註冊至 HTTP 要求管線中的下列程式碼透�
 
 ## <a name="hot-module-replacement"></a>熱模組更換
 
-想像 Webpack 的[熱模組更換](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html)(HMR) 功能的進化[Webpack Dev 中介軟體](#webpack-dev-middleware)。 HMR 完全相同的優點，但它進一步簡化開發工作流程自動編譯所做的變更之後更新頁面內容。 請勿混淆這個與重新整理瀏覽器中，這會干擾 SPA 的偵錯工作階段與目前記憶體中狀態。 沒有 Webpack Dev 中介軟體服務與瀏覽器中，這表示變更推送至瀏覽器之間的即時連結。
+想像 Webpack 的[熱模組更換](https://webpack.js.org/concepts/hot-module-replacement/)(HMR) 功能的進化[Webpack Dev 中介軟體](#webpack-dev-middleware)。 HMR 完全相同的優點，但它進一步簡化開發工作流程自動編譯所做的變更之後更新頁面內容。 請勿混淆這個與重新整理瀏覽器中，這會干擾 SPA 的偵錯工作階段與目前記憶體中狀態。 沒有 Webpack Dev 中介軟體服務與瀏覽器中，這表示變更推送至瀏覽器之間的即時連結。
 
 ### <a name="prerequisites"></a>必要條件
 
@@ -226,7 +226,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 ## <a name="creating-a-new-project"></a>建立新的專案
 
-JavaScriptServices 提供預先設定的應用程式範本。 SpaServices 用於這些範本，搭配不同的架構和 Angular、 Aurelia、 Knockout、 React 和 Vue 之類的程式庫。
+JavaScriptServices 提供預先設定的應用程式範本。 在這些範本，搭配不同的架構和程式庫，例如 Angular、 React 和 Redux 用於 SpaServices。
 
 這些範本可以透過.NET Core CLI 安裝，執行下列命令：
 
@@ -239,11 +239,8 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 | 範本                                 | 簡短名稱 | 語言 | Tags        |
 |:------------------------------------------|:-----------|:---------|:------------|
 | MVC ASP.NET Core 與角度             | angular    | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core 與 Aurelia             | aurelia    | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core 與解 Knockout.js         | knockout   | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core 與 React.js            | react      | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core React.js 和 Redux  | reactredux | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core 與 Vue.js              | vue        | [C#]     | Web/MVC/SPA | 
 
 若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC 角度的應用程式：
 
@@ -263,7 +260,7 @@ dotnet new angular
     * 排除來源對應。
     * 最佳化透過組合和縮製的用戶端程式碼。
 
-ASP.NET Core 使用名為環境變數`ASPNETCORE_ENVIRONMENT`來儲存組態模式。 請參閱**[設定環境](xref:fundamentals/environments#setting-the-environment)**如需詳細資訊。
+ASP.NET Core 使用名為環境變數`ASPNETCORE_ENVIRONMENT`來儲存組態模式。 請參閱**[設定環境](xref:fundamentals/environments#setting-the-environment)** 如需詳細資訊。
 
 ### <a name="running-with-net-core-cli"></a>執行.NET Core CLI
 
@@ -283,7 +280,7 @@ dotnet run
 
 ### <a name="running-with-visual-studio-2017"></a>使用 Visual Studio 2017 執行
 
-開啟*.csproj*所產生的檔案[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 在專案開啟時自動還原必要的 NuGet 及 npm 封裝。 此還原程序可能需要幾分鐘的時間，和應用程式已準備好完成時執行。 按一下綠色執行的按鈕或按`Ctrl + F5`，和瀏覽器會開啟應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。 
+開啟 *.csproj*所產生的檔案[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 在專案開啟時自動還原必要的 NuGet 及 npm 封裝。 此還原程序可能需要幾分鐘的時間，和應用程式已準備好完成時執行。 按一下綠色執行的按鈕或按`Ctrl + F5`，和瀏覽器會開啟應用程式的登陸頁面。 根據本機主機上執行的應用程式[執行階段組態模式](#runtime-config-mode)。 
 
 <a name="app-testing"></a>
 
@@ -295,7 +292,7 @@ SpaServices 範本是預先設定為執行用戶端測試使用[Karma](https://k
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-開啟命令提示字元，在專案的根目錄，然後執行下列命令：
+開啟命令提示字元中*ClientApp*目錄。 執行下列命令：
 
 ```console
 npm test

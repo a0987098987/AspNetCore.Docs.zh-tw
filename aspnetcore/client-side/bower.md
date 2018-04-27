@@ -10,18 +10,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 81244cfb71194876071c64899d627c296aad3802
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ada8120189baf036296b83f91d20b364ee90d074
+ms.sourcegitcommit: 07903a1be39a99dcf538d57981161592d0e658b8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com) 
 
 > [!IMPORTANT]
-> 雖然仍會保留 Bower，其維護程式會建議使用不同的解決方案。 與 Webpack yarn 是一種常用的替代方法，[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。
+> 雖然仍會保留 Bower，其維護程式會建議使用不同的解決方案。 [程式庫管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/)(簡稱 LibMan) 是 Visual Studio 的新用戶端的靜態內容管理系統。 與 Webpack yarn 是一種常用的替代方法，[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。
 
 [Bower](https://bower.io/)呼叫其本身"web 版封裝管理員 」。 在.NET 生態系統中，填滿由 NuGet 的傳遞靜態內容的檔案無法驗證為 void。 針對 ASP.NET Core 專案，這些靜態檔案會於用戶端程式庫，例如固有[jQuery](http://jquery.com/)和[Bootstrap](http://getbootstrap.com/)。 .NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="installation-via-manage-bower-packages-ui"></a>透過管理 UI 的 Bower 封裝安裝
 
-* 建立新的 ASP.NET Core Web 應用程式與**ASP.NET Core Web 應用程式 (.NET Core)**範本。 選取**Web 應用程式**和**不驗證**。
+* 建立新的 ASP.NET Core Web 應用程式與**ASP.NET Core Web 應用程式 (.NET Core)** 範本。 選取**Web 應用程式**和**不驗證**。
 
 * 以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理 Bower 封裝**(或者從主功能表**專案** > **管理 Bower 封裝**).
 
-* 在**Bower:\<專案名稱\>**視窗中，按一下 [瀏覽] 索引標籤中，並輸入，以篩選封裝清單`font-awesome`[搜尋] 方塊中：
+* 在**Bower:\<專案名稱\>** 視窗中，按一下 [瀏覽] 索引標籤中，並輸入，以篩選封裝清單`font-awesome`[搜尋] 方塊中：
 
   ![管理 bower 封裝](bower/_static/manage-bower-packages.png)
 
@@ -55,7 +55,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 儲存*bower.json*檔案。 Visual Studio 會監看*bower.json*檔是否有變更。 在儲存時*bower 安裝*執行命令。 請參閱 [輸出] 視窗**Bower/npm**檢視執行的確切命令。
 
-開啟*.bowerrc*底下*bower.json*。 `directory`屬性設定為*wwwroot/lib*表示 Bower 的位置將會安裝封裝資產。
+開啟 *.bowerrc*底下*bower.json*。 `directory`屬性設定為*wwwroot/lib*表示 Bower 的位置將會安裝封裝資產。
 
 ```json
 {
@@ -65,7 +65,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 您可以使用 [方案總管] 中的 [搜尋] 方塊尋找並顯示字型實用的封裝。
 
-開啟*_layout.cshtml\_Layout.cshtml*檔案，然後加入至環境字型實用的 CSS 檔案[標記協助程式](xref:mvc/views/tag-helpers/intro)如`Development`。 從 [方案總管] 中，拖曳和卸除*字型 awesome.css*內`<environment names="Development">`項目。
+開啟 *_layout.cshtml\_Layout.cshtml*檔案，然後加入至環境字型實用的 CSS 檔案[標記協助程式](xref:mvc/views/tag-helpers/intro)如`Development`。 從 [方案總管] 中，拖曳和卸除*字型 awesome.css*內`<environment names="Development">`項目。
 
 [!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
@@ -90,7 +90,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 一旦您在清單中的封裝*bower.json*檔案，Visual Studio 會下載它們。 下列範例會使用 Bower jQuery 和啟動程序來載入*wwwroot*資料夾。
 
-* 建立新的 ASP.NET Core Web 應用程式與**ASP.NET Core Web 應用程式 (.NET Core)**範本。 選取**空**專案範本，然後按一下**確定**。
+* 建立新的 ASP.NET Core Web 應用程式與**ASP.NET Core Web 應用程式 (.NET Core)** 範本。 選取**空**專案範本，然後按一下**確定**。
 
 * 在 [方案總管] 中，以滑鼠右鍵按一下專案 >**加入新項目**選取**Bower 的組態檔**。 注意： A *.bowerrc*也會加入檔案。
 
@@ -100,7 +100,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 * 儲存*bower.json*檔案。
 
-  請確認專案包含*啟動程序*和*jQuery*中的目錄*wwwroot/lib*。 Bower 使用*.bowerrc*檔案，以安裝中的資產*wwwroot/lib*。
+  請確認專案包含*啟動程序*和*jQuery*中的目錄*wwwroot/lib*。 Bower 使用 *.bowerrc*檔案，以安裝中的資產*wwwroot/lib*。
 
   注意: < 管理 Bower 封裝 > UI 提供替代檔案手動編輯。
 

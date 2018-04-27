@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET 核心模組的組態參考"
+title: ASP.NET 核心模組的組態參考
 author: guardrex
-description: "了解如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組。"
+description: 了解如何設定適用於主控 ASP.NET Core 應用程式的 ASP.NET 核心模組。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 5aac5cf2b8fd4bc53ba7201645b9bb02a5d1ecae
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 954841a1b1465c80e60d5745ad9e22294a88fdf4
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET 核心模組的組態參考
 
@@ -65,6 +65,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>AspNetCore 元素的屬性
 
+::: moniker range="<= aspnetcore-2.0"
 | 屬性 | 描述 | 預設 |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>選擇性字串屬性。</p><p>可執行檔中指定的引數**processPath**。</p>| |
@@ -72,11 +73,26 @@ ms.lasthandoff: 03/02/2018
 | `forwardWindowsAuthToken` | true 或 false。</p><p>如果為 true，則會將權杖轉送到接聽 %aspnetcore_port%做為每個要求的標頭 ' MS-ASPNETCORE-WINAUTHTOKEN' 的子處理序。 它負責這個語彙基元，每個要求上呼叫 CloseHandle 該程序。</p> | `true` |
 | `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求的處理序的可執行檔的路徑。 支援相對路徑。 如果路徑是以開頭`.`，路徑會被視為相對於網站根目錄。</p> | |
 | `rapidFailsPerMinute` | <p>選擇性整數屬性。</p><p>指定處理程序中指定的次數**processPath**允許每分鐘的損毀。 如果超過此限制時，模組會停止啟動該分鐘的剩餘的處理程序。</p> | `10` |
-| `requestTimeout` | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>`requestTimeout`必須指定以分鐘為單位，否則它會預設為 2 分鐘。</p> | `00:02:00` |
+| `requestTimeout` | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>在版本的 ASP.NET 核心模組版本的 ASP.NET Core 2.0 或更早版本，隨附`requestTimeout`必須指定以分鐘為單位，否則它會預設為 2 分鐘。</p> | `00:02:00` |
 | `shutdownTimeLimit` | <p>選擇性整數屬性。</p><p>持續時間，以秒為單位的模組，可依正常程序關閉時*app_offline.htm*偵測到的檔案。</p> | `10` |
 | `startupTimeLimit` | <p>選擇性整數屬性。</p><p>以秒為單位的模組，可開始接聽連接埠之處理序的持續時間。 如果超過此時間限制，此模組會清除程序。 模組會嘗試重新啟動處理程序，當它接收新要求，並會繼續嘗試重新啟動的程序，在後續的內送要求，除非應用程式無法啟動**rapidFailsPerMinute**在上一次循環的分鐘。</p> | `120` |
 | `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true， **stdout**和**stderr**中指定的處理序**processPath**會重新導向至指定的檔案**stdoutLogFile**。</p> | `false` |
 | `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定的相對或絕對檔案路徑的**stdout**和**stderr**中指定的處理序從**processPath**記錄。 相對路徑會相對於網站根目錄。 從任何路徑`.`是相對於網站根目錄和所有其他路徑會被視為絕對路徑。 提供的路徑中任何資料夾必須存在於要建立的記錄檔之模組的順序。 使用底線分隔符號、 時間戳記、 處理序識別碼和副檔名 (*.log*) 會加入至最後一個區段**stdoutLogFile**路徑。 如果`.\logs\stdout`提供為數值，而範例 stdout 記錄會儲存為*stdout_20180205194132_1934.log*中*記錄*資料夾時儲存在 2/5/2018年 19:41:32 與 1934年的處理序識別碼。</p> | `aspnetcore-stdout` |
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+| 屬性 | 描述 | 預設 |
+| --------- | ----------- | :-----: |
+| `arguments` | <p>選擇性字串屬性。</p><p>可執行檔中指定的引數**processPath**。</p>| |
+| `disableStartUpErrorPage` | true 或 false。</p><p>如果為 true， **502.5-處理序失敗**隱藏頁面時，且狀態 502 字碼頁設定*web.config*優先。</p> | `false` |
+| `forwardWindowsAuthToken` | true 或 false。</p><p>如果為 true，則會將權杖轉送到接聽 %aspnetcore_port%做為每個要求的標頭 ' MS-ASPNETCORE-WINAUTHTOKEN' 的子處理序。 它負責這個語彙基元，每個要求上呼叫 CloseHandle 該程序。</p> | `true` |
+| `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求的處理序的可執行檔的路徑。 支援相對路徑。 如果路徑是以開頭`.`，路徑會被視為相對於網站根目錄。</p> | |
+| `rapidFailsPerMinute` | <p>選擇性整數屬性。</p><p>指定處理程序中指定的次數**processPath**允許每分鐘的損毀。 如果超過此限制時，模組會停止啟動該分鐘的剩餘的處理程序。</p> | `10` |
+| `requestTimeout` | <p>選擇性 timespan 屬性。</p><p>指定 ASP.NET 核心模組等候來自接聽 %aspnetcore_port%之處理序的回應持續期間。</p><p>在版本的 ASP.NET 核心模組版本的 ASP.NET Core 2.1 或更新版本中，隨附`requestTimeout`中小時、 分鐘和秒為單位指定。</p> | `00:02:00` |
+| `shutdownTimeLimit` | <p>選擇性整數屬性。</p><p>持續時間，以秒為單位的模組，可依正常程序關閉時*app_offline.htm*偵測到的檔案。</p> | `10` |
+| `startupTimeLimit` | <p>選擇性整數屬性。</p><p>以秒為單位的模組，可開始接聽連接埠之處理序的持續時間。 如果超過此時間限制，此模組會清除程序。 模組會嘗試重新啟動處理程序，當它接收新要求，並會繼續嘗試重新啟動的程序，在後續的內送要求，除非應用程式無法啟動**rapidFailsPerMinute**在上一次循環的分鐘。</p> | `120` |
+| `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true， **stdout**和**stderr**中指定的處理序**processPath**會重新導向至指定的檔案**stdoutLogFile**。</p> | `false` |
+| `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定的相對或絕對檔案路徑的**stdout**和**stderr**中指定的處理序從**processPath**記錄。 相對路徑會相對於網站根目錄。 從任何路徑`.`是相對於網站根目錄和所有其他路徑會被視為絕對路徑。 提供的路徑中任何資料夾必須存在於要建立的記錄檔之模組的順序。 使用底線分隔符號、 時間戳記、 處理序識別碼和副檔名 (*.log*) 會加入至最後一個區段**stdoutLogFile**路徑。 如果`.\logs\stdout`提供為數值，而範例 stdout 記錄會儲存為*stdout_20180205194132_1934.log*中*記錄*資料夾時儲存在 2/5/2018年 19:41:32 與 1934年的處理序識別碼。</p> | `aspnetcore-stdout` |
+::: moniker-end
 
 ### <a name="setting-environment-variables"></a>設定環境變數
 
@@ -113,11 +129,15 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="log-creation-and-redirection"></a>記錄檔的建立和重新導向
 
-ASP.NET 核心模組重新導向`stdout`和`stderr`磁碟的記錄檔`stdoutLogEnabled`和`stdoutLogFile`屬性`aspNetCore`設定項目。 中的任何資料夾`stdoutLogFile`路徑必須存在於要建立的記錄檔之模組的順序。 建立記錄檔時，會自動加入時間戳記與檔案的副檔名。 不旋轉記錄檔，除非處理序回收/重新啟動，就會發生。 它是主機服務提供者來限制記錄檔使用的磁碟空間的責任。 使用`stdout`記錄只建議用於疑難排解應用程式啟動問題。 一般應用程式記錄檔，請勿使用 stdout 記錄檔。 例行記錄中的 ASP.NET Core 應用程式、 使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
+ASP.NET 核心模組重新導向磁碟 stdout 及 stderr 記錄`stdoutLogEnabled`和`stdoutLogFile`屬性`aspNetCore`設定項目。 中的任何資料夾`stdoutLogFile`路徑必須存在於要建立的記錄檔之模組的順序。 應用程式集區必須具有寫入存取權來寫入記錄檔的位置 (使用`IIS AppPool\<app_pool_name>`提供寫入權限)。
 
-記錄檔名稱由附加的時間戳記、 處理序識別碼和副檔名 (*.log*) 的最後一個區段以`stdoutLogFile`路徑 (通常*stdout*) 底線字元分隔。 如果`stdoutLogFile`路徑的結尾*stdout*，記錄檔的應用程式，但在 2/5/2018年端建立 19:42:32 1934 PID 有檔案名稱*stdout_20180205194132_1934.log*。
+不旋轉記錄檔，除非處理序回收/重新啟動，就會發生。 它是主機服務提供者來限制記錄檔使用的磁碟空間的責任。
 
-下列範例`aspNetCore`項目會設定`stdout`Azure App Service 中裝載的應用程式的記錄功能。 本機路徑或網路共用路徑是可接受的本機記錄。 確認應用程式集區使用者識別必須提供路徑的寫入權限。
+使用 stdout 記錄只建議用於疑難排解應用程式啟動問題。 一般應用程式記錄檔，請勿使用 stdout 記錄檔。 例行記錄中的 ASP.NET Core 應用程式、 使用限制記錄檔大小，並且會旋轉記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
+
+建立記錄檔時，會自動加入時間戳記與檔案的副檔名。 記錄檔名稱由附加的時間戳記、 處理序識別碼和副檔名 (*.log*) 的最後一個區段以`stdoutLogFile`路徑 (通常*stdout*) 底線字元分隔。 如果`stdoutLogFile`路徑的結尾*stdout*，記錄檔的應用程式，但在 2/5/2018年端建立 19:42:32 1934 PID 有檔案名稱*stdout_20180205194132_1934.log*。
+
+下列範例`aspNetCore`項目會設定 Azure App Service 中裝載的應用程式的 stdout 記錄。 本機路徑或網路共用路徑是可接受的本機記錄。 確認應用程式集區使用者識別必須提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -144,16 +164,16 @@ ASP.NET 核心模組安裝程式會執行與的權限**系統**帳戶。 安裝�
 1. 匯出已更新*applicationHost.config*共用的檔案。
 1. 重新啟用 IIS 共用的設定。
 
-## <a name="module-version-and-hosting-bundle-installer-logs"></a>模組版本，以及裝載配套安裝程式記錄檔
+## <a name="module-version-and-hosting-bundle-installer-logs"></a>模組版本和裝載配套安裝程式記錄檔
 
 若要判斷已安裝的 ASP.NET 核心模組版本：
 
-1. 在主機系統上，瀏覽至*%windir%\System32\inetsrv*。
+1. 在主機系統上，瀏覽至 *%windir%\System32\inetsrv*。
 1. 找出*aspnetcore.dll*檔案。
 1. 以滑鼠右鍵按一下檔案，然後選取**屬性**從內容功能表。
 1. 選取**詳細資料** 索引標籤。**檔案版本**和**產品版本**代表已安裝之模組的版本。
 
-模組的 Windows 伺服器裝載配套安裝程式記錄檔會位於*c:\\使用者\\%username%\\AppData\\本機\\Temp*。檔案命名為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64.log*。
+在找到裝載配套安裝程式記錄檔模組*c:\\使用者\\%username%\\AppData\\本機\\Temp*。檔案命名為*dd_DotNetCoreWinSvrHosting__\<時間戳記 > _000_AspNetCoreModule_x64.log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、 結構描述和組態檔的位置
 

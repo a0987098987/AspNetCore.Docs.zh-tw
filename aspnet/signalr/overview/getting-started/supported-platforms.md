@@ -1,22 +1,22 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
-title: "支援的平台 |Microsoft 文件"
+title: 支援的平台 |Microsoft 文件
 author: pfletcher
-description: "本文說明 SignalR 支援哪些用戶端和伺服器。"
+description: 本文說明 SignalR 支援哪些用戶端和伺服器。
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 06/10/2014
+ms.date: 04/18/2018
 ms.topic: article
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: 1379b9fb638f67896d88d7aa4312d95280ef7318
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4d3dc028ff67d0a9cfa03627b5f98f6541ecfff8
+ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 <a name="supported-platforms"></a>支援的平台
 ====================
@@ -37,8 +37,9 @@ SignalR 的伺服器元件可裝載於各種不同的伺服器設定。 本章�
 
 ### <a name="supported-server-operating-systems"></a>支援的伺服器作業系統
 
-SignalR 的伺服器元件可以裝載於下列伺服器或用戶端作業系統。 請注意，適用於 SignalR 使用 WebSockets，Windows Server 2012 或 Windows 8 （WebSocket 可以使用 Windows Azure 網站上，只要設定站台的.NET framework 版本為 4.5，而且站台的組態頁面中已啟用 Web 通訊端）。
+SignalR 的伺服器元件可以裝載於下列伺服器或用戶端作業系統。 請注意，適用於 SignalR 使用 WebSockets，Windows Server 2012、 Windows Server 2016 或 Windows 8 （WebSocket 可使用 Windows Azure 網站上，只要站台的.NET framework 版本設為 4.5，而且網站中啟用 Web 通訊端設定頁面）。
 
+- Windows Server 2016
 - Windows Server 2012
 - Windows Server 2008 r2
 - Windows 10
@@ -114,8 +115,8 @@ SignalR 可以用於下列瀏覽器：
 | --- | --- | --- |
 | Web 通訊端 | Windows 8 + 和.NET 4.5 + | N/A |
 | 永久框架 | N/A | N/A |
-| 伺服器傳送事件 | .NET 4+ | 5+ |
-| 長輪詢 | .NET 4+ | 5+ |
+| 伺服器傳送事件 | .NET 4 + | 5+ |
+| 長輪詢 | .NET 4 + | 5+ |
 
 <a id="android"></a>
 
@@ -125,12 +126,12 @@ SignalR 可以用於 Windows 市集應用程式和 Windows Phone 8 應用程式�
 
 **Windows 市集和 Windows Phone 傳輸需求**
 
-| Transport | Windows 市集 /.NET | Windows 市集 / JavaScript | Windows Phone/ IE | Windows Phone/ .NET |
+| Transport | Windows 市集 /.NET | Windows 市集 / JavaScript | Windows Phone / IE | Windows Phone /.NET |
 | --- | --- | --- | --- | --- |
-| WebSockets | N/A | Win8+ | 8+ | N/A |
-| 永久框架 | N/A | Win8+ | 7.5+ | N/A |
-| 伺服器傳送事件 | Win8+ | N/A | N/A | 8+ |
-| 長輪詢 | Win8+ | Win8+ | 7.5+ | 8+ |
+| WebSockets | N/A | Win8 + | 8+ | N/A |
+| 永久框架 | N/A | Win8 + | 7.5+ | N/A |
+| 伺服器傳送事件 | Win8 + | N/A | N/A | 8+ |
+| 長輪詢 | Win8 + | Win8 + | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

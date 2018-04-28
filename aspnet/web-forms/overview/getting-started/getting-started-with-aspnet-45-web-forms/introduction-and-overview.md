@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a3527b54d1936bc14e32a1828ac3a2be625107ba
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013
 ====================
@@ -71,7 +71,7 @@ ms.lasthandoff: 04/06/2018
 - Web 應用程式專案 （不是網站專案）
 - Web Form
 - 主版頁面設定
-- Bootstrap
+- 啟動程序
 - Entity Framework Code First，LocalDB
 - 要求驗證
 - 強型別資料控制項建立的模型繫結資料註解，且值提供者
@@ -179,12 +179,12 @@ PayPal 將會確認您的帳戶、 順序和付款資訊。
 
 下載<em>.zip</em>檔案。 若要查看已完成此教學課程建立的專案，尋找並選取<em>C#</em>資料夾中的<em>.zip</em>檔案。 儲存<em>C#</em> folderto 您用於使用 Visual Studio 2013 專案的資料夾。 根據預設，Visual Studio 2013 專案資料夾，如下所示：
 
-<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
+<strong>C:\Users&#92;</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
-重新命名***C#***資料夾***WingtipToys***。
+重新命名***C#*** 資料夾***WingtipToys***。
 
 > [!NOTE]
-> 如果您已經有一個名為資料夾*WingtipToys*在專案資料夾中，暫時重新命名該現有的資料夾重新命名之前*C#*資料夾*WingtipToys*。
+> 如果您已經有一個名為資料夾*WingtipToys*在專案資料夾中，暫時重新命名該現有的資料夾重新命名之前*C#* 資料夾*WingtipToys*。
 
 
 若要執行已完成的專案，開啟*WingtipToys*資料夾，然後按兩下*WingtipToys.sln*檔案。 Visual Studio 2013 將開啟的專案。 接下來，以滑鼠右鍵按一下*Default.aspx*檔案在 [方案總管] 視窗中，並從滑鼠右鍵功能表中按一下 瀏覽器中檢視。

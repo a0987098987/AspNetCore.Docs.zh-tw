@@ -1,21 +1,21 @@
 ---
 title: ASP.NET Core SignalR 簡介
 author: rachelappel
-description: 了解如何 ASP.NET Core SignalR 程式庫可簡化將即時 web 功能加入至應用程式。
+description: 了解如何 ASP.NET Core SignalR 程式庫可簡化將即時功能加入至應用程式。
 manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 03/07/2018
+ms.date: 04/25/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction
-ms.openlocfilehash: fa9b10201b5dc0e67bcd6d1321a3737e2025fda4
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 190dfe9eac95be646b458870ac4ee95f681f45d7
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 簡介
 
@@ -51,20 +51,17 @@ SignalR 的 ASP.NET Core:
 
 透過一些技術來建置即時 SignalR 摘要 web 應用程式。 [WebSockets](https://tools.ietf.org/html/rfc7118)是最佳的傳輸，但這些無法使用時，就可以使用其他技術，如 Server-Sent 事件和長輪詢。 SignalR 會自動偵測並初始化適當伺服器和用戶端上支援的功能為基礎的傳輸。
 
-## <a name="hubs-and-endpoints"></a>中樞和端點
+## <a name="hubs"></a>集線器
 
-SignalR 使用中樞和端點，用戶端和伺服器之間進行通訊。 中樞應用程式開發介面涵蓋大部分的案例。
+SignalR 使用中樞用戶端和伺服器之間進行通訊。
 
-建立端點的 API，可讓用戶端與伺服器彼此呼叫方法所在的高層級管線的中樞。 SignalR 處理分派跨電腦界限會自動允許用戶端在伺服器上呼叫方法，以輕鬆地為本機的方法，反之亦然。 中樞允許將強型別參數傳遞至方法，可讓模型繫結。 SignalR 提供兩個內建的中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。  MessagePack 通常會建立比使用 JSON 較小的訊息。 舊的瀏覽器必須支援[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。
+可讓用戶端與伺服器彼此呼叫方法的高層級管線的中樞。 SignalR 處理分派跨電腦界限會自動允許用戶端在伺服器上呼叫方法，以輕鬆地為本機的方法，反之亦然。 中樞允許將強型別參數傳遞至方法，可讓模型繫結。 SignalR 提供兩個內建的中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。  MessagePack 通常會建立比使用 JSON 較小的訊息。 舊的瀏覽器必須支援[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。
 
 集線器呼叫用戶端程式碼使用作用中傳輸傳送訊息。 由於訊息包含名稱和用戶端方法的參數。 做為方法參數傳送的物件會還原序列化使用的設定通訊協定。 用戶端會嘗試比對用戶端程式碼中的方法名稱。 發現相符時，用戶端方法會使用執行的已還原序列化的參數資料。
 
-端點提供未經處理的類似通訊端的 API，讓他們能夠讀取和寫入從用戶端。 它是由開發人員處理群組、 廣播，以及其他功能。 中樞應用程式開發介面建置的結束點圖層的頂端。
+## <a name="additional-resources"></a>其他資源
 
-下圖顯示集線器、 端點和用戶端之間的關聯性。
-
-![SignalR 對應](introduction/_static/signalr-core-architecture.png)
-
-## <a name="related-resources"></a>相關資源
-
-[開始使用 SignalR 的 ASP.NET Core](xref:signalr/get-started)
+* [開始使用 SignalR 的 ASP.NET Core](xref:signalr/get-started)
+* [支援的平台](xref:signalr/supported-platforms)
+* [中樞](xref:signalr/hubs)
+* [JavaScript 用戶端](xref:signalr/javascript-client)

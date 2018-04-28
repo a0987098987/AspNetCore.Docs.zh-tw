@@ -1,70 +1,67 @@
 ---
 title: ASP.NET Core SignalR 簡介
 author: rachelappel
-description: 了解如何 ASP.NET Core SignalR 程式庫可簡化將即時 web 功能加入至應用程式。
+description: 了解如何 ASP.NET Core SignalR 程式庫可簡化將即時功能加入至應用程式。
 manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 03/07/2018
+ms.date: 04/25/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction
-ms.openlocfilehash: fa9b10201b5dc0e67bcd6d1321a3737e2025fda4
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 190dfe9eac95be646b458870ac4ee95f681f45d7
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="introduction-to-aspnet-core-signalr"></a><span data-ttu-id="db383-103">ASP.NET Core SignalR 簡介</span><span class="sxs-lookup"><span data-stu-id="db383-103">Introduction to ASP.NET Core SignalR</span></span>
+# <a name="introduction-to-aspnet-core-signalr"></a><span data-ttu-id="5674a-103">ASP.NET Core SignalR 簡介</span><span class="sxs-lookup"><span data-stu-id="5674a-103">Introduction to ASP.NET Core SignalR</span></span>
 
-<span data-ttu-id="db383-104">作者：[Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="db383-104">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
+<span data-ttu-id="5674a-104">作者：[Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="5674a-104">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
 
 
 [!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
-## <a name="what-is-signalr"></a><span data-ttu-id="db383-105">SignalR 是什麼？</span><span class="sxs-lookup"><span data-stu-id="db383-105">What is SignalR?</span></span>
+## <a name="what-is-signalr"></a><span data-ttu-id="5674a-105">SignalR 是什麼？</span><span class="sxs-lookup"><span data-stu-id="5674a-105">What is SignalR?</span></span>
 
-<span data-ttu-id="db383-106">ASP.NET Core SignalR 是簡化新增即時 web 功能的應用程式的程式庫。</span><span class="sxs-lookup"><span data-stu-id="db383-106">ASP.NET Core SignalR is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="db383-107">即時 web 功能立即可讓用戶端推入內容的伺服器端程式碼。</span><span class="sxs-lookup"><span data-stu-id="db383-107">Real-time web functionality enables server-side code to push content to clients instantly.</span></span>
+<span data-ttu-id="5674a-106">ASP.NET Core SignalR 是簡化新增即時 web 功能的應用程式的程式庫。</span><span class="sxs-lookup"><span data-stu-id="5674a-106">ASP.NET Core SignalR is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="5674a-107">即時 web 功能立即可讓用戶端推入內容的伺服器端程式碼。</span><span class="sxs-lookup"><span data-stu-id="5674a-107">Real-time web functionality enables server-side code to push content to clients instantly.</span></span>
 
-<span data-ttu-id="db383-108">適用於 SignalR 的對象：</span><span class="sxs-lookup"><span data-stu-id="db383-108">Good candidates for SignalR:</span></span>
+<span data-ttu-id="5674a-108">適用於 SignalR 的對象：</span><span class="sxs-lookup"><span data-stu-id="5674a-108">Good candidates for SignalR:</span></span>
 
-* <span data-ttu-id="db383-109">需要來自伺服器的高頻率更新的應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-109">Apps that require high frequency updates from the server.</span></span> <span data-ttu-id="db383-110">範例包括遊戲、 社交網路、 投票、 稽核、 對應和 GPS 應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-110">Examples are gaming, social networks, voting, auction, maps, and GPS apps.</span></span>
-* <span data-ttu-id="db383-111">儀表板和監視的應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-111">Dashboards and monitoring apps.</span></span> <span data-ttu-id="db383-112">範例包括公司儀表板，立即銷售的更新，或傳送警示。</span><span class="sxs-lookup"><span data-stu-id="db383-112">Examples include company dashboards, instant sales updates, or travel alerts.</span></span>
-* <span data-ttu-id="db383-113">共同作業應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-113">Collaborative apps.</span></span> <span data-ttu-id="db383-114">白板應用程式和軟體的會議的小組都協同合作應用程式的範例。</span><span class="sxs-lookup"><span data-stu-id="db383-114">Whiteboard apps and team meeting software are examples of collaborative apps.</span></span>
-* <span data-ttu-id="db383-115">需要通知的應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-115">Apps that require notifications.</span></span> <span data-ttu-id="db383-116">社交網路、 電子郵件、 聊天室、 遊戲、 旅行警示和許多其他的應用程式使用通知。</span><span class="sxs-lookup"><span data-stu-id="db383-116">Social networks, email, chat, games, travel alerts, and many other apps use notifications.</span></span>
+* <span data-ttu-id="5674a-109">需要來自伺服器的高頻率更新的應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-109">Apps that require high frequency updates from the server.</span></span> <span data-ttu-id="5674a-110">範例包括遊戲、 社交網路、 投票、 稽核、 對應和 GPS 應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-110">Examples are gaming, social networks, voting, auction, maps, and GPS apps.</span></span>
+* <span data-ttu-id="5674a-111">儀表板和監視的應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-111">Dashboards and monitoring apps.</span></span> <span data-ttu-id="5674a-112">範例包括公司儀表板，立即銷售的更新，或傳送警示。</span><span class="sxs-lookup"><span data-stu-id="5674a-112">Examples include company dashboards, instant sales updates, or travel alerts.</span></span>
+* <span data-ttu-id="5674a-113">共同作業應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-113">Collaborative apps.</span></span> <span data-ttu-id="5674a-114">白板應用程式和軟體的會議的小組都協同合作應用程式的範例。</span><span class="sxs-lookup"><span data-stu-id="5674a-114">Whiteboard apps and team meeting software are examples of collaborative apps.</span></span>
+* <span data-ttu-id="5674a-115">需要通知的應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-115">Apps that require notifications.</span></span> <span data-ttu-id="5674a-116">社交網路、 電子郵件、 聊天室、 遊戲、 旅行警示和許多其他的應用程式使用通知。</span><span class="sxs-lookup"><span data-stu-id="5674a-116">Social networks, email, chat, games, travel alerts, and many other apps use notifications.</span></span>
 
-<span data-ttu-id="db383-117">SignalR 提供一個 API 建立伺服器到用戶端[遠端程序呼叫 (RPC)](https://wikipedia.org/wiki/Remote_procedure_call)。</span><span class="sxs-lookup"><span data-stu-id="db383-117">SignalR provides an API for creating server-to-client [remote procedure calls (RPC)](https://wikipedia.org/wiki/Remote_procedure_call).</span></span> <span data-ttu-id="db383-118">Rpc 用戶端上呼叫 JavaScript 函數，從伺服器端.NET Core 程式碼。</span><span class="sxs-lookup"><span data-stu-id="db383-118">The RPCs call JavaScript functions on clients from server-side .NET Core code.</span></span>
+<span data-ttu-id="5674a-117">SignalR 提供一個 API 建立伺服器到用戶端[遠端程序呼叫 (RPC)](https://wikipedia.org/wiki/Remote_procedure_call)。</span><span class="sxs-lookup"><span data-stu-id="5674a-117">SignalR provides an API for creating server-to-client [remote procedure calls (RPC)](https://wikipedia.org/wiki/Remote_procedure_call).</span></span> <span data-ttu-id="5674a-118">Rpc 用戶端上呼叫 JavaScript 函數，從伺服器端.NET Core 程式碼。</span><span class="sxs-lookup"><span data-stu-id="5674a-118">The RPCs call JavaScript functions on clients from server-side .NET Core code.</span></span>
 
-<span data-ttu-id="db383-119">SignalR 的 ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="db383-119">SignalR for ASP.NET Core:</span></span>
+<span data-ttu-id="5674a-119">SignalR 的 ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="5674a-119">SignalR for ASP.NET Core:</span></span>
 
-* <span data-ttu-id="db383-120">會自動處理連接管理。</span><span class="sxs-lookup"><span data-stu-id="db383-120">Handles connection management automatically.</span></span>
-* <span data-ttu-id="db383-121">同時廣播給所有連接的用戶端的訊息啟用。</span><span class="sxs-lookup"><span data-stu-id="db383-121">Enables broadcasting messages to all connected clients simultaneously.</span></span> <span data-ttu-id="db383-122">例如，小組室。</span><span class="sxs-lookup"><span data-stu-id="db383-122">For example, a chat room.</span></span>
-* <span data-ttu-id="db383-123">能夠將訊息傳送至特定的用戶端或用戶端的群組。</span><span class="sxs-lookup"><span data-stu-id="db383-123">Enables sending messages to specific clients or groups of clients.</span></span>
-* <span data-ttu-id="db383-124">是開放在[GitHub](https://github.com/aspnet/signalr)。</span><span class="sxs-lookup"><span data-stu-id="db383-124">Is open-sourced at [GitHub](https://github.com/aspnet/signalr).</span></span>
-* <span data-ttu-id="db383-125">可擴充的。</span><span class="sxs-lookup"><span data-stu-id="db383-125">Scalable.</span></span>
+* <span data-ttu-id="5674a-120">會自動處理連接管理。</span><span class="sxs-lookup"><span data-stu-id="5674a-120">Handles connection management automatically.</span></span>
+* <span data-ttu-id="5674a-121">同時廣播給所有連接的用戶端的訊息啟用。</span><span class="sxs-lookup"><span data-stu-id="5674a-121">Enables broadcasting messages to all connected clients simultaneously.</span></span> <span data-ttu-id="5674a-122">例如，小組室。</span><span class="sxs-lookup"><span data-stu-id="5674a-122">For example, a chat room.</span></span>
+* <span data-ttu-id="5674a-123">能夠將訊息傳送至特定的用戶端或用戶端的群組。</span><span class="sxs-lookup"><span data-stu-id="5674a-123">Enables sending messages to specific clients or groups of clients.</span></span>
+* <span data-ttu-id="5674a-124">是開放在[GitHub](https://github.com/aspnet/signalr)。</span><span class="sxs-lookup"><span data-stu-id="5674a-124">Is open-sourced at [GitHub](https://github.com/aspnet/signalr).</span></span>
+* <span data-ttu-id="5674a-125">可擴充的。</span><span class="sxs-lookup"><span data-stu-id="5674a-125">Scalable.</span></span>
 
-<span data-ttu-id="db383-126">用戶端與伺服器之間的連線是持續性的不同的 HTTP 連線。</span><span class="sxs-lookup"><span data-stu-id="db383-126">The connection between the client and server is persistent, unlike an HTTP connection.</span></span>
+<span data-ttu-id="5674a-126">用戶端與伺服器之間的連線是持續性的不同的 HTTP 連線。</span><span class="sxs-lookup"><span data-stu-id="5674a-126">The connection between the client and server is persistent, unlike an HTTP connection.</span></span>
 
-## <a name="transports"></a><span data-ttu-id="db383-127">傳輸</span><span class="sxs-lookup"><span data-stu-id="db383-127">Transports</span></span>
+## <a name="transports"></a><span data-ttu-id="5674a-127">傳輸</span><span class="sxs-lookup"><span data-stu-id="5674a-127">Transports</span></span>
 
-<span data-ttu-id="db383-128">透過一些技術來建置即時 SignalR 摘要 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="db383-128">SignalR abstracts over a number of techniques for building real-time web applications.</span></span> <span data-ttu-id="db383-129">[WebSockets](https://tools.ietf.org/html/rfc7118)是最佳的傳輸，但這些無法使用時，就可以使用其他技術，如 Server-Sent 事件和長輪詢。</span><span class="sxs-lookup"><span data-stu-id="db383-129">[WebSockets](https://tools.ietf.org/html/rfc7118) is the optimal transport, but other techniques like Server-Sent Events and Long Polling can be used when those aren't available.</span></span> <span data-ttu-id="db383-130">SignalR 會自動偵測並初始化適當伺服器和用戶端上支援的功能為基礎的傳輸。</span><span class="sxs-lookup"><span data-stu-id="db383-130">SignalR will automatically detect and initialize the appropriate transport based on features supported on the server and client.</span></span>
+<span data-ttu-id="5674a-128">透過一些技術來建置即時 SignalR 摘要 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="5674a-128">SignalR abstracts over a number of techniques for building real-time web applications.</span></span> <span data-ttu-id="5674a-129">[WebSockets](https://tools.ietf.org/html/rfc7118)是最佳的傳輸，但這些無法使用時，就可以使用其他技術，如 Server-Sent 事件和長輪詢。</span><span class="sxs-lookup"><span data-stu-id="5674a-129">[WebSockets](https://tools.ietf.org/html/rfc7118) is the optimal transport, but other techniques like Server-Sent Events and Long Polling can be used when those aren't available.</span></span> <span data-ttu-id="5674a-130">SignalR 會自動偵測並初始化適當伺服器和用戶端上支援的功能為基礎的傳輸。</span><span class="sxs-lookup"><span data-stu-id="5674a-130">SignalR will automatically detect and initialize the appropriate transport based on features supported on the server and client.</span></span>
 
-## <a name="hubs-and-endpoints"></a><span data-ttu-id="db383-131">中樞和端點</span><span class="sxs-lookup"><span data-stu-id="db383-131">Hubs and Endpoints</span></span>
+## <a name="hubs"></a><span data-ttu-id="5674a-131">集線器</span><span class="sxs-lookup"><span data-stu-id="5674a-131">Hubs</span></span>
 
-<span data-ttu-id="db383-132">SignalR 使用中樞和端點，用戶端和伺服器之間進行通訊。</span><span class="sxs-lookup"><span data-stu-id="db383-132">SignalR uses Hubs and Endpoints to communicate between clients and servers.</span></span> <span data-ttu-id="db383-133">中樞應用程式開發介面涵蓋大部分的案例。</span><span class="sxs-lookup"><span data-stu-id="db383-133">The Hubs API covers the most scenarios.</span></span>
+<span data-ttu-id="5674a-132">SignalR 使用中樞用戶端和伺服器之間進行通訊。</span><span class="sxs-lookup"><span data-stu-id="5674a-132">SignalR uses hubs to communicate between clients and servers.</span></span>
 
-<span data-ttu-id="db383-134">建立端點的 API，可讓用戶端與伺服器彼此呼叫方法所在的高層級管線的中樞。</span><span class="sxs-lookup"><span data-stu-id="db383-134">A hub is a high-level pipeline built upon the Endpoint API that allows your client and server to call methods on each other.</span></span> <span data-ttu-id="db383-135">SignalR 處理分派跨電腦界限會自動允許用戶端在伺服器上呼叫方法，以輕鬆地為本機的方法，反之亦然。</span><span class="sxs-lookup"><span data-stu-id="db383-135">SignalR handles the dispatching across machine boundaries automatically, allowing clients to call methods on the server as easily as local methods, and vice versa.</span></span> <span data-ttu-id="db383-136">中樞允許將強型別參數傳遞至方法，可讓模型繫結。</span><span class="sxs-lookup"><span data-stu-id="db383-136">Hubs allow passing strongly-typed parameters to methods, which enables model binding.</span></span> <span data-ttu-id="db383-137">SignalR 提供兩個內建的中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。</span><span class="sxs-lookup"><span data-stu-id="db383-137">SignalR provides two built-in hub protocols: a text protocol based on JSON and a binary protocol based on [MessagePack](https://msgpack.org/).</span></span>  <span data-ttu-id="db383-138">MessagePack 通常會建立比使用 JSON 較小的訊息。</span><span class="sxs-lookup"><span data-stu-id="db383-138">MessagePack generally creates smaller messages than when using JSON.</span></span> <span data-ttu-id="db383-139">舊的瀏覽器必須支援[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。</span><span class="sxs-lookup"><span data-stu-id="db383-139">Older browsers must support [XHR level 2](https://caniuse.com/#feat=xhr2) to provide MessagePack protocol support.</span></span>
+<span data-ttu-id="5674a-133">可讓用戶端與伺服器彼此呼叫方法的高層級管線的中樞。</span><span class="sxs-lookup"><span data-stu-id="5674a-133">A hub is a high-level pipeline that allows your client and server to call methods on each other.</span></span> <span data-ttu-id="5674a-134">SignalR 處理分派跨電腦界限會自動允許用戶端在伺服器上呼叫方法，以輕鬆地為本機的方法，反之亦然。</span><span class="sxs-lookup"><span data-stu-id="5674a-134">SignalR handles the dispatching across machine boundaries automatically, allowing clients to call methods on the server as easily as local methods, and vice versa.</span></span> <span data-ttu-id="5674a-135">中樞允許將強型別參數傳遞至方法，可讓模型繫結。</span><span class="sxs-lookup"><span data-stu-id="5674a-135">Hubs allow passing strongly-typed parameters to methods, which enables model binding.</span></span> <span data-ttu-id="5674a-136">SignalR 提供兩個內建的中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。</span><span class="sxs-lookup"><span data-stu-id="5674a-136">SignalR provides two built-in hub protocols: a text protocol based on JSON and a binary protocol based on [MessagePack](https://msgpack.org/).</span></span>  <span data-ttu-id="5674a-137">MessagePack 通常會建立比使用 JSON 較小的訊息。</span><span class="sxs-lookup"><span data-stu-id="5674a-137">MessagePack generally creates smaller messages than when using JSON.</span></span> <span data-ttu-id="5674a-138">舊的瀏覽器必須支援[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。</span><span class="sxs-lookup"><span data-stu-id="5674a-138">Older browsers must support [XHR level 2](https://caniuse.com/#feat=xhr2) to provide MessagePack protocol support.</span></span>
 
-<span data-ttu-id="db383-140">集線器呼叫用戶端程式碼使用作用中傳輸傳送訊息。</span><span class="sxs-lookup"><span data-stu-id="db383-140">Hubs call client-side code by sending messages using the active transport.</span></span> <span data-ttu-id="db383-141">由於訊息包含名稱和用戶端方法的參數。</span><span class="sxs-lookup"><span data-stu-id="db383-141">The messages contain the name and parameters of the client-side method.</span></span> <span data-ttu-id="db383-142">做為方法參數傳送的物件會還原序列化使用的設定通訊協定。</span><span class="sxs-lookup"><span data-stu-id="db383-142">Objects sent as method parameters are deserialized using the configured protocol.</span></span> <span data-ttu-id="db383-143">用戶端會嘗試比對用戶端程式碼中的方法名稱。</span><span class="sxs-lookup"><span data-stu-id="db383-143">The client tries to match the name to a method in the client-side code.</span></span> <span data-ttu-id="db383-144">發現相符時，用戶端方法會使用執行的已還原序列化的參數資料。</span><span class="sxs-lookup"><span data-stu-id="db383-144">When a match happens, the client method runs using the deserialized parameter data.</span></span>
+<span data-ttu-id="5674a-139">集線器呼叫用戶端程式碼使用作用中傳輸傳送訊息。</span><span class="sxs-lookup"><span data-stu-id="5674a-139">Hubs call client-side code by sending messages using the active transport.</span></span> <span data-ttu-id="5674a-140">由於訊息包含名稱和用戶端方法的參數。</span><span class="sxs-lookup"><span data-stu-id="5674a-140">The messages contain the name and parameters of the client-side method.</span></span> <span data-ttu-id="5674a-141">做為方法參數傳送的物件會還原序列化使用的設定通訊協定。</span><span class="sxs-lookup"><span data-stu-id="5674a-141">Objects sent as method parameters are deserialized using the configured protocol.</span></span> <span data-ttu-id="5674a-142">用戶端會嘗試比對用戶端程式碼中的方法名稱。</span><span class="sxs-lookup"><span data-stu-id="5674a-142">The client tries to match the name to a method in the client-side code.</span></span> <span data-ttu-id="5674a-143">發現相符時，用戶端方法會使用執行的已還原序列化的參數資料。</span><span class="sxs-lookup"><span data-stu-id="5674a-143">When a match happens, the client method runs using the deserialized parameter data.</span></span>
 
-<span data-ttu-id="db383-145">端點提供未經處理的類似通訊端的 API，讓他們能夠讀取和寫入從用戶端。</span><span class="sxs-lookup"><span data-stu-id="db383-145">Endpoints provide a raw socket-like API, enabling them to read and write from the client.</span></span> <span data-ttu-id="db383-146">它是由開發人員處理群組、 廣播，以及其他功能。</span><span class="sxs-lookup"><span data-stu-id="db383-146">It's up to the developer to handle grouping, broadcasting, and other functions.</span></span> <span data-ttu-id="db383-147">中樞應用程式開發介面建置的結束點圖層的頂端。</span><span class="sxs-lookup"><span data-stu-id="db383-147">The Hubs API is built on top of the Endpoints layer.</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="5674a-144">其他資源</span><span class="sxs-lookup"><span data-stu-id="5674a-144">Additional resources</span></span>
 
-<span data-ttu-id="db383-148">下圖顯示集線器、 端點和用戶端之間的關聯性。</span><span class="sxs-lookup"><span data-stu-id="db383-148">The following diagram shows the relationship between hubs, endpoints, and clients.</span></span>
-
-![SignalR 對應](introduction/_static/signalr-core-architecture.png)
-
-## <a name="related-resources"></a><span data-ttu-id="db383-150">相關資源</span><span class="sxs-lookup"><span data-stu-id="db383-150">Related resources</span></span>
-
-[<span data-ttu-id="db383-151">開始使用 SignalR 的 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="db383-151">Get started with SignalR for ASP.NET Core</span></span>](xref:signalr/get-started)
+* [<span data-ttu-id="5674a-145">開始使用 SignalR 的 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="5674a-145">Get started with SignalR for ASP.NET Core</span></span>](xref:signalr/get-started)
+* [<span data-ttu-id="5674a-146">支援的平台</span><span class="sxs-lookup"><span data-stu-id="5674a-146">Supported Platforms</span></span>](xref:signalr/supported-platforms)
+* [<span data-ttu-id="5674a-147">中樞</span><span class="sxs-lookup"><span data-stu-id="5674a-147">Hubs</span></span>](xref:signalr/hubs)
+* [<span data-ttu-id="5674a-148">JavaScript 用戶端</span><span class="sxs-lookup"><span data-stu-id="5674a-148">JavaScript client</span></span>](xref:signalr/javascript-client)

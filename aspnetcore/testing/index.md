@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/index
-ms.openlocfilehash: 73d239070726eda3f572d3e13ad2908c6d7b55c4
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 74ceef2637d68e38323415a82fd9fd3432c2db8f
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="test-and-debug-in-aspnet-core"></a>ASP.NET Core 中的測試及偵錯
 
@@ -24,3 +24,4 @@ ms.lasthandoff: 03/22/2018
 * [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)
 * [遠端偵錯](/visualstudio/debugger/remote-debugging-azure)
 * [快照集偵錯](/azure/application-insights/app-insights-snapshot-debugger)
+* [YouTube: Diagnosing issues in ASP.NET Core Applications](https://www.youtube.com/watch?v=RYI0DHoIVaA) (YouTube：診斷 ASP.NET Core 應用程式中的問題)

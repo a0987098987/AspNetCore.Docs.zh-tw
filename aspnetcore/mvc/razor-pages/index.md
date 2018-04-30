@@ -1,29 +1,30 @@
 ---
-title: ASP.NET Core 中的 Razor 頁面簡介
+title: ASP.NET Core 中的 Razor Pages 簡介
 author: Rick-Anderson
-description: 了解 ASP.NET Core 中的 Razor 頁面如何使注重頁面的案例編碼變得更輕鬆，並增加生產力，達到比使用 MVC 更好的成效。
+description: 了解 ASP.NET Core 中的 Razor Pages 如何使注重頁面的案例編碼變得更輕鬆，並增加生產力，達到比使用 MVC 更好的成效。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/12/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 532799d013f26869da03fe1062072f55dcce35f8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5e2b53a4771a97b0a4091f593720b9c0e4e345bf
+ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面簡介
+# <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/rynowak)
 
-Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor Pages 是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如果您在尋找使用模型檢視控制器方法的教學課程，請參閱[開始使用 ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc)。
 
-本文件提供 Razor 頁面簡介。 它不是逐步教學課程。 如果您發現某些章節很難遵循，請參閱[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。 如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。
+本文件提供 Razor Pages 簡介。 它不是逐步教學課程。 如果您發現某些章節很難遵循，請參閱[9開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。 如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -31,11 +32,11 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 <a name="rpvs17"></a>
 
-## <a name="creating-a-razor-pages-project"></a>建立 Razor 頁面專案
+## <a name="creating-a-razor-pages-project"></a>建立 Razor Pages 專案
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-如需如何使用 Visual Studio 建立 Razor 頁面專案的詳細說明，請參閱[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。
+如需如何使用 Visual Studio 建立 Razor Pages 專案的詳細說明，請參閱[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -55,7 +56,7 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 ## <a name="razor-pages"></a>Razor 頁面
 
-Razor 頁面是在 *Startup.cs* 中啟用：
+Razor Pages 是在 *Startup.cs* 中啟用：
 
 [!code-cs[](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
@@ -86,7 +87,7 @@ Razor 頁面是在 *Startup.cs* 中啟用：
 
 附註：
 
-* 執行階段預設會在 *Pages* 資料夾中尋找 Razor 頁面的檔案。
+* 執行階段預設會在 *Pages* 資料夾中尋找 Razor Pages 的檔案。
 * `Index` 是 URL 未包含頁面時的預設頁面。
 
 ## <a name="writing-a-basic-form"></a>撰寫基本表單
@@ -143,7 +144,7 @@ DB 內容：
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
-Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
+Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
 
 > [!NOTE]
 > 基於安全性考量，您必須加入才能將 GET 要求資料繫結至頁面模型屬性。 請先驗證使用者輸入再將其對應至屬性。 在建置依靠查詢字串或路由值的功能時，加入此行為相當實用。
@@ -208,12 +209,12 @@ Razor 頁面預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 
 <a name="xsrf"></a>
 
-## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 和 Razor 頁面
+## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 和 Razor Pages
 
 您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。 防偽權杖的產生和驗證會自動包含在 Razor 頁面中。
 
 <a name="layout"></a>
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>搭配 Razor 頁面使用版面配置、部分、範本和標記協助程式
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>搭配 Razor 頁面使用版面配置、部分、範本和標記協助程式。
 
 頁面使用 Razor 檢視引擎的所有功能。 版面配置、部分、範本、標記協助程式、*_ViewStart.cshtml*、*_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。
 
@@ -276,7 +277,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
-[Razor 頁面入門專案](#rpvs17)包含 *Pages/_ValidationScriptsPartial.cshtml*，連結用戶端驗證。
+[Razor Pages 入門專案](#rpvs17)包含 *Pages/_ValidationScriptsPartial.cshtml*，連結用戶端驗證。
 
 <a name="url_gen"></a>
 
@@ -291,7 +292,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 * */Pages*
 
   * *Index.cshtml*
-  * */Customer*
+  * */Customers*
 
     * *Create.cshtml*
     * *Edit.cshtml*
@@ -314,7 +315,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 | RedirectToPage("../Index") | *Pages/Index* |
 | RedirectToPage("Index")  | *Pages/Customers/Index* |
 
-`RedirectToPage("Index")`、`RedirectToPage("./Index")` 和 `RedirectToPage("../Index")` 是「相對名稱」。 `RedirectToPage` 參數「結合」了目前頁面的路徑，以計算目的地頁面的名稱。  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page. -- page name, not page path -->
+`RedirectToPage("Index")`、`RedirectToPage("./Index")` 和 `RedirectToPage("../Index")` 是「相對名稱」。 `RedirectToPage` 參數「結合」了目前頁面的路徑，以計算目的地頁面的名稱。  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
 
 相對名稱連結在以複雜結構建置網站時很有用。 如果您使用相對名稱連結資料夾中的頁面，您可以重新命名該資料夾。 所有連結仍可運作 (因為它們不包含資料夾名稱)。
 
@@ -386,11 +387,11 @@ public string Message { get; set; }
 
 [下載或檢視範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/razor-pages/index/sample)。
 
-請參閱根據本簡介編纂的[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。
+請參閱根據本簡介編纂的[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)。
 
-### <a name="specify-that-razor-pages-are-at-the-content-root"></a>指定 Razor 頁面位於內容根目錄
+### <a name="specify-that-razor-pages-are-at-the-content-root"></a>指定 Razor Pages 位於內容根目錄
 
-根據預設，Razor 頁面位於 */Pages* 根目錄。 將 [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor 頁面位於應用程式的內容根目錄 ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath))：
+根據預設，Razor Pages 位於 */Pages* 根目錄。 將 [WithRazorPagesAtContentRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvcbuilderextensions.withrazorpagesatcontentroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的內容根目錄 ([ContentRootPath](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.contentrootpath))：
 
 ```csharp
 services.AddMvc()
@@ -401,9 +402,9 @@ services.AddMvc()
     .WithRazorPagesAtContentRoot();
 ```
 
-### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a>指定 Razor 頁面位於自訂根目錄
+### <a name="specify-that-razor-pages-are-at-a-custom-root-directory"></a>指定 Razor Pages 位於自訂根目錄
 
-將 [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor 頁面位於應用程式的自訂根目錄 (提供相對路徑)：
+將 [WithRazorPagesRoot](/dotnet/api/microsoft.extensions.dependencyinjection.mvcrazorpagesmvccorebuilderextensions.withrazorpagesroot) 新增至 [AddMvc](/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addmvc#Microsoft_Extensions_DependencyInjection_MvcServiceCollectionExtensions_AddMvc_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 可指定 Razor Pages 位於應用程式的自訂根目錄 (提供相對路徑)：
 
 ```csharp
 services.AddMvc()
@@ -417,7 +418,8 @@ services.AddMvc()
 ## <a name="see-also"></a>另請參閱
 
 * [ASP.NET Core 簡介](xref:index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
-* [Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization)
-* [Razor 頁面自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-convention-features)
+* [Razor 語法](xref:mvc/views/razor)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)
+* [Razor Pages 自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-convention-features)
 * [Razor 頁面單元與整合測試](xref:testing/razor-pages-testing)

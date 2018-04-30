@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 64eb85f75a6c2e10bf8c39f32eeda5311744f2a2
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.openlocfilehash: 9f164b6e1f3cc520b704cbb5ffdaadb99cebdc57
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -25,9 +25,7 @@ ms.lasthandoff: 04/03/2018
 支援下列作業系統：
 
 * Windows 7 或更新版本
-* Windows Server 2008 R2 或更新版本&#8224;
-
-&#8224;就概念而言，本文件中描述的 IIS 設定也適用於在 Nano 伺服器 IIS 上裝載 ASP.NET Core 應用程式。 如需 Nano 伺服器的特定指示，請參閱 [Nano 伺服器上的 ASP.NET Core 與 IIS](xref:tutorials/nano-server) 教學課程。
+* Windows Server 2008 R2 或更新版本
 
 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 不適用搭配 IIS 的反向 Proxy 設定。 請使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
 
@@ -45,7 +43,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `UseIISIntegration` 方法採用此動態連接埠，並設定 Kestrel 來接聽 `http://locahost:{dynamicPort}/`。 這會覆寫其他 URL 設定，例如呼叫 `UseUrls` 或 [Kestrel 的 Listen API](xref:fundamentals/servers/kestrel#endpoint-configuration)。 因此在使用模組時無須呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 就會接聽未使用 IIS 執行應用程式時指定的連接埠。
+ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `UseIISIntegration` 方法採用此動態連接埠，並設定 Kestrel 來接聽 `http://localhost:{dynamicPort}/`。 這會覆寫其他 URL 設定，例如呼叫 `UseUrls` 或 [Kestrel 的 Listen API](xref:fundamentals/servers/kestrel#endpoint-configuration)。 因此在使用模組時無須呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 就會接聽未使用 IIS 執行應用程式時指定的連接埠。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -97,7 +95,7 @@ services.Configure<IISOptions>(options =>
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
-如果 *web.config* 檔案不存在於專案中，則系統會使用正確的 *processPath* 和 *arguments* 來建立該檔案以設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，然後將它移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
+如果專案中沒有 *web.config* 檔案，則系統會使用正確的 *processPath* 和 *arguments* 建立該檔案以設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，並將該檔案移至[已發行的輸出](xref:host-and-deploy/directory-structure)。
 
 如果 *web.config* 檔案存在於專案中，則系統會使用正確的 *processPath* 和 *arguments* 來轉換該檔案以設定 ASP.NET Core 模組，然後將它移至已發行的輸出。 轉換不會修改檔案中的 IIS 組態設定。
 
@@ -169,15 +167,15 @@ ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 P
 
 ---
 
-## <a name="install-the-net-core-windows-server-hosting-bundle"></a>安裝 .NET Core Windows Server 裝載套件組合
+## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-1. 在主控系統上安裝 *.NET Core Windows Server 裝載套件組合*。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core Windows Server 裝載套件組合。
+1. 在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
    1. 瀏覽至 [.NET 所有下載頁面](https://www.microsoft.com/net/download/all)。
    1. 從清單中選取最新的非預覽 .NET Core 執行階段 (**.NET Core** > **Runtime** > **.NET Core 執行階段 x.y.z**)。 除非您要使用預覽軟體，否則請避免執行階段的連結文字中包含「預覽」這個字。
-   1. 在 [Windows] 下的 .NET Core 執行階段下載頁面上，選取 [伺服器裝載安裝程式] 連結以下載 [.NET Core Windows Server 裝載套件]。
+   1. 在 [Windows] 下的 .NET Core 執行階段下載頁面中，選取 [裝載套件組合安裝程式] 連結，以下載 .NET Core 裝載套件組合。
 
-   **重要！** 若裝載套件組合是在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後再次執行裝載套件組合安裝程式。
+   **重要！** 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
    
    若要避免安裝程式在 x64 OS 上安裝 x86 套件，請以 `OPT_NO_X86=1` 參數從系統管理員命令提示字元執行安裝程式。
 
@@ -196,7 +194,8 @@ ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 P
 
 1. 在新的資料夾內，建立 *logs* 資料夾，以在啟用 stdout 記錄時保留 ASP.NET Core 模組 stdout 記錄。 如果應用程式已在承載中部署 *logs* 資料夾，請略過此步驟。 如需在於本機建置專案的情況下使 MSBuild 自動建立 *logs* 資料夾的相關指示，請參閱[目錄結構](xref:host-and-deploy/directory-structure)主題。
 
-   **重要！** 請只使用 stdout 記錄來對應用程式啟動失敗進行疑難排解。 請永遠不要將 stdout 記錄用於例行的應用程式記錄。 因為它並沒有記錄檔大小或數量上的限制。 如需 stdout 記錄的詳細資訊，請參閱[記錄建立和重新導向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)。 如需在 ASP.NET Core 應用程式中進行記錄的相關資訊，請參閱[記錄](xref:fundamentals/logging/index)主題。
+   > [!IMPORTANT]
+   > 請只使用 stdout 記錄來對應用程式啟動失敗進行疑難排解。 請永遠不要將 stdout 記錄用於例行的應用程式記錄。 因為它並沒有記錄檔大小或數量上的限制。 應用程式集區必須具有記錄檔寫入位置的寫入權限。 所有位於記錄檔位置路徑上的資料夾都必須存在。 如需 stdout 記錄的詳細資訊，請參閱[記錄建立和重新導向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)。 如需在 ASP.NET Core 應用程式中進行記錄的相關資訊，請參閱[記錄](xref:fundamentals/logging/index)主題。
 
 1. 在 [IIS 管理員] 中，於 [連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站] 資料夾。 從操作功能表選取 [新增網站]。
 
@@ -242,6 +241,8 @@ ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 P
 
 使用數種方法的其中一種將應用程式移到主控系統，例如手動複製、Xcopy、Robocopy 或 PowerShell。
 
+如需 IIS 的 ASP.NET Core 部署詳細資訊，請參閱 [IIS 系統管理員的部署資源](#deployment-resources-for-iis-administrators)一節。
+
 ## <a name="browse-the-website"></a>瀏覽網站
 
 ![Microsoft Edge 瀏覽器已載入 IIS 啟動頁面。](index/_static/browsewebsite.png)
@@ -250,7 +251,7 @@ ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 P
 
 當應用程式執行時，會鎖定部署資料夾中的檔案。 無法於部署期間覆寫已鎖定的檔案。 若要釋放部署中的已鎖定檔案，請使用下列其中**一種**方法停止應用程式集區：
 
-* 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#appofflinehtm)。
+* 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
 * 使用 PowerShell 停止和重新啟動應用程式集區 (需要 PowerShell 5 或更新版本)：
 
@@ -391,7 +392,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
 1. 選取 [位置] 按鈕，並確定選取系統。
 
-1. 在 [輸入要選取的物件名稱] 區域中，輸入 **IIS AppPool\\<app_pool_name>**。 選取 [檢查名稱] 按鈕。 針對 [DefaultAppPool]，請使用 **IIS AppPool\DefaultAppPool** 檢查名稱。 選取 [檢查名稱] 按鈕時，[DefaultAppPool] 的值便會顯示於物件名稱區域中。 您無法直接將應用程式集區名稱輸入至物件名稱區域。 檢查物件名稱時，請使用 **IIS AppPool\\<app_pool_name>**的格式。
+1. 在 [輸入要選取的物件名稱] 區域中，輸入 **IIS AppPool\\<app_pool_name>**。 選取 [檢查名稱] 按鈕。 針對 [DefaultAppPool]，請使用 **IIS AppPool\DefaultAppPool** 檢查名稱。 選取 [檢查名稱] 按鈕時，[DefaultAppPool] 的值便會顯示於物件名稱區域中。 您無法直接將應用程式集區名稱輸入至物件名稱區域。 檢查物件名稱時，請使用 **IIS AppPool\\<app_pool_name>** 的格式。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
@@ -409,13 +410,34 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 如需詳細資訊，請參閱 [icacls](/windows-server/administration/windows-commands/icacls) 主題。
 
+## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
+
+請參閱 IIS 文件以深入了解 IIS。  
+[IIS 文件](/iis)
+
+了解 .NET Core 應用程式部署模型。  
+[.NET Core 應用程式部署](/dotnet/core/deploying/)
+
+了解 ASP.NET Core 模組如何讓 Kestrel Web 伺服器將 IIS 或 IIS Express 作為反向 Proxy 伺服器使用。  
+[ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
+
+了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。  
+[ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
+
+了解已發行之 ASP.NET Core 應用程式的目錄結構。  
+[目錄結構](xref:host-and-deploy/directory-structure)
+
+探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。  
+[IIS 模組](xref:host-and-deploy/iis/troubleshoot)
+
+了解如何診斷 ASP.NET Core 應用程式的 IIS 部署問題。  
+[疑難排解](xref:host-and-deploy/iis/troubleshoot)
+
+區分在 IIS 上裝載 ASP.NET Core 應用程式時的常見錯誤。  
+[Azure App Service 和 IIS 常見的錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
+
 ## <a name="additional-resources"></a>其他資源
 
-* [針對 IIS 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/iis/troubleshoot)
-* [Azure 應用程式服務和 IIS 常見的 ASP.NET Core 錯誤參考](xref:host-and-deploy/azure-iis-errors-reference)
-* [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
-* [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
-* [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)
-* [ASP.NET Core 簡介](../index.md)
+* [ASP.NET Core 簡介](xref:index)
 * [Microsoft IIS 官方網站](https://www.iis.net/)
-* [Microsoft TechNet Library：Windows Server](/windows-server/windows-server-versions)
+* [Windows Server 技術內容庫](/windows-server/windows-server)

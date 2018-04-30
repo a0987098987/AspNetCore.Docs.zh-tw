@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c2675f73880a41ee75f6ec13155419945387e109
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f53f77d342cc59094a80e8667db6ef345a6e8305
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -95,14 +95,13 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 您可以使用下列方法，將 ASP.NET Core 預覽應用程式部署到 Azure App Service：
 
-* [安裝預覽站台擴充功能](#site-x)
-* [部署獨立式應用程式](#self)
-* [將包含 Web 應用程式的 Docker 用於容器](#docker)
+* [安裝預覽網站延伸模組](#install-the-preview-site-extension)
+* [部署獨立式應用程式](#deploy-the-app-self-contained)
+* [將包含 Web 應用程式的 Docker 用於容器](#use-docker-with-web-apps-for-containers)
 
-如果您在使用預覽網站擴充功能上有任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上開啟問題。
+如果您在使用預覽網站延伸模組時發生任何問題，請在 [GitHub](https://github.com/aspnet/azureintegration/issues/new) 上提出問題。
 
-<a name="site-x"></a>
-### <a name="install-the-preview-site-extention"></a>安裝預覽站台擴充功能
+### <a name="install-the-preview-site-extension"></a>安裝預覽網站延伸模組
 
 * 從 Azure 入口網站中，巡覽至 [App Service] 刀鋒視窗。
 * 在搜尋方塊中輸入 "ex"。
@@ -111,10 +110,10 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 ![使用先前步驟的 [Azure App] 刀鋒視窗](index/_static/x1.png)
 
-* 選取 [ASP.NET Core 執行階段擴充功能]。
-* 選取 [確定] > [確定]。
+* 選取 [ASP.NET Core 2.1 (x86) 執行階段] 或 [ASP.NET Core 2.1 (x64) 執行階段]。
+* 選取 [確定]。 再次選取 [確定]。
 
-新增作業完成時，系統會安裝最新版的 .NET Core 2.1 預覽。 您可以在主控台中執行 `dotnet --info` 以確認安裝。 從 [App Service] 刀鋒視窗中：
+新增作業完成時，系統會安裝最新版的 .NET Core 2.1 預覽。 在主控台中執行 `dotnet --info` 以驗證安裝。 從 [App Service] 刀鋒視窗中：
 
 * 在搜尋方塊中輸入 "con"。
 * 選取 [主控台]。
@@ -126,26 +125,24 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 `dotnet --info` 會顯示已安裝 [預覽] 之網站擴充功能的路徑。 它會顯示應用程式是從網站擴充功能執行，而不是從預設的 ProgramFiles 位置執行。 如果您看到 ProgramFiles，請重新啟動網站，然後執行 `dotnet --info`。
 
-#### <a name="use-the-preview-site-extention-with-an-arm-template"></a>使用預覽網站擴充功能搭配 ARM 範本
+**搭配使用預覽網站延伸模組與 ARM 範本**
 
-如果您是使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站擴充功能新增至 Web 應用程式。 例如: 
+如果您使用 ARM 範本來建立及部署應用程式，可以使用 `siteextensions` 資源類型將網站延伸模組新增至 Web 應用程式。 例如: 
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 
-<a name="self"></a>
 ### <a name="deploy-the-app-self-contained"></a>部署獨立式應用程式
 
-您可以部署[獨立式應用程式](/dotnet/core/deploying/#self-contained-deployments-scd)，其在部署時會帶有預覽執行階段。 部署獨立式應用程式時：
+您可以部署[獨立式應用程式](/dotnet/core/deploying/#self-contained-deployments-scd)，以在部署中包含預覽執行階段。 部署獨立式應用程式時：
 
-* 您不需要準備網站。
-* 一旦您在伺服器上安裝 SDK 之後，需要使用與部署應用程式時不同的方式來發佈應用程式。
+* 不需要先準備網站。
+* 應用程式的發行方式必須與針對相依於 Framework 的部署 (其中含有伺服器的共用執行階段和主機) 發行應用程式的方式不同。
 
-所有 .NET Core 應用程式皆可選配獨立式應用程式。
+所有 ASP.NET Core 應用程式皆可選配獨立式應用程式。
 
-<a name="docker"></a>
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
 
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的 2.1 預覽 Docker 映像。 您可以使用它們作為基礎映像，並像平常一樣部署至用於容器的 Web App。
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的 2.1 預覽 Docker 映像。 這些映像可用來作為基底映像。 您可以使用這些映像，並以平常的方式將其部署至容器的 Web 應用程式。
 
 ## <a name="additional-resources"></a>其他資源
 

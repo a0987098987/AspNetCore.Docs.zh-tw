@@ -1,21 +1,22 @@
 ---
-title: "ASP.NET Core 2.x 和更新版本的 Microsoft.AspNetCore.All 中繼套件"
+title: ASP.NET Core 2.x 和更新版本的 Microsoft.AspNetCore.All 中繼套件
 author: Rick-Anderson
-description: "Microsoft.AspNetCore.All 中繼套件包含所有支援的 ASP.NET Core 和 Entity Framework Core 套件，以及它們的相依性。"
+description: Microsoft.AspNetCore.All 中繼套件包含所有支援的 ASP.NET Core 和 Entity Framework Core 套件，以及它們的相依性。
 manager: wpickett
+monikerRange: = aspnetcore-2.0
 ms.author: riande
 ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/metapackage
-ms.openlocfilehash: 07220fdae299723088fa85e452cedff5e5685bd7
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4c11f15e659565325bfe8b8d91188b62177b251d
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-#<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>ASP.NET Core 2.x 的 Microsoft.AspNetCore.All 中繼套件
+# <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>ASP.NET Core 2.x 的 Microsoft.AspNetCore.All 中繼套件
 
 這項功能需要以 .NET Core 2.x 為目標的 ASP.NET Core 2.x。
 
@@ -25,7 +26,7 @@ ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micro
 * 所有由 Entity Framework Core 支援的套件。 
 * ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。 
 
-`Microsoft.AspNetCore.All` 套件包含 ASP.NET Core 2.x 和 Entity Framework Core 2.x 的所有功能。 預設專案範本會使用此套件。
+`Microsoft.AspNetCore.All` 套件包含 ASP.NET Core 2.x 和 Entity Framework Core 2.x 的所有功能。 以 ASP.NET Core 2.0 為目標的預設專案範本會使用此套件。
 
 `Microsoft.AspNetCore.All`　中繼套件的版本號碼代表 ASP.NET Core 版本和 Entity Framework Core 版本 (與 .NET Core 版本一致)。
 
@@ -35,4 +36,4 @@ ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micro
 
 下列 *.csproj* 檔案參考 ASP.NET Core 的 `Microsoft.AspNetCore.All` 中繼套件：
 
-[!code-xml[Main](..\mvc\views\view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=9)]
+[!code-xml[](../mvc/views/view-compilation/sample/MvcRazorCompileOnPublish2.csproj?highlight=9)]

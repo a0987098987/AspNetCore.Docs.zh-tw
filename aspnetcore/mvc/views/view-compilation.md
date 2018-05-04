@@ -1,7 +1,7 @@
 ---
-title: "Razor 檢視編譯和先行編譯"
+title: ASP.NET Core 中的 Razor 檢視編譯和先行編譯
 author: rick-anderson
-description: "參考文件說明如何在 ASP.NET Core 應用程式中啟用 MVC Razor 檢視編譯和先行編譯。"
+description: 了解如何啟用 ASP.NET Core 應用程式中的 MVC Razor 檢視編譯和先行編譯。
 manager: wpickett
 ms.author: riande
 ms.date: 12/13/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/view-compilation
-ms.openlocfilehash: bd3f4470035b0375fc79aa7caa73b60ba6fc4f53
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5d971645106a79497a9902063c7774dc6d546395
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="razor-view-compilation-and-precompilation-in-aspnet-core"></a>ASP.NET Core 中的 Razor 檢視編譯和先行編譯
 
@@ -31,8 +31,7 @@ ms.lasthandoff: 01/30/2018
 
 部署先行編譯的檢視：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 如果您專案的目標設為 .NET Framework，請包含 [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/) 的套件參考：
 
 ```xml
@@ -43,17 +42,14 @@ ms.lasthandoff: 01/30/2018
 
 ASP.NET Core 2.x 專案範本預設會將 `MvcRazorCompileOnPublish` 隱含地設定為 `true`，這表示可以從 *.csproj* 檔案安全地移除此節點。 如果您想要更為明確，則請將 `MvcRazorCompileOnPublish` 屬性設定為 `true`。 下列 *.csproj* 範例會反白顯示此設定：
 
-[!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=5)]
+[!code-xml[](view-compilation/sample/MvcRazorCompileOnPublish2.csproj?highlight=5)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 將 `MvcRazorCompileOnPublish` 設定為 `true`，並包括 `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation` 的套件參考。 下列 *.csproj* 範例會反白顯示這些設定：
 
-[!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
+[!code-xml[](view-compilation/sample/MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
----
-
-在專案根目錄中執行下列這類命令，以準備應用程式來進行[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
+使用 [.NET Core CLI 發行命令](/dotnet/core/tools/dotnet-publish)針對[框架相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)準備該應用程式。 例如，在專案的根目錄下執行下列命令：
 
 ```console
 dotnet publish -c Release

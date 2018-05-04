@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: b153a7406ae1b31a2aa453135c6bd0e5ce0b2997
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: f18a5c518edc739e0fe667f3aef6ffd38c06366c
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>設定使用 proxy 伺服器及負載平衡器的 ASP.NET Core
 
@@ -110,6 +110,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
+::: moniker range="<= aspnetcore-2.0"
 | 選項 | 描述 |
 | ------ | ----------- |
 | [ForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedforheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedforheadername)。<br><br>預設值為 `X-Forwarded-For`。 |
@@ -123,6 +124,23 @@ services.Configure<ForwardedHeadersOptions>(options =>
 | [OriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalhostheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XOriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalhostheadername)。<br><br>預設值為 `X-Original-Host`。 |
 | [OriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalprotoheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XOriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalprotoheadername)。<br><br>預設值為 `X-Original-Proto`。 |
 | [RequireHeaderSymmetry](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.requireheadersymmetry) | 要求的標頭值之間的同步處理數[ForwardedHeadersOptions.ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders)正在處理。<br><br>預設值在 ASP.NET Core 1.x 是`true`。 在 ASP.NET Core 2.0 或更新版本的預設值是`false`。 |
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+| 選項 | 描述 |
+| ------ | ----------- |
+| AllowedHosts | 限制的主機`X-Forwarded-Host`標頭中提供的值。<ul><li>使用序數忽略案例比較值。</li><li>連接埠號碼必須排除。</li><li>如果清單是空的則會允許所有主機。</li><li>最上層的萬用字元`*`允許非空白的所有主機。</li><li>子網域萬用字元允許，但是不相符的根網域。 例如，`*.contoso.com`符合子網域`foo.contoso.com`但不是根網域`contoso.com`。</li><li>允許 Unicode 主機名稱，但會轉換成[Punycode](https://tools.ietf.org/html/rfc3492)進行比對。</li><li>[IPv6 位址](https://tools.ietf.org/html/rfc4291)必須包含週框方括號，並位於[傳統表單](https://tools.ietf.org/html/rfc4291#section-2.2)(例如， `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`)。 IPv6 位址不是特殊大小寫，以檢查有不同的格式之間邏輯相等，並不執行任何標準化。</li><li>限制允許的主機失敗可能會讓攻擊者偽造服務所產生的連結。</li></ul>預設值為空[IList\<字串 >](/dotnet/api/system.collections.generic.ilist-1)。 |
+| [ForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedforheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XForwardedForHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedforheadername)。<br><br>預設值為 `X-Forwarded-For`。 |
+| [ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders) | 識別應該處理哪一個轉寄站。 請參閱[ForwardedHeaders 列舉](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheaders)套用的欄位清單。 一般的值指派給這個屬性為<code>ForwardedHeaders.XForwardedFor &#124; ForwardedHeaders.XForwardedProto</code>。<br><br>預設值是[ForwardedHeaders.None](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheaders)。 |
+| [ForwardedHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedhostheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XForwardedHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedhostheadername)。<br><br>預設值為 `X-Forwarded-Host`。 |
+| [ForwardedProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedprotoheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XForwardedProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xforwardedprotoheadername)。<br><br>預設值為 `X-Forwarded-Proto`。 |
+| [ForwardLimit](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardlimit) | 限制處理的標頭中的項目數目。 設定為`null`停用限制，但這應該只執行`KnownProxies`或`KnownNetworks`設定。<br><br>預設為 1。 |
+| [KnownNetworks](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.knownnetworks) | 位址範圍的已知的 proxy，以接受來自轉送標頭。 提供使用無類別網域間路由選擇 (CIDR) 標記法的 IP 範圍。<br><br>預設值是[IList](/dotnet/api/system.collections.generic.ilist-1)\<[IPNetwork](/dotnet/api/microsoft.aspnetcore.httpoverrides.ipnetwork)> 包含的單一項目`IPAddress.Loopback`。 |
+| [KnownProxies](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.knownproxies) | 已知的 proxy，以接受來自轉送標頭的位址。 使用`KnownProxies`若要指定正確的 IP 位址比對。<br><br>預設值是[IList](/dotnet/api/system.collections.generic.ilist-1)\<[IPAddress](/dotnet/api/system.net.ipaddress)> 包含的單一項目`IPAddress.IPv6Loopback`。 |
+| [OriginalForHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalforheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XOriginalForHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalforheadername)。<br><br>預設值為 `X-Original-For`。 |
+| [OriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalhostheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XOriginalHostHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalhostheadername)。<br><br>預設值為 `X-Original-Host`。 |
+| [OriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.originalprotoheadername) | 使用這個屬性，而不是所指定所指定的標頭[ForwardedHeadersDefaults.XOriginalProtoHeaderName](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheadersdefaults.xoriginalprotoheadername)。<br><br>預設值為 `X-Original-Proto`。 |
+| [RequireHeaderSymmetry](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.requireheadersymmetry) | 要求的標頭值之間的同步處理數[ForwardedHeadersOptions.ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders)正在處理。<br><br>預設值在 ASP.NET Core 1.x 是`true`。 在 ASP.NET Core 2.0 或更新版本的預設值是`false`。 |
+::: moniker-end
 
 ## <a name="scenarios-and-use-cases"></a>案例與使用案例
 

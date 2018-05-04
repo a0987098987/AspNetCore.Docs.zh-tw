@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: f776b2025b6ebfeff28d3903aaeac4d7d89665b3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7a3d7807484b76e40e9728e0c750fa1383cc271f
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp
 
@@ -63,9 +63,9 @@ paths.concatCssDest = paths.webroot + "css/site.min.css";
 | ----------- | ----------- |
 | gulp        | Gulp 串流建置系統。 如需詳細資訊，請參閱[gulp](https://www.npmjs.com/package/gulp)。 |
 | rimraf      | 節點刪除模組。 如需詳細資訊，請參閱[rimraf](https://www.npmjs.com/package/rimraf)。 |
-| gulp-concat | 模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
+| gulp concat | 模組可串連作業系統的新行字元為基礎的檔案。 如需詳細資訊，請參閱[gulp concat](https://www.npmjs.com/package/gulp-concat)。 |
 | gulp-cssmin | 縮短 CSS 檔案的模組。 如需詳細資訊，請參閱[gulp cssmin](https://www.npmjs.com/package/gulp-cssmin)。 |
-| gulp-uglify | 縮短模組*.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
+| gulp uglify | 縮短模組 *.js*檔案。 如需詳細資訊，請參閱[gulp uglify](https://www.npmjs.com/package/gulp-uglify)。 |
 
 一旦匯入必要模組，您可以指定工作。 這裡有六個工作註冊中，由下列程式碼：
 
@@ -101,8 +101,8 @@ gulp.task("min", ["min:js", "min:css"]);
 
 |任務名稱|描述|
 |--- |--- |
-|clean:js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
-|clean:css|若要移除 site.css 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
+|全新： js|若要移除 site.js 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
+|全新： css|若要移除 site.css 檔案的縮短的版本使用 rimraf 節點刪除模組的工作。|
 |清除|呼叫工作`clean:js`工作中，後面接著`clean:css`工作。|
 |min:js|工作並縮短，串連的 js 資料夾中的所有.js 檔案。 。 Min.js 檔案會排除。|
 |min:css|縮短及串連的 css 資料夾中的所有.css 檔案的工作。 。 Min.css 檔案會排除。|
@@ -199,7 +199,7 @@ gulp.task("min", ["min:js", "min:css"]);
 
     **之前建置**繫結會設定自動每個專案的組建之前執行 「 清除 」 工作。
 
-繫結的設定**工作執行器總管**頂端的註解的形式儲存您*gulpfile.js*和只適用於 Visual Studio。 不需要 Visual Studio 的替代方式是設定自動執行的 gulp 工作中您*.csproj*檔案。 例如，將此字串放您*.csproj*檔案：
+繫結的設定**工作執行器總管**頂端的註解的形式儲存您*gulpfile.js*和只適用於 Visual Studio。 不需要 Visual Studio 的替代方式是設定自動執行的 gulp 工作中您 *.csproj*檔案。 例如，將此字串放您 *.csproj*檔案：
 
 ```xml
 <Target Name="MyPreCompileTarget" BeforeTargets="Build">
@@ -267,7 +267,7 @@ IntelliSense 提供程式碼完成功能、 參數說明和其他功能，以提
 
 ![IntelliSense 的 gulp](using-gulp/_static/08-IntelliSense.png)
 
-如需有關 IntelliSense 的詳細資訊，請參閱[JavaScript IntelliSense](https://docs.microsoft.com/visualstudio/ide/javascript-intellisense)。
+如需有關 IntelliSense 的詳細資訊，請參閱[JavaScript IntelliSense](/visualstudio/ide/javascript-intellisense)。
 
 ## <a name="development-staging-and-production-environments"></a>開發、 預備及生產環境
 

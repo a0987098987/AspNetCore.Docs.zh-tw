@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-with-windows-azure-service-bus
-title: "SignalR 範圍外使用 Azure 服務匯流排 |Microsoft 文件"
+title: SignalR 範圍外使用 Azure 服務匯流排 |Microsoft 文件
 author: MikeWasson
-description: "此主題的 Visual Studio 2013.NET 4.5 SignalR 版本 2 舊版的此主題的 SignalR 1.x 本主題的版本，用於軟體版本..."
+description: 此主題的 Visual Studio 2013.NET 4.5 SignalR 版本 2 舊版的此主題的 SignalR 1.x 本主題的版本，用於軟體版本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 7cb68d578fee8d6ee036f8fb096ba45e0c8ef3d6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e6d9e4e6ba2040aa2c6e453aacf0ddca38c4a1a9
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/03/2018
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Azure 服務匯流排與 SignalR 範圍外
 ====================
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/24/2018
 2. 將這些 NuGet 封裝加入至您的應用程式： 
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
-    - [Microsoft.AspNet.SignalR.ServiceBus](http://www.nuget.org/packages/SignalR.WindowsAzureServiceBus)
+    - [Microsoft.AspNet.SignalR.ServiceBus3](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.ServiceBus3)或[Microsoft.AspNet.SignalR.ServiceBus](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.ServiceBus)
 3. 建立 SignalR 應用程式。
 4. 設定後擋板 Startup.cs 中加入下列程式碼： 
 

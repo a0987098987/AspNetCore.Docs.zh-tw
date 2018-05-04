@@ -8,11 +8,11 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 09f28ec3792cf137fbcfdecc593e27ce6b2e7e09
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 78a00e04e260863af17d7888ca6bf77d3f915ce1
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>在 ASP.NET Core azure 金鑰保存庫的組態提供者
 
@@ -47,8 +47,8 @@ ms.lasthandoff: 04/06/2018
 | 應用程式設定    | 描述                    | 範例                                      |
 | -------------- | ------------------------------ | -------------------------------------------- |
 | `Vault`        | Azure 金鑰保存庫名稱           | contosovault                                 |
-| `ClientId`     | Azure Active Directory App Id  | 627e911e-43cc-61d4-992e-12db9c81b413         |
-| `ClientSecret` | Azure Active Directory App Key | g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di= |
+| `ClientId`     | Azure Active Directory 應用程式識別碼  | 627e911e-43cc-61d4-992e-12db9c81b413         |
+| `ClientSecret` | Azure Active Directory 應用程式金鑰 | g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di= |
 
 [!code-csharp[Program](key-vault-configuration/samples/basic-sample/2.x/Program.cs?name=snippet1&highlight=2,7-10)]
 
@@ -161,4 +161,4 @@ Configuration.Reload();
 * [Microsoft Azure： 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure： 金鑰保存庫文件](https://docs.microsoft.com/azure/key-vault/)
 * [如何產生並傳輸受 HSM 保護金鑰的 Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)
-* [KeyVaultClient 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
+* [KeyVaultClient 類別](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)

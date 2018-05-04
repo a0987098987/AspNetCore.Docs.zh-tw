@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/cookie
-ms.openlocfilehash: 26101d46557c64047f3d121083fe34ad34ff99ea
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b251aa3ff0b4d0c08f9885cd73a111b7c2008766
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -162,7 +162,7 @@ Cookie 的原則中介軟體設定`MinimumSameSitePolicy`可能會影響您設�
 
 ## <a name="creating-an-authentication-cookie"></a>建立驗證 cookie
 
-若要建立的保留使用者資訊的 cookie，您必須建構[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)。 使用者資訊會序列化並儲存在 cookie 中。 
+若要建立的保留使用者資訊的 cookie，您必須建構[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal)。 使用者資訊會序列化並儲存在 cookie 中。 
 
 #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 建立[ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity)與任何所需[宣告](/dotnet/api/system.security.claims.claim)s 和呼叫[SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0)登入使用者：

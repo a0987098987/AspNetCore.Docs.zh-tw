@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: ff92b032fe8bbbcb7bc26a34fdfbc56a0fcc0e2c
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/22/2018
 
 [!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
-設定應用程式使用中的介軟體`UseResponseCaching`擴充方法，將中介軟體新增至處理管線的要求。 範例應用程式將[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)標頭至回應的快取的回應會快取多達 10 秒。 此範例傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭設定的中介軟體提供快取回的應才[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)後續要求的標頭與相符的原始要求。
+設定應用程式使用中的介軟體`UseResponseCaching`擴充方法，將中介軟體新增至處理管線的要求。 範例應用程式將[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)標頭至回應的快取的回應會快取多達 10 秒。 此範例傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭設定的中介軟體提供快取回的應才[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)後續要求的標頭與相符的原始要求。 在程式碼範例中，如下所示[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue)和[HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames)需要`using`陳述式[Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers)命名空間。
 
 [!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
@@ -88,15 +88,15 @@ if (responseCachingFeature != null)
 | 頁首 | 詳細資料 |
 | ------ | ------- |
 | 授權 | 如果標頭存在，回應不是快取。 |
-| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取的指示詞。 控制快取包含下列參數：<ul><li>保留時間上限</li><li>max-stale&#8224;</li><li>min 全新</li><li>must-revalidate</li><li>無快取</li><li>no-store</li><li>僅限 if-快取</li><li>private</li><li>public</li><li>s maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224;若要指定無限制到`max-stale`中, 介軟體會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231： 要求的快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
+| Cache-Control | 中介軟體只會考慮快取回應標記為`public`快取的指示詞。 控制快取包含下列參數：<ul><li>保留時間上限</li><li>max-stale&#8224;</li><li>min 全新</li><li>必須指令</li><li>無快取</li><li>無存放區</li><li>僅限 if-快取</li><li>private</li><li>public</li><li>s maxage</li><li>proxy 指令&#8225;</li></ul>&#8224;若要指定無限制到`max-stale`中, 介軟體會採取任何動作。<br>&#8225;`proxy-revalidate`具有相同的效果`must-revalidate`。<br><br>如需詳細資訊，請參閱[RFC 7231： 要求的快取控制指示詞](https://tools.ietf.org/html/rfc7234#section-5.2.1)。 |
 | Pragma | A`Pragma: no-cache`要求標頭會產生相同的效果`Cache-Control: no-cache`。 此標頭中的相關指示詞會覆寫`Cache-Control`標頭，如果有的話。 與 HTTP/1.0 回溯相容性考量。 |
-| Set-Cookie | 如果標頭存在，回應不是快取。 |
+| Set-Cookie | 如果標頭存在，回應不是快取。 設定一或多個 cookie 的要求處理管線中的任何中介軟體可防止回應快取中介軟體快取的回應 (例如， [cookie 架構 TempData 提供者](xref:fundamentals/app-state#tempdata))。  |
 | 而有所不同 | `Vary`標頭由另一個標頭用來變更快取的回應。 比方說，快取的回應編碼方式包括`Vary: Accept-Encoding`快取回應之要求標頭的標頭`Accept-Encoding: gzip`和`Accept-Encoding: text/plain`分開。 回應標頭值是`*`絕對不會儲存。 |
 | 到期 | 此標頭視為過時的回應不是存放或擷取除非覆寫其他`Cache-Control`標頭。 |
-| If-None-Match | 如果此值不是從快取提供完整的回應`*`和`ETag`的回應不符合任何提供的值。 否則，提供 304 （未修改） 的回應。 |
-| If-Modified-Since | 如果`If-None-Match`標頭不存在，如果快取的回應日期比所提供的值從快取提供完整的回應。 否則，提供 304 （未修改） 的回應。 |
+| 如果 If-none-Match | 如果此值不是從快取提供完整的回應`*`和`ETag`的回應不符合任何提供的值。 否則，提供 304 （未修改） 的回應。 |
+| 如果修改自 | 如果`If-None-Match`標頭不存在，如果快取的回應日期比所提供的值從快取提供完整的回應。 否則，提供 304 （未修改） 的回應。 |
 | 日期 | 當服務從快取，`Date`若未提供原始回應上設定標頭中介軟體。 |
-| Content-Length | 當服務從快取，`Content-Length`若未提供原始回應上設定標頭中介軟體。 |
+| 內容長度 | 當服務從快取，`Content-Length`若未提供原始回應上設定標頭中介軟體。 |
 | 存留期 | `Age`原始回應中傳送的標頭會被忽略。 當服務快取的回應中, 介軟體會計算新值。 |
 
 ## <a name="caching-respects-request-cache-control-directives"></a>快取尊重要求快取控制指示詞
@@ -105,7 +105,7 @@ if (responseCachingFeature != null)
 
 如需更多控制快取行為的詳細資訊，瀏覽 ASP.NET Core 其他快取的功能。 請參閱下列主題：
 
-* [快取記憶體中](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [快取中 ASP.NET Core MVC 標記協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [分散式快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
@@ -130,19 +130,19 @@ if (responseCachingFeature != null)
 * `Set-Cookie`標頭不得存在。
 * `Vary` 標頭參數必須是有效且不等於`*`。
 * `Content-Length`標頭值 (如果設定) 必須符合回應主體的大小。
-* [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature)不會使用。
+* [IHttpSendFileFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature)不會使用。
 * 回應不是所指定過時`Expires`標頭和`max-age`和`s-maxage`快取指示詞。
 * 回應緩衝處理必須先成功完成，且回應的大小必須小於設定或預設`SizeLimit`。
 * 回應必須是根據可快取[RFC 7234](https://tools.ietf.org/html/rfc7234)規格。 例如，`no-store`指示詞不能存在於要求或回應標頭欄位。 請參閱*區段 3： 儲存在快取的回應*的[RFC 7234](https://tools.ietf.org/html/rfc7234)如需詳細資訊。
 
 > [!NOTE]
-> Antiforgery 系統是否有產生安全性權杖，以防止跨站台要求偽造 (CSRF) 攻擊集`Cache-Control`和`Pragma`標頭`no-cache`以便回應未快取。
+> Antiforgery 系統是否有產生安全性權杖，以防止跨站台要求偽造 (CSRF) 攻擊集`Cache-Control`和`Pragma`標頭`no-cache`以便回應未快取。 如需如何停用 HTML 表單元素 antiforgery 權杖資訊，請參閱[ASP.NET Core antiforgery 組態](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration)。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [應用程式啟動](xref:fundamentals/startup)
 * [中介軟體](xref:fundamentals/middleware/index)
-* [快取記憶體中](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)

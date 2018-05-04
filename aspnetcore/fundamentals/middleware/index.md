@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: a410d686b6140a487efb9962e94f64cfbec245f2
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 4c44063fb3385fc625c35c8a3cf06a35b5b0afb7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/26/2018
 
 要求委派用於建置要求管線， 其會處理每個 HTTP 要求。
 
-要求委派的設定方式為使用 [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions)、[Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) 和 [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions) 擴充方法。 您可將個別要求委派指定為內嵌匿名方法 (在內嵌中介軟體中呼叫)，或於可重複使用的類別中加以定義。 這些可重複使用的類別及內嵌匿名方法皆為「中介軟體」，或「中介軟體元件」。 要求管線中的每個中介軟體元件負責叫用管線中的下一個元件，或於適當時，對鏈結執行最少運算。
+要求委派的設定方式為使用 [Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions)、[Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) 和 [Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions) 擴充方法。 您可將個別要求委派指定為內嵌匿名方法 (在內嵌中介軟體中呼叫)，或於可重複使用的類別中加以定義。 這些可重複使用的類別及內嵌匿名方法皆為「中介軟體」，或「中介軟體元件」。 要求管線中的每個中介軟體元件負責叫用管線中的下一個元件，或於適當時，對鏈結執行最少運算。
 
 [將 HTTP 模組遷移至中介軟體](xref:migration/http-modules)說明 ASP.NET Core 和 ASP.NET 4.x 之間的要求管線差異，並提供更多中介軟體範例。
 
@@ -46,9 +46,9 @@ ASP.NET Core 要求管線包含一連串的要求委派，而系統會對其逐�
 
 [!code-csharp[](index/sample/Middleware/Startup.cs)]
 
-第一個 [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) 委派會終止管線。
+第一個 [app.Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions) 委派會終止管線。
 
-您可以使用 [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions) 將多個要求委派鏈結在一起。 `next` 參數代表管線中的下個委派。 (請記得，您可以*不*呼叫*下個*參數來對管線執行最少運算。)您通常可以在下個委派的前後執行動作，如此範例所示：
+您可以使用 [app.Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions) 將多個要求委派鏈結在一起。 `next` 參數代表管線中的下個委派。 (請記得，您可以*不*呼叫*下個*參數來對管線執行最少運算。)您通常可以在下個委派的前後執行動作，如此範例所示：
 
 [!code-csharp[](index/sample/Chain/Startup.cs?name=snippet1)]
 
@@ -57,7 +57,7 @@ ASP.NET Core 要求管線包含一連串的要求委派，而系統會對其逐�
 > - 可能導致違反通訊協定。 例如，寫入超過指定 `content-length` 的內容。
 > - 可能損毀本文格式。 例如，將 HTML 頁尾寫入 CSS 檔。
 >
-> [HttpResponse.HasStarted](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) 是實用的提示，可表示是否已傳送標頭與 (或) 是否已寫入本文。
+> [HttpResponse.HasStarted](/dotnet/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) 是實用的提示，可表示是否已傳送標頭與 (或) 是否已寫入本文。
 
 ## <a name="ordering"></a>排序
 
@@ -122,7 +122,7 @@ public void Configure(IApplicationBuilder app)
 
 -----------
 
-下列範例會示範中介軟體的順序，其中靜態檔案中介軟體會在回應壓縮中介軟體之前，先處理靜態檔案的要求。 在這種中介軟體的順序下，不會壓縮靜態檔案， 而會壓縮來自 [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 的 MVC 回應。
+下列範例會示範中介軟體的順序，其中靜態檔案中介軟體會在回應壓縮中介軟體之前，先處理靜態檔案的要求。 在這種中介軟體的順序下，不會壓縮靜態檔案， 而會壓縮來自 [UseMvcWithDefaultRoute](/dotnet/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 的 MVC 回應。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -140,7 +140,7 @@ public void Configure(IApplicationBuilder app)
 
 您可以使用 `Use`、`Run` 及 `Map` 設定 HTTP 管線。 `Use` 方法可對管線執行最少運算 (亦即，如果其不呼叫 `next` 要求委派的情況下)。 `Run` 是一種慣例，且有些中介軟體元件可能將執行於管線尾端的 `Run[Middleware]` 方法公開。
 
-`Map*` 擴充方法則是用來分支管線的慣例。 [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) 會依據指定要求路徑的相符項目將要求管線分支。 如果要求路徑以指定路徑為開頭，則會執行分支。
+`Map*` 擴充方法則是用來分支管線的慣例。 [Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) 會依據指定要求路徑的相符項目將要求管線分支。 如果要求路徑以指定路徑為開頭，則會執行分支。
 
 [!code-csharp[](index/sample/Chain/StartupMap.cs?name=snippet1)]
 
@@ -155,7 +155,7 @@ public void Configure(IApplicationBuilder app)
 
 使用 `Map` 時，會將相符的路徑線段從 `HttpRequest.Path` 移除，並附加至每個要求的 `HttpRequest.PathBase`。
 
-[MapWhen](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapwhenextensions) 會依據指定述詞的結果將要求管線分支。 `Func<HttpContext, bool>` 類型的任何述詞皆可用來將要求對應至管線的新分支。 下列範例會使用述詞來偵測查詢字串變數 `branch` 是否存在：
+[MapWhen](/dotnet/api/microsoft.aspnetcore.builder.mapwhenextensions) 會依據指定述詞的結果將要求管線分支。 `Func<HttpContext, bool>` 類型的任何述詞皆可用來將要求對應至管線的新分支。 下列範例會使用述詞來偵測查詢字串變數 `branch` 是否存在：
 
 [!code-csharp[](index/sample/Chain/StartupMapWhen.cs?name=snippet1)]
 
@@ -225,7 +225,7 @@ ASP.NET Core 隨附下列中介軟體元件，以及新增這些元件時必須�
 > [!NOTE]
 > 在 ASP.NET Core 1.x 中，中介軟體 `Task` 方法的名稱必須是 `Invoke`。 在 ASP.NET Core 2.0 或更新版本中，此名稱可以是 `Invoke` 或 `InvokeAsync`。
 
-下列擴充方法透過 [IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder) 公開中介軟體：
+下列擴充方法透過 [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) 公開中介軟體：
 
 [!code-csharp[](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
 
@@ -235,7 +235,7 @@ ASP.NET Core 隨附下列中介軟體元件，以及新增這些元件時必須�
 
 中介軟體應於其建構函式中公開其相依性，以遵循[明確的相依性原則](http://deviq.com/explicit-dependencies-principle/)。 中介軟體會在每次「應用程式存留期」就建構一次。 若您需要在要求內與中介軟體共用服務，請參閱下方的「依要求的相依性」。
 
-中介軟體元件可透過建構函式參數，解析其來自相依性插入的相依性。 [`UseMiddleware<T>`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) 也可直接接受其它參數。
+中介軟體元件可透過建構函式參數，解析其來自相依性插入的相依性。 [`UseMiddleware<T>`](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) 也可直接接受其它參數。
 
 ### <a name="per-request-dependencies"></a>依要求的相依性
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 16369a14dbe97778724632317a82e11de5a8faed
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 0653906996f9f37d436ebefc6a738d2603788d53
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>將驗證和身分識別移轉至 ASP.NET Core 2.0
 
@@ -238,7 +238,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     ```
 
 ### <a name="setting-default-authentication-schemes"></a>設定預設的驗證配置
-在 1.x`AutomaticAuthenticate`和`AutomaticChallenge`屬性[AuthenticationOptions](https://docs.microsoft.com/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1)基底類別要用來將一種驗證配置。 沒有強制這個好方法。
+在 1.x`AutomaticAuthenticate`和`AutomaticChallenge`屬性[AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1)基底類別要用來將一種驗證配置。 沒有強制這個好方法。
 
 在 2.0 中，這兩個屬性有為個別的屬性移除`AuthenticationOptions`執行個體。 可在設定`AddAuthentication`方法呼叫內`ConfigureServices`方法*Startup.cs*:
 

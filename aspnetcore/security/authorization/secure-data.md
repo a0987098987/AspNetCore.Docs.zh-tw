@@ -1,7 +1,7 @@
 ---
-title: "建立 ASP.NET Core 應用程式與受保護的授權的使用者資料"
+title: 建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 author: rick-anderson
-description: "了解如何建立 Razor 頁面的應用程式與受保護的授權的使用者資料。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。"
+description: 了解如何建立 Razor 頁面的應用程式與受保護的授權的使用者資料。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。
 manager: wpickett
 ms.author: riande
 ms.date: 01/24/2018
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 5acb65be078fd39b9e7a17ce2d8167b8f7b7db22
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e42f299efcae7c6a0e3d20b157c591eed98c99d0
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -102,7 +102,7 @@ dotnet ef database update
 
 [!code-csharp[](secure-data/samples/final2/Startup.cs?name=snippet_env)]
 
-在`ConfigureServices`方法*Startup.cs* file、 add [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute)授權篩選條件：
+在`ConfigureServices`方法*Startup.cs* file、 add [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute)授權篩選條件：
 
 [!code-csharp[](secure-data/samples/final2/Startup.cs?name=snippet_SSL&highlight=10-999)]
 
@@ -182,7 +182,7 @@ dotnet user-secrets set SeedUserPW <PW>
 
 ## <a name="register-the-authorization-handlers"></a>註冊授權的處理常式
 
-使用 Entity Framework 的核心服務必須登錄[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/aspnet/core/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。 `ContactIsOwnerAuthorizationHandler`使用 ASP.NET Core[識別](xref:security/authentication/identity)，這建置在 Entity Framework Core。 登錄處理常式與服務的集合，所以可`ContactsController`透過[相依性插入](xref:fundamentals/dependency-injection)。 將下列程式碼加入至結尾`ConfigureServices`:
+使用 Entity Framework 的核心服務必須登錄[相依性插入](xref:fundamentals/dependency-injection)使用[AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions)。 `ContactIsOwnerAuthorizationHandler`使用 ASP.NET Core[識別](xref:security/authentication/identity)，這建置在 Entity Framework Core。 登錄處理常式與服務的集合，所以可`ContactsController`透過[相依性插入](xref:fundamentals/dependency-injection)。 將下列程式碼加入至結尾`ConfigureServices`:
 
 [!code-csharp[](secure-data/samples/final2/Startup.cs?name=ConfigureServices&highlight=41-999)]
 

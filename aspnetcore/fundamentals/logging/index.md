@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: aab1190467c13ae121625c377d0908eac2fe8d95
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 78dcee05799965c72f878662df61034018a23021
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -586,8 +586,6 @@ loggerFactory.AddAzureWebAppDiagnostics();
 某些協力廠商架構可以執行[語意記錄 (也稱為結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
 使用協力廠商架構類似於使用其中一個內建提供者：將 NuGet 套件新增至您的專案，然後在 `ILoggerFactory` 上呼叫擴充方法。 如需詳細資訊，請參閱每個架構的文件。
-
-您也可以建立自己的自訂提供者，以支援其他記錄架構或您自己的記錄需求。
 
 ## <a name="azure-log-streaming"></a>Azure 記錄資料流
 

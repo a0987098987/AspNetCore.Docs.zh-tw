@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-primary-key-configuration
-ms.openlocfilehash: db47055aecc5252dbb3991f29a8255b946deaeb7
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ce654492dc7bab6c031c9f82555f877f642171ce
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-identity-primary-key-data-type-in-aspnet-core"></a>在 ASP.NET Core 中設定身分識別主索引鍵資料類型
 
@@ -21,11 +21,11 @@ ASP.NET Core 身分識別可讓您設定用來表示主索引鍵的資料類型�
 
 ## <a name="customize-the-primary-key-data-type"></a>自訂主索引鍵資料類型
 
-1. 建立的自訂實作[IdentityUser](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser-1)類別。 它代表要用來建立使用者物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
+1. 建立的自訂實作[IdentityUser](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser-1)類別。 它代表要用來建立使用者物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
 
     [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationUser.cs?highlight=4&range=7-13)]
 
-2. 建立的自訂實作[IdentityRole](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityrole-1)類別。 它代表要用來建立角色物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
+2. 建立的自訂實作[IdentityRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityrole-1)類別。 它代表要用來建立角色物件的類型。 在下列範例中，預設值`string`類型取代`Guid`。
 
     [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Models/ApplicationRole.cs?highlight=3&range=7-12)]
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 3f0eb9abce067108b82cf8b639cea3b120ca4b5a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e0bf0084f8e46f3774fa070602404840aa803661
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Twitter 外部登入與 ASP.NET Core 的安裝程式
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-the-app-in-twitter"></a>在 Twitter 中建立應用程式
 
-* 瀏覽至[ https://apps.twitter.com/ ](https://apps.twitter.com/)並登入。 如果您還沒有 Twitter 帳戶，使用**[立即註冊](https://twitter.com/signup)**建立一個連結。 登入之後,**應用程式管理**頁面會顯示：
+* 瀏覽至[ https://apps.twitter.com/ ](https://apps.twitter.com/)並登入。 如果您還沒有 Twitter 帳戶，使用**[立即註冊](https://twitter.com/signup)** 建立一個連結。 登入之後,**應用程式管理**頁面會顯示：
 
 ![Twitter 應用程式管理的 Microsoft Edge 開啟](index/_static/TwitterAppManage.png)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/06/2018
 
 ![建立應用程式頁面](index/_static/TwitterCreate.png)
 
-* 輸入您的開發 URI 與*/signin-twitter*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-twitter`)。 稍後在本教學課程中設定的 Twitter 驗證配置將會自動處理在要求*/signin-twitter*實作 OAuth 流程的路由。
+* 輸入您的開發 URI 與 */signin-twitter*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-twitter`)。 稍後在本教學課程中設定的 Twitter 驗證配置將會自動處理在要求 */signin-twitter*實作 OAuth 流程的路由。
 
 * 填寫表單的其餘部分，並點選**建立應用程式 Twitter**。 會顯示新的應用程式詳細資料：
 
@@ -85,7 +85,7 @@ app.UseTwitterAuthentication(new TwitterOptions()
 ```
 
 * * *
-請參閱[TwitterOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.twitteroptions) API 參考，如需有關 Twitter 驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
+請參閱[TwitterOptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API 參考，如需有關 Twitter 驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
 
 ## <a name="sign-in-with-twitter"></a>使用 Twitter 登入
 

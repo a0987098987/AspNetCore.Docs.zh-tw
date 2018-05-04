@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: b42e62b560e01d592c9f4cb61ea6199a15dc8bb6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7cfceb38204b6cfd3589a082761273e54ac122ca
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 <a name="create-the-project"></a>建立專案
 ====================
@@ -52,7 +52,10 @@ ms.lasthandoff: 04/06/2018
 
     > [!NOTE]
     > 在此教學課程系列中的專案名稱是**WingtipToys**。 建議使用此*確切*專案名稱，以便在整個教學課程系列提供的程式碼如預期般函式。
-6. 接下來，選取**Web Form**範本，然後選擇 [**建立專案**] 按鈕。  
+
+6. 按一下**變更驗證** 按鈕。 選取**個別使用者帳戶**按一下**確定** 按鈕。
+
+7. 選取**Web Form**範本，然後按一下**確定** 按鈕。
 
     ![新的專案範本建立專案-](create-the-project/_static/image3.png)
 

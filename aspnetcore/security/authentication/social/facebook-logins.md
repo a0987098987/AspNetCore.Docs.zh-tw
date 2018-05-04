@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 70a4b2e53be335b8854b0aef3cfbf8f4e21e6ebe
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1798c310f36073e90a4e3521cfd1447bc94af666
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Facebook 外部登入安裝程式
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/06/2018
 
 ![用戶端的 OAuth 設定頁面](index/_static/FBOAuthSetup.png)
 
-* 輸入您的開發 URI 與*/signin-facebook*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-facebook`)。 稍後在本教學課程中設定的 Facebook 驗證將會自動處理在要求*/signin-facebook*實作 OAuth 流程的路由。
+* 輸入您的開發 URI 與 */signin-facebook*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-facebook`)。 稍後在本教學課程中設定的 Facebook 驗證將會自動處理在要求 */signin-facebook*實作 OAuth 流程的路由。
 
 * 按一下**儲存變更**。
 
@@ -106,7 +106,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 ```
 
 * * *
-請參閱[FacebookOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.facebookoptions) API 參考，如需有關支援 Facebook 驗證的組態選項。 組態選項可用來：
+請參閱[FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) API 參考，如需有關支援 Facebook 驗證的組態選項。 組態選項可用來：
 
 * 要求的使用者不同的資訊。
 * 加入自訂登入體驗的查詢字串引數。

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: b3bfae665403162db1fb012fac227275b1dfd6c9
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f9215767bf9a7c8b43b474848ba7dff7c3ddaf24
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -23,7 +23,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET 核心身分識別。 或者，您可以使用您自己的持續性存放區，例如 Azure 資料表儲存體。 本文件包含適用於 Visual Studio 以及使用 CLI 的指示。
 
-[檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](https://docs.microsoft.com/aspnet/core/tutorials/index#how-to-download-a-sample)
+[檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
 ## <a name="overview-of-identity"></a>身分識別的概觀
 
@@ -139,7 +139,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
 7. 檢視的資料庫。
 
-   如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** > **SQL Server 物件總管**。 連接到**(localdb) \MSSQLLocalDB**。 資料庫名稱符合**aspnet-<*的專案名稱*>-<*日期字串*>** 隨即出現。
+   如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** > **SQL Server 物件總管**。 連接到 **(localdb) \MSSQLLocalDB**。 資料庫名稱符合**aspnet-<*的專案名稱*>-<*日期字串*>** 隨即出現。
 
    ![AspNetUsers 資料庫資料表上的內容功能表](identity/_static/04-db.png)
 

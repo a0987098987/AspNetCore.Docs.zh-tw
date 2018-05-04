@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 身分識別的自訂儲存體提供者"
+title: ASP.NET Core 身分識別的自訂儲存體提供者
 author: ardalis
-description: "了解如何設定自訂儲存 ASP.NET Core 身分識別提供者。"
+description: 了解如何設定自訂儲存 ASP.NET Core 身分識別提供者。
 manager: wpickett
 ms.author: riande
 ms.date: 05/24/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 559c5c58b416912b1caef1964ff8d7532bd98439
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: bd5e5219765dfea0305fa02e79e5423266ce4df2
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -62,19 +62,19 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ### <a name="users"></a>使用者
 
-註冊您的網站的使用者。 [IdentityUser](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser)類型可能會擴充，或使用您自己的自訂類型的範例。 您不需要繼承自特定的型別，以實作您自己的自訂身分識別儲存體解決方案。
+註冊您的網站的使用者。 [IdentityUser](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser)類型可能會擴充，或使用您自己的自訂類型的範例。 您不需要繼承自特定的型別，以實作您自己的自訂身分識別儲存體解決方案。
 
 ### <a name="user-claims"></a>使用者宣告
 
-一組陳述式 (或[宣告](https://docs.microsoft.com//dotnet/api/system.security.claims.claim)) 代表使用者的身分識別之使用者的相關。 可以啟用更高的使用者身分識別與透過角色能達到之效果的運算式。
+一組陳述式 (或[宣告](/dotnet/api/system.security.claims.claim)) 代表使用者的身分識別之使用者的相關。 可以啟用更高的使用者身分識別與透過角色能達到之效果的運算式。
 
 ### <a name="user-logins"></a>使用者登入
 
-外部驗證提供者 （例如 Facebook 或 Microsoft 帳戶） 的相關資訊時登入使用者使用。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
+外部驗證提供者 （例如 Facebook 或 Microsoft 帳戶） 的相關資訊時登入使用者使用。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
 
 ### <a name="roles"></a>角色
 
-您的網站的授權群組。 包含的角色識別碼和角色名稱 （例如"Admin"或"Employee"）。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityrole)
+您的網站的授權群組。 包含的角色識別碼和角色名稱 （例如"Admin"或"Employee"）。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.identityrole)
 
 ## <a name="the-data-access-layer"></a>資料存取層
 
@@ -86,27 +86,27 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ### <a name="context-class"></a>Context 類別
 
-封裝連接到您的持續性機制，並執行查詢的資訊。 數個資料類別需要這個類別，通常透過相依性插入所提供的執行個體。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1)。
+封裝連接到您的持續性機制，並執行查詢的資訊。 數個資料類別需要這個類別，通常透過相依性插入所提供的執行個體。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1)。
 
 ### <a name="user-storage"></a>使用者的儲存體
 
-儲存和擷取使用者資訊 （例如使用者名稱和密碼雜湊）。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+儲存和擷取使用者資訊 （例如使用者名稱和密碼雜湊）。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="role-storage"></a>角色存放裝置
 
-儲存和擷取角色資訊 （例如角色名稱）。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1)
+儲存和擷取角色資訊 （例如角色名稱）。 [範例](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1)
 
 ### <a name="userclaims-storage"></a>UserClaims 的儲存體
 
-儲存和擷取使用者宣告資訊 （例如宣告類型和值）。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+儲存和擷取使用者宣告資訊 （例如宣告類型和值）。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userlogins-storage"></a>Serlogins 的儲存體
 
-儲存和擷取使用者登入資訊 （例如外部驗證提供者）。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+儲存和擷取使用者登入資訊 （例如外部驗證提供者）。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userrole-storage"></a>使用者角色存放裝置
 
-儲存和擷取哪些角色指派給使用者。 [範例](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+儲存和擷取哪些角色指派給使用者。 [範例](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 **提示：**只實作您想要使用您的應用程式中的類別。
 
@@ -118,7 +118,7 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ## <a name="customize-the-user-class"></a>自訂使用者類別
 
-當實作的儲存提供者，建立使用者類別，其相當於[`IdentityUser`類別](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser)。
+當實作的儲存提供者，建立使用者類別，其相當於[`IdentityUser`類別](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser)。
 
 至少必須包含在使用者類別`Id`和`UserName`屬性。
 
@@ -126,13 +126,13 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 ## <a name="customize-the-user-store"></a>自訂使用者存放區
 
-建立`UserStore`提供的所有使用者資料作業方式的類別。 這個類別就相當於[UserStore<TUser> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1)類別。 在您`UserStore`類別，實作`IUserStore<TUser>`和所需的選用介面。 您選取要實作的選擇性介面根據您的應用程式中提供的功能。
+建立`UserStore`提供的所有使用者資料作業方式的類別。 這個類別就相當於[UserStore<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1)類別。 在您`UserStore`類別，實作`IUserStore<TUser>`和所需的選用介面。 您選取要實作的選擇性介面根據您的應用程式中提供的功能。
 
 ### <a name="optional-interfaces"></a>選擇性介面
 
-- IUserRoleStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserrolestore-1
-- IUserClaimStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserclaimstore-1
-- IUserPasswordStore https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserpasswordstore-1
+- IUserRoleStore /dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1
+- IUserClaimStore /dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1
+- IUserPasswordStore /dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1
 - IUserSecurityStampStore <!-- make these all links and remove / -->
 - IUserEmailStore
 - IPhoneNumberStore
@@ -150,27 +150,27 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>若要實作自訂使用者存放區時的介面
 
 - **IUserStore**  
- [IUserStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserstore-1)介面是只有在使用者存放區中，您必須實作的介面。 它會定義方法來建立、 更新、 刪除和擷取使用者。
+ [IUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserstore-1)介面是只有在使用者存放區中，您必須實作的介面。 它會定義方法來建立、 更新、 刪除和擷取使用者。
 - **IUserClaimStore**  
- [IUserClaimStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserclaimstore-1)介面會定義您要啟用使用者宣告實作的方法。 它包含用於加入、 移除和擷取使用者宣告的方法。
+ [IUserClaimStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1)介面會定義您要啟用使用者宣告實作的方法。 它包含用於加入、 移除和擷取使用者宣告的方法。
 - **IUserLoginStore**  
- [IUserLoginStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserloginstore-1)定義您要啟用外部驗證提供者實作的方法。 它包含加入、 移除和擷取使用者登入和擷取使用者為基礎的登入資訊方法的方法。
+ [IUserLoginStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1)定義您要啟用外部驗證提供者實作的方法。 它包含加入、 移除和擷取使用者登入和擷取使用者為基礎的登入資訊方法的方法。
 - **IUserRoleStore**  
- [IUserRoleStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserrolestore-1)介面會定義您將使用者對應至角色實作的方法。 它包含方法，以新增、 移除和擷取使用者的角色，並檢查使用者是否指派給角色的方法。
+ [IUserRoleStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1)介面會定義您將使用者對應至角色實作的方法。 它包含方法，以新增、 移除和擷取使用者的角色，並檢查使用者是否指派給角色的方法。
 - **IUserPasswordStore**  
- [IUserPasswordStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)介面會定義您實作來保存雜湊的密碼的方法。 它包含方法來取得和設定雜湊的密碼，並指出使用者是否已設定密碼的方法。
+ [IUserPasswordStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)介面會定義您實作來保存雜湊的密碼的方法。 它包含方法來取得和設定雜湊的密碼，並指出使用者是否已設定密碼的方法。
 - **IUserSecurityStampStore**  
- [IUserSecurityStampStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)介面會定義您實作要用於安全性戳記，指出是否已變更的使用者帳戶資訊的方法。 當使用者變更密碼，或加入或移除登入，則會更新這個戳記。 它包含方法來取得和設定的安全性戳記。
+ [IUserSecurityStampStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)介面會定義您實作要用於安全性戳記，指出是否已變更的使用者帳戶資訊的方法。 當使用者變更密碼，或加入或移除登入，則會更新這個戳記。 它包含方法來取得和設定的安全性戳記。
 - **IUserTwoFactorStore**  
- [IUserTwoFactorStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)介面會定義您實作以支援雙因素驗證的方法。 它包含對取得和設定是否針對使用者啟用雙因素驗證的方法。
+ [IUserTwoFactorStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)介面會定義您實作以支援雙因素驗證的方法。 它包含對取得和設定是否針對使用者啟用雙因素驗證的方法。
 - **IUserPhoneNumberStore**  
- [IUserPhoneNumberStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)介面會定義您實作以儲存使用者電話號碼的方法。 它包含對取得和設定的電話號碼和電話號碼是否已確認的方法。
+ [IUserPhoneNumberStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)介面會定義您實作以儲存使用者電話號碼的方法。 它包含對取得和設定的電話號碼和電話號碼是否已確認的方法。
 - **IUserEmailStore**  
- [IUserEmailStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuseremailstore-1)介面會定義您實作以儲存使用者的電子郵件地址的方法。 它包含對取得和設定電子郵件地址和電子郵件是否已確認的方法。
+ [IUserEmailStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1)介面會定義您實作以儲存使用者的電子郵件地址的方法。 它包含對取得和設定電子郵件地址和電子郵件是否已確認的方法。
 - **IUserLockoutStore**  
- [IUserLockoutStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)介面會定義您實作以儲存有關鎖定的帳戶資訊的方法。 它包含追蹤失敗的存取嘗試以及鎖定的方法。
+ [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)介面會定義您實作以儲存有關鎖定的帳戶資訊的方法。 它包含追蹤失敗的存取嘗試以及鎖定的方法。
 - **IQueryableUserStore**  
- [IQueryableUserStore&lt;TUser&gt; ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義提供可查詢使用者存放區的成員實作。
+ [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義提供可查詢使用者存放區的成員實作。
 
 您在應用程式中實作所需的介面。 例如: 
 
@@ -188,7 +188,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim、 IdentityUserLogin 和 IdentityUserRole
 
-``Microsoft.AspNet.Identity.EntityFramework``命名空間包含的實作[IdentityUserClaim](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)， [IdentityUserLogin](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin)，和[IdentityUserRole](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1)類別。 如果您使用這些功能，您可能想要建立您自己的版本，這些類別，以及定義您的應用程式的屬性。 不過，有時候很不載入這些實體記憶體時執行 （例如加入或移除使用者的宣告） 的基本作業更有效率。 請改為後端存放區類別可以執行這些作業，直接針對資料來源。 例如，``UserStore.GetClaimsAsync``方法可以呼叫``userClaimTable.FindByUserId(user.Id)``方法上執行查詢，直接資料表，並傳回清單的宣告。
+``Microsoft.AspNet.Identity.EntityFramework``命名空間包含的實作[IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1)， [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)，和[IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1)類別。 如果您使用這些功能，您可能想要建立您自己的版本，這些類別，以及定義您的應用程式的屬性。 不過，有時候很不載入這些實體記憶體時執行 （例如加入或移除使用者的宣告） 的基本作業更有效率。 請改為後端存放區類別可以執行這些作業，直接針對資料來源。 例如，``UserStore.GetClaimsAsync``方法可以呼叫``userClaimTable.FindByUserId(user.Id)``方法上執行查詢，直接資料表，並傳回清單的宣告。
 
 ## <a name="customize-the-role-class"></a>自訂角色類別
 
@@ -200,10 +200,10 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ## <a name="customize-the-role-store"></a>自訂角色存放區
 
-您可以建立``RoleStore``提供的角色上的所有資料作業方式的類別。 這個類別就相當於[RoleStore<TRole> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1)類別。 在`RoleStore`類別時，實作``IRoleStore<TRole>``並選擇性地``IQueryableRoleStore<TRole>``介面。
+您可以建立``RoleStore``提供的角色上的所有資料作業方式的類別。 這個類別就相當於[RoleStore<TRole> ](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1)類別。 在`RoleStore`類別時，實作``IRoleStore<TRole>``並選擇性地``IQueryableRoleStore<TRole>``介面。
 
 - **IRoleStore&lt;TRole&gt;**  
- [IRoleStore](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.irolestore-1)介面會定義角色存放區類別中實作的方法。 它包含建立、 更新、 刪除及擷取角色的方法。
+ [IRoleStore](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1)介面會定義角色存放區類別中實作的方法。 它包含建立、 更新、 刪除及擷取角色的方法。
 - **RoleStore&lt;TRole&gt;**  
  若要自訂`RoleStore`，建立類別，實作`IRoleStore`介面。 
 

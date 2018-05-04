@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: ab49eb1c45d69ff918b25190d7b94a105ff13972
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aba12a94a573db35eadaa6a38f2fcf074b7b64c2
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Google 外部登入安裝程式
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-the-app-in-google-api-console"></a>在 Google API 主控台中建立應用程式
 
-* 瀏覽至[ https://console.developers.google.com/projectselector/apis/library ](https://console.developers.google.com/projectselector/apis/library)並登入。 如果您還沒有 Google 帳戶，使用**更多選項** > **[建立帳戶](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)**建立一個連結：
+* 瀏覽至[ https://console.developers.google.com/projectselector/apis/library ](https://console.developers.google.com/projectselector/apis/library)並登入。 如果您還沒有 Google 帳戶，使用**更多選項** > **[建立帳戶](https://accounts.google.com/SignUpWithoutGmail?service=cloudconsole&continue=https%3A%2F%2Fconsole.developers.google.com%2Fprojectselector%2Fapis%2Flibrary&ltmpl=api)** 建立一個連結：
 
 ![Google API 主控台](index/_static/GoogleConsoleLogin.png)
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 04/06/2018
 ![API Manager Google + API 頁面](index/_static/GoogleConsoleGoCredentials.png)
 
 * 選擇：
-   * **Google+ API**
+   * **Google + 應用程式開發介面**
    * **網頁伺服器 (例如 node.js Tomcat)**，和
    * **使用者資料**:
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/06/2018
 
 * 因為我們建立 Google + 專案的一個功能 （登入），我們可以輸入相同**名稱**OAuth 2.0 用戶端識別碼，我們使用的專案。
 
-* 輸入您的開發 URI 與*/signin-google*附加到**授權重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-google`)。 稍後在本教學課程設定 Google 驗證將會自動處理在要求*/signin-google*實作 OAuth 流程的路由。
+* 輸入您的開發 URI 與 */signin-google*附加到**授權重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-google`)。 稍後在本教學課程設定 Google 驗證將會自動處理在要求 */signin-google*實作 OAuth 流程的路由。
 
 * 按 TAB 鍵以新增**授權重新導向 Uri**項目。
 
@@ -122,7 +122,7 @@ app.UseGoogleAuthentication(new GoogleOptions()
 ```
 
 * * *
-請參閱[GoogleOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.googleoptions) API 參考，如需 Google 驗證所支援的組態選項的詳細資訊。 這可以用於要求的使用者不同的資訊。
+請參閱[GoogleOptions](/dotnet/api/microsoft.aspnetcore.builder.googleoptions) API 參考，如需 Google 驗證所支援的組態選項的詳細資訊。 這可以用於要求的使用者不同的資訊。
 
 ## <a name="sign-in-with-google"></a>使用 Google 登入
 

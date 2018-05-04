@@ -6,22 +6,24 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 03/30/2018
+ms.date: 05/01/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: 7da0c4832b1aa6a844172bf751a46b280a02f37a
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: e23d7ef6d5e5e93d5fc69ad4c845a6a896836170
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core 中 SignalR 中樞
 
 由[Rachel Appel](https://twitter.com/rachelappel)和[Kevin Griffin](https://twitter.com/1kevgriff)
 
 [!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
 ## <a name="what-is-a-signalr-hub"></a>SignalR 中樞為何
 
@@ -31,17 +33,17 @@ SignalR 中樞應用程式開發介面可讓您連線的用戶端上呼叫方法
 
 SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`。
 
-[!code-csharp[Configure service](hubs/sample/startup.cs?range=35)]
+[!code-csharp[Configure service](hubs/sample/startup.cs?range=37)]
 
 將 SignalR 功能加入至 ASP.NET Core 應用程式，安裝 SignalR 的路由，藉由呼叫`app.UseSignalR`中`Startup.Configure`方法。
 
-[!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=55-58)]
+[!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=56-59)]
 
 ## <a name="create-and-use-hubs"></a>建立和使用集線器
 
 藉由宣告繼承自一個類別建立中樞`Hub`，並將公用方法加入至它。 用戶端可以呼叫方法，定義為`public`。
 
-[!code-csharp[Create and use hubs](hubs/sample/chathub.cs?range=10-13)]
+[!code-csharp[Create and use hubs](hubs/sample/hubs/chathub.cs?range=8-37)]
 
 您可以指定傳回型別和參數，包括複雜型別及陣列，您可以按照任何 C# 方法。 SignalR 處理的序列化和還原序列化複雜的物件，並在您的參數和傳回值的陣列。
 
@@ -75,20 +77,19 @@ SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`
 
 若要讓特定的用戶端呼叫，使用的屬性`Clients`物件。 在下列範例中，下列`SendMessageToCaller`方法將示範將訊息傳送到叫用中樞方法的連線。 `SendMessageToGroups`方法將訊息傳送至儲存在群組`List`名為`groups`。
 
-[!code-csharp[Send messages](hubs/sample/chathub.cs?range=15-24)]
+[!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?range=15-24)]
 
 ## <a name="handle-events-for-a-connection"></a>處理連接事件
 
 提供 SignalR 中樞 API`OnConnectedAsync`和`OnDisconnectedAsync`用於管理及追蹤連線的虛擬方法。 覆寫`OnConnectedAsync`虛擬方法，當用戶端連線至中樞，例如新增到群組執行動作。
 
-[!code-csharp[Handle events](hubs/sample/chathub.cs?range=26-30)]
+[!code-csharp[Handle events](hubs/sample/hubs/chathub.cs?range=26-36)]
 
 ## <a name="handle-errors"></a>處理錯誤
 
 在 hub 方法中擲回例外狀況會傳送至已叫用方法的用戶端。 JavaScript 用戶端上`invoke`方法會傳回[JavaScript 承諾](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)。 當用戶端會收到錯誤與處理常式附加至承諾使用`catch`，它已叫用，並傳遞為 JavaScript`Error`物件。
 
-[!code-javascript[Error](hubs/sample/chat.js?range=20)]
-[!code-javascript[Error](hubs/sample/chat.js?range=16-18)]
+[!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=22)]
 
 ## <a name="related-resources"></a>相關資源
 

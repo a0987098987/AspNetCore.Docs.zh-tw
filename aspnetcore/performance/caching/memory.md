@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: c2eae83219e8995a614b2933b1290d061f1b7869
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a1ceb6c577c634aae7ee9c327e8e5b33e973912d
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -26,11 +26,11 @@ ms.lasthandoff: 03/22/2018
 
 快取可大幅改善的效能和延展性的應用程式藉由減少產生內容所需的工作。 快取就可以最適合不常變更的資料。 快取會建立一份可以傳回大部分的資料較快，從原始來源。 您應該撰寫並測試您的應用程式永遠不會取決於快取的資料。
 
-ASP.NET Core 支援數個不同的快取。 最簡單的快取根據[IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache)，代表儲存在 web 伺服器的記憶體中快取。 在多部伺服器的伺服器陣列執行的應用程式應該確保使用記憶體中快取時，會自黏工作階段。 自黏工作階段會確保後續所有用戶端的要求移到相同的伺服器。 例如，Azure Web 應用程式使用[應用程式要求路由](https://www.iis.net/learn/extensions/planning-for-arr)(ARR) 會將所有的後續要求路由至相同的伺服器。
+ASP.NET Core 支援數個不同的快取。 最簡單的快取根據[IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)，代表儲存在 web 伺服器的記憶體中快取。 在多部伺服器的伺服器陣列執行的應用程式應該確保使用記憶體中快取時，會自黏工作階段。 自黏工作階段會確保後續所有用戶端的要求移到相同的伺服器。 例如，Azure Web 應用程式使用[應用程式要求路由](https://www.iis.net/learn/extensions/planning-for-arr)(ARR) 會將所有的後續要求路由至相同的伺服器。
 
 Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.md)以避免快取一致性問題。 對於某些應用程式中，分散式快取可以支援更高範圍外比記憶體中快取。 使用分散式快取卸載到外部處理序的快取記憶體。 
 
-`IMemoryCache`快取將會收回快取記憶體不足壓力下的項目，除非[快取優先順序](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheitempriority)設`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整與快取收回項目記憶體不足壓力下的優先順序。
+`IMemoryCache`快取將會收回快取記憶體不足壓力下的項目，除非[快取優先順序](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority)設`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整與快取收回項目記憶體不足壓力下的優先順序。
 
 記憶體中快取可以儲存任何物件。分散式快取介面僅限於`byte[]`。
 
@@ -58,15 +58,15 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 ![具有兩個不同的時間顯示的索引檢視](memory/_static/time.png)
 
-下列程式碼會使用[GetOrCreate](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)和[GetOrCreateAsync](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。 
+下列程式碼會使用[GetOrCreate](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)和[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)快取資料。 
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet2&highlight=3-7,14-19)]
 
-下列程式碼會呼叫[取得](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_)來擷取快取的時間：
+下列程式碼會呼叫[取得](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_)來擷取快取的時間：
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-請參閱[IMemoryCache 方法](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache)和[CacheExtensions 方法](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions)的快取方法的描述。
+請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)和[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)的快取方法的描述。
 
 ## <a name="using-memorycacheentryoptions"></a>使用 MemoryCacheEntryOptions
 
@@ -75,7 +75,7 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 - 設定絕對到期時間。 這是可以快取之項目的時間上限，並防止持續更新變動到期後變成過時的項目。
 - 設定滑動期限。 要求存取此快取的項目會重設滑動到期時鐘。
 - 若要設定快取優先權`CacheItemPriority.NeverRemove`。 
-- 設定[PostEvictionDelegate](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.postevictiondelegate) ，將會在從快取收回項目之後呼叫。 回呼的程式碼快取中移除的項目與另一個執行緒上執行。
+- 設定[PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) ，將會在從快取收回項目之後呼叫。 回呼的程式碼快取中移除的項目與另一個執行緒上執行。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-20)]
 

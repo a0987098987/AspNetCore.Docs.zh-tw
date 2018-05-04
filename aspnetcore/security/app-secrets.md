@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 166111696a9c4244ede44fca8878dd3725bb3099
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0a04f5762a35426f342b58b8b60288c66c057ae7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 04/06/2018
 
 本文示範如何使用密碼管理員工具在開發程式碼保持機密資料。 最重要的一點是，始終不該將密碼或其他機密資料儲存在原始程式碼中，也不該在開發和測試模式中使用實際執行的密碼。 您可以改用[組態](xref:fundamentals/configuration/index)系統來讀取這些環境變數中的值，或那些使用密碼管理員工具所儲存的值。 密碼管理員工具有助於避免將機密資料簽入原始檔控制。 而[組態](xref:fundamentals/configuration/index)系統則能
 
-密碼管理員工具只能用於開發。 您可以使用[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 組態提供者來保護 Azure 測試與正式環境的機密資料。 如需詳細資訊請參閱[Azure Key Vault 組態提供者](https://docs.microsoft.com/aspnet/core/security/key-vault-configuration)。
+密碼管理員工具只能用於開發。 您可以使用[Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 組態提供者來保護 Azure 測試與正式環境的機密資料。 如需詳細資訊請參閱[Azure Key Vault 組態提供者](xref:security/key-vault-configuration)。
 
 ## <a name="environment-variables"></a>環境變數
 
@@ -42,15 +42,15 @@ ms.lasthandoff: 04/06/2018
 ## <a name="installing-the-secret-manager-tool"></a>安裝密碼管理員工具
 
 #### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
-以滑鼠右鍵按一下方案總管 中的專案，然後選取**編輯\<project_name\>.csproj**從內容功能表。 將反白顯示的行加入*.csproj*檔案，並將儲存到還原相關聯的 NuGet 套件：
+以滑鼠右鍵按一下方案總管 中的專案，然後選取**編輯\<project_name\>.csproj**從內容功能表。 將反白顯示的行加入 *.csproj*檔案，並將儲存到還原相關聯的 NuGet 套件：
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
-以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此動作將於*.csproj*檔案中，將新的`UserSecretsId`節點新增至`PropertyGroup`，如下列範例中反白處所示：
+以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 此動作將於 *.csproj*檔案中，將新的`UserSecretsId`節點新增至`PropertyGroup`，如下列範例中反白處所示：
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
-儲存已修改*.csproj*檔案也會開啟`secrets.json`文字編輯器中的檔案。 使用以下列程式碼取代`secrets.json`的內容：
+儲存已修改 *.csproj*檔案也會開啟`secrets.json`文字編輯器中的檔案。 使用以下列程式碼取代`secrets.json`的內容：
 
 ```json
 {
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/06/2018
 ```
 
 #### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
-新增`Microsoft.Extensions.SecretManager.Tools`至*.csproj*檔，然後執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。 若要安裝命令列使用的密碼管理員工具，您可以使用相同的步驟。
+新增`Microsoft.Extensions.SecretManager.Tools`至 *.csproj*檔，然後執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。 若要安裝命令列使用的密碼管理員工具，您可以使用相同的步驟。
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
@@ -72,11 +72,11 @@ dotnet user-secrets -h
 密碼管理員工具會顯示使用方式、選項和命令的說明。
 
 > [!NOTE]
-> 您必須在相同的目錄*.csproj*檔案來執行工具中定義*.csproj*檔案的`DotNetCliToolReference`節點。
+> 您必須在相同的目錄 *.csproj*檔案來執行工具中定義 *.csproj*檔案的`DotNetCliToolReference`節點。
 
-密碼管理員工具會依據儲存在您的使用者設定檔中的專案特定的組態設定。 若要使用使用者密碼，必須指定專案`UserSecretsId`值在其*.csproj*檔案。 值`UserSecretsId`是任意的但通常獨有的專案。 開發人員通常會產生的 GUID `UserSecretsId`。
+密碼管理員工具會依據儲存在您的使用者設定檔中的專案特定的組態設定。 若要使用使用者密碼，必須指定專案`UserSecretsId`值在其 *.csproj*檔案。 值`UserSecretsId`是任意的但通常獨有的專案。 開發人員通常會產生的 GUID `UserSecretsId`。
 
-新增`UserSecretsId`中的專案*.csproj*檔案：
+新增`UserSecretsId`中的專案 *.csproj*檔案：
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
@@ -86,7 +86,7 @@ dotnet user-secrets -h
 dotnet user-secrets set MySecret ValueOfMySecret
 ```
 
-您可以執行密碼管理員工具，從其他目錄，但您必須使用`--project`傳遞的路徑中的選項*.csproj*檔案：
+您可以執行密碼管理員工具，從其他目錄，但您必須使用`--project`傳遞的路徑中的選項 *.csproj*檔案：
 
 ```console
 dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\webapp1
@@ -117,7 +117,7 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 * macOS: `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 
-上述路經中，其`userSecretsId`值是來自*.csproj*檔案。
+上述路經中，其`userSecretsId`值是來自 *.csproj*檔案。
 
 您不應撰寫程式碼所依賴這些實作細節，可能會變更位置或使用密碼管理員 工具中，儲存的資料格式。 例如，密碼值是目前*未*加密，但未來可能會。
 

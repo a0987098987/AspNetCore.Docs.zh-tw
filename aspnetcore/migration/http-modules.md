@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/http-modules
-ms.openlocfilehash: e02f3a75269e5e4a4794d1979d3a5add21fe38be
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: cbdef871ffc3269e3118d23ed20306a71b9df030
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>移轉 ASP.NET Core 中介軟體的 HTTP 處理常式和模組
 
 由[Matt Perdeck](https://www.linkedin.com/in/mattperdeck)
 
-本文將說明如何移轉現有的 ASP.NET [HTTP 模組和處理常式 system.webserver](https://docs.microsoft.com/iis/configuration/system.webserver/)到 ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)。
+本文將說明如何移轉現有的 ASP.NET [HTTP 模組和處理常式 system.webserver](/iis/configuration/system.webserver/)到 ASP.NET Core[中介軟體](xref:fundamentals/middleware/index)。
 
 ## <a name="modules-and-handlers-revisited"></a>模組和處理常式進行重新瀏覽
 
@@ -29,15 +29,15 @@ ms.lasthandoff: 04/06/2018
 
 **處理常式包括：**
 
-   * 類別可實作[IHttpHandler](https://docs.microsoft.com/dotnet/api/system.web.ihttphandler)
+   * 類別可實作[IHttpHandler](/dotnet/api/system.web.ihttphandler)
 
-   * 用來處理要求，以指定的檔案名稱或副檔名，例如*.report*
+   * 用來處理要求，以指定的檔案名稱或副檔名，例如 *.report*
 
-   * [設定](https://docs.microsoft.com//iis/configuration/system.webserver/handlers/)中*Web.config*
+   * [設定](/iis/configuration/system.webserver/handlers/)中*Web.config*
 
 **模組為：**
 
-   * 類別可實作[IHttpModule](https://docs.microsoft.com/dotnet/api/system.web.ihttpmodule)
+   * 類別可實作[IHttpModule](/dotnet/api/system.web.ihttpmodule)
 
    * 叫用每個要求
 
@@ -45,11 +45,11 @@ ms.lasthandoff: 04/06/2018
 
    * 無法加入至 HTTP 回應，或建立自己
 
-   * [設定](https://docs.microsoft.com//iis/configuration/system.webserver/modules/)中*Web.config*
+   * [設定](/iis/configuration/system.webserver/modules/)中*Web.config*
 
 **模組處理內送要求的順序取決於：**
 
-   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](https://docs.microsoft.com/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
+   1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的系列事件： [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)， [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一或多個事件的處理常式。
 
    2. 相同事件中所設定的順序*Web.config*。
 
@@ -243,7 +243,7 @@ HTTP 處理常式看起來像這樣：
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext` 已經大幅變更 ASP.NET Core 中。 本節說明如何將最常用的屬性轉譯[System.Web.HttpContext](https://docs.microsoft.com/dotnet/api/system.web.httpcontext)新`Microsoft.AspNetCore.Http.HttpContext`。
+`HttpContext` 已經大幅變更 ASP.NET Core 中。 本節說明如何將最常用的屬性轉譯[System.Web.HttpContext](/dotnet/api/system.web.httpcontext)新`Microsoft.AspNetCore.Http.HttpContext`。
 
 ### <a name="httpcontext"></a>HttpContext
 
@@ -283,7 +283,7 @@ public async Task Invoke(HttpContext context)
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
-**HttpContext.Request.RequestContext.RouteData** translates to:
+**HttpContext.Request.RequestContext.RouteData**會轉譯成：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Route)]
 
@@ -295,7 +295,7 @@ public async Task Invoke(HttpContext context)
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Agent)]
 
-**HttpContext.Request.UrlReferrer** translates to:
+**HttpContext.Request.UrlReferrer**會轉譯成：
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Referrer)]
 

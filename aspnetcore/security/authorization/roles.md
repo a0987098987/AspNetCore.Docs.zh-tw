@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/roles
-ms.openlocfilehash: 7bc7ed35ef0496e855b024f92c915eb85b55511b
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: f1e7209cae1e2a58ad536547d655dd744ca0d3f7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>在 ASP.NET Core 角色為基礎的授權
 
 <a name="security-authorization-role-based"></a>
 
-建立身分識別時它可能屬於一個或多個角色。 比方說，Tracy 可能屬於系統管理員和使用者角色，儘管 Scott 可能只屬於使用者角色。 如何建立和管理這些角色取決於備份存放區的授權程序。 角色會公開給開發人員透過[IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole)方法[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)類別。
+建立身分識別時它可能屬於一個或多個角色。 比方說，Tracy 可能屬於系統管理員和使用者角色，儘管 Scott 可能只屬於使用者角色。 如何建立和管理這些角色取決於備份存放區的授權程序。 角色會公開給開發人員透過[IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole)方法[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal)類別。
 
 ## <a name="adding-role-checks"></a>加入角色檢查
 

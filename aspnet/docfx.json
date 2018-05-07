@@ -37,6 +37,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "bilingual_type": "hover over",
       "breadcrumb_path": "/aspnet/breadcrumb/toc.json",
       "_navPath": "/foo",
       "_navRel": "/foo",

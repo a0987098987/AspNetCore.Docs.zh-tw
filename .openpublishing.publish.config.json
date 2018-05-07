@@ -19,16 +19,17 @@
     {
       "docset_name": "aspnet-core-conceptual",
       "build_source_folder": "aspnetcore",
-      "build_output_subfolder": "aspnet/core",
+      "build_output_subfolder": "aspnetcore",
       "locale": "zh-tw",
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
         "RestApi": "Content"
       },
       "template_folder": "_themes",
-      "version": 0
+      "version": 0,
+      "moniker_ranges": [">= aspnetcore-1.0"]
     }
   ],
   "notification_subscribers": [

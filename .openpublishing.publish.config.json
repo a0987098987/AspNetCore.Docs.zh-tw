@@ -31,7 +31,8 @@
         "RestApi": "Content"
       },
       "template_folder": "_themes",
-      "version": 0
+      "version": 0,
+      "moniker_ranges": [">= aspnetcore-1.0"]
     }
   ],
   "notification_subscribers": [],

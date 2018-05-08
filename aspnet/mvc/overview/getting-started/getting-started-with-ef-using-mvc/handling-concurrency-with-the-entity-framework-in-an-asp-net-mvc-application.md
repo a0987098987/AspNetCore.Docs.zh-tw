@@ -47,7 +47,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="optimistic-concurrency"></a>開放式並行存取
 
-封閉式並行存取另一種是*開放式並行存取*。 開放式並行存取表示允許並行衝突發生，然後在衝突發生時適當的做出反應。 例如，John 會執行 部門編輯頁面上，變更**預算**$0.00 從 $350,000.00 英文部門的數量。
+封閉式並行存取另一種是*開放式並行存取*。 開放式並行存取表示允許並行衝突發生，然後在衝突發生時適當的做出反應。 例如，John 在部門編輯頁面上，將英文部門的**預算**從$350,000.00 變更為$0.00。
 
 ![Changing_English_dept_budget_to_100000](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 

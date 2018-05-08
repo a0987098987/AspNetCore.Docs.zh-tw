@@ -132,6 +132,7 @@
 ### [HTTP.sys](fundamentals/servers/httpsys.md)
 ## [全球化和當地語系化](xref:fundamentals/localization)
 ### [使用 Orchard Core 設定可攜式物件當地語系化](xref:fundamentals/portable-object-localization)
+## [初始化 HTTP 要求](xref:fundamentals/http-requests)
 ## [要求功能](fundamentals/request-features.md)
 ## [使用託管服務的背景工作](xref:fundamentals/hosted-services)
 ## [Primitives](xref:fundamentals/primitives/index)
@@ -143,9 +144,11 @@
 ## [在 ASP.NET Core 和 ASP.NET 之間選擇](choose-aspnet-framework.md)
 
 # [Razor 頁面](xref:mvc/razor-pages/index)
-## [路由和應用程式的慣例功能](xref:mvc/razor-pages/razor-pages-convention-features)
 ## [Razor 頁面的篩選條件方法](xref:mvc/razor-pages/filter)
+## [建立 Razor 類別庫](xref:mvc/razor-pages/ui-class)
+## [路由和應用程式的慣例功能](xref:mvc/razor-pages/razor-pages-convention-features)
 ## [Razor SDK](xref:mvc/razor-pages/sdk)
+
 
 # [MVC](mvc/overview.md)
 ## [模型繫結](mvc/models/model-binding.md)
@@ -355,7 +358,7 @@
 ## [ASP.NET Core 1.x 至 2.0](xref:migration/1x-to-2x/index)
 ### [驗證和身分識別](xref:migration/1x-to-2x/identity-2x)
 
-# [API 參考](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0)
+# [API 參考](/dotnet/api/?view=aspnetcore-2.0)
 
 # [2.0 版本資訊](aspnetcore-2.0.md)
 ## [1.1 版本資訊](aspnetcore-1.1.md)

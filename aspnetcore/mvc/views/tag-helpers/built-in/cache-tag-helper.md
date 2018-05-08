@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 中的快取標籤協助程式"
+title: ASP.NET Core MVC 中的快取標籤協助程式
 author: pkellner
-description: "示範如何使用快取標籤協助程式"
+description: 示範如何使用快取標籤協助程式
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 51811ee1669a24a0fc4ce9bc67e782b61bff655c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f19a989c9bdfddea7609c5571cdd49de29e036b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -60,10 +60,9 @@ Razor 檢視引擎將預設的 `expires-after` 設定為 20 分鐘。
 
 ### <a name="expires-on"></a>expires-on 
 
-| 屬性類型    | 範例值     |
-|----------------   |----------------   |
-| DateTimeOffset    | "@new DateTime(2025,1,29,17,02,0)"    |
-
+| 屬性類型 |           範例值            |
+|----------------|------------------------------------|
+| DateTimeOffset | "@new DateTime(2025,1,29,17,02,0)" |
 
 設定絕對到期日。 下列範例會快取 2025 年 1 月 29 日下午 5:02 以前的快取標籤協助程式內容。
 
@@ -79,10 +78,9 @@ Razor 檢視引擎將預設的 `expires-after` 設定為 20 分鐘。
 
 ### <a name="expires-after"></a>expires-after
 
-| 屬性類型    | 範例值     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
-
+| 屬性類型 |        範例值         |
+|----------------|------------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(120)" |
 
 設定從第一個要求時間到快取內容的時間長度。 
 
@@ -98,10 +96,9 @@ Razor 檢視引擎將預設的 `expires-after` 設定為 20 分鐘。
 
 ### <a name="expires-sliding"></a>expires-sliding
 
-| 屬性類型    | 範例值     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
-
+| 屬性類型 |        範例值        |
+|----------------|-----------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(60)" |
 
 設定快取項目多久未被存取時應該撤銷。
 
@@ -169,7 +166,7 @@ routes.MapRoute(
     name: "default",
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
-  
+
 *Index.cshtml*
 
 ```cshtml
@@ -224,10 +221,9 @@ routes.MapRoute(
 
 ### <a name="vary-by"></a>vary-by
 
-| 屬性類型    | 範例值                |
-|----------------   |----------------               |
-| String             | "@Model"                 |
-
+| 屬性類型 | 範例值 |
+|----------------|----------------|
+|     String     |    "@Model"    |
 
 可自訂要快取哪些資料。 當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。 通常會對此屬性指派模型值的字串串連。  實際上，這表示更新任何串連值都會使快取失效。
 
@@ -283,5 +279,5 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [記憶體內部快取](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [身分識別簡介](xref:security/authentication/identity)

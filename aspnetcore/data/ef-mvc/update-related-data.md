@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 4085ca9340291f6ab594285360f3b65738699098
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2501f4c4abdadd47b4910909205a5c798f1b938f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>更新相關資料 - EF Core 與 ASP.NET Core MVC 教學課程 (7/10)
+# <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
 
 在先前的教學課程中，您顯示了相關資料。在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 
@@ -35,27 +35,27 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *CoursesController.cs* 中，刪除四個 Create 及 Edit 方法，並以下列程式碼取代：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreatePost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreatePost)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditPost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditPost)]
 
 在 `Edit` HttpPost 方法後，建立一個新的方法，該方法會將部門資訊載入下拉式清單。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_Departments)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_Departments)]
 
 `PopulateDepartmentsDropDownList` 方法會取得依照名稱排序的所有部門清單，為下拉式清單建立 `SelectList` 集合，然後將集合傳遞給位於 `ViewBag` 中的檢視。 方法接受選擇性的 `selectedDepartment` 參數，可允許呼叫程式碼在呈現下拉式清單時指定選取的項目。 檢視會將名稱 "DepartmentID" 傳遞到 `<select>` 標籤協助程式，協助程式接著便會知道要在 `ViewBag` 物件中尋找一個名為 "DepartmentID" 的 `SelectList`。
 
 HttpGet `Create` 方法會呼叫 `PopulateDepartmentsDropDownList` 方法，而不設定選取項目，因為新課程所屬的部門還未建立：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
 
 HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別碼來設定選取項目：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=15&name=snippet_EditGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=15&name=snippet_EditGet)]
 
 `Create` 和 `Edit` 的 HttpPost 方法都同時包含了在錯誤之後重新顯示頁面時設定選取項目的程式碼。 這可確保當頁面重新顯示以顯示錯誤訊息時，任何已選取的部門都會維持該選取狀態。
 
@@ -63,27 +63,27 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 若要最佳化 Course [詳細資料] 和 [刪除] 頁面的效能，請在 `Details` 和 HttpGet `Delete` 方法中新增 `AsNoTracking` 呼叫。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_DeleteGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_DeleteGet)]
 
 ### <a name="modify-the-course-views"></a>修改 Course 檢視
 
 在 *Views/Courses/Create.cshtml* 中，將一個「選取部門」選項新增至 [部門] 下拉式清單，將標題從 **DepartmentID** 變更為 **Department**，然後新增一個驗證訊息。
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-html[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
 在 *Views/Courses/Edit.cshtml* 中，為 [部門] 欄位進行您剛剛為 *Create.cshtml* 進行的相同變更。
 
 同樣的，在 *Views/Courses/Edit.cshtml* 中，在 [標題] 欄位之前新增一個課程號碼欄位。 由於課程號碼是主索引鍵，雖然會顯示，但您無法變更它。
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
+[!code-html[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
 在 [編輯] 檢視中已有一個針對課程號碼的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式無法消除隱藏欄位的必要，因為它無法讓課程號碼包含在使用者按一下位於 [編輯] 頁面上的 [儲存] 時以 Post 方式提交的資料中。
 
 在 *Views/Courses/Delete.cshtml* 中，在頂端新增一個課程號碼欄位，並將部門識別碼變更為部門名稱。
 
-[!code-html[Main](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
+[!code-html[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
 在 *Views/Courses/Details.cshtml* 中，進行您方才對 *Delete.cshtml* 進行的相同變更。
 
@@ -115,11 +115,11 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *InstructorsController.cs* 中，變更 HttpGet `Edit` 方法中的程式碼，使其載入 Instructor 實體的 `OfficeAssignment` 導覽屬性，並呼叫 `AsNoTracking`：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
 
 使用下列程式碼取代 HttpPost `Edit` 方法來處理辦公室指派更新：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
 
 程式碼會執行下列操作：
 
@@ -129,7 +129,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 -  使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
 
-    <!-- Snippets don't play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
+    <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
     ```csharp
     if (await TryUpdateModelAsync<Instructor>(
@@ -155,7 +155,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *Views/Instructors/Edit.cshtml* 中，在 [儲存] 按鈕前的結尾處新增一個用於編輯辦公室位置的欄位：
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
+[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
 執行應用程式，選取 [Instructor] 索引標籤，然後在講師上按一下 [編輯]。 變更 [辦公室位置]，然後按一下 [儲存]。
 
@@ -177,11 +177,11 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 在 *SchoolViewModels* 資料夾中建立 *AssignedCourseData.cs*，然後以下列程式碼取代現有的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
 在 *InstructorsController.cs* 中，使用下列程式碼取代 HttpGet `Edit` 方法。 所做的變更已醒目提示。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
 程式碼會為 `Courses` 導覽屬性新增積極式載入，然後使用 `AssignedCourseData` 檢視模型類別來呼叫新的 `PopulateAssignedCourseData` 方法以提供資訊給核取方塊陣列。
 
@@ -189,9 +189,9 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 接下來，新增當使用者按一下 [儲存] 時要執行的程式碼。 使用下列程式碼取代 `EditPost` 方法，然後新增一個方法，該方法會更新 Instructor 實體的 `Courses` 導覽屬性。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
 
 方法簽章現在已和 HttpGet `Edit` 方法不同，因此方法名稱會從 `EditPost` 變回 `Edit`。
 
@@ -199,17 +199,17 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 若沒有選取任何核取方塊，`UpdateInstructorCourses` 中的程式碼會使用空集合初始化 `CourseAssignments` 導覽屬性並傳回：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=3-7)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=3-7)]
 
 程式碼會執行迴圈，尋訪資料庫中所有的課程，並檢查每個已指派給講師的課程，以及在檢視中選取的課程。 為了協助達成有效率的搜尋，後者的兩個集合會儲存在 `HashSet` 物件中。
 
 若課程的核取方塊已被選取，但課程並未位於 `Instructor.CourseAssignments` 導覽屬性中，則課程便會新增至導覽屬性的集合中。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=14-20&name=snippet_UpdateCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=14-20&name=snippet_UpdateCourses)]
 
 若課程的核取方塊未被選取，但課程卻位於 `Instructor.CourseAssignments` 導覽屬性中，則課程便會從導覽屬性的集合中移除。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=21-29&name=snippet_UpdateCourses)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=21-29&name=snippet_UpdateCourses)]
 
 ### <a name="update-the-instructor-views"></a>更新 Instructor 檢視
 
@@ -219,7 +219,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 > [!NOTE] 
 > 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。  按 Ctrl+Z 來復原自動格式化。  這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
+[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
 此程式碼會建立一個 HTML 表格，該表格中有三個資料行。 在每個資料行中，核取方塊的後方會是由課程號碼和標題組成的標題。 所有核取方塊的名稱都是 ("selectedCourses")，會告知模型繫結器應將其視為一個群組。 每個核取方塊的 Value 屬性都會設為 `CourseID` 的值。 當頁面以 post 方式提交時，模型繫結器便會將只包含我們選取核取方塊之 `CourseID` 值的陣列傳遞到控制器。
 
@@ -238,7 +238,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 在 *InstructorsController.cs* 中，刪除 `DeleteConfirmed` 方法並在相同位置插入下列程式碼。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
 此程式碼會進行下列變更：
 
@@ -250,7 +250,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 在 *InstructosController.cs* 中，刪除 HttpGet 和 HttpPost `Create` 方法，然後在相同位置新增下列程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
 此程式碼與您在 `Edit` 方法中看到的類似，除了一開始沒有選取任何課程之外。 HttpGet `Create` 方法會呼叫 `PopulateAssignedCourseData` 方法，不是因為可能會有已選取的課程，而是為了提供空集合給檢視中的 `foreach` 迴圈 (否則檢視程式碼會擲回 Null 參考例外狀況)。
 
@@ -283,7 +283,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 在 *Views/Instructor/Create.cshtml* 中，在 [提交] 按鈕前新增一個辦公室位置文字方塊及課程核取方塊。 若為 [編輯] 頁面，請[修正 Visual Studio 於您貼上時重新格式化程式碼](#notepad)。
 
-[!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
+[!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
 執行應用程式並建立一名講師，以進行測試。 
 
@@ -295,6 +295,6 @@ public ICollection<CourseAssignment> CourseAssignments
 
 現在您已完成了操作相關資料的簡介。 在下一個教學課程中，您會了解到如何處理並行衝突。
 
->[!div class="step-by-step"]
-[上一頁](read-related-data.md)
-[下一頁](concurrency.md)  
+> [!div class="step-by-step"]
+> [上一頁](read-related-data.md)
+> [下一頁](concurrency.md)  

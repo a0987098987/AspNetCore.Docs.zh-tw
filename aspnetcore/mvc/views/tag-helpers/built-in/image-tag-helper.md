@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的影像標籤協助程式"
+title: ASP.NET Core 的影像標籤協助程式
 author: pkellner
-description: "示範如何使用影像標籤協助程式"
+description: 示範如何使用影像標籤協助程式
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,13 +9,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 75bddd01a95f3ae0b1ea19de0eb64ad3b9066319
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6aa9175f873c4ea62e0319c812e5312cd3331141
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="imagetaghelper"></a>ImageTagHelper
+# <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
 

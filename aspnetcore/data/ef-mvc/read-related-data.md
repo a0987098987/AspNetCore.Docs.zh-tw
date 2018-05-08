@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10"
+title: ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10
 author: tdykstra
-description: "在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。"
+description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 58b05587458aacad1a633a04f0359a4d2a3605a3
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 6ee4b0db5bf4d1781ce44f1aff8331680ca8686c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>讀取相關資料 - EF Core 與 ASP.NET Core MVC 教學課程 (6/10)
+# <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -65,7 +65,7 @@ Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 
 
 以下列程式碼取代 `Index` 方法，以針對傳回 Course 實體的 `IQueryable` 使用更合適的名稱 (`courses` 而不是 `schoolContext`)：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
 開啟 *Views/Courses/Index.cshtml*，並以下列程式碼取代範本程式碼。 所做的變更已醒目提示：
 
@@ -107,7 +107,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 在 *SchoolViewModels* 資料夾中建立 *InstructorIndexData.cs*，然後以下列程式碼取代現有的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="create-the-instructor-controller-and-views"></a>建立 Instructor 控制器和檢視
 
@@ -117,31 +117,31 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 開啟 *InstructorsController.cs*，並針對 ViewModels 命名空間新增 using 陳述式：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
 
 以下列程式碼取代 Index 方法，以便執行相關資料的積極式載入，並將其置於檢視模型中。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
 
 此方法可接受選擇性的路由資料 (`id`) 和查詢字串參數 (`courseID`)，以提供所選取講師和所選取課程的識別碼值。 這些參數由頁面上的**選取**超連結提供。
 
 此程式碼是從建立檢視模型的執行個體，並將其置於講師清單開始。 這個程式碼會針對 `Instructor.OfficeAssignment` 和 `Instructor.CourseAssignments` 導覽屬性指定積極式載入。 在 `CourseAssignments` 屬性內載入 `Course` 屬性，並在其中載入 `Enrollments` 和 `Department` 屬性，而在每個 `Enrollment` 實體內載入 `Student` 屬性。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
 
 由於檢視一律需要 OfficeAssignment 實體，因此在相同查詢中擷取該實體更有效率。 在網頁上選取講師時需要 Course 實體，因此只有在選取課程時的頁面顯示頻率高於未選取時，單一查詢才優於多個查詢。
 
 此程式碼會重複 `CourseAssignments` 和 `Course`，因為您需要來自 `Course` 的兩個屬性。 `ThenInclude` 呼叫的第一個字串會取得 `CourseAssignment.Course`、`Course.Enrollments` 和 `Enrollment.Student`。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
 
 此時，程式碼中的另一個 `ThenInclude` 將用於您不需要的 `Student` 導覽屬性。 但呼叫 `Include` 會使用 `Instructor`　屬性從頭開始，所以您必須再次瀏覽鏈結，這次請指定 `Course.Department` 而不是 `Course.Enrollments`。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
 
 下列程式碼會在已選取講師時執行。 選取的講師會從檢視模型的講師清單中擷取。 檢視模型的 `Courses` 屬性則使用 Course 實體從該講師的 `CourseAssignments` 導覽屬性載入。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
 
 `Where` 方法會傳回集合，但在此情況下，傳遞至該方法的準則將導致只傳回單一 Instructor 實體。 `Single` 方法會將集合轉換單一 Instructor 實體，這可讓您存取該實體的 `CourseAssignments` 屬性。 `CourseAssignments` 屬性包含 `CourseAssignment` 實體，您只想要來自該實體的相關 `Course` 實體。
 
@@ -159,7 +159,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 接下來，如果已選取課程，則會從檢視模型的課程清單中擷取選取的課程。 然後，檢視模型的 `Enrollments` 屬性會使用 Enrollment 實體從該課程的 `Enrollments` 導覽屬性載入。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
 
 ### <a name="modify-the-instructor-index-view"></a>修改 Instructor [索引] 檢視
 
@@ -231,7 +231,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 假設您預期使用者很少想要查看所選取講師和課程中的註冊項目。 在此情況下，您可能想要只在要求時才載入註冊資料。 若要查看如何執行明確式載入的範例，請以下列程式碼取代 `Index` 方法，這會移除 Enrollments 的積極式載入，並明確地載入該屬性。 程式碼變更已醒目提示。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
 新的程式碼會從擷取 Instructor 實體的程式碼中，捨棄用於註冊資料的 *ThenInclude* 方法呼叫。 如果選取了講師和課程，醒示提示的程式碼就會針對所選取的課程擷取 Enrollment 實體，並針對每個 Enrollment 擷取 Student 實體。
 

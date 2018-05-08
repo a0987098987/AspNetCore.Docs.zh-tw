@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 5e2b53a4771a97b0a4091f593720b9c0e4e345bf
-ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
+ms.openlocfilehash: 08866543d5b510b86c6af1896a9bd41ae0053ecf
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -207,6 +207,38 @@ Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 * 若找到客戶連絡人，會從客戶連絡人清單中予以移除。 資料庫隨即更新。
 * 呼叫 `RedirectToPage` 以重新導向至根索引頁 (`/Index`)。
 
+::: moniker range=">= aspnetcore-2.1"
+## <a name="manage-head-requests-with-the-onget-handler"></a>使用 OnGet 處理常式管理 HEAD 要求
+
+一般來說，HEAD 要求會建立 HEAD 處理常式並加以呼叫：
+
+```csharp
+public void OnHead()
+{
+    HttpContext.Response.Headers.Add("HandledBy", "Handled by OnHead!");
+}
+```
+
+如果沒有定義 HEAD 處理常式 (`OnHead`)，Razor 頁面會轉而呼叫 ASP.NET Core 2.1 或更新版本中的 GET 頁面處理常式 (`OnGet`)。 針對 ASP.NET Core 2.1 到 2.x 版，使用 `Startup.Configure` 的 [SetCompatibilityVersion 方法](xref:fundamentals/startup#setcompatibilityversion-for-aspnet-core-mvc)選擇加入此行為：
+
+```csharp
+services.AddMvc()
+    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+```
+
+`SetCompatibilityVersion` 實際上是將 Razor 頁面選項 `AllowMappingHeadRequestsToGetHandler` 設為 `true`。 直到 ASP.NET Core 3.0 Preview 1 或更新版本為止，都要選擇加入此行為。 每個 ASP.NET Core 的主要版本，都會採用舊版的所有修補版本行為。
+
+針對修補版本 2.1 至 2.x 的全域選擇加入行為，可藉由將 HEAD 要求對應至 GET 處理常式的應用程式組態來避免。 您可以將 `AllowMappingHeadRequestsToGetHandler` Razor 頁面選項設為 `true` 而不需呼叫 `Startup.Configure` 中的 `SetCompatibilityVersion`：
+
+```csharp
+services.AddMvc()
+    .AddRazorPagesOptions(options =>
+    {
+        options.AllowMappingHeadRequestsToGetHandler = true;
+    });
+```
+::: moniker-end
+
 <a name="xsrf"></a>
 
 ## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF 和 Razor Pages
@@ -321,7 +353,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core 公開[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)上的 [TempData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 屬性。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 當有多個要求需要資料時，`TempData` 對重新導向很有幫助。
+ASP.NET Core 公開[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)上的 [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 屬性。 這個屬性會儲存資料，直到讀取為止。 `Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。 當有多個要求需要資料時，`TempData` 對重新導向很有幫助。
 
 `[TempData]` 是 ASP.NET Core 2.0 的新屬性，在控制站和頁面都受支援。
 
@@ -364,6 +396,8 @@ public string Message { get; set; }
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?range=12-13)]
 
 使用上述程式碼，提交至 `OnPostJoinListAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinList`。 提交至 `OnPostJoinListUCAsync` 的 URL 路徑是 `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`。
+
+
 
 ## <a name="customizing-routing"></a>自訂路由
 

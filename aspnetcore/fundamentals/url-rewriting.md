@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的 URL 重寫中介軟體"
+title: ASP.NET Core 的 URL 重寫中介軟體
 author: guardrex
-description: "了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行 URL 重寫與重新導向作業。"
+description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行 URL 重寫與重新導向作業。
 manager: wpickett
 ms.author: riande
 ms.date: 08/17/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: ba4a360f2c8d6dfa45a4a7980d719b2b2cf3547a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b6465aa7b56450f43be64da19f2e2228a5d68f50
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
 由 [Luke Latham](https://github.com/guardrex) 和 [Mikael Mengistu](https://github.com/mikaelm12) 提供
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的動作。 URL 重寫會在資源位置和位址之間建立一個抽象層，讓位置和位址不那麼緊密連結。 下列幾種情況非常適合使用 URL 重寫：
 * 暫時或永久性移動/取代伺服器資源時，同時為這些資源保持穩定的定位器
@@ -51,7 +51,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 ![伺服器上的 WebAPI 服務端點已從第 1 版 (v1) 變更為第 2 版 (v2)。 用戶端在第 1 版的 /v1/api 路徑提出服務要求。 系統會將要求 URL 重寫以存取第 2 版路徑 /v2/api 的服務。 服務會將 200 (確定) 狀態碼回應給用戶端。](url-rewriting/_static/url_rewrite.png)
 
 ## <a name="url-rewriting-sample-app"></a>URL 重寫範例應用程式
-您可以使用 [URL 重寫範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)，來探索 URL 重寫中介軟體的功能。 應用程式會套用重新寫入和重新導向規則，並顯示重寫的 URL 或重新導向的 URL。
+您可以使用 [URL 重寫範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/)，來探索 URL 重寫中介軟體的功能。 應用程式會套用重新寫入和重新導向規則，並顯示重寫的 URL 或重新導向的 URL。
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>URL 重寫中介軟體的使用時機
 當您無法使用 [IIS URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite) (Windows Server)、[Apache mod_rewrite 模組](https://httpd.apache.org/docs/2.4/rewrite/) (Apache Server)、[Nginx上的 URL 重寫](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)，或者您的應用程式裝載於 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 [WebListener](xref:fundamentals/servers/weblistener)) 之上時，請使用 URL 重寫中介軟體。 建議您使用 IIS、Apache 或 Nginx 中的伺服器端 URL 重寫技術，主要是因為中介軟體不支援這些模組的完整功能，而且中介軟體的效能可能與模組效能不符。 不過，有一些伺服器模組的功能不適用於 ASP.NET Core 專案，例如 IIS Rewrite Module 規則的 `IsFile` 和 `IsDirectory` 條件約束。 在這些情況下，請改為使用中介軟體。
@@ -62,29 +62,46 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 ## <a name="extension-and-options"></a>延伸模組和選項
 若要建立 URL 重寫和重新導向規則，您可以針對每個規則的擴充方法建立 `RewriteOptions` 類別的執行個體。 依據所需的處理順序來鏈結多個規則。 系統會使用 `app.UseRewriter(options);` 將 `RewriteOptions` 新增至要求管線，並將其傳入 URL 重寫中介軟體。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1)]
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    var options = new RewriteOptions()
+        .AddRedirect("redirect-rule/(.*)", "redirected/$1")
+        .AddRewrite(@"^rewrite-rule/(\d+)/(\d+)", "rewritten?var1=$1&var2=$2", 
+            skipRemainingRules: true)
+        .AddApacheModRewrite(env.ContentRootFileProvider, "ApacheModRewrite.txt")
+        .AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml")
+        .Add(RedirectXMLRequests)
+        .Add(new RedirectImageRequests(".png", "/png-images"))
+        .Add(new RedirectImageRequests(".jpg", "/jpg-images"));
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    app.UseRewriter(options);
+}
+```
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1)]
-
----
-
+* * *
 ### <a name="url-redirect"></a>URL 重新導向
 使用 `AddRedirect` 將要求重新導向。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 (如果有的話) 會指定狀態碼。 如果您未指定狀態碼，則預設為 302 (已找到)，表示已暫時移動或取代資源。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=9)]
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=5)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .AddRedirect("redirect-rule/(.*)", "redirected/$1");
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    app.UseRewriter(options);
+}
+```
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=2)]
-
----
-
+* * *
 在啟用開發人員工具的瀏覽器中，使用 `/redirect-rule/1234/5678` 路徑提出範例應用程式的要求。 Regex 會比對 `redirect-rule/(.*)` 上的要求路徑，並會將路徑取代為 `/redirected/1234/5678`。 系統會將重新導向 URL 與 302 (已找到) 狀態碼傳回給用戶端。 瀏覽器在重新導向 URL 處提出新要求，該 URL 也會顯示在瀏覽器的網址列中。 由於範例應用程式中的任何規則都不符合重新導向 URL，因此第二個要求會收到應用程式的 200 (確定) 回應，且回應主體會顯示重新導向 URL。 「重新導向」URL 時，即需往返伺服器。
 
 > [!WARNING]
@@ -101,13 +118,28 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 <a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>將 URL 重新導向至安全端點
 使用 `AddRedirectToHttps` 將 HTTP 要求重新導向至使用 HTTPS (`https://`) 的相同主機與路徑。 如果未提供狀態碼，中介軟體會預設為 302 (已找到)。 如果未提供連接埠，中介軟體會預設為 `null`；這表示通訊協定變更為 `https://` 且用戶端會存取連接埠 443 上的資源。 此範例示範如何將狀態碼設為 301 (已永久移動)，並將連接埠變更為 5001。
-```csharp
-var options = new RewriteOptions()
-    .AddRedirectToHttps(301, 5001);
 
-app.UseRewriter(options);
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .AddRedirectToHttps(301, 5001);
+
+    app.UseRewriter(options);
+}
 ```
+
 使用 `AddRedirectToHttpsPermanent` 將不安全的要求重新導向至使用安全 HTTPS 通訊協定 (連接埠 443 上的 `https://`) 的相同主機與路徑。 中介軟體會將狀態碼設定為 301 (已永久移動)。
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .AddRedirectToHttpsPermanent();
+
+    app.UseRewriter(options);
+}
+```
 
 範例應用程式可以示範如何使用 `AddRedirectToHttps` 或 `AddRedirectToHttpsPermanent`。 將擴充方法新增至 `RewriteOptions`。 在任何 URL 位置，向應用程式提出不安全的要求。 關閉瀏覽器自我簽署憑證不受信任的安全性警告。
 
@@ -122,16 +154,22 @@ app.UseRewriter(options);
 ### <a name="url-rewrite"></a>URL 重寫
 使用 `AddRewrite` 來建立 URL 重寫的規則。 第一個參數會包含您的 Regex，以比對傳入的 URL 路徑。 第二個參數是取代字串。 第三個參數 `skipRemainingRules: {true|false}` 指出中介軟體是否要在套用目前規則時略過其他重寫規則。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=10-11)]
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=6)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .AddRewrite(@"^rewrite-rule/(\d+)/(\d+)", "rewritten?var1=$1&var2=$2", 
+            skipRemainingRules: true);
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    app.UseRewriter(options);
+}
+```
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=3)]
-
----
-
+* * *
 原始要求：`/rewrite-rule/1234/5678`
 
 ![瀏覽器視窗，其中的開發人員工具會追蹤要求和回應](url-rewriting/_static/add_rewrite.png)
@@ -166,23 +204,28 @@ app.UseRewriter(options);
 ### <a name="apache-modrewrite"></a>Apache mod_rewrite
 使用 `AddApacheModRewrite` 來套用 Apache mod_rewrite 規則。 請確認應用程式已部署規則檔。 如需 mod_rewrite 規則的詳細資訊和範例，請參閱 [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 系統會使用 `StreamReader` 來讀取 *ApacheModRewrite.txt* 規則檔案的規則。
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=1,7)]
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 第一個參數會採用透過[相依性插入](dependency-injection.md)所提供的 `IFileProvider`。 系統會插入 `IHostingEnvironment` 以提供 `ContentRootFileProvider`。 第二個參數是規則檔案的路徑，也就是範例應用程式中的 *ApacheModRewrite.txt*。
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=4)]
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    var options = new RewriteOptions()
+        .AddApacheModRewrite(env.ContentRootFileProvider, "ApacheModRewrite.txt");
 
----
+    app.UseRewriter(options);
+}
+```
 
+* * *
 範例應用程式會將要求從 `/apache-mod-rules-redirect/(.\*)` 重新導向至 `/redirected?id=$1`。 回應狀態碼為 302 (已找到)。
 
-[!code[Main](url-rewriting/samples/2.x/ApacheModRewrite.txt)]
+[!code[](url-rewriting/sample/ApacheModRewrite.txt)]
 
 原始要求：`/apache-mod-rules-redirect/1234`
 
@@ -221,25 +264,30 @@ app.UseRewriter(options);
 * TIME_YEAR
 
 ### <a name="iis-url-rewrite-module-rules"></a>IIS URL Rewrite Module 規則
-若要使用適用於 IIS URL Rewrite Module 的規則，請使用 `AddIISUrlRewrite`。 請確認應用程式已部署規則檔。 在 Windows Server IIS 上執行時，請不要引導中介軟體使用您的 *web.config* 檔案。 使用 IIS 時，這些規則應該儲存在 *web.config* 外部，以免與 IIS Rewrite Module 發生衝突。 如需 IIS URL Rewrite Module 規則的詳細資訊和範例，請參閱 [Using Url Rewrite Module 2.0](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0) 和 [URL Rewrite Module Configuration Reference](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)。
+若要使用適用於 IIS URL Rewrite Module 的規則，請使用 `AddIISUrlRewrite`。 請確認應用程式已部署規則檔。 在 Windows Server IIS 上執行時，請不要引導中介軟體使用您的 *web.config* 檔案。 使用 IIS 時，這些規則應該儲存在 *web.config* 外部，以免與 IIS Rewrite Module 發生衝突。 如需 IIS URL Rewrite Module 規則的詳細資訊和範例，請參閱 [Using Url Rewrite Module 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0) 和 [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 系統會使用 `StreamReader` 來讀取 *IISUrlRewrite.xml* 規則檔案的規則。
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=2,8)]
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 第一個參數會採用 `IFileProvider`，而第二個參數則是 XML 規則檔案的路徑，也就是範例應用程式中的 *IISUrlRewrite.xml*。
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=5)]
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    var options = new RewriteOptions()
+        .AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml");
 
----
+    app.UseRewriter(options);
+}
+```
 
+* * *
 範例應用程式會將要求從 `/iis-rules-rewrite/(.*)` 重寫至 `/rewritten?id=$1`。 系統會將回應與 200 (確定) 狀態碼傳送給用戶端。
 
-[!code-xml[Main](url-rewriting/samples/2.x/IISUrlRewrite.xml)]
+[!code-xml[](url-rewriting/sample/IISUrlRewrite.xml)]
 
 原始要求：`/iis-rules-rewrite/1234`
 
@@ -305,27 +353,24 @@ app.UseRewriter(options);
 | `RuleResult.EndResponse`             | 停止套用規則，並傳送回應                       |
 | `RuleResult.SkipRemainingRules`      | 停止套用規則，並將內容傳送至下一個中介軟體 |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=14)]
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=9)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .Add(RedirectXMLRequests);
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    app.UseRewriter(options);
+}
+```
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=6)]
-
----
-
+* * *
 範例應用程式會示範一個方法，以重新導向對 *.xml* 結尾之路徑的要求。 如果您要求 `/file.xml`，該要求會重新導向至 `/xmlfiles/file.xml`。 狀態碼會設定為 301 (已永久移動)。 若要重新導向，您必須明確設定回應的狀態碼；否則，會傳回 200 (確定) 狀態碼，且用戶端不會發生重新導向。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-[!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet1)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet2)]
-
----
+[!code-csharp[](url-rewriting/sample/RewriteRules.cs?name=snippet1)]
 
 原始要求：`/file.xml`
 
@@ -334,27 +379,25 @@ app.UseRewriter(options);
 ### <a name="irule-based-rule"></a>以 IRule 為基礎的規則
 使用 `Add(IRule)`，以在衍生自 `IRule` 的類別中實作您自己的規則邏輯。 相較於使用以方法為基礎的規則方法，使用 `IRule` 更有彈性。 您的衍生類別可包括建構函式，以在其中傳入 `ApplyRule` 方法的參數。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=15-16)]
 
-[!code-csharp[Main](url-rewriting/samples/2.x/Program.cs?name=snippet1&highlight=10-11)]
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    var options = new RewriteOptions()
+        .Add(new RedirectImageRequests(".png", "/png-images"))
+        .Add(new RedirectImageRequests(".jpg", "/jpg-images"));
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+    app.UseRewriter(options);
+}
+```
 
-[!code-csharp[Main](url-rewriting/samples/1.x/Startup.cs?name=snippet1&highlight=7-8)]
-
----
-
+* * *
 為了滿足若干條件，系統會檢查範例應用程式中的 `extension` 和 `newPath` 參數值。 `extension` 必須包含值，而且值必須是 *.png*、*.jpg* 或 *.gif*。 如果 `newPath` 無效，就會擲回 `ArgumentException`。 如果您要求 *image.png*，該要求會重新導向至 `/png-images/image.png`。 如果您要求 *image.jpg*，該要求會重新導向至 `/jpg-images/image.jpg`。 狀態碼會設定為 301 (已永久移動)，而 `context.Result` 會設定為停止處理規則，並傳送回應。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-[!code-csharp[Main](url-rewriting/samples/2.x/RewriteRules.cs?name=snippet2)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-[!code-csharp[Main](url-rewriting/samples/1.x/RewriteRule.cs?name=snippet1)]
-
----
+[!code-csharp[](url-rewriting/sample/RewriteRules.cs?name=snippet2)]
 
 原始要求：`/image.png`
 
@@ -377,12 +420,12 @@ app.UseRewriter(options);
 
 ## <a name="additional-resources"></a>其他資源
 * [應用程式啟動](startup.md)
-* [中介軟體](middleware.md)
+* [中介軟體](xref:fundamentals/middleware/index)
 * [.NET 中的規則運算式](/dotnet/articles/standard/base-types/regular-expressions)
 * [規則運算式語言 - 快速參考](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-* [Using Url Rewrite Module 2.0 (for IIS)](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0 (適用於 IIS))
-* [URL Rewrite Module Configuration Reference](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)
+* [Using Url Rewrite Module 2.0 (for IIS)](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0 (適用於 IIS))
+* [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)
 * [IIS URL Rewrite Module 論壇](https://forums.iis.net/1152.aspx)
 * [Keep a simple URL structure](https://support.google.com/webmasters/answer/76329?hl=en) (保持精簡的 URL 結構)
 * [10 URL Rewriting Tips and Tricks](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/) (10 個重寫 URL 的祕訣與技巧)

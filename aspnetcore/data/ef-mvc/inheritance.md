@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 繼承 - 9/10"
+title: ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 author: tdykstra
-description: "本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。"
+description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 985cc38b10ef830b8274e40ad5f7050157fd4d86
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 25d4292e325e208ee08f4a7bb8d06580809f9e40
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>繼承 - EF Core 與 ASP.NET Core MVC 教學課程 (9/10)
+# <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -60,23 +60,23 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 在 Models 資料夾中，建立 Person.cs，並以下列程式碼取代範本程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/Person.cs)]
+[!code-csharp[](intro/samples/cu/Models/Person.cs)]
 
 ## <a name="make-student-and-instructor-classes-inherit-from-person"></a>使 Student 和 Instructor 類別繼承自 Person 類別
 
 在 *Instructor.cs* 中，從 Person 類別衍生 Instructor 類別，並移除索引鍵和名稱欄位。 程式碼看起來應該如下列範例所示：
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
 在 *Student.cs* 中進行相同的變更。
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
 ## <a name="add-the-person-entity-type-to-the-data-model"></a>將 Person 實體類型新增至資料模型
 
 將 Person 實體類型新增至 *SchoolContext.cs*。 新增的行已醒目提示。
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
 這就是 Entity Framework 為了設定單表繼承而必須執行的所有工作。 如您所見，當資料庫更新時，會有一個 Person 資料表來替代 Student 和 Instructor 資料表。
 
@@ -92,7 +92,7 @@ dotnet ef migrations add Inheritance
 
 開啟 Migrations/\<時間戳記>_Inheritance.cs，並以下列程式碼取代 `Up` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
+[!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
 此程式碼負責下列資料庫更新工作：
 
@@ -143,6 +143,6 @@ dotnet ef database update
 
 您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](https://docs.microsoft.com/ef/core/modeling/inheritance)。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
 
->[!div class="step-by-step"]
-[上一頁](concurrency.md)
-[下一頁](advanced.md)  
+> [!div class="step-by-step"]
+> [上一頁](concurrency.md)
+> [下一頁](advanced.md)  

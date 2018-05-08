@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的檔案提供者"
+title: ASP.NET Core 中的檔案提供者
 author: ardalis
-description: "了解 ASP.NET Core 如何透過使用檔案提供者，將檔案系統存取抽象化。"
+description: 了解 ASP.NET Core 如何透過使用檔案提供者，將檔案系統存取抽象化。
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/file-providers
-ms.openlocfilehash: 06197f967e111d75531e9c3bcbcbdb971cb9f99b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cdbffdadd9616fe941809d67dc2c0bbd52149561
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -50,15 +50,15 @@ IFileInfo fileInfo = provider.GetFileInfo("wwwroot/js/site.js"); // a file under
 
 若要從控制器要求提供者，請在控制器的建構函式中指定它，並將其指派給本機欄位。 請使用動作方法中的本機執行個體：
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
 
 接著，在應用程式的 `Startup` 類別中建立提供者：
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
 
 在 *Index.cshtml* 檢視中，逐一查看提供的 `IDirectoryContents`：
 
-[!code-html[Main](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
+[!code-html[](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
 
 結果：
 
@@ -68,7 +68,7 @@ IFileInfo fileInfo = provider.GetFileInfo("wwwroot/js/site.js"); // a file under
 
 `EmbeddedFileProvider` 用來存取內嵌於組件的檔案。 在 .NET Core 中，您已在 *.csproj* 檔案內使用 `<EmbeddedResource>` 項目將檔案內嵌於組件：
 
-[!code-json[Main](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
+[!code-json[](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
 
 指定要內嵌於組件的檔案時，您可以使用[萬用字元模式](#globbing-patterns)。 這些模式可用來比對一或多個檔案。
 
@@ -97,7 +97,7 @@ var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
 
 `CompositeFileProvider` 結合了 `IFileProvider` 執行個體，並公開單一介面來處理來自多個提供者的檔案。 建立 `CompositeFileProvider` 時，您可以將一或多個 `IFileProvider` 執行個體傳遞至其建構函式：
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
 
 更新範例應用程式使用 `CompositeFileProvider` (其同時包含先前設定的實體提供者和內嵌提供者) 時，會產生下列輸出：
 
@@ -109,7 +109,7 @@ var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
 
 在本文的範例中，主控台應用程式會設定為每次修改文字檔時，顯示一則訊息：
 
-[!code-csharp[Main](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
+[!code-csharp[](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
 
 儲存檔案數次之後的結果：
 

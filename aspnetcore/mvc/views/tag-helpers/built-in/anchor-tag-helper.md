@@ -1,7 +1,7 @@
 ---
-title: "錨點標籤協助程式"
+title: ASP.NET Core 中的錨點標籤協助程式
 author: pkellner
-description: "探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。"
+description: 探索 ASP.NET Core 錨點標籤協助程式屬性，以及各屬性在 HTML 錨點標籤的延伸行為中所扮演的角色。
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -10,23 +10,23 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: f3b704174c3287edda12725b7973a2464e485bac
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 31ff62b6bedb5e577a51f341c89d241d06a83ad3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="anchor-tag-helper"></a>錨點標籤協助程式
+# <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 與 [Scott Addie](https://github.com/scottaddie) 撰寫
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tag-helpers/built-in/samples/TagHelpersBuiltInAspNetCore) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 [錨點標籤協助程式](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper)藉由新增新的屬性，來增強標準 HTML 錨點 (`<a ... ></a>`) 標籤。 依照慣例，屬性名稱的開頭會加上 `asp-`。 所轉譯錨點元素的 `href` 屬性值取決於 `asp-` 屬性的值。
 
 這整份文件的範例皆使用 *SpeakerController*：
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
 `asp-` 屬性如下所列。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 
 [asp-controller](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.controller) 屬性指派用於產生 URL 的控制器。 下列標記列出所有喇叭：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspController)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspController)]
 
 產生的 HTML：
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/01/2018
 
 [asp-action](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.action) 屬性值代表所產生 `href` 屬性中包含的控制器動作名稱。 下列標記會將產生的 `href` 屬性值設為喇叭評估頁面：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAction)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
 產生的 HTML：
 
@@ -70,11 +70,11 @@ ms.lasthandoff: 02/01/2018
 
 請考慮下列控制器動作：
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
 使用 *Startup.Configure* 中定義的預設路由範本：
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
 MVC 檢視會使用動作提供的模型，如下所示：
 
@@ -122,11 +122,11 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-route](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.route) 屬性用於建立直接連結至具名路由的 URL。 使用[路由屬性](xref:mvc/controllers/routing#attribute-routing)，路由可以如 `SpeakerController` 中所示命名並用於其 `Evaluations` 動作：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=22-24)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=22-24)]
 
 在下列標記中，`asp-route` 屬性參考了具名路由：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspRoute)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
 錨點標記協助程式會使用 URL */Speaker/Evaluations*，直接對該控制器動作產生路由。 產生的 HTML：
 
@@ -142,7 +142,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 在下列範例中，字典會經過初始化並傳遞至 Razor 檢視。 或者，您也可以使用自己的模型來傳遞資料。
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
 上述程式碼會產生下列 HTML：
 
@@ -152,7 +152,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 `asp-all-route-data` 字典已經過扁平化，以產生符合多載 `Evaluations` 動作之需求的查詢字串。
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=26-30)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=26-30)]
 
 若字典中有任何機碼符合路由參數，這些值在路由中會受到適當地取代。 其他不相符的值則產生作為要求參數。
 
@@ -160,7 +160,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-fragment](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.fragment) 屬性定義要附加至 URL 的 URL 片段。 錨點標籤協助程式會新增雜湊字元 (#)。 請考慮下列標記：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspFragment)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspFragment)]
 
 產生的 HTML：
 
@@ -189,7 +189,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 以上述目錄階層為例，要參考 *AboutBlog.cshtml* 檔案的標記即為：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspArea)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
 產生的 HTML：
 
@@ -198,13 +198,13 @@ MVC 檢視會使用動作提供的模型，如下所示：
 ```
 
 > [!TIP]
-> 若要讓區域在 MVC 應用程式中正常運作，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=5)]
+> 若要讓區域在 MVC 應用程式中正常運作，路由範本必須包含區域參考 (若其存在)。 該範本將以 *Startup.Configure* 中 `routes.MapRoute` 方法呼叫的第二個參數表示：[!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
 [asp-protocol](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.protocol) 屬性用於在您的 URL 中指定通訊協定 (例如 `https`)。 例如: 
 
-[!code-cshtml[samples/TagHelpersBuiltInAspNetCore/Views/Index.cshtml?name=snippet_AspProtocol]]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
 產生的 HTML：
 
@@ -218,7 +218,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-host](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.host) 屬性用於在您的 URL 中指定主機名稱。 例如: 
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspHost)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
 產生的 HTML：
 
@@ -232,7 +232,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 下列範例指向出席者 Razor 頁面：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPage)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPage)]
 
 產生的 HTML：
 
@@ -242,7 +242,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 `asp-page` 屬性與 `asp-route`、`asp-controller` 以及 `asp-action` 屬性互斥。 但是，`asp-page` 可以搭配 `asp-route-{value}` 使用來控制路由，如下列標記所示：
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
 
 產生的 HTML：
 
@@ -256,11 +256,11 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 請考慮下列頁面處理常式：
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
 
 頁面模型的相關標記會連結到 `OnGetProfile` 頁面處理常式。 請注意，`asp-page-handler` 屬性值中會省略頁面處理常式方法名稱的 `On<Verb>` 首碼。 如果這是非同步方法，則 `Async` 尾碼也會一併省略。
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
 
 產生的 HTML：
 

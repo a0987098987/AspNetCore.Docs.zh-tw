@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的分散式快取標籤協助程式"
+title: ASP.NET Core 中的分散式快取標籤協助程式
 author: pkellner
-description: "示範如何使用快取標籤協助程式"
+description: 示範如何使用快取標籤協助程式
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,13 +9,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: 710477732b865e2e3821102d34545bbd4e0a5919
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 929156633048b8ee68a66290f44b12026a08c8c9
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
+# <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的分散式快取標籤協助程式
 
 由 [Peter Kellner](http://peterkellner.net) 提供 
 

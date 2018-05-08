@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 並行 - 8/10"
+title: ASP.NET Core MVC 與 EF Core - 並行 - 8/10
 author: tdykstra
-description: "本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。"
+description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: c271488d4da72ba340f3617ac20c7b6da2574c69
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 99c4872719a4e46aa27eb7138eb914dc5954c219
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="handling-concurrency-conflicts---ef-core-with-aspnet-core-mvc-tutorial-8-of-10"></a>處理並行衝突 - EF Core 與 ASP.NET Core MVC 教學課程 (8/10)
+# <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC 與 EF Core - 並行 - 8/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
 
 在先前的教學課程中，您學會了如何更新資料。 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 
@@ -89,7 +89,7 @@ Jana 先按了一下 [儲存]，並且在瀏覽器返回 [索引] 頁面時看�
 
 在 *Models/Department.cs* 中，新增一個名為 RowVersion 的追蹤屬性：
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 `Timestamp` 屬性會指定此資料行會包含在傳送到資料庫之 Update 和 Delete 命令的 Where 子句中。 該屬性稱為 `Timestamp`，因為先前版本的 SQL Server 在以 SQL `rowversion` 取代之前使用了 SQL `timestamp` 資料類型。 `rowversion` 的 .NET 類型為位元組陣列。
 
@@ -120,7 +120,7 @@ Scaffold Departments 控制器和檢視，如同您先前為 Students、Courses 
 
 在  *DepartmentsController.cs* 檔案中，將四個 "FirstMidName" 變更為 "FullName" ，使部門系統管理員下拉式清單可包含講師的完整名稱，而非只有姓氏。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
 ## <a name="update-the-departments-index-view"></a>更新 Departments [索引] 檢視
 
@@ -128,7 +128,7 @@ Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該�
 
 請以下列程式碼取代 *Views/Departments/Index.cshtml* 中的程式碼。
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
+[!code-html[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
 這會將標題變更為"Departments"，刪除 RowVersion 資料行，並為系統管理員顯示完整的名稱而非只有名字。
 
@@ -136,11 +136,11 @@ Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該�
 
 在 HttpGet `Edit` 方法和 `Details` 方法中，新增 `AsNoTracking`。 在 HttpGet `Edit` 方法中，為系統管理員新增積極式載入。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
 
 以下列程式碼取代 HttpPost `Edit` 方法的現有程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
 
 程式碼開始時便會嘗試讀取要更新的部門。 若 `SingleOrDefaultAsync` 方法傳回 Null，則該部門便已遭其他使用者刪除。 在此情況下，程式碼會使用 POST 表單的值建立部門實體，使 [編輯] 頁面仍然可以重新顯示，並加上錯誤訊息。 或者，若您選擇只顯示錯誤訊息，而不重新顯示部門欄位，則您也可以不需要重新建立部門實體。
 
@@ -154,19 +154,19 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 針對該例外狀況的 catch 區塊會取得受影響的 Department 實體。該實體具有從例外物件上的 `Entries` 屬性取得的更新值。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=164)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=164)]
 
 `Entries` 集合只會有一個 `EntityEntry` 物件。  您可以使用該物件來取得由使用者輸入的新值，以及目前資料庫的值。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=165-166)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=165-166)]
 
 程式碼會為每個資料庫的值與使用者在編輯頁面上輸入的值不同的資料行新增一個自訂錯誤訊息 (為了簡化，這裡只顯示了一個欄位)。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
 最後，程式碼會將 `departmentToUpdate` 的 `RowVersion` 值設為從資料庫取得的新值。 這個新的 `RowVersion` 值會在編輯頁面重新顯示時儲存於隱藏欄位中，並且當下一次使用者按一下 [儲存] 時，只有在重新顯示 [編輯] 頁面之後發生的並行錯誤才會被捕捉到。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
 `ModelState.Remove` 陳述式是必須的，因為 `ModelState` 具有舊的 `RowVersion` 值。 在檢視中，當兩者同時存在時，欄位的 `ModelState` 值會優先於模型屬性值。
 
@@ -178,7 +178,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 * 將 [選取系統管理員] 選項新增到下拉式清單中。
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
+[!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
 ## <a name="test-concurrency-conflicts-in-the-edit-page"></a>在 [編輯] 頁面上測試並行衝突
 
@@ -208,13 +208,13 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 在 *DepartmentsController.cs* 中，以下列程式碼取代 HttpGet `Delete` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
 方法會接受一個選用的參數，該參數會指示頁面是否已在發生並行錯誤之後重新顯示。 若此旗標為 true，且指定的部門已不存在，表示該部門已遭其他使用者刪除。 在此情況下，程式碼會重新導向至索引頁面。  若此旗標為 true，但指定的部門仍然存在，表示該部門已遭其他使用者變更。 在此情況下，程式碼會使用 `ViewData` 傳送一個錯誤訊息到檢視。  
 
 以下列程式碼取代 HttpPost `Delete` 方法 (名為 `DeleteConfirmed`) 中的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeletePost&highlight=1,3,5-8,11-18)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeletePost&highlight=1,3,5-8,11-18)]
 
 在您剛剛取代的 Scaffold 程式碼中，此方法僅會接受一個記錄識別碼：
 
@@ -239,7 +239,7 @@ public async Task<IActionResult> Delete(Department department)
 
 在 *Views/Departments/Delete.cshtml* 中，以下列新增錯誤訊息欄位和 DepartmentID 及 RowVersion 屬性隱藏欄位的程式碼取代 Scaffold 程式碼。 所做的變更已醒目提示。
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
+[!code-html[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
 這會進行下列變更：
 
@@ -269,16 +269,16 @@ public async Task<IActionResult> Delete(Department department)
 
 取代 *Views/Departments/Details.cshtml* 中的程式碼以刪除 RowVersion 資料行並顯示系統管理員的完整名稱。
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
+[!code-html[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
 取代 *Views/Departments/Create.cshtml* 中的程式碼來將 [選取 ] 選項新增到下拉式清單中。
 
-[!code-html[Main](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
+[!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
 ## <a name="summary"></a>總結
 
 如此即完成了處理並行衝突的簡介。 如需如何在 EF Core 中處理並行的詳細資訊，請參閱[並行衝突](https://docs.microsoft.com/ef/core/saving/concurrency)。 下一個教學課程會顯示如何為 Instructor 和 Student 實體實作每個階層資料表的繼承。
 
->[!div class="step-by-step"]
-[上一頁](update-related-data.md)
-[下一頁](inheritance.md)  
+> [!div class="step-by-step"]
+> [上一頁](update-related-data.md)
+> [下一頁](inheritance.md)  

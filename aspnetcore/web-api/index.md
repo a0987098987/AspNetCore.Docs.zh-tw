@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: web-api/index
-ms.openlocfilehash: 017bcc1ed65b1baa92408db07201d1c7bab2849d
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: f0368258d078673ab5eab21c5ce07f2437cb8ea4
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -74,6 +74,9 @@ ASP.NET Core 2.1 引進了 `[ApiController]` 屬性來代表 Web API 控制器�
 |**[[FromQuery]](/dotnet/api/microsoft.aspnetcore.mvc.fromqueryattribute)**   | 要求查詢字串參數 |
 |**[[FromRoute]](/dotnet/api/microsoft.aspnetcore.mvc.fromrouteattribute)**   | 來自目前要求的路由資料 |
 |**[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices)** | 作為動作參數插入的要求服務 |
+
+> [!NOTE]
+> 當值可能包含 `%2f` (也就是 `/`) 時**請勿**使用 `[FromRoute]`，因為 `%2f` 不會是未逸出的 `/`。 如果值可能包含 `%2f`，請使用 `[FromQuery]`。
 
 不含 `[ApiController]` 屬性時，即會明確定義繫結來源屬性。 在下列範例中，`[FromQuery]` 屬性表示 `discontinuedOnly` 參數值是在要求 URL 查詢字串中提供：
 

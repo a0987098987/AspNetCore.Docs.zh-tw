@@ -1,20 +1,20 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10"
+title: ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
 author: tdykstra
-description: "在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。"
+description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: tdykstra
 ms.date: 03/15/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: feb4a50c9e5602064e7d493b6991485949903f47
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: d4fe6386318210a751d1248c87299d414ab563a3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="sorting-filtering-paging-and-grouping---ef-core-with-aspnet-core-mvc-tutorial-3-of-10"></a>排序、篩選、分頁和群組 - EF Core 與 ASP.NET Core MVC (3/10)
+# <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -34,7 +34,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 在 *StudentsController.cs* 中，以下列程式碼取代 `Index` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
 此程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。 查詢字串值是由 ASP.NET Core MVC 提供，作為動作方法的參數。 該參數是 "Name" 或 "Date" 的字串，後面可選擇性地接著底線和字串 "desc" 來指定遞減順序。 預設的排序次序為遞增。
 
@@ -42,7 +42,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 檢視會使用兩個 `ViewData` 項目 (NameSortParm 和 DateSortParm)，以適當的查詢字串值設定資料行標題超連結。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
 
 這些是三元陳述式。 第一個陳述式指定當 `sortOrder` 參數為 null 或是空的時，NameSortParm 應該設定為 "name_desc"；否則它應該設定為空字串。 這兩個陳述式讓檢視能夠設定資料行標題超連結，如下所示：
 
@@ -77,7 +77,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 在 *StudentsController.cs* 中，以下列程式碼取代 `Index` 方法 (變更已醒目提示)。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
 您已將 `searchString` 參數新增至 `Index` 方法。 從將新增至 [索引] 檢視的文字方塊中接收搜尋字串值。 您也已在 LINQ 陳述式中新增 where 子句，該子句只會選取其名字或姓氏包含搜尋字串的學生。 唯有當具有要搜尋的值時，才會執行新增 where 子句的陳述式。
 
@@ -116,7 +116,7 @@ http://localhost:5813/Students?SearchString=an
 
 在專案資料夾中，建立 `PaginatedList.cs`，然後以下列程式碼取代範本程式碼。
 
-[!code-csharp[Main](intro/samples/cu/PaginatedList.cs)]
+[!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
 此程式碼中的 `CreateAsync` 方法會採用頁面大小和頁面數，並會將適當的 `Skip` 和 `Take` 陳述式套用至 `IQueryable`。 在 `IQueryable` 上呼叫 `ToListAsync` 時，會傳回僅包含所要求頁面的清單。 `HasPreviousPage` 和 `HasNextPage` 屬性可用來啟用或停用 [上一頁]  和 [下一頁] 分頁按鈕。
 
@@ -126,7 +126,7 @@ http://localhost:5813/Students?SearchString=an
 
 在 *StudentsController.cs* 中，以下列程式碼取代 `Index` 方法。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
 此程式碼會將頁碼參數、目前排序次序參數和目前篩選參數新增至方法簽章。
 
@@ -213,21 +213,21 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 在新的資料夾中，新增類別檔案 *EnrollmentDateGroup.cs*，並以下列程式碼取代範本程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="modify-the-home-controller"></a>修改 Home 控制器
 
 在 *HomeController.cs* 中，將下列 using 陳述式新增在檔案頂最上方：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 
 在類別的左大括弧之後立即新增資料庫內容的類別變數，並從 ASP.NET Core DI 取得內容的執行個體：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
 以下列程式碼取代 `About` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。
 > [!NOTE] 
@@ -247,6 +247,6 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 在本教學課程中，您已了解如何執行排序、篩選、分頁和群組。 在下一個教學課程中，您將學習如何使用移轉來處理資料模型變更。
 
->[!div class="step-by-step"]
-[上一頁](crud.md)
-[下一頁](migrations.md)  
+> [!div class="step-by-step"]
+> [上一頁](crud.md)
+> [下一頁](migrations.md)  

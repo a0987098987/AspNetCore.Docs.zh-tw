@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: b74870c93ea0120e43931bb75f47bab19a6de201
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d5b74e213828d1a1f7e09810e5cc72773a821dab
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -98,6 +98,10 @@ ASP.NET Core 內含一組豐富的內建中介軟體：
 ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介軟體，您也可以自行撰寫自訂的中介軟體。
 
 如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
+
+## <a name="initiate-http-requests"></a>初始化 HTTP 要求
+
+如需使用 `IHttpClientFactory` 來存取 `HttpClient` 執行個體以發出 HTTP 要求的詳細資訊，請參閱[初始化 HTTP 要求](xref:fundamentals/http-requests)。
 
 ## <a name="environments"></a>環境
 

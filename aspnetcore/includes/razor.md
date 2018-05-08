@@ -4,4 +4,4 @@
 * 比較容易學習。
 * 涵蓋更多功能。
 
-如果您是選擇 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)版本的教學課程，請留下註解說明原因。
+如果您是選擇 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)版本的教學課程，請在[這個 GitHub 問題](https://github.com/aspnet/Docs/issues/6146) \(英文\) 中告訴我們原因。

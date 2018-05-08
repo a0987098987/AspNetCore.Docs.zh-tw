@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的檔案上傳"
+title: ASP.NET Core 的檔案上傳
 author: ardalis
-description: "如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。"
+description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。
 manager: wpickett
 ms.author: riande
 ms.date: 07/05/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 314d585c7bf7f8c95f763babe6cdf93e514ff656
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7ba4f6d9e3901c310fe9fa7a70382d9243d8b347
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳
 
@@ -47,7 +47,7 @@ ASP.NET MVC 動作支援上傳一或多個檔案，方法是針對較小的檔�
 
 ![檔案上傳表單](file-uploads/_static/upload-form.png)
 
-使用 [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile) 介面，可以透過[模型繫結](xref:mvc/models/model-binding)存取已上傳至伺服器的個別檔案。 `IFormFile` 具有下列結構：
+使用 [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) 介面，可以透過[模型繫結](xref:mvc/models/model-binding)存取已上傳至伺服器的個別檔案。 `IFormFile` 具有下列結構：
 
 ```csharp
 public interface IFormFile
@@ -71,7 +71,7 @@ public interface IFormFile
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
 會先將使用 `IFormFile` 技術所上傳的檔案緩衝至記憶體或是網頁伺服器的磁碟上，再進行處理。 在動作方法內，`IFormFile` 內容可以當成資料流形式來存取。 除了本機檔案系統之外，檔案還可以串流至 [Azure Blob 儲存體](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)或 [Entity Framework](https://docs.microsoft.com/ef/core/index)。
 
@@ -151,15 +151,15 @@ public IActionResult Index()
 
 此屬性使用 ASP.NET Core 的內建 [Antiforgery](xref:security/anti-request-forgery) 支援，來設定含要求權杖的 Cookie：
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
 
 角度會在名為 `X-XSRF-TOKEN` 的要求標頭中自動傳遞 antiforgery 權杖。 ASP.NET Core MVC 應用程式設定成在 *Startup.cs* 的其組態中參照此標頭：
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
 上述 `DisableFormValueModelBinding` 屬性是用來停用 `Upload` 動作方法的模型繫結。
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 
 因為已停用模型繫結，所以 `Upload` 動作方法不會接受參數。 它會直接使用 `ControllerBase` 的 `Request` 屬性。 `MultipartReader` 是用來讀取每個區段。 檔案會與 GUID 檔案名稱一起儲存，而索引鍵/值資料會儲存至 `KeyValueAccumulator`。 讀取所有區段之後，會使用 `KeyValueAccumulator` 的內容，將表單資料繫結至模型類型。
 
@@ -167,7 +167,7 @@ public IActionResult Index()
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
-[!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
+[!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/StreamingController.cs?name=snippet1)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -195,7 +195,7 @@ The request filtering module is configured to deny a request that exceeds the re
 </system.webServer>
 ```
 
-這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制\<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
+這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制\<requestLimits\>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
 
 ### <a name="null-reference-exception-with-iformfile"></a>IFormFile 的 Null 參考例外狀況
 

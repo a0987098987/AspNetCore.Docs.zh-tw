@@ -10,4 +10,4 @@
 
 開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：
 
-[!code-csharp[Main](code/Models/Movie.cs?highlight=2,11-12)]
+[!code-csharp[](code/Models/Movie.cs?highlight=2,11-12)]

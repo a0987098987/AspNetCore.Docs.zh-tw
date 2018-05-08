@@ -1,6 +1,6 @@
 使用下列內容取代 *Views/HelloWorld/Index.cshtml* Razor 檢視檔案的內容：
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
 
 巡覽至 `http://localhost:xxxx/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為您沒有明確指定檢視範本檔案的名稱，MVC 預設為使用 */Views/HelloWorld* 資料夾中的 *Index.cshtml* 檢視檔案。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
@@ -18,11 +18,11 @@
 
 ## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題和功能表連結
 
-在標題項目中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Mvc Movie`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
+在標題項目中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Movie App`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
 
 注意：ASP.NET Core 2.0 版略有不同。 它並未包含 `@inject ApplicationInsights` 和 `@Html.Raw(JavaScriptSnippet.FullScript)`。
 
-[!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
+[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
 >[!WARNING]
 > 我們尚未實作 `Movies` 控制器，因此如果您按一下該連結，就會收到 404 (找不到) 錯誤。
@@ -73,7 +73,7 @@
 
 儲存變更並巡覽至 `http://localhost:xxxx/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 請在瀏覽器中按 Ctrl + F5 以強制載入來自伺服器的回應)。瀏覽器標題是以我們在 *Index.cshtml* 檢視範本中設定的 `ViewData["Title"]` 和版面配置檔案中新增的額外 "- Movie App" 來建立的。
 
-同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 若要深入了解，請參閱[版面配置](../../mvc/views/layout.md)。
+同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 若要深入了解，請參閱[版面配置](xref:mvc/views/layout)。
 
 ![電影清單檢視](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
@@ -89,7 +89,7 @@
 
 返回 *HelloWorldController.cs* 檔案並變更 `Welcome` 方法，將 `Message` 和 `NumTimes` 值新增至 `ViewData` 字典。 `ViewData` 字典是動態物件，這表示您可以在其中放置任何項目；`ViewData` 物件則要在您於其中放入某個項目之後，才會有定義的屬性。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數 (`name` 和 `numTimes`) 對應至方法中的參數。 完整的 *HelloWorldController.cs* 檔案如下所示：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 `ViewData` 字典物件包含將傳遞至檢視的資料。 
 
@@ -97,7 +97,7 @@
 
 您將在 *Welcome.cshtml* 檢視範本中建立迴圈，以顯示 "Hello" `NumTimes` 次。 使用下列內容取代 *Views/HelloWorld/Welcome.cshtml* 的內容：
 
-[!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 儲存變更並瀏覽至下列 URL：
 

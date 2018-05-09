@@ -12,20 +12,17 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 44bf29e099583bf9d49f2715d3ff4f748728ad8b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9b2dc05089126fd5f4c1b0a0bd85b8a39f3041dc
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>使用 Azure Active Directory 開發的 ASP.NET 應用程式
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> Microsoft ASP.NET 工具的 Azure Active Directory 可簡化針對上主控的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證 Office 365 使用者，從您的組織，從您在內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者。 啟用 Windows Azure 驗證設定您的應用程式驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
-> 
->  本教學課程中所編寫的 Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
-
+Microsoft ASP.NET 工具的 Azure Active Directory 可簡化上裝載的 web 應用程式啟用驗證[Azure](https://www.windowsazure.com/home/features/web-sites/)。 您可以使用 Azure 驗證來驗證 Office 365 使用者，從您的組織，從您在內部部署 Active Directory 同步處理的公司帳戶或建立您自己自訂的 Azure Active Directory 網域中的使用者。 啟用 Windows Azure 驗證設定您的應用程式驗證使用者使用單一[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)租用戶。
 
 本教學課程會示範如何建立 ASP.NET 應用程式設定為使用登入[Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD)。 您也將學習如何呼叫 Graph API 來取得目前登入使用者的相關資訊及如何部署 Azure 應用程式。
 
@@ -87,7 +84,7 @@ ms.lasthandoff: 04/06/2018
     > 這個專案需要資料庫。 您必須選取其中一個現有的資料庫，或是另外新建一個。 需要資料庫，因為專案已經使用本機資料庫檔案來儲存少量驗證組態資料。 當您部署至 Azure 網站應用程式時，此資料庫未隨附部署，因此您必須選擇一個可存取位於雲端。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image11.png)
-7. 將建立專案，和您的驗證選項和 web 應用程式選項將會自動設定與專案。 此程序完成後，請執行專案在本機按**^ F5**。 您必須使用您的組織帳戶登入。 提供您稍早建立的帳戶使用者名稱和密碼，然後按一下**登入**。   
+7. 將建立專案，和您的驗證選項和 web 應用程式選項將會自動設定與專案。 此程序完成後，請執行專案在本機按 **^ F5**。 您必須使用您的組織帳戶登入。 提供您稍早建立的帳戶使用者名稱和密碼，然後按一下**登入**。   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image12.png)
 8. 之後成功登入，ASP.NET 網站會顯示您藉由顯示在頁面的右上角的使用者名稱驗證。  
@@ -107,7 +104,7 @@ ms.lasthandoff: 04/06/2018
 1. 在執行的應用程式中按一下頂端的登入的使用者名稱頁面的權限。 這會帶您前往 使用者設定檔頁面上，這可能會在首頁控制器的動作。 您會發現資料表包含您稍早建立的系統管理員帳戶相關的使用者資訊。 這項資訊會儲存在您的目錄，並會呼叫 Graph API 來載入頁面時，擷取這項資訊。   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image15.png)
-2. 返回 Visual Studio，並展開**控制器**資料夾，然後開啟**HomeController.cs**檔案。 您會看到**UserProfile()**包含擷取權杖，然後再呼叫 Graph API 的程式碼的動作。 此程式碼會複製如下： 
+2. 返回 Visual Studio，並展開**控制器**資料夾，然後開啟**HomeController.cs**檔案。 您會看到**UserProfile()** 包含擷取權杖，然後再呼叫 Graph API 的程式碼的動作。 此程式碼會複製如下： 
 
     [!code-csharp[Main](developing-aspnet-apps-with-windows-azure-active-directory/samples/sample1.cs?highlight=22)]
 
@@ -140,7 +137,7 @@ ms.lasthandoff: 04/06/2018
 ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image19.png)  
   
 
-中的程式碼取代*_layout.cshtml\\_LoginPartial.cshtml*以下列檔案：
+中的程式碼取代 *_layout.cshtml\\_LoginPartial.cshtml*以下列檔案：
 
 [!code-cshtml[Main](developing-aspnet-apps-with-windows-azure-active-directory/samples/sample2.cshtml?highlight=1-8,15-16)]
 

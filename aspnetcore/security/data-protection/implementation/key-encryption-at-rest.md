@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: 9247b141a44c958f34529e5a42a0ddc8c8893cb0
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: e5082d831dd4822fad0fb3211fe2b8c76ff967bf
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="key-encryption-at-rest-in-aspnet-core"></a>在 ASP.NET Core 待用的金鑰加密
 
@@ -64,7 +64,7 @@ sc.AddDataProtection()
 
 <a name="data-protection-implementation-key-encryption-at-rest-dpapi-ng"></a>
 
-## <a name="windows-dpapi-ng"></a>Windows DPAPI-NG
+## <a name="windows-dpapi-ng"></a>Windows DPAPI NG
 
 *這項機制是僅適用於 Windows 8 / Windows Server 2012 及更新版本。*
 

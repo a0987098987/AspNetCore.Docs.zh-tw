@@ -9,52 +9,49 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/identity
-ms.openlocfilehash: 320f5e079316114832e639d62c780a0639df0c61
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2a80274e9056b41e370f199c7d41865db5fcedd7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core"></a>將驗證和身分識別移轉至 ASP.NET Core
 
-<a name="migration-identity"></a>
-
 作者：[Steve Smith](https://ardalis.com/)
 
-在舊版文章我們[從 ASP.NET MVC 專案的組態移轉到 ASP.NET Core MVC](configuration.md)。 在本文中，我們可以移轉的註冊、 登入和使用者管理功能。
+在先前的文章中，我們[從 ASP.NET MVC 專案的組態移轉到 ASP.NET Core MVC](xref:migration/configuration)。 在本文中，我們可以移轉的註冊、 登入和使用者管理功能。
 
 ## <a name="configure-identity-and-membership"></a>設定身分識別與成員資格
 
-在 ASP.NET MVC 中，驗證和身分識別的功能是使用 ASP.NET Identity Startup.Auth.cs 和 IdentityConfig.cs，位於 App_Start 資料夾中所設定的。 在 ASP.NET Core MVC 中，在設定這些功能*Startup.cs*。
+在 ASP.NET MVC 中，驗證和身分識別的功能使用設定在 ASP.NET Identity *Startup.Auth.cs*和*IdentityConfig.cs*，位於*App_Start*資料夾。 在 ASP.NET Core MVC 中，在設定這些功能*Startup.cs*。
 
 安裝`Microsoft.AspNetCore.Identity.EntityFrameworkCore`和`Microsoft.AspNetCore.Authentication.Cookies`NuGet 封裝。
 
-然後，開啟 Startup.cs 和 update`ConfigureServices()`使用 Entity Framework 和身分識別服務的方法：
+然後，開啟*Startup.cs*並更新`Startup.ConfigureServices`使用 Entity Framework 和身分識別服務的方法：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-  // Add EF services to the services container.
-  services.AddEntityFramework(Configuration)
-    .AddSqlServer()
-    .AddDbContext<ApplicationDbContext>();
+    // Add EF services to the services container.
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-  // Add Identity services to the services container.
-  services.AddIdentity<ApplicationUser, IdentityRole>(Configuration)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
 
-  services.AddMvc();
+     services.AddMvc();
 }
 ```
 
-此時，有兩種類型，尚未您尚未從 ASP.NET MVC 專案移轉上述程式碼中參考：`ApplicationDbContext`和`ApplicationUser`。 建立新*模型*資料夾中 ASP.NET Core 專案，然後將兩個類別加入至其對應至這些型別。 您可以找到 ASP.NET MVC 中的這些類別的版本`/Models/IdentityModels.cs`，但因為這是更清楚，我們將使用每個類別已移轉的專案中的一個檔案。
+此時，有兩種類型，尚未您尚未從 ASP.NET MVC 專案移轉上述程式碼中參考：`ApplicationDbContext`和`ApplicationUser`。 建立新*模型*資料夾中 ASP.NET Core 專案，然後將兩個類別加入至其對應至這些型別。 您可以找到 ASP.NET MVC 中的這些類別的版本 */Models/IdentityModels.cs*，但因為這是更清楚，我們將使用每個類別已移轉的專案中的一個檔案。
 
-ApplicationUser.cs:
+*ApplicationUser.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace NewMvc6Project.Models
+namespace NewMvcProject.Models
 {
   public class ApplicationUser : IdentityUser
   {
@@ -62,47 +59,52 @@ namespace NewMvc6Project.Models
 }
 ```
 
-ApplicationDbContext.cs:
+*ApplicationDbContext.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
-namespace NewMvc6Project.Models
+namespace NewMvcProject.Models
 {
-  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-  {
-    public ApplicationDbContext()
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-      Database.EnsureCreated();
-    }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-    {
-      options.UseSqlServer();
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
+        }
     }
-  }
 }
 ```
 
-ASP.NET Core MVC 入門 Web 專案不包含太多自訂的使用者或 ApplicationDbContext。 在移轉時實際的應用程式，您也必須移轉的所有自訂屬性和方法的應用程式的使用者和 DbContext 類別，以及其他任何模型類別 （例如，如果您 DbContext DbSet，會利用您的應用程式<Album>，當然必須移轉專輯類別)。
+ASP.NET Core MVC 入門 Web 專案不包含太多自訂的使用者，或`ApplicationDbContext`。 在移轉時實際的應用程式，您也需要移轉的所有自訂屬性和方法的應用程式的使用者和`DbContext`類別，以及您的應用程式會利用任何其他模型類別。 例如，如果您`DbContext`具有`DbSet<Album>`，您需要移轉`Album`類別。
 
-與就地這些檔案，Startup.cs 檔案，可以藉由編譯藉由更新其使用陳述式：
+這些檔案的位置， *Startup.cs*檔案，可以藉由編譯藉由更新其`using`陳述式：
 
 ```csharp
-using Microsoft.Framework.ConfigurationModel;
-using Microsoft.AspNetCore.Hosting;
-using NewMvc6Project.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 ```
 
-我們的應用程式現在已準備好支援驗證和身分識別服務，您只需要有這些功能公開給使用者。
+我們的應用程式現在已準備好支援驗證和身分識別服務。 您只需要有這些功能公開給使用者。
 
-## <a name="migrate-registration-and-login-logic"></a>移轉註冊和登入邏輯
+## <a name="migrate-registration-and-login-logic"></a>移轉註冊和登入的邏輯
 
-身分識別設定之服務的應用程式和資料存取使用 Entity Framework 和 SQL Server 設定，我們現在都已準備將支援註冊和登入新增至應用程式。 請記得，[移轉程序中稍早](mvc.md#migrate-layout-file)我們標記為註解中 _Layout.cshtml _LoginPartial 的參考。 現在它是傳回至該程式碼，請取消註解，並新增必要的控制器與檢視，以支援登入功能的時間。
+設定應用程式的身分識別服務和資料存取使用 Entity Framework 和 SQL Server 設定，我們就可以將支援註冊和登入新增至應用程式。 請記得，[移轉程序中稍早](xref:migration/mvc#migrate-the-layout-file)我們標記為註解的參考 *_LoginPartial*中 *_Layout.cshtml*。 現在它是傳回至該程式碼，請取消註解，並新增必要的控制器與檢視，以支援登入功能的時間。
 
-更新 _Layout.cshtml;請取消註解@Html.Partial行：
+請取消註解`@Html.Partial`中一行 *_Layout.cshtml*:
 
 ```cshtml
       <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -112,23 +114,23 @@ using Microsoft.AspNetCore.Identity;
 </div>
 ```
 
-現在，加入新的 MVC 檢視頁面，稱為 _LoginPartial Views/Shared 資料夾：
+現在，加入新的 Razor 檢視 *_LoginPartial*至*Views/Shared*資料夾：
 
-下列程式碼以更新 _LoginPartial.cshtml （取代其所有內容）：
+更新 *_LoginPartial.cshtml*為下列程式碼 （取代其所有內容）：
 
 ```cshtml
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
             </li>
         </ul>
     </form>

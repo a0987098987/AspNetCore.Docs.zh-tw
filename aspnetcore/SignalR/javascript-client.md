@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: cca1a523bd536f4365e54c196f6c9024779d5d76
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: d2530fe3c4b47687d3ef4015624499d96fea2d7b
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -50,7 +50,7 @@ Npm 安裝中的封裝內容*node_modules\\ @aspnet\signalr\dist\browser* 資料
 
 下列程式碼會建立並啟動連線。 中樞的名稱是不區分大小寫。
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=1-2,18)]
+[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12,28)]
 
 ### <a name="cross-origin-connections"></a>跨原始連線
 
@@ -67,7 +67,7 @@ JavaScript 用戶端呼叫公用方法上透過集線器使用`connection.invoke
 * 中樞方法的名稱。 在下列範例中，為中樞名稱`SendMessage`。
 * 中樞方法中定義的任何引數。 在下列範例中，引數名稱是`message`。
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=14)]
+[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 ## <a name="call-client-methods-from-hub"></a>從中樞呼叫用戶端方法
 
@@ -76,7 +76,7 @@ JavaScript 用戶端呼叫公用方法上透過集線器使用`connection.invoke
 * JavaScript 用戶端方法的名稱。 下列範例中，在方法名稱是`ReceiveMessage`。
 * 中樞將傳遞至方法的引數。 在下列範例中，引數值是`message`。
 
-[!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=4-9)]
+[!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
 在上述程式碼`connection.on`時伺服器端程式碼會呼叫它使用執行`SendAsync`方法。
 
@@ -91,7 +91,7 @@ SignalR 判斷用戶端来呼叫的方法藉由比對的方法名稱和引數中
 
 鏈結`catch`方法的結尾`connection.start`方法來處理用戶端的錯誤。 使用`console.error`瀏覽器的主控台輸出的錯誤。
 
-[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=18)]
+[!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 
 安裝程式的用戶端記錄追蹤，藉由傳遞要在建立連接時，記錄的記錄器和事件類型。 使用指定的記錄層級及更高版本，則會記錄訊息。 可用的記錄層級如下所示：
 
@@ -100,9 +100,9 @@ SignalR 判斷用戶端来呼叫的方法藉由比對的方法名稱和引數中
 * `signalR.LogLevel.Information` ： 不會發生錯誤狀態訊息。 記錄檔`Information`， `Warning`，和`Error`訊息。
 * `signalR.LogLevel.Trace` ： 追蹤訊息。 記錄所有項目，包括資料中心和用戶端之間傳輸。
 
-開始記錄連接傳遞記錄器。 瀏覽器開發人員工具通常會包含一個主控台，會顯示的訊息。
+使用`configureLogging`方法`HubConnectionBuilder`來設定記錄層級。 訊息會記錄到瀏覽器主控台。
 
-[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=1-2)]
+[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=11)]
 
 ## <a name="related-resources"></a>相關資源
 

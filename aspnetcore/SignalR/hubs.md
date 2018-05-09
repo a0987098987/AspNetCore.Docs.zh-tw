@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: e23d7ef6d5e5e93d5fc69ad4c845a6a896836170
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: d9e06c75692b68c4147b775e5eb77ef000578b2e
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core 中 SignalR 中樞
 
@@ -75,7 +75,7 @@ SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`
 
 ## <a name="send-messages-to-clients"></a>將訊息傳送至用戶端
 
-若要讓特定的用戶端呼叫，使用的屬性`Clients`物件。 在下列範例中，下列`SendMessageToCaller`方法將示範將訊息傳送到叫用中樞方法的連線。 `SendMessageToGroups`方法將訊息傳送至儲存在群組`List`名為`groups`。
+若要讓特定的用戶端呼叫，使用的屬性`Clients`物件。 在下列範例中，`SendMessageToCaller`方法將示範將訊息傳送到叫用中樞方法的連線。 `SendMessageToGroups`方法將訊息傳送至儲存在群組`List`名為`groups`。
 
 [!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?range=15-24)]
 
@@ -89,7 +89,7 @@ SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`
 
 在 hub 方法中擲回例外狀況會傳送至已叫用方法的用戶端。 JavaScript 用戶端上`invoke`方法會傳回[JavaScript 承諾](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)。 當用戶端會收到錯誤與處理常式附加至承諾使用`catch`，它已叫用，並傳遞為 JavaScript`Error`物件。
 
-[!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=22)]
+[!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
 ## <a name="related-resources"></a>相關資源
 

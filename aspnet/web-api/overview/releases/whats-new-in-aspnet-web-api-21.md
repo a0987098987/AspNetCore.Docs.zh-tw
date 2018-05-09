@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/whats-new-in-aspnet-web-api-21
-title: "ASP.NET Web API 2.1 中最新消息 |Microsoft 文件"
+title: ASP.NET Web API 2.1 中最新消息 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -142,7 +142,7 @@ Web API 現在支援用來建立篩選器，以非同步方式執行。 此功�
 
 屬性路由相符項目中的模稜兩可現在會報告錯誤，而不是選擇第一個相符項目。
 
-屬性路由嚴禁*{控制器}*參數，並從使用*{action}*路由參數放在 [動作]。 這些參數會非常有可能會導致模稜兩可。
+屬性路由嚴禁 *{控制器}* 參數，並從使用 *{action}* 路由參數放在 [動作]。 這些參數會非常有可能會導致模稜兩可。
 
 ### <a name="scaffolding-mvcweb-api-into-a-project-with-51-packages-results-in-50-packages-for-ones-that-dont-already-exist-in-the-project"></a>Scaffolding MVC/Web 應用程式開發介面到 5.1 封裝在中使用結果 5.0 封裝還不存在專案中的專案
 

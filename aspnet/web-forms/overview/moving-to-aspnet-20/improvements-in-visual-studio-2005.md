@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
-title: "在 Visual Studio 2005 中的增強功能 |Microsoft 文件"
+title: 在 Visual Studio 2005 中的增強功能 |Microsoft 文件
 author: microsoft
-description: "Visual Studio 2005 提供 Web 應用程式開發人員一長串的增強功能和增強功能，Web 專案。"
+description: Visual Studio 2005 提供 Web 應用程式開發人員一長串的增強功能和增強功能，Web 專案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -319,7 +319,7 @@ C: / Documents and Settings /&lt;使用者&gt;本機/設定/Temp/VWDWebCache/&lt
 > Aspnet/_compile.exe 公用程式也可用來預先編譯的 ASP.NET Web 應用程式。 該工具將涵蓋單元 9。
 
 
-當您發行網站，先行編譯的檔案儲存在暫存 ASP.NET 檔案資料夾如下所示。 具有檔案*.compiled*檔案延伸模組會定義特定 dll 的相依性的 XML 檔案。 任何 Webform 或使用者控制項編譯成開頭的隨機 Dll*應用程式 /_Web /_*。
+當您發行網站，先行編譯的檔案儲存在暫存 ASP.NET 檔案資料夾如下所示。 具有檔案 *.compiled*檔案延伸模組會定義特定 dll 的相依性的 XML 檔案。 任何 Webform 或使用者控制項編譯成開頭的隨機 Dll*應用程式 /_Web /_*。
 
 如果您離開*讓這個先行編譯的網站成為可更新*勾選核取方塊，內部 Webforms 和使用者控制項的標記不會先行編譯成 DLL，可讓您在部署後進行變更。 如果您想要鎖定的標記，以便對已部署的內容不允許，取消核取此方塊。
 

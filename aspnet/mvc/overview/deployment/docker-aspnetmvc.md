@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/deployment/docker
-title: "將 ASP.NET MVC 應用程式遷移到 Windows 容器"
-description: "了解如何擷取現有的 ASP.NET MVC 應用程式並在 Windows Docker 容器中執行"
+title: 將 ASP.NET MVC 應用程式遷移到 Windows 容器
+description: 了解如何擷取現有的 ASP.NET MVC 應用程式並在 Windows Docker 容器中執行
 keywords: Windows Containers,Docker,ASP.NET MVC
 author: BillWagner
 ms.author: wiwagn

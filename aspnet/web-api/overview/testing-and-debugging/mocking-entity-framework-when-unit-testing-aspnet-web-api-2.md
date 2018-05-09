@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
-title: "模擬 Entity Framework 時單元測試 ASP.NET Web API 2 |Microsoft 文件"
+title: 模擬 Entity Framework 時單元測試 ASP.NET Web API 2 |Microsoft 文件
 author: tfitzmac
-description: "本指南及應用程式示範如何建立單元測試，您使用 Entity Framework 的 Web API 2 應用程式。 它會顯示如何修改..."
+description: 本指南及應用程式示範如何建立單元測試，您使用 Entity Framework 的 Web API 2 應用程式。 它會顯示如何修改...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/13/2013

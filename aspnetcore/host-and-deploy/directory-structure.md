@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: ac9b777bcc7f4a8634161fc1347a4d0fdc3b4784
-ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
+ms.openlocfilehash: a5cc1f23d624643facddc9e2006fb246e5ae66dc
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/19/2018
 
 *Wwwroot*目錄中，如果有的話，只包含靜態資產。
 
-Stdout*記錄*部署使用其中一種下列兩種方法可以建立目錄：
+Stdout*記錄*可以使用下列兩種方法的其中一個部署建立目錄：
 
 * 加入下列`<Target>`項目加入專案檔：
 

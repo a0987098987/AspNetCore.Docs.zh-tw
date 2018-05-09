@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-browserlink
-ms.openlocfilehash: a75a896dd7ebc488e3e9344ec705c24201924375
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 0496f9df35956b8fe7ca9fcc7c03df33437d5a87
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="browser-link-in-aspnet-core"></a>在 ASP.NET Core 瀏覽器連結
 
@@ -66,7 +66,7 @@ if (env.IsDevelopment())
 }
 ```
 
-如需詳細資訊，請參閱[搭配多個環境](xref:fundamentals/environments)。
+如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
 
 ## <a name="how-to-use-browser-link"></a>如何使用瀏覽器連結
 
@@ -90,7 +90,7 @@ if (env.IsDevelopment())
 
 ![F5 下拉式功能表](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-若要一次開啟多個瀏覽器，請選擇**與瀏覽...**相同的下拉式清單中。 按住 CTRL 鍵以選取您想，瀏的覽器，然後按一下 **瀏覽**:
+若要一次開啟多個瀏覽器，請選擇**與瀏覽...** 相同的下拉式清單中。 按住 CTRL 鍵以選取您想，瀏的覽器，然後按一下 **瀏覽**:
 
 ![一次開啟許多瀏覽器](using-browserlink/_static/open-many-browsers-at-once.png)
 
@@ -104,7 +104,7 @@ if (env.IsDevelopment())
 
 變更索引檢視，並按一下 瀏覽器連結的 重新整理 按鈕時，系統會更新所有已連線的瀏覽器：
 
-![browsers-sync-to-changes](using-browserlink/_static/browsers-sync-to-changes.png)
+![瀏覽器-sync-到-變更](using-browserlink/_static/browsers-sync-to-changes.png)
 
 瀏覽器連結也可以搭配您從 Visual Studio 外部啟動，並瀏覽至應用程式 URL 的瀏覽器。
 
@@ -112,7 +112,7 @@ if (env.IsDevelopment())
 
 從瀏覽器連結下拉式功能表來管理與開啟的瀏覽器連線，請開啟瀏覽器連結儀表板：
 
-![open-browserslink-dashboard](using-browserlink/_static/open-browserlink-dashboard.png)
+![開啟-browserslink 儀表板](using-browserlink/_static/open-browserlink-dashboard.png)
 
 如果連線沒有瀏覽器，您可以選取來啟動非偵錯工作階段*瀏覽器中的檢視*連結：
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/whats-new-in-aspnet-web-api-22
-title: "新 ASP.NET Web API 2.2 功能 |Microsoft 文件"
+title: 新 ASP.NET Web API 2.2 功能 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/25/2014
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/10/2017
 
 [Queryable] 屬性已被取代。 新的 OData v3 應用程式應該使用**System.Web.Http.OData.EnableQueryAttribute**。
 
-**ODataHttpConfigurationExtensions.EnableQuerySupport**擴充方法現在將**EnableQueryAttribute**至全域篩選集合。 如果有任何控制站**[Queryable]**屬性，呼叫`config.EnableQuerySupport()`會導致**[Queryable]**屬性失敗
+**ODataHttpConfigurationExtensions.EnableQuerySupport**擴充方法現在將**EnableQueryAttribute**至全域篩選集合。 如果有任何控制站 **[Queryable]** 屬性，呼叫`config.EnableQuerySupport()`會導致 **[Queryable]** 屬性失敗
 
 若要解決此問題的建議的方式是要取代的所有執行個體**根據 QueryableAttribute**與**System.Web.Http.OData.EnableQueryAttribute**。
 

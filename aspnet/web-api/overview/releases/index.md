@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/index
-title: "ASP.NET Web API 釋放 |Microsoft 文件"
+title: ASP.NET Web API 釋放 |Microsoft 文件
 author: rick-anderson
-description: "新的 Web API 中最新消息釋放。"
+description: 新的 Web API 中最新消息釋放。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/13/2014

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
-title: "建立安全的 ASP.NET MVC 5 web 應用程式與記錄檔中，確認和密碼重設 (C#) 傳送電子郵件 |Microsoft 文件"
+title: 建立安全的 ASP.NET MVC 5 web 應用程式與記錄檔中，確認和密碼重設 (C#) 傳送電子郵件 |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程會示範如何建立 ASP.NET MVC 5 web 應用程式，但電子郵件確認和密碼重設使用 ASP.NET 識別的成員資格系統。 您的 ca..."
+description: 本教學課程會示範如何建立 ASP.NET MVC 5 web 應用程式，但電子郵件確認和密碼重設使用 ASP.NET 識別的成員資格系統。 您的 ca...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 4a210b8bb8091e7c036d4bc98306e3b3f90d7d46
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 9ac6b311170dbbc27dd388842c071bc64add6f08
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中開啟的重新導向攻擊
 
@@ -29,18 +29,18 @@ Web 應用程式經常將使用者重新導向至登入頁面存取需要驗證�
 
 ### <a name="an-example-attack"></a>範例攻擊
 
-惡意使用者可以開發目的是讓使用者的認證或在您的應用程式上的機密資訊的惡意使用者存取的攻擊。 若要開始攻擊，它們說服使用者連結至網站的登入頁面上，按一下與`returnUrl`加入 URL querystring 值。 例如， [NerdDinner.com](http://nerddinner.com)範例應用程式 （寫入 ASP.NET mvc） 包含這類登入頁面。 這裡： ``http://nerddinner.com/Account/LogOn?returnUrl=/Home/About``。 攻擊，然後遵循下列步驟：
+惡意使用者可以開發目的是讓使用者的認證或在您的應用程式上的機密資訊的惡意使用者存取的攻擊。 若要開始攻擊，它們說服使用者連結至網站的登入頁面上，按一下與`returnUrl`加入 URL querystring 值。 例如， [NerdDinner.com](http://nerddinner.com)範例應用程式 （寫入 ASP.NET mvc） 包含這類登入頁面。 這裡： `http://nerddinner.com/Account/LogOn?returnUrl=/Home/About`。 攻擊，然後遵循下列步驟：
 
-1. 使用者按下連結``http://nerddinner.com/Account/LogOn?returnUrl=http://nerddiner.com/Account/LogOn``(請注意，第二個 URL 是 nerddi**n**呃，不 nerddi**nn**er)。
+1. 使用者按下連結`http://nerddinner.com/Account/LogOn?returnUrl=http://nerddiner.com/Account/LogOn`(請注意，第二個 URL 是 nerddi**n**呃，不 nerddi**nn**er)。
 2. 使用者成功登入。
-3. 使用者重新導向 （由站台） 至``http://nerddiner.com/Account/LogOn``（看起來像真正的站台的惡意網站）。
+3. 使用者重新導向 （由站台） 至`http://nerddiner.com/Account/LogOn`（看起來像真正的站台的惡意網站）。
 4. 使用者再次登入 （提供惡意網站他們的認證） 會重新導向至實際站台。
 
 使用者將可能認為其第一次嘗試登入失敗，且其第二個是成功。 它們很可能仍不知道他們的認證遭洩漏。
 
 ![開啟的重新導向攻擊程序](preventing-open-redirects/_static/open-redirection-attack-process.png)
 
-除了登入頁面中，有些網站會提供重新導向頁面或端點。 假設您的應用程式已開啟的重新導向的分頁``/Home/Redirect``。 攻擊者無法建立，比方說，連結會移至以電子郵件``[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login``。 一般使用者會查看 URL，並請參閱您的網站名稱開頭。 信任的會讓他們按一下連結。 開啟的重新導向至網路釣魚網站，看起來與您相同，然後就會傳送使用者和使用者便可能它們所認為的登入是您的網站。
+除了登入頁面中，有些網站會提供重新導向頁面或端點。 假設您的應用程式已開啟的重新導向的分頁`/Home/Redirect`。 攻擊者無法建立，比方說，連結會移至以電子郵件`[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login`。 一般使用者會查看 URL，並請參閱您的網站名稱開頭。 信任的會讓他們按一下連結。 開啟的重新導向至網路釣魚網站，看起來與您相同，然後就會傳送使用者和使用者便可能它們所認為的登入是您的網站。
 
 ## <a name="protecting-against-open-redirect-attacks"></a>保護開啟的重新導向攻擊
 
@@ -48,7 +48,7 @@ Web 應用程式經常將使用者重新導向至登入頁面存取需要驗證�
 
 ### <a name="localredirect"></a>LocalRedirect
 
-使用``LocalRedirect``helper 方法的基底`Controller`類別：
+使用`LocalRedirect`helper 方法的基底`Controller`類別：
 
 ```csharp
 public IActionResult SomeAction(string redirectUrl)
@@ -57,7 +57,7 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-``LocalRedirect`` 如果指定非本機 URL，則會擲回例外狀況。 否則，它的行為就像是``Redirect``方法。
+`LocalRedirect` 如果指定非本機 URL，則會擲回例外狀況。 否則，它的行為就像是`Redirect`方法。
 
 ### <a name="islocalurl"></a>IsLocalUrl
 

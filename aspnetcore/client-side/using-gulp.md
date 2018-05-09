@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: 7a3d7807484b76e40e9728e0c750fa1383cc271f
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 13f30be7670983bd65f8402404b841039bdacb09
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-gulp-in-aspnet-core"></a>在 ASP.NET Core 中使用 Gulp
 
@@ -326,7 +326,7 @@ IntelliSense 提供程式碼完成功能、 參數說明和其他功能，以提
 
     請注意，樣式表連結指向 unminified CSS 檔案的版本。
 
-如需 ASP.NET Core 的環境相關的資訊，請參閱[搭配多個環境](../fundamentals/environments.md)。
+如需 ASP.NET Core 的環境相關的資訊，請參閱[使用多個環境](../fundamentals/environments.md)。
 
 ## <a name="task-and-module-details"></a>工作和模組的詳細資料
 

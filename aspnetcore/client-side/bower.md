@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 2d6cc526b5a0890103e2856a0ca4b58c5f162c79
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 4f53d0f04d17631a12e2c2030d6dbb1f4fcc09d3
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
@@ -115,7 +115,7 @@ Bower 使用[語意版本設定](http://semver.org/)將組織的相依性。 語
 
 在本節中，您將建立 HTML 網頁，確認它可以存取部署的封裝。
 
-* 加入名為新的 HTML 頁面*Index.html*至*wwwroot*資料夾。 注意： 您必須加入至 HTML 檔*wwwroot*資料夾。 根據預設，無法提供靜態內容之外*wwwroot*。 請參閱[靜態檔案處理](xref:fundamentals/static-files)如需詳細資訊。
+* 加入名為新的 HTML 頁面*Index.html*至*wwwroot*資料夾。 注意： 您必須加入至 HTML 檔*wwwroot*資料夾。 根據預設，無法提供靜態內容之外*wwwroot*。 請參閱[靜態檔案](xref:fundamentals/static-files)如需詳細資訊。
 
   取代內容*Index.html*以下列標記：
 

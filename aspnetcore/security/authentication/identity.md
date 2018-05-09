@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: f9215767bf9a7c8b43b474848ba7dff7c3ddaf24
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: cf63766dc4ae94d784190d6dbc7b5beb57342f42
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -49,7 +49,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-   如果使用.NET 核心 CLI，請建立新的專案使用``dotnet new mvc --auth Individual``。 此命令會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
+   如果使用.NET 核心 CLI，請建立新的專案使用`dotnet new mvc --auth Individual`。 此命令會建立新的專案與 Visual Studio 建立的相同身分識別範本程式碼。
 
    建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，它會保存身分資料和 SQL Server 使用的結構描述[Entity Framework Core](https://docs.microsoft.com/ef/)。
 
@@ -88,30 +88,30 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    ![適用於移轉 Web 網頁](identity/_static/apply-migrations.png)
 
-   或者，您可以測試沒有持續性資料庫的應用程式使用 ASP.NET Core 身分識別，使用記憶體中資料庫。 若要使用記憶體中資料庫時，將``Microsoft.EntityFrameworkCore.InMemory``封裝到您的應用程式，並修改您的應用程式呼叫``AddDbContext``中``ConfigureServices``，如下所示：
+   或者，您可以測試沒有持續性資料庫的應用程式使用 ASP.NET Core 身分識別，使用記憶體中資料庫。 若要使用記憶體中資料庫時，將`Microsoft.EntityFrameworkCore.InMemory`封裝到您的應用程式，並修改您的應用程式呼叫`AddDbContext`中`ConfigureServices`，如下所示：
 
    ```csharp
    services.AddDbContext<ApplicationDbContext>(options =>
        options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
    ```
 
-   當使用者按一下**註冊**連結，``Register``上叫用動作``AccountController``。 ``Register``動作會建立使用者藉由呼叫`CreateAsync`上`_userManager`物件 (提供給``AccountController``的相依性插入):
+   當使用者按一下**註冊**連結，`Register`上叫用動作`AccountController`。 `Register`動作會建立使用者藉由呼叫`CreateAsync`上`_userManager`物件 (提供給`AccountController`的相依性插入):
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
-   如果已成功建立使用者，使用者會登入的呼叫所``_signInManager.SignInAsync``。
+   如果已成功建立使用者，使用者會登入的呼叫所`_signInManager.SignInAsync`。
 
    **注意：**看到[帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免立即註冊登入。
 
 4. 登入。
 
-   使用者可以登入，依序按一下**登入**頂端的站台連結或它們可能瀏覽至登入頁面當他們嘗試存取需要的授權站台的一部分。 當使用者提交表單的登入頁面上， ``AccountController`` ``Login``動作呼叫。
+   使用者可以登入，依序按一下**登入**頂端的站台連結或它們可能瀏覽至登入頁面當他們嘗試存取需要的授權站台的一部分。 當使用者提交表單的登入頁面上， `AccountController` `Login`動作呼叫。
 
-   ``Login``動作呼叫``PasswordSignInAsync``上``_signInManager``物件 (提供給``AccountController``的相依性插入)。
+   `Login`動作呼叫`PasswordSignInAsync`上`_signInManager`物件 (提供給`AccountController`的相依性插入)。
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
 
-   基底``Controller``類別會公開``User``從控制器方法可以存取的屬性。 比方說，您可以列舉`User.Claims`和進行授權決策。 如需詳細資訊，請參閱[授權](xref:security/authorization/index)。
+   基底`Controller`類別會公開`User`從控制器方法可以存取的屬性。 比方說，您可以列舉`User.Claims`和進行授權決策。 如需詳細資訊，請參閱[授權](xref:security/authorization/index)。
 
 5. 登出。
 
@@ -149,7 +149,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     預設值*ASP.NET Core Web 應用程式*專案範本可讓使用者存取應用程式中的任何動作，而不需登入。 若要確認 ASP.NET Identity 運作方式，加入`[Authorize]`屬性`About`動作`Home`控制站。
 
-    ```cs
+    ```csharp
     [Authorize]
     public IActionResult About()
     {
@@ -166,7 +166,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
     開啟命令視窗並瀏覽至專案的根目錄目錄包含`.csproj`檔案。 執行[dotnet 執行](/dotnet/core/tools/dotnet-run)執行應用程式的命令：
 
-    ```cs
+    ```csharp
     dotnet run 
     ```
 

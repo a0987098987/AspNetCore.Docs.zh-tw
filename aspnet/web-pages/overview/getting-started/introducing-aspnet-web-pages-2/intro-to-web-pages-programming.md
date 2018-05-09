@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 3e2c990a6451c13e03baafa343df156b2d46d219
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 60115dd06a27bf856427953de29e993194afb991
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>導入的 ASP.NET Web Pages-程式設計基本概念
 ====================
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="testing-the-value-of-a-query-string"></a>測試值的查詢字串
 
-一個詳細的測試。 此時，您會將 if 測試值的區塊，名為 「 可能會傳遞查詢字串中的顯示。 (這種方式: 'http://localhost:43097/TestRazorPart2.cshtml`?show=true`)，以便顯示您已顯示，您要變更頁面 （"This is 第一次..."等） 如果顯示的值為 true，才會顯示。
+一個詳細的測試。 此時，您會將 if 測試值的區塊，名為 「 可能會傳遞查詢字串中的顯示。 (這種方式： `http://localhost:43097/TestRazorPart2.cshtml?show=true`)，以便顯示您已顯示，您要變更頁面 （"This is 第一次..."等） 如果顯示的值為 true，才會顯示。
 
 在底端 （但內部） 程式碼區塊頂端的頁面上，加入下列內容：
 
@@ -223,7 +223,7 @@ ms.lasthandoff: 04/06/2018
 
 程式碼會判斷 URL 是否包含名為查詢字串，例如 URL 的這個版本中顯示的變數：
 
-`http://localhost:43097/TestRazorPart2.cshtml`?show=true
+`http://localhost:43097/TestRazorPart2.cshtml`？ 顯示 = true
 
 測試本身會查看要求物件的查詢字串屬性。 如果查詢字串包含的項目的顯示，而且該項目的設為 true，如果執行區塊，並區隔名稱變數設定為 true。
 

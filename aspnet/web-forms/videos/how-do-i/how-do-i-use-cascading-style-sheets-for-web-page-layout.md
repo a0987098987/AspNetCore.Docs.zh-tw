@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
-title: "[如何:]頁面配置，請使用階層式樣式表嗎？ | Microsoft Docs"
+title: '[如何:]頁面配置，請使用階層式樣式表嗎？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片中，我們了解如何使用&amp;lt; div&amp;gt; 中階層式樣式表 (CSS) 來建立 web p 強固且更高的效能結合項目..."
+description: 在這段影片中，我們了解如何使用&amp;lt; div&amp;gt; 中階層式樣式表 (CSS) 來建立 web p 強固且更高的效能結合項目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007

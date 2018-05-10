@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 64093b9fcfa9047145de8f8b142f72fa1515f248
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: fe772203e5e3fceb7489e0a5866f60ea914b7329
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -95,7 +95,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 如果沒有[ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)指定給中介軟體，轉送的預設標頭`None`。
 
-額外的設定可能需要的 proxy 伺服器和負載平衡器後方託管應用程式。 如需詳細資訊，請參閱[使用 proxy 伺服器及負載平衡器設定 ASP.NET Core](xref:host-and-deploy/proxy-load-balancer)。
+Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
@@ -116,7 +116,7 @@ sudo service nginx start
 
 ### <a name="configure-nginx"></a>設定 Nginx
 
-若要設定 Nginx 做為轉寄要求至您的 ASP.NET Core 應用程式的反向 proxy，修改*/etc/nginx/sites-available/default*。 以文字編輯器開啟它，並以下列項目取代內容：
+若要設定 Nginx 做為轉寄要求至您的 ASP.NET Core 應用程式的反向 proxy，修改 */etc/nginx/sites-available/default*。 以文字編輯器開啟它，並以下列項目取代內容：
 
 ```nginx
 server {
@@ -184,6 +184,13 @@ WantedBy=multi-user.target
 
 **注意：**如果使用者*www 資料*不會使用設定，此處定義的使用者必須先建立並提供適當的擁有權的檔案。
 **注意：** Linux 具有區分大小寫的檔案系統。 設定為 「 生產 」 會產生組態檔的搜尋 ASPNETCORE_ENVIRONMENT *appsettings。Production.json*，而非*appsettings.production.json*。
+
+> [!NOTE]
+> 必須逸出讀取環境變數的組態提供者的某些值 （例如，SQL 連接字串）。 若要使用的正確逸出的值產生組態檔中使用下列命令：
+>
+> ```console
+> systemd-escape "<value-to-escape>"
+> ```
 
 儲存檔案並啟用服務。
 
@@ -292,7 +299,7 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 * 將伺服器設定為接聽連接埠上的 HTTPS 流量`443`藉由指定核發由受信任憑證授權單位 (CA) 的有效憑證。
 
-* 利用一些下列所述的作法強化安全性*/etc/nginx/nginx.conf*檔案。 範例包括選擇更強的加密，重新導向 HTTPS 到 HTTP 的所有流量。
+* 利用一些下列所述的作法強化安全性 */etc/nginx/nginx.conf*檔案。 範例包括選擇更強的加密，重新導向 HTTPS 到 HTTP 的所有流量。
 
 * 新增 `HTTP Strict-Transport-Security` (HSTS) 標頭可確保用戶端提出的所有後續要求都只會透過 HTTPS。
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: 3c618b2bd5919f6536601631eb4d21359a6bc03a
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ac3a9e00edfd4c736ee1e7d5c0c724c3e52d0b6b
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integration-tests-in-aspnet-core"></a>整合測試中 ASP.NET Core
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/22/2018
 
 ### <a name="the-test-host"></a>測試主機
 
-ASP.NET Core 包含可加入至整合測試專案的測試主機來裝載 ASP.NET Core 應用程式使用，而不需要實際的 web 主機要求的服務測試。 提供的範例包括整合測試專案已設定使用[xUnit](https://xunit.github.io)和測試的主機。 它會使用`Microsoft.AspNetCore.TestHost`NuGet 封裝。
+ASP.NET Core 包含可加入至整合測試專案的測試主機來裝載 ASP.NET Core 應用程式使用，而不需要實際的 web 主機要求的服務測試。 提供的範例包括整合測試專案已設定使用[xUnit](https://xunit.github.io)和測試的主機。 它會使用[Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) NuGet 封裝。
 
 一次`Microsoft.AspNetCore.TestHost`封裝包含在專案中，您便可以建立及設定`TestServer`在您的測試。 下列測試顯示如何以確認站台的根提出的要求會傳回"Hello World ！" 和應該成功地對執行預設 Visual Studio 所建立的 ASP.NET Core 空白網站範本。
 

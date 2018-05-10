@@ -11,17 +11,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: d9e06c75692b68c4147b775e5eb77ef000578b2e
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 4810b3a1978f05eb0608320750f31b8bb95d71fd
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core 中 SignalR 中樞
 
 由[Rachel Appel](https://twitter.com/rachelappel)和[Kevin Griffin](https://twitter.com/1kevgriff)
-
-[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
@@ -33,7 +31,7 @@ SignalR 中樞應用程式開發介面可讓您連線的用戶端上呼叫方法
 
 SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`。
 
-[!code-csharp[Configure service](hubs/sample/startup.cs?range=37)]
+[!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
 將 SignalR 功能加入至 ASP.NET Core 應用程式，安裝 SignalR 的路由，藉由呼叫`app.UseSignalR`中`Startup.Configure`方法。
 

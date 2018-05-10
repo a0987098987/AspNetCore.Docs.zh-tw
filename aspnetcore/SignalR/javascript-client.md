@@ -6,22 +6,20 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 04/06/2018
+ms.date: 05/09/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: d2530fe3c4b47687d3ef4015624499d96fea2d7b
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 1701d9ac5222bf64f9690c1cecdf54ef95fe4a49
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
 作者：[Rachel Appel](http://twitter.com/rachelappel)
-
-[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 ASP.NET Core SignalR JavaScript 用戶端程式庫可讓開發人員呼叫伺服器端中樞的程式碼。
 
@@ -58,7 +56,7 @@ Npm 安裝中的封裝內容*node_modules\\ @aspnet\signalr\dist\browser* 資料
 
 若要防止惡意網站讀取敏感性資料，從其他站台，[跨原始連線](xref:security/cors)預設會停用。 若要允許跨原始要求，在中啟用它`Startup`類別。
 
-[!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-34,55)]
+[!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫 hub 方法
 
@@ -102,7 +100,7 @@ SignalR 判斷用戶端来呼叫的方法藉由比對的方法名稱和引數中
 
 使用`configureLogging`方法`HubConnectionBuilder`來設定記錄層級。 訊息會記錄到瀏覽器主控台。
 
-[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=11)]
+[!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="related-resources"></a>相關資源
 

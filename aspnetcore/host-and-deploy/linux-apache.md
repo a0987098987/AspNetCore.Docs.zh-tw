@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 5a8a035ff3f127d01655888d4f83a871645b0bf5
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -79,7 +79,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 如果沒有[ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)指定給中介軟體，轉送的預設標頭`None`。
 
-額外的設定可能需要的 proxy 伺服器和負載平衡器後方託管應用程式。 如需詳細資訊，請參閱[使用 proxy 伺服器及負載平衡器設定 ASP.NET Core](xref:host-and-deploy/proxy-load-balancer)。
+Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ### <a name="install-apache"></a>安裝 Apache
 
@@ -118,7 +118,7 @@ Complete!
 
 ### <a name="configure-apache-for-reverse-proxy"></a>設定 Apache 以用於反向 Proxy
 
-Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案*.conf*除了模組組態檔中，依字母順序處理延伸模組`/etc/httpd/conf.modules.d/`，其中包含任何設定檔需要載入模組。
+Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案 *.conf*除了模組組態檔中，依字母順序處理延伸模組`/etc/httpd/conf.modules.d/`，其中包含任何設定檔需要載入模組。
 
 建立名為組態檔*hellomvc.conf*，應用程式：
 
@@ -189,6 +189,13 @@ WantedBy=multi-user.target
 
 > [!NOTE]
 > **使用者**&mdash;如果使用者*apache*不會使用設定，使用者必須先建立並提供適當的擁有權的檔案。
+
+> [!NOTE]
+> 必須逸出讀取環境變數的組態提供者的某些值 （例如，SQL 連接字串）。 若要使用的正確逸出的值產生組態檔中使用下列命令：
+>
+> ```console
+> systemd-escape "<value-to-escape>"
+> ```
 
 儲存檔案，並啟用服務：
 

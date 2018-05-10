@@ -11,18 +11,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction
-ms.openlocfilehash: 190dfe9eac95be646b458870ac4ee95f681f45d7
-ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
+ms.openlocfilehash: f05b7cbf05372dc5d5cdadaf5a534d7a9d9bfecc
+ms.sourcegitcommit: c867d7427bd4a88a78b2322e156367733b532730
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/09/2018
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 簡介
 
 作者：[Rachel Appel](https://twitter.com/rachelappel)
-
-
-[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 ## <a name="what-is-signalr"></a>SignalR 是什麼？
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/whats-new-in-aspnet-web-api-21
-title: "ASP.NET Web API 2.1 中最新消息 |Microsoft 文件"
+title: ASP.NET Web API 2.1 中最新消息 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -142,7 +142,7 @@ ms.lasthandoff: 11/10/2017
 
 <span data-ttu-id="42440-168">屬性路由相符項目中的模稜兩可現在會報告錯誤，而不是選擇第一個相符項目。</span><span class="sxs-lookup"><span data-stu-id="42440-168">Ambiguities in attribute routing matches now report an error rather than choosing the first match.</span></span>
 
-<span data-ttu-id="42440-169">屬性路由嚴禁*{控制器}*參數，並從使用*{action}*路由參數放在 [動作]。</span><span class="sxs-lookup"><span data-stu-id="42440-169">Attribute routes are prohibited from using the *{controller}* parameter, and from using the *{action}* parameter on routes placed on actions.</span></span> <span data-ttu-id="42440-170">這些參數會非常有可能會導致模稜兩可。</span><span class="sxs-lookup"><span data-stu-id="42440-170">These parameters would very likely cause ambiguities.</span></span>
+<span data-ttu-id="42440-169">屬性路由嚴禁 *{控制器}* 參數，並從使用 *{action}* 路由參數放在 [動作]。</span><span class="sxs-lookup"><span data-stu-id="42440-169">Attribute routes are prohibited from using the *{controller}* parameter, and from using the *{action}* parameter on routes placed on actions.</span></span> <span data-ttu-id="42440-170">這些參數會非常有可能會導致模稜兩可。</span><span class="sxs-lookup"><span data-stu-id="42440-170">These parameters would very likely cause ambiguities.</span></span>
 
 ### <a name="scaffolding-mvcweb-api-into-a-project-with-51-packages-results-in-50-packages-for-ones-that-dont-already-exist-in-the-project"></a><span data-ttu-id="42440-171">Scaffolding MVC/Web 應用程式開發介面到 5.1 封裝在中使用結果 5.0 封裝還不存在專案中的專案</span><span class="sxs-lookup"><span data-stu-id="42440-171">Scaffolding MVC/Web API into a project with 5.1 packages results in 5.0 packages for ones that don't already exist in the project</span></span>
 

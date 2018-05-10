@@ -1,9 +1,9 @@
 ---
 uid: signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
-title: "使用 Azure Web 角色中的 SignalR 效能計數器 |Microsoft 文件"
+title: 使用 Azure Web 角色中的 SignalR 效能計數器 |Microsoft 文件
 author: guardrex
-description: "如何安裝及使用 Azure Web 角色中的 SignalR 效能計數器。"
-keywords: "ASP.NET,signalr,performance 計數器，azure web 角色"
+description: 如何安裝及使用 Azure Web 角色中的 SignalR 效能計數器。
+keywords: ASP.NET,signalr,performance 計數器，azure web 角色
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/11/2017
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/05/2018
 
 2. <span data-ttu-id="9f97f-116">在 Visual Studio 2015 中，選取**檔案** > **新增** > **專案**。</span><span class="sxs-lookup"><span data-stu-id="9f97f-116">In Visual Studio 2015, select **File** > **New** > **Project**.</span></span>
 
-3. <span data-ttu-id="9f97f-117">在**範本**窗格**新專案**視窗下的**Visual C#**節點中，選取**雲端**節點，然後選取**Azure 雲端服務**範本。</span><span class="sxs-lookup"><span data-stu-id="9f97f-117">In the **Templates** pane of the **New Project** window under the **Visual C#** node, select the **Cloud** node and select the **Azure Cloud Service** template.</span></span> <span data-ttu-id="9f97f-118">將應用程式命名**SignalRPerfCounters**選取**確定**。</span><span class="sxs-lookup"><span data-stu-id="9f97f-118">Name the app **SignalRPerfCounters** and select **OK**.</span></span>
+3. <span data-ttu-id="9f97f-117">在**範本**窗格**新專案**視窗下的**Visual C#** 節點中，選取**雲端**節點，然後選取**Azure 雲端服務**範本。</span><span class="sxs-lookup"><span data-stu-id="9f97f-117">In the **Templates** pane of the **New Project** window under the **Visual C#** node, select the **Cloud** node and select the **Azure Cloud Service** template.</span></span> <span data-ttu-id="9f97f-118">將應用程式命名**SignalRPerfCounters**選取**確定**。</span><span class="sxs-lookup"><span data-stu-id="9f97f-118">Name the app **SignalRPerfCounters** and select **OK**.</span></span>
 
    ![新的雲端應用程式](using-signalr-performance-counters-in-an-azure-web-role/_static/image1.png)
     

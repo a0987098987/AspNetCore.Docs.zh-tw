@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/whats-new-in-aspnet-mvc-52
-title: "ASP.NET MVC 5.2 中最新消息 |Microsoft 文件"
+title: ASP.NET MVC 5.2 中最新消息 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/25/2014

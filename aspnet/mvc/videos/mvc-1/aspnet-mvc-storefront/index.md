@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/index
-title: "ASP.NET MVC Storefront |Microsoft 文件"
+title: ASP.NET MVC Storefront |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET MVC Storefront 入門套件"
+description: ASP.NET MVC Storefront 入門套件
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011

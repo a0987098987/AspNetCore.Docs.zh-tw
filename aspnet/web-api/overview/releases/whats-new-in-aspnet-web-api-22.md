@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/whats-new-in-aspnet-web-api-22
-title: "新 ASP.NET Web API 2.2 功能 |Microsoft 文件"
+title: 新 ASP.NET Web API 2.2 功能 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/25/2014
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/10/2017
 
 <span data-ttu-id="aec2b-183">[Queryable] 屬性已被取代。</span><span class="sxs-lookup"><span data-stu-id="aec2b-183">The [Queryable] attribute is deprecated.</span></span> <span data-ttu-id="aec2b-184">新的 OData v3 應用程式應該使用**System.Web.Http.OData.EnableQueryAttribute**。</span><span class="sxs-lookup"><span data-stu-id="aec2b-184">New OData v3 applications should use **System.Web.Http.OData.EnableQueryAttribute**.</span></span>
 
-<span data-ttu-id="aec2b-185">**ODataHttpConfigurationExtensions.EnableQuerySupport**擴充方法現在將**EnableQueryAttribute**至全域篩選集合。</span><span class="sxs-lookup"><span data-stu-id="aec2b-185">The **ODataHttpConfigurationExtensions.EnableQuerySupport** extension method now adds an **EnableQueryAttribute** to the global filter collection.</span></span> <span data-ttu-id="aec2b-186">如果有任何控制站**[Queryable]**屬性，呼叫`config.EnableQuerySupport()`會導致**[Queryable]**屬性失敗</span><span class="sxs-lookup"><span data-stu-id="aec2b-186">If any controllers have the **[Queryable]** attribute, calling `config.EnableQuerySupport()` will cause the **[Queryable]** attribute to fail</span></span>
+<span data-ttu-id="aec2b-185">**ODataHttpConfigurationExtensions.EnableQuerySupport**擴充方法現在將**EnableQueryAttribute**至全域篩選集合。</span><span class="sxs-lookup"><span data-stu-id="aec2b-185">The **ODataHttpConfigurationExtensions.EnableQuerySupport** extension method now adds an **EnableQueryAttribute** to the global filter collection.</span></span> <span data-ttu-id="aec2b-186">如果有任何控制站 **[Queryable]** 屬性，呼叫`config.EnableQuerySupport()`會導致 **[Queryable]** 屬性失敗</span><span class="sxs-lookup"><span data-stu-id="aec2b-186">If any controllers have the **[Queryable]** attribute, calling `config.EnableQuerySupport()` will cause the **[Queryable]** attribute to fail</span></span>
 
 <span data-ttu-id="aec2b-187">若要解決此問題的建議的方式是要取代的所有執行個體**根據 QueryableAttribute**與**System.Web.Http.OData.EnableQueryAttribute**。</span><span class="sxs-lookup"><span data-stu-id="aec2b-187">The recommended way to resolve this issue is to replace all instances of **QueryableAttribute** with **System.Web.Http.OData.EnableQueryAttribute**.</span></span>
 

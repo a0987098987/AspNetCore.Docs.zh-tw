@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
-title: "啟用 ASP.NET Web API 1 中的 CRUD 作業 |Microsoft 文件"
+title: 啟用 ASP.NET Web API 1 中的 CRUD 作業 |Microsoft 文件
 author: MikeWasson
-description: "本教學課程會示範如何使用 ASP.NET Web API HTTP 服務中支援 CRUD 作業。 教學課程 Visual Studio 2012 Web 應用程式中使用的軟體版本..."
+description: 本教學課程會示範如何使用 ASP.NET Web API HTTP 服務中支援 CRUD 作業。 教學課程 Visual Studio 2012 Web 應用程式中使用的軟體版本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2012
@@ -74,7 +74,7 @@ ms.lasthandoff: 02/12/2018
 
 <span data-ttu-id="8bc4f-162">開始執行 Visual Studio，並選取**新專案**從**啟動**頁面。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-162">Start by running Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="8bc4f-163">或從**檔案**功能表上，選取**新增**然後**專案**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-163">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="8bc4f-164">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-164">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="8bc4f-165">在下**Visual C#**，選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-165">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="8bc4f-166">在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-166">In the list of project templates, select **ASP.NET MVC 4 Web Application**.</span></span> <span data-ttu-id="8bc4f-167">將專案命名&quot;ProductStore&quot;按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-167">Name the project &quot;ProductStore&quot; and click **OK**.</span></span>
+<span data-ttu-id="8bc4f-164">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-164">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="8bc4f-165">在下**Visual C#**，選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-165">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="8bc4f-166">在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-166">In the list of project templates, select **ASP.NET MVC 4 Web Application**.</span></span> <span data-ttu-id="8bc4f-167">將專案命名&quot;ProductStore&quot;按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-167">Name the project &quot;ProductStore&quot; and click **OK**.</span></span>
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image1.png)
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 02/12/2018
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample6.cs)]
 
-<span data-ttu-id="8bc4f-235">方法名稱開頭&quot;取得&quot;，好讓它對應至 GET 要求的慣例。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-235">The method name starts with &quot;Get&quot;, so by convention it maps to GET requests.</span></span> <span data-ttu-id="8bc4f-236">此外，因為方法不有任何參數，則會對應至 URI，其中不包含*&quot;識別碼&quot;*中路徑區段。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-236">Also, because the method has no parameters, it maps to a URI that does not contain an *&quot;id&quot;* segment in the path.</span></span>
+<span data-ttu-id="8bc4f-235">方法名稱開頭&quot;取得&quot;，好讓它對應至 GET 要求的慣例。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-235">The method name starts with &quot;Get&quot;, so by convention it maps to GET requests.</span></span> <span data-ttu-id="8bc4f-236">此外，因為方法不有任何參數，則會對應至 URI，其中不包含*&quot;識別碼&quot;* 中路徑區段。</span><span class="sxs-lookup"><span data-stu-id="8bc4f-236">Also, because the method has no parameters, it maps to a URI that does not contain an *&quot;id&quot;* segment in the path.</span></span>
 
 <span data-ttu-id="8bc4f-237">若要取得的產品識別碼，請將此方法加入`ProductsController`類別：</span><span class="sxs-lookup"><span data-stu-id="8bc4f-237">To get a product by ID, add this method to the `ProductsController` class:</span></span>
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f53f77d342cc59094a80e8667db6ef345a6e8305
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 9e438cef9db61e725b5385da53e8aa2b407218c3
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -51,7 +51,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 在 ASP.NET Core 2.0 和更新版中，[Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)中的三個套件為部署到 Azure App Service 的應用程式提供自動記錄功能：
 
-* [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) 使用 [IHostingStartup](xref:host-and-deploy/platform-specific-configuration) 提供 ASP.NET Core 與 Azure App Service 整合的啟動。 新增的記錄功能由 `Microsoft.AspNetCore.AzureAppServicesIntegration` 套件提供。
+* [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) 使用 [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration) 提供 ASP.NET Core 與 Azure App Service 整合的啟動。 新增的記錄功能由 `Microsoft.AspNetCore.AzureAppServicesIntegration` 套件提供。
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) 執行 [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics)，以在 `Microsoft.Extensions.Logging.AzureAppServices` 套件中新增 Azure App Service 診斷記錄提供者。
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) 提供記錄器實作以支援 Azure App Service 診斷記錄和記錄串流功能。
 
@@ -142,7 +142,7 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>將包含 Web 應用程式的 Docker 用於容器
 
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的 2.1 預覽 Docker 映像。 這些映像可用來作為基底映像。 您可以使用這些映像，並以平常的方式將其部署至容器的 Web 應用程式。
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) 包含最新的 2.1 預覽 Docker 映像。 這些映像可用作為基底映像。 請使用映像，並以一般的方式將其部署至容器的 Web 應用程式。
 
 ## <a name="additional-resources"></a>其他資源
 

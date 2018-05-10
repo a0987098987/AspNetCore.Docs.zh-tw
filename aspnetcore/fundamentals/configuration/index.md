@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: b1c2b734a2e9b274792b597bfd222c31e661b0d7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 4637ff6312f32f5887ff0f7a6e74d10f5beb0ca5
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -105,13 +105,13 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 
-環境通常會設定為 `Development`、`Staging` 或 `Production`。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
+環境通常會設定為 `Development`、`Staging` 或 `Production`。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
 
 組態考量：
 
 * [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) 可在組態資料變更時重新載入資料。
 * 組態金鑰**不**區分大小寫。
-* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。 深入了解[如何使用多個環境](xref:fundamentals/environments)及管理[在開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
+* **永遠不要**將密碼或其他敏感性資料儲存在組態提供者程式碼或純文字組態檔中。 不要在開發或測試環境中使用生產環境祕密。 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。 深入了解[如何使用多重環境](xref:fundamentals/environments)以及管理[開發期間安全儲存應用程式祕密](xref:security/app-secrets)。
 * 若為環境變數中指定的階層式組態值，冒號 (`:`) 可能無法在所有平台上運作。 所有平台皆支援雙底線 (`__`)。
 * 與組態 API 互動時，冒號 (`:`) 可在所有平台上運作。
 
@@ -413,6 +413,10 @@ Left: 1988
 
 若要在啟動期間存取 `ConfigureServices` 或 `Configure` 內的組態，請參閱[應用程式啟動](xref:fundamentals/startup)主題中的範例。
 
+## <a name="adding-configuration-from-an-external-assembly"></a>從外部組件新增組態
+
+實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) 即可在啟動時，從應用程式非 `Startup` 類別的外部組件，對應用程式新增強功能。 如需詳細資訊，請參閱[從外部組件增強應用程式](xref:fundamentals/configuration/platform-specific-configuration)。
+
 ## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Razor 頁面或 MVC 檢視中的存取設定
 
 若要在 [Razor 頁面] 頁面或 MVC 檢視中存取組態集，請針對 [Microsoft.Extensions.Configuration 命名空間新增[使用指示詞](xref:mvc/views/razor#using) ([C# 參考：使用指示詞](/dotnet/csharp/language-reference/keywords/using-directive)) ](/dotnet/api/microsoft.extensions.configuration)，並將 [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) 插入頁面或檢視中。
@@ -468,7 +472,7 @@ Left: 1988
 ## <a name="additional-resources"></a>其他資源
 
 * [選項](xref:fundamentals/configuration/options)
-* [使用多個環境](xref:fundamentals/environments)
+* [使用多重環境](xref:fundamentals/environments)
 * [在開發期間安全儲存應用程式祕密](xref:security/app-secrets)
 * [在 ASP.NET Core 中裝載](xref:fundamentals/hosting)
 * [相依性插入](xref:fundamentals/dependency-injection)

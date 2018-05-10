@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 08866543d5b510b86c6af1896a9bd41ae0053ecf
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: f9484d4806a7430177878b462209ba6608cfdd7d
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Ryan Nowak](https://github.com/rynowak)
 
-Razor Pages 是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如果您在尋找使用模型檢視控制器方法的教學課程，請參閱[開始使用 ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc)。
 
@@ -92,7 +92,7 @@ Razor Pages 是在 *Startup.cs* 中啟用：
 
 ## <a name="writing-a-basic-form"></a>撰寫基本表單
 
-Razor 頁面功能旨在讓常見模式容易搭配網頁瀏覽器使用。 [模型繫結](xref:mvc/models/model-binding)、[標記協助程式](xref:mvc/views/tag-helpers/intro)和 HTML 協助程式搭配 Razor Page 類別中定義的屬性「就這麼簡單」。 `Contact` 模型請考慮實作基本的「與我們連絡」格式頁面：
+Razor Pages 設計用於製作一般的模式，可搭配網頁瀏覽器一起使用，在建置應用程式時能易於實作。 [模型繫結](xref:mvc/models/model-binding)、[標記協助程式](xref:mvc/views/tag-helpers/intro)和 HTML 協助程式搭配 Razor Page 類別中定義的屬性「就這麼簡單」。 `Contact` 模型請考慮實作基本的「與我們連絡」格式頁面：
 
 本文件中的範例，會在 [Startup.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16) 檔案中初始化 `DbContext`。
 
@@ -147,7 +147,7 @@ DB 內容：
 Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可以減少您必須撰寫的程式碼數量。 透過使用相同的屬性呈現表單欄位 (`<input asp-for="Customer.Name" />`) 並接受輸入，繫結可以減少程式碼。
 
 > [!NOTE]
-> 基於安全性考量，您必須加入才能將 GET 要求資料繫結至頁面模型屬性。 請先驗證使用者輸入再將其對應至屬性。 在建置依靠查詢字串或路由值的功能時，加入此行為相當實用。
+> 基於安全性考量，您必須加入才能將 GET 要求資料繫結至頁面模型屬性。 請先驗證使用者輸入再將其對應至屬性。 在解決仰賴查詢字串或路由值的案例時，選擇使用此行為相當實用。
 >
 > 若要在 GET 要求上繫結屬性，請將 `[BindProperty]` 屬性的 `SupportsGet` 屬性設定為 `true`：`[BindProperty(SupportsGet = true)]`
 
@@ -246,11 +246,11 @@ services.AddMvc()
 您不必撰寫任何[防偽驗證](xref:security/anti-request-forgery)程式碼。 防偽權杖的產生和驗證會自動包含在 Razor 頁面中。
 
 <a name="layout"></a>
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>搭配 Razor 頁面使用版面配置、部分、範本和標記協助程式。
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>搭配 Razor Pages 使用版面配置、部分、範本和標記協助程式。
 
-頁面使用 Razor 檢視引擎的所有功能。 版面配置、部分、範本、標記協助程式、*_ViewStart.cshtml*、*_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。
+Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、部分、範本、標記協助程式、*_ViewStart.cshtml*、*_ViewImports.cshtml* 運作方式一如它們在傳統 Razor 檢視中的方式。
 
-利用這些功能的一部分來清理此頁面。
+可利用這些功能的一部分來整理這個頁面。
 
 將[版面配置頁面](xref:mvc/views/layout)新增至 *Pages/_Layout.cshtml*：
 
@@ -336,7 +336,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 * `<a asp-page="/Index">My Index Page</a>`
 * `RedirectToPage("/Index")`
 
-頁面名稱是來自根 */Pages* 資料夾的頁面路徑 (包括前置的 `/`，例如 `/Index`)。 上述的 URL 產生範例比僅有硬式編碼的 URL 更有特色。 URL 產生使用[路由](xref:mvc/controllers/routing)，可以根據路由在目的地路徑中定義的方式，產生並且編碼參數。
+頁面名稱是從根 */Pages* 資料夾到該頁面的路徑 (包括前置的 `/`，例如 `/Index`)。 上述 URL 產生範例，透過硬式編碼的 URL 提供更加優異的選項與功能。 URL 產生使用[路由](xref:mvc/controllers/routing)，可以根據路由在目的地路徑中定義的方式，產生並且編碼參數。
 
 產生頁面 URL 支援相關的名稱。 下表顯示從 *Pages/Customers/Create.cshtml* 以不同的 `RedirectToPage` 參數選取的索引頁：
 
@@ -455,5 +455,5 @@ services.AddMvc()
 * [Razor 語法](xref:mvc/views/razor)
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)
-* [Razor Pages 自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-convention-features)
+* [Razor Pages 自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-conventions)
 * [Razor 頁面單元與整合測試](xref:testing/razor-pages-testing)

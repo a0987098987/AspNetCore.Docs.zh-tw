@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的授權"
+title: ASP.NET Core 的授權
 author: rick-anderson
-description: "探索說明如何提供權限給應用程式使用者的 ASP.NET Core 授權主題。"
+description: 探索說明如何提供權限給應用程式使用者的 ASP.NET Core 授權主題。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/index
-ms.openlocfilehash: 652a01d58f7a7d19faa8531b61ea780bc379c428
-ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
+ms.openlocfilehash: ef275011cdd87b1d0c861de735d89d064574be5a
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="authorization-in-aspnet-core"></a>ASP.NET Core 的授權
 
@@ -31,6 +31,8 @@ ms.lasthandoff: 02/20/2018
 * [宣告式授權](xref:security/authorization/claims)
 
 * [原則式授權](xref:security/authorization/policies)
+
+* [自訂授權原則提供者](xref:security/authorization/iauthorizationpolicyprovider)
 
 * [要求處理常式中的相依性插入](xref:security/authorization/dependencyinjection)
 

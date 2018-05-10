@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: d5b74e213828d1a1f7e09810e5cc72773a821dab
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 223b1906ef9941084e18e0698f007d9564e81f09
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -107,7 +107,7 @@ ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介
 
 如「開發」與「生產」等環境是 ASP.NET Core 中的第一級概念，可使用環境變數加以設定。
 
-如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments)。
+如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
 
 ## <a name="configuration"></a>組態
 
@@ -143,7 +143,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而�
 
 靜態檔案中介軟體負責提供靜態檔案，例如 HTML、CSS、影像和 JavaScript。
 
-如需詳細資訊，請參閱[使用靜態檔案](xref:fundamentals/static-files)。
+如需詳細資訊，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
 ## <a name="hosting"></a>裝載
 

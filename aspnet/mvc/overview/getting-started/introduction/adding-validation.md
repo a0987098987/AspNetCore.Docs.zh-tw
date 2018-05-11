@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: d084c5c7e232b92c8cfe2230e076752d42d8da5d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 946d4d5e5a506fb437232f9f4440c98e33a1a9b3
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
@@ -78,7 +78,7 @@ String 欄位會顯示新的長度限制和`Genre`不再接受檢查為可為 nu
 
 ## <a name="validation-error-ui-in-aspnet-mvc"></a>驗證錯誤 ASP.NET MVC 中的 UI
 
-執行應用程式，並瀏覽至*/Movies* URL。
+執行應用程式，並瀏覽至 */Movies* URL。
 
 按一下**新建**連結加入新的電影。 使用無效值填寫表單。 jQuery 用戶端驗證一偵測到錯誤，就會顯示錯誤訊息。
 

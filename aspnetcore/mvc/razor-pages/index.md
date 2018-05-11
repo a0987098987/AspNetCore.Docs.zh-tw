@@ -5,16 +5,16 @@ description: 了解 ASP.NET Core 中的 Razor Pages 如何使注重頁面的案�
 manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/12/2017
+ms.date: 5/12/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: f9484d4806a7430177878b462209ba6608cfdd7d
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: c848c5d66a9e8141d9d737e8ce9c994587b04916
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -208,6 +208,13 @@ Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 * 呼叫 `RedirectToPage` 以重新導向至根索引頁 (`/Index`)。
 
 ::: moniker range=">= aspnetcore-2.1"
+
+## <a name="mark-page-properties-required"></a>標示頁面屬性 Required
+
+`PageModel` 上的屬性可以裝飾以 [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) 屬性：
+
+[!code-cs[](index/sample/Create.cshtml.cs?highlight=3,15-16)]
+
 ## <a name="manage-head-requests-with-the-onget-handler"></a>使用 OnGet 處理常式管理 HEAD 要求
 
 一般來說，HEAD 要求會建立 HEAD 處理常式並加以呼叫：
@@ -226,9 +233,10 @@ services.AddMvc()
     .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 ```
 
-`SetCompatibilityVersion` 實際上是將 Razor 頁面選項 `AllowMappingHeadRequestsToGetHandler` 設為 `true`。 直到 ASP.NET Core 3.0 Preview 1 或更新版本為止，都要選擇加入此行為。 每個 ASP.NET Core 的主要版本，都會採用舊版的所有修補版本行為。
+`SetCompatibilityVersion` 實際上是將 Razor 頁面選項 `AllowMappingHeadRequestsToGetHandler` 設為 `true`。
 
-針對修補版本 2.1 至 2.x 的全域選擇加入行為，可藉由將 HEAD 要求對應至 GET 處理常式的應用程式組態來避免。 您可以將 `AllowMappingHeadRequestsToGetHandler` Razor 頁面選項設為 `true` 而不需呼叫 `Startup.Configure` 中的 `SetCompatibilityVersion`：
+您可以明確選擇特定行為，而無須選擇 `SetCompatibilityVersion` 所有 2.1 的行為。 下列程式碼選擇將 HEAD 要求對應到 GET 處理常式。
+
 
 ```csharp
 services.AddMvc()
@@ -267,7 +275,7 @@ Pages 可搭配 Razor 檢視引擎的所有功能一起使用。 版面配置、
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
-**注意：**版面配置是在 *Pages* 資料夾中。 頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。 您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。
+此配置位於 *Pages* 資料夾。 頁面會以階層方式尋找其他檢視 (版面配置、範本、部分)，從目前頁面的相同資料夾開始。 您可以從任何 Razor 頁面下的 *Pages* 資料夾中，使用 *Pages* 資料夾中的版面配置。
 
 我們**不**建議您將配置檔案放入 *Views/Shared* 資料夾。 *Views/Shared* 是 MVC 檢視模式。 Razor 頁面應該要依賴資料夾階層，不是路徑慣例。
 
@@ -299,7 +307,7 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 
 針對 *Pages/Customers/Edit.cshtml* Razor 頁面產生的命名空間和程式碼後置檔案相同。 `@namespace` 指示詞的設計是為了將 C# 類別新增至專案，頁面產生的程式碼「就這麼簡單」，不必為程式碼後置檔案新增 `@using` 指示詞。
 
-**注意：**`@namespace`也適用於傳統的 Razor 檢視。
+`@namespace`  *也適用於傳統的 Razor 檢視。*
 
 原始的 *Pages/Create.cshtml* 檢視檔案：
 
@@ -350,6 +358,42 @@ Razor 頁面的檢視搜尋包括 *Pages* 資料夾。 搭配 MVC 控制器使�
 `RedirectToPage("Index")`、`RedirectToPage("./Index")` 和 `RedirectToPage("../Index")` 是「相對名稱」。 `RedirectToPage` 參數「結合」了目前頁面的路徑，以計算目的地頁面的名稱。  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
 
 相對名稱連結在以複雜結構建置網站時很有用。 如果您使用相對名稱連結資料夾中的頁面，您可以重新命名該資料夾。 所有連結仍可運作 (因為它們不包含資料夾名稱)。
+
+::: moniker range=">= aspnetcore-2.1"
+## <a name="viewdata-attribute"></a>ViewData 屬性
+
+資料可以傳遞至具有 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute) 的頁面。 控制器或 Razor 頁面模型上裝飾以 `[ViewData]` 的屬性會將其值儲存在 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 並從中載入。
+
+在下列範例中，`AboutModel` 包含裝飾以 `[ViewData]` 的 `Title`屬性。 `Title` 屬性會設定為 [關於] 頁面的標題：
+
+```csharp
+public class AboutModel : PageModel
+{
+    [ViewData]
+    public string Title { get; } = "About";
+
+    public void OnGet()
+    {
+    }
+}
+```
+
+在 [關於] 頁面上，存取 `Title` 屬性作為模型屬性：
+
+```cshtml
+<h1>@Model.Title</h1>
+```
+
+在此配置中，標題會從 ViewData 字典中讀取：
+
+```cshtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - WebApplication</title>
+    ...
+```
+::: moniker-end
 
 ## <a name="tempdata"></a>TempData
 

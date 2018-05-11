@@ -11,8 +11,8 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: 4810b3a1978f05eb0608320750f31b8bb95d71fd
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: cfe9f7a7321094b8f901687d91745df2247e1da6
+ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/10/2018
@@ -35,7 +35,7 @@ SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`
 
 將 SignalR 功能加入至 ASP.NET Core 應用程式，安裝 SignalR 的路由，藉由呼叫`app.UseSignalR`中`Startup.Configure`方法。
 
-[!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=56-59)]
+[!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=57-60)]
 
 ## <a name="create-and-use-hubs"></a>建立和使用集線器
 
@@ -91,4 +91,6 @@ SignalR 的中介軟體需要某些服務，已藉由呼叫`services.AddSignalR`
 
 ## <a name="related-resources"></a>相關資源
 
-[ASP.NET Core SignalR 簡介](xref:signalr/introduction)
+* [ASP.NET Core SignalR 簡介](xref:signalr/introduction)
+* [JavaScript 用戶端](xref:signalr/javascript-client)
+* [發佈至 Azure](xref:signalr/publish-to-azure-web-app)

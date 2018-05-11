@@ -4,16 +4,16 @@ author: ardalis
 description: 了解如何從 ASP.NET Web API 的 Web API 實作移轉至 ASP.NET Core MVC。
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 05/10/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/webapi
-ms.openlocfilehash: 059e1bc54c57e502ad01fd50d9899dfd0671037f
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 8d842877e49e317323d453e71ebb3302245f388d
+ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 移轉至 ASP.NET Core
 
@@ -36,7 +36,7 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 [!code-csharp[](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 
-這個類別會設定[屬性路由](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定 ASP.NET Web API 所使用的路由表。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與 *{id}* 為選擇性。
+這個類別會設定[屬性路由](https://docs.microsoft.com/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)，但實際上不會在專案中使用。 它也會設定路由表，由 ASP.NET Web API。 在此情況下，ASP.NET Web 應用程式開發介面會預期以符合格式的 Url */api/ {controller} / {id}*，與 *{id}* 為選擇性。
 
 *ProductsApp*專案包含一個簡單的控制器，繼承自`ApiController`和公開兩個方法：
 
@@ -116,6 +116,37 @@ Web 應用程式開發介面為連線用戶端，包括瀏覽器和行動裝置�
 [!code-csharp[](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
 您現在應該能夠執行移轉的專案，並瀏覽至 */api/產品*; 而且，您應該會看到 3 產品的完整清單。 瀏覽至 */api/products/1*和您應該會看到第一次的產品。
+
+## <a name="microsoftaspnetcoremvcwebapicompatshim"></a>Microsoft.AspNetCore.Mvc.WebApiCompatShim
+
+移轉 ASP.NET Web API 專案到 ASP.NET Core 時相當有用的工具是[Microsoft.AspNetCore.Mvc.WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim)程式庫。 相容性填充碼延伸到允許的數量要使用不同的 Web API 2 慣例 ASP.NET Core。 基本相容性填充碼不需要移植先前在此文件中的範例。 針對大型專案，在使用相容性填充碼可用於暫時的溝通落差 API ASP.NET Core 與 ASP.NET Web API 2 之間。
+
+Web 應用程式開發介面相容性填充碼是用來做為暫時的措施用於簡化大型 Web API 專案移轉至 ASP.NET Core。 經過一段時間，您應該更新專案，以使用 ASP.NET Core 模式，而不是依賴相容性填充碼。 
+
+Microsoft.AspNetCore.Mvc.WebApiCompatShim 中包含的相容性功能包括：
+
+* 新增`ApiController`型別，如此控制站的基底型別不需要更新。
+* 可讓 Web 應用程式開發介面樣式模型繫結。 ASP.NET Core MVC 模型繫結的功能類似於預設的 MVC 5。 相容性填充碼變更的模型繫結才能比較類似於 Web API 2 模型繫結慣例。 例如，複雜型別會自動繫結從要求主體中。
+* 延伸模型繫結，讓控制器的動作可能需要型別參數的`HttpRequestMessage`。
+* 新增訊息格式器允許動作，以傳回結果的型別`HttpResponseMessage`。
+* 新增其他回應 Web API 2 動作可能已用來處理回應的方法：
+    * HttpResponseMessage 產生器：
+        * `CreateResponse<T>`
+        * `CreateErrorResponse`
+    * 動作結果的方法：
+        * `BadResuestErrorMessageResult`
+        * `ExceptionResult`
+        * `InternalServerErrorResult`
+        * `InvalidModelStateResult`
+        * `NegotiatedContentResult`
+        * `ResponseMessageResult`
+* 將執行個體加入`IContentNegotiator`應用程式的 DI 容器和建立內容交涉相關的類型，從[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)可用。 這包括類類型`DefaultContentNegotiator`，`MediaTypeFormatter`等等。
+
+若要使用相容性填充碼，您需要：
+
+* 參考[Microsoft.AspNetCore.Mvc.WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim) NuGet 封裝。
+* 向應用程式的 DI 容器中的相容性填充碼的服務，藉由呼叫`services.AddWebApiConventions()`在應用程式的`Startup.ConfigureServices`方法。
+* 定義使用的 Web 應用程式開發介面特定路由`MapWebApiRoute`上`IRouteBuilder`在應用程式的`IApplicationBuilder.UseMvc`呼叫。
 
 ## <a name="summary"></a>總結
 

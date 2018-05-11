@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
-title: "實習： 一個 ASP.NET： 將 ASP.NET Web Form、 MVC 和 Web API 的整合 |Microsoft 文件"
+title: 實習： 一個 ASP.NET： 將 ASP.NET Web Form、 MVC 和 Web API 的整合 |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET 是用於建置網站、 應用程式和服務使用特定的技術，例如 MVC、 Web API 等的架構。 與 ASP.NET h 延伸..."
+description: ASP.NET 是用於建置網站、 應用程式和服務使用特定的技術，例如 MVC、 Web API 等的架構。 與 ASP.NET h 延伸...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
@@ -102,12 +102,12 @@ ms.lasthandoff: 11/10/2017
 
 在這項工作會啟動 Visual Studio 中建立新的網站根據**One ASP.NET**專案類型。 **一個 ASP.NET**統一所有 ASP.NET 技術，並提供您混搭它們所需的選項。 您再將應用程式中並排顯示辨識即時 Web Form、 MVC 和 Web API 的不同元件。
 
-1. 開啟**Visual Studio Express 2013 for Web**選取**檔案 |新增專案...**啟動新的解決方案。
+1. 開啟**Visual Studio Express 2013 for Web**選取**檔案 |新增專案...** 啟動新的解決方案。
 
     ![建立新專案](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image1.png)
 
     *建立新的專案*
-2. 在**新專案**對話方塊中，選取**ASP.NET Web 應用程式**下**Visual C# |Web**索引標籤，並確定**.NET Framework 4.5**已選取。 將專案命名*MyHybridSite*，選擇**位置**按一下**確定**。
+2. 在**新專案**對話方塊中，選取**ASP.NET Web 應用程式**下**Visual C# |Web**索引標籤，並確定 **.NET Framework 4.5**已選取。 將專案命名*MyHybridSite*，選擇**位置**按一下**確定**。
 
     ![新的 ASP.NET Web 應用程式專案](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image2.png)
 
@@ -154,14 +154,14 @@ ms.lasthandoff: 11/10/2017
 1. 若要執行此方案，請按**F5**或按一下**啟動**按鈕位於工具列上。 瀏覽器中開啟應用程式首頁。
 
     ![執行解決方案](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image6.png)
-2. 請確認 Web Form 頁面會被叫用。 若要這樣做，請附加**/contact.aspx**在位址列中按的 url **Enter**。
+2. 請確認 Web Form 頁面會被叫用。 若要這樣做，請附加 **/contact.aspx**在位址列中按的 url **Enter**。
 
     ![易記的 Url](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image7.png)
 
     *易記的 Url*
 
     > [!NOTE]
-    > 如您所見，URL 變更為**/連絡**。 從開始**ASP.NET 4**、 URL 路由的功能已加入至 Web Form、 Url，您可以撰寫類似 *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* 而不是*[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*。 如需詳細資訊請參閱[URL 路由](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)。
+    > 如您所見，URL 變更為 **/連絡**。 從開始**ASP.NET 4**、 URL 路由的功能已加入至 Web Form、 Url，您可以撰寫類似*[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* 而不是*[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*。 如需詳細資訊請參閱[URL 路由](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)。
 3. 現在，您將探索整合到應用程式的驗證流程。 若要這樣做，請按一下**註冊**頁面的右上角。
 
     ![註冊新的使用者](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)
@@ -232,7 +232,7 @@ Entity Framework Code First 模型工作流程可讓您使用您自己的網域�
     ![選取的檢視和 Entity Framework 的 MVC 5 控制器](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image14.png)
 
     *選取的檢視和 Entity Framework 的 MVC 5 控制器*
-3. 設定*MvcPersonController*為**控制器名稱**，選取**使用非同步控制器動作**選項，然後選取**人員 (MyHybridSite.Models)**為**模型類別**。
+3. 設定*MvcPersonController*為**控制器名稱**，選取**使用非同步控制器動作**選項，然後選取**人員 (MyHybridSite.Models)** 為**模型類別**。
 
     ![新增此 MVC 控制器具有 scaffolding](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image15.png)
 
@@ -265,7 +265,7 @@ Entity Framework Code First 模型工作流程可讓您使用您自己的網域�
 在這個工作中，您將執行一次以確認方案的檢視**人員**是否依照預期方式運作。 您將加入新的對方，以確認它已成功儲存資料庫。
 
 1. 按**F5**執行解決方案。
-2. 瀏覽至**/MvcPerson**。 顯示的人員清單的 scaffold 的檢視應該會出現。
+2. 瀏覽至 **/MvcPerson**。 顯示的人員清單的 scaffold 的檢視應該會出現。
 3. 按一下**新建**来加入新的人員。
 
     ![巡覽至 scaffold MVC 檢視](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image19.png)
@@ -314,7 +314,7 @@ Web API framework 是 ASP.NET 堆疊的一部分，旨在讓您更輕鬆，通�
     ![選取 Web API 2 控制器與動作和 Entity Framework](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image24.png "選取的 Web API 2 控制器與動作和 Entity Framework")
 
     *選取 Web API 2 控制器與動作和 Entity Framework*
-4. 設定*ApiPersonController*為**控制器名稱**，選取**使用非同步控制器動作**選項，然後選取**人員 (MyHybridSite.Models)**和**PersonContext (MyHybridSite.Models)**為**模型**和**資料內容**分別類別。 然後按一下 [加入] 。
+4. 設定*ApiPersonController*為**控制器名稱**，選取**使用非同步控制器動作**選項，然後選取**人員 (MyHybridSite.Models)** 和**PersonContext (MyHybridSite.Models)** 為**模型**和**資料內容**分別類別。 然後按一下 [加入] 。
 
     ![加入 Web API 控制器會 scaffolding](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image25.png "加入 scaffolding Web API 控制器")
 
@@ -332,7 +332,7 @@ Web API framework 是 ASP.NET 堆疊的一部分，旨在讓您更輕鬆，通�
     [!code-csharp[Main](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/samples/sample6.cs)]
 
     > [!NOTE]
-    > 根據預設，Web API 設定要攔截查詢*/api*路徑，以避免與 MVC 控制器的衝突。 如果您需要變更此設定，請參閱[中 ASP.NET Web API 的路由](../../../web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api.md)。
+    > 根據預設，Web API 設定要攔截查詢 */api*路徑，以避免與 MVC 控制器的衝突。 如果您需要變更此設定，請參閱[中 ASP.NET Web API 的路由](../../../web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api.md)。
 
 <a id="Ex3Task2"></a>
 #### <a name="task-2--running-the-solution"></a>工作 2-執行解決方案
@@ -401,7 +401,7 @@ Web API framework 是 ASP.NET 堆疊的一部分，旨在讓您更輕鬆，通�
     *輸出區段中 [建置] 索引標籤*
 6. 按**CTRL** + **S**儲存的變更。
 7. 開啟**ApiPersonController.cs**檔案從**控制器**資料夾。
-8. 輸入新的一行之間*GetPeople*方法簽章和*/ / 取得應用程式開發介面/ApiPerson*註解，然後輸入 三個正斜線。
+8. 輸入新的一行之間*GetPeople*方法簽章和 */ / 取得應用程式開發介面/ApiPerson*註解，然後輸入 三個正斜線。
 
     > [!NOTE]
     > Visual Studio 會自動插入的 XML 項目會定義方法的文件。
@@ -409,7 +409,7 @@ Web API framework 是 ASP.NET 堆疊的一部分，旨在讓您更輕鬆，通�
 
     [!code-csharp[Main](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/samples/sample9.cs)]
 10. 按**F5**執行解決方案。
-11. 附加**/help**至 URL 網址列中，以瀏覽至 [說明] 頁面。
+11. 附加 **/help**至 URL 網址列中，以瀏覽至 [說明] 頁面。
 
     ![ASP.NET Web API 說明頁面](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image34.png "ASP.NET Web API 說明頁面")
 

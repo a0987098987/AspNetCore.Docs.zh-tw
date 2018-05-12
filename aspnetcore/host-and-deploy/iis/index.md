@@ -366,7 +366,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * **\<system.web>**
 * **\<appSettings>**
 * **\<connectionStrings>**
-* **\<位置>**
+* **\<location>**
 
 使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 

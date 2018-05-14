@@ -1,5 +1,12 @@
-# <a name="custom-model-binding-demo"></a><span data-ttu-id="b0f30-101">自訂模型繫結示範</span><span class="sxs-lookup"><span data-stu-id="b0f30-101">Custom Model Binding Demo</span></span>
+# <a name="custom-model-binding-demo"></a>自訂模型繫結示範
 
-<span data-ttu-id="b0f30-102">您可以執行應用程式，並將 base64 編碼字串張貼 (POST) 到 ImageController 端點 (/api/image/)，以測試 `ByteArrayModelBinder`。</span><span class="sxs-lookup"><span data-stu-id="b0f30-102">You can test the `ByteArrayModelBinder` by running the application and POSTing a base64-encoded string to the ImageController endpoint (/api/image/).</span></span> <span data-ttu-id="b0f30-103">您應該在要求主體中指定檔案和檔案名稱屬性作為表單資料 (使用 Postman 或類似工具）。</span><span class="sxs-lookup"><span data-stu-id="b0f30-103">You should specify the file and filename proparties in the request Body as form-data (using Postman or a similar tool).</span></span> <span data-ttu-id="b0f30-104">您可以使用[此範例字串](Base64String.txt)。</span><span class="sxs-lookup"><span data-stu-id="b0f30-104">You can use [this sample string](Base64String.txt).</span></span> <span data-ttu-id="b0f30-105">結果將以您指定的檔案名稱儲存在 wwwroot/images/upload 資料夾中。</span><span class="sxs-lookup"><span data-stu-id="b0f30-105">The result will be saved in the wwwroot/images/upload folder with the filename you specified.</span></span>
+執行應用程式，並將 base64 編碼的字串張貼到`ImageController`端點 (`/api/image/`)，以測試 `ByteArrayModelBinder`。 請在要求主體中指定檔案與檔案名稱屬性作為表單資料 (使用 [Postman](https://www.getpostman.com/) 或類似工具)。 您可以使用[此範例字串](Base64String.txt)。 結果會以您指定的檔案名稱儲存在 *wwwroot/images/upload* 資料夾中。
 
-<span data-ttu-id="b0f30-106">若要測試自訂繫結範例，請嘗試下列端點： /api/authors/1 /api/authors/2 (NOT FO「」) /api/boundauthors/1 /api/boundauthors/2 (NOT FOUND) /api/boundauthors/get/1 /api/boundauthors/get/2 (NO CONTENT) - 這個動作不會檢查是否有 null，並傳回「找不到」</span><span class="sxs-lookup"><span data-stu-id="b0f30-106">To test the custom binding example, try the following endpoints: /api/authors/1 /api/authors/2 (NOT FOUND) /api/boundauthors/1 /api/boundauthors/2 (NOT FOUND) /api/boundauthors/get/1 /api/boundauthors/get/2 (NO CONTENT) - this action doesn't check for null and return a Not Found</span></span>
+若要測試自訂繫結的範例，請嘗試下列端點：
+
+* /api/authors/1
+* /api/authors/2 (找不到)
+* /api/boundauthors/1
+* /api/boundauthors/2 (找不到)
+* /api/boundauthors/get/1
+* /api/boundauthors/get/2 (NO CONTENT) &ndash; 此動作不會檢查 null，並會傳回 *404 找不到*。

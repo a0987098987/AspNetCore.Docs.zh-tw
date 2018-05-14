@@ -1,7 +1,7 @@
-# <a name="aspnet-core-response-caching-sample"></a><span data-ttu-id="b74dd-101">ASP.NET Core 回應快取範例</span><span class="sxs-lookup"><span data-stu-id="b74dd-101">ASP.NET Core Response Caching Sample</span></span>
+# <a name="aspnet-core-response-caching-sample"></a>ASP.NET Core 回應快取範例
 
-<span data-ttu-id="b74dd-102">此範例說明使用 ASP.NET Core[回應快取中介軟體](https://docs.microsoft.com/aspnet/core/performance/caching/middleware)。</span><span class="sxs-lookup"><span data-stu-id="b74dd-102">This sample illustrates the usage of ASP.NET Core [Response Caching Middleware](https://docs.microsoft.com/aspnet/core/performance/caching/middleware).</span></span>
+此範例說明使用 ASP.NET Core[回應快取中介軟體](https://docs.microsoft.com/aspnet/core/performance/caching/middleware)。
 
-<span data-ttu-id="b74dd-103">應用程式的回應其索引頁，包括`Cache-Control`標頭來設定快取行為。</span><span class="sxs-lookup"><span data-stu-id="b74dd-103">The app responds with its Index page, including a `Cache-Control` header to configure caching behavior.</span></span> <span data-ttu-id="b74dd-104">應用程式也會設定`Vary`標頭設定快取提供回應才`Accept-Encoding`後續要求的標頭符合原始要求。</span><span class="sxs-lookup"><span data-stu-id="b74dd-104">The app also sets the `Vary` header to configure the cache to serve the response only if the `Accept-Encoding` header of subsequent requests matches that from the original request.</span></span>
+應用程式的回應其索引頁，包括`Cache-Control`標頭來設定快取行為。 應用程式也會設定`Vary`標頭設定快取提供回應才`Accept-Encoding`後續要求的標頭符合原始要求。
 
-<span data-ttu-id="b74dd-105">執行範例時，就會從快取儲存與快取多達 10 秒時提供的索引頁面。</span><span class="sxs-lookup"><span data-stu-id="b74dd-105">When running the sample, the Index page is served from cache when stored and cached for up to 10 seconds.</span></span>
+執行範例時，就會從快取儲存與快取多達 10 秒時提供的索引頁面。

@@ -1,19 +1,19 @@
-# <a name="aspnet-core-anchor-tag-helper-sample"></a><span data-ttu-id="2e060-101">ASP.NET Core 錨點標籤協助程式範例</span><span class="sxs-lookup"><span data-stu-id="2e060-101">ASP.NET Core Anchor Tag Helper Sample</span></span>
+# <a name="aspnet-core-anchor-tag-helper-sample"></a>ASP.NET Core 錨點標籤協助程式範例
 
-<span data-ttu-id="2e060-102">此範例說明如何搭配 MVC 和 Razor 頁面使用內建的錨點標籤協助程式。</span><span class="sxs-lookup"><span data-stu-id="2e060-102">This sample illustrates the use of the built-in Anchor Tag Helper with both MVC and Razor Pages.</span></span> <span data-ttu-id="2e060-103">這個範例將示範[錨點標籤協助程式](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper)主題中所述的功能。</span><span class="sxs-lookup"><span data-stu-id="2e060-103">This sample demonstrates the features described in the [Anchor Tag Helper](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper) topic.</span></span>
+此範例說明如何搭配 MVC 和 Razor 頁面使用內建的錨點標籤協助程式。 這個範例將示範[錨點標籤協助程式](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper)主題中所述的功能。
 
-## <a name="examples-in-this-sample"></a><span data-ttu-id="2e060-104">這個範例中的範例</span><span class="sxs-lookup"><span data-stu-id="2e060-104">Examples in this sample</span></span>
+## <a name="examples-in-this-sample"></a>這個範例中的範例
 
-<span data-ttu-id="2e060-105">示範下列錨點標籤協助程式屬性：</span><span class="sxs-lookup"><span data-stu-id="2e060-105">The following Anchor Tag Helper attributes are demonstrated:</span></span>
+示範下列錨點標籤協助程式屬性：
 
-- [<span data-ttu-id="2e060-106">asp-action</span><span class="sxs-lookup"><span data-stu-id="2e060-106">asp-action</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-action)
-- [<span data-ttu-id="2e060-107">asp-all-route-data</span><span class="sxs-lookup"><span data-stu-id="2e060-107">asp-all-route-data</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-all-route-data)
-- [<span data-ttu-id="2e060-108">asp-area</span><span class="sxs-lookup"><span data-stu-id="2e060-108">asp-area</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-area)
-- [<span data-ttu-id="2e060-109">asp-controller</span><span class="sxs-lookup"><span data-stu-id="2e060-109">asp-controller</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-controller)
-- [<span data-ttu-id="2e060-110">asp-fragment</span><span class="sxs-lookup"><span data-stu-id="2e060-110">asp-fragment</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-fragment)
-- [<span data-ttu-id="2e060-111">asp-host</span><span class="sxs-lookup"><span data-stu-id="2e060-111">asp-host</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-host)
-- [<span data-ttu-id="2e060-112">asp-page</span><span class="sxs-lookup"><span data-stu-id="2e060-112">asp-page</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-page)
-- [<span data-ttu-id="2e060-113">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="2e060-113">asp-page-handler</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-page-handler)
-- [<span data-ttu-id="2e060-114">asp-protocol</span><span class="sxs-lookup"><span data-stu-id="2e060-114">asp-protocol</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-protocol)
-- [<span data-ttu-id="2e060-115">asp-route</span><span class="sxs-lookup"><span data-stu-id="2e060-115">asp-route</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-route)
-- [<span data-ttu-id="2e060-116">asp-route-{value}</span><span class="sxs-lookup"><span data-stu-id="2e060-116">asp-route-{value}</span></span>](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-route-value)
+- [asp-action](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-action)
+- [asp-all-route-data](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-all-route-data)
+- [asp-area](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-area)
+- [asp-controller](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-controller)
+- [asp-fragment](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-fragment)
+- [asp-host](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-host)
+- [asp-page](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-page)
+- [asp-page-handler](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-page-handler)
+- [asp-protocol](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-protocol)
+- [asp-route](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-route)
+- [asp-route-{value}](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper#asp-route-value)

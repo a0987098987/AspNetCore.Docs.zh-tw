@@ -1,29 +1,29 @@
-<span data-ttu-id="6456c-101">預設範本會建立 **RazorPagesMovie**、**Home**、**About** 和 **Contact** 連結和頁面。</span><span class="sxs-lookup"><span data-stu-id="6456c-101">The default template creates **RazorPagesMovie**, **Home**, **About** and **Contact** links and pages.</span></span> <span data-ttu-id="6456c-102">根據瀏覽器視窗的大小，您可能需要按一下瀏覽圖示來顯示連結。</span><span class="sxs-lookup"><span data-stu-id="6456c-102">Depending on the size of your browser window, you might need to click the navigation icon to show the links.</span></span>
+預設範本會建立 **RazorPagesMovie**、**Home**、**About** 和 **Contact** 連結和頁面。 根據瀏覽器視窗的大小，您可能需要按一下瀏覽圖示來顯示連結。
 
 ![Home 或 Index 頁面](../../tutorials/razor-pages/razor-pages-start/_static/home2.png)
 
-<span data-ttu-id="6456c-104">測試連結。</span><span class="sxs-lookup"><span data-stu-id="6456c-104">Test the links.</span></span> <span data-ttu-id="6456c-105">**RazorPagesMovie** 和 **Home** 連結會移至 Index 頁面。</span><span class="sxs-lookup"><span data-stu-id="6456c-105">The **RazorPagesMovie** and **Home** links go to the Index page.</span></span> <span data-ttu-id="6456c-106">**About** 和 **Contact** 連結則分別移至 `About` 和 `Contact` 頁面。</span><span class="sxs-lookup"><span data-stu-id="6456c-106">The **About** and **Contact** links go to the `About` and `Contact` pages, respectively.</span></span>
+測試連結。 **RazorPagesMovie** 和 **Home** 連結會移至 Index 頁面。 **About** 和 **Contact** 連結則分別移至 `About` 和 `Contact` 頁面。
 
-## <a name="project-files-and-folders"></a><span data-ttu-id="6456c-107">專案檔和資料夾</span><span class="sxs-lookup"><span data-stu-id="6456c-107">Project files and folders</span></span>
+## <a name="project-files-and-folders"></a>專案檔和資料夾
 
-<span data-ttu-id="6456c-108">下表列出專案中的檔案和資料夾。</span><span class="sxs-lookup"><span data-stu-id="6456c-108">The following table lists the files and folders in the project.</span></span> <span data-ttu-id="6456c-109">在本教學課程中，*Startup.cs* 檔案是需要了解的最重要項目。</span><span class="sxs-lookup"><span data-stu-id="6456c-109">For this tutorial, the *Startup.cs* file is the most important to understand.</span></span> <span data-ttu-id="6456c-110">您不需要檢閱以下提供的每個連結。</span><span class="sxs-lookup"><span data-stu-id="6456c-110">You don't need to review each link provided below.</span></span> <span data-ttu-id="6456c-111">當您需要專案中的檔案或資料夾的詳細資訊時，便會提供連結作為參考。</span><span class="sxs-lookup"><span data-stu-id="6456c-111">The links are provided as a reference when you need more information on a file or folder in the project.</span></span>
+下表列出專案中的檔案和資料夾。 在本教學課程中，*Startup.cs* 檔案是需要了解的最重要項目。 您不需要檢閱以下提供的每個連結。 當您需要專案中的檔案或資料夾的詳細資訊時，便會提供連結作為參考。
 
-| <span data-ttu-id="6456c-112">檔案或資料夾</span><span class="sxs-lookup"><span data-stu-id="6456c-112">File or folder</span></span>              | <span data-ttu-id="6456c-113">用途</span><span class="sxs-lookup"><span data-stu-id="6456c-113">Purpose</span></span> |
+| 檔案或資料夾              | 用途 |
 | ----------------- | ------------ | 
-| <span data-ttu-id="6456c-114">wwwroot</span><span class="sxs-lookup"><span data-stu-id="6456c-114">wwwroot</span></span> | <span data-ttu-id="6456c-115">包含靜態檔案。</span><span class="sxs-lookup"><span data-stu-id="6456c-115">Contains static files.</span></span> <span data-ttu-id="6456c-116">請參閱[使用靜態檔案](xref:fundamentals/static-files)。</span><span class="sxs-lookup"><span data-stu-id="6456c-116">See [Working with static files](xref:fundamentals/static-files).</span></span> |
-| <span data-ttu-id="6456c-117">頁面</span><span class="sxs-lookup"><span data-stu-id="6456c-117">Pages</span></span> | <span data-ttu-id="6456c-118">[Razor 頁面](xref:mvc/razor-pages/index)的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6456c-118">Folder for [Razor Pages](xref:mvc/razor-pages/index).</span></span> | 
-| <span data-ttu-id="6456c-119">*appsettings.json*</span><span class="sxs-lookup"><span data-stu-id="6456c-119">*appsettings.json*</span></span> | [<span data-ttu-id="6456c-120">組態</span><span class="sxs-lookup"><span data-stu-id="6456c-120">Configuration</span></span>](xref:fundamentals/configuration/index) |
-| <span data-ttu-id="6456c-121">*Program.cs*</span><span class="sxs-lookup"><span data-stu-id="6456c-121">*Program.cs*</span></span> | <span data-ttu-id="6456c-122">[裝載](xref:fundamentals/hosting) ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="6456c-122">[Hosts](xref:fundamentals/hosting) the ASP.NET Core app.</span></span>|
-| <span data-ttu-id="6456c-123">*Startup.cs*</span><span class="sxs-lookup"><span data-stu-id="6456c-123">*Startup.cs*</span></span> | <span data-ttu-id="6456c-124">設定服務和要求管線。</span><span class="sxs-lookup"><span data-stu-id="6456c-124">Configures services and the request pipeline.</span></span> <span data-ttu-id="6456c-125">請參閱 [Startup](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="6456c-125">See [Startup](xref:fundamentals/startup).</span></span>|
+| wwwroot | 包含靜態檔案。 請參閱[使用靜態檔案](xref:fundamentals/static-files)。 |
+| 頁面 | [Razor 頁面](xref:mvc/razor-pages/index)的資料夾。 | 
+| *appsettings.json* | [組態](xref:fundamentals/configuration/index) |
+| *Program.cs* | [裝載](xref:fundamentals/hosting) ASP.NET Core 應用程式。|
+| *Startup.cs* | 設定服務和要求管線。 請參閱 [Startup](xref:fundamentals/startup)。|
 
-### <a name="the-pages-folder"></a><span data-ttu-id="6456c-126">Pages 資料夾</span><span class="sxs-lookup"><span data-stu-id="6456c-126">The Pages folder</span></span>
+### <a name="the-pages-folder"></a>Pages 資料夾
 
-<span data-ttu-id="6456c-127">*_Layout.cshtml* 檔案包含通用的 HTML 元素 (指令碼和樣式表)，並設定應用程式的配置。</span><span class="sxs-lookup"><span data-stu-id="6456c-127">The *_Layout.cshtml* file contains common HTML elements (scripts and stylesheets) and sets the layout for the application.</span></span> <span data-ttu-id="6456c-128">例如，當您按一下 **RazorPagesMovie**、**Home**、**About** 或 **Contact** 時，會看到相同的元素。</span><span class="sxs-lookup"><span data-stu-id="6456c-128">For example, when you click on **RazorPagesMovie**, **Home**, **About** or **Contact**, you see the same elements.</span></span> <span data-ttu-id="6456c-129">通用元素包含頂端的導覽功能表和視窗底部的標頭。</span><span class="sxs-lookup"><span data-stu-id="6456c-129">The common elements include the navigation menu on the top and the header on the bottom of the window.</span></span> <span data-ttu-id="6456c-130">如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="6456c-130">See [Layout](xref:mvc/views/layout) for more information.</span></span>
+*_Layout.cshtml* 檔案包含通用的 HTML 元素 (指令碼和樣式表)，並設定應用程式的配置。 例如，當您按一下 **RazorPagesMovie**、**Home**、**About** 或 **Contact** 時，會看到相同的元素。 通用元素包含頂端的導覽功能表和視窗底部的標頭。 如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。
 
-<span data-ttu-id="6456c-131">*_ViewStart.cshtml* 會設定 Razor 頁面 `Layout` 屬性，以使用 *_Layout.cshtml* 檔案。</span><span class="sxs-lookup"><span data-stu-id="6456c-131">The *_ViewStart.cshtml* sets the Razor Pages `Layout` property to use the *_Layout.cshtml* file.</span></span> <span data-ttu-id="6456c-132">如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。</span><span class="sxs-lookup"><span data-stu-id="6456c-132">See [Layout](xref:mvc/views/layout) for more information.</span></span>
+*_ViewStart.cshtml* 會設定 Razor 頁面 `Layout` 屬性，以使用 *_Layout.cshtml* 檔案。 如需詳細資訊，請參閱 [Layout](xref:mvc/views/layout)。
 
-<span data-ttu-id="6456c-133">*_ViewImports.cshtml* 檔案包含匯入至每個 Razor 頁面的 Razor 指示詞。</span><span class="sxs-lookup"><span data-stu-id="6456c-133">The *_ViewImports.cshtml* file contains Razor directives that are imported into each Razor Page.</span></span> <span data-ttu-id="6456c-134">如需詳細資訊，請參閱[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)。</span><span class="sxs-lookup"><span data-stu-id="6456c-134">See [Importing Shared Directives](xref:mvc/views/layout#importing-shared-directives) for more information.</span></span>
+*_ViewImports.cshtml* 檔案包含匯入至每個 Razor 頁面的 Razor 指示詞。 如需詳細資訊，請參閱[匯入共用指示詞](xref:mvc/views/layout#importing-shared-directives)。
 
-<span data-ttu-id="6456c-135">*_ValidationScriptsPartial.cshtml* 檔案提供 [jQuery](https://jquery.com/) 驗證指令碼的參考。</span><span class="sxs-lookup"><span data-stu-id="6456c-135">The *_ValidationScriptsPartial.cshtml* file provides a reference to [jQuery](https://jquery.com/) validation scripts.</span></span> <span data-ttu-id="6456c-136">當我們稍後在教學課程中新增至 `Create` 和 `Edit` 頁面時，將會使用 *_ValidationScriptsPartial.cshtml* 檔案。</span><span class="sxs-lookup"><span data-stu-id="6456c-136">When we add `Create` and `Edit` pages later in the tutorial, the *_ValidationScriptsPartial.cshtml* file will be used.</span></span>
+*_ValidationScriptsPartial.cshtml* 檔案提供 [jQuery](https://jquery.com/) 驗證指令碼的參考。 當我們稍後在教學課程中新增至 `Create` 和 `Edit` 頁面時，將會使用 *_ValidationScriptsPartial.cshtml* 檔案。
 
-<span data-ttu-id="6456c-137">`About`、`Contact` 和 `Index` 頁面是您可以用來啟動應用程式的基本頁面。</span><span class="sxs-lookup"><span data-stu-id="6456c-137">The `About`, `Contact` and `Index` pages are basic pages you can use to start an app.</span></span> <span data-ttu-id="6456c-138">`Error` 頁面則用來顯示錯誤資訊。</span><span class="sxs-lookup"><span data-stu-id="6456c-138">The `Error` page is used to display error information.</span></span>
+`About`、`Contact` 和 `Index` 頁面是您可以用來啟動應用程式的基本頁面。 `Error` 頁面則用來顯示錯誤資訊。

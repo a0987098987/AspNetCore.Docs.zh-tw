@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 7de43a390ee0e11f6eda811b0774343ab330c53b
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: eaa3070e182b161087185bbb9007e8067052d95c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>使用 Visual Studio 的 ASP.NET Core MVC 與 Entity Framework Core 使用者入門 (1/10)
+# <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教學課程的 Razor 頁面版本位於[這裡](xref:data/ef-rp/intro)。 此 Razor 頁面版本更容易遵循，並涵蓋更多 EF 功能。 我們建議您遵循[此教學課程的 Razor 頁面版本](xref:data/ef-rp/intro)。
+[!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
 Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (EF) Core 2.0 和 Visual Studio 2017 ASP.NET Core 2.0 MVC web 應用程式。
 
@@ -35,7 +35,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE[install 2.0](../../includes/install2.0.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -128,7 +128,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 在 *Models* 資料夾中，建立一個名為 *Student.cs* 的類別檔案，然後使用下列程式碼取代範本程式碼。
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
 `ID` 屬性會成為資料庫資料表中的主索引鍵資料行，並對應至這個類別。 Entity Framework 預設會將名為 `ID` 或 `classnameID` 的屬性解譯為主索引鍵。
 
@@ -142,7 +142,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 在 *Models* 資料夾中，建立 *Enrollment.cs*，然後使用下列程式碼取代現有的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
 `EnrollmentID` 屬性將為主索引鍵。此實體會使用 `classnameID` 模式，而非您在 `Student` 實體中所見到的自身 `ID`。 通常您會選擇一個模式，然後在您整個資料模型中使用此模式。 在這裡，此變化僅作為向您展示使用不同模式之用。 在[稍後的教學課程](inheritance.md)中，您會了解使用沒有 classname 的識別碼可讓在資料模型中實作繼承變得更為簡單。
 
@@ -160,7 +160,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 在 *Models* 資料夾中，建立 *Course.cs*，然後使用下列程式碼取代現有的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
 `Enrollments` 屬性為導覽屬性。 `Course` 實體可以與任何數量的 `Enrollment` 實體相關。
 
@@ -174,7 +174,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 在 *Data* 資料夾中，建立名為 *SchoolContext.cs* 的新類別檔案，然後使用下列程式碼取代範本程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
 程式碼會為每一個實體集建立 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。
 
@@ -182,7 +182,7 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 資料庫建立時，EF 會建立和 `DbSet` 屬性名稱相同的資料表。 集合的屬性名稱通常都是複數 (Students 而非 Student)，但許多開發人員會為了資料表名稱究竟是否該是複數型態而爭論。 在此系列教學課程中，您會藉由指定 DbContext 中的單數資料表名稱來覆寫預設行為。 若要完成這項操作，請在最後一個 DbSet 屬性後方新增下列醒目提示程式碼。
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
 ## <a name="register-the-context-with-dependency-injection"></a>使用相依性插入來註冊內容
 
@@ -190,13 +190,13 @@ Entity Framework 會將名為 `<navigation property name><primary key property n
 
 若要將 `SchoolContext` 註冊為服務，請開啟 *Startup.cs*，並將醒目標示的程式碼新增至 `ConfigureServices` 方法。
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
 
 連接字串的名稱，會透過呼叫 `DbContextOptionsBuilder` 物件上的方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
 為 `ContosoUniversity.Data` 和 `Microsoft.EntityFrameworkCore` 命名空間新增 `using` 陳述式，然後建置專案。
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_Usings)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
 開啟 *appsettings.json* 檔案，然後如以下範例所示新增連接字串。
 
@@ -214,7 +214,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 在 *Data* 資料夾中，建立一個名為 *DbInitializer.cs* 的新類別檔案，使用下列程式碼取代範本程式碼。這些程式碼會在需要的時候建立資料庫，並將測試資料載入至新的資料庫。
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
 程式碼會檢查資料庫中是否有任何學生。若沒有的話，它便會假設資料庫是新的資料庫，因此需要植入測試資料。 它會將測試資料載入陣列之中，而非 `List<T>` 集合，以最佳化效能。
 
@@ -224,11 +224,11 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 * 呼叫種子方法，並將其傳遞給內容。
 * 種子方法完成時處理內容。
 
-[!code-csharp[Main](intro/samples/cu/Program.cs?name=snippet_Seed&highlight=3-20)]
+[!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Seed&highlight=3-20)]
 
 新增 `using` 陳述式：
 
-[!code-csharp[Main](intro/samples/cu/Program.cs?name=snippet_Usings)]
+[!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Usings)]
 
 在較舊的教學課程中，您會在 *Startup.cs* 的 `Configure` 方法中看到類似的程式碼。 我們建議您只在設定要求管道時使用 `Configure` 方法。 應用程式啟動程式碼屬於 `Main` 方法。
 
@@ -271,13 +271,13 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
 您會發現控制器會接受 `SchoolContext` 作為建構函式的參數。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
 ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制器。 您可以在先前的 *Startup.cs* 檔案中設定它。
 
 控制器含有一個 `Index` 動作方法，該方法會顯示資料庫中的所有學生。 方法會藉由讀取資料庫內容執行個體的 `Students` 屬性，來從 Students 實體集中取得學生的清單：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex&highlight=3)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex&highlight=3)]
 
 您會在教學課程的稍後學習到此程式碼中的非同步程式設計項目。
 
@@ -311,7 +311,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 ![SSOX 中的 Student 資料表](intro/_static/ssox-student-table.png)
 
-*.mdf* 及 *.ldf* 資料庫檔案存放於 C:\Users\<您的使用者名稱> 資料夾中。
+<em>.mdf</em> 和 <em>.ldf</em> 資料庫檔案位於 <em>C:\Users\\<yourusername></em> 資料夾中。
 
 因為您在應用程式啟動時執行的初始設定式方法中呼叫了 `EnsureCreated`，您現在可以對 `Student` 類別進行變更、刪除資料庫、重新執行應用程式，資料庫會自動重新建立以符合您所作出的變更。 例如，若您將一個 `EmailAddress` 屬性新增到 `Student` 類別，您便會在重新建立的資料表中看到新的 `EmailAddress` 資料行。
 
@@ -339,7 +339,7 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 在下列程式碼中，`async` 關鍵字、`Task<T>` 傳回值、`await` 關鍵字和 `ToListAsync` 方法使程式碼以非同步方式執行。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ScaffoldedIndex)]
 
 * `async` 關鍵字會告訴編譯器為方法本體的一部分產生回呼，並自動建立傳回的 `Task<IActionResult>` 物件。
 
@@ -363,5 +363,5 @@ ASP.NET 相依性插入會負責傳遞 `SchoolContext` 的執行個體給控制�
 
 現在您已建立了使用 Entity Framework Core 和 SQL Server Express LocalDB 的簡單應用程式，可用來儲存和顯示資料。 在接下來的教學課程中，您將學習到如何執行基本的 CRUD (建立、讀取、更新、刪除) 作業。
 
->[!div class="step-by-step"]
-[下一步](crud.md)
+> [!div class="step-by-step"]
+> [下一步](crud.md)

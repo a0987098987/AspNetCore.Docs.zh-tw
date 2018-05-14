@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 中使用 LoggerMessage 進行高效能記錄"
+title: 在 ASP.NET Core 中使用 LoggerMessage 進行高效能記錄
 author: guardrex
-description: "了解如何使用 LoggerMessage 功能來建立可快取的委派，比起記錄器擴充方法，其對於高效能記錄案例需要較少的物件配置。"
+description: 了解如何使用 LoggerMessage 來建立可快取的委派，其對於高效能記錄案例需要較少的物件配置。
 manager: wpickett
 ms.author: riande
 ms.date: 11/03/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: b155826b5047e88a79d9e339d7bca8885a79006d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 24a75cfacfa61ca66e78deeb743baa75718dfb76
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>在 ASP.NET Core 中使用 LoggerMessage 進行高效能記錄
 
@@ -34,19 +34,11 @@ ms.lasthandoff: 01/30/2018
 
 [Define(LogLevel, EventId, String)](/dotnet/api/microsoft.extensions.logging.loggermessage.define) 建立記錄訊息的 `Action` 委派。 `Define` 多載允許最多將六個型別參數傳遞至具名格式字串 (範本)。
 
-## <a name="loggermessagedefinescope"></a>LoggerMessage.DefineScope
-
-[DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) 建立定義[記錄範圍](xref:fundamentals/logging/index#log-scopes)的 `Func` 委派。 `DefineScope` 多載允許最多將三個型別參數傳遞至具名格式字串 (範本)。
-
-## <a name="message-template-named-format-string"></a>訊息範本 (具名格式字串)
-
-提供給 `Define` 和 `DefineScope` 方法的字串是範本，而不是內插字串。 預留位置會依照指定類型的順序填入。 範本中的預留位置名稱應該是描述性名稱，而且在範本之間應該保持一致。 它們將作為結構化記錄資料內的屬性名稱。 建議您針對預留位置名稱使用 [Pascal 大小寫](/dotnet/standard/design-guidelines/capitalization-conventions)。 例如，`{Count}`、`{FirstName}`。
-
-## <a name="implementing-loggermessagedefine"></a>實作 LoggerMessage.Define
+提供給 `Define` 方法的字串是範本，而不是內插字串。 預留位置會依照指定類型的順序填入。 範本中的預留位置名稱應該是描述性名稱，而且在範本之間應該保持一致。 它們將作為結構化記錄資料內的屬性名稱。 建議您針對預留位置名稱使用 [Pascal 大小寫](/dotnet/standard/design-guidelines/capitalization-conventions)。 例如，`{Count}`、`{FirstName}`。
 
 每個記錄訊息都是 `LoggerMessage.Define` 所建立之靜態欄位中保存的 `Action`。 例如，範例應用程式會建立一個欄位來描述 Index 頁面之 GET 要求的記錄訊息 (*Internal/LoggerExtensions.cs*)：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet1)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet1)]
 
 針對 `Action`，請指定：
 
@@ -60,17 +52,17 @@ ms.lasthandoff: 01/30/2018
 * 將事件識別碼設定為含有 `IndexPageRequested` 方法名稱的 `1`。
 * 將訊息範本 (具名格式字串) 設定為字串。
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet5)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet5)]
 
 結構化的記錄存放區提供事件識別碼來加強記錄時，可以使用事件名稱。 例如，[Serilog](https://github.com/serilog/serilog-extensions-logging) 會使用事件名稱。
 
 `Action` 是透過強型別擴充方法叫用。 `IndexPageRequested` 方法會在範例應用程式中針對 Index 頁面的 GET 要求記錄一則訊息：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet9)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet9)]
 
 `IndexPageRequested` 會在 *Pages/Index.cshtml.cs* 中 `OnGetAsync` 方法的記錄器上呼叫：
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
 
 檢查應用程式的主控台輸出：
 
@@ -82,19 +74,19 @@ info: LoggerMessageSample.Pages.IndexModel[1]
 
 若要將參數傳遞至記錄訊息，請在建立靜態欄位時定義最多六個型別。 透過為 `Action` 欄位定義 `string` 類型來新增引述時，範例應用程式會記錄字串：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet2)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet2)]
 
 委派的記錄訊息範本會從所提供的類型接收其預留位置值。 範例應用程式會定義新增引述的委派，其中的引述參數是 `string`：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet6)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet6)]
 
 新增引述的靜態擴充方法 `QuoteAdded` 會接引述引數值，並將其傳遞至 `Action` 委派：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet10)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet10)]
 
 在 Index 頁面的頁面模型 (*Pages/Index.cshtml.cs*) 中，會呼叫 `QuoteAdded` 來記錄訊息：
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
 檢查應用程式的主控台輸出：
 
@@ -106,17 +98,17 @@ info: LoggerMessageSample.Pages.IndexModel[2]
 
 範例應用程式會實作用於刪除引述的 `try`&ndash;`catch` 模式。 成功的刪除作業會記錄告知性訊息。 如果擲回例外狀況，則會針對刪除作業記錄一則錯誤訊息。 失敗刪除作業的記錄訊息包含例外狀況堆疊追蹤 (*Internal/LoggerExtensions.cs*)：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet3)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet3)]
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet7)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet7)]
 
 請注意例外狀況如何傳遞至 `QuoteDeleteFailed` 中的委派：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet11)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet11)]
 
 在 Index 頁面的頁面模型中，成功的引述刪除會在記錄器上呼叫 `QuoteDeleted` 方法。 找不到要刪除的引述時，就會擲回 `ArgumentNullException`。 例外狀況是由 `try` &ndash; `catch` 陳述式加以攔截，並透過在 `catch` 區塊的記錄器上呼叫 `QuoteDeleteFailed` 方法來進行記錄 (*Pages/Index.cshtml.cs*)：
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
 
 成功刪除引述時，請檢查應用程式的主控台輸出：
 
@@ -141,7 +133,11 @@ Parameter name: entity
       <PATH>\sample\Pages\Index.cshtml.cs:line 87
 ```
 
-## <a name="implementing-loggermessagedefinescope"></a>實作 LoggerMessage.DefineScope
+## <a name="loggermessagedefinescope"></a>LoggerMessage.DefineScope
+
+[DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) 建立定義[記錄範圍](xref:fundamentals/logging/index#log-scopes)的 `Func` 委派。 `DefineScope` 多載允許最多將三個型別參數傳遞至具名格式字串 (範本)。
+
+就像 `Define` 方法的情況一樣，提供給 `DefineScope` 方法的字串是範本，而不是內插字串。 預留位置會依照指定類型的順序填入。 範本中的預留位置名稱應該是描述性名稱，而且在範本之間應該保持一致。 它們將作為結構化記錄資料內的屬性名稱。 建議您針對預留位置名稱使用 [Pascal 大小寫](/dotnet/standard/design-guidelines/capitalization-conventions)。 例如，`{Count}`、`{FirstName}`。
 
 使用 [DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) 方法，定義要套用至一系列記錄訊息的[記錄範圍](xref:fundamentals/logging/index#log-scopes)。
 
@@ -149,7 +145,7 @@ Parameter name: entity
 
 在主控台記錄器選項中啟用 `IncludeScopes`：
 
-[!code-csharp[Main](loggermessage/sample/Program.cs?name=snippet1&highlight=22)]
+[!code-csharp[](loggermessage/sample/Program.cs?name=snippet1&highlight=10)]
 
 必須在 ASP.NET Core 2.0 應用程式中設定 `IncludeScopes`，才能啟用記錄範圍。 透過 *appsettings* 組態檔設定 `IncludeScopes` 是 ASP.NET Core 2.1 版的規劃功能。
 
@@ -157,19 +153,19 @@ Parameter name: entity
 
 若要建立記錄範圍，請新增欄位以保留該範圍的 `Func` 委派。 範例應用程式會建立稱為 `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) 的欄位：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet4)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet4)]
 
 請使用 `DefineScope` 來建立委派。 叫用委派時，最多可以指定三種類型作為範本引數。 範例應用程式會使用包含已刪除引述數目 (`int` 類型) 的訊息範本：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet8)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet8)]
 
 提供記錄訊息的靜態擴充方法。 包含訊息範本中出現之具名屬性的任何型別參數。 範例應用程式會帶入要刪除之引述的 `count`，然後傳回 `_allQuotesDeletedScope`：
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet12)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet12)]
 
 此範圍會將記錄擴充呼叫包裝在 `using` 區塊中：
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet4&highlight=5-6,14)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet4&highlight=5-6,14)]
 
 檢查應用程式主控台輸出中的記錄訊息。 下列結果顯示包含記錄範圍訊息的三個刪除引述：
 

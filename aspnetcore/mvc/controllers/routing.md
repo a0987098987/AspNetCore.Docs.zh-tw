@@ -1,7 +1,7 @@
 ---
-title: "路由至控制器動作"
+title: ASP.NET Core 中的路由至控制器動作
 author: rick-anderson
-description: 
+description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內送要求的 URL，並將這些 URL 對應至動作。
 manager: wpickett
 ms.author: riande
 ms.date: 03/14/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/routing
-ms.openlocfilehash: ca4f40766b4ec3d59587109ec9d5a412e834e3ce
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 28fe62128d0a094fa08e866a270aed26080b1e51
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="routing-to-controller-actions"></a>路由至控制器動作
+# <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
 作者：[Ryan Nowak](https://github.com/rynowak) 與 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core MVC 使用路由[中介軟體](../../fundamentals/middleware.md)來比對內送要求的 URL，並將這些 URL 對應至動作。 路由是在啟動程式碼或屬性中定義。 路由描述 URL 路徑應該如何與動作進行比對。 路由也可用來產生回應中所送出的連結 URL。 
+ASP.NET Core MVC 使用路由[中介軟體](xref:fundamentals/middleware/index)來比對內送要求的 URL，並將這些 URL 對應至動作。 路由是在啟動程式碼或屬性中定義。 路由描述 URL 路徑應該如何與動作進行比對。 路由也可用來產生回應中所送出的連結 URL。 
 
 動作可以使用慣例路由或屬性路由。 將路由放在控制器或動作上，即可讓它使用屬性路由。 如需詳細資訊，請參閱[混合路由](#routing-mixed-ref-label)。
 
@@ -386,11 +386,11 @@ public class HomeController : Controller
 
 為了方便起見，屬性路由支援以方括號 (`[`、`]`) 括住語彙基元的「語彙基元取代」。 語彙基元 `[action]`、`[area]` 和 `[controller]` 會分別以定義路由之動作的動作名稱值、區域名稱值和控制器名稱值來取代。 在此範例中，動作可能符合註解中所述的 URL 路徑：
 
-[!code-csharp[Main](routing/sample/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
+[!code-csharp[](routing/sample/main/Controllers/ProductsController.cs?range=7-11,13-17,20-22)]
 
 語彙基元取代會在建立屬性路由的最後一個步驟發生。 上述範例的運作方式與下列程式碼相同：
 
-[!code-csharp[Main](routing/sample/main/Controllers/ProductsController2.cs?range=7-11,13-17,20-22)]
+[!code-csharp[](routing/sample/main/Controllers/ProductsController2.cs?range=7-11,13-17,20-22)]
 
 屬性路由也可以透過繼承來合併。 這與語彙基元取代結合會特別強大。
 
@@ -403,7 +403,7 @@ public class ProductsController : MyBaseController
    [HttpGet] // Matches '/api/Products'
    public IActionResult List() { ... }
 
-   [HttpPost("{id}")] // Matches '/api/Products/{id}'
+   [HttpPut("{id}")] // Matches '/api/Products/{id}'
    public IActionResult Edit(int id) { ... }
 }
 ```
@@ -499,7 +499,7 @@ public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
 
 「應用程式模型」是在啟動時建立的物件模型，其中包含 MVC 用來路由及執行動作的所有中繼資料。 「應用程式模型」包含從路由屬性收集的所有資料 (透過 `IRouteTemplateProvider`)。 您可以撰寫「慣例」來修改啟動時的應用程式模型，以自訂路由的運作方式。 本節簡單示範如何使用應用程式模型來自訂路由。
 
-[!code-csharp[Main](routing/sample/main/NamespaceRoutingConvention.cs)]
+[!code-csharp[](routing/sample/main/NamespaceRoutingConvention.cs)]
 
 <a name="routing-mixed-ref-label"></a>
 
@@ -522,7 +522,7 @@ MVC 應用程式可以使用路由的 URL 產生功能，來產生動作的 URL 
 
 在此範例中，會透過 `Controller.Url` 屬性使用 `IUrlHelper` 介面來產生另一個動作的 URL。
 
-[!code-csharp[Main](routing/sample/main/Controllers/UrlGenerationController.cs?name=snippet_1)]
+[!code-csharp[](routing/sample/main/Controllers/UrlGenerationController.cs?name=snippet_1)]
 
 如果應用程式使用預設慣例路由，`url` 變數的值會是 URL 路徑字串 `/UrlGeneration/Destination`。 此 URL 路徑是透過路由所建立，結合了目前要求中的路由值 (環境值) 與傳遞至 `Url.Action` 的值，並在路由範本中取代這些值：
 
@@ -540,9 +540,9 @@ result: /UrlGeneration/Destination
 
 此範例使用屬性路由：
 
-[!code-csharp[Main](routing/sample/main/StartupUseMvc.cs?name=snippet_1)]
+[!code-csharp[](routing/sample/main/StartupUseMvc.cs?name=snippet_1)]
 
-[!code-csharp[Main](routing/sample/main/Controllers/UrlGenerationControllerAttr.cs?name=snippet_1)]
+[!code-csharp[](routing/sample/main/Controllers/UrlGenerationControllerAttr.cs?name=snippet_1)]
 
 MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller` 和 `action` 值，以選取要用於 URL 產生的路由範本。 在上述範例中，會產生 `custom/url/to/destination`。
 
@@ -560,7 +560,7 @@ MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller`
 
 較長的 `Url.Action` 多載還會接受一個額外的「路由值」物件，來為 `controller` 和 `action` 以外的路由參數提供值。 您最常會在搭配 `id` 時看到此用法，例如 `Url.Action("Buy", "Products", new { id = 17 })`。 依照慣例，「路由值」物件通常是匿名型別的物件，但也可以是 `IDictionary<>` 或「純舊 .NET 物件」。 不符合路由參數的任何額外路由值都會放在查詢字串中。
 
-[!code-csharp[Main](routing/sample/main/Controllers/TestController.cs)]
+[!code-csharp[](routing/sample/main/Controllers/TestController.cs)]
 
 > [!TIP]
 > 若要建立絕對 URL，請使用接受 `protocol` 的多載：`Url.Action("Buy", "Products", new { id = 17 }, protocol: Request.Scheme)`
@@ -571,7 +571,7 @@ MVC 建立所有屬性路由動作的查閱資料表，並將比對 `controller`
 
 上述程式碼示範如何藉由傳入控制器和動作名稱來產生 URL。 `IUrlHelper` 也提供 `Url.RouteUrl` 系列方法。 這些方法類似於 `Url.Action`，但不會將 `action` 和 `controller` 的目前值複製到路由值。 最常見的用法是指定路由名稱使用特定路由來產生 URL，通常「不需要」指定控制器或動作名稱。
 
-[!code-csharp[Main](routing/sample/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
+[!code-csharp[](routing/sample/main/Controllers/UrlGenerationControllerRouting.cs?name=snippet_1)]
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
@@ -631,11 +631,11 @@ app.UseMvc(routes =>
 
 下列範例會設定 MVC 使用預設慣例路由，並為名為 `Blog` 的區域設定「區域路由」：
 
-[!code-csharp[Main](routing/sample/AreasRouting/Startup.cs?name=snippet1)]
+[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet1)]
 
 當符合 `/Manage/Users/AddUser` 等 URL 路徑時，第一個路由會產生路由值 `{ area = Blog, controller = Users, action = AddUser }`。 `area` 路由值是由 `area` 的預設值所產生；事實上，`MapAreaRoute` 所建立的路由相當於：
 
-[!code-csharp[Main](routing/sample/AreasRouting/Startup.cs?name=snippet2)]
+[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet2)]
 
 `MapAreaRoute` 會針對使用所提供之區域名稱 (在本例中為 `Blog`) 的 `area`，使用預設值和條件約束來建立路由。 預設值可確保路由一律會產生 `{ area = Blog, ... }`，而條件約束需要 `{ area = Blog, ... }` 值以產生 URL。
 
@@ -644,15 +644,15 @@ app.UseMvc(routes =>
 
 使用上述範例，路由值會符合下列動作：
 
-[!code-csharp[Main](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+[!code-csharp[](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
 `AreaAttribute` 可用來指定控制器為區域的一部分，假設此控制器在 `Blog` 區域中。 不含 `[Area]` 屬性的控制器不是任何區域的成員，因此當路由提供 `area` 路由值時**不會**符合。 在下列範例中，只有列出的第一個控制器可能符合路由值 `{ area = Blog, controller = Users, action = AddUser }`。
 
-[!code-csharp[Main](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
+[!code-csharp[](routing/sample/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
-[!code-csharp[Main](routing/sample/AreasRouting/Areas/Zebra/Controllers/UsersController.cs)]
+[!code-csharp[](routing/sample/AreasRouting/Areas/Zebra/Controllers/UsersController.cs)]
 
-[!code-csharp[Main](routing/sample/AreasRouting/Controllers/UsersController.cs)]
+[!code-csharp[](routing/sample/AreasRouting/Controllers/UsersController.cs)]
 
 > [!NOTE]
 > 為求完整起見，此處顯示每個控制器的命名空間，否則控制器會有命名衝突並產生編譯器錯誤。 類別命名空間不會影響 MVC 的路由。
@@ -664,9 +664,9 @@ app.UseMvc(routes =>
 
 執行區域中的動作時，`area` 的路由值會作為路由用於 URL 產生的「環境值」。 這表示區域預設會以「黏性」方式來處理 URL 產生，如下列範例所示。
 
-[!code-csharp[Main](routing/sample/AreasRouting/Startup.cs?name=snippet3)]
+[!code-csharp[](routing/sample/AreasRouting/Startup.cs?name=snippet3)]
 
-[!code-csharp[Main](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
+[!code-csharp[](routing/sample/AreasRouting/Areas/Duck/Controllers/UsersController.cs)]
 
 <a name="iactionconstraint-ref-label"></a>
 

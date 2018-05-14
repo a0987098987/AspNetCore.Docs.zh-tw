@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的 HTTP.sys 網頁伺服器實作"
+title: ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 author: tdykstra
-description: "深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁伺服器。 HTTP.sys 建置在 HTTP.sys 核心模式驅動程式之上，是 Kestrel 的替代方式，可以用來直接連線到網際網路而不使用 IIS。"
+description: 深入了解 HTTP.sys，這是 Windows 上的 ASP.NET Core 網頁伺服器。 HTTP.sys 建置在 HTTP.sys 核心模式驅動程式之上，是 Kestrel 的替代方式，可以用來直接連線到網際網路而不使用 IIS。
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: d7ae6c070c7eecfd714086e15f32eff96c0943d9
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 1ec309a00b6cb156b0d11ad085eda3b7a772ac94
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -65,7 +65,7 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
 
 1. 使用 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) \(英文\)) (ASP.NET Core 2.0 或更新版本) 時，專案檔中不需要套件參考。 若不是使用 `Microsoft.AspNetCore.All` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
 
-1. 建置 Web 主機時，呼叫 [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) 擴充方法，並指定任何必要的 [HTTP.sys 選項](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions)：
+2. 建置 Web 主機時，呼叫 [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) 擴充方法，並指定任何必要的 [HTTP.sys 選項](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions)：
 
    [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=4-12)]
 
@@ -93,7 +93,7 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
    任何要求所允許的大小上限 (以位元組為單位)。 當設定為 `null` 時，要求主體大小上限為無限制。 此限制對升級連線不會有任何影響，因為其一律為無限制。
 
    在 ASP.NET Core MVC 應用程式中針對單一 `IActionResult` 覆寫限制的建議方法，是在動作方法上使用 [RequestSizeLimitAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requestsizelimitattribute) 屬性：
-   
+
    ```csharp
    [RequestSizeLimit(100000000)]
    public IActionResult MyActionMethod()
@@ -105,7 +105,7 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
 
    [!code-csharp[](httpsys/sample/Startup.cs?name=snippet1&highlight=6-7)]
 
-1. 如果您使用 Visual Studio，請確定應用程式未設定為執行 IIS 或 IIS Express。
+3. 如果您使用 Visual Studio，請確定應用程式未設定為執行 IIS 或 IIS Express。
 
    在 Visual Studio 中，預設啟動設定檔適用於 IIS Express。 若要執行專案作為主控台應用程式，請手動變更選取的設定檔，如下列螢幕擷取畫面所示：
 
@@ -115,10 +115,10 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
 
 1. 如果應用程式是[與架構相依的部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)，請安裝 .NET Core、.NET Framework 或兩者 (如果應用程式是以 .NET Framework 為目標的 .NET Core 應用程式)。
 
-   * **.NET Core** &ndash; 如果應用程式需要 .NET Core，請從 [.NET 下載](https://www.microsoft.com/net/download/windows) \(英文\) 取得並執行 .NET Core 安裝程式。
-   * **.NET Framework** &ndash; 如果應用程式要求 .NET Framework，請參閱 [.NET Framework：安裝指南](/dotnet/framework/install/)以尋找安裝指示。 安裝必要的 .NET Framework。 您可在 [.NET 下載](https://www.microsoft.com/net/download/windows) \(英文\) 找到最新的 .NET Framework 安裝程式。
+   * **.NET Core** &ndash; 如果應用程式需要 .NET Core，請從 [.NET All Downloads](https://www.microsoft.com/net/download/all) (.NET 所有下載) 取得並執行 .NET Core 安裝程式。
+   * **.NET Framework** &ndash; 如果應用程式要求 .NET Framework，請參閱 [.NET Framework：安裝指南](/dotnet/framework/install/)以尋找安裝指示。 安裝必要的 .NET Framework。 您可在 [.NET All Downloads](https://www.microsoft.com/net/download/all) (.NET 所有下載) 找到最新的 .NET Framework 安裝程式。
 
-1. 設定要應用程式的 URL 和連接埠。
+2. 設定要應用程式的 URL 和連接埠。
 
    ASP.NET Core 預設會繫結至 `http://localhost:5000`。 若要設定 URL 前置詞和連接埠，選項包括使用：
 
@@ -140,7 +140,7 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
    > [!WARNING]
    > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結可能暴露您的應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確主機名稱，而非萬用字元。 若您擁有整個父網域 (與具弱點的 `*.com` 相對) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
-1. 預先註冊 URL 前置詞以繫結至 HTTP.sys，然後設定 x.509 憑證。
+3. 預先註冊 URL 前置詞以繫結至 HTTP.sys，然後設定 x.509 憑證。
 
    如果 URL 前置詞並未在 Windows 中預先註冊，請以系統管理員權限執行應用程式。 唯一的例外狀況是使用 HTTP (不是 HTTPS) 透過大於 1024 的連接埠號碼繫結至 localhost。 在此情況下，不需要系統管理員權限。
 
@@ -164,11 +164,16 @@ HTTP.sys 是成熟的技術，可抵禦許多種類的攻擊，並提供功能�
       * [超文字傳輸通訊協定 (HTTP) 的 Netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
       * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
-   1. 如有需要，可建立自我簽署的 X.509 憑證。
+   2. 如有需要，可建立自我簽署的 X.509 憑證。
 
-     [!INCLUDE[How to make an X.509 cert](../../includes/make-x509-cert.md)]
+      [!INCLUDE [How to make an X.509 cert](../../includes/make-x509-cert.md)]
 
-1. 開啟防火牆連接埠來允許流量到達 HTTP.sys。 使用 *netsh.exe* 或 [PowerShell Cmdlets](https://technet.microsoft.com/library/jj554906)。
+
+4. 開啟防火牆連接埠來允許流量到達 HTTP.sys。 使用 *netsh.exe* 或 [PowerShell Cmdlets](https://technet.microsoft.com/library/jj554906)。
+
+## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
+
+如果是 HTTP.sys 所裝載且與來自網際網路或公司網路的要求進行互動的應用程式，在裝載於 Proxy 伺服器和負載平衡器後方時，可能需要額外的組態。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ## <a name="additional-resources"></a>其他資源
 

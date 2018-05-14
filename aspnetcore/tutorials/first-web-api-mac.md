@@ -1,24 +1,29 @@
 ---
-title: "使用 ASP.NET Core 和 Visual Studio for Mac 建立 Web API"
+title: 使用 ASP.NET Core 和 Visual Studio for Mac 建立 Web API
 author: rick-anderson
-description: "使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API"
+description: 使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API
 helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Service, HTTP Service
 manager: wpickett
 ms.author: riande
-ms.date: 09/15/2017
+ms.custom: mvc
+ms.date: 04/27/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: b0e1a331fe3229119f4669fa336b6af4822785bf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 46050f4bbd6ae821c03d92c8750e839d491328cd
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-a-web-api-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>使用 ASP.NET Core MVC 和 Visual Studio for Mac 建立 Web API
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-mac"></a>使用 ASP.NET Core 和 Visual Studio for Mac 建立 Web API
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Mike Wasson](https://github.com/mikewasson) 提供
+
+::: moniker range="= aspnetcore-2.1"
+[!INCLUDE[](~/includes/2.1.md)]
+::: moniker-end
 
 在本教學課程中，請建置 Web API 來管理「待辦事項」項目清單。 不會建構 UI。
 
@@ -32,14 +37,11 @@ ms.lasthandoff: 01/30/2018
 
 [!INCLUDE[template files](../includes/webApi/intro.md)]
 
-* 如需使用持續性資料庫的範例，請參閱 [Mac 或 Linux 上的 ASP.NET Core MVC 簡介](xref:tutorials/first-mvc-app-xplat/index)。
+如需使用持續性資料庫的範例，請參閱 [ macOS 或 Linux 上的 ASP.NET Core MVC 簡介](xref:tutorials/first-mvc-app-xplat/index)。
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝下列項目：
-
-- [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) (含) 以上版本
-- [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE[](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-the-project"></a>建立專案
 
@@ -51,25 +53,25 @@ ms.lasthandoff: 01/30/2018
 
 ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
 
-為 [專案名稱] 輸入 **TodoApi**，然後選取 [建立]。
+為 [專案名稱] 輸入 *TodoApi*，然後按一下 [建立]。
 
 ![設定對話方塊](first-web-api-mac/_static/2.png)
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，選取 [執行] > [啟動並偵錯] 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:5000`。 您收到 HTTP 404 (找不到) 錯誤。  將 URL 變更為 `http://localhost:port/api/values`。 將會顯示 `ValuesController` 資料：
+在 Visual Studio 中，選取 [執行] > [啟動並偵錯] 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:5000`。 您收到 HTTP 404 (找不到) 錯誤。 將 URL 變更為 `http://localhost:<port>/api/values`。 隨即顯示 `ValuesController` 資料：
 
-```
+```json
 ["value1","value2"]
 ```
 
 ### <a name="add-support-for-entity-framework-core"></a>新增 Entity Framework Core 的支援
 
-安裝 [Entity Framework Core InMemory](https://docs.microsoft.com/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
+安裝 [Entity Framework Core InMemory](/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。
 
-* 從 [專案] 功能表中，選取 [新增 NuGet 套件]。 
+* 從 [專案] 功能表中，選取 [新增 NuGet 套件]。
 
-  *  或者，您可以用滑鼠右鍵按一下 [相依性]，然後選取 [新增套件]。
+  * 或者，您可以用滑鼠右鍵按一下 [相依性]，然後選取 [新增套件]。
 
 * 在搜尋方塊中輸入 `EntityFrameworkCore.InMemory`。
 * 選取 `Microsoft.EntityFrameworkCore.InMemory`，然後選取 [新增套件]。
@@ -78,17 +80,18 @@ ms.lasthandoff: 01/30/2018
 
 模型是代表應用程式中資料的物件。 在此情況下，唯一的模型是待辦事項。
 
-新增名為 *Models* 的資料夾。 在方案總管中，以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+在方案總管中，以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
 ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-注意：您可以將模型類別放在專案中的任何位置，但依照慣例會使用 *Models* 資料夾。
+> [!NOTE]
+> 您可以將模型類別放在專案中的任何位置，但依照慣例會使用 *Models* 資料夾。
 
-新增 `TodoItem` 類別。 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案] > [一般] > [空類別]。 將類別命名為 `TodoItem`，然後選取 [新增]。
+以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案] > [一般] > [空類別]。 將類別命名為 *TodoItem*，然後按一下 [新增]。
 
 使用下列程式碼取代產生的程式碼：
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 此資料庫會在建立 `TodoItem` 時產生 `Id`。
 
@@ -98,7 +101,7 @@ ms.lasthandoff: 01/30/2018
 
 將 `TodoContext` 類別新增至 *Models* 資料夾。
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
 [!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
@@ -106,74 +109,91 @@ ms.lasthandoff: 01/30/2018
 
 在方案總管的 *Controllers* 資料夾中新增 `TodoController` 類別。
 
-使用下列程式碼取代產生的程式碼 (並新增右大括弧)：
+使用下列程式碼取代產生的程式碼：
 
 [!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，選取 [執行] > [啟動並偵錯] 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的通訊埠編號。 您收到 HTTP 404 (找不到) 錯誤。  將 URL 變更為 `http://localhost:port/api/values`。 將會顯示 `ValuesController` 資料：
+在 Visual Studio 中，選取 [執行] > [啟動並偵錯] 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>`，其中 `<port>` 是隨機選擇的通訊埠編號。 您收到 HTTP 404 (找不到) 錯誤。 將 URL 變更為 `http://localhost:<port>/api/values`。 隨即顯示 `ValuesController` 資料：
 
-```
+```json
 ["value1","value2"]
 ```
 
-巡覽至位於 `http://localhost:port/api/todo` 的 `Todo` 控制器：
+巡覽至位於 `http://localhost:<port>/api/todo` 的 `Todo` 控制器：
 
-```
+```json
 [{"key":1,"name":"Item1","isComplete":false}]
 ```
 
 ## <a name="implement-the-other-crud-operations"></a>實作其他的 CRUD 作業
 
-我們會將 `Create`、`Update` 和 `Delete` 方法新增至控制器。 這些是佈景主題的變化，因此我只會顯示程式碼，並強調顯示主要的差異。 請在新增或變更程式碼之後建置專案。
+我們會將 `Create`、`Update` 和 `Delete` 方法新增至控制器。 這些方法是佈景主題的變化，因此我只會顯示程式碼，並強調顯示主要的差異。 請在新增或變更程式碼之後建置專案。
 
 ### <a name="create"></a>建立
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-這是 HTTP POST 方法，以 [`[HttpPost]`](/aspnet/core/api/microsoft.aspnetcore.mvc.httppostattribute) 屬性表示。 [`[FromBody]`](/aspnet/core/api/microsoft.aspnetcore.mvc.frombodyattribute) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
+上述方法會回應 HTTP POST，如 [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) 屬性所示。 [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) 屬性會告知 MVC 從 HTTP 要求的主體取得待辦事項的值。
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-`CreatedAtRoute` 方法會傳回 201 回應，這是 HTTP POST 方法的標準回應，可在伺服器上建立新的資源。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
+上述方法會回應 HTTP POST，如 [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) 屬性所示。 MVC 會從 HTTP 要求的主體取得待辦事項的值。
+::: moniker-end
+
+`CreatedAtRoute` 方法會傳回 201 回應。 對於可在伺服器上建立新資源的 HTTP POST 方法，這是標準回應。 `CreatedAtRoute` 也會將位置標頭新增至回應。 位置標頭指定新建立之待辦事項的 URI。 請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (10.2.2 201 已建立)。
 
 ### <a name="use-postman-to-send-a-create-request"></a>使用 Postman 來傳送建立要求
 
 * 啟動應用程式 ([執行] > [啟動並偵錯])。
-* 啟動 Postman。
+* 開啟 Postman。
 
 ![Postman 主控台](first-web-api/_static/pmc.png)
 
-* 將 HTTP 方法設定為 `POST`
-* 選取 [主體] 選項按鈕
-* 選取 [原始] 選項按鈕
-* 將類型設定為 JSON
-* 在索引鍵/值編輯器中，輸入待辦事項，例如
+* 更新 localhost URL 中的通訊埠號碼。
+* 將 HTTP 方法設定為 *POST*。
+* 按一下 [本文] 索引標籤。
+* 選取 [原始] 選項按鈕。
+* 將類型設定為 *JSON (application/json)*。
+* 輸入要求本文與待辦項目，類似於下列 JSON：
 
 ```json
 {
-    "name":"walk dog",
-    "isComplete":true
+  "name":"walk dog",
+  "isComplete":true
 }
 ```
 
-* 選取 [傳送]
+* 按一下 [傳送] 按鈕。
 
-* 選取下方窗格中的 [標頭] 索引標籤，並複製 [位置] 標頭：
+::: moniker range=">= aspnetcore-2.1"
+> [!TIP]
+> 如果按一下 [傳送] 之後沒有顯示任何回應，請停用 [SSL 憑證驗證] 選項。 這位於 [檔案] > [設定] 下。 停用設定之後，再按一下 [傳送] 按鈕。
+::: moniker-end
 
-![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmget.png)
+按一下 [回應] 窗格中的 [標頭] 索引標籤，並複製 [位置] 標頭值：
 
-您可以使用 [位置] 標頭 URI 來存取您剛才建立的資源。 請重新叫用建立 `"GetTodo"` 具名路由的 `GetById` 方法：
+![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmc2.png)
+
+您可以使用 [位置] 標頭 URI 來存取您建立的資源。 `Create` 方法會傳回 [CreatedAtRoute](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdatroute#Microsoft_AspNetCore_Mvc_ControllerBase_CreatedAtRoute_System_String_System_Object_System_Object_)。 第一個傳遞至 `CreatedAtRoute` 的參數代表用來產生 URL 的具名路由。 請記住，`GetById` 方法建立了 `"GetTodo"` 具名路由：
 
 ```csharp
 [HttpGet("{id}", Name = "GetTodo")]
-public IActionResult GetById(string id)
 ```
 
 ### <a name="update"></a>更新
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+::: moniker-end
 
-`Update` 類似於 `Create`，但是會使用 HTTP PUT。 回應是 [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是差異。 若要支援部分更新，請使用 HTTP PATCH。
+`Update` 類似於 `Create`，但是會使用 HTTP PUT。 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是差異。 若要支援部分更新，請使用 HTTP PATCH。
 
 ```json
 {
@@ -187,16 +207,12 @@ public IActionResult GetById(string id)
 
 ### <a name="delete"></a>刪除
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
-回應是 [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。
+回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (204 (沒有內容))。
 
-![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/pmd.png)
+![顯示 204 (沒有內容) 回應的 Postman 主控台](first-web-api/_static/pmd.png)
 
-## <a name="next-steps"></a>後續步驟
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
-* [傳送至控制器動作](xref:mvc/controllers/routing)
-* 如需部署 API 的資訊，請參閱[裝載與部署](xref:host-and-deploy/index)。
-* [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-* [Postman](https://www.getpostman.com/)
-* [Fiddler](https://www.telerik.com/download/fiddler)
+[!INCLUDE[next steps](../includes/webApi/next.md)]

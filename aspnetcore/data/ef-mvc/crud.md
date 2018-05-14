@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/crud
-ms.openlocfilehash: a7e0d4ff3d57e42dd7e33ffb5f26f2143520be87
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 54f25733126c6de5a3704664bda7c7942a3643a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>建立、讀取、更新及刪除 - EF Core 和 ASP.NET Core MVC 教學課程 (2/10)
+# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
 
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
@@ -42,7 +42,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *Controllers/StudentsController.cs* 中，[詳細資料] 檢視的動作方法會使用 `SingleOrDefaultAsync` 方法來擷取單一 `Student` 實體。 新增呼叫 `Include` 的程式碼。 `ThenInclude`，以及 `AsNoTracking` 方法，如下列醒目提示的程式碼所示。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
 `Include` 及 `ThenInclude` 方法會使內容載入 `Student.Enrollments` 導覽屬性，以及位於每一個註冊中的 `Enrollment.Course` 導覽屬性。  您會在[讀取相關資料](read-related-data.md)教學課程中進一步了解這些方法。
 
@@ -52,7 +52,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 傳遞至 `Details` 方法的索引鍵值是來自「路由資料」。 路由資料是模型繫結器在 URL 區段中找到的資料。 例如，預設路由指定了控制器、動作，以及識別碼區段：
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
 在下列 URL 中，預設路由會將講師 (Instructor) 對應為控制器，索引 (Index) 對應為動作，以及 1 對應為識別碼。這些是路由資料的值。
 
@@ -114,7 +114,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 在 *StudentsController.cs* 中，藉由新增 try-catch 區塊並從 `Bind` 屬性移除識別碼來修改 HttpPost `Create` 方法。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
 這段程式碼會將 ASP.NET MVC 模型繫結器建立的 Student 實體新增至 Student 實體組，然後將變更儲存至資料庫。 (模型繫結器指的是可讓您在操作由表單送出之資料上變得更為簡單的 ASP.NET MVC 功能。模型繫結器會將以 POST 方式送出之表單的值轉換為 CLR 類型，然後傳遞給參數中的動作方法。 在此案例中，模型繫結器會使用來自表單 (Form) 集合的屬性值，為您執行個體化 Student 實體。)
 
@@ -162,7 +162,7 @@ public class Student
 
 這是根據預設您會取得的伺服器端驗證。在稍後的教學課程中，您也會了解如何新增為用戶端驗證產生程式碼的屬性。 下列醒目提示的程式碼顯示了在 `Create` 方法中進行的模型驗證檢查。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
 將日期變更為有效的值，然後按一下 [建立] 來在 [索引] 頁面上查看新增的學生。
 
@@ -174,7 +174,7 @@ public class Student
 
 將 HttpPost Edit 動作方法以下列程式碼取代。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
 
 這些變更會實作安全性最佳做法來防止大量指派。 框架會產生一個 `Bind` 屬性，並為模型繫結器建立的實體加上 `Modified` 旗標，新增到實體組。 該程式碼不建議用於許多案例，因為 `Bind` 屬性會清空 `Include` 參數未包含的欄位中任何預先存在的資料。
 
@@ -188,7 +188,7 @@ public class Student
 
 建議的 HttpPost Edit 程式碼可確保只有受到變更的資料行會獲得更新，並且會保留您不想要在資料繫結中包含之屬性內的資料。 然而，讀取優先的方法會需要額外的資料庫讀取，因此可能導致需要更多複雜的程式碼來處理並行衝突。 其替代方案便是將模型繫結器建立的實體連結到 EF 內容，並將其標示為已修改。 (請不要使用此程式碼更新您的專案。此程式碼僅作為展示選擇性的方法之用。) 
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
 
 當網頁 UI 包含了所有實體中的欄位，並且可以更新其中的任何一個欄位時，您可以使用此方法。
 
@@ -236,7 +236,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 請以下列程式碼取代 HttpGet `Delete` 動作方法。這段程式碼會管理錯誤報告。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
 
 此程式碼會接受一個選用的參數，該參數會在儲存變更發生錯誤之後指示方法是否有進行呼叫。 當呼叫 HttpGet `Delete` 方法時，若先前沒有發生錯誤，則此參數將為 false。 當此方法是由 HttpPost `Delete` 方法為回應資料庫更新錯誤而呼叫時，則參數將為 true，且錯誤訊息將會傳遞給檢視。
 
@@ -244,7 +244,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 請以下列程式碼取代 HttpPost `Delete` 動作方法 (名為 `DeleteConfirmed`)。此程式碼會執行實際的刪除作業並捕捉任何資料庫更新錯誤。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
 
 此程式碼會擷取選取的實體，然後呼叫 `Remove` 方法來將實體的狀態設定為 `Deleted`。 當呼叫 `SaveChanges` 時，便會產生 SQL DELETE 命令。
 
@@ -252,7 +252,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 若在一個高容量的應用程式中改善效能是您的優先事項，您可以透過僅使用主索引鍵值執行個體化 Student 實體，然後將實體狀態設定為 `Deleted`，來避免不必要的 SQL 查詢。 這便是 Entity Framework 要刪除實體所需要的一切資訊。 (請不要將此程式碼放在您的專案中。此程式碼僅作為展示替代方案之用。)
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
 
 若實體有也需要刪除的相關資料，請確認您已在資料庫中設定串聯刪除。 若使用此方法進行實體刪除，EF 可能無法得知有相關實體需要進行刪除。
 
@@ -296,6 +296,6 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 您現在已有完整的頁面組，可為 Student 實體進行簡易的 CRUD 作業。 在下一個教學課程中，您會將 [索引] 頁面的功能進行拓展，新增排序、篩選和分頁功能。
 
->[!div class="step-by-step"]
-[上一頁](intro.md)
-[下一頁](sort-filter-page.md)  
+> [!div class="step-by-step"]
+> [上一頁](intro.md)
+> [下一頁](sort-filter-page.md)  

@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面與 EF Core - 讀取相關資料 - 6/8"
+title: ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 author: rick-anderson
-description: "在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。"
+description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 manager: wpickett
 ms.author: riande
 ms.date: 11/05/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: ccb1e95ae2b43fd0a4c4b1ac9ed58a4d474ab3b6
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 55d9b6743c7d97dc9a354bae218b1fac69d7b6bc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>讀取相關資料 - EF Core 與 Razor 頁面 (6/8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
@@ -37,22 +37,22 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 * [積極式載入](https://docs.microsoft.com/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 相較於 EF6 中的某些查詢只有單一查詢的情況，發出多個查詢可能更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
 
- ![積極式載入範例](read-related-data/_static/eager-loading.png)
+  ![積極式載入範例](read-related-data/_static/eager-loading.png)
  
- 當集合導覽包含在內時，積極式載入會傳送多個查詢：
+  當集合導覽包含在內時，積極式載入會傳送多個查詢：
 
- * 針對主查詢傳送一個查詢 
- * 針對負載樹狀結構中的每個集合「邊緣」傳送一個查詢。
+  * 針對主查詢傳送一個查詢 
+  * 針對負載樹狀結構中的每個集合「邊緣」傳送一個查詢。
 
 * 使用 `Load` 的個別查詢：資料可以在個別查詢中擷取，而 EF Core 會「修正」導覽屬性。 「修正」表示 EF Core 會自動填入導覽屬性。 使用 `Load` 的個別查詢更像是明確式載入，而不是積極式載入。
 
- ![個別查詢範例](read-related-data/_static/separate-queries.png)
+  ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
- 注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
 * [明確式載入](https://docs.microsoft.com/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如: 
 
- ![明確式載入範例](read-related-data/_static/explicit-loading.png)
+  ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
 * [消極式載入](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading)。 [EF Core 目前不支援消極式載入](https://github.com/aspnet/EntityFrameworkCore/issues/3797)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
 
@@ -76,9 +76,9 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 執行下列命令：
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
+  ```
 
 上述命令會 Scaffold `Course` 模型。 在 Visual Studio 中開啟專案。
 
@@ -89,7 +89,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
  argument of type 'SchoolContext' could be found (are you missing a using directive or
  an assembly reference?)`
 
- 全域變更 `_context.Course` 至 `_context.Courses` (亦即，在 `Course` 新增一個 "s")。 找到並更新 7 個項目。
+ 將 `_context.Course` 全域變更為 `_context.Courses` (亦即，在 `Course` 的名稱上新增一個 "s")。 找到並更新 7 個項目。
 
 開啟 *Pages/Courses/Index.cshtml.cs* 並檢查 `OnGetAsync` 方法。 Scaffolding 引擎已針對 `Department` 導覽屬性指定積極式載入。 `Include` 方法可指定積極式載入。
 
@@ -97,7 +97,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 以下列程式碼更新 `OnGetAsync` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
 上述程式碼會新增 `AsNoTracking`。 `AsNoTracking` 可改善效能，因為不會追蹤傳回的實體。 不會追蹤實體的原因是它們不會在目前的內容中更新。
 
@@ -108,7 +108,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 已對包含 Scaffold 的程式碼進行下列變更：
 
 * 已將標題從 Index 變更為 Courses。
-* 新增顯示 `CourseID` 屬性值的 [編號]  資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下，主索引鍵有意義。
+* 新增顯示 `CourseID` 屬性值的 [編號] 資料行。 主索引鍵預設不會進行 Scaffold，因為它們對終端使用者通常沒有任何意義。 不過，在此情況下，主索引鍵有意義。
 * 變更 [部門]  資料行來顯示部門名稱。 此程式碼會顯示已載入到 `Department` 導覽屬性之 `Department` 實體的 `Name` 屬性：
 
   ```html
@@ -124,17 +124,17 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 `OnGetAsync` 方法使用 `Include` 方法載入相關資料：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
-`Select` 運算子只會載入所需的相關資料。 如果是單一項目 (例如 `Department.Name`)，它會使用 SQL INNER JOIN。 如果是集合，它會使用另一種資料庫存取，但集合上的 `Include` 的運算子也是如此。
+`Select` 運算子只會載入所需的相關資料。 如果是單一項目 (例如 `Department.Name`)，它會使用 SQL INNER JOIN。 如果是集合，它會使用另一種資料庫存取，但集合上的 `Include` 運算子也是如此。
 
 下列程式碼使用 `Select` 方法載入相關資料：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
 `CourseViewModel`：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
 如需完整範例，請參閱 [IndexSelect.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) 和 [IndexSelect.cshtml.cs](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs)。
 
@@ -148,7 +148,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 此頁面將以下列方式讀取和顯示相關資料：
 
 * 講師清單會顯示來自 `OfficeAssignment` 實體 (上述映像中的 Office) 的相關資料。 `Instructor` 與 `OfficeAssignment` 實體具有一對零或一關聯性。 積極式載入用於 `OfficeAssignment` 實體。 若需要顯示相關資料，積極式載入通常更有效率。 在此情況下，將會顯示講師的辦公室指派。
-* 當使用者選取講師 (上述映像中的 Harui) 時，便會顯示相關的 `Course` 實體。 `Instructor` 與 `Course` 實體具有多對多關聯性。 將會使用 `Course` 實體和其相關 `Department` 實體的積極式載入。 在此情況下，個別查詢可能更有效率，因為只需要所選取講師的課程。 這個範例示範如何使用導覽屬性中實體之導覽屬性的積極式載入。
+* 當使用者選取講師 (上述映像中的 Harui) 時，便會顯示相關的 `Course` 實體。 `Instructor` 與 `Course` 實體具有多對多關聯性。 將會針對 `Course` 實體和其相關 `Department` 實體使用積極式載入。 在此情況下，個別查詢可能更有效率，因為只需要所選取講師的課程。 這個範例示範如何使用導覽屬性中實體之導覽屬性的積極式載入。
 * 當使用者選取課程 (上述映像中的 Chemistry)，隨即顯示 `Enrollments` 中的相關資料。 在上述映像中，將會顯示學生姓名和年級。 `Course` 與 `Enrollment` 實體具有一對多關聯性。
 
 ### <a name="create-a-view-model-for-the-instructor-index-view"></a>建立 Instructor 索引檢視的檢視模型
@@ -157,7 +157,7 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 
 在 *SchoolViewModels* 資料夾中，以下列程式碼建立 *InstructorIndexData.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="scaffold-the-instructor-model"></a>Scaffold Instructor 模型
 
@@ -165,9 +165,9 @@ dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir P
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 * 執行下列命令：
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
+  ```
 
 上述命令會 Scaffold `Instructor` 模型。 在 Visual Studio 中開啟專案。
 
@@ -179,13 +179,13 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 以下列程式碼取代 *Pages/Instructors/Index.cshtml.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-99)]
 
 `OnGetAsync` 方法會針對所選取講師的識別碼接受選擇性的路由資料。
 
 檢查 *Pages/Instructors/Index.cshtml* 頁面上的查詢：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
 查詢具有兩個 Include：
 
@@ -201,7 +201,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 上述標記會進行下列變更：
 
-* 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，當頁面指示詞產生如下的 URL 時，按一下講師的**選取**連結：
+* 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int?}"`。 `"{id:int?}"` 是路由範本。 路由範本將 URL 中的整數查詢字串變更為路由資料。 例如，只有在 `@page` 指示詞產生如下的 URL 時，按一下講師的 [選取] 連結：
 
     `http://localhost:1234/Instructors?id=2`
 
@@ -248,17 +248,17 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 以下列程式碼更新 *Pages/Instructors/Index.cshtml.cs* 中的 `OnGetAsync` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-999)]
 
 檢查已更新的查詢：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
 
 上述查詢會新增 `Department` 實體。
 
 下列程式碼會在已選取講師 (`id != null`) 時執行。 選取的講師會從檢視模型的講師清單中擷取。 檢視模型的 `Courses` 屬性則使用 `Course` 實體從該講師的 `CourseAssignments` 導覽屬性載入。
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
 
 `Where` 方法會傳回集合。 在上述 `Where` 方法中，只會傳回一個單一 `Instructor` 實體。 `Single` 方法會將集合轉換成單一 `Instructor` 實體。 `Instructor` 實體提供對 `CourseAssignments` 屬性的存取。 `CourseAssignments` 提供對相關 `Course` 實體的存取。
 
@@ -271,11 +271,11 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 選取課程時，下列程式碼會填入檢視模型的 `Enrollments` 屬性：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
 將下列標記新增至 *Pages/Courses/Index.cshtml* Razor 頁面的結尾：
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-)]
+[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
 當選取講師時，上述標記會顯示與講師相關的課程。
 
@@ -289,7 +289,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 以下列程式碼更新 *Pages/Instructors/Index.cshtml.cs* 中 `OnGetAsync` 方法的查詢：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 更新 *Pages/Instructors/Index.cshtml*。 將下列標記新增至檔案結尾：
 
@@ -305,7 +305,7 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 `Single` 方法可以傳入 `Where` 條件，而不是個別呼叫 `Where` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
 
 比起使用 `Where`，上述 `Single` 方法並沒有任何優勢。 某些開發人員偏好使用 `Single` 方法樣式。
 
@@ -313,13 +313,13 @@ dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outD
 
 目前程式碼針對 `Enrollments` 和 `Students` 指定積極式載入：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 假設使用者很少會想要查看課程中的註冊項目。 在此情況下，最佳方法就是在要求時，只載入註冊資料。 在本節中，`OnGetAsync` 更新為針對 `Enrollments` 和 `Students` 使用明確式載入。
 
 使用下列程式碼更新 `OnGetAsync`：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
 
 上述程式碼會捨棄註冊和學生資料的 *ThenInclude* 方法呼叫。 如果選取了課程，醒目提示的程式碼就會擷取：
 

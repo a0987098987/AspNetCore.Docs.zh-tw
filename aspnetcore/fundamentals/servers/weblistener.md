@@ -1,19 +1,19 @@
 ---
-title: "ASP.NET Core 中的 WebListener 網頁伺服器實作"
+title: ASP.NET Core 中的 WebListener 網頁伺服器實作
 author: rick-anderson
-description: "介紹 WebListener，這是 Windows 上的 ASP.NET Core Web 伺服器。 建置在 Http.Sys 核心模式驅動程式之上，WebListener 是 Kestrel 的替代方式，可以用於直接連線到網際網路而不使用 IIS。"
+description: 了解 WebListener，這是 Windows 上 ASP.NET Core 的網頁伺服器，可用於直接連線到網際網路而無需 IIS。
 manager: wpickett
 ms.author: riande
-ms.date: 08/07/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: fb2e0621645a48f4e603d754d8babbc07a78cae4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cd2e477824d916afcf1a7901e935dd465a466922
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 WebListener 網頁伺服器實作
 
@@ -78,7 +78,7 @@ WebListener 可用於您需要直接向網際網路公開伺服器而不使用 I
 
 * 安裝 [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/) NuGet 套件。 這也會安裝 [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) 作為相依性。
 
-* 在您的 `Main` 方法中，對 [WebHostBuilder](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) 呼叫 `UseWebListener` 擴充方法，並指定需要的任何 WebListener [選項](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs)和[設定](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs)，如下列範例所示：
+* 在您的 `Main` 方法中，對 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 呼叫 `UseWebListener` 擴充方法，並指定需要的任何 WebListener [選項](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs)和[設定](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs)，如下列範例所示：
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
@@ -87,6 +87,9 @@ WebListener 可用於您需要直接向網際網路公開伺服器而不使用 I
   ASP.NET Core 預設會繫結至 `http://localhost:5000`。 若要設定 URL 前置詞和連接埠，您可以使用 `UseURLs` 擴充方法、`urls` 命令列引數或 ASP.NET Core 組態系統。 如需詳細資訊，請參閱[裝載](../../fundamentals/hosting.md)。
 
   網頁接聽程式會使用 [Http.Sys 前置詞字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。 沒有 WebListener 特有的前置詞字串格式需求。
+
+  > [!WARNING]
+  > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結可能暴露您的應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確主機名稱，而非萬用字元。 若您擁有整個父網域 (與具弱點的 `*.com` 相對) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
   > [!NOTE]
   > 請確定您在 `UseUrls` 中指定您於伺服器上預先註冊的相同前置詞字串。 

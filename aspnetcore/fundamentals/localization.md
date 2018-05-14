@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 全球化和當地語系化"
+title: ASP.NET Core 全球化和當地語系化
 author: rick-anderson
-description: "了解 ASP.NET Core 如何提供服務與中介軟體，以將內容當地語系化成不同的語言與文化特性。"
+description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內容當地語系化成不同的語言與文化特性。
 manager: wpickett
 ms.author: riande
 ms.date: 01/14/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/localization
-ms.openlocfilehash: 766cec5dd00b7b464eef31a3bc1721f522697608
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: b81926f81fdfb832ff6ae3bd65c00fa09412fec4
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 02/01/2018
 
 使用 ASP.NET Core 建立多語系網站時，可讓更廣大的群眾使用您的網站。 ASP.NET Core 提供服務與中介軟體，可將網站當地語系化成不同的語言與文化特性。
 
-國際化包含[全球化](https://docs.microsoft.com/dotnet/api/system.globalization)和[當地語系化](https://docs.microsoft.com/dotnet/standard/globalization-localization/localization)這兩部分。 全球化是指設計出可支援不同文化特性之應用程式的程序。 透過全球化，您可新增支援與特定地區相關之已定義語言指令碼的輸入、顯示及輸出作業。
+國際化包含[全球化](/dotnet/api/system.globalization)和[當地語系化](/dotnet/standard/globalization-localization/localization)這兩部分。 全球化是指設計出可支援不同文化特性之應用程式的程序。 透過全球化，您可新增支援與特定地區相關之已定義語言指令碼的輸入、顯示及輸出作業。
 
 當地語系化是指針對全球化應用程式進行調整的程序，且您已順應特定文化特性/地區設定對這些全球化應用程式進行可當地語系化處理。 如需詳細資訊，請參閱本文件結尾處的**全球化和當地語系化詞彙**。
 
@@ -35,37 +35,37 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
-ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設計用意是提高開發當地語系化應用程式時的生產力。 `IStringLocalizer` 會使用 [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) 和 [ResourceReader](https://docs.microsoft.com/dotnet/api/system.resources.resourcereader)，於執行階段時提供文化特性特有的資源。 這個簡單介面具有的索引子和 `IEnumerable` 可傳回當地語系化字串。 `IStringLocalizer` 不需要您將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
+ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設計用意是提高開發當地語系化應用程式時的生產力。 `IStringLocalizer` 會使用 [ResourceManager](/dotnet/api/system.resources.resourcemanager) 和 [ResourceReader](/dotnet/api/system.resources.resourcereader)，於執行階段時提供文化特性特有的資源。 這個簡單介面具有的索引子和 `IEnumerable` 可傳回當地語系化字串。 `IStringLocalizer` 不需要您將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
 
-[!code-csharp[Main](localization/sample/Localization/Controllers/AboutController.cs)]
+[!code-csharp[](localization/sample/Localization/Controllers/AboutController.cs)]
 
 在上述程式碼中，`IStringLocalizer<T>` 實作是來自[相依性插入](dependency-injection.md)。 如果找不到 "About Title" 的當地語系化值，即會傳回索引子的索引鍵，也就是 "About Title" 字串。 您可以保留應用程式中的預設語言常值字串，並將其包裝在當地語系化工具中，以便專注於開發應用程式。 您不用先建立預設資源檔，即可使用預設語言來開發應用程式，並針對當地語系化步驟進行應用程式的準備。 或者，您可以使用傳統方法，並提供索引鍵以擷取預設語言字串。 對許多開發人員來說，新的工作流程 (單純包裝字串常值而不使用預設語言的 *.resx* 檔案) 可以降低當地語系化應用程式的額外負荷。 其他開發人員則偏好傳統的工作流程，因為這種方法更便於使用較長的字串常值，且更易於更新當地語系化的字串。
 
 若是包含 HTML 的資源，請使用 `IHtmlLocalizer<T>` 實作。 `IHtmlLocalizer` 會對資源字串中經過格式化的引數進行 HTML 編碼，但不會對資源字串本身進行 HTML 編碼。 在下列醒目提示的範例中，只有 `name` 參數的值經過 HTML 編碼。
 
-[!code-csharp[Main](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
+[!code-csharp[](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
 **注意：**一般來說，您只想將文字當地語系化，而不是 HTML。
 
 您可以在最底層的[相依性插入](dependency-injection.md)中，將 `IStringLocalizerFactory` 移出：
 
-[!code-csharp[Main](localization/sample/Localization/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
+[!code-csharp[](localization/sample/Localization/Controllers/TestController.cs?start=9&end=26&highlight=7-13)]
 
 上述程式碼會示範這兩個 Factory Create 方法。
 
 您可以依據控制器或區域來分割當地語系化的字串，也可以只用一個容器。 在範例應用程式中，會針對共用資源使用名為 `SharedResource` 的虛擬類別。
 
-[!code-csharp[Main](localization/sample/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/Localization/Resources/SharedResource.cs)]
 
 有些開發人員會使用 `Startup` 類別來包含全域或共用字串。 下列範例會使用 `InfoController` 和 `SharedResource` 當地語系化工具：
 
-[!code-csharp[Main](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
+[!code-csharp[](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
 ## <a name="view-localization"></a>檢視當地語系化
 
-`IViewLocalizer` 服務可提供[檢視](https://docs.microsoft.com/aspnet/core)的當地語系化字串。 `ViewLocalizer` 類別會實作這個介面，並透過檢視檔案路徑來找出資源的位置。 下列程式碼示範如何使用 `IViewLocalizer` 的預設實作：
+`IViewLocalizer` 服務可提供[檢視](xref:mvc/views/overview)的當地語系化字串。 `ViewLocalizer` 類別會實作這個介面，並透過檢視檔案路徑來找出資源的位置。 下列程式碼示範如何使用 `IViewLocalizer` 的預設實作：
 
-[!code-cshtml[Main](localization/sample/Localization/Views/Home/About.cshtml)]
+[!code-cshtml[](localization/sample/Localization/Views/Home/About.cshtml)]
 
 `IViewLocalizer` 的預設實作會依據檢視的檔案名稱來找出資源檔。 其中並沒有任何選項可以使用全域共用的資源檔。 `ViewLocalizer` 會使用 `IHtmlLocalizer` 來實作當地語系化工具，因此 Razor 不會對當地語系化的字串進行 HTML 編碼。 您可以參數化資源字串，`IViewLocalizer` 即會對參數 (而不是資源字串) 進行 HTML 編碼。 請考慮下列 Razor 標記：
 
@@ -85,16 +85,16 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 若要在檢視中使用共用的資源檔，請插入 `IHtmlLocalizer<T>`：
 
-[!code-cshtml[Main](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
+[!code-cshtml[](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
 ## <a name="dataannotations-localization"></a>DataAnnotations 當地語系化
 
 DataAnnotations 錯誤訊息會使用 `IStringLocalizer<T>` 來當地語系化。 使用 `ResourcesPath = "Resources"` 選項時，`RegisterViewModel` 中的錯誤訊息會儲存在下列路徑之一：
 
-* Resources/ViewModels.Account.RegisterViewModel.fr.resx
-* Resources/ViewModels/Account/RegisterViewModel.fr.resx
+* *Resources/ViewModels.Account.RegisterViewModel.fr.resx*
+* *Resources/ViewModels/Account/RegisterViewModel.fr.resx*
 
-[!code-csharp[Main](localization/sample/Localization/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
+[!code-csharp[](localization/sample/Localization/ViewModels/Account/RegisterViewModel.cs?start=9&end=26)]
 
 在 ASP.NET Core MVC 1.1.0 和更高版本中，系統會將非驗證屬性當地語系化。 ASP.NET Core MVC 1.0 **不會**查閱非驗證屬性的當地語系化字串。
 
@@ -114,13 +114,13 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-在先前的程式碼中，`SharedResource` 是與儲存驗證訊息的 resx 對應的類別。 使用這個方法時，DataAnnotations 只會使用 `SharedResource`，而不是每個類別的資源。 
+在先前的程式碼中，`SharedResource` 是與儲存驗證訊息的 resx 對應的類別。 使用這個方法時，DataAnnotations 只會使用 `SharedResource`，而不是每個類別的資源。
 
-## <a name="provide-localized-resources-for-the-languages-and-cultures-you-support"></a>針對您支援的語言和文化特性提供當地語系化資源  
+## <a name="provide-localized-resources-for-the-languages-and-cultures-you-support"></a>針對您支援的語言和文化特性提供當地語系化資源
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures 和 SupportedUICultures
 
-ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這兩個文化特性值。 `SupportedCultures` 的 [CultureInfo](https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo) 物件可決定文化特性相依函式的結果，例如日期、時間、數字及貨幣格式。 `SupportedCultures` 也可決定文字排列順序、大小寫慣例和字串比較。 如需伺服器如何取得文化特性的詳細資訊，請參閱 [CultureInfo.CurrentCulture](https://docs.microsoft.com/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)。 `SupportedUICultures` 可決定 [ResourceManager](https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager) 要查閱哪些翻譯的字串 (來自 *.resx* 檔案)。 `ResourceManager` 僅會查閱 `CurrentUICulture` 所決定之文化特性特有的字串。 .NET 中的每個執行緒都有 `CurrentCulture` 和 `CurrentUICulture` 物件。 ASP.NET Core 會在轉譯文化特性相依函式時檢查這些值。 比方說，如果目前執行緒的文化特性設定為 "en-US" (英文 - 美國)，`DateTime.Now.ToLongDateString()` 會顯示 "Thursday, February 18, 2016"，但如果 `CurrentCulture` 設定為 "es-ES" (西班牙文 - 西班牙)，則輸出會是 "jueves, 18 de febrero de 2016"。
+ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這兩個文化特性值。 `SupportedCultures` 的 [CultureInfo](/dotnet/api/system.globalization.cultureinfo) 物件可決定文化特性相依函式的結果，例如日期、時間、數字及貨幣格式。 `SupportedCultures` 也可決定文字排列順序、大小寫慣例和字串比較。 如需伺服器如何取得文化特性的詳細資訊，請參閱 [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture)。 `SupportedUICultures` 可決定 [ResourceManager](/dotnet/api/system.resources.resourcemanager) 要查閱哪些翻譯的字串 (來自 *.resx* 檔案)。 `ResourceManager` 僅會查閱 `CurrentUICulture` 所決定之文化特性特有的字串。 .NET 中的每個執行緒都有 `CurrentCulture` 和 `CurrentUICulture` 物件。 ASP.NET Core 會在轉譯文化特性相依函式時檢查這些值。 比方說，如果目前執行緒的文化特性設定為 "en-US" (英文 - 美國)，`DateTime.Now.ToLongDateString()` 會顯示 "Thursday, February 18, 2016"，但如果 `CurrentCulture` 設定為 "es-ES" (西班牙文 - 西班牙)，則輸出會是 "jueves, 18 de febrero de 2016"。
 
 ## <a name="resource-files"></a>資源檔
 
@@ -172,23 +172,31 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 ## <a name="culture-fallback-behavior"></a>文化特性後援行為
 
+搜尋資源時，當地語系化會使用「文化特性後援」。 從所要求的文化特性開始，如果找不到，就會還原成該文化特性的父文化特性。 另外，[CultureInfo.Parent](/dotnet/api/system.globalization.cultureinfo.parent) 屬性代表父文化特性。 這通常 (但並非一定) 表示從 ISO 中移除國家意符 (Signifier)。 例如，墨西哥的西班牙文方言是 "es-MX"。 它具有父系 "es" &mdash; 西班牙文不是任何國家/地區的特定項目。
+
+假設您的網站收到使用文化特性 "fr-CA" 之 "Welcome" 資源的要求。 當地語系化系統會依照順序尋找下列資源，並選取第一個相符項目：
+
+* *Welcome.fr-CA.resx*
+* *Welcome.fr.resx*
+* *Welcome.resx* (如果 `NeutralResourcesLanguage` 是 "fr-CA")
+
 舉例來說，如果您移除 ".fr" 文化特性指示項，並將文化特性設定為法文，則系統會讀取預設資源檔，並將字串當地語系化。 當沒有任何項目符合您要求的文化特性時，資源管理員即會指定預設資源或後援資源。 如果您只想在要求的文化特性缺少資源時傳回索引鍵，就不能使用預設資源檔。
 
 ### <a name="generate-resource-files-with-visual-studio"></a>使用 Visual Studio 產生資源檔
 
-如果您在 Visual Studio 中建立資源檔，但檔案名稱中不含文化特性 (例如 *Welcome.resx*)，則 Visual Studio 會針對每個字串的屬性建立 C# 類別。 但這通常不是您使用 ASP.NET Core 的初衷；一般來說，您不會有預設的 *.resx* 資源檔 (不含文化特性名稱的 *.resx* 檔案)。 因此，建議您建立含有文化特性名稱的 *.resx* 檔案 (例如 *Welcome.fr.resx*)。 當您建立含有文化特性名稱的 *.resx* 檔案時，Visual Studio 就不會產生類別檔案。 我們認為大多數開發人員**不需建立**預設的語言資源檔案。
+如果您在 Visual Studio 中建立資源檔，但檔案名稱中不含文化特性 (例如 *Welcome.resx*)，則 Visual Studio 會針對每個字串的屬性建立 C# 類別。 但這通常不是您使用 ASP.NET Core 的初衷。 一般來說，您不會有預設的 *.resx* 資源檔 (不含文化特性名稱的 *.resx* 檔案)。 因此，建議您建立含有文化特性名稱的 *.resx* 檔案 (例如 *Welcome.fr.resx*)。 當您建立含有文化特性名稱的 *.resx* 檔案時，Visual Studio 就不會產生類別檔案。 我們認為大多數開發人員不需建立預設的語言資源檔。
 
 ### <a name="add-other-cultures"></a>新增其他文化特性
 
-每種語言和文化特性的組合 (非預設語言) 都需要唯一的資源檔。 若要建立不同文化特性和地區設定的資源檔，您可以建立新的資源檔並將 ISO 語言代碼作為檔名的一部分 (例如 **en-us**、**fr-ca** 和 **en-gb**)。 您應將 ISO 代碼置於檔案名稱和 *.resx* 副檔名之間，例如 *Welcome.es MX.resx* (西班牙文/墨西哥)。 若要指定與文化特性無關的語言，請移除國碼 (地區碼)，亦即上述範例中的 `MX`。 如果是與文化特性無關的西班牙文資源檔案，其名稱為 *Welcome.es.resx*。
+每種語言和文化特性的組合 (非預設語言) 都需要唯一的資源檔。 若要建立不同文化特性和地區設定的資源檔，您可以建立新的資源檔並將 ISO 語言代碼作為檔名的一部分 (例如 **en-us**、**fr-ca** 和 **en-gb**)。 您應將 ISO 代碼置於檔案名稱和 *.resx* 副檔名之間，例如 *Welcome.es-MX.resx* (西班牙文/墨西哥)。
 
-## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>實作可依據每項要求選取語言/文化特性的策略  
+## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>實作可依據每項要求選取語言/文化特性的策略
 
 ### <a name="configure-localization"></a>設定當地語系化
 
 您可以在 `ConfigureServices` 方法中設定當地語系化：
 
-[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet1)]
+[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet1)]
 
 * `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
@@ -200,7 +208,7 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
-[!code-csharp[Main](localization/sample/Localization/Program.cs?name=snippet2)]
+[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet2)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 
@@ -285,15 +293,16 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [GitHub](https://github.com/aspnet/entropy) 上的這個範例 **Localization.StarterWeb** 專案包含可設定 `Culture` 的 UI。 *Views/Shared/_SelectLanguagePartial.cshtml* 檔可讓您從支援的文化特性清單中選取文化特性：
 
-[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
+
+[!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 系統會將 *Views/Shared/_SelectLanguagePartial.cshtml* 檔案新增至配置檔案的 `footer` 區段，以供所有檢視使用：
 
-[!code-cshtml[Main](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
+[!code-cshtml[](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
 `SetLanguage` 方法會設定文化特性的 Cookie。
 
-[!code-csharp[Main](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
+[!code-csharp[](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 您無法將 *_SelectLanguagePartial.cshtml* 插入這個專案的範例程式碼。 [GitHub](https://github.com/aspnet/entropy) 上的範例 **Localization.StarterWeb** 專案，其中的程式碼會部分透過[相依性插入](dependency-injection.md)容器將 `RequestLocalizationOptions` 流向 Razor。
 
@@ -301,7 +310,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 在進行應用程式的當地語系化程序時，您也需要具備現代軟體開發中常用的相關字元集基本知識，並了解與它們建立關聯的問題。 雖然所有電腦都會將文字儲存為數字 (程式碼)，但不同系統會使用不同數字來儲存相同的文字。 當地語系化是指針對特定文化特性/地區設定，轉譯應用程式使用者介面 (UI) 的程序。
 
-[可當地語系化](https://docs.microsoft.com/dotnet/standard/globalization-localization/localizability-review)是確認全球化應用程式已準備好進行當地語系化的中繼程序。
+[可當地語系化](/dotnet/standard/globalization-localization/localizability-review)是確認全球化應用程式已準備好進行當地語系化的中繼程序。
 
 文化特性名稱的 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) 格式是 `<languagecode2>-<country/regioncode2>`，其中 `<languagecode2>` 是語言代碼，而 `<country/regioncode2>` 是子文化特性代碼。 例如，`es-CL` 是指西班牙文 (智利)，`en-US` 是指英文 (美國)，而 `en-AU` 是指英文 (澳大利亞)。 [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) 是 ISO 639 (兩個小寫字母，為與某個語言建立關聯的文化特性代碼) 及 ISO 3166 (兩個大寫字母，為與某個國家或地區建立關聯的子文化特性代碼) 的組合。 請參閱 [Language Culture Name](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx) (語言的文化特性名稱)。
 
@@ -321,5 +330,6 @@ services.Configure<RequestLocalizationOptions>(options =>
 ## <a name="additional-resources"></a>其他資源
 
 * 本文使用的 [Localization.StarterWeb 專案](https://github.com/aspnet/entropy)。
-* [Visual Studio 中的資源檔](https://docs.microsoft.com/cpp/windows/resource-files-visual-studio)
-* [.resx 檔案中的資源](https://docs.microsoft.com/dotnet/framework/resources/working-with-resx-files-programmatically)
+* [Visual Studio 中的資源檔](/cpp/windows/resource-files-visual-studio)
+* [.resx 檔案中的資源](/dotnet/framework/resources/working-with-resx-files-programmatically)
+* [Microsoft 多語應用程式工具組](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)

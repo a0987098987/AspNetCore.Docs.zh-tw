@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
-ms.translationtype: MT
+ms.openlocfilehash: 9af08d8fcbd91a9189fe1f4c6cedd644361773f7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 04/10/2018
 
 ## <a name="how-controllers-specify-views"></a>控制器指定檢視的方式
 
-檢視通常會從動作傳回為 [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult)，這是 [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult) 的類型。 動作方法可以直接建立並傳回 `ViewResult`，但這通常不會進行。 因為大部分的控制器都是繼承自[控制器](/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，所以您只需要使用 `View` 協助程式方法傳回 `ViewResult`：
+檢視通常會從動作傳回為 [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult)，這是 [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) 的類型。 動作方法可以直接建立並傳回 `ViewResult`，但這通常不會進行。 因為大部分的控制器都是繼承自[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)，所以您只需要使用 `View` 協助程式方法傳回 `ViewResult`：
 
 *HomeController.cs*
 
@@ -115,7 +115,7 @@ return View("./About");
 
 [部分檢視](xref:mvc/views/partial)和[檢視元件](xref:mvc/views/view-components)使用類似 (但不同) 的探索機制。
 
-您可以使用自訂 [IViewLocationExpander](/aspnet/core/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander)，來自訂檢視如何位在應用程式內的預設慣例。
+您可以使用自訂 [IViewLocationExpander](/dotnet/api/microsoft.aspnetcore.mvc.razor.iviewlocationexpander)，來自訂檢視如何位在應用程式內的預設慣例。
 
 檢視探索依賴如何依檔案名稱來尋找檢視檔案。 如果基礎檔案系統區分大小寫，則檢視名稱可能會區分大小寫。 基於作業系統之間的相容性，控制器與動作名稱和建立關聯的檢視資料夾和檔案名稱之間的大小寫必須相符。 如果您遇到使用區分大小寫的檔案系統時找不到檢視檔案的錯誤，請確認所要求檢視檔案與實際檢視檔案名稱之間的大小寫符合。
 
@@ -205,7 +205,7 @@ namespace WebApplication1.ViewModels
 
 **ViewData**
 
-`ViewData` 是透過 `string` 索引鍵存取的 [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 物件。 字串資料可以直接儲存和使用，而不需要轉換；但必須在擷取其他 `ViewData` 物件值時將其轉換為特定類型。 您可以使用 `ViewData` 將資料從控制器傳遞至檢視以及在檢視內傳遞資料，包括[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。
+`ViewData` 是透過 `string` 索引鍵存取的 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 物件。 字串資料可以直接儲存和使用，而不需要轉換；但必須在擷取其他 `ViewData` 物件值時將其轉換為特定類型。 您可以使用 `ViewData` 將資料從控制器傳遞至檢視以及在檢視內傳遞資料，包括[部分檢視](xref:mvc/views/partial)和[配置](xref:mvc/views/layout)。
 
 下列範例使用運作中 `ViewData` 來設定問候語和地址的值：
 
@@ -247,7 +247,7 @@ public IActionResult SomeAction()
 
 注意：Razor 頁面中沒有 `ViewBag`。
 
-`ViewBag` 是可動態存取 `ViewData` 中所儲存物件的 [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
+`ViewBag` 是可動態存取 `ViewData` 中所儲存物件的 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) 物件。 `ViewBag` 的使用更為方便，因為它不需要進行轉換。 下列範例示範如何使用 `ViewBag`，而其結果與上方使用 `ViewData` 相同：
 
 ```csharp
 public IActionResult SomeAction()
@@ -321,11 +321,11 @@ public IActionResult SomeAction()
  Razor 頁面中沒有 `ViewBag`。
 
 * `ViewData`
-  * 衍生自 [ViewDataDictionary](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性十分有用，例如 `ContainsKey`、`Add`、`Remove` 和 `Clear`。
+  * 衍生自 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary)，因此它的字典屬性十分有用，例如 `ContainsKey`、`Add`、`Remove` 和 `Clear`。
   * 字典中的索引鍵是字串，因此允許空白字元。 範例：`ViewData["Some Key With Whitespace"]`
   * 在檢視中必須轉換任何 `string` 以外的類型，才能使用 `ViewData`。
 * `ViewBag`
-  * 衍生自 [DynamicViewData](/aspnet/core/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)，因此允許使用點標記法 (`@ViewBag.SomeKey = <value or object>`) 來建立動態屬性，而不需要轉換。 `ViewBag` 的語法可以更快速地新增至控制器和檢視。
+  * 衍生自 [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata)，因此允許使用點標記法 (`@ViewBag.SomeKey = <value or object>`) 來建立動態屬性，而不需要轉換。 `ViewBag` 的語法可以更快速地新增至控制器和檢視。
   * 檢查 Null 值更簡單。 範例：`@ViewBag.Person?.Name`
 
 **何時使用 ViewData 或 ViewBag**

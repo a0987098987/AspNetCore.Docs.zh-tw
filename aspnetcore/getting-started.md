@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 2.0 使用者入門"
+title: ASP.NET Core 使用者入門
 author: rick-anderson
-description: "使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式的快速教學課程。"
+description: 使用 ASP.NET Core 建立並執行簡單 Hello World 應用程式的快速教學課程。
 manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: getting-started
-ms.openlocfilehash: eb1fd748029743ca6991927cc95b612ed1975338
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c2f18c69901a5a6503314d508a776e6985872681
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-aspnet-core"></a>ASP.NET Core 使用者入門
 
 > [!NOTE]
-> 這些指示是針對最新版本的 ASP.NET Core。 要從較早版本開始入門嗎？ 請參閱 [1.1 版的本教學課程](xref:getting-started-1.1)。
+> 這些指示是針對最新版本的 ASP.NET Core。 如需本文件的 1.1 版本，請參閱 [ASP.NET Core 1.1 使用者入門](xref:getting-started-1.1)。
 
-1. 安裝 [.NET Core](https://www.microsoft.com/net/core/)。
+1. 安裝 [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]。
 
 2. 建立新的 .NET Core 專案。
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/30/2018
     dotnet new razor -o aspnetcoreapp
     ```
     
-4. 執行應用程式。
+3. 執行應用程式。
 
     使用以下命令來執行應用程式：
 
@@ -39,13 +39,13 @@ ms.lasthandoff: 01/30/2018
     dotnet run
     ```
 
-5. 瀏覽至 [http://localhost:5000](http://localhost:5000)
+4. 瀏覽至 [http://localhost:5000](http://localhost:5000)
 
-6. 開啟 *Pages/About.cshtml* 並將頁面顯示訊息修改為 "Hello, world! The time on the server is @DateTime.Now ":
+5. 開啟 <em>Pages/About.cshtml</em> 並將頁面顯示訊息修改為 "Hello, world! The time on the server is @DateTime.Now ":
 
-    [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
+    [!code-html[](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
-7. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並驗證變更。
+6. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並確認所做的變更。
 
 ### <a name="next-steps"></a>後續步驟
 

@@ -12,7 +12,7 @@
 No executable found matching command "dotnet-aspnet-codegenerator"
   ```
 
-開啟專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 的命令殼層。
+當您處於錯誤的目錄時，就會發生先前的錯誤。 開啟專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 的命令殼層，然後執行先前的命令。
 
 如果您收到錯誤：
   ```

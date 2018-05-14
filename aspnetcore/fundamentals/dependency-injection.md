@@ -1,7 +1,7 @@
 ---
-title: ".NET Core 中的相依性插入"
+title: .NET Core 中的相依性插入
 author: ardalis
-description: "了解 ASP.NET Core 如何實作相依性插入以及如何使用它。"
+description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用它。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 43c937ff9631be3edc1f95b3689650e4574abfbd
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 8a105f835dddfcd0e9f32059e644f60dc1fdbbe1
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -48,7 +48,6 @@ ASP.NET Core 包含簡單的內建容器 (由 `IServiceProvider` 介面代表)�
 
 > 找不到類型 'YourType' 的合適建構函式。 請確定類型是具象類型，且已針對公用建構函式的所有參數註冊服務。
 
-
 建構函式插入需要僅存在一個適用的建構函式。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。 如果有多個存在，您的應用程式將會擲回 `InvalidOperationException`：
 
 > 類型 'YourType' 中已找到接受所有指定引數類型的多個建構函式。 只能有一個適用的建構函式。
@@ -77,35 +76,35 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 | 服務類型 | 存留期 |
 | ----- | ------- |
-| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.ihostingenvironment) | 單一 |
-| [Microsoft.Extensions.Logging.ILoggerFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.iloggerfactory) | 單一 |
-| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) | 單一 |
-| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | 暫時性 |
-| [Microsoft.AspNetCore.Http.IHttpContextFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.ihttpcontextfactory) | 暫時性 |
-| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.options.ioptions-1) | 單一 |
+| [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | 單一 |
+| [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | 單一 |
+| [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | 單一 |
+| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | 暫時性 |
+| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | 暫時性 |
+| [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | 單一 |
 | [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | 單一 |
 | [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | 單一 |
-| [Microsoft.AspNetCore.Hosting.IStartupFilter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.istartupfilter) | 暫時性 |
-| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.objectpool.objectpoolprovider) | 單一 |
-| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.options.iconfigureoptions-1) | 暫時性 |
-| [Microsoft.AspNetCore.Hosting.Server.IServer](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.server.iserver) | 單一 |
-| [Microsoft.AspNetCore.Hosting.IStartup](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.istartup) | 單一 |
-| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | 單一 |
+| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | 暫時性 |
+| [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | 單一 |
+| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | 暫時性 |
+| [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | 單一 |
+| [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | 單一 |
+| [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | 單一 |
 
 以下範例說明如何使用許多擴充方法，例如 `AddDbContext`、`AddIdentity` 和 `AddMvc`，將其他服務新增至容器。
 
-[!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?highlight=5-6,8-10,12&range=39-56)]
+[!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=5-6,8-10,12&range=39-56)]
 
 ASP.NET 提供的功能與中介軟體，例如 MVC，會遵循使用單一 Add*ServiceName* 的擴充方法註冊該功能所需之所有服務的慣例。
 
->[!TIP]
+> [!TIP]
 > 您可以透過 `Startup` 方法的參數清單在方法內要求特定的架構提供服務 - 如需詳細資料，請參閱[應用程式啟動](startup.md)。
 
 ## <a name="registering-services"></a>註冊服務
 
 您可以註冊自己的應用程式服務，如下所示。 第一個泛型型別代表將從容器要求的類型 (通常是介面)。 第二個泛型型別代表容器將具現化且用來完成這類要求的具象類型。
 
-[!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?range=53-54)]
+[!code-csharp[](../common/samples/WebApplication1/Startup.cs?range=53-54)]
 
 > [!NOTE]
 > 每個 `services.Add<ServiceName>` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 MVC 要求的服務。 建議您遵循這個慣例，並將擴充方法放在 `Microsoft.Extensions.DependencyInjection` 命名空間中，來封裝服務註冊的群組。
@@ -114,18 +113,18 @@ ASP.NET 提供的功能與中介軟體，例如 MVC，會遵循使用單一 Add*
 
 在本文的範例中，有顯示字元名稱的簡單控制器，稱為 `CharactersController`。 其 `Index` 方法會顯示目前已儲存在應用程式中的字元清單，並初始化少數字元的集合，如果尚無集合存在的話。 請注意，雖然此應用程式為了持續性使用 Entity Framework Core 和 `ApplicationDbContext` 類別，但那在控制器中都不明顯。 相反地，在介面背後已抽象化特定資料存取機制 `ICharacterRepository`，它遵循[儲存機制模式](http://deviq.com/repository-pattern/)。 已透過建構函式要求 `ICharacterRepository` 的執行個體，並指派給私用欄位，然後視需要使用該欄位來存取字元。
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21-27&range=8-36)]
+[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21-27&range=8-36)]
 
 `ICharacterRepository` 定義了控制器搭配 `Character` 執行個體所需要的兩個方法。
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
+[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
 
 接著這個介面由具象類型 `CharacterRepository` 實作，用於執行階段。
 
 > [!NOTE]
 > DI 搭配 `CharacterRepository` 類別使用的方式是一個一般模型，您可以針對應用程式服務遵循該模型，而不只是在「儲存機制」或資料存取類別中。
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
+[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
 
 請注意，`CharacterRepository` 在其建構函式中會要求 `ApplicationDbContext`。 相依性插入用於像這樣的鏈結方式並不少見，每個要求的相依性接著都會要求它自己的相依性。 容器負責解決圖形中的所有相依性，並傳回完全解析的服務。
 
@@ -134,11 +133,11 @@ ASP.NET 提供的功能與中介軟體，例如 MVC，會遵循使用單一 Add*
 
 在此情況下，`ICharacterRepository` 以及 `ApplicationDbContext` 都必須向 `Startup` 中 `ConfigureServices` 的服務容器註冊。 `ApplicationDbContext` 的設定是藉由呼叫擴充方法 `AddDbContext<T>` 進行。 下列程式碼顯示 `CharacterRepository` 類型的註冊。
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=3-5,11&range=16-32)]
+[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=3-5,11&range=16-32)]
 
 Entity Framework 內容應該使用 `Scoped` 存留期新增至服務容器。 如果您使用上述的協助程式方法，便會自動處理這點。 將利用 Entity Framework 的儲存機制應該使用相同的存留期。
 
->[!WARNING]
+> [!WARNING]
 > 要小心的主要危險是從單一項目解析 `Scoped` 服務。 很可能在此情況下，處理後續要求時，服務會有不正確的狀態。
 
 具有相依性的服務應該在容器中註冊它們。 如果服務的建構函式需要基本類型，例如 `string`，這可以藉由使用[設定](xref:fundamentals/configuration/index)和[選項模式](xref:fundamentals/configuration/options)來插入。
@@ -155,6 +154,9 @@ ASP.NET 服務可以使用下列存留期進行設定：
 
 具範圍存留期服務會針對每個要求建立一次。
 
+> [!WARNING]
+> 若要在中介軟體中使用範圍服務，諘將該服務入 `Invoke` 或 `InvokeAsync` 方法中。 因為其會強制服務執行單一服務的行為，所以請勿透過建構函式插入進行插入。
+
 **單一**
 
 單一存留期服務會在第一次要求它們時建立 (或是當執行 `ConfigureServices` 時，如果您指定了執行個體)，然後每個後續的要求將會使用相同的執行個體。 如果您的應用程式需要單一行為，則建議允許服務容器管理服務的存留期，而不是實作單一設計模式，並自行管理類別中的物件存留期。
@@ -163,21 +165,21 @@ ASP.NET 服務可以使用下列存留期進行設定：
 
 為了示範這些存留期和註冊選項之間的差異，請考慮一個簡單的介面，以具有唯一識別碼 `OperationId` 的「作業」代表一或多個工作。 根據我們設定此服務存留期的方式，容器會提供相同或不同的服務執行個體給要求的類別。 為了清楚表示所要求的存留期，我們將為每個存留期選項建立一個類型：
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5-8)]
+[!code-csharp[](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5-8)]
 
 我們會使用單一類別 `Operation` 來實作這些介面，它在其建構函式接受 `Guid`，如果未提供則使用新的 `Guid`。
 
 接下來，在 `ConfigureServices` 中，每個類型會根據其具名存留期新增至容器：
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?range=26-32)]
+[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Startup.cs?range=26-32)]
 
 請注意，`IOperationSingletonInstance` 服務使用特定執行個體，它具有已知識別碼 `Guid.Empty`，因此可以清楚知道此類型在使用中的時候 (其 Guid 會是全部為零)。 我們也已註冊 `OperationService`，它相依於每一個其他 `Operation` 類型，因此可以清楚知道在要求內這個服務針對每個作業類型是獲得與控制器相同的執行個體，還是新的執行個體。 此服務所做的就是將其相依性公開為屬性，以便在檢視中顯示。
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs)]
+[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs)]
 
 為了示範個別應用程式要求內與之間的物件存留期，範例包含了 `OperationsController`，它會要求每種 `IOperation` 類型，以及 `OperationService`。 然後 `Index` 動作會顯示控制器和服務的所有 `OperationId` 值。
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs)]
+[!code-csharp[](dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs)]
 
 現在，對此控制器動作進行了兩個不同的要求：
 
@@ -193,6 +195,48 @@ ASP.NET 服務可以使用下列存留期進行設定：
 
 * 「單一」物件對於每個物件與每個要求都相同 (不論執行個體是否提供於 `ConfigureServices`)
 
+## <a name="resolve-a-scoped-service-within-the-application-scope"></a>解析應用程式範圍中的範圍服務
+
+使用 [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) 建立 [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope)，以解析應用程 式範圍中的範圍服務。 此法可用於在開機時存取範圍服務，以執行初始化工作。 下列範例示範如何在 `Program.Main` 中取得 `MyScopedService`：
+
+```csharp
+public static void Main(string[] args)
+{
+    var host = BuildWebHost(args);
+
+    using (var serviceScope = host.Services.CreateScope())
+    {
+        var services = serviceScope.ServiceProvider;
+
+        try
+        {
+            var serviceContext = services.GetRequiredService<MyScopedService>();
+            // Use the context here
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred.");
+        }
+    }
+
+    host.Run();
+}
+```
+
+## <a name="scope-validation"></a>範圍驗證
+
+當應用程式在 ASP.NET Core 2.0 或更新版本的開發環境中執行時，預設服務提供者會確認：
+
+* 範圍服務不是直接或間接由開機服務提供者解析。
+* 範圍服務不是直接或間接插入單一服務。
+
+根服務提供者會在呼叫 [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。
+
+範圍服務會由建立這些服務的容器處置。 若是在根容器中建立範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
+
+如需詳細資訊，請參閱[裝載時驗證範圍](xref:fundamentals/hosting#scope-validation)主題。
+
 ## <a name="request-services"></a>要求服務
 
 來自 `HttpContext`，在 ASP.NET 要求內提供的服務是透過 `RequestServices` 集合公開。
@@ -201,7 +245,7 @@ ASP.NET 服務可以使用下列存留期進行設定：
 
 要求服務代表您在應用程式中設定和要求的服務。 當您的物件指定相依性時，這些會由 `RequestServices` 中找到的類型來滿足，而非 `ApplicationServices`。
 
-一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 這會產生較易於測試的類別 (請參閱[測試](../testing/index.md)) 且更鬆散結合。
+一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 如此產生的類別將更較容易測試 (請參閱[測試與偵錯](../testing/index.md))，而且更鬆散結合。
 
 > [!NOTE]
 > 偏好要求相依性作為建構函式參數，而不要存取 `RequestServices` 集合。
@@ -315,7 +359,7 @@ public class DefaultModule : Module
 ## <a name="additional-resources"></a>其他資源
 
 * [應用程式啟動](xref:fundamentals/startup)
-* [測試](xref:testing/index)
+* [測試及偵錯](xref:testing/index)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)
 * [在 ASP.NET Core 使用 Dependency Injection 撰寫簡潔的程式碼 (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Container-Managed Application Design, Prelude: Where does the Container Belong?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/) (容器管理的應用程式設計，序曲：容器屬於何處？)

@@ -1,23 +1,28 @@
 ---
-title: "使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API"
+title: 使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 author: rick-anderson
-description: "使用 ASP.NET Core MVC 和 Visual Studio for Windows 建置 Web API"
-ms.author: riande
+description: 使用 ASP.NET Core MVC 和 Visual Studio for Windows 建置 Web API
 manager: wpickett
-ms.date: 08/15/2017
-ms.topic: get-started-article
-ms.technology: aspnet
+ms.author: riande
+ms.custom: mvc
+ms.date: 04/27/2018
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: bfa6ae4b04628a4c0b868a054446843ee3401f8a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 962c24a7e654328df7e8893e589e45b19e87b931
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/03/2018
 ---
-#<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Mike Wasson](https://github.com/mikewasson) 提供
+
+::: moniker range="= aspnetcore-2.1"
+[!INCLUDE[](~/includes/2.1.md)]
+::: moniker-end
 
 本教學課程將建置 Web API 來管理「待辦事項」項目清單， 並不會建立使用者介面 (UI)。
 
@@ -33,27 +38,21 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE[install 2.0](../includes/install2.0.md)]
-
-若要了解 ASP.NET Core 1.1 版，請參閱[此 PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf)。
+[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="create-the-project"></a>建立專案
 
-從 Visual Studio 中，選取 [檔案] 功能表 > [新增] > [專案]。
+請在 Visual Studio 中遵循下列步驟：
 
-選取 [ASP.NET Core Web 應用程式 (.NET Core)] 專案範本。 將專案命名為 `TodoApi`，然後按一下 [確定]。
-
-![[新增專案] 對話方塊](first-web-api/_static/new-project.png)
-
-在 [New ASP.NET Core Web Application - TodoApi] (新增 ASP.NET Core Web 應用程式 - TodoApi) 對話方塊中，選取 [Web API] 範本。 選取 [確定]。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)。
-
-![已從 ASP.NET Core 範本中選取 Web API 專案範本的 [新增 ASP.NET Web 應用程式] 對話方塊](first-web-api/_static/web-api-project.png)
+* 從 [檔案] 功能表選取 [新增] > [專案]。
+* 選取 [ASP.NET Core Web 應用程式] 範本。 將專案命名為 *TodoApi*，然後按一下 [確定]。
+* 在 [新增 ASP.NET Core Web 應用程式 - TodoApi] 對話方塊中，選擇 ASP.NET Core 版本。 選取 [API] 範本，然後按一下 [確定]。 請**勿**選取 [Enable Docker Support] (啟用 Docker 支援)。
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:port/api/values`，其中 *port* 是隨機選擇的通訊埠編號。 Chrome、Microsoft Edge 和 Firefox 顯示下列輸出：
+在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。 Chrome、Microsoft Edge 和 Firefox 顯示下列輸出：
 
-```
+```json
 ["value1","value2"]
 ```
 
@@ -61,15 +60,16 @@ ms.lasthandoff: 01/24/2018
 
 模型是代表應用程式中資料的物件。 在此情況下，唯一的模型是待辦事項。
 
-新增名為 "Models" 的資料夾。 在方案總管中，以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
+在方案總管中，以滑鼠右鍵按一下專案。 選取 [新增] > [新增資料夾]。 將資料夾命名為 *Models*。
 
-注意：模型類別可位於專案中的任何位置。 根據慣例，*Models* 資料夾是供模型類別使用。
+> [!NOTE]
+> 模型類別可位於專案中的任何位置。 根據慣例，*Models* 資料夾是供模型類別使用。
 
-新增 `TodoItem` 類別。 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [類別]。 將類別命名為 `TodoItem`，然後選取 [新增]。
+在 [方案總管] 中，以滑鼠右鍵按一下 *Models* 資料夾，然後選擇 [新增] > [類別]。 將類別命名為 *TodoItem*，然後按一下 [新增]。
 
 使用下列程式碼更新 `TodoItem` 類別：
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 此資料庫會在建立 `TodoItem` 時產生 `Id`。
 
@@ -77,17 +77,17 @@ ms.lasthandoff: 01/24/2018
 
 「資料庫內容」是為指定的資料模型協調 Entity Framework 功能的主要類別。 此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。
 
-新增 `TodoContext` 類別。 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [類別]。 將類別命名為 `TodoContext`，然後選取 [新增]。
+在 [方案總管] 中，以滑鼠右鍵按一下 *Models* 資料夾，然後選擇 [新增] > [類別]。 將類別命名為 *TodoContext*，然後按一下 [新增]。
 
 使用下列程式碼取代該類別：
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
-[!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
+[!INCLUDE [Register the database context](../includes/webApi/register_dbContext.md)]
 
 ### <a name="add-a-controller"></a>新增控制器
 
-在方案總管中，以滑鼠右鍵按一下 *Controllers* 資料夾。 選取 [新增] > [新增項目]。 在 [新增項目] 對話方塊中，選取 [Web API 控制器類別] 範本。 將類別命名為 `TodoController` 。
+在方案總管中，以滑鼠右鍵按一下 *Controllers* 資料夾。 選取 [新增] > [新增項目]。 在 [新增項目] 對話方塊中，選取 [API 控制器類別] 範本。 將類別命名為 *TodoController*，然後按一下 [新增]。
 
 ![在搜尋方塊中輸入 controller 且已選取 Web API 控制器的 [新增項目] 對話方塊](first-web-api/_static/new_controller.png)
 
@@ -97,9 +97,10 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="launch-the-app"></a>啟動應用程式
 
-在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:port/api/values`，其中 *port* 是隨機選擇的通訊埠編號。 瀏覽至位於 `http://localhost:port/api/todo` 的 `Todo` 控制器。
+在 Visual Studio 中，按 CTRL + F5 來啟動應用程式。 Visual Studio 會啟動瀏覽器並巡覽至 `http://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。 瀏覽至位於 `http://localhost:<port>/api/todo` 的 `Todo` 控制器。
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
-[!INCLUDE[next steps](../includes/webApi/next.md)]
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
+[!INCLUDE[next steps](../includes/webApi/next.md)]

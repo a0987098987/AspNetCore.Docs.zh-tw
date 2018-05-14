@@ -1,21 +1,22 @@
 ---
-title: "更新產生的頁面"
+title: 更新 ASP.NET Core 應用程式中產生的頁面
 author: rick-anderson
-description: "以更好的顯示方式更新產生的頁面。"
+description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: a1bb1ab1e4fac9c634f4048947ac3f934af3d625
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 5c188799b7a42bcd5e9d5eab8dfe8cdad8002fe5
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="update-the-generated-pages"></a>更新產生的頁面
+# <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>更新 ASP.NET Core 應用程式中產生的頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 01/30/2018
 
 開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
 
 以滑鼠右鍵按一下紅色曲線 > **[快速動作與重構]**。
 
@@ -39,8 +40,8 @@ ms.lasthandoff: 01/30/2018
 
   Visual Studio 即會新增 `using System.ComponentModel.DataAnnotations;`。
 
-[!INCLUDE[model1](../../includes/RP/da2.md)]
+[!INCLUDE [model1](../../includes/RP/da2.md)]
 
->[!div class="step-by-step"]
-[上一步：使用 SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-[新增搜尋](xref:tutorials/razor-pages/search)
+> [!div class="step-by-step"]
+> [上一步：使用 SQL Server LocalDB](xref:tutorials/razor-pages/sql)
+> [新增搜尋](xref:tutorials/razor-pages/search)

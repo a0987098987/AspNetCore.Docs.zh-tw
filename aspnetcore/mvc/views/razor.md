@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/razor
-ms.openlocfilehash: 98021cc76555f0c1402764c845471a4730b01b20
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9c96ea34071bf3009f1ec53ed9af9206439aa229
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="razor-syntax-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法
+# <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Luke Latham](https://github.com/guardrex)、[Taylor Mullen](https://twitter.com/ntaylormullen) 與 [Dan Vicarel](https://github.com/Rabadash8820)
 
@@ -89,7 +89,7 @@ Razor 明確運算式是由 `@` 符號與對稱的括弧所組成。 為了轉�
 
 上一節中所述的隱含運算式通常不能包含空格。 在下列程式碼中，不會從目前的時間減去一週：
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
+[!code-cshtml[](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
 程式碼會轉譯下列 HTML：
 
@@ -109,19 +109,7 @@ Razor 明確運算式是由 `@` 符號與對稱的括弧所組成。 為了轉�
 
 若沒有明確運算式，`<p>Age@joe.Age</p>` 會視為電子郵件地址，並轉譯 `<p>Age@joe.Age</p>`。 當撰寫為明確運算式時，會轉譯 `<p>Age33</p>`。
 
-
-您可以使用明確運算式，透過 *.cshtml* 檔案中的泛型方法轉譯輸出。 在隱含運算式中，括弧 (`<>`) 內的字元會解譯為 HTML 標籤。 下列標記**不是**有效的 Razor：
-
-```cshtml
-<p>@GenericMethod<int>()</p>
-```
-
-上述程式碼會產生類似下列其中一項的編譯器錯誤：
-
- * "Int" 項目未關閉。 所有項目都必須自行結束或具有相對應的結束標籤。
- *  無法將方法群組 'GenericMethod' 轉換成非委派類型 'type'。 您是否想要叫用方法？ 
- 
- 下列標記顯示撰寫此程式碼的正確方式。 程式碼會撰寫為明確運算式：
+您可以使用明確運算式，透過 *.cshtml* 檔案中的泛型方法轉譯輸出。 下列標記會顯示如何修正稍早顯示的錯誤，此錯誤是由 C# 泛型的括弧所造成。 程式碼會撰寫為明確運算式：
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -370,7 +358,7 @@ else
 
 例外狀況處理會類似於 C#：
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact7.cshtml)]
 
 ### <a name="lock"></a>@lock
 
@@ -419,7 +407,7 @@ Razor 指示詞是以隱含運算式表示，這些運算式具有保留關鍵�
 
 了解 Razor 如何針對檢視產生程式碼，可讓您更容易了解指示詞的運作方式。
 
-[!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
 
 程式碼會產生類似如下的類別：
 
@@ -439,11 +427,12 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 本文稍後的[檢視針對檢視所產生的 Razor C# 類別](#viewing-the-razor-c-class-generated-for-a-view)一節將說明如何檢視此產生的類別。
 
+<a name="using"></a>
 ### <a name="using"></a>@using
 
 `@using` 指示詞會將 C# `using` 指示詞新增至產生的檢視：
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact9.cshtml)]
 
 ### <a name="model"></a>@model
 
@@ -471,7 +460,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 <div>The Login Email: @Model.Email</div>
 ```
 
-`@model` 指示詞會指定此屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 模型的值會從控制器傳遞至檢視。 如需詳細資訊，請參閱＜強型別模型和 @model 關鍵字＞。
+`@model` 指示詞會指定此屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 模型的值會從控制器傳遞至檢視。 如需詳細資訊，請參閱[強型別模型和 &commat;model 關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword)。
 
 ### <a name="inherits"></a>@inherits
 
@@ -483,11 +472,11 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 下列程式碼是自訂 Razor Page 類型：
 
-[!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
+[!code-csharp[](razor/sample/Classes/CustomRazorPage.cs)]
 
 `CustomText` 會顯示在檢視中：
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact10.cshtml)]
 
 程式碼會轉譯下列 HTML：
 
@@ -497,11 +486,11 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
  `@model` 和 `@inherits` 可用於相同的檢視。 `@inherits` 可能位於檢視匯入的 *_ViewImports.cshtml* 檔案中：
 
-[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
+[!code-cshtml[](razor/sample/Views/_ViewImportsModel.cshtml)]
 
 下列程式碼是強型別檢視的範例：
 
-[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Login1.cshtml)]
 
 如果模型中傳遞了 "rick@contoso.com"，檢視會產生下列 HTML 標記：
 
@@ -517,7 +506,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 ### <a name="functions"></a>@functions
 
-`@functions` 指示詞可讓 Razor Page 將函式階層內容新增至檢視：
+`@functions` 指示詞可讓 Razor 頁面將 C# 程式碼區塊新增至檢視：
 
 ```cshtml
 @functions { // C# Code }
@@ -525,7 +514,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 例如: 
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
 程式碼會產生下列 HTML 標記：
 
@@ -535,7 +524,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 下列程式碼是產生的 Razor C# 類別：
 
-[!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
+[!code-csharp[](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
 ### <a name="section"></a>@section
 
@@ -547,9 +536,9 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 | 指示詞 | 功能 |
 | --------- | -------- |
-| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
-| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
-| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | 指定標籤前置字元，以啟用標籤協助程式支援，並將標籤協助程式使用方式設為明確。 |
+| [&commat;addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
+| [&commat;removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
+| [&commat;tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | 指定標籤前置字元，以啟用標籤協助程式支援，並將標籤協助程式使用方式設為明確。 |
 
 ## <a name="razor-reserved-keywords"></a>Razor 保留關鍵字
 
@@ -592,11 +581,11 @@ C# Razor 關鍵字必須使用 `@(@C# Razor Keyword)` (例如 `@(@case)`) 雙重
 
 請將下列類別新增至 ASP.NET Core MVC 專案：
 
-[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
+[!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
 以 `CustomTemplateEngine` 類別覆寫 MVC 所新增的 `RazorTemplateEngine`：
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
+[!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
 在 `CustomTemplateEngine` 的 `return csharpDocument` 陳述式上設定中斷點。 當程式在中斷點停止執行時，請檢視 `generatedCode` 的值。
 

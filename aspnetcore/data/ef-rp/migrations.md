@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面與 EF Core - 移轉 - 4/8"
+title: ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 author: rick-anderson
-description: "在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。"
+description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/migrations
-ms.openlocfilehash: e89d95702cb94556bc6e5dc73253c51acaa11578
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 690beaabeab098cf9b764730b1bf1bd04bf6b003
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>移轉 - EF Core 與 Razor 頁面教學課程 (4/8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 在本教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
 
@@ -52,7 +52,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 
 在 *appsettings.json* 檔案中，將連接字串中的資料庫名稱變更為 ContosoUniversity2。
 
-[!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
+[!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
 
 變更連接字串中的資料庫名稱，會導致第一個移轉建立新的資料庫。 因為不存在具有該名稱的資料庫，所以會建立新的資料庫。 開始使用移轉並不需要變更連接字串。
 
@@ -100,7 +100,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20171026010210_InitialCreate.cs?range=8-24,77-)]
+[!code-csharp[](intro/samples/cu/Migrations/20171026010210_InitialCreate.cs?range=8-24,77-)]
 
 移轉會呼叫 `Up` 方法，以實作資料模型變更來進行移轉。 當您輸入命令以復原更新時，移轉會呼叫 `Down` 方法。
 
@@ -115,15 +115,13 @@ EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 �
 
 之前，連接字串已變更為使用資料庫的新名稱。 指定的資料庫不存在；因此，移轉會建立資料庫。
 
-### <a name="examine-the-data-model-snapshot"></a>檢查資料模型快照集
+### <a name="the-data-model-snapshot"></a>資料模型快照集
 
-移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」：
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot1.cs?name=snippet_Truncate)]
+刪除移轉時，請使用 [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。
 
-因為目前的資料庫結構描述是以程式碼表示，所以 EF Core 不需與資料庫與互動來建立移轉。 當您新增移轉時，EF Core 會藉由比較資料模型與快照集檔案，以判斷變更的內容。 只有 EF Core 必須更新資料庫時，它才會與資料庫互動。
-
-快照集檔案必須與建立它的移轉同步。 刪除名為 \<時間戳記>_\<移轉名稱>.cs 的檔案無法移除移轉。 如果刪除該檔案，剩餘的移轉部分將與資料庫快照集檔案不同步。 若要刪除最後一個新增的移轉，請使用 [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。
+如需如何使用快照集檔案的詳細資訊，請參閱[小組環境中的 EF Core 移轉](/ef/core/managing-schemas/migrations/teams)。
 
 ## <a name="remove-ensurecreated"></a>移除 EnsureCreated
 
@@ -181,15 +179,15 @@ info: Microsoft.EntityFrameworkCore.Database.Command[200101]
 Done.
 ```
 
-若要降低記錄訊息的詳細資料層級，可以變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱[記錄簡介](xref:fundamentals/logging/index)。
+若要降低記錄訊息的詳細資料層級，請變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱[記錄簡介](xref:fundamentals/logging/index)。
 
 使用 **SQL Server 物件總管**來檢查資料庫。 請注意已新增 `__EFMigrationsHistory` 資料表。 `__EFMigrationsHistory` 資料表會追蹤哪些移轉經套用至資料庫。 檢視 `__EFMigrationsHistory` 資料表中的資料，它會顯示第一個移轉的某個資料列。 上述 CLI 輸出範例中的最後一則記錄會顯示建立此資料列的 INSERT 陳述式。
 
 執行應用程式，並確認一切運作正常。
 
-## <a name="appling-migrations-in-production"></a>在生產環境中套用移轉
+## <a name="applying-migrations-in-production"></a>在生產環境中套用移轉
 
-建議在應用程式啟動時，生產環境應用程式**不**應該呼叫 [Database.Migrate](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_)。 `Migrate` 不應該從伺服器陣列中的應用程式進行呼叫。 例如，如果應用程式已使用向外延展 (執行應用程式的多個執行個體) 進行雲端部署。
+建議在應用程式啟動時，生產環境應用程式**不**應該呼叫 [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_)。 `Migrate` 不應該從伺服器陣列中的應用程式進行呼叫。 例如，如果應用程式已使用向外延展 (執行應用程式的多個執行個體) 進行雲端部署。
 
 資料庫移轉應該在部署中以受控制的方式完成。 生產環境資料庫移轉方法包括：
 
@@ -224,7 +222,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 應用程式會產生下列例外狀況：
 
 ```text
-`SqlException: Cannot open database "ContosoUniversity" requested by the login.
+SqlException: Cannot open database "ContosoUniversity" requested by the login.
 The login failed.
 Login failed for user 'user name'.
 ```
@@ -236,6 +234,6 @@ Login failed for user 'user name'.
 * 再次執行命令。
 * 在頁面底部留下訊息。
 
->[!div class="step-by-step"]
-[上一頁](xref:data/ef-rp/sort-filter-page)
-[下一頁](xref:data/ef-rp/complex-data-model)
+> [!div class="step-by-step"]
+> [上一頁](xref:data/ef-rp/sort-filter-page)
+> [下一頁](xref:data/ef-rp/complex-data-model)

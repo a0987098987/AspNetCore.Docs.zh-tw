@@ -1,7 +1,7 @@
 ---
-title: "新增模型到 ASP.NET Core MVC 應用程式"
+title: 使用 Visual Studio for Mac 將模型新增至 ASP.NET Core MVC 應用程式
 author: rick-anderson
-description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
+description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 09/22/2017
@@ -10,13 +10,15 @@ ms.prod: .net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app-mac/adding-model
-ms.openlocfilehash: bf4d5d289266b585cbdfbb70c7482620fd4ced54
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6792dbc7c9ab063d85c0c4145481b8fd6b40da63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
+# <a name="add-a-model-to-an-aspnet-core-mvc-app-with-visual-studio-for-mac"></a>使用 Visual Studio for Mac 將模型新增至 ASP.NET Core MVC 應用程式
+
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model1.md)]
 
 * 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增] > [新增檔案]。 
 * 在 [新增檔案] 對話方塊中：
@@ -27,7 +29,7 @@ ms.lasthandoff: 01/30/2018
 
 將下列屬性新增至 `Movie` 類別：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 `ID` 欄位是資料庫對於主索引鍵的必要欄位。
 
@@ -41,17 +43,17 @@ ms.lasthandoff: 01/30/2018
 
 - 將下列反白顯示的 NuGet 套件新增至 *MvcMovie.csproj* 檔案：
              
-  [!code-csharp[Main](../first-mvc-app-xplat/start-mvc/sample/MvcMovie/MvcMovie.csproj?highlight=7,10)]
+  [!code-csharp[](../first-mvc-app-xplat/start-mvc/sample/MvcMovie/MvcMovie.csproj?highlight=7,10)]
 
 - 儲存檔案。
 
-- 建立 *Models/MvcMovieContext.cs* 檔案，並新增下列 `MvcMovieContext` 類別：[!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)]
+- 建立 *Models/MvcMovieContext.cs* 檔案，並新增下列 `MvcMovieContext` 類別：[!code-csharp[](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Models/MvcMovieContext.cs)]
    
-- 開啟 *Startup.cs*，並新增兩個 using：[!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)]
+- 開啟 *Startup.cs*，並新增兩個 using：[!code-csharp[](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet1&highlight=1,2)]
 
 - 將資料庫內容新增至 *Startup.cs* 檔案：
 
-   [!code-csharp[Main](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet2&highlight=6-7)]
+   [!code-csharp[](../../tutorials/first-mvc-app-xplat/start-mvc/sample/MvcMovie/Startup.cs?name=snippet2&highlight=6-7)]
 
   這會告知 Entity Framework 哪些模型類別包含在資料模型中。 您是在定義電影物件的一個「實體集」，它會在資料庫中以「電影」資料表表示。
 
@@ -96,9 +98,9 @@ Scaffolding 引擎會建立下列各項：
   * 巡覽至 *Views* 資料夾中，選取 *Views\Movies*，然後選取 [開啟]。
   * 在 [Select files to add from Movies] (選取要從 Movies 新增的檔案) 對話方塊中，選取 [全部包含]，然後選取 [確定]。
 
-[!INCLUDE[adding-model 2x](../../includes/mvc-intro/adding-model2xp.md)]
+[!INCLUDE [adding-model 2x](../../includes/mvc-intro/adding-model2xp.md)]
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model3.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
 
 您現在擁有一個資料庫和多個頁面，可用來顯示、編輯、更新和刪除資料。 在下一個教學課程中，我們將會使用資料庫。
 
@@ -107,6 +109,6 @@ Scaffolding 引擎會建立下列各項：
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)
 * [全球化和當地語系化](xref:fundamentals/localization)
 
->[!div class="step-by-step"]
-[上一步：新增檢視](adding-view.md)
-[下一步：使用 SQL](working-with-sql.md)  
+> [!div class="step-by-step"]
+> [上一步：新增檢視](adding-view.md)
+> [下一步：使用 SQL](working-with-sql.md)  

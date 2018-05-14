@@ -1,7 +1,7 @@
 ---
-title: "將模型加新增至 ASP.NET Core MVC 應用程式"
+title: 新增模型到 ASP.NET Core MVC 應用程式
 author: rick-anderson
-description: "請將模型新增至簡單的 ASP.NET Core 應用程式。"
+description: 請將模型新增至簡單的 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 12/8/2017
@@ -9,19 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 1819aff0e6ae68ad3c609466e52fcb6510fe1dcd
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4204d4e2d474db51692d42751a9f82373e9f0c0d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
+# <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
+
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model1.md)]
 
 注意：ASP.NET Core 2.0 範本包含 *Models* 資料夾。
 
 以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 `ID` 欄位是資料庫對於主索引鍵的必要欄位。 
 
@@ -59,7 +61,7 @@ Visual Studio 會建立：
 
 * Entity Framework Core [資料庫內容類別](xref:data/ef-mvc/intro#create-the-database-context) (*Data/MvcMovieContext.cs*)
 * 電影控制器 (*Controllers/MoviesController.cs*)
-* Create、Delete、Details、Edit 和 Index 頁面的 Razor 檢視檔案 (*Views/Movies/&ast;.cshtml*)
+* Create、Delete、Details、Edit 和 Index 頁面的 Razor 檢視檔案 (<em>Views/Movies/&ast;.cshtml</em>)
 
 自動建立資料庫內容與 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。 您很快就會擁有一個正常運作的 Web 應用程式，可讓您管理電影資料庫。
 
@@ -113,12 +115,21 @@ Update-Database
   dotnet ef database update
   ```     
   
+  如果您執行應用程式並收到錯誤：
+  
+  ```text
+  SqlException: Cannot open database "Movie" requested by the login.
+  The login failed.
+  Login failed for user 'user name'.
+  ```
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model3.md)]
+您可能尚未執行 ` dotnet ef database update`。
+  
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/adding-model4.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model4.md)]
 
 ![列出識別碼、價格、發行日期及標題等可用屬性的模型項目上 IntelliSense 的操作功能表](adding-model/_static/ints.png)
 
@@ -127,6 +138,6 @@ Update-Database
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)
 * [全球化和當地語系化](xref:fundamentals/localization)
 
->[!div class="step-by-step"]
-[上一步：新增檢視](adding-view.md)
-[下一步：使用 SQL](working-with-sql.md)  
+> [!div class="step-by-step"]
+> [上一步：新增檢視](adding-view.md)
+> [下一步：使用 SQL](working-with-sql.md)  

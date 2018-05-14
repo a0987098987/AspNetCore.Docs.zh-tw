@@ -1,22 +1,22 @@
 ---
-title: "ASP.NET Core 中的標籤協助程式"
+title: ASP.NET Core 中的標籤協助程式
 author: rick-anderson
-description: "了解何謂標籤協助程式，以及如何在 ASP.NET Core 中使用它們。"
+description: 了解何謂標籤協助程式，以及如何在 ASP.NET Core 中使用它們。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 7/14/2017
+ms.date: 2/14/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 939eccd45ec437f379fb9349c24246cc0683528b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0c66b700f9bb3e6349fe2e0c8a7e254b8e7903a5
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式簡介 
+# <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -32,19 +32,32 @@ ms.lasthandoff: 01/30/2018
 
 **讓您更具生產力，而且可以只使用伺服器上的可用資訊來產生更強固、可靠和易維護的程式碼**：例如，在過去，更新映像的目的是要在您變更映像時變更映像名稱。 基於效能考量，應該主動快取影像，而且除非您變更影像的名稱，否則用戶端會有取得過時複本的風險。 在過去，編輯映像之後，必須變更名稱，而且需要更新 Web 應用程式中映像的每個參考。 這不只十分耗人力，也很容易發生錯誤 (您可能遺漏參考、不小心地輸入錯誤字串，依此類推)內建 `ImageTagHelper` 可以自動執行這項作業。 `ImageTagHelper` 可以將版本號碼附加到映像名稱後面；因此，只要映像變更，伺服器就會自動產生映像的新唯一版本。 用戶端保證會取得目前的映像。 使用 `ImageTagHelper`，此健全性和人力節省基本上是免費的。
 
-大部分的內建標籤協助程式都是以現有的 HTML 項目為目標，並提供項目的伺服器端屬性。 例如，*Views/Account* 資料夾的許多檢視中所使用的 `<input>` 項目都會包含 `asp-for` 屬性，以將所指定模型屬性的名稱擷取到已轉譯的 HTML。 下列 Razor 標記：
+大部分的內建的標籤協助程式都可以在標準的 HTML 元素中使用，可為元素提供伺服器端的屬性。 例如，在 [檢視/帳戶] 資料夾內許多檢視中所使用的 `<input>` 元素會包含 `asp-for` 屬性。 此屬性會擷取指定之模型屬性的名稱，並將其放入轉譯的 HTML 中。 請考慮下列模型的 Razor 檢視：
+
+```csharp
+public class Movie
+{
+    public int ID { get; set; }
+    public string Title { get; set; }
+    public DateTime ReleaseDate { get; set; }
+    public string Genre { get; set; }
+    public decimal Price { get; set; }
+}
+```
+
+下列 Razor 標記：
 
 ```cshtml
-<label asp-for="Email"></label>
+<label asp-for="Movie.Title"></label>
 ```
 
 產生下列 HTML：
 
-```cshtml
-<label for="Email">Email</label>
+```html
+<label for="Movie_Title">Title</label>
 ```
 
-`LabelTagHelper` 中的 `For`屬性 (property) 可以使用 `asp-for` 屬性 (attribute)。 如需詳細資訊，請參閱[編寫標籤協助程式](authoring.md)。
+`asp-for` 屬性由 [LabelTagHelper](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.labeltaghelper?view=aspnetcore-2.0) 中的 `For` 提供。 如需詳細資訊，請參閱[編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)。
 
 ## <a name="managing-tag-helper-scope"></a>管理標籤協助程式範圍
 
@@ -56,13 +69,13 @@ ms.lasthandoff: 01/30/2018
 
 如果您建立名為 *AuthoringTagHelpers* (沒有驗證) 的新 ASP.NET Core Web 應用程式，則會將下列 *Views/_ViewImports.cshtml* 檔案新增至您的專案：
 
-[!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
+[!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
 `@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，檢視檔案是 *Views/_ViewImports.cshtml*，預設繼承自 *Views* 資料夾和子目錄中的所有檢視檔案；讓標籤協助程式可用。 上述程式碼使用萬用字元語法 ("\*") 指定 *Views* 目錄或子目錄中每個檢視檔案都可以使用之指定組件中的所有標籤協助程式 (*Microsoft.AspNetCore.Mvc.TagHelpers*)。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
 
 若要公開此專案中的所有標籤協助程式 (這會建立名為 *AuthoringTagHelpers* 的組件)，請使用下列內容：
 
-[!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
+[!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
 如果您的專案包含具有預設命名空間 (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) 的 `EmailTagHelper`，則您可以提供標籤協助程式的完整名稱 (FQN)：
 
@@ -148,7 +161,7 @@ IntelliSense 陳述式完成可讓您輸入 Tab 鍵，來完成具有所選取�
 
 ![影像](intro/_static/labelaspfor2.png)
 
-您可以在雙引號 ("") 內輸入 Visual Studio *CompleteWord* 快速鍵 (Ctrl+空格鍵是[預設值](https://docs.microsoft.com/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio)，而且現在可以使用 C#，就像使用 C# 類別一樣。 IntelliSense 會顯示頁面模型上的所有方法和屬性。 因為屬性類型是 `ModelExpression`，所以可以使用方法和屬性。 在下列影像中，我正在編輯 `Register` 檢視，因此 `RegisterViewModel` 可供使用。
+您可以在雙引號 ("") 內輸入 Visual Studio *CompleteWord* 快速鍵 (Ctrl+空格鍵是[預設值](/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio)，而且現在可以使用 C#，就像使用 C# 類別一樣。 IntelliSense 會顯示頁面模型上的所有方法和屬性。 因為屬性類型是 `ModelExpression`，所以可以使用方法和屬性。 在下列影像中，我正在編輯 `Register` 檢視，因此 `RegisterViewModel` 可供使用。
 
 ![影像](intro/_static/intellemail.png)
 
@@ -166,13 +179,13 @@ IntelliSense 會列出頁面上模型可用的屬性和方法。 豐富的 Intel
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
 ```
 
-at (`@`) 符號會告知 Razor 這是程式碼啟動。 下兩個參數 ("FirstName" 和 "First Name:") 是字串，因此 [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) 沒有幫助。 最後一個引數：
+at (`@`) 符號會告知 Razor 這是程式碼啟動。 下兩個參數 ("FirstName" 和 "First Name:") 是字串，因此 [IntelliSense](/visualstudio/ide/using-intellisense) 沒有幫助。 最後一個引數：
 
 ```cshtml
 new {@class="caption"}
 ```
 
-是用來代表屬性的匿名物件。 因為 **class** 是 C# 中的保留關鍵字，所以您可以使用 `@` 符號來強制 C# 將 "@class=" 解譯為符號 (屬性名稱)。 針對前端設計人員 (熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 C# 和 Razor)，這行大部分為外部。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
+是用來代表屬性的匿名物件。 因為 <strong>class</strong> 是 C# 中的保留關鍵字，所以您可以使用 `@` 符號來強制 C# 將 "@class=" 解譯為符號 (屬性名稱)。 針對前端設計人員 (熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 C# 和 Razor)，這行大部分為外部。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
 
 使用 `LabelTagHelper`，可以將相同的標記撰寫為：
 
@@ -220,7 +233,7 @@ Visual Studio 編輯器會以灰色背景顯示 C# 程式碼。 例如，`AntiFo
 
 請考慮使用 *Email* 群組：
 
-[!code-csharp[Main](intro/sample/Register.cshtml?range=12-18)]
+[!code-csharp[](intro/sample/Register.cshtml?range=12-18)]
 
 每個 "asp-" 屬性的值都是 "Email"，但 "Email" 不是字串。 在此內容中，"Email" 是 `RegisterViewModel` 的 C# 模型運算式屬性。
 
@@ -236,13 +249,13 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 
 * Web 伺服器控制項包括自動瀏覽器偵測。 標籤協助程式不知道瀏覽器。
 
-* 雖然您通常無法撰寫網頁伺服器控制項，但是多個標籤協助程式可以處理相同的項目 (請參閱[避免標籤協助程式衝突](https://docs.microsoft.com/aspnet/core/mvc/views/tag-helpers/authoring#avoiding-tag-helper-conflicts))。
+* 雖然您通常無法撰寫網頁伺服器控制項，但是多個標籤協助程式可以處理相同的項目 (請參閱[避免標籤協助程式衝突](xref:mvc/views/tag-helpers/authoring#avoid-tag-helper-conflicts))。
 
 * 標籤協助程式可以修改設為其範圍之 HTML 項目的標籤和內容，但不會直接修改頁面上的其他任何項目。 網頁伺服器控制項的範圍更為廣泛，而且可以執行的動作會影響您網頁的其他部分；具有非預期的副作用。
 
 * 網頁伺服器控制項使用類型轉換器以將字串轉換成物件。 使用標籤協助程式時，您可以使用 C# 以原生方式工作，因此不需要進行類型轉換。
 
-* 網頁伺服器控制項使用 [System.ComponentModel](https://docs.microsoft.com/dotnet/api/system.componentmodel)，來實作元件和控制項的執行階段和設計階段行為。 `System.ComponentModel` 包含基底類別和介面，以便實作屬性和類型轉換器、繫結至資料來源，以及授權元件。 與一般衍生自 `TagHelper` 的標籤協助程式相反，而且 `TagHelper` 基底類別只會公開兩個方法：`Process` 和 `ProcessAsync`。
+* 網頁伺服器控制項使用 [System.ComponentModel](/dotnet/api/system.componentmodel)，來實作元件和控制項的執行階段和設計階段行為。 `System.ComponentModel` 包含基底類別和介面，以便實作屬性和類型轉換器、繫結至資料來源，以及授權元件。 與一般衍生自 `TagHelper` 的標籤協助程式相反，而且 `TagHelper` 基底類別只會公開兩個方法：`Process` 和 `ProcessAsync`。
 
 ## <a name="customizing-the-tag-helper-element-font"></a>自訂標籤協助程式項目字型
 
@@ -252,7 +265,6 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
+* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 * [使用表單](xref:mvc/views/working-with-forms)
 * [GitHub 上的 TagHelperSamples](https://github.com/dpaquette/TagHelperSamples) 包含使用[啟動程序](http://getbootstrap.com/) 的標籤協助程式範例。
-* [使用表單](xref:mvc/views/working-with-forms)

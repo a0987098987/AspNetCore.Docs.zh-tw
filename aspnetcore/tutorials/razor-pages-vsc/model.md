@@ -1,23 +1,24 @@
 ---
-title: "使用 Visual Studio for Mac 將模型新增至 Razor 頁面應用程式"
+title: 使用 Visual Studio Code 將模型新增至 ASP.NET Core Razor 頁面應用程式
 author: rick-anderson
-description: "使用 Visual Studio for Mac 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式"
+description: 了解如何使用 Visual Studio Code 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/model
-ms.openlocfilehash: 9600392b47fb8b1dded06faefaff1bf87d67af4e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 20282b491162e9f35e40702655532a78edceb89a
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-code"></a>使用 Visual Studio Code 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
+# <a name="add-a-model-to-an-aspnet-core-razor-pages-app-with-visual-studio-code"></a>使用 Visual Studio Code 將模型新增至 ASP.NET Core Razor 頁面應用程式
 
-[!INCLUDE[model1](../../includes/RP/model1.md)]
+[!INCLUDE [model1](../../includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>新增資料模型
 
@@ -25,10 +26,11 @@ ms.lasthandoff: 01/30/2018
 * 將類別新增至名為 *Movie.cs* 的 *Models* 資料夾。
 * 將下列程式碼新增至 *Models/Movie.cs* 檔案：
 
-[!INCLUDE[model 2](../../includes/RP/model2.md)]
-[!INCLUDE[model 2a](../../includes/RP/model2a.md)]
+[!INCLUDE [model 2](../../includes/RP/model2.md)]
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
+[!INCLUDE [model 2a](../../includes/RP/model2a.md)]
+
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
 
 請建置專案，以確認您沒有任何錯誤。
 
@@ -41,9 +43,9 @@ ms.lasthandoff: 01/30/2018
 * 選取 [檔案] > [開啟檔案]，然後選取 *RazorPagesMovie.csproj* 檔案。
 * 將 `Microsoft.EntityFrameworkCore.Tools.DotNet` 的工具參考新增到第二個 **\<ItemGroup >**：
 
-[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj)]
+[!code-xml[](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj)]
 
-[!INCLUDE[model 3](../../includes/RP/model3.md)]
+[!INCLUDE [model 3](../../includes/RP/model3.md)]
 
 <a name="scaffold"></a>
 ### <a name="scaffold-the-movie-model"></a>Scaffold 電影模型
@@ -72,8 +74,10 @@ ms.lasthandoff: 01/30/2018
 
 結束 Visual Studio 並再次執行命令。
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)] 下一個教學課程說明 Scaffolding 所建立的檔案。
+[!INCLUDE [model 4](../../includes/RP/model4.md)]
 
->[!div class="step-by-step"]
-[上一步：開始使用](xref:tutorials/razor-pages-vsc/razor-pages-start)
-[下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages-vsc/page)
+下一個教學課程說明 Scaffolding 所建立的檔案。
+
+> [!div class="step-by-step"]
+> [上一步：開始使用](xref:tutorials/razor-pages-vsc/razor-pages-start)
+> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages-vsc/page)

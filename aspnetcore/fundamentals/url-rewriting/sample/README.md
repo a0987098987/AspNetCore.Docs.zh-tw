@@ -35,9 +35,11 @@ PhysicalFileProvider fileProvider = new PhysicalFileProvider(Directory.GetCurren
 ## <a name="secure-redirection-extensions"></a>安全的重新導向延伸模組
 此範例包含應用程式的 `WebHostBuilder` 組態，以便使用 URL (**https://localhost:5001**、**https://localhost**) 和測試憑證 (**testCert.pfx**) 來協助您瀏覽這些重新導向方法。 請將其中任一項新增至 **Startup.cs** 中的 `RewriteOptions()` 以研究其行為。
 
-方法 | 狀態碼 | 連接埠
---- | :---: | :---:
-`.AddRedirectToHttpsPermanent()` | 301 | null (465)
-`.AddRedirectToHttps()` | 302 | null (465)
-`.AddRedirectToHttps(301)` | 301 | null (465)
-`.AddRedirectToHttps(301, 5001)` | 301 | 5001
+
+|              方法              | 狀態碼 |    連接埠    |
+|----------------------------------|:-----------:|:----------:|
+| `.AddRedirectToHttpsPermanent()` |     301     | null (465) |
+|     `.AddRedirectToHttps()`      |     302     | null (465) |
+|    `.AddRedirectToHttps(301)`    |     301     | null (465) |
+| `.AddRedirectToHttps(301, 5001)` |     301     |    5001    |
+

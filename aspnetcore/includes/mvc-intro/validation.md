@@ -16,7 +16,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 更新 `Movie` 類別，以充分利用內建的 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 驗證屬性會指定您想要對套用目標之模型屬性，強制執行之行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
 
@@ -43,7 +43,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 您可能奇怪如何在不更新控制器或檢視程式碼的狀況下產生驗證 UI。 下列程式碼示範兩種 `Create` 方法。
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
 第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個 `Create` 方法 (`[HttpPost]` 版本) 會呼叫`ModelState.IsValid` 檢查電影是否有任何驗證錯誤。 呼叫此方法會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤，則 `Create` 方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，在用戶端上偵測到驗證錯誤時，表單不會發佈至伺服器；出現用戶端驗證錯誤時，一定不會呼叫第二個 `Create` 方法。 如果您停用瀏覽器的 JavaScript，用戶端驗證也會停用，而且您可以測試 HTTP POST `Create` 方法 `ModelState.IsValid` 偵測任何驗證錯誤。
 
@@ -63,9 +63,9 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 以下是您稍早在本教學課程中包含 Scaffold 的部分 *Create.cshtml* 檢視範本。 上述動作方法會使用它來顯示初始表單，以及在發生錯誤時重新顯示它。
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
 
-[輸入標記協助程式](xref:mvc/views/working-with-forms) 會使用 [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
+[輸入標記協助程式](xref:mvc/views/working-with-forms) 會使用 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) 屬性，並產生在用戶端上進行 jQuery 驗證所需的 HTML 屬性。 [驗證標記協助程式](xref:mvc/views/working-with-forms#the-validation-tag-helpers)會顯示驗證錯誤。 如需詳細資訊，請參閱[驗證](xref:mvc/models/validation)。
 
 此方法最好的一點在於，控制器和 `Create` 檢視範本對要強制執行的實際驗證規則，或顯示的特定錯誤訊息，全都一無所知。 驗證規則和錯誤字串只在 `Movie` 類別中指定。 這些相同的驗證規則會自動套用到 `Edit` 檢視，以及任何其他您可能建立以編輯模型的檢視範本。
 
@@ -75,7 +75,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 除了一組內建的驗證屬性之外，`System.ComponentModel.DataAnnotations` 命名空間還提供了格式屬性。 發行日期和價格欄位已經套用 `DataType` 列舉值。 下列程式碼會示範具有適當 `DataType` 屬性 (attribute) 的 `ReleaseDate` 和 `Price` 屬性 (property)。
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 `DataType` 屬性只會提供檢視引擎格式化資料的提示 (同時會提供一些項目/屬性，例如 URL 的 `<a>` 以及用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 您可使用 `RegularExpression` 屬性来驗證資料的格式。 `DataType`屬性用於指定比資料庫內建類型更特定的資料類型，這些並非驗證屬性。 本例中，我們只想要追蹤日期，不追蹤時間。 `DataType` 列舉提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
@@ -109,7 +109,7 @@ public DateTime ReleaseDate { get; set; }
 
 下列程式碼會顯示一行上的結合屬性：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 在數列的下一個部分中，我們會檢閱應用程式，並對自動產生的 `Details` 和 `Delete` 方法進行一些改良。
 

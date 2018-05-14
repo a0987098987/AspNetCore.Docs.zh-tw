@@ -1,21 +1,22 @@
 ---
-title: 將新欄位新增至 Razor Pages
+title: 將欄位新增至 ASP.NET Core 中的 Razor 頁面
 author: rick-anderson
 description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 36412e9d1f3143f0d1999d0e754e6627f0984ad5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 45a39defc9480b0e4fe85ae7ed6bfa654a35264a
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="adding-a-new-field-to-a-razor-page"></a>將新欄位新增至 Razor Pages
+# <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -27,13 +28,13 @@ ms.lasthandoff: 01/30/2018
 
 開啟 *Models/Movie.cs* 檔案，然後新增 `Rating` 屬性：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 建置應用程式 (Ctrl+Shift+B)。
 
 編輯 *Pages/Movies/Index.cshtml*，然後新增 `Rating` 欄位：
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=40-42,61-63)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=40-42,61-63)]
 
 將 `Rating` 欄位新增至 Delete 和 Details 頁面。
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 01/30/2018
 
 下列程式碼會示範 *Create.cshtml* 與 `Rating` 欄位：
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?highlight=36-40)]
 
 將 `Rating` 欄位新增至 Edit 頁面。
 
@@ -67,7 +68,7 @@ SqlException: Invalid column name 'Rating'.
 
 更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 區塊進行這項變更。
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
 請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs) (英文)。
 
@@ -102,6 +103,6 @@ Update-Database
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 如果未植入資料庫，請停止 IIS Express，然後執行應用程式。
 
->[!div class="step-by-step"]
-[上一步：新增搜尋](xref:tutorials/razor-pages/search)
-[下一步：新增驗證](xref:tutorials/razor-pages/validation)
+> [!div class="step-by-step"]
+> [上一步：新增搜尋](xref:tutorials/razor-pages/search)
+> [下一步：新增驗證](xref:tutorials/razor-pages/validation)

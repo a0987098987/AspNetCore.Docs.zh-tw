@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 表單中的標籤協助程式"
+title: ASP.NET Core 表單中的標籤協助程式
 author: rick-anderson
-description: "描述搭配表單使用的內建標籤協助程式。"
+description: 描述搭配表單使用的內建標籤協助程式。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 805c2ba5b3a9669d5547e1c595883436eea0d11a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9155bd54bc211c8be0678065e857f73d8a139365
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>在 ASP.NET Core 表單中使用標籤協助程式的簡介
+# <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Dave Paquette](https://twitter.com/Dave_Paquette)和 [Jerrie Pelser](https://github.com/jerriep)
 
@@ -40,15 +40,15 @@ ms.lasthandoff: 01/30/2018
 
 範例：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
 
 上述表單標籤協助程式會產生下列 HTML：
 
 ```HTML
 <form method="post" action="/Demo/Register">
-     <!-- Input and Submit elements -->
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-    </form>
+    <!-- Input and Submit elements -->
+    <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
 ```
 
 MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-action` 產生 `action` 屬性值。 表單標籤協助程式也會產生隱藏的[要求驗證權杖](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)。 保護純粹的 HTML 表單抵禦跨站台要求偽造很困難，而表單標籤協助程式為您提供此服務。
@@ -57,9 +57,9 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 `asp-route` 標籤協助程式屬性也可以產生 HTML `action` 屬性的標記。 具有名為 `register` 之[路由](../../fundamentals/routing.md)的應用程式，可能針對註冊頁面使用下列標記：
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) 屬性：
+*Views/Account* 資料夾 (當您建立具有「個別使用者帳戶」的新 Web 應用程式時產生) 中的許多檢視表，包含 [asp-route-returnurl](xref:mvc/views/working-with-forms) 屬性：
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -84,11 +84,11 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 * 會為 `asp-for` 屬性中指定的運算式名稱產生 `id` 和 `name` HTML 屬性。 `asp-for="Property1.Property2"` 相當於 `m => m.Property1.Property2`。 運算式的名稱用於 `asp-for` 屬性值。 請參閱[運算式名稱](#expression-names)一節以取得其他資訊。
 
-* 根據套用至模型屬性的模型類型和[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性，設定 HTML `type` 屬性值
+* 根據套用至模型屬性的模型類型和[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性，設定 HTML `type` 屬性值
 
 * 已指定 HTML `type` 屬性值時不會予以覆寫
 
-* 從套用至模型屬性的[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 驗證屬性
+* 從套用至模型屬性的[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) 驗證屬性
 
 * `Html.TextBoxFor` 和 `Html.EditorFor` 具有 HTML 協助程式功能重疊。 如需詳細資訊，請參閱**輸入標籤協助程式的 HTML 協助程式替代**。
 
@@ -117,7 +117,7 @@ Type expected
 |Single、Double|type=”number”|
 
 
-下表顯示輸入標籤協助程式將對應至特定的輸入類型的一些常見[資料註解](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性 (不是每個驗證屬性都列出)：
+下表顯示輸入標籤協助程式將對應至特定的輸入類型的一些常見[資料註解](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter)屬性 (不是每個驗證屬性都列出)：
 
 
 |屬性|輸入類型|
@@ -133,9 +133,9 @@ Type expected
 
 範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
 
 上述程式碼會產生下列 HTML：
 
@@ -189,17 +189,22 @@ Type expected
 
 搭配集合屬性，當 `i` 的值為 `23` 時，`asp-for="CollectionProperty[23].Member"` 會產生與 `asp-for="CollectionProperty[i].Member"` 相同的名稱。
 
+當 ASP.NET Core MVC 計算 `ModelExpression` 的值時，會檢查幾個來源，其中包括`ModelState`。 請考慮 `<input type="text" asp-for="@Name" />`。 導出的 `value` 屬性是第一個非 null 的值，來自：
+
+* 索引鍵為 "Name" 的 `ModelState` 項目。
+* 運算式 `Model.Name` 的結果。
+
 ### <a name="navigating-child-properties"></a>巡覽子屬性
 
 您也可以使用檢視模型的屬性路徑巡覽至子屬性。 請考慮更複雜的模型類別，其中包含子系 `Address` 屬性。
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]
 
 在檢視中，我們繫結至 `Address.AddressLine1`：
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
 
 會為 `Address.AddressLine1` 產生下列 HTML：
 
@@ -211,7 +216,7 @@ Type expected
 
 範例，包含 `Colors` 陣列的模型：
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]
 
 動作方法：
 
@@ -225,23 +230,23 @@ public IActionResult Edit(int id, int colorIndex)
 
 下列 Razor 示範如何存取特定 `Color` 項目：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
 *Views/Shared/EditorTemplates/String.cshtml* 範本：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
 使用 `List<T>` 的範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
 
 下列 Razor 示範如何逐一查看集合：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
 *Views/Shared/EditorTemplates/ToDoItem.cshtml* 範本：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
 
 >[!NOTE]
@@ -264,9 +269,9 @@ public IActionResult Edit(int id, int colorIndex)
 
 範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
 
 會產生下列 HTML：
 
@@ -300,9 +305,9 @@ public IActionResult Edit(int id, int colorIndex)
 
 範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
 
 會為 `<label>` 項目產生下列 HTML：
 
@@ -370,9 +375,9 @@ public IActionResult Edit(int id, int colorIndex)
 
 在下列範例中，資料模型裝飾了 `DataAnnotation` 屬性，它會在 `<input>` 項目產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
 
 產生的 HTML (當模型有效時)：
 
@@ -403,23 +408,23 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Select Tag Helper` `asp-for` 指定 [select](https://www.w3.org/wiki/HTML/Elements/select) 項目的模型屬性名稱，而 `asp-items` 指定 [option](https://www.w3.org/wiki/HTML/Elements/option) 項目。  例如: 
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
 
 `Index` 方法會初始化 `CountryViewModel`、設定選取的國家/地區，並將其傳遞給 `Index` 檢視。
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 HTTP POST `Index` 方法會顯示選取項目：
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]
 
 `Index` 檢視：
 
-[!code-cshtml[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
 
 它會產生下列 HTML (並選取 "CA")：
 
@@ -440,7 +445,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 `asp-for` 屬性值是特殊案例，不需要 `Model` 前置詞，其他標籤協助程式屬性則需要 (例如 `asp-items`)
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 ### <a name="enum-binding"></a>列舉繫結
 
@@ -448,17 +453,17 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 範例：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
 
 `GetEnumSelectList` 方法會產生列舉的 `SelectList` 物件。
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
 您可以用 `Display` 屬性裝飾列舉值清單，以取得更豐富的 UI：
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
 會產生下列 HTML：
 
@@ -484,7 +489,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 `CountryViewModelGroup` 將 `SelectListItem` 項目分組成「北美洲」和「歐洲」群組：
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
 
 兩個群組如下所示：
 
@@ -515,11 +520,11 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 選取標籤協助程式會自動產生 [multiple = "multiple"](http://w3c.github.io/html-reference/select.html) 屬性，如果 `asp-for` 屬性中指定的屬性是 `IEnumerable`。 例如，假設有以下的模型：
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
 具有下列檢視：
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
 
 產生下列 HTML：
 
@@ -543,17 +548,17 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 如果您發現自己在多個頁面中使用「未指定」的選項，您可以建立範本，以避免重複 HTML：
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
 *Views/Shared/EditorTemplates/CountryViewModel.cshtml* 範本：
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
 新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 項目並不限於「沒有選取項目」的案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 將會選取正確的 `<option>` 項目 (包含 `selected="selected"` 屬性)，視目前的 `Country` 值而定。
 
@@ -578,4 +583,4 @@ HTTP POST `Index` 方法會顯示選取項目：
 * [模型繫結](xref:mvc/models/model-binding)
 * [模型驗證](xref:mvc/models/validation)
 * [IAttributeAdapter 介面](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
-* [此文件的程式碼片段](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)
+* [此文件的程式碼片段](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core MVC 中處理控制器要求"
+title: 在 ASP.NET Core MVC 中處理控制器要求
 author: ardalis
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 07/03/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/actions
-ms.openlocfilehash: 0f04891aaeec026120e2afff3ff24fb89f649c8d
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 187ac69322545685380ad8f810bb65208c093d82
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
+# <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Scott Addie](https://github.com/scottaddie)
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/01/2018
 
 在**模型檢視控制器**模式內，控制器負責初始處理要求和模型具現化。 一般而言，應該在模型內執行商業決策。
 
-控制器會使用模型處理結果 (如果有的話)，並傳回適當檢視和其相關聯的檢視資料或 API 呼叫結果。 深入了解 [ASP.NET Core MVC 概觀](xref:mvc/overview)和[開始使用 ASP.NET Core MVC 和 Visual Studio](xref:tutorials/first-mvc-app/start-mvc)。
+控制器會使用模型處理結果 (如果有的話)，並傳回適當檢視和其相關聯的檢視資料或 API 呼叫結果。 深入了解 [ASP.NET Core MVC 概觀](xref:mvc/overview)和 [ASP.NET Core MVC 與 Visual Studio 使用者入門](xref:tutorials/first-mvc-app/start-mvc)。
 
 控制器是「UI 層級」抽象概念。 其負責確保要求資料有效，並選擇應該傳回的檢視 (或 API 的結果)。 在構造良好的應用程式中，不會直接包括資料存取或商務邏輯。 相反地，控制器會委派給處理這些責任的服務。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="controller-helper-methods"></a>控制器協助程式方法
 
-控制器通常繼承自[控制器](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller)，但這不是必要的。 衍生自 `Controller` 提供對三種類別的協助程式方法的存取：
+控制器通常繼承自[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)，但這不是必要的。 衍生自 `Controller` 提供對三種類別的協助程式方法的存取：
 
 #### <a name="1-methods-resulting-in-an-empty-response-body"></a>1.方法，導致空白回應本文
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/01/2018
 
 此類別中的大多數協助程式方法包括 `ContentType` 屬性，可讓您設定 `Content-Type` 回應標頭來描述回應本文。
 
-此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)和[格式化回應](xref:mvc/models/formatting)。
+此類別內有兩種結果類型：[檢視](xref:mvc/views/overview)和[格式化回應](xref:web-api/advanced/formatting)。
 
 * **檢視**
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 02/01/2018
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3.方法，導致使用與用戶端交涉之內容類型格式化的非空白回應本文
 
-此類別普遍稱為**內容交涉**。 只要動作傳回 [ObjectResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.objectresult) 類型或 [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult) 實作以外的某個項目，就會套用[內容交涉](xref:mvc/models/formatting#content-negotiation)。 傳回非 `IActionResult` 實作的動作 (例如，`object`) 也會傳回「格式化回應」。
+此類別普遍稱為**內容交涉**。 只要動作傳回 [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) 類型或 [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) 實作以外的某個項目，就會套用[內容交涉](xref:web-api/advanced/formatting#content-negotiation)。 傳回非 `IActionResult` 實作的動作 (例如，`object`) 也會傳回「格式化回應」。
 
 此類型的一些協助程式方法包括 `BadRequest`、`CreatedAtRoute` 和 `Ok`。 這些方法的範例分別包括 `return BadRequest(modelState);`、`return CreatedAtRoute("routename", values, newobject);` 和 `return Ok(value);`。 請注意，只有在傳遞值時，`BadRequest` 和 `Ok` 才會執行內容交涉；如果未傳遞值，則會改成作為「HTTP 狀態碼」結果類型。 相反地，`CreatedAtRoute` 方法一律會執行內容交涉，因為其多載全部都需要傳遞值。
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/01/2018
 大部分的篩選屬性 (例如 `[Authorize]`) 可以套用至控制器或動作層級 (視所需的細微性層級而定)。
 
 錯誤處理和回應快取通常是跨領域關注：
-   * [錯誤處理](xref:mvc/controllers/filters#exception-filters)
+   * [處理錯誤](xref:mvc/controllers/filters#exception-filters)
    * [回應快取](xref:performance/caching/response)
 
 許多跨領域關注都可以使用篩選或自訂[中介軟體](xref:fundamentals/middleware/index)進行處理。

@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的路由"
+title: ASP.NET Core 中的路由
 author: ardalis
-description: "探索 ASP.NET Core 路由功能如何負責將傳入要求對應至路由處理常式。"
+description: 探索 ASP.NET Core 路由功能如何負責將傳入要求對應至路由處理常式。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: d35c24347e8e06ed85e2af8addcc1f8cf28dc47a
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 2e1257639ec41f657093439c5245b50adbad34dc
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="routing-basics"></a>路由的基本概念
 
-路由 (routing) 功能會使用「路由」(*route*) ([IRouter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.routing.irouter) 的實作) 來：
+路由 (routing) 功能會使用「路由」(*route*) ([IRouter](/dotnet/api/microsoft.aspnetcore.routing.irouter) 的實作) 來：
 
 * 將傳入要求對應至「路由處理常式」
 
@@ -187,7 +187,7 @@ routes.MapRoute(
 
 在 *Startup.cs* 中，將路由新增至服務容器：
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
 
 路由必須設定在 `Startup` 類別的 `Configure` 方法中。 下列範例使用這些 API：
 
@@ -321,7 +321,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 ## <a name="regular-expressions"></a>規則運算式 
 
-ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 新增至規則運算式建構函式。 如需這些成員的描述，請參閱 [RegexOptions 列舉](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions)。
+ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 新增至規則運算式建構函式。 如需這些成員的描述，請參閱 [RegexOptions 列舉](/dotnet/api/system.text.regularexpressions.regexoptions)。
 
 規則運算式使用的分隔符號和語彙基元，類似於路由和 C# 語言所使用的分隔符號和語彙基元。 規則運算式的語彙基元必須逸出。 例如，若要在路由中使用規則運算式 `^\d{3}-\d{2}-\d{4}$`，它必須在 C# 原始程式檔中將 `\` 字元輸入為 `\\`，以逸出 `\` 字串逸出字元 (除非使用[逐字字串常值](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string)。 `{`、`}`、'[' 和 ']' 字元必須加以逸出，方法是成對使用以逸出路由參數的分隔符號字元。  下表顯示規則運算式和逸出的版本。
 
@@ -351,7 +351,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 下列範例示範如何在給定路由值字典和 `RouteCollection` 的情況下產生路由的連結。
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
 
 在上述範例的結尾產生的 `VirtualPath` 是 `/package/create/123`。
 

@@ -1,7 +1,7 @@
 ---
-title: "新增檢視"
+title: 將檢視新增至 ASP.NET Core 應用程式
 author: rick-anderson
-description: "將檢視新增至簡易的 ASP.NET Core MVC 應用程式"
+description: 了解如何將檢視新增至 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 03/04/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app-mac/adding-view
-ms.openlocfilehash: 30ad4de9675e4b9f1652abf2e13d7e5716c185a4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ae74273652151060fbd14c3f73642b560af117f4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-view](../../includes/mvc-intro/adding_view1.md)]
+[!INCLUDE [adding-view](../../includes/mvc-intro/adding_view1.md)]
 
 ## <a name="add-a-view"></a>新增檢視 
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 01/30/2018
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
-[!INCLUDE[adding-view22](../../includes/mvc-intro/adding_view2.md)]
+[!INCLUDE [adding-view22](../../includes/mvc-intro/adding_view2.md)]
 
->[!div class="step-by-step"]
-[上一頁](adding-controller.md)
-[下一頁](adding-model.md)
+> [!div class="step-by-step"]
+> [上一頁](adding-controller.md)
+> [下一頁](adding-model.md)

@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 中的模型驗證"
+title: ASP.NET Core MVC 中的模型驗證
 author: rachelappel
-description: "了解 ASP.NET Core MVC 中的模型驗證。"
+description: 了解 ASP.NET Core MVC 中的模型驗證。
 manager: wpickett
 ms.author: riande
 ms.date: 12/18/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/models/validation
-ms.openlocfilehash: dfb24a4c72b15737295b7aea406be24160fc6674
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1ab19fad90eab9f2da58b4d62615a85d71894218
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證簡介
+# <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
 作者：[Rachel Appel](https://github.com/rachelappel)
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/30/2018
 
 以下是應用程式中已註解的 `Movie` 模型，其儲存電影和電視節目的相關資訊。 大部分屬性都是必要的，而且有幾個字串屬性具有長度需求。 此外，`Price` 屬性還有 0 至 $999.99 的數字範圍限制，以及自訂驗證屬性。
 
-[!code-csharp[Main](validation/sample/Movie.cs?range=6-29)]
+[!code-csharp[](validation/sample/Movie.cs?range=6-29)]
 
 只要透過模型讀取就會顯示此應用程式資料的相關規則，因此更容易維護程式碼。 以下是幾個常用的內建驗證屬性：
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/30/2018
 
 * `[Url]`：驗證屬性具有 URL 格式。
 
-MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您可以在 [System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations) 命名空間中找到許多實用的驗證屬性。
+MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您可以在 [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) 命名空間中找到許多實用的驗證屬性。
 
 有時候您可能需要比內建屬性所提供更多的功能。 此時，您可以藉由衍生自 `ValidationAttribute` 或變更您的模型來實作 `IValidatableObject`，以建立自訂驗證屬性。
 
@@ -65,7 +65,7 @@ MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您�
 
 與驗證和驗證屬性無關的 MVC 模型繫結，會拒絕送出含有遺漏值或空白字元之不可為 Null 型別的表單欄位。 如果目標屬性 (property) 上沒有 `BindRequired` 屬性 (attribute)，模型繫結會忽略不可為 Null 型別的遺漏資料 (傳入表單資料中不會有表單欄位)。
 
-[BindRequired 屬性](/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (另請參閱[使用屬性自訂模型繫結行為](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes)) 有助於確保表單資料完整。 套用至屬性時，模型繫結系統需要該屬性的值。 套用至類型時，模型繫結系統需要該類型之所有屬性的值。
+[BindRequired 屬性](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (另請參閱[使用屬性自訂模型繫結行為](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes)) 有助於確保表單資料完整。 套用至屬性時，模型繫結系統需要該屬性的值。 套用至類型時，模型繫結系統需要該類型之所有屬性的值。
 
 當您使用 [Nullable\<T> 類型](/dotnet/csharp/programming-guide/nullable-types/) (例如 `decimal?` 或 `System.Nullable<decimal>`) 並將它標示為 `Required` 時，就會將屬性視為標準可為 Null 的型別 (例如 `string`) 來執行伺服器端驗證檢查。
 
@@ -77,7 +77,7 @@ MVC 支援將任何衍生自 `ValidationAttribute` 的屬性用於驗證。 您�
 
 MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)。 您可以將下列程式碼插入 *Startup.cs* 檔案中的 `ConfigureServices` 方法，來設定這個數值：
 
-[!code-csharp[Main](validation/sample/Startup.cs?range=27)]
+[!code-csharp[](validation/sample/Startup.cs?range=27)]
 
 ## <a name="handling-model-state-errors"></a>處理模型狀態錯誤
 
@@ -91,7 +91,7 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 此時，您可能需要手動執行驗證。 若要執行這項操作，請呼叫 `TryValidateModel` 方法，如下所示：
 
-[!code-csharp[Main](validation/sample/MoviesController.cs?range=52)]
+[!code-csharp[](validation/sample/MoviesController.cs?range=52)]
 
 ## <a name="custom-validation"></a>自訂驗證
 
@@ -99,13 +99,13 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 在下列範例中，商務規則表示使用者可能未將 1960 年以後發行之電影的內容類型設定為 *Classic*。 `[ClassicMovie]` 屬性會先檢查內容類型，如果是 Classic，會再檢查發行日期是否晚於 1960 年。 如果是在 1960 年以後發行，則驗證失敗。 用來驗證資料的屬性接受代表年份的整數參數。 您可以擷取屬性建構函式中的參數值，如下所示：
 
-[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs?range=9-29)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-29)]
 
 上述 `movie` 變數代表 `Movie` 物件，其中包含送出待驗證之表單中的資料。 在本例中，驗證程式碼會根據規則，檢查 `ClassicMovieAttribute` 類別之 `IsValid` 方法中的日期和內容類型。 成功驗證時，`IsValid` 會傳回 `ValidationResult.Success` 代碼；驗證失敗時，則會傳回 `ValidationResult` 並顯示錯誤訊息。 當使用者修改 `Genre` 欄位並送出表單時，`ClassicMovieAttribute` 的 `IsValid` 方法會確認電影是否為 Classic。 如同任何內建屬性，將 `ClassicMovieAttribute` 套用至 `ReleaseDate` 等屬性可確保進行驗證，如上述程式碼範例所示。 由於此範例僅適用於 `Movie` 類型，使用 `IValidatableObject` 會是更好的選擇，如下一個段落所示。
 
 或者，您也可以透過在 `IValidatableObject` 介面上實作 `Validate` 方法，將此相同的程式碼放在模型中。 自訂驗證屬性適用於驗證個別屬性，而實作 `IValidatableObject` 則可用來實作類別層級驗證，如下所示。
 
-[!code-csharp[Main](validation/sample/MovieIValidatable.cs?range=32-40)]
+[!code-csharp[](validation/sample/MovieIValidatable.cs?range=32-40)]
 
 ## <a name="client-side-validation"></a>用戶端驗證
 
@@ -113,13 +113,13 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 您必須具有適當 JavaScript 指令碼參考的檢視，以確保用戶端驗證如下所示正常運作。
 
-[!code-cshtml[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
+[!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
 
-[!code-cshtml[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
+[!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
 [jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單項目中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析這些 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
 
-[!code-cshtml[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
+[!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
 上述標籤協助程式會轉譯下列 HTML。 請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 下面的 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jQuery 低調驗證會將此值傳遞至 jQuery 驗證的 [`required()`](https://jqueryvalidation.org/required-method/) 方法，然後在隨附的 **\<span>** 項目中顯示該訊息。
 
@@ -178,13 +178,13 @@ $.get({
     url: "https://url/that/returns/a/control",
     dataType: "html",
     error: function(jqXHR, textStatus, errorThrown) {
-        alert(textStatus + ": Couldn't add form. " + errorThrown);
+        alert(textStatus + ": Couldn't add control. " + errorThrown);
     },
     success: function(newInputHTML) {
         var form = document.getElementById("my-form");
         form.insertAdjacentHTML("beforeend", newInputHTML);
-        form.removeData("validator")    // Added by the raw jQuery Validate
-            .removeData("unobtrusiveValidation");   // Added by jQuery Unobtrusive Validation
+        $(form).removeData("validator")    // Added by jQuery Validate
+               .removeData("unobtrusiveValidation");   // Added by jQuery Unobtrusive Validation
         $.validator.unobtrusive.parse(form);
     }
 })
@@ -192,9 +192,9 @@ $.get({
 
 ## <a name="iclientmodelvalidator"></a>IClientModelValidator
 
-您可以建立自訂屬性的用戶端端邏輯，[低調驗證](http://jqueryvalidation.org/documentation/) 會將它當作驗證的一部分自動為您在用戶端上執行。 第一個步驟是實作 `IClientModelValidator` 介面，以控制要新增的 data- 屬性，如下所示：
+您可以建立自訂屬性的用戶端端邏輯，為 [jQuery Validation](http://jqueryvalidation.org/documentation/) 建立配接器的[低調驗證](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html) 會將它當作驗證的一部分自動為您在用戶端上執行。 第一個步驟是實作 `IClientModelValidator` 介面，以控制要新增的 data- 屬性，如下所示：
 
-[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
 
 實作此介面的屬性可以新增至 HTML 屬性來產生欄位。 檢查 `ReleaseDate` 項目的輸出會顯示類似於上述範例的 HTML，不同之處在於現在有 `IClientModelValidator` 的 `AddValidation` 方法中所定義的 `data-val-classicmovie` 屬性。
 
@@ -207,9 +207,9 @@ $.get({
     id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
-低調驗證使用 `data-` 屬性中的資料來顯示錯誤訊息。 不過，在您將規則或訊息新增至 jQuery 的 `validator` 物件之前，jQuery 並不清楚有哪些規則或訊息。 如下列範例所示，該範例會將名為 `classicmovie` 的方法新增至 jQuery `validator` 物件，其中包含自訂用戶端驗證程式碼。
+低調驗證使用 `data-` 屬性中的資料來顯示錯誤訊息。 不過，在您將規則或訊息新增至 jQuery 的 `validator` 物件之前，jQuery 並不清楚有哪些規則或訊息。 如下列範例所示，該範例會將名為 `classicmovie` 的方法新增至 jQuery `validator` 物件，其中包含自訂用戶端驗證程式碼。 您可以在[這裡](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)找到低調配接器新增方法的說明
 
-[!code-javascript[Main](validation/sample/Views/Movies/Create.cshtml?range=71-93)]
+[!code-javascript[](validation/sample/Views/Movies/Create.cshtml?range=71-93)]
 
 現在，jQuery 具有執行自訂 JavaScript 驗證的資訊，以及該驗證程式碼傳回 false 時所要顯示的錯誤訊息。
 
@@ -219,7 +219,7 @@ $.get({
 
 您可以在兩個步驟的程序中實作遠端驗證。 首先，您必須為模型加註 `[Remote]` 屬性。 `[Remote]` 屬性接受多個多載，您可以使用這些多載將用戶端 JavaScript 導向至適當的程式碼進行呼叫。 下列範例指向 `Users` 控制器的 `VerifyEmail` 動作方法。
 
-[!code-csharp[Main](validation/sample/User.cs?range=7-8)]
+[!code-csharp[](validation/sample/User.cs?range=7-8)]
 
 第二個步驟將驗證程式碼放在 `[Remote]` 屬性中所定義的對應動作方法中。 根據 jQuery 驗證的 [`remote()`](https://jqueryvalidation.org/remote-method/) 方法文件：
 
@@ -227,17 +227,17 @@ $.get({
 
 `VerifyEmail()` 方法的定義遵循這些規則，如下所示。 如果電子郵件已在使用中，則會傳回驗證錯誤訊息；如果電子郵件可用，則會傳回 `true`，並將結果包裝在 `JsonResult` 物件中。 用戶端可接著使用此傳回值繼續進行，或顯示錯誤訊息 (如有需要)。
 
-[!code-csharp[Main](validation/sample/UsersController.cs?range=19-28)]
+[!code-csharp[](validation/sample/UsersController.cs?range=19-28)]
 
 現在，當使用者輸入電子郵件時，檢視中的 JavaScript 會發出遠端呼叫，以查看該電子郵件是否已在使用中；若在使用中，則會顯示錯誤訊息。 否則，使用者可以像往常一樣送出表單。
 
 `[Remote]` 屬性 (attribute) 的 `AdditionalFields` 屬性 (property) 可用於針對伺服器上的資料來驗證欄位組合。 例如，如果上述 `User` 模型有兩個額外的屬性 `FirstName` 和 `LastName`，您可能想要確認沒有任何現有的使用者已有該組名稱。 您可以定義新的屬性，如下列程式碼所示：
 
-[!code-csharp[Main](validation/sample/User.cs?range=10-13)]
+[!code-csharp[](validation/sample/User.cs?range=10-13)]
 
 `AdditionalFields` 可能已明確設定為 `"FirstName"` 和 `"LastName"` 字串，但使用上述 [`nameof`](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof) 運算子可簡化稍後的重構。 執行驗證的動作方法必須接受兩個引數，一個是 `FirstName` 的值，另一個是 `LastName` 的值。
 
-[!code-csharp[Main](validation/sample/UsersController.cs?range=30-39)]
+[!code-csharp[](validation/sample/UsersController.cs?range=30-39)]
 
 現在，當使用者輸入名字和姓氏時，JavaScript 會：
 

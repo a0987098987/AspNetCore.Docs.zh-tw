@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 2.0 的新功能"
+title: ASP.NET Core 2.0 的新功能
 author: rick-anderson
-description: "ASP.NET Core 2.0 的新功能"
+description: 深入了解 ASP.NET Core 2.0 的新功能。
 manager: wpickett
 ms.author: riande
 ms.date: 07/10/2017
@@ -9,24 +9,24 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: aspnetcore-2.0
-ms.openlocfilehash: 35d57abd07e83cd5b190572962fbf43aef03a534
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b4ac500888ce134e8f4f0d4bf16efa4e95f24c15
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
 本文會重點說明 ASP.NET Core 2.0 最重要的變更，附有相關文件的連結。
 
-## <a name="razor-pages"></a>Razor 頁面
+## <a name="razor-pages"></a>Razor Pages
 
 Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
 
 如需詳細資訊，請參閱簡介與教學課程：
 
 * [Razor 頁面簡介](xref:mvc/razor-pages/index)
-* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a>ASP.NET Core 中繼套件
 
@@ -38,7 +38,7 @@ Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦�
 
 使用 `Microsoft.AspNetCore.All` 中繼套件的應用程式會自動利用新的 .NET Core 執行階段存放區。 此存放區包含執行 ASP.NET Core 2.0 應用程式所需的所有執行階段資產。 當您使用 `Microsoft.AspNetCore.All` 中繼套件時，不會使用應用程式部署參考 ASP.NET Core NuGet 套件的任何資產，因為它們已經位於目標系統上。 執行階段存放區中的資產也會先行編譯，以改善應用程式啟動時間。
 
-如需詳細資訊，請參閱[執行階段存放區](https://docs.microsoft.com/dotnet/core/deploying/runtime-store)。
+如需詳細資訊，請參閱[執行階段存放區](/dotnet/core/deploying/runtime-store)。
 
 ## <a name="net-standard-20"></a>.NET Standard 2.0
 
@@ -62,7 +62,7 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 新的驗證模型讓使用 DI 的應用程式更容易設定驗證。
 
-使用 [Azure AD B2C] 的 Web 應用程式和 Web API 可以使用新範本來設定驗證 (https://azure.microsoft.com/services/active-directory-b2c/)。
+新範本可用於為使用 [Azure AD B2C] 之 Web 應用程式及 Web API 設定驗證 (https://azure.microsoft.com/services/active-directory-b2c/)。
 
 如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/aspnet/Docs/issues/3054)。
 
@@ -73,12 +73,12 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 如需 2.0 驗證變更的詳細資訊，請參閱下列資源：
 
 * [ASP.NET Core 中的帳戶確認和密碼復原](xref:security/authentication/accconfirm)
-* [啟用 ASP.NET Core 驗證器應用程式的 QR 代碼產生](xref:security/authentication/identity-enable-qrcodes)
-* [將驗證和身分識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
+* [允許為 ASP.NET Core 中的驗證器應用程式產生 QR 代碼](xref:security/authentication/identity-enable-qrcodes)
+* [將驗證及識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="spa-templates"></a>SPA 範本
 
-有具有 Redux 的 Angular、Aurelia、Knockout.js、React.js 和 React.js 單一頁面應用程式 (SPA) 專案範本可用。 Angular 範本已更新至 Angular 4。 預設有 Angular 和 React 範本可用，如需如何取得其他範本的資訊，請參閱[建立新的 SPA 專案](xref:client-side/spa-services#creating-a-new-project)。 如需如何在 ASP.NET Core 中建置 SPA 的資訊，請參閱[使用建立單一頁面應用程式的 JavaScriptServices](xref:client-side/spa-services)。
+有具有 Redux 的 Angular、Aurelia、Knockout.js、React.js 和 React.js 單一頁面應用程式 (SPA) 專案範本可用。 Angular 範本已更新至 Angular 4。 根據預設將會提供 Angular 與 React 範本。如需如何取得其他範本的資訊，請參閱[建立新的 SPA 專案](xref:client-side/spa-services#creating-a-new-project)。 如需如何在 ASP.NET Core 中建置 SPA 的資訊，請參閱[使用 JavaScriptServices 建立單一頁面的應用程式](xref:client-side/spa-services)。
 
 ## <a name="kestrel-improvements"></a>Kestrel 改善
 
@@ -122,11 +122,13 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 根據預設，ASP.NET Core 一律協助以 HTML 編碼的內容，但在新版本中，會採用額外的步驟，協助防止跨網站要求偽造 (XSRF) 攻擊。 ASP.NET Core 現在預設會發出防偽權杖，並對表單 POST 動作和頁面驗證它們，不需要額外組態。
 
-如需詳細資訊，請參閱[防止 ASP.NET Core 中的跨網站要求偽造 (XSRF/CSRF) 攻擊](xref:security/anti-request-forgery)。
+如需詳細資訊，請參閱[防止跨站台要求偽造 (XSRF/CSRF) 攻擊](xref:security/anti-request-forgery)。
 
 ## <a name="automatic-precompilation"></a>自動先行編譯
 
 預設在發佈期間即已啟用 Razor 檢視預先編譯，減少發佈輸出大小和應用程式啟動時間。
+
+如需詳細資訊，請參閱 [ASP.NET Core 中的 Razor 檢視編譯與先行編譯](xref:mvc/views/view-compilation)。
 
 ## <a name="razor-support-for-c-71"></a>針對 C# 7.1 的 Razor 支援
 
@@ -152,7 +154,7 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 如需如何將 ASP.NET Core 1.x 應用程式移轉至 ASP.NET Core 2.0的指引，請參閱下列資源：
 
 * [從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/index)
-* [將驗證和身分識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
+* [將驗證及識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="additional-information"></a>其他資訊
 

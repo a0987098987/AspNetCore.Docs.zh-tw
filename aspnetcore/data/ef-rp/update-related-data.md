@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面與 EF Core - 更新相關資料 - 7/8"
+title: ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 author: rick-anderson
-description: "在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。"
+description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 5c91c91ab938f3aa4abc55049c54f399469f6163
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>更新相關資料 - EF Core 與 Razor 頁面 (7/8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 本教學課程將示範如何更新相關資料。 若您遭遇到無法解決的問題，請下載[此階段的完整應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part7)。
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 01/31/2018
 
 [課程]/[建立] 和 [課程]/[編輯] 頁面每個都需要部門名稱的清單。 請針對 [建立] 和 [編輯] 頁面建立 *Pages/Courses/DepartmentNamePageModel.cshtml.cs* 基底類別：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-上述程式碼會建立 [SelectList](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) 以包含部門名稱的清單。 如果指定了 `selectedDepartment`，就會在 `SelectList` 中選取該部門。
+上述程式碼會建立 [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) 以包含部門名稱的清單。 如果指定了 `selectedDepartment`，就會在 `SelectList` 中選取該部門。
 
 [建立] 和 [編輯] 頁面模型類別將衍生自 `DepartmentNamePageModel`。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/31/2018
 
 以下列程式碼更新 [建立] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-999)]
 
 上述程式碼：
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/31/2018
 
 以下列標記更新 *Pages/Courses/Create.cshtml*：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
 
 上述標記會進行下列變更：
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/31/2018
 
 Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#the-select-tag-helper)：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
 測試 [建立] 頁面。 [建立] 頁面會顯示部門名稱，而不是部門識別碼。
 
@@ -81,13 +81,13 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 以下列程式碼更新 [編輯] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
 這些變更類似於 [建立] 頁面模型中所做的變更。 在上述程式碼中，`PopulateDepartmentsDropDownList` 會傳入部門識別碼，以選取下拉式清單中指定的部門。
 
 以下列標記更新 *Pages/Courses/Edit.cshtml*：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
 
 上述標記會進行下列變更：
 
@@ -103,19 +103,19 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>將 AsNoTracking 新增至 [詳細資料] 和 [刪除] 頁面模型
 
-不需要追蹤時，[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 可以改善效能。 將 `AsNoTracking` 新增至 [刪除] 和 [詳細資料] 頁面模型。 下列程式碼顯示已更新的 [刪除] 頁面模型：
+不需要追蹤時，[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) 可以改善效能。 將 `AsNoTracking` 新增至 [刪除] 和 [詳細資料] 頁面模型。 下列程式碼顯示已更新的 [刪除] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
 在 *Pages/Courses/Details.cshtml.cs* 檔案中更新 `OnGetAsync` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
 ### <a name="modify-the-delete-and-details-pages"></a>修改 [刪除] 和 [詳細資料] 頁面
 
 以下列標記更新 [刪除 Razor] 頁面：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
 
 對 [詳細資料] 頁面進行相同的變更。
 
@@ -137,7 +137,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 以下列程式碼更新講師 [編輯] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-999)]
 
 上述程式碼：
 
@@ -149,7 +149,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 使用辦公室位置更新 *Pages/Instructors/Edit.cshtml*：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
 
 請確認您可以變更講師辦公室位置。
 
@@ -170,27 +170,27 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 以下列程式碼建立 *SchoolViewModels/AssignedCourseData.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
 `AssignedCourseData` 類別包含資料，用來建立講師所指派課程的核取方塊。
 
 建立 *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* 基底類別：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
-`InstructorCoursesPageModel` 是您將用於 [編輯] 和 [建立] 頁面模型的基底類別。 `PopulateAssignedCourseData` 會讀取所有 `Course` 實體來擴展 `AssignedCourseDataList`。 對於每個課程，此程式碼設定 `CourseID`、標題以及是否將講師指派給課程。 [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1) 用來建立有效查閱。
+`InstructorCoursesPageModel` 是您將用於 [編輯] 和 [建立] 頁面模型的基底類別。 `PopulateAssignedCourseData` 會讀取所有 `Course` 實體來擴展 `AssignedCourseDataList`。 對於每個課程，此程式碼設定 `CourseID`、標題以及是否將講師指派給課程。 [HashSet](/dotnet/api/system.collections.generic.hashset-1) 用來建立有效查閱。
 
 ### <a name="instructors-edit-page-model"></a>講師 [編輯] 頁面模型
 
 以下列程式碼更新講師 [編輯] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-999)]
 
 上述程式碼會處理辦公室指派變更。
 
 更新講師 Razor 檢視：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -208,13 +208,13 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 以下列程式碼更新講師 [建立] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
 上述程式碼類似於 *Pages/Instructors/Edit.cshtml.cs* 程式碼。
 
 以下列標記更新講師 [建立 Razor] 頁面：
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 
 測試講師 [建立] 頁面。
 
@@ -222,7 +222,7 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 以下列程式碼更新 [刪除] 頁面模型：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-999)]
 
 上述程式碼會進行下列變更：
 
@@ -230,6 +230,6 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 
 * 若要刪除的講師已指派為任何部門的系統管理員，請先從這些部門中移除講師的指派。
 
->[!div class="step-by-step"]
-[上一頁](xref:data/ef-rp/read-related-data)
-[下一頁](xref:data/ef-rp/concurrency)
+> [!div class="step-by-step"]
+> [上一頁](xref:data/ef-rp/read-related-data)
+> [下一頁](xref:data/ef-rp/concurrency)

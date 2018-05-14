@@ -1,21 +1,21 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 移轉 - 4/10"
+title: ASP.NET Core MVC 與 EF Core - 移轉 - 4/10
 author: tdykstra
-description: "在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。"
+description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
 manager: wpickett
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 03/15/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: fd466af8a73bf4c568fafe7e7fdcaa82021624da
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: f3f14d6dab1eb03e0ead5edaa9d7ba41a10b21e9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>移轉 - EF Core 與 ASP.NET Core MVC 教學課程 (4/10)
+# <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC 與 EF Core - 移轉 - 4/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -31,7 +31,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 ## <a name="entity-framework-core-nuget-packages-for-migrations"></a>用於移轉的 Entity Framework Core NuGet 套件
 
-您可以使用**套件管理員主控台** (PMC) 或命令列介面 (CLI)，來進行移轉作業。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊則位於[本教學課程結尾](#pmc)。
+您可以使用**套件管理員主控台** (PMC) 或命令列介面 (CLI)，來進行移轉作業。  這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊位於[本教學課程結尾](#pmc)。
 
 [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF 工具。 若要安裝這個套件，請將它新增至 *.csproj* 檔案中的 `DotNetCliToolReference` 集合，如下所示。 **注意：**您必須藉由編輯 *.csproj* 檔案來安裝這個套件；而不能使用 `install-package` 命令或套件管理員 GUI。 在方案總管中，以滑鼠右鍵按一下專案名稱，然後選取 [Edit ContosoUniversity.csproj] (編輯 ContosoUniversity.csproj) 以編輯 *.csproj* 檔案。
 
@@ -43,7 +43,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 在 *appsettings.json* 檔案中，將連接字串中的資料庫名稱變更為 ContosoUniversity2 (或您所使用之電腦上未用過的其他名稱)。
 
-[!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
+[!code-json[](intro/samples/cu/appsettings2.json?range=1-4)]
 
 這項變更會設定專案，以讓第一次移轉建立新的資料庫。 即使不採取上述動作，仍可開始進行移轉作業，但稍後您會了解這麼做的好處何在。
 
@@ -91,7 +91,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 \<時間戳記>_InitialCreate.cs 的檔案中，找到這個程式碼。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
+[!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
 Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。 當您輸入命令以復原更新時，Migrations 會呼叫 `Down` 方法。
 
@@ -99,15 +99,13 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 
 如果在您建立初始移轉時資料庫已經存在，系統會產生資料庫建立程式碼，但不需要執行，因為資料庫已經符合資料模型。 當您將應用程式部署到資料庫尚未存在的其他環境中時，即會執行這個程式碼以建立您的資料庫；建議您先進行測試。 這就是為什麼稍早要您變更連接字串中資料庫名稱的原因，這樣一來，移轉即可從頭建立一個資料庫。
 
-## <a name="examine-the-data-model-snapshot"></a>檢查資料模型快照集
+## <a name="the-data-model-snapshot"></a>資料模型快照集
 
-Migrations 也會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 程式碼應如下所示：
+移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot1.cs?name=snippet_Truncate)]
+刪除移轉時，請使用 [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。
 
-因為目前的資料庫結構描述是以程式碼表示，所以 EF Core 不需與資料庫互動即可建立移轉。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。 只有當 EF 必須更新資料庫時，它才會與資料庫互動。 
-
-快照集檔案必須與建立快照集檔案的移轉同步；因此，要移除移轉時您不能直接刪除名為 \<時間戳記>_\<migrationname>.cs 的檔案。 如果刪除該檔案，剩餘的移轉會與資料庫快照集檔案不同步。 若要刪除最後一個新增的移轉，請使用 [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) 命令。
+如需如何使用快照集檔案的詳細資訊，請參閱[小組環境中的 EF Core 移轉](/ef/core/managing-schemas/migrations/teams)。
 
 ## <a name="apply-the-migration-to-the-database"></a>將移轉套用至資料庫
 
@@ -167,6 +165,6 @@ Done.
 
 在本教學課程中，您已了解如何建立並套用第一次移轉。 在下一個教學課程中，您就可以展開資料模型以學習更進階的主題。 在過程中，您會建立並套用其他移轉。
 
->[!div class="step-by-step"]
-[上一頁](sort-filter-page.md)
-[下一頁](complex-data-model.md)  
+> [!div class="step-by-step"]
+> [上一頁](sort-filter-page.md)
+> [下一頁](complex-data-model.md)  

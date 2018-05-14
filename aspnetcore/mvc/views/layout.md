@@ -1,7 +1,7 @@
 ---
-title: "配置"
+title: ASP.NET Core 中的配置
 author: ardalis
-description: 
+description: 了解如何先使用通用配置、共用指示詞，以及執行通用程式碼，再轉譯 ASP.NET 應用程式中的檢視。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/layout
-ms.openlocfilehash: 3e9e5949d8940a33508e24f0da015b49b7ba468c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8e89c8e6cf18c47abb6bf432cdc6bb6b97e8aeb0
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="layout"></a>配置
+# <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
 作者：[Steve Smith](https://ardalis.com/)
 
@@ -37,13 +37,13 @@ ms.lasthandoff: 01/30/2018
 
 範例 `_Layout.cshtml`：
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
+[!code-html[](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ## <a name="specifying-a-layout"></a>指定配置
 
 Razor 檢視具有 `Layout` 屬性。 個別檢視透過設定此屬性來指定配置：
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
 指定的配置可以使用完整路徑 (範例：`/Views/Shared/_Layout.cshtml`) 或部分名稱 (範例：`_Layout`)。 提供部分名稱時，Razor 檢視引擎將使用其標準探索程序來搜尋配置檔案。 會先搜尋控制器相關聯資料夾，接著再搜尋 `Shared` 資料夾。 此探索程序相當於用來探索[部分檢視](partial.md)的程序。
 
@@ -99,7 +99,7 @@ Razor 頁面中的本文和每個區段都必須進行轉譯或忽略。
 
 範例 `_ViewImports.cshtml` 檔案：
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 ASP.NET Core MVC 應用程式的 `_ViewImports.cshtml` 檔案通常會放在 `Views` 資料夾中。 `_ViewImports.cshtml` 檔案可以放在任何資料夾內；在此情況下，它只會套用至該資料夾和其子資料夾內的檢視。 `_ViewImports` 檔案的處理是從根層級開始，然後針對到檢視本身位置的所有資料夾；因此，在資料夾層級，可能會覆寫根層級上指定的設定。
 
@@ -127,7 +127,7 @@ ASP.NET Core MVC 應用程式的 `_ViewImports.cshtml` 檔案通常會放在 `Vi
 
 範例 `_ViewStart.cshtml` 檔案：
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 上面的檔案指定所有檢視都會使用 `_Layout.cshtml` 配置。
 

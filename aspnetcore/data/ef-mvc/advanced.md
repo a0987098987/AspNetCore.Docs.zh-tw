@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 與 EF Core - 進階 - 10/10"
+title: ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 author: tdykstra
-description: "本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。"
+description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 458f2dc8a67f8c706d043f0d9d7cb7ce962e52ce
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 655f60116cbfe1dd81b7e2855906446b919b6489
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>進階主題 - EF Core 與 ASP.NET Core MVC 教學課程 (10/10)
+# <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
@@ -41,7 +41,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *DepartmentsController.cs* 中，將 `Details` 方法中擷取部門的程式碼取代為 `FromSql` 方法呼叫，如下列醒目提顯示的程式碼所示：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
 
 若要確認新的程式碼運作正常，請選取 [部門]  索引標籤，然後針對其中一個部門選取 [詳細資料] 。
 
@@ -53,11 +53,11 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *HomeController.cs* 中，以下列程式碼取代 `About` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
 新增 using 陳述式：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
 執行應用程式並移至 About 頁面。 它會顯示與之前相同的資料。
 
@@ -71,9 +71,9 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *CoursesContoller.cs* 中，為 HttpGet 和 HttpPost 新增 UpdateCourseCredits 方法：
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
 
 當控制器處理 HttpGet 要求時，不會在 `ViewData["RowsAffected"]` 中傳回任何項目，而檢視會顯示空白的文字方塊和提交按鈕，如上圖所示。
 
@@ -85,7 +85,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *Views/Courses/UpdateCourseCredits.cshtml* 中，以下列程式碼取代範本程式碼：
 
-[!code-html[Main](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
+[!code-html[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
 藉由選取 [課程]  索引標籤，然後將 "/UpdateCourseCredits" 新增至瀏覽器位址列中的 URL 結尾 (例如：`http://localhost:5813/Courses/UpdateCourseCredits`)，以執行 `UpdateCourseCredits` 方法。 在文字方塊中輸入數目：
 
@@ -169,7 +169,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="entity-framework-core-source-code-and-development-plans"></a>Entity Framework Core 的原始程式碼和開發計劃
 
-Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor](https://github.com/aspnet/EntityFrameworkCore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
+Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
 
 雖然原始程式碼是開放式程式碼，但 Entity Framework Core 也作為 Microsoft 產品完整支援。 Microsoft Entity Framework 小組將控制接受哪些貢獻，並測試所有的程式碼變更以確保每次發行的品質。
 
@@ -182,7 +182,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 [本系列的第三個教學課程](sort-filter-page.md)示範如何在 `switch` 陳述式中，以硬式編碼的資料行名稱來撰寫 LINQ 程式碼。 若有兩個資料行可供選擇，這可正常運作；但是如果您有許多資料行，程式碼可能變得冗長。 若要解決該問題，您可以使用 `EF.Property` 方法，以指定屬性的名稱作為字串。 若要試用這種方法，請以下列程式碼取代 `StudentsController` 中的 `Index` 方法。
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -192,7 +192,7 @@ Entity Framework Core 來源位於 [https://github.com/aspnet/EntityFrameworkCor
 
 如需如何部署 Web 應用程式的資訊，請參閱[裝載和部署](xref:host-and-deploy/index)。
 
-如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 [ASP.NET Core 文件](https://docs.microsoft.com/aspnet/core/)。
+如需與 ASP.NET Core MVC 相關之其他主題 (例如驗證和授權) 的資訊，請參閱 [ASP.NET Core 文件](xref:index)。
 
 ## <a name="acknowledgments"></a>感謝
 
@@ -244,5 +244,5 @@ dotnet ef database drop
 
 檢查連接字串。 如果您已手動刪除資料庫檔案，請變更建構字串的資料庫名稱，以重新開始使用新的資料庫。
 
->[!div class="step-by-step"]
-[上一步](inheritance.md)
+> [!div class="step-by-step"]
+> [上一步](inheritance.md)

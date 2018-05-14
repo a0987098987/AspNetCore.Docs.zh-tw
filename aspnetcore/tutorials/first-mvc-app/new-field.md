@@ -1,7 +1,7 @@
 ---
-title: "新增欄位"
+title: 將欄位新增至 ASP.NET Core 應用程式
 author: rick-anderson
-description: 
+description: 了解如何使用 Entity Framework Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: f8a5f9528d899f75aaabfbca38f075a27763567f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a314115459fedb9561694604509856503c023a5c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="adding-a-new-field"></a>新增欄位
+# <a name="add-a-new-field-to-an-aspnet-core-app"></a>將欄位新增至 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 開啟 *Models/Movie.cs* 檔案，然後新增 `Rating` 屬性：
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 建置應用程式 (Ctrl+Shift+B)。
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/30/2018
 
 編輯 */Views/Movies/Index.cshtml* 檔案，然後新增 `Rating` 欄位：
 
-[!code-HTML[Main](start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
 
 使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。 您可以複製/貼上前一個「表單群組」，讓 IntelliSense 協助您更新這些欄位。 IntelliSense 會使用[標記協助程式](xref:mvc/views/tag-helpers/intro)。 注意：使用 RTM 版本的 Visual Studio 2017 時，您需要安裝適用於 Razor IntelliSense 的 [Razor 語言服務](https://marketplace.visualstudio.com/items?itemName=ms-madsk.RazorLanguageServices)。 下一版會修正此問題。
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/30/2018
 
 更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 進行這項變更。
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
 
 建置方案。
 
@@ -86,6 +86,6 @@ Update-Database
 
 執行應用程式，並驗證您可以使用 `Rating` 欄位建立/編輯/顯示電影。 您也應該將 `Rating` 欄位新增至 `Edit`、`Details` 和 `Delete` 檢視範本。
 
->[!div class="step-by-step"]
-[上一頁](search.md)
-[下一頁](validation.md)  
+> [!div class="step-by-step"]
+> [上一頁](search.md)
+> [下一頁](validation.md)  

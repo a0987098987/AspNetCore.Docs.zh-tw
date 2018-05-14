@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 1.1 使用者入門"
+title: ASP.NET Core 1.1 使用者入門
 author: rick-anderson
-description: "使用 ASP.NET Core 1.1 建立並執行簡單 Hello World 應用程式的快速教學課程。"
+description: 請遵循本快速教學課程，使用 ASP.NET Core 1.1 來建立並執行簡單的 Hello World 應用程式。
 manager: wpickett
 ms.author: riande
 ms.date: 08/07/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: getting-started-1.1
-ms.openlocfilehash: 895e91efbba931923540e4cd182862cbc1851585
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c61a9a918e51bbd6c1f1142a04473393c8fc54ca
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="getting-started-with-aspnet-core-11"></a>ASP.NET Core 1.1 使用者入門
+# <a name="get-started-with-aspnet-core-11"></a>ASP.NET Core 1.1 使用者入門
 
 > [!NOTE]
 > 這些指示是針對 ASP.NET Core 1.1。 要尋找最新版本？ 請參閱[目前版本的本教學課程](xref:getting-started)。
 
-1. 從 [.NET Core 1.0.5 & 1.1.2 SDK 1.0.4 下載頁面](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.0.5-download.md)安裝適用於 SDK 1.0.4 的 .NET Core **SDK 安裝程式**。
+1. 從 [.NET Core All Downloads](https://www.microsoft.com/net/download/all) (.NET Core 所有下載) 頁面安裝適用於 SDK 1.0.4 的 .NET Core **SDK 安裝程式**。
 
 2. 為新的 .NET Core 專案建立資料夾。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/30/2018
 
 4. 執行應用程式。
 
-   `dotnet run` 命令會在必要時先建置應用程式。
+   [dotnet run](/dotnet/core/tools/dotnet-run) 命令會在必要時先建置應用程式。
 
    ```terminal
    dotnet run

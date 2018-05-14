@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面與 EF Core：CRUD - 2/8"
+title: ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 author: rick-anderson
-description: "示範如何以 EF Core 來建立、讀取、更新、刪除"
+description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/crud
-ms.openlocfilehash: 757aeb713b645cea0fe633b150784184d2d3571e
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: b3f170ad35bcff7c662fb0205b0bff2e98b4724c
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>以 EF Core 與 Razor 頁面來建立、讀取、更新、刪除 (2/8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
-作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog)、[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 在本教學課程中，將會檢閱並自訂 Scaffold CRUD (建立、讀取、更新、刪除)。
 
@@ -36,7 +36,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 ## <a name="replace-singleordefaultasync-with-firstordefaultasync"></a>用 FirstOrDefaultAsync 取代 SingleOrDefaultAsync
 
-產生的程式碼會使用 [SingleOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) 來擷取所要求的實體。 [FirstOrDefaultAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_) 在擷取單一實體上更有效率：
+產生的程式碼會使用 [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) 來擷取所要求的實體。 [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_) 在擷取單一實體上更有效率：
 
 * 除非程式碼需要確認從查詢傳回的實體不多於一個。 
 * `SingleOrDefaultAsync` 擷取更多資料並進行不必要的工作。
@@ -51,7 +51,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 <a name="FindAsync"></a>
 ### <a name="findasync"></a>FindAsync
 
-在大部分的 Scaffold 程式碼中，[FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) 可用來取代 `FirstOrDefaultAsync` 或 `SingleOrDefaultAsync`。 
+在大部分的 Scaffold 程式碼中，[FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) 可用來取代 `FirstOrDefaultAsync` 或 `SingleOrDefaultAsync`。 
 
 `FindAsync`：
 
@@ -59,14 +59,14 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 * 簡單並精確。
 * 已最佳化來查閱單一實體。
 * 在某些情況下可具有效能優勢，但是在一般的 Web 案例下很少見。
-* 隱含使用 [FirstAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) 而不是 [SingleAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_)。
+* 隱含使用 [FirstAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) 而不是 [SingleAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_)。
 但是如果您想要包含其他項目，則 [尋找] 已不再適用。 這表示您可能要放棄 [尋找] 並隨著您的應用程式進行而移至查詢。
 
 ## <a name="customize-the-details-page"></a>自訂 [詳細資料] 頁面
 
 瀏覽至 `Pages/Students` 頁面。 在 *Pages/Students/Index.cshtml* 檔案中，**編輯**、**詳細資料**、**刪除** 連結是由[錨點標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Students/Index1.cshtml?range=40-44)]
+[!code-cshtml[](intro/samples/cu/Pages/Students/Index1.cshtml?range=40-44)]
 
 選取詳細資料連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2`。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
 
@@ -90,7 +90,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 *Pages/Students/Details.cshtml.cs* 的 `OnGetAsync` 方法使用 `FirstOrDefaultAsync` 方法來擷取單一 `Student` 實體。 請新增下列醒目提示的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
 `Include` 及 `ThenInclude` 方法會使內容載入 `Student.Enrollments` 導覽屬性，以及位於每一個註冊中的 `Enrollment.Course` 導覽屬性。 將會在讀取相關資料教學課程中詳細檢視這些方法。
 
@@ -101,11 +101,11 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 開啟 *Pages/Students/Details.cshtml*。 請新增下列醒目顯示的程式碼，以顯示一份註冊清單：
 
  <!--2do ricka. if doesn't change, remove dup -->
-[!code-cshtml[Main](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
+[!code-cshtml[](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
 
 若在貼上程式碼之後，程式碼的縮排發生錯誤，請按 CTRL-K-D 修正它。
 
-上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的 Course 實體擷取。
+上述程式碼會以迴圈逐一巡覽 `Enrollments` 導覽屬性中的實體。 針對每個註冊，會顯示課程標題及成績。 課程標題會從儲存於 Enrollments 實體之 `Course` 導覽屬性中的課程 (Course) 實體擷取。
 
 執行應用程式，選取 [Students] 索引標籤，然後按一下學生的 [詳細資料] 連結。 將會顯示所選取學生的課程及成績清單。
 
@@ -113,16 +113,16 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 以下列程式碼更新 *Pages/Students/Create.cshtml.cs* 中的 `OnPostAsync` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 <a name="TryUpdateModelAsync"></a>
 ### <a name="tryupdatemodelasync"></a>TryUpdateModelAsync
 
-檢查 [TryUpdateModelAsync](https://docs.microsoft.com/ dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_) 程式碼：
+檢查 [TryUpdateModelAsync](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_) 程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_TryUpdateModelAsync)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Create.cshtml.cs?name=snippet_TryUpdateModelAsync)]
 
-在上述程式碼，`TryUpdateModelAsync<Student>` 從 [PageModel](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel?view=aspnetcore-2.0) 中的 [PageContext](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) 屬性中，使用已張貼的表單值來嘗試更新 `emptyStudent` 物件。 `TryUpdateModelAsync` 只會更新列出的屬性 (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`)。
+在上述程式碼，`TryUpdateModelAsync<Student>` 從 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel?view=aspnetcore-2.0) 中的 [PageContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) 屬性中，使用已張貼的表單值來嘗試更新 `emptyStudent` 物件。 `TryUpdateModelAsync` 只會更新列出的屬性 (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`)。
 
 在上述範例中：
 
@@ -134,7 +134,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 使用 `TryUpdateModel` 來更新具有已張貼值欄位是最安全的做法，因為它會防止大量指派 (overposting)。 例如，假設 Student 實體包含了一個此網頁不應更新或新增的 `Secret` 屬性：
 
-[!code-csharp[Main](intro/samples/cu/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
+[!code-csharp[](intro/samples/cu/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
 
 即使應用程式在建立/更新 Razor 頁面上沒有 `Secret` 欄位，駭客仍然可以藉由大量指派 (overposting) 來設定 `Secret` 值。 駭客仍可能使用 Fiddler 等工具，或是撰寫 JavaScript，來張貼 `Secret` 表單值。 原始程式碼並不會限制模型繫結器在建立 Student 執行個體時所使用的欄位。
 
@@ -149,15 +149,15 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 檢視模型通常包含屬性中的子集，這些屬性包含在應用程式使用的模型中。 應用程式模型通常稱為網域模型。 網域模型通常會包含資料庫中對應實體所需要的所有屬性。 檢視模型只包含 UI 層所需要的屬性 (例如 [建立] 頁面)。 除了檢視模型之外，某些應用程式會使用繫結模型或輸入模型，在 Razor 頁面的頁面模型類別和瀏覽器之間傳遞資料。 請看看下列 `Student` 檢視模型：
 
-[!code-csharp[Main](intro/samples/cu/Models/StudentVM.cs)]
+[!code-csharp[](intro/samples/cu/Models/StudentVM.cs)]
 
 檢視模型提供防止大量指派 (overposting) 的替代方法。 檢視模型只包含用來檢視 (顯示) 或更新的屬性。
 
 下列程式碼會使用 `StudentVM` 檢視模型來建立一名新學生：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
+[!code-csharp[](intro/samples/cu/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
 
-[SetValues](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) 會設定這個物件的值，方法是藉由從其他 [PropertyValues](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues) 物件中讀取值。 `SetValues` 使用屬性名稱比對。 檢視模型類型不需要與模型類型相關，只需要有符合的屬性。
+[SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) 會設定這個物件的值，方法是藉由從其他 [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues) 物件中讀取值。 `SetValues` 使用屬性名稱比對。 檢視模型類型不需要與模型類型相關，只需要有符合的屬性。
 
 使用 `StudentVM` 需要 [CreateVM.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Students/CreateVM.cshtml) 更新為使用 `StudentVM`，而不是使用 `Student`。
 
@@ -165,15 +165,15 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 ## <a name="update-the-edit-page"></a>更新 [編輯] 頁面
 
-為 [編輯] 頁面更新頁面模型：
+為 [編輯] 頁面更新頁面模型。 主要變更已反白顯示：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Edit.cshtml.cs?name=snippet_OnPostAsync&highlight=20,36)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Edit.cshtml.cs?name=snippet_OnPostAsync&highlight=20,36)]
 
 程式碼的變更與 [建立] 頁面相似，但有一些例外狀況：
 
 * `OnPostAsync` 具有選擇性 `id` 參數。
 * 目前的學生資料會從資料庫中擷取出來，而不會建立一個空白的學生資料。
-* `FirstOrDefaultAsync` 已取代為 [FindAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1.findasync?view=efcore-2.0)。 從主索引鍵選取實體時，`FindAsync` 是不錯的選擇。 請參閱 [FindAsync](#FindAsync) 以取得更詳細的資訊。
+* `FirstOrDefaultAsync` 已取代為 [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbset-1.findasync?view=efcore-2.0)。 從主索引鍵選取實體時，`FindAsync` 是不錯的選擇。 請參閱 [FindAsync](#FindAsync) 以取得更詳細的資訊。
 
 ### <a name="test-the-edit-and-create-pages"></a>測試 [編輯] 頁面和 [建立] 頁面
 
@@ -203,11 +203,11 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 在本節中，將新增程式碼來實作一個呼叫至 `SaveChanges` 失敗時的自訂錯誤訊息。 請新增字串來包含可能的錯誤訊息：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet1&highlight=12)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet1&highlight=12)]
 
 以下列程式碼取代 `OnGetAsync` 方法：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnGetAsync&highlight=1,9,17-20)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnGetAsync&highlight=1,9,17-20)]
 
 上述程式碼中包含選擇性參數 `saveChangesError`。 `saveChangesError` 會顯示出此方法是否已在刪除學生物件失敗後呼叫。 刪除作業可能會因為暫時性的網路問題而失敗。 暫時性的網路錯誤較可能是在雲端。 [刪除] 頁面 `OnGetAsync` 從 UI 中呼叫時，`saveChangesError` 為 false。 當 `OnPostAsync` 呼叫 `OnGetAsync` 時 (因刪除作業失敗)，則 `saveChangesError` 參數為 true。
 
@@ -215,7 +215,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 使用下列程式碼取代 `OnPostAsync`：
 
-[!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnPostAsync)]
+[!code-csharp[](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnPostAsync)]
 
 上述程式碼會擷取選取的實體，然後呼叫 `Remove` 方法來將實體的狀態設定為 `Deleted`。 當呼叫 `SaveChanges` 時，便會產生 SQL DELETE 命令。 如果 `Remove` 失敗：
 
@@ -226,7 +226,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 將下列醒目標示的錯誤訊息新增至 [刪除 Razor] 頁面。
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Students/Delete.cshtml?range=1-13&highlight=10)]
+[!code-cshtml[](intro/samples/cu/Pages/Students/Delete.cshtml?range=1-13&highlight=10)]
 
 測試刪除。
 
@@ -242,6 +242,6 @@ Student/首頁或其他連結運作失常：
 
 每個 Razor 頁面都必須包含 `@page` 指示詞。
 
->[!div class="step-by-step"]
-[上一頁](xref:data/ef-rp/intro)
-[下一頁](xref:data/ef-rp/sort-filter-page)
+> [!div class="step-by-step"]
+> [上一頁](xref:data/ef-rp/intro)
+> [下一頁](xref:data/ef-rp/sort-filter-page)

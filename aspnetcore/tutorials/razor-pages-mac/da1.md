@@ -1,24 +1,25 @@
 ---
-title: "更新產生的頁面"
+title: 更新產生的頁面
 author: rick-anderson
-description: "以更好的顯示方式更新產生的頁面。"
+description: 以更好的顯示方式更新產生的頁面。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/da1
-ms.openlocfilehash: a2b440356be222914f6ac97eef950c6d5376f5a3
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: a8217917ab11a0dee42d71b4912d74e1e320446e
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-[!INCLUDE[model1](../../includes/RP/da1.md)]
+[!INCLUDE [model1](../../includes/RP/da1.md)]
 
-[!INCLUDE[model1](../../includes/RP/da2.md)]
+[!INCLUDE [model1](../../includes/RP/da2.md)]
 
->[!div class="step-by-step"]
-[上一步：使用 SQLite](xref:tutorials/razor-pages-mac/sql)
-[新增搜尋](xref:tutorials/razor-pages-mac/search)
+> [!div class="step-by-step"]
+> [上一步：使用 SQLlite](xref:tutorials/razor-pages-mac/sql)
+> [新增搜尋](xref:tutorials/razor-pages-mac/search)

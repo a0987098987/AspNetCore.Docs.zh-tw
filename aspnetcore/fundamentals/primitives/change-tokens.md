@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 中使用變更權杖來偵測變更"
+title: 在 ASP.NET Core 中使用變更權杖來偵測變更
 author: guardrex
-description: "了解如何使用變更權杖來追蹤變更。"
+description: 了解如何使用變更權杖來追蹤變更。
 manager: wpickett
 ms.author: riande
 ms.date: 11/10/2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 94bf356fcbfab3930804485c1b65e4a0f4c52b8e
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 3055eec91adc412b596d4cc73e8523e18ff63331
+ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -59,22 +59,22 @@ ms.lasthandoff: 01/31/2018
 
 ASP.NET Core 範本預設使用 [JSON 組態檔](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*、*appsettings.Development.json* 和 *appsettings.Production.json*) 來載入應用程式組態設定。
 
-這些檔案在接受 `reloadOnChange` 參數的 [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) 上使用 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) 擴充方法加以設定 (ASP.NET Core 1.1 和更新版本)。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 請參閱 [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) 的便利方法 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) ([參考來源](https://github.com/aspnet/MetaPackages/blob/rel/2.0.3/src/Microsoft.AspNetCore/WebHost.cs#L152-L193)) 中的此設定：
+這些檔案在接受 `reloadOnChange` 參數的 [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) 上使用 [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) 擴充方法加以設定 (ASP.NET Core 1.1 和更新版本)。 `reloadOnChange` 指出組態是否應該在檔案變更時重新載入。 請參閱 [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) 的便利方法 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 中的此設定：
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
       .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 ```
 
-檔案型組態是以 [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource) 表示。 `FileConfigurationSource` 會使用 [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) ([參考來源](https://github.com/aspnet/FileSystem/blob/patch/2.0.1/src/Microsoft.Extensions.FileProviders.Abstractions/IFileProvider.cs)) 來監視檔案。
+檔案型組態是以 [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource) 表示。 `FileConfigurationSource` 會使用 [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) 來監視檔案。
 
-根據預設，`IFileMonitor` 由 [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) ([參考來源](https://github.com/aspnet/Configuration/blob/patch/2.0.1/src/Microsoft.Extensions.Configuration.FileExtensions/FileConfigurationSource.cs#L82))　提供，它會使用 [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) 來監視組態檔變更。
+根據預設，`IFileMonitor` 由 [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) 提供，它會使用 [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) 來監視組態檔變更。
 
 範例應用程式將示範監視組態變更的兩個實作。 如果有任一個 *appsettings.json* 檔案變更或檔案的環境版本變更時，每個實作都會執行自訂程式碼。 範例應用程式會將訊息寫入主控台。
 
 組態檔的 `FileSystemWatcher` 可以觸發單一組態檔案變更的多個權杖回呼。 範例的實作會檢查組態檔的檔案雜湊，以避免發生這個問題。 檢查檔案雜湊，可確保至少其中一個組態檔已在執行自訂程式碼之前變更。 此範例會使用 SHA1 檔案雜湊 (*Utilities/Utilities.cs*)：
 
-   [!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
+   [!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
 
    重試將利用指數倒退來實作。 因為可能發生檔案鎖定而暫時無法對其中一個檔案計算新的雜湊，所以會進行重試。
 
@@ -82,11 +82,11 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 將變更通知的權杖取用者 `Action` 回呼登錄到組態重新載入權杖 (*Startup.cs*)：
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet2)]
 
 `config.GetReloadToken()` 提供此權杖。 回呼是 `InvokeChanged` 方法：
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet3)]
 
 `state` 的回呼用來傳入 `IHostingEnvironment`。 這可用來判斷要監視的正確 *appsettings* 組態 JSON 檔案 *appsettings.&lt;環境&gt;.json*。 檔案雜湊用來防止 `WriteConsole` 陳述式在組態檔只變更過一次時，由於多個權杖回呼而執行多次。
 
@@ -102,11 +102,11 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 此範例會建立 `IConfigurationMonitor` 介面 (*Extensions/ConfigurationMonitor.cs*)：
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
 已實作類別的建構函式 `ConfigurationMonitor` 登錄變更通知的回呼：
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 這個執行個體中的 `state` 是描述監視狀態的字串。 會使用兩個屬性：
 
@@ -119,21 +119,21 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 * 將 `CurrentState` 屬性字串設定為記錄程式碼執行時間的描述性訊息。
 * 在其 `WriteConsole` 輸出中記錄目前的 `state`。
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
 執行個體 `ConfigurationMonitor` 會在 *Startup.cs* 的 `ConfigureServices` 中登錄為服務：
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet1)]
 
 [索引] 頁面提供對組態監視的使用者控制。 `IConfigurationMonitor` 的執行個體會插入到 `IndexModel` 中：
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
 
 按鈕可啟用和停用監視：
 
-[!code-cshtml[Main](change-tokens/sample/Pages/Index.cshtml?range=35)]
+[!code-cshtml[](change-tokens/sample/Pages/Index.cshtml?range=35)]
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
 
 當觸發 `OnPostStartMonitoring` 時，會啟用監視並清除目前的狀態。 當觸發 `OnPostStopMonitoring` 時，則會停用監視，且狀態會設定為反映未進行監視。
 
@@ -152,7 +152,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 *Utilities/Utilities.cs*：
 
-[!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
 
 `FileService` 是建立來處理快取的檔案查閱。 服務的 `GetFileContent` 方法呼叫會嘗試從記憶體內部快取取得檔案內容，並將它傳回給呼叫端 (*Services/FileService.cs*)。
 
@@ -162,19 +162,19 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 1. 使用 [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken)，可在快取的檔案變更時收回快取項目。
 
-[!code-csharp[Main](change-tokens/sample/Services/FileService.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Services/FileService.cs?name=snippet1)]
 
 `FileService` 登錄在服務容器以及記憶體快取服務 (*Startup.cs*) 中：
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet4)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet4)]
 
 頁面模型會使用服務 (*Pages/Index.cshtml.cs*) 載入檔案的內容：
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
 
 ## <a name="compositechangetoken-class"></a>CompositeChangeToken 類別
 
-為了表示單一物件中的一或多個 `IChangeToken` 執行個體，請使用 [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) 類別 ([參考來源](https://github.com/aspnet/Common/blob/patch/2.0.1/src/Microsoft.Extensions.Primitives/CompositeChangeToken.cs))。
+為了表示單一物件中的一或多個 `IChangeToken` 執行個體，請使用 [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) 類別。
 
 ```csharp
 var firstCancellationTokenSource = new CancellationTokenSource();
@@ -199,7 +199,7 @@ var compositeChangeToken =
 
 ## <a name="see-also"></a>另請參閱
 
-* [記憶體內部快取](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)

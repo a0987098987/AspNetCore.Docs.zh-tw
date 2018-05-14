@@ -1,7 +1,7 @@
 ---
-title: "區域"
+title: ASP.NET Core 中的區域
 author: rick-anderson
-description: "顯示如何使用區域。"
+description: 了解其為 ASP.NET MVC 功能的區域，如何用來將相關功能組織成群組，作為個別命名空間 (適用於路由) 和資料夾結構 (適用於檢視)。
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/areas
-ms.openlocfilehash: 1ade49de3f6c58edc4ea7b06bc593b3db797081c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 61527eb350b5aba9cb37b1de5acdeae1287bf073
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="areas"></a>區域
+# <a name="areas-in-aspnet-core"></a>ASP.NET Core 中的區域
 
 作者：[Dhananjay Kumar](https://twitter.com/debug_mode) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 

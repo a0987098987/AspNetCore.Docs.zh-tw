@@ -1,7 +1,7 @@
 ---
-title: "設定可攜式物件當地語系化"
+title: 使用 ASP.NET Core 設定可攜式物件當地語系化
 author: sebastienros
-description: "本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。"
+description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
 manager: wpickett
 ms.author: scaddie
 ms.date: 09/26/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 6fefbd9b28d481184e358e7d66af68d112c63696
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: fbf2afd6fbc07c8068a21be15816aa45618f28d6
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="configure-portable-object-localization-with-orchard-core"></a>使用 Orchard Core 設定可攜式物件當地語系化
+# <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
 作者：[Sébastien Ros](https://github.com/sebastienros) 和 [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -70,25 +70,25 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="referencing-the-package"></a>參考套件
 
-將參考新增至 `OrchardCore.Localization.Core` NuGet 套件。 它可從 [MyGet](https://www.myget.org/) 的下列套件來源取得：https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+將參考新增至 `OrchardCore.Localization.Core` NuGet 套件。 它可在 [MyGet](https://www.myget.org/) 的下列套件來源中取得：https://www.myget.org/F/orchardcore-preview/api/v3/index.json
 
 *.csproj* 檔案現在包含與下列內容類似的一行 (版本號碼可能不同)：
 
-[!code-xml[Main](localization/sample/POLocalization/POLocalization.csproj?range=9)]
+[!code-xml[](localization/sample/POLocalization/POLocalization.csproj?range=9)]
 
 ### <a name="registering-the-service"></a>註冊服務
 
 將所需的服務新增至 *Startup.cs* 的 `ConfigureServices` 方法：
 
-[!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
+[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
 將必要的中介軟體新增至 *Startup.cs* 的 `Configure` 方法：
 
-[!code-csharp[Main](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
+[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
 將下列程式碼新增至所選擇的 Razor 檢視。 此範例中使用 *About.cshtml*。
 
-[!code-cshtml[Main](localization/sample/POLocalization/Views/Home/About.cshtml)]
+[!code-cshtml[](localization/sample/POLocalization/Views/Home/About.cshtml)]
 
 將會插入 `IViewLocalizer` 執行個體，用來翻譯文字 "Hello world!"。
 
@@ -96,7 +96,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 在應用程式根資料夾中建立名為 *<culture code>.po* 的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
-[!code-text[Main](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/POLocalization/fr.po)]
 
 這個檔案會同時儲存要翻譯的字串和法文的翻譯字串。 如有必要，翻譯會還原為其父文化特性。 在此範例中，如果所要求的文化特性是 `fr-FR` 或 `fr-CA`，則會使用 *fr.po* 檔案。
 
@@ -133,7 +133,7 @@ msgstr[1] "Il y a {0} éléments."
 
 如下所示建立 `cs.po` 檔案，並記下複數表示需要三種不同翻譯的方式：
 
-[!code-text[Main](localization/sample/POLocalization/cs.po)]
+[!code-text[](localization/sample/POLocalization/cs.po)]
 
 若要接受捷克文的當地語系化，請將 `"cs"` 新增至 `ConfigureServices` 方法所支援的文化特性清單中：
 
@@ -206,7 +206,7 @@ msgstr "Bonjour le monde!"
 
 沒有特定項目與給定的檔案內容相符時，Orchard Core 的後援機制會在沒有內容的情況下尋找適當的 PO 檔案。 假設沒有針對 *Views/Home/Contact.cshtml* 所定義的特定檔案內容，請巡覽至 `/Home/Contact?culture=fr-FR` 以載入 PO 檔案，例如：
 
-[!code-text[Main](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/POLocalization/fr.po)]
 
 ### <a name="changing-the-location-of-po-files"></a>變更 PO 檔案的位置
 

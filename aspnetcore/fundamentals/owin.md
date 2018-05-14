@@ -1,7 +1,7 @@
 ---
-title: Open Web Interface for .NET (OWIN)
+title: 具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 author: ardalis
-description: "探索 ASP.NET Core 如何支援 Open Web Interface for .NET (OWIN)，這可讓 Web 應用程式與網頁伺服器分離。"
+description: 探索 ASP.NET Core 如何支援 Open Web Interface for .NET (OWIN)，這可讓 Web 應用程式與網頁伺服器分離。
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/owin
-ms.openlocfilehash: 1a6a49715840d66dc37465758d3a896af96e2976
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 3ff7b6e02284b4f6c61bf5d31013b4edfe8f7f29
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="introduction-to-open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN) 簡介
+# <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -80,10 +80,10 @@ public void Configure(IApplicationBuilder app)
 ```csharp
 app.UseOwin(pipeline =>
 {
-    pipeline(next =>
+    pipeline(async (next) =>
     {
         // do something before
-        return OwinHello;
+        await OwinHello(new OwinEnvironment(HttpContext));
         // do something after
     });
 });
@@ -95,7 +95,7 @@ app.UseOwin(pipeline =>
 
 以 OWIN 為基礎的伺服器可以裝載 ASP.NET 應用程式。 其中一個這類伺服器是 [Nowin](https://github.com/Bobris/Nowin)，其為 .NET OWIN 網頁伺服器。 在本文的範例中，包含了參考 Nowin 並使用它來建立 `IServer` 能夠自我裝載之 ASP.NET Core 的專案。
 
-[!code-csharp[Main](owin/sample/src/NowinSample/Program.cs?highlight=15)]
+[!code-csharp[](owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
 `IServer` 是需要 `Features` 屬性和 `Start` 方法的介面。
 
@@ -134,10 +134,9 @@ namespace Microsoft.AspNetCore.Hosting
 }
 ```
 
-在其就緒之後，只需要使用此自訂伺服器執行 ASP.NET 應用程式來呼叫 *Program.cs* 中的延伸模組：
+完成上述作業後，請叫用 *Program.cs* 中的延伸模組，以使用這個自訂伺服器來執行 ASP.NET Core 應用程式：
 
 ```csharp
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -162,7 +161,6 @@ namespace NowinSample
         }
     }
 }
-
 ```
 
 深入了解 ASP.NET [伺服器](servers/index.md)。

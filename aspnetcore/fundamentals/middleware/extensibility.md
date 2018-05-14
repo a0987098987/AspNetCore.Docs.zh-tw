@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 的 Factory 中介軟體啟用"
+title: ASP.NET Core 的 Factory 中介軟體啟用
 author: guardrex
-description: "了解如何在 ASP.NET Core 中搭配使用 Factory 啟用實作與強型別中介軟體。"
+description: 了解如何在 ASP.NET Core 中搭配使用 Factory 啟用實作與強型別中介軟體。
 ms.author: riande
 manager: wpickett
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware/extensibility
-ms.openlocfilehash: 57ff9db2edbf307f2442443dc14e69b0498f7475
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 76ba257abfb11e0c2950b974f837c6ae5818a6a1
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>ASP.NET Core 的 Factory 中介軟體啟用
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 02/01/2018
 
 範例應用程式會示範如何依據下列條件來啟用中介軟體：
 
-* 慣例 (`ConventionalMiddleware`)。 如需傳統中介軟體啟用的詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)主題。
-* [IMiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) 實作 (`IMiddlewareMiddleware`)。 預設的 [MiddlewareFactory 類別](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory)會啟動中介軟體。
+* 慣例。 如需傳統中介軟體啟用的詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)主題。
+* [IMiddleware](/dotnet/api/microsoft.aspnetcore.http.imiddleware) 實作。 預設的 [MiddlewareFactory 類別](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory)會啟動中介軟體。
 
 中介軟體實作運作方式都相同，並會記錄查詢字串參數 (`key`) 所提供的值。 中介軟體會使用插入的資料庫內容 (範圍服務)，以記錄記憶體中資料庫的查詢字串值。
 
@@ -46,15 +46,15 @@ ms.lasthandoff: 02/01/2018
 
 依據慣例啟用的中介軟體：
 
-[!code-csharp[Main](extensibility/sample/Middleware/ConventionalMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/ConventionalMiddleware.cs?name=snippet1)]
 
 由 `MiddlewareFactory` 啟用的中介軟體：
 
-[!code-csharp[Main](extensibility/sample/Middleware/IMiddlewareMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/IMiddlewareMiddleware.cs?name=snippet1)]
 
 您可為中介軟體建立延伸模組：
 
-[!code-csharp[Main](extensibility/sample/Middleware/MiddlewareExtensions.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
 您無法使用 `UseMiddleware` 將物件傳遞給由 Factory 啟用的中介軟體：
 
@@ -69,11 +69,11 @@ public static IApplicationBuilder UseIMiddlewareMiddleware(
 
 由 Factory 啟用的中介軟體會新增至 *Startup.cs* 的內建容器中：
 
-[!code-csharp[Main](extensibility/sample/Startup.cs?name=snippet1&highlight=6)]
+[!code-csharp[](extensibility/sample/Startup.cs?name=snippet1&highlight=6)]
 
 這兩個中介軟體都會在要求處理管線的 `Configure` 中註冊：
 
-[!code-csharp[Main](extensibility/sample/Startup.cs?name=snippet2&highlight=12-13)]
+[!code-csharp[](extensibility/sample/Startup.cs?name=snippet2&highlight=12-13)]
 
 ## <a name="imiddlewarefactory"></a>IMiddlewareFactory
 
@@ -84,3 +84,4 @@ public static IApplicationBuilder UseIMiddlewareMiddleware(
 ## <a name="additional-resources"></a>其他資源
 
 * [中介軟體](xref:fundamentals/middleware/index)
+* [以協力廠商容器啟用中介軟體](xref:fundamentals/middleware/extensibility-third-party-container)

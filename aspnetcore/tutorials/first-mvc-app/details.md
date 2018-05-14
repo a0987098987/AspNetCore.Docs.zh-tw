@@ -1,7 +1,7 @@
 ---
-title: "檢查 Details 和 Delete 方法"
+title: 檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 author: rick-anderson
-description: "基本 ASP.NET Core MVC 應用程式中的 Details 控制器方法和檢視。"
+description: 了解基本 ASP.NET Core MVC 應用程式中的 Details 控制器方法和檢視。
 manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
@@ -9,37 +9,37 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 4a0004fc79f8e1d334e3acb96b28b2954d19f0a1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3691801c2d48b7f635bee844fdf2392f2f3445de
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
+# <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 開啟 Movie 控制器，並檢查 `Details` 方法：
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
 
 建立這個動作方法的 MVC scaffolding 引擎，會新增一項註解以顯示叫用方法的 HTTP 要求。 在此情況下，它是含有 `Movies` 控制器、`Details` 方法和 `id` 值這三個 URL 區段的 GET 要求。 回想一下，這些區段會在 *Startup.cs* 中定義。
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
 EF 可讓您輕鬆使用 `SingleOrDefaultAsync` 方法來搜尋資料。 此方法內建一項重要的安全性功能：程式碼會先驗證搜尋方法是否已找到電影，之後才嘗試對其執行任何動作。 比方說，駭客可能會將透過 `http://localhost:xxxx/Movies/Details/1` 連結建立的 URL 變更為類似 `http://localhost:xxxx/Movies/Details/12345` (或不代表實際電影的其他值)，導致站台發生錯誤。 如果並未檢查是否電影是否為 null，應用程式就會擲回例外狀況。
 
 檢查 `Delete` 和 `DeleteConfirmed` 方法。
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
 
 請注意，`HTTP GET Delete` 方法並不會刪除指定的電影，而會傳回電影的檢視，您可在該檢視中提交 (HttpPost) 刪除作業。 如果您執行刪除作業以回應 GET 要求 (或是執行相關編輯作業、建立作業或任何會變更資料的其他作業)，則會造成安全性漏洞。
 
 我們將可刪除資料的 `[HttpPost]` 方法命名為 `DeleteConfirmed`，以提供 HTTP POST 方法的唯一簽章或名稱。 這兩個方法簽章如下所示：
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete2)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete2)]
 
-[!code-csharp[Main](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete3)]
+[!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete3)]
 
 
 通用語言執行平台 (CLR) 需要多載方法，以提供唯一的參數簽章 (方法名稱相同但參數清單不同)。 不過，此處您需要兩個 `Delete` 方法，一個用於 GET，另一個用於 POST，且兩者都具有相同的參數簽章 (它們都需要接受單一整數作為參數)。
@@ -58,7 +58,7 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 
 如需使用 Visual Studio 將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。  您也可以從[命令列](xref:tutorials/publish-to-azure-webapp-using-cli)發行應用程式。
 
-感謝您看完這份 ASP.NET Core MVC 簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 和 EF Core 使用者入門](xref:data/ef-mvc/intro)。
+感謝您看完這份 ASP.NET Core MVC 簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 與 EF Core 使用者入門](xref:data/ef-mvc/intro)。
 
->[!div class="step-by-step"]
-[上一步](validation.md)
+> [!div class="step-by-step"]
+> [上一步](validation.md)

@@ -1,7 +1,7 @@
 ---
-title: "使用 ASP.NET Core 中的靜態檔案"
+title: 使用 ASP.NET Core 中的靜態檔案
 author: rick-anderson
-description: "了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。"
+description: 了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/static-files
-ms.openlocfilehash: 7b156830ab59db3c08fbff6b2c4180d8765a113b
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 46e868910661024ea3b950e78ced02a095896be1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="work-with-static-files-in-aspnet-core"></a>使用 ASP.NET Core 中的靜態檔案
 
@@ -31,20 +31,17 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 您必須讓應用程式的 Web 主機記住內容根目錄。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 `WebHost.CreateDefaultBuilder` 方法可將內容根目錄設定為目前的目錄：
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 您可以叫用 `Program.Main` 內的 [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_)，以將內容根目錄設定為目前的目錄：
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
----
-
+* * *
 您可透過 Web 根目錄的相對路徑來存取靜態檔案。 例如，**Web 應用程式**專案範本的 *wwwroot* 資料夾內包含數個資料夾：
 
 * **wwwroot**
@@ -52,7 +49,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **images**
   * **js**
 
-若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://\<伺服器位址>/images/\<影像檔名稱>。 例如 *http://localhost:9189/images/banner3.svg*。
+若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://\<伺服器位址>/images/\<影像檔名稱>。 例如，*http://localhost:9189/images/banner3.svg*。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -236,9 +233,9 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 > [!WARNING]
 > `UseDirectoryBrowser` 和 `UseStaticFiles` 可能會導致洩漏祕密。 強烈建議您在生產環境中停用目錄瀏覽功能。 透過 `UseStaticFiles` 或 `UseDirectoryBrowser`，仔細檢閱要啟用哪些目錄。 因為整個目錄和其子目錄都可供公開存取。 將檔案存放在專門公開提供的目錄，例如 *\<content_root>/wwwroot*。 將這些檔案與 MVC 檢視、Razor 頁面 (僅限 2.x)、設定檔等區隔開來。
 
-* 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;Mac 和 Linux 則有區分大小寫。
+* 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;macOS 和 Linux 則區分大小寫。
 
-* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組 (ANCM)](xref:fundamentals/servers/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在 ANCM 處理要求之前處理要求。
+* 裝載於 IIS 中的 ASP.NET Core 應用程式會使用 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，將所有要求轉送給應用程式 (包括靜態檔案要求)， 而不會使用 IIS 靜態檔案處理常式。 因此，上述處理常式不可能在模組處理要求之前處理要求。
 
 * 請完成 IIS 管理員中的下列步驟，以移除伺服器或網站層級的 IIS 靜態檔案處理常式：
     1. 巡覽至 [模組] 功能。
@@ -246,7 +243,7 @@ app.UseFileServer(enableDirectoryBrowsing: true);
     1. 按一下 [動作] 側邊欄中的 [移除]。
 
 > [!WARNING]
-> 如果已啟用 IIS 靜態檔案處理常式，**但是**未正確設定 ANCM，仍可提供靜態檔案。 舉例來說，未部署 *web.config* 檔案時可能會發生上述情況。
+> 如果已啟用 IIS 靜態檔案處理常式，**但是**未正確設定 ASP.NET Core 模組，仍可提供靜態檔案。 舉例來說，未部署 *web.config* 檔案時可能會發生上述情況。
 
 * 請將程式碼檔案 (包括 *.cs* 和 *.cshtml*) 放在應用程式專案的 Web 根目錄之外。 如此一來，即會建立應用程式的用戶端內容與伺服器端程式碼之間的邏輯分隔。 這樣可以防止伺服器端程式碼外洩。
 

@@ -1,7 +1,7 @@
 ---
-title: "Razor 頁面與 EF Core - 資料模型 - 5/8"
+title: ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 author: rick-anderson
-description: "在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。"
+description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 manager: wpickett
 ms.author: riande
 ms.date: 10/25/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 58bb773ba16314827da84909def05a8ef370479b
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2cec45afbf08e5dd379a54e780e4218bfc86d13f
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="creating-a-complex-data-model---ef-core-with-razor-pages-tutorial-5-of-8"></a>建立複雜的資料模型 - EF Core 與 Razor 頁面教學課程 (5/8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在本教學課程中：
 
@@ -42,16 +42,16 @@ ms.lasthandoff: 01/31/2018
 
 使用下列醒目提示的程式碼更新 *Models/Student.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-[DataType](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如: 
+[DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如: 
 
 * `DataType.EmailAddress` 會自動建立 `mailto:` 連結。
 * `DataType.Date` 在大多數的瀏覽器中都會提供日期選取器。
 
 `DataType` 屬性會發出 HTML 5 `data-` (發音為 data dash) 屬性，可讓 HTML 5 瀏覽器取用。 `DataType` 屬性不會提供驗證。
 
-`DataType.Date` 未指定顯示日期的格式。 根據預設，日期欄位會依照根據伺服器的 [CultureInfo](https://docs.microsoft.com/aspnet/core/fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support) 為基礎的預設格式顯示。
+`DataType.Date` 未指定顯示日期的格式。 根據預設，日期欄位會依照根據伺服器的 [CultureInfo](xref:fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support) 為基礎的預設格式顯示。
 
 `DisplayFormat` 屬性用來明確指定日期格式：
 
@@ -74,13 +74,13 @@ ms.lasthandoff: 01/31/2018
 
 ### <a name="the-stringlength-attribute"></a>StringLength 屬性
 
-您可使用屬性指定資料驗證規則和驗證錯誤訊息。 [StringLength](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=netframework-4.7.1) 屬性指定了在資料欄位中允許的最小及最大字元長度。 `StringLength` 屬性同時也提供了用戶端和伺服器端的驗證。 最小值對資料庫結構描述不會造成任何影響。
+您可使用屬性指定資料驗證規則和驗證錯誤訊息。 [StringLength](/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=netframework-4.7.1) 屬性指定了在資料欄位中允許的最小及最大字元長度。 `StringLength` 屬性同時也提供了用戶端和伺服器端的驗證。 最小值對資料庫結構描述不會造成任何影響。
 
 使用下列程式碼更新 `Student` 模型：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
-上述的程式碼會限制名稱不得超過 50 個字元。 `StringLength` 屬性不會防止使用者在名稱中輸入空白字元。 [RegularExpression](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) 屬性可用於對輸入套用限制。 例如，下列程式碼會要求第一個字元必須是大寫，其餘字元則必須是英文字母：
+上述的程式碼會限制名稱不得超過 50 個字元。 `StringLength` 屬性不會防止使用者在名稱中輸入空白字元。 [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) 屬性可用於對輸入套用限制。 例如，下列程式碼會要求第一個字元必須是大寫，其餘字元則必須是英文字母：
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
@@ -110,7 +110,7 @@ ms.lasthandoff: 01/31/2018
 
 使用下列醒目提示程式碼更新 *Student.cs* 檔案：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。
 
@@ -155,7 +155,7 @@ Please review the migration for accuracy.
 
 使用下列程式碼更新 *Models/Student.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
@@ -183,7 +183,7 @@ public string LastName { get; set; }
 
 使用下列程式碼建立 *Models/Instructor.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
 請注意，當中有幾個屬性跟 `Student` 和 `Instructor` 實體中的一樣。 在本系列稍後的＜實作繼承＞教學課程中，此程式碼會進行重構以消除冗餘。
 
@@ -229,7 +229,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 使用下列程式碼建立 *Models/OfficeAssignment.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Key 屬性
 
@@ -278,7 +278,7 @@ public Instructor Instructor { get; set; }
 
 使用下列程式碼更新 *Models/Course.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 `Course` 實體具有外部索引鍵 (FK) 屬性`DepartmentID`。 `DepartmentID` 會指向相關的 `Department` 實體。 `Course` 實體具有一個 `Department` 導覽屬性。
 
@@ -336,7 +336,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 使用下列程式碼建立 *Models/Department.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -397,7 +397,7 @@ public ICollection<Course> Courses { get; set; }
 
 使用下列程式碼更新 *Models/Enrollment.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -439,7 +439,7 @@ public Student Student { get; set; }
 
 使用下列程式碼建立 *Models/CourseAssignment.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
 ### <a name="instructor-to-courses"></a>講師-課程
 
@@ -473,7 +473,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 
 將下列醒目提示的程式碼新增至 *Data/SchoolContext.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 上述程式碼會新增一個新實體，並設定 `CourseAssignment` 實體的複合 PK。
 
@@ -523,7 +523,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 更新 *Data/DbInitializer.cs* 中的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
 
 上述程式碼為新的實體提供了種子資料。 此程式碼中的大部分主要用於建立新的實體物件並載入範例資料。 範例資料主要用於測試。 上述程式碼會建立下列多對多關聯性：
 
@@ -572,12 +572,12 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 * 或者，使用以下工具刪除資料庫：
 
-    * [SQL Server 物件總管] (SSOX)。
-    * `database drop` CLI 命令：
+  * [SQL Server 物件總管] (SSOX)。
+  * `database drop` CLI 命令：
 
-   ```console
-   dotnet ef database drop
-   ```
+    ```console
+    dotnet ef database drop
+    ```
 
 在命令視窗中執行 `database update`：
 
@@ -613,7 +613,7 @@ dotnet ef database update
 
 *{timestamp}_ComplexDataModel.cs* 檔案包含了下列程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_DepartmentID)]
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_DepartmentID)]
 
 上述程式碼將一個不可為 Null 的 `DepartmentID` FK 新增至 `Course` 資料表。 先前教學課程中的資料庫在 `Course` 中包含了資料列，導致資料表無法藉由移轉進行更新。
 
@@ -629,9 +629,9 @@ dotnet ef database update
 * 開啟 *{timestamp}_ComplexDataModel.cs* 檔案。
 * 將新增 `DepartmentID` 資料行至 `Course` 資料表的程式碼全部標為註解。
 
-[!code-csharp[Main](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
-新增下列醒目提示程式碼。 新的程式碼應位於 `.CreateTable( name: "Department"` 區塊之後：[!code-csharp[Main](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+新增下列醒目提示程式碼。 新的程式碼應位於 `.CreateTable( name: "Department"` 區塊之後：[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 藉由上述的變更，現有的 `Course` 資料列便會在執行 `ComplexDataModel``Up` 方法後與 "Temp" 部門產生關聯。
 
@@ -642,6 +642,6 @@ dotnet ef database update
 
 下一個教學課程會涵蓋相關資料。
 
->[!div class="step-by-step"]
-[上一頁](xref:data/ef-rp/migrations)
-[下一頁](xref:data/ef-rp/read-related-data)
+> [!div class="step-by-step"]
+> [上一頁](xref:data/ef-rp/migrations)
+> [下一頁](xref:data/ef-rp/read-related-data)

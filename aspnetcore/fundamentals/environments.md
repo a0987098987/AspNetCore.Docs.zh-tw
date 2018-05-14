@@ -1,7 +1,7 @@
 ---
-title: "在 ASP.NET Core 中使用多個環境"
+title: 在 ASP.NET Core 中使用多個環境
 author: rick-anderson
-description: "了解 ASP.NET Core 如何跨多個環境支援應用程式的行為控制。"
+description: 了解 ASP.NET Core 如何跨多個環境支援應用程式的行為控制。
 manager: wpickett
 ms.author: riande
 ms.date: 12/25/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/environments
-ms.openlocfilehash: b40ee9b1c6feae4942f05d22dab776d3cf6c26a0
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: b9c3b8a15424ca637a2486450bfdde2762204935
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="working-with-multiple-environments"></a>使用多個環境
+# <a name="work-with-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -25,14 +25,14 @@ ASP.NET Core 可支援使用環境變數，以在執行階段設定應用程式�
 
 ## <a name="environments"></a>環境
 
-ASP.NET Core 會在應用程式啟動時讀取 `ASPNETCORE_ENVIRONMENT` 環境變數，並將該值儲存在 [IHostingEnvironment.EnvironmentName](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName) 中。 您可將 `ASPNETCORE_ENVIRONMENT` 設定為任何值，但架構支援下列[三個值](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname?view=aspnetcore-2.0)：[Development](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development?view=aspnetcore-2.0)、[Staging](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging?view=aspnetcore-2.0) 和 [Production](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production?view=aspnetcore-2.0)。 如果未設定 `ASPNETCORE_ENVIRONMENT`，則會預設為 `Production`。
+ASP.NET Core 會在應用程式啟動時讀取 `ASPNETCORE_ENVIRONMENT` 環境變數，並將該值儲存在 [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName) 中。 您可將 `ASPNETCORE_ENVIRONMENT` 設定為任何值，但架構支援下列[三個值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname?view=aspnetcore-2.0)：[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development?view=aspnetcore-2.0)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging?view=aspnetcore-2.0) 和 [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production?view=aspnetcore-2.0)。 如果未設定 `ASPNETCORE_ENVIRONMENT`，則會預設為 `Production`。
 
-[!code-csharp[Main](environments/sample/WebApp1/Startup.cs?name=snippet)]
+[!code-csharp[](environments/sample/WebApp1/Startup.cs?name=snippet)]
 
 上述程式碼：
 
-* 當 `ASPNETCORE_ENVIRONMENT` 設為 `Development` 時，會呼叫 [UseDeveloperExceptionPage](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_DeveloperExceptionPageExtensions_UseDeveloperExceptionPage_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [UseBrowserLink](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.browserlinkextensions.usebrowserlink?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_BrowserLinkExtensions_UseBrowserLink_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
-* 當 `ASPNETCORE_ENVIRONMENT` 的值設為下列其中之一時，會呼叫 [UseExceptionHandler](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_ExceptionHandlerExtensions_UseExceptionHandler_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
+* 當 `ASPNETCORE_ENVIRONMENT` 設為 `Development` 時，會呼叫 [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_DeveloperExceptionPageExtensions_UseDeveloperExceptionPage_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [UseBrowserLink](/dotnet/api/microsoft.aspnetcore.builder.browserlinkextensions.usebrowserlink?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_BrowserLinkExtensions_UseBrowserLink_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
+* 當 `ASPNETCORE_ENVIRONMENT` 的值設為下列其中之一時，會呼叫 [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_ExceptionHandlerExtensions_UseExceptionHandler_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：
 
     * `Staging`
     * `Production`
@@ -40,7 +40,7 @@ ASP.NET Core 會在應用程式啟動時讀取 `ASPNETCORE_ENVIRONMENT` 環境�
 
 [環境標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)會使用 `IHostingEnvironment.EnvironmentName` 的值來包含或排除項目中的標籤：
 
-[!code-html[Main](environments/sample/WebApp1/Pages/About.cshtml)]
+[!code-html[](environments/sample/WebApp1/Pages/About.cshtml)]
 
 注意：在 Windows 及 macOS 中，環境變數和值不區分大小寫。 Linux 的環境變數和值則預設為**區分大小寫**。
 
@@ -52,21 +52,37 @@ ASP.NET Core 會在應用程式啟動時讀取 `ASPNETCORE_ENVIRONMENT` 環境�
 
 下列 JSON 顯示來自 *launchSettings.json* 檔案的三個設定檔：
 
-[!code-json[Main](environments/sample/WebApp1/Properties/launchSettings.json?highlight=10,11,18,26)]
+[!code-json[](environments/sample/WebApp1/Properties/launchSettings.json?highlight=10,11,18,26)]
 
-以 `dotnet run` 啟動應用程式時，會使用含有 `"commandName": "Project"` 的第一個設定檔。 `commandName` 的值可指定要啟動的網頁伺服器。 `commandName` 可以是下列之一：
+::: moniker range=">= aspnetcore-2.1"
+> [!NOTE]
+> *launchSettings.json* 中的 `applicationUrl` 屬性可以指定伺服器 URL 的清單。 請在清單的 URL 之間使用分號：
+>
+> ```json
+> "WebApplication1": {
+>    "commandName": "Project",
+>    "launchBrowser": true,
+>    "applicationUrl": "https://localhost:5001;http://localhost:5000",
+>    "environmentVariables": {
+>      "ASPNETCORE_ENVIRONMENT": "Development"
+>    }
+> }
+> ```
+::: moniker-end
+
+以 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動應用程式時，會使用含有 `"commandName": "Project"` 的第一個設定檔。 `commandName` 的值可指定要啟動的網頁伺服器。 `commandName` 可以是下列之一：
 
 * IIS Express
 * IIS
 * 啟動 Kestrel 的專案
 
-以 `dotnet run` 啟動應用程式時：
+以 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動應用程式時：
 
 * 會讀取 *launchSettings.json* (如果有的話)。 *launchSettings.json* 中的 `environmentVariables` 設定會覆寫環境變數。
 * 主控環境隨即顯示。
 
 
-下列輸出顯示應用程式是以 `dotnet run` 啟動：
+下列輸出顯示應用程式是以 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動：
 ```bash
 PS C:\Webs\WebApp1> dotnet run
 Using launch settings from C:\Webs\WebApp1\Properties\launchSettings.json...
@@ -87,7 +103,7 @@ Visual Studio 的 [偵錯] 索引標籤提供的 GUI 可用來編輯 *launchSett
 
 ### <a name="production"></a>生產環境
 
-若要將安全性、效能及應用程式的健全性最大化，您應該設定生產環境。 有些生產環境中的常見設定可能與開發環境不同，包括：
+若要將安全性、效能及應用程式的健全性最大化，您應該設定生產環境。 不同於開發的某些一般設定包括：
 
 * 快取。
 * 用戶端的資源會經過配套、縮減，且可能由 CDN 提供。
@@ -110,7 +126,7 @@ Visual Studio 的 [偵錯] 索引標籤提供的 GUI 可用來編輯 *launchSett
 
 
 ### <a name="windows"></a>Windows
-如果應用程式是使用 `dotnet run` 啟動，請使用下列命令來設定目前工作階段的 `ASPNETCORE_ENVIRONMENT`：
+如果應用程式是使用 [dotnet run](/dotnet/core/tools/dotnet-run) 啟動，請使用下列命令來設定目前工作階段的 `ASPNETCORE_ENVIRONMENT`：
 
 **命令列**
 ```
@@ -165,16 +181,16 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ASP.NET Core 應用程式啟動時，[Startup 類別](xref:fundamentals/startup)會啟動應用程式。 如果 `Startup{EnvironmentName}` 類別存在，就會針對該 `EnvironmentName` 呼叫此類別：
 
-[!code-csharp[Main](environments/sample/WebApp1/StartupDev.cs?name=snippet&highlight=1)]
+[!code-csharp[](environments/sample/WebApp1/StartupDev.cs?name=snippet&highlight=1)]
 
-注意：呼叫 [WebHostBuilder.UseStartup<TStartup> ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) 時會覆寫組態區段。
+注意：呼叫 [WebHostBuilder.UseStartup<TStartup> ](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) 時會覆寫組態區段。
 
-[Configure](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_StartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [ConfigureServices](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices?view=aspnetcore-2.0) 支援表單 `Configure{EnvironmentName}` 和 `Configure{EnvironmentName}Services` 的環境特定版本：
+[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_StartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices?view=aspnetcore-2.0) 支援表單 `Configure{EnvironmentName}` 和 `Configure{EnvironmentName}Services` 的環境特定版本：
 
-[!code-csharp[Main](environments/sample/WebApp1/Startup.cs?name=snippet_all&highlight=15,37)]
+[!code-csharp[](environments/sample/WebApp1/Startup.cs?name=snippet_all&highlight=15,37)]
 
 ## <a name="additional-resources"></a>其他資源
 
 * [應用程式啟動](xref:fundamentals/startup)
 * [組態](xref:fundamentals/configuration/index)
-* [IHostingEnvironment.EnvironmentName](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName)
+* [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_IHostingEnvironment_EnvironmentName)

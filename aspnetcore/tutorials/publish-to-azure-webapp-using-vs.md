@@ -1,7 +1,7 @@
 ---
-title: "使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure"
+title: 使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 author: rick-anderson
-description: "了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。"
+description: 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。
 manager: wpickett
 ms.author: riande
 ms.date: 12/16/2017
@@ -9,17 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 14d8dd0a5e6a99bacce3bf50b0468b20e0dddb96
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e5c213a682c9bf7c64c40fad630cacfff24e23bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service
+# <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT)、[Cesar Blum Silveira](https://github.com/cesarbs) 及 [Rachel Appel](https://twitter.com/rachelappel) 共同編纂
 
-如果您是使用 Mac，請參閱[從 Visual Studio for Mac 發佈至 Azure](https://blog.xamarin.com/publish-azure-visual-studio-mac/) \(英文\)。
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
+
+如果您是使用 macOS，請參閱 [Publish to Azure from Visual Studio for Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) (從 Visual Studio for Mac 發行至 Azure)。
+
+若要針對應用程式服務部署問題進行疑難排解，請參閱[針對 Azure App Service 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)。
 
 ## <a name="set-up"></a>設定
 
@@ -66,7 +70,7 @@ Visual Studio 會建立解決方案。
 
 * 選取 [註冊] 並註冊新的使用者。 您可以使用虛構的電子郵件地址。 提交時，頁面會顯示下列錯誤：
 
-    「內部伺服器錯誤: 處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」*
+    「內部伺服器錯誤: 處理要求時資料庫作業失敗。SQL 例外狀況：無法開啟資料庫。為應用程式資料庫內容套用現有的移轉可能會解決此問題。」
 * 選取 [套用移轉]，並在頁面更新後重新整理頁面。
 
 ![內部伺服器錯誤：處理要求時資料庫作業失敗。 SQL 例外狀況：無法開啟資料庫。 為應用程式資料庫內容套用現有的移轉可能會解決此問題。](publish-to-azure-webapp-using-vs/_static/mig.png)
@@ -185,3 +189,4 @@ Visual Studio 會在 Azure 上建立 Web 應用程式和 SQL Server。 此步驟
 * [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
 * [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)
+* [針對 Azure App Service 上的 ASP.NET Core 進行疑難排解](xref:host-and-deploy/azure-apps/troubleshoot)

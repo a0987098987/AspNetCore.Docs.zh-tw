@@ -1,23 +1,23 @@
 ---
-title: "部分檢視"
+title: ASP.NET Core 中的部分檢視
 author: ardalis
-description: "使用 ASP.NET Core MVC 的部分檢視"
+description: 了解部分檢視如何在另一個檢視內呈現，以及何時應該在 ASP.NET Core 應用程式中使用它們。
 manager: wpickett
 ms.author: riande
-ms.date: 03/14/2017
+ms.date: 03/14/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/partial
-ms.openlocfilehash: 169948e5d7dc8068463ed61114666148b785b217
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3deaaeb666e5443d0784f2ac6977e58e1b25d711
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/20/2018
 ---
-# <a name="partial-views"></a>部分檢視
+# <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
-由 [Steve Smith](https://ardalis.com/)、[Maher JENDOUBI](https://twitter.com/maherjend) 和 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Steve Smith](https://ardalis.com/)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
 
 當您想要在不同檢視之間共用網頁的可重複使用組件時，ASP.NET Core MVC 支援的部分檢視就相當實用。
 
@@ -41,19 +41,17 @@ ms.lasthandoff: 01/30/2018
 
 ## <a name="referencing-a-partial-view"></a>參考部分檢視
 
-在檢視頁面中，您可以使用數種方法來轉譯部分檢視。 最簡單的方法是使用 `Html.Partial`，它會傳回 `IHtmlString`，您可在呼叫前加上 `@` 以參考這個項目：
+在檢視頁面中，您可以使用數種方法來轉譯部分檢視。 最佳做法是使用 `Html.PartialAsync`，它會傳回 `IHtmlString`，您可在呼叫前加上 `@` 以參考這個項目：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=9)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
 
-如果部分檢視中包含非同步程式碼 (雖然一般不建議您在檢視中使用程式碼)，則可以使用 `PartialAsync` 方法：
+您可以使用 `RenderPartialAsync` 來轉譯部分檢視。 這個方法不會傳回結果，而會將轉譯的輸出直接串流給回應。 既然它不會傳回結果，您就必須在 Razor 程式碼區塊內對其進行呼叫：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=11-13)]
 
-您可以使用 `RenderPartial` 來轉譯部分檢視。 這個方法不會傳回結果，而會將轉譯的輸出直接串流給回應。 既然它不會傳回結果，您就必須在 Razor 程式碼區塊內對其進行呼叫 (您也可以視需要呼叫 `RenderPartialAsync`)：
+由於它會直接串流結果，因此在某些情況下，`RenderPartialAsync` 可能效能會更好。 不過，建議您使用 `PartialAsync`。
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=10-12)]
-
-由於它會直接串流結果，因此在某些情況下，`RenderPartial` 和 `RenderPartialAsync` 可能效能會更好。 不過，在大部分情況下，建議您使用 `Partial` 和 `PartialAsync`。
+雖然有 `Html.PartialAsync` (`Html.Partial`) 和 `Html.RenderPartialAsync` (`Html.RenderPartial`) 的同步對等項目，但不建議使用同步對等項目，因為存在其發生死結的情況。 同步方法在未來版本中無法使用。
 
 > [!NOTE]
 > 如果您的檢視需要執行程式碼，則建議的模式是使用[檢視元件](view-components.md)，而不是使用部分檢視。
@@ -62,21 +60,21 @@ ms.lasthandoff: 01/30/2018
 
 參考部分檢視時，您可以透過數種方式來參考它的位置：
 
-```text
+```cshtml
 // Uses a view in current folder with this name
 // If none is found, searches the Shared folder
-@Html.Partial("ViewName")
+@await Html.PartialAsync("ViewName")
 
 // A view with this name must be in the same folder
-@Html.Partial("ViewName.cshtml")
+@await Html.PartialAsync("ViewName.cshtml")
 
 // Locate the view based on the application root
 // Paths that start with "/" or "~/" refer to the application root
-@Html.Partial("~/Views/Folder/ViewName.cshtml")
-@Html.Partial("/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("~/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("/Views/Folder/ViewName.cshtml")
 
 // Locate the view using relative paths
-@Html.Partial("../Account/LoginPartial.cshtml")
+@await Html.PartialAsync("../Account/LoginPartial.cshtml")
 ```
 
 您可以在不同的檢視資料夾中，以相同名稱命名不同的部分檢視。 依據名稱 (不含副檔名) 參考檢視時，每個資料夾中的檢視會使用位於相同資料夾中的部分檢視。 您也可以指定使用預設的部分檢視，並將其放在 *Shared* 資料夾中。 如果檢視沒有專屬版本的部分檢視，就會使用共用的部分檢視。 您可以使用預設的部分檢視 (在 *Shared*)，而與父檢視位於相同資料夾中的同名部分檢視會將其覆寫。
@@ -92,31 +90,31 @@ ms.lasthandoff: 01/30/2018
 
 您可以將 `ViewDataDictionary` 的執行個體傳遞給部分檢視：
 
-```csharp
-@Html.Partial("PartialName", customViewData)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", customViewData)
+```
 
-您也可以將模型傳入部分檢視。 這可以是頁面的檢視模型，或頁面某些部分或自訂的物件。 您可以將模型傳遞給 `Partial`、`PartialAsync`、`RenderPartial` 或 `RenderPartialAsync`：
+您也可以將模型傳入部分檢視。 這可以是頁面的檢視模型或自訂物件。 您可以將模型傳遞給 `PartialAsync` 或 `RenderPartialAsync`：
 
-```csharp
-@Html.Partial("PartialName", viewModel)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", viewModel)
+```
 
 您可以將 `ViewDataDictionary` 的執行個體和檢視模型傳遞給部分檢視：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
 
 下列標記表示 *Views/Articles/Read.cshtml* 檢視，其中包含兩個部分檢視。 第二個部分檢視將模型和 `ViewData` 傳入部分檢視。 如果您使用 `ViewDataDictionary` 的建構函式多載 (醒目標示如下)，即可傳遞新的 `ViewData` 字典，同時保留現有的 `ViewData`：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
 
 *Views/Shared/AuthorPartial*：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
 
 *ArticleSection* 部分檢視：
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
 
 執行階段期間會將部分檢視轉譯為父檢視，而這個父檢視本身則在共用的 *_Layout.cshtml* 當中轉譯
 

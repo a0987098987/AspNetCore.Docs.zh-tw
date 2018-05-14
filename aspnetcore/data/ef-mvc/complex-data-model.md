@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10"
+title: ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 author: tdykstra
-description: "在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。"
+description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: ac30d9ae5531934ba5163a8d9114b11ac54af8d2
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: ab3d4221b498bb2987105fb36f2c6803f8fe6125
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>建立複雜的資料模型 - EF Core 與 ASP.NET Core MVC 教學課程 (5/10)
+# <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
+Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core 和 Visual Studio 來建立 ASP.NET Core MVC Web 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](intro.md)。
 
 在先前的教學課程中，您建立了由三個實體組成的簡單資料模型。 在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。
 
@@ -37,7 +37,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 在 *Models/Student.cs* 中，為 `System.ComponentModel.DataAnnotations` 命名空間新增一個 `using` 陳述式，然後將 `DataType` 和 `DisplayFormat` 屬性新增到 `EnrollmentDate` 屬性，如下列範例所示：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
 `DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 在此案例中，我們只想要追蹤日期，而非日期和時間。 `DataType` 列舉提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音為 data dash) 屬性。 `DataType` 屬性不會提供任何驗證。
 
@@ -69,7 +69,7 @@ Contoso 大學的範例 Web 應用程式將示範如何以 Entity Framework Core
 
 假設您想要確保使用者不會在名稱中輸入超過 50 個字元。 若要新增這項限制，請將 `StringLength` 屬性新增到 `LastName` 及 `FirstMidName` 屬性，如下列範例所示：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
 `StringLength` 屬性不會防止使用者在名稱中輸入空白字元。 您可以使用 `RegularExpression` 屬性來將限制套用至輸入。 例如，下列程式碼會要求第一個字元必須是大寫，其餘字元則必須是英文字母：
 
@@ -107,7 +107,7 @@ Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉
 
 在 *Student.cs* 檔案中，為 `System.ComponentModel.DataAnnotations.Schema` 新增一個 `using` 陳述式，然後將資料行名稱屬性新增到 `FirstMidName` 屬性，如下列醒目提示程式碼中所示：
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 新增 `Column` 屬性會變更支援 `SchoolContext` 的模型，因此它將不會符合資料庫。
 
@@ -136,7 +136,7 @@ dotnet ef database update
 
 在 *Models/Student.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目提示。
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
@@ -164,7 +164,7 @@ public string LastName { get; set; }
 
 建立 *Models/Instructor.cs* 並以下列程式碼取代範本程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
 請注意，Student 和 Instructor 實體中有幾個屬性是一樣的。 在本系列稍後的[實作繼承](inheritance.md)教學課程中，您會對此程式碼進行重構以消除冗餘。
 
@@ -200,7 +200,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 使用下列程式碼建立 *Models/OfficeAssignment.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Key 屬性
 
@@ -227,7 +227,7 @@ Instructor 實體具有一個可為 Null 的 `OfficeAssignment` 導覽屬性 (�
 
 在 *Models/Course.cs* 中，以下列程式碼取代您在先前新增的程式碼。 所做的變更已醒目提示。
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 課程實體有一個外部索引鍵屬性 (`DepartmentID`)，該索引鍵指向了相關的 Department 實體，並且其擁有一個 `Department` 導覽屬性。
 
@@ -277,7 +277,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 使用下列程式碼建立 *Models/Department.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -322,7 +322,7 @@ public ICollection<Course> Courses { get; set; }
 
 在 *Models/Enrollment.cs* 中，以下列程式碼取代您在先前新增的程式碼：
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -362,7 +362,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 使用下列程式碼建立 *Models/CourseAssignment.cs*：
 
-[!code-csharp[Main](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
 ### <a name="join-entity-names"></a>聯結實體名稱
 
@@ -378,7 +378,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 將下列醒目提示的程式碼新增至 *Data/SchoolContext.cs* 檔案：
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 此程式碼會新增一個新實體，並設定 CourseAssignment 實體的複合主索引鍵。
 
@@ -413,7 +413,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 使用下列程式碼取代 *Data/DbInitializer.cs* 中的程式碼，以為您建立的新實體提供種子資料。
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
 
 如同您在第一個課程中所看到的，此程式碼中大部分僅只是用於建立新實體物件，並針對測試需求載入範例資料。 請注意程式碼處理多對多關聯性的方式：程式碼會藉由在 `Enrollments` 和 `CourseAssignment` 聯結實體集中建立實體來建立關聯性。
 
@@ -444,11 +444,11 @@ Done. To undo this action, use 'ef migrations remove'
 
 * 將新增 DepartmentID 資料行至 Course 資料表的程式碼全部標為註解。
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
 * 在建立 Department 資料表的程式碼之後新增下列醒目提示程式碼：
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 在生產環境的應用程式中，您會撰寫程式碼或指令碼以新增 Department 資料列，並使 Course 資料列與新的 Department 資料列產生關聯。 屆時您便不再需要為 Course.DepartmentID 資料行設定 "Temp" 部門或預設值。
 
@@ -495,6 +495,6 @@ dotnet ef database update
 
 您現在已有了更複雜的資料模型和對應的資料庫。 在接下來的課程中，您將深入了解如何存取相關資料。
 
->[!div class="step-by-step"]
-[上一頁](migrations.md)
-[下一頁](read-related-data.md)  
+> [!div class="step-by-step"]
+> [上一頁](migrations.md)
+> [下一頁](read-related-data.md)  

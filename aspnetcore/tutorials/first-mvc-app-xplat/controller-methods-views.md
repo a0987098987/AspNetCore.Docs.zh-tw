@@ -1,7 +1,7 @@
 ---
-title: "控制器方法和檢視"
+title: ASP.NET Core 中的控制器方法和檢視
 author: rick-anderson
-description: "使用控制器方法、檢視和 DataAnnotations"
+description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 DataAnnotations。
 manager: wpickett
 ms.author: riande
 ms.date: 04/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
-ms.openlocfilehash: 34bd73af9bd0e4a7c1e59b491105f959bcbc06c6
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0bf9bffbf14ff958b28d9494600f55eb3f8e0c35
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="controller-methods-and-views"></a>控制器方法和檢視
+# <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/30/2018
 
 開啟 *Models/Movie.cs* 檔案，然後新增反白顯示的程式碼行，如下所示：
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1&highlight=2,11-12)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1&highlight=2,11-12)]
 
 建置和執行應用程式。
 
@@ -34,8 +34,8 @@ ms.lasthandoff: 01/30/2018
 
  -->
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/controller-methods-views.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/controller-methods-views.md)]
 
->[!div class="step-by-step"]
-[上一步 - 使用 SQLite](working-with-sql.md)
-[下一步 - 新增搜尋](search.md)  
+> [!div class="step-by-step"]
+> [上一步 - 使用 SQLite](working-with-sql.md)
+> [下一步 - 新增搜尋](search.md)  

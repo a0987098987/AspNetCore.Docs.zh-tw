@@ -3,29 +3,30 @@ title: 使用 SQL Server LocalDB 與 ASP.NET Core
 author: rick-anderson
 description: 說明如何使用 SQL Server LocalDB 與 ASP.NET Core。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 3bec0b7b547443dbb20c7e3a7422262c05f93975
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d1a345fe8c61f6e07ebbe53de6d53e18d6f4c851
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="working-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
+# <a name="work-with-sql-server-localdb-and-aspnet-core"></a>使用 SQL Server LocalDB 與 ASP.NET Core
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette) 
 
 `MovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
 
 ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連接字串：
 
-[!code-json[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
+[!code-json[](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
 當您將應用程式部署到測試或生產環境伺服器時，可以使用環境變數或另一個方法來設定實際 SQL Server 的連接字串。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
@@ -54,7 +55,7 @@ LocalDB 為輕量版的 SQL Server Express Database Engine，鎖定程式開發�
 
 在 *Models* 資料夾中建立名為 `SeedData` 的新類別。 使用下列程式碼取代產生的程式碼：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
 
 如果資料庫中有任何電影，則種子初始設定式會返回，而且不會新增任何電影。
 
@@ -69,7 +70,7 @@ if (context.Movie.Any())
 
 在 *Program.cs* 檔案中，將種子初始設定式新增至 `Main` 方法的結尾處：
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 測試應用程式
 
@@ -82,8 +83,8 @@ if (context.Movie.Any())
 
     ![操作功能表](sql/_static/stopIIS.png)
 
-   * 如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。
-   * 如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。
+    * 如果您已在非偵錯模式中執行 VS，請按 F5 以偵錯模式執行。
+    * 如果您已在偵錯模式中執行 VS，請停止偵錯工具，然後按 F5。
    
 應用程式會顯示植入的資料：
 
@@ -91,6 +92,6 @@ if (context.Movie.Any())
 
 接下來的教學課程將會清除資料的呈現。
 
->[!div class="step-by-step"]
-[上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
-[下一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [!div class="step-by-step"]
+> [上一步：包含 Scaffold 的 Razor Pages](xref:tutorials/razor-pages/page)
+> [下一步：更新頁面](xref:tutorials/razor-pages/da1)

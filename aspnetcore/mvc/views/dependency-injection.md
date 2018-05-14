@@ -1,7 +1,7 @@
 ---
-title: "檢視中的相依性插入"
+title: ASP.NET Core 檢視中的相依性插入
 author: ardalis
-description: 
+description: 了解 ASP.NET Core 如何支援 MVC 檢視中的相依性插入。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 690fdd0fd841341d17de48c0a8c9af121da220de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cc34b9069ec062f08644c0026c1ccdcd00f667ac
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="dependency-injection-into-views"></a>檢視中的相依性插入
+# <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core 檢視中的相依性插入
 
 作者：[Steve Smith](https://ardalis.com/)
 
@@ -31,15 +31,15 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 運作中 `@inject` 範例：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
+[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
 此檢視會顯示 `ToDoItem` 執行個體清單，以及顯示整體統計資料的摘要。 摘要是從插入的 `StatisticsService` 中填入。 在 *Startup.cs* 的 `ConfigureServices` 中，註冊此服務以進行相依性插入：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
+[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 
 `StatisticsService` 會對一組 `ToDoItem` 執行個體執行一些計算，以透過存放庫進行存取：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
+[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,25)]
 
 範例存放庫會使用記憶體內部集合。 上面顯示的實作 (作用於記憶體中的所有資料) 不建議用於大型可從遠端存取的資料集。
 
@@ -53,7 +53,7 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 另一種方法會將服務直接插入至檢視，以取得選項。 這會將控制器所需的程式碼數量降到最低，並將此檢視項目建構邏輯移至檢視本身。 要顯示設定檔編輯表單的控制器動作，只需要將設定檔執行個體傳遞給表單：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
+[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
 
 用來更新這些喜好設定的 HTML 表單包括三個屬性的下拉式清單：
 
@@ -61,11 +61,11 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 這些清單會填入已插入至檢視的服務：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
+[!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
 
 `ProfileOptionsService` 是設計成只提供此表單所需資料的 UI 層級服務：
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
+[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
 
 >[!TIP]
 > 請不要忘記在 *Startup.cs* 的 `ConfigureServices` 方法中註冊您將透過相依性插入所要求的類型。
@@ -78,7 +78,7 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 如您所見，預設欄位包括 `Html`、`Component` 和 `Url` (以及我們插入的 `StatsService`)。 例如，如果您要將預設 HTML 協助程式取代為您自己的協助程式，則使用 `@inject` 就可以輕鬆地達成：
 
-[!code-html[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml?highlight=3,11)]
+[!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml?highlight=3,11)]
 
 如果您想要擴充現有服務，則只需要在繼承自現有實作或自行包裝現有實作時使用這項技術。
 

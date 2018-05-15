@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/whats-new-in-aspnet-web-api-odata-53
-title: "ASP.NET Web API OData 5.3 中最新消息 |Microsoft 文件"
+title: ASP.NET Web API OData 5.3 中最新消息 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/16/2014

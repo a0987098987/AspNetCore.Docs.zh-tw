@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index
-title: "CascadingDropdown |Microsoft 文件"
+title: CascadingDropdown |Microsoft 文件
 author: rick-anderson
-description: "本教學課程示範如何使用 CascadingDropDown 控制項建立相關的下拉式清單列出該更新，當使用者進行選取。"
+description: 本教學課程示範如何使用 CascadingDropDown 控制項建立相關的下拉式清單列出該更新，當使用者進行選取。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-the-css-friendly-control-adapters
-title: "[如何:]利用 CSS 易記的控制項配接器？ | Microsoft Docs"
+title: '[如何:]利用 CSS 易記的控制項配接器？ | Microsoft Docs'
 author: rick-anderson
-description: "CSS 易記的控制項配接器可讓您變更標準的 ASP.NET 2.0 伺服器控制項所呈現的 HTML。 在這段影片我們了解 stan..."
+description: CSS 易記的控制項配接器可讓您變更標準的 ASP.NET 2.0 伺服器控制項所呈現的 HTML。 在這段影片我們了解 stan...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/01/2007

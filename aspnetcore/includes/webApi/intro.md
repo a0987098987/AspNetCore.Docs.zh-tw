@@ -1,25 +1,23 @@
-## <a name="overview"></a>總覽
+## <a name="overview"></a><span data-ttu-id="cafd6-101">總覽</span><span class="sxs-lookup"><span data-stu-id="cafd6-101">Overview</span></span>
 
-本教學課程會建立以下 API：
+<span data-ttu-id="cafd6-102">本教學課程會建立以下 API：</span><span class="sxs-lookup"><span data-stu-id="cafd6-102">This tutorial creates the following API:</span></span>
 
-|API | 描述 | 要求本文 | 回應本文 |
+|<span data-ttu-id="cafd6-103">API</span><span class="sxs-lookup"><span data-stu-id="cafd6-103">API</span></span> | <span data-ttu-id="cafd6-104">描述</span><span class="sxs-lookup"><span data-stu-id="cafd6-104">Description</span></span> | <span data-ttu-id="cafd6-105">要求本文</span><span class="sxs-lookup"><span data-stu-id="cafd6-105">Request body</span></span> | <span data-ttu-id="cafd6-106">回應本文</span><span class="sxs-lookup"><span data-stu-id="cafd6-106">Response body</span></span> |
 |--- | ---- | ---- | ---- |
-|GET /api/todo | 取得所有待辦事項 | 無 | 待辦事項的陣列|
-|GET /api/todo/{id} | 依識別碼取得項目 | 無 | 待辦事項|
-|POST /api/todo | 新增記錄 | 待辦事項 | 待辦事項 |
-|PUT /api/todo/{id} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
-|DELETE /api/todo/{id} &nbsp; &nbsp; | 刪除項目 &nbsp; &nbsp; | 無 | 無|
+|<span data-ttu-id="cafd6-107">GET /api/todo</span><span class="sxs-lookup"><span data-stu-id="cafd6-107">GET /api/todo</span></span> | <span data-ttu-id="cafd6-108">取得所有待辦事項</span><span class="sxs-lookup"><span data-stu-id="cafd6-108">Get all to-do items</span></span> | <span data-ttu-id="cafd6-109">無</span><span class="sxs-lookup"><span data-stu-id="cafd6-109">None</span></span> | <span data-ttu-id="cafd6-110">待辦事項的陣列</span><span class="sxs-lookup"><span data-stu-id="cafd6-110">Array of to-do items</span></span>|
+|<span data-ttu-id="cafd6-111">GET /api/todo/{id}</span><span class="sxs-lookup"><span data-stu-id="cafd6-111">GET /api/todo/{id}</span></span> | <span data-ttu-id="cafd6-112">依識別碼取得項目</span><span class="sxs-lookup"><span data-stu-id="cafd6-112">Get an item by ID</span></span> | <span data-ttu-id="cafd6-113">無</span><span class="sxs-lookup"><span data-stu-id="cafd6-113">None</span></span> | <span data-ttu-id="cafd6-114">待辦事項</span><span class="sxs-lookup"><span data-stu-id="cafd6-114">To-do item</span></span>|
+|<span data-ttu-id="cafd6-115">POST /api/todo</span><span class="sxs-lookup"><span data-stu-id="cafd6-115">POST /api/todo</span></span> | <span data-ttu-id="cafd6-116">新增記錄</span><span class="sxs-lookup"><span data-stu-id="cafd6-116">Add a new item</span></span> | <span data-ttu-id="cafd6-117">待辦事項</span><span class="sxs-lookup"><span data-stu-id="cafd6-117">To-do item</span></span> | <span data-ttu-id="cafd6-118">待辦事項</span><span class="sxs-lookup"><span data-stu-id="cafd6-118">To-do item</span></span> |
+|<span data-ttu-id="cafd6-119">PUT /api/todo/{id}</span><span class="sxs-lookup"><span data-stu-id="cafd6-119">PUT /api/todo/{id}</span></span> | <span data-ttu-id="cafd6-120">更新現有的項目 &nbsp;</span><span class="sxs-lookup"><span data-stu-id="cafd6-120">Update an existing item &nbsp;</span></span> | <span data-ttu-id="cafd6-121">待辦事項</span><span class="sxs-lookup"><span data-stu-id="cafd6-121">To-do item</span></span> | <span data-ttu-id="cafd6-122">無</span><span class="sxs-lookup"><span data-stu-id="cafd6-122">None</span></span> |
+|<span data-ttu-id="cafd6-123">DELETE /api/todo/{id} &nbsp; &nbsp;</span><span class="sxs-lookup"><span data-stu-id="cafd6-123">DELETE /api/todo/{id} &nbsp; &nbsp;</span></span> | <span data-ttu-id="cafd6-124">刪除項目 &nbsp; &nbsp;</span><span class="sxs-lookup"><span data-stu-id="cafd6-124">Delete an item &nbsp; &nbsp;</span></span> | <span data-ttu-id="cafd6-125">無</span><span class="sxs-lookup"><span data-stu-id="cafd6-125">None</span></span> | <span data-ttu-id="cafd6-126">無</span><span class="sxs-lookup"><span data-stu-id="cafd6-126">None</span></span>|
 
-<br>
+<span data-ttu-id="cafd6-127">下圖顯示應用程式的基本設計。</span><span class="sxs-lookup"><span data-stu-id="cafd6-127">The following diagram shows the basic design of the app.</span></span>
 
-下圖顯示應用程式的基本設計。
+![左側方塊所代表的用戶端會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。](../../tutorials/first-web-api/_static/architecture.png)
 
-![左側方塊所代表的用戶端會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](../../tutorials/first-web-api/_static/architecture.png)
+* <span data-ttu-id="cafd6-132">會使用 Web API 者即為用戶端 (行動裝置應用程式、瀏覽器等)。</span><span class="sxs-lookup"><span data-stu-id="cafd6-132">The client is whatever consumes the web API (mobile app, browser, etc.).</span></span> <span data-ttu-id="cafd6-133">本教學課程不會建立用戶端。</span><span class="sxs-lookup"><span data-stu-id="cafd6-133">This tutorial doesn't create a client.</span></span> <span data-ttu-id="cafd6-134">將使用 [Postman](https://www.getpostman.com/) \(英文\) 或 [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) \(英文\) 做為測試應用程式的用戶端。</span><span class="sxs-lookup"><span data-stu-id="cafd6-134">[Postman](https://www.getpostman.com/) or [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) is used as the client to test the app.</span></span>
 
-* 會使用 Web API 者即為用戶端 (行動裝置應用程式、瀏覽器等)。 本教學課程不會建立用戶端。 將使用 [Postman](https://www.getpostman.com/) \(英文\) 或 [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) \(英文\) 做為測試應用程式的用戶端。
+* <span data-ttu-id="cafd6-135">「模型」是代表應用程式中資料的物件。</span><span class="sxs-lookup"><span data-stu-id="cafd6-135">A *model* is an object that represents the data in the app.</span></span> <span data-ttu-id="cafd6-136">在此情況下，唯一的模型是待辦事項。</span><span class="sxs-lookup"><span data-stu-id="cafd6-136">In this case, the only model is a to-do item.</span></span> <span data-ttu-id="cafd6-137">模型以 C# 類別表示，也稱為簡單的 C# 物件(**P**lain **O**ld **C**# **O**bject, POCO)。</span><span class="sxs-lookup"><span data-stu-id="cafd6-137">Models are represented as C# classes, also known as **P**lain **O**ld **C**# **O**bject (POCOs).</span></span>
 
-* 「模型」是代表應用程式中資料的物件。 在此情況下，唯一的模型是待辦事項。 模型以 C# 類別表示，也稱為簡單的C#資料物件(**P**lain **O**ld **C**# **O**bject, POCO)。
+* <span data-ttu-id="cafd6-138">「控制器」是用來處理 HTTP 要求並建立 HTTP 回應的物件。</span><span class="sxs-lookup"><span data-stu-id="cafd6-138">A *controller* is an object that handles HTTP requests and creates the HTTP response.</span></span> <span data-ttu-id="cafd6-139">此應用程式具有單一控制器。</span><span class="sxs-lookup"><span data-stu-id="cafd6-139">This app has a single controller.</span></span>
 
-* 「控制器」是用來處理 HTTP 要求並建立 HTTP 回應的物件。 此應用程式具有單一控制器。
-
-* 為了讓教學課程保持簡單，應用程式不會使用持續性資料庫。 範例應用程式會在記憶體內部資料庫中儲存待辦事項。
+* <span data-ttu-id="cafd6-140">為了讓教學課程保持簡單，應用程式不會使用持續性資料庫。</span><span class="sxs-lookup"><span data-stu-id="cafd6-140">To keep the tutorial simple, the app doesn't use a persistent database.</span></span> <span data-ttu-id="cafd6-141">範例應用程式會在記憶體內部資料庫中儲存待辦事項。</span><span class="sxs-lookup"><span data-stu-id="cafd6-141">The sample app stores to-do items in an in-memory database.</span></span>

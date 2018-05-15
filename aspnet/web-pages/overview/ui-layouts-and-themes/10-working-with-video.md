@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/10-working-with-video
-title: "視訊顯示在 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 視訊顯示在 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本章節說明如何顯示視訊 ASP.NET Web Pages 中使用 Razor 語法的頁面。"
+description: 本章節說明如何顯示視訊 ASP.NET Web Pages 中使用 Razor 語法的頁面。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -89,10 +89,10 @@ ms.lasthandoff: 02/12/2018
 <span data-ttu-id="76b8a-152">`Silverlight`玩家`Video`協助程式可讓您播放 Windows Media Video (*.wmv*檔案)，Windows Media Audio (*.wma*檔案)，與 MP3 (*.mp3*檔案）。</span><span class="sxs-lookup"><span data-stu-id="76b8a-152">The `Silverlight` player of the `Video` helper lets you play Windows Media Video (*.wmv* files), Windows Media Audio (*.wma* files), and MP3 (*.mp3* files).</span></span> <span data-ttu-id="76b8a-153">您必須設定 path 參數來指向 Silverlight 架構應用程式封裝 (*.xap*檔案)。</span><span class="sxs-lookup"><span data-stu-id="76b8a-153">You must set the path parameter to point to a Silverlight-based application package (*.xap* file).</span></span> <span data-ttu-id="76b8a-154">您也必須設定寬度和高度參數。</span><span class="sxs-lookup"><span data-stu-id="76b8a-154">You also must set the width and height parameters.</span></span> <span data-ttu-id="76b8a-155">所有其他參數皆為選擇性使用。</span><span class="sxs-lookup"><span data-stu-id="76b8a-155">All other parameters are optional.</span></span> <span data-ttu-id="76b8a-156">當您使用 Silverlight 播放程式的視訊，如果您設定必要的參數時，Silverlight 播放程式會顯示沒有背景色彩的視訊。</span><span class="sxs-lookup"><span data-stu-id="76b8a-156">When you use the Silverlight player for video, if you set only the required parameters, the Silverlight player displays the video without a background color.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="76b8a-157">如果您不知道 Silverlight: *.xap*檔案是壓縮的檔案，其中包含中的版面配置指示*.xaml*檔案，managed 程式碼的組件和選擇性的資源。</span><span class="sxs-lookup"><span data-stu-id="76b8a-157">In case you don't already know Silverlight: the *.xap* file is a compressed file that contains layout instructions in a *.xaml* file, managed code in assemblies, and optional resources.</span></span> <span data-ttu-id="76b8a-158">您可以建立*.xap*為 Silverlight 應用程式專案的 Visual Studio 中的檔案。</span><span class="sxs-lookup"><span data-stu-id="76b8a-158">You can create a *.xap* file in Visual Studio as a Silverlight application project.</span></span>
+> <span data-ttu-id="76b8a-157">如果您不知道 Silverlight: *.xap*檔案是壓縮的檔案，其中包含中的版面配置指示 *.xaml*檔案，managed 程式碼的組件和選擇性的資源。</span><span class="sxs-lookup"><span data-stu-id="76b8a-157">In case you don't already know Silverlight: the *.xap* file is a compressed file that contains layout instructions in a *.xaml* file, managed code in assemblies, and optional resources.</span></span> <span data-ttu-id="76b8a-158">您可以建立 *.xap*為 Silverlight 應用程式專案的 Visual Studio 中的檔案。</span><span class="sxs-lookup"><span data-stu-id="76b8a-158">You can create a *.xap* file in Visual Studio as a Silverlight application project.</span></span>
 
 
-<span data-ttu-id="76b8a-159">`Silverlight`視訊播放程式會使用您提供的播放程式的設定以及中所提供的設定*.xap*檔案。</span><span class="sxs-lookup"><span data-stu-id="76b8a-159">The `Silverlight` video player uses both the settings that you provide for the player and the settings that are provided in the *.xap* file.</span></span>
+<span data-ttu-id="76b8a-159">`Silverlight`視訊播放程式會使用您提供的播放程式的設定以及中所提供的設定 *.xap*檔案。</span><span class="sxs-lookup"><span data-stu-id="76b8a-159">The `Silverlight` video player uses both the settings that you provide for the player and the settings that are provided in the *.xap* file.</span></span>
 
 > [!TIP] 
 > 
@@ -109,7 +109,7 @@ ms.lasthandoff: 02/12/2018
 <a id="Playing_Flash"></a>
 ## <a name="playing-flash-swf-videos"></a><span data-ttu-id="76b8a-164">播放視訊 Flash (.swf)</span><span class="sxs-lookup"><span data-stu-id="76b8a-164">Playing Flash (.swf) Videos</span></span>
 
-<span data-ttu-id="76b8a-165">此程序會示範如何播放名為快閃視訊*sample.swf*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-165">This procedure shows you how to play a Flash video named *sample.swf*.</span></span> <span data-ttu-id="76b8a-166">此程序假設了名為的資料夾*媒體*您的網站，而且該*.swf*檔案位於該資料夾中。</span><span class="sxs-lookup"><span data-stu-id="76b8a-166">The procedure assumes that you've got a folder named *Media* on your site and that the *.swf* file is in that folder.</span></span>
+<span data-ttu-id="76b8a-165">此程序會示範如何播放名為快閃視訊*sample.swf*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-165">This procedure shows you how to play a Flash video named *sample.swf*.</span></span> <span data-ttu-id="76b8a-166">此程序假設了名為的資料夾*媒體*您的網站，而且該 *.swf*檔案位於該資料夾中。</span><span class="sxs-lookup"><span data-stu-id="76b8a-166">The procedure assumes that you've got a folder named *Media* on your site and that the *.swf* file is in that folder.</span></span>
 
 1. <span data-ttu-id="76b8a-167">中所述，您的網站加入 ASP.NET Web Helpers Library[安裝 ASP.NET Web Pages 站台中的協助程式](https://go.microsoft.com/fwlink/?LinkId=252372)，如果您尚未新增它。</span><span class="sxs-lookup"><span data-stu-id="76b8a-167">Add the ASP.NET Web Helpers Library to your website as described in [Installing Helpers in an ASP.NET Web Pages Site](https://go.microsoft.com/fwlink/?LinkId=252372), if you haven't already added it.</span></span>
 2. <span data-ttu-id="76b8a-168">在網站上加入頁面並將其命名*FlashVideo.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-168">In the website, add a page and name it *FlashVideo.cshtml*.</span></span>
@@ -169,7 +169,7 @@ ms.lasthandoff: 02/12/2018
 <a id="Playing_Silverlight"></a>
 ## <a name="playing-silverlight-videos"></a><span data-ttu-id="76b8a-208">播放 Silverlight 視訊</span><span class="sxs-lookup"><span data-stu-id="76b8a-208">Playing Silverlight Videos</span></span>
 
-<span data-ttu-id="76b8a-209">此程序會示範如何播放包含在 Silverlight 中的視訊*.xap*頁面的資料夾中名為*媒體*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-209">This procedure shows you how to play video contained in a Silverlight *.xap* page that's in a folder named *Media*.</span></span>
+<span data-ttu-id="76b8a-209">此程序會示範如何播放包含在 Silverlight 中的視訊 *.xap*頁面的資料夾中名為*媒體*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-209">This procedure shows you how to play video contained in a Silverlight *.xap* page that's in a folder named *Media*.</span></span>
 
 1. <span data-ttu-id="76b8a-210">中所述，您的網站加入 ASP.NET Web Helpers Library[安裝 ASP.NET Web Pages 站台中的協助程式](https://go.microsoft.com/fwlink/?LinkId=252372)，如果您還沒有這麼做。</span><span class="sxs-lookup"><span data-stu-id="76b8a-210">Add the ASP.NET Web Helpers Library to your website as described in [Installing Helpers in an ASP.NET Web Pages Site](https://go.microsoft.com/fwlink/?LinkId=252372), if you haven't already .</span></span>
 2. <span data-ttu-id="76b8a-211">建立名為的新頁面*SilverlightVideo.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="76b8a-211">Create a new page named *SilverlightVideo.cshtml*.</span></span>

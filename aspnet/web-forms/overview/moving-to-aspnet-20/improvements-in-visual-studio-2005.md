@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
-title: "在 Visual Studio 2005 中的增強功能 |Microsoft 文件"
+title: 在 Visual Studio 2005 中的增強功能 |Microsoft 文件
 author: microsoft
-description: "Visual Studio 2005 提供 Web 應用程式開發人員一長串的增強功能和增強功能，Web 專案。"
+description: Visual Studio 2005 提供 Web 應用程式開發人員一長串的增強功能和增強功能，Web 專案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -319,7 +319,7 @@ ms.lasthandoff: 02/05/2018
 > <span data-ttu-id="44b35-310">Aspnet/_compile.exe 公用程式也可用來預先編譯的 ASP.NET Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="44b35-310">The aspnet/_compile.exe utility can also be used to pre-compile an ASP.NET Web application.</span></span> <span data-ttu-id="44b35-311">該工具將涵蓋單元 9。</span><span class="sxs-lookup"><span data-stu-id="44b35-311">That tool will be covered in module 9.</span></span>
 
 
-<span data-ttu-id="44b35-312">當您發行網站，先行編譯的檔案儲存在暫存 ASP.NET 檔案資料夾如下所示。</span><span class="sxs-lookup"><span data-stu-id="44b35-312">When you Publish a Web site, the precompiled files are stored in the Temporary ASP.NET Files folder as shown below.</span></span> <span data-ttu-id="44b35-313">具有檔案*.compiled*檔案延伸模組會定義特定 dll 的相依性的 XML 檔案。</span><span class="sxs-lookup"><span data-stu-id="44b35-313">Files with a *.compiled* file extension are XML files that define dependencies for particular DLLs.</span></span> <span data-ttu-id="44b35-314">任何 Webform 或使用者控制項編譯成開頭的隨機 Dll*應用程式 /_Web /_*。</span><span class="sxs-lookup"><span data-stu-id="44b35-314">Any Webform or user controls are compiled into random DLLs that begin with *App/_Web/_*.</span></span>
+<span data-ttu-id="44b35-312">當您發行網站，先行編譯的檔案儲存在暫存 ASP.NET 檔案資料夾如下所示。</span><span class="sxs-lookup"><span data-stu-id="44b35-312">When you Publish a Web site, the precompiled files are stored in the Temporary ASP.NET Files folder as shown below.</span></span> <span data-ttu-id="44b35-313">具有檔案 *.compiled*檔案延伸模組會定義特定 dll 的相依性的 XML 檔案。</span><span class="sxs-lookup"><span data-stu-id="44b35-313">Files with a *.compiled* file extension are XML files that define dependencies for particular DLLs.</span></span> <span data-ttu-id="44b35-314">任何 Webform 或使用者控制項編譯成開頭的隨機 Dll*應用程式 /_Web /_*。</span><span class="sxs-lookup"><span data-stu-id="44b35-314">Any Webform or user controls are compiled into random DLLs that begin with *App/_Web/_*.</span></span>
 
 <span data-ttu-id="44b35-315">如果您離開*讓這個先行編譯的網站成為可更新*勾選核取方塊，內部 Webforms 和使用者控制項的標記不會先行編譯成 DLL，可讓您在部署後進行變更。</span><span class="sxs-lookup"><span data-stu-id="44b35-315">If you leave the *Allow this precompiled site to be updatable* checkbox checked, markup inside of your Webforms and user controls will not be pre-compiled into a DLL allowing you to make changes after deployment.</span></span> <span data-ttu-id="44b35-316">如果您想要鎖定的標記，以便對已部署的內容不允許，取消核取此方塊。</span><span class="sxs-lookup"><span data-stu-id="44b35-316">If you would prefer to lock down the markup so that changes to the deployed content are not allowed, uncheck this box.</span></span>
 

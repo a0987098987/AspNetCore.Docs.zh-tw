@@ -1,6 +1,6 @@
 ---
 title: ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
-author: tdykstra
+author: rick-anderson
 description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Framework Core 將排序、篩選、分頁功能新增至頁面。
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -8,11 +8,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: d4fe6386318210a751d1248c87299d414ab563a3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 344e3a1806ff21d8ce335b2b407a8a93baf72c1b
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC 與 EF Core - 排序、篩選、分頁 - 3/10
 

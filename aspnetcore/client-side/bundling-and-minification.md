@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 381025d1c4a9951349e242482ca9b780c461e588
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: a3d49315fbb62eb1a42eb1b30885dc19a81c0a91
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>在 ASP.NET Core 組合和 minifiy 靜態資產
 
@@ -220,22 +220,28 @@ dotnet bundle
 
 下列`environment`標記會呈現未處理的 CSS 檔案中執行時`Development`環境：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
-* * *
+---
+
 下列`environment`以外的環境中執行時，標記會轉譯配套並縮短的 CSS 檔案`Development`。 例如，在執行`Production`或`Staging`呈現這些樣式表的觸發程序：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
-* * *
+---
+
 ## <a name="consume-bundleconfigjson-from-gulp"></a>使用從 Gulp bundleconfig.json
 
 一些情況下，應用程式的統合及縮製的工作流程需要額外的處理。 範例包括映像最佳化、 快取 busting，及 CDN 資產處理。 為了滿足這些需求，您可以將轉換使用 Gulp 統合及縮製工作流程。
@@ -313,5 +319,5 @@ npm i -g gulp-cli
 
 * [使用 Gulp](xref:client-side/using-gulp)
 * [使用 Grunt](xref:client-side/using-grunt)
-* [使用多個環境](xref:fundamentals/environments)
+* [使用多重環境](xref:fundamentals/environments)
 * [標記協助程式](xref:mvc/views/tag-helpers/intro)

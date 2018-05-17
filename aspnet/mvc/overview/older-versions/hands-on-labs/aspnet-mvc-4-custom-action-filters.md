@@ -58,7 +58,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 c： 使用程式碼片段](#AppendixC)&quot;。
 
@@ -87,7 +87,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 
 在此練習中，您將學習如何使用 ASP.NET MVC 4 篩選條件提供者建立自訂動作記錄的篩選條件。 針對該目的您會將記錄篩選器套用至選取控制站會記錄所有活動的 MusicStore 站台。
 
-篩選會擴充**ActionFilterAttributeClass**並覆寫**OnActionExecuting**攔截每個要求，然後執行 記錄動作方法。 HTTP 要求的內容資訊中，執行方法、 結果和參數將由 ASP.NET MVC 提供**ActionExecutingContext**類別**。**
+篩選會擴充**ActionFilterAttributeClass**並覆寫**OnActionExecuting**攔截每個要求，然後執行 記錄動作方法。 HTTP 要求的內容資訊中，執行方法、 結果和參數將由 ASP.NET MVC 提供**ActionExecutingContext**類別 **。**
 
 > [!NOTE]
 > ASP.NET MVC 4 也有預設篩選器提供者，您可以使用而建立自訂篩選器。 ASP.NET MVC 4 提供下列類型的篩選器：
@@ -181,12 +181,12 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 1. 開啟**StoreController**在**MvcMusicStore\Controllers**並加入參考**篩選**命名空間：
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample4.cs)]
-2. 插入自訂篩選器**CustomActionFilter**到**StoreController**類別藉由新增**[CustomActionFilter]**類別宣告之前的屬性。
+2. 插入自訂篩選器**CustomActionFilter**到**StoreController**類別藉由新增 **[CustomActionFilter]** 類別宣告之前的屬性。
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample5.cs)]
 
    > [!NOTE]
-   > 當篩選條件會插入控制器類別時，也插入它的動作。 如果您想要將篩選套用到只針對一組動作，您必須將**[CustomActionFilter]**到其中的每一個：
+   > 當篩選條件會插入控制器類別時，也插入它的動作。 如果您想要將篩選套用到只針對一組動作，您必須將 **[CustomActionFilter]** 到其中的每一個：
    > 
    > [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample6.cs)]
 
@@ -198,7 +198,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 在這項工作，您將測試正在記錄篩選器。 您將會啟動應用程式，並瀏覽市集，則您將會檢查記錄的活動。
 
 1. 按 **F5** 執行應用程式。
-2. 瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態：
+2. 瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態：
 
     ![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image3.png "記錄之前呼叫 」 活動的追蹤器狀態")
 
@@ -213,7 +213,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
    > 
    > [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample7.cs)]
 3. 按一下其中一個**內容類型**從功能表，並執行某些動作，例如瀏覽可用的專輯。
-4. 瀏覽至**/ActionLog** ，而且如果記錄檔是空的按**F5**重新整理頁面。 追蹤您造訪的檢查：
+4. 瀏覽至 **/ActionLog** ，而且如果記錄檔是空的按**F5**重新整理頁面。 追蹤您造訪的檢查：
 
     ![動作記錄檔與記錄活動](aspnet-mvc-4-custom-action-filters/_static/image4.png "動作記錄檔與記錄活動")
 
@@ -264,7 +264,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample9.cs)]
 
     > [!NOTE]
-    > 此自訂動作篩選條件是您在上一個練習中建立一個幾乎相同的。 主要差異在於它有*&quot;記錄由&quot;*更新這個新類別的名稱來找出根據篩選器屬性登錄記錄。
+    > 此自訂動作篩選條件是您在上一個練習中建立一個幾乎相同的。 主要差異在於它有*&quot;記錄由&quot;* 更新這個新類別的名稱來找出根據篩選器屬性登錄記錄。
 
 <a id="Ex2Task2"></a>
 
@@ -277,7 +277,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample10.cs)]
 2. 現在，執行應用程式，以便查看這些兩個自訂動作篩選條件的正常運作。 若要這樣做，請按**F5**並等待應用程式啟動。
-3. 瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態。
+3. 瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態。
 
     ![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image5.png "記錄之前呼叫 」 活動的追蹤器狀態")
 
@@ -301,7 +301,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample11.cs)]
 2. 現在，請確認篩選其順序屬性的值而定的執行方式。 您會發現具有的最小的順序值的篩選條件 (**CustomActionFilter**) 執行的第一個。 按**F5**並等待應用程式啟動。
-3. 瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態。
+3. 瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態。
 
     ![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image7.png "記錄之前呼叫 」 活動的追蹤器狀態")
 
@@ -330,7 +330,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
 
 在這項工作，您將更新方案以註冊新的篩選器 (**MyNewCustomActionFilter**) 做為全域的篩選條件。 如此一來，就會觸發的所有動作執行應用程式中並不只是在 StoreController 項目與前一項工作。
 
-1. 在**StoreController**類別中，移除**[MyNewCustomActionFilter]**屬性和 [順序] 屬性從**[CustomActionFilter]**。 它看起來應該如下所示：
+1. 在**StoreController**類別中，移除 **[MyNewCustomActionFilter]** 屬性和 [順序] 屬性從 **[CustomActionFilter]**。 它看起來應該如下所示：
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample13.cs)]
 2. 開啟**Global.asax**檔案，並尋找**應用程式\_啟動**方法。 請注意，每次應用程式啟動時，它藉由呼叫註冊全域篩選**RegisterGlobalFilters**方法內**FilterConfig**類別。
@@ -347,7 +347,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample15.cs)]
 6. 執行應用程式按**F5**。
 7. 按一下其中一個**內容類型**從功能表，並執行某些動作，例如瀏覽可用的專輯。
-8. 核取現在**[MyNewCustomActionFilter]**媵檔晻 HomeController 和 ActionLogController 太。
+8. 核取現在 **[MyNewCustomActionFilter]** 媵檔晻 HomeController 和 ActionLogController 太。
 
     ![動作記錄檔與記錄活動](aspnet-mvc-4-custom-action-filters/_static/image11.png "動作記錄檔與記錄活動")
 
@@ -522,7 +522,7 @@ ASP.NET MVC 提供動作篩選條件之前或之後呼叫動作方法執行篩�
     *Web 部署設定*
 5. 設定資料庫連接，如下所示：
 
-   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
+   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:* 前置詞。
    - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
    - 在**密碼**輸入伺服器系統管理員身分登入密碼。
    - 輸入新的資料庫名稱。

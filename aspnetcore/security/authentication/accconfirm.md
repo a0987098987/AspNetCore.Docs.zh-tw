@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 8ad2a63ce007a68eac3b607db454c6b4fc834444
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e0bca48fcaa9a29847fdda714698ed8562d30707
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -62,7 +62,7 @@ dotnet new mvc --auth Individual
 或者，您可以使用 Visual Studio 建立新的 ASP.NET Core 專案：
 
 * 在 Visual Studio 中，建立新**Web 應用程式**專案。
-* 選取**ASP.NET Core 2.0**。 **.NET core**選取在下列影像中，但您可以選取**.NET Framework**。
+* 選取**ASP.NET Core 2.0**。 **.NET core**選取在下列影像中，但您可以選取 **.NET Framework**。
 * 選取**變更驗證**並將設定為**個別使用者帳戶**。
 * 保留預設值**儲存使用者帳戶在應用程式**。
 
@@ -79,7 +79,7 @@ dotnet new mvc --auth Individual
 Visual studio:
 
 * 從**檢視**功能表上，選取**SQL Server 物件總管**(SSOX)。
-* 瀏覽至**(localdb) (SQL Server 13) MSSQLLocalDB**。 以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:
+* 瀏覽至 **(localdb) (SQL Server 13) MSSQLLocalDB**。 以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:
 
 ![SQL Server 物件總管 中的 AspNetUsers 資料表上的內容功能表](accconfirm/_static/ssox.png)
 
@@ -138,13 +138,16 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 新增`AuthMessageSenderOptions`至結尾處的服務容器`ConfigureServices`方法中的*Startup.cs*檔案：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet2&highlight=28)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
 
-* * *
+---
+
 ### <a name="configure-the-authmessagesender-class"></a>設定 AuthMessageSender 類別
 
 本教學課程示範如何透過電子郵件通知加入[SendGrid](https://sendgrid.com/)，不過您可以傳送電子郵件使用 SMTP 和其他機制。
@@ -163,22 +166,26 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 #### <a name="configure-sendgrid"></a>設定 SendGrid
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 若要設定 SendGrid，將類似下列的程式碼加入*Services/EmailSender.cs*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 * 將程式碼中的加入*Services/MessageServices.cs*如下所示設定 SendGrid:
 
 [!code-csharp[](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
 
-* * *
+---
+
 ## <a name="enable-account-confirmation-and-password-recovery"></a>啟用帳戶確認和密碼復原
 
 範本的帳戶確認和密碼復原程式碼。 尋找`OnPostAsync`方法中的*Pages/Account/Register.cshtml.cs*。
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 防止新註冊的使用者自動登入註解下列一行：
 
 ```csharp
@@ -189,12 +196,13 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 若要啟用帳戶確認，請取消註解下列程式碼：
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
 
-**注意：**程式碼會使得新註冊的使用者無法自動登入註解下列一行：
+**注意：** 程式碼會使得新註冊的使用者無法自動登入註解下列一行：
 
 ```csharp
 //await _signInManager.SignInAsync(user, isPersistent: false);
@@ -208,7 +216,8 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 [!code-cshtml[](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
 
-* * *
+---
+
 ## <a name="register-confirm-email-and-reset-password"></a>註冊、 確認電子郵件，及重設密碼
 
 執行 web 應用程式，並測試的帳戶確認和密碼復原流程。
@@ -246,7 +255,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 ### <a name="test-password-reset"></a>測試密碼重設
 
 * 如果您登入，選取**登出**。
-* 選取**登入**連結，並選取**忘記密碼？**連結。
+* 選取**登入**連結，並選取**忘記密碼？** 連結。
 * 輸入您用來註冊帳戶的電子郵件。
 * 會傳送一封電子郵件以重設密碼的連結。 請檢查您的電子郵件並按一下連結以重設密碼。 已成功重設您的密碼之後，您可以登入您的電子郵件和新密碼。
 

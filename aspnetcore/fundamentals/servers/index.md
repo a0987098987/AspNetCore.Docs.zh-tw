@@ -1,6 +1,6 @@
 ---
 title: ASP.NET Core 中的網頁伺服器實作
-author: tdykstra
+author: rick-anderson
 description: 探索 ASP.NET Core 的網頁伺服器 Kestrel 與 HTTP.sys。 了解如何選擇伺服器，以及何時使用反向 Proxy 伺服器。
 manager: wpickett
 ms.author: tdykstra
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/index
-ms.openlocfilehash: cdf6fafce644f424d3cd58395e1fa91e5e6fa2cb
-ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.openlocfilehash: 38af9d0206d66ac7fd2dc13a5a8245e8f66df41e
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -24,13 +24,12 @@ ASP.NET Core 應用程式執行時，需使用內含式 HTTP 伺服器實作。 
 
 ASP.NET Core 提供兩個伺服器實作：
 
-* [Kestrel](xref:fundamentals/servers/kestrel) 是以 [libuv](https://github.com/libuv/libuv) (跨平台非同步 I/O 程式庫) 為基礎的跨平台 HTTP 伺服器。
-
+* [Kestrel](xref:fundamentals/servers/kestrel) 是 ASP.NET Core 的預設跨平台 HTTP 伺服器。
 * [HTTP.sys](xref:fundamentals/servers/httpsys) 是以 [HTTP.sys 核心驅動程式](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)為基礎的僅限 Windows HTTP 伺服器與 HTTP 伺服器 API。 (HTTP.sys 在 ASP.NET Core 1.x 中稱為 [WebListener](xref:fundamentals/servers/weblistener)。)
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel 是 ASP.NET Core 新專案範本中預設隨附的網頁伺服器。 
+Kestrel 是內含於 ASP.NET Core 專案範本中的預設網頁伺服器。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

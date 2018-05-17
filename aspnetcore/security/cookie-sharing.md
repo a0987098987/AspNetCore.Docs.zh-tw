@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cookie-sharing
-ms.openlocfilehash: 2c0f5de4ecedb796e85c08fc50d9697947a75a3f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5f77377f168993d48686217adac54a75313766ec
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>使用 ASP.NET 和 ASP.NET Core 共用應用程式之間的 cookie
 
@@ -46,7 +46,8 @@ ms.lasthandoff: 04/06/2018
 
 當使用 ASP.NET Core 身分識別：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 在`ConfigureServices`方法，請使用[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie)擴充方法來設定資料保護服務的 cookie。
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.Core/Startup.cs?name=snippet1)]
@@ -55,7 +56,8 @@ ms.lasthandoff: 04/06/2018
 
 請參閱*CookieAuthWithIdentity.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 在`Configure`方法，請使用[CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions)設定：
 
 * Cookie 資料保護服務。
@@ -82,17 +84,20 @@ app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 });
 ```
 
-* * *
+---
+
 當直接使用 cookie:
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
 
 資料保護金鑰，應用程式名稱必須在應用程式之間共用。 在範例應用程式中，`GetKeyRingDirInfo`傳回一般的索引鍵的存放位置，以[PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem)方法。 使用[SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname)設定共用的應用程式的一般名稱 (`SharedCookieApp`範例中)。 如需詳細資訊，請參閱[設定資料保護](xref:security/data-protection/configuration/overview)。 
 
 請參閱*CookieAuth.Core*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
 {
@@ -102,7 +107,8 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
-* * *
+---
+
 ## <a name="encrypting-data-protection-keys-at-rest"></a>加密在靜止的資料保護金鑰
 
 針對實際執行部署，設定`DataProtectionProvider`來加密金鑰使用 DPAPI 或 X509Certificate 靜止。 請參閱[金鑰靜態加密](xref:security/data-protection/implementation/key-encryption-at-rest)如需詳細資訊。
@@ -146,7 +152,8 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 2. 在*Startup.Auth.cs*，找出呼叫`UseCookieAuthentication`並加以修改，如下所示。 變更要與 ASP.NET Core cookie 驗證中介軟體所使用的名稱相符的 cookie 名稱。 提供的執行個體`DataProtectionProvider`初始化為一般的資料保護金鑰的儲存位置。 請確定應用程式名稱已設定共用 cookie 的所有應用程式所使用的一般應用程式名稱`SharedCookieApp`範例應用程式。
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
 
 請參閱*CookieAuthWithIdentity.NETFramework*專案中[範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/)([如何下載](xref:tutorials/index#how-to-download-a-sample))。
@@ -157,7 +164,8 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 
 [!code-csharp[](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/Models/IdentityModels.cs?name=snippet1)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 設定`CookieManager`以 interop`ChunkingCookieManager`使區塊格式相容。
 
 ```csharp
@@ -180,7 +188,8 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
-* * *
+---
+
 ## <a name="use-a-common-user-database"></a>使用一般的使用者資料庫
 
 請確認每個應用程式的身分識別系統指向相同的使用者資料庫。 否則，識別系統會產生在執行階段失敗時，它會嘗試比對中針對其資料庫中資訊的驗證 cookie 的資訊。

@@ -3,17 +3,18 @@ title: ASP.NET Core 1.1 的新功能
 author: rick-anderson
 description: 了解 ASP.NET Core 1.1 的新功能。
 manager: wpickett
+monikerRange: = aspnetcore-1.1
 ms.author: riande
 ms.date: 02/14/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: aspnetcore-1.1
-ms.openlocfilehash: 5b2fec8e8028c426bca282b8ba0ae0ad69373342
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 0e6d9be1798140dbe7a318e53531a26771653ccf
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>ASP.NET Core 1.1 的新功能
 

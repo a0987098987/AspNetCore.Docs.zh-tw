@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: c848c5d66a9e8141d9d737e8ce9c994587b04916
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 651d47ce20f3269340f0796f487e2f1a2a155710
+ms.sourcegitcommit: 0063338c2e130409081bb60fcffa0c3f190cd46a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -214,6 +214,8 @@ Razor Pages 預設只繫結屬性和非 GET 指令動詞。 繫結至屬性可�
 `PageModel` 上的屬性可以裝飾以 [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) 屬性：
 
 [!code-cs[](index/sample/Create.cshtml.cs?highlight=3,15-16)]
+
+如需詳細資訊，請參閱[模型驗證](xref:mvc/models/validation)。
 
 ## <a name="manage-head-requests-with-the-onget-handler"></a>使用 OnGet 處理常式管理 HEAD 要求
 
@@ -418,7 +420,7 @@ ASP.NET Core 公開[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)�
 public string Message { get; set; }
 ```
 
-如需詳細資訊，請參閱 [TempData](xref:fundamentals/app-state#temp)。
+如需詳細資訊，請參閱 [TempData](xref:fundamentals/app-state#tempdata)。
 
 <a name="mhpp"></a>
 ## <a name="multiple-handlers-per-page"></a>每頁面有多個處理常式

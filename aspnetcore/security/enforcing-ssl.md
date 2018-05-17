@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: b324dbcd6d28c1a8505f96da333874728e2e6a18
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: edc69443455677ba80ebb0a73e193d4d6741e470
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="enforce-https-in-an-aspnet-core"></a>強制執行中的 ASP.NET Core HTTPS
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 05/08/2018
 
 每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP 嚴格的傳輸安全性 (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過使用特殊的回應標頭的 web 應用程式所指定的選擇加入的安全性增強功能。 一旦支援的瀏覽器收到此標頭該瀏覽器將會避免任何透過 HTTP 傳送到指定的網域進行通訊，並改為將透過 HTTPS 傳送的所有通訊。 它也會防止 HTTPS 的點選連結的瀏覽器的提示。
 
-ASP.NET 核心 2.1 preview 1 或更新版本會實作與 HSTS`UseHsts`擴充方法。 下列程式碼會呼叫`UseHsts`應用程式不在[開發模式](xref:fundamentals/environments):
+2.1 或更新版本的 ASP.NET Core 實作與 HSTS`UseHsts`擴充方法。 下列程式碼會呼叫`UseHsts`應用程式不在[開發模式](xref:fundamentals/environments):
 
 [!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
 

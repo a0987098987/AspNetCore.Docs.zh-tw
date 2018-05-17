@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: e0bf0084f8e46f3774fa070602404840aa803661
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: f6b03c01ae0da1cc8fb3bc2e0546c0d9752ddf75
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Twitter 外部登入與 ASP.NET Core 的安裝程式
 
@@ -56,7 +56,8 @@ ms.lasthandoff: 05/03/2018
 
    `dotnet add package Microsoft.AspNetCore.Authentication.Twitter`
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 Twitter 服務中的新增`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -73,7 +74,8 @@ services.AddAuthentication().AddTwitter(twitterOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 加入在 Twitter 中的介軟體`Configure`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -84,7 +86,8 @@ app.UseTwitterAuthentication(new TwitterOptions()
 });
 ```
 
-* * *
+---
+
 請參閱[TwitterOptions](/dotnet/api/microsoft.aspnetcore.builder.twitteroptions) API 參考，如需有關 Twitter 驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
 
 ## <a name="sign-in-with-twitter"></a>使用 Twitter 登入
@@ -105,7 +108,7 @@ app.UseTwitterAuthentication(new TwitterOptions()
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* **ASP.NET Core 2.x 僅：**如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
+* **ASP.NET Core 2.x 僅：** 如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時，資料庫作業失敗*錯誤。 點選**套用移轉**來建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

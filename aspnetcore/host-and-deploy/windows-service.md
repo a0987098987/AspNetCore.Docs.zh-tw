@@ -1,6 +1,6 @@
 ---
 title: 裝載在 Windows 服務的 ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: 了解如何裝載在 Windows 服務的 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: tdykstra
@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: b0b27f274de1ca88b20bf582127132527b553ce0
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 29f83ee585c73aeb57a09f70ea8e28650c05ce69
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>裝載在 Windows 服務的 ASP.NET Core
 
@@ -26,11 +26,11 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="prerequisites"></a>必要條件
 
-* 應用程式必須執行.NET Framework 執行階段。 在*.csproj*檔案中，指定適當的值[TargetFramework](/nuget/schema/target-frameworks)和[RuntimeIdentifier](/dotnet/articles/core/rid-catalog)。 以下為範例：
+* 應用程式必須執行.NET Framework 執行階段。 在 *.csproj*檔案中，指定適當的值[TargetFramework](/nuget/schema/target-frameworks)和[RuntimeIdentifier](/dotnet/articles/core/rid-catalog)。 以下為範例：
 
   [!code-xml[](windows-service/sample/AspNetCoreService.csproj?range=3-6)]
 
-  使用 Visual Studio 中建立專案時**ASP.NET Core 應用程式 (.NET Framework)**範本。
+  使用 Visual Studio 中建立專案時**ASP.NET Core 應用程式 (.NET Framework)** 範本。
 
 * 如果應用程式需要從網際網路 （不只是從內部網路）接收要求，則必須使用[HTTP.sys](xref:fundamentals/servers/httpsys)網頁伺服器 (在 ASP.NET Core 1.x 應用程式稱為[WebListener](xref:fundamentals/servers/weblistener)) 而不是[Kestrel](xref:fundamentals/servers/kestrel)。 IIS 建議是作為反向 proxy 伺服器使用 Kestrel 邊緣部署。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
 
@@ -46,13 +46,15 @@ ms.lasthandoff: 04/06/2018
 
    * 如果程式碼會呼叫`UseContentRoot`，發行位置，而不是使用路徑`Directory.GetCurrentDirectory()`。
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](windows-service/sample/Program.cs?name=ServiceOnly&highlight=3-4,7,12)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=ServiceOnly&highlight=3-4,8,14)]
 
-   * * *
+   ---
 
 3. 發行應用程式的資料夾。 使用[dotnet 發行](/dotnet/articles/core/tools/dotnet-publish)或[Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)所發行的資料夾。
 
@@ -77,13 +79,16 @@ ms.lasthandoff: 04/06/2018
 
 更輕鬆地測試和偵錯時執行外部服務，所以可將呼叫的程式碼加入`RunAsService`只在某些情況下。 例如，應用程式可以執行為主控台應用程式與`--console`命令列引數，或是如果附加偵錯工具：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!code-csharp[](windows-service/sample/Program.cs?name=ServiceOrConsole)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=ServiceOrConsole)]
 
-* * *
+---
+
 ## <a name="handle-stopping-and-starting-events"></a>停止和啟動的事件處理
 
 若要處理`OnStarting`， `OnStarted`，和`OnStopping`事件，進行下列的其他變更：
@@ -98,20 +103,23 @@ ms.lasthandoff: 04/06/2018
 
 3. 在`Program.Main`，呼叫新的擴充方法， `RunAsCustomService`，而不是`RunAsService`:
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](windows-service/sample/Program.cs?name=HandleStopStart&highlight=24)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](windows-service/sample_snapshot/Program.cs?name=HandleStopStart&highlight=26)]
 
-   * * *
+   ---
+
 如果自訂`WebHostService`程式碼需要從相依性插入 （例如記錄器） 服務，取得從`Services`屬性`IWebHost`:
 
 [!code-csharp[](windows-service/sample/CustomWebHostService.cs?name=Logging&highlight=7)]
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-從網際網路或公司網路的要求和位於 proxy 後方或與其互動的負載平衡器的服務可能需要其他設定。 如需詳細資訊，請參閱[使用 proxy 伺服器及負載平衡器設定 ASP.NET Core](xref:host-and-deploy/proxy-load-balancer)。
+從網際網路或公司網路的要求和位於 proxy 後方或與其互動的負載平衡器的服務可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ## <a name="acknowledgments"></a>感謝
 

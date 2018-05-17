@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: e3956bedbc243578f6dfdc09f5f043327de7c66b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b4e48f40c3d4e3167e7fdb3534d2c33b3544592c
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>使用 ASP.NET Core 角度的專案範本
 
@@ -39,12 +39,14 @@ cd my-new-app
 
 使用 Visual Studio 或 .NET Core CLI 執行應用程式:
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
-開啟產生*.csproj*檔案，並從該處，像平常一樣執行應用程式。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+
+開啟產生 *.csproj*檔案，並從該處，像平常一樣執行應用程式。
 
 在建置程序還原第一次執行，可能需要幾分鐘的 npm 相依性。 後續建置會更快。
 
-#### <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
+
 請確定您有環境變數呼叫`ASPNETCORE_Environment`值是`Development`。 在 Windows 上 （在非 PowerShell 提示） 中，執行`SET ASPNETCORE_Environment=Development`。 在 Linux 或 macOS 上，執行`export ASPNETCORE_Environment=Development`。
 
 執行[dotnet 組建](/dotnet/core/tools/dotnet-build)以確認應用程式建置正確。 在第一個執行中，在建置程序還原 npm 相依性，這可能要花費幾分鐘的時間。 後續建置會更快。
@@ -57,9 +59,10 @@ Now listening on: http://localhost:<port>
 
 在瀏覽器中瀏覽此 url。
 
-應用程式在背景中啟動了 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： <em>NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上http://localhost: &lt;otherport&gt; /</em>. 忽略此訊息&mdash;它有<strong>不</strong>結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
+應用程式在背景中啟動了 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： <em>NG 即時程式開發伺服器正在接聽 localhost:&lt;otherport&gt;，開啟瀏覽器上http://localhost:&lt; otherport&gt; /</em> . 忽略此訊息&mdash;它有<strong>不</strong>結合的 ASP.NET Core 和有角度的方向 CLI 應用程式的 URL。
 
-* * *
+---
+
 專案範本會建立 ASP.NET Core 應用程式與 Angular 應用程式。 ASP.NET Core 應用程式應用於資料存取、 授權和其他伺服器端的問題。 位於*ClientApp*子目錄的 Angular 應用程式應用於所有 UI 問題。
 
 ## <a name="add-pages-images-styles-modules-etc"></a>新增頁面、 影像、 樣式、 模組、 等等。
@@ -152,7 +155,7 @@ npm install --save <package_name>
 
 此模組會繼承您的用戶端`app.module`和定義在 SSR 期間可以使用的額外 Angular 模組。
 
-回憶一下*.angular cli.json*中的新`ssr`項目參考了名為*main.server.ts*的進入點檔案。 您尚未在該檔案中新增任何項目，現在正是時候了。 請在*ClientApp/src/main.server.ts* 中建立新檔案 (連同現有的*main.ts*)，並在其中包含下列程式碼：
+回憶一下 *.angular cli.json*中的新`ssr`項目參考了名為*main.server.ts*的進入點檔案。 您尚未在該檔案中新增任何項目，現在正是時候了。 請在*ClientApp/src/main.server.ts* 中建立新檔案 (連同現有的*main.ts*)，並在其中包含下列程式碼：
 
 [!code-typescript[](sample/AngularServerSideRendering/ClientApp/src/main.server.ts)]
 

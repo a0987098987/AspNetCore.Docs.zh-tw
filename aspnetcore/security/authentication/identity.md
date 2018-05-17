@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: cf63766dc4ae94d784190d6dbc7b5beb57342f42
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 4eebda171f02c46ff831adf2798a025cd094051d
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>在 ASP.NET Core 上的識別簡介
 
@@ -59,7 +59,8 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    識別服務會加入至應用程式中`ConfigureServices`方法中的`Startup`類別：
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
    這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
@@ -68,7 +69,8 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
    這些服務會提供給應用程式透過[相依性插入](xref:fundamentals/dependency-injection)。
@@ -77,7 +79,8 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
-   * * *
+   ---
+
    如需處理程序的應用程式啟動的詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
 3. 建立使用者。
@@ -101,7 +104,7 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    如果已成功建立使用者，使用者會登入的呼叫所`_signInManager.SignInAsync`。
 
-   **注意：**看到[帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免立即註冊登入。
+   **注意：** 看到[帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免立即註冊登入。
 
 4. 登入。
 
@@ -126,13 +129,16 @@ ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成�
 
    識別有一些可以在應用程式的啟動類別中覆寫的預設行為。 `IdentityOptions` 不需要使用的預設行為時，設定。 下列程式碼會設定數個密碼強度選項：
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-33)]
 
-   * * *
+   ---
+
    如需如何設定身分識別的詳細資訊，請參閱[設定身分識別](xref:security/authentication/identity-configuration)。
 
    您也可以設定資料類型的主索引鍵，請參閱[設定識別主索引鍵資料類型](xref:security/authentication/identity-primary-key-configuration)。

@@ -1,6 +1,6 @@
 ---
 title: ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
-author: tdykstra
+author: rick-anderson
 description: ''
 manager: wpickett
 ms.author: tdykstra
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: eaa3070e182b161087185bbb9007e8067052d95c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0eef084c656f68fb1cad9fc0f5cfeee31ff96a30
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -74,7 +74,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 * 選取 [ASP.NET Core 2.0] 及 [Web Application (Model-View-Controller] (Web 應用程式 (模型-檢視-控制器)) 範本。
 
-  **注意：**本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
+  **注意：** 本教學課程需要 ASP.NET Core 2.0 和 EF Core 2.0 或更新版本-請確認**ASP.NET Core 1.1**未選取。
 
 * 確認 [驗證] 已設為 [No Authentication] (無驗證)。
 

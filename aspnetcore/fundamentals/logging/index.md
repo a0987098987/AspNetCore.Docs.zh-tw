@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 78dcee05799965c72f878662df61034018a23021
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 7e2a4657211b0142ec87fd792d013f7ef397de2b
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -47,7 +47,8 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快�
 
 ## <a name="how-to-add-providers"></a>如何新增提供者
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 記錄提供者會擷取您使用 `ILogger` 物件建立的訊息，並加以顯示或儲存。 例如，主控台提供者可在主控台中顯示訊息，而 Azure App Service 提供者則可將其儲存在 Azure Blob 儲存體中。
 
 若要使用提供者，請在 *Program.cs* 中呼叫提供者的 `Add<ProviderName>` 擴充方法：
@@ -58,7 +59,8 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快�
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 記錄提供者會擷取您使用 `ILogger` 物件建立的訊息，並加以顯示或儲存。 例如，主控台提供者可在主控台中顯示訊息，而 Azure App Service 提供者則可將其儲存在 Azure Blob 儲存體中。
 
 若要使用提供者，請安裝其 NuGet 套件，並在 `ILoggerFactory` 的執行個體上呼叫該提供者的擴充方法，如下列範例所示。
@@ -70,7 +72,8 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
 > [!NOTE]
 > 本文的範例應用程式會在 `Startup` 類別的 `Configure` 方法中新增記錄提供者。 如果您想要從先前稍早執行的程式碼取得記錄輸出，請改為在 `Startup` 類別建構函式中新增記錄提供者。 
 
-* * *
+---
+
 您會在本文稍後找到每個[內建記錄提供者](#built-in-logging-providers)的相關資訊，以及[協力廠商記錄提供者](#third-party-logging-providers)的連結。
 
 ## <a name="sample-logging-output"></a>範例記錄輸出
@@ -263,7 +266,8 @@ System.Exception: Item not found exception.
 
 ## <a name="log-filtering"></a>記錄篩選
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 您可以指定特定提供者和類別的最低記錄層級，也可以指定所有提供者或所有類別的最低記錄層級。 最低層級以下的任何記錄都不會傳遞給該提供者，因此不會顯示或儲存。 
 
 如果您想要隱藏所有記錄，您可以指定 `LogLevel.None` 作為最低記錄層級。 `LogLevel.None` 的整數值為 6，高於 `LogLevel.Critical` (5)。
@@ -344,7 +348,8 @@ System.Exception: Item not found exception.
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_FilterFunction&highlight=5-13)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 某些記錄提供者可讓您指定何時應該將記錄寫入儲存媒體，何時應該根據記錄層級和類別加以略過。
 
 `AddConsole` 和 `AddDebug` 擴充方法提供多載，可讓您傳入篩選條件。 下列範例程式碼會使主控台提供者略過 `Warning` 層級以下的記錄，而偵錯提供者則會略過架構所建立的記錄。
@@ -361,7 +366,8 @@ System.Exception: Item not found exception.
 
 `WithFilter` 擴充方法是由 [Microsoft.Extensions.Logging.Filter](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Filter) NuGet 套件提供。 此方法會傳回新的 `ILoggerFactory` 執行個體，這會篩選傳遞至用它來註冊之所有記錄器提供者的記錄訊息。 它不會影響任何其他 `ILoggerFactory` 執行個體，包括原始 `ILoggerFactory` 執行個體。
 
-* * *
+---
+
 ## <a name="log-scopes"></a>記錄範圍
 
 您可以將某個「範圍」內的一組邏輯作業群組在一起，以便將相同的資料附加至作為該集合一部分建立的每個記錄。 例如，您可能想要將每個記錄建立為處理交易的一部分，以包含交易識別碼。
@@ -372,7 +378,8 @@ System.Exception: Item not found exception.
 
 下列程式碼會啟用主控台提供者的範圍：
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 在 *Program.cs* 中：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_Scopes&highlight=4)]
@@ -380,12 +387,14 @@ System.Exception: Item not found exception.
 > [!NOTE]
 > 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。 ASP.NET Core 2.1 版將可使用 *appsettings* 組態檔來設定 `IncludeScopes`。
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 在 *Startup.cs* 中：
 
 [!code-csharp[](index/sample/Startup.cs?name=snippet_Scopes&highlight=6)]
 
-* * *
+---
+
 每個記錄訊息包含範圍資訊：
 
 ```
@@ -413,12 +422,14 @@ ASP.NET Core 隨附下列提供者：
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) 提供者套件會將記錄輸出傳送至主控台。 
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 ```csharp
 logging.AddConsole()
 ```
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 ```csharp
 loggerFactory.AddConsole()
 ```
@@ -439,7 +450,8 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 上述設定會將架構記錄限制為警告，同時讓應用程式在偵錯層級記錄，如[記錄篩選](#log-filtering)一節中所述。 如需詳細資訊，請參閱[組態](xref:fundamentals/configuration/index)。
 
-* * *
+---
+
 <a id="debug"></a>
 ### <a name="the-debug-provider"></a>偵錯提供者
 

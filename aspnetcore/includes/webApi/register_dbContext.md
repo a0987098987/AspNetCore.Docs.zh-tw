@@ -4,7 +4,12 @@
 
 使用內建的[相依性插入](xref:fundamentals/dependency-injection)支援，向服務容器註冊 DB 內容。 以下列程式碼取代 *Startup.cs* 檔案的內容：
 
-[!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Startup.cs?highlight=2,4,12)]
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Startup.cs?highlight=2,4,12-13)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Startup.cs?highlight=3,5,13-14)]
+::: moniker-end
 
 上述程式碼：
 

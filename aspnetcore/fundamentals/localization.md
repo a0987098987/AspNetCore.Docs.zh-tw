@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/localization
-ms.openlocfilehash: b81926f81fdfb832ff6ae3bd65c00fa09412fec4
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 929c73c314a15e7003853d3996158d1328e597cb
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -45,7 +45,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 [!code-csharp[](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**注意：**一般來說，您只想將文字當地語系化，而不是 HTML。
+**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
 
 您可以在最底層的[相依性插入](dependency-injection.md)中，將 `IStringLocalizerFactory` 移出：
 
@@ -81,7 +81,7 @@ ASP.NET Core 中導入了 `IStringLocalizer` 和 `IStringLocalizer<T>`，其設�
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
-**注意：**一般來說，您只想將文字當地語系化，而不是 HTML。
+**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
 
 若要在檢視中使用共用的資源檔，請插入 `IHtmlLocalizer<T>`：
 
@@ -141,14 +141,6 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
     Visual Studio 會顯示 *Welcome.es.resx* 檔案。
 
     ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
-
-<a name="error"></a>
-
-如果您是使用 Visual Studio 2017 Preview 15.3 版，即會在資源編輯器中收到錯誤指標。 若要避免這個錯誤訊息，請從「自訂工具」屬性方格裡，移除 *ResXFileCodeGenerator* 值：
-
-![Resx 編輯器](localization/_static/err.png)
-
-或者，您可以忽略這個錯誤。 我們希望下一個版本能修正這個問題。
 
 ## <a name="resource-file-naming"></a>資源檔命名
 

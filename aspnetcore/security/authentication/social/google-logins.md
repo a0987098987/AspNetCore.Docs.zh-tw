@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: aba12a94a573db35eadaa6a38f2fcf074b7b64c2
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: e3d0f0c058dd7395aebf1c97821867bae3af7c54
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Google 外部登入安裝程式
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/03/2018
 
 ![API 管理員認證 頁面中： 了解什麼種類的認證需要面板](index/_static/GoogleConsoleChooseCred.png)
 
-* 點選**我需要哪些認證？**這會引領您的應用程式設定中，第二步**建立 OAuth 2.0 用戶端識別碼**:
+* 點選**我需要哪些認證？** 這會引領您的應用程式設定中，第二步**建立 OAuth 2.0 用戶端識別碼**:
 
 ![API 管理員認證 頁面上： 建立 OAuth 2.0 用戶端識別碼](index/_static/GoogleConsoleCreateClient.png)
 
@@ -86,7 +86,8 @@ ms.lasthandoff: 05/03/2018
 
 ## <a name="configure-google-authentication"></a>設定 Google 驗證
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 加入在 Google 服務`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -103,13 +104,14 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 在本教學課程中使用的專案範本，可確保[Microsoft.AspNetCore.Authentication.Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)安裝封裝。
 
- * 若要安裝此套件與 Visual Studio 2017，以滑鼠右鍵按一下專案，然後選取**管理 NuGet 封裝**。
- * 若要安裝的.NET Core CLI，請在您的專案目錄中執行下列：
+* 若要安裝此套件與 Visual Studio 2017，以滑鼠右鍵按一下專案，然後選取**管理 NuGet 封裝**。
+* 若要安裝的.NET Core CLI，請在您的專案目錄中執行下列：
 
-   `dotnet add package Microsoft.AspNetCore.Authentication.Google`
+`dotnet add package Microsoft.AspNetCore.Authentication.Google`
 
 新增 Google 中的介軟體中`Configure`方法中的*Startup.cs*檔案：
 
@@ -121,7 +123,8 @@ app.UseGoogleAuthentication(new GoogleOptions()
 });
 ```
 
-* * *
+---
+
 請參閱[GoogleOptions](/dotnet/api/microsoft.aspnetcore.builder.googleoptions) API 參考，如需 Google 驗證所支援的組態選項的詳細資訊。 這可以用於要求的使用者不同的資訊。
 
 ## <a name="sign-in-with-google"></a>使用 Google 登入
@@ -143,7 +146,7 @@ app.UseGoogleAuthentication(new GoogleOptions()
 ## <a name="troubleshooting"></a>疑難排解
 
 * 如果您收到`403 (Forbidden)`錯誤頁面，從您自己的應用程式時執行，在開發模式 （或相同的錯誤與偵錯工具中斷），請確認**Google + API**中已啟用**API Manager 程式庫**遵循所列的步驟[更早版本在此頁面](#create-the-app-in-google-api-console)。 如果登入無法運作，且您未收到任何錯誤訊息，切換到開發模式來進行問題偵錯更容易。
-* **ASP.NET Core 2.x 僅：**如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
+* **ASP.NET Core 2.x 僅：** 如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時，資料庫作業失敗*錯誤。 點選**套用移轉**來建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

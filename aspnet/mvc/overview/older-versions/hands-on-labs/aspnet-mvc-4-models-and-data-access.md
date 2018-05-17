@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 081a71ef67a6eee6c84058c30f9e15301afbed23
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 57477cf15bf6755523f28356d5384517bea24982
+ms.sourcegitcommit: 5ae0c125ee3bbd324edef3818d1d160f4dd84602
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 模型和資料存取
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/06/2018
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 c： 使用程式碼片段](#AppendixC)&quot;。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 04/06/2018
 
 在這項工作，您會加入方案的 MusicStore 應用程式的主資料表與已建立的資料庫。
 
-1. 開啟**開始**方案位於**來源/Ex1AddingADatabaseDBFirst/開始/**資料夾。
+1. 開啟**開始**方案位於**來源/Ex1AddingADatabaseDBFirst/開始/** 資料夾。
 
    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -235,12 +235,14 @@ ms.lasthandoff: 04/06/2018
 
 ~~~
 [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample2.cs)]
+~~~
 
 > [!NOTE]
-> You are using a capability of .NET called **LINQ** (language-integrated query) to write strongly-typed query expressions against these collections - which will execute code against the database and return objects that you can program against.
+> 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
 > 
-> For more information about LINQ, please visit the [msdn site](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx).
-~~~
+> 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx)。
+
+
 3. 更新**索引**動作方法，以擷取所有內容類型。
 
     (程式碼片段-*模型和資料存取-Ex1 存放區索引*)
@@ -297,7 +299,7 @@ ms.lasthandoff: 04/06/2018
 
 在這項工作，您將資料庫中填入範例資料 intially 建立使用程式碼優先 （contract-first） 時。
 
-1. 開啟**開始**方案位於**來源/Ex2CreatingADatabaseCodeFirst/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex2CreatingADatabaseCodeFirst/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -533,7 +535,7 @@ ms.lasthandoff: 04/06/2018
 在這項工作，您將執行應用程式，並從資料庫擷取的特定內容類型的相簿。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/存放區/瀏覽？ 內容類型 = Pop**驗證，正在從資料庫擷取的結果。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/存放區/瀏覽？ 內容類型 = Pop**驗證，正在從資料庫擷取的結果。
 
     ![內容類型來瀏覽](aspnet-mvc-4-models-and-data-access/_static/image24.png "內容類型來瀏覽")
 
@@ -564,7 +566,7 @@ ms.lasthandoff: 04/06/2018
 在這項工作，您會在網頁瀏覽器中執行應用程式，並取得專輯詳細資料，其識別碼。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/Store/Details/51**或瀏覽內容類型，並選取要確認結果要從資料庫擷取的相簿。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/Store/Details/51**或瀏覽內容類型，並選取要確認結果要從資料庫擷取的相簿。
 
     ![瀏覽詳細資料](aspnet-mvc-4-models-and-data-access/_static/image25.png "瀏覽詳細資料")
 
@@ -740,7 +742,7 @@ ms.lasthandoff: 04/06/2018
     *Web 部署設定*
 5. 設定資料庫連接，如下所示：
 
-   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
+   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:* 前置詞。
    - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
    - 在**密碼**輸入伺服器系統管理員身分登入密碼。
    - 輸入新的資料庫名稱。

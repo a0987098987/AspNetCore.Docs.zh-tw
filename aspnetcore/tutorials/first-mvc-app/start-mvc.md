@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: b7036b92e8f25613917cfc4112389be81c12f614
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 1dba6eaceb6b69cf92cb8a831df9dc8d70a005d4
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>ASP.NET Core MVC 與 Visual Studio 使用者入門
 
@@ -29,10 +29,12 @@ ms.lasthandoff: 05/03/2018
 
 ## <a name="install-visual-studio-and-net-core"></a>安裝 Visual Studio 和 .NET Core
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 安裝 Visual Studio Community 2017。 選取要下載的社群。 如已安裝 Visual Studio 2017 請跳過此步驟。
 
 * [Visual Studio 2017 首頁的安裝程式](https://www.visualstudio.com/)
@@ -46,7 +48,8 @@ ms.lasthandoff: 05/03/2018
 
 ![**.NET Core 跨平台開發** (位在 [其他工具組]**** 下)](start-mvc/_static/x_plat_wl.png)
 
-* * *
+---
+
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
 從 Visual Studio 中，選取 [檔案] > [新增] > [專案]。
@@ -61,7 +64,6 @@ ms.lasthandoff: 05/03/2018
 * 點選 [確定]。
 
 ![[新增專案] 對話方塊, 左窗格中的 .Net core, ASP.NET Core Web ](start-mvc/_static/new_project2.png)
-
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

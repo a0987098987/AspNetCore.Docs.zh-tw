@@ -2,7 +2,7 @@
 
 在本節中，將會新增 HTML 網頁，以使用 jQuery 來呼叫 Web API。 jQuery 會起始要求，並使用來自 API 回應的詳細資料更新頁面。
 
-請設定專案來提供靜態檔案，並啟用預設檔案對應。 這是透過在 *Startup.Configure* 中叫用 [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 擴充方法來達成。 如需詳細資訊，請參閱[在 ASP.NET Core 中使用靜態檔案](xref:fundamentals/static-files)。
+請設定專案來提供靜態檔案，並啟用預設檔案對應。 這是透過在 *Startup.Configure* 中叫用 [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 和 [UseDefaultFiles](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) 擴充方法來達成。 如需詳細資訊，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Startup2.cs?name=snippet_Configure&highlight=3-4)]
 

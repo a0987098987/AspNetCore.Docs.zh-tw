@@ -1,33 +1,30 @@
 ---
-title: "利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面"
+title: Visual Studio Code 中的 ASP.NET Core Razor 頁面使用者入門
 author: rick-anderson
-description: "利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面"
+description: 了解使用 Visual Studio Code 建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: 7c01d802e59951281c86c8eab64b7c6b9d646fbf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0ad008b4f2b2e74dcf7f3d6c83798d5f03d1d315
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-code"></a>利用 Visual Studio Code 開始使用 ASP.NET Core 中的 Razor 頁面
+# <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Visual Studio Code 中的 ASP.NET Core Razor 頁面使用者入門
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 本教學課程將教導您建置 ASP.NET Core Razor 頁面之 Web 應用程式的基本概念。 建議您先完成 [Razor 頁面的簡介](xref:mvc/razor-pages/index)，再開始本教學課程。 Razor 頁面是在 ASP.NET Core 中建置 Web 應用程式 UI 的建議方式。
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝下列項目：
-
-* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) (含) 以上版本
-* [Visual Studio Code](https://code.visualstudio.com)
-* VS Code [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
+[!INCLUDE [](~/includes/net-core-prereqs-vscode.md)]
 
 ## <a name="create-a-razor-web-app"></a>建立 Razor Web 應用程式
 
@@ -43,7 +40,7 @@ dotnet run
 
 ![Home 或 Index 頁面](../razor-pages/razor-pages-start/_static/home.png)
 
-[!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+[!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 ## <a name="open-the-project"></a>開啟專案
 
@@ -60,5 +57,5 @@ dotnet run
 
 在下一個教學課程中，我們可以將模型新增至專案。 
 
->[!div class="step-by-step"]
-[下一步：新增模型](xref:tutorials/razor-pages-vsc/model)  
+> [!div class="step-by-step"]
+> [下一步：新增模型](xref:tutorials/razor-pages-vsc/model)  

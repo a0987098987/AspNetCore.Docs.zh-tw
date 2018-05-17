@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 484cee3565fc5b72c19559f3fb907070d8178f9d
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 7244f7a808899a2846bb8b40e626208f168d40b8
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>與 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -74,7 +74,8 @@ ms.lasthandoff: 05/03/2018
 
    `dotnet add package Microsoft.AspNetCore.Authentication.MicrosoftAccount`
 
-#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
 新增 Microsoft 帳戶服務中的`ConfigureServices`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -91,7 +92,8 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
 新增 Microsoft 帳戶中的介軟體中`Configure`方法中的*Startup.cs*檔案：
 
 ```csharp
@@ -102,7 +104,8 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 });
 ```
 
-* * *
+---
+
 雖然 Microsoft 開發人員入口網站上所使用的術語命名這些語彙基元`ApplicationId`和`Password`，它們公開為`ClientId`和`ClientSecret`組態 API。
 
 請參閱[MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.microsoftaccountoptions) API 參考，如需有關 Microsoft 帳戶驗證所支援的組態選項。 這可以用於要求的使用者不同的資訊。
@@ -128,7 +131,7 @@ app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
 * 如果 Microsoft 帳戶提供者將您重新導向至登入錯誤頁面，請注意錯誤標題和描述查詢字串參數緊接`#`（雜湊標記） 之 Uri 中。
 
   雖然指出 Microsoft 驗證問題，看起來的錯誤訊息，但最常見的原因是您的應用程式 Uri 不符合任何的**重新導向 Uri**指定**Web**平台.
-* **ASP.NET Core 2.x 僅：**如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
+* **ASP.NET Core 2.x 僅：** 如果身分識別不藉由呼叫設定`services.AddIdentity`中`ConfigureServices`，嘗試驗證將會導致*ArgumentException： 必須提供 'SignInScheme' 選項*。 在本教學課程中使用的專案範本可確保，這已完成。
 * 如果尚未套用初始移轉建立站台資料庫，您會收到*處理要求時，資料庫作業失敗*錯誤。 點選**套用移轉**來建立資料庫，並重新整理 以忽略錯誤繼續執行。
 
 ## <a name="next-steps"></a>後續步驟

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 0a04f5762a35426f342b58b8b60288c66c057ae7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
-ms.translationtype: MT
+ms.openlocfilehash: a268fd76a303dc1185b451e4f678fc2fe761e80a
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 
@@ -41,7 +41,8 @@ ms.lasthandoff: 05/03/2018
 
 ## <a name="installing-the-secret-manager-tool"></a>安裝密碼管理員工具
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+
 以滑鼠右鍵按一下方案總管 中的專案，然後選取**編輯\<project_name\>.csproj**從內容功能表。 將反白顯示的行加入 *.csproj*檔案，並將儲存到還原相關聯的 NuGet 套件：
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -58,7 +59,8 @@ ms.lasthandoff: 05/03/2018
 }
 ```
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
+
 新增`Microsoft.Extensions.SecretManager.Tools`至 *.csproj*檔，然後執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。 若要安裝命令列使用的密碼管理員工具，您可以使用相同的步驟。
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -94,7 +96,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 
 您也可以使用密碼管理員工具來列出、 移除，並清除應用程式密碼。
 
-* * *
+---
+
 ## <a name="accessing-user-secrets-via-configuration"></a>透過設定存取的使用者密碼
 
 您可以透過組態系統來存取密碼管理員的密碼。 新增`Microsoft.Extensions.Configuration.UserSecrets`封裝及執行[dotnet 還原](/dotnet/core/tools/dotnet-restore)。

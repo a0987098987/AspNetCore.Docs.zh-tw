@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: d9c7c1c3b2c052ba11f9ea5eaaa424d69bc43eb2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: c40209e3b3f2b5bf28450bb2a88cbe40e9e23230
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 03/22/2018
 
 SqlServerCache 實作可讓分散式快取，以使用 SQL Server 資料庫做為其備份存放區。 若要建立 SQL Server 資料表，您可以使用 sql 快取工具，此工具會建立資料表，與您指定的名稱和結構描述。
 
-若要使用 sql 快取工具，加入`SqlConfig.Tools`至`<ItemGroup>`元素*.csproj*檔，然後執行 dotnet 還原。
+若要使用 sql 快取工具，加入`SqlConfig.Tools`至`<ItemGroup>`元素 *.csproj*檔，然後執行 dotnet 還原。
 
 [!code-xml[](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
 
@@ -138,7 +138,7 @@ C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(loc
 
 * [Redis 快取，在 Azure 上](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [在 Azure 上的 SQL 資料庫](https://azure.microsoft.com/documentation/services/sql-database/)
-* [快取記憶體中](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)

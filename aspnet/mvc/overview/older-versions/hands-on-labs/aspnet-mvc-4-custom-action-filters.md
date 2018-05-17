@@ -58,7 +58,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="27f02-125">**安裝程式碼片段**</span><span class="sxs-lookup"><span data-stu-id="27f02-125">**Installing Code Snippets**</span></span>
 
-<span data-ttu-id="27f02-126">為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。</span><span class="sxs-lookup"><span data-stu-id="27f02-126">For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets.</span></span> <span data-ttu-id="27f02-127">若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。</span><span class="sxs-lookup"><span data-stu-id="27f02-127">To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.</span></span>
+<span data-ttu-id="27f02-126">為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。</span><span class="sxs-lookup"><span data-stu-id="27f02-126">For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets.</span></span> <span data-ttu-id="27f02-127">若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。</span><span class="sxs-lookup"><span data-stu-id="27f02-127">To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.</span></span>
 
 <span data-ttu-id="27f02-128">如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 c： 使用程式碼片段](#AppendixC)&quot;。</span><span class="sxs-lookup"><span data-stu-id="27f02-128">If you are not familiar with the Visual Studio Code Snippets, and want to learn how to use them, you can refer to the appendix from this document &quot;[Appendix C: Using Code Snippets](#AppendixC)&quot;.</span></span>
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="27f02-137">在此練習中，您將學習如何使用 ASP.NET MVC 4 篩選條件提供者建立自訂動作記錄的篩選條件。</span><span class="sxs-lookup"><span data-stu-id="27f02-137">In this exercise, you will learn how to create a custom action log filter by using ASP.NET MVC 4 Filter Providers.</span></span> <span data-ttu-id="27f02-138">針對該目的您會將記錄篩選器套用至選取控制站會記錄所有活動的 MusicStore 站台。</span><span class="sxs-lookup"><span data-stu-id="27f02-138">For that purpose you will apply a logging filter to the MusicStore site that will record all the activities in the selected controllers.</span></span>
 
-<span data-ttu-id="27f02-139">篩選會擴充**ActionFilterAttributeClass**並覆寫**OnActionExecuting**攔截每個要求，然後執行 記錄動作方法。</span><span class="sxs-lookup"><span data-stu-id="27f02-139">The filter will extend **ActionFilterAttributeClass** and override **OnActionExecuting** method to catch each request and then perform the logging actions.</span></span> <span data-ttu-id="27f02-140">HTTP 要求的內容資訊中，執行方法、 結果和參數將由 ASP.NET MVC 提供**ActionExecutingContext**類別**。**</span><span class="sxs-lookup"><span data-stu-id="27f02-140">The context information about HTTP requests, executing methods, results and parameters will be provided by ASP.NET MVC **ActionExecutingContext** class **.**</span></span>
+<span data-ttu-id="27f02-139">篩選會擴充**ActionFilterAttributeClass**並覆寫**OnActionExecuting**攔截每個要求，然後執行 記錄動作方法。</span><span class="sxs-lookup"><span data-stu-id="27f02-139">The filter will extend **ActionFilterAttributeClass** and override **OnActionExecuting** method to catch each request and then perform the logging actions.</span></span> <span data-ttu-id="27f02-140">HTTP 要求的內容資訊中，執行方法、 結果和參數將由 ASP.NET MVC 提供**ActionExecutingContext**類別 **。**</span><span class="sxs-lookup"><span data-stu-id="27f02-140">The context information about HTTP requests, executing methods, results and parameters will be provided by ASP.NET MVC **ActionExecutingContext** class **.**</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="27f02-141">ASP.NET MVC 4 也有預設篩選器提供者，您可以使用而建立自訂篩選器。</span><span class="sxs-lookup"><span data-stu-id="27f02-141">ASP.NET MVC 4 also has default filters providers you can use without creating a custom filter.</span></span> <span data-ttu-id="27f02-142">ASP.NET MVC 4 提供下列類型的篩選器：</span><span class="sxs-lookup"><span data-stu-id="27f02-142">ASP.NET MVC 4 provides the following types of filters:</span></span>
@@ -181,12 +181,12 @@ ms.lasthandoff: 04/06/2018
 1. <span data-ttu-id="27f02-194">開啟**StoreController**在**MvcMusicStore\Controllers**並加入參考**篩選**命名空間：</span><span class="sxs-lookup"><span data-stu-id="27f02-194">Open the **StoreController** at **MvcMusicStore\Controllers** and add a reference to the **Filters** namespace:</span></span>
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample4.cs)]
-2. <span data-ttu-id="27f02-195">插入自訂篩選器**CustomActionFilter**到**StoreController**類別藉由新增**[CustomActionFilter]**類別宣告之前的屬性。</span><span class="sxs-lookup"><span data-stu-id="27f02-195">Inject the custom filter **CustomActionFilter** into **StoreController** class by adding **[CustomActionFilter]** attribute before the class declaration.</span></span>
+2. <span data-ttu-id="27f02-195">插入自訂篩選器**CustomActionFilter**到**StoreController**類別藉由新增 **[CustomActionFilter]** 類別宣告之前的屬性。</span><span class="sxs-lookup"><span data-stu-id="27f02-195">Inject the custom filter **CustomActionFilter** into **StoreController** class by adding **[CustomActionFilter]** attribute before the class declaration.</span></span>
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample5.cs)]
 
    > [!NOTE]
-   > <span data-ttu-id="27f02-196">當篩選條件會插入控制器類別時，也插入它的動作。</span><span class="sxs-lookup"><span data-stu-id="27f02-196">When a filter is injected into a controller class, all its actions are also injected.</span></span> <span data-ttu-id="27f02-197">如果您想要將篩選套用到只針對一組動作，您必須將**[CustomActionFilter]**到其中的每一個：</span><span class="sxs-lookup"><span data-stu-id="27f02-197">If you would like to apply the filter only for a set of actions, you would have to inject **[CustomActionFilter]** to each one of them:</span></span>
+   > <span data-ttu-id="27f02-196">當篩選條件會插入控制器類別時，也插入它的動作。</span><span class="sxs-lookup"><span data-stu-id="27f02-196">When a filter is injected into a controller class, all its actions are also injected.</span></span> <span data-ttu-id="27f02-197">如果您想要將篩選套用到只針對一組動作，您必須將 **[CustomActionFilter]** 到其中的每一個：</span><span class="sxs-lookup"><span data-stu-id="27f02-197">If you would like to apply the filter only for a set of actions, you would have to inject **[CustomActionFilter]** to each one of them:</span></span>
    > 
    > [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample6.cs)]
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 04/06/2018
 <span data-ttu-id="27f02-199">在這項工作，您將測試正在記錄篩選器。</span><span class="sxs-lookup"><span data-stu-id="27f02-199">In this task, you will test that the logging filter is working.</span></span> <span data-ttu-id="27f02-200">您將會啟動應用程式，並瀏覽市集，則您將會檢查記錄的活動。</span><span class="sxs-lookup"><span data-stu-id="27f02-200">You will start the application and visit the store, and then you will check logged activities.</span></span>
 
 1. <span data-ttu-id="27f02-201">按 **F5** 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="27f02-201">Press **F5** to run the application.</span></span>
-2. <span data-ttu-id="27f02-202">瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態：</span><span class="sxs-lookup"><span data-stu-id="27f02-202">Browse to **/ActionLog** to see log view initial state:</span></span>
+2. <span data-ttu-id="27f02-202">瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態：</span><span class="sxs-lookup"><span data-stu-id="27f02-202">Browse to **/ActionLog** to see log view initial state:</span></span>
 
     <span data-ttu-id="27f02-203">![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image3.png "記錄之前呼叫 」 活動的追蹤器狀態")</span><span class="sxs-lookup"><span data-stu-id="27f02-203">![Log tracker status before page activity](aspnet-mvc-4-custom-action-filters/_static/image3.png "Log tracker status before page activity")</span></span>
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 04/06/2018
    > 
    > [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample7.cs)]
 3. <span data-ttu-id="27f02-208">按一下其中一個**內容類型**從功能表，並執行某些動作，例如瀏覽可用的專輯。</span><span class="sxs-lookup"><span data-stu-id="27f02-208">Click one of the **Genres** from the menu and perform some actions there, like browsing an available album.</span></span>
-4. <span data-ttu-id="27f02-209">瀏覽至**/ActionLog** ，而且如果記錄檔是空的按**F5**重新整理頁面。</span><span class="sxs-lookup"><span data-stu-id="27f02-209">Browse to **/ActionLog** and if the log is empty press **F5** to refresh the page.</span></span> <span data-ttu-id="27f02-210">追蹤您造訪的檢查：</span><span class="sxs-lookup"><span data-stu-id="27f02-210">Check that your visits were tracked:</span></span>
+4. <span data-ttu-id="27f02-209">瀏覽至 **/ActionLog** ，而且如果記錄檔是空的按**F5**重新整理頁面。</span><span class="sxs-lookup"><span data-stu-id="27f02-209">Browse to **/ActionLog** and if the log is empty press **F5** to refresh the page.</span></span> <span data-ttu-id="27f02-210">追蹤您造訪的檢查：</span><span class="sxs-lookup"><span data-stu-id="27f02-210">Check that your visits were tracked:</span></span>
 
     <span data-ttu-id="27f02-211">![動作記錄檔與記錄活動](aspnet-mvc-4-custom-action-filters/_static/image4.png "動作記錄檔與記錄活動")</span><span class="sxs-lookup"><span data-stu-id="27f02-211">![Action log with activity logged](aspnet-mvc-4-custom-action-filters/_static/image4.png "Action log with activity logged")</span></span>
 
@@ -264,7 +264,7 @@ ms.lasthandoff: 04/06/2018
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample9.cs)]
 
     > [!NOTE]
-    > <span data-ttu-id="27f02-239">此自訂動作篩選條件是您在上一個練習中建立一個幾乎相同的。</span><span class="sxs-lookup"><span data-stu-id="27f02-239">This Custom Action Filter is almost the same than the one you created in the previous exercise.</span></span> <span data-ttu-id="27f02-240">主要差異在於它有*&quot;記錄由&quot;*更新這個新類別的名稱來找出根據篩選器屬性登錄記錄。</span><span class="sxs-lookup"><span data-stu-id="27f02-240">The main difference is that it has the *&quot;Logged By&quot;* attribute updated with this new class' name to identify wich filter registered the log.</span></span>
+    > <span data-ttu-id="27f02-239">此自訂動作篩選條件是您在上一個練習中建立一個幾乎相同的。</span><span class="sxs-lookup"><span data-stu-id="27f02-239">This Custom Action Filter is almost the same than the one you created in the previous exercise.</span></span> <span data-ttu-id="27f02-240">主要差異在於它有*&quot;記錄由&quot;* 更新這個新類別的名稱來找出根據篩選器屬性登錄記錄。</span><span class="sxs-lookup"><span data-stu-id="27f02-240">The main difference is that it has the *&quot;Logged By&quot;* attribute updated with this new class' name to identify wich filter registered the log.</span></span>
 
 <a id="Ex2Task2"></a>
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample10.cs)]
 2. <span data-ttu-id="27f02-244">現在，執行應用程式，以便查看這些兩個自訂動作篩選條件的正常運作。</span><span class="sxs-lookup"><span data-stu-id="27f02-244">Now, run the application in order to see how these two Custom Action Filters work.</span></span> <span data-ttu-id="27f02-245">若要這樣做，請按**F5**並等待應用程式啟動。</span><span class="sxs-lookup"><span data-stu-id="27f02-245">To do this, press **F5** and wait until the application starts.</span></span>
-3. <span data-ttu-id="27f02-246">瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態。</span><span class="sxs-lookup"><span data-stu-id="27f02-246">Browse to **/ActionLog** to see log view initial state.</span></span>
+3. <span data-ttu-id="27f02-246">瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態。</span><span class="sxs-lookup"><span data-stu-id="27f02-246">Browse to **/ActionLog** to see log view initial state.</span></span>
 
     <span data-ttu-id="27f02-247">![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image5.png "記錄之前呼叫 」 活動的追蹤器狀態")</span><span class="sxs-lookup"><span data-stu-id="27f02-247">![Log tracker status before page activity](aspnet-mvc-4-custom-action-filters/_static/image5.png "Log tracker status before page activity")</span></span>
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample11.cs)]
 2. <span data-ttu-id="27f02-257">現在，請確認篩選其順序屬性的值而定的執行方式。</span><span class="sxs-lookup"><span data-stu-id="27f02-257">Now, verify how the filters are executed depending on its Order property's value.</span></span> <span data-ttu-id="27f02-258">您會發現具有的最小的順序值的篩選條件 (**CustomActionFilter**) 執行的第一個。</span><span class="sxs-lookup"><span data-stu-id="27f02-258">You will find that the filter with the smallest Order value (**CustomActionFilter**) is the first one that is executed.</span></span> <span data-ttu-id="27f02-259">按**F5**並等待應用程式啟動。</span><span class="sxs-lookup"><span data-stu-id="27f02-259">Press **F5** and wait until the application starts.</span></span>
-3. <span data-ttu-id="27f02-260">瀏覽至**/ActionLog**以查看記錄檔檢視的初始狀態。</span><span class="sxs-lookup"><span data-stu-id="27f02-260">Browse to **/ActionLog** to see log view initial state.</span></span>
+3. <span data-ttu-id="27f02-260">瀏覽至 **/ActionLog**以查看記錄檔檢視的初始狀態。</span><span class="sxs-lookup"><span data-stu-id="27f02-260">Browse to **/ActionLog** to see log view initial state.</span></span>
 
     <span data-ttu-id="27f02-261">![記錄之前呼叫 」 活動的追蹤器狀態](aspnet-mvc-4-custom-action-filters/_static/image7.png "記錄之前呼叫 」 活動的追蹤器狀態")</span><span class="sxs-lookup"><span data-stu-id="27f02-261">![Log tracker status before page activity](aspnet-mvc-4-custom-action-filters/_static/image7.png "Log tracker status before page activity")</span></span>
 
@@ -330,7 +330,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="27f02-275">在這項工作，您將更新方案以註冊新的篩選器 (**MyNewCustomActionFilter**) 做為全域的篩選條件。</span><span class="sxs-lookup"><span data-stu-id="27f02-275">In this task, you will update the solution to register the new filter (**MyNewCustomActionFilter**) as a global filter.</span></span> <span data-ttu-id="27f02-276">如此一來，就會觸發的所有動作執行應用程式中並不只是在 StoreController 項目與前一項工作。</span><span class="sxs-lookup"><span data-stu-id="27f02-276">By doing this, it will be triggered by all the actions perfomed in the application and not only in the StoreController ones as in the previous task.</span></span>
 
-1. <span data-ttu-id="27f02-277">在**StoreController**類別中，移除**[MyNewCustomActionFilter]**屬性和 [順序] 屬性從**[CustomActionFilter]**。</span><span class="sxs-lookup"><span data-stu-id="27f02-277">In **StoreController** class, remove **[MyNewCustomActionFilter]** attribute and the order property from **[CustomActionFilter]**.</span></span> <span data-ttu-id="27f02-278">它看起來應該如下所示：</span><span class="sxs-lookup"><span data-stu-id="27f02-278">It should look like the following:</span></span>
+1. <span data-ttu-id="27f02-277">在**StoreController**類別中，移除 **[MyNewCustomActionFilter]** 屬性和 [順序] 屬性從 **[CustomActionFilter]**。</span><span class="sxs-lookup"><span data-stu-id="27f02-277">In **StoreController** class, remove **[MyNewCustomActionFilter]** attribute and the order property from **[CustomActionFilter]**.</span></span> <span data-ttu-id="27f02-278">它看起來應該如下所示：</span><span class="sxs-lookup"><span data-stu-id="27f02-278">It should look like the following:</span></span>
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample13.cs)]
 2. <span data-ttu-id="27f02-279">開啟**Global.asax**檔案，並尋找**應用程式\_啟動**方法。</span><span class="sxs-lookup"><span data-stu-id="27f02-279">Open **Global.asax** file and locate the **Application\_Start** method.</span></span> <span data-ttu-id="27f02-280">請注意，每次應用程式啟動時，它藉由呼叫註冊全域篩選**RegisterGlobalFilters**方法內**FilterConfig**類別。</span><span class="sxs-lookup"><span data-stu-id="27f02-280">Notice that each time the application starts it is registering the global filters by calling **RegisterGlobalFilters** method within **FilterConfig** class.</span></span>
@@ -347,7 +347,7 @@ ms.lasthandoff: 04/06/2018
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample15.cs)]
 6. <span data-ttu-id="27f02-287">執行應用程式按**F5**。</span><span class="sxs-lookup"><span data-stu-id="27f02-287">Run the application by pressing **F5**.</span></span>
 7. <span data-ttu-id="27f02-288">按一下其中一個**內容類型**從功能表，並執行某些動作，例如瀏覽可用的專輯。</span><span class="sxs-lookup"><span data-stu-id="27f02-288">Click one of the **Genres** from the menu and perform some actions there, like browsing an available album.</span></span>
-8. <span data-ttu-id="27f02-289">核取現在**[MyNewCustomActionFilter]**媵檔晻 HomeController 和 ActionLogController 太。</span><span class="sxs-lookup"><span data-stu-id="27f02-289">Check that now **[MyNewCustomActionFilter]** is being injected in HomeController and ActionLogController too.</span></span>
+8. <span data-ttu-id="27f02-289">核取現在 **[MyNewCustomActionFilter]** 媵檔晻 HomeController 和 ActionLogController 太。</span><span class="sxs-lookup"><span data-stu-id="27f02-289">Check that now **[MyNewCustomActionFilter]** is being injected in HomeController and ActionLogController too.</span></span>
 
     <span data-ttu-id="27f02-290">![動作記錄檔與記錄活動](aspnet-mvc-4-custom-action-filters/_static/image11.png "動作記錄檔與記錄活動")</span><span class="sxs-lookup"><span data-stu-id="27f02-290">![Action log with activity logged](aspnet-mvc-4-custom-action-filters/_static/image11.png "Action log with activity logged")</span></span>
 
@@ -522,7 +522,7 @@ ms.lasthandoff: 04/06/2018
     <span data-ttu-id="27f02-395">*Web 部署設定*</span><span class="sxs-lookup"><span data-stu-id="27f02-395">*Web deploy configuration*</span></span>
 5. <span data-ttu-id="27f02-396">設定資料庫連接，如下所示：</span><span class="sxs-lookup"><span data-stu-id="27f02-396">Configure the database connection as follows:</span></span>
 
-   - <span data-ttu-id="27f02-397">在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。</span><span class="sxs-lookup"><span data-stu-id="27f02-397">In the **Server name** type your SQL Database server URL using the *tcp:* prefix.</span></span>
+   - <span data-ttu-id="27f02-397">在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:* 前置詞。</span><span class="sxs-lookup"><span data-stu-id="27f02-397">In the **Server name** type your SQL Database server URL using the *tcp:* prefix.</span></span>
    - <span data-ttu-id="27f02-398">在**使用者名**輸入您的伺服器系統管理員身分登入名稱。</span><span class="sxs-lookup"><span data-stu-id="27f02-398">In **User name** type your server administrator login name.</span></span>
    - <span data-ttu-id="27f02-399">在**密碼**輸入伺服器系統管理員身分登入密碼。</span><span class="sxs-lookup"><span data-stu-id="27f02-399">In **Password** type your server administrator login password.</span></span>
    - <span data-ttu-id="27f02-400">輸入新的資料庫名稱。</span><span class="sxs-lookup"><span data-stu-id="27f02-400">Type a new database name.</span></span>

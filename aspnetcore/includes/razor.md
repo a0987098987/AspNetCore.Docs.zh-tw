@@ -1,7 +1,7 @@
-本教學課程可讓您了解 ASP.NET Core MVC web 開發與控制器和檢視。 Razor 頁面是 ASP.NET Core 2.0 中的新替代方案，它是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。 建議您在嘗試使用 MVC 版本之前，先試試 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)教學課程。 Razor 頁面教學課程：
+<span data-ttu-id="d592b-101">本教學課程可讓您了解 ASP.NET Core MVC web 開發與控制器和檢視。</span><span class="sxs-lookup"><span data-stu-id="d592b-101">This tutorial teaches ASP.NET Core MVC web development with controllers and views.</span></span> <span data-ttu-id="d592b-102">Razor 頁面是 ASP.NET Core 2.0 中的新替代方案，它是以頁面為基礎的程式設計模型，可讓建置 Web UI 更容易且更具工作效率。</span><span class="sxs-lookup"><span data-stu-id="d592b-102">Razor Pages is a new alternative in ASP.NET Core 2.0, a page-based programming model that makes building web UI easier and more productive.</span></span> <span data-ttu-id="d592b-103">建議您在嘗試使用 MVC 版本之前，先試試 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)教學課程。</span><span class="sxs-lookup"><span data-stu-id="d592b-103">We recommend you try the [Razor Pages](xref:tutorials/razor-pages/razor-pages-start) tutorial before the MVC version.</span></span> <span data-ttu-id="d592b-104">Razor 頁面教學課程：</span><span class="sxs-lookup"><span data-stu-id="d592b-104">The Razor Pages tutorial:</span></span>
 
-* 是新應用程式開發的建議方法。
-* 比較容易學習。
-* 涵蓋更多功能。
+* <span data-ttu-id="d592b-105">是新應用程式開發的建議方法。</span><span class="sxs-lookup"><span data-stu-id="d592b-105">Is the preferred approach for new application development.</span></span>
+* <span data-ttu-id="d592b-106">比較容易學習。</span><span class="sxs-lookup"><span data-stu-id="d592b-106">Is easier to follow.</span></span>
+* <span data-ttu-id="d592b-107">涵蓋更多功能。</span><span class="sxs-lookup"><span data-stu-id="d592b-107">Covers more features.</span></span>
 
-如果您是選擇 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)版本的教學課程，請在[這個 GitHub 問題](https://github.com/aspnet/Docs/issues/6146) \(英文\) 中告訴我們原因。
+<span data-ttu-id="d592b-108">如果您是選擇 [Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)版本的教學課程，請在[這個 GitHub 問題](https://github.com/aspnet/Docs/issues/6146) \(英文\) 中告訴我們原因。</span><span class="sxs-lookup"><span data-stu-id="d592b-108">If you choose this tutorial over the [Razor Pages](xref:tutorials/razor-pages/razor-pages-start) version, please tell us why in [this GitHub issue](https://github.com/aspnet/Docs/issues/6146).</span></span>

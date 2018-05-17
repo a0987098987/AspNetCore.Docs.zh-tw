@@ -20,7 +20,7 @@ ms.lasthandoff: 04/18/2018
 
 由[Scott Addie](https://github.com/scottaddie)和[Fiyaz Hasan](http://fiyazhasan.me/)
 
-單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[反應](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。 [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
+單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[React](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。 [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -68,7 +68,7 @@ SpaServices 提供有用的基礎結構，例如：
     node -v && npm -v
     ```
 
-注意： 如果您要部署至 Azure 的網站，您不需要執行以下任何動作&mdash;Node.js 已安裝並可在伺服器環境中。
+注意： 如果您要部署至 Azure 的網站，您不需要執行以下任何動作 &mdash; Node.js 已安裝並可在伺服器環境中。
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -78,9 +78,9 @@ SpaServices 提供有用的基礎結構，例如：
 
 <a name="server-prerendering"></a>
 
-## <a name="server-side-prerendering"></a>伺服器端尚未
+## <a name="server-side-prerendering"></a>伺服器端渲染
 
-通用 (也稱為 isomorphic) 應用程式是 JavaScript 應用程式能夠執行同時在伺服器和用戶端上。 角度、 React 和其他常用架構提供此應用程式的開發樣式通用平台。 做法是先呈現架構上的元件透過 Node.js 伺服器，然後進一步委派給用戶端執行。
+通用 (也稱為 isomorphic) 應用程式是 JavaScript 應用程式能夠執行同時在伺服器和用戶端上。 Angular、 React 和其他常用架構提供此應用程式的開發樣式通用平台。 做法是先呈現架構上的元件透過 Node.js 伺服器，然後進一步委派給用戶端執行。
 
 ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServices 簡化的伺服器端尚未實作叫用伺服器上的 JavaScript 函式。
 
@@ -109,7 +109,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 
-在下列的角度範例中， *ClientApp/開機-server.ts*檔案會利用`createServerRenderer`函式和`RenderResult`類型`aspnet-prerendering`設定伺服器轉譯透過 Node.js 的 npm 封裝。 預定要給伺服器端轉譯會傳遞至解析函式呼叫，包裝強型別在 JavaScript 中的 HTML 標記`Promise`物件。 `Promise`物件的重要性是會以非同步方式提供要在 DOM 的預留位置項目插入頁面的 HTML 標記。
+在下列的 Angular 範例中， *ClientApp/開機-server.ts*檔案會利用`createServerRenderer`函式和`RenderResult`類型`aspnet-prerendering`設定伺服器轉譯透過 Node.js 的 npm 封裝。 預定要給伺服器端轉譯會傳遞至解析函式呼叫，包裝強型別在 JavaScript 中的 HTML 標記`Promise`物件。 `Promise`物件的重要性是會以非同步方式提供要在 DOM 的預留位置項目插入頁面的 HTML 標記。
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-34,79-)]
 
@@ -119,7 +119,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
-接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的角度範例中，資料用來建構內的個人化的問候語`h1`項目：
+接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的 Angular 範例中，資料用來建構內的個人化的問候語`h1`項目：
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
@@ -238,11 +238,11 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 | 範本                                 | 簡短名稱 | 語言 | Tags        |
 |:------------------------------------------|:-----------|:---------|:------------|
-| MVC ASP.NET Core 與角度             | angular    | [C#]     | Web/MVC/SPA |
+| MVC ASP.NET Core 與 Angular             | angular    | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core 與 React.js            | react      | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core React.js 和 Redux  | reactredux | [C#]     | Web/MVC/SPA |
 
-若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC 角度的應用程式：
+若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC Angular 的應用程式：
 
 ```console
 dotnet new angular
@@ -288,7 +288,7 @@ dotnet run
 
 SpaServices 範本是預先設定為執行用戶端測試使用[Karma](https://karma-runner.github.io/1.0/index.html)和[Jasmine](https://jasmine.github.io/)。 Jasmine 是熱門單元測試架構適用 JavaScript 的而 Karma 是這些測試的測試執行器。 Karma 設為搭配[Webpack Dev 中介軟體](#webpack-dev-middleware)，開發人員不需要停止並執行測試，每次進行變更。 是否為測試案例或測試案例本身上執行的程式碼，會自動執行測試。
 
-使用角度的應用程式，例如，兩個 Jasmine 測試案例已提供`CounterComponent`中*counter.component.spec.ts*檔案：
+使用 Angular 的應用程式，例如，兩個 Jasmine 測試案例已提供`CounterComponent`中*counter.component.spec.ts*檔案：
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
@@ -324,4 +324,5 @@ dotnet publish -c Release
 
 ## <a name="additional-resources"></a>其他資源
 
-* [角度的文件](https://angular.io/docs)
+* [
+的文件](https://angular.io/docs)

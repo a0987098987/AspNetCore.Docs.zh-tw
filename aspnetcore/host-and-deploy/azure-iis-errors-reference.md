@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 1500f026c245f80de4120d6db4901cb117552966
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 995890a5e6b0cc1d9cebc21486917a7a39587076
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure 應用程式服務和 IIS 與 ASP.NET Core 的常見錯誤參考
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="installer-unable-to-obtain-vc-redistributable"></a>安裝程式無法取得 VC++ 可轉散發套件
 
-* **安裝程式的例外狀況：**0x80072efd 或 0x80072f76 - 未指定的錯誤
+* **安裝程式的例外狀況：** 0x80072efd 或 0x80072f76 - 未指定的錯誤
 
-* **安裝程式記錄例外狀況&#8224;：**錯誤 0x80072efd 或 0x80072f76：無法執行 EXE 套件
+* **安裝程式記錄例外狀況&#8224;：** 錯誤 0x80072efd 或 0x80072f76：無法執行 EXE 套件
 
   &#8224;記錄位於 C:\Users\\{USER}\AppData\Local\Temp\dd_DotNetCoreWinSvrHosting__{timestamp}.log。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="os-upgrade-removed-the-32-bit-aspnet-core-module"></a>作業系統升級已移除 32 位元的 ASP.NET Core 模組
 
-* **應用程式記錄檔：**無法載入模組 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll**。 資料即錯誤。
+* **應用程式記錄檔：** 無法載入模組 DLL **C:\WINDOWS\system32\inetsrv\aspnetcore.dll**。 資料即錯誤。
 
 疑難排解：
 
@@ -54,11 +54,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="platform-conflicts-with-rid"></a>平台發生 RID 衝突
 
-* **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
+* **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式記錄檔：**應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\{路徑}\'無法啟動處理序的命令列使用 '"c:\\{PATH} {組件}。 {exe | dll}"'，錯誤碼 = ' 0x80004005: ff。
+* **應用程式記錄檔：** 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\{路徑}\'無法啟動處理序的命令列使用 '"c:\\{PATH} {組件}。 {exe | dll}"'，錯誤碼 = ' 0x80004005: ff。
 
-* **ASP.NET Core 模組記錄：**未處理例外狀況： System.BadImageFormatException： 無法載入檔案或組件 '{組件}.dll'。 嘗試載入了格式不正確的程式。
+* **ASP.NET Core 模組記錄：** 未處理例外狀況： System.BadImageFormatException： 無法載入檔案或組件 '{組件}.dll'。 嘗試載入了格式不正確的程式。
 
 疑難排解：
 
@@ -70,11 +70,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="uri-endpoint-wrong-or-stopped-website"></a>URI 端點錯誤或停止了網站
 
-* **瀏覽器：**ERR_CONNECTION_REFUSED
+* **瀏覽器：** ERR_CONNECTION_REFUSED
 
-* **應用程式記錄檔：**無項目
+* **應用程式記錄檔：** 無項目
 
-* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+* **ASP.NET Core 模組記錄檔：** 未建立記錄檔
 
 疑難排解：
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>已停用 CoreWebEngine 或 W3SVC 伺服器功能
 
-* **作業系統例外狀況：**必須安裝 IIS 7.0 CoreWebEngine 和 W3SVC 功能，才能使用 ASP.NET Core 模組。
+* **作業系統例外狀況：** 必須安裝 IIS 7.0 CoreWebEngine 和 W3SVC 功能，才能使用 ASP.NET Core 模組。
 
 疑難排解：
 
@@ -94,9 +94,9 @@ ms.lasthandoff: 04/18/2018
 
 * **瀏覽器：** 403 禁止 - 存取被拒 **--或--** 403.14 禁止 - 網頁伺服器已設為不列出此目錄的內容。
 
-* **應用程式記錄檔：**無項目
+* **應用程式記錄檔：** 無項目
 
-* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+* **ASP.NET Core 模組記錄檔：** 未建立記錄檔
 
 疑難排解：
 
@@ -104,11 +104,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="incorrect-role-module-not-installed-or-incorrect-permissions"></a>角色不正確、模組未安裝，或權限不正確。
 
-* **瀏覽器：**500.19 內部伺服器錯誤 - 無法存取所要求的網頁，因為該頁面的相關組態資料無效。
+* **瀏覽器：** 500.19 內部伺服器錯誤 - 無法存取所要求的網頁，因為該頁面的相關組態資料無效。
 
-* **應用程式記錄檔：**無項目
+* **應用程式記錄檔：** 無項目
 
-* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+* **ASP.NET Core 模組記錄檔：** 未建立記錄檔
 
 疑難排解：
 
@@ -120,11 +120,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath、 遺漏 PATH 變數、 裝載未安裝的套件組合，系統/IIS 不會重新啟動、 VC + + 可轉散發套件未安裝，或 dotnet.exe 存取違規
 
-* **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
+* **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式記錄檔：**應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'無法啟動處理序的命令列使用 ' 」。\{組件}.exe"'，錯誤碼 = ' 0x80070002: 0。
+* **應用程式記錄檔：** 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'無法啟動處理序的命令列使用 ' 」。\{組件}.exe"'，錯誤碼 = ' 0x80070002: 0。
 
-* **ASP.NET Core 模組記錄檔：**已建立記錄檔，但卻是空的。
+* **ASP.NET Core 模組記錄檔：** 已建立記錄檔，但卻是空的。
 
 疑難排解：
 
@@ -144,11 +144,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>不正確的 \<aspNetCore\> 元素引數
 
-* **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
+* **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式記錄檔：**應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'無法啟動處理序的命令列使用 '"dotnet"。\{組件}.dll '，錯誤碼 = ' 0x80004005: 80008081。
+* **應用程式記錄檔：** 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'無法啟動處理序的命令列使用 '"dotnet"。\{組件}.dll '，錯誤碼 = ' 0x80004005: 80008081。
 
-* **ASP.NET Core 模組記錄檔：**要執行的應用程式不存在: ' 路徑\{組件}.dll '
+* **ASP.NET Core 模組記錄檔：** 要執行的應用程式不存在: ' 路徑\{組件}.dll '
 
 疑難排解：
 
@@ -162,7 +162,7 @@ ms.lasthandoff: 04/18/2018
 
 * **應用程式記錄檔：** ErrorCode = 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'無法啟動處理序的命令列使用 '"dotnet"。\{組件}.dll '，錯誤碼 = ' 0x80004005: 80008081。
 
-* **ASP.NET Core 模組記錄檔：**遺失方法、檔案或組件例外狀況。 例外狀況中指定的方法、檔案或組件是 .NET Framework 方法、檔案或組件。
+* **ASP.NET Core 模組記錄檔：** 遺失方法、檔案或組件例外狀況。 例外狀況中指定的方法、檔案或組件是 .NET Framework 方法、檔案或組件。
 
 疑難排解：
 
@@ -172,11 +172,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="stopped-application-pool"></a>已停止應用程式集區
 
-* **瀏覽器：**503 服務無法使用
+* **瀏覽器：** 503 服務無法使用
 
-* **應用程式記錄檔：**無項目
+* **應用程式記錄檔：** 無項目
 
-* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+* **ASP.NET Core 模組記錄檔：** 未建立記錄檔
 
 疑難排解
 
@@ -184,11 +184,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="iis-integration-middleware-not-implemented"></a>未實作 IIS Integration 中介軟體
 
-* **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
+* **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式記錄檔：**應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'使用命令列建立程序 '"c:\\{PATH}\{組件}。 {exe | dll}"' 但可能當機或沒有不回應，或者未接聽指定連接埠 '{PORT}' ErrorCode = '0x800705b4'
+* **應用程式記錄檔：** 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'使用命令列建立程序 '"c:\\{PATH}\{組件}。 {exe | dll}"' 但可能當機或沒有不回應，或者未接聽指定連接埠 '{PORT}' ErrorCode = '0x800705b4'
 
-* **ASP.NET Core 模組記錄檔：**記錄檔已建立並顯示一般作業。
+* **ASP.NET Core 模組記錄檔：** 記錄檔已建立並顯示一般作業。
 
 疑難排解
 
@@ -198,15 +198,15 @@ ms.lasthandoff: 04/18/2018
   * IIS Integration 中介軟體為 referencedby 呼叫`UseIISIntegration`方法上的應用程式`WebHostBuilder`(ASP.NET Core 1.x)
   * 應用程式會使用`CreateDefaultBuilder`方法 (ASP.NET Core 2.x)。
   
-  如需詳細資訊，請參閱[在 ASP.NET Core 中裝載](xref:fundamentals/hosting)。
+  請參閱[主應用程式中 ASP.NET Core](xref:fundamentals/host/index)如需詳細資訊。
 
 ## <a name="sub-application-includes-a-handlers-section"></a>子應用程式包含\<處理常式\>區段
 
-* **瀏覽器：**HTTP 錯誤 500.19 - 內部伺服器錯誤
+* **瀏覽器：** HTTP 錯誤 500.19 - 內部伺服器錯誤
 
-* **應用程式記錄檔：**無項目
+* **應用程式記錄檔：** 無項目
 
-* **ASP.NET Core 模組記錄：**記錄檔建立並顯示根應用程式的一般作業。 未建立子應用程式記錄檔。
+* **ASP.NET Core 模組記錄：** 記錄檔建立並顯示根應用程式的一般作業。 未建立子應用程式記錄檔。
 
 疑難排解
 
@@ -214,11 +214,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="stdout-log-path-incorrect"></a>stdout 的記錄檔路徑不正確
 
-* **瀏覽器：**應用程式通常會回應。
+* **瀏覽器：** 應用程式通常會回應。
 
-* **應用程式記錄檔：**警告： 無法建立 stdoutLogFile \\？ \C:\_apps\app_folder\bin\Release\netcoreapp2.0\win10-x64\publish\logs\path_doesnt_exist\stdout_8748_201831835937.log，ErrorCode =-2147024893。
+* **應用程式記錄檔：** 警告： 無法建立 stdoutLogFile \\？ \C:\_apps\app_folder\bin\Release\netcoreapp2.0\win10-x64\publish\logs\path_doesnt_exist\stdout_8748_201831835937.log，ErrorCode =-2147024893。
 
-* **ASP.NET Core 模組記錄檔：**未建立記錄檔
+* **ASP.NET Core 模組記錄檔：** 未建立記錄檔
 
 疑難排解
 
@@ -226,11 +226,11 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="application-configuration-general-issue"></a>應用程式組態一般問題
 
-* **瀏覽器：**HTTP 錯誤 502.5 - 處理序失敗
+* **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式記錄檔：**應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'使用命令列建立程序 '"c:\\{PATH}\{組件}。 {exe | dll}"' 但可能當機或沒有不回應，或者未接聽指定連接埠 '{PORT}' ErrorCode = '0x800705b4'
+* **應用程式記錄檔：** 應用程式 'MACHINE/WEBROOT/APPHOST / {組件}' 與實體根' c:\\{PATH}\'使用命令列建立程序 '"c:\\{PATH}\{組件}。 {exe | dll}"' 但可能當機或沒有不回應，或者未接聽指定連接埠 '{PORT}' ErrorCode = '0x800705b4'
 
-* **ASP.NET Core 模組記錄檔：**已建立記錄檔，但卻是空的。
+* **ASP.NET Core 模組記錄檔：** 已建立記錄檔，但卻是空的。
 
 疑難排解
 

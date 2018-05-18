@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: testing/troubleshoot
-ms.openlocfilehash: f2c785bfe27ddd67db0313b8ee1c077a8cc06e05
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 3bba085c69ee96b5725331b14dcf15350d66e4a4
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>疑難排解 ASP.NET Core 專案
 
@@ -66,3 +66,15 @@ ms.lasthandoff: 05/08/2018
 
 * 安裝或檢查已安裝.NET Core SDK。
 * 確認`PATH`環境變數指向安裝 SDK 的位置。 安裝程式通常設定`PATH`。
+
+::: moniker range=">= aspnetcore-2.1"
+
+### <a name="use-of-ihtmlhelperpartial-may-result-in-application-deadlocks"></a>使用 IHtmlHelper.Partial 可能導致應用程式死結
+
+在 ASP.NET 核心 2.1 和更新版本，呼叫`Html.Partial`導致分析器警告，因為可能有死結。 警告訊息是：
+
+*使用 IHtmlHelper.Partial 可能會導致應用程式死結。請考慮使用`<partial>`標記協助程式或`IHtmlHelper.PartialAsync`。*
+
+呼叫`@Html.Partial`應取代為`@await Html.PartialAsync`或部分標記協助程式`<partial name="_Partial" />`。
+
+::: moniker-end

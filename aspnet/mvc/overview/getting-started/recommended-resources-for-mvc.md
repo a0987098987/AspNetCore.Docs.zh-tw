@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: b328b733914b20b0aa3fe529c9a9f999349171ec
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7887d81366cc166ad89308b22ad7cc6af0263111
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="mvc-recommended-resources"></a>MVC 建議使用的資源
 ====================
@@ -42,7 +42,6 @@ ms.lasthandoff: 04/06/2018
 ## <a name="new-featured-content"></a>新的主要的內容
 
 - [選取適用於 ASP.NET 中的當地語系化的文化特性](http://weblog.west-wind.com/posts/2014/Mar/27/Auto-Selecting-Cultures-for-Localization-in-ASPNET)
-- [在 MVC 中的巢狀配置](http://astutelogic.com/nesting-layouts-in-mvc/)羅美惠由
 - [建立 ASP.NET MVC 5 應用程式使用 Facebook 和 Google OAuth2 登入](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [了解 ASP.NET MVC 篩選和屬性](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
 - [ASP.NET MVC 5 應用程式生命週期](lifecycle-of-an-aspnet-mvc-5-application.md)(PDF)
@@ -194,7 +193,7 @@ ms.lasthandoff: 04/06/2018
 
 <a id="KO"></a>
 
-## <a name="angularjs-knockout-knockoutjs"></a>AngularJS, Knockout, KnockoutJS
+## <a name="angularjs-knockout-knockoutjs"></a>AngularJS、 Knockout、 KnockoutJS
 
 - [Knockout](http://knockoutjs.com/)
 - [開始使用 ASP.NET MVC 中 KnockoutJS](http://www.dotnetcurry.com/ShowArticle.aspx?ID=933)

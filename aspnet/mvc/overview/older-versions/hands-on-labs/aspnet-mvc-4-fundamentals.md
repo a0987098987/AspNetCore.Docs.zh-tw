@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: a0dd32280321938aba84a2aed5273d80750ed774
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 225dff4663e0e556cfb8966f1078848b4c2b47a5
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 的基本概念
 
@@ -50,8 +50,8 @@ ms.lasthandoff: 04/06/2018
 Music Store 應用程式將會使用建置**模型檢視控制器 (MVC)**，分隔成三個主要元件的應用程式的架構模式：
 
 - **模型**： 模型物件屬於實作網域邏輯之應用程式一部分。 通常，模型物件也擷取並儲存在資料庫中的模型狀態。
-- **檢視：**檢視會顯示應用程式的使用者介面 (UI) 的元件。 一般而言，此 UI 是從模型資料的方式建立。 範例會顯示文字方塊和下拉式清單的專輯物件的目前狀態為基礎的相簿編輯檢視。
-- **控制站：**控制站是可處理使用者互動、 使用模型，以及最後選取的檢視呈現 UI 元件。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。
+- **檢視：** 檢視會顯示應用程式的使用者介面 (UI) 的元件。 一般而言，此 UI 是從模型資料的方式建立。 範例會顯示文字方塊和下拉式清單的專輯物件的目前狀態為基礎的相簿編輯檢視。
+- **控制站：** 控制站是可處理使用者互動、 使用模型，以及最後選取的檢視呈現 UI 元件。 在 MVC 應用程式中，檢視只會顯示資訊，而控制器則會處理及回應使用者輸入和互動。
 
 MVC 模式可協助您建立個別的不同層面的應用程式 （輸入的邏輯、 商務邏輯和 UI 邏輯），同時提供這些項目之間的鬆散偶合的應用程式。 此隔離有助於您管理複雜度，當您建置應用程式，因為它可讓您將焦點放在上一次實作的其中一個層面。 此外，MVC 模式讓您輕鬆地測試應用程式，也鼓勵測試為導向的開發 (TDD) 用於建立應用程式。
 
@@ -89,7 +89,7 @@ MVC 模式可協助您建立個別的不同層面的應用程式 （輸入的邏
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 c： 使用程式碼片段](#AppendixC)&quot;。
 
@@ -130,7 +130,7 @@ MVC 模式可協助您建立個別的不同層面的應用程式 （輸入的邏
 2. 按一下 [檔案] 功能表上的 [新增專案]。
 3. 在**新專案**對話方塊中，選取**ASP.NET MVC 4 Web 應用程式**專案類型，位於**Visual C#** **Web**範本清單。
 4. 變更**名稱**至*MvcMusicStore*。
-5. 設定內的新方案的位置**開始**資料夾，在此練習中的來源資料夾中，例如**[您-HOL-PATH] \Source\Ex01-CreatingMusicStoreProject\Begin**。 按一下 [確定 **Deploying Office Solutions**]。
+5. 設定內的新方案的位置**開始**資料夾，在此練習中的來源資料夾中，例如 **[您-HOL-PATH] \Source\Ex01-CreatingMusicStoreProject\Begin**。 按一下 [確定 **Deploying Office Solutions**]。
 
     ![建立新專案 對話方塊](aspnet-mvc-4-fundamentals/_static/image2.png "建立新專案 對話方塊")
 
@@ -191,10 +191,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 Ex1 HomeController 索引基本概念*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample1.cs)]
 
 <a id="Ex1Task4"></a>
 
@@ -259,18 +256,12 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 Ex2 StoreController 索引基本概念*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample2.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample2.cs)]
 2. 新增**瀏覽**和**詳細資料**方法。 若要這樣做，請將加入下列程式碼加入**StoreController**:
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex2 StoreController BrowseAndDetails*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample3.cs)]
 
 <a id="Ex2Task3"></a>
 
@@ -319,15 +310,12 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex3 StoreController BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample4.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample4.cs)]
 
 > [!NOTE]
-> You are using the **HttpUtility.HtmlEncode** utility method to prevents users from injecting Javascript into the View with a link like **/Store/Browse?Genre=&lt;script&gt;window.location='[http://hackersite.com](http://hackersite.com)'&lt;/script&gt;**.
+> 您使用**HttpUtility.HtmlEncode**公用程式方法，以防止使用者的連結，例如，將檢視插入的 Javascript   **/存放區/瀏覽？內容類型 =&lt;指令碼&gt;window.location='[http://hackersite.com](http://hackersite.com)'&lt;/指令碼&gt;**。
 > 
-> For further explanation, please visit [this msdn article](https://msdn.microsoft.com/library/a2a4yykt(v=VS.80).aspx).
-~~~
+> 如需進一步說明，請瀏覽[msdn 本文](https://msdn.microsoft.com/library/a2a4yykt(v=VS.80).aspx)。
 
 <a id="Ex3Task2"></a>
 
@@ -341,7 +329,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     ![瀏覽 StoreBrowseGenre = Disco](aspnet-mvc-4-fundamentals/_static/image10.png "瀏覽 StoreBrowseGenre = Disco")
 
-    *Browsing /Store/Browse?Genre=Disco*
+    *瀏覽 /Store/Browse 嗎？內容類型 = Disco*
 3. 關閉瀏覽器。
 
 <a id="Ex3Task3"></a>
@@ -355,10 +343,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex3 StoreController DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample5.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample5.cs)]
 
 <a id="Ex3Task4"></a>
 
@@ -368,7 +353,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 在這項工作，您將會嘗試在 web 瀏覽器應用程式，並使用**識別碼**參數。
 
 1. 按**F5**執行應用程式。
-2. 在專案開始**首頁**頁面。 將 URL 變更為*/Store/Details/5*確認動作接收 id 參數。
+2. 在專案開始**首頁**頁面。 將 URL 變更為 */Store/Details/5*確認動作接收 id 參數。
 
     ![瀏覽 StoreDetails5](aspnet-mvc-4-fundamentals/_static/image11.png "瀏覽 StoreDetails5")
 
@@ -388,7 +373,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 <a id="Task_1_-_Modifying_the_file__layoutcshtml"></a>
 #### <a name="task-1---modifying-the-file-layoutcshtml"></a>工作 1-修改檔案\_layout.cshtml
 
-檔案**~/Views/Shared/\_layout.cshtml**可讓您設定一般 HTML 橫跨整個網站使用的範本。 在這項工作中，您將會配置主版頁面的連結的通用標頭加入首頁並儲存區的區域中。
+檔案 **~/Views/Shared/\_layout.cshtml**可讓您設定一般 HTML 橫跨整個網站使用的範本。 在這項工作中，您將會配置主版頁面的連結的通用標頭加入首頁並儲存區的區域中。
 
 1. 如果尚未開啟，啟動**VS Express for Web**。
 2. 在**檔案**功能表上，選擇**開啟專案**。 在 [開啟專案] 對話方塊中，瀏覽至**Source\Ex04 CreatingAView\Begin**，選取**Begin.sln**按一下**開啟**。 或者，您可以繼續使用此方案完成上一個練習之後取得。
@@ -412,7 +397,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
     [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample8.cshtml)]
 
     > [!NOTE]
-    > 您知道嗎？ Visual Studio 2012 會有片段，可讓您輕鬆將常用的程式碼加入 HTML、 程式碼檔案和更多 ！ 試試看輸入**&lt;div&gt;**按**索引標籤**兩次，插入完整**div**標記。
+    > 您知道嗎？ Visual Studio 2012 會有片段，可讓您輕鬆將常用的程式碼加入 HTML、 程式碼檔案和更多 ！ 試試看輸入**&lt;div&gt;** 按** 索引標籤**兩次，插入完整**div**標記。
 
 <a id="Ex4Task2"></a>
 
@@ -441,10 +426,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 Ex4 HomeController 索引基本概念*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample9.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample9.cs)]
 2. 現在，您需要加入適當的檢視範本。 若要這樣做，**以滑鼠右鍵按一下**內**索引**動作方法，然後選取**加入檢視**。 這會顯示**加入檢視**對話方塊。
 
     ![加入從索引方法內的檢視](aspnet-mvc-4-fundamentals/_static/image13.png "加入從索引方法內的檢視")
@@ -469,10 +451,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
     > 如此一來，可避免 ASP.NET MVC，必須使用下列命名慣例，傳回檢視時，明確指定的名稱或檢視表範本的位置。
 5. 產生的檢視範本根據 **\_layout.cshtml**先前定義的範本。 要更新 ViewBag.Title 屬性**首頁**，並將變更的主要內容**這是在首頁上**，如下列程式碼所示：
 
-
-~~~
-[!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample10.cshtml)]
-~~~
+    [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample10.cshtml)]
 6. 選取**MvcMusicStore**專案在 [方案總管]，然後按**F5**執行應用程式。
 
 <a id="Ex4Task4"></a>
@@ -550,13 +529,10 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基礎 Ex5 StoreIndexViewModel 屬性*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample11.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample11.cs)]
 
 > [!NOTE]
-> The **{ get; set; }** notation makes use of C#'s auto-implemented properties feature. It provides the benefits of a property without requiring us to declare a backing field.
-~~~
+> **{Get; 設定;}** 標記法會使用 C# 功能自動實作的屬性。 它提供屬性的優點，而不需要我們宣告支援欄位。
 
 <a id="Ex5Task3"></a>
 
@@ -576,10 +552,7 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基礎 Ex5 StoreIndexViewModel 使用 ViewModels*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample12.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample12.cs)]
 3. 變更**StoreController**的**索引**動作方法，使它建立並填入**StoreIndexViewModel**物件，並再將它，傳遞至檢視範本產生 HTML 的回應。
 
     > [!NOTE]
@@ -590,13 +563,10 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基礎 Ex5 StoreController 索引方法*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample13.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample13.cs)]
 
 > [!NOTE]
-> If you're unfamiliar with C#, you may assume that using **var** means that the **viewModel** variable is late-bound. That's not correct - the C# compiler is using type-inference based on what you assign to the variable to determine that **viewModel** is of type **StoreIndexViewModel**. Also, by compiling the local **viewModel** variable as a **StoreIndexViewModel** type you get compile-time checking and Visual Studio code-editor support.
-~~~
+> 如果您熟悉 C#，您可能會假設也使用**var**表示**viewModel**變數是晚期繫結。 不正確-C# 編譯器使用根據指派給變數的類型推斷來判斷， **viewModel**的型別**StoreIndexViewModel**。 此外，藉由編譯本機**viewModel**變數作為**StoreIndexViewModel** get 編譯時期檢查和 Visual Studio 程式碼編輯器支援類型。
 
 <a id="Ex5Task4"></a>
 
@@ -633,29 +603,25 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 > [!NOTE]
 > 您將使用語法 @ (通常稱為&quot;程式碼區塊&quot;) 來執行程式碼內檢視範本。
 
-
 1. 在**Index.cshtml**檔案內**存放區**資料夾中，其程式碼替換成下列：
 
-
-~~~
 [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample14.cshtml)]
 
-> [!NOTE]
-> As soon as you finish typing the period after the word **Model**, Visual Studio's Intellisense will show a list of possible properties and methods to choose from.
-> 
-> ![](aspnet-mvc-4-fundamentals/_static/image25.png)
-> 
-> *Getting Model properties and methods with Visual Studio's IntelliSense*
-> 
-> The **Model** property references the **StoreIndexViewModel** object that the Controller passed to the View template. This means that you can access all of the data passed from the Controller to the View template via the **Model** property, and format it into an appropriate HTML response within the View template.
-> 
-> You can just select the **NumberOfGenres** property from the Intellisense list rather than typing it in and then it will auto-complete it by pressing the **tab key**.
-~~~
-2. 透過內容類型清單中的迴圈**StoreIndexViewModel**並建立 HTML **&lt;ul&gt;**清單使用**foreach**迴圈。
+    > [!NOTE]
+    > As soon as you finish typing the period after the word **Model**, Visual Studio's Intellisense will show a list of possible properties and methods to choose from.
+    > 
+    > ![](aspnet-mvc-4-fundamentals/_static/image25.png)
+    > 
+    > *Getting Model properties and methods with Visual Studio's IntelliSense*
+    > 
+    > The **Model** property references the **StoreIndexViewModel** object that the Controller passed to the View template. This means that you can access all of the data passed from the Controller to the View template via the **Model** property, and format it into an appropriate HTML response within the View template.
+    > 
+    > You can just select the **NumberOfGenres** property from the Intellisense list rather than typing it in and then it will auto-complete it by pressing the **tab key**.
+2. 透過內容類型清單中的迴圈**StoreIndexViewModel**並建立 HTML **&lt;ul&gt;** 清單使用**foreach**迴圈。
    (C#)
 
     [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample15.cshtml)]
-3. 按**F5**執行應用程式，然後瀏覽**/儲存**。 您會看到傳入的內容類型清單**StoreIndexViewModel**物件從**StoreController**檢視範本。
+3. 按**F5**執行應用程式，然後瀏覽 **/儲存**。 您會看到傳入的內容類型清單**StoreIndexViewModel**物件從**StoreController**檢視範本。
 
     ![檢視顯示的內容類型清單](aspnet-mvc-4-fundamentals/_static/image26.png "檢視顯示的內容類型清單")
 
@@ -698,19 +664,13 @@ ASP.NET MVC 架構包括 Visual Studio 專案範本，可協助您建立 Web 應
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 類型*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample16.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample16.cs)]
 5. 相同的程序之前，新增**專輯**類別。 若要這樣做，請以滑鼠右鍵按一下**模型**資料夾中的**方案總管 中**，選取**新增**然後**新項目**選項。 在下**程式碼**，選擇**類別**項目，並將檔案命名*Album.cs*，然後按一下 **新增**。
 6. 專輯類別中加入兩個屬性：**類型**和**標題**。 若要這樣做，請加入下列程式碼：
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 專輯*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample17.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample17.cs)]
 
 <a id="Ex6Task2"></a>
 
@@ -724,25 +684,19 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 UsingModel*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample18.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample18.cs)]
 3. 加入兩個屬性，以**StoreBrowseViewModel**類別：**類型**和**專輯**。 若要這樣做，請加入下列程式碼：
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 ModelProperties*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample19.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample19.cs)]
 
 > [!NOTE]
-> What is **List&lt;Album&gt;** ?: This definition is using the **List&lt;T&gt;** type, where **T** constrains the type to which elements of this **List** belong to, in this case **Album** (or any of its descendants).
+> 什麼是**清單&lt;專輯&gt;** ？: 使用此定義**清單&lt;T&gt;** 型別，其中**T**限制這項目型別**清單**屬於，在此情況下**專輯**（或其任何子代）。
 > 
-> This ability to design classes and methods that defer the specification of one or more types until the class or method is declared and instantiated by client code is a feature of the C# language called **Generics**.
+> 這項功能來設計類別和類別或方法宣告並具現化用戶端程式碼是 C# 語言的功能之前，延後的一或多個型別規格的方法呼叫**泛型**。
 > 
-> **List&lt;T&gt;** is the generic equivalent of the **ArrayList** type and is available in the **System.Collections.Generic** namespace. One of the benefits of using **generics** is that since the type is specified, you do not need to take care of type checking operations such as casting the elements into **Album** as you would do with an **ArrayList**.
-~~~
+> **清單&lt;T&gt;** 相當於泛型**ArrayList**輸入，並可用於**System.Collections.Generic**命名空間。 使用的優點的其中一個**泛型**是，因為指定的類型，您不需要處理的型別檢查作業，例如轉型成項目**專輯**像您一樣**ArrayList**。
 
 <a id="Ex6Task3"></a>
 
@@ -755,26 +709,17 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 UsingModelInController*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample20.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample20.cs)]
 2. 取代**瀏覽**動作方法，以使用**StoreViewBrowseController**類別。 您將使用虛擬資料建立內容類型和兩個新的專輯物件 （在下一步的實際操作實驗室中您會使用資料庫的實際資料）。 若要這樣做，請取代**瀏覽**方法取代下列程式碼：
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample21.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample21.cs)]
 3. 取代**詳細資料**動作方法，以使用**StoreViewBrowseController**類別。 您將建立新**專輯**物件傳回至**檢視**。 若要這樣做，請取代**詳細資料**方法取代下列程式碼：
 
     (程式碼片段- *ASP.NET MVC 4 基本概念 Ex6 DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample22.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample22.cs)]
 
 <a id="Ex6Task4"></a>
 
@@ -833,7 +778,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 在這個工作中，您將測試的**詳細資料**檢視擷取的專輯資訊從**詳細說明動作**方法。
 
 1. 按**F5**執行應用程式。
-2. 在專案開始**首頁**頁面。 將 URL 變更為**/Store/Details/5**確認的專輯資訊。
+2. 在專案開始**首頁**頁面。 將 URL 變更為 **/Store/Details/5**確認的專輯資訊。
 
     ![瀏覽專輯詳細](aspnet-mvc-4-fundamentals/_static/image32.png "瀏覽專輯詳細資料")
 
@@ -844,19 +789,19 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 <a id="Task_8_-_Adding_Links_Between_Pages"></a>
 #### <a name="task-8---adding-links-between-pages"></a>工作 8： 加入頁面之間的連結
 
-在這個工作中，您會加入要設為適當的每個內容類型名稱中有一個連結的存放區檢視中的連結**/存放區/瀏覽**URL。 如此一來，當您按一下 內容類型，例如**Disco**，它會瀏覽至**/存放區/瀏覽？ 內容類型 = Disco** URL。
+在這個工作中，您會加入要設為適當的每個內容類型名稱中有一個連結的存放區檢視中的連結 **/存放區/瀏覽**URL。 如此一來，當您按一下 內容類型，例如**Disco**，它會瀏覽至 **/存放區/瀏覽？ 內容類型 = Disco** URL。
 
 1. 關閉瀏覽器，如有需要若要返回 Visual Studio 視窗。 更新**索引**頁面以新增連結**瀏覽**頁面。 若要這樣做，請在**方案總管 中**展開**檢視**資料夾，然後在**存放區**資料夾，然後按兩下**Index.cshtml**頁面。
-2. 表示內容類型選取 [瀏覽] 檢視中加入的連結。 若要這樣做，請取代下列反白顯示的程式碼內**&lt;li&gt;**標記: (C#)
+2. 表示內容類型選取 [瀏覽] 檢視中加入的連結。 若要這樣做，請取代下列反白顯示的程式碼內**&lt;li&gt;** 標記: (C#)
 
     [!code-cshtml[Main](aspnet-mvc-4-fundamentals/samples/sample25.cshtml)]
 
    > [!NOTE]
    > 另一種方法就直接連結到頁面上，具有類似下列程式碼：
    > 
-   > &lt;a href=&quot;/Store/Browse?genre=@genreName&quot;&gt;@genreName&lt;/a&gt;
+   > &lt;a =&quot;/存放區/瀏覽？ 內容類型 =@genreName&quot;&gt;@genreName &lt; /a&gt;
    > 
-   > 雖然這個方法的效果，它會相依於硬式編碼字串。 如果您稍後重新命名的控制站，您必須手動變更此指示。 較佳替代方式是使用**HTML Helper**方法。 ASP.NET MVC 包括 HTML Helper 方法，這個方法會使用這類工作。 **Html.ActionLink()** helper 方法可讓您輕鬆地建立 HTML **&lt;&gt;**連結，並確定具有正確的 URL 路徑 URL 編碼。
+   > 雖然這個方法的效果，它會相依於硬式編碼字串。 如果您稍後重新命名的控制站，您必須手動變更此指示。 較佳替代方式是使用**HTML Helper**方法。 ASP.NET MVC 包括 HTML Helper 方法，這個方法會使用這類工作。 **Html.ActionLink()** helper 方法可讓您輕鬆地建立 HTML **&lt;&gt;** 連結，並確定具有正確的 URL 路徑 URL 編碼。
    > 
    > Htlm.ActionLink 有數個多載。 在這個練習中您將使用其中一個採用三個參數：
    > 
@@ -869,10 +814,10 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 <a id="Task_9_-_Running_the_Application"></a>
 #### <a name="task-9---running-the-application"></a>工作 9： 執行應用程式
 
-在這個工作中，您會測試每種內容類型會顯示適當的連結**/存放區/瀏覽**URL。
+在這個工作中，您會測試每種內容類型會顯示適當的連結 **/存放區/瀏覽**URL。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/儲存**以確認每個內容類型連結至適當**/存放區/瀏覽**URL。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/儲存**以確認每個內容類型連結至適當 **/存放區/瀏覽**URL。
 
     ![瀏覽連結來瀏覽 頁面的內容類型](aspnet-mvc-4-fundamentals/_static/image33.png "瀏覽連結來瀏覽 頁面的內容類型")
 
@@ -889,14 +834,11 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 
 1. 關閉瀏覽器，如有需要若要返回 Visual Studio 視窗。 開啟**StoreController.cs**和修改**索引**方法來建立一份起子頭插入 ViewModel 集合的內容類型：
 
+    [!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample26.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-fundamentals/samples/sample26.cs)]
-
-> [!NOTE]
-> You could also use the syntax **ViewBag[&quot;Starred&quot;]** to access the properties.
-~~~
-2. 星狀圖示**&quot;starred.png&quot;**隨附於**Source\Assets\Images**本實驗室的資料夾。 將它加入至應用程式中，拖曳其內容從**Windows 檔案總管**到視窗**方案總管 中**在 Visual Web Developer Express 中，如下所示：
+    > [!NOTE]
+    > 您也可以使用語法**ViewBag [&quot;Starred&quot;]** 來存取屬性。
+2. 星狀圖示**&quot;starred.png&quot;** 隨附於**Source\Assets\Images**本實驗室的資料夾。 將它加入至應用程式中，拖曳其內容從**Windows 檔案總管**到視窗**方案總管 中**在 Visual Web Developer Express 中，如下所示：
 
     ![加入至方案的星型映像](aspnet-mvc-4-fundamentals/_static/image34.png "加入至方案的星型映像")
 
@@ -914,7 +856,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
 在這項工作，您將測試，如星號所指的內容類型會顯示以星號圖示。
 
 1. 按**F5**執行應用程式。
-2. 在專案開始**首頁**頁面。 將 URL 變更為**/儲存**以確定每個精選內容類型有 respecting 標籤：
+2. 在專案開始**首頁**頁面。 將 URL 變更為 **/儲存**以確定每個精選內容類型有 respecting 標籤：
 
     ![瀏覽內容類型，使用如星號所指的項目](aspnet-mvc-4-fundamentals/_static/image35.png "瀏覽內容類型，使用如星號所指的項目")
 
@@ -1178,7 +1120,7 @@ A **StoreBrowseViewModel**將這項工作中用來顯示符合所選的類型的
     *Web 部署設定*
 5. 設定資料庫連接，如下所示：
 
-   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:*前置詞。
+   - 在**伺服器名稱**您 SQL Database 伺服器 URL 使用下列方法類型*tcp:* 前置詞。
    - 在**使用者名**輸入您的伺服器系統管理員身分登入名稱。
    - 在**密碼**輸入伺服器系統管理員身分登入密碼。
    - 輸入新的資料庫名稱，例如： *MVC4SampleDB*。

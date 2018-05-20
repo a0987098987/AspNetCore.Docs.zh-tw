@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 548afe1926eed49841251832d54dc213da0cb753
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 42a12ee39223a06054382dbe9b4784196a706216
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>ASP.NET MVC 4 Entity Framework Scaffolding 和移轉
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 04/06/2018
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 b： 使用程式碼片段](#AppendixB)&quot;。
 
@@ -108,10 +108,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 
     (程式碼片段- *ASP.NET MVC 4 和實體架構移轉 Ex1 人員屬性*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
 6. 按一下**建置 |建置方案**以儲存變更，並建置專案。
 
     ![建置應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "建置應用程式")
@@ -147,7 +144,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 此時，資料庫尚未建立。 在這項工作，您將會執行第一次應用程式，並測試 CRUD 作業。 使用 Code First 立即將會建立此資料庫。
 
 1. 按 **F5** 執行應用程式。
-2. 在瀏覽器中，加入**/Person**至 URL，以開啟 [人員] 頁面。
+2. 在瀏覽器中，加入 **/Person**至 URL，以開啟 [人員] 頁面。
 
     ![第一次執行的應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image7.png "第一次執行的應用程式")
 
@@ -196,16 +193,10 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
     *Migrations 資料夾*
 3. 開啟**configuration.cs 中**Migrations 資料夾中的檔案。 尋找類別建構函式並將變更**AutomaticMigrationsEnabled**值設定為*true*。
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
 4. 開啟 Person 類別並加入個人的中間名的屬性。 利用此新屬性，您要變更模型。
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
 5. 選取**建置 |建置方案**上建置應用程式的功能表。
 
     ![建置應用程式](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image13.png "建置應用程式")
@@ -263,7 +254,7 @@ ASP.NET MVC scaffolding 提供快速的方法來產生 CRUD 作業的標準化�
 #### <a name="task4--running-the-application"></a>Task4-執行應用程式
 
 1. 按 **F5** 執行應用程式。
-2. 開啟**/Person**。 請注意，已保留資料，而中間名資料行已加入。
+2. 開啟 **/Person**。 請注意，已保留資料，而中間名資料行已加入。
 
     ![加入的中間名](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image20.png "加入的中間名")
 

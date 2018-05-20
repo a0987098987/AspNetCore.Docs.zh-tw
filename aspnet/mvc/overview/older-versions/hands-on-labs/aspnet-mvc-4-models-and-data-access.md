@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-models-and-data-access
 msc.type: authoredcontent
-ms.openlocfilehash: 57477cf15bf6755523f28356d5384517bea24982
-ms.sourcegitcommit: 5ae0c125ee3bbd324edef3818d1d160f4dd84602
+ms.openlocfilehash: 88b3316b116962dd35031f4b971dbfe31ed0e010
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="aspnet-mvc-4-models-and-data-access"></a>ASP.NET MVC 4 模型和資料存取
 
@@ -224,41 +224,27 @@ ms.lasthandoff: 05/17/2018
 
     (程式碼片段-*模型和資料存取層 Ex1 storeDB*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample1.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample1.cs)]
 2. **MusicStoreEntities**類別會公開資料庫中每個資料表集合屬性。 更新**瀏覽**要擷取的內容類型的所有動作方法**專輯**。
 
     (程式碼片段-*模型和資料存取-Ex1 存放區瀏覽*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample2.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample2.cs)]
-~~~
-
-> [!NOTE]
-> 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
-> 
-> 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx)。
-
-
+    > [!NOTE]
+    > 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
+    > 
+    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926&amp;#040;v=vs.110&amp;#041;.aspx)。
 3. 更新**索引**動作方法，以擷取所有內容類型。
 
     (程式碼片段-*模型和資料存取-Ex1 存放區索引*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample3.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample3.cs)]
 4. 更新**索引**動作方法，來擷取所有內容類型，並轉換為清單集合。
 
     (程式碼片段-*模型和資料存取-Ex1 存放區 GenreMenu*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample4.cs)]
 
 <a id="Ex1Task5"></a>
 
@@ -316,18 +302,12 @@ ms.lasthandoff: 05/17/2018
 
     (程式碼片段-*模型和資料存取-Ex2 全域 Asax Using*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample5.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample5.cs)]
 4. 在**應用程式\_start**方法中加入下列這一行設定資料庫初始設定式。
 
     (程式碼片段-*模型和資料存取-Ex2 全域 Asax SetInitializer*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample6.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample6.cs)]
 
 <a id="Ex2Task2"></a>
 
@@ -342,10 +322,7 @@ ms.lasthandoff: 05/17/2018
 
     *web.config 檔案位置*
 
-
-~~~
-[!code-xml[Main](aspnet-mvc-4-models-and-data-access/samples/sample7.xml)]
-~~~
+    [!code-xml[Main](aspnet-mvc-4-models-and-data-access/samples/sample7.xml)]
 
 <a id="Ex2Task3"></a>
 
@@ -354,39 +331,29 @@ ms.lasthandoff: 05/17/2018
 
 既然您已經設定資料庫的連接，您將連結的模型與資料庫資料表。 在這項工作，您將建立的類別，將會連結到第一個程式碼的資料庫。 請記住是應該修改存在 POCO 模型類別。
 
-   > [!NOTE]
+> [!NOTE]
 > 如果您已完成練習 1，您會注意由精靈已執行此步驟。 透過這種程式碼第一次，您將手動建立將會連結到資料實體的類別。
-
 
 1. 開啟 POCO 模型類別**類型**從**模型**專案資料夾，並包含 id。 使用 int 屬性具有名稱**GenreId**。
 
     (程式碼片段-*模型和資料存取-Ex2 程式碼的第一個內容類型*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample8.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample8.cs)]
-
-> [!NOTE]
-> To work with Code First conventions, the class Genre must have a primary key property that will be automatically detected.
-> 
-> You can read more about Code First Conventions in this [msdn article](https://msdn.microsoft.com/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx).
-~~~
+    > [!NOTE]
+    > 若要使用程式碼優先 」 慣例，內容類型的類別必須將自動偵測到主索引鍵屬性。
+    > 
+    > 閱讀更多關於此程式碼優先 」 慣例[msdn 文章](https://msdn.microsoft.com/library/hh161541&amp;#040;v=vs.103&amp;#041;.aspx)。
 2. 現在，開啟 POCO 模型類別**專輯**從**模型**專案資料夾和包含的外部索引鍵，建立屬性的名稱**GenreId**和**ArtistId**。 這個類別已經有**GenreId**主索引鍵。
 
     (程式碼片段-*模型和資料存取-Ex2 程式碼的第一個專輯*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample9.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample9.cs)]
 3. 開啟 POCO 模型類別**演出者**並包含**ArtistId**屬性。
 
     (程式碼片段-*模型和資料存取-Ex2 程式碼的第一個演出者*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample10.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample10.cs)]
 4. 以滑鼠右鍵按一下**模型**專案資料夾，然後選取**新增 |類別**。 將檔案命名**MusicStoreEntities.cs**。 然後，按一下 **新增。**
 
     ![將類別加入](aspnet-mvc-4-models-and-data-access/_static/image20.png "加入類別")
@@ -398,21 +365,15 @@ ms.lasthandoff: 05/17/2018
     *加入類別*
 5. 開啟您剛才建立的類別**MusicStoreEntities.cs**，包含命名空間和**System.Data.Entity**和**System.Data.Entity.Infrastructure**。
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample11.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample11.cs)]
 6. 取代類別宣告，以擴充**DbContext**類別： 宣告公用**DBSet**並覆寫**OnModelCreating**方法。 在此步驟之後，您會收到將會連結您的模型與 Entity Framework 的領域類別。 若要這樣做，請以下列內容取代類別程式碼：
 
     (程式碼片段-*模型和資料存取-Ex2 程式碼的第一個 MusicStoreEntities*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample12.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample12.cs)]
 
 > [!NOTE]
-> With Entity Framework **DbContext** and **DBSet** you will be able to query the POCO class Genre. By extending **OnModelCreating** method, you are specifying in the **code** how Genre will be mapped to a database table. You can find more information about DBContext and DBSet in this msdn article: [link](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)
-~~~
+> 使用 Entity Framework **DbContext**和**DBSet**您將能夠查詢 POCO 類別類型。 藉由擴充**OnModelCreating**方法，就中指定**程式碼**如何將內容類型對應至資料庫資料表。 您可以在 msdn 上的本文中找到有關 DBContext 和 DBSet 詳細資訊：[連結](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)
 
 <a id="Ex2Task4"></a>
 
@@ -431,39 +392,27 @@ ms.lasthandoff: 05/17/2018
 
     (程式碼片段-*模型和資料存取層 Ex1 storeDB*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample13.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample13.cs)]
 2. **MusicStoreEntities**類別會公開資料庫中每個資料表集合屬性。 更新**瀏覽**要擷取的內容類型的所有動作方法**專輯**。
 
     (程式碼片段-*模型和資料存取-Ex2 存放區瀏覽*)
 
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample14.cs)]
 
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample14.cs)]
-
-> [!NOTE]
-> You are using a capability of .NET called **LINQ** (language-integrated query) to write strongly-typed query expressions against these collections - which will execute code against the database and return objects that you can program against.
-> 
-> For more information about LINQ, please visit the [msdn site](https://msdn.microsoft.com/library/bb397926(v=vs.110).aspx).
-~~~
+    > [!NOTE]
+    > 您正在使用之.NET 呼叫的功能**LINQ** (language integrated query) 撰寫強型別的查詢運算式，針對這些集合的執行對資料庫的程式碼，並傳回物件，您可以程式設計針對。
+    > 
+    > 如需有關 LINQ 的詳細資訊，請瀏覽[msdn 網站](https://msdn.microsoft.com/library/bb397926(v=vs.110).aspx)。
 3. 更新**索引**動作方法，以擷取所有內容類型。
 
     (程式碼片段-*模型和資料存取-Ex2 存放區索引*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample15.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample15.cs)]
 4. 更新**索引**動作方法，來擷取所有內容類型，並轉換為清單集合。
 
     (程式碼片段-*模型和資料存取-Ex2 存放區 GenreMenu*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample16.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample16.cs)]
 
 <a id="Ex2Task5"></a>
 
@@ -494,7 +443,6 @@ ms.lasthandoff: 05/17/2018
 > [!NOTE]
 > 如需查詢結果來形成的進一步資訊，請造訪下列[msdn 文章](https://msdn.microsoft.com/library/bb896272&amp;#040;v=vs.100&amp;#041;.aspx)。
 
-
 <a id="Ex3Task1"></a>
 
 <a id="Task_1_-_Modifying_StoreController_to_Retrieve_Albums_from_Database"></a>
@@ -515,17 +463,14 @@ ms.lasthandoff: 05/17/2018
 
     (程式碼片段-*模型和資料存取-Ex3 StoreController BrowseMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample17.cs)]
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample17.cs)]
 
 > [!NOTE]
-> To populate a collection of the entity, you need to use the **Include** method to specify you want to retrieve the albums too. You can use the .**Single()** extension in LINQ because in this case only one genre is expected for an album. The **Single()** method takes a Lambda expression as a parameter, which in this case specifies a single Genre object such that its name matches the value defined.
+> 若要填入實體的集合，您必須使用**Include**方法，以指定您想要擷取的專輯太。 您可以使用。**Single()** LINQ 中的擴充功能因為在此情況下只有一個類型應有的相簿。 **Single()** 方法會採用 Lambda 運算式做為參數，在此情況下，例如其名稱符合定義的值，指定單一的內容類型物件。
 > 
-> You will take advantage of a feature that allows you to indicate other related entities you want loaded as well when the Genre object is retrieved. This feature is called **Query Result Shaping**, and enables you to reduce the number of times needed to access the database to retrieve information. In this scenario, you will want to pre-fetch the Albums for the Genre you retrieve.
+> 您將利用的功能，可讓您指出已擷取的內容類型的物件時要一併載入其他相關的實體。 這項功能稱為**查詢結果來形成**，並可讓您減少存取要擷取資訊的資料庫所需的次數。 在此案例中，您會想要預先擷取的內容類型，您擷取的專輯。
 > 
-> The query includes **Genres.Include(&quot;Albums&quot;)** to indicate that you want related albums as well. This will result in a more efficient application, since it will retrieve both Genre and Album data in a single database request.
-~~~
+> 此查詢包含**Genres.Include (&quot;專輯&quot;)** 來表示您想相關的相簿。 這會導致更有效率的應用程式，因為它會擷取在單一資料庫的要求中的內容類型和專輯資料。
 
 <a id="Ex3Task2"></a>
 
@@ -553,10 +498,7 @@ ms.lasthandoff: 05/17/2018
 
     (程式碼片段-*模型和資料存取-Ex3 StoreController DetailsMethod*)
 
-
-~~~
-[!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample18.cs)]
-~~~
+    [!code-csharp[Main](aspnet-mvc-4-models-and-data-access/samples/sample18.cs)]
 
 <a id="Ex3Task4"></a>
 
@@ -574,7 +516,6 @@ ms.lasthandoff: 05/17/2018
 
 > [!NOTE]
 > 此外，您可以部署此應用程式以 Windows Azure Web Sites 下列[附錄 b： 發佈 ASP.NET MVC 4 應用程式使用 Web Deploy](#AppendixB)。
-
 
 * * *
 

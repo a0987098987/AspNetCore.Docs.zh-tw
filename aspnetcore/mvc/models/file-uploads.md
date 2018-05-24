@@ -157,7 +157,7 @@ public IActionResult Index()
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
-上述 `DisableFormValueModelBinding` 屬性是用來停用 `Upload` 動作方法的模型繫結。
+下述中的 `DisableFormValueModelBinding` 屬性是用來停用 `Upload` 動作方法的模型繫結。
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 

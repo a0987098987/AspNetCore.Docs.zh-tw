@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/twitter-helper
-title: "Twitter Helper 與 ASP.NET Web Pages |Microsoft 文件"
+title: Twitter Helper 與 ASP.NET Web Pages |Microsoft 文件
 author: tfitzmac
-description: "本主題和應用程式顯示如何新增至 WebMatrix 3 專案的 Twitter Helper。 它包含的 Twitter Helper 程式碼，並示範如何呼叫的協助程式..."
+description: 本主題和應用程式顯示如何新增至 WebMatrix 3 專案的 Twitter Helper。 它包含的 Twitter Helper 程式碼，並示範如何呼叫的協助程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
 ms.openlocfilehash: 07d9c4d485c42b78a42c54c9740af5f67cb44763
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/25/2018
 ---
 <a name="twitter-helper-with-aspnet-web-pages"></a>ASP.NET Web 網頁的 twitter Helper
 ====================
@@ -67,24 +67,24 @@ Twitter.cshtml 中的預設程式碼取代為下列程式碼。
 
 ### <a name="follow-button"></a>請依照下列按鈕
 
-[請遵循@aspnet)](https://twitter.com/aspnet)<script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p + ': / / platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore js (fjs）;}}（文件、 'script'、 ' twitter wjs'）;</script>
+[請遵循@aspnet)](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
 ### <a name="tweet-button"></a>推文 」 按鈕
 
-[推文](https://twitter.com/share)<script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p + ': / / platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore js (fjs）;}}（文件、 'script'、 ' twitter wjs'）;</script>
+[推文](https://twitter.com/share)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
 ### <a name="user-timeline-profile"></a>使用者時間軸 （設定檔）
 
-[由推文@aspnet ](https://twitter.com/aspnet) <script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p +": / / platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore js (fjs）;}}（文件、"script"，"twitter wjs"）;</script>
+[由推文 @aspnet](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="favorites"></a>我的最愛
 
-[由我的最愛推文@Microsoft ](https://twitter.com/Microsoft/favorites) <script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p +": / / platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore js (fjs）;}}（文件、"script"，"twitter wjs"）;</script>
+[由最愛推文 @Microsoft](https://twitter.com/Microsoft/favorites)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="list"></a>清單
 
-[從推文@Microsoft/MS\_消費者\_帶](https://twitter.com/microsoft/ms-consumer-brands/)<script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p +": / / platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore js (fjs）;}}（文件、"script"，"twitter wjs"）;</script>
+[從推文@Microsoft/MS\_消費者\_群組列](https://twitter.com/microsoft/ms-consumer-brands/)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="search"></a>搜尋
 
-[相關推文&quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)<script>！ （d、 s、 識別碼） 的函式 {var js fjs = d.getElementsByTagName(s) [0]、 p = /^http:/.test(d.location) 嗎？'http': 'https';如果 (！ d.getElementById(id)) {js = d.createElement(s); js.id = 識別碼; js.src = p +": / / platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore js (fjs）;}}（文件、"script"，"twitter wjs"）;</script>
+[相關推文&quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>

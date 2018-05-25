@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
-title: "教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft 文件"
+title: 教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft 文件
 author: pfletcher
-description: "本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天的應用程式。 您將 MVC 5 應用程式中加入 SignalR 和建立交談檢視..."
+description: 本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天的應用程式。 您將 MVC 5 應用程式中加入 SignalR 和建立交談檢視...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/24/2018
 
     ![指令碼 資料夾](tutorial-getting-started-with-signalr-and-mvc/_static/image5.png)
 7. <span data-ttu-id="96d44-158">在**方案總管 中**，以滑鼠右鍵按一下專案，選取**新增 |新的資料夾**，並加入新的資料夾，名為**集線器**。</span><span class="sxs-lookup"><span data-stu-id="96d44-158">In **Solution Explorer**, right-click the project, select **Add | New Folder**, and add a new folder named **Hubs**.</span></span>
-8. <span data-ttu-id="96d44-159">以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |新項目**，選取**Visual C# |Web |SignalR**節點**已安裝**窗格中，選取**SignalR 中樞類別 (v2)**從中間窗格中，並建立名為新的中樞**ChatHub.cs**。</span><span class="sxs-lookup"><span data-stu-id="96d44-159">Right-click the **Hubs** folder, click **Add | New Item**, select the **Visual C# | Web | SignalR** node in the **Installed** pane, select **SignalR Hub Class (v2)** from the center pane, and create a new hub named **ChatHub.cs**.</span></span> <span data-ttu-id="96d44-160">您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。</span><span class="sxs-lookup"><span data-stu-id="96d44-160">You will use this class as a SignalR server hub that sends messages to all clients.</span></span>
+8. <span data-ttu-id="96d44-159">以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |新項目**，選取**Visual C# |Web |SignalR**節點**已安裝**窗格中，選取**SignalR 中樞類別 (v2)** 從中間窗格中，並建立名為新的中樞**ChatHub.cs**。</span><span class="sxs-lookup"><span data-stu-id="96d44-159">Right-click the **Hubs** folder, click **Add | New Item**, select the **Visual C# | Web | SignalR** node in the **Installed** pane, select **SignalR Hub Class (v2)** from the center pane, and create a new hub named **ChatHub.cs**.</span></span> <span data-ttu-id="96d44-160">您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。</span><span class="sxs-lookup"><span data-stu-id="96d44-160">You will use this class as a SignalR server hub that sends messages to all clients.</span></span>
 
     ![建立新的中樞](tutorial-getting-started-with-signalr-and-mvc/_static/image6.png)
 9. <span data-ttu-id="96d44-162">中的程式碼取代**ChatHub**為下列程式碼的類別。</span><span class="sxs-lookup"><span data-stu-id="96d44-162">Replace the code in the **ChatHub** class with the following code.</span></span>
@@ -136,7 +136,7 @@ ms.lasthandoff: 01/24/2018
 ## <a name="run-the-sample"></a><span data-ttu-id="96d44-174">執行範例</span><span class="sxs-lookup"><span data-stu-id="96d44-174">Run the Sample</span></span>
 
 1. <span data-ttu-id="96d44-175">按 F5 以偵錯模式執行專案。</span><span class="sxs-lookup"><span data-stu-id="96d44-175">Press F5 to run the project in debug mode.</span></span>
-2. <span data-ttu-id="96d44-176">在瀏覽器位址列中，附加**/首頁/聊天**專案的預設網頁的 url。</span><span class="sxs-lookup"><span data-stu-id="96d44-176">In the browser address line, append **/home/chat** to the URL of the default page for the project.</span></span> <span data-ttu-id="96d44-177">聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="96d44-177">The Chat page loads in a browser instance and prompts for a user name.</span></span>
+2. <span data-ttu-id="96d44-176">在瀏覽器位址列中，附加 **/首頁/聊天**專案的預設網頁的 url。</span><span class="sxs-lookup"><span data-stu-id="96d44-176">In the browser address line, append **/home/chat** to the URL of the default page for the project.</span></span> <span data-ttu-id="96d44-177">聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="96d44-177">The Chat page loads in a browser instance and prompts for a user name.</span></span>
 
     ![輸入使用者名稱](tutorial-getting-started-with-signalr-and-mvc/_static/image8.png)
 3. <span data-ttu-id="96d44-179">輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="96d44-179">Enter a user name.</span></span>

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: "自我裝載 ASP.NET Web API 1 (C#) |Microsoft 文件"
+title: 自我裝載 ASP.NET Web API 1 (C#) |Microsoft 文件
 author: MikeWasson
-description: "ASP.NET Web API 並不需要 IIS。 自我，您就可以在您自己的主控件程序裝載的 web API。 本教學課程會示範如何裝載 applic 主控台內的 web API..."
+description: ASP.NET Web API 並不需要 IIS。 自我，您就可以在您自己的主控件程序裝載的 web API。 本教學課程會示範如何裝載 applic 主控台內的 web API...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2012
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="60ed0-116">啟動 Visual Studio，然後選取**新專案**從**啟動**頁面。</span><span class="sxs-lookup"><span data-stu-id="60ed0-116">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="60ed0-117">或從**檔案**功能表上，選取**新增**然後**專案**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-117">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="60ed0-118">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。</span><span class="sxs-lookup"><span data-stu-id="60ed0-118">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="60ed0-119">在下**Visual C#**，選取**Windows**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-119">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="60ed0-120">在專案範本清單中選取**主控台應用程式**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-120">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="60ed0-121">將專案命名&quot;SelfHost&quot;按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-121">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
+<span data-ttu-id="60ed0-118">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。</span><span class="sxs-lookup"><span data-stu-id="60ed0-118">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="60ed0-119">在下**Visual C#**，選取**Windows**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-119">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="60ed0-120">在專案範本清單中選取**主控台應用程式**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-120">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="60ed0-121">將專案命名&quot;SelfHost&quot;按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="60ed0-121">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
 
 ![](self-host-a-web-api/_static/image1.png)
 

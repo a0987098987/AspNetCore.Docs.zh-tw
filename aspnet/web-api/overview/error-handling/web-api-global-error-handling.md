@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/error-handling/web-api-global-error-handling
-title: "全域錯誤處理中 ASP.NET Web API 2 |Microsoft 文件"
+title: 全域錯誤處理中 ASP.NET Web API 2 |Microsoft 文件
 author: davidmatson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/03/2014
@@ -122,7 +122,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="registering-exception-filters"></a><span data-ttu-id="55090-189">註冊例外狀況篩選條件</span><span class="sxs-lookup"><span data-stu-id="55090-189">Registering Exception Filters</span></span>
 
-<span data-ttu-id="55090-190">如果您使用 「 ASP.NET MVC 4 Web 應用程式 」 專案範本來建立專案時，將 Web API 組態程式碼內`WebApiConfig`類別中*啟動應用程式/（_s)*資料夾：</span><span class="sxs-lookup"><span data-stu-id="55090-190">If you use the "ASP.NET MVC 4 Web Application" project template to create your project, put your Web API configuration code inside the `WebApiConfig` class, in the *App/_Start* folder:</span></span>
+<span data-ttu-id="55090-190">如果您使用 「 ASP.NET MVC 4 Web 應用程式 」 專案範本來建立專案時，將 Web API 組態程式碼內`WebApiConfig`類別中*啟動應用程式/（_s)* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="55090-190">If you use the "ASP.NET MVC 4 Web Application" project template to create your project, put your Web API configuration code inside the `WebApiConfig` class, in the *App/_Start* folder:</span></span>
 
 [!code-csharp[Main](exception-handling/samples/sample7.cs?highlight=5)]
 

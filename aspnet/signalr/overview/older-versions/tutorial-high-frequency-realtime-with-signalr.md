@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-high-frequency-realtime-with-signalr
-title: "與 SignalR 的頻率高的即時 1.x |Microsoft 文件"
+title: 與 SignalR 的頻率高的即時 1.x |Microsoft 文件
 author: pfletcher
-description: "本教學課程會示範如何建立 web 應用程式使用 ASP.NET SignalR 提供高頻率的傳訊功能。 頻率高的內送訊息..."
+description: 本教學課程會示範如何建立 web 應用程式使用 ASP.NET SignalR 提供高頻率的傳訊功能。 頻率高的內送訊息...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/16/2013
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 <span data-ttu-id="0ed81-142">在本節中，我們將建立在 Visual Studio 中的專案。</span><span class="sxs-lookup"><span data-stu-id="0ed81-142">In this section, we'll create the project in Visual Studio.</span></span>
 
 1. <span data-ttu-id="0ed81-143">從**檔案**功能表上，按一下**新專案**。</span><span class="sxs-lookup"><span data-stu-id="0ed81-143">From the **File** menu click **New Project**.</span></span>
-2. <span data-ttu-id="0ed81-144">在**新專案**對話方塊方塊中，展開  **C#**下**範本**選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="0ed81-144">In the **New Project** dialog box, expand **C#** under **Templates** and select **Web**.</span></span>
+2. <span data-ttu-id="0ed81-144">在**新專案**對話方塊方塊中，展開  **C#** 下**範本**選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="0ed81-144">In the **New Project** dialog box, expand **C#** under **Templates** and select **Web**.</span></span>
 3. <span data-ttu-id="0ed81-145">選取**ASP.NET 空 Web 應用程式**範本，將專案*MoveShapeDemo*，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="0ed81-145">Select the **ASP.NET Empty Web Application** template, name the project *MoveShapeDemo*, and click **OK**.</span></span>
 
     ![建立新的專案](tutorial-high-frequency-realtime-with-signalr/_static/image2.png)

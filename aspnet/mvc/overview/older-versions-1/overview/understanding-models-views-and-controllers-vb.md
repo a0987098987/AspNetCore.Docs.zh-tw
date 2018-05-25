@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
-title: "了解模型、 檢視和控制站 (VB) |Microsoft 文件"
+title: 了解模型、 檢視和控制站 (VB) |Microsoft 文件
 author: StephenWalther
-description: "搞不清楚模型、 檢視和控制器嗎？ 在本教學課程中，作者： Stephen Walther 向您介紹 ASP.NET MVC 應用程式的不同部分。"
+description: 搞不清楚模型、 檢視和控制器嗎？ 在本教學課程中，作者： Stephen Walther 向您介紹 ASP.NET MVC 應用程式的不同部分。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/10/2017
 <span data-ttu-id="8cc0c-146">**圖 05**: 索引頁 ([按一下以檢視完整大小的影像](understanding-models-views-and-controllers-vb/_static/image10.png))</span><span class="sxs-lookup"><span data-stu-id="8cc0c-146">**Figure 05**: The Index Page ([Click to view full-size image](understanding-models-views-and-controllers-vb/_static/image10.png))</span></span>
 
 
-<span data-ttu-id="8cc0c-147">請注意您的瀏覽器的網址列中的 Url。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-147">Notice the URLs in the address bar of your browser.</span></span> <span data-ttu-id="8cc0c-148">例如，當您按一下 [關於] 功能表的連結，在瀏覽器網址列中的 URL 變更為**/家用] / [關於**。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-148">For example, when you click the About menu link, the URL in the browser address bar changes to **/Home/About**.</span></span>
+<span data-ttu-id="8cc0c-147">請注意您的瀏覽器的網址列中的 Url。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-147">Notice the URLs in the address bar of your browser.</span></span> <span data-ttu-id="8cc0c-148">例如，當您按一下 [關於] 功能表的連結，在瀏覽器網址列中的 URL 變更為 **/家用] / [關於**。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-148">For example, when you click the About menu link, the URL in the browser address bar changes to **/Home/About**.</span></span>
 
 <span data-ttu-id="8cc0c-149">如果您關閉瀏覽器視窗並返回 Visual Studio，將無法與路徑首頁/約尋找檔案。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-149">If you close the browser window and return to Visual Studio, you won't be able to find a file with the path Home/About.</span></span> <span data-ttu-id="8cc0c-150">檔案不存在。</span><span class="sxs-lookup"><span data-stu-id="8cc0c-150">The files don't exist.</span></span> <span data-ttu-id="8cc0c-151">如何這可能會？</span><span class="sxs-lookup"><span data-stu-id="8cc0c-151">How is this possible?</span></span>
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-value
-title: "使用 $select，$expand、 與 ASP.NET Web API 2 OData 中的 $value |Microsoft 文件"
+title: 使用 $select，$expand、 與 ASP.NET Web API 2 OData 中的 $value |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/11/2013
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](using-select-expand-and-value/samples/sample3.cs)]
 
-<span data-ttu-id="be431-122">此外，裝飾您`Get`方法**[Queryable]**屬性，如先前的程式碼片段所示。</span><span class="sxs-lookup"><span data-stu-id="be431-122">Also, decorate your `Get` methods with the **[Queryable]** attribute, as shown in the previous code snippets.</span></span> <span data-ttu-id="be431-123">或者，呼叫**EnableQuerySupport**上**HttpConfiguration**在啟動時的物件。</span><span class="sxs-lookup"><span data-stu-id="be431-123">Alternatively, call **EnableQuerySupport** on the **HttpConfiguration** object at startup.</span></span> <span data-ttu-id="be431-124">(如需詳細資訊，請參閱[啟用 OData 查詢選項](supporting-odata-query-options.md#enable)。)</span><span class="sxs-lookup"><span data-stu-id="be431-124">(For more information, see [Enabling OData Query Options](supporting-odata-query-options.md#enable).)</span></span>
+<span data-ttu-id="be431-122">此外，裝飾您`Get`方法 **[Queryable]** 屬性，如先前的程式碼片段所示。</span><span class="sxs-lookup"><span data-stu-id="be431-122">Also, decorate your `Get` methods with the **[Queryable]** attribute, as shown in the previous code snippets.</span></span> <span data-ttu-id="be431-123">或者，呼叫**EnableQuerySupport**上**HttpConfiguration**在啟動時的物件。</span><span class="sxs-lookup"><span data-stu-id="be431-123">Alternatively, call **EnableQuerySupport** on the **HttpConfiguration** object at startup.</span></span> <span data-ttu-id="be431-124">(如需詳細資訊，請參閱[啟用 OData 查詢選項](supporting-odata-query-options.md#enable)。)</span><span class="sxs-lookup"><span data-stu-id="be431-124">(For more information, see [Enabling OData Query Options](supporting-odata-query-options.md#enable).)</span></span>
 
 ## <a name="using-expand"></a><span data-ttu-id="be431-125">使用 $展開</span><span class="sxs-lookup"><span data-stu-id="be431-125">Using $expand</span></span>
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-console[Main](using-select-expand-and-value/samples/sample10.cmd)]
 
-<span data-ttu-id="be431-140">根據預設，Web 應用程式開發介面會限制為 2 的最大展開深度。</span><span class="sxs-lookup"><span data-stu-id="be431-140">By default, Web API limits the maximum expansion depth to 2.</span></span> <span data-ttu-id="be431-141">可避免用戶端傳送複雜的要求，例如`$expand=Orders/OrderDetails/Product/Supplier/Region`，這可能是沒有效率的查詢，並建立大型的回應。</span><span class="sxs-lookup"><span data-stu-id="be431-141">That prevents the client from sending complex requests like `$expand=Orders/OrderDetails/Product/Supplier/Region`, which might be inefficient to query and create large responses.</span></span> <span data-ttu-id="be431-142">若要覆寫預設值，設定**MaxExpansionDepth**屬性**[Queryable]**屬性。</span><span class="sxs-lookup"><span data-stu-id="be431-142">To override the default, set the **MaxExpansionDepth** property on the **[Queryable]** attribute.</span></span>
+<span data-ttu-id="be431-140">根據預設，Web 應用程式開發介面會限制為 2 的最大展開深度。</span><span class="sxs-lookup"><span data-stu-id="be431-140">By default, Web API limits the maximum expansion depth to 2.</span></span> <span data-ttu-id="be431-141">可避免用戶端傳送複雜的要求，例如`$expand=Orders/OrderDetails/Product/Supplier/Region`，這可能是沒有效率的查詢，並建立大型的回應。</span><span class="sxs-lookup"><span data-stu-id="be431-141">That prevents the client from sending complex requests like `$expand=Orders/OrderDetails/Product/Supplier/Region`, which might be inefficient to query and create large responses.</span></span> <span data-ttu-id="be431-142">若要覆寫預設值，設定**MaxExpansionDepth**屬性 **[Queryable]** 屬性。</span><span class="sxs-lookup"><span data-stu-id="be431-142">To override the default, set the **MaxExpansionDepth** property on the **[Queryable]** attribute.</span></span>
 
 [!code-csharp[Main](using-select-expand-and-value/samples/sample11.cs)]
 

@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
-title: "SignalR 1.x 集線器 API 指南 JavaScript 用戶端 |Microsoft 文件"
+title: SignalR 1.x 集線器 API 指南 JavaScript 用戶端 |Microsoft 文件
 author: pfletcher
-description: "本文件提供適用於 SignalR JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applic 1.1 版使用集線器 API 的簡介..."
+description: 本文件提供適用於 SignalR JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applic 1.1 版使用集線器 API 的簡介...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/17/2013
@@ -149,7 +149,7 @@ ms.lasthandoff: 01/24/2018
 
     `signalr ghp /path:[path to the .dll that contains your Hub class]`
 
-    <span data-ttu-id="ce37a-183">路徑您*.dll*通常是*bin*專案資料夾中的資料夾。</span><span class="sxs-lookup"><span data-stu-id="ce37a-183">The path to your *.dll* is typically the *bin* folder in your project folder.</span></span>
+    <span data-ttu-id="ce37a-183">路徑您 *.dll*通常是*bin*專案資料夾中的資料夾。</span><span class="sxs-lookup"><span data-stu-id="ce37a-183">The path to your *.dll* is typically the *bin* folder in your project folder.</span></span>
 
     <span data-ttu-id="ce37a-184">此命令會建立名為*立即轉譯 server.js*相同資料夾中*signalr.exe*。</span><span class="sxs-lookup"><span data-stu-id="ce37a-184">This command creates a file named *server.js* in the same folder as *signalr.exe*.</span></span>
 4. <span data-ttu-id="ce37a-185">Put*立即轉譯 server.js*檔中適當的資料夾，在您的專案中，視您的應用程式，將它重新命名並加入它的參考取代"signalr/中樞"參考。</span><span class="sxs-lookup"><span data-stu-id="ce37a-185">Put the *server.js* file in an appropriate folder in your project, rename it as appropriate for your application, and add a reference to it in place of the "signalr/hubs" reference.</span></span>

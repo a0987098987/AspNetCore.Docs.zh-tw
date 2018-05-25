@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
-title: "ASP.NET Web API 中的繫結參數 |Microsoft 文件"
+title: ASP.NET Web API 中的繫結參數 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2013
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="using-fromuri"></a><span data-ttu-id="e1221-121">使用 [FromUri]</span><span class="sxs-lookup"><span data-stu-id="e1221-121">Using [FromUri]</span></span>
 
-<span data-ttu-id="e1221-122">若要強制 Web API 來讀取從 URI 的複雜類型，新增**[FromUri]**屬性的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-122">To force Web API to read a complex type from the URI, add the **[FromUri]** attribute to the parameter.</span></span> <span data-ttu-id="e1221-123">下列範例會定義`GeoPoint`型別，以及控制站方法，以取得`GeoPoint`從 URI。</span><span class="sxs-lookup"><span data-stu-id="e1221-123">The following example defines a `GeoPoint` type, along with a controller method that gets the `GeoPoint` from the URI.</span></span>
+<span data-ttu-id="e1221-122">若要強制 Web API 來讀取從 URI 的複雜類型，新增 **[FromUri]** 屬性的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-122">To force Web API to read a complex type from the URI, add the **[FromUri]** attribute to the parameter.</span></span> <span data-ttu-id="e1221-123">下列範例會定義`GeoPoint`型別，以及控制站方法，以取得`GeoPoint`從 URI。</span><span class="sxs-lookup"><span data-stu-id="e1221-123">The following example defines a `GeoPoint` type, along with a controller method that gets the `GeoPoint` from the URI.</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample2.cs)]
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="using-frombody"></a><span data-ttu-id="e1221-126">使用 [FromBody]</span><span class="sxs-lookup"><span data-stu-id="e1221-126">Using [FromBody]</span></span>
 
-<span data-ttu-id="e1221-127">若要強制 Web API 來讀取的要求主體中的簡單類型，新增**[FromBody]**屬性的參數：</span><span class="sxs-lookup"><span data-stu-id="e1221-127">To force Web API to read a simple type from the request body, add the **[FromBody]** attribute to the parameter:</span></span>
+<span data-ttu-id="e1221-127">若要強制 Web API 來讀取的要求主體中的簡單類型，新增 **[FromBody]** 屬性的參數：</span><span class="sxs-lookup"><span data-stu-id="e1221-127">To force Web API to read a simple type from the request body, add the **[FromBody]** attribute to the parameter:</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample3.cs)]
 
@@ -71,11 +71,11 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="e1221-136">您可以讓 （以便 Web API 將會嘗試將它從 URI 繫結），將類別視為簡單類型的 Web API 建立**TypeConverter**並提供字串轉換。</span><span class="sxs-lookup"><span data-stu-id="e1221-136">You can make Web API treat a class as a simple type (so that Web API will try to bind it from the URI) by creating a **TypeConverter** and providing a string conversion.</span></span>
 
-<span data-ttu-id="e1221-137">下列程式碼會示範`GeoPoint`類別，表示地理位置的點，再加上**TypeConverter**將從字串轉換`GeoPoint`執行個體。</span><span class="sxs-lookup"><span data-stu-id="e1221-137">The following code shows a `GeoPoint` class that represents a geographical point, plus a **TypeConverter** that converts from strings to `GeoPoint` instances.</span></span> <span data-ttu-id="e1221-138">`GeoPoint`類別以裝飾**[TypeConverter]**屬性來指定型別轉換子。</span><span class="sxs-lookup"><span data-stu-id="e1221-138">The `GeoPoint` class is decorated with a **[TypeConverter]** attribute to specify the type converter.</span></span> <span data-ttu-id="e1221-139">(這個範例啟發的 Mike 拖延部落格文章[如何繫結至 MVC/WebAPI 中的動作簽章中的自訂物件](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx)。)</span><span class="sxs-lookup"><span data-stu-id="e1221-139">(This example was inspired by Mike Stall's blog post [How to bind to custom objects in action signatures in MVC/WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx).)</span></span>
+<span data-ttu-id="e1221-137">下列程式碼會示範`GeoPoint`類別，表示地理位置的點，再加上**TypeConverter**將從字串轉換`GeoPoint`執行個體。</span><span class="sxs-lookup"><span data-stu-id="e1221-137">The following code shows a `GeoPoint` class that represents a geographical point, plus a **TypeConverter** that converts from strings to `GeoPoint` instances.</span></span> <span data-ttu-id="e1221-138">`GeoPoint`類別以裝飾 **[TypeConverter]** 屬性來指定型別轉換子。</span><span class="sxs-lookup"><span data-stu-id="e1221-138">The `GeoPoint` class is decorated with a **[TypeConverter]** attribute to specify the type converter.</span></span> <span data-ttu-id="e1221-139">(這個範例啟發的 Mike 拖延部落格文章[如何繫結至 MVC/WebAPI 中的動作簽章中的自訂物件](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx)。)</span><span class="sxs-lookup"><span data-stu-id="e1221-139">(This example was inspired by Mike Stall's blog post [How to bind to custom objects in action signatures in MVC/WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx).)</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample6.cs)]
 
-<span data-ttu-id="e1221-140">現在會將 Web API`GeoPoint`為簡單類型，這表示它將會嘗試繫結`GeoPoint`從 URI 的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-140">Now Web API will treat `GeoPoint` as a simple type, meaning it will try to bind `GeoPoint` parameters from the URI.</span></span> <span data-ttu-id="e1221-141">您不需要包含**[FromUri]**參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-141">You don't need to include **[FromUri]** on the parameter.</span></span>
+<span data-ttu-id="e1221-140">現在會將 Web API`GeoPoint`為簡單類型，這表示它將會嘗試繫結`GeoPoint`從 URI 的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-140">Now Web API will treat `GeoPoint` as a simple type, meaning it will try to bind `GeoPoint` parameters from the URI.</span></span> <span data-ttu-id="e1221-141">您不需要包含 **[FromUri]** 參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-141">You don't need to include **[FromUri]** on the parameter.</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample7.cs)]
 
@@ -113,11 +113,11 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="e1221-163">**設定模型繫結器**</span><span class="sxs-lookup"><span data-stu-id="e1221-163">**Setting the Model Binder**</span></span>
 
-<span data-ttu-id="e1221-164">有幾種方式來設定模型繫結。</span><span class="sxs-lookup"><span data-stu-id="e1221-164">There are several ways to set a model binder.</span></span> <span data-ttu-id="e1221-165">首先，您可以加入**[ModelBinder]**屬性的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-165">First, you can add a **[ModelBinder]** attribute to the parameter.</span></span>
+<span data-ttu-id="e1221-164">有幾種方式來設定模型繫結。</span><span class="sxs-lookup"><span data-stu-id="e1221-164">There are several ways to set a model binder.</span></span> <span data-ttu-id="e1221-165">首先，您可以加入 **[ModelBinder]** 屬性的參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-165">First, you can add a **[ModelBinder]** attribute to the parameter.</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample10.cs)]
 
-<span data-ttu-id="e1221-166">您也可以加入**[ModelBinder]**屬性加入型別。</span><span class="sxs-lookup"><span data-stu-id="e1221-166">You can also add a **[ModelBinder]** attribute to the type.</span></span> <span data-ttu-id="e1221-167">Web API 將會使用該類型的所有參數指定的模型繫結器。</span><span class="sxs-lookup"><span data-stu-id="e1221-167">Web API will use the specified model binder for all parameters of that type.</span></span>
+<span data-ttu-id="e1221-166">您也可以加入 **[ModelBinder]** 屬性加入型別。</span><span class="sxs-lookup"><span data-stu-id="e1221-166">You can also add a **[ModelBinder]** attribute to the type.</span></span> <span data-ttu-id="e1221-167">Web API 將會使用該類型的所有參數指定的模型繫結器。</span><span class="sxs-lookup"><span data-stu-id="e1221-167">Web API will use the specified model binder for all parameters of that type.</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample11.cs)]
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample12.cs)]
 
-<span data-ttu-id="e1221-173">與模型繫結的提供者，您仍需要加入**[ModelBinder]**屬性的參數，告知它應該使用模型繫結和不媒體類型格式器的 Web API。</span><span class="sxs-lookup"><span data-stu-id="e1221-173">With a model-binding provider, you still need to add the **[ModelBinder]** attribute to the parameter, to tell Web API that it should use a model binder and not a media-type formatter.</span></span> <span data-ttu-id="e1221-174">但是，現在您不需要在屬性中指定的模型繫結器類型：</span><span class="sxs-lookup"><span data-stu-id="e1221-174">But now you don't need to specify the type of model binder in the attribute:</span></span>
+<span data-ttu-id="e1221-173">與模型繫結的提供者，您仍需要加入 **[ModelBinder]** 屬性的參數，告知它應該使用模型繫結和不媒體類型格式器的 Web API。</span><span class="sxs-lookup"><span data-stu-id="e1221-173">With a model-binding provider, you still need to add the **[ModelBinder]** attribute to the parameter, to tell Web API that it should use a model binder and not a media-type formatter.</span></span> <span data-ttu-id="e1221-174">但是，現在您不需要在屬性中指定的模型繫結器類型：</span><span class="sxs-lookup"><span data-stu-id="e1221-174">But now you don't need to specify the type of model binder in the attribute:</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample13.cs)]
 
@@ -153,11 +153,11 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="httpparameterbinding"></a><span data-ttu-id="e1221-184">HttpParameterBinding</span><span class="sxs-lookup"><span data-stu-id="e1221-184">HttpParameterBinding</span></span>
 
-<span data-ttu-id="e1221-185">模型繫結器的較通用的機制的特定執行個體。</span><span class="sxs-lookup"><span data-stu-id="e1221-185">Model binders are a specific instance of a more general mechanism.</span></span> <span data-ttu-id="e1221-186">如果您看一下**[ModelBinder]**屬性，您會看到它衍生自抽象**ParameterBindingAttribute**類別。</span><span class="sxs-lookup"><span data-stu-id="e1221-186">If you look at the **[ModelBinder]** attribute, you will see that it derives from the abstract **ParameterBindingAttribute** class.</span></span> <span data-ttu-id="e1221-187">這個類別會定義單一方法**GetBinding**，它會傳回**HttpParameterBinding**物件：</span><span class="sxs-lookup"><span data-stu-id="e1221-187">This class defines a single method, **GetBinding**, which returns an **HttpParameterBinding** object:</span></span>
+<span data-ttu-id="e1221-185">模型繫結器的較通用的機制的特定執行個體。</span><span class="sxs-lookup"><span data-stu-id="e1221-185">Model binders are a specific instance of a more general mechanism.</span></span> <span data-ttu-id="e1221-186">如果您看一下 **[ModelBinder]** 屬性，您會看到它衍生自抽象**ParameterBindingAttribute**類別。</span><span class="sxs-lookup"><span data-stu-id="e1221-186">If you look at the **[ModelBinder]** attribute, you will see that it derives from the abstract **ParameterBindingAttribute** class.</span></span> <span data-ttu-id="e1221-187">這個類別會定義單一方法**GetBinding**，它會傳回**HttpParameterBinding**物件：</span><span class="sxs-lookup"><span data-stu-id="e1221-187">This class defines a single method, **GetBinding**, which returns an **HttpParameterBinding** object:</span></span>
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample18.cs)]
 
-<span data-ttu-id="e1221-188">**HttpParameterBinding**會負責將參數繫結的值。</span><span class="sxs-lookup"><span data-stu-id="e1221-188">An **HttpParameterBinding** is responsible for binding a parameter to a value.</span></span> <span data-ttu-id="e1221-189">如果是**[ModelBinder]**，屬性會傳回**HttpParameterBinding**使用實作**IModelBinder**執行實際的繫結。</span><span class="sxs-lookup"><span data-stu-id="e1221-189">In the case of **[ModelBinder]**, the attribute returns an **HttpParameterBinding** implementation that uses an **IModelBinder** to perform the actual binding.</span></span> <span data-ttu-id="e1221-190">您也可以實作您自己**HttpParameterBinding**。</span><span class="sxs-lookup"><span data-stu-id="e1221-190">You can also implement your own **HttpParameterBinding**.</span></span>
+<span data-ttu-id="e1221-188">**HttpParameterBinding**會負責將參數繫結的值。</span><span class="sxs-lookup"><span data-stu-id="e1221-188">An **HttpParameterBinding** is responsible for binding a parameter to a value.</span></span> <span data-ttu-id="e1221-189">如果是 **[ModelBinder]**，屬性會傳回**HttpParameterBinding**使用實作**IModelBinder**執行實際的繫結。</span><span class="sxs-lookup"><span data-stu-id="e1221-189">In the case of **[ModelBinder]**, the attribute returns an **HttpParameterBinding** implementation that uses an **IModelBinder** to perform the actual binding.</span></span> <span data-ttu-id="e1221-190">您也可以實作您自己**HttpParameterBinding**。</span><span class="sxs-lookup"><span data-stu-id="e1221-190">You can also implement your own **HttpParameterBinding**.</span></span>
 
 <span data-ttu-id="e1221-191">例如，假設您想要取得從 Etag`if-match`和`if-none-match`要求中的標頭。</span><span class="sxs-lookup"><span data-stu-id="e1221-191">For example, suppose you want to get ETags from `if-match` and `if-none-match` headers in the request.</span></span> <span data-ttu-id="e1221-192">我們會先定義的類別來表示的 Etag。</span><span class="sxs-lookup"><span data-stu-id="e1221-192">We'll start by defining a class to represent ETags.</span></span>
 
@@ -195,12 +195,12 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="e1221-208">整個參數繫結程序由隨插即用服務， **IActionValueBinder**。</span><span class="sxs-lookup"><span data-stu-id="e1221-208">The entire parameter-binding process is controlled by a pluggable service, **IActionValueBinder**.</span></span> <span data-ttu-id="e1221-209">預設實作**IActionValueBinder**會進行下列作業：</span><span class="sxs-lookup"><span data-stu-id="e1221-209">The default implementation of **IActionValueBinder** does the following:</span></span>
 
-1. <span data-ttu-id="e1221-210">尋找**ParameterBindingAttribute**參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-210">Look for a **ParameterBindingAttribute** on the parameter.</span></span> <span data-ttu-id="e1221-211">這包括**[FromBody]**， **[FromUri]**，和**[ModelBinder]**，或自訂屬性。</span><span class="sxs-lookup"><span data-stu-id="e1221-211">This includes **[FromBody]**, **[FromUri]**, and **[ModelBinder]**, or custom attributes.</span></span>
+1. <span data-ttu-id="e1221-210">尋找**ParameterBindingAttribute**參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-210">Look for a **ParameterBindingAttribute** on the parameter.</span></span> <span data-ttu-id="e1221-211">這包括 **[FromBody]**， **[FromUri]**，和 **[ModelBinder]**，或自訂屬性。</span><span class="sxs-lookup"><span data-stu-id="e1221-211">This includes **[FromBody]**, **[FromUri]**, and **[ModelBinder]**, or custom attributes.</span></span>
 2. <span data-ttu-id="e1221-212">否則，請查看**HttpConfiguration.ParameterBindingRules**函式會傳回非 null **HttpParameterBinding**。</span><span class="sxs-lookup"><span data-stu-id="e1221-212">Otherwise, look in **HttpConfiguration.ParameterBindingRules** for a function that returns a non-null **HttpParameterBinding**.</span></span>
 3. <span data-ttu-id="e1221-213">否則，請使用先前所述的預設規則。</span><span class="sxs-lookup"><span data-stu-id="e1221-213">Otherwise, use the default rules that I described previously.</span></span> 
 
-    - <span data-ttu-id="e1221-214">如果參數類型為 「 簡單 」，或是從 URI 繫結的型別轉換子。</span><span class="sxs-lookup"><span data-stu-id="e1221-214">If the parameter type is "simple"or has a type converter, bind from the URI.</span></span> <span data-ttu-id="e1221-215">這相當於將**[FromUri]**參數上的屬性。</span><span class="sxs-lookup"><span data-stu-id="e1221-215">This is equivalent to putting the **[FromUri]** attribute on the parameter.</span></span>
-    - <span data-ttu-id="e1221-216">否則，嘗試從訊息本文讀取參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-216">Otherwise, try to read the parameter from the message body.</span></span> <span data-ttu-id="e1221-217">這相當於將**[FromBody]**參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-217">This is equivalent to putting **[FromBody]** on the parameter.</span></span>
+    - <span data-ttu-id="e1221-214">如果參數類型為 「 簡單 」，或是從 URI 繫結的型別轉換子。</span><span class="sxs-lookup"><span data-stu-id="e1221-214">If the parameter type is "simple"or has a type converter, bind from the URI.</span></span> <span data-ttu-id="e1221-215">這相當於將 **[FromUri]** 參數上的屬性。</span><span class="sxs-lookup"><span data-stu-id="e1221-215">This is equivalent to putting the **[FromUri]** attribute on the parameter.</span></span>
+    - <span data-ttu-id="e1221-216">否則，嘗試從訊息本文讀取參數。</span><span class="sxs-lookup"><span data-stu-id="e1221-216">Otherwise, try to read the parameter from the message body.</span></span> <span data-ttu-id="e1221-217">這相當於將 **[FromBody]** 參數上。</span><span class="sxs-lookup"><span data-stu-id="e1221-217">This is equivalent to putting **[FromBody]** on the parameter.</span></span>
 
 <span data-ttu-id="e1221-218">如果您想，您可以取代整個**IActionValueBinder**服務的自訂實作。</span><span class="sxs-lookup"><span data-stu-id="e1221-218">If you wanted, you could replace the entire **IActionValueBinder** service with a custom implementation.</span></span>
 

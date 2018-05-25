@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-and-action-selection
-title: "路由和 ASP.NET Web API 中的動作選取 |Microsoft 文件"
+title: 路由和 ASP.NET Web API 中的動作選取 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2012
@@ -150,7 +150,7 @@ ms.lasthandoff: 01/24/2018
     2. <span data-ttu-id="e5b7b-200">從這個清單中，嘗試尋找相符項目，每個參數名稱，路由字典或 URI 查詢字串。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-200">From this list, try to find a match for each parameter name, either in the route dictionary or in the URI query string.</span></span> <span data-ttu-id="e5b7b-201">相符項目都不區分大小寫，並不會依賴參數順序。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-201">Matches are case insensitive and do not depend on the parameter order.</span></span>
     3. <span data-ttu-id="e5b7b-202">選取清單中的每個參數之相符項目之 URI 中的動作。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-202">Select an action where every parameter in the list has a match in the URI.</span></span>
     4. <span data-ttu-id="e5b7b-203">如果更該動作符合這些準則，挑選一個包含大部分的參數相符項目。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-203">If more that one action meets these criteria, pick the one with the most parameter matches.</span></span>
-4. <span data-ttu-id="e5b7b-204">略過動作與**[NonAction]**屬性。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-204">Ignore actions with the **[NonAction]** attribute.</span></span>
+4. <span data-ttu-id="e5b7b-204">略過動作與 **[NonAction]** 屬性。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-204">Ignore actions with the **[NonAction]** attribute.</span></span>
 
 <span data-ttu-id="e5b7b-205">步驟 3 是可能最令人混淆。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-205">Step #3 is probably the most confusing.</span></span> <span data-ttu-id="e5b7b-206">基本概念是從 URI、 從要求主體中，或從自訂繫結參數可取得其值。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-206">The basic idea is that a parameter can get its value either from the URI, from the request body, or from a custom binding.</span></span> <span data-ttu-id="e5b7b-207">來自 URI 的參數，我們想要確保的 URI 實際上包含在 （透過路由字典） 的路徑或查詢字串中該參數的值。</span><span class="sxs-lookup"><span data-stu-id="e5b7b-207">For parameters that come from the URI, we want to ensure that the URI actually contains a value for that parameter, either in the path (via the route dictionary) or in the query string.</span></span>
 

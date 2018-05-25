@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/working-with-ssl-in-web-api
-title: "使用 Web 應用程式開發介面中的 SSL |Microsoft 文件"
+title: 使用 Web 應用程式開發介面中的 SSL |Microsoft 文件
 author: MikeWasson
-description: "示範如何使用 SSL 與 ASP.NET Web API，包括使用 SSL 用戶端憑證。"
+description: 示範如何使用 SSL 與 ASP.NET Web API，包括使用 SSL 用戶端憑證。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/12/2012

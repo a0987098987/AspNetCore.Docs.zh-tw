@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
-title: "ASP.NET Web API 中的路由 |Microsoft 文件"
+title: ASP.NET Web API 中的路由 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/11/2012
@@ -61,9 +61,9 @@ ms.lasthandoff: 11/10/2017
 
 <span data-ttu-id="e7d3b-133">一旦找到相符的路由，Web API 會選取控制器和動作：</span><span class="sxs-lookup"><span data-stu-id="e7d3b-133">Once a matching route is found, Web API selects the controller and the action:</span></span>
 
-- <span data-ttu-id="e7d3b-134">若要尋找控制器，將 Web API&quot;控制器&quot;值*{控制器}*變數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-134">To find the controller, Web API adds &quot;Controller&quot; to the value of the *{controller}* variable.</span></span>
+- <span data-ttu-id="e7d3b-134">若要尋找控制器，將 Web API&quot;控制器&quot;值 *{控制器}* 變數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-134">To find the controller, Web API adds &quot;Controller&quot; to the value of the *{controller}* variable.</span></span>
 - <span data-ttu-id="e7d3b-135">若要尋找此動作，Web API HTTP 方法，並接著會尋找名稱開頭之 HTTP 方法名稱的動作。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-135">To find the action, Web API looks at the HTTP method, and then looks for an action whose name begins with that HTTP method name.</span></span> <span data-ttu-id="e7d3b-136">例如，透過 GET 要求，Web API 會尋找開頭的動作&quot;取得...&quot;，例如&quot;GetContact&quot;或&quot;GetAllContacts&quot;。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-136">For example, with a GET request, Web API looks for an action that starts with &quot;Get...&quot;, such as &quot;GetContact&quot; or &quot;GetAllContacts&quot;.</span></span> <span data-ttu-id="e7d3b-137">這個慣例僅適用於 GET、 POST、 PUT 和 DELETE 方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-137">This convention applies only to GET, POST, PUT, and DELETE methods.</span></span> <span data-ttu-id="e7d3b-138">您可以在控制器上使用屬性來啟用其他 HTTP 方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-138">You can enable other HTTP methods by using attributes on your controller.</span></span> <span data-ttu-id="e7d3b-139">我們稍後就會看到的範例。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-139">We'll see an example of that later.</span></span>
-- <span data-ttu-id="e7d3b-140">其他的預留位置變數在路由範本中，例如*{id}，*對應至動作參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-140">Other placeholder variables in the route template, such as *{id},* are mapped to action parameters.</span></span>
+- <span data-ttu-id="e7d3b-140">其他的預留位置變數在路由範本中，例如 *{id}，* 對應至動作參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-140">Other placeholder variables in the route template, such as *{id},* are mapped to action parameters.</span></span>
 
 <span data-ttu-id="e7d3b-141">讓我們來看一個範例。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-141">Let's look at an example.</span></span> <span data-ttu-id="e7d3b-142">假設您定義下列控制站：</span><span class="sxs-lookup"><span data-stu-id="e7d3b-142">Suppose that you define the following controller:</span></span>
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 | <span data-ttu-id="e7d3b-156">DELETE</span><span class="sxs-lookup"><span data-stu-id="e7d3b-156">DELETE</span></span> | <span data-ttu-id="e7d3b-157">應用程式開發介面/產品/4</span><span class="sxs-lookup"><span data-stu-id="e7d3b-157">api/products/4</span></span> | <span data-ttu-id="e7d3b-158">DeleteProduct</span><span class="sxs-lookup"><span data-stu-id="e7d3b-158">DeleteProduct</span></span> | <span data-ttu-id="e7d3b-159">4</span><span class="sxs-lookup"><span data-stu-id="e7d3b-159">4</span></span> |
 | <span data-ttu-id="e7d3b-160">POST</span><span class="sxs-lookup"><span data-stu-id="e7d3b-160">POST</span></span> | <span data-ttu-id="e7d3b-161">應用程式開發介面/產品</span><span class="sxs-lookup"><span data-stu-id="e7d3b-161">api/products</span></span> | <span data-ttu-id="e7d3b-162">*（沒有相符項目）*</span><span class="sxs-lookup"><span data-stu-id="e7d3b-162">*(no match)*</span></span> |  |
 
-<span data-ttu-id="e7d3b-163">請注意， *{id}*區段的 URI，如果存在，會對應到*識別碼*動作參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-163">Notice that the *{id}* segment of the URI, if present, is mapped to the *id* parameter of the action.</span></span> <span data-ttu-id="e7d3b-164">在此範例中，控制器會定義兩個 GET 方法，其中一個有*識別碼*參數和一個不含任何參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-164">In this example, the controller defines two GET methods, one with an *id* parameter and one with no parameters.</span></span>
+<span data-ttu-id="e7d3b-163">請注意， *{id}* 區段的 URI，如果存在，會對應到*識別碼*動作參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-163">Notice that the *{id}* segment of the URI, if present, is mapped to the *id* parameter of the action.</span></span> <span data-ttu-id="e7d3b-164">在此範例中，控制器會定義兩個 GET 方法，其中一個有*識別碼*參數和一個不含任何參數。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-164">In this example, the controller defines two GET methods, one with an *id* parameter and one with no parameters.</span></span>
 
 <span data-ttu-id="e7d3b-165">另外，請注意，POST 要求將會失敗，因為未定義控制器&quot;Post...&quot;方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-165">Also, note that the POST request will fail, because the controller does not define a &quot;Post...&quot; method.</span></span>
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample5.cs)]
 
-<span data-ttu-id="e7d3b-176">此路由範本中*{action}*參數名稱控制站上的動作方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-176">In this route template, the *{action}* parameter names the action method on the controller.</span></span> <span data-ttu-id="e7d3b-177">這種樣式的路由，以使用屬性來指定允許的 HTTP 方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-177">With this style of routing, use attributes to specify the allowed HTTP methods.</span></span> <span data-ttu-id="e7d3b-178">例如，假設您的控制器有下列方法：</span><span class="sxs-lookup"><span data-stu-id="e7d3b-178">For example, suppose your controller has the following method:</span></span>
+<span data-ttu-id="e7d3b-176">此路由範本中 *{action}* 參數名稱控制站上的動作方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-176">In this route template, the *{action}* parameter names the action method on the controller.</span></span> <span data-ttu-id="e7d3b-177">這種樣式的路由，以使用屬性來指定允許的 HTTP 方法。</span><span class="sxs-lookup"><span data-stu-id="e7d3b-177">With this style of routing, use attributes to specify the allowed HTTP methods.</span></span> <span data-ttu-id="e7d3b-178">例如，假設您的控制器有下列方法：</span><span class="sxs-lookup"><span data-stu-id="e7d3b-178">For example, suppose your controller has the following method:</span></span>
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample6.cs)]
 

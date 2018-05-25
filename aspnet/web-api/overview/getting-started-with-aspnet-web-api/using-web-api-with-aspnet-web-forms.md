@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
-title: "Web API 和 ASP.NET Web Form 搭配使用 |Microsoft 文件"
+title: Web API 和 ASP.NET Web Form 搭配使用 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2012
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/01/2017
 
 <span data-ttu-id="5dfb9-111">啟動 Visual Studio，然後選取**新專案**從**啟動**頁面。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-111">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="5dfb9-112">或從**檔案**功能表上，選取**新增**然後**專案**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-112">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="5dfb9-113">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-113">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="5dfb9-114">在下**Visual C#**，選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-114">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="5dfb9-115">在專案範本清單中選取**ASP.NET Web Form 應用程式**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-115">In the list of project templates, select **ASP.NET Web Forms Application**.</span></span> <span data-ttu-id="5dfb9-116">輸入專案的名稱，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-116">Enter a name for the project and click **OK**.</span></span>
+<span data-ttu-id="5dfb9-113">在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-113">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="5dfb9-114">在下**Visual C#**，選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-114">Under **Visual C#**, select **Web**.</span></span> <span data-ttu-id="5dfb9-115">在專案範本清單中選取**ASP.NET Web Form 應用程式**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-115">In the list of project templates, select **ASP.NET Web Forms Application**.</span></span> <span data-ttu-id="5dfb9-116">輸入專案的名稱，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-116">Enter a name for the project and click **OK**.</span></span>
 
 ![](using-web-api-with-aspnet-web-forms/_static/image1.png)
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/01/2017
 
 ![](using-web-api-with-aspnet-web-forms/_static/image2.png)
 
-<span data-ttu-id="5dfb9-125">在下**已安裝的範本**，依序展開**Visual C#**選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-125">Under **Installed Templates**, expand **Visual C#** and select **Web**.</span></span> <span data-ttu-id="5dfb9-126">然後，從範本清單中，選取**Web API 控制器類別**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-126">Then, from the list of templates, select **Web API Controller Class**.</span></span> <span data-ttu-id="5dfb9-127">將控制器"ProductsController 」，然後按一下**新增**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-127">Name the controller "ProductsController" and click **Add**.</span></span>
+<span data-ttu-id="5dfb9-125">在下**已安裝的範本**，依序展開**Visual C#** 選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-125">Under **Installed Templates**, expand **Visual C#** and select **Web**.</span></span> <span data-ttu-id="5dfb9-126">然後，從範本清單中，選取**Web API 控制器類別**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-126">Then, from the list of templates, select **Web API Controller Class**.</span></span> <span data-ttu-id="5dfb9-127">將控制器"ProductsController 」，然後按一下**新增**。</span><span class="sxs-lookup"><span data-stu-id="5dfb9-127">Name the controller "ProductsController" and click **Add**.</span></span>
 
 ![](using-web-api-with-aspnet-web-forms/_static/image3.png)
 

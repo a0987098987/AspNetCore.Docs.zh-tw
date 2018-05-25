@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/json-and-xml-serialization
-title: "JSON 和 ASP.NET Web API 中的 XML 序列化 |Microsoft 文件"
+title: JSON 和 ASP.NET Web API 中的 XML 序列化 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2012
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="31478-165">XML 格式由提供**XmlMediaTypeFormatter**類別。</span><span class="sxs-lookup"><span data-stu-id="31478-165">XML formatting is provided by the **XmlMediaTypeFormatter** class.</span></span> <span data-ttu-id="31478-166">根據預設， **XmlMediaTypeFormatter**使用**DataContractSerializer**執行序列化的類別。</span><span class="sxs-lookup"><span data-stu-id="31478-166">By default, **XmlMediaTypeFormatter** uses the **DataContractSerializer** class to perform serialization.</span></span>
 
-<span data-ttu-id="31478-167">如果您想要的話，您可以設定**XmlMediaTypeFormatter**使用**XmlSerializer**而不是**DataContractSerializer**。</span><span class="sxs-lookup"><span data-stu-id="31478-167">If you prefer, you can configure the **XmlMediaTypeFormatter** to use the **XmlSerializer** instead of the **DataContractSerializer**.</span></span> <span data-ttu-id="31478-168">若要這樣做，請設定**/usexmlserializer**屬性**true**:</span><span class="sxs-lookup"><span data-stu-id="31478-168">To do so, set the **UseXmlSerializer** property to **true**:</span></span>
+<span data-ttu-id="31478-167">如果您想要的話，您可以設定**XmlMediaTypeFormatter**使用**XmlSerializer**而不是**DataContractSerializer**。</span><span class="sxs-lookup"><span data-stu-id="31478-167">If you prefer, you can configure the **XmlMediaTypeFormatter** to use the **XmlSerializer** instead of the **DataContractSerializer**.</span></span> <span data-ttu-id="31478-168">若要這樣做，請設定 **/usexmlserializer**屬性**true**:</span><span class="sxs-lookup"><span data-stu-id="31478-168">To do so, set the **UseXmlSerializer** property to **true**:</span></span>
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample12.cs)]
 
@@ -233,7 +233,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-xml[Main](json-and-xml-serialization/samples/sample21.xml)]
 
-<span data-ttu-id="31478-233">如果您想要避免上模型類別的屬性，還有另一個選項： 建立新的型別而異**DataContractSerializer**執行個體，並設定*preserveObjectReferences*至**，則為 true**建構函式中。</span><span class="sxs-lookup"><span data-stu-id="31478-233">If you want to avoid attributes on your model class, there is another option: Create a new type-specific **DataContractSerializer** instance and set *preserveObjectReferences* to **true** in the constructor.</span></span> <span data-ttu-id="31478-234">XML 媒體類型格式器上，然後為每個型別序列化程式設定這個執行個體。</span><span class="sxs-lookup"><span data-stu-id="31478-234">Then set this instance as a per-type serializer on the XML media-type formatter.</span></span> <span data-ttu-id="31478-235">下列程式碼顯示如何執行這項操作：</span><span class="sxs-lookup"><span data-stu-id="31478-235">The following code show how to do this:</span></span>
+<span data-ttu-id="31478-233">如果您想要避免上模型類別的屬性，還有另一個選項： 建立新的型別而異**DataContractSerializer**執行個體，並設定*preserveObjectReferences*至 **，則為 true**建構函式中。</span><span class="sxs-lookup"><span data-stu-id="31478-233">If you want to avoid attributes on your model class, there is another option: Create a new type-specific **DataContractSerializer** instance and set *preserveObjectReferences* to **true** in the constructor.</span></span> <span data-ttu-id="31478-234">XML 媒體類型格式器上，然後為每個型別序列化程式設定這個執行個體。</span><span class="sxs-lookup"><span data-stu-id="31478-234">Then set this instance as a per-type serializer on the XML media-type formatter.</span></span> <span data-ttu-id="31478-235">下列程式碼顯示如何執行這項操作：</span><span class="sxs-lookup"><span data-stu-id="31478-235">The following code show how to do this:</span></span>
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample22.cs?highlight=3)]
 

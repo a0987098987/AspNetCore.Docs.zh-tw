@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
-title: "ASP.NET SignalR 中樞 API 指南 JavaScript 用戶端 |Microsoft 文件"
+title: ASP.NET SignalR 中樞 API 指南 JavaScript 用戶端 |Microsoft 文件
 author: pfletcher
-description: "本文件提供適用於第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applicat SignalR 使用集線器 API 的簡介..."
+description: 本文件提供適用於第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applicat SignalR 使用集線器 API 的簡介...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2015
@@ -166,7 +166,7 @@ ms.lasthandoff: 01/24/2018
 
     `signalr ghp /path:[path to the .dll that contains your Hub class]`
 
-    <span data-ttu-id="6ae8f-191">路徑您*.dll*通常是*bin*專案資料夾中的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-191">The path to your *.dll* is typically the *bin* folder in your project folder.</span></span>
+    <span data-ttu-id="6ae8f-191">路徑您 *.dll*通常是*bin*專案資料夾中的資料夾。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-191">The path to your *.dll* is typically the *bin* folder in your project folder.</span></span>
 
     <span data-ttu-id="6ae8f-192">此命令會建立名為*立即轉譯 server.js*相同資料夾中*signalr.exe*。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-192">This command creates a file named *server.js* in the same folder as *signalr.exe*.</span></span>
 4. <span data-ttu-id="6ae8f-193">Put*立即轉譯 server.js*檔中適當的資料夾，在您的專案中，視您的應用程式，將它重新命名並加入它的參考取代"signalr/中樞"參考。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-193">Put the *server.js* file in an appropriate folder in your project, rename it as appropriate for your application, and add a reference to it in place of the "signalr/hubs" reference.</span></span>
@@ -229,7 +229,7 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="6ae8f-228">如果 JSONP 需要在用戶端 （以支援跨網域要求中舊的瀏覽器），它必須明確啟用藉由設定`EnableJSONP`上`HubConfiguration`物件`true`，如下所示。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-228">If JSONP is required on the client (to support cross-domain requests in older browsers), it will need to be enabled explicitly by setting `EnableJSONP` on the `HubConfiguration` object to `true`, as shown below.</span></span> <span data-ttu-id="6ae8f-229">JSONP 已停用根據預設，因為它比 CORS 較不安全。</span><span class="sxs-lookup"><span data-stu-id="6ae8f-229">JSONP is disabled by default, as it is less secure than CORS.</span></span>
 
-<span data-ttu-id="6ae8f-230">**專案中加入 Microsoft.Owin.Cors:**若要安裝此程式庫，請在 Package Manager Console 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="6ae8f-230">**Adding Microsoft.Owin.Cors to your project:** To install this library, run the following command in the Package Manager Console:</span></span>
+<span data-ttu-id="6ae8f-230">**專案中加入 Microsoft.Owin.Cors:** 若要安裝此程式庫，請在 Package Manager Console 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="6ae8f-230">**Adding Microsoft.Owin.Cors to your project:** To install this library, run the following command in the Package Manager Console:</span></span>
 
 `Install-Package Microsoft.Owin.Cors`
 

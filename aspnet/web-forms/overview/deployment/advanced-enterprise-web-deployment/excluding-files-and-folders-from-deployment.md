@@ -71,14 +71,14 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="ee885-143">雖然您無法管理您的專案檔案，以排除特定檔案和資料夾，還有更簡單的方法。</span><span class="sxs-lookup"><span data-stu-id="ee885-143">Although you could manipulate your project files to exclude specific files and folders, there is an easier way.</span></span> <span data-ttu-id="ee885-144">WPP 還有一個機制，藉由建置名為的項目清單中排除檔案和資料夾**ExcludeFromPackageFolders**和**ExcludeFromPackageFiles**。</span><span class="sxs-lookup"><span data-stu-id="ee885-144">The WPP includes a mechanism to exclude files and folders by building item lists named **ExcludeFromPackageFolders** and **ExcludeFromPackageFiles**.</span></span> <span data-ttu-id="ee885-145">您可以擴充這個機制，將您自己的項目加入至這些清單。</span><span class="sxs-lookup"><span data-stu-id="ee885-145">You can extend this mechanism by adding your own items to these lists.</span></span> <span data-ttu-id="ee885-146">若要這樣做，您需要完成下列高階步驟：</span><span class="sxs-lookup"><span data-stu-id="ee885-146">To do this, you need to complete these high-level steps:</span></span>
 
-1. <span data-ttu-id="ee885-147">建立自訂專案檔名為*[專案名稱].wpp.targets*專案檔相同資料夾中。</span><span class="sxs-lookup"><span data-stu-id="ee885-147">Create a custom project file named *[project name].wpp.targets* in the same folder as your project file.</span></span>
+1. <span data-ttu-id="ee885-147">建立自訂專案檔名為 *[專案名稱].wpp.targets*專案檔相同資料夾中。</span><span class="sxs-lookup"><span data-stu-id="ee885-147">Create a custom project file named *[project name].wpp.targets* in the same folder as your project file.</span></span>
 
     > [!NOTE]
     > <span data-ttu-id="ee885-148">*。 Wpp.targets*檔案必須與您的 web 應用程式專案檔相同的資料夾中移&#x2014;，例如*ContactManager.Mvc.csproj*&#x2014;而不是任何自訂相同資料夾中您用來控制組建和部署程序的專案檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-148">The *.wpp.targets* file needs to go in the same folder as your web application project file&#x2014;for example, *ContactManager.Mvc.csproj*&#x2014;rather than in the same folder as any custom project files you use to control the build and deployment process.</span></span>
-2. <span data-ttu-id="ee885-149">在*。 wpp.targets* file、 add **ItemGroup**項目。</span><span class="sxs-lookup"><span data-stu-id="ee885-149">In the *.wpp.targets* file, add an **ItemGroup** element.</span></span>
+2. <span data-ttu-id="ee885-149">在 *。 wpp.targets* file、 add **ItemGroup**項目。</span><span class="sxs-lookup"><span data-stu-id="ee885-149">In the *.wpp.targets* file, add an **ItemGroup** element.</span></span>
 3. <span data-ttu-id="ee885-150">在**ItemGroup**項目，加入**ExcludeFromPackageFolders**和**ExcludeFromPackageFiles**来排除特定檔案和資料夾做為必要項目。</span><span class="sxs-lookup"><span data-stu-id="ee885-150">In the **ItemGroup** element, add **ExcludeFromPackageFolders** and **ExcludeFromPackageFiles** items to exclude specific files and folders as required.</span></span>
 
-<span data-ttu-id="ee885-151">這是這個基本結構*。 wpp.targets*檔案：</span><span class="sxs-lookup"><span data-stu-id="ee885-151">This is the basic structure of this *.wpp.targets* file:</span></span>
+<span data-ttu-id="ee885-151">這是這個基本結構 *。 wpp.targets*檔案：</span><span class="sxs-lookup"><span data-stu-id="ee885-151">This is the basic structure of this *.wpp.targets* file:</span></span>
 
 
 [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample1.xml)]
@@ -88,14 +88,14 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="excluding-files-and-folders-from-a-web-package"></a><span data-ttu-id="ee885-154">從 Web 套件中排除檔案和資料夾</span><span class="sxs-lookup"><span data-stu-id="ee885-154">Excluding Files and Folders from a Web Package</span></span>
 
-<span data-ttu-id="ee885-155">下一個程序會示範如何加入*。 wpp.targets* web 應用程式專案，以及如何使用檔案時，排除特定檔案和資料夾從 web 套件建置您的專案檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-155">The next procedure shows you how to add a *.wpp.targets* file to a web application project and how to use the file to exclude specific files and folders from the web package when you build your project.</span></span>
+<span data-ttu-id="ee885-155">下一個程序會示範如何加入 *。 wpp.targets* web 應用程式專案，以及如何使用檔案時，排除特定檔案和資料夾從 web 套件建置您的專案檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-155">The next procedure shows you how to add a *.wpp.targets* file to a web application project and how to use the file to exclude specific files and folders from the web package when you build your project.</span></span>
 
 <span data-ttu-id="ee885-156">**若要從 web 部署套件中排除檔案和資料夾**</span><span class="sxs-lookup"><span data-stu-id="ee885-156">**To exclude files and folders from a web deployment package**</span></span>
 
 1. <span data-ttu-id="ee885-157">Visual Studio 2010 中開啟您的方案。</span><span class="sxs-lookup"><span data-stu-id="ee885-157">Open your solution in Visual Studio 2010.</span></span>
 2. <span data-ttu-id="ee885-158">在**方案總管] 中**視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (比方說， **ContactManager.Mvc**)，指向**新增**，然後按一下 [ **新項目**。</span><span class="sxs-lookup"><span data-stu-id="ee885-158">In the **Solution Explorer** window, right-click your web application project node (for example, **ContactManager.Mvc**), point to **Add**, and then click **New Item**.</span></span>
 3. <span data-ttu-id="ee885-159">在**加入新項目**對話方塊中，選取**XML 檔案**範本。</span><span class="sxs-lookup"><span data-stu-id="ee885-159">In the **Add New Item** dialog box, select the **XML File** template.</span></span>
-4. <span data-ttu-id="ee885-160">在**名稱**方塊中，輸入*[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.</span><span class="sxs-lookup"><span data-stu-id="ee885-160">In the **Name** box, type *[project name]***.wpp.targets** (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
+4. <span data-ttu-id="ee885-160">在**名稱**方塊中，輸入 *[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.</span><span class="sxs-lookup"><span data-stu-id="ee885-160">In the **Name** box, type *[project name]***.wpp.targets** (for example, **ContactManager.Mvc.wpp.targets**), and then click **Add**.</span></span>
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
@@ -107,21 +107,21 @@ ms.lasthandoff: 04/06/2018
 6. <span data-ttu-id="ee885-164">如果您想要排除資料夾從 web 封裝，加入**ExcludeFromPackageFolders**元素**ItemGroup**項目：</span><span class="sxs-lookup"><span data-stu-id="ee885-164">If you want to exclude folders from the web package, add an **ExcludeFromPackageFolders** element to the **ItemGroup** element:</span></span>
 
    1. <span data-ttu-id="ee885-165">在**Include**屬性，請提供您想要排除的資料夾以分號分隔清單。</span><span class="sxs-lookup"><span data-stu-id="ee885-165">In the **Include** attribute, provide a semicolon-separated list of the folders you want to exclude.</span></span>
-   2. <span data-ttu-id="ee885-166">在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱*。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-166">In the **FromTarget** metadata element, provide a meaningful value to indicate why the folders are being excluded, like the name of the *.wpp.targets* file.</span></span>
+   2. <span data-ttu-id="ee885-166">在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱 *。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-166">In the **FromTarget** metadata element, provide a meaningful value to indicate why the folders are being excluded, like the name of the *.wpp.targets* file.</span></span>
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
 7. <span data-ttu-id="ee885-167">如果您想要排除的檔案從 web 封裝，加入**ExcludeFromPackageFiles**元素**ItemGroup**項目：</span><span class="sxs-lookup"><span data-stu-id="ee885-167">If you want to exclude files from the web package, add an **ExcludeFromPackageFiles** element to the **ItemGroup** element:</span></span>
 
    1. <span data-ttu-id="ee885-168">在**Include**屬性，請提供您想要排除的檔案以分號分隔清單。</span><span class="sxs-lookup"><span data-stu-id="ee885-168">In the **Include** attribute, provide a semicolon-separated list of the files you want to exclude.</span></span>
-   2. <span data-ttu-id="ee885-169">在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱*。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-169">In the **FromTarget** metadata element, provide a meaningful value to indicate why the files are being excluded, like the name of the *.wpp.targets* file.</span></span>
+   2. <span data-ttu-id="ee885-169">在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱 *。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-169">In the **FromTarget** metadata element, provide a meaningful value to indicate why the files are being excluded, like the name of the *.wpp.targets* file.</span></span>
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
 8. <span data-ttu-id="ee885-170">*[專案名稱].wpp.targets*檔現在應該類似這樣：</span><span class="sxs-lookup"><span data-stu-id="ee885-170">The *[project name].wpp.targets* file should now resemble this:</span></span>
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
-9. <span data-ttu-id="ee885-171">儲存並關閉*[專案名稱].wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-171">Save and close the *[project name].wpp.targets* file.</span></span>
+9. <span data-ttu-id="ee885-171">儲存並關閉 *[專案名稱].wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-171">Save and close the *[project name].wpp.targets* file.</span></span>
 
-<span data-ttu-id="ee885-172">下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測*。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-172">The next time you build and package your web application project, the WPP will automatically detect the *.wpp.targets* file.</span></span> <span data-ttu-id="ee885-173">任何檔案和您指定的資料夾不會包含 web 套件中。</span><span class="sxs-lookup"><span data-stu-id="ee885-173">Any files and folders you specified will not be included in the web package.</span></span>
+<span data-ttu-id="ee885-172">下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測 *。 wpp.targets*檔案。</span><span class="sxs-lookup"><span data-stu-id="ee885-172">The next time you build and package your web application project, the WPP will automatically detect the *.wpp.targets* file.</span></span> <span data-ttu-id="ee885-173">任何檔案和您指定的資料夾不會包含 web 套件中。</span><span class="sxs-lookup"><span data-stu-id="ee885-173">Any files and folders you specified will not be included in the web package.</span></span>
 
 ## <a name="conclusion"></a><span data-ttu-id="ee885-174">結論</span><span class="sxs-lookup"><span data-stu-id="ee885-174">Conclusion</span></span>
 

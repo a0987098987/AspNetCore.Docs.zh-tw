@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions
-title: "支援在 ASP.NET Web API 2 OData 動作 |Microsoft 文件"
+title: 支援在 ASP.NET Web API 2 OData 動作 |Microsoft 文件
 author: MikeWasson
-description: "在 OData 中，動作是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 動作的一些用法包括： 實作..."
+description: 在 OData 中，動作是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 動作的一些用法包括： 實作...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/10/2017
 - <span data-ttu-id="2faaa-140">*索引鍵*： 速率的產品金鑰。</span><span class="sxs-lookup"><span data-stu-id="2faaa-140">*key*: The key for the product to rate.</span></span>
 - <span data-ttu-id="2faaa-141">*參數*： 動作參數值的字典。</span><span class="sxs-lookup"><span data-stu-id="2faaa-141">*parameters*: A dictionary of action parameter values.</span></span>
 
-<span data-ttu-id="2faaa-142">如果您使用的預設路由慣例，機碼的參數必須為 「 金鑰 」。</span><span class="sxs-lookup"><span data-stu-id="2faaa-142">If you are using the default routing conventions, the key parameter must be named "key".</span></span> <span data-ttu-id="2faaa-143">它也是一定要包含**[FromOdataUri]**屬性，如下所示。</span><span class="sxs-lookup"><span data-stu-id="2faaa-143">It is also important to include the **[FromOdataUri]** attribute, as shown.</span></span> <span data-ttu-id="2faaa-144">這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。</span><span class="sxs-lookup"><span data-stu-id="2faaa-144">This attribute tells Web API to use OData syntax rules when it parses the key from the request URI.</span></span>
+<span data-ttu-id="2faaa-142">如果您使用的預設路由慣例，機碼的參數必須為 「 金鑰 」。</span><span class="sxs-lookup"><span data-stu-id="2faaa-142">If you are using the default routing conventions, the key parameter must be named "key".</span></span> <span data-ttu-id="2faaa-143">它也是一定要包含 **[FromOdataUri]** 屬性，如下所示。</span><span class="sxs-lookup"><span data-stu-id="2faaa-143">It is also important to include the **[FromOdataUri]** attribute, as shown.</span></span> <span data-ttu-id="2faaa-144">這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。</span><span class="sxs-lookup"><span data-stu-id="2faaa-144">This attribute tells Web API to use OData syntax rules when it parses the key from the request URI.</span></span>
 
 <span data-ttu-id="2faaa-145">使用*參數*取得動作參數的字典：</span><span class="sxs-lookup"><span data-stu-id="2faaa-145">Use the *parameters* dictionary to get the action parameters:</span></span>
 

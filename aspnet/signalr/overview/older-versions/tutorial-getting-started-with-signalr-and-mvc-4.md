@@ -60,7 +60,7 @@ ms.lasthandoff: 04/06/2018
 1. 1. <span data-ttu-id="8eee7-127">Visual Studio 中建立 ASP.NET MVC 4 應用程式、 其命名為 SignalRChat，並按一下 [確定]。</span><span class="sxs-lookup"><span data-stu-id="8eee7-127">In Visual Studio create an ASP.NET MVC 4 application, name it SignalRChat, and click OK.</span></span>
 
         > [!NOTE]
-        > <span data-ttu-id="8eee7-128">在 VS 2010 中，選取**.NET Framework 4** Framework 版本下拉式控制項中。</span><span class="sxs-lookup"><span data-stu-id="8eee7-128">In VS 2010, select **.NET Framework 4** in the Framework version dropdown control.</span></span> <span data-ttu-id="8eee7-129">在.NET Framework 4 和 4.5 版上執行 SignalR 程式碼。</span><span class="sxs-lookup"><span data-stu-id="8eee7-129">SignalR code runs on .NET Framework versions 4 and 4.5.</span></span>
+        > <span data-ttu-id="8eee7-128">在 VS 2010 中，選取 **.NET Framework 4** Framework 版本下拉式控制項中。</span><span class="sxs-lookup"><span data-stu-id="8eee7-128">In VS 2010, select **.NET Framework 4** in the Framework version dropdown control.</span></span> <span data-ttu-id="8eee7-129">在.NET Framework 4 和 4.5 版上執行 SignalR 程式碼。</span><span class="sxs-lookup"><span data-stu-id="8eee7-129">SignalR code runs on .NET Framework versions 4 and 4.5.</span></span>
 
         ![建立 mvc web](tutorial-getting-started-with-signalr-and-mvc-4/_static/image3.png)
       2. <span data-ttu-id="8eee7-131">選取 網際網路應用程式範本，請清除選項以**建立單元測試專案**，按一下 確定。</span><span class="sxs-lookup"><span data-stu-id="8eee7-131">Select the Internet Application template, clear the option to **Create a unit test project**, and click OK.</span></span>
@@ -105,7 +105,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="run-the-sample"></a><span data-ttu-id="8eee7-159">執行範例</span><span class="sxs-lookup"><span data-stu-id="8eee7-159">Run the Sample</span></span>
 
 1. <span data-ttu-id="8eee7-160">按 F5 以偵錯模式執行專案。</span><span class="sxs-lookup"><span data-stu-id="8eee7-160">Press F5 to run the project in debug mode.</span></span>
-2. <span data-ttu-id="8eee7-161">在瀏覽器位址列中，附加**/首頁/聊天**專案的預設網頁的 url。</span><span class="sxs-lookup"><span data-stu-id="8eee7-161">In the browser address line, append **/home/chat** to the URL of the default page for the project.</span></span> <span data-ttu-id="8eee7-162">聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="8eee7-162">The Chat page loads in a browser instance and prompts for a user name.</span></span>
+2. <span data-ttu-id="8eee7-161">在瀏覽器位址列中，附加 **/首頁/聊天**專案的預設網頁的 url。</span><span class="sxs-lookup"><span data-stu-id="8eee7-161">In the browser address line, append **/home/chat** to the URL of the default page for the project.</span></span> <span data-ttu-id="8eee7-162">聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="8eee7-162">The Chat page loads in a browser instance and prompts for a user name.</span></span>
 
     ![輸入使用者名稱](tutorial-getting-started-with-signalr-and-mvc-4/_static/image9.png)
 3. <span data-ttu-id="8eee7-164">輸入使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="8eee7-164">Enter a user name.</span></span>

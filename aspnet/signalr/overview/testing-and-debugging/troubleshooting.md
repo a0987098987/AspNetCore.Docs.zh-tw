@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
-title: "SignalR 疑難排解 |Microsoft 文件"
+title: SignalR 疑難排解 |Microsoft 文件
 author: pfletcher
-description: "本文說明開發 SignalR 應用程式的一般問題。"
+description: 本文說明開發 SignalR 應用程式的一般問題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -190,10 +190,10 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="e887b-212">有多種原因會導致此問題。</span><span class="sxs-lookup"><span data-stu-id="e887b-212">There are several causes for this issue.</span></span> <span data-ttu-id="e887b-213">請確認下列各項：</span><span class="sxs-lookup"><span data-stu-id="e887b-213">Verify all of the following:</span></span>
 
-- <span data-ttu-id="e887b-214">**中樞 proxy 位址參照的格式不正確：**如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。</span><span class="sxs-lookup"><span data-stu-id="e887b-214">**Hub proxy address reference not formatted correctly:** This error is commonly seen if the reference to the generated hub proxy address is not formatted correctly.</span></span> <span data-ttu-id="e887b-215">請確認中樞位址的參考都正確。</span><span class="sxs-lookup"><span data-stu-id="e887b-215">Verify that the reference to the hub address is made properly.</span></span> <span data-ttu-id="e887b-216">請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="e887b-216">See [How to reference the dynamically generated proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy) for details.</span></span>
-- <span data-ttu-id="e887b-217">**將路由加入至應用程式，然後再加入中樞路由：**如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapSignalR`。</span><span class="sxs-lookup"><span data-stu-id="e887b-217">**Adding routes to application before adding the hub route:** If your application uses other routes, verify that the first route added is the call to `MapSignalR`.</span></span>
-- <span data-ttu-id="e887b-218">**無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：**使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。</span><span class="sxs-lookup"><span data-stu-id="e887b-218">**Using IIS 7 or 7.5 without the update for extensionless URLs:** Using IIS 7 or 7.5 requires an update for extensionless URLs so that the server can provide access to the hub definitions at `/signalr/hubs`.</span></span> <span data-ttu-id="e887b-219">您可以找到更新[這裡](https://support.microsoft.com/kb/980368)。</span><span class="sxs-lookup"><span data-stu-id="e887b-219">The update can be found [here](https://support.microsoft.com/kb/980368).</span></span>
-- <span data-ttu-id="e887b-220">**IIS 快取已過期或已損毀：**若要確認快取內容不是已過期，請在 PowerShell 視窗中，清除快取中輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="e887b-220">**IIS cache out of date or corrupt:** To verify that the cache contents are not out of date, enter the following command in a PowerShell window to clear the cache:</span></span>
+- <span data-ttu-id="e887b-214">**中樞 proxy 位址參照的格式不正確：** 如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。</span><span class="sxs-lookup"><span data-stu-id="e887b-214">**Hub proxy address reference not formatted correctly:** This error is commonly seen if the reference to the generated hub proxy address is not formatted correctly.</span></span> <span data-ttu-id="e887b-215">請確認中樞位址的參考都正確。</span><span class="sxs-lookup"><span data-stu-id="e887b-215">Verify that the reference to the hub address is made properly.</span></span> <span data-ttu-id="e887b-216">請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。</span><span class="sxs-lookup"><span data-stu-id="e887b-216">See [How to reference the dynamically generated proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy) for details.</span></span>
+- <span data-ttu-id="e887b-217">**將路由加入至應用程式，然後再加入中樞路由：** 如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapSignalR`。</span><span class="sxs-lookup"><span data-stu-id="e887b-217">**Adding routes to application before adding the hub route:** If your application uses other routes, verify that the first route added is the call to `MapSignalR`.</span></span>
+- <span data-ttu-id="e887b-218">**無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：** 使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。</span><span class="sxs-lookup"><span data-stu-id="e887b-218">**Using IIS 7 or 7.5 without the update for extensionless URLs:** Using IIS 7 or 7.5 requires an update for extensionless URLs so that the server can provide access to the hub definitions at `/signalr/hubs`.</span></span> <span data-ttu-id="e887b-219">您可以找到更新[這裡](https://support.microsoft.com/kb/980368)。</span><span class="sxs-lookup"><span data-stu-id="e887b-219">The update can be found [here](https://support.microsoft.com/kb/980368).</span></span>
+- <span data-ttu-id="e887b-220">**IIS 快取已過期或已損毀：** 若要確認快取內容不是已過期，請在 PowerShell 視窗中，清除快取中輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="e887b-220">**IIS cache out of date or corrupt:** To verify that the cache contents are not out of date, enter the following command in a PowerShell window to clear the cache:</span></span>
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]
 

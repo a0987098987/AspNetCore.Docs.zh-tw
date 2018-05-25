@@ -10,22 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 88b4ee9a963543f8cc97cb66271628a14fe657de
-ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
-ms.translationtype: MT
+ms.openlocfilehash: 9e9b548e5572da2c347bc874c473a02d8691e738
+ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 05/23/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)，和[Scott Addie](https://github.com/scottaddie)
 
-::: moniker range="<= aspnetcore-1.1"
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples/1.1) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-::: moniker-end
-::: moniker range=">= aspnetcore-2.0"
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples/2.1) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-::: moniker-end
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 本文件說明儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 您永遠不應該在原始程式碼中，儲存的密碼或其他機密資料，您不應該在開發中使用生產機密資料或測試模式。 您可以儲存並保護 Azure 測試與實際的機密資訊使用[Azure 金鑰保存庫的組態提供者](xref:security/key-vault-configuration)。
 
@@ -36,7 +31,7 @@ ms.lasthandoff: 05/18/2018
 ::: moniker range="<= aspnetcore-1.1"
 藉由呼叫設定環境變數值的讀取[AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables)中`Startup`建構函式：
 
-[!code-csharp[](app-secrets/samples/1.1/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=10)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=10)]
 ::: moniker-end
 
 請考慮 ASP.NET Core web 應用程式在其中**個別使用者帳戶**已啟用安全性。 預設資料庫的連接字串包含在專案中的*appsettings.json*檔案具有索引鍵`DefaultConnection`。 預設的連接字串是 localdb，這會在使用者模式中執行，而不需要密碼。 應用程式部署期間`DefaultConnection`機碼值會覆寫與環境變數的值。 環境變數可能會儲存敏感認證的完整連接字串。
@@ -86,7 +81,7 @@ ms.lasthandoff: 05/18/2018
 
 安裝[Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) ASP.NET Core 專案中的 NuGet 封裝：
 
-[!code-xml[](app-secrets/samples/1.1/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
+[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
 
 若要驗證工具的安裝命令殼層中執行下列命令：
 
@@ -125,10 +120,10 @@ Use "dotnet user-secrets [command] --help" for more information about a command.
 密碼管理員工具會依據儲存在您的使用者設定檔中的專案特定的組態設定。 若要使用使用者的機密資訊，請定義`UserSecretsId`內的項目`PropertyGroup`的 *.csproj*檔案。 值`UserSecretsId`任意的但是是唯一的專案。 開發人員通常會產生的 GUID `UserSecretsId`。
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-xml[](app-secrets/samples/1.1/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
+[!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-xml[](app-secrets/samples/2.1/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
+[!code-xml[](app-secrets/samples/2.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
 ::: moniker-end
 
 > [!TIP]
@@ -180,28 +175,39 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="access-a-secret"></a>存取密碼
 
-[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供密碼管理員密碼的存取。 如果目標為.NET Core 的 1.x 或.NET Framework 安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 封裝。
-
 ::: moniker range="<= aspnetcore-1.1"
-將使用者密碼設定來源加入`Startup`建構函式：
+[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供密碼管理員密碼的存取。 安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 封裝。
 
-[!code-csharp[](app-secrets/samples/1.1/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
+新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)中`Startup`建構函式：
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
+::: moniker-end
+::: moniker range=">= aspnetcore-2.0"
+[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供密碼管理員密碼的存取。 如果您專案的目標.NET Framework，安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 封裝。
+
+在 ASP.NET Core 2.0 或更新版本中，使用者密碼設定來源會自動加入開發模式時的專案呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)初始化主應用程式使用預先設定的預設值的新執行個體。 `CreateDefaultBuilder` 呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)時[EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)是[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
+
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
+
+當`CreateDefaultBuilder`不在主機建構期間呼叫，新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)中`Startup`建構函式：
+
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
 ::: moniker-end
 
 可以透過擷取使用者密碼`Configuration`API:
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.1/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=23)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=23)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-csharp[](app-secrets/samples/2.1/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
 ::: moniker-end
 
 ## <a name="string-replacement-with-secrets"></a>含有機密資料的字串取代
 
 以純文字儲存密碼很危險。 例如，資料庫連接字串儲存在*appsettings.json*可能包含指定之使用者的密碼：
 
-[!code-json[](app-secrets/samples/2.1/UserSecrets/appsettings-unsecure.json?highlight=3)]
+[!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
 最安全的作法是將密碼儲存做為密碼。 例如: 
 
@@ -211,15 +217,15 @@ dotnet user-secrets set "DbPassword" "pass123"
 
 在 密碼取代*appsettings.json*以預留位置。 在下列範例中，`{0}`用做為表單預留位置[複合格式字串](/dotnet/standard/base-types/composite-formatting#composite-format-string)。
 
-[!code-json[](app-secrets/samples/2.1/UserSecrets/appsettings.json?highlight=3)]
+[!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
 密碼的值可以插入到完成連接字串的預留位置：
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.1/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=23-25)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=23-25)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-csharp[](app-secrets/samples/2.1/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-16)]
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-16)]
 ::: moniker-end
 
 ## <a name="list-the-secrets"></a>列出密碼

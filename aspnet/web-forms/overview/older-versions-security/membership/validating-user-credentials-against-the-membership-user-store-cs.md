@@ -39,9 +39,9 @@ ms.lasthandoff: 04/06/2018
 
 使用表單驗證的網站，使用者登入網站瀏覽登入頁面，並輸入其認證。 這些認證，然後會針對使用者存放區進行比較。 如果有效，然後授與使用者表單驗證票證，即表示身分識別和真實性的造訪者的安全性權杖。
 
-若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在*`username`*和*`password`* -並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
+若要驗證使用者，以針對成員資格 framework，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數-在*`username`* 和*`password`* -並傳回布林值，指出是否已有效認證。 例如`CreateUser`方法我們在上一個教學課程中，檢查`ValidateUser`方法會委派實際驗證設定的成員資格提供者。
 
-`SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`*傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與從傳回什麼資料庫。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
+`SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`* 傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與從傳回什麼資料庫。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
 
 讓我們更新我們的登入頁面 (~ /`Login.aspx`)，讓它會驗證成員資格 framework 使用者存放區提供的認證。 我們建立此登入頁面中<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊的使用者名稱和密碼，以建立介面記住我 核取方塊，並登入按鈕 （請參閱圖 1）。 程式碼會驗證輸入的認證，硬式編碼的使用者名稱和密碼組清單 （Scott/密碼、 Jisun/密碼，與 Sam/密碼）。 在<a id="Tutorial03"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)教學課程中我們已更新儲存在表單的其他資訊的登入網頁的程式碼驗證票證`UserData`屬性。
 

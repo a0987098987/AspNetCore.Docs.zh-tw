@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
-title: "疑難排解 HTTP 405 錯誤，在發行後的 Web API 2 應用程式 |Microsoft 文件"
+title: 疑難排解 HTTP 405 錯誤，在發行後的 Web API 2 應用程式 |Microsoft 文件
 author: rmcmurray
-description: "本教學課程說明如何針對 HTTP 405 錯誤進行疑難排解之後發行至實際執行 web 伺服器的 Web API 應用程式。"
+description: 本教學課程說明如何針對 HTTP 405 錯誤進行疑難排解之後發行至實際執行 web 伺服器的 Web API 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2014

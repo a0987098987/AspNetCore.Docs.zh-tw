@@ -7,6 +7,8 @@
 <a name="dc"></a>
 ### <a name="add-a-database-context-class"></a>新增資料庫內容類別
 
-將下列 *MovieContext.cs* 類別新增至 *Models* 資料夾：[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Models/MovieContext.cs)]
+將下列 *MovieContext.cs* 類別新增至 *Models* 資料夾：  
+
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Models/MovieContext.cs)]
 
 上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。

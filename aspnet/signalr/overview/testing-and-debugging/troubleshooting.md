@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
-title: "SignalR 疑難排解 |Microsoft 文件"
+title: SignalR 疑難排解 |Microsoft 文件
 author: pfletcher
-description: "本文說明開發 SignalR 應用程式的一般問題。"
+description: 本文說明開發 SignalR 應用程式的一般問題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -190,10 +190,10 @@ SignalR 的伺服器不知道，是否用戶端是無作用或不，而它們是
 
 有多種原因會導致此問題。 請確認下列各項：
 
-- **中樞 proxy 位址參照的格式不正確：**如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 請確認中樞位址的參考都正確。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
-- **將路由加入至應用程式，然後再加入中樞路由：**如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapSignalR`。
-- **無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：**使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。 您可以找到更新[這裡](https://support.microsoft.com/kb/980368)。
-- **IIS 快取已過期或已損毀：**若要確認快取內容不是已過期，請在 PowerShell 視窗中，清除快取中輸入下列命令：
+- **中樞 proxy 位址參照的格式不正確：** 如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 請確認中樞位址的參考都正確。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
+- **將路由加入至應用程式，然後再加入中樞路由：** 如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapSignalR`。
+- **無副檔名的 url 使用 IIS 7 或 7.5，而不進行更新：** 使用 IIS 7 或 7.5 需要更新無副檔名的 url，讓伺服器可提供存取中樞定義`/signalr/hubs`。 您可以找到更新[這裡](https://support.microsoft.com/kb/980368)。
+- **IIS 快取已過期或已損毀：** 若要確認快取內容不是已過期，請在 PowerShell 視窗中，清除快取中輸入下列命令：
 
     [!code-powershell[Main](troubleshooting/samples/sample11.ps1)]
 

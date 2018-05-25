@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 8a105f835dddfcd0e9f32059e644f60dc1fdbbe1
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 067d9bd09f6d5e54bbafd953eea169d2df2be34e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -72,7 +72,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 ## <a name="using-framework-provided-services"></a>使用架構提供的服務
 
-`Startup` 類別中的 `ConfigureServices` 方法負責定義應用程式將使用的服務，包括像是 Entity Framework Core 與 ASP.NET Core MVC 等平台功能。 一開始，提供給 `ConfigureServices` 的 `IServiceCollection` 具有下列已定義的服務 (取決於[主機的設定方式](xref:fundamentals/hosting))：
+`Startup` 類別中的 `ConfigureServices` 方法負責定義應用程式將使用的服務，包括像是 Entity Framework Core 與 ASP.NET Core MVC 等平台功能。 一開始，提供給 `ConfigureServices` 的 `IServiceCollection` 具有下列已定義的服務 (取決於[主機的設定方式](xref:fundamentals/host/index))：
 
 | 服務類型 | 存留期 |
 | ----- | ------- |
@@ -229,13 +229,13 @@ public static void Main(string[] args)
 當應用程式在 ASP.NET Core 2.0 或更新版本的開發環境中執行時，預設服務提供者會確認：
 
 * 範圍服務不是直接或間接由開機服務提供者解析。
-* 範圍服務不是直接或間接插入單一服務。
+* 範圍服務不是直接或間接插入至單一服務。
 
 根服務提供者會在呼叫 [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) 時建立。 當提供者啟動應用程式時，根服務提供者的存留期與應用程式/伺服器的存留期一致，並會在應用程式關閉時處置。
 
 範圍服務會由建立這些服務的容器處置。 若是在根容器中建立範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
 
-如需詳細資訊，請參閱[裝載時驗證範圍](xref:fundamentals/hosting#scope-validation)主題。
+如需詳細資訊，請參閱 [Web 主機 主題中的範圍驗證](xref:fundamentals/host/web-host#scope-validation)。
 
 ## <a name="request-services"></a>要求服務
 
@@ -245,7 +245,7 @@ public static void Main(string[] args)
 
 要求服務代表您在應用程式中設定和要求的服務。 當您的物件指定相依性時，這些會由 `RequestServices` 中找到的類型來滿足，而非 `ApplicationServices`。
 
-一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 如此產生的類別將更較容易測試 (請參閱[測試與偵錯](../testing/index.md))，而且更鬆散結合。
+一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 如此產生的類別將更較容易測試 (請參閱[測試與偵錯](xref:testing/index))，而且更鬆散結合。
 
 > [!NOTE]
 > 偏好要求相依性作為建構函式參數，而不要存取 `RequestServices` 集合。
@@ -351,13 +351,15 @@ public class DefaultModule : Module
 
 * 避免靜態存取 `HttpContext`。
 
-> [!NOTE]
-> 就像所有的建議集，您可能會遇到需要忽略其中之一的情況。 我們發現例外狀況很少見 - 主要是架構本身內非常特殊的情況。
+就像所有的建議集，您可能會遇到需要忽略其中之一的情況。 我們發現例外狀況很少見 - 主要是架構本身內非常特殊的情況。
 
-請記住，相依性插入是靜態/全域物件存取模式的「替代」選項。 如果您將 DI 與靜態物件存取混合，則將無法實現 DI 的優點。
+相依性插入是靜態/全域物件存取模式的「替代」選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
 
 ## <a name="additional-resources"></a>其他資源
 
+* [在檢視中插入相依性](xref:mvc/views/dependency-injection)
+* [在控制器中插入相依性](xref:mvc/controllers/dependency-injection)
+* [要求處理常式中的相依性插入](xref:security/authorization/dependencyinjection)
 * [應用程式啟動](xref:fundamentals/startup)
 * [測試及偵錯](xref:testing/index)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)

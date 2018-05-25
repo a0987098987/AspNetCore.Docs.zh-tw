@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
-title: "支援 OData 查詢選項中 ASP.NET Web API 2 |Microsoft 文件"
+title: 支援 OData 查詢選項中 ASP.NET Web API 2 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/04/2013
@@ -26,7 +26,7 @@ OData 會定義可以用來修改 OData 查詢的參數。 用戶端在要求 UR
 
 `http://localhost/Products?$orderby=Name`
 
-OData 規格會呼叫這些參數*查詢選項*。 您可以在您的專案 &#8212; 啟動任何 Web API 控制器的 OData 查詢選項控制站不需要是 OData 端點。 這可讓您加入功能，例如篩選和排序任何 Web API 應用程式的便利方式。
+OData 規格會呼叫這些參數*查詢選項*。 您可以在您的專案 & #8212; 啟動任何 Web API 控制器的 OData 查詢選項控制站不需要是 OData 端點。 這可讓您加入功能，例如篩選和排序任何 Web API 應用程式的便利方式。
 
 啟用查詢選項，請閱讀本主題之前[OData 安全性指導方針](odata-security-guidance.md)。
 
@@ -58,7 +58,7 @@ Web 應用程式開發介面支援下列 OData 查詢選項：
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample1.cs)]
 
-**EnableQuerySupport**方法可讓查詢選項，會傳回任何控制器動作的全域**IQueryable**型別。 如果您不想啟用整個應用程式的查詢選項，您可以啟用以進行特定控制器的動作加入**[Queryable]**屬性至動作方法。
+**EnableQuerySupport**方法可讓查詢選項，會傳回任何控制器動作的全域**IQueryable**型別。 如果您不想啟用整個應用程式的查詢選項，您可以啟用以進行特定控制器的動作加入 **[Queryable]** 屬性至動作方法。
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample2.cs)]
 
@@ -131,7 +131,7 @@ $Filter 選項可讓用戶端藉由套用布林運算式篩選結果。 篩選�
 <a id="limiting_query_options"></a>
 ## <a name="limiting-the-query-options"></a>限制的查詢選項
 
-查詢選項可讓用戶端大量控制伺服器執行的查詢。 在某些情況下，您可能想要限制的可用選項的安全性或效能的考量。 **[Queryable]**屬性具有某些內建屬性這個。 以下是一些範例。
+查詢選項可讓用戶端大量控制伺服器執行的查詢。 在某些情況下，您可能想要限制的可用選項的安全性或效能的考量。 **[Queryable]** 屬性具有某些內建屬性這個。 以下是一些範例。
 
 允許只 $skip 和 $top，以支援分頁而無其他內容：
 
@@ -156,7 +156,7 @@ $Filter 選項可讓用戶端藉由套用布林運算式篩選結果。 篩選�
 <a id="ODataQueryOptions"></a>
 ## <a name="invoking-query-options-directly"></a>直接叫用查詢選項
 
-而不是使用**[Queryable]**屬性，您可以直接在您的控制器中叫用的查詢選項。 若要這樣做，請加入**ODataQueryOptions**控制器方法的參數。 在此情況下，您不需要**[Queryable]**屬性。
+而不是使用 **[Queryable]** 屬性，您可以直接在您的控制器中叫用的查詢選項。 若要這樣做，請加入**ODataQueryOptions**控制器方法的參數。 在此情況下，您不需要 **[Queryable]** 屬性。
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample13.cs)]
 
@@ -167,7 +167,7 @@ Web API 填入**ODataQueryOptions**從 URI 查詢字串。 若要將查詢套用
 <a id="query-validation"></a>
 ## <a name="query-validation"></a>查詢驗證
 
-**[Queryable]**屬性之前先驗證查詢。 驗證步驟會在中執行**QueryableAttribute.ValidateQuery**方法。 您也可以自訂驗證程序。
+**[Queryable]** 屬性之前先驗證查詢。 驗證步驟會在中執行**QueryableAttribute.ValidateQuery**方法。 您也可以自訂驗證程序。
 
 另請參閱[OData 安全性指導方針](odata-security-guidance.md)。
 
@@ -175,7 +175,7 @@ Web API 填入**ODataQueryOptions**從 URI 查詢字串。 若要將查詢套用
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample14.cs)]
 
-子類別**[Queryable]**屬性來覆寫**ValidateQuery**方法。
+子類別 **[Queryable]** 屬性來覆寫**ValidateQuery**方法。
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample15.cs)]
 

@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
-title: "教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft 文件"
+title: 教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft 文件
 author: pfletcher
-description: "本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天的應用程式。 您將 MVC 5 應用程式中加入 SignalR 和建立交談檢視..."
+description: 本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天的應用程式。 您將 MVC 5 應用程式中加入 SignalR 和建立交談檢視...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/24/2018
 
     ![指令碼 資料夾](tutorial-getting-started-with-signalr-and-mvc/_static/image5.png)
 7. 在**方案總管 中**，以滑鼠右鍵按一下專案，選取**新增 |新的資料夾**，並加入新的資料夾，名為**集線器**。
-8. 以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |新項目**，選取**Visual C# |Web |SignalR**節點**已安裝**窗格中，選取**SignalR 中樞類別 (v2)**從中間窗格中，並建立名為新的中樞**ChatHub.cs**。 您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。
+8. 以滑鼠右鍵按一下**集線器**資料夾中，按一下 **新增 |新項目**，選取**Visual C# |Web |SignalR**節點**已安裝**窗格中，選取**SignalR 中樞類別 (v2)** 從中間窗格中，並建立名為新的中樞**ChatHub.cs**。 您將使用此類別將訊息傳送至所有用戶端的 SignalR 伺服器集線器。
 
     ![建立新的中樞](tutorial-getting-started-with-signalr-and-mvc/_static/image6.png)
 9. 中的程式碼取代**ChatHub**為下列程式碼的類別。
@@ -136,7 +136,7 @@ ms.lasthandoff: 01/24/2018
 ## <a name="run-the-sample"></a>執行範例
 
 1. 按 F5 以偵錯模式執行專案。
-2. 在瀏覽器位址列中，附加**/首頁/聊天**專案的預設網頁的 url。 聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。
+2. 在瀏覽器位址列中，附加 **/首頁/聊天**專案的預設網頁的 url。 聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。
 
     ![輸入使用者名稱](tutorial-getting-started-with-signalr-and-mvc/_static/image8.png)
 3. 輸入使用者名稱。

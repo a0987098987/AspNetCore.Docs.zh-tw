@@ -5,16 +5,16 @@ description: 使用 ASP.NET Core MVC 和 Visual Studio for Windows 建置 Web AP
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 05/17/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: cb46f8b4013488dbe2bb5ca3d08a8c6e452141dd
-ms.sourcegitcommit: c867d7427bd4a88a78b2322e156367733b532730
+ms.openlocfilehash: 1680d5e0be0f4844c904d923af30634c53bd1b81
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 
@@ -51,6 +51,8 @@ ms.lasthandoff: 05/09/2018
 ```json
 ["value1","value2"]
 ```
+
+若使用 Internet Explorer，您會收到儲存 *values.json* 檔案的提示。
 
 ### <a name="add-a-model-class"></a>新增模型類別
 

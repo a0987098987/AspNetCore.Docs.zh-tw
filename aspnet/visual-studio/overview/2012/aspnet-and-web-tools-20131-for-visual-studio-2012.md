@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
-title: "適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資訊 |Microsoft 文件"
+title: 適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資訊 |Microsoft 文件
 author: microsoft
-description: "本文件說明的 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 的版本。"
+description: 本文件說明的 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 的版本。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2013
 ms.topic: article
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
@@ -181,7 +181,7 @@ NuGet 2.7 包含一組豐富的新功能所說明的詳細討論[NuGet 2.7 版�
 
 升級至 ASP.NET Razor 3 或 ASP.NET MVC 5 之後，tilde(~) 標記法可能無法再正確運作如果您使用 URL 重。 URL 重寫影響 tilde(~) 標記法中的 HTML 項目例如&lt;A /&gt;，&lt;指令碼 /&gt;，&lt;連結 /&gt;，並因此波狀符號不會再將對應至目錄的根目錄。
 
-比方說，如果您重新撰寫要求**asp.net/content**至**asp.net**中的 href 屬性&lt;A href ="~/content/"/&gt;解析成**/content/內容 /**而不是 **/** 。 若要隱藏這項變更，您可以設定**IIS\_WasUrlRewritten**內容為 false，在每個網頁或**應用程式\_BeginRequest**在 Global.asax 中。
+比方說，如果您重新撰寫要求**asp.net/content**至**asp.net**中的 href 屬性&lt;A href ="~/content/"/&gt;解析成 **/content/內容 /** 而不是**/**。 若要隱藏這項變更，您可以設定**IIS\_WasUrlRewritten**內容為 false，在每個網頁或**應用程式\_BeginRequest**在 Global.asax 中。
 
 <a id="templateissue"></a>
 ### <a name="templates"></a>範本

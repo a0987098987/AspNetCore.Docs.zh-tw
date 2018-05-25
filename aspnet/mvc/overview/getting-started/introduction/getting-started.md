@@ -39,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 
 開始安裝並執行[Visual Studio 2017](https://www.visualstudio.com/)。
 
-Visual Studio 是一個 IDE 中或整合式的開發環境。 就像您使用 Microsoft Word 來寫入的文件時，您將使用 IDE 來建立應用程式。 在 Visual Studio 中會列出沿著底部顯示各種可用的選項給您。 也會提供另一種方式，在 IDE 中執行工作的功能表。 (例如，而不是選取**新的專案**從**啟動** 頁面上，您可以使用功能表並選取**檔案** &gt; **新專案**.)
+Visual Studio 是一個 IDE 中或整合式的開發環境。 就像您使用 Microsoft Word 來寫入的文件時，您將使用 IDE 來建立應用程式。 在 Visual Studio 中會列出沿著底部顯示各種可用的選項給您。 也會提供另一種方式，在 IDE 中執行工作的功能表。 (例如，您可以使用功能表並選取檔案 &gt; 新專案，而不是從啟動 頁面上選取新的專案.)
 
 
 ![](getting-started/_static/image1.png)  
@@ -59,7 +59,7 @@ Visual Studio 使用您剛才建立的 ASP.NET MVC 專案的預設範本，因�
 
 ![](getting-started/_static/image4.png)
 
-按 f5 鍵啟動偵錯。 F5 會導致 Visual Studio 啟動[IIS Express](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)並執行您 web 應用程式。 然後，visual Studio 會啟動瀏覽器，並開啟應用程式的首頁。 請注意，該處會指示瀏覽器的網址列`localhost:port#`並不是類似`example.com`。 這是因為`localhost`一律會指向您自己的本機電腦，在此情況下執行您剛才建置的應用程式。 Visual Studio 執行時 web 專案，隨機連接埠用於 web 伺服器。 在下面的影像中的連接埠號碼是 1234年。 當您執行應用程式時，您會看到不同的通訊埠編號。
+按 f5 鍵啟動偵錯。 F5 會導致 Visual Studio 啟動[IIS Express](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview)並執行您 web 應用程式。 然後，visual Studio 會啟動瀏覽器，並開啟應用程式的首頁。 請注意，該處會指示瀏覽器的網址列`localhost:port#`並不是類似`example.com`。 這是因為`localhost`一律會指向您自己的本機電腦，在此情況下執行您剛才建置的應用程式。 Visual Studio 執行時 web 專案，隨機連接埠用於 web 伺服器。 在下面的影像中的連接埠號碼是 1234。 當您執行應用程式時，您會看到不同的通訊埠編號。
 
 ![](getting-started/_static/image5.png)
 

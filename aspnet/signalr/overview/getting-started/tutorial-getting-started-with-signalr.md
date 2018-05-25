@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
-title: "教學課程： 開始使用 SignalR 2 |Microsoft 文件"
+title: 教學課程： 開始使用 SignalR 2 |Microsoft 文件
 author: pfletcher
-description: "此教學課程會示範如何使用 SignalR 建立即時聊天應用程式。 您會加入空白的 ASP.NET web 應用程式中的 SignalR 並建立 HTML pa..."
+description: 此教學課程會示範如何使用 SignalR 建立即時聊天應用程式。 您會加入空白的 ASP.NET web 應用程式中的 SignalR 並建立 HTML pa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -112,7 +112,7 @@ SignalR 簡化建立即時應用程式的程序。 它包含 ASP.NET server 程�
     如果您要加入 SignalR 使用主控台，建立 SignalR 中樞類別當做個別的步驟之後新增 SignalR。
 
     > [!NOTE]
-    > 如果您使用 Visual Studio 2012 **SignalR 中樞類別 (v2)**範本將無法使用。 您可以加入純**類別**呼叫`ChatHub`改為。
+    > 如果您使用 Visual Studio 2012 **SignalR 中樞類別 (v2)** 範本將無法使用。 您可以加入純**類別**呼叫`ChatHub`改為。
 4. 在**方案總管 中**，展開 指令碼 節點。 JQuery 和 SignalR 的指令碼程式庫會顯示專案中。
 5. 在新的程式碼取代**ChatHub**為下列程式碼的類別。
 

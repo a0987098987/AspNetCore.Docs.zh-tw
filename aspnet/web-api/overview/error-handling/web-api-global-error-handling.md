@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/error-handling/web-api-global-error-handling
-title: "全域錯誤處理中 ASP.NET Web API 2 |Microsoft 文件"
+title: 全域錯誤處理中 ASP.NET Web API 2 |Microsoft 文件
 author: davidmatson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/03/2014
@@ -122,7 +122,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="registering-exception-filters"></a>註冊例外狀況篩選條件
 
-如果您使用 「 ASP.NET MVC 4 Web 應用程式 」 專案範本來建立專案時，將 Web API 組態程式碼內`WebApiConfig`類別中*啟動應用程式/（_s)*資料夾：
+如果您使用 「 ASP.NET MVC 4 Web 應用程式 」 專案範本來建立專案時，將 Web API 組態程式碼內`WebApiConfig`類別中*啟動應用程式/（_s)* 資料夾：
 
 [!code-csharp[Main](exception-handling/samples/sample7.cs?highlight=5)]
 

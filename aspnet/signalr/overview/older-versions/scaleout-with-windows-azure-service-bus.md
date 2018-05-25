@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
-title: "Azure 服務匯流排與 SignalR 範圍外 (SignalR 1.x) |Microsoft 文件"
+title: Azure 服務匯流排與 SignalR 範圍外 (SignalR 1.x) |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2013

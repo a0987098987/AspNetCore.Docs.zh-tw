@@ -71,14 +71,14 @@ ms.lasthandoff: 04/06/2018
 
 雖然您無法管理您的專案檔案，以排除特定檔案和資料夾，還有更簡單的方法。 WPP 還有一個機制，藉由建置名為的項目清單中排除檔案和資料夾**ExcludeFromPackageFolders**和**ExcludeFromPackageFiles**。 您可以擴充這個機制，將您自己的項目加入至這些清單。 若要這樣做，您需要完成下列高階步驟：
 
-1. 建立自訂專案檔名為*[專案名稱].wpp.targets*專案檔相同資料夾中。
+1. 建立自訂專案檔名為 *[專案名稱].wpp.targets*專案檔相同資料夾中。
 
     > [!NOTE]
     > *。 Wpp.targets*檔案必須與您的 web 應用程式專案檔相同的資料夾中移&#x2014;，例如*ContactManager.Mvc.csproj*&#x2014;而不是任何自訂相同資料夾中您用來控制組建和部署程序的專案檔案。
-2. 在*。 wpp.targets* file、 add **ItemGroup**項目。
+2. 在 *。 wpp.targets* file、 add **ItemGroup**項目。
 3. 在**ItemGroup**項目，加入**ExcludeFromPackageFolders**和**ExcludeFromPackageFiles**来排除特定檔案和資料夾做為必要項目。
 
-這是這個基本結構*。 wpp.targets*檔案：
+這是這個基本結構 *。 wpp.targets*檔案：
 
 
 [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample1.xml)]
@@ -88,14 +88,14 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="excluding-files-and-folders-from-a-web-package"></a>從 Web 套件中排除檔案和資料夾
 
-下一個程序會示範如何加入*。 wpp.targets* web 應用程式專案，以及如何使用檔案時，排除特定檔案和資料夾從 web 套件建置您的專案檔案。
+下一個程序會示範如何加入 *。 wpp.targets* web 應用程式專案，以及如何使用檔案時，排除特定檔案和資料夾從 web 套件建置您的專案檔案。
 
 **若要從 web 部署套件中排除檔案和資料夾**
 
 1. Visual Studio 2010 中開啟您的方案。
 2. 在**方案總管] 中**視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (比方說， **ContactManager.Mvc**)，指向**新增**，然後按一下 [ **新項目**。
 3. 在**加入新項目**對話方塊中，選取**XML 檔案**範本。
-4. 在**名稱**方塊中，輸入*[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
+4. 在**名稱**方塊中，輸入 *[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
@@ -107,21 +107,21 @@ ms.lasthandoff: 04/06/2018
 6. 如果您想要排除資料夾從 web 封裝，加入**ExcludeFromPackageFolders**元素**ItemGroup**項目：
 
    1. 在**Include**屬性，請提供您想要排除的資料夾以分號分隔清單。
-   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱*。 wpp.targets*檔案。
+   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出為什麼資料夾已被排除，如名稱 *。 wpp.targets*檔案。
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
 7. 如果您想要排除的檔案從 web 封裝，加入**ExcludeFromPackageFiles**元素**ItemGroup**項目：
 
    1. 在**Include**屬性，請提供您想要排除的檔案以分號分隔清單。
-   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱*。 wpp.targets*檔案。
+   2. 在**FromTarget**中繼資料元素，提供有意義的值，指出檔案會被排除原因，如名稱 *。 wpp.targets*檔案。
 
       [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
 8. *[專案名稱].wpp.targets*檔現在應該類似這樣：
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
-9. 儲存並關閉*[專案名稱].wpp.targets*檔案。
+9. 儲存並關閉 *[專案名稱].wpp.targets*檔案。
 
-下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測*。 wpp.targets*檔案。 任何檔案和您指定的資料夾不會包含 web 套件中。
+下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測 *。 wpp.targets*檔案。 任何檔案和您指定的資料夾不會包含 web 套件中。
 
 ## <a name="conclusion"></a>結論
 

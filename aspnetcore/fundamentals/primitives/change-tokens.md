@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 3055eec91adc412b596d4cc73e8523e18ff63331
-ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
+ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -108,7 +108,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
-`config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 這個執行個體中的 `state` 是描述監視狀態的字串。 會使用兩個屬性：
+`config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 這個執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
 * `MonitoringEnabled` 指出回呼是否應該執行自訂程式碼。
 * `CurrentState` 描述要用於 UI 的目前監視狀態。
@@ -116,7 +116,6 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
 * 不會執行其程式碼，除非 `MonitoringEnabled` 是 `true`。
-* 將 `CurrentState` 屬性字串設定為記錄程式碼執行時間的描述性訊息。
 * 在其 `WriteConsole` 輸出中記錄目前的 `state`。
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
@@ -201,7 +200,6 @@ var compositeChangeToken =
 
 * [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
-* [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取](xref:performance/caching/response)
 * [回應快取中介軟體](xref:performance/caching/middleware)
 * [快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

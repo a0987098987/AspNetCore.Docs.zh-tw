@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/using-select-expand-and-value
-title: "使用 $select，$expand、 與 ASP.NET Web API 2 OData 中的 $value |Microsoft 文件"
+title: 使用 $select，$expand、 與 ASP.NET Web API 2 OData 中的 $value |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/11/2013
@@ -54,7 +54,7 @@ Web API 2 新增的支援 $ expand $select 和 OData $value 選項。 這些選�
 
 [!code-csharp[Main](using-select-expand-and-value/samples/sample3.cs)]
 
-此外，裝飾您`Get`方法**[Queryable]**屬性，如先前的程式碼片段所示。 或者，呼叫**EnableQuerySupport**上**HttpConfiguration**在啟動時的物件。 (如需詳細資訊，請參閱[啟用 OData 查詢選項](supporting-odata-query-options.md#enable)。)
+此外，裝飾您`Get`方法 **[Queryable]** 屬性，如先前的程式碼片段所示。 或者，呼叫**EnableQuerySupport**上**HttpConfiguration**在啟動時的物件。 (如需詳細資訊，請參閱[啟用 OData 查詢選項](supporting-odata-query-options.md#enable)。)
 
 ## <a name="using-expand"></a>使用 $展開
 
@@ -88,7 +88,7 @@ $ Expand 選項會採用以逗號分隔清單的導覽屬性，以展開。 下�
 
 [!code-console[Main](using-select-expand-and-value/samples/sample10.cmd)]
 
-根據預設，Web 應用程式開發介面會限制為 2 的最大展開深度。 可避免用戶端傳送複雜的要求，例如`$expand=Orders/OrderDetails/Product/Supplier/Region`，這可能是沒有效率的查詢，並建立大型的回應。 若要覆寫預設值，設定**MaxExpansionDepth**屬性**[Queryable]**屬性。
+根據預設，Web 應用程式開發介面會限制為 2 的最大展開深度。 可避免用戶端傳送複雜的要求，例如`$expand=Orders/OrderDetails/Product/Supplier/Region`，這可能是沒有效率的查詢，並建立大型的回應。 若要覆寫預設值，設定**MaxExpansionDepth**屬性 **[Queryable]** 屬性。
 
 [!code-csharp[Main](using-select-expand-and-value/samples/sample11.cs)]
 

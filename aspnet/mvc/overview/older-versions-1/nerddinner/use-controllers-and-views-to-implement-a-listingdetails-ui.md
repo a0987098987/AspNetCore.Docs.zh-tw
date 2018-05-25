@@ -68,11 +68,11 @@ by [Microsoft](https://github.com/microsoft)
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample1.cs)]
 
-接著，我們會執行 NerdDinner 應用程式，並使用我們的瀏覽器叫用它們。 在中輸入*"/ Dinners /"* URL 會導致我們*index*執行，以及它的方法會傳回下列回應：
+接著，我們會執行 NerdDinner 應用程式，並使用我們的瀏覽器叫用它們。 在中輸入 *"/ Dinners /"* URL 會導致我們*index*執行，以及它的方法會傳回下列回應：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image4.png)
 
-在中輸入*"/ Dinners/詳細資料/2"* URL 會導致我們*Details()*方法來執行，並傳回下列回應：
+在中輸入 *"/ Dinners/詳細資料/2"* URL 會導致我們*Details()* 方法來執行，並傳回下列回應：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image5.png)
 
@@ -125,11 +125,11 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 我們控制器邏輯分離我們檢視轉譯會帶來幾個好處。 尤其是它會協助強化清楚 」 的重要性分離 」 應用程式程式碼與 UI 呈現格式化程式碼之間。 這使得更容易隔離單元測試應用程式邏輯與 UI 呈現邏輯。 它可讓您稍後修改 UI 轉譯範本，而不需要變更應用程式程式碼更容易。 它可以讓它更容易開發人員和設計師一起共同作業專案。
 
-我們可以更新 DinnersController 類別來表示我們想要透過檢視表範本傳送回 HTML UI 回應變更我們的兩個動作方法的方法簽章的傳回類型為"void"改為使用"ActionResult"傳回型別。 我們可以呼叫*View()*傳回到控制器基底類別的 helper 方法類似下面的 「 ViewResult"物件：
+我們可以更新 DinnersController 類別來表示我們想要透過檢視表範本傳送回 HTML UI 回應變更我們的兩個動作方法的方法簽章的傳回類型為"void"改為使用"ActionResult"傳回型別。 我們可以呼叫*View()* 傳回到控制器基底類別的 helper 方法類似下面的 「 ViewResult"物件：
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample4.cs)]
 
-簽章*View()*我們使用上述的 helper 方法看起來如下：
+簽章*View()* 我們使用上述的 helper 方法看起來如下：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image7.png)
 
@@ -171,7 +171,7 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample7.aspx)]
 
-我們可以再現在就試試看瀏覽器中。 若要這樣做讓我們要求*"/ Dinners/詳細資料/9999"* URL。 這會指 dinner，目前不存在於資料庫中，且會導致我們 DinnersController.Details() 動作方法，以呈現我們"NotFound"檢視的範本：
+我們可以再現在就試試看瀏覽器中。 若要這樣做讓我們要求 *"/ Dinners/詳細資料/9999"* URL。 這會指 dinner，目前不存在於資料庫中，且會導致我們 DinnersController.Details() 動作方法，以呈現我們"NotFound"檢視的範本：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image12.png)
 
@@ -201,7 +201,7 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample8.aspx)]
 
-我們可以要求*"/ 1/Dinners/詳細資料 」* URL，請參閱此 [詳細資料] scaffold 實作在瀏覽器中的外觀。 使用此 URL 將會顯示我們手動新增至資料庫時，我們建立 dinners 的其中一個：
+我們可以要求 *"/ 1/Dinners/詳細資料 」* URL，請參閱此 [詳細資料] scaffold 實作在瀏覽器中的外觀。 使用此 URL 將會顯示我們手動新增至資料庫時，我們建立 dinners 的其中一個：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image16.png)
 
@@ -217,7 +217,7 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample9.aspx)]
 
-當存取*"/ 1/Dinners/詳細資料 」* URL 一次它即將轉譯類似下面的：
+當存取 *"/ 1/Dinners/詳細資料 」* URL 一次它即將轉譯類似下面的：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image18.png)
 
@@ -231,7 +231,7 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 當我們按一下 [新增] 按鈕時，Visual Studio 將我們"\Views\Dinners"目錄中就讓我們建立新的"Index.aspx 」 檢視範本檔案。 它會 「 scaffold"初始實作中提供 Dinners 我們傳遞至檢視的 HTML 資料表清單。
 
-當我們執行應用程式及存取*"/ Dinners /"* URL 將會呈現 dinners 的清單，就像這樣：
+當我們執行應用程式及存取 *"/ Dinners /"* URL 將會呈現 dinners 的清單，就像這樣：
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image20.png)
 
@@ -243,7 +243,7 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image21.png)
 
-當我們點擊 重新整理*/Dinners*我們更新的檢視現在看起來像下面我們瀏覽器中的 URL:
+當我們點擊 重新整理 */Dinners*我們更新的檢視現在看起來像下面我們瀏覽器中的 URL:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image22.png)
 
@@ -265,7 +265,7 @@ Html.ActionLink() helper 方法的第一個參數是要顯示的連結文字 （
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample13.aspx)]
 
-現在我們叫用時和*/Dinners* dinner 清單看起來像下列的 URL:
+現在我們叫用時和 */Dinners* dinner 清單看起來像下列的 URL:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image24.png)
 
@@ -283,11 +283,11 @@ Html.ActionLink() helper 方法的第一個參數是要顯示的連結文字 （
 
 請注意上述方式沒有目前專案中的三個控制器類別 (DinnersController、 HomeController 和 AccountController – 最後兩個已加入依預設，當我們建立專案時)，而且有三個子目錄 （一個用於每個控制站） \Views 目錄內。
 
-從首頁和帳戶控制器所參考的檢視將會自動解除其檢視範本，從個別*\Views\Home*和*\Views\Account*目錄。 *\Views\Shared*子目錄提供方法來儲存跨多個應用程式中的控制器會重複使用的檢視範本。 當 ASP.NET MVC 會嘗試解析檢視範本時，它會先檢查，內*\Views\[控制站]*特定目錄中，如果找不到檢視表範本那里它將會尋找內*\Views\共用*目錄。
+從首頁和帳戶控制器所參考的檢視將會自動解除其檢視範本，從個別*\Views\Home*和*\Views\Account*目錄。 *\Views\Shared*子目錄提供方法來儲存跨多個應用程式中的控制器會重複使用的檢視範本。 當 ASP.NET MVC 會嘗試解析檢視範本時，它會先檢查，內*\Views\[控制站]* 特定目錄中，如果找不到檢視表範本那里它將會尋找內*\Views\共用*目錄。
 
 命名個別檢視範本時，若要將共用相同的名稱做為動作方法，導致呈現檢視範本是建議的指引。 例如，上面我們 「 索引 」 動作的方法呈現檢視結果，使用 「 索引 」 檢視和 [詳細資料] 動作方法使用 [詳細資料] 檢視來呈現其結果。 這可讓您輕鬆快速地查看哪一個範本是與每個動作相關聯。
 
-若要檢視範本有相同名稱做為控制器上叫用動作方法時明確指定檢視表範本名稱不需要開發人員。 我們可以改為只傳遞模型物件 」 View()"helper 方法 （而不指定檢視表名稱），和 ASP.NET MVC 會自動推斷我們想要使用*\Views\[ControllerName]\[ActionName]*檢視範本來對應它的磁碟上。
+若要檢視範本有相同名稱做為控制器上叫用動作方法時明確指定檢視表範本名稱不需要開發人員。 我們可以改為只傳遞模型物件 」 View()"helper 方法 （而不指定檢視表名稱），和 ASP.NET MVC 會自動推斷我們想要使用*\Views\[ControllerName]\[ActionName]* 檢視範本來對應它的磁碟上。
 
 這可讓我們稍有清除控制器的程式碼，並避免重複兩次中的程式碼的名稱：
 

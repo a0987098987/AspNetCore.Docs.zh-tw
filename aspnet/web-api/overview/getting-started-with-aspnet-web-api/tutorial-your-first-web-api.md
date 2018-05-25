@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: "開始使用 ASP.NET Web API 2 (C#)"
+title: 開始使用 ASP.NET Web API 2 (C#)
 author: MikeWasson
-description: "HTTP 不只適用於提供網頁。 它也是功能強大的平台，用於建置應用程式開發介面公開 （expose） 服務和資料。 HTTP 是簡單、 彈性和 ubiq..."
+description: HTTP 不只適用於提供網頁。 它也是功能強大的平台，用於建置應用程式開發介面公開 （expose） 服務和資料。 HTTP 是簡單、 彈性和 ubiq...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/28/2017
@@ -43,7 +43,7 @@ ASP.NET Web API 是用於建置的 web Api 在.NET Framework 之上的架構。 
 
 啟動 Visual Studio，然後選取**新專案**從**啟動**頁面。 或從**檔案**功能表上，選取**新增**然後**專案**。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET Web 應用程式**。 將專案命名為"ProductsApp 」，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET Web 應用程式**。 將專案命名為"ProductsApp 」，然後按一下**確定**。
 
 ![](tutorial-your-first-web-api/_static/image2.png)
 
@@ -61,7 +61,7 @@ ASP.NET Web API 是用於建置的 web Api 在.NET Framework 之上的架構。 
 
 首先建立簡單的模型代表產品。
 
-如果沒有顯示 方案總管 中，按一下**檢視**功能表，然後選取**方案總管 中**。 在 [方案總管] 中，以滑鼠右鍵按一下 [模型] 資料夾。 從內容功能表中，選取**新增**然後選取**類別**。
+如果沒有顯示 [方案總管] 中，按一下**檢視**功能表，然後選取**方案總管 中**。 在 [方案總管] 中，以滑鼠右鍵按一下 [模型] 資料夾。 從內容功能表中，選取**新增**然後選取**類別**。
 
 ![](tutorial-your-first-web-api/_static/image4.png)
 
@@ -76,7 +76,7 @@ Web API 中*控制器*是用來處理 HTTP 要求的物件。 我們會將新增
 > [!NOTE]
 > 如果您已使用 ASP.NET MVC，您已熟悉控制站。 Web API 控制器 MVC 控制器類似，但繼承**ApiController**類別而不是**控制器**類別。
 
-在**方案總管 中**，以滑鼠右鍵按一下 控制器 資料夾。 選取**新增**，然後選取 **控制器**。
+在**方案總管 中**，以滑鼠右鍵按一下 [控制器] 資料夾。 選取**新增**，然後選取 **控制器**。
 
 ![](tutorial-your-first-web-api/_static/image5.png)
 
@@ -104,7 +104,7 @@ Web API 中*控制器*是用來處理 HTTP 要求的物件。 我們會將新增
 
 控制器會定義傳回產品的兩種方法：
 
-- `GetAllProducts`方法會傳回完整的產品做為清單**IEnumerable&lt;產品&gt;**型別。
+- `GetAllProducts`方法會傳回完整的產品做為清單**IEnumerable&lt;產品&gt;** 型別。
 - `GetProduct`方法查閱單一產品的識別碼。
 
 就這麼容易！ 您必須使用 web API。 在控制器上的每個方法會對應至一或多個 Uri:

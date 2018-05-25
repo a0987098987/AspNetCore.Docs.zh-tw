@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/9-working-with-images
-title: "使用 ASP.NET Web Pages (Razor) 網站中的映像 |Microsoft 文件"
+title: 使用 ASP.NET Web Pages (Razor) 網站中的映像 |Microsoft 文件
 author: tfitzmac
-description: "本章節將說明如何新增、 顯示及操控映像 （調整大小、 翻轉，和新增浮水印） 在您的網站。"
+description: 本章節將說明如何新增、 顯示及操控映像 （調整大小、 翻轉，和新增浮水印） 在您的網站。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-html[Main](9-working-with-images/samples/sample1.html)]
 
-有時候，不過，您需要能夠以動態方式顯示影像 &#8212;也就是說，您不知道何種映像之前的頁面，顯示 正在執行。
+有時候，不過，您需要能夠以動態方式顯示影像 & #8212;也就是說，您不知道何種映像之前的頁面，顯示 正在執行。
 
 本節中的程序示範如何讓使用者指定影像的檔案名稱，從映像名稱的清單，立即顯示影像。 他們從下拉式清單中，選取影像的名稱，當它們送出此頁面，會顯示在選取的映像。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/10/2017
 
     [!code-cshtml[Main](9-working-with-images/samples/sample2.cshtml)]
 
-    頁面主體具有下拉式清單 (`<select>`項目)，名稱為`photoChoice`。 清單中有三個選項，而`value`每個清單選項的屬性具有名稱的其中一個您放在映像*映像*資料夾。 基本上，清單可讓使用者選取的好記的名稱，例如&quot;相片 1&quot;，然後將傳遞*.jpg*時送出頁面的檔案名稱。
+    頁面主體具有下拉式清單 (`<select>`項目)，名稱為`photoChoice`。 清單中有三個選項，而`value`每個清單選項的屬性具有名稱的其中一個您放在映像*映像*資料夾。 基本上，清單可讓使用者選取的好記的名稱，例如&quot;相片 1&quot;，然後將傳遞 *.jpg*時送出頁面的檔案名稱。
 
     在程式碼中，您可以取得使用者的選取範圍 （亦即，映像檔案名稱） 從清單讀取`Request["photoChoice"]`。 您先查看是否有選取項目完全。 如果沒有，您會建構為映像的資料夾名稱和使用者的映像檔案名稱所組成的映像的路徑。 (如果您嘗試建構的路徑，但沒有任何在`Request["photoChoice"]`，就會收到錯誤。)像這樣的相對路徑的結果：
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/10/2017
 <a id="Uploading_an_Image"></a>
 ## <a name="uploading-an-image"></a>上傳映像
 
-前一個範例會示範如何以動態方式，顯示影像，但它只能使用已經在網站上的映像。 此程序示範如何讓使用者上傳映像，即會顯示在頁面上。 在 ASP.NET 中，您可以上操控映像使用即時`WebImage`helper，有方法可讓您建立、 操作及儲存映像。 `WebImage`協助程式支援所有常見 web 影像檔案類型，包括*.jpg*， *.png*，和*.bmp*。 在本文中，您將使用*.jpg*映像，但是您可以使用任何影像類型。
+前一個範例會示範如何以動態方式，顯示影像，但它只能使用已經在網站上的映像。 此程序示範如何讓使用者上傳映像，即會顯示在頁面上。 在 ASP.NET 中，您可以上操控映像使用即時`WebImage`helper，有方法可讓您建立、 操作及儲存映像。 `WebImage`協助程式支援所有常見 web 影像檔案類型，包括 *.jpg*， *.png*，和 *.bmp*。 在本文中，您將使用 *.jpg*映像，但是您可以使用任何影像類型。
 
 ![[影像]] (9-working-with-images/_static/image2.jpg "ch9images 2.jpg")
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 11/10/2017
 
     *C:\Users\Joe\Pictures\SamplePhoto1.jpg*
 
-    您不想該路徑資訊，不過 &#8212;您只想實際的檔案名稱 (*SamplePhoto1.jpg*)。 您可以使用帶狀出該檔案的路徑`Path.GetFileName`方法，就像這樣：
+    您不想該路徑資訊，不過 & #8212;您只想實際的檔案名稱 (*SamplePhoto1.jpg*)。 您可以使用帶狀出該檔案的路徑`Path.GetFileName`方法，就像這樣：
 
     [!code-csharp[Main](9-working-with-images/samples/sample4.cs)]
 

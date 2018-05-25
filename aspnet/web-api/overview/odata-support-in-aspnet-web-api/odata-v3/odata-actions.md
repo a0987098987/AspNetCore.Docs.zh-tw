@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions
-title: "支援在 ASP.NET Web API 2 OData 動作 |Microsoft 文件"
+title: 支援在 ASP.NET Web API 2 OData 動作 |Microsoft 文件
 author: MikeWasson
-description: "在 OData 中，動作是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 動作的一些用法包括： 實作..."
+description: 在 OData 中，動作是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 動作的一些用法包括： 實作...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014
@@ -78,7 +78,7 @@ POST 要求中的資料是直接的產品評比：
 - *索引鍵*： 速率的產品金鑰。
 - *參數*： 動作參數值的字典。
 
-如果您使用的預設路由慣例，機碼的參數必須為 「 金鑰 」。 它也是一定要包含**[FromOdataUri]**屬性，如下所示。 這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。
+如果您使用的預設路由慣例，機碼的參數必須為 「 金鑰 」。 它也是一定要包含 **[FromOdataUri]** 屬性，如下所示。 這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。
 
 使用*參數*取得動作參數的字典：
 

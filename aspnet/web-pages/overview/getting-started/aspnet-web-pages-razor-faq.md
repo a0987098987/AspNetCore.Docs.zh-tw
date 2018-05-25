@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
-title: "ASP.NET Web Pages (Razor) 常見問題集 |Microsoft 文件"
+title: ASP.NET Web Pages (Razor) 常見問題集 |Microsoft 文件
 author: tfitzmac
-description: "本文列出關於 ASP.NET Web Pages (Razor) 及 WebMatrix 的一些常見問題集的解答。 使用教學課程 ASP.NET Web Pages 中 (R..的軟體版本"
+description: 本文列出關於 ASP.NET Web Pages (Razor) 及 WebMatrix 的一些常見問題集的解答。 使用教學課程 ASP.NET Web Pages 中 (R..的軟體版本
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014
@@ -74,23 +74,23 @@ ms.lasthandoff: 01/24/2018
 - IIS Express （web 伺服器）
 - Microsoft SQL Server Compact 4.0 （資料庫）
 
-您可以使用文字編輯器來編輯*.cshtml* (或*.vbhtml*) 頁面。
+您可以使用文字編輯器來編輯 *.cshtml* (或 *.vbhtml*) 頁面。
 
-管理 SQL Server Compact 資料庫 (*.sdf*檔案) 沒有一項工具會有點困難。 管理 visual Studio containds 工具*.sdf*資料庫。 您也可以執行許多 SQL Server 管理工作的程式碼中執行 SQL 命令。
+管理 SQL Server Compact 資料庫 (*.sdf*檔案) 沒有一項工具會有點困難。 管理 visual Studio containds 工具 *.sdf*資料庫。 您也可以執行許多 SQL Server 管理工作的程式碼中執行 SQL 命令。
 
-若要測試*.cshtml*頁面而不使用整合式的開發環境 (IDE)，您可以將它們部署到即時伺服器。 (請參閱[可以部署 ASP.NET Web Pages 站台中未使用 WebMatrix？](#Can_I_deploy_an_ASP.NET_Web_Pages_site_without_using_WebMatrix))
+若要測試 *.cshtml*頁面而不使用整合式的開發環境 (IDE)，您可以將它們部署到即時伺服器。 (請參閱[可以部署 ASP.NET Web Pages 站台中未使用 WebMatrix？](#Can_I_deploy_an_ASP.NET_Web_Pages_site_without_using_WebMatrix))
 
 ### <a name="running-iis-express-without-using-an-ide"></a>執行 IIS Express 而不要使用的 IDE
 
-如果您安裝 IIS Express 做為 web 伺服器電腦上，您可以使用，以測試網頁。 您可以從命令列執行 IIS Express，並將它與特定通訊埠編號產生關聯。 當您要求然後指定該通訊埠*.cshtml*瀏覽器中的檔案。
+如果您安裝 IIS Express 做為 web 伺服器電腦上，您可以使用，以測試網頁。 您可以從命令列執行 IIS Express，並將它與特定通訊埠編號產生關聯。 當您要求然後指定該通訊埠 *.cshtml*瀏覽器中的檔案。
 
-在 Windows 中，以系統管理員權限開啟命令提示字元，並將變更為*C:\Program Files\IIS Express。* (若為 64 位元系統，使用資料夾*C:\Program Files (x86) \IIS Express。)*然後輸入下列命令，您的網站使用的實際路徑：
+在 Windows 中，以系統管理員權限開啟命令提示字元，並將變更為*C:\Program Files\IIS Express。* (若為 64 位元系統，使用資料夾*C:\Program Files (x86) \IIS Express。)* 然後輸入下列命令，您的網站使用的實際路徑：
 
 `iisexpress.exe /port:35896 /path:C:\BasicWebSite`
 
-您可以使用任何其他處理序不保留的連接埠號碼。 （大於 1024年的連接埠號碼是通常可用）。如`path`值，請使用的網站資料夾的路徑，其中*.cshtml*檔案。
+您可以使用任何其他處理序不保留的連接埠號碼。 （大於 1024年的連接埠號碼是通常可用）。如`path`值，請使用的網站資料夾的路徑，其中 *.cshtml*檔案。
 
-執行這個命令來設定 IIS Express，來服務您的網頁之後，您可以開啟瀏覽器並瀏覽至*.cshtml*檔案。 使用的 URL 如下所示：
+執行這個命令來設定 IIS Express，來服務您的網頁之後，您可以開啟瀏覽器並瀏覽至 *.cshtml*檔案。 使用的 URL 如下所示：
 
 `http://localhost:35896/default.cshtml`
 
@@ -116,14 +116,14 @@ IIS Express 的命令列選項的說明，請輸入`iisexpress.exe /?`在命令�
 <a id="Does_ASP.NET_Web_Pages_support_HTML5"></a>
 ## <a name="does-aspnet-web-pages-support-html5"></a>ASP.NET Web Pages 支援 HTML5？
 
-可以。 建立以 ASP.NET Web Pages 頁面 (*.cshtml*或*.vbhtml*頁面) 基本上是 HTML 頁也包含呈現頁面之前，在伺服器上，執行的程式碼。 只要使用者的瀏覽器支援 HTML5 時，您可以使用 HTML5 中的項目*.cshtml*或*.vbhtml*頁面。
+可以。 建立以 ASP.NET Web Pages 頁面 (*.cshtml*或 *.vbhtml*頁面) 基本上是 HTML 頁也包含呈現頁面之前，在伺服器上，執行的程式碼。 只要使用者的瀏覽器支援 HTML5 時，您可以使用 HTML5 中的項目 *.cshtml*或 *.vbhtml*頁面。
 
 <a id="Can_I_use_JavaScript_and_jQuery_with_Web_Pages"></a>
 ## <a name="can-i-use-javascript-and-jquery-with-web-pages"></a>我可以使用 JavaScript 和 jQuery 與網頁嗎？
 
-當然可以。 建立以 ASP.NET Web Pages 頁面 (*.cshtml*或*.vbhtml*頁面) 是只使用伺服端程式碼中的 HTML 網頁。 因此，您可以根據標準 HTML 網頁中使用 JavaScript 或 jQuery 的任何項目也您可以*.cshtml*或*.vbhtml*頁面。
+當然可以。 建立以 ASP.NET Web Pages 頁面 (*.cshtml*或 *.vbhtml*頁面) 是只使用伺服端程式碼中的 HTML 網頁。 因此，您可以根據標準 HTML 網頁中使用 JavaScript 或 jQuery 的任何項目也您可以 *.cshtml*或 *.vbhtml*頁面。
 
-**入門網站**在 WebMatrix 範本包含 jQuery 程式庫的數字。 如果您使用該範本，來建立站台*指令碼*資料夾包含 jQuery 核心程式庫 (*jquery 1.6.2.js)*和 jQuery 驗證程式庫 (*jquery.validate.js*等。)。
+**入門網站**在 WebMatrix 範本包含 jQuery 程式庫的數字。 如果您使用該範本，來建立站台*指令碼*資料夾包含 jQuery 核心程式庫 (*jquery 1.6.2.js)* 和 jQuery 驗證程式庫 (*jquery.validate.js*等。)。
 
 以下是說明如何使用以 ASP.NET Web Pages jQuery 某些部落格文章：
 

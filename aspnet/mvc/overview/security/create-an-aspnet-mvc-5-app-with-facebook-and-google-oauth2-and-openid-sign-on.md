@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
 ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/21/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -48,7 +48,7 @@ ms.lasthandoff: 04/06/2018
 <a id="1st"></a>
 ## <a name="creating-your-first-application"></a>建立第一個應用程式
 
-按一下**新專案**，然後選取**Visual C#**在左邊，然後**Web** ，然後選取  **ASP.NET Web 應用程式**。 將您的專案"MvcAuth"，再按一下**確定**。
+按一下**新專案**，然後選取**Visual C#** 在左邊，然後**Web** ，然後選取  **ASP.NET Web 應用程式**。 將您的專案"MvcAuth"，再按一下**確定**。
 
 ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image2.png)
 
@@ -259,9 +259,9 @@ Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 
 
 從**工具**功能表上，按一下  **NuGet 封裝管理員**，然後按一下  **Package Manager Console** (PMC)。 PMC 中輸入下列命令。
 
-1. Enable-Migrations
+1. Enable-migrations
 2. 新增移轉初始化
-3. Update-Database
+3. 更新資料庫
 
 執行應用程式，並使用 FaceBook 和 Google 登入並註冊某些使用者。
 

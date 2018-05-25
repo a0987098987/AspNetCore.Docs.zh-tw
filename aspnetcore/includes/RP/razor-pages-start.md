@@ -10,10 +10,10 @@
 
 | 檔案或資料夾              | 用途 |
 | ----------------- | ------------ | 
-| wwwroot | 包含靜態檔案。 請參閱[使用靜態檔案](xref:fundamentals/static-files)。 |
+| wwwroot | 包含靜態檔案。 請參閱[靜態檔案](xref:fundamentals/static-files)。 |
 | 頁面 | [Razor 頁面](xref:mvc/razor-pages/index)的資料夾。 | 
 | *appsettings.json* | [組態](xref:fundamentals/configuration/index) |
-| *Program.cs* | [裝載](xref:fundamentals/hosting) ASP.NET Core 應用程式。|
+| *Program.cs* | [裝載](xref:fundamentals/host/index) ASP.NET Core 應用程式。|
 | *Startup.cs* | 設定服務和要求管線。 請參閱 [Startup](xref:fundamentals/startup)。|
 
 ### <a name="the-pages-folder"></a>Pages 資料夾

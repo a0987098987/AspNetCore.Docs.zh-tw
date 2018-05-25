@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/views/using-page-inspector-in-aspnet-mvc
-title: "在 ASP.NET MVC 中使用 Page Inspector |Microsoft 文件"
+title: 在 ASP.NET MVC 中使用 Page Inspector |Microsoft 文件
 author: rick-anderson
-description: "Page Inspector 在 Visual Studio 2012 中是以整合式瀏覽器的 web 開發工具。 在 Page Inspector i 與整合式瀏覽器中，選取任何項目..."
+description: Page Inspector 在 Visual Studio 2012 中是以整合式瀏覽器的 web 開發工具。 在 Page Inspector i 與整合式瀏覽器中，選取任何項目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -202,7 +202,7 @@ Page Inspector 瀏覽器中將滑鼠指標移 「 首頁 」 一節，直到**di
 
 CSS 編輯器，Visual Studio 2012 中的會有色彩選擇器，可讓您輕鬆地選擇及插入色彩。 色彩選擇器包含標準的調色盤的色彩、 支援標準的色彩名稱、 雜湊程式碼、 RGB、 RGBA、 HSL 和 HSLA 色彩，以及維護一份您在文件最近使用的色彩。
 
-在前一個區段中，您可以變更的值`background-color`屬性。 要叫用色彩選擇器，將插入點的屬性名稱和型別之後 **#** 或**rgb (**。
+在前一個區段中，您可以變更的值`background-color`屬性。 要叫用色彩選擇器，將插入點的屬性名稱和型別之後**#** 或**rgb (**。
 
 ![CSS 色彩選擇器列](using-page-inspector-in-aspnet-mvc/_static/image36.png)
 

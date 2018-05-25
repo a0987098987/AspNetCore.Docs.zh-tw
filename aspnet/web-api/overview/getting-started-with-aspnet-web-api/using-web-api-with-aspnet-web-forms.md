@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
-title: "Web API 和 ASP.NET Web Form 搭配使用 |Microsoft 文件"
+title: Web API 和 ASP.NET Web Form 搭配使用 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2012
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/01/2017
 
 啟動 Visual Studio，然後選取**新專案**從**啟動**頁面。 或從**檔案**功能表上，選取**新增**然後**專案**。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET Web Form 應用程式**。 輸入專案的名稱，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET Web Form 應用程式**。 輸入專案的名稱，然後按一下**確定**。
 
 ![](using-web-api-with-aspnet-web-forms/_static/image1.png)
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/01/2017
 
 ![](using-web-api-with-aspnet-web-forms/_static/image2.png)
 
-在下**已安裝的範本**，依序展開**Visual C#**選取**Web**。 然後，從範本清單中，選取**Web API 控制器類別**。 將控制器"ProductsController 」，然後按一下**新增**。
+在下**已安裝的範本**，依序展開**Visual C#** 選取**Web**。 然後，從範本清單中，選取**Web API 控制器類別**。 將控制器"ProductsController 」，然後按一下**新增**。
 
 ![](using-web-api-with-aspnet-web-forms/_static/image3.png)
 

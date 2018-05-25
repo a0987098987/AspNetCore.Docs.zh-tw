@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr
-title: "教學課程： 開始使用 SignalR 1.x |Microsoft 文件"
+title: 教學課程： 開始使用 SignalR 1.x |Microsoft 文件
 author: pfletcher
-description: "使用 ASP.NET SignalR 建立 HTML 網頁中的即時聊天應用程式。"
+description: 使用 ASP.NET SignalR 建立 HTML 網頁中的即時聊天應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013

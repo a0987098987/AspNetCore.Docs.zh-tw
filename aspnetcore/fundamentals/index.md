@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: ce79118fa025f912d7f04e2c9bff481a04489674
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 97c0b289b259332d57f8175e05020fe03d505723
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -151,11 +151,11 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而�
 
 如需詳細資訊，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
-## <a name="hosting"></a>裝載
+## <a name="hosting"></a>代管
 
 ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。
 
-如需詳細資訊，請參閱[裝載](xref:fundamentals/hosting)。
+如需詳細資訊，請參閱[在 ASP.NET 中代管](xref:fundamentals/host/index)。
 
 ## <a name="session-and-application-state"></a>工作階段與應用程式狀態
 
@@ -187,9 +187,9 @@ ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 
 
 ## <a name="background-tasks"></a>背景工作
 
-背景工作會實作為*託管服務*。 託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
+背景工作會實作為*代管服務*。 代管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
 
-如需詳細資訊，請參閱[搭配託管服務的背景工作](xref:fundamentals/hosted-services)。
+如需詳細資訊，請參閱[搭配代管服務的背景工作](xref:fundamentals/host/hosted-services)。
 
 ## <a name="open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN)
 

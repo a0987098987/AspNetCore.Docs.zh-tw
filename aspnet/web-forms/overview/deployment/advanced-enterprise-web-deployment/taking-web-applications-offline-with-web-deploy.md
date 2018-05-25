@@ -39,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 
 - Microsoft Build Engine (MSBuild) 專案檔中您用來控制部署程序，建立 MSBuild 目標複製*應用程式\_offline.htm*檔案到目的地伺服器之前的任何部署工作開始。
 - 加入另一個移除的 MSBuild 目標*應用程式\_offline.htm*從目的地伺服器部署的所有工作完成時的檔案。
-- 在 web 應用程式專案中，建立*。 wpp.targets*檔案，可確保*應用程式\_offline.htm* Web Deploy 叫用時，檔案會加入至部署套件。
+- 在 web 應用程式專案中，建立 *。 wpp.targets*檔案，可確保*應用程式\_offline.htm* Web Deploy 叫用時，檔案會加入至部署套件。
 
 本主題將說明如何執行這些程序。 工作與本主題中的逐步解說假設，您已經建立的方案包含至少一個 web 應用程式專案，而且您使用自訂專案檔中所述，控制部署程序[中的 Web 部署企業](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md)。 或者，您可以使用[連絡人管理員](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)範例要遵循本主題中的範例方案。
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 04/06/2018
 7. 加入名為新目標**DeployAppOffline**。 這個目標，內叫用 MSDeploy.exe 命令部署您*應用程式\_離線*目的地 web 伺服器的檔案。
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample5.xml)]
-8. 在此範例中， **ContactManagerIisPath**專案檔中其他地方定義屬性。 這是只需 IIS 應用程式路徑，在表單中的*[IIS 網站名稱] / [應用程式名稱]*。 包含目標中的條件，可讓使用者切換*應用程式\_離線*部署開啟或關閉透過變更屬性值，或提供命令列參數。
+8. 在此範例中， **ContactManagerIisPath**專案檔中其他地方定義屬性。 這是只需 IIS 應用程式路徑，在表單中的 *[IIS 網站名稱] / [應用程式名稱]*。 包含目標中的條件，可讓使用者切換*應用程式\_離線*部署開啟或關閉透過變更屬性值，或提供命令列參數。
 9. 加入名為新目標**DeleteAppOffline**。 這個目標，內叫用 MSDeploy.exe 命令會移除您*應用程式\_離線*目的地 web 伺服器的檔案。
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample6.xml)]
@@ -122,11 +122,11 @@ ms.lasthandoff: 04/06/2018
 
 Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProject**建置的 web 部署套件中應包含的檔案清單。 您可以自訂 web 封裝的內容，將您自己的項目加入至這個清單。 若要這樣做，您需要完成下列高階步驟：
 
-1. 建立自訂專案檔名為*[專案名稱].wpp.targets*專案檔相同資料夾中。
+1. 建立自訂專案檔名為 *[專案名稱].wpp.targets*專案檔相同資料夾中。
 
     > [!NOTE]
     > *。 Wpp.targets*檔案必須與您的 web 應用程式專案檔相同的資料夾中移&#x2014;，例如*ContactManager.Mvc.csproj*&#x2014;而不是任何自訂相同資料夾中您用來控制組建和部署程序的專案檔案。
-2. 在*。 wpp.targets*檔案中，建立新的 MSBuild 目標執行*之前* **CopyAllFilesToSingleFolderForPackage**目標。 這是建立要包含在封裝中的項目清單 WPP 目標。
+2. 在 *。 wpp.targets*檔案中，建立新的 MSBuild 目標執行*之前* **CopyAllFilesToSingleFolderForPackage**目標。 這是建立要包含在封裝中的項目清單 WPP 目標。
 3. 在新的目標建立**ItemGroup**項目。
 4. 在**ItemGroup**項目，加入**FilesForPackagingFromProject**項目，並指定*應用程式\_offline.htm*檔案。
 
@@ -141,14 +141,14 @@ Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProj
 - **之 BeforeTargets**屬性插入到藉由指定 WPP 應在執行前立即這個目標**CopyAllFilesToSingleFolderForPackage**目標。
 - **FilesForPackagingFromProject**項目使用**DestinationRelativePath**中繼資料值從檔案重新命名*應用程式\_離線 template.htm*若要*應用程式\_offline.htm*將它加入至清單。
 
-下一個程序會示範如何加入此*。 wpp.targets* web 應用程式專案的檔案。
+下一個程序會示範如何加入此 *。 wpp.targets* web 應用程式專案的檔案。
 
 **若要加入。 wpp.targets web 部署套件的檔案**
 
 1. Visual Studio 2010 中開啟您的方案。
 2. 在**方案總管] 中**視窗中，以滑鼠右鍵按一下您 web 應用程式的專案節點 (比方說， **ContactManager.Mvc**)，指向**新增**，然後按一下 [ **新項目**。
 3. 在**加入新項目**對話方塊中，選取**XML 檔案**範本。
-4. 在**名稱**方塊中，輸入*[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
+4. 在**名稱**方塊中，輸入 *[專案名稱] * * *.wpp.targets** (例如， **ContactManager.Mvc.wpp.targets**)，然後按一下 **新增**.
 
     ![](taking-web-applications-offline-with-web-deploy/_static/image4.png)
 
@@ -157,9 +157,9 @@ Web 發行管線 (WPP) 會使用名為的項目清單**FilesForPackagingFromProj
 5. 在檔案中，加入的 MSBuild 標記先前所述。
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample9.xml)]
-6. 儲存並關閉*[專案名稱].wpp.targets*檔案。
+6. 儲存並關閉 *[專案名稱].wpp.targets*檔案。
 
-下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測*。 wpp.targets*檔案。 *應用程式\_離線 template.htm*檔案將會包含在產生的 web 部署封裝，做為*應用程式\_offline.htm*。
+下次當您建置並封裝您的 web 應用程式專案，WPP 會自動偵測 *。 wpp.targets*檔案。 *應用程式\_離線 template.htm*檔案將會包含在產生的 web 部署封裝，做為*應用程式\_offline.htm*。
 
 > [!NOTE]
 > 如果您的部署失敗，*應用程式\_offline.htm*檔案會保留在位置和您的應用程式角色將保持離線。 這通常是所要的行為。 若要將您的應用程式恢復上線，您可以刪除*應用程式\_offline.htm*檔案從您網頁伺服器。 或者，如果您更正任何錯誤，然後執行成功的部署，*應用程式\_offline.htm*檔案將會移除。

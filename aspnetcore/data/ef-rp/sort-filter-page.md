@@ -8,11 +8,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: be7d55bf1a5d3da63ff137ed86f71984dc897eff
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 26f516716864bdce81cf3acdacb0f9d2f98407b7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -58,7 +58,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 `?: operator` 也是所謂的三元運算子。
 
-這兩個陳述式會啟動設定資料行標題超連結的檢視，如下所示：
+這兩個陳述式讓頁面能夠設定資料行標題超連結，如下所示：
 
 | 目前排序次序 | 姓氏超連結 | 日期超連結 |
 |:--------------------:|:-------------------:|:--------------:|
@@ -77,7 +77,7 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 `OnGetAsync` 可取得使用大量資料行數的詳細資訊。
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>將資料行標題超連結新增至 Student [索引] 檢視
+### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>將資料行標題超連結新增至 Student 的 [索引] 頁面
 
 用下列醒目標示的程式碼，取代 *Students/Index.cshtml* 中的程式碼：
 
@@ -133,9 +133,9 @@ Razor 頁面會以適當的查詢字串值，使用 `NameSort` 和 `DateSort` �
 
 呼叫 `ToUpper` 會使效能降低。 `ToUpper` 程式碼會將一個函式新增至 TSQL SELECT 陳述式的 WHERE 子句中。 新增的函式會防止最佳化工具使用索引。 假如 SQL 已安裝為不區分大小寫，除非有需要，否則應盡量避免呼叫 `ToUpper`。
 
-### <a name="add-a-search-box-to-the-student-index-view"></a>將 Search Box 新增至 Student [索引] 檢視
+### <a name="add-a-search-box-to-the-student-index-page"></a>將搜尋方塊新增至學生的 [索引] 頁面
 
-在 *Views/Student/Index.cshtml* 新增下列醒目標示的程式碼，以建立 **Search** 按鈕和各式各樣的色彩。
+在 *Pages/Students/Index.cshtml* 中新增下列醒目標示的程式碼，以建立 **Search** 按鈕和各式各樣的色彩。
 
 [!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -267,7 +267,7 @@ LINQ 陳述式會以註冊日期將學生實體組成群組、計算每個群組
 
 ### <a name="modify-the-about-razor-page"></a>修改 About Razor 頁面
 
-以下列程式碼取代 *Views/Home/About.cshtml* 檔案中的程式碼：
+以下列程式碼取代 *Pages/About.cshtml* 檔案中的程式碼：
 
 [!code-html[](intro/samples/cu/Pages/About.cshtml)]
 

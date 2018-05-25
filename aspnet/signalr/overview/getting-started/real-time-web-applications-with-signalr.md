@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 > 
 > **SignalR**也提供簡單、 高層級 API，以進行用戶端 RPC 伺服器 （在用戶端的瀏覽器中從伺服器端.NET 程式碼會呼叫 JavaScript 函式） 中 ASP.NET 應用程式，以及新增有用的攔截程序，用於連接管理例如連接/中斷連接事件、 分組連線及授權。
 > 
-> **SignalR**部分所使用的傳輸所需執行用戶端與伺服器之間的即時工作是一個抽象概念。 A **SignalR**連接啟動為 HTTP，並再提升為**WebSocket**連接，如果有的話。 **WebSocket**是理想的傳輸**SignalR**，因為它會有效率地使用伺服器記憶體的最低的延遲，而且具有最基本的功能 (例如完整雙工用戶端之間的通訊和伺服器），但它也會有最嚴苛的需求： **WebSocket**需要使用伺服器**Windows Server 2012**或**Windows 8**，連同**.NET framework 4.5**。 如果不符合這些需求， **SignalR**會嘗試使用其他傳輸進行其連線 (例如*Ajax 長期輪詢*)。
+> **SignalR**部分所使用的傳輸所需執行用戶端與伺服器之間的即時工作是一個抽象概念。 A **SignalR**連接啟動為 HTTP，並再提升為**WebSocket**連接，如果有的話。 **WebSocket**是理想的傳輸**SignalR**，因為它會有效率地使用伺服器記憶體的最低的延遲，而且具有最基本的功能 (例如完整雙工用戶端之間的通訊和伺服器），但它也會有最嚴苛的需求： **WebSocket**需要使用伺服器**Windows Server 2012**或**Windows 8**，連同 **.NET framework 4.5**。 如果不符合這些需求， **SignalR**會嘗試使用其他傳輸進行其連線 (例如*Ajax 長期輪詢*)。
 > 
 > **SignalR** API 包含用戶端和伺服器之間進行通訊的兩個模型：**持續連線**和**集線器**。 A**連接**代表簡單端點傳送單一收件者，分組，或廣播訊息。 A**中樞**更高層級管線基礎連接 API，可讓您的用戶端與伺服器彼此直接呼叫方法。
 > 
@@ -177,7 +177,7 @@ ms.lasthandoff: 04/06/2018
     ![加入新項目](real-time-web-applications-with-signalr/_static/image11.png "加入新項目")
 
     *加入新項目*
-6. 在**加入新項目**對話方塊中，選取**Visual C# |Web |SignalR**的左窗格中，選取的節點**SignalR 中樞類別 (v2)**從中間窗格中，將檔案命名**StatisticsHub.cs**按一下**新增**。
+6. 在**加入新項目**對話方塊中，選取**Visual C# |Web |SignalR**的左窗格中，選取的節點**SignalR 中樞類別 (v2)** 從中間窗格中，將檔案命名**StatisticsHub.cs**按一下**新增**。
 
     ![加入新項目對話方塊](real-time-web-applications-with-signalr/_static/image12.png "加入新項目對話方塊")
 
@@ -314,12 +314,12 @@ ms.lasthandoff: 04/06/2018
 在這項工作，您將建立的資料庫，將做為的後擋板**玩家測驗**應用程式。 您將使用**SQL Server 物件總管**瀏覽您的伺服器，並初始化資料庫。 此外，您將會啟用**Service Broker**。
 
 1. 在**Visual Studio**，開啟功能表**檢視**選取**SQL Server 物件總管**。
-2. 連接到 LocalDB 執行個體，以滑鼠右鍵按一下**SQL Server**節點，然後選取**加入 SQL Server...**選項。
+2. 連接到 LocalDB 執行個體，以滑鼠右鍵按一下**SQL Server**節點，然後選取**加入 SQL Server...** 選項。
 
     ![加入 SQL Server 執行個體](real-time-web-applications-with-signalr/_static/image20.png "加入 SQL Server 執行個體")
 
     *將 SQL Server 執行個體加入至 SQL Server 物件總管*
-3. 設定**伺服器名稱**至*(localdb) \v11.0*留下**Windows 驗證**當做驗證模式。 按一下**連接**才能繼續。
+3. 設定**伺服器名稱**至 *(localdb) \v11.0*留下**Windows 驗證**當做驗證模式。 按一下**連接**才能繼續。
 
     ![連接到 LocalDB](real-time-web-applications-with-signalr/_static/image21.png "連接到 LocalDB")
 
@@ -349,7 +349,7 @@ ms.lasthandoff: 04/06/2018
     ![查詢 Service Broker 狀態](real-time-web-applications-with-signalr/_static/image25.png "查詢服務 Broker 狀態")
 
     *查詢 Service Broker 狀態*
-8. 如果值**是\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代**&lt;您資料庫&gt;**建立資料庫時，您設定的名稱 (例如： SignalR)。
+8. 如果值**是\_broker\_啟用**資料庫中的資料行是&quot;0&quot;，使用下列命令來啟用它。 取代**&lt;您資料庫&gt;** 建立資料庫時，您設定的名稱 (例如： SignalR)。
 
     [!code-sql[Main](real-time-web-applications-with-signalr/samples/sample12.sql)]
 
@@ -369,7 +369,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample13.ps1)]
 2. 重複上一個步驟，但這次專案**GeekQuiz2**。
-3. 若要設定 SQL Server 後擋板，開啟**Startup.cs**檔案**GeekQuiz**專案，並將下列程式碼加入**設定**方法。 取代**&lt;您資料庫&gt;**與您建立 SQL Server 後擋板時所使用的資料庫名稱。 重複這個步驟**GeekQuiz2**專案。
+3. 若要設定 SQL Server 後擋板，開啟**Startup.cs**檔案**GeekQuiz**專案，並將下列程式碼加入**設定**方法。 取代**&lt;您資料庫&gt;** 與您建立 SQL Server 後擋板時所使用的資料庫名稱。 重複這個步驟**GeekQuiz2**專案。
 
     (程式碼片段- *RealTimeSignalR-Ex2-StartupConfiguration*)
 

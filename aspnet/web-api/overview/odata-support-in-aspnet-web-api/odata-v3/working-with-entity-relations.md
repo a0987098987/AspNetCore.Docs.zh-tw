@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
-title: "與 Web API 2 OData v3 支援實體關係 |Microsoft 文件"
+title: 與 Web API 2 OData v3 支援實體關係 |Microsoft 文件
 author: MikeWasson
-description: "大部分的資料集定義實體之間的關聯性： 客戶具有訂單。書籍的作者。產品有供應商。 使用 OData 用戶端可以瀏覽透過..."
+description: 大部分的資料集定義實體之間的關聯性： 客戶具有訂單。書籍的作者。產品有供應商。 使用 OData 用戶端可以瀏覽透過...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/26/2014
@@ -68,9 +68,9 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample6.cs)]
 
-*金鑰*參數是產品的索引鍵。 方法會傳回相關的實體 &#8212;在此情況下，`Supplier`執行個體。 方法名稱和參數名稱都很重要。 一般情況下，如果導覽屬性名為"X"，您需要加入名為"GetX"的方法。 此方法必須採用名為"*金鑰*"符合父系的索引鍵的資料類型。
+*金鑰*參數是產品的索引鍵。 方法會傳回相關的實體 & #8212 在此情況下，`Supplier`執行個體。 方法名稱和參數名稱都很重要。 一般情況下，如果導覽屬性名為"X"，您需要加入名為"GetX"的方法。 此方法必須採用名為"*金鑰*"符合父系的索引鍵的資料類型。
 
-它也是一定要包含**[FromOdataUri]**屬性*金鑰*參數。 這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。
+它也是一定要包含 **[FromOdataUri]** 屬性*金鑰*參數。 這個屬性會告知使用 OData 語法規則，它會剖析要求 URI 中的索引鍵時的 Web API。
 
 ## <a name="creating-and-deleting-links"></a>建立和刪除連結
 

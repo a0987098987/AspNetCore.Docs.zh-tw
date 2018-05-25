@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: 8dd632a2c888e65c6420e0fed7acf6fa15173b3d
-ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
+ms.openlocfilehash: a61f78b2d0e5c6c171a26690fcce256462a82508
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -44,7 +44,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如，`StartupDevelopment`)，並在執行階段選取適當的啟動類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多個環境](xref:fundamentals/environments#startup-conventions)。
+插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如，`StartupDevelopment`)，並在執行階段選取適當的啟動類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#startup-conventions)。
 
 若要深入了解 `WebHostBuilder`，請參閱[裝載](xref:fundamentals/hosting)主題。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 
@@ -64,9 +64,10 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 [裝載
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-::: moniker range=">= aspnetcore-2.1" 
+::: moniker range=">= aspnetcore-2.1"
 
 <a name="setcompatibilityversion"></a>
+
 ### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>適用於 ASP.NET Core MVC 的 SetCompatibilityVersion 
 
 `SetCompatibilityVersion` 方法可讓應用程式選擇加入或退出 ASP.NET MVC Core 2.1 以上版本所引入的可能重大行為變更。 這些可能的重大行為變更通常在於 MVC 子系統的運作方式，以及執行階段呼叫**您的程式碼**的方式。 透過選擇加入，您可以取得最新的行為和 ASP.NET Core 的長期行為。
@@ -157,10 +158,14 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 * 多個 `IStartupFilter` 實作可能會與相同的物件互動。 如果順序很重要，請排列其 `IStartupFilter` 服務註冊順序，以符合其中介軟體執行應該依照的順序。
 * 程式庫可能使用一或多個 `IStartupFilter` 實作 (其在使用 `IStartupFilter` 註冊的其他應用程式中介軟體之前或之後執行) 來新增中介軟體。 若要在程式庫的 `IStartupFilter` 所新增的中介軟體之前叫用 `IStartupFilter` 中介軟體，請在程式庫新增至服務容器之前放置服務註冊。 若要在之後叫用它，請在新增程式庫之後放置服務註冊。
 
+## <a name="adding-configuration-at-startup-from-an-external-assembly"></a>在啟動時從外部組件新增組態
+
+實作 [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) 即可在啟動時，從應用程式非 `Startup` 類別的外部組件，對應用程式新增強功能。 如需詳細資訊，請參閱[從外部組件增強應用程式](xref:fundamentals/configuration/platform-specific-configuration)。
+
 ## <a name="additional-resources"></a>其他資源
 
 * [裝載](xref:fundamentals/hosting)
-* [使用多個環境](xref:fundamentals/environments)
+* [使用多重環境](xref:fundamentals/environments)
 * [中介軟體](xref:fundamentals/middleware/index)
 * [記錄](xref:fundamentals/logging/index)
 * [組態](xref:fundamentals/configuration/index)

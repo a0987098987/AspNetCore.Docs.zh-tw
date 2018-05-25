@@ -60,7 +60,7 @@ ms.lasthandoff: 04/06/2018
 1. 1. Visual Studio 中建立 ASP.NET MVC 4 應用程式、 其命名為 SignalRChat，並按一下 [確定]。
 
         > [!NOTE]
-        > 在 VS 2010 中，選取**.NET Framework 4** Framework 版本下拉式控制項中。 在.NET Framework 4 和 4.5 版上執行 SignalR 程式碼。
+        > 在 VS 2010 中，選取 **.NET Framework 4** Framework 版本下拉式控制項中。 在.NET Framework 4 和 4.5 版上執行 SignalR 程式碼。
 
         ![建立 mvc web](tutorial-getting-started-with-signalr-and-mvc-4/_static/image3.png)
       2. 選取 網際網路應用程式範本，請清除選項以**建立單元測試專案**，按一下 確定。
@@ -105,7 +105,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="run-the-sample"></a>執行範例
 
 1. 按 F5 以偵錯模式執行專案。
-2. 在瀏覽器位址列中，附加**/首頁/聊天**專案的預設網頁的 url。 聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。
+2. 在瀏覽器位址列中，附加 **/首頁/聊天**專案的預設網頁的 url。 聊天室頁面載入瀏覽器執行個體，並提示輸入使用者名稱。
 
     ![輸入使用者名稱](tutorial-getting-started-with-signalr-and-mvc-4/_static/image9.png)
 3. 輸入使用者名稱。

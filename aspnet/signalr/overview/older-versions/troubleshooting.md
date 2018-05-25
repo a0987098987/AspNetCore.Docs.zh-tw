@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/troubleshooting
-title: "SignalR 疑難排解 (SignalR 1.x) |Microsoft 文件"
+title: SignalR 疑難排解 (SignalR 1.x) |Microsoft 文件
 author: pfletcher
-description: "本文說明開發 SignalR 應用程式的一般問題。"
+description: 本文說明開發 SignalR 應用程式的一般問題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/05/2013
@@ -160,8 +160,8 @@ SignalR 會自動使用 JSON 序列化程式方法的參數那里的不需要自
 
 有多種原因會導致此問題。 請確認下列各項：
 
-- **中樞 proxy 位址參照的格式不正確：**如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 請確認中樞位址的參考都正確。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
-- **將路由加入至應用程式，然後再加入中樞路由：**如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapHubs`。
+- **中樞 proxy 位址參照的格式不正確：** 如果產生的中樞 proxy 位址的參考的格式不正確，通常會出現此錯誤。 請確認中樞位址的參考都正確。 請參閱[如何參考動態產生的 proxy](../guide-to-the-api/hubs-api-guide-javascript-client.md#dynamicproxy)如需詳細資訊。
+- **將路由加入至應用程式，然後再加入中樞路由：** 如果應用程式使用其他路由，請確認新增的第一個路由是呼叫`MapHubs`。
 
 ### <a name="500-internal-server-error"></a>「 500 內部伺服器錯誤 」
 

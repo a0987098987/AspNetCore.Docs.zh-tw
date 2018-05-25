@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/json-and-xml-serialization
-title: "JSON 和 ASP.NET Web API 中的 XML 序列化 |Microsoft 文件"
+title: JSON 和 ASP.NET Web API 中的 XML 序列化 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2012
@@ -131,7 +131,7 @@ XML 序列化程式不支援匿名型別或**JObject**執行個體。 如果您�
 
 XML 格式由提供**XmlMediaTypeFormatter**類別。 根據預設， **XmlMediaTypeFormatter**使用**DataContractSerializer**執行序列化的類別。
 
-如果您想要的話，您可以設定**XmlMediaTypeFormatter**使用**XmlSerializer**而不是**DataContractSerializer**。 若要這樣做，請設定**/usexmlserializer**屬性**true**:
+如果您想要的話，您可以設定**XmlMediaTypeFormatter**使用**XmlSerializer**而不是**DataContractSerializer**。 若要這樣做，請設定 **/usexmlserializer**屬性**true**:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample12.cs)]
 
@@ -233,7 +233,7 @@ XML 格式由提供**XmlMediaTypeFormatter**類別。 根據預設， **XmlMedia
 
 [!code-xml[Main](json-and-xml-serialization/samples/sample21.xml)]
 
-如果您想要避免上模型類別的屬性，還有另一個選項： 建立新的型別而異**DataContractSerializer**執行個體，並設定*preserveObjectReferences*至**，則為 true**建構函式中。 XML 媒體類型格式器上，然後為每個型別序列化程式設定這個執行個體。 下列程式碼顯示如何執行這項操作：
+如果您想要避免上模型類別的屬性，還有另一個選項： 建立新的型別而異**DataContractSerializer**執行個體，並設定*preserveObjectReferences*至 **，則為 true**建構函式中。 XML 媒體類型格式器上，然後為每個型別序列化程式設定這個執行個體。 下列程式碼顯示如何執行這項操作：
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample22.cs?highlight=3)]
 

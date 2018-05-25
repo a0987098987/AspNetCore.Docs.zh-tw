@@ -10,17 +10,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: mvc/razor-pages/sdk
-ms.openlocfilehash: 2cbebb12ccd1098e1950aa7eeb22fab4ffc689e6
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: acc049a69574968d1e304d6c504cb89243387d6c
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 [!INCLUDE[](~/includes/2.1-SDK.md)] 包含 `Microsoft.NET.Sdk.Razor` MSBuild SDK (Razor SDK)。 Razor SDK：
 
@@ -66,7 +64,7 @@ ms.lasthandoff: 04/18/2018
 | ------------                                  | -------------                                                                 |
 | RazorGenerate                                 | 其為程式碼產生目標輸入的項目元素 (*.cshtml* 檔案)。 |
 | RazorCompile                                  | 其為 Razor 編譯目標輸入的項目元素 (.cs 檔案)。 請使用此 ItemGroup 來指定要編譯成 Razor 組件的其他檔案。 |
-| RazorAssemblyAttribute                        | 用於 Razor 組件的程式碼產生屬性的項目元素。 例如:   <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
+| RazorTargetAssemblyAttribute                  | 用於 Razor 組件的程式碼產生屬性的項目元素。 例如:   <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
 | RazorEmbeddedResource                         | 新增為所產生 Razor 組件之內嵌資源的項目元素 |
 
 | 屬性                                      | 描述                                                                   |

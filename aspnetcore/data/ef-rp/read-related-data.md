@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 55d9b6743c7d97dc9a354bae218b1fac69d7b6bc
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1a63246dd81a16bbcca22ad2c50bc2010c852c4e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -101,7 +101,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 上述程式碼會新增 `AsNoTracking`。 `AsNoTracking` 可改善效能，因為不會追蹤傳回的實體。 不會追蹤實體的原因是它們不會在目前的內容中更新。
 
-以下列醒目提示的標記更新 *Views/Courses/Index.cshtml*：
+以下列醒目提示的標記更新 *Pages/Courses/Index.cshtml*：
 
 [!code-html[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
@@ -249,6 +249,10 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 以下列程式碼更新 *Pages/Instructors/Index.cshtml.cs* 中的 `OnGetAsync` 方法：
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-999)]
+
+新增 `public int CourseID { get; set; }`
+
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_1&highlight=12)]
 
 檢查已更新的查詢：
 

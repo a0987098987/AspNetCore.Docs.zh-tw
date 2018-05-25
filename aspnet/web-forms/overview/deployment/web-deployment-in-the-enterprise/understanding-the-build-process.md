@@ -77,7 +77,7 @@ ms.lasthandoff: 04/06/2018
 
 
 > [!NOTE]
-> **/Fl**切換 (簡稱**/fileLogger**) 組建輸出記錄到名為*msbuild.log*目前目錄中。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
+> **/Fl**切換 (簡稱 **/fileLogger**) 組建輸出記錄到名為*msbuild.log*目前目錄中。 如需詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
 
 此時，MSBuild 開始執行、 載入*Publish.proj*檔案，並開始處理中的指示。 第一個指令會告知 MSBuild 匯入專案檔**TargetEnvPropsFile**參數指定。
@@ -94,7 +94,7 @@ MSBuild 遇到合併的專案檔中的下一個項目包括屬性群組。 屬�
 [!code-xml[Main](understanding-the-build-process/samples/sample3.xml)]
 
 
-當 MSBuild 處理第一個**OutputRoot**項目，提供類似的具名參數未提供，它會設定的值**OutputRoot**屬性**...\Publish\Out**。當它遇到第二個**OutputRoot**項目，如果條件評估為**true**，它會覆寫的值**OutputRoot**屬性的值**OutDir**參數。
+當 MSBuild 處理第一個**OutputRoot**項目，提供類似的具名參數未提供，它會設定的值**OutputRoot**屬性 **...\Publish\Out**。當它遇到第二個**OutputRoot**項目，如果條件評估為**true**，它會覆寫的值**OutputRoot**屬性的值**OutDir**參數。
 
 MSBuild 遇到下一個項目是單一項目群組，其中包含項目具名**ProjectsToBuild**。
 
@@ -193,7 +193,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 [!code-xml[Main](understanding-the-build-process/samples/sample10.xml)]
 
 
-這是範例*目標批次處理*。 MSBuild 專案檔案中的批次處理是用於逐一查看集合的技術。 值**輸出**屬性**"%(DbPublishPackages.Identity)"**，是指**識別**中繼資料屬性**DbPublishPackages**項目清單。 此表示法，**Outputs=%***(ItemList.ItemMetadataName)*，會轉譯成：
+這是範例*目標批次處理*。 MSBuild 專案檔案中的批次處理是用於逐一查看集合的技術。 值**輸出**屬性 **"%(DbPublishPackages.Identity)"**，是指**識別**中繼資料屬性**DbPublishPackages**項目清單。 此表示法，**Outputs=%***(ItemList.ItemMetadataName)*，會轉譯成：
 
 - 分割中的項目**DbPublishPackages**成批次含有相同的項目**識別**中繼資料值。
 - 執行一次每個批次的目標。
@@ -210,7 +210,7 @@ MSBuild 建置名為的項目清單來處理這個指示**ProjectsToBuild**。 �
 [!code-xml[Main](understanding-the-build-process/samples/sample11.xml)]
 
 
-在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和**%(DbPublishPackages.FullPath)**參照中繼資料值的**DbPublishPackages**項目集合。  **\_Cmd**屬性供**Exec**工作中，叫用命令。
+在此情況下， **%(DbPublishPackages.DatabaseConnectionString)**， **%(DbPublishPackages.TargetDatabase)**，和 **%(DbPublishPackages.FullPath)** 參照中繼資料值的**DbPublishPackages**項目集合。 **\_Cmd**屬性供**Exec**工作中，叫用命令。
 
 
 [!code-xml[Main](understanding-the-build-process/samples/sample12.xml)]

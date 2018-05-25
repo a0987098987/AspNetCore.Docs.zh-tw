@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-and-action-selection
-title: "路由和 ASP.NET Web API 中的動作選取 |Microsoft 文件"
+title: 路由和 ASP.NET Web API 中的動作選取 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2012
@@ -150,7 +150,7 @@ URI 路徑 」 api/產品 」 和路由字典將會包含：
     2. 從這個清單中，嘗試尋找相符項目，每個參數名稱，路由字典或 URI 查詢字串。 相符項目都不區分大小寫，並不會依賴參數順序。
     3. 選取清單中的每個參數之相符項目之 URI 中的動作。
     4. 如果更該動作符合這些準則，挑選一個包含大部分的參數相符項目。
-4. 略過動作與**[NonAction]**屬性。
+4. 略過動作與 **[NonAction]** 屬性。
 
 步驟 3 是可能最令人混淆。 基本概念是從 URI、 從要求主體中，或從自訂繫結參數可取得其值。 來自 URI 的參數，我們想要確保的 URI 實際上包含在 （透過路由字典） 的路徑或查詢字串中該參數的值。
 

@@ -71,7 +71,7 @@ Entity Framework 是/物件關聯式對應架構。 則會對應到關聯式資�
 
 從**啟動**頁面上，按一下**新專案**。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名為"ProductStore 」，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名為"ProductStore 」，然後按一下**確定**。
 
 ![](using-web-api-with-entity-framework-part-1/_static/image5.png)
 

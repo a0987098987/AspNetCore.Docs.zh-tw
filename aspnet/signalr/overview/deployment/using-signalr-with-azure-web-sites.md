@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/deployment/using-signalr-with-azure-web-sites
-title: "使用 Azure App Service 中的 Web 應用程式中的 SignalR |Microsoft 文件"
+title: 使用 Azure App Service 中的 Web 應用程式中的 SignalR |Microsoft 文件
 author: pfletcher
-description: "本文件說明如何設定 Microsoft Azure 執行的 SignalR 應用程式。 教學課程中的軟體版本可用，Visual Studio 2013 或 Vis...."
+description: 本文件說明如何設定 Microsoft Azure 執行的 SignalR 應用程式。 教學課程中的軟體版本可用，Visual Studio 2013 或 Vis....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/01/2015

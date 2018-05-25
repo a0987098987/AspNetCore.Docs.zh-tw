@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: advanced
 uid: mvc/razor-pages/ui-class
-ms.openlocfilehash: 731d37a8f4983b18ded114f05470f8a408deb7cd
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 44091ab8ab5d69a5975e191fd00fca1d1d957238
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>在 ASP.NET Core 中使用 Razor 類別庫專案建立可重複使用的 UI。
 
@@ -23,8 +23,6 @@ ms.lasthandoff: 05/03/2018
 Razor 檢視、頁面、控制器、頁面模型和資料模型可以建置到 Razor 類別庫 (RCL) 中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 在 Web 應用程式和 RCL 中發現檢視、部分檢視，或是 Razor 頁面時，以 Web 應用程式中的 Razor 標記 (*.cshtml* 檔案) 為優先。
 
 這個功能需要 [!INCLUDE[](~/includes/2.1-SDK.md)]
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/razor-pages/ui-class/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

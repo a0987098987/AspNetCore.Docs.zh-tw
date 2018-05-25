@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/media-formatters
-title: "ASP.NET Web API 2 中的媒體格式器 |Microsoft 文件"
+title: ASP.NET Web API 2 中的媒體格式器 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -12,17 +12,17 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 9103574597df126a22e21a2f51815f608e46f47f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1cb1c7e0f832a0a0160276fbd41facc017e2ae3e
+ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/22/2018
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的媒體格式器
 ====================
 由[Mike Wasson](https://github.com/MikeWasson)
 
-此教學課程顯示如何支援 ASP.NET Web API 中的其他媒體格式。
+本教學課程會示範如何在 ASP.NET Web API 中支援的其他媒體格式。
 
 ## <a name="internet-media-types"></a>網際網路媒體類型
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 01/24/2018
 
 若要建立的媒體格式器，衍生自這些類別的其中一個：
 
-- [MediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.mediatypeformatter.aspx). 此類別會使用非同步讀取及寫入方法。
-- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx). 此類別衍生自**MediaTypeFormatter**但使用 sychronous 讀/寫方法。
+- [MediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.mediatypeformatter.aspx)。 此類別會使用非同步讀取及寫入方法。
+- [BufferedMediaTypeFormatter](https://msdn.microsoft.com/library/system.net.http.formatting.bufferedmediatypeformatter.aspx)。 此類別衍生自**MediaTypeFormatter**但使用 sychronous 讀/寫方法。
 
 衍生自**BufferedMediaTypeFormatter**較為簡單，因為沒有非同步程式碼，但這也表示 i/o 可能會封鎖呼叫執行緒。
 

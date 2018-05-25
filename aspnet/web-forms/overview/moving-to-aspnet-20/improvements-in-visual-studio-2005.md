@@ -445,7 +445,7 @@ Visual Studio 2005 中移除的依賴 mdm.exe 和 vs7jit.exe 程序。 相反地
 
 ASP.NET 程式開發伺服器是受限制的 Web 伺服器。 不允許遠端連接，所以不允許啟動 Web 伺服器的使用者以外的任何使用者從任何要求。 它也沒有為 ASP 網頁的功能。 只有 ASP.NET 資源和 HTML 資源 （包括影像、 CSS 檔案等） 都有受到處理。
 
-可以透過命令列啟動 ASP.NET 程式開發伺服器，執行 WebDev.WebServer.exe 檔案位於 c:/Windows/Microsoft.NET/Framework/v2.0./ */*  /  */*/*. 下列對話方塊會顯示可用的參數。
+可以透過命令列啟動 ASP.NET 程式開發伺服器，執行 WebDev.WebServer.exe 檔案位於 c:/Windows/Microsoft.NET/Framework/v2.0./*/* /  */*/*. 下列對話方塊會顯示可用的參數。
 
 
 ![](improvements-in-visual-studio-2005/_static/image11.jpg)

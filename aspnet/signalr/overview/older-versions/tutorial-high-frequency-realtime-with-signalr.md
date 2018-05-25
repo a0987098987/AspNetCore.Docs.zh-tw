@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-high-frequency-realtime-with-signalr
-title: "與 SignalR 的頻率高的即時 1.x |Microsoft 文件"
+title: 與 SignalR 的頻率高的即時 1.x |Microsoft 文件
 author: pfletcher
-description: "本教學課程會示範如何建立 web 應用程式使用 ASP.NET SignalR 提供高頻率的傳訊功能。 頻率高的內送訊息..."
+description: 本教學課程會示範如何建立 web 應用程式使用 ASP.NET SignalR 提供高頻率的傳訊功能。 頻率高的內送訊息...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/16/2013
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/10/2017
 在本節中，我們將建立在 Visual Studio 中的專案。
 
 1. 從**檔案**功能表上，按一下**新專案**。
-2. 在**新專案**對話方塊方塊中，展開  **C#**下**範本**選取**Web**。
+2. 在**新專案**對話方塊方塊中，展開  **C#** 下**範本**選取**Web**。
 3. 選取**ASP.NET 空 Web 應用程式**範本，將專案*MoveShapeDemo*，然後按一下**確定**。
 
     ![建立新的專案](tutorial-high-frequency-realtime-with-signalr/_static/image2.png)

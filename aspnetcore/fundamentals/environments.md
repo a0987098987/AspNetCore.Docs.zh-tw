@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/environments
-ms.openlocfilehash: b9c3b8a15424ca637a2486450bfdde2762204935
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 2c8441db527203aeea516073dae3bc335c335565
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="work-with-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
+# <a name="use-multiple-environments-in-aspnet-core"></a>在 ASP.NET Core 中使用多個環境
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

@@ -6,16 +6,16 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 05/09/2018
+ms.date: 05/22/2018
 ms.prod: aspnet-core
 ms.topic: tutorial
 ms.technology: aspnet
 uid: signalr/get-started
-ms.openlocfilehash: 5929ee44aa58088614f910560eafbf5f5ab82ded
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: fb448f22db5bb624083f07cefaad29d6d58331ef
+ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/23/2018
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>開始使用 ASP.NET Core 的 SignalR
 

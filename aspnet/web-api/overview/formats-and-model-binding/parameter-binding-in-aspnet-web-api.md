@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
-title: "ASP.NET Web API 中的繫結參數 |Microsoft 文件"
+title: ASP.NET Web API 中的繫結參數 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2013
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="using-fromuri"></a>使用 [FromUri]
 
-若要強制 Web API 來讀取從 URI 的複雜類型，新增**[FromUri]**屬性的參數。 下列範例會定義`GeoPoint`型別，以及控制站方法，以取得`GeoPoint`從 URI。
+若要強制 Web API 來讀取從 URI 的複雜類型，新增 **[FromUri]** 屬性的參數。 下列範例會定義`GeoPoint`型別，以及控制站方法，以取得`GeoPoint`從 URI。
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample2.cs)]
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="using-frombody"></a>使用 [FromBody]
 
-若要強制 Web API 來讀取的要求主體中的簡單類型，新增**[FromBody]**屬性的參數：
+若要強制 Web API 來讀取的要求主體中的簡單類型，新增 **[FromBody]** 屬性的參數：
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample3.cs)]
 
@@ -71,11 +71,11 @@ ms.lasthandoff: 01/24/2018
 
 您可以讓 （以便 Web API 將會嘗試將它從 URI 繫結），將類別視為簡單類型的 Web API 建立**TypeConverter**並提供字串轉換。
 
-下列程式碼會示範`GeoPoint`類別，表示地理位置的點，再加上**TypeConverter**將從字串轉換`GeoPoint`執行個體。 `GeoPoint`類別以裝飾**[TypeConverter]**屬性來指定型別轉換子。 (這個範例啟發的 Mike 拖延部落格文章[如何繫結至 MVC/WebAPI 中的動作簽章中的自訂物件](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx)。)
+下列程式碼會示範`GeoPoint`類別，表示地理位置的點，再加上**TypeConverter**將從字串轉換`GeoPoint`執行個體。 `GeoPoint`類別以裝飾 **[TypeConverter]** 屬性來指定型別轉換子。 (這個範例啟發的 Mike 拖延部落格文章[如何繫結至 MVC/WebAPI 中的動作簽章中的自訂物件](https://blogs.msdn.com/b/jmstall/archive/2012/04/20/how-to-bind-to-custom-objects-in-action-signatures-in-mvc-webapi.aspx)。)
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample6.cs)]
 
-現在會將 Web API`GeoPoint`為簡單類型，這表示它將會嘗試繫結`GeoPoint`從 URI 的參數。 您不需要包含**[FromUri]**參數上。
+現在會將 Web API`GeoPoint`為簡單類型，這表示它將會嘗試繫結`GeoPoint`從 URI 的參數。 您不需要包含 **[FromUri]** 參數上。
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample7.cs)]
 
@@ -113,11 +113,11 @@ Web API 中的預設值提供者從路由資料和查詢字串取得值。 例�
 
 **設定模型繫結器**
 
-有幾種方式來設定模型繫結。 首先，您可以加入**[ModelBinder]**屬性的參數。
+有幾種方式來設定模型繫結。 首先，您可以加入 **[ModelBinder]** 屬性的參數。
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample10.cs)]
 
-您也可以加入**[ModelBinder]**屬性加入型別。 Web API 將會使用該類型的所有參數指定的模型繫結器。
+您也可以加入 **[ModelBinder]** 屬性加入型別。 Web API 將會使用該類型的所有參數指定的模型繫結器。
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample11.cs)]
 
@@ -125,7 +125,7 @@ Web API 中的預設值提供者從路由資料和查詢字串取得值。 例�
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample12.cs)]
 
-與模型繫結的提供者，您仍需要加入**[ModelBinder]**屬性的參數，告知它應該使用模型繫結和不媒體類型格式器的 Web API。 但是，現在您不需要在屬性中指定的模型繫結器類型：
+與模型繫結的提供者，您仍需要加入 **[ModelBinder]** 屬性的參數，告知它應該使用模型繫結和不媒體類型格式器的 Web API。 但是，現在您不需要在屬性中指定的模型繫結器類型：
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample13.cs)]
 
@@ -153,11 +153,11 @@ Web 應用程式開發介面撰寫所有值提供者，因此當模型繫結呼�
 
 ## <a name="httpparameterbinding"></a>HttpParameterBinding
 
-模型繫結器的較通用的機制的特定執行個體。 如果您看一下**[ModelBinder]**屬性，您會看到它衍生自抽象**ParameterBindingAttribute**類別。 這個類別會定義單一方法**GetBinding**，它會傳回**HttpParameterBinding**物件：
+模型繫結器的較通用的機制的特定執行個體。 如果您看一下 **[ModelBinder]** 屬性，您會看到它衍生自抽象**ParameterBindingAttribute**類別。 這個類別會定義單一方法**GetBinding**，它會傳回**HttpParameterBinding**物件：
 
 [!code-csharp[Main](parameter-binding-in-aspnet-web-api/samples/sample18.cs)]
 
-**HttpParameterBinding**會負責將參數繫結的值。 如果是**[ModelBinder]**，屬性會傳回**HttpParameterBinding**使用實作**IModelBinder**執行實際的繫結。 您也可以實作您自己**HttpParameterBinding**。
+**HttpParameterBinding**會負責將參數繫結的值。 如果是 **[ModelBinder]**，屬性會傳回**HttpParameterBinding**使用實作**IModelBinder**執行實際的繫結。 您也可以實作您自己**HttpParameterBinding**。
 
 例如，假設您想要取得從 Etag`if-match`和`if-none-match`要求中的標頭。 我們會先定義的類別來表示的 Etag。
 
@@ -195,12 +195,12 @@ Web 應用程式開發介面撰寫所有值提供者，因此當模型繫結呼�
 
 整個參數繫結程序由隨插即用服務， **IActionValueBinder**。 預設實作**IActionValueBinder**會進行下列作業：
 
-1. 尋找**ParameterBindingAttribute**參數上。 這包括**[FromBody]**， **[FromUri]**，和**[ModelBinder]**，或自訂屬性。
+1. 尋找**ParameterBindingAttribute**參數上。 這包括 **[FromBody]**， **[FromUri]**，和 **[ModelBinder]**，或自訂屬性。
 2. 否則，請查看**HttpConfiguration.ParameterBindingRules**函式會傳回非 null **HttpParameterBinding**。
 3. 否則，請使用先前所述的預設規則。 
 
-    - 如果參數類型為 「 簡單 」，或是從 URI 繫結的型別轉換子。 這相當於將**[FromUri]**參數上的屬性。
-    - 否則，嘗試從訊息本文讀取參數。 這相當於將**[FromBody]**參數上。
+    - 如果參數類型為 「 簡單 」，或是從 URI 繫結的型別轉換子。 這相當於將 **[FromUri]** 參數上的屬性。
+    - 否則，嘗試從訊息本文讀取參數。 這相當於將 **[FromBody]** 參數上。
 
 如果您想，您可以取代整個**IActionValueBinder**服務的自訂實作。
 

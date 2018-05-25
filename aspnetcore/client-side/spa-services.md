@@ -20,7 +20,7 @@ ms.lasthandoff: 04/18/2018
 
 由[Scott Addie](https://github.com/scottaddie)和[Fiyaz Hasan](http://fiyazhasan.me/)
 
-單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[React](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。 [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
+單一頁面應用程式 (SPA) 是熱門的 web 應用程式，因為其本身的豐富使用者經驗類型。 整合用戶端 SPA 架構或程式庫，例如[Angular](https://angular.io/)或[React](https://facebook.github.io/react/)，與伺服器端架構，像 ASP.NET Core 可能相當困難。  [JavaScriptServices](https://github.com/aspnet/JavaScriptServices)特別開發來減少摩擦整合程序中的。 它可讓不同的用戶端和伺服器技術堆疊之間的無縫式作業。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/spa-services/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -68,7 +68,7 @@ SpaServices 提供有用的基礎結構，例如：
     node -v && npm -v
     ```
 
-注意： 如果您要部署至 Azure 的網站，您不需要執行以下任何動作 &mdash; Node.js 已安裝並可在伺服器環境中。
+注意： 如果您要部署至 Azure 的網站，您不需要執行以下任何動作&mdash;Node.js 已安裝並可在伺服器環境中。
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -119,7 +119,7 @@ ASP.NET Core[標記協助程式](xref:mvc/views/tag-helpers/intro)提供 SpaServ
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
-接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的 Angular 範例中，資料用來建構內的個人化的問候語`h1`項目：
+接收`UserName`引數會使用內建的 JSON 序列化程式序列化並儲存在`params.data`物件。 在下列的角度範例中，資料用來建構內的個人化的問候語`h1`項目：
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
@@ -238,11 +238,11 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 | 範本                                 | 簡短名稱 | 語言 | Tags        |
 |:------------------------------------------|:-----------|:---------|:------------|
-| MVC ASP.NET Core 與 Angular             | angular    | [C#]     | Web/MVC/SPA |
+| MVC ASP.NET Core 與角度             | angular    | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core 與 React.js            | react      | [C#]     | Web/MVC/SPA |
 | MVC ASP.NET Core React.js 和 Redux  | reactredux | [C#]     | Web/MVC/SPA |
 
-若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC Angular 的應用程式：
+若要建立新專案使用其中一個 SPA 範本時，包含**簡短名稱**中的範本[dotnet 新](/dotnet/core/tools/dotnet-new)命令。 下列命令會建立與伺服器端設定的 ASP.NET Core MVC 角度的應用程式：
 
 ```console
 dotnet new angular
@@ -324,5 +324,4 @@ dotnet publish -c Release
 
 ## <a name="additional-resources"></a>其他資源
 
-* [
-的文件](https://angular.io/docs)
+* [角度的文件](https://angular.io/docs)

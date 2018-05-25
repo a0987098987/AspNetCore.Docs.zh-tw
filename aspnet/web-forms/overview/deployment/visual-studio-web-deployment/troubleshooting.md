@@ -174,13 +174,13 @@ HTTP 錯誤 500.21-內部伺服器錯誤。 "PageHandlerFactory 整合 」 的�
 
 ### <a name="scenario"></a>情節
 
-您更新*Web.config*檔案連接字串以指向做為 SQL Server Express 資料庫*.mdf*檔案中您*應用程式\_資料*資料夾中，而且是第一個執行應用程式，您會看到下列錯誤訊息的時間：
+您更新*Web.config*檔案連接字串以指向做為 SQL Server Express 資料庫 *.mdf*檔案中您*應用程式\_資料*資料夾中，而且是第一個執行應用程式，您會看到下列錯誤訊息的時間：
 
 「 System.Data.SqlClient.SqlException： 無法開啟資料庫"DatabaseName"登入時要求。 登入失敗。
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-名稱*.mdf*檔案無法符合曾經已存在您的電腦的任何 SQL Server Express 資料庫的名稱，即使您刪除*.mdf*先前已存在的資料庫檔案。 變更名稱*.mdf*從未使用過為資料庫名稱以及變更名稱的檔案*Web.config*檔案，以使用新的名稱。 或者，您可以使用[SQL Server Management Studio Express](https://www.microsoft.com/download/details.aspx?displaylang=en&amp;id=7593)刪除先前已存在 SQL Server Express 資料庫。
+名稱 *.mdf*檔案無法符合曾經已存在您的電腦的任何 SQL Server Express 資料庫的名稱，即使您刪除 *.mdf*先前已存在的資料庫檔案。 變更名稱 *.mdf*從未使用過為資料庫名稱以及變更名稱的檔案*Web.config*檔案，以使用新的名稱。 或者，您可以使用[SQL Server Management Studio Express](https://www.microsoft.com/download/details.aspx?displaylang=en&amp;id=7593)刪除先前已存在 SQL Server Express 資料庫。
 
 ## <a name="model-compatibility-cannot-be-checked"></a>模型的相容性無法檢查
 
@@ -309,7 +309,7 @@ Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<h
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;**至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您知道網站資料夾的預設權限是否正確，而且不需要設定，您加入停用此行為**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>當應用程式嘗試寫入應用程式的資料夾時，存取被拒錯誤
 
@@ -319,7 +319,7 @@ Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<h
 
 ### <a name="possible-cause-and-solution"></a>可能的原因和解決方案
 
-根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;**至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
+根據預設，Visual Studio 設定站台的根資料夾的權限上讀取和寫入權限應用程式\_Data 資料夾。 如果您的應用程式需要的子資料夾的寫入權限，您可以設定資料夾權限和部署到生產環境中的教學課程此數列所示設定該資料夾的權限。 如果您的應用程式需要站台的根資料夾的寫入權限，您必須防止從根資料夾上設定唯讀存取權，藉由新增**&lt;IncludeSetACLProviderOn 目的地&gt;False&lt;/IncludeSetACLProviderOnDestination&gt;** 至發行設定檔 （以會影響單一設定檔） 或 wpp.targets 檔案 （以會影響所有設定檔）。 如需如何編輯這些檔案的資訊，請參閱[如何： 編輯設定檔 (.pubxml) 檔中的部署設定](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 <a id="aspnet45error"></a>
 
@@ -341,7 +341,7 @@ Web deployment 工作失敗。 (無法完成遠端代理程式的 url 要求 '<h
 
 如果您將 ASP.NET 4 或較早的 web 專案部署到相同的目的地時，選取**移除目的端的其他檔案** 核取方塊**設定** 索引標籤**發行 Web**精靈。 如果您沒有選取**移除目的端的其他檔案**，您仍會繼續組態錯誤頁面。
 
-專案**屬性**windows 包含目標 framework 下拉式清單中，但您無法解決這個問題只變更與**.NET Framework 4.5**至**.NET Framework 4**. 如果您的目標 framework 變更為舊版 framework 時，專案還是會有較新的 framework 版本的組件的參考，並不會執行。 您必須手動變更這些參考，或建立新的專案以.NET Framework 4 或更早版本為目標。 如需詳細資訊，請參閱[Web sites 的.NET Framework 目標](https://msdn.microsoft.com/library/bb398791(v=vs.100).aspx)。
+專案**屬性**windows 包含目標 framework 下拉式清單中，但您無法解決這個問題只變更與 **.NET Framework 4.5**至 **.NET Framework 4**. 如果您的目標 framework 變更為舊版 framework 時，專案還是會有較新的 framework 版本的組件的參考，並不會執行。 您必須手動變更這些參考，或建立新的專案以.NET Framework 4 或更早版本為目標。 如需詳細資訊，請參閱[Web sites 的.NET Framework 目標](https://msdn.microsoft.com/library/bb398791(v=vs.100).aspx)。
 
 ## <a name="medium-trust-errors"></a>中度信任錯誤
 

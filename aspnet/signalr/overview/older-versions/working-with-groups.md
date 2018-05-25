@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/working-with-groups
-title: "使用 SignalR 中群組 1.x |Microsoft 文件"
+title: 使用 SignalR 中群組 1.x |Microsoft 文件
 author: pfletcher
-description: "本主題描述如何保存與中樞應用程式開發介面的群組成員資格資訊。"
+description: 本主題描述如何保存與中樞應用程式開發介面的群組成員資格資訊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/21/2013

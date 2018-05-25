@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
-title: "Visual Studio 2012 中 ASP.NET Web form 使用 Page Inspector |Microsoft 文件"
+title: Visual Studio 2012 中 ASP.NET Web form 使用 Page Inspector |Microsoft 文件
 author: rick-anderson
-description: "Visual Studio 2012 Page Inspector 是使用整合式瀏覽器的 web 開發工具。 選取整合式瀏覽器和 Page Inspector 中的任何項目..."
+description: Visual Studio 2012 Page Inspector 是使用整合式瀏覽器的 web 開發工具。 選取整合式瀏覽器和 Page Inspector 中的任何項目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -87,7 +87,7 @@ Page Inspector 隨附 Microsoft Web Developer Tools。 最新版本是 1.3。 �
 
 ![Page Inspector 停駐位置](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image4.png)
 
-如果您卸除的頁面偵測器視窗，您可以將其放外部 Visual Studio 中，或甚至在第二個監視器上如果有的話。 不過，為了 ALT + TAB，Page Inspector 與 Visual Studio 之間未停駐 Page Inspector 視窗時，請移至**工具** &gt; **選項** &gt; **環境** &gt; **索引標籤和視窗**，然後在 **索引標籤也**，清除核取方塊為**浮動工具視窗一律保持最上層的主視窗**:
+如果您卸除的頁面偵測器視窗，您可以將其放外部 Visual Studio 中，或甚至在第二個監視器上如果有的話。 不過，為了 ALT + TAB，Page Inspector 與 Visual Studio 之間未停駐 Page Inspector 視窗時，請移至**工具** &gt; **選項** &gt; **環境** &gt; **索引標籤和視窗**，然後在** 索引標籤也**，清除核取方塊為**浮動工具視窗一律保持最上層的主視窗**:
 
 ![清除浮動工具視窗核取方塊以 Visual Studio 和卸除的 Page Inspector 視窗之間的 ALT + TAB](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image5.png)
 
@@ -249,7 +249,7 @@ CSS 編輯器，Visual Studio 2012 中的會有色彩選擇器，可讓您輕鬆
 
 ![Intellisense 篩選值](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image24.png)
 
-現在請輸入冒號。 當您這樣做時，則會插入完整的背景色彩屬性名稱。 型別 **#** 或**rgb (**，及色彩選擇器列就會出現：
+現在請輸入冒號。 當您這樣做時，則會插入完整的背景色彩屬性名稱。 型別**#** 或**rgb (**，及色彩選擇器列就會出現：
 
 ![CSS 色彩選擇器列](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image25.png)
 

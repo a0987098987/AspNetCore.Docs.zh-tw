@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
-title: "ASP.NET Web API 中的路由 |Microsoft 文件"
+title: ASP.NET Web API 中的路由 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/11/2012
@@ -61,9 +61,9 @@ Web API framework 收到 HTTP 要求時，它會嘗試比對針對其中一個�
 
 一旦找到相符的路由，Web API 會選取控制器和動作：
 
-- 若要尋找控制器，將 Web API&quot;控制器&quot;值*{控制器}*變數。
+- 若要尋找控制器，將 Web API&quot;控制器&quot;值 *{控制器}* 變數。
 - 若要尋找此動作，Web API HTTP 方法，並接著會尋找名稱開頭之 HTTP 方法名稱的動作。 例如，透過 GET 要求，Web API 會尋找開頭的動作&quot;取得...&quot;，例如&quot;GetContact&quot;或&quot;GetAllContacts&quot;。 這個慣例僅適用於 GET、 POST、 PUT 和 DELETE 方法。 您可以在控制器上使用屬性來啟用其他 HTTP 方法。 我們稍後就會看到的範例。
-- 其他的預留位置變數在路由範本中，例如*{id}，*對應至動作參數。
+- 其他的預留位置變數在路由範本中，例如 *{id}，* 對應至動作參數。
 
 讓我們來看一個範例。 假設您定義下列控制站：
 
@@ -78,7 +78,7 @@ Web API framework 收到 HTTP 要求時，它會嘗試比對針對其中一個�
 | DELETE | 應用程式開發介面/產品/4 | DeleteProduct | 4 |
 | POST | 應用程式開發介面/產品 | *（沒有相符項目）* |  |
 
-請注意， *{id}*區段的 URI，如果存在，會對應到*識別碼*動作參數。 在此範例中，控制器會定義兩個 GET 方法，其中一個有*識別碼*參數和一個不含任何參數。
+請注意， *{id}* 區段的 URI，如果存在，會對應到*識別碼*動作參數。 在此範例中，控制器會定義兩個 GET 方法，其中一個有*識別碼*參數和一個不含任何參數。
 
 另外，請注意，POST 要求將會失敗，因為未定義控制器&quot;Post...&quot;方法。
 
@@ -105,7 +105,7 @@ Web API framework 收到 HTTP 要求時，它會嘗試比對針對其中一個�
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample5.cs)]
 
-此路由範本中*{action}*參數名稱控制站上的動作方法。 這種樣式的路由，以使用屬性來指定允許的 HTTP 方法。 例如，假設您的控制器有下列方法：
+此路由範本中 *{action}* 參數名稱控制站上的動作方法。 這種樣式的路由，以使用屬性來指定允許的 HTTP 方法。 例如，假設您的控制器有下列方法：
 
 [!code-csharp[Main](routing-in-aspnet-web-api/samples/sample6.cs)]
 

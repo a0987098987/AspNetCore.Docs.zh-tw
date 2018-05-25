@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
-title: "SignalR 1.x 集線器 API 指南 JavaScript 用戶端 |Microsoft 文件"
+title: SignalR 1.x 集線器 API 指南 JavaScript 用戶端 |Microsoft 文件
 author: pfletcher
-description: "本文件提供適用於 SignalR JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applic 1.1 版使用集線器 API 的簡介..."
+description: 本文件提供適用於 SignalR JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applic 1.1 版使用集線器 API 的簡介...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/17/2013
@@ -149,7 +149,7 @@ ASP.NET Web Form 應用程式中，使用`ResolveClientUrl`檔案參考您的 pr
 
     `signalr ghp /path:[path to the .dll that contains your Hub class]`
 
-    路徑您*.dll*通常是*bin*專案資料夾中的資料夾。
+    路徑您 *.dll*通常是*bin*專案資料夾中的資料夾。
 
     此命令會建立名為*立即轉譯 server.js*相同資料夾中*signalr.exe*。
 4. Put*立即轉譯 server.js*檔中適當的資料夾，在您的專案中，視您的應用程式，將它重新命名並加入它的參考取代"signalr/中樞"參考。

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
-title: "路由慣例，在 ASP.NET Web API 2 Odata |Microsoft 文件"
+title: 路由慣例，在 ASP.NET Web API 2 Odata |Microsoft 文件
 author: MikeWasson
-description: "本文說明 Web API OData 端點所使用的路由慣例。"
+description: 本文說明 Web API OData 端點所使用的路由慣例。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/31/2013
@@ -127,7 +127,7 @@ ms.lasthandoff: 01/24/2018
 
 - 如果路徑包含索引鍵，動作應該有一個名為參數*金鑰*。
 - 如果路徑包含索引鍵到導覽屬性，此動作應該具有名為參數*relatedKey*。
-- 裝飾*金鑰*和*relatedKey*參數**[FromODataUri]**參數。
+- 裝飾*金鑰*和*relatedKey*參數 **[FromODataUri]** 參數。
 - POST 和 PUT 要求需要實體類型的參數。
 - PATCH 要求接受參數的型別**差異&lt;T&gt;**，其中*T*是實體類型。
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 01/24/2018
 
 這兩種方法，如果慣例不適用於該要求，方法應該傳回 null。
 
-**ODataPath**參數所代表的已剖析的 OData 資源路徑。 它包含一份 **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)** 執行個體，其中每個區段的資源路徑。 **ODataPathSegment**是抽象類別; 每個區段的類型由衍生自類別**ODataPathSegment**。
+**ODataPath**參數所代表的已剖析的 OData 資源路徑。 它包含一份**[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)** 執行個體，其中每個區段的資源路徑。 **ODataPathSegment**是抽象類別; 每個區段的類型由衍生自類別**ODataPathSegment**。
 
 **ODataPath.TemplatePath**屬性是字串，代表串連所有的路徑區段。 例如，如果 URI 是`/Products(1)/Supplier`，路徑範本&quot;~/entityset/key/navigation&quot;。 請注意，區段不能直接對應到 URI 區段。 例如，實體索引鍵 (1) 以其本身**ODataPathSegment**。
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 01/24/2018
 
 1. 我是衍生自**EntitySetRoutingConvention**，因為**SelectController**該類別中的方法是適用於這個新的路由慣例。 也就是說，不必重新實作**SelectController**。
 2. 慣例僅適用於 GET 要求和路徑範本時才&quot;~/entityset/key/navigation/key&quot;。
-3. 動作名稱是&quot;取得 {EntityType}&quot;，其中*{EntityType}*是瀏覽集合的型別。 例如， &quot;GetSupplier&quot;。 您可以使用任何您喜歡的命名慣例 &#8212;請確定您符合控制器的動作。
+3. 動作名稱是&quot;取得 {EntityType}&quot;，其中 *{EntityType}* 是瀏覽集合的型別。 例如， &quot;GetSupplier&quot;。 您可以使用任何您喜歡的命名慣例 & #8212;請確定您符合控制器的動作。
 4. 採取的動作名稱為兩個參數*金鑰*和*relatedKey*。 (如需某些預先定義的參數名稱的清單，請參閱[ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx)。)
 
 下一個步驟新增新的慣例路由慣例的清單。 發生這種情況在設定期間，如下列程式碼所示：

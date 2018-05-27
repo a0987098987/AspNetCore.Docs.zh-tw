@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f30ff6c97e565059c57c55f26d2dff477774aeb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9a56ceb9eab5774906ecc89ce9da570d4f691a82
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/27/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>建立模型類別搭配 LINQ to SQL (C#)
 ====================
@@ -149,7 +149,7 @@ LINQ 查詢來擷取所有從電影 DataContext 針對執行`tblMovies`資料庫
 
 ## <a name="using-the-repository-pattern"></a>使用儲存機制模式
 
-在上一節中，我們會使用 LINQ to SQL 類別，直接在控制器動作。 我們使用`MovieDataContex`t 類別，直接從`Index()`控制器動作。 並沒有任何在簡單的應用程式的情況下執行這個問題。 不過，在控制器類別中的直接使用 LINQ to SQL 工作會產生問題時您需要建置更複雜的應用程式。
+在上一節中，我們會使用 LINQ to SQL 類別，直接在控制器動作。 我們使用`MovieDataContext`類別直接從`Index()`控制器動作。 並沒有任何在簡單的應用程式的情況下執行這個問題。 不過，在控制器類別中的直接使用 LINQ to SQL 工作會產生問題時您需要建置更複雜的應用程式。
 
 控制器類別中使用 LINQ to SQL 難以未來切換資料存取技術。 例如，您可能決定切換使用為您的資料存取技術的 Microsoft Entity Framework 使用 Microsoft LINQ to SQL。 在此情況下，您需要重寫存取的資料庫應用程式內的每個控制站。
 

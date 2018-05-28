@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 7e2a4657211b0142ec87fd792d013f7ef397de2b
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 8b53a19f4958e97198175d6acea4017d54f827bb
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -583,21 +583,22 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ## <a name="third-party-logging-providers"></a>協力廠商記錄提供者
 
-以下是可搭配 ASP.NET Core 使用的一些協力廠商記錄架構：
+可搭配 ASP.NET Core 使用的協力廠商記錄架構：
 
-* [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging) - Elmah.Io 服務的提供者
+* [elmah.io](https://elmah.io/) ([GitHub 存放庫](https://github.com/elmahio/Elmah.Io.Extensions.Logging))
+* [JSNLog](http://jsnlog.com/) ([GitHub 存放庫](https://github.com/mperdeck/jsnlog))
+* [Loggr](http://loggr.net/) ([GitHub 存放庫](https://github.com/imobile3/Loggr.Extensions.Logging))
+* [NLog](http://nlog-project.org/) ([GitHub 存放庫](https://github.com/NLog/NLog.Extensions.Logging))
+* [Serilog](https://serilog.net/) ([GitHub 存放庫](https://github.com/serilog/serilog-extensions-logging))
 
-* [JSNLog](http://jsnlog.com) - 在您的伺服器端記錄中記錄 JavaScript 例外狀況和其他用戶端事件。
+某些協力廠商架構可以執行[語意記錄 (也稱為結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) \(英文\)。
 
-* [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging) - Loggr 服務的提供者
+使用協力廠商架構類似於使用內建的提供者之一：
 
-* [NLog](https://github.com/NLog/NLog.Extensions.Logging) - NLog 程式庫的提供者
+1. 將 NuGet 套件新增至專案。
+1. 呼叫 `ILoggerFactory` 上的擴充方法。
 
-* [Serilog](https://github.com/serilog/serilog-extensions-logging) - Serilog 程式庫的提供者
-
-某些協力廠商架構可以執行[語意記錄 (也稱為結構化記錄)](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
-
-使用協力廠商架構類似於使用其中一個內建提供者：將 NuGet 套件新增至您的專案，然後在 `ILoggerFactory` 上呼叫擴充方法。 如需詳細資訊，請參閱每個架構的文件。
+如需詳細資訊，請參閱每個架構的文件。
 
 ## <a name="azure-log-streaming"></a>Azure 記錄資料流
 

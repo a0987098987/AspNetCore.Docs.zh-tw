@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 3a9479dc1bb09218ebb4a5a76078ea514041d751
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 6b2c3334798861ebdb14787205480422d7d536ea
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -113,7 +113,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
-ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 Proxy 中。 為了建立反向 Proxy，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
+為了在 IIS 與 Kestrel 伺服器之間建立反向 Proxy，*web.config* 檔案必須存在於已部署應用程式的內容根路徑 (通常是應用程式基底路徑)。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
 機密檔案存在於應用程式的實體路徑上，例如 *\<組件>.runtimeconfig.json*、*\<組件>.xml* (XML 文件註解)，以及 *\<組件>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，在有人要求機密檔案的情況下，IIS 並不會提供它們。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
@@ -172,7 +172,7 @@ ASP.NET Core 應用程式是裝載於 IIS 和 Kestrel 伺服器之間的反向 P
 1. 在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
    1. 瀏覽至 [.NET 所有下載頁面](https://www.microsoft.com/net/download/all)。
-   1. 從清單中選取最新的非預覽 .NET Core 執行階段 (**.NET Core** > **Runtime** > **.NET Core 執行階段 x.y.z**)。 除非您要使用預覽軟體，否則請避免執行階段的連結文字中包含「預覽」這個字。
+   1. 從清單中選取最新的非預覽 .NET Core 執行階段 (**.NET Core** > **Runtime** > **.NET Core 執行階段 x.y.z**)。 除非是用於預覽軟體，否則在執行階段的連結文字中請避免使用 "preview" (預覽) 或 "rc" (Release Candidate，候選版) 等文字。
    1. 在 [Windows] 下的 .NET Core 執行階段下載頁面中，選取 [裝載套件組合安裝程式] 連結，以下載 .NET Core 裝載套件組合。
 
    **重要！** 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。

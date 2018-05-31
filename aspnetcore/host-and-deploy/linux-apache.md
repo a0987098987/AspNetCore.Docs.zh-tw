@@ -1,6 +1,6 @@
 ---
 title: 在 Linux 上使用 Apache 裝載 ASP.NET Core
-description: 了解如何設定 Apache 為反向 proxy 伺服器上 CentOS HTTP 流量重新導向 Kestrel 上執行的 ASP.NET Core web 應用程式。
+description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
 author: spboyer
 manager: wpickett
 ms.author: spboyer
@@ -12,41 +12,42 @@ ms.topic: article
 uid: host-and-deploy/linux-apache
 ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
 ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33962813"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
 作者：[Shayne Boyer](https://github.com/spboyer)
 
-使用本指南，了解如何設定[Apache](https://httpd.apache.org/)為反向 proxy 伺服器上[CentOS 7](https://www.centos.org/) ASP.NET Core web 應用程式上執行的 HTTP 流量重新導向[Kestrel](xref:fundamentals/servers/kestrel)。 [Mod_proxy 延伸](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組建立伺服器的反向 proxy。
+使用本指南來了解如何在 [CentOS 7](https://www.centos.org/) 上將 [Apache](https://httpd.apache.org/) 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 [Kestrel](xref:fundamentals/servers/kestrel) 上執行的 ASP.NET Core Web 應用程式。 [mod_proxy 延伸模組](http://httpd.apache.org/docs/2.4/mod/mod_proxy.html)和相關的模組會建立伺服器的反向 Proxy。
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 具有 sudo 權限的標準使用者帳戶執行 CentOS 7 的伺服器
+1. 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶
 2. ASP.NET Core 應用程式
 
 ## <a name="publish-the-app"></a>發行應用程式
 
-發行應用程式做為[獨立的部署](/dotnet/core/deploying/#self-contained-deployments-scd)在 CentOS 7 執行階段的 [發行] 組態 (`centos.7-x64`)。 複製的內容*bin/Release/netcoreapp2.0/centos.7-x64/publish*使用 SCP、 FTP 或其他檔案傳送方法在伺服器的資料夾。
+在 CentOS 7 執行階段 (`centos.7-x64`) 的版本設定中，以[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)的形式發佈應用程式。 使用 SCP、FTP 或其他檔案傳輸方法將 *bin/Release/netcoreapp2.0/centos.7-x64/publish* 資料夾的內容複製到伺服器。
 
 > [!NOTE]
-> 在生產環境部署案例中，連續整合工作流程會發佈應用程式和資產複製到伺服器的工作。 
+> 在生產環境部署案例中，持續整合工作流程會執行發佈應用程式並將資產複製到伺服器的工作。 
 
 ## <a name="configure-a-proxy-server"></a>設定 Proxy 伺服器
 
-反向 proxy 是常見的安裝程式來服務動態 web 應用程式。 反向 proxy 終止 HTTP 要求，並將它轉送至 ASP.NET 應用程式。
+反向 Proxy 是為動態 Web 應用程式提供服務的常見設定。 反向 Proxy 會終止 HTTP 要求，並將它轉送至 ASP.NET 應用程式。
 
-用戶端將要求轉送至另一部伺服器，而不是本身完成要求的 proxy 伺服器。 反向 Proxy 會轉送至固定目的地，通常代表任意的用戶端。 在本指南中，Apache 被設定為在相同的伺服器上執行 Kestrel 提供服務的 ASP.NET Core 應用程式的反向 proxy。
+Proxy 伺服器則是會將用戶端要求轉送至另一部伺服器，而不是自己完成這些要求。 反向 Proxy 會轉送至固定目的地，通常代表任意的用戶端。 在本指南中，是將 Apache 設定成反向 Proxy，且執行所在的伺服器與 Kestrel 為 ASP.NET Core 應用程式提供服務的伺服器相同。
 
-要求會透過反向 proxy 來轉送的因為使用轉送標頭中介軟體從[Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)封裝。 中介軟體更新`Request.Scheme`，並使用`X-Forwarded-Proto`標頭，以便讓該重新導向 Uri 和其他的安全性原則運作正確。
+由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的「轉送的標頭中介軟體」。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
-使用任何類型的驗證中介軟體時，必須先執行轉送標頭中介軟體。 這種排序可確保驗證中介軟體可以取用的標頭值，並產生正確的重新導向 Uri。
+有使用任何類型的驗證中介軟體時，必須先執行「轉送的標頭中介軟體」。 此排序可確保驗證中介軟體能夠取用標頭值，然後產生正確的重新導向 URI。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication)或類似的驗證配置中介軟體。 設定要轉寄的中介軟體`X-Forwarded-For`和`X-Forwarded-Proto`標頭：
+請先在 `Startup.Configure` 中叫用 [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) 方法，再呼叫 [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication) 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -59,7 +60,7 @@ app.UseAuthentication();
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-叫用[UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法中的`Startup.Configure`之前先呼叫[UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity)和[UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication)或類似的驗證配置中介軟體。 設定要轉寄的中介軟體`X-Forwarded-For`和`X-Forwarded-Proto`標頭：
+請先在 `Startup.Configure` 中叫用 [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) 方法，再呼叫 [UseIdentity](/dotnet/api/microsoft.aspnetcore.builder.builderextensions.useidentity) 和 [UseFacebookAuthentication](/dotnet/api/microsoft.aspnetcore.builder.facebookappbuilderextensions.usefacebookauthentication) 或類似的驗證配置中介軟體。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -77,25 +78,25 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 ---
 
-如果沒有[ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)指定給中介軟體，轉送的預設標頭`None`。
+如果未將任何 [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 指定給中介軟體，則要轉送的預設標頭會是 `None`。
 
 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ### <a name="install-apache"></a>安裝 Apache
 
-更新至最新穩定版本 CentOS 套件：
+將 CentOS 套件更新至其最新穩定版本：
 
 ```bash
 sudo yum update -y
 ```
 
-CentOS 上安裝 Apache web 伺服器，以單一`yum`命令：
+使用單一 `yum` 命令在 CentOS 上安裝 Apache 網頁伺服器：
 
 ```bash
 sudo yum -y install httpd mod_ssl
 ```
 
-執行命令之後輸出範例：
+執行命令之後的範例輸出：
 
 ```bash
 Downloading packages:
@@ -114,13 +115,13 @@ Complete!
 ```
 
 > [!NOTE]
-> 在此範例中，輸出會反映 httpd.86_64 因為 CentOS 7 版本是 64 位元。 若要確認 Apache 的安裝位置，請從命令提示字元執行 `whereis httpd`。
+> 在此範例中，輸出會反映 httpd.86_64，因為 CentOS 第 7 版是 64 位元。 若要確認 Apache 的安裝位置，請從命令提示字元執行 `whereis httpd`。
 
 ### <a name="configure-apache-for-reverse-proxy"></a>設定 Apache 以用於反向 Proxy
 
-Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案 *.conf*除了模組組態檔中，依字母順序處理延伸模組`/etc/httpd/conf.modules.d/`，其中包含任何設定檔需要載入模組。
+Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 `/etc/httpd/conf.modules.d/` (包含載入模組所需的所有設定檔) 中的模組設定檔之外，任何副檔名為 *.conf* 的檔案也會依字母順序處理。
 
-建立名為組態檔*hellomvc.conf*，應用程式：
+為應用程式建立名為 *hellomvc.conf*的設定檔：
 
 ```
 <VirtualHost *:80>
@@ -134,20 +135,20 @@ Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 任何檔案 *.co
 </VirtualHost>
 ```
 
-`VirtualHost`區塊可以在伺服器上的一個或多個檔案中出現多次。 在先前的組態檔，Apache 會接受公用連接埠 80 上的流量。 網域`www.example.com`正在處理，而`*.example.com`別名解析成相同的網站。 請參閱[虛擬主機名稱為基礎支援](https://httpd.apache.org/docs/current/vhosts/name-based.html)如需詳細資訊。 要求是 proxy 連接埠 5000 127.0.0.1 在伺服器的根位置。 雙向通訊，`ProxyPass`和`ProxyPassReverse`所需。
+`VirtualHost` 區塊可以在伺服器上的一或多個檔案中出現多次。 在上述設定檔中，Apache 會在連接埠 80 接受公用流量。 所服務的網域是 `www.example.com`，而 `*.example.com` 別名則會解析成同一個網站。 如需詳細資訊，請參閱[名稱型虛擬主機支援](https://httpd.apache.org/docs/current/vhosts/name-based.html) \(英文\)。 要求會在根目錄透過 Proxy 傳送至位於 127.0.0.1 之伺服器的連接埠 5000。 如需進行雙向通訊，則必須要有 `ProxyPass` 和 `ProxyPassReverse`。
 
 > [!WARNING]
-> 無法指定適當的[ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)中**VirtualHost**區塊會公開您的應用程式的安全性漏洞。 子網域萬用字元繫結 (例如， `*.example.com`) 不會造成安全性風險，如果您要控制整個父系網域 (與`*.com`，這是很容易遭受)。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
+> 如果無法在 **VirtualHost** 區塊中指定適當的 [ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.com`) 的控制權，子網域萬用字元繫結 (例如 `*.example.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
-記錄可以設定每個`VirtualHost`使用`ErrorLog`和`CustomLog`指示詞。 `ErrorLog` 是伺服器記錄錯誤，在其中的位置和`CustomLog`設定檔案名稱和記錄檔格式。 在此情況下，這是記錄要求資訊的位置。 沒有為每個要求的一列。
+您可以使用 `ErrorLog` 和 `CustomLog` 指示詞來依 `VirtualHost` 設定記錄功能。 `ErrorLog` 是伺服器記錄錯誤的位置，而 `CustomLog` 則會設定記錄檔的檔案名稱和格式。 在此案例中，這就是記錄要求資訊的位置。 每個要求都會有一行。
 
-儲存檔案並測試組態。 如果所有項目都通過，回應應該是 `Syntax [OK]`。
+請儲存檔案並測試設定。 如果所有項目都通過，回應應該是 `Syntax [OK]`。
 
 ```bash
 sudo service httpd configtest
 ```
 
-重新啟動 Apache:
+重新啟動 Apache：
 
 ```bash
 sudo systemctl restart httpd
@@ -156,7 +157,7 @@ sudo systemctl enable httpd
 
 ## <a name="monitoring-the-app"></a>監視應用程式
 
-Apache 現在是安裝所做的要求轉送給`http://localhost:80`Kestrel 在上執行的 ASP.NET Core 應用程式`http://127.0.0.1:5000`。  不過，Apache 並未設定來管理 Kestrel 程序。 使用*systemd*並建立服務檔案，啟動及監視基礎的 web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。 
+Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。  不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。 
 
 
 ### <a name="create-the-service-file"></a>建立服務檔
@@ -167,7 +168,7 @@ Apache 現在是安裝所做的要求轉送給`http://localhost:80`Kestrel 在�
 sudo nano /etc/systemd/system/kestrel-hellomvc.service
 ```
 
-範例服務檔案的應用程式：
+應用程式的範例服務檔：
 
 ```
 [Unit]
@@ -188,22 +189,22 @@ WantedBy=multi-user.target
 ```
 
 > [!NOTE]
-> **使用者**&mdash;如果使用者*apache*不會使用設定，使用者必須先建立並提供適當的擁有權的檔案。
+> **User** &mdash; 如果設定不是使用 *apache* 這個使用者，就必須先建立使用者並授與適當的檔案擁有權。
 
 > [!NOTE]
-> 必須逸出讀取環境變數的組態提供者的某些值 （例如，SQL 連接字串）。 若要使用的正確逸出的值產生組態檔中使用下列命令：
+> 有些值 (例如 SQL 連接字串) 必須以逸出方式處理，設定提供者才能讀取環境變數。 請使用下列命令來產生要在設定檔中使用並已適當逸出的值：
 >
 > ```console
 > systemd-escape "<value-to-escape>"
 > ```
 
-儲存檔案，並啟用服務：
+儲存檔案並啟用服務：
 
 ```bash
 systemctl enable kestrel-hellomvc.service
 ```
 
-啟動服務並確認正在執行：
+啟動服務並確認它正在執行：
 
 ```bash
 systemctl start kestrel-hellomvc.service
@@ -217,7 +218,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/aspnetcore/hellomvc/hellomvc.dll
 ```
 
-設定反向 proxy 與透過管理 Kestrel *systemd*，完整設定 web 應用程式，並可從在本機電腦上的瀏覽器存取`http://localhost`。 檢查回應標頭**伺服器**標頭指出 ASP.NET Core 應用程式由 Kestrel:
+設定好反向 Proxy 並透過 *systemd* 管理 Kestrel 之後，Web 應用程式便已完全設定妥當，而從本機電腦瀏覽器透過 `http://localhost` 即可存取它。 檢查回應標頭時，**Server** 標頭會指出是由 Kestrel 為 ASP.NET Core 應用程式提供服務：
 
 ```
 HTTP/1.1 200 OK
@@ -230,36 +231,36 @@ Transfer-Encoding: chunked
 
 ### <a name="viewing-logs"></a>檢視記錄
 
-因為 web 應用程式使用 Kestrel 管理使用*systemd*，事件和處理程序會記錄到集中式的日誌。 不過，此筆記本中內含的所有服務和處理程序受項目*systemd*。 若要檢視 `kestrel-hellomvc.service` 的特定項目，請使用下列命令：
+由於是使用 *systemd* 來管理使用 Kestrel 的 Web 應用程式，因此會將事件和處理序都記錄在集中式日誌中。 不過，此日誌包含 *systemd* 所管理全部服務和處理序的項目。 若要檢視 `kestrel-hellomvc.service` 的特定項目，請使用下列命令：
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service
 ```
 
-時間篩選時，使用命令所指定時間選項。 例如，使用`--since today`篩選目前的日期或`--until 1 hour ago`查看前一小時的項目。 如需詳細資訊，請參閱[journalctl man 頁面](https://www.unix.com/man-page/centos/1/journalctl/)。
+如需進行時間篩選，請搭配命令指定時間選項。 例如，使用 `--since today` 來針對今天進行篩選，或使用 `--until 1 hour ago` 來查看前一個小時的項目。 如需詳細資訊，請參閱 [journalctl 的手冊頁面](https://www.unix.com/man-page/centos/1/journalctl/) \(英文\)。
 
 ```bash
 sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
-## <a name="securing-the-app"></a>保護應用程式
+## <a name="securing-the-app"></a>確保應用程式的安全性
 
 ### <a name="configure-firewall"></a>設定防火牆
 
-*Firewalld*是動態管理網路區域的支援具有防火牆協助程式。 仍可由 iptables 管理連接埠以及封包篩選。 *Firewalld*預設應該安裝。 `yum` 可用來安裝封裝，或檢查已安裝。
+*Firewalld* 是一個可管理防火牆並支援網路區域的動態精靈。 您仍然可以使用 iptables 來管理連接埠和封包篩選。 預設應該安裝 *Firewalld*。 您可以使用 `yum` 來安裝套件或確認是否已安裝套件。
 
 ```bash
 sudo yum install firewalld -y
 ```
 
-使用`firewalld`開啟應用程式所需的連接埠。 在此情況下，將使用連接埠 80 和 443。 下列命令會永久設定連接埠 80 和 443 開啟：
+請使用 `firewalld` 來僅開啟應用程式所需的連接埠。 在此情況下，將使用連接埠 80 和 443。 下列命令會將連接埠 80 和 443 永久設定為開啟：
 
 ```bash
 sudo firewall-cmd --add-port=80/tcp --permanent
 sudo firewall-cmd --add-port=443/tcp --permanent
 ```
 
-重新載入的防火牆設定。 檢查可用的服務和連接埠的預設區域。 可用選項藉由檢查`firewall-cmd -h`。
+重新載入防火牆設定。 檢查預設區域中可用的服務和連接埠。 您可以檢查 `firewall-cmd -h` 來取得選項。
 
 ```bash 
 sudo firewall-cmd --reload
@@ -280,18 +281,18 @@ rich rules:
 
 ### <a name="ssl-configuration"></a>SSL 組態
 
-若要設定 ssl，Apache *mod_ssl*使用模組。 當*httpd*模組已安裝， *mod_ssl*也安裝模組。 如果未安裝，請使用`yum`將它加入至組態。
+為了設定適用於 SSL 的 Apache，會使用 *mod_ssl* 模組。 安裝 *httpd* 模組時，已一併安裝 *mod_ssl* 模組。 如果未安裝該模組，請使用 `yum` 將它新增到設定中。
 
 ```bash
 sudo yum install mod_ssl
 ```
-若要強制 SSL，請安裝`mod_rewrite`模組來啟用 URL 重寫：
+若要強制執行 SSL，請安裝 `mod_rewrite` 模組來啟用 URL 重寫：
 
 ```bash
 sudo yum install mod_rewrite
 ```
 
-修改*hellomvc.conf*啟用 URL 重寫和安全通訊連接埠 443 上的檔案：
+修改 *hellomvc.conf* 檔案以啟用 URL 重寫並保護連接埠 443 上的通訊：
 
 ```
 <VirtualHost *:80>
@@ -315,15 +316,15 @@ sudo yum install mod_rewrite
 ```
 
 > [!NOTE]
-> 這個範例會使用在本機產生憑證。 **SSLCertificateFile**應該是網域名稱的主要憑證檔案。 **SSLCertificateKeyFile**應金鑰檔案產生 CSR 建立時。 **SSLCertificateChainFile**應該是中繼憑證檔案 （如果有的話），由憑證授權單位所提供。
+> 此範例使用本機產生的憑證。 **SSLCertificateFile** 應該是網域名稱的主要憑證檔案。 **SSLCertificateKeyFile** 應該是建立 CSR 時產生的金鑰檔。 **SSLCertificateChainFile** 應該是憑證授權單位所提供的中繼憑證檔案 (如果有的話)。
 
-儲存檔案並測試組態：
+儲存檔案並測試設定：
 
 ```bash
 sudo service httpd configtest
 ```
 
-重新啟動 Apache:
+重新啟動 Apache：
 
 ```bash
 sudo systemctl restart httpd
@@ -333,45 +334,45 @@ sudo systemctl restart httpd
 
 ### <a name="additional-headers"></a>其他標頭
 
-為了保護對抗惡意攻擊，有幾個標頭應該可以修改或加入。 請確認`mod_headers`模組安裝：
+為了防範惡意攻擊，應該要修改或新增一些標頭。 請確認已安裝 `mod_headers` 模組：
 
 ```bash
 sudo yum install mod_headers
 ```
 
-#### <a name="secure-apache-from-clickjacking-attacks"></a>Apache 防範 clickjacking 攻擊
+#### <a name="secure-apache-from-clickjacking-attacks"></a>保護 Apache 免於點閱綁架攻擊
 
-[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)，亦稱為*UI redress 攻擊*，是一種惡意攻擊網站訪客誘騙比目前瀏覽，按一下連結或不同的頁面上的按鈕。 使用`X-FRAME-OPTIONS`來保護安全的站台。
+[點閱綁架](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger)(也稱為「UI 偽裝攻擊」) 是一種惡意攻擊，會誘騙網站訪客點選與其目前所瀏覽頁面不同的頁面上連結或按鈕。 請使用 `X-FRAME-OPTIONS` 來保護網站安全。
 
-編輯*httpd.conf*檔案：
+編輯 *httpd.conf* 檔案：
 
 ```bash
 sudo nano /etc/httpd/conf/httpd.conf
 ```
 
-將行加入`Header append X-FRAME-OPTIONS "SAMEORIGIN"`。 儲存檔案。 重新啟動 Apache。
+新增 `Header append X-FRAME-OPTIONS "SAMEORIGIN"` 行。 儲存檔案。 重新啟動 Apache。
 
 #### <a name="mime-type-sniffing"></a>MIME 類型探查
 
-`X-Content-Type-Options`標頭會防止 Internet Explorer 的*MIME 探查*(決定檔`Content-Type`檔案的內容中)。 如果伺服器設定`Content-Type`標頭`text/html`與`nosniff`選項集，Internet Explorer 會轉譯為內容`text/html`不論檔案的內容。
+`X-Content-Type-Options` 標頭可防止 Internet Explorer 執行「MIME 探查」 (從檔案的內容判斷檔案的 `Content-Type`)。 如果伺服器將 `Content-Type` 標頭設定為 `text/html` 並搭配設定 `nosniff` 選項，則不論檔案內容為何，Internet Explorer 都會將該內容轉譯為 `text/html`。
 
-編輯*httpd.conf*檔案：
+編輯 *httpd.conf* 檔案：
 
 ```bash
 sudo nano /etc/httpd/conf/httpd.conf
 ```
 
-將行加入`Header set X-Content-Type-Options "nosniff"`。 儲存檔案。 重新啟動 Apache。
+新增 `Header set X-Content-Type-Options "nosniff"` 行。 儲存檔案。 重新啟動 Apache。
 
 ### <a name="load-balancing"></a>負載平衡 
 
-這個範例示範如何在 CentOS 7 上安裝和設定 Apache，以及如何在相同的執行個體電腦上安裝和設定 Kestrel。 若要不需要單點失敗。使用*mod_proxy_balancer*和修改**VirtualHost**允許管理的 Apache proxy 伺服器後方的 web 應用程式的多個執行個體。
+這個範例示範如何在 CentOS 7 上安裝和設定 Apache，以及如何在相同的執行個體電腦上安裝和設定 Kestrel。 為了避免產生單一失敗點的情況，使用 *mod_proxy_balancer* 並修改 **VirtualHost**將可允許管理位於 Apache Proxy 伺服器後方的多個 Web 應用程式執行個體。
 
 ```bash
 sudo yum install mod_proxy_balancer
 ```
 
-在組態檔中顯示以下的其他執行個體`hellomvc`應用程式是在連接埠 5001 上執行安裝程式。 *Proxy*區段設定兩個成員平衡器組態，以進行負載平衡*byrequests*。
+在以下所示的設定檔中，已將一個額外的 `hellomvc` 應用程式執行個體設定在連接埠 5001 上執行。 *Proxy* 區段中設定了平衡器設定，其中有兩個成員為 *byrequests* 進行負載平衡。
 
 ```
 <VirtualHost *:80>
@@ -406,12 +407,12 @@ sudo yum install mod_proxy_balancer
 ```
 
 ### <a name="rate-limits"></a>速率限制
-使用*mod_ratelimit*，隨附於*httpd*模組，用戶端頻寬可能會受到限制：
+使用 *mod_ratelimit* (包含在 *httpd* 模組中) 時，可以限制用戶端的頻寬：
 
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf
 ```
-範例檔案限制為 600 的 KB/秒根位置下的頻寬：
+此範例檔案將根目錄位置下的頻寬限制為 600 KB/秒：
 
 ```
 <IfModule mod_ratelimit.c>

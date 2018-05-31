@@ -1,7 +1,7 @@
 ---
-title: 使用 ASP.NET Core 的 IIS 模組
+title: 與 ASP.NET Core 搭配運作的 IIS 模組
 author: guardrex
-description: 探索使用中和非使用中的 IIS 模組 ASP.NET Core 應用程式，以及如何管理 IIS 模組。
+description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -12,46 +12,47 @@ ms.topic: article
 uid: host-and-deploy/iis/modules
 ms.openlocfilehash: e88526d997618658f58488adb37ae1e519ea3f59
 ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31483428"
 ---
-# <a name="iis-modules-with-aspnet-core"></a>使用 ASP.NET Core 的 IIS 模組
+# <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 IIS 模組及其所有的受管理的 IIS 模組不是可用來處理要求的 ASP.NET Core 應用程式。 在許多情況下，ASP.NET Core 可提供替代性 IIS 原生和 managed 模組的功能。
+ASP.NET Core 應用程式在反向 Proxy 設定中會由 IIS 裝載。 您無法使用部分原生 IIS 模組及所有 IIS 受控模組來處理 ASP.NET Core 應用程式的要求。 在許多情況下，ASP.NET Core 都有提供 IIS 原生和受控模組的替代方案。
 
 ## <a name="native-modules"></a>原生模組
 
-此表格指出正常運作的 ASP.NET Core 應用程式的反向 proxy 要求的原生 IIS 模組。
+下表指出對於向 ASP.NET Core 應用程式發出的反向 Proxy 要求有作用的原生 IIS 模組。
 
-| Module | ASP.NET Core 應用程式與功能 | ASP.NET Core 選項 |
+| 模組 | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | ------ | :-------------------------------: | ------------------- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule` | [是] | |
 | **基本驗證**<br>`BasicAuthenticationModule` | [是] | |
 | **用戶端憑證對應驗證**<br>`CertificateMappingAuthenticationModule` | [是] | |
 | **CGI**<br>`CgiModule` | 否 | |
-| **組態驗證**<br>`ConfigurationValidationModule` | [是] | |
-| **HTTP 錯誤**<br>`CustomErrorModule` | 否 | [狀態碼頁中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages) |
+| **設定驗證**<br>`ConfigurationValidationModule` | [是] | |
+| **HTTP 錯誤**<br>`CustomErrorModule` | 否 | [狀態碼頁面中介軟體](xref:fundamentals/error-handling#configuring-status-code-pages) |
 | **自訂記錄**<br>`CustomLoggingModule` | [是] | |
-| **預設文件**<br>`DefaultDocumentModule` | 否 | [預設的檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
+| **預設文件**<br>`DefaultDocumentModule` | 否 | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule` | [是] | |
 | **目錄瀏覽**<br>`DirectoryListingModule` | 否 | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
 | **動態壓縮**<br>`DynamicCompressionModule` | [是] | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **追蹤**<br>`FailedRequestsTracingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index#the-tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 快取**<br>`HttpCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
-| **HTTP 記錄**<br>`HttpLoggingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作： [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)， [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)， [NLog](https://github.com/NLog/NLog.Extensions.Logging)， [Serilog](https://github.com/serilog/serilog-extensions-logging)
+| **HTTP 記錄**<br>`HttpLoggingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作：[elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)、[NLog](https://github.com/NLog/NLog.Extensions.Logging)、[Serilog](https://github.com/serilog/serilog-extensions-logging)
 | **HTTP 重新導向**<br>`HttpRedirectionModule` | [是] | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | [是] | |
 | **IP 及網域限制**<br>`IpRestrictionModule` | [是] | |
 | **ISAPI 篩選器**<br>`IsapiFilterModule` | [是] | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule` | [是] | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule` | [是] | |
-| **要求篩選**<br>`RequestFilteringModule` | [是] | [URL 重寫中介軟體 `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **要求篩選**<br>`RequestFilteringModule` | [是] | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule` | [是] | |
-| **URL 重寫**<br>`RewriteModule` | [是]&#8224; | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
+| **URL 重寫**<br>`RewriteModule` | 是&#8224; | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule` | 否 | |
 | **靜態壓縮**<br>`StaticCompressionModule` | 否 | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **靜態內容**<br>`StaticFileModule` | 否 | [靜態檔案中介軟體](xref:fundamentals/static-files) |
@@ -60,13 +61,13 @@ IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 II
 | **URL 授權**<br>`UrlAuthorizationModule` | [是] | [ASP.NET Core 身分識別](xref:security/authentication/identity) |
 | **Windows 驗證**<br>`WindowsAuthenticationModule` | [是] | |
 
-&#8224;URL Rewrite Module 的`isFile`和`isDirectory`相符項目類型不適用於 ASP.NET Core 應用程式，因為已變更的[目錄結構](xref:host-and-deploy/directory-structure)。
+&#8224;由於[目錄結構](xref:host-and-deploy/directory-structure)變更的緣故，因此「URL 重寫模組」的 `isFile` 和 `isDirectory` 比對類型對 ASP.NET Core 應用程式沒有作用。
 
-## <a name="managed-modules"></a>受管理的模組
+## <a name="managed-modules"></a>受控模組
 
-受管理模組是*不*功能與裝載的 ASP.NET Core 應用程式時應用程式集區的.NET CLR 版本設為**沒有 Managed 程式碼**。 ASP.NET Core 提供幾種情況下在的中介軟體替代方案。
+當應用程式集區的 .NET CLR 版本已設定為 [沒有 Managed 程式碼] 時，受控模組對所裝載的 ASP.NET Core 應用程式「沒有」作用。 ASP.NET Core 在數種案例中都有提供中介軟體替代方案。
 
-| Module                  | ASP.NET Core 選項 |
+| 模組                  | ASP.NET Core 選項 |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
@@ -82,17 +83,17 @@ IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 II
 | UrlRoutingModule-4.0    | [ASP.NET Core 身分識別](xref:security/authentication/identity) |
 | WindowsAuthentication   | |
 
-## <a name="iis-manager-application-changes"></a>IIS 管理員變更應用程式
+## <a name="iis-manager-application-changes"></a>IIS 管理員應用程式變更
 
-當使用 IIS 管理員來設定設定值， *web.config*應用程式的檔案變更時。 如果部署應用程式，包括*web.config*，使用 IIS 管理員進行任何變更會覆寫的已部署*web.config*檔案。 如果變更伺服器的*web.config*檔案中，複製已更新*web.config*立即的本機專案在伺服器上的檔案。
+使用「IIS 管理員」來進行設定時，會變更應用程式的 *web.config* 檔案。 如果部署應用程式並包含 *web.config*，則所部署的 *web.config* 檔案會覆寫使用「IIS 管理員」來進行的所有變更。 對伺服器的 *web.config* 檔案進行變更後，請立即將伺服器上已更新的 *web.config* 檔案複製到本機專案。
 
 ## <a name="disabling-iis-modules"></a>停用 IIS 模組
 
-如果必須停用應用程式中，新增至應用程式的伺服器層級設定的 IIS 模組*web.config*檔案可以停用模組。 請讓模組留在原處和停用它使用組態設定 （如果有的話），或將模組從應用程式中移除。
+如果在必須針對應用程式停用的伺服器層級設定了 IIS 模組，只要在應用程式的 *web.config* 檔案中新增設定，即可停用該模組。 請將模組留在原處，然後使用組態設定 (如果有的話) 來停用它，或是從應用程式移除模組。
 
 ### <a name="module-deactivation"></a>模組停用
 
-許多模組提供可讓它們不會從應用程式移除此模組會停用的組態設定。 這是用來停用模組的最簡單且最快方式。 例如，HTTP 重新導向模組可以停用與 **\<httpRedirect >** 中的項目*web.config*:
+許多模組都有提供可將模組停用而無須從應用程式中移除的組態設定。 這是停用模組的最簡便快速方式。 例如，使用 *web.config* 中的 **\<httpRedirect>** 元素，即可停用「HTTP 重新導向模組」：
 
 ```xml
 <configuration>
@@ -102,19 +103,19 @@ IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 II
 </configuration>
 ```
 
-如需有關如何停用模組組態設定的詳細資訊，請依照下列中的連結*子項目*區段[IIS \<system.webServer >](/iis/configuration/system.webServer/)。
+如需有關使用組態設定來停用模組的詳細資訊，請參考 [IIS \<system.webServer>](/iis/configuration/system.webServer/) ＜子元素＞一節中的連結。
 
 ### <a name="module-removal"></a>模組移除
 
-如果選擇移除模組中的設定與*web.config*、 模組解除鎖定和解除鎖定**\<模組 >** 區段*web.config*第一次：
+如果選擇藉由 *web.config* 中的設定來移除模組，請先將模組解除鎖定，以及將 *web.config* 的 **\<modules>** 區段解除鎖定：
 
-1. 解除鎖定伺服器層級的模組。 選取 IIS 伺服器上 IIS Manager 中**連線**[資訊看板]。 開啟**模組**中**IIS**區域。 在清單中選取的模組。 在**動作**在右側，資訊看板選取**Unlock**。 解除鎖定數量的模組，當您規劃要移除*web.config*更新版本。
+1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線] 資訊看板中的 IIS 伺服器。 開啟 [IIS] 區域中的 [模組]。 選取清單中的模組。 在右邊的 [動作] 資訊看板上，選取 [解除鎖定]。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
-2. 部署應用程式不含**\<模組 >** 一節中*web.config*。如果應用程式部署與*web.config*包含**\<模組 >** 區段，而不需要解除鎖定區段第一次在 IIS 管理員中，Configuration Manager 就會擲回例外狀況當嘗試解除鎖定的區段。 因此，部署應用程式不含**\<模組 >** > 一節。
+2. 在 *web.config* 不含 **\<modules>** 區段的情況下部署應用程式。如果在 *web.config* 包含 **\<modules>** 區段的情況下部署應用程式，但未先在「IIS 管理員」中將該區段解除鎖定，則當「設定管理員」嘗試將該區段解除鎖定時就會擲回例外狀況。 因此，請在沒有 **\<modules>** 區段的情況下部署應用程式。
 
-3. 解除鎖定**\<模組 >** 區段*web.config*。在**連線**提要欄位中，選取的網站**網站**。 在**管理**區域中，開啟**組態編輯器**。 使用瀏覽控制項，來選取`system.webServer/modules`> 一節。 在**動作**來選取在右側，資訊看板**Unlock** > 一節。
+3. 將 *web.config*的 **\<modules>** 區段解除鎖定。在 [連線] 資訊看板中，選取 [站台]中的網站。 在 [管理] 區域中，開啟 [設定編輯器]。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作] 資訊看板上，選取將區段 [解除鎖定]。
 
-4. 此時， **\<模組 >** 區段可以新增至*web.config*檔案搭配**\<移除 >** 從模組移除的項目應用程式。 多個**\<移除 >** 項目可以加入要移除多個模組。 如果*web.config*伺服器上進行變更，立即進行相同的變更，在專案的*web.config*在本機檔案。 這種方式移除模組不會影響其他應用程式伺服器上之模組的使用。
+4. 此時，可以在 *web.config* 檔案中，新增一個含有 **\<remove>** 元素以從應用程式移除模組的 **\<modules>** 區段。 您可以新增多個 **\<remove>** 元素來移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 以這種方式移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
    ```xml
    <configuration> 
@@ -126,32 +127,32 @@ IIS 裝載 ASP.NET Core 應用程式中的反向 proxy 設定。 某些原生 II
    </configuration>
    ```
 
-IIS 模組也可以移除與*Appcmd.exe*。 提供`MODULE_NAME`和`APPLICATION_NAME`命令中：
+您也可以使用 *Appcmd.exe* 來移除 IIS 模組。 請在命令中提供 `MODULE_NAME` 和 `APPLICATION_NAME`：
 
 ```console
 Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 ```
 
-例如，移除`DynamicCompressionModule`從預設的網站：
+例如，從預設網站中移除 `DynamicCompressionModule`：
 
 ```console
 %windir%\system32\inetsrv\appcmd.exe delete module DynamicCompressionModule /app.name:"Default Web Site"
 ```
 
-## <a name="minimum-module-configuration"></a>最小模組設定
+## <a name="minimum-module-configuration"></a>最基本的模組設定
 
-只有執行 ASP.NET Core 應用程式所需的模組是匿名驗證模組和 ASP.NET 核心模組。
+執行 ASP.NET Core 應用程式只需「匿名驗證模組」和「ASP.NET Core 模組」這兩個模組。
 
-![IIS 管理員 中開啟模組顯示的最小模組設定](modules/_static/modules.png)
+![開啟至只顯示最基本模組設定 [模組] 畫面的「IIS 管理員」](modules/_static/modules.png)
 
-URI 快取模組 (`UriCacheModule`) 可讓 IIS 在 URL 層級的快取網站組態。 如果沒有這個模組中，IIS 必須閱讀並且剖析每個要求，設定，即使重複要求相同的 URL。 剖析設定每個要求會導致嚴重的效能負面影響。 *雖然 URI 快取模組不是絕對必要裝載 ASP.NET Core 應用程式執行，但建議 URI 快取模組，啟用所有 ASP.NET Core 部署。*
+「URI 快取模組」(`UriCacheModule`) 可讓 IIS 快取 URL 層級的網站設定。 如果沒有此模組，IIS 就必須針對每個要求都讀取並剖析設定，即使是重複要求相同的 URL 時也一樣。 針對每個要求都剖析設定會導致效能大幅降低。 *雖然不一定要有「URI 快取模組」，所裝載的 ASP.NET Core 應用程式就能執行，但建議您為所有 ASP.NET Core 部署都啟用「URI 快取模組」。*
 
-HTTP 快取模組 (`HttpCacheModule`) 實作 IIS 輸出快取以及快取項目在 HTTP.sys 快取中的邏輯。 如果沒有這個模組，在核心模式中，就不會再快取內容，並快取設定檔會被忽略。 移除 HTTP 快取模組通常不會有負面的影響，對於效能和資源使用狀況。 *雖然 HTTP 快取模組不是絕對必要裝載 ASP.NET Core 應用程式執行，我們建議，如所有 ASP.NET Core 部署啟用 HTTP 快取模組。*
+「HTTP 快取模組」(`HttpCacheModule`) 會實作 IIS 輸出快取，也會實作用來將項目快取至 HTTP.sys 快取中的邏輯。 如果沒有此模組，就不會再以核心模式快取內容，而且會忽略快取設定檔。 移除「HTTP 快取模組」通常會對效能和資源使用情況造成負面影響。 *雖然不一定要有「HTTP 快取模組」，所裝載的 ASP.NET Core 應用程式就能執行，但建議您為所有 ASP.NET Core 部署都啟用「HTTP 快取模組」。*
 
 ## <a name="additional-resources"></a>其他資源
 
 * [ Windows 上使用 IIS 的主機](xref:host-and-deploy/iis/index)
-* [IIS 架構簡介： 在 IIS 中的模組](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
+* [IIS 架構簡介：IIS 中的模組](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [IIS 模組概觀](/iis/get-started/introduction-to-iis/iis-modules-overview)
-* [自訂的 IIS 7.0 角色和模組](https://technet.microsoft.com/library/cc627313.aspx)
+* [自訂 IIS 7.0 角色和模組](https://technet.microsoft.com/library/cc627313.aspx)
 * [IIS `<system.webServer>`](/iis/configuration/system.webServer/)

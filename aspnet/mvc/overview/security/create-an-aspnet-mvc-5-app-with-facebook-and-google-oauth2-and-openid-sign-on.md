@@ -17,6 +17,7 @@ ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/21/2018
+ms.locfileid: "30875743"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -174,7 +175,7 @@ Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 
     ![建立新的應用程式](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. 輸入**應用程式名稱**和**類別**，然後按一下 **建立應用程式**。
 
-    這必須是唯一的 Facebook。 <strong>應用程式命名空間</strong>屬於您的應用程式用來存取驗證的 Facebook 應用程式的 URL (例如，https://apps.facebook.com/{App命名空間})。 如果您未指定<strong>應用程式命名空間</strong>、<strong>應用程式識別碼</strong>將使用的 URL。 <strong>應用程式識別碼</strong>是下一個步驟中，您會看到一個長時間的系統產生數字。
+    這必須是唯一的 Facebook。 <strong>應用程式命名空間</strong>屬於您的應用程式用來存取驗證的 Facebook 應用程式的 URL (例如，https://apps.facebook.com/{App命名空間}) 。 如果您未指定<strong>應用程式命名空間</strong>、<strong>應用程式識別碼</strong>將使用的 URL。 <strong>應用程式識別碼</strong>是下一個步驟中，您會看到一個長時間的系統產生數字。
 
     ![建立新的應用程式 對話方塊](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. 提交的一般安全性檢查。

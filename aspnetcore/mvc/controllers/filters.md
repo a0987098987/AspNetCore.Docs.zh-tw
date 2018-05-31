@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/filters
-ms.openlocfilehash: edc2e9460eb68febe25e8dd60e3872e5ab28e9e9
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 49e51a867e47ce375a5048cae5979360c4103365
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555400"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -66,7 +67,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet1)]
 
-非同步篩選條件會定義單一的 On*Stage*ExecutionAsync 方法。 這個方法會接受 *FilterType*ExecutionDelegate 委派，它會執行篩選條件的管線階段。 例如，`ActionExecutionDelegate` 呼叫動作方法，而您可以在呼叫它之前和之後執行程式碼。
+非同步篩選條件會定義單一的 On*Stage*ExecutionAsync 方法。 這個方法會接受 *FilterType*ExecutionDelegate 委派，它會執行篩選條件的管線階段。 例如，`ActionExecutionDelegate` 會呼叫動作方法或下一個動作篩選條件，而且您可以在呼叫之前和之後執行程式碼。
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]
 
@@ -171,7 +172,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 | 5 | 控制器 | 1  | `OnActionExecuted` |
 | 6 | 方法 | 0  | `OnActionExecuted` |
 
-`Order` 屬性在決定篩選條件執行的順序時以範圍取勝。 篩選條件會先依照順序排序，然後使用範圍來打破僵局。 所有內建的篩選條件都會實作 `IOrderedFilter` 並將預設 `Order` 值設為 0。 對於內建篩選條件，範圍決定了順序，除非您將 `Order` 設定為非零值。
+`Order` 屬性在決定篩選條件執行的順序時以範圍取勝。 篩選條件會先依照順序排序，然後使用範圍來打破僵局。 所有內建的篩選條件都會實作 `IOrderedFilter` 並將預設 `Order` 值設為 0。 對於內建篩選條件，除非您將 `Order` 設定為非零值，否則範圍決定了順序。
 
 ## <a name="cancellation-and-short-circuiting"></a>取消和縮短
 

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 7244f7a808899a2846bb8b40e626208f168d40b8
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: a9bf7b49b1cfdfff65c639eed1e14c94c5432350
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34689018"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>與 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -91,6 +92,8 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 ```
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
+
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 

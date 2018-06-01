@@ -10,17 +10,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: dc1724e8a78c25d3697d14ad784ce853737681f2
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 92a7000f4f8e4c2097065cb530fe106ef0e98545
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688623"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>在 ASP.NET Core EU 一般資料保護規定 (GDPR) 支援
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core 提供應用程式開發介面和範本可協助符合某些[UE 一般資料保護規定 (GDPR)](https://www.eugdpr.org/)需求：
+ASP.NET Core 提供應用程式開發介面和範本可協助符合某些[EU 一般資料保護規定 (GDPR)](https://www.eugdpr.org/)需求：
 
 * 專案範本包含了擴充點，以及您可以取代您的隱私權和 cookie 的使用原則的 stub 的標記。
 * Cookie 同意功能可讓您要求 （和追蹤） 同意從您的使用者，用來儲存個人資訊。 如果使用者不同意資料收集，且應用程式設定與[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded?view=aspnetcore-2.1#Microsoft_AspNetCore_Builder_CookiePolicyOptions_CheckConsentNeeded)至`true`，非必要 cookie 將不會傳送至瀏覽器。
@@ -38,7 +39,7 @@ Razor 頁面和 MVC 專案範本建立專案，包含下列 GDPR 支援：
 
 * [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0)和[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_)中設定`Startup`。
 * *_CookieConsentPartial.cshtml* [部分檢視](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)。
-* *Pages/Privacy.cshtml*或*Home/rivacy.cshtml*檢視會提供您網站的隱私權原則的詳細資料頁面。 *_CookieConsentPartial.cshtml*檔案會產生隱私權頁面的連結。
+* *Pages/Privacy.cshtml*或*Home/Privacy.cshtml*檢視會提供您網站的隱私權原則的詳細資料頁面。 *_CookieConsentPartial.cshtml*檔案會產生隱私權頁面的連結。
 * 建立個別的使用者帳戶的應用程式，如 [管理] 頁面提供下載和刪除連結[個人使用者資料](#pd)。
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions 和 UseCookiePolicy

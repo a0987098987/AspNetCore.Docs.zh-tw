@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: f6b03c01ae0da1cc8fb3bc2e0546c0d9752ddf75
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 3f59f7d1bf0280cef8f7757e8cd57d4872769b3d
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688992"
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Twitter 外部登入與 ASP.NET Core 的安裝程式
 
@@ -73,6 +74,8 @@ services.AddAuthentication().AddTwitter(twitterOptions =>
 ```
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
+
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 

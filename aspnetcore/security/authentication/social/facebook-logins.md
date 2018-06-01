@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: a0b96f480aaa3941cf63b25780c5a1d9d4b2dbb0
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: cabb5acc6e593c02c20b3403b39c601ce26a4d99
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688979"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Facebook 外部登入安裝程式
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="create-the-app-in-facebook"></a>在 Facebook 中建立應用程式
 
-*  瀏覽至[Facebook 開發人員應用程式](https://developers.facebook.com/apps/)頁面上，並登入。 如果您還沒有的 Facebook 帳戶，使用**註冊 Facebook**建立一個登入頁面上的連結。
+* 瀏覽至[Facebook 開發人員應用程式](https://developers.facebook.com/apps/)頁面上，並登入。 如果您還沒有的 Facebook 帳戶，使用**註冊 Facebook**建立一個登入頁面上的連結。
 
 * 點選**加入新的應用程式**按鈕右上角來建立新的應用程式識別碼。
 
@@ -87,6 +88,8 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 ```
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
+
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: a481951812e3498a1172dea98aaa162149b86f2b
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: dbcef095561fe656bdd28c4fa6560c6b269a2db0
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34689005"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定 Windows 驗證
 
@@ -56,7 +57,7 @@ Visual Studio 專案**屬性**網頁的**偵錯** 索引標籤提供 Windows 驗
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用與 IIS Windows 驗證
 
-IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 模組流程 Windows 驗證來 IIS 預設。 在 IIS 中，不是應用程式設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
+IIS 會使用[ASP.NET 核心模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 模組可以根據預設，流向 IIS Windows 驗證。 在 IIS 中，不是應用程式設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
 
 ### <a name="create-a-new-iis-site"></a>建立新的 IIS 站台
 

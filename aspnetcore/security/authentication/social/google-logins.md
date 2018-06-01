@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: e3d0f0c058dd7395aebf1c97821867bae3af7c54
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: ccb771dbefefb007aede1bdf05ab50ec363a3089
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34689031"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Google 外部登入安裝程式
 
@@ -103,6 +104,8 @@ services.AddAuthentication().AddGoogle(googleOptions =>
 ```
 
 [!INCLUDE [default settings configuration](includes/default-settings.md)]
+
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 

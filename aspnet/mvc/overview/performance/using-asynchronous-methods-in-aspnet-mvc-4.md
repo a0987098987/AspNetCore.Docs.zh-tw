@@ -12,11 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: cee5fded4d8005df6054ab921f39882c3e5f21b8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5b3b9b82fa64155c1dfd2a49649def10d7dae87e
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34729177"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>使用 ASP.NET MVC 4 中的非同步方法
 ====================
@@ -43,7 +44,7 @@ ASP.NET MVC 4[控制器](https://msdn.microsoft.com/library/system.web.mvc.contr
 
 ## <a name="processing-asynchronous-requests"></a>處理非同步要求
 
-看見大量的並行要求，在啟動時，或具有暴增負載 （其中增加並行突然） 的 web 應用程式，讓這些 web 服務呼叫非同步將會增加您的應用程式的回應能力。 非同步要求所需的時間來處理與同步要求相同的數量。 比方說，如果要求會提出 web 服務呼叫，要求兩秒來完成，要求會採用兩秒是否以同步還是非同步方式執行。 不過，在非同步呼叫，執行緒不會封鎖回應其他要求，同時等候完成的第一個要求。 因此，非同步要求可以避免要求佇列和執行緒集區成長時叫用長時間執行作業的許多並行要求。
+請參閱大量的並行要求，在啟動時，或具有暴增負載 （其中增加並行突然） 的 web 應用程式，讓這些 web 服務呼叫的非同步會增加應用程式回應。 非同步要求所需的時間來處理與同步要求相同的數量。 比方說，如果要求會提出 web 服務呼叫，要求兩秒來完成，要求會採用兩秒是否以同步還是非同步方式執行。 不過，在非同步呼叫，執行緒不會封鎖回應其他要求，同時等候完成的第一個要求。 因此，非同步要求可以避免要求佇列和執行緒集區成長時叫用長時間執行作業的許多並行要求。
 
 ## <a id="ChoosingSyncVasync"></a>  選擇同步或非同步動作方法
 
@@ -61,7 +62,7 @@ ASP.NET MVC 4[控制器](https://msdn.microsoft.com/library/system.web.mvc.contr
 - 作業會受限於網路或我 I/O 繫結而不是 cpu-bound。
 - 平行處理原則是更重要的是比簡化程式碼。
 - 您想要提供一套機制，可讓使用者取消長時間執行要求。
-- 當優點切換執行緒出加權內容切換的成本。 一般情況下，您應該方法設為非同步如果同步方法會在 ASP.NET 要求執行緒上時不執行任何工作。 藉由呼叫非同步，ASP.NET 要求執行緒不停止不任何工作，同時等候完成的 web 服務要求。
+- 當切換執行緒的優點超過內容切換的成本。 一般情況下，您應該方法設為非同步如果同步方法會在 ASP.NET 要求執行緒上時不執行任何工作。 藉由呼叫非同步，ASP.NET 要求執行緒不停止不任何工作，同時等候完成的 web 服務要求。
 - 測試顯示出封鎖作業是效能瓶頸的網站和 IIS 可以服務多個要求，使用這些封鎖呼叫的非同步方法。
 
   可下載的範例示範如何有效地使用非同步動作方法。 提供的範例被設計來提供簡單的示範，使用.NET 4.5 的 ASP.NET MVC 4 中非同步程式設計。 此範例不是在 ASP.NET MVC 中的非同步程式設計參考架構。 範例程式會呼叫[ASP.NET Web API](../../../web-api/index.md)方法會接著呼叫[Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx)模擬長時間執行的 web 服務呼叫。 大部分的實際執行應用程式不會顯示使用非同步動作方法可帶來明顯好處。   
@@ -163,7 +164,7 @@ Gizmos 資料的瀏覽器呈現等同於同步呼叫所建立的檢視。 唯一
 
 - Windows 7、 Windows Vista 和所有 Windows 用戶端的作業系統有最多 10 個並行要求。 您必須是 Windows 伺服器作業系統以查看在高負載之下的非同步方法的優點。
 - 向 IIS 註冊.NET 4.5，從提升權限的命令提示字元：  
-  %windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet\_regiis -i  
+  %windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet\_regiis-i  
   請參閱[ASP.NET IIS 註冊工具 (Aspnet\_regiis.exe)](https://msdn.microsoft.com/library/k6h9cz8h.aspx)
 - 您可能需要增加[HTTP.sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture)佇列限制從 1000 到 5000 的預設值。 如果設定為太低，您可能會看到[HTTP.sys](https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture)拒絕 HTTP 503 狀態的要求。 若要變更 HTTP.sys 佇列限制：
 

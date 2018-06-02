@@ -3,17 +3,20 @@ title: ASP.NET Core 壓縮回應中介軟體
 author: guardrex
 description: 了解回應壓縮以及如何在 ASP.NET Core 應用程式中使用回應壓縮中介軟體。
 manager: wpickett
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
+ms.custom: mvc
 ms.date: 08/20/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: cae81a04e41dc7fcbacec975e63171f633fccecf
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 152799500577dd09247bcee8c87cde39ca20aa79
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34729570"
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -44,7 +47,7 @@ ms.lasthandoff: 05/12/2018
 當用戶端可以處理壓縮的內容時，用戶端必須透過傳送通知的伺服器，其功能`Accept-Encoding`與要求標頭。 當伺服器傳送壓縮的內容時，它必須包括中的資訊`Content-Encoding`標頭壓縮的回應編碼的方式。 下表中，會顯示由中介軟體所支援的內容編碼方式指定。
 
 | `Accept-Encoding` 標頭值 | 支援的中介軟體 | 描述                                                 |
-| :-----------------------------: | :------------------: | ----------------------------------------------------------- |
+| ------------------------------- | :------------------: | ----------------------------------------------------------- |
 | `br`                            | 否                   | Brotli 壓縮的資料格式                               |
 | `compress`                      | 否                   | UNIX 「 壓縮 」 的資料格式                                 |
 | `deflate`                       | 否                   | 「 deflate 」 內的 「 zlib 」 資料格式的壓縮的資料     |
@@ -80,21 +83,42 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="package"></a>Package
 
-若要在專案中包含中介軟體，將參考加入[ `Microsoft.AspNetCore.ResponseCompression` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)封裝。 此功能適用於以 ASP.NET Core 1.1 或更新版本為目標的應用程式。
+::: moniker range="< aspnetcore-2.0"
+
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝。 此功能適用於以 ASP.NET Core 1.1 或更新版本為目標的應用程式。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage)。
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.0"
+
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)。
+
+::: moniker-end
 
 ## <a name="configuration"></a>組態
 
 下列程式碼會示範如何啟用回應壓縮中介軟體搭配預設 gzip 壓縮和預設的 MIME 類型。
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddResponseCompression();
+    }
 
-[!code-csharp[](response-compression/samples/2.x/StartupBasic.cs?name=snippet1&highlight=4,8)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-[!code-csharp[](response-compression/samples/1.x/StartupBasic.cs?name=snippet1&highlight=3,8)]
-
----
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseResponseCompression();
+    }
+}
+```
 
 > [!NOTE]
 > 使用這類工具[Fiddler](http://www.telerik.com/fiddler)， [firebug 這類](http://getfirebug.com/)，或[郵差](https://www.getpostman.com/)設定`Accept-Encoding`要求標頭和研究回應標頭、 大小和主體。
@@ -111,29 +135,30 @@ ms.lasthandoff: 05/12/2018
 
 ### <a name="gzipcompressionprovider"></a>GzipCompressionProvider
 
-使用`GzipCompressionProvider`壓縮回應以 gzip。 如果未指定，這是預設壓縮提供者。 您可以設定壓縮層級與`GzipCompressionProviderOptions`。 
+使用[GzipCompressionProvider](/dotnet/api/microsoft.aspnetcore.responsecompression.gzipcompressionprovider)壓縮回應以 gzip。 如果未指定，這是預設壓縮提供者。 您可以設定壓縮層級與[GzipCompressionProviderOptions](/dotnet/api/microsoft.aspnetcore.responsecompression.gzipcompressionprovideroptions)。
 
-Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)，這可能不會產生最有效的壓縮。 如果想要使用最有效率的壓縮，您可以設定最佳的壓縮的中介軟體。
+Gzip 壓縮提供者預設為最快的壓縮層級 ([CompressionLevel.Fastest](/dotnet/api/system.io.compression.compressionlevel))，這可能不會產生最有效的壓縮。 如果想要使用最有效率的壓縮，您可以設定最佳的壓縮的中介軟體。
 
-| 壓縮層級                | 描述                                                                                                   |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `CompressionLevel.Fastest`       | 即使不最佳的方式壓縮所產生的輸出，應該儘快，完成壓縮。 |
-| `CompressionLevel.NoCompression` | 您應該不執行任何壓縮。                                                                           |
-| `CompressionLevel.Optimal`       | 回應應以最佳方式壓縮，即使壓縮會使用更多時間來完成。                |
+| 壓縮層級 | 描述 |
+| ----------------- | ----------- |
+| [CompressionLevel.Fastest](/dotnet/api/system.io.compression.compressionlevel) | 即使不最佳的方式壓縮所產生的輸出，應該儘快，完成壓縮。 |
+| [CompressionLevel.NoCompression](/dotnet/api/system.io.compression.compressionlevel) | 您應該不執行任何壓縮。 |
+| [CompressionLevel.Optimal](/dotnet/api/system.io.compression.compressionlevel) | 回應應以最佳方式壓縮，即使壓縮會使用更多時間來完成。 |
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=3,8-11)]
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=5,12-15)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5,10-13)]
+[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5,12-15)]
 
 ---
 
 ## <a name="mime-types"></a>MIME 類型
 
 中介軟體會指定一組預設的 MIME 類型的壓縮：
+
 * `text/plain`
 * `text/css`
 * `application/javascript`
@@ -147,29 +172,29 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=5)]
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=7-9)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=7)]
+[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=7-9)]
 
 ---
 
 ### <a name="custom-providers"></a>自訂提供者
 
-您可以建立自訂壓縮實作與`ICompressionProvider`。 `EncodingName`代表內容的編碼這個`ICompressionProvider`產生。 中介軟體會使用此資訊來選擇根據清單中指定的提供者`Accept-Encoding`要求標頭。
+您可以建立自訂壓縮實作與[ICompressionProvider](/dotnet/api/microsoft.aspnetcore.responsecompression.icompressionprovider)。 [EncodingName](/dotnet/api/microsoft.aspnetcore.responsecompression.icompressionprovider.encodingname)代表內容的編碼這個`ICompressionProvider`產生。 中介軟體會使用此資訊來選擇根據清單中指定的提供者`Accept-Encoding`要求標頭。
 
 使用範例應用程式，在用戶端提交的要求`Accept-Encoding: mycustomcompression`標頭。 中介軟體會使用自訂壓縮實作，並傳回與回應`Content-Encoding: mycustomcompression`標頭。 用戶端必須能夠解壓縮自訂壓縮實作，才能讓自訂編碼。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!code-csharp[](response-compression/samples/2.x/Program.cs?name=snippet1&highlight=4)]
+[!code-csharp[](response-compression/samples/2.x/Startup.cs?name=snippet1&highlight=5,12-15)]
 
 [!code-csharp[](response-compression/samples/2.x/CustomCompressionProvider.cs?name=snippet1)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=6)]
+[!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet2&highlight=5,12-15)]
 
 [!code-csharp[](response-compression/samples/1.x/CustomCompressionProvider.cs?name=snippet1)]
 
@@ -185,11 +210,19 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 
 ## <a name="adding-the-vary-header"></a>加入 Vary 標頭
 
-當壓縮回應基礎`Accept-Encoding`標頭，但是會有潛在的多個壓縮的版本回應和未壓縮的版本。 若要指示用戶端和 proxy 快取多個版本存在，而且應該儲存`Vary`標頭加入使用`Accept-Encoding`值。 在 ASP.NET Core 1.x 加入`Vary`標頭至回應以手動方式完成。 在 ASP.NET Core 2.x 中, 介軟體新增`Vary`標頭壓縮回應時，自動。
+::: moniker range=">= aspnetcore-2.0"
 
-**ASP.NET Core 只 1.x**
+當壓縮回應基礎`Accept-Encoding`標頭，但是會有潛在的多個壓縮的版本回應和未壓縮的版本。 若要指示用戶端和 proxy 快取多個版本存在，而且應該儲存`Vary`標頭加入使用`Accept-Encoding`值。 在 ASP.NET Core 2.0 或更新版本中, 介軟體新增`Vary`標頭壓縮回應時，自動。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+當壓縮回應基礎`Accept-Encoding`標頭，但是會有潛在的多個壓縮的版本回應和未壓縮的版本。 若要指示用戶端和 proxy 快取多個版本存在，而且應該儲存`Vary`標頭加入使用`Accept-Encoding`值。 在 ASP.NET Core 1.x 加入`Vary`標頭至回應以手動方式完成：
 
 [!code-csharp[](response-compression/samples/1.x/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>位於 Nginx 反向 proxy 後方的中介軟體問題
 
@@ -204,7 +237,7 @@ Gzip 壓縮提供者預設為最快的壓縮層級 (`CompressionLevel.Fastest`)�
 使用這類工具[Fiddler](http://www.telerik.com/fiddler)， [firebug 這類](http://getfirebug.com/)，或[郵差](https://www.getpostman.com/)，可讓您設定`Accept-Encoding`要求標頭和研究回應標頭、 大小和主體。 回應壓縮中介軟體壓縮符合下列條件的回應：
 
 * `Accept-Encoding`標頭已存在的值與`gzip`， `*`，或自訂編碼符合您所建立的自訂壓縮提供者。 值不能`identity`或有品質值 (qvalue， `q`) 設定為 0 （零）。
-* MIME 類型 (`Content-Type`) 必須設定，而且必須符合上設定 MIME 類型`ResponseCompressionOptions`。
+* MIME 類型 (`Content-Type`) 必須設定，而且必須符合上設定 MIME 類型[ResponseCompressionOptions](/dotnet/api/microsoft.aspnetcore.responsecompression.responsecompressionoptions)。
 * 要求必須包含`Content-Range`標頭。
 * 除非回應壓縮中介軟體選項中設定安全通訊協定 (https)，要求必須使用不安全的通訊協定 (http)。 *請注意危險[上述](#compression-with-secure-protocol)時啟用安全內容的壓縮。*
 

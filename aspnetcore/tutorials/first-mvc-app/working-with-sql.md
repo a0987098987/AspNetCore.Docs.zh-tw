@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 6190c6dd958c62299aea89db398e691c1650af02
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: b00d709f3009f63431becf24797269ad5988a20b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34688370"
 ---
 # <a name="work-with-sql-server-localdb-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL Server LocalDB
 
@@ -21,7 +22,12 @@ ms.lasthandoff: 05/12/2018
 
 `MvcMovieContext` 物件會處理連線到資料庫和將 `Movie` 物件對應至資料庫記錄的工作。 在 *Startup.cs* 檔案的 `ConfigureServices` 方法中，以[相依性插入](xref:fundamentals/dependency-injection)容器登錄資料庫內容：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker-end
 
 ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從 *appsettings.json* 檔案取得連接字串：
 
@@ -69,6 +75,11 @@ if (context.Movie.Any())
 <a name="si"></a>
 ### <a name="add-the-seed-initializer"></a>新增種子初始設定式
 
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Program.cs)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 在 *Program.cs* 檔案中，將種子初始設定式新增至 `Main` 方法：
@@ -82,6 +93,7 @@ if (context.Movie.Any())
 [!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=9&name=snippet_seed)]
 
 ---
+::: moniker-end
 
 測試應用程式
 

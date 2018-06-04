@@ -1,14 +1,14 @@
 使用下列內容取代 *Views/HelloWorld/Index.cshtml* Razor 檢視檔案的內容：
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index.cshtml)]
 
 巡覽至 `http://localhost:xxxx/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為您沒有明確指定檢視範本檔案的名稱，MVC 預設為使用 */Views/HelloWorld* 資料夾中的 *Index.cshtml* 檢視檔案。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
-![瀏覽器視窗](../../tutorials/first-mvc-app/adding-view/_static/hell_template.png)
+![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
 如果瀏覽器視窗很小 (例如在行動裝置上)，您可能需要切換 (點選) 右上方的[啟動程序導覽按鈕](http://getbootstrap.com/components/#navbar)，以查看 **Home**、**About** 和 **Contact** 連結。
 
-![醒目提示啟動程序導覽按鈕的瀏覽器視窗](../../tutorials/first-mvc-app/adding-view/_static/1.png)
+![醒目提示啟動程序導覽按鈕的瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/1.png)
 
 ## <a name="changing-views-and-layout-pages"></a>變更檢視和版面配置頁
 
@@ -20,16 +20,21 @@
 
 在標題項目中將 `MvcMovie` 變更成 `Movie App`。 將版面配置範本中的錨定文字從 `MvcMovie` 變更為 `Movie App`，並將控制器從 `Home` 變更為 `Movies`，如以下的醒目提示：
 
-注意：ASP.NET Core 2.0 版略有不同。 它並未包含 `@inject ApplicationInsights` 和 `@Html.Raw(JavaScriptSnippet.FullScript)`。
+::: moniker range="<= aspnetcore-2.0"
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=6,29)]
+::: moniker-end
 
 >[!WARNING]
 > 我們尚未實作 `Movies` 控制器，因此如果您按一下該連結，就會收到 404 (找不到) 錯誤。
 
 儲存變更並點選 **About** 連結。 請注意現在瀏覽器索引標籤上的標題會顯示 **About - Movie App**，而不是 **About - Mvc Movie**。 
 
-![關於標籤](../../tutorials/first-mvc-app/adding-view/_static/about2.png)
+![關於標籤](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 
 點選 [連絡人] 連結，並注意標題和錨定文字也要顯示**電影應用程式**。 我們能夠在版面配置範本中一次進行變更，並讓網站上的所有頁面反映新的連結文字和新的標題。
 
@@ -75,7 +80,7 @@
 
 同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 若要深入了解，請參閱[版面配置](xref:mvc/views/layout)。
 
-![電影清單檢視](../../tutorials/first-mvc-app/adding-view/_static/hell3.png)
+![電影清單檢視](~/tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
 然而，我們的這一點點「資料」(在此案例中為 "Hello from our View Template!" 訊息) 是硬式編碼的資料。 MVC 應用程式具有 "V" (檢視)，並已取得 "C" (控制器)，但還沒有 "M" (模型)。
 
@@ -89,7 +94,7 @@
 
 返回 *HelloWorldController.cs* 檔案並變更 `Welcome` 方法，將 `Message` 和 `NumTimes` 值新增至 `ViewData` 字典。 `ViewData` 字典是動態物件，這表示您可以在其中放置任何項目；`ViewData` 物件則要在您於其中放入某個項目之後，才會有定義的屬性。 MVC [模型繫結](xref:mvc/models/model-binding)系統會自動將網址列上查詢字串中的具名參數 (`name` 和 `numTimes`) 對應至方法中的參數。 完整的 *HelloWorldController.cs* 檔案如下所示：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 `ViewData` 字典物件包含將傳遞至檢視的資料。 
 
@@ -97,7 +102,7 @@
 
 您將在 *Welcome.cshtml* 檢視範本中建立迴圈，以顯示 "Hello" `NumTimes` 次。 使用下列內容取代 *Views/HelloWorld/Welcome.cshtml* 的內容：
 
-[!code-html[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 儲存變更並瀏覽至下列 URL：
 
@@ -105,7 +110,7 @@
 
 資料是使用 [MVC 模型繫結器](xref:mvc/models/model-binding)從 URL 取得並傳遞至控制站。 控制器會將資料封裝成 `ViewData` 字典，並將該物件傳遞至檢視。 接著，檢視會以 HTML 將資料呈現到瀏覽器。
 
-![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 About 檢視](../../tutorials/first-mvc-app/adding-view/_static/rick2.png)
+![顯示一個 Welcome 標籤和顯示四次的片語 Hello Rick 的 About 檢視](~/tutorials/first-mvc-app/adding-view/_static/rick2.png)
 
 在上述範例中，我們使用 `ViewData` 字典，以便將資料從控制器傳遞至檢視。 稍後在教學課程中，我們將使用檢視模型將控制器中的資料傳遞至檢視。 傳遞資料的檢視模型方法通常比 `ViewData` 字典方法較為慣用。 如需詳細資訊，請參閱 [ViewModel vs ViewData vs ViewBag vs TempData vs Session in MVC](http://www.mytecbits.com/microsoft/dot-net/viewmodel-viewdata-viewbag-tempdata-mvc)(MVC 中的 ViewMode 與 ViewData 與 ViewBag 與 TempData 與 Session)。
 

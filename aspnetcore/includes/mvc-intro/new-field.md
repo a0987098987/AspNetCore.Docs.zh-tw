@@ -1,3 +1,4 @@
+<!-- This include not used by windows version -->
 # <a name="adding-a-new-field"></a>新增欄位
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
@@ -10,9 +11,14 @@
 
 開啟 *Models/Movie.cs* 檔案，然後新增 `Rating` 屬性：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Models/MovieDateRating.cs?highlight=12&name=snippet)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+::: moniker-end
 
-因為您已將新欄位新增至 `Movie` 類別，所以也需要更新繫結白名單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
+因為您已將新欄位新增至 `Movie` 類別，所以也需要更新繫結允許清單，以便包含這個新屬性。 在 *MoviesController.cs* 中，更新 `Create` 和 `Edit` 這兩個動作方法的 `[Bind]` 屬性 (attribute)，以包括 `Rating` 屬性 (property)：
 
 ```csharp
 [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
@@ -22,7 +28,7 @@
 
 編輯 */Views/Movies/Index.cshtml* 檔案，然後新增 `Rating` 欄位：
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=17,39&range=24-64)]
 
 使用 `Rating` 欄位更新 */Views/Movies/Create.cshtml*。
 
@@ -48,7 +54,7 @@ SqliteException: SQLite Error 1: 'no such column: m.Rating'.
 
 更新 `SeedData` 類別，使其提供新資料行的值。 範例變更如下所示，但您會想要為每個 `new Movie` 進行這項變更。
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedDataRating.cs?name=snippet1&highlight=6)]
 
 將 `Rating` 欄位新增至 `Edit`、`Details` 和 `Delete` 檢視。
 

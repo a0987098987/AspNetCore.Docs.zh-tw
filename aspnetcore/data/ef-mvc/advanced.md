@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 95500686052a3f75dd71244bc9da500300416dec
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: fffb78e4d66c8a798d5f952ba9e4506c8cb666ca
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566928"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 
@@ -147,9 +148,9 @@ ORDER BY [t].[ID]
 
 * EF 包含實作 TDD 而不需要撰寫存放庫程式碼的功能。
 
-如需如何實作存放庫和工作單元模式的資訊，請參閱[本教學課程系列的 Entity Framework 第 5 版](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)。
+如需如何實作存放庫和工作單元模式的資訊，請參閱[本教學課程系列的 Entity Framework 第 5 版](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)。
 
-Entity Framework Core 實作了可用於測試的記憶體資料庫提供者。 如需詳細資訊，請參閱[使用 InMemory 進行測試](https://docs.microsoft.com/ef/core/miscellaneous/testing/in-memory)。
+Entity Framework Core 實作了可用於測試的記憶體資料庫提供者。 如需詳細資訊，請參閱[使用 InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)。
 
 ## <a name="automatic-change-detection"></a>自動變更偵測
 

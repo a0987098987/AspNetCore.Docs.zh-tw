@@ -10,11 +10,12 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware/extensibility-third-party-container
-ms.openlocfilehash: b6fd02d1863efe571bafe1344fb34939883e6cb5
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c55075fd3c6fda4073d26925eab823c35d8656f5
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729888"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>在 ASP.NET Core 中以協力廠商容器啟用中介軟體
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 03/02/2018
 
 此中介軟體會在要求處理管線的 `Startup.Configure` 中註冊：
 
-[!code-csharp[](extensibility-third-party-container/sample/Startup.cs?name=snippet2&highlight=12)]
+[!code-csharp[](extensibility-third-party-container/sample/Startup.cs?name=snippet2&highlight=13)]
 
 ## <a name="additional-resources"></a>其他資源
 

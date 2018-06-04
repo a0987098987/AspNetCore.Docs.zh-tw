@@ -11,11 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 793169b491596cd7326d747a3f19d7fdaf7e2b65
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 618cb4349dcff696db37012af3aee844b82974f2
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729047"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>在 ASP.NET Core 中使用 IHostingStartup 從外部組件增強應用程式
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 05/17/2018
 
 ### <a name="update-the-dependencies-file"></a>更新相依性檔案
 
-執行階段位置是在 *\*.deps.json* 檔案中指定。 若要啟用增強功能，`runtime` 元素必須指定增強功能之執行階段組件的位置。 請在 `runtime` 位置前面加上 `lib/netcoreapp2.0/`：
+執行階段位置是在 *\*.deps.json* 檔案中指定。 若要啟用增強功能，`runtime` 元素必須指定增強功能之執行階段組件的位置。 請在 `runtime` 位置前面加上 `lib/<TARGET_FRAMEWORK_MONIKER>/`：
 
 [!code-json[](platform-specific-configuration/snapshot_sample/StartupEnhancement2.deps.json?range=2-13&highlight=8)]
 
@@ -83,13 +84,13 @@ ms.lasthandoff: 05/17/2018
 如果是個別使用者使用，請將組件置於使用者設定檔的執行階段存放區中：
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\store\x64\netcoreapp2.0\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\netcoreapp2.0\
+<DRIVE>\Users\<USER>\.dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
 ```
 
 如果是全域使用，請將組件置於 .NET Core 安裝的執行階段存放區中：
 
 ```
-<DRIVE>\Program Files\dotnet\store\x64\netcoreapp2.0\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\netcoreapp2.0\
+<DRIVE>\Program Files\dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
 ```
 
 將組件部署至執行階段存放區時，可能也會部署符號檔，但運作增強功能並不需要該檔案。
@@ -101,16 +102,16 @@ ms.lasthandoff: 05/17/2018
 如果是個別使用者使用，請將檔案置於使用者設定檔之 `.dotnet` 設定的 `additonalDeps` 資料夾中： 
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
+<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
 ```
 
 如果是全域使用，請將檔案置於 .NET Core 安裝的 `additonalDeps` 資料夾中：
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
 ```
 
-請注意，版本 `2.0.0` 反映了目標應用程式所使用的共用執行階段版本。 *\*.runtimeconfig.json* 檔案會顯示共用的執行階段。 在範例應用程式中，共用的執行階段則是在 *HostingStartupSample.runtimeconfig.json* 檔案中指定。
+請注意，版本 `2.1.0` 反映了目標應用程式所使用的共用執行階段版本。 *\*.runtimeconfig.json* 檔案會顯示共用的執行階段。 在範例應用程式中，共用的執行階段則是在 *HostingStartupSample.runtimeconfig.json* 檔案中指定。
 
 **設定環境變數**
 
@@ -135,7 +136,7 @@ DOTNET\_ADDITIONAL\_DEPS
 如果針對全域使用將檔案置於 .NET Core 安裝，請提供檔案的完整路徑：
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
 ```
 
 範例應用程式會將此值設定為：

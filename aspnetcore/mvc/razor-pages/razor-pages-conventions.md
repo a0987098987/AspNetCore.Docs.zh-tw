@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/razor-pages/razor-pages-conventions
-ms.openlocfilehash: 15bb0687ffef777b82ea9374fdc3b92f3af7818b
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: eba3422fbf46ac181a783b7f8cc605c2a549b4b7
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729739"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>ASP.NET Core 中的 Razor 頁面路由和應用程式慣例
 
@@ -104,8 +105,6 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range=">= aspnetcore-2.1"
 **將處理常式模型慣例新增至所有頁面**
-
-
 
 使用[慣例](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions)來建立 [IPageApplicationModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention)，並將其新增至頁面模型建構期間所套用之 [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) 執行個體的集合。
 
@@ -342,6 +341,6 @@ Razor Pages 會忽略 MVC [動作篩選條件](xref:mvc/controllers/filters#acti
 
 頁面篩選條件 ([IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter)) 是可套用至 Razor 頁面的篩選條件。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:mvc/razor-pages/filter)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 * [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 3691801c2d48b7f635bee844fdf2392f2f3445de
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b392f956888a740a4a8c7c553996fc85ce63bd4b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729632"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 
@@ -21,7 +22,14 @@ ms.lasthandoff: 04/06/2018
 
 開啟 Movie 控制器，並檢查 `Details` 方法：
 
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
 [!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
+
+::: moniker-end
 
 建立這個動作方法的 MVC scaffolding 引擎，會新增一項註解以顯示叫用方法的 HTTP 要求。 在此情況下，它是含有 `Movies` 控制器、`Details` 方法和 `id` 值這三個 URL 區段的 GET 要求。 回想一下，這些區段會在 *Startup.cs* 中定義。
 
@@ -31,7 +39,14 @@ EF 可讓您輕鬆使用 `SingleOrDefaultAsync` 方法來搜尋資料。 此方�
 
 檢查 `Delete` 和 `DeleteConfirmed` 方法。
 
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](start-mvc/sample/MvcMovie21/Controllers/MoviesController.cs?name=snippet_delete)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
 [!code-csharp[](start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_delete)]
+
+::: moniker-end
 
 請注意，`HTTP GET Delete` 方法並不會刪除指定的電影，而會傳回電影的檢視，您可在該檢視中提交 (HttpPost) 刪除作業。 如果您執行刪除作業以回應 GET 要求 (或是執行相關編輯作業、建立作業或任何會變更資料的其他作業)，則會造成安全性漏洞。
 
@@ -57,8 +72,6 @@ public async Task<IActionResult> Delete(int id, bool notUsed)
 ### <a name="publish-to-azure"></a>發佈至 Azure
 
 如需使用 Visual Studio 將此應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。  您也可以從[命令列](xref:tutorials/publish-to-azure-webapp-using-cli)發行應用程式。
-
-感謝您看完這份 ASP.NET Core MVC 簡介。 歡迎您提供任何指教。 完成本教學課程之後，非常建議您繼續參閱 [MVC 與 EF Core 使用者入門](xref:data/ef-mvc/intro)。
 
 > [!div class="step-by-step"]
 > [上一步](validation.md)

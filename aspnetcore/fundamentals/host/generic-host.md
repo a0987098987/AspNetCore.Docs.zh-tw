@@ -11,11 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 15f4a689b2756d2bfb6320ab31f2e8d63af51a09
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 15ce81a4226921ce053096751d7678ada36235c0
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34728969"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -226,10 +227,9 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        var host = new HostBuilder()
-            .Build();
+        var hostBuilder = new HostBuilder();
 
-        await host.RunConsoleAsync();
+        await hostBuilder.RunConsoleAsync();
     }
 }
 ```

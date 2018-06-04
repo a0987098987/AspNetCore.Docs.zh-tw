@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 067d9bd09f6d5e54bbafd953eea169d2df2be34e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 14c3d464773fe78a563a27776bfcd124c22df134
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566954"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -245,7 +246,7 @@ public static void Main(string[] args)
 
 要求服務代表您在應用程式中設定和要求的服務。 當您的物件指定相依性時，這些會由 `RequestServices` 中找到的類型來滿足，而非 `ApplicationServices`。
 
-一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 如此產生的類別將更較容易測試 (請參閱[測試與偵錯](xref:testing/index))，而且更鬆散結合。
+一般而言，您不應該直接使用這些屬性，而是最好改為透過您的類別建構函式要求需要的類別類型，並讓架構插入這些相依性。 如此產生的類別將更較容易測試 (請參閱[測試與偵錯](xref:test/index))，而且更鬆散結合。
 
 > [!NOTE]
 > 偏好要求相依性作為建構函式參數，而不要存取 `RequestServices` 集合。
@@ -361,7 +362,7 @@ public class DefaultModule : Module
 * [在控制器中插入相依性](xref:mvc/controllers/dependency-injection)
 * [要求處理常式中的相依性插入](xref:security/authorization/dependencyinjection)
 * [應用程式啟動](xref:fundamentals/startup)
-* [測試及偵錯](xref:testing/index)
+* [測試及偵錯](xref:test/index)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)
 * [在 ASP.NET Core 使用 Dependency Injection 撰寫簡潔的程式碼 (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Container-Managed Application Design, Prelude: Where does the Container Belong?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/) (容器管理的應用程式設計，序曲：容器屬於何處？)

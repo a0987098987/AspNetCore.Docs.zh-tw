@@ -3,18 +3,19 @@ title: ASP.NET Core 2.0 的新功能
 author: rick-anderson
 description: 深入了解 ASP.NET Core 2.0 的新功能。
 manager: wpickett
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: = aspnetcore-2.0
 ms.author: riande
 ms.date: 07/10/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: aspnetcore-2.0
-ms.openlocfilehash: 0382b12b03828204c4d5c48bc9ac147ee1d7c388
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 87089eda0204fab8d1de85cbe3334a6db8d9e248
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729060"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 

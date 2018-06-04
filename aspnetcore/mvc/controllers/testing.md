@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/testing
-ms.openlocfilehash: 51b7a02c697807c9e3504b70f89370126ee0e781
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: a0073e4de361c37a6854ceaf54ffd9eaea4837d4
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34567045"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>測試 ASP.NET Core 中的控制器邏輯
 
@@ -74,7 +75,7 @@ ASP.NET MVC 應用程式中的控制器應該很小，並著重於使用者介�
 
 應用程式中的另一個控制器會顯示與特定腦力激盪工作階段相關的資訊。 其中包含一些可處理無效識別碼值的邏輯：
 
-[!code-csharp[](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
 
 此控制器動作有三個待測試案例，每個 `return` 陳述式各代表一個案例：
 
@@ -100,7 +101,7 @@ ASP.NET MVC 應用程式中的控制器應該很小，並著重於使用者介�
 
 ## <a name="integration-testing"></a>整合測試
 
-[整合測試](../../testing/integration-testing.md)的目的是為了確保應用程式中的個別模組可正常搭配運作。 一般而言，您可以使用單元測試進行測試的任何情節，也可以使用整合測試進行測試，但反之則不然。 不過，整合測試通常比單元測試慢。 因此，最好使用單元測試來測試任何情節，再針對涉及多個共同作業者的情節使用整合測試。
+[整合測試](xref:test/integration-tests)的目的是為了確保應用程式中的個別模組可正常搭配運作。 一般而言，您可以使用單元測試進行測試的任何情節，也可以使用整合測試進行測試，但反之則不然。 不過，整合測試通常比單元測試慢。 因此，最好使用單元測試來測試任何情節，再針對涉及多個共同作業者的情節使用整合測試。
 
 雖然模擬物件仍然有用，但很少會用於整合測試中。 在單元測試中，模擬物件可有效地控制單元外待測試的共同作業者針對測試目的應該有的行為方式。 在整合測試中，會使用實際的共同作業者來確認整個子系統可正常搭配運作。
 

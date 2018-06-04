@@ -10,12 +10,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: e88526d997618658f58488adb37ae1e519ea3f59
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 4a60b6c9bab77e8095cb9f19e615219817702b32
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483428"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566642"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -27,7 +27,7 @@ ASP.NET Core 應用程式在反向 Proxy 設定中會由 IIS 裝載。 您無法
 
 下表指出對於向 ASP.NET Core 應用程式發出的反向 Proxy 要求有作用的原生 IIS 模組。
 
-| 模組 | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
+| Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | ------ | :-------------------------------: | ------------------- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule` | [是] | |
 | **基本驗證**<br>`BasicAuthenticationModule` | [是] | |
@@ -40,7 +40,7 @@ ASP.NET Core 應用程式在反向 Proxy 設定中會由 IIS 裝載。 您無法
 | **摘要式驗證**<br>`DigestAuthenticationModule` | [是] | |
 | **目錄瀏覽**<br>`DirectoryListingModule` | 否 | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
 | **動態壓縮**<br>`DynamicCompressionModule` | [是] | [回應壓縮中介軟體](xref:performance/response-compression) |
-| **追蹤**<br>`FailedRequestsTracingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index#the-tracesource-provider) |
+| **追蹤**<br>`FailedRequestsTracingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 快取**<br>`HttpCacheModule` | 否 | [回應快取中介軟體](xref:performance/caching/middleware) |
 | **HTTP 記錄**<br>`HttpLoggingModule` | [是] | [ASP.NET Core 記錄](xref:fundamentals/logging/index)<br>實作：[elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)、[NLog](https://github.com/NLog/NLog.Extensions.Logging)、[Serilog](https://github.com/serilog/serilog-extensions-logging)
@@ -67,7 +67,7 @@ ASP.NET Core 應用程式在反向 Proxy 設定中會由 IIS 裝載。 您無法
 
 當應用程式集區的 .NET CLR 版本已設定為 [沒有 Managed 程式碼] 時，受控模組對所裝載的 ASP.NET Core 應用程式「沒有」作用。 ASP.NET Core 在數種案例中都有提供中介軟體替代方案。
 
-| 模組                  | ASP.NET Core 選項 |
+| Module                  | ASP.NET Core 選項 |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530147"
 ---
 <a name="working-with-images-in-an-aspnet-web-pages-razor-site"></a>使用 ASP.NET Web Pages (Razor) 網站中的影像
 ====================
@@ -62,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 本節中的程序示範如何讓使用者指定影像的檔案名稱，從映像名稱的清單，立即顯示影像。 他們從下拉式清單中，選取影像的名稱，當它們送出此頁面，會顯示在選取的映像。
 
-![[影像]] (9-working-with-images/_static/image1.jpg "ch9images 1.jpg")
+![[影像]](9-working-with-images/_static/image1.jpg "ch9images 1.jpg")
 
 1. 在 WebMatrix 中，建立新的網站。
 2. 加入新的頁面名稱為*DynamicImage.cshtml*。
@@ -92,7 +93,7 @@ ms.lasthandoff: 11/10/2017
 
 前一個範例會示範如何以動態方式，顯示影像，但它只能使用已經在網站上的映像。 此程序示範如何讓使用者上傳映像，即會顯示在頁面上。 在 ASP.NET 中，您可以上操控映像使用即時`WebImage`helper，有方法可讓您建立、 操作及儲存映像。 `WebImage`協助程式支援所有常見 web 影像檔案類型，包括 *.jpg*， *.png*，和 *.bmp*。 在本文中，您將使用 *.jpg*映像，但是您可以使用任何影像類型。
 
-![[影像]] (9-working-with-images/_static/image2.jpg "ch9images 2.jpg")
+![[影像]](9-working-with-images/_static/image2.jpg "ch9images 2.jpg")
 
 1. 加入新的頁面並將其命名*UploadImage.cshtml*。
 2. 以下列內容取代現有的內容頁面中： 
@@ -144,7 +145,7 @@ ms.lasthandoff: 11/10/2017
 
 此程序顯示如何調整大小建立縮圖，然後將縮圖和原始的映像儲存在網站上傳映像。 您的頁面上顯示縮圖，並將使用者重新導向至全尺寸的映像使用超連結。
 
-![[影像]] (9-working-with-images/_static/image3.jpg "ch9images 3.jpg")
+![[影像]](9-working-with-images/_static/image3.jpg "ch9images 3.jpg")
 
 1. 加入新的頁面名稱為*Thumbnail.cshtml*。
 2. 在*映像*資料夾中，建立名稱為的子*使*。
@@ -165,7 +166,7 @@ ms.lasthandoff: 11/10/2017
 
 `WebImage` Helper 也可讓您翻轉和旋轉的影像。 此程序示範如何從伺服器取得映像、 翻轉影像面朝下 （垂直）、 加以儲存，並接著顯示在頁面上的 翻轉的影像。 在此範例中，您只會使用您已經在伺服器的檔案 (*Photo2.jpg*)。 在實際應用中，您可能會翻轉影像如同上述範例中，以動態方式取得其名稱。
 
-![[影像]] (9-working-with-images/_static/image4.jpg "ch9images 4.jpg")
+![[影像]](9-working-with-images/_static/image4.jpg "ch9images 4.jpg")
 
 1. 加入新的頁面名稱為*FlipImage.cshtml*。
 2. 以下列內容取代現有的內容頁面中： 
@@ -189,7 +190,7 @@ ms.lasthandoff: 11/10/2017
 
 當您將影像加入至您的網站時，您可能要先儲存它，或將它顯示在頁面上，新增浮水印影像。 若要將著作權資訊加入至映像或通告其商務名稱人們經常會使用浮水印。
 
-![[影像]] (9-working-with-images/_static/image5.jpg "ch9images 5.jpg")
+![[影像]](9-working-with-images/_static/image5.jpg "ch9images 5.jpg")
 
 1. 加入新的頁面名稱為*Watermark.cshtml*。
 2. 以下列內容取代現有的內容頁面中： 
@@ -206,7 +207,7 @@ ms.lasthandoff: 11/10/2017
 
 而不是使用浮水印文字，您可以使用另一個映像。 人員有時使用像公司標誌的影像做為浮水印，或者使用浮水印影像而不是文字的著作權資訊。
 
-![[影像]] (9-working-with-images/_static/image6.jpg "ch9images 6.jpg")
+![[影像]](9-working-with-images/_static/image6.jpg "ch9images 6.jpg")
 
 1. 加入新的頁面名稱為*ImageWatermark.cshtml*。
 2. 將映像加入*映像*資料夾，您可以做為標誌，並將影像重新命名*MyCompanyLogo.jpg*。 此映像應該是您可以清楚地查看當其設為 80 個像素寬和高 20 像素的影像。

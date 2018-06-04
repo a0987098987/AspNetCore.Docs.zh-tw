@@ -10,10 +10,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
 ms.openlocfilehash: 24ab83192ded381b46fab337a986f51fb22b2227
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34729491"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制在 ASP.NET Core HTTPS

@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-cycle/cdnjquerycycle299
 msc.type: content
 ms.openlocfilehash: 2b22ffbca92c81dd10115131006e65711c9f88bf
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34728930"
 ---
 <a name="jquery-cycle-299"></a>JQuery 循環 2.99

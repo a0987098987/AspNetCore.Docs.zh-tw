@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
 ms.openlocfilehash: 5b3b9b82fa64155c1dfd2a49649def10d7dae87e
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
-ms.translationtype: MT
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34729177"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>使用 ASP.NET MVC 4 中的非同步方法

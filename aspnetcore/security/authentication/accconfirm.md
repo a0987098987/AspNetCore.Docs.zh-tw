@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 397d8bf04abf6be811ad8c91d52565251ac61678
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.openlocfilehash: b6dbe234973431448c18d3cc82a6ac98d4f53a3b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34688966"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34730447"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
@@ -110,7 +110,7 @@ Visual studio:
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
 
-最好確認新的使用者註冊的電子郵件。 確認可協助確認它們不模擬其他人的電子郵件 （也就是它們未向其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com。 」 電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式接收垃圾電子郵件。 假設使用者不小心註冊為 「ylo@example.com"而且未注意到的"yli 」 的拼字錯誤。 它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認從 bot 提供有限的保護。 電子郵件確認不提供保護，防範惡意使用者與多個電子郵件帳戶。
+最好確認新的使用者註冊的電子郵件。 確認可協助確認它們不模擬其他人的電子郵件 （也就是它們未向其他人的電子郵件）。 假設您有討論論壇，而且您想要防止 「yli@example.com"從登錄為"nolivetto@contoso.com"。 電子郵件確認沒有 「nolivetto@contoso.com"無法從您的應用程式接收垃圾電子郵件。 假設使用者不小心註冊為 「ylo@example.com"而且未注意到的"yli 」 的拼字錯誤。 它們就無法使用密碼復原，因為應用程式沒有正確的電子郵件。 電子郵件確認從 bot 提供有限的保護。 電子郵件確認不提供保護，防範惡意使用者與多個電子郵件帳戶。
 
 您通常想要讓新的使用者張貼到您的網站的任何資料之前確認電子郵件。
 
@@ -307,7 +307,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ## <a name="enable-account-confirmation-after-a-site-has-users"></a>啟用帳戶確認之後某個網站的使用者
 
-啟用帳戶確認站台的使用者與鎖定所有現有的使用者。 現有的使用者遭到鎖定，因為未確認他們的帳戶。 若要暫時解決結束使用者鎖定，請使用下列方法之一：
+啟用帳戶確認站台的使用者與鎖定所有現有的使用者。 現有的使用者遭到鎖定，因為未確認他們的帳戶。 若要解決現有的使用者鎖定，請使用下列方法之一：
 
-* 更新將標示為正在確認的所有現有使用者資料庫
+* 若要將標示為正在確認的所有現有使用者資料庫更新。
 * 請確認現有的使用者。 例如，批次傳送電子郵件以確認連結。

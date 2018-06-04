@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-cycle/cdnjquerycycle294
 msc.type: content
 ms.openlocfilehash: 333059d026fedba97931da6d26b8db86f4c91a5b
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34728904"
 ---
 <a name="jquery-cycle-294"></a>jQuery 循環 2.94

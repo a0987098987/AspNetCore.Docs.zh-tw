@@ -12,10 +12,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
 ms.openlocfilehash: 152799500577dd09247bcee8c87cde39ca20aa79
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
-ms.translationtype: MT
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34729570"
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體

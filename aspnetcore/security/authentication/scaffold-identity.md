@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
 ms.openlocfilehash: a43b7bbaf1f90d3373b3846bc3f4f32be6b80bd4
-ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34729606"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffold ASP.NET Core 專案中的身分識別

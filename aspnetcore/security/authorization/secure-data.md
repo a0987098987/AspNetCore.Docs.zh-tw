@@ -10,10 +10,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
 ms.openlocfilehash: 36475776966cfb0cb3bb40477798f6e24df9725d
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34688448"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料

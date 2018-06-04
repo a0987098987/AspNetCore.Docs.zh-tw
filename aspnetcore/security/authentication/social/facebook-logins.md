@@ -10,10 +10,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
 ms.openlocfilehash: cabb5acc6e593c02c20b3403b39c601ce26a4d99
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34688979"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Facebook 外部登入安裝程式

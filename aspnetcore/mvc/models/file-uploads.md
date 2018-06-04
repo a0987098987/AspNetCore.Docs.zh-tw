@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740409"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>ASP.NET Core 的檔案上傳
 
@@ -157,7 +158,7 @@ public IActionResult Index()
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
-下述中的 `DisableFormValueModelBinding` 屬性是用來停用 `Upload` 動作方法的模型繫結。
+下述中的 `DisableFormValueModelBinding` 屬性是用來停用 `Upload` 動作方法的模型繫結。 
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 

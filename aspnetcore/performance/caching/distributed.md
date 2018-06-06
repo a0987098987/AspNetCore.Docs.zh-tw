@@ -4,16 +4,18 @@ author: ardalis
 description: 了解如何使用 ASP.NET Core 分散式快取以改善應用程式效能和延展性，尤其是在雲端或伺服器的伺服陣列環境。
 manager: wpickett
 ms.author: riande
+ms.custom: mvc
 ms.date: 02/14/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: c40209e3b3f2b5bf28450bb2a88cbe40e9e23230
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 6c595572641604d241c0c8f702d4f392afe34f71
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734454"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>使用分散式快取中 ASP.NET Core
 
@@ -73,13 +75,13 @@ ms.lasthandoff: 05/12/2018
 
 下列範例示範如何使用的執行個體`IDistributedCache`簡單的中介軟體元件：
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/StartTimeHeader.cs)]
 
 在上述程式碼快取的值是讀取，但永遠不會寫入。 在此範例中，當伺服器啟動，而且不會變更時，才會設定值。 在多伺服器案例中，最新的伺服器，準備開始將會覆寫任何先前由其他伺服器設定的值。 `Get`和`Set`方法使用`byte[]`型別。 因此，字串值必須轉換使用`Encoding.UTF8.GetString`(如`Get`) 和`Encoding.UTF8.GetBytes`(如`Set`)。
 
 下列程式碼會從*Startup.cs*示範所設定的值：
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet1)]
 
 > [!NOTE]
 > 因為`IDistributedCache`中設定`ConfigureServices`方法，您就能夠`Configure`做為參數的方法。 將它加入做為參數，可讓透過 DI 提供設定的執行個體。
@@ -92,7 +94,7 @@ ms.lasthandoff: 05/12/2018
 
 範例程式碼，`RedisCache`設定伺服器時，會使用實作`Staging`環境。 因此`ConfigureStagingServices`方法會設定`RedisCache`:
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet2)]
 
 > [!NOTE]
 > 若要安裝 Redis 在本機電腦上，安裝 chocolatey 封裝[ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
@@ -101,31 +103,42 @@ ms.lasthandoff: 05/12/2018
 
 SqlServerCache 實作可讓分散式快取，以使用 SQL Server 資料庫做為其備份存放區。 若要建立 SQL Server 資料表，您可以使用 sql 快取工具，此工具會建立資料表，與您指定的名稱和結構描述。
 
-若要使用 sql 快取工具，加入`SqlConfig.Tools`至`<ItemGroup>`元素 *.csproj*檔，然後執行 dotnet 還原。
+::: moniker range="< aspnetcore-2.1"
 
-[!code-xml[](./distributed/sample/src/DistCacheSample/DistCacheSample.csproj?range=23-25)]
+新增`SqlConfig.Tools`至`<ItemGroup>`專案檔和執行的項目`dotnet restore`。
 
-執行下列命令來測試 SqlConfig.Tools
+```xml
+<ItemGroup>
+  <DotNetCliToolReference Include="Microsoft.Extensions.Caching.SqlConfig.Tools" 
+                          Version="2.0.2" />
+</ItemGroup>
+```
 
-```none
-C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
-   ```
+::: moniker-end
 
-sql 快取工具會顯示使用量、 選項和命令的說明，現在您可以建立資料表至 sql server，執行 「 建立 sql 快取 」 的命令：
+測試 SqlConfig.Tools 藉由執行下列命令：
 
-```none
-C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
-   info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
-       Table and index were created successfully.
-   ```
+```console
+dotnet sql-cache create --help
+```
+
+SqlConfig.Tools 顯示使用方式、 選項和命令的說明。
+
+執行 SQL Server 中建立資料表`sql-cache create`命令：
+
+```console
+dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
+info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
+Table and index were created successfully.
+```
 
 建立的資料表具有下列結構描述：
 
 ![SqlServer 快取表格](distributed/_static/SqlServerCacheTable.png)
 
-所有快取實作，例如您的應用程式應該取得並設定使用的執行個體的快取值`IDistributedCache`，而非`SqlServerCache`。 此範例會實作`SqlServerCache`中`Production`環境 (因此中設定它`ConfigureProductionServices`)。
+所有快取實作，例如您的應用程式應該取得並設定使用的執行個體的快取值`IDistributedCache`，而非`SqlServerCache`。 此範例會實作`SqlServerCache`實際執行環境中 (因此中設定它`ConfigureProductionServices`)。
 
-[!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
+[!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet3)]
 
 > [!NOTE]
 > `ConnectionString` (並選擇性地`SchemaName`和`TableName`) 應該通常會儲存在外部原始檔控制 （例如 UserSecrets)，因為它們可能包含認證。

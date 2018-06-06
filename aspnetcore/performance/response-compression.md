@@ -11,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: 152799500577dd09247bcee8c87cde39ca20aa79
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
-ms.translationtype: HT
+ms.openlocfilehash: e970e74547f1f3efaf719c1f9e26918f34788005
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729570"
+ms.locfileid: "34734623"
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>ASP.NET Core 壓縮回應中介軟體
 
@@ -83,21 +83,15 @@ ms.locfileid: "34729570"
 
 ## <a name="package"></a>Package
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.1"
 
 若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝。 此功能適用於以 ASP.NET Core 1.1 或更新版本為目標的應用程式。
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
 
-若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage)。
-
-::: moniker-end
-
-::: moniker range="> aspnetcore-2.0"
-
-若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)。
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本)。
 
 ::: moniker-end
 

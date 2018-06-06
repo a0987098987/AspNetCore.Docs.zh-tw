@@ -8,20 +8,21 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: cc1ec50155398ba4143a2bf697ca26435c228c49
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: e5a3877c68f8475e7dd49d44f4a92cf7b09ac7f5
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734506"
 ---
 # <a name="response-caching-in-aspnet-core"></a>回應快取中 ASP.NET Core
 
 由[John Luo](https://github.com/JunTaoLuo)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Steve Smith](https://ardalis.com/)，和[Luke Latham](https://github.com/guardrex)
 
 > [!NOTE]
-> 快取回應[ASP.NET Core 2.0 Razor 頁面中，不支援](https://github.com/aspnet/Mvc/issues/6437)。 這項功能支援[ASP.NET Core 2.1 版本](https://github.com/aspnet/Home/wiki/Roadmap)。
-  
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+> 回應快取中 Razor 頁面是使用 ASP.NET Core 2.1 或更新版本。
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 回應快取可減少用戶端或 proxy 可讓 web 伺服器的要求數目。 回應快取也可以減少網頁伺服器執行產生回應的工作。 指定您要用戶端、 proxy、 和中的介軟體來快取回應的標頭會控制快取回應。
 
@@ -46,7 +47,7 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 | 頁首                                                     | 功能 |
 | ---------------------------------------------------------- | -------- |
 | [存留期](https://tools.ietf.org/html/rfc7234#section-5.1)     | 估計的時間，以秒為單位，因為產生的回應，或是在原始伺服器成功驗證。 |
-| [Expires](https://tools.ietf.org/html/rfc7234#section-5.3) | 日期/時間之後的回應會被視為過時了。 |
+| [到期](https://tools.ietf.org/html/rfc7234#section-5.3) | 日期/時間之後的回應會被視為過時了。 |
 | [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | 回溯相容性 HTTP/1.0 會在快取設定存在`no-cache`行為。 如果`Cache-Control`標頭已存在，`Pragma`標頭會被忽略。 |
 | [而有所不同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定快取的回應必須不傳送除非所有的`Vary`標頭欄位相符的原始要求的快取的回應和新的要求。 |
 
@@ -113,7 +114,17 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 此標頭僅寫入時`VaryByHeader`屬性設定。 設定為`Vary`屬性的值。 下列範例會使用`VaryByHeader`屬性：
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+
+::: moniker-end
 
 您可以檢視您的瀏覽器網路工具的回應標頭。 下圖顯示輸出的邊緣 F12**網路**索引標籤時`About2`動作方法會重新整理：
 
@@ -130,7 +141,17 @@ Web 伺服器可以快取的回應，當您將加入[回應快取中介軟體](x
 
 您通常將`NoStore`至`true`錯誤頁面上。 例如: 
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+
+::: moniker-end
 
 這會導致下列標頭：
 
@@ -148,7 +169,17 @@ Pragma: no-cache
 
 以下範例，示範標頭所產生的設定`Duration`並讓預設`Location`值：
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+
+::: moniker-end
 
 這會產生下列標頭：
 
@@ -162,11 +193,31 @@ Cache-Control: public,max-age=60
 
 設定快取設定檔：
 
-[!code-csharp[](response/sample/Startup.cs?name=snippet1)] 
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 參考快取設定檔：
 
-[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](response/samples/2.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](response/samples/1.x/ResponseCacheSample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+
+::: moniker-end
 
 `ResponseCache`屬性可以套用到動作 （方法） 和控制站 （類別）。 方法層級屬性會覆寫類別層級屬性中指定的設定。
 
@@ -182,7 +233,7 @@ Cache-Control: public,max-age=60
 
 * [將回應儲存在快取](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [快取記憶體中](xref:performance/caching/memory)
+* [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)
 * [使用變更權杖來偵測變更](xref:fundamentals/primitives/change-tokens)
 * [回應快取中介軟體](xref:performance/caching/middleware)

@@ -4,17 +4,18 @@ author: rick-anderson
 description: 了解如何快取在記憶體中 ASP.NET Core 的資料。
 manager: wpickett
 ms.author: riande
-ms.custom: H1Hack27Feb2017
+ms.custom: mvc
 ms.date: 12/14/2016
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: 4835e2331afca7a648abac6bc35d255ec6356067
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: eca6610caf4e0a654c9a31f89a42e2ac82e94d23
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734480"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>快取在記憶體中的 ASP.NET Core
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/24/2018
 
 ASP.NET Core 支援數個不同的快取。 最簡單的快取根據[IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)，代表儲存在 web 伺服器的記憶體中快取。 在多部伺服器的伺服器陣列執行的應用程式應該確保使用記憶體中快取時，會自黏工作階段。 自黏工作階段會確保後續所有用戶端的要求移到相同的伺服器。 例如，Azure Web 應用程式使用[應用程式要求路由](https://www.iis.net/learn/extensions/planning-for-arr)(ARR) 會將所有的後續要求路由至相同的伺服器。
 
-Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.md)以避免快取一致性問題。 對於某些應用程式中，分散式快取可以支援更高範圍外比記憶體中快取。 使用分散式快取卸載到外部處理序的快取記憶體。 
+Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.md)以避免快取一致性問題。 對於某些應用程式中，分散式快取可以支援更高範圍外比記憶體中快取。 使用分散式快取卸載到外部處理序的快取記憶體。
 
 `IMemoryCache`快取將會收回快取記憶體不足壓力下的項目，除非[快取優先順序](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority)設`CacheItemPriority.NeverRemove`。 您可以設定`CacheItemPriority`調整與快取收回項目記憶體不足壓力下的優先順序。
 
@@ -38,13 +39,29 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 記憶體中快取是*服務*參考從您的應用程式使用[相依性插入](../../fundamentals/dependency-injection.md)。 呼叫`AddMemoryCache`中`ConfigureServices`:
 
-[!code-csharp[](memory/sample/WebCache/Startup.cs?highlight=8)] 
+[!code-csharp[](memory/sample/WebCache/Startup.cs?highlight=9)]
 
 要求`IMemoryCache`建構函式中的執行個體：
 
-[!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ctor&highlight=3,5-999)] 
+[!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ctor)]
 
-`IMemoryCache` 需要 NuGet 套件 」 Microsoft.Extensions.Caching.Memory"。
+::: moniker range="< aspnetcore-2.0"
+
+`IMemoryCache` 需要 NuGet 封裝[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+`IMemoryCache` 需要 NuGet 封裝[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)，也就是在可用[Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage)。
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.0"
+
+`IMemoryCache` 需要 NuGet 封裝[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)，也就是在可用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)。
+
+::: moniker-end
 
 下列程式碼會使用[TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__)檢查一次是否快取中。 如果不快取的時間，建立並與快取中加入新項目[設定](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_)。
 
@@ -74,14 +91,14 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 - 設定絕對到期時間。 這是可以快取之項目的時間上限，並防止持續更新變動到期後變成過時的項目。
 - 設定滑動期限。 要求存取此快取的項目會重設滑動到期時鐘。
-- 若要設定快取優先權`CacheItemPriority.NeverRemove`。 
+- 若要設定快取優先權`CacheItemPriority.NeverRemove`。
 - 設定[PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) ，將會在從快取收回項目之後呼叫。 回呼的程式碼快取中移除的項目與另一個執行緒上執行。
 
-[!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-20)]
+[!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-21)]
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例會示範如何過期的快取項目，如果相依項目到期為止。 A`CancellationChangeToken`新增至快取的項目。 當`Cancel`上呼叫`CancellationTokenSource`，收回兩個快取項目。 
+下列範例會示範如何過期的快取項目，如果相依項目到期為止。 A`CancellationChangeToken`新增至快取的項目。 當`Cancel`上呼叫`CancellationTokenSource`，收回兩個快取項目。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 
@@ -91,7 +108,7 @@ Web 伺服陣列中的非黏性工作階段需要[分散式快取](distributed.m
 
 - 使用時回呼重新擴展快取項目：
 
-  - 多個要求可以找到的快取索引鍵值空因為尚未完成的回呼。 
+  - 多個要求可以找到的快取索引鍵值空因為尚未完成的回呼。
   - 這會導致多個執行緒重新填入快取的項目。
 
 - 若要建立另一個使用一個快取項目時，子將複製的父項目到期語彙基元和以時間為基礎的到期日設定。 子系不過期手動移除或更新的父項目。

@@ -12,12 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 5b3b9b82fa64155c1dfd2a49649def10d7dae87e
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
-ms.translationtype: HT
+ms.openlocfilehash: 65ba01dd1b0ed5a43ca5c868608f2858f86b4b59
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729177"
+ms.locfileid: "34734532"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>使用 ASP.NET MVC 4 中的非同步方法
 ====================
@@ -44,7 +44,7 @@ ASP.NET MVC 4[控制器](https://msdn.microsoft.com/library/system.web.mvc.contr
 
 ## <a name="processing-asynchronous-requests"></a>處理非同步要求
 
-請參閱大量的並行要求，在啟動時，或具有暴增負載 （其中增加並行突然） 的 web 應用程式，讓這些 web 服務呼叫的非同步會增加應用程式回應。 非同步要求所需的時間來處理與同步要求相同的數量。 比方說，如果要求會提出 web 服務呼叫，要求兩秒來完成，要求會採用兩秒是否以同步還是非同步方式執行。 不過，在非同步呼叫，執行緒不會封鎖回應其他要求，同時等候完成的第一個要求。 因此，非同步要求可以避免要求佇列和執行緒集區成長時叫用長時間執行作業的許多並行要求。
+Web 應用程式中看見大量的並行要求，在啟動時，或具有暴增負載 （其中增加並行突然），讓 web 服務呼叫非同步會增加應用程式的回應能力。 非同步要求所需的時間來處理與同步要求相同的數量。 如果要求會提出 web 服務呼叫，需要兩秒來完成，要求會採用兩秒是否以同步還是非同步方式執行。 不過在非同步呼叫，執行緒不是遭到封鎖回應其他要求，同時等候完成的第一個要求。 因此，非同步要求可以避免要求佇列和執行緒集區成長時叫用長時間執行作業的許多並行要求。
 
 ## <a id="ChoosingSyncVasync"></a>  選擇同步或非同步動作方法
 

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/cookie
-ms.openlocfilehash: bdaa0e3a5ce54d3822615ac57e22f4fd6beacdcb
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: f84d69f84cb0b80418bbb6de6bfcd7e2172f65ef
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734610"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>使用沒有 ASP.NET Core 身分識別的 cookie 驗證
 
@@ -23,23 +24,27 @@ ms.lasthandoff: 05/12/2018
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
+為了示範之用的範例應用程式中，假設使用者 Maria Rodriguez 的使用者帳戶是在應用程式的硬式編碼。 使用電子郵件使用者名稱 」maria.rodriguez@contoso.com"和任何登入使用者的密碼。 使用者通過驗證`AuthenticateUser`方法中的*Pages/Account/Login.cshtml.cs*檔案。 在真實世界範例中，您會驗證使用者，對資料庫。
+
 如需有關移轉 cookie 為基礎的驗證，從 ASP.NET Core 詳細 1.x 為 2.0，請參閱[移轉的驗證和 ASP.NET Core 2.0 主題 （Cookie 架構驗證） 的身分識別](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication)。
+
+若要使用 ASP.NET Core 身分識別，請參閱[識別簡介](xref:security/authentication/identity)主題。
 
 ## <a name="configuration"></a>組態
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-如果您不使用[Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage)，安裝新版 2.0 + [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) NuGet 封裝。
+如果應用程式不會使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，在專案檔中建立封裝參考[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)封裝 (版本 2.1.0 或更新版本）。
 
 在`ConfigureServices`方法，建立驗證中介軟體服務與`AddAuthentication`和`AddCookie`方法：
 
-[!code-csharp[](cookie/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
 `AuthenticationScheme` 傳遞至`AddAuthentication`設定應用程式的預設驗證配置。 `AuthenticationScheme` 有多個執行個體的驗證 cookie，而且您想要時相當實用[授權特定的結構描述與](xref:security/authorization/limitingidentitybyscheme)。 設定`AuthenticationScheme`至`CookieAuthenticationDefaults.AuthenticationScheme`配置會提供 [Cookie] 的值。 您可以提供區別配置任何字串值。
 
 在`Configure`方法，請使用`UseAuthentication`方法來叫用設定驗證中介軟體`HttpContext.User`屬性。 呼叫`UseAuthentication`方法之前先呼叫`UseMvcWithDefaultRoute`或`UseMvc`:
 
-[!code-csharp[](cookie/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
 
 **AddCookie 選項**
 
@@ -163,7 +168,7 @@ Cookie 的原則中介軟體設定`MinimumSameSitePolicy`可能會影響您設�
 | SameSiteMode.Lax      | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Lax<br>SameSiteMode.Lax<br>SameSiteMode.Strict |
 | SameSiteMode.Strict   | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Strict<br>SameSiteMode.Strict<br>SameSiteMode.Strict |
 
-## <a name="creating-an-authentication-cookie"></a>建立驗證 cookie
+## <a name="create-an-authentication-cookie"></a>建立驗證 cookie
 
 若要建立的保留使用者資訊的 cookie，您必須建構[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal)。 使用者資訊會序列化並儲存在 cookie 中。 
 
@@ -171,7 +176,7 @@ Cookie 的原則中介軟體設定`MinimumSameSitePolicy`可能會影響您設�
 
 建立[ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity)與任何所需[宣告](/dotnet/api/system.security.claims.claim)s 和呼叫[SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0)登入使用者：
 
-[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet1)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -189,13 +194,13 @@ await HttpContext.Authentication.SignInAsync(
 
 實際上，使用的加密是 ASP.NET Core[資料保護](xref:security/data-protection/using-data-protection#security-data-protection-getting-started)系統。 如果您裝載的多部電腦、 負載平衡的應用程式，或使用 web 伺服陣列上的應用程式，則您必須[設定資料保護](xref:security/data-protection/configuration/overview)使用相同的索引鍵環形和應用程式識別碼。
 
-## <a name="signing-out"></a>登出
+## <a name="sign-out"></a>登出
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 若要登出目前的使用者，並刪除其 cookie，請呼叫[SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
 
-[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet2)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet2)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -210,7 +215,7 @@ await HttpContext.Authentication.SignOutAsync(
 
 如果您不使用`CookieAuthenticationDefaults.AuthenticationScheme`（也"稱為 Cookie"） 做為配置 (例如，"ContosoCookie")，提供設定的驗證提供者時所使用的配置。 否則，會使用預設配置。
 
-## <a name="reacting-to-back-end-changes"></a>對回應後端的變更
+## <a name="react-to-back-end-changes"></a>回應端的變更
 
 一旦建立 cookie 時，它會變成身分識別的單一來源。 即使您停用後端系統中的使用者，cookie 驗證系統並不了解，以及使用者保持登入，只要其 cookie 為有效。
 
@@ -422,7 +427,7 @@ await HttpContext.Authentication.SignInAsync(
 
 ---
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 * [Auth 2.0 變更 / 移轉公告](https://github.com/aspnet/Announcements/issues/262)
 * [以配置限制身分識別](xref:security/authorization/limitingidentitybyscheme)

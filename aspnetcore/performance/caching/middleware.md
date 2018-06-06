@@ -3,39 +3,41 @@ title: 快取中 ASP.NET Core 中的介軟體的回應
 author: guardrex
 description: 了解如何設定和使用 ASP.NET Core 在回應快取中介軟體。
 manager: wpickett
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 7ceccffa39baf5f13d63c26e78c64a595bb42f60
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734493"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
 由[Luke Latham](https://github.com/guardrex)和[John Luo](https://github.com/JunTaoLuo)
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載 ASP.NET Core 2.1 的範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples)([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 本文說明如何設定 ASP.NET Core 應用程式中的回應快取中介軟體。 中介軟體會決定當回應的快取、 儲存區回應，以及做回應從快取。 如需簡介 HTTP 快取和`ResponseCache`屬性，請參閱[快取回應](xref:performance/caching/response)。
 
 ## <a name="package"></a>Package
 
-若要在專案中包含中介軟體，將參考加入[ `Microsoft.AspNetCore.ResponseCaching` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)封裝，或使用[ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)封裝 (ASP.NET Core 2.0 或更新版本為目標的.NET Core 時)。
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，這是可用於2.1 或更新版本的 ASP.NET Core。
 
 ## <a name="configuration"></a>組態
 
 在`ConfigureServices`，將中介軟體新增至服務集合。
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=9)]
 
 設定應用程式使用中的介軟體`UseResponseCaching`擴充方法，將中介軟體新增至處理管線的要求。 範例應用程式將[ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2)標頭至回應的快取的回應會快取多達 10 秒。 此範例傳送[ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4)標頭設定的中介軟體提供快取回的應才[ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4)後續要求的標頭與相符的原始要求。 在程式碼範例中，如下所示[CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue)和[HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames)需要`using`陳述式[Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers)命名空間。
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17,21-28)]
 
 回應快取中介軟體只會快取伺服器的回應，導致 200 （確定） 」 狀態碼。 任何其他回應，包括[錯誤網頁](xref:fundamentals/error-handling)中, 介軟體會被忽略。
 
@@ -46,10 +48,10 @@ ms.lasthandoff: 05/03/2018
 
 中介軟體提供三個選項來控制回應快取。
 
-| 選項                | 預設值 |
-| --------------------- | ------------- |
-| UseCaseSensitivePaths | 決定是否區分大小寫的路徑上快取的回應。</p><p>預設值是 `false`。 |
-| MaximumBodySize       | 回應主體，以位元組為單位的最大的可快取大小。</p>預設值是`64 * 1024 * 1024`(64 MB)。 |
+| 選項                | 描述 |
+| --------------------- | ----------- |
+| UseCaseSensitivePaths | 決定是否區分大小寫的路徑上快取的回應。 預設值是 `false`。 |
+| MaximumBodySize       | 回應主體，以位元組為單位的最大的可快取大小。 預設值是`64 * 1024 * 1024`(64 MB)。 |
 | SizeLimit             | 回應快取中介軟體，以位元組為單位的大小限制。 預設值是`100 * 1024 * 1024`(100 MB)。 |
 
 下列範例會設定中的介軟體：

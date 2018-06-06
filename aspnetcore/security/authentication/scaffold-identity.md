@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: a43b7bbaf1f90d3373b3846bc3f4f32be6b80bd4
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 8933cf9c4063bd94f7f3a9ba53b5372b443eb7c8
+ms.sourcegitcommit: d4cefc0c63550c64a8040b11867cc05efcfb7e86
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729606"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34758748"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffold ASP.NET Core 專案中的身分識別
 
@@ -63,6 +63,10 @@ dotnet ef database update
 
 在設定的識別*Areas/Identity/IdentityHostingStartup.cs*。 如需詳細資訊，請參閱[IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。
 
+<a name="efm"></a>
+
+### <a name="migrations-useauthentication-and-layout"></a>移轉、 UseAuthentication 和版面配置
+
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
 在`Configure`方法`Startup`類別，請呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
@@ -83,7 +87,7 @@ dotnet ef database update
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
 Use = 2.0: dotnet new razor -au Individual -o RPauth
 cd RPauth
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files Account.Register
 -->
@@ -130,7 +134,7 @@ dotnet ef database update
 <!--
 dotnet new mvc -au Individual -o MvcAuth
 cd MvcAuth
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --files Account.Register
 -->

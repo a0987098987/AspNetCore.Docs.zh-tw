@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 8933cf9c4063bd94f7f3a9ba53b5372b443eb7c8
-ms.sourcegitcommit: d4cefc0c63550c64a8040b11867cc05efcfb7e86
+ms.openlocfilehash: 6202cb4d28cc8d77c1f83c8cee8c90892deef26e
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34758748"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818973"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffold ASP.NET Core 專案中的身分識別
 
@@ -27,7 +27,7 @@ ms.locfileid: "34758748"
 
 雖然 scaffolder 會產生大部分的所需的程式碼，您必須更新專案，以完成程序。 本文件說明完成識別 scaffolding 更新所需的步驟。
 
-識別 scaffolder 執行時， *ScaffoldingReadme.txt*專案目錄中建立檔案。 *ScaffoldingReadme.txt*檔案包含需要什麼才能完成識別 scaffolding 更新的一般指示。 本文件包含更詳細的說明，比讀取*ScaffoldingReadme.txt*檔案。
+識別 scaffolder 執行時， *ScaffoldingReadme.txt*專案目錄中建立檔案。 *ScaffoldingReadme.txt*檔案包含需要什麼才能完成識別 scaffolding 更新的一般指示。 本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。
 
 我們建議使用原始檔控制系統，顯示檔案的差異，並可讓您將頻外變更。 檢查執行身分識別 scaffolder 之後的變更。
 

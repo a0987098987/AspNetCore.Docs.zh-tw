@@ -5,16 +5,17 @@ description: 了解如何儲存和擷取應用程式密碼為 ASP.NET Core 應�
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/16/2018
+ms.date: 05/23/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 9e9b548e5572da2c347bc874c473a02d8691e738
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
-ms.translationtype: HT
+ms.openlocfilehash: fd5cf5cdffd7281d7f4e0d96e8230b60be64a7c3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819132"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 05/23/2018
 
 ## <a name="how-the-secret-manager-tool-works"></a>密碼管理員工具的運作方式
 
-密碼管理員工具會將實作的詳細資料加以抽象，包括各值儲存的位置和方式。 不需要知道這些實作細節也可以使用此工具。 值會儲存在[JSON](https://json.org/)系統保護的使用者設定檔資料夾中的組態檔，在本機電腦上：
+密碼管理員工具會將實作的詳細資料加以抽象，包括各值儲存的位置和方式。 不需要知道這些實作細節也可以使用此工具。 值會儲存在本機電腦上系統保護的使用者設定檔資料夾的 JSON 組態檔：
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -77,9 +78,18 @@ ms.lasthandoff: 05/23/2018
 ::: moniker range="<= aspnetcore-2.0"
 ## <a name="install-the-secret-manager-tool"></a>安裝密碼管理員工具
 
-密碼管理員工具隨附於.NET Core CLI.NET Core SDK 2.1。 .NET Core SDK 2.0 和舊版中，工具的安裝是必要的。
+密碼管理員工具是.NET Core CLI 為準，.NET Core SDK 2.1.300 套件組合。 2.1.300 以前的.NET Core SDK 版本，工具的安裝是必要的。
 
-安裝[Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) ASP.NET Core 專案中的 NuGet 封裝：
+> [!TIP]
+> 執行`dotnet --version`從命令殼層，若要查看已安裝的.NET Core SDK 版本號碼。
+
+如果正在使用的.NET Core SDK 包含工具，會顯示警告：
+
+```console
+The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET Core SDK. Information on resolving this warning is available at (https://aka.ms/dotnetclitools-in-box).
+```
+
+安裝[Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) ASP.NET Core 專案中的 NuGet 封裝。 例如: 
 
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
 
@@ -205,7 +215,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="string-replacement-with-secrets"></a>含有機密資料的字串取代
 
-以純文字儲存密碼很危險。 例如，資料庫連接字串儲存在*appsettings.json*可能包含指定之使用者的密碼：
+以純文字儲存密碼並不安全。 例如，資料庫連接字串儲存在*appsettings.json*可能包含指定之使用者的密碼：
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -215,17 +225,17 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-在 密碼取代*appsettings.json*以預留位置。 在下列範例中，`{0}`用做為表單預留位置[複合格式字串](/dotnet/standard/base-types/composite-formatting#composite-format-string)。
+移除`Password`從連接字串中的索引鍵-值組*appsettings.json*。 例如: 
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-密碼的值可以插入到完成連接字串的預留位置：
+密碼的值可以設定上[SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)物件的[密碼](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password)完成連接字串屬性：
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=23-25)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-16)]
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 ::: moniker-end
 
 ## <a name="list-the-secrets"></a>列出密碼

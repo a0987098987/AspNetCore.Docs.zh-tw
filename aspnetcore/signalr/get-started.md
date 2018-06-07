@@ -11,12 +11,12 @@ ms.prod: aspnet-core
 ms.topic: tutorial
 ms.technology: aspnet
 uid: signalr/get-started
-ms.openlocfilehash: 880abd87805990baf8dd977c340a60582e54d2df
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: ba1db640e5608fd9f5e7fa024283a651bf7772c2
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729492"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819054"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>開始使用 ASP.NET Core 的 SignalR
 
@@ -75,7 +75,7 @@ Visual Studio 包含`Microsoft.AspNetCore.SignalR`封裝包含其伺服器程式
     npm install @aspnet/signalr
     ```     
 
-4. 在建立新的資料夾，名為"signalr" *lib*專案資料夾中的。 然後將複製*signalr.js*檔案從*node_modules\\ @aspnet\signalr\dist\browser* 到這個資料夾。
+4. 在建立新的資料夾，名為"signalr" *lib*專案資料夾中的。 複製*signalr.js*檔案從*node_modules\\ @aspnet\signalr\dist\browser* 到這個資料夾。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
@@ -92,7 +92,7 @@ Visual Studio 包含`Microsoft.AspNetCore.SignalR`封裝包含其伺服器程式
     npm install @aspnet/signalr
     ```
 
-3. 複製*signalr.js*檔案從*node_modules\\ @aspnet\signalr\dist\browser* 至*lib*專案資料夾中的。
+3. 在建立新的資料夾，名為"signalr" *lib*專案資料夾中的。 複製*signalr.js*檔案從*node_modules\\ @aspnet\signalr\dist\browser* 到這個資料夾。
 
 -----
 
@@ -140,15 +140,16 @@ SignalR 伺服器必須設定，讓它知道要傳遞到 SignalR 要求。
 
 ## <a name="create-the-signalr-client-code"></a>建立 SignalR 用戶端程式碼
 
-1. 取代中的內容*Pages\Index.cshtml*為下列程式碼：
+1. 加入名為的 JavaScript 檔案*chat.js*至*wwwroot\js*資料夾。 將下列程式碼加入該檔案：
+
+   [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
+
+2. 取代中的內容*Pages\Index.cshtml*為下列程式碼：
 
    [!code-cshtml[Index](get-started/sample/Pages/Index.cshtml)]
 
    前面的 HTML 顯示名稱和訊息欄位及提交按鈕。 請注意底部的指令碼參考： SignalR 的參考和*chat.js*。
 
-2. 加入名為的 JavaScript 檔案*chat.js*至*wwwroot\js*資料夾。 將下列程式碼加入該檔案：
-
-   [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
 
 ## <a name="run-the-app"></a>執行應用程式
 

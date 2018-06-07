@@ -12,12 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: aa4c91865f7b720846a5e8deb4281c3ca6933c8e
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "30875743"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819093"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>建立 ASP.NET MVC 5 應用程式使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入 (C#)
 ====================
@@ -74,7 +74,7 @@ ms.locfileid: "30875743"
 
 從封裝管理員主控台 (PMC)，您可以輸入`Update-Package`命令，將會更新所有封裝。
 
-按**F5**或**Ctrl + F5**執行應用程式。 在下面的影像中的連接埠號碼是 1234年。 當您執行應用程式時，您會看到不同的通訊埠編號。
+按**F5**或**Ctrl + F5**執行應用程式。 在下面的影像中的連接埠號碼是 1234。 當您執行應用程式時，您會看到不同的通訊埠編號。
 
 根據您的瀏覽器視窗的大小，您可能需要按一下 瀏覽圖示以查看**首頁**，**有關**，**連絡人**，**註冊**和**登入**連結。
 
@@ -175,7 +175,7 @@ Facebook OAuth2 驗證，您要複製到專案的某些設定從您在 Facebook 
     ![建立新的應用程式](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. 輸入**應用程式名稱**和**類別**，然後按一下 **建立應用程式**。
 
-    這必須是唯一的 Facebook。 <strong>應用程式命名空間</strong>屬於您的應用程式用來存取驗證的 Facebook 應用程式的 URL (例如，https://apps.facebook.com/{App命名空間}) 。 如果您未指定<strong>應用程式命名空間</strong>、<strong>應用程式識別碼</strong>將使用的 URL。 <strong>應用程式識別碼</strong>是下一個步驟中，您會看到一個長時間的系統產生數字。
+    <strong>應用程式命名空間</strong>屬於您的應用程式用來存取驗證的 Facebook 應用程式的 URL (例如，https\://apps.facebook.com/{App 命名空間})。 如果您未指定<strong>應用程式命名空間</strong>、<strong>應用程式識別碼</strong>將使用的 URL。 <strong>應用程式識別碼</strong>是下一個步驟中，您會看到一個長時間的系統產生數字。
 
     ![建立新的應用程式 對話方塊](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. 提交的一般安全性檢查。

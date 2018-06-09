@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
 ms.openlocfilehash: 7d0486b4cab85ffe77fda87d4b34dd3ec0a9e8fe
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874222"
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>從 Windows Phone 8 應用程式 (C#) 呼叫 Web API
 ====================
@@ -40,7 +41,7 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
 - 如需其他需求，請參閱*系統需求*區段[Windows Phone SDK 8.0](https://www.microsoft.com/download/details.aspx?id=35471)下載頁面。
 
 > [!NOTE]
-> 如果您要測試 Web 應用程式開發介面和您的本機系統上的 Windows Phone 8 專案之間的連線，您必須依照*[連接到 Web API 的應用程式在本機上的 Windows Phone 8 模擬器電腦](https://go.microsoft.com/fwlink/?LinkId=324014)*文件，以設定測試環境。
+> 如果您要測試 Web 應用程式開發介面和您的本機系統上的 Windows Phone 8 專案之間的連線，您必須依照*[連接到 Web API 的應用程式在本機上的 Windows Phone 8 模擬器電腦](https://go.microsoft.com/fwlink/?LinkId=324014)* 文件，以設定測試環境。
 
 
 <a id="STEP1"></a>
@@ -163,7 +164,7 @@ Rest 式服務，例如 ASP.NET Web API 伺服器端和用戶端應用程式的�
 
 ### <a name="step-3-testing-the-end-to-end-solution"></a>步驟 3： 測試端對端解決方案
 
-中所述*必要條件*> 一節，本教學課程，您會測試 Web 應用程式開發介面和 Windows Phone 8 之間的連線時的專案在本機系統上，您就必須依照中的指示 *[連接到本機電腦上的 Web API 應用程式的 Windows Phone 8 模擬器](https://go.microsoft.com/fwlink/?LinkId=324014)*文件，以設定測試環境。
+中所述*必要條件*> 一節，本教學課程，您會測試 Web 應用程式開發介面和 Windows Phone 8 之間的連線時的專案在本機系統上，您就必須依照中的指示 *[連接到本機電腦上的 Web API 應用程式的 Windows Phone 8 模擬器](https://go.microsoft.com/fwlink/?LinkId=324014)* 文件，以設定測試環境。
 
 設定測試環境之後，您必須將 Windows Phone 應用程式設定為啟始專案。 若要這樣做，請反白顯示**BookCatalog**應用程式在方案總管 中，然後按一下**設定為啟始專案**:
 

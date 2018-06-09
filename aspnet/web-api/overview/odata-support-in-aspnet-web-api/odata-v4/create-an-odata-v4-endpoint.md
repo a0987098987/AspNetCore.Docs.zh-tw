@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
-title: "建立 ASP.NET Web API 2.2 使用 OData v4 端點 |Microsoft 文件"
+title: 建立 ASP.NET Web API 2.2 使用 OData v4 端點 |Microsoft 文件
 author: MikeWasson
-description: "開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及管理透過 CRUD 作業的資料集..."
+description: 開放式資料通訊協定 (OData) 是網站的資料存取通訊協定。 OData 提供統一的方式來查詢及管理透過 CRUD 作業的資料集...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/24/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
 ms.openlocfilehash: a3f94818f9674b0e1e9a45b2a6cc9455edc79726
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26508047"
 ---
 <a name="create-an-odata-v4-endpoint-using-aspnet-web-api-22"></a>建立 ASP.NET Web API 2.2 使用 OData v4 端點
 ====================
@@ -51,7 +52,7 @@ ms.lasthandoff: 11/10/2017
 
 [![](create-an-odata-v4-endpoint/_static/image2.png)](create-an-odata-v4-endpoint/_static/image1.png)
 
-在**新專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考...&quot;，按一下  **Web API**。 按一下 [確定]。
+在**新專案**對話方塊中，選取**空**範本。 在下&quot;加入資料夾和核心參考...&quot;，按一下  **Web API**。 按一下 [確定 **Deploying Office Solutions**]。
 
 [![](create-an-odata-v4-endpoint/_static/image4.png)](create-an-odata-v4-endpoint/_static/image3.png)
 
@@ -152,7 +153,7 @@ A*控制器*是用來處理 HTTP 要求的類別。 您建立個別的控制站�
 
 無參數的版本`Get`方法會傳回整個產品集合。 `Get`方法*金鑰*參數由其索引鍵查閱產品 (在此情況下，`Id`屬性)。
 
-**[EnableQuery]**屬性可讓用戶端使用查詢選項，例如 $filter、 $sort 和 $page 修改查詢。 如需詳細資訊，請參閱[支援 OData 查詢選項](../supporting-odata-query-options.md)。
+**[EnableQuery]** 屬性可讓用戶端使用查詢選項，例如 $filter、 $sort 和 $page 修改查詢。 如需詳細資訊，請參閱[支援 OData 查詢選項](../supporting-odata-query-options.md)。
 
 ## <a name="adding-an-entity-to-the-entity-set"></a>將實體加入至實體集
 

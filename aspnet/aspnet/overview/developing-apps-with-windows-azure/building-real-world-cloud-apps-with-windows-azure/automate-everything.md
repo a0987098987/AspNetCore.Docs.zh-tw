@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
 ms.openlocfilehash: 2e30ab7831a10f215a08f74e61adf2d147e76543
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30875171"
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>自動化 （建置真實世界雲端應用程式與 Azure） 的所有項目
 ====================
@@ -195,9 +196,9 @@ Azure 有此功能可讓您將設定和自動覆寫當它嘗試讀取時傳回�
 
 在此程序結束時，環境建立指令碼呼叫，將使用部署指令碼檔案建立兩個函式。
 
-其中一個這些函式建立的發行設定檔*(&lt;websitename&gt;.pubxml*檔案)。 程式碼會呼叫 Azure REST API，以取得發行設定，並將儲存中的資訊*.publishsettings*檔案。 然後會從該檔案和範本檔案一起使用的資訊 (*pubxml.template*) 來建立*.pubxml*所屬的發行設定檔的檔案。 這兩個步驟程序會模擬您在 Visual Studio 中執行的動作： 下載*.publishsettings*檔案和匯入，若要建立的發行設定檔。
+其中一個這些函式建立的發行設定檔 *(&lt;websitename&gt;.pubxml*檔案)。 程式碼會呼叫 Azure REST API，以取得發行設定，並將儲存中的資訊 *.publishsettings*檔案。 然後會從該檔案和範本檔案一起使用的資訊 (*pubxml.template*) 來建立 *.pubxml*所屬的發行設定檔的檔案。 這兩個步驟程序會模擬您在 Visual Studio 中執行的動作： 下載 *.publishsettings*檔案和匯入，若要建立的發行設定檔。
 
-另一個函式會使用另一個範本檔 (網站 environment.template) 來建立*網站 environment.xml*檔案，其中包含的設定部署指令碼將使用連同*.pubxml*檔案。
+另一個函式會使用另一個範本檔 (網站 environment.template) 來建立*網站 environment.xml*檔案，其中包含的設定部署指令碼將使用連同 *.pubxml*檔案。
 
 ### <a name="troubleshooting-and-error-handling"></a>疑難排解和錯誤處理
 
@@ -225,7 +226,7 @@ Azure 有此功能可讓您將設定和自動覆寫當它嘗試讀取時傳回�
 
 [!code-powershell[Main](automate-everything/samples/sample23.ps1)]
 
-它會取得部署使用者密碼從*.publishsettings*檔案：
+它會取得部署使用者密碼從 *.publishsettings*檔案：
 
 [!code-powershell[Main](automate-everything/samples/sample24.ps1)]
 

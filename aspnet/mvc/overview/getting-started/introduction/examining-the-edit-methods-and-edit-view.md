@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874742"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -72,11 +73,11 @@ ms.lasthandoff: 04/06/2018
 
 Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 可呈現 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
 
-執行應用程式，並瀏覽至*/Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 如下所示的 HTML 表單項目。
+執行應用程式，並瀏覽至 */Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 如下所示的 HTML 表單項目。
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample8.cshtml?highlight=1-2)]
 
-`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到*/電影/編輯*URL。 表單資料都將張貼至伺服器時**儲存**按鈕。 第二行中顯示的隱藏[XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)所產生的語彙基元`@Html.AntiForgeryToken()`呼叫。
+`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到 */電影/編輯*URL。 表單資料都將張貼至伺服器時**儲存**按鈕。 第二行中顯示的隱藏[XSRF](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md)所產生的語彙基元`@Html.AntiForgeryToken()`呼叫。
 
 ## <a name="processing-the-post-request"></a>處理 POST 要求
 
@@ -106,7 +107,7 @@ Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [
 1. 從**工具**功能表上，按一下**NuGetLibrary 封裝管理員**，然後按一下 **管理方案的 NuGet 套件**。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. 在左窗格中，選取<strong>瀏覽*。</strong>*（請參閱下面的影像）。
+2. 在左窗格中，選取<strong>瀏覽 *。</strong>*（請參閱下面的影像）。
 3. 在輸入方塊中，輸入 * Globalize * *。  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) 選擇`jQuery.Validation.Globalize`，選擇`MvcMovie`按一下**安裝**。 *Scripts\jquery.globalize\globalize.js*檔案會加入至您的專案。 *Scripts\jquery.globalize\cultures\*資料夾將包含多個文化特性的 JavaScript 檔案。 請注意，可能需要五分鐘才能安裝此套件。

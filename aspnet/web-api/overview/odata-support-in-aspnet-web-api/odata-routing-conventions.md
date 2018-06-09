@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
 ms.openlocfilehash: 0ab99dd443040b90ffefd2f5b9261a63b91e9463
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037317"
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>路由慣例，在 ASP.NET Web API 2 Odata
 ====================
@@ -47,9 +48,9 @@ ms.lasthandoff: 01/24/2018
 
 路由，重要的部分是資源路徑。 資源路徑會分成區段。 例如，`/Products(1)/Supplier`有三個區段：
 
-- `Products`指的是名為 「 產品 」 實體集。
-- `1`從集合中選取單一實體為實體索引鍵。
-- `Supplier`為選取相關的實體的導覽屬性。
+- `Products` 指的是名為 「 產品 」 實體集。
+- `1` 從集合中選取單一實體為實體索引鍵。
+- `Supplier` 為選取相關的實體的導覽屬性。
 
 因此這個路徑會挑選出 1 產品的供應商。
 
@@ -80,15 +81,15 @@ ms.lasthandoff: 01/24/2018
 | PUT /entityset （金鑰）/轉換 | /Products(1)/Models.Book | PutEntityType 或 Put | PutBook |
 | 修補程式 /entityset(key) | /Products(1) | PatchEntityType 或修補程式 | PatchProduct |
 | 修補程式 /entityset （金鑰）/轉換 | /Products(1)/Models.Book | PatchEntityType 或修補程式 | PatchBook |
-| DELETE /entityset(key) | /Products(1) | DeleteEntityType 或刪除 | DeleteProduct |
-| DELETE /entityset(key)/cast | /Products(1)/Models.Book | DeleteEntityType 或刪除 | DeleteBook |
+| 刪除 /entityset(key) | /Products(1) | DeleteEntityType 或刪除 | DeleteProduct |
+| 轉換/刪除 /entityset （索引鍵） | /Products(1)/Models.Book | DeleteEntityType 或刪除 | DeleteBook |
 
 **查詢的導覽屬性**
 
 | 要求 | 範例 URI | 動作名稱 | 範例動作 |
 | --- | --- | --- | --- |
-| GET /entityset （金鑰） / 瀏覽 | /Products(1)/Supplier | GetNavigationFromEntityType or GetNavigation | GetSupplierFromProduct |
-| 取得 /entityset （金鑰）/轉換/瀏覽 | /Products(1)/Models.Book/Author | GetNavigationFromEntityType or GetNavigation | GetAuthorFromBook |
+| GET /entityset （金鑰） / 瀏覽 | / 產品 （1）/供應商 | GetNavigationFromEntityType 或 GetNavigation | GetSupplierFromProduct |
+| 取得 /entityset （金鑰）/轉換/瀏覽 | /Products(1)/Models.Book/Author | GetNavigationFromEntityType 或 GetNavigation | GetAuthorFromBook |
 
 如需詳細資訊，請參閱[使用實體關係](odata-v3/working-with-entity-relations.md)。
 
@@ -96,10 +97,10 @@ ms.lasthandoff: 01/24/2018
 
 | 要求 | 範例 URI | 動作名稱 |
 | --- | --- | --- |
-| POST /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | CreateLink |
-| PUT 的 /entityset （金鑰） / $links/瀏覽 | /Products(1)/$links/Supplier | CreateLink |
-| DELETE /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | DeleteLink |
-| DELETE /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$links/Suppliers(1) | DeleteLink |
+| POST /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | CreateLink |
+| PUT 的 /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | CreateLink |
+| 刪除 /entityset （金鑰） / $links/瀏覽 | / 產品 （1） / $ 連結/供應商 | DeleteLink |
+| 刪除 /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$links/Suppliers(1) | DeleteLink |
 
 如需詳細資訊，請參閱[使用實體關係](odata-v3/working-with-entity-relations.md)。
 
@@ -116,8 +117,8 @@ ms.lasthandoff: 01/24/2018
 
 | 要求 | 範例 URI | 動作名稱 | 範例動作 |
 | --- | --- | --- | --- |
-| POST /entityset(key)/action | /Products(1)/Rate | ActionNameOnEntityType 或 ActionName | RateOnProduct |
-| POST /entityset(key)/cast/action | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType 或 ActionName | CheckOutOnBook |
+| POST /entityset （金鑰） / 動作 | / 產品 （1）/速率 | ActionNameOnEntityType 或 ActionName | RateOnProduct |
+| 後 /entityset （金鑰）/轉換/動作 | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType 或 ActionName | CheckOutOnBook |
 
 如需詳細資訊，請參閱[OData 動作](odata-v3/odata-actions.md)。
 
@@ -169,7 +170,7 @@ ms.lasthandoff: 01/24/2018
 
 1. 我是衍生自**EntitySetRoutingConvention**，因為**SelectController**該類別中的方法是適用於這個新的路由慣例。 也就是說，不必重新實作**SelectController**。
 2. 慣例僅適用於 GET 要求和路徑範本時才&quot;~/entityset/key/navigation/key&quot;。
-3. 動作名稱是&quot;取得 {EntityType}&quot;，其中 *{EntityType}* 是瀏覽集合的型別。 例如， &quot;GetSupplier&quot;。 您可以使用任何您喜歡的命名慣例 & #8212;請確定您符合控制器的動作。
+3. 動作名稱是&quot;取得 {EntityType}&quot;，其中 *{EntityType}* 是瀏覽集合的型別。 例如， &quot;GetSupplier&quot;。 您可以使用任何您喜歡的命名慣例&#8212;只要確定您符合控制器的動作。
 4. 採取的動作名稱為兩個參數*金鑰*和*relatedKey*。 (如需某些預先定義的參數名稱的清單，請參閱[ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx)。)
 
 下一個步驟新增新的慣例路由慣例的清單。 發生這種情況在設定期間，如下列程式碼所示：

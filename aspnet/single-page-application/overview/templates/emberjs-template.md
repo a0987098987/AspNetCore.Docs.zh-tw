@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/emberjs-template
-title: "EmberJS 範本 |Microsoft 文件"
+title: EmberJS 範本 |Microsoft 文件
 author: xqiu
-description: "EmberJS 範本"
+description: EmberJS 範本
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 1fb7633aee288be648d4f9681b43c8911b7dbab9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506797"
 ---
 <a name="emberjs-template"></a>EmberJS 範本
 ====================
@@ -43,7 +44,7 @@ EmberJS SPA 範本使用[Ember](http://emberjs.com/)來處理從 AJAX 要求的�
 
 下載並安裝的範本，按一下下載按鈕上方。 您可能需要重新啟動 Visual Studio。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
 
 ![](emberjs-template/_static/image2.png)
 
@@ -134,7 +135,7 @@ TodoListRoute.js 覆寫 setupController 函式，如 TodoListRoute 載入資料�
 
 [!code-javascript[Main](emberjs-template/samples/sample11.js)]
 
-Ember 會使用命名慣例，來比對 Url、 路由名稱、 控制器及範本。 如需詳細資訊，請參閱[http://emberjs.com/guides/routing/defining-your-routes/](http://emberjs.com/guides/routing/defining-your-routes/) EmberJS 說明文件。
+Ember 會使用命名慣例，來比對 Url、 路由名稱、 控制器及範本。 如需詳細資訊，請參閱[ http://emberjs.com/guides/routing/defining-your-routes/ ](http://emberjs.com/guides/routing/defining-your-routes/) EmberJS 說明文件。
 
 ## <a name="templates"></a>範本
 
@@ -146,7 +147,7 @@ Ember 會使用命名慣例，來比對 Url、 路由名稱、 控制器及範�
 - todoList.hbs： 的範本 」 / todo"路由。
 - \_navbar.hbs: 範本會定義在導覽功能表。
 
-應用程式範本就像是主版頁面。 它包含頁首、 頁尾和"{{插座}}"將根據路由範本中。 如需 Ember 中的應用程式範本的詳細資訊，請參閱[http://guides.emberjs.com/v1.10.0/templates/the-application-template//](http://guides.emberjs.com/v1.10.0/templates/the-application-template/)。
+應用程式範本就像是主版頁面。 它包含頁首、 頁尾和"{{插座}}"將根據路由範本中。 如需 Ember 中的應用程式範本的詳細資訊，請參閱[ http://guides.emberjs.com/v1.10.0/templates/the-application-template// ](http://guides.emberjs.com/v1.10.0/templates/the-application-template/)。
 
 "/ TodoList 」 範本包含兩個迴圈運算式。 外部迴圈是`{{#each controller}}`，與內部迴圈是`{{#each todos}}`。 下列程式碼會示範內建`Ember.Checkbox`檢視，請自訂`App.TodoItemEditView`，以及與連結`deleteTodo`動作。
 

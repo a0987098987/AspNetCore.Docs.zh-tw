@@ -1,22 +1,23 @@
 ---
 uid: visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
-title: "ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊 2013.2 |Microsoft 文件"
+title: ASP.NET 及 Web Tools for Visual Studio 2013 版本資訊 2013.2 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2014
 ms.topic: article
 ms.assetid: 7ef5f73c-ca60-43c1-bdb2-702800347e7e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
 msc.type: authoredcontent
 ms.openlocfilehash: 0e7ad52662f7ceaa1f087d007d0b14b610f90bee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036020"
 ---
 <a name="aspnet-and-web-tools-20132--for-visual-studio-2013-release-notes"></a>ASP.NET 及 Web Tools 2013.2 for Visual Studio 2013 版本資訊
 ====================
@@ -78,7 +79,7 @@ ASP.NET 及 Web Tools for Visual Studio 2013.2 需要 Visual Studio 2013。
 
 按 CTRL+F5 執行應用程式。 依照要信任 IIS Express 產生的自我簽署的憑證的指示。
 
-![SSL Warning](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes/_static/image3.png)
+![SSL 警告](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes/_static/image3.png)
 
 讀取**安全性警告**對話方塊，然後按一下**是**如果您想要安裝憑證，表示 localhost。
 
@@ -151,7 +152,7 @@ Firefox 會使用自己的憑證存放區，因此它會顯示警告。
 <a id="scaffolding"></a>
 ### <a name="aspnet-scaffolding"></a>ASP.NET Scaffolding
 
-- **列舉支援：**如果您的模型使用列舉，則 MVC Scaffolder 會產生下拉式清單中的列舉。 這會在 MVC 中使用的列舉 helper。
+- **列舉支援：** 如果您的模型使用列舉，則 MVC Scaffolder 會產生下拉式清單中的列舉。 這會在 MVC 中使用的列舉 helper。
 - **啟動支援**： 更新在 MVC Scaffolding EditorFor 範本，讓它們使用的啟動程序的類別。
 - **封裝支援**: MVC Web 應用程式開發介面 Scaffolder 會將 5.1 封裝之 MVC 和 Web API
 
@@ -247,15 +248,15 @@ Entity Framework 已更新為 6.1 版執行階段和工具。 Entity Framework (
 ### <a name="aspnet-identity-200"></a>ASP.NET Identity 2.0.0
 
 - **雙因素驗證**: ASP.NET Identity 現在支援雙因素驗證。 雙因素驗證提供一層額外的安全性，以您的密碼遭到入侵，萬一您的使用者帳戶。 另外還有兩個因素碼的暴力攻擊的保護。
-- **帳戶鎖定：**提供方法來鎖定使用者，如果使用者可輸入其密碼或兩個因素碼不正確。 無效的嘗試次數和 timespan 的數目的使用者遭到鎖定可以設定。 開發人員可以選擇性地關閉帳戶鎖定的特定使用者帳戶應該要。
+- **帳戶鎖定：** 提供方法來鎖定使用者，如果使用者可輸入其密碼或兩個因素碼不正確。 無效的嘗試次數和 timespan 的數目的使用者遭到鎖定可以設定。 開發人員可以選擇性地關閉帳戶鎖定的特定使用者帳戶應該要。
 - **帳戶確認：** ASP.NET Identity 系統現在支援帳戶確認。 這是很常見的案例中今日大多數的網站，當您註冊新帳戶在網站上，您需要先在執行任何網站中確認您的電子郵件。 電子郵件確認是很有用，因為它可防止假的帳戶建立。 這是網站的非常有用，如果您使用電子郵件做為與您，例如論壇站台、 金融交易、 電子商務或社交網站的使用者進行通訊的方法。
-- **密碼重設：**密碼重設為其中使用者可以重設其密碼如果忘記其密碼的功能。
-- **安全性戳記 （各處號）：**支援重新產生安全性權杖的案例中的使用者，當使用者變更其密碼或任何其他安全性相關資訊，例如移除關聯的登入 （例如 Facebook、 Google、Microsoft 帳戶等等）。 需要這個動作，以確保任何使用舊密碼產生的語彙基元會失效。 在範例專案中，如果您變更使用者的密碼為使用者產生新的權杖，然後任何先前的語彙基元會失效。 這項功能提供一層額外的安全性，您的應用程式，因為當您變更您的密碼時，您會從每個地方 （所有其他瀏覽器） 您已登入此應用程式記錄。
+- **密碼重設：** 密碼重設為其中使用者可以重設其密碼如果忘記其密碼的功能。
+- **安全性戳記 （各處號）：** 支援重新產生安全性權杖的案例中的使用者，當使用者變更其密碼或任何其他安全性相關資訊，例如移除關聯的登入 （例如 Facebook、 Google、Microsoft 帳戶等等）。 需要這個動作，以確保任何使用舊密碼產生的語彙基元會失效。 在範例專案中，如果您變更使用者的密碼為使用者產生新的權杖，然後任何先前的語彙基元會失效。 這項功能提供一層額外的安全性，您的應用程式，因為當您變更您的密碼時，您會從每個地方 （所有其他瀏覽器） 您已登入此應用程式記錄。
 - **讓使用者與角色的擴充性的主索引鍵類型**： 在 ASP.NET Identity 1.0 中，資料表的使用者和角色的主索引鍵的型別為字串。 這表示當 ASP.NET 識別系統永續性的 SQL Server 中使用 Entity Framework 中，我們使用 nvarchar。 共有的堆疊溢位的這個預設實作的許多討論根據內送的意見反應。 我們已提供的擴充攔截，讓您指定應在您的使用者和角色的資料表的主索引鍵。 此擴充攔截，就特別有用的是如果您要移轉您的應用程式，而且應用程式已經儲存的使用者 Id 是 Guid 或將 int 轉換。
 - **在使用者和角色支援 IQueryable**： 加入的 UsersStore 和 RolesStore IQueryable 的支援，您可以輕鬆地取得使用者和角色的清單。
 - **支援透過 UserManager 的刪除作業**
 - **編製索引的使用者名稱**: ASP.NET Identity Entity Framework 中的實作中，我們新增了唯一索引的使用者名稱的新的 IndexAttribute 使用 EF 6.1.0 中。 這可確保永遠是唯一的使用者名稱，並沒有任何競爭，在其中您最後可能會含有重複的使用者名稱。
-- **增強式密碼驗證程式：**密碼驗證程式隨附在 ASP.NET Identity 1.0 是相當基本密碼驗證程式僅已驗證的最小長度。 沒有新的密碼驗證程式，可讓您更充分掌控密碼的複雜性。 請注意，即使您開啟這個密碼中的所有設定，請勿建議您啟用使用者帳戶的雙因素驗證。
+- **增強式密碼驗證程式：** 密碼驗證程式隨附在 ASP.NET Identity 1.0 是相當基本密碼驗證程式僅已驗證的最小長度。 沒有新的密碼驗證程式，可讓您更充分掌控密碼的複雜性。 請注意，即使您開啟這個密碼中的所有設定，請勿建議您啟用使用者帳戶的雙因素驗證。
 - **IdentityFactory 中介軟體 / CreatePerOwinContext**:
 
     - **使用者管理員**： 您可以使用處理站實作的 OWIN 內容從取得 UserManager 的執行個體。 此模式相當類似於我們用於 AuthenticationManager 獲得登入和登出的 OWIN 內容。 這是建議的方法來取得每個應用程式要求 UserManager 的執行個體。

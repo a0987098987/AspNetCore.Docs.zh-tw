@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 453ad29ff4f10f9660f3aa8bab358519b4cfd48b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26508377"
 ---
 <a name="enabling-cross-origin-requests-in-aspnet-web-api-2"></a>啟用 ASP.NET Web API 2 中的跨原始要求
 ====================
@@ -51,10 +52,10 @@ ms.lasthandoff: 11/10/2017
 
 這些 Url 會有兩個不同來源比上一個：
 
-- `http://example.net`為不同的網域
-- `http://example.com:9000/foo.html`為不同的通訊埠
-- `https://example.com/foo.html`為不同的配置
-- `http://www.example.com/foo.html`為不同的子網域
+- `http://example.net` 為不同的網域
+- `http://example.com:9000/foo.html` 為不同的通訊埠
+- `https://example.com/foo.html` 為不同的配置
+- `http://www.example.com/foo.html` 為不同的子網域
 
 > [!NOTE]
 > 比較來源時，Internet Explorer 不會將連接埠。
@@ -115,11 +116,11 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample4.cs?highlight=9)]
 
-接下來，加入**[EnableCors]**屬性`TestController`類別：
+接下來，加入 **[EnableCors]** 屬性`TestController`類別：
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample5.cs?highlight=3,7)]
 
-如*origins*參數，使用 WebClient 應用程式的部署所在的 URI。 這可從 WebClient，讓跨原始要求時仍然不允許所有其他的跨網域要求。 我將在稍後說明的參數**[EnableCors]**中更多詳細資料。
+如*origins*參數，使用 WebClient 應用程式的部署所在的 URI。 這可從 WebClient，讓跨原始要求時仍然不允許所有其他的跨網域要求。 我將在稍後說明的參數 **[EnableCors]** 中更多詳細資料。
 
 不包含結尾的斜線*origins* URL。
 
@@ -130,7 +131,7 @@ ms.lasthandoff: 11/10/2017
 <a id="how-it-works"></a>
 ## <a name="how-cors-works"></a>CORS 的運作方式
 
-本章節描述 CORS 要求，在 HTTP 訊息的層級中發生的事。 請務必了解 CORS 的運作方式，讓您可以設定**[EnableCors]**屬性是否正確，以及疑難排解如果項目不在您預期方式運作。
+本章節描述 CORS 要求，在 HTTP 訊息的層級中發生的事。 請務必了解 CORS 的運作方式，讓您可以設定 **[EnableCors]** 屬性是否正確，以及疑難排解如果項目不在您預期方式運作。
 
 CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏覽器支援 CORS，它會設定這些標頭會自動針對跨原始要求。您不需要執行任何 JavaScript 程式碼中的特殊的動作。
 
@@ -182,13 +183,13 @@ CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏�
 
 **每個動作**
 
-若要啟用 CORS 單一動作，將**[EnableCors]**動作方法上的屬性。 下列範例會啟用 CORS`GetItem`只方法。
+若要啟用 CORS 單一動作，將 **[EnableCors]** 動作方法上的屬性。 下列範例會啟用 CORS`GetItem`只方法。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample10.cs)]
 
 **每個控制站**
 
-如果您設定**[EnableCors]**控制器類別，它會套用至控制器上的所有動作。 若要停用 CORS 的動作，將**[DisableCors]**動作屬性。 下列範例會針對每個方法，除了啟用 CORS `PutItem`。
+如果您設定 **[EnableCors]** 控制器類別，它會套用至控制器上的所有動作。 若要停用 CORS 的動作，將 **[DisableCors]** 動作屬性。 下列範例會針對每個方法，除了啟用 CORS `PutItem`。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample11.cs)]
 
@@ -207,7 +208,7 @@ CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏�
 <a id="allowed-origins"></a>
 ## <a name="set-the-allowed-origins"></a>設定允許的來源
 
-*Origins*參數**[EnableCors]**屬性會指定哪一個原始來源允許存取資源。 值為允許出處的逗號分隔清單。
+*Origins*參數 **[EnableCors]** 屬性會指定哪一個原始來源允許存取資源。 值為允許出處的逗號分隔清單。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample13.cs)]
 
@@ -220,14 +221,14 @@ CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏�
 <a id="allowed-methods"></a>
 ## <a name="set-the-allowed-http-methods"></a>設定允許的 HTTP 方法
 
-*方法*參數**[EnableCors]**屬性會指定允許存取資源的 HTTP 方法。 若要讓所有方法，使用萬用字元值"\*"。 下列範例可讓只有 GET 和 POST 要求。
+*方法*參數 **[EnableCors]** 屬性會指定允許存取資源的 HTTP 方法。 若要讓所有方法，使用萬用字元值"\*"。 下列範例可讓只有 GET 和 POST 要求。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample15.cs)]
 
 <a id="allowed-request-headers"></a>
 ## <a name="set-the-allowed-request-headers"></a>設定允許的要求標頭
 
-稍早所述方式預檢要求可能包括存取控制-頭 access-control-request-headers 標頭中，列出應用程式所設定的 HTTP 標頭 (所謂的 「 撰寫要求標頭 」)。 *標頭*參數**[EnableCors]**屬性會指定允許哪些作者要求標頭。 若要允許任何標頭，設定*標頭*至 「\*"。 允許清單特定的標頭，設定*標頭*允許的標頭以逗號分隔清單：
+稍早所述方式預檢要求可能包括存取控制-頭 access-control-request-headers 標頭中，列出應用程式所設定的 HTTP 標頭 (所謂的 「 撰寫要求標頭 」)。 *標頭*參數 **[EnableCors]** 屬性會指定允許哪些作者要求標頭。 若要允許任何標頭，設定*標頭*至 「\*"。 允許清單特定的標頭，設定*標頭*允許的標頭以逗號分隔清單：
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample16.cs)]
 
@@ -240,14 +241,14 @@ CORS 規格導入了幾個新的 HTTP 標頭啟用跨原始要求。 如果瀏�
 
 根據預設，在瀏覽器不會公開所有應用程式的回應標頭。 預設可用的回應標頭如下：
 
-- 快取控制
+- Cache-Control
 - 內容語言
-- 內容類型
+- Content-Type
 - 到期
 - 上次修改
 - Pragma
 
-CORS 規格會呼叫這些[簡單的回應標頭](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header)。 若要讓其他標頭使用應用程式，請設定*exposedHeaders*參數**[EnableCors]**。
+CORS 規格會呼叫這些[簡單的回應標頭](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header)。 若要讓其他標頭使用應用程式，請設定*exposedHeaders*參數 **[EnableCors]**。
 
 在下列範例中，控制器的`Get`方法會設定名為 'X 自訂的標頭' 自訂標頭。 根據預設，瀏覽器將不會公開此標頭中的跨原始要求。 若要使用的標頭，在中包含 'X 自訂的標頭' *exposedHeaders*。
 
@@ -266,7 +267,7 @@ JQuery： 中
 
 [!code-javascript[Main](enabling-cross-origin-requests-in-web-api/samples/sample19.js)]
 
-此外，伺服器必須允許認證。 若要允許跨原始認證 Web API 中，設定**SupportsCredentials**屬性設定為 true，在**[EnableCors]**屬性：
+此外，伺服器必須允許認證。 若要允許跨原始認證 Web API 中，設定**SupportsCredentials**屬性設定為 true，在 **[EnableCors]** 屬性：
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample20.cs)]
 
@@ -279,11 +280,11 @@ JQuery： 中
 <a id="cors-policy-providers"></a>
 ## <a name="custom-cors-policy-providers"></a>自訂的 CORS 原則提供者
 
-**[EnableCors]**屬性會實作**ICorsPolicyProvider**介面。 您可以藉由建立衍生自的類別提供您自己的實作**屬性**並實作**ICorsProlicyProvider**。
+**[EnableCors]** 屬性會實作**ICorsPolicyProvider**介面。 您可以藉由建立衍生自的類別提供您自己的實作**屬性**並實作**ICorsProlicyProvider**。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample21.cs)]
 
-現在您可以將任何地方，您會將屬性套用**[EnableCors]**。
+現在您可以將任何地方，您會將屬性套用 **[EnableCors]**。
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample22.cs)]
 

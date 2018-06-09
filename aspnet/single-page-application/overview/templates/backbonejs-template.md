@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/backbonejs-template
-title: "中樞範本 |Microsoft 文件"
+title: 中樞範本 |Microsoft 文件
 author: madskristensen
-description: "Backbone.js SPA 範本"
+description: Backbone.js SPA 範本
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2013
 ms.topic: article
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 3b8eabd3cefcb96dc40bbf6cc6e3ee81accb0d7c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506677"
 ---
 <a name="backbone-template"></a>中樞範本
 ====================
@@ -39,7 +40,7 @@ Backbone.js SPA 範本為了協助您快速地開始建置互動式用戶端 web
 
 下載並安裝的範本，按一下下載按鈕上方。 範本會封裝成 Visual Studio 擴充功能 (VSIX) 檔案。 您可能需要重新啟動 Visual Studio。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
 
 ![](backbonejs-template/_static/image1.png)
 
@@ -61,7 +62,7 @@ Backbone.js SPA 範本為了協助您快速地開始建置互動式用戶端 web
 
 **應用程式**
 
-`Application`application.ts 中定義。 此物件會初始化應用程式，並做為根命名空間。 例如使用者是否登入，它就會維護所有應用程式時，會共用的組態和狀態資訊。
+`Application` application.ts 中定義。 此物件會初始化應用程式，並做為根命名空間。 例如使用者是否登入，它就會維護所有應用程式時，會共用的組態和狀態資訊。
 
 `application.start`方法建立強制回應檢視，並將附加事件處理常式應用程式層級事件，例如 使用者登入。 接下來，它會建立預設路由器，並檢查是否已指定任何用戶端 URL。 如果不是，它會重新導向至預設的 url (# ！ /)。
 

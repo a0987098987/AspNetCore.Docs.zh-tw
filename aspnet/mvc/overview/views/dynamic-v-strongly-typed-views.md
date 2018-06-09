@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/views/dynamic-v-strongly-typed-views
-title: "動態 v。 強型別檢視 |Microsoft 文件"
+title: 動態 v。 強型別檢視 |Microsoft 文件
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2011
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views/dynamic-v-strongly-typed-views
 msc.type: authoredcontent
 ms.openlocfilehash: 8a96d43e04a0a50d5176c10c26aa49918a0e56ef
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26504087"
 ---
 <a name="dynamic-v-strongly-typed-views"></a>動態 v。 強型別的檢視
 ====================
@@ -53,7 +54,7 @@ ms.lasthandoff: 11/10/2017
 [!code-csharp[Main](dynamic-v-strongly-typed-views/samples/sample5.cs)]
 
 
-請注意，它是完全相同傳回 View(topBlogs);呼叫非強型別檢視。 以滑鼠右鍵按一下內*StonglyTypedIndex()*選取**加入檢視**。 這一次選取**部落格**模型類別，然後選取**清單**為 Scaffold 範本。
+請注意，它是完全相同傳回 View(topBlogs);呼叫非強型別檢視。 以滑鼠右鍵按一下內*StonglyTypedIndex()* 選取**加入檢視**。 這一次選取**部落格**模型類別，然後選取**清單**為 Scaffold 範本。
 
 [![5658.StrongView [1]](dynamic-v-strongly-typed-views/_static/image6.png)](dynamic-v-strongly-typed-views/_static/image5.png)
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
-title: "屬性 ASP.NET Web API 2 中的路由 |Microsoft 文件"
+title: 屬性 ASP.NET Web API 2 中的路由 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
 ms.openlocfilehash: 173add73a150d3e13ae243d6548463da912dadee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28038045"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的路由屬性
 ====================
@@ -155,7 +156,7 @@ Web 應用程式開發介面也會選取動作的要求 （GET、 POST 等） �
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample10.cs)]
 
-您也可以使用整個控制器設定通用的前置詞**[RoutePrefix]**屬性：
+您也可以使用整個控制器設定通用的前置詞 **[RoutePrefix]** 屬性：
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample11.cs)]
 
@@ -183,19 +184,19 @@ Web 應用程式開發介面也會選取動作的要求 （GET、 POST 等） �
 | Alpha | 比對大寫或小寫英文字母字元 (a-z、 A 到 Z) | {x: alpha} |
 | bool | 比對的布林值。 | {x: bool} |
 | datetime | 相符項目**DateTime**值。 | {x: datetime} |
-| decimal | 符合十進位值。 | {x:decimal} |
-| double | 比對 64 位元浮點值。 | {x:double} |
+| decimal | 符合十進位值。 | {x： 小} |
+| double | 比對 64 位元浮點值。 | {x： 雙} |
 | float | 比對 32 位元浮點值。 | {x: f} |
 | Guid | 比對的 GUID 值。 | {x: guid} |
-| int | 比對 32 位元整數值。 | {x:int} |
-| 長度 | 比對字串指定長度或長度的指定範圍內。 | {x:length(6)} {x:length(1,20)} |
-| long | 比對 64 位元整數值。 | {x:long} |
+| int | 比對 32 位元整數值。 | {x: int} |
+| 長度 | 比對字串指定長度或長度的指定範圍內。 | {x: length(6)}{x: length(1,20)} |
+| long | 比對 64 位元整數值。 | {x： 長時間} |
 | max | 符合最大值的整數。 | {x:max(10)} |
-| maxlength | 符合最大長度的字串。 | {x:maxlength(10)} |
-| min | 符合最小值的整數。 | {x:min(10)} |
-| minlength | 符合最小長度的字串。 | {x:minlength(10)} |
-| range | 比對的值範圍內的整數。 | {x:range(10,50)} |
-| regex | 符合規則運算式。 | {x:regex(^\d{3}-\d{3}-\d{4}$)} |
+| maxlength | 符合最大長度的字串。 | {x: maxlength(10)} |
+| min | 符合最小值的整數。 | {x: min(10)} |
+| minlength | 符合最小長度的字串。 | {x: minlength(10)} |
+| range | 比對的值範圍內的整數。 | {x: range(10,50)} |
+| regex | 符合規則運算式。 | {x: regex(^\d{3}-\d{3}-\d{4}$)} |
 
 請注意一些條件約束，例如&quot;min&quot;，接受引數括號括住。 您可以將多個條件約束套用至參數，以冒號分隔。
 
@@ -269,8 +270,8 @@ Web 應用程式開發介面也會選取動作的要求 （GET、 POST 等） �
 
 這些路由會排序，如下所示。
 
-1. orders/details
-2. orders/{id}
+1. 訂單/詳細資料
+2. 訂單 / {id}
 3. orders/{customerName}
 4. orders/{\*date}
 5. 訂單 / 擱置中

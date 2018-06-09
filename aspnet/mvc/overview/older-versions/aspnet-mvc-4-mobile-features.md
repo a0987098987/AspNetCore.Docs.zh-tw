@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
 ms.openlocfilehash: 5f38fcdd8e71ce12f7899214b6b2133e21f9910c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30876835"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>ASP.NET MVC 4 Mobile 功能
 ====================
@@ -63,7 +64,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="getting-started"></a>快速入門
 
-下載會議清單應用程式入門專案，使用下列連結：[下載](https://go.microsoft.com/fwlink/?LinkId=228307)。 然後在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMobile.zip*檔案，然後選擇**屬性**。 在**MvcMobile.zip 屬性**對話方塊方塊中，選擇**解除封鎖** 按鈕。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生*.zip*您已經從 web 下載的檔案。)
+下載會議清單應用程式入門專案，使用下列連結：[下載](https://go.microsoft.com/fwlink/?LinkId=228307)。 然後在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMobile.zip*檔案，然後選擇**屬性**。 在**MvcMobile.zip 屬性**對話方塊方塊中，選擇**解除封鎖** 按鈕。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生 *.zip*您已經從 web 下載的檔案。)
 
 ![p1_unBlock](aspnet-mvc-4-mobile-features/_static/image4.png)
 
@@ -99,7 +100,7 @@ ASP.NET 標記檢視是得雜亂。 例如，**日期**資料行是非常難以�
 
 ## <a name="examining-the-effect-of-css-media-queries-and-the-viewport-meta-tag"></a>檢查 CSS 媒體查詢和檢視區 Meta 標記的效果
 
-開啟*_layout.cshtml\\_Layout.cshtml*編輯器和檢視區外的註解中的檔案`<meta>`標記。 下列標記顯示標記為註解。
+開啟 *_layout.cshtml\\_Layout.cshtml*編輯器和檢視區外的註解中的檔案`<meta>`標記。 下列標記顯示標記為註解。
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample3.cshtml)]
 
@@ -121,11 +122,11 @@ ASP.NET 標記檢視是得雜亂。 例如，**日期**資料行是非常難以�
 
 ## <a name="overriding-views-layouts-and-partial-views"></a>覆寫檢視、 配置和部分檢視
 
-ASP.NET MVC 4 中重要的新功能是一個簡單的機制，可讓您覆寫任何檢視 （包括版面配置和部分檢視） 的行動瀏覽器，在一般情況下，針對個別的行動電話瀏覽器，或任何特定瀏覽器。 若要提供特定的行動檢視，您可以複製檢視檔案並加入*。Mobile*的檔案名稱。 例如，若要建立行動*索引*檢視中，複製*Views\Home\Index.cshtml*至*Views\Home\Index.Mobile.cshtml*。
+ASP.NET MVC 4 中重要的新功能是一個簡單的機制，可讓您覆寫任何檢視 （包括版面配置和部分檢視） 的行動瀏覽器，在一般情況下，針對個別的行動電話瀏覽器，或任何特定瀏覽器。 若要提供特定的行動檢視，您可以複製檢視檔案並加入 *。Mobile*的檔案名稱。 例如，若要建立行動*索引*檢視中，複製*Views\Home\Index.cshtml*至*Views\Home\Index.Mobile.cshtml*。
 
 在本節中，您將建立行動特定配置檔案。
 
-若要開始，複製*_layout.cshtml\\_Layout.cshtml*至*_layout.cshtml\\_Layout.Mobile.cshtml*。 開啟 *\_Layout.Mobile.cshtml*並將變更從標題**MVC4 會議**至**會議 （行動裝置版）**。
+若要開始，複製 *_layout.cshtml\\_Layout.cshtml*至 *_layout.cshtml\\_Layout.Mobile.cshtml*。 開啟 *\_Layout.Mobile.cshtml*並將變更從標題**MVC4 會議**至**會議 （行動裝置版）**。
 
 在每個`Html.ActionLink`呼叫，移除 瀏覽方式 」 中每個連結*ActionLink*。 下列程式碼會顯示行動配置檔的已完成的主體區段。
 
@@ -183,7 +184,7 @@ ASP.NET MVC 4 中重要的新功能是一個簡單的機制，可讓您覆寫任
 
 若要開始，刪除*共用\\_Layout.Mobile.cshtml*和*共用\\_Layout.iPhone.cshtml*您稍早建立的檔案。
 
-重新命名*Views\Home\AllTags.Mobile.cshtml*和*Views\Home\AllTags.iPhone.cshtml*檔案到*Views\Home\AllTags.iPhone.cshtml.hide*和*Views\Home\AllTags.Mobile.cshtml.hide*。 因為這些檔案不再有*.cshtml*擴充功能，它們不使用 ASP.NET MVC 執行階段呈現*AllTags*檢視。
+重新命名*Views\Home\AllTags.Mobile.cshtml*和*Views\Home\AllTags.iPhone.cshtml*檔案到*Views\Home\AllTags.iPhone.cshtml.hide*和*Views\Home\AllTags.Mobile.cshtml.hide*。 因為這些檔案不再有 *.cshtml*擴充功能，它們不使用 ASP.NET MVC 執行階段呈現*AllTags*檢視。
 
 安裝*jQuery.Mobile.MVC*藉此 NuGet 封裝：
 
@@ -203,7 +204,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 - A`ViewSwitcher`控制器 widget (*Controllers\ViewSwitcherController.cs*)。
 - jQuery Mobile JavaScript 檔案。
 - JQuery Mobile 樣式的配置檔案 (*_layout.cshtml\\_Layout.Mobile.cshtml*)。
-- 檢視切換器的部分檢視*(MvcMobile\Views\Shared\\_ViewSwitcher.cshtml*)，提供從桌面檢視行動檢視，反之亦然切換每個頁面頂端的連結。
+- 檢視切換器的部分檢視 *(MvcMobile\Views\Shared\\_ViewSwitcher.cshtml*)，提供從桌面檢視行動檢視，反之亦然切換每個頁面頂端的連結。
 - 數個<em>.png</em>和<em>.gif</em>影像檔<em>Content\images</em>資料夾。
 
 開啟*Global.asax*檔案，然後加入下列程式碼的最後一行`Application_Start`方法。
@@ -238,7 +239,7 @@ JQuery.Mobile.MVC NuGet 封裝會安裝下列項目：
 
 [![p3_desktopView](aspnet-mvc-4-mobile-features/_static/image25.png)](aspnet-mvc-4-mobile-features/_static/image24.png)
 
-桌面檢視不會提供方法來直接瀏覽回到行動檢視。 您可以立即修正。 開啟*_layout.cshtml\\_Layout.cshtml*檔案。 頁面的下方`body`項目，加入下列程式碼，會呈現檢視切換程式 widget:
+桌面檢視不會提供方法來直接瀏覽回到行動檢視。 您可以立即修正。 開啟 *_layout.cshtml\\_Layout.cshtml*檔案。 頁面的下方`body`項目，加入下列程式碼，會呈現檢視切換程式 widget:
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample14.cshtml)]
 

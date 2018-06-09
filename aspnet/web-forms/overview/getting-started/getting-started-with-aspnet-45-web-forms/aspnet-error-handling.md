@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: ac5508334bf6d471471a719b98618bdcd3214fb5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30888925"
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================
@@ -338,7 +339,7 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 - [Alberto Poblacion、 MVP &amp; mct 規範、 西班牙](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - [Alex Thissen、 荷蘭](http://blog.alexthissen.nl/)(twitter: [ @alexthissen ](http://twitter.com/alexthissen))
 - [Andre Tournier，美國](http://andret503.wordpress.com/)
-- Apurva Joshi, Microsoft
+- Apurva Joshi Microsoft
 - [Bojan Vrhovnik、 斯洛維尼亞](http://twitter.com/bvrhovnik)
 - [Bruno Sonnino，巴西](http://msmvps.com/blogs/bsonnino)(twitter: [ @bsonnino ](http://twitter.com/bsonnino))
 - [Carlos dos Santos 巴西](http://www.carloscds.net/)
@@ -349,8 +350,8 @@ ELMAH 現在已準備好儲存發生的任何未處理的錯誤。
 - [Mitchel 銷售、 美國](http://www.mitchelsellers.com/)(twitter: [ @MitchelSellers ](http://twitter.com/MitchelSellers))
 - [Paul Cociuba Microsoft](http://linqto.me/Links/pcociuba)
 - [Paulo Morgado，葡萄牙](http://paulomorgado.net/)
-- [Pranav Rastogi, Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
-- [Tim Ammann, Microsoft](https://blogs.iis.net/timamm/default.aspx)
+- [Pranav Rastogi Microsoft](https://blogs.msdn.com/b/pranav_rastogi)
+- [Tim Ammann、 Microsoft](https://blogs.iis.net/timamm/default.aspx)
 - [Tom Dykstra Microsoft](https://blogs.msdn.com/aspnetue)
 
 ## <a name="community-contributions"></a>社群投稿

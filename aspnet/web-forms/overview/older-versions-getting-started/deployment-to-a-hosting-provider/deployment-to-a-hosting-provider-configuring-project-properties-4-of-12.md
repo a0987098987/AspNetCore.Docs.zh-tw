@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-configuring-project-properties-4-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: b8352c1832ffc79db93b6324dd673afaff6b0d74
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30887196"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-configuring-project-properties---4-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 設定專案屬性-4 / 12
 ====================
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="overview"></a>總覽
 
-儲存專案檔中的專案屬性中設定某些部署選項 ( *.csproj*或*.vbproj*檔案)。 在大部分情況下，這些設定的預設值都是您想要但是您可以使用**專案屬性**UI 的內建於 Visual Studio 搭配使用這些設定，如果您需要變更它們。 在本教學課程中，您檢閱部署設定中的**專案屬性**。 您也可以建立會導致空的資料夾部署的預留位置檔案。
+儲存專案檔中的專案屬性中設定某些部署選項 ( *.csproj*或 *.vbproj*檔案)。 在大部分情況下，這些設定的預設值都是您想要但是您可以使用**專案屬性**UI 的內建於 Visual Studio 搭配使用這些設定，如果您需要變更它們。 在本教學課程中，您檢閱部署設定中的**專案屬性**。 您也可以建立會導致空的資料夾部署的預留位置檔案。
 
 ## <a name="configuring-deployment-settings-in-the-project-properties-window"></a>在 [專案屬性] 視窗中設定部署設定
 
@@ -45,9 +46,9 @@ ms.lasthandoff: 04/06/2018
 
 ![Package_Publish_Web_tab_selecting_Release](deployment-to-a-hosting-provider-configuring-project-properties-4-of-12/_static/image2.png)
 
-與**作用中 （發行）**或**發行**您選取，請參閱您部署使用發行組建組態時，會有效的值：
+與**作用中 （發行）** 或**發行**您選取，請參閱您部署使用發行組建組態時，會有效的值：
 
-- 在**要部署的項目** 方塊中，**只有執行應用程式所需的檔案**已選取。 其他選項包括**這個專案中的所有檔案**或**此專案資料夾中的所有檔案**。 您避免部署原始程式碼檔案中，例如藉由保留預設選取項目保持不變。 此設定為包含 SQL Server Compact 的二進位檔案的資料夾必須包含在專案中的原因的原因。 如需有關這項設定的詳細資訊，請參閱**為什麼沒有 我的專案資料夾中的檔案取得部署所有？**中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx)。
+- 在**要部署的項目** 方塊中，**只有執行應用程式所需的檔案**已選取。 其他選項包括**這個專案中的所有檔案**或**此專案資料夾中的所有檔案**。 您避免部署原始程式碼檔案中，例如藉由保留預設選取項目保持不變。 此設定為包含 SQL Server Compact 的二進位檔案的資料夾必須包含在專案中的原因的原因。 如需有關這項設定的詳細資訊，請參閱**為什麼沒有 我的專案資料夾中的檔案取得部署所有？** 中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx)。
 - **排除產生偵錯符號**已選取。 您將不會使用這個組建組態時，偵錯。
 - **從應用程式中排除檔案\_資料資料夾**未選取。 您 SQL Server Compact 資料庫檔案的成員資格會在該資料夾中，您必須部署它。 當您部署不包含資料庫變更的更新時，您會選取此核取方塊。
 - **先行編譯此應用程式發行前的**未選取。 在大部分情況下，沒有需要先行編譯 web 應用程式專案。 如需有關這個選項的詳細資訊，請參閱[封裝/發行 Web 索引標籤中，專案屬性](https://msdn.microsoft.com/library/dd410108(v=vs.110).aspx)和[進階先行編譯設定 對話方塊](https://msdn.microsoft.com/library/hh475319(v=vs.110).aspx)。
@@ -64,9 +65,9 @@ ms.lasthandoff: 04/06/2018
 
 從部署中排除特定檔案或資料夾是常見的需求。另一個範例就是使用者可以上傳檔案的資料夾。 您不想記錄檔，或開發環境，以便部署到生產環境中所建立的檔案上傳。 如果您要部署更新到生產環境，您不想刪除檔案，存在於實際執行部署程序。 （根據如何設定部署選項，如果檔案存在於目的地站台但未在來源站台部署時，Web Deploy 刪除目的地。）
 
-如稍早在本教學課程中，您所見**要部署的項目**選項**封裝/發行 Web**  索引標籤設為**只需要執行此應用程式檔案**。 如此一來，可由開發中的 Elmah 的記錄檔將不會部署，這是您想要發生的情況。 (供部署，他們必須包含在專案及其**建置動作**屬性必須設為**內容**。 如需詳細資訊，請參閱**為什麼沒有 我的專案資料夾中的檔案取得部署所有？**中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx))。 不過，Web Deploy 不會建立資料夾在目的地網站中沒有至少一個要複製到該檔案。 因此，您會加入*.txt*檔案到資料夾，以做為預留位置，以便將複製的資料夾。
+如稍早在本教學課程中，您所見**要部署的項目**選項**封裝/發行 Web**  索引標籤設為**只需要執行此應用程式檔案**。 如此一來，可由開發中的 Elmah 的記錄檔將不會部署，這是您想要發生的情況。 (供部署，他們必須包含在專案及其**建置動作**屬性必須設為**內容**。 如需詳細資訊，請參閱**為什麼沒有 我的專案資料夾中的檔案取得部署所有？** 中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx))。 不過，Web Deploy 不會建立資料夾在目的地網站中沒有至少一個要複製到該檔案。 因此，您會加入 *.txt*檔案到資料夾，以做為預留位置，以便將複製的資料夾。
 
-在**方案總管 中**，以滑鼠右鍵按一下*Elmah*資料夾中，選取**加入新項目**，並建立名為*Placeholder.txt*。 放入其中的下列文字: 「 這是預留位置檔案，以確保取得部署資料夾 」。 然後儲存檔案。 這就是您必須執行才能確保，Visual Studio 會部署這個檔案和資料夾，因為**建置動作**屬性*.txt*檔設定成**內容**預設。
+在**方案總管 中**，以滑鼠右鍵按一下*Elmah*資料夾中，選取**加入新項目**，並建立名為*Placeholder.txt*。 放入其中的下列文字: 「 這是預留位置檔案，以確保取得部署資料夾 」。 然後儲存檔案。 這就是您必須執行才能確保，Visual Studio 會部署這個檔案和資料夾，因為**建置動作**屬性 *.txt*檔設定成**內容**預設。
 
 您現在已完成所有的部署設定工作。 在下一個教學課程中，將 Contoso 大學網站部署到測試環境和測試其存在。
 

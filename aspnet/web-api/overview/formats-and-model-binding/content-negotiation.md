@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/content-negotiation
-title: "內容交涉，ASP.NET Web API 中的 |Microsoft 文件"
+title: 內容交涉，ASP.NET Web API 中的 |Microsoft 文件
 author: MikeWasson
-description: "說明 ASP.NET Web API 的 HTTP 內容交涉的實作方式。"
+description: 說明 ASP.NET Web API 的 HTTP 內容交涉的實作方式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
 ms.openlocfilehash: ca373af6754e82889dc100b63f73b76aaa4e4f27
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507017"
 ---
 <a name="content-negotiation-in-aspnet-web-api"></a>ASP.NET Web API 中的內容交涉
 ====================
@@ -26,10 +27,10 @@ ms.lasthandoff: 11/10/2017
 
 HTTP 規格 (RFC 2616) 定義為 [有多種表示時選取最佳的表示法指定回應的處理。] 內容交涉 在 HTTP 內容交涉的主要機制都是這些要求標頭：
 
-- **接受：**媒體類型的可接受的回應，例如"應用程式/json"，"application/xml"或自訂的媒體類型，例如&quot;application/vnd.example+xml&quot;
-- **Accept-charset:**字元集都可接受的例如 utf-8 或 ISO 8859-1。
-- **編碼接受：**的內容編碼可接受的例如 gzip。
-- **接受語言：**慣用的自然語言，例如 「 en-us-我們"。
+- **接受：** 媒體類型的可接受的回應，例如"應用程式/json"，"application/xml"或自訂的媒體類型，例如&quot;application/vnd.example+xml&quot;
+- **Accept-charset:** 字元集都可接受的例如 utf-8 或 ISO 8859-1。
+- **編碼接受：** 的內容編碼可接受的例如 gzip。
+- **接受語言：** 慣用的自然語言，例如 「 en-us-我們"。
 
 伺服器也可以查看其他部分的 HTTP 要求。 例如，如果要求包含 X 要求的標頭，指出 AJAX 要求，伺服器可能會預設為 JSON 如果沒有 Accept 標頭。
 

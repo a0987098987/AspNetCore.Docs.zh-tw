@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
 ms.openlocfilehash: ac3568941eeef24bd9857c5787471aadea15fc7f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30875730"
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>使用控制器和檢視來實作詳細資料清單/UI
 ====================
@@ -99,8 +100,8 @@ ASP.NET MVC 包含功能強大的 URL 路由引擎提供很大的彈性來控制
 | */Dinners/Details/2* | DinnersController | Details(id) | id=2 |
 | */Dinners/Edit/5* | DinnersController | Edit(id) | id=5 |
 | */Dinners/Create* | DinnersController | Create （) | N/A |
-| */Dinners* | DinnersController | Index （) | N/A |
-| */Home* | HomeController | Index （) | N/A |
+| */ Dinners* | DinnersController | Index （) | N/A |
+| */ 首頁* | HomeController | Index （) | N/A |
 | */* | HomeController | Index （) | N/A |
 
 最後三個資料列會顯示預設值 (控制器 = 首頁，動作 = 索引，Id ="") 正在使用。 因為 「 索引 」 方法註冊為預設動作名稱，如果沒有指定，"/ Dinners"和"/home"Url 原因 index 動作方法的控制器類別上叫用。 「 組織 」 控制站登錄為預設的控制站中，如果未指定，因為"/"的 URL，則會導致要建立、 HomeController 和 index 動作方法上叫用。

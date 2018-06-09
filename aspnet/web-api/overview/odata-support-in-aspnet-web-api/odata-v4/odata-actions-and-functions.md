@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions
-title: "動作和函數中 OData v4 使用 ASP.NET Web API 2.2 |Microsoft 文件"
+title: 動作和函數中 OData v4 使用 ASP.NET Web API 2.2 |Microsoft 文件
 author: MikeWasson
-description: "在 OData 中，動作和函數是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 本教學課程示範如何..."
+description: 在 OData 中，動作和函數是加入伺服器端行為，不會輕易地定義為實體上的 CRUD 作業的方式。 本教學課程示範如何...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/27/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-actions-and-functions
 msc.type: authoredcontent
 ms.openlocfilehash: 532362f0c0faaaf0cb0c04726856f0497e5261b5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26508227"
 ---
 <a name="actions-and-functions-in-odata-v4-using-aspnet-web-api-22"></a>動作和函數中 OData v4 使用 ASP.NET Web API 2.2
 ====================
@@ -88,7 +89,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](odata-actions-and-functions/samples/sample6.cs)]
 
-請注意方法名稱比對的動作名稱。 **[HttpPost]**屬性會指定方法為 HTTP POST 方法。
+請注意方法名稱比對的動作名稱。 **[HttpPost]** 屬性會指定方法為 HTTP POST 方法。
 
 若要叫用動作時，用戶端會傳送 HTTP POST 要求，如下所示：
 
@@ -116,7 +117,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](odata-actions-and-functions/samples/sample11.cs)]
 
-請注意方法名稱的函數名稱相符。 **[HttpGet]**屬性會指定方法是 HTTP GET 的方法。
+請注意方法名稱的函數名稱相符。 **[HttpGet]** 屬性會指定方法是 HTTP GET 的方法。
 
 以下是 HTTP 回應：
 
@@ -136,7 +137,7 @@ ms.lasthandoff: 11/10/2017
 
 [!code-csharp[Main](odata-actions-and-functions/samples/sample14.cs)]
 
-並不重要的 Web API 控制器會放置在這個方法。 您無法將其置於`ProductsController`，或定義不同的控制站。 **[ODataRoute]**屬性定義的函式的 URI 範本。
+並不重要的 Web API 控制器會放置在這個方法。 您無法將其置於`ProductsController`，或定義不同的控制站。 **[ODataRoute]** 屬性定義的函式的 URI 範本。
 
 以下是用戶端的要求範例：
 

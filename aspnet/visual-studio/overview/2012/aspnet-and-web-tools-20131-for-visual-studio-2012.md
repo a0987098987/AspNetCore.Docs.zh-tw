@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
 ms.openlocfilehash: c11e2ef9c33b0cae1f196690533094ce1c342da5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036423"
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資訊
 ====================
@@ -31,7 +32,7 @@ by [Microsoft](https://github.com/microsoft)
 - [軟體需求](#requirements)
 - 在 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 中的新功能
 
-    - [Bootstrap](#bootstrap)
+    - [啟動程序](#bootstrap)
     - [範本](#templates)
 
         - [ASP.NET MVC 5 範本](#mvc5template)
@@ -66,7 +67,7 @@ by [Microsoft](https://github.com/microsoft)
 ## <a name="new-features-in-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>在 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 中的新功能
 
 <a id="bootstrap"></a>
-### <a name="bootstrap"></a>Bootstrap
+### <a name="bootstrap"></a>啟動程序
 
 當 add-migration MVC 5 控制器和檢視時，會使用 檢視標記[Bootstrap](http://getbootstrap.com/)。
 
@@ -168,7 +169,7 @@ NuGet 2.7 包含一組豐富的新功能所說明的詳細討論[NuGet 2.7 版�
 <a id="browseissue"></a>
 #### <a name="viewing-cshtml-file-withbrowse-withorf5causes-a-server-error"></a>檢視 cshtml 檔案 withBrowse WithorF5causes 伺服器錯誤
 
-當您在 Visual Studio 2012 （或在 Visual Studio 2012 的 MVC 5 建立專案，Visual Studio 2013 中開啟） 中建立的 MVC 5 專案，並嘗試使用瀏覽或 F5 cshtml 檔案即可檢視時，您會收到錯誤指出-**中發生伺服器錯誤'/' 應用程式**。 伺服器會嘗試瀏覽至`http://localhost:XXXX/Views/../XXXX.cshtml`
+當您在 Visual Studio 2012 （或在 Visual Studio 2012 的 MVC 5 建立專案，Visual Studio 2013 中開啟） 中建立的 MVC 5 專案，並嘗試使用瀏覽或 F5 cshtml 檔案即可檢視時，您會收到錯誤指出-**中發生伺服器錯誤'/' 應用程式**。 伺服器會嘗試瀏覽至 `http://localhost:XXXX/Views/../XXXX.cshtml`
 
 若要解決此問題，請變更**起始動作**在您的專案中設定**特定頁面**。 您不需要頁面提供的值。
 

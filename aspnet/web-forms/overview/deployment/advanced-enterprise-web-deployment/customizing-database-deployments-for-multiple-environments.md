@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
 ms.openlocfilehash: 06f22bc9a3068ee5621df62ee5ed1bea06d7e9e6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30881353"
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>自訂資料庫部署多個環境
 ====================
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 下表顯示不同的目的地環境的一般的部署設定。 不過，您的設定可能是您實際需求而有所不同。
 
-|  | Developer/Test | 臨時/整合 | 生產環境 |
+|  | 開發/測試 | 臨時/整合 | 生產環境 |
 | --- | --- | --- | --- |
 | **部署比較定序** | 原始程式檔 | 目標 | 目標 |
 | **部署資料庫屬性** | True | 只有第一次 | 只有第一次 |
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/06/2018
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
 3. 在**新的部署組態檔**對話方塊方塊中，讓檔案有意義的名稱 (例如， **TestEnvironment.sqldeployment**)，然後按一下 **儲存**。
-4. 在*[Filename] * * *.sqldeployment** 頁面上，設定部署屬性，以符合環境需求的目的地，並儲存檔案。
+4. 在 *[Filename] * * *.sqldeployment** 頁面上，設定部署屬性，以符合環境需求的目的地，並儲存檔案。
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
 5. 請注意新的檔案加入資料庫專案中的 [屬性] 資料夾。

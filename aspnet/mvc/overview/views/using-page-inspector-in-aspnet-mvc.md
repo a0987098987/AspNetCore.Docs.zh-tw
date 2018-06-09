@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
 ms.openlocfilehash: 5b443963a089f96a9dab11b7db4a25451075d6be
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034512"
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>在 ASP.NET MVC 中使用 Page Inspector
 ====================
@@ -269,7 +270,7 @@ Page Inspector 可以立即偵測到變更*Site.css*檔並且顯示在 更新列
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image50.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [簡介 Visual Studio 中的 ASP.NET MVC 4](../older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md) （ASP.net 網站）
 

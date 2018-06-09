@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
-title: "從.NET 用戶端 (C#) 呼叫 OData 服務 |Microsoft 文件"
+title: 從.NET 用戶端 (C#) 呼叫 OData 服務 |Microsoft 文件
 author: MikeWasson
-description: "本教學課程會示範如何從 C# 用戶端應用程式呼叫 OData 服務。 軟體版本用於教學課程的 Visual Studio 2013 （適用於 Visual S..."
+description: 本教學課程會示範如何從 C# 用戶端應用程式呼叫 OData 服務。 軟體版本用於教學課程的 Visual Studio 2013 （適用於 Visual S...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/26/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client
 msc.type: authoredcontent
 ms.openlocfilehash: 497102cfa98680f2156a56ff9e36d84b7c820020
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28042390"
 ---
 <a name="calling-an-odata-service-from-a-net-client-c"></a>從.NET 用戶端 (C#) 呼叫 OData 服務
 ====================
@@ -174,7 +175,7 @@ Select 子句可以包含相關的實體。 在此情況下，請勿呼叫**展�
 
 [!code-csharp[Main](calling-an-odata-service-from-a-net-client/samples/sample17.cs)]
 
-以下是對應的 OData 要求。 請注意，它包含**$expand**選項。
+以下是對應的 OData 要求。 請注意，它包含 **$expand**選項。
 
 [!code-console[Main](calling-an-odata-service-from-a-net-client/samples/sample18.cmd)]
 

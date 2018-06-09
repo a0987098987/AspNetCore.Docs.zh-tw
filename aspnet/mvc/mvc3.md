@@ -2,7 +2,7 @@
 uid: mvc/mvc3
 title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
-description: "(包含 2011 年 4 月更新工具)ASP.NET MVC 3 是用於建置使用信譽良好的設計模式的可擴充、 以標準為基礎的 web 應用程式的架構..."
+description: (包含 2011 年 4 月更新工具)ASP.NET MVC 3 是用於建置使用信譽良好的設計模式的可擴充、 以標準為基礎的 web 應用程式的架構...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2010
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/mvc3
 msc.type: content
 ms.openlocfilehash: c7eee987b28a5d7f8b40fe89a7bf7517ec06646f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034733"
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -128,8 +129,8 @@ ASP.NET MVC 3 隨附新的檢視引擎，名為 Razor，提供下列優點：
 
 某些新的 Razor 功能包括下列各項：
 
-- `@model`指定要傳遞到檢視類型的語法。
-- `@* *@`註解語法。
+- `@model` 指定要傳遞到檢視類型的語法。
+- `@* *@` 註解語法。
 - 指定預設值的功能 (例如`layoutpage`) 一次完整的站台。
 - `Html.Raw`方法而不進行 HTML 編碼的文字顯示它。
 - 支援多個檢視之間共用程式碼 (*\_viewstart.cshtml*或 *\_viewstart.vbhtml*檔案)。

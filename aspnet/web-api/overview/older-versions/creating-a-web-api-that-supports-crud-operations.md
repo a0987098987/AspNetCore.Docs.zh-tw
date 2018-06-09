@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
 ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "29153004"
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>啟用 ASP.NET Web API 1 中的 CRUD 作業
 ====================
@@ -42,11 +43,11 @@ ms.lasthandoff: 02/12/2018
 | 動作 | HTTP 方法 | 相對 URI |
 | --- | --- | --- |
 | 取得所有產品的清單 | GET | / api/產品 |
-| 取得產品識別碼 | GET | /api/products/*id* |
+| 取得產品識別碼 | GET | /api/產品/*識別碼* |
 | 取得產品類別目錄 | GET | /api/products?category=*category* |
 | 建立新的產品 | POST | / api/產品 |
-| 產品更新 | PUT | /api/products/*id* |
-| 刪除產品 | DELETE | /api/products/*id* |
+| 產品更新 | PUT | /api/產品/*識別碼* |
+| 刪除產品 | DELETE | /api/產品/*識別碼* |
 
 請注意，部分 Uri 的路徑中包含產品識別碼。 例如，若要取得其識別碼為 28 的產品，用戶端會傳送 GET 要求`http://hostname/api/products/28`。
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 02/12/2018
 | 資源 | URI |
 | --- | --- |
 | 所有產品的清單。 | / api/產品 |
-| 個別產品。 | /api/products/*id* |
+| 個別產品。 | /api/產品/*識別碼* |
 
 ### <a name="methods"></a>方法
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 02/12/2018
 
 ProductStore api 中，我們的資料組成產品，因此我們將建立新的類別，名為`Product`。
 
-如果沒有顯示 方案總管 中，按一下**檢視**功能表，然後選取**方案總管 中**。 在 [方案總管] 中，以滑鼠右鍵按一下**模型**資料夾。 從內容 meny 中，選取**新增**，然後選取**類別**。 將類別&quot;產品&quot;。
+如果沒有顯示 [方案總管] 中，按一下**檢視**功能表，然後選取**方案總管 中**。 在 [方案總管] 中，以滑鼠右鍵按一下**模型**資料夾。 從內容 meny 中，選取**新增**，然後選取**類別**。 將類別&quot;產品&quot;。
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image3.png)
 
@@ -127,7 +128,7 @@ ProductStore api 中，我們的資料組成產品，因此我們將建立新的
 
 繼續進行和刪除 ValuesController，以滑鼠右鍵按一下方案總管 中的檔案，然後選取**刪除。** 現在加入新的控制站，如下所示：
 
-在**方案總管 中**，以滑鼠右鍵按一下 控制器 資料夾。 選取**新增**，然後選取 **控制器**。
+在**方案總管 中**，以滑鼠右鍵按一下 [控制器] 資料夾。 選取**新增**，然後選取 **控制器**。
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image6.png)
 
@@ -158,7 +159,7 @@ ProductStore API 會公開數個&quot;讀取&quot;HTTP GET 方法的動作。 �
 | 動作 | HTTP 方法 | 相對 URI |
 | --- | --- | --- |
 | 取得所有產品的清單 | GET | / api/產品 |
-| 取得產品識別碼 | GET | /api/products/*id* |
+| 取得產品識別碼 | GET | /api/產品/*識別碼* |
 | 取得產品類別目錄 | GET | /api/products?category=*category* |
 
 若要取得所有產品的清單，請將此方法加入`ProductsController`類別：
@@ -194,8 +195,8 @@ GetProduct 方法擲回例外狀況型別的**HttpResponseException**如果*識�
 
 這項實作也能運作，但還不算完整。 在理想情況下，我們都希望 HTTP 回應對包括下列各項：
 
-- **回應碼：**根據預設，Web API framework 設定回應狀態碼 200 （確定）。 但是，根據 HTTP/1.1 通訊協定，POST 要求所產生的資源，建立伺服器應該回覆狀態 201 （已建立）。
-- **位置：**當伺服器建立資源時，它應該包含新資源的 URI 回應的位置標頭中。
+- **回應碼：** 根據預設，Web API framework 設定回應狀態碼 200 （確定）。 但是，根據 HTTP/1.1 通訊協定，POST 要求所產生的資源，建立伺服器應該回覆狀態 201 （已建立）。
+- **位置：** 當伺服器建立資源時，它應該包含新資源的 URI 回應的位置標頭中。
 
 ASP.NET Web API 輕鬆地操作 HTTP 回應訊息。 以下是改進的實作：
 

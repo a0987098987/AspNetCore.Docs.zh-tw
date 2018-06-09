@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/advanced/custom-mvc-templates
-title: "自訂的 MVC 範本 |Microsoft 文件"
+title: 自訂的 MVC 範本 |Microsoft 文件
 author: joeloff
-description: "建立範本當做 VSIX 擴充功能。"
+description: 建立範本當做 VSIX 擴充功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/10/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
 ms.openlocfilehash: c3ddd4e341511f520927e924b25d890088adb69e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034603"
 ---
 <a name="custom-mvc-template"></a>自訂的 MVC 範本
 ====================
@@ -79,9 +80,9 @@ MVC 3 Tools Update for Visual Studio 2010 的版本導入了 MVC 專案的個別
 
 ![開啟對話方塊](custom-mvc-templates/_static/image7.jpg)
 
-建立**&lt;資產&gt;**元素並加入**&lt;資產&gt;**元素必須包含在 VSIX 中的每個檔案。 **類型**每個屬性**&lt;資產&gt;**元素必須設定為**Microsoft.VisualStudio.Mvc.Template**。 這是僅限 MVC 專案精靈了解自訂命名空間。 請參閱 VSIX 2.0 結構描述文件上的結構與配置資訊清單檔案的其他資訊。
+建立**&lt;資產&gt;** 元素並加入**&lt;資產&gt;** 元素必須包含在 VSIX 中的每個檔案。 **類型**每個屬性**&lt;資產&gt;** 元素必須設定為**Microsoft.VisualStudio.Mvc.Template**。 這是僅限 MVC 專案精靈了解自訂命名空間。 請參閱 VSIX 2.0 結構描述文件上的結構與配置資訊清單檔案的其他資訊。
 
-只將檔案加入至 VSIX 不足以向 MVC 精靈中的範本。 您需要為 MVC 精靈提供的範本名稱、 描述、 支援的檢視引擎和程式設計語言等資訊。 這項資訊會在相關聯的自訂屬性執行**&lt;資產&gt;**每個項目**vstemplate**檔案。
+只將檔案加入至 VSIX 不足以向 MVC 精靈中的範本。 您需要為 MVC 精靈提供的範本名稱、 描述、 支援的檢視引擎和程式設計語言等資訊。 這項資訊會在相關聯的自訂屬性執行**&lt;資產&gt;** 每個項目**vstemplate**檔案。
 
 &lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
@@ -93,7 +94,7 @@ Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWe
 
 ProjectType=&quot;MVC&quot;
 
-Language=&quot;C#&quot;
+語言 =&quot;C#&quot;
 
 ViewEngine=&quot;Aspx&quot;
 
@@ -103,7 +104,7 @@ TemplateId=&quot;MyMvcApplication&quot;
 
 描述 =&quot;自訂範本衍生自基本 MVC web 應用程式 (Razor)&quot;
 
-Version=&quot;4.0&quot;/&gt;
+版本 =&quot;4.0&quot;/&gt;
 
 以下是必須要有自訂屬性的說明：
 
@@ -114,7 +115,7 @@ Version=&quot;4.0&quot;/&gt;
 - **標題**指定每個專案範本下方 MVC 精靈中顯示的簡短描述。
 - **描述**指定範本的更詳細描述。
 
-您已加入資訊清單的所有檔案，並儲存它，您會注意到之後**資產**設計工具中的索引標籤會顯示所有檔案，但不是自訂屬性都加入至您**&lt;資產&gt;**元素**vstemplate**檔案。
+您已加入資訊清單的所有檔案，並儲存它，您會注意到之後**資產**設計工具中的索引標籤會顯示所有檔案，但不是自訂屬性都加入至您**&lt;資產&gt;** 元素**vstemplate**檔案。
 
 ![專案設計工具的資產](custom-mvc-templates/_static/image8.jpg)
 
@@ -124,7 +125,7 @@ Version=&quot;4.0&quot;/&gt;
 
 ![VSIX 安裝程式](custom-mvc-templates/_static/image9.jpg)
 
-從功能表中，選取**工具 > 擴充功能和更新**若要確認已安裝您的擴充功能。 如果 VSIX 安裝程式在安裝擴充功能期間報告任何錯誤，您可以檢視 VSIX 安裝程式記錄檔，如需詳細資訊。 記錄檔通常會建立在**%temp%**安裝擴充功能，例如使用者資料夾**C:\Users\Bob\AppData\Local\Temp**。
+從功能表中，選取**工具 > 擴充功能和更新**若要確認已安裝您的擴充功能。 如果 VSIX 安裝程式在安裝擴充功能期間報告任何錯誤，您可以檢視 VSIX 安裝程式記錄檔，如需詳細資訊。 記錄檔通常會建立在 **%temp%** 安裝擴充功能，例如使用者資料夾**C:\Users\Bob\AppData\Local\Temp**。
 
 ![擴充功能和更新](custom-mvc-templates/_static/image10.jpg)
 

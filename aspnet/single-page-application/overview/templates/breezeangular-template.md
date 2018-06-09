@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/breezeangular-template
-title: "幫助您輕鬆/Angular 範本 |Microsoft 文件"
+title: 幫助您輕鬆/Angular 範本 |Microsoft 文件
 author: madskristensen
-description: "幫助您輕鬆/Angular 單一網頁應用程式範本"
+description: 幫助您輕鬆/Angular 單一網頁應用程式範本
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/08/2013
 ms.topic: article
 ms.assetid: db31e909-563a-4516-aadd-62aa210ac7e4
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/breezeangular-template
 msc.type: authoredcontent
 ms.openlocfilehash: faf28a510a83b7fa07585904344176601c2e1f34
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506687"
 ---
 <a name="breezeangular-template"></a>幫助您輕鬆/Angular 範本
 ====================
@@ -62,7 +63,7 @@ ms.lasthandoff: 11/10/2017
 
 下載並安裝的範本，按一下下載按鈕上方。 範本會封裝成 Visual Studio 擴充功能 (VSIX) 檔案。 您可能需要重新啟動 Visual Studio。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
 
 在**新專案**精靈中，選取**幫助您輕鬆角度 SPA**。
 

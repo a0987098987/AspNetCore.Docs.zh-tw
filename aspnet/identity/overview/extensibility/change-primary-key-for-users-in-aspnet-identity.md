@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
-title: "變更主索引鍵中 ASP.NET 識別的使用者 |Microsoft 文件"
+title: 變更主索引鍵中 ASP.NET 識別的使用者 |Microsoft 文件
 author: tfitzmac
-description: "在 Visual Studio 2013 中，預設 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 識別可讓您變更的類型..."
+description: 在 Visual Studio 2013 中，預設 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 識別可讓您變更的類型...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/30/2014
 ms.topic: article
 ms.assetid: 44925849-5762-4504-a8cd-8f0cd06f6dc3
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 79812efb4de2461fad3765d6005bbd20393e62b2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26498227"
 ---
 <a name="change-primary-key-for-users-in-aspnet-identity"></a>在 ASP.NET Identity 中的使用者變更主索引鍵
 ====================
@@ -120,7 +121,7 @@ ThrowIfV1Schema 參數不再有效的建構函式中。 變更建構函式，讓
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample10.cs?highlight=5,9)]
 
-**Manage(ManageUserViewModel)**方法
+**Manage(ManageUserViewModel)** 方法
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample11.cs?highlight=11,17,41)]
 
@@ -275,7 +276,7 @@ Web Form 的 Update 3，您要變更之下列頁面。
 <a id="other"></a>
 ## <a name="other-resources"></a>其他資源
 
-- [ASP.NET 識別的自訂儲存體提供者的概觀](overview-of-custom-storage-providers-for-aspnet-identity.md)
-- [從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
+- [ASP.NET Identity 的自訂儲存體提供者概觀](overview-of-custom-storage-providers-for-aspnet-identity.md)
+- [將現有的網站從 SQL 成員資格移轉至 ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
 - [成員資格和 ASP.NET 識別的使用者設定檔通用的提供者資料移轉](../migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)
 - [範例應用程式](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/ChangePK/readme.txt)已變更的主索引鍵

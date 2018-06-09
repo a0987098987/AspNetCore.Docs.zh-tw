@@ -1,22 +1,23 @@
 ---
 uid: visual-studio/overview/2013/creating-web-projects-in-visual-studio
-title: "建立 ASP.NET Web 專案在 Visual Studio 2013 |Microsoft 文件"
+title: 建立 ASP.NET Web 專案在 Visual Studio 2013 |Microsoft 文件
 author: tdykstra
-description: "本主題說明在 Visual Studio 2013 與此處 Update 3 中建立 ASP.NET web 專案的選項是 web 開發 c 的新功能的一些..."
+description: 本主題說明在 Visual Studio 2013 與此處 Update 3 中建立 ASP.NET web 專案的選項是 web 開發 c 的新功能的一些...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/01/2014
 ms.topic: article
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
 ms.openlocfilehash: aacae7a9ccf483b21d3c6796c0411d558fa3c75b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28038861"
 ---
 <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>在 Visual Studio 2013 中建立 ASP.NET Web 專案
 ====================
@@ -124,7 +125,7 @@ Visual Studio 2013.NET 4.5 或更新版本的.NET framework 為目標的專案�
 <a id="empty"></a>
 ### <a name="empty-template"></a>空白的範本
 
-空白範本提供 ASP.NET web 應用程式，例如專案檔案的檔案和裸機最小的資料夾 (*.csproj*或。*vbproj*) 和*Web.config*檔案。 您可以使用下方的核取方塊，以新增支援 Web Forms、 MVC，及/或 Web API**加入資料夾和核心參考：**標籤。
+空白範本提供 ASP.NET web 應用程式，例如專案檔案的檔案和裸機最小的資料夾 (*.csproj*或。*vbproj*) 和*Web.config*檔案。 您可以使用下方的核取方塊，以新增支援 Web Forms、 MVC，及/或 Web API**加入資料夾和核心參考：** 標籤。
 
 用於空白的範本未驗證選項可用。 範例應用程式中實作驗證功能和空白的範本並不會建立範例應用程式。
 
@@ -243,7 +244,7 @@ Visual Studio 2013 專案範本使用[Bootstrap](http://getbootstrap.com/)，Twi
 
 您也可以使用啟動程序的主題設定功能，以輕鬆地促使應用程式的外觀及操作中的變更。 例如，您可以執行下列步驟來變更佈景主題。
 
-1. 在您的瀏覽器，移至[http://Bootswatch.com](http://Bootswatch.com)，選擇的佈景主題，然後按一下**下載**。 (這會下載*bootstrap.min.css*依預設，如果您想要檢查 CSS 程式碼，取得*bootstrap.css*而不是縮短的版本。)
+1. 在您的瀏覽器，移至[ http://Bootswatch.com ](http://Bootswatch.com)，選擇的佈景主題，然後按一下**下載**。 (這會下載*bootstrap.min.css*依預設，如果您想要檢查 CSS 程式碼，取得*bootstrap.css*而不是縮短的版本。)
 2. 複製下載的 CSS 檔案的內容。
 3. 在 Visual Studio 中，建立新**樣式表**檔名為*bootstrap theme.css*中*內容*到其中的資料夾，然後貼上下載 CSS 程式碼。
 4. 開啟*應用程式\_Start/Bundle.config*並變更*bootstrap.css*至*bootstrap theme.css*。
@@ -426,4 +427,4 @@ Visual Studio 2013 提供多種的驗證選項，Web Form、 MVC、 和 Web API 
 <a id="nextsteps"></a>
 ## <a name="next-steps"></a>後續步驟
 
-本文件提供一些基本說明在 Visual Studio 2013 中建立新的 ASP.NET web 專案。 如需使用 Visual studio 針對 web 程式開發的詳細資訊，請參閱[https://www.asp.net/visual-studio/](../../index.md)。
+本文件提供一些基本說明在 Visual Studio 2013 中建立新的 ASP.NET web 專案。 如需使用 Visual studio 針對 web 程式開發的詳細資訊，請參閱[ https://www.asp.net/visual-studio/ ](../../index.md)。

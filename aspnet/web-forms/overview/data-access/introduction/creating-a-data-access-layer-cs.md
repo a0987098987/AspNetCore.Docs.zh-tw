@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 7e1a457c23ef659bf7ee9c15b66dc5c2d8a31416
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30891460"
 ---
 <a name="creating-a-data-access-layer-c"></a>建立資料存取層 (C#)
 ====================
@@ -77,7 +78,7 @@ ms.lasthandoff: 04/06/2018
 
 基礎資料來源，例如建立資料庫的連接特有的所有程式碼發出**選取**，**插入**，**更新**，和**刪除**DAL 應該位命令，依此類推。 展示層不應該包含這類資料存取程式碼中，任何參考，但應該改進行所有的資料要求的 DAL 呼叫。 資料存取層級通常包含存取基礎資料庫資料的方法。 Northwind 資料庫中，例如，具有**產品**和**類別**記錄的產品銷售和其所屬的類別目錄的資料表。 在我們 DAL 我們將會有類似的方法：
 
-- **GetCategories()，**這會傳回有關所有的分類資訊
+- **GetCategories()，** 這會傳回有關所有的分類資訊
 - **GetProducts()**，這會傳回所有產品的相關資訊
 - **GetProductsByCategoryID (*categoryID*)**，這會傳回屬於指定類別的所有產品
 - **GetProductByProductID (*productID*)**，這會傳回特定產品的相關資訊
@@ -124,7 +125,7 @@ TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫�
 **圖 5**： 從下拉式清單中選擇 Northwind 資料庫 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image13.png))
 
 
-之後選取資料庫，然後按一下 下一步，您將需要在想要儲存的連接字串中**Web.config**檔案。 儲存連接字串中，您可避免將它永久的自動程式碼中的 TableAdapter 類別，可簡化作業，如果連接字串資訊在未來變更。 如果您選擇將連接字串儲存在組態檔中將它放在**&lt;connectionStrings&gt;**區段中，它可以是[選擇性地加密](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)以改進安全性或修改過，稍後透過在 IIS GUI 管理工具中，這是系統管理員更理想新的 ASP.NET 2.0 屬性頁。
+之後選取資料庫，然後按一下 下一步，您將需要在想要儲存的連接字串中**Web.config**檔案。 儲存連接字串中，您可避免將它永久的自動程式碼中的 TableAdapter 類別，可簡化作業，如果連接字串資訊在未來變更。 如果您選擇將連接字串儲存在組態檔中將它放在**&lt;connectionStrings&gt;** 區段中，它可以是[選擇性地加密](http://aspnet.4guysfromrolla.com/articles/021506-1.aspx)以改進安全性或修改過，稍後透過在 IIS GUI 管理工具中，這是系統管理員更理想新的 ASP.NET 2.0 屬性頁。
 
 
 [![將連接字串儲存至 Web.config](creating-a-data-access-layer-cs/_static/image15.png)](creating-a-data-access-layer-cs/_static/image14.png)
@@ -168,12 +169,12 @@ TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫�
 
 驗證之後的進階的選項，按一下 [下一步] 繼續進行最後的畫面。 這裡我們必須選取要加入至 TableAdapter 方法。 有兩種模式，用來填入資料：
 
-- **填入 DataTable**透過這種方式建立方法接受 DataTable 做為參數，並於其中填入它根據查詢的結果。 ADO.NET 資料配接器類別，例如，實作此模式與其**fill （)**方法。
+- **填入 DataTable**透過這種方式建立方法接受 DataTable 做為參數，並於其中填入它根據查詢的結果。 ADO.NET 資料配接器類別，例如，實作此模式與其**fill （)** 方法。
 - **傳回 DataTable**透過這種方式方法會建立並為您填入 DataTable 並傳回該方法會傳回值。
 
 您可以實作一或兩種模式的 TableAdapter。 您也可以重新命名此處提供的方法。 即使我們只會用在整個這些教學課程的第二種模式，讓我們保留選取此選項，這兩個核取方塊。 此外，請重新命名而不是泛型**GetData**方法**GetProducts**。
 
-如果選取此選項，最後一個核取方塊，「"GenerateDBDirectMethods，會建立**insert**， **update （)**，和**delete （)** TableAdapter 方法。 如果您核取此選項，所有更新都必須透過 TableAdapter 的唯一**update （)**採用型別資料集、 DataTable、 單一資料列中或陣列中的資料行的方法。 (如果您未選取的 「 產生 Insert、 Update 和 Delete 陳述式 」 選項圖 9 中的進階屬性從這個核取方塊設定沒有任何作用。)讓我們保留選取此核取方塊。
+如果選取此選項，最後一個核取方塊，「"GenerateDBDirectMethods，會建立**insert**， **update （)**，和**delete （)** TableAdapter 方法。 如果您核取此選項，所有更新都必須透過 TableAdapter 的唯一**update （)** 採用型別資料集、 DataTable、 單一資料列中或陣列中的資料行的方法。 (如果您未選取的 「 產生 Insert、 Update 和 Delete 陳述式 」 選項圖 9 中的進階屬性從這個核取方塊設定沒有任何作用。)讓我們保留選取此核取方塊。
 
 
 [![GetData 方法名稱為 GetProducts 變更](creating-a-data-access-layer-cs/_static/image30.png)](creating-a-data-access-layer-cs/_static/image29.png)
@@ -181,7 +182,7 @@ TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫�
 **圖 11**： 將方法名稱，從**GetData**至**GetProducts** ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image31.png))
 
 
-完成精靈，按一下 [完成]。 關閉精靈之後，我們會傳回 DataSet 設計工具會顯示我們剛才建立的 DataTable。 您可以查看中的資料行清單**產品**DataTable (**ProductID**， **ProductName**等等)，以及方法的**ProductsTableAdapter** (**fill （)**和**GetProducts()**)。
+完成精靈，按一下 [完成]。 關閉精靈之後，我們會傳回 DataSet 設計工具會顯示我們剛才建立的 DataTable。 您可以查看中的資料行清單**產品**DataTable (**ProductID**， **ProductName**等等)，以及方法的**ProductsTableAdapter** (**fill （)** 和**GetProducts()**)。
 
 
 [![產品 DataTable 和 ProductsTableAdapter 已新增至輸入資料集](creating-a-data-access-layer-cs/_static/image33.png)](creating-a-data-access-layer-cs/_static/image32.png)
@@ -189,13 +190,13 @@ TableAdapter 組態精靈一開始會提示您選取要使用哪一個資料庫�
 **圖 12**:**產品**DataTable 和**ProductsTableAdapter**已新增至輸入資料集 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image34.png))
 
 
-我們現在有單一的 datatable 的型別資料集 (**Northwind.Products**) 和強型別資料配接器類別 (**NorthwindTableAdapters.ProductsTableAdapter**) 與**GetProducts()**方法。 這些物件可以用來從類似的程式碼存取的所有產品的清單：
+我們現在有單一的 datatable 的型別資料集 (**Northwind.Products**) 和強型別資料配接器類別 (**NorthwindTableAdapters.ProductsTableAdapter**) 與**GetProducts()** 方法。 這些物件可以用來從類似的程式碼存取的所有產品的清單：
 
 [!code-html[Main](creating-a-data-access-layer-cs/samples/sample1.html)]
 
 此程式碼不需要我們寫入的資料存取特定的程式碼的一個位元。 我們不需要任何 ADO.NET 類別具現化，我們沒有任何連接字串，SQL 查詢，請參閱或預存程序。 相反地，TableAdapter 會為我們提供低階資料存取程式碼。
 
-此範例中使用每個物件也是強型別，可讓 Visual Studio 提供 IntelliSense 和編譯時間類型檢查。 最棒的是 TableAdapter 所傳回的所有通用值可以繫結至 ASP.NET Web 控制項，例如 GridView、 DetailsView、 DropDownList、 CheckBoxList，和其他的資料。 下列範例會說明繫結所傳回 DataTable **GetProducts()**方法，以只掃描三行程式碼內的 GridView**頁面\_負載**事件處理常式。
+此範例中使用每個物件也是強型別，可讓 Visual Studio 提供 IntelliSense 和編譯時間類型檢查。 最棒的是 TableAdapter 所傳回的所有通用值可以繫結至 ASP.NET Web 控制項，例如 GridView、 DetailsView、 DropDownList、 CheckBoxList，和其他的資料。 下列範例會說明繫結所傳回 DataTable **GetProducts()** 方法，以只掃描三行程式碼內的 GridView**頁面\_負載**事件處理常式。
 
 AllProducts.aspx
 
@@ -217,7 +218,7 @@ AllProducts.aspx.cs
 
 此時我們**ProductsTableAdapter**類別具有一種方法，但**GetProducts()**，它會傳回所有產品在資料庫中。 雖然無法使用的所有產品很明確有用的但有些的時候我們會想要擷取特定產品或屬於特定類別的所有產品的相關資訊。 將這類功能加入至我們的資料存取層中，我們可以將參數化的方法加入 TableAdapter。
 
-讓我們加入**GetProductsByCategoryID (*categoryID*)**方法。 若要將新方法新增至 DAL 返回 DataSet 設計工具中，以滑鼠右鍵按一下**ProductsTableAdapter**區段，然後選擇 加入查詢。
+讓我們加入**GetProductsByCategoryID (*categoryID*)** 方法。 若要將新方法新增至 DAL 返回 DataSet 設計工具中，以滑鼠右鍵按一下**ProductsTableAdapter**區段，然後選擇 加入查詢。
 
 
 ![TableAdapter 上按一下滑鼠右鍵，然後選擇 新增查詢](creating-a-data-access-layer-cs/_static/image38.png)
@@ -257,7 +258,7 @@ AllProducts.aspx.cs
 **圖 18**: 產品可以立即查詢依類別目錄
 
 
-請花一點時間加入**GetProductByProductID (*productID*)**方法使用相同的技巧。
+請花一點時間加入**GetProductByProductID (*productID*)** 方法使用相同的技巧。
 
 您可以測試這些參數化的查詢，直接從 DataSet 設計工具。 TableAdapter 中的方法上按一下滑鼠右鍵，然後選擇 預覽資料。 接下來，輸入要使用的參數，並按一下 [預覽] 的值。
 
@@ -267,7 +268,7 @@ AllProducts.aspx.cs
 **圖 19**： 會顯示那些產品屬於 「 飲料 」 分類 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image51.png))
 
 
-與**GetProductsByCategoryID (*categoryID*)**方法我們 DAL 中的，我們現在可以建立 ASP.NET 網頁，只會顯示這些產品指定類別中。 下列範例會顯示所有產品中的飲料類別目錄中，具有**CategoryID**為 1。
+與**GetProductsByCategoryID (*categoryID*)** 方法我們 DAL 中的，我們現在可以建立 ASP.NET 網頁，只會顯示這些產品指定類別中。 下列範例會顯示所有產品中的飲料類別目錄中，具有**CategoryID**為 1。
 
 Beverages.asp
 
@@ -301,7 +302,7 @@ Beverages.aspx.cs
 **圖 22**： 與資料庫同步的所有變更時叫用 Update 方法 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image60.png))
 
 
-TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直接模式。 因為我們的 「 產生 Insert、 Update 和 Delete 陳述式 」 選項從進階屬性建立時選取我們的 TableAdapter， **ProductsTableAdapter**包含**update （)**方法它會實作批次更新模式。 具體來說，TableAdapter 包含**update （)**類型 DataSet、 DataTable 強型別或一或多個資料行可以傳遞的方法。 如果您保留 「 GenerateDBDirectMethods 」 核取當第一次建立 TableAdapter 的 DB 直接模式將也會實作透過**insert**， **update （)**，和**delete （)**方法。
+TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直接模式。 因為我們的 「 產生 Insert、 Update 和 Delete 陳述式 」 選項從進階屬性建立時選取我們的 TableAdapter， **ProductsTableAdapter**包含**update （)** 方法它會實作批次更新模式。 具體來說，TableAdapter 包含**update （)** 類型 DataSet、 DataTable 強型別或一或多個資料行可以傳遞的方法。 如果您保留 「 GenerateDBDirectMethods 」 核取當第一次建立 TableAdapter 的 DB 直接模式將也會實作透過**insert**， **update （)**，和**delete （)** 方法。
 
 這兩個資料修改模式使用 TableAdapter 的**InsertCommand**， **UpdateCommand**，和**DeleteCommand**屬性，以發出其**插入**，**更新**，和**刪除**命令至資料庫。 您可以檢查和修改**InsertCommand**， **UpdateCommand**，和**DeleteCommand** DataSet 設計工具的 TableAdapter 上按一下，然後繼續屬性以 [屬性] 視窗中。 (請確定您已選取的 TableAdapter，而且**ProductsTableAdapter**物件是在 [屬性] 視窗中的下拉式清單中選取。)
 
@@ -329,7 +330,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 ## <a name="creating-custom-insert-update-and-delete-methods"></a>建立自訂 Insert、 Update 和 Delete 方法
 
-**Insert**， **update （)**，和**delete** DB 直接方法所建立的方法可以是一個位元很麻煩，特別是針對包含許多資料行的資料表。 查看先前的程式碼範例中，沒有 IntelliSense 的協助它並不特別清楚什麼**產品**資料表資料行對應至每個輸入參數**update （)**和**insert （)**方法。 有時候我們可能只想要更新單一資料行或兩個，或想要自訂**insert**方法可能會傳回新插入的記錄的值**識別**（自動遞增）欄位。
+**Insert**， **update （)**，和**delete** DB 直接方法所建立的方法可以是一個位元很麻煩，特別是針對包含許多資料行的資料表。 查看先前的程式碼範例中，沒有 IntelliSense 的協助它並不特別清楚什麼**產品**資料表資料行對應至每個輸入參數**update （)** 和**insert （)** 方法。 有時候我們可能只想要更新單一資料行或兩個，或想要自訂**insert**方法可能會傳回新插入的記錄的值**識別**（自動遞增）欄位。
 
 若要建立自訂方法，返回 DataSet 設計工具。 TableAdapter 上按一下滑鼠右鍵，然後選擇 加入查詢，返回 Tabaleadapter 精靈。 在第二個畫面中，我們可以指示來建立查詢的類型。 讓我們來建立的方法加入新的產品，然後傳回新加入的記錄的值**ProductID**。 因此，若要建立選擇**插入**查詢。
 
@@ -339,12 +340,12 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 **圖 25**： 建立方法以加入新的資料列至**產品**資料表 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image69.png))
 
 
-在下一個畫面**InsertCommand**的**CommandText**隨即出現。 藉由新增擴充此查詢**選取範圍\_IDENTITY()**在查詢的結束時，它會傳回插入的最後一個識別值**識別**相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/library/ms190315.aspx)如需有關**範圍\_IDENTITY()**以及為什麼您可能想要[使用範圍\_替代 IDENTITY() @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).)請確定您結束**插入**以分號分隔的陳述式，然後再加入**選取**陳述式。
+在下一個畫面**InsertCommand**的**CommandText**隨即出現。 藉由新增擴充此查詢**選取範圍\_IDENTITY()** 在查詢的結束時，它會傳回插入的最後一個識別值**識別**相同範圍中的資料行。 (請參閱[技術文件](https://msdn.microsoft.com/library/ms190315.aspx)如需有關**範圍\_IDENTITY()** 以及為什麼您可能想要[使用範圍\_替代 IDENTITY() @@IDENTITY](http://weblogs.sqlteam.com/travisl/archive/2003/10/29/405.aspx).)請確定您結束**插入**以分號分隔的陳述式，然後再加入**選取**陳述式。
 
 
 [![加強查詢傳回 scope_identity （） 值](creating-a-data-access-layer-cs/_static/image71.png)](creating-a-data-access-layer-cs/_static/image70.png)
 
-**圖 26**： 加強查詢以傳回**範圍\_IDENTITY()**值 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image72.png))
+**圖 26**： 加強查詢以傳回**範圍\_IDENTITY()** 值 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image72.png))
 
 
 最後，命名為新方法**InsertProduct**。
@@ -373,17 +374,17 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 請注意， **ProductsTableAdapters**類別會傳回**CategoryID**和**SupplierID**值從**產品**資料表，但不包含**CategoryName**資料行從**類別**資料表或**CompanyName**資料行從**供應商**資料表中，雖然這些可能是我們想要顯示產品的相關資訊時顯示的資料行。 我們可以擴充 TableAdapter 的第一個方法， **GetProducts()**，以同時包含**CategoryName**和**CompanyName**資料行值，將會更新強型別來包含這些新資料行以及 DataTable。
 
-這可能會造成問題，不過，為 TableAdapter 的方法來插入、 更新和刪除資料會根據這個初始的方法。 幸運的是，自動產生的方法為插入、 更新及刪除未受到中的子查詢**選取**子句。 所要加入我們的查詢處理**類別**和**供應商**成子查詢，而非**聯結**s，我們將會避免重做這些修改資料的方法。 以滑鼠右鍵按一下**GetProducts()**方法中的**ProductsTableAdapter**並選擇 [設定]。 然後，調整**選取**子句，使它看起來像：
+這可能會造成問題，不過，為 TableAdapter 的方法來插入、 更新和刪除資料會根據這個初始的方法。 幸運的是，自動產生的方法為插入、 更新及刪除未受到中的子查詢**選取**子句。 所要加入我們的查詢處理**類別**和**供應商**成子查詢，而非**聯結**s，我們將會避免重做這些修改資料的方法。 以滑鼠右鍵按一下**GetProducts()** 方法中的**ProductsTableAdapter**並選擇 [設定]。 然後，調整**選取**子句，使它看起來像：
 
 [!code-sql[Main](creating-a-data-access-layer-cs/samples/sample9.sql)]
 
 
 [![SELECT 陳述式更新 GetProducts() 方法](creating-a-data-access-layer-cs/_static/image80.png)](creating-a-data-access-layer-cs/_static/image79.png)
 
-**圖 29**： 更新**選取**陳述式**GetProducts()**方法 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image81.png))
+**圖 29**： 更新**選取**陳述式**GetProducts()** 方法 ([按一下以檢視完整大小的影像](creating-a-data-access-layer-cs/_static/image81.png))
 
 
-在更新之後， **GetProducts()**方法，以使用這個資料表會包含兩個新的資料行的新查詢： **CategoryName**和**供應商名稱**。
+在更新之後， **GetProducts()** 方法，以使用這個資料表會包含兩個新的資料行的新查詢： **CategoryName**和**供應商名稱**。
 
 
 ![產品資料表有兩個新的資料行](creating-a-data-access-layer-cs/_static/image82.png)
@@ -391,7 +392,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 **圖 30**:**產品**DataTable 有兩個新的資料行
 
 
-請花一點時間更新**選取**中的子句**GetProductsByCategoryID (*categoryID*)**以及方法。
+請花一點時間更新**選取**中的子句**GetProductsByCategoryID (*categoryID*)** 以及方法。
 
 如果您更新**GetProducts()** **選取**使用**聯結**語法 DataSet 設計工具將無法自動產生插入、 更新和刪除的方法使用 DB 直接模式的資料庫資料。 相反地，您必須手動建立它們更像我們與**InsertProduct**稍早在本教學課程中的方法。 此外，您以手動方式必須提供**InsertCommand**， **UpdateCommand**，和**DeleteCommand**屬性值，如果您想要使用批次更新模式。
 
@@ -399,7 +400,7 @@ TableAdapter 會根據預設，會使用批次更新模式，但也支援 DB 直
 
 至今的情況下，我們只探討了使用單一資料庫資料表的單一 TableAdapter。 不過，Northwind 資料庫包含數個相關的資料表，我們需要使用我們的 web 應用程式中。 型別資料集可以包含多個相關的 Datatable。 因此，若要完成我們 DAL 我們需要將 Datatable 加入我們將使用這些教學課程中的其他資料表。 新的 TableAdapter 加入型別資料集，請開啟 DataSet 設計工具、 在設計師中，以滑鼠右鍵按一下並選擇 加入 / TableAdapter。 這會建立新的 DataTable 和 TableAdapter，並逐步引導您完成精靈我們稍早在本教學課程中檢查。
 
-需要幾分鐘才能建立 TableAdapters，下列方法使用下列查詢。 請注意，在查詢**ProductsTableAdapter**包含子查詢，擷取每個產品類別目錄] 和 [供應商的名稱。 此外，如果您已經一路，您已新增**ProductsTableAdapter**類別的**GetProducts()**和**GetProductsByCategoryID (*categoryID*)**方法。
+需要幾分鐘才能建立 TableAdapters，下列方法使用下列查詢。 請注意，在查詢**ProductsTableAdapter**包含子查詢，擷取每個產品類別目錄] 和 [供應商的名稱。 此外，如果您已經一路，您已新增**ProductsTableAdapter**類別的**GetProducts()** 和**GetProductsByCategoryID (*categoryID*)** 方法。
 
 - **ProductsTableAdapter**
 
@@ -472,26 +473,26 @@ Datatable 加入輸入資料集與 Tableadapter 會表示為 XML 結構描述定
 
 雖然自動產生的程式碼可以大量時間，而該程式碼通常是相當廣泛，並且需要進行自訂以符合應用程式的獨特需求。 擴充自動產生程式碼的風險是，產生的程式碼的工具可能會決定它是 「 重新產生 」，並覆寫您的自訂設定的時間。 使用.NET 2.0 的新的部分類別概念，所以可以輕鬆地將類別分割到多個檔案。 這可讓我們來自動產生的類別加入自己的方法、 屬性和事件，而不需要擔心覆寫我們自訂 Visual Studio。
 
-若要示範如何自訂 DAL，讓我們加入**GetProducts()**方法**SuppliersRow**類別。 **SuppliersRow**類別表示中的單一記錄**供應商**資料表; 許多產品，每個供應商可以提供者零讓**GetProducts()**傳回那些指定的供應商的產品。 若要完成這會建立新的類別檔案中**應用程式\_程式碼**資料夾名為**SuppliersRow.cs**並加入下列程式碼：
+若要示範如何自訂 DAL，讓我們加入**GetProducts()** 方法**SuppliersRow**類別。 **SuppliersRow**類別表示中的單一記錄**供應商**資料表; 許多產品，每個供應商可以提供者零讓**GetProducts()** 傳回那些指定的供應商的產品。 若要完成這會建立新的類別檔案中**應用程式\_程式碼**資料夾名為**SuppliersRow.cs**並加入下列程式碼：
 
 [!code-csharp[Main](creating-a-data-access-layer-cs/samples/sample22.cs)]
 
-此部分類別指示編譯器，當建置**Northwind.SuppliersRow**類別，以包含**GetProducts()**我們剛才定義的方法。 如果您建置專案，然後返回 類別檢視您會看到**GetProducts()**現在列示的方法為**Northwind.SuppliersRow**。
+此部分類別指示編譯器，當建置**Northwind.SuppliersRow**類別，以包含**GetProducts()** 我們剛才定義的方法。 如果您建置專案，然後返回 類別檢視您會看到**GetProducts()** 現在列示的方法為**Northwind.SuppliersRow**。
 
 
 ![GetProducts() 方法屬於現在 Northwind.SuppliersRow 類別](creating-a-data-access-layer-cs/_static/image90.png)
 
-**圖 34**: **GetProducts()**方法是現在的一部分**Northwind.SuppliersRow**類別
+**圖 34**: **GetProducts()** 方法是現在的一部分**Northwind.SuppliersRow**類別
 
 
-**GetProducts()**方法現在可用來列舉組產品特定供應商，如下列程式碼所示：
+**GetProducts()** 方法現在可用來列舉組產品特定供應商，如下列程式碼所示：
 
 [!code-html[Main](creating-a-data-access-layer-cs/samples/sample23.html)]
 
 此資料也可以顯示在任何 ASP。Web 控制項的網路的資料。 下列網頁使用 GridView 控制項包含兩個欄位：
 
 - 顯示每個供應商名稱 BoundField 和
-- 包含設定 BulletedList 的控制項繫結至所傳回的結果為 TemplateField **GetProducts()**每個供應商的方法。
+- 包含設定 BulletedList 的控制項繫結至所傳回的結果為 TemplateField **GetProducts()** 每個供應商的方法。
 
 我們將檢驗如何顯示在未來的教學課程的這類的主版詳細資料報表。 現在，這個範例為了說明如何使用自訂的方法加入至**Northwind.SuppliersRow**類別。
 
@@ -537,7 +538,7 @@ SuppliersAndProducts.aspx.cs
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com)或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP/ASP.NET 書籍和的創辦[4GuysFromRolla.com](http://www.4guysfromrolla.com)，已從 1998 年使用 Microsoft Web 技術。 Scott 可做為獨立顧問、 訓練和寫入器。 他最新的活頁簿[ *Sam 教導您自己 ASP.NET 2.0 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在達到[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這可以在找到[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

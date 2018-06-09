@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
 ms.openlocfilehash: 4cfa98144919c3f1bdb3608970af1a7952fe6ea7
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30878174"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>ASP.NET MVC 4 Helper、 表單和驗證
 
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 b： 使用程式碼片段](#AppendixB)&quot;。
 
@@ -110,7 +111,7 @@ ms.lasthandoff: 04/06/2018
 
 在這個工作中，您將建立新的控制器呼叫**StoreManagerController**支援 CRUD 作業。
 
-1. 開啟**開始**方案位於**來源/Ex1CreatingTheStoreManagerController/開始/**資料夾。
+1. 開啟**開始**方案位於**來源/Ex1CreatingTheStoreManagerController/開始/** 資料夾。
 
    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -164,7 +165,7 @@ ms.lasthandoff: 04/06/2018
     ![加入檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image2.png "加入檢視")
 
     *加入從索引方法內的檢視*
-3. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**索引**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)**從**模型類別**下拉式清單。 選取**清單**從**Scaffold 範本**下拉式清單。 保留**檢視引擎**至**Razor** ，其預設值的其他欄位值，然後按**新增**。
+3. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**索引**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)** 從**模型類別**下拉式清單。 選取**清單**從**Scaffold 範本**下拉式清單。 保留**檢視引擎**至**Razor** ，其預設值的其他欄位值，然後按**新增**。
 
     ![加入索引檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image3.png "加入索引檢視")
 
@@ -184,7 +185,7 @@ ms.lasthandoff: 04/06/2018
 1. 檢閱建立的程式碼。 產生的欄位清單將屬於下列 HTML 資料表，其中**Scaffolding**用來顯示表格式資料。
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample4.cshtml)]
-2. 取代**&lt;資料表&gt;**只顯示為下列程式碼的程式碼**類型**，**演出者**，**專輯標題**，和**價格**欄位。 這會刪除**AlbumId**和**專輯封面 URL**資料行。 此外，它會變更 GenreId 和 ArtistId 的資料行，以顯示其連結的類別屬性**Artist.Name**和**Genre.Name**，並移除**詳細資料**連結。
+2. 取代**&lt;資料表&gt;** 只顯示為下列程式碼的程式碼**類型**，**演出者**，**專輯標題**，和**價格**欄位。 這會刪除**AlbumId**和**專輯封面 URL**資料行。 此外，它會變更 GenreId 和 ArtistId 的資料行，以顯示其連結的類別屬性**Artist.Name**和**Genre.Name**，並移除**詳細資料**連結。
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample5.cshtml)]
 3. 變更下列說明。
@@ -199,7 +200,7 @@ ms.lasthandoff: 04/06/2018
 在這個工作中，您將測試的**StoreManager** **索引**檢視範本會顯示一份專輯根據上一個步驟的設計。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager**確認會顯示一份相簿，顯示其**標題**，**演出者**和**類型**。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager**確認會顯示一份相簿，顯示其**標題**，**演出者**和**類型**。
 
     ![瀏覽相簿](aspnet-mvc-4-helpers-forms-and-validation/_static/image4.png "瀏覽相簿")
 
@@ -229,7 +230,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 > 若要深入了解**擴充方法**，請瀏覽 msdn 上的本文。 [https://msdn.microsoft.com/library/bb383977.aspx](https://msdn.microsoft.com/library/bb383977.aspx).
 
 
-1. 開啟**開始**方案位於**來源/Ex2AddingAnHTMLHelper/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex2AddingAnHTMLHelper/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -262,7 +263,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager** **索引**檢視範本會截斷的專輯標題和演出者名稱。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager**以確認該長時間中的文字**標題**和**演出者**資料行就會被截斷。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager**以確認該長時間中的文字**標題**和**演出者**資料行就會被截斷。
 
     ![截斷標題和演出者名稱](aspnet-mvc-4-helpers-forms-and-validation/_static/image6.png "截斷標題和演出者名稱")
 
@@ -273,11 +274,11 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 <a id="Exercise_3_Creating_the_Edit_View"></a>
 ### <a name="exercise-3-creating-the-edit-view"></a>練習 3： 建立編輯檢視
 
-在此練習中，您將學習如何建立表單，以允許存放區管理員，以編輯專輯。 將會在瀏覽**/StoreManager/Edit/id** URL (**識別碼**正在編輯專輯的唯一識別碼)，因而讓伺服器的 HTTP GET 呼叫。
+在此練習中，您將學習如何建立表單，以允許存放區管理員，以編輯專輯。 將會在瀏覽 **/StoreManager/Edit/id** URL (**識別碼**正在編輯專輯的唯一識別碼)，因而讓伺服器的 HTTP GET 呼叫。
 
-編輯控制器動作方法會從資料庫擷取適當的專輯、 建立**StoreManagerViewModel**物件封裝 （以及演出者與內容類型的清單），然後將它，傳遞至檢視範本呈現的 HTML 網頁傳回給使用者。 此頁面將包含**&lt;表單&gt;**具有文字方塊和下拉式清單編輯專輯屬性的項目。
+編輯控制器動作方法會從資料庫擷取適當的專輯、 建立**StoreManagerViewModel**物件封裝 （以及演出者與內容類型的清單），然後將它，傳遞至檢視範本呈現的 HTML 網頁傳回給使用者。 此頁面將包含**&lt;表單&gt;** 具有文字方塊和下拉式清單編輯專輯屬性的項目。
 
-一旦使用者更新專輯表單值，並按一下**儲存** 按鈕，將變更送出透過 HTTP POST 呼叫回**/StoreManager/Edit/id**。雖然 URL 會保留最後一次呼叫相同，ASP.NET MVC 識別，這次它是 HTTP POST，因此會執行不同的編輯動作方法 (一個使用裝飾**[HttpPost]**)。
+一旦使用者更新專輯表單值，並按一下**儲存** 按鈕，將變更送出透過 HTTP POST 呼叫回 **/StoreManager/Edit/id**。雖然 URL 會保留最後一次呼叫相同，ASP.NET MVC 識別，這次它是 HTTP POST，因此會執行不同的編輯動作方法 (一個使用裝飾 **[HttpPost]**)。
 
 <a id="Ex3Task1"></a>
 
@@ -286,7 +287,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 在這個工作中，您將實作要擷取從資料庫中的適當相簿的編輯動作方法的 HTTP GET 版本以及所有的內容類型和演出者名稱清單。 它會封裝此資料到**StoreManagerViewModel**的最後一個步驟，然後將傳遞至轉譯與回應的檢視範本中定義的物件。
 
-1. 開啟**開始**方案位於**來源/Ex3CreatingTheEditView/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex3CreatingTheEditView/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -314,7 +315,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這項工作，您將建立稍後將會顯示專輯屬性編輯檢視範本。
 
 1. 建立編輯檢視。 若要這樣做，以滑鼠右鍵按一下**編輯**動作方法，然後選取**加入檢視**。
-2. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**編輯**。 請檢查**建立強型別檢視**核取方塊並選取**專輯 (MvcMusicStore.Models)**從**檢視資料類別**下拉式清單。 選取**編輯**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
+2. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**編輯**。 請檢查**建立強型別檢視**核取方塊並選取**專輯 (MvcMusicStore.Models)** 從**檢視資料類別**下拉式清單。 選取**編輯**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
 
     ![加入編輯檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image7.png "加入編輯檢視")
 
@@ -328,7 +329,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager** **編輯**檢視頁面會顯示屬性的值當做參數傳遞的相簿。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/Edit/1**以確認已顯示屬性的值傳遞的相簿。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/Edit/1**以確認已顯示屬性的值傳遞的相簿。
 
     ![瀏覽專輯的編輯檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image8.png "瀏覽專輯的編輯檢視")
 
@@ -359,7 +360,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager** **編輯**檢視頁面會顯示下拉式清單，而不是演出者 和 類型識別碼 文字欄位。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/Edit/1**以確認它會顯示下拉式清單，而不是演出者 和 類型識別碼 文字欄位。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/Edit/1**以確認它會顯示下拉式清單，而不是演出者 和 類型識別碼 文字欄位。
 
     ![瀏覽專輯的下拉式清單與編輯檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image9.png "具有下拉式清單的 瀏覽專輯編輯檢視")
 
@@ -380,7 +381,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
     [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample11.cs)]
 
     > [!NOTE]
-    > 這個方法將會執行，當使用者按一下**儲存**檢視的按鈕，並執行 HTTP-張貼至伺服器的表單值將它們保存在資料庫中。 Decorator **[HttpPost]**表示方法應用於 HTTP POST 的那些案例。 這個方法會接受**專輯**物件。 ASP.NET MVC 會自動建立專輯物件，從張貼&lt;表單&gt;值。
+    > 這個方法將會執行，當使用者按一下**儲存**檢視的按鈕，並執行 HTTP-張貼至伺服器的表單值將它們保存在資料庫中。 Decorator **[HttpPost]** 表示方法應用於 HTTP POST 的那些案例。 這個方法會接受**專輯**物件。 ASP.NET MVC 會自動建立專輯物件，從張貼&lt;表單&gt;值。
     > 
     > 方法會執行下列步驟：
     > 
@@ -398,7 +399,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager 編輯**檢視頁面實際上會將更新的專輯資料儲存在資料庫中。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/Edit/1**。 將專輯標題來變更**負載**，然後按一下 **儲存**。 請確認專輯標題實際變更清單中的專輯。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/Edit/1**。 將專輯標題來變更**負載**，然後按一下 **儲存**。 請確認專輯標題實際變更清單中的專輯。
 
     ![更新專輯](aspnet-mvc-4-helpers-forms-and-validation/_static/image10.png "更新相簿")
 
@@ -413,8 +414,8 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 如同具有編輯功能，您將要實作建立案例中，使用兩個不同的方法內**StoreManagerController**類別：
 
-1. 當存放區管理員第一次瀏覽一個動作方法會顯示一個空白表單**/StoreManager/建立**URL。
-2. 第二個動作方法將處理案例的存放區管理員以便按一下**儲存**按鈕中的表單，並將送回給的值**/StoreManager/建立**URL 為 HTTP POST。
+1. 當存放區管理員第一次瀏覽一個動作方法會顯示一個空白表單 **/StoreManager/建立**URL。
+2. 第二個動作方法將處理案例的存放區管理員以便按一下**儲存**按鈕中的表單，並將送回給的值 **/StoreManager/建立**URL 為 HTTP POST。
 
 <a id="Ex4Task1"></a>
 
@@ -423,7 +424,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 在這項工作，您將要實作建立動作方法，來擷取所有的內容類型和演出者名稱清單，請到封裝這項資料的 HTTP GET 新版**StoreManagerViewModel**物件，然後將傳遞至檢視範本。
 
-1. 開啟**開始**方案位於**來源/Ex4AddingACreateView/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex4AddingACreateView/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -446,7 +447,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這項工作，您將加入將會顯示新的 （空的） 專輯表單建立檢視範本。
 
 1. 以滑鼠右鍵按一下**建立**動作方法，然後選取**加入檢視**。 這會顯示 [新增檢視] 對話方塊。
-2. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**建立**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)**從**模型類別**下拉式清單和**建立**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
+2. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**建立**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)** 從**模型類別**下拉式清單和**建立**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
 
     ![加入建立檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image11.png "加入-a-建立-view.png")
 
@@ -463,7 +464,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager** **建立**檢視頁面會顯示一個空白的專輯表單。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/建立**。 請確認的空白表單隨即填入新的專輯屬性。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/建立**。 請確認的空白表單隨即填入新的專輯屬性。
 
     ![建立一個空白表單檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image12.png "建立一個空白表單檢視")
 
@@ -494,7 +495,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager 建立**檢視頁面可讓您建立新的相簿，然後重新導向至 StoreManager 索引檢視。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/建立**。 填入資料的所有表單欄位新專輯、 類似下圖中的一項：
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/建立**。 填入資料的所有表單欄位新專輯、 類似下圖中的一項：
 
     ![建立相簿](aspnet-mvc-4-helpers-forms-and-validation/_static/image13.png "建立相簿")
 
@@ -522,7 +523,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 在這個工作中，您將實作要擷取的專輯資訊的刪除動作方法的 HTTP GET 版本。
 
-1. 開啟**開始**方案位於**來源/Ex5HandlingDeletion/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex5HandlingDeletion/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -537,7 +538,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
     [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample15.cs)]
 4. 以滑鼠右鍵按一下**刪除**動作方法，然後選取**加入檢視**。 這會顯示 [新增檢視] 對話方塊。
-5. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**刪除**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)**從**模型類別**下拉式清單。 選取**刪除**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
+5. 在 [新增檢視] 對話方塊中，確認檢視表名稱為**刪除**。 選取**建立強型別檢視**選項，然後選取**專輯 (MvcMusicStore.Models)** 從**模型類別**下拉式清單。 選取**刪除**從**Scaffold 範本**下拉式清單。 保留其他欄位的預設值，然後按**新增**。
 
     ![加入刪除檢視](aspnet-mvc-4-helpers-forms-and-validation/_static/image15.png "加入刪除檢視")
 
@@ -554,7 +555,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager** **刪除**檢視頁面會顯示確認刪除表單。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager**。 選取即可刪除一個專輯**刪除**並驗證已上傳新的檢視。
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager**。 選取即可刪除一個專輯**刪除**並驗證已上傳新的檢視。
 
     ![刪除相簿](aspnet-mvc-4-helpers-forms-and-validation/_static/image16.png "刪除相簿")
 
@@ -582,7 +583,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager 刪除**檢視頁面可讓您刪除相簿，然後重新導向至 StoreManager 索引檢視。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager**。 選取即可刪除一個專輯**刪除。** 按一下以確認刪除動作**刪除**按鈕：
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager**。 選取即可刪除一個專輯**刪除。** 按一下以確認刪除動作**刪除**按鈕：
 
     ![刪除相簿](aspnet-mvc-4-helpers-forms-and-validation/_static/image17.png "刪除相簿")
 
@@ -605,13 +606,13 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 在這項工作，您將加入資料註解專輯模型，可讓建立與編輯頁面顯示時適當的驗證訊息。
 
-針對簡單的模型類別，加入資料註解只處理所加入**使用**陳述式**System.ComponentModel.DataAnnotation**，然後放置**[必要]**上適當的內容屬性。 下列範例會使**名稱**屬性在檢視中的必要欄位。
+針對簡單的模型類別，加入資料註解只處理所加入**使用**陳述式**System.ComponentModel.DataAnnotation**，然後放置 **[必要]** 上適當的內容屬性。 下列範例會使**名稱**屬性在檢視中的必要欄位。
 
 [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample18.cs)]
 
-這是稍微複雜，就像此應用程式的情況下實體資料模型，產生的位置。 如果您資料註解直接加入模型類別，它們就會覆寫更新資料庫中的模型。 相反地，您可使用它來保存 註解會存在，並與模型相關聯的中繼資料部分類別的類別使用**[MetadataType]**屬性。
+這是稍微複雜，就像此應用程式的情況下實體資料模型，產生的位置。 如果您資料註解直接加入模型類別，它們就會覆寫更新資料庫中的模型。 相反地，您可使用它來保存 註解會存在，並與模型相關聯的中繼資料部分類別的類別使用 **[MetadataType]** 屬性。
 
-1. 開啟**開始**方案位於**來源/Ex6AddingValidation/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex6AddingValidation/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -623,7 +624,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 3. 取代**Album.cs**內容以反白顯示的程式碼，使它看起來如下所示：
 
     > [!NOTE]
-    > 線條**[DisplayFormat(ConvertEmptyStringToNull=false)]**代表模型中的空字串不會轉換為 null 的資料來源中更新資料欄位時。 Entity Framework 會指派至模型 null 值之前資料註解驗證欄位時，此設定可避免例外狀況。
+    > 線條 **[DisplayFormat(ConvertEmptyStringToNull=false)]** 代表模型中的空字串不會轉換為 null 的資料來源中更新資料欄位時。 Entity Framework 會指派至模型 null 值之前資料註解驗證欄位時，此設定可避免例外狀況。
 
     (程式碼片段- *ASP.NET MVC 4 Helper 和表單驗證-Ex6 專輯中繼資料的部分類別*)
 
@@ -647,13 +648,13 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這項工作，您將測試建立與編輯頁面驗證欄位，使用最後一個工作中選擇的顯示名稱。
 
 1. 按**F5**執行應用程式。
-2. 在首頁上，啟動專案。 將 URL 變更為**/StoreManager/建立**。 確認顯示名稱符合的部分類別中的項目 (例如**專輯封面 URL**而不是**AlbumArtUrl**)
+2. 在首頁上，啟動專案。 將 URL 變更為 **/StoreManager/建立**。 確認顯示名稱符合的部分類別中的項目 (例如**專輯封面 URL**而不是**AlbumArtUrl**)
 3. 按一下**建立**，而不填滿表單。 請確認您取得對應的驗證訊息。
 
     ![驗證 [建立] 頁面中的欄位](aspnet-mvc-4-helpers-forms-and-validation/_static/image18.png "驗證 [建立] 頁面中的欄位")
 
     *在 [建立] 頁面中驗證的欄位*
-4. 您可以確認相同發生**編輯**頁面。 將 URL 變更為**/StoreManager/Edit/1**並確認 顯示名稱符合的部分類別中的項目 (例如**專輯封面 URL**而不是**AlbumArtUrl**)。 空白**標題**和**價格**欄位和按一下**儲存**。 請確認您取得對應的驗證訊息。
+4. 您可以確認相同發生**編輯**頁面。 將 URL 變更為 **/StoreManager/Edit/1**並確認 顯示名稱符合的部分類別中的項目 (例如**專輯封面 URL**而不是**AlbumArtUrl**)。 空白**標題**和**價格**欄位和按一下**儲存**。 請確認您取得對應的驗證訊息。
 
     ![驗證的欄位中編輯頁面](aspnet-mvc-4-helpers-forms-and-validation/_static/image19.png)
 
@@ -677,7 +678,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 
 在這個工作中，您將執行的應用程式，才能包括 jQuery 才能比較這兩種驗證模式。
 
-1. 開啟**開始**方案位於**來源/Ex7UnobtrusivejQueryValidation/開始/**資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
+1. 開啟**開始**方案位於**來源/Ex7UnobtrusivejQueryValidation/開始/** 資料夾。 否則，您可能會繼續使用**結束**方案所完成的上一個練習中取得。
 
    1. 如果您開啟提供**開始**方案，您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -686,7 +687,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
       > [!NOTE]
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
 2. 按 **F5** 執行應用程式。
-3. 在首頁上，啟動專案。 瀏覽**/StoreManager/建立**按一下**建立**沒有填滿表單，以確認您看到驗證訊息：
+3. 在首頁上，啟動專案。 瀏覽 **/StoreManager/建立**按一下**建立**沒有填滿表單，以確認您看到驗證訊息：
 
     ![停用用戶端驗證](aspnet-mvc-4-helpers-forms-and-validation/_static/image20.png "停用用戶端驗證")
 
@@ -718,7 +719,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample22.cshtml)]
 
     > [!NOTE]
-    > 所有這些 jQuery 程式庫會包含在新的 MVC 4 專案。 您可以找到更多程式庫中的**/指令碼**您專案的資料夾。
+    > 所有這些 jQuery 程式庫會包含在新的 MVC 4 專案。 您可以找到更多程式庫中的 **/指令碼**您專案的資料夾。
     > 
     > 若要讓這項驗證程式庫工作，您需要加入 jQuery framework 程式庫的參考。 因為中已加入此參考 **\_Layout.cshtml**檔案中，您不需要將它加入這個特定的檢視中。
 
@@ -730,7 +731,7 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
 在這個工作中，您將測試的**StoreManager**建立範本執行的用戶端驗證使用 jQuery 程式庫，當使用者建立新的相簿的檢視。
 
 1. 按 **F5** 執行應用程式。
-2. 在首頁上，啟動專案。 瀏覽**/StoreManager/建立**按一下**建立**沒有填滿表單，以確認您看到驗證訊息：
+2. 在首頁上，啟動專案。 瀏覽 **/StoreManager/建立**按一下**建立**沒有填滿表單，以確認您看到驗證訊息：
 
     ![使用 jQuery 啟用的用戶端驗證](aspnet-mvc-4-helpers-forms-and-validation/_static/image21.png "jQuery 啟用與用戶端驗證")
 
@@ -743,10 +744,10 @@ StoreManager 索引頁有一個可能的問題： 標題和演出者名稱屬性
    > 每個用戶端驗證規則不顯眼的 jQuery 加入資料屬性-val-*rulename*=&quot;*訊息*&quot;。 以下是一份標記該 Unobtrusive jQuery 插入 html 輸入欄位，以執行用戶端驗證：
    > 
    > - 資料值
-   > - Data-val-number
+   > - 資料 val 數字
    > - 資料 val 範圍
    > - 資料 val 範圍-min/資料 val-range max
-   > - Data-val-required
+   > - Val 需要資料
    > - 資料 val 長度
    > - 資料值的長度上限/資料 val 長度-分鐘
    > 

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
 ms.openlocfilehash: b48a7b04701b69f68a492c0f7e08da4a37a92a48
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036436"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>Azure 服務匯流排與 SignalR 範圍外 (SignalR 1.x)
 ====================
@@ -113,7 +114,7 @@ ms.lasthandoff: 01/24/2018
 
 [!code-csharp[Main](scaleout-with-windows-azure-service-bus/samples/sample4.cs)]
 
-## <a name="deploy-to-azure"></a>部署至 Azure
+## <a name="deploy-to-azure"></a>部署到 Azure
 
 在 [方案總管] 中，展開**角色**ChatService 專案內的資料夾。
 

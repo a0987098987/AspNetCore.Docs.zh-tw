@@ -1,28 +1,29 @@
 ---
 uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
-title: "ASP.NET 和 Azure App Service 部署的密碼和其他機密資料的最佳做法 |Microsoft 文件"
+title: ASP.NET 和 Azure App Service 部署的密碼和其他機密資料的最佳做法 |Microsoft 文件
 author: Rick-Anderson
-description: "本教學課程會示範如何您的程式碼可以安全地儲存及存取的安全資訊。 最重要的一點是您應該永遠不會儲存密碼或其他服務..."
+description: 本教學課程會示範如何您的程式碼可以安全地儲存及存取的安全資訊。 最重要的一點是您應該永遠不會儲存密碼或其他服務...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2015
 ms.topic: article
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
 ms.openlocfilehash: 995d9a088e3095f36a01d2adb19ec08e6a6d1b3e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28033017"
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>ASP.NET 和 Azure App Service 部署的密碼和其他機密資料的最佳作法
 ====================
 由[Rick Anderson](https://github.com/Rick-Anderson)
 
-> 本教學課程會示範如何您的程式碼可以安全地儲存及存取的安全資訊。 您應該永遠不會儲存密碼或其他機密資料來源的程式碼，而您不應該在開發和測試模式中使用實際執行的密碼最重要的一點。
+> 本教學課程會示範如何您的程式碼可以安全地儲存及存取的安全資訊。 最重要的一點是，始終不該將密碼或其他機密資料儲存在原始程式碼中，也不該在開發和測試模式中使用實際執行的密碼。
 > 
 > 程式碼範例是簡單的 WebJob 主控台應用程式和 ASP.NET MVC 應用程式需要存取資料庫的連接字串密碼，Twilio，Google 和 SendGrid 安全金鑰。
 > 
@@ -54,7 +55,7 @@ ms.lasthandoff: 01/24/2018
 ASP.NET 執行階段會合併的外部檔案中的標記與內容&lt;appSettings&gt;項目。 如果找不到指定的檔案，則執行階段會略過檔案屬性。
 
 > [!WARNING]
-> 安全性-不要新增您*密碼.config*檔案至您的專案，或將它簽入原始檔控制。 根據預設，Visual Studio 會將設定`Build Action`至`Content`，這表示檔案已部署。 如需詳細資訊，請參閱[為何不在我的專案資料夾中檔案的所有部署？](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) 雖然您可以使用任何副檔名*密碼.config*檔案，所以最好先將它保留*.config*，如設定檔不會由 IIS。 也請注意*AppSettingsSecrets.config*檔案是兩個目錄層級從*web.config*檔案，讓它完全超出方案目錄。 移動檔案使用的方案目錄，藉以&quot;git 新增\*&quot;將不會將它加入至您的儲存機制。
+> 安全性-不要新增您*密碼.config*檔案至您的專案，或將它簽入原始檔控制。 根據預設，Visual Studio 會將設定`Build Action`至`Content`，這表示檔案已部署。 如需詳細資訊，請參閱[為何不在我的專案資料夾中檔案的所有部署？](https://msdn.microsoft.com/library/ee942158(v=vs.110).aspx#can_i_exclude_specific_files_or_folders_from_deployment) 雖然您可以使用任何副檔名*密碼.config*檔案，所以最好先將它保留 *.config*，如設定檔不會由 IIS。 也請注意*AppSettingsSecrets.config*檔案是兩個目錄層級從*web.config*檔案，讓它完全超出方案目錄。 移動檔案使用的方案目錄，藉以&quot;git 新增\*&quot;將不會將它加入至您的儲存機制。
 
 
 <a id="con"></a>
@@ -75,7 +76,7 @@ Visual Studio 會建立新的 ASP.NET 專案使用[LocalDB](https://blogs.msdn.c
 
 
 > [!NOTE]
-> **密碼檔案上的安全性警告：**最佳作法是不要使用實際執行測試和開發中的機密資料。 使用實際執行環境中測試或開發的密碼遺漏這些密碼。
+> **密碼檔案上的安全性警告：** 最佳作法是不要使用實際執行測試和開發中的機密資料。 使用實際執行環境中測試或開發的密碼遺漏這些密碼。
 
 
 <a id="wj"></a>
@@ -90,7 +91,7 @@ Visual Studio 會建立新的 ASP.NET 專案使用[LocalDB](https://blogs.msdn.c
 
 當您將 web 應用程式部署至 Azure， *AppSettingsSecrets.config*檔案不會部署 （亦即您想要）。 您可以移至[Azure 管理入口網站](https://azure.microsoft.com/services/management-portal/)並手動設定執行此作業：
 
-1. 移至[https://portal.azure.com](https://portal.azure.com)，並以您的 Azure 認證登入。
+1. 移至[ https://portal.azure.com ](https://portal.azure.com)，並以您的 Azure 認證登入。
 2. 按一下**瀏覽&gt;Web 應用程式**，然後按一下 web 應用程式的名稱。
 3. 按一下**所有設定&gt;應用程式設定**。
 

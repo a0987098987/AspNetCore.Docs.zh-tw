@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: ab3b7ba332deddae7d04fc37c7aabc72bdb2d17e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30889679"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-the-production-environment---7-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署到生產環境-7 個 12
 ====================
@@ -89,7 +90,7 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 ## <a name="publishing-to-the-hosting-provider"></a>發行至主控提供者
 
-歡迎使用電子郵件，主機服務提供者從包含所有必要的設定，您才能將專案發行，您可以手動輸入這些資訊至發行設定檔。 但是您將設定部署給提供者使用容易和較容易發生錯誤的方法： 您將下載*.publishsettings*檔案並匯入發行設定檔。
+歡迎使用電子郵件，主機服務提供者從包含所有必要的設定，您才能將專案發行，您可以手動輸入這些資訊至發行設定檔。 但是您將設定部署給提供者使用容易和較容易發生錯誤的方法： 您將下載 *.publishsettings*檔案並匯入發行設定檔。
 
 在您的瀏覽器，移至 Cytanium 控制台中並選取**Web** ，然後選取 **網站。**
 
@@ -121,11 +122,11 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 ![發行網站精靈匯入 按鈕](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image25.png)
 
-在**匯入發行設定**對話方塊中，選取*.publishsettings*檔案您下載，然後按一下**開啟**。 精靈將使用的所有欄位填入都進入 [連線] 索引標籤。
+在**匯入發行設定**對話方塊中，選取 *.publishsettings*檔案您下載，然後按一下**開啟**。 精靈將使用的所有欄位填入都進入 [連線] 索引標籤。
 
 ![發行網站精靈連線 索引標籤](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12/_static/image26.png)
 
-.Publishsettings 檔案置於 [目的地 URL] 方塊中，站台的計劃永久 URL，但您尚未購買該網域，如果值取代為暫存的 URL。 此範例中，URL 是 *[ http://contosouniversity.com.vserver01.cytanium.com ](http://contosouniversity.com.vserver01.cytanium.com)。*此方塊的唯一目的是指定何種瀏覽器會開啟自動之後成功部署之後的 URL。 如果保留空白，唯一的結果會是瀏覽器不會自動啟動部署之後。
+.Publishsettings 檔案置於 [目的地 URL] 方塊中，站台的計劃永久 URL，但您尚未購買該網域，如果值取代為暫存的 URL。 此範例中，URL 是 *[ http://contosouniversity.com.vserver01.cytanium.com ](http://contosouniversity.com.vserver01.cytanium.com)。* 此方塊的唯一目的是指定何種瀏覽器會開啟自動之後成功部署之後的 URL。 如果保留空白，唯一的結果會是瀏覽器不會自動啟動部署之後。
 
 按一下**驗證連線**確認設定正確無誤，而且您可以連接到伺服器。 如稍早所見，綠色的核取記號會驗證是成功的連線。
 
@@ -137,7 +138,7 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 在**資料庫**區段**設定**索引標籤上，輸入相同的測試輸入值的發行設定檔。 在下拉式清單中，您會發現您需要的連接字串。
 
-- 在連接字串 方塊的**SchoolContext，**選取 `Data Source=|DataDirectory|School-Prod.sdf`
+- 在連接字串 方塊的**SchoolContext，** 選取 `Data Source=|DataDirectory|School-Prod.sdf`
 - 在下**SchoolContext**，選取**套用 Code First 移轉**。
 - 在連接字串 方塊的**DefaultConnection**，請選取 `Data Source=|DataDirectory|aspnet-Prod.sdf`
 - 在下**DefaultConnection**，保留**更新資料庫**清除。
@@ -246,7 +247,7 @@ Cytanium 歡迎電子郵件包含有關如何變更.NET Framework 版本的指�
 
 `User-agent`一行告訴檔案中的規則套用至所有搜尋引擎網頁自動尋檢 (robots)，搜尋引擎和`Disallow`一行指定應該進行編目的網站上的任何頁面。
 
-您可能想搜尋引擎目錄生產網站，因此您需要從生產環境部署中排除此檔案。 若要這樣做，請參閱**可以我排除特定檔案或資料夾從部署嗎？**中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)。 請確定您指定在排除，只會針對實際執行發行設定檔。
+您可能想搜尋引擎目錄生產網站，因此您需要從生產環境部署中排除此檔案。 若要這樣做，請參閱**可以我排除特定檔案或資料夾從部署嗎？** 中[ASP.NET Web 應用程式專案部署常見問題集](https://msdn.microsoft.com/library/ee942158.aspx#can_i_exclude_specific_files_or_folders_from_deployment)。 請確定您指定在排除，只會針對實際執行發行設定檔。
 
 建立第二個裝載帳戶是一種方法使用的測試環境，不是必要，但是可能值得額外的費用。 在下列的教學課程中，您將會繼續使用 IIS 做為您的測試環境。
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
-title: "建立 ASP.NET Web API 說明頁面 |Microsoft 文件"
+title: 建立 ASP.NET Web API 說明頁面 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2013
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 37fd26ebaea192cb540c443eff8a07343ab8c15b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037899"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>建立 ASP.NET Web API 說明頁面
 ====================
@@ -60,9 +61,9 @@ ms.lasthandoff: 01/24/2018
 
 從**工具**功能表上，選取**程式庫套件管理員**，然後選取**Package Manager Console**。 在[Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)視窗中，輸入下列命令的其中一個：
 
-如**C#**應用程式：`Install-Package Microsoft.AspNet.WebApi.HelpPage`
+如**C#** 應用程式： `Install-Package Microsoft.AspNet.WebApi.HelpPage`
 
-如**Visual Basic**應用程式：`Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
+如**Visual Basic**應用程式： `Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
 
 有兩個封裝，另一個適用於 C# 和 Visual basic 中的一個。 請務必使用符合您的專案。
 

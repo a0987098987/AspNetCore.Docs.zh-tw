@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/add-user-data
-ms.openlocfilehash: cc7b29499e9db702cab70be7c15eac53373d450d
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: 005491168ba3e538991ed1bf8a53c320ecf2818d
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34819067"
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35251979"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除識別 ASP.NET Core 專案中的自訂使用者資料
 
@@ -50,7 +50,9 @@ ms.locfileid: "34819067"
 dotnet new webapp -o WebApp1
 ```
 
-------
+[!INCLUDE[](~/includes/webapp-alias-notice.md)]
+
+---
 
 ## <a name="run-the-identity-scaffolder"></a>執行身分識別 scaffolder
 

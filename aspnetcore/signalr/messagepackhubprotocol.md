@@ -1,0 +1,107 @@
+---
+title: 使用 ASP.NET Core SignalR 中 MessagePack 中樞通訊協定
+author: rachelappel
+description: 加入 ASP.NET Core SignalR MessagePack 中樞通訊協定。
+manager: wpickett
+monikerRange: '>= aspnetcore-2.1'
+ms.author: rachelap
+ms.custom: mvc
+ms.date: 06/04/2018
+ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
+uid: signalr/messagepackhubprotocol
+ms.openlocfilehash: b6c33c4da47a19d67bffbaf84f54d59013edadbe
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252474"
+---
+# <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>使用 ASP.NET Core SignalR 中 MessagePack 中樞通訊協定
+
+由[Brennan 瑜吉](https://github.com/BrennanConroy)
+
+本文假設讀者已熟悉所涵蓋的主題[開始](xref:signalr/get-started)。
+
+## <a name="what-is-messagepack"></a>什麼是 MessagePack？
+
+[MessagePack](https://msgpack.org/index.html)是非常快速且壓縮的二進位序列化格式。 因此，適用於效能和頻寬是一項考量因為它會建立較小的訊息相較於[JSON](https://www.json.org/)。 因為它是一種二進位格式時，如果除非位元組都會通過 MessagePack 剖析器，查看網路追蹤和記錄檔訊息就無法讀取。 SignalR 具有 MessagePack 格式，內建支援，並提供用戶端和伺服器使用的 Api。
+
+## <a name="configure-messagepack-on-the-server"></a>在伺服器上設定 MessagePack
+
+若要啟用 MessagePack 中樞通訊協定，在伺服器上，安裝`Microsoft.AspNetCore.SignalR.Protocols.MessagePack`應用程式中的封裝。 在 Startup.cs 檔案中加入`AddMessagePackProtocol`至`AddSignalR`呼叫 MessagePack 伺服器上啟用支援。
+
+> [!NOTE]
+> 預設會啟用 JSON。 新增 MessagePack 可讓支援以 JSON 和 MessagePack 用戶端。
+
+```csharp
+services.AddSignalR()
+    .AddMessagePackProtocol();
+```
+
+若要自訂如何 MessagePack 將會格式化您的資料，`AddMessagePackProtocol`會針對設定選項進行委派。 在該委派中，`FormatterResolvers`屬性可用來設定 MessagePack 序列化選項。 如需有關 「 解決者 」 的運作方式的詳細資訊，請瀏覽 MessagePack 程式庫[MessagePack CSharp](https://github.com/neuecc/MessagePack-CSharp)。 屬性可以用於您想要定義它們應如何處理序列化的物件。
+
+```csharp
+services.AddSignalR()
+    .AddMessagePackProtocol(options =>
+    {
+        options.FormatterResolvers = new List<MessagePack.IFormatterResolver>()
+        {
+            MessagePack.Resolvers.StandardResolver.Instance
+        };
+    });
+```
+
+## <a name="configure-messagepack-on-the-client"></a>設定用戶端的 MessagePack
+
+### <a name="net-client"></a>.NET 用戶端
+
+若要啟用 MessagePack.NET 用戶端中的，安裝`Microsoft.AspNetCore.SignalR.Protocols.MessagePack`封裝並呼叫`AddMessagePackProtocol`上`HubConnectionBuilder`。
+
+```csharp
+var hubConnection = new HubConnectionBuilder()
+                        .WithUrl("/chatHub")
+                        .AddMessagePackProtocol()
+                        .Build();
+```
+
+> [!NOTE]
+> 這`AddMessagePackProtocol`呼叫採用委派的設定選項，就像伺服器一樣。
+
+### <a name="javascript-client"></a>JavaScript 用戶端
+
+Javascript 用戶端的 MessagePack 支援由提供`@aspnet/signalr-protocol-msgpack`NPM 封裝。
+
+```console
+npm install @aspnet/signalr-protocol-msgpack
+```
+
+安裝之後的 npm 封裝，模組可以直接透過 JavaScript 模組載入器或藉由參考匯入至瀏覽器*node_modules\\ @aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 檔案。 在瀏覽器`msgpack5`也必須參考程式庫。 使用`<script>`建立參考的標記。 程式庫，請參閱*node_modules\msgpack5\dist\msgpack5.js*。
+
+> [!NOTE]
+> 當使用`<script>`元素的順序很重要。 如果*signalr-通訊協定-msgpack.js*參考之前*msgpack5.js*，嘗試與 MessagePack 連接時，會發生錯誤。 *signalr.js*之前也需要*signalr-通訊協定-msgpack.js*。
+
+```html
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/lib/msgpack5/msgpack5.js"></script>
+<script src="~/lib/signalr/signalr-protocol-msgpack.js"></script>
+```
+
+加入`.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())`至`HubConnectionBuilder`會設定用戶端連接到伺服器時使用 MessagePack 通訊協定。
+
+```javascript
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
+    .build();
+```
+
+> [!NOTE]
+> 在這個階段中，沒有 MessagePack 通訊協定上的 JavaScript 用戶端組態選項。
+
+## <a name="related-resources"></a>相關資源
+
+* [開始使用](xref:signalr/get-started)
+* [.NET 用戶端](xref:signalr/dotnet-client)
+* [JavaScript 用戶端](xref:signalr/javascript-client)

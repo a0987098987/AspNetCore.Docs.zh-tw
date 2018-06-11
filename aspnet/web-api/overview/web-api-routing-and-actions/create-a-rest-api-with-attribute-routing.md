@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
 ms.openlocfilehash: 1f1e90544c9dd8439a522f2196d81d020ea2f4f2
-ms.sourcegitcommit: 7f92990bad6a6cb901265d621dcbc136794f5f3f
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30223258"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>REST API 建立以 ASP.NET Web API 2 中的路由的屬性
 ====================
@@ -55,7 +56,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 執行 Visual Studio 啟動。 從**檔案**功能表上，選取**新增**，然後選取 **專案**。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名&quot;BooksAPI&quot;。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 將專案命名&quot;BooksAPI&quot;。
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
@@ -159,7 +160,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample11.cs?highlight=1)]
 
-然後加入**[路由]**屬性，是將控制器的動作，如下所示：
+然後加入 **[路由]** 屬性，是將控制器的動作，如下所示：
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample12.cs?highlight=1,7)]
 
@@ -172,7 +173,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 ## <a name="get-book-details"></a>取得活頁簿的詳細資料
 
-若要取得活頁簿的詳細資訊，用戶端會傳送要求的 GET 要求`/api/books/{id}/details`，其中*{id}*活頁簿的識別碼。
+若要取得活頁簿的詳細資訊，用戶端會傳送要求的 GET 要求`/api/books/{id}/details`，其中 *{id}* 活頁簿的識別碼。
 
 將下列方法加入 `BooksController` 類別中。
 
@@ -236,7 +237,7 @@ Web API 2 支援新類型的路由，稱為*屬性路由*。 路由屬性的一�
 
 現在僅日期格式&quot;yyyy-mm-dd&quot;會比對。 請注意，我們不使用 regex 驗證，我們會取得實際的日期。 Web API 會嘗試將轉換成 URI 區段時，處理**DateTime**執行個體。 無效的日期等 ' 2012年-47-99' 將無法進行轉換，而且用戶端會收到 404 錯誤。
 
-您也可以支援斜線分隔 (`/api/books/date/yyyy/mm/dd`) 藉由新增另一個**[路由]**與其他規則運算式的屬性。
+您也可以支援斜線分隔 (`/api/books/date/yyyy/mm/dd`) 藉由新增另一個 **[路由]** 與其他規則運算式的屬性。
 
 [!code-html[Main](create-a-rest-api-with-attribute-routing/samples/sample20.html)]
 

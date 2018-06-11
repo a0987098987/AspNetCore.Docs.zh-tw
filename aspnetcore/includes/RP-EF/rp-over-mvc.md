@@ -6,3 +6,5 @@
 * 具有最新的 API。
 * 涵蓋更多功能。
 * 是新應用程式開發的建議方法。
+
+如果您選擇此教學課程，而不是選擇 [Razor 頁面](xref:data/ef-rp/intro)的版本，請在此 [GitHub 問題](https://github.com/aspnet/Docs/issues/6146)中告訴我們原因。

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
 ms.openlocfilehash: 9a748628d53878be380869ac5327de0111d2284d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507257"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>實習： 建置含有 ASP.NET Web API 和 Angular.js 的單一頁面應用程式 (SPA)
 ====================
@@ -32,10 +33,10 @@ ms.lasthandoff: 11/10/2017
 > 
 > 在此手上實驗室中，您會利用這些技術來實作玩家測驗 」，瑣事網站 SPA 概念為基礎。 您先將實作與 ASP.NET Web API 來擷取測驗問題，並儲存答案的必要的端點公開 （expose） 服務層。 然後，您將建立豐富且回應迅速的 UI 使用 AngularJS 和 CSS3 轉換效果。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -307,7 +308,7 @@ Web API framework 是 ASP.NET 堆疊的一部分，並設計旨在讓您輕鬆�
 您一開始會安裝 Visual Studio Package Manager Console 中的 AngularJS。 然後，您將建立可提供一些受測應用程式，並且要呈現的測驗問題與解答使用 AngularJS 範本引擎的檢視行為的控制站。
 
 > [!NOTE]
-> 如需 AngularJS 的詳細資訊，請參閱[ [http://angularjs.org/](http://angularjs.org/)](http://angularjs.org/)。
+> 如需 AngularJS 的詳細資訊，請參閱[ [ http://angularjs.org/ ](http://angularjs.org/) ](http://angularjs.org/)。
 
 
 1. 開啟**Visual Studio Express 2013 for Web**並開啟**GeekQuiz.sln**方案位於**來源/Ex2 CreatingASPAInterface/開始**資料夾。 或者，您可以繼續使用解決方案您在上一個練習中取得。

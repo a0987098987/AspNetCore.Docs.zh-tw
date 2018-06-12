@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-controller
 msc.type: authoredcontent
 ms.openlocfilehash: bb76c0a87d935322406b9d8e18fbdb3e41f327f5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30868863"
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/06/2018
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-URL 的第一個部分會決定要執行的控制器類別。 因此*/HelloWorld*對應至`HelloWorldController`類別。 URL 的第二個部分會決定要執行的類別上的動作方法。 因此*/HelloWorld/索引*導致`Index`方法`HelloWorldController`類別來執行。 請注意，我們只需要瀏覽至*/HelloWorld*和`Index`方法使用預設值。 這是因為方法名為`Index`是將會在控制站呼叫，如果沒有明確指定的預設方法。
+URL 的第一個部分會決定要執行的控制器類別。 因此 */HelloWorld*對應至`HelloWorldController`類別。 URL 的第二個部分會決定要執行的類別上的動作方法。 因此 */HelloWorld/索引*導致`Index`方法`HelloWorldController`類別來執行。 請注意，我們只需要瀏覽至 */HelloWorld*和`Index`方法使用預設值。 這是因為方法名為`Index`是將會在控制站呼叫，如果沒有明確指定的預設方法。
 
 瀏覽至 `http://localhost:xxxx/HelloWorld/Welcome`。 `Welcome`方法會執行，且會傳回字串&quot;這是該  褖畫惎動作方法...&quot;. 預設的 MVC 對應是否`/[Controller]/[ActionName]/[Parameters]`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 

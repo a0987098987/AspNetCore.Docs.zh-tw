@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 55109723e566a9f7c66c1a59414377b05dbec760
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507117"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>實習： 一個 ASP.NET： 整合 ASP.NET Web Form、 MVC 和 Web API
 ====================
@@ -28,11 +29,11 @@ ms.lasthandoff: 11/10/2017
 > 
 > Visual Studio 2013 導入了新的統一的專案系統可讓您建立應用程式，以及一個專案中使用所有 ASP.NET 技術。 這項功能不需要挑選的專案和搖桿，開頭的一種技術，並改為建議您使用一個專案中的多個 ASP.NET 架構。
 > 
-> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit)。
+> 所有的範例程式碼和程式碼片段會包含在 Web 營訓練套件，可在[ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit)。
 
 
 <a id="Overview"></a>
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>目標
@@ -161,7 +162,7 @@ ms.lasthandoff: 11/10/2017
     *易記的 Url*
 
     > [!NOTE]
-    > 如您所見，URL 變更為 **/連絡**。 從開始**ASP.NET 4**、 URL 路由的功能已加入至 Web Form、 Url，您可以撰寫類似*[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* 而不是*[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*。 如需詳細資訊請參閱[URL 路由](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)。
+    > 如您所見，URL 變更為 **/連絡**。 從開始**ASP.NET 4**、 URL 路由的功能已加入至 Web Form、 Url，您可以撰寫類似*[ http://www.mysite.com/products/software ](http://www.mysite.com/products/software)* 而不是 *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. 如需詳細資訊請參閱[URL 路由](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)。
 3. 現在，您將探索整合到應用程式的驗證流程。 若要這樣做，請按一下**註冊**頁面的右上角。
 
     ![註冊新的使用者](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)

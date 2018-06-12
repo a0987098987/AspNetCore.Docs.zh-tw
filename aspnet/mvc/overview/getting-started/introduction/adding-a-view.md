@@ -10,10 +10,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
 ms.openlocfilehash: 21db97e635b5db580df31f46ca7f8b60a80d6f94
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30873426"
 ---
 <a name="adding-a-view"></a>加入的檢視
 ====================
@@ -23,7 +24,7 @@ ms.lasthandoff: 04/06/2018
 
 本節中您要修改`HelloWorldController`類別若要使用範本檔案來完全封裝產生 HTML 回應至用戶端的程序的檢視。 
 
-您將建立檢視範本檔案使用[Razor 檢視引擎](../../../../web-pages/overview/getting-started/introducing-razor-syntax-c.md)。 Razor 為基礎的檢視範本具有*.cshtml*副檔名，且提供簡潔的方式建立 HTML 輸出使用 C#。 Razor 的字元和撰寫檢視範本時所需按鍵數目降到最低，並可讓快速，流體，程式碼撰寫工作流程。
+您將建立檢視範本檔案使用[Razor 檢視引擎](../../../../web-pages/overview/getting-started/introducing-razor-syntax-c.md)。 Razor 為基礎的檢視範本具有 *.cshtml*副檔名，且提供簡潔的方式建立 HTML 輸出使用 C#。 Razor 的字元和撰寫檢視範本時所需按鍵數目降到最低，並可讓快速，流體，程式碼撰寫工作流程。
 
 目前，`Index` 方法會傳回字串，內含在控制器類別中硬式編碼的訊息。 變更`Index`方法以傳回`View`物件，如下列程式碼所示：
 
@@ -67,7 +68,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="changing-views-and-layout-pages"></a>變更檢視和版面配置頁
 
-首先，您想要變更&quot;應用程式名稱&quot;在頁面頂端的連結。 該文字會每一頁。 雖然會顯示應用程式中的每一頁上，它實際上被實作在專案中，只有一個位置。 移至*/檢視表/共用*資料夾中的**方案總管 中**並開啟 *\_Layout.cshtml*檔案。 這個檔案稱為*版面配置頁*且位於所有其他頁面使用的共用資料夾。
+首先，您想要變更&quot;應用程式名稱&quot;在頁面頂端的連結。 該文字會每一頁。 雖然會顯示應用程式中的每一頁上，它實際上被實作在專案中，只有一個位置。 移至 */檢視表/共用*資料夾中的**方案總管 中**並開啟 *\_Layout.cshtml*檔案。 這個檔案稱為*版面配置頁*且位於所有其他頁面使用的共用資料夾。
 
 ![_LayoutCshtml](adding-a-view/_static/image7.png)
 

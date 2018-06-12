@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
 ms.openlocfilehash: c9675eb7776116ecbe910d5515abfe9b4391df22
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30873348"
 ---
 <a name="adding-a-view-vb"></a>加入的檢視 (VB)
 ====================
@@ -63,9 +64,9 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="changing-views-and-layout-pages"></a>變更檢視和版面配置頁
 
-首先，我們變更文字&quot;我的 MVC 應用程式。&quot;該文字共用，並顯示每一頁上。 它實際上不會顯示僅在一個地方我們的受測專案，即使它是我們的應用程式中的每一頁上。 移至*/檢視表/共用*資料夾中的**方案總管 中**並開啟 *\_Layout.vbhtml*檔案。 這個檔案稱為版面配置頁面，它是共用&quot;殼層&quot;所有其他頁面使用。
+首先，我們變更文字&quot;我的 MVC 應用程式。&quot;該文字共用，並顯示每一頁上。 它實際上不會顯示僅在一個地方我們的受測專案，即使它是我們的應用程式中的每一頁上。 移至 */檢視表/共用*資料夾中的**方案總管 中**並開啟 *\_Layout.vbhtml*檔案。 這個檔案稱為版面配置頁面，它是共用&quot;殼層&quot;所有其他頁面使用。
 
-請注意`@RenderBody()`檔案底部附近的程式碼行。 `RenderBody` 這是的預留位置，其中您所建立的所有頁面會都出現&quot;包裝&quot;版面配置頁面中。 變更`<h1>`標題從**&quot;**我的 MVC 應用程式&quot;至&quot;MVC 電影應用程式&quot;。
+請注意`@RenderBody()`檔案底部附近的程式碼行。 `RenderBody` 這是的預留位置，其中您所建立的所有頁面會都出現&quot;包裝&quot;版面配置頁面中。 變更`<h1>`標題從**&quot;** 我的 MVC 應用程式&quot;至&quot;MVC 電影應用程式&quot;。
 
 [!code-html[Main](adding-a-view/samples/sample3.html)]
 

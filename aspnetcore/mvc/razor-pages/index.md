@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: 651d47ce20f3269340f0796f487e2f1a2a155710
-ms.sourcegitcommit: 0063338c2e130409081bb60fcffa0c3f190cd46a
+ms.openlocfilehash: c8611ef9218711410cde9e142202fa25c3e51862
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729454"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor Pages 簡介
 
@@ -40,17 +41,47 @@ Razor Pages 是 ASP.NET Core MVC 新的部分，更容易編寫以頁面為焦�
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
+::: moniker range=">= aspnetcore-2.1"
+
+從命令列執行 `dotnet new webapp`。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 從命令列執行 `dotnet new razor`。
+
+::: moniker-end
 
 從 Visual Studio for Mac 開啟已產生的 *.csproj* 檔案。
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
+::: moniker range=">= aspnetcore-2.1"
+
+從命令列執行 `dotnet new webapp`。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 從命令列執行 `dotnet new razor`。
+
+::: moniker-end
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
 
+::: moniker range=">= aspnetcore-2.1"
+
+從命令列執行 `dotnet new webapp`。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 從命令列執行 `dotnet new razor`。
+
+::: moniker-end
 
 ---
 
@@ -116,7 +147,7 @@ DB 內容：
 
 依照慣例，`PageModel` 類別稱之為 `<PageName>Model`，與頁面位於相同的命名空間。
 
-`PageModel` 類別可以分離頁面邏輯與頁面展示。 此類別會定義頁面的處理常式，以處理傳送至頁面的要求與用於轉譯頁面的資料。 分離頁面邏輯與頁面展示可讓您透過[相依性插入](xref:fundamentals/dependency-injection)來管理頁面相依性，以及針對頁面進行[單元測試](xref:testing/razor-pages-testing)。
+`PageModel` 類別可以分離頁面邏輯與頁面展示。 此類別會定義頁面的處理常式，以處理傳送至頁面的要求與用於轉譯頁面的資料。 分離頁面邏輯與頁面展示可讓您透過[相依性插入](xref:fundamentals/dependency-injection)來管理頁面相依性，以及針對頁面進行[單元測試](xref:test/razor-pages-tests)。
 
 在 `POST` 要求上執行的頁面具有 `OnPostAsync`「處理常式方法」 (當使用者張貼表單時)。 您可以新增任何 HTTP 指令動詞的處理常式方法。 最常見的處理常式包括：
 
@@ -502,4 +533,4 @@ services.AddMvc()
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)
 * [Razor Pages 自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-conventions)
-* [Razor 頁面單元與整合測試](xref:testing/razor-pages-testing)
+* [Razor 頁面單元測試](xref:test/razor-pages-tests)

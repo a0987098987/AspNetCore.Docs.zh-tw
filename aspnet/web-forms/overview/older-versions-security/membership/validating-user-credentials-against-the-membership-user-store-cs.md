@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 484a0f16265ee2d887ee08f6ae7ada47047f1f04
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30891802"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-c"></a>驗證使用者認證，針對成員資格使用者存放區 (C#)
 ====================
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/06/2018
 
 `SqlMembershipProvider`取得指定之使用者的密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密，或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回其原始格式的密碼。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`* 傳入值`ValidateUser`到它的對等的方法加密或雜湊狀態，並再比較它與從傳回什麼資料庫。 如果儲存在資料庫中的密碼符合格式化的使用者所輸入的密碼，是有效的認證。
 
-讓我們更新我們的登入頁面 (~ /`Login.aspx`)，讓它會驗證成員資格 framework 使用者存放區提供的認證。 我們建立此登入頁面中<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊的使用者名稱和密碼，以建立介面記住我 核取方塊，並登入按鈕 （請參閱圖 1）。 程式碼會驗證輸入的認證，硬式編碼的使用者名稱和密碼組清單 （Scott/密碼、 Jisun/密碼，與 Sam/密碼）。 在<a id="Tutorial03"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)教學課程中我們已更新儲存在表單的其他資訊的登入網頁的程式碼驗證票證`UserData`屬性。
+讓我們更新我們的登入頁面 (~ /`Login.aspx`)，讓它會驗證成員資格 framework 使用者存放區提供的認證。 我們建立此登入頁面中<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊的使用者名稱和密碼，以建立介面記住我核取方塊，並登入按鈕 （請參閱圖 1）。 程式碼會驗證輸入的認證，硬式編碼的使用者名稱和密碼組清單 （Scott/密碼、 Jisun/密碼，與 Sam/密碼）。 在<a id="Tutorial03"> </a> [*表單驗證設定和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)教學課程中我們已更新儲存在表單的其他資訊的登入網頁的程式碼驗證票證`UserData`屬性。
 
 
 [![登入頁面的介面包含兩個文字方塊、 CheckBoxList 和一個按鈕](validating-user-credentials-against-the-membership-user-store-cs/_static/image2.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image1.png)

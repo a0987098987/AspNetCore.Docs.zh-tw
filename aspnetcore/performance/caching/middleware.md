@@ -10,12 +10,12 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 7ceccffa39baf5f13d63c26e78c64a595bb42f60
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: abf07ec2d2692a8504caea243eacead6aa6e1a62
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734493"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341700"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>快取中 ASP.NET Core 中的介軟體的回應
 
@@ -27,7 +27,7 @@ ms.locfileid: "34734493"
 
 ## <a name="package"></a>Package
 
-若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，這是可用於2.1 或更新版本的 ASP.NET Core。
+若要在專案中包含中介軟體，將參考加入[Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)封裝，或使用[Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，適用於 ASP。NET 2.1 或更新版本的核心。
 
 ## <a name="configuration"></a>組態
 

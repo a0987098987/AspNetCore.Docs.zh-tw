@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 69ce182855878e4d05bff95139fefb9e1312f3d5
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 48a25b7ba7affe84cfa6fe16096409239c510221
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252070"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35652184"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制在 ASP.NET Core HTTPS
 
@@ -48,8 +48,8 @@ ms.locfileid: "35252070"
 
 上述的反白顯示程式碼：
 
-* 設定[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode)。
-* 5001 設定 HTTPS 連接埠。
+* 設定[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode)至`Status307TemporaryRedirect`，這是預設值。 實際執行應用程式應該呼叫[UseHsts](#hsts)。
+* 5001 設定 HTTPS 連接埠。 預設值是 443。
 
 下列的機制會自動設定連接埠：
 
@@ -77,6 +77,11 @@ ms.locfileid: "35252070"
 * 未重新導向要求。
 * 中介軟體，記錄警告。
 
+> [!NOTE]
+> 使用 HTTPS 的重新導向中介軟體的替代方案 (`UseHttpsRedirection`) 是使用 URL 重寫中介軟體 (`AddRedirectToHttps`)。 `AddRedirectToHttps` 也可以設定的狀態碼和連接埠重新導向執行時。 如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。
+>
+> 當重新導向至 HTTPS，而不需要額外的重新導向規則，我們建議使用 HTTPS 的重新導向中介軟體 (`UseHttpsRedirection`) 本主題中所述。
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.1"
@@ -89,7 +94,7 @@ ms.locfileid: "35252070"
 
 [!code-csharp[](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
-如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。
+如需詳細資訊，請參閱[URL 重寫中介軟體](xref:fundamentals/url-rewriting)。 中介軟體也可讓應用程式，以執行重新導向時設定的狀態碼或狀態碼和連接埠。
 
 全域使用 HTTPS (`options.Filters.Add(new RequireHttpsAttribute());`) 是安全性最佳作法。 將`[RequireHttps]`屬性套用至所有控制器，不會比全域使用 HTTPS 來的安全。 您無法保證`[RequireHttps]`加入新的控制器和 Razor 頁面時，屬性會套用。
 

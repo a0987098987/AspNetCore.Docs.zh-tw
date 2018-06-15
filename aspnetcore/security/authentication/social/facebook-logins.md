@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: cabb5acc6e593c02c20b3403b39c601ce26a4d99
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: f9c28930c1f8a9c54792a2f689d890f16d795a55
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688979"
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613105"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Facebook 外部登入安裝程式
 
@@ -47,6 +47,9 @@ ms.locfileid: "34688979"
 ![用戶端的 OAuth 設定頁面](index/_static/FBOAuthSetup.png)
 
 * 輸入您的開發 URI 與 */signin-facebook*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-facebook`)。 稍後在本教學課程中設定的 Facebook 驗證將會自動處理在要求 */signin-facebook*實作 OAuth 流程的路由。
+
+> [!NOTE]
+> URI */signin-facebook*設為預設回呼 Facebook 驗證提供者。 您可以變更預設的回呼 URI 時設定 Facebook 驗證中的介軟體，透過繼承[RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性[FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions)類別。
 
 * 按一下**儲存變更**。
 

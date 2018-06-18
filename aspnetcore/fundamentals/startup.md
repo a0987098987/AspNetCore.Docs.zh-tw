@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: a61f78b2d0e5c6c171a26690fcce256462a82508
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 58ced0ae11f462bc309526b7db7bda7897c33009
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "34233166"
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -46,7 +47,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如，`StartupDevelopment`)，並在執行階段選取適當的啟動類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#startup-conventions)。
 
-若要深入了解 `WebHostBuilder`，請參閱[裝載](xref:fundamentals/hosting)主題。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
+若要深入了解 `WebHostBuilder`，請參閱[裝載](xref:fundamentals/host/index)主題。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
@@ -58,7 +59,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 將服務新增至服務容器，使其可在應用程式和 `Configure` 方法內使用。 這些服務會透過[相依性插入](xref:fundamentals/dependency-injection)或從 [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices) 加以解析。
 
-Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 [裝載](xref:fundamentals/hosting)主題中提供了詳細資料。
+Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細資料可於[在 ASP.NET Core 中代管](xref:fundamentals/host/index)主題中取得。
 
 對於需要大量安裝的功能，[IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection) 上有 `Add[Service]` 擴充方法。 適用於 Entity Framework、身分識別和 MVC 的典型 Web 應用程式註冊服務：
 
@@ -164,7 +165,7 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [裝載](xref:fundamentals/hosting)
+* [裝載](xref:fundamentals/host/index)
 * [使用多重環境](xref:fundamentals/environments)
 * [中介軟體](xref:fundamentals/middleware/index)
 * [記錄](xref:fundamentals/logging/index)

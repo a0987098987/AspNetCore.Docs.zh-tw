@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: d9d5a26b08f67fe4ee39d6b974027826a93e5d5f
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: a23e2e1a1dd25a57e5d6189bbd5938c48078515b
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341778"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -262,7 +263,6 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他考量。 例如，使用範本 `files/{filename}.{ext?}` - 當 `filename` 和 `ext` 都存在時，就會填入這兩個值。 如果 URL 中只有 `filename` 存在，由於結尾的句點 `.` 是選擇性項目，因此路由相符。 下列 URL 會符合此路由：
 
 * `/files/myFile.txt`
-* `/files/myFile.`
 * `/files/myFile`
 
 您可以使用 `*` 字元作為路由參數的前置詞以繫結至 URI 的其餘部分 - 這稱為「全部擷取」參數。 例如，`blog/{*slug}` 會符合以 `/blog` 開頭且其後有任何值 (這會指派給 `slug` 路由值) 的所有 URI。 全部擷取參數也可以符合空字串。

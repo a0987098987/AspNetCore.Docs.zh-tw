@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 3f59f7d1bf0280cef8f7757e8cd57d4872769b3d
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 440695f98714f33cff9e4bf97bfc09477901e14c
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688992"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725987"
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Twitter 外部登入與 ASP.NET Core 的安裝程式
 
@@ -32,7 +32,10 @@ ms.locfileid: "34688992"
 
 ![建立應用程式頁面](index/_static/TwitterCreate.png)
 
-* 輸入您的開發 URI 與 */signin-twitter*附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-twitter`)。 稍後在本教學課程中設定的 Twitter 驗證配置將會自動處理在要求 */signin-twitter*實作 OAuth 流程的路由。
+* 輸入您的開發 URI 與`/signin-twitter`附加到**有效的 OAuth 重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-twitter`)。 稍後在本教學課程中設定的 Twitter 驗證配置將會自動處理在要求`/signin-twitter`實作 OAuth 流程的路由。
+
+> [!NOTE]
+> URI 區段`/signin-twitter`設為預設回呼 Twitter 驗證提供者。 您可以變更預設的回呼 URI 時設定 Twitter 驗證中的介軟體，透過繼承[RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性[TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions)類別。
 
 * 填寫表單的其餘部分，並點選**建立應用程式 Twitter**。 會顯示新的應用程式詳細資料：
 

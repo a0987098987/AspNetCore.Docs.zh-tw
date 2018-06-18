@@ -9,12 +9,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 0b67d4aef198aa418b54fb92db76d331ffa2785a
-ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
+ms.openlocfilehash: 53cab4b72980eef47c899a22e49fa697e7497279
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35415029"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35726000"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 
@@ -139,6 +139,8 @@ dotnet ef database update
 ```console
 dotnet user-secrets set SeedUserPW <PW>
 ```
+
+如果您未使用強式密碼，例外狀況時擲回`SeedData.Initialize`呼叫。
 
 更新`Main`使用測試密碼：
 

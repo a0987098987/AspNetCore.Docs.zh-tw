@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core Data Protection
+title: ASP.NET Core 資料保護
 author: rick-anderson
 description: 了解資料保護的概念和 ASP.NET Core 資料保護應用程式開發介面的設計原則。
 manager: wpickett
@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/introduction
-ms.openlocfilehash: 5526b517ba9f1ac4b041576156b2964217460726
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 56876f43ed48b577f4d870825fd9230f526baec3
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725948"
 ---
-# <a name="aspnet-core-data-protection"></a>ASP.NET Core Data Protection
+# <a name="aspnet-core-data-protection"></a>ASP.NET Core 資料保護
 
 Web 應用程式通常需要儲存機密資料。 Windows 桌面應用程式提供 DPAPI，但這並不適合 web 應用程式。 ASP.NET Core 資料保護堆疊提供簡單、 更容易使用密碼編譯 API 為開發人員可用來保護資料，包括金鑰管理和旋轉。
 
-ASP.NET Core 資料保護堆疊設計來做為長期取代<machineKey>ASP.NET 中的項目 1.x-4.x。 它被設計成同時提供適用於大部分的現代應用程式都可能會遇到的使用案例的全新解決方案可以提供許多舊的密碼編譯堆疊的缺點。
+ASP.NET Core 資料保護堆疊設計來做為長期取代&lt;machineKey&gt; ASP.NET 中的項目 1.x-4.x。 它被設計成同時提供適用於大部分的現代應用程式都可能會遇到的使用案例的全新解決方案可以提供許多舊的密碼編譯堆疊的缺點。
 
 ## <a name="problem-statement"></a>問題陳述式
 
@@ -75,6 +76,6 @@ ASP.NET Core 資料保護 Api 主要被不適用於機密裝載的無限期持�
 
 * Microsoft.AspNetCore.DataProtection.Extensions 包含其他應用程式開發介面，開發人員會很有用，但其不屬於此核心套件中。 比方說，此套件包含簡單"具現化的系統沒有相依性資料隱碼安裝程式的特定金鑰的儲存目錄指向 「 應用程式開發介面 （詳細資訊）。 它也包含擴充方法，來限制受保護的內容 （詳細資訊） 的存留期。
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb 可以安裝到現有的 ASP.NET 4.x 應用程式重新導向其<machineKey>改為使用新的資料保護堆疊的作業。 請參閱[相容性](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey)如需詳細資訊。
+* Microsoft.AspNetCore.DataProtection.SystemWeb 可以安裝到現有的 ASP.NET 4.x 應用程式重新導向其&lt;machineKey&gt;改為使用新的資料保護堆疊的作業。 請參閱[相容性](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey)如需詳細資訊。
 
 * Microsoft.AspNetCore.Cryptography.KeyDerivation 提供 PBKDF2 密碼雜湊常式的實作，並可供系統需要安全地處理使用者密碼。 請參閱[雜湊密碼](xref:security/data-protection/consumer-apis/password-hashing)如需詳細資訊。

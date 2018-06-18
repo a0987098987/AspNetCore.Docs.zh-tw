@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: ccb771dbefefb007aede1bdf05ab50ec363a3089
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 878c0b16e24f48a0ee84f93393af67af1728e284
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689031"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725961"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>在 ASP.NET Core Google 外部登入安裝程式
 
@@ -61,7 +61,10 @@ ms.locfileid: "34689031"
 
 * 因為我們建立 Google + 專案的一個功能 （登入），我們可以輸入相同**名稱**OAuth 2.0 用戶端識別碼，我們使用的專案。
 
-* 輸入您的開發 URI 與 */signin-google*附加到**授權重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-google`)。 稍後在本教學課程設定 Google 驗證將會自動處理在要求 */signin-google*實作 OAuth 流程的路由。
+* 輸入您的開發 URI 與`/signin-google`附加到**授權重新導向 Uri**欄位 (例如： `https://localhost:44320/signin-google`)。 稍後在本教學課程設定 Google 驗證將會自動處理在要求`/signin-google`實作 OAuth 流程的路由。
+
+> [!NOTE]
+> URI 區段`/signin-google`設為 Google 驗證提供者的預設回呼。 您可以變更預設的回呼 URI 時設定 Google 驗證中的介軟體，透過繼承[RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性[GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions)類別。
 
 * 按 TAB 鍵以新增**授權重新導向 Uri**項目。
 

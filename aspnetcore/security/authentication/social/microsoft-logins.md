@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: a9bf7b49b1cfdfff65c639eed1e14c94c5432350
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 46973f8a82034bd99a6e6634bbd6da06b1b14f25
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689018"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35726026"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>與 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -46,9 +46,12 @@ ms.locfileid: "34689018"
 
 ![加入平台 對話方塊](index/_static/MicrosoftDevAppPlatform.png)
 
-* 在新**Web**平台區段中，輸入您開發的 URL 與 */signin-microsoft*附加到**重新導向 Url**欄位 (例如： `https://localhost:44320/signin-microsoft`)。 稍後在本教學課程中設定的 Microsoft 驗證配置將會自動處理在要求 */signin-microsoft*實作 OAuth 流程路由：
+* 在新**Web**平台區段中，輸入您開發的 URL 與`/signin-microsoft`附加到**重新導向 Url**欄位 (例如： `https://localhost:44320/signin-microsoft`)。 稍後在本教學課程中設定的 Microsoft 驗證配置將會自動處理在要求`/signin-microsoft`實作 OAuth 流程路由：
 
 ![Web 平台 > 一節](index/_static/MicrosoftRedirectUri.png)
+
+> [!NOTE]
+> URI 區段`/signin-microsoft`設為 Microsoft 的驗證提供者的預設回呼。 您可以變更預設的回呼 URI 時設定 Microsoft 驗證中的介軟體，透過繼承[RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性[MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions)類別。
 
 * 點選**新增 URL**確定 URL 已新增。
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30877479"
 ---
 <a name="bundling-and-minification"></a>統合及縮製
 ====================
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/10/2018
 
 ![B/M](bundling-and-minification/_static/image1.png)
 
-灰色長條顯示六個連接限制在等候瀏覽器的要求會排入佇列的時間。 黃色列是要求時機，第一個位元組，也就是將要求傳送，並從伺服器接收第一個回應所花費的時間。 藍色巡覽列會顯示從伺服器收到的回應資料所花費的時間。 您可以按兩下以取得詳細的計時資訊資產。 例如下, 圖顯示計時詳細資料載入*/Scripts/MyScripts/JavaScript6.js*檔案。
+灰色長條顯示六個連接限制在等候瀏覽器的要求會排入佇列的時間。 黃色列是要求時機，第一個位元組，也就是將要求傳送，並從伺服器接收第一個回應所花費的時間。 藍色巡覽列會顯示從伺服器收到的回應資料所花費的時間。 您可以按兩下以取得詳細的計時資訊資產。 例如下, 圖顯示計時詳細資料載入 */Scripts/MyScripts/JavaScript6.js*檔案。
 
 ![](bundling-and-minification/_static/image2.png)
 
@@ -114,7 +115,7 @@ ms.lasthandoff: 04/10/2018
 
 [!code-csharp[Main](bundling-and-minification/samples/sample5.cs)]
 
-上述程式碼會建立新的 JavaScript 組合，名為*~/bundles/jquery* ，其中包含所有適當 (是偵錯或縮短但不是。*vsdoc*) 中的檔案*指令碼*符合萬用字元字串"~/Scripts/jquery-{版本}.js"的資料夾。 ASP.NET MVC 4，這表示偵錯組態，將檔案與*jquery 1.7.1.js*將會新增至組合。 在 [發行] 組態*jquery 1.7.1.min.js*將加入。 將架構例如遵循幾個常見的慣例：
+上述程式碼會建立新的 JavaScript 組合，名為 *~/bundles/jquery* ，其中包含所有適當 (是偵錯或縮短但不是。*vsdoc*) 中的檔案*指令碼*符合萬用字元字串"~/Scripts/jquery-{版本}.js"的資料夾。 ASP.NET MVC 4，這表示偵錯組態，將檔案與*jquery 1.7.1.js*將會新增至組合。 在 [發行] 組態*jquery 1.7.1.min.js*將加入。 將架構例如遵循幾個常見的慣例：
 
 - 存在 「 FileX.min.js"和"FileX.js 」 時，請選取一版的 「.min"檔案。
 - 選取偵錯的非".min 」 版本。
@@ -145,7 +146,7 @@ ms.lasthandoff: 04/10/2018
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
-使用轉譯方法，檢視中所參考的組合 ( `Styles.Render` css 和`Scripts.Render`javascript)。 從下列標記*_layout.cshtml\\_Layout.cshtml*檔案會顯示預設的 ASP.NET 網際網路專案檢視如何參考 CSS 和 JavaScript 的組合。
+使用轉譯方法，檢視中所參考的組合 ( `Styles.Render` css 和`Scripts.Render`javascript)。 從下列標記 *_layout.cshtml\\_Layout.cshtml*檔案會顯示預設的 ASP.NET 網際網路專案檢視如何參考 CSS 和 JavaScript 的組合。
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample10.cshtml?highlight=5-6,11)]
 

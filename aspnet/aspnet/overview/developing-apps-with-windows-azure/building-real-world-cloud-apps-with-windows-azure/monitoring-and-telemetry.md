@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877355"
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監控與遙測 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -144,7 +145,7 @@ Azure App Service 中的 web 應用程式已內建的書寫支援`System.Diagnos
 
 ### <a name="log-exceptions"></a>記錄例外狀況
 
-不要只放置*例外狀況。Tostring （)*記錄程式碼中。 還剩下出的內容資訊。 在 SQL 錯誤的情況下它省去了 SQL 錯誤號碼。 所有例外狀況，包括內容資訊、 例外狀況本身和內部例外狀況以確定您提供的所有項目所需進行疑難排解。 例如，內容資訊可能包括伺服器名稱、 交易識別碼和使用者名稱 （但不是密碼或任何機密 ！）。
+不要只放置*例外狀況。Tostring （)* 記錄程式碼中。 還剩下出的內容資訊。 在 SQL 錯誤的情況下它省去了 SQL 錯誤號碼。 所有例外狀況，包括內容資訊、 例外狀況本身和內部例外狀況以確定您提供的所有項目所需進行疑難排解。 例如，內容資訊可能包括伺服器名稱、 交易識別碼和使用者名稱 （但不是密碼或任何機密 ！）。
 
 如果您依賴每一個開發人員做正確的事，記錄的例外狀況，其中部分將不會。 若要確定它取得完成操作右邊每次，建置 例外狀況處理，請直接將記錄器介面： 傳遞例外狀況物件記錄器類別，然後適當地登入記錄器類別的例外狀況資料。
 

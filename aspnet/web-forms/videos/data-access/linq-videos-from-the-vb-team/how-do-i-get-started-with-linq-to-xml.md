@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879799"
 ---
 <a name="how-do-i-get-started-with-linq-to-xml"></a>[如何:]開始使用 LINQ to XML？
 ====================

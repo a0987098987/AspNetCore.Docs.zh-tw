@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876380"
 ---
 <a name="caching-data-in-the-architecture-vb"></a>快取的架構 (VB) 中的資料
 ====================

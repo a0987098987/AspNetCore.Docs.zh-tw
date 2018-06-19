@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889484"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a>開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form
 ====================
@@ -100,7 +101,7 @@ ms.lasthandoff: 04/06/2018
 
 `%PROGRAMFILES%\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQL\DATA`
 
-(此位置的*.mdf*檔案會假設您正在使用 SQL Server 2008 Express。)
+(此位置的 *.mdf*檔案會假設您正在使用 SQL Server 2008 Express。)
 
 如果您從指令碼建立資料庫，執行下列步驟來建立資料庫圖表：
 
@@ -210,7 +211,7 @@ ms.lasthandoff: 04/06/2018
 
 [![Image22](the-entity-framework-and-aspnet-getting-started-part-1/_static/image60.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image59.png)
 
-Entity Framework 會使用 XML 來儲存有關資料庫、 資料模型，以及它們之間的對應資訊。 *SchoolModel.edmx*檔案是實際的 XML 檔案，其中包含這項資訊。 設計工具中呈現的資訊以圖形格式，但您也可以檢視為 XML 檔案，以滑鼠右鍵按一下*.edmx*檔案**方案總管 中**，然後按一下**開啟與**，然後選取**XML （文字） 編輯器**。 （資料模型設計工具和 XML 編輯器是開啟和使用同一個檔案中，因此您不能有開啟，並在 XML 編輯器中開啟檔案，同時在設計工具的兩個不同的方式）。
+Entity Framework 會使用 XML 來儲存有關資料庫、 資料模型，以及它們之間的對應資訊。 *SchoolModel.edmx*檔案是實際的 XML 檔案，其中包含這項資訊。 設計工具中呈現的資訊以圖形格式，但您也可以檢視為 XML 檔案，以滑鼠右鍵按一下 *.edmx*檔案**方案總管 中**，然後按一下**開啟與**，然後選取**XML （文字） 編輯器**。 （資料模型設計工具和 XML 編輯器是開啟和使用同一個檔案中，因此您不能有開啟，並在 XML 編輯器中開啟檔案，同時在設計工具的兩個不同的方式）。
 
 現在您已建立網站、 資料庫和資料模型。 在下一個逐步解說開始，您將使用資料模型和 ASP.NET 的資料搭配使用`EntityDataSource`控制項。
 

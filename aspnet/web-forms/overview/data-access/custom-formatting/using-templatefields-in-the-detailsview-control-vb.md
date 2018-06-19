@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876302"
 ---
 <a name="using-templatefields-in-the-detailsview-control-vb"></a>在 DetailsView 控制項 (VB) 中使用 TemplateFields
 ====================

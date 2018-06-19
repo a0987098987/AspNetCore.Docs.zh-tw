@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886494"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-updateprogress-control"></a>[如何:]使用 ASP.NET AJAX UpdateProgress 控制項嗎？
 ====================

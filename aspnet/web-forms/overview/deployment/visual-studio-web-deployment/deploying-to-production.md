@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889803"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署到生產環境
 ====================
@@ -99,7 +100,7 @@ ms.lasthandoff: 04/06/2018
 既然您已經建立的 web 應用程式和資料庫預備環境，您可以部署它的專案。
 
 > [!NOTE]
-> 以下指示說明如何建立發行設定檔下載*.publishsettings*不只適用於 Azure，也為協力廠商裝載提供者的檔案。 最新版的 Azure SDK 也可讓您直接連接到 Azure，從 Visual Studio，然後選擇 從 web 應用程式必須在您的 Azure 帳戶中的清單。 在 Visual Studio 2013 中，您可以登入 Azure 從**Web Publish**對話方塊或從**伺服器總管**視窗。 如需詳細資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)。
+> 以下指示說明如何建立發行設定檔下載 *.publishsettings*不只適用於 Azure，也為協力廠商裝載提供者的檔案。 最新版的 Azure SDK 也可讓您直接連接到 Azure，從 Visual Studio，然後選擇 從 web 應用程式必須在您的 Azure 帳戶中的清單。 在 Visual Studio 2013 中，您可以登入 Azure 從**Web Publish**對話方塊或從**伺服器總管**視窗。 如需詳細資訊，請參閱[Azure App Service 中建立 ASP.NET web 應用程式](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)。
 
 
 ### <a name="download-the-publishsettings-file"></a>下載.publishsettings 檔案
@@ -112,12 +113,12 @@ ms.lasthandoff: 04/06/2018
     ![下載發行設定檔的連結](deploying-to-production/_static/image5.png)
 
     此步驟中下載檔案，其中包含所有您需要以應用程式部署至您的 web 應用程式的設定。 您將此檔案匯入到 Visual Studio，因此您不需要手動輸入此資訊。
-3. 儲存*.publishsettings*檔案，您可以從 Visual Studio 存取的資料夾中。
+3. 儲存 *.publishsettings*檔案，您可以從 Visual Studio 存取的資料夾中。
 
     ![儲存.publishsettings 檔案](deploying-to-production/_static/image6.png)
 
     > [!WARNING]
-    > 安全性- *.publishsettings*檔案包含您的認證 （未編碼），可用來管理 Azure 訂用帳戶和服務。 這個檔案的安全性最佳作法是暫時儲存 （例如在 Libraries\Documents 資料夾），在來源目錄之外，並匯入完成後再將它刪除。 取得存取權的惡意使用者*.publishsettings*檔案可以編輯、 建立和刪除您的 Azure 服務。
+    > 安全性- *.publishsettings*檔案包含您的認證 （未編碼），可用來管理 Azure 訂用帳戶和服務。 這個檔案的安全性最佳作法是暫時儲存 （例如在 Libraries\Documents 資料夾），在來源目錄之外，並匯入完成後再將它刪除。 取得存取權的惡意使用者 *.publishsettings*檔案可以編輯、 建立和刪除您的 Azure 服務。
 
 ### <a name="create-a-publish-profile"></a>建立發行設定檔
 
@@ -126,7 +127,7 @@ ms.lasthandoff: 04/06/2018
     **發行 Web**精靈 隨即開啟。
 2. 按一下**設定檔** 索引標籤。
 3. 按一下 [匯入] 。
-4. 瀏覽至*.publishsettings*您稍早，下載檔案，然後按一下**開啟**。
+4. 瀏覽至 *.publishsettings*您稍早，下載檔案，然後按一下**開啟**。
 
     ![匯入發行設定 對話方塊](deploying-to-production/_static/image7.png)
 5. 在**連接**索引標籤上，按一下 **驗證連線**確定設定正確無誤。
@@ -143,7 +144,7 @@ ms.lasthandoff: 04/06/2018
 8. 在下**DefaultConnection**中**資料庫**區段中，成員資格資料庫的資料庫部署設定。
 9. 1. 選取**更新資料庫**。
 
-        **遠端的連接字串**方塊的正下方**DefaultConnection**填寫.publishsettings 檔案的連接字串。連接字串包含 SQL Server 認證，會以純文字儲存*.pubxml*檔案。 如果您不想將它們儲存到永久那里，您可以部署資料庫之後從發行設定檔移除它們，並將其儲存在 Azure 中。 如需詳細資訊，請參閱[如何保護您的 ASP.NET 資料庫連接字串安全從來源部署至 Azure 時](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx)Scott Hanselman 部落格上。
+        **遠端的連接字串**方塊的正下方**DefaultConnection**填寫.publishsettings 檔案的連接字串。連接字串包含 SQL Server 認證，會以純文字儲存 *.pubxml*檔案。 如果您不想將它們儲存到永久那里，您可以部署資料庫之後從發行設定檔移除它們，並將其儲存在 Azure 中。 如需詳細資訊，請參閱[如何保護您的 ASP.NET 資料庫連接字串安全從來源部署至 Azure 時](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx)Scott Hanselman 部落格上。
       2. 按一下**設定資料庫更新**。
       3. 在**設定資料庫更新**對話方塊中，按一下 **加入 SQL 指令碼**。
       4. 在**加入 SQL 指令碼**方塊中，瀏覽至*aspnet-資料-prod.sql*指令碼，您稍早儲存的方案資料夾中，然後按一下**開啟**。
@@ -241,8 +242,8 @@ ms.lasthandoff: 04/06/2018
 1. 在 Azure 中，您用於執行相同的程序建立生產環境 web 應用程式和資料庫。
 
     當您建立資料庫時，您可以選擇將您稍早建立的相同伺服器上，或建立新的伺服器。
-2. 下載*.publishsettings*檔案。
-3. 建立發行設定檔匯入實際執行*.publishsettings*檔案，您用於執行相同的程序。
+2. 下載 *.publishsettings*檔案。
+3. 建立發行設定檔匯入實際執行 *.publishsettings*檔案，您用於執行相同的程序。
 
     別忘了設定資料的部署指令碼，在**DefaultConnection**中**資料庫**區段**設定** 索引標籤。
 4. 重新命名的發行設定檔*生產*。
@@ -250,13 +251,13 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="edit-the-pubxml-file-to-exclude-robotstxt"></a>編輯排除 robots.txt.pubxml 檔案
 
-發行設定檔的檔案會命名為&lt;profilename&gt;*.pubxml*和位於*PublishProfiles*資料夾。 *PublishProfiles*資料夾低於*屬性*資料夾中的 C# web 應用程式專案，在*我的專案*VB web 應用程式專案中或之下的資料夾*應用程式\_資料*資料夾中的 web 應用程式專案。 每個*.pubxml*檔包含套用至其中一個設定發行設定檔。 您在發行網站精靈中輸入的值會儲存在這些檔案，以及您可以編輯它們，以便建立或變更不會在 Visual Studio UI 中提供的設定。
+發行設定檔的檔案會命名為&lt;profilename&gt;*.pubxml*和位於*PublishProfiles*資料夾。 *PublishProfiles*資料夾低於*屬性*資料夾中的 C# web 應用程式專案，在*我的專案*VB web 應用程式專案中或之下的資料夾*應用程式\_資料*資料夾中的 web 應用程式專案。 每個 *.pubxml*檔包含套用至其中一個設定發行設定檔。 您在發行網站精靈中輸入的值會儲存在這些檔案，以及您可以編輯它們，以便建立或變更不會在 Visual Studio UI 中提供的設定。
 
-根據預設， *.pubxml*檔案包含在專案中，當您建立的發行設定檔，但您可以排除專案和 Visual Studio 仍會使用這些方法。 Visual Studio 尋找*PublishProfiles*資料夾*.pubxml*檔案，無論是否包含在專案中。
+根據預設， *.pubxml*檔案包含在專案中，當您建立的發行設定檔，但您可以排除專案和 Visual Studio 仍會使用這些方法。 Visual Studio 尋找*PublishProfiles*資料夾 *.pubxml*檔案，無論是否包含在專案中。
 
-每個*.pubxml*檔案沒有*。 pubxml.user*檔案。 *。 Pubxml.user*檔案包含加密的密碼，如果您選取**儲存密碼**選項，而且依預設就會從專案排除。
+每個 *.pubxml*檔案沒有 *。 pubxml.user*檔案。 *。 Pubxml.user*檔案包含加密的密碼，如果您選取**儲存密碼**選項，而且依預設就會從專案排除。
 
-A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要設定適用於所有設定檔的設定，您可以建立*。 wpp.targets*檔案。 在建置程序會將這些檔案匯入*.csproj*或*.vbproj*專案檔，因此大部分的設定，您可以設定專案檔中設定這些檔案中。 如需有關*.pubxml*檔案和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio 中的檔案Web 專案](https://msdn.microsoft.com/library/ff398069.aspx)。
+A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要設定適用於所有設定檔的設定，您可以建立 *。 wpp.targets*檔案。 在建置程序會將這些檔案匯入 *.csproj*或 *.vbproj*專案檔，因此大部分的設定，您可以設定專案檔中設定這些檔案中。 如需有關 *.pubxml*檔案和 *。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio 中的檔案Web 專案](https://msdn.microsoft.com/library/ff398069.aspx)。
 
 1. 在**方案總管 中**，依序展開**屬性**展開**PublishProfiles**。
 2. 以滑鼠右鍵按一下*Production.pubxml*按一下**開啟**。
@@ -279,7 +280,7 @@ A *.pubxml*檔案包含屬於特定發行設定檔的設定。 如果您想要�
 
     ![若要發行至生產環境的檔案的預覽](deploying-to-production/_static/image14.png)
 
-    檢閱將複製的檔案清單。 您會看到所有*.cs*檔案，包括*.aspx.vb*， *。 aspx.designer.cs*， *Master.cs*，和*Master.designer.cs*檔案會省略。 這段程式碼編譯成*ContosoUniversity.dll*和*ContosUniversity.pdb*了中的檔案*bin*資料夾。 因為只有*.dll*才能的執行應用程式，而且您稍早指定，應該部署到執行應用程式所需的檔案、 no *.cs*檔會複製到目的地環境。 *Obj*資料夾和*ContosoUniversity.csproj*和*。 副檔名為.csproj.user*檔案已省略相同的原因。
+    檢閱將複製的檔案清單。 您會看到所有 *.cs*檔案，包括 *.aspx.vb*， *。 aspx.designer.cs*， *Master.cs*，和*Master.designer.cs*檔案會省略。 這段程式碼編譯成*ContosoUniversity.dll*和*ContosUniversity.pdb*了中的檔案*bin*資料夾。 因為只有 *.dll*才能的執行應用程式，而且您稍早指定，應該部署到執行應用程式所需的檔案、 no *.cs*檔會複製到目的地環境。 *Obj*資料夾和*ContosoUniversity.csproj*和 *。 副檔名為.csproj.user*檔案已省略相同的原因。
 
     按一下**發行**將部署到實際執行環境。
 2. 在生產環境中，您用於執行相同的程序中的測試。

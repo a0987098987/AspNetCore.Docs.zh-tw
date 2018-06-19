@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876666"
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>以程式設計方式設定 ObjectDataSource 參數值 (VB)
 ====================
@@ -124,7 +125,7 @@ ms.lasthandoff: 04/06/2018
 **圖 9**： 按一下 [屬性] 視窗，列出 Web 控制項的事件中閃電圖示
 
 
-所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中*`parameterName`*值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
+所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。 此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中*`parameterName`* 值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。 若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample3.vb)]

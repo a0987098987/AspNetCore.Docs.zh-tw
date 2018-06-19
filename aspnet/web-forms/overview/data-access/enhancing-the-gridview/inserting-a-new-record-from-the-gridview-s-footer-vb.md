@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888366"
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>從 GridView 的頁尾 (VB) 插入新的記錄
 ====================

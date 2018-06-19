@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881808"
 ---
 <a name="setting-up-the-contact-manager-solution"></a>設定連絡人管理員解決方案
 ====================
@@ -63,9 +64,9 @@ ms.lasthandoff: 04/06/2018
 
     [!code-console[Main](setting-up-the-contact-manager-solution/samples/sample1.cmd)]
 
-    1. 使用**– C**參數來指定您的資料庫伺服器的連接字串。
-    2. 使用**–**參數來指定應用程式服務的功能，您想要加入至資料庫。 在此情況下， **m**指出您想要加入成員資格提供者的支援和**r**指出您想要加入角色管理員的支援。
-    3. 使用**– d**參數來指定您的應用程式服務資料庫的名稱。 如果您省略這個參數，此公用程式會建立資料庫的預設名稱與**aspnetdb**。
+    1. 使用 **– C**參數來指定您的資料庫伺服器的連接字串。
+    2. 使用 **–** 參數來指定應用程式服務的功能，您想要加入至資料庫。 在此情況下， **m**指出您想要加入成員資格提供者的支援和**r**指出您想要加入角色管理員的支援。
+    3. 使用 **– d**參數來指定您的應用程式服務資料庫的名稱。 如果您省略這個參數，此公用程式會建立資料庫的預設名稱與**aspnetdb**。
 3. 當成功建立資料庫時，命令提示字元會顯示確認訊息。
 
     ![](setting-up-the-contact-manager-solution/_static/image1.png)

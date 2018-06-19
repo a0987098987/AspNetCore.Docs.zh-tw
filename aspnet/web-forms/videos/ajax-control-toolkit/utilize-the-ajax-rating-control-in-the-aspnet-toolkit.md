@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885789"
 ---
 <a name="utilize-the-ajax-rating-control-in-the-aspnet-toolkit"></a>利用分級控制 ASP.NET 工具組中的 AJAX
 ====================

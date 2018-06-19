@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884050"
 ---
 <a name="aspnet-45-web-forms-strong-typed-data-controls"></a>ASP.NET 4.5 Web Form 強式型別資料控制項
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885096"
 ---
 <a name="master-pages"></a>主版頁面
 ====================
@@ -144,8 +145,8 @@ ASP.NET 2.0 導入了主要頁面的方式來維護一致的外觀與風格，�
 
 - <strong>MasterPageFile</strong>屬性@Page指示詞
 - 設定**Page.MasterPageFile**程式碼中的屬性。
-- **&lt;頁面&gt;**應用程式組態檔 (web.config 應用程式的根資料夾中) 中的項目
-- **&lt;頁面&gt;**子資料夾的組態檔 (位於子資料夾中的 web.config) 中的項目
+- **&lt;頁面&gt;** 應用程式組態檔 (web.config 應用程式的根資料夾中) 中的項目
+- **&lt;頁面&gt;** 子資料夾的組態檔 (位於子資料夾中的 web.config) 中的項目
 
 ## <a name="masterpagefile-attribute"></a>MasterPageFile 屬性
 

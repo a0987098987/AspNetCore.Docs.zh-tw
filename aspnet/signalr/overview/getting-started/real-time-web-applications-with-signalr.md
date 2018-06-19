@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878044"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>與 SignalR 實習： 即時 Web 應用程式
 ====================

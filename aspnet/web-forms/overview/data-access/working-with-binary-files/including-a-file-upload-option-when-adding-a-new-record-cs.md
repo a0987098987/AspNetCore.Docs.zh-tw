@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888610"
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>包括檔案上傳選項，當加入新的記錄 (C#)
 ====================

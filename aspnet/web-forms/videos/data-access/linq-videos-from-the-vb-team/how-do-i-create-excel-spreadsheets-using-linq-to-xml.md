@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891031"
 ---
 <a name="how-do-i-create-excel-spreadsheets-using-linq-to-xml"></a>[如何:]建立使用 LINQ to XML 的 Excel 試算表嗎？
 ====================

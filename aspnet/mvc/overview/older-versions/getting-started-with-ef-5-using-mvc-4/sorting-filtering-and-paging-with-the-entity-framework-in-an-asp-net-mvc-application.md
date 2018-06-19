@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878226"
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>排序、 篩選和分頁與 Entity Framework 中的 ASP.NET MVC 應用程式 (10-3)
 ====================
@@ -321,14 +322,14 @@ Windows Azure SQL Database 是建立在 SQL Server 技術以雲端為基礎的�
 
     ![下載訂用帳戶檔案](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image21.png)
 
-    c.  在瀏覽器視窗中，儲存*.publishsettings*檔案。
+    c.  在瀏覽器視窗中，儲存 *.publishsettings*檔案。
 
     ![下載.publishsettings 檔案](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image22.png)
 
     > [!WARNING]
     > 安全性- *publishsettings*檔案包含您的認證 （未編碼），可用來管理 Windows Azure 訂用帳戶和服務。 這個檔案的安全性最佳作法是暫時儲存在來源目錄之外 (例如在*Libraries\Documents*資料夾)，然後刪除它，一旦完成匯入。 取得存取權的惡意使用者`.publishsettings`檔案可以編輯、 建立和刪除您的 Windows Azure 服務。
 
-    d. 在**匯入 Windows Azure 訂用帳戶**對話方塊中，按一下 **瀏覽**並瀏覽至*.publishsettings*檔案。
+    d. 在**匯入 Windows Azure 訂用帳戶**對話方塊中，按一下 **瀏覽**並瀏覽至 *.publishsettings*檔案。
 
     ![下載 sub](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image23.png)
 
@@ -371,7 +372,7 @@ Windows Azure SQL Database 是建立在 SQL Server 技術以雲端為基礎的�
 
 ![](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image33.png)
 
-部署程序也會建立新的連接字串*(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。
+部署程序也會建立新的連接字串 *(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。
 
 ![Database_Publish 連接字串](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image34.png)
 

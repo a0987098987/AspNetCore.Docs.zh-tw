@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30898966"
 ---
 <a name="webmatrix-readme"></a>WebMatrix Readme
 ====================
@@ -177,9 +178,9 @@ ms.lasthandoff: 04/10/2018
 
 #### <a name="issue-files-that-contains-package-manager-resources-or-package-manager-passwords-are-servable-under-iis-60-and-earlier"></a>問題： 包含封裝管理員資源或封裝管理員密碼的檔案是版本底下 IIS 6.0 提供及更早版本
 
-> 如果您使用 RC2 版本中，建立 ASP.NET Web Pages (Razor) 應用程式部署，而且應用程式包含*password.txt*或*packagesources.txt*底下*/App\_資料/admin*，IIS 6.0 會提供檔案若有要求，可能會公開您的封裝管理員執行個體的密碼。 
+> 如果您使用 RC2 版本中，建立 ASP.NET Web Pages (Razor) 應用程式部署，而且應用程式包含*password.txt*或*packagesources.txt*底下 */App\_資料/admin*，IIS 6.0 會提供檔案若有要求，可能會公開您的封裝管理員執行個體的密碼。 
 > 
-> **因應措施**重新命名*password.txt*或*packagesources.txt*檔案*password.config*或*packagesources.config*.根據預設，IIS 6.0 不符合檔案*.config*延伸模組。 (在 IIS 7 中中, 沒有任何檔案*應用程式\_資料*資料夾都提供服務，因此您不需要重新命名檔案。)
+> **因應措施**重新命名*password.txt*或*packagesources.txt*檔案*password.config*或*packagesources.config*.根據預設，IIS 6.0 不符合檔案 *.config*延伸模組。 (在 IIS 7 中中, 沒有任何檔案*應用程式\_資料*資料夾都提供服務，因此您不需要重新命名檔案。)
 
 
 #### <a name="issue-uninstalling-packages-installed-using-the-beta-3-release-does-not-completely-remove-package-components"></a>問題： 解除安裝使用 Beta 3 版本安裝的封裝並未完全移除封裝元件
@@ -223,7 +224,7 @@ ms.lasthandoff: 04/10/2018
 
 #### <a name="issue-uninstalling-the-net-framework-version-4-disables-aspnet-web-pages-with-razor-syntax"></a>問題： 解除安裝.NET Framework 第 4 版會停用含有 Razor 語法的 ASP.NET Web Pages
 
-> 如果您解除安裝.NET Framework 第 4 版，然後重新安裝時，會停用含有 Razor 語法的 ASP.NET Web Pages。 頁面*.cshtml*延伸模組無法正確執行。 ASP.NET Web Pages 電腦根目錄中註冊組件*web.config*檔案，並移除.NET Framework 中移除該檔案。 重新安裝.NET Framework 會安裝新版本的組態檔中，但不會新增 ASP.NET Web Pages 組件的參考。
+> 如果您解除安裝.NET Framework 第 4 版，然後重新安裝時，會停用含有 Razor 語法的 ASP.NET Web Pages。 頁面 *.cshtml*延伸模組無法正確執行。 ASP.NET Web Pages 電腦根目錄中註冊組件*web.config*檔案，並移除.NET Framework 中移除該檔案。 重新安裝.NET Framework 會安裝新版本的組態檔中，但不會新增 ASP.NET Web Pages 組件的參考。
 > 
 > **因應措施**之後重新安裝.NET Framework，請重新安裝 ASP.NET Web Pages 含有 Razor 語法。 這樣會加入下列項目加入*web.config*電腦根目錄，這通常在下列位置中的檔案：  
 > 
@@ -235,7 +236,7 @@ ms.lasthandoff: 04/10/2018
 
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>問題： 沒有副檔名的 Url 會找不到在 IIS 7 或 IIS 7.5 上的.cshtml/.vbhtml 檔案
 
-> 在 IIS 7 或 IIS 7.5 上，具有類似下列的 URL 不要求找不到具有頁面*.cshtml*或*.vbhtml*延伸模組：  
+> 在 IIS 7 或 IIS 7.5 上，具有類似下列的 URL 不要求找不到具有頁面 *.cshtml*或 *.vbhtml*延伸模組：  
 > 
 > `http://www.example.com/ExampleSite/ExampleFile`  
 > 
@@ -270,7 +271,7 @@ ms.lasthandoff: 04/10/2018
 
 #### <a name="issue-database-and-webgrid-helpers-do-not-work-in-medium-trust-in-visual-basic"></a>問題: 「 資料庫 」 和 「 WebGrid 「 協助程式無法在中度信任在 Visual Basic 中運作
 
-> 如果您使用 Visual Basic (建立*.vbhtml*檔案)，則`Database`和`WebGrid`如果應用程式會設定為使用度信任，協助專家將無法運作。
+> 如果您使用 Visual Basic (建立 *.vbhtml*檔案)，則`Database`和`WebGrid`如果應用程式會設定為使用度信任，協助專家將無法運作。
 > 
 > **因應措施**  
 > 如果您使用 Visual Studio 2010，您可以透過安裝 Service Pack 1 版本來解決這個問題。 SP1 版本的最終版本可用之前，您可以下載從 SP1 Beta 版[Microsoft Visual Studio 2010 Service Pack 1 Beta](https://www.microsoft.com/downloads/en/details.aspx?FamilyID=11ea69cb-cf12-4842-a3d7-b32a1e5642e2&amp;displaylang=en) Microsoft 下載中心上的頁面。   
@@ -522,7 +523,7 @@ WebMatrix 的一部分安裝 SQL Server Compact 牽涉到的問題的相關資�
 #### <a name="issue-some-links-in-atomsite-are-broken-after-you-download-a-published-site"></a>問題： 某些 AtomSite 中的連結已中斷後下載已發佈的網站
 
 > **因應措施**  
-> 在*service.config*檔案， *users.config*檔案，以及所有*.xml*檔案，取代 URL 字串 (例如， `http://myhost.com/atomsite`) 以本機 (比方說， `http://localhost:1239`).
+> 在*service.config*檔案， *users.config*檔案，以及所有 *.xml*檔案，取代 URL 字串 (例如， `http://myhost.com/atomsite`) 以本機 (比方說， `http://localhost:1239`).
 
 
 #### <a name="issue-mysql-based-applications-like-wordpress-fail-to-publish-and-report-a-database-error"></a>問題： 如 WordPress MySQL 為基礎的應用程式無法發行，並報告資料庫錯誤

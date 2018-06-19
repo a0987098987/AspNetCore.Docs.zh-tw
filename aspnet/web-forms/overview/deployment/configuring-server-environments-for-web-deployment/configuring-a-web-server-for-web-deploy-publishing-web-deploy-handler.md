@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887277"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式)
 ====================
@@ -102,7 +103,7 @@ ms.lasthandoff: 04/06/2018
     > 您可能已安裝.NET Framework 4.0，透過 Windows Update。 如果已安裝的產品或元件，Web Platform Installer 將會指示這取代**新增**按鈕的文字**已安裝**。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image1.png)
-6. 在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 **新增**。
+6. 在**ASP.NET MVC 3 (Visual Studio 2010)** 資料列中，按一下 **新增**。
 7. 在導覽窗格中，按一下**伺服器**。
 8. 在**IIS 7 建議組態**資料列中，按一下 **新增**。
 9. 在**Web 部署工具 2.1**資料列中，按一下 **新增**。
@@ -120,11 +121,11 @@ ms.lasthandoff: 04/06/2018
 
 1. 按一下**啟動**，然後輸入**命令提示字元**。
 2. 在搜尋結果中，以滑鼠右鍵按一下**命令提示字元**，然後按一下 **系統管理員身分執行**。
-3. 在 [命令提示字元] 視窗中，瀏覽至**%WINDIR%\Microsoft.NET\Framework\v4.0.30319**目錄。
+3. 在 [命令提示字元] 視窗中，瀏覽至 **%WINDIR%\Microsoft.NET\Framework\v4.0.30319**目錄。
 4. 輸入下列命令，並按 Enter:
 
     [!code-console[Main](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/samples/sample1.cmd)]
-5. 如果您打算裝載在任何時間點的 64 位元 web 應用程式時，則您也應該向 IIS 註冊 64 位元版本的 ASP.NET。 若要這樣做，請在命令提示字元 視窗中，導覽至**%WINDIR%\Microsoft.NET\Framework64\v4.0.30319**目錄。
+5. 如果您打算裝載在任何時間點的 64 位元 web 應用程式時，則您也應該向 IIS 註冊 64 位元版本的 ASP.NET。 若要這樣做，請在命令提示字元 視窗中，導覽至 **%WINDIR%\Microsoft.NET\Framework64\v4.0.30319**目錄。
 6. 輸入下列命令，並按 Enter:
 
     [!code-console[Main](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/samples/sample2.cmd)]
@@ -225,7 +226,7 @@ ms.lasthandoff: 04/06/2018
 13. 在**站台繫結**對話方塊中，按一下 **關閉**。
 14. 在**連線**] 窗格中，按一下 [**應用程式集區**。
 15. 在**應用程式集區**] 窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下 [**基本設定**。 根據預設，應用程式集區的名稱會符合網站的名稱 (例如， **DemoSite**)。
-16. 在**.NET Framework 版本**清單中，選取**.NET Framework v4.0.30319**，然後按一下 **確定**。
+16. 在 **.NET Framework 版本**清單中，選取 **.NET Framework v4.0.30319**，然後按一下 **確定**。
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image14.png)
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886923"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-vb"></a>顯示資料的 Web 控制項 (VB) 中的二進位資料
 ====================

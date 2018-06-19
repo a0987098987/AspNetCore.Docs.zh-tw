@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881021"
 ---
 <a name="aspnet-dynamic-data-custom-form-formatting"></a>格式化的 ASP.NET 動態資料自訂表單
 ====================

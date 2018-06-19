@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879552"
 ---
 <a name="code-first-migrations-and-deployment-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Code First 移轉，以及使用的 Entity Framework 中的 ASP.NET MVC 應用程式部署
 ====================
@@ -226,7 +227,7 @@ Visual Studio 不執行任何動作與資料庫在部署程序時，它會將您
 
 ![](https://asp.net/media/4367421/mig.png)
 
-部署程序也會建立新的連接字串*(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。
+部署程序也會建立新的連接字串 *(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。
 
 ![Database_Publish 連接字串](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
 

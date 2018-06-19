@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888207"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a>二進位資料顯示在 Web 控制項的資料 (C#)
 ====================

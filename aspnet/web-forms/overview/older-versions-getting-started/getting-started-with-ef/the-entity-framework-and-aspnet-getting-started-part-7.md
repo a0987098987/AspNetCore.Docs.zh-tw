@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886975"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-7"></a>開始使用 Entity Framework 4.0 資料庫中第一次和 ASP.NET 4 Web Form 一部分 7
 ====================
@@ -103,7 +104,7 @@ Entity Framework 可讓您指定它應該使用預存程序進行資料庫存取
 
 [![image24](the-entity-framework-and-aspnet-getting-started-part-7/_static/image18.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image17.png)
 
-在**新增函式匯入**對話方塊的 **傳回集合的**選取**實體**，然後選取`Course`作為實體類型傳回。 當您完成時，按一下**確定**。 儲存並關閉*.edmx*檔案。
+在**新增函式匯入**對話方塊的 **傳回集合的**選取**實體**，然後選取`Course`作為實體類型傳回。 當您完成時，按一下**確定**。 儲存並關閉 *.edmx*檔案。
 
 [![image25](the-entity-framework-and-aspnet-getting-started-part-7/_static/image20.png)](the-entity-framework-and-aspnet-getting-started-part-7/_static/image19.png)
 

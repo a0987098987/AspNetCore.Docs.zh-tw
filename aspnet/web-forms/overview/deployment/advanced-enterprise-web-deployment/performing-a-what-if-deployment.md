@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879981"
 ---
 <a name="performing-a-what-if-deployment"></a>執行"What If"部署
 ====================
@@ -41,47 +42,47 @@ Web Deploy 包含可讓您執行 「 假設 」 的部署中的功能 （或試�
 
 因為 「 如果 」 部署不會實際變更目的地伺服器上，什麼它不一定會執行作業的任何項目是預測是否會成功部署。
 
-中所述[部署 Web 封裝](../web-deployment-in-the-enterprise/deploying-web-packages.md)，您可以部署 web 封裝使用兩種方式的 Web Deploy&#x2014;使用 MSDeploy.exe 命令列公用程式，直接或透過執行*。 deploy.cmd*檔案會產生建置程序。
+中所述[部署 Web 封裝](../web-deployment-in-the-enterprise/deploying-web-packages.md)，您可以部署 web 封裝使用兩種方式的 Web Deploy&#x2014;使用 MSDeploy.exe 命令列公用程式，直接或透過執行 *。 deploy.cmd*檔案會產生建置程序。
 
-如果您直接使用 MSDeploy.exe，您可以藉由新增執行 「 假設 」 部署**– whatif**旗標設為您的命令。 例如，若要評估您部署到預備環境的 ContactManager.Mvc.zip 封裝會發生什麼事，MSDeploy 命令應該與以下相似：
+如果您直接使用 MSDeploy.exe，您可以藉由新增執行 「 假設 」 部署 **– whatif**旗標設為您的命令。 例如，若要評估您部署到預備環境的 ContactManager.Mvc.zip 封裝會發生什麼事，MSDeploy 命令應該與以下相似：
 
 
 [!code-console[Main](performing-a-what-if-deployment/samples/sample1.cmd)]
 
 
-當您滿意您 「 如果 」 部署的結果時，您可以移除**– whatif**旗標，以執行實際的部署。
+當您滿意您 「 如果 」 部署的結果時，您可以移除 **– whatif**旗標，以執行實際的部署。
 
 > [!NOTE]
 > 如需有關 MSDeploy.exe 命令列選項的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。
 
 
-如果您使用*。 deploy.cmd*檔案中，您可以藉由執行 「 假設 」 部署**/t**旗標 （試用模式） 旗標，而不是**/y**中的旗標 （"yes"或更新模式）您的命令。 例如，若要評估執行部署 ContactManager.Mvc.zip 封裝會發生什麼事*。 deploy.cmd*檔案中，您的命令應該會與以下相似：
+如果您使用 *。 deploy.cmd*檔案中，您可以藉由執行 「 假設 」 部署 **/t**旗標 （試用模式） 旗標，而不是 **/y**中的旗標 （"yes"或更新模式）您的命令。 例如，若要評估執行部署 ContactManager.Mvc.zip 封裝會發生什麼事 *。 deploy.cmd*檔案中，您的命令應該會與以下相似：
 
 
 [!code-console[Main](performing-a-what-if-deployment/samples/sample2.cmd)]
 
 
-當您滿意 「 試用模式 」 部署的結果時，您可以取代**/t**加上旗標與**/y**旗標，以執行實際的部署：
+當您滿意 「 試用模式 」 部署的結果時，您可以取代 **/t**加上旗標與 **/y**旗標，以執行實際的部署：
 
 
 [!code-console[Main](performing-a-what-if-deployment/samples/sample3.cmd)]
 
 
 > [!NOTE]
-> 如需命令列選項的詳細資訊*。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如果您執行*。 deploy.cmd*檔案但未指定任何旗標，命令提示字元會顯示可用旗標的清單。
+> 如需命令列選項的詳細資訊 *。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如果您執行 *。 deploy.cmd*檔案但未指定任何旗標，命令提示字元會顯示可用旗標的清單。
 
 
 ## <a name="performing-a-what-if-deployment-for-databases"></a>執行"What If"部署的資料庫
 
 本節假設您使用 VSDBCMD 公用程式來執行累加式、 結構描述為基礎的資料庫部署。 這種方法更詳細地說明[部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)。 我們建議，您自己熟悉本主題之前套用此處描述的概念。
 
-當您使用在 VSDBCMD**部署**模式中，您可以使用**/dd** (或**/DeployToDatabase**) 是否 VSDBCMD 實際部署資料庫，或只產生控制旗標部署指令碼。 如果您要部署.dbschema 檔案，這是行為：
+當您使用在 VSDBCMD**部署**模式中，您可以使用 **/dd** (或 **/DeployToDatabase**) 是否 VSDBCMD 實際部署資料庫，或只產生控制旗標部署指令碼。 如果您要部署.dbschema 檔案，這是行為：
 
-- 如果您指定**/dd+**或**/dd**，VSDBCMD 會產生部署指令碼及部署資料庫。
-- 如果您指定**/dd-**或省略參數，VSDBCMD 皆會產生部署指令碼只。
+- 如果您指定 **/dd+** 或 **/dd**，VSDBCMD 會產生部署指令碼及部署資料庫。
+- 如果您指定 **/dd-** 或省略參數，VSDBCMD 皆會產生部署指令碼只。
 
 > [!NOTE]
-> 如果您要部署.deploymanifest 檔案，而不是.dbschema 檔案的行為**/dd**參數是很複雜。 基本上，VSDBCMD 會略過的值**/dd**切換如果.deploymanifest 檔案包含**DeployToDatabase**值的項目**True**。 [部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)說明此行為，以完整模式。
+> 如果您要部署.deploymanifest 檔案，而不是.dbschema 檔案的行為 **/dd**參數是很複雜。 基本上，VSDBCMD 會略過的值 **/dd**切換如果.deploymanifest 檔案包含**DeployToDatabase**值的項目**True**。 [部署資料庫專案](../web-deployment-in-the-enterprise/deploying-database-projects.md)說明此行為，以完整模式。
 
 
 例如，若要產生的部署指令碼**ContactManager**資料庫而不需實際部署的資料庫，VSDBCMD 命令應該會與以下相似：
@@ -95,7 +96,7 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 - 是否將會移除任何現有的資料表，並，因而造成資料遺失。
 - 是否作業的順序會帶來風險造成資料遺失，例如，如果您要分割或合併的資料表。
 
-如果您滿意部署指令碼，您可以重複使用 VSDBCMD **/dd+**進行變更的旗標。 或者，您可以編輯的部署指令碼，以符合您的需求，然後在資料庫伺服器上手動執行它。
+如果您滿意部署指令碼，您可以重複使用 VSDBCMD **/dd+** 進行變更的旗標。 或者，您可以編輯的部署指令碼，以符合您的需求，然後在資料庫伺服器上手動執行它。
 
 ## <a name="integrating-what-if-functionality-into-custom-project-files"></a>將"What If"功能整合到自訂的專案檔
 
@@ -116,7 +117,7 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 
 在此情況下，您已建立一個名為屬性**WhatIf**預設值是**false**。 使用者可以覆寫此值將屬性設定為**true**在命令列參數中，當您稍後就會看到。
 
-下一個階段是參數化 Web Deploy 和 VSDBCMD 命令，以便反映旗標**WhatIf**屬性值。 例如下, 一個目標 (取自*Publish.proj*檔案，並簡化) 執行*。 deploy.cmd*來部署 web 封裝的檔案。 根據預設，此命令包含**/Y**參數 （"yes"或更新模式）。 如果**WhatIf**設**true**，將會取代運算式**/T** （試用版或 「 假設 」 模式） 的參數。
+下一個階段是參數化 Web Deploy 和 VSDBCMD 命令，以便反映旗標**WhatIf**屬性值。 例如下, 一個目標 (取自*Publish.proj*檔案，並簡化) 執行 *。 deploy.cmd*來部署 web 封裝的檔案。 根據預設，此命令包含 **/Y**參數 （"yes"或更新模式）。 如果**WhatIf**設**true**，將會取代運算式 **/T** （試用版或 「 假設 」 模式） 的參數。
 
 
 [!code-xml[Main](performing-a-what-if-deployment/samples/sample6.xml)]
@@ -142,7 +143,7 @@ VSDBCMD 差異式資料庫部署工具，而且部署指令碼以動態方式在
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關 Web Deploy 命令列語法的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。 如需命令列選項，當您使用的指引*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如需 VSDBCMD 命令列語法的指引，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)。
+如需有關 Web Deploy 命令列語法的詳細資訊，請參閱[Web 部署作業設定](https://technet.microsoft.com/library/dd569089(WS.10).aspx)。 如需命令列選項，當您使用的指引 *。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。 如需 VSDBCMD 命令列語法的指引，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)。
 
 > [!div class="step-by-step"]
 > [上一頁](advanced-enterprise-web-deployment.md)

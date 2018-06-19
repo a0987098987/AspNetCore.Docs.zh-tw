@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871177"
 ---
 <a name="aspnet-mvc-for-the-rest-of-us-part-4"></a>我們的其餘部分的 ASP.NET MVC： 第 4 部分
 ====================

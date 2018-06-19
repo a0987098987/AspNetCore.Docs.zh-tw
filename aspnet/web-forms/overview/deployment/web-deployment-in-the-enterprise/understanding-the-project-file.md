@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886897"
 ---
 <a name="understanding-the-project-file"></a>了解專案檔
 ====================
@@ -113,7 +114,7 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 > 如需有關引數和參數，您可以使用 MSBuild.exe 的詳細資訊，請參閱[MSBuild 命令列參考](https://msdn.microsoft.com/library/ms164311.aspx)。
 
 
-您可以使用相同的屬性語法，以取得環境變數和內建的專案屬性的值。 針對您所定義的許多常用的屬性，您可以使用這些專案檔中包括相關的參數名稱。 例如，若要擷取目前的專案平台&#x2014;，例如**x86**或**AnyCpu**&#x2014;可以包含**$(Platform)**中的屬性參考您的專案檔。 如需詳細資訊，請參閱[建置命令和屬性的巨集](https://msdn.microsoft.com/library/c02as0cs.aspx)，[一般 MSBuild 專案屬性](https://msdn.microsoft.com/library/bb629394.aspx)，和[保留的屬性](https://msdn.microsoft.com/library/ms164309.aspx)。
+您可以使用相同的屬性語法，以取得環境變數和內建的專案屬性的值。 針對您所定義的許多常用的屬性，您可以使用這些專案檔中包括相關的參數名稱。 例如，若要擷取目前的專案平台&#x2014;，例如**x86**或**AnyCpu**&#x2014;可以包含 **$(Platform)** 中的屬性參考您的專案檔。 如需詳細資訊，請參閱[建置命令和屬性的巨集](https://msdn.microsoft.com/library/c02as0cs.aspx)，[一般 MSBuild 專案屬性](https://msdn.microsoft.com/library/bb629394.aspx)，和[保留的屬性](https://msdn.microsoft.com/library/ms164309.aspx)。
 
 屬性通常用於搭配*條件*。 大部分的 MSBuild 項目支援**條件**屬性，可讓您指定的準則的 MSBuild 應評估項目。 例如，請考慮此屬性定義：
 
@@ -121,7 +122,7 @@ MSBuild 專案檔根據[MSBuild XML 結構描述](https://msdn.microsoft.com/lib
 [!code-xml[Main](understanding-the-project-file/samples/sample5.xml)]
 
 
-當 MSBuild 處理此屬性定義時，它會先檢查以查看是否**$(OutputRoot)**就可使用屬性值。 如果屬性值為空白&#x2014;換言之，使用者尚未為這個屬性提供值&#x2014;條件評估為**true**和屬性值設定為**...\Publish\Out**。如果使用者已經提供值，這個屬性，條件評估為**false**並不會使用靜態屬性值。
+當 MSBuild 處理此屬性定義時，它會先檢查以查看是否 **$(OutputRoot)** 就可使用屬性值。 如果屬性值為空白&#x2014;換言之，使用者尚未為這個屬性提供值&#x2014;條件評估為**true**和屬性值設定為 **...\Publish\Out**。如果使用者已經提供值，這個屬性，條件評估為**false**並不會使用靜態屬性值。
 
 如需您可在指定條件的不同方式的詳細資訊，請參閱[MSBuild 條件](https://msdn.microsoft.com/library/7szfhaft.aspx)。
 
@@ -173,7 +174,7 @@ MSBuild 結構描述中[工作](https://msdn.microsoft.com/library/77f2hx1s.aspx
 [!code-xml[Main](understanding-the-project-file/samples/sample9.xml)]
 
 
-您可以使用叫用命令列中，從目標**/t**切換到指定的目標。
+您可以使用叫用命令列中，從目標 **/t**切換到指定的目標。
 
 
 [!code-console[Main](understanding-the-project-file/samples/sample10.cmd)]

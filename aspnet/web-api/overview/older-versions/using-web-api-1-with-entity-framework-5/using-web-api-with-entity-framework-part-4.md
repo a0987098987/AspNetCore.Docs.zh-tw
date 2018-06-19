@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879526"
 ---
 <a name="part-4-adding-an-admin-view"></a>第 4 部分： 加入系統管理員檢視
 ====================

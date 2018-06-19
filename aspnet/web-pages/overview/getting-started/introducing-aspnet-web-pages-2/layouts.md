@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899810"
 ---
 <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>導入的 ASP.NET Web Pages-建立一致的版面配置
 ====================
@@ -67,7 +68,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="adding-a-css-file"></a>若要加入.css 檔案
 
-在頁面上定義的項目實際的排列 （亦即，外觀），最好是使用階層式樣式表 (CSS) 規則。 因此，您會建立*.css*檔案，您的新配置的規則。
+在頁面上定義的項目實際的排列 （亦即，外觀），最好是使用階層式樣式表 (CSS) 規則。 因此，您會建立 *.css*檔案，您的新配置的規則。
 
 在 WebMatrix 中，選取您網站的根。 接著在**檔案**] 索引標籤的 [功能區中，按一下底下的箭頭**新增**按鈕，然後按一下**新資料夾**。
 
@@ -81,13 +82,13 @@ ms.lasthandoff: 04/06/2018
 
 ![建立新的 Movies.css 檔](layouts/_static/image5.png)
 
-新的內容取代*.css*以下列檔案：
+新的內容取代 *.css*以下列檔案：
 
 [!code-css[Main](layouts/samples/sample2.css)]
 
 我們將不會假設這些 CSS 規則，但要注意兩件事太多。 其中一個是，除了設定字型和大小，規則使用絕對位置來建立頁首、 頁尾及主要內容區域的位置。 如果您還不熟悉定位在 CSS 中，您可以閱讀[CSS 位置](http://www.w3schools.com/css/css_positioning.asp)教學課程 W3Schools 站台。
 
-請注意在底部，我們已複製原本使用的樣式規則中分別定義另一項作業*Movies.cshtml*檔案。 這些規則中所使用[顯示資料所使用的 ASP.NET Web Pages 簡介](https://go.microsoft.com/fwlink/?LinkId=251580)進行教學課程`WebGrid`helper 呈現新增等量分散到資料表的標記。 (如果您打算使用*.css*檔案樣式定義，您可能也放整個網站的樣式規則中。)
+請注意在底部，我們已複製原本使用的樣式規則中分別定義另一項作業*Movies.cshtml*檔案。 這些規則中所使用[顯示資料所使用的 ASP.NET Web Pages 簡介](https://go.microsoft.com/fwlink/?LinkId=251580)進行教學課程`WebGrid`helper 呈現新增等量分散到資料表的標記。 (如果您打算使用 *.css*檔案樣式定義，您可能也放整個網站的樣式規則中。)
 
 ## <a name="updating-the-movies-file-to-use-the-layout"></a>更新要使用的版面配置的電影檔案
 
@@ -101,7 +102,7 @@ ms.lasthandoff: 04/06/2018
 
 這一行程式碼會告知 ASP.NET，當*電影*頁面會執行，它應該與合併 *\_Layout.cshtml*檔案。
 
-因為*Movies.cshtml*檔案現在會使用版面配置頁面，您可以移除從標記*Movies.cshtml*具有所處理的頁面 *\_Layout.cshtml*檔案。 取出`<!DOCTYPE>`， `<html>`，和`<body>`開頭和結尾標記。 取出整個`<head>`項目和其內容，其中包括格線的樣式規則，因為您現在有這些規則中*.css*檔案。 當您在到達時，變更現有`<h1>`元素`<h2>`項目; 您`<h1>`已經 [配置] 頁面中的項目。 變更`<h2>`」 清單電影"的文字。
+因為*Movies.cshtml*檔案現在會使用版面配置頁面，您可以移除從標記*Movies.cshtml*具有所處理的頁面 *\_Layout.cshtml*檔案。 取出`<!DOCTYPE>`， `<html>`，和`<body>`開頭和結尾標記。 取出整個`<head>`項目和其內容，其中包括格線的樣式規則，因為您現在有這些規則中 *.css*檔案。 當您在到達時，變更現有`<h1>`元素`<h2>`項目; 您`<h1>`已經 [配置] 頁面中的項目。 變更`<h2>`」 清單電影"的文字。
 
 通常您不會有這些類型的變更，讓內容頁面中。 當您啟動您的站台與版面配置頁面時，會開始建立沒有所有這些項目的內容頁面。 在此情況下，不過，您要轉換的獨立頁面使用版面配置，所以清除的位元的其中一個。
 
@@ -115,13 +116,13 @@ ms.lasthandoff: 04/06/2018
 
 ![使用配置轉譯影片頁面](layouts/_static/image6.png)
 
-ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 where`RenderBody`方法。 和當然 *\_Layout.cshtml*頁面參考*.css*檔案，定義網頁的外觀。
+ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 where`RenderBody`方法。 和當然 *\_Layout.cshtml*頁面參考 *.css*檔案，定義網頁的外觀。
 
 ## <a name="updating-the-addmovie-page-to-use-the-layout"></a>更新要使用配置 AddMovie 頁面
 
 配置的好處是，您可以使用它們的所有頁面中您的網站。 開啟*AddMovie.cshtml*頁面。
 
-您可能會記住*AddMovie.cshtml*頁面原來有一些 CSS 規則來定義驗證錯誤訊息的外觀。 由於您*.css*現在您網站的檔案，您可以移動至這些規則*.css*檔案。 移除*AddMovie.cshtml*檔案，並將它們加入到底部*Movies.css*檔案。 您要移動的下列規則：
+您可能會記住*AddMovie.cshtml*頁面原來有一些 CSS 規則來定義驗證錯誤訊息的外觀。 由於您 *.css*現在您網站的檔案，您可以移動至這些規則 *.css*檔案。 移除*AddMovie.cshtml*檔案，並將它們加入到底部*Movies.css*檔案。 您要移動的下列規則：
 
 [!code-css[Main](layouts/samples/sample6.css)]
 
@@ -147,7 +148,7 @@ ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 wh
 
 [!code-csharp[Main](layouts/samples/sample8.cs)]
 
-`Page`物件可供所有使用*.cshtml*頁面，並且是基於此目的，也就是它的版面配置和網頁之間共用資訊。
+`Page`物件可供所有使用 *.cshtml*頁面，並且是基於此目的，也就是它的版面配置和網頁之間共用資訊。
 
 開啟<em>\_Layout.cshtml</em>頁面。 變更`<title>`讓它看起來像是這個標記的項目：
 
@@ -169,7 +170,7 @@ ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 wh
 > 
 > 您可以傳遞任何數目的值使用`Page`物件。 如果您想要將電影資訊傳遞至版面配置頁面，您無法將值傳遞使用類似`Page.MovieTitle`和`Page.Genre`和`Page.MovieYear`。 （或任何其他您用來儲存資訊的名稱）。唯一的需求，這是可能明顯 — 是您必須使用相同的名稱，在 [內容] 頁面和 [配置] 頁面中。
 > 
-> 您使用傳遞的資訊`Page`物件並不限於只是要顯示在 [配置] 頁面上的文字。 您可以將值傳遞至版面配置 頁面和 配置 頁面中的程式碼再使用值來決定是否要顯示的頁面上，區段什麼*.css*檔案使用，等等。 您要傳入的值`Page`物件會像任何其他值，您使用程式碼。 它只是值來自 [內容] 頁面中，而且會傳遞至版面配置頁。
+> 您使用傳遞的資訊`Page`物件並不限於只是要顯示在 [配置] 頁面上的文字。 您可以將值傳遞至版面配置 頁面和 配置 頁面中的程式碼再使用值來決定是否要顯示的頁面上，區段什麼 *.css*檔案使用，等等。 您要傳入的值`Page`物件會像任何其他值，您使用程式碼。 它只是值來自 [內容] 頁面中，而且會傳遞至版面配置頁。
 
 
 開啟*AddMovie.cshtml*頁面上，然後將行加入至提供的標題的程式碼頂端*AddMovie.cshtml*頁面：
@@ -208,7 +209,7 @@ ASP.NET 已合併到 Movies.cshtml 頁面的內容 *\_Layout.cshtml*頁面右 wh
 
 版面配置頁有我們這裡未涵蓋的其他功能。 例如，您可以巢狀版面配置頁面 — 一個版面配置頁接著可以參考另一個。 巢狀的配置很有用，如果您正在使用的站台需要不同的版面配置的各小節。 您也可以使用其他方法 (例如， `RenderSection`) 來設定名為 [配置] 頁面中的章節。
 
-版面配置頁的組合和*.css*檔案是強大的功能。 您會看到下一個教學課程中，在 WebMatrix 中您可以建立根據*範本*，可讓您的網站中預先建立的功能。 範本可讓充分利用版面配置頁及 CSS 來建立的網站，看起來不錯，而且有類似功能表的功能。 以下是從範本，顯示使用版面配置頁和 CSS 的功能為基礎的網站 [首頁] 的螢幕擷取畫面：
+版面配置頁的組合和 *.css*檔案是強大的功能。 您會看到下一個教學課程中，在 WebMatrix 中您可以建立根據*範本*，可讓您的網站中預先建立的功能。 範本可讓充分利用版面配置頁及 CSS 來建立的網站，看起來不錯，而且有類似功能表的功能。 以下是從範本，顯示使用版面配置頁和 CSS 的功能為基礎的網站 [首頁] 的螢幕擷取畫面：
 
 ![顯示標頭、 導覽區域中，內容區域、 選擇性區段和登入連結的 WebMatrix 網站範本所建立的版面配置](layouts/_static/image11.png)
 

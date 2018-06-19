@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888964"
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-c"></a>主要/詳細資料的詳細資料 DataList (C#) 搭配使用的主要記錄項目符號清單
 ====================
@@ -74,7 +75,7 @@ ms.lasthandoff: 04/06/2018
 
 與周圍的標記完整中繼器和 DataList s，我們準備好要將類別資料繫結至中繼器控制項。 不過，如圖 1 中的類別目錄項目符號清單所示，除了每個分類的名稱我們也需要顯示類別目錄相關聯的產品數目。 若要存取此資訊，我們可以執行下列動作：
 
-- **判斷 ASP.NET 頁面 s 程式碼後置類別的這項資訊。** 指定特定*`categoryID`*我們可以呼叫來判斷關聯的產品數目`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 這個方法會傳回`ProductsDataTable`物件，其`Count`屬性會指出多少`ProductsRow`s 已存在，但這是所指定的產品數目*`categoryID`*。 我們可以建立`ItemDataBound`中繼器的繫結至中繼器，每個類別會呼叫事件處理常式`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法，並在輸出中包含其計數。
+- **判斷 ASP.NET 頁面 s 程式碼後置類別的這項資訊。** 指定特定*`categoryID`* 我們可以呼叫來判斷關聯的產品數目`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 這個方法會傳回`ProductsDataTable`物件，其`Count`屬性會指出多少`ProductsRow`s 已存在，但這是所指定的產品數目*`categoryID`*。 我們可以建立`ItemDataBound`中繼器的繫結至中繼器，每個類別會呼叫事件處理常式`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法，並在輸出中包含其計數。
 - **更新`CategoriesDataTable`具類型資料集包含`NumberOfProducts`資料行。** 我們可以更新`GetCategories()`方法中的`CategoriesDataTable`包含這項資訊或，或者，將`GetCategories()`為-並建立新`CategoriesDataTable`方法呼叫`GetCategoriesAndNumberOfProducts()`。
 
 可讓 s 探索這兩個技術。 第一種方法會更容易實作方式，因為我們不 t 需要更新資料的存取層級;不過，它需要更多與資料庫通訊。 若要呼叫`ProductsBLL`類別 s`GetProductsByCategoryID(categoryID)`方法中的`ItemDataBound`事件處理常式會將每個類別顯示中繼器中的額外資料庫呼叫。 使用這項技術有*N* + 1 的資料庫呼叫，其中*N*是中繼器中顯示的類別數目。 會使用第二個方法中，從每個類別目錄的相關資訊傳回產品計數`CategoriesBLL`類別 s `GetCategories()` (或`GetCategoriesAndNumberOfProducts()`) 方法，藉此會導致對資料庫的存取只一次。
@@ -210,7 +211,7 @@ DAL 和 BLL 完成，我們重新準備好將這項資料給繫結`Categories`�
 
 現在我們有`Categories`中繼器以及產品的數目的類別目錄的清單顯示每個類別中。 中繼器使用 LinkButton 每個類別目錄，按一下時，會導致回傳，此時點我們需要顯示所選取的類別目錄中的那些產品`CategoryProducts`DataList。
 
-我們對向的一項挑戰是如何顯示這些產品選取類別目錄資料的清單。 在[主要/詳細說明使用詳細資料 DetailsView 的可選取的主要 GridView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)無法選取教學課程中我們可了解如何建置 GridView 的資料列、 所選取的資料列 s 的詳細資料顯示在相同頁面上的 DetailsView 中。 GridView 的 ObjectDataSource 傳回使用的所有產品的相關資訊`ProductsBLL`s`GetProducts()`方法 DetailsView 的 ObjectDataSource 時擷取所選的產品的使用資訊`GetProductsByProductID(productID)`方法。 *`productID`*參數值所提供以宣告方式將它與 GridView s 的值關聯`SelectedValue`屬性。 不幸的是，中繼器沒有`SelectedValue`屬性並不能做為參數來源。
+我們對向的一項挑戰是如何顯示這些產品選取類別目錄資料的清單。 在[主要/詳細說明使用詳細資料 DetailsView 的可選取的主要 GridView](../masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)無法選取教學課程中我們可了解如何建置 GridView 的資料列、 所選取的資料列 s 的詳細資料顯示在相同頁面上的 DetailsView 中。 GridView 的 ObjectDataSource 傳回使用的所有產品的相關資訊`ProductsBLL`s`GetProducts()`方法 DetailsView 的 ObjectDataSource 時擷取所選的產品的使用資訊`GetProductsByProductID(productID)`方法。 *`productID`* 參數值所提供以宣告方式將它與 GridView s 的值關聯`SelectedValue`屬性。 不幸的是，中繼器沒有`SelectedValue`屬性並不能做為參數來源。
 
 > [!NOTE]
 > 這是出現在中繼器中使用的 LinkButton 時這些挑戰。 我們使用超連結傳入`CategoryID`透過 querystring 相反地，我們無法用於該查詢字串欄位做為來源參數 s 的值。
@@ -233,7 +234,7 @@ DAL 和 BLL 完成，我們重新準備好將這項資料給繫結`Categories`�
 
 [![請勿指定參數的來源 categoryID 參數](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image36.png)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image35.png)
 
-**圖 13**： 未指定的參數來源*`categoryID`*參數 ([按一下以檢視完整大小的影像](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image37.png))
+**圖 13**： 未指定的參數來源*`categoryID`* 參數 ([按一下以檢視完整大小的影像](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/_static/image37.png))
 
 
 完成設定資料來源精靈之後，Visual Studio 會自動產生 DataList 的`ItemTemplate`。 取代此預設`ItemTemplate`範本我們先前的教學課程中使用; 此外，設定 DataList 的`RepeatColumns`2 的屬性。 進行這些變更後 DataList 和其相關聯的 ObjectDataSource 的宣告式標記看起來應該如下所示：
@@ -241,7 +242,7 @@ DAL 和 BLL 完成，我們重新準備好將這項資料給繫結`Categories`�
 
 [!code-aspx[Main](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs/samples/sample10.aspx)]
 
-目前， `CategoryProductsDataSource` ObjectDataSource s *`categoryID`*永遠不會設定參數，以便檢視頁面時，會不顯示任何產品。 我們需要如何做會將此參數值，設定根據`CategoryID`中繼器中按下類別目錄。 這導入了兩個挑戰： 首先，請勿我們如何判斷當中繼器 s 中的 LinkButton`ItemTemplate`已按下; 和第二個，我們要如何判斷`CategoryID`的 LinkButton 已按下的對應類別目錄？
+目前， `CategoryProductsDataSource` ObjectDataSource s *`categoryID`* 永遠不會設定參數，以便檢視頁面時，會不顯示任何產品。 我們需要如何做會將此參數值，設定根據`CategoryID`中繼器中按下類別目錄。 這導入了兩個挑戰： 首先，請勿我們如何判斷當中繼器 s 中的 LinkButton`ItemTemplate`已按下; 和第二個，我們要如何判斷`CategoryID`的 LinkButton 已按下的對應類別目錄？
 
 如同按鈕和 ImageButton 控制項 LinkButton 已`Click`事件和[`Command`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.command.aspx)。 `Click`事件設計只需注意的 LinkButton 已按下。 有時候，不過，除了 LinkButton 已按下您會看到我們也需要一些額外的資訊傳遞至事件處理常式。 如果這種情況，LinkButton s [ `CommandName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandname.aspx)和[ `CommandArgument` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.linkbutton.commandargument.aspx)屬性可以指派此額外資訊。 然後，當 LinkButton 已按下，其`Command`引發事件 (而不是其`Click`事件) 和事件處理常式傳遞的值`CommandName`和`CommandArgument`屬性。
 

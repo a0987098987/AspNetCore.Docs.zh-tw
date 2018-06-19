@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881330"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署程式碼更新
 ====================
@@ -114,13 +115,13 @@ URL 顯示在 Azure 管理入口網站的網站的儀表板頁面上，且可以
 2. 在**儀表板**頁面上，捲動以尋找名稱中的 FTP 主機**快速概覽**> 一節。
 
     ![FTP 主機名稱](deploying-a-code-update/_static/image5.png)
-3. 開啟暫存*.publishsettings*在記事本或其他文字編輯器中的檔案。
+3. 開啟暫存 *.publishsettings*在記事本或其他文字編輯器中的檔案。
 4. 尋找`publishProfile`FTP 設定檔的項目。
 5. 複製`userName`和`userPWD`值。
 
     ![FTP 認證](deploying-a-code-update/_static/image6.png)
 6. 開啟您的 FTP 工具和登入 FTP URL。
-7. 複製*應用程式\_offline.htm*從方案資料夾*/站台/wwwroot*資料夾中的預備網站。
+7. 複製*應用程式\_offline.htm*從方案資料夾 */站台/wwwroot*資料夾中的預備網站。
 
     ![複製 app_offline](deploying-a-code-update/_static/image7.png)
 8. 瀏覽至您的預備網站 URL。 您會看到*應用程式\_offline.htm*頁面現在會顯示而不是您的首頁。

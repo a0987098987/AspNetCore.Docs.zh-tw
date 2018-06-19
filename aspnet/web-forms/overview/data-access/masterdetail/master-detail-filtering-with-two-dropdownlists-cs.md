@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887248"
 ---
 <a name="masterdetail-filtering-with-two-dropdownlists-c"></a>主從式篩選搭配兩個 DropDownLists (C#)
 ====================
@@ -102,12 +103,12 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 **圖 9**： 設定要使用 ObjectDataSource`GetProductsByCategoryID(categoryID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image27.png))
 
 
-我們需要在精靈的最後一個步驟中指定的值*`categoryID`*參數。 將此參數指派給選取的項目從`Categories`DropDownList。
+我們需要在精靈的最後一個步驟中指定的值*`categoryID`* 參數。 將此參數指派給選取的項目從`Categories`DropDownList。
 
 
 [![從類別 DropDownList 提取 categoryID 參數值](master-detail-filtering-with-two-dropdownlists-cs/_static/image29.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image28.png)
 
-**圖 10**： 提取*`categoryID`*參數值從`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
+**圖 10**： 提取*`categoryID`* 參數值從`Categories`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image30.png))
 
 
 與設定 ObjectDataSource，剩下的只有指定哪些資料來源欄位可用來顯示和 DropDownList 項目的值。 顯示`ProductName`欄位，並使用`ProductID`欄位做為值。
@@ -141,7 +142,7 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 
 ## <a name="step-3-using-a-detailsview-to-display-details-for-the-selected-product"></a>步驟 3： 使用 DetailsView 以顯示所選產品的詳細資料
 
-最後一個步驟是在 DetailsView 中顯示所選產品的詳細資料。 若要達成此目的，將在 DetailsView 加入頁面中，設定其`ID`屬性`ProductDetails`，並為其建立新的 ObjectDataSource。 設定此 ObjectDataSource 提取資料的來源`ProductsBLL`類別的`GetProductByProductID(productID)`方法使用的選取的值`ProductsByCategory`值的 DropDownList *`productID`*參數。
+最後一個步驟是在 DetailsView 中顯示所選產品的詳細資料。 若要達成此目的，將在 DetailsView 加入頁面中，設定其`ID`屬性`ProductDetails`，並為其建立新的 ObjectDataSource。 設定此 ObjectDataSource 提取資料的來源`ProductsBLL`類別的`GetProductByProductID(productID)`方法使用的選取的值`ProductsByCategory`值的 DropDownList *`productID`* 參數。
 
 
 [![選擇使用 ProductsBLL 類別](master-detail-filtering-with-two-dropdownlists-cs/_static/image44.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image43.png)
@@ -156,7 +157,7 @@ Northwind 資料庫包含中的標準客戶/順序/訂單詳細資料資訊時�
 
 [![從 ProductsByCategory DropDownList 提取 productID 參數值](master-detail-filtering-with-two-dropdownlists-cs/_static/image50.png)](master-detail-filtering-with-two-dropdownlists-cs/_static/image49.png)
 
-**圖 17**： 提取*`productID`*參數值從`ProductsByCategory`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
+**圖 17**： 提取*`productID`* 參數值從`ProductsByCategory`DropDownList ([按一下以檢視完整大小的影像](master-detail-filtering-with-two-dropdownlists-cs/_static/image51.png))
 
 
 您可以選擇在 DetailsView 中顯示任何可用的欄位。 我已選擇移除`ProductID`， `SupplierID`，和`CategoryID`欄位重新排列及格式化剩下的欄位。 此外，out DetailsView 的清除`Height`和`Width`屬性，可讓 DetailsView 展開至最佳顯示效果所需的寬度，其資料，而不是需要它限制為指定的大小。 完整的標記顯示如下：

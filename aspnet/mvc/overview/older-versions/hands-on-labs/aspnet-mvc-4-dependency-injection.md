@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877654"
 ---
 # <a name="aspnet-mvc-4-dependency-injection"></a>ASP.NET MVC 4 相依性插入
 
@@ -37,9 +38,9 @@ ms.lasthandoff: 04/06/2018
 
 您可能聽過**原廠模式**和介面和實作使用服務、 用戶端物件通常負責服務位置之間的分離。
 
-相依性插入模式為的逆轉控制的特定實作。 **逆轉控制 (IoC)**表示物件不會建立其他物件，它們所依賴執行其工作。 相反地，他們會收到需要從外部來源 （例如 xml 組態檔） 的物件。
+相依性插入模式為的逆轉控制的特定實作。 **逆轉控制 (IoC)** 表示物件不會建立其他物件，它們所依賴執行其工作。 相反地，他們會收到需要從外部來源 （例如 xml 組態檔） 的物件。
 
-**相依性插入 (DI)**表示這是由物件介入通常會將建構函式參數傳遞的 framework 元件並設定屬性。
+**相依性插入 (DI)** 表示這是由物件介入通常會將建構函式參數傳遞的 framework 元件並設定屬性。
 
 <a id="The_Dependency_Injection_DI_Design_Pattern"></a>
 ### <a name="the-dependency-injection-di-design-pattern"></a>相依性插入 (DI) 設計模式
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/06/2018
 
 **安裝程式碼片段**
 
-為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段**.\Source\Setup\CodeSnippets.vsi**檔案。
+為了方便起見，大部分您將沿著這個實驗室管理的程式碼可做為 Visual Studio 程式碼片段。 若要安裝執行的程式碼片段 **.\Source\Setup\CodeSnippets.vsi**檔案。
 
 如果您不熟悉 Visual Studio 程式碼片段，而且想来了解如何使用它們，您可以從這份文件參考附錄&quot;[附錄 b： 使用程式碼片段](#AppendixB)&quot;。
 
@@ -238,7 +239,7 @@ ms.lasthandoff: 04/06/2018
     ![執行應用程式相依性插入](aspnet-mvc-4-dependency-injection/_static/image6.png "執行具有相依性插入應用程式")
 
     *執行具有相依性插入應用程式*
-2. 瀏覽至**/儲存**。 這將會叫用**StoreController**，立即建立使用**Unity**。
+2. 瀏覽至 **/儲存**。 這將會叫用**StoreController**，立即建立使用**Unity**。
 
     ![MVC Music Store](aspnet-mvc-4-dependency-injection/_static/image7.png "MVC Music Store")
 
@@ -273,7 +274,7 @@ ms.lasthandoff: 04/06/2018
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
       > 
       > 如需詳細資訊，請參閱這篇文章： [ http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages ](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
-2. 包含**MessageService.cs**和**IMessageService.cs**類別位於**來源 \Assets**資料夾中的**/Services**。 若要這樣做，請以滑鼠右鍵按一下**服務**資料夾，然後選取**加入現有項目**。 瀏覽至檔案的位置，並將它們包含。
+2. 包含**MessageService.cs**和**IMessageService.cs**類別位於**來源 \Assets**資料夾中的 **/Services**。 若要這樣做，請以滑鼠右鍵按一下**服務**資料夾，然後選取**加入現有項目**。 瀏覽至檔案的位置，並將它們包含。
 
     ![新增訊息服務和服務介面](aspnet-mvc-4-dependency-injection/_static/image8.png "加入訊息服務與服務介面")
 
@@ -281,12 +282,12 @@ ms.lasthandoff: 04/06/2018
 
     > [!NOTE]
     > **IMessageService**介面會定義兩個屬性實作**MessageService**類別。 這些屬性-**訊息**和**ImageUrl**-儲存要顯示的訊息和影像的 URL。
-3. 建立資料夾**/頁面**在專案的根資料夾，並將現有的類別**MyBasePage.cs**從**Source\Assets**。 您將會繼承自基底頁面具有下列結構。
+3. 建立資料夾 **/頁面**在專案的根資料夾，並將現有的類別**MyBasePage.cs**從**Source\Assets**。 您將會繼承自基底頁面具有下列結構。
 
     ![Pages 資料夾](aspnet-mvc-4-dependency-injection/_static/image9.png "Pages 資料夾")
 
     [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample7.cs)]
-4. 開啟**Browse.cshtml**檢視從**/檢視表/存放區**資料夾，並使其繼承自**MyBasePage.cs**。
+4. 開啟**Browse.cshtml**檢視從 **/檢視表/存放區**資料夾，並使其繼承自**MyBasePage.cs**。
 
     [!code-cshtml[Main](aspnet-mvc-4-dependency-injection/samples/sample8.cshtml)]
 5. 在**瀏覽**檢視中，將呼叫加入**MessageService**来顯示的映像和服務所擷取的訊息。
@@ -316,13 +317,13 @@ ms.lasthandoff: 04/06/2018
 
 
 1. 建立 /**工廠**專案的根資料夾中的資料夾。
-2. 包含**CustomViewPageActivator.cs**至您的方案從**/來源/資產/**至**工廠**資料夾。 若要這樣做，請以滑鼠右鍵按一下**/Factories**資料夾中，選取**新增 |現有項目**，然後選取  **CustomViewPageActivator.cs**。 這個類別會實作**IViewPageActivator**來保存 Unity 容器介面。
+2. 包含**CustomViewPageActivator.cs**至您的方案從 **/來源/資產/** 至**工廠**資料夾。 若要這樣做，請以滑鼠右鍵按一下 **/Factories**資料夾中，選取**新增 |現有項目**，然後選取  **CustomViewPageActivator.cs**。 這個類別會實作**IViewPageActivator**來保存 Unity 容器介面。
 
     [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample12.cs)]
 
     > [!NOTE]
     > **CustomViewPageActivator**負責管理檢視的建立使用 Unity 的容器。
-3. 包含**UnityDependencyResolver.cs**檔案從**/來源/資產**至**/Factories**資料夾。 若要這樣做，請以滑鼠右鍵按一下**/Factories**資料夾中，選取**新增 |現有項目**，然後選取  **UnityDependencyResolver.cs**檔案。
+3. 包含**UnityDependencyResolver.cs**檔案從 **/來源/資產**至 **/Factories**資料夾。 若要這樣做，請以滑鼠右鍵按一下 **/Factories**資料夾中，選取**新增 |現有項目**，然後選取  **UnityDependencyResolver.cs**檔案。
 
     [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample13.cs)]
 
@@ -412,7 +413,7 @@ ms.lasthandoff: 04/06/2018
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
       > 
       > 如需詳細資訊，請參閱這篇文章： [ http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages ](http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)。
-2. 包含**TraceActionFilter.cs**檔案從**/來源/資產**至**/篩選**資料夾。
+2. 包含**TraceActionFilter.cs**檔案從 **/來源/資產**至 **/篩選**資料夾。
 
     [!code-csharp[Main](aspnet-mvc-4-dependency-injection/samples/sample18.cs)]
 
@@ -476,7 +477,7 @@ ms.lasthandoff: 04/06/2018
     ![Music Store](aspnet-mvc-4-dependency-injection/_static/image11.png "Music Store")
 
     *Music 市集*
-3. 瀏覽至**/Trace.axd**以查看應用程式追蹤頁面，然後再按一下**檢視詳細資料**。
+3. 瀏覽至 **/Trace.axd**以查看應用程式追蹤頁面，然後再按一下**檢視詳細資料**。
 
     ![應用程式追蹤記錄檔](aspnet-mvc-4-dependency-injection/_static/image12.png "應用程式追蹤記錄檔")
 

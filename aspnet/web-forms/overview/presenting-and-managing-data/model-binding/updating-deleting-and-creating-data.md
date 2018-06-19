@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885841"
 ---
 <a name="updating-deleting-and-creating-data-with-model-binding-and-web-forms"></a>更新、 刪除和建立資料模型繫結與 web form
 ====================
@@ -105,7 +106,7 @@ GridView 控制項不包含**InsertMethod**屬性，因此無法用來加入新�
 
 然後，加入新的 web 表單使用主版頁面中，並將其命名**AddStudent**。 選取 Site.Master 做為主版頁面。
 
-您將轉譯的欄位加入使用新的學生**DynamicEntity**控制項。 Dynamicentity 呈現 ItemType 屬性中指定的類別中的可編輯的屬性。 StudentID 屬性被標記為**[ScaffoldColumn(false)]**屬性，讓它不會轉譯。 在 AddStudent 頁面 MainContent 預留位置，加入下列程式碼。
+您將轉譯的欄位加入使用新的學生**DynamicEntity**控制項。 Dynamicentity 呈現 ItemType 屬性中指定的類別中的可編輯的屬性。 StudentID 屬性被標記為 **[ScaffoldColumn(false)]** 屬性，讓它不會轉譯。 在 AddStudent 頁面 MainContent 預留位置，加入下列程式碼。
 
 [!code-aspx[Main](updating-deleting-and-creating-data/samples/sample6.aspx)]
 

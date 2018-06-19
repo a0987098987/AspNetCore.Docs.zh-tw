@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879474"
 ---
 <a name="part-4-models-and-data-access"></a>第 4 部分： 模型和資料存取
 ====================
@@ -119,7 +120,7 @@ MusicStoreEntities 類別由 Entity Framework 維護，並公開在資料庫中�
 
 ### <a name="updating-store-browse-and-details-to-use-live-data"></a>更新存放區瀏覽和詳細資料使用即時資料
 
-與儲存區/瀏覽？ 內容類型 =*[某些內容類型]*動作方法，我們要依名稱搜尋的內容類型。 我們只預期有一個結果，因為我們永遠不應該有相同的內容類型名稱的兩個項目，因此我們可以使用。在 LINQ 查詢以取得適當的內容類型物件，像這樣的 Single() 延伸模組 （但不輸入）：
+與儲存區/瀏覽？ 內容類型 =*[某些內容類型]* 動作方法，我們要依名稱搜尋的內容類型。 我們只預期有一個結果，因為我們永遠不應該有相同的內容類型名稱的兩個項目，因此我們可以使用。在 LINQ 查詢以取得適當的內容類型物件，像這樣的 Single() 延伸模組 （但不輸入）：
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample9.cs)]
 

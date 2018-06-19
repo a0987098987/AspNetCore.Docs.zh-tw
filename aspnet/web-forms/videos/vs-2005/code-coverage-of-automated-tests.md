@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896807"
 ---
 <a name="code-coverage-of-automated-tests"></a>自動化測試的程式碼涵蓋範圍
 ====================

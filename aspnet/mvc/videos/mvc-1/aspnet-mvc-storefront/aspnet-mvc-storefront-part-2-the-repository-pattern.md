@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874482"
 ---
 <a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>儲存機制模式的 ASP.NET MVC Storefront 第 2 部分：
 ====================

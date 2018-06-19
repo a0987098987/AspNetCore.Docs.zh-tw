@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888938"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>記錄錯誤的詳細資訊與 ASP.NET 健全狀況監視 (VB)
 ====================

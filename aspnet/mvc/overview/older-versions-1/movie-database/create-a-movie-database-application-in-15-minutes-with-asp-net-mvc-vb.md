@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876198"
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-vb"></a>建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (VB)
 ====================
@@ -228,7 +229,7 @@ ASP.NET MVC 應用程式有一組標準的資料夾： 模型、 檢視和控制
 
 我已經修改 HomeController 類別清單 2 中的，使其包含名為的新私用欄位\_db。 MoviesDBEntities 類別代表我們的資料庫模型中，我們將使用此類別與資料庫通訊。
 
-我也修改了 index （） 方法，在列出 2。 Index （） 方法使用 MoviesDBEntities 類別來擷取所有的電影記錄電影資料庫資料表中。 運算式 *\_db。MovieSet.ToList()*電影資料庫資料表中傳回的所有電影記錄清單。
+我也修改了 index （） 方法，在列出 2。 Index （） 方法使用 MoviesDBEntities 類別來擷取所有的電影記錄電影資料庫資料表中。 運算式 *\_db。MovieSet.ToList()* 電影資料庫資料表中傳回的所有電影記錄清單。
 
 電影清單會傳遞至檢視。 取得傳遞給 View() 方法的任何項目取得傳遞至檢視，以檢視資料。
 

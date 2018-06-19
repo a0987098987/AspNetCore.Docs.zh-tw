@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889143"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 準備部署資料庫
 ====================
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 
 範例應用程式會使用 SQL Server Express LocalDB。 SQL Server Express 是免費的 SQL Server 版本。 它通常用在開發期間因為它根據相同的資料庫引擎的 SQL Server 完整版本。 您可以測試以 SQL Server Express，及保證，應用程式會將實際執行環境，SQL Server 版本而異的功能有一些例外狀況相同行為。
 
-LocalDB 是一種特殊的執行模式的 SQL Server Express，可讓您能夠使用資料庫，做為*.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。 在 SQL Server Express 使用者執行個體功能也可讓您能夠使用*.mdf*檔案，但使用者執行個體功能已被取代; 因此，建議使用的 LocalDB *.mdf*檔案。
+LocalDB 是一種特殊的執行模式的 SQL Server Express，可讓您能夠使用資料庫，做為 *.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。 在 SQL Server Express 使用者執行個體功能也可讓您能夠使用 *.mdf*檔案，但使用者執行個體功能已被取代; 因此，建議使用的 LocalDB *.mdf*檔案。
 
 一般 SQL Server Express 不用於生產環境 web 應用程式。 LocalDB 尤其不建議用於生產環境 web 應用程式因為它不是使用 IIS。
 
@@ -185,7 +186,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 ### <a name="create-the-development-database-script"></a>建立開發資料庫指令碼
 
 1. 執行 SSMS。
-2. 在**連接到伺服器**對話方塊方塊中，輸入*(localdb) \v11.0*為**伺服器名稱**，保留**驗證**設**Windows 驗證**，然後按一下 **連接**。
+2. 在**連接到伺服器**對話方塊方塊中，輸入 *(localdb) \v11.0*為**伺服器名稱**，保留**驗證**設**Windows 驗證**，然後按一下 **連接**。
 
     ![SSMS 連接到伺服器](preparing-databases/_static/image10.png)
 3. 在**物件總管] 中**視窗中，展開**資料庫**，以滑鼠右鍵按一下**aspnet ContosoUniversity**，按一下 [**工作**，然後按一下**產生指令碼**。

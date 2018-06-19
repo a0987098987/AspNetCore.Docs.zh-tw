@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872227"
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>使用 TagBuilder 類別來建立 HTML Helper (VB)
 ====================
@@ -31,7 +32,7 @@ ASP.NET MVC 架構包括名為 TagBuilder 類別可讓您建置 HTML helper 時�
 
 TagBuilder 類別被包含在 system.web.mvc 的參考命名空間。 它有五種方法：
 
-- AddCssClass() – 可讓您新增新*類別 =""*屬性至標記。
+- AddCssClass() – 可讓您新增新*類別 =""* 屬性至標記。
 - GenerateId() – 可讓您將識別碼屬性新增至標記。 這個方法會自動取代識別碼中的句點 （根據預設，句號會以底線取代）
 - MergeAttribute() – 可讓您將屬性加入至標記。 有多個多載，這個方法。
 - SetInnerText() – 可讓您設定標記的內部文字。 內部文字是 HTML 編碼自動。

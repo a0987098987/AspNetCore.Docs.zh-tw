@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851114"
 ---
 # <a name="key-encryption-at-rest-in-aspnet-core"></a>在 ASP.NET Core 待用的金鑰加密
 

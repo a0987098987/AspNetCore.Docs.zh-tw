@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878096"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>加入和回應的 GridView (VB) 的按鈕
 ====================
@@ -129,7 +130,7 @@ ms.lasthandoff: 04/06/2018
 
 [![表示讓 supplierID 參數應該都來自供應商 FormView 控制項](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image24.png)
 
-**圖 10**： 表示*`supplierID`*參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
+**圖 10**： 表示*`supplierID`* 參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
 
 
 完成 ObjectDataSource 精靈之後，GridView 會包含 BoundField 或 CheckBoxField 每個產品的資料欄位。 可讓 s 修剪這顯示只`ProductName`和`UnitPrice`連同 BoundFields `Discontinued` CheckBoxField; 此外，可讓 s 格式`UnitPrice`BoundField 使其文字會格式化為貨幣。 您的 GridView 和`SuppliersProductsDataSource`ObjectDataSource s 宣告式標記看起來應該類似下列標記：
@@ -183,7 +184,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-vb[Main](adding-and-responding-to-buttons-to-a-gridview-vb/samples/sample5.vb)]
 
-這個方法只會呼叫向下`DiscontinueAllProductsForSupplier(supplierID)`中 DAL 提供傳遞方法*`supplierID`*參數值。 如果沒有任何只允許在某些情況下停止 s 產品的供應商的商務規則，這些規則應該在這裡，在實作 BLL。
+這個方法只會呼叫向下`DiscontinueAllProductsForSupplier(supplierID)`中 DAL 提供傳遞方法*`supplierID`* 參數值。 如果沒有任何只允許在某些情況下停止 s 產品的供應商的商務規則，這些規則應該在這裡，在實作 BLL。
 
 > [!NOTE]
 > 不同於`UpdateProduct`中多載`ProductsBLL`類別`DiscontinueAllProductsForSupplier(supplierID)`方法簽章不包含`DataObjectMethodAttribute`屬性 (`<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, Boolean)>`)。 如此即無需`DiscontinueAllProductsForSupplier(supplierID)`從 ObjectDataSource s 設定資料來源精靈的下拉式清單，在 [更新] 索引標籤中的方法。我已省略此屬性，因為我們將會呼叫`DiscontinueAllProductsForSupplier(supplierID)`直接從我們的 ASP.NET 網頁中的事件處理常式方法。

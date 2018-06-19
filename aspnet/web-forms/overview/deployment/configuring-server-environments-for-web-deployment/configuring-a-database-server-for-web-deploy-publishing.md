@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885568"
 ---
 <a name="configuring-a-database-server-for-web-deploy-publishing"></a>設定 Web Deploy 發行變更資料庫伺服器
 ====================
@@ -175,7 +176,7 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image12.png)
 3. 在**登入屬性**對話方塊中，按一下 **使用者對應**。
 4. 在**對應到此登入的使用者**資料表中，選取您的資料庫名稱 (例如， **ContactManager**)。
-5. 在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取所需的權限。 範例解決方案的連絡管理員，您必須選取**db\_datareader**和**db\_datawriter**角色。
+5. 在**資料庫角色成員資格對象：** *[資料庫名稱]* 清單中，選取所需的權限。 範例解決方案的連絡管理員，您必須選取**db\_datareader**和**db\_datawriter**角色。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image13.png)
 6. 按一下 [確定 **Deploying Office Solutions**]。
@@ -212,7 +213,7 @@ SQL Server 登入是伺服器層級物件，而不是資料庫層級物件，而
 2. 在**物件總管 中**視窗中，展開**安全性** 節點，展開**登入** 節點，然後按兩下 電腦帳戶登入 (比方說， **FABRIKAM\matt**)。
 3. 在**登入屬性**對話方塊中，按一下 **使用者對應**。
 4. 在**對應到此登入的使用者**資料表中，選取您的資料庫名稱 (例如， **ContactManager**)。
-5. 在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取**db\_擁有者**角色。
+5. 在**資料庫角色成員資格對象：** *[資料庫名稱]* 清單中，選取**db\_擁有者**角色。
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image15.png)
 6. 按一下 [確定 **Deploying Office Solutions**]。

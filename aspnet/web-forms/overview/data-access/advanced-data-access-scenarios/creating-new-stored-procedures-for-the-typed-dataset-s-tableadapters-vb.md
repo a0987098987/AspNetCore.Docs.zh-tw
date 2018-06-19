@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877758"
 ---
 <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>建立新的預存程序的具類型資料集的 Tableadapter (VB)
 ====================
@@ -41,7 +42,7 @@ Tableadapter 所執行的 SQL 命令可以是任一個特定 SQL 陳述式，例
 
 ## <a name="stored-procedure-basics"></a>預存程序的基本概念
 
-函式是通用於所有的程式設計語言建構。 函式是函式呼叫時執行的陳述式的集合。 函式可以接受輸入的參數，而且可以選擇性地傳回值。 *[預存程序](http://en.wikipedia.org/wiki/Stored_procedure)*資料庫建構函式的程式語言中具有共用許多相似之處。 預存程序是由一組預存程序呼叫時執行的 T-SQL 陳述式所組成。 預存程序可能會接受零到多個輸入參數，並可傳回純量值、 輸出參數，或者，大多數情況下，結果集`SELECT`查詢。
+函式是通用於所有的程式設計語言建構。 函式是函式呼叫時執行的陳述式的集合。 函式可以接受輸入的參數，而且可以選擇性地傳回值。 *[預存程序](http://en.wikipedia.org/wiki/Stored_procedure)* 資料庫建構函式的程式語言中具有共用許多相似之處。 預存程序是由一組預存程序呼叫時執行的 T-SQL 陳述式所組成。 預存程序可能會接受零到多個輸入參數，並可傳回純量值、 輸出參數，或者，大多數情況下，結果集`SELECT`查詢。
 
 > [!NOTE]
 > 預存程序通常稱為 sprocs 或預存程序。

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886455"
 ---
 <a name="how-do-i-converting-a-net-20-windows-forms-application-to-net-35"></a>[如何:]將轉換.NET 2.0 的 Windows Form 應用程式以.NET 3.5
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887690"
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>設定生產環境 Web 應用程式使用實際執行資料庫 (C#)
 ====================

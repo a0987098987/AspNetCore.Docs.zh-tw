@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882958"
 ---
 <a name="nested-data-web-controls-vb"></a>巢狀的資料 Web 控制項 (VB)
 ====================
@@ -100,7 +101,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample3.aspx)]
 
-我們使用 ObjectDataSource 方法時要設定`ProductsByCategoryList`中繼器 s`DataSourceID`屬性`ID`的 ObjectDataSource (`ProductsByCategoryDataSource`)。 此外，請注意，我們 ObjectDataSource 具有`<asp:Parameter>`項目，指定*`categoryID`*值，會傳遞至`GetProductsByCategoryID(categoryID)`方法。 但我們該如何指定這個值嗎？ 在理想情況下，我們 d 可以只設定`DefaultValue`屬性`<asp:Parameter>`使用資料繫結語法項目如下所示：
+我們使用 ObjectDataSource 方法時要設定`ProductsByCategoryList`中繼器 s`DataSourceID`屬性`ID`的 ObjectDataSource (`ProductsByCategoryDataSource`)。 此外，請注意，我們 ObjectDataSource 具有`<asp:Parameter>`項目，指定*`categoryID`* 值，會傳遞至`GetProductsByCategoryID(categoryID)`方法。 但我們該如何指定這個值嗎？ 在理想情況下，我們 d 可以只設定`DefaultValue`屬性`<asp:Parameter>`使用資料繫結語法項目如下所示：
 
 
 [!code-aspx[Main](nested-data-web-controls-vb/samples/sample4.aspx)]

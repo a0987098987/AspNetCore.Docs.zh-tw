@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/index
-title: "部署 |Microsoft 文件"
+title: 部署 |Microsoft 文件
 author: rick-anderson
-description: "如何將 ASP.NET Web Form 專案部署到伺服器。"
+description: 如何將 ASP.NET Web Form 專案部署到伺服器。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/18/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment
 msc.type: chapter
 ms.openlocfilehash: 359cd2d349a361be83708262a55b3638461a054d
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515337"
 ---
 <a name="deployment"></a>部署
 ====================

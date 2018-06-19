@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879513"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>教學課程： 透過 ASP.NET SignalR 的伺服器廣播 1.x
 ====================
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 
 ![StockTicker 初始版本](tutorial-server-broadcast-with-aspnet-signalr/_static/image1.png)
 
-定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和**%**動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
+定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和**%** 動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
 
 本教學課程包含下列各節：
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-the-project"></a>建立專案
 
 1. 從**檔案**功能表上，按一下**新專案**。
-2. 在**新專案**對話方塊方塊中，展開  **C#**下**範本**選取**Web**。
+2. 在**新專案**對話方塊方塊中，展開  **C#** 下**範本**選取**Web**。
 3. 選取**ASP.NET 空 Web 應用程式**範本，將專案*SignalR.StockTicker*，然後按一下**確定**。
 
     ![新增專案對話方塊](tutorial-server-broadcast-with-aspnet-signalr/_static/image2.png)
@@ -115,7 +116,7 @@ ms.lasthandoff: 04/06/2018
 您只想要執行的伺服器上，因此您必須設定每個 StockTickerHub 執行個體從單一 StockTicker 執行個體參考的 StockTicker 類別的一個執行個體。 StockTicker 類別必須廣播至用戶端，因為它已內建的資料，並觸發更新，但 StockTicker 不是中樞類別。 因此，StockTicker 類別必須取得 SignalR 中樞的連線內容物件的參考。 它然後可以使用廣播至用戶端的 SignalR 連線的內容物件。
 
 1. 在**方案總管 中**，以滑鼠右鍵按一下專案，然後按一下**加入新項目**。
-2. 如果您有 Visual Studio 2012 [ASP.NET 和 Web 工具 2012.2 更新](https://go.microsoft.com/fwlink/?LinkId=279941)，按一下  **Web**下**Visual C#**選取**SignalR 中樞類別**項目範本。 否則，請選取**類別**範本。
+2. 如果您有 Visual Studio 2012 [ASP.NET 和 Web 工具 2012.2 更新](https://go.microsoft.com/fwlink/?LinkId=279941)，按一下  **Web**下**Visual C#** 選取**SignalR 中樞類別**項目範本。 否則，請選取**類別**範本。
 3. 將新類別*StockTickerHub.cs*，然後按一下 **新增**。
 
     ![新增 StockTickerHub.cs](tutorial-server-broadcast-with-aspnet-signalr/_static/image5.png)

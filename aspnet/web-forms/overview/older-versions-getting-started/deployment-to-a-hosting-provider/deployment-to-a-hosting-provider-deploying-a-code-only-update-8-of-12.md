@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886910"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-code-only-update---8-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 Code-Only 更新-12 個 8
 ====================
@@ -77,7 +78,7 @@ Visual Studio 會部署更新的應用程式和瀏覽器會自動開啟至首頁
 
 在實際應用中，在初始部署後，生產網站與使用者互動，資料庫會填入即時資料。 因此，您不想要重新部署成員資格資料庫處於其初始狀態，會清除所有的即時資料。 因為 SQL Server Compact 資料庫中的檔案*應用程式\_資料*資料夾中，您必須防止變更部署設定，因此，檔案中*應用程式\_資料*資料夾無法部署。
 
-開啟**專案屬性**ContosoUniversity 專案，然後選取視窗**封裝/發行 Web**  索引標籤。請確定**組態**下拉式方塊已**作用中 （發行）**或**發行**選取，請選取**檔案排除應用程式\_資料資料夾**。
+開啟**專案屬性**ContosoUniversity 專案，然後選取視窗**封裝/發行 Web**  索引標籤。請確定**組態**下拉式方塊已**作用中 （發行）** 或**發行**選取，請選取**檔案排除應用程式\_資料資料夾**。
 
 ![Exclude_files_from_the_App_Data_folder](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12/_static/image9.png)
 

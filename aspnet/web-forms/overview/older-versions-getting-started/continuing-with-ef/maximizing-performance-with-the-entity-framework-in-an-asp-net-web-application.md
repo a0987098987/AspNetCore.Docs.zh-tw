@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891408"
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式而言，發揮最佳效能
 ====================
@@ -237,7 +238,7 @@ Contoso 大學應用程式中只有不是因為它會適當地提升效能，請
 
 [!code-csharp[Main](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/samples/sample15.cs)]
 
-此程式碼產生檢視*.edmx*檔案，而且位於與範本相同的資料夾，並為範本檔案具有相同的名稱。 例如，如果您的範本檔案命名為*SchoolModel.Views.tt*，它會尋找名為的資料模型檔案*SchoolModel.edmx*。
+此程式碼產生檢視 *.edmx*檔案，而且位於與範本相同的資料夾，並為範本檔案具有相同的名稱。 例如，如果您的範本檔案命名為*SchoolModel.Views.tt*，它會尋找名為的資料模型檔案*SchoolModel.edmx*。
 
 儲存檔案，然後以滑鼠右鍵按一下 [檔案中的**方案總管] 中**選取**執行自訂工具**。
 

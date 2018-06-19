@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884713"
 ---
 <a name="lesson-7-databinding-to-user-interface-controls"></a>[第 7 課:]資料繫結至使用者介面控制項
 ====================

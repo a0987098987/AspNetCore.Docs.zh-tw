@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873553"
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
@@ -36,8 +37,8 @@ ms.lasthandoff: 04/06/2018
 
 ![](accessing-your-models-data-from-a-controller/_static/image2.png)
 
-- 選取**影片 (MvcMovie.Models)**模型類別。
-- 選取**MovieDBContext (MvcMovie.Models)**資料內容類別。
+- 選取**影片 (MvcMovie.Models)** 模型類別。
+- 選取**MovieDBContext (MvcMovie.Models)** 資料內容類別。
 - 控制器名稱的輸入**MoviesController**。
 
   下圖顯示已完成的對話方塊。  
@@ -52,7 +53,7 @@ ms.lasthandoff: 04/06/2018
 
 Visual Studio 會自動建立[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) （建立、 讀取、 更新和刪除） 的動作方法和 （CRUD 動作方法和檢視表的自動建立稱為 scaffolding） 讓您檢視。 您現在有一個功能完整的 web 應用程式，可讓您建立、 列出、 編輯和刪除影片項目。
 
-執行應用程式，然後按一下**MVC 影片**連結 (或瀏覽至`Movies`控制器藉由附加*/Movies*至您的瀏覽器的網址列中的 URL)。 因為應用程式依賴預設路由 (定義於*應用程式\_Start\RouteConfig.cs*檔案)，瀏覽器要求`http://localhost:xxxxx/Movies`路由傳送至預設`Index`動作方法`Movies`控制站。 換句話說，瀏覽器要求`http://localhost:xxxxx/Movies`實際上是相同的瀏覽器要求`http://localhost:xxxxx/Movies/Index`。 因為您尚未加入任何尚未，結果會是空的電影清單。
+執行應用程式，然後按一下**MVC 影片**連結 (或瀏覽至`Movies`控制器藉由附加 */Movies*至您的瀏覽器的網址列中的 URL)。 因為應用程式依賴預設路由 (定義於*應用程式\_Start\RouteConfig.cs*檔案)，瀏覽器要求`http://localhost:xxxxx/Movies`路由傳送至預設`Index`動作方法`Movies`控制站。 換句話說，瀏覽器要求`http://localhost:xxxxx/Movies`實際上是相同的瀏覽器要求`http://localhost:xxxxx/Movies/Index`。 因為您尚未加入任何尚未，結果會是空的電影清單。
 
 ![](accessing-your-models-data-from-a-controller/_static/image4.png)
 
@@ -67,7 +68,7 @@ Visual Studio 會自動建立[CRUD](http://en.wikipedia.org/wiki/Create,_read,_u
 > 您可能無法在 [價格] 欄位中輸入十進位小數點或逗號。 若要支援 jQuery 驗證非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文 （美國） 的日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用 JavaScript `Globalize.parseFloat`。 我將示範如何執行這項操作，在下一個教學課程。 現在，只要輸入如 10 之類的整數。
 
 
-按一下**建立**按鈕會導致表單張貼至伺服器，電影資訊儲存在資料庫中的位置。 您重新導向至*/Movies* URL，您可以在其中看到新建立的電影清單中。
+按一下**建立**按鈕會導致表單張貼至伺服器，電影資訊儲存在資料庫中的位置。 您重新導向至 */Movies* URL，您可以在其中看到新建立的電影清單中。
 
 ![](accessing-your-models-data-from-a-controller/_static/image6.png)
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883933"
 ---
 <a name="intro-to-aspnet-20-user-interface-elements"></a>[ASP.NET 2.0 簡介:]使用者介面項目
 ====================

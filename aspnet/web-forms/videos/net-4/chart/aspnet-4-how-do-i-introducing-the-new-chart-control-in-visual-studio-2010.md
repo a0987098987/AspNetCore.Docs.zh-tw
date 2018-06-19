@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884687"
 ---
 <a name="how-do-i-introducing-the-new-chart-control-in-visual-studio-2010"></a>如何： 引入新的圖表控制項，在 Visual Studio 2010
 ====================

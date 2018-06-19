@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/dependency-injection
-title: "ASP.NET Web API 2 中的相依性插入 |Microsoft 文件"
+title: ASP.NET Web API 2 中的相依性插入 |Microsoft 文件
 author: MikeWasson
-description: "本教學課程會示範如何插入您的 ASP.NET Web API 控制器的相依性。 在教學課程 Web API 2 Unity 應用程式區塊中使用的軟體版本..."
+description: 本教學課程會示範如何插入您的 ASP.NET Web API 控制器的相依性。 在教學課程 Web API 2 Unity 應用程式區塊中使用的軟體版本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036511"
 ---
 <a name="dependency-injection-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的相依性插入
 ====================

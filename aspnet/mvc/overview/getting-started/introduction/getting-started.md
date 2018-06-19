@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868317"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a>開始使用 ASP.NET MVC 5
 ====================

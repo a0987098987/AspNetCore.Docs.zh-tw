@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880397"
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>用於 Web 套件部署中設定參數
 ====================
@@ -60,7 +61,7 @@ ms.lasthandoff: 04/06/2018
 - **IIS Web 應用程式名稱**參數是您要部署 web 應用程式的 IIS 路徑。 預設值取自**封裝/發行 Web**專案屬性頁中的頁面。
 - **ApplicationServices Web.config 連接字串**參數產生自**connectionStrings/加入**中的項目*web.config*檔案。 它代表應用程式應該使用連絡成員資格資料庫的連接字串。 這裡將您所提供的值取代已部署至*web.config*檔案。 預設值取自預先部署*web.config*檔案。
 
-WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝的部署套件時，您便可以提供這些屬性的值。 如果您安裝封裝手動透過 IIS 管理員 中所述[手動安裝 Web 封裝](manually-installing-web-packages.md)，安裝精靈會提示您提供任何參數的值。 如果您使用安裝套件遠端*。 deploy.cmd*檔案中所述[部署 Web 封裝](deploying-web-packages.md)，Web Deploy 會尋找此*SetParameters.xml*檔案提供參數值。 您可以編輯中的值*SetParameters.xml*手動檔案，或者您可以自訂檔案做為自動化組建和部署程序的一部分。 此程序所述在本主題稍後的更多詳細資料。
+WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝的部署套件時，您便可以提供這些屬性的值。 如果您安裝封裝手動透過 IIS 管理員 中所述[手動安裝 Web 封裝](manually-installing-web-packages.md)，安裝精靈會提示您提供任何參數的值。 如果您使用安裝套件遠端 *。 deploy.cmd*檔案中所述[部署 Web 封裝](deploying-web-packages.md)，Web Deploy 會尋找此*SetParameters.xml*檔案提供參數值。 您可以編輯中的值*SetParameters.xml*手動檔案，或者您可以自訂檔案做為自動化組建和部署程序的一部分。 此程序所述在本主題稍後的更多詳細資料。
 
 ### <a name="custom-parameterization"></a>自訂參數化
 
@@ -86,13 +87,13 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample3.xml)]
 
 
-如果您手動安裝的部署套件時，IIS 管理員會提示您輸入的服務端點位址，連同已自動參數化的屬性。 如果您執行安裝的部署套件*。 deploy.cmd*檔案中，您可以編輯*SetParameters.xml*檔案，以提供的服務端點位址，以及值的值已自動參數化的屬性。
+如果您手動安裝的部署套件時，IIS 管理員會提示您輸入的服務端點位址，連同已自動參數化的屬性。 如果您執行安裝的部署套件 *。 deploy.cmd*檔案中，您可以編輯*SetParameters.xml*檔案，以提供的服務端點位址，以及值的值已自動參數化的屬性。
 
 如需如何建立完整細節*parameters.xml*檔案，請參閱[How to： 使用參數來設定部署設定時封裝會安裝](https://msdn.microsoft.com/library/ff398068.aspx)。 名為程序**部署參數用於 Web.config 檔案設定**提供逐步指示。
 
 ## <a name="modifying-the-setparametersxml-file"></a>修改 SetParameters.xml 檔案
 
-如果您打算以手動方式部署 web 應用程式封裝&#x2014;藉由執行*。 deploy.cmd*檔案或從命令列執行 MSDeploy.exe&#x2014;沒有阻止您以手動方式編輯*SetParameters.xml*之前部署的檔案。 不過，如果您使用企業規模方案，您可能需要較大，自動化組建和部署程序的一部分部署 web 應用程式套件。 在此案例中，您需要 Microsoft Build Engine (MSBuild) 修改*SetParameters.xml*為您的檔案。 您可以使用 MSBuild **XmlPoke**工作。
+如果您打算以手動方式部署 web 應用程式封裝&#x2014;藉由執行 *。 deploy.cmd*檔案或從命令列執行 MSDeploy.exe&#x2014;沒有阻止您以手動方式編輯*SetParameters.xml*之前部署的檔案。 不過，如果您使用企業規模方案，您可能需要較大，自動化組建和部署程序的一部分部署 web 應用程式套件。 在此案例中，您需要 Microsoft Build Engine (MSBuild) 修改*SetParameters.xml*為您的檔案。 您可以使用 MSBuild **XmlPoke**工作。
 
 [連絡人管理員範例方案](the-contact-manager-solution.md)說明此程序。 以下程式碼範例都已經過編輯，以顯示與此範例的詳細資料。
 
@@ -110,7 +111,7 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 > 如需如何自訂伺服器環境的特定環境的專案檔案的指引，請參閱[目標環境設定部署屬性](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md)。
 
 
-下一步 *Publish.proj*檔匯入這些屬性。 因為每個*SetParameters.xml*與檔案關聯*。 deploy.cmd*檔案，以及我們最終需要在專案檔以便可以叫用每個*。 deploy.cmd*檔案，專案檔案建立 MSBuild*項目*每個*。 deploy.cmd*檔案，並定義為感興趣的屬性*項目中繼資料*。
+下一步 *Publish.proj*檔匯入這些屬性。 因為每個*SetParameters.xml*與檔案關聯 *。 deploy.cmd*檔案，以及我們最終需要在專案檔以便可以叫用每個 *。 deploy.cmd*檔案，專案檔案建立 MSBuild*項目*每個 *。 deploy.cmd*檔案，並定義為感興趣的屬性*項目中繼資料*。
 
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample5.xml)]
@@ -140,7 +141,7 @@ WPP 也會參數化這些屬性，它會產生的部署套件中。 當您安裝
 
 本主題所述的角色*SetParameters.xml*檔案，並說明其產生的方法時建立的 web 應用程式專案。 它說明如何將其他設定參數化加入*parameters.xml*檔案加入專案。 它也說明如何修改*SetParameters.xml*檔案的較大的自動建置程序，使用為**XmlPoke**專案檔中的工作。
 
-下一個主題[部署 Web 封裝](deploying-web-packages.md)，說明如何部署 web 封裝藉由執行*。 deploy.cmd*檔案，或直接使用 MSDeploy.exe 命令。 在這兩種情況下，您可以指定您*SetParameters.xml*檔案做為部署參數。
+下一個主題[部署 Web 封裝](deploying-web-packages.md)，說明如何部署 web 封裝藉由執行 *。 deploy.cmd*檔案，或直接使用 MSDeploy.exe 命令。 在這兩種情況下，您可以指定您*SetParameters.xml*檔案做為部署參數。
 
 ## <a name="further-reading"></a>進一步閱讀
 

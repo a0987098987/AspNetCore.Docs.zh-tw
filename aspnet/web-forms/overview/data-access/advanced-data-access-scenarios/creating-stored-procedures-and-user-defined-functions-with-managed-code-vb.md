@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878265"
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>建立預存程序和使用者定義函數以 Managed 程式碼 (VB)
 ====================

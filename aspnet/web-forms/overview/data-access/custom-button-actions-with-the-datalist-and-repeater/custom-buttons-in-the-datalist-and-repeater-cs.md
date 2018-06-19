@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876484"
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-c"></a>在 DataList 和中繼器 (C#) 的自訂按鈕
 ====================

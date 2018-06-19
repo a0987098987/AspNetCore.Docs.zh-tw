@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
-title: "OAuth 提供者使用 MVC 4 |Microsoft 文件"
+title: OAuth 提供者使用 MVC 4 |Microsoft 文件
 author: tfitzmac
-description: "本教學課程會示範如何建立 ASP.NET MVC 4 web 應用程式，可讓使用者從外部提供者，例如 Facebo 認證登入..."
+description: 本教學課程會示範如何建立 ASP.NET MVC 4 web 應用程式，可讓使用者從外部提供者，例如 Facebo 認證登入...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28033564"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>MVC 4 搭配使用 OAuth 提供者
 ====================

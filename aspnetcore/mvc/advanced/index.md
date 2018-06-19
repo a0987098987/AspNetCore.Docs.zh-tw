@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30305769"
 ---
 # <a name="advanced-topics-for-aspnet-core-mvc"></a>ASP.NET Core MVC 的進階主題
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888022"
 ---
 <a name="deploying-a-database-c"></a>部署資料庫 (C#)
 ====================
@@ -55,7 +56,7 @@ ASP.NET web 應用程式部署需要取得必要的檔案和資源從開發環�
 **圖 1**: 書籍檢閱 Web 應用程式資料庫是四個資料表所組成 ([按一下以檢視完整大小的影像](deploying-a-database-cs/_static/image3.jpg))
 
 
-舊版的活頁簿檢閱網站有個別的 ASP.NET 頁面的每本書籍。 例如，沒有名為的頁面`~/Tech/TYASP35.aspx`包含檢閱*教導您自己 ASP.NET 3.5 24 小時內*。 這個新資料驅動型版本的網站已儲存在資料庫和單一 ASP.NET 網頁，Review.aspx?ID= 檢閱*[bookid]*，這會顯示指定的書籍的檢閱。 同樣地，沒有 Genre.aspx?ID=*genreId*頁面，其中列出檢閱的書籍，在指定的內容類型。
+舊版的活頁簿檢閱網站有個別的 ASP.NET 頁面的每本書籍。 例如，沒有名為的頁面`~/Tech/TYASP35.aspx`包含檢閱*教導您自己 ASP.NET 3.5 24 小時內*。 這個新資料驅動型版本的網站已儲存在資料庫和單一 ASP.NET 網頁，Review.aspx?ID= 檢閱 *[bookid]*，這會顯示指定的書籍的檢閱。 同樣地，沒有 Genre.aspx?ID=*genreId*頁面，其中列出檢閱的書籍，在指定的內容類型。
 
 圖 2 和 3 顯示`Genre.aspx`和`Review.aspx`動作中的頁面。 請注意每個頁面的 [網址] 列中的 URL。 在圖 2 it s Genre.aspx？ ID = 85d164ba 1123年 4 c 47-82a0-c8ec75de7e0e。 因為 85d164ba-1123-4c47-82a0-c8ec75de7e0e`GenreId`技術內容類型、"檢閱技術 」 頁面的標題讀取和項目符號清單的值會列舉這些檢閱站台上的，落在此內容類型。
 

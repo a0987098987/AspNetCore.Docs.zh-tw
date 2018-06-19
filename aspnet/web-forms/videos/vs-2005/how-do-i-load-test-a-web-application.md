@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893995"
 ---
 <a name="how-do-i-load-test-a-web-application"></a>[如何:]載入測試 Web 應用程式嗎？
 ====================

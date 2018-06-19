@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30892513"
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>設定用於 Web 部署的 TFS 組建伺服器
 ====================
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/10/2018
     > 您可能已安裝.NET Framework 4.0，透過 Windows Update。 如果已安裝的產品或元件，Web Platform Installer 將會指示這取代**新增**按鈕的文字**已安裝**。
 
     ![](configuring-a-tfs-build-server-for-web-deployment/_static/image2.png)
-7. 在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 [**新增**。
+7. 在**ASP.NET MVC 3 (Visual Studio 2010)** 資料列中，按一下 [**新增**。
 8. 在導覽窗格中，按一下**伺服器**。
 9. 在**Web 部署工具 2.1**資料列中，按一下 [**新增**。
 10. 按一下 [安裝] 。 Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。

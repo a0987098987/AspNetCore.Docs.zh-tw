@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/net-4/core/index
-title: "核心 |Microsoft 文件"
+title: 核心 |Microsoft 文件
 author: rick-anderson
-description: "這一系列影片探討 ASP.NET 4 自動啟動、 初始設定檔案和 HTML 編碼的核心改進功能。"
+description: 這一系列影片探討 ASP.NET 4 自動啟動、 初始設定檔案和 HTML 編碼的核心改進功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/net-4/core
 msc.type: chapter
 ms.openlocfilehash: 052d0b2bf0b94f5eb8efc274e08297ba6b8c1104
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526237"
 ---
 <a name="core"></a>核心
 ====================

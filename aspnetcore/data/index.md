@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7f92990bad6a6cb901265d621dcbc136794f5f3f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30223163"
 ---
 # <a name="work-with-data-in-aspnet-core"></a>在 ASP.NET Core 中處理資料
 

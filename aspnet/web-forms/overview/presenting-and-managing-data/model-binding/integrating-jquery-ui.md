@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887908"
 ---
 <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>使用模型繫結和 web form 整合 JQuery UI 日期選擇器
 ====================

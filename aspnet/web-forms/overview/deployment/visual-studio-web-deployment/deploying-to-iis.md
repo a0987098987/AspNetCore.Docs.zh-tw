@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890862"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署至測試
 ====================
@@ -82,7 +83,7 @@ ms.lasthandoff: 04/06/2018
 6. 在**應用程式集區**] 窗格中，按一下 [ **DefaultAppPool**，然後在**動作**窗格中，按一下**基本設定**。
 
     [![Inetmgr_selecting_Basic_Settings_for_app_pool](deploying-to-iis/_static/image5.png)](deploying-to-iis/_static/image4.png)
-7. 在**編輯應用程式集區**對話方塊中，變更**.NET Framework 版本**至**.NET Framework v4.0.30319**按一下**[確定]**。
+7. 在**編輯應用程式集區**對話方塊中，變更 **.NET Framework 版本**至 **.NET Framework v4.0.30319**按一下 **[確定]**。
 
     [![Selecting_.NET_4_for_DefaultAppPool](deploying-to-iis/_static/image7.png)](deploying-to-iis/_static/image6.png)
 
@@ -145,7 +146,7 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
 2. 按一下 **[Connect]**(連線)。 
 
     ![連接按鈕](deploying-to-iis/_static/image11.png)
-3. 在**連接到伺服器**對話方塊方塊中，輸入*。 \SQLExpress*為**伺服器名稱**，然後按一下 **連接**。
+3. 在**連接到伺服器**對話方塊方塊中，輸入 *。 \SQLExpress*為**伺服器名稱**，然後按一下 **連接**。
 4. 在 資料庫 下拉式清單中選取**ContosoUniversity**，然後按一下  **Execute**。 
 
     ![](deploying-to-iis/_static/image12.png)
@@ -158,12 +159,12 @@ Contoso 大學應用程式有兩個資料庫： 成員資格資料庫和應用�
 
 - 使用單鍵發行 Visual Studio。
 - 從命令列發行。
-- 建立*部署套件*及使用 IIS 管理員 UI 進行安裝。 部署套件組成*.zip*檔案，其中包含所有檔案和在 IIS 中安裝站台所需的中繼資料。
+- 建立*部署套件*及使用 IIS 管理員 UI 進行安裝。 部署套件組成 *.zip*檔案，其中包含所有檔案和在 IIS 中安裝站台所需的中繼資料。
 - 建立部署套件，並使用命令列進行安裝。
 
 您已在上一個教學課程中設定 Visual Studio，來自動化部署工作套用到所有這些方法的程序。 在這些教學課程中，您將使用這些方法的前兩個。 使用部署套件的相關資訊，請參閱[部署 web 應用程式建立及安裝 web 部署套件](https://go.microsoft.com/fwlink/p/?LinkId=282413#package)Visual Studio 和 ASP.NET 的 Web 部署內容對應中。
 
-在發行之前，請確定您系統管理員模式中執行 Visual Studio。 如果您沒有看到**（系統管理員）**的標題列中，關閉 Visual Studio。 在 Windows 8**啟動**頁面或 Windows 7**啟動**功能表上，以滑鼠右鍵按一下您要使用的 Visual Studio 版本的圖示，然後選取**系統管理員身分執行**。 需要發行只有當您發行至 IIS 在本機電腦上的系統管理員模式。
+在發行之前，請確定您系統管理員模式中執行 Visual Studio。 如果您沒有看到 **（系統管理員）** 的標題列中，關閉 Visual Studio。 在 Windows 8**啟動**頁面或 Windows 7**啟動**功能表上，以滑鼠右鍵按一下您要使用的 Visual Studio 版本的圖示，然後選取**系統管理員身分執行**。 需要發行只有當您發行至 IIS 在本機電腦上的系統管理員模式。
 
 ### <a name="create-the-publish-profile"></a>建立發行設定檔
 

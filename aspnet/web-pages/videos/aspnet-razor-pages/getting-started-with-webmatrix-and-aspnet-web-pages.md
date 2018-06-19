@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897209"
 ---
 <a name="getting-started-with-webmatrix-and-aspnet-web-pages"></a>開始使用 WebMatrix 及 ASP.NET 網頁
 ====================

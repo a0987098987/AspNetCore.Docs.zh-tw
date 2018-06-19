@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872971"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>分析和偵錯使用 glimpse 進行 ASP.NET MVC 應用程式
 ====================

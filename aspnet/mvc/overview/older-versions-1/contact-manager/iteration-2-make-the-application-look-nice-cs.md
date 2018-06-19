@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871840"
 ---
 <a name="iteration-2--make-the-application-look-nice-c"></a>反覆項目 #2 – 讓應用程式看起來不錯 (C#)
 ====================
@@ -83,7 +84,7 @@ ASP.NET MVC 設計庫主控免費網站設計特別針對使用 ASP.NET MVC 專�
 3. 解壓縮檔案到名為年 10 月的資料夾。
 4. 選取的所有檔案包含在年 10 月資料夾 DesignTemplate 資料夾中，以滑鼠右鍵按一下檔案，並選取功能表選項**複製**。
 5. 以滑鼠右鍵按一下 ContactManager 專案節點，在 Visual Studio 方案總管 視窗中的，然後選取功能表選項**貼上**（請參閱圖 4）。
-6. 選取 [Visual Studio] 功能表選項**編輯、 尋找和取代 快速取代**和取代*[MyProjectName]*與*ContactManager* （請參閱圖 5）。
+6. 選取 [Visual Studio] 功能表選項**編輯、 尋找和取代 快速取代**和取代 *[MyProjectName]* 與*ContactManager* （請參閱圖 5）。
 
 
 [![新增專案 對話方塊](iteration-2-make-the-application-look-nice-cs/_static/image3.jpg)](iteration-2-make-the-application-look-nice-cs/_static/image5.png)

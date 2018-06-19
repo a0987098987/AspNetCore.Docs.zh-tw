@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/mapping-users-to-connections
-title: "將 SignalR 使用者對應至連接 |Microsoft 文件"
+title: 將 SignalR 使用者對應至連接 |Microsoft 文件
 author: tfitzmac
-description: "本主題說明如何保留使用者和其連線的相關資訊。 Patrick Fletcher 協助撰寫這個主題。 本主題中使用的軟體版本..."
+description: 本主題說明如何保留使用者和其連線的相關資訊。 Patrick Fletcher 協助撰寫這個主題。 本主題中使用的軟體版本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/30/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036410"
 ---
 <a name="mapping-signalr-users-to-connections"></a>將 SignalR 使用者對應至連接
 ====================

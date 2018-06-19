@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/using-browser-link
-title: "在 Visual Studio 2013 中使用瀏覽器連結 |Microsoft 文件"
+title: 在 Visual Studio 2013 中使用瀏覽器連結 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/04/2013
 ms.topic: article
 ms.assetid: 46cbfe20-b4dc-449b-9016-80657dd44fbe
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/using-browser-link
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28044106"
 ---
 <a name="using-browser-link-in-visual-studio-2013"></a>在 Visual Studio 2013 中使用瀏覽器連結
 ====================

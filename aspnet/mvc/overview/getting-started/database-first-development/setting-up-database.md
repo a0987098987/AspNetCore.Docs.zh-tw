@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879331"
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a>開始使用 Entity Framework 6 資料庫優先使用 MVC 5
 ====================
@@ -97,7 +98,7 @@ Visual Studio 2013 or Visual Studio Express 2013 for Web
 
 ![顯示輸出](setting-up-database/_static/image7.png)
 
-若要查看已建立新的資料庫，請開啟**SQL Server 物件總管**和尋找正確的本機資料庫伺服器中的專案名稱 (在此情況下**(localdb) \ProjectsV12**)。
+若要查看已建立新的資料庫，請開啟**SQL Server 物件總管**和尋找正確的本機資料庫伺服器中的專案名稱 (在此情況下 **(localdb) \ProjectsV12**)。
 
 ![顯示新的資料庫](setting-up-database/_static/image8.png)
 

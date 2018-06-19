@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/request-validation
-title: "要求驗證-防止指令碼攻擊 |Microsoft 文件"
+title: 要求驗證-防止指令碼攻擊 |Microsoft 文件
 author: rick-anderson
-description: "本白皮書說明，根據預設，應用程式將無法處理未編碼的 HTML 內容 submitt ASP.NET 的要求驗證功能..."
+description: 本白皮書說明，根據預設，應用程式將無法處理未編碼的 HTML 內容 submitt ASP.NET 的要求驗證功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: fa429113-5f8f-4ef4-97c5-5c04900a19fa
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883551"
 ---
 <a name="request-validation---preventing-script-attacks"></a>要求驗證-防止指令碼攻擊
 ====================

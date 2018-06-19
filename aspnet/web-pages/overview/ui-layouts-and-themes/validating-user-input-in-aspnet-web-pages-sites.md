@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899174"
 ---
 <a name="validating-user-input-in-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站中驗證使用者輸入
 ====================
@@ -122,7 +123,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-html[Main](validating-user-input-in-aspnet-web-pages-sites/samples/sample3.html)]
 
-   兩個程式庫是內容傳遞網路 (CDN)，從可載入，因此您不一定需要對您的電腦或伺服器。 不過，您必須擁有的本機副本*jquery.validate.unobtrusive.js*。 如果您沒有已正在使用 WebMatrix 範本 (例如**入門網站**)，其中包含文件庫，請建立 Web Pages 站台中，取決於**入門網站**。 然後將複製*.js*檔案目前的站台。
+   兩個程式庫是內容傳遞網路 (CDN)，從可載入，因此您不一定需要對您的電腦或伺服器。 不過，您必須擁有的本機副本*jquery.validate.unobtrusive.js*。 如果您沒有已正在使用 WebMatrix 範本 (例如**入門網站**)，其中包含文件庫，請建立 Web Pages 站台中，取決於**入門網站**。 然後將複製 *.js*檔案目前的站台。
 2. 在標記中，針對您正在驗證時，每個項目加入至呼叫`Validation.For(field)`。 這個方法會發出用戶端驗證所使用的屬性。 (而不是發出實際的 JavaScript 程式碼，方法就會發出屬性，例如`data-val-...`。 這些屬性支援用來執行工作的 jQuery 不顯眼的用戶端驗證）。
 
 下列頁面會顯示如何將用戶端驗證功能新增至先前範例所示。

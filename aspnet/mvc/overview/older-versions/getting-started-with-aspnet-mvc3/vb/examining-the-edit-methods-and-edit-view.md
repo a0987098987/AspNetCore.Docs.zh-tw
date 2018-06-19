@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875457"
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>檢查編輯方法與編輯檢視 (VB)
 ====================
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/06/2018
 
 在本節中，您將檢驗產生的動作方法和檢視電影控制站。 然後您要加入自訂的搜尋網頁。
 
-執行應用程式，並瀏覽至`Movies`控制器藉由附加*/Movies*至您的瀏覽器的網址列中的 URL。 將滑鼠指標**編輯**連結，查看它連結到的 URL。
+執行應用程式，並瀏覽至`Movies`控制器藉由附加 */Movies*至您的瀏覽器的網址列中的 URL。 將滑鼠指標**編輯**連結，查看它連結到的 URL。
 
 ![EditLink_sm](examining-the-edit-methods-and-edit-view/_static/image1.png)
 
@@ -67,11 +68,11 @@ ms.lasthandoff: 04/06/2018
 
 Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。 [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 會顯示為 HTML`<input>`項目。 [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。
 
-執行應用程式，並瀏覽至*/Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 HTML 網頁中的看起來像下列的範例。 （為了清楚起見已排除的功能表標記）。
+執行應用程式，並瀏覽至 */Movies* URL。 按一下 **Edit** 連結。 在瀏覽器中，檢視頁面的原始檔。 HTML 網頁中的看起來像下列的範例。 （為了清楚起見已排除的功能表標記）。
 
 [!code-html[Main](examining-the-edit-methods-and-edit-view/samples/sample5.html)]
 
-`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到*/電影/編輯*URL。 表單資料都將張貼至伺服器時**編輯**按鈕。
+`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到 */電影/編輯*URL。 表單資料都將張貼至伺服器時**編輯**按鈕。
 
 ## <a name="processing-the-post-request"></a>處理 POST 要求
 
@@ -104,7 +105,7 @@ ASP.NET framework 模型繫結器會使用的已張貼的表單值，並建立`M
 
 ## <a name="adding-a-search-method-and-search-view"></a>加入搜尋方法和搜尋檢視
 
-本節中您要加入`SearchIndex`動作方法，可讓您搜尋電影依類型或名稱。 這是可以透過*/電影/SearchIndex* URL。 要求將會顯示包含使用者可以填入以便搜尋電影的輸入項目的 HTML 表單。 當使用者提交表單時，動作方法會取得使用者所張貼的搜尋值，並使用值來搜尋資料庫。
+本節中您要加入`SearchIndex`動作方法，可讓您搜尋電影依類型或名稱。 這是可以透過 */電影/SearchIndex* URL。 要求將會顯示包含使用者可以填入以便搜尋電影的輸入項目的 HTML 表單。 當使用者提交表單時，動作方法會取得使用者所張貼的搜尋值，並使用值來搜尋資料庫。
 
 ![SearchIndx_SM](examining-the-edit-methods-and-edit-view/_static/image10.png)
 
@@ -136,7 +137,7 @@ LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例
 
 [!code-vbhtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.vbhtml)]
 
-執行應用程式，並瀏覽至*/電影/SearchIndex*。 將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。 隨即顯示篩選過的電影。
+執行應用程式，並瀏覽至 */電影/SearchIndex*。 將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。 隨即顯示篩選過的電影。
 
 [![SearchQryStr](examining-the-edit-methods-and-edit-view/_static/image14.png)](examining-the-edit-methods-and-edit-view/_static/image13.png)
 
@@ -196,7 +197,7 @@ LINQ 查詢不會執行，當它們被定義或修改這些呼叫的方法，例
 
 [!code-vbhtml[Main](examining-the-edit-methods-and-edit-view/samples/sample18.vbhtml)]
 
-執行應用程式，並瀏覽至*/電影/SearchIndex*。 內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。
+執行應用程式，並瀏覽至 */電影/SearchIndex*。 內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。
 
 本節中您可以檢查的 CRUD 動作方法和架構所產生的檢視。 您可以建立和檢視，讓使用者可以搜尋電影標題和內容類型的搜尋動作方法。 在下一步 區段中，您會看到如何將屬性加入`Movie`模型以及如何將會自動建立測試資料庫的初始設定式。
 

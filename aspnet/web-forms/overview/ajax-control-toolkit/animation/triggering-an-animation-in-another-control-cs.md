@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868109"
 ---
 <a name="triggering-an-animation-in-another-control-c"></a>觸發另一個控制項 (C#) 中的動畫
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851023"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/08/2018
 
 ![新的 Web 應用程式 對話方塊： ASP.NET 範本 面板中選取的 MVC 專案範本](mvc/_static/new-project-select-mvc-template.png)
 
-*選擇性：*變更解決方案的名稱*WebApp1*至*Mvc5*。 Visual Studio 會顯示新的方案名稱 (*Mvc5*)，讓您更方便區分此專案，從下一個專案。
+*選擇性：* 變更解決方案的名稱*WebApp1*至*Mvc5*。 Visual Studio 會顯示新的方案名稱 (*Mvc5*)，讓您更方便區分此專案，從下一個專案。
 
 ## <a name="create-the-aspnet-core-project"></a>建立 ASP.NET Core 專案
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 05/08/2018
 
 ![新的 ASP.NET Web 應用程式 對話方塊： 選取 ASP.NET Core 範本面板中的空白專案範本](mvc/_static/new-project-select-empty-aspnet5-template.png)
 
-* *選擇性：*建立新的 ASP.NET Core 應用程式使用*Web 應用程式*專案範本。 將專案命名*WebApp1*，以及選取的驗證選項**個別使用者帳戶**。 重新命名此應用程式， *FullAspNetCore*。 轉換中建立此專案節省您的時間。 您可以查看範本產生的程式碼以查看結果，或將程式碼複製到轉換專案。 它也是很有幫助時堵塞在要與範本產生的專案比較轉換步驟。
+* *選擇性：* 建立新的 ASP.NET Core 應用程式使用*Web 應用程式*專案範本。 將專案命名*WebApp1*，以及選取的驗證選項**個別使用者帳戶**。 重新命名此應用程式， *FullAspNetCore*。 轉換中建立此專案節省您的時間。 您可以查看範本產生的程式碼以查看結果，或將程式碼複製到轉換專案。 它也是很有幫助時堵塞在要與範本產生的專案比較轉換步驟。
 
 ## <a name="configure-the-site-to-use-mvc"></a>將網站設定為使用 MVC
 
@@ -136,7 +137,7 @@ ms.lasthandoff: 05/08/2018
 
 * 建立*Views/Shared*資料夾。
 
-* *選擇性：*複製 *_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*ASP.NET Core 專案的資料夾*檢視*資料夾。 中的任何命名空間宣告中移除 *_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](xref:mvc/views/tag-helpers/intro)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
+* *選擇性：* 複製 *_ViewImports.cshtml*從*FullAspNetCore* MVC 專案*檢視*ASP.NET Core 專案的資料夾*檢視*資料夾。 中的任何命名空間宣告中移除 *_ViewImports.cshtml*檔案。 *_ViewImports.cshtml*檔案命名空間提供檢視的所有檔案，並使[標記協助程式](xref:mvc/views/tag-helpers/intro)。 新的版面配置檔中使用標記協助程式。 *_ViewImports.cshtml*檔案是新的 ASP.NET core。
 
 * 複製 *_Layout.cshtml*檔案從舊的 ASP.NET MVC 專案*Views/Shared* ASP.NET Core 專案的資料夾*Views/Shared*資料夾。
 
@@ -175,7 +176,7 @@ JQuery 和啟動程序 JavaScript 內含的取代標記：
 
 在瀏覽器中檢視站台。 它應該現在正確載入，以就地預期的樣式。
 
-* *選擇性：*要再試一次使用新的版面配置檔案。 這個專案的版面配置檔案可以複製*FullAspNetCore*專案。 新的版面配置檔案使用[標記協助程式](xref:mvc/views/tag-helpers/intro)且具有其他改進功能。
+* *選擇性：* 要再試一次使用新的版面配置檔案。 這個專案的版面配置檔案可以複製*FullAspNetCore*專案。 新的版面配置檔案使用[標記協助程式](xref:mvc/views/tag-helpers/intro)且具有其他改進功能。
 
 ## <a name="configure-bundling-and-minification"></a>統合及縮製的設定
 

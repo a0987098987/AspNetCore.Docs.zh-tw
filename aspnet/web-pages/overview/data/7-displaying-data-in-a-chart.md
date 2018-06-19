@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899719"
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>顯示資料在圖表中以 ASP.NET Web Pages (Razor)
 ====================
@@ -111,7 +112,7 @@ by [Microsoft](https://github.com/microsoft)
 2. 下列程式碼，也就是一些有關虛構公司中員工的 XML 資料取代現有的 XML。 
 
     [!code-xml[Main](7-displaying-data-in-a-chart/samples/sample5.xml)]
-3. 在*應用程式\_資料*資料夾中，建立新的 XML 檔案，名為*data.xsd*。 (請注意，擴充功能目前是*.xsd*。)
+3. 在*應用程式\_資料*資料夾中，建立新的 XML 檔案，名為*data.xsd*。 (請注意，擴充功能目前是 *.xsd*。)
 4. 以下列內容取代現有的 XML: 
 
     [!code-xml[Main](7-displaying-data-in-a-chart/samples/sample6.xml)]
@@ -154,7 +155,7 @@ by [Microsoft](https://github.com/microsoft)
 > 
 > [!code-cshtml[Main](7-displaying-data-in-a-chart/samples/sample8.cshtml)]
 > 
-> 您可以加入`using`陳述式，針對您想要參考的任何其他.NET Framework 命名空間。 不過，如所述，您不需要這種做法，因為會自動匯入 asp.net 中使用的命名空間中大部分的類別，您將使用*.cshtml*和*.vbhtml*頁面。
+> 您可以加入`using`陳述式，針對您想要參考的任何其他.NET Framework 命名空間。 不過，如所述，您不需要這種做法，因為會自動匯入 asp.net 中使用的命名空間中大部分的類別，您將使用 *.cshtml*和 *.vbhtml*頁面。
 
 
 <a id="Displaying_Charts"></a>
@@ -162,7 +163,7 @@ by [Microsoft](https://github.com/microsoft)
 
 在範例中您看到了到目前為止，您建立圖表，然後圖表直接瀏覽器中呈現為圖形。 在許多情況下，不過，您想要顯示圖表 頁面上，不只是單獨使用瀏覽器中。 若要這樣做，需要兩步驟程序。 第一個步驟是建立一個頁面，會產生圖表，您已經看到。
 
-第二個步驟是在另一個網頁中顯示所產生的影像。 若要顯示的映像，您可以使用 HTML`<img>`中相同的項目，您通常用來顯示任何映像的方式。 不過，而不是參考*.jpg*或*.png*檔案，`<img>`項目參考*.cshtml*檔案，其中包含`Chart`helper，建立的圖表。 顯示頁面的執行時，則`<img>`元素取得的輸出`Chart`協助程式，並轉譯圖表。
+第二個步驟是在另一個網頁中顯示所產生的影像。 若要顯示的映像，您可以使用 HTML`<img>`中相同的項目，您通常用來顯示任何映像的方式。 不過，而不是參考 *.jpg*或 *.png*檔案，`<img>`項目參考 *.cshtml*檔案，其中包含`Chart`helper，建立的圖表。 顯示頁面的執行時，則`<img>`元素取得的輸出`Chart`協助程式，並轉譯圖表。
 
 ![](7-displaying-data-in-a-chart/_static/image11.jpg)
 
@@ -255,7 +256,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ### <a name="saving-a-chart-as-an-image-file"></a>將圖表儲存為影像檔
 
-您也可以將圖表儲存為影像檔 (例如，做為*.jpg*檔案) 的伺服器上。 就像任何映像的方式時，可以使用映像檔。 優點是，檔案會儲存，而不是儲存在暫時快取。 您可以將新的圖表影像儲存在不同的時間 （例如，每小時），並保持永久記錄一段時間的變更。 請注意，您必須先確定您的 web 應用程式已將檔案儲存到資料夾中，您要將影像檔放在伺服器上的權限。
+您也可以將圖表儲存為影像檔 (例如，做為 *.jpg*檔案) 的伺服器上。 就像任何映像的方式時，可以使用映像檔。 優點是，檔案會儲存，而不是儲存在暫時快取。 您可以將新的圖表影像儲存在不同的時間 （例如，每小時），並保持永久記錄一段時間的變更。 請注意，您必須先確定您的 web 應用程式已將檔案儲存到資料夾中，您要將影像檔放在伺服器上的權限。
 
 1. 在您的網站根目錄中，建立名為 *\_ChartFiles*如果不存在。
 2. 在您的網站根目錄中，建立新的檔案命名為*ChartSave.cshtml*。
@@ -263,7 +264,7 @@ by [Microsoft](https://github.com/microsoft)
 
     [!code-cshtml[Main](7-displaying-data-in-a-chart/samples/sample15.cshtml)]
 
-    程式碼會先檢查以查看是否*.jpg*檔案存在，藉由呼叫`File.Exists`方法。 如果檔案不存在，程式碼會建立新`Chart`從陣列。 此時，程式碼會呼叫`Save`方法，並傳遞`path`參數來指定的檔案路徑和檔案名稱儲存圖表的位置。 本文的頁面上，`<img>`項目使用的路徑指向*.jpg*檔案，即可顯示。
+    程式碼會先檢查以查看是否 *.jpg*檔案存在，藉由呼叫`File.Exists`方法。 如果檔案不存在，程式碼會建立新`Chart`從陣列。 此時，程式碼會呼叫`Save`方法，並傳遞`path`參數來指定的檔案路徑和檔案名稱儲存圖表的位置。 本文的頁面上，`<img>`項目使用的路徑指向 *.jpg*檔案，即可顯示。
 4. 執行*ChartSave.cshtml*檔案。
 5. 傳回至 WebMatrix。 請注意，映像檔名為*chart01.jpg*就已經儲存在 *\_ChartFiles*資料夾。
 

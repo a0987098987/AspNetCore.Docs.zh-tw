@@ -15,6 +15,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33850918"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>使用 SMS 中 ASP.NET Core 雙因素驗證
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30889627"
 ---
 <a name="membership-and-administration"></a>成員資格和管理
 ====================
@@ -78,14 +79,14 @@ ASP.NET Web Form 提供成員資格功能。 使用預設範本，您需要內�
 
     [!code-csharp[Main](membership-and-administration/samples/sample3.cs?highlight=5-7,15-51)]
 
-上述程式碼首先會建立成員資格資料庫的資料庫內容。 成員資格資料庫也會儲存為*.mdf*檔案*應用程式\_資料*資料夾。 您可以檢視此資料庫之後的第一個使用者登入此 web 應用程式。 
+上述程式碼首先會建立成員資格資料庫的資料庫內容。 成員資格資料庫也會儲存為 *.mdf*檔案*應用程式\_資料*資料夾。 您可以檢視此資料庫之後的第一個使用者登入此 web 應用程式。 
 
 > [!NOTE] 
 > 
 > 如果您想要儲存成員資格資料，以及產品資料，您可以考慮使用相同**DbContext**您用來儲存上述程式碼中的產品資料。
 
 
- *內部*關鍵字是類型 （例如類別） 和類型成員 （例如方法或屬性） 的存取修飾詞。 內部類型或成員都只能在包含相同的組件檔案中存取*(.dll*檔案)。 當您建置您的應用程式組件檔案*(.dll*) 會建立包含您執行應用程式時所執行的程式碼。 
+ *內部*關鍵字是類型 （例如類別） 和類型成員 （例如方法或屬性） 的存取修飾詞。 內部類型或成員都只能在包含相同的組件檔案中存取 *(.dll*檔案)。 當您建置您的應用程式組件檔案 *(.dll*) 會建立包含您執行應用程式時所執行的程式碼。 
 
 A`RoleStore`物件，提供角色管理，建立的資料庫內容。
 
@@ -214,7 +215,7 @@ Wingtip Toys 範例應用程式可讓匿名使用者和登入的使用者檢視�
 
 ### <a name="how-the-application-will-work"></a>應用程式運作方式
 
-當屬於 「: canEdit 」 角色的使用者第一次，巡覽至頁面`DropDownAddCategory` **DropDownList**控制項已填入，如上面所述。 `DropDownRemoveProduct` **DropDownList**控制項也會填入產品使用相同的方法。 使用者屬於 「: canEdit 」 角色會選取類別目錄類型，然後新增產品詳細資料 (**名稱**，**描述**，**價格**，和**映像檔**). 當屬於 「: canEdit 」 角色的使用者按一下**新增產品** 按鈕，`AddProductButton_Click`觸發事件處理常式。 `AddProductButton_Click`位於程式碼後置檔案中事件處理常式 (*AdminPage.aspx.cs*) 會檢查以確定它符合允許的檔案類型的映像檔*(.gif*， *.png*， *.jpeg*，或*.jpg*)。 然後，映像檔會儲存至資料夾，Wingtip Toys 範例應用程式。 接下來，新的產品會加入至資料庫。 若要完成 加入新的產品的新執行個體`AddProducts`類別會建立並命名為產品。 `AddProducts`類別具有名為方法`AddProduct`，和產品物件呼叫這個方法，將產品加入資料庫。
+當屬於 「: canEdit 」 角色的使用者第一次，巡覽至頁面`DropDownAddCategory` **DropDownList**控制項已填入，如上面所述。 `DropDownRemoveProduct` **DropDownList**控制項也會填入產品使用相同的方法。 使用者屬於 「: canEdit 」 角色會選取類別目錄類型，然後新增產品詳細資料 (**名稱**，**描述**，**價格**，和**映像檔**). 當屬於 「: canEdit 」 角色的使用者按一下**新增產品** 按鈕，`AddProductButton_Click`觸發事件處理常式。 `AddProductButton_Click`位於程式碼後置檔案中事件處理常式 (*AdminPage.aspx.cs*) 會檢查以確定它符合允許的檔案類型的映像檔 *(.gif*， *.png*， *.jpeg*，或 *.jpg*)。 然後，映像檔會儲存至資料夾，Wingtip Toys 範例應用程式。 接下來，新的產品會加入至資料庫。 若要完成 加入新的產品的新執行個體`AddProducts`類別會建立並命名為產品。 `AddProducts`類別具有名為方法`AddProduct`，和產品物件呼叫這個方法，將產品加入資料庫。
 
 [!code-csharp[Main](membership-and-administration/samples/sample15.cs)]
 

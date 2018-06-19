@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879565"
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>使用 DynamicPopulate 使用者控制和 JavaScript (C#)
 ====================

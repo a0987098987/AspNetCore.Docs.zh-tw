@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870683"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 1 部分
 ====================
@@ -57,13 +58,13 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="getting-started"></a>快速入門
 
-如果您還沒有起始專案的電影清單應用程式，下載會使用下列連結：[下載](https://code.msdn.microsoft.com/Project/Download/FileDownload.aspx?https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800)。 然後在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMovie.zip*檔案，然後選取**屬性**。 在**MvcMovie.zip 屬性**對話方塊中，選取**解除封鎖**。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生*.zip*您已經從 web 下載的檔案。)
+如果您還沒有起始專案的電影清單應用程式，下載會使用下列連結：[下載](https://code.msdn.microsoft.com/Project/Download/FileDownload.aspx?https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800)。 然後在 Windows 檔案總管中，以滑鼠右鍵按一下*MvcMovie.zip*檔案，然後選取**屬性**。 在**MvcMovie.zip 屬性**對話方塊中，選取**解除封鎖**。 (解除封鎖可避免安全性警告，當您嘗試使用時，就會發生 *.zip*您已經從 web 下載的檔案。)
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image2.png)
 
 以滑鼠右鍵按一下*MvcMovie.zip*檔案，然後選取**全部解壓縮**來解壓縮檔案。 在 Visual Web Developer 或 Visual Studio 2010 中開啟*MvcMovieCS\_TU.sln*檔案。
 
-在**方案總管 中**，連按兩下*_layout.cshtml\\_Layout.cshtml*加以開啟。 變更`H1`標頭從**MVC 電影應用程式**至**影片 jQuery**。 按下 CTRL + F5 執行應用程式，然後按一下**首頁**索引標籤上，會帶您前往`Index`影片控制器方法。 若要試用應用程式，選取**編輯**連結和**詳細資料**影片的其中一個連結。 請注意，在索引中，編輯，並妥善格式化檢視詳細資料、 發行日期和價格：
+在**方案總管 中**，連按兩下 *_layout.cshtml\\_Layout.cshtml*加以開啟。 變更`H1`標頭從**MVC 電影應用程式**至**影片 jQuery**。 按下 CTRL + F5 執行應用程式，然後按一下**首頁**索引標籤上，會帶您前往`Index`影片控制器方法。 若要試用應用程式，選取**編輯**連結和**詳細資料**影片的其中一個連結。 請注意，在索引中，編輯，並妥善格式化檢視詳細資料、 發行日期和價格：
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image3.png)
 

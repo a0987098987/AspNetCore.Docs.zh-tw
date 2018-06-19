@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898855"
 ---
 <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>加入 ASP.NET Web Pages (Razor) 站台的安全性和成員資格
 ====================
@@ -158,7 +159,7 @@ ms.lasthandoff: 04/06/2018
 
     程式碼也會設定 *\_SiteLayout.cshtml*其版面配置頁的頁面。 (如需詳細資訊版面配置頁面，請參閱[ASP.NET Web Pages 站台中建立一致的版面配置](https://go.microsoft.com/fwlink/?LinkId=202891)。)
 5. 執行站台。 如果您仍登入，請按一下**登出**在頁面頂端的按鈕。
-6. 在瀏覽器要求網頁*/成員/MembersInformation*。 例如，URL 看起來可能像這樣：
+6. 在瀏覽器要求網頁 */成員/MembersInformation*。 例如，URL 看起來可能像這樣：
 
     `http://localhost:38366/Members/MembersInformation`
 

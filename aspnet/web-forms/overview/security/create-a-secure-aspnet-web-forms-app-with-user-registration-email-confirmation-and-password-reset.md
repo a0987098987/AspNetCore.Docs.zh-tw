@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892695"
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET Web Form 應用程式與使用者註冊電子郵件確認和密碼重設 (C#)
 ====================
@@ -144,7 +145,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample9.cs?highlight=5)]
 4. 執行應用程式按**F5。** 頁面顯示之後，請按一下**登入**連結。
-5. 按一下**忘記密碼？**連結可以顯示**忘記密碼**頁面。
+5. 按一下**忘記密碼？** 連結可以顯示**忘記密碼**頁面。
 6. 輸入您的電子郵件地址，然後按一下**送出**傳送電子郵件地址，讓您重設密碼 按鈕。   
    檢查您的電子郵件帳戶，然後按一下連結可顯示**重設密碼**頁面。
 7. 在**重設密碼**頁面上，輸入您的電子郵件、 密碼和確認的密碼。 然後按下**重設** 按鈕。  

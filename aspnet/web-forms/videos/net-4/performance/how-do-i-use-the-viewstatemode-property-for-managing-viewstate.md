@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894203"
 ---
 <a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a>如何： 使用 ViewStateMode 屬性來管理 ViewState？
 ====================

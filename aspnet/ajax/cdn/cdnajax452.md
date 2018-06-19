@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30071268"
 ---
 <a name="aspnet-web-forms-and-ajax-452"></a>ASP.NET Web Form 和 Ajax 4.5.2
 ====================

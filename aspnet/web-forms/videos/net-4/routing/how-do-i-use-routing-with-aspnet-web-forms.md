@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896237"
 ---
 <a name="how-do-i-use-routing-with-aspnet-web-forms"></a>如何： 將使用路由與 ASP.NET Web Form
 ====================

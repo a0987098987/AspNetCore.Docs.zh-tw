@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet
-title: "[如何:]樣板化的電子郵件傳送健康監視事件在 ASP.NET 中的 |Microsoft 文件"
+title: '[如何:]樣板化的電子郵件傳送健康監視事件在 ASP.NET 中的 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 會示範如何使用 TemplatedEmailWebEventProvider 傳送電子郵件的健全狀況監視的事件發生時利用 t 的範本..."
+description: 在這段影片 Chris Pels 會示範如何使用 TemplatedEmailWebEventProvider 傳送電子郵件的健全狀況監視的事件發生時利用 t 的範本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521787"
 ---
 <a name="how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet"></a>[如何:]樣板化的電子郵件傳送健康情況監視 ASP.NET 中的事件
 ====================

@@ -15,6 +15,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898800"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>透過 WS-同盟中 ASP.NET Core 驗證使用者
 

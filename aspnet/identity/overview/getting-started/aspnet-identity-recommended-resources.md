@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876068"
 ---
 <a name="aspnet-identity-recommended-resources"></a>ASP.NET 識別建議使用的資源
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869435"
 ---
 <a name="animating-in-response-to-user-interaction-vb"></a>回應使用者互動 (VB) 中建立動畫
 ====================

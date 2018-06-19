@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893858"
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>顯示 ASP.NET Web Pages (Razor) 網站中的對應
 ====================
@@ -84,7 +85,7 @@ ms.lasthandoff: 04/06/2018
 
     請注意頁面上的下列功能：
 
-    - `<script>`中的項目`<head>`項目。 在範例中，`<script>`項目參考*jquery 1.6.4.min.js* jQuery 程式庫版本 1.6.4 縮短 （壓縮） 版本的檔案。 請注意，參考假設*.js*檔案位於*指令碼*網站的資料夾。 
+    - `<script>`中的項目`<head>`項目。 在範例中，`<script>`項目參考*jquery 1.6.4.min.js* jQuery 程式庫版本 1.6.4 縮短 （壓縮） 版本的檔案。 請注意，參考假設 *.js*檔案位於*指令碼*網站的資料夾。 
 
         > [!NOTE]
         > 如果您使用不同版本的 jQuery 程式庫，請確定您指向該版本正確。

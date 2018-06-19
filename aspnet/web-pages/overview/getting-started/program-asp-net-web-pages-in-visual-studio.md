@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896574"
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a>使用 Visual Studio 程式設計 ASP.NET Web Pages (Razor)
 ====================
@@ -81,7 +82,7 @@ Visual Studio 2010 不支援預設的 ASP.NET Web Pages。 若要使用 ASP.NET 
 
     ![建立新的網站](program-asp-net-web-pages-in-visual-studio/_static/image2.png)
 3. 在**新網站**對話方塊方塊中，選取要使用 （Visual C# 或 Visual Basic） 語言。
-4. 選取**ASP.NET 網站 (Razor)**範本。
+4. 選取**ASP.NET 網站 (Razor)** 範本。
 
     ![razor 的站台](program-asp-net-web-pages-in-visual-studio/_static/image3.png)
 5. 按一下 [確定 **Deploying Office Solutions**]。

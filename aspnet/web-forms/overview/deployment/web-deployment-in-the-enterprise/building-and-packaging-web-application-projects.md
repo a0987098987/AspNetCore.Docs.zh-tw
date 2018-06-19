@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892305"
 ---
 <a name="building-and-packaging-web-application-projects"></a>建立和封裝 Web 應用程式專案
 ====================
@@ -79,11 +80,11 @@ ms.lasthandoff: 04/06/2018
 
 ![](building-and-packaging-web-application-projects/_static/image2.png)
 
-當您建置的 web 應用程式專案時，建置程序會產生名為*[專案名稱]。SourceManifest.xml*。 專案檔和組建輸出，以及這*。SourceManifest.xml*檔案會告知 Web Deploy 它需要包含 web 部署套件中。 這些輸入，使用 Web Deploy 會產生名為 web 部署套件*[專案名稱].zip*。
+當您建置的 web 應用程式專案時，建置程序會產生名為 *[專案名稱]。SourceManifest.xml*。 專案檔和組建輸出，以及這 *。SourceManifest.xml*檔案會告知 Web Deploy 它需要包含 web 部署套件中。 這些輸入，使用 Web Deploy 會產生名為 web 部署套件 *[專案名稱].zip*。
 
 Web 部署套件，以及建置程序會產生兩個檔案，可協助您使用的封裝：
 
-- *。 Deploy.cmd*檔案包含一組 web 部署套件發佈到遠端的 IIS 網頁伺服器的參數化 Web Deploy (MSDeploy.exe) 的命令。 執行*。 deploy.cmd*檔案，以適當的參數，通常會提供更快速和更容易替代來手動建構 MSDeploy.exe 命令自己。
+- *。 Deploy.cmd*檔案包含一組 web 部署套件發佈到遠端的 IIS 網頁伺服器的參數化 Web Deploy (MSDeploy.exe) 的命令。 執行 *。 deploy.cmd*檔案，以適當的參數，通常會提供更快速和更容易替代來手動建構 MSDeploy.exe 命令自己。
 - *SetParameters.xml*檔提供一組 MSDeploy.exe 命令的參數值。 這些值包括如 IIS web 應用程式可供您想要部署封裝時，任何服務端點的值，但在中定義連接字串名稱屬性*web.config*檔和任何部署屬性在專案屬性頁上所定義的值。
 
 *SetParameters.xml*檔案是管理部署程序的關鍵。 這個檔案是以動態方式產生，根據您的 web 應用程式專案的內容。 例如，如果您加入連接字串，您*web.config*檔案，建置程序會自動偵測連接字串，因此，參數化部署並建立中的項目*SetParameters.xml*檔案，以讓您修改連接字串做為部署程序的一部分。 下一個主題[Web 封裝部署的設定參數](configuring-parameters-for-web-package-deployment.md)、 說明此檔案更詳細的角色，以及不同的方式，在其中您可以修改在建置和部署期間它。

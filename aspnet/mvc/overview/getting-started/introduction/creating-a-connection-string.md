@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867914"
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>建立的連接字串和使用 SQL Server LocalDB
 ====================
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-[LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-2016-express-localdb)是輕量版 SQL Server Express Database Engine，視需要啟動並以使用者模式執行。 LocalDB 以特殊的執行模式執行的 SQL Server Express，可讓您能夠使用資料庫，做為*.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。
+[LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-2016-express-localdb)是輕量版 SQL Server Express Database Engine，視需要啟動並以使用者模式執行。 LocalDB 以特殊的執行模式執行的 SQL Server Express，可讓您能夠使用資料庫，做為 *.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。
 
 SQL Server Express 不建議用於生產環境 web 應用程式。 LocalDB 特別不應用於生產環境與 web 應用程式因為它不是使用 IIS。 不過，您可以輕鬆地到 SQL Server 或 SQL Azure 移轉 LocalDB 資料庫。
 
@@ -60,7 +61,7 @@ SQL Server Express 不建議用於生產環境 web 應用程式。 LocalDB 特�
 
 [!code-csharp[Main](creating-a-connection-string/samples/sample3.cs?highlight=15)]
 
-您不需要新增`MovieDBContext`連接字串。 如果您未指定連接字串，Entity Framework 的完整限定名稱的使用者目錄中會建立 LocalDB 資料庫[DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)類別 (在此情況下`MvcMovie.Models.MovieDBContext`)。 您可以為資料庫命名任何想要的話，因為它具有*。MDF*後置詞。 例如，我們無法為資料庫命名*MyFilms.mdf*。
+您不需要新增`MovieDBContext`連接字串。 如果您未指定連接字串，Entity Framework 的完整限定名稱的使用者目錄中會建立 LocalDB 資料庫[DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.103).aspx)類別 (在此情況下`MvcMovie.Models.MovieDBContext`)。 您可以為資料庫命名任何想要的話，因為它具有 *。MDF*後置詞。 例如，我們無法為資料庫命名*MyFilms.mdf*。
 
 接下來，您將建置新`MoviesController`類別可用來顯示電影，並允許使用者建立新的電影清單。
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898095"
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>介紹的 ASP.NET Web Pages-快速入門
 ====================
@@ -271,11 +272,11 @@ WebMatrix 啟動內建的 web 伺服器 (IIS Express) 可讓您測試您的電�
 
 [!code-html[Main](getting-started/samples/sample5.html)]
 
-請注意，`@{ }`上層區塊不存在。 也請注意，日期和時間顯示顯示的實際字元字串 (`1/18/2012 2:49:50 PM`或任何)，而非`@currentDateTime`像是中*.cshtml*頁面。 發生了什麼事如下，當您執行 [] 頁面上，ASP.NET 會處理所有的程式碼 （幾乎不在此情況下） 已標記為`@`。 程式碼會產生輸出，以及該輸出插入至頁面。
+請注意，`@{ }`上層區塊不存在。 也請注意，日期和時間顯示顯示的實際字元字串 (`1/18/2012 2:49:50 PM`或任何)，而非`@currentDateTime`像是中 *.cshtml*頁面。 發生了什麼事如下，當您執行 [] 頁面上，ASP.NET 會處理所有的程式碼 （幾乎不在此情況下） 已標記為`@`。 程式碼會產生輸出，以及該輸出插入至頁面。
 
 ## <a name="this-is-what-aspnet-web-pages-are-about"></a>這是 ASP.NET 網頁所需
 
-當您讀取 ASP.NET Web Pages 會產生動態網頁內容時，您已在此看到最好。 您剛建立的網頁包含您所見過的相同 HTML 標記。 它也可以包含可執行各種工作的程式碼。 在此範例中，它沒有簡單的工作，取得目前的日期和時間。 如前所述，您可以與 HTML，以產生輸出的頁面中穿插程式碼。 當其他人要求*.cshtml*仍在指針的網頁伺服器時，瀏覽器，ASP.NET 網頁處理 page。 ASP.NET 插入的程式碼的輸出 （如果有的話） 頁面為 HTML。 當程式碼處理完成時，ASP.NET 會傳送至瀏覽器的結果頁面。 所有瀏覽器範疇是 HTML。 以下是圖表：
+當您讀取 ASP.NET Web Pages 會產生動態網頁內容時，您已在此看到最好。 您剛建立的網頁包含您所見過的相同 HTML 標記。 它也可以包含可執行各種工作的程式碼。 在此範例中，它沒有簡單的工作，取得目前的日期和時間。 如前所述，您可以與 HTML，以產生輸出的頁面中穿插程式碼。 當其他人要求 *.cshtml*仍在指針的網頁伺服器時，瀏覽器，ASP.NET 網頁處理 page。 ASP.NET 插入的程式碼的輸出 （如果有的話） 頁面為 HTML。 當程式碼處理完成時，ASP.NET 會傳送至瀏覽器的結果頁面。 所有瀏覽器範疇是 HTML。 以下是圖表：
 
 ![如何 ASP.NET 產生 HTML 動態的概念流程](getting-started/_static/image21.png)
 

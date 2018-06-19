@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30874690"
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript
 ====================
@@ -166,7 +167,7 @@ by [Microsoft](https://github.com/microsoft)
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample13.cs)]
 
-您也需要呈現的檢視中包含數個 JavaScript 檔案。 若要在所有檢視中包含 JavaScript 的簡單方法是將其新增至*_layout.cshtml\\_Layout.cshtml*檔案。 取代`<head>`元素 *\_Layout.cshtml*以下列程式碼檔案：
+您也需要呈現的檢視中包含數個 JavaScript 檔案。 若要在所有檢視中包含 JavaScript 的簡單方法是將其新增至 *_layout.cshtml\\_Layout.cshtml*檔案。 取代`<head>`元素 *\_Layout.cshtml*以下列程式碼檔案：
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample14.cshtml)]
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884564"
 ---
 <a name="enable-in-line-editing-in-aspnet-dynamic-data-applications"></a>啟用 ASP.NET 動態資料的應用程式中編輯內建
 ====================

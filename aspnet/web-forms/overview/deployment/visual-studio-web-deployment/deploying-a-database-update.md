@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892617"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-database-update"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署資料庫更新
 ====================
@@ -99,15 +100,15 @@ ms.lasthandoff: 04/06/2018
 ### <a name="add-a-column-to-a-table-in-the-membership-database"></a>加入成員資格資料庫中的資料表資料行
 
 1. 在 Visual Studio 中開啟**SQL Server 物件總管**。
-2. 展開**(localdb) \v11.0**，依序展開**資料庫**，依序展開**aspnet ContosoUniversity** (不**生產 ContosoUniversity aspnet 環境**)然後展開**資料表**。
+2. 展開 **(localdb) \v11.0**，依序展開**資料庫**，依序展開**aspnet ContosoUniversity** (不**生產 ContosoUniversity aspnet 環境**)然後展開**資料表**。
 
-    如果您沒有看到**(localdb) \v11.0**下**SQL Server**  節點，以滑鼠右鍵按一下**SQL Server**節點，然後按一下**加入 SQL Server**。 在**連接到伺服器**對話方塊中輸入*(localdb) \v11.0*為**伺服器名稱**，然後按一下 **連接**。
+    如果您沒有看到 **(localdb) \v11.0**下**SQL Server**  節點，以滑鼠右鍵按一下**SQL Server**節點，然後按一下**加入 SQL Server**。 在**連接到伺服器**對話方塊中輸入 *(localdb) \v11.0*為**伺服器名稱**，然後按一下 **連接**。
 
     如果您沒有看到**aspnet ContosoUniversity**、 執行專案，並使用登入*admin*認證 (密碼*devpwd*)，然後重新整理**SQL Server 物件總管**視窗。
 3. 以滑鼠右鍵按一下**使用者**資料表，然後按一下 **檢視表設計工具**。
 
     ![SSOX 檢視表設計工具](deploying-a-database-update/_static/image3.png)
-4. 在設計工具中，加入*註解*資料行，並將其*nvarchar （128)*而且可以是 null，然後按一下 **更新**。
+4. 在設計工具中，加入*註解*資料行，並將其*nvarchar （128)* 而且可以是 null，然後按一下 **更新**。
 
     ![加入註解的資料行](deploying-a-database-update/_static/image4.png)
 5. 在**預覽資料庫更新**方塊中，按一下**更新資料庫**。

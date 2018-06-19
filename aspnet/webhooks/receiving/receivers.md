@@ -15,6 +15,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896292"
 ---
 # <a name="aspnet-webhooks-receivers"></a>ASP.NET Webhook 接收者
 
@@ -38,7 +39,7 @@ https://<host>/api/webhooks/incoming/<receiver>/{id}
 
 <em> <receiver> </em>元件是接收器的名稱，例如<em>github</em>或<em>slack</em>。
 
-*{Id}*是可以用來識別特定的 WebHook 接收者組態的選擇性識別碼。 這可以用來向特定的收件者的 n 個 Webhook。 例如，下列三個 Uri 可用來為三個獨立的 Webhook 註冊：
+*{Id}* 是可以用來識別特定的 WebHook 接收者組態的選擇性識別碼。 這可以用來向特定的收件者的 n 個 Webhook。 例如，下列三個 Uri 可用來為三個獨立的 Webhook 註冊：
 
 ```
 https://<host>/api/webhooks/incoming/github
@@ -66,7 +67,7 @@ https://<host>/api/webhooks/incoming/github/54321
 MS_WebHookReceiverSecret_<receiver>
 ```
 
-值是以逗號分隔清單的值符合*{id}*值的 Webhook 已註冊，例如：
+值是以逗號分隔清單的值符合 *{id}* 值的 Webhook 已註冊，例如：
 
 ```
 MS_WebHookReceiverSecret_GitHub = <secret1>, 12345=<secret2>, 54321=<secret3>

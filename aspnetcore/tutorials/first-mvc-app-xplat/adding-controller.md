@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892958"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-app"></a>將控制器新增至 ASP.NET Core 應用程式
 

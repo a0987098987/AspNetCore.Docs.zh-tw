@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899197"
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a>ASP.NET Web Pages (Razor) 網站的自訂全站台的行為
 ====================
@@ -131,7 +132,7 @@ ASP.NET 可讓您建立的階層 *\_PageStart.cshtml*檔案。 您可以放入 *
 
 [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample7.cshtml)]
 
-當您執行*/myfolder/default.cshtml*，您會看到下列訊息：
+當您執行 */myfolder/default.cshtml*，您會看到下列訊息：
 
 [!code-console[Main](18-customizing-site-wide-behavior/samples/sample8.cmd)]
 

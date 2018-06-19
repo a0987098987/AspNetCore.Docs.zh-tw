@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898506"
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a>ASP.NET Web Pages (Razor) 疑難排解指南
 ====================
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/06/2018
 <a id="Issues_Running_.cshtml_Pages"></a>
 ## <a name="issues-with-running-pages"></a>執行網頁的問題
 
-各種問題可以防止*.cshtml*和*.vbhtml*頁面無法正常執行。 本節列出常見的錯誤訊息，並有可能的原因。
+各種問題可以防止 *.cshtml*和 *.vbhtml*頁面無法正常執行。 本節列出常見的錯誤訊息，並有可能的原因。
 
 ### <a name="http-error-403---forbidden-access-is-denied"></a>HTTP 錯誤 403-禁止： 拒絕存取
 
@@ -54,9 +55,9 @@ ms.lasthandoff: 04/06/2018
 
 如果伺服器未執行的.NET framework 正確版本，就會發生此錯誤。 請確定正在執行伺服器 （本機或遠端） 的電腦至少已安裝.NET Framework 4。 也請確定應用程式本身設定為執行正確的版本。
 
-如果您在本機 WebMatrix 中工作時看到此問題，請按一下**網站**工作區中，然後按一下樹狀檢視中的，按一下**設定**。 在**選取.NET Framework 版本**清單中，選取**.NET 4 （整合式）**。 如果此版本已設定，請以系統管理員身分執行 WebMatrix。
+如果您在本機 WebMatrix 中工作時看到此問題，請按一下**網站**工作區中，然後按一下樹狀檢視中的，按一下**設定**。 在**選取.NET Framework 版本**清單中，選取 **.NET 4 （整合式）**。 如果此版本已設定，請以系統管理員身分執行 WebMatrix。
 
-請確定您網站的根目錄具有至少一個*.cshtml*檔案。
+請確定您網站的根目錄具有至少一個 *.cshtml*檔案。
 
 如果遠端伺服器上的 web 伺服器時，您會看到此錯誤，請連絡伺服器系統管理員。 請確定伺服器具有.NET Framework 4 或更新的版本。 也請確定應用程式正在執行中應用程式集區設定為使用該版本的.net Framework。
 
@@ -78,7 +79,7 @@ ms.lasthandoff: 04/06/2018
 
 *要求篩選模組設定為拒絕副檔名*
 
-如果，可能會發生這個錯誤*.cshtml*或*.vbhtml*擴充功能已被明確封鎖在伺服器上。 此問題的徵兆時，該 Url 的工作並不包含延伸模組，但包含的 Url *.cshtml*或*.vbhtml*無法運作。 可能的解決方案是要重新啟用的擴充功能在網站的*Web.config*檔案。 下列範例示範如何啟用*.cshtml*延伸模組。
+如果，可能會發生這個錯誤 *.cshtml*或 *.vbhtml*擴充功能已被明確封鎖在伺服器上。 此問題的徵兆時，該 Url 的工作並不包含延伸模組，但包含的 Url *.cshtml*或 *.vbhtml*無法運作。 可能的解決方案是要重新啟用的擴充功能在網站的*Web.config*檔案。 下列範例示範如何啟用 *.cshtml*延伸模組。
 
 [!code-xml[Main](aspnet-web-pages-razor-troubleshooting-guide/samples/sample1.xml?highlight=5-6)]
 

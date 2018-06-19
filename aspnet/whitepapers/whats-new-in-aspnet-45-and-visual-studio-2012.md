@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
-title: "新功能 ASP.NET 4.5 和 Visual Studio 2012 |Microsoft 文件"
+title: 新功能 ASP.NET 4.5 和 Visual Studio 2012 |Microsoft 文件
 author: rick-anderson
-description: "本文件說明新功能和 ASP.NET 4.5 中引進的增強功能。 它也會描述針對 web 開發所進行的增強功能..."
+description: 本文件說明新功能和 ASP.NET 4.5 中引進的增強功能。 它也會描述針對 web 開發所進行的增強功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/29/2012
 ms.topic: article
 ms.assetid: ba1fabb4-31a3-4ebf-8327-41a6bbba6eaf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28886438"
 ---
 <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a>什麼是 ASP.NET 4.5 和 Visual Studio 2012 的新功能
 ====================
@@ -583,11 +584,11 @@ VSToolsPath 屬性用來決定要從表示 MSBuildExtensionsPath32 設定的路�
 
 [!code-xml[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample34.xml?highlight=3)]
 
-當**runAllManagedModulesForAllRequests**是 true，URL，例如`http://mysite/myapp/home`前往 ASP.NET，即使有沒有*.aspx*， *.mvc*，或類似的副檔名URL。
+當**runAllManagedModulesForAllRequests**是 true，URL，例如`http://mysite/myapp/home`前往 ASP.NET，即使有沒有 *.aspx*， *.mvc*，或類似的副檔名URL。
 
 已對 IIS 7 的更新可讓**runAllManagedModulesForAllRequests**不必要的設定，並支援 ASP.NET 路由原生。 (如需更新的資訊，請參閱 Microsoft 支援文章[可更新功能可讓某些 IIS 7.0 或 IIS 7.5 處理常式來處理要求的 Url 不以句號結束](https://support.microsoft.com/kb/980368)。)
 
-如果您的網站在 IIS 7 上執行，而且如果 IIS 已經更新，您不需要設定**runAllManagedModulesForAllRequests**為 true。 事實上，將它設定為 true 不建議，因為它會加入不必要處理負荷的要求。 這項設定為 true 時，所有要求，包括用於*.htm*， *.jpg*，和其他靜態檔案，也會經過 ASP.NET 要求管線。
+如果您的網站在 IIS 7 上執行，而且如果 IIS 已經更新，您不需要設定**runAllManagedModulesForAllRequests**為 true。 事實上，將它設定為 true 不建議，因為它會加入不必要處理負荷的要求。 這項設定為 true 時，所有要求，包括用於 *.htm*， *.jpg*，和其他靜態檔案，也會經過 ASP.NET 要求管線。
 
 如果您建立新的 ASP.NET 4.5 網站，使用 Visual Studio 2012 RC 中所提供的範本，為網站組態不包含**runAllManagedModulesForAllRequests**設定。 這表示根據預設設定為 false。
 
@@ -632,7 +633,7 @@ ASP.NET Web Form 控制項的智慧工作提示時顯示在上伺服器標記為
 
 ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image10.png)
 
-WAI ARIA 標準也導入了前面會加上的屬性*aria-* ，可讓您加入的 HTML5 文件的語意。 Visual Studio 也完全支援這些*aria-*屬性：
+WAI ARIA 標準也導入了前面會加上的屬性*aria-* ，可讓您加入的 HTML5 文件的語意。 Visual Studio 也完全支援這些*aria-* 屬性：
 
 ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image11.png) ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image12.png)
 
@@ -750,7 +751,7 @@ Visual Studio 2012 發行候選版本中的 JavaScript 編輯器是全新的它�
 <a id="_Toc318097413"></a>
 #### <a name="vsdoc-signature-overloads"></a>VSDOC 簽章的多載
 
-詳細的 IntelliSense 註解可以現在為宣告不同的 JavaScript 函式多載使用新*&lt;簽章&gt;*項目，如這個範例所示：
+詳細的 IntelliSense 註解可以現在為宣告不同的 JavaScript 函式多載使用新*&lt;簽章&gt;* 項目，如這個範例所示：
 
 [!code-csharp[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample35.cs)]
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890716"
 ---
 <a name="shopping-cart"></a>購物車
 ====================
@@ -156,7 +157,7 @@ ms.lasthandoff: 04/06/2018
 1. 在**方案總管] 中**，以滑鼠右鍵按一下**WingtipToys**，按一下 [**新增** - &gt; **新項目**。  
    隨即顯示 [ 新增項目] 對話方塊。
 2. 加入新的頁面 （Web 表單），其中包含所選取的主版頁面**使用主版頁面的 Web Form**。 將新頁面*ShoppingCart.aspx*。
-3. 選取**Site.Master**附加到新建立的主版頁面*.aspx*頁面。
+3. 選取**Site.Master**附加到新建立的主版頁面 *.aspx*頁面。
 4. 在*ShoppingCart.aspx*頁面上，以下列標記取代現有的標記：   
 
     [!code-aspx[Main](shopping-cart/samples/sample5.aspx)]

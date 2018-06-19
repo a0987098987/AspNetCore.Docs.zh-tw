@@ -1,7 +1,7 @@
 ---
-title: "資料保護金鑰管理和 ASP.NET Core 存留期"
+title: 資料保護金鑰管理和 ASP.NET Core 存留期
 author: rick-anderson
-description: "了解資料保護的金鑰管理和 ASP.NET Core 存留期。"
+description: 了解資料保護的金鑰管理和 ASP.NET Core 存留期。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28887286"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護金鑰管理和 ASP.NET Core 存留期
 
@@ -23,18 +24,18 @@ ms.lasthandoff: 01/30/2018
 
 應用程式會嘗試偵測其操作環境和處理自己的金鑰組態而有所不同。
 
-1. 如果應用程式裝載在[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到*%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾受到網路儲存裝置，而且裝載應用程式的所有電腦上同步處理。
+1. 如果應用程式裝載在[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到 *%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾受到網路儲存裝置，而且裝載應用程式的所有電腦上同步處理。
    * 索引鍵未受保護靜止。
    * *DataProtection 金鑰*資料夾提供單一部署位置中的應用程式的所有執行個體索引鍵環形。
    * 不同的部署位置，例如預備和生產環境，不會共用金鑰環形。 當您交換兩個部署位置，例如交換到生產環境的臨時區域，或使用 A / B 測試，使用資料保護的任何應用程式將無法使用金鑰環形內的前一個插槽的預存的資料解密。 這會導致使用者記錄從應用程式會使用標準 ASP.NET Core cookie 驗證中，因為它使用資料保護來保護其 cookie。 如果您想要獨立位置的索引鍵環形，使用外部索引鍵環提供者，例如 Azure Blob 儲存體，Azure 金鑰保存庫中，SQL 存放區或 Redis 快取。
 
-1. 如果使用者設定檔可用時，會保存金鑰*%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統為 Windows，該金鑰會加密在靜止使用 DPAPI。
+1. 如果使用者設定檔可用時，會保存金鑰 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統為 Windows，該金鑰會加密在靜止使用 DPAPI。
 
 1. 如果應用程式裝載在 IIS 中，會保存 ACLed 只是為了背景工作處理序帳戶的特殊的登錄機碼 HKLM 登錄機碼。 在待用期間使用 DPAPI 加密金鑰。
 
 1. 如果上述條件均不相符時，索引鍵不被保存在目前的程序之外。 處理程序關閉時，產生所有索引鍵將會遺失。
 
-開發人員一定是完全控制，而且可以覆寫的方式，以及索引鍵儲存位置。 上面的前三個選項應該很好的預設值提供給大部分的應用程式，類似 ASP.NET  **\<machineKey >**自動產生常式過去。 最後，後援選項是需要開發人員指定的唯一案例[組態](xref:security/data-protection/configuration/overview)前方如果他們想要的索引鍵的持續性，但此後援只會在極少數的情況下發生。
+開發人員一定是完全控制，而且可以覆寫的方式，以及索引鍵儲存位置。 上面的前三個選項應該很好的預設值提供給大部分的應用程式，類似 ASP.NET  **\<machineKey >** 自動產生常式過去。 最後，後援選項是需要開發人員指定的唯一案例[組態](xref:security/data-protection/configuration/overview)前方如果他們想要的索引鍵的持續性，但此後援只會在極少數的情況下發生。
 
 當主控在 Docker 容器中，金鑰應保留在 Docker 磁碟區 （共用磁碟區或主機掛接的磁碟區容器的存留期保存） 的資料夾或外部提供者，例如[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)。 外部提供者也是在 web 伺服陣列案例中很有用的應用程式無法存取網路共用磁碟區 (請參閱[PersistKeysToFileSystem](xref:security/data-protection/configuration/overview#persistkeystofilesystem)如需詳細資訊)。
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898453"
 ---
 <a name="introducing-aspnet-web-pages---displaying-data"></a>導入的 ASP.NET Web Pages-顯示資料
 ====================
@@ -79,7 +80,7 @@ WebMatrix 包含多種工具，讓您輕鬆建立資料庫，以及在資料庫�
 
 ![WebMatrix 功能區中的 '新的資料庫' 按鈕](displaying-data/_static/image4.png)
 
-WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站具有相同名稱&mdash; *WebPagesMovies.sdf*。 (您將不會執行這項操作，但您可以將檔案重新命名任何想要的話，因為它具有*.sdf*擴充功能。)
+WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站具有相同名稱&mdash; *WebPagesMovies.sdf*。 (您將不會執行這項操作，但您可以將檔案重新命名任何想要的話，因為它具有 *.sdf*擴充功能。)
 
 ## <a name="creating-a-table"></a>建立資料表
 
@@ -135,7 +136,7 @@ WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站�
 
 稍後在本教學課程系列，您將建立的頁面，讓您在表單中輸入新的電影。 不過，現在，您可以加入一些您可以在頁面顯示的範例資料。
 
-在**資料庫**在 WebMatrix 中，請注意，有樹，其中顯示您的工作區*.sdf*您稍早建立的檔案。 開啟新的節點*.sdf*檔案，然後再開啟**資料表**節點。
+在**資料庫**在 WebMatrix 中，請注意，有樹，其中顯示您的工作區 *.sdf*您稍早建立的檔案。 開啟新的節點 *.sdf*檔案，然後再開啟**資料表**節點。
 
 ![與樹狀目錄中開啟影片資料表 WebMatrix 資料庫 」 工作區](displaying-data/_static/image10.png)
 
@@ -201,7 +202,7 @@ WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站�
 
 [!code-csharp[Main](displaying-data/samples/sample1.cs)]
 
-第一行會開啟您稍早建立的資料庫是一律的第一個步驟之前執行的資料庫。 您可告知`Database.Open`方法開啟的資料庫名稱。 請注意，您不想加入*.sdf*名稱中。 `Open`方法會假設它正在尋求*.sdf*檔案 (也就是*WebPagesMovies.sdf*) 而且*.sdf*檔案位於*應用程式\_資料*資料夾。 (我們稍早所述，*應用程式\_資料*資料夾已保留，則為此案例是在其中一個位置，ASP.NET 會使該名稱的相關假設。)
+第一行會開啟您稍早建立的資料庫是一律的第一個步驟之前執行的資料庫。 您可告知`Database.Open`方法開啟的資料庫名稱。 請注意，您不想加入 *.sdf*名稱中。 `Open`方法會假設它正在尋求 *.sdf*檔案 (也就是*WebPagesMovies.sdf*) 而且 *.sdf*檔案位於*應用程式\_資料*資料夾。 (我們稍早所述，*應用程式\_資料*資料夾已保留，則為此案例是在其中一個位置，ASP.NET 會使該名稱的相關假設。)
 
 開啟資料庫時，它的參考會放入名為的變數`db`。 （這可以命名為任何項目。）`db`變數是最後會與資料庫互動方式。
 
@@ -292,7 +293,7 @@ WebMatrix 會建立 SQL Server CE 的資料庫 ( *.sdf*檔案) 做為您網站�
 
 [!code-css[Main](displaying-data/samples/sample5.css)]
 
-這個 CSS 標記定義名為類別`grid`， `head`，依此類推。 您也可以將這些樣式定義放在個別*.css*檔案並將其連結的頁面。 （事實上，您將會執行，稍後在此教學課程的集合中。）但為了方便項目在此教學課程，請在相同的頁面，顯示的資料。
+這個 CSS 標記定義名為類別`grid`， `head`，依此類推。 您也可以將這些樣式定義放在個別 *.css*檔案並將其連結的頁面。 （事實上，您將會執行，稍後在此教學課程的集合中。）但為了方便項目在此教學課程，請在相同的頁面，顯示的資料。
 
 現在您可以取得`WebGrid`協助專家使用這些樣式類別。 協助專家擁有許多屬性 (例如， `tableStyle`) 針對這個用途 — 您將 CSS 樣式類別名稱指派給它們，而且該類別名稱呈現標記協助程式 」 所呈現的一部分。
 

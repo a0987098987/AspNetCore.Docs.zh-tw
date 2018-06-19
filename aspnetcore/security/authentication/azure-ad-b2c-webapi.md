@@ -15,6 +15,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897800"
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證
 
@@ -126,7 +127,7 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 新註冊的 web 應用程式需要存取 web 應用程式開發介面代表使用者的權限。  
 
 1. 選取**郵差**清單中的應用程式，然後選取**API 存取**從左側功能表。
-2. 選取**+ 加入**。
+2. 選取 **+ 加入**。
 3. 在**選取應用程式開發介面**下拉式清單中，選取 web 應用程式開發介面的名稱。
 4. 在**選取範圍**下拉式清單中，確定已選取所有領域。
 5. 選取**確定**。
@@ -135,7 +136,7 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 
 ### <a name="create-a-postman-request"></a>建立郵差要求
 
-啟動郵差。 根據預設，顯示郵差**新建**時啟動對話方塊。 如果未顯示對話方塊，選取**+ 新增**左上角的按鈕。
+啟動郵差。 根據預設，顯示郵差**新建**時啟動對話方塊。 如果未顯示對話方塊，選取 **+ 新增**左上角的按鈕。
 
 從**新建**對話方塊：
 
@@ -144,7 +145,7 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
     ![要求按鈕](./azure-ad-b2c-webapi/postman-create-new.png)
 
 2. 輸入*取得的值*中**要求名稱**方塊。
-3. 選取**+ 建立集合**來建立新的集合，用於儲存要求。 名稱集合*ASP.NET Core 教學課程*，然後選取核取記號。
+3. 選取 **+ 建立集合**來建立新的集合，用於儲存要求。 名稱集合*ASP.NET Core 教學課程*，然後選取核取記號。
 
     ![建立新的集合](./azure-ad-b2c-webapi/postman-create-collection.png)
 
@@ -185,7 +186,7 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
 
 3. 選取**要求語彙基元** 按鈕。
 
-4. 郵差開啟新視窗包含 Azure AD B2C 租用戶的登入對話方塊。 （如果已建立一個測試原則），使用現有的帳戶登入，或選取**立即註冊**來建立新的帳戶。 **忘記密碼？**連結用來重設忘記的密碼。
+4. 郵差開啟新視窗包含 Azure AD B2C 租用戶的登入對話方塊。 （如果已建立一個測試原則），使用現有的帳戶登入，或選取**立即註冊**來建立新的帳戶。 **忘記密碼？** 連結用來重設忘記的密碼。
 
 5. 已成功登入之後，關閉視窗而**管理存取權杖**對話方塊隨即出現。 捲動到底部，然後選取**使用語彙基元** 按鈕。
 

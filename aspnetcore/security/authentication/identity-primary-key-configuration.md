@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094862"
 ---
 # <a name="configure-identity-primary-key-data-type-in-aspnet-core"></a>在 ASP.NET Core 中設定身分識別主索引鍵資料類型
 

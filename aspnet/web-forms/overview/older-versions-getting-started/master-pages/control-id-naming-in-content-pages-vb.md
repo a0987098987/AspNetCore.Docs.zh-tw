@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891496"
 ---
 <a name="control-id-naming-in-content-pages-vb"></a>命名內容頁面 (VB) 中的控制項 ID
 ====================

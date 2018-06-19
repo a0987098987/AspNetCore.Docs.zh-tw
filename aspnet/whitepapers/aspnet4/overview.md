@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30899037"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀
 ====================
@@ -199,7 +200,7 @@ ASP.NET 4 導入了新擴充的應用程式 Url 大小的選項。 舊版 ASP.NE
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)*屬性。 若要讓長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)*屬性。
+若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。 若要讓長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。
 
 ASP.NET 4 也可讓您設定的 URL 字元檢查所使用的字元。 當 ASP.NET 之 url 的路徑部分中找到無效的字元時，它會拒絕要求，並發出 HTTP 400 錯誤。 在舊版 ASP.NET 中，URL 字元檢查已限制為一組固定的字元。 在 ASP.NET 4 中，您可以自訂的一組使用新的有效字元*requestPathInvalidChars*屬性*httpRuntime*組態項目，如下列範例所示：
 
@@ -388,7 +389,7 @@ ASP.NET 4 兩個將屬性加入至*頁面*類別*MetaKeywords*和*MetaDescriptio
 
 您可以設定這些屬性在執行階段，可讓您從資料庫或其他來源取得內容，並可讓您設定的標記，以動態方式來描述什麼是特定的頁面。
 
-您也可以設定*關鍵字*和*描述*中的屬性*@ Page*指示詞上方的 Web Form 網頁標記中，如下列範例所示：
+您也可以設定*關鍵字*和*描述*中的屬性 *@ Page*指示詞上方的 Web Form 網頁標記中，如下列範例所示：
 
 [!code-aspx[Main](overview/samples/sample24.aspx)]
 
@@ -426,7 +427,7 @@ ASP.NET 4 兩個將屬性加入至*頁面*類別*MetaKeywords*和*MetaDescriptio
 
 Label1 控制項 (其*ViewStateMode*值設定為*已停用*) 不會保留它在程式碼中所設定的值。 不過，控制 label2 (其*ViewStateMode*值設定為*啟用*) 已保留其狀態。
 
-您也可以設定*ViewStateMode*中*@ Page*指示詞，如下列範例所示：
+您也可以設定*ViewStateMode*中 *@ Page*指示詞，如下列範例所示：
 
 [!code-aspx[Main](overview/samples/sample26.aspx)]
 
@@ -652,7 +653,7 @@ ASP.NET 會自動運作出正確的路由 （亦即，它會產生正確的 URL�
 
 預設值*ClientIDMode*頁面層級的值是*AutoID*，且預設*ClientIDMode*控制層級的值是*繼承*. 如此一來，如果您未設定這個屬性隨處在程式碼中，所有的控制項將會預設為*AutoID*演算法。
 
-在中設定的頁面層級值*@ Page*指示詞，如下列範例所示：
+在中設定的頁面層級值 *@ Page*指示詞，如下列範例所示：
 
 [!code-aspx[Main](overview/samples/sample47.aspx)]
 
@@ -769,7 +770,7 @@ ASP.NET*圖表*控制項會展開.NET Framework 中的資料視覺效果供應�
 
 #### <a name="using-scale-breaks-and-logarithmic-scales"></a>使用刻度斷層和對數刻度
 
-刻度斷層和對數標尺是兩個其他方式加入至圖表的複雜度。 這些功能則專屬於每個圖表區域中座標軸的。 例如，若要使用這些功能在主 Y 軸的圖表區域上，使用*AxisY.IsLogarithmic*和*[scalebreakstyle]*中的屬性*ChartArea*物件。 下列程式碼片段示範如何使用在主 Y 軸的刻度斷層。
+刻度斷層和對數標尺是兩個其他方式加入至圖表的複雜度。 這些功能則專屬於每個圖表區域中座標軸的。 例如，若要使用這些功能在主 Y 軸的圖表區域上，使用*AxisY.IsLogarithmic*和 *[scalebreakstyle]* 中的屬性*ChartArea*物件。 下列程式碼片段示範如何使用在主 Y 軸的刻度斷層。
 
 [!code-aspx[Main](overview/samples/sample60.aspx)]
 
@@ -1222,7 +1223,7 @@ ASP.NET 4 中的動態資料支援的主要目標是要啟用動態資料的任�
 
 ### <a name="new-field-templates-for-urls-and-email-addresses"></a>新的 Url 和電子郵件地址欄位範本
 
-ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。 這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。 如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:*通訊協定。 當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，以及建立基本架構的訊息。 物件的型別為*Url*會顯示為一般的超連結。
+ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。 這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。 如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:* 通訊協定。 當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，以及建立基本架構的訊息。 物件的型別為*Url*會顯示為一般的超連結。
 
 下列範例示範可以如何標示欄位。
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898904"
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>簡介使用的資料庫中 ASP.NET Web Pages (Razor) 站台
 ====================
@@ -86,7 +87,7 @@ ms.lasthandoff: 04/06/2018
     ![[影像]](5-working-with-data/_static/image1.jpg)
 7. 在按一下**名稱**資料行，並輸入&quot;識別碼&quot;。
 8. 在**資料型別**欄中，選取**int**。
-9. 設定**是主索引鍵？**和**是識別？**選項，以**是**。
+9. 設定**是主索引鍵？** 和**是識別？** 選項，以**是**。
 
     正如其名，**是主索引鍵**告知的資料庫，這會是資料表的主索引鍵。 **識別**告知的資料庫自動建立每一筆新記錄的識別碼號碼，以及將它指派下一個循序編號 （從 1 開始）。
 10. 按一下 下一列。 編輯器會啟動新的資料行定義。
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/06/2018
 12. 如**資料型別**，選擇&quot;nvarchar&quot;並將長度設定為 50。 *Var*屬於`nvarchar`告訴資料庫，此資料行的資料將會大小可能會記錄記錄不同的字串。 ( *n*前置詞代表*國家 （地區)*，指出欄位可控制代表任何字母的字元資料或書寫系統&#8212;亦即，欄位就會保留 Unicode 資料。)
 13. 設定**允許 Null**選項設定為**否**。 這將會強制執行的*名稱*資料行不保留空白。
 14. 使用這個相同的程序，建立名為資料行*描述*。 設定**資料型別**"nvarchar"和長度，以及設定為 50**允許 Null**設為 false。
-15. 建立名為資料行*價格*。 設定**"money"資料類型**並設定**允許 Null**設為 false。
+15. 建立名為資料行*價格*。 設定 **"money"資料類型**並設定**允許 Null**設為 false。
 16. 在頂端方塊中，命名資料表&quot;產品&quot;。
 
     當您完成時，定義看起來像這樣：
@@ -136,7 +137,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-cshtml[Main](5-working-with-data/samples/sample1.cshtml)]
 
-    在第一個程式碼區塊中，開啟*SmallBakery.sdf*您稍早建立的檔案 （資料庫）。 `Database.Open`方法會假設*.sdf*檔案位於您的網站*應用程式\_資料*資料夾。 (請注意，您不需要指定*.sdf*延伸&#8212;事實上，如果您這樣做，`Open`方法將無法運作。)
+    在第一個程式碼區塊中，開啟*SmallBakery.sdf*您稍早建立的檔案 （資料庫）。 `Database.Open`方法會假設 *.sdf*檔案位於您的網站*應用程式\_資料*資料夾。 (請注意，您不需要指定 *.sdf*延伸&#8212;事實上，如果您這樣做，`Open`方法將無法運作。)
 
     > [!NOTE]
     > *應用程式\_資料*資料夾是用來儲存資料檔案的 ASP.NET 中的特殊資料夾。 如需詳細資訊，請參閱[連接至資料庫](#SB_ConnectingToADatabase)本文稍後。
@@ -366,7 +367,7 @@ ms.lasthandoff: 04/06/2018
 > <a id="SB_ConnectingToADatabase"></a>
 > ### <a name="connecting-to-a-database"></a>連接至資料庫
 > 
-> 您可以連接到兩種方式中的資料庫。 第一個方法是使用`Database.Open`方法並指定資料庫檔案的名稱 (較少*.sdf*副檔名):
+> 您可以連接到兩種方式中的資料庫。 第一個方法是使用`Database.Open`方法並指定資料庫檔案的名稱 (較少 *.sdf*副檔名):
 > 
 > `var db = Database.Open("SmallBakery");`
 > 
@@ -378,15 +379,15 @@ ms.lasthandoff: 04/06/2018
 > 
 > [!code-xml[Main](5-working-with-data/samples/sample27.xml)]
 > 
-> 在範例中，連接字串會指向某個位置的伺服器執行的 SQL Server 執行個體中的資料庫 (而不是本機*.sdf*檔案)。 您必須替換為適當的名稱`myServer`和`myDatabase`，並且指定 SQL Server 登入值`username`和`password`。 （使用者名稱和密碼值不一定是相同為您的 Windows 認證或您的主機服務提供者已提供您的登入其伺服器的值。 請洽詢系統管理員，您需要的確切值。）
+> 在範例中，連接字串會指向某個位置的伺服器執行的 SQL Server 執行個體中的資料庫 (而不是本機 *.sdf*檔案)。 您必須替換為適當的名稱`myServer`和`myDatabase`，並且指定 SQL Server 登入值`username`和`password`。 （使用者名稱和密碼值不一定是相同為您的 Windows 認證或您的主機服務提供者已提供您的登入其伺服器的值。 請洽詢系統管理員，您需要的確切值。）
 > 
-> `Database.Open`方法是，有彈性，因為它可讓您將資料庫的名稱傳遞*.sdf*檔案或儲存中的連接字串名稱*Web.config*檔案。 下列範例會示範如何連接到資料庫使用的連接字串上一個範例所示：
+> `Database.Open`方法是，有彈性，因為它可讓您將資料庫的名稱傳遞 *.sdf*檔案或儲存中的連接字串名稱*Web.config*檔案。 下列範例會示範如何連接到資料庫使用的連接字串上一個範例所示：
 > 
 > [!code-cshtml[Main](5-working-with-data/samples/sample28.cshtml)]
 > 
-> 如前所述，`Database.Open`方法可讓您將資料庫名稱或連接字串，它會找出要使用。 這會非常有用的當您部署 （發行） 您的網站。 您可以使用*.sdf*檔案*應用程式\_資料*資料夾，當您開發並測試您的網站。 當您將您的站台移至實際伺服器時，您可以使用連接字串中的*Web.config*檔案具有相同名稱做為您*.sdf*檔案，但指向裝載提供者的資料庫&#8212;完全不必變更程式碼。
+> 如前所述，`Database.Open`方法可讓您將資料庫名稱或連接字串，它會找出要使用。 這會非常有用的當您部署 （發行） 您的網站。 您可以使用 *.sdf*檔案*應用程式\_資料*資料夾，當您開發並測試您的網站。 當您將您的站台移至實際伺服器時，您可以使用連接字串中的*Web.config*檔案具有相同名稱做為您 *.sdf*檔案，但指向裝載提供者的資料庫&#8212;完全不必變更程式碼。
 > 
-> 最後，如果您想要直接使用連接字串，您可以呼叫`Database.OpenConnectionString`方法，然後傳遞其實際的連接字串而不只在其中一個的名稱*Web.config*檔案。 這可能會很有用，因為某些原因您沒有存取權連接字串的情況下 (或值，例如*.sdf*檔案名稱) 直到網頁執行時。 不過，大部分情況下，您可以使用`Database.Open`這篇文章中所述。
+> 最後，如果您想要直接使用連接字串，您可以呼叫`Database.OpenConnectionString`方法，然後傳遞其實際的連接字串而不只在其中一個的名稱*Web.config*檔案。 這可能會很有用，因為某些原因您沒有存取權連接字串的情況下 (或值，例如 *.sdf*檔案名稱) 直到網頁執行時。 不過，大部分情況下，您可以使用`Database.Open`這篇文章中所述。
 
 
 ## <a name="additional-resources"></a>其他資源

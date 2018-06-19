@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851718"
 ---
 # <a name="migrate-configuration-to-aspnet-core"></a>將設定移轉到 ASP.NET Core
 

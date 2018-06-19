@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30899612"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -128,15 +129,15 @@ ASP.NET MVC 4 現在包含 ASP.NET Web API，用來建立 HTTP 服務的新架�
 
 ASP.NET Web API 包含下列功能的支援：
 
-- **現代 HTTP 程式設計模型：**直接存取及管理 HTTP 要求和回應您 Web 應用程式開發介面使用新的強型別 HTTP 物件模型。 相同程式設計模型和 HTTP 管線功能對稱用戶端透過新的 HttpClient 型別。
+- **現代 HTTP 程式設計模型：** 直接存取及管理 HTTP 要求和回應您 Web 應用程式開發介面使用新的強型別 HTTP 物件模型。 相同程式設計模型和 HTTP 管線功能對稱用戶端透過新的 HttpClient 型別。
 - **完整支援路由**: Web Api 現在支援一組完整的路由功能已經 Web 堆疊，包括路由參數和條件約束的一部分。 此外，對應到動作具有完整支援慣例，因此您不再需要套用屬性，例如 [HttpPost] 到您的類別和方法。
 - **內容交涉**： 用戶端和伺服器可一起運作來判斷正確的格式從 API 傳回的資料。 我們提供預設的支援，如 XML、 JSON 和表單 URL 編碼格式，而且您可以擴充此一支援藉由新增您自己的格式器，或甚至取代預設內容交涉的策略。
-- **模型繫結和驗證：**模型繫結器提供一個簡單的方式，從 HTTP 要求的各種組件中擷取資料，並將這些訊息部分轉換成.NET 物件可由 Web API 的動作。
+- **模型繫結和驗證：** 模型繫結器提供一個簡單的方式，從 HTTP 要求的各種組件中擷取資料，並將這些訊息部分轉換成.NET 物件可由 Web API 的動作。
 - **篩選條件：** Web Api 現在支援篩選，包括知名的篩選條件，例如 [Authorize] 屬性。 您可以撰寫，並插入您自己的篩選動作、 授權和例外狀況處理。
-- **在查詢組合：**只要傳回 IQueryable&lt;T&gt;，Web API 將支援查詢透過 OData URL 慣例。
-- **改善可測試性的詳細資料，HTTP:**而不是靜態內容物件中設定 HTTP 詳細資料，Web API 動作現在可以搭配 HttpRequestMessage 和 HttpResponseMessage 的執行個體。 這些物件的泛型版本也存在於讓您使用您的自訂類型，除了 HTTP 型別。
+- **在查詢組合：** 只要傳回 IQueryable&lt;T&gt;，Web API 將支援查詢透過 OData URL 慣例。
+- **改善可測試性的詳細資料，HTTP:** 而不是靜態內容物件中設定 HTTP 詳細資料，Web API 動作現在可以搭配 HttpRequestMessage 和 HttpResponseMessage 的執行個體。 這些物件的泛型版本也存在於讓您使用您的自訂類型，除了 HTTP 型別。
 - **改善的逆轉控制 (IoC) 透過 dependencyresolver 來註冊：** Web API 現在使用 MVC 的相依性解析程式所實作的服務定位程式模式來取得執行個體的許多不同的功能。
-- **程式碼為基礎的組態：**等作業只透過程式碼已完成 Web API 設定、 清除離開您的組態檔。
+- **程式碼為基礎的組態：** 等作業只透過程式碼已完成 Web API 設定、 清除離開您的組態檔。
 - **自我裝載：** Web Api 可以裝載於自己的處理序，除了 IIS 時仍在使用路由的完整功能及其他功能的 Web API。
 
 如需 ASP.NET Web API 的詳細資訊，請造訪[ https://www.asp.net/web-api ](../web-api/index.md)。
@@ -219,7 +220,7 @@ jQuery Mobile 是開放原始碼程式庫建置觸控最佳化 web UI。 如果�
 
 訪客按一下連結，如果它們正在切換到桌面版本的相同的頁面。
 
-因為您桌面的配置不會包含檢視切換程式預設的訪客將不能為行動模式取得的方法。 若要啟用此功能，加入下列參考 *\_ViewSwitcher*到您桌面的配置，只是內部*&lt;主體&gt;*項目：
+因為您桌面的配置不會包含檢視切換程式預設的訪客將不能為行動模式取得的方法。 若要啟用此功能，加入下列參考 *\_ViewSwitcher*到您桌面的配置，只是內部*&lt;主體&gt;* 項目：
 
 [!code-cshtml[Main](mvc4-beta-release-notes/samples/sample7.cshtml)]
 
@@ -305,7 +306,7 @@ ASP.NET MVC 4 Beta 支援年 9 月 2011 1.5 版的 Windows Azure sdk。
 
     **必要的更新**
 
-  1. 在根 Web.config 檔案中，加入新*&lt;appSettings&gt;*具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。
+  1. 在根 Web.config 檔案中，加入新*&lt;appSettings&gt;* 具有索引鍵的項目*webPages:Version*和值*1.0.0.0*。
 
       [!code-xml[Main](mvc4-beta-release-notes/samples/sample14.xml)]
   2. 在 方案總管 中，以滑鼠右鍵按一下專案名稱，然後選取 卸載專案。 然後名稱上按一下滑鼠右鍵，然後選取 編輯*ProjectName*.csproj。

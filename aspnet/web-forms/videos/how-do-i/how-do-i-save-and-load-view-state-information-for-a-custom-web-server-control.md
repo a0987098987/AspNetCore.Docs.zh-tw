@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control
-title: "[如何:]儲存及載入檢視狀態資訊的自訂 Web 伺服器控制項 |Microsoft 文件"
+title: '[如何:]儲存及載入檢視狀態資訊的自訂 Web 伺服器控制項 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何保存和還原在 ViewState 中的自訂使用者控制項的資訊。 首先，了解如何保存簡單值..."
+description: 在這個視訊 Chris Pels 將示範如何保存和還原在 ViewState 中的自訂使用者控制項的資訊。 首先，了解如何保存簡單值...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525567"
 ---
 <a name="how-do-i-save-and-load-view-state-information-for-a-custom-web-server-control"></a>[如何:]儲存及載入檢視狀態資訊的自訂 Web 伺服器控制項
 ====================

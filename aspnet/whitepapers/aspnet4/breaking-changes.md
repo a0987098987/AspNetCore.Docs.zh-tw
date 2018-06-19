@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899112"
 ---
 <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 的重大變更
 ====================
@@ -437,7 +438,7 @@ ASP.NET 成員資格中使用某些類型已從移動`System.Web.dll`新 System.
 
 如此一來， **SetOmitVaryStar**不再需要為了隱藏`Vary:*`標頭。
 
-在指定的應用程式中`Location="ServerAndClient"`中**@ OutputCache**指示詞在頁面上，您現在可以看到的名稱所隱含的行為**位置**屬性的值-也就是說，將頁面在您呼叫而不需要瀏覽器快取**SetOmitVaryStar**方法。
+在指定的應用程式中`Location="ServerAndClient"`中 **@ OutputCache**指示詞在頁面上，您現在可以看到的名稱所隱含的行為**位置**屬性的值-也就是說，將頁面在您呼叫而不需要瀏覽器快取**SetOmitVaryStar**方法。
 
 如果您的應用程式中的頁面必須發出`Vary:*`，呼叫**AppendHeader**方法，如下列範例所示：
 

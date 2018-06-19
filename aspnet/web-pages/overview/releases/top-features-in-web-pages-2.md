@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899378"
 ---
 <a name="the-top-features-in-aspnet-web-pages-2"></a>在 ASP.NET Web Pages 2 上的功能
 ====================
@@ -164,7 +165,7 @@ by [Microsoft](https://github.com/microsoft)
 下列範例會驗證使用者輸入，在表單上的頁面。 若要執行測試此驗證程式碼，請執行下列動作：
 
 1. 建立新的網站使用其中一個 WebMatrix 2 的網站範本，其中包含*指令碼*資料夾，例如**入門網站**範本。
-2. 在新的站台建立新*.cshtml*頁面，然後以下列程式碼取代頁面內容。
+2. 在新的站台建立新 *.cshtml*頁面，然後以下列程式碼取代頁面內容。
 3. 執行網頁瀏覽器中。 輸入有效和無效的值，以查看上驗證的效果。 例如，將必要的欄位保留空白，或輸入中的字母**信用額度**欄位。
 
 
@@ -217,7 +218,7 @@ by [Microsoft](https://github.com/microsoft)
 3. 在*指令碼*資料夾中，建立名為*Test.js*，複製*Test.js*範例中，從內容到它，然後儲存檔案...
 4. 建立名為的資料夾*應用程式\_程式碼*站台中。
 5. 在*應用程式\_程式碼*資料夾中，建立名為*Helpers.cshtml*、 將範例程式碼複製到其中，並將它儲存在名為的資料夾中*應用程式\_程式碼*根資料夾中。
-6. 在站台的根資料夾中，建立名為 *\_SiteLayout.cshtml，*範例複製到它，然後儲存檔案。
+6. 在站台的根資料夾中，建立名為 *\_SiteLayout.cshtml，* 範例複製到它，然後儲存檔案。
 7. 在站台根目錄中，建立名為*ContentPage.cshtml*、 加入範例程式碼，並將它儲存。
 8. 執行*ContentPage*瀏覽器中。 您傳遞給字串`MakeNote`helper 會呈現為 boxed 的附註。
 9. 滑鼠指標通過附註。 指令碼會暫時增加便箋的字型大小。
@@ -271,13 +272,13 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 1. 在您的網站編輯 *\_AppStart.cshtml*頁面上，並在呼叫之後，新增 Razor 程式碼區塊中的下列兩行程式碼`WebSecurity.InitializeDatabaseConnection`方法。 此程式碼可讓 Google 和 Yahoo OpenID 提供者。 
 
     [!code-css[Main](top-features-in-web-pages-2/samples/sample12.css)]
-2. 在*~/Account/Login.cshtml*頁面上，移除註解下列`<fieldset>`接近頁面的結束標記的區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 產生的程式碼區塊看起來像這樣：
+2. 在 *~/Account/Login.cshtml*頁面上，移除註解下列`<fieldset>`接近頁面的結束標記的區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 產生的程式碼區塊看起來像這樣：
 
     [!code-html[Main](top-features-in-web-pages-2/samples/sample13.html)]
-3. 新增`<input>`Google 或 Yahoo 提供者的項目`<fieldset>`群組*~/Account/Login.cshtml*頁面。 已更新`<fieldset>`群組與`<input>`元素 Google 和 Yahoo 看起來類似下列的範例： 
+3. 新增`<input>`Google 或 Yahoo 提供者的項目`<fieldset>`群組 *~/Account/Login.cshtml*頁面。 已更新`<fieldset>`群組與`<input>`元素 Google 和 Yahoo 看起來類似下列的範例： 
 
     [!code-html[Main](top-features-in-web-pages-2/samples/sample14.html)]
-4. 在*~/Account/AssociateServiceAccount.cshtml*頁面上，新增`<input>`Google 或 Yahoo 至的項目`<fieldset>`群組接近檔案結尾。 您可以複製相同`<input>`剛加入的項目`<fieldset>`一節中*~/Account/Login.cshtml*頁面。 
+4. 在 *~/Account/AssociateServiceAccount.cshtml*頁面上，新增`<input>`Google 或 Yahoo 至的項目`<fieldset>`群組接近檔案結尾。 您可以複製相同`<input>`剛加入的項目`<fieldset>`一節中 *~/Account/Login.cshtml*頁面。 
 
     *~/Account/AssociateServiceAccount.cshtml*入門網站範本中的頁面可以使用，如果您想要建立的使用者可以與您的網站上的單一帳戶聯想從其他站台的多個登入頁面。
 
@@ -323,7 +324,7 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 2. 複製**應用程式識別碼**從 Facebook 應用程式做為值的值`consumerKey`（引號） 內的參數。
 3. 複製**應用程式秘鑰**從 Facebook 應用程式做為值`consumerSecret`參數值。
 4. 儲存並關閉檔案。
-5. 編輯*~/Account/Login.cshtml*頁面上，並移除從註解`<fieldset>`接近頁面結尾區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 使用註解的程式碼區塊中移除看起來如下所示： 
+5. 編輯 *~/Account/Login.cshtml*頁面上，並移除從註解`<fieldset>`接近頁面結尾區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 使用註解的程式碼區塊中移除看起來如下所示： 
 
     [!code-html[Main](top-features-in-web-pages-2/samples/sample16.html)]
 6. 儲存並關閉檔案。
@@ -371,7 +372,7 @@ Web Pages 2 提供增強的成員資格和驗證的選項。 主要增強功能�
 2. 複製**取用者索引鍵**從 Twitter 應用程式做為值的值`consumerKey`（引號） 內的參數。
 3. 複製**取用者秘密**從 Twitter 應用程式做為值的值`consumerSecret`參數。
 4. 儲存並關閉檔案。
-5. 編輯*~/Account/Login.cshtml*頁面上，並移除從註解`<fieldset>`接近頁面結尾區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 使用註解的程式碼區塊中移除看起來如下所示： 
+5. 編輯 *~/Account/Login.cshtml*頁面上，並移除從註解`<fieldset>`接近頁面結尾區塊。 若要取消註解程式碼，移除`@*`字元在的`<fieldset>`區塊。 使用註解的程式碼區塊中移除看起來如下所示： 
 
     [!code-html[Main](top-features-in-web-pages-2/samples/sample18.html)]
 6. 儲存並關閉檔案。

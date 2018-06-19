@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887092"
 ---
 <a name="masterdetail-filtering-across-two-pages-c"></a>主從式篩選跨兩個頁面 (C#)
 ====================
@@ -59,7 +60,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="step-2-turning-the-category-name-into-a-link-to-the-details-page"></a>步驟 2： 將類別名稱轉換成詳細資料頁面的連結
 
-若要讓使用者以顯示與指定的類別目錄的 [詳細資料] 資訊，我們需要加入至每個項目符號清單項目，按下時，會將使用者導向至第二個頁面的連結 (`ProductsForCategoryDetails.aspx`)。 此第二個頁面就會顯示所選取的類別目錄使用 DataList 產品。 若要判斷已按下其連結的類別目錄，我們要通過按過的類別目錄`CategoryID`透過一些機制的第二頁。 從一頁的純量資料傳送至另一個簡單且最直接的方式是透過查詢字串中，我們將在本教學課程中使用此選項。 特別是，`ProductsForCategoryDetails.aspx`頁面就會預期收到所選*`categoryID`*傳遞透過名為的 querystring 欄位值`CategoryID`。 例如，若要檢視 「 飲料 」 分類的產品具有`CategoryID`使用者會是 1，請瀏覽`ProductsForCategoryDetails.aspx?CategoryID=1`。
+若要讓使用者以顯示與指定的類別目錄的 [詳細資料] 資訊，我們需要加入至每個項目符號清單項目，按下時，會將使用者導向至第二個頁面的連結 (`ProductsForCategoryDetails.aspx`)。 此第二個頁面就會顯示所選取的類別目錄使用 DataList 產品。 若要判斷已按下其連結的類別目錄，我們要通過按過的類別目錄`CategoryID`透過一些機制的第二頁。 從一頁的純量資料傳送至另一個簡單且最直接的方式是透過查詢字串中，我們將在本教學課程中使用此選項。 特別是，`ProductsForCategoryDetails.aspx`頁面就會預期收到所選*`categoryID`* 傳遞透過名為的 querystring 欄位值`CategoryID`。 例如，若要檢視 「 飲料 」 分類的產品具有`CategoryID`使用者會是 1，請瀏覽`ProductsForCategoryDetails.aspx?CategoryID=1`。
 
 我們需要將超連結 Web 控制項或 HTML 錨定項目加入的中繼器中建立每個項目符號清單項目的超連結 (`<a>`) 至`ItemTemplate`。 中的情況下超連結可顯示每個資料列相同、 兩種方法就夠了。 中繼器，我願意使用錨定項目。 若要使用錨定項目，更新至中繼器 ItemTemplate:
 
@@ -170,7 +171,7 @@ Visual Studio 如我們所見在上一個教學課程中，選擇資料來源精
 
 雖然主要/詳細資料報表可以在單一頁面上會顯示主要和詳細記錄，在許多網站會分隔跨兩個網頁。 在此教學課程中我們討論了如何實作主要/詳細資料報表具有 「 主要 」 的網頁中使用中繼器的項目符號清單中所列的類別和相關聯的產品列在 [詳細資料] 頁面中。 主版網頁中的每個清單項目所包含的資料列所傳遞的詳細資料頁面的連結`CategoryID`值。
 
-透過已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 *`categoryID`*使用以宣告方式指定參數值`CategoryID`querystring 值做為參數的來源。 我們也討論了如何使用程式設計的詳細資料頁面中顯示類別目錄詳細資料以及如何顯示一則訊息，如果沒有任何屬於所選類別目錄的產品。
+透過已完成的詳細資料頁面擷取指定的供應商的那些產品`ProductsBLL`類別的`GetProductsByCategoryID(categoryID)`方法。 *`categoryID`* 使用以宣告方式指定參數值`CategoryID`querystring 值做為參數的來源。 我們也討論了如何使用程式設計的詳細資料頁面中顯示類別目錄詳細資料以及如何顯示一則訊息，如果沒有任何屬於所選類別目錄的產品。
 
 祝您程式設計 ！
 

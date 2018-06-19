@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api
 ms.openlocfilehash: 1680d5e0be0f4844c904d923af30634c53bd1b81
-ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2018
+ms.lasthandoff: 06/19/2018
 ms.locfileid: "34306669"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API

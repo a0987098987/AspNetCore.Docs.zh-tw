@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897958"
 ---
 <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>導入 ASP.NET Web Pages-使用表單中輸入資料庫的資料
 ====================
@@ -222,7 +223,7 @@ ASP.NET 網頁包括 helper &mdash; `Validation` helper&mdash;可用來確定使
 
 [!code-cshtml[Main](entering-data/samples/sample13.cshtml?highlight=4-17)]
 
-通常您可能會放置到不同的樣式資訊*.css*檔案，但為求簡化您可以將它們放在頁面現在。 (稍後在此教學課程的集中，您將會移動 CSS 規則到個別*.css*檔案。)
+通常您可能會放置到不同的樣式資訊 *.css*檔案，但為求簡化您可以將它們放在頁面現在。 (稍後在此教學課程的集中，您將會移動 CSS 規則到個別 *.css*檔案。)
 
 如果沒有驗證錯誤時，`Html.ValidationMessage`方法呈現`<span>`包含的項目`class="field-validation-error"`。 藉由加入該類別的樣式定義，您可以設定訊息的外觀。 如果發生錯誤，`ValidationSummary`方法同樣的動態呈現屬性`class="validation-summary-errors"`。
 
@@ -238,7 +239,7 @@ ASP.NET 網頁包括 helper &mdash; `Validation` helper&mdash;可用來確定使
 
 [!code-cshtml[Main](entering-data/samples/sample14.cshtml)]
 
-如同之前，ASP.NET 會解譯`~`運算子作為網站的根目錄。 您不必使用`~`運算子; 您可以使用標記`<a href="./AddMovie">Add a movie</a>`或其他方式來定義 HTML 的了解的路徑。 但是`~`運算子是良好的一般方法建立 Razor 頁面的連結時因為這會讓網站更有彈性 — 如果您將目前的頁面移至子資料夾時，連結仍將會移至*AddMovie*頁面。 (請記住，`~`運算子僅適用於*.cshtml*頁面。 ASP.NET 了解，但它不是標準 HTML）。
+如同之前，ASP.NET 會解譯`~`運算子作為網站的根目錄。 您不必使用`~`運算子; 您可以使用標記`<a href="./AddMovie">Add a movie</a>`或其他方式來定義 HTML 的了解的路徑。 但是`~`運算子是良好的一般方法建立 Razor 頁面的連結時因為這會讓網站更有彈性 — 如果您將目前的頁面移至子資料夾時，連結仍將會移至*AddMovie*頁面。 (請記住，`~`運算子僅適用於 *.cshtml*頁面。 ASP.NET 了解，但它不是標準 HTML）。
 
 當您完成時，執行*電影*頁面。 它看起來像此頁面：
 

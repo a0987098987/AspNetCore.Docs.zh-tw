@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892065"
 ---
 <a name="creating-user-accounts-vb"></a>建立使用者帳戶 (VB)
 ====================
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/06/2018
 
 在<a id="_msoanchor_1"> </a>[前述教學課程](creating-the-membership-schema-in-sql-server-vb.md)我們在資料庫中，會加入資料表、 檢視和預存程序所需的安裝應用程式服務結構描述`SqlMembershipProvider`和`SqlRoleProvider`。 這會建立基礎結構，我們需要此數列的教學課程的其餘部分。 在本教學課程中我們將探討使用成員資格架構 (透過`SqlMembershipProvider`) 來建立新的使用者帳戶。 我們會了解如何以程式設計方式和 ASP 透過建立新的使用者。網路的內建適用於 CreateUserWizard 控制項。
 
-除了了解如何建立新的使用者帳戶，我們也需要更新示範網站我們第一次建立中 *<a id="_msoanchor_2"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*教學課程和增強的功能 *<a id="_msoanchor_3"> </a>[表單驗證設定和進階主題](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)*教學課程。 我們的示範 web 應用程式具有會驗證使用者的認證，硬式編碼使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含可建立自訂程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，針對成員資格 framework 和移除主體和身分識別的自訂邏輯。
+除了了解如何建立新的使用者帳戶，我們也需要更新示範網站我們第一次建立中 *<a id="_msoanchor_2"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)* 教學課程和增強的功能 *<a id="_msoanchor_3"> </a>[表單驗證設定和進階主題](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)* 教學課程。 我們的示範 web 應用程式具有會驗證使用者的認證，硬式編碼使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含可建立自訂程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，針對成員資格 framework 和移除主體和身分識別的自訂邏輯。
 
 讓我們開始吧 ！
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/06/2018
 我們開始使用的成員資格 framework 之前，請讓我們花一點時間檢閱重要的步驟，我們已達到這個點。 當使用成員資格架構與`SqlMembershipProvider`必須在 web 應用程式中實作的成員資格功能之前會先執行下列步驟在表單型驗證案例中，：
 
 1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*，藉由編輯啟用表單驗證`Web.config`和設定`<authentication>`項目的`mode`屬性`Forms`。 使用表單驗證已啟用，每個傳入要求會檢查*表單驗證票證*，其中，如果出現找出要求者。
-2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。  *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)*教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
+2. **將應用程式服務結構描述加入至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述至資料庫。 通常這個結構描述會加入至相同的資料庫所在的應用程式資料模型。  *<a id="_msoanchor_5"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)* 教學課程看使用`aspnet_regsql.exe`工具來完成這項作業。
 3. **自訂 Web 應用程式的設定步驟 2 中參考的資料庫。** *在 SQL Server 中建立成員資格結構描述*教學課程示範了兩種方式可設定 web 應用程式，讓`SqlMembershipProvider`會使用在步驟 2 中選取的資料庫： 藉由修改`LocalSqlServer`連接字串名稱。或者，透過將新的註冊提供者加入至成員資格 framework 提供者的清單，以及自訂該新的提供者使用的資料庫從步驟 2。
 
 當建置 web 應用程式使用`SqlMembershipProvider`和表單型驗證，您必須使用之前執行這三個步驟`Membership`類別或 ASP.NET 登入 Web 控制項。 因為我們已經執行下列步驟，在先前的教學課程中，我們已準備好開始使用的成員資格 framework ！
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-aspx[Main](creating-user-accounts-vb/samples/sample1.aspx)]
 
-請記得， `LoginContent` ContentPlaceHolder 的預設標記會顯示登入或登出的站台，根據是否已驗證使用者的連結。 與否`Content2`內容控制項，不過，會覆寫主版頁面的預設標記。 如我們所述 *<a id="_msoanchor_6"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*教學課程中，這非常有用，我們不想在左側的資料行中顯示登入相關選項的頁面中。
+請記得， `LoginContent` ContentPlaceHolder 的預設標記會顯示登入或登出的站台，根據是否已驗證使用者的連結。 與否`Content2`內容控制項，不過，會覆寫主版頁面的預設標記。 如我們所述 *<a id="_msoanchor_6"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)* 教學課程中，這非常有用，我們不想在左側的資料行中顯示登入相關選項的頁面中。
 
 對這些五頁，不過，我們想要顯示在主版頁面的預設標記`LoginContent`ContentPlaceHolder。 因此，移除的宣告式標記`Content2`內容控制項。 之後，請每五個網頁的標記應該包含單一內容控制項。
 
@@ -107,7 +108,7 @@ XML 的站台對應檔會定義為階層的網站結構。 此階層式關聯性
 
 ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中包括功能表、 樹狀檢視，以及 SiteMapPath 控制項。 功能表和 TreeView 控制項分別轉譯網站導覽結構或樹狀目錄中，設定功能表中的，而 sitemappath 可顯示階層連結列會顯示目前的節點以及其祖系造訪。 網站導覽資料可以繫結至其他 Web 控制項使用的 Treeview 的資料，並可透過程式設計方式存取`SiteMap`類別。
 
-由於網站地圖架構和導覽控制項的完整討論超出此教學課程系列的範圍，而不是比花時間讓我們來製作自己的巡覽使用者介面改為借用中使用我 *[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)*教學課程系列，如圖 4 所示，使用中繼器控制項來顯示兩個局部深度分項清單的導覽連結。
+由於網站地圖架構和導覽控制項的完整討論超出此教學課程系列的範圍，而不是比花時間讓我們來製作自己的巡覽使用者介面改為借用中使用我 *[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)* 教學課程系列，如圖 4 所示，使用中繼器控制項來顯示兩個局部深度分項清單的導覽連結。
 
 ### <a name="adding-a-two-level-list-of-links-in-the-left-column"></a>在左側的資料行中加入兩個層級的連結清單
 
@@ -143,7 +144,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 ## <a name="step-4-removing-the-custom-principal-and-identity-logic"></a>步驟 4： 移除的自訂主體和身分識別邏輯
 
-在 *<a id="_msoanchor_7"> </a>[表單驗證設定和進階主題](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)*教學課程中我們可了解如何將已驗證使用者自訂的主體和身分識別物件產生關聯。 我們來建立事件處理常式中的完成這`Global.asax`應用程式的`PostAuthenticateRequest`之後引發的事件`FormsAuthenticationModule`已經驗證使用者。 這個事件處理常式取代`GenericPrincipal`和`FormsIdentity`所加入的物件`FormsAuthenticationModule`與`CustomPrincipal`和`CustomIdentity`我們在該教學課程建立的物件。
+在 *<a id="_msoanchor_7"> </a>[表單驗證設定和進階主題](../introduction/forms-authentication-configuration-and-advanced-topics-vb.md)* 教學課程中我們可了解如何將已驗證使用者自訂的主體和身分識別物件產生關聯。 我們來建立事件處理常式中的完成這`Global.asax`應用程式的`PostAuthenticateRequest`之後引發的事件`FormsAuthenticationModule`已經驗證使用者。 這個事件處理常式取代`GenericPrincipal`和`FormsIdentity`所加入的物件`FormsAuthenticationModule`與`CustomPrincipal`和`CustomIdentity`我們在該教學課程建立的物件。
 
 在某些情況下，在大部分情況下很有用的主體和身分識別的自訂物件時`GenericPrincipal`和`FormsIdentity`物件就已足夠。 因此，我認為很值得傳回的預設行為。 進行這項變更移除或註解`PostAuthenticateRequest`事件處理常式或藉由刪除`Global.asax`整個檔案。
 
@@ -164,7 +165,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 
 這些四個多載的差別收集的資訊數量。 第一個多載，例如，需要使用者名稱和密碼為新的使用者帳戶，而第二個也需要使用者的電子郵件地址。
 
-這些多載存在，因為若要建立新的使用者帳戶所需的資訊取決於成員資格提供者的組態設定。 在 *<a id="_msoanchor_8"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)*教學課程中我們會檢查指定的成員資格提供者組態設定`Web.config`。 表 2 中包含的組態設定的完整清單。
+這些多載存在，因為若要建立新的使用者帳戶所需的資訊取決於成員資格提供者的組態設定。 在 *<a id="_msoanchor_8"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)* 教學課程中我們會檢查指定的成員資格提供者組態設定`Web.config`。 表 2 中包含的組態設定的完整清單。
 
 一個這類成員資格提供者組態設定會影響哪些`CreateUser`可能使用多載是`requiresQuestionAndAnswer`設定。 如果`requiresQuestionAndAnswer`設`true`（預設值），然後建立新的使用者帳戶時必須指定安全性問題與解答。 如果使用者需要重設或變更其密碼，之後會使用這項資訊。 特別是，它們會在該時間顯示的安全性問題，而他們必須輸入正確解答才能重設或變更其密碼。 因此，如果`requiresQuestionAndAnswer`設`true`然後呼叫其中前兩個`CreateUser`多載會產生例外狀況，因為遺失的安全性問題和解答。 由於我們的應用程式目前設定為需要的安全性問題和答案，我們必須以程式設計方式建立使用者時，請使用其中一種後者的兩個多載。
 
@@ -231,7 +232,7 @@ ASP.NET 包含梒葯弮 Web 控制項的設計使用者介面的數字。 其中
 雖然成員資格使用者存放區現在包括 Bruce 和 Tito 的帳戶資訊，我們還沒有實作允許 Bruce 或 Tito 登入站台的功能。 目前，`Login.aspx`會驗證使用者的認證會根據使用者名稱/密碼組的硬式編碼組*不*驗證針對成員資格 framework 提供的認證。 現在查看中的新使用者帳戶`aspnet_Users`和`aspnet_Membership`資料表必須已足夠。 在下一個教學課程中，  *<a id="_msoanchor_9"> </a>[驗證使用者認證對成員資格使用者儲存](validating-user-credentials-against-the-membership-user-store-vb.md)*，我們將會更新成員資格儲存區對其進行驗證的登入頁面。
 
 > [!NOTE]
-> 如果看不到任何使用者在您`SecurityTutorials.mdf`資料庫，則可能是因為 web 應用程式使用預設的成員資格提供者， `AspNetSqlMembershipProvider`，它會使用`ASPNETDB.mdf`做為其使用者存放區資料庫。 若要判斷是否為問題，按一下 [方案總管] 的 [重新整理] 按鈕。 如果資料庫名為`ASPNETDB.mdf`已新增至`App_Data`資料夾中，這是此問題。 返回步驟 4  *<a id="_msoanchor_10"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)*教學課程，如需如何適當地設定成員資格提供者的指示。
+> 如果看不到任何使用者在您`SecurityTutorials.mdf`資料庫，則可能是因為 web 應用程式使用預設的成員資格提供者， `AspNetSqlMembershipProvider`，它會使用`ASPNETDB.mdf`做為其使用者存放區資料庫。 若要判斷是否為問題，按一下 [方案總管] 的 [重新整理] 按鈕。 如果資料庫名為`ASPNETDB.mdf`已新增至`App_Data`資料夾中，這是此問題。 返回步驟 4  *<a id="_msoanchor_10"> </a>[在 SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)* 教學課程，如需如何適當地設定成員資格提供者的指示。
 
 
 在大部分建立使用者帳戶案例，請造訪者會看到的一些介面輸入其使用者名稱、 密碼、 電子郵件和其他重要資訊，此時建立新的帳戶。 在此步驟中我們探討了以手動方式建立這種介面，然後可了解如何使用`Membership.CreateUser`方法來以程式設計方式加入新的使用者帳戶會根據使用者的輸入。 不過，我們的程式碼，只建立新的使用者帳戶。 它並未執行任何待處理的動作，如登入使用者剛建立的使用者帳戶，站台，或確認電子郵件傳送給使用者。 這些額外的步驟會需要額外的程式碼中的按鈕`Click`事件處理常式。
@@ -350,7 +351,7 @@ ASP.NET 隨附之登入 Web 控制項的數字。 這些控制項可協助多的
 
 
 > [!NOTE]
-> 我們會看到使用適用於 CreateUserWizard 控制項的範例`CreatedUser`中的事件 *<a id="_msoanchor_11"> </a>[儲存額外的使用者資訊](storing-additional-user-information-vb.md)*教學課程。
+> 我們會看到使用適用於 CreateUserWizard 控制項的範例`CreatedUser`中的事件 *<a id="_msoanchor_11"> </a>[儲存額外的使用者資訊](storing-additional-user-information-vb.md)* 教學課程。
 
 
 ## <a name="summary"></a>總結

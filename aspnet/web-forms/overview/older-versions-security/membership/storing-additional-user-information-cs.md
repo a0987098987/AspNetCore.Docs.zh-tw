@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30892162"
 ---
 <a name="storing-additional-user-information-c"></a>儲存額外的使用者資訊 (C#)
 ====================
@@ -131,7 +132,7 @@ Foreign key 條件約束可以設定為父記錄會被刪除時，自動刪除�
 
 有各種不同的方式，讓目前登入的使用者，來檢視和編輯其主城鎮、 首頁和簽章資訊。 我們無法使用文字方塊中手動建立使用者介面和 Label 控制項抑或我們無法使用其中一種 Web 控制項，例如 DetailsView 控制項的資料。 若要執行資料庫`SELECT`和`UPDATE`陳述式我們可以撰寫 ADO.NET 我們的網頁程式碼後置類別中的程式碼或，或者，使用宣告式與 SqlDataSource 方法。 在理想情況下我們的應用程式會包含階層式的架構，我們可能是程式設計方式叫用網頁的程式碼後置類別或以宣告方式透過 ObjectDataSource 控制項。
 
-因為這個教學課程系列著重於表單驗證、 授權、 使用者帳戶和角色，則不會有這些不同的資料存取選項或階層式的架構為何慣用透過直接執行 SQL 陳述式的完整討論從 ASP.NET 頁面。 我們即將逐步解說使用 DetailsView 和 SqlDataSource – 最快速而且簡單選項 – 但討論的概念確實可套用至替代 Web 控制項與資料存取邏輯。 如需在 ASP.NET 中的資料搭配使用的詳細資訊，請參閱我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)*教學課程系列。
+因為這個教學課程系列著重於表單驗證、 授權、 使用者帳戶和角色，則不會有這些不同的資料存取選項或階層式的架構為何慣用透過直接執行 SQL 陳述式的完整討論從 ASP.NET 頁面。 我們即將逐步解說使用 DetailsView 和 SqlDataSource – 最快速而且簡單選項 – 但討論的概念確實可套用至替代 Web 控制項與資料存取邏輯。 如需在 ASP.NET 中的資料搭配使用的詳細資訊，請參閱我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)* 教學課程系列。
 
 開啟`AdditionalUserInfo.aspx`頁面`Membership`資料夾並將 DetailsView 控制項加入至頁面上，設定其`ID`屬性`UserProfile`和清除其`Width`和`Height`屬性。 展開 DetailsView 的智慧標籤，然後選擇將它繫結至新的資料來源控制項。 這樣就會啟動資料來源組態精靈 （請參閱圖 7）。 第一個步驟會要求您指定的資料來源類型。 因為我們將直接連接到`SecurityTutorials`資料庫，請選擇 [資料庫] 圖示上，指定`ID`為`UserProfileDataSource`。
 

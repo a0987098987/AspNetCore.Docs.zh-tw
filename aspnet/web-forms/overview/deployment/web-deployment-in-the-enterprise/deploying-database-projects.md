@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882497"
 ---
 <a name="deploying-database-projects"></a>部署資料庫專案
 ====================
@@ -90,12 +91,12 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 
 在此情況下：
 
-- **/A** (或**/Action**) 參數指定您想要 VSDBCMD。 您可以設定為**匯入**或**部署**。 **匯入**選項用來產生.dbschema 檔案從現有的資料庫，而**部署**選項用來將.dbschema 檔案部署到目標資料庫。
-- **/資訊清單**(或**/ManifestFile**) 參數識別您想要部署的.deploymanifest 檔案。 如果您想要改用.dbschema 檔案，您會使用**/模型**(或**/ModelFile**) 切換。
-- **/Cs** (或**/ConnectionString**) 交換器提供目標資料庫伺服器的連接字串。 請注意，這不包含資料庫的名稱&#x2014;VSDBCMD 需要連接到伺服器，以建立資料庫。它不需要連接到個別的資料庫。 如果.deploymanifest 檔案包含連接字串，您可以省略這個參數。 如果您要使用參數，參數值會覆寫.deploymanifest 值。
+- **/A** (或 **/Action**) 參數指定您想要 VSDBCMD。 您可以設定為**匯入**或**部署**。 **匯入**選項用來產生.dbschema 檔案從現有的資料庫，而**部署**選項用來將.dbschema 檔案部署到目標資料庫。
+- **/資訊清單**(或 **/ManifestFile**) 參數識別您想要部署的.deploymanifest 檔案。 如果您想要改用.dbschema 檔案，您會使用 **/模型**(或 **/ModelFile**) 切換。
+- **/Cs** (或 **/ConnectionString**) 交換器提供目標資料庫伺服器的連接字串。 請注意，這不包含資料庫的名稱&#x2014;VSDBCMD 需要連接到伺服器，以建立資料庫。它不需要連接到個別的資料庫。 如果.deploymanifest 檔案包含連接字串，您可以省略這個參數。 如果您要使用參數，參數值會覆寫.deploymanifest 值。
 - <strong>/P:TargetDatabase</strong>屬性提供您想要指派到目標資料庫上建立的名稱。 這會覆寫的值<strong>TargetDatabase</strong> .deploymanifest 檔案中的屬性。 您可以使用<strong>/p:</strong> <em>[屬性名稱]</em>.sqlcmdvars 檔案中宣告的語法來設定各種不同的部署屬性，並覆寫任何 SQLCMD 變數。
-- **/Dd+** (或**/DeployToDatabase+**) 參數表示您想要建立部署，並將它部署至目標環境。 如果您指定**/dd-**，或省略這個參數，VSDBCMD 將會產生部署指令碼，但不是將它部署至目標環境。 此參數通常是混淆的來源，並且會在下一節中詳細說明。
-- **/指令碼**(或**/DeploymentScriptFile**) 參數指定您想要用來產生部署指令碼。 此值不會影響部署程序。
+- **/Dd+** (或 **/DeployToDatabase+**) 參數表示您想要建立部署，並將它部署至目標環境。 如果您指定 **/dd-**，或省略這個參數，VSDBCMD 將會產生部署指令碼，但不是將它部署至目標環境。 此參數通常是混淆的來源，並且會在下一節中詳細說明。
+- **/指令碼**(或 **/DeploymentScriptFile**) 參數指定您想要用來產生部署指令碼。 此值不會影響部署程序。
 
 如需有關 VSDBCMD 的詳細資訊，請參閱[VSDBCMD 的命令列參考。EXE （部署和結構描述匯入）](https://msdn.microsoft.com/library/dd193283.aspx)和[如何： 準備資料庫以進行部署的命令提示字元使用 VSDBCMD。EXE](https://msdn.microsoft.com/library/dd193258.aspx)。
 
@@ -103,10 +104,10 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 
 ## <a name="understanding-the-deploytodatabase-switch"></a>了解 DeployToDatabase 交換器
 
-行為**/dd**或**/DeployToDatabase**交換器取決於您是否使用 VSDBCMD 搭配.dbschema 檔案或.deploymanifest 檔案。 如果您使用.dbschema 檔案，則行為是相當簡單：
+行為 **/dd**或 **/DeployToDatabase**交換器取決於您是否使用 VSDBCMD 搭配.dbschema 檔案或.deploymanifest 檔案。 如果您使用.dbschema 檔案，則行為是相當簡單：
 
-- 如果您指定**/dd+**或**/dd**，VSDBCMD 會產生部署指令碼及部署資料庫。
-- 如果您指定**/dd-**或省略參數，VSDBCMD 皆會產生部署指令碼只。
+- 如果您指定 **/dd+** 或 **/dd**，VSDBCMD 會產生部署指令碼及部署資料庫。
+- 如果您指定 **/dd-** 或省略參數，VSDBCMD 皆會產生部署指令碼只。
 
 如果您使用.deploymanifest 檔案，則行為是很複雜。 這是因為.deploymanifest 檔案包含屬性名稱**DeployToDatabase** ，也會決定是否要部署資料庫。
 
@@ -128,8 +129,8 @@ VSDBCMD 公用程式可讓您使用部署資料庫的資料庫結構描述 （.d
 
 當**DeployToDatabase**指定屬性， **/dd**交換器將只覆寫屬性的屬性值是否**false**:
 
-- 如果**DeployToDatabase**屬性是**False**，而且您指定**/dd+**或**/dd**，將會覆寫 VSDBCMD **DeployToDatabase**屬性及部署資料庫。
-- 如果**DeployToDatabase**屬性是**False**，而且您指定**/dd-**或省略參數，VSDBCMD 不會將資料庫部署。
+- 如果**DeployToDatabase**屬性是**False**，而且您指定 **/dd+** 或 **/dd**，將會覆寫 VSDBCMD **DeployToDatabase**屬性及部署資料庫。
+- 如果**DeployToDatabase**屬性是**False**，而且您指定 **/dd-** 或省略參數，VSDBCMD 不會將資料庫部署。
 - 如果**DeployToDatabase**屬性是**True**，VSDBCMD 將會忽略此參數，部署資料庫。
 - 在各案例中，不論是否您要部署的資料庫也會產生部署指令碼。
 

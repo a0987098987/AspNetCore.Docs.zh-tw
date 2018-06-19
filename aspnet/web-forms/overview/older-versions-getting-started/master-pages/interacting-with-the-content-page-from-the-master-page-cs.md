@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891083"
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-c"></a>互動內容的頁面上，從主版頁面 (C#)
 ====================

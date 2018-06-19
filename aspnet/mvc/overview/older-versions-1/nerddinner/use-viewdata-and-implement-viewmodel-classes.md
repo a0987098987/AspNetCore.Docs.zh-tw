@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879422"
 ---
 <a name="use-viewdata-and-implement-viewmodel-classes"></a>使用別的 ViewData 和實作 ViewModel 類別
 ====================
@@ -61,7 +62,7 @@ MVC 模式的定義特性的其中一個是 strict"的重要性分離 」 可協
 
 上述的 Html.DropDownList() helper 方法會採用兩個參數。 第一個是輸出將 HTML 表單項目的名稱。 第二個是我們透過別的 ViewData 字典傳遞"SelectList 」 模型。 我們使用 C#"關鍵字 as"轉型為 SelectList 字典內的型別。
 
-現在，當我們執行我們的應用程式，以及存取和*/Dinners/Edit/1* URL 我們瀏覽器中我們會看到我們編輯 UI，已更新以顯示國家/地區，而不是 textbox 的 dropdownlist:
+現在，當我們執行我們的應用程式，以及存取和 */Dinners/Edit/1* URL 我們瀏覽器中我們會看到我們編輯 UI，已更新以顯示國家/地區，而不是 textbox 的 dropdownlist:
 
 ![](use-viewdata-and-implement-viewmodel-classes/_static/image1.png)
 

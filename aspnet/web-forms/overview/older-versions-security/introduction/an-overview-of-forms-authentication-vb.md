@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891902"
 ---
 <a name="an-overview-of-forms-authentication-vb"></a>表單驗證 (VB) 的概觀
 ====================
@@ -103,7 +104,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 **圖 03**： 新增至網站的主版頁面名稱為 Site.master ([按一下以檢視完整大小的影像](an-overview-of-forms-authentication-vb/_static/image9.png))
 
 
-主版頁面中定義的全站台的頁面配置。 您可以使用 [設計] 檢視，並將在需要時，任何配置或 Web 控制項，或您可以手動在來源檢視中手動新增標記。 我結構化我主版頁面的版面配置，來模擬所使用的配置我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)*教學課程系列 （請參閱圖 4）。 使用主版頁面[階層式樣式表](http://www.w3schools.com/css/default.asp)用來定位和樣式 （其中包含在本教學課程相關下載） 的 Style.css 檔案中定義的 CSS 設定。 雖然您無法分辨從標記如下所示，定義的 CSS 規則，瀏覽&lt;div&gt;的內容絕對置放出現在左邊，使其具有固定的寬度為 200 像素。
+主版頁面中定義的全站台的頁面配置。 您可以使用 [設計] 檢視，並將在需要時，任何配置或 Web 控制項，或您可以手動在來源檢視中手動新增標記。 我結構化我主版頁面的版面配置，來模擬所使用的配置我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)* 教學課程系列 （請參閱圖 4）。 使用主版頁面[階層式樣式表](http://www.w3schools.com/css/default.asp)用來定位和樣式 （其中包含在本教學課程相關下載） 的 Style.css 檔案中定義的 CSS 設定。 雖然您無法分辨從標記如下所示，定義的 CSS 規則，瀏覽&lt;div&gt;的內容絕對置放出現在左邊，使其具有固定的寬度為 200 像素。
 
 [!code-aspx[Main](an-overview-of-forms-authentication-vb/samples/sample1.aspx)]
 
@@ -221,7 +222,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 
 在 ASP.NET 2.0 之前開發人員所負責實作自己使用者存放區，並撰寫程式碼以驗證對存放區提供的認證。 大部分的開發人員會實作使用者存放區在資料庫中，建立名為資料表的使用者其資料行，例如使用者名稱、 密碼、 電子郵件、 LastLoginDate，等等。 然後，此資料表中，會有一筆記錄，每個使用者帳戶。 正在驗證的使用者提供的認證會包含查詢比對的使用者名稱的資料庫，然後確保資料庫中的密碼，對應到所提供的密碼。
 
-使用 ASP.NET 2.0 中，開發人員應該使用其中一個成員資格提供者來管理使用者存放區。 在此教學課程中，我們將使用 SqlMembershipProvider，用於使用者存放區中的 SQL Server 資料庫。 當使用 SqlMembershipProvider 我們需要實作的特定資料庫結構描述包括資料表、 檢視和預存程序提供者所預期。 我們將檢查如何實作這個結構描述中的*[在 SQL Server 中建立成員資格結構描述](../membership/creating-the-membership-schema-in-sql-server-vb.md)*教學課程。 備妥的成員資格提供者，以驗證使用者的認證的很簡單，呼叫[成員資格類別](https://msdn.microsoft.com/library/system.web.security.membership.aspx)的[ValidateUser (*username*，*密碼*)方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)，它會傳回布林值，指出是否應的有效性*username*和*密碼*組合。 因為我們還沒有實作 SqlMembershipProvider 使用者存放區，我們無法在這一次使用成員資格類別的 ValidateUser 方法。
+使用 ASP.NET 2.0 中，開發人員應該使用其中一個成員資格提供者來管理使用者存放區。 在此教學課程中，我們將使用 SqlMembershipProvider，用於使用者存放區中的 SQL Server 資料庫。 當使用 SqlMembershipProvider 我們需要實作的特定資料庫結構描述包括資料表、 檢視和預存程序提供者所預期。 我們將檢查如何實作這個結構描述中的*[在 SQL Server 中建立成員資格結構描述](../membership/creating-the-membership-schema-in-sql-server-vb.md)* 教學課程。 備妥的成員資格提供者，以驗證使用者的認證的很簡單，呼叫[成員資格類別](https://msdn.microsoft.com/library/system.web.security.membership.aspx)的[ValidateUser (*username*，*密碼*)方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)，它會傳回布林值，指出是否應的有效性*username*和*密碼*組合。 因為我們還沒有實作 SqlMembershipProvider 使用者存放區，我們無法在這一次使用成員資格類別的 ValidateUser 方法。
 
 而不是花一些時間來建立自己自訂的使用者資料庫資料表 （這會是已過時之後我們實作 SqlMembershipProvider,），讓我們改為硬式編碼內登入的有效認證頁面本身。 在 LoginButton Click 事件處理常式，加入下列程式碼：
 

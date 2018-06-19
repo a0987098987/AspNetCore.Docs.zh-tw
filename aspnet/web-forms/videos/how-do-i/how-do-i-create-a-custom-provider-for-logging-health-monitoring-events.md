@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-provider-for-logging-health-monitoring-events
-title: "[如何:]建立記錄健康監視事件的自訂提供者 |Microsoft 文件"
+title: '[如何:]建立記錄健康監視事件的自訂提供者 |Microsoft 文件'
 author: rick-anderson
-description: "Chris Pels 示範如何建立 ASP.NET 健全狀況監視系統健全狀況監視的文字為基礎的記錄檔事件會記錄的自訂提供者。 Le..."
+description: Chris Pels 示範如何建立 ASP.NET 健全狀況監視系統健全狀況監視的文字為基礎的記錄檔事件會記錄的自訂提供者。 Le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524967"
 ---
 <a name="how-do-i-create-a-custom-provider-for-logging-health-monitoring-events"></a>[如何:]建立記錄健康監視事件的自訂提供者
 ====================

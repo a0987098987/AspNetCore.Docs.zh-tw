@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868704"
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a>安全性指導方針，ASP.NET web API 2 OData
 ====================
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/06/2018
 
 查詢語意會根據實體資料模型 (EDM) 中，沒有基礎的模型型別。 您可以排除 EDM 中的屬性，它將看不到查詢。 例如，假設您的模型包含的員工薪資屬性類型。 您可能想要排除這個屬性，以便隱藏用戶端在 EDM 中。
 
-有兩種方式可以排除在 EDM 中的屬性。 您可以設定**[IgnoreDataMember]**模型類別中的屬性上的屬性：
+有兩種方式可以排除在 EDM 中的屬性。 您可以設定 **[IgnoreDataMember]** 模型類別中的屬性上的屬性：
 
 [!code-csharp[Main](odata-security-guidance/samples/sample1.cs)]
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/06/2018
 
 惡意或貝氏的用戶端可以建構花很長的時間執行的查詢。 最糟的情況中，這可能會中斷您服務的存取權。
 
-**[Queryable]**屬性是剖析、 驗證以及將查詢套用的動作篩選條件。 篩選器會將查詢選項轉換成 LINQ 運算式。 當 OData 控制器傳回**IQueryable**型別， **IQueryable** LINQ 提供者會將 LINQ 運算式轉換成一個查詢。 因此，效能取決於 LINQ 提供者使用，以及您的資料集或資料庫結構描述的特定特性。
+**[Queryable]** 屬性是剖析、 驗證以及將查詢套用的動作篩選條件。 篩選器會將查詢選項轉換成 LINQ 運算式。 當 OData 控制器傳回**IQueryable**型別， **IQueryable** LINQ 提供者會將 LINQ 運算式轉換成一個查詢。 因此，效能取決於 LINQ 提供者使用，以及您的資料集或資料庫結構描述的特定特性。
 
 如需在 ASP.NET Web API 中使用 OData 查詢選項的詳細資訊，請參閱[支援 OData 查詢選項](supporting-odata-query-options.md)。
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/06/2018
 - 請考慮限制 $orderby 到叢集索引中的屬性。 排序沒有叢集索引的大型資料速度很慢。 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample5.cs)]
-- 最大節點計數：**為 MaxNodeCount**屬性**[Queryable]**設定最大的數字節點允許 $filter 語法樹狀目錄中。 預設值是 100，但可能會想要設定較低的值，因為大量節點可能會慢而無法編譯。 特別是如果您使用 LINQ to Objects （亦即，在記憶體中，而不使用中繼的 LINQ 提供者集合的 LINQ 查詢）。 
+- 最大節點計數：**為 MaxNodeCount**屬性 **[Queryable]** 設定最大的數字節點允許 $filter 語法樹狀目錄中。 預設值是 100，但可能會想要設定較低的值，因為大量節點可能會慢而無法編譯。 特別是如果您使用 LINQ to Objects （亦即，在記憶體中，而不使用中繼的 LINQ 提供者集合的 LINQ 查詢）。 
 
     [!code-csharp[Main](odata-security-guidance/samples/sample6.cs)]
 - 請考慮停用的 any （） 和 all （） 函數，這些可能會很慢。 

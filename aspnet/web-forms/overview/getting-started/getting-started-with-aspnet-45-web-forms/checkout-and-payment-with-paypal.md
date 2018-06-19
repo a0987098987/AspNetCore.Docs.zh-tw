@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891889"
 ---
 <a name="checkout-and-payment-with-paypal"></a>簽出和與 PayPal 付款
 ====================
@@ -294,7 +295,7 @@ PayPal 是網頁型計費平台可接受的線上商家付款。 本教學課程
 
 1. 在 Visual Studio 內 Wingtip Toys 範例應用程式，以滑鼠右鍵按一下**邏輯**資料夾，然後選取**新增** - &gt; **新項目**。   
    隨即顯示 [ 新增項目] 對話方塊。
-2. 在下**Visual C#**從**已安裝**左邊的窗格，選取**程式碼**。
+2. 在下**Visual C#** 從**已安裝**左邊的窗格，選取**程式碼**。
 3. 從中間窗格中，選取**類別**。 這個新類別命名**PayPalFunctions.cs**。
 4. 按一下 [加入] 。  
    在編輯器中，會顯示新的類別檔案。

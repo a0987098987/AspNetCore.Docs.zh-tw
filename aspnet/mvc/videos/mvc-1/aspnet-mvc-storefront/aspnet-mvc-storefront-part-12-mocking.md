@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879721"
 ---
 <a name="aspnet-mvc-storefront-part-12-mocking"></a>ASP.NET MVC Storefront 一部分 12： 模擬
 ====================

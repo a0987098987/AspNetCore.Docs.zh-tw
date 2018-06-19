@@ -17,6 +17,7 @@ ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29153514"
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a><span data-ttu-id="49bf4-104">ASP.NET Web API 2 中的驗證篩選條件</span><span class="sxs-lookup"><span data-stu-id="49bf4-104">Authentication Filters in ASP.NET Web API 2</span></span>
 ====================

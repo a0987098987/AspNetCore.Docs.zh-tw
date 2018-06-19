@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891876"
 ---
 <a name="caching"></a><span data-ttu-id="df986-104">快取</span><span class="sxs-lookup"><span data-stu-id="df986-104">Caching</span></span>
 ====================
@@ -158,7 +159,7 @@ ms.lasthandoff: 04/10/2018
 
 <span data-ttu-id="df986-214">在此情況下，如果查詢中指定**SelectCommand**傳回原始未不同於它的結果時，會快取的結果會失效。</span><span class="sxs-lookup"><span data-stu-id="df986-214">In this case, if the query specified in the **SelectCommand** returns a different result than it did originally, the results that are cached are invalidated.</span></span>
 
-<span data-ttu-id="df986-215">您也可以指定所有的資料來源會藉由設定啟用 SQL 快取相依性**SqlDependency**屬性**@ OutputCache**指示詞加入**CommandNotification**.</span><span class="sxs-lookup"><span data-stu-id="df986-215">You can also specify that all of your data sources be enabled for SQL cache dependencies by setting the **SqlDependency** attribute of the **@ OutputCache** directive to **CommandNotification**.</span></span> <span data-ttu-id="df986-216">下列範例將說明這點。</span><span class="sxs-lookup"><span data-stu-id="df986-216">The example below illustrates this.</span></span>
+<span data-ttu-id="df986-215">您也可以指定所有的資料來源會藉由設定啟用 SQL 快取相依性**SqlDependency**屬性 **@ OutputCache**指示詞加入**CommandNotification**.</span><span class="sxs-lookup"><span data-stu-id="df986-215">You can also specify that all of your data sources be enabled for SQL cache dependencies by setting the **SqlDependency** attribute of the **@ OutputCache** directive to **CommandNotification**.</span></span> <span data-ttu-id="df986-216">下列範例將說明這點。</span><span class="sxs-lookup"><span data-stu-id="df986-216">The example below illustrates this.</span></span>
 
 [!code-aspx[Main](caching/samples/sample13.aspx)]
 

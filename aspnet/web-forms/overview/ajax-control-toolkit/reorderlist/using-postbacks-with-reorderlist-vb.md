@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879487"
 ---
 <a name="using-postbacks-with-reorderlist-vb"></a><span data-ttu-id="f916d-104">回傳使用 ReorderList (VB)</span><span class="sxs-lookup"><span data-stu-id="f916d-104">Using Postbacks with ReorderList (VB)</span></span>
 ====================

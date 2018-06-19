@@ -1,7 +1,7 @@
 ---
-title: "利用 ASP.NET Core 進行行動開發"
+title: 利用 ASP.NET Core 進行行動開發
 author: rick-anderson
-description: "尋找有關利用 ASP.NET Core 進行行動開發的主題。"
+description: 尋找有關利用 ASP.NET Core 進行行動開發的主題。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29902275"
 ---
 # <a name="mobile-development-with-aspnet-core"></a><span data-ttu-id="f68de-103">利用 ASP.NET Core 進行行動開發</span><span class="sxs-lookup"><span data-stu-id="f68de-103">Mobile development with ASP.NET Core</span></span>
 

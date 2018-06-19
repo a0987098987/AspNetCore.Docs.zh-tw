@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890095"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a><span data-ttu-id="e3ca9-103">ASP.NET 4.5 中使用非同步方法</span><span class="sxs-lookup"><span data-stu-id="e3ca9-103">Using Asynchronous Methods in ASP.NET 4.5</span></span>
 ====================

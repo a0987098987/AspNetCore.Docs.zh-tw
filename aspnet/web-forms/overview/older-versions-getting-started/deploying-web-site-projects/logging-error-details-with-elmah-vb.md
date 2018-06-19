@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891304"
 ---
 <a name="logging-error-details-with-elmah-vb"></a><span data-ttu-id="cc44c-104">記錄錯誤的詳細資料與 ELMAH (VB)</span><span class="sxs-lookup"><span data-stu-id="cc44c-104">Logging Error Details with ELMAH (VB)</span></span>
 ====================

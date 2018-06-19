@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30890791"
 ---
 <a name="performing-batch-updates-c"></a><span data-ttu-id="ba0a5-103">執行批次更新 (C#)</span><span class="sxs-lookup"><span data-stu-id="ba0a5-103">Performing Batch Updates (C#)</span></span>
 ====================

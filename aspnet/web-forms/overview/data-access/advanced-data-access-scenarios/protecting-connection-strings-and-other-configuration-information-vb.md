@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876991"
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-vb"></a><span data-ttu-id="47614-105">保護連接字串和其他組態資訊 (VB)</span><span class="sxs-lookup"><span data-stu-id="47614-105">Protecting Connection Strings and Other Configuration Information (VB)</span></span>
 ====================

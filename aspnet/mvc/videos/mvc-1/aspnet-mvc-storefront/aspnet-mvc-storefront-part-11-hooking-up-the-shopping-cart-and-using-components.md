@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879100"
 ---
 <a name="aspnet-mvc-storefront-part-11-hooking-up-the-shopping-cart-and-using-components"></a><span data-ttu-id="2a145-104">ASP.NET MVC Storefront 部分 11： 購物車連結，並使用元件</span><span class="sxs-lookup"><span data-stu-id="2a145-104">ASP.NET MVC Storefront Part 11: Hooking Up The Shopping Cart and Using Components</span></span>
 ====================

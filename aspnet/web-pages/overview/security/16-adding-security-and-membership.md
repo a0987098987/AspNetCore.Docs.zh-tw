@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898855"
 ---
 <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="9f56b-104">加入 ASP.NET Web Pages (Razor) 站台的安全性和成員資格</span><span class="sxs-lookup"><span data-stu-id="9f56b-104">Adding Security and Membership to an ASP.NET Web Pages (Razor) Site</span></span>
 ====================
@@ -158,7 +159,7 @@ ms.lasthandoff: 04/06/2018
 
     <span data-ttu-id="9f56b-222">程式碼也會設定 *\_SiteLayout.cshtml*其版面配置頁的頁面。</span><span class="sxs-lookup"><span data-stu-id="9f56b-222">The code also sets *\_SiteLayout.cshtml* page as its layout page.</span></span> <span data-ttu-id="9f56b-223">(如需詳細資訊版面配置頁面，請參閱[ASP.NET Web Pages 站台中建立一致的版面配置](https://go.microsoft.com/fwlink/?LinkId=202891)。)</span><span class="sxs-lookup"><span data-stu-id="9f56b-223">(For more about layout pages, see [Creating a Consistent Layout in ASP.NET Web Pages Sites](https://go.microsoft.com/fwlink/?LinkId=202891).)</span></span>
 5. <span data-ttu-id="9f56b-224">執行站台。</span><span class="sxs-lookup"><span data-stu-id="9f56b-224">Run the site.</span></span> <span data-ttu-id="9f56b-225">如果您仍登入，請按一下**登出**在頁面頂端的按鈕。</span><span class="sxs-lookup"><span data-stu-id="9f56b-225">If you're still logged in, click the **Logout** button at the top of the page.</span></span>
-6. <span data-ttu-id="9f56b-226">在瀏覽器要求網頁*/成員/MembersInformation*。</span><span class="sxs-lookup"><span data-stu-id="9f56b-226">In the browser, request the page */Members/MembersInformation*.</span></span> <span data-ttu-id="9f56b-227">例如，URL 看起來可能像這樣：</span><span class="sxs-lookup"><span data-stu-id="9f56b-227">For example, the URL might look like this:</span></span>
+6. <span data-ttu-id="9f56b-226">在瀏覽器要求網頁 */成員/MembersInformation*。</span><span class="sxs-lookup"><span data-stu-id="9f56b-226">In the browser, request the page */Members/MembersInformation*.</span></span> <span data-ttu-id="9f56b-227">例如，URL 看起來可能像這樣：</span><span class="sxs-lookup"><span data-stu-id="9f56b-227">For example, the URL might look like this:</span></span>
 
     `http://localhost:38366/Members/MembersInformation`
 

@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
-title: "新功能 ASP.NET 4.5 和 Visual Studio 2012 |Microsoft 文件"
+title: 新功能 ASP.NET 4.5 和 Visual Studio 2012 |Microsoft 文件
 author: rick-anderson
-description: "本文件說明新功能和 ASP.NET 4.5 中引進的增強功能。 它也會描述針對 web 開發所進行的增強功能..."
+description: 本文件說明新功能和 ASP.NET 4.5 中引進的增強功能。 它也會描述針對 web 開發所進行的增強功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/29/2012
 ms.topic: article
 ms.assetid: ba1fabb4-31a3-4ebf-8327-41a6bbba6eaf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/whats-new-in-aspnet-45-and-visual-studio-2012
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28886438"
 ---
 <a name="whats-new-in-aspnet-45-and-visual-studio-2012"></a><span data-ttu-id="53d9b-104">什麼是 ASP.NET 4.5 和 Visual Studio 2012 的新功能</span><span class="sxs-lookup"><span data-stu-id="53d9b-104">What's New in ASP.NET 4.5 and Visual Studio 2012</span></span>
 ====================
@@ -583,11 +584,11 @@ ms.lasthandoff: 01/30/2018
 
 [!code-xml[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample34.xml?highlight=3)]
 
-<span data-ttu-id="53d9b-518">當**runAllManagedModulesForAllRequests**是 true，URL，例如`http://mysite/myapp/home`前往 ASP.NET，即使有沒有*.aspx*， *.mvc*，或類似的副檔名URL。</span><span class="sxs-lookup"><span data-stu-id="53d9b-518">When **runAllManagedModulesForAllRequests** is true, a URL like `http://mysite/myapp/home` goes to ASP.NET, even though there is no *.aspx*, *.mvc*, or similar extension on the URL.</span></span>
+<span data-ttu-id="53d9b-518">當**runAllManagedModulesForAllRequests**是 true，URL，例如`http://mysite/myapp/home`前往 ASP.NET，即使有沒有 *.aspx*， *.mvc*，或類似的副檔名URL。</span><span class="sxs-lookup"><span data-stu-id="53d9b-518">When **runAllManagedModulesForAllRequests** is true, a URL like `http://mysite/myapp/home` goes to ASP.NET, even though there is no *.aspx*, *.mvc*, or similar extension on the URL.</span></span>
 
 <span data-ttu-id="53d9b-519">已對 IIS 7 的更新可讓**runAllManagedModulesForAllRequests**不必要的設定，並支援 ASP.NET 路由原生。</span><span class="sxs-lookup"><span data-stu-id="53d9b-519">An update that was made to IIS 7 makes the **runAllManagedModulesForAllRequests** setting unnecessary and supports ASP.NET routing natively.</span></span> <span data-ttu-id="53d9b-520">(如需更新的資訊，請參閱 Microsoft 支援文章[可更新功能可讓某些 IIS 7.0 或 IIS 7.5 處理常式來處理要求的 Url 不以句號結束](https://support.microsoft.com/kb/980368)。)</span><span class="sxs-lookup"><span data-stu-id="53d9b-520">(For information about the update, see the Microsoft Support article [An update is available that enables certain IIS 7.0 or IIS 7.5 handlers to handle requests whose URLs do not end with a period](https://support.microsoft.com/kb/980368).)</span></span>
 
-<span data-ttu-id="53d9b-521">如果您的網站在 IIS 7 上執行，而且如果 IIS 已經更新，您不需要設定**runAllManagedModulesForAllRequests**為 true。</span><span class="sxs-lookup"><span data-stu-id="53d9b-521">If your website is running on IIS 7 and if IIS has been updated, you do not need to set **runAllManagedModulesForAllRequests** to true.</span></span> <span data-ttu-id="53d9b-522">事實上，將它設定為 true 不建議，因為它會加入不必要處理負荷的要求。</span><span class="sxs-lookup"><span data-stu-id="53d9b-522">In fact, setting it to true is not recommended, because it adds unnecessary processing overhead to request.</span></span> <span data-ttu-id="53d9b-523">這項設定為 true 時，所有要求，包括用於*.htm*， *.jpg*，和其他靜態檔案，也會經過 ASP.NET 要求管線。</span><span class="sxs-lookup"><span data-stu-id="53d9b-523">When this setting is true, all requests, including those for *.htm*, *.jpg*, and other static files, also go through the ASP.NET request pipeline.</span></span>
+<span data-ttu-id="53d9b-521">如果您的網站在 IIS 7 上執行，而且如果 IIS 已經更新，您不需要設定**runAllManagedModulesForAllRequests**為 true。</span><span class="sxs-lookup"><span data-stu-id="53d9b-521">If your website is running on IIS 7 and if IIS has been updated, you do not need to set **runAllManagedModulesForAllRequests** to true.</span></span> <span data-ttu-id="53d9b-522">事實上，將它設定為 true 不建議，因為它會加入不必要處理負荷的要求。</span><span class="sxs-lookup"><span data-stu-id="53d9b-522">In fact, setting it to true is not recommended, because it adds unnecessary processing overhead to request.</span></span> <span data-ttu-id="53d9b-523">這項設定為 true 時，所有要求，包括用於 *.htm*， *.jpg*，和其他靜態檔案，也會經過 ASP.NET 要求管線。</span><span class="sxs-lookup"><span data-stu-id="53d9b-523">When this setting is true, all requests, including those for *.htm*, *.jpg*, and other static files, also go through the ASP.NET request pipeline.</span></span>
 
 <span data-ttu-id="53d9b-524">如果您建立新的 ASP.NET 4.5 網站，使用 Visual Studio 2012 RC 中所提供的範本，為網站組態不包含**runAllManagedModulesForAllRequests**設定。</span><span class="sxs-lookup"><span data-stu-id="53d9b-524">If you create a new ASP.NET 4.5 website using the templates that are provided in Visual Studio 2012 RC, the configuration for the website does not include the **runAllManagedModulesForAllRequests** setting.</span></span> <span data-ttu-id="53d9b-525">這表示根據預設設定為 false。</span><span class="sxs-lookup"><span data-stu-id="53d9b-525">This means that by default the setting is false.</span></span>
 
@@ -632,7 +633,7 @@ ms.lasthandoff: 01/30/2018
 
 ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image10.png)
 
-<span data-ttu-id="53d9b-553">WAI ARIA 標準也導入了前面會加上的屬性*aria-* ，可讓您加入的 HTML5 文件的語意。</span><span class="sxs-lookup"><span data-stu-id="53d9b-553">The WAI-ARIA standard also introduces attributes that are prefixed with *aria-* that let you add semantics to an HTML5 document.</span></span> <span data-ttu-id="53d9b-554">Visual Studio 也完全支援這些*aria-*屬性：</span><span class="sxs-lookup"><span data-stu-id="53d9b-554">Visual Studio also fully supports these *aria-* attributes:</span></span>
+<span data-ttu-id="53d9b-553">WAI ARIA 標準也導入了前面會加上的屬性*aria-* ，可讓您加入的 HTML5 文件的語意。</span><span class="sxs-lookup"><span data-stu-id="53d9b-553">The WAI-ARIA standard also introduces attributes that are prefixed with *aria-* that let you add semantics to an HTML5 document.</span></span> <span data-ttu-id="53d9b-554">Visual Studio 也完全支援這些*aria-* 屬性：</span><span class="sxs-lookup"><span data-stu-id="53d9b-554">Visual Studio also fully supports these *aria-* attributes:</span></span>
 
 <span data-ttu-id="53d9b-555">![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image11.png) ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image12.png)</span><span class="sxs-lookup"><span data-stu-id="53d9b-555">![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image11.png) ![](whats-new-in-aspnet-45-and-visual-studio-2012/_static/image12.png)</span></span>
 
@@ -750,7 +751,7 @@ ms.lasthandoff: 01/30/2018
 <a id="_Toc318097413"></a>
 #### <a name="vsdoc-signature-overloads"></a><span data-ttu-id="53d9b-600">VSDOC 簽章的多載</span><span class="sxs-lookup"><span data-stu-id="53d9b-600">VSDOC signature overloads</span></span>
 
-<span data-ttu-id="53d9b-601">詳細的 IntelliSense 註解可以現在為宣告不同的 JavaScript 函式多載使用新*&lt;簽章&gt;*項目，如這個範例所示：</span><span class="sxs-lookup"><span data-stu-id="53d9b-601">Detailed IntelliSense comments can now be declared for separate overloads of JavaScript functions by using the new *&lt;signature&gt;* element, as shown in this example:</span></span>
+<span data-ttu-id="53d9b-601">詳細的 IntelliSense 註解可以現在為宣告不同的 JavaScript 函式多載使用新*&lt;簽章&gt;* 項目，如這個範例所示：</span><span class="sxs-lookup"><span data-stu-id="53d9b-601">Detailed IntelliSense comments can now be declared for separate overloads of JavaScript functions by using the new *&lt;signature&gt;* element, as shown in this example:</span></span>
 
 [!code-csharp[Main](whats-new-in-aspnet-45-and-visual-studio-2012/samples/sample35.cs)]
 

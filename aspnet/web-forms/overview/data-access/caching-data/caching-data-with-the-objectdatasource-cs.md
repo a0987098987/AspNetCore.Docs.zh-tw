@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879188"
 ---
 <a name="caching-data-with-the-objectdatasource-c"></a><span data-ttu-id="fbf05-104">快取資料與 ObjectDataSource (C#)</span><span class="sxs-lookup"><span data-stu-id="fbf05-104">Caching Data with the ObjectDataSource (C#)</span></span>
 ====================

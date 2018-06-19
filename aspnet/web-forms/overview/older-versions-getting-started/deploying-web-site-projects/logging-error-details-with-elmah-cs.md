@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30890615"
 ---
 <a name="logging-error-details-with-elmah-c"></a><span data-ttu-id="30d0c-104">記錄錯誤的詳細資料與 ELMAH (C#)</span><span class="sxs-lookup"><span data-stu-id="30d0c-104">Logging Error Details with ELMAH (C#)</span></span>
 ====================

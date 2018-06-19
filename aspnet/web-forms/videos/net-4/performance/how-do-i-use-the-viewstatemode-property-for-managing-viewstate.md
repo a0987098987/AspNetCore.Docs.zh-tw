@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894203"
 ---
 <a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a><span data-ttu-id="29ef3-104">如何： 使用 ViewStateMode 屬性來管理 ViewState？</span><span class="sxs-lookup"><span data-stu-id="29ef3-104">How Do I: Use the ViewStateMode Property for Managing ViewState?</span></span>
 ====================

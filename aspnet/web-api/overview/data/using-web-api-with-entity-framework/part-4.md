@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872685"
 ---
 <a name="handling-entity-relations"></a><span data-ttu-id="ff1ba-102">處理實體關聯性</span><span class="sxs-lookup"><span data-stu-id="ff1ba-102">Handling Entity Relations</span></span>
 ====================

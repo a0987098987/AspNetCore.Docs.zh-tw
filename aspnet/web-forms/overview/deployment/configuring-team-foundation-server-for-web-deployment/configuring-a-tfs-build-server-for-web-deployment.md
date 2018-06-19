@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30892513"
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a><span data-ttu-id="b9b05-103">設定用於 Web 部署的 TFS 組建伺服器</span><span class="sxs-lookup"><span data-stu-id="b9b05-103">Configuring a TFS Build Server for Web Deployment</span></span>
 ====================
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/10/2018
     > <span data-ttu-id="b9b05-170">您可能已安裝.NET Framework 4.0，透過 Windows Update。</span><span class="sxs-lookup"><span data-stu-id="b9b05-170">You may have already installed the .NET Framework 4.0 through Windows Update.</span></span> <span data-ttu-id="b9b05-171">如果已安裝的產品或元件，Web Platform Installer 將會指示這取代**新增**按鈕的文字**已安裝**。</span><span class="sxs-lookup"><span data-stu-id="b9b05-171">If a product or component is already installed, the Web Platform Installer will indicate this by replacing the **Add** button with the text **Installed**.</span></span>
 
     ![](configuring-a-tfs-build-server-for-web-deployment/_static/image2.png)
-7. <span data-ttu-id="b9b05-172">在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 [**新增**。</span><span class="sxs-lookup"><span data-stu-id="b9b05-172">In the **ASP.NET MVC 3 (Visual Studio 2010)** row, click **Add**.</span></span>
+7. <span data-ttu-id="b9b05-172">在**ASP.NET MVC 3 (Visual Studio 2010)** 資料列中，按一下 [**新增**。</span><span class="sxs-lookup"><span data-stu-id="b9b05-172">In the **ASP.NET MVC 3 (Visual Studio 2010)** row, click **Add**.</span></span>
 8. <span data-ttu-id="b9b05-173">在導覽窗格中，按一下**伺服器**。</span><span class="sxs-lookup"><span data-stu-id="b9b05-173">In the navigation pane, click **Server**.</span></span>
 9. <span data-ttu-id="b9b05-174">在**Web 部署工具 2.1**資料列中，按一下 [**新增**。</span><span class="sxs-lookup"><span data-stu-id="b9b05-174">In the **Web Deployment Tool 2.1** row, click **Add**.</span></span>
 10. <span data-ttu-id="b9b05-175">按一下 [安裝] 。</span><span class="sxs-lookup"><span data-stu-id="b9b05-175">Click **Install**.</span></span> <span data-ttu-id="b9b05-176">Web Platform Installer 將會顯示您的產品清單&#x2014;以及任何相關聯相依性&#x2014;安裝就會提示您接受授權條款。</span><span class="sxs-lookup"><span data-stu-id="b9b05-176">The Web Platform Installer will show you a list of products&#x2014;together with any associated dependencies&#x2014;to be installed and will prompt you to accept the license terms.</span></span>

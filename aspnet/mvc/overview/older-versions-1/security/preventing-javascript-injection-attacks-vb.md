@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871229"
 ---
 <a name="preventing-javascript-injection-attacks-vb"></a><span data-ttu-id="3b8e8-104">防止 JavaScript 插入式攻擊 (VB)</span><span class="sxs-lookup"><span data-stu-id="3b8e8-104">Preventing JavaScript Injection Attacks (VB)</span></span>
 ====================

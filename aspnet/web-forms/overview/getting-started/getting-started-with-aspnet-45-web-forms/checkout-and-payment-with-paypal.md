@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891889"
 ---
 <a name="checkout-and-payment-with-paypal"></a><span data-ttu-id="19466-103">簽出和與 PayPal 付款</span><span class="sxs-lookup"><span data-stu-id="19466-103">Checkout and Payment with PayPal</span></span>
 ====================
@@ -294,7 +295,7 @@ ms.lasthandoff: 04/10/2018
 
 1. <span data-ttu-id="19466-333">在 Visual Studio 內 Wingtip Toys 範例應用程式，以滑鼠右鍵按一下**邏輯**資料夾，然後選取**新增** - &gt; **新項目**。</span><span class="sxs-lookup"><span data-stu-id="19466-333">In the Wingtip Toys sample application within Visual Studio, right-click the **Logic** folder and then select **Add** -&gt; **New Item**.</span></span>   
    <span data-ttu-id="19466-334">隨即顯示 [ 新增項目] 對話方塊。</span><span class="sxs-lookup"><span data-stu-id="19466-334">The **Add New Item** dialog box is displayed.</span></span>
-2. <span data-ttu-id="19466-335">在下**Visual C#**從**已安裝**左邊的窗格，選取**程式碼**。</span><span class="sxs-lookup"><span data-stu-id="19466-335">Under **Visual C#** from the **Installed** pane on the left, select **Code**.</span></span>
+2. <span data-ttu-id="19466-335">在下**Visual C#** 從**已安裝**左邊的窗格，選取**程式碼**。</span><span class="sxs-lookup"><span data-stu-id="19466-335">Under **Visual C#** from the **Installed** pane on the left, select **Code**.</span></span>
 3. <span data-ttu-id="19466-336">從中間窗格中，選取**類別**。</span><span class="sxs-lookup"><span data-stu-id="19466-336">From the middle pane, select **Class**.</span></span> <span data-ttu-id="19466-337">這個新類別命名**PayPalFunctions.cs**。</span><span class="sxs-lookup"><span data-stu-id="19466-337">Name this new class **PayPalFunctions.cs**.</span></span>
 4. <span data-ttu-id="19466-338">按一下 [加入] 。</span><span class="sxs-lookup"><span data-stu-id="19466-338">Click **Add**.</span></span>  
    <span data-ttu-id="19466-339">在編輯器中，會顯示新的類別檔案。</span><span class="sxs-lookup"><span data-stu-id="19466-339">The new class file is displayed in the editor.</span></span>

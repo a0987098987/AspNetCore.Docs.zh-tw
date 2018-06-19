@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899197"
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a><span data-ttu-id="27a74-103">ASP.NET Web Pages (Razor) 網站的自訂全站台的行為</span><span class="sxs-lookup"><span data-stu-id="27a74-103">Customizing Site-Wide Behavior for ASP.NET Web Pages (Razor) Sites</span></span>
 ====================
@@ -131,7 +132,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-cshtml[Main](18-customizing-site-wide-behavior/samples/sample7.cshtml)]
 
-<span data-ttu-id="27a74-190">當您執行*/myfolder/default.cshtml*，您會看到下列訊息：</span><span class="sxs-lookup"><span data-stu-id="27a74-190">When you run */myfolder/default.cshtml*, you'll see the following:</span></span>
+<span data-ttu-id="27a74-190">當您執行 */myfolder/default.cshtml*，您會看到下列訊息：</span><span class="sxs-lookup"><span data-stu-id="27a74-190">When you run */myfolder/default.cshtml*, you'll see the following:</span></span>
 
 [!code-console[Main](18-customizing-site-wide-behavior/samples/sample8.cmd)]
 

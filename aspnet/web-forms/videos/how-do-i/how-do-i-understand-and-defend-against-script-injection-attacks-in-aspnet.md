@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet
-title: "如何了解和防範指令碼資料隱碼攻擊中 ASP.NET |Microsoft 文件"
+title: 如何了解和防範指令碼資料隱碼攻擊中 ASP.NET |Microsoft 文件
 author: JoeStagner
-description: "跨網站指令碼 (XSS) 可能是 web 開發人員處理這些天最麻煩的安全性問題。 在這段影片，專業人員的 Microsoft Joe stagner 以..."
+description: 跨網站指令碼 (XSS) 可能是 web 開發人員處理這些天最麻煩的安全性問題。 在這段影片，專業人員的 Microsoft Joe stagner 以...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882226"
 ---
 <a name="how-do-i-understand-and-defend-against-script-injection-attacks-in-aspnet"></a><span data-ttu-id="76d65-104">如何了解並防範指令碼資料隱碼攻擊的 ASP.NET 中</span><span class="sxs-lookup"><span data-stu-id="76d65-104">How Do I Understand and Defend Against Script Injection Attacks in ASP.NET</span></span>
 ====================

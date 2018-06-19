@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898402"
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a><span data-ttu-id="a3eb3-103">並存執行不同版本的 ASP.NET Web Pages (Razor)</span><span class="sxs-lookup"><span data-stu-id="a3eb3-103">Running Different Versions of ASP.NET Web Pages (Razor) Side by Side</span></span>
 ====================

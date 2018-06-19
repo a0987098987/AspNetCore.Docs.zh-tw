@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879162"
 ---
 <a name="caching-data-at-application-startup-c"></a><span data-ttu-id="a989a-104">快取資料在應用程式啟動 (C#)</span><span class="sxs-lookup"><span data-stu-id="a989a-104">Caching Data at Application Startup (C#)</span></span>
 ====================

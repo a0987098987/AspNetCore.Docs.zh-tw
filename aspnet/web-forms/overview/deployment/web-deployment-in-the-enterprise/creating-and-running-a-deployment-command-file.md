@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891174"
 ---
 <a name="creating-and-running-a-deployment-command-file"></a><span data-ttu-id="28cd1-103">建立和執行部署指令檔</span><span class="sxs-lookup"><span data-stu-id="28cd1-103">Creating and Running a Deployment Command File</span></span>
 ====================

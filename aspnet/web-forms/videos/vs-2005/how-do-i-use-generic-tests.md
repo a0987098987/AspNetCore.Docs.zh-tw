@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895002"
 ---
 <a name="how-do-i-use-generic-tests"></a><span data-ttu-id="09fcd-105">[如何:]使用一般測試嗎？</span><span class="sxs-lookup"><span data-stu-id="09fcd-105">[How Do I:] Use Generic Tests?</span></span>
 ====================

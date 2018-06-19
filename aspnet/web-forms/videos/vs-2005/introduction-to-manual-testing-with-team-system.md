@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894836"
 ---
 <a name="introduction-to-manual-testing-with-team-system"></a><span data-ttu-id="d86e3-103">簡介與 Team System 的手動測試</span><span class="sxs-lookup"><span data-stu-id="d86e3-103">Introduction to Manual Testing with Team System</span></span>
 ====================

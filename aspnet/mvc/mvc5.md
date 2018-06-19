@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077916"
 ---
 <a name="aspnet-mvc-5"></a><span data-ttu-id="5d1b3-103">ASP.NET MVC 5</span><span class="sxs-lookup"><span data-stu-id="5d1b3-103">ASP.NET MVC 5</span></span>
 ====================

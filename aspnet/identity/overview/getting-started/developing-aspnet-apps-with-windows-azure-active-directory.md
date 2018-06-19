@@ -17,6 +17,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33838494"
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a><span data-ttu-id="26946-104">使用 Azure Active Directory 開發的 ASP.NET 應用程式</span><span class="sxs-lookup"><span data-stu-id="26946-104">Developing ASP.NET Apps with Azure Active Directory</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884281"
 ---
 <a name="multi-targeting-support-in-visual-studio-2008"></a><span data-ttu-id="467a6-104">多目標 Visual Studio 2008 中的支援</span><span class="sxs-lookup"><span data-stu-id="467a6-104">Multi Targeting Support in Visual Studio 2008</span></span>
 ====================

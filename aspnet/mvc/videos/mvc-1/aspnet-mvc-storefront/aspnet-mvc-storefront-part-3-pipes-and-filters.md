@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878447"
 ---
 <a name="aspnet-mvc-storefront-part-3-pipes-and-filters"></a><span data-ttu-id="685a6-103">ASP.NET MVC Storefront 第 3 部分： 管線和篩選</span><span class="sxs-lookup"><span data-stu-id="685a6-103">ASP.NET MVC Storefront Part 3: Pipes and Filters</span></span>
 ====================

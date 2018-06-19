@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872542"
 ---
 <a name="adding-validation-to-the-model-c"></a><span data-ttu-id="94350-103">將驗證加入至模型 (C#)</span><span class="sxs-lookup"><span data-stu-id="94350-103">Adding Validation to the Model (C#)</span></span>
 ====================
@@ -75,7 +76,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="validation-error-ui-in-aspnet-mvc"></a><span data-ttu-id="94350-143">驗證錯誤 ASP.NET MVC 中的 UI</span><span class="sxs-lookup"><span data-stu-id="94350-143">Validation Error UI in ASP.NET MVC</span></span>
 
-<span data-ttu-id="94350-144">重新執行應用程式，並瀏覽至*/Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="94350-144">Re-run the application and navigate to the */Movies* URL.</span></span>
+<span data-ttu-id="94350-144">重新執行應用程式，並瀏覽至 */Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="94350-144">Re-run the application and navigate to the */Movies* URL.</span></span>
 
 <span data-ttu-id="94350-145">按一下**建立電影**連結加入新的電影。</span><span class="sxs-lookup"><span data-stu-id="94350-145">Click the **Create Movie** link to add a new movie.</span></span> <span data-ttu-id="94350-146">填寫表單具有一些無效的值，然後按一下 [**建立**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="94350-146">Fill out the form with some invalid values and then click the **Create** button.</span></span>
 

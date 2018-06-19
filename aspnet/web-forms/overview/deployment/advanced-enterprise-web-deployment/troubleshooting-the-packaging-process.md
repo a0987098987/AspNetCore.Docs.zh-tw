@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892682"
 ---
 <a name="troubleshooting-the-packaging-process"></a><span data-ttu-id="fbbb8-103">疑難排解封裝程序</span><span class="sxs-lookup"><span data-stu-id="fbbb8-103">Troubleshooting the Packaging Process</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883608"
 ---
 <a name="intellisense-for-jscript-and-aspnet-ajax"></a><span data-ttu-id="afcb6-103">Jscript 與 ASP.NET AJAX 的 IntelliSense</span><span class="sxs-lookup"><span data-stu-id="afcb6-103">IntelliSense for Jscript and ASP.NET AJAX</span></span>
 ====================

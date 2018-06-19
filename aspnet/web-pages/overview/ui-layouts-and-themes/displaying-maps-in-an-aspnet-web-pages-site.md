@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893858"
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="44da7-103">顯示 ASP.NET Web Pages (Razor) 網站中的對應</span><span class="sxs-lookup"><span data-stu-id="44da7-103">Displaying Maps in an ASP.NET Web Pages (Razor) Site</span></span>
 ====================
@@ -84,7 +85,7 @@ ms.lasthandoff: 04/06/2018
 
     <span data-ttu-id="44da7-150">請注意頁面上的下列功能：</span><span class="sxs-lookup"><span data-stu-id="44da7-150">Notice the following features of the page:</span></span>
 
-    - <span data-ttu-id="44da7-151">`<script>`中的項目`<head>`項目。</span><span class="sxs-lookup"><span data-stu-id="44da7-151">The `<script>` element in the `<head>` element.</span></span> <span data-ttu-id="44da7-152">在範例中，`<script>`項目參考*jquery 1.6.4.min.js* jQuery 程式庫版本 1.6.4 縮短 （壓縮） 版本的檔案。</span><span class="sxs-lookup"><span data-stu-id="44da7-152">In the example, the `<script>` element references the *jquery-1.6.4.min.js* file, which is a minified (compressed) version of the jQuery library, version 1.6.4.</span></span> <span data-ttu-id="44da7-153">請注意，參考假設*.js*檔案位於*指令碼*網站的資料夾。</span><span class="sxs-lookup"><span data-stu-id="44da7-153">Note that the reference assumes that the *.js* file is in the *Scripts* folder of your site.</span></span> 
+    - <span data-ttu-id="44da7-151">`<script>`中的項目`<head>`項目。</span><span class="sxs-lookup"><span data-stu-id="44da7-151">The `<script>` element in the `<head>` element.</span></span> <span data-ttu-id="44da7-152">在範例中，`<script>`項目參考*jquery 1.6.4.min.js* jQuery 程式庫版本 1.6.4 縮短 （壓縮） 版本的檔案。</span><span class="sxs-lookup"><span data-stu-id="44da7-152">In the example, the `<script>` element references the *jquery-1.6.4.min.js* file, which is a minified (compressed) version of the jQuery library, version 1.6.4.</span></span> <span data-ttu-id="44da7-153">請注意，參考假設 *.js*檔案位於*指令碼*網站的資料夾。</span><span class="sxs-lookup"><span data-stu-id="44da7-153">Note that the reference assumes that the *.js* file is in the *Scripts* folder of your site.</span></span> 
 
         > [!NOTE]
         > <span data-ttu-id="44da7-154">如果您使用不同版本的 jQuery 程式庫，請確定您指向該版本正確。</span><span class="sxs-lookup"><span data-stu-id="44da7-154">If you're using a different version of the jQuery library, just make sure that you're pointing to that version correctly.</span></span>

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893930"
 ---
 <a name="adding-social-networking-to-your-website"></a><span data-ttu-id="ef8e1-103">社交網路加入您的網站</span><span class="sxs-lookup"><span data-stu-id="ef8e1-103">Adding Social Networking to Your Website</span></span>
 ====================

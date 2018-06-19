@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30899037"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a><span data-ttu-id="c9533-103">ASP.NET 4 和 Visual Studio 2010 Web 程式開發概觀</span><span class="sxs-lookup"><span data-stu-id="c9533-103">ASP.NET 4 and Visual Studio 2010 Web Development Overview</span></span>
 ====================
@@ -199,7 +200,7 @@ ms.lasthandoff: 04/10/2018
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-<span data-ttu-id="c9533-233">若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)*屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-233">To allow longer or shorter paths (the portion of the URL that does not include protocol, server name, and query string), modify the *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* attribute.</span></span> <span data-ttu-id="c9533-234">若要讓長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)*屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-234">To allow longer or shorter query strings, modify the value of the *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* attribute.</span></span>
+<span data-ttu-id="c9533-233">若要讓長或短的路徑 （不包括通訊協定、 伺服器名稱和查詢字串的 URL 的部分），修改*[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* 屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-233">To allow longer or shorter paths (the portion of the URL that does not include protocol, server name, and query string), modify the *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* attribute.</span></span> <span data-ttu-id="c9533-234">若要讓長或短的查詢字串，修改的值*[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* 屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-234">To allow longer or shorter query strings, modify the value of the *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* attribute.</span></span>
 
 <span data-ttu-id="c9533-235">ASP.NET 4 也可讓您設定的 URL 字元檢查所使用的字元。</span><span class="sxs-lookup"><span data-stu-id="c9533-235">ASP.NET 4 also enables you to configure the characters that are used by the URL character check.</span></span> <span data-ttu-id="c9533-236">當 ASP.NET 之 url 的路徑部分中找到無效的字元時，它會拒絕要求，並發出 HTTP 400 錯誤。</span><span class="sxs-lookup"><span data-stu-id="c9533-236">When ASP.NET finds an invalid character in the path portion of a URL, it rejects the request and issues an HTTP 400 error.</span></span> <span data-ttu-id="c9533-237">在舊版 ASP.NET 中，URL 字元檢查已限制為一組固定的字元。</span><span class="sxs-lookup"><span data-stu-id="c9533-237">In previous versions of ASP.NET, the URL character checks were limited to a fixed set of characters.</span></span> <span data-ttu-id="c9533-238">在 ASP.NET 4 中，您可以自訂的一組使用新的有效字元*requestPathInvalidChars*屬性*httpRuntime*組態項目，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-238">In ASP.NET 4, you can customize the set of valid characters using the new *requestPathInvalidChars* attribute of the *httpRuntime* configuration element, as shown in the following example:</span></span>
 
@@ -388,7 +389,7 @@ ms.lasthandoff: 04/10/2018
 
 <span data-ttu-id="c9533-358">您可以設定這些屬性在執行階段，可讓您從資料庫或其他來源取得內容，並可讓您設定的標記，以動態方式來描述什麼是特定的頁面。</span><span class="sxs-lookup"><span data-stu-id="c9533-358">You can set these properties at run time, which lets you get the content from a database or other source, and which lets you set the tags dynamically to describe what a particular page is for.</span></span>
 
-<span data-ttu-id="c9533-359">您也可以設定*關鍵字*和*描述*中的屬性*@ Page*指示詞上方的 Web Form 網頁標記中，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-359">You can also set the *Keywords* and *Description* properties in the *@ Page* directive at the top of the Web Forms page markup, as in the following example:</span></span>
+<span data-ttu-id="c9533-359">您也可以設定*關鍵字*和*描述*中的屬性 *@ Page*指示詞上方的 Web Form 網頁標記中，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-359">You can also set the *Keywords* and *Description* properties in the *@ Page* directive at the top of the Web Forms page markup, as in the following example:</span></span>
 
 [!code-aspx[Main](overview/samples/sample24.aspx)]
 
@@ -426,7 +427,7 @@ ms.lasthandoff: 04/10/2018
 
 <span data-ttu-id="c9533-386">Label1 控制項 (其*ViewStateMode*值設定為*已停用*) 不會保留它在程式碼中所設定的值。</span><span class="sxs-lookup"><span data-stu-id="c9533-386">The label1 control (whose *ViewStateMode* value is set to *Disabled*) has not preserved the value that it was set to in code.</span></span> <span data-ttu-id="c9533-387">不過，控制 label2 (其*ViewStateMode*值設定為*啟用*) 已保留其狀態。</span><span class="sxs-lookup"><span data-stu-id="c9533-387">However, the label2 control (whose *ViewStateMode* value is set to *Enabled*) has preserved its state.</span></span>
 
-<span data-ttu-id="c9533-388">您也可以設定*ViewStateMode*中*@ Page*指示詞，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-388">You can also set *ViewStateMode* in the *@ Page* directive, as in the following example:</span></span>
+<span data-ttu-id="c9533-388">您也可以設定*ViewStateMode*中 *@ Page*指示詞，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-388">You can also set *ViewStateMode* in the *@ Page* directive, as in the following example:</span></span>
 
 [!code-aspx[Main](overview/samples/sample26.aspx)]
 
@@ -652,7 +653,7 @@ ms.lasthandoff: 04/10/2018
 
 <span data-ttu-id="c9533-554">預設值*ClientIDMode*頁面層級的值是*AutoID*，且預設*ClientIDMode*控制層級的值是*繼承*.</span><span class="sxs-lookup"><span data-stu-id="c9533-554">The default *ClientIDMode* value at the page level is *AutoID*, and the default *ClientIDMode* value at the control level is *Inherit*.</span></span> <span data-ttu-id="c9533-555">如此一來，如果您未設定這個屬性隨處在程式碼中，所有的控制項將會預設為*AutoID*演算法。</span><span class="sxs-lookup"><span data-stu-id="c9533-555">As a result, if you do not set this property anywhere in your code, all controls will default to the *AutoID* algorithm.</span></span>
 
-<span data-ttu-id="c9533-556">在中設定的頁面層級值*@ Page*指示詞，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-556">You set the page-level value in the *@ Page* directive, as shown in the following example:</span></span>
+<span data-ttu-id="c9533-556">在中設定的頁面層級值 *@ Page*指示詞，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="c9533-556">You set the page-level value in the *@ Page* directive, as shown in the following example:</span></span>
 
 [!code-aspx[Main](overview/samples/sample47.aspx)]
 
@@ -769,7 +770,7 @@ ms.lasthandoff: 04/10/2018
 
 #### <a name="using-scale-breaks-and-logarithmic-scales"></a><span data-ttu-id="c9533-628">使用刻度斷層和對數刻度</span><span class="sxs-lookup"><span data-stu-id="c9533-628">Using Scale Breaks and Logarithmic Scales</span></span>
 
-<span data-ttu-id="c9533-629">刻度斷層和對數標尺是兩個其他方式加入至圖表的複雜度。</span><span class="sxs-lookup"><span data-stu-id="c9533-629">Scale breaks and logarithmic scales are two additional ways to add sophistication to the chart.</span></span> <span data-ttu-id="c9533-630">這些功能則專屬於每個圖表區域中座標軸的。</span><span class="sxs-lookup"><span data-stu-id="c9533-630">These features are specific to each axis in a chart area.</span></span> <span data-ttu-id="c9533-631">例如，若要使用這些功能在主 Y 軸的圖表區域上，使用*AxisY.IsLogarithmic*和*[scalebreakstyle]*中的屬性*ChartArea*物件。</span><span class="sxs-lookup"><span data-stu-id="c9533-631">For example, to use these features on the primary Y axis of a chart area, use the *AxisY.IsLogarithmic* and *ScaleBreakStyle* properties in a *ChartArea* object.</span></span> <span data-ttu-id="c9533-632">下列程式碼片段示範如何使用在主 Y 軸的刻度斷層。</span><span class="sxs-lookup"><span data-stu-id="c9533-632">The following snippet shows how to use scale breaks on the primary Y axis.</span></span>
+<span data-ttu-id="c9533-629">刻度斷層和對數標尺是兩個其他方式加入至圖表的複雜度。</span><span class="sxs-lookup"><span data-stu-id="c9533-629">Scale breaks and logarithmic scales are two additional ways to add sophistication to the chart.</span></span> <span data-ttu-id="c9533-630">這些功能則專屬於每個圖表區域中座標軸的。</span><span class="sxs-lookup"><span data-stu-id="c9533-630">These features are specific to each axis in a chart area.</span></span> <span data-ttu-id="c9533-631">例如，若要使用這些功能在主 Y 軸的圖表區域上，使用*AxisY.IsLogarithmic*和 *[scalebreakstyle]* 中的屬性*ChartArea*物件。</span><span class="sxs-lookup"><span data-stu-id="c9533-631">For example, to use these features on the primary Y axis of a chart area, use the *AxisY.IsLogarithmic* and *ScaleBreakStyle* properties in a *ChartArea* object.</span></span> <span data-ttu-id="c9533-632">下列程式碼片段示範如何使用在主 Y 軸的刻度斷層。</span><span class="sxs-lookup"><span data-stu-id="c9533-632">The following snippet shows how to use scale breaks on the primary Y axis.</span></span>
 
 [!code-aspx[Main](overview/samples/sample60.aspx)]
 
@@ -1222,7 +1223,7 @@ ms.lasthandoff: 04/10/2018
 
 ### <a name="new-field-templates-for-urls-and-email-addresses"></a><span data-ttu-id="c9533-897">新的 Url 和電子郵件地址欄位範本</span><span class="sxs-lookup"><span data-stu-id="c9533-897">New Field Templates for URLs and Email Addresses</span></span>
 
-<span data-ttu-id="c9533-898">ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。</span><span class="sxs-lookup"><span data-stu-id="c9533-898">ASP.NET 4 introduces two new built-in field templates, `EmailAddress.ascx` and `Url.ascx`.</span></span> <span data-ttu-id="c9533-899">這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-899">These templates are used for fields that are marked as *EmailAddress* or *Url* with the *DataType* attribute.</span></span> <span data-ttu-id="c9533-900">如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:*通訊協定。</span><span class="sxs-lookup"><span data-stu-id="c9533-900">For *EmailAddress* objects, the field is displayed as a hyperlink that is created by using the *mailto:* protocol.</span></span> <span data-ttu-id="c9533-901">當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，以及建立基本架構的訊息。</span><span class="sxs-lookup"><span data-stu-id="c9533-901">When users click the link, it opens the user's email client and creates a skeleton message.</span></span> <span data-ttu-id="c9533-902">物件的型別為*Url*會顯示為一般的超連結。</span><span class="sxs-lookup"><span data-stu-id="c9533-902">Objects typed as *Url* are displayed as ordinary hyperlinks.</span></span>
+<span data-ttu-id="c9533-898">ASP.NET 4 導入了兩個新的內建欄位範本，`EmailAddress.ascx`和`Url.ascx`。</span><span class="sxs-lookup"><span data-stu-id="c9533-898">ASP.NET 4 introduces two new built-in field templates, `EmailAddress.ascx` and `Url.ascx`.</span></span> <span data-ttu-id="c9533-899">這些範本可用的欄位標示為*EmailAddress*或*Url*與*DataType*屬性。</span><span class="sxs-lookup"><span data-stu-id="c9533-899">These templates are used for fields that are marked as *EmailAddress* or *Url* with the *DataType* attribute.</span></span> <span data-ttu-id="c9533-900">如*EmailAddress*物件，該欄位會顯示為超連結，以建立使用*mailto:* 通訊協定。</span><span class="sxs-lookup"><span data-stu-id="c9533-900">For *EmailAddress* objects, the field is displayed as a hyperlink that is created by using the *mailto:* protocol.</span></span> <span data-ttu-id="c9533-901">當使用者按一下連結時，它會開啟使用者的電子郵件用戶端，以及建立基本架構的訊息。</span><span class="sxs-lookup"><span data-stu-id="c9533-901">When users click the link, it opens the user's email client and creates a skeleton message.</span></span> <span data-ttu-id="c9533-902">物件的型別為*Url*會顯示為一般的超連結。</span><span class="sxs-lookup"><span data-stu-id="c9533-902">Objects typed as *Url* are displayed as ordinary hyperlinks.</span></span>
 
 <span data-ttu-id="c9533-903">下列範例示範可以如何標示欄位。</span><span class="sxs-lookup"><span data-stu-id="c9533-903">The following example shows how fields would be marked.</span></span>
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896440"
 ---
 # <a name="create-an-aspnet-core-mvc-app-with-visual-studio-code"></a><span data-ttu-id="35fb4-103">使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式</span><span class="sxs-lookup"><span data-stu-id="35fb4-103">Create an ASP.NET Core MVC app with Visual Studio Code</span></span>
 

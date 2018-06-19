@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884086"
 ---
 <a name="aspnet-45-web-forms-model-binding"></a><span data-ttu-id="fc906-103">ASP.NET 4.5 Web Form 模型繫結</span><span class="sxs-lookup"><span data-stu-id="fc906-103">ASP.NET 4.5 Web Forms Model Binding</span></span>
 ====================

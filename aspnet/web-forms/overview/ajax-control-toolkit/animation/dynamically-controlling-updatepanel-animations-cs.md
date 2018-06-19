@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868603"
 ---
 <a name="dynamically-controlling-updatepanel-animations-c"></a><span data-ttu-id="b96a8-104">以動態方式控制 UpdatePanel 動畫 (C#)</span><span class="sxs-lookup"><span data-stu-id="b96a8-104">Dynamically Controlling UpdatePanel Animations (C#)</span></span>
 ====================

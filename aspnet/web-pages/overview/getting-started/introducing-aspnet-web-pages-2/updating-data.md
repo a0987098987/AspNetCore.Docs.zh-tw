@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898531"
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a><span data-ttu-id="61d26-104">導入的 ASP.NET Web Pages-更新資料庫的資料</span><span class="sxs-lookup"><span data-stu-id="61d26-104">Introducing ASP.NET Web Pages - Updating Database Data</span></span>
 ====================

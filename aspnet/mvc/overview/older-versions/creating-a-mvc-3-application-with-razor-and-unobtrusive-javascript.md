@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30874690"
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a><span data-ttu-id="ef82f-104">建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript</span><span class="sxs-lookup"><span data-stu-id="ef82f-104">Creating a MVC 3 Application with Razor and Unobtrusive JavaScript</span></span>
 ====================
@@ -166,7 +167,7 @@ ms.lasthandoff: 04/10/2018
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample13.cs)]
 
-<span data-ttu-id="ef82f-203">您也需要呈現的檢視中包含數個 JavaScript 檔案。</span><span class="sxs-lookup"><span data-stu-id="ef82f-203">You also need to include several JavaScript files in the rendered view.</span></span> <span data-ttu-id="ef82f-204">若要在所有檢視中包含 JavaScript 的簡單方法是將其新增至*_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="ef82f-204">An easy way to include the JavaScript in all views is to add them to the *Views\Shared\\_Layout.cshtml* file.</span></span> <span data-ttu-id="ef82f-205">取代`<head>`元素 *\_Layout.cshtml*以下列程式碼檔案：</span><span class="sxs-lookup"><span data-stu-id="ef82f-205">Replace the `<head>` element of the *\_Layout.cshtml* file with the following code:</span></span>
+<span data-ttu-id="ef82f-203">您也需要呈現的檢視中包含數個 JavaScript 檔案。</span><span class="sxs-lookup"><span data-stu-id="ef82f-203">You also need to include several JavaScript files in the rendered view.</span></span> <span data-ttu-id="ef82f-204">若要在所有檢視中包含 JavaScript 的簡單方法是將其新增至 *_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="ef82f-204">An easy way to include the JavaScript in all views is to add them to the *Views\Shared\\_Layout.cshtml* file.</span></span> <span data-ttu-id="ef82f-205">取代`<head>`元素 *\_Layout.cshtml*以下列程式碼檔案：</span><span class="sxs-lookup"><span data-stu-id="ef82f-205">Replace the `<head>` element of the *\_Layout.cshtml* file with the following code:</span></span>
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample14.cshtml)]
 

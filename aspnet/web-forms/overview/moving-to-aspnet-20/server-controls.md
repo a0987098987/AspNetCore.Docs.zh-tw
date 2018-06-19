@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/server-controls
-title: "伺服器控制項 |Microsoft 文件"
+title: 伺服器控制項 |Microsoft 文件
 author: microsoft
-description: "ASP.NET 2.0 增強伺服器控制項，在許多方面。 在此模組中，我們會部分的 ASP.NET 2.0 的方式與 Visual Studio 200 的架構變更..."
+description: ASP.NET 2.0 增強伺服器控制項，在許多方面。 在此模組中，我們會部分的 ASP.NET 2.0 的方式與 Visual Studio 200 的架構變更...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885189"
 ---
 <a name="server-controls"></a><span data-ttu-id="a6bde-104">伺服器控制項</span><span class="sxs-lookup"><span data-stu-id="a6bde-104">Server Controls</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30897405"
 ---
 <a name="introducing-aspnet-web-pages---deleting-database-data"></a><span data-ttu-id="530b3-104">導入的 ASP.NET Web Pages-刪除資料庫資料</span><span class="sxs-lookup"><span data-stu-id="530b3-104">Introducing ASP.NET Web Pages - Deleting Database Data</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896574"
 ---
 <a name="programming-aspnet-web-pages-razor-using-visual-studio"></a><span data-ttu-id="a16cc-103">使用 Visual Studio 程式設計 ASP.NET Web Pages (Razor)</span><span class="sxs-lookup"><span data-stu-id="a16cc-103">Programming ASP.NET Web Pages (Razor) Using Visual Studio</span></span>
 ====================
@@ -81,7 +82,7 @@ ms.lasthandoff: 04/06/2018
 
     ![建立新的網站](program-asp-net-web-pages-in-visual-studio/_static/image2.png)
 3. <span data-ttu-id="a16cc-154">在**新網站**對話方塊方塊中，選取要使用 （Visual C# 或 Visual Basic） 語言。</span><span class="sxs-lookup"><span data-stu-id="a16cc-154">In the **New Web Site** dialog box, select the language to use (Visual C# or Visual Basic).</span></span>
-4. <span data-ttu-id="a16cc-155">選取**ASP.NET 網站 (Razor)**範本。</span><span class="sxs-lookup"><span data-stu-id="a16cc-155">Select the **ASP.NET Web Site (Razor)** template.</span></span>
+4. <span data-ttu-id="a16cc-155">選取**ASP.NET 網站 (Razor)** 範本。</span><span class="sxs-lookup"><span data-stu-id="a16cc-155">Select the **ASP.NET Web Site (Razor)** template.</span></span>
 
     ![razor 的站台](program-asp-net-web-pages-in-visual-studio/_static/image3.png)
 5. <span data-ttu-id="a16cc-157">按一下 [確定 **Deploying Office Solutions**]。</span><span class="sxs-lookup"><span data-stu-id="a16cc-157">Click **OK**.</span></span>

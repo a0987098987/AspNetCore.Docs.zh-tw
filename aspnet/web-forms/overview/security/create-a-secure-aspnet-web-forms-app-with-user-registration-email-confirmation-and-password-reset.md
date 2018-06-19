@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892695"
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a><span data-ttu-id="79917-103">建立安全的 ASP.NET Web Form 應用程式與使用者註冊電子郵件確認和密碼重設 (C#)</span><span class="sxs-lookup"><span data-stu-id="79917-103">Create a secure ASP.NET Web Forms app with user registration, email confirmation and password reset (C#)</span></span>
 ====================
@@ -144,7 +145,7 @@ ms.lasthandoff: 04/06/2018
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample9.cs?highlight=5)]
 4. <span data-ttu-id="79917-193">執行應用程式按**F5。**</span><span class="sxs-lookup"><span data-stu-id="79917-193">Run the app by pressing **F5.**</span></span> <span data-ttu-id="79917-194">頁面顯示之後，請按一下**登入**連結。</span><span class="sxs-lookup"><span data-stu-id="79917-194">After the page is displayed, click the **Log in** link.</span></span>
-5. <span data-ttu-id="79917-195">按一下**忘記密碼？**連結可以顯示**忘記密碼**頁面。</span><span class="sxs-lookup"><span data-stu-id="79917-195">Click the **Forgot your password?** link to display the **Forgot Password** page.</span></span>
+5. <span data-ttu-id="79917-195">按一下**忘記密碼？** 連結可以顯示**忘記密碼**頁面。</span><span class="sxs-lookup"><span data-stu-id="79917-195">Click the **Forgot your password?** link to display the **Forgot Password** page.</span></span>
 6. <span data-ttu-id="79917-196">輸入您的電子郵件地址，然後按一下**送出**傳送電子郵件地址，讓您重設密碼 按鈕。</span><span class="sxs-lookup"><span data-stu-id="79917-196">Enter your email address and click the **Submit** button to send an email to your address which will allow you to reset your password.</span></span>   
    <span data-ttu-id="79917-197">檢查您的電子郵件帳戶，然後按一下連結可顯示**重設密碼**頁面。</span><span class="sxs-lookup"><span data-stu-id="79917-197">Check your email account and click on the link to display the **Reset Password** page.</span></span>
 7. <span data-ttu-id="79917-198">在**重設密碼**頁面上，輸入您的電子郵件、 密碼和確認的密碼。</span><span class="sxs-lookup"><span data-stu-id="79917-198">On the **Reset Password** page, enter your email, password, and confirmed password.</span></span> <span data-ttu-id="79917-199">然後按下**重設** 按鈕。</span><span class="sxs-lookup"><span data-stu-id="79917-199">Then, press the **Reset** button.</span></span>  

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892708"
 ---
 <a name="how-do-i-upgrade-visual-basic-projects-to-enable-linq"></a><span data-ttu-id="8c07c-104">[如何:]若要啟用 LINQ 的 Visual Basic 專案要升級？</span><span class="sxs-lookup"><span data-stu-id="8c07c-104">[How Do I:] Upgrade Visual Basic Projects to Enable LINQ?</span></span>
 ====================

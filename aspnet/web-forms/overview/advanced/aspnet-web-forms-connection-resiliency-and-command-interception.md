@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879695"
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a><span data-ttu-id="bf36d-103">ASP.NET Web Form 連接恢復功能和命令攔截</span><span class="sxs-lookup"><span data-stu-id="bf36d-103">ASP.NET Web Forms Connection Resiliency and Command Interception</span></span>
 ====================

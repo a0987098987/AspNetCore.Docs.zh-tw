@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077850"
 ---
 # <a name="context-headers-in-aspnet-core"></a><span data-ttu-id="431c8-103">在 ASP.NET Core 內容標頭</span><span class="sxs-lookup"><span data-stu-id="431c8-103">Context headers in ASP.NET Core</span></span>
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851530"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a><span data-ttu-id="ffdc7-103">從 ClaimsPrincipal.Current 移轉</span><span class="sxs-lookup"><span data-stu-id="ffdc7-103">Migrate from ClaimsPrincipal.Current</span></span>
 

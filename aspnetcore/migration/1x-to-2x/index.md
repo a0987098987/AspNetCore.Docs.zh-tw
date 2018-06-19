@@ -14,6 +14,7 @@ ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555231"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a><span data-ttu-id="aca06-103">從 ASP.NET Core 1.x 遷移至 2.0</span><span class="sxs-lookup"><span data-stu-id="aca06-103">Migrate from ASP.NET Core 1.x to 2.0</span></span>
 

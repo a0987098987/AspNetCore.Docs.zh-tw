@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094431"
 ---
 # <a name="choose-between-aspnet-and-aspnet-core"></a><span data-ttu-id="481d3-103">在 ASP.NET 和 ASP.NET Core 之間進行選擇</span><span class="sxs-lookup"><span data-stu-id="481d3-103">Choose between ASP.NET and ASP.NET Core</span></span>
 

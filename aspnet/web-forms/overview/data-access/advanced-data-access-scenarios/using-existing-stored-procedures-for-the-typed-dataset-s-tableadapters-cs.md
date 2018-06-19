@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877069"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-c"></a><span data-ttu-id="6a65a-104">使用現有的預存程序的具類型資料集的 Tableadapter (C#)</span><span class="sxs-lookup"><span data-stu-id="6a65a-104">Using Existing Stored Procedures for the Typed DataSet's TableAdapters (C#)</span></span>
 ====================

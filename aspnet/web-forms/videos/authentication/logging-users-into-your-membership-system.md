@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880599"
 ---
 <a name="logging-users-into-your-membership-system"></a><span data-ttu-id="dd3f3-103">將成員資格系統的記錄使用者</span><span class="sxs-lookup"><span data-stu-id="dd3f3-103">Logging Users Into Your Membership System</span></span>
 ====================

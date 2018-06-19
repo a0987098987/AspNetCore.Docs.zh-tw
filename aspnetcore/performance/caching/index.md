@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070819"
 ---
 # <a name="cache-responses-in-aspnet-core"></a><span data-ttu-id="908f3-103">ASP.NET Core 的快取回應</span><span class="sxs-lookup"><span data-stu-id="908f3-103">Cache responses in ASP.NET Core</span></span>
 

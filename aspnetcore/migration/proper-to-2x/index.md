@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851705"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a><span data-ttu-id="f6bbd-103">從 ASP.NET 移轉至 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f6bbd-103">Migrate from ASP.NET to ASP.NET Core</span></span>
 

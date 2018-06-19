@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896062"
 ---
 <a name="tailspin-spyworks---final-check-out"></a><span data-ttu-id="1033b-103">Tailspin Spyworks-最後簽出</span><span class="sxs-lookup"><span data-stu-id="1033b-103">Tailspin Spyworks - Final Check Out</span></span>
 ====================

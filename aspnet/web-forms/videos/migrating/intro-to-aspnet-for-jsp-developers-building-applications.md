@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885064"
 ---
 <a name="intro-to-aspnet-for-jsp-developers-building-applications"></a><span data-ttu-id="78959-103">ASP.NET JSP 開發人員簡介： 建置應用程式</span><span class="sxs-lookup"><span data-stu-id="78959-103">Intro to ASP.NET for JSP Developers: Building Applications</span></span>
 ====================

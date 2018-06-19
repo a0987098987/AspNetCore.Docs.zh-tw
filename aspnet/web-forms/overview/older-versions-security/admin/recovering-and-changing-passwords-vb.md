@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891369"
 ---
 <a name="recovering-and-changing-passwords-vb"></a><span data-ttu-id="2bb6b-104">復原，以及變更密碼 (VB)</span><span class="sxs-lookup"><span data-stu-id="2bb6b-104">Recovering and Changing Passwords (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892292"
 ---
 <a name="configuring-server-environments-for-web-deployment"></a><span data-ttu-id="86381-103">用於 Web 部署設定伺服器環境</span><span class="sxs-lookup"><span data-stu-id="86381-103">Configuring Server Environments for Web Deployment</span></span>
 ====================

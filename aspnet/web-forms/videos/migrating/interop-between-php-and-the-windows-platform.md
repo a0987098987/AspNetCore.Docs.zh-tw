@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892422"
 ---
 <a name="interop-between-php-and-the-windows-platform"></a><span data-ttu-id="33511-103">Interop PHP 和 Windows 平台之間</span><span class="sxs-lookup"><span data-stu-id="33511-103">Interop between PHP and the Windows Platform</span></span>
 ====================

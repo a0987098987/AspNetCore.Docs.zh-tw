@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892812"
 ---
 <a name="tailspin-spyworks---adding-items-to-the-shopping-cart"></a><span data-ttu-id="0c1ad-103">Tailspin Spyworks-將項目加入至購物車</span><span class="sxs-lookup"><span data-stu-id="0c1ad-103">Tailspin Spyworks - Adding Items to the Shopping Cart</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/lifecycle-of-an-aspnet-mvc-5-application
-title: "ASP.NET MVC 5 應用程式生命週期 |Microsoft 文件"
+title: ASP.NET MVC 5 應用程式生命週期 |Microsoft 文件
 author: cephalin
-description: "下載的 ASP.NET MVC 5 應用程式生命週期的圖表顯示的 PDF 文件。 生命週期本文提供 MVC 生命週期的高層級檢視..."
+description: 下載的 ASP.NET MVC 5 應用程式生命週期的圖表顯示的 PDF 文件。 生命週期本文提供 MVC 生命週期的高層級檢視...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/28/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036488"
 ---
 <a name="lifecycle-of-an-aspnet-mvc-5-application"></a><span data-ttu-id="d879c-104">ASP.NET MVC 5 應用程式生命週期</span><span class="sxs-lookup"><span data-stu-id="d879c-104">Lifecycle of an ASP.NET MVC 5 Application</span></span>
 ====================

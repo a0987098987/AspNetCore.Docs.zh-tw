@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895226"
 ---
 <a name="more-structured-query-language"></a><span data-ttu-id="a6dca-103">更多的結構化的查詢語言</span><span class="sxs-lookup"><span data-stu-id="a6dca-103">More Structured Query Language</span></span>
 ====================

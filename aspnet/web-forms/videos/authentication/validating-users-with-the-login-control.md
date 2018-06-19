@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883235"
 ---
 <a name="validating-users-with-the-login-control"></a><span data-ttu-id="d4b46-103">驗證使用者與登入控制項</span><span class="sxs-lookup"><span data-stu-id="d4b46-103">Validating Users with the Login Control</span></span>
 ====================

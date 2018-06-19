@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893143"
 ---
 <a name="how-do-i-enforce-coding-standards-with-code-analysis"></a><span data-ttu-id="3e765-104">[如何:]強制執行編碼標準，使用程式碼分析嗎？</span><span class="sxs-lookup"><span data-stu-id="3e765-104">[How Do I:] Enforce Coding Standards with Code Analysis?</span></span>
 ====================

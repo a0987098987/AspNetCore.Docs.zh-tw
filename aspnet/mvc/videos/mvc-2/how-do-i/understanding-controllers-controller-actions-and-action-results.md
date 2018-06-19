@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879279"
 ---
 <a name="understanding-controllers-controller-actions-and-action-results"></a><span data-ttu-id="b77b8-104">了解控制器、 控制器動作和動作結果</span><span class="sxs-lookup"><span data-stu-id="b77b8-104">Understanding Controllers, Controller Actions, and Action Results</span></span>
 ====================

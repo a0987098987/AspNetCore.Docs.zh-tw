@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895887"
 ---
 <a name="more-about-column-data-types-and-other-properties"></a><span data-ttu-id="0c7d8-103">深入了解資料行資料類型和其他屬性</span><span class="sxs-lookup"><span data-stu-id="0c7d8-103">More about Column Data Types and Other Properties</span></span>
 ====================

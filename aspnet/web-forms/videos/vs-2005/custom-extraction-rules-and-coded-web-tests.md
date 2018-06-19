@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893842"
 ---
 <a name="custom-extraction-rules-and-coded-web-tests"></a><span data-ttu-id="0a42c-103">自訂擷取規則和自動程式化的 Web 測試</span><span class="sxs-lookup"><span data-stu-id="0a42c-103">Custom Extraction Rules and Coded Web Tests</span></span>
 ====================

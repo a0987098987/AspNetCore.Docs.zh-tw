@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/releases/upgrading-signalr-1x-projects-to-20
-title: "將 SignalR 1.x 專案升級到版本 2 |Microsoft 文件"
+title: 將 SignalR 1.x 專案升級到版本 2 |Microsoft 文件
 author: pfletcher
-description: "本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x，以及如何疑難排解，升級程序期間可能發生問題..."
+description: 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x，以及如何疑難排解，升級程序期間可能發生問題...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505737"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a><span data-ttu-id="68a0c-103">將 SignalR 1.x 專案升級到版本 2</span><span class="sxs-lookup"><span data-stu-id="68a0c-103">Upgrading SignalR 1.x Projects to version 2</span></span>
 ====================
@@ -68,7 +69,7 @@ ms.lasthandoff: 11/10/2017
 
 <span data-ttu-id="68a0c-131">在本節中，您要更新應用程式中建立[SignalR 1.x 版快速入門教學課程](../older-versions/index.md)使用 SignalR 2。</span><span class="sxs-lookup"><span data-stu-id="68a0c-131">In this section, you'll update the application created in the [SignalR 1.x version of the Getting Started Tutorial](../older-versions/index.md) to use SignalR 2.</span></span>
 
-1. <span data-ttu-id="68a0c-132">一旦您完成快速入門教學課程，請以滑鼠右鍵按一下專案，然後選取**屬性**。</span><span class="sxs-lookup"><span data-stu-id="68a0c-132">Once you've finished the Getting Started tutorial, right-click on the project, and select **Properties**.</span></span> <span data-ttu-id="68a0c-133">確認**目標 framework**設**.NET Framework 4.5。**</span><span class="sxs-lookup"><span data-stu-id="68a0c-133">Verify that the **Target framework** is set to **.NET Framework 4.5.**</span></span>
+1. <span data-ttu-id="68a0c-132">一旦您完成快速入門教學課程，請以滑鼠右鍵按一下專案，然後選取**屬性**。</span><span class="sxs-lookup"><span data-stu-id="68a0c-132">Once you've finished the Getting Started tutorial, right-click on the project, and select **Properties**.</span></span> <span data-ttu-id="68a0c-133">確認**目標 framework**設 **.NET Framework 4.5。**</span><span class="sxs-lookup"><span data-stu-id="68a0c-133">Verify that the **Target framework** is set to **.NET Framework 4.5.**</span></span>
 2. <span data-ttu-id="68a0c-134">開啟 封裝管理員主控台。</span><span class="sxs-lookup"><span data-stu-id="68a0c-134">Open the Package Manager Console.</span></span> <span data-ttu-id="68a0c-135">移除 SignalR 1.x 從專案中使用下列命令：</span><span class="sxs-lookup"><span data-stu-id="68a0c-135">Remove SignalR 1.x from the project using the following command:</span></span>
 
     [!code-powershell[Main](upgrading-signalr-1x-projects-to-20/samples/sample1.ps1)]

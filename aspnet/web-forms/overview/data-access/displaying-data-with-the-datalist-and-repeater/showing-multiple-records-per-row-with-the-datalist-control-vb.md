@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889991"
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-vb"></a><span data-ttu-id="172e1-103">顯示每個資料列與資料清單控制項 (VB) 的多筆記錄</span><span class="sxs-lookup"><span data-stu-id="172e1-103">Showing Multiple Records per Row with the DataList Control (VB)</span></span>
 ====================

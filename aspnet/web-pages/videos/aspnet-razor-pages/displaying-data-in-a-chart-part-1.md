@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899784"
 ---
 <a name="displaying-data-in-a-chart-part-1"></a><span data-ttu-id="87457-103">在 （第 1 部分） 圖表中顯示資料</span><span class="sxs-lookup"><span data-stu-id="87457-103">Displaying Data in a Chart (Part 1)</span></span>
 ====================

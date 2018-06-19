@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878304"
 ---
 <a name="updating-the-tableadapter-to-use-joins-vb"></a><span data-ttu-id="14a9a-104">更新要使用的 TableAdapter 聯結 (VB)</span><span class="sxs-lookup"><span data-stu-id="14a9a-104">Updating the TableAdapter to Use JOINs (VB)</span></span>
 ====================

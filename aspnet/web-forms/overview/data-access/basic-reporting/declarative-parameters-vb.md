@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877407"
 ---
 <a name="declarative-parameters-vb"></a><span data-ttu-id="88efa-103">宣告式的參數 (VB)</span><span class="sxs-lookup"><span data-stu-id="88efa-103">Declarative Parameters (VB)</span></span>
 ====================
@@ -127,7 +128,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="showing-all-suppliers-by-default"></a><span data-ttu-id="88efa-179">顯示預設的所有供應商</span><span class="sxs-lookup"><span data-stu-id="88efa-179">Showing All Suppliers By Default</span></span>
 
-<span data-ttu-id="88efa-180">而是先檢視網頁時顯示任何的供應項目比我們可能會想要顯示*所有*供應商在一開始，讓使用者在文字方塊中輸入國家/地區名稱削減清單。</span><span class="sxs-lookup"><span data-stu-id="88efa-180">Rather than show none of the suppliers when first viewing the page we may want to show *all* suppliers at first, allowing the user to pare down the list by entering a country name in the TextBox.</span></span> <span data-ttu-id="88efa-181">文字方塊是空的當`SuppliersBLL`類別的`GetSuppliersByCountry(country)`方法傳入`Nothing`針對其*`country`*輸入的參數。</span><span class="sxs-lookup"><span data-stu-id="88efa-181">When the TextBox is empty, the `SuppliersBLL` class's `GetSuppliersByCountry(country)` method is passed in `Nothing` for its *`country`* input parameter.</span></span> <span data-ttu-id="88efa-182">這`Nothing`值接著會向下傳遞至 DAL`GetSupplierByCountry(country)`方法，它就會轉譯到資料庫`NULL`值`@Country`參數，在下列查詢：</span><span class="sxs-lookup"><span data-stu-id="88efa-182">This `Nothing` value is then passed down into the DAL's `GetSupplierByCountry(country)` method, where it's translated to a database `NULL` value for the `@Country` parameter in the following query:</span></span>
+<span data-ttu-id="88efa-180">而是先檢視網頁時顯示任何的供應項目比我們可能會想要顯示*所有*供應商在一開始，讓使用者在文字方塊中輸入國家/地區名稱削減清單。</span><span class="sxs-lookup"><span data-stu-id="88efa-180">Rather than show none of the suppliers when first viewing the page we may want to show *all* suppliers at first, allowing the user to pare down the list by entering a country name in the TextBox.</span></span> <span data-ttu-id="88efa-181">文字方塊是空的當`SuppliersBLL`類別的`GetSuppliersByCountry(country)`方法傳入`Nothing`針對其*`country`* 輸入的參數。</span><span class="sxs-lookup"><span data-stu-id="88efa-181">When the TextBox is empty, the `SuppliersBLL` class's `GetSuppliersByCountry(country)` method is passed in `Nothing` for its *`country`* input parameter.</span></span> <span data-ttu-id="88efa-182">這`Nothing`值接著會向下傳遞至 DAL`GetSupplierByCountry(country)`方法，它就會轉譯到資料庫`NULL`值`@Country`參數，在下列查詢：</span><span class="sxs-lookup"><span data-stu-id="88efa-182">This `Nothing` value is then passed down into the DAL's `GetSupplierByCountry(country)` method, where it's translated to a database `NULL` value for the `@Country` parameter in the following query:</span></span>
 
 [!code-sql[Main](declarative-parameters-vb/samples/sample3.sql)]
 

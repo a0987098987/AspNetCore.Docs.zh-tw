@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875626"
 ---
 <a name="enable-automated-unit-testing"></a><span data-ttu-id="8d6af-103">啟用自動化的單元測試</span><span class="sxs-lookup"><span data-stu-id="8d6af-103">Enable Automated Unit Testing</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884362"
 ---
 <a name="how-do-i-configure-the-aspnet-ajax-calendar-control"></a><span data-ttu-id="f8bfb-104">[如何:]設定 ASP.NET AJAX 行事曆控制項嗎？</span><span class="sxs-lookup"><span data-stu-id="f8bfb-104">[How Do I:] Configure the ASP.NET AJAX Calendar Control?</span></span>
 ====================

@@ -1,14 +1,14 @@
 ---
 uid: aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
-title: "不執行在 ASP.NET 中，以及應該改用哪個程式 |Microsoft 文件"
+title: 不執行在 ASP.NET 中，以及應該改用哪個程式 |Microsoft 文件
 author: tfitzmac
-description: "本主題說明在 ASP.NET web 專案中的人員進行幾個常見的錯誤。 它提供建議您應如何避免這些 commo..."
+description: 本主題說明在 ASP.NET web 專案中的人員進行幾個常見的錯誤。 它提供建議您應如何避免這些 commo...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/08/2014
 ms.topic: article
 ms.assetid: c39b9965-545c-4b04-8f55-21be7f28a9e5
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28034916"
 ---
 <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a><span data-ttu-id="65227-104">不執行在 ASP.NET 中，以及應該改用哪個程式</span><span class="sxs-lookup"><span data-stu-id="65227-104">What not to do in ASP.NET, and what to do instead</span></span>
 ====================

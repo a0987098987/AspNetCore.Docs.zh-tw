@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-server
-title: "ASP.NET SignalR 中樞 API 指南-伺服器 (SignalR 1.x) |Microsoft 文件"
+title: ASP.NET SignalR 中樞 API 指南-伺服器 (SignalR 1.x) |Microsoft 文件
 author: pfletcher
-description: "本文件提供 SignalR 使用的程式碼範例 demonstratin 1.1 版的 ASP.NET SignalR 中樞 API 的伺服器端程式設計的簡介..."
+description: 本文件提供 SignalR 使用的程式碼範例 demonstratin 1.1 版的 ASP.NET SignalR 中樞 API 的伺服器端程式設計的簡介...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/17/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28044178"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-signalr-1x"></a><span data-ttu-id="99d2d-103">ASP.NET SignalR 中樞 API 指南-伺服器 (SignalR 1.x)</span><span class="sxs-lookup"><span data-stu-id="99d2d-103">ASP.NET SignalR Hubs API Guide - Server (SignalR 1.x)</span></span>
 ====================

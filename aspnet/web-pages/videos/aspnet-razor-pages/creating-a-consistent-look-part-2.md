@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899067"
 ---
 <a name="creating-a-consistent-look-part-2"></a><span data-ttu-id="bd68d-103">建立外觀一致 （第 2 部分）</span><span class="sxs-lookup"><span data-stu-id="bd68d-103">Creating a Consistent Look (Part 2)</span></span>
 ====================

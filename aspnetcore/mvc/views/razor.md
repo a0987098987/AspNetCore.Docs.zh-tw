@@ -14,6 +14,7 @@ ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33962488"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a><span data-ttu-id="3cbf7-103">ASP.NET Core 的 Razor 語法參考</span><span class="sxs-lookup"><span data-stu-id="3cbf7-103">Razor syntax reference for ASP.NET Core</span></span>
 

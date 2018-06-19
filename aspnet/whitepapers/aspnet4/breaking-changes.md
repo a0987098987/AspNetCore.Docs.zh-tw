@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899112"
 ---
 <a name="aspnet-4-breaking-changes"></a><span data-ttu-id="34c5c-103">ASP.NET 4 的重大變更</span><span class="sxs-lookup"><span data-stu-id="34c5c-103">ASP.NET 4 Breaking Changes</span></span>
 ====================
@@ -437,7 +438,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="34c5c-381">如此一來， **SetOmitVaryStar**不再需要為了隱藏`Vary:*`標頭。</span><span class="sxs-lookup"><span data-stu-id="34c5c-381">As a result, **SetOmitVaryStar** is no longer needed in order to suppress the `Vary:*` header.</span></span>
 
-<span data-ttu-id="34c5c-382">在指定的應用程式中`Location="ServerAndClient"`中**@ OutputCache**指示詞在頁面上，您現在可以看到的名稱所隱含的行為**位置**屬性的值-也就是說，將頁面在您呼叫而不需要瀏覽器快取**SetOmitVaryStar**方法。</span><span class="sxs-lookup"><span data-stu-id="34c5c-382">In applications that specify `Location="ServerAndClient"` in the **@ OutputCache** directive on a page, you will now see the behavior implied by the name of the **Location** attribute's value – that is, pages will be cacheable in the browser without requiring that you call the **SetOmitVaryStar** method.</span></span>
+<span data-ttu-id="34c5c-382">在指定的應用程式中`Location="ServerAndClient"`中 **@ OutputCache**指示詞在頁面上，您現在可以看到的名稱所隱含的行為**位置**屬性的值-也就是說，將頁面在您呼叫而不需要瀏覽器快取**SetOmitVaryStar**方法。</span><span class="sxs-lookup"><span data-stu-id="34c5c-382">In applications that specify `Location="ServerAndClient"` in the **@ OutputCache** directive on a page, you will now see the behavior implied by the name of the **Location** attribute's value – that is, pages will be cacheable in the browser without requiring that you call the **SetOmitVaryStar** method.</span></span>
 
 <span data-ttu-id="34c5c-383">如果您的應用程式中的頁面必須發出`Vary:*`，呼叫**AppendHeader**方法，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="34c5c-383">If pages in your application must emit `Vary:*`, call the **AppendHeader** method, as in the following example:</span></span>
 

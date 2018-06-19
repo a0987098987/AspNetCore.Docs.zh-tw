@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895060"
 ---
 <a name="visual-studio-2010-quick-hit---intellisense-smart-lists"></a><span data-ttu-id="a89d9-103">Visual Studio 2010"快速 Hit"-IntelliSense 智慧列出</span><span class="sxs-lookup"><span data-stu-id="a89d9-103">Visual Studio 2010 "Quick Hit" - IntelliSense Smart Lists</span></span>
 ====================

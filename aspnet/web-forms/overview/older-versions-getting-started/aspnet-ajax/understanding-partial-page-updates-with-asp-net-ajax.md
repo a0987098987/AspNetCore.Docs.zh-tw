@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891317"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a><span data-ttu-id="1b303-103">了解部分頁面更新與 ASP.NET AJAX</span><span class="sxs-lookup"><span data-stu-id="1b303-103">Understanding Partial Page Updates with ASP.NET AJAX</span></span>
 ====================

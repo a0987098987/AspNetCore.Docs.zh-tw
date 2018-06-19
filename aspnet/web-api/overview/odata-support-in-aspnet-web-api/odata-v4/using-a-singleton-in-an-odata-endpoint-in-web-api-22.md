@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22
-title: "建立單一 OData v4 中的使用 Web 應用程式開發介面 2.2 |Microsoft 文件"
+title: 建立單一 OData v4 中的使用 Web 應用程式開發介面 2.2 |Microsoft 文件
 author: rick-anderson
-description: "本主題說明如何在 Web 應用程式開發介面 2.2 中的 OData 端點中定義為單一子句。"
+description: 本主題說明如何在 Web 應用程式開發介面 2.2 中的 OData 端點中定義為單一子句。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/27/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508207"
 ---
 <a name="create-a-singleton-in-odata-v4-using-web-api-22"></a><span data-ttu-id="3eb96-103">建立單一 OData v4 中的使用 Web 應用程式開發介面 2.2</span><span class="sxs-lookup"><span data-stu-id="3eb96-103">Create a Singleton in OData v4 Using Web API 2.2</span></span>
 ====================

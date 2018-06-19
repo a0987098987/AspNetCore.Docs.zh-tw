@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884538"
 ---
 <a name="creating-user-accounts-with-the-create-user-wizard"></a><span data-ttu-id="bc353-104">建立具有使用者帳戶建立使用者精靈</span><span class="sxs-lookup"><span data-stu-id="bc353-104">Creating User Accounts with the Create User Wizard</span></span>
 ====================

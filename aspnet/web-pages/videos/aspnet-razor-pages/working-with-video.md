@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895410"
 ---
 <a name="working-with-video"></a><span data-ttu-id="1eb13-103">使用視訊</span><span class="sxs-lookup"><span data-stu-id="1eb13-103">Working with Video</span></span>
 ====================

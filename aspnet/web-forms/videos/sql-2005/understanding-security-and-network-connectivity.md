@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893504"
 ---
 <a name="understanding-security-and-network-connectivity"></a><span data-ttu-id="5ad28-104">了解安全性和網路連線</span><span class="sxs-lookup"><span data-stu-id="5ad28-104">Understanding Security and Network Connectivity</span></span>
 ====================

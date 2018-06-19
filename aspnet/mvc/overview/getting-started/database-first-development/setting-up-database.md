@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879331"
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a><span data-ttu-id="1c265-104">開始使用 Entity Framework 6 資料庫優先使用 MVC 5</span><span class="sxs-lookup"><span data-stu-id="1c265-104">Getting Started with Entity Framework 6 Database First using MVC 5</span></span>
 ====================
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/06/2018
 
 ![顯示輸出](setting-up-database/_static/image7.png)
 
-<span data-ttu-id="1c265-171">若要查看已建立新的資料庫，請開啟**SQL Server 物件總管**和尋找正確的本機資料庫伺服器中的專案名稱 (在此情況下**(localdb) \ProjectsV12**)。</span><span class="sxs-lookup"><span data-stu-id="1c265-171">To see that the new database has been created, open **SQL Server Object Explorer** and look for the name of the project in the correct local database server (in this case **(localdb)\ProjectsV12**).</span></span>
+<span data-ttu-id="1c265-171">若要查看已建立新的資料庫，請開啟**SQL Server 物件總管**和尋找正確的本機資料庫伺服器中的專案名稱 (在此情況下 **(localdb) \ProjectsV12**)。</span><span class="sxs-lookup"><span data-stu-id="1c265-171">To see that the new database has been created, open **SQL Server Object Explorer** and look for the name of the project in the correct local database server (in this case **(localdb)\ProjectsV12**).</span></span>
 
 ![顯示新的資料庫](setting-up-database/_static/image8.png)
 

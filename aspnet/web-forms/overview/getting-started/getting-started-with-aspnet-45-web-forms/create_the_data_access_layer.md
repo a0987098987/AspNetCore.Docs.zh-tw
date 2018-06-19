@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881460"
 ---
 <a name="create-the-data-access-layer"></a><span data-ttu-id="b8654-103">建立資料存取層</span><span class="sxs-lookup"><span data-stu-id="b8654-103">Create the Data Access Layer</span></span>
 ====================
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
     ![建立資料存取層中的新項目功能表](create_the_data_access_layer/_static/image1.png)
 
    <span data-ttu-id="b8654-155">隨即顯示 [ 新增項目] 對話方塊。</span><span class="sxs-lookup"><span data-stu-id="b8654-155">The **Add New Item** dialog box is displayed.</span></span>
-2. <span data-ttu-id="b8654-156">在下**Visual C#**從**已安裝**左邊的窗格，選取**程式碼**。</span><span class="sxs-lookup"><span data-stu-id="b8654-156">Under **Visual C#** from the **Installed** pane on the left, select **Code**.</span></span> 
+2. <span data-ttu-id="b8654-156">在下**Visual C#** 從**已安裝**左邊的窗格，選取**程式碼**。</span><span class="sxs-lookup"><span data-stu-id="b8654-156">Under **Visual C#** from the **Installed** pane on the left, select **Code**.</span></span> 
 
     ![建立資料存取層中的新項目功能表](create_the_data_access_layer/_static/image2.png)
 3. <span data-ttu-id="b8654-158">選取**類別**從中間窗格，並命名這個新類別*Product.cs*。</span><span class="sxs-lookup"><span data-stu-id="b8654-158">Select **Class** from the middle pane and name this new class *Product.cs*.</span></span>

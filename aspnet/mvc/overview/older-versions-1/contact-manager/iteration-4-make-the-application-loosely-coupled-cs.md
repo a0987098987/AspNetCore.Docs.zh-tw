@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873975"
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-c"></a><span data-ttu-id="f5282-104">反覆項目 #4 – 讓鬆散偶合的應用程式 (C#)</span><span class="sxs-lookup"><span data-stu-id="f5282-104">Iteration #4 – Make the application loosely coupled (C#)</span></span>
 ====================

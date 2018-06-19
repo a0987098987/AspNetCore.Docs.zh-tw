@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
-title: "單元測試中 ASP.NET Web API 2 控制器 |Microsoft 文件"
+title: 單元測試中 ASP.NET Web API 2 控制器 |Microsoft 文件
 author: MikeWasson
-description: "本主題說明一些特定的技術，單元測試中 Web API 2 控制器。 閱讀本主題之前，可能會想要閱讀本教學課程單位..."
+description: 本主題說明一些特定的技術，單元測試中 Web API 2 控制器。 閱讀本主題之前，可能會想要閱讀本教學課程單位...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/11/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28039540"
 ---
 <a name="unit-testing-controllers-in-aspnet-web-api-2"></a><span data-ttu-id="16bdd-104">單元測試中 ASP.NET Web API 2 控制器</span><span class="sxs-lookup"><span data-stu-id="16bdd-104">Unit Testing Controllers in ASP.NET Web API 2</span></span>
 ====================

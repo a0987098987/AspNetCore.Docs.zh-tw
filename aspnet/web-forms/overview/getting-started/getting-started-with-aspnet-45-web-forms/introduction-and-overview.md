@@ -17,6 +17,7 @@ ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32078602"
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a><span data-ttu-id="12d78-103">開始使用 ASP.NET 4.5 Web Form 和 Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="12d78-103">Getting Started with ASP.NET 4.5 Web Forms and Visual Studio 2013</span></span>
 ====================

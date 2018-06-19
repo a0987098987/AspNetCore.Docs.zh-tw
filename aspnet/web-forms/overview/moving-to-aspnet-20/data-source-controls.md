@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/data-source-controls
-title: "資料來源控制項 |Microsoft 文件"
+title: 資料來源控制項 |Microsoft 文件
 author: microsoft
-description: "DataGrid 控制項 1.x 標記在 ASP.NET Web 應用程式中的資料存取的絕佳改進。 不過，它不是因為它有可能的易記..."
+description: DataGrid 控制項 1.x 標記在 ASP.NET Web 應用程式中的資料存取的絕佳改進。 不過，它不是因為它有可能的易記...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885891"
 ---
 <a name="data-source-controls"></a><span data-ttu-id="5c337-104">資料來源控制項</span><span class="sxs-lookup"><span data-stu-id="5c337-104">Data Source Controls</span></span>
 ====================
@@ -175,7 +176,7 @@ ms.lasthandoff: 01/30/2018
 
 [!code-xml[Main](data-source-controls/samples/sample5.xml)]
 
-<span data-ttu-id="5c337-231">請注意 XmlDataSource 會使用 XPath 屬性*人/*篩選以便只&lt;人員&gt;節點。</span><span class="sxs-lookup"><span data-stu-id="5c337-231">Notice that the XmlDataSource uses an XPath property of *People/Person* in order to filter on just the &lt;Person&gt; nodes.</span></span> <span data-ttu-id="5c337-232">DropDownList 接著，此資料繫結至使用 DataTextField 屬性 LastName 屬性。</span><span class="sxs-lookup"><span data-stu-id="5c337-232">The DropDownList then data-binds to the LastName attribute using the DataTextField property.</span></span>
+<span data-ttu-id="5c337-231">請注意 XmlDataSource 會使用 XPath 屬性*人/* 篩選以便只&lt;人員&gt;節點。</span><span class="sxs-lookup"><span data-stu-id="5c337-231">Notice that the XmlDataSource uses an XPath property of *People/Person* in order to filter on just the &lt;Person&gt; nodes.</span></span> <span data-ttu-id="5c337-232">DropDownList 接著，此資料繫結至使用 DataTextField 屬性 LastName 屬性。</span><span class="sxs-lookup"><span data-stu-id="5c337-232">The DropDownList then data-binds to the LastName attribute using the DataTextField property.</span></span>
 
 <span data-ttu-id="5c337-233">雖然 XmlDataSource 控制項主要用來資料繫結至唯讀的 XML 資料，便可編輯 XML 資料檔。</span><span class="sxs-lookup"><span data-stu-id="5c337-233">While the XmlDataSource control is primarily used to data-bind to read-only XML data, it is possible to edit the XML data file.</span></span> <span data-ttu-id="5c337-234">請注意，在這種情況下，自動插入、 更新和刪除的 XML 檔案中的資訊不會自動與其他資料來源控制項。</span><span class="sxs-lookup"><span data-stu-id="5c337-234">Note that in such cases, automatic insertion, updating, and deletion of information in the XML file does not happen automatically as it does with other data source controls.</span></span> <span data-ttu-id="5c337-235">相反地，您必須撰寫程式碼以手動編輯的資料，使用下列 XmlDataSource 控制項的方法。</span><span class="sxs-lookup"><span data-stu-id="5c337-235">Instead, you will have to write code to manually edit the data using the following methods of the XmlDataSource control.</span></span>
 

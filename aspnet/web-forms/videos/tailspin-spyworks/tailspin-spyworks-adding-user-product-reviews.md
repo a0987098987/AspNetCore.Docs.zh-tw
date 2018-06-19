@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893306"
 ---
 <a name="tailspin-spyworks---adding-user-product-reviews"></a><span data-ttu-id="ccbf6-103">Tailspin Spyworks-新增使用者產品評論</span><span class="sxs-lookup"><span data-stu-id="ccbf6-103">Tailspin Spyworks - Adding User Product Reviews</span></span>
 ====================

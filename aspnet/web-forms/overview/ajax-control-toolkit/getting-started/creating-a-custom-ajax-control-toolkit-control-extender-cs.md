@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875912"
 ---
 <a name="creating-a-custom-ajax-control-toolkit-control-extender-c"></a><span data-ttu-id="16df5-103">建立自訂的 AJAX 控制項 Toolkit 控制項擴充項 (C#)</span><span class="sxs-lookup"><span data-stu-id="16df5-103">Creating a Custom AJAX Control Toolkit Control Extender (C#)</span></span>
 ====================

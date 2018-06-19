@@ -1,22 +1,23 @@
 ---
 uid: aspnet/overview/owin-and-katana/index
-title: "OWIN 和 Katana |Microsoft 文件"
+title: OWIN 和 Katana |Microsoft 文件
 author: rick-anderson
-description: "Katana 是一組彈性來建置和裝載.NET OWIN web 應用程式開啟 Web 介面的元件。"
+description: Katana 是一組彈性來建置和裝載.NET OWIN web 應用程式開啟 Web 介面的元件。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2013
 ms.topic: article
 ms.assetid: 37e005e9-2f1c-4039-b6ef-15612e0fdbc9
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana
 msc.type: chapter
 ms.openlocfilehash: a97cf97328ea6e4f7fe527ea7c9068ec60341d0b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497767"
 ---
 <a name="owin-and-katana"></a>OWIN 和 Katana
 ====================

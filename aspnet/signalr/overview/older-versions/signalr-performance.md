@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/signalr-performance
-title: "SignalR 效能 (SignalR 1.x) |Microsoft 文件"
+title: SignalR 效能 (SignalR 1.x) |Microsoft 文件
 author: pfletcher
-description: "SignalR 效能"
+description: SignalR 效能
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/03/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28037148"
 ---
 <a name="signalr-performance-signalr-1x"></a>SignalR 效能 (SignalR 1.x)
 ====================

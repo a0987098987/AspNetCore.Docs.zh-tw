@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868031"
 ---
 <a name="aspnet-mvc-storefront-part-16-membership-redo-with-openid"></a>採用 OpenID Storefront 部分 16 ASP.NET MVC： 成員資格重做
 ====================

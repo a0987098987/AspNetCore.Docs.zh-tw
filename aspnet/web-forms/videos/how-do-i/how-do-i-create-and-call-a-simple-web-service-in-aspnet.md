@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-call-a-simple-web-service-in-aspnet
-title: "[如何:]建立和簡單 Web 服務呼叫中 ASP.NET |Microsoft 文件"
+title: '[如何:]建立和簡單 Web 服務呼叫中 ASP.NET |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何建立 asp.net web 服務，然後呼叫服務，從另一個 ASP.NET 網站。 首先，了解如何建立..."
+description: 在這個視訊 Chris Pels 將示範如何建立 asp.net web 服務，然後呼叫服務，從另一個 ASP.NET 網站。 首先，了解如何建立...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526457"
 ---
 <a name="how-do-i-create-and-call-a-simple-web-service-in-aspnet"></a>[如何:]建立並呼叫在 ASP.NET 中的簡單 Web 服務
 ====================

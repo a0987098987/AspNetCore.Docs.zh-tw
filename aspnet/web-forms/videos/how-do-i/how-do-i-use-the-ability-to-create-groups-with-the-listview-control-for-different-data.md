@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-ability-to-create-groups-with-the-listview-control-for-different-data
-title: "[如何:]使用功能來建立具有不同的資料清單檢視控制項群組 |Microsoft 文件"
+title: '[如何:]使用功能來建立具有不同的資料清單檢視控制項群組 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 會顯示在 ListView 控制項中顯示資料的項目分組方式。 首先，請參閱 ListView 檔控制中的項目配置的基本概念..."
+description: 在這段影片 Chris Pels 會顯示在 ListView 控制項中顯示資料的項目分組方式。 首先，請參閱 ListView 檔控制中的項目配置的基本概念...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525197"
 ---
 <a name="how-do-i-use-the-ability-to-create-groups-with-the-listview-control-for-different-data"></a>[如何:]使用來建立具有不同的資料清單檢視控制項群組的能力
 ====================

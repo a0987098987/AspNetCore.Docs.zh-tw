@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871619"
 ---
 <a name="aspnet-mvc-storefront-part-4-linq-to-sql-spike"></a>ASP.NET MVC Storefront 第 4 部分： Linq Sql 特殊圖文集
 ====================

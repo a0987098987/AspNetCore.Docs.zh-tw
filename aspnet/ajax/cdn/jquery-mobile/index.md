@@ -1,22 +1,23 @@
 ---
 uid: ajax/cdn/jquery-mobile/index
-title: "jQuery Mobile |Microsoft 文件"
+title: jQuery Mobile |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: c13785b6-5538-4511-92de-4afdb4a1d0f1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile
 msc.type: folder
 ms.openlocfilehash: 703fd2b034d07ef1425a1c9d8c9b01b92d497d1b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26495737"
 ---
 <a name="jquery-mobile"></a>jQuery Mobile
 ====================

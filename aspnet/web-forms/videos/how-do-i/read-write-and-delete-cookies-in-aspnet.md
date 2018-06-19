@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/read-write-and-delete-cookies-in-aspnet
-title: "讀取、 寫入和刪除在 ASP.NET 中的 Cookie |Microsoft 文件"
+title: 讀取、 寫入和刪除在 ASP.NET 中的 Cookie |Microsoft 文件
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何讀取、 寫入和刪除 cookie，ASP.NET 應用程式中。 首先，了解管理 cooki 的基本作業..."
+description: 在這個視訊 Chris Pels 將示範如何讀取、 寫入和刪除 cookie，ASP.NET 應用程式中。 首先，了解管理 cooki 的基本作業...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/10/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526367"
 ---
 <a name="read-write-and-delete-cookies-in-aspnet"></a>讀取、 寫入和刪除在 ASP.NET 中的 Cookie
 ====================

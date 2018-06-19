@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881759"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>使用 Visual Studio 的 ASP.NET Web 部署： 部署額外的檔案
 ====================
@@ -83,7 +84,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="more-information"></a>詳細資訊
 
-如果您知道如何使用 MSBuild 檔案，您可以撰寫程式碼來自動化許多其他部署工作*.pubxml*檔案 （適用於特定設定檔的工作） 或專案*。 wpp.targets*檔案 （如工作適用於所有設定檔）。 如需詳細資訊*.pubxml*和*。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio Web 中的檔案專案](https://msdn.microsoft.com/library/ff398069)。 MSBuild 的程式碼的基本簡介，請參閱**剖析專案檔**中[企業部署序列： 了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 若要了解如何使用 MSBuild 檔案，為您自己的案例中執行工作，請參閱此活頁簿：[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi 和 William Bartholomew。
+如果您知道如何使用 MSBuild 檔案，您可以撰寫程式碼來自動化許多其他部署工作 *.pubxml*檔案 （適用於特定設定檔的工作） 或專案 *。 wpp.targets*檔案 （如工作適用於所有設定檔）。 如需詳細資訊 *.pubxml*和 *。 wpp.targets*檔，請參閱[如何： 編輯發行設定檔 (.pubxml) 檔中的部署設定而。 wpp.targets Visual Studio Web 中的檔案專案](https://msdn.microsoft.com/library/ff398069)。 MSBuild 的程式碼的基本簡介，請參閱**剖析專案檔**中[企業部署序列： 了解專案檔](../web-deployment-in-the-enterprise/understanding-the-project-file.md)。 若要了解如何使用 MSBuild 檔案，為您自己的案例中執行工作，請參閱此活頁簿：[內 Microsoft Build Engine： 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com) Sayed Ibraham Hashimi 和 William Bartholomew。
 
 ## <a name="acknowledgements"></a>謝誌
 

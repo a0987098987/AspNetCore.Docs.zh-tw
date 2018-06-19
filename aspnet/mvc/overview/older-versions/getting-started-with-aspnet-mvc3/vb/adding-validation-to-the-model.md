@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872919"
 ---
 <a name="adding-validation-to-the-model-vb"></a>將驗證加入至模型 (VB)
 ====================
@@ -71,7 +72,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 ## <a name="validation-error-ui-in-aspnet-mvc"></a>驗證錯誤 ASP.NET MVC 中的 UI
 
-重新執行應用程式，並瀏覽至*/Movies* URL。
+重新執行應用程式，並瀏覽至 */Movies* URL。
 
 按一下**建立電影**連結加入新的電影。 填寫表單具有一些無效的值，然後按一下 [**建立**] 按鈕。
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
-title: "在 ASP.NET Web API 2.1 BSON 支援 |Microsoft 文件"
+title: 在 ASP.NET Web API 2.1 BSON 支援 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 459cb3289741a3f46325e605a617dc926ee0563d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27984579"
 ---
 <a name="bson-support-in-aspnet-web-api-21"></a>在 ASP.NET Web API 2.1 BSON 支援
 ====================

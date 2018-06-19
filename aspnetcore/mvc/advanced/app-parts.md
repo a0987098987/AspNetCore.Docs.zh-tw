@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32739850"
 ---
 # <a name="application-parts-in-aspnet-core"></a>ASP.NET Core 的應用程式組件
 

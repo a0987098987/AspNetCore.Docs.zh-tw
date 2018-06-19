@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/index
-title: "TextBoxWatermark |Microsoft 文件"
+title: TextBoxWatermark |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會示範如何使用 TextBoxWatermark 控制項來顯示使用訊息，就會消失，當使用者開始在其中輸入的文字方塊。"
+description: 本教學課程會示範如何使用 TextBoxWatermark 控制項來顯示使用訊息，就會消失，當使用者開始在其中輸入的文字方塊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark
 msc.type: chapter
 ms.openlocfilehash: b1285b7f6e3b174a61d4c850c3b54c45da4f802e
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26511697"
 ---
 <a name="textboxwatermark"></a>TextBoxWatermark
 ====================

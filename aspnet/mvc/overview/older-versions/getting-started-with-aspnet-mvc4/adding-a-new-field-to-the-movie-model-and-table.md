@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872786"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>將新欄位加入至電影模型和資料表
 ====================
@@ -81,7 +82,7 @@ Visual Studio 隨即開啟*configuration.cs 中*檔案。 取代`Seed`方法中�
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image7.png)
 
-Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{DateStamp}\_Initial.cs* )，而且這個類別包含程式碼會建立資料庫結構描述。 移轉 filename 預先固定時間戳記為協助進行排序。 檢查*{DateStamp}\_Initial.cs*檔案，它包含的指示來建立電影 db 電影資料表。 當您更新的資料庫中的指示，在此之下*{DateStamp}\_Initial.cs*檔案將會執行並建立資料庫結構描述。 然後在**種子**方法會執行填入資料庫的測試資料。
+Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱 *{DateStamp}\_Initial.cs* )，而且這個類別包含程式碼會建立資料庫結構描述。 移轉 filename 預先固定時間戳記為協助進行排序。 檢查 *{DateStamp}\_Initial.cs*檔案，它包含的指示來建立電影 db 電影資料表。 當您更新的資料庫中的指示，在此之下 *{DateStamp}\_Initial.cs*檔案將會執行並建立資料庫結構描述。 然後在**種子**方法會執行填入資料庫的測試資料。
 
 在**Package Manager Console**，輸入命令 [更新的資料庫] 來建立資料庫和執行**種子**方法。
 
@@ -89,7 +90,7 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 如果您收到錯誤，指出資料表已經存在，而且無法建立，它可能是因為刪除資料庫之後，您在執行之前，執行該應用程式`update-database`。 在此情況下，刪除*Movies.mdf*檔案一次，然後重試`update-database`命令。 如果您仍然收到錯誤，刪除 migrations 資料夾內容，則開頭的指示，在此頁面最上方 (這是刪除*Movies.mdf*檔案，然後繼續進行 Enable-migrations)。
 
-執行應用程式，並瀏覽至*/Movies* URL。 種子資料會顯示。
+執行應用程式，並瀏覽至 */Movies* URL。 種子資料會顯示。
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image9.png)
 
@@ -117,7 +118,7 @@ Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{
 
 您現在已更新以支援新的應用程式程式碼`Rating`屬性。
 
-現在執行應用程式中，瀏覽至*/Movies* URL。 當您這樣做時，不過，您會看到下列錯誤：
+現在執行應用程式中，瀏覽至 */Movies* URL。 當您這樣做時，不過，您會看到下列錯誤：
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image10.png)
 

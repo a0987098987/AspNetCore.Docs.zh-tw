@@ -14,6 +14,7 @@ ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34153569"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>在 ASP.NET Core 金鑰的儲存體格式
 

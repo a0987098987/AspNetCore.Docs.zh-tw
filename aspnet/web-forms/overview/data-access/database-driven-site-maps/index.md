@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/database-driven-site-maps/index
-title: "資料庫驅動站台對應 |Microsoft 文件"
+title: 資料庫驅動站台對應 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程說明如何建置會根據資料庫中的資訊，動態站台對應。"
+description: 本教學課程說明如何建置會根據資料庫中的資訊，動態站台對應。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps
 msc.type: chapter
 ms.openlocfilehash: a237409281885cbec652de091c6e1d690b24061c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513027"
 ---
 <a name="database-driven-site-maps"></a>資料庫驅動的站台對應
 ====================

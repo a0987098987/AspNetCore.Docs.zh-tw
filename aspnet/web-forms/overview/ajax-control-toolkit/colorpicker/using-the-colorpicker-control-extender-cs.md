@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873845"
 ---
 <a name="using-the-colorpicker-control-extender-c"></a>使用 ColorPicker 控制項擴充項 (C#)
 ====================

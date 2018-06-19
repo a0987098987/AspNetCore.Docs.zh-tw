@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/your-first-web-api
-title: "ASP.NET Web API，第 1 部分： 第一個 Web 應用程式開發介面 |Microsoft 文件"
+title: ASP.NET Web API，第 1 部分： 第一個 Web 應用程式開發介面 |Microsoft 文件
 author: jongalloway
-description: "注意： 這段影片中包含發行前版本的 ASP.NET Web API 的資訊"
+description: 注意： 這段影片中包含發行前版本的 ASP.NET Web API 的資訊
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509087"
 ---
 <a name="aspnet-web-api-part-1-your-first-web-api"></a>ASP.NET Web API，第 1 部分： 第一個 Web 應用程式開發介面
 ====================

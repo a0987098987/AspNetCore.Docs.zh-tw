@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898209"
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>修正 「 無法使用伺服器應用程式 」 錯誤 IE 的安全性更新
 ====================

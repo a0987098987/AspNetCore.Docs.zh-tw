@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/index
-title: "序列化和 ASP.NET Web API 中的模型繫結 |Microsoft 文件"
+title: 序列化和 ASP.NET Web API 中的模型繫結 |Microsoft 文件
 author: rick-anderson
-description: "如何 ASP.NET Web API 繫結的 HTTP 訊息到網域模型，和如何使用媒體格式中 Web API。"
+description: 如何 ASP.NET Web API 繫結的 HTTP 訊息到網域模型，和如何使用媒體格式中 Web API。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/formats-and-model-binding
 msc.type: chapter
 ms.openlocfilehash: 8aa061c2cdf4c65a1e0718e2ab146a0220fd8ee6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506767"
 ---
 <a name="serialization-and-model-binding-in-aspnet-web-api"></a>序列化和 ASP.NET Web API 中的模型繫結
 ====================

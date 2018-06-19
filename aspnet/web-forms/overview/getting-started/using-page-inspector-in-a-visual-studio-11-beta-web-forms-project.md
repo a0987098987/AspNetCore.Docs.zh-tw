@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28040323"
 ---
 <a name="using-page-inspector-for-visual-studio-2012-in-aspnet-web-forms"></a>使用 Page Inspector 的 ASP.NET Web Form 中的 Visual Studio 2012
 ====================

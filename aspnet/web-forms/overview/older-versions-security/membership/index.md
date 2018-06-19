@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/index
-title: "ASP.NET 3.5-成員資格 |Microsoft 文件"
+title: ASP.NET 3.5-成員資格 |Microsoft 文件
 author: rick-anderson
-description: "此教學課程系列會檢查使用內建成員資格 （安全性） 系統來建立使用者帳戶和設定授權規則的技術。"
+description: 此教學課程系列會檢查使用內建成員資格 （安全性） 系統來建立使用者帳戶和設定授權規則的技術。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/membership
 msc.type: chapter
 ms.openlocfilehash: bcd354111798d45c6207f0eead00647f6a031fcc
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519097"
 ---
 <a name="aspnet-35---membership"></a>ASP.NET 3.5-成員資格
 ====================

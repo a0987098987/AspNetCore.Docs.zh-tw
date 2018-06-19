@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869929"
 ---
 <a name="use-code-first-migrations-to-seed-the-database"></a>使用 Code First 移轉來植入資料庫
 ====================

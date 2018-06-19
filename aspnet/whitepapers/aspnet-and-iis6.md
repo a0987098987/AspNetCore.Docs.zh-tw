@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-and-iis6
-title: "執行 IIS 6.0 與 ASP.NET 1.1 |Microsoft 文件"
+title: 執行 IIS 6.0 與 ASP.NET 1.1 |Microsoft 文件
 author: rick-anderson
-description: "雖然 Windows Server 2003 包括 IIS 6.0 與 ASP.NET 1.1，預設會停用這些元件。 本白皮書說明如何啟用 IIS 6.0..."
+description: 雖然 Windows Server 2003 包括 IIS 6.0 與 ASP.NET 1.1，預設會停用這些元件。 本白皮書說明如何啟用 IIS 6.0...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: 5a5537bf-2aaa-49e7-839f-9e6522b829d8
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-and-iis6
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530107"
 ---
 <a name="running-aspnet-11-with-iis-60"></a>執行 IIS 6.0 與 ASP.NET 1.1
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875522"
 ---
 <a name="iteration-7--add-ajax-functionality-c"></a>反覆項目 #7 – 新增 Ajax 功能 (C#)
 ====================

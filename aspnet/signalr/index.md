@@ -1,8 +1,8 @@
 ---
 uid: signalr/index
-title: "SignalR |Microsoft 文件"
+title: SignalR |Microsoft 文件
 author: rick-anderson
-description: "Microsoft ASP.NET SignalR 是 ASP.NET 開發人員的程式庫，可簡化將即時 web 功能新增至您的應用程式的程序。"
+description: Microsoft ASP.NET SignalR 是 ASP.NET 開發人員的程式庫，可簡化將即時 web 功能新增至您的應用程式的程序。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/24/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /signalr
 msc.type: categoryindex
 ms.openlocfilehash: 7c09eac2247891f872f77cc6395a54d8554e183b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26504147"
 ---
 <a name="signalr"></a>SignalR
 ====================

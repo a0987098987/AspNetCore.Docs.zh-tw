@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/enabling-signalr-tracing
-title: "啟用 SignalR 追蹤 |Microsoft 文件"
+title: 啟用 SignalR 追蹤 |Microsoft 文件
 author: tfitzmac
-description: "本文件說明如何啟用及設定 SignalR 的伺服器和用戶端的追蹤。 追蹤可讓您檢視事件的診斷資訊..."
+description: 本文件說明如何啟用及設定 SignalR 的伺服器和用戶端的追蹤。 追蹤可讓您檢視事件的診斷資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28032814"
 ---
 <a name="enabling-signalr-tracing"></a>啟用 SignalR 追蹤
 ====================

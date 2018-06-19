@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871931"
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>將新的分類加入至使用 jQuery UI 的 DropDownList
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/5-minute-introduction-to-aspnet-web-pages
-title: "ASP.NET Web Pages 的 5 分鐘簡介 |Microsoft 文件"
+title: ASP.NET Web Pages 的 5 分鐘簡介 |Microsoft 文件
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529727"
 ---
 <a name="5-minute-introduction-to-aspnet-web-pages"></a>ASP.NET Web Pages 的 5 分鐘簡介
 ====================

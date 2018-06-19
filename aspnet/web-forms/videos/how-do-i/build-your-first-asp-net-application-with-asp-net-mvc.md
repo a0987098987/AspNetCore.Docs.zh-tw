@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/build-your-first-asp-net-application-with-asp-net-mvc
-title: "建置第一個 ASP.NET 應用程式搭配 ASP.NET MVC |Microsoft 文件"
+title: 建置第一個 ASP.NET 應用程式搭配 ASP.NET MVC |Microsoft 文件
 author: lmoroney
-description: "Microsoft 的 Laurence Moroney 會示範如何建置第一個 ASP.NET MVC 與 ASP.NET 應用程式。"
+description: Microsoft 的 Laurence Moroney 會示範如何建置第一個 ASP.NET MVC 與 ASP.NET 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525167"
 ---
 <a name="build-your-first-aspnet-application-with-aspnet-mvc"></a>建置第一個 ASP.NET MVC 與 ASP.NET 應用程式
 ====================

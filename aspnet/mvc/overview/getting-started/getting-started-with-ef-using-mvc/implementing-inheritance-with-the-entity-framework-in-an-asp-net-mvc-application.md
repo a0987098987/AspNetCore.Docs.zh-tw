@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873400"
 ---
 <a name="implementing-inheritance-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-11-of-12"></a>實作 ASP.NET MVC 5 應用程式 (11 12 個) 的 Entity Framework 6 的繼承
 ====================
@@ -129,7 +130,7 @@ TPC 和 TPH 繼承模式通常傳遞更佳的效能比 TPT 繼承的模式，Ent
 
 執行網站，然後再次嘗試各種不同的頁面。 一切項目的運作與之前一樣。
 
-在**伺服器總管 中，**展開**資料 Connections\SchoolContext**然後**資料表**，而且您會看到的**學生**和**講師**資料表已取代**人員**資料表。 展開**人員**資料表，而且您看到它有使用中的資料行的所有**學生**和**講師**資料表。
+在**伺服器總管 中，** 展開**資料 Connections\SchoolContext**然後**資料表**，而且您會看到的**學生**和**講師**資料表已取代**人員**資料表。 展開**人員**資料表，而且您看到它有使用中的資料行的所有**學生**和**講師**資料表。
 
 ![Server_Explorer_showing_Person_table](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
 

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-2
-title: "ASP.NET Web API 中傳送 HTML 表單資料： 檔案上傳和多部分 MIME |Microsoft 文件"
+title: ASP.NET Web API 中傳送 HTML 表單資料： 檔案上傳和多部分 MIME |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28040138"
 ---
 <a name="sending-html-form-data-in-aspnet-web-api-file-upload-and-multipart-mime"></a>ASP.NET Web API 中傳送 HTML 表單資料： 檔案上傳和 MIME 多組件
 ====================

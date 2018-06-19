@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index
-title: "MutuallyExclusiveCheckbox |Microsoft 文件"
+title: MutuallyExclusiveCheckbox |Microsoft 文件
 author: rick-anderson
-description: "本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立工作，例如選項按鈕的核取方塊 （互斥），但可以是..."
+description: 本教學課程示範如何使用 MutuallyExclusiveCheckbox 控制項來建立工作，例如選項按鈕的核取方塊 （互斥），但可以是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbo
 msc.type: chapter
 ms.openlocfilehash: bea70dbaeb855c586cc0180511c454bf4ffd6e5f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510457"
 ---
 <a name="mutuallyexclusivecheckbox"></a>MutuallyExclusiveCheckbox
 ====================

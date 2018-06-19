@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/index
-title: "NerdDinner |Microsoft 文件"
+title: NerdDinner |Microsoft 文件
 author: rick-anderson
-description: "如何建置使用 ASP.NET MVC 1 NerdDinner.com 網站。 如需 ASP.NET MVC 3 版本，請瀏覽 nerddinner GitHub。"
+description: 如何建置使用 ASP.NET MVC 1 NerdDinner.com 網站。 如需 ASP.NET MVC 3 版本，請瀏覽 nerddinner GitHub。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/nerddinner
 msc.type: chapter
 ms.openlocfilehash: e4791f1fa7d5a23fdd688c294836971735070afc
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500747"
 ---
 <a name="nerddinner"></a>NerdDinner
 ====================

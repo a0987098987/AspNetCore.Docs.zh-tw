@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site
-title: "[如何:]設定健全狀況監視的 ASP.NET 網站上的電子郵件通知 |Microsoft 文件"
+title: '[如何:]設定健全狀況監視的 ASP.NET 網站上的電子郵件通知 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何設定健全狀況監視的 ASP.NET 網站上的電子郵件通知。 首先，請參閱 < 如何設定傳送電子..."
+description: 在這個視訊 Chris Pels 示範如何設定健全狀況監視的 ASP.NET 網站上的電子郵件通知。 首先，請參閱 < 如何設定傳送電子...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/11/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521757"
 ---
 <a name="how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site"></a>[如何:]設定健全狀況監視的 ASP.NET 網站上的電子郵件通知
 ====================

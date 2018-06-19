@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/index
-title: "Visual Studio 2012 未授權者手上實驗室 |Microsoft 文件"
+title: Visual Studio 2012 未授權者手上實驗室 |Microsoft 文件
 author: rick-anderson
-description: "了解如何開發與這些實際操作實驗室與 ASP.NET Web Form"
+description: 了解如何開發與這些實際操作實驗室與 ASP.NET Web Form
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs
 msc.type: chapter
 ms.openlocfilehash: fcfb9d1f4b1cdd55dbc9472e2b74cab7a4c7d84b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516547"
 ---
 <a name="visual-studio-2012-hands-on-labs"></a>Visual Studio 2012 未授權者手上實驗室
 ====================

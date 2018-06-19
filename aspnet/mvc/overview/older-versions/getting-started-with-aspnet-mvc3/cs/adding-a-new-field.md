@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871554"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a>將新欄位加入至電影模型和資料表 (C#)
 ====================
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/06/2018
 
 您現在已更新以支援新的應用程式程式碼`Rating`屬性。
 
-現在執行應用程式中，瀏覽至*/Movies* URL。 當您這樣做時，不過，您會看到下列錯誤：
+現在執行應用程式中，瀏覽至 */Movies* URL。 當您這樣做時，不過，您會看到下列錯誤：
 
 ![](adding-a-new-field/_static/image1.png)
 
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/06/2018
 
 關閉*Global.asax*檔案。
 
-重新執行應用程式，並瀏覽至*/Movies* URL。 當應用程式啟動時，它會偵測模型結構不再符合資料庫結構描述。 它會自動重新建立資料庫，以符合新的模型結構，並於其中填入資料庫的範例影片：
+重新執行應用程式，並瀏覽至 */Movies* URL。 當應用程式啟動時，它會偵測模型結構不再符合資料庫結構描述。 它會自動重新建立資料庫，以符合新的模型結構，並於其中填入資料庫的範例影片：
 
 ![7_MyMovieList_SM](adding-a-new-field/_static/image5.png)
 

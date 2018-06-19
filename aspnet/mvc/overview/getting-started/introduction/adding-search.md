@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871827"
 ---
 <a name="search"></a>搜尋
 ====================
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/06/2018
 
 現在您可以更新`Index`會向使用者顯示表單的檢視。
 
-執行應用程式，並瀏覽至*/電影/索引*。 將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。 隨即顯示篩選過的電影。
+執行應用程式，並瀏覽至 */電影/索引*。 將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。 隨即顯示篩選過的電影。
 
 ![SearchQryStr](adding-search/_static/image1.png)
 
@@ -151,7 +152,7 @@ Visual Studio 2013 有很棒的改進時顯示與編輯檢視檔案。 當您執
 
 [!code-cshtml[Main](adding-search/samples/sample17.cshtml)]
 
-執行應用程式，並瀏覽至*/電影/索引*。 內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。
+執行應用程式，並瀏覽至 */電影/索引*。 內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。
 
 ![](adding-search/_static/image8.png)
 

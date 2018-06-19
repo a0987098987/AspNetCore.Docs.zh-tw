@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870813"
 ---
 <a name="disabling-actions-during-animation-c"></a>在動畫中的 (C#) 停用的動作
 ====================

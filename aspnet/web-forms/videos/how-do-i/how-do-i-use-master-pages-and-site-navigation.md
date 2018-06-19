@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-master-pages-and-site-navigation
-title: "[如何:]使用主版頁面和站台瀏覽？ | Microsoft Docs"
+title: '[如何:]使用主版頁面和站台瀏覽？ | Microsoft Docs'
 author: microsoft
-description: "建立具有一致的配置和設計的網站，其使用 ASP.NET 2.0 的主版頁面的所有頁面。 請參閱 < 若要加入至網站的導覽是多麼的輕鬆..."
+description: 建立具有一致的配置和設計的網站，其使用 ASP.NET 2.0 的主版頁面的所有頁面。 請參閱 < 若要加入至網站的導覽是多麼的輕鬆...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/11/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521497"
 ---
 <a name="how-do-i-use-master-pages-and-site-navigation"></a>[如何:]使用主版頁面和站台瀏覽？
 ====================

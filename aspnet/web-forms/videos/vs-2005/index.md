@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/vs-2005/index
-title: "Visual Studio 2005 |Microsoft 文件"
+title: Visual Studio 2005 |Microsoft 文件
 author: rick-anderson
-description: "如何使用 Visual Studio 2005 Team System，增益集來執行測試、 部署和其他工作。"
+description: 如何使用 Visual Studio 2005 Team System，增益集來執行測試、 部署和其他工作。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/vs-2005
 msc.type: chapter
 ms.openlocfilehash: e3918119baf1e2fb0f1fb9d56627e7b7894f33fe
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528507"
 ---
 <a name="visual-studio-2005"></a>Visual Studio 2005
 ====================

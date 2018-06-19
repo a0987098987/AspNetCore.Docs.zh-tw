@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508107"
 ---
 <a name="whats-new-in-aspnet-web-api-odata-53"></a>ASP.NET Web API OData 5.3 中最新消息
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875935"
 ---
 <a name="declarative-parameters-c"></a>宣告式的參數 (C#)
 ====================
@@ -127,7 +128,7 @@ ObjectDataSource 的宣告式標記稍有不同於第一個範例中，使用[Co
 
 ## <a name="showing-all-suppliers-by-default"></a>顯示預設的所有供應商
 
-而是先檢視網頁時顯示任何的供應項目比我們可能會想要顯示*所有*供應商在一開始，讓使用者在文字方塊中輸入國家/地區名稱削減清單。 文字方塊是空的當`SuppliersBLL`類別的`GetSuppliersByCountry(country)`方法傳入`null`值及其*`country`*輸入的參數。 這`null`值接著會向下傳遞至 DAL`GetSupplierByCountry(country)`方法，它就會轉譯到資料庫`NULL`值`@Country`參數，在下列查詢：
+而是先檢視網頁時顯示任何的供應項目比我們可能會想要顯示*所有*供應商在一開始，讓使用者在文字方塊中輸入國家/地區名稱削減清單。 文字方塊是空的當`SuppliersBLL`類別的`GetSuppliersByCountry(country)`方法傳入`null`值及其*`country`* 輸入的參數。 這`null`值接著會向下傳遞至 DAL`GetSupplierByCountry(country)`方法，它就會轉譯到資料庫`NULL`值`@Country`參數，在下列查詢：
 
 [!code-sql[Main](declarative-parameters-cs/samples/sample3.sql)]
 

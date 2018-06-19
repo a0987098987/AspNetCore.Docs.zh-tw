@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/index
-title: "ASP.NET 4-繼續進行 Entity Framework 4 和 Web Form |Microsoft 文件"
+title: ASP.NET 4-繼續進行 Entity Framework 4 和 Web Form |Microsoft 文件
 author: rick-anderson
-description: "如何建置多層式架構應用程式使用 ObjectDataSource 控制項 Contoso U 應用程式以及如何處理並行存取，並將效能最大化。"
+description: 如何建置多層式架構應用程式使用 ObjectDataSource 控制項 Contoso U 應用程式以及如何處理並行存取，並將效能最大化。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-wit
 msc.type: chapter
 ms.openlocfilehash: aa412b55bddf886f6915dc852599a423c56c9fc3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516637"
 ---
 <a name="aspnet-4---continuing-with-entity-framework-4-and-web-forms"></a>ASP.NET 4-繼續進行 Entity Framework 4 和 Web Form
 ====================

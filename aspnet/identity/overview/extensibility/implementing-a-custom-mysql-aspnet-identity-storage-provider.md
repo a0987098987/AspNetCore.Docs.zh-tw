@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872734"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>實作自訂 MySQL ASP.NET Identity 的存放裝置提供者
 ====================
@@ -77,7 +78,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-a-mysql-database-instance-on-azure"></a>在 Azure 上建立的 MySQL 資料庫執行個體
 
 1. 登入[Azure 入口網站](https://manage.windowsazure.com/)。
-2. 按一下**+ 新增**底部的頁面上，，然後選取**存放區**。  
+2. 按一下 **+ 新增**底部的頁面上，，然後選取**存放區**。  
     ![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image1.png)
 3. 在**選擇和附加元件**精靈中，選取**ClearDB 的 MySQL 資料庫**，然後按一下右下方的對話方塊的 下一步箭號。  
     ![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image2.png)
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/06/2018
 ### <a name="install-mysql-workbench-tool-to-connect-and-manage-mysql-database"></a>安裝 MySQL Workbench 工具連線和管理 MySQL 資料庫
 
 1. 安裝**MySQL Workbench**工具[MySQL 下載頁面](http://dev.mysql.com/downloads/windows/installer/)
-2. 啟動應用程式，新增上按一下  **MySQLConnections +**按鈕即可加入新的連接。 使用您複製從您稍早在本教學課程中建立 Azure 的 MySQL 資料庫的連接字串資料。
+2. 啟動應用程式，新增上按一下  **MySQLConnections +** 按鈕即可加入新的連接。 使用您複製從您稍早在本教學課程中建立 Azure 的 MySQL 資料庫的連接字串資料。
 3. 建立連接後，開啟 [新**查詢**] 索引標籤; 貼上從命令[MySQLIdentity.sql](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/MySQLIdentity.sql)到查詢，才能建立資料庫資料表中執行它。
 4. 現在，您會有所有 ASP.NET 識別必要的資料表建立 MySQL 資料庫裝載於 Azure，如下所示。  
     ![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image1.jpg)
@@ -116,12 +117,12 @@ ms.lasthandoff: 04/06/2018
 ### <a name="create-a-new-mvc-application-project-from-template"></a>從範本建立新的 MVC 應用程式專案
 
 1. 以滑鼠右鍵按一下**AspNet.Identity.MySQL**方案和**新增**，**新專案**
-2. 在**加入新的專案**對話方塊中，選取**Visual C#**在左邊，然後**Web** ，然後選取  **ASP.NET Web 應用程式**。 命名您的專案**IdentityMySQLDemo**; 然後按一下 [確定]。  
+2. 在**加入新的專案**對話方塊中，選取**Visual C#** 在左邊，然後**Web** ，然後選取  **ASP.NET Web 應用程式**。 命名您的專案**IdentityMySQLDemo**; 然後按一下 [確定]。  
   
     ![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image2.jpg)
 3. 中**新增 ASP.NET 專案**] 對話方塊中，選取預設選項的 MVC 範本 (包含**個別使用者帳戶**做為驗證方法)，按一下 [**確定**.![](implementing-a-custom-mysql-aspnet-identity-storage-provider/_static/image3.jpg)
 4. 在 方案總管 IdentityMySQLDemo 專案上按一下滑鼠右鍵，然後選取**管理 NuGet 封裝**。 在 搜尋文字 方塊 對話方塊中，輸入**Identity.EntityFramework**。 在結果清單中選取此套件，然後按一下**解除安裝**。 系統會提示您解除安裝相依性套件 EntityFramework。 按一下 [是] 我們不會再將此封裝，在此應用程式。
-5. 以滑鼠右鍵按一下 IdentityMySQLDemo 專案中，選取**新增**，**參考、 方案、 專案;**選取 AspNet.Identity.MySQL 專案，然後按一下**[確定]**。
+5. 以滑鼠右鍵按一下 IdentityMySQLDemo 專案中，選取**新增**，**參考、 方案、 專案;** 選取 AspNet.Identity.MySQL 專案，然後按一下 **[確定]**。
 6. 在 IdentityMySQLDemo 專案中，以取代所有參考  
     `using Microsoft.AspNet.Identity.EntityFramework;`  
    取代為  

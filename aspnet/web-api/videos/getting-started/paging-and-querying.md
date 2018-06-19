@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/paging-and-querying
-title: "ASP.NET Web API、 第 4 部分： 分頁和查詢 |Microsoft 文件"
+title: ASP.NET Web API、 第 4 部分： 分頁和查詢 |Microsoft 文件
 author: jongalloway
-description: "注意： 這段影片中包含發行前版本的 ASP.NET Web API 的資訊"
+description: 注意： 這段影片中包含發行前版本的 ASP.NET Web API 的資訊
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509107"
 ---
 <a name="aspnet-web-api-part-4-paging-and-querying"></a>ASP.NET Web API、 第 4 部分： 分頁和查詢
 ====================

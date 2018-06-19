@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875431"
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>佇列為主的工作模式 （使用 Azure 建置實際的雲端應用程式）
 ====================
@@ -135,11 +136,11 @@ Web 應用程式通常是容易量突然暴增的流量。 雖然您可以使用
 
 下列步驟顯示如何加入背景工作角色專案，以具有標準的 web 專案的方案。 已修正它在專案中，您可以下載完成這些步驟。
 
-先將雲端服務專案加入 Visual Studio 方案。 以滑鼠右鍵按一下方案，然後選取**新增**，然後**新專案**。 在左窗格中，依序展開**Visual C#**選取**雲端**。
+先將雲端服務專案加入 Visual Studio 方案。 以滑鼠右鍵按一下方案，然後選取**新增**，然後**新專案**。 在左窗格中，依序展開**Visual C#** 選取**雲端**。
 
 [![](queue-centric-work-pattern/_static/image5.png)](queue-centric-work-pattern/_static/image4.png)
 
-在**新的 Azure 雲端服務**] 對話方塊中，展開 [ **Visual C#**在左窗格中的節點。 選取**背景工作角色**，然後按一下向右箭號圖示。
+在**新的 Azure 雲端服務**] 對話方塊中，展開 [ **Visual C#** 在左窗格中的節點。 選取**背景工作角色**，然後按一下向右箭號圖示。
 
 ![](queue-centric-work-pattern/_static/image6.png)
 

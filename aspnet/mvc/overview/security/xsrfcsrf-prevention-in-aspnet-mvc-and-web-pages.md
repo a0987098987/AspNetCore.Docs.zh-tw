@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "28033992"
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>在 ASP.NET MVC 和網頁的 XSRF/CSRF 防護
 ====================
@@ -86,7 +87,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 若要產生的防 XSRF 權杖，請呼叫[ @Html.AntiForgeryToken ](https://msdn.microsoft.com/library/dd470175.aspx) MVC 檢視中的方法或@AntiForgery.GetHtml從 Razor 頁面 （)。 然後，執行階段會執行下列步驟：
 
 1. 如果目前的 HTTP 要求中已包含的防 XSRF 工作階段權杖 (防 XSRF cookie \_ \_RequestVerificationToken)，從其擷取安全性權杖。 如果 HTTP 要求不包含防 XSRF 工作階段權杖或安全性權杖的擷取失敗，就會產生新的隨機的防 XSRF 權杖。
-2. 防 XSRF 欄位語彙基元會產生使用從上個步驟 (1) 和目前的登入之使用者的身分識別的安全性 token。 (如需判斷使用者的身分識別的詳細資訊，請參閱**[具有特殊的支援案例](#_Scenarios_with_special)**下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位語彙基元。 (請參閱**[組態和擴充性](#_Configuration_and_extensibility)**節的詳細資訊。)
+2. 防 XSRF 欄位語彙基元會產生使用從上個步驟 (1) 和目前的登入之使用者的身分識別的安全性 token。 (如需判斷使用者的身分識別的詳細資訊，請參閱**[具有特殊的支援案例](#_Scenarios_with_special)** 下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位語彙基元。 (請參閱**[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。)
 3. 如果步驟 (1) 中產生新的 ANTI-XSRF 權杖，新的工作階段語彙基元會建立包含該，並將加入至傳出 HTTP cookie 集合。 步驟 (2) 中的欄位語彙基元會包裝在`<input type="hidden" />`項目，然後這個 HTML 標記將會傳回值`Html.AntiForgeryToken()`或`AntiForgery.GetHtml()`。
 
 ## <a name="validating-the-tokens"></a>驗證權杖
@@ -108,9 +109,9 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 - 已交換的工作階段權杖和欄位語彙基元。
 - 工作階段權杖和欄位語彙基元包含不相符的安全性權杖。
 - 欄位語彙基元中內嵌使用者名稱不符合目前已登入之使用者的使用者名稱。
-- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)*方法會傳回*false*。
+- *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* 方法會傳回*false*。
 
-防 XSRF 設備可能也會執行其他檢查權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS 宣告型驗證](#_WIF_ACS)和**[組態和擴充性](#_Configuration_and_extensibility)**區段，如需詳細資訊。
+防 XSRF 設備可能也會執行其他檢查權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS 宣告型驗證](#_WIF_ACS)和**[組態和擴充性](#_Configuration_and_extensibility)** 區段，如需詳細資訊。
 
 <a id="_Scenarios_with_special"></a>
 
@@ -142,7 +143,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 - `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35` （適用於 WIF SDK。)
 - `System.Security.Claims.ClaimsIdentity` （適用於.NET 4.5)。
 
-如果這些型別存在，且目前使用者的*IIIIdentity*下列其中一種實作或子類型、 身分識別提供者 （名稱識別項），將會使用防 XSRF 設備 tuple 取代產生時，使用者名稱和驗證權杖。 如果沒有這類 tuple 存在時，要求將會失敗，開發人員說明如何設定來了解使用中的特定宣告為基礎的驗證機制的防 XSRF 系統發生錯誤。 請參閱**[組態和擴充性](#_Configuration_and_extensibility)**節的詳細資訊。
+如果這些型別存在，且目前使用者的*IIIIdentity*下列其中一種實作或子類型、 身分識別提供者 （名稱識別項），將會使用防 XSRF 設備 tuple 取代產生時，使用者名稱和驗證權杖。 如果沒有這類 tuple 存在時，要求將會失敗，開發人員說明如何設定來了解使用中的特定宣告為基礎的驗證機制的防 XSRF 系統發生錯誤。 請參閱**[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。
 
 ### <a name="oauth--openid-authentication"></a>OAuth / OpenID 驗證
 
@@ -175,7 +176,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie，而且目前包�
 
 ### <a name="iantiforgeryadditionaldataprovider"></a>IAntiForgeryAdditionalDataProvider
 
-*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)*類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
+*[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* 類型可讓開發人員擴充以便在往返過程中每個語彙基元的其他資料的防 XSRF 系統行為。 *GetAdditionalData*每次呼叫方法會產生欄位語彙基元，並傳回值內嵌在產生的語彙基元。 實作者可能從這個方法會傳回時間戳記、 nonce 或任何其他值，她希望。
 
 同樣地， *ValidateAdditionalData*每次呼叫方法來驗證欄位語彙基元時，並已內嵌在權杖中的 [詳細資料] 字串傳遞給方法。 驗證常式無法實作的逾時 （藉由檢查目前的時間針對建立語彙基元時，已儲存的時間）、 nonce 檢查常式，或任何其他所需的邏輯。
 

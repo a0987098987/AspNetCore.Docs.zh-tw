@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/index
-title: "ASP.NET 4-企業部署系列 1 |Microsoft 文件"
+title: ASP.NET 4-企業部署系列 1 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程說明如何符合許多管理 developmen 企業規模的 web 應用程式的部署時，就會發生的驗證題目..."
+description: 本教學課程說明如何符合許多管理 developmen 企業規模的 web 應用程式的部署時，就會發生的驗證題目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise
 msc.type: chapter
 ms.openlocfilehash: 50918b1aef416a7b262e982bcf67607aa36933a3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515177"
 ---
 <a name="aspnet-4---enterprise-deployment-series-1"></a>ASP.NET 4-企業部署系列 1
 ====================

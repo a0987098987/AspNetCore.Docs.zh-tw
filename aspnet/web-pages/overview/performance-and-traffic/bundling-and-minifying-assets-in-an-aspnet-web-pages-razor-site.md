@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site
-title: "統合及縮小資產的 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 統合及縮小資產的 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: microsoft
-description: "組合和縮製是可讓您的站台更快的方法。 結合在一起可讓您結合多個 JavaScript (.js) 檔案或多個階層式樣式表 （..."
+description: 組合和縮製是可讓您的站台更快的方法。 結合在一起可讓您結合多個 JavaScript (.js) 檔案或多個階層式樣式表 （...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528547"
 ---
 <a name="bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site"></a>統合及縮小 ASP.NET Web Pages (Razor) 網站中的資產
 ====================

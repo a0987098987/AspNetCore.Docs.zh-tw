@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/index
-title: "控制器及路由 |Microsoft 文件"
+title: 控制器及路由 |Microsoft 文件
 author: rick-anderson
-description: "在此教學課程集時，您了解 ASP.NET 路由，瀏覽器要求對應至 ASP.NET MVC 控制器的動作。"
+description: 在此教學課程集時，您了解 ASP.NET 路由，瀏覽器要求對應至 ASP.NET MVC 控制器的動作。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing
 msc.type: chapter
 ms.openlocfilehash: fe42077c119599bd169464ec2a7cdc4a0dd008a3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499947"
 ---
 <a name="controllers-and-routing"></a>控制器及路由
 ====================

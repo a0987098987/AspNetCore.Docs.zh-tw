@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "28040219"
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>使用 ASP.NET Web Pages (Razor) 網站中的檔案
 ====================
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/10/2018
 <a id="Creating_a_Text_File"></a>
 ## <a name="creating-a-text-file-and-writing-data-to-it"></a>建立文字檔案並將資料寫入
 
-除了在您的網站使用的資料庫，您可能會使用檔案。 比方說，您可能會使用文字檔來儲存站台資料的簡單方式。 (用來儲存資料的文字檔案有時稱為*一般檔案*。)文字檔案可以位於不同格式，例如*.txt*， *.xml*，或*.csv* （以逗號分隔值）。
+除了在您的網站使用的資料庫，您可能會使用檔案。 比方說，您可能會使用文字檔來儲存站台資料的簡單方式。 (用來儲存資料的文字檔案有時稱為*一般檔案*。)文字檔案可以位於不同格式，例如 *.txt*， *.xml*，或 *.csv* （以逗號分隔值）。
 
 如果您想要將資料儲存在文字檔中，您可以使用`File.WriteAllText`方法，以指定要建立的檔案和要寫入其中的資料。 在此程序，您將建立包含簡單的表單具有三個的頁面`input`（名字、 姓氏和電子郵件地址） 的項目和**送出** 按鈕。 當使用者提交表單時，您將會儲存使用者的輸入文字檔案中。
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/10/2018
 
     您接著會建立一個變數 (`dataFile`)，其中包含要將資料儲存在檔案名稱與位置。 設定位置，需要一些特殊處理。 在網站中，它是不良作法為絕對路徑，例如程式碼中參考*C:\Folder\File.txt* web 伺服器上的檔案。 如果網站被移動，就會出錯的絕對路徑。 此外，裝載站台 （而非您自己電腦上） 您通常不甚至知道正確的路徑當您撰寫程式碼。
 
-    但有時候 （如 now，供寫入的檔案) 則需要完整的路徑。 解決方案是使用`MapPath`方法`Server`物件。 這會傳回完整路徑到您的網站。 網站根目錄，您的使用者取得路徑`~`運算子 (represen 站台的虛擬根) 到`MapPath`。 (您也可以傳遞給子資料夾名稱，例如*~/App\_資料 /*，以取得該資料夾的路徑。)然後，您可以串連到任何方法以建立完整的路徑會傳回的其他資訊。 在此範例中，您可以將檔案名稱。 (您可以閱讀更多有關如何使用中的檔案和資料夾路徑[ASP.NET Web Pages 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=195205#ID_WorkingWithFileAndFolderPaths)。)
+    但有時候 （如 now，供寫入的檔案) 則需要完整的路徑。 解決方案是使用`MapPath`方法`Server`物件。 這會傳回完整路徑到您的網站。 網站根目錄，您的使用者取得路徑`~`運算子 (represen 站台的虛擬根) 到`MapPath`。 (您也可以傳遞給子資料夾名稱，例如 *~/App\_資料 /*，以取得該資料夾的路徑。)然後，您可以串連到任何方法以建立完整的路徑會傳回的其他資訊。 在此範例中，您可以將檔案名稱。 (您可以閱讀更多有關如何使用中的檔案和資料夾路徑[ASP.NET Web Pages 程式設計使用 Razor 語法的簡介](https://go.microsoft.com/fwlink/?LinkId=195205#ID_WorkingWithFileAndFolderPaths)。)
 
     此檔案會儲存在*應用程式\_資料*資料夾。 此資料夾是在 ASP.NET 中用來儲存資料檔案中所述的特殊資料夾[簡介使用 ASP.NET Web Pages 站台中的資料庫](https://go.microsoft.com/fwlink/?LinkId=195209)。
 
@@ -160,13 +161,13 @@ ms.lasthandoff: 04/10/2018
 
 
 1. 在網站上建立一個名為子*映像*。
-2. 複製一或多個*.jpg*檔案至*映像*資料夾。
+2. 複製一或多個 *.jpg*檔案至*映像*資料夾。
 3. 在網站的根目錄，在建立新的檔案，名為*FileDelete.cshtml*。
 4. 以下列內容取代現有的內容： 
 
     [!code-cshtml[Main](working-with-files/samples/sample6.cshtml)]
 
-    此頁面包含的表單，使用者可以輸入的映像檔的名稱。 不進入*.jpg*副檔名; 藉由限制如下的檔案名稱，協助您防止使用者刪除您的網站上的任意檔案。
+    此頁面包含的表單，使用者可以輸入的映像檔的名稱。 不進入 *.jpg*副檔名; 藉由限制如下的檔案名稱，協助您防止使用者刪除您的網站上的任意檔案。
 
     程式碼會讀取使用者輸入，並接著建構的完整路徑的檔案名稱。 若要建立路徑，程式碼會使用目前的網站路徑 (傳回`Server.MapPath`方法)，則*映像*資料夾名稱、 使用者提供的名稱和".jpg"為常值字串。
 

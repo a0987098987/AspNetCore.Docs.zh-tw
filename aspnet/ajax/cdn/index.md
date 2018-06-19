@@ -1,22 +1,23 @@
 ---
 uid: ajax/cdn/index
-title: "Microsoft Ajax 內容傳遞網路 |Microsoft 文件"
+title: Microsoft Ajax 內容傳遞網路 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: fc98bde7-484a-4191-bba2-04d29551cb8f
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
-msc.legacyurl: 
+msc.legacyurl: ''
 msc.type: content
 ms.openlocfilehash: 104099ac25df23f2f73cea94a807a17f981c96a2
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26496057"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================

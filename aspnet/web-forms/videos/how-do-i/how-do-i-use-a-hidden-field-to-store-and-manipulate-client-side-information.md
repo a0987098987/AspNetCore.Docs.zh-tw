@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information
-title: "[如何:]使用隱藏的欄位來儲存及處理用戶端資訊 |Microsoft 文件"
+title: '[如何:]使用隱藏的欄位來儲存及處理用戶端資訊 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 會顯示如何使用隱藏的欄位做為其中一個方法來簡單狀態管理 ASP.NET 網頁上，以及通訊的用戶端..."
+description: 在這段影片 Chris Pels 會顯示如何使用隱藏的欄位做為其中一個方法來簡單狀態管理 ASP.NET 網頁上，以及通訊的用戶端...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525077"
 ---
 <a name="how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information"></a>[如何:]使用隱藏的欄位來儲存及管理用戶端的資訊
 ====================

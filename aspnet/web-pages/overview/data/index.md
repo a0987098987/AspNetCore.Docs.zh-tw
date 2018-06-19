@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/index
-title: "使用資料 |Microsoft 文件"
+title: 使用資料 |Microsoft 文件
 author: rick-anderson
-description: "如何處理資料庫和 Web 網頁如何顯示及更新資料的檔案。"
+description: 如何處理資料庫和 Web 網頁如何顯示及更新資料的檔案。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/data
 msc.type: chapter
 ms.openlocfilehash: 99893092b5f6a4cc7112795b3ff1541a653682ea
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528537"
 ---
 <a name="working-with-data"></a>使用資料
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/index
-title: "Ajax Control Toolkit |Microsoft 文件"
+title: Ajax Control Toolkit |Microsoft 文件
 author: rick-anderson
-description: "如何建立非常回應的 ASP.NET Web 網頁使用 Ajax Control Toolkit。"
+description: 如何建立非常回應的 ASP.NET Web 網頁使用 Ajax Control Toolkit。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: fad690c40cac7a344a445dae722ae2a1e89adf6b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521827"
 ---
 <a name="ajax-control-toolkit"></a>AJAX Control Toolkit
 ====================

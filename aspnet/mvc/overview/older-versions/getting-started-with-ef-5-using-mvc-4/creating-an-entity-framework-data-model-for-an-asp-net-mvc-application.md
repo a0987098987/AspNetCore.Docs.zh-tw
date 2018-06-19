@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877927"
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>建立 ASP.NET MVC 應用程式 (1 / 10) 的 Entity Framework 資料模型
 ====================
@@ -84,7 +85,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-an-mvc-web-application"></a>建立 MVC Web 應用程式
 
-開啟 Visual Studio 並建立新 C# 專案名為"ContosoUniversity 」 使用**ASP.NET MVC 4 Web 應用程式**範本。 請確定您的目標**.NET Framework 4.5** (您將使用[`enum`屬性](https://msdn.microsoft.com/data/hh859576.aspx)，而且這需要.NET 4.5)。
+開啟 Visual Studio 並建立新 C# 專案名為"ContosoUniversity 」 使用**ASP.NET MVC 4 Web 應用程式**範本。 請確定您的目標 **.NET Framework 4.5** (您將使用[`enum`屬性](https://msdn.microsoft.com/data/hh859576.aspx)，而且這需要.NET 4.5)。
 
 ![New_project_dialog_box](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image3.png)
 
@@ -100,7 +101,7 @@ ms.lasthandoff: 04/06/2018
 
 一些簡單的變更會設定網站的功能表、配置和首頁。
 
-開啟*_layout.cshtml\\_Layout.cshtml*，並以下列程式碼取代檔案的內容。 所做的變更已醒目提示。
+開啟 *_layout.cshtml\\_Layout.cshtml*，並以下列程式碼取代檔案的內容。 所做的變更已醒目提示。
 
 [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample1.cshtml?highlight=5,15,25-28,43)]
 
@@ -191,13 +192,13 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-[LocalDB](https://blogs.msdn.com/b/sqlexpress/archive/2011/07/12/introducing-localdb-a-better-sql-express.aspx)是輕量版 SQL Server Express Database Engine，視需要啟動並以使用者模式執行。 LocalDB 以特殊的執行模式執行的 SQL Server Express，可讓您能夠使用資料庫，做為*.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。 在 SQL Server Express 使用者執行個體功能也可讓您能夠使用*.mdf*檔案，但使用者執行個體功能已被取代; 因此，建議使用的 LocalDB *.mdf*檔案。
+[LocalDB](https://blogs.msdn.com/b/sqlexpress/archive/2011/07/12/introducing-localdb-a-better-sql-express.aspx)是輕量版 SQL Server Express Database Engine，視需要啟動並以使用者模式執行。 LocalDB 以特殊的執行模式執行的 SQL Server Express，可讓您能夠使用資料庫，做為 *.mdf*檔案。 一般而言，LocalDB 資料庫檔案會保留在*應用程式\_資料*web 專案的資料夾。 在 SQL Server Express 使用者執行個體功能也可讓您能夠使用 *.mdf*檔案，但使用者執行個體功能已被取代; 因此，建議使用的 LocalDB *.mdf*檔案。
 
 一般 SQL Server Express 不用於生產環境 web 應用程式。 LocalDB 尤其不建議用於生產環境 web 應用程式因為它不是使用 IIS。
 
 在 Visual Studio 2012 和更新版本中，使用 Visual Studio 的預設會安裝 LocalDB。 在 Visual Studio 2010 和舊版中，SQL Server Express （而不要使用 LocalDB) 預設會安裝 Visual studio;您必須手動安裝它，如果您使用 Visual Studio 2010。
 
-在此教學課程中您將使用 LocalDB 資料庫可以儲存在*應用程式\_資料*資料夾*.mdf*檔案。 開啟根*Web.config*檔案，然後加入新的連接字串至`connectionStrings`集合中，如下列範例所示。 (請確定您更新*Web.config*根專案資料夾中的檔案。 另外還有*Web.config*檔案位於*檢視*不需要更新的子資料夾。)
+在此教學課程中您將使用 LocalDB 資料庫可以儲存在*應用程式\_資料*資料夾 *.mdf*檔案。 開啟根*Web.config*檔案，然後加入新的連接字串至`connectionStrings`集合中，如下列範例所示。 (請確定您更新*Web.config*根專案資料夾中的檔案。 另外還有*Web.config*檔案位於*檢視*不需要更新的子資料夾。)
 
 [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample8.xml)]
 
@@ -273,7 +274,7 @@ ms.lasthandoff: 04/06/2018
 
     ![](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image13.png)
 
-    `add-migration`命令會新增至 Migrations 資料夾*[DateStamp]\_InitialCreate.cs*包含程式碼會建立資料庫檔案。 第一個參數 (`InitialCreate)`用於檔案名稱，而且可以是您所要的任何; 您通常會選擇的單字或片語來摘要列出所要完成移轉中的作業。 例如，您可能會命名稍後移轉&quot;AddDepartmentTable&quot;。
+    `add-migration`命令會新增至 Migrations 資料夾 *[DateStamp]\_InitialCreate.cs*包含程式碼會建立資料庫檔案。 第一個參數 (`InitialCreate)`用於檔案名稱，而且可以是您所要的任何; 您通常會選擇的單字或片語來摘要列出所要完成移轉中的作業。 例如，您可能會命名稍後移轉&quot;AddDepartmentTable&quot;。
 
     ![初始移轉 migrations 資料夾](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
 
@@ -283,7 +284,7 @@ ms.lasthandoff: 04/06/2018
 
     `update-database`命令執行`Up`方法來建立資料庫然後執行`Seed`方法來擴展資料庫。
 
-SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*ContosoUniversity*，而*.mdf*檔案位於您的專案*應用程式\_資料*資料夾因為這是您在中指定您連接字串。
+SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*ContosoUniversity*，而 *.mdf*檔案位於您的專案*應用程式\_資料*資料夾因為這是您在中指定您連接字串。
 
 您可以使用**伺服器總管**或**SQL Server 物件總管**(SSOX) 在 Visual Studio 中檢視的資料庫。 此教學課程中，您將使用**伺服器總管**。 在 Visual Studio Express 2012 for Web，**伺服器總管**稱為**資料庫總管**。
 
@@ -294,7 +295,7 @@ SQL Server 資料庫現在已建立資料模型。 資料庫的名稱是*Contoso
 3. 如果您收到提示**選擇資料來源** 對話方塊中，按一下  **Microsoft SQL Server**，然後按一下 **繼續**。  
   
     ![](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image16.png)
-4. 在**加入連接**對話方塊方塊中，輸入**(localdb) \v11.0**如**伺服器名稱**。 在下**選取或輸入資料庫名稱**，選取**ContosoUniversity。**  
+4. 在**加入連接**對話方塊方塊中，輸入 **(localdb) \v11.0**如**伺服器名稱**。 在下**選取或輸入資料庫名稱**，選取**ContosoUniversity。**  
   
     ![](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image17.png)
 5. 按一下 [確定] 

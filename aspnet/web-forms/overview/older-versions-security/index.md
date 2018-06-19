@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/index
-title: "較舊版本的安全性 |Microsoft 文件"
+title: 較舊版本的安全性 |Microsoft 文件
 author: rick-anderson
-description: "安全性、 驗證和授權 ASP.NET 4 和舊版 Web Form 應用程式的主題。"
+description: 安全性、 驗證和授權 ASP.NET 4 和舊版 Web Form 應用程式的主題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/18/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security
 msc.type: chapter
 ms.openlocfilehash: 2a21be5f59e1893ce5a85d0ec801abf6750024b9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519067"
 ---
 <a name="older-versions---security"></a>較舊版本的安全性
 ====================

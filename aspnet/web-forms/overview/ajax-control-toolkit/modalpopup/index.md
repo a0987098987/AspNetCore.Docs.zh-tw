@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/index
-title: "ModalPopup |Microsoft 文件"
+title: ModalPopup |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會示範如何使用 ModalPopup 控制項可讓您建立強制回應對話方塊的對等項目。"
+description: 本教學課程會示範如何使用 ModalPopup 控制項可讓您建立強制回應對話方塊的對等項目。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup
 msc.type: chapter
 ms.openlocfilehash: 6cf39ad54a0aa85036f5d37e223672e0059b7ed0
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510817"
 ---
 <a name="modalpopup"></a>ModalPopup
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-validation-controls-in-aspnet
-title: "[如何:] 使用 ASP.NET 驗證控制項？ | Microsoft Docs"
+title: '[如何:] 使用 ASP.NET 驗證控制項？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片中了解如何使用 asp.net 驗證控制項在網頁上實作驗證。 所有主要的驗證控制這類..."
+description: 在這段影片中了解如何使用 asp.net 驗證控制項在網頁上實作驗證。 所有主要的驗證控制這類...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/26/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525947"
 ---
 <a name="how-do-i--use-validation-controls-in-aspnet"></a>[如何:] 使用 ASP.NET 驗證控制項？
 ====================

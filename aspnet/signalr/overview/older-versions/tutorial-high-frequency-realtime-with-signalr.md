@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505837"
 ---
 <a name="high-frequency-realtime-with-signalr-1x"></a>與 SignalR 的頻率高的即時 1.x
 ====================

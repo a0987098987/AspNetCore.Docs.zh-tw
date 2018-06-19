@@ -1,8 +1,8 @@
 ---
 uid: web-forms/index
-title: "ASP.NET Web Form |Microsoft 文件"
+title: ASP.NET Web Form |Microsoft 文件
 author: rick-anderson
-description: "下載 Visual Web Developer Express 及了解如何快速建立的 web 應用程式容易瞭解中使用控制項在 ASP.NET Web Form 上視覺化的設計環境..."
+description: 下載 Visual Web Developer Express 及了解如何快速建立的 web 應用程式容易瞭解中使用控制項在 ASP.NET Web Form 上視覺化的設計環境...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms
 msc.type: categoryindex
 ms.openlocfilehash: f56ac2552017ad2b41debdea58d93c19c56268b9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509737"
 ---
 <a name="aspnet-web-forms"></a>ASP.NET Web Form
 ====================

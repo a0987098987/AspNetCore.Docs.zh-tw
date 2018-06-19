@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-simple-file-uploads-in-aspnet
-title: "[如何:] 在 ASP.NET 中的簡易檔案上傳 |Microsoft 文件"
+title: '[如何:] 在 ASP.NET 中的簡易檔案上傳 |Microsoft 文件'
 author: JoeStagner
-description: "在這段影片我將示範，使用 ASP.NET、 上傳您的伺服器從用戶端電腦將單一檔案。 這會是一系列的上傳中的第一個..."
+description: 在這段影片我將示範，使用 ASP.NET、 上傳您的伺服器從用戶端電腦將單一檔案。 這會是一系列的上傳中的第一個...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526107"
 ---
 <a name="how-do-i--simple-file-uploads-in-aspnet"></a>[如何:] 在 ASP.NET 中的簡易檔案上傳
 ====================

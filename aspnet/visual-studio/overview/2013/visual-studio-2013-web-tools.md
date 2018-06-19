@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "26507127"
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a>實習： Visual Studio 2013 Web 工具
 ====================
@@ -106,7 +107,7 @@ ms.lasthandoff: 04/10/2018
 在這項工作，您將設定 web 應用程式在多個瀏覽器中執行的同時發生，這是適用於跨瀏覽器測試。
 
 1. 開啟**Microsoft Visual Studio**。
-2. 在**檔案**功能表上，選取**開啟 |專案/方案...**並瀏覽至**Ex1 WorkingwithBrowserLinkandWebEssentials\Begin**中**來源**實驗室 (C:\WebCampsTK\HOL\VSWebTooling\Source) 的資料夾。 選取**Begin.sln**按一下**開啟**。
+2. 在**檔案**功能表上，選取**開啟 |專案/方案...** 並瀏覽至**Ex1 WorkingwithBrowserLinkandWebEssentials\Begin**中**來源**實驗室 (C:\WebCampsTK\HOL\VSWebTooling\Source) 的資料夾。 選取**Begin.sln**按一下**開啟**。
 3. 在 Visual Studio 工具列中，展開 [瀏覽器] 功能表，然後選取**瀏覽...**.
 
     ![瀏覽功能表選項](visual-studio-2013-web-tools/_static/image1.png "...功能表瀏覽器中瀏覽")
@@ -144,7 +145,7 @@ ms.lasthandoff: 04/10/2018
 
 1. 切換回 Visual Studio。
 2. 開啟**Index.cshtml**檔案位於**檢視** | **首頁**資料夾。
-3. 取代**&lt;！-TODO： 加入選項-&gt;**註解與下列程式碼，然後按 **索引標籤**。
+3. 取代**&lt;！-TODO： 加入選項-&gt;** 註解與下列程式碼，然後按 **索引標籤**。
 
     [!code-css[Main](visual-studio-2013-web-tools/samples/sample1.css)]
 4. 程式碼應該擴展成 HTML。
@@ -222,12 +223,12 @@ ms.lasthandoff: 04/10/2018
     ![在 Visual Studio HTML 編輯器中選取 HTML 項目](visual-studio-2013-web-tools/_static/image15.png "Visual Studio HTML 編輯器中選取 HTML 項目")
 
     *在 Visual Studio HTML 編輯器中選取 HTML 項目*
-4. 將立即更新**前端**以變更選取項目的樣式的 CSS 類別。 若要這樣做，請按**CTRL** + **，**開啟**巡覽至**搜尋方塊。 型別**site.css**按**ENTER**開啟檔案。
+4. 將立即更新**前端**以變更選取項目的樣式的 CSS 類別。 若要這樣做，請按**CTRL** + **，** 開啟**巡覽至**搜尋方塊。 型別**site.css**按**ENTER**開啟檔案。
 
     ![開啟檔案 Site.css](visual-studio-2013-web-tools/_static/image16.png "Site.css 的開啟檔案")
 
     *開啟檔案 Site.css*
-5. 按**CTRL** + **F**和型別**.flip 容器.front**尋找 CSS 選取器。
+5. 按**CTRL** + **F**和型別 **.flip 容器.front**尋找 CSS 選取器。
 6. 按一下淺藍色方塊中的類別，以開啟色彩選擇器的框線屬性。
 
     ![開啟色彩選擇器](visual-studio-2013-web-tools/_static/image17.png "開啟色彩選擇器")
@@ -250,13 +251,13 @@ ms.lasthandoff: 04/10/2018
 
     *Google Chrome-更新的框線色彩*
 11. 切換回 Visual Studio。
-12. 移至結尾**Site.css**檔案並按**CTRL** + **F**找出**.btn**選取器。
+12. 移至結尾**Site.css**檔案並按**CTRL** + **F**找出 **.btn**選取器。
 13. 請注意， **-webkit 框線半徑**屬性會以綠色加上底線。
 
     ![-webkit 框線半徑屬性 btn 選取器的](visual-studio-2013-web-tools/_static/image21.png "btn 選擇器-webkit 框線半徑屬性")
 
     *-webkit 框線半徑 btn 選取器屬性*
-14. 將放在插入號**-webkit 框線半徑**屬性。 藍線，應該會出現在屬性的第一個單字的第一個字母。 這是**智慧標籤**。
+14. 將放在插入號 **-webkit 框線半徑**屬性。 藍線，應該會出現在屬性的第一個單字的第一個字母。 這是**智慧標籤**。
 15. 按**CTRL** + **。** 若要開啟 [建議] 功能表，然後按一下**遺漏標準屬性 (框線 radius) 新增**。
 
     ![新增遺失的標準屬性建議](visual-studio-2013-web-tools/_static/image22.png "新增遺失的標準屬性建議")
@@ -278,7 +279,7 @@ ms.lasthandoff: 04/10/2018
 
     *框線 radius 屬性值的警告*
 19. 移除的單位**框線 radius**為工具提示所建議的屬性值。
-20. 做為**框線 radius**是標準的屬性，定義四個端點都是，您可以移除的方式捨入的框線**-webkit 框線半徑**屬性和 CSS 規則的值。
+20. 做為**框線 radius**是標準的屬性，定義四個端點都是，您可以移除的方式捨入的框線 **-webkit 框線半徑**屬性和 CSS 規則的值。
 21. 將放在插入號**自動換行**屬性和智慧標籤也會出現下方的注意。
 22. 開啟功能表，然後按一下**加入遺漏的廠商細節**。
 
@@ -307,7 +308,7 @@ ms.lasthandoff: 04/10/2018
     ![編輯問題](visual-studio-2013-web-tools/_static/image29.png "編輯的問題")
 
     *編輯的問題*
-4. 切換回 Visual Studio] 和 [開啟**Index.cshtml**，如果尚未開啟。 請注意，內部文字**&lt;p&gt;**已更新項目。
+4. 切換回 Visual Studio] 和 [開啟**Index.cshtml**，如果尚未開啟。 請注意，內部文字**&lt;p&gt;** 已更新項目。
 
     ![HTML 網頁中的更新問題](visual-studio-2013-web-tools/_static/image30.png "HTML 網頁中的更新問題")
 
@@ -323,7 +324,7 @@ ms.lasthandoff: 04/10/2018
     ![錯誤清單檢視中功能表](visual-studio-2013-web-tools/_static/image31.png "檢視功能表中的錯誤清單")
 
     *錯誤清單檢視功能表*
-2. 請注意，有通知的 SEO 警告**&lt;中繼&gt;**標記頁面描述遺漏。 按兩下要修正此問題的 SEO 警告項目。
+2. 請注意，有通知的 SEO 警告**&lt;中繼&gt;** 標記頁面描述遺漏。 按兩下要修正此問題的 SEO 警告項目。
 
     ![錯誤清單視窗](visual-studio-2013-web-tools/_static/image32.png "錯誤清單視窗")
 
@@ -333,7 +334,7 @@ ms.lasthandoff: 04/10/2018
     ![Web Essentials 對話方塊](visual-studio-2013-web-tools/_static/image33.png "Web Essentials 對話方塊")
 
     *Web Essentials 對話方塊*
-4. 編輯器 **\_Layout.cshtml**開啟和**&lt;中繼&gt;**標記會自動加入至**head**區段HTML 檔案。
+4. 編輯器 **\_Layout.cshtml**開啟和**&lt;中繼&gt;** 標記會自動加入至**head**區段HTML 檔案。
 
     ![自動新增 _Layout 頁面中的中繼標籤](visual-studio-2013-web-tools/_static/image34.png "Meta 標記，自動新增 _Layout 頁面中")
 
@@ -354,7 +355,7 @@ ms.lasthandoff: 04/10/2018
 
 1. 開啟**Visual Studio Express 2013 for Web**和**Begin.sln**方案位於**來源/Ex2 TakingAdvantageofCodeSnippetsandIntelliSense/開始**資料夾。 或者，您可以繼續使用解決方案您在上一個練習中取得。
 2. 在**方案總管中**，開啟**Index.cshtml**檔案位於**檢視** | **首頁**資料夾。
-3. 新增下列表單內**&lt;區段&gt;**項目。
+3. 新增下列表單內**&lt;區段&gt;** 項目。
 
     (程式碼片段- *VisualStudio2013WebTooling* - *Ex2* - *表單*)
 
@@ -362,19 +363,19 @@ ms.lasthandoff: 04/10/2018
 4. 輸入的標記應該加上標記的某些欄位的說明。 加入下列標籤輸入標記之前。
 
     [!code-html[Main](visual-studio-2013-web-tools/samples/sample5.html)]
-5. **如**屬性**&lt;標籤&gt;**指定標籤的格式項目繫結至。 屬性的值應該等於相關項目的 id。 新增**如**屬性**&lt;標籤&gt;**項目。 下圖所示&quot;名稱&quot;值接著在隨後顯示在 IntelliSense 中，根據在相同範圍內項目的 id (封閉式**&lt;表單&gt;**)。
+5. **如**屬性**&lt;標籤&gt;** 指定標籤的格式項目繫結至。 屬性的值應該等於相關項目的 id。 新增**如**屬性**&lt;標籤&gt;** 項目。 下圖所示&quot;名稱&quot;值接著在隨後顯示在 IntelliSense 中，根據在相同範圍內項目的 id (封閉式**&lt;表單&gt;**)。
 
     ![在 IntelliSense 中顯示識別碼](visual-studio-2013-web-tools/_static/image35.png "在 IntelliSense 中顯示的識別碼")
 
     *在 IntelliSense 中顯示的識別碼*
-6. 刪除最近新增**&lt;表單&gt;**項目和其內容。
+6. 刪除最近新增**&lt;表單&gt;** 項目和其內容。
 
 <a id="Ex2Task2"></a>
 #### <a name="task-2---using-html-code-snippets"></a>工作 2-使用 HTML 程式碼片段
 
 HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 IntelliSense 支援，這些標記，但 Visual Studio 2013 可以更快速且更容易撰寫藉由新增新的程式碼片段的標記。 雖然這些標記不是複雜的但是它們會隨附幾個小型微妙的詳細資訊，例如新增的正確轉碼器後援*音訊*標記。 在這項工作，您會看到音訊的標記的 HTML 程式碼片段。
 
-1. 在**Index.cshtml**檔案中，輸入**&lt;則**內**&lt;區段&gt;**項目，如下圖所示。
+1. 在**Index.cshtml**檔案中，輸入**&lt;則**內**&lt;區段&gt;** 項目，如下圖所示。
 
     ![插入音訊項目](visual-studio-2013-web-tools/_static/image36.png "插入音訊項目")
 
@@ -465,7 +466,7 @@ HTML5 引進了超過 25 個新的語意標記。 已經有 visual Studio 的 In
     ![顯示 IntelliSense getElementByTagName 方法](visual-studio-2013-web-tools/_static/image45.png "顯示 IntelliSense getElementByTagName 方法")
 
     *顯示 IntelliSense getElementsByTagName 方法*
-13. 選取**&quot;音訊&quot;**清單和按**ENTER**。 其結果如下圖所示。
+13. 選取**&quot;音訊&quot;** 清單和按**ENTER**。 其結果如下圖所示。
 
     ![擷取音訊元素](visual-studio-2013-web-tools/_static/image46.png "擷取音訊的項目")
 

@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094278"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>在 ASP.NET Core 資源為基礎的授權
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-web-parts-and-personalization
-title: "[如何:]利用 Web 組件和個人化？ | Microsoft Docs"
+title: '[如何:]利用 Web 組件和個人化？ | Microsoft Docs'
 author: microsoft
-description: "了解如何使用新的 Web 組件和個人化功能來建置可自訂的 web 網頁內容，以及使用者可以修改配置。"
+description: 了解如何使用新的 Web 組件和個人化功能來建置可自訂的 web 網頁內容，以及使用者可以修改配置。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526127"
 ---
 <a name="how-do-i-utilize-web-parts-and-personalization"></a>[如何:]利用 Web 組件和個人化？
 ====================

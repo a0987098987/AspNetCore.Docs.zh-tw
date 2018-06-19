@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
-title: "使用 ASP.NET Web API 2.2 OData v4 中的實體關聯 |Microsoft 文件"
+title: 使用 ASP.NET Web API 2.2 OData v4 中的實體關聯 |Microsoft 文件
 author: MikeWasson
-description: "大部分的資料集定義實體之間的關聯性： 客戶具有訂單。書籍的作者。產品有供應商。 使用 OData 用戶端可以瀏覽透過..."
+description: 大部分的資料集定義實體之間的關聯性： 客戶具有訂單。書籍的作者。產品有供應商。 使用 OData 用戶端可以瀏覽透過...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508097"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>使用 ASP.NET Web API 2.2 OData v4 中的實體關聯
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/pluralsight
-title: "MVC 從 Pluralsight 訓練影片 |Microsoft 文件"
+title: MVC 從 Pluralsight 訓練影片 |Microsoft 文件
 author: rick-anderson
-description: "MVC 從 Pluralsight 訓練影片這個免費訓練影片可讓您啟動並執行搭配 ASP.NET MVC。 它涵蓋從開發所設定的所有項目..."
+description: MVC 從 Pluralsight 訓練影片這個免費訓練影片可讓您啟動並執行搭配 ASP.NET MVC。 它涵蓋從開發所設定的所有項目...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503887"
 ---
 <a name="mvc-video-training-from-pluralsight"></a>MVC 從 Pluralsight 訓練影片
 ====================

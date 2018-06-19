@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual-items
-title: "[如何:]實作命令按鈕的個別項目 |Microsoft 文件"
+title: '[如何:]實作命令按鈕的個別項目 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 將示範如何處理資料繫結控制項，例如 ListView 控制項的每個項目中將按鈕控制項相關聯的事件。 首先..."
+description: 在這段影片 Chris Pels 將示範如何處理資料繫結控制項，例如 ListView 控制項的每個項目中將按鈕控制項相關聯的事件。 首先...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525557"
 ---
 <a name="how-do-i-implement-command-buttons-for-individual-items"></a>[如何:]實作命令按鈕的個別項目
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-web-forms-vnext/index
-title: "ASP.NET 4.5 |Microsoft 文件"
+title: ASP.NET 4.5 |Microsoft 文件
 author: rick-anderson
-description: "關於 ASP.NET 4.5 中導入了新的 Web Form 功能。"
+description: 關於 ASP.NET 4.5 中導入了新的 Web Form 功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext
 msc.type: chapter
 ms.openlocfilehash: 7b4c1e39dcc1b93c40cff69e6e5337d55b5607ba
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521287"
 ---
 <a name="aspnet-45"></a>ASP.NET 4.5
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page
-title: "[如何]: 加入 ASP.NET 網頁上的用戶端指令碼事件處理常式控制項嗎？ | Microsoft Docs"
+title: '[如何]: 加入 ASP.NET 網頁上的用戶端指令碼事件處理常式控制項嗎？ | Microsoft Docs'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何將用戶端指令碼事件加入至 ASP.NET 網頁上的控制項。 首先，數個 ASP.NET 控制項新增至網頁和 e..."
+description: 在這個視訊 Chris Pels 示範如何將用戶端指令碼事件加入至 ASP.NET 網頁上的控制項。 首先，數個 ASP.NET 控制項新增至網頁和 e...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525157"
 ---
 <a name="how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page"></a>[如何]: 加入 ASP.NET 網頁上的用戶端指令碼事件處理常式控制項嗎？
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site
-title: "若要防止 Bot 使用 ASP.NET Web Razor 使用 CAPTCHA） 的站台 |Microsoft 文件"
+title: 若要防止 Bot 使用 ASP.NET Web Razor 使用 CAPTCHA） 的站台 |Microsoft 文件
 author: microsoft
-description: "這篇文章說明如何使用 ReCaptcha （安全性量值），以防止自動的程式 (bot) 執行工作中的 ASP.NET Web Pages (Razor) 我們..."
+description: 這篇文章說明如何使用 ReCaptcha （安全性量值），以防止自動的程式 (bot) 執行工作中的 ASP.NET Web Pages (Razor) 我們...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529917"
 ---
 <a name="using-a-captcha-to-prevent-bots-from-using-your-aspnet-web-razor-site"></a>若要防止 Bot 使用 ASP.NET Web Razor 使用 CAPTCHA） 的站台
 ====================

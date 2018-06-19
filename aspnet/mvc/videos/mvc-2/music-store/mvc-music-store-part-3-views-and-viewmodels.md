@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869344"
 ---
 <a name="mvc-music-store-part-3-views-and-viewmodels"></a>MVC Music Store 第 3 部分： 檢視和 ViewModels
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/index
-title: "模型繫結和 Visual Studio 2013 中的 Web Form |Microsoft 文件"
+title: 模型繫結和 Visual Studio 2013 中的 Web Form |Microsoft 文件
 author: rick-anderson
-description: "如何使用模型繫結和 Web Form 使用的資料。"
+description: 如何使用模型繫結和 Web Form 使用的資料。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding
 msc.type: chapter
 ms.openlocfilehash: f653a1394af8bfc562c244dad00ff35bc4744647
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519767"
 ---
 <a name="model-binding-and-web-forms-in-visual-studio-2013"></a>模型繫結和 Visual Studio 2013 中的 Web Form
 ====================

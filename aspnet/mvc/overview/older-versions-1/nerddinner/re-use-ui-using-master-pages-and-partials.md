@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870007"
 ---
 <a name="re-use-ui-using-master-pages-and-partials"></a>重複使用使用主版頁面和 Partials UI
 ====================
@@ -127,7 +128,7 @@ Html.RenderPartial() 部分檢視的名稱呼叫時，ASP.NET MVC 會傳遞至�
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image6.png)
 
-與*/Dinners/編輯 / [id]* URL:
+與 */Dinners/編輯 / [id]* URL:
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image7.png)
 

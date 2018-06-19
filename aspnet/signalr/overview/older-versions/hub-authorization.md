@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/hub-authorization
-title: "SignalR 中樞的驗證和授權 (SignalR 1.x) |Microsoft 文件"
+title: SignalR 中樞的驗證和授權 (SignalR 1.x) |Microsoft 文件
 author: pfletcher
-description: "本主題描述如何限制哪些使用者或角色可以存取中樞方法。"
+description: 本主題描述如何限制哪些使用者或角色可以存取中樞方法。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042871"
 ---
 <a name="authentication-and-authorization-for-signalr-hubs-signalr-1x"></a>SignalR 中樞的驗證和授權 (SignalR 1.x)
 ====================

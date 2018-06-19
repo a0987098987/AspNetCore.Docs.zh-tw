@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/index
-title: "安全性 |Microsoft 文件"
+title: 安全性 |Microsoft 文件
 author: rick-anderson
-description: "如何將登入功能加入至 ASP.NET Web Pages 應用程式，以及如何協助保護應用程式從機器人。"
+description: 如何將登入功能加入至 ASP.NET Web Pages 應用程式，以及如何協助保護應用程式從機器人。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/security
 msc.type: chapter
 ms.openlocfilehash: 6b493fb9afaa894ec805ebd6684180c33a33b1b0
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529527"
 ---
 <a name="security"></a>安全性
 ====================

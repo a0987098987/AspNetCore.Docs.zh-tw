@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873387"
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET 識別： 使用 MySQL 儲存體使用 EntityFramework MySQL 提供者 (C#)
 ====================
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/06/2018
   
    [按一下以展開圖。 ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.jpg)
-3. 當**新專案**] 對話方塊隨即顯示，接著展開**Visual C#**在範本清單，然後按一下 [ **Web**，並選取**ASP.NET Web 應用程式**. 命名您的專案**IdentityMySQLDemo** ，然後按一下 **確定**:  
+3. 當**新專案**] 對話方塊隨即顯示，接著展開**Visual C#** 在範本清單，然後按一下 [ **Web**，並選取**ASP.NET Web 應用程式**. 命名您的專案**IdentityMySQLDemo** ，然後按一下 **確定**:  
   
    [按一下以展開圖。 ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873881"
 ---
 <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>單一登入 （使用 Azure 建置實際的雲端應用程式）
 ====================

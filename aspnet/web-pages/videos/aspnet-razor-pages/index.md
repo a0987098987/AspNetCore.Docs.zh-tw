@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/aspnet-razor-pages/index
-title: "ASP.NET Razor 頁面 |Microsoft 文件"
+title: ASP.NET Razor 頁面 |Microsoft 文件
 author: rick-anderson
-description: "您可以檢視哪些視訊向下鑽研至 Web Pages 及 WebMatrix。"
+description: 您可以檢視哪些視訊向下鑽研至 Web Pages 及 WebMatrix。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/videos/aspnet-razor-pages
 msc.type: chapter
 ms.openlocfilehash: c2656e666e3267895ced67562e0b3e6292d83d3d
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529927"
 ---
 <a name="aspnet-web-pages"></a>ASP.NET Web Pages
 =================

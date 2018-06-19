@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/visual-studio-2013-web-editor-features-css
-title: "Visual Studio 2013 Web 編輯器功能-CSS |Microsoft 文件"
+title: Visual Studio 2013 Web 編輯器功能-CSS |Microsoft 文件
 author: shanselman
-description: "Scott Hanselman 示範 Visual Studio 2013 和 Visual Studio Web Essentials 延伸模組中的 CSS 編輯功能。"
+description: Scott Hanselman 示範 Visual Studio 2013 和 Visual Studio Web Essentials 延伸模組中的 CSS 編輯功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: a872d111-d4ea-4cfd-8ab6-314c4e12301c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-editor-features-css
 msc.type: video
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506537"
 ---
 <a name="visual-studio-2013-web-editor-features---css"></a>Visual Studio 2013 Web 編輯器功能-CSS
 ====================

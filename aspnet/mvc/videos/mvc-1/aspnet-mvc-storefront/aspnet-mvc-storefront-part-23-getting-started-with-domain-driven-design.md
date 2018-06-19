@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872373"
 ---
 <a name="aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design"></a>ASP.NET MVC Storefront 一部分 23： 網域導向設計使用者入門
 ====================

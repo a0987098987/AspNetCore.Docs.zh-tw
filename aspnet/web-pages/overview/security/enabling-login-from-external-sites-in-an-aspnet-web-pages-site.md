@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/enabling-login-from-external-sites-in-an-aspnet-web-pages-site
-title: "使用 ASP.NET Web 中的外部網站登入頁面 (Razor) 站台 |Microsoft 文件"
+title: 使用 ASP.NET Web 中的外部網站登入頁面 (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "這篇文章說明如何登入使用 Facebook、 Google、 Twitter、 Yahoo 和其他站台的 ASP.NET Web Pages (Razor) 網站 — 也就是如何支援..."
+description: 這篇文章說明如何登入使用 Facebook、 Google、 Twitter、 Yahoo 和其他站台的 ASP.NET Web Pages (Razor) 網站 — 也就是如何支援...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530167"
 ---
 <a name="logging-in-using-external-sites-in-an-aspnet-web-pages-razor-site"></a>使用外部站台的 ASP.NET Web Pages (Razor) 網站中登入
 ====================

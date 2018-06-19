@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869357"
 ---
 <a name="executing-several-animations-at-the-same-time-c"></a>執行數個動畫在相同的時間 (C#)
 ====================

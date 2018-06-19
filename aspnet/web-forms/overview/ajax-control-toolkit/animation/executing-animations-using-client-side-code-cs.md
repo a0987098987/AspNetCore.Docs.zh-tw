@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870735"
 ---
 <a name="executing-animations-using-client-side-code-c"></a>執行動畫使用用戶端程式碼 (C#)
 ====================

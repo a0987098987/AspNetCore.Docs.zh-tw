@@ -14,9 +14,10 @@ msc.legacyurl: /signalr/overview/releases
 msc.type: chapter
 ms.openlocfilehash: 702442df27cbbb6cf0e9b75cf5a91b7807163fa5
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505667"
 ---
 <a name="signalr-releases"></a>SignalR 的版本
 ====================

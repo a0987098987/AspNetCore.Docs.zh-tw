@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870176"
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>用於 AJAX 傳送動態更新
 ====================
@@ -37,7 +38,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ### <a name="indicating-whether-the-user-is-rsvpd"></a>指出是否使用者 rsvp 的活動
 
-使用者可以瀏覽*/Dinners/詳細資料 / [識別碼*] 若要查看有關特定 dinner 詳細資料的 URL:
+使用者可以瀏覽 */Dinners/詳細資料 / [識別碼*] 若要查看有關特定 dinner 詳細資料的 URL:
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image1.png)
 
@@ -95,7 +96,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ![](use-ajax-to-deliver-dynamic-updates/_static/image5.png)
 
-網路頻寬和真的輕量型進行此 AJAX 呼叫時所涉及的流量。 當使用者按一下"RSVP 這個事件 」 連結時，對小型的 HTTP POST 網路要求*/Dinners/Register/1*看起來類似下面的在網路的 URL:
+網路頻寬和真的輕量型進行此 AJAX 呼叫時所涉及的流量。 當使用者按一下"RSVP 這個事件 」 連結時，對小型的 HTTP POST 網路要求 */Dinners/Register/1*看起來類似下面的在網路的 URL:
 
 [!code-console[Main](use-ajax-to-deliver-dynamic-updates/samples/sample7.cmd)]
 

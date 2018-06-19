@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information
-title: "[如何:]ASP.NET 網頁的快取為基礎的自訂資訊的控制 |Microsoft 文件"
+title: '[如何:]ASP.NET 網頁的快取為基礎的自訂資訊的控制 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何控制快取 ASP.NET 網頁的自訂資訊為基礎的準則。 建立範例頁面並再 O..."
+description: 在這個視訊 Chris Pels 示範如何控制快取 ASP.NET 網頁的自訂資訊為基礎的準則。 建立範例頁面並再 O...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/19/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528127"
 ---
 <a name="how-do-i-control-the-caching-of-an-aspnet-page-based-upon-custom-information"></a>[如何:]ASP.NET 網頁的快取為基礎的自訂資訊的控制項
 ====================

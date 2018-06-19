@@ -1,20 +1,21 @@
 ---
 uid: webhooks/source
-title: "ASP.NET Webhook 原始碼和 NuGet 套件 |Microsoft 文件"
+title: ASP.NET Webhook 原始碼和 NuGet 套件 |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET Webhook 原始碼和 NuGet 套件的連結"
+description: ASP.NET Webhook 原始碼和 NuGet 套件的連結
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 733a0839c77bcfc96214bdf235ce8fe22ee2d3cf
 ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/09/2018
+ms.locfileid: "27709966"
 ---
 # <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>ASP.NET Webhook 原始碼和 NuGet 套件
 

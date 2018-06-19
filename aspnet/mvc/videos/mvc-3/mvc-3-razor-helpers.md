@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-3/mvc-3-razor-helpers
-title: "MVC 3-Razor Helper |Microsoft 文件"
+title: MVC 3-Razor Helper |Microsoft 文件
 author: jongalloway
-description: "在這段影片中，您將學習如何使用這兩個擴充方法和宣告式@helperRazor 檢視中的語法。"
+description: 在這段影片中，您將學習如何使用這兩個擴充方法和宣告式@helperRazor 檢視中的語法。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/23/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503657"
 ---
 <a name="mvc-3---razor-helpers"></a>MVC 3-Razor Helper
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
-title: "[如何:]請從伺服器端程式碼存取的 HTML 項目 |Microsoft 文件"
+title: '[如何:]請從伺服器端程式碼存取的 HTML 項目 |Microsoft 文件'
 author: rick-anderson
-description: "此視訊 Chris Pels 中會示範如何建立標準 HTML 項目中.aspx 網頁可從伺服器端程式碼存取好讓它們可以用於頁面 processin..."
+description: 此視訊 Chris Pels 中會示範如何建立標準 HTML 項目中.aspx 網頁可從伺服器端程式碼存取好讓它們可以用於頁面 processin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521547"
 ---
 <a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a>[如何:]請從伺服器端程式碼存取的 HTML 項目
 ====================

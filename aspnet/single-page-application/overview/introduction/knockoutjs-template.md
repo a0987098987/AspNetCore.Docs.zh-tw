@@ -1,14 +1,14 @@
 ---
 uid: single-page-application/overview/introduction/knockoutjs-template
-title: "單一網頁應用程式： KnockoutJS 範本 |Microsoft 文件"
+title: 單一網頁應用程式： KnockoutJS 範本 |Microsoft 文件
 author: MikeWasson
-description: "Knockout 範本"
+description: Knockout 範本
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "28036891"
 ---
 <a name="single-page-application-knockoutjs-template"></a>單一網頁應用程式： KnockoutJS 範本
 ====================
@@ -46,7 +47,7 @@ AJAX 沒有新增，但現在有更輕鬆地建立及維護的大型複雜的 SP
 
 啟動 Visual Studio，然後選取**新專案**從 [開始] 頁面。 或從**檔案**功能表上，選取**新增**然後**專案**。
 
-在**範本**窗格中，選取**已安裝的範本**展開**Visual C#**節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
+在**範本**窗格中，選取**已安裝的範本**展開**Visual C#** 節點。 在下**Visual C#**，選取**Web**。 在專案範本清單中選取**ASP.NET MVC 4 Web 應用程式**。 為專案名稱，然後按一下**確定**。
 
 ![](knockoutjs-template/_static/image2.png)
 
@@ -96,7 +97,7 @@ Entity Framework (EF) 是 O/RM 層。 它會調解物件導向的世界 ASP.NET 
 
 這些是資料庫模型的 Entity Framework Code First。 請注意，這些模型會有個點的內容。 `ToDoList` 包含的 ToDoItems，以及每個集合`ToDoItem`ToDoList 其父代參考。 這些屬性稱為導覽屬性，它們代表的一對多關聯性，其待辦項目和待辦事項清單。
 
-`ToDoItem`類別也會使用**[ForeignKey]**屬性來指定`ToDoListId`是外部索引鍵`ToDoList`資料表。 這會告訴 EF 外部索引鍵條件約束加入資料庫。
+`ToDoItem`類別也會使用 **[ForeignKey]** 屬性來指定`ToDoListId`是外部索引鍵`ToDoList`資料表。 這會告訴 EF 外部索引鍵條件約束加入資料庫。
 
 [!code-csharp[Main](knockoutjs-template/samples/sample1.cs)]
 
@@ -156,7 +157,7 @@ SPA 範本使用 EF Code First。 在 Code First 開發中，您定義模型，�
 
 - `GetTodoLists`方法使用 LINQ 查詢來篩選結果的識別碼登入使用者。 這樣一來，使用者只能看到他/她屬於的資料。 另外而且請注意，Select 陳述式用來轉換`ToDoList`到執行個體`TodoListDto`執行個體。
 - PUT 和 POST 方法修改資料庫前，先檢查模型狀態。 如果**ModelState.IsValid**為 false，這些方法會傳回 HTTP 400 不正確的要求。 深入了解 Web API 中的模型驗證[模型驗證](../../../web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api.md)。
-- 控制器類別也以裝飾**[Authorize]**屬性。 這個屬性會檢查是否已驗證的 HTTP 要求。 如果要求未經過驗證，用戶端收到 HTTP 401 未經授權。 深入了解在驗證[驗證和授權的 ASP.NET Web API](../../../web-api/overview/security/authentication-and-authorization-in-aspnet-web-api.md)。
+- 控制器類別也以裝飾 **[Authorize]** 屬性。 這個屬性會檢查是否已驗證的 HTTP 要求。 如果要求未經過驗證，用戶端收到 HTTP 401 未經授權。 深入了解在驗證[驗證和授權的 ASP.NET Web API](../../../web-api/overview/security/authentication-and-authorization-in-aspnet-web-api.md)。
 
 `TodoController`類別是非常類似於`TodoListController`。 最大的差異是，它並未定義任何 GET 方法，因為用戶端會收到的待辦項目，以及每個待辦事項清單。
 
@@ -214,7 +215,7 @@ Views/Home/Index.cshtml 中定義主要的 HTML 頁面。 因為我們使用資�
 
 [!code-html[Main](knockoutjs-template/samples/sample8.html)]
 
-在此範例中，Knockout 更新的內容**&lt;跨越&gt;**項目，其值為`myItems.count()`。 每當此值變更時，Knockout 更新文件。
+在此範例中，Knockout 更新的內容**&lt;跨越&gt;** 項目，其值為`myItems.count()`。 每當此值變更時，Knockout 更新文件。
 
 Knockout 提供數種不同的繫結的類型。 以下是一些使用 SPA 範本中的繫結：
 

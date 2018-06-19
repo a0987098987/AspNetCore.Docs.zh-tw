@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-aspnet-cache-object-to-cache-application-information
-title: "[如何]: 使用 ASP.NET 快取物件快取應用程式資訊 |Microsoft 文件"
+title: '[如何]: 使用 ASP.NET 快取物件快取應用程式資訊 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何使用 ASP.NET 快取物件來儲存應用程式資訊。 範例頁面會透過簡單的使用者介面..."
+description: 在這個視訊 Chris Pels 示範如何使用 ASP.NET 快取物件來儲存應用程式資訊。 範例頁面會透過簡單的使用者介面...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525977"
 ---
 <a name="how-do-i-use-the-aspnet-cache-object-to-cache-application-information"></a>[如何]: 使用 ASP.NET 快取物件快取應用程式資訊
 ====================

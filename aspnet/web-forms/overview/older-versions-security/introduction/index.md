@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/index
-title: "ASP.NET 3.5-安全性簡介 |Microsoft 文件"
+title: ASP.NET 3.5-安全性簡介 |Microsoft 文件
 author: rick-anderson
-description: "這一系列的教學課程中，瀏覽技術驗證的使用者使用的登入表單 （表單驗證） 和授權存取個別頁面中..."
+description: 這一系列的教學課程中，瀏覽技術驗證的使用者使用的登入表單 （表單驗證） 和授權存取個別頁面中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/introduction
 msc.type: chapter
 ms.openlocfilehash: f964a35693e781451db24ae6ed7ca8d5aa7a6917
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519057"
 ---
 <a name="aspnet-35---introduction-to-security"></a>ASP.NET 3.5-安全性簡介
 ====================

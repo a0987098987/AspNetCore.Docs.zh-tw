@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868993"
 ---
 <a name="authenticating-users-with-windows-authentication-vb"></a>驗證使用者使用 Windows 驗證 (VB)
 ====================

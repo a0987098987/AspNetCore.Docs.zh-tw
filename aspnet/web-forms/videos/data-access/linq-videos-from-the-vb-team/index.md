@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/linq-videos-from-the-vb-team/index
-title: "LINQ 視訊從 VB 小組 |Microsoft 文件"
+title: LINQ 視訊從 VB 小組 |Microsoft 文件
 author: rick-anderson
-description: "這些影片提供透過小時和一半 LINQ 語言的新功能包含在 Visual Studio 2008 的 Visual Basic 9.0 所著重的內容。"
+description: 這些影片提供透過小時和一半 LINQ 語言的新功能包含在 Visual Studio 2008 的 Visual Basic 9.0 所著重的內容。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/24/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team
 msc.type: chapter
 ms.openlocfilehash: a33cb02630be7ec688e4fce3d290f4a692f958ff
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525917"
 ---
 <a name="linq-videos-from-the-vb-team"></a>VB 小組 LINQ 影片
 ====================

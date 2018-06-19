@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875444"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 2 部分
 ====================
@@ -63,7 +64,7 @@ ms.lasthandoff: 04/06/2018
 
 現在您可以建立新的範本。 在*Views\Movies*資料夾中，建立*DisplayTemplates*資料夾。
 
-在*_layout.cshtml*資料夾中，建立*DisplayTemplates*資料夾和*EditorTemplates*資料夾。
+在 *_layout.cshtml*資料夾中，建立*DisplayTemplates*資料夾和*EditorTemplates*資料夾。
 
 中的顯示範本*Views\Shared\DisplayTemplates*資料夾將會由所有控制器。 中的顯示範本*Views\Movie\DisplayTemplates*資料夾將只使用`Movie`控制站。 (如果具有相同名稱的範本會出現在這兩個的資料夾中的範本*Views\Movie\DisplayTemplates*資料夾-也就是更具體的範本 — 檢視所傳回的優先`Movie`控制站。)
 

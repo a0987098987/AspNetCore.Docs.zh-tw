@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869734"
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-c"></a>允許文字方塊 (C#) 中的某些字元
 ====================

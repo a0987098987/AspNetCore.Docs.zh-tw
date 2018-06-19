@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/index
-title: "Web 應用程式開發介面指引 |Microsoft 文件"
+title: Web 應用程式開發介面指引 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview
 msc.type: book
 ms.openlocfilehash: 903d3983fc701f9a9d5bb2cc6aa51d40fcb1a9f2
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26507177"
 ---
 <a name="web-api-guidance"></a>網頁應用程式開發介面指導方針
 ====================

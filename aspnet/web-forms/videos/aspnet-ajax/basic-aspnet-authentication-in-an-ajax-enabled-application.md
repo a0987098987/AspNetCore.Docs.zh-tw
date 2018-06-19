@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880384"
 ---
 <a name="basic-aspnet-authentication-in-an-ajax-enabled-application"></a>基本的 ASP.NET AJAX 中的驗證已啟用應用程式
 ====================

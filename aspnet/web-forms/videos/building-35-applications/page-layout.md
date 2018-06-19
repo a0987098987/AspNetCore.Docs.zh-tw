@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/page-layout
-title: "頁面配置 |Microsoft 文件"
+title: 頁面配置 |Microsoft 文件
 author: JoeStagner
-description: "資料表或樣式表嗎？ 設定位置的相對或絕對嗎？ 這段影片會示範支援開發 yo Visual Web developer 的功能..."
+description: 資料表或樣式表嗎？ 設定位置的相對或絕對嗎？ 這段影片會示範支援開發 yo Visual Web developer 的功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525397"
 ---
 <a name="page-layout"></a>頁面配置
 ====================

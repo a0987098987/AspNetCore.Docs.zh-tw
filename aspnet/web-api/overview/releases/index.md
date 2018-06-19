@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/releases
 msc.type: chapter
 ms.openlocfilehash: 479d39edb071e84587e10ef3bce0ad929fa77c60
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508027"
 ---
 <a name="aspnet-web-api-releases"></a>ASP.NET Web API 版本
 ====================

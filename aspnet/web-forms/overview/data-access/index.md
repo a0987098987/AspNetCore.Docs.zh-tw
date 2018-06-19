@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/index
-title: "較舊版本的資料存取 |Microsoft 文件"
+title: 較舊版本的資料存取 |Microsoft 文件
 author: rick-anderson
-description: "如何執行各種不同的資料相關工作，使用 ASP.NET Web Form 控制項和資料。"
+description: 如何執行各種不同的資料相關工作，使用 ASP.NET Web Form 控制項和資料。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access
 msc.type: chapter
 ms.openlocfilehash: 9356c58db6ef5d57babdc7c6e6c09b7cc78a8167
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514197"
 ---
 <a name="older-versions---data-access"></a>較舊版本的資料存取
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870839"
 ---
 <a name="unit-testing-signalr-applications"></a>單元測試的 SignalR 應用程式
 ====================
@@ -64,7 +65,7 @@ XUnit.net 會用來控制測試。Moq 將用來建立[模擬](http://en.wikipedi
 3. 如果您使用下載的入門應用程式版本，開啟**Package Manager Console**按一下**還原**SignalR 封裝加入專案。
 
     ![還原封裝](unit-testing-signalr-applications/_static/image1.png)
-4. 將專案加入至單元測試的方案。 以滑鼠右鍵按一下方案中的**方案總管 中**選取**新增**，**新的專案...**.在下**C#**節點中，選取**Windows**節點。 選取**類別庫**。 將新專案**TestLibrary**按一下**確定**。
+4. 將專案加入至單元測試的方案。 以滑鼠右鍵按一下方案中的**方案總管 中**選取**新增**，**新的專案...**.在下**C#** 節點中，選取**Windows**節點。 選取**類別庫**。 將新專案**TestLibrary**按一下**確定**。
 
     ![建立測試程式庫](unit-testing-signalr-applications/_static/image2.png)
 5. 在測試程式庫專案中加入 SignalRChat 專案的參考。 以滑鼠右鍵按一下**TestLibrary**專案，然後選取**新增**，**參考...**.選取**專案**節點下的**方案**節點，然後核取**SignalRChat**。 按一下 [確定 **Deploying Office Solutions**]。

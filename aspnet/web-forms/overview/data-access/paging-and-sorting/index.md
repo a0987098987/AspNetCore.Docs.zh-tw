@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/index
-title: "分頁和排序 |Microsoft 文件"
+title: 分頁和排序 |Microsoft 文件
 author: rick-anderson
-description: "這些教學課程中您會將一些初始排序和分頁功能加入至報表資料。"
+description: 這些教學課程中您會將一些初始排序和分頁功能加入至報表資料。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting
 msc.type: chapter
 ms.openlocfilehash: 1366bf670d130f2df2d887e8f221bc3f57109d54
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514717"
 ---
 <a name="paging-and-sorting"></a>分頁和排序
 ====================

@@ -1,22 +1,23 @@
 ---
 uid: ajax/cdn/jquery-validate/index
-title: "jQuery 驗證 |Microsoft 文件"
+title: jQuery 驗證 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: a266cc44-f514-4913-9768-5b382380184d
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-validate
 msc.type: folder
 ms.openlocfilehash: 85c847ca652ee318719112f0b9b8bc345bd53953
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26496237"
 ---
 <a name="jquery-validate"></a>jQuery 驗證
 ====================

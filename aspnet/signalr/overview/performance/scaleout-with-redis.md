@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-with-redis
-title: "SignalR 範圍外使用 Redis |Microsoft 文件"
+title: SignalR 範圍外使用 Redis |Microsoft 文件
 author: MikeWasson
-description: "軟體版本本主題中使用 Visual Studio 2013.NET 4.5 SignalR 第 2 版舊版的此主題的較早版本的相關資訊..."
+description: 軟體版本本主題中使用 Visual Studio 2013.NET 4.5 SignalR 第 2 版舊版的此主題的較早版本的相關資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042686"
 ---
 <a name="signalr-scaleout-with-redis"></a>使用 Redis SignalR 範圍外
 ====================

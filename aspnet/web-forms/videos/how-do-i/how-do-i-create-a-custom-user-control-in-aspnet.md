@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-user-control-in-aspnet
-title: "[如何:] 在 ASP.NET 中建立自訂使用者控制項嗎？ | Microsoft Docs"
+title: '[如何:] 在 ASP.NET 中建立自訂使用者控制項嗎？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片 Chris Pels 將示範如何建立可用於整個網站或跨多個網站的 ASP.NET 中的自訂使用者控制項。 Sta..."
+description: 在這段影片 Chris Pels 將示範如何建立可用於整個網站或跨多個網站的 ASP.NET 中的自訂使用者控制項。 Sta...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/26/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525027"
 ---
 <a name="how-do-i--create-a-custom-user-control-in-aspnet"></a>[如何:] 在 ASP.NET 中建立自訂使用者控制項嗎？
 ====================

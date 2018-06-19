@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/index
-title: "MVC 3-使用 DropDownList 方塊和 jQuery |Microsoft 文件"
+title: MVC 3-使用 DropDownList 方塊和 jQuery |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會示範如何使用 jQuery DropDownList 方塊"
+description: 本教學課程會示範如何使用 jQuery DropDownList 方塊
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/19/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-an
 msc.type: chapter
 ms.openlocfilehash: 9d498c0fbb0860d50ab76e58e9940f6789e34d6b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26502587"
 ---
 <a name="mvc-3---working-with-the-dropdownlist-box-and-jquery"></a>MVC 3-使用 DropDownList 方塊和 jQuery
 ====================

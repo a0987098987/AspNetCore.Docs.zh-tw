@@ -1,20 +1,21 @@
 ---
 uid: webhooks/index
-title: "ASP.NET Webhook 概觀 |Microsoft 文件"
+title: ASP.NET Webhook 概觀 |Microsoft 文件
 author: rick-anderson
-description: "ASP.NET Webhook 簡介。"
+description: ASP.NET Webhook 簡介。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 5e2843f0-f499-448f-a712-33d4e9858321
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 52399c23cdf393a2f7f94661fd48098ced65948c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530047"
 ---
 # <a name="aspnet-webhooks-overview"></a>ASP.NET Webhook 概觀
 

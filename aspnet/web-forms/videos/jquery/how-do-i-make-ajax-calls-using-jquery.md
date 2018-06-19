@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
-title: "如何： 建立 Ajax 呼叫使用 jQuery 嗎？ | Microsoft Docs"
+title: 如何： 建立 Ajax 呼叫使用 jQuery 嗎？ | Microsoft Docs
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何使用 jQuery 程式庫的 Ajax 呼叫。 範例網站會建立包含簡單的 web 服務會傳回..."
+description: 在這個視訊 Chris Pels 示範如何使用 jQuery 程式庫的 Ajax 呼叫。 範例網站會建立包含簡單的 web 服務會傳回...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526417"
 ---
 <a name="how-do-i-make-ajax-calls-using-jquery"></a>如何： 建立 Ajax 呼叫使用 jQuery 嗎？
 ====================

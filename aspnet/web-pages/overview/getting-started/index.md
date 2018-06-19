@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/index
-title: "開始使用 ASP.NET Web Pages |Microsoft 文件"
+title: 開始使用 ASP.NET Web Pages |Microsoft 文件
 author: rick-anderson
-description: "深入了解有關 ASP.NET Web Pages ASP.NET Web Pages 和全新 Razor 語法提供快速、 親近且輕量方式結合伺服器程式碼與 HTML t..."
+description: 深入了解有關 ASP.NET Web Pages ASP.NET Web Pages 和全新 Razor 語法提供快速、 親近且輕量方式結合伺服器程式碼與 HTML t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 879110bba5e3465dd413764816603bcdb56eac31
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528587"
 ---
 <a name="getting-started-with-aspnet-web-pages"></a>開始使用 ASP.NET Web 網頁
 ====================

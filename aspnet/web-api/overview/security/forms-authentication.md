@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/forms-authentication
-title: "ASP.NET Web API 中表單驗證 |Microsoft 文件"
+title: ASP.NET Web API 中表單驗證 |Microsoft 文件
 author: MikeWasson
-description: "描述如何在 ASP.NET Web API 中使用表單驗證。"
+description: 描述如何在 ASP.NET Web API 中使用表單驗證。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/12/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508307"
 ---
 <a name="forms-authentication-in-aspnet-web-api"></a>ASP.NET Web API 中的表單驗證
 ====================

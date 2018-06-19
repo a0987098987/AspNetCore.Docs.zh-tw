@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870111"
 ---
 <a name="part-9-registration-and-checkout"></a>部分 9： 註冊並簽出
 ====================
@@ -91,9 +92,9 @@ ms.lasthandoff: 04/06/2018
 
 CheckoutController 會有下列的控制器動作：
 
-**AddressAndPayment （GET 方法）**會顯示表單，以允許使用者輸入他們的資訊。
+**AddressAndPayment （GET 方法）** 會顯示表單，以允許使用者輸入他們的資訊。
 
-**AddressAndPayment （POST 方法）**會驗證輸入和處理順序。
+**AddressAndPayment （POST 方法）** 會驗證輸入和處理順序。
 
 **完成**使用者順利完成在結帳程序之後將會顯示。 此檢視會包含使用者的訂單號碼，以確認。
 

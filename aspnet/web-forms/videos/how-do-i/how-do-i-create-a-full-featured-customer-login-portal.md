@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-full-featured-customer-login-portal
-title: "[如何:]建立功能完整的客戶登入入口網站？ | Microsoft Docs"
+title: '[如何:]建立功能完整的客戶登入入口網站？ | Microsoft Docs'
 author: microsoft
-description: "遵循指示來建立的虛構客戶入口網站，若要了解主版頁面、 佈景主題、 成員資格、 角色、 站台瀏覽、 使用者設定檔，並..."
+description: 遵循指示來建立的虛構客戶入口網站，若要了解主版頁面、 佈景主題、 成員資格、 角色、 站台瀏覽、 使用者設定檔，並...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/05/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525297"
 ---
 <a name="how-do-i-create-a-full-featured-customer-login-portal"></a>[如何:]建立功能完整的客戶登入入口網站？
 ====================

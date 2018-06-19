@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877547"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-vb"></a><span data-ttu-id="c0557-103">使用 SqlDataSource (VB) 實作開放式並行存取</span><span class="sxs-lookup"><span data-stu-id="c0557-103">Implementing Optimistic Concurrency with the SqlDataSource (VB)</span></span>
 ====================

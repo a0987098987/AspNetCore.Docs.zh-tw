@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
-title: "[如何:]傳送電子郵件與 ASP.NET 時實作錯誤處理 |Microsoft 文件"
+title: '[如何:]傳送電子郵件與 ASP.NET 時實作錯誤處理 |Microsoft 文件'
 author: rick-anderson
-description: "Chris Pels 示範如何實作時傳送電子郵件與 ASP.NET 的錯誤處理。 他建立一個 ASP.NET web 網頁，傳送電子郵件，示範如何設定及小型..."
+description: Chris Pels 示範如何實作時傳送電子郵件與 ASP.NET 的錯誤處理。 他建立一個 ASP.NET web 網頁，傳送電子郵件，示範如何設定及小型...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526427"
 ---
 <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a><span data-ttu-id="27a5e-104">[如何:]傳送電子郵件與 ASP.NET 時實作錯誤處理</span><span class="sxs-lookup"><span data-stu-id="27a5e-104">[How Do I:] Implement Error Handling when Sending Email with ASP.NET</span></span>
 ====================

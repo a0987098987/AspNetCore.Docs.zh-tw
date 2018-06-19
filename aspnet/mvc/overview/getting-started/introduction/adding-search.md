@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871827"
 ---
 <a name="search"></a><span data-ttu-id="fed3d-102">搜尋</span><span class="sxs-lookup"><span data-stu-id="fed3d-102">Search</span></span>
 ====================
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="fed3d-120">現在您可以更新`Index`會向使用者顯示表單的檢視。</span><span class="sxs-lookup"><span data-stu-id="fed3d-120">Now you can update the `Index` view that will display the form to the user.</span></span>
 
-<span data-ttu-id="fed3d-121">執行應用程式，並瀏覽至*/電影/索引*。</span><span class="sxs-lookup"><span data-stu-id="fed3d-121">Run the application and navigate to */Movies/Index*.</span></span> <span data-ttu-id="fed3d-122">將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。</span><span class="sxs-lookup"><span data-stu-id="fed3d-122">Append a query string such as `?searchString=ghost` to the URL.</span></span> <span data-ttu-id="fed3d-123">隨即顯示篩選過的電影。</span><span class="sxs-lookup"><span data-stu-id="fed3d-123">The filtered movies are displayed.</span></span>
+<span data-ttu-id="fed3d-121">執行應用程式，並瀏覽至 */電影/索引*。</span><span class="sxs-lookup"><span data-stu-id="fed3d-121">Run the application and navigate to */Movies/Index*.</span></span> <span data-ttu-id="fed3d-122">將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。</span><span class="sxs-lookup"><span data-stu-id="fed3d-122">Append a query string such as `?searchString=ghost` to the URL.</span></span> <span data-ttu-id="fed3d-123">隨即顯示篩選過的電影。</span><span class="sxs-lookup"><span data-stu-id="fed3d-123">The filtered movies are displayed.</span></span>
 
 ![SearchQryStr](adding-search/_static/image1.png)
 
@@ -151,7 +152,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-cshtml[Main](adding-search/samples/sample17.cshtml)]
 
-<span data-ttu-id="fed3d-179">執行應用程式，並瀏覽至*/電影/索引*。</span><span class="sxs-lookup"><span data-stu-id="fed3d-179">Run the application and browse to */Movies/Index*.</span></span> <span data-ttu-id="fed3d-180">內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。</span><span class="sxs-lookup"><span data-stu-id="fed3d-180">Try a search by genre, by movie name, and by both criteria.</span></span>
+<span data-ttu-id="fed3d-179">執行應用程式，並瀏覽至 */電影/索引*。</span><span class="sxs-lookup"><span data-stu-id="fed3d-179">Run the application and browse to */Movies/Index*.</span></span> <span data-ttu-id="fed3d-180">內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。</span><span class="sxs-lookup"><span data-stu-id="fed3d-180">Try a search by genre, by movie name, and by both criteria.</span></span>
 
 ![](adding-search/_static/image8.png)
 

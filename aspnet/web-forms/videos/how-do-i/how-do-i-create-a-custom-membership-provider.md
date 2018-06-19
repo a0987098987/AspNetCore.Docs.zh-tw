@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-membership-provider
-title: "[如何:]建立自訂成員資格提供者嗎？ | Microsoft Docs"
+title: '[如何:]建立自訂成員資格提供者嗎？ | Microsoft Docs'
 author: rick-anderson
-description: "成員資格提供者可讓 web 應用程式來儲存和擷取成員資格使用者的資料，以及標準 ASP.NET 成員資格提供者會使用預先定義..."
+description: 成員資格提供者可讓 web 應用程式來儲存和擷取成員資格使用者的資料，以及標準 ASP.NET 成員資格提供者會使用預先定義...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525517"
 ---
 <a name="how-do-i-create-a-custom-membership-provider"></a><span data-ttu-id="0a66a-104">[如何:]建立自訂成員資格提供者嗎？</span><span class="sxs-lookup"><span data-stu-id="0a66a-104">[How Do I:] Create a Custom Membership Provider?</span></span>
 ====================

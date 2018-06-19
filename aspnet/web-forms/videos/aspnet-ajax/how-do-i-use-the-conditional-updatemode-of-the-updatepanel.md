@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884778"
 ---
 <a name="how-do-i-use-the-conditional-updatemode-of-the-updatepanel"></a><span data-ttu-id="412df-105">[如何:]使用條件式 UpdateMode UpdatePanel 的嗎？</span><span class="sxs-lookup"><span data-stu-id="412df-105">[How Do I:] Use the Conditional UpdateMode of the UpdatePanel?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
-title: "[如何:]實作自訂的健康監視事件 |Microsoft 文件"
+title: '[如何:]實作自訂的健康監視事件 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何建立自訂的健全狀況監視會擴充標準的健全狀況監視 ASP.NET 中的事件的事件。 自訂 pro 中..."
+description: 在這個視訊 Chris Pels 將示範如何建立自訂的健全狀況監視會擴充標準的健全狀況監視 ASP.NET 中的事件的事件。 自訂 pro 中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524957"
 ---
 <a name="how-do-i-implement-a-custom-health-monitoring-event"></a><span data-ttu-id="1f48f-104">[如何:]實作自訂的健康監視事件</span><span class="sxs-lookup"><span data-stu-id="1f48f-104">[How Do I:] Implement a Custom Health Monitoring Event</span></span>
 ====================

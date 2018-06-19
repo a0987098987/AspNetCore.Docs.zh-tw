@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/index
-title: "安全性、 驗證和 ASP.NET Web API 中的授權 |Microsoft 文件"
+title: 安全性、 驗證和 ASP.NET Web API 中的授權 |Microsoft 文件
 author: rick-anderson
-description: "Web API 的安全性問題。"
+description: Web API 的安全性問題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/11/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/security
 msc.type: chapter
 ms.openlocfilehash: 2006e672aab83a508bcaf44b6c7c276d4b1f3342
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508087"
 ---
 <a name="security-authentication-and-authorization-in-aspnet-web-api"></a><span data-ttu-id="2ef54-103">安全性、 驗證和授權的 ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="2ef54-103">Security, Authentication, and Authorization in ASP.NET Web API</span></span>
 ====================

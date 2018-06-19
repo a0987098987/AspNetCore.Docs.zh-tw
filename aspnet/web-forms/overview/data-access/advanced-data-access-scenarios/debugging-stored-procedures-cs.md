@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876497"
 ---
 <a name="debugging-stored-procedures-c"></a><span data-ttu-id="87095-103">偵錯預存程序 (C#)</span><span class="sxs-lookup"><span data-stu-id="87095-103">Debugging Stored Procedures (C#)</span></span>
 ====================

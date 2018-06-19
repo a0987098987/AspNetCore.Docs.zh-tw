@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/index
-title: "ASP.NET Web Form 指引 |Microsoft 文件"
+title: ASP.NET Web Form 指引 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview
 msc.type: book
 ms.openlocfilehash: 7a2a5a1afd2a6094d01f5acc86737ede48b90dd0
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516857"
 ---
 <a name="aspnet-web-forms-guidance"></a><span data-ttu-id="796bc-102">ASP.NET Web Form 指引</span><span class="sxs-lookup"><span data-stu-id="796bc-102">ASP.NET Web Forms Guidance</span></span>
 ====================

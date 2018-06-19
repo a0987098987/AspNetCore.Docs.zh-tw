@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/index
-title: "ASP.NET 3.5-角色 |Microsoft 文件"
+title: ASP.NET 3.5-角色 |Microsoft 文件
 author: rick-anderson
-description: "此教學課程說明如何建立和刪除角色、 如何將使用者指派給角色，以及如何依角色授權。"
+description: 此教學課程說明如何建立和刪除角色、 如何將使用者指派給角色，以及如何依角色授權。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/roles
 msc.type: chapter
 ms.openlocfilehash: 9fc5695f18d3624d07e2457c1bb33f15911eac96
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519487"
 ---
 <a name="aspnet-35---roles"></a><span data-ttu-id="a0f47-103">ASP.NET 3.5-角色</span><span class="sxs-lookup"><span data-stu-id="a0f47-103">ASP.NET 3.5 - Roles</span></span>
 ====================

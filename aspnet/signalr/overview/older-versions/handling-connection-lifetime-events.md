@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/handling-connection-lifetime-events
-title: "了解和處理 SignalR 連線的存留期事件 1.x |Microsoft 文件"
+title: 了解和處理 SignalR 連線的存留期事件 1.x |Microsoft 文件
 author: pfletcher
-description: "本文說明如何使用集線器 API 所公開的事件。"
+description: 本文說明如何使用集線器 API 所公開的事件。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/05/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036722"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr-1x"></a><span data-ttu-id="8f513-103">了解和處理 SignalR 連線的存留期事件 1.x</span><span class="sxs-lookup"><span data-stu-id="8f513-103">Understanding and Handling Connection Lifetime Events in SignalR 1.x</span></span>
 ====================

@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/aspnet-scaffolding-overview
-title: "Visual Studio 2013 中的 ASP.NET Scaffolding |Microsoft 文件"
+title: Visual Studio 2013 中的 ASP.NET Scaffolding |Microsoft 文件
 author: tfitzmac
-description: "ASP.NET Scaffolding 是隨附於 Visual Studio 2013 的新功能。"
+description: ASP.NET Scaffolding 是隨附於 Visual Studio 2013 的新功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2014
 ms.topic: article
 ms.assetid: a41ec9d4-8287-4f31-9e2a-460e7b7f04be
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/aspnet-scaffolding-overview
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506727"
 ---
 <a name="aspnet-scaffolding-in-visual-studio-2013"></a><span data-ttu-id="1dd7f-103">Visual Studio 2013 中的 ASP.NET Scaffolding</span><span class="sxs-lookup"><span data-stu-id="1dd7f-103">ASP.NET Scaffolding in Visual Studio 2013</span></span>
 ====================

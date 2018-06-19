@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882016"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-alwaysvisible-control-extender"></a><span data-ttu-id="aa362-105">[如何:]使用 ASP.NET AJAX AlwaysVisible 控制項擴充項嗎？</span><span class="sxs-lookup"><span data-stu-id="aa362-105">[How Do I:] Use the ASP.NET AJAX AlwaysVisible Control Extender?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/index
-title: "ASP.NET MVC 使用者入門 |Microsoft 文件"
+title: ASP.NET MVC 使用者入門 |Microsoft 文件
 author: rick-anderson
-description: "深入了解關於 ASP.NET MVC ASP.NET MVC 可讓您建置動態網站，可讓考量和該 g 清楚分隔的功能強大、 以模式為基礎的方式..."
+description: 深入了解關於 ASP.NET MVC ASP.NET MVC 可讓您建置動態網站，可讓考量和該 g 清楚分隔的功能強大、 以模式為基礎的方式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/31/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 37d374d01ca122046f9fcd7b72331fc7cfe569cf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499207"
 ---
 <a name="aspnet-mvc-getting-started"></a><span data-ttu-id="b6b17-103">ASP.NET MVC 使用者入門</span><span class="sxs-lookup"><span data-stu-id="b6b17-103">ASP.NET MVC Getting Started</span></span>
 ====================

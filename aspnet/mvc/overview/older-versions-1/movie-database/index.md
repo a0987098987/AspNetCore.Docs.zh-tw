@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/movie-database/index
-title: "影片資料庫 |Microsoft 文件"
+title: 影片資料庫 |Microsoft 文件
 author: rick-anderson
-description: "如何建置在 15 分鐘的影片資料庫應用程式。"
+description: 如何建置在 15 分鐘的影片資料庫應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/movie-database
 msc.type: chapter
 ms.openlocfilehash: df2781ae848ed2196fd5cd2451d20aaac91a2e2b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500707"
 ---
 <a name="movie-database"></a><span data-ttu-id="2bfe6-103">影片資料庫</span><span class="sxs-lookup"><span data-stu-id="2bfe6-103">Movie Database</span></span>
 ====================

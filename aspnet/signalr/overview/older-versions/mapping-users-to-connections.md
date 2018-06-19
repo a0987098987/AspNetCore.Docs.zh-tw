@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/mapping-users-to-connections
-title: "將 SignalR 使用者對應至在 SignalR 連線 1.x |Microsoft 文件"
+title: 將 SignalR 使用者對應至在 SignalR 連線 1.x |Microsoft 文件
 author: pfletcher
-description: "本主題說明如何保留使用者和其連線的相關資訊。"
+description: 本主題說明如何保留使用者和其連線的相關資訊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28037008"
 ---
 <a name="mapping-signalr-users-to-connections-in-signalr-1x"></a><span data-ttu-id="9f12d-103">將 SignalR 使用者對應至在 SignalR 連線 1.x</span><span class="sxs-lookup"><span data-stu-id="9f12d-103">Mapping SignalR Users to Connections in SignalR 1.x</span></span>
 ====================

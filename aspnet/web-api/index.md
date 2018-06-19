@@ -1,8 +1,8 @@
 ---
 uid: web-api/index
-title: "ASP.NET Web API |Microsoft 文件"
+title: ASP.NET Web API |Microsoft 文件
 author: rick-anderson
-description: "下載 ASP.NET MVC 4，並建立連線的用戶端較大範圍的 HTTP 服務。"
+description: 下載 ASP.NET MVC 4，並建立連線的用戶端較大範圍的 HTTP 服務。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api
 msc.type: categoryindex
 ms.openlocfilehash: 208cca850cc18f02c6a317c86b532e9707e9d5cf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26507047"
 ---
 <a name="aspnet-web-api"></a><span data-ttu-id="f0601-103">ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="f0601-103">ASP.NET Web API</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-to-best-learn-aspnet-web-forms
-title: "如何最適合深入了解 ASP.NET Web Form |Microsoft 文件"
+title: 如何最適合深入了解 ASP.NET Web Form |Microsoft 文件
 author: JoeStagner
-description: "Microsoft 的 Joe stagner 以顯示您需要了解如何使用 ASP.NET Web Form 來開發 web 應用程式。"
+description: Microsoft 的 Joe stagner 以顯示您需要了解如何使用 ASP.NET Web Form 來開發 web 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/03/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521737"
 ---
 <a name="how-to-best-learn-aspnet-web-forms"></a><span data-ttu-id="d0718-103">如何最能了解 ASP.NET Web Form</span><span class="sxs-lookup"><span data-stu-id="d0718-103">How to Best Learn ASP.NET Web Forms</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868148"
 ---
 <a name="animation-depending-on-a-condition-vb"></a><span data-ttu-id="a5b67-104">根據條件 (VB) 動畫</span><span class="sxs-lookup"><span data-stu-id="a5b67-104">Animation Depending On a Condition (VB)</span></span>
 ====================

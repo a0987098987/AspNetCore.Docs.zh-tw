@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872529"
 ---
 <a name="using-textboxwatermark-in-a-formview-vb"></a><span data-ttu-id="69def-104">在 FormView (VB) 中使用 TextBoxWatermark</span><span class="sxs-lookup"><span data-stu-id="69def-104">Using TextBoxWatermark in a FormView (VB)</span></span>
 ====================

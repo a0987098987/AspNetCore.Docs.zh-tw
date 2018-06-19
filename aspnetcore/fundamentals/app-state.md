@@ -15,6 +15,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306643"
 ---
 # <a name="session-and-application-state-in-aspnet-core"></a><span data-ttu-id="ec258-103">ASP.NET Core 中的工作階段與應用程式狀態</span><span class="sxs-lookup"><span data-stu-id="ec258-103">Session and application state in ASP.NET Core</span></span>
 

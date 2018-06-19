@@ -17,6 +17,7 @@ ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555556"
 ---
 # <a name="use-the-single-page-application-templates-with-aspnet-core"></a><span data-ttu-id="e44b6-103">使用包含 ASP.NET Core 的單頁應用程式範本</span><span class="sxs-lookup"><span data-stu-id="e44b6-103">Use the Single Page Application templates with ASP.NET Core</span></span>
 

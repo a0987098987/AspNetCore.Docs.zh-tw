@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874000"
 ---
 <a name="implementing-inheritance-with-the-entity-framework-in-an-aspnet-mvc-application-8-of-10"></a><span data-ttu-id="89b37-103">實作 ASP.NET MVC 應用程式 (10-8) 中的 Entity Framework 的繼承</span><span class="sxs-lookup"><span data-stu-id="89b37-103">Implementing Inheritance with the Entity Framework in an ASP.NET MVC Application (8 of 10)</span></span>
 ====================
@@ -151,7 +152,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="89b37-189">執行網站，然後再次嘗試各種不同的頁面。</span><span class="sxs-lookup"><span data-stu-id="89b37-189">Run the site and try various pages.</span></span> <span data-ttu-id="89b37-190">一切項目的運作與之前一樣。</span><span class="sxs-lookup"><span data-stu-id="89b37-190">Everything works the same as it did before.</span></span>
 
-<span data-ttu-id="89b37-191">在**伺服器總管 中，**展開**SchoolContext**然後**資料表**，而且您會看到的**學生**和**講師**資料表已取代**人員**資料表。</span><span class="sxs-lookup"><span data-stu-id="89b37-191">In **Server Explorer,** expand **SchoolContext** and then **Tables**, and you see that the **Student** and **Instructor** tables have been replaced by a **Person** table.</span></span> <span data-ttu-id="89b37-192">展開**人員**資料表，而且您看到它有使用中的資料行的所有**學生**和**講師**資料表。</span><span class="sxs-lookup"><span data-stu-id="89b37-192">Expand the **Person** table and you see that it has all of the columns that used to be in the **Student** and **Instructor** tables.</span></span>
+<span data-ttu-id="89b37-191">在**伺服器總管 中，** 展開**SchoolContext**然後**資料表**，而且您會看到的**學生**和**講師**資料表已取代**人員**資料表。</span><span class="sxs-lookup"><span data-stu-id="89b37-191">In **Server Explorer,** expand **SchoolContext** and then **Tables**, and you see that the **Student** and **Instructor** tables have been replaced by a **Person** table.</span></span> <span data-ttu-id="89b37-192">展開**人員**資料表，而且您看到它有使用中的資料行的所有**學生**和**講師**資料表。</span><span class="sxs-lookup"><span data-stu-id="89b37-192">Expand the **Person** table and you see that it has all of the columns that used to be in the **Student** and **Instructor** tables.</span></span>
 
 ![Server_Explorer_showing_Person_table](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 

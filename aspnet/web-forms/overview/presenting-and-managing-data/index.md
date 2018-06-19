@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/index
-title: "在 ASP.NET Web Form 中使用資料 |Microsoft 文件"
+title: 在 ASP.NET Web Form 中使用資料 |Microsoft 文件
 author: rick-anderson
-description: "如何使用控制項來存取資料，以及如何保存要求間的資訊。"
+description: 如何使用控制項來存取資料，以及如何保存要求間的資訊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/presenting-and-managing-data
 msc.type: chapter
 ms.openlocfilehash: fcfe22a67a2d0876e25b867d43a3bc1535149110
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519757"
 ---
 <a name="working-with-data-in-aspnet-web-forms"></a><span data-ttu-id="c29f5-103">使用 ASP.NET Web Form 中的資料</span><span class="sxs-lookup"><span data-stu-id="c29f5-103">Working with Data in ASP.NET Web Forms</span></span>
 ====================

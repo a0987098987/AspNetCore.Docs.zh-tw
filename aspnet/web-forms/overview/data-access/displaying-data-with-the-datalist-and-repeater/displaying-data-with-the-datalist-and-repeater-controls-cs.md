@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878278"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a><span data-ttu-id="3a6c0-104">顯示資料，以在 DataList 和中繼器控制項中 (C#)</span><span class="sxs-lookup"><span data-stu-id="3a6c0-104">Displaying Data with the DataList and Repeater Controls (C#)</span></span>
 ====================

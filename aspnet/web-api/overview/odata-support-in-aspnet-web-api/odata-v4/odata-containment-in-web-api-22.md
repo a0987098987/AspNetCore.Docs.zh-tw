@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-containment-in-web-api-22
-title: "內含項目中 OData v4 使用 Web 應用程式開發介面 2.2 |Microsoft 文件"
+title: 內含項目中 OData v4 使用 Web 應用程式開發介面 2.2 |Microsoft 文件
 author: rick-anderson
-description: "傳統上，如果它封裝內的實體集，可能只存取實體。 但是，OData v4 提供另外兩個選項，單一和 Con..."
+description: 傳統上，如果它封裝內的實體集，可能只存取實體。 但是，OData v4 提供另外兩個選項，單一和 Con...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/27/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26507997"
 ---
 <a name="containment-in-odata-v4-using-web-api-22"></a><span data-ttu-id="0e1a2-104">內含項目中 OData v4 使用 Web 應用程式開發介面 2.2</span><span class="sxs-lookup"><span data-stu-id="0e1a2-104">Containment in OData v4 Using Web API 2.2</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-user-selectable-themes-for-a-web-site
-title: "[如何:]建立網站的使用者可選取的佈景主題 |Microsoft 文件"
+title: '[如何:]建立網站的使用者可選取的佈景主題 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 將示範如何建立多個網站的佈景主題，然後讓使用者選取的佈景主題套用至網站。 請參閱 < 如何..."
+description: 在這段影片 Chris Pels 將示範如何建立多個網站的佈景主題，然後讓使用者選取的佈景主題套用至網站。 請參閱 < 如何...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/13/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524947"
 ---
 <a name="how-do-i-create-user-selectable-themes-for-a-web-site"></a><span data-ttu-id="d55c7-104">[如何:]建立網站的使用者可選取的佈景主題</span><span class="sxs-lookup"><span data-stu-id="d55c7-104">[How Do I:] Create User Selectable Themes for a Web Site</span></span>
 ====================

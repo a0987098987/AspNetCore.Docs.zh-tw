@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/side-by-side-with-10
-title: ".NET framework 1.0 和 1.1 版的 ASP.NET-並存執行 |Microsoft 文件"
+title: .NET framework 1.0 和 1.1 版的 ASP.NET-並存執行 |Microsoft 文件
 author: rick-anderson
-description: "本白皮書說明如何在允許的 fram 任一版本上執行的 ASP.NET Web 應用程式的電腦上安裝.NET 1.0 和.NET 1.1..."
+description: 本白皮書說明如何在允許的 fram 任一版本上執行的 ASP.NET Web 應用程式的電腦上安裝.NET 1.0 和.NET 1.1...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: bdea2003-e964-4db5-9092-d56cc7560616
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/side-by-side-with-10
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530177"
 ---
 <a name="aspnet-side-by-side-execution-of-net-framework-10-and-11"></a><span data-ttu-id="2bebe-103">.NET Framework 1.0 和 1.1 版的 ASP.NET-並存執行</span><span class="sxs-lookup"><span data-stu-id="2bebe-103">ASP.NET Side-by-Side Execution of .NET Framework 1.0 and 1.1</span></span>
 ====================
@@ -119,7 +120,7 @@ ms.lasthandoff: 11/10/2017
 6. <span data-ttu-id="2bebe-166">從 [屬性] 視窗中，選取**組態。**</span><span class="sxs-lookup"><span data-stu-id="2bebe-166">From the Property window, select **Configuration.**</span></span>  
   
     ![](side-by-side-with-10/_static/image10.gif)
-7. <span data-ttu-id="2bebe-167">從應用程式對應資料表中，選取**.aspx**，然後按一下**編輯**。</span><span class="sxs-lookup"><span data-stu-id="2bebe-167">From the application mapping table, select **.aspx**, and click **Edit**.</span></span>  
+7. <span data-ttu-id="2bebe-167">從應用程式對應資料表中，選取 **.aspx**，然後按一下**編輯**。</span><span class="sxs-lookup"><span data-stu-id="2bebe-167">From the application mapping table, select **.aspx**, and click **Edit**.</span></span>  
   
     ![](side-by-side-with-10/_static/image11.gif)
 8. <span data-ttu-id="2bebe-168">從**可執行檔** 文字方塊中，捲動的版本目錄檢視。</span><span class="sxs-lookup"><span data-stu-id="2bebe-168">From the **Executable** text box, look at the version directory by scrolling.</span></span> <span data-ttu-id="2bebe-169">如果版本目錄 v.1.1.4322，應用程式會對應到.NET Framework 1.1。</span><span class="sxs-lookup"><span data-stu-id="2bebe-169">If the version directory is v.1.1.4322, the application is mapped to .NET Framework 1.1.</span></span> <span data-ttu-id="2bebe-170">相反地，如果 v1.0.3705 版本目錄，應用程式的動作就會對應到.NET Framework 1.0。</span><span class="sxs-lookup"><span data-stu-id="2bebe-170">Conversely, if the version directory is v1.0.3705, the application is mapped to .NET Framework 1.0.</span></span>  

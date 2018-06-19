@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32741046"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a><span data-ttu-id="63ead-102">移轉 ASP.NET Core 中介軟體的 HTTP 處理常式和模組</span><span class="sxs-lookup"><span data-stu-id="63ead-102">Migrate HTTP handlers and modules to ASP.NET Core middleware</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870540"
 ---
 <a name="part-3-creating-an-admin-controller"></a><span data-ttu-id="bbc63-102">第 3 部分： 建立系統管理控制站</span><span class="sxs-lookup"><span data-stu-id="bbc63-102">Part 3: Creating an Admin Controller</span></span>
 ====================

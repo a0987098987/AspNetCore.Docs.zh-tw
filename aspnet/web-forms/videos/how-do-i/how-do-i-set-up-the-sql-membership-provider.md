@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-set-up-the-sql-membership-provider
-title: "[如何:]設定 SQL 成員資格提供者 |Microsoft 文件"
+title: '[如何:]設定 SQL 成員資格提供者 |Microsoft 文件'
 author: rick-anderson
-description: "他會示範如何設定 SQL 成員資格提供者，將表單驗證新增至您的 ASP.NET 2.0 Web 站台將加入 Patrick Hynds。 有幾個秘訣..."
+description: 他會示範如何設定 SQL 成員資格提供者，將表單驗證新增至您的 ASP.NET 2.0 Web 站台將加入 Patrick Hynds。 有幾個秘訣...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526087"
 ---
 <a name="how-do-i-set-up-the-sql-membership-provider"></a><span data-ttu-id="df270-104">[如何:]設定 SQL 成員資格提供者</span><span class="sxs-lookup"><span data-stu-id="df270-104">[How Do I:] Set Up the SQL Membership Provider</span></span>
 ====================

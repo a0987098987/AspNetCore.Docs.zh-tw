@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-site-tool
-title: "[如何:]部署使用複製網站工具的網站 |Microsoft 文件"
+title: '[如何:]部署使用複製網站工具的網站 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何部署網站，使用 Visual Studio 中複製網站工具。 第一次看到如何連接至遠端網站與..."
+description: 在這個視訊 Chris Pels 將示範如何部署網站，使用 Visual Studio 中複製網站工具。 第一次看到如何連接至遠端網站與...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525667"
 ---
 <a name="how-do-i-deploy-a-web-site-using-the-copy-web-site-tool"></a><span data-ttu-id="1bda8-104">[如何:]部署網站使用複製網站工具</span><span class="sxs-lookup"><span data-stu-id="1bda8-104">[How Do I:] Deploy a Web Site Using the Copy Web Site Tool</span></span>
 ====================

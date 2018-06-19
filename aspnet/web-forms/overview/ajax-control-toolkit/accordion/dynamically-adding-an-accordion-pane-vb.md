@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868720"
 ---
 <a name="dynamically-adding-an-accordion-pane-vb"></a><span data-ttu-id="59d66-104">以動態方式加入 Accordion 窗格 (VB)</span><span class="sxs-lookup"><span data-stu-id="59d66-104">Dynamically Adding An Accordion Pane (VB)</span></span>
 ====================

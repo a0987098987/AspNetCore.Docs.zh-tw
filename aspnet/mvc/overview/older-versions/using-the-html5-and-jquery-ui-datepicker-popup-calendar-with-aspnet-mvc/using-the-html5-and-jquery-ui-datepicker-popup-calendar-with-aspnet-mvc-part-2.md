@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875444"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-2"></a><span data-ttu-id="d112a-103">使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 2 部分</span><span class="sxs-lookup"><span data-stu-id="d112a-103">Using the HTML5 and jQuery UI Datepicker Popup Calendar with ASP.NET MVC - Part 2</span></span>
 ====================
@@ -63,7 +64,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="d112a-125">現在您可以建立新的範本。</span><span class="sxs-lookup"><span data-stu-id="d112a-125">Now you can create the new template.</span></span> <span data-ttu-id="d112a-126">在*Views\Movies*資料夾中，建立*DisplayTemplates*資料夾。</span><span class="sxs-lookup"><span data-stu-id="d112a-126">In the *Views\Movies* folder, create a *DisplayTemplates* folder.</span></span>
 
-<span data-ttu-id="d112a-127">在*_layout.cshtml*資料夾中，建立*DisplayTemplates*資料夾和*EditorTemplates*資料夾。</span><span class="sxs-lookup"><span data-stu-id="d112a-127">In the *Views\Shared* folder, create a *DisplayTemplates* folder and an *EditorTemplates* folder.</span></span>
+<span data-ttu-id="d112a-127">在 *_layout.cshtml*資料夾中，建立*DisplayTemplates*資料夾和*EditorTemplates*資料夾。</span><span class="sxs-lookup"><span data-stu-id="d112a-127">In the *Views\Shared* folder, create a *DisplayTemplates* folder and an *EditorTemplates* folder.</span></span>
 
 <span data-ttu-id="d112a-128">中的顯示範本*Views\Shared\DisplayTemplates*資料夾將會由所有控制器。</span><span class="sxs-lookup"><span data-stu-id="d112a-128">The display templates in the *Views\Shared\DisplayTemplates* folder will be used by all controllers.</span></span> <span data-ttu-id="d112a-129">中的顯示範本*Views\Movie\DisplayTemplates*資料夾將只使用`Movie`控制站。</span><span class="sxs-lookup"><span data-stu-id="d112a-129">The display templates in the *Views\Movie\DisplayTemplates* folder will be used only by the `Movie` controller.</span></span> <span data-ttu-id="d112a-130">(如果具有相同名稱的範本會出現在這兩個的資料夾中的範本*Views\Movie\DisplayTemplates*資料夾-也就是更具體的範本 — 檢視所傳回的優先`Movie`控制站。)</span><span class="sxs-lookup"><span data-stu-id="d112a-130">(If a template with the same name appears in both folders, the template in the *Views\Movie\DisplayTemplates* folder — that is, the more specific template — takes precedence for views returned by the `Movie` controller.)</span></span>
 

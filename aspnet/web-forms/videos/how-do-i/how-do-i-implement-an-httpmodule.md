@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-an-httpmodule
-title: "[如何:]實作 HttpModule 嗎？ | Microsoft Docs"
+title: '[如何:]實作 HttpModule 嗎？ | Microsoft Docs'
 author: scottgolightly
-description: "這部影片由 Scott golightly 會示範如何實作簡單的 HttpModule 用以 BeginRequest 和 EndRequest 事件儲存要求其相關的某些資料..."
+description: 這部影片由 Scott golightly 會示範如何實作簡單的 HttpModule 用以 BeginRequest 和 EndRequest 事件儲存要求其相關的某些資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526027"
 ---
 <a name="how-do-i-implement-an-httpmodule"></a><span data-ttu-id="1be68-104">[如何:]實作 HttpModule 嗎？</span><span class="sxs-lookup"><span data-stu-id="1be68-104">[How Do I:] Implement an HttpModule?</span></span>
 ====================

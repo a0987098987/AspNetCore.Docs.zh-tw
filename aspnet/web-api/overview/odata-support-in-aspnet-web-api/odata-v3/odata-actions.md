@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508387"
 ---
 <a name="supporting-odata-actions-in-aspnet-web-api-2"></a><span data-ttu-id="2faaa-104">支援在 ASP.NET Web API 2 OData 動作</span><span class="sxs-lookup"><span data-stu-id="2faaa-104">Supporting OData Actions in ASP.NET Web API 2</span></span>
 ====================

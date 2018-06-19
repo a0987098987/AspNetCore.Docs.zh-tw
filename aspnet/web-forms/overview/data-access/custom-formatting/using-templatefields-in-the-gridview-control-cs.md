@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877872"
 ---
 <a name="using-templatefields-in-the-gridview-control-c"></a><span data-ttu-id="93aa2-104">使用 TemplateFields GridView 控制項中 (C#)</span><span class="sxs-lookup"><span data-stu-id="93aa2-104">Using TemplateFields in the GridView Control (C#)</span></span>
 ====================
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-cs/samples/sample2.aspx)]
 
-<span data-ttu-id="93aa2-168">如您所見，TemplateField 所組成的兩個範本`ItemTemplate`具有標籤其`Text`屬性設定的值為`FirstName`資料欄位和`EditItemTemplate`與文字方塊控制項`Text`屬性也設定若要`FirstName`資料欄位。</span><span class="sxs-lookup"><span data-stu-id="93aa2-168">As you can see, the TemplateField consists of two templates an `ItemTemplate` that has a Label whose `Text` property is set to the value of the `FirstName` data field, and an `EditItemTemplate` with a TextBox control whose `Text` property is also set to the `FirstName` data field.</span></span> <span data-ttu-id="93aa2-169">資料繫結語法- `<%# Bind("fieldName") %>` -指出資料欄位*`fieldName`*繫結至指定的 Web 控制項屬性。</span><span class="sxs-lookup"><span data-stu-id="93aa2-169">The databinding syntax - `<%# Bind("fieldName") %>` - indicates that the data field *`fieldName`* is bound to the specified Web control property.</span></span>
+<span data-ttu-id="93aa2-168">如您所見，TemplateField 所組成的兩個範本`ItemTemplate`具有標籤其`Text`屬性設定的值為`FirstName`資料欄位和`EditItemTemplate`與文字方塊控制項`Text`屬性也設定若要`FirstName`資料欄位。</span><span class="sxs-lookup"><span data-stu-id="93aa2-168">As you can see, the TemplateField consists of two templates an `ItemTemplate` that has a Label whose `Text` property is set to the value of the `FirstName` data field, and an `EditItemTemplate` with a TextBox control whose `Text` property is also set to the `FirstName` data field.</span></span> <span data-ttu-id="93aa2-169">資料繫結語法- `<%# Bind("fieldName") %>` -指出資料欄位*`fieldName`* 繫結至指定的 Web 控制項屬性。</span><span class="sxs-lookup"><span data-stu-id="93aa2-169">The databinding syntax - `<%# Bind("fieldName") %>` - indicates that the data field *`fieldName`* is bound to the specified Web control property.</span></span>
 
 <span data-ttu-id="93aa2-170">若要加入`LastName`資料欄位值，我們需要加入另一個標籤 Web 控制項，在此 TemplateField`ItemTemplate`並繫結其`Text`屬性`LastName`。</span><span class="sxs-lookup"><span data-stu-id="93aa2-170">To add the `LastName` data field value to this TemplateField we need to add another Label Web control in the `ItemTemplate` and bind its `Text` property to `LastName`.</span></span> <span data-ttu-id="93aa2-171">這可以手動或透過設計工具完成。</span><span class="sxs-lookup"><span data-stu-id="93aa2-171">This can be accomplished either by hand or through the Designer.</span></span> <span data-ttu-id="93aa2-172">若要以手動方式執行，只要加入至適當的宣告式語法`ItemTemplate`:</span><span class="sxs-lookup"><span data-stu-id="93aa2-172">To do it by hand, simply add the appropriate declarative syntax to the `ItemTemplate`:</span></span>
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/index
-title: "開始使用 ASP.NET Web Form |Microsoft 文件"
+title: 開始使用 ASP.NET Web Form |Microsoft 文件
 author: rick-anderson
-description: "深入了解有關 ASP.NET Web Form ASP.NET Web Forms 可讓您使用熟悉的拖放、 事件導向模型建置動態網站。 設計介面和 hund 中..."
+description: 深入了解有關 ASP.NET Web Form ASP.NET Web Forms 可讓您使用熟悉的拖放、 事件導向模型建置動態網站。 設計介面和 hund 中...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 219379b12e207755e8d27f0b5dae761527215519
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516567"
 ---
 <a name="getting-started-with-aspnet-web-forms"></a><span data-ttu-id="4f7ab-104">開始使用 ASP.NET Web Form</span><span class="sxs-lookup"><span data-stu-id="4f7ab-104">Getting Started with ASP.NET Web Forms</span></span>
 ====================

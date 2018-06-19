@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/index
-title: "ASP.NET 4-Tailspin Spyworks |Microsoft 文件"
+title: ASP.NET 4-Tailspin Spyworks |Microsoft 文件
 author: rick-anderson
-description: "如何使用 ASP.NET 4 中的新功能，建置線上商店，包括購物、 簽出，以及系統管理。"
+description: 如何使用 ASP.NET 4 中的新功能，建置線上商店，包括購物、 簽出，以及系統管理。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spywo
 msc.type: chapter
 ms.openlocfilehash: f08b0b6d30501971febb4d8054f673f92a8bc275
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26518647"
 ---
 <a name="aspnet-4---tailspin-spyworks"></a><span data-ttu-id="e5126-103">ASP.NET 4-Tailspin Spyworks</span><span class="sxs-lookup"><span data-stu-id="e5126-103">ASP.NET 4 - Tailspin Spyworks</span></span>
 ====================

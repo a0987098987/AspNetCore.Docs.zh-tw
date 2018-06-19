@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872360"
 ---
 <a name="iteration-3--add-form-validation-c"></a><span data-ttu-id="28879-105">反覆項目 #3-加入表單驗證 (C#)</span><span class="sxs-lookup"><span data-stu-id="28879-105">Iteration #3 – Add form validation (C#)</span></span>
 ====================

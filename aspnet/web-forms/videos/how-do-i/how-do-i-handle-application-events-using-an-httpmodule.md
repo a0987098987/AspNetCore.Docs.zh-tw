@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-handle-application-events-using-an-httpmodule
-title: "[如何:]處理應用程式事件使用 HttpModule？ | Microsoft Docs"
+title: '[如何:]處理應用程式事件使用 HttpModule？ | Microsoft Docs'
 author: rick-anderson
-description: "了解如何建立 HttpModule，頁面要求處理期間處理的應用程式事件。 範例模組會將資訊寫入記錄檔..."
+description: 了解如何建立 HttpModule，頁面要求處理期間處理的應用程式事件。 範例模組會將資訊寫入記錄檔...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526177"
 ---
 <a name="how-do-i-handle-application-events-using-an-httpmodule"></a><span data-ttu-id="dd854-105">[如何:]處理應用程式事件使用 HttpModule？</span><span class="sxs-lookup"><span data-stu-id="dd854-105">[How Do I:] Handle Application Events using an HttpModule?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/data-access/adonet-data-services/index
-title: "ADO.NET Data Services |Microsoft 文件"
+title: ADO.NET Data Services |Microsoft 文件
 author: rick-anderson
-description: "這些影片將示範如何建立簡單 ASP.NET 應用程式中使用具類型的資料集的資料存取層。"
+description: 這些影片將示範如何建立簡單 ASP.NET 應用程式中使用具類型的資料集的資料存取層。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/data-access/adonet-data-services
 msc.type: chapter
 ms.openlocfilehash: 07181564ee701c71ce74ac7cea3d8cfd0f9f4ffd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525097"
 ---
 <a name="adonet-data-services"></a><span data-ttu-id="5e43b-103">ADO.NET Data Services</span><span class="sxs-lookup"><span data-stu-id="5e43b-103">ADO.NET Data Services</span></span>
 ====================

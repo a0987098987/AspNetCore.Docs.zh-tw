@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878135"
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a><span data-ttu-id="d8bcf-104">使用 SqlDataSource (VB) 中使用參數化的查詢</span><span class="sxs-lookup"><span data-stu-id="d8bcf-104">Using Parameterized Queries with the SqlDataSource (VB)</span></span>
 ====================

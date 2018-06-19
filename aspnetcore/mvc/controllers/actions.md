@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740292"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a><span data-ttu-id="4c58a-102">在 ASP.NET Core MVC 中處理控制器要求</span><span class="sxs-lookup"><span data-stu-id="4c58a-102">Handle requests with controllers in ASP.NET Core MVC</span></span>
 

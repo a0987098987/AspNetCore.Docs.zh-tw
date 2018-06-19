@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889458"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a><span data-ttu-id="be26e-104">檢查與插入、 更新和刪除 (VB) 相關聯的事件</span><span class="sxs-lookup"><span data-stu-id="be26e-104">Examining the Events Associated with Inserting, Updating, and Deleting (VB)</span></span>
 ====================

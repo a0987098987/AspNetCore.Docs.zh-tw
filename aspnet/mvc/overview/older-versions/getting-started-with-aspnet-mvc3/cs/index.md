@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/index
-title: "開始使用 ASP.NET MVC 3 (C#) |Microsoft 文件"
+title: 開始使用 ASP.NET MVC 3 (C#) |Microsoft 文件
 author: rick-anderson
-description: "建立使用 Microsoft Visual Web Developer 2010 Express 使用 C# 的 ASP.NET MVC Web 應用程式的基本概念。"
+description: 建立使用 Microsoft Visual Web Developer 2010 Express 使用 C# 的 ASP.NET MVC Web 應用程式的基本概念。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs
 msc.type: chapter
 ms.openlocfilehash: a150ed0d30a2bd695f598d83cd63e321d529f202
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26501607"
 ---
 <a name="getting-started-with-aspnet-mvc-3-c"></a><span data-ttu-id="1cb31-103">開始使用 ASP.NET MVC 3 (C#)</span><span class="sxs-lookup"><span data-stu-id="1cb31-103">Getting Started with ASP.NET MVC 3 (C#)</span></span>
 ====================

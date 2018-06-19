@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-send-email-asynchronously-with-aspnet
-title: "[如何:]以非同步方式使用 ASP.NET 傳送電子郵件 |Microsoft 文件"
+title: '[如何:]以非同步方式使用 ASP.NET 傳送電子郵件 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片中，Chris Pels 會示範如何在 ASP.NET 中使用 System.Net.Mail 類別，來以非同步的電子郵件訊息。 首先，請參閱 < 如何設定 web si..."
+description: 在這段影片中，Chris Pels 會示範如何在 ASP.NET 中使用 System.Net.Mail 類別，來以非同步的電子郵件訊息。 首先，請參閱 < 如何設定 web si...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525867"
 ---
 <a name="how-do-i-send-email-asynchronously-with-aspnet"></a><span data-ttu-id="29e65-104">[如何:]以非同步方式使用 ASP.NET 傳送電子郵件</span><span class="sxs-lookup"><span data-stu-id="29e65-104">[How Do I:] Send Email Asynchronously with ASP.NET</span></span>
 ====================

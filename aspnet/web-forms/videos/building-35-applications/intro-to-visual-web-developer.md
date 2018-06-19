@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/intro-to-visual-web-developer
-title: "Visual Web Developer 簡介 |Microsoft 文件"
+title: Visual Web Developer 簡介 |Microsoft 文件
 author: JoeStagner
-description: "Microsoft Visual Web Developer 是免費版本的 Visual Studio 來開發 ASP.NET 應用程式。 這段影片將示範如何取得並安裝它，而以 t..."
+description: Microsoft Visual Web Developer 是免費版本的 Visual Studio 來開發 ASP.NET 應用程式。 這段影片將示範如何取得並安裝它，而以 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520857"
 ---
 <a name="intro-to-visual-web-developer"></a><span data-ttu-id="55622-104">Visual Web Developer 簡介</span><span class="sxs-lookup"><span data-stu-id="55622-104">Intro to Visual Web Developer</span></span>
 ====================

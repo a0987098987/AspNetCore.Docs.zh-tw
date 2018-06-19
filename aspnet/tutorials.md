@@ -1,20 +1,21 @@
 ---
 uid: aspnet/tutorials
-title: "ASP.NET 教學課程 |Microsoft 文件"
+title: ASP.NET 教學課程 |Microsoft 文件
 author: tdykstra
-description: "此逐步指南來開發 ASP.NET 應用程式的清單。"
+description: 此逐步指南來開發 ASP.NET 應用程式的清單。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 704285fe06e2ece0f6afdc117aedf98f6155ef87
 ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036761"
 ---
 # <a name="aspnet-tutorials"></a><span data-ttu-id="3a7d5-103">ASP.NET 教學課程</span><span class="sxs-lookup"><span data-stu-id="3a7d5-103">ASP.NET tutorials</span></span>
 

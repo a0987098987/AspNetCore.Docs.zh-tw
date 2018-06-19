@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877056"
 ---
 <a name="iteration-1--create-the-application-vb"></a><span data-ttu-id="2b9a1-104">反覆項目 #1 – 建立應用程式 (VB)</span><span class="sxs-lookup"><span data-stu-id="2b9a1-104">Iteration #1 – Create the Application (VB)</span></span>
 ====================
@@ -178,7 +179,7 @@ ms.lasthandoff: 04/06/2018
 | <span data-ttu-id="2b9a1-230">Email</span><span class="sxs-lookup"><span data-stu-id="2b9a1-230">Email</span></span> | <span data-ttu-id="2b9a1-231">nvarchar （255)</span><span class="sxs-lookup"><span data-stu-id="2b9a1-231">nvarchar(255)</span></span> | <span data-ttu-id="2b9a1-232">False</span><span class="sxs-lookup"><span data-stu-id="2b9a1-232">false</span></span> |
 
 
-<span data-ttu-id="2b9a1-233">第一個資料行中，Id 資料行是特殊的。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-233">The first column, the Id column, is special.</span></span> <span data-ttu-id="2b9a1-234">您需要將識別碼資料行標示為識別資料行和主索引鍵資料行。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-234">You need to mark the Id column as an Identity column and a Primary Key column.</span></span> <span data-ttu-id="2b9a1-235">您指定的資料行是識別資料行的擴充資料行屬性 （圖 6 底部尋找），並捲動到 [識別規格] 屬性。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-235">You indicate that a column is an Identity column by expanding Column Properites (look at the bottom of Figure 6) and scrolling down to the Identity Specification property.</span></span> <span data-ttu-id="2b9a1-236">設定**（為識別）**屬性設為值**是**。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-236">Set the **(Is Identity)** property to the value **Yes**.</span></span>
+<span data-ttu-id="2b9a1-233">第一個資料行中，Id 資料行是特殊的。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-233">The first column, the Id column, is special.</span></span> <span data-ttu-id="2b9a1-234">您需要將識別碼資料行標示為識別資料行和主索引鍵資料行。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-234">You need to mark the Id column as an Identity column and a Primary Key column.</span></span> <span data-ttu-id="2b9a1-235">您指定的資料行是識別資料行的擴充資料行屬性 （圖 6 底部尋找），並捲動到 [識別規格] 屬性。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-235">You indicate that a column is an Identity column by expanding Column Properites (look at the bottom of Figure 6) and scrolling down to the Identity Specification property.</span></span> <span data-ttu-id="2b9a1-236">設定 **（為識別）** 屬性設為值**是**。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-236">Set the **(Is Identity)** property to the value **Yes**.</span></span>
 
 <span data-ttu-id="2b9a1-237">您將資料行標示為主索引鍵資料行選取資料行，然後按一下 索引鍵圖示的按鈕。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-237">You mark a column as a Primary Key column by selecting the column and clicking the button with the icon of a key.</span></span> <span data-ttu-id="2b9a1-238">資料行標示為主索引鍵資料行之後，資料行旁邊會出現的索引鍵圖示 （請參閱圖 6）。</span><span class="sxs-lookup"><span data-stu-id="2b9a1-238">After a column is marked as a Primary Key column, an icon of a key appears next to the column (see Figure 6).</span></span>
 

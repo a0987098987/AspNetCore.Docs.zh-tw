@@ -1,22 +1,23 @@
 ---
 uid: identity/index
-title: "ASP.NET Identity |Microsoft 文件"
+title: ASP.NET Identity |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2013
 ms.topic: article
 ms.assetid: 0c2df5d4-c2dd-486d-b0ed-fe831c6b596c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity
 msc.type: categoryindex
 ms.openlocfilehash: 0a8118d775ffcfb99eb94db0e3ab4c7fe69ae8cd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497837"
 ---
 <a name="aspnet-identity"></a><span data-ttu-id="f9048-102">ASP.NET Identity</span><span class="sxs-lookup"><span data-stu-id="f9048-102">ASP.NET Identity</span></span>
 ====================

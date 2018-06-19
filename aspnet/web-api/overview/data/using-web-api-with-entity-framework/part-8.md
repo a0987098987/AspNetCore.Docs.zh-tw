@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868083"
 ---
 <a name="display-item-details"></a><span data-ttu-id="260c2-102">顯示項目詳細資料</span><span class="sxs-lookup"><span data-stu-id="260c2-102">Display Item Details</span></span>
 ====================

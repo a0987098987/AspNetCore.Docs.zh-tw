@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/index
-title: "測試和偵錯 ASP.NET Web 應用程式開發介面 |Microsoft 文件"
+title: 測試和偵錯 ASP.NET Web 應用程式開發介面 |Microsoft 文件
 author: rick-anderson
-description: "測試和偵錯 ASP.NET Web API"
+description: 測試和偵錯 ASP.NET Web API
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/testing-and-debugging
 msc.type: chapter
 ms.openlocfilehash: 567fe8f790d5f7684b74018503f97ea8caabccc9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508257"
 ---
 <a name="testing-and-debugging-aspnet-web-api"></a><span data-ttu-id="82e7e-103">測試和偵錯 ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="82e7e-103">Testing and Debugging ASP.NET Web API</span></span>
 ====================

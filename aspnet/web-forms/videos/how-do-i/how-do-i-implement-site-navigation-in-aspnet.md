@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-site-navigation-in-aspnet
-title: "[如何:]實作 ASP.NET 中的站台瀏覽？ | Microsoft Docs"
+title: '[如何:]實作 ASP.NET 中的站台瀏覽？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片中，我們了解如何定義 sitemap 和使用功能表、 樹狀檢視，以及 Sitemap 伺服器控制項。 我們了解如何使用主版頁面上的 sitemap..."
+description: 在這段影片中，我們了解如何定義 sitemap 和使用功能表、 樹狀檢視，以及 Sitemap 伺服器控制項。 我們了解如何使用主版頁面上的 sitemap...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/18/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525687"
 ---
 <a name="how-do-i-implement-site-navigation-in-aspnet"></a><span data-ttu-id="a211a-105">[如何:]實作 ASP.NET 中的站台瀏覽？</span><span class="sxs-lookup"><span data-stu-id="a211a-105">[How Do I:] Implement Site Navigation in ASP.NET?</span></span>
 ====================

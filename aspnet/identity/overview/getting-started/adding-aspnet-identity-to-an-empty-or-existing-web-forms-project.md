@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874651"
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a><span data-ttu-id="db7ce-104">加入 ASP.NET Identity 至空的或現有的 Web Form 專案</span><span class="sxs-lookup"><span data-stu-id="db7ce-104">Adding ASP.NET Identity to an Empty or Existing Web Forms Project</span></span>
 ====================

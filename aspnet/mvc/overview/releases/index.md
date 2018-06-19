@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/index
-title: "版本 |Microsoft 文件"
+title: 版本 |Microsoft 文件
 author: rick-anderson
-description: "最新的 MVC 版本中最新消息。"
+description: 最新的 MVC 版本中最新消息。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/09/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/releases
 msc.type: chapter
 ms.openlocfilehash: 095b8f601fb994e6efc877981bfe92583bd3ee1d
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503327"
 ---
 <a name="releases"></a><span data-ttu-id="9622f-103">發行</span><span class="sxs-lookup"><span data-stu-id="9622f-103">Releases</span></span>
 ====================

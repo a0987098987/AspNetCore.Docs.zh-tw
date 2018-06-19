@@ -15,6 +15,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306617"
 ---
 # <a name="microsoftaspnetcoreapp-metapackage-for-aspnet-core-21"></a><span data-ttu-id="f0082-103">ASP.NET Core 2.1 的 Microsoft.AspNetCore.App 中繼套件</span><span class="sxs-lookup"><span data-stu-id="f0082-103">Microsoft.AspNetCore.App metapackage for ASP.NET Core 2.1</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28043203"
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a><span data-ttu-id="d8865-104">使用 Azure App Service 中的 Web 應用程式中的 SignalR</span><span class="sxs-lookup"><span data-stu-id="d8865-104">Using SignalR with Web Apps in Azure App Service</span></span>
 ====================

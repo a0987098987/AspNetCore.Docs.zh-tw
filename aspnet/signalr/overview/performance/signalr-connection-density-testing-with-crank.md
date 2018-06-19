@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
-title: "測試區軸與 SignalR 連線密度 |Microsoft 文件"
+title: 測試區軸與 SignalR 連線密度 |Microsoft 文件
 author: tfitzmac
-description: "測試區軸與 SignalR 連線密度"
+description: 測試區軸與 SignalR 連線密度
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/22/2015
@@ -17,6 +17,7 @@ ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/21/2017
+ms.locfileid: "26535327"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a><span data-ttu-id="dab6e-103">測試區軸與 SignalR 連線密度</span><span class="sxs-lookup"><span data-stu-id="dab6e-103">SignalR Connection Density Testing with Crank</span></span>
 ====================

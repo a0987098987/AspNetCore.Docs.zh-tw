@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page
-title: "[如何:]使用 Reponse.Filter 屬性來取代 ASP.NET 網頁中的 HTML |Microsoft 文件"
+title: '[如何:]使用 Reponse.Filter 屬性來取代 ASP.NET 網頁中的 HTML |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何使用 Reponse.Filter 屬性來攔截並變更傳送到網頁的 HTML。 首先，範例頁面會建立 w..."
+description: 在這個視訊 Chris Pels 示範如何使用 Reponse.Filter 屬性來攔截並變更傳送到網頁的 HTML。 首先，範例頁面會建立 w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/29/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525527"
 ---
 <a name="how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page"></a><span data-ttu-id="980b7-104">[如何:]使用 Reponse.Filter 屬性來取代 ASP.NET 網頁中的 HTML</span><span class="sxs-lookup"><span data-stu-id="980b7-104">[How Do I:] Use the Reponse.Filter Property to Replace HTML in an ASP.NET Page</span></span>
 ====================

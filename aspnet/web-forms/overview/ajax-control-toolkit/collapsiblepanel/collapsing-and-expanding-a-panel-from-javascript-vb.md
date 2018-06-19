@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873114"
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-vb"></a><span data-ttu-id="6cedd-103">摺疊和展開面板從 JavaScript (VB)</span><span class="sxs-lookup"><span data-stu-id="6cedd-103">Collapsing and Expanding a Panel from JavaScript (VB)</span></span>
 ====================

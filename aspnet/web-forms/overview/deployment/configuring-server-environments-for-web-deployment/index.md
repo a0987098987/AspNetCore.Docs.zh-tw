@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/index
-title: "ASP.NET 4-企業部署系列 2 設定伺服器 |Microsoft 文件"
+title: ASP.NET 4-企業部署系列 2 設定伺服器 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程顯示如何將伺服器環境以支援一種單鍵或自動化、 部署網站和各種不同的畫面中的發行設定..."
+description: 本教學課程顯示如何將伺服器環境以支援一種單鍵或自動化、 部署網站和各種不同的畫面中的發行設定...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-fo
 msc.type: chapter
 ms.openlocfilehash: 48281541d8337daf9cf252bc4601c8b1e75fd398
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515227"
 ---
 <a name="aspnet-4---enterprise-deployment-series-2-configuring-servers"></a><span data-ttu-id="767d9-103">ASP.NET 4-企業部署系列 2 設定伺服器</span><span class="sxs-lookup"><span data-stu-id="767d9-103">ASP.NET 4 - Enterprise Deployment Series 2 Configuring Servers</span></span>
 ====================

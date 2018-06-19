@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/index
-title: "效能 |Microsoft 文件"
+title: 效能 |Microsoft 文件
 author: rick-anderson
-description: "如何以更快的效能和如何測量的網站流量的快取內容。"
+description: 如何以更快的效能和如何測量的網站流量的快取內容。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/performance-and-traffic
 msc.type: chapter
 ms.openlocfilehash: fffeb7c5b5a202a273bfd8b144ad1f63d5743087
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528517"
 ---
 <a name="performance"></a><span data-ttu-id="85d7d-103">效能</span><span class="sxs-lookup"><span data-stu-id="85d7d-103">Performance</span></span>
 ====================

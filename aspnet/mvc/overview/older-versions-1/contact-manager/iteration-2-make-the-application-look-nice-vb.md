@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872763"
 ---
 <a name="iteration-2--make-the-application-look-nice-vb"></a><span data-ttu-id="47633-103">反覆項目 #2 – 讓應用程式看起來不錯 (VB)</span><span class="sxs-lookup"><span data-stu-id="47633-103">Iteration #2 – Make the application look nice (VB)</span></span>
 ====================
@@ -83,7 +84,7 @@ ms.lasthandoff: 04/06/2018
 3. <span data-ttu-id="47633-158">解壓縮檔案到名為年 10 月的資料夾。</span><span class="sxs-lookup"><span data-stu-id="47633-158">Unzip the file to a folder named October.</span></span>
 4. <span data-ttu-id="47633-159">選取的所有檔案包含在年 10 月資料夾 DesignTemplate 資料夾中，以滑鼠右鍵按一下檔案，並選取功能表選項**複製**。</span><span class="sxs-lookup"><span data-stu-id="47633-159">Select all of the files from the DesignTemplate folder contained in the October folder, right-click the files, and select the menu option **Copy**.</span></span>
 5. <span data-ttu-id="47633-160">以滑鼠右鍵按一下 ContactManager 專案節點，在 Visual Studio 方案總管 視窗中的，然後選取功能表選項**貼上**（請參閱圖 4）。</span><span class="sxs-lookup"><span data-stu-id="47633-160">Right-click the ContactManager project node in the Visual Studio Solution Explorer window and select the menu option **Paste** (see Figure 4).</span></span>
-6. <span data-ttu-id="47633-161">選取 [Visual Studio] 功能表選項**編輯、 尋找和取代 快速取代**和取代*[MyProjectName]*與*ContactManager* （請參閱圖 5）。</span><span class="sxs-lookup"><span data-stu-id="47633-161">Select the Visual Studio menu option **Edit, Find and Replace, Quick Replace** and replace *[MyProjectName]* with *ContactManager* (see Figure 5).</span></span>
+6. <span data-ttu-id="47633-161">選取 [Visual Studio] 功能表選項**編輯、 尋找和取代 快速取代**和取代 *[MyProjectName]* 與*ContactManager* （請參閱圖 5）。</span><span class="sxs-lookup"><span data-stu-id="47633-161">Select the Visual Studio menu option **Edit, Find and Replace, Quick Replace** and replace *[MyProjectName]* with *ContactManager* (see Figure 5).</span></span>
 
 
 <span data-ttu-id="47633-162">[![新增專案 對話方塊](iteration-2-make-the-application-look-nice-vb/_static/image3.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image5.png)</span><span class="sxs-lookup"><span data-stu-id="47633-162">[![The New Project dialog box](iteration-2-make-the-application-look-nice-vb/_static/image3.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image5.png)</span></span>

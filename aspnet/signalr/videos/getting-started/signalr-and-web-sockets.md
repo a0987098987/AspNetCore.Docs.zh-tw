@@ -1,8 +1,8 @@
 ---
 uid: signalr/videos/getting-started/signalr-and-web-sockets
-title: "SignalR 和 Web 通訊端 |Microsoft 文件"
+title: SignalR 和 Web 通訊端 |Microsoft 文件
 author: shanselman
-description: "Scott Hanselman 介紹 SignalR 和 Web 通訊端。"
+description: Scott Hanselman 介紹 SignalR 和 Web 通訊端。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505517"
 ---
 <a name="signalr-and-web-sockets"></a><span data-ttu-id="a9656-103">SignalR 和 Web 通訊端</span><span class="sxs-lookup"><span data-stu-id="a9656-103">SignalR and Web Sockets</span></span>
 ====================

@@ -1,22 +1,23 @@
 ---
 uid: identity/overview/index
-title: "ASP.NET Identity 概觀 |Microsoft 文件"
+title: ASP.NET Identity 概觀 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2013
 ms.topic: article
 ms.assetid: d3972a0e-9ff6-4de1-bf4d-c94943cab048
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview
 msc.type: book
 ms.openlocfilehash: deea9b9172f7da0483a31617b1f1c0d3e9fc2e21
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497927"
 ---
 <a name="aspnet-identity-overview"></a><span data-ttu-id="035ce-102">ASP.NET Identity 概觀</span><span class="sxs-lookup"><span data-stu-id="035ce-102">ASP.NET Identity Overview</span></span>
 ====================

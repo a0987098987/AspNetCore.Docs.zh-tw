@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-1
-title: "傳送 HTML 表單資料的 ASP.NET Web API： 表單 urlencoded 資料 |Microsoft 文件"
+title: 傳送 HTML 表單資料的 ASP.NET Web API： 表單 urlencoded 資料 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506937"
 ---
 <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a><span data-ttu-id="991b8-102">傳送 HTML 表單資料的 ASP.NET Web API： 表單 urlencoded 資料</span><span class="sxs-lookup"><span data-stu-id="991b8-102">Sending HTML Form Data in ASP.NET Web API: Form-urlencoded Data</span></span>
 ====================

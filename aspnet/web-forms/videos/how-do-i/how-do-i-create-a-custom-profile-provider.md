@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-profile-provider
-title: "[如何:]建立自訂設定檔提供者嗎？ | Microsoft Docs"
+title: '[如何:]建立自訂設定檔提供者嗎？ | Microsoft Docs'
 author: rick-anderson
-description: "在這段影片中，我們了解如何建立自訂設定檔提供者來儲存和擷取分開 t SQL Server 資料表中的使用者設定檔相關聯的資料..."
+description: 在這段影片中，我們了解如何建立自訂設定檔提供者來儲存和擷取分開 t SQL Server 資料表中的使用者設定檔相關聯的資料...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526407"
 ---
 <a name="how-do-i-create-a-custom-profile-provider"></a><span data-ttu-id="28226-104">[如何:]建立自訂設定檔提供者嗎？</span><span class="sxs-lookup"><span data-stu-id="28226-104">[How Do I:] Create a Custom Profile Provider?</span></span>
 ====================

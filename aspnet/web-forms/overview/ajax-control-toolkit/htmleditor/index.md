@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/htmleditor/index
-title: "HTMLEditor |Microsoft 文件"
+title: HTMLEditor |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會示範如何使用 HTMLEditor 控制項提供豐富的編輯器和 WYSIWYG 或編輯的 HTML 內容的來源。"
+description: 本教學課程會示範如何使用 HTMLEditor 控制項提供豐富的編輯器和 WYSIWYG 或編輯的 HTML 內容的來源。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor
 msc.type: chapter
 ms.openlocfilehash: 06e68d964cecc00c0ab45f7965a8df11e8afc6ea
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510617"
 ---
 <a name="htmleditor"></a><span data-ttu-id="b0006-103">HTMLEditor</span><span class="sxs-lookup"><span data-stu-id="b0006-103">HTMLEditor</span></span>
 ====================

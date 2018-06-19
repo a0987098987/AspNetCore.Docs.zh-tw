@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/creating-and-using-a-helper-in-an-aspnet-web-pages-site
-title: "建立和使用協助程式中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件"
+title: 建立和使用協助程式中 ASP.NET Web Pages (Razor) 站台 |Microsoft 文件
 author: tfitzmac
-description: "本文說明如何在 ASP.NET Web Pages (Razor) 網站上建立協助程式。 協助程式是可重複使用的元件，其中包含程式碼和效能標記..."
+description: 本文說明如何在 ASP.NET Web Pages (Razor) 網站上建立協助程式。 協助程式是可重複使用的元件，其中包含程式碼和效能標記...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529997"
 ---
 <a name="creating-and-using-a-helper-in-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="95e98-104">建立和使用 ASP.NET Web Pages (Razor) 網站中的協助程式</span><span class="sxs-lookup"><span data-stu-id="95e98-104">Creating and Using a Helper in an ASP.NET Web Pages (Razor) Site</span></span>
 ====================
@@ -55,7 +56,7 @@ ms.lasthandoff: 11/10/2017
 <span data-ttu-id="95e98-127">此程序會示範如何建立建立便箋，如上所述的協助程式。</span><span class="sxs-lookup"><span data-stu-id="95e98-127">This procedure shows you how to create the helper that creates the note, as just described.</span></span> <span data-ttu-id="95e98-128">這是簡單的範例，但自訂 helper 可以包含任何標記，且您需要的 ASP.NET 程式碼。</span><span class="sxs-lookup"><span data-stu-id="95e98-128">This is a simple example, but the custom helper can include any markup and ASP.NET code that you need.</span></span>
 
 1. <span data-ttu-id="95e98-129">在網站的根資料夾中建立資料夾，名為*應用程式\_程式碼*。</span><span class="sxs-lookup"><span data-stu-id="95e98-129">In the root folder of the website, create a folder named *App\_Code*.</span></span> <span data-ttu-id="95e98-130">這是您可以在其中放置像協助程式元件的程式碼在 ASP.NET 中保留的資料夾名稱。</span><span class="sxs-lookup"><span data-stu-id="95e98-130">This is a reserved folder name in ASP.NET where you can put code for components like helpers.</span></span>
-2. <span data-ttu-id="95e98-131">在*應用程式\_程式碼*資料夾建立新*.cshtml*檔案並將其命名*MyHelpers.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="95e98-131">In the *App\_Code* folder create a new *.cshtml* file and name it *MyHelpers.cshtml*.</span></span>
+2. <span data-ttu-id="95e98-131">在*應用程式\_程式碼*資料夾建立新 *.cshtml*檔案並將其命名*MyHelpers.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="95e98-131">In the *App\_Code* folder create a new *.cshtml* file and name it *MyHelpers.cshtml*.</span></span>
 3. <span data-ttu-id="95e98-132">以下列內容取代現有的內容：</span><span class="sxs-lookup"><span data-stu-id="95e98-132">Replace the existing content with the following:</span></span>
 
     [!code-cshtml[Main](creating-and-using-a-helper-in-an-aspnet-web-pages-site/samples/sample1.cshtml)]

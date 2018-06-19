@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/http-message-handlers
-title: "在 ASP.NET Web API HTTP 訊息處理常式 |Microsoft 文件"
+title: 在 ASP.NET Web API HTTP 訊息處理常式 |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506947"
 ---
 <a name="http-message-handlers-in-aspnet-web-api"></a><span data-ttu-id="06b6b-102">在 ASP.NET Web API HTTP 訊息處理常式</span><span class="sxs-lookup"><span data-stu-id="06b6b-102">HTTP Message Handlers in ASP.NET Web API</span></span>
 ====================

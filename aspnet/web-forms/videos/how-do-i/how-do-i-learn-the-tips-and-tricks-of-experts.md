@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-learn-the-tips-and-tricks-of-experts
-title: "[如何:]了解秘訣和訣竅專家的嗎？ | Microsoft Docs"
+title: '[如何:]了解秘訣和訣竅專家的嗎？ | Microsoft Docs'
 author: microsoft
-description: "檢視的秘訣和技巧包括加密機密資訊儲存在 web.config 檔案中，將內容張貼至不同頁面上，以簡化複雜的 Url..."
+description: 檢視的秘訣和技巧包括加密機密資訊儲存在 web.config 檔案中，將內容張貼至不同頁面上，以簡化複雜的 Url...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525757"
 ---
 <a name="how-do-i-learn-the-tips-and-tricks-of-experts"></a><span data-ttu-id="2bcc1-104">[如何:]了解秘訣和訣竅專家的嗎？</span><span class="sxs-lookup"><span data-stu-id="2bcc1-104">[How Do I:] Learn the Tips and Tricks of Experts?</span></span>
 ====================

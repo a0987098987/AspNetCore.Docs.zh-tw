@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/deployment/tutorial-signalr-self-host
-title: "教學課程： 自我裝載 SignalR |Microsoft 文件"
+title: 教學課程： 自我裝載 SignalR |Microsoft 文件
 author: pfletcher
-description: "本教學課程會示範如何建立自我裝載的 SignalR 2 伺服器，以及如何使用 JavaScript 用戶端連線到它。 教學課程 V 中使用的軟體版本..."
+description: 本教學課程會示範如何建立自我裝載的 SignalR 2 伺服器，以及如何使用 JavaScript 用戶端連線到它。 教學課程 V 中使用的軟體版本...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036774"
 ---
 <a name="tutorial-signalr-self-host"></a><span data-ttu-id="dac16-104">自我裝載的教學課程： SignalR</span><span class="sxs-lookup"><span data-stu-id="dac16-104">Tutorial: SignalR Self-Host</span></span>
 ====================
@@ -74,7 +75,7 @@ ms.lasthandoff: 01/24/2018
 
 <span data-ttu-id="dac16-136">在本教學課程中，您會在主控台應用程式，建立裝載的伺服器，但是伺服器可以裝載於任何類型的處理程序，例如 Windows 服務或 Azure 背景工作角色。</span><span class="sxs-lookup"><span data-stu-id="dac16-136">In this tutorial, you'll create a server that's hosted in a console application, but the server can be hosted in any sort of process, such as a Windows service or Azure worker role.</span></span> <span data-ttu-id="dac16-137">裝載 Windows 服務中的 SignalR 伺服器的範例程式碼，請參閱[Self-Hosting Windows 服務中的 SignalR](https://code.msdn.microsoft.com/SignalR-self-hosted-in-6ff7e6c3)。</span><span class="sxs-lookup"><span data-stu-id="dac16-137">For sample code for hosting a SignalR server in a Windows Service, see [Self-Hosting SignalR in a Windows Service](https://code.msdn.microsoft.com/SignalR-self-hosted-in-6ff7e6c3).</span></span>
 
-1. <span data-ttu-id="dac16-138">系統管理員權限開啟 Visual Studio 2013。</span><span class="sxs-lookup"><span data-stu-id="dac16-138">Open Visual Studio 2013 with administrator privileges.</span></span> <span data-ttu-id="dac16-139">選取**檔案**，**新專案**。</span><span class="sxs-lookup"><span data-stu-id="dac16-139">Select **File**, **New Project**.</span></span> <span data-ttu-id="dac16-140">選取**Windows**下**Visual C#**節點**範本**窗格，然後選取**主控台應用程式**範本。</span><span class="sxs-lookup"><span data-stu-id="dac16-140">Select **Windows** under the **Visual C#** node in the **Templates** pane, and select the **Console Application** template.</span></span> <span data-ttu-id="dac16-141">將新專案命名為"SignalRSelfHost 」，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="dac16-141">Name the new project "SignalRSelfHost" and click **OK**.</span></span>
+1. <span data-ttu-id="dac16-138">系統管理員權限開啟 Visual Studio 2013。</span><span class="sxs-lookup"><span data-stu-id="dac16-138">Open Visual Studio 2013 with administrator privileges.</span></span> <span data-ttu-id="dac16-139">選取**檔案**，**新專案**。</span><span class="sxs-lookup"><span data-stu-id="dac16-139">Select **File**, **New Project**.</span></span> <span data-ttu-id="dac16-140">選取**Windows**下**Visual C#** 節點**範本**窗格，然後選取**主控台應用程式**範本。</span><span class="sxs-lookup"><span data-stu-id="dac16-140">Select **Windows** under the **Visual C#** node in the **Templates** pane, and select the **Console Application** template.</span></span> <span data-ttu-id="dac16-141">將新專案命名為"SignalRSelfHost 」，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="dac16-141">Name the new project "SignalRSelfHost" and click **OK**.</span></span>
 
     ![](tutorial-signalr-self-host/_static/image1.png)
 2. <span data-ttu-id="dac16-142">選取以開啟 [程式庫封裝管理員] 主控台**工具**，**程式庫套件管理員**， **Package Manager Console**。</span><span class="sxs-lookup"><span data-stu-id="dac16-142">Open the library package manager console by selecting **Tools**, **Library Package Manager**, **Package Manager Console**.</span></span>

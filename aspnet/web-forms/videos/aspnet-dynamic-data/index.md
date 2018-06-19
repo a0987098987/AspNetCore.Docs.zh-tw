@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/index
-title: "ASP.NET 動態資料 |Microsoft 文件"
+title: ASP.NET 動態資料 |Microsoft 文件
 author: rick-anderson
-description: "如何建立 scaffold 自動知道如何執行資料存取的應用程式使用 ASP.NET Dynamic Data。"
+description: 如何建立 scaffold 自動知道如何執行資料存取的應用程式使用 ASP.NET Dynamic Data。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/aspnet-dynamic-data
 msc.type: chapter
 ms.openlocfilehash: a2fc937d18572ac2e1bc41cd28b98569a2490a61
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522507"
 ---
 <a name="aspnet-dynamic-data"></a><span data-ttu-id="e525c-103">ASP.NET Dynamic Data</span><span class="sxs-lookup"><span data-stu-id="e525c-103">ASP.NET Dynamic Data</span></span>
 ====================

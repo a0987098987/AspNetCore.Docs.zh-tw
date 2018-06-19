@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-multiple-file-uploads-in-aspnet-1
-title: "[如何:] 多個檔案上傳中 ASP.NET 1 |Microsoft 文件"
+title: '[如何:] 多個檔案上傳中 ASP.NET 1 |Microsoft 文件'
 author: JoeStagner
-description: "在這段影片我會詳細說明多個檔案上傳至 ASP.NET 應用程式。"
+description: 在這段影片我會詳細說明多個檔案上傳至 ASP.NET 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528177"
 ---
 <a name="how-do-i--multiple-file-uploads-in-aspnet-1"></a><span data-ttu-id="f8e4e-103">[如何:] ASP.NET 1 中的多個檔案上傳</span><span class="sxs-lookup"><span data-stu-id="f8e4e-103">[How Do I:]  Multiple File Uploads in ASP.NET 1</span></span>
 ====================

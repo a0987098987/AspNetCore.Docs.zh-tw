@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/index
-title: "進階資料存取案例 |Microsoft 文件"
+title: 進階資料存取案例 |Microsoft 文件
 author: rick-anderson
-description: "這些教學課程涵蓋如何使用預存程序和計算資料行、 如何使用聯結資料庫的資料表，以及如何加密資料的連接資訊..."
+description: 這些教學課程涵蓋如何使用預存程序和計算資料行、 如何使用聯結資料庫的資料表，以及如何加密資料的連接資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios
 msc.type: chapter
 ms.openlocfilehash: e773ced66465ab99e9b662d84e1cdb8e607918e7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512287"
 ---
 <a name="advanced-data-access-scenarios"></a><span data-ttu-id="81834-103">進階的資料存取案例</span><span class="sxs-lookup"><span data-stu-id="81834-103">Advanced Data Access Scenarios</span></span>
 ====================

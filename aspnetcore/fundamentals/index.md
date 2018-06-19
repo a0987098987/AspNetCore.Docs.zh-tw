@@ -15,6 +15,7 @@ ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34233306"
 ---
 # <a name="aspnet-core-fundamentals"></a><span data-ttu-id="a15e3-103">ASP.NET Core 基本概念</span><span class="sxs-lookup"><span data-stu-id="a15e3-103">ASP.NET Core fundamentals</span></span>
 

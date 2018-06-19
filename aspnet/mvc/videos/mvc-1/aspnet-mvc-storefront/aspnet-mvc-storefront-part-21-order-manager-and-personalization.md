@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878473"
 ---
 <a name="aspnet-mvc-storefront-part-21-order-manager-and-personalization"></a><span data-ttu-id="05308-104">ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化</span><span class="sxs-lookup"><span data-stu-id="05308-104">ASP.NET MVC Storefront Part 21: Order Manager and Personalization</span></span>
 ====================

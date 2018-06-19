@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose
-title: "[如何:]擴充和自訂適用於特定用途的 ASP.NET 伺服器控制項 |Microsoft 文件"
+title: '[如何:]擴充和自訂適用於特定用途的 ASP.NET 伺服器控制項 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何擴充標準的 ASP.NET 伺服器控制項和自訂適用於特定用途。 特製化的控制項提供 c..."
+description: 在這個視訊 Chris Pels 將示範如何擴充標準的 ASP.NET 伺服器控制項和自訂適用於特定用途。 特製化的控制項提供 c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526497"
 ---
 <a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a><span data-ttu-id="793c6-104">[如何:]擴充和自訂適用於特定用途的 ASP.NET 伺服器控制項</span><span class="sxs-lookup"><span data-stu-id="793c6-104">[How Do I:] Extend and Customize an ASP.NET Server Control for a Specific Purpose</span></span>
 ====================

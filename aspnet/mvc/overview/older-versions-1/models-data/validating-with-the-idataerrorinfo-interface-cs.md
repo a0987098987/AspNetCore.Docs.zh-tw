@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870514"
 ---
 <a name="validating-with-the-idataerrorinfo-interface-c"></a><span data-ttu-id="5aa54-103">驗證與 IDataErrorInfo 介面 (C#)</span><span class="sxs-lookup"><span data-stu-id="5aa54-103">Validating with the IDataErrorInfo Interface (C#)</span></span>
 ====================

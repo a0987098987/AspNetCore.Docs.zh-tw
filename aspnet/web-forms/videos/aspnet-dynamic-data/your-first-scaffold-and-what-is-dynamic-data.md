@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886325"
 ---
 <a name="your-first-scaffold-and-what-is-dynamic-data"></a><span data-ttu-id="74188-104">您的第一個 Scaffold 以及什麼是動態的資料？</span><span class="sxs-lookup"><span data-stu-id="74188-104">Your First Scaffold and What is Dynamic Data?</span></span>
 ====================

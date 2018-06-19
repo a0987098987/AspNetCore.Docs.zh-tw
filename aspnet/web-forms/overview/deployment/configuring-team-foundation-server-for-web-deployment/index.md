@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/index
-title: "ASP.NET 4-企業部署系列 3 設定 TFS |Microsoft 文件"
+title: ASP.NET 4-企業部署系列 3 設定 TFS |Microsoft 文件
 author: rick-anderson
-description: "本教學課程將說明如何設定 Team Foundation Server (TFS) 2010年建置解決方案，並將 web 內容部署至各種目標環境。"
+description: 本教學課程將說明如何設定 Team Foundation Server (TFS) 2010年建置解決方案，並將 web 內容部署至各種目標環境。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server
 msc.type: chapter
 ms.openlocfilehash: e82bcc3d408a47233e2192d9dd9a56ecd06fbaa1
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515167"
 ---
 <a name="aspnet-4---enterprise-deployment-series-3-configuring-tfs"></a><span data-ttu-id="81a86-103">ASP.NET 4-企業部署系列 3 設定 TFS</span><span class="sxs-lookup"><span data-stu-id="81a86-103">ASP.NET 4 - Enterprise Deployment Series 3 Configuring TFS</span></span>
 ====================

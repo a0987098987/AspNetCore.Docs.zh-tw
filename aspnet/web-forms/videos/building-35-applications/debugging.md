@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/debugging
-title: "偵錯 |Microsoft 文件"
+title: 偵錯 |Microsoft 文件
 author: JoeStagner
-description: "描述： Visual Web Developer 初學者所設計和專家的開發人員，類似於提供豐富的偵錯經驗。 在這段影片 Joe 將導覽您透過 VW..."
+description: 描述： Visual Web Developer 初學者所設計和專家的開發人員，類似於提供豐富的偵錯經驗。 在這段影片 Joe 將導覽您透過 VW...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/30/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528147"
 ---
 <a name="debugging"></a><span data-ttu-id="9063d-104">偵錯</span><span class="sxs-lookup"><span data-stu-id="9063d-104">Debugging</span></span>
 ====================

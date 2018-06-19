@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870098"
 ---
 <a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a><span data-ttu-id="03cdc-105">如何： 建立 MVC 應用程式的自訂 HTML Helper？</span><span class="sxs-lookup"><span data-stu-id="03cdc-105">How Do I: Create a Custom HTML Helper for an MVC Application?</span></span>
 ====================

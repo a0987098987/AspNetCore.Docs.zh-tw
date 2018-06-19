@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868395"
 ---
 <a name="using-hovermenu-with-a-repeater-control-vb"></a><span data-ttu-id="c0dd9-103">使用 HoverMenu 與中繼器控制項 (VB)</span><span class="sxs-lookup"><span data-stu-id="c0dd9-103">Using HoverMenu with a Repeater Control (VB)</span></span>
 ====================

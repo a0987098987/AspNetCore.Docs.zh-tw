@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/index
-title: "主要/詳細資料 |Microsoft 文件"
+title: 主要/詳細資料 |Microsoft 文件
 author: rick-anderson
-description: "這些教學課程會示範如何顯示在下拉式清單和詳細資料 GridView 控制項中的主要記錄。"
+description: 這些教學課程會示範如何顯示在下拉式清單和詳細資料 GridView 控制項中的主要記錄。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/masterdetail
 msc.type: chapter
 ms.openlocfilehash: d0e8193c008f5457a62cd009873883acc0c5c237
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514437"
 ---
 <a name="masterdetail"></a><span data-ttu-id="e73e2-103">主要/詳細資料</span><span class="sxs-lookup"><span data-stu-id="e73e2-103">Master/Detail</span></span>
 ====================

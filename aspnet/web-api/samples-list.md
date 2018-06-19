@@ -1,8 +1,8 @@
 ---
 uid: web-api/samples-list
-title: "Web API 範例清單 |Microsoft 文件"
+title: Web API 範例清單 |Microsoft 文件
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/18/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28038984"
 ---
 <a name="web-api-samples-list"></a><span data-ttu-id="2b01c-102">Web API 範例清單</span><span class="sxs-lookup"><span data-stu-id="2b01c-102">Web API Samples List</span></span>
 ====================

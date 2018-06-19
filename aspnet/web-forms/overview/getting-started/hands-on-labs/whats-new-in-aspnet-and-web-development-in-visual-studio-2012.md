@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306828"
 ---
 <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a><span data-ttu-id="22883-103">在 ASP.NET 和 Visual Studio 2012 中的 Web 程式開發中最新消息</span><span class="sxs-lookup"><span data-stu-id="22883-103">What's New in ASP.NET and Web Development in Visual Studio 2012</span></span>
 ====================

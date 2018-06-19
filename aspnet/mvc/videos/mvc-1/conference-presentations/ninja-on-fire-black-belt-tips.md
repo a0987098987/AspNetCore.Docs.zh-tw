@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/ninja-on-fire-black-belt-tips
-title: "引發黑色輸送帶提示的忍者一樣 |Microsoft 文件"
+title: 引發黑色輸送帶提示的忍者一樣 |Microsoft 文件
 author: Haacked
-description: "幾個秘訣和訣竅充分利用 ASP.NET MVC framework 快速入門的逐步解說，請參閱。"
+description: 幾個秘訣和訣竅充分利用 ASP.NET MVC framework 快速入門的逐步解說，請參閱。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503897"
 ---
 <a name="ninja-on-fire-black-belt-tips"></a><span data-ttu-id="24b9c-103">引發黑色輸送帶提示上的忍者一樣。</span><span class="sxs-lookup"><span data-stu-id="24b9c-103">Ninja on Fire Black Belt Tips</span></span>
 ====================

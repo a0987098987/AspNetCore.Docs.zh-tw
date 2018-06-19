@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871658"
 ---
 <a name="picking-one-animation-out-of-a-list-c"></a><span data-ttu-id="18927-104">挑選一個動畫，從清單中 (C#)</span><span class="sxs-lookup"><span data-stu-id="18927-104">Picking One Animation Out Of a List (C#)</span></span>
 ====================

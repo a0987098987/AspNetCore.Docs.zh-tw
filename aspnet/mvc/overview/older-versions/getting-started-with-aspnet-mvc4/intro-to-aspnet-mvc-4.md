@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869045"
 ---
 <a name="intro-to-aspnet-mvc-4"></a><span data-ttu-id="a74e1-104">ASP.NET MVC 4 簡介</span><span class="sxs-lookup"><span data-stu-id="a74e1-104">Intro to ASP.NET MVC 4</span></span>
 ====================

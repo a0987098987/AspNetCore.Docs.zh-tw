@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/advanced/index
-title: "進階主題的 SignalR |Microsoft 文件"
+title: 進階主題的 SignalR |Microsoft 文件
 author: rick-anderson
-description: "SignalR 文件-進階主題。"
+description: SignalR 文件-進階主題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/19/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /signalr/overview/advanced
 msc.type: chapter
 ms.openlocfilehash: dffeb2d91c034ca87732cbdd0784e22a32b7b7cd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503547"
 ---
 <a name="signalr-advanced-topics"></a><span data-ttu-id="74839-103">SignalR 進階主題</span><span class="sxs-lookup"><span data-stu-id="74839-103">SignalR Advanced Topics</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30869591"
 ---
 <a name="adding-a-view"></a><span data-ttu-id="b42c2-104">加入的檢視</span><span class="sxs-lookup"><span data-stu-id="b42c2-104">Adding a View</span></span>
 ====================

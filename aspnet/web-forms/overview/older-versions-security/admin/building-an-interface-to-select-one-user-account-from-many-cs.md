@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890667"
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-c"></a><span data-ttu-id="c14a7-104">建立介面，以選取一個使用者帳戶從許多 (C#)</span><span class="sxs-lookup"><span data-stu-id="c14a7-104">Building an Interface to Select One User Account from Many (C#)</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-customize-my-site-with-profiles-and-themes
-title: "[如何:]自訂 我的站台與設定檔和佈景主題嗎？ | Microsoft Docs"
+title: '[如何:]自訂 我的站台與設定檔和佈景主題嗎？ | Microsoft Docs'
 author: microsoft
-description: "了解如何使用設定檔來收集每個使用者的設定資訊，並套用擴充一致的外觀及操作整個網站的佈景主題。"
+description: 了解如何使用設定檔來收集每個使用者的設定資訊，並套用擴充一致的外觀及操作整個網站的佈景主題。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/06/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526187"
 ---
 <a name="how-do-i-customize-my-site-with-profiles-and-themes"></a><span data-ttu-id="e83bd-104">[如何:]自訂 我的站台與設定檔和佈景主題嗎？</span><span class="sxs-lookup"><span data-stu-id="e83bd-104">[How Do I:] Customize my Site with Profiles and Themes?</span></span>
 ====================

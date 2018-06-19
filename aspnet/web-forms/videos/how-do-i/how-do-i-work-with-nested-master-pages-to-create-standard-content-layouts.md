@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts
-title: "[如何:]使用巢狀主版頁面建立標準的內容配置 |Microsoft 文件"
+title: '[如何:]使用巢狀主版頁面建立標準的內容配置 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 會示範如何使用巢狀主版頁面建立個別的主版頁面，代表標準內容的不同版面配置 w..."
+description: 在這個視訊 Chris Pels 會示範如何使用巢狀主版頁面建立個別的主版頁面，代表標準內容的不同版面配置 w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525957"
 ---
 <a name="how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts"></a><span data-ttu-id="1b755-103">[如何:]使用巢狀主版頁面，以建立內容的標準版面配置</span><span class="sxs-lookup"><span data-stu-id="1b755-103">[How Do I:] Work with Nested Master Pages to Create Standard Content Layouts</span></span>
 ====================

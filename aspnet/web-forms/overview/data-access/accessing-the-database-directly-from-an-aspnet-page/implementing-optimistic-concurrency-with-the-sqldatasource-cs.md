@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876159"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a><span data-ttu-id="3ce3b-103">使用 SqlDataSource (C#) 實作開放式並行存取</span><span class="sxs-lookup"><span data-stu-id="3ce3b-103">Implementing Optimistic Concurrency with the SqlDataSource (C#)</span></span>
 ====================

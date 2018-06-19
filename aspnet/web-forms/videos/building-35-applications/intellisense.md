@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/intellisense
-title: "IntelliSense |Microsoft 文件"
+title: IntelliSense |Microsoft 文件
 author: JoeStagner
-description: "IntelliSense 是適用於這兩個學習.NET 程式設計，以及加速您的程式碼撰寫效率的重要 Visual Studio 功能。 這段影片將介紹..."
+description: IntelliSense 是適用於這兩個學習.NET 程式設計，以及加速您的程式碼撰寫效率的重要 Visual Studio 功能。 這段影片將介紹...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521197"
 ---
 <a name="intellisense"></a><span data-ttu-id="46585-104">IntelliSense</span><span class="sxs-lookup"><span data-stu-id="46585-104">IntelliSense</span></span>
 ====================

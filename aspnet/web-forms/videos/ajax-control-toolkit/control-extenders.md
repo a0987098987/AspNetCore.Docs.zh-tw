@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883764"
 ---
 <a name="control-extenders"></a><span data-ttu-id="968ba-103">控制項擴充項</span><span class="sxs-lookup"><span data-stu-id="968ba-103">Control Extenders</span></span>
 ====================

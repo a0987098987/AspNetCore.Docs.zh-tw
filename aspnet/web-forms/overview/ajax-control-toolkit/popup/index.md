@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/index
-title: "快顯視窗 |Microsoft 文件"
+title: 快顯視窗 |Microsoft 文件
 author: rick-anderson
-description: "本教學課程會示範如何使用快顯視窗控制項來顯示快顯視窗，啟動任何其他控制項時。"
+description: 本教學課程會示範如何使用快顯視窗控制項來顯示快顯視窗，啟動任何其他控制項時。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup
 msc.type: chapter
 ms.openlocfilehash: f0d9ab97c0d04b0fd6b8798d08676755bda43cdf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510577"
 ---
 <a name="popup"></a><span data-ttu-id="b5324-103">快顯</span><span class="sxs-lookup"><span data-stu-id="b5324-103">Popup</span></span>
 ====================

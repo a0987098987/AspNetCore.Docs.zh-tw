@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893273"
 ---
 <a name="using-the-load-test-agent"></a><span data-ttu-id="b4075-104">使用負載測試代理程式</span><span class="sxs-lookup"><span data-stu-id="b4075-104">Using the Load Test Agent</span></span>
 ====================

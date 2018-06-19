@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-persist-the-state-of-a-user-control-during-a-postback
-title: "[如何]: 將使用者控制項的狀態保存在回傳期間 |Microsoft 文件"
+title: '[如何]: 將使用者控制項的狀態保存在回傳期間 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何保存使用者控制項中的一個或多個物件的狀態。 首先，會建立代表 abilit 使用者控制項..."
+description: 在這個視訊 Chris Pels 示範如何保存使用者控制項中的一個或多個物件的狀態。 首先，會建立代表 abilit 使用者控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2009
@@ -17,8 +17,10 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525967"
 ---
-<a name="how-do-i-persist-the-state-of-a-user-control-during-a-postback"></a><span data-ttu-id="87e2a-104">[如何]: 將使用者控制項的狀態保存在回傳期間</span><span class="sxs-lookup"><span data-stu-id="87e2a-104">[How Do I]: Persist the State of a User Control During a Postback</span></span>
+<a name="how-do-i-persist-the-state-of-a-user-control-during-a-postback"></a>[如何]: 將使用者控制項的狀態保存在回傳期間
+[How Do I]: Persist the State of a User Control During a Postback
 ====================
 <span data-ttu-id="87e2a-105">由[Chris Pels](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="87e2a-105">by [Chris Pels](https://twitter.com/chrispels)</span></span>
 

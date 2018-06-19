@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868239"
 ---
 <a name="validating-with-a-service-layer-vb"></a><span data-ttu-id="d8f8b-104">驗證與服務層 (VB)</span><span class="sxs-lookup"><span data-stu-id="d8f8b-104">Validating with a Service Layer (VB)</span></span>
 ====================

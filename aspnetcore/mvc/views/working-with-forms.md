@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32741124"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a><span data-ttu-id="8a5e7-103">ASP.NET Core 表單中的標籤協助程式</span><span class="sxs-lookup"><span data-stu-id="8a5e7-103">Tag Helpers in forms in ASP.NET Core</span></span>
 

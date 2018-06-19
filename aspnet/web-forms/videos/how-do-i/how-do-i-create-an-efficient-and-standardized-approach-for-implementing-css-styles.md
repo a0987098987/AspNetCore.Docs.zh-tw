@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles
-title: "如何： 建立有效率且標準化的方法實作的 CSS 樣式？ | Microsoft Docs"
+title: 如何： 建立有效率且標準化的方法實作的 CSS 樣式？ | Microsoft Docs
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何組織和實作提供標準化的外觀及操作至網站的 CSS 樣式。 此外，樣式是..."
+description: 在這個視訊 Chris Pels 示範如何組織和實作提供標準化的外觀及操作至網站的 CSS 樣式。 此外，樣式是...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/15/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521897"
 ---
 <a name="how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles"></a><span data-ttu-id="90661-105">如何： 建立有效率且標準化的方法實作的 CSS 樣式？</span><span class="sxs-lookup"><span data-stu-id="90661-105">How Do I: Create an Efficient and Standardized Approach for Implementing CSS Styles?</span></span>
 ====================

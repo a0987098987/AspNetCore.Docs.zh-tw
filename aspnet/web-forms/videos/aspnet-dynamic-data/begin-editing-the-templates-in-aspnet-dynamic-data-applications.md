@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883303"
 ---
 <a name="begin-editing-the-templates-in-aspnet-dynamic-data-applications"></a><span data-ttu-id="3a455-103">開始編輯 ASP.NET 動態資料的應用程式中的範本</span><span class="sxs-lookup"><span data-stu-id="3a455-103">Begin Editing the Templates in ASP.NET Dynamic Data Applications</span></span>
 ====================

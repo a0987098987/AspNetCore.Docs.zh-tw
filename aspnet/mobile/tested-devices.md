@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877836"
 ---
 <a name="aspnet-mobile-controls-tested-devices"></a><span data-ttu-id="dbc7f-104">ASP.NET 行動控制項已測試的裝置</span><span class="sxs-lookup"><span data-stu-id="dbc7f-104">ASP.NET Mobile Controls Tested Devices</span></span>
 ====================

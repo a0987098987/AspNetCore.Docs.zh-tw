@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/index
-title: "如何？ | Microsoft Docs"
+title: 如何？ | Microsoft Docs
 author: rick-anderson
-description: "如何執行各種不同的一般工作。"
+description: 如何執行各種不同的一般工作。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/how-do-i
 msc.type: chapter
 ms.openlocfilehash: 032183a08f05578c04af0fc2adac0d7535e95790
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526507"
 ---
 <a name="how-do-i"></a><span data-ttu-id="2d39d-104">如何？</span><span class="sxs-lookup"><span data-stu-id="2d39d-104">How Do I?</span></span>
 ====================

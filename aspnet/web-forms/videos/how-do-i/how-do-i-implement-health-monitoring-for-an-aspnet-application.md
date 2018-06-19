@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspnet-application
-title: "[如何:] 實作 ASP.NET 應用程式監視的健全狀況？ | Microsoft Docs"
+title: '[如何:] 實作 ASP.NET 應用程式監視的健全狀況？ | Microsoft Docs'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 將示範如何實作以取得詳細的執行階段資訊，ASP.NET 應用程式監視的健全狀況。 了解強大和..."
+description: 在這個視訊 Chris Pels 將示範如何實作以取得詳細的執行階段資訊，ASP.NET 應用程式監視的健全狀況。 了解強大和...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526247"
 ---
 <a name="how-do-i--implement-health-monitoring-for-an-aspnet-application"></a><span data-ttu-id="b4a08-105">[如何:] 實作 ASP.NET 應用程式監視的健全狀況？</span><span class="sxs-lookup"><span data-stu-id="b4a08-105">[How Do I:]  Implement Health Monitoring for an ASP.NET Application?</span></span>
 ====================

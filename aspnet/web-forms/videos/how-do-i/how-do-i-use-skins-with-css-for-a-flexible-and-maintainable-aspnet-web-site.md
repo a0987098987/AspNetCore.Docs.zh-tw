@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site
-title: "[如何:]使用 css 的面板，彈性和可維護的 ASP.NET 網頁站台 |Microsoft 文件"
+title: '[如何:]使用 css 的面板，彈性和可維護的 ASP.NET 網頁站台 |Microsoft 文件'
 author: rick-anderson
-description: "在這個視訊 Chris Pels 示範如何建立 ASP.NET 伺服器控制項的面板，並接著將 CSS 樣式以控制國 contr.外觀..."
+description: 在這個視訊 Chris Pels 示範如何建立 ASP.NET 伺服器控制項的面板，並接著將 CSS 樣式以控制國 contr.外觀...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/07/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521767"
 ---
 <a name="how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site"></a><span data-ttu-id="cb555-103">[如何:]使用 css 的面板，彈性和可維護的 ASP.NET 網頁站台</span><span class="sxs-lookup"><span data-stu-id="cb555-103">[How Do I:] Use Skins with CSS for a Flexible and Maintainable ASP.NET Web Site</span></span>
 ====================

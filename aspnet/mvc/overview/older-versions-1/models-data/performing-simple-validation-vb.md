@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869747"
 ---
 <a name="performing-simple-validation-vb"></a><span data-ttu-id="f7cfd-104">執行簡單驗證 (VB)</span><span class="sxs-lookup"><span data-stu-id="f7cfd-104">Performing Simple Validation (VB)</span></span>
 ====================

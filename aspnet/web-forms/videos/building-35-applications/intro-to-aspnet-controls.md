@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/intro-to-aspnet-controls
-title: "ASP.NET 控制項簡介 |Microsoft 文件"
+title: ASP.NET 控制項簡介 |Microsoft 文件
 author: JoeStagner
-description: "控制項導向的開發工作實際上可以提升開發產能。 這段影片提供標準的 ASP.NET 控制項的基本介紹。"
+description: 控制項導向的開發工作實際上可以提升開發產能。 這段影片提供標準的 ASP.NET 控制項的基本介紹。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520957"
 ---
 <a name="intro-to-aspnet-controls"></a><span data-ttu-id="fd907-104">ASP.NET 控制項簡介</span><span class="sxs-lookup"><span data-stu-id="fd907-104">Intro to ASP.NET Controls</span></span>
 ====================

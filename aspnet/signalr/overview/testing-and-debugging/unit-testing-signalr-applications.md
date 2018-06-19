@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870839"
 ---
 <a name="unit-testing-signalr-applications"></a><span data-ttu-id="c1a59-103">單元測試的 SignalR 應用程式</span><span class="sxs-lookup"><span data-stu-id="c1a59-103">Unit Testing SignalR Applications</span></span>
 ====================
@@ -64,7 +65,7 @@ ms.lasthandoff: 04/06/2018
 3. <span data-ttu-id="c1a59-128">如果您使用下載的入門應用程式版本，開啟**Package Manager Console**按一下**還原**SignalR 封裝加入專案。</span><span class="sxs-lookup"><span data-stu-id="c1a59-128">If you are using the download version of the Getting Started application, open **Package Manager Console** and click **Restore** to add the SignalR package to the project.</span></span>
 
     ![還原封裝](unit-testing-signalr-applications/_static/image1.png)
-4. <span data-ttu-id="c1a59-130">將專案加入至單元測試的方案。</span><span class="sxs-lookup"><span data-stu-id="c1a59-130">Add a project to the solution for the unit test.</span></span> <span data-ttu-id="c1a59-131">以滑鼠右鍵按一下方案中的**方案總管 中**選取**新增**，**新的專案...**.在下**C#**節點中，選取**Windows**節點。</span><span class="sxs-lookup"><span data-stu-id="c1a59-131">Right-click your solution in **Solution Explorer** and select **Add**, **New Project...**. Under the **C#** node, select the **Windows** node.</span></span> <span data-ttu-id="c1a59-132">選取**類別庫**。</span><span class="sxs-lookup"><span data-stu-id="c1a59-132">Select **Class Library**.</span></span> <span data-ttu-id="c1a59-133">將新專案**TestLibrary**按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="c1a59-133">Name the new project **TestLibrary** and click **OK**.</span></span>
+4. <span data-ttu-id="c1a59-130">將專案加入至單元測試的方案。</span><span class="sxs-lookup"><span data-stu-id="c1a59-130">Add a project to the solution for the unit test.</span></span> <span data-ttu-id="c1a59-131">以滑鼠右鍵按一下方案中的**方案總管 中**選取**新增**，**新的專案...**.在下**C#** 節點中，選取**Windows**節點。</span><span class="sxs-lookup"><span data-stu-id="c1a59-131">Right-click your solution in **Solution Explorer** and select **Add**, **New Project...**. Under the **C#** node, select the **Windows** node.</span></span> <span data-ttu-id="c1a59-132">選取**類別庫**。</span><span class="sxs-lookup"><span data-stu-id="c1a59-132">Select **Class Library**.</span></span> <span data-ttu-id="c1a59-133">將新專案**TestLibrary**按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="c1a59-133">Name the new project **TestLibrary** and click **OK**.</span></span>
 
     ![建立測試程式庫](unit-testing-signalr-applications/_static/image2.png)
 5. <span data-ttu-id="c1a59-135">在測試程式庫專案中加入 SignalRChat 專案的參考。</span><span class="sxs-lookup"><span data-stu-id="c1a59-135">Add a reference in the test library project to the SignalRChat project.</span></span> <span data-ttu-id="c1a59-136">以滑鼠右鍵按一下**TestLibrary**專案，然後選取**新增**，**參考...**.選取**專案**節點下的**方案**節點，然後核取**SignalRChat**。</span><span class="sxs-lookup"><span data-stu-id="c1a59-136">Right-click the **TestLibrary** project and select **Add**, **Reference...**. Select the **Projects** node under the **Solution** node, and check **SignalRChat**.</span></span> <span data-ttu-id="c1a59-137">按一下 [確定 **Deploying Office Solutions**]。</span><span class="sxs-lookup"><span data-stu-id="c1a59-137">Click **OK**.</span></span>

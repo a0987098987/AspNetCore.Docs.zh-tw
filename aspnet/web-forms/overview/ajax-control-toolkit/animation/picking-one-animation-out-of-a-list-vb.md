@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872061"
 ---
 <a name="picking-one-animation-out-of-a-list-vb"></a><span data-ttu-id="4ade5-104">挑選清單 (VB) 超出一個動畫</span><span class="sxs-lookup"><span data-stu-id="4ade5-104">Picking One Animation Out Of a List (VB)</span></span>
 ====================

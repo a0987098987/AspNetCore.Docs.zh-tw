@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042218"
 ---
 <a name="working-with-groups-in-signalr"></a><span data-ttu-id="4929e-103">使用 SignalR 中的群組</span><span class="sxs-lookup"><span data-stu-id="4929e-103">Working with Groups in SignalR</span></span>
 ====================

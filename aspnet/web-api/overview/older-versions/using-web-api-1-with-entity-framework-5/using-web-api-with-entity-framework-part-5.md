@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873806"
 ---
 <a name="part-5-creating-a-dynamic-ui-with-knockoutjs"></a><span data-ttu-id="f85b4-102">第 5 部分： 使用解 Knockout.js 建立動態 UI</span><span class="sxs-lookup"><span data-stu-id="f85b4-102">Part 5: Creating a Dynamic UI with Knockout.js</span></span>
 ====================

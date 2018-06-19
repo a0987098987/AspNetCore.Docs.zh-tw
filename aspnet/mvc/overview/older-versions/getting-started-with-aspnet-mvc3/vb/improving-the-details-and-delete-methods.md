@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869513"
 ---
 <a name="improving-the-details-and-delete-methods-vb"></a><span data-ttu-id="dcc85-103">改善的詳細資料和 Delete 方法 (VB)</span><span class="sxs-lookup"><span data-stu-id="dcc85-103">Improving the Details and Delete Methods (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873387"
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a><span data-ttu-id="48b6d-103">ASP.NET 識別： 使用 MySQL 儲存體使用 EntityFramework MySQL 提供者 (C#)</span><span class="sxs-lookup"><span data-stu-id="48b6d-103">ASP.NET Identity: Using MySQL Storage with an EntityFramework MySQL Provider (C#)</span></span>
 ====================
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/06/2018
   
    <span data-ttu-id="48b6d-136">[按一下以展開圖。</span><span class="sxs-lookup"><span data-stu-id="48b6d-136">[Click the following image to expand it.</span></span> <span data-ttu-id="48b6d-137">]</span><span class="sxs-lookup"><span data-stu-id="48b6d-137">]</span></span>  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image2.jpg)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image1.jpg)
-3. <span data-ttu-id="48b6d-138">當**新專案**] 對話方塊隨即顯示，接著展開**Visual C#**在範本清單，然後按一下 [ **Web**，並選取**ASP.NET Web 應用程式**.</span><span class="sxs-lookup"><span data-stu-id="48b6d-138">When the **New Project** dialog box is displayed, expand **Visual C#** in the list of templates, then click **Web**, and select **ASP.NET Web Application**.</span></span> <span data-ttu-id="48b6d-139">命名您的專案**IdentityMySQLDemo** ，然後按一下 **確定**:</span><span class="sxs-lookup"><span data-stu-id="48b6d-139">Name your project **IdentityMySQLDemo** and then click **OK**:</span></span>  
+3. <span data-ttu-id="48b6d-138">當**新專案**] 對話方塊隨即顯示，接著展開**Visual C#** 在範本清單，然後按一下 [ **Web**，並選取**ASP.NET Web 應用程式**.</span><span class="sxs-lookup"><span data-stu-id="48b6d-138">When the **New Project** dialog box is displayed, expand **Visual C#** in the list of templates, then click **Web**, and select **ASP.NET Web Application**.</span></span> <span data-ttu-id="48b6d-139">命名您的專案**IdentityMySQLDemo** ，然後按一下 **確定**:</span><span class="sxs-lookup"><span data-stu-id="48b6d-139">Name your project **IdentityMySQLDemo** and then click **OK**:</span></span>  
   
    <span data-ttu-id="48b6d-140">[按一下以展開圖。</span><span class="sxs-lookup"><span data-stu-id="48b6d-140">[Click the following image to expand it.</span></span> <span data-ttu-id="48b6d-141">]</span><span class="sxs-lookup"><span data-stu-id="48b6d-141">]</span></span>  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)

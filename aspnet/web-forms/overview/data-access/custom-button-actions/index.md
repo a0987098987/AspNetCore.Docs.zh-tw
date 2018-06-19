@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions/index
-title: "自訂按鈕動作 |Microsoft 文件"
+title: 自訂按鈕動作 |Microsoft 文件
 author: rick-anderson
-description: "這組簡短教學課程會示範如何將按鈕加入到 GridView 或 DetailsView 控制項可以執行您的應用程式需要任何動作。"
+description: 這組簡短教學課程會示範如何將按鈕加入到 GridView 或 DetailsView 控制項可以執行您的應用程式需要任何動作。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/custom-button-actions
 msc.type: chapter
 ms.openlocfilehash: 5da10542b7797a90f6019df2f3c94603be7276f3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512627"
 ---
 <a name="custom-button-actions"></a><span data-ttu-id="00df9-103">自訂按鈕動作</span><span class="sxs-lookup"><span data-stu-id="00df9-103">Custom Button Actions</span></span>
 ====================

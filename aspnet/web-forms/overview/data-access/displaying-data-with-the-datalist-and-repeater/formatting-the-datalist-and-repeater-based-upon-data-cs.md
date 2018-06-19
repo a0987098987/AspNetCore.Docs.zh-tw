@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876211"
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-c"></a><span data-ttu-id="5e51d-103">格式化 DataList 和中繼器根據資料 (C#)</span><span class="sxs-lookup"><span data-stu-id="5e51d-103">Formatting the DataList and Repeater Based Upon Data (C#)</span></span>
 ====================

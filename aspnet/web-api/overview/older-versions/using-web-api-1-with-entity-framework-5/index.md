@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/index
-title: "ASP.NET Web API 1 使用 Entity Framework 5 |Microsoft 文件"
+title: ASP.NET Web API 1 使用 Entity Framework 5 |Microsoft 文件
 author: rick-anderson
-description: "如何建立使用 Entity Framework 資料庫持續性的 Web API 1 應用程式。"
+description: 如何建立使用 Entity Framework 資料庫持續性的 Web API 1 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-fram
 msc.type: chapter
 ms.openlocfilehash: 30fc6619da6ac16599eed9de18aaf558c248e980
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508117"
 ---
 <a name="using-aspnet-web-api-1-with-entity-framework-5"></a><span data-ttu-id="3f538-103">使用 Entity Framework 5 中的 ASP.NET Web API 1</span><span class="sxs-lookup"><span data-stu-id="3f538-103">Using ASP.NET Web API 1 with Entity Framework 5</span></span>
 ====================

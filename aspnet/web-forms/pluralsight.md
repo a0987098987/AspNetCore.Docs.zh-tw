@@ -1,8 +1,8 @@
 ---
 uid: web-forms/pluralsight
-title: "Web Form 從 Pluralsight 訓練影片 |Microsoft 文件"
+title: Web Form 從 Pluralsight 訓練影片 |Microsoft 文件
 author: rick-anderson
-description: "Web Form 視訊訓練 Pluralsight 這個 ASP.NET Web Form 開發課程為您介紹幾個關鍵技術，您需要知道為.NET 供開發..."
+description: Web Form 視訊訓練 Pluralsight 這個 ASP.NET Web Form 開發課程為您介紹幾個關鍵技術，您需要知道為.NET 供開發...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/16/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520137"
 ---
 <a name="web-forms-video-training-from-pluralsight"></a><span data-ttu-id="e612d-103">Web Form 從 Pluralsight 訓練影片</span><span class="sxs-lookup"><span data-stu-id="e612d-103">Web Forms Video Training from Pluralsight</span></span>
 ====================

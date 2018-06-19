@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740370"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a><span data-ttu-id="9c80d-103">ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8</span><span class="sxs-lookup"><span data-stu-id="9c80d-103">Razor Pages with EF Core in ASP.NET Core - Update Related Data - 7 of 8</span></span>
 

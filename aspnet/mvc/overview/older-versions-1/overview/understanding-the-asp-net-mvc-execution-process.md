@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
-title: "了解 ASP.NET MVC 執行程序 |Microsoft 文件"
+title: 了解 ASP.NET MVC 執行程序 |Microsoft 文件
 author: microsoft
-description: "了解 ASP.NET MVC framework 如何處理逐步瀏覽器要求。"
+description: 了解 ASP.NET MVC framework 如何處理逐步瀏覽器要求。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500727"
 ---
 <a name="understanding-the-aspnet-mvc-execution-process"></a><span data-ttu-id="44c72-103">了解 ASP.NET MVC 執行程序</span><span class="sxs-lookup"><span data-stu-id="44c72-103">Understanding the ASP.NET MVC Execution Process</span></span>
 ====================

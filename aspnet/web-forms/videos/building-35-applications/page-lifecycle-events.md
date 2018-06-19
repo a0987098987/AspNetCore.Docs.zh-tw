@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/page-lifecycle-events
-title: "頁面生命週期事件 |Microsoft 文件"
+title: 頁面生命週期事件 |Microsoft 文件
 author: JoeStagner
-description: "ASP.NET 提供一個非常豐富的事件處理機制攔截程序至 ASP.NET 網頁生命週期中的所有重要時間執行個體。 這段影片會列舉..."
+description: ASP.NET 提供一個非常豐富的事件處理機制攔截程序至 ASP.NET 網頁生命週期中的所有重要時間執行個體。 這段影片會列舉...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521597"
 ---
 <a name="page-lifecycle-events"></a><span data-ttu-id="fee98-104">頁面生命週期事件</span><span class="sxs-lookup"><span data-stu-id="fee98-104">Page Lifecycle Events</span></span>
 ====================

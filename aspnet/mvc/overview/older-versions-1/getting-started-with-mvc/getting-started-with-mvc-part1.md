@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30868486"
 ---
 <a name="intro-to-aspnet-mvc"></a><span data-ttu-id="d29c1-104">ASP.NET MVC 簡介</span><span class="sxs-lookup"><span data-stu-id="d29c1-104">Intro to ASP.NET MVC</span></span>
 ====================

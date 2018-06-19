@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875041"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a><span data-ttu-id="eb016-104">檢查編輯方法與編輯檢視</span><span class="sxs-lookup"><span data-stu-id="eb016-104">Examining the Edit Methods and Edit View</span></span>
 ====================
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="eb016-108">在本節中，您將檢驗產生的動作方法和檢視電影控制站。</span><span class="sxs-lookup"><span data-stu-id="eb016-108">In this section, you'll examine the generated action methods and views for the movie controller.</span></span> <span data-ttu-id="eb016-109">然後您要加入自訂的搜尋網頁。</span><span class="sxs-lookup"><span data-stu-id="eb016-109">Then you'll add a custom search page.</span></span>
 
-<span data-ttu-id="eb016-110">執行應用程式，並瀏覽至`Movies`控制器藉由附加*/Movies*至您的瀏覽器的網址列中的 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-110">Run the application and browse to the `Movies` controller by appending */Movies* to the URL in the address bar of your browser.</span></span> <span data-ttu-id="eb016-111">將滑鼠指標**編輯**連結，查看它連結到的 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-111">Hold the mouse pointer over an **Edit** link to see the URL that it links to.</span></span>
+<span data-ttu-id="eb016-110">執行應用程式，並瀏覽至`Movies`控制器藉由附加 */Movies*至您的瀏覽器的網址列中的 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-110">Run the application and browse to the `Movies` controller by appending */Movies* to the URL in the address bar of your browser.</span></span> <span data-ttu-id="eb016-111">將滑鼠指標**編輯**連結，查看它連結到的 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-111">Hold the mouse pointer over an **Edit** link to see the URL that it links to.</span></span>
 
 ![EditLink_sm](examining-the-edit-methods-and-edit-view/_static/image1.png)
 
@@ -62,11 +63,11 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="eb016-139">Scaffold 的程式碼會使用數個*helper 方法*來簡化的 HTML 標記。</span><span class="sxs-lookup"><span data-stu-id="eb016-139">The scaffolded code uses several *helper methods* to streamline the HTML markup.</span></span> <span data-ttu-id="eb016-140">[ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Helper 會顯示欄位的名稱 (&quot;標題&quot;， &quot;ReleaseDate&quot;，&quot;類型&quot;，或&quot;價格&quot;).</span><span class="sxs-lookup"><span data-stu-id="eb016-140">The [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) helper displays the name of the field (&quot;Title&quot;, &quot;ReleaseDate&quot;, &quot;Genre&quot;, or &quot;Price&quot;).</span></span> <span data-ttu-id="eb016-141">[ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) Helper 可呈現 HTML`<input>`項目。</span><span class="sxs-lookup"><span data-stu-id="eb016-141">The [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) helper renders an HTML `<input>` element.</span></span> <span data-ttu-id="eb016-142">[ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Helper 會顯示所有與該屬性相關聯的驗證訊息。</span><span class="sxs-lookup"><span data-stu-id="eb016-142">The [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) helper displays any validation messages associated with that property.</span></span>
 
-<span data-ttu-id="eb016-143">執行應用程式，並瀏覽至*/Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-143">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="eb016-144">按一下 **Edit** 連結。</span><span class="sxs-lookup"><span data-stu-id="eb016-144">Click an **Edit** link.</span></span> <span data-ttu-id="eb016-145">在瀏覽器中，檢視頁面的原始檔。</span><span class="sxs-lookup"><span data-stu-id="eb016-145">In the browser, view the source for the page.</span></span> <span data-ttu-id="eb016-146">如下所示的 HTML 表單項目。</span><span class="sxs-lookup"><span data-stu-id="eb016-146">The HTML for the form element is shown below.</span></span>
+<span data-ttu-id="eb016-143">執行應用程式，並瀏覽至 */Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-143">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="eb016-144">按一下 **Edit** 連結。</span><span class="sxs-lookup"><span data-stu-id="eb016-144">Click an **Edit** link.</span></span> <span data-ttu-id="eb016-145">在瀏覽器中，檢視頁面的原始檔。</span><span class="sxs-lookup"><span data-stu-id="eb016-145">In the browser, view the source for the page.</span></span> <span data-ttu-id="eb016-146">如下所示的 HTML 表單項目。</span><span class="sxs-lookup"><span data-stu-id="eb016-146">The HTML for the form element is shown below.</span></span>
 
 [!code-html[Main](examining-the-edit-methods-and-edit-view/samples/sample5.html?highlight=7,10-11)]
 
-<span data-ttu-id="eb016-147">`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到*/電影/編輯*URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-147">The `<input>` elements are in an HTML `<form>` element whose `action` attribute is set to post to the */Movies/Edit* URL.</span></span> <span data-ttu-id="eb016-148">表單資料都將張貼至伺服器時**編輯**按鈕。</span><span class="sxs-lookup"><span data-stu-id="eb016-148">The form data will be posted to the server when the **Edit** button is clicked.</span></span>
+<span data-ttu-id="eb016-147">`<input>`項目會在 HTML`<form>`項目其`action`屬性設定為張貼到 */電影/編輯*URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-147">The `<input>` elements are in an HTML `<form>` element whose `action` attribute is set to post to the */Movies/Edit* URL.</span></span> <span data-ttu-id="eb016-148">表單資料都將張貼至伺服器時**編輯**按鈕。</span><span class="sxs-lookup"><span data-stu-id="eb016-148">The form data will be posted to the server when the **Edit** button is clicked.</span></span>
 
 ## <a name="processing-the-post-request"></a><span data-ttu-id="eb016-149">處理 POST 要求</span><span class="sxs-lookup"><span data-stu-id="eb016-149">Processing the POST Request</span></span>
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="adding-a-search-method-and-search-view"></a><span data-ttu-id="eb016-171">加入搜尋方法和搜尋檢視</span><span class="sxs-lookup"><span data-stu-id="eb016-171">Adding a Search Method and Search View</span></span>
 
-<span data-ttu-id="eb016-172">本節中您要加入`SearchIndex`動作方法，可讓您搜尋電影依類型或名稱。</span><span class="sxs-lookup"><span data-stu-id="eb016-172">In this section you'll add a `SearchIndex` action method that lets you search movies by genre or name.</span></span> <span data-ttu-id="eb016-173">這是可以透過*/電影/SearchIndex* URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-173">This will be available using the */Movies/SearchIndex* URL.</span></span> <span data-ttu-id="eb016-174">要求將會顯示包含使用者可以輸入以搜尋電影的輸入項目的 HTML 表單。</span><span class="sxs-lookup"><span data-stu-id="eb016-174">The request will display an HTML form that contains input elements that a user can enter in order to search for a movie.</span></span> <span data-ttu-id="eb016-175">當使用者提交表單時，動作方法會取得使用者所張貼的搜尋值，並使用值來搜尋資料庫。</span><span class="sxs-lookup"><span data-stu-id="eb016-175">When a user submits the form, the action method will get the search values posted by the user and use the values to search the database.</span></span>
+<span data-ttu-id="eb016-172">本節中您要加入`SearchIndex`動作方法，可讓您搜尋電影依類型或名稱。</span><span class="sxs-lookup"><span data-stu-id="eb016-172">In this section you'll add a `SearchIndex` action method that lets you search movies by genre or name.</span></span> <span data-ttu-id="eb016-173">這是可以透過 */電影/SearchIndex* URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-173">This will be available using the */Movies/SearchIndex* URL.</span></span> <span data-ttu-id="eb016-174">要求將會顯示包含使用者可以輸入以搜尋電影的輸入項目的 HTML 表單。</span><span class="sxs-lookup"><span data-stu-id="eb016-174">The request will display an HTML form that contains input elements that a user can enter in order to search for a movie.</span></span> <span data-ttu-id="eb016-175">當使用者提交表單時，動作方法會取得使用者所張貼的搜尋值，並使用值來搜尋資料庫。</span><span class="sxs-lookup"><span data-stu-id="eb016-175">When a user submits the form, the action method will get the search values posted by the user and use the values to search the database.</span></span>
 
 ## <a name="displaying-the-searchindex-form"></a><span data-ttu-id="eb016-176">顯示 SearchIndex 表單</span><span class="sxs-lookup"><span data-stu-id="eb016-176">Displaying the SearchIndex Form</span></span>
 
@@ -122,7 +123,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample12.cshtml)]
 
-<span data-ttu-id="eb016-199">執行應用程式，並瀏覽至*/電影/SearchIndex*。</span><span class="sxs-lookup"><span data-stu-id="eb016-199">Run the application and navigate to */Movies/SearchIndex*.</span></span> <span data-ttu-id="eb016-200">將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-200">Append a query string such as `?searchString=ghost` to the URL.</span></span> <span data-ttu-id="eb016-201">隨即顯示篩選過的電影。</span><span class="sxs-lookup"><span data-stu-id="eb016-201">The filtered movies are displayed.</span></span>
+<span data-ttu-id="eb016-199">執行應用程式，並瀏覽至 */電影/SearchIndex*。</span><span class="sxs-lookup"><span data-stu-id="eb016-199">Run the application and navigate to */Movies/SearchIndex*.</span></span> <span data-ttu-id="eb016-200">將查詢字串 (例如 `?searchString=ghost`) 附加至 URL。</span><span class="sxs-lookup"><span data-stu-id="eb016-200">Append a query string such as `?searchString=ghost` to the URL.</span></span> <span data-ttu-id="eb016-201">隨即顯示篩選過的電影。</span><span class="sxs-lookup"><span data-stu-id="eb016-201">The filtered movies are displayed.</span></span>
 
 ![SearchQryStr](examining-the-edit-methods-and-edit-view/_static/image6.png)
 
@@ -206,7 +207,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample24.cshtml?highlight=4)]
 
-<span data-ttu-id="eb016-247">執行應用程式，並瀏覽至*/電影/SearchIndex*。</span><span class="sxs-lookup"><span data-stu-id="eb016-247">Run the application and browse to */Movies/SearchIndex*.</span></span> <span data-ttu-id="eb016-248">內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。</span><span class="sxs-lookup"><span data-stu-id="eb016-248">Try a search by genre, by movie name, and by both criteria.</span></span>
+<span data-ttu-id="eb016-247">執行應用程式，並瀏覽至 */電影/SearchIndex*。</span><span class="sxs-lookup"><span data-stu-id="eb016-247">Run the application and browse to */Movies/SearchIndex*.</span></span> <span data-ttu-id="eb016-248">內容類型、 電影名稱，以及這兩個準則，請嘗試搜尋。</span><span class="sxs-lookup"><span data-stu-id="eb016-248">Try a search by genre, by movie name, and by both criteria.</span></span>
 
 ![](examining-the-edit-methods-and-edit-view/_static/image12.png)
 

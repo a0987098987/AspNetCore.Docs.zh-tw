@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/index
-title: "開始使用 ASP.NET Web API |Microsoft 文件"
+title: 開始使用 ASP.NET Web API |Microsoft 文件
 author: rick-anderson
-description: "深入了解有關 ASP.NET Web API ASP.NET Web API 是一種架構，可讓您更輕鬆地建立連線的用戶端，包括瀏覽器較大範圍的 HTTP 服務..."
+description: 深入了解有關 ASP.NET Web API ASP.NET Web API 是一種架構，可讓您更輕鬆地建立連線的用戶端，包括瀏覽器較大範圍的 HTTP 服務...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api
 msc.type: chapter
 ms.openlocfilehash: 31f697935a22bcdbc13055cf8ba5966930ef8fb9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506847"
 ---
 <a name="getting-started-with-aspnet-web-api"></a><span data-ttu-id="691c3-103">開始使用 ASP.NET Web API</span><span class="sxs-lookup"><span data-stu-id="691c3-103">Getting Started with ASP.NET Web API</span></span>
 ====================

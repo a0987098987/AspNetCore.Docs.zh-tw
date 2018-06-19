@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-pass-information-from-one-page-to-another-using-a-query-string
-title: "[如何:]從一頁的資訊傳遞至另一個使用查詢字串 |Microsoft 文件"
+title: '[如何:]從一頁的資訊傳遞至另一個使用查詢字串 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 會顯示如何資訊可以從傳送一頁到另一個使用查詢字串。 首先，請參閱如何建構中的查詢字串..."
+description: 在這段影片 Chris Pels 會顯示如何資訊可以從傳送一頁到另一個使用查詢字串。 首先，請參閱如何建構中的查詢字串...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521957"
 ---
 <a name="how-do-i-pass-information-from-one-page-to-another-using-a-query-string"></a><span data-ttu-id="24c27-104">[如何:]從一頁的資訊傳遞至另一個使用查詢字串</span><span class="sxs-lookup"><span data-stu-id="24c27-104">[How Do I:] Pass Information From One Page to Another Using a Query String</span></span>
 ====================

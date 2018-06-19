@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/index
-title: "較舊版本-Ajax Control Toolkit |Microsoft 文件"
+title: 較舊版本-Ajax Control Toolkit |Microsoft 文件
 author: rick-anderson
-description: "如何開始使用 Ajax Control Toolkit，以及如何使用的一些最受歡迎的控制項。 DevExpress 維護免費的開放來源 Ajax Contr...."
+description: 如何開始使用 Ajax Control Toolkit，以及如何使用的一些最受歡迎的控制項。 DevExpress 維護免費的開放來源 Ajax Contr....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: 75fef51d40352c4bd600bb63056f1d1d5c74cbd6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510847"
 ---
 <a name="older-versions---ajax-control-toolkit"></a><span data-ttu-id="f8130-104">較舊版本-Ajax Control Toolkit</span><span class="sxs-lookup"><span data-stu-id="f8130-104">Older Versions - Ajax Control Toolkit</span></span>
 ====================

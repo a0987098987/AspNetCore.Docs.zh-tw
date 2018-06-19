@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879305"
 ---
 <a name="create-the-javascript-client"></a><span data-ttu-id="ce0ef-102">建立 JavaScript 用戶端</span><span class="sxs-lookup"><span data-stu-id="ce0ef-102">Create the JavaScript Client</span></span>
 ====================

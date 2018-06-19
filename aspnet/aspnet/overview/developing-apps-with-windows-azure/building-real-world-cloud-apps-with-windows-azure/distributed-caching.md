@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868668"
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="c97f4-104">分散式快取 （建置真實世界雲端應用程式與 Azure）</span><span class="sxs-lookup"><span data-stu-id="c97f4-104">Distributed Caching (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

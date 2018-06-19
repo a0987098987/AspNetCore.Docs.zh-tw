@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893790"
 ---
 <a name="how-do-i-tune-web-application-performance-with-profiling"></a><span data-ttu-id="787b8-105">[如何:]調整 Web 應用程式效能，使用程式碼剖析嗎？</span><span class="sxs-lookup"><span data-stu-id="787b8-105">[How Do I:] Tune Web Application Performance with Profiling?</span></span>
 ====================

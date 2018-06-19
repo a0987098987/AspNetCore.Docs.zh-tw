@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "29793736"
 ---
 # <a name="aspnet-overview"></a><span data-ttu-id="cd03f-103">ASP.NET 概觀</span><span class="sxs-lookup"><span data-stu-id="cd03f-103">ASP.NET overview</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891776"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a><span data-ttu-id="e539f-104">表單驗證設定和進階的主題 (C#)</span><span class="sxs-lookup"><span data-stu-id="e539f-104">Forms Authentication Configuration and Advanced Topics (C#)</span></span>
 ====================

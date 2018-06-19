@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890927"
 ---
 <a name="understanding-aspnet-ajax-debugging-capabilities"></a><span data-ttu-id="bb4ed-104">了解 ASP.NET AJAX 偵錯功能</span><span class="sxs-lookup"><span data-stu-id="bb4ed-104">Understanding ASP.NET AJAX Debugging Capabilities</span></span>
 ====================

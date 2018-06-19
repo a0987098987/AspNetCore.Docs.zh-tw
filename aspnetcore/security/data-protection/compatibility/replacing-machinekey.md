@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30071596"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a><span data-ttu-id="438a8-103">取代 ASP.NET machineKey 中 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="438a8-103">Replace the ASP.NET machineKey in ASP.NET Core</span></span>
 

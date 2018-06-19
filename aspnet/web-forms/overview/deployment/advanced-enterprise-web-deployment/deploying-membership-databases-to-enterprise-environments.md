@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892474"
 ---
 <a name="deploying-membership-databases-to-enterprise-environments"></a><span data-ttu-id="114d8-103">將成員資格資料庫部署至企業環境</span><span class="sxs-lookup"><span data-stu-id="114d8-103">Deploying Membership Databases to Enterprise Environments</span></span>
 ====================

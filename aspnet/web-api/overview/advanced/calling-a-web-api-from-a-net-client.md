@@ -16,6 +16,7 @@ ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "32006153"
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a><span data-ttu-id="06c43-102">呼叫 Web API，從.NET 用戶端 (C#)</span><span class="sxs-lookup"><span data-stu-id="06c43-102">Call a Web API From a .NET Client (C#)</span></span>
 ====================

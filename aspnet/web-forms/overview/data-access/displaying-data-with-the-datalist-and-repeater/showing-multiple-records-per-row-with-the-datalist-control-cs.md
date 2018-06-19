@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891213"
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-c"></a><span data-ttu-id="6ff0d-103">顯示多個記錄，每個資料列與資料清單控制項 (C#)</span><span class="sxs-lookup"><span data-stu-id="6ff0d-103">Showing Multiple Records per Row with the DataList Control (C#)</span></span>
 ====================

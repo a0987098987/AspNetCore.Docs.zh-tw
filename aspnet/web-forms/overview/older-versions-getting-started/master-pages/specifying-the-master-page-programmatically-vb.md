@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890264"
 ---
 <a name="specifying-the-master-page-programmatically-vb"></a><span data-ttu-id="c2838-103">以程式設計方式指定主版頁面 (VB)</span><span class="sxs-lookup"><span data-stu-id="c2838-103">Specifying the Master Page Programmatically (VB)</span></span>
 ====================

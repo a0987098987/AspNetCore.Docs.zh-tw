@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070647"
 ---
 <a name="aspnet-web-forms-and-ajax-451"></a><span data-ttu-id="78cb6-102">ASP.NET Web Form 和 Ajax 4.5.1</span><span class="sxs-lookup"><span data-stu-id="78cb6-102">ASP.NET Web Forms and Ajax 4.5.1</span></span>
 ====================

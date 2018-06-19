@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077544"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a><span data-ttu-id="52f26-103">啟用跨原始要求 (CORS) 中 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="52f26-103">Enable Cross-Origin Requests (CORS) in ASP.NET Core</span></span>
 
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/22/2018
 
 [!code-csharp[](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
 
-<span data-ttu-id="52f26-132">**注意：**沒有尾端斜線，必須指定的 URL (`/`)。</span><span class="sxs-lookup"><span data-stu-id="52f26-132">**Note:** The URL must be specified without a trailing slash (`/`).</span></span> <span data-ttu-id="52f26-133">如果 URL 將會終止並`/`，比較會傳回`false`而且不會傳回不含標頭。</span><span class="sxs-lookup"><span data-stu-id="52f26-133">If the URL terminates with `/`, the comparison will return `false` and no header will be returned.</span></span>
+<span data-ttu-id="52f26-132">**注意：** 沒有尾端斜線，必須指定的 URL (`/`)。</span><span class="sxs-lookup"><span data-stu-id="52f26-132">**Note:** The URL must be specified without a trailing slash (`/`).</span></span> <span data-ttu-id="52f26-133">如果 URL 將會終止並`/`，比較會傳回`false`而且不會傳回不含標頭。</span><span class="sxs-lookup"><span data-stu-id="52f26-133">If the URL terminates with `/`, the comparison will return `false` and no header will be returned.</span></span>
 
 <span data-ttu-id="52f26-134">Lambda 會採用`CorsPolicyBuilder`物件。</span><span class="sxs-lookup"><span data-stu-id="52f26-134">The lambda takes a `CorsPolicyBuilder` object.</span></span> <span data-ttu-id="52f26-135">您可以找到一份[組態選項](#cors-policy-options)本主題稍後。</span><span class="sxs-lookup"><span data-stu-id="52f26-135">You'll find a list of the [configuration options](#cors-policy-options) later in this topic.</span></span> <span data-ttu-id="52f26-136">在此範例中的原則，允許跨原始要求從`http://example.com`和其他來源。</span><span class="sxs-lookup"><span data-stu-id="52f26-136">In this example, the policy allows cross-origin requests from `http://example.com` and no other origins.</span></span>
 

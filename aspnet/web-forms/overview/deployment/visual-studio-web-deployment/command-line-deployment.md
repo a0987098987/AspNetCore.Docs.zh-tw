@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890524"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a><span data-ttu-id="9aa16-103">使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署</span><span class="sxs-lookup"><span data-stu-id="9aa16-103">ASP.NET Web Deployment using Visual Studio: Command Line Deployment</span></span>
 ====================
@@ -90,7 +91,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="specifying-the-publish-profile"></a><span data-ttu-id="9aa16-144">指定發行設定檔</span><span class="sxs-lookup"><span data-stu-id="9aa16-144">Specifying the publish profile</span></span>
 
-<span data-ttu-id="9aa16-145">依名稱或完整路徑，您可以指定發行設定檔*.pubxml*檔案，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="9aa16-145">You can specify the publish profile by name or by the full path to the *.pubxml* file, as shown in the following example:</span></span>
+<span data-ttu-id="9aa16-145">依名稱或完整路徑，您可以指定發行設定檔 *.pubxml*檔案，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="9aa16-145">You can specify the publish profile by name or by the full path to the *.pubxml* file, as shown in the following example:</span></span>
 
 [!code-console[Main](command-line-deployment/samples/sample5.cmd?highlight=1)]
 
@@ -108,9 +109,9 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="deploy-to-staging"></a><span data-ttu-id="9aa16-156">部署到預備環境</span><span class="sxs-lookup"><span data-stu-id="9aa16-156">Deploy to staging</span></span>
 
-<span data-ttu-id="9aa16-157">若要部署至 Azure，您必須新增至命令列的密碼。</span><span class="sxs-lookup"><span data-stu-id="9aa16-157">To deploy to Azure, you must add the password to the command line.</span></span> <span data-ttu-id="9aa16-158">如果您在 Visual Studio 中的發行設定檔中儲存的密碼，它已加密形式儲存在您*。 pubxml.user*檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-158">If you saved the password in the publish profile in Visual Studio, it was stored in encrypted form in the your *.pubxml.user* file.</span></span> <span data-ttu-id="9aa16-159">當您執行命令列部署中，您必須傳遞命令列參數中的密碼，該檔案不會由 MSBuild 存取。</span><span class="sxs-lookup"><span data-stu-id="9aa16-159">That file is not accessed by MSBuild when you do a command line deployment, so you have to pass in the password in a command line parameter.</span></span>
+<span data-ttu-id="9aa16-157">若要部署至 Azure，您必須新增至命令列的密碼。</span><span class="sxs-lookup"><span data-stu-id="9aa16-157">To deploy to Azure, you must add the password to the command line.</span></span> <span data-ttu-id="9aa16-158">如果您在 Visual Studio 中的發行設定檔中儲存的密碼，它已加密形式儲存在您 *。 pubxml.user*檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-158">If you saved the password in the publish profile in Visual Studio, it was stored in encrypted form in the your *.pubxml.user* file.</span></span> <span data-ttu-id="9aa16-159">當您執行命令列部署中，您必須傳遞命令列參數中的密碼，該檔案不會由 MSBuild 存取。</span><span class="sxs-lookup"><span data-stu-id="9aa16-159">That file is not accessed by MSBuild when you do a command line deployment, so you have to pass in the password in a command line parameter.</span></span>
 
-1. <span data-ttu-id="9aa16-160">複製您需要從密碼*.publishsettings*稍早的預備網站下載的檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-160">Copy the password that you need from the *.publishsettings* file that you downloaded earlier for the staging web site.</span></span> <span data-ttu-id="9aa16-161">密碼是值`userPWD`Web deploy 屬性`publishProfile`項目。</span><span class="sxs-lookup"><span data-stu-id="9aa16-161">The password is the value of the `userPWD` attribute for the Web Deploy `publishProfile` element.</span></span>
+1. <span data-ttu-id="9aa16-160">複製您需要從密碼 *.publishsettings*稍早的預備網站下載的檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-160">Copy the password that you need from the *.publishsettings* file that you downloaded earlier for the staging web site.</span></span> <span data-ttu-id="9aa16-161">密碼是值`userPWD`Web deploy 屬性`publishProfile`項目。</span><span class="sxs-lookup"><span data-stu-id="9aa16-161">The password is the value of the `userPWD` attribute for the Web Deploy `publishProfile` element.</span></span>
 
     ![Web 部署密碼](command-line-deployment/_static/image5.png)
 2. <span data-ttu-id="9aa16-163">在 Windows 8 開始 頁面上，搜尋**VS2012 開發人員命令提示字元**，然後按一下以開啟 命令提示字元圖示。</span><span class="sxs-lookup"><span data-stu-id="9aa16-163">In the Windows 8 Start page, search for **Developer Command Prompt for VS2012**, and click the icon to open the command prompt.</span></span> <span data-ttu-id="9aa16-164">（您不需要其系統管理員身分開啟此時因為您不部署至 IIS 在本機電腦上）。</span><span class="sxs-lookup"><span data-stu-id="9aa16-164">(You don't have to open it as administrator this time because you aren't deploying to IIS on the local computer.)</span></span>
@@ -127,7 +128,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="9aa16-172">部署到生產環境的程序是供暫存程序類似。</span><span class="sxs-lookup"><span data-stu-id="9aa16-172">The process for deploying to production is similar to the process for staging.</span></span>
 
-1. <span data-ttu-id="9aa16-173">複製您需要從密碼*.publishsettings*提早針對實際執行的網站下載的檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-173">Copy the password that you need from the *.publishsettings* file that you downloaded earlier for the production web site.</span></span>
+1. <span data-ttu-id="9aa16-173">複製您需要從密碼 *.publishsettings*提早針對實際執行的網站下載的檔案。</span><span class="sxs-lookup"><span data-stu-id="9aa16-173">Copy the password that you need from the *.publishsettings* file that you downloaded earlier for the production web site.</span></span>
 2. <span data-ttu-id="9aa16-174">開啟**VS2012 開發人員命令提示字元**。</span><span class="sxs-lookup"><span data-stu-id="9aa16-174">Open **Developer Command Prompt for VS2012**.</span></span>
 3. <span data-ttu-id="9aa16-175">輸入下列命令，在命令提示字元中的方案檔的路徑取代為您的方案檔和您的密碼與密碼的路徑：</span><span class="sxs-lookup"><span data-stu-id="9aa16-175">Enter the following command at the command prompt, replacing the path to the solution file with the path to your solution file and the password with your password:</span></span>
 

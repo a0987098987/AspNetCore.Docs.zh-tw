@@ -14,6 +14,7 @@ ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/20/2018
+ms.locfileid: "30001333"
 ---
 # <a name="compatibility-in-aspnet-core"></a><span data-ttu-id="3b7d1-103">ASP.NET Core 的相容性</span><span class="sxs-lookup"><span data-stu-id="3b7d1-103">Compatibility in ASP.NET Core</span></span>
 

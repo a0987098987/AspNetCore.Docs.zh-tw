@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890173"
 ---
 <a name="processing-unhandled-exceptions-vb"></a><span data-ttu-id="0e1b4-103">處理未處理的例外狀況 (VB)</span><span class="sxs-lookup"><span data-stu-id="0e1b4-103">Processing Unhandled Exceptions (VB)</span></span>
 ====================

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077332"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--open-api"></a><span data-ttu-id="fa64d-103">使用 Swagger/Open API 的 ASP.NET Core Web API 說明頁面</span><span class="sxs-lookup"><span data-stu-id="fa64d-103">ASP.NET Core Web API help pages with Swagger / Open API</span></span>
 

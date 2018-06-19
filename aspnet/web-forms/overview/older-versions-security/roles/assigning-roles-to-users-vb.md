@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892006"
 ---
 <a name="assigning-roles-to-users-vb"></a><span data-ttu-id="51441-104">將角色指派給使用者 (VB)</span><span class="sxs-lookup"><span data-stu-id="51441-104">Assigning Roles to Users (VB)</span></span>
 ====================

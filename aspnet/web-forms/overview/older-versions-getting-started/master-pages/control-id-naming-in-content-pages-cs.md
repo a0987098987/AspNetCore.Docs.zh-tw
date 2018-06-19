@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891343"
 ---
 <a name="control-id-naming-in-content-pages-c"></a><span data-ttu-id="82064-103">在內容頁 (C#) 命名的控制項 ID</span><span class="sxs-lookup"><span data-stu-id="82064-103">Control ID Naming in Content Pages (C#)</span></span>
 ====================

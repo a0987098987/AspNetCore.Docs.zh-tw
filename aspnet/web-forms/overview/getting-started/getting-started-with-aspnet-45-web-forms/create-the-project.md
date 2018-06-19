@@ -17,6 +17,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740448"
 ---
 <a name="create-the-project"></a><span data-ttu-id="d64f0-103">建立專案</span><span class="sxs-lookup"><span data-stu-id="d64f0-103">Create the Project</span></span>
 ====================

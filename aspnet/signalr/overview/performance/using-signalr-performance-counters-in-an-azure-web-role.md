@@ -18,6 +18,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28988012"
 ---
 # <a name="using-signalr-performance-counters-in-an-azure-web-role"></a><span data-ttu-id="f6192-104">使用 Azure Web 角色中的 SignalR 效能計數器</span><span class="sxs-lookup"><span data-stu-id="f6192-104">Using SignalR performance counters in an Azure Web Role</span></span>
 

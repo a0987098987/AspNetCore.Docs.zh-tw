@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070416"
 ---
 # <a name="aspnet-core-razor-pages-with-ef-core---tutorial-series"></a><span data-ttu-id="dd2e6-102">ASP.NET Core Razor 頁面與 EF Core - 教學課程系列</span><span class="sxs-lookup"><span data-stu-id="dd2e6-102">ASP.NET Core Razor Pages with EF Core - tutorial series</span></span>
 

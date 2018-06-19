@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30075067"
 ---
 <a name="jquery-ui-1817-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="8042a-102">jQuery UI 1.8.17 上 Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="8042a-102">jQuery UI 1.8.17 on the Microsoft Ajax CDN</span></span>
 ====================

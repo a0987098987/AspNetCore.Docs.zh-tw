@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-data-access-content-map
-title: "ASP.NET 資料存取-建議資源 |Microsoft 文件"
+title: ASP.NET 資料存取-建議資源 |Microsoft 文件
 author: rick-anderson
-description: "本主題提供有關如何存取資料，在 ASP.NET web 應用程式，主要是使用 Entity Framework 和 SQL Se 文件資源的連結..."
+description: 本主題提供有關如何存取資料，在 ASP.NET web 應用程式，主要是使用 Entity Framework 和 SQL Se 文件資源的連結...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/25/2013
 ms.topic: article
 ms.assetid: f8157be1-4ab9-469e-ad3a-0ccc80b56c00
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-data-access-content-map
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28048212"
 ---
 <a name="aspnet-data-access---recommended-resources"></a><span data-ttu-id="91cca-103">ASP.NET 資料存取-建議資源</span><span class="sxs-lookup"><span data-stu-id="91cca-103">ASP.NET Data Access - Recommended Resources</span></span>
 ====================

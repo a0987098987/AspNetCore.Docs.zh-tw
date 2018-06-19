@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30072760"
 ---
 # <a name="miscellaneous-aspnet-core-data-protection-apis"></a><span data-ttu-id="469c8-103">其他的 ASP.NET Core 資料保護 Api</span><span class="sxs-lookup"><span data-stu-id="469c8-103">Miscellaneous ASP.NET Core Data Protection APIs</span></span>
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31483707"
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a><span data-ttu-id="dede0-103">建置美麗、 可回應網站啟動程序與 ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="dede0-103">Build beautiful, responsive sites with Bootstrap and ASP.NET Core</span></span>
 

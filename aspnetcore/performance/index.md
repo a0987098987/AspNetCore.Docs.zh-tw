@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30075390"
 ---
 # <a name="performance-in-aspnet-core"></a><span data-ttu-id="c0ac3-103">ASP.NET Core 中的效能</span><span class="sxs-lookup"><span data-stu-id="c0ac3-103">Performance in ASP.NET Core</span></span>
 

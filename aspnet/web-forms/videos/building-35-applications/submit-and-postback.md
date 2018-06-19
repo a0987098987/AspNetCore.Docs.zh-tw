@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/submit-and-postback
-title: "送出，並回傳 |Microsoft 文件"
+title: 送出，並回傳 |Microsoft 文件
 author: JoeStagner
-description: "這段影片將介紹您在哪個上&quot;實際上&quot;ASP.NET 應用程式的瀏覽器和伺服器互動。"
+description: 這段影片將介紹您在哪個上&quot;實際上&quot;ASP.NET 應用程式的瀏覽器和伺服器互動。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882350"
 ---
 <a name="submit-and-postback"></a><span data-ttu-id="9e46f-103">送出，並回傳</span><span class="sxs-lookup"><span data-stu-id="9e46f-103">Submit and Postback</span></span>
 ====================

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29904556"
 ---
 # <a name="model-binding-in-aspnet-core"></a><span data-ttu-id="df223-103">ASP.NET Core 中的資料繫結</span><span class="sxs-lookup"><span data-stu-id="df223-103">Model Binding in ASP.NET Core</span></span>
 

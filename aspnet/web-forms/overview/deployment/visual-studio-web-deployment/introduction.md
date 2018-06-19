@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890680"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a><span data-ttu-id="2b0f1-103">使用 Visual Studio 的 ASP.NET Web 部署： 簡介</span><span class="sxs-lookup"><span data-stu-id="2b0f1-103">ASP.NET Web Deployment using Visual Studio: Introduction</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894050"
 ---
 <a name="introduction-to-unit-testing-with-team-system"></a><span data-ttu-id="a50d8-103">使用 Team System 單元測試的簡介</span><span class="sxs-lookup"><span data-stu-id="a50d8-103">Introduction to Unit Testing with Team System</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages
-title: "[如何:]ASP.NET Web Pages 中偵測瀏覽器功能 |Microsoft 文件"
+title: '[如何:]ASP.NET Web Pages 中偵測瀏覽器功能 |Microsoft 文件'
 author: rick-anderson
-description: "在這段影片 Chris Pels 將示範如何判斷哪些使用者的瀏覽器具有 ASP.NET 網站中檢視網頁時的功能。 首先，深入了解如何 acc...."
+description: 在這段影片 Chris Pels 將示範如何判斷哪些使用者的瀏覽器具有 ASP.NET 網站中檢視網頁時的功能。 首先，深入了解如何 acc....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28884087"
 ---
 <a name="how-do-i-detect-browser-capabilities-in-aspnet-web-pages"></a><span data-ttu-id="19a2a-104">[如何:]在 ASP.NET 網頁中偵測瀏覽器功能</span><span class="sxs-lookup"><span data-stu-id="19a2a-104">[How Do I:] Detect Browser Capabilities in ASP.NET Web Pages</span></span>
 ====================

@@ -15,6 +15,7 @@ ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31483124"
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a><span data-ttu-id="4396e-103">使用 ASP.NET Core 建立 Razor Pages Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="4396e-103">Create a Razor Pages web app with ASP.NET Core</span></span>
 

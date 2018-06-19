@@ -1,22 +1,23 @@
 ---
 uid: whitepapers/index
-title: "白皮書 |Microsoft 文件"
+title: 白皮書 |Microsoft 文件
 author: rick-anderson
-description: "在此頁面上，您會發現可協助您安裝和設定 ASP.NET 中，並協助您撰寫安全、 快速和彈性的 ASP.NET 應用程式的技術白皮書。"
+description: 在此頁面上，您會發現可協助您安裝和設定 ASP.NET 中，並協助您撰寫安全、 快速和彈性的 ASP.NET 應用程式的技術白皮書。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2011
 ms.topic: article
 ms.assetid: 3824e2d7-446f-406b-9c8b-5a1634359a78
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
-msc.legacyurl: 
+msc.legacyurl: ''
 msc.type: content
 ms.openlocfilehash: 5d335017a28f3dcbb8332b5361a2b068bddd2cce
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883799"
 ---
 <a name="whitepapers"></a><span data-ttu-id="653b3-103">白皮書</span><span class="sxs-lookup"><span data-stu-id="653b3-103">Whitepapers</span></span>
 ====================

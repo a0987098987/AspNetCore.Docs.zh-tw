@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/membership
-title: "成員資格 |Microsoft 文件"
+title: 成員資格 |Microsoft 文件
 author: microsoft
-description: "ASP.NET 成員資格的表單驗證模型的成功組建從 ASP.NET 1.x。 ASP.NET 表單驗證會提供便利的方式來 incorp..."
+description: ASP.NET 成員資格的表單驗證模型的成功組建從 ASP.NET 1.x。 ASP.NET 表單驗證會提供便利的方式來 incorp...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885560"
 ---
 <a name="membership"></a><span data-ttu-id="dd03b-104">成員資格</span><span class="sxs-lookup"><span data-stu-id="dd03b-104">Membership</span></span>
 ====================

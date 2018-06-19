@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 內建的標記協助程式"
+title: ASP.NET Core 內建的標記協助程式
 author: pkellner
-description: "了解 ASP.NET Core 內建標籤協助程式如何提升您的產能。"
+description: 了解 ASP.NET Core 內建標籤協助程式如何提升您的產能。
 manager: wpickett
 ms.author: riande
 ms.date: 09/13/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29903204"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a><span data-ttu-id="50a75-103">ASP.NET Core 內建的標記協助程式</span><span class="sxs-lookup"><span data-stu-id="50a75-103">ASP.NET Core built-in Tag Helpers</span></span>
 

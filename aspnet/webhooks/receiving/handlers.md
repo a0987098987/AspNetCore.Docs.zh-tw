@@ -1,20 +1,21 @@
 ---
 uid: webhooks/receiving/handlers
-title: "ASP.NET Webhook 處理常式 |Microsoft 文件"
+title: ASP.NET Webhook 處理常式 |Microsoft 文件
 author: rick-anderson
-description: "如何處理要求中 ASP.NET Webhook。"
+description: 如何處理要求中 ASP.NET Webhook。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: a55b0d20-9c90-4bd3-a471-20da6f569f0c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 4cf5770a731ef77842eb29b0a66ee0aac5d85d85
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883667"
 ---
 # <a name="aspnet-webhooks-handlers"></a><span data-ttu-id="9aca6-103">ASP.NET Webhook 處理常式</span><span class="sxs-lookup"><span data-stu-id="9aca6-103">ASP.NET WebHooks handlers</span></span>
 

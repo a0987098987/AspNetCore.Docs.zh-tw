@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895818"
 ---
 <a name="visual-studio-2010-quick-hit---websites-instead-of-web-projects"></a><span data-ttu-id="351af-103">Visual Studio 2010"快速 Hit"-而不是 Web 專案的網站</span><span class="sxs-lookup"><span data-stu-id="351af-103">Visual Studio 2010 "Quick Hit" - Websites Instead of Web Projects</span></span>
 ====================

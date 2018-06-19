@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892091"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-migrating-to-sql-server---10-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 移轉至 SQL Server-10 12 個
 ====================
@@ -108,7 +109,7 @@ Contoso 大學應用程式有兩個 SQL Server Compact 資料庫： 成員資格
 
 開啟**專案屬性**視窗，然後選取**封裝/發行 SQL**  索引標籤。
 
-請確定**作用中 （發行）**或**發行**中選取**組態**下拉式清單。
+請確定**作用中 （發行）** 或**發行**中選取**組態**下拉式清單。
 
 按一下**啟用此頁面**。
 
@@ -297,7 +298,7 @@ Visual Studio 將應用程式部署和測試環境中開啟網站的首頁瀏覽
 
 現在您已準備好設定中的資料庫部署設定**封裝/發行 SQL**索引標籤上，您可以如同先前測試環境。
 
-開啟**專案屬性**視窗中，選取**封裝/發行 SQL**索引標籤，並確定**作用中 （發行）**或**發行**是中已選取**組態**下拉式清單。
+開啟**專案屬性**視窗中，選取**封裝/發行 SQL**索引標籤，並確定**作用中 （發行）** 或**發行**是中已選取**組態**下拉式清單。
 
 當您設定每個資料庫的部署設定時，您的生產和測試環境中所執行的主要差別是您如何設定連接字串中。 針對測試環境中，您輸入不同的目的地資料庫的連接字串，但實際執行環境目的地連接字串將會使用相同的兩個資料庫。 這是因為您要部署這兩個資料庫在生產環境中的一個資料庫。
 
@@ -434,7 +435,7 @@ Code First 移轉適用於初始移轉來建立資料庫，然後再套用 AddBi
 
 您不再需要的檔案和已加入來支援 SQL Server Compact 的 NuGet 封裝。 如果您想 （此步驟不需要），您可以清除不必要的檔案和參考。
 
-在**方案總管 中**，刪除*.sdf*檔案從*應用程式\_資料*資料夾和*amd64*和*x86*資料夾從*bin*資料夾。
+在**方案總管 中**，刪除 *.sdf*檔案從*應用程式\_資料*資料夾和*amd64*和*x86*資料夾從*bin*資料夾。
 
 在**方案總管 中**方案 （不是其中一個專案），以滑鼠右鍵按一下，然後按**管理方案的 NuGet 套件**。
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30073519"
 ---
 # <a name="less-sass-and-font-awesome-in-aspnet-core"></a>小於，Sass，並且在 ASP.NET Core 實用的字型
 
@@ -369,7 +370,7 @@ body {
 }
 ```
 
-儲存您的所有檔案。 現在當您重新整理**工作執行器總管**，您會看到`sass`工作。 執行此程式碼，然後查看*/wwwroot/css*資料夾。 現在沒有*main2.css*檔案，與這些內容：
+儲存您的所有檔案。 現在當您重新整理**工作執行器總管**，您會看到`sass`工作。 執行此程式碼，然後查看 */wwwroot/css*資料夾。 現在沒有*main2.css*檔案，與這些內容：
 
 ```css
 body {

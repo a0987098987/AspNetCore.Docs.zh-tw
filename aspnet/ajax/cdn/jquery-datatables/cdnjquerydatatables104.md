@@ -17,6 +17,7 @@ ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/21/2018
+ms.locfileid: "30071430"
 ---
 <a name="jquery-datatables-1104"></a>jQuery Datatable 1.10.4
 ====================

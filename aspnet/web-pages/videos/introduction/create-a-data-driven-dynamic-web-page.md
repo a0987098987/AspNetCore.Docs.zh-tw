@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-a-data-driven-dynamic-web-page
-title: "建立資料驅動動態網頁 |Microsoft 文件"
+title: 建立資料驅動動態網頁 |Microsoft 文件
 author: rick-anderson
-description: "第 5 部分就是資料，您將在此了解如何在 web 網頁中，使用資料庫，並讓它更具動態。"
+description: 第 5 部分就是資料，您將在此了解如何在 web 網頁中，使用資料庫，並讓它更具動態。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882512"
 ---
 <a name="create-a-data-driven-dynamic-web-page"></a>建立資料驅動動態 Web 網頁
 ====================

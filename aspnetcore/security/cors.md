@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077544"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用跨原始要求 (CORS) 中 ASP.NET Core
 
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/22/2018
 
 [!code-csharp[](cors/sample/CorsExample1/Startup.cs?highlight=11,12&range=22-38)]
 
-**注意：**沒有尾端斜線，必須指定的 URL (`/`)。 如果 URL 將會終止並`/`，比較會傳回`false`而且不會傳回不含標頭。
+**注意：** 沒有尾端斜線，必須指定的 URL (`/`)。 如果 URL 將會終止並`/`，比較會傳回`false`而且不會傳回不含標頭。
 
 Lambda 會採用`CorsPolicyBuilder`物件。 您可以找到一份[組態選項](#cors-policy-options)本主題稍後。 在此範例中的原則，允許跨原始要求從`http://example.com`和其他來源。
 

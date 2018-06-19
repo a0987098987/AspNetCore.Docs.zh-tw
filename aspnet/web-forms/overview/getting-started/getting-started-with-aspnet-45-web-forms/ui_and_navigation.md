@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890238"
 ---
 <a name="ui-and-navigation"></a>UI 和導覽
 ====================
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 
 ASP.NET Web Forms 可讓您建立 Web 應用程式的動態內容。 每個 ASP.NET Web 網頁會建立靜態 HTML 網頁 （網頁不包含伺服器架構處理），類似的方式，但 ASP.NET 網頁包括 ASP.NET 辨識，並產生 HTML 網頁執行時處理的額外項目。
 
-與靜態 HTML 頁面 (*.htm*或*.html*檔案)，伺服器具備`Web`讀取檔案，並將其傳送的要求-至瀏覽器。 相反地，當使用者要求的 ASP.NET 網頁 (*.aspx*檔案)，頁面當成程式執行 Web 伺服器上。 當網頁正在執行時，它可以執行任何需要的工作，您的網站，包括計算的值、 讀取或寫入資料庫的詳細資訊，或是呼叫其他程式。 輸出時，網頁，以動態方式產生標記 （例如 HTML 中的項目），並將這個動態的輸出傳送至瀏覽器。
+與靜態 HTML 頁面 (*.htm*或 *.html*檔案)，伺服器具備`Web`讀取檔案，並將其傳送的要求-至瀏覽器。 相反地，當使用者要求的 ASP.NET 網頁 (*.aspx*檔案)，頁面當成程式執行 Web 伺服器上。 當網頁正在執行時，它可以執行任何需要的工作，您的網站，包括計算的值、 讀取或寫入資料庫的詳細資訊，或是呼叫其他程式。 輸出時，網頁，以動態方式產生標記 （例如 HTML 中的項目），並將這個動態的輸出傳送至瀏覽器。
 
 ## <a name="modifying-the-ui"></a>修改 UI
 
@@ -92,7 +93,7 @@ ASP.NET Web Form 通常會包含指示詞可讓您指定網頁的網頁內容和
 
 大部分的 ASP.NET Web Form 應用程式會包含在處理網頁時，在伺服器執行的程式碼。 如上面所述，伺服端程式碼可以用於執行各種不同的項目，例如將資料加入至 ListView 控制項。 ASP.NET 支援包括 C#、 Visual Basic、 J# 及其他的伺服器上執行的許多語言。
 
-ASP.NET 支援兩種模型撰寫的 Web 網頁的伺服器程式碼。 在單一檔案模式中，網頁的程式碼是在指令碼項目開頭標記，包含`runat="server"`屬性。 或者，您可以在個別的類別檔案中，稱為 「 程式碼後置模型，建立網頁的程式碼。 在此情況下，ASP.NET Web Form 網頁通常不包含伺服器程式碼。 相反地，`@Page`指示詞包含連結的資訊*.aspx*頁面與它相關聯的程式碼後置檔案。
+ASP.NET 支援兩種模型撰寫的 Web 網頁的伺服器程式碼。 在單一檔案模式中，網頁的程式碼是在指令碼項目開頭標記，包含`runat="server"`屬性。 或者，您可以在個別的類別檔案中，稱為 「 程式碼後置模型，建立網頁的程式碼。 在此情況下，ASP.NET Web Form 網頁通常不包含伺服器程式碼。 相反地，`@Page`指示詞包含連結的資訊 *.aspx*頁面與它相關聯的程式碼後置檔案。
 
 `CodeBehind`屬性中包含`@Page`指示詞指定的不同類別檔案名稱和`Inherits`屬性會指定對應至頁面的程式碼後置檔案內的類別名稱。
 
@@ -112,7 +113,7 @@ ASP.NET 支援兩種模型撰寫的 Web 網頁的伺服器程式碼。 在單一
 
 ### <a name="master-pages"></a>主版頁面
 
-主版頁面是副檔名.master ASP.NET 檔案 (例如， *Site.Master*) 可以包含靜態文字、 HTML 項目和伺服器控制項的預先定義版面配置。 主版頁面由特殊`@Master`指示詞，以取代`@Page`用於一般的指示詞*.aspx*頁面。
+主版頁面是副檔名.master ASP.NET 檔案 (例如， *Site.Master*) 可以包含靜態文字、 HTML 項目和伺服器控制項的預先定義版面配置。 主版頁面由特殊`@Master`指示詞，以取代`@Page`用於一般的指示詞 *.aspx*頁面。
 
 除了`@Master`指示詞，主版頁面也包含所有最上層的 HTML 項目頁面，例如`html`， `head`，和`form`。 例如，在上述您新增主要頁面上，您使用 HTML`table`配置，請`img`公司標誌、 靜態文字，以及處理常見的成員資格，您站台伺服器控制項的項目。 您可以使用任何 HTML 及 ASP.NET 中的任何項目，做為您的主版頁面的一部分。
 
@@ -151,7 +152,7 @@ ASP.NET 支援兩種模型撰寫的 Web 網頁的伺服器程式碼。 在單一
 2. 選取**Visual C#**  - &gt; **Web**左側的 [範本] 群組。 然後，選取**使用主版頁面的 Web Form**中間清單並將其命名*ProductList.aspx*。 
 
     ![UI 和瀏覽-加入新項目 對話方塊](ui_and_navigation/_static/image3.png)
-3. 選取**Site.Master**附加到新建立的主版頁面*.aspx*頁面。 
+3. 選取**Site.Master**附加到新建立的主版頁面 *.aspx*頁面。 
 
     ![UI 和瀏覽-選取主版頁面](ui_and_navigation/_static/image4.png)
 4. 加入額外的頁面，名為*ProductDetails.aspx*遵循這些相同的步驟。

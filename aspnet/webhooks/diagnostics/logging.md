@@ -1,20 +1,21 @@
 ---
 uid: webhooks/diagnostics/logging
-title: "記錄的 ASP.NET Webhook |Microsoft 文件"
+title: 記錄的 ASP.NET Webhook |Microsoft 文件
 author: rick-anderson
-description: "如何登入 ASP.NET Webhook。"
+description: 如何登入 ASP.NET Webhook。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: f71bc442-5f80-481b-a32c-a0ec18dee9d6
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 042d20e38a9bc4f1e9792f6e3ff5be11a1eaa882
 ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28044821"
 ---
 # <a name="aspnet-webhooks-logging"></a>記錄的 ASP.NET Webhook
 

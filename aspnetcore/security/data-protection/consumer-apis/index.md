@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076408"
 ---
 # <a name="consumer-apis-for-aspnet-core"></a>適用於 ASP.NET Core 的取用者 API
 

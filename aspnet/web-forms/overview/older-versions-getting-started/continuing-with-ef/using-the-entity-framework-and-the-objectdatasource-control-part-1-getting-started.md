@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892078"
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 1 部分： 使用者入門
 ====================
@@ -50,7 +51,7 @@ ms.lasthandoff: 04/06/2018
 > 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET Entity Framework 論壇](https://forums.asp.net/1227.aspx)、 [Entity Framework 和 LINQ to Entities 論壇](https://social.msdn.microsoft.com/forums/adodotnetentityframework/threads/)，或[StackOverflow.com](http://stackoverflow.com/)。
 
 
-`EntityDataSource`控制項可讓您建立的應用程式非常快速，但它通常會要求您保存相當數量的商務邏輯和資料存取邏輯中的您*.aspx*頁面。 如果您預期應用程式變得更複雜，並在需要持續性維護，您可投入更多的開發時間最前面位置才能建立*多層式架構*或*分層*應用程式結構這是更容易維護。 若要實作這種架構，您會從商務邏輯層 (BLL) 和資料存取層 (DAL) 分隔展示層。 若要實作此結構的一種方式為使用`ObjectDataSource`而不是控制`EntityDataSource`控制項。 當您使用`ObjectDataSource`控制項，您實作您自己的資料存取程式碼，然後叫用它在*.aspx*頁面使用的控制項有許多相同功能的其他資料來源控制項。 這可讓您與使用 Web Form 控制項進行資料存取的優點結合多層式架構方法的優點。
+`EntityDataSource`控制項可讓您建立的應用程式非常快速，但它通常會要求您保存相當數量的商務邏輯和資料存取邏輯中的您 *.aspx*頁面。 如果您預期應用程式變得更複雜，並在需要持續性維護，您可投入更多的開發時間最前面位置才能建立*多層式架構*或*分層*應用程式結構這是更容易維護。 若要實作這種架構，您會從商務邏輯層 (BLL) 和資料存取層 (DAL) 分隔展示層。 若要實作此結構的一種方式為使用`ObjectDataSource`而不是控制`EntityDataSource`控制項。 當您使用`ObjectDataSource`控制項，您實作您自己的資料存取程式碼，然後叫用它在 *.aspx*頁面使用的控制項有許多相同功能的其他資料來源控制項。 這可讓您與使用 Web Form 控制項進行資料存取的優點結合多層式架構方法的優點。
 
 `ObjectDataSource`控制項可讓您更大的彈性以及其他的方式。 因為您撰寫自己的資料存取程式碼，所以您更輕鬆地執行不只是讀取、 插入、 更新或刪除特定實體類型，這是工作的`EntityDataSource`控制項用來執行。 比方說，您可以執行記錄每次更新實體，每當刪除實體時，或自動核取和更新的相關資料視需要插入具有外部索引鍵值的資料列時已封存的資料。
 

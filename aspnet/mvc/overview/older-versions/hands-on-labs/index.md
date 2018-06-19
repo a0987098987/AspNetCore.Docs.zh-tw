@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/index
-title: "ASP.NET MVC 4 交給上實驗室 |Microsoft 文件"
+title: ASP.NET MVC 4 交給上實驗室 |Microsoft 文件
 author: rick-anderson
-description: "了解如何開發 ASP.NET mvc 與這些實際操作實驗室"
+description: 了解如何開發 ASP.NET mvc 與這些實際操作實驗室
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/hands-on-labs
 msc.type: chapter
 ms.openlocfilehash: bfdab4cfd3945401213bcc0b6f282dd5ffbedc5d
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29727167"
 ---
 # <a name="aspnet-mvc-4-hands-on-labs"></a>ASP.NET MVC 4 交給上實驗室
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30075631"
 ---
 # <a name="key-immutability-and-key-settings-in-aspnet-core"></a>索引鍵中 ASP.NET Core 的不變性和金鑰設定
 

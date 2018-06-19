@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076629"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 檢視為基礎的授權
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 03/22/2018
 @inject IAuthorizationService AuthorizationService
 ```
 
-如果您想要授權服務的每個檢視中，放入`@inject`到指示詞*_ViewImports.cshtml*檔案*檢視*目錄。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
+如果您想要授權服務的每個檢視中，放入`@inject`到指示詞 *_ViewImports.cshtml*檔案*檢視*目錄。 如需詳細資訊，請參閱[在檢視中插入相依性](xref:mvc/views/dependency-injection)。
 
 使用插入的授權服務叫用`AuthorizeAsync`方式完全相同時，您會檢查[資源為基礎的授權](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 
@@ -75,4 +76,4 @@ ms.lasthandoff: 03/22/2018
 在上述程式碼中，模型會傳遞做為原則評估應該採取的資源納入考量。
 
 > [!WARNING]
-> 不要只依賴切換可見性的應用程式的 UI 元素的唯一授權檢查。 隱藏 UI 項目可能無法完全防止存取至其關聯之的控制器的動作。 例如，請考慮前面的程式碼片段中的按鈕。 使用者可以叫用`Edit`動作方法如果他或她知道之相對資源 URL 是*/Document/Edit/1*。 基於這個理由，`Edit`動作方法執行它自己的授權檢查。
+> 不要只依賴切換可見性的應用程式的 UI 元素的唯一授權檢查。 隱藏 UI 項目可能無法完全防止存取至其關聯之的控制器的動作。 例如，請考慮前面的程式碼片段中的按鈕。 使用者可以叫用`Edit`動作方法如果他或她知道之相對資源 URL 是 */Document/Edit/1*。 基於這個理由，`Edit`動作方法執行它自己的授權檢查。

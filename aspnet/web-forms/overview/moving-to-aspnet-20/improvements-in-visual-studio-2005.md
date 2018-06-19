@@ -17,6 +17,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28987986"
 ---
 <a name="improvements-in-visual-studio-2005"></a>在 Visual Studio 2005 中的增強功能
 ====================

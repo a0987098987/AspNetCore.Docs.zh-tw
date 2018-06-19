@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30072897"
 ---
 <a name="jquery-mobile-140-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.4.0 上 Microsoft Ajax CDN
 ====================

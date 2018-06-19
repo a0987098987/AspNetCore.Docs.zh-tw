@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890079"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12
 ====================
@@ -151,7 +152,7 @@ NuGet 套件安裝通常會負責您需將此軟體與應用程式部署的所�
 
 按 CTRL-SHIFT-B 以建置專案。
 
-下一個步驟是建立`DbMigration`初始移轉的類別。 您想要這項移轉，來建立新的資料庫，因此您必須刪除現有的資料庫。 SQL Server Compact 資料庫中所包含*.sdf*檔案*應用程式\_資料*資料夾。 在**方案總管 中**，依序展開*應用程式\_資料*ContosoUniversity 專案中查看的兩個 SQL Server Compact 資料庫，這由*.sdf*檔案。
+下一個步驟是建立`DbMigration`初始移轉的類別。 您想要這項移轉，來建立新的資料庫，因此您必須刪除現有的資料庫。 SQL Server Compact 資料庫中所包含 *.sdf*檔案*應用程式\_資料*資料夾。 在**方案總管 中**，依序展開*應用程式\_資料*ContosoUniversity 專案中查看的兩個 SQL Server Compact 資料庫，這由 *.sdf*檔案。
 
 以滑鼠右鍵按一下*School.sdf*檔案，然後按一下 **刪除**。
 
@@ -229,7 +230,7 @@ Contoso 大學應用程式使用 ASP.NET 成員資格系統和表單驗證來驗
 
 重新命名*School.sdf*至*學校 Dev.sdf*。
 
-當您不想使用的 Visual Studio 中執行應用程式時*-Prod*資料庫檔案的版本中，您想要使用*-開發人員*版本。 因此您必須變更 Web.config 檔案中的連接字串，使其指向*-開發人員*與資料庫的版本。 （您尚未建立 School Prod.sdf 檔案，沒關係，因為第一個程式碼會建立該資料庫在該處執行您的應用程式的實際執行第一個時間。）
+當您不想使用的 Visual Studio 中執行應用程式時 *-Prod*資料庫檔案的版本中，您想要使用 *-開發人員*版本。 因此您必須變更 Web.config 檔案中的連接字串，使其指向 *-開發人員*與資料庫的版本。 （您尚未建立 School Prod.sdf 檔案，沒關係，因為第一個程式碼會建立該資料庫在該處執行您的應用程式的實際執行第一個時間。）
 
 開啟應用程式的 Web.config 檔案，並找到的連接字串：
 

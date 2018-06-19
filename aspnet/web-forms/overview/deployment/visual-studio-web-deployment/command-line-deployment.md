@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890524"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>使用 Visual Studio 的 ASP.NET Web 部署： 命令列部署
 ====================
@@ -90,7 +91,7 @@ Visual Studio 2010 的版本號碼為 10.0。 如需詳細資訊，請參閱[Vis
 
 ### <a name="specifying-the-publish-profile"></a>指定發行設定檔
 
-依名稱或完整路徑，您可以指定發行設定檔*.pubxml*檔案，如下列範例所示：
+依名稱或完整路徑，您可以指定發行設定檔 *.pubxml*檔案，如下列範例所示：
 
 [!code-console[Main](command-line-deployment/samples/sample5.cmd?highlight=1)]
 
@@ -108,9 +109,9 @@ Visual Studio 2010 的版本號碼為 10.0。 如需詳細資訊，請參閱[Vis
 
 ## <a name="deploy-to-staging"></a>部署到預備環境
 
-若要部署至 Azure，您必須新增至命令列的密碼。 如果您在 Visual Studio 中的發行設定檔中儲存的密碼，它已加密形式儲存在您*。 pubxml.user*檔案。 當您執行命令列部署中，您必須傳遞命令列參數中的密碼，該檔案不會由 MSBuild 存取。
+若要部署至 Azure，您必須新增至命令列的密碼。 如果您在 Visual Studio 中的發行設定檔中儲存的密碼，它已加密形式儲存在您 *。 pubxml.user*檔案。 當您執行命令列部署中，您必須傳遞命令列參數中的密碼，該檔案不會由 MSBuild 存取。
 
-1. 複製您需要從密碼*.publishsettings*稍早的預備網站下載的檔案。 密碼是值`userPWD`Web deploy 屬性`publishProfile`項目。
+1. 複製您需要從密碼 *.publishsettings*稍早的預備網站下載的檔案。 密碼是值`userPWD`Web deploy 屬性`publishProfile`項目。
 
     ![Web 部署密碼](command-line-deployment/_static/image5.png)
 2. 在 Windows 8 開始 頁面上，搜尋**VS2012 開發人員命令提示字元**，然後按一下以開啟 命令提示字元圖示。 （您不需要其系統管理員身分開啟此時因為您不部署至 IIS 在本機電腦上）。
@@ -127,7 +128,7 @@ Visual Studio 2010 的版本號碼為 10.0。 如需詳細資訊，請參閱[Vis
 
 部署到生產環境的程序是供暫存程序類似。
 
-1. 複製您需要從密碼*.publishsettings*提早針對實際執行的網站下載的檔案。
+1. 複製您需要從密碼 *.publishsettings*提早針對實際執行的網站下載的檔案。
 2. 開啟**VS2012 開發人員命令提示字元**。
 3. 輸入下列命令，在命令提示字元中的方案檔的路徑取代為您的方案檔和您的密碼與密碼的路徑：
 

@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/what-is-new-in-aspnet-mvc
-title: "新 ASP.NET MVC 2 |Microsoft 文件"
+title: 新 ASP.NET MVC 2 |Microsoft 文件
 author: rick-anderson
-description: "本文件說明新功能和 ASP.NET MVC 2 中引進的增強功能。 也可以下載這份文件。"
+description: 本文件說明新功能和 ASP.NET MVC 2 中引進的增強功能。 也可以下載這份文件。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/20/2010
 ms.topic: article
 ms.assetid: 69a8d6f8-4b10-4602-8822-2d6c05fc432b
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885228"
 ---
 <a name="whats-new-in-aspnet-mvc-2"></a>ASP.NET MVC 2 中最新消息
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29904543"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
@@ -21,7 +22,7 @@ ms.lasthandoff: 03/15/2018
 
 本文將逐步說明在具有 [Orchard Core](https://github.com/OrchardCMS/OrchardCore) 架構的 ASP.NET Core 應用程式中使用可攜式物件 (PO) 檔案的步驟。
 
-**注意：**Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
+**注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
@@ -156,7 +157,7 @@ var supportedCultures = new List<CultureInfo>
 <p>@Localizer.Plural(5, "There is one item.", "There are {0} items.")</p>
 ```
 
-**注意：**在現實世界的案例中，變數將用來代表計數。 在這裡，我們會重複使用具有三個不同值的相同程式碼，以公開非常特殊的情況。
+**注意：** 在現實世界的案例中，變數將用來代表計數。 在這裡，我們會重複使用具有三個不同值的相同程式碼，以公開非常特殊的情況。
 
 切換文化特性後，您會看到下列內容：
 

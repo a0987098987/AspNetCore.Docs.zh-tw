@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891239"
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>Page Inspector 使用 Visual Studio 2012 中
 ====================
@@ -94,7 +95,7 @@ ms.lasthandoff: 04/10/2018
 
 在這項工作，您將學習如何使用 Page Inspector 顯示相片圖庫的 ASP.NET MVC 4 專案的內容中。
 
-1. 開啟**開始**方案位於**來源/Ex1MVC4/開始/**資料夾。
+1. 開啟**開始**方案位於**來源/Ex1MVC4/開始/** 資料夾。
 
    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -102,12 +103,12 @@ ms.lasthandoff: 04/10/2018
 
       > [!NOTE]
       > 使用 NuGet 的優點之一是您不需要在專案中，所有的程式庫的出貨減少專案大小。 NuGet 的強大工具，請藉由指定封裝版本在 Packages.config 檔案中，您將會成功下載所有必要的程式庫第一次您執行專案。 這就是為什麼您必須從這個實驗室中開啟現有的方案後執行這些步驟。
-2. 在 [方案總管] 中，找出**Index.cshtml**檢視下**/檢視表/首頁**專案資料夾中，以滑鼠右鍵按一下並選取**Page Inspector 中的檢視**。
+2. 在 [方案總管] 中，找出**Index.cshtml**檢視下 **/檢視表/首頁**專案資料夾中，以滑鼠右鍵按一下並選取**Page Inspector 中的檢視**。
 
     ![選取要在 Page Inspector 中預覽檔案](using-page-inspector-in-visual-studio-2012/_static/image1.png "選取要在 Page Inspector 中的檔案")
 
     *選取要在 Page Inspector 中的檔案*
-3. Page Inspector 視窗會顯示*/Home/Index* URL 對應至來源您選取的檢視。
+3. Page Inspector 視窗會顯示 */Home/Index* URL 對應至來源您選取的檢視。
 
     ![ThefirstcontactwithPageInspector](using-page-inspector-in-visual-studio-2012/_static/image2.png)
 
@@ -167,7 +168,7 @@ ms.lasthandoff: 04/10/2018
     ![選取項目](using-page-inspector-in-visual-studio-2012/_static/image10.png "選取項目")
 
     *選取項目*
-12. 在 [樣式] 窗格中，找出**背景影像**項目底下**.main 內容**群組。 **取消核取****背景影像**看。 您會注意到瀏覽器會立即反映變更，並隱藏圓形。
+12. 在 [樣式] 窗格中，找出**背景影像**項目底下 **.main 內容**群組。 **取消核取****背景影像**看。 您會注意到瀏覽器會立即反映變更，並隱藏圓形。
 
     > [!NOTE]
     > 您在頁面偵測器樣式 索引標籤套用的變更不會影響原始的樣式表。 您可以取消核取樣式，或變更其值依需求多次，但將會還原之後重新整理頁面。
@@ -176,7 +177,7 @@ ms.lasthandoff: 04/10/2018
 
     *啟用和停用的 CSS 樣式*
 13. 現在，按一下 '**您的標誌**' 上使用檢查模式的標頭的文字。
-14. 在**樣式**索引標籤上，找出**字型大小**CSS 屬性下**.site 標題**群組。 按兩下屬性值，並取代 2.3 em 值與**3 em**，然後按下**ENTER**。 請注意，標題起來更大。
+14. 在**樣式**索引標籤上，找出**字型大小**CSS 屬性下 **.site 標題**群組。 按兩下屬性值，並取代 2.3 em 值與**3 em**，然後按下**ENTER**。 請注意，標題起來更大。
 
     ![變更頁面偵測器中的 CSS 值](using-page-inspector-in-visual-studio-2012/_static/image12.png "Page Inspector 中的變更的 CSS 值")
 
@@ -221,7 +222,7 @@ ms.lasthandoff: 04/10/2018
 2. 切換檢查模式中選取，按一下 [關閉] 以，但不是能在註冊連結以開啟其程式碼。
 
     請注意，連結的原始程式碼位於 **\_LoginPartial.cshtml**檔案，不 Index.cshtml 和\_Layout.cshtml，也就是您可能會在第一個位置中尋找的位置。 您在已直接在正確的來源檔案中放置。
-3. 在**樣式**索引標籤上，找出並按一下**<section> #login</section>**是這些連結的 HTML 容器項目。
+3. 在**樣式**索引標籤上，找出並按一下**<section> #login</section>** 是這些連結的 HTML 容器項目。
 
     請注意， **#login**樣式自動位於**Site.css**按一下之後。 此外，程式碼現在會反白。
 
@@ -242,12 +243,12 @@ ms.lasthandoff: 04/10/2018
     ![更新的頁面](using-page-inspector-in-visual-studio-2012/_static/image18.png)
 
     *更新的頁面*
-6. 使用檢查模式中，選取任一**&lt;li&gt;**包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
+6. 使用檢查模式中，選取任一**&lt;li&gt;** 包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
 
     ![尋找樣式](using-page-inspector-in-visual-studio-2012/_static/image19.png "尋找樣式")
 
     *尋找樣式*
-7. 在**Style.css**，請取消註解的程式碼**#login li**項目。 您要加入的樣式會隱藏項目符號，並以水平方式顯示的項目。
+7. 在**Style.css**，請取消註解的程式碼 **#login li**項目。 您要加入的樣式會隱藏項目符號，並以水平方式顯示的項目。
 
     ![右側的登入連結](using-page-inspector-in-visual-studio-2012/_static/image20.png "右側的登入連結")
 
@@ -285,7 +286,7 @@ ms.lasthandoff: 04/10/2018
 
 在這項工作，您將學習如何在相片圖庫會顯示在 WebForms 專案內容中使用 Page Inspector 功能。
 
-1. 開啟**開始**方案位於**來源/Ex2WebForms/開始/**資料夾。
+1. 開啟**開始**方案位於**來源/Ex2WebForms/開始/** 資料夾。
 
    1. 您必須下載某些遺漏的 NuGet 套件才能繼續。 若要這樣做，請按一下**專案**功能表，然後選取**管理 NuGet 封裝**。
    2. 在**管理 NuGet 封裝**] 對話方塊中，按一下 [**還原**才能下載遺漏的封裝。
@@ -358,7 +359,7 @@ ms.lasthandoff: 04/10/2018
     ![選取項目](using-page-inspector-in-visual-studio-2012/_static/image33.png "選取項目")
 
     *選取項目*
-12. 在 [樣式] 窗格中，找出**背景影像**項目底下**.main 內容**群組。 **取消核取****背景影像**看。 您會注意到瀏覽器會立即反映變更，並隱藏圓形。
+12. 在 [樣式] 窗格中，找出**背景影像**項目底下 **.main 內容**群組。 **取消核取****背景影像**看。 您會注意到瀏覽器會立即反映變更，並隱藏圓形。
 
     > [!NOTE]
     > 您在頁面偵測器樣式 索引標籤套用的變更不會影響原始的樣式表。 您可以取消核取樣式，或變更其值依需求多次，但將會還原之後重新整理頁面。
@@ -366,8 +367,8 @@ ms.lasthandoff: 04/10/2018
     ![啟用和停用 CSS styles2](using-page-inspector-in-visual-studio-2012/_static/image34.png "啟用和停用的 CSS 樣式")
 
     *啟用和停用的 CSS 樣式*
-13. 現在，按一下 '**您****的標誌在此'**上使用檢查模式的標頭的文字。
-14. 在**樣式**索引標籤上，找出**字型大小**CSS 屬性下**.site 標題**群組。 按兩下以編輯其值的屬性一次。 值取代 2.3em **3em**，然後按 ENTER 鍵。 請注意，標題起來更大。
+13. 現在，按一下 '**您****的標誌在此'** 上使用檢查模式的標頭的文字。
+14. 在**樣式**索引標籤上，找出**字型大小**CSS 屬性下 **.site 標題**群組。 按兩下以編輯其值的屬性一次。 值取代 2.3em **3em**，然後按 ENTER 鍵。 請注意，標題起來更大。
 
     ![變更頁面 Inspector2 中的 CSS 值](using-page-inspector-in-visual-studio-2012/_static/image35.png "Page Inspector 中的變更的 CSS 值")
 
@@ -433,12 +434,12 @@ ms.lasthandoff: 04/10/2018
     ![更新的頁面](using-page-inspector-in-visual-studio-2012/_static/image41.png)
 
     *更新的頁面*
-6. 使用檢查模式中，選取任一**&lt;li&gt;**包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
+6. 使用檢查模式中，選取任一**&lt;li&gt;** 包含的項目&quot;註冊&quot;和&quot;登入&quot;連結。 然後，按一下  **&lt;區段&gt;#login**存取項目**Styles.css**程式碼。
 
     ![尋找樣式](using-page-inspector-in-visual-studio-2012/_static/image42.png "尋找樣式")
 
     *尋找樣式*
-7. 在**Style.css**，請取消註解的程式碼**#login li**項目。 您要加入的樣式會隱藏項目符號，並以水平方式顯示的項目。
+7. 在**Style.css**，請取消註解的程式碼 **#login li**項目。 您要加入的樣式會隱藏項目符號，並以水平方式顯示的項目。
 
     ![右側的登入連結](using-page-inspector-in-visual-studio-2012/_static/image43.png "右側的登入連結")
 
@@ -448,7 +449,7 @@ ms.lasthandoff: 04/10/2018
     ![連結靠右對齊](using-page-inspector-in-visual-studio-2012/_static/image44.png "連結靠右對齊")
 
     *靠右對齊的連結*
-9. 最後，您將變更標頭標題。 而不是搜尋 '**您的標誌'**文字中的所有檔案，使用檢查模式按一下文字，並取得產生它的原始碼。
+9. 最後，您將變更標頭標題。 而不是搜尋 '**您的標誌'** 文字中的所有檔案，使用檢查模式按一下文字，並取得產生它的原始碼。
 
     ![尋找網站標題](using-page-inspector-in-visual-studio-2012/_static/image45.png "尋找網站標題")
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740071"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -40,7 +41,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 
 若要使用移轉，請使用 [套件管理員主控台] (PMC) 或命令列介面 (CLI)。 這些教學課程會示範如何使用 CLI 命令。 PMC 的資訊位於[本教學課程結尾](#pmc)。
 
-[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF Core 工具。 若要安裝這個套件，請將它新增至 *.csproj* 檔案中的 `DotNetCliToolReference` 集合，如下所示。 **注意：**此套件必須透過編輯 *.csproj* 檔案進行安裝。 `install-package` 命令或套件管理員 GUI 無法用來安裝此套件。 以滑鼠右鍵按一下方案總管 中的專案名稱，然後選取 [Edit ContosoUniversity.csproj] (編輯 ContosoUniversity.csproj)，以編輯 *.csproj* 檔案。
+[Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 中提供了命令列介面 (CLI) 的 EF Core 工具。 若要安裝這個套件，請將它新增至 *.csproj* 檔案中的 `DotNetCliToolReference` 集合，如下所示。 **注意：** 此套件必須透過編輯 *.csproj* 檔案進行安裝。 `install-package` 命令或套件管理員 GUI 無法用來安裝此套件。 以滑鼠右鍵按一下方案總管 中的專案名稱，然後選取 [Edit ContosoUniversity.csproj] (編輯 ContosoUniversity.csproj)，以編輯 *.csproj* 檔案。
 
 下列標記會顯示更新的 *.csproj* 檔案，並醒目提示 EF Core CLI 工具：
 
@@ -208,7 +209,7 @@ EF Core 使用 `__MigrationsHistory` 資料表來查看是否有任何需要執�
 
 PMC 的 EF Core 命令位於 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools) 套件中。 此套件包含在 [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) 中繼套件內，因此您不需要安裝它。
 
-**重要事項：**此套件與透過編輯 *.csproj* 檔案為 CLI 安裝的套件不同。 這個套件的名稱以 `Tools` 結尾，不同於以 `Tools.DotNet` 結尾的 CLI 套件名稱。
+**重要事項：** 此套件與透過編輯 *.csproj* 檔案為 CLI 安裝的套件不同。 這個套件的名稱以 `Tools` 結尾，不同於以 `Tools.DotNet` 結尾的 CLI 套件名稱。
 
 如需 CLI 命令的詳細資訊，請參閱 [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet)。
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891330"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>驗證使用者認證，針對成員資格使用者存放區 (VB)
 ====================

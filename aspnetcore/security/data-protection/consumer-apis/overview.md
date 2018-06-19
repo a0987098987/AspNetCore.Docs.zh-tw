@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30076003"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>適用於 ASP.NET Core 取用者應用程式開發介面概觀
 

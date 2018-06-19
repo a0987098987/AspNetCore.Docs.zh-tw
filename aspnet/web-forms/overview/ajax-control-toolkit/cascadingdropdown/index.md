@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown
 msc.type: chapter
 ms.openlocfilehash: 200dc5ce3f27b5123edea2ac63f0a86b8502605d
 ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29152848"
 ---
 <a name="cascadingdropdown"></a>CascadingDropdown
 ====================

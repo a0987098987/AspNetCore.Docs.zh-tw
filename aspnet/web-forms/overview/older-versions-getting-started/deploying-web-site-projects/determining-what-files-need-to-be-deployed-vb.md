@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889913"
 ---
 <a name="determining-what-files-need-to-be-deployed-vb"></a>判斷檔案必須為部署 (VB)
 ====================

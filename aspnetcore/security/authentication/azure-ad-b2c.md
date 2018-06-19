@@ -1,7 +1,7 @@
 ---
-title: "Azure Active Directory B2C ASP.NET Core 中使用雲端驗證"
+title: Azure Active Directory B2C ASP.NET Core 中使用雲端驗證
 author: camsoper
-description: "了解如何設定 ASP.NET Core 與 Azure Active Directory B2C 驗證。"
+description: 了解如何設定 ASP.NET Core 與 Azure Active Directory B2C 驗證。
 manager: wpickett
 ms.date: 01/25/2018
 ms.topic: tutorial
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29905071"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Azure Active Directory B2C ASP.NET Core 中使用雲端驗證
 
@@ -114,7 +115,7 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租用戶
 
 ![登入應用程式](./azure-ad-b2c/_static/signin.png)
 
-瀏覽器重新導向至 Azure AD B2C 租用戶。 （如果已建立一個測試原則），使用現有的帳戶登入，或選取**立即註冊**來建立新的帳戶。 **忘記密碼？**連結用來重設忘記的密碼。
+瀏覽器重新導向至 Azure AD B2C 租用戶。 （如果已建立一個測試原則），使用現有的帳戶登入，或選取**立即註冊**來建立新的帳戶。 **忘記密碼？** 連結用來重設忘記的密碼。
 
 ![Azure AD B2C 登入](./azure-ad-b2c/_static/b2csts.png)
 

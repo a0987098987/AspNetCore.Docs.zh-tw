@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
-title: "驗證和授權的 ASP.NET Web API |Microsoft 文件"
+title: 驗證和授權的 ASP.NET Web API |Microsoft 文件
 author: MikeWasson
-description: "ASP.NET Web API 中提供驗證和授權的一般概觀。"
+description: ASP.NET Web API 中提供驗證和授權的一般概觀。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/27/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29726754"
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>驗證和授權的 ASP.NET Web API
 ====================

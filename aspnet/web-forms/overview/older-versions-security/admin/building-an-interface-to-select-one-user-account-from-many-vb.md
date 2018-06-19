@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891200"
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>建立以選取一個使用者帳戶從許多 (VB) 介面
 ====================

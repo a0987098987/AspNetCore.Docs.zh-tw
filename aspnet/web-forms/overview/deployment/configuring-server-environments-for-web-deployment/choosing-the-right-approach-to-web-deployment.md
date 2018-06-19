@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890498"
 ---
 <a name="choosing-the-right-approach-to-web-deployment"></a>選擇 Web 部署的正確方法
 ====================
@@ -56,7 +57,7 @@ ms.lasthandoff: 04/06/2018
 > 您可以取代 [*伺服器*] 與您的 web 伺服器的電腦名稱，您的網頁伺服器或主機名稱的 IP 位址解析為您的 web 伺服器。
 
 
-伺服器系統管理員可以部署 web 封裝，從遠端位置，例如開發人員電腦或組建伺服器，藉由指定這個端點位址。 例如，假設在 Fabrikam，Inc.Matt 世昕已在其開發人員電腦上建置 ContactManager.Mvc web 應用程式專案。 建置程序產生 web 封裝，並搭配*。 deploy.cmd*安裝封裝所需的檔案，其中包含 Web Deploy 的命令。 如果 Matt TESTWEB1 伺服器上的伺服器系統管理員，他可以部署到測試 web 伺服器的 web 應用程式開發人員電腦上執行此命令：
+伺服器系統管理員可以部署 web 封裝，從遠端位置，例如開發人員電腦或組建伺服器，藉由指定這個端點位址。 例如，假設在 Fabrikam，Inc.Matt 世昕已在其開發人員電腦上建置 ContactManager.Mvc web 應用程式專案。 建置程序產生 web 封裝，並搭配 *。 deploy.cmd*安裝封裝所需的檔案，其中包含 Web Deploy 的命令。 如果 Matt TESTWEB1 伺服器上的伺服器系統管理員，他可以部署到測試 web 伺服器的 web 應用程式開發人員電腦上執行此命令：
 
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample2.cmd)]
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 
 > [!NOTE]
-> 如需有關 Web Deploy 命令列語法和*。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
+> 如需有關 Web Deploy 命令列語法和 *。 deploy.cmd*檔，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
 
 
 遠端代理程式提供直接的方法來部署內容從遠端位置，而且這個方法也可以使用一種單鍵或自動部署。 不過，執行的部署命令的使用者也必須是網域系統管理員或目的地伺服器上本機 administrators 群組的成員。 此外，遠端代理程式不支援基本驗證，所以您無法在命令列上傳遞替代認證。
@@ -82,7 +83,7 @@ ms.lasthandoff: 04/06/2018
 
 與遠端代理程式的方法相似暫存的代理程式部署方法。 不過，相較於遠端代理程式的方法，您不需要在目的地 web 伺服器上安裝 Web Deploy。 相反地，當您執行部署時，Web Deploy 將目的地伺服器上安裝 web 部署代理程式服務的暫存版本與將使用此內容部署到 IIS。 部署完成時，會移除所有的暫存檔案。
 
-如果您想要使用暫時代理程式提供者設定，將**/g**旗標設為您的部署命令：
+如果您想要使用暫時代理程式提供者設定，將 **/g**旗標設為您的部署命令：
 
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample4.cmd)]
@@ -125,7 +126,7 @@ ms.lasthandoff: 04/06/2018
 
 
 > [!NOTE]
-> 如需有關 Web Deploy 命令列作業和語法的詳細資訊，請參閱[Web 部署命令列參考](https://technet.microsoft.com/library/dd568991(v=ws.10).aspx)。 如需有關使用*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
+> 如需有關 Web Deploy 命令列作業和語法的詳細資訊，請參閱[Web 部署命令列參考](https://technet.microsoft.com/library/dd568991(v=ws.10).aspx)。 如需有關使用 *。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
 
 
 Web 部署處理常式提供部署在預備環境、 託管的環境和內部網路為基礎的實際執行環境，其中可以遠端存取伺服器。 但系統管理員認證的有效方法。
@@ -146,7 +147,7 @@ Web 部署處理常式提供部署在預備環境、 託管的環境和內部網
 
 ## <a name="further-reading"></a>進一步閱讀
 
-如需有關 Web Deploy 命令列作業和語法的詳細資訊，請參閱[Web 部署命令列參考](https://technet.microsoft.com/library/dd568991(v=ws.10).aspx)。 如需有關使用*。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
+如需有關 Web Deploy 命令列作業和語法的詳細資訊，請參閱[Web 部署命令列參考](https://technet.microsoft.com/library/dd568991(v=ws.10).aspx)。 如需有關使用 *。 deploy.cmd*檔案，請參閱[How to: 部署封裝使用 deploy.cmd 檔案安裝](https://msdn.microsoft.com/library/ff356104.aspx)。
 
 多個一般指引，您可以在其中部署 web 封裝，從遠端電腦的不同方式的詳細資訊，請參閱[使用 Web 部署遠端](https://technet.microsoft.com/library/ee461175(WS.10).aspx)。 如需使用 Web 部署隨選安裝的詳細資訊，請參閱[Web 部署隨選](https://technet.microsoft.com/library/ee517345(WS.10).aspx)。
 

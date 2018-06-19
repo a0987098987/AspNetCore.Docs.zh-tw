@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/videos/mvc-1
 msc.type: chapter
 ms.openlocfilehash: ad33f7cb81b0124728cfa36c8ff3ba0a473e351f
 ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29153900"
 ---
 <a name="aspnet-mvc-1"></a>ASP.NET MVC 1
 ====================

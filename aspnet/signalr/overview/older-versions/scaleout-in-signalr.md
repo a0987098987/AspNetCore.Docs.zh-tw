@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/scaleout-in-signalr
-title: "向外延展 SignalR 中簡介 1.x |Microsoft 文件"
+title: 向外延展 SignalR 中簡介 1.x |Microsoft 文件
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/29/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28043742"
 ---
 <a name="introduction-to-scaleout-in-signalr-1x"></a>向外延展 SignalR 中簡介 1.x
 ====================

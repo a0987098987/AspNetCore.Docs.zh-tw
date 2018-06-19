@@ -17,6 +17,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28988077"
 ---
 <a name="how-do-i-utilize-the-css-friendly-control-adapters"></a>[如何:]利用 CSS 易記的控制項配接器？
 ====================

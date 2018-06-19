@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892032"
 ---
 <a name="an-overview-of-forms-authentication-c"></a>表單驗證 (C#) 的概觀
 ====================
@@ -103,7 +104,7 @@ IIS 7 不過，可讓整合式的 IIS 和 ASP.NET 的管線。 使用一些組�
 **圖 3**： 新增至網站的主版頁面名稱為 Site.master ([按一下以檢視完整大小的影像](an-overview-of-forms-authentication-cs/_static/image7.png))
 
 
-主版頁面中定義的全站台的頁面配置。 您可以使用 [設計] 檢視，並將在需要時，任何配置或 Web 控制項，或您可以手動在來源檢視中手動新增標記。 我結構化我主版頁面的版面配置，來模擬所使用的配置我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)*教學課程系列 （請參閱圖 4）。 使用主版頁面[階層式樣式表](http://www.w3schools.com/css/default.asp)用來定位和樣式 （其中包含在本教學課程相關下載） 的 Style.css 檔案中定義的 CSS 設定。 雖然您無法分辨從標記如下所示，定義的 CSS 規則，瀏覽&lt;div&gt;的內容絕對置放出現在左邊，使其具有固定的寬度為 200 像素。
+主版頁面中定義的全站台的頁面配置。 您可以使用 [設計] 檢視，並將在需要時，任何配置或 Web 控制項，或您可以手動在來源檢視中手動新增標記。 我結構化我主版頁面的版面配置，來模擬所使用的配置我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)* 教學課程系列 （請參閱圖 4）。 使用主版頁面[階層式樣式表](http://www.w3schools.com/css/default.asp)用來定位和樣式 （其中包含在本教學課程相關下載） 的 Style.css 檔案中定義的 CSS 設定。 雖然您無法分辨從標記如下所示，定義的 CSS 規則，瀏覽&lt;div&gt;的內容絕對置放出現在左邊，使其具有固定的寬度為 200 像素。
 
 [!code-aspx[Main](an-overview-of-forms-authentication-cs/samples/sample1.aspx)]
 

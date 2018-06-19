@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core 中的驗證"
+title: ASP.NET Core 中的驗證
 author: rick-anderson
-description: "探索有關 ASP.NET 驗證技術的主題。"
+description: 探索有關 ASP.NET 驗證技術的主題。
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29903295"
 ---
 # <a name="authentication-in-aspnet-core"></a>ASP.NET Core 中的驗證
 

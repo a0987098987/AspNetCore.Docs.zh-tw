@@ -15,6 +15,7 @@ ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31483548"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>若要建立單一頁面應用程式中 ASP.NET Core 使用 JavaScriptServices
 

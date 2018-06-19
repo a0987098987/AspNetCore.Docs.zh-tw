@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077505"
 ---
 # <a name="aspnet-core-data-protection-extensibility-apis"></a>ASP.NET Core 資料保護擴充性 API
 

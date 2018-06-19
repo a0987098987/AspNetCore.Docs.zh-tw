@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892773"
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>編輯和刪除 DataList (VB) 中的資料的概觀
 ====================
@@ -86,11 +87,11 @@ ms.lasthandoff: 04/06/2018
 
 可惜的是，DataList 不提供任何內建這項功能。 它是我們要負責確保使用者的值會指派至 ObjectDataSource 的參數，而且其`Update()`方法呼叫。 為了協助我們在這個工作中，DataList 提供下列屬性和事件：
 
-- **[ `DataKeyField`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeyfield.aspx)**當更新或刪除時，我們需要能夠唯一識別每個在 DataList 項目。 這個屬性設為顯示資料的主索引鍵欄位。 這樣將會填入 DataList s [ `DataKeys`集合](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeys.aspx)具有指定`DataKeyField`每個 DataList 項目的值。
-- **[ `EditCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.editcommand.aspx)**按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下編輯。
-- **[ `CancelCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.cancelcommand.aspx)**按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下 [取消]。
-- **[ `UpdateCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.updatecommand.aspx)**按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下更新。
-- **[ `DeleteCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.deletecommand.aspx)**按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下 Delete。
+- **[ `DataKeyField`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeyfield.aspx)** 當更新或刪除時，我們需要能夠唯一識別每個在 DataList 項目。 這個屬性設為顯示資料的主索引鍵欄位。 這樣將會填入 DataList s [ `DataKeys`集合](https://msdn.microsoft.com/library/system.web.ui.webcontrols.basedatalist.datakeys.aspx)具有指定`DataKeyField`每個 DataList 項目的值。
+- **[ `EditCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.editcommand.aspx)** 按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下編輯。
+- **[ `CancelCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.cancelcommand.aspx)** 按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下 [取消]。
+- **[ `UpdateCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.updatecommand.aspx)** 按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下更新。
+- **[ `DeleteCommand`事件](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.deletecommand.aspx)** 按鈕、 LinkButton 或 ImageButton 時引發其`CommandName`屬性設定為按下 Delete。
 
 使用這些屬性和事件，有四個方法，我們可以用來更新及刪除資料，從在 DataList:
 

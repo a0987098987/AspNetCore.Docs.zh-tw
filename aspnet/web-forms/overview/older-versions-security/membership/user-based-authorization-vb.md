@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891941"
 ---
 <a name="user-based-authorization-vb"></a>使用者為基礎的授權 (VB)
 ====================
@@ -217,7 +218,7 @@ URL 授權可讓您輕鬆地指定粗略的授權規則。 如我們所見在步
 讓我們來建立頁面，其中列出在 GridView 內的特定目錄中的檔案。 GridView 會列出每個檔案的名稱、 大小和其他資訊，以及包含 LinkButtons 的兩個資料行： 一個標題為檢視和一個標題為的 Delete。 如果檢視 LinkButton 已按下，將會顯示所選檔案的內容。如果刪除的 LinkButton 已按下，將會刪除檔案。 讓我們一開始建立這個頁面使其檢視和刪除功能可供所有使用者。 在使用中我們會了解如何啟用或停用這些功能，根據使用者瀏覽頁面 LoginView 控制項和以程式設計的方式限制功能的各節。
 
 > [!NOTE]
-> 我們即將建置的 ASP.NET 網頁使用 GridView 控制項顯示的檔案清單。 因為這個教學課程中數列著重於表單驗證、 授權、 使用者帳戶和角色，我不想花費太多討論 GridView 控制項的內部運作的時間。 雖然本教學課程提供特定的此頁面所設定的逐步指示，它不會不深入為什麼進行特定選擇，或轉譯的輸出上有的效果的特定屬性的詳細資料。 GridView 控制項詳盡，請參閱我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)*教學課程系列。
+> 我們即將建置的 ASP.NET 網頁使用 GridView 控制項顯示的檔案清單。 因為這個教學課程中數列著重於表單驗證、 授權、 使用者帳戶和角色，我不想花費太多討論 GridView 控制項的內部運作的時間。 雖然本教學課程提供特定的此頁面所設定的逐步指示，它不會不深入為什麼進行特定選擇，或轉譯的輸出上有的效果的特定屬性的詳細資料。 GridView 控制項詳盡，請參閱我*[在 ASP.NET 2.0 中使用資料](../../data-access/index.md)* 教學課程系列。
 
 
 先開啟`UserBasedAuthorization.aspx`檔案`Membership`資料夾，然後將 GridView 控制項加入至名為頁面`FilesGrid`。 從 GridView 的智慧標籤，按一下 編輯資料行連結以啟動 欄位 對話方塊。 從這裡，取消核取自動產生欄位核取方塊在左下角。 接著，將選取的按鈕、 刪除 按鈕和兩個 BoundFields 從左上角 （CommandField 類型之下可以找到的 選取和刪除按鈕）。 設定選取的按鈕`SelectText`屬性，以檢視與第一個的 BoundField`HeaderText`和`DataField`屬性名稱。 設定第二個的 BoundField`HeaderText`屬性大小 （位元組），其`DataField`屬性的長度，以其`DataFormatString`{0: n0} 的屬性和其`HtmlEncode`屬性設定為 False。

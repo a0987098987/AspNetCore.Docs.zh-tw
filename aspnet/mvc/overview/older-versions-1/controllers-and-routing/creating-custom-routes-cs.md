@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867963"
 ---
 <a name="creating-custom-routes-c"></a><span data-ttu-id="e8734-104">建立自訂路由 (C#)</span><span class="sxs-lookup"><span data-stu-id="e8734-104">Creating Custom Routes (C#)</span></span>
 ====================

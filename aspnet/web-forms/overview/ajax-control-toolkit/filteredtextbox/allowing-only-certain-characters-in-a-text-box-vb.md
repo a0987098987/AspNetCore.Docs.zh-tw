@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870150"
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-vb"></a><span data-ttu-id="866fd-104">允許文字方塊 (VB) 中的某些字元</span><span class="sxs-lookup"><span data-stu-id="866fd-104">Allowing Only Certain Characters in a Text Box (VB)</span></span>
 ====================

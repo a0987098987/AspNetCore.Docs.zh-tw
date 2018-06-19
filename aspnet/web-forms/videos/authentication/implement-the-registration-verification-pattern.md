@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880865"
 ---
 <a name="implement-the-registration-verification-pattern"></a><span data-ttu-id="dfc6a-103">實作註冊驗證模式</span><span class="sxs-lookup"><span data-stu-id="dfc6a-103">Implement the Registration Verification Pattern</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881717"
 ---
 <a name="how-do-i-create-a-master-page-in-visual-studio-2008"></a><span data-ttu-id="7078f-103">[如何:]在 Visual Studio 2008 中建立主版頁面</span><span class="sxs-lookup"><span data-stu-id="7078f-103">[How Do I:] Create a Master Page in Visual Studio 2008</span></span>
 ====================

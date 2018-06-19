@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867888"
 ---
 <a name="creating-an-action-vb"></a><span data-ttu-id="30096-104">建立動作 (VB)</span><span class="sxs-lookup"><span data-stu-id="30096-104">Creating an Action (VB)</span></span>
 ====================

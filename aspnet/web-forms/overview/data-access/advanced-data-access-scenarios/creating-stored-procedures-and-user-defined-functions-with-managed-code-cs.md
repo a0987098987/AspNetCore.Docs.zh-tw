@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877433"
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a><span data-ttu-id="ca197-104">建立預存程序和使用者定義函數以 Managed 程式碼 (C#)</span><span class="sxs-lookup"><span data-stu-id="ca197-104">Creating Stored Procedures and User-Defined Functions with Managed Code (C#)</span></span>
 ====================

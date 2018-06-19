@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867420"
 ---
 <a name="nerddinner-wrap-up"></a><span data-ttu-id="19111-103">向上 NerdDinner 換行</span><span class="sxs-lookup"><span data-stu-id="19111-103">NerdDinner Wrap Up</span></span>
 ====================

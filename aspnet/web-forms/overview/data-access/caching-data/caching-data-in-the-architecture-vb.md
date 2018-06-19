@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876380"
 ---
 <a name="caching-data-in-the-architecture-vb"></a><span data-ttu-id="ae4c4-104">快取的架構 (VB) 中的資料</span><span class="sxs-lookup"><span data-stu-id="ae4c4-104">Caching Data in the Architecture (VB)</span></span>
 ====================

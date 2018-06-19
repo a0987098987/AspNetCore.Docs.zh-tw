@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873049"
 ---
 <a name="filling-a-list-using-cascadingdropdown-vb"></a>填滿使用 CascadingDropDown (VB) 的清單
 ====================

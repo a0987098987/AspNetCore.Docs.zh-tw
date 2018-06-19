@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875275"
 ---
 <a name="iteration-5--create-unit-tests-vb"></a>反覆項目 #5 – 建立單元測試 (VB)
 ====================
@@ -184,7 +185,7 @@ Visual Studio 不包含模擬物件架構。 不過，有數個商業和開放�
 
 剩餘的測試確認 CreateContact() 方法呼叫含有無效的連絡人時然後方法會傳回 false 的預期的驗證錯誤訊息加入至模型狀態。 比方說，CreateContactRequiredFirstName() 測試會以空字串的 FirstName 屬性建立連絡人類別的執行個體。 接下來，CreateContact() 方法稱為含有無效的連絡人。 最後，測試會 CreateContact() 傳回 false，而且模型狀態包含預期的驗證錯誤訊息 「 名字 」 所需。
 
-您也可以選取功能表選項清單 1 中執行單元測試**，執行測試，（CTRL + R、 A） 的方案中的所有測試**。 測試結果會顯示在 [測試結果] 視窗中 （請參閱圖 4）。
+您也可以選取功能表選項清單 1 中執行單元測試 **，執行測試，（CTRL + R、 A） 的方案中的所有測試**。 測試結果會顯示在 [測試結果] 視窗中 （請參閱圖 4）。
 
 
 [![測試結果](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)

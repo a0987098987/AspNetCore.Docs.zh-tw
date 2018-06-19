@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874781"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-4"></a>使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 4 部分
 ====================
@@ -102,7 +103,7 @@ NuGet 會將這些偵錯版本和 jQuery UI 核心和 jQuery UI 日期選擇器�
 - *jquery.ui.datepicker.js*
 - *jquery.ui.datepicker.min.js*
 
-注意： 偵錯版本 (不含任何檔案*。 min.js*延伸模組) 適合進行偵錯，但在生產網站中，您會加入縮短的版本。
+注意： 偵錯版本 (不含任何檔案 *。 min.js*延伸模組) 適合進行偵錯，但在生產網站中，您會加入縮短的版本。
 
 若要實際使用 jQuery 日期選擇器，您要建立 [行事曆] widget 中編輯範本將連結的 jQuery 指令碼。 在**方案總管 中**，以滑鼠右鍵按一下*指令碼*資料夾，然後選取**新增**，然後**新項目**，然後**JScript檔案**。 將檔案命名*DatePickerReady.js*。
 
@@ -112,7 +113,7 @@ NuGet 會將這些偵錯版本和 jQuery UI 核心和 jQuery UI 日期選擇器�
 
 如果您不熟悉 jQuery，以下是這個動作的簡短說明： 第一行是&quot;jQuery 準備&quot;函式，當已載入的網頁中的所有 DOM 項目時呼叫。 第二行中選取所有具有類別名稱的 DOM 項目`datefield`，再叫用`datepicker`為每個函式。 (請記住您加入`datefield`類別*Views\Shared\EditorTemplates\Date.cshtml*稍早在本教學課程中的範本。)
 
-接下來，開啟*_layout.cshtml\\_Layout.cshtml*檔案。 您必須將參考加入至下列檔案，也就是所有必要的好讓您可以使用日期選擇器：
+接下來，開啟 *_layout.cshtml\\_Layout.cshtml*檔案。 您必須將參考加入至下列檔案，也就是所有必要的好讓您可以使用日期選擇器：
 
 - *Content/themes/base/jquery.ui.core.css*
 - *Content/themes/base/jquery.ui.datepicker.css*
@@ -121,7 +122,7 @@ NuGet 會將這些偵錯版本和 jQuery UI 核心和 jQuery UI 日期選擇器�
 - *jquery.ui.datepicker.min.js*
 - *DatePickerReady.js*
 
-下列範例顯示的實際程式碼應新增在底部`head`中的項目*_layout.cshtml\\_Layout.cshtml*檔案。
+下列範例顯示的實際程式碼應新增在底部`head`中的項目 *_layout.cshtml\\_Layout.cshtml*檔案。
 
 [!code-cshtml[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/samples/sample6.cshtml)]
 

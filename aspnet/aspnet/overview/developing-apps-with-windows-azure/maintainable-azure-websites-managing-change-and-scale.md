@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878343"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>在實驗室交給： 容易維護的 Azure 網站： 管理變更和小數位數
 ====================
@@ -170,12 +171,12 @@ ms.lasthandoff: 04/06/2018
     ![在 SQL Server 物件總管 中開啟](maintainable-azure-websites-managing-change-and-scale/_static/image4.png "在 SQL Server 物件總管 中開啟")
 
     *在 SQL Server 物件總管 中開啟*
-9. 在**SQL Server 物件總管**視窗中，連接到 LocalDB 執行個體，以滑鼠右鍵按一下**SQL Server**節點，然後選取**加入 SQL Server...**選項。
+9. 在**SQL Server 物件總管**視窗中，連接到 LocalDB 執行個體，以滑鼠右鍵按一下**SQL Server**節點，然後選取**加入 SQL Server...** 選項。
 
     ![加入 SQL Server 執行個體](maintainable-azure-websites-managing-change-and-scale/_static/image5.png "加入 SQL Server 執行個體")
 
     *將 SQL Server 執行個體加入至 SQL Server 物件總管*
-10. 設定**伺服器名稱**至*(localdb) \v11.0*留下**Windows 驗證**當做驗證模式。 按一下**連接**才能繼續。
+10. 設定**伺服器名稱**至 *(localdb) \v11.0*留下**Windows 驗證**當做驗證模式。 按一下**連接**才能繼續。
 
     ![連接到 LocalDB](maintainable-azure-websites-managing-change-and-scale/_static/image6.png "連接到 LocalDB")
 
@@ -300,7 +301,7 @@ ms.lasthandoff: 04/06/2018
 8. 請等到建立新的 web 應用程式。
 
     > [!NOTE]
-    > 根據預設，Azure 會提供在網域*.azurewebsites.net*但也讓您設定使用 Azure 管理入口網站的自訂網域的可能性。 不過，您只可以管理自訂網域，如果您使用特定的 Azure 應用程式服務模式。
+    > 根據預設，Azure 會提供在網域 *.azurewebsites.net*但也讓您設定使用 Azure 管理入口網站的自訂網域的可能性。 不過，您只可以管理自訂網域，如果您使用特定的 Azure 應用程式服務模式。
     > 
     > Azure App Service 是免費、 共用、 Basic、 Standard 和 Premium edition 提供。 在免費和共用模式中，所有的 web 應用程式在多租用戶環境中執行，並可 CPU、 記憶體和網路使用量配額。 可用的應用程式的最大數目可能會隨您的計劃。 在標準模式中，您可以選擇哪些應用程式對應的專用虛擬機器上執行標準的 azure 計算資源。 您可以找到中的 web 應用程式模式組態**標尺**web 應用程式的功能表。
     > 
@@ -359,7 +360,7 @@ ms.lasthandoff: 04/06/2018
     *允許的 IP 位址*
 8. 按一下**儲存**底部的頁面，即可完成步驟。
 9. 切換回 Visual Studio。
-10. 在**Package Manager Console**，執行下列命令取代*[您的連接字串的]*預留位置您從 Azure 複製連接字串
+10. 在**Package Manager Console**，執行下列命令取代 *[您的連接字串的]* 預留位置您從 Azure 複製連接字串
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample10.ps1)]
 
@@ -400,7 +401,7 @@ ms.lasthandoff: 04/06/2018
     ![確認暫存發行](maintainable-azure-websites-managing-change-and-scale/_static/image35.png "按一下 [是] 才能啟用預備的發行")
 
     *確認預備的發行*
-6. 在 web 應用程式清單中，展開左邊的 web 應用程式名稱以顯示預備網站位置的標記。 您的 web 應用程式，後面接著名稱***（預備）***。 按一下以移至 [管理] 頁面的預備網站。
+6. 在 web 應用程式清單中，展開左邊的 web 應用程式名稱以顯示預備網站位置的標記。 您的 web 應用程式，後面接著名稱 ***（預備）***。 按一下以移至 [管理] 頁面的預備網站。
 
     ![瀏覽至預備環境的 web 應用程式](maintainable-azure-websites-managing-change-and-scale/_static/image36.png "瀏覽至預備環境的 web 應用程式")
 
@@ -410,7 +411,7 @@ ms.lasthandoff: 04/06/2018
     ![複製的 Git URL 值](maintainable-azure-websites-managing-change-and-scale/_static/image37.png)
 
     *複製的 Git URL 值*
-8. 開啟新**Git Bash**主控台，然後執行下列命令。 更新*[您的應用程式的路徑]*預留位置路徑**GeekQuiz**方案中，位於**Source\Ex1 DeployingWebSiteToStaging\Begin**資料夾這個實驗室中。
+8. 開啟新**Git Bash**主控台，然後執行下列命令。 更新 *[您的應用程式的路徑]* 預留位置路徑**GeekQuiz**方案中，位於**Source\Ex1 DeployingWebSiteToStaging\Begin**資料夾這個實驗室中。
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample11.cmd)]
 
@@ -442,7 +443,7 @@ ms.lasthandoff: 04/06/2018
 14. 如果已成功部署應用程式，您會看到一些測驗登入頁面。
 
     > [!NOTE]
-    > 所部署的應用程式的 URL 包含您的 web 應用程式，後面接著名稱*-暫存*。
+    > 所部署的應用程式的 URL 包含您的 web 應用程式，後面接著名稱 *-暫存*。
 
     ![預備環境中執行應用程式](maintainable-azure-websites-managing-change-and-scale/_static/image42.png)
 
@@ -526,7 +527,7 @@ ms.lasthandoff: 04/06/2018
 您現在會將推送您對先前工作中的儲存機制將會觸發新的部署到生產環境的變更。 然後，您將使用問題使用**F12 開發工具**由 Internet Explorer 中，提供，然後執行回復至先前的部署從 Azure 管理入口網站。
 
 1. 開啟新**Git Bash**主控台部署至 Azure App Service 更新的應用程式。
-2. 執行下列命令以將變更推送至 Azure。 更新*[您的應用程式的路徑]*預留位置路徑**GeekQuiz**方案。 系統會提示您做為部署密碼。
+2. 執行下列命令以將變更推送至 Azure。 更新 *[您的應用程式的路徑]* 預留位置路徑**GeekQuiz**方案。 系統會提示您做為部署密碼。
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample15.cmd)]
 
@@ -687,7 +688,7 @@ ms.lasthandoff: 04/06/2018
 
 在這個工作中，您將設定**GeekQuiz**解決方案，以使用映像上傳至 Azure Blob 儲存體 （而不是位於 web 應用程式中的影像） 加入 ASP.NET URL 重寫規則，在**web.config**檔案。
 
-1. 在 Visual Studio 中開啟**Web.config**檔案內**GeekQuiz**專案，並找出**&lt;system.webServer&gt;**項目。
+1. 在 Visual Studio 中開啟**Web.config**檔案內**GeekQuiz**專案，並找出**&lt;system.webServer&gt;** 項目。
 2. 加入下列程式碼，將 URL 重寫規則，更新您的儲存體帳戶名稱的預留位置。
 
     (程式碼片段- *WebSitesInProduction-Ex4-UrlRewriteRule*)
@@ -698,7 +699,7 @@ ms.lasthandoff: 04/06/2018
     > URL 重寫為攔截傳入的 Web 要求，並將要求重新導向至不同的資源的程序。 重寫規則的 URL 會告訴重寫引擎要求時必須重新導向，而且其中應該他們重新導向。 重寫規則由兩個字串所組成： 尋找所要求 URL 中的模式 （通常會使用規則運算式），並找到要取代的模式，如果字串。 如需詳細資訊，請參閱[ASP.NET 中的 URL 重寫](https://msdn.microsoft.com/library/ms972974.aspx)。
 3. 按**CTRL + S**儲存的變更。
 4. 開啟新**Git Bash**主控台部署至 Azure App Service 更新的應用程式。
-5. 執行下列命令以將變更推送至 Azure。 更新*[您的應用程式的路徑]*預留位置路徑**GeekQuiz**方案。 系統會提示您做為部署密碼。
+5. 執行下列命令以將變更推送至 Azure。 更新 *[您的應用程式的路徑]* 預留位置路徑**GeekQuiz**方案。 系統會提示您做為部署密碼。
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample18.cmd)]
 
@@ -722,7 +723,7 @@ ms.lasthandoff: 04/06/2018
 
     *啟動網路錄製*
 3. 按**CTRL + F5**重新整理網頁。
-4. 在網頁完成載入時，您應該會看到的 HTTP 要求**/img/logo-big.png**含有 HTTP URL **301**結果 （重新導向） 和另一個要求`http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png`URL 含有 HTTP **200**結果。
+4. 在網頁完成載入時，您應該會看到的 HTTP 要求 **/img/logo-big.png**含有 HTTP URL **301**結果 （重新導向） 和另一個要求`http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png`URL 含有 HTTP **200**結果。
 
     ![正在驗證重新導向 URL](maintainable-azure-websites-managing-change-and-scale/_static/image76.png "開發人員工具中顯示重新導向")
 
@@ -770,12 +771,12 @@ ms.lasthandoff: 04/06/2018
 
 既然**自動調整規模**已經過設定，您將建立**Web 效能和負載測試專案**在 Visual Studio 中產生某些 web 應用程式上的 CPU 負載。
 
-1. 開啟**Visual Studio Ultimate 2013**選取**檔案 |新 |專案...**啟動新的解決方案。
+1. 開啟**Visual Studio Ultimate 2013**選取**檔案 |新 |專案...** 啟動新的解決方案。
 
     ![建立新的專案](maintainable-azure-websites-managing-change-and-scale/_static/image79.png "建立新的專案")
 
     *建立新的專案*
-2. 在**新專案**對話方塊中，選取**Web 效能和負載測試專案**下**Visual C# |測試** 索引標籤。請確定**.NET Framework 4.5**是選取，將專案命名為*WebAndLoadTestProject*，選擇**位置**按一下**確定**。
+2. 在**新專案**對話方塊中，選取**Web 效能和負載測試專案**下**Visual C# |測試** 索引標籤。請確定 **.NET Framework 4.5**是選取，將專案命名為*WebAndLoadTestProject*，選擇**位置**按一下**確定**。
 
     ![建立新的 Web 和負載測試專案](maintainable-azure-websites-managing-change-and-scale/_static/image80.png "建立新的 Web 和負載測試專案")
 
@@ -795,10 +796,10 @@ ms.lasthandoff: 04/06/2018
     ![將迴圈加入至 WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image83.png "將迴圈加入至 WebTest1")
 
     *將迴圈加入至 WebTest1*
-6. 在**加入條件式規則和項目迴圈**對話方塊中，選取**For 迴圈 」**規則，並修改下列屬性。
+6. 在**加入條件式規則和項目迴圈**對話方塊中，選取**For 迴圈 」** 規則，並修改下列屬性。
 
    1. **結束值：** 1000年
-   2. **內容參數名稱：**迭代器
+   2. **內容參數名稱：** 迭代器
    3. **遞增值：** 1
 
       ![選取 For 迴圈 」 規則，並更新屬性](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "選取 For 迴圈 」 規則，並更新屬性")
@@ -834,7 +835,7 @@ ms.lasthandoff: 04/06/2018
     ![選取的測試混合模型](maintainable-azure-websites-managing-change-and-scale/_static/image90.png "選取的測試混合模型")
 
     *選取的測試混合模型*
-13. 在**測試混合模型**頁面上，按一下**新增...**若要將測試加入至混合。
+13. 在**測試混合模型**頁面上，按一下**新增...** 若要將測試加入至混合。
 
     ![將測試加入至測試混合](maintainable-azure-websites-managing-change-and-scale/_static/image91.png "將測試加入至測試混合")
 

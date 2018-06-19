@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874378"
 ---
 <a name="secure-applications-using-authentication-and-authorization"></a>安全使用驗證和授權的應用程式
 ====================
@@ -41,7 +42,7 @@ by [Microsoft](https://github.com/microsoft)
 
 *驗證*是識別及驗證應用程式存取的用戶端的身分識別的程序。 它更簡單來說，是關於 「 誰 」，在瀏覽的網站時，使用者識別。 ASP.NET 支援多種方式來驗證使用者的瀏覽器。 網際網路的 web 應用程式最常見的驗證方法使用稱為 「 表單驗證 」。 表單驗證可讓開發人員撰寫 HTML 登入表單在其應用程式，並驗證使用者名稱/密碼使用者送出針對資料庫或其他密碼認證存放區。 如果使用者名稱/密碼組合不正確，開發人員可以再詢問 ASP.NET 發行加密的 HTTP cookie 來識別使用者在未來的要求。 我們會使用表單驗證與我們 NerdDinner 應用程式。
 
-*授權*是判斷是否已驗證的使用者有權限來存取特定 URL/資源或執行某些動作的程序。 比方說，我們 NerdDinner 應用程式中我們會想要授權登入使用者可以存取*/Dinners/建立*URL，並建立新的 Dinners。 我們也會想要新增授權邏輯，讓只有裝載 dinner 的使用者可以編輯它 – 並拒絕所有其他使用者的編輯。
+*授權*是判斷是否已驗證的使用者有權限來存取特定 URL/資源或執行某些動作的程序。 比方說，我們 NerdDinner 應用程式中我們會想要授權登入使用者可以存取 */Dinners/建立*URL，並建立新的 Dinners。 我們也會想要新增授權邏輯，讓只有裝載 dinner 的使用者可以編輯它 – 並拒絕所有其他使用者的編輯。
 
 ### <a name="forms-authentication-and-the-accountcontroller"></a>表單驗證和 AccountController
 
@@ -51,11 +52,11 @@ ASP.NET MVC 的預設 Visual Studio 專案範本建立新的 ASP.NET MVC 應用�
 
 ![](secure-applications-using-authentication-and-authorization/_static/image1.png)
 
-按一下 「 登入 」 的連結會引導使用者*/帳戶/登入*URL:
+按一下 「 登入 」 的連結會引導使用者 */帳戶/登入*URL:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image2.png)
 
-訪客您尚未註冊可以這樣做，請按一下 「 註冊 」 連結 – 這會移至*/帳戶/暫存器*URL，讓他們輸入帳戶的詳細資料：
+訪客您尚未註冊可以這樣做，請按一下 「 註冊 」 連結 – 這會移至 */帳戶/暫存器*URL，讓他們輸入帳戶的詳細資料：
 
 ![](secure-applications-using-authentication-and-authorization/_static/image3.png)
 
@@ -83,7 +84,7 @@ AccountController 類別來發出加密的驗證 cookie 與 ASP.NET 成員資格
 
 我們不需要撰寫任何程式碼，以啟用安全的驗證和帳戶管理實作 NerdDinner 應用程式。 使用者可以註冊新帳戶，與我們的應用程式中，登入/登出的站台。
 
-現在我們可以將授權邏輯加入至應用程式，並控制哪些它們可以和無法進行站台內使用的驗證狀態 」 和 「 訪客的使用者名稱。 讓我們先將授權邏輯加入至我們 DinnersController 類別的 [建立] 動作方法。 具體而言，我們將要求的使用者存取*/Dinners/建立*URL 必須以登入。 如果使用者未登入我們會重新導向至登入頁面，讓他們可以登入。
+現在我們可以將授權邏輯加入至應用程式，並控制哪些它們可以和無法進行站台內使用的驗證狀態 」 和 「 訪客的使用者名稱。 讓我們先將授權邏輯加入至我們 DinnersController 類別的 [建立] 動作方法。 具體而言，我們將要求的使用者存取 */Dinners/建立*URL 必須以登入。 如果使用者未登入我們會重新導向至登入頁面，讓他們可以登入。
 
 實作這個邏輯是很簡單。 我們只需要待辦事項是將 [Authorize] 篩選條件屬性加入至我們建立動作方法就像這樣：
 
@@ -119,7 +120,7 @@ ASP.NET MVC 支援建立 「 動作篩選 」 可以用來實作可重複使用�
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample5.cs)]
 
-然後，我們會新增至 Edit() 動作方法 [Authorize] 屬性內 DinnersController 類別。 這可確保使用者必須登入，要求*/Dinners/編輯 / [id]* URL。
+然後，我們會新增至 Edit() 動作方法 [Authorize] 屬性內 DinnersController 類別。 這可確保使用者必須登入，要求 */Dinners/編輯 / [id]* URL。
 
 然後我們可以將程式碼加入使用 Dinner.IsHostedBy(username) helper 方法來驗證登入使用者符合 Dinner 主機我們編輯方法。 如果使用者不是主機，我們將會顯示 「 InvalidOwner 」 檢視，並終止要求。 若要這樣做的程式碼看起來如下：
 

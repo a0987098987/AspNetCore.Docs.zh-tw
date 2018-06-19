@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874846"
 ---
 <a name="part-3-views-and-viewmodels"></a>第 3 部分： 檢視和 ViewModels
 ====================
@@ -229,7 +230,7 @@ Visual Web Developer 中建立，並開啟 「 Index.cshtml 」 檢視範本之�
 
 ## <a name="adding-links-between-pages"></a>新增頁之間的連結
 
-列出目前的內容類型我們 /Store URL 只是以純文字格式列出內容類型名稱。 讓我們來變更這個值，而不是純文字，我們改為需要內容類型名稱連結至適當的存放區/瀏覽 URL，以便讓按一下像是"Disco"會瀏覽至存放區/瀏覽音樂內容類型？ 內容類型 = Disco URL。 我們無法更新使用這些連結的程式碼下方的輸出我們 \Views\Store\Index.cshtml 檢視範本**（不要輸入下列命令中-我們改善）**:
+列出目前的內容類型我們 /Store URL 只是以純文字格式列出內容類型名稱。 讓我們來變更這個值，而不是純文字，我們改為需要內容類型名稱連結至適當的存放區/瀏覽 URL，以便讓按一下像是"Disco"會瀏覽至存放區/瀏覽音樂內容類型？ 內容類型 = Disco URL。 我們無法更新使用這些連結的程式碼下方的輸出我們 \Views\Store\Index.cshtml 檢視範本 **（不要輸入下列命令中-我們改善）**:
 
 [!code-html[Main](mvc-music-store-part-3/samples/sample19.html)]
 

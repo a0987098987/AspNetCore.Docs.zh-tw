@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/persistent-connection-authorization
-title: "SignalR 持續連線的驗證和授權 (SignalR 1.x) |Microsoft 文件"
+title: SignalR 持續連線的驗證和授權 (SignalR 1.x) |Microsoft 文件
 author: pfletcher
-description: "本主題描述如何強制執行授權持續連線。 如需安全性整合的 SignalR 應用程式，一般資訊..."
+description: 本主題描述如何強制執行授權持續連線。 如需安全性整合的 SignalR 應用程式，一般資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/21/2013
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036098"
 ---
 <a name="authentication-and-authorization-for-signalr-persistent-connections-signalr-1x"></a>SignalR 持續連線的驗證和授權 (SignalR 1.x)
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876809"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程： 使用 SignalR 2 廣播的伺服器
 ====================
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/06/2018
 
 ![StockTicker 初始版本](tutorial-server-broadcast-with-signalr/_static/image1.png)
 
-定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和**%**動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
+定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。 在瀏覽器的數字和符號**變更**和**%** 動態變更通知來回應來自伺服器的資料行。 如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。
 
 本教學課程包含下列各節：
 
@@ -95,7 +96,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-the-project"></a>建立專案
 
 1. 從**檔案**功能表上，按一下 **新專案**。
-2. 在**新專案**對話方塊方塊中，展開  **C#**下**範本**選取**Web**。
+2. 在**新專案**對話方塊方塊中，展開  **C#** 下**範本**選取**Web**。
 3. 選取**ASP.NET 空 Web 應用程式**範本，將專案*SignalR.StockTicker*，然後按一下**確定**。
 
     ![新增專案對話方塊](tutorial-server-broadcast-with-signalr/_static/image2.png)

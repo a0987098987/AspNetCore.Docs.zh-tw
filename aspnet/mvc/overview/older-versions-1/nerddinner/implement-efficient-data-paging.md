@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873244"
 ---
 <a name="implement-efficient-data-paging"></a>實作有效率的資料分頁
 ====================
@@ -33,7 +34,7 @@ by [Microsoft](https://github.com/microsoft)
 
 ## <a name="nerddinner-step-8-paging-support"></a>NerdDinner 步驟 8： 分頁支援
 
-如果網站順利完成時，會有數千個即將 dinners。 我們需要確定我們的 UI 調整為處理所有的這些 dinners，而且可讓使用者瀏覽它們。 若要啟用此功能，我們會將新增的分頁支援我們*/Dinners* URL 一次，我們在顯示 1000 個 dinners 的因此，而是會只顯示 10 個即將 dinners 一次-並讓使用者可以頁面後和向前逐步執行中的整個清單SEO 易懂的方式。
+如果網站順利完成時，會有數千個即將 dinners。 我們需要確定我們的 UI 調整為處理所有的這些 dinners，而且可讓使用者瀏覽它們。 若要啟用此功能，我們會將新增的分頁支援我們 */Dinners* URL 一次，我們在顯示 1000 個 dinners 的因此，而是會只顯示 10 個即將 dinners 一次-並讓使用者可以頁面後和向前逐步執行中的整個清單SEO 易懂的方式。
 
 ### <a name="index-action-method-recap"></a>Index 動作方法的重點
 
@@ -41,7 +42,7 @@ by [Microsoft](https://github.com/microsoft)
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample1.cs)]
 
-發出要求來*/Dinners* URL，它會擷取一份所有即將 dinners 並接下來會呈現所有它們：
+發出要求來 */Dinners* URL，它會擷取一份所有即將 dinners 並接下來會呈現所有它們：
 
 ![](implement-efficient-data-paging/_static/image1.png)
 
@@ -67,17 +68,17 @@ IQueryable&lt;Dinner&gt;我們 FindUpcomingDinners() 方法所傳回的物件會
 
 #### <a name="using-a-querystring-value"></a>使用查詢字串值
 
-下列程式碼示範如何我們可以更新我們 index （） 的動作方法來支援查詢字串參數，並啟用 Url，例如*/Dinners？ 頁面 = 2*:
+下列程式碼示範如何我們可以更新我們 index （） 的動作方法來支援查詢字串參數，並啟用 Url，例如 */Dinners？ 頁面 = 2*:
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample4.cs)]
 
-上述的 index 動作方法具有名為 「 頁面 」 的參數。 參數宣告為可為 null 的整數 (這是什麼 int？ 表示)。 這表示*/Dinners？ 頁面 = 2* URL 會導致值為"2"傳遞為參數值。 */Dinners* URL （不含查詢字串值） 會導致要傳遞 null 值。
+上述的 index 動作方法具有名為 「 頁面 」 的參數。 參數宣告為可為 null 的整數 (這是什麼 int？ 表示)。 這表示 */Dinners？ 頁面 = 2* URL 會導致值為"2"傳遞為參數值。 */Dinners* URL （不含查詢字串值） 會導致要傳遞 null 值。
 
 我們會頁面值乘以頁面大小 （在此情況下 10 個資料列） 來判斷多少 dinners 略過。 我們使用[C# null"聯合 」 運算子 （？）](https://weblogs.asp.net/scottgu/archive/2007/09/20/the-new-c-null-coalescing-operator-and-using-it-with-linq.aspx)處理可為 null 類型時，會很有用。 上述程式碼將指派頁面 0 的值如果頁面參數為 null。
 
 #### <a name="using-embedded-url-values"></a>使用內嵌 URL 值
 
-使用查詢字串值的替代方式是將內嵌頁面內之參數的實際 URL 本身。 例如： */Dinners/Page/2*或*/Dinners/2*。 ASP.NET MVC 包含功能強大的 URL 路由引擎，以簡化支援像這樣的情況。
+使用查詢字串值的替代方式是將內嵌頁面內之參數的實際 URL 本身。 例如： */Dinners/Page/2*或 */Dinners/2*。 ASP.NET MVC 包含功能強大的 URL 路由引擎，以簡化支援像這樣的情況。
 
 我們可以註冊自訂的路由規則的對應要我們想要任何控制器類別或動作方法的任何連入的 URL 或 URL 格式。 我們只需要待辦事項是開啟內受測專案的 Global.asax 檔案：
 
@@ -93,11 +94,11 @@ IQueryable&lt;Dinner&gt;我們 FindUpcomingDinners() 方法所傳回的物件會
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample6.cs)]
 
-現在當我們執行應用程式，並在輸入和*/Dinners*我們會看到前 10 個即將 dinners:
+現在當我們執行應用程式，並在輸入和 */Dinners*我們會看到前 10 個即將 dinners:
 
 ![](implement-efficient-data-paging/_static/image3.png)
 
-和中，當我們輸入*/Dinners/Page/1*我們會看到 dinners 的下一個頁面：
+和中，當我們輸入 */Dinners/Page/1*我們會看到 dinners 的下一個頁面：
 
 ![](implement-efficient-data-paging/_static/image4.png)
 

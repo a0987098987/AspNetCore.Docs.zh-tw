@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873413"
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取您的模型資料
 ====================
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/06/2018
 
 自動建立 ASP.NET MVC 4 的 CRUD （建立、 讀取、 更新和刪除） 的動作方法和 （CRUD 動作方法和檢視表的自動建立稱為 scaffolding） 讓您檢視。 您現在有一個功能完整的 web 應用程式，可讓您建立、 列出、 編輯和刪除影片項目。
 
-執行應用程式，並瀏覽至`Movies`控制器藉由附加*/Movies*至您的瀏覽器的網址列中的 URL。 因為應用程式依賴預設路由 (定義於*Global.asax*檔案)，瀏覽器要求`http://localhost:xxxxx/Movies`路由傳送至預設`Index`動作方法的`Movies`控制站。 換句話說，瀏覽器要求`http://localhost:xxxxx/Movies`實際上是相同的瀏覽器要求`http://localhost:xxxxx/Movies/Index`。 因為您尚未加入任何尚未，結果會是空的電影清單。
+執行應用程式，並瀏覽至`Movies`控制器藉由附加 */Movies*至您的瀏覽器的網址列中的 URL。 因為應用程式依賴預設路由 (定義於*Global.asax*檔案)，瀏覽器要求`http://localhost:xxxxx/Movies`路由傳送至預設`Index`動作方法的`Movies`控制站。 換句話說，瀏覽器要求`http://localhost:xxxxx/Movies`實際上是相同的瀏覽器要求`http://localhost:xxxxx/Movies/Index`。 因為您尚未加入任何尚未，結果會是空的電影清單。
 
 ![](accessing-your-models-data-from-a-controller/_static/image2.png)
 
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/06/2018
 
 ![](accessing-your-models-data-from-a-controller/_static/image3.png)
 
-按一下**建立**按鈕會導致表單張貼至伺服器，電影資訊儲存在資料庫中的位置。 您重新導向至*/Movies* URL，您可以在其中看到新建立的電影清單中。
+按一下**建立**按鈕會導致表單張貼至伺服器，電影資訊儲存在資料庫中的位置。 您重新導向至 */Movies* URL，您可以在其中看到新建立的電影清單中。
 
 ![IndexWhenHarryMet](accessing-your-models-data-from-a-controller/_static/image4.png "IndexWhenHarryMet")
 

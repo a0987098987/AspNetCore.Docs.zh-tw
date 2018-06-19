@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872269"
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>顯示資料表的資料庫資料 (VB)
 ====================
@@ -105,7 +106,7 @@ by [Microsoft](https://github.com/microsoft)
 
 [!code-vb[Main](displaying-a-table-of-database-data-vb/samples/sample1.vb)]
 
-列出第 1 MoviesDBEntities 類別用來代表 MoviesDB 資料庫。 運算式*實體。MovieSet.ToList()*電影資料庫資料表中傳回的所有電影的集合。
+列出第 1 MoviesDBEntities 類別用來代表 MoviesDB 資料庫。 運算式*實體。MovieSet.ToList()* 電影資料庫資料表中傳回的所有電影的集合。
 
 ## <a name="create-the-view"></a>建立檢視
 

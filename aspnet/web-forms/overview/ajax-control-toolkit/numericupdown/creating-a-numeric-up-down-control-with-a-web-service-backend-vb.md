@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871385"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a>建立數值向上/向下控制項與 Web 服務後端 (VB)
 ====================

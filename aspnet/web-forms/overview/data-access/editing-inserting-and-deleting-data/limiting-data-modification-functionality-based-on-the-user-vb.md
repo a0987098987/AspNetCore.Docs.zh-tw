@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887869"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-vb"></a><span data-ttu-id="f0d76-104">限制使用者 (VB) 為基礎的資料修改功能</span><span class="sxs-lookup"><span data-stu-id="f0d76-104">Limiting Data Modification Functionality Based on the User (VB)</span></span>
 ====================

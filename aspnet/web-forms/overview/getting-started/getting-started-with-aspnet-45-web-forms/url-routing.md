@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886429"
 ---
 <a name="url-routing"></a><span data-ttu-id="80d94-103">URL 路由</span><span class="sxs-lookup"><span data-stu-id="80d94-103">URL Routing</span></span>
 ====================

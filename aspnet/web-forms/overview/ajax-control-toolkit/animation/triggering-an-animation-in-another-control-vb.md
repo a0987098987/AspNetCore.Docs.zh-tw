@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878993"
 ---
 <a name="triggering-an-animation-in-another-control-vb"></a><span data-ttu-id="33991-104">觸發動畫另一個控制項 (VB)</span><span class="sxs-lookup"><span data-stu-id="33991-104">Triggering an Animation in another Control (VB)</span></span>
 ====================

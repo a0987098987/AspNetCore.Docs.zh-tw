@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899456"
 ---
 <a name="adding-search-to-your-web-site"></a><span data-ttu-id="402a1-103">加入至您的網站搜尋</span><span class="sxs-lookup"><span data-stu-id="402a1-103">Adding Search to Your Web Site</span></span>
 ====================

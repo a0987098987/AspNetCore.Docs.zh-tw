@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881629"
 ---
 <a name="use-custom-principal-objects"></a><span data-ttu-id="60208-104">使用自訂主體物件</span><span class="sxs-lookup"><span data-stu-id="60208-104">Use Custom Principal Objects</span></span>
 ====================

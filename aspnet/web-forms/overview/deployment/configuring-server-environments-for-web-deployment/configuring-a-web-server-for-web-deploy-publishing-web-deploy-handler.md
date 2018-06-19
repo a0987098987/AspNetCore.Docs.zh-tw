@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887277"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a><span data-ttu-id="4428e-103">設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式)</span><span class="sxs-lookup"><span data-stu-id="4428e-103">Configuring a Web Server for Web Deploy Publishing (Web Deploy Handler)</span></span>
 ====================
@@ -102,7 +103,7 @@ ms.lasthandoff: 04/06/2018
     > <span data-ttu-id="4428e-175">您可能已安裝.NET Framework 4.0，透過 Windows Update。</span><span class="sxs-lookup"><span data-stu-id="4428e-175">You may have already installed the .NET Framework 4.0 through Windows Update.</span></span> <span data-ttu-id="4428e-176">如果已安裝的產品或元件，Web Platform Installer 將會指示這取代**新增**按鈕的文字**已安裝**。</span><span class="sxs-lookup"><span data-stu-id="4428e-176">If a product or component is already installed, the Web Platform Installer will indicate this by replacing the **Add** button with the text **Installed**.</span></span>
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image1.png)
-6. <span data-ttu-id="4428e-177">在**ASP.NET MVC 3 (Visual Studio 2010)**資料列中，按一下 **新增**。</span><span class="sxs-lookup"><span data-stu-id="4428e-177">In the **ASP.NET MVC 3 (Visual Studio 2010)** row, click **Add**.</span></span>
+6. <span data-ttu-id="4428e-177">在**ASP.NET MVC 3 (Visual Studio 2010)** 資料列中，按一下 **新增**。</span><span class="sxs-lookup"><span data-stu-id="4428e-177">In the **ASP.NET MVC 3 (Visual Studio 2010)** row, click **Add**.</span></span>
 7. <span data-ttu-id="4428e-178">在導覽窗格中，按一下**伺服器**。</span><span class="sxs-lookup"><span data-stu-id="4428e-178">In the navigation pane, click **Server**.</span></span>
 8. <span data-ttu-id="4428e-179">在**IIS 7 建議組態**資料列中，按一下 **新增**。</span><span class="sxs-lookup"><span data-stu-id="4428e-179">In the **IIS 7 Recommended Configuration** row, click **Add**.</span></span>
 9. <span data-ttu-id="4428e-180">在**Web 部署工具 2.1**資料列中，按一下 **新增**。</span><span class="sxs-lookup"><span data-stu-id="4428e-180">In the **Web Deployment Tool 2.1** row, click **Add**.</span></span>
@@ -120,11 +121,11 @@ ms.lasthandoff: 04/06/2018
 
 1. <span data-ttu-id="4428e-191">按一下**啟動**，然後輸入**命令提示字元**。</span><span class="sxs-lookup"><span data-stu-id="4428e-191">Click **Start**, and then type **Command Prompt**.</span></span>
 2. <span data-ttu-id="4428e-192">在搜尋結果中，以滑鼠右鍵按一下**命令提示字元**，然後按一下 **系統管理員身分執行**。</span><span class="sxs-lookup"><span data-stu-id="4428e-192">In the search results, right-click **Command Prompt**, and then click **Run as administrator**.</span></span>
-3. <span data-ttu-id="4428e-193">在 [命令提示字元] 視窗中，瀏覽至**%WINDIR%\Microsoft.NET\Framework\v4.0.30319**目錄。</span><span class="sxs-lookup"><span data-stu-id="4428e-193">In the Command Prompt window, navigate to the **%WINDIR%\Microsoft.NET\Framework\v4.0.30319** directory.</span></span>
+3. <span data-ttu-id="4428e-193">在 [命令提示字元] 視窗中，瀏覽至 **%WINDIR%\Microsoft.NET\Framework\v4.0.30319**目錄。</span><span class="sxs-lookup"><span data-stu-id="4428e-193">In the Command Prompt window, navigate to the **%WINDIR%\Microsoft.NET\Framework\v4.0.30319** directory.</span></span>
 4. <span data-ttu-id="4428e-194">輸入下列命令，並按 Enter:</span><span class="sxs-lookup"><span data-stu-id="4428e-194">Type this command, and then press Enter:</span></span>
 
     [!code-console[Main](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/samples/sample1.cmd)]
-5. <span data-ttu-id="4428e-195">如果您打算裝載在任何時間點的 64 位元 web 應用程式時，則您也應該向 IIS 註冊 64 位元版本的 ASP.NET。</span><span class="sxs-lookup"><span data-stu-id="4428e-195">If you plan to host 64-bit web applications at any point, you should also register the 64-bit version of ASP.NET with IIS.</span></span> <span data-ttu-id="4428e-196">若要這樣做，請在命令提示字元 視窗中，導覽至**%WINDIR%\Microsoft.NET\Framework64\v4.0.30319**目錄。</span><span class="sxs-lookup"><span data-stu-id="4428e-196">To do this, in the Command Prompt window, navigate to the **%WINDIR%\Microsoft.NET\Framework64\v4.0.30319** directory.</span></span>
+5. <span data-ttu-id="4428e-195">如果您打算裝載在任何時間點的 64 位元 web 應用程式時，則您也應該向 IIS 註冊 64 位元版本的 ASP.NET。</span><span class="sxs-lookup"><span data-stu-id="4428e-195">If you plan to host 64-bit web applications at any point, you should also register the 64-bit version of ASP.NET with IIS.</span></span> <span data-ttu-id="4428e-196">若要這樣做，請在命令提示字元 視窗中，導覽至 **%WINDIR%\Microsoft.NET\Framework64\v4.0.30319**目錄。</span><span class="sxs-lookup"><span data-stu-id="4428e-196">To do this, in the Command Prompt window, navigate to the **%WINDIR%\Microsoft.NET\Framework64\v4.0.30319** directory.</span></span>
 6. <span data-ttu-id="4428e-197">輸入下列命令，並按 Enter:</span><span class="sxs-lookup"><span data-stu-id="4428e-197">Type this command, and then press Enter:</span></span>
 
     [!code-console[Main](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/samples/sample2.cmd)]
@@ -225,7 +226,7 @@ ms.lasthandoff: 04/06/2018
 13. <span data-ttu-id="4428e-260">在**站台繫結**對話方塊中，按一下 **關閉**。</span><span class="sxs-lookup"><span data-stu-id="4428e-260">In the **Site Bindings** dialog box, click **Close**.</span></span>
 14. <span data-ttu-id="4428e-261">在**連線**] 窗格中，按一下 [**應用程式集區**。</span><span class="sxs-lookup"><span data-stu-id="4428e-261">In the **Connections** pane, click **Application Pools**.</span></span>
 15. <span data-ttu-id="4428e-262">在**應用程式集區**] 窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下 [**基本設定**。</span><span class="sxs-lookup"><span data-stu-id="4428e-262">In the **Application Pools** pane, right-click the name of your application pool, and then click **Basic Settings**.</span></span> <span data-ttu-id="4428e-263">根據預設，應用程式集區的名稱會符合網站的名稱 (例如， **DemoSite**)。</span><span class="sxs-lookup"><span data-stu-id="4428e-263">By default, the name of your application pool will match the name of your website (for example, **DemoSite**).</span></span>
-16. <span data-ttu-id="4428e-264">在**.NET Framework 版本**清單中，選取**.NET Framework v4.0.30319**，然後按一下 **確定**。</span><span class="sxs-lookup"><span data-stu-id="4428e-264">In the **.NET Framework version** list, select **.NET Framework v4.0.30319**, and then click **OK**.</span></span>
+16. <span data-ttu-id="4428e-264">在 **.NET Framework 版本**清單中，選取 **.NET Framework v4.0.30319**，然後按一下 **確定**。</span><span class="sxs-lookup"><span data-stu-id="4428e-264">In the **.NET Framework version** list, select **.NET Framework v4.0.30319**, and then click **OK**.</span></span>
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image14.png)
 

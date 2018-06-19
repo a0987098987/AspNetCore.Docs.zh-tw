@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885096"
 ---
 <a name="master-pages"></a><span data-ttu-id="5ffd7-104">主版頁面</span><span class="sxs-lookup"><span data-stu-id="5ffd7-104">Master Pages</span></span>
 ====================
@@ -144,8 +145,8 @@ ms.lasthandoff: 04/06/2018
 
 - <span data-ttu-id="5ffd7-214"><strong>MasterPageFile</strong>屬性@Page指示詞</span><span class="sxs-lookup"><span data-stu-id="5ffd7-214">The <strong>MasterPageFile</strong> attribute of the @Page directive</span></span>
 - <span data-ttu-id="5ffd7-215">設定**Page.MasterPageFile**程式碼中的屬性。</span><span class="sxs-lookup"><span data-stu-id="5ffd7-215">Setting the **Page.MasterPageFile** property in code.</span></span>
-- <span data-ttu-id="5ffd7-216">**&lt;頁面&gt;**應用程式組態檔 (web.config 應用程式的根資料夾中) 中的項目</span><span class="sxs-lookup"><span data-stu-id="5ffd7-216">The **&lt;pages&gt;** element in the applications configuration file (web.config in the root folder of the application)</span></span>
-- <span data-ttu-id="5ffd7-217">**&lt;頁面&gt;**子資料夾的組態檔 (位於子資料夾中的 web.config) 中的項目</span><span class="sxs-lookup"><span data-stu-id="5ffd7-217">The **&lt;pages&gt;** element in a subfolders configuration file (web.config in a subfolder)</span></span>
+- <span data-ttu-id="5ffd7-216">**&lt;頁面&gt;** 應用程式組態檔 (web.config 應用程式的根資料夾中) 中的項目</span><span class="sxs-lookup"><span data-stu-id="5ffd7-216">The **&lt;pages&gt;** element in the applications configuration file (web.config in the root folder of the application)</span></span>
+- <span data-ttu-id="5ffd7-217">**&lt;頁面&gt;** 子資料夾的組態檔 (位於子資料夾中的 web.config) 中的項目</span><span class="sxs-lookup"><span data-stu-id="5ffd7-217">The **&lt;pages&gt;** element in a subfolders configuration file (web.config in a subfolder)</span></span>
 
 ## <a name="masterpagefile-attribute"></a><span data-ttu-id="5ffd7-218">MasterPageFile 屬性</span><span class="sxs-lookup"><span data-stu-id="5ffd7-218">MasterPageFile Attribute</span></span>
 

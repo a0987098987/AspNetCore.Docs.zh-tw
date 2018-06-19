@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879500"
 ---
 <a name="part-7-membership-and-authorization"></a><span data-ttu-id="dcf3a-104">第 7 部分： 成員資格和授權</span><span class="sxs-lookup"><span data-stu-id="dcf3a-104">Part 7: Membership and Authorization</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877277"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-c"></a><span data-ttu-id="2ca40-104">插入、 更新和刪除資料與 SqlDataSource (C#)</span><span class="sxs-lookup"><span data-stu-id="2ca40-104">Inserting, Updating, and Deleting Data with the SqlDataSource (C#)</span></span>
 ====================

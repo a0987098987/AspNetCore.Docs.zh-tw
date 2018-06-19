@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878226"
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a><span data-ttu-id="bb1bc-103">排序、 篩選和分頁與 Entity Framework 中的 ASP.NET MVC 應用程式 (10-3)</span><span class="sxs-lookup"><span data-stu-id="bb1bc-103">Sorting, Filtering, and Paging with the Entity Framework in an ASP.NET MVC Application (3 of 10)</span></span>
 ====================
@@ -321,14 +322,14 @@ ms.lasthandoff: 04/06/2018
 
     ![下載訂用帳戶檔案](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image21.png)
 
-    <span data-ttu-id="bb1bc-326">c. </span><span class="sxs-lookup"><span data-stu-id="bb1bc-326">c.</span></span> <span data-ttu-id="bb1bc-327">在瀏覽器視窗中，儲存*.publishsettings*檔案。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-327">In your browser window, save the *.publishsettings* file.</span></span>
+    <span data-ttu-id="bb1bc-326">c. </span><span class="sxs-lookup"><span data-stu-id="bb1bc-326">c.</span></span> <span data-ttu-id="bb1bc-327">在瀏覽器視窗中，儲存 *.publishsettings*檔案。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-327">In your browser window, save the *.publishsettings* file.</span></span>
 
     ![下載.publishsettings 檔案](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image22.png)
 
     > [!WARNING]
     > <span data-ttu-id="bb1bc-329">安全性- *publishsettings*檔案包含您的認證 （未編碼），可用來管理 Windows Azure 訂用帳戶和服務。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-329">Security - The *publishsettings* file contains your credentials (unencoded) that are used to administer your Windows Azure subscriptions and services.</span></span> <span data-ttu-id="bb1bc-330">這個檔案的安全性最佳作法是暫時儲存在來源目錄之外 (例如在*Libraries\Documents*資料夾)，然後刪除它，一旦完成匯入。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-330">The security best practice for this file is to store it temporarily outside your source directories (for example in the *Libraries\Documents* folder), and then delete it once the import has completed.</span></span> <span data-ttu-id="bb1bc-331">取得存取權的惡意使用者`.publishsettings`檔案可以編輯、 建立和刪除您的 Windows Azure 服務。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-331">A malicious user who gains access to the `.publishsettings` file can edit, create, and delete your Windows Azure services.</span></span>
 
-    <span data-ttu-id="bb1bc-332">d.</span><span class="sxs-lookup"><span data-stu-id="bb1bc-332">d.</span></span> <span data-ttu-id="bb1bc-333">在**匯入 Windows Azure 訂用帳戶**對話方塊中，按一下 **瀏覽**並瀏覽至*.publishsettings*檔案。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-333">In the **Import Windows Azure Subscriptions** dialog box, click **Browse** and navigate to the *.publishsettings* file.</span></span>
+    <span data-ttu-id="bb1bc-332">d.</span><span class="sxs-lookup"><span data-stu-id="bb1bc-332">d.</span></span> <span data-ttu-id="bb1bc-333">在**匯入 Windows Azure 訂用帳戶**對話方塊中，按一下 **瀏覽**並瀏覽至 *.publishsettings*檔案。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-333">In the **Import Windows Azure Subscriptions** dialog box, click **Browse** and navigate to the *.publishsettings* file.</span></span>
 
     ![下載 sub](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image23.png)
 
@@ -371,7 +372,7 @@ ms.lasthandoff: 04/06/2018
 
 ![](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image33.png)
 
-<span data-ttu-id="bb1bc-367">部署程序也會建立新的連接字串*(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-367">The deployment process also created a new connection string *(SchoolContext\_DatabasePublish*) for Code First Migrations to use for updating the database schema and seeding the database.</span></span>
+<span data-ttu-id="bb1bc-367">部署程序也會建立新的連接字串 *(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb1bc-367">The deployment process also created a new connection string *(SchoolContext\_DatabasePublish*) for Code First Migrations to use for updating the database schema and seeding the database.</span></span>
 
 ![Database_Publish 連接字串](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image34.png)
 

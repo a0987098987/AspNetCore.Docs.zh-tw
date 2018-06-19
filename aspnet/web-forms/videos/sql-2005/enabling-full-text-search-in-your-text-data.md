@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893491"
 ---
 <a name="enabling-full-text-search-in-your-text-data"></a><span data-ttu-id="f0022-103">啟用在文字資料中的全文檢索搜尋</span><span class="sxs-lookup"><span data-stu-id="f0022-103">Enabling Full-Text Search in your Text Data</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874180"
 ---
 <a name="adding-a-new-field"></a><span data-ttu-id="32a48-102">新增欄位</span><span class="sxs-lookup"><span data-stu-id="32a48-102">Adding a New Field</span></span>
 ====================
@@ -91,7 +92,7 @@ ms.lasthandoff: 04/06/2018
 
 ![](adding-a-new-field/_static/image6.png)
 
-<span data-ttu-id="32a48-139">Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱*{DateStamp}\_Initial.cs* )，而且這個類別包含程式碼會建立資料庫結構描述。</span><span class="sxs-lookup"><span data-stu-id="32a48-139">Code First Migrations creates another class file in the *Migrations* folder (with the name *{DateStamp}\_Initial.cs* ), and this class contains code that creates the database schema.</span></span> <span data-ttu-id="32a48-140">移轉 filename 預先固定時間戳記為協助進行排序。</span><span class="sxs-lookup"><span data-stu-id="32a48-140">The migration filename is pre-fixed with a timestamp to help with ordering.</span></span> <span data-ttu-id="32a48-141">檢查*{DateStamp}\_Initial.cs*檔案，它包含的指示來建立`Movies`影片資料庫的資料表。</span><span class="sxs-lookup"><span data-stu-id="32a48-141">Examine the *{DateStamp}\_Initial.cs* file, it contains the instructions to create the `Movies` table for the Movie DB.</span></span> <span data-ttu-id="32a48-142">當您更新的資料庫中的指示，在此之下*{DateStamp}\_Initial.cs*檔案將會執行並建立資料庫結構描述。</span><span class="sxs-lookup"><span data-stu-id="32a48-142">When you update the database in the instructions below, this *{DateStamp}\_Initial.cs* file will run and create the DB schema.</span></span> <span data-ttu-id="32a48-143">然後在**種子**方法會執行填入資料庫的測試資料。</span><span class="sxs-lookup"><span data-stu-id="32a48-143">Then the **Seed** method will run to populate the DB with test data.</span></span>
+<span data-ttu-id="32a48-139">Code First 移轉建立的另一個類別檔案*移轉*資料夾 (具有名稱 *{DateStamp}\_Initial.cs* )，而且這個類別包含程式碼會建立資料庫結構描述。</span><span class="sxs-lookup"><span data-stu-id="32a48-139">Code First Migrations creates another class file in the *Migrations* folder (with the name *{DateStamp}\_Initial.cs* ), and this class contains code that creates the database schema.</span></span> <span data-ttu-id="32a48-140">移轉 filename 預先固定時間戳記為協助進行排序。</span><span class="sxs-lookup"><span data-stu-id="32a48-140">The migration filename is pre-fixed with a timestamp to help with ordering.</span></span> <span data-ttu-id="32a48-141">檢查 *{DateStamp}\_Initial.cs*檔案，它包含的指示來建立`Movies`影片資料庫的資料表。</span><span class="sxs-lookup"><span data-stu-id="32a48-141">Examine the *{DateStamp}\_Initial.cs* file, it contains the instructions to create the `Movies` table for the Movie DB.</span></span> <span data-ttu-id="32a48-142">當您更新的資料庫中的指示，在此之下 *{DateStamp}\_Initial.cs*檔案將會執行並建立資料庫結構描述。</span><span class="sxs-lookup"><span data-stu-id="32a48-142">When you update the database in the instructions below, this *{DateStamp}\_Initial.cs* file will run and create the DB schema.</span></span> <span data-ttu-id="32a48-143">然後在**種子**方法會執行填入資料庫的測試資料。</span><span class="sxs-lookup"><span data-stu-id="32a48-143">Then the **Seed** method will run to populate the DB with test data.</span></span>
 
 <span data-ttu-id="32a48-144">在**Package Manager Console**，輸入命令`update-database`來建立資料庫和執行`Seed`方法。</span><span class="sxs-lookup"><span data-stu-id="32a48-144">In the **Package Manager Console**, enter the command `update-database` to create the database and run the `Seed` method.</span></span>
 
@@ -99,7 +100,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="32a48-145">如果您收到錯誤，指出資料表已經存在，而且無法建立，它可能是因為刪除資料庫之後，您在執行之前，執行該應用程式`update-database`。</span><span class="sxs-lookup"><span data-stu-id="32a48-145">If you get an error that indicates a table already exists and can't be created, it is probably because you ran the application after you deleted the database and before you executed `update-database`.</span></span> <span data-ttu-id="32a48-146">在此情況下，刪除*Movies.mdf*檔案一次，然後重試`update-database`命令。</span><span class="sxs-lookup"><span data-stu-id="32a48-146">In that case, delete the *Movies.mdf* file again and retry the `update-database` command.</span></span> <span data-ttu-id="32a48-147">如果您仍然收到錯誤，刪除 migrations 資料夾內容，則開頭的指示，在此頁面最上方 (這是刪除*Movies.mdf*檔案，然後繼續進行 Enable-migrations)。</span><span class="sxs-lookup"><span data-stu-id="32a48-147">If you still get an error, delete the migrations folder and contents then start with the instructions at the top of this page (that is delete the *Movies.mdf* file then proceed to Enable-Migrations).</span></span> <span data-ttu-id="32a48-148">如果您仍然收到項目 」，請開啟 SQL Server 物件總管，並從清單中移除資料庫。</span><span class="sxs-lookup"><span data-stu-id="32a48-148">If you still get an eror, open SQL Server Object Explorer and remove the database from the list.</span></span>
 
-<span data-ttu-id="32a48-149">執行應用程式，並瀏覽至*/Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="32a48-149">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="32a48-150">種子資料會顯示。</span><span class="sxs-lookup"><span data-stu-id="32a48-150">The seed data is displayed.</span></span>
+<span data-ttu-id="32a48-149">執行應用程式，並瀏覽至 */Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="32a48-149">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="32a48-150">種子資料會顯示。</span><span class="sxs-lookup"><span data-stu-id="32a48-150">The seed data is displayed.</span></span>
 
 ![](adding-a-new-field/_static/image8.png)
 
@@ -131,7 +132,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="32a48-164">您現在已更新以支援新的應用程式程式碼`Rating`屬性。</span><span class="sxs-lookup"><span data-stu-id="32a48-164">You've now updated the application code to support the new `Rating` property.</span></span>
 
-<span data-ttu-id="32a48-165">執行應用程式，並瀏覽至*/Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="32a48-165">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="32a48-166">當您這樣做時，不過，您會看到下列錯誤：</span><span class="sxs-lookup"><span data-stu-id="32a48-166">When you do this, though, you'll see one of the following errors:</span></span>
+<span data-ttu-id="32a48-165">執行應用程式，並瀏覽至 */Movies* URL。</span><span class="sxs-lookup"><span data-stu-id="32a48-165">Run the application and navigate to the */Movies* URL.</span></span> <span data-ttu-id="32a48-166">當您這樣做時，不過，您會看到下列錯誤：</span><span class="sxs-lookup"><span data-stu-id="32a48-166">When you do this, though, you'll see one of the following errors:</span></span>
 
 ![](adding-a-new-field/_static/image9.png)  
   

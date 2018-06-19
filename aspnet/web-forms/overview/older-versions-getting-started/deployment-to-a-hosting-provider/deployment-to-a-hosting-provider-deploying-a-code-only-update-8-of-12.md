@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886910"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-code-only-update---8-of-12"></a><span data-ttu-id="7b141-103">使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 Code-Only 更新-12 個 8</span><span class="sxs-lookup"><span data-stu-id="7b141-103">Deploying an ASP.NET Web Application with SQL Server Compact using Visual Studio or Visual Web Developer: Deploying a Code-Only Update - 8 of 12</span></span>
 ====================
@@ -77,7 +78,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="7b141-138">在實際應用中，在初始部署後，生產網站與使用者互動，資料庫會填入即時資料。</span><span class="sxs-lookup"><span data-stu-id="7b141-138">In a real application, users interact with your production site after your initial deployment, and the databases are populated with live data.</span></span> <span data-ttu-id="7b141-139">因此，您不想要重新部署成員資格資料庫處於其初始狀態，會清除所有的即時資料。</span><span class="sxs-lookup"><span data-stu-id="7b141-139">Therefore, you don't want to redeploy the membership database in its initial state, which would wipe out all of the live data.</span></span> <span data-ttu-id="7b141-140">因為 SQL Server Compact 資料庫中的檔案*應用程式\_資料*資料夾中，您必須防止變更部署設定，因此，檔案中*應用程式\_資料*資料夾無法部署。</span><span class="sxs-lookup"><span data-stu-id="7b141-140">Since SQL Server Compact databases are files in the *App\_Data* folder, you have to prevent this by changing deployment settings so that files in the *App\_Data* folder aren't deployed.</span></span>
 
-<span data-ttu-id="7b141-141">開啟**專案屬性**ContosoUniversity 專案，然後選取視窗**封裝/發行 Web**  索引標籤。請確定**組態**下拉式方塊已**作用中 （發行）**或**發行**選取，請選取**檔案排除應用程式\_資料資料夾**。</span><span class="sxs-lookup"><span data-stu-id="7b141-141">Open the **Project Properties** window for the ContosoUniversity project, and select the **Package/Publish Web** tab. Make sure that the **Configuration** drop-down box has either **Active (Release)** or **Release** selected, select **Exclude files from the App\_Data folder**.</span></span>
+<span data-ttu-id="7b141-141">開啟**專案屬性**ContosoUniversity 專案，然後選取視窗**封裝/發行 Web**  索引標籤。請確定**組態**下拉式方塊已**作用中 （發行）** 或**發行**選取，請選取**檔案排除應用程式\_資料資料夾**。</span><span class="sxs-lookup"><span data-stu-id="7b141-141">Open the **Project Properties** window for the ContosoUniversity project, and select the **Package/Publish Web** tab. Make sure that the **Configuration** drop-down box has either **Active (Release)** or **Release** selected, select **Exclude files from the App\_Data folder**.</span></span>
 
 ![Exclude_files_from_the_App_Data_folder](deployment-to-a-hosting-provider-deploying-a-code-only-update-8-of-12/_static/image9.png)
 

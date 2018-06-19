@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882942"
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a><span data-ttu-id="50652-103">案例： 設定用於 Web 部署的實際執行環境</span><span class="sxs-lookup"><span data-stu-id="50652-103">Scenario: Configuring a Production Environment for Web Deployment</span></span>
 ====================

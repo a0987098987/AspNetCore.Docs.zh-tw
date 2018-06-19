@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885622"
 ---
 <a name="aspnet-vnext-videos-model-binding-part-1---selecting-data"></a><span data-ttu-id="a6d25-103">ASP.NET vNext 影片： 模型繫結第 1-選取的資料</span><span class="sxs-lookup"><span data-stu-id="a6d25-103">ASP.NET vNext Videos: Model Binding Part 1 - Selecting Data</span></span>
 ====================

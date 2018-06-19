@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885099"
 ---
 <a name="watch-aspnet-development-in-action"></a><span data-ttu-id="90636-104">監看式中動作的 ASP.NET 程式開發</span><span class="sxs-lookup"><span data-stu-id="90636-104">Watch ASP.NET Development in Action</span></span>
 ====================

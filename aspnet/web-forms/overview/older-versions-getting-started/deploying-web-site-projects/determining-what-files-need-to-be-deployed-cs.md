@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888665"
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a><span data-ttu-id="6aa49-103">判斷檔案必須為部署 (C#)</span><span class="sxs-lookup"><span data-stu-id="6aa49-103">Determining What Files Need to Be Deployed (C#)</span></span>
 ====================
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/06/2018
 | <span data-ttu-id="6aa49-143">明確編譯</span><span class="sxs-lookup"><span data-stu-id="6aa49-143">Explicit Compilation</span></span> | <span data-ttu-id="6aa49-144">[是]</span><span class="sxs-lookup"><span data-stu-id="6aa49-144">Yes</span></span> | <span data-ttu-id="6aa49-145">否</span><span class="sxs-lookup"><span data-stu-id="6aa49-145">No</span></span> | <span data-ttu-id="6aa49-146">[是]</span><span class="sxs-lookup"><span data-stu-id="6aa49-146">Yes</span></span> |
 | <span data-ttu-id="6aa49-147">自動編譯</span><span class="sxs-lookup"><span data-stu-id="6aa49-147">Automatic Compilation</span></span> | <span data-ttu-id="6aa49-148">[是]</span><span class="sxs-lookup"><span data-stu-id="6aa49-148">Yes</span></span> | <span data-ttu-id="6aa49-149">[是]</span><span class="sxs-lookup"><span data-stu-id="6aa49-149">Yes</span></span> | <span data-ttu-id="6aa49-150">是 （如果存在的話）</span><span class="sxs-lookup"><span data-stu-id="6aa49-150">Yes (if it exists)</span></span> |
 
-<span data-ttu-id="6aa49-151">**表 1:**部署哪些檔案取決於所使用的編譯模型。</span><span class="sxs-lookup"><span data-stu-id="6aa49-151">**Table 1:** What files you deploy depends on the compilation model used.</span></span>
+<span data-ttu-id="6aa49-151">**表 1:** 部署哪些檔案取決於所使用的編譯模型。</span><span class="sxs-lookup"><span data-stu-id="6aa49-151">**Table 1:** What files you deploy depends on the compilation model used.</span></span>
 
 ## <a name="taking-a-trip-down-memory-lane"></a><span data-ttu-id="6aa49-152">取得記憶體通道關閉路線</span><span class="sxs-lookup"><span data-stu-id="6aa49-152">Taking a Trip Down Memory Lane</span></span>
 
@@ -98,7 +99,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="6aa49-201">[![活頁簿會檢閱網站提供檢閱上的項目分類](determining-what-files-need-to-be-deployed-cs/_static/image2.png)](determining-what-files-need-to-be-deployed-cs/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="6aa49-201">[![The Book Reviews website offers reviews on an assortment of titles](determining-what-files-need-to-be-deployed-cs/_static/image2.png)](determining-what-files-need-to-be-deployed-cs/_static/image1.png)</span></span>
 
-<span data-ttu-id="6aa49-202">**圖 1:**書籍會檢閱網站提供檢閱上的項目分類 ([按一下以檢視完整大小的影像](determining-what-files-need-to-be-deployed-cs/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="6aa49-202">**Figure 1:** The Book Reviews website offers reviews on an assortment of titles ([Click to view full-size image](determining-what-files-need-to-be-deployed-cs/_static/image3.png))</span></span>
+<span data-ttu-id="6aa49-202">**圖 1:** 書籍會檢閱網站提供檢閱上的項目分類 ([按一下以檢視完整大小的影像](determining-what-files-need-to-be-deployed-cs/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="6aa49-202">**Figure 1:** The Book Reviews website offers reviews on an assortment of titles ([Click to view full-size image](determining-what-files-need-to-be-deployed-cs/_static/image3.png))</span></span>
 
 
 <span data-ttu-id="6aa49-203">此應用程式不會使用資料庫;每個檢閱會實作為個別的網頁應用程式中。</span><span class="sxs-lookup"><span data-stu-id="6aa49-203">This application does not use a database; each review is implemented as a separate web page in the application.</span></span> <span data-ttu-id="6aa49-204">本教學課程 （和 下一步的幾個教學課程） 逐步部署不需要資料庫的 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="6aa49-204">This tutorial (and the next several tutorials) walk through deploying a web application that does not have a database.</span></span> <span data-ttu-id="6aa49-205">不過，未來教學課程中我們加強儲存評論、 讀取器的註解，以及其他資訊在資料庫內，此應用程式，並將探索必須執行才能正確部署的資料驅動的 web 應用程式的步驟。</span><span class="sxs-lookup"><span data-stu-id="6aa49-205">However, in a future tutorial we will enhance this application to store reviews, reader comments, and other information within a database, and will explore what steps need to be performed to correctly deploy a data-driven web application.</span></span>

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889718"
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-vb"></a><span data-ttu-id="76261-103">加入 GridView 的資料行的選項按鈕 (VB)</span><span class="sxs-lookup"><span data-stu-id="76261-103">Adding a GridView Column of Radio Buttons (VB)</span></span>
 ====================

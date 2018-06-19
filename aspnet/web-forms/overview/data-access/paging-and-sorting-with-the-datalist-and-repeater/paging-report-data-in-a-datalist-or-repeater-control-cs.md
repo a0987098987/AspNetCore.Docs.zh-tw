@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887609"
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a><span data-ttu-id="59ef7-103">DataList 或中繼器控制項中 (C#) 中的分頁報表資料</span><span class="sxs-lookup"><span data-stu-id="59ef7-103">Paging Report Data in a DataList or Repeater Control (C#)</span></span>
 ====================

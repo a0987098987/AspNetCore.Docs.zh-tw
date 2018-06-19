@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891408"
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a><span data-ttu-id="4cd76-104">有了 Entity Framework 4.0 ASP.NET 4 Web 應用程式而言，發揮最佳效能</span><span class="sxs-lookup"><span data-stu-id="4cd76-104">Maximizing Performance with the Entity Framework 4.0 in an ASP.NET 4 Web Application</span></span>
 ====================
@@ -237,7 +238,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-csharp[Main](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/samples/sample15.cs)]
 
-<span data-ttu-id="4cd76-266">此程式碼產生檢視*.edmx*檔案，而且位於與範本相同的資料夾，並為範本檔案具有相同的名稱。</span><span class="sxs-lookup"><span data-stu-id="4cd76-266">This code generates views for an *.edmx* file that's located in the same folder as the template and that has the same name as the template file.</span></span> <span data-ttu-id="4cd76-267">例如，如果您的範本檔案命名為*SchoolModel.Views.tt*，它會尋找名為的資料模型檔案*SchoolModel.edmx*。</span><span class="sxs-lookup"><span data-stu-id="4cd76-267">For example, if your template file is named *SchoolModel.Views.tt*, it will look for a data model file named *SchoolModel.edmx*.</span></span>
+<span data-ttu-id="4cd76-266">此程式碼產生檢視 *.edmx*檔案，而且位於與範本相同的資料夾，並為範本檔案具有相同的名稱。</span><span class="sxs-lookup"><span data-stu-id="4cd76-266">This code generates views for an *.edmx* file that's located in the same folder as the template and that has the same name as the template file.</span></span> <span data-ttu-id="4cd76-267">例如，如果您的範本檔案命名為*SchoolModel.Views.tt*，它會尋找名為的資料模型檔案*SchoolModel.edmx*。</span><span class="sxs-lookup"><span data-stu-id="4cd76-267">For example, if your template file is named *SchoolModel.Views.tt*, it will look for a data model file named *SchoolModel.edmx*.</span></span>
 
 <span data-ttu-id="4cd76-268">儲存檔案，然後以滑鼠右鍵按一下 [檔案中的**方案總管] 中**選取**執行自訂工具**。</span><span class="sxs-lookup"><span data-stu-id="4cd76-268">Save the file, then right-click the file in **Solution Explorer** and select **Run Custom Tool**.</span></span>
 

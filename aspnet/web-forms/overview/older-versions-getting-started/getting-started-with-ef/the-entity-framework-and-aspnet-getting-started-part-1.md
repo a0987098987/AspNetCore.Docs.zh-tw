@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889484"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms"></a><span data-ttu-id="4670d-103">開始使用 Entity Framework 4.0 資料庫中第一次與 ASP.NET 4 Web Form</span><span class="sxs-lookup"><span data-stu-id="4670d-103">Getting Started with Entity Framework 4.0 Database First and ASP.NET 4 Web Forms</span></span>
 ====================
@@ -100,7 +101,7 @@ ms.lasthandoff: 04/06/2018
 
 `%PROGRAMFILES%\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQL\DATA`
 
-<span data-ttu-id="4670d-163">(此位置的*.mdf*檔案會假設您正在使用 SQL Server 2008 Express。)</span><span class="sxs-lookup"><span data-stu-id="4670d-163">(This location of the *.mdf* file assumes you're using SQL Server 2008 Express.)</span></span>
+<span data-ttu-id="4670d-163">(此位置的 *.mdf*檔案會假設您正在使用 SQL Server 2008 Express。)</span><span class="sxs-lookup"><span data-stu-id="4670d-163">(This location of the *.mdf* file assumes you're using SQL Server 2008 Express.)</span></span>
 
 <span data-ttu-id="4670d-164">如果您從指令碼建立資料庫，執行下列步驟來建立資料庫圖表：</span><span class="sxs-lookup"><span data-stu-id="4670d-164">If you create the database from a script, perform the following steps to create a database diagram:</span></span>
 
@@ -210,7 +211,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="4670d-247">[![Image22](the-entity-framework-and-aspnet-getting-started-part-1/_static/image60.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image59.png)</span><span class="sxs-lookup"><span data-stu-id="4670d-247">[![Image22](the-entity-framework-and-aspnet-getting-started-part-1/_static/image60.png)](the-entity-framework-and-aspnet-getting-started-part-1/_static/image59.png)</span></span>
 
-<span data-ttu-id="4670d-248">Entity Framework 會使用 XML 來儲存有關資料庫、 資料模型，以及它們之間的對應資訊。</span><span class="sxs-lookup"><span data-stu-id="4670d-248">The Entity Framework uses XML to store information about the database, the data model, and the mappings between them.</span></span> <span data-ttu-id="4670d-249">*SchoolModel.edmx*檔案是實際的 XML 檔案，其中包含這項資訊。</span><span class="sxs-lookup"><span data-stu-id="4670d-249">The *SchoolModel.edmx* file is actually an XML file that contains this information.</span></span> <span data-ttu-id="4670d-250">設計工具中呈現的資訊以圖形格式，但您也可以檢視為 XML 檔案，以滑鼠右鍵按一下*.edmx*檔案**方案總管 中**，然後按一下**開啟與**，然後選取**XML （文字） 編輯器**。</span><span class="sxs-lookup"><span data-stu-id="4670d-250">The designer renders the information in a graphical format, but you can also view the file as XML by right-clicking the *.edmx* file in **Solution Explorer**, clicking **Open With**, and selecting **XML (Text) Editor**.</span></span> <span data-ttu-id="4670d-251">（資料模型設計工具和 XML 編輯器是開啟和使用同一個檔案中，因此您不能有開啟，並在 XML 編輯器中開啟檔案，同時在設計工具的兩個不同的方式）。</span><span class="sxs-lookup"><span data-stu-id="4670d-251">(The data model designer and an XML editor are just two different ways of opening and working with the same file, so you cannot have the designer open and open the file in an XML editor at the same time.)</span></span>
+<span data-ttu-id="4670d-248">Entity Framework 會使用 XML 來儲存有關資料庫、 資料模型，以及它們之間的對應資訊。</span><span class="sxs-lookup"><span data-stu-id="4670d-248">The Entity Framework uses XML to store information about the database, the data model, and the mappings between them.</span></span> <span data-ttu-id="4670d-249">*SchoolModel.edmx*檔案是實際的 XML 檔案，其中包含這項資訊。</span><span class="sxs-lookup"><span data-stu-id="4670d-249">The *SchoolModel.edmx* file is actually an XML file that contains this information.</span></span> <span data-ttu-id="4670d-250">設計工具中呈現的資訊以圖形格式，但您也可以檢視為 XML 檔案，以滑鼠右鍵按一下 *.edmx*檔案**方案總管 中**，然後按一下**開啟與**，然後選取**XML （文字） 編輯器**。</span><span class="sxs-lookup"><span data-stu-id="4670d-250">The designer renders the information in a graphical format, but you can also view the file as XML by right-clicking the *.edmx* file in **Solution Explorer**, clicking **Open With**, and selecting **XML (Text) Editor**.</span></span> <span data-ttu-id="4670d-251">（資料模型設計工具和 XML 編輯器是開啟和使用同一個檔案中，因此您不能有開啟，並在 XML 編輯器中開啟檔案，同時在設計工具的兩個不同的方式）。</span><span class="sxs-lookup"><span data-stu-id="4670d-251">(The data model designer and an XML editor are just two different ways of opening and working with the same file, so you cannot have the designer open and open the file in an XML editor at the same time.)</span></span>
 
 <span data-ttu-id="4670d-252">現在您已建立網站、 資料庫和資料模型。</span><span class="sxs-lookup"><span data-stu-id="4670d-252">You've now created a website, a database, and a data model.</span></span> <span data-ttu-id="4670d-253">在下一個逐步解說開始，您將使用資料模型和 ASP.NET 的資料搭配使用`EntityDataSource`控制項。</span><span class="sxs-lookup"><span data-stu-id="4670d-253">In the next walkthrough you'll begin working with data using the data model and the ASP.NET `EntityDataSource` control.</span></span>
 

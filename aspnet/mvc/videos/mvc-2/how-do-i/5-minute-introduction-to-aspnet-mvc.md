@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879643"
 ---
 <a name="5-minute-introduction-to-aspnet-mvc"></a><span data-ttu-id="f1a18-103">ASP.NET MVC 的 5 分鐘簡介</span><span class="sxs-lookup"><span data-stu-id="f1a18-103">5 Minute Introduction to ASP.NET MVC</span></span>
 ====================

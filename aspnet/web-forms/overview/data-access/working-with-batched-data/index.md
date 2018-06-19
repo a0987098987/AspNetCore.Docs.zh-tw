@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/index
-title: "使用批次資料 |Microsoft 文件"
+title: 使用批次資料 |Microsoft 文件
 author: rick-anderson
-description: "這些教學課程中查看更新、 刪除和插入的資料使用交易批次。"
+description: 這些教學課程中查看更新、 刪除和插入的資料使用交易批次。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data
 msc.type: chapter
 ms.openlocfilehash: 1a6af028c2d4ac8b6085a34bec16893d1e1632af
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514757"
 ---
 <a name="working-with-batched-data"></a><span data-ttu-id="88003-103">使用批次的資料</span><span class="sxs-lookup"><span data-stu-id="88003-103">Working with Batched Data</span></span>
 ====================

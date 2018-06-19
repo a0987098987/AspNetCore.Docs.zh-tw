@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880137"
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a><span data-ttu-id="a3296-104">刪除 (VB) 時新增用戶端確認</span><span class="sxs-lookup"><span data-stu-id="a3296-104">Adding Client-Side Confirmation When Deleting (VB)</span></span>
 ====================

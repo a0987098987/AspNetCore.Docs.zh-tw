@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895861"
 ---
 <a name="how-do-i-write-code-more-quickly-with-unit-tests"></a><span data-ttu-id="d5b31-105">[如何:]撰寫程式碼更快速地使用單元測試？</span><span class="sxs-lookup"><span data-stu-id="d5b31-105">[How Do I:] Write Code More Quickly with Unit Tests?</span></span>
 ====================

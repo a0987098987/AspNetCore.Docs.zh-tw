@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888519"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a><span data-ttu-id="7f862-104">記錄錯誤的詳細資料與 ASP.NET 健全狀況監視 (C#)</span><span class="sxs-lookup"><span data-stu-id="7f862-104">Logging Error Details with ASP.NET Health Monitoring (C#)</span></span>
 ====================

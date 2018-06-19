@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882776"
 ---
 <a name="introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application"></a><span data-ttu-id="f142f-103">ASP.NET ColdFusion 開發人員簡介： 建置的 ASP.NET 應用程式</span><span class="sxs-lookup"><span data-stu-id="f142f-103">Introduction to ASP.NET for ColdFusion Developers: Building an ASP.NET Application</span></span>
 ====================

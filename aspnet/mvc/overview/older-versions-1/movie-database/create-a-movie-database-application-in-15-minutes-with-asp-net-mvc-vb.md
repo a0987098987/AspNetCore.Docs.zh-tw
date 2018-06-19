@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876198"
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-vb"></a><span data-ttu-id="22013-104">建立電影資料庫應用程式在 15 分鐘內，搭配 ASP.NET MVC (VB)</span><span class="sxs-lookup"><span data-stu-id="22013-104">Create a Movie Database Application in 15 Minutes with ASP.NET MVC (VB)</span></span>
 ====================
@@ -228,7 +229,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="22013-259">我已經修改 HomeController 類別清單 2 中的，使其包含名為的新私用欄位\_db。</span><span class="sxs-lookup"><span data-stu-id="22013-259">I've modified the HomeController class in Listing 2 so that it contains a new private field named \_db.</span></span> <span data-ttu-id="22013-260">MoviesDBEntities 類別代表我們的資料庫模型中，我們將使用此類別與資料庫通訊。</span><span class="sxs-lookup"><span data-stu-id="22013-260">The MoviesDBEntities class represents our database model and we'll use this class to communicate with our database.</span></span>
 
-<span data-ttu-id="22013-261">我也修改了 index （） 方法，在列出 2。</span><span class="sxs-lookup"><span data-stu-id="22013-261">I've also modified the Index() method in Listing 2.</span></span> <span data-ttu-id="22013-262">Index （） 方法使用 MoviesDBEntities 類別來擷取所有的電影記錄電影資料庫資料表中。</span><span class="sxs-lookup"><span data-stu-id="22013-262">The Index() method uses the MoviesDBEntities class to retrieve all of the movie records from the Movies database table.</span></span> <span data-ttu-id="22013-263">運算式 *\_db。MovieSet.ToList()*電影資料庫資料表中傳回的所有電影記錄清單。</span><span class="sxs-lookup"><span data-stu-id="22013-263">The expression *\_db.MovieSet.ToList()* returns a list of all of the movie records from the Movies database table.</span></span>
+<span data-ttu-id="22013-261">我也修改了 index （） 方法，在列出 2。</span><span class="sxs-lookup"><span data-stu-id="22013-261">I've also modified the Index() method in Listing 2.</span></span> <span data-ttu-id="22013-262">Index （） 方法使用 MoviesDBEntities 類別來擷取所有的電影記錄電影資料庫資料表中。</span><span class="sxs-lookup"><span data-stu-id="22013-262">The Index() method uses the MoviesDBEntities class to retrieve all of the movie records from the Movies database table.</span></span> <span data-ttu-id="22013-263">運算式 *\_db。MovieSet.ToList()* 電影資料庫資料表中傳回的所有電影記錄清單。</span><span class="sxs-lookup"><span data-stu-id="22013-263">The expression *\_db.MovieSet.ToList()* returns a list of all of the movie records from the Movies database table.</span></span>
 
 <span data-ttu-id="22013-264">電影清單會傳遞至檢視。</span><span class="sxs-lookup"><span data-stu-id="22013-264">The list of movies is passed to the view.</span></span> <span data-ttu-id="22013-265">取得傳遞給 View() 方法的任何項目取得傳遞至檢視，以檢視資料。</span><span class="sxs-lookup"><span data-stu-id="22013-265">Anything that gets passed to the View() method gets passed to the view as view data.</span></span>
 

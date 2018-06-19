@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851036"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a><span data-ttu-id="2f548-103">從 ASP.NET 遷移至 ASP.NET Core 2.0</span><span class="sxs-lookup"><span data-stu-id="2f548-103">Migrate from ASP.NET to ASP.NET Core 2.0</span></span>
 
@@ -80,7 +81,7 @@ ms.lasthandoff: 05/08/2018
 
 <span data-ttu-id="2f548-156">主機與應用程式已分離，這讓您未來可以彈性移至不同的平台。</span><span class="sxs-lookup"><span data-stu-id="2f548-156">The host and application have been decoupled, which provides the flexibility of moving to a different platform in the future.</span></span>
 
-<span data-ttu-id="2f548-157">**注意：**如需 ASP.NET Core 啟動和中介軟體的深入參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="2f548-157">**Note:** For a more in-depth reference to ASP.NET Core Startup and Middleware, see [Startup in ASP.NET Core](xref:fundamentals/startup)</span></span>
+<span data-ttu-id="2f548-157">**注意：** 如需 ASP.NET Core 啟動和中介軟體的深入參考，請參閱 [ASP.NET Core 中的啟動](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="2f548-157">**Note:** For a more in-depth reference to ASP.NET Core Startup and Middleware, see [Startup in ASP.NET Core](xref:fundamentals/startup)</span></span>
 
 ## <a name="storing-configurations"></a><span data-ttu-id="2f548-158">正在儲存組態</span><span class="sxs-lookup"><span data-stu-id="2f548-158">Storing configurations</span></span>
 <span data-ttu-id="2f548-159">ASP.NET 支援儲存設定。</span><span class="sxs-lookup"><span data-stu-id="2f548-159">ASP.NET supports storing settings.</span></span> <span data-ttu-id="2f548-160">例如，這些設定是用來支援要部署應用程式的環境。</span><span class="sxs-lookup"><span data-stu-id="2f548-160">These setting are used, for example, to support the environment to which the applications were deployed.</span></span> <span data-ttu-id="2f548-161">過去的常見做法是將所有自訂機碼值組儲存在 *Web.config* 檔案的 `<appSettings>` 區段中：</span><span class="sxs-lookup"><span data-stu-id="2f548-161">A common practice was to store all custom key-value pairs in the `<appSettings>` section of the *Web.config* file:</span></span>
@@ -110,7 +111,7 @@ ms.lasthandoff: 05/08/2018
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ````
 
-<span data-ttu-id="2f548-169">**注意：**如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="2f548-169">**Note:** For a more in-depth reference to ASP.NET Core configuration, see [Configuration in ASP.NET Core](xref:fundamentals/configuration/index).</span></span>
+<span data-ttu-id="2f548-169">**注意：** 如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="2f548-169">**Note:** For a more in-depth reference to ASP.NET Core configuration, see [Configuration in ASP.NET Core](xref:fundamentals/configuration/index).</span></span>
 
 ## <a name="native-dependency-injection"></a><span data-ttu-id="2f548-170">原生相依性插入</span><span class="sxs-lookup"><span data-stu-id="2f548-170">Native dependency injection</span></span>
 <span data-ttu-id="2f548-171">建置可延展的大型應用程式時，鬆散的元件和服務結合程度就是重要的目標。</span><span class="sxs-lookup"><span data-stu-id="2f548-171">An important goal when building large, scalable applications is the loose coupling of components and services.</span></span> <span data-ttu-id="2f548-172">[相依性插入](xref:fundamentals/dependency-injection)是達到此目標的常用技巧，它也是 ASP.NET Core 的原生元件。</span><span class="sxs-lookup"><span data-stu-id="2f548-172">[Dependency Injection](xref:fundamentals/dependency-injection) is a popular technique for achieving this, and it's a native component of ASP.NET Core.</span></span>
@@ -135,7 +136,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 <span data-ttu-id="2f548-179">存放庫可插入任何位置，就像以前的 Unity 一樣。</span><span class="sxs-lookup"><span data-stu-id="2f548-179">The repository can be injected anywhere, as was true with Unity.</span></span>
 
-<span data-ttu-id="2f548-180">**注意：**如需 ASP.NET Core 中相依性插入的深入參考，請參閱 [ASP.NET Core 中的相依性插入](xref:fundamentals/dependency-injection#replacing-the-default-services-container)。</span><span class="sxs-lookup"><span data-stu-id="2f548-180">**Note:** For an in-depth reference to dependency injection in ASP.NET Core, see [Dependency Injection in ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)</span></span>
+<span data-ttu-id="2f548-180">**注意：** 如需 ASP.NET Core 中相依性插入的深入參考，請參閱 [ASP.NET Core 中的相依性插入](xref:fundamentals/dependency-injection#replacing-the-default-services-container)。</span><span class="sxs-lookup"><span data-stu-id="2f548-180">**Note:** For an in-depth reference to dependency injection in ASP.NET Core, see [Dependency Injection in ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)</span></span>
 
 ## <a name="serving-static-files"></a><span data-ttu-id="2f548-181">提供靜態檔案</span><span class="sxs-lookup"><span data-stu-id="2f548-181">Serving static files</span></span>
 <span data-ttu-id="2f548-182">網頁程式開發很重要的一部分是能夠提供靜態的用戶端資產。</span><span class="sxs-lookup"><span data-stu-id="2f548-182">An important part of web development is the ability to serve static, client-side assets.</span></span> <span data-ttu-id="2f548-183">最常見的靜態檔案範例包括 HTML、CSS、Javascript 和影像。</span><span class="sxs-lookup"><span data-stu-id="2f548-183">The most common examples of static files are HTML, CSS, Javascript, and images.</span></span> <span data-ttu-id="2f548-184">這些檔案需要儲存在應用程式 (或 CDN) 的發佈位置供參考，以便要求可以載入它們。</span><span class="sxs-lookup"><span data-stu-id="2f548-184">These files need to be saved in the published location of the app (or CDN) and referenced so they can be loaded by a request.</span></span> <span data-ttu-id="2f548-185">此程序在 ASP.NET Core 中已變更。</span><span class="sxs-lookup"><span data-stu-id="2f548-185">This process has changed in ASP.NET Core.</span></span>
@@ -146,11 +147,11 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
-<span data-ttu-id="2f548-189">**注意：**如以 .NET Framework 為目標，請安裝 NuGet 套件 `Microsoft.AspNetCore.StaticFiles`。</span><span class="sxs-lookup"><span data-stu-id="2f548-189">**Note:** If targeting .NET Framework, install the NuGet package `Microsoft.AspNetCore.StaticFiles`.</span></span>
+<span data-ttu-id="2f548-189">**注意：** 如以 .NET Framework 為目標，請安裝 NuGet 套件 `Microsoft.AspNetCore.StaticFiles`。</span><span class="sxs-lookup"><span data-stu-id="2f548-189">**Note:** If targeting .NET Framework, install the NuGet package `Microsoft.AspNetCore.StaticFiles`.</span></span>
 
 <span data-ttu-id="2f548-190">例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。</span><span class="sxs-lookup"><span data-stu-id="2f548-190">For example, an image asset in the *wwwroot/images* folder is accessible to the browser at a location such as `http://<app>/images/<imageFileName>`.</span></span>
 
-<span data-ttu-id="2f548-191">**注意：**提供靜態檔案中 ASP.NET Core 的更深入參考，請參閱[靜態檔案](xref:fundamentals/static-files)。</span><span class="sxs-lookup"><span data-stu-id="2f548-191">**Note:** For a more in-depth reference to serving static files in ASP.NET Core, see [Static files](xref:fundamentals/static-files).</span></span>
+<span data-ttu-id="2f548-191">**注意：** 提供靜態檔案中 ASP.NET Core 的更深入參考，請參閱[靜態檔案](xref:fundamentals/static-files)。</span><span class="sxs-lookup"><span data-stu-id="2f548-191">**Note:** For a more in-depth reference to serving static files in ASP.NET Core, see [Static files](xref:fundamentals/static-files).</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="2f548-192">其他資源</span><span class="sxs-lookup"><span data-stu-id="2f548-192">Additional resources</span></span>
 

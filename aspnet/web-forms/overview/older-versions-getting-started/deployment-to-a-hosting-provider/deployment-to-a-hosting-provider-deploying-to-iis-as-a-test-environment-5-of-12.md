@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889666"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-iis-as-a-test-environment---5-of-12"></a><span data-ttu-id="3c0e5-103">使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署至 IIS 做為測試環境-5 的 12</span><span class="sxs-lookup"><span data-stu-id="3c0e5-103">Deploying an ASP.NET Web Application with SQL Server Compact using Visual Studio or Visual Web Developer: Deploying to IIS as a Test Environment - 5 of 12</span></span>
 ====================
@@ -97,7 +98,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="3c0e5-164">[![Inetmgr_selecting_Basic_Settings_for_app_pool](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image6.png)](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image5.png)</span><span class="sxs-lookup"><span data-stu-id="3c0e5-164">[![Inetmgr_selecting_Basic_Settings_for_app_pool](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image6.png)](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image5.png)</span></span>
 
-<span data-ttu-id="3c0e5-165">在**編輯應用程式集區**對話方塊中，變更**.NET Framework 版本**至**.NET Framework v4.0.30319**按一下**[確定]**。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-165">In the **Edit Application Pool** dialog box, change **.NET Framework version** to **.NET Framework v4.0.30319** and click **OK**.</span></span>
+<span data-ttu-id="3c0e5-165">在**編輯應用程式集區**對話方塊中，變更 **.NET Framework 版本**至 **.NET Framework v4.0.30319**按一下 **[確定]**。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-165">In the **Edit Application Pool** dialog box, change **.NET Framework version** to **.NET Framework v4.0.30319** and click **OK**.</span></span>
 
 <span data-ttu-id="3c0e5-166">[![Selecting_.NET_4_for_DefaultAppPool](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image8.png)](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image7.png)</span><span class="sxs-lookup"><span data-stu-id="3c0e5-166">[![Selecting_.NET_4_for_DefaultAppPool](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image8.png)](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12/_static/image7.png)</span></span>
 
@@ -108,7 +109,7 @@ ms.lasthandoff: 04/06/2018
 <span data-ttu-id="3c0e5-169">有數種方式，您可以使用 Visual Studio 2010 和 Web Deploy 來部署：</span><span class="sxs-lookup"><span data-stu-id="3c0e5-169">There are several ways you can deploy using Visual Studio 2010 and Web Deploy:</span></span>
 
 - <span data-ttu-id="3c0e5-170">使用單鍵發行 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-170">Use Visual Studio one-click publish.</span></span>
-- <span data-ttu-id="3c0e5-171">建立*部署套件*及使用 IIS 管理員 UI 進行安裝。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-171">Create a *deployment package* and install it using the IIS Manager UI.</span></span> <span data-ttu-id="3c0e5-172">部署套件組成*.zip*檔案，其中包含所有檔案和在 IIS 中安裝站台所需的中繼資料。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-172">The deployment package consists of a *.zip* file that contains all the files and metadata needed to install a site in IIS.</span></span>
+- <span data-ttu-id="3c0e5-171">建立*部署套件*及使用 IIS 管理員 UI 進行安裝。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-171">Create a *deployment package* and install it using the IIS Manager UI.</span></span> <span data-ttu-id="3c0e5-172">部署套件組成 *.zip*檔案，其中包含所有檔案和在 IIS 中安裝站台所需的中繼資料。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-172">The deployment package consists of a *.zip* file that contains all the files and metadata needed to install a site in IIS.</span></span>
 - <span data-ttu-id="3c0e5-173">建立部署套件，並使用命令列進行安裝。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-173">Create a deployment package and install it using the command line.</span></span>
 
 <span data-ttu-id="3c0e5-174">您已在上一個教學課程中設定 Visual Studio，來自動化部署工作套用到所有這三個方法的程序。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-174">The process you went through in the previous tutorials to set up Visual Studio to automate deployment tasks applies to all of these three methods.</span></span> <span data-ttu-id="3c0e5-175">在這些教學課程中，您將使用這些方法的第一個。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-175">In these tutorials you'll use the first of these methods.</span></span> <span data-ttu-id="3c0e5-176">使用部署套件的相關資訊，請參閱[ASP.NET 部署內容地圖](https://msdn.microsoft.com/library/bb386521.aspx)。</span><span class="sxs-lookup"><span data-stu-id="3c0e5-176">For information about using deployment packages, see [ASP.NET Deployment Content Map](https://msdn.microsoft.com/library/bb386521.aspx).</span></span>

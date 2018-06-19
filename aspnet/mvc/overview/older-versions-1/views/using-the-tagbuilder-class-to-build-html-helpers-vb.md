@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872227"
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a><span data-ttu-id="8f10b-104">使用 TagBuilder 類別來建立 HTML Helper (VB)</span><span class="sxs-lookup"><span data-stu-id="8f10b-104">Using the TagBuilder Class to Build HTML Helpers (VB)</span></span>
 ====================
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="8f10b-112">TagBuilder 類別被包含在 system.web.mvc 的參考命名空間。</span><span class="sxs-lookup"><span data-stu-id="8f10b-112">The TagBuilder class is contained in the System.Web.Mvc namespace.</span></span> <span data-ttu-id="8f10b-113">它有五種方法：</span><span class="sxs-lookup"><span data-stu-id="8f10b-113">It has five methods:</span></span>
 
-- <span data-ttu-id="8f10b-114">AddCssClass() – 可讓您新增新*類別 =""*屬性至標記。</span><span class="sxs-lookup"><span data-stu-id="8f10b-114">AddCssClass() – Enables you to add a new *class=""* attribute to a tag.</span></span>
+- <span data-ttu-id="8f10b-114">AddCssClass() – 可讓您新增新*類別 =""* 屬性至標記。</span><span class="sxs-lookup"><span data-stu-id="8f10b-114">AddCssClass() – Enables you to add a new *class=""* attribute to a tag.</span></span>
 - <span data-ttu-id="8f10b-115">GenerateId() – 可讓您將識別碼屬性新增至標記。</span><span class="sxs-lookup"><span data-stu-id="8f10b-115">GenerateId() – Enables you to add an id attribute to a tag.</span></span> <span data-ttu-id="8f10b-116">這個方法會自動取代識別碼中的句點 （根據預設，句號會以底線取代）</span><span class="sxs-lookup"><span data-stu-id="8f10b-116">This method automatically replaces periods in the id (by default, periods are replaced by underscores)</span></span>
 - <span data-ttu-id="8f10b-117">MergeAttribute() – 可讓您將屬性加入至標記。</span><span class="sxs-lookup"><span data-stu-id="8f10b-117">MergeAttribute() – Enables you to add attributes to a tag.</span></span> <span data-ttu-id="8f10b-118">有多個多載，這個方法。</span><span class="sxs-lookup"><span data-stu-id="8f10b-118">There are multiple overloads of this method.</span></span>
 - <span data-ttu-id="8f10b-119">SetInnerText() – 可讓您設定標記的內部文字。</span><span class="sxs-lookup"><span data-stu-id="8f10b-119">SetInnerText() – Enables you to set the inner text of the tag.</span></span> <span data-ttu-id="8f10b-120">內部文字是 HTML 編碼自動。</span><span class="sxs-lookup"><span data-stu-id="8f10b-120">The inner text is HTML encode automatically.</span></span>

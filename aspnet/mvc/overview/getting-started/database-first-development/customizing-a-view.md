@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867654"
 ---
 <a name="ef-database-first-with-aspnet-mvc-customizing-a-view"></a><span data-ttu-id="b98a1-104">第一個使用 ASP.NET MVC 的 EF 資料庫： 自訂檢視</span><span class="sxs-lookup"><span data-stu-id="b98a1-104">EF Database First with ASP.NET MVC: Customizing a View</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880501"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a><span data-ttu-id="10966-103">使用 Visual Studio 的 ASP.NET Web 部署： Web.config 檔案轉換</span><span class="sxs-lookup"><span data-stu-id="10966-103">ASP.NET Web Deployment using Visual Studio: Web.config File Transformations</span></span>
 ====================

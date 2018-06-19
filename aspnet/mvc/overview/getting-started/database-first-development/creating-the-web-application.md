@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878772"
 ---
 <a name="ef-database-first-with-aspnet-mvc-creating-the-web-application-and-data-models"></a><span data-ttu-id="67580-104">第一個使用 ASP.NET MVC 的 EF 資料庫： 建立 Web 應用程式和資料模型</span><span class="sxs-lookup"><span data-stu-id="67580-104">EF Database First with ASP.NET MVC: Creating the Web Application and Data Models</span></span>
 ====================
@@ -69,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 ![連接到資料庫](creating-the-web-application/_static/image7.png)
 
-<span data-ttu-id="67580-141">在 [連接屬性] 視窗中，提供您的資料庫建立所在的本機伺服器的名稱 (在此情況下**(localdb) \ProjectsV12**)。</span><span class="sxs-lookup"><span data-stu-id="67580-141">In the Connection Properties window, provide the name of the local server where your database was created (in this case **(localdb)\ProjectsV12**).</span></span> <span data-ttu-id="67580-142">提供伺服器名稱之後, 請從可用的資料庫選取 ContosoUniversityData。</span><span class="sxs-lookup"><span data-stu-id="67580-142">After providing the server name, select the ContosoUniversityData from the available databases.</span></span>
+<span data-ttu-id="67580-141">在 [連接屬性] 視窗中，提供您的資料庫建立所在的本機伺服器的名稱 (在此情況下 **(localdb) \ProjectsV12**)。</span><span class="sxs-lookup"><span data-stu-id="67580-141">In the Connection Properties window, provide the name of the local server where your database was created (in this case **(localdb)\ProjectsV12**).</span></span> <span data-ttu-id="67580-142">提供伺服器名稱之後, 請從可用的資料庫選取 ContosoUniversityData。</span><span class="sxs-lookup"><span data-stu-id="67580-142">After providing the server name, select the ContosoUniversityData from the available databases.</span></span>
 
 ![設定連接屬性](creating-the-web-application/_static/image8.png)
 

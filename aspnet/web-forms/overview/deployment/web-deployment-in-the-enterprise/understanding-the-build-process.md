@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887996"
 ---
 <a name="understanding-the-build-process"></a><span data-ttu-id="22329-104">了解建置程序</span><span class="sxs-lookup"><span data-stu-id="22329-104">Understanding the Build Process</span></span>
 ====================

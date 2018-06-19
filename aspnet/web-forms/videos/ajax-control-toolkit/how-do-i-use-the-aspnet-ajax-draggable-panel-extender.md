@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880852"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-draggable-panel-extender"></a><span data-ttu-id="d0195-104">[如何:]使用 ASP.NET AJAX 可拖曳的面板的擴充項嗎？</span><span class="sxs-lookup"><span data-stu-id="d0195-104">[How Do I:] Use the ASP.NET AJAX Draggable Panel Extender?</span></span>
 ====================

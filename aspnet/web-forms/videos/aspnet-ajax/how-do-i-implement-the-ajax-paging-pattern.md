@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886533"
 ---
 <a name="how-do-i-implement-the-ajax-paging-pattern"></a><span data-ttu-id="15dea-104">[如何:]實作 AJAX 分頁模式？</span><span class="sxs-lookup"><span data-stu-id="15dea-104">[How Do I:] Implement the AJAX Paging Pattern?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892318"
 ---
 <a name="scenario-configuring-a-staging-environment-for-web-deployment"></a><span data-ttu-id="e4ecf-103">案例： 設定用於 Web 部署的預備環境</span><span class="sxs-lookup"><span data-stu-id="e4ecf-103">Scenario: Configuring a Staging Environment for Web Deployment</span></span>
 ====================

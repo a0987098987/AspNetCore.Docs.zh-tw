@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878730"
 ---
 <a name="aspnet-mvc-storefront-part-7-routing-and-ui-work"></a><span data-ttu-id="c5187-103">ASP.NET MVC Storefront 一部分 7： 路由和 UI 工作</span><span class="sxs-lookup"><span data-stu-id="c5187-103">ASP.NET MVC Storefront Part 7: Routing and UI Work</span></span>
 ====================

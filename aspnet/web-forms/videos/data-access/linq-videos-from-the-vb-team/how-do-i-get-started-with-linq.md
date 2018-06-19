@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883108"
 ---
 <a name="how-do-i-get-started-with-linq"></a><span data-ttu-id="dc742-104">[如何:]開始使用 LINQ？</span><span class="sxs-lookup"><span data-stu-id="dc742-104">[How Do I:] Get Started with LINQ?</span></span>
 ====================

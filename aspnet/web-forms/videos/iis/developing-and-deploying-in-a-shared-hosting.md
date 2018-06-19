@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885145"
 ---
 <a name="developing-and-deploying-in-a-shared-hosting"></a><span data-ttu-id="abec1-103">開發和部署共用裝載</span><span class="sxs-lookup"><span data-stu-id="abec1-103">Developing and Deploying In a Shared Hosting</span></span>
 ====================

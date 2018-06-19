@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888444"
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a><span data-ttu-id="628fe-103">加入驗證控制項的編輯，並插入介面 (C#)</span><span class="sxs-lookup"><span data-stu-id="628fe-103">Adding Validation Controls to the Editing and Inserting Interfaces (C#)</span></span>
 ====================

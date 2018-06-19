@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875223"
 ---
 <a name="how-do-i-use-the-combobox-control-c"></a><span data-ttu-id="e5f3f-104">如何使用下拉式方塊控制項？</span><span class="sxs-lookup"><span data-stu-id="e5f3f-104">How do I use the ComboBox Control?</span></span> <span data-ttu-id="e5f3f-105">(C#)</span><span class="sxs-lookup"><span data-stu-id="e5f3f-105">(C#)</span></span>
 ====================

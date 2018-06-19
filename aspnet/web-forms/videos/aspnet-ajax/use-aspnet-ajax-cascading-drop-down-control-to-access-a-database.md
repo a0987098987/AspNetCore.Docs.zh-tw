@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886647"
 ---
 <a name="use-aspnet-ajax-cascading-drop-down-control-to-access-a-database"></a><span data-ttu-id="5414c-103">若要存取的資料庫使用 ASP.NET AJAX 階層式下拉式控制項</span><span class="sxs-lookup"><span data-stu-id="5414c-103">Use ASP.NET AJAX Cascading Drop Down Control to Access a Database</span></span>
 ====================

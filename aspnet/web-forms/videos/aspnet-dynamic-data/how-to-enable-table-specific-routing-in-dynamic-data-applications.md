@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883331"
 ---
 <a name="how-to-enable-table-specific-routing-in-dynamic-data-applications"></a><span data-ttu-id="be7d6-103">如何啟用資料表特定路由在動態資料的應用程式</span><span class="sxs-lookup"><span data-stu-id="be7d6-103">How to Enable Table Specific Routing in Dynamic Data Applications</span></span>
 ====================

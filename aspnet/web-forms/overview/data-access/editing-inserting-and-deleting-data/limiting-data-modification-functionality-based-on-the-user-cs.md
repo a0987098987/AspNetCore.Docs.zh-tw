@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888194"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-c"></a><span data-ttu-id="4e5b4-104">限制使用者 (C#) 為基礎的資料修改功能</span><span class="sxs-lookup"><span data-stu-id="4e5b4-104">Limiting Data Modification Functionality Based on the User (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881437"
 ---
 <a name="how-do-i-cascading-style-sheets-in-visual-studio-2008"></a><span data-ttu-id="b73a5-104">[如何:]Visual Studio 2008 中的階層式樣式表</span><span class="sxs-lookup"><span data-stu-id="b73a5-104">[How Do I:] Cascading Style Sheets in Visual Studio 2008</span></span>
 ====================

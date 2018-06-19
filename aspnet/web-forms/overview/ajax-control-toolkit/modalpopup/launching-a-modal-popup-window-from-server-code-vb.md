@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872865"
 ---
 <a name="launching-a-modal-popup-window-from-server-code-vb"></a><span data-ttu-id="d7fd4-104">啟動強制回應的快顯視窗，從伺服器程式碼 (VB)</span><span class="sxs-lookup"><span data-stu-id="d7fd4-104">Launching a Modal Popup Window from Server Code (VB)</span></span>
 ====================

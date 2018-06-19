@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883251"
 ---
 <a name="implement-infinite-data-patterns-in-ajax"></a><span data-ttu-id="93731-103">AJAX 中實作無限資料模式</span><span class="sxs-lookup"><span data-stu-id="93731-103">Implement Infinite Data Patterns in AJAX</span></span>
 ====================

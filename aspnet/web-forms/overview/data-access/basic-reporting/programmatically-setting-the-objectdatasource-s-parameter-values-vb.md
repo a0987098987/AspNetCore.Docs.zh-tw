@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876666"
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a><span data-ttu-id="4e18c-104">以程式設計方式設定 ObjectDataSource 參數值 (VB)</span><span class="sxs-lookup"><span data-stu-id="4e18c-104">Programmatically Setting the ObjectDataSource's Parameter Values (VB)</span></span>
 ====================
@@ -124,7 +125,7 @@ ms.lasthandoff: 04/06/2018
 <span data-ttu-id="4e18c-167">**圖 9**： 按一下 [屬性] 視窗，列出 Web 控制項的事件中閃電圖示</span><span class="sxs-lookup"><span data-stu-id="4e18c-167">**Figure 9**: Click on the Lightning Bolt Icon in the Properties Window to List a Web Control's Events</span></span>
 
 
-<span data-ttu-id="4e18c-168">所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。</span><span class="sxs-lookup"><span data-stu-id="4e18c-168">All three approaches add a new event handler for the ObjectDataSource's `Selecting` event to the page's code-behind class.</span></span> <span data-ttu-id="4e18c-169">此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中*`parameterName`*值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。</span><span class="sxs-lookup"><span data-stu-id="4e18c-169">In this event handler we can read and write to the parameter values using `e.InputParameters(parameterName)`, where *`parameterName`* is the value of the `Name` attribute in the `<asp:Parameter>` tag (the `InputParameters` collection can also be indexed ordinally, as in `e.InputParameters(index)`).</span></span> <span data-ttu-id="4e18c-170">若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：</span><span class="sxs-lookup"><span data-stu-id="4e18c-170">To set the `month` parameter to the current month, add the following to the `Selecting` event handler:</span></span>
+<span data-ttu-id="4e18c-168">所有三種方法將新的事件處理常式加入用於 ObjectDataSource`Selecting`網頁的程式碼後置類別的事件。</span><span class="sxs-lookup"><span data-stu-id="4e18c-168">All three approaches add a new event handler for the ObjectDataSource's `Selecting` event to the page's code-behind class.</span></span> <span data-ttu-id="4e18c-169">此事件處理常式中，我們可以讀取和寫入使用的參數值`e.InputParameters(parameterName)`，其中*`parameterName`* 值`Name`屬性`<asp:Parameter>`標記 (`InputParameters`集合也可以序數，以在索引`e.InputParameters(index)`)。</span><span class="sxs-lookup"><span data-stu-id="4e18c-169">In this event handler we can read and write to the parameter values using `e.InputParameters(parameterName)`, where *`parameterName`* is the value of the `Name` attribute in the `<asp:Parameter>` tag (the `InputParameters` collection can also be indexed ordinally, as in `e.InputParameters(index)`).</span></span> <span data-ttu-id="4e18c-170">若要設定`month`參數目前的月份，將下列內容加入`Selecting`事件處理常式：</span><span class="sxs-lookup"><span data-stu-id="4e18c-170">To set the `month` parameter to the current month, add the following to the `Selecting` event handler:</span></span>
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample3.vb)]

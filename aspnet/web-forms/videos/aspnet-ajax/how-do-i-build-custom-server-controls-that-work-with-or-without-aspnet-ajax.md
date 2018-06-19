@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885493"
 ---
 <a name="how-do-i-build-custom-server-controls-that-work-with-or-without-aspnet-ajax"></a><span data-ttu-id="6cdeb-104">[如何:]建置自訂的伺服器控制項的 ASP.NET AJAX，不論工作嗎？</span><span class="sxs-lookup"><span data-stu-id="6cdeb-104">[How Do I:] Build Custom Server Controls that Work With or Without ASP.NET AJAX?</span></span>
 ====================

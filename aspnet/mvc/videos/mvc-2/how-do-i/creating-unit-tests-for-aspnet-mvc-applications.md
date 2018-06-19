@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878717"
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications"></a><span data-ttu-id="f04c2-104">建立 ASP.NET MVC 應用程式的單元測試</span><span class="sxs-lookup"><span data-stu-id="f04c2-104">Creating Unit Tests for ASP.NET MVC Applications</span></span>
 ====================

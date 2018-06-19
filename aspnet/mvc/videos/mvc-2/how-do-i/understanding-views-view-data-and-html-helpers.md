@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872087"
 ---
 <a name="understanding-views-view-data-and-html-helpers"></a><span data-ttu-id="3e891-104">了解檢視、 檢視資料，以及 HTML Helper</span><span class="sxs-lookup"><span data-stu-id="3e891-104">Understanding Views, View Data, and HTML Helpers</span></span>
 ====================

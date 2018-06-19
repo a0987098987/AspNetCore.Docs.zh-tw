@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30867979"
 ---
 <a name="adding-a-create-method-and-create-view"></a><span data-ttu-id="c32f2-104">加入建立方法，並建立檢視</span><span class="sxs-lookup"><span data-stu-id="c32f2-104">Adding a Create Method and Create View</span></span>
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851205"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a><span data-ttu-id="053bf-103">防止 ASP.NET Core 中開啟的重新導向攻擊</span><span class="sxs-lookup"><span data-stu-id="053bf-103">Prevent open redirect attacks in ASP.NET Core</span></span>
 

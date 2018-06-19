@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882291"
 ---
 <a name="data-access-layers-in-aspnet-applications"></a><span data-ttu-id="d88d7-104">ASP.NET 應用程式中的資料存取層級</span><span class="sxs-lookup"><span data-stu-id="d88d7-104">Data Access Layers in ASP.NET Applications</span></span>
 ====================

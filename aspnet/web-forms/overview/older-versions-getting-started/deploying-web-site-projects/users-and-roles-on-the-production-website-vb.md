@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886988"
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a><span data-ttu-id="bdb61-103">使用者和角色在生產網站 (VB)</span><span class="sxs-lookup"><span data-stu-id="bdb61-103">Users and Roles On The Production Website (VB)</span></span>
 ====================

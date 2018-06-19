@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884726"
 ---
 <a name="aspnet-4-quick-hit--new-rendering-option-for-check-box-lists-and-radio-button-lists"></a><span data-ttu-id="a4a7f-103">ASP.NET 4 」 快速 Hit"– 新的轉譯選項，選項按鈕核取方塊清單，列出</span><span class="sxs-lookup"><span data-stu-id="a4a7f-103">ASP.NET 4 "Quick Hit" – New Rendering Option for Check Box Lists and Radio Button Lists</span></span>
 ====================

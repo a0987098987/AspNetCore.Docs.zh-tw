@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873647"
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a><span data-ttu-id="a7136-104">裝載 ASP.NET Web API 2 中的 Azure 背景工作角色</span><span class="sxs-lookup"><span data-stu-id="a7136-104">Host ASP.NET Web API 2 in an Azure Worker Role</span></span>
 ====================

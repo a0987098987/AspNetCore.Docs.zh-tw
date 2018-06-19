@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881145"
 ---
 <a name="how-do-i-perform-group-and-aggregate-queries"></a><span data-ttu-id="4d82e-104">[如何:]群組和彙總查詢執行？</span><span class="sxs-lookup"><span data-stu-id="4d82e-104">[How Do I:] Perform Group and Aggregate Queries?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882734"
 ---
 <a name="editor-control"></a><span data-ttu-id="fd883-103">編輯器控制項</span><span class="sxs-lookup"><span data-stu-id="fd883-103">Editor Control</span></span>
 ====================

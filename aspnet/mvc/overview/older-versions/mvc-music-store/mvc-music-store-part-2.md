@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878694"
 ---
 <a name="part-2-controllers"></a><span data-ttu-id="7b778-104">第 2 部分： 控制站</span><span class="sxs-lookup"><span data-stu-id="7b778-104">Part 2: Controllers</span></span>
 ====================

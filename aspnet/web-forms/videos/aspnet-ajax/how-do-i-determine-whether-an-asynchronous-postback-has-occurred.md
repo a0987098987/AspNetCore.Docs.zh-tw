@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882165"
 ---
 <a name="how-do-i-determine-whether-an-asynchronous-postback-has-occurred"></a><span data-ttu-id="8bc11-105">[如何:]判斷是否非同步回傳發生？</span><span class="sxs-lookup"><span data-stu-id="8bc11-105">[How Do I:] Determine Whether an Asynchronous Postback has Occurred?</span></span>
 ====================

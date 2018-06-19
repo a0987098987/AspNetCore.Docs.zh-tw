@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882360"
 ---
 <a name="how-do-i-change-how-my-fields-render"></a><span data-ttu-id="c1ed9-105">如何變更我的欄位轉譯的方式？</span><span class="sxs-lookup"><span data-stu-id="c1ed9-105">How do I Change how my Fields render?</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886442"
 ---
 <a name="how-do-i-handle-business-logic-exceptions"></a><span data-ttu-id="7eb1a-105">如何處理商務邏輯例外狀況？</span><span class="sxs-lookup"><span data-stu-id="7eb1a-105">How do I Handle Business Logic Exceptions?</span></span>
 ====================

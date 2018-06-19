@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878408"
 ---
 <a name="aspnet-mvc-how-10-minute-technical-video-for-developers"></a><span data-ttu-id="def30-104">ASP.NET MVC： 如何？</span><span class="sxs-lookup"><span data-stu-id="def30-104">ASP.NET MVC: How?</span></span> <span data-ttu-id="def30-105">10 分鐘讓開發人員技術的視訊</span><span class="sxs-lookup"><span data-stu-id="def30-105">10 minute technical video for developers</span></span>
 ====================

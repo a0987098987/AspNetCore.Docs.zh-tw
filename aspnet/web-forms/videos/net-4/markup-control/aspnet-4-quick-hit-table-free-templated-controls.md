@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885647"
 ---
 <a name="aspnet-4-quick-hit--table-free-templated-controls"></a><span data-ttu-id="64fc4-103">ASP.NET 4"快速 Hit"– 資料表可用的樣板化控制項</span><span class="sxs-lookup"><span data-stu-id="64fc4-103">ASP.NET 4 "Quick Hit" – Table Free Templated Controls</span></span>
 ====================

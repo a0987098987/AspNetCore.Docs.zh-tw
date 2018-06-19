@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877121"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a><span data-ttu-id="59400-104">DataList 與中繼器控制項 (VB) 中顯示資料</span><span class="sxs-lookup"><span data-stu-id="59400-104">Displaying Data with the DataList and Repeater Controls (VB)</span></span>
 ====================

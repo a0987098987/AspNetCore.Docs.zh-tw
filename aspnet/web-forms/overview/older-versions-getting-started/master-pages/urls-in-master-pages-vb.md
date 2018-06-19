@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888067"
 ---
 <a name="urls-in-master-pages-vb"></a><span data-ttu-id="c0a43-104">主版頁面 (VB) 中的 Url</span><span class="sxs-lookup"><span data-stu-id="c0a43-104">URLs in Master Pages (VB)</span></span>
 ====================

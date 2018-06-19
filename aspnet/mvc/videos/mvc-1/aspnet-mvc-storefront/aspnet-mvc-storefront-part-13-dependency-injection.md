@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871034"
 ---
 <a name="aspnet-mvc-storefront-part-13-dependency-injection"></a><span data-ttu-id="b0827-103">ASP.NET MVC Storefront 一部分 13： 相依性插入</span><span class="sxs-lookup"><span data-stu-id="b0827-103">ASP.NET MVC Storefront Part 13: Dependency Injection</span></span>
 ====================

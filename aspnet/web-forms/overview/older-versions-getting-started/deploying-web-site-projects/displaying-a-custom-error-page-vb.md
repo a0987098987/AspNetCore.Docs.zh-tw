@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889159"
 ---
 <a name="displaying-a-custom-error-page-vb"></a><span data-ttu-id="b2032-104">顯示自訂錯誤網頁 (VB)</span><span class="sxs-lookup"><span data-stu-id="b2032-104">Displaying a Custom Error Page (VB)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880111"
 ---
 <a name="batch-deleting-vb"></a><span data-ttu-id="0ea11-104">批次刪除 (VB)</span><span class="sxs-lookup"><span data-stu-id="0ea11-104">Batch Deleting (VB)</span></span>
 ====================

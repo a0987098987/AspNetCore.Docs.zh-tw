@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879474"
 ---
 <a name="part-4-models-and-data-access"></a><span data-ttu-id="9871e-104">第 4 部分： 模型和資料存取</span><span class="sxs-lookup"><span data-stu-id="9871e-104">Part 4: Models and Data Access</span></span>
 ====================
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="updating-store-browse-and-details-to-use-live-data"></a><span data-ttu-id="9871e-160">更新存放區瀏覽和詳細資料使用即時資料</span><span class="sxs-lookup"><span data-stu-id="9871e-160">Updating Store Browse and Details to use live data</span></span>
 
-<span data-ttu-id="9871e-161">與儲存區/瀏覽？ 內容類型 =*[某些內容類型]*動作方法，我們要依名稱搜尋的內容類型。</span><span class="sxs-lookup"><span data-stu-id="9871e-161">With the /Store/Browse?genre=*[some-genre]* action method, we're searching for a Genre by name.</span></span> <span data-ttu-id="9871e-162">我們只預期有一個結果，因為我們永遠不應該有相同的內容類型名稱的兩個項目，因此我們可以使用。在 LINQ 查詢以取得適當的內容類型物件，像這樣的 Single() 延伸模組 （但不輸入）：</span><span class="sxs-lookup"><span data-stu-id="9871e-162">We only expect one result, since we shouldn't ever have two entries for the same Genre name, and so we can use the .Single() extension in LINQ to query for the appropriate Genre object like this (don't type this yet):</span></span>
+<span data-ttu-id="9871e-161">與儲存區/瀏覽？ 內容類型 =*[某些內容類型]* 動作方法，我們要依名稱搜尋的內容類型。</span><span class="sxs-lookup"><span data-stu-id="9871e-161">With the /Store/Browse?genre=*[some-genre]* action method, we're searching for a Genre by name.</span></span> <span data-ttu-id="9871e-162">我們只預期有一個結果，因為我們永遠不應該有相同的內容類型名稱的兩個項目，因此我們可以使用。在 LINQ 查詢以取得適當的內容類型物件，像這樣的 Single() 延伸模組 （但不輸入）：</span><span class="sxs-lookup"><span data-stu-id="9871e-162">We only expect one result, since we shouldn't ever have two entries for the same Genre name, and so we can use the .Single() extension in LINQ to query for the appropriate Genre object like this (don't type this yet):</span></span>
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample9.cs)]
 

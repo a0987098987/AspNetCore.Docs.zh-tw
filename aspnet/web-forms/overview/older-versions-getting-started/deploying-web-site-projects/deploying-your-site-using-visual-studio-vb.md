@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888873"
 ---
 <a name="deploying-your-site-using-visual-studio-vb"></a><span data-ttu-id="6a8d5-104">部署您的網站使用 Visual Studio (VB)</span><span class="sxs-lookup"><span data-stu-id="6a8d5-104">Deploying Your Site Using Visual Studio (VB)</span></span>
 ====================

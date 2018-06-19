@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895736"
 ---
 <a name="measuring-the-business-value-of-ajax"></a><span data-ttu-id="e793b-104">測量 AJAX 的商務價值</span><span class="sxs-lookup"><span data-stu-id="e793b-104">Measuring the Business Value of AJAX</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876861"
 ---
 <a name="custom-formatting-based-upon-data-c"></a><span data-ttu-id="56f8c-104">自訂的格式為基礎的資料 (C#)</span><span class="sxs-lookup"><span data-stu-id="56f8c-104">Custom Formatting Based Upon Data (C#)</span></span>
 ====================

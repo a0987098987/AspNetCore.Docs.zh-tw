@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880982"
 ---
 <a name="aspnet-vnext-videos-strongly-typed-data-controls"></a><span data-ttu-id="ddb61-103">ASP.NET vNext 影片： 強型別資料控制項</span><span class="sxs-lookup"><span data-stu-id="ddb61-103">ASP.NET vNext Videos: Strongly Typed Data Controls</span></span>
 ====================

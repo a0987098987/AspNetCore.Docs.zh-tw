@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881597"
 ---
 <a name="how-do-i-display-unknown-datatypes"></a><span data-ttu-id="5f931-104">如何顯示未知的資料類型？</span><span class="sxs-lookup"><span data-stu-id="5f931-104">How do I Display Unknown datatypes?</span></span>
 ====================

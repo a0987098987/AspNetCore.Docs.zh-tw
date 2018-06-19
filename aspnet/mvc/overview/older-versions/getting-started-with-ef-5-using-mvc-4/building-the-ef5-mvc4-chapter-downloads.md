@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878512"
 ---
 <a name="building-the-chapter-downloads-for-the-ef-5-mvc-4-tutorials"></a><span data-ttu-id="00d70-103">建置本章下載 EF 5 MVC 4 的教學課程</span><span class="sxs-lookup"><span data-stu-id="00d70-103">Building the Chapter Downloads for the EF 5 MVC 4 Tutorials</span></span>
 ====================

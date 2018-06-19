@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886819"
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a><span data-ttu-id="d9a87-104">使用模型繫結和 web form 中的查詢字串值來篩選資料</span><span class="sxs-lookup"><span data-stu-id="d9a87-104">Using query string values to filter data with model binding and web forms</span></span>
 ====================

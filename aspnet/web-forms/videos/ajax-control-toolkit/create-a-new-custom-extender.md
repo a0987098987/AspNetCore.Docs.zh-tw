@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885961"
 ---
 <a name="create-a-new-custom-extender"></a><span data-ttu-id="3e55d-103">建立新的自訂擴充性</span><span class="sxs-lookup"><span data-stu-id="3e55d-103">Create a New Custom Extender</span></span>
 ====================

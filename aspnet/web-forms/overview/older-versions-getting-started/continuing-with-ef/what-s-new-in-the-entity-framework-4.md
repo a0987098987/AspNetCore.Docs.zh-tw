@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889182"
 ---
 <a name="whats-new-in-the-entity-framework-40"></a><span data-ttu-id="c44ef-104">什麼是 Entity Framework 4.0 新功能</span><span class="sxs-lookup"><span data-stu-id="c44ef-104">What's New in the Entity Framework 4.0</span></span>
 ====================
@@ -176,7 +177,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="c44ef-210">[![Image22](what-s-new-in-the-entity-framework-4/_static/image36.png)](what-s-new-in-the-entity-framework-4/_static/image35.png)</span><span class="sxs-lookup"><span data-stu-id="c44ef-210">[![Image22](what-s-new-in-the-entity-framework-4/_static/image36.png)](what-s-new-in-the-entity-framework-4/_static/image35.png)</span></span>
 
-<span data-ttu-id="c44ef-211">(注意： 此頁面包含在可下載專案中，但讓它正常運作，您必須在本機 SQL Server Express 執行個體中建立資料庫，則資料庫不包含*.mdf*檔案*應用程式\_資料*資料夾。)</span><span class="sxs-lookup"><span data-stu-id="c44ef-211">(Note: This page is included in the downloadable project, but to make it work you must create the database in your local SQL Server Express instance; the database isn't included as an *.mdf* file in the *App\_Data* folder.)</span></span>
+<span data-ttu-id="c44ef-211">(注意： 此頁面包含在可下載專案中，但讓它正常運作，您必須在本機 SQL Server Express 執行個體中建立資料庫，則資料庫不包含 *.mdf*檔案*應用程式\_資料*資料夾。)</span><span class="sxs-lookup"><span data-stu-id="c44ef-211">(Note: This page is included in the downloadable project, but to make it work you must create the database in your local SQL Server Express instance; the database isn't included as an *.mdf* file in the *App\_Data* folder.)</span></span>
 
 <span data-ttu-id="c44ef-212">如需有關如何使用 Entity Framework 模型優先 （contract-first） 功能的詳細資訊，請參閱[Entity Framework 4 中的模型優先](https://msdn.microsoft.com/data/ff830362.aspx)。</span><span class="sxs-lookup"><span data-stu-id="c44ef-212">For more information about using the model-first feature of the Entity Framework, see [Model-First in the Entity Framework 4](https://msdn.microsoft.com/data/ff830362.aspx).</span></span>
 

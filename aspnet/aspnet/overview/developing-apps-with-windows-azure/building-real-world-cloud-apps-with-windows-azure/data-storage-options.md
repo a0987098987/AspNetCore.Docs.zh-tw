@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879708"
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="fa96e-104">資料儲存體選項 （使用 Azure 建置實際的雲端應用程式）</span><span class="sxs-lookup"><span data-stu-id="fa96e-104">Data Storage Options (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

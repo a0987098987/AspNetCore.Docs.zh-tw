@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879552"
 ---
 <a name="code-first-migrations-and-deployment-with-the-entity-framework-in-an-aspnet-mvc-application"></a><span data-ttu-id="0d18b-103">Code First 移轉，以及使用的 Entity Framework 中的 ASP.NET MVC 應用程式部署</span><span class="sxs-lookup"><span data-stu-id="0d18b-103">Code First Migrations and Deployment with the Entity Framework in an ASP.NET MVC Application</span></span>
 ====================
@@ -226,7 +227,7 @@ ms.lasthandoff: 04/06/2018
 
 ![](https://asp.net/media/4367421/mig.png)
 
-<span data-ttu-id="0d18b-289">部署程序也會建立新的連接字串*(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="0d18b-289">The deployment process also created a new connection string *(SchoolContext\_DatabasePublish*) for Code First Migrations to use for updating the database schema and seeding the database.</span></span>
+<span data-ttu-id="0d18b-289">部署程序也會建立新的連接字串 *(SchoolContext\_DatabasePublish*) 的 Code First 移轉，以用於更新資料庫結構描述和植入資料庫。</span><span class="sxs-lookup"><span data-stu-id="0d18b-289">The deployment process also created a new connection string *(SchoolContext\_DatabasePublish*) for Code First Migrations to use for updating the database schema and seeding the database.</span></span>
 
 ![Database_Publish 連接字串](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
 

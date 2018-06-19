@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895200"
 ---
 <a name="working-with-data-part-2"></a><span data-ttu-id="09582-103">使用資料 （第 2 部分）</span><span class="sxs-lookup"><span data-stu-id="09582-103">Working with Data (Part 2)</span></span>
 ====================

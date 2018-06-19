@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871216"
 ---
 <a name="creating-a-route-constraint-vb"></a><span data-ttu-id="70db9-103">建立路由條件約束 (VB)</span><span class="sxs-lookup"><span data-stu-id="70db9-103">Creating a Route Constraint (VB)</span></span>
 ====================

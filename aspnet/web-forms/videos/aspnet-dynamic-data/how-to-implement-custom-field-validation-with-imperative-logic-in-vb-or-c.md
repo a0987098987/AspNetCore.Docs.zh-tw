@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885012"
 ---
 <a name="how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c"></a><span data-ttu-id="bd909-103">如何在 VB 或 C# 中實作以命令式邏輯的自訂欄位驗證</span><span class="sxs-lookup"><span data-stu-id="bd909-103">How to Implement Custom Field Validation with Imperative Logic in VB or C#</span></span>
 ====================

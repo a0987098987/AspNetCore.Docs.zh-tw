@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885568"
 ---
 <a name="configuring-a-database-server-for-web-deploy-publishing"></a><span data-ttu-id="e12f6-104">設定 Web Deploy 發行變更資料庫伺服器</span><span class="sxs-lookup"><span data-stu-id="e12f6-104">Configuring a Database Server for Web Deploy Publishing</span></span>
 ====================
@@ -175,7 +176,7 @@ ms.lasthandoff: 04/06/2018
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image12.png)
 3. <span data-ttu-id="e12f6-223">在**登入屬性**對話方塊中，按一下 **使用者對應**。</span><span class="sxs-lookup"><span data-stu-id="e12f6-223">In the **Login Properties** dialog box, click **User Mapping**.</span></span>
 4. <span data-ttu-id="e12f6-224">在**對應到此登入的使用者**資料表中，選取您的資料庫名稱 (例如， **ContactManager**)。</span><span class="sxs-lookup"><span data-stu-id="e12f6-224">In the **Users mapped to this login** table, select the name of your database (for example, **ContactManager**).</span></span>
-5. <span data-ttu-id="e12f6-225">在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取所需的權限。</span><span class="sxs-lookup"><span data-stu-id="e12f6-225">In the **Database role membership for:** *[database name]* list, select the permissions required.</span></span> <span data-ttu-id="e12f6-226">範例解決方案的連絡管理員，您必須選取**db\_datareader**和**db\_datawriter**角色。</span><span class="sxs-lookup"><span data-stu-id="e12f6-226">In the case of the Contact Manager sample solution, you must select the **db\_datareader** and **db\_datawriter** roles.</span></span>
+5. <span data-ttu-id="e12f6-225">在**資料庫角色成員資格對象：** *[資料庫名稱]* 清單中，選取所需的權限。</span><span class="sxs-lookup"><span data-stu-id="e12f6-225">In the **Database role membership for:** *[database name]* list, select the permissions required.</span></span> <span data-ttu-id="e12f6-226">範例解決方案的連絡管理員，您必須選取**db\_datareader**和**db\_datawriter**角色。</span><span class="sxs-lookup"><span data-stu-id="e12f6-226">In the case of the Contact Manager sample solution, you must select the **db\_datareader** and **db\_datawriter** roles.</span></span>
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image13.png)
 6. <span data-ttu-id="e12f6-227">按一下 [確定 **Deploying Office Solutions**]。</span><span class="sxs-lookup"><span data-stu-id="e12f6-227">Click **OK**.</span></span>
@@ -212,7 +213,7 @@ ms.lasthandoff: 04/06/2018
 2. <span data-ttu-id="e12f6-247">在**物件總管 中**視窗中，展開**安全性** 節點，展開**登入** 節點，然後按兩下 電腦帳戶登入 (比方說， **FABRIKAM\matt**)。</span><span class="sxs-lookup"><span data-stu-id="e12f6-247">In the **Object Explorer** window, expand the **Security** node, expand the **Logins** node, and then double-click the machine account login (for example, **FABRIKAM\matt**).</span></span>
 3. <span data-ttu-id="e12f6-248">在**登入屬性**對話方塊中，按一下 **使用者對應**。</span><span class="sxs-lookup"><span data-stu-id="e12f6-248">In the **Login Properties** dialog box, click **User Mapping**.</span></span>
 4. <span data-ttu-id="e12f6-249">在**對應到此登入的使用者**資料表中，選取您的資料庫名稱 (例如， **ContactManager**)。</span><span class="sxs-lookup"><span data-stu-id="e12f6-249">In the **Users mapped to this login** table, select the name of your database (for example, **ContactManager**).</span></span>
-5. <span data-ttu-id="e12f6-250">在**資料庫角色成員資格對象：** *[資料庫名稱]*清單中，選取**db\_擁有者**角色。</span><span class="sxs-lookup"><span data-stu-id="e12f6-250">In the **Database role membership for:** *[database name]* list, select the **db\_owner** role.</span></span>
+5. <span data-ttu-id="e12f6-250">在**資料庫角色成員資格對象：** *[資料庫名稱]* 清單中，選取**db\_擁有者**角色。</span><span class="sxs-lookup"><span data-stu-id="e12f6-250">In the **Database role membership for:** *[database name]* list, select the **db\_owner** role.</span></span>
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image15.png)
 6. <span data-ttu-id="e12f6-251">按一下 [確定 **Deploying Office Solutions**]。</span><span class="sxs-lookup"><span data-stu-id="e12f6-251">Click **OK**.</span></span>

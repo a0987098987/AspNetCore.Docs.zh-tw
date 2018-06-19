@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893130"
 ---
 <a name="introduction-to-testing-web-applications-with-team-system"></a><span data-ttu-id="ee9da-103">使用 Team System 測試 Web 應用程式簡介</span><span class="sxs-lookup"><span data-stu-id="ee9da-103">Introduction to Testing Web Applications with Team System</span></span>
 ====================

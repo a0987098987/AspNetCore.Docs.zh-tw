@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881808"
 ---
 <a name="setting-up-the-contact-manager-solution"></a><span data-ttu-id="3874a-103">設定連絡人管理員解決方案</span><span class="sxs-lookup"><span data-stu-id="3874a-103">Setting Up the Contact Manager Solution</span></span>
 ====================
@@ -63,9 +64,9 @@ ms.lasthandoff: 04/06/2018
 
     [!code-console[Main](setting-up-the-contact-manager-solution/samples/sample1.cmd)]
 
-    1. <span data-ttu-id="3874a-130">使用**– C**參數來指定您的資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="3874a-130">Use the **–C** switch to specify the connection string for your database server.</span></span>
-    2. <span data-ttu-id="3874a-131">使用**–**參數來指定應用程式服務的功能，您想要加入至資料庫。</span><span class="sxs-lookup"><span data-stu-id="3874a-131">Use the **–A** switch to specify the application services features you want to add to the database.</span></span> <span data-ttu-id="3874a-132">在此情況下， **m**指出您想要加入成員資格提供者的支援和**r**指出您想要加入角色管理員的支援。</span><span class="sxs-lookup"><span data-stu-id="3874a-132">In this case, **m** indicates that you want to add support for the membership provider and **r** indicates that you want to add support for the role manager.</span></span>
-    3. <span data-ttu-id="3874a-133">使用**– d**參數來指定您的應用程式服務資料庫的名稱。</span><span class="sxs-lookup"><span data-stu-id="3874a-133">Use the **–d** switch to specify a name for your application services database.</span></span> <span data-ttu-id="3874a-134">如果您省略這個參數，此公用程式會建立資料庫的預設名稱與**aspnetdb**。</span><span class="sxs-lookup"><span data-stu-id="3874a-134">If you omit this switch, the utility will create a database with the default name of **aspnetdb**.</span></span>
+    1. <span data-ttu-id="3874a-130">使用 **– C**參數來指定您的資料庫伺服器的連接字串。</span><span class="sxs-lookup"><span data-stu-id="3874a-130">Use the **–C** switch to specify the connection string for your database server.</span></span>
+    2. <span data-ttu-id="3874a-131">使用 **–** 參數來指定應用程式服務的功能，您想要加入至資料庫。</span><span class="sxs-lookup"><span data-stu-id="3874a-131">Use the **–A** switch to specify the application services features you want to add to the database.</span></span> <span data-ttu-id="3874a-132">在此情況下， **m**指出您想要加入成員資格提供者的支援和**r**指出您想要加入角色管理員的支援。</span><span class="sxs-lookup"><span data-stu-id="3874a-132">In this case, **m** indicates that you want to add support for the membership provider and **r** indicates that you want to add support for the role manager.</span></span>
+    3. <span data-ttu-id="3874a-133">使用 **– d**參數來指定您的應用程式服務資料庫的名稱。</span><span class="sxs-lookup"><span data-stu-id="3874a-133">Use the **–d** switch to specify a name for your application services database.</span></span> <span data-ttu-id="3874a-134">如果您省略這個參數，此公用程式會建立資料庫的預設名稱與**aspnetdb**。</span><span class="sxs-lookup"><span data-stu-id="3874a-134">If you omit this switch, the utility will create a database with the default name of **aspnetdb**.</span></span>
 3. <span data-ttu-id="3874a-135">當成功建立資料庫時，命令提示字元會顯示確認訊息。</span><span class="sxs-lookup"><span data-stu-id="3874a-135">When the database has been created successfully, the command prompt will show a confirmation.</span></span>
 
     ![](setting-up-the-contact-manager-solution/_static/image1.png)

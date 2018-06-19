@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889091"
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a><span data-ttu-id="a75d0-104">Web form 模型繫結與資料擷取和顯示</span><span class="sxs-lookup"><span data-stu-id="a75d0-104">Retrieving and displaying data with model binding and web forms</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885856"
 ---
 <a name="adding-ajax-functionality-to-an-existing-aspnet-page"></a><span data-ttu-id="69473-104">將 AJAX 功能加入至現有的 ASP.NET 網頁</span><span class="sxs-lookup"><span data-stu-id="69473-104">Adding AJAX Functionality to an Existing ASP.NET Page</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872165"
 ---
 <a name="aspnet-mvc-2---areas"></a><span data-ttu-id="c84a0-103">ASP.NET MVC 2-的區域</span><span class="sxs-lookup"><span data-stu-id="c84a0-103">ASP.NET MVC 2 - Areas</span></span>
 ====================

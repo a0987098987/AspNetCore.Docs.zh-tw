@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873608"
 ---
 <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a><span data-ttu-id="a2bf9-104">使用 SMS 和電子郵件雙因素驗證的 ASP.NET MVC 5 應用程式</span><span class="sxs-lookup"><span data-stu-id="a2bf9-104">ASP.NET MVC 5 app with SMS and email Two-Factor Authentication</span></span>
 ====================

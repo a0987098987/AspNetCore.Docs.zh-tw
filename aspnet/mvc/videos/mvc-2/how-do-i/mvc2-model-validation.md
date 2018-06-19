@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874573"
 ---
 <a name="mvc2---model-validation"></a><span data-ttu-id="cd572-103">MVC2 層模型驗證</span><span class="sxs-lookup"><span data-stu-id="cd572-103">MVC2 - Model Validation</span></span>
 ====================

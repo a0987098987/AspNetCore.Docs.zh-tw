@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871346"
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="ffda1-104">資料分割策略 （使用 Azure 建置實際的雲端應用程式）</span><span class="sxs-lookup"><span data-stu-id="ffda1-104">Data Partitioning Strategies (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

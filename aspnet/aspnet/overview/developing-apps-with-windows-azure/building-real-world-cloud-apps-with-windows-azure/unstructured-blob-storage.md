@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872568"
 ---
 <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="e388d-104">非結構化的 Blob 儲存體 （使用 Azure 建置實際的雲端應用程式）</span><span class="sxs-lookup"><span data-stu-id="e388d-104">Unstructured Blob Storage (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

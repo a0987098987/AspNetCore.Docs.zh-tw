@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873244"
 ---
 <a name="implement-efficient-data-paging"></a><span data-ttu-id="240df-103">實作有效率的資料分頁</span><span class="sxs-lookup"><span data-stu-id="240df-103">Implement Efficient Data Paging</span></span>
 ====================
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="nerddinner-step-8-paging-support"></a><span data-ttu-id="240df-109">NerdDinner 步驟 8： 分頁支援</span><span class="sxs-lookup"><span data-stu-id="240df-109">NerdDinner Step 8: Paging Support</span></span>
 
-<span data-ttu-id="240df-110">如果網站順利完成時，會有數千個即將 dinners。</span><span class="sxs-lookup"><span data-stu-id="240df-110">If our site is successful, it will have thousands of upcoming dinners.</span></span> <span data-ttu-id="240df-111">我們需要確定我們的 UI 調整為處理所有的這些 dinners，而且可讓使用者瀏覽它們。</span><span class="sxs-lookup"><span data-stu-id="240df-111">We need to make sure that our UI scales to handle all of these dinners, and allows users to browse them.</span></span> <span data-ttu-id="240df-112">若要啟用此功能，我們會將新增的分頁支援我們*/Dinners* URL 一次，我們在顯示 1000 個 dinners 的因此，而是會只顯示 10 個即將 dinners 一次-並讓使用者可以頁面後和向前逐步執行中的整個清單SEO 易懂的方式。</span><span class="sxs-lookup"><span data-stu-id="240df-112">To enable this, we'll add paging support to our */Dinners* URL so that instead of displaying 1000s of dinners at once, we'll only display 10 upcoming dinners at a time - and allow end-users to page back and forward through the entire list in an SEO friendly way.</span></span>
+<span data-ttu-id="240df-110">如果網站順利完成時，會有數千個即將 dinners。</span><span class="sxs-lookup"><span data-stu-id="240df-110">If our site is successful, it will have thousands of upcoming dinners.</span></span> <span data-ttu-id="240df-111">我們需要確定我們的 UI 調整為處理所有的這些 dinners，而且可讓使用者瀏覽它們。</span><span class="sxs-lookup"><span data-stu-id="240df-111">We need to make sure that our UI scales to handle all of these dinners, and allows users to browse them.</span></span> <span data-ttu-id="240df-112">若要啟用此功能，我們會將新增的分頁支援我們 */Dinners* URL 一次，我們在顯示 1000 個 dinners 的因此，而是會只顯示 10 個即將 dinners 一次-並讓使用者可以頁面後和向前逐步執行中的整個清單SEO 易懂的方式。</span><span class="sxs-lookup"><span data-stu-id="240df-112">To enable this, we'll add paging support to our */Dinners* URL so that instead of displaying 1000s of dinners at once, we'll only display 10 upcoming dinners at a time - and allow end-users to page back and forward through the entire list in an SEO friendly way.</span></span>
 
 ### <a name="index-action-method-recap"></a><span data-ttu-id="240df-113">Index 動作方法的重點</span><span class="sxs-lookup"><span data-stu-id="240df-113">Index() Action Method Recap</span></span>
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample1.cs)]
 
-<span data-ttu-id="240df-115">發出要求來*/Dinners* URL，它會擷取一份所有即將 dinners 並接下來會呈現所有它們：</span><span class="sxs-lookup"><span data-stu-id="240df-115">When a request is made to the */Dinners* URL, it retrieves a list of all upcoming dinners and then renders a listing of all of them out:</span></span>
+<span data-ttu-id="240df-115">發出要求來 */Dinners* URL，它會擷取一份所有即將 dinners 並接下來會呈現所有它們：</span><span class="sxs-lookup"><span data-stu-id="240df-115">When a request is made to the */Dinners* URL, it retrieves a list of all upcoming dinners and then renders a listing of all of them out:</span></span>
 
 ![](implement-efficient-data-paging/_static/image1.png)
 
@@ -67,17 +68,17 @@ ms.lasthandoff: 04/06/2018
 
 #### <a name="using-a-querystring-value"></a><span data-ttu-id="240df-130">使用查詢字串值</span><span class="sxs-lookup"><span data-stu-id="240df-130">Using a Querystring value</span></span>
 
-<span data-ttu-id="240df-131">下列程式碼示範如何我們可以更新我們 index （） 的動作方法來支援查詢字串參數，並啟用 Url，例如*/Dinners？ 頁面 = 2*:</span><span class="sxs-lookup"><span data-stu-id="240df-131">The code below demonstrates how we can update our Index() action method to support a querystring parameter and enable URLs like */Dinners?page=2*:</span></span>
+<span data-ttu-id="240df-131">下列程式碼示範如何我們可以更新我們 index （） 的動作方法來支援查詢字串參數，並啟用 Url，例如 */Dinners？ 頁面 = 2*:</span><span class="sxs-lookup"><span data-stu-id="240df-131">The code below demonstrates how we can update our Index() action method to support a querystring parameter and enable URLs like */Dinners?page=2*:</span></span>
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample4.cs)]
 
-<span data-ttu-id="240df-132">上述的 index 動作方法具有名為 「 頁面 」 的參數。</span><span class="sxs-lookup"><span data-stu-id="240df-132">The Index() action method above has a parameter named "page".</span></span> <span data-ttu-id="240df-133">參數宣告為可為 null 的整數 (這是什麼 int？ 表示)。</span><span class="sxs-lookup"><span data-stu-id="240df-133">The parameter is declared as a nullable integer (that is what int? indicates).</span></span> <span data-ttu-id="240df-134">這表示*/Dinners？ 頁面 = 2* URL 會導致值為"2"傳遞為參數值。</span><span class="sxs-lookup"><span data-stu-id="240df-134">This means that the */Dinners?page=2* URL will cause a value of "2" to be passed as the parameter value.</span></span> <span data-ttu-id="240df-135">*/Dinners* URL （不含查詢字串值） 會導致要傳遞 null 值。</span><span class="sxs-lookup"><span data-stu-id="240df-135">The */Dinners* URL (without a querystring value) will cause a null value to be passed.</span></span>
+<span data-ttu-id="240df-132">上述的 index 動作方法具有名為 「 頁面 」 的參數。</span><span class="sxs-lookup"><span data-stu-id="240df-132">The Index() action method above has a parameter named "page".</span></span> <span data-ttu-id="240df-133">參數宣告為可為 null 的整數 (這是什麼 int？ 表示)。</span><span class="sxs-lookup"><span data-stu-id="240df-133">The parameter is declared as a nullable integer (that is what int? indicates).</span></span> <span data-ttu-id="240df-134">這表示 */Dinners？ 頁面 = 2* URL 會導致值為"2"傳遞為參數值。</span><span class="sxs-lookup"><span data-stu-id="240df-134">This means that the */Dinners?page=2* URL will cause a value of "2" to be passed as the parameter value.</span></span> <span data-ttu-id="240df-135">*/Dinners* URL （不含查詢字串值） 會導致要傳遞 null 值。</span><span class="sxs-lookup"><span data-stu-id="240df-135">The */Dinners* URL (without a querystring value) will cause a null value to be passed.</span></span>
 
 <span data-ttu-id="240df-136">我們會頁面值乘以頁面大小 （在此情況下 10 個資料列） 來判斷多少 dinners 略過。</span><span class="sxs-lookup"><span data-stu-id="240df-136">We are multiplying the page value by the page size (in this case 10 rows) to determine how many dinners to skip over.</span></span> <span data-ttu-id="240df-137">我們使用[C# null"聯合 」 運算子 （？）](https://weblogs.asp.net/scottgu/archive/2007/09/20/the-new-c-null-coalescing-operator-and-using-it-with-linq.aspx)處理可為 null 類型時，會很有用。</span><span class="sxs-lookup"><span data-stu-id="240df-137">We are using the [C# null "coalescing" operator (??)](https://weblogs.asp.net/scottgu/archive/2007/09/20/the-new-c-null-coalescing-operator-and-using-it-with-linq.aspx) which is useful when dealing with nullable types.</span></span> <span data-ttu-id="240df-138">上述程式碼將指派頁面 0 的值如果頁面參數為 null。</span><span class="sxs-lookup"><span data-stu-id="240df-138">The code above assigns page the value of 0 if the page parameter is null.</span></span>
 
 #### <a name="using-embedded-url-values"></a><span data-ttu-id="240df-139">使用內嵌 URL 值</span><span class="sxs-lookup"><span data-stu-id="240df-139">Using Embedded URL values</span></span>
 
-<span data-ttu-id="240df-140">使用查詢字串值的替代方式是將內嵌頁面內之參數的實際 URL 本身。</span><span class="sxs-lookup"><span data-stu-id="240df-140">An alternative to using a querystring value would be to embed the page parameter within the actual URL itself.</span></span> <span data-ttu-id="240df-141">例如： */Dinners/Page/2*或*/Dinners/2*。</span><span class="sxs-lookup"><span data-stu-id="240df-141">For example: */Dinners/Page/2* or */Dinners/2*.</span></span> <span data-ttu-id="240df-142">ASP.NET MVC 包含功能強大的 URL 路由引擎，以簡化支援像這樣的情況。</span><span class="sxs-lookup"><span data-stu-id="240df-142">ASP.NET MVC includes a powerful URL routing engine that makes it easy to support scenarios like this.</span></span>
+<span data-ttu-id="240df-140">使用查詢字串值的替代方式是將內嵌頁面內之參數的實際 URL 本身。</span><span class="sxs-lookup"><span data-stu-id="240df-140">An alternative to using a querystring value would be to embed the page parameter within the actual URL itself.</span></span> <span data-ttu-id="240df-141">例如： */Dinners/Page/2*或 */Dinners/2*。</span><span class="sxs-lookup"><span data-stu-id="240df-141">For example: */Dinners/Page/2* or */Dinners/2*.</span></span> <span data-ttu-id="240df-142">ASP.NET MVC 包含功能強大的 URL 路由引擎，以簡化支援像這樣的情況。</span><span class="sxs-lookup"><span data-stu-id="240df-142">ASP.NET MVC includes a powerful URL routing engine that makes it easy to support scenarios like this.</span></span>
 
 <span data-ttu-id="240df-143">我們可以註冊自訂的路由規則的對應要我們想要任何控制器類別或動作方法的任何連入的 URL 或 URL 格式。</span><span class="sxs-lookup"><span data-stu-id="240df-143">We can register custom routing rules that map any incoming URL or URL format to any controller class or action method we want.</span></span> <span data-ttu-id="240df-144">我們只需要待辦事項是開啟內受測專案的 Global.asax 檔案：</span><span class="sxs-lookup"><span data-stu-id="240df-144">All we need to-do is to open the Global.asax file within our project:</span></span>
 
@@ -93,11 +94,11 @@ ms.lasthandoff: 04/06/2018
 
 [!code-csharp[Main](implement-efficient-data-paging/samples/sample6.cs)]
 
-<span data-ttu-id="240df-150">現在當我們執行應用程式，並在輸入和*/Dinners*我們會看到前 10 個即將 dinners:</span><span class="sxs-lookup"><span data-stu-id="240df-150">And now when we run the application and type in */Dinners* we'll see the first 10 upcoming dinners:</span></span>
+<span data-ttu-id="240df-150">現在當我們執行應用程式，並在輸入和 */Dinners*我們會看到前 10 個即將 dinners:</span><span class="sxs-lookup"><span data-stu-id="240df-150">And now when we run the application and type in */Dinners* we'll see the first 10 upcoming dinners:</span></span>
 
 ![](implement-efficient-data-paging/_static/image3.png)
 
-<span data-ttu-id="240df-151">和中，當我們輸入*/Dinners/Page/1*我們會看到 dinners 的下一個頁面：</span><span class="sxs-lookup"><span data-stu-id="240df-151">And when we type in */Dinners/Page/1* we'll see the next page of dinners:</span></span>
+<span data-ttu-id="240df-151">和中，當我們輸入 */Dinners/Page/1*我們會看到 dinners 的下一個頁面：</span><span class="sxs-lookup"><span data-stu-id="240df-151">And when we type in */Dinners/Page/1* we'll see the next page of dinners:</span></span>
 
 ![](implement-efficient-data-paging/_static/image4.png)
 

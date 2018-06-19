@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874781"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-4"></a><span data-ttu-id="85273-103">使用 HTML5 與 jQuery UI 日期選擇器快顯行事曆搭配 ASP.NET MVC-第 4 部分</span><span class="sxs-lookup"><span data-stu-id="85273-103">Using the HTML5 and jQuery UI Datepicker Popup Calendar with ASP.NET MVC - Part 4</span></span>
 ====================
@@ -102,7 +103,7 @@ ms.lasthandoff: 04/06/2018
 - <span data-ttu-id="85273-158">*jquery.ui.datepicker.js*</span><span class="sxs-lookup"><span data-stu-id="85273-158">*jquery.ui.datepicker.js*</span></span>
 - <span data-ttu-id="85273-159">*jquery.ui.datepicker.min.js*</span><span class="sxs-lookup"><span data-stu-id="85273-159">*jquery.ui.datepicker.min.js*</span></span>
 
-<span data-ttu-id="85273-160">注意： 偵錯版本 (不含任何檔案*。 min.js*延伸模組) 適合進行偵錯，但在生產網站中，您會加入縮短的版本。</span><span class="sxs-lookup"><span data-stu-id="85273-160">Note: The debug versions (the files without the *.min.js* extension) are useful for debugging, but in a production site, you'd include only the minified versions.</span></span>
+<span data-ttu-id="85273-160">注意： 偵錯版本 (不含任何檔案 *。 min.js*延伸模組) 適合進行偵錯，但在生產網站中，您會加入縮短的版本。</span><span class="sxs-lookup"><span data-stu-id="85273-160">Note: The debug versions (the files without the *.min.js* extension) are useful for debugging, but in a production site, you'd include only the minified versions.</span></span>
 
 <span data-ttu-id="85273-161">若要實際使用 jQuery 日期選擇器，您要建立 [行事曆] widget 中編輯範本將連結的 jQuery 指令碼。</span><span class="sxs-lookup"><span data-stu-id="85273-161">To actually use the jQuery date picker, you need to create a jQuery script that will hook up the calendar widget to the edit template.</span></span> <span data-ttu-id="85273-162">在**方案總管 中**，以滑鼠右鍵按一下*指令碼*資料夾，然後選取**新增**，然後**新項目**，然後**JScript檔案**。</span><span class="sxs-lookup"><span data-stu-id="85273-162">In **Solution Explorer**, right-click the *Scripts* folder and select **Add**, then **New Item**, and then **JScript File**.</span></span> <span data-ttu-id="85273-163">將檔案命名*DatePickerReady.js*。</span><span class="sxs-lookup"><span data-stu-id="85273-163">Name the file *DatePickerReady.js*.</span></span>
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="85273-165">如果您不熟悉 jQuery，以下是這個動作的簡短說明： 第一行是&quot;jQuery 準備&quot;函式，當已載入的網頁中的所有 DOM 項目時呼叫。</span><span class="sxs-lookup"><span data-stu-id="85273-165">If you're not familiar with jQuery, here's a brief explanation of what this does: the first line is the &quot;jQuery ready&quot; function, which is called when all the DOM elements in a page have loaded.</span></span> <span data-ttu-id="85273-166">第二行中選取所有具有類別名稱的 DOM 項目`datefield`，再叫用`datepicker`為每個函式。</span><span class="sxs-lookup"><span data-stu-id="85273-166">The second line selects all DOM elements that have the class name `datefield`, then invokes the `datepicker` function for each of them.</span></span> <span data-ttu-id="85273-167">(請記住您加入`datefield`類別*Views\Shared\EditorTemplates\Date.cshtml*稍早在本教學課程中的範本。)</span><span class="sxs-lookup"><span data-stu-id="85273-167">(Remember that you added the `datefield` class to the *Views\Shared\EditorTemplates\Date.cshtml* template earlier in the tutorial.)</span></span>
 
-<span data-ttu-id="85273-168">接下來，開啟*_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="85273-168">Next, open the *Views\Shared\\_Layout.cshtml* file.</span></span> <span data-ttu-id="85273-169">您必須將參考加入至下列檔案，也就是所有必要的好讓您可以使用日期選擇器：</span><span class="sxs-lookup"><span data-stu-id="85273-169">You need to add references to the following files, which are all required so that you can use the date picker:</span></span>
+<span data-ttu-id="85273-168">接下來，開啟 *_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="85273-168">Next, open the *Views\Shared\\_Layout.cshtml* file.</span></span> <span data-ttu-id="85273-169">您必須將參考加入至下列檔案，也就是所有必要的好讓您可以使用日期選擇器：</span><span class="sxs-lookup"><span data-stu-id="85273-169">You need to add references to the following files, which are all required so that you can use the date picker:</span></span>
 
 - <span data-ttu-id="85273-170">*Content/themes/base/jquery.ui.core.css*</span><span class="sxs-lookup"><span data-stu-id="85273-170">*Content/themes/base/jquery.ui.core.css*</span></span>
 - <span data-ttu-id="85273-171">*Content/themes/base/jquery.ui.datepicker.css*</span><span class="sxs-lookup"><span data-stu-id="85273-171">*Content/themes/base/jquery.ui.datepicker.css*</span></span>
@@ -121,7 +122,7 @@ ms.lasthandoff: 04/06/2018
 - <span data-ttu-id="85273-174">*jquery.ui.datepicker.min.js*</span><span class="sxs-lookup"><span data-stu-id="85273-174">*jquery.ui.datepicker.min.js*</span></span>
 - <span data-ttu-id="85273-175">*DatePickerReady.js*</span><span class="sxs-lookup"><span data-stu-id="85273-175">*DatePickerReady.js*</span></span>
 
-<span data-ttu-id="85273-176">下列範例顯示的實際程式碼應新增在底部`head`中的項目*_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="85273-176">The following example shows the actual code that you should add at the bottom of the `head` element in the *Views\Shared\\_Layout.cshtml* file.</span></span>
+<span data-ttu-id="85273-176">下列範例顯示的實際程式碼應新增在底部`head`中的項目 *_layout.cshtml\\_Layout.cshtml*檔案。</span><span class="sxs-lookup"><span data-stu-id="85273-176">The following example shows the actual code that you should add at the bottom of the `head` element in the *Views\Shared\\_Layout.cshtml* file.</span></span>
 
 [!code-cshtml[Main](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4/samples/sample6.cshtml)]
 

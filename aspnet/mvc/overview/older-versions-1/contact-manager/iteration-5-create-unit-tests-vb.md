@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875275"
 ---
 <a name="iteration-5--create-unit-tests-vb"></a><span data-ttu-id="c2d5e-104">反覆項目 #5 – 建立單元測試 (VB)</span><span class="sxs-lookup"><span data-stu-id="c2d5e-104">Iteration #5 – Create unit tests (VB)</span></span>
 ====================
@@ -184,7 +185,7 @@ ms.lasthandoff: 04/06/2018
 
 <span data-ttu-id="c2d5e-258">剩餘的測試確認 CreateContact() 方法呼叫含有無效的連絡人時然後方法會傳回 false 的預期的驗證錯誤訊息加入至模型狀態。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-258">The remaining tests verify that when the CreateContact() method is called with an invalid Contact then the method returns false and the expected validation error message is added to model state.</span></span> <span data-ttu-id="c2d5e-259">比方說，CreateContactRequiredFirstName() 測試會以空字串的 FirstName 屬性建立連絡人類別的執行個體。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-259">For example, the CreateContactRequiredFirstName() test creates an instance of the Contact class with an empty string for its FirstName property.</span></span> <span data-ttu-id="c2d5e-260">接下來，CreateContact() 方法稱為含有無效的連絡人。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-260">Next, the CreateContact() method is called with the invalid Contact.</span></span> <span data-ttu-id="c2d5e-261">最後，測試會 CreateContact() 傳回 false，而且模型狀態包含預期的驗證錯誤訊息 「 名字 」 所需。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-261">Finally, the test verifies that CreateContact() returns false and that model state contains the expected validation error message "First name is required."</span></span>
 
-<span data-ttu-id="c2d5e-262">您也可以選取功能表選項清單 1 中執行單元測試**，執行測試，（CTRL + R、 A） 的方案中的所有測試**。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-262">You can run the unit tests in Listing 1 by selecting the menu option **Test, Run, All Tests in Solution (CTRL+R, A)**.</span></span> <span data-ttu-id="c2d5e-263">測試結果會顯示在 [測試結果] 視窗中 （請參閱圖 4）。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-263">The results of the tests are displayed in the Test Results window (see Figure 4).</span></span>
+<span data-ttu-id="c2d5e-262">您也可以選取功能表選項清單 1 中執行單元測試 **，執行測試，（CTRL + R、 A） 的方案中的所有測試**。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-262">You can run the unit tests in Listing 1 by selecting the menu option **Test, Run, All Tests in Solution (CTRL+R, A)**.</span></span> <span data-ttu-id="c2d5e-263">測試結果會顯示在 [測試結果] 視窗中 （請參閱圖 4）。</span><span class="sxs-lookup"><span data-stu-id="c2d5e-263">The results of the tests are displayed in the Test Results window (see Figure 4).</span></span>
 
 
 <span data-ttu-id="c2d5e-264">[![測試結果](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)</span><span class="sxs-lookup"><span data-stu-id="c2d5e-264">[![Test Results](iteration-5-create-unit-tests-vb/_static/image4.jpg)](iteration-5-create-unit-tests-vb/_static/image7.png)</span></span>

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876809"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a><span data-ttu-id="de573-104">教學課程： 使用 SignalR 2 廣播的伺服器</span><span class="sxs-lookup"><span data-stu-id="de573-104">Tutorial: Server Broadcast with SignalR 2</span></span>
 ====================
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/06/2018
 
 ![StockTicker 初始版本](tutorial-server-broadcast-with-signalr/_static/image1.png)
 
-<span data-ttu-id="de573-133">定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。</span><span class="sxs-lookup"><span data-stu-id="de573-133">Periodically the server randomly updates stock prices and pushes the updates to all connected clients.</span></span> <span data-ttu-id="de573-134">在瀏覽器的數字和符號**變更**和**%**動態變更通知來回應來自伺服器的資料行。</span><span class="sxs-lookup"><span data-stu-id="de573-134">In the browser the numbers and symbols in the **Change** and **%** columns dynamically change in response to notifications from the server.</span></span> <span data-ttu-id="de573-135">如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。</span><span class="sxs-lookup"><span data-stu-id="de573-135">If you open additional browsers to the same URL, they all show the same data and the same changes to the data simultaneously.</span></span>
+<span data-ttu-id="de573-133">定期伺服器隨機更新股價，並將更新推送至所有連線的用戶端。</span><span class="sxs-lookup"><span data-stu-id="de573-133">Periodically the server randomly updates stock prices and pushes the updates to all connected clients.</span></span> <span data-ttu-id="de573-134">在瀏覽器的數字和符號**變更**和**%** 動態變更通知來回應來自伺服器的資料行。</span><span class="sxs-lookup"><span data-stu-id="de573-134">In the browser the numbers and symbols in the **Change** and **%** columns dynamically change in response to notifications from the server.</span></span> <span data-ttu-id="de573-135">如果您開啟其他瀏覽器中，相同的 URL，它們全都同時顯示相同的資料和資料的相同變更。</span><span class="sxs-lookup"><span data-stu-id="de573-135">If you open additional browsers to the same URL, they all show the same data and the same changes to the data simultaneously.</span></span>
 
 <span data-ttu-id="de573-136">本教學課程包含下列各節：</span><span class="sxs-lookup"><span data-stu-id="de573-136">This tutorial contains the following sections:</span></span>
 
@@ -95,7 +96,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-the-project"></a><span data-ttu-id="de573-153">建立專案</span><span class="sxs-lookup"><span data-stu-id="de573-153">Create the project</span></span>
 
 1. <span data-ttu-id="de573-154">從**檔案**功能表上，按一下 **新專案**。</span><span class="sxs-lookup"><span data-stu-id="de573-154">From the **File** menu, click **New Project**.</span></span>
-2. <span data-ttu-id="de573-155">在**新專案**對話方塊方塊中，展開  **C#**下**範本**選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="de573-155">In the **New Project** dialog box, expand **C#** under **Templates** and select **Web**.</span></span>
+2. <span data-ttu-id="de573-155">在**新專案**對話方塊方塊中，展開  **C#** 下**範本**選取**Web**。</span><span class="sxs-lookup"><span data-stu-id="de573-155">In the **New Project** dialog box, expand **C#** under **Templates** and select **Web**.</span></span>
 3. <span data-ttu-id="de573-156">選取**ASP.NET 空 Web 應用程式**範本，將專案*SignalR.StockTicker*，然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="de573-156">Select the **ASP.NET Empty Web Application** template, name the project *SignalR.StockTicker*, and click **OK**.</span></span>
 
     ![新增專案對話方塊](tutorial-server-broadcast-with-signalr/_static/image2.png)

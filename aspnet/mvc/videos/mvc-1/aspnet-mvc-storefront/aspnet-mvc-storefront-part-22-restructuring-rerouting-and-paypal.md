@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878395"
 ---
 <a name="aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal"></a><span data-ttu-id="e5e5e-105">ASP.NET MVC Storefront 組件 22： 重建、 重設路徑，以及 PayPal</span><span class="sxs-lookup"><span data-stu-id="e5e5e-105">ASP.NET MVC Storefront Part 22: Restructuring, Rerouting, and PayPal</span></span>
 ====================

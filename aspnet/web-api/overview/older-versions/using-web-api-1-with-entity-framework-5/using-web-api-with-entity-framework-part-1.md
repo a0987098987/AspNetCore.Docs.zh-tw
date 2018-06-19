@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873322"
 ---
 <a name="part-1-overview-and-creating-the-project"></a><span data-ttu-id="67f6b-102">第 1 部分： 概觀和建立專案</span><span class="sxs-lookup"><span data-stu-id="67f6b-102">Part 1: Overview and Creating the Project</span></span>
 ====================

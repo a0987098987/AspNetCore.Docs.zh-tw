@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880787"
 ---
 <a name="how-do-i-serialize-a-graph-with-the-entity-framework"></a><span data-ttu-id="1e7af-103">[如何:]序列化與 Entity Framework 圖形</span><span class="sxs-lookup"><span data-stu-id="1e7af-103">[How Do I:] Serialize a Graph with the Entity Framework</span></span>
 ====================

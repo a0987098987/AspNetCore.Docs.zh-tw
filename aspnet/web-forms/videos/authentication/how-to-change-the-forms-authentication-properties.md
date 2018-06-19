@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881733"
 ---
 <a name="how-to-change-the-forms-authentication-properties"></a><span data-ttu-id="42ce2-104">如何變更表單驗證屬性</span><span class="sxs-lookup"><span data-stu-id="42ce2-104">How to Change the Forms Authentication Properties</span></span>
 ====================

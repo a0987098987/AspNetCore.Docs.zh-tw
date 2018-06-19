@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871281"
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a><span data-ttu-id="88831-104">第 8 部： 與 Ajax 更新購物車</span><span class="sxs-lookup"><span data-stu-id="88831-104">Part 8: Shopping Cart with Ajax Updates</span></span>
 ====================

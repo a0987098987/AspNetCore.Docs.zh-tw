@@ -2,19 +2,15 @@
 title: ASP.NET Core 中介軟體
 author: rick-anderson
 description: 了解 ASP.NET Core 中介軟體和要求管線。
-manager: wpickett
 ms.author: riande
 ms.date: 01/22/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: c6d362cf15b5d4611f0e544c5092a18f32ed7dfc
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: d22c7208390ed2de2ca31ead46ecb21bc41671bf
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34819041"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279580"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 

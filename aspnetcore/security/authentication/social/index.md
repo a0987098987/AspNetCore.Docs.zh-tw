@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 author: rick-anderson
 description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證提供者，建立 ASP.NET Core 2.x 應用程式。
-manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/social/index
-ms.openlocfilehash: dc6ec61519c200901cc8af03853e7381c1d4cad0
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 58045504ce4588f854428273273d3ea8f181e12e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35217319"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277994"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 

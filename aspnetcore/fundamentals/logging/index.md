@@ -2,18 +2,15 @@
 title: ASP.NET Core 中的記錄
 author: ardalis
 description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供者，並深入了解熱門協力廠商提供者。
-manager: wpickett
 ms.author: tdykstra
 ms.date: 12/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 8b53a19f4958e97198175d6acea4017d54f827bb
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 8ba604ae8748455c95932f9d8843c1f7a5da2a06
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272759"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -33,7 +30,7 @@ ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供�
 
 ## <a name="how-to-create-logs"></a>如何建立記錄
 
-若要建立記錄，請取得[相依性插入](xref:fundamentals/dependency-injection)容器中的 `ILogger` 物件：
+若要建立記錄，請從[相依性插入](xref:fundamentals/dependency-injection)容器中實作 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 物件：
 
 [!code-csharp[](index/sample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
 
@@ -63,14 +60,14 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快�
 
 記錄提供者會擷取您使用 `ILogger` 物件建立的訊息，並加以顯示或儲存。 例如，主控台提供者可在主控台中顯示訊息，而 Azure App Service 提供者則可將其儲存在 Azure Blob 儲存體中。
 
-若要使用提供者，請安裝其 NuGet 套件，並在 `ILoggerFactory` 的執行個體上呼叫該提供者的擴充方法，如下列範例所示。
+若要使用提供者，請安裝其 NuGet 套件，並在 [ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) 的執行個體上呼叫該提供者的擴充方法，如下列範例所示：
 
 [!code-csharp[](index/sample//Startup.cs?name=snippet_AddConsoleAndDebug&highlight=3,5-7)]
 
 ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提供 `ILoggerFactory` 執行個體。 `AddConsole` 和 `AddDebug` 擴充方法定義於 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) 和 [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/) 套件中。 每個擴充方法會呼叫 `ILoggerFactory.AddProvider` 方法，並傳入提供者的執行個體。 
 
 > [!NOTE]
-> 本文的範例應用程式會在 `Startup` 類別的 `Configure` 方法中新增記錄提供者。 如果您想要從先前稍早執行的程式碼取得記錄輸出，請改為在 `Startup` 類別建構函式中新增記錄提供者。 
+> [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/sample)會在 `Startup.Configure` 方法中新增記錄提供者。 如果您想要從先前執行的程式碼取得記錄輸出，請在 `Startup` 類別建構函式中新增記錄提供者。
 
 ---
 
@@ -372,7 +369,7 @@ System.Exception: Item not found exception.
 
 您可以將某個「範圍」內的一組邏輯作業群組在一起，以便將相同的資料附加至作為該集合一部分建立的每個記錄。 例如，您可能想要將每個記錄建立為處理交易的一部分，以包含交易識別碼。
 
-範圍是 `ILogger.BeginScope<TState>` 方法所傳回的 `IDisposable` 類型，並會持續到被處置為止。 您可以透過將記錄器呼叫包裝在 `using` 區塊中來使用範圍，如下所示：
+範圍是 [ILogger.BeginScope&lt;TState&gt;](/dotnet/api/microsoft.extensions.logging.ilogger.beginscope) 方法傳回的 `IDisposable` 類型，並會持續到被處置為止。 您可以透過將記錄器呼叫包裝在 `using` 區塊中來使用範圍，如下所示：
 
 [!code-csharp[](index/sample//Controllers/TodoController.cs?name=snippet_Scopes&highlight=4-5,13)]
 
@@ -410,15 +407,14 @@ warn: TodoApi.Controllers.TodoController[4000]
 
 ASP.NET Core 隨附下列提供者：
 
-* [Console](#console)
-* [偵錯](#debug)
-* [EventSource](#eventsource)
-* [EventLog](#eventlog)
-* [TraceSource](#tracesource)
-* [Azure App Service](#appservice)
+* [Console](#console-provider)
+* [偵錯](#debug-provider)
+* [EventSource](#eventsource-provider)
+* [EventLog](#windows-eventlog-provider)
+* [TraceSource](#tracesource-provider)
+* [Azure App Service](#azure-app-service-provider)
 
-<a id="console"></a>
-### <a name="the-console-provider"></a>主控台提供者
+### <a name="console-provider"></a>Console 提供者
 
 [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) 提供者套件會將記錄輸出傳送至主控台。 
 
@@ -452,8 +448,7 @@ loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 
 ---
 
-<a id="debug"></a>
-### <a name="the-debug-provider"></a>偵錯提供者
+### <a name="debug-provider"></a>Debug 提供者
 
 [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) 提供者套件使用 [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) 類別 (`Debug.WriteLine` 方法呼叫) 來寫入記錄輸出。
 
@@ -475,8 +470,7 @@ loggerFactory.AddDebug()
 
 ---
 
-<a id="eventsource"></a>
-### <a name="the-eventsource-provider"></a>EventSource 提供者
+### <a name="eventsource-provider"></a>EventSource 提供者
 
 針對以 ASP.NET Core 1.1.0 或更高版本為目標的應用程式，[Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource) 提供者套件可以實作事件追蹤。 在 Windows 上，它會使用 [ETW](https://msdn.microsoft.com/library/windows/desktop/bb968803)。 提供者可以跨平台，但目前沒有適用於 Linux 或 macOS 的事件收集和顯示工具。 
 
@@ -500,8 +494,7 @@ loggerFactory.AddEventSourceLogger()
 
 ![PerfView 的其他提供者](index/_static/perfview-additional-providers.png)
 
-<a id="eventlog"></a>
-### <a name="the-windows-eventlog-provider"></a>Windows EventLog 提供者
+### <a name="windows-eventlog-provider"></a>Windows EventLog 提供者
 
 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 提供者套件會將記錄輸出傳送至 Windows 事件記錄檔。
 
@@ -521,8 +514,7 @@ loggerFactory.AddEventLog()
 
 ---
 
-<a id="tracesource"></a>
-### <a name="the-tracesource-provider"></a>TraceSource 提供者
+### <a name="tracesource-provider"></a>TraceSource 提供者
 
 [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource) 提供者套件使用 [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) 程式庫和提供者。
 
@@ -548,16 +540,15 @@ loggerFactory.AddTraceSource(sourceSwitchName);
 
 [!code-csharp[](index/sample/Startup.cs?name=snippet_TraceSource&highlight=9-12)]
 
-<a id="appservice"></a>
-### <a name="the-azure-app-service-provider"></a>Azure App Service 提供者
+### <a name="azure-app-service-provider"></a>Azure App Service 提供者
 
-[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供者套件會將記錄寫入至 Azure App Service 應用程式檔案系統中的文字檔，並寫入至 Azure 儲存體帳戶中的 [Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)。 此提供者僅適用於以 ASP.NET Core 1.1.0 或更高版本為目標的應用程式。 
+[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供者套件會將記錄寫入至 Azure App Service 應用程式檔案系統中的文字檔，並寫入至 Azure 儲存體帳戶中的 [Blob 儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage)。 此提供者僅適用於以 ASP.NET Core 1.1 或更新版本為目標的應用程式。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-若是以 .NET Core 作為目標，即無須安裝提供者套件或明確地呼叫 `AddAzureWebAppDiagnostics`。 當您將應用程式部署至 Azure App Service 時，此提供者就會自動提供給應用程式。
+若是以 .NET Core 為目標，請勿安裝提供者套件或明確呼叫 [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics)。 當您將應用程式部署至 Azure App Service 時，就會自動提供此提供者給應用程式。
 
-若是以 .NET Core 作為目標，請將提供者套件新增至專案，然後叫用 `AddAzureWebAppDiagnostics`：
+若是以 .NET Framework 為目標，請將提供者套件新增至專案，然後叫用 `AddAzureWebAppDiagnostics`：
 
 ```csharp
 logging.AddAzureWebAppDiagnostics();
@@ -569,23 +560,24 @@ logging.AddAzureWebAppDiagnostics();
 loggerFactory.AddAzureWebAppDiagnostics();
 ```
 
-`AddAzureWebAppDiagnostics` 多載可讓您傳入 [AzureAppServicesDiagnosticsSettings](https://github.com/aspnet/Logging/blob/c7d0b1b88668ff4ef8a86ea7d2ebb5ca7f88d3e0/src/Microsoft.Extensions.Logging.AzureAppServices/AzureAppServicesDiagnosticsSettings.cs)，您可以用它來覆寫預設值，例如記錄輸出範本、Blob 名稱和檔案大小限制 (「輸出範本」是套用至呼叫 `ILogger` 方法時所提供記錄上方之所有記錄的訊息範本)。
+[AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics) 多載可讓您傳入 [AzureAppServicesDiagnosticsSettings](/dotnet/api/microsoft.extensions.logging.azureappservices.azureappservicesdiagnosticssettings)，您可以用它來覆寫預設設定，例如記錄輸出範本、blob 名稱和檔案大小限制。 (「輸出範本」是套用至呼叫 `ILogger` 方法時所提供記錄上方之所有記錄的訊息範本)。
 
 ---
 
-當您部署至 App Service 應用程式時，您的應用程式會接受 Azure 入口網站的 [App Service] 頁面之[診斷記錄](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/#enablediag)區段中的設定。 當您變更這些設定時，所做的變更會立即生效，而不需要您重新啟動應用程式或對其重新部署程式碼。 
+當您部署至 App Service 應用程式時，應用程式會接受 Azure 入口網站之 [App Service] 頁面上 [[診斷記錄]](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/#enablediag) 區段中的設定。 當更新這些設定時，變更會立即生效，而不需要重新啟動或重新部署應用程式。
 
 ![Azure 記錄設定](index/_static/azure-logging-settings.png)
 
-記錄檔的預設位置為 *D:\\home\\LogFiles\\Application* 資料夾，而預設檔案名稱為 *diagnostics-yyyymmdd.txt*。 預設檔案大小限制為 10 MB，而預設保留的檔案數目上限為 2。 預設 Blob 名稱為 *{app-name}{timestamp}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*。 如需預設行為的詳細資訊，請參閱 [AzureAppServicesDiagnosticsSettings](https://github.com/aspnet/Logging/blob/c7d0b1b88668ff4ef8a86ea7d2ebb5ca7f88d3e0/src/Microsoft.Extensions.Logging.AzureAppServices/AzureAppServicesDiagnosticsSettings.cs)。
+記錄檔的預設位置為 *D:\\home\\LogFiles\\Application* 資料夾，而預設檔案名稱為 *diagnostics-yyyymmdd.txt*。 預設檔案大小限制為 10 MB，而預設保留的檔案數目上限為 2。 預設 Blob 名稱為 *{app-name}{timestamp}/yyyy/mm/dd/hh/{guid}-applicationLog.txt*。 如需預設行為的詳細資訊，請參閱 [AzureAppServicesDiagnosticsSettings](/dotnet/api/microsoft.extensions.logging.azureappservices.azureappservicesdiagnosticssettings)。
 
-此提供者僅適用於您的專案在 Azure 環境中執行的情況。 當您在本機執行時，不會有任何作用 &mdash; 它不會寫入本機檔案或本機開發 Blob 儲存體。
+此提供者僅適用於專案在 Azure 環境中執行的情況。 若在本機執行專案，不會有任何作用，即它不會寫入本機檔案或 blob 的本機開發儲存體。
 
 ## <a name="third-party-logging-providers"></a>協力廠商記錄提供者
 
 可搭配 ASP.NET Core 使用的協力廠商記錄架構：
 
 * [elmah.io](https://elmah.io/) ([GitHub 存放庫](https://github.com/elmahio/Elmah.Io.Extensions.Logging))
+* [Gelf](http://docs.graylog.org/en/2.3/pages/gelf.html) ([GitHub 存放庫](https://github.com/mattwcole/gelf-extensions-logging))
 * [JSNLog](http://jsnlog.com/) ([GitHub 存放庫](https://github.com/mperdeck/jsnlog))
 * [Loggr](http://loggr.net/) ([GitHub 存放庫](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](http://nlog-project.org/) ([GitHub 存放庫](https://github.com/NLog/NLog.Extensions.Logging))
@@ -604,22 +596,21 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 Azure 記錄資料流可讓您即時檢視來自下列位置的記錄活動： 
 
-* 應用程式伺服器 
+* 應用程式伺服器
 * 網頁伺服器
-* 失敗的要求追蹤 
+* 失敗的要求追蹤
 
-若要設定 Azure 記錄資料流： 
+若要設定 Azure 記錄資料流：
 
 * 從您應用程式的入口網站頁面巡覽至 [診斷記錄]
-* 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。 
+* 將 [應用程式記錄 (檔案系統)] 設定為 [開啟]。
 
 ![Azure 入口網站的 [診斷記錄] 頁面](index/_static/azure-diagnostic-logs.png)
 
-巡覽至 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面記錄的訊息。 
+巡覽至 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面記錄的訊息。
 
 ![Azure 入口網站應用程式的 [記錄資料流]](index/_static/azure-log-streaming.png)
 
-
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 [使用 LoggerMessage 進行高效能記錄](xref:fundamentals/logging/loggermessage)

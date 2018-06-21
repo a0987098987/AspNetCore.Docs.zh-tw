@@ -1,7 +1,7 @@
 ---
 title: ASP.NET Core 的設定
 author: rick-anderson
-description: 透過多種方法來使用組態 API 設定 ASP.NET Core 應用程式。
+description: 了解如何使用組態 API 設定 ASP.NET Core 應用程式。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 1048554c78e3810206b1261371ae7c41485c436a
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: a146991945add3c1299633db2147edbc63d3bc40
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252122"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725974"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -102,7 +102,7 @@ ASP.NET Core 1.x 應用程式需要呼叫 `AddJsonFile` 與 [AddEnvironmentVaria
 
 [!code-json[](index/sample/appsettings.Staging.json)]
 
-當環境設定為 `Staging` 時，下列 `Configure` 方法會讀取 `MyConfig` 的值：
+在下列程式碼中，`Configure` 會讀取 `MyConfig` 的值：
 
 [!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
 

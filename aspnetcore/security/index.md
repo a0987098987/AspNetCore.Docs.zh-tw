@@ -2,19 +2,15 @@
 title: ASP.NET Core 安全性概觀
 author: rachelappel
 description: 了解 ASP.NET Core 的驗證、授權和安全性基本概念。
-manager: wpickett
 ms.author: rachelap
 ms.date: 11/01/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/index
-ms.openlocfilehash: da3829b2d5ae5db1861c7423da5afc7acbee6697
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a23d23cf1bf0503b59c6f5d962cecf89af37b4b3
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30074350"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278501"
 ---
 # <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
 
@@ -47,7 +43,7 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
     *   [身分識別簡介](xref:security/authentication/identity)
     *   [使用 Facebook、Google 和其他外部提供者啟用驗證](xref:security/authentication/social/index)
     *   [以 WS 同盟啟用驗證](xref:security/authentication/ws-federation)
-    * [設定 Windows 驗證](xref:security/authentication/windowsauth)
+    * [使用 Windows 驗證](xref:security/authentication/windowsauth)
     *   [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
     *   [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
     *   [使用沒有身分識別的 Cookie 驗證](xref:security/authentication/cookie)

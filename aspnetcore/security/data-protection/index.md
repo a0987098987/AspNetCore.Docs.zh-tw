@@ -2,19 +2,15 @@
 title: ASP.NET Core 的資料保護
 author: rick-anderson
 description: 本文件是各種 ASP.NET Core 資料保護主題的目錄。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/index
-ms.openlocfilehash: 83b5bb1e6a4942a4d3e5ec0d445fa6e5a21fb533
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 1c38c587956dd99078fa4386c2f4423d784abc60
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071690"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277120"
 ---
 # <a name="data-protection-in-aspnet-core"></a>ASP.NET Core 的資料保護
 

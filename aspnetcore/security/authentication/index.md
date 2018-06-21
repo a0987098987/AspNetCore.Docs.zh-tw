@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的驗證
 author: rick-anderson
 description: 探索有關 ASP.NET 驗證技術的主題。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/index
-ms.openlocfilehash: 20a6d5ae598a0d1e8d7735cb1311fac1c10513eb
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 9091510df2953f86d18e6f5daaa67c1e99c4af04
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
-ms.locfileid: "29903295"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276058"
 ---
 # <a name="authentication-in-aspnet-core"></a>ASP.NET Core 中的驗證
 

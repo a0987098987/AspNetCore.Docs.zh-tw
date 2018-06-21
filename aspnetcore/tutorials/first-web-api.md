@@ -2,20 +2,16 @@
 title: 使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 author: rick-anderson
 description: 使用 ASP.NET Core MVC 和 Visual Studio for Windows 建置 Web API
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1680d5e0be0f4844c904d923af30634c53bd1b81
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: 3da22cbbbe0db7771656997a13587521e182fb2a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "34306669"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277396"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>使用 ASP.NET Core 和 Visual Studio for Windows 建立 Web API
 

@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 與 EF Core - 教學課程系列
 author: rick-anderson
 description: ''
-manager: wpickett
 ms.author: tdykstra
 ms.date: 10/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/index
-ms.openlocfilehash: c5d1f3f57c7371aa5fa4254a44f2c544067ad2ed
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 432793e41e4123cc1a8009b7aa529e8abcc6c408
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153459"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279125"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>ASP.NET Core MVC 與 EF Core - 教學課程系列
 

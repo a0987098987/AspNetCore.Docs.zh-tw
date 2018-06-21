@@ -2,25 +2,21 @@
 title: 從 ASP.NET Core 1.x 遷移至 2.0
 author: scottaddie
 description: 本文概述將 ASP.NET Core 1.x 專案移轉至 ASP.NET Core 2.0 的必要條件和最常見步驟。
-manager: wpickett
 ms.author: scaddie
 ms.date: 10/03/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: f96b38e9f0368e04198c849bb3585674183a92b1
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 1052b17b433f06162325db340cd53ee61b76a184
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555231"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272500"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
 作者：[Scott Addie](https://github.com/scottaddie)
 
-在本文中，我們會逐步引導您將現有的 ASP.NET Core 1.x 專案更新為 ASP.NET Core 2.0。 將應用程式移轉至 ASP.NET Core 2.0 可讓您充分利用[許多新功能和效能改進](xref:aspnetcore-2.0)。 
+在本文中，我們會逐步引導您將現有的 ASP.NET Core 1.x 專案更新為 ASP.NET Core 2.0。 將應用程式移轉至 ASP.NET Core 2.0 可讓您充分利用[許多新功能和效能改進](xref:aspnetcore-2.0)。
 
 現有的 ASP.NET Core 1.x 應用程式是根據特定版本的專案範本。 隨著 ASP.NET Core 架構發展，其中內含的專案範本和起始程式碼也跟著演進。 除了更新 ASP.NET Core 架構之外，您還需要更新應用程式的程式碼。
 

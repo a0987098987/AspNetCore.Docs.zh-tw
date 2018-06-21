@@ -2,19 +2,15 @@
 title: 從 ASP.NET 移轉至 ASP.NET Core
 author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
-manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 82f85bf2919fac1c023c0b89419a42a3ef7c402c
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 285f252767e4eacbb6a9ccc50bd98d1916e26bd4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851705"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273504"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 

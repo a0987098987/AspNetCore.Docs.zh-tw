@@ -2,20 +2,16 @@
 title: 從 ClaimsPrincipal.Current 移轉
 author: mjrousos
 description: 了解如何將從要擷取目前已驗證的使用者的身分識別與 ASP.NET Core 中的宣告的 ClaimsPrincipal.Current 轉移。
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/04/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/claimsprincipal-current
-ms.openlocfilehash: ea43d17e76380baf57cd9debbc508e8812cfa4a6
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 477f9fe8f0249bdfc528e1b401f072851f2f0d23
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851530"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277182"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a>從 ClaimsPrincipal.Current 移轉
 

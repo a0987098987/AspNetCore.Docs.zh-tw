@@ -2,19 +2,15 @@
 title: ASP.NET MVC 從移轉至 ASP.NET Core MVC
 author: ardalis
 description: 了解如何開始將 ASP.NET MVC 專案移轉至 ASP.NET Core MVC。
-manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: b8c913c0a6f47a1c993d508f9baae54981327957
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 6fecc820177ca5033cfd00d632904a950c1b29bb
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851023"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274771"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>ASP.NET MVC 從移轉至 ASP.NET Core MVC
 

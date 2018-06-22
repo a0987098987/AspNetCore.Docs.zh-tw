@@ -1,21 +1,17 @@
 ---
 title: 整合測試中 ASP.NET Core
 author: guardrex
-description: 了解如何整合測試，確保應用程式的元件包括資料庫、 檔案系統和網路基礎結構層級正確運作。
-manager: wpickett
+description: 了解整合測試如何確保應用程式的元件在基礎結構層級 (包括資料庫、檔案系統和網路) 正確運作。
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: test/integration-tests
-ms.openlocfilehash: a402c3f5f6a75917eba4058e6cc6926f25b214d4
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 1895b06f1af9a9eb66c14aa5c7834497fc95d583
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35217586"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277692"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>整合測試中 ASP.NET Core
 
@@ -29,7 +25,7 @@ ms.locfileid: "35217586"
 
 範例應用程式是 Razor 頁面的應用程式，並假設 Razor 頁面的基本知識。 如果不熟悉使用 Razor 頁面，請參閱下列主題：
 
-* [Razor 頁面簡介](xref:mvc/razor-pages/index)
+* [Razor 頁面簡介](xref:razor-pages/index)
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [Razor 頁面單元測試](xref:test/razor-pages-tests)
 

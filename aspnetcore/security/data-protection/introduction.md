@@ -2,19 +2,15 @@
 title: ASP.NET Core 資料保護
 author: rick-anderson
 description: 了解資料保護的概念和 ASP.NET Core 資料保護應用程式開發介面的設計原則。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/introduction
-ms.openlocfilehash: 56876f43ed48b577f4d870825fd9230f526baec3
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: c043de3fc472357c0722a5a736d7e811f1b77002
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35725948"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273906"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.NET Core 資料保護
 

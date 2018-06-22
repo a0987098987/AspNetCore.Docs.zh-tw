@@ -2,19 +2,15 @@
 title: 在 ASP.NET Core 金鑰管理
 author: rick-anderson
 description: 了解 ASP.NET Core 資料保護金鑰管理應用程式開發介面的實作詳細資料。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: 1b073d8779547a828c17e825b0663b26efb61d14
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: be8597a2522c3145056dee709210de065e8cb593
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30077465"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276626"
 ---
 # <a name="key-management-in-aspnet-core"></a>在 ASP.NET Core 金鑰管理
 

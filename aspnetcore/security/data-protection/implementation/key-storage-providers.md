@@ -2,19 +2,15 @@
 title: 在 ASP.NET Core 金鑰儲存提供者
 author: rick-anderson
 description: 深入了解 ASP.NET Core 及如何設定金鑰的儲存體位置中的金鑰儲存提供者。
-manager: wpickett
 ms.author: riande
 ms.date: 01/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: e8b7804e93b812c2e710ab15510c2fbaa7c4866d
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 432c2690f216325470bbea9b974ea772bcdc39ed
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30077345"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273765"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>在 ASP.NET Core 金鑰儲存提供者
 

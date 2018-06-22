@@ -2,20 +2,16 @@
 title: 防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core
 author: steve-smith
 description: 了解如何防止攻擊，其中惡意網站可能會影響用戶端瀏覽器和應用程式之間的互動的 web 應用程式。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/19/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3bca96f4a2e247eeeb93140df93221371d88d4d3
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: a00bd4ff4b265a19766e54e6ad6b97b870df56c5
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341856"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279593"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止跨站台要求偽造 (XSRF/CSRF) 攻擊，在 ASP.NET Core
 
@@ -138,7 +134,7 @@ CSRF 攻擊的範例：
   ```
 
 > [!NOTE]
-> [Razor 頁面](xref:mvc/razor-pages/index)XSRF/CSRF 會自動受到保護。 如需詳細資訊，請參閱[XSRF/CSRF 和 Razor 頁面](xref:mvc/razor-pages/index#xsrf)。
+> [Razor 頁面](xref:razor-pages/index)XSRF/CSRF 會自動受到保護。 如需詳細資訊，請參閱[XSRF/CSRF 和 Razor 頁面](xref:razor-pages/index#xsrf)。
 
 防禦 CSRF 攻擊的常見方法是使用*同步器 Token 模式*(STP)。 當使用者要求網頁，以與表單資料，請使用 STP:
 

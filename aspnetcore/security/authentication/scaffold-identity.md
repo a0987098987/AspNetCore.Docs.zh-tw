@@ -2,26 +2,22 @@
 title: Scaffold ASP.NET Core 專案中的身分識別
 author: rick-anderson
 description: 了解如何識別 scaffold ASP.NET Core 專案中。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 5/16/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 80cd39af61e856d3ce92db1c26e70788bcdca83d
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: cf6544d8b671f026c8466fa8dff506027b64cf1f
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35725815"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276314"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffold ASP.NET Core 專案中的身分識別
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-2.1 和更新版本的 ASP.NET Core 提供[ASP.NET Core 識別](xref:security/authentication/identity)為[Razor 類別庫](xref:mvc/razor-pages/ui-class)。 包含識別的應用程式可以套用 scaffolder，選擇性地將包含識別 Razor 類別程式庫 (RCL) 中的原始程式碼。 您可能想要產生原始程式碼，所以您可以修改程式碼，並變更行為。 例如，您也可以指示產生程式碼在註冊使用 scaffolder。 產生的程式碼會優先於相同的程式碼中識別 RCL。 UI 的完整控制權，並使用預設 RCL，請參閱下節[建立完整的身分識別 UI 來源](#full)。
+2.1 和更新版本的 ASP.NET Core 提供[ASP.NET Core 識別](xref:security/authentication/identity)為[Razor 類別庫](xref:razor-pages/ui-class)。 包含識別的應用程式可以套用 scaffolder，選擇性地將包含識別 Razor 類別程式庫 (RCL) 中的原始程式碼。 您可能想要產生原始程式碼，所以您可以修改程式碼，並變更行為。 例如，您也可以指示產生程式碼在註冊使用 scaffolder。 產生的程式碼會優先於相同的程式碼中識別 RCL。 UI 的完整控制權，並使用預設 RCL，請參閱下節[建立完整的身分識別 UI 來源](#full)。
 
 應用程式**不**包含驗證可以套用 scaffolder 加入 RCL 識別封裝。 您可以選擇選取身分識別的程式碼產生。
 
@@ -37,7 +33,7 @@ ms.locfileid: "35725815"
 
 加入下列反白顯示的呼叫`Startup`類別：
 
-[!code-csharp[Main](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
+[!code-csharp[](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
@@ -71,7 +67,7 @@ dotnet ef database update
 
 在`Configure`方法`Startup`類別，請呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
-[!code-csharp[Main](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
+[!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
@@ -117,7 +113,7 @@ dotnet ef database update
 
 選擇性： 加入部分的登入 (`_LoginPartial`) 至*Views/Shared/_Layout.cshtml*檔案：
 
-[!code-html[Main](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
+[!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
 * 移動*Pages/Shared/_LoginPartial.cshtml*檔案*Views/Shared/_LoginPartial.cshtml*
 
@@ -127,7 +123,7 @@ dotnet ef database update
 
 呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 
-[!code-csharp[Main](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
+[!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
@@ -153,15 +149,16 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 下列反白顯示的程式碼會顯示預設識別 UI 取代 ASP.NET Core 2.1 web 應用程式中的身分識別的變更。 您可能想要這樣做可以具有的身分識別使用者介面的完整控制權。
 
-[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
 
-下列程式碼取代預設身分識別的： [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet2)]
+下列程式碼取代預設身分識別的：
 
-下列程式碼會設定 ASP.NET Core 授權需要授權的身分識別頁面： [!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet2)]
 
-下列程式碼會設定為使用正確的身分識別頁面路徑識別 cookie。
-[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
+下列程式碼集[LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)， [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)，和[AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):
+
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
 
 註冊`IEmailSender`實作，例如：
 
-[!code-csharp[Main](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]

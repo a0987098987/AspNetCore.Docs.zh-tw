@@ -2,19 +2,15 @@
 title: 建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 author: rick-anderson
 description: 了解如何建立 Razor 頁面的應用程式與受保護的授權的使用者資料。 包含 HTTPS、 驗證、 安全性、 ASP.NET Core 身分識別。
-manager: wpickett
 ms.author: riande
 ms.date: 01/24/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 53cab4b72980eef47c899a22e49fa697e7497279
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: 32ced054ba559e66de4a300137d56b7c81a4149b
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35726000"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276376"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>建立 ASP.NET Core 應用程式與受保護的授權的使用者資料
 

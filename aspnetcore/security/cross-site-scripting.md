@@ -2,18 +2,15 @@
 title: 防止跨網站指令碼 (XSS) 中 ASP.NET Core
 author: rick-anderson
 description: 了解跨網站指令碼 (XSS) 和技術來處理這個 ASP.NET Core 應用程式中的弱點。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/cross-site-scripting
-ms.openlocfilehash: d9263a2c1bb6a376008b7d8a55864e4d15e77cee
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ce6bb273034c56890e0cd98b890436602b5acc69
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272444"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) 中 ASP.NET Core
 
@@ -37,7 +34,7 @@ ms.lasthandoff: 03/22/2018
 
 ## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼方式
 
-自動使用 MVC Razor 引擎會將編碼所有輸出來自於變數，除非您真的硬碟以防止它執行這項作業。 它會使用 HTML 屬性編碼規則，每當您使用*@*指示詞。 為 HTML 屬性編碼為 HTML 編碼這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標記協助程式也會編碼的輸入您在標記參數中使用。
+自動使用 MVC Razor 引擎會將編碼所有輸出來自於變數，除非您真的硬碟以防止它執行這項作業。 它會使用 HTML 屬性編碼規則，每當您使用*@* 指示詞。 為 HTML 屬性編碼為 HTML 編碼這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標記協助程式也會編碼的輸入您在標記參數中使用。
 
 採取下列 Razor 檢視;
 
@@ -60,7 +57,7 @@ ms.lasthandoff: 03/22/2018
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor Javascript 編碼
 
-有時候可能想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值放在資料屬性中，並擷取在 JavaScript 程式是標記的最安全的方式，可將簡單的值。 例如: 
+有時候可能想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值放在資料屬性中，並擷取在 JavaScript 中是標記的最安全的方式，將值插入。 例如: 
 
 ```none
 @{
@@ -228,4 +225,4 @@ services.AddSingleton<HtmlEncoder>(
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>做為 XSS 防護技巧的驗證
 
-驗證是相當有用的工具，在限制 XSS 攻擊。 例如，包含只有字元 0-9 的簡單數值字串就不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能。 MarkDown 和其他的文字格式將豐富的輸入更安全的選項。 您永遠不應該依賴單獨的驗證。 不受信任的輸入，輸出前先編碼，無論何種驗證您已經執行。
+驗證是相當有用的工具，在限制 XSS 攻擊。 例如，包含只有字元 0-9 的數字字串就不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能。 MarkDown 和其他的文字格式將豐富的輸入更安全的選項。 您永遠不應該依賴單獨的驗證。 不受信任的輸入，輸出前先編碼，無論何種驗證您已經執行。

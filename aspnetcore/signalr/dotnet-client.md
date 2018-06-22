@@ -2,21 +2,17 @@
 title: ASP.NET Core SignalR.NET 用戶端
 author: rachelappel
 description: ASP.NET Core SignalR 的.NET 用戶端的相關資訊
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 05/18/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
+ms.date: 05/29/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: 412d2362575789f1fb4792940df6d3dd24dbdd5a
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
-ms.translationtype: HT
+ms.openlocfilehash: faa4368988971a3e7fcdcd1b044971e16d70f19a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/23/2018
-ms.locfileid: "34459018"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273291"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
 
@@ -28,7 +24,7 @@ ASP.NET Core SignalR 的.NET 用戶端可以使用 Xamarin、 WPF、 Windows For
 
 本文章中的程式碼範例是使用 ASP.NET Core SignalR 的.NET 用戶端的 WPF 應用程式。
 
-## <a name="setup-client"></a>安裝用戶端
+## <a name="install-the-signalr-net-client-package"></a>SignalR 的.NET 用戶端封裝安裝
 
 `Microsoft.AspNetCore.SignalR.Client`封裝所需的.NET 用戶端連線到 SignalR 中樞。 若要安裝用戶端程式庫，請執行下列命令**Package Manager Console**視窗：
 

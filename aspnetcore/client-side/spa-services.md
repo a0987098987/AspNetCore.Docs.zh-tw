@@ -2,20 +2,16 @@
 title: 若要建立單一頁面應用程式中 ASP.NET Core 使用 JavaScriptServices
 author: scottaddie
 description: 深入了解使用 JavaScriptServices 建立單一頁面應用程式 (SPA) 支援的 ASP.NET Core 的優點。
-manager: wpickett
 ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: fd893b7c62f38442bf5633a956786983763e6f9f
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: c3f454ddd91fadf94e4ee4faa8930d8a89d13833
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483548"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279619"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>若要建立單一頁面應用程式中 ASP.NET Core 使用 JavaScriptServices
 

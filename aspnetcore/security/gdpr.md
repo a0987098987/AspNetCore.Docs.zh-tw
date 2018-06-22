@@ -2,21 +2,17 @@
 title: 在 ASP.NET Core 的一般資料保護規定 (GDPR) 支援
 author: rick-anderson
 description: 了解如何存取 GDPR 擴充點，在 ASP.NET Core web 應用程式。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/29/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: eb9173bfe554b8b00ef8deb255e8347a534e7ba3
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: c986eeca572eecb43e76d56dbc5cb872a9dff6b2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35725792"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277634"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>在 ASP.NET Core EU 一般資料保護規定 (GDPR) 支援
 

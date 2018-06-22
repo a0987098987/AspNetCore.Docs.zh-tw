@@ -2,20 +2,16 @@
 title: 在 ASP.NET Core razor 頁面單元測試
 author: guardrex
 description: 了解如何建立 Razor 網頁應用程式的單元測試。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: test/razor-pages-tests
-ms.openlocfilehash: df74d8e44b2dff00e76139edba47fd8a30ce33ef
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: bde1bef78fcc7ac1d570057d54636ea0f5490de8
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252301"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274403"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>在 ASP.NET Core razor 頁面單元測試
 
@@ -30,7 +26,7 @@ ASP.NET Core 支援 Razor 網頁應用程式的單元的測試。 測試資料�
 
 本主題假設您有基本了解 Razor 網頁應用程式和單元測試。 如果您熟悉 Razor 網頁應用程式或測試概念，請參閱下列主題：
 
-* [Razor 頁面簡介](xref:mvc/razor-pages/index)
+* [Razor 頁面簡介](xref:razor-pages/index)
 * [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
 * [單元測試 C# 中使用 dotnet 測試和 xUnit.NET Core](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 

@@ -2,19 +2,15 @@
 title: 建置美麗、 可回應網站啟動程序與 ASP.NET Core
 author: ardalis
 description: 了解如何開發 ASP.NET Core 與回應的 web 應用程式時，用於啟動程序。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: a11ed13c709830795ebfd0e658d3f2fd2fd5a458
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: c7a4dc193f52532b1046853d98ae5c838c8b1723
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483707"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279541"
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>建置美麗、 可回應網站啟動程序與 ASP.NET Core
 
@@ -97,7 +93,7 @@ Install-Package bootstrap
 
 ### <a name="typography-and-links"></a>印刷樣式和連結
 
-Bootstrap 在其 CSS 檔案中設定了站台的基本印刷樣式、色彩和連結格式。 這個 CSS 檔案中包含的資料表、 按鈕、 表單項目、 影像和多個預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 接下來將說明一個特別有用的功能，亦即格線版面配置系統。
+啟動程序設定站台的基本的印刷樣式、 色彩和格式化其 CSS 檔案中的連結。 這個 CSS 檔案中包含的資料表、 按鈕、 表單項目、 影像和多個預設樣式 ([進一步了解](http://getbootstrap.com/css/))。 接下來將說明一個特別有用的功能，亦即格線版面配置系統。
 
 ### <a name="grids"></a>格線
 

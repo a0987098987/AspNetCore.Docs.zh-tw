@@ -2,20 +2,16 @@
 title: 在 ASP.NET Core razor 頁面授權慣例
 author: guardrex
 description: 了解如何控制存取頁面慣例授權使用者，並允許匿名使用者存取網頁的資料夾。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: cd1fa7957ca50db0de71f71234f84d3fbc631f45
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: 8856520bf43f2f62cc12c7e883485babdb43fb3e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341739"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272671"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>在 ASP.NET Core razor 頁面授權慣例
 
@@ -40,7 +36,7 @@ ms.locfileid: "35341739"
 ::: moniker range=">= aspnetcore-2.1"
 
 > [!NOTE]
-> `AuthorizeFilter`可以套用至頁面模型類別與`[Authorize]`篩選條件屬性。 如需詳細資訊，請參閱[授權篩選條件屬性](xref:mvc/razor-pages/filter#authorize-filter-attribute)。
+> `AuthorizeFilter`可以套用至頁面模型類別與`[Authorize]`篩選條件屬性。 如需詳細資訊，請參閱[授權篩選條件屬性](xref:razor-pages/filter#authorize-filter-attribute)。
 
 ::: moniker-end
 
@@ -90,5 +86,5 @@ ms.locfileid: "35341739"
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Razor Pages 自訂路由和頁面模型提供者](xref:mvc/razor-pages/razor-pages-conventions)
+* [Razor Pages 自訂路由和頁面模型提供者](xref:razor-pages/razor-pages-conventions)
 * [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection)類別

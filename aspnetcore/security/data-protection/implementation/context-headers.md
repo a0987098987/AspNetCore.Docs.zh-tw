@@ -2,19 +2,15 @@
 title: 在 ASP.NET Core 內容標頭
 author: rick-anderson
 description: 了解 ASP.NET Core 資料保護的內容標頭的實作詳細資料。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 5ba247a74e11408145e1f6e87c7cfa251c66707f
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2343e59898c024eba420390d7fb0bce2fc82a895
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30077850"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274465"
 ---
 # <a name="context-headers-in-aspnet-core"></a>在 ASP.NET Core 內容標頭
 
@@ -71,11 +67,11 @@ B7 92 3D BF 59 90 00 A9
 
 接下來，計算 Enc_CBC (K_E、 IV，"") 192 位 AES-CBC 指定 IV = 0 * 和上述 K_E。
 
-result := F474B1872B3B53E4721DE19C0841DB6F
+結果: = F474B1872B3B53E4721DE19C0841DB6F
 
 接下來，計算 MAC (K_H，"") 的 HMACSHA256 上述指定 K_H。
 
-result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+結果: = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
 
 這會產生下列的完整內容標頭：
 
@@ -176,7 +172,7 @@ K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 接下來，計算 Enc_GCM 的驗證標記 (K_E nonce，"") AES-256-GCM 提供 nonce = 096 和 K_E 上述。
 
-result := E7DCCE66DF855A323A6BB7BD7A59BE45
+結果: = E7DCCE66DF855A323A6BB7BD7A59BE45
 
 這會產生下列的完整內容標頭：
 

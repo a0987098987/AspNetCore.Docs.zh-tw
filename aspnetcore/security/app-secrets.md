@@ -2,20 +2,16 @@
 title: 安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 author: rick-anderson
 description: 了解如何儲存和擷取應用程式密碼為 ASP.NET Core 應用程式開發期間的機密資訊。
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/23/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: fd5cf5cdffd7281d7f4e0d96e8230b60be64a7c3
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: 8db1d1069958d3b08bbb3b9727ddbc47ae5747df
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34819132"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275421"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
 

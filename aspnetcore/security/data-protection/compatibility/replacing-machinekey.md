@@ -2,19 +2,15 @@
 title: 取代 ASP.NET machineKey 中 ASP.NET Core
 author: rick-anderson
 description: 了解如何取代 machineKey ASP.NET 為允許使用更安全的新資料保護系統中。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 18d14099786929058b17bac2a653eaa1489de7d2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 5f9e5cec02b66e1315548c4e7c18fe168ad161eb
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071596"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278820"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代 ASP.NET machineKey 中 ASP.NET Core
 
@@ -22,7 +18,7 @@ ms.locfileid: "30071596"
 
 實作`<machineKey>`ASP.NET 中的項目[是可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制，包括新的資料保護系統進行路由。
 
-## <a name="package-installation"></a>封裝安裝
+## <a name="package-installation"></a>套件安裝
 
 > [!NOTE]
 > 新的資料保護系統只能安裝到現有的 ASP.NET 應用程式為目標.NET 4.5.1 或更新版本。 安裝將會失敗，如果應用程式的目標.NET 4.5 或降低。

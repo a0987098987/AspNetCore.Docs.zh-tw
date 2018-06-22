@@ -2,20 +2,16 @@
 title: 在 ASP.NET Core 原則為基礎的授權
 author: rick-anderson
 description: 了解如何建立和使用授權原則的處理常式來強制執行的 ASP.NET Core 應用程式中的授權需求。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/policies
-ms.openlocfilehash: 411fee90bdccfb45c33f5d4ccd7864c83c614e70
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 81ca6ad9ddba3de094762f5608bb6a5719bca7a1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072857"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277978"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>在 ASP.NET Core 原則為基礎的授權
 

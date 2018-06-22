@@ -2,20 +2,16 @@
 title: 在 ASP.NET Core 自訂授權原則提供者
 author: mjrousos
 description: 了解如何使用 ASP.NET Core 應用程式中的自訂 IAuthorizationPolicyProvider 動態產生的授權原則。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: a5bad88b37d38b819b960b1eb27808d891268c01
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 524928a5b291e02556d11a762d86430a6dc94660
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233439"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277253"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>使用 ASP.NET Core IAuthorizationPolicyProvider 自訂授權原則提供者 
 

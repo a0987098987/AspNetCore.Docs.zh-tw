@@ -2,19 +2,15 @@
 title: 金鑰管理 ASP.NET Core 中的擴充性
 author: rick-anderson
 description: 深入了解 ASP.NET Core 資料保護金鑰管理的擴充性。
-manager: wpickett
 ms.author: riande
 ms.date: 11/22/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: e3042b371cf7be8fa0218c1906042d2810b180e3
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 3ebde889d207e02aff8c042b1d80884210a68ff4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30074160"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274748"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>金鑰管理 ASP.NET Core 中的擴充性
 
@@ -199,7 +195,7 @@ ms.locfileid: "30074160"
 型別實作哪些`IXmlDecryptor`應該有下列兩個公用建構函式的其中一個：
 
 * .ctor(IServiceProvider)
-* .ctor()
+* .ctor
 
 > [!NOTE]
 > `IServiceProvider`傳遞至建構函式可能是 null。

@@ -2,21 +2,17 @@
 title: ASP.NET Core SignalR JavaScript 用戶端
 author: rachelappel
 description: ASP.NET Core SignalR JavaScript 用戶端的概觀。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/29/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: 6ff888d3337bb53d435744009f4cc24b327ebcda
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: 9ea12dc21abfef6d2e6f3fcc455d8aa58ecaa011
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341934"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36271940"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 

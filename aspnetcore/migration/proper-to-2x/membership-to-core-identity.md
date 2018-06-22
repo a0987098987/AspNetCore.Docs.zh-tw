@@ -2,20 +2,16 @@
 title: 從 ASP.NET 成員資格驗證移轉至 ASP.NET Core 2.0 身分識別
 author: isaac2004
 description: 了解如何移轉現有的 ASP.NET 應用程式使用 ASP.NET Core 2.0 身分識別的成員資格驗證。
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/24/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: f0d1099bfda01d036831350e0888ae3830ad3d58
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 3ec22713997a74b587ef5d18e71a28668a5481e2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851540"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274101"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>從 ASP.NET 成員資格驗證移轉至 ASP.NET Core 2.0 身分識別
 
@@ -42,7 +38,7 @@ ASP.NET Core 2.0 會遵循[識別](/aspnet/identity/index)ASP.NET 4.5 中導入�
 
 * 選取 [檔案]  >  [新增]  >  [專案]。
 * 建立新**ASP.NET Core Web 應用程式**，並將專案命名*CoreIdentitySample*。
-* 在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。 此範本會產生[Razor 頁面](xref:mvc/razor-pages/index)應用程式。 再按一下**確定**，按一下 **變更驗證**。
+* 在下拉式清單中選取 [ASP.NET Core 2.0]，然後選取 [Web 應用程式]。 此範本會產生[Razor 頁面](xref:razor-pages/index)應用程式。 再按一下**確定**，按一下 **變更驗證**。
 * 選擇**個別使用者帳戶**識別範本。 最後，按一下 **確定**，然後**確定**。 Visual Studio 建立專案，使用 ASP.NET Core 識別範本。
 
 ASP.NET Core 2.0 身分識別使用[Entity Framework Core](/ef/core)與儲存的驗證資料的資料庫互動。 為了讓新建立的應用程式運作，那里必須能夠儲存這項資料的資料庫。 之後建立新的應用程式，請檢查資料庫環境中的結構描述最快速的方式是建立使用 Entity Framework 移轉的資料庫。 此程序建立資料庫，請在本機或其他位置，這會模擬該結構描述。 檢閱先前的文件，如需詳細資訊。

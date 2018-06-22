@@ -2,19 +2,15 @@
 title: Twitter 外部登入與 ASP.NET Core 的安裝程式
 author: rick-anderson
 description: 本教學課程示範的整合到現有的 ASP.NET Core 應用程式的 Twitter 帳戶使用者驗證。
-manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 440695f98714f33cff9e4bf97bfc09477901e14c
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: 81c19105e4cda932db3302a5df343322fb85abef
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35725987"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278488"
 ---
 # <a name="twitter-external-login-setup-with-aspnet-core"></a>Twitter 外部登入與 ASP.NET Core 的安裝程式
 

@@ -2,19 +2,15 @@
 title: ASP.NET Core 中宣告型授權
 author: rick-anderson
 description: 了解如何加入 ASP.NET Core 應用程式中的宣告授權檢查。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 2464f8cac720dcf5de02f2679e9450e8b77de3ee
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 6b60ae5515819b017ab577f655ed91ee4d8ed0dd
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34336300"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275223"
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>ASP.NET Core 中宣告型授權
 

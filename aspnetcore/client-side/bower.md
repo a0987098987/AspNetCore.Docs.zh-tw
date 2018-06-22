@@ -2,27 +2,25 @@
 title: 管理用戶端封裝，以在 ASP.NET Core Bower
 author: rick-anderson
 description: Bower 管理用戶端封裝。
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 4f53d0f04d17631a12e2c2030d6dbb1f4fcc09d3
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 23f3dcd06f012f3cf8d9509280b91c4bd1dc84e1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33838419"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272513"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>管理用戶端封裝，以在 ASP.NET Core Bower
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Noel Rice](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)，和[Scott Addie](https://scottaddie.com) 
 
 > [!IMPORTANT]
-> 雖然仍會保留 Bower，其維護程式會建議使用不同的解決方案。 [程式庫管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/)(簡稱 LibMan) 是 Visual Studio 的新用戶端的靜態內容管理系統。 與 Webpack yarn 是一種常用的替代方法，[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。
+> 雖然仍會保留 Bower，其維護程式會建議使用不同的解決方案。 [程式庫管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/)(簡稱 LibMan) 是 Visual Studio 的新用戶端的靜態內容管理系統 (Visual Studio 會保有 15.8 或更新版本）。 如需詳細資訊，請參閱[程式庫管理員： 在 web 應用程式的用戶端內容管理員](https://blogs.msdn.microsoft.com/webdev/2018/04/17/library-manager-client-side-content-manager-for-web-apps/)。 透過版本 15.5 bower 支援 Visual Studio 中。
+>
+> 與 Webpack yarn 是一種常用的替代方法，[移轉指示](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)可用。 
 
 [Bower](https://bower.io/)呼叫其本身"web 版封裝管理員 」。 在.NET 生態系統中，填滿由 NuGet 的傳遞靜態內容的檔案無法驗證為 void。 針對 ASP.NET Core 專案，這些靜態檔案會於用戶端程式庫，例如固有[jQuery](http://jquery.com/)和[Bootstrap](http://getbootstrap.com/)。 .NET 程式庫，您仍然使用[NuGet](https://www.nuget.org/)封裝管理員。
 

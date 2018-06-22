@@ -2,19 +2,15 @@
 title: 資料保護金鑰管理和 ASP.NET Core 存留期
 author: rick-anderson
 description: 了解資料保護的金鑰管理和 ASP.NET Core 存留期。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: b43c14af015d5e03f46200c51a1218a581b1de0c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 54259b1e2f37cdbbd551038e80f2b0fa1d77f196
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28887286"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277800"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護金鑰管理和 ASP.NET Core 存留期
 
@@ -24,10 +20,10 @@ ms.locfileid: "28887286"
 
 應用程式會嘗試偵測其操作環境和處理自己的金鑰組態而有所不同。
 
-1. 如果應用程式裝載在[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到 *%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾受到網路儲存裝置，而且裝載應用程式的所有電腦上同步處理。
-   * 索引鍵未受保護靜止。
+1. 如果應用程式裝載在[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到 *%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾使用網路儲存體進行保存，並會在裝載應用程式的所有電腦上同步。
+   * 金鑰待用時不受保護。
    * *DataProtection 金鑰*資料夾提供單一部署位置中的應用程式的所有執行個體索引鍵環形。
-   * 不同的部署位置，例如預備和生產環境，不會共用金鑰環形。 當您交換兩個部署位置，例如交換到生產環境的臨時區域，或使用 A / B 測試，使用資料保護的任何應用程式將無法使用金鑰環形內的前一個插槽的預存的資料解密。 這會導致使用者記錄從應用程式會使用標準 ASP.NET Core cookie 驗證中，因為它使用資料保護來保護其 cookie。 如果您想要獨立位置的索引鍵環形，使用外部索引鍵環提供者，例如 Azure Blob 儲存體，Azure 金鑰保存庫中，SQL 存放區或 Redis 快取。
+   * 各部署位置，例如預備和生產位置，不會共用金鑰環。 當您交換兩個部署位置，例如交換到生產環境的臨時區域，或使用 A / B 測試，使用資料保護的任何應用程式將無法使用金鑰環形內的前一個插槽的預存的資料解密。 這會導致使用者記錄從應用程式會使用標準 ASP.NET Core cookie 驗證中，因為它使用資料保護來保護其 cookie。 如果您想要獨立位置的索引鍵環形，使用外部索引鍵環提供者，例如 Azure Blob 儲存體，Azure 金鑰保存庫中，SQL 存放區或 Redis 快取。
 
 1. 如果使用者設定檔可用時，會保存金鑰 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統為 Windows，該金鑰會加密在靜止使用 DPAPI。
 

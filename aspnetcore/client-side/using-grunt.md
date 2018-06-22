@@ -2,19 +2,15 @@
 title: 用於 ASP.NET Core Grunt
 author: rick-anderson
 description: ''
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/using-grunt
-ms.openlocfilehash: 169552e9b5dd811884ce1c65952677ba83626b58
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 21fa565c930563bbc819c2a02ea71655193513d0
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897177"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272970"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>用於 ASP.NET Core Grunt
 

@@ -2,18 +2,15 @@
 title: ASP.NET Core 身分識別的自訂儲存體提供者
 author: ardalis
 description: 了解如何設定自訂儲存 ASP.NET Core 身分識別提供者。
-manager: wpickett
 ms.author: riande
 ms.date: 05/24/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a50069586c702152e81961773114ea75901ab23d
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11c49d630c922b0aa91678277e9553bf0c25134d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278423"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -108,7 +105,7 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 
 儲存和擷取哪些角色指派給使用者。 [範例](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
-**提示：**只實作您想要使用您的應用程式中的類別。
+**提示：** 只實作您想要使用您的應用程式中的類別。
 
 在資料存取類別中，提供程式碼以執行資料作業的持續性機制。 比方說，在自訂的提供者，您可能必須建立新的使用者，在下列程式碼*儲存*類別：
 
@@ -170,7 +167,7 @@ ASP.NET Core 識別類別，稱為管理員和存放區所組成。 *管理員*�
 - **IUserLockoutStore**  
  [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)介面會定義您實作以儲存有關鎖定的帳戶資訊的方法。 它包含追蹤失敗的存取嘗試以及鎖定的方法。
 - **IQueryableUserStore**  
- [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義提供可查詢使用者存放區的成員實作。
+ [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)介面會定義您實作以提供可查詢使用者存放區的成員。
 
 您在應用程式中實作所需的介面。 例如: 
 

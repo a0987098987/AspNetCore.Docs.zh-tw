@@ -131,7 +131,7 @@ ms.locfileid: "34306734"
 
     資料庫已加入專案。 即使資料庫位於 「 解決方案中，您可以查詢並更新它，因為它已裝載於不同的資料庫伺服器。
 
-    ![在 [方案總管 MvcMusicStore 資料庫](aspnet-mvc-4-models-and-data-access/_static/image4.png "MvcMusicStore 方案總管] 中的資料庫")
+    ![在 方案總管 MvcMusicStore 資料庫](aspnet-mvc-4-models-and-data-access/_static/image4.png "MvcMusicStore 方案總管 中的資料庫")
 
     *在 方案總管 MvcMusicStore 資料庫*
 3. 請確認資料庫的連接。 若要這樣做，請按兩下**MvcMusicStore.mdf**建立連線。

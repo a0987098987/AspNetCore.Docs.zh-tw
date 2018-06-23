@@ -7,12 +7,12 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 06/07/2018
 uid: signalr/streaming
-ms.openlocfilehash: ae0e733dddfb48db07d77ea73f4673cf8f783b88
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 08ddea4fb83150bab27a9e2685c75ff34565606b
+ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275846"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36327489"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>使用資料流中 ASP.NET Core SignalR
 
@@ -29,7 +29,7 @@ ASP.NET Core SignalR 支援串流伺服器方法傳回值。 這是適用於其�
 > [!NOTE]
 > 寫入`ChannelReader`在背景執行緒，然後傳回`ChannelReader`儘速。 其他中樞引動過程將會封鎖直到`ChannelReader`傳回。
 
-[!code-csharp[Streaming hub method](streaming/sample/hubs/streamhub.cs?range=10-34)]
+[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?range=10-34)]
 
 ## <a name="net-client"></a>.NET 用戶端
 

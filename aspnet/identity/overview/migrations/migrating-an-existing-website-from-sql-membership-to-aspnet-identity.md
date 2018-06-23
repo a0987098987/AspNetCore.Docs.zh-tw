@@ -12,12 +12,12 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 2790f32bc74cecf450f5a258fc1ff5b280a63923
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1766c11dabec3931ec2bfc4ae2e15332427d7855
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874989"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314009"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>從 SQL 成員資格移轉現有的網站，以 ASP.NET Identity
 ====================
@@ -90,12 +90,12 @@ ASP.NET Identity 類別現成可用的資料的現有使用者，我們需要將
 | **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | ID | 字串 | ID | RoleId | ProviderKey | ID |
-| 使用者名稱 | 字串 | 名稱 | UserId | UserId | ClaimType |
+| 使用者名稱 | 字串 | 名稱 | 使用者識別碼 | 使用者識別碼 | ClaimType |
 | PasswordHash | 字串 |  |  | LoginProvider | ClaimValue |
 | SecurityStamp | 字串 |  |  |  | 使用者\_識別碼 |
 | Email | 字串 |  |  |  |  |
 | EmailConfirmed | bool |  |  |  |  |
-| PhoneNumber | 字串 |  |  |  |  |
+| 電話號碼 | 字串 |  |  |  |  |
 | PhoneNumberConfirmed | bool |  |  |  |  |
 | LockoutEnabled | bool |  |  |  |  |
 | LockoutEndDate | DateTime |  |  |  |  |
@@ -107,8 +107,8 @@ ASP.NET Identity 類別現成可用的資料的現有使用者，我們需要將
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | ID |  |
 | IdentityRole | AspnetRoles | ID |  |
-| IdentityUserRole | AspnetUserRole | UserId + RoleId | 使用者\_識別碼-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
-| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
+| IdentityUserRole | AspnetUserRole | 使用者識別碼 + RoleId | 使用者\_識別碼-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
+| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | 使用者識別碼-&gt;AspnetUsers |
 | IdentityUserClaim | AspnetUserClaims | ID | 使用者\_識別碼-&gt;AspnetUsers |
 
 我們可以使用這項資訊來建立 SQL 陳述式來建立新的資料表。 我們可以個別寫入每個陳述式，或產生整個視需要使用 EntityFramework PowerShell 命令，然後我們可以編輯的指令碼。 若要這樣做，請在 VS 開啟**Package Manager Console**從**檢視**或**工具**功能表
@@ -116,6 +116,8 @@ ASP.NET Identity 類別現成可用的資料的現有使用者，我們需要將
 - 執行命令"Enable-migrations 」 來啟用 EntityFramework 移轉。
 - 執行命令"add-migration 初始 」 建立初始設定程式碼，在 C# 中建立資料庫 / VB
 - 最後一個步驟是執行 「 更新資料庫 – 指令碼 」 產生 SQL 指令碼的命令為基礎的模型類別。
+
+[!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
 這個資料庫產生指令碼可用來當做開頭，其中我們將會進行其他變更以加入新的資料行，並將資料複製。 的優點就是我們產生`_MigrationHistory`供 EntityFramework 模型類別未來版本的身分識別的版本變更時，修改資料庫結構描述的資料表。 
 

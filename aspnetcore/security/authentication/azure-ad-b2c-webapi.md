@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 82179e52e2c292ec3b7e618b3c61eef6494abc7c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c56efda28c668b8f88d28334705b4c26f288870f
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273414"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314158"
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>在 web 應用程式開發介面與 Azure Active Directory B2C 中 ASP.NET Core 雲端驗證
 
@@ -173,7 +173,7 @@ Visual Studio 會建立名為的控制站的 web API *ValuesController.cs* ，�
    |      <strong>語彙基元名稱</strong>       |                                  <em>&lt;語彙基元名稱&gt;</em>                                  |                                                                                                                   輸入語彙基元的描述性名稱。                                                                                                                    |
    |      <strong>授與類型</strong>       |                                           隱含                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>回呼 URL</strong>      |                               `https://getpostman.com/postman`                                |                                                                                                                                                                                                                                                                              |
-   |       <strong>驗證 URL</strong>        | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |                                                                                                  取代<em>&lt;租用戶網域名稱&gt;</em>租用戶的網域名稱。                                                                                                  |
+   |       <strong>驗證 URL</strong>        | `https://login.microsoftonline.com/tfp/<tenant domain name>/B2C_1_SiUpIn/oauth2/v2.0/authorize` |                                                                                                  取代<em>&lt;租用戶網域名稱&gt;</em>租用戶的網域名稱。                                                                                                  |
    |       <strong>用戶端識別碼</strong>       |                <em>&lt;輸入郵差應用程式的<b>應用程式識別碼</b>&gt;</em>                 |                                                                                                                                                                                                                                                                              |
    |     <strong>用戶端密碼</strong>     |                                 <em>&lt;保留空白&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
    |         <strong>範圍</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | 取代<em>&lt;租用戶網域名稱&gt;</em>租用戶的網域名稱。 取代<em>&lt;api&gt;</em> Web API 專案名稱。 您也可以使用應用程式識別碼。 URL 的模式是： <em>https://{tenant}.onmicrosoft.com/{app_name_or_id}/{scope 名稱}</em>。 |

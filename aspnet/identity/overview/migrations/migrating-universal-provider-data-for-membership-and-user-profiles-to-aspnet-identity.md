@@ -12,12 +12,12 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: f65f93b20543d06ea70a9009b6921e297477c99e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 75d273d9fdb5d8ff0f7a910f42abe8bcce6e397d
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871567"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36313996"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>將通用的提供者的資料移轉成員資格和使用者設定檔，以 ASP.NET Identity (C#)
 ====================
@@ -106,6 +106,8 @@ ms.locfileid: "30871567"
    請注意，'ProfileInfo' 現在是使用者類別上的屬性。 因此，我們可以直接使用設定檔資料使用的使用者類別。
 
 在將檔案複製**IdentityModels**和**IdentityAccount**下載來源的資料夾 ( [ https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations ](https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations) )。 這些有剩餘的模型類別和新使用者和角色管理使用 ASP.NET 識別應用程式開發介面所需的頁面。 可以找到詳細的說明和使用的方法是類似 SQL 的成員資格[這裡](migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)。
+
+[!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
 ## <a name="copying-profile-data-to-the-new-tables"></a>將設定檔資料複製到新的資料表
 

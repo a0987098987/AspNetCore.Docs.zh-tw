@@ -433,7 +433,7 @@ LoginContent ContentPlaceHolder 覆寫預設標記，只要以滑鼠右鍵按一
 
 [![Default.aspx 顯示歡迎回來，以及登出 LinkButton Jisun](an-overview-of-forms-authentication-vb/_static/image53.png)](an-overview-of-forms-authentication-vb/_static/image52.png)
 
-**圖 18**: Default.aspx 顯示  褖畫惎回、 Jisun 沿著與登出 LinkButton ([按一下以檢視完整大小的影像](an-overview-of-forms-authentication-vb/_static/image54.png))
+**圖 18**: Default.aspx顯示歡迎回來，Jisun以及註銷LinkButton ([按一下以檢視完整大小的影像](an-overview-of-forms-authentication-vb/_static/image54.png))
 
 
 [![Logout.aspx 顯示 歡迎使用，以及登入 LinkButton 陌生人](an-overview-of-forms-authentication-vb/_static/image56.png)](an-overview-of-forms-authentication-vb/_static/image55.png)

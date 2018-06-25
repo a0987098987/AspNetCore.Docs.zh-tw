@@ -120,7 +120,7 @@ ms.locfileid: "30873166"
 
 現在`ViewBag`物件包含會自動傳遞到檢視的資料。
 
-接下來，您需要  褖畫惎檢視範本 ！ 在**偵錯**功能表上，選取**建置 MvcMovie**確定編譯專案。
+接下來，您需要一個歡迎視圖模板！ 在**偵錯**功能表上，選取**建置 MvcMovie**確定編譯專案。
 
 [![BuildHelloWorld](adding-a-view/_static/image12.png)](adding-a-view/_static/image11.png)
 

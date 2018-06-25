@@ -112,7 +112,7 @@ ms.locfileid: "30873348"
 
 [![3AddWelcomeView](adding-a-view/_static/image12.png "3AddWelcomeView")](adding-a-view/_static/image11.png)
 
-下列程式碼下新增`<h2>`中新項目<em> 褖畫惎。</em>vbhtml 檔案。 我們將進行迴圈，並假設&quot;Hello&quot;依需求多次使用者可指定我們應該 ！
+下列程式碼下新增`<h2>`中新項目<em>褖畫惎。</em>vbhtml 檔案。 我們將進行迴圈，並假設&quot;Hello&quot;依需求多次使用者可指定我們應該 ！
 
 [!code-vbhtml[Main](adding-a-view/samples/sample8.vbhtml)]
 

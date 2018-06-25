@@ -303,7 +303,7 @@ authCookie.Value = FormsAuthentication.Encrypt(newTicket);
 
 如果 Request.IsAuthenticated 為 true，則 WelcomeBackMessage Text 屬性第一次設歡迎回來， *username*。 然後，User.Identity 屬性會轉換成 FormsIdentity 物件，以便我們可以存取基礎 FormsAuthenticationTicket。 一旦 FormsAuthenticationTicket，我們會還原序列化的公司名稱和標題的 UserData 屬性。 這被透過分割上縱線字元的字串。 然後，公司名稱和標題會顯示在 WelcomeBackMessage 標籤。
 
-圖 5 顯示這個畫面的螢幕擷取畫面中的動作。 Scott 以登入，就會顯示該  褖畫惎的回復訊息中包含 Scott 公司和標題。
+圖 5 顯示這個畫面的螢幕擷取畫面中的動作。 以Scott的身份登錄，並顯示包含Scott的公司和頭銜的歡迎信息。
 
 
 [![會顯示目前登入使用者的公司和標題](forms-authentication-configuration-and-advanced-topics-cs/_static/image14.png)](forms-authentication-configuration-and-advanced-topics-cs/_static/image13.png)

@@ -2,20 +2,16 @@
 title: 透過 WS-同盟中 ASP.NET Core 驗證使用者
 author: chlowell
 description: 本教學課程會示範如何在 ASP.NET Core 應用程式中使用 WS-同盟。
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/27/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/ws-federation
-ms.openlocfilehash: d4621c7b97678903b9f2562e353da3883334b599
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 55504ed28cf8ef1095bf16c101c09a6f374f038c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30898800"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277435"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>透過 WS-同盟中 ASP.NET Core 驗證使用者
 
@@ -26,7 +22,7 @@ ms.locfileid: "30898800"
 根據預設，新的中介軟體：
 
 * 不允許未經要求的登入。 WS-同盟通訊協定的這項功能很容易 XSRF 攻擊。 不過，在啟用與`AllowUnsolicitedLogins`選項。
-* 並不會檢查登入訊息的每個表單 post。 只會要求以`CallbackPath`會檢查的符號集`CallbackPath`預設為`/signin-wsfed`但可以變更。 這個路徑可以與其他驗證提供者藉由啟用共用`SkipUnrecognizedRequests`選項。
+* 並不會檢查登入訊息的每個表單 post。 只會要求以`CallbackPath`會檢查的符號集`CallbackPath`預設為`/signin-wsfed`但可以變更透過繼承[RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性[WsFederationOptions](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions)類別。 這個路徑可以與其他驗證提供者藉由啟用共用[SkipUnrecognizedRequests](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions.skipunrecognizedrequests)選項。
 
 ## <a name="register-the-app-with-active-directory"></a>使用 Active Directory 註冊應用程式
 
@@ -34,7 +30,7 @@ ms.locfileid: "30898800"
 
 * 開啟伺服器**新增信賴憑證者信任精靈**從 ADFS 管理主控台：
 
-![新增信賴憑證者信任精靈：  褖畫惎](ws-federation/_static/AdfsAddTrust.png)
+![新增信賴憑證者信任精靈： 歡迎](ws-federation/_static/AdfsAddTrust.png)
 
 * 選擇以手動方式輸入資料：
 

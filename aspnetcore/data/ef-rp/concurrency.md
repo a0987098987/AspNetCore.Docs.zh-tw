@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 author: rick-anderson
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: b6a8354bf438895f5188290013afefd883c4dd0a
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: c6ec07eb7bf484490bd7730edc44bf2d89e8fb2a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32741403"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272746"
 ---
 zh-tw/
 

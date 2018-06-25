@@ -2,19 +2,15 @@
 title: ASP.NET Core 的 Razor 語法參考
 author: rick-anderson
 description: 了解將伺服器架構程式碼內嵌到網頁中的 Razor 標記語法。
-manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/razor
-ms.openlocfilehash: 224c855b355b8ecde36377bba6966edec251af6a
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: d0f4d59cb605cc3cc7cdfa84bfc65399699e475a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33962488"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272684"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 

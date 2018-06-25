@@ -2,20 +2,16 @@
 title: ASP.NET Core 中的 WebSockets 支援
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/15/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/websockets
-ms.openlocfilehash: ede8064b5e77024b843357d4715869b3495b9147
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: ee529f1aaadb6b6062bed56003c51f161eae7e72
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153679"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273793"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 

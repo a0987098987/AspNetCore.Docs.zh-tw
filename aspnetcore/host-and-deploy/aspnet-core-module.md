@@ -2,20 +2,16 @@
 title: ASP.NET Core 模組設定參考
 author: guardrex
 description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 954841a1b1465c80e60d5745ad9e22294a88fdf4
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 8d4283c61163a586557135fddfb85440251aaf29
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483743"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275615"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>ASP.NET Core 模組設定參考
 
@@ -178,7 +174,7 @@ ASP.NET Core 模組安裝程式會以 **SYSTEM** 帳戶的權限執行。 由於
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
-### <a name="module"></a>模組
+### <a name="module"></a>Module
 
 **IIS (x86/amd64)：**
 

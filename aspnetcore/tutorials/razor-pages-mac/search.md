@@ -2,20 +2,16 @@
 title: 將搜尋新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/search
-ms.openlocfilehash: 46547eeb909a32c5bc0f338fe2d0c48b721f965a
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 16248e5203bfa53ea03c756d9b6683f6fb24c5a3
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483186"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278023"
 ---
 [!INCLUDE [Search](../../includes/RP/search.md)]
 

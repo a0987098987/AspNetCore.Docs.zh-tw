@@ -2,19 +2,15 @@
 title: 在 ASP.NET Core 中使用 SQL Server LocalDB
 author: rick-anderson
 description: 了解如何在簡單的 ASP.NET Core MVC 應用程式中使用 SQL Server LocalDB。
-manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: b00d709f3009f63431becf24797269ad5988a20b
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 5b8bbcd3c6590edbe199a0a52494e83fd2aa4dcf
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688370"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273867"
 ---
 # <a name="work-with-sql-server-localdb-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL Server LocalDB
 

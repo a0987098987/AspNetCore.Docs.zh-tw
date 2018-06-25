@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 author: rick-anderson
 description: 示範如何以 EF Core 來建立、讀取、更新、刪除
-manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/crud
-ms.openlocfilehash: b3f170ad35bcff7c662fb0205b0bff2e98b4724c
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 17d48cae50745508a64a9fb8a153b7b891e64a23
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32741442"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278683"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -101,8 +97,7 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 開啟 *Pages/Students/Details.cshtml*。 請新增下列醒目顯示的程式碼，以顯示一份註冊清單：
 
- <!--2do ricka. if doesn't change, remove dup -->
-[!code-cshtml[](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
+ <!--2do ricka. if doesn't change, remove dup --> [!code-cshtml[](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
 
 若在貼上程式碼之後，程式碼的縮排發生錯誤，請按 CTRL-K-D 修正它。
 

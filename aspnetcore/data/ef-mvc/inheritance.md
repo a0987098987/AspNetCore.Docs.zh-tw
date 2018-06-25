@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 author: rick-anderson
 description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使用 Entity Framework Core，以實作資料模型中的繼承。
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 1ddca97d0a68311e8c6fa793ec4245c7ffef1337
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 818af711c23d37810b29eda8915b3c195a3e48f8
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153429"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272850"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
 

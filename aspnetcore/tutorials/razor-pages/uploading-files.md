@@ -2,20 +2,16 @@
 title: 將檔案上傳至 ASP.NET Core 的 Razor 頁面
 author: guardrex
 description: 了解如何將檔案上傳至 Razor Page。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/12/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 5f86164b3d227e55e11244da7600394809b6a4a7
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 43268e24b67279b57c990a6289922ae38d883221
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "32006124"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275953"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>將檔案上傳至 ASP.NET Core 的 Razor 頁面
 

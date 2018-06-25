@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 author: rick-anderson
 description: ''
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/crud
-ms.openlocfilehash: ec3f048c97d4e950fa76250382e4e18ccbea29e1
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: e0d454ce4f2319b48b649d46c0878d6969acbc9f
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153582"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278553"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 

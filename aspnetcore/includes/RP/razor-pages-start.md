@@ -9,9 +9,9 @@
 下表列出專案中的檔案和資料夾。 在本教學課程中，*Startup.cs* 檔案是需要了解的最重要項目。 您不需要檢閱以下提供的每個連結。 當您需要專案中的檔案或資料夾的詳細資訊時，便會提供連結作為參考。
 
 | 檔案或資料夾              | 用途 |
-| ----------------- | ------------ | 
+| ----------------- | ------------ |
 | wwwroot | 包含靜態檔案。 請參閱[靜態檔案](xref:fundamentals/static-files)。 |
-| 頁面 | [Razor 頁面](xref:mvc/razor-pages/index)的資料夾。 | 
+| 頁面 | [Razor 頁面](xref:razor-pages/index)的資料夾。 |
 | *appsettings.json* | [組態](xref:fundamentals/configuration/index) |
 | *Program.cs* | [裝載](xref:fundamentals/host/index) ASP.NET Core 應用程式。|
 | *Startup.cs* | 設定服務和要求管線。 請參閱 [Startup](xref:fundamentals/startup)。|

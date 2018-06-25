@@ -2,19 +2,15 @@
 title: 檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 author: rick-anderson
 description: 了解基本 ASP.NET Core MVC 應用程式中的 Details 控制器方法和檢視。
-manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: b392f956888a740a4a8c7c553996fc85ce63bd4b
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: f7f9a369e3e612542140fcf1091b21037e530a91
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729632"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278644"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>檢查 ASP.NET Core 應用程式的 Details 和 Delete 方法
 

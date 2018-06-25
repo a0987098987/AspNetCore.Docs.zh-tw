@@ -2,19 +2,15 @@
 title: 在 ASP.NET Core 中使用應用程式模型
 author: ardalis
 description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET Core 中 MVC 項目的行為方式。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/application-model
-ms.openlocfilehash: a0e38b041f428f8b519fd726643b3214761fb44e
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 7a03f5eaa561557f3abe9c8dd8f4e46a57413a55
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555348"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277588"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 

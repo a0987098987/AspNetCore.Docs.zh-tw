@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的配置
 author: ardalis
 description: 了解如何先使用通用配置、共用指示詞，以及執行通用程式碼，再轉譯 ASP.NET 應用程式中的檢視。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/layout
-ms.openlocfilehash: 8e89c8e6cf18c47abb6bf432cdc6bb6b97e8aeb0
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a99b239a0aeeb14492b1eee962dc1149f056f0eb
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
-ms.locfileid: "29904747"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274114"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 

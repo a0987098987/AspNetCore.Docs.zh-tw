@@ -2,20 +2,16 @@
 title: 更新產生的頁面
 author: rick-anderson
 description: 以更好的顯示方式更新產生的頁面。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/da1
-ms.openlocfilehash: 6fd7250b0b243d1988b81aa4c4ca419aba043581
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: bba08cd6197d977be762b59a9377eac005880e33
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31482697"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279337"
 ---
 [!INCLUDE [model1](../../includes/RP/da1.md)]
 

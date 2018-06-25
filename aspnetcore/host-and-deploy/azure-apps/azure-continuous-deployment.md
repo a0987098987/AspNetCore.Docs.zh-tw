@@ -2,20 +2,16 @@
 title: 搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 author: rick-anderson
 description: 了解如何使用 Visual Studio 建立 ASP.NET Core Web 應用程式，並透過 Git 持續部署將它部署到 Azure App Service。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 4de1893e8c1f7f2f4d9af7278a110067ea777c61
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0a9a2d9d0de25a4eaab704680c627c1216d146e3
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897887"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275479"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 

@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的環境標籤協助程式
 author: pkellner
 description: 定義了 ASP.NET Core 環境標籤協助程式，包括所有屬性
-manager: wpickett
 ms.author: riande
 ms.date: 07/14/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 7a99ee0e59c7f49a3208d2c86c11cabce4294889
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 05c07b06a4fedac0b0ff39d168807f5e2e6996cf
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28901180"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276912"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的環境標籤協助程式
 

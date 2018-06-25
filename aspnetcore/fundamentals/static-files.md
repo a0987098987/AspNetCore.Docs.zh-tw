@@ -2,21 +2,16 @@
 title: ASP.NET Core 中的靜態檔案
 author: rick-anderson
 description: 了解如何在 ASP.NET Core Web 應用程式中提供靜態檔案、保護其安全，並設定靜態檔案裝載中介軟體的行為。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
-ms.devlang: csharp
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/static-files
-ms.openlocfilehash: f0d34b5b64235d136f7df1b3ffdbb9fb10eca316
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 7ecbcc81423af20f8da79ebc026b1ac01a250b90
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34094537"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279213"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 

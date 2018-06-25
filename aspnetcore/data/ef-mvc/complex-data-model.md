@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 author: rick-anderson
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 8f7b0d45962e5ca04d8f4d32d9c80270fb1daa72
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: d89ca44917fac57febc2f8b0d632ae004ca7216c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34154539"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277383"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
 

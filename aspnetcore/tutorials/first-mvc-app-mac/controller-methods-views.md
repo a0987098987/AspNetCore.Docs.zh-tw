@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 應用程式中的控制器方法和檢視
 author: rick-anderson
 description: 使用控制器方法、檢視和 DataAnnotations
-manager: wpickett
 ms.author: riande
 ms.date: 04/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app-mac/controller-methods-views
-ms.openlocfilehash: 7a6a965d99742e7e06e6da82999dc60264cac6c8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0bd57597c74918829de38764326e35df08ab1e05
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897874"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279073"
 ---
 # <a name="controller-methods-and-views-in-an-aspnet-core-mvc-app"></a>ASP.NET Core MVC 應用程式中的控制器方法和檢視
 

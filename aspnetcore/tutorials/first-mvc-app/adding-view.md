@@ -2,19 +2,15 @@
 title: 新增檢視
 author: rick-anderson
 description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
-manager: wpickett
 ms.author: riande
 ms.date: 03/04/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 27f07afaefa0af2b489237e6e0ff772a5c9d64dc
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 16e0920c011931588586e51a5b5b7c8046a7976e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483863"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276145"
 ---
 [!INCLUDE [adding-view](../../includes/mvc-intro/adding_view1.md)]
 

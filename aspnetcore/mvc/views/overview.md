@@ -2,25 +2,21 @@
 title: ASP.NET Core MVC 中的檢視
 author: ardalis
 description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料呈現和使用者互動。
-manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: b9947de03942bd71616e4bf12263befd9f784915
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 4d5cb6288711cdef145ebb0b52e4e645c535bdf2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33965721"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278345"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
 作者：[Steve Smith](https://ardalis.com/) 和 [Luke Latham](https://github.com/guardrex)
 
-本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:mvc/razor-pages/index)。
+本文件說明 ASP.NET Core MVC 應用程式中所使用的檢視。 如需 Razor 頁面的資訊，請參閱 [Razor 頁面簡介](xref:razor-pages/index)。
 
 在模型檢視控制器 (MVC) 模式中，「檢視」會處理應用程式的資料呈現和使用者互動。 檢視是具有內嵌 [Razor 標記](xref:mvc/views/razor)的 HTML 範本。 Razor 標記是與 HTML 標記互動的程式碼，可以產生傳送至用戶端的網頁。
 

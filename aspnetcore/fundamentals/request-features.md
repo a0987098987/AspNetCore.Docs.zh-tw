@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的要求功能
 author: ardalis
 description: 了解有關 HTTP 要求和回應的網頁伺服器實作詳細資料，其定義於 ASP.NET Core 的介面中。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/request-features
-ms.openlocfilehash: c79ad6001e106a3e3104b0f804a386fe8b0ee30a
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28913568"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279489"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core 中的要求功能
 

@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 author: rick-anderson
 description: ''
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 0eef084c656f68fb1cad9fc0f5cfeee31ff96a30
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 3c418cc4e331ad19b0ec1be3207fa2cc44bef041
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153773"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275667"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC 與 Entity Framework Core - 教學課程 1/10
 
@@ -31,8 +27,7 @@ Contoso 大學範例 web 應用程式示範如何建立使用 Entity Framework (
 EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如需如何在 EF 6.x 和 EF Core 之間做選擇的詳細資訊，請參閱 [EF Core 與EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/)。 如果您選擇 EF 6.x，請參閱[此教學課程系列的舊版](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
 > [!NOTE]
-> * 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
-> * 如需本教學課程的 Visual Studio 2015 版本，請參閱[PDF 格式的 VS 2015 版本 ASP.NET Core 文件集](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf)
+> 如需此教學課程的 ASP.NET Core 1.1 版本，請參閱[以 PDF 格式儲存之此教學課程的 VS 2017 Update 2 版本](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -42,7 +37,7 @@ EF Core 2.0 EF 的最新版本，但還沒有的 EF 的所有功能 6.x。 如�
 
 如果您執行您不能解決問題，您可以藉由比較您的程式碼通常找到方案[已完成的專案](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)。 如需常見的錯誤以及如何解決這些問題的清單，請參閱[ 數列中的最後一個教學課程疑難排解 > 一節](advanced.md#common-errors)。 如果您找不到您需要那里，您可以張貼問題的 StackOverflow.com [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) 或 [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core)。
 
-> [!TIP] 
+> [!TIP]
 > 這是 10 個教學的系列課程，當中的每一個課程都是建置於先前教學課程的成果上。 成功完成每一個教學課程後，請儲存專案的複本。 如果您遇到問題，您可以從上一個教學課程來重新開始，而不需從系列的一開始從頭來過。
 
 ## <a name="the-contoso-university-web-application"></a>Contoso 大學 Web 應用程式

@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的部分檢視
 author: ardalis
 description: 了解部分檢視如何在另一個檢視內呈現，以及何時應該在 ASP.NET Core 應用程式中使用它們。
-manager: wpickett
 ms.author: riande
 ms.date: 03/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/partial
-ms.openlocfilehash: 3deaaeb666e5443d0784f2ac6977e58e1b25d711
-ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.openlocfilehash: f3782961a63c08293a483ec7a75dadff2031b131
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2018
-ms.locfileid: "30000898"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279528"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 

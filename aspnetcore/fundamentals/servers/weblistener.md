@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 WebListener 網頁伺服器實作
 author: rick-anderson
 description: 了解 WebListener，這是 Windows 上 ASP.NET Core 的網頁伺服器，可用於直接連線到網際網路而無需 IIS。
-manager: wpickett
 ms.author: riande
 ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: 46871edb744ad152df8eb958b344068b7408dd1e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 68aea99d6ce6af12655ef5fdb13130e9279e448a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34248449"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274865"
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 WebListener 網頁伺服器實作
 

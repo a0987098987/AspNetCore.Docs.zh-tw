@@ -2,20 +2,16 @@
 title: 適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 author: rick-anderson
 description: 了解如何在 Visual Studio 中建立發行設定檔，並使用這些設定檔來管理對各種目標的 ASP.NET Core 應用程式部署。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 3dc858793cd4ddb2630d05a5084f4b7caeaa30eb
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 280599ab4b4f0a70d154cc4408e7232aaf766d8e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483366"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279554"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>適用於 ASP.NET Core 應用程式部署的 Visual Studio 發行設定檔
 
@@ -103,7 +99,7 @@ ms.locfileid: "31483366"
 * 會計算屬性/項目 (需要建置的檔案)。
 * **僅限 Visual Studio**：會還原 NuGet 套件。 (CLI 的使用者要明確還原。)
 * 專案隨即建置。
-* 會計算發佈項目 (需要發佈的檔案)。
+* 會計算的發佈項目 (需要發佈的檔案)。
 * 會發佈專案 (計算的檔案會複製到發佈目的地)。
 
 當 ASP.NET Core 專案參考專案檔中的 `Microsoft.NET.Sdk.Web` 時，*app_offline.htm* 檔案會放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
@@ -415,7 +411,7 @@ MSDeployPublish:
 Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 ```
 
-## <a name="include-files"></a>包含檔案
+## <a name="include-files"></a>Include 檔案
 
 下列標記會將專案目錄外的 [images] 資料夾包 含在發佈網站的 *wwwroot/images* 資料夾中：
 
@@ -496,7 +492,7 @@ MSBuild file.
 
 ## <a name="the-kudu-service"></a>Kudu 服務
 
-若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如：
+若要檢視 Azure App Service Web 應用程式部署中的檔案，請使用 [Kudu 服務](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service)。 將 `scm` 權杖附加至 Web 應用程式名稱。 例如: 
 
 | URL                                    | 結果       |
 | -------------------------------------- | ------------ |

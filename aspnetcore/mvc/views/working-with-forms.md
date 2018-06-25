@@ -2,20 +2,16 @@
 title: ASP.NET Core 表單中的標籤協助程式
 author: rick-anderson
 description: 描述搭配表單使用的內建標籤協助程式。
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 9155bd54bc211c8be0678065e857f73d8a139365
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 3e4e597fde829ae2e2ce4dbd19a4ec0b42d078df
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32741124"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274849"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 

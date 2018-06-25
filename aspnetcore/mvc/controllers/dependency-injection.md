@@ -2,19 +2,15 @@
 title: ASP.NET Core 控制器的相依性插入
 author: ardalis
 description: 了解 ASP.NET Core MVC 控制器如何在 ASP.NET Core 中，透過其含有相依性插入的建構函式明確要求其相依性。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: c3e26d294d51dc7044158b05c1ac39015c494610
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 23c91a4363223a135c50ceca51e6af22ed69fe3b
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071798"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276447"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>ASP.NET Core 控制器的相依性插入
 

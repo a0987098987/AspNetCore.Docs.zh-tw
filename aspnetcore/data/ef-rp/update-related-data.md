@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 author: rick-anderson
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740370"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275290"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 更新相關資料 - 7/8
 
@@ -95,8 +91,6 @@ Razor 頁面使用[選取標籤協助程式](xref:mvc/views/working-with-forms#t
 * 顯示課程識別碼。 通常不會顯示實體的主索引鍵 (PK)。 PK 對使用者來說通常是沒有意義的。 在此情況下，PK 是課程編號。
 * 將標題從 **DepartmentID** 變更為 **Department**。
 * 以 `DepartmentNameSL` (來自基底類別) 取代 `"ViewBag.DepartmentID"`。
-* 新增 [選取部門] 選項。 這項變更會呈現 [選取部門] ，而不是第一個部門。
-* 未選取部門時，請新增驗證訊息。
 
 此頁面包含課程編號的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式與 `asp-for="Course.CourseID"` 無法免除隱藏欄位的需求。 當使用者按一下 [儲存]  時，需要有 `<input type="hidden">` 才能將課程編號包含在張貼資料中。
 

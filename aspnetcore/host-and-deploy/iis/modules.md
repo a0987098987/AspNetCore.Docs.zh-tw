@@ -2,20 +2,16 @@
 title: 與 ASP.NET Core 搭配運作的 IIS 模組
 author: guardrex
 description: 探索 ASP.NET Core 應用程式的使用中和非使用中 IIS 模組，管理 IIS 模組的方式。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 4a60b6c9bab77e8095cb9f19e615219817702b32
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 1ff0fdcaae066b493eeebf6a061e383f88c81052
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34566642"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272733"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 

@@ -2,20 +2,16 @@
 title: ASP.NET Core 中的應用程式啟動
 author: ardalis
 description: 探索 Startup 類別如何在 ASP.NET Core 中設定服務和應用程式的要求管線。
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: 58ced0ae11f462bc309526b7db7bda7897c33009
-ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
+ms.openlocfilehash: f0b907e4322809dfe2bcd287bb064f35f5ebe150
+ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "34233166"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36314116"
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -45,7 +41,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如，`StartupDevelopment`)，並在執行階段選取適當的啟動類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#startup-conventions)。
+插入 `IHostingEnvironment` 的替代方式是使用基於慣例的方法。 應用程式可以針對不同的環境定義個別的 `Startup` 類別 (例如，`StartupDevelopment`)，並在執行階段選取適當的啟動類別。 將優先使用其名稱尾碼符合目前環境的類別。 如果應用程式是在開發環境中執行，且同時包含 `Startup` 類別和 `StartupDevelopment` 類別，則會使用 `StartupDevelopment` 類別。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 
 若要深入了解 `WebHostBuilder`，請參閱[裝載](xref:fundamentals/host/index)主題。 如需在啟動期間處理錯誤的資訊，請參閱[啟動例外狀況處理](xref:fundamentals/error-handling#startup-exception-handling)。
 

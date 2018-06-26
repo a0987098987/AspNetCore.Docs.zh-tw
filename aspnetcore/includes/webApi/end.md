@@ -37,7 +37,7 @@
 
 ![Postman 主控台](../../tutorials/first-web-api/_static/pmc.png)
 
-* 更新 localhost URL 中的連接埠號碼。
+* 更新 localhost URL 中的通訊埠號碼。
 * 將 HTTP 方法設定為 *POST*。
 * 按一下 [本文] 索引標籤。
 * 選取 [原始] 選項按鈕。

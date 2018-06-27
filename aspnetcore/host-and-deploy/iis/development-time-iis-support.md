@@ -2,72 +2,71 @@
 title: Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 author: shirhatti
 description: 了解當 ASP.NET Core 應用程式在 Windows Server 上的 IIS 後方執行時，對其提供的偵錯支援。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 0bf4585d44e61c5e7e5b89ce9d8dfdfa10d5460e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: eb8b4369d6d5434adbac187f59b18d7a2b80055c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233075"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277650"
 ---
-# <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a><span data-ttu-id="2a45b-103">Visual Studio for ASP.NET Core 中的開發階段 IIS 支援</span><span class="sxs-lookup"><span data-stu-id="2a45b-103">Development-time IIS support in Visual Studio for ASP.NET Core</span></span>
+# <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a><span data-ttu-id="3f6dd-103">Visual Studio for ASP.NET Core 中的開發階段 IIS 支援</span><span class="sxs-lookup"><span data-stu-id="3f6dd-103">Development-time IIS support in Visual Studio for ASP.NET Core</span></span>
 
-<span data-ttu-id="2a45b-104">作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti) 和 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="2a45b-104">By [Sourabh Shirhatti](https://twitter.com/sshirhatti) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="3f6dd-104">作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti) 和 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="3f6dd-104">By [Sourabh Shirhatti](https://twitter.com/sshirhatti) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="2a45b-105">本文針對在 Windows Server 上 IIS 後方執行的 ASP.NET Core 應用程式，說明 [Visual Studio](https://www.visualstudio.com/vs/) 的偵錯支援。</span><span class="sxs-lookup"><span data-stu-id="2a45b-105">This article describes [Visual Studio](https://www.visualstudio.com/vs/) support for debugging ASP.NET Core apps running behind IIS on Windows Server.</span></span> <span data-ttu-id="2a45b-106">本主題會逐步解說如何啟用這項功能及設定專案。</span><span class="sxs-lookup"><span data-stu-id="2a45b-106">This topic walks through enabling this feature and setting up a project.</span></span>
+<span data-ttu-id="3f6dd-105">本文針對在 Windows Server 上 IIS 後方執行的 ASP.NET Core 應用程式，說明 [Visual Studio](https://www.visualstudio.com/vs/) 的偵錯支援。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-105">This article describes [Visual Studio](https://www.visualstudio.com/vs/) support for debugging ASP.NET Core apps running behind IIS on Windows Server.</span></span> <span data-ttu-id="3f6dd-106">本主題會逐步解說如何啟用這項功能及設定專案。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-106">This topic walks through enabling this feature and setting up a project.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2a45b-107">必要條件</span><span class="sxs-lookup"><span data-stu-id="2a45b-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3f6dd-107">必要條件</span><span class="sxs-lookup"><span data-stu-id="3f6dd-107">Prerequisites</span></span>
 
-[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
+* [<span data-ttu-id="3f6dd-108">Visual Studio (適用於 Windows)</span><span class="sxs-lookup"><span data-stu-id="3f6dd-108">Visual Studio for Windows</span></span>](https://www.microsoft.com/net/download/windows)
+* <span data-ttu-id="3f6dd-109">**ASP.NET 與網頁程式開發**工作負載</span><span class="sxs-lookup"><span data-stu-id="3f6dd-109">**ASP.NET and web development** workload</span></span>
+* <span data-ttu-id="3f6dd-110">**.NET Core 跨平台開發**工作負載</span><span class="sxs-lookup"><span data-stu-id="3f6dd-110">**.NET Core cross-platform development** workload</span></span>
+* <span data-ttu-id="3f6dd-111">X.509 安全性憑證</span><span class="sxs-lookup"><span data-stu-id="3f6dd-111">X.509 security certificate</span></span>
 
-## <a name="enable-iis"></a><span data-ttu-id="2a45b-108">啟用 IIS</span><span class="sxs-lookup"><span data-stu-id="2a45b-108">Enable IIS</span></span>
+## <a name="enable-iis"></a><span data-ttu-id="3f6dd-112">啟用 IIS</span><span class="sxs-lookup"><span data-stu-id="3f6dd-112">Enable IIS</span></span>
 
-1. <span data-ttu-id="2a45b-109">瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。</span><span class="sxs-lookup"><span data-stu-id="2a45b-109">Navigate to **Control Panel** > **Programs** > **Programs and Features** > **Turn Windows features on or off** (left side of the screen).</span></span>
-1. <span data-ttu-id="2a45b-110">選取 [Internet Information Services] 核取方塊。</span><span class="sxs-lookup"><span data-stu-id="2a45b-110">Select the **Internet Information Services** check box.</span></span>
+1. <span data-ttu-id="3f6dd-113">瀏覽至控制台 > [程式] > [程式和功能] > [開啟或關閉 Windows 功能] (畫面左側)。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-113">Navigate to **Control Panel** > **Programs** > **Programs and Features** > **Turn Windows features on or off** (left side of the screen).</span></span>
+1. <span data-ttu-id="3f6dd-114">選取 [Internet Information Services] 核取方塊。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-114">Select the **Internet Information Services** check box.</span></span>
 
 ![[Windows 功能] 會以黑色方塊 (而非勾選記號) 顯示選取的 [Internet Information Services] 核取方塊，表示已啟用部分 IIS 功能](development-time-iis-support/_static/enable_iis.png)
 
-<span data-ttu-id="2a45b-112">安裝 IIS 可能需要重新啟動系統。</span><span class="sxs-lookup"><span data-stu-id="2a45b-112">The IIS installation may require a system restart.</span></span>
+<span data-ttu-id="3f6dd-116">安裝 IIS 可能需要重新啟動系統。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-116">The IIS installation may require a system restart.</span></span>
 
-## <a name="configure-iis"></a><span data-ttu-id="2a45b-113">設定 IIS</span><span class="sxs-lookup"><span data-stu-id="2a45b-113">Configure IIS</span></span>
+## <a name="configure-iis"></a><span data-ttu-id="3f6dd-117">設定 IIS</span><span class="sxs-lookup"><span data-stu-id="3f6dd-117">Configure IIS</span></span>
 
-<span data-ttu-id="2a45b-114">IIS 的網站必須含有下列設定：</span><span class="sxs-lookup"><span data-stu-id="2a45b-114">IIS must have a website configured with the following:</span></span>
+<span data-ttu-id="3f6dd-118">IIS 的網站必須含有下列設定：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-118">IIS must have a website configured with the following:</span></span>
 
-* <span data-ttu-id="2a45b-115">與應用程式啟動設定檔 URL 主機名稱相符的主機名稱。</span><span class="sxs-lookup"><span data-stu-id="2a45b-115">A host name that matches the app's launch profile URL host name.</span></span>
-* <span data-ttu-id="2a45b-116">搭配所指派憑證的連接埠 443 繫結。</span><span class="sxs-lookup"><span data-stu-id="2a45b-116">Binding for port 443 with an assigned certificate.</span></span>
+* <span data-ttu-id="3f6dd-119">與應用程式啟動設定檔 URL 主機名稱相符的主機名稱。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-119">A host name that matches the app's launch profile URL host name.</span></span>
+* <span data-ttu-id="3f6dd-120">搭配所指派憑證的連接埠 443 繫結。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-120">Binding for port 443 with an assigned certificate.</span></span>
 
-<span data-ttu-id="2a45b-117">例如，所新增網站的 [主機名稱] 會設定為 "localhost" (啟動設定檔稍後在本主題中也會使用 "localhost")。</span><span class="sxs-lookup"><span data-stu-id="2a45b-117">For example, the **Host name** for an added website is set to "localhost" (the launch profile will also use "localhost" later in this topic).</span></span> <span data-ttu-id="2a45b-118">連接埠會設定為 "443" (HTTPS)。</span><span class="sxs-lookup"><span data-stu-id="2a45b-118">The port is set to "443" (HTTPS).</span></span> <span data-ttu-id="2a45b-119">已將 [IIS Express 開發憑證] 指派給網站，但可使用任何有效的憑證：</span><span class="sxs-lookup"><span data-stu-id="2a45b-119">The **IIS Express Development Certificate** is assigned to the website, but any valid certificate works:</span></span>
+<span data-ttu-id="3f6dd-121">例如，所新增網站的 [主機名稱] 會設定為 "localhost" (啟動設定檔稍後在本主題中也會使用 "localhost")。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-121">For example, the **Host name** for an added website is set to "localhost" (the launch profile will also use "localhost" later in this topic).</span></span> <span data-ttu-id="3f6dd-122">連接埠會設定為 "443" (HTTPS)。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-122">The port is set to "443" (HTTPS).</span></span> <span data-ttu-id="3f6dd-123">已將 [IIS Express 開發憑證] 指派給網站，但可使用任何有效的憑證：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-123">The **IIS Express Development Certificate** is assigned to the website, but any valid certificate works:</span></span>
 
 ![IIS 中的 [新增網站] 視窗，其中顯示具有已指派的憑證並在連接埠 443 上 localhost 的繫結集合。](development-time-iis-support/_static/add-website-window.png)
 
-<span data-ttu-id="2a45b-121">如果 IIS 安裝已經有主機名稱與應用程式啟動設定檔 URL 主機名稱相符的「預設網站」：</span><span class="sxs-lookup"><span data-stu-id="2a45b-121">If the IIS installation already has a **Default Web Site** with a host name that matches the app's launch profile URL host name:</span></span>
+<span data-ttu-id="3f6dd-125">如果 IIS 安裝已經有主機名稱與應用程式啟動設定檔 URL 主機名稱相符的「預設網站」：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-125">If the IIS installation already has a **Default Web Site** with a host name that matches the app's launch profile URL host name:</span></span>
 
-* <span data-ttu-id="2a45b-122">為連接埠 443 (HTTPS) 新增連接埠繫結。</span><span class="sxs-lookup"><span data-stu-id="2a45b-122">Add a port binding for port 443 (HTTPS).</span></span>
-* <span data-ttu-id="2a45b-123">指派一個有效的憑證給網站。</span><span class="sxs-lookup"><span data-stu-id="2a45b-123">Assign a valid certificate to the website.</span></span>
+* <span data-ttu-id="3f6dd-126">為連接埠 443 (HTTPS) 新增連接埠繫結。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-126">Add a port binding for port 443 (HTTPS).</span></span>
+* <span data-ttu-id="3f6dd-127">指派一個有效的憑證給網站。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-127">Assign a valid certificate to the website.</span></span>
 
-## <a name="enable-development-time-iis-support-in-visual-studio"></a><span data-ttu-id="2a45b-124">在 Visual Studio 中啟用開發階段 IIS 支援</span><span class="sxs-lookup"><span data-stu-id="2a45b-124">Enable development-time IIS support in Visual Studio</span></span>
+## <a name="enable-development-time-iis-support-in-visual-studio"></a><span data-ttu-id="3f6dd-128">在 Visual Studio 中啟用開發階段 IIS 支援</span><span class="sxs-lookup"><span data-stu-id="3f6dd-128">Enable development-time IIS support in Visual Studio</span></span>
 
-1. <span data-ttu-id="2a45b-125">啟動 Visual Studio 安裝程式。</span><span class="sxs-lookup"><span data-stu-id="2a45b-125">Launch the Visual Studio installer.</span></span>
-1. <span data-ttu-id="2a45b-126">選取 [開發階段 IIS 支援] 元件。</span><span class="sxs-lookup"><span data-stu-id="2a45b-126">Select the **Development time IIS support** component.</span></span> <span data-ttu-id="2a45b-127">此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。</span><span class="sxs-lookup"><span data-stu-id="2a45b-127">The component is listed as optional in the **Summary** panel for the **ASP.NET and web development** workload.</span></span> <span data-ttu-id="2a45b-128">此元件會安裝 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，這是在反向 Proxy 設定中，於 IIS 後方執行 ASP.NET Core 應用程式所需的原生 IIS 模組。</span><span class="sxs-lookup"><span data-stu-id="2a45b-128">The component installs the [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module), which is a native IIS module required to run ASP.NET Core apps behind IIS in a reverse proxy configuration.</span></span>
+1. <span data-ttu-id="3f6dd-129">啟動 Visual Studio 安裝程式。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-129">Launch the Visual Studio installer.</span></span>
+1. <span data-ttu-id="3f6dd-130">選取 [開發階段 IIS 支援] 元件。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-130">Select the **Development time IIS support** component.</span></span> <span data-ttu-id="3f6dd-131">此元件在 [ASP.NET 與網頁程式開發] 工作負載的 [摘要] 面板中，會列為選擇性元件。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-131">The component is listed as optional in the **Summary** panel for the **ASP.NET and web development** workload.</span></span> <span data-ttu-id="3f6dd-132">此元件會安裝 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)，這是在反向 Proxy 設定中，於 IIS 後方執行 ASP.NET Core 應用程式所需的原生 IIS 模組。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-132">The component installs the [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module), which is a native IIS module required to run ASP.NET Core apps behind IIS in a reverse proxy configuration.</span></span>
 
 ![修改 Visual Studio 功能：選取 [工作負載] 索引標籤。](development-time-iis-support/_static/development_time_support.png)
 
-## <a name="configure-the-project"></a><span data-ttu-id="2a45b-132">設定專案</span><span class="sxs-lookup"><span data-stu-id="2a45b-132">Configure the project</span></span>
+## <a name="configure-the-project"></a><span data-ttu-id="3f6dd-136">設定專案</span><span class="sxs-lookup"><span data-stu-id="3f6dd-136">Configure the project</span></span>
 
-### <a name="https-redirection"></a><span data-ttu-id="2a45b-133">HTTPS 重新導向</span><span class="sxs-lookup"><span data-stu-id="2a45b-133">HTTPS redirection</span></span>
+### <a name="https-redirection"></a><span data-ttu-id="3f6dd-137">HTTPS 重新導向</span><span class="sxs-lookup"><span data-stu-id="3f6dd-137">HTTPS redirection</span></span>
 
-<span data-ttu-id="2a45b-134">針對新的專案，請在 [新增 ASP.NET Core Web 應用程式] 視窗中，選取 [針對 HTTPS 進行設定] 核取方塊：</span><span class="sxs-lookup"><span data-stu-id="2a45b-134">For a new project, select the check box to **Configure for HTTPS** in the **New ASP.NET Core Web Application** window:</span></span>
+<span data-ttu-id="3f6dd-138">針對新的專案，請在 [新增 ASP.NET Core Web 應用程式] 視窗中，選取 [針對 HTTPS 進行設定] 核取方塊：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-138">For a new project, select the check box to **Configure for HTTPS** in the **New ASP.NET Core Web Application** window:</span></span>
 
 ![已選取 [針對 HTTPS 進行設定] 核取方塊的 [新增 ASP.NET Core Web 應用程式] 視窗。](development-time-iis-support/_static/new-app.png)
 
-<span data-ttu-id="2a45b-136">在現有的專案中，請在 `Startup.Configure` 中透過呼叫 [UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection) 擴充方法來使用「HTTPS 重新導向中介軟體」：</span><span class="sxs-lookup"><span data-stu-id="2a45b-136">In an existing project, use HTTPS Redirection Middleware in `Startup.Configure` by calling the [UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection) extension method:</span></span>
+<span data-ttu-id="3f6dd-140">在現有的專案中，請在 `Startup.Configure` 中透過呼叫 [UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection) 擴充方法來使用「HTTPS 重新導向中介軟體」：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-140">In an existing project, use HTTPS Redirection Middleware in `Startup.Configure` by calling the [UseHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpspolicybuilderextensions.usehttpsredirection) extension method:</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -90,20 +89,20 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-### <a name="iis-launch-profile"></a><span data-ttu-id="2a45b-137">IIS 啟動設定檔</span><span class="sxs-lookup"><span data-stu-id="2a45b-137">IIS launch profile</span></span>
+### <a name="iis-launch-profile"></a><span data-ttu-id="3f6dd-141">IIS 啟動設定檔</span><span class="sxs-lookup"><span data-stu-id="3f6dd-141">IIS launch profile</span></span>
 
-<span data-ttu-id="2a45b-138">建立新的啟動設定檔，以新增開發階段 IIS 支援：</span><span class="sxs-lookup"><span data-stu-id="2a45b-138">Create a new launch profile to add development-time IIS support:</span></span>
+<span data-ttu-id="3f6dd-142">建立新的啟動設定檔，以新增開發階段 IIS 支援：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-142">Create a new launch profile to add development-time IIS support:</span></span>
 
-1. <span data-ttu-id="2a45b-139">針對 [設定檔]，選取 [新增] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="2a45b-139">For **Profile**, select the **New** button.</span></span> <span data-ttu-id="2a45b-140">在快顯示窗中，將設定檔命名為 "IIS"。</span><span class="sxs-lookup"><span data-stu-id="2a45b-140">Name the profile "IIS" in the popup window.</span></span> <span data-ttu-id="2a45b-141">選取 [確定] 以建立設定檔。</span><span class="sxs-lookup"><span data-stu-id="2a45b-141">Select **OK** to create the profile.</span></span>
-1. <span data-ttu-id="2a45b-142">針對 [啟動] 設定，從清單中選取 [IIS]。</span><span class="sxs-lookup"><span data-stu-id="2a45b-142">For the **Launch** setting, select **IIS** from the list.</span></span>
-1. <span data-ttu-id="2a45b-143">選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。</span><span class="sxs-lookup"><span data-stu-id="2a45b-143">Select the check box for **Launch browser** and provide the endpoint URL.</span></span> <span data-ttu-id="2a45b-144">使用 HTTPS 通訊協定。</span><span class="sxs-lookup"><span data-stu-id="2a45b-144">Use the HTTPS protocol.</span></span> <span data-ttu-id="2a45b-145">這個範例會使用 `https://localhost/WebApplication1`。</span><span class="sxs-lookup"><span data-stu-id="2a45b-145">This example uses `https://localhost/WebApplication1`.</span></span>
-1. <span data-ttu-id="2a45b-146">在 [環境變數] 區段中，選取 [新增] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="2a45b-146">In the **Environment variables** section, select the **Add** button.</span></span> <span data-ttu-id="2a45b-147">提供一個索引鍵為 `ASPNETCORE_ENVIRONMENT` 且值為 `Development` 的環境變數。</span><span class="sxs-lookup"><span data-stu-id="2a45b-147">Provide an environment variable with a key of `ASPNETCORE_ENVIRONMENT` and a value of `Development`.</span></span>
-1. <span data-ttu-id="2a45b-148">在 [Web 伺服器設定] 區域中，設定 [應用程式 URL]。</span><span class="sxs-lookup"><span data-stu-id="2a45b-148">In the **Web Server Settings** area, set the **App URL**.</span></span> <span data-ttu-id="2a45b-149">這個範例會使用 `https://localhost/WebApplication1`。</span><span class="sxs-lookup"><span data-stu-id="2a45b-149">This example uses `https://localhost/WebApplication1`.</span></span>
-1. <span data-ttu-id="2a45b-150">儲存設定檔。</span><span class="sxs-lookup"><span data-stu-id="2a45b-150">Save the profile.</span></span>
+1. <span data-ttu-id="3f6dd-143">針對 [設定檔]，選取 [新增] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-143">For **Profile**, select the **New** button.</span></span> <span data-ttu-id="3f6dd-144">在快顯示窗中，將設定檔命名為 "IIS"。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-144">Name the profile "IIS" in the popup window.</span></span> <span data-ttu-id="3f6dd-145">選取 [確定] 以建立設定檔。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-145">Select **OK** to create the profile.</span></span>
+1. <span data-ttu-id="3f6dd-146">針對 [啟動] 設定，從清單中選取 [IIS]。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-146">For the **Launch** setting, select **IIS** from the list.</span></span>
+1. <span data-ttu-id="3f6dd-147">選取 [啟動瀏覽器] 的核取方塊並提供端點 URL。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-147">Select the check box for **Launch browser** and provide the endpoint URL.</span></span> <span data-ttu-id="3f6dd-148">使用 HTTPS 通訊協定。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-148">Use the HTTPS protocol.</span></span> <span data-ttu-id="3f6dd-149">這個範例會使用 `https://localhost/WebApplication1`。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-149">This example uses `https://localhost/WebApplication1`.</span></span>
+1. <span data-ttu-id="3f6dd-150">在 [環境變數] 區段中，選取 [新增] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-150">In the **Environment variables** section, select the **Add** button.</span></span> <span data-ttu-id="3f6dd-151">提供一個索引鍵為 `ASPNETCORE_ENVIRONMENT` 且值為 `Development` 的環境變數。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-151">Provide an environment variable with a key of `ASPNETCORE_ENVIRONMENT` and a value of `Development`.</span></span>
+1. <span data-ttu-id="3f6dd-152">在 [Web 伺服器設定] 區域中，設定 [應用程式 URL]。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-152">In the **Web Server Settings** area, set the **App URL**.</span></span> <span data-ttu-id="3f6dd-153">這個範例會使用 `https://localhost/WebApplication1`。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-153">This example uses `https://localhost/WebApplication1`.</span></span>
+1. <span data-ttu-id="3f6dd-154">儲存設定檔。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-154">Save the profile.</span></span>
 
 ![在 [專案屬性] 視窗中選取 [偵錯] 索引標籤。](development-time-iis-support/_static/project_properties.png)
 
-<span data-ttu-id="2a45b-155">或者，您也可以手動將啟動設定檔新增至應用程式中的 [launchSettings.json](http://json.schemastore.org/launchsettings) 檔案：</span><span class="sxs-lookup"><span data-stu-id="2a45b-155">Alternatively, manually add a launch profile to the [launchSettings.json](http://json.schemastore.org/launchsettings) file in the app:</span></span>
+<span data-ttu-id="3f6dd-159">或者，您也可以手動將啟動設定檔新增至應用程式中的 [launchSettings.json](http://json.schemastore.org/launchsettings) 檔案：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-159">Alternatively, manually add a launch profile to the [launchSettings.json](http://json.schemastore.org/launchsettings) file in the app:</span></span>
 
 ```json
 {
@@ -128,19 +127,19 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-## <a name="run-the-project"></a><span data-ttu-id="2a45b-156">執行專案</span><span class="sxs-lookup"><span data-stu-id="2a45b-156">Run the project</span></span>
+## <a name="run-the-project"></a><span data-ttu-id="3f6dd-160">執行專案</span><span class="sxs-lookup"><span data-stu-id="3f6dd-160">Run the project</span></span>
 
-<span data-ttu-id="2a45b-157">在 VS UI 中，將 [執行] 按鈕設定為 **IIS** 設定檔，然後選取該按鈕來啟動應用程式：</span><span class="sxs-lookup"><span data-stu-id="2a45b-157">In the VS UI, set the Run button to the **IIS** profile and select the button to start the app:</span></span>
+<span data-ttu-id="3f6dd-161">在 VS UI 中，將 [執行] 按鈕設定為 **IIS** 設定檔，然後選取該按鈕來啟動應用程式：</span><span class="sxs-lookup"><span data-stu-id="3f6dd-161">In the VS UI, set the Run button to the **IIS** profile and select the button to start the app:</span></span>
 
 ![已設定為 [IIS] 設定檔的 VS 工具列 [執行] 按鈕。](development-time-iis-support/_static/toolbar.png)
 
-<span data-ttu-id="2a45b-159">如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。</span><span class="sxs-lookup"><span data-stu-id="2a45b-159">Visual Studio may prompt a restart if not running as an administrator.</span></span> <span data-ttu-id="2a45b-160">若收到提示，請重新啟動 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="2a45b-160">If prompted, restart Visual Studio.</span></span>
+<span data-ttu-id="3f6dd-163">如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-163">Visual Studio may prompt a restart if not running as an administrator.</span></span> <span data-ttu-id="3f6dd-164">若收到提示，請重新啟動 Visual Studio。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-164">If prompted, restart Visual Studio.</span></span>
 
-<span data-ttu-id="2a45b-161">如果使用未受信任的開發憑證，瀏覽器可能會要求您針對未受信任的憑證建立例外。</span><span class="sxs-lookup"><span data-stu-id="2a45b-161">If an untrusted development certificate is used, the browser may require you to create an exception for the untrusted certificate.</span></span>
+<span data-ttu-id="3f6dd-165">如果使用未受信任的開發憑證，瀏覽器可能會要求您針對未受信任的憑證建立例外。</span><span class="sxs-lookup"><span data-stu-id="3f6dd-165">If an untrusted development certificate is used, the browser may require you to create an exception for the untrusted certificate.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="2a45b-162">其他資源</span><span class="sxs-lookup"><span data-stu-id="2a45b-162">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="3f6dd-166">其他資源</span><span class="sxs-lookup"><span data-stu-id="3f6dd-166">Additional resources</span></span>
 
-* [<span data-ttu-id="2a45b-163">使用 IIS 在 Windows 上裝載 ASP.NET</span><span class="sxs-lookup"><span data-stu-id="2a45b-163">Host ASP.NET Core on Windows with IIS</span></span>](xref:host-and-deploy/iis/index)
-* [<span data-ttu-id="2a45b-164">ASP.NET Core 模組簡介</span><span class="sxs-lookup"><span data-stu-id="2a45b-164">Introduction to ASP.NET Core Module</span></span>](xref:fundamentals/servers/aspnet-core-module)
-* [<span data-ttu-id="2a45b-165">ASP.NET Core 模組組態參考</span><span class="sxs-lookup"><span data-stu-id="2a45b-165">ASP.NET Core Module configuration reference</span></span>](xref:host-and-deploy/aspnet-core-module)
-* [<span data-ttu-id="2a45b-166">強制使用 HTTPS</span><span class="sxs-lookup"><span data-stu-id="2a45b-166">Enforce HTTPS</span></span>](xref:security/enforcing-ssl)
+* [<span data-ttu-id="3f6dd-167">使用 IIS 在 Windows 上裝載 ASP.NET</span><span class="sxs-lookup"><span data-stu-id="3f6dd-167">Host ASP.NET Core on Windows with IIS</span></span>](xref:host-and-deploy/iis/index)
+* [<span data-ttu-id="3f6dd-168">ASP.NET Core 模組簡介</span><span class="sxs-lookup"><span data-stu-id="3f6dd-168">Introduction to ASP.NET Core Module</span></span>](xref:fundamentals/servers/aspnet-core-module)
+* [<span data-ttu-id="3f6dd-169">ASP.NET Core 模組組態參考</span><span class="sxs-lookup"><span data-stu-id="3f6dd-169">ASP.NET Core Module configuration reference</span></span>](xref:host-and-deploy/aspnet-core-module)
+* [<span data-ttu-id="3f6dd-170">強制使用 HTTPS</span><span class="sxs-lookup"><span data-stu-id="3f6dd-170">Enforce HTTPS</span></span>](xref:security/enforcing-ssl)

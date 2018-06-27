@@ -12,21 +12,21 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/releases/whats-new-in-aspnet-web-api-22
 msc.type: authoredcontent
-ms.openlocfilehash: 400329dd852ca3c527387ee45e3e902b725e771b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89b065fccd0e4864f4a24c37b4caa29a1e127840
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26508397"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961295"
 ---
 <a name="whats-new-in-aspnet-web-api-22"></a>ASP.NET Web API 2.2 中最新消息
 ====================
-由[Microsoft](https://github.com/microsoft)
+by [Microsoft](https://github.com/microsoft)
 
 本主題說明 ASP.NET Web API 2.2 的新功能。
 
 - [下載](#download)
-- [文件 (英文)](#documentation)
+- [文件](#documentation)
 - [ASP.NET Web API 2.2 的新功能](#newf)
 
     - [OData v4](#OData)
@@ -131,7 +131,7 @@ ms.locfileid: "26508397"
 
 當服務收到這類要求主機將會取消逸出這些逸出序列，然後將它們傳遞至 Web API 執行階段。 這樣可防止攻擊，如下所示：  
   
- http://www.contoso.com/..%2F..%2F/Windows/System32/cmd.exe?/c+dir+c:
+`http://www.contoso.com/..%2F..%2F/Windows/System32/cmd.exe?/c+dir+c:`
 
 這會導致 Web API OData 堆疊傳回 404 錯誤 （找不到）。 若要避免這個錯誤，您的用戶端應該使用雙重逸出序列的斜線 （%252f) 和反斜線 （%255 C)。 這不會發生的查詢字串，例如 /Employees？ $filter = Name eq '名稱 %2f'
 

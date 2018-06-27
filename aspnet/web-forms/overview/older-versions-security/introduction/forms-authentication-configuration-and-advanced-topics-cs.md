@@ -12,12 +12,12 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d6578737478fb86f64be261925becc3adec33247
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 58d87bd6211ae1b1eea227d34c001239efcf5f1d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30891776"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961395"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a>表單驗證設定和進階的主題 (C#)
 ====================
@@ -47,7 +47,7 @@ ms.locfileid: "30891776"
 |----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         cookie         |                                                                                                                這個屬性會指定在哪些情況下驗證票證會儲存在與 URL 中內嵌的 cookie。 允許值為： UseCookies;UseUri;自動偵測。和 UseDeviceProfile （預設值）。 步驟 2 會檢查此設定在更多詳細資料。                                                                                                                |
 |         defaultUrl         |                                                                                                                                                         表示使用者在登入後從登入頁面時於 querystring 中指定的 RedirectUrl 值將被導向至的 URL。 預設值是 default.aspx。                                                                                                                                                         |
-|           網域           | 當使用 cookie 為基礎的驗證票證時，此設定指定 cookie 的網域值。 預設值為空字串，這會導致瀏覽器使用從中發行 （例如 www.yourdomain.com) 的網域。 在此情況下，cookie 將<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。如果您想要傳遞至所有子網域，您需要自訂網域屬性將它設定為 yourdomain.com 的 cookie。 |
+|           網域           | 當使用 cookie 為基礎的驗證票證時，此設定指定 cookie 的網域值。 預設值為空字串，這會導致瀏覽器使用從中發行 （例如 www.yourdomain.com) 的網域。 在此情況下，cookie 將<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。 如果您想要傳遞至所有子網域，您需要自訂網域屬性將它設定為 yourdomain.com 的 cookie。 |
 |  enableCrossAppRedirects   |                                                                                                                                                                   布林值，指出是否已驗證的使用者要記住，在同一部伺服器上的其他 web 應用程式重新導向至 Url 時。 預設為 false。                                                                                                                                                                   |
 |          loginUrl          |                                                                                                                                                                                                                      登入頁面 URL。 預設值為 login.aspx。                                                                                                                                                                                                                      |
 |            name            |                                                                                                                                                                                                   當使用 cookie 為基礎的驗證票證之 cookie 的名稱。 預設值為。ASPXAUTH。                                                                                                                                                                                                   |
@@ -168,7 +168,7 @@ Cookie 驗證票證，工作順序，系統必須編碼在頁面上的所有 Url
 
 `http://localhost:2448/ASPNET\_Security\_Tutorial\_03\_CS/(F(jaIOIDTJxIr12xYS-VVgkqKCVAuIoW30Bu0diWi6flQC-FyMaLXJfow\_Vd9GZkB2Cv-rfezq0gKadKX0YPZCkA2))/SomePage.aspx`
 
-連結 URL SomePage.aspx 已自動轉換成 URL 包含驗證 ticket-我們不需要撰寫的程式碼上 ！ 表單驗證票證會自動內嵌在不會啟動 http:// 的任何超連結的 URL 或 /。 如果在呼叫 Response.Redirect、 超連結控制項，或 HTML 錨定項目中顯示超連結，並不重要 (亦即， &lt;href ="..."&gt;...&lt;/a&gt;)。 只要 URL 不是像http://www.someserver.com/SomePage.aspx或 /SomePage.aspx，驗證票證會內嵌為我們的表單。
+連結 URL SomePage.aspx 已自動轉換成 URL 包含驗證 ticket-我們不需要撰寫的程式碼上 ！ 表單驗證票證自動將不會啟動任何超連結 URL 中內嵌`http://`或`/`。 如果在呼叫 Response.Redirect、 超連結控制項，或 HTML 錨定項目中顯示超連結，並不重要 (亦即， `<a href="...">...</a>`)。 只要 URL 不是像`http://www.someserver.com/SomePage.aspx`或`/SomePage.aspx`，我們會內嵌表單驗證票證。
 
 > [!NOTE]
 > Cookie 的表單驗證票證遵守相同的逾時原則，以 cookie 為基礎的驗證票證。 不過，cookie 驗證票證會更容易重新執行攻擊，因為直接在 URL 中內嵌的驗證票證。 假設使用者瀏覽網站、 登入，然後將 URL 貼在電子郵件給同事。 如果達到到期之前同事按一下該連結，就會記錄的使用者身分傳送的電子郵件 ！
@@ -277,7 +277,7 @@ FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value)
 
 然後建立*新*FormsAuthenticationTicket 執行個體根據現有的 FormsAuthenticationTicket 值。 不過，此新票證包含使用者特定資訊 (userDataString)。
 
-FormsAuthenticationTicket newTicket = new FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate, ticket.Expiration, ticket.IsPersistent, userDataString);
+FormsAuthenticationTicket newTicket = 新 FormsAuthenticationTicket （票證。版本票證。名稱為票證。IssueDate、 票證。票證的到期日。IsPersistent，userDataString);
 
 我們再加密 （及驗證） 新 FormsAuthenticationTicket 執行個體，藉由呼叫[加密方法](https://msdn.microsoft.com/library/system.web.security.formsauthentication.encrypt.aspx)，並放回到 authCookie 此加密 （及驗證） 的資料。
 

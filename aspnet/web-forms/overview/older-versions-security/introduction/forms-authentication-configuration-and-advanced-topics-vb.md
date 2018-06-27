@@ -168,7 +168,7 @@ Cookie 驗證票證，工作順序，系統必須編碼在頁面上的所有 Url
 
 `http://localhost:2448/ASPNET\_Security\_Tutorial\_03\_CS/(F(jaIOIDTJxIr12xYS-VVgkqKCVAuIoW30Bu0diWi6flQC-FyMaLXJfow\_Vd9GZkB2Cv-rfezq0gKadKX0YPZCkA2))/SomePage.aspx`
 
-連結 URL SomePage.aspx 已自動轉換成 URL 包含驗證 ticket-我們不需要撰寫的程式碼上 ！ 表單驗證票證會自動內嵌在不會啟動 http:// 的任何超連結的 URL 或 /。 如果在呼叫 Response.Redirect、 超連結控制項，或 HTML 錨定項目中顯示超連結，並不重要 (亦即， &lt;href ="..."&gt;...&lt;/a&gt;)。 只要 URL 不是像http://www.someserver.com/SomePage.aspx或 /SomePage.aspx，驗證票證會內嵌為我們的表單。
+連結 URL SomePage.aspx 已自動轉換成 URL 包含驗證 ticket-我們不需要撰寫的程式碼上 ！ 表單驗證票證會自動內嵌在不會啟動 http:// 的任何超連結的 URL 或 /。 如果在呼叫 Response.Redirect、 超連結控制項，或 HTML 錨定項目中顯示超連結，並不重要 (亦即， &lt;href ="..."&gt;...&lt;/a&gt;)。 只要 URL 不是像 http://www.someserver.com/SomePage.aspx 或 /SomePage.aspx，驗證票證會內嵌為我們的表單。
 
 > [!NOTE]
 > Cookie 的表單驗證票證遵守相同的逾時原則，以 cookie 為基礎的驗證票證。 不過，cookie 驗證票證會更容易重新執行攻擊，因為直接在 URL 中內嵌的驗證票證。 假設使用者瀏覽網站、 登入，然後將 URL 貼在電子郵件給同事。 如果達到到期之前同事按一下該連結，就會記錄的使用者身分傳送的電子郵件 ！

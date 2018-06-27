@@ -23,7 +23,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 ::: moniker-end
 
-驗證屬性會指定您想要對套用目標之模型屬性，強制執行之行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (不允許使用空白字元、數字及特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
+驗證屬性會指定您想要對套用目標之模型屬性，強制執行之行為。 `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須是值；但無法防止使用者輸入空格以滿足此驗證。 `RegularExpression` 屬性則用來限制可輸入的字元。 上述程式碼中的 `Genre` 和 `Rating` 必須只使用字母 (第一個字母大寫，不允許使用空格、數字和特殊字元)。 `Range` 屬性會將值限制在指定的範圍內。 `StringLength` 屬性可讓您設定字串屬性的最大長度，並選擇性設定其最小長度。 實值型別 (如`decimal`、`int`、`float`、`DateTime`) 原本就是必要項目，而且不需要 `[Required]` 屬性。
 
 擁有 ASP.NET 自動強制執行的驗證規則有助於讓應用程式更穩固。 它也確保您不會忘記要驗證某些項目，不小心讓不正確的資料進入資料庫。
 

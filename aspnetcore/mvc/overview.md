@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC 概觀
 author: ardalis
 description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器設計模式之 Web 應用程式和 API 的豐富架構。
-manager: wpickett
 ms.author: riande
 ms.date: 01/08/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/overview
-ms.openlocfilehash: 0ebf53e0d14ffb5d9ab969e3d6e038a292f913c1
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: aca34f91e8c7efaa34263ddf830b1662a2518969
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34566902"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272588"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 

@@ -2,18 +2,15 @@
 title: ASP.NET Core MVC 中的模型驗證
 author: rachelappel
 description: 了解 ASP.NET Core MVC 中的模型驗證。
-manager: wpickett
 ms.author: riande
 ms.date: 12/18/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/models/validation
-ms.openlocfilehash: 1ab19fad90eab9f2da58b4d62615a85d71894218
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 19202ffce2ce5394824b401780ce750ef7852bf7
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278888"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -99,9 +96,13 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 在下列範例中，商務規則表示使用者可能未將 1960 年以後發行之電影的內容類型設定為 *Classic*。 `[ClassicMovie]` 屬性會先檢查內容類型，如果是 Classic，會再檢查發行日期是否晚於 1960 年。 如果是在 1960 年以後發行，則驗證失敗。 用來驗證資料的屬性接受代表年份的整數參數。 您可以擷取屬性建構函式中的參數值，如下所示：
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-29)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-28)]
 
-上述 `movie` 變數代表 `Movie` 物件，其中包含送出待驗證之表單中的資料。 在本例中，驗證程式碼會根據規則，檢查 `ClassicMovieAttribute` 類別之 `IsValid` 方法中的日期和內容類型。 成功驗證時，`IsValid` 會傳回 `ValidationResult.Success` 代碼；驗證失敗時，則會傳回 `ValidationResult` 並顯示錯誤訊息。 當使用者修改 `Genre` 欄位並送出表單時，`ClassicMovieAttribute` 的 `IsValid` 方法會確認電影是否為 Classic。 如同任何內建屬性，將 `ClassicMovieAttribute` 套用至 `ReleaseDate` 等屬性可確保進行驗證，如上述程式碼範例所示。 由於此範例僅適用於 `Movie` 類型，使用 `IValidatableObject` 會是更好的選擇，如下一個段落所示。
+上述 `movie` 變數代表 `Movie` 物件，其中包含送出待驗證之表單中的資料。 在本例中，驗證程式碼會根據規則，檢查 `ClassicMovieAttribute` 類別之 `IsValid` 方法中的日期和內容類型。 驗證成功時，`IsValid` 會傳回 `ValidationResult.Success` 程式碼。 驗證失敗時，會傳回 `ValidationResult` 和錯誤訊息：
+
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=55-58)]
+
+當使用者修改 `Genre` 欄位並送出表單時，`ClassicMovieAttribute` 的 `IsValid` 方法會確認電影是否為 Classic。 如同任何內建屬性，將 `ClassicMovieAttribute` 套用至 `ReleaseDate` 等屬性可確保進行驗證，如上述程式碼範例所示。 由於此範例僅適用於 `Movie` 類型，使用 `IValidatableObject` 會是更好的選擇，如下一個段落所示。
 
 或者，您也可以透過在 `IValidatableObject` 介面上實作 `Validate` 方法，將此相同的程式碼放在模型中。 自訂驗證屬性適用於驗證個別屬性，而實作 `IValidatableObject` 則可用來實作類別層級驗證，如下所示。
 

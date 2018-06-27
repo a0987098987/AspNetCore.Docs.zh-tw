@@ -10,11 +10,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: bf3cfd8ce7616807bae4bcacf09b63e54c8fae55
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 39c4d8997a46472f082b234bdc8c0f12298266d4
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34582826"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -34,7 +35,16 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 
 更新 `Movie` 類別，以充分利用 `Required`、`StringLength`、`RegularExpression` 和 `Range` 驗證屬性。
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs)]
+
+::: moniker-end
 
 驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
 
@@ -106,6 +116,10 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
+::: moniker range=">= aspnetcore-2.1"
+`[Column(TypeName = "decimal(18, 2)")]` 資料註解為必要項，因此 Entity Framework Core 可將 `Price` 正確對應到資料庫中的貨幣。 如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。
+::: moniker-end
+
 `DisplayFormat` 屬性用來明確指定日期格式：
 
 ```csharp
@@ -131,9 +145,17 @@ public DateTime ReleaseDate { get; set; }
 
 下列程式碼會顯示一行上的結合屬性：
 
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-[Razor 頁面和 EF Core 使用者入門](xref:data/ef-rp/intro) 中說明使用 Razor 頁面執行的進階 EF Core 作業。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
+
+[Razor Pages 和 EF Core 使用者入門](xref:data/ef-rp/intro)說明使用 Razor Pages 執行進階 EF Core 作業。
 
 ### <a name="publish-to-azure"></a>發佈至 Azure
 

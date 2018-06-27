@@ -8,7 +8,16 @@
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Create、Delete、Details 和 Edit 頁面。
 
-檢查 *Pages/Movies/Index.cshtml.cs* 頁面模型：[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
+檢查 *Pages/Movies/Index.cshtml.cs* 頁面模型：
+
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index21.cshtml.cs)]
+
+::: moniker-end
 
 Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別稱為 `<PageName>Model`。 建構函式會使用[相依性插入](xref:fundamentals/dependency-injection)將 `MovieContext` 新增至頁面中。 所有 Scaffold 頁面都遵循這個模式。 如需使用 Entity Framework 進行非同步程式設計的詳細資訊，請參閱[非同步程式碼](xref:data/ef-rp/intro#asynchronous-code)。
 
@@ -17,7 +26,7 @@ Razor 頁面衍生自 `PageModel`。 依照慣例，`PageModel` 衍生的類別�
 當 `OnGet` 傳回 `void` 或 `OnGetAsync` 傳回 `Task` 時，並未使用任何傳回方法。 當傳回型別是 `IActionResult` 或 `Task<IActionResult>` 時，必須提供傳回陳述式。 例如，*Pages/Movies/Create.cshtml.cs* `OnPostAsync` 方法：
 
 <!-- TODO - replace with snippet
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
  -->
 
 ```csharp
@@ -34,6 +43,7 @@ public async Task<IActionResult> OnPostAsync()
     return RedirectToPage("./Index");
 }
 ```
+
 請檢查 *Pages/Movies/Index.cshtml* Razor 頁面：
 
 [!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
@@ -61,8 +71,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 [HTML Helpers 2](xref:aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs)
 -->
 
-<a name="vd">
-</a>
+<a name="vd"></a>
 ### ViewData 和 Layout
 
 請考慮下列程式碼：
@@ -71,7 +80,19 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 上述強調顯示的程式碼是 Razor 轉換成 C# 的範例。 `{` 和 `}` 字元中含括 C# 程式碼的區塊。
 
-`PageModel` 基底類別有 `ViewData` 字典屬性，可用來新增至您想要傳遞到檢視的資料。 您可以使用索引鍵/值模式將物件新增至 `ViewData` 字典。 在上述範例中，"Title" 屬性會新增至 `ViewData` 字典。 "Title" 屬性是用於 *Pages/_Layout.cshtml* 檔案。 下列標記會顯示 *Pages/_Layout.cshtml* 檔案的前幾行。
+`PageModel` 基底類別有 `ViewData` 字典屬性，可用來新增至您想要傳遞到檢視的資料。 您可以使用索引鍵/值模式將物件新增至 `ViewData` 字典。 在上述範例中，"Title" 屬性會新增至 `ViewData` 字典。 
+
+::: moniker range="= aspnetcore-2.0"
+
+"Title" 屬性是用於 *Pages/_Layout.cshtml* 檔案。 下列標記會顯示 *Pages/_Layout.cshtml* 檔案的前幾行。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+"Title" 屬性是用於 *Pages/Shared/_Layout.cshtml* 檔案。 下列標記會顯示 *_Layout.cshtml* 檔案的前幾行。
+
+::: moniker-end
 
 [!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout1.cshtml?highlight=6-999)]
 
@@ -79,11 +100,14 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 執行應用程式並測試專案中的連結 (**Home**、**About**、**Contact**、**Create**、**Edit** 和 **Delete**)。 每一頁都會設定標題，您可以在瀏覽器索引標籤中看到該標題。當您將某個頁面加為書籤時，會使用標題來表示書籤。 *Pages/Index.cshtml* 和 *Pages/Movies/Index.cshtml* 目前有相同的標題，但您可以修改它們使其擁有不同的值。
 
+> [!NOTE]
+> 您可能無法在 `Price` 欄位中輸入小數逗號。 若要對使用逗號 (",") 作為小數點的非英文地區設定和非英文日期欄位支援 [jQuery 驗證](https://jqueryvalidation.org/)，您必須採取將應用程式全球化的步驟。 這個 [GitHub 問題 4076](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) 有加入小數逗號的指示。
+
 `Layout` 屬性是在 *Pages/_ViewStart.cshtml* 檔案中設定：
 
 [!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_ViewStart.cshtml)]
 
-上述的標記會針對 *Pages* 資料夾下的所有 Razor 檔案．將配置檔設定為 *Pages/_Layout.cshtml*。 如需詳細資訊，請參閱 [Layout](xref:mvc/razor-pages/index#layout)。
+上述的標記會針對 *Pages* 資料夾下的所有 Razor 檔案．將配置檔設定為 *Pages/_Layout.cshtml*。 如需詳細資訊，請參閱 [Layout](xref:razor-pages/index#layout)。
 
 ### <a name="update-the-layout"></a>更新配置
 
@@ -110,15 +134,22 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 檢查 *Pages/Movies/Create.cshtml.cs* 頁面模型：
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
+::: moniker-end
 
-`OnGet` 方法會初始化頁面所需的任何狀態。 Create 頁面沒有任何要初始化的狀態。 `Page` 方法會建立 `PageResult` 物件，用以呈現 *Create.cshtml* 頁面。
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create21.cshtml.cs?name=snippetALL)]
+::: moniker-end
+
+
+`OnGet` 方法會初始化頁面所需的任何狀態。 建立頁面沒有任何要初始化的狀態，所以傳回 `Page`。 稍後在本教學課程中您會看到 `OnGet` 方法初始化狀態。 `Page` 方法會建立 `PageResult` 物件，用以呈現 *Create.cshtml* 頁面。
 
 `Movie` 屬性 (property) 使用 `[BindProperty]` 屬性 (attribute) 來加入[模型繫結](xref:mvc/models/model-binding)。 當 Create 表單發佈表單值時，ASP.NET Core 執行階段會將發佈的值繫結至 `Movie` 模型。
 
 當頁面發佈表單資料時，即會執行 `OnPostAsync` 方法：
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetPost)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetPost)]
 
 如果沒有任何模型錯誤，將會重新顯示表單，以及任何發佈的表單資料。 大部分的模型錯誤可以在發佈表單之前，於用戶端上攔截到。 模型錯誤的範例為針對日期欄位發佈無法轉換為日期的值。 我們將在稍後的教學課程中詳細討論用戶端驗證和模型驗證。
 
@@ -128,7 +159,7 @@ Razor 可以從 HTML 轉換成 C# 或 Razor 特定標記。 當 `@` 符號後面
 
 檢查 *Pages/Movies/Create.cshtml* Razor 頁面檔案：
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 
 <!--
 Visual Studio displays the `<form method="post">` tag in a distinctive font used for Tag Helpers. The `<form method="post">` element is a [Form Tag Helper](xref:mvc/views/working-with-forms#the-form-tag-helper). The Form Tag Helper automatically includes an [antiforgery token](xref:security/anti-request-forgery).

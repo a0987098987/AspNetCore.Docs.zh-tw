@@ -9,27 +9,40 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 4204d4e2d474db51692d42751a9f82373e9f0c0d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 802cb458cb05579b97256022b56d6f97a03d2f1a
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687788"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>新增模型到 ASP.NET Core MVC 應用程式
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model1.md)]
-
-注意：ASP.NET Core 2.0 範本包含 *Models* 資料夾。
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model1.md)]
 
 以滑鼠右鍵按一下 *Models* 資料夾 > [新增] > [類別]。 將類別命名為 **Movie** 並新增下列屬性：
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 `ID` 欄位是資料庫對於主索引鍵的必要欄位。 
 
 請建置專案，以確認您沒有任何錯誤。 您目前即會在 **MVC** 應用程式中具有一個**模型**。
 
 ## <a name="scaffolding-a-controller"></a>Scaffold 控制器
+
+::: moniker range=">= aspnetcore-2.1"
+
+在 [方案總管] 中以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [新增 Scaffold 項目]。
+
+![上方步驟的檢視](adding-model/_static/add_controller21.png)
+
+在 [新增 Scaffold] 對話方塊中，點選 [使用 Entity Framework 執行檢視的 MVC 控制器] > [新增]。
+
+![[新增 Scaffold] 對話方塊](adding-model/_static/add_scaffold21.png)
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
 在**方案總管**中，以滑鼠右鍵按一下 *Controllers* 資料夾 > [新增] > [控制器]。
 
@@ -44,15 +57,17 @@ ms.lasthandoff: 04/06/2018
 
 ![[新增 Scaffold] 對話方塊](adding-model/_static/add_scaffold2.png)
 
+::: moniker-end
+
 完成 [新增控制器] 對話方塊：
 
 * **模型類別：***Movie (MvcMovie.Models)*
-* **資料內容類別：**選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
+* **資料內容類別：** 選取 **+** 圖示並新增預設的 **MvcMovie.Models.MvcMovieContext**
 
 ![新增資料內容](adding-model/_static/dc.png)
 
-* **檢視：**保持核取預設的每一個選項
-* **控制器名稱：**保留預設值 *MoviesController*
+* **檢視：** 保持核取預設的每一個選項
+* **控制器名稱：** 保留預設值 *MoviesController*
 * 點選 [新增]
 
 ![[新增控制器] 對話方塊](adding-model/_static/add_controller2.png)
@@ -67,7 +82,7 @@ Visual Studio 會建立：
 
 如果執行應用程式，然後按一下 **Mvc Movie** 連結，則會收到如下錯誤：
 
-```
+``` error
 An unhandled exception occurred while processing the request.
 
 SqlException: Cannot open database "MvcMovieContext-<GUID removed>" requested by the login. The login failed.
@@ -93,13 +108,29 @@ System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity id
 
 在 PMC 中，輸入下列命令：
 
+::: moniker range=">= aspnetcore-2.1"
+``` PMC
+Add-Migration Initial
+Update-Database
+```
+
+請忽略下列錯誤訊息，我們將在接下來的教學課程中修正該問題：
+
+*Microsoft.EntityFrameworkCore.Model.Validation[30000]*  
+      *實體類型「影片」上的十進位資料行 'Price' 未指定任何類型。如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。使用 'ForHasColumnType()' 明確指定可容納所有值的 SQL 伺服器資料行類型。*
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+
 ``` PMC
 Install-Package Microsoft.EntityFrameworkCore.Tools
 Add-Migration Initial
 Update-Database
 ```
 
-**注意：**如果使用 `Install-Package` 命令但收到錯誤，請開啟 NuGet 套件管理員，並搜尋 `Microsoft.EntityFrameworkCore.Tools` 套件。 您可利用此安裝該套件，或檢查其是否已安裝。 此外，若您有 PMC 的問題，可以參閱 [CLI 方法](#cli)。
+**注意：** 如果使用 `Install-Package` 命令但收到錯誤，請開啟 NuGet 套件管理員，並搜尋 `Microsoft.EntityFrameworkCore.Tools` 套件。 您可利用此安裝該套件，或檢查其是否已安裝。 此外，若您有 PMC 的問題，可以參閱 [CLI 方法](#cli)。
+
+::: moniker-end
 
 `Add-Migration` 命令會建立程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (位在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。 `Initial` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選擇描述移轉的名稱。 如需詳細資訊，請參閱[移轉簡介](xref:data/ef-mvc/migrations#introduction-to-migrations)。
 
@@ -113,23 +144,28 @@ Update-Database
   ```console
   dotnet ef migrations add Initial
   dotnet ef database update
-  ```     
-  
+  ```
+
   如果您執行應用程式並收到錯誤：
-  
+
   ```text
   SqlException: Cannot open database "Movie" requested by the login.
   The login failed.
   Login failed for user 'user name'.
   ```
 
-您可能尚未執行 ` dotnet ef database update`。
-  
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
+您可能尚未執行 `dotnet ef database update`。
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model3.md)]
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model4.md)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker-end
+
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model4.md)]
 
 ![列出識別碼、價格、發行日期及標題等可用屬性的模型項目上 IntelliSense 的操作功能表](adding-model/_static/ints.png)
 

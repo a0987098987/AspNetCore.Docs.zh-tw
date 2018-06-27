@@ -2,20 +2,16 @@
 title: 在 Windows 服務上裝載 ASP.NET Core
 author: guardrex
 description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式。
-manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 5eba685bbe55d43bb063a01798bc691a1ba0d6fc
-ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
+ms.openlocfilehash: 0149039f69539b7c69d7ba45efcf09d80ffcba79
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35613082"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275094"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 

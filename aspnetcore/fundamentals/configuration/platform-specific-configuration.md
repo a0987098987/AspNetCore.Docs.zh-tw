@@ -2,21 +2,17 @@
 title: 在 ASP.NET Core 中使用 IHostingStartup 從外部組件增強應用程式
 author: guardrex
 description: 了解如何使用 IHostingStartup 實作，從外部組件增強 ASP.NET Core 應用程式。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 47d3a64ce0cc543162a066eeeaa0aaaf7dc96a5f
-ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
+ms.openlocfilehash: bd9605dd8efee2c3ba8bc82a81554cace40630be
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35415004"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278079"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>在 ASP.NET Core 中使用 IHostingStartup 從外部組件增強應用程式
 

@@ -2,20 +2,16 @@
 title: 在 Linux 上使用 Nginx 裝載 ASP.NET Core
 author: rick-anderson
 description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，以將 HTTP 流量轉送至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: edef672ca809c560a3f9faa891586e5e255284b5
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 374b13e0851cd171a7d8500a4965851a3a0eb49c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34566811"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277370"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -54,7 +50,7 @@ dotnet publish --configuration Release
 
 如果您不想在伺服器上維護 .NET Core 執行階段，應用程式也可以發佈為[獨立式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
 
-使用整合至組織工作流程的工具 (SCP、FTP 等等) 將 ASP.NET Core 應用程式複製到伺服器。 Web 應用程式通常可在 *var* 目錄下找到 (例如，*var/aspnetcore/hellomvc*)。
+使用整合至組織工作流程的工具 (SCP、SFTP 等等) 將 ASP.NET Core 應用程式複製到伺服器。 Web 應用程式通常可在 *var* 目錄下找到 (例如，*var/aspnetcore/hellomvc*)。
 
 > [!NOTE]
 > 在生產環境部署案例中，持續整合工作流程會執行發佈應用程式並將資產複製到伺服器的工作。

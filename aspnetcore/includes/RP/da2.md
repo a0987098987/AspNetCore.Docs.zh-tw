@@ -1,12 +1,23 @@
+::: moniker range=">= aspnetcore-2.1"
+以滑鼠右鍵按一下 `[Column]` 屬性上的紅色曲線 > [快速動作及重構]，然後選取 `using System.ComponentModel.DataAnnotations.Schema;`
+
+`[Column(TypeName = "decimal(18, 2)")]` 資料註解為必要項，因此 Entity Framework Core 可將 `Price` 正確對應到資料庫中的貨幣。 如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。
+
+已完成的模型：
+
+[!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateFixed.cs?name=snippet_1)]
+
+::: moniker-end
+
 接下來的教學課程中將涵蓋 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。 [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。 [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。
 
 瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。
 
-![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](../../tutorials/razor-pages/da1/edit7.png)
+![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 之 URL 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
 在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、**Details**  和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。
 
-[!code-cshtml[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
+[!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
 [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:mvc/razor-pages/index#url-generation-for-pages)。
 
@@ -38,11 +49,13 @@
 @page "{id:int?}"
 ```
 
+::: moniker range="= aspnetcore-2.0"
+
 ### <a name="update-concurrency-exception-handling"></a>更新並行例外狀況處理
 
 在 *Pages/Movies/Edit.cshtml.cs* 檔案中更新 `OnPostAsync` 方法。 下列醒目提示的程式碼示範這些變更：
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet1&highlight=16-23)]
 
 當第一個並行用戶端刪除電影，而第二個並行用戶端發佈對電影的變更時，先前的程式碼只會偵測並行存取例外狀況。
 
@@ -55,9 +68,21 @@
 
 生產環境程式碼通常會在兩個或多個用戶端同時更新一筆記錄時，偵測並行存取衝突。 如需詳細資訊，請參閱[處理並行存取衝突](xref:data/ef-rp/concurrency)。
 
+::: moniker-end
+
 ### <a name="posting-and-binding-review"></a>發佈和繫結檢閱內容
 
-檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
+檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：
+
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
+
+::: moniker-end
 
 對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：
 

@@ -2,20 +2,16 @@
 title: 設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作
 author: guardrex
 description: 了解裝載在 Proxy 伺服器和負載平衡器 (通常會遮蔽重要要求資訊) 後方之應用程式的設定。
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: e18f049fd5d8caef5dfc488a020ec239d1a6d83d
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 1797962d6eada9c48b31cd94e2c7481380301a0d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34567071"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276772"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作
 

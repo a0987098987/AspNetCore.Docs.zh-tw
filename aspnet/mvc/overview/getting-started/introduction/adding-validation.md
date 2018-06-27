@@ -12,12 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 946d4d5e5a506fb437232f9f4440c98e33a1a9b3
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 96dc6724b48daf77034c0741be970be11b81ab37
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33966555"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961512"
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
@@ -57,7 +57,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援是在動作
 
 [!code-csharp[Main](adding-validation/samples/sample3.cs)]
 
-`Genre`欄位是不再是可為 null （也就是說，您必須輸入的值）。 `Rating`欄位的最大長度為 5 和`Title`最大長度為 60。 3 上的最小長度`Title`上的範圍和`Price`未建立結構描述變更。
+`Genre`欄位不再是可為 null （也就是說，您必須輸入的值）。 `Rating`欄位的最大長度為 5 和`Title`最大長度為 60。 3 上的最小長度`Title`上的範圍和`Price`未建立結構描述變更。
 
 檢查有影片的結構描述：
 

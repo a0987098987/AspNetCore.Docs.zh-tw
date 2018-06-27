@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 800ff2039e7cc1fa37315ed55a77711dc9f47504
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11f3e0b0cc1356db4c5fb9a2ce948099ed9f85b5
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252382"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -25,11 +26,11 @@ ms.lasthandoff: 05/07/2018
 * [介面隔離準則 (ISP)](http://deviq.com/interface-segregation-principle/)：相依於組態設定的功能 (類別) 只會相依於它們使用的組態設定。
 * [關注點分離](http://deviq.com/separation-of-concerns/) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([如何下載](xref:tutorials/index#how-to-download-a-sample))本文比較能輕鬆地遵循範例應用程式。
 
 ## <a name="basic-options-configuration"></a>基本選項組態
 
-基本選項範例組態是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;1 來示範。
+基本選項範例組態是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;1 來示範。
 
 選項類別必須為非抽象，且具有公用的無參數建構函式。 下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。 設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。 `Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/07/2018
 
 範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：
 
-[!code-json[](options/sample/appsettings.json)]
+[!code-json[](options/sample/appsettings.json?highlight=2-3)]
 
 當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：
 
@@ -59,7 +60,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 
-使用委派設定簡單的選項是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;2 來示範。
+使用委派設定簡單的選項是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;2 來示範。
 
 使用委派來設定選項值。 範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：
 
@@ -89,7 +90,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>子選項組態
 
-子選項組態是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;3 來示範。
+子選項組態是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;3 來示範。
 
 應用程式應該建立屬於應用程式中特定功能群組 (類別) 的選項類別。 需要組態值的應用程式組件應該只能存取它們使用的設定值。
 
@@ -99,7 +100,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 [!code-csharp[](options/sample/Startup.cs?name=snippet_Example3)]
 
-`GetSection` 擴充方法需要 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) NuGet 套件。 如果應用程式使用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) 中繼套件，則會自動包含套件。
+`GetSection` 擴充方法需要 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) NuGet 套件。 如果應用程式使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本)，則會自動包含套件。
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -125,7 +126,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>檢視模型提供的選項或使用直接檢視插入提供的選項
 
-檢視模型提供的選項或使用直接檢視插入提供的選項是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;4 來示範。
+檢視模型提供的選項或使用直接檢視插入提供的選項是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;4 來示範。
 
 可以在檢視模型中提供選項，或藉由將 `IOptions<TOptions>` 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：
 
@@ -145,7 +146,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-使用 `IOptionsSnapshot` 重新載入組態資料是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;5 來示範。
+使用 `IOptionsSnapshot` 重新載入組態資料是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;5 來示範。
 
 *需要 ASP.NET Core 1.1 或更新版本。*
 
@@ -173,7 +174,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
-[IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) 的具名選項支援是以[範例應用程式](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;6 來示範。
+[IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) 的具名選項支援是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;6 來示範。
 
 *需要 ASP.NET Core 2.0 或更新版本。*
 

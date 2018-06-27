@@ -2,20 +2,16 @@
 title: 在 ASP.NET Core Web API 中格式化回應資料
 author: ardalis
 description: 了解如何在 ASP.NET Core Web API 中格式化回應資料。
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: web-api/advanced/formatting
-ms.openlocfilehash: f25705bcd3a704de12ea24c3e196de1ba1afd492
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 3891e8d000c091f34e39a5e40d9bcd12e854a478
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35217387"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276525"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 

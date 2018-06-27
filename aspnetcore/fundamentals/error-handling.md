@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/error-handling
-ms.openlocfilehash: 3ff3a17d14d9ed7c438399191ffe3cf93d555d49
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 86041cf58dd88bea153eefed63a1985b6ddcacd8
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566707"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -49,17 +50,21 @@ ms.lasthandoff: 05/17/2018
 
 ## <a name="configuring-a-custom-exception-handling-page"></a>設定自訂的例外狀況處理頁面
 
-當應用程式不在 `Development` 環境中執行時，建議您設定使用例外處理常式頁面。
+當應用程式不在 `Development` 環境中執行時，請設定使用例外處理常式頁面。
 
 [!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
-在 MVC 應用程式中，請不要使用 HTTP 方法屬性 (例如 `HttpGet`) 明確裝飾錯誤處理常式的動作方法。 使用明確的動詞時，可能會導致方法收不到某些要求。
+在 Razor Pages 應用程式中，[dotnet new](/dotnet/core/tools/dotnet-new) Razor Pages 範本會在 [頁面] 資料夾中提供 [錯誤] 頁面和 `ErrorModel` 頁面模型類別。
+
+在 MVC 應用程式中，請勿使用 HTTP 方法屬性 (如 `HttpGet`) 裝飾錯誤處理常式動作方法。 明確的動詞命令可防止某些要求取得方法。 允許匿名存取方法，以便未經驗證的使用者能夠收到錯誤檢視。
+
+例如，[dotnet new](/dotnet/core/tools/dotnet-new) MVC 範本提供的下列錯誤處理常式方法會出現在主控制器中：
 
 ```csharp
-[Route("/Error")]
-public IActionResult Index()
+[AllowAnonymous]
+public IActionResult Error()
 {
-    // Handle error here
+    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
 ```
 
@@ -106,6 +111,53 @@ if (statusCodePagesFeature != null)
 }
 ```
 
+如果在應用程式中使用指向端點的 `UseStatusCodePages*` 多載，請建立該端點的 MVC 檢視或 Razor 頁面。 例如，Razor Pages 應用程式的 [dotnet new](/dotnet/core/tools/dotnet-new) 範本會產生下列頁面和頁面模型類別：
+
+*Error.cshtml*：
+
+```cshtml
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Development Mode</h3>
+<p>
+    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+</p>
+<p>
+    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
+</p>
+```
+
+*Error.cshtml.cs*：
+
+```csharp
+public class ErrorModel : PageModel
+{
+    public string RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public void OnGet()
+    {
+        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+    }
+}
+```
+
 ## <a name="exception-handling-code"></a>例外狀況處理程式碼
 
 例外狀況處理頁面中的程式碼，可擲回例外狀況。 一般來說，較好的做法是讓生產環境的錯誤頁面由純靜態內容組成。
@@ -132,7 +184,7 @@ if (statusCodePagesFeature != null)
 
 在 MVC 應用程式中，您可以全域設定例外狀況篩選條件，或以每個控制器或每個動作基準來設定。 這些篩選條件會處理任何在控制器動作或其他篩選條件執行期間發生但未處理的例外狀況；否則的話，就不會呼叫這些篩選條件。 如需深入了解例外狀況篩選條件，請參閱[篩選條件](xref:mvc/controllers/filters)。
 
->[!TIP]
+> [!TIP]
 > 例外狀況篩選條件適合用來截獲 MVC 動作中發生的例外狀況，但是它們並不像錯誤處理中介軟體那麼有彈性。 一般情況下通常使用中介軟體；只有當您需要根據選擇的 MVC 動作執行「不同的」錯誤處理時，才使用篩選條件。
 
 ### <a name="handling-model-state-errors"></a>處理模型狀態錯誤
@@ -140,6 +192,3 @@ if (statusCodePagesFeature != null)
 在叫用每個控制器動作之前，會先進行[模型驗證](xref:mvc/models/validation)，而動作方法必須負責檢查 `ModelState.IsValid` 並做出適當回應。
 
 某些應用程式會選擇遵循標準慣例來處理模型驗證錯誤；在這種情況下，就很適合在[篩選條件](xref:mvc/controllers/filters)中實作這類原則。 您應該測試您的動作在無效模型狀態中有何行為。 深入了解[測試控制器邏輯](xref:mvc/controllers/testing)。
-
-
-

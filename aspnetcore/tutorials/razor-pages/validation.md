@@ -2,20 +2,16 @@
 title: 將驗證新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
 description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 39c4d8997a46472f082b234bdc8c0f12298266d4
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.openlocfilehash: 569c5b977d832aec3657321cad8d0f9520aae031
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34582826"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277770"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 

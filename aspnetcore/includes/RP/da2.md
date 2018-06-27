@@ -19,7 +19,7 @@
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:mvc/razor-pages/index#url-generation-for-pages)。
+[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上述程式碼中，`AnchorTagHelper` 會從 Razor 頁面 (路由是相對路由)、`asp-page` 和路由識別碼 (`asp-route-id`) 動態產生 HTML `href` 屬性值。 如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。
 
 從您最愛的瀏覽器中使用 [檢視原始檔] 來檢查產生的標記。 產生的 HTML 部分如下所示：
 
@@ -31,7 +31,7 @@
 </td>
 ```
 
-動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如，`http://localhost:5000/Movies/Details?id=2`)。 
+動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如，`http://localhost:5000/Movies/Details?id=2`)。
 
 更新 Edit、Details 和 Delete Razor 頁面，以使用 "{id:int}" 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。 執行應用程式，然後檢視原始檔。 產生的 HTML 將識別碼新增至 URL 的路徑部分：
 

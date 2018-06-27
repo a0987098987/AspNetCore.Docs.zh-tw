@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的篩選條件
 author: ardalis
 description: 深入了解「篩選條件」的運作方式，以及如何在 ASP.NET Core MVC 中使用它們。
-manager: wpickett
 ms.author: riande
 ms.date: 4/10/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/filters
-ms.openlocfilehash: 49e51a867e47ce375a5048cae5979360c4103365
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 24551382847fee0896fe6620d52c30a03aca69d1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555400"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275641"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -23,10 +19,10 @@ ms.locfileid: "34555400"
 ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定階段之前或之後執行程式碼。
 
 > [!IMPORTANT]
-> 本主題**不**適用於 Razor 頁面。 ASP.NET Core 2.1 和更新版本支援 Razor 頁面的 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:mvc/razor-pages/filter)。
+> 本主題**不**適用於 Razor 頁面。 ASP.NET Core 2.1 和更新版本支援 Razor 頁面的 [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) 和 [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0)。 如需詳細資訊，請參閱 [Razor 頁面的篩選條件方法](xref:razor-pages/filter)。
 
  內建篩選條件會處理工作，例如：
- 
+
  * 授權 (避免存取使用者未獲授權的資源)。
  * 確定所有要求都使用 HTTPS。
  * 回應快取 (縮短要求管線，傳回快取的回應)。 
@@ -78,7 +74,7 @@ ASP.NET Core MVC 中的「篩選條件」可讓您在要求處理管線的特定
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-`IFilterFactory` 會實作 `IFilter`。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilter` 執行個體。 當架構準備要叫用篩選條件時，會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，會呼叫 `CreateInstance` 方法來建立將被叫用的 `IFilter`執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
+[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) 實作 [IFilterMetadata](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata)。 因此，`IFilterFactory` 執行個體可用來在篩選條件管線中任何位置作為 `IFilterMetadata` 執行個體。 當架構準備要叫用篩選條件時，會嘗試將它轉換成 `IFilterFactory`。 如果該轉換成功，則會呼叫 [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) 方法來建立將被叫用的 `IFilterMetadata` 執行個體。 因為在應用程式啟動時不需要明確設定精確的篩選條件管線，所以這提供了具有彈性的設計。
 
 您可以對您自己的屬性實作，實作 `IFilterFactory` 以作為另一種建立篩選條件的方法：
 
@@ -221,7 +217,7 @@ System.InvalidOperationException: No service for type
 'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
 ```
 
-`ServiceFilterAttribute` 會實作 `IFilterFactory`。 `IFilterFactory` 會公開 `CreateInstance` 方法來建立 `IFilter` 執行個體。 `CreateInstance` 方法會從服務容器 (DI) 載入指定的類型。
+`ServiceFilterAttribute` 會實作 `IFilterFactory`。 `IFilterFactory` 會公開 `CreateInstance` 方法來建立 `IFilterMetadata` 執行個體。 `CreateInstance` 方法會從服務容器 (DI) 載入指定的類型。
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 

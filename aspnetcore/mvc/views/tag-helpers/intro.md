@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 0c66b700f9bb3e6349fe2e0c8a7e254b8e7903a5
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: c8d5a63948aed0630d677ad3c0a40fb07ddc62af
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613121"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -67,11 +68,11 @@ public class Movie
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` 讓標籤協助程式可用
 
-如果您建立名為 *AuthoringTagHelpers* (沒有驗證) 的新 ASP.NET Core Web 應用程式，則會將下列 *Views/_ViewImports.cshtml* 檔案新增至您的專案：
+如果您建立名為 *AuthoringTagHelpers* 的新 ASP.NET Core Web 應用程式，則會將下列 *Views/_ViewImports.cshtml* 檔案新增至您的專案：
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，檢視檔案是 *Views/_ViewImports.cshtml*，預設繼承自 *Views* 資料夾和子目錄中的所有檢視檔案；讓標籤協助程式可用。 上述程式碼使用萬用字元語法 ("\*") 指定 *Views* 目錄或子目錄中每個檢視檔案都可以使用之指定組件中的所有標籤協助程式 (*Microsoft.AspNetCore.Mvc.TagHelpers*)。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
+`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，檢視檔案是 *Pages/_ViewImports.cshtml*，預設繼承自 *Pages* 資料夾和子資料夾中的所有檔案；讓標籤協助程式可用。 上述程式碼使用萬用字元語法 ("\*") 指定 *Views* 目錄或子目錄中每個檢視檔案都可以使用之指定組件中的所有標籤協助程式 (*Microsoft.AspNetCore.Mvc.TagHelpers*)。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
 
 若要公開此專案中的所有標籤協助程式 (這會建立名為 *AuthoringTagHelpers* 的組件)，請使用下列內容：
 
@@ -265,6 +266,6 @@ Visual Studio 編輯器可協助您撰寫註冊表單之標籤 (tag) 協助程�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
+* [撰寫標記協助程式](xref:mvc/views/tag-helpers/authoring)
 * [使用表單](xref:mvc/views/working-with-forms)
 * [GitHub 上的 TagHelperSamples](https://github.com/dpaquette/TagHelperSamples) 包含使用[啟動程序](http://getbootstrap.com/) 的標籤協助程式範例。

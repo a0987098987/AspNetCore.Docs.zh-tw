@@ -10,23 +10,24 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/web-host
-ms.openlocfilehash: ced2a766359894b9b83164c12a3ab69aa13c93a0
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: ce95599ec8e940635ca63c3bf9a3c28784a3f371
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687486"
 ---
 # <a name="aspnet-core-web-host"></a>ASP.NET Core Web 主機
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 本主題涵蓋 ASP.NET Core Web 主機 ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder))，這對裝載 Web 應用程式很實用。 如需 .NET 泛型主機 ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)) 的內容，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
+ASP.NET Core 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 至少，主機會設定伺服器和要求處理管線。 本主題涵蓋 ASP.NET Core Web 主機 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder))，這對裝載 Web 應用程式很實用。 如需 .NET 泛型主機 ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)) 的內容，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
 
 ## <a name="set-up-a-host"></a>設定主機
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-使用 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。 在專案範本中，`Main` 位於 *Program.cs*。 一般 *Program.cs* 會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 以開始設定主機：
+使用 ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)) 的執行個體建立主機。 這通常在應用程式的進入點執行，也就是 `Main` 方法。 在專案範本中，`Main` 位於 *Program.cs*。 一般 *Program.cs* 會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 以開始設定主機：
 
 ```csharp
 public class Program
@@ -44,12 +45,12 @@ public class Program
 
 `CreateDefaultBuilder` 會執行下列工作：
 
-* 設定 [Kestrel](xref:fundamentals/servers/kestrel) 作為網頁伺服器。 如需 Kestrel 預設選項，請參閱 [ASP.NET Core 中的 Kestrel 網頁伺服器實作的 Kestrel 選項一節](xref:fundamentals/servers/kestrel#kestrel-options)。
+* 將 [Kestrel](xref:fundamentals/servers/kestrel) 設定為網頁伺服器，並使用應用程式主機組態提供者設定伺服器。 如需 Kestrel 預設選項，請參閱 [ASP.NET Core 中的 Kestrel 網頁伺服器實作的 Kestrel 選項一節](xref:fundamentals/servers/kestrel#kestrel-options)。
 * 設定 [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) 所傳回路徑的內容根目錄。
-* 從下列位置載入選擇性組態：
+* 從下列位置載入選用的 [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration)：
   * *appsettings.json*。
   * *appsettings.{Environment}.json*
-  * 應用程式在 `Development` 環境中執行時的[使用者密碼](xref:security/app-secrets)。
+  * 應用程式在使用輸入組件的 `Development` 環境中執行時的[使用者密碼](xref:security/app-secrets)。
   * 環境變數。
   * 命令列引數。
 * 設定主控台和偵錯輸出的[記錄](xref:fundamentals/logging/index)。 記錄包含 *appsettings.json* 或 *appsettings.{Environment}.json* 檔案的記錄組態區段中指定的[記錄檔篩選](xref:fundamentals/logging/index#log-filtering)規則。

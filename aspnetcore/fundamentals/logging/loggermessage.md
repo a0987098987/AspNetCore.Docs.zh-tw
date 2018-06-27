@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: 24a75cfacfa61ca66e78deeb743baa75718dfb76
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 5b5bd03b6cb5da693f046653a09ba400ee6ff585
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729190"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>在 ASP.NET Core 中使用 LoggerMessage 進行高效能記錄
 
@@ -143,13 +144,9 @@ Parameter name: entity
 
 範例應用程式具有 [全部清除] 按鈕，可用來刪除資料庫中的所有引述。 也可透過逐一移除引述來刪除它們。 每次刪除引述時，就會在記錄器上呼叫 `QuoteDeleted` 方法。 記錄範圍會新增至這些記錄訊息。
 
-在主控台記錄器選項中啟用 `IncludeScopes`：
+在 *appsettings.json* 的主控台記錄器區段中啟用 `IncludeScopes`：
 
-[!code-csharp[](loggermessage/sample/Program.cs?name=snippet1&highlight=10)]
-
-必須在 ASP.NET Core 2.0 應用程式中設定 `IncludeScopes`，才能啟用記錄範圍。 透過 *appsettings* 組態檔設定 `IncludeScopes` 是 ASP.NET Core 2.1 版的規劃功能。
-
-範例應用程式會清除其他提供者，並新增篩選條件來減少記錄輸出。 這可讓您更輕鬆地查看示範 `LoggerMessage` 功能的範例記錄訊息。
+[!code-csharp[](loggermessage/sample/appsettings.json?highlight=3-5)]
 
 若要建立記錄範圍，請新增欄位以保留該範圍的 `Func` 委派。 範例應用程式會建立稱為 `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) 的欄位：
 
@@ -181,6 +178,6 @@ info: LoggerMessageSample.Pages.IndexModel[4]
       Quote deleted (Quote = 'Quote 3' Id = 4)
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 * [記錄](xref:fundamentals/logging/index)

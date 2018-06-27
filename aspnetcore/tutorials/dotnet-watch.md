@@ -1,31 +1,32 @@
 ---
-title: 使用 dotnet watch 開發 ASP.NET Core 應用程式
+title: 使用檔案監看員開發 ASP.NET Core 應用程式
 author: rick-anderson
 description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安裝及使用 .NET Core CLI 檔案監看員 (dotnet 監看式) 工具。
 manager: wpickett
 ms.author: riande
-ms.date: 10/05/2017
+ms.date: 05/31/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: c3ece3a5b936b2ea7b7772eee10e598cb557b361
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 016ee107ae646ed43d8a98e97fd2d5b41356910e
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341843"
 ---
-# <a name="develop-aspnet-core-apps-using-dotnet-watch"></a>使用 dotnet watch 開發 ASP.NET Core 應用程式
+# <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
 `dotnet watch` 是一種工具，會在來源檔案變更時執行 [.NET Core CLI](/dotnet/core/tools) 命令。 例如，檔案變更會觸發編譯、測試執行或部署。
 
-在本教學課程中，我們會使用現有的 Web API 應用程式與兩個端點：一個傳回加總，另一個傳回產品。 Product 方法包含一個 Bug，我們會在本教學課程中一併修正。
+本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
 下載[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample)。 它包含兩個專案：*WebApp* (ASP.NET Core Web API) 和 *WebAppTests* (Web API 的單元測試)。
 
-在命令殼層中，巡覽至 *WebApp* 資料夾並執行下列命令：
+在命令殼層中，巡覽至 *WebApp* 資料夾。 執行下列命令：
 
 ```console
 dotnet run
@@ -43,25 +44,31 @@ Application started. Press Ctrl+C to shut down.
 
 在網頁瀏覽器中，瀏覽至 `http://localhost:<port number>/api/math/sum?a=4&b=5`。 您應該會看到 `9` 的結果。
 
-瀏覽至產品 API (`http://localhost:<port number>/api/math/product?a=4&b=5`)。 它會傳回 `9`，而非您預期的 `20`。 我們稍後將在本教學課程中對此進行修正。
+瀏覽至產品 API (`http://localhost:<port number>/api/math/product?a=4&b=5`)。 它會傳回 `9`，而非您預期的 `20`。 本教學課程稍後會修正該問題。
+
+::: moniker range="<= aspnetcore-2.0"
 
 ## <a name="add-dotnet-watch-to-a-project"></a>將 `dotnet watch` 新增至專案
+
+`dotnet watch` 檔案監看員工具隨附於 .NET Core SDK 2.1.300 版本。 使用舊版的 .NET Core SDK 需要以下的步驟。
 
 1. 將 `Microsoft.DotNet.Watcher.Tools` 套件參考新增至 *.csproj* 檔案：
 
     ```xml
     <ItemGroup>
         <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-    </ItemGroup> 
+    </ItemGroup>
     ```
 
 1. 執行下列命令來安裝 `Microsoft.DotNet.Watcher.Tools` 套件：
-    
+
     ```console
     dotnet restore
     ```
 
-## <a name="running-net-core-cli-commands-using-dotnet-watch"></a>使用 `dotnet watch` 執行 .NET Core CLI 命令
+::: moniker-end
+
+## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>使用 `dotnet watch` 執行 .NET Core CLI 命令
 
 任何 [.NET Core CLI 命令](/dotnet/core/tools#cli-commands)都可以使用 `dotnet watch` 執行。 例如: 
 
@@ -74,7 +81,7 @@ Application started. Press Ctrl+C to shut down.
 
 執行 *WebApp* 資料夾中的 `dotnet watch run`。 主控台輸出指出 `watch` 已啟動。
 
-## <a name="making-changes-with-dotnet-watch"></a>使用 `dotnet watch` 來變更資料
+## <a name="make-changes-with-dotnet-watch"></a>以 `dotnet watch` 進行變更
 
 請確認 `dotnet watch` 正在執行。
 
@@ -84,16 +91,16 @@ Application started. Press Ctrl+C to shut down.
 public static int Product(int a, int b)
 {
   return a * b;
-} 
+}
 ```
 
 儲存檔案。 主控台輸出指出 `dotnet watch` 已偵測到檔案變更，並重新啟動應用程式。
 
 驗證 `http://localhost:<port number>/api/math/product?a=4&b=5` 是否傳回正確的結果。
 
-## <a name="running-tests-using-dotnet-watch"></a>使用 `dotnet watch` 來執行測試
+## <a name="run-tests-using-dotnet-watch"></a>使用 `dotnet watch` 執行測試
 
-1. 將 *MathController.cs* 的 `Product` 方法變更回傳回加總，然後儲存檔案。
+1. 將 *MathController.cs* 的 `Product` 方法變更回傳回加總。 儲存檔案。
 1. 在命令殼層中，瀏覽至 *WebAppTests* 資料夾。
 1. 執行 [dotnet restore](/dotnet/core/tools/dotnet-restore)。
 1. 執行 `dotnet watch test`。 其輸出指出測試失敗，且監看員正在等候檔案變更：
@@ -107,8 +114,73 @@ public static int Product(int a, int b)
 
 `dotnet watch` 會偵測檔案變更，並重新執行測試。 主控台輸出指出測試成功。
 
-## <a name="dotnet-watch-in-github"></a>GitHub 中的 dotnet-watch
+## <a name="customize-files-list-to-watch"></a>自訂要監看的檔案清單
 
-dotnet-watch 是 GitHub [DotNetTools 存放庫](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch)的一部分。
+根據預設，`dotnet-watch` 會追蹤符合下列 Glob 模式的所有檔案：
 
-[dotnet-watch 讀我檔案](https://github.com/aspnet/DotNetTools/blob/dev/src/dotnet-watch/README.md)的 [MSBuild 區段](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch#msbuild)說明如何從要監控的 MSBuild 專案檔設定 dotnet-watch。 [dotnet-watch 讀我檔案](https://github.com/aspnet/DotNetTools/blob/dev/src/dotnet-watch/README.md)包含本教學課程中未涵蓋的 dotnet-watch 相關資訊。
+* `**/*.cs`
+* `*.csproj`
+* `**/*.resx`
+
+編輯 *.csproj* 檔案可將更多的項目新增至監看清單。 項目可以個別或使用 Glob 模式指定。
+
+```xml
+<ItemGroup>
+    <!-- extends watching group to include *.js files -->
+    <Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
+</ItemGroup>
+```
+
+## <a name="opt-out-of-files-to-be-watched"></a>選擇不使用要監看的檔案
+
+`dotnet-watch` 可以設定成忽略其預設設定。 若要忽略特定的檔案，請將 `Watch="false"` 屬性新增至 *.csproj* 檔案的項目定義：
+
+```xml
+<ItemGroup>
+    <!-- exclude Generated.cs from dotnet-watch -->
+    <Compile Include="Generated.cs" Watch="false" />
+
+    <!-- exclude Strings.resx from dotnet-watch -->
+    <EmbeddedResource Include="Strings.resx" Watch="false" />
+
+    <!-- exclude changes in this referenced project -->
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" Watch="false" />
+</ItemGroup>
+```
+
+## <a name="custom-watch-projects"></a>自訂監看式專案
+
+`dotnet-watch` 不限制為 C# 專案。 您可以建立自訂的監看式專案來處理不同的案例。 請考慮下列專案配置：
+
+* **test/**
+  * *UnitTests/UnitTests.csproj*
+  * *IntegrationTests/IntegrationTests.csproj*
+
+如果目標是監看這兩個專案，請建立設定成監看這兩個專案的自訂專案檔：
+
+```xml
+<Project>
+    <ItemGroup>
+        <TestProjects Include="**\*.csproj" />
+        <Watch Include="**\*.cs" />
+    </ItemGroup>
+
+    <Target Name="Test">
+        <MSBuild Targets="VSTest" Projects="@(TestProjects)" />
+    </Target>
+
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft.Common.targets" />
+</Project>
+```
+
+若要開始監看兩個專案的檔案，請變更至 *test* 資料夾。 執行下列命令：
+
+```console
+dotnet watch msbuild /t:Test
+```
+
+任一測試專案中的任何檔案發生變更時，就會執行 VSTest。
+
+## <a name="dotnet-watch-in-github"></a>GitHub 中的 `dotnet-watch`
+
+`dotnet-watch` 為 GitHub [DotNetTools 存放庫](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch) 的一部分。

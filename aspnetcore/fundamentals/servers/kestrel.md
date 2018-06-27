@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 1c5d229614e6d6ca6889d19a5f3dc145da01bc04
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 39949585dc8fce10c31045ef3013c6bc166e45ba
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555322"
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613147"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -75,11 +75,11 @@ Kestrel 支援下列功能：
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) 套件包含在 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)裡。
+[Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) 套件包含在 [Microsoft.AspNetCore.App metapackage] 中 (xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本)。
 
 ASP.NET Core 專案範本預設會使用 Kestrel。 在 *Program.cs* 中，範本程式碼會呼叫 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)，而後者會呼叫場景背後的 [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel)。
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -87,7 +87,7 @@ ASP.NET Core 專案範本預設會使用 Kestrel。 在 *Program.cs* 中，範�
 
 在 `Main` 方法中，於 [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder?view=aspnetcore-1.1) 上呼叫 [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel?view=aspnetcore-1.1) 擴充方法，並指定需要的任何 [Kestrel 選項](/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserveroptions?view=aspnetcore-1.1)，如下一節所示。
 
-[!code-csharp[](kestrel/samples/1.x/Program.cs?name=snippet_Main&highlight=13-19)]
+[!code-csharp[](kestrel/samples/1.x/KestrelSample/Program.cs?name=snippet_Main&highlight=13-19)]
 
 ---
 
@@ -110,11 +110,11 @@ Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應
 
 可以使用下列程式碼，針對整個應用程式設定同時開啟的 TCP 連線數目上限：
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_Limits&highlight=3)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=3)]
 
 已經從 HTTP 或 HTTPS 升級為另一個通訊協定 (例如，在 WebSocket 要求中) 的連線，有其個別限制。 升級連線之後，它不會納入 `MaxConcurrentConnections` 限制。
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_Limits&highlight=4)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=4)]
 
 連線數目上限預設為無限制 (null)。
 
@@ -133,11 +133,11 @@ public IActionResult MyActionMethod()
 
 以下範例會示範如何設定應用程式、每個要求的條件約束：
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_Limits&highlight=5)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=5)]
 
 您可以在中介軟體中覆寫特定要求的設定：
 
-[!code-csharp[](kestrel/samples/2.x/Startup.cs?name=snippet_Limits&highlight=3-4)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=3-4)]
 
 如果應用程式已開始讀取要求之後，才嘗試設定要求的限制，則會擲回例外狀況。 有一個 `IsReadOnly` 屬性會指出 `MaxRequestBodySize` 屬性處於唯讀狀態，這表示要設定限制已經太遲。
 
@@ -154,11 +154,11 @@ public IActionResult MyActionMethod()
 
 以下範例示範如何在 *Program.cs* 中設定資料速率下限：
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_Limits&highlight=6-7)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-7)]
 
 您可以在中介軟體中設定每個要求的速率：
 
-[!code-csharp[](kestrel/samples/2.x/Startup.cs?name=snippet_Limits&highlight=5-8)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Limits&highlight=5-8)]
 
 如需其他 Kestrel 選項和限制的資訊，請參閱：
 
@@ -209,7 +209,7 @@ ASP.NET Core 預設會繫結至：
 開發憑證會建立於：
 
 * 已安裝 [.NET Core SDK](/dotnet/core/sdk) 時。
-* [dev-certs 工具](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-dev-certs)用來建立憑證。
+* [dev-certs 工具](xref:aspnetcore-2.1#https)用來建立憑證。
 
 有些瀏覽器需要您授與明確的權限給瀏覽器，才能信任本機開發憑證。
 
@@ -367,7 +367,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
       });
   ```
 
-  您也可以直接存取 `KestrelServerOptions.ConfigurationLoader` 來保持反覆運算現有的載入器，例如 `WebHost.CreatedDeafaultBuilder` 提供的載入器。
+  您也可以直接存取 `KestrelServerOptions.ConfigurationLoader` 來保持反覆運算現有的載入器，例如 [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 提供的載入器。
 
 * 每個端點的組態區段可用於 `Endpoint` 方法的選項，因此可讀取自訂組態。
 * 可以藉由使用另一個區段再次呼叫 `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
@@ -395,7 +395,10 @@ options.ConfigureHttpsDefaults(httpsOptions =>
 
 Kestrel 透過 `ServerCertificateSelector` 回呼來支援 SNI。 回呼會針對每個連線叫用一次，允許應用程式檢查主機名稱並選取適當的憑證。
 
-SNI 支援需要在目標架構 `netcoreapp2.1` 上執行。 在 `netcoreapp2.0` 和 `net461` 上，會叫用回呼，但 `name` 一律為 `null`。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
+SNI 支援需要：
+
+* 在目標 Framework `netcoreapp2.1` 上執行。 在 `netcoreapp2.0` 和 `net461` 上，會叫用回呼，但 `name` 一律為 `null`。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
+* 所有網站都在相同的 Kestrel 執行個體上執行。 在不使用反向 Proxy 的情況下，Kestrel 不支援跨多個執行個體共用 IP 位址和連接埠。
 
 ```csharp
 WebHost.CreateDefaultBuilder()
@@ -439,7 +442,7 @@ WebHost.CreateDefaultBuilder()
 
 [Listen](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen) 方法繫結至 TCP 通訊端，而選項 Lambda 則允許 SSL 憑證組態：
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_TCPSocket&highlight=9-16)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=9-16)]
 
 範例使用 [ListenOptions](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.listenoptions) 來設定端點的 SSL。 若要設定特定端點的其他 Kestrel 設定，請使用相同的 API。
 
@@ -449,13 +452,13 @@ WebHost.CreateDefaultBuilder()
 
 使用 [ListenUnixSocket](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket) 接聽 UNIX 通訊端以改善 Nginx 的效能，如此範例所示：
 
-[!code-csharp[](kestrel/samples/2.x/Program.cs?name=snippet_UnixSocket)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
 
 **連接埠 0**
 
 指定連接埠號碼 `0` 時，Kestrel 會動態繫結至可用的連接埠。 下列範例示範如何判斷 Kestrel 在執行階段實際上繫結至哪一個連接埠：
 
-[!code-csharp[](kestrel/samples/2.x/Startup.cs?name=snippet_Port0&highlight=3)]
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Startup.cs?name=snippet_Port0&highlight=3)]
 
 當應用程式執行時，主控台視窗輸出會指出可以連線到應用程式的動態連接埠：
 
@@ -507,13 +510,13 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 使用下列各項設
 * [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) (直接套件參考)
 * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
 
-對於使用 `Microsoft.AspNetCore.App` 中繼套件且需要使用 Libuv 的 ASP.NET Core 2.1 或更新版本專案：
+對於使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)且需要使用 Libuv 的 ASP.NET Core 2.1 或更新版本專案：
 
 * 將 [Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv/) 套件的相依性新增至應用程式的專案檔中：
 
     ```xml
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv" 
-                    Version="2.1.0" />
+                      Version="2.1.0" />
     ```
 
 * 呼叫 [WebHostBuilderLibuvExtensions.UseLibuv](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv)：
@@ -665,10 +668,15 @@ var host = new WebHostBuilder()
 
 雖然 Kestrel 根據前置詞來支援組態，例如 `http://example.com:5000`，Kestrel 大多會忽略主機名稱。 主機 `localhost` 是特殊情況，用來繫結到回送位址。 任何非明確 IP 位址的主機，會繫結至所有公用 IP 位址。 此資訊完全不用來驗證要求 `Host` 標頭。
 
-有兩種因應措施：
+::: moniker range="< aspnetcore-2.0"
 
-* 反向 proxy 後方的主機，並使用主機標頭篩選。 這是 Kestrel 在 ASP.NET Core 1.x 中唯一支援的案例。
-* 請使用中介軟體，依 `Host` 標頭篩選要求。 範例中介軟體如下：
+因應措施是反向 Proxy 後方的主機使用主機標頭篩選。 這是 Kestrel 在 ASP.NET Core 1.x 中唯一支援的案例。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+因應措施是使用中介軟體，依 `Host` 標頭篩選要求：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -804,23 +812,40 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-前面的中介軟體預期在 *appsettings.\<EnvironmentName>.json* 中有 `AllowedHosts` 索引鍵。 此索引鍵的值是以分號分隔的主機名稱清單，不含連接埠號碼。 將 `AllowedHosts` 索引鍵值配對包含在 *appsettings.Production.json*中：
+中介軟體預期在 *appsettings.json*/*appsettings.\<環境名稱>.json* 中有 `AllowedHosts` 索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+因應措施是使用主機篩選中介軟體。 主機篩選中介軟體係由 [Microsoft.AspNetCore.HostFiltering](https://www.nuget.org/packages/Microsoft.AspNetCore.HostFiltering) 套件提供，隨附於 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本)。 中介軟體是由 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 新增，它會呼叫 [AddHostFiltering](/dotnet/api/microsoft.aspnetcore.builder.hostfilteringservicesextensions.addhostfiltering)：
+
+[!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
+
+預設停用主機篩選中介軟體。 若要啓用中介軟體，請在 *appsettings.json*/*appsettings.\<環境名稱>.json* 中定義 `AllowedHosts` 索引鍵。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+*appsettings.json*：
 
 ```json
 {
-  "AllowedHosts": "example.com"
+  "AllowedHosts": "example.com;localhost"
 }
 ```
 
-*appsettings.Development.json* (localhost 組態檔)：
+> [!NOTE]
+> [轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)也有 [ForwardedHeadersOptions.AllowedHosts](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.allowedhosts) 選項。 在不同的案例中，轉送標頭中介軟體和主機篩選中介軟體有類似的功能。 當不保留主機標頭，卻使用反向 Proxy 伺服器或負載平衡器轉送要求時，可使用轉送標頭中介軟體設定 `AllowedHosts`。 當使用 Kestrel 作為邊緣伺服器，或直接轉送主機標頭時，可使用主機篩選中介軟體設定 `AllowedHosts`。
+>
+> 如需轉送標頭中介軟體的詳細資訊，請參閱[設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作](xref:host-and-deploy/proxy-load-balancer)。
 
-```json
-{
-  "AllowedHosts": "localhost"
-}
-```
+::: moniker-end
 
 ## <a name="additional-resources"></a>其他資源
 
 * [強制使用 HTTPS](xref:security/enforcing-ssl)
 * [Kestrel 原始程式碼](https://github.com/aspnet/KestrelHttpServer)
+* [RFC 7230：訊息語法和路由 (第 5.4 節：主機)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)

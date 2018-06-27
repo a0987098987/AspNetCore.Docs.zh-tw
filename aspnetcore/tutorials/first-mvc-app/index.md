@@ -2,28 +2,27 @@
 title: 使用 Visual Studio 和 ASP.NET Core MVC on Windows 建立 Web 應用程式
 author: rick-anderson
 description: 如需在 Windows 上使用 Visual Studio 之 ASP.NET Core MVC 的簡介，請參閱目錄。
-manager: wpickett
 ms.author: riande
 ms.date: 10/26/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: 46e98bc0de19ca09921c7505aa0a2f075887cd64
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 78d567589933b641bf5202d230b25034ff06943c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276330"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-on-windows-with-visual-studio"></a>使用 Visual Studio 和 ASP.NET Core MVC on Windows 建立 Web 應用程式
 
-[!INCLUDE [consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 本教學課程有 3 個版本：
 
 * Windows：本系列
 * macOS：[使用 Visual Studio for Mac 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-mac/start-mvc)
-* macOS、Linux 和 Windows：[使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-xplat/start-mvc) 本教學課程系列包括：
+* macOS、Linux 和 Windows：[使用 Visual Studio Code 建立 ASP.NET Core MVC 應用程式](xref:tutorials/first-mvc-app-xplat/start-mvc)
+
+教學課程系列包含下列內容：
 
 1. [開始使用](start-mvc.md)
 1. [新增控制器](adding-controller.md)

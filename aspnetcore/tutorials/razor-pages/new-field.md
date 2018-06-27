@@ -2,19 +2,16 @@
 title: 將欄位新增至 ASP.NET Core 中的 Razor 頁面
 author: rick-anderson
 description: 示範如何使用 Entity Framework Core 將新欄位新增至 Razor Pages
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
+ms.date: 05/30/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 45a39defc9480b0e4fe85ae7ed6bfa654a35264a
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: d9bf8c7cea20bf38aacf432465d7b33514bcd64d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277289"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
 
@@ -22,13 +19,25 @@ ms.lasthandoff: 04/18/2018
 
 在本節中，您會使用 [Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 
-當您使用 EF Code First 自動建立資料庫時，Code First 會將資料表新增至資料庫，以協助追蹤資料庫的結構描述是否與其產生的來源模型類別同步。 如果未同步，EF 會擲回例外狀況。 這可讓您更輕鬆地找出不一致的資料庫/程式碼問題。
+使用 EF Code First 自動建立資料庫時，Code First 會：
+
+* 將資料表新增至資料庫，以追蹤資料庫的結構描述是否與其產生的來源模型類別同步。
+* 如果模型類別與資料庫不同步，EF 會擲回例外狀況。 
+
+自動驗證結構描述/模型是否同步，讓您更容易發現不一致的資料庫/程式碼問題。
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>將 Rating 屬性新增至電影模型
 
 開啟 *Models/Movie.cs* 檔案，然後新增 `Rating` 屬性：
-
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+
+::: moniker-end
 
 建置應用程式 (Ctrl+Shift+B)。
 
@@ -70,7 +79,13 @@ SqlException: Invalid column name 'Rating'.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
+::: moniker range="= aspnetcore-2.0"
 請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs) (英文)。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+請參閱[完整的 SeedData.cs 檔案](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/SeedDataRating.cs) (英文)。
+::: moniker-end
 
 建置方案。
 

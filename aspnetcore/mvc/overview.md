@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/overview
-ms.openlocfilehash: 1cf48499d3bc0ba63e2f0667740668fad0b13c28
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf53e0d14ffb5d9ab969e3d6e038a292f913c1
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566902"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -185,13 +186,13 @@ ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.m
 
 ASP.NET Core MVC 除了是建立網站的理想平台之外，也對建置 Web API 提供絕佳的支援。 您可以建置可供廣大用戶端使用的服務，包括瀏覽器和行動裝置。
 
-架構包含支援內建支援的 HTTP 內容交涉[格式化資料](xref:web-api/advanced/formatting)為 JSON 或 XML。 撰寫[自訂格式器](xref:web-api/advanced/custom-formatters)可新增您專屬格式的支援。
+此架構包含使用內建支援的 HTTP 內容交涉支援，以[格式化資料](xref:web-api/advanced/formatting)為 JSON 或 XML。 撰寫[自訂格式器](xref:web-api/advanced/custom-formatters)可新增您專屬格式的支援。
 
 使用連結產生可支援超媒體。 輕鬆就可支援[跨原始來源資源共用 (CORS)](http://www.w3.org/TR/cors/) ，讓您的 Web API 可跨多個 Web 應用程式共用。
 
 ### <a name="testability"></a>可測試性
 
-架構的使用介面和相依性插入會導致它適用於單元測試，並架構包含功能 （例如 Entity Framework TestHost 和 InMemory 提供者），使[整合測試](../testing/integration-testing.md)快速和輕鬆以及。 深入了解[如何測試控制器邏輯](controllers/testing.md)。
+此架構使用介面和相依性插入，因此相當適用於單元測試，而此架構所包含的功能 (例如 Entity Framework 的 TestHost 和 InMemory 提供者) 也讓您可以輕鬆快速地進行[整合測試](xref:test/integration-tests)。 深入了解[如何測試控制器邏輯](controllers/testing.md)。
 
 ### <a name="razor-view-engine"></a>Razor 檢視引擎
 

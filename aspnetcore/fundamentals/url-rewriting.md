@@ -2,18 +2,15 @@
 title: ASP.NET Core 的 URL 重寫中介軟體
 author: guardrex
 description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行 URL 重寫與重新導向作業。
-manager: wpickett
 ms.author: riande
 ms.date: 08/17/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 336a097c2186bc195854bd54211d4554a577ed14
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: d3484e222c4412a427d086c1b71a12b81095ba72
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276343"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -22,13 +19,14 @@ ms.lasthandoff: 05/12/2018
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的動作。 URL 重寫會在資源位置和位址之間建立一個抽象層，讓位置和位址不那麼緊密連結。 下列幾種情況非常適合使用 URL 重寫：
-* 暫時或永久性移動/取代伺服器資源時，同時為這些資源保持穩定的定位器
-* 跨不同應用程式或跨單一應用程式各區域來分割要求處理作業
-* 移除、新增或重組傳入要求的 URL 區段
-* 針對搜尋引擎最佳化 (SEO) 來最佳化公用 URL
-* 允許使用易記的公用 URL，以協助使用者預測他們在前往連結後能找到哪些內容
-* 將不安全的要求重新導向至安全的端點
-* 防止圖片盜連
+
+* 暫時或永久性移動/取代伺服器資源時，同時為這些資源保持穩定的定位器。
+* 跨不同應用程式或跨單一應用程式各區域來分割要求處理作業。
+* 移除、新增或重組傳入要求的 URL 區段。
+* 針對搜尋引擎最佳化 (SEO) 來最佳化公用 URL。
+* 允許使用易記的公用 URL，以協助使用者預測他們在前往連結後能找到哪些內容。
+* 將不安全的要求重新導向至安全的端點。
+* 防止圖片盜連。
 
 您可以透過數種方式來定義變更 URL 的規則，包括 Regex、Apache mod_rewrite 模組規則、IIS Rewrite Module 規則，以及使用自訂規則邏輯。 本文件介紹 URL 重寫，並提供如何在 ASP.NET Core 應用程式中使用 URL 重寫中介軟體的指示。
 
@@ -127,8 +125,8 @@ public void Configure(IApplicationBuilder app)
 
 系統會將擷取的群組以貨幣符號 (`$`) 後接擷取序號的形式，插入取代字串中。 使用 `$1` 可取得第一個擷取群組值、使用 `$2` 則會取得第二個，依您的 Regex 擷取群組順序以此類推。 在範例應用程式中，重新導向規則 Regex 只有一個擷取的群組，因此在取代字串中只有 `$1` 這一個插入的群組。 套用規則時，URL 會變成 `/redirected/1234/5678`。
 
-<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>將 URL 重新導向至安全端點
+
 使用 `AddRedirectToHttps` 將 HTTP 要求重新導向至使用 HTTPS (`https://`) 的相同主機與路徑。 如果未提供狀態碼，中介軟體會預設為 302 (已找到)。 如果未提供連接埠，中介軟體會預設為 `null`；這表示通訊協定變更為 `https://` 且用戶端會存取連接埠 443 上的資源。 此範例示範如何將狀態碼設為 301 (已永久移動)，並將連接埠變更為 5001。
 
 ```csharp
@@ -153,13 +151,16 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-範例應用程式可以示範如何使用 `AddRedirectToHttps` 或 `AddRedirectToHttpsPermanent`。 將擴充方法新增至 `RewriteOptions`。 在任何 URL 位置，向應用程式提出不安全的要求。 關閉瀏覽器自我簽署憑證不受信任的安全性警告。
+> [!NOTE]
+> 在不要求額外重新導向規則的情況下重新導向至 HTTPS 時，建議使用 HTTPS 重新導向中介軟體。 如需詳細資訊，請參閱[強制執行 HTTPS](xref:security/enforcing-ssl#require-https) 主題。
 
-使用 `AddRedirectToHttps(301, 5001)` 的原始要求：`/secure`
+範例應用程式可以示範如何使用 `AddRedirectToHttps` 或 `AddRedirectToHttpsPermanent`。 將擴充方法新增至 `RewriteOptions`。 在任何 URL 位置，向應用程式提出不安全的要求。 關閉瀏覽器自我簽署憑證不受信任的安全性警告，或建立信任憑證的例外狀況。
+
+使用 `AddRedirectToHttps(301, 5001)` 的原始要求：`http://localhost:5000/secure`
 
 ![瀏覽器視窗，其中的開發人員工具會追蹤要求和回應](url-rewriting/_static/add_redirect_to_https.png)
 
-使用 `AddRedirectToHttpsPermanent` 的原始要求：`/secure`
+使用 `AddRedirectToHttpsPermanent` 的原始要求：`http://localhost:5000/secure`
 
 ![瀏覽器視窗，其中的開發人員工具會追蹤要求和回應](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
@@ -254,6 +255,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ##### <a name="supported-server-variables"></a>支援的伺服器變數
 
 中介軟體可支援下列 Apache mod_rewrite 伺服器變數：
+
 * CONN_REMOTE_ADDR
 * HTTP_ACCEPT
 * HTTP_CONNECTION
@@ -325,6 +327,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 與 ASP.NET Core 2.x 一起發行的中介軟體不支援下列 IIS URL Rewrite Module 功能：
+
 * 輸出規則
 * 自訂伺服器變數
 * 萬用字元
@@ -333,6 +336,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 與 ASP.NET Core 1.x 一起發行的中介軟體不支援下列 IIS URL Rewrite Module 功能：
+
 * 全域規則
 * 輸出規則
 * 重寫對應
@@ -347,6 +351,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 #### <a name="supported-server-variables"></a>支援的伺服器變數
 
 中介軟體可支援下列 IIS URL Rewrite Module 伺服器變數：
+
 * CONTENT_LENGTH
 * CONTENT_TYPE
 * HTTP_ACCEPT

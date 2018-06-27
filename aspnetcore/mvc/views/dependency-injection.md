@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: cc34b9069ec062f08644c0026c1ccdcd00f667ac
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: d33f0253fc7c1329e8bab400ace4c4ce8d10d792
+ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/14/2018
+ms.locfileid: "35613056"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core 檢視中的相依性插入
 
@@ -67,8 +68,8 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
 
->[!TIP]
-> 請不要忘記在 *Startup.cs* 的 `ConfigureServices` 方法中註冊您將透過相依性插入所要求的類型。
+> [!IMPORTANT]
+> 請不要忘記在 `Startup.ConfigureServices` 中註冊您透過相依性插入所要求的類型。 未註冊的類型會在執行階段擲回例外狀況，因為服務提供者是透過 [GetRequiredService](/dotnet/api/microsoft.extensions.dependencyinjection.serviceproviderserviceextensions.getrequiredservice) 內部查詢。
 
 ## <a name="overriding-services"></a>覆寫服務
 

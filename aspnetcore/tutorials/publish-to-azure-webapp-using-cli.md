@@ -12,11 +12,12 @@ ms.technology: aspnet
 ms.topic: get-started-article
 services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 0462a4cf18bba23643ed3b1b4e6b76bdbceb24a8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3fc068096a4b8696340787aa15120a2f97d10164
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252434"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a>使用命令列工具將 ASP.NET Core 應用程式發行到 Azure
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 04/06/2018
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
-本教學課程將說明如何使用命令列工具來建置 ASP.NET Core 應用程式，並將其部署至 Microsoft Azure App Service。  完成之後，您將會擁有建置在 ASP.NET MVC Core 中且裝載為 Azure App Service Web 應用程式的 Web 應用程式。  本教學課程是使用 Windows 命令列工具來撰寫，但也適用於 macOS 和 Linux 環境。  
+本教學課程將說明如何使用命令列工具來建置 ASP.NET Core 應用程式，並將其部署至 Microsoft Azure App Service。 完成之後，您將會擁有建置在 ASP.NET Core 中且裝載為 Azure App Service Web 應用程式的 Razor Pages Web 應用程式。 本教學課程是使用 Windows 命令列工具來撰寫，但也適用於 macOS 和 Linux 環境。
 
 在本教學課程中，您將了解如何：
 
@@ -40,41 +41,85 @@ ms.lasthandoff: 04/06/2018
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Git](https://www.git-scm.com/) 命令列用戶端
 
-## <a name="create-a-web-application"></a>建立 Web 應用程式
+## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-為 Web 應用程式建立新的目錄、建立新的 ASP.NET Core MVC 應用程式，然後在本機執行該網站。
+為 Web 應用程式建立新的目錄、建立新的 ASP.NET Core Razor Pages 應用程式，然後在本機執行該網站。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-```cmd
-REM Create a new ASP.NET Core MVC application
+
+::: moniker range=">= aspnetcore-2.1"
+
+```console
+REM Create a new ASP.NET Core Razor Pages app
+dotnet new webapp -o MyApplication
+
+REM Change to the new directory that was just created
+cd MyApplication
+
+REM Run the app
+dotnet run
+```
+
+[!INCLUDE[](~/includes/webapp-alias-notice.md)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+```console
+REM Create a new ASP.NET Core Razor Pages app
 dotnet new razor -o MyApplication
 
 REM Change to the new directory that was just created
 cd MyApplication
 
-REM Run the application
+REM Run the app
 dotnet run
 ```
 
+::: moniker-end
+
 # <a name="othertabother"></a>[其他](#tab/other)
+
+::: moniker range=">= aspnetcore-2.1"
+
 ```bash
-# Create a new ASP.NET Core MVC application
+# Create a new ASP.NET Core Razor Pages app
+dotnet new webapp -o MyApplication
+
+# Change to the new directory that was just created
+cd MyApplication
+
+# Run the app
+dotnet run
+```
+
+[!INCLUDE[](~/includes/webapp-alias-notice.md)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+```bash
+# Create a new ASP.NET Core Razor Pages app
 dotnet new razor -o MyApplication
 
 # Change to the new directory that was just created
 cd MyApplication
 
-# Run the application
+# Run the app
 dotnet run
 ```
+
+::: moniker-end
+
 ---
 
 ![命令列輸出](publish-to-azure-webapp-using-cli/_static/new_prj.png)
 
-瀏覽至 http://localhost:5000 來測試應用程式。
+瀏覽至 `http://localhost:5000` 來測試應用程式。
 
 ![網站在本機上執行](publish-to-azure-webapp-using-cli/_static/app_test.png)
-
 
 ## <a name="create-the-azure-app-service-instance"></a>建立 Azure App Service 執行個體
 
@@ -101,14 +146,15 @@ az webapp create --name $webappname --resource-group DotNetAzureTutorial --plan 
 az webapp deployment user set --user-name <desired user name> --password <desired password>
 ```
 
-使用 Git 部署應用程式需要部署 URL。  擷取如下的 URL。
+使用 Git 部署應用程式需要部署 URL。 擷取如下的 URL。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git -n $webappname -g DotNetAzureTutorial --query [url] -o tsv
 ```
+
 記下所顯示結尾是 `.git` 的 URL。 在下一步中會使用它。
 
-## <a name="deploy-the-application-using-git"></a>使用 Git 來部署應用程式
+## <a name="deploy-the-app-using-git"></a>使用 Git 部署應用程式
 
 您現在可以使用 Git 從本機電腦進行部署。
 
@@ -116,6 +162,7 @@ az webapp deployment source config-local-git -n $webappname -g DotNetAzureTutori
 > 您可以放心地忽略來自 Git 有關行尾結束符號的任何警告。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
 ```cmd
 REM Initialize the local Git repository
 git init
@@ -134,6 +181,7 @@ git push azure master
 ```
 
 # <a name="othertabother"></a>[其他](#tab/other)
+
 ```bash
 # Initialize the local Git repository
 git init
@@ -150,15 +198,16 @@ git remote add azure <THE GIT URL YOU NOTED EARLIER>
 # Push the local repository to the remote
 git push azure master
 ```
+
 ---
 
 Git 會提示您輸入先前設定的部署認證。 驗證之後，應用程式就會被推送到遠端位置，然後進行建置及部署。
 
 ![Git 部署輸出](publish-to-azure-webapp-using-cli/_static/post_deploy.png)
 
-## <a name="test-the-application"></a>測試應用程式
+## <a name="test-the-app"></a>測試應用程式
 
-瀏覽至 `https://<web app name>.azurewebsites.net` 來測試應用程式。  若要顯示在 Cloud Shell (或 Azure CLI) 中的位址，請使用：
+瀏覽至 `https://<web app name>.azurewebsites.net` 來測試應用程式。 若要顯示在 Cloud Shell (或 Azure CLI) 中的位址，請使用：
 
 ```azurecli-interactive
 az webapp show -n $webappname -g DotNetAzureTutorial --query defaultHostName -o tsv

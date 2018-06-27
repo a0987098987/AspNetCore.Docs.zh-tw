@@ -11,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 15ce81a4226921ce053096751d7678ada36235c0
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: a851f2faf13792b2c232c124371d07710ae1fce3
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/04/2018
-ms.locfileid: "34728969"
+ms.locfileid: "34734467"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -39,7 +39,7 @@ ms.locfileid: "34728969"
 
 ## <a name="introduction"></a>簡介
 
-泛型主機程式庫位於 [Microsoft.Extensions.Hosting 命名空間](/dotnet/api/microsoft.extensions.hosting)，並由 [Microsoft.Extensions.Hosting NuGet 套件](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/)提供。 [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) 中繼套件包含 `Microsoft.Extensions.Hosting` 套件。
+泛型主機程式庫位於 [Microsoft.Extensions.Hosting 命名空間](/dotnet/api/microsoft.extensions.hosting)，並由 [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/) 套件提供。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本) 包含 `Microsoft.Extensions.Hosting` 套件。
 
 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 是程式碼執行的進入點。 每個 `IHostedService` 實作會依 [ConfigureServices 中的服務註冊](#configureservices)順序執行。 當主機啟動時，會在每個 `IHostedService` 上呼叫 [StartAsync](/dotnet/api/microsoft.extensions.hosting.ihostedservice.startasync)；當主機順利關閉時，則會依反向註冊順序呼叫 [StopAsync](/dotnet/api/microsoft.extensions.hosting.ihostedservice.stopasync)。
 

@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: d132747cb7c92ef5afac4664c91634a4ad290e5f
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734519"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
-[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) 可傳播已發生變更的通知。 `IChangeToken` 位於 [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) 命名空間中。 如需不使用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) 中繼套件的應用程式，請參考專案檔中的 [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) NuGet 套件。
+[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) 可傳播已發生變更的通知。 `IChangeToken` 位於 [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) 命名空間中。 如需不使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 或更新版本) 的應用程式，請參考專案檔中的 [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) NuGet 套件。
 
 `IChangeToken` 有兩個屬性：
 
@@ -37,9 +38,10 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="changetoken-class"></a>ChangeToken 類別
 
-`ChangeToken` 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) 命名空間中。 如需不使用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) 中繼套件的應用程式，請參考專案檔中的 [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) NuGet 套件。
+`ChangeToken` 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) 命名空間中。 如需不使用[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)的應用程式，請參考專案檔中的 [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) NuGet 套件。
 
 `ChangeToken` 的 [OnChange(Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) 方法將登錄每當權杖變更時要呼叫的 `Action`：
+
 * `Func<IChangeToken>` 會產生權杖。
 * 在權杖變更時呼叫 `Action`。
 
@@ -196,7 +198,7 @@ var compositeChangeToken =
 
 如果任何表示的權杖 `HasChanged` 是 `true`，複合權杖上的 `HasChanged` 會報告 `true`。 如果任何表示的權杖 `ActiveChangeCallbacks` 是 `true`，複合權杖上的 `ActiveChangeCallbacks` 會報告 `true`。 如果發生多個同時變更事件，會叫用複合變更回呼剛好一次。
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
 * [記憶體中快取](xref:performance/caching/memory)
 * [使用分散式快取](xref:performance/caching/distributed)

@@ -1,32 +1,32 @@
 ---
 title: 在 Linux 上使用 Nginx 裝載 ASP.NET Core
 author: rick-anderson
-description: 描述如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，以將 HTTP 流量轉送至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
+description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，以將 HTTP 流量轉送至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2018
+ms.date: 05/22/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d37aa25c712d715aa4134587a84e5923f9cb5b79
-ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
+ms.openlocfilehash: edef672ca809c560a3f9faa891586e5e255284b5
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2018
-ms.locfileid: "34452551"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566811"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
 作者：[Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。
+本指南說明在 Ubuntu 16.04 伺服器上設定生產環境就緒的 ASP.NET Core 環境。 這些指示可能使用較新版本的 Ubuntu，但未經測試。
 
 > [!NOTE]
-> 針對 Ubuntu 14.04，建議使用 *supervisord*作為監視 Kestrel 處理序的解決方案。 在 Ubuntu 14.04 上無法使用 *systemd*。 [請參閱本文件的舊版本](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md) \(英文\)。
+> 針對 Ubuntu 14.04，建議使用 *supervisord*作為監視 Kestrel 處理序的解決方案。 在 Ubuntu 14.04 上無法使用 *systemd*。 如需 Ubuntu 14.04 指示，請參閱[本主題前一版本](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)。
 
-本指南會：
+本指南：
 
 * 將現有的 ASP.NET Core 應用程式放在反向 Proxy 伺服器後方。
 * 設定反向 Proxy 伺服器以將要求轉送至 Kestrel 網頁伺服器。
@@ -35,31 +35,55 @@ ms.locfileid: "34452551"
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器
-1. 現有的 ASP.NET Core 應用程式
+1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
+1. 在伺服器上安裝 .NET Core 執行階段。
+   1. 請前往 [.NET Core 的 All Downloads (下載區)](https://www.microsoft.com/net/download/all) 頁面。
+   1. 在 [執行階段] 下的清單中選取最新的非預覽執行階段。
+   1. 選取並遵循符合伺服器 Ubuntu 版本的 Ubuntu 指示。
+1. 現有的 ASP.NET Core 應用程式。
 
-## <a name="copy-over-the-app"></a>將應用程式複製過去
+## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
-從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish)，以將應用程式封裝至可在伺服器上執行的自封式目錄中。
+為[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)設定應用程式。
 
-使用任何工具 (SCP、FTP 等等) 將 ASP.NET Core 應用程式複製到伺服器，以整合至組織的工作流程。 測試應用程式，例如：
+從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
 
-* 從命令列執行 `dotnet <app_assembly>.dll`。
-* 在瀏覽器中，巡覽至 `http://<serveraddress>:<port>` 以確認應用程式可在 Linux 上正常運作。 
- 
+```console
+dotnet publish --configuration Release
+```
+
+如果您不想在伺服器上維護 .NET Core 執行階段，應用程式也可以發佈為[獨立式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
+
+使用整合至組織工作流程的工具 (SCP、FTP 等等) 將 ASP.NET Core 應用程式複製到伺服器。 Web 應用程式通常可在 *var* 目錄下找到 (例如，*var/aspnetcore/hellomvc*)。
+
+> [!NOTE]
+> 在生產環境部署案例中，持續整合工作流程會執行發佈應用程式並將資產複製到伺服器的工作。
+
+測試應用程式：
+
+1. 從命令列執行應用程式：`dotnet <app_assembly>.dll`。
+1. 在瀏覽器中，巡覽至 `http://<serveraddress>:<port>` 以確認應用程式可在 Linux 本機上正常運作。
+
 ## <a name="configure-a-reverse-proxy-server"></a>設定反向 Proxy 伺服器
 
 反向 Proxy 是為動態 Web 應用程式提供服務的常見設定。 反向 Proxy 會終止 HTTP 要求，並將它轉送至 ASP.NET Core 應用程式。
 
-### <a name="why-use-a-reverse-proxy-server"></a>為何使用反向 Proxy 伺服器？
+::: moniker range=">= aspnetcore-2.0"
+
+> [!NOTE]
+> 不論設定是否具有反向 Proxy 伺服器，對於 ASP.NET Core 2.0 或更新版本的應用程式，其中之一都是有效且支援的裝載設定。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
+
+::: moniker-end
+
+### <a name="use-a-reverse-proxy-server"></a>使用反向 Proxy 伺服器
 
 Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服務功能不像 IIS、Apache 或 Nginx 這類伺服器那樣豐富。 反向 Proxy 伺服器可以讓 HTTP 伺服器卸下提供靜態內容、快取要求、壓縮要求及終止 SSL 等工作的負擔。 反向 Proxy 伺服器可能位在專用電腦上，或可能與 HTTP 伺服器一起部署。
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 您可以根據需求，選擇不同的設定。
 
-由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的「轉送的標頭中介軟體」。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
+由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
-有使用任何類型的驗證中介軟體時，必須先執行「轉送的標頭中介軟體」。 此排序可確保驗證中介軟體能夠取用標頭值，然後產生正確的重新導向 URI。
+任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -100,20 +124,28 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
+使用 `apt-get` 來安裝 Nginx。 安裝程式建立的 *systemd* init 指令碼，會在系統啟動時將 Nginx 執行為精靈。 
+
 ```bash
-sudo apt-get install nginx
+sudo -s
+nginx=stable # use nginx=development for latest development version
+add-apt-repository ppa:nginx/$nginx
+apt-get update
+apt-get install nginx
 ```
 
-> [!NOTE]
-> 如果將安裝選用的 Nginx 模組，可能會需要從來源建置 Nginx。
+Ubuntu 個人套件封存 (PPA) 由志工維護，非由 [nginx.org](https://nginx.org/) 散發。如需詳細資訊，請參閱 [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx：二進位版本：正式的 Debian Ubuntu 套件)。
 
-使用 `apt-get` 來安裝 Nginx。 安裝程式建立的系統 V init 初始化指令碼，會在系統啟動時將 Nginx 執行為精靈。 因為 Nginx 是第一次安裝，請透過執行明確啟動它：
+> [!NOTE]
+> 如果需要選用的 Nginx 模組，可能要從來源建置 Nginx。
+
+因為 Nginx 是第一次安裝，請透過執行明確啟動它：
 
 ```bash
 sudo service nginx start
 ```
 
-確認瀏覽器會顯示 Nginx 的預設登陸頁面。
+確認瀏覽器會顯示 Nginx 的預設登陸頁面。 登陸頁面位於 `http://<server_IP_address>/index.nginx-debian.html`。
 
 ### <a name="configure-nginx"></a>設定 Nginx
 
@@ -128,8 +160,10 @@ server {
         proxy_http_version 1.1;
         proxy_set_header   Upgrade $http_upgrade;
         proxy_set_header   Connection keep-alive;
-        proxy_set_header   Host $http_host;
+        proxy_set_header   Host $host;
         proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
     }
 }
 ```
@@ -150,6 +184,21 @@ server {
 > 如果無法指定適當的 [server_name 指示詞](https://nginx.org/docs/http/server_names.html)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.com`) 的控制權，子網域萬用字元繫結 (例如 `*.example.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 建立 Nginx 設定之後，請執行 `sudo nginx -t` 來確認設定檔的語法。 如果設定檔測試成功，請執行 `sudo nginx -s reload` 來強制 Nginx 套用這些變更。
+
+直接在伺服器上執行應用程式：
+
+1. 巡覽至應用程式目錄。
+1. 執行應用程式的可執行檔：`./<app_executable>`。
+
+如果發生權限錯誤，請變更權限：
+
+```console
+chmod u+x <app_executable>
+```
+
+如果應用程式在伺服器上執行，但無法透過網際網路回應，請檢查伺服器的防火牆，確認連接埠 80 已開啟。 如果使用的是 Azure Ubuntu VM，請新增啓用輸入連接埠 80 流量的網路安全性群組 (NSG) 規則。 沒有必要啟用輸出連接埠 80 規則，因為啓用輸入規則時會自動授與輸出流量。
+
+應用程式測試完成後，請在命令提示字元以 `Ctrl+C` 關閉應用程式。
 
 ## <a name="monitoring-the-app"></a>監視應用程式
 
@@ -259,20 +308,6 @@ sudo ufw allow 443/tcp
 
 ### <a name="securing-nginx"></a>保護 Nginx
 
-Nginx 的預設分佈不會啟用 SSL。 為啟用其他的安全性功能，請從來源建置。
-
-#### <a name="download-the-source-and-install-the-build-dependencies"></a>下載來源並安裝組建相依性
-
-```bash
-# Install the build dependencies
-sudo apt-get update
-sudo apt-get install build-essential zlib1g-dev libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
-
-# Download Nginx 1.10.0 or latest
-wget http://www.nginx.org/download/nginx-1.10.0.tar.gz
-tar zxf nginx-1.10.0.tar.gz
-```
-
 #### <a name="change-the-nginx-response-name"></a>變更 Nginx 回應名稱
 
 編輯 *src/http/ngx_http_header_filter_module.c*：
@@ -282,20 +317,9 @@ static char ngx_http_server_string[] = "Server: Web Server" CRLF;
 static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 ```
 
-#### <a name="configure-the-options-and-build"></a>設定選項和組建
+#### <a name="configure-options"></a>設定選項
 
-規則運算式需要 PCRE 程式庫。 規則運算式用於 ngx_http_rewrite_module 的位置指示詞。 http_ssl_module 新增 HTTPS 通訊協定的支援。
-
-請考慮使用像 *ModSecurity* 這樣的 Web 應用程式防火牆來強化應用程式。
-
-```bash
-./configure
---with-pcre=../pcre-8.38
---with-zlib=../zlib-1.2.8
---with-http_ssl_module
---with-stream
---with-mail=dynamic
-```
+設定伺服器的其他所需模組。 請考慮使用 [ModSecurity](https://www.modsecurity.org/) 等 Web 應用程式防火牆來強化應用程式。
 
 #### <a name="configure-ssl"></a>設定 SSL
 
@@ -336,4 +360,10 @@ sudo nano /etc/nginx/nginx.conf
 sudo nano /etc/nginx/nginx.conf
 ```
 
-新增 `add_header X-Content-Type-Options "nosniff";` 行並儲存檔案，然後重新啟動 Nginx。
+新增行 `add_header X-Content-Type-Options "nosniff";` 並儲存檔案，然後重新啟動 Nginx。
+
+## <a name="additional-resources"></a>其他資源
+
+* [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx：二進位版本：正式的 Debian Ubuntu 套件)
+* [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)
+* [NGINX：使用轉送的標頭](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

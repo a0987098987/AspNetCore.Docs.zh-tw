@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 6b2c3334798861ebdb14787205480422d7d536ea
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 0cb9bc7d8bf415e5a0125c3798f2430c9e861c98
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729648"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -43,7 +44,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `UseIISIntegration` 方法採用此動態連接埠，並設定 Kestrel 來接聽 `http://localhost:{dynamicPort}/`。 這會覆寫其他 URL 設定，例如呼叫 `UseUrls` 或 [Kestrel 的 Listen API](xref:fundamentals/servers/kestrel#endpoint-configuration)。 因此在使用模組時無須呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 就會接聽未使用 IIS 執行應用程式時指定的連接埠。
+ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `CreateDefaultBuilder` 呼叫的 [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) 方法，會挑選動態連接埠並設定 Kestrel 接聽 `http://localhost:{dynamicPort}/`。 這會覆寫其他 URL 設定，例如呼叫 `UseUrls` 或 [Kestrel 的 Listen API](xref:fundamentals/servers/kestrel#endpoint-configuration)。 因此在使用模組時無須呼叫 `UseUrls` 或 Kestrel 的 `Listen` API。 若呼叫 `UseUrls` 或 `Listen`，Kestrel 就會接聽未使用 IIS 執行應用程式時指定的連接埠。
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -89,7 +90,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file"></a>web.config 檔案
 
-*web.config* 檔案是用來設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 建立、轉換及發行 *web.config* 是由 .NET Core Web SDK (`Microsoft.NET.Sdk.Web`) 處理。 SDK 設定在專案檔的頂端：
+*web.config* 檔案是用來設定 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 發佈專案時，由 MSBuild 目標 (`_TransformWebConfig`) 處理 *web.config* 檔案的建立、轉換及發佈。 此目標存在於 Web SDK 目標 (`Microsoft.NET.Sdk.Web`)。 SDK 設定在專案檔的頂端：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -172,8 +173,9 @@ services.Configure<IISOptions>(options =>
 1. 在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
    1. 瀏覽至 [.NET 所有下載頁面](https://www.microsoft.com/net/download/all)。
-   1. 從清單中選取最新的非預覽 .NET Core 執行階段 (**.NET Core** > **Runtime** > **.NET Core 執行階段 x.y.z**)。 除非是用於預覽軟體，否則在執行階段的連結文字中請避免使用 "preview" (預覽) 或 "rc" (Release Candidate，候選版) 等文字。
-   1. 在 [Windows] 下的 .NET Core 執行階段下載頁面中，選取 [裝載套件組合安裝程式] 連結，以下載 .NET Core 裝載套件組合。
+   1. 在資料表的 [執行階段] 資料行中，從清單選取最新的非預覽 .NET Core 執行階段 (**X.Y 執行階段 (vX.Y.Z) 下載**)。 最新版執行階段有**目前**標籤。 除非是用於預覽軟體，否則在執行階段的連結文字中請避免使用 "preview" (預覽) 或 "rc" (Release Candidate，候選版) 等文字。
+   1. 在 [Windows] 下的 .NET Core 執行階段下載頁面中，選取 [裝載套件組合安裝程式] 連結，以下載「.NET Core 裝載套件組合」安裝程式。
+   1. 在伺服器上執行安裝程式。
 
    **重要！** 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
    

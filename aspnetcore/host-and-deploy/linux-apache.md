@@ -2,20 +2,16 @@
 title: 在 Linux 上使用 Apache 裝載 ASP.NET Core
 description: 了解如何在 CentOS 上將 Apache 設定為反向 Proxy 伺服器，以將 HTTP 流量重新導向至在 Kestrel 上執行的 ASP.NET Core Web 應用程式。
 author: spboyer
-manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
 ms.date: 03/13/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 69e92af08eabede023608e612f1fbd48a8f2608e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33962813"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275447"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -25,15 +21,29 @@ ms.locfileid: "33962813"
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶
-2. ASP.NET Core 應用程式
+1. 執行 CentOS 7 的伺服器搭配具有 sudo 權限的標準使用者帳戶。
+1. 在伺服器上安裝 .NET Core 執行階段。
+   1. 請前往 [.NET Core 的 All Downloads (下載區)](https://www.microsoft.com/net/download/all) 頁面。
+   1. 在 [執行階段] 下的清單中選取最新的非預覽執行階段。
+   1. 選取並遵循 CentOS/Oracle 的指示。
+1. 現有的 ASP.NET Core 應用程式。
 
-## <a name="publish-the-app"></a>發行應用程式
+## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
-在 CentOS 7 執行階段 (`centos.7-x64`) 的版本設定中，以[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)的形式發佈應用程式。 使用 SCP、FTP 或其他檔案傳輸方法將 *bin/Release/netcoreapp2.0/centos.7-x64/publish* 資料夾的內容複製到伺服器。
+為[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)設定應用程式。
+
+從開發環境執行 [dotnet publish](/dotnet/core/tools/dotnet-publish) 將應用程式封裝到可在伺服器上執行的目錄 (例如，*bin/Release/&lt;target_framework_moniker&gt;/publish*)：
+
+```console
+dotnet publish --configuration Release
+```
+
+如果您不想在伺服器上維護 .NET Core 執行階段，應用程式也可以發佈為[獨立式部署](/dotnet/core/deploying/#self-contained-deployments-scd)。
+
+使用整合至組織工作流程的工具 (SCP、SFTP 等等) 將 ASP.NET Core 應用程式複製到伺服器。 Web 應用程式通常可在 *var* 目錄下找到 (例如，*var/aspnetcore/hellomvc*)。
 
 > [!NOTE]
-> 在生產環境部署案例中，持續整合工作流程會執行發佈應用程式並將資產複製到伺服器的工作。 
+> 在生產環境部署案例中，持續整合工作流程會執行發佈應用程式並將資產複製到伺服器的工作。
 
 ## <a name="configure-a-proxy-server"></a>設定 Proxy 伺服器
 
@@ -41,9 +51,14 @@ ms.locfileid: "33962813"
 
 Proxy 伺服器則是會將用戶端要求轉送至另一部伺服器，而不是自己完成這些要求。 反向 Proxy 會轉送至固定目的地，通常代表任意的用戶端。 在本指南中，是將 Apache 設定成反向 Proxy，且執行所在的伺服器與 Kestrel 為 ASP.NET Core 應用程式提供服務的伺服器相同。
 
-由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的「轉送的標頭中介軟體」。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
+由於反向 Proxy 會轉送要求，因此請使用來自 [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/) 套件的[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
-有使用任何類型的驗證中介軟體時，必須先執行「轉送的標頭中介軟體」。 此排序可確保驗證中介軟體能夠取用標頭值，然後產生正確的重新導向 URI。
+任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
+
+::: moniker range=">= aspnetcore-2.0"
+> [!NOTE]
+> 不論設定是否具有反向 Proxy 伺服器，對於 ASP.NET Core 2.0 或更新版本的應用程式，其中之一都是有效且支援的裝載設定。 如需詳細資訊，請參閱[何時搭配使用 Kestrel 與反向 Proxy](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy)。
+::: moniker-end
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -117,13 +132,17 @@ Complete!
 > [!NOTE]
 > 在此範例中，輸出會反映 httpd.86_64，因為 CentOS 第 7 版是 64 位元。 若要確認 Apache 的安裝位置，請從命令提示字元執行 `whereis httpd`。
 
-### <a name="configure-apache-for-reverse-proxy"></a>設定 Apache 以用於反向 Proxy
+### <a name="configure-apache"></a>設定 Apache
 
 Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 `/etc/httpd/conf.modules.d/` (包含載入模組所需的所有設定檔) 中的模組設定檔之外，任何副檔名為 *.conf* 的檔案也會依字母順序處理。
 
 為應用程式建立名為 *hellomvc.conf*的設定檔：
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
@@ -158,7 +177,6 @@ sudo systemctl enable httpd
 ## <a name="monitoring-the-app"></a>監視應用程式
 
 Apache 現在已設定完成，可將對 `http://localhost:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。  不過，並未設定 Apache 來管理 Kestrel 處理序。 請使用 *systemd* 並建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd* 是 init 系統，提供許多強大的啟動、停止和管理處理程序功能。 
-
 
 ### <a name="create-the-service-file"></a>建立服務檔
 
@@ -262,7 +280,7 @@ sudo firewall-cmd --add-port=443/tcp --permanent
 
 重新載入防火牆設定。 檢查預設區域中可用的服務和連接埠。 您可以檢查 `firewall-cmd -h` 來取得選項。
 
-```bash 
+```bash
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-all
 ```
@@ -286,6 +304,7 @@ rich rules:
 ```bash
 sudo yum install mod_ssl
 ```
+
 若要強制執行 SSL，請安裝 `mod_rewrite` 模組來啟用 URL 重寫：
 
 ```bash
@@ -295,10 +314,14 @@ sudo yum install mod_rewrite
 修改 *hellomvc.conf* 檔案以啟用 URL 重寫並保護連接埠 443 上的通訊：
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -364,7 +387,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 新增 `Header set X-Content-Type-Options "nosniff"` 行。 儲存檔案。 重新啟動 Apache。
 
-### <a name="load-balancing"></a>負載平衡 
+### <a name="load-balancing"></a>負載平衡
 
 這個範例示範如何在 CentOS 7 上安裝和設定 Apache，以及如何在相同的執行個體電腦上安裝和設定 Kestrel。 為了避免產生單一失敗點的情況，使用 *mod_proxy_balancer* 並修改 **VirtualHost**將可允許管理位於 Apache Proxy 伺服器後方的多個 Web 應用程式執行個體。
 
@@ -375,10 +398,14 @@ sudo yum install mod_proxy_balancer
 在以下所示的設定檔中，已將一個額外的 `hellomvc` 應用程式執行個體設定在連接埠 5001 上執行。 *Proxy* 區段中設定了平衡器設定，其中有兩個成員為 *byrequests* 進行負載平衡。
 
 ```
+<VirtualHost *:*>
+    RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+</VirtualHost>
+
 <VirtualHost *:80>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^/?(.*) https://%{SERVER_NAME}/ [R,L]
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443>
@@ -407,6 +434,7 @@ sudo yum install mod_proxy_balancer
 ```
 
 ### <a name="rate-limits"></a>速率限制
+
 使用 *mod_ratelimit* (包含在 *httpd* 模組中) 時，可以限制用戶端的頻寬：
 
 ```bash
@@ -422,3 +450,7 @@ sudo nano /etc/httpd/conf.d/ratelimit.conf
     </Location>
 </IfModule>
 ```
+
+## <a name="additional-resources"></a>其他資源
+
+* [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)

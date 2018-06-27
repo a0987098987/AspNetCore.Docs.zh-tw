@@ -3,6 +3,7 @@ title: 在 ASP.NET Core 中使用託管服務的背景工作
 author: guardrex
 description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工作。
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
@@ -10,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: cc39d125b639719599eca68d627fda014fb107e0
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 13ac7e266b657bc186188b2b6f40204cfd936fca
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555296"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341817"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -46,7 +47,7 @@ ms.locfileid: "34555296"
 
 * [StopAsync(CancellationToken)](/dotnet/api/microsoft.extensions.hosting.ihostedservice.stopasync) - 當主機執行正常關機程序時觸發。 `StopAsync` 包含用來結束背景工作和處置任何受控資源的邏輯。 如果應用程式意外關閉 (例如，應用程式的處理序失敗)，可能不會呼叫 `StopAsync`。
 
-託管服務是在應用程式啟動時啟動一次，且在應用程式關閉時正常關閉的單一服務。 若實作 [IDisposable](/dotnet/api/system.idisposable)，就可以在處置服務容器時處置資源。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
+託管服務會在應用程式啟動時啟動一次，然後應用程式關閉時正常關閉。 若實作 [IDisposable](/dotnet/api/system.idisposable)，就可以在處置服務容器時處置資源。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
 
 ## <a name="timed-background-tasks"></a>計時背景工作
 
@@ -54,9 +55,21 @@ ms.locfileid: "34555296"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
 
-服務會在 `Startup.ConfigureServices` 中註冊：
+::: moniker range=">= aspnetcore-2.1"
+
+服務是在 `Startup.ConfigureServices` 中使用 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+服務會在 `Startup.ConfigureServices` 中註冊：
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>在背景工作中使用範圍服務
 
@@ -70,13 +83,25 @@ ms.locfileid: "34555296"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
 
-這些服務會在 `Startup.ConfigureServices` 中註冊：
+::: moniker range=">= aspnetcore-2.1"
+
+這些服務會在 `Startup.ConfigureServices` 中註冊。 `IHostedService` 實作是以 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
 
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+這些服務會在 `Startup.ConfigureServices` 中註冊：
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
+
+::: moniker-end
+
 ## <a name="queued-background-tasks"></a>排入佇列背景工作
 
-背景工作佇列是以 .NET 4.x [QueueBackgroundWorkItem](/dotnet/api/system.web.hosting.hostingenvironment.queuebackgroundworkitem) ([暫時排定為針對 ASP.NET Core 2.2 內建](https://github.com/aspnet/Hosting/issues/1280)) 為基礎：
+背景工作佇列是以 .NET 4.x [QueueBackgroundWorkItem](/dotnet/api/system.web.hosting.hostingenvironment.queuebackgroundworkitem) ([暫時排定為針對 ASP.NET Core 3.0 內建](https://github.com/aspnet/Hosting/issues/1280)) 為基礎：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
@@ -84,9 +109,21 @@ ms.locfileid: "34555296"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
 
-這些服務會在 `Startup.ConfigureServices` 中註冊：
+::: moniker range=">= aspnetcore-2.1"
+
+這些服務會在 `Startup.ConfigureServices` 中註冊。 `IHostedService` 實作是以 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+這些服務會在 `Startup.ConfigureServices` 中註冊：
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
+
+::: moniker-end
 
 在索引頁面模型類別中，`IBackgroundTaskQueue` 已插入至建構函式，並指派給 `Queue`：
 

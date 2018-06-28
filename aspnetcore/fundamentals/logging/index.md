@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 12/15/2017
 uid: fundamentals/logging/index
-ms.openlocfilehash: 8ba604ae8748455c95932f9d8843c1f7a5da2a06
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2307df3b4b571840f31808b86b48b0e6fb2de852
+ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272759"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033309"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -488,7 +488,7 @@ loggerFactory.AddEventSourceLogger()
 
 ---
 
-收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://www.microsoft.com/download/details.aspx?id=28567)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET 所發出之 ETW 事件的最佳體驗。 
+收集及檢視記錄的一個好方法是使用 [PerfView 公用程式](https://github.com/Microsoft/perfview)。 此外還有一些其他工具可檢視 ETW 記錄，但 PerfView 提供處理 ASP.NET 所發出之 ETW 事件的最佳體驗。 
 
 若要設定 PerfView 以收集此提供者所記錄的事件，請將字串 `*Microsoft-Extensions-Logging` 新增至 [其他提供者] 清單 (請勿遺漏字串開頭的星號)。
 

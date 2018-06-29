@@ -4,15 +4,13 @@ author: rick-anderson
 description: 取得 ASP.NET Core 的簡介，ASP.NET Core 是一種跨平台且高效能的開放原始碼架構，用於建置現代化、雲端式、網際網路連線的應用程式。
 ms.author: riande
 ms.date: 02/28/2018
-ms.technology: aspnetcore
-ms.topic: conceptual
 uid: index
-ms.openlocfilehash: 3b55390e23f538a298e9fe97c9678fe6841b818c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 6de7f1bc8229c5de519e4064dda0a7061cf8b9c6
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272866"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077708"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 

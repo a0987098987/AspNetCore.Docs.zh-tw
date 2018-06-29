@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 524928a5b291e02556d11a762d86430a6dc94660
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 218d7a495655598046671093c0cfe7b9622aca5e
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277253"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077598"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>使用 ASP.NET Core IAuthorizationPolicyProvider 自訂授權原則提供者 
 
@@ -88,7 +88,7 @@ public IActionResult RequiresMinimumAge10()
 當使用`MinimumAgeAuthorizationAttribute`，授權原則的名稱會遵循模式`"MinimumAge" + Age`，因此自訂`IAuthorizationPolicyProvider`應該產生的授權原則：
 
 * 剖析將年齡從原則名稱。
-* 使用`AuthorizationPolicyBuiler`來建立新的 `AuthorizationPolicy`
+* 使用`AuthorizationPolicyBuilder`來建立新的 `AuthorizationPolicy`
 * 新增至原則的需求會根據與年齡`AuthorizationPolicyBuilder.AddRequirements`。 在其他情況下，您可以使用`RequireClaim`， `RequireRole`，或`RequireUserName`改為。
 
 ```CSharp

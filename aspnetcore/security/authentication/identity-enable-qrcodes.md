@@ -1,20 +1,19 @@
 ---
-title: 啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
+title: 啟用 ASP.NET Core TOTP 驗證器應用程式的 QR 代碼產生
 author: rick-anderson
-description: 了解如何啟用 QR 程式碼產生使用 ASP.NET Core 雙因素驗證的驗證器應用程式。
+description: 了解如何啟用 QR TOTP 驗證器應用程式可搭配 ASP.NET Core 雙因素驗證的程式碼產生。
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/24/2017
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 7604371eef1e8dcf35a5c47ef11b66c0669cacc5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b0d8f104119340b97bd65f1826bb921ca875acf8
+ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274725"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37089967"
 ---
-# <a name="enable-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>啟用驗證器應用程式中 ASP.NET Core 的 QR 代碼產生
-
-注意： 本主題適用於 ASP.NET Core 2.x
+# <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>啟用 ASP.NET Core TOTP 驗證器應用程式的 QR 代碼產生
 
 ASP.NET Core 隨附個別驗證的驗證器應用程式的支援。 兩個因素驗證 (2FA) 驗證器應用程式，使用以時間為基礎單次密碼演算法 (TOTP)，是建議的方法，如 2FA 產業。 2FA 使用 TOTP 最好 SMS 2FA。 驗證器應用程式提供的使用者必須確認使用者名稱和密碼之後輸入 6 to 8 位數代碼。 通常驗證器應用程式會安裝在智慧型手機上。
 
@@ -58,7 +57,7 @@ ASP.NET Core web 應用程式範本支援的驗證器，但不提供支援 QRCod
 
 ## <a name="change-the-site-name-in-the-qr-code"></a>變更站台名稱在 QR 代碼
 
-將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*Pages\Account\Manage\EnableAuthenticator.cshtml.cs* （Razor 頁面） 檔案或*Controllers\ManageController.cs* (MVC) 檔案。 
+將 QR 代碼中的站台名稱是取自您一開始建立專案時，選擇專案名稱。 您可以藉由尋找來加以變更`GenerateQrCodeUri(string email, string unformattedKey)`方法中的*Pages\Account\Manage\EnableAuthenticator.cshtml.cs* （Razor 頁面） 檔案或*Controllers\ManageController.cs* (MVC) 檔案。
 
 從範本的預設程式碼看起來如下：
 
@@ -82,7 +81,7 @@ private string GenerateQrCodeUri(string email, string unformattedKey)
 將 QR 代碼的正確格式的 URL 位於:
 
 * `AuthenticatorUri` 模型的屬性。
-* `data-url` 中的屬性`qrCodeData`項目。 
+* `data-url` 中的屬性`qrCodeData`項目。
 
 ## <a name="totp-client-and-server-time-skew"></a>TOTP 用戶端和伺服器時間誤差
 

@@ -2,20 +2,16 @@
 title: ASP.NET Core 基本概念
 author: rick-anderson
 description: 探索用於建置 ASP.NET Core 應用程式的基本概念。
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 09/30/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 97c0b289b259332d57f8175e05020fe03d505723
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: b51d7b62525944d9924ecb4ce5964312f30a7835
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233306"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278865"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -78,7 +74,7 @@ public class Startup
 
 ## <a name="content-root"></a>內容根目錄
 
-內容根目錄是應用程式所使用的任何內容的基底路徑，例如檢視、[Razor 頁面](xref:mvc/razor-pages/index)，以及靜態資產。 根據預設，內容根目錄會與裝載應用程式之可執行檔的應用程式基底路徑相同。
+內容根目錄是應用程式所使用的任何內容的基底路徑，例如檢視、[Razor 頁面](xref:razor-pages/index)，以及靜態資產。 根據預設，內容根目錄會與裝載應用程式之可執行檔的應用程式基底路徑相同。
 
 ## <a name="web-root"></a>Web 根目錄
 
@@ -106,9 +102,13 @@ ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介
 
 如需詳細資訊，請參閱[中介軟體](xref:fundamentals/middleware/index)和 [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)。
 
+::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="initiate-http-requests"></a>初始化 HTTP 要求
 
 如需使用 `IHttpClientFactory` 來存取 `HttpClient` 執行個體以發出 HTTP 要求的詳細資訊，請參閱[初始化 HTTP 要求](xref:fundamentals/http-requests)。
+
+::: moniker-end
 
 ## <a name="environments"></a>環境
 
@@ -126,7 +126,7 @@ ASP.NET Core 會使用以成對的名稱/值為基礎的組態模型。 而非�
 
 ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供者支援將記錄檔傳送至一或多個目的地。 可以使用協力廠商記錄架構。
 
-[記錄](xref:fundamentals/logging/index)
+如需詳細資訊，請參閱[記錄](xref:fundamentals/logging/index)
 
 ## <a name="error-handling"></a>錯誤處理
 
@@ -152,15 +152,15 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化，而�
 
 如需詳細資訊，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
-## <a name="hosting"></a>代管
+## <a name="hosting"></a>裝載
 
 ASP.NET Core 應用程式會設定並啟動*主機*，其負責啟動應用程式以及管理存留期。
 
 如需詳細資訊，請參閱[在 ASP.NET 中代管](xref:fundamentals/host/index)。
 
-## <a name="session-and-application-state"></a>工作階段與應用程式狀態
+## <a name="session-and-app-state"></a>工作階段和應用程式狀態
 
-在 ASP.NET Core 中的工作階段狀態功能，可用於在使用者瀏覽您的 Web 應用程式時，儲存及存放使用者資料。
+ASP.NET Core 提供數種方法，可在使用者瀏覽 Web 應用程式時保留工作階段與狀態。
 
 如需詳細資訊，請參閱[工作階段與應用程式狀態](xref:fundamentals/app-state)。
 
@@ -188,9 +188,9 @@ ASP.NET Core 裝載模型不會直接接聽要求。 裝載模型需透過 HTTP 
 
 ## <a name="background-tasks"></a>背景工作
 
-背景工作會實作為*代管服務*。 代管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
+背景工作會實作為*託管服務*。 託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。
 
-如需詳細資訊，請參閱[搭配代管服務的背景工作](xref:fundamentals/host/hosted-services)。
+如需詳細資訊，請參閱[搭配託管服務的背景工作](xref:fundamentals/host/hosted-services)。
 
 ## <a name="open-web-interface-for-net-owin"></a>Open Web Interface for .NET (OWIN)
 

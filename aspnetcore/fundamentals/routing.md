@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的路由
 author: ardalis
 description: 探索 ASP.NET Core 路由功能如何負責將傳入要求對應至路由處理常式。
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: a23e2e1a1dd25a57e5d6189bbd5938c48078515b
-ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
+ms.openlocfilehash: 4482c865671eb4f5decbd5f1cd6e26f2e68e5c25
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35341778"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314132"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -154,7 +150,7 @@ routes.MapRoute(
     dataTokens: new { locale = "en-US" });
 ```
 
-此範本將符合 `/Products/5` 等 URL 路徑，並擷取值 `{ controller = Products, action = Details, id = 5 }` 和資料語彙基元 `{ locale = en-US }`。
+此範本符合 `/en-US/Products/5` 等 URL 路徑，並擷取值 `{ controller = Products, action = Details, id = 5 }` 和資料語彙基元 `{ locale = en-US }`。
 
 ![[區域變數] 視窗語彙基元](routing/_static/tokens.png)
 
@@ -285,6 +281,16 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 使用範本通常是最簡單的路由方式。 條件約束和預設值也可以在路由範本外部指定。
 
 提示：啟用[記錄](xref:fundamentals/logging/index)以查看內建路由實作 (例如 `Route`) 如何符合要求。
+
+## <a name="reserved-routing-names"></a>保留的路由名稱
+
+下列關鍵字是保留的名稱，不能用作路由名稱或參數：
+
+* `action`
+* `area`
+* `controller`
+* `handler`
+* `page`
 
 ## <a name="route-constraint-reference"></a>路由條件約束參考
 

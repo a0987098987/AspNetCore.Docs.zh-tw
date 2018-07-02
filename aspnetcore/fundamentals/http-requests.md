@@ -2,27 +2,23 @@
 title: 初始化 HTTP 要求
 author: stevejgordon
 description: 深入了解在 ASP.NET Core 中使用 IHttpClientFactory 介面來管理邏輯 HttpClient 執行個體。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/02/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
+ms.date: 06/22/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: 1f2c7522a10220cd9520d78846d2e897115447c2
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: e56c7a3ed80cc08103f6178859a1a99f1a5ec068
+ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33838757"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36327518"
 ---
 # <a name="initiate-http-requests"></a>初始化 HTTP 要求
 
 作者：[Glenn Condron](https://github.com/glennc)、[Ryan Nowak](https://github.com/rynowak) 和 [Steve Gordon](https://github.com/stevejgordon)
 
-`IHttpClientFactory` 可以註冊及用來在應用程式中設定和建立 [HttpClient](/dotnet/api/system.net.http.httpclient) 執行個體。 它提供下列優點：
+[IHttpClientFactory](/dotnet/api/system.net.http.ihttpclientfactory) 可以註冊並用來在應用程式中設定和建立 [HttpClient](/dotnet/api/system.net.http.httpclient) 執行個體。 它提供下列優點：
 
 * 提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。 例如，"github" 用戶端可以註冊並設定成存取 GitHub。 預設用戶端可以註冊用於其他用途。
 * 透過委派 `HttpClient` 中的處理常式來撰寫外寄中介軟體的概念，並提供延伸模組以便 Polly 架構中介軟體利用外寄中介軟體。
@@ -42,7 +38,7 @@ ms.locfileid: "33838757"
 
 ### <a name="basic-usage"></a>基本使用方式
 
-`IHttpClientFactory` 可以藉由在 Startup.cs 中的 `ConfigureServices` 方法內，在 `IServiceCollection` 上呼叫 `AddHttpClient` 擴充方法來註冊。
+`IHttpClientFactory` 可以藉由在 `Startup.ConfigureServices` 方法內的 `IServiceCollection` 上呼叫 `AddHttpClient` 擴充方法來註冊。
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet1)]
 
@@ -54,7 +50,7 @@ ms.locfileid: "33838757"
 
 ### <a name="named-clients"></a>具名用戶端
 
-如果應用程式需要使用多個不同的 `HttpClient`，且每個使用不同的組態，可以選擇使用**具名用戶端**。 具名 `HttpClient` 的組態可以在 `ConfigureServices` 中註冊時指定。
+如果應用程式需要使用多個不同的 `HttpClient`，且每個使用不同的組態，可以選擇使用**具名用戶端**。 具名 `HttpClient` 的組態可以在 `Startup.ConfigureServices` 中註冊時指定。
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet2)]
 
@@ -78,7 +74,7 @@ ms.locfileid: "33838757"
 
 在上述程式碼中，組態會移到具型別用戶端。 `HttpClient` 物件會公開為公用屬性。 您可定義 API 特定的方法，其公開 `HttpClient` 功能。 `GetAspNetDocsIssues` 方法會封裝從 GitHub 存放庫查詢和剖析最新開啟問題所需的程式碼。
 
-若要註冊具型別用戶端，泛型 `AddHttpClient` 擴充方法可用於 `ConfigureServices` 內，並指定具型別用戶端類別：
+若要註冊具型別用戶端，泛型 `AddHttpClient` 擴充方法可用於 `Startup.ConfigureServices` 內，並指定具型別用戶端類別：
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet3)]
 
@@ -86,7 +82,7 @@ ms.locfileid: "33838757"
 
 [!code-csharp[](http-requests/samples/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
-想要的話，具型別用戶端的組態可以在 `ConfigureServices` 中註冊時指定，而不是在具型別用戶端的建構函式中：
+想要的話，具型別用戶端的組態可以在 `Startup.ConfigureServices` 中註冊時指定，而不是在具型別用戶端的建構函式中：
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet4)]
 
@@ -175,7 +171,7 @@ public class ValuesController : ControllerBase
 
 `IHttpClientFactory` 整合受歡迎的協力廠商程式庫，稱為 [Polly](https://github.com/App-vNext/Polly)。 Polly 是適用於 .NET 的完整恢復功能和暫時性錯誤處理程式庫。 它可讓開發人員以流暢且執行緒安全的方式表達原則，例如重試、斷路器、逾時、艙隔離與後援。
 
-提供擴充方法來啟用使用 Polly 原則搭配設定的 `HttpClient` 執行個體。 Polly 延伸模組提供於稱為 'Microsoft.Extensions.Http.Polly' 的 NuGet 套件中。 此套件預設不包含在 'Microsoft.AspNetCore.App' 中繼套件中。 若要使用延伸模組，PackageReference 應該明確地包含在專案中。
+提供擴充方法來啟用使用 Polly 原則搭配設定的 `HttpClient` 執行個體。 Polly 延伸模組提供於 [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/) NuGet 套件中。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)未包含此套件。 若要使用延伸模組，專案中應該要包含明確的 `<PackageReference />`。
 
 [!code-csharp[](http-requests/samples/HttpClientFactorySample.csproj?highlight=9)]
 
@@ -185,7 +181,7 @@ public class ValuesController : ControllerBase
 
 進行外部 HTTP 呼叫時，您可能預期發生的常見錯誤將會是暫時性。 包含一個便利的擴充方法，稱為 `AddTransientHttpErrorPolicy`，它可允許定義原則來處理暫時性錯誤。 使用此延伸模組方法設定的原則，會處理 `HttpRequestException`、HTTP 5xx 回應和 HTTP 408 回應。
 
-`AddTransientHttpErrorPolicy` 延伸模組可用於 `ConfigureServices` 內。 延伸模組能提供 `PolicyBuilder` 物件的存取，該物件已設定來處理代表可能暫時性錯誤的錯誤：
+`AddTransientHttpErrorPolicy` 延伸模組可用於 `Startup.ConfigureServices` 內。 延伸模組能提供 `PolicyBuilder` 物件的存取，該物件已設定來處理代表可能暫時性錯誤的錯誤：
 
 [!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet7)]
 

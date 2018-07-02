@@ -2,21 +2,17 @@
 title: .NET 泛型主機
 author: guardrex
 description: 了解 .NET 中的泛型主機，其負責啟動應用程式以及管理存留期。
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: a851f2faf13792b2c232c124371d07710ae1fce3
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 33e5829ce4a09e132743b4174a588cf232a44775
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734467"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276252"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -58,7 +54,13 @@ ms.locfileid: "34734467"
 
 ### <a name="configuration-builder"></a>組態產生器
 
-主機產生器組態是透過在 [IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder) 實作上呼叫 [ConfigureHostConfiguration](/dotnet/api/microsoft.extensions.hosting.ihostbuilder.configurehostconfiguration) 來建立。 `ConfigureHostConfiguration` 使用 [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder) 來建立主機的 [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration)。 設定產生器會初始化 [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment)，以供應用程式的建置程序使用。 `ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。 主機使用設定最後一個值的任何選項。
+主機產生器組態是透過在 [IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder) 實作上呼叫 [ConfigureHostConfiguration](/dotnet/api/microsoft.extensions.hosting.ihostbuilder.configurehostconfiguration) 來建立。 `ConfigureHostConfiguration` 使用 [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder) 來建立主機的 [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration)。 設定產生器會初始化 [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment)，以供應用程式的建置程序使用。
+
+預設不會新增環境變數組態。 請在主機建立器上呼叫 [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables)，以從環境變數設定主機。 `AddEnvironmentVariables` 可接受選擇性的使用者定義前置詞。 範例應用程式會使用前置詞 `PREFIX_`。 讀取環境變數時，就會移除前置詞。 在設定範例應用程式的主機時，`PREFIX_ENVIRONMENT` 的環境變數值會變成 `environment` 索引鍵的主機組態值。
+
+在開發期間使用 [Visual Studio](https://www.visualstudio.com/) 或以 `dotnet run` 執行應用程式時，可能會在 *Properties/launchSettings.json* 檔案中設定環境變數。 在 [Visual Studio Code](https://code.visualstudio.com/) 中，可以在開發期間於 *.vscode/launch.json* 檔案中設定環境變數。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+
+`ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。 主機使用設定最後一個值的任何選項。
 
 *hostsettings.json*：
 
@@ -83,7 +85,7 @@ ms.locfileid: "34734467"
 **類型**：*string*  
 **預設值**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
-**環境變數**：`ASPNETCORE_CONTENTROOT`
+**環境變數**：`<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
 
 如果路徑不存在，就無法啟動主機。
 
@@ -97,9 +99,9 @@ ms.locfileid: "34734467"
 **類型**：*string*  
 **預設值**：Production  
 **設定使用**：`UseEnvironment`  
-**環境變數**：`ASPNETCORE_ENVIRONMENT`
+**環境變數**：`<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
 
-環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。 根據預設，*Environment* 是從 `ASPNETCORE_ENVIRONMENT` 環境變數讀取。 使用 [Visual Studio](https://www.visualstudio.com/) 時，可能會在 *launchSettings.json* 檔案設定環境變數。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseEnvironment)]
 

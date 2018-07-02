@@ -2,19 +2,15 @@
 title: ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 author: rick-anderson
 description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
-manager: wpickett
 ms.author: riande
 ms.date: 11/05/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 1a63246dd81a16bbcca22ad2c50bc2010c852c4e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 4e0aa7151cc54f666202458ba60500a7c04f5ebb
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233397"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276756"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -184,7 +180,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 `OnGetAsync` 方法會針對所選取講師的識別碼接受選擇性的路由資料。
 
-檢查 *Pages/Instructors/Index.cshtml* 頁面上的查詢：
+檢查 *Pages/Instructors/Index.cshtml.cs* 檔案中的查詢：
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
@@ -278,7 +274,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
-將下列標記新增至 *Pages/Courses/Index.cshtml* Razor 頁面的結尾：
+將下列標記新增至 *Pages/Instructors/Index.cshtml* Razor 頁面的結尾：
 
 [!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 

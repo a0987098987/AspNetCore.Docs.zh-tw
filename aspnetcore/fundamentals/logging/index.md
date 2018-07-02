@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 12/15/2017
 uid: fundamentals/logging/index
-ms.openlocfilehash: 2307df3b4b571840f31808b86b48b0e6fb2de852
-ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
+ms.openlocfilehash: 4ceb7886cc9410c3b39beec68c2b11ea3578d851
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033309"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077773"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -610,6 +610,10 @@ Azure 記錄資料流可讓您即時檢視來自下列位置的記錄活動：
 巡覽至 [記錄資料流] 頁面以檢視應用程式訊息。 這些是應用程式透過 `ILogger` 介面記錄的訊息。
 
 ![Azure 入口網站應用程式的 [記錄資料流]](index/_static/azure-log-streaming.png)
+
+## <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
+
+[Application Insights](https://azure.microsoft.com/services/application-insights/) SDK 能夠從透過 ASP.NET Core 記錄基礎結構產生的記錄收集追蹤遙測。 如需詳細資訊，請參閱 [Microsoft/ApplicationInsights-aspnetcore Wiki：記錄](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging)。
 
 ## <a name="additional-resources"></a>其他資源
 

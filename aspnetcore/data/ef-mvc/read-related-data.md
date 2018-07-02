@@ -5,14 +5,18 @@ description: 在此教學課程中，您將讀取並顯示相關資料-- 也就�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 8c634bb1ae715776e18b847574ce03791f2ede03
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d5c9b665a80003ef5029754d7ad1780b3254e97e
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277208"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092980"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC 與 EF Core - 讀取相關資料 - 6/10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -238,6 +242,8 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 您現在已使用積極式載入搭配一個查詢與多個查詢，將相關資料讀取到導覽屬性。 在下一個教學課程中，您將了解如何更新相關資料。
 
+::: moniker-end
+
 >[!div class="step-by-step"]
 >[上一頁](complex-data-model.md)
->[下一頁](update-related-data.md)  
+>[下一頁](update-related-data.md)

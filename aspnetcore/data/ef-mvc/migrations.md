@@ -5,14 +5,18 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: d8b92aeedb252b93e1dc1aca424d26a377305da2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273581"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092938"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC 與 EF Core - 移轉 - 4/10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -34,7 +38,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
-(範例中的版本號碼為教學課程撰寫當下的最新版本。) 
+(範例中的版本號碼為教學課程撰寫當下的最新版本。)
 
 ## <a name="change-the-connection-string"></a>變更連接字串
 
@@ -154,14 +158,15 @@ Done.
 
 **重要事項：** 此套件與您為 CLI 安裝的套件不同 (透過編輯 *.csproj* 檔案來進行)。 這個套件的名稱以 `Tools` 結尾，不同於以 `Tools.DotNet` 結尾的 CLI 套件名稱。
 
-如需 CLI 命令的詳細資訊，請參閱 [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet)。 
+如需 CLI 命令的詳細資訊，請參閱 [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet)。
 
 如需 PMC 命令的詳細資訊，請參閱[套件管理員主控台 (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell)。
 
 ## <a name="summary"></a>總結
 
 在本教學課程中，您已了解如何建立並套用第一次移轉。 在下一個教學課程中，您就可以展開資料模型以學習更進階的主題。 在過程中，您會建立並套用其他移轉。
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [上一頁](sort-filter-page.md)
-> [下一頁](complex-data-model.md)  
+> [下一頁](complex-data-model.md)

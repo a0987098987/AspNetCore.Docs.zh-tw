@@ -5,14 +5,18 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: d89ca44917fac57febc2f8b0d632ae004ca7216c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1d3c69c8c658b5ca2f0253b790b0dc75d44d3064
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277383"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093110"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC 和 EF Core - 資料模型 - 5/10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -351,7 +355,7 @@ Student 和 Course 實體之間存在一個多對多關聯性，且 Enrollment �
 
 若 Enrollment 資料表並未包含年級資訊，則其便只需要包含兩個外部索引鍵 (CourseID 和 StudentID)。 在此案例下，其在資料庫中將會是不具有承載的多對多聯結資料表 (或純聯結資料表)。 Instructor 和 Course 實體具有此類型的多對多關聯性，並且您的下一步驟便是建立一個實體類別作為不具有承載的聯結資料表。
 
-(EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [EF Core GitHub 存放庫中的討論](https://github.com/aspnet/EntityFramework/issues/1368)。) 
+(EF 6.x 支援多對多關聯性的隱含聯結資料表，但 EF Core 並不支援。 如需詳細資訊，請參閱 [EF Core GitHub 存放庫中的討論](https://github.com/aspnet/EntityFramework/issues/1368)。)
 
 ## <a name="the-courseassignment-entity"></a>CourseAssignment 實體
 
@@ -437,7 +441,7 @@ Done. To undo this action, use 'ef migrations remove'
 
 若要使用現有資料完成移轉，您必須變更程式碼，給予新的資料行預設值，然後建立名為 "Temp" 的 Stub 部門，以作為預設部門。 其結果為現有的 Course 資料列便會在執行 `Up` 方法後與 "Temp" 部門產生關聯。
 
-* 開啟 *{timestamp}_ComplexDataModel.cs* 檔案。 
+* 開啟 *{timestamp}_ComplexDataModel.cs* 檔案。
 
 * 將新增 DepartmentID 資料行至 Course 資料表的程式碼全部標為註解。
 
@@ -491,7 +495,8 @@ dotnet ef database update
 ## <a name="summary"></a>總結
 
 您現在已有了更複雜的資料模型和對應的資料庫。 在接下來的課程中，您將深入了解如何存取相關資料。
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [上一頁](migrations.md)
-> [下一頁](read-related-data.md)  
+> [下一頁](read-related-data.md)

@@ -5,14 +5,18 @@ description: 在本教學課程中，您會藉由更新外部索引鍵欄位和�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 53f1607d96a9a1db98f4e80e9582c124cedf6c8d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ef8cb3916e5d1542e4d36cad694351462b94ed32
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272646"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093055"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC 與 EF Core - 更新相關資料 - 7/10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -134,7 +138,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
         "",
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
-    
+
 -   若辦公室位置為空白，將 Instructor.OfficeAssignment 屬性設為 Null，以刪除在 OfficeAssignment 資料表中的相關資料列。
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
@@ -213,7 +217,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 在 *Views/Instructors/Edit.cshtml* 中，藉由將下列程式碼新增到 [辦公室] 欄位的 `div` 項目後及 [儲存] 按鈕的 `div` 項目前，來新增 [課程 ] 欄位與核取方塊陣列。
 
 <a id="notepad"></a>
-> [!NOTE] 
+> [!NOTE]
 > 當您將程式碼貼至 Visual Studio 時，分行符號可能會產生變更使程式碼失效。  按 Ctrl+Z 來復原自動格式化。  這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 您可以在[這裡](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html)檢查此問題的狀態。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
@@ -228,7 +232,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 變更一些課程指派，然後按一下 [儲存]。 您所做的變更會反映在 [索引] 頁面上。
 
-> [!NOTE] 
+> [!NOTE]
 > 這裡所用來編輯講師課程資料的方法在課程的數量有限時運作相當良好。 針對更大的集合，將需要不同的 UI 和不同的更新方法。
 
 ## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
@@ -282,7 +286,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 [!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
-執行應用程式並建立一名講師，以進行測試。 
+執行應用程式並建立一名講師，以進行測試。
 
 ## <a name="handling-transactions"></a>處理交易
 
@@ -292,6 +296,8 @@ public ICollection<CourseAssignment> CourseAssignments
 
 現在您已完成了操作相關資料的簡介。 在下一個教學課程中，您會了解到如何處理並行衝突。
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [上一頁](read-related-data.md)
-> [下一頁](concurrency.md)  
+> [下一頁](concurrency.md)

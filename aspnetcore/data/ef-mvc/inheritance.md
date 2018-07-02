@@ -5,14 +5,18 @@ description: 本教學課程將說明如何在 ASP.NET Core 應用程式中使�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 818af711c23d37810b29eda8915b3c195a3e48f8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a71954297f44f936893a7f1e9d3b0685f81378b9
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272850"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092993"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC 與 EF Core - 繼承 - 9/10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -50,7 +54,7 @@ School 資料模型中的 `Instructor` 和 `Student` 類別有數個完全相同
 
 本教學課程將示範如何實作 TPH 繼承。 TPH 是 Entity Framework Core 支援的唯一繼承模式。  您要做的是建立 `Person` 類別、變更 `Instructor` 和 `Student` 類別以衍生自 `Person`、將新類別新增至 `DbContext`，以及建立移轉。
 
-> [!TIP] 
+> [!TIP]
 > 在進行下列變更之前，請考慮儲存專案的複本。  那麼，當您遇到問題而需要從新開始時，就可以輕鬆地從儲存的專案開始，而不是還原本教學課程完成的步驟或回到整個系列的開頭。
 
 ## <a name="create-the-person-class"></a>建立 Person 類別
@@ -121,7 +125,7 @@ dotnet ef database update
 
 (在生產環境系統中，您會對 `Down` 方法進行對應的變更，以防您必須使用該方法來回到先前的資料庫版本。 在此教學課程中，您將不會使用 `Down` 方法。)
 
-> [!NOTE] 
+> [!NOTE]
 > 在具有現有資料的資料庫中進行結構描述變更時，可能會收到其他錯誤。 如果收到無法解決的移轉錯誤，您可以變更連接字串中的資料庫名稱，或刪除該資料庫。 使用新資料庫時，沒有可移轉的資料，因此 update-database 命令更可能會在沒有錯誤的情況下完成。 若要刪除資料庫，請使用 SSOX 或執行 `database drop` CLI 命令。
 
 ## <a name="test-with-inheritance-implemented"></a>使用實作的繼承進行測試
@@ -140,6 +144,8 @@ dotnet ef database update
 
 您已針對 `Person`、`Student` 和 `Instructor` 類別實作單表繼承。 如需 Entity Framework Core 中有關繼承的詳細資訊，請參閱[繼承](https://docs.microsoft.com/ef/core/modeling/inheritance)。 在下一個教學課程中，您將了解如何處理各種相對進階的 Entity Framework 案例。
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [上一頁](concurrency.md)
-> [下一頁](advanced.md)  
+> [下一頁](advanced.md)

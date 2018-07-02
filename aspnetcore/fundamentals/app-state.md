@@ -1,194 +1,324 @@
 ---
 title: ASP.NET Core 中的工作階段與應用程式狀態
 author: rick-anderson
-description: 在要求之間保留應用程式和使用者 (工作階段) 狀態的方法。
-manager: wpickett
+description: 探索方法以在要求之間保留工作階段和應用程式狀態。
 ms.author: riande
-ms.custom: H1Hack27Feb2017
-ms.date: 11/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
+ms.custom: mvc
+ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: 887aefdeaa45957f7b95bfe8df342eb34d267e3a
-ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
+ms.openlocfilehash: 9c63d9313acb055e6c692a7fef3d28e94cb37093
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34306643"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272879"
 ---
-# <a name="session-and-application-state-in-aspnet-core"></a><span data-ttu-id="ec258-103">ASP.NET Core 中的工作階段與應用程式狀態</span><span class="sxs-lookup"><span data-stu-id="ec258-103">Session and application state in ASP.NET Core</span></span>
+# <a name="session-and-app-state-in-aspnet-core"></a><span data-ttu-id="564a3-103">ASP.NET Core 中的工作階段與應用程式狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-103">Session and app state in ASP.NET Core</span></span>
 
-<span data-ttu-id="ec258-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Steve Smith](https://ardalis.com/) 和 [Diana LaRose](https://github.com/DianaLaRose)</span><span class="sxs-lookup"><span data-stu-id="ec258-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), and [Diana LaRose](https://github.com/DianaLaRose)</span></span>
+<span data-ttu-id="564a3-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Steve Smith](https://ardalis.com/)、[Diana LaRose](https://github.com/DianaLaRose) 和 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="564a3-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), [Diana LaRose](https://github.com/DianaLaRose), and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="ec258-105">HTTP 是無狀態的通訊協定。</span><span class="sxs-lookup"><span data-stu-id="ec258-105">HTTP is a stateless protocol.</span></span> <span data-ttu-id="ec258-106">Web 伺服器將每個 HTTP 要求視為獨立要求，而不會保留上一個要求中的使用者值。</span><span class="sxs-lookup"><span data-stu-id="ec258-106">A web server treats each HTTP request as an independent request and doesn't retain user values from previous requests.</span></span> <span data-ttu-id="ec258-107">本文將討論在要求之間保留應用程式和工作階段狀態的不同方式。</span><span class="sxs-lookup"><span data-stu-id="ec258-107">This article discusses different ways to preserve application and session state between requests.</span></span>
+<span data-ttu-id="564a3-105">HTTP 是無狀態的通訊協定。</span><span class="sxs-lookup"><span data-stu-id="564a3-105">HTTP is a stateless protocol.</span></span> <span data-ttu-id="564a3-106">若不採取其他步驟，HTTP 要求是獨立的訊息，不會保留使用者的值或應用程式狀態。</span><span class="sxs-lookup"><span data-stu-id="564a3-106">Without taking additional steps, HTTP requests are independent messages that don't retain user values or app state.</span></span> <span data-ttu-id="564a3-107">本文描述數種方法來在要求之間保留使用者資料和應用程式狀態。</span><span class="sxs-lookup"><span data-stu-id="564a3-107">This article describes several approaches to preserve user data and app state between requests.</span></span>
 
-## <a name="session-state"></a><span data-ttu-id="ec258-108">工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="ec258-108">Session state</span></span>
+<span data-ttu-id="564a3-108">[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="564a3-108">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="ec258-109">在 ASP.NET Core 中的工作階段狀態功能，可用於在使用者瀏覽您的 Web 應用程式時，儲存及存放使用者資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-109">Session state is a feature in ASP.NET Core that you can use to save and store user data while the user browses your web app.</span></span> <span data-ttu-id="ec258-110">工作階段狀態由伺服器上的字典或雜湊資料表所組成，可從瀏覽器跨要求保存資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-110">Consisting of a dictionary or hash table on the server, session state persists data across requests from a browser.</span></span> <span data-ttu-id="ec258-111">快取支援工作階段資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-111">The session data is backed by a cache.</span></span>
+## <a name="state-management"></a><span data-ttu-id="564a3-109">狀態管理</span><span class="sxs-lookup"><span data-stu-id="564a3-109">State management</span></span>
 
-<span data-ttu-id="ec258-112">ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識別碼的 Cookie 給用戶端，以便將其隨著每個要求傳送至伺服器。</span><span class="sxs-lookup"><span data-stu-id="ec258-112">ASP.NET Core maintains session state by giving the client a cookie that contains the session ID, which is sent to the server with each request.</span></span> <span data-ttu-id="ec258-113">伺服器則使用工作階段識別碼來擷取工作階段資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-113">The server uses the session ID to fetch the session data.</span></span> <span data-ttu-id="ec258-114">因為工作階段 Cookie 是瀏覽器所特有，所以您無法跨瀏覽器共用工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-114">Because the session cookie is specific to the browser, you cannot share sessions across browsers.</span></span> <span data-ttu-id="ec258-115">只有在瀏覽器工作階段結束時，才會刪除工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="ec258-115">Session cookies are deleted only when the browser session ends.</span></span> <span data-ttu-id="ec258-116">如果收到過期工作階段的 Cookie，則會建立使用相同工作階段 Cookie 的新工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-116">If a cookie is received for an expired session, a new session that uses the same session cookie is created.</span></span>
+<span data-ttu-id="564a3-110">可以使用數種方法來儲存狀態。</span><span class="sxs-lookup"><span data-stu-id="564a3-110">State can be stored using several approaches.</span></span> <span data-ttu-id="564a3-111">本主題稍後將提供每種方法的描述。</span><span class="sxs-lookup"><span data-stu-id="564a3-111">Each approach is described later in this topic.</span></span>
 
-<span data-ttu-id="ec258-117">伺服器會在最後一個要求之後，保留工作階段一段有限的時間。</span><span class="sxs-lookup"><span data-stu-id="ec258-117">The server retains a session for a limited time after the last request.</span></span> <span data-ttu-id="ec258-118">請設定工作階段逾時或使用預設值 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="ec258-118">Either set the session timeout or use the default value of 20 minutes.</span></span> <span data-ttu-id="ec258-119">工作階段狀態適合用來儲存特定工作階段特有的使用者資料，但不需要永久保存。</span><span class="sxs-lookup"><span data-stu-id="ec258-119">Session state is ideal for storing user data that's specific to a particular session but doesn't need to be persisted permanently.</span></span> <span data-ttu-id="ec258-120">呼叫 `Session.Clear` 時或資料存放區中的工作階段到期時，就會從支援存放區中刪除資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-120">Data is deleted from the backing store either when calling `Session.Clear` or when the session expires in the data store.</span></span> <span data-ttu-id="ec258-121">伺服器並不知道何時會關閉瀏覽器或刪除工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="ec258-121">The server doesn't know when the browser is closed or when the session cookie is deleted.</span></span>
+| <span data-ttu-id="564a3-112">儲存方法</span><span class="sxs-lookup"><span data-stu-id="564a3-112">Storage approach</span></span> | <span data-ttu-id="564a3-113">儲存機制</span><span class="sxs-lookup"><span data-stu-id="564a3-113">Storage mechanism</span></span> |
+| ---------------- | ----------------- |
+| [<span data-ttu-id="564a3-114">Cookie</span><span class="sxs-lookup"><span data-stu-id="564a3-114">Cookies</span></span>](#cookies) | <span data-ttu-id="564a3-115">HTTP cookie (可能包含使用伺服器端應用程式程式碼所儲存的資料)</span><span class="sxs-lookup"><span data-stu-id="564a3-115">HTTP cookies (may include data stored using server-side app code)</span></span> |
+| [<span data-ttu-id="564a3-116">工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-116">Session state</span></span>](#session-state) | <span data-ttu-id="564a3-117">HTTP Cookie 和伺服器端應用程式程式碼</span><span class="sxs-lookup"><span data-stu-id="564a3-117">HTTP cookies and server-side app code</span></span> |
+| [<span data-ttu-id="564a3-118">TempData</span><span class="sxs-lookup"><span data-stu-id="564a3-118">TempData</span></span>](#tempdata) | <span data-ttu-id="564a3-119">HTTP Cookie 或工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-119">HTTP cookies or session state</span></span> |
+| [<span data-ttu-id="564a3-120">查詢字串</span><span class="sxs-lookup"><span data-stu-id="564a3-120">Query strings</span></span>](#query-strings) | <span data-ttu-id="564a3-121">HTTP 查詢字串</span><span class="sxs-lookup"><span data-stu-id="564a3-121">HTTP query strings</span></span> |
+| [<span data-ttu-id="564a3-122">隱藏欄位</span><span class="sxs-lookup"><span data-stu-id="564a3-122">Hidden fields</span></span>](#hidden-fields) | <span data-ttu-id="564a3-123">HTTP 表單欄位</span><span class="sxs-lookup"><span data-stu-id="564a3-123">HTTP form fields</span></span> |
+| [<span data-ttu-id="564a3-124">HttpContext.Items</span><span class="sxs-lookup"><span data-stu-id="564a3-124">HttpContext.Items</span></span>](#httpcontextitems) | <span data-ttu-id="564a3-125">伺服器端應用程式程式碼</span><span class="sxs-lookup"><span data-stu-id="564a3-125">Server-side app code</span></span> |
+| [<span data-ttu-id="564a3-126">快取</span><span class="sxs-lookup"><span data-stu-id="564a3-126">Cache</span></span>](#cache) | <span data-ttu-id="564a3-127">伺服器端應用程式程式碼</span><span class="sxs-lookup"><span data-stu-id="564a3-127">Server-side app code</span></span> |
+| [<span data-ttu-id="564a3-128">相依性插入</span><span class="sxs-lookup"><span data-stu-id="564a3-128">Dependency Injection</span></span>](#dependency-injection) | <span data-ttu-id="564a3-129">伺服器端應用程式程式碼</span><span class="sxs-lookup"><span data-stu-id="564a3-129">Server-side app code</span></span> |
 
-> [!WARNING]
-> <span data-ttu-id="ec258-122">請勿將機密資料存放在工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-122">Don't store sensitive data in session.</span></span> <span data-ttu-id="ec258-123">用戶端可能不會關閉瀏覽器並清除工作階段 Cookie (而某些瀏覽器會將工作階段 Cookie 跨 Windows 保持運作)。</span><span class="sxs-lookup"><span data-stu-id="ec258-123">The client might not close the browser and clear the session cookie (and some browsers keep session cookies alive across windows).</span></span> <span data-ttu-id="ec258-124">此外，工作階段可能無法限制為單一使用者；下一位使用者可能會繼續使用相同的工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-124">Also, a session might not be restricted to a single user; the next user might continue with the same session.</span></span>
+## <a name="cookies"></a><span data-ttu-id="564a3-130">Cookie</span><span class="sxs-lookup"><span data-stu-id="564a3-130">Cookies</span></span>
 
-<span data-ttu-id="ec258-125">記憶體內部工作階段提供者會在本機伺服器上儲存工作階段資料。</span><span class="sxs-lookup"><span data-stu-id="ec258-125">The in-memory session provider stores session data on the local server.</span></span> <span data-ttu-id="ec258-126">如果您打算在伺服器陣列上執行 Web 應用程式，則必須使用黏性工作階段將每個工作階段繫結到特定伺服器。</span><span class="sxs-lookup"><span data-stu-id="ec258-126">If you plan to run your web app on a server farm, you must use sticky sessions to tie each session to a specific server.</span></span> <span data-ttu-id="ec258-127">Windows Azure 網站平台預設為黏性工作階段 (應用程式要求路由或 ARR)。</span><span class="sxs-lookup"><span data-stu-id="ec258-127">The Windows Azure Web Sites platform defaults to sticky sessions (Application Request Routing or ARR).</span></span> <span data-ttu-id="ec258-128">不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。</span><span class="sxs-lookup"><span data-stu-id="ec258-128">However, sticky sessions can affect scalability and complicate web app updates.</span></span> <span data-ttu-id="ec258-129">較好的選項是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-129">A better option is to use the Redis or SQL Server distributed caches, which don't require sticky sessions.</span></span> <span data-ttu-id="ec258-130">如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。</span><span class="sxs-lookup"><span data-stu-id="ec258-130">For more information, see [Work with a Distributed Cache](xref:performance/caching/distributed).</span></span> <span data-ttu-id="ec258-131">如需設定服務提供者的詳細資料，請參閱本文稍後的[設定工作階段](#configuring-session)。</span><span class="sxs-lookup"><span data-stu-id="ec258-131">For details on setting up service providers, see [Configuring Session](#configuring-session) later in this article.</span></span>
+<span data-ttu-id="564a3-131">Cookie 會在要求之間儲存資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-131">Cookies store data across requests.</span></span> <span data-ttu-id="564a3-132">因為 Cookie 會隨著每個要求傳送，所以其大小應該保持最小。</span><span class="sxs-lookup"><span data-stu-id="564a3-132">Because cookies are sent with every request, their size should be kept to a minimum.</span></span> <span data-ttu-id="564a3-133">在理想情況下，應該只有識別碼儲存在 Cookie 中，而資料由應用程式儲存。</span><span class="sxs-lookup"><span data-stu-id="564a3-133">Ideally, only an identifier should be stored in a cookie with the data stored by the app.</span></span> <span data-ttu-id="564a3-134">大部分的瀏覽器將 Cookie 大小限制為 4096 個位元組。</span><span class="sxs-lookup"><span data-stu-id="564a3-134">Most browsers restrict cookie size to 4096 bytes.</span></span> <span data-ttu-id="564a3-135">每個網域只有數量有限的 Cookie 可供使用。</span><span class="sxs-lookup"><span data-stu-id="564a3-135">Only a limited number of cookies are available for each domain.</span></span>
 
-## <a name="tempdata"></a><span data-ttu-id="ec258-132">TempData</span><span class="sxs-lookup"><span data-stu-id="ec258-132">TempData</span></span>
+<span data-ttu-id="564a3-136">由於 Cookie 可能會遭到竄改，因此必須由應用程式加以驗證。</span><span class="sxs-lookup"><span data-stu-id="564a3-136">Because cookies are subject to tampering, they must be validated by the app.</span></span> <span data-ttu-id="564a3-137">使用者可以刪除 Cookie，而且 Cookie 會在用戶端上過期。</span><span class="sxs-lookup"><span data-stu-id="564a3-137">Cookies can be deleted by users and expire on clients.</span></span> <span data-ttu-id="564a3-138">不過，Cookie 通常是在用戶端上資料持續性最持久的形式。</span><span class="sxs-lookup"><span data-stu-id="564a3-138">However, cookies are generally the most durable form of data persistence on the client.</span></span>
 
-<span data-ttu-id="ec258-133">ASP.NET Core MVC 公開[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0)上的 [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) 屬性。</span><span class="sxs-lookup"><span data-stu-id="ec258-133">ASP.NET Core MVC exposes the [TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_Controller_TempData) property on a [controller](/dotnet/api/microsoft.aspnetcore.mvc.controller?view=aspnetcore-2.0).</span></span> <span data-ttu-id="ec258-134">這個屬性會儲存資料，直到讀取為止。</span><span class="sxs-lookup"><span data-stu-id="ec258-134">This property stores data until it's read.</span></span> <span data-ttu-id="ec258-135">`Keep` 和 `Peek` 方法可以用來檢查資料，不用刪除。</span><span class="sxs-lookup"><span data-stu-id="ec258-135">The `Keep` and `Peek` methods can be used to examine the data without deletion.</span></span> <span data-ttu-id="ec258-136">當有多個要求需要資料時，`TempData` 對重新導向很有幫助。</span><span class="sxs-lookup"><span data-stu-id="ec258-136">`TempData` is particularly useful for redirection, when data is needed for more than a single request.</span></span> <span data-ttu-id="ec258-137">`TempData` 是 TempData 提供者的實作；例如，使用 Cookie 或工作階段狀態。</span><span class="sxs-lookup"><span data-stu-id="ec258-137">`TempData` is implemented by TempData providers, for example, using either cookies or session state.</span></span>
+<span data-ttu-id="564a3-139">Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂。</span><span class="sxs-lookup"><span data-stu-id="564a3-139">Cookies are often used for personalization, where content is customized for a known user.</span></span> <span data-ttu-id="564a3-140">在大部分情況下，只會識別使用者，而未加以驗證。</span><span class="sxs-lookup"><span data-stu-id="564a3-140">The user is only identified and not authenticated in most cases.</span></span> <span data-ttu-id="564a3-141">Cookie 可以儲存使用者的名稱、帳戶名稱或唯一使用者識別碼 (例如 GUID)。</span><span class="sxs-lookup"><span data-stu-id="564a3-141">The cookie can store the user's name, account name, or unique user ID (such as a GUID).</span></span> <span data-ttu-id="564a3-142">您接著可以使用 Cookie 來存取使用者的個人化設定，例如其慣用網站的背景色彩。</span><span class="sxs-lookup"><span data-stu-id="564a3-142">You can then use the cookie to access the user's personalized settings, such as their preferred website background color.</span></span>
 
-### <a name="tempdata-providers"></a><span data-ttu-id="ec258-138">TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="ec258-138">TempData providers</span></span>
+<span data-ttu-id="564a3-143">在發出 Cookie 及處理隱私權顧慮時，請留意[歐盟一般資料保護規定 (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection)。</span><span class="sxs-lookup"><span data-stu-id="564a3-143">Be mindful of the [European Union General Data Protection Regulations (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection) when issuing cookies and dealing with privacy concerns.</span></span> <span data-ttu-id="564a3-144">如需詳細資訊，請參閱 [ASP.NET Core 中的一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。</span><span class="sxs-lookup"><span data-stu-id="564a3-144">For more information, see [General Data Protection Regulation (GDPR) support in ASP.NET Core](xref:security/gdpr).</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ec258-139">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ec258-139">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+## <a name="session-state"></a><span data-ttu-id="564a3-145">工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-145">Session state</span></span>
 
-<span data-ttu-id="ec258-140">在 ASP.NET Core 2.0 和更新版本中，預設會使用 Cookie 架構 TempData 提供者，將 TempData 儲存在 Cookie 中。</span><span class="sxs-lookup"><span data-stu-id="ec258-140">In ASP.NET Core 2.0 and later, the cookie-based TempData provider is used by default to store TempData in cookies.</span></span>
-
-<span data-ttu-id="ec258-141">Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密，並使用 [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder) 編碼，然後分成區塊。</span><span class="sxs-lookup"><span data-stu-id="ec258-141">The cookie data is encrypted using [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector), encoded with [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder), then chunked.</span></span> <span data-ttu-id="ec258-142">因為 Cookie 分成區塊，所以不適用 ASP.NET Core 1.x 中找到的 Cookie 大小限制。</span><span class="sxs-lookup"><span data-stu-id="ec258-142">Because the cookie is chunked, the single cookie size limit found in ASP.NET Core 1.x doesn't apply.</span></span> <span data-ttu-id="ec258-143">Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。</span><span class="sxs-lookup"><span data-stu-id="ec258-143">The cookie data isn't compressed because compressing encrypted data can lead to security problems such as the [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) and [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) attacks.</span></span> <span data-ttu-id="ec258-144">如需 Cookie 架構 TempData 提供者的詳細資訊，請參閱 [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs)。</span><span class="sxs-lookup"><span data-stu-id="ec258-144">For more information on the cookie-based TempData provider, see [CookieTempDataProvider](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.ViewFeatures/ViewFeatures/CookieTempDataProvider.cs).</span></span>
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ec258-145">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ec258-145">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
-
-<span data-ttu-id="ec258-146">在 ASP.NET Core 1.0 和 1.1 中，工作階段狀態 TempData 提供者是預設值。</span><span class="sxs-lookup"><span data-stu-id="ec258-146">In ASP.NET Core 1.0 and 1.1, the session state TempData provider is the default.</span></span>
-
----
-
-### <a name="choosing-a-tempdata-provider"></a><span data-ttu-id="ec258-147">選擇 TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="ec258-147">Choosing a TempData provider</span></span>
-
-<span data-ttu-id="ec258-148">選擇 TempData 提供者涉及數項考量，例如：</span><span class="sxs-lookup"><span data-stu-id="ec258-148">Choosing a TempData provider involves several considerations, such as:</span></span>
-
-1. <span data-ttu-id="ec258-149">應用程式是否已將工作階段狀態用於其他用途？</span><span class="sxs-lookup"><span data-stu-id="ec258-149">Does the application already use session state for other purposes?</span></span> <span data-ttu-id="ec258-150">如果是的話，使用工作階段狀態 TempData 提供者沒有額外的應用程式成本 (除了資料的大小之外)。</span><span class="sxs-lookup"><span data-stu-id="ec258-150">If so, using the session state TempData provider has no additional cost to the application (aside from the size of the data).</span></span>
-2. <span data-ttu-id="ec258-151">應用程式是否盡量只將 TempData 用於相對少量的資料 (最多 500 個位元組)？</span><span class="sxs-lookup"><span data-stu-id="ec258-151">Does the application use TempData only sparingly, for relatively small amounts of data (up to 500 bytes)?</span></span> <span data-ttu-id="ec258-152">如果是的話，Cookie TempData 提供者將對包含 TempData 的每個要求新增少量成本。</span><span class="sxs-lookup"><span data-stu-id="ec258-152">If so, the cookie TempData provider will add a small cost to each request that carries TempData.</span></span> <span data-ttu-id="ec258-153">如果不是的話，則工作階段狀態 TempData 提供者可能有助於避免在每個要求中來回傳送大量資料，直到取用 TempData 為止。</span><span class="sxs-lookup"><span data-stu-id="ec258-153">If not, the session state TempData provider can be beneficial to avoid round-tripping a large amount of data in each request until the TempData is consumed.</span></span>
-3. <span data-ttu-id="ec258-154">應用程式是否在 Web 伺服陣列 (多部伺服器) 中執行？</span><span class="sxs-lookup"><span data-stu-id="ec258-154">Does the application run in a web farm (multiple servers)?</span></span> <span data-ttu-id="ec258-155">如果是的話，使用 Cookie TempData 提供者不需要其他組態。</span><span class="sxs-lookup"><span data-stu-id="ec258-155">If so, there's no additional configuration needed to use the cookie TempData provider.</span></span>
+<span data-ttu-id="564a3-146">工作階段狀態是用來在使用者瀏覽 Web 應用程式時存放使用者資料的 ASP.NET Core 情節。</span><span class="sxs-lookup"><span data-stu-id="564a3-146">Session state is an ASP.NET Core scenario for storage of user data while the user browses a web app.</span></span> <span data-ttu-id="564a3-147">工作階段狀態使用應用程式所維護的存放區，在用戶端的要求之間保存資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-147">Session state uses a store maintained by the app to persist data across requests from a client.</span></span> <span data-ttu-id="564a3-148">工作階段資料受到快取的支援，並被視為暫時資料&mdash;網站沒有工作階段資料應該也會繼續運作。</span><span class="sxs-lookup"><span data-stu-id="564a3-148">The session data is backed by a cache and considered ephemeral data&mdash;the site should continue to function without the session data.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="ec258-156">大部分的 Web 用戶端 (例如網頁瀏覽器) 會強制執行每個 Cookie 的大小上限、Cookie 總數或這兩者的限制。</span><span class="sxs-lookup"><span data-stu-id="ec258-156">Most web clients (such as web browsers) enforce limits on the maximum size of each cookie, the total number of cookies, or both.</span></span> <span data-ttu-id="ec258-157">因此，使用 Cookie TempData 提供者時，請確認應用程式不會超過這些限制。</span><span class="sxs-lookup"><span data-stu-id="ec258-157">Therefore, when using the cookie TempData provider, verify the app won't exceed these limits.</span></span> <span data-ttu-id="ec258-158">請考慮資料大小總計，並考量加密和區塊處理的額外負荷。</span><span class="sxs-lookup"><span data-stu-id="ec258-158">Consider the total size of the data, accounting for the overheads of encryption and chunking.</span></span>
+> <span data-ttu-id="564a3-149">[SignalR](xref:signalr/index) 應用程式中不支援工作階段，因為 [SignalR 中樞](xref:signalr/hubs)可獨立於 HTTP 內容之外而執行。</span><span class="sxs-lookup"><span data-stu-id="564a3-149">Session isn't supported in [SignalR](xref:signalr/index) apps because a [SignalR Hub](xref:signalr/hubs) may execute independent of an HTTP context.</span></span> <span data-ttu-id="564a3-150">例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。</span><span class="sxs-lookup"><span data-stu-id="564a3-150">For example, this can occur when a long polling request is held open by a hub beyond the lifetime of the request's HTTP context.</span></span>
 
-### <a name="configure-the-tempdata-provider"></a><span data-ttu-id="ec258-159">設定 TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="ec258-159">Configure the TempData provider</span></span>
+<span data-ttu-id="564a3-151">ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識別碼的 Cookie 給用戶端，以便將其隨著每個要求傳送至應用程式。</span><span class="sxs-lookup"><span data-stu-id="564a3-151">ASP.NET Core maintains session state by providing a cookie to the client that contains a session ID, which is sent to the app with each request.</span></span> <span data-ttu-id="564a3-152">應用程式則使用工作階段識別碼來擷取工作階段資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-152">The app uses the session ID to fetch the session data.</span></span>
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ec258-160">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ec258-160">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
+<span data-ttu-id="564a3-153">工作階段狀態表現下列行為：</span><span class="sxs-lookup"><span data-stu-id="564a3-153">Session state exhibits the following behaviors:</span></span>
 
-<span data-ttu-id="ec258-161">預設會啟用 Cookie 架構 TempData 提供者。</span><span class="sxs-lookup"><span data-stu-id="ec258-161">The cookie-based TempData provider is enabled by default.</span></span> <span data-ttu-id="ec258-162">下列 `Startup` 類別程式碼會設定工作階段架構 TempData 提供者：</span><span class="sxs-lookup"><span data-stu-id="ec258-162">The following `Startup` class code configures the session-based TempData provider:</span></span>
+* <span data-ttu-id="564a3-154">因為工作階段 Cookie 是瀏覽器所特有，所以不會跨瀏覽器共用工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-154">Because the session cookie is specific to the browser, sessions aren't shared across browsers.</span></span>
+* <span data-ttu-id="564a3-155">在瀏覽器工作階段結束時，會刪除工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-155">Session cookies are deleted when the browser session ends.</span></span>
+* <span data-ttu-id="564a3-156">如果收到過期工作階段的 Cookie，則會建立使用相同工作階段 Cookie 的新工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-156">If a cookie is received for an expired session, a new session is created that uses the same session cookie.</span></span>
+* <span data-ttu-id="564a3-157">並不會保留空白工作階段&mdash;必須在工作階段中設定至少一個值，才能在要求之間保存工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-157">Empty sessions aren't retained&mdash;the session must have at least one value set into it to persist the session across requests.</span></span> <span data-ttu-id="564a3-158">不保留工作階段時，會為每個新的要求產生新的工作階段識別碼。</span><span class="sxs-lookup"><span data-stu-id="564a3-158">When a session isn't retained, a new session ID is generated for each new request.</span></span>
+* <span data-ttu-id="564a3-159">應用程式會在最後一個要求之後，保留工作階段一段有限的時間。</span><span class="sxs-lookup"><span data-stu-id="564a3-159">The app retains a session for a limited time after the last request.</span></span> <span data-ttu-id="564a3-160">應用程式會設定工作階段逾時或使用預設值 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="564a3-160">The app either sets the session timeout or uses the default value of 20 minutes.</span></span> <span data-ttu-id="564a3-161">工作階段狀態適合用來儲存特定工作階段特定的使用者資料，但資料不需要在工作階段之間永久儲存的情況。</span><span class="sxs-lookup"><span data-stu-id="564a3-161">Session state is ideal for storing user data that's specific to a particular session but where the data doesn't require permanent storage across sessions.</span></span>
+* <span data-ttu-id="564a3-162">工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。</span><span class="sxs-lookup"><span data-stu-id="564a3-162">Session data is deleted either when the [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) implementation is called or when the session expires.</span></span>
+* <span data-ttu-id="564a3-163">沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。</span><span class="sxs-lookup"><span data-stu-id="564a3-163">There's no default mechanism to inform app code that a client browser has been closed or when the session cookie is deleted or expired on the client.</span></span>
 
-[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,6,11)]
+> [!WARNING]
+> <span data-ttu-id="564a3-164">請勿將敏感性資料存放在工作階段狀態。</span><span class="sxs-lookup"><span data-stu-id="564a3-164">Don't store sensitive data in session state.</span></span> <span data-ttu-id="564a3-165">使用者可能不會關閉瀏覽器，並清除工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-165">The user might not close the browser and clear the session cookie.</span></span> <span data-ttu-id="564a3-166">某些瀏覽器會在瀏覽器視窗之間維護有效的工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-166">Some browsers maintain valid session cookies across browser windows.</span></span> <span data-ttu-id="564a3-167">工作階段可能無法限制為單一使用者&mdash;下一位使用者可能會繼續使用相同的工作階段 Cookie 瀏覽應用程式。</span><span class="sxs-lookup"><span data-stu-id="564a3-167">A session might not be restricted to a single user&mdash;the next user might continue to browse the app with the same session cookie.</span></span>
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ec258-163">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ec258-163">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
+<span data-ttu-id="564a3-168">記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。</span><span class="sxs-lookup"><span data-stu-id="564a3-168">The in-memory cache provider stores session data in the memory of the server where the app resides.</span></span> <span data-ttu-id="564a3-169">在伺服器陣列案例中：</span><span class="sxs-lookup"><span data-stu-id="564a3-169">In a server farm scenario:</span></span>
 
-<span data-ttu-id="ec258-164">下列 `Startup` 類別程式碼會設定工作階段架構 TempData 提供者：</span><span class="sxs-lookup"><span data-stu-id="ec258-164">The following `Startup` class code configures the session-based TempData provider:</span></span>
+* <span data-ttu-id="564a3-170">使用「黏性工作階段」將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。</span><span class="sxs-lookup"><span data-stu-id="564a3-170">Use *sticky sessions* to tie each session to a specific app instance on an individual server.</span></span> <span data-ttu-id="564a3-171">[Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-171">[Azure App Service](https://azure.microsoft.com/services/app-service/) uses [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) to enforce sticky sessions by default.</span></span> <span data-ttu-id="564a3-172">不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。</span><span class="sxs-lookup"><span data-stu-id="564a3-172">However, sticky sessions can affect scalability and complicate web app updates.</span></span> <span data-ttu-id="564a3-173">較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-173">A better approach is to use a Redis or SQL Server distributed cache, which doesn't require sticky sessions.</span></span> <span data-ttu-id="564a3-174">如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。</span><span class="sxs-lookup"><span data-stu-id="564a3-174">For more information, see [Work with a distributed cache](xref:performance/caching/distributed).</span></span>
+* <span data-ttu-id="564a3-175">工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。</span><span class="sxs-lookup"><span data-stu-id="564a3-175">The session cookie is encrypted via [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector).</span></span> <span data-ttu-id="564a3-176">必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-176">Data Protection must be properly configured to read session cookies on each machine.</span></span> <span data-ttu-id="564a3-177">如需詳細資訊，請參閱 [ASP.NET Core 的資料保護](xref:security/data-protection/index)和[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。</span><span class="sxs-lookup"><span data-stu-id="564a3-177">For more information, see [Data Protection in ASP.NET Core](xref:security/data-protection/index) and [Key storage providers](xref:security/data-protection/implementation/key-storage-providers).</span></span>
 
-[!code-csharp[](app-state/sample/src/WebAppSession/StartupTempDataSession.cs?name=snippet_TempDataSession&highlight=4,9)]
+### <a name="configure-session-state"></a><span data-ttu-id="564a3-178">設定工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-178">Configure session state</span></span>
 
----
+::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="ec258-165">順序對中介軟體元件來說很重要。</span><span class="sxs-lookup"><span data-stu-id="ec258-165">Ordering is critical for middleware components.</span></span> <span data-ttu-id="ec258-166">在上述範例中，如果在 `UseMvcWithDefaultRoute` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　類型的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="ec258-166">In the preceding example, an exception of type `InvalidOperationException` occurs when `UseSession` is invoked after `UseMvcWithDefaultRoute`.</span></span> <span data-ttu-id="ec258-167">如需詳細資料，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。</span><span class="sxs-lookup"><span data-stu-id="ec258-167">See [Middleware Ordering](xref:fundamentals/middleware/index#ordering) for more detail.</span></span>
+<span data-ttu-id="564a3-179">[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件隨附於 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，提供用來管理工作階段狀態的中介軟體。</span><span class="sxs-lookup"><span data-stu-id="564a3-179">The [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) package, which is included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), provides middleware for managing session state.</span></span> <span data-ttu-id="564a3-180">若要啟用工作階段中介軟體，`Startup` 必須包含：</span><span class="sxs-lookup"><span data-stu-id="564a3-180">To enable the session middleware, `Startup` must contain:</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-181">[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件提供用來管理工作階段狀態的中介軟體。</span><span class="sxs-lookup"><span data-stu-id="564a3-181">The [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) package provides middleware for managing session state.</span></span> <span data-ttu-id="564a3-182">若要啟用工作階段中介軟體，`Startup` 必須包含：</span><span class="sxs-lookup"><span data-stu-id="564a3-182">To enable the session middleware, `Startup` must contain:</span></span>
+
+::: moniker-end
+
+* <span data-ttu-id="564a3-183">任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。</span><span class="sxs-lookup"><span data-stu-id="564a3-183">Any of the [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) memory caches.</span></span> <span data-ttu-id="564a3-184">`IDistributedCache` 實作會作為工作階段的支援存放區。</span><span class="sxs-lookup"><span data-stu-id="564a3-184">The `IDistributedCache` implementation is used as a backing store for session.</span></span> <span data-ttu-id="564a3-185">如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)。</span><span class="sxs-lookup"><span data-stu-id="564a3-185">For more information, see [Work with a distributed cache](xref:performance/caching/distributed).</span></span>
+* <span data-ttu-id="564a3-186">在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。</span><span class="sxs-lookup"><span data-stu-id="564a3-186">A call to [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession) in `ConfigureServices`.</span></span>
+* <span data-ttu-id="564a3-187">在 `Configure` 中呼叫 [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_)。</span><span class="sxs-lookup"><span data-stu-id="564a3-187">A call to [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_) in `Configure`.</span></span>
+
+<span data-ttu-id="564a3-188">下列程式碼示範如何設定記憶體內部工作階段提供者，以及 `IDistributedCache` 的預設記憶體中實作。</span><span class="sxs-lookup"><span data-stu-id="564a3-188">The following code shows how to set up the in-memory session provider with a default in-memory implementation of `IDistributedCache`:</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-189">[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13-18,39)]</span><span class="sxs-lookup"><span data-stu-id="564a3-189">[!code-csharp[](app-state/samples/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13-18,39)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-190">[!code-csharp[](app-state/samples/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5,7-12,19)]</span><span class="sxs-lookup"><span data-stu-id="564a3-190">[!code-csharp[](app-state/samples/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5,7-12,19)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-191">中介軟體的順序很重要。</span><span class="sxs-lookup"><span data-stu-id="564a3-191">The order of middleware is important.</span></span> <span data-ttu-id="564a3-192">在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。</span><span class="sxs-lookup"><span data-stu-id="564a3-192">In the preceding example, an `InvalidOperationException` exception occurs when `UseSession` is invoked after `UseMvc`.</span></span> <span data-ttu-id="564a3-193">如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。</span><span class="sxs-lookup"><span data-stu-id="564a3-193">For more information, see [Middleware Ordering](xref:fundamentals/middleware/index#ordering).</span></span>
+
+<span data-ttu-id="564a3-194">設定工作階段狀態之後便可以使用 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。</span><span class="sxs-lookup"><span data-stu-id="564a3-194">[HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session) is available after session state is configured.</span></span>
+
+<span data-ttu-id="564a3-195">呼叫 `UseSession` 之前無法存取 `HttpContext.Session`。</span><span class="sxs-lookup"><span data-stu-id="564a3-195">`HttpContext.Session` can't be accessed before `UseSession` has been called.</span></span>
+
+<span data-ttu-id="564a3-196">應用程式開始寫入回應資料流之後，無法建立具有新工作階段 Cookie 的新工作階段。</span><span class="sxs-lookup"><span data-stu-id="564a3-196">A new session with a new session cookie can't be created after the app has begun writing to the response stream.</span></span> <span data-ttu-id="564a3-197">例外狀況會記錄在 Web 伺服器記錄檔中，而不會顯示在瀏覽器。</span><span class="sxs-lookup"><span data-stu-id="564a3-197">The exception is recorded in the web server log and not displayed in the browser.</span></span>
+
+### <a name="load-session-state-asynchronously"></a><span data-ttu-id="564a3-198">非同步載入工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="564a3-198">Load session state asynchronously</span></span>
+
+<span data-ttu-id="564a3-199">只有在 [TryGetValue](/dotnet/api/microsoft.aspnetcore.http.isession.trygetvalue)、[Set](/dotnet/api/microsoft.aspnetcore.http.isession.set) 或 [Remove](/dotnet/api/microsoft.aspnetcore.http.isession.remove) 方法之前明確呼叫 [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession.loadasync) 方法時，ASP.NET Core 中的預設工作階段提供者才會從基礎 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 備份存放區以非同步方式載入工作階段記錄。</span><span class="sxs-lookup"><span data-stu-id="564a3-199">The default session provider in ASP.NET Core loads session records from the underlying [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) backing store asynchronously only if the [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession.loadasync) method is explicitly called before the [TryGetValue](/dotnet/api/microsoft.aspnetcore.http.isession.trygetvalue), [Set](/dotnet/api/microsoft.aspnetcore.http.isession.set), or [Remove](/dotnet/api/microsoft.aspnetcore.http.isession.remove) methods.</span></span> <span data-ttu-id="564a3-200">如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能大規模地為效能帶來負面影響。</span><span class="sxs-lookup"><span data-stu-id="564a3-200">If `LoadAsync` isn't called first, the underlying session record is loaded synchronously, which can incur a performance penalty at scale.</span></span>
+
+<span data-ttu-id="564a3-201">若要讓應用程式強制執行此模式，請使用未在 `TryGetValue`、`Set` 或 `Remove` 之前呼叫 `LoadAsync` 方法時擲回例外狀況的版本來包裝 [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) 和 [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) 實作。</span><span class="sxs-lookup"><span data-stu-id="564a3-201">To have apps enforce this pattern, wrap the [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) and [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) implementations with versions that throw an exception if the `LoadAsync` method isn't called before `TryGetValue`, `Set`, or `Remove`.</span></span> <span data-ttu-id="564a3-202">請在服務容器中註冊已包裝的版本。</span><span class="sxs-lookup"><span data-stu-id="564a3-202">Register the wrapped versions in the services container.</span></span>
+
+### <a name="session-options"></a><span data-ttu-id="564a3-203">工作階段選項</span><span class="sxs-lookup"><span data-stu-id="564a3-203">Session options</span></span>
+
+<span data-ttu-id="564a3-204">若要覆寫工作階段的預設值，請使用 [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions)。</span><span class="sxs-lookup"><span data-stu-id="564a3-204">To override session defaults, use [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions).</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+| <span data-ttu-id="564a3-205">選項</span><span class="sxs-lookup"><span data-stu-id="564a3-205">Option</span></span> | <span data-ttu-id="564a3-206">描述</span><span class="sxs-lookup"><span data-stu-id="564a3-206">Description</span></span> |
+| ------ | ----------- |
+| [<span data-ttu-id="564a3-207">Cookie</span><span class="sxs-lookup"><span data-stu-id="564a3-207">Cookie</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | <span data-ttu-id="564a3-208">決定用來建立 Cookie 的設定。</span><span class="sxs-lookup"><span data-stu-id="564a3-208">Determines the settings used to create the cookie.</span></span> <span data-ttu-id="564a3-209">[Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) 預設為 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-209">[Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) defaults to [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`).</span></span> <span data-ttu-id="564a3-210">[Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-210">[Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) defaults to [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`).</span></span> <span data-ttu-id="564a3-211">[SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) 預設為 [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-211">[SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) defaults to [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`).</span></span> <span data-ttu-id="564a3-212">[HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`。</span><span class="sxs-lookup"><span data-stu-id="564a3-212">[HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) defaults to `true`.</span></span> <span data-ttu-id="564a3-213">[IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) 預設為 `false`。</span><span class="sxs-lookup"><span data-stu-id="564a3-213">[IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) defaults to `false`.</span></span> |
+| [<span data-ttu-id="564a3-214">IdleTimeout</span><span class="sxs-lookup"><span data-stu-id="564a3-214">IdleTimeout</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | <span data-ttu-id="564a3-215">`IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。</span><span class="sxs-lookup"><span data-stu-id="564a3-215">The `IdleTimeout` indicates how long the session can be idle before its contents are abandoned.</span></span> <span data-ttu-id="564a3-216">每個工作階段存取都會重設逾時。</span><span class="sxs-lookup"><span data-stu-id="564a3-216">Each session access resets the timeout.</span></span> <span data-ttu-id="564a3-217">請注意，這只適用於工作階段的內容，而不適用於 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-217">Note this only applies to the content of the session, not the cookie.</span></span> <span data-ttu-id="564a3-218">預設值是 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="564a3-218">The default is 20 minutes.</span></span> |
+| [<span data-ttu-id="564a3-219">IOTimeout</span><span class="sxs-lookup"><span data-stu-id="564a3-219">IOTimeout</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.iotimeout) | <span data-ttu-id="564a3-220">從存放區載入工作階段，或將它認可回到存放區時，所允許的最大時間量。</span><span class="sxs-lookup"><span data-stu-id="564a3-220">The maximim amount of time allowed to load a session from the store or to commit it back to the store.</span></span> <span data-ttu-id="564a3-221">請注意，這可能只適用於非同步作業。</span><span class="sxs-lookup"><span data-stu-id="564a3-221">Note this may only apply to asynchronous operations.</span></span> <span data-ttu-id="564a3-222">此逾時可以使用 [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan) 來停用。</span><span class="sxs-lookup"><span data-stu-id="564a3-222">This timeout can be disabled using [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan).</span></span> <span data-ttu-id="564a3-223">預設為 1 分鐘。</span><span class="sxs-lookup"><span data-stu-id="564a3-223">The default is 1 minute.</span></span> |
+
+<span data-ttu-id="564a3-224">工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。</span><span class="sxs-lookup"><span data-stu-id="564a3-224">Session uses a cookie to track and identify requests from a single browser.</span></span> <span data-ttu-id="564a3-225">此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。</span><span class="sxs-lookup"><span data-stu-id="564a3-225">By default, this cookie is named `.AspNetCore.Session`, and it uses a path of `/`.</span></span> <span data-ttu-id="564a3-226">由於 Cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端指令碼 (因為 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-226">Because the cookie default doesn't specify a domain, it isn't made available to the client-side script on the page (because [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) defaults to `true`).</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+| <span data-ttu-id="564a3-227">選項</span><span class="sxs-lookup"><span data-stu-id="564a3-227">Option</span></span> | <span data-ttu-id="564a3-228">描述</span><span class="sxs-lookup"><span data-stu-id="564a3-228">Description</span></span> |
+| ------ | ----------- |
+| [<span data-ttu-id="564a3-229">CookieDomain</span><span class="sxs-lookup"><span data-stu-id="564a3-229">CookieDomain</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiedomain) | <span data-ttu-id="564a3-230">決定用來建立 Cookie 的網域。</span><span class="sxs-lookup"><span data-stu-id="564a3-230">Determines the domain used to create the cookie.</span></span> <span data-ttu-id="564a3-231">預設不會設定 `CookieDomain`。</span><span class="sxs-lookup"><span data-stu-id="564a3-231">`CookieDomain` isn't set by default.</span></span> |
+| [<span data-ttu-id="564a3-232">CookieHttpOnly</span><span class="sxs-lookup"><span data-stu-id="564a3-232">CookieHttpOnly</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiehttponly) | <span data-ttu-id="564a3-233">決定瀏覽器是否應該允許 Cookie 由用戶端 JavaScript 存取。</span><span class="sxs-lookup"><span data-stu-id="564a3-233">Determines if the browser should allow the cookie to be accessed by client-side JavaScript.</span></span> <span data-ttu-id="564a3-234">預設值是 `true`，這表示 Cookie 僅會傳遞給 HTTP 要求，並未開放給頁面上的指令碼使用。</span><span class="sxs-lookup"><span data-stu-id="564a3-234">The default is `true`, which means the cookie is only passed to HTTP requests and isn't made available to script on the page.</span></span> |
+| [<span data-ttu-id="564a3-235">CookieName</span><span class="sxs-lookup"><span data-stu-id="564a3-235">CookieName</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiename) | <span data-ttu-id="564a3-236">決定用來保存工作階段識別碼的 Cookie 名稱。</span><span class="sxs-lookup"><span data-stu-id="564a3-236">Determines the cookie name used to persist the session ID.</span></span> <span data-ttu-id="564a3-237">預設值是 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-237">The default is [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`).</span></span> |
+| [<span data-ttu-id="564a3-238">CookiePath</span><span class="sxs-lookup"><span data-stu-id="564a3-238">CookiePath</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiepath) | <span data-ttu-id="564a3-239">決定用來建立 Cookie 的路徑。</span><span class="sxs-lookup"><span data-stu-id="564a3-239">Determines the path used to create the cookie.</span></span> <span data-ttu-id="564a3-240">預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-240">Defaults to [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`).</span></span> |
+| [<span data-ttu-id="564a3-241">CookieSecure</span><span class="sxs-lookup"><span data-stu-id="564a3-241">CookieSecure</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookiesecure) | <span data-ttu-id="564a3-242">決定是否應該只在 HTTPS 要求傳送 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-242">Determines if the cookie should only be transmitted on HTTPS requests.</span></span> <span data-ttu-id="564a3-243">預設值是 [CookieSecurePolicy.None](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy) (`2`)。</span><span class="sxs-lookup"><span data-stu-id="564a3-243">The default is [CookieSecurePolicy.None](/dotnet/api/microsoft.aspnetcore.http.cookiesecurepolicy) (`2`).</span></span> |
+| [<span data-ttu-id="564a3-244">IdleTimeout</span><span class="sxs-lookup"><span data-stu-id="564a3-244">IdleTimeout</span></span>](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | <span data-ttu-id="564a3-245">`IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。</span><span class="sxs-lookup"><span data-stu-id="564a3-245">The `IdleTimeout` indicates how long the session can be idle before its contents are abandoned.</span></span> <span data-ttu-id="564a3-246">每個工作階段存取都會重設逾時。</span><span class="sxs-lookup"><span data-stu-id="564a3-246">Each session access resets the timeout.</span></span> <span data-ttu-id="564a3-247">請注意，這只適用於工作階段的內容，而不適用於 Cookie。</span><span class="sxs-lookup"><span data-stu-id="564a3-247">Note this only applies to the content of the session, not the cookie.</span></span> <span data-ttu-id="564a3-248">預設值是 20 分鐘。</span><span class="sxs-lookup"><span data-stu-id="564a3-248">The default is 20 minutes.</span></span> |
+
+<span data-ttu-id="564a3-249">工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。</span><span class="sxs-lookup"><span data-stu-id="564a3-249">Session uses a cookie to track and identify requests from a single browser.</span></span> <span data-ttu-id="564a3-250">此 Cookie 預設名為 `.AspNet.Session`，並使用路徑 `/`。</span><span class="sxs-lookup"><span data-stu-id="564a3-250">By default, this cookie is named `.AspNet.Session`, and it uses a path of `/`.</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-251">若要覆寫 Cookie 工作階段的預設值，請使用 `SessionOptions`：</span><span class="sxs-lookup"><span data-stu-id="564a3-251">To override cookie session defaults, use `SessionOptions`:</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-252">[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=13-18)]</span><span class="sxs-lookup"><span data-stu-id="564a3-252">[!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=13-18)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-253">[!code-csharp[](app-state/samples_snapshot/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5-9)]</span><span class="sxs-lookup"><span data-stu-id="564a3-253">[!code-csharp[](app-state/samples_snapshot/1.x/SessionSample/Startup.cs?name=snippet1&highlight=5-9)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-254">應用程式會使用 [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) 屬性，判斷工作階段可以在放棄伺服器快取中的內容之前閒置多長時間。</span><span class="sxs-lookup"><span data-stu-id="564a3-254">The app uses the [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) property to determine how long a session can be idle before its contents in the server's cache are abandoned.</span></span> <span data-ttu-id="564a3-255">這個屬性與 Cookie 到期日無關。</span><span class="sxs-lookup"><span data-stu-id="564a3-255">This property is independent of the cookie expiration.</span></span> <span data-ttu-id="564a3-256">透過[工作階段中介軟體](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware)傳遞的每個要求都會重設逾時。</span><span class="sxs-lookup"><span data-stu-id="564a3-256">Each request that passes through the [Session Middleware](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware) resets the timeout.</span></span>
+
+<span data-ttu-id="564a3-257">工作階段狀態為「非鎖定」。</span><span class="sxs-lookup"><span data-stu-id="564a3-257">Session state is *non-locking*.</span></span> <span data-ttu-id="564a3-258">如果兩個要求同時嘗試修改工作階段的內容，則最後一個要求會覆寫第一個要求。</span><span class="sxs-lookup"><span data-stu-id="564a3-258">If two requests simultaneously attempt to modify the contents of a session, the last request overrides the first.</span></span> <span data-ttu-id="564a3-259">`Session` 會實作為「一致性工作階段」，這表示所有內容會都儲存在一起。</span><span class="sxs-lookup"><span data-stu-id="564a3-259">`Session` is implemented as a *coherent session*, which means that all the contents are stored together.</span></span> <span data-ttu-id="564a3-260">當兩個要求試圖修改不同的工作階段值時，最後一個要求可能會覆寫第一個要求所做的工作階段變更。</span><span class="sxs-lookup"><span data-stu-id="564a3-260">When two requests seek to modify different session values, the last request may override session changes made by the first.</span></span>
+
+### <a name="set-and-get-session-values"></a><span data-ttu-id="564a3-261">設定和取得工作階段值</span><span class="sxs-lookup"><span data-stu-id="564a3-261">Set and get Session values</span></span>
+
+<span data-ttu-id="564a3-262">工作階段狀態的存取，是從 Razor Pages [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 類別，或 MVC [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller) 類別搭配 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。</span><span class="sxs-lookup"><span data-stu-id="564a3-262">Session state is accessed from a Razor Pages [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) class or MVC [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller) class with [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session).</span></span> <span data-ttu-id="564a3-263">這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。</span><span class="sxs-lookup"><span data-stu-id="564a3-263">This property is an [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) implementation.</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-264">`ISession` 實作提供數個擴充方法來設定和擷取整數和字串值。</span><span class="sxs-lookup"><span data-stu-id="564a3-264">The `ISession` implementation provides several extension methods to set and retreive integer and string values.</span></span> <span data-ttu-id="564a3-265">當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。</span><span class="sxs-lookup"><span data-stu-id="564a3-265">The extension methods are in the [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) namespace (add a `using Microsoft.AspNetCore.Http;` statement to gain access to the extension methods) when the [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) package is referenced by the project.</span></span> <span data-ttu-id="564a3-266">[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)包含兩個套件。</span><span class="sxs-lookup"><span data-stu-id="564a3-266">Both packages are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-267">`ISession` 實作提供數個擴充方法來設定和擷取整數和字串值。</span><span class="sxs-lookup"><span data-stu-id="564a3-267">The `ISession` implementation provides several extension methods to set and retreive integer and string values.</span></span> <span data-ttu-id="564a3-268">當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。</span><span class="sxs-lookup"><span data-stu-id="564a3-268">The extension methods are in the [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) namespace (add a `using Microsoft.AspNetCore.Http;` statement to gain access to the extension methods) when the [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) package is referenced by the project.</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-269">`ISession` 擴充方法：</span><span class="sxs-lookup"><span data-stu-id="564a3-269">`ISession` extension methods:</span></span>
+
+* [<span data-ttu-id="564a3-270">Get(ISession, String)</span><span class="sxs-lookup"><span data-stu-id="564a3-270">Get(ISession, String)</span></span>](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.get)
+* [<span data-ttu-id="564a3-271">GetInt32(ISession, String)</span><span class="sxs-lookup"><span data-stu-id="564a3-271">GetInt32(ISession, String)</span></span>](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getint32)
+* [<span data-ttu-id="564a3-272">GetString(ISession, String)</span><span class="sxs-lookup"><span data-stu-id="564a3-272">GetString(ISession, String)</span></span>](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getstring)
+* [<span data-ttu-id="564a3-273">SetInt32(ISession, String, Int32)</span><span class="sxs-lookup"><span data-stu-id="564a3-273">SetInt32(ISession, String, Int32)</span></span>](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setint32)
+* [<span data-ttu-id="564a3-274">SetString(ISession, String, String)</span><span class="sxs-lookup"><span data-stu-id="564a3-274">SetString(ISession, String, String)</span></span>](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setstring)
+
+<span data-ttu-id="564a3-275">下列範例會在 Razor Pages 頁面中，擷取 `IndexModel.SessionKeyName` 索引鍵的工作階段值 (範例應用程式中的 `_Name`)：</span><span class="sxs-lookup"><span data-stu-id="564a3-275">The following example retrieves the session value for the `IndexModel.SessionKeyName` key (`_Name` in the sample app) in a Razor Pages page:</span></span>
+
+```csharp
+@page
+@using Microsoft.AspNetCore.Http
+@model IndexModel
+
+...
+
+Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
+```
+
+<span data-ttu-id="564a3-276">下列範例示範如何設定及取得整數和字串：</span><span class="sxs-lookup"><span data-stu-id="564a3-276">The following example shows how to set and get an integer and a string:</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-277">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]</span><span class="sxs-lookup"><span data-stu-id="564a3-277">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-278">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet1&highlight=10-11,18-19)]</span><span class="sxs-lookup"><span data-stu-id="564a3-278">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet1&highlight=10-11,18-19)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-279">若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-279">All session data must be serialized to enable a distributed cache scenario, even when using the in-memory cache.</span></span> <span data-ttu-id="564a3-280">已提供最小字串及數字的序列化程式 (請參閱 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 的方法和擴充方法)。</span><span class="sxs-lookup"><span data-stu-id="564a3-280">Minimal string and number serializers are provided (see the methods and extension methods of [ISession](/dotnet/api/microsoft.aspnetcore.http.isession)).</span></span> <span data-ttu-id="564a3-281">複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。</span><span class="sxs-lookup"><span data-stu-id="564a3-281">Complex types must be serialized by the user using another mechanism, such as JSON.</span></span>
+
+<span data-ttu-id="564a3-282">新增下列擴充方法，即可設定和取得可序列化物件：</span><span class="sxs-lookup"><span data-stu-id="564a3-282">Add the following extension methods to set and get serializable objects:</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-283">[!code-csharp[](app-state/samples/2.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]</span><span class="sxs-lookup"><span data-stu-id="564a3-283">[!code-csharp[](app-state/samples/2.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-284">[!code-csharp[](app-state/samples/1.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]</span><span class="sxs-lookup"><span data-stu-id="564a3-284">[!code-csharp[](app-state/samples/1.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-285">下列範例示範如何使用擴充方法來設定和取得可序列化物件：</span><span class="sxs-lookup"><span data-stu-id="564a3-285">The following example shows how to set and get a serializable object with the extension methods:</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-286">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet2)]</span><span class="sxs-lookup"><span data-stu-id="564a3-286">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet2)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-287">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet2&highlight=4,12)]</span><span class="sxs-lookup"><span data-stu-id="564a3-287">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet2&highlight=4,12)]</span></span>
+
+::: moniker-end
+
+## <a name="tempdata"></a><span data-ttu-id="564a3-288">TempData</span><span class="sxs-lookup"><span data-stu-id="564a3-288">TempData</span></span>
+
+<span data-ttu-id="564a3-289">ASP.NET Core 會公開 [Razor Pages 頁面模型的 TempData 屬性](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.tempdata)或 [MVC 控制器的 TempData](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata)。</span><span class="sxs-lookup"><span data-stu-id="564a3-289">ASP.NET Core exposes the [TempData property of a Razor Pages page model](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.tempdata) or [TempData of an MVC controller](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata).</span></span> <span data-ttu-id="564a3-290">這個屬性會儲存資料，直到讀取為止。</span><span class="sxs-lookup"><span data-stu-id="564a3-290">This property stores data until it's read.</span></span> <span data-ttu-id="564a3-291">[Keep](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.keep) 和 [Peek](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.peek) 方法可以用來檢查資料，不用刪除。</span><span class="sxs-lookup"><span data-stu-id="564a3-291">The [Keep](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.keep) and [Peek](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.peek) methods can be used to examine the data without deletion.</span></span> <span data-ttu-id="564a3-292">當有多個要求需要資料時，TempData 對重新導向很有幫助。</span><span class="sxs-lookup"><span data-stu-id="564a3-292">TempData is particularly useful for redirection when data is required for more than a single request.</span></span> <span data-ttu-id="564a3-293">TempData 是由 TempData 提供者使用 Cookie 或工作階段狀態來實作。</span><span class="sxs-lookup"><span data-stu-id="564a3-293">TempData is implemented by TempData providers using either cookies or session state.</span></span>
+
+### <a name="tempdata-providers"></a><span data-ttu-id="564a3-294">TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="564a3-294">TempData providers</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-295">在 ASP.NET Core 2.0 或更新版本中，預設會使用 Cookie 架構 TempData 提供者，將 TempData 儲存在 Cookie 中。</span><span class="sxs-lookup"><span data-stu-id="564a3-295">In ASP.NET Core 2.0 or later, the cookie-based TempData provider is used by default to store TempData in cookies.</span></span>
+
+<span data-ttu-id="564a3-296">Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密，並使用 [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder) 編碼，然後分成區塊。</span><span class="sxs-lookup"><span data-stu-id="564a3-296">The cookie data is encrypted using [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector), encoded with [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder), then chunked.</span></span> <span data-ttu-id="564a3-297">因為 Cookie 分成區塊，所以不適用 ASP.NET Core 1.x 中找到的 Cookie 大小限制。</span><span class="sxs-lookup"><span data-stu-id="564a3-297">Because the cookie is chunked, the single cookie size limit found in ASP.NET Core 1.x doesn't apply.</span></span> <span data-ttu-id="564a3-298">Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。</span><span class="sxs-lookup"><span data-stu-id="564a3-298">The cookie data isn't compressed because compressing encrypted data can lead to security problems such as the [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) and [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) attacks.</span></span> <span data-ttu-id="564a3-299">如需 Cookie 架構 TempData 提供者的詳細資訊，請參閱 [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider)。</span><span class="sxs-lookup"><span data-stu-id="564a3-299">For more information on the cookie-based TempData provider, see [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider).</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-300">在 ASP.NET Core 1.0 和 1.1 中，工作階段狀態 TempData 提供者是預設提供者。</span><span class="sxs-lookup"><span data-stu-id="564a3-300">In ASP.NET Core 1.0 and 1.1, the session state TempData provider is the default provider.</span></span>
+
+::: moniker-end
+
+### <a name="choose-a-tempdata-provider"></a><span data-ttu-id="564a3-301">選擇 TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="564a3-301">Choose a TempData provider</span></span>
+
+<span data-ttu-id="564a3-302">選擇 TempData 提供者涉及數項考量，例如：</span><span class="sxs-lookup"><span data-stu-id="564a3-302">Choosing a TempData provider involves several considerations, such as:</span></span>
+
+1. <span data-ttu-id="564a3-303">應用程式已經使用工作階段狀態了嗎？</span><span class="sxs-lookup"><span data-stu-id="564a3-303">Does the app already use session state?</span></span> <span data-ttu-id="564a3-304">如果是的話，使用工作階段狀態 TempData 提供者沒有額外的應用程式成本 (除了資料的大小之外)。</span><span class="sxs-lookup"><span data-stu-id="564a3-304">If so, using the session state TempData provider has no additional cost to the app (aside from the size of the data).</span></span>
+2. <span data-ttu-id="564a3-305">應用程式是否盡量只將 TempData 用於相對少量的資料 (最多 500 個位元組)？</span><span class="sxs-lookup"><span data-stu-id="564a3-305">Does the app use TempData only sparingly for relatively small amounts of data (up to 500 bytes)?</span></span> <span data-ttu-id="564a3-306">如果是的話，Cookie TempData 提供者將對包含 TempData 的每個要求新增少量成本。</span><span class="sxs-lookup"><span data-stu-id="564a3-306">If so, the cookie TempData provider adds a small cost to each request that carries TempData.</span></span> <span data-ttu-id="564a3-307">如果不是的話，則工作階段狀態 TempData 提供者可能有助於避免在每個要求中來回傳送大量資料，直到取用 TempData 為止。</span><span class="sxs-lookup"><span data-stu-id="564a3-307">If not, the session state TempData provider can be beneficial to avoid round-tripping a large amount of data in each request until the TempData is consumed.</span></span>
+3. <span data-ttu-id="564a3-308">應用程式在伺服器陣列中的多部伺服器上執行？</span><span class="sxs-lookup"><span data-stu-id="564a3-308">Does the app run in a server farm on multiple servers?</span></span> <span data-ttu-id="564a3-309">如果是的話，不需要額外組態，即可在資料保護之外使用 Cookie TempData 提供者 (請參閱[資料保護](xref:security/data-protection/index)和[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers))。</span><span class="sxs-lookup"><span data-stu-id="564a3-309">If so, there's no additional configuration required to use the cookie TempData provider outside of Data Protection (see [Data Protection](xref:security/data-protection/index) and [Key storage providers](xref:security/data-protection/implementation/key-storage-providers)).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="564a3-310">大部分的 Web 用戶端 (例如網頁瀏覽器) 會強制執行每個 Cookie 的大小上限、Cookie 總數或這兩者的限制。</span><span class="sxs-lookup"><span data-stu-id="564a3-310">Most web clients (such as web browsers) enforce limits on the maximum size of each cookie, the total number of cookies, or both.</span></span> <span data-ttu-id="564a3-311">使用 Cookie TempData 提供者時，請確認應用程式不會超過這些限制。</span><span class="sxs-lookup"><span data-stu-id="564a3-311">When using the cookie TempData provider, verify the app won't exceed these limits.</span></span> <span data-ttu-id="564a3-312">請考慮資料的大小總計。</span><span class="sxs-lookup"><span data-stu-id="564a3-312">Consider the total size of the data.</span></span> <span data-ttu-id="564a3-313">請考慮因為加密和區塊處理而增加的 Cookie 大小。</span><span class="sxs-lookup"><span data-stu-id="564a3-313">Account for increases in cookie size due to encryption and chunking.</span></span>
+
+### <a name="configure-the-tempdata-provider"></a><span data-ttu-id="564a3-314">設定 TempData 提供者</span><span class="sxs-lookup"><span data-stu-id="564a3-314">Configure the TempData provider</span></span>
+
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-315">預設會啟用 Cookie 架構 TempData 提供者。</span><span class="sxs-lookup"><span data-stu-id="564a3-315">The cookie-based TempData provider is enabled by default.</span></span>
+
+<span data-ttu-id="564a3-316">若要啟用以工作階段為基礎的 TempData 提供者，請使用 [AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider) 擴充方法：</span><span class="sxs-lookup"><span data-stu-id="564a3-316">To enable the session-based TempData provider, use the [AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider) extension method:</span></span>
+
+<span data-ttu-id="564a3-317">[!code-csharp[](app-state/samples_snapshot_2/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13,32)]</span><span class="sxs-lookup"><span data-stu-id="564a3-317">[!code-csharp[](app-state/samples_snapshot_2/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13,32)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-318">下列 `Startup` 類別程式碼會設定工作階段架構 TempData 提供者：</span><span class="sxs-lookup"><span data-stu-id="564a3-318">The following `Startup` class code configures the session-based TempData provider:</span></span>
+
+<span data-ttu-id="564a3-319">[!code-csharp[](app-state/samples_snapshot_2/1.x/SessionSample/Startup.cs?name=snippet1&highlight=4,9)]</span><span class="sxs-lookup"><span data-stu-id="564a3-319">[!code-csharp[](app-state/samples_snapshot_2/1.x/SessionSample/Startup.cs?name=snippet1&highlight=4,9)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-320">中介軟體的順序很重要。</span><span class="sxs-lookup"><span data-stu-id="564a3-320">The order of middleware is important.</span></span> <span data-ttu-id="564a3-321">在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。</span><span class="sxs-lookup"><span data-stu-id="564a3-321">In the preceding example, an `InvalidOperationException` exception occurs when `UseSession` is invoked after `UseMvc`.</span></span> <span data-ttu-id="564a3-322">如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#ordering)。</span><span class="sxs-lookup"><span data-stu-id="564a3-322">For more information, see [Middleware Ordering](xref:fundamentals/middleware/index#ordering).</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="ec258-168">如果目標為 .NET Framework 且使用工作階段架構提供者，請將 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session) NuGet 套件新增至您的專案。</span><span class="sxs-lookup"><span data-stu-id="ec258-168">If targeting .NET Framework and using the session-based provider, add the [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session) NuGet package to your project.</span></span>
+> <span data-ttu-id="564a3-323">如果目標為 .NET Framework 且使用以工作階段為基礎的 TempData 提供者，請將 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件新增至專案。</span><span class="sxs-lookup"><span data-stu-id="564a3-323">If targeting .NET Framework and using the session-based TempData provider, add the [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) package to the project.</span></span>
 
-## <a name="query-strings"></a><span data-ttu-id="ec258-169">查詢字串</span><span class="sxs-lookup"><span data-stu-id="ec258-169">Query strings</span></span>
+## <a name="query-strings"></a><span data-ttu-id="564a3-324">查詢字串</span><span class="sxs-lookup"><span data-stu-id="564a3-324">Query strings</span></span>
 
-<span data-ttu-id="ec258-170">您可以將數量有限的資料從某個要求傳遞到另一個要求，方法是將其新增至新要求的查詢字串。</span><span class="sxs-lookup"><span data-stu-id="ec258-170">You can pass a limited amount of data from one request to another by adding it to the new request's query string.</span></span> <span data-ttu-id="ec258-171">這對於以持續方式擷取狀態很有用，可讓內嵌狀態的連結透過電子郵件或社交網路共用。</span><span class="sxs-lookup"><span data-stu-id="ec258-171">This is useful for capturing state in a persistent manner that allows links with embedded state to be shared through email or social networks.</span></span> <span data-ttu-id="ec258-172">不過，基於這個原因，您永遠不應該針對敏感性資料使用查詢字串。</span><span class="sxs-lookup"><span data-stu-id="ec258-172">However, for this reason, you should never use query strings for sensitive data.</span></span> <span data-ttu-id="ec258-173">除了輕鬆共用之外，在查詢字串中包括資料還可能會為[跨網站偽造要求 (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) 攻擊創造機會，這些攻擊可能會誘騙使用者在驗證時瀏覽惡意網站。</span><span class="sxs-lookup"><span data-stu-id="ec258-173">In addition to being easily shared, including data in query strings can create opportunities for [Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) attacks, which can trick users into visiting malicious sites while authenticated.</span></span> <span data-ttu-id="ec258-174">然後，攻擊者可能會竊取應用程式中的使用者資料，或代表使用者採取惡意動作。</span><span class="sxs-lookup"><span data-stu-id="ec258-174">Attackers can then steal user data from your app or take malicious actions on behalf of the user.</span></span> <span data-ttu-id="ec258-175">任何保留的應用程式或工作階段狀態必須防範 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="ec258-175">Any preserved application or session state must protect against CSRF attacks.</span></span> <span data-ttu-id="ec258-176">如需詳細資訊，請參閱[防止跨網站偽造要求 (XSRF/CSRF) 攻擊](xref:security/anti-request-forgery)。</span><span class="sxs-lookup"><span data-stu-id="ec258-176">For more information on CSRF attacks, see [Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks](xref:security/anti-request-forgery).</span></span>
+<span data-ttu-id="564a3-325">可以將數量有限的資料從某個要求傳遞到另一個要求，方法是將其新增至新要求的查詢字串。</span><span class="sxs-lookup"><span data-stu-id="564a3-325">A limited amount of data can be passed from one request to another by adding it to the new request's query string.</span></span> <span data-ttu-id="564a3-326">這對於以持續方式擷取狀態很有用，可讓內嵌狀態的連結透過電子郵件或社交網路共用。</span><span class="sxs-lookup"><span data-stu-id="564a3-326">This is useful for capturing state in a persistent manner that allows links with embedded state to be shared through email or social networks.</span></span> <span data-ttu-id="564a3-327">因為 URL 查詢字串為公用，所以請絕對不要使用查詢字串來處理敏感性資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-327">Because URL query strings are public, never use query strings for sensitive data.</span></span>
 
-## <a name="post-data-and-hidden-fields"></a><span data-ttu-id="ec258-177">張貼資料和隱藏欄位</span><span class="sxs-lookup"><span data-stu-id="ec258-177">Post data and hidden fields</span></span>
+<span data-ttu-id="564a3-328">除了非預期的共用之外，在查詢字串中包括資料還可能會為[跨網站偽造要求 (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) 攻擊創造機會，這些攻擊可能會誘騙使用者在驗證時瀏覽惡意網站。</span><span class="sxs-lookup"><span data-stu-id="564a3-328">In addition to unintended sharing, including data in query strings can create opportunities for [Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) attacks, which can trick users into visiting malicious sites while authenticated.</span></span> <span data-ttu-id="564a3-329">然後，攻擊者可能會竊取應用程式中的使用者資料，或代表使用者採取惡意動作。</span><span class="sxs-lookup"><span data-stu-id="564a3-329">Attackers can then steal user data from the app or take malicious actions on behalf of the user.</span></span> <span data-ttu-id="564a3-330">任何保留的應用程式或工作階段狀態必須防範 CSRF 攻擊。</span><span class="sxs-lookup"><span data-stu-id="564a3-330">Any preserved app or session state must protect against CSRF attacks.</span></span> <span data-ttu-id="564a3-331">如需詳細資訊，請參閱[防止跨站台要求偽造 (XSRF/CSRF) 攻擊](xref:security/anti-request-forgery)。</span><span class="sxs-lookup"><span data-stu-id="564a3-331">For more information, see [Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks](xref:security/anti-request-forgery).</span></span>
 
-<span data-ttu-id="ec258-178">資料可以儲存在隱藏的表單欄位，並貼回下一個要求。</span><span class="sxs-lookup"><span data-stu-id="ec258-178">Data can be saved in hidden form fields and posted back on the next request.</span></span> <span data-ttu-id="ec258-179">這在多頁表單中很常見。</span><span class="sxs-lookup"><span data-stu-id="ec258-179">This is common in multi-page forms.</span></span> <span data-ttu-id="ec258-180">不過，因為用戶端可能會竄改資料，所以伺服器必須一律重新驗證它。</span><span class="sxs-lookup"><span data-stu-id="ec258-180">However, because the client can potentially tamper with the data, the server must always revalidate it.</span></span>
+## <a name="hidden-fields"></a><span data-ttu-id="564a3-332">隱藏欄位</span><span class="sxs-lookup"><span data-stu-id="564a3-332">Hidden fields</span></span>
 
-## <a name="cookies"></a><span data-ttu-id="ec258-181">Cookie</span><span class="sxs-lookup"><span data-stu-id="ec258-181">Cookies</span></span>
+<span data-ttu-id="564a3-333">資料可以儲存在隱藏的表單欄位，並貼回下一個要求。</span><span class="sxs-lookup"><span data-stu-id="564a3-333">Data can be saved in hidden form fields and posted back on the next request.</span></span> <span data-ttu-id="564a3-334">這在多頁表單中很常見。</span><span class="sxs-lookup"><span data-stu-id="564a3-334">This is common in multi-page forms.</span></span> <span data-ttu-id="564a3-335">因為用戶端可能會竄改資料，所以應用程式必須一律重新驗證存放在隱藏欄位中的資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-335">Because the client can potentially tamper with the data, the app must always revalidate the data stored in hidden fields.</span></span>
 
-<span data-ttu-id="ec258-182">Cookie 提供在 Web 應用程式中儲存使用者特定資料的方法。</span><span class="sxs-lookup"><span data-stu-id="ec258-182">Cookies provide a way to store user-specific data in web applications.</span></span> <span data-ttu-id="ec258-183">因為 Cookie 會隨著每個要求傳送，所以其大小應該保持最小。</span><span class="sxs-lookup"><span data-stu-id="ec258-183">Because cookies are sent with every request, their size should be kept to a minimum.</span></span> <span data-ttu-id="ec258-184">在理想情況下，應該只有識別碼儲存在 Cookie 中，而實際資料儲存在伺服器上。</span><span class="sxs-lookup"><span data-stu-id="ec258-184">Ideally, only an identifier should be stored in a cookie with the actual data stored on the server.</span></span> <span data-ttu-id="ec258-185">大部分的瀏覽器將 Cookie 限制為 4096 個位元組。</span><span class="sxs-lookup"><span data-stu-id="ec258-185">Most browsers restrict cookies to 4096 bytes.</span></span> <span data-ttu-id="ec258-186">此外，每個網域只有數量有限的 Cookie 可供使用。</span><span class="sxs-lookup"><span data-stu-id="ec258-186">In addition, only a limited number of cookies are available for each domain.</span></span>
+## <a name="httpcontextitems"></a><span data-ttu-id="564a3-336">HttpContext.Items</span><span class="sxs-lookup"><span data-stu-id="564a3-336">HttpContext.Items</span></span>
 
-<span data-ttu-id="ec258-187">由於 Cookie 可能會遭到竄改，因此必須在伺服器上加以驗證。</span><span class="sxs-lookup"><span data-stu-id="ec258-187">Because cookies are subject to tampering, they must be validated on the server.</span></span> <span data-ttu-id="ec258-188">雖然用戶端上的 Cookie 持久性受限於使用者介入與到期日，但它們通常是用戶端上最持久的資料持續性形式。</span><span class="sxs-lookup"><span data-stu-id="ec258-188">Although the durability of the cookie on a client is subject to user intervention and expiration, they're generally the most durable form of data persistence on the client.</span></span>
+<span data-ttu-id="564a3-337">[HttpContext.Items](/dotnet/api/microsoft.aspnetcore.http.httpcontext.items) 集合用來在處理單一要求時存放資料。</span><span class="sxs-lookup"><span data-stu-id="564a3-337">The [HttpContext.Items](/dotnet/api/microsoft.aspnetcore.http.httpcontext.items) collection is used to store data while processing a single request.</span></span> <span data-ttu-id="564a3-338">集合的內容會在每個要求處理之後捨棄。</span><span class="sxs-lookup"><span data-stu-id="564a3-338">The collection's contents are discarded after a request is processed.</span></span> <span data-ttu-id="564a3-339">當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。</span><span class="sxs-lookup"><span data-stu-id="564a3-339">The `Items` collection is often used to allow components or middleware to communicate when they operate at different points in time during a request and have no direct way to pass parameters.</span></span>
 
-<span data-ttu-id="ec258-189">Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂。</span><span class="sxs-lookup"><span data-stu-id="ec258-189">Cookies are often used for personalization, where content is customized for a known user.</span></span> <span data-ttu-id="ec258-190">因為在大部分情況下，只會識別使用者而不會驗證，所以您通常可以藉由在 Cookie 中儲存使用者名稱、帳戶名稱或唯一使用者識別碼 (例如 GUID) 來保護 Cookie。</span><span class="sxs-lookup"><span data-stu-id="ec258-190">Because the user is only identified and not authenticated in most cases, you can typically secure a cookie by storing the user name, account name, or a unique user ID (such as a GUID) in the cookie.</span></span> <span data-ttu-id="ec258-191">然後，該Cookie 可用來存取網站的使用者個人化基礎結構。</span><span class="sxs-lookup"><span data-stu-id="ec258-191">You can then use the cookie to access the user personalization infrastructure of a site.</span></span>
-
-## <a name="httpcontextitems"></a><span data-ttu-id="ec258-192">HttpContext.Items</span><span class="sxs-lookup"><span data-stu-id="ec258-192">HttpContext.Items</span></span>
-
-<span data-ttu-id="ec258-193">要儲存只有處理某個特定要求時所需的資料，`Items` 集合是個不錯的位置。</span><span class="sxs-lookup"><span data-stu-id="ec258-193">The `Items` collection is a good location to store data that's needed only while processing one particular request.</span></span> <span data-ttu-id="ec258-194">集合的內容會在每個要求之後捨棄。</span><span class="sxs-lookup"><span data-stu-id="ec258-194">The collection's contents are discarded after each request.</span></span> <span data-ttu-id="ec258-195">當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合是元件或中介軟體用來通訊的最佳方式。</span><span class="sxs-lookup"><span data-stu-id="ec258-195">The `Items` collection is best used as a way for components or middleware to communicate when they operate at different points in time during a request and have no direct way to pass parameters.</span></span> <span data-ttu-id="ec258-196">如需詳細資訊，請參閱本文稍後的[使用 HttpContext.Items](#working-with-httpcontextitems)。</span><span class="sxs-lookup"><span data-stu-id="ec258-196">For more information, see [Work with HttpContext.Items](#working-with-httpcontextitems), later in this article.</span></span>
-
-## <a name="cache"></a><span data-ttu-id="ec258-197">快取</span><span class="sxs-lookup"><span data-stu-id="ec258-197">Cache</span></span>
-
-<span data-ttu-id="ec258-198">快取是儲存和擷取資料的有效方式。</span><span class="sxs-lookup"><span data-stu-id="ec258-198">Caching is an efficient way to store and retrieve data.</span></span> <span data-ttu-id="ec258-199">您可以依據時間和其他考量控制快取項目的存留期。</span><span class="sxs-lookup"><span data-stu-id="ec258-199">You can control the lifetime of cached items based on time and other considerations.</span></span> <span data-ttu-id="ec258-200">深入了解[如何快取](../performance/caching/index.md)。</span><span class="sxs-lookup"><span data-stu-id="ec258-200">Learn more about [how to cache](../performance/caching/index.md).</span></span>
-
-## <a name="working-with-session-state"></a><span data-ttu-id="ec258-201">使用工作階段狀態</span><span class="sxs-lookup"><span data-stu-id="ec258-201">Working with Session State</span></span>
-
-### <a name="configuring-session"></a><span data-ttu-id="ec258-202">設定工作階段</span><span class="sxs-lookup"><span data-stu-id="ec258-202">Configuring Session</span></span>
-
-<span data-ttu-id="ec258-203">`Microsoft.AspNetCore.Session` 套件提供用來管理工作階段狀態的中介軟體。</span><span class="sxs-lookup"><span data-stu-id="ec258-203">The `Microsoft.AspNetCore.Session` package provides middleware for managing session state.</span></span> <span data-ttu-id="ec258-204">若要啟用工作階段中介軟體，`Startup` 必須包含：</span><span class="sxs-lookup"><span data-stu-id="ec258-204">To enable the session middleware, `Startup` must contain:</span></span>
-
-- <span data-ttu-id="ec258-205">任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。</span><span class="sxs-lookup"><span data-stu-id="ec258-205">Any of the [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) memory caches.</span></span> <span data-ttu-id="ec258-206">`IDistributedCache` 實作會作為工作階段的支援存放區。</span><span class="sxs-lookup"><span data-stu-id="ec258-206">The `IDistributedCache` implementation is used as a backing store for session.</span></span>
-- <span data-ttu-id="ec258-207">[AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions#Microsoft_Extensions_DependencyInjection_SessionServiceCollectionExtensions_AddSession_Microsoft_Extensions_DependencyInjection_IServiceCollection_) 呼叫，這需要 NuGet 套件 "Microsoft.AspNetCore.Session"。</span><span class="sxs-lookup"><span data-stu-id="ec258-207">[AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions#Microsoft_Extensions_DependencyInjection_SessionServiceCollectionExtensions_AddSession_Microsoft_Extensions_DependencyInjection_IServiceCollection_) call, which requires NuGet package "Microsoft.AspNetCore.Session".</span></span>
-- <span data-ttu-id="ec258-208">[UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_) 呼叫。</span><span class="sxs-lookup"><span data-stu-id="ec258-208">[UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions#methods_) call.</span></span>
-
-<span data-ttu-id="ec258-209">下列程式碼示範如何設定記憶體內部工作階段提供者。</span><span class="sxs-lookup"><span data-stu-id="ec258-209">The following code shows how to set up the in-memory session provider.</span></span>
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ec258-210">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ec258-210">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
-
-[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/Startup.cs?highlight=11-19,24)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ec258-211">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ec258-211">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
-
-[!code-csharp[](app-state/sample/src/WebAppSession/Startup.cs?highlight=11-19,24)]
-
----
-
-<span data-ttu-id="ec258-212">在其安裝並設定之後，您就可以從 `HttpContext` 參考工作階段。</span><span class="sxs-lookup"><span data-stu-id="ec258-212">You can reference Session from `HttpContext` once it's installed and configured.</span></span>
-
-<span data-ttu-id="ec258-213">如果在已呼叫 `UseSession` 之前嘗試存取 `Session`，就會擲回 `InvalidOperationException: Session has not been configured for this application or request` 例外狀況。</span><span class="sxs-lookup"><span data-stu-id="ec258-213">If you try to access `Session` before `UseSession` has been called, the exception `InvalidOperationException: Session has not been configured for this application or request` is thrown.</span></span>
-
-<span data-ttu-id="ec258-214">如果在已經開始寫入 `Response` 資料流之後，嘗試建立新的 `Session` (也就是未建立任何工作階段 Cookie)，則會擲回 `InvalidOperationException: The session cannot be established after the response has started` 例外狀況。</span><span class="sxs-lookup"><span data-stu-id="ec258-214">If you try to create a new `Session` (that is, no session cookie has been created) after you have already begun writing to the `Response` stream, the exception `InvalidOperationException: The session cannot be established after the response has started` is thrown.</span></span> <span data-ttu-id="ec258-215">此例外狀況可以在網頁伺服器記錄檔中找到；它不會顯示在瀏覽器中。</span><span class="sxs-lookup"><span data-stu-id="ec258-215">The exception can be found in the web server log; it will not be displayed in the browser.</span></span>
-
-### <a name="loading-session-asynchronously"></a><span data-ttu-id="ec258-216">非同步載入工作階段</span><span class="sxs-lookup"><span data-stu-id="ec258-216">Loading Session asynchronously</span></span>
-
-<span data-ttu-id="ec258-217">只有在 `TryGetValue`、`Set` 或 `Remove` 方法之前明確呼叫 [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession#Microsoft_AspNetCore_Http_ISession_LoadAsync) 方法時，ASP.NET Core 中的預設工作階段提供者才會從基礎 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 存放區以非同步方式載入工作階段記錄。</span><span class="sxs-lookup"><span data-stu-id="ec258-217">The default session provider in ASP.NET Core loads the session record from the underlying [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) store asynchronously only if the [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession#Microsoft_AspNetCore_Http_ISession_LoadAsync) method is explicitly called before  the `TryGetValue`, `Set`, or `Remove` methods.</span></span> <span data-ttu-id="ec258-218">如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能會影響應用程式的擴展能力。</span><span class="sxs-lookup"><span data-stu-id="ec258-218">If `LoadAsync` isn't called first, the underlying session record is loaded synchronously, which could potentially impact the ability of the app to scale.</span></span>
-
-<span data-ttu-id="ec258-219">若要讓應用程式強制執行此模式，請使用未在 `TryGetValue`、`Set` 或 `Remove` 之前呼叫 `LoadAsync` 方法時擲回例外狀況的版本來包裝 [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) 和 [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) 實作。</span><span class="sxs-lookup"><span data-stu-id="ec258-219">To have applications enforce this pattern, wrap the [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) and [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) implementations with versions that throw an exception if the `LoadAsync` method isn't called before `TryGetValue`, `Set`, or `Remove`.</span></span> <span data-ttu-id="ec258-220">請在服務容器中註冊已包裝的版本。</span><span class="sxs-lookup"><span data-stu-id="ec258-220">Register the wrapped versions in the services container.</span></span>
-
-### <a name="implementation-details"></a><span data-ttu-id="ec258-221">實作詳細資料</span><span class="sxs-lookup"><span data-stu-id="ec258-221">Implementation details</span></span>
-
-<span data-ttu-id="ec258-222">工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。</span><span class="sxs-lookup"><span data-stu-id="ec258-222">Session uses a cookie to track and identify requests from a single browser.</span></span> <span data-ttu-id="ec258-223">此 Cookie 預設名為 ".AspNet.Session"，並使用路徑 "/"。</span><span class="sxs-lookup"><span data-stu-id="ec258-223">By default, this cookie is named ".AspNet.Session", and it uses a path of "/".</span></span> <span data-ttu-id="ec258-224">由於 Cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端指令碼 (因為 `CookieHttpOnly` 預設為 `true`)。</span><span class="sxs-lookup"><span data-stu-id="ec258-224">Because the cookie default doesn't specify a domain, it's not made available to the client-side script on the page (because `CookieHttpOnly` defaults to `true`).</span></span>
-
-<span data-ttu-id="ec258-225">若要覆寫工作階段的預設值，請使用 `SessionOptions`：</span><span class="sxs-lookup"><span data-stu-id="ec258-225">To override session defaults, use `SessionOptions`:</span></span>
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ec258-226">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ec258-226">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
-
-[!code-csharp[](app-state/sample/src/WebAppSessionDotNetCore2.0App/StartupCopy.cs?name=snippet1&highlight=8-12)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ec258-227">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ec258-227">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
-
-[!code-csharp[](app-state/sample/src/WebAppSession/StartupCopy.cs?name=snippet1&highlight=8-12)]
-
----
-
-<span data-ttu-id="ec258-228">伺服器會使用 `IdleTimeout` 屬性，判斷工作階段可以在放棄其內容之前閒置多長時間。</span><span class="sxs-lookup"><span data-stu-id="ec258-228">The server uses the `IdleTimeout` property to determine how long a session can be idle before its contents are abandoned.</span></span> <span data-ttu-id="ec258-229">這個屬性與 Cookie 到期日無關。</span><span class="sxs-lookup"><span data-stu-id="ec258-229">This property is independent of the cookie expiration.</span></span> <span data-ttu-id="ec258-230">透過工作階段中介軟體傳遞 (讀取或寫入) 的每個要求會重設逾時。</span><span class="sxs-lookup"><span data-stu-id="ec258-230">Each request that passes through the Session middleware (read from or written to) resets the timeout.</span></span>
-
-<span data-ttu-id="ec258-231">因為 `Session` 為「非鎖定」，如果兩個要求同時嘗試修改工作階段的內容，則最後一個內容會覆寫第一個內容。</span><span class="sxs-lookup"><span data-stu-id="ec258-231">Because `Session` is *non-locking*, if two requests both attempt to modify the contents of session, the last one overrides the first.</span></span> <span data-ttu-id="ec258-232">`Session` 會實作為「一致性工作階段」，這表示所有內容會都儲存在一起。</span><span class="sxs-lookup"><span data-stu-id="ec258-232">`Session` is implemented as a *coherent session*, which means that all the contents are stored together.</span></span> <span data-ttu-id="ec258-233">要修改工作階段不同部分 (不同的索引鍵) 的兩個要求仍可能會彼此影響。</span><span class="sxs-lookup"><span data-stu-id="ec258-233">Two requests that are modifying different parts of the session (different keys) might still impact each other.</span></span>
-
-### <a name="set-and-get-session-values"></a><span data-ttu-id="ec258-234">設定和取得工作階段值</span><span class="sxs-lookup"><span data-stu-id="ec258-234">Set and get Session values</span></span>
-
-<span data-ttu-id="ec258-235">工作階段會使用 `Context.Session` 從 Razor 頁面或檢視進行存取：</span><span class="sxs-lookup"><span data-stu-id="ec258-235">Session is accessed from a Razor Page or view with `Context.Session`:</span></span>
-
-[!code-cshtml[](app-state/sample/src/WebAppSessionDotNetCore2.0App/Views/Home/About.cshtml)]
-
-<span data-ttu-id="ec258-236">工作階段是使用 `HttpContext.Session` 從 `PageModel` 類別或控制器進行存取。</span><span class="sxs-lookup"><span data-stu-id="ec258-236">Session is accessed from a `PageModel` class or controller with `HttpContext.Session`.</span></span> <span data-ttu-id="ec258-237">這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。</span><span class="sxs-lookup"><span data-stu-id="ec258-237">This property is an [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) implementation.</span></span>
-
-<span data-ttu-id="ec258-238">下列範例示範如何設定和取得整數及字串：</span><span class="sxs-lookup"><span data-stu-id="ec258-238">The following example shows setting and getting an int and a string:</span></span>
-
-[!code-csharp[](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?range=8-27,49)]
-
-<span data-ttu-id="ec258-239">如果新增下列擴充方法，您可以設定和取得工作階段的可序列化物件：</span><span class="sxs-lookup"><span data-stu-id="ec258-239">If you add the following extension methods, you can set and get serializable objects to Session:</span></span>
-
-[!code-csharp[](app-state/sample/src/WebAppSession/Extensions/SessionExtensions.cs)]
-
-<span data-ttu-id="ec258-240">下列範例示範如何設定和取得可序列化物件：</span><span class="sxs-lookup"><span data-stu-id="ec258-240">The following sample shows how to set and get a serializable object:</span></span>
-
-[!code-csharp[](app-state/sample/src/WebAppSession/Controllers/HomeController.cs?name=snippet2)]
-
-## <a name="working-with-httpcontextitems"></a><span data-ttu-id="ec258-241">使用 HttpContext.Items</span><span class="sxs-lookup"><span data-stu-id="ec258-241">Working with HttpContext.Items</span></span>
-
-<span data-ttu-id="ec258-242">`HttpContext` 抽象支援 `IDictionary<object, object>` 類型的字典集合，稱為 `Items`。</span><span class="sxs-lookup"><span data-stu-id="ec258-242">The `HttpContext` abstraction provides support for a dictionary collection of type `IDictionary<object, object>`, called `Items`.</span></span> <span data-ttu-id="ec258-243">此集合可在 *HttpRequest* 的開頭取得，並於每個要求的結尾處捨棄。</span><span class="sxs-lookup"><span data-stu-id="ec258-243">This collection is available from the start of an *HttpRequest* and is discarded at the end of each request.</span></span> <span data-ttu-id="ec258-244">透過將值指派給索引鍵項目，或要求特定索引鍵的值，即可存取它。</span><span class="sxs-lookup"><span data-stu-id="ec258-244">You can access it by  assigning a value to a keyed entry, or by requesting the value for a particular key.</span></span>
-
-<span data-ttu-id="ec258-245">在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將 `isVerified` 新增至 `Items` 集合。</span><span class="sxs-lookup"><span data-stu-id="ec258-245">In the following sample, [Middleware](xref:fundamentals/middleware/index) adds `isVerified` to the `Items` collection.</span></span>
+<span data-ttu-id="564a3-340">在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將 `isVerified` 新增至 `Items` 集合。</span><span class="sxs-lookup"><span data-stu-id="564a3-340">In the following example, [middleware](xref:fundamentals/middleware/index) adds `isVerified` to the `Items` collection.</span></span>
 
 ```csharp
 app.Use(async (context, next) =>
@@ -199,88 +329,115 @@ app.Use(async (context, next) =>
 });
 ```
 
-<span data-ttu-id="ec258-246">稍後在管線中，另一個中介軟體可以存取它：</span><span class="sxs-lookup"><span data-stu-id="ec258-246">Later in the pipeline, another middleware could access it:</span></span>
+<span data-ttu-id="564a3-341">稍後在管線中，另一個中介軟體可以存取 `isVerified` 的值：</span><span class="sxs-lookup"><span data-stu-id="564a3-341">Later in the pipeline, another middleware can access the value of `isVerified`:</span></span>
 
 ```csharp
 app.Run(async (context) =>
 {
-    await context.Response.WriteAsync("Verified request? " +
-        context.Items["isVerified"]);
+    await context.Response.WriteAsync($"Verified: {context.Items["isVerified"]}");
 });
 ```
 
-<span data-ttu-id="ec258-247">如果是只由單一應用程式使用的中介軟體，可接受 `string` 索引鍵。</span><span class="sxs-lookup"><span data-stu-id="ec258-247">For middleware that will only be used by a single app, `string` keys are acceptable.</span></span> <span data-ttu-id="ec258-248">不過，將在應用程式之間共用的中介軟體應該使用唯一物件索引鍵，以避免任何可能發生的索引鍵衝突。</span><span class="sxs-lookup"><span data-stu-id="ec258-248">However, middleware that will be shared between applications should use unique object keys to avoid any chance of key collisions.</span></span> <span data-ttu-id="ec258-249">如果您要開發必須跨多個應用程式運作的中介軟體，請使用中介軟體類別中定義的唯一物件索引鍵，如下所示：</span><span class="sxs-lookup"><span data-stu-id="ec258-249">If you are developing middleware that must work across multiple applications, use a unique object key defined in your middleware class as shown below:</span></span>
+<span data-ttu-id="564a3-342">如果是只由單一應用程式使用的中介軟體，可接受 `string` 索引鍵。</span><span class="sxs-lookup"><span data-stu-id="564a3-342">For middleware that's only used by a single app, `string` keys are acceptable.</span></span> <span data-ttu-id="564a3-343">應用程式執行個體之間共用的中介軟體，應該使用唯一的物件索引鍵，來避免索引鍵衝突。</span><span class="sxs-lookup"><span data-stu-id="564a3-343">Middleware shared between app instances should use unique object keys to avoid key collisions.</span></span> <span data-ttu-id="564a3-344">下列範例示範如何使用中介軟體類別中定義的唯一物件索引鍵：</span><span class="sxs-lookup"><span data-stu-id="564a3-344">The following example shows how to use a unique object key defined in a middleware class:</span></span>
 
-```csharp
-public class SampleMiddleware
-{
-    public static readonly object SampleKey = new Object();
+::: moniker range=">= aspnetcore-2.0"
 
-    public async Task Invoke(HttpContext httpContext)
-    {
-        httpContext.Items[SampleKey] = "some value";
-        // additional code omitted
-    }
-}
-```
+<span data-ttu-id="564a3-345">[!code-csharp[](app-state/samples/2.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=4,13)]</span><span class="sxs-lookup"><span data-stu-id="564a3-345">[!code-csharp[](app-state/samples/2.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=4,13)]</span></span>
 
-<span data-ttu-id="ec258-250">其他程式碼可以使用中介軟體類別所公開的索引鍵，來存取 `HttpContext.Items` 中儲存的值：</span><span class="sxs-lookup"><span data-stu-id="ec258-250">Other code can access the value stored in `HttpContext.Items` using the key exposed by the middleware class:</span></span>
+::: moniker-end
 
-```csharp
-public class HomeController : Controller
-{
-    public IActionResult Index()
-    {
-        string value = HttpContext.Items[SampleMiddleware.SampleKey];
-    }
-}
-```
+::: moniker range="< aspnetcore-2.0"
 
-<span data-ttu-id="ec258-251">此方法也有在程式碼的多個位置中消除重複的魔術字串 (magic string) 的優點。</span><span class="sxs-lookup"><span data-stu-id="ec258-251">This approach also has the advantage of eliminating repetition of "magic strings" in multiple places in the code.</span></span>
+<span data-ttu-id="564a3-346">[!code-csharp[](app-state/samples/1.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=5,14)]</span><span class="sxs-lookup"><span data-stu-id="564a3-346">[!code-csharp[](app-state/samples/1.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=5,14)]</span></span>
 
-## <a name="application-state-data"></a><span data-ttu-id="ec258-252">應用程式狀態資料</span><span class="sxs-lookup"><span data-stu-id="ec258-252">Application state data</span></span>
+::: moniker-end
 
-<span data-ttu-id="ec258-253">請使用[相依性插入](xref:fundamentals/dependency-injection)將資料提供給所有使用者：</span><span class="sxs-lookup"><span data-stu-id="ec258-253">Use [Dependency Injection](xref:fundamentals/dependency-injection) to make data available to all users:</span></span>
+<span data-ttu-id="564a3-347">其他程式碼可以使用中介軟體類別所公開的索引鍵，來存取 `HttpContext.Items` 中儲存的值：</span><span class="sxs-lookup"><span data-stu-id="564a3-347">Other code can access the value stored in `HttpContext.Items` using the key exposed by the middleware class:</span></span>
 
-1. <span data-ttu-id="ec258-254">定義包含資料的服務 (例如，名為 `MyAppData` 的類別)。</span><span class="sxs-lookup"><span data-stu-id="ec258-254">Define a service containing the data (for example, a class named `MyAppData`).</span></span>
+::: moniker range=">= aspnetcore-2.0"
+
+<span data-ttu-id="564a3-348">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet3)]</span><span class="sxs-lookup"><span data-stu-id="564a3-348">[!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet3)]</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+<span data-ttu-id="564a3-349">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet3)]</span><span class="sxs-lookup"><span data-stu-id="564a3-349">[!code-csharp[](app-state/samples/1.x/SessionSample/Controllers/HomeController.cs?name=snippet3)]</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="564a3-350">此方法也有在程式碼中消除使用索引鍵字串的優點。</span><span class="sxs-lookup"><span data-stu-id="564a3-350">This approach also has the advantage of eliminating the use of key strings in the code.</span></span>
+
+## <a name="cache"></a><span data-ttu-id="564a3-351">快取</span><span class="sxs-lookup"><span data-stu-id="564a3-351">Cache</span></span>
+
+<span data-ttu-id="564a3-352">快取是儲存和擷取資料的有效方式。</span><span class="sxs-lookup"><span data-stu-id="564a3-352">Caching is an efficient way to store and retrieve data.</span></span> <span data-ttu-id="564a3-353">應用程式可以控制快取項目的存留期。</span><span class="sxs-lookup"><span data-stu-id="564a3-353">The app can control the lifetime of cached items.</span></span>
+
+<span data-ttu-id="564a3-354">快取的資料未與特定要求、使用者或工作階段建立關聯。</span><span class="sxs-lookup"><span data-stu-id="564a3-354">Cached data isn't associated with a specific request, user, or session.</span></span> <span data-ttu-id="564a3-355">**請小心不要快取可能由其他使用者要求所擷取的特定使用者資料。**</span><span class="sxs-lookup"><span data-stu-id="564a3-355">**Be careful not to cache user-specific data that may be retrieved by other users' requests.**</span></span>
+
+<span data-ttu-id="564a3-356">如需詳細資訊，請參閱[快取回應](xref:performance/caching/index)主題。</span><span class="sxs-lookup"><span data-stu-id="564a3-356">For more information, see the [Cache responses](xref:performance/caching/index) topic.</span></span>
+
+## <a name="dependency-injection"></a><span data-ttu-id="564a3-357">相依性插入</span><span class="sxs-lookup"><span data-stu-id="564a3-357">Dependency Injection</span></span>
+
+<span data-ttu-id="564a3-358">請使用[相依性插入](xref:fundamentals/dependency-injection)將資料提供給所有使用者：</span><span class="sxs-lookup"><span data-stu-id="564a3-358">Use [Dependency Injection](xref:fundamentals/dependency-injection) to make data available to all users:</span></span>
+
+1. <span data-ttu-id="564a3-359">定義包含資料的服務。</span><span class="sxs-lookup"><span data-stu-id="564a3-359">Define a service containing the data.</span></span> <span data-ttu-id="564a3-360">例如，已定義名為 `MyAppData` 的類別：</span><span class="sxs-lookup"><span data-stu-id="564a3-360">For example, a class named `MyAppData` is defined:</span></span>
 
     ```csharp
     public class MyAppData
     {
-        // Declare properties/methods/etc.
-    } 
+        // Declare properties and methods
+    }
     ```
 
-2. <span data-ttu-id="ec258-255">將服務類別新增至 `ConfigureServices` (例如 `services.AddSingleton<MyAppData>();`)。</span><span class="sxs-lookup"><span data-stu-id="ec258-255">Add the service class to `ConfigureServices` (for example `services.AddSingleton<MyAppData>();`).</span></span>
-
-3. <span data-ttu-id="ec258-256">在每個控制器中取用資料服務類別：</span><span class="sxs-lookup"><span data-stu-id="ec258-256">Consume the data service class in each controller:</span></span>
+2. <span data-ttu-id="564a3-361">將服務類別新增至 `Startup.ConfigureServices`：</span><span class="sxs-lookup"><span data-stu-id="564a3-361">Add the service class to `Startup.ConfigureServices`:</span></span>
 
     ```csharp
-    public class MyController : Controller
+    public void ConfigureServices(IServiceCollection services)
     {
-        public MyController(MyAppData myService)
-        {
-            // Do something with the service (read some data from it, 
-            // store it in a private field/property, etc.)
-        }
-    } 
+        services.AddSingleton<MyAppData>();
+    }
     ```
 
-## <a name="common-errors-when-working-with-session"></a><span data-ttu-id="ec258-257">使用工作階段時的常見錯誤</span><span class="sxs-lookup"><span data-stu-id="ec258-257">Common errors when working with session</span></span>
+3. <span data-ttu-id="564a3-362">取用資料服務類別：</span><span class="sxs-lookup"><span data-stu-id="564a3-362">Consume the data service class:</span></span>
 
-* <span data-ttu-id="ec258-258">「嘗試啟動 'Microsoft.AspNetCore.Session.DistributedSessionStore' 時，無法解析類型 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' 。」</span><span class="sxs-lookup"><span data-stu-id="ec258-258">"Unable to resolve service for type 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNetCore.Session.DistributedSessionStore'."</span></span>
+    ::: moniker range=">= aspnetcore-2.0"
 
-  <span data-ttu-id="ec258-259">這種情形通常是因為無法設定至少一個 `IDistributedCache` 實作。</span><span class="sxs-lookup"><span data-stu-id="ec258-259">This is usually caused by failing to configure at least one `IDistributedCache` implementation.</span></span> <span data-ttu-id="ec258-260">如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)和[記憶體內部快取](xref:performance/caching/memory)。</span><span class="sxs-lookup"><span data-stu-id="ec258-260">For more information, see [Work with a Distributed Cache](xref:performance/caching/distributed) and [In memory caching](xref:performance/caching/memory).</span></span>
+    ```csharp
+    public class IndexModel : PageModel
+    {
+        public IndexModel(MyAppData myService)
+        {
+            // Do something with the service
+            //    Examples: Read data, store in a field or property
+        }
+    }
+    ```
 
-* <span data-ttu-id="ec258-261">如果工作階段中介軟體無法保存工作階段 (例如：如果資料庫無法使用)，它會記錄例外狀況並抑制它。</span><span class="sxs-lookup"><span data-stu-id="ec258-261">In the event that the session middleware fails to persist a session (for example: if the database isn't available), it logs the exception and swallows it.</span></span> <span data-ttu-id="ec258-262">然後要求將繼續正常運作，這會導致完全無法預期的行為。</span><span class="sxs-lookup"><span data-stu-id="ec258-262">The request will then continue normally, which leads to very unpredictable behavior.</span></span>
+    ::: moniker-end
 
-<span data-ttu-id="ec258-263">典型的範例：</span><span class="sxs-lookup"><span data-stu-id="ec258-263">A typical example:</span></span>
+    ::: moniker range="< aspnetcore-2.0"
 
-<span data-ttu-id="ec258-264">有人會在工作階段中儲存購物籃。</span><span class="sxs-lookup"><span data-stu-id="ec258-264">Someone stores a shopping basket in session.</span></span> <span data-ttu-id="ec258-265">使用者新增一個項目，但認可失敗。</span><span class="sxs-lookup"><span data-stu-id="ec258-265">The user adds an item but the commit fails.</span></span> <span data-ttu-id="ec258-266">應用程式未察覺到失敗，因此它會報告「已新增項目」訊息，但這並不正確。</span><span class="sxs-lookup"><span data-stu-id="ec258-266">The app doesn't know about the failure so it reports the message "The item has been added", which isn't true.</span></span>
+    ```csharp
+    public class HomeController : Controller
+    {
+        public HomeController(MyAppData myService)
+        {
+            // Do something with the service
+            //    Examples: Read data, store in a field or property
+        }
+    }
+    ```
 
-<span data-ttu-id="ec258-267">檢查是否有這類錯誤的建議方式是，當您完成寫入工作階段後，從應用程式程式碼呼叫 `await feature.Session.CommitAsync();`。</span><span class="sxs-lookup"><span data-stu-id="ec258-267">The recommended way to check for such errors is to call `await feature.Session.CommitAsync();` from app code when you're done writing to the session.</span></span> <span data-ttu-id="ec258-268">然後，您就可以對錯誤執行想要的操作。</span><span class="sxs-lookup"><span data-stu-id="ec258-268">Then you can do what you like with the error.</span></span> <span data-ttu-id="ec258-269">這與呼叫 `LoadAsync` 時的運作方式相同。</span><span class="sxs-lookup"><span data-stu-id="ec258-269">It works the same way when calling `LoadAsync`.</span></span>
+    ::: moniker-end
 
-### <a name="additional-resources"></a><span data-ttu-id="ec258-270">其他資源</span><span class="sxs-lookup"><span data-stu-id="ec258-270">Additional resources</span></span>
+## <a name="common-errors"></a><span data-ttu-id="564a3-363">常見的錯誤</span><span class="sxs-lookup"><span data-stu-id="564a3-363">Common errors</span></span>
 
-* [<span data-ttu-id="ec258-271">ASP.NET Core 1.x：本文件中使用的程式碼範例</span><span class="sxs-lookup"><span data-stu-id="ec258-271">ASP.NET Core 1.x: Sample code used in this document</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/sample/src/WebAppSession)
-* [<span data-ttu-id="ec258-272">ASP.NET Core 2.x：本文件中使用的程式碼範例</span><span class="sxs-lookup"><span data-stu-id="ec258-272">ASP.NET Core 2.x: Sample code used in this document</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/app-state/sample/src/WebAppSessionDotNetCore2.0App)
+* <span data-ttu-id="564a3-364">「嘗試啟動 'Microsoft.AspNetCore.Session.DistributedSessionStore' 時，無法解析類型 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' 。」</span><span class="sxs-lookup"><span data-stu-id="564a3-364">"Unable to resolve service for type 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNetCore.Session.DistributedSessionStore'."</span></span>
+
+  <span data-ttu-id="564a3-365">這種情形通常是因為無法設定至少一個 `IDistributedCache` 實作。</span><span class="sxs-lookup"><span data-stu-id="564a3-365">This is usually caused by failing to configure at least one `IDistributedCache` implementation.</span></span> <span data-ttu-id="564a3-366">如需詳細資訊，請參閱[使用分散式快取](xref:performance/caching/distributed)和[在記憶體中快取](xref:performance/caching/memory)。</span><span class="sxs-lookup"><span data-stu-id="564a3-366">For more information, see [Work with a distributed cache](xref:performance/caching/distributed) and [Cache in-memory](xref:performance/caching/memory).</span></span>
+
+* <span data-ttu-id="564a3-367">如果工作階段中介軟體無法持續存在於工作階段 (例如，備份存放區無法使用)，中介軟體會記錄例外狀況，而要求會照常繼續進行。</span><span class="sxs-lookup"><span data-stu-id="564a3-367">In the event that the session middleware fails to persist a session (for example, if the backing store isn't available), the middleware logs the exception and the request continues normally.</span></span> <span data-ttu-id="564a3-368">這會導致無法預期的行為。</span><span class="sxs-lookup"><span data-stu-id="564a3-368">This leads to unpredictable behavior.</span></span>
+
+  <span data-ttu-id="564a3-369">例如，使用者在工作階段中存放購物車。</span><span class="sxs-lookup"><span data-stu-id="564a3-369">For example, a user stores a shopping cart in session.</span></span> <span data-ttu-id="564a3-370">使用者在購物車新增一個項目，但認可失敗。</span><span class="sxs-lookup"><span data-stu-id="564a3-370">The user adds an item to the cart but the commit fails.</span></span> <span data-ttu-id="564a3-371">應用程式未察覺到失敗，因此它向使用者報告項目已新增至購物車，但這並不正確。</span><span class="sxs-lookup"><span data-stu-id="564a3-371">The app doesn't know about the failure so it reports to the user that the item was added to their cart, which isn't true.</span></span>
+
+  <span data-ttu-id="564a3-372">檢查是否有錯誤的建議方法是，當應用程式完成寫入至工作階段後，從應用程式程式碼呼叫 `await feature.Session.CommitAsync();`。</span><span class="sxs-lookup"><span data-stu-id="564a3-372">The recommended approach to check for errors is to call `await feature.Session.CommitAsync();` from app code when the app is done writing to the session.</span></span> <span data-ttu-id="564a3-373">備份存放區無法使用時，`CommitAsync` 會擲回例外狀況。</span><span class="sxs-lookup"><span data-stu-id="564a3-373">`CommitAsync` throws an exception if the backing store is unavailable.</span></span> <span data-ttu-id="564a3-374">如果 `CommitAsync` 失敗，應用程式可以處理例外狀況。</span><span class="sxs-lookup"><span data-stu-id="564a3-374">If `CommitAsync` fails, the app can process the exception.</span></span> <span data-ttu-id="564a3-375">`LoadAsync` 在無法使用資料存放區的相同情況下會擲回。</span><span class="sxs-lookup"><span data-stu-id="564a3-375">`LoadAsync` throws under the same conditions where the data store is unavailable.</span></span>

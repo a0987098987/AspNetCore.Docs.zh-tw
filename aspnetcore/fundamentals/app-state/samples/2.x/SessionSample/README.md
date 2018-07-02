@@ -1,0 +1,3 @@
+# <a name="aspnet-session-sample"></a><span data-ttu-id="7a2da-101">ASP.NET 工作階段範例</span><span class="sxs-lookup"><span data-stu-id="7a2da-101">ASP.NET Session Sample</span></span>
+
+<span data-ttu-id="7a2da-102">此範例說明如何使用工作階段狀態。</span><span class="sxs-lookup"><span data-stu-id="7a2da-102">This sample illustrates the use of session state.</span></span> <span data-ttu-id="7a2da-103">此範例會示範 [ASP.NET Core 中的工作階段和應用程式狀態](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)主題中所述的情節。</span><span class="sxs-lookup"><span data-stu-id="7a2da-103">This sample demonstrates the scenarios described in the [Session and app state in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/app-state) topic.</span></span>

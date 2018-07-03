@@ -1,28 +1,27 @@
 ---
 uid: aspnet/tutorials
-title: ASP.NET 教學課程 |Microsoft 文件
+title: ASP.NET 教學課程 |Microsoft Docs
 author: tdykstra
-description: 此逐步指南來開發 ASP.NET 應用程式的清單。
+description: 開發 ASP.NET 應用程式的逐步指南清單。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
 ms.technology: ''
-ms.prod: .net-framework
-ms.openlocfilehash: 704285fe06e2ece0f6afdc117aedf98f6155ef87
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7929a06fd7857237c2529aca34d36564c2a89f82
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28036761"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389608"
 ---
 # <a name="aspnet-tutorials"></a>ASP.NET 教學課程
 
-使用下列的逐步指導方針來開發 ASP.NET 應用程式。
+下列的逐步指南，來開發 ASP.NET 應用程式可用。
 
 > [!NOTE]
-> 如需 ASP.NET Core 教學課程尋找嗎？  找出這些解決方案[這裡](https://docs.microsoft.com/aspnet/core/tutorials/)。
+> 需要 ASP.NET Core 教學課程嗎？  找到它們[此處](https://docs.microsoft.com/aspnet/core/tutorials/)。
 
 ## <a name="web-forms"></a>Web Form
 
@@ -48,7 +47,7 @@ ms.locfileid: "28036761"
 
 ## <a name="mvc"></a>MVC
 
-* [開始使用 ASP.NET MVC 5](mvc/overview/getting-started/introduction/index.md)
+* [開始使用 ASP.NET MVC 5 ](mvc/overview/getting-started/introduction/index.md)
 * [開始使用使用 MVC 5 的 EF 6](mvc/overview/getting-started/getting-started-with-ef-using-mvc/index.md)
 * [EF Database First 與 ASP.NET MVC](mvc/overview/getting-started/database-first-development/index.md)
 * [在 ASP.NET MVC 中使用 Page Inspector](mvc/overview/views/using-page-inspector-in-aspnet-mvc.md)

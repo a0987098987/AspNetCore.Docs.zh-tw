@@ -4,14 +4,14 @@ author: rick-anderson
 description: 探索用於建置 ASP.NET Core 應用程式的基本概念。
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 09/30/2017
+ms.date: 07/02/2018
 uid: fundamentals/index
-ms.openlocfilehash: b51d7b62525944d9924ecb4ce5964312f30a7835
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33786bf78567a1aa12a1ac97d44d1a596ec4c3be
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278865"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144972"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -204,15 +204,23 @@ ASP.NET Core 支援Open Web Interface for .NET (OWIN)。 OWIN 可讓 Web 應用�
 
 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
+::: moniker range=">= aspnetcore-2.1"
+## <a name="microsoftaspnetcoreapp-metapackage"></a>Microsoft.AspNetCore.App 中繼套件
+
+[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) 中繼套件可簡化套件管理。 如需詳細資訊，請參閱 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 ## <a name="microsoftaspnetcoreall-metapackage"></a>Microsoft.AspNetCore.All 中繼套件
 
 ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
 
 * 所有由 ASP.NET Core 小組支援的套件。
-* 所有由 Entity Framework Core 支援的套件。 
+* Entity Framework Core 支援的所有套件。
 * ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。
 
 如需詳細資訊，請參閱 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)。
+::: moniker-end
 
 ## <a name="net-core-vs-net-framework-runtime"></a>.NET Core 與 .NET Framework 執行階段
 

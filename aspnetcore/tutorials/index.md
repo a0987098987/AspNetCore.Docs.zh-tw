@@ -5,12 +5,12 @@ description: 了解如何開發 ASP.NET Core 應用程式的逐步指南清單�
 ms.author: riande
 ms.date: 10/14/2017
 uid: tutorials/index
-ms.openlocfilehash: 2ec362ea546d7bdb493665fe836bdf9ddb68b1b3
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d103c351595f0d61e5f0ee14492f9f46b8c17e86
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279515"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144946"
 ---
 # <a name="aspnet-core-tutorials"></a>ASP.NET Core 教學課程
 
@@ -28,6 +28,7 @@ ms.locfileid: "36279515"
    * [Razor Pages 與 VS Code 的搭配應用](xref:tutorials/razor-pages-vsc/index)  
 
 * [建立即時的 SignalR Web 應用程式](xref:tutorials/signalr)
+* [使用 TypeScript 建立 SignalR Web 應用程式](xref:tutorials/signalr-typescript-webpack)
 
 * 建立 ASP.NET Core MVC Web 應用程式
 

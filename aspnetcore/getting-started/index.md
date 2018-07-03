@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: eb049dea2800cf2e12c044b88d1664ee80bb95a5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 22e9c982921cc03d89506e18ff99bf481027dda6
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296765"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077656"
 ---
 # <a name="get-started-with-aspnet-core"></a>ASP.NET Core 使用者入門
 
 ::: moniker range=">= aspnetcore-2.1"
 
-1. 安裝 [!INCLUDE[](~/includes/2.1-SDK.md)]。
+1. 安裝 [!INCLUDE [](~/includes/2.1-SDK.md)]。
 
 2. 建立 ASP.NET Core 專案。 開啟命令殼層，並輸入下列命令：
 
@@ -25,7 +25,7 @@ ms.locfileid: "36296765"
     dotnet new webapp -o aspnetcoreapp
     ```
 
-    [!INCLUDE[](~/includes/webapp-alias-notice.md)]
+    [!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]
 
 3. 信任 HTTPS 開發憑證：
 
@@ -76,13 +76,13 @@ ms.locfileid: "36296765"
 
 7. 瀏覽到 [http://localhost:5001/About](http://localhost:5001/About) 並驗證已顯示變更。
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-1. 安裝 [!INCLUDE[](~/includes/net-core-sdk-download-link.md)]。
+1. 安裝 [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]。
 
 2. 建立新的 ASP.NET Core 專案。
 
@@ -107,7 +107,7 @@ ms.locfileid: "36296765"
 
 6. 瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並確認所做的變更。
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
 ::: moniker-end
 
@@ -154,5 +154,5 @@ ms.locfileid: "36296765"
 
 7. 瀏覽至 `http://localhost:5000`。
 
-[!INCLUDE[next steps](~/includes/getting-started/next-steps.md)]
+[!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 ::: moniker-end

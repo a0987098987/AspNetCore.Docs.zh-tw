@@ -1,6 +1,6 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart
-title: ASP.NET MVC Storefront 一部分 9： 購物車 |Microsoft 文件
+title: ASP.NET MVC 店面第 9 節： 購物車 |Microsoft Docs
 author: robconery
 description: Rob Conery cooks 簡單購物車系統，讓他可以突然增加。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 47d8a6e3-21de-4ac9-be5a-9f755c596529
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: 905de3c5d44b18f2e24b93fc0027a27e7cd60ac5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3f4dfdef2ba0b4b6eca4cb30fe2f645d96c8a0d7
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871866"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389356"
 ---
-<a name="aspnet-mvc-storefront-part-9-the-shopping-cart"></a>ASP.NET MVC Storefront 一部分 9： 購物車
+<a name="aspnet-mvc-storefront-part-9-the-shopping-cart"></a>ASP.NET MVC 店面第 9 節： 購物車
 ====================
-由[訛 Conery](https://github.com/robconery)
+藉由[Rob Conery](https://github.com/robconery)
 
 Rob Conery cooks 簡單購物車系統，讓他可以突然增加。
 

@@ -1,6 +1,6 @@
 ---
 uid: webhooks/diagnostics/logging
-title: 記錄的 ASP.NET Webhook |Microsoft 文件
+title: ASP.NET Webhook 記錄 |Microsoft Docs
 author: rick-anderson
 description: 如何登入 ASP.NET Webhook。
 ms.author: aspnetcontent
@@ -9,22 +9,21 @@ ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: f71bc442-5f80-481b-a32c-a0ec18dee9d6
 ms.technology: ''
-ms.prod: .net-framework
-ms.openlocfilehash: 042d20e38a9bc4f1e9792f6e3ff5be11a1eaa882
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5501d250ea6dd86c0cfddec8d9941ec16b4f57ba
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28044821"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364102"
 ---
-# <a name="aspnet-webhooks-logging"></a>記錄的 ASP.NET Webhook
+# <a name="aspnet-webhooks-logging"></a>ASP.NET Webhook 記錄
 
-Microsoft ASP.NET Webhook 會使用這種報告所發生的問題記錄。 根據預設記錄檔會寫入使用[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)其中，它們可以能夠使用[追蹤接聽項](https://msdn.microsoft.com/library/system.diagnostics.tracelistener.aspx)像任何其他記錄檔資料流。
+Microsoft ASP.NET Webhook 會使用這種報告所發生的問題記錄。 根據預設記錄檔會寫入使用[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)受管理的它們可以使用[追蹤接聽項](https://msdn.microsoft.com/library/system.diagnostics.tracelistener.aspx)像任何其他的記錄資料流。
 
-在部署 Web 應用程式當做 Azure Web 應用程式時，記錄檔自動挑選，並可管理以及任何其他[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)記錄。 如需詳細資訊，請參閱[啟用 Azure App Service 中的 web 應用程式的診斷記錄](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)
+在部署您的 Web 應用程式，為 Azure Web 應用程式時，記錄檔會自動挑選，且可管理以及任何其他[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)記錄。 如需詳細資訊，請參閱[針對 Azure App Service 中的 web 應用程式啟用診斷記錄](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)
 
-此外，取得記錄檔，直接從 Visual Studio 中所述內部[疑難排解 web 應用程式中使用 Visual Studio 的 Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#webserverlogs)。
+此外，取得記錄檔，直接從 Visual studio 中所述[疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#webserverlogs)。
 
-## <a name="redirecting-logs"></a>重新導向記錄檔
+## <a name="redirecting-logs"></a>重新導向的記錄檔
 
-而不是寫入記錄檔以[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)，可提供替代的記錄的實作，例如可以記錄到記錄檔管理員直接[Log4Net](http://logging.apache.org/log4net/)和[NLog](http://nlog-project.org/). 只需提供的實作[ILogger](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Common/Diagnostics/ILogger.cs)和向您選擇的相依性插入引擎，它會取得收取的 Microsoft ASP.NET Webhook。 請參閱[ASP.NET Web API 2 中的相依性插入](https://www.asp.net/web-api/overview/advanced/dependency-injection)如需詳細資訊。
+而不是寫入記錄檔，以[System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace)，就能夠提供其他記錄的實作，這類可以記錄到記錄檔管理員直接[Log4Net](http://logging.apache.org/log4net/)和[NLog](http://nlog-project.org/). 只需提供的實作[ILogger](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Common/Diagnostics/ILogger.cs)向您選擇的相依性插入引擎和它將會由 Microsoft ASP.NET Webhook。 請參閱[ASP.NET Web API 2 中的相依性插入](https://www.asp.net/web-api/overview/advanced/dependency-injection)如需詳細資訊。

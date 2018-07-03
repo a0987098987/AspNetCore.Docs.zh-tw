@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/cdnajax451
-title: ASP.NET Web Form 和 Ajax 4.5.1 |Microsoft 文件
+title: ASP.NET Web Form 和 Ajax 4.5.1 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 03/18/2015
 ms.topic: article
 ms.assetid: d7ec655d-49b0-4968-af5e-3064616aff9a
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/cdnajax451
 msc.type: content
-ms.openlocfilehash: 2a79786d1a9528b837c114d4fe163c0136a413f5
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 7e4fd7927b1f5084b673947c0a998e3c032afedf
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30070647"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37363341"
 ---
 <a name="aspnet-web-forms-and-ajax-451"></a>ASP.NET Web Form 和 Ajax 4.5.1
 ====================
-在 CDN 上裝載下列檔案：
+下列檔案裝載在 CDN 上：
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.debug.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.js
@@ -60,6 +59,6 @@ ms.locfileid: "30070647"
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebParts.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebUIValidation.js
 
-注意： 全球化指令碼，例如 fr FR.js，可以找到下列資料夾中：
+注意： 全球化指令碼，例如 fr FR.js，可在下列資料夾：
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/globalization/

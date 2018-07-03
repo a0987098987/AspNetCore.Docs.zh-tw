@@ -1,32 +1,31 @@
 ---
 uid: mvc/mvc4
-title: ASP.NET MVC 4 |Microsoft 文件
+title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
-description: ASP.NET MVC 4 的 ASP.NET MVC 4 是一種架構建置可擴充、 以標準為基礎的 web 應用程式使用信譽良好的設計模式與強大的 AS....
+description: ASP.NET MVC 4 的 ASP.NET MVC 4 是一個來建置可調整、 以標準為基礎的 web 應用程式，使用堅實的設計模式和威力 AS....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/12/2011
 ms.topic: article
 ms.assetid: 1279f5b1-390f-4b4b-9e6e-f947cb1ef5f5
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/mvc4
 msc.type: content
-ms.openlocfilehash: f1a1717aafde990530f4ee71c05432122520de5e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b9b1ac7998d02358b5754c9a4ad0f09b8d24da8b
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26497857"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37362099"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
-### <a name="top-features"></a>最上層的功能
+### <a name="top-features"></a>精選功能
 
 - ASP.NET Web API
 - 重新整理和現代化的預設專案範本
-- 新的行動裝置的專案範本
-- 若要支援行動裝置應用程式的許多新功能
+- 新的行動裝置專案範本
+- 若要支援行動應用程式的許多新功能
 - 非同步方法的增強的支援
 - *讀取的完整功能清單中[版本資訊](../whitepapers/mvc4-release-notes.md)*
 
@@ -35,11 +34,11 @@ ms.locfileid: "26497857"
 
 - [ASP.NET Web API](../web-api/index.md)
 - 教學課程： [ASP.NET MVC 4 行動功能](overview/older-versions/aspnet-mvc-4-mobile-features.md)
-- [ASP.NET MVC 4 的版本資訊](../whitepapers/mvc4-release-notes.md)
-- [新的 ASP.NET MVC 4 教學課程系列](overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md)
+- [ASP.NET mvc 4 版本資訊](../whitepapers/mvc4-release-notes.md)
+- [新 ASP.NET MVC 4 的教學課程系列](overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md)
 
 
-### <a name="install-aspnet-mvc-4-for-visual-studio-2010"></a>安裝 Visual Studio 2010 的 ASP.NET MVC 4
+### <a name="install-aspnet-mvc-4-for-visual-studio-2010"></a>安裝適用於 Visual Studio 2010 的 ASP.NET MVC 4
 
 - 下載獨立 ASP.NET [MVC 4 的可執行安裝程式](https://www.microsoft.com/download/details.aspx?id=30683)
 
@@ -52,6 +51,6 @@ ms.locfileid: "26497857"
 ### <a name="getting-help-and-reporting-issues"></a>取得說明和報告問題
 
 - [已知的問題和重大變更清單](../whitepapers/mvc4-release-notes.md#_Toc303253815)
-- 如需協助，並討論在 ASP.NET MVC 4[論壇](https://forums.asp.net/1146.aspx)
-- [在 ASP.NET MVC 4 中的錯誤報告](https://github.com/aspnet/AspNetWebStack/issues)
+- 取得說明並討論在 ASP.NET MVC 4[論壇](https://forums.asp.net/1146.aspx)
+- [報告在 ASP.NET MVC 4 中的 bug](https://github.com/aspnet/AspNetWebStack/issues)
 - [提出功能要求](http://aspnet.uservoice.com/forums/41201-asp-net-mvc)

@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-8
-title: 顯示項目詳細資料 |Microsoft 文件
+title: 顯示項目詳細資料 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,33 +9,32 @@ ms.date: 06/16/2014
 ms.topic: article
 ms.assetid: 75ef94b1-bbec-4681-9210-452dba816144
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 94863e94f2a8b3f1ce8a8fb85d877bc0768f3d8a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 268c44f842cc2beb32a0a3e4c74b83b7ca9fd787
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30868083"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375175"
 ---
 <a name="display-item-details"></a>顯示項目詳細資料
 ====================
-由[Mike Wasson](https://github.com/MikeWasson)
+藉由[Mike Wasson](https://github.com/MikeWasson)
 
-[下載完成的專案](https://github.com/MikeWasson/BookService)
+[下載已完成的專案](https://github.com/MikeWasson/BookService)
 
-在本節中，您將加入檢視每本書的詳細資料的能力。 在 app.js，加入下列程式碼來檢視模型：
+在本節中，您將能夠檢視每個活頁簿的詳細資料。 在 app.js 中加入下列程式碼，檢視模型：
 
 [!code-javascript[Main](part-8/samples/sample1.js)]
 
-Views/Home/Index.cshtml，在詳細資料 連結加入資料繫結項目：
+在 Views/Home/Index.cshtml，加入詳細資料 連結中的資料繫結項目：
 
 [!code-html[Main](part-8/samples/sample2.html?highlight=5)]
 
-這會將繫結 click 處理常式&lt;&gt;元素`getBookDetail`檢視模型上的函式。
+這會將繫結的 click 處理常式&lt;&gt;項目`getBookDetail`檢視模型上的函式。
 
-在同一個檔案中，將下列的標記總：
+在相同的檔案，取代下列的標記總：
 
 [!code-html[Main](part-8/samples/sample3.html)]
 
@@ -43,13 +42,13 @@ Views/Home/Index.cshtml，在詳細資料 連結加入資料繫結項目：
 
 [!code-html[Main](part-8/samples/sample4.html)]
 
-這個標記會建立的資料表是資料繫結的屬性`detail`observable 中檢視模型。
+此標記會建立資料繫結的屬性資料表`detail`可觀察的檢視模型中。
 
-「&lt;！-僅限 ko-&gt; &quot;語法可讓您包含了 DOM 項目之外的 Knockout 繫結。 在此情況下，`if`繫結會使標記来顯示的這一節時，才`details`為非 null。
+「&lt;！-僅限 ko-&gt; &quot;語法可讓您包含 Knockout 繫結之外的 DOM 項目。 在此情況下，`if`繫結會讓要顯示的標記的這一部分時，才`details`為非 null。
 
 [!code-html[Main](part-8/samples/sample5.html)]
 
-現在，如果您執行應用程式，然後按一下其中一個&quot;詳細&quot;應用程式的連結，將會顯示活頁簿的詳細資料。
+現在，如果您執行應用程式，然後按一下其中一個&quot;詳細資料&quot;應用程式的連結，將會顯示活頁簿詳細資料。
 
 [![](part-8/_static/image2.png)](part-8/_static/image1.png)
 

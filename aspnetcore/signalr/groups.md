@@ -1,5 +1,5 @@
 ---
-title: 管理 SignalR 中使用者和群組
+title: 管理使用者和 signalr 的群組
 author: rachelappel
 description: ASP.NET Core SignalR 使用者和群組管理的概觀。
 monikerRange: '>= aspnetcore-2.1'
@@ -7,26 +7,26 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: f7d60a906fc238f79c76fd2a4ee693417a348825
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 3e5e310c84bc3ed5790d5b67a917bd54162ea163
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272077"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402521"
 ---
-# <a name="manage-users-and-groups-in-signalr"></a>管理 SignalR 中使用者和群組
+# <a name="manage-users-and-groups-in-signalr"></a>管理使用者和 signalr 的群組
 
-由[Brennan 瑜吉](https://github.com/BrennanConroy)
+藉由[brennan 第瑜吉](https://github.com/BrennanConroy)
 
-SignalR 允許訊息傳送至所有與特定使用者相關聯的連接以及名為群組的連線。
+SignalR 可讓訊息傳送至特定使用者相關聯的所有連線以及具名群組的連線。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="users-in-signalr"></a>SignalR 的使用者
+## <a name="users-in-signalr"></a>SignalR 中的使用者
 
-SignalR 可讓您將訊息傳送至所有與特定使用者相關聯的連接。 根據預設使用 SignalR`ClaimTypes.NameIdentifier`從`ClaimsPrincipal`的使用者識別碼與連接相關聯。 單一使用者可以有多個連線的 SignalR 應用程式。 例如，使用者無法連接其桌面，以及他們的電話號碼。 每個裝置都有個別的 SignalR 連線，但所有具有相同的使用者相關聯。 如果訊息傳送給使用者時，所有與該使用者相關聯的連接將會收到訊息。
+SignalR 可讓您將訊息傳送至特定使用者相關聯的所有連線。 根據預設，使用 SignalR`ClaimTypes.NameIdentifier`從`ClaimsPrincipal`連接做為使用者識別碼相關聯。 單一使用者可以有多個連線的 SignalR 應用程式。 比方說，使用者可以在他們的桌面，以及他們的手機上連線。 每個裝置都個別 SignalR 連線，但它們是所有具有相同的使用者相關聯。 如果訊息傳送給使用者時，所有與該使用者相關聯的連接就會收到的訊息。 可以存取連接的使用者識別碼`Context.UserIdentifier`中樞內的屬性。
 
-傳送訊息至特定的使用者中，藉由傳遞使用者識別項`User`中樞方法的函式，如下列範例所示：
+傳遞至的使用者識別碼，將訊息傳送至特定使用者`User`函式在您的中樞方法，如下列範例所示：
 
 > [!NOTE]
 > 使用者識別碼會區分大小寫。
@@ -45,15 +45,15 @@ public Task SendPrivateMessage(string user, string message)
 [!code-csharp[Configure service](groups/sample/startup.cs?range=21-22,39-42)]
 
 > [!NOTE]
-> 在註冊自訂的 SignalR 服務之前，必須先呼叫 AddSignalR。
+> 註冊您的自訂 SignalR 服務之前，必須呼叫 AddSignalR。
 
-## <a name="groups-in-signalr"></a>SignalR 中的群組
+## <a name="groups-in-signalr"></a>Signalr 的群組
 
-群組是連線名稱相關聯的集合。 訊息可以傳送到群組中的所有連線。 群組是傳送至多個連線或連線，因為群組由應用程式管理的建議的方式。 多個群組的成員時，可以在連線。 這使得群組非常適合類似交談應用程式，其中每個房間可以表示為群組。 可以加入或移除群組透過連線`AddToGroupAsync`和`RemoveFromGroupAsync`方法。
+群組是連線名稱相關聯的集合。 訊息可以傳送至群組中的所有連線。 群組是傳送給多個連線或連線，因為群組由應用程式的建議的方式。 連接可以是多個群組的成員。 這使得群組非常適合類似交談應用程式，其中顯示每個房間，為群組。 可以加入或移除透過群組連線`AddToGroupAsync`和`RemoveFromGroupAsync`方法。
 
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 
-重新連線時，並不會保留群組成員資格。 連線需要重新建立時，重新加入群組。 您不可能來計算群組的成員，因為這項資訊不是使用應用程式會調整為多部伺服器。
+重新連線時，不會保存群組成員資格。 連接必須重新建立時，重新加入群組。 您不可能來計算群組的成員，因為這項資訊不提供，如果應用程式調整為多部伺服器。
 
 > [!NOTE]
 > 群組名稱會區分大小寫。

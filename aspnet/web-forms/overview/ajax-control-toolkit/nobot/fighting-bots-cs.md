@@ -1,77 +1,76 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
-title: 對抗 Bot (C#) |Microsoft 文件
+title: 對抗 Bot (C#) |Microsoft Docs
 author: wenz
-description: 自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Con NoBot 控制...
+description: 自動化的機器人 plaster 與垃圾郵件，提交而不需要任何使用者互動的註解表單的部落格和其他網站。 在 ASP.NET AJAX Con NoBot 控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 0a1917e0-884a-4576-8e93-9ed660faae51
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1ea3aaa5461c2f58a927ae975568f18a34a4729b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 41e8fda5138e4a94e7b8c4af0a5c2bd68e50e9e1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30872009"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402716"
 ---
 <a name="fighting-bots-c"></a>對抗 Bot (C#)
 ====================
-由[Christian Wenz](https://github.com/wenz)
+藉由[Christian Wenz](https://github.com/wenz)
 
 [下載程式碼](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/NoBot0.cs.zip)或[下載 PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/nobot0CS.pdf)
 
-> 自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
+> 自動化的機器人 plaster 與垃圾郵件，提交而不需要任何使用者互動的註解表單的部落格和其他網站。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
 
 
 ## <a name="overview"></a>總覽
 
-自動的 bot plaster 網誌及其他網站與垃圾郵件，而不需要任何使用者互動的註解表單送出。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
+自動化的機器人 plaster 與垃圾郵件，提交而不需要任何使用者互動的註解表單的部落格和其他網站。 在 ASP.NET AJAX Control Toolkit NoBot 控制項來協助對抗這些機器人。
 
 ## <a name="steps"></a>步驟
 
-擊敗 bot 的一個常見方式是使用 CAPTCHAs 完全自動化公用 Turing 測試，告訴電腦，然後讓人了距離。 Turing 測試原本測試其他人需要決定通訊夥伴是一般人或電腦的位置。 在 web、 CAPTCHA 通常組成上某些扭曲字母的映像。 這個概念是人類看得可以讀取映像上的字母而 OCR 演算法將會失敗。
+一個常見的方法，來擊敗 bot 是使用 CAPTCHAs 完全自動化公用 Turing 測試，告訴電腦，以及讓人判讀分開。 Turing 測試原本是測試有人需要決定通訊的夥伴一般人或電腦的地方。 在 web、 CAPTCHA 通常包含一些扭曲的字母，在其上的映像。 其概念是人類看得可以讀取映像上的字母而 OCR 演算法將會失敗。
 
-有數個優點和缺點，這種方法，但對此的討論超出本教學課程的範圍。 不過這會產生 ASP.NET AJAX Control Toolkit 會提供類似的方法中的控制項： `NoBot`。 它比較容易克服比 CAPTCHA，但非常容易使用及 fares 非常好上類似，它會被視為成功如果大部分垃圾郵件嘗試的部落格網站會被破壞，其中`NoBot`控制可以執行。
+有幾個優點和缺點，這種作法，但這些討論超出本教學課程的範圍。 不過沒有 ASP.NET AJAX Control Toolkit 提供類似的方法中的控制項： `NoBot`。 它會比較容易克服比文字驗證，但非常容易使用和時，它會被視為成功如果大多數垃圾郵件嘗試的部落格等的網站上也會被破壞，其中`NoBot`控制可以執行。
 
-`NoBot` 如果符合下列情況之一時，會攔截目前的 ASP.NET web form 回傳：
+`NoBot` 符合至少其中一種情形時，會攔截目前的 ASP.NET web form 回傳：
 
-- 不能解決 JavaScript 拼圖的瀏覽器 （例如當 JavaScript 停用時）
+- 不能解決 JavaScript 謎題的瀏覽器 （例如當 JavaScript 已停用）
 - 使用者提交表單，以快速
-- 用戶端 IP 位址太常在一段時間中提交表單。
+- 用戶端 IP 位址會提交表單，往往在一段時間。
 
-若要檢查這些條件，`NoBot`控制項需要這些屬性 （全部選用）：
+若要檢查是否有這些條件，`NoBot`控制項需要這些屬性 （全部選用）：
 
-- `ResponseMinimumDelaySeconds` 最小數量回傳之間的秒數
-- `CutoffWindowSeconds` 在其中一個 IP 從回傳是量值的時間間隔的長度
+- `ResponseMinimumDelaySeconds` 回傳之間的秒數的最小數量
+- `CutoffWindowSeconds` 在其中一個 IP 回傳是量值的時間間隔的長度
 - `CutoffMaximumInstances` 每個時間間隔的秒數的最大數量
 
-下列標記要求該至少兩秒經過回傳之間並沒有只有五個回傳或小於 30 秒的時間間隔內：
+下列標記要求至少兩秒數經過回傳之間並沒有只有五個回傳或小於 30 秒的時間間隔內：
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample1.aspx)]
 
-然後如往常般請務必包含`ScriptManager`頁面中，而 ASP.NET AJAX library 載入 Control Toolkit 可用：
+然後如往常般請務必包含`ScriptManager`頁面中，讓 ASP.NET AJAX 程式庫已載入，並控制工具組可以用於：
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample2.aspx)]
 
-因為大部分的檢查`NoBot`執行的動作就會發生在伺服器端，您需要檢查這些驗證的結果。 這可藉由呼叫`NoBot`的`IsValid()`方法。 它有一個引數 (為`out`參數 /`ByRef`參數) 類型`NoBotState`。 檢查失敗時，其字串表示法包含原因和`Valid`否則。 下列程式碼將輸出訊息，以根據`NoBot`的結果：
+因為大部分的檢查`NoBot`負責在伺服器端上進行您需要檢查這些驗證的結果。 這可以藉由呼叫`NoBot`的`IsValid()`方法。 它有一個引數 (以`out`參數 /`ByRef`參數) 的`NoBotState`。 檢查失敗時，其字串表示會包含原因和`Valid`否則。 下列程式碼會輸出訊息，以根據`NoBot`的結果：
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample3.aspx)]
 
-最後，您需要提交表單和輸出訊息，label 元素，並完成 ！
+最後，您需要提交表單和輸出訊息，label 項目，並完成 ！
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample4.aspx)]
 
-當您執行這個指令碼和停用 JavaScript 或第 2 秒鐘內送出表單或七次 30 秒內送出表單時，會出現錯誤訊息。 不過請明智地使用這個控制項，因為只有大約 90 95%的使用者必須啟用 JavaScript，因此 5-10%的使用者將會失敗`NoBot`的測試。
+當您執行此指令碼和停用 JavaScript 或送出表單時前, 兩秒內或 30 秒內七次送出表單時，會出現錯誤訊息。 不過更聰明地使用這個控制項，因為只有約 90-95%的使用者必須啟用 JavaScript，因此 5-10%的使用者將會失敗`NoBot`的測試。
 
 
-[![這則錯誤訊息可能被因為由 bot](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
+[![此錯誤訊息可能被因為由 bot](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
 
-這則錯誤訊息可能因為由 bot ([按一下以檢視完整大小的影像](fighting-bots-cs/_static/image3.png))
+此錯誤訊息可能因為由電腦控制機甲 ([按一下以檢視完整大小的影像](fighting-bots-cs/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [下一步](fighting-bots-vb.md)

@@ -7,16 +7,15 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.topic: article
-ms.prod: .net-framework
 ms.technology: dotnet-mvc
 ms.devlang: dotnet
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 7a580c6c6236b375ea54ef4e9978fff6993d885a
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: fa010e795878b26c79dbe04ef0017373283c4269
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29143185"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403015"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>將 ASP.NET MVC 應用程式遷移到 Windows 容器
 
@@ -89,15 +88,15 @@ FROM microsoft/aspnet
 COPY ./bin/Release/PublishOutput/ /inetpub/wwwroot
 ```
 
-此 Dockerfile 中沒有 `ENTRYPOINT` 命令。 您不需要此命令。 執行 Windows Server 與 IIS，IIS 處理序時，進入點，會設定為啟動 aspnet 基底映像中。
+此 Dockerfile 中沒有 `ENTRYPOINT` 命令。 您不需要此命令。 執行 Windows Server 與 IIS，IIS 處理序時，進入點，會設定為 aspnet 的基底映像中啟動。
 
-執行 Docker 建置命令，建立會執行 ASP.NET 應用程式的映像。 若要這樣做，請在您的專案目錄開啟 PowerShell 視窗並的方案目錄中，輸入下列命令：
+執行 Docker 建置命令，建立會執行 ASP.NET 應用程式的映像。 若要這樣做，請在您的專案目錄中開啟 PowerShell 視窗並的方案目錄中，輸入下列命令：
 
 ```console
 docker build -t mvcrandomanswers .
 ```
 
-此命令會建立新的映像使用 Dockerfile 中中的指示命名 (-t 標記) 與 mvcrandomanswers 的映像。 這可能包括從 [Docker Hub](http://hub.docker.com) 提取基礎映像，然後將您的應用程式加入至該映像。
+此命令會建立使用您的 Dockerfile 中的指示新的映像命名 (-t 標記) 為 mvcrandomanswers 映像。 這可能包括從 [Docker Hub](http://hub.docker.com) 提取基礎映像，然後將您的應用程式加入至該映像。
 
 該命令完成之後，您可以執行 `docker images` 命令來了解新映像的相關資訊：
 
@@ -118,7 +117,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 `-d` 引數會指示 Docker 在離線模式中啟動映像。 這表示 Docker 映像可在與目前殼層中斷連線的情況下執行。
 
-在許多 docker 範例中，您可能會看到對應的容器與主機的連接埠-p。 預設 aspnet 映像已經設定要在通訊埠 80 上接聽，並將它公開的容器。 
+在許多 docker 範例中，您可能會看到對應的容器和主機的連接埠-p。 預設的 aspnet 映像已經設定要在連接埠 80 上接聽，並將它公開的容器。 
 
 `--name randomanswers` 提供執行中容器的名稱。 您可以使用此名稱，而不是大多數命令中的容器識別碼。
 
@@ -137,7 +136,7 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
 172.31.194.61
 ```
 
-連接到執行的容器使用的 IPv4 位址，`http://172.31.194.61`中範例所示。 在您的瀏覽器中輸入該 URL，您應該會看到執行中的網站。
+連接到執行中的容器使用的 IPv4 位址，`http://172.31.194.61`中所示的範例。 在您的瀏覽器中輸入該 URL，您應該會看到執行中的網站。
 
 > [!NOTE]
 > 某些 VPN 或 Proxy 軟體可能會阻止您瀏覽至您的網站。

@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-do-i-make-custom-pages
-title: 如何進行自訂頁面？ | Microsoft Docs
+title: 如何進行自訂的頁面？ | Microsoft Docs
 author: shanselman
-description: 在這段影片中，您可以了解如何進行自訂的頁面上，對於某些資料表，而其他頁面使用標準功能。
+description: 在這段影片中，您將了解如何進行自訂的頁面上，對於某些資料表，而其他頁面使用標準功能。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/08/2008
 ms.topic: article
 ms.assetid: f2b20119-abf4-4e78-9c47-adf563ad174c
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-make-custom-pages
 msc.type: video
-ms.openlocfilehash: e06fa9bdd6e1f6ff84d73cb5b1a544f4af3d1737
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 6cd88208b0bcbb0956f0dd69501f9302566df724
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884245"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380645"
 ---
-<a name="how-do-i-make-custom-pages"></a>如何進行自訂頁面？
+<a name="how-do-i-make-custom-pages"></a>如何進行自訂的頁面？
 ====================
-由[Scott Hanselman](https://github.com/shanselman)
+藉由[Scott Hanselman](https://github.com/shanselman)
 
-在這段影片中，您可以了解如何進行自訂的頁面上，對於某些資料表，而其他頁面使用標準功能。
+在這段影片中，您將了解如何進行自訂的頁面上，對於某些資料表，而其他頁面使用標準功能。
 
 [&#9654;觀看影片 （5 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-make-custom-pages)
 

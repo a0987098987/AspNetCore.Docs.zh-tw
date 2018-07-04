@@ -71,7 +71,7 @@ ms.locfileid: "36274589"
 
 ### <a name="use-of-ihtmlhelperpartial-may-result-in-app-deadlocks"></a>使用 IHtmlHelper.Partial 可能導致應用程式死結
 
-在 ASP.NET 核心 2.1 和更新版本，呼叫`Html.Partial`導致分析器警告，因為可能有死結。 警告訊息是：
+在 ASP.NET Core 2.1 和更新版本，呼叫`Html.Partial`導致分析器警告，因為可能有死結。 警告訊息是：
 
 > 使用 IHtmlHelper.Partial 可能會導致應用程式死結。 請考慮使用`<partial>`標記協助程式或`IHtmlHelper.PartialAsync`。
 

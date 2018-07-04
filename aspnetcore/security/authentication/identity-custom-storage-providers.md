@@ -32,7 +32,7 @@ ASP.NET Core 身分識別是可擴充的系統可讓您建立自訂的儲存提�
 
 ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使用者帳戶 」 選項。
 
-當使用.NET 核心 CLI，新增`-au Individual`:
+當使用.NET Core CLI，新增`-au Individual`:
 
 ```console
 dotnet new mvc -au Individual

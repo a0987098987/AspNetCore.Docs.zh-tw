@@ -1,67 +1,66 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs
-title: 挑選清單 (C#) 超出一個動畫 |Microsoft 文件
+title: 挑選一張動畫從清單中 (C#) |Microsoft Docs
 author: wenz
-description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 架構也允許...
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 此架構也允許...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 06a776fe-7c73-4ca7-8e02-5260a86edc03
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2d4aac447fcdfbf296560091cfcdf5eb51997a7b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 4b0193f47697e072605ed8c01a37fbfa128eb0e0
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871658"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380742"
 ---
-<a name="picking-one-animation-out-of-a-list-c"></a><span data-ttu-id="18927-104">挑選一個動畫，從清單中 (C#)</span><span class="sxs-lookup"><span data-stu-id="18927-104">Picking One Animation Out Of a List (C#)</span></span>
+<a name="picking-one-animation-out-of-a-list-c"></a><span data-ttu-id="680b5-104">挑選一張動畫從清單中 (C#)</span><span class="sxs-lookup"><span data-stu-id="680b5-104">Picking One Animation Out Of a List (C#)</span></span>
 ====================
-<span data-ttu-id="18927-105">由[Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="18927-105">by [Christian Wenz](https://github.com/wenz)</span></span>
+<span data-ttu-id="680b5-105">藉由[Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="680b5-105">by [Christian Wenz](https://github.com/wenz)</span></span>
 
-<span data-ttu-id="18927-106">[下載程式碼](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation5.cs.zip)或[下載 PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation5CS.pdf)</span><span class="sxs-lookup"><span data-stu-id="18927-106">[Download Code](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation5.cs.zip) or [Download PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation5CS.pdf)</span></span>
+<span data-ttu-id="680b5-106">[下載程式碼](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation5.cs.zip)或[下載 PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation5CS.pdf)</span><span class="sxs-lookup"><span data-stu-id="680b5-106">[Download Code](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation5.cs.zip) or [Download PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation5CS.pdf)</span></span>
 
-> <span data-ttu-id="18927-107">動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。</span><span class="sxs-lookup"><span data-stu-id="18927-107">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="18927-108">此架構也可讓程式設計人員挑選一個動畫超出清單的動畫，根據一些 JavaScript 程式碼評估。</span><span class="sxs-lookup"><span data-stu-id="18927-108">The framework also allows the programmer to pick one animation out of a list of animations, depending on the evaluation of some JavaScript code.</span></span>
+> <span data-ttu-id="680b5-107">動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。</span><span class="sxs-lookup"><span data-stu-id="680b5-107">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="680b5-108">架構也可讓程式設計人員挑選一張動畫從清單的動畫，根據一些 JavaScript 程式碼的評估結果。</span><span class="sxs-lookup"><span data-stu-id="680b5-108">The framework also allows the programmer to pick one animation out of a list of animations, depending on the evaluation of some JavaScript code.</span></span>
 
 
-## <a name="overview"></a><span data-ttu-id="18927-109">總覽</span><span class="sxs-lookup"><span data-stu-id="18927-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="680b5-109">總覽</span><span class="sxs-lookup"><span data-stu-id="680b5-109">Overview</span></span>
 
-<span data-ttu-id="18927-110">動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。</span><span class="sxs-lookup"><span data-stu-id="18927-110">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="18927-111">此架構也可讓程式設計人員挑選一個動畫超出清單的動畫，根據一些 JavaScript 程式碼評估。</span><span class="sxs-lookup"><span data-stu-id="18927-111">The framework also allows the programmer to pick one animation out of a list of animations, depending on the evaluation of some JavaScript code.</span></span>
+<span data-ttu-id="680b5-110">動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。</span><span class="sxs-lookup"><span data-stu-id="680b5-110">The Animation control in the ASP.NET AJAX Control Toolkit is not just a control but a whole framework to add animations to a control.</span></span> <span data-ttu-id="680b5-111">架構也可讓程式設計人員挑選一張動畫從清單的動畫，根據一些 JavaScript 程式碼的評估結果。</span><span class="sxs-lookup"><span data-stu-id="680b5-111">The framework also allows the programmer to pick one animation out of a list of animations, depending on the evaluation of some JavaScript code.</span></span>
 
-## <a name="steps"></a><span data-ttu-id="18927-112">步驟</span><span class="sxs-lookup"><span data-stu-id="18927-112">Steps</span></span>
+## <a name="steps"></a><span data-ttu-id="680b5-112">步驟</span><span class="sxs-lookup"><span data-stu-id="680b5-112">Steps</span></span>
 
-<span data-ttu-id="18927-113">首先，包括`ScriptManager`在頁面; 然後，ASP.NET AJAX 程式庫載入，因此您能夠使用控制項的工具組：</span><span class="sxs-lookup"><span data-stu-id="18927-113">First of all, include the `ScriptManager` in the page; then, the ASP.NET AJAX library is loaded, making it possible to use the Control Toolkit:</span></span>
+<span data-ttu-id="680b5-113">首先，包括`ScriptManager`單元頁面; 然後，ASP.NET AJAX 程式庫載入，因此能夠使用控制項工具組：</span><span class="sxs-lookup"><span data-stu-id="680b5-113">First of all, include the `ScriptManager` in the page; then, the ASP.NET AJAX library is loaded, making it possible to use the Control Toolkit:</span></span>
 
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample1.aspx)]
 
-<span data-ttu-id="18927-114">動畫會套用到面板中的文字看起來像這樣：</span><span class="sxs-lookup"><span data-stu-id="18927-114">The animation will be applied to a panel of text which looks like this:</span></span>
+<span data-ttu-id="680b5-114">動畫將會套用至面板的文字看起來像這樣：</span><span class="sxs-lookup"><span data-stu-id="680b5-114">The animation will be applied to a panel of text which looks like this:</span></span>
 
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample2.aspx)]
 
-<span data-ttu-id="18927-115">在 [面板] 中相關聯的 CSS 類別，定義好的背景色彩，也將面板固定的寬度設定：</span><span class="sxs-lookup"><span data-stu-id="18927-115">In the associated CSS class for the panel, define a nice background color and also set a fixed width for the panel:</span></span>
+<span data-ttu-id="680b5-115">在 [面板] 中相關聯的 CSS 類別，定義好用的背景色彩和也設定面板的固定的寬度：</span><span class="sxs-lookup"><span data-stu-id="680b5-115">In the associated CSS class for the panel, define a nice background color and also set a fixed width for the panel:</span></span>
 
 [!code-css[Main](picking-one-animation-out-of-a-list-cs/samples/sample3.css)]
 
-<span data-ttu-id="18927-116">接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要 `runat="server":`</span><span class="sxs-lookup"><span data-stu-id="18927-116">Then, add the `AnimationExtender` to the page, providing an `ID`, the `TargetControlID` attribute and the obligatory `runat="server":`</span></span>
+<span data-ttu-id="680b5-116">然後，新增`AnimationExtender` 頁面上，以提供`ID`，則`TargetControlID`屬性和必要 `runat="server":`</span><span class="sxs-lookup"><span data-stu-id="680b5-116">Then, add the `AnimationExtender` to the page, providing an `ID`, the `TargetControlID` attribute and the obligatory `runat="server":`</span></span>
 
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample4.aspx)]
 
-<span data-ttu-id="18927-117">內`<Animations>`節點，請使用`<OnLoad>`頁面已完全載入後，執行動畫。</span><span class="sxs-lookup"><span data-stu-id="18927-117">Within the `<Animations>` node, use `<OnLoad>` to run the animations once the page has been fully loaded.</span></span> <span data-ttu-id="18927-118">其中一個規則的動畫，而不是`<Case>`元素派上用場。</span><span class="sxs-lookup"><span data-stu-id="18927-118">Instead of one of the regular animations, the `<Case>` element comes into play.</span></span> <span data-ttu-id="18927-119">會評估其 SelectScript 屬性的值;傳回值必須是數字。</span><span class="sxs-lookup"><span data-stu-id="18927-119">The value of its SelectScript attribute is evaluated; the return value must be numerical.</span></span> <span data-ttu-id="18927-120">根據這個數字，其中一個內 subanimations&lt;案例&gt;執行。</span><span class="sxs-lookup"><span data-stu-id="18927-120">Depending on this number, one of the subanimations within &lt;Case&gt; is executed.</span></span> <span data-ttu-id="18927-121">比方說，如果 SelectScript 判斷值為 2，Control Toolkit 執行內的第三個動畫&lt;案例&gt;（從 0 開始）。</span><span class="sxs-lookup"><span data-stu-id="18927-121">For instance, if SelectScript evaluates to 2, the Control Toolkit runs the third animation within &lt;Case&gt; (counting starts at 0).</span></span>
+<span data-ttu-id="680b5-117">內`<Animations>`節點，請使用`<OnLoad>`頁面完全載入後，執行動畫。</span><span class="sxs-lookup"><span data-stu-id="680b5-117">Within the `<Animations>` node, use `<OnLoad>` to run the animations once the page has been fully loaded.</span></span> <span data-ttu-id="680b5-118">而不是一個一般的動畫，`<Case>`元素派上用場。</span><span class="sxs-lookup"><span data-stu-id="680b5-118">Instead of one of the regular animations, the `<Case>` element comes into play.</span></span> <span data-ttu-id="680b5-119">會評估其 SelectScript 屬性的值;傳回的值必須是數字。</span><span class="sxs-lookup"><span data-stu-id="680b5-119">The value of its SelectScript attribute is evaluated; the return value must be numerical.</span></span> <span data-ttu-id="680b5-120">根據此數字，其中一個內 subanimations&lt;案例&gt;執行。</span><span class="sxs-lookup"><span data-stu-id="680b5-120">Depending on this number, one of the subanimations within &lt;Case&gt; is executed.</span></span> <span data-ttu-id="680b5-121">比方說，如果 SelectScript 判斷值為 2，Control Toolkit 會執行內的第三個動畫&lt;案例&gt;（從 0 開始）。</span><span class="sxs-lookup"><span data-stu-id="680b5-121">For instance, if SelectScript evaluates to 2, the Control Toolkit runs the third animation within &lt;Case&gt; (counting starts at 0).</span></span>
 
-<span data-ttu-id="18927-122">下列標記會定義三個 subanimations： 調整大小的寬度、 高度調整大小和淡出。JavaScript 程式碼 (`Math.floor(3 * Math.random())`) 然後挑選一個介於 0 和 2，使其中的三個動畫執行：</span><span class="sxs-lookup"><span data-stu-id="18927-122">The following markup defines three subanimations: Resizing the width, resizing the height, and fading out. The JavaScript code (`Math.floor(3 * Math.random())`) then picks a number between 0 and 2, so that one of the three animations is run:</span></span>
+<span data-ttu-id="680b5-122">下列標記會定義三個 subanimations： 調整大小的寬度、 調整大小的高度和淡出。JavaScript 程式碼 (`Math.floor(3 * Math.random())`)，讓其中的三種動畫會執行，然後選擇 0 和 2 之間的數字：</span><span class="sxs-lookup"><span data-stu-id="680b5-122">The following markup defines three subanimations: Resizing the width, resizing the height, and fading out. The JavaScript code (`Math.floor(3 * Math.random())`) then picks a number between 0 and 2, so that one of the three animations is run:</span></span>
 
 [!code-aspx[Main](picking-one-animation-out-of-a-list-cs/samples/sample5.aspx)]
 
 
-<span data-ttu-id="18927-123">[![其中一個可能的三個動畫： 面板變寬](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="18927-123">[![One of the possible three animations: The panel gets wider](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)</span></span>
+<span data-ttu-id="680b5-123">[![其中一個可能的三個動畫: [面板] 中取得更多](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="680b5-123">[![One of the possible three animations: The panel gets wider](picking-one-animation-out-of-a-list-cs/_static/image2.png)](picking-one-animation-out-of-a-list-cs/_static/image1.png)</span></span>
 
-<span data-ttu-id="18927-124">其中一個可能的三個動畫： 面板變寬 ([按一下以檢視完整大小的影像](picking-one-animation-out-of-a-list-cs/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="18927-124">One of the possible three animations: The panel gets wider ([Click to view full-size image](picking-one-animation-out-of-a-list-cs/_static/image3.png))</span></span>
+<span data-ttu-id="680b5-124">其中一個可能的三個動畫: [面板] 中取得更多 ([按一下以檢視完整大小的影像](picking-one-animation-out-of-a-list-cs/_static/image3.png))</span><span class="sxs-lookup"><span data-stu-id="680b5-124">One of the possible three animations: The panel gets wider ([Click to view full-size image](picking-one-animation-out-of-a-list-cs/_static/image3.png))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="18927-125">[上一頁](animation-depending-on-a-condition-cs.md)
-> [下一頁](animating-in-response-to-user-interaction-cs.md)</span><span class="sxs-lookup"><span data-stu-id="18927-125">[Previous](animation-depending-on-a-condition-cs.md)
+> <span data-ttu-id="680b5-125">[上一頁](animation-depending-on-a-condition-cs.md)
+> [下一頁](animating-in-response-to-user-interaction-cs.md)</span><span class="sxs-lookup"><span data-stu-id="680b5-125">[Previous](animation-depending-on-a-condition-cs.md)
 [Next](animating-in-response-to-user-interaction-cs.md)</span></span>

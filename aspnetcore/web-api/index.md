@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/24/2018
 uid: web-api/index
 ms.openlocfilehash: ab672667d1ca349d80c4ca80f8d1f32f4871c7e6
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
+ms.lasthandoff: 07/04/2018
 ms.locfileid: "36274962"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API

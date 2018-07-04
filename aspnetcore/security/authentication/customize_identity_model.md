@@ -21,9 +21,9 @@ ASP.NET Core 身分識別提供架構供管理和儲存 ASP.NET Core 應用程�
 
 <a name="identity-migrations"></a>
 
-## <a name="identity-and-ef-core-migrations"></a>身分識別和 EF Core 移轉
+## <a name="identity-and-ef-core-migrations"></a>身分識別和 EF Core移轉
 
-先檢查模型，它是有助於您了解如何識別用於[EF Core 移轉](/ef/core/managing-schemas/migrations/)來建立和更新資料庫。 在最上層的程序是：
+先檢查模型，它是有助於您了解如何識別用於[EF Core移轉](/ef/core/managing-schemas/migrations/)來建立和更新資料庫。 在最上層的程序是：
 
 1. 定義或更新[程式碼中的資料模型](/ef/core/modeling/)。
 1. 新增的移轉，將此模型轉譯成可以套用至資料庫的變更。
@@ -72,7 +72,7 @@ ASP.NET Core 有可用來執行應用程式時，套用移轉開發時間錯誤�
 
 ### <a name="default-model-configuration"></a>預設模型組態
 
-識別定義各種不同的 「 內容類別 」 繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)來設定和使用模式。 此組態完成使用[EF Core 程式碼 First fluent 應用程式開發介面](/ef/core/modeling/)中[OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating#Microsoft_EntityFrameworkCore_DbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_)內容類別的方法。 預設組態是：
+識別定義各種不同的 「 內容類別 」 繼承自[DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)來設定和使用模式。 此組態完成使用[EF Core程式碼 First fluent 應用程式開發介面](/ef/core/modeling/)中[OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating#Microsoft_EntityFrameworkCore_DbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_)內容類別的方法。 預設組態是：
 
 ```CSharp
 builder.Entity<TUser>(b =>
@@ -286,7 +286,7 @@ public abstract class IdentityUserContext<TUser, TKey, TUserClaim, TUserLogin, T
 * 藉由提供的泛型類型參數的實體和索引鍵類型。
 * 藉由覆寫`OnModelCreating`若要修改這些類型的對應。
 
-在覆寫`OnModelCreating`，`base.OnModelCreating`應該先呼叫，覆寫應呼叫設定下一個。 EF Core 通常會有設定的最後一個 wins 原則。 例如，如果`ToTable`實體型別會是呼叫第一次使用一個資料表名稱和不同的資料表名稱，然後再次更新版本，則第二個呼叫中的資料表名稱是用。
+在覆寫`OnModelCreating`，`base.OnModelCreating`應該先呼叫，覆寫應呼叫設定下一個。 EF Core通常會有設定的最後一個 wins 原則。 例如，如果`ToTable`實體型別會是呼叫第一次使用一個資料表名稱和不同的資料表名稱，然後再次更新版本，則第二個呼叫中的資料表名稱是用。
 
 ### <a name="using-a-custom-user-type"></a>使用自訂的使用者類型
 
@@ -318,7 +318,7 @@ services.AddDefaultIdentity<ApplicationUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-不需要覆寫`OnModelCreating`這裡因為 EF Core 會對應`CustomTag`依慣例的屬性。 不過，資料庫必須更新，以取得新`CustomTag`資料行。 若要這樣做，請加入移轉，並更新資料庫中所述[身分識別和 EF Core 移轉](#identity-migrations)。
+不需要覆寫`OnModelCreating`這裡因為 EF Core會對應`CustomTag`依慣例的屬性。 不過，資料庫必須更新，以取得新`CustomTag`資料行。 若要這樣做，請加入移轉，並更新資料庫中所述[身分識別和 EF Core移轉](#identity-migrations)。
 
 ### <a name="changing-the-key-type"></a>變更索引鍵的類型
 
@@ -790,7 +790,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 本節中會加入支援身分識別模型中的延遲載入 proxy。 延遲載入適合，因為它可讓沒有第一個確保載入這些要使用的導覽屬性。
 
-實體類型可以進行適用於數種方式的消極式載入中所述[EF Core 文件集](/ef/core/querying/related-data#lazy-loading)。 為了簡單起見，我們將使用消極式載入 proxy，而這會需要：
+實體類型可以進行適用於數種方式的消極式載入中所述[EF Core文件集](/ef/core/querying/related-data#lazy-loading)。 為了簡單起見，我們將使用消極式載入 proxy，而這會需要：
 
 * 安裝[Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/)封裝。
 * 呼叫`.UseLazyLoadingProxies()`內`AddDbContext`。

@@ -56,4 +56,4 @@ Console.WriteLine($"Current user: {Thread.CurrentPrincipal?.Identity.Name}");
   * 取得的執行個體`IHttpContextAccessor`在啟動期間並將它儲存在靜態變數中。 執行個體才可以提供給先前已從靜態屬性擷取目前使用者的程式碼。
   * 擷取目前使用者的`ClaimsPrincipal`使用`HttpContextAccessor.HttpContext?.User`。 如果此程式碼使用的 HTTP 要求，環境之外`HttpContext`為 null。
 
-最終選項，使用`IHttpContextAccessor`，違反 （靜態相依性偏好插入相依性） 的 ASP.NET Core 原則。 打算最後移除的相依性靜態`IHttpContextAccessor`協助程式。 就很有用的橋接器，不過，移轉大型的現有 ASP.NET 應用程式先前使用`ClaimsPrincipal.Current`。
+最終選項，使用`IHttpContextAccessor`，違反 （靜態相依性偏好插入相依性） 的 ASP.NET Core原則。 打算最後移除的相依性靜態`IHttpContextAccessor`協助程式。 就很有用的橋接器，不過，移轉大型的現有 ASP.NET 應用程式先前使用`ClaimsPrincipal.Current`。

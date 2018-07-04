@@ -18,7 +18,7 @@ ms.locfileid: "36272697"
 
 ASP.NET Core 身分識別是可讓您登入功能加入您的應用程式的成員資格系統。 使用者可以建立帳戶和登入的使用者名稱和密碼，或者也可以使用例如 Facebook、 Google、 Microsoft 帳戶、 Twitter 或其他外部登入提供者。
 
-您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET Core 身分識別。 或者，您可以使用您自己的持續性存放區，例如 Azure 資料表儲存體。 本文件包含適用於 Visual Studio 以及使用 CLI 的指示。
+您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET Core身分識別。 或者，您可以使用您自己的持續性存放區，例如 Azure 資料表儲存體。 本文件包含適用於 Visual Studio 以及使用 CLI 的指示。
 
 [檢視或下載的範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 

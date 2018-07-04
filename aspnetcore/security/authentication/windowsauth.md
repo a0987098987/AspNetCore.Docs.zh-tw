@@ -53,7 +53,7 @@ Visual Studio 專案**屬性**網頁的**偵錯** 索引標籤提供 Windows 驗
 
 ## <a name="enable-windows-authentication-with-iis"></a>啟用與 IIS Windows 驗證
 
-IIS 會使用[ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 模組可以根據預設，流向 IIS Windows 驗證。 在 IIS 中，不是應用程式設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
+IIS 會使用[ASP.NET Core模組](xref:fundamentals/servers/aspnet-core-module)主機 ASP.NET Core 應用程式。 模組可以根據預設，流向 IIS Windows 驗證。 在 IIS 中，不是應用程式設定 Windows 驗證。 下列各節將示範如何使用 IIS 管理員來設定 ASP.NET Core 應用程式使用 Windows 驗證。
 
 ### <a name="create-a-new-iis-site"></a>建立新的 IIS 站台
 

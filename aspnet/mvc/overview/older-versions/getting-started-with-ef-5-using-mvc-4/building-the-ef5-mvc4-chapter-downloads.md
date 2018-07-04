@@ -1,60 +1,59 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/building-the-ef5-mvc4-chapter-downloads
-title: 建置本章下載 EF 5 MVC 4 的教學課程 |Microsoft 文件
+title: 建置章節下載 EF 5 MVC 4 的教學課程 |Microsoft Docs
 author: Rick-Anderson
-description: Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio...
+description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 5 Code First 和 Visual Studio 的 ASP.NET MVC 4 應用程式...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
 ms.topic: article
 ms.assetid: d0a89089-eed8-4f61-a478-c5ffa30186f5
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/building-the-ef5-mvc4-chapter-downloads
 msc.type: authoredcontent
-ms.openlocfilehash: bda7effabd715e4658d2472e1f0a66d7bba18cab
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 6f1a28a2703fa543430d0210cc7792cb19439136
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30878512"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37379916"
 ---
-<a name="building-the-chapter-downloads-for-the-ef-5-mvc-4-tutorials"></a>建置本章下載 EF 5 MVC 4 的教學課程
+<a name="building-the-chapter-downloads-for-the-ef-5-mvc-4-tutorials"></a>建置章節下載 EF 5 MVC 4 的教學課程
 ====================
-由[Rick Anderson](https://github.com/Rick-Anderson)
+藉由[Rick Anderson](https://github.com/Rick-Anderson)
 
-[下載完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
+[下載已完成的專案](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> Contoso 大學範例 web 應用程式示範如何建立 ASP.NET MVC 4 應用程式使用 Entity Framework 5 Code First 和 Visual Studio 2012。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+> Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 5 Code First 和 Visual Studio 2012 的 ASP.NET MVC 4 應用程式。 如需教學課程系列的資訊，請參閱[本系列的第一個教學課程](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 
 
-## <a name="building-the-chapter-downloads"></a>建置章下載
+## <a name="building-the-chapter-downloads"></a>建置章節下載
 
-1. 下載並解壓縮專案範例 zip 檔案。 解壓縮的下載封裝中，您會發現額外的 zip 檔案，其中的每一章完成作業。
+1. 下載並解壓縮專案範例 zip 檔案。 解壓縮的下載封裝中，您會發現其他的 zip 檔案，其中的每一章完成作業。
 2. 以滑鼠右鍵按一下所需的 zip 檔案，然後按一下**屬性**，然後按一下**解除封鎖** 按鈕。  
   
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image1.png)
-3. 解壓縮檔案。
-4. 按兩下*CUx.sln*檔案即可啟動 Visual Studio。
-5. 從**工具**功能表上，按一下 **程式庫套件管理員**，然後**Package Manager Console**。  
+3. 將檔案解壓縮。
+4. 按兩下*CUx.sln*檔案以啟動 Visual Studio。
+5. 從**工具**功能表上，按一下**程式庫套件管理員**，然後**Package Manager Console**。  
   
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image2.png)
-6. 在 封裝管理員主控台 (PMC)，按一下**還原**。  
+6. 在 套件管理員主控台 (PMC)，按一下**還原**。  
   
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image3.png)
 7. 結束 Visual Studio。
-8. 重新啟動 Visual Studio，您關閉上述步驟中開啟方案檔。
-9. 在 封裝管理員主控台 (PMC)，輸入`Update-Database`命令：  
+8. 重新啟動 Visual Studio 中，在上述步驟中開啟方案檔，您已關閉。
+9. 在 套件管理員主控台 (PMC)，請輸入`Update-Database`命令：  
   
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image4.png)  
 
     > [!NOTE]
     > 如果您收到下列錯誤：  
     >   
-    >  *'Update-database' 詞彙無法辨識為 cmdlet、 函式、 指令碼檔案或可執行程式的名稱。請檢查名稱拼字，或如果包含路徑的話，確認路徑正確，然後再試一次。*  
+    >  *詞彙 更新資料庫 ' 無法辨識為 cmdlet、 函式、 指令碼檔案或可執行程式的名稱。請檢查名稱的拼字，或如果包含路徑的話，確認路徑正確，然後再試一次。*  
     > 結束並重新啟動 Visual Studio。
 
-    每個移轉將會執行，然後種子方法會執行。 您現在可以執行應用程式。
+    每個移轉將會執行，則會執行 seed 方法。 您現在可以執行應用程式。
 
     ![](building-the-ef5-mvc4-chapter-downloads/_static/image5.png)
 

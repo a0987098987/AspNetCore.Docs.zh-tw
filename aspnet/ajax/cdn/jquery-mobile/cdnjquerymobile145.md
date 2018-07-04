@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile145
-title: jQuery Mobile 1.4.5 上 Microsoft Ajax CDN |Microsoft 文件
+title: 上的 jQuery Mobile 1.4.5 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,17 +9,16 @@ ms.date: 12/31/2014
 ms.topic: article
 ms.assetid: 67e9fda2-7895-4818-add6-fdc5be5be367
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile145
 msc.type: content
-ms.openlocfilehash: c1f6febaa41e45a9ecd2e9b90ec9851a4c95f1f6
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 4a4642129fef5f0159139068179064e6b49b2799
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071326"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37393289"
 ---
-<a name="jquery-mobile-145-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.4.5 上 Microsoft Ajax CDN
+<a name="jquery-mobile-145-on-the-microsoft-ajax-cdn"></a>上的 jQuery Mobile 1.4.5 Microsoft Ajax CDN
 ====================
 JQuery Mobile 1.4.5 程式庫包含下列檔案：
 

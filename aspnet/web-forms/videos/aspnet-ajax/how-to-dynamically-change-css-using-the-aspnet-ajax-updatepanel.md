@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/aspnet-ajax/how-to-dynamically-change-css-using-the-aspnet-ajax-updatepanel
-title: 如何以動態方式變更 CSS 使用 ASP.NET AJAX UpdatePanel |Microsoft 文件
+title: 如何動態變更 CSS 使用 ASP.NET AJAX UpdatePanel |Microsoft Docs
 author: JoeStagner
 description: 這段影片說明如何以動態方式修改您的頁面使用 CSS 和 AJAX UpdatePanel 的樣式。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 04/16/2008
 ms.topic: article
 ms.assetid: 6e0eca38-0344-4732-97de-73acf0551c28
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-to-dynamically-change-css-using-the-aspnet-ajax-updatepanel
 msc.type: video
-ms.openlocfilehash: 5d808bf1977b0d8654d4e07c61a4929d8fe0359e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: eb8c806949b109c5b5dc406f208e1e2e36e24858
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885224"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378880"
 ---
-<a name="how-to-dynamically-change-css-using-the-aspnet-ajax-updatepanel"></a>如何使用 ASP.NET AJAX UpdatePanel 的 CSS，動態變更
+<a name="how-to-dynamically-change-css-using-the-aspnet-ajax-updatepanel"></a>如何動態變更 CSS 使用 ASP.NET AJAX UpdatePanel
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
 這段影片說明如何以動態方式修改您的頁面使用 CSS 和 AJAX UpdatePanel 的樣式。
 

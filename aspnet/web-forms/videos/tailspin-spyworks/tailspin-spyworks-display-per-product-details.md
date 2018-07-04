@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-per-product-details
-title: Tailspin Spyworks-顯示每個產品詳細資料 |Microsoft 文件
+title: Tailspin Spyworks-顯示每個產品詳細資料 |Microsoft Docs
 author: JoeStagner
-description: Joe stagner 以 Tailspin Spyworks 範例 Web Form 應用程式中顯示的產品詳細資料。
+description: Joe Stagner Tailspin Spyworks 範例 Web Form 應用程式中顯示產品詳細資料。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2010
 ms.topic: article
 ms.assetid: cc1ae79f-69ff-445a-a789-b5da2b255cb6
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-per-product-details
 msc.type: video
-ms.openlocfilehash: 1ce108cdbb22b49ed678d9f1e8cd69ccfbc5dedd
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e0388a2c04dfcac18a9810bd4231df8210d632cb
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30895832"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37391763"
 ---
 <a name="tailspin-spyworks---display-per-product-details"></a>Tailspin Spyworks-顯示每個產品詳細資料
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
-Joe stagner 以 Tailspin Spyworks 範例 Web Form 應用程式中顯示的產品詳細資料。
+Joe Stagner Tailspin Spyworks 範例 Web Form 應用程式中顯示產品詳細資料。
 
-[&#9654;觀看影片 （6 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-display-per-product-details)
+[&#9654;觀看影片 （6 分）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-display-per-product-details)
 
 > [!div class="step-by-step"]
 > [上一頁](tailspin-spyworks-display-the-product-list.md)

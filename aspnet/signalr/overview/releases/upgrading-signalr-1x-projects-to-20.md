@@ -1,29 +1,28 @@
 ---
 uid: signalr/overview/releases/upgrading-signalr-1x-projects-to-20
-title: 將 SignalR 1.x 專案升級到版本 2 |Microsoft 文件
+title: 將 SignalR 1.x 專案升級至第 2 版 |Microsoft Docs
 author: pfletcher
-description: 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x，以及如何疑難排解，升級程序期間可能發生問題...
+description: 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x 中，以及如何針對升級的程序期間可能發生的問題進行疑難排解...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
 ms.topic: article
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 ms.technology: dotnet-signalr
-ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: e372275ae5dd4bbf354db2d02e4407f8c513b7a3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f8e388cc9a9acf0283be5c719eed1c3c2d031f50
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26505737"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37379760"
 ---
-<a name="upgrading-signalr-1x-projects-to-version-2"></a>將 SignalR 1.x 專案升級到版本 2
+<a name="upgrading-signalr-1x-projects-to-version-2"></a>將 SignalR 1.x 專案升級至第 2 版
 ====================
-由[Patrick Fletcher](https://github.com/pfletcher)
+藉由[Patrick Fletcher](https://github.com/pfletcher)
 
-> 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x，以及如何升級程序期間可能發生的問題進行疑難排解。
+> 本主題描述如何將現有的 SignalR 1.x 專案升級至 SignalR 2.x 中，以及如何進行疑難排解，升級程序期間可能發生問題。
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 > 
@@ -34,74 +33,74 @@ ms.locfileid: "26505737"
 >   
 > 
 > 
-> ## <a name="using-visual-studio-2012-with-this-tutorial"></a>使用 Visual Studio 2012 進行這個教學課程
+> ## <a name="using-visual-studio-2012-with-this-tutorial"></a>本教學課程中使用 Visual Studio 2012
 > 
 > 
-> 透過本教學課程中使用 Visual Studio 2012，請執行下列作業：
+> 若要使用 Visual Studio 2012，本教學課程中，執行下列作業：
 > 
-> - 更新您[封裝管理員](http://docs.nuget.org/docs/start-here/installing-nuget)的最新版本。
+> - 更新您[封裝管理員](http://docs.nuget.org/docs/start-here/installing-nuget)為最新版本。
 > - 安裝[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)。
-> - 在 Web Platform Installer 中搜尋及安裝**ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012**。 這會安裝 Visual Studio 範本 SignalR 的類別，例如**中樞**。
-> - 某些範本 (例如**OWIN 啟動類別**) 將無法使用; 這些項目，請改用類別檔案。
+> - 在 Web Platform Installer 中，搜尋並安裝**ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012**。 這會安裝 Visual Studio 範本 SignalR 類別，例如**中樞**。
+> - 有些範本 (例如**OWIN 啟動類別**) 將無法使用，這些項目，請改用類別檔案。
 > 
 > 
-> ## <a name="questions-and-comments"></a>問題和註解
+> ## <a name="questions-and-comments"></a>提出問題或意見
 > 
-> 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
+> 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
-SignalR 2 提供一致的開發經驗跨伺服器平台使用[OWIN](http://owin.org)。 這篇文章描述更新為版本 2 的 SignalR 1.x 應用程式所需的幾個步驟。
+SignalR 2 使用的伺服器平台提供具有一致開發體驗[OWIN](http://owin.org)。 本文說明更新到版本 2 的 SignalR 1.x 應用程式所需的幾個步驟。
 
-它鼓勵升級至 SignalR 2 應用程式，而 SignalR 1.x 仍會支援。
+雖然建議您升級至 SignalR 2 的應用程式，SignalR 1.x 仍受支援。
 
-本教學課程說明如何升級至 SignalR 2 web 應用程式。 在 SignalR 2 現在支援自我裝載的應用程式 （其裝載的主控台應用程式、 Windows 服務或其他處理程序中的伺服器）。 如需如何開始使用 SignalR 2 建立的自我裝載應用程式資訊，請參閱[教學課程： 自我裝載的 SignalR](../deployment/tutorial-signalr-self-host.md)。
+本教學課程說明如何升級 web 裝載的應用程式，SignalR 2。 SignalR 2 現在支援自我裝載的應用程式 （其會裝載在主控台應用程式、 Windows 服務或其他處理序伺服器）。 如需如何開始使用 SignalR 2 建立的自我裝載的應用程式的資訊，請參閱[教學課程： SignalR 自我裝載](../deployment/tutorial-signalr-self-host.md)。
 
 ## <a name="contents"></a>內容
 
-下列章節說明升級 SignalR 專案，以及如何疑難排解可能遇到的問題的相關工作。
+下列各節描述升級 SignalR 專案，以及如何針對可能發生的問題進行疑難排解所涉及的工作。
 
 - [範例： 升級至 SignalR 2 的快速入門教學課程](#example)
-- [在升級期間發生錯誤的疑難排解](#troubleshooting)
+- [在升級期間發生的錯誤進行疑難排解](#troubleshooting)
 
 <a id="example"></a>
 
 ## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>範例： 快速入門教學課程應用程式升級為 SignalR 2
 
-在本節中，您要更新應用程式中建立[SignalR 1.x 版快速入門教學課程](../older-versions/index.md)使用 SignalR 2。
+在本節中，您將更新應用程式中建立[入門教學課程的 SignalR 1.x 版](../older-versions/index.md)使用 SignalR 2。
 
-1. 一旦您完成快速入門教學課程，請以滑鼠右鍵按一下專案，然後選取**屬性**。 確認**目標 framework**設 **.NET Framework 4.5。**
-2. 開啟 封裝管理員主控台。 移除 SignalR 1.x 從專案中使用下列命令：
+1. 一旦您完成快速入門教學課程，請以滑鼠右鍵按一下專案，然後選取**屬性**。 確認**目標 framework**設定為 **.NET Framework 4.5。**
+2. 開啟 [Package Manager Console]。 移除 SignalR 1.x 專案使用下列命令：
 
     [!code-powershell[Main](upgrading-signalr-1x-projects-to-20/samples/sample1.ps1)]
 3. 安裝 SignalR 2 使用下列命令：
 
     [!code-powershell[Main](upgrading-signalr-1x-projects-to-20/samples/sample2.ps1)]
-4. 在 HTML 頁面中，更新的指令碼參考適用於 SignalR 符合現在包含在專案中的指令碼的版本。
+4. 在 HTML 頁面中，更新以符合現在包含在專案中的指令碼版本的 SignalR 的指令碼參考。
 
     [!code-html[Main](upgrading-signalr-1x-projects-to-20/samples/sample3.html)]
 5. 在全域應用程式類別中，移除 MapHubs 的呼叫。
 
     [!code-csharp[Main](upgrading-signalr-1x-projects-to-20/samples/sample4.cs)]
-6. 以滑鼠右鍵按一下方案，然後選取**新增**，**新項目...**.在對話方塊中，選取**Owin 啟動類別**。 將新類別**Startup.cs**。
+6. 以滑鼠右鍵按一下方案，然後選取**新增**，**新項目...**.在對話方塊中，選取**Owin 啟動類別**。 新類別命名**Startup.cs**。
 
     ![](upgrading-signalr-1x-projects-to-20/_static/image1.png)
-7. Startup.cs 中的內容取代為下列程式碼：
+7. Startup.cs 的內容取代為下列程式碼：
 
     [!code-csharp[Main](upgrading-signalr-1x-projects-to-20/samples/sample5.cs)]
 
-    組件屬性將類別加入至 Owin 的啟動程序，它會執行`Configuration`Owin 啟動時的方法。 這會依次呼叫`MapSignalR`方法，可在應用程式中建立所有 SignalR 中樞的路由。
-8. 執行專案，並將主頁面的 URL 複製到另一個瀏覽器或瀏覽器 窗格之前。 每個頁面會要求使用者名稱，並從每一頁所傳送的訊息應該在這兩個瀏覽器窗格中顯示。
+    組件屬性將類別加入至 Owin 的啟動程序，它會執行`Configuration`Owin 啟動時的方法。 這會進而呼叫`MapSignalR`方法會建立應用程式中的所有 SignalR 中樞的路由。
+8. 執行專案，並將主頁面的 URL 複製到另一個瀏覽器或瀏覽器窗格中的，與之前。 每一頁會詢問使用者名稱，並從每個頁面傳送的訊息應該在這兩個瀏覽器窗格中顯示。
 
 <a id="troubleshooting"></a>
 
-## <a name="troubleshooting-errors-encountered-during-upgrading"></a>在升級期間發生錯誤的疑難排解
+## <a name="troubleshooting-errors-encountered-during-upgrading"></a>在升級期間發生的錯誤進行疑難排解
 
-本節說明在升級期間可能遇到的問題。 如需更完整的 SignalR 應用程式，可能會發生的錯誤和問題清單，請參閱[SignalR 疑難排解](../testing-and-debugging/troubleshooting.md)。
+本節說明在升級期間可能發生的問題。 如需更完整的 SignalR 應用程式，可能會發生的錯誤和問題清單，請參閱 < [SignalR 疑難排解](../testing-and-debugging/troubleshooting.md)。
 
 ### <a name="the-call-is-ambiguous-between-the-following-methods-or-properties"></a>' 的呼叫是下列的方法或屬性之間模稜兩可的 '
 
-如果的參考，會發生這個錯誤`Microsoft.AspNet.SignalR.Owin`不會移除。 此套件已被取代。必須移除參照，必須先解除安裝 SelfHost 封裝 1.x 版本。
+如果的參考，會發生此錯誤`Microsoft.AspNet.SignalR.Owin`不會移除。 此套件已被取代;必須先移除參考，並自行封裝的 1.x 版本必須先解除安裝。
 
-### <a name="hub-methods-fail-silently"></a>中樞的方法以無訊息模式失敗
+### <a name="hub-methods-fail-silently"></a>中樞的方法以無訊息方式失敗
 
-確認您的用戶端指令碼參考最多的日期，且`OwinStartup`啟動類別具有正確的類別和專案的組件名稱屬性。 此外，再試一次開啟中樞中的位址 （/signalr/集線器） 您的瀏覽器;會出現任何錯誤會提供有關發生什麼事錯誤的詳細資訊。
+確認您的用戶端中的指令碼參考最多的日期，而且`OwinStartup`屬性 (attribute) 您的啟動類別具有正確的類別和專案的組件名稱。 此外，請嘗試開啟中樞位址 （signalr/中樞），以在瀏覽器中;會出現任何錯誤會提供錯誤情形的詳細資訊。

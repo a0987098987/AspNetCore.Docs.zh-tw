@@ -5,12 +5,12 @@ description: 本教學課程示範如何搭配使用 OAuth 2.0 與外部驗證�
 ms.author: riande
 ms.date: 11/01/2016
 uid: security/authentication/social/index
-ms.openlocfilehash: 58045504ce4588f854428273273d3ea8f181e12e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b3fbd98215537fad7b283d1bf96ebd259e0b980a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277994"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37366271"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -57,11 +57,12 @@ OAuth 2.0 要求使用 SSL 以透過 HTTPS 通訊協定進行驗證。
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>使用 SecretManager 來儲存登入提供者指派的權杖
 
-社交登入提供者會在註冊程序期間指派「應用程式識別碼」和「應用程式密碼」權杖 (確切的命名因提供者而異)。
+社交登入提供者會在註冊程序期間指派**應用程式識別碼**和**應用程式密碼**權杖。 確切權杖名稱會依提供者而有所不同。 這些權杖代表您的應用程式用來存取其 API 的認證。 這些權杖會組成「祕密」，在[祕密管理員](xref:security/app-secrets#secret-manager)的協助下連結到您的應用程式設定。 相較於在設定檔 (例如 *appsettings.json*) 中儲存權杖，祕密管理員是較安全的替代方案。
 
-這些值都是應用程式用來存取其 API 的有效「使用者名稱」和「密碼」，並構成可連結至應用程式組態的「密碼」(透過**密碼管理員**來完成，而不是直接儲存在組態檔中或將其硬式編碼)。
+> [!IMPORTANT]
+> 祕密管理員僅供用於開發用途。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
 
-請遵循[在 ASP.NET Core 開發期間安全儲存應用程式密碼](xref:security/app-secrets)主題中的步驟，儲存下列每個登入提供者所指派的權杖。
+請遵循 [Safe storage of app secrets in development in ASP.NET Core](xref:security/app-secrets) (在 ASP.NET Core 開發過程中安全地儲存應用程式祕密) 主題中的步驟，儲存下方各個登入提供者指派的權杖。
 
 ## <a name="setup-login-providers-required-by-your-application"></a>設定應用程式所需的登入提供者
 

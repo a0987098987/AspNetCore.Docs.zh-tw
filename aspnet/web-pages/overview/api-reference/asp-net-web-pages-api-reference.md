@@ -1,33 +1,32 @@
 ---
 uid: web-pages/overview/api-reference/asp-net-web-pages-api-reference
-title: ASP.NET Web Pages (Razor) API 的快速參考 |Microsoft 文件
+title: ASP.NET Web Pages (Razor) API 快速參考 |Microsoft Docs
 author: tfitzmac
-description: 此頁面包含的最常用的物件、 屬性和方法，程式設計含有 Razor 語法的 ASP.NET Web Pages 簡短範例的清單。
+description: 此頁面包含最常使用的物件、 屬性和方法的程式設計含有 Razor 語法的 ASP.NET Web Pages 的簡短範例的清單。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
 ms.topic: article
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 5f9d84f4d453583d7d4eae12e4fc510275255616
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3bf706cefe5302cf1085e0f814dc6654e42ae917
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897580"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378659"
 ---
-<a name="aspnet-web-pages-razor-api-quick-reference"></a>ASP.NET Web Pages (Razor) API 的快速參考
+<a name="aspnet-web-pages-razor-api-quick-reference"></a>ASP.NET Web Pages (Razor) API 快速參考
 ====================
-由[Tom FitzMacken](https://github.com/tfitzmac)
+藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
-> 此頁面包含的最常用的物件、 屬性和方法，程式設計含有 Razor 語法的 ASP.NET Web Pages 簡短範例的清單。
+> 此頁面包含最常使用的物件、 屬性和方法的程式設計含有 Razor 語法的 ASP.NET Web Pages 的簡短範例的清單。
 > 
-> ASP.NET Web Pages 中第 2 版導入 」 (v2) 」 以標記的描述。
+> ASP.NET Web Pages 中第 2 版導入標示為 「 (v2) 」 的描述。
 > 
-> API 參考文件，請參閱[ASP.NET Web Pages 參考文件](https://go.microsoft.com/fwlink/?LinkId=208659)MSDN 上。
+> 如需 API 參考文件，請參閱[ASP.NET Web Pages 參考文件](https://go.microsoft.com/fwlink/?LinkId=208659)MSDN 上。
 > 
 > ## <a name="software-versions"></a>軟體版本
 > 
@@ -35,7 +34,7 @@ ms.locfileid: "30897580"
 > - ASP.NET Web Pages (Razor) 3
 >   
 > 
-> 本教學課程也適用於 ASP.NET Web Pages 2 和 ASP.NET Web Pages 1.0 （除了標示 v2 的功能）。
+> 本教學課程也適用於 ASP.NET Web Pages 2 和 ASP.NET Web Pages 1.0 （除了標記 v2 的功能）。
 
 
 此頁面包含下列參考資訊：
@@ -50,13 +49,13 @@ ms.locfileid: "30897580"
 
 ### `AppState[key], AppState[index],App`
 
-包含可在應用程式中任何頁面所共用的資料。 您可以使用動態`App`屬性來存取相同的資料，如下列範例所示：
+包含可由任何頁面共用應用程式中的資料。 您可以使用動態`App`屬性來存取相同的資料，如下列範例所示：
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample1.html)]
 
 ### `AsBool(), AsBool(true|false)`
 
-將字串值轉換成布林值 (true/false)。 傳回 false 或指定的值，如果字串不是 true/false。
+將字串值轉換成布林值 (true/false)。 會傳回 false 或指定的值，如果字串不是 true/false。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample2.cs)]
 
@@ -80,13 +79,13 @@ ms.locfileid: "30897580"
 
 ### `AsInt(), AsInt(value)`
 
-將字串值轉換為整數。 傳回 0 或指定的值，如果字串不是整數。
+將字串值轉換成整數。 傳回 0 或指定的值，如果字串不是整數。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample6.cs)]
 
 ### `Href(path [, param1 [, param2]])`
 
-從本機檔案路徑，選擇性的其他路徑的組件中建立相容的瀏覽器 URL。
+建立本機檔案路徑，與其他的選擇性路徑部分瀏覽器相容的 URL。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample7.cshtml)]
 
@@ -98,13 +97,13 @@ ms.locfileid: "30897580"
 
 ### `IsBool(), IsDateTime(), IsDecimal(), IsFloat(), IsInt()`
 
-如果此值可以從字串轉換成指定的類型，則傳回 true。
+如果此值可以從字串轉換成指定的型別，則傳回 true。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample9.cs)]
 
 ### `IsEmpty()`
 
-如果物件或變數沒有任何值，則傳回 true。
+如果物件或變數沒有值，則傳回 true。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample10.cs)]
 
@@ -116,7 +115,7 @@ ms.locfileid: "30897580"
 
 ### `Layout`
 
-指定要套用至這個頁面版面配置頁的路徑。
+指定要套用至這個頁面的版面配置頁的路徑。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample12.html)]
 
@@ -128,14 +127,14 @@ ms.locfileid: "30897580"
 
 ### `RenderBody()`
 
-（版面配置頁）呈現不是任何具名區段的內容頁面的內容。
+（版面配置頁）呈現之內容頁面不是任何具名的各節中的內容。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample14.cs)]
 
 ### `RenderPage(path, values)`  
 `RenderPage(path[,param1 [, param2]])`
 
-呈現內容頁面，使用指定的路徑和選用的額外資料。 您可以取得的額外參數的值`PageData`依位置 （例如，1） 或索引鍵 （例如，2）。
+呈現內容的頁面，使用指定的路徑和選擇性的額外資料。 您可以取得的額外參數的值`PageData`的位置 （例如，1） 或索引鍵 （例如 2）。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample15.js)]
 
@@ -153,26 +152,26 @@ ms.locfileid: "30897580"
 
 ### `Request.Files[key]`
 
-取得目前要求中上傳的檔案。
+取得目前要求中已上傳的檔案。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample18.js)]
 
 ### `Request.Form[key]`
 
-取得表單中回傳 （做為字串） 的資料。 `Request[key]` 檢查同時`Request.Form`和`Request.QueryString`集合。
+取得 （如字串） 在表單中回傳的資料。 `Request[key]` 檢查兩者`Request.Form`而`Request.QueryString`集合。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample19.cs)]
 
 ### `Request.QueryString[key]`
 
-取得指定之 URL 查詢字串中的資料。 `Request[key]` 檢查同時`Request.Form`和`Request.QueryString`集合。
+取得指定之 URL 查詢字串中的資料。 `Request[key]` 檢查兩者`Request.Form`而`Request.QueryString`集合。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample20.cs)]
 
 ### `Request.Unvalidated(key)`  
 `Request.Unvalidated().QueryString|Form|Cookies|Headers[key]`
 
-選擇性地停用要求驗證表單項目、 查詢字串值、 cookie 或標頭值。 要求驗證預設會啟用，並防止使用者張貼標記或其他潛在危險的內容。
+選擇性地停用要求驗證表單項目、 查詢字串值、 cookie 或標頭值。 要求驗證預設會啟用，並防止使用者張貼的標記或其他潛在的危險的內容。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample21.cs)]
 
@@ -184,13 +183,13 @@ ms.locfileid: "30897580"
 
 ### `Response.OutputCache(seconds [, sliding] [, varyByParams])`
 
-會對網頁輸出快取指定的時間。 選擇性地設定*滑動*重設存取每個頁面上的逾時和*varyByParams*快取不同版本之頁面的頁面要求中每個不同的查詢字串。
+會在指定的時間，快取頁面輸出。 選擇性地設定*滑動*重設存取每個頁面上的逾時並*varyByParams*快取不同版本的頁面要求中的每個不同的查詢字串的頁面。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample23.js)]
 
 ### `Response.Redirect(path)`
 
-將瀏覽器要求重新導向至新位置。
+瀏覽器將要求重新導向至新位置。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample24.js)]
 
@@ -202,7 +201,7 @@ ms.locfileid: "30897580"
 
 ### `Response.WriteBinary(data [, mimetype])`
 
-內容寫入*資料*至含有選擇性 MIME 類型的回應。
+內容寫入*資料*來包含選擇性的 MIME 類型的回應。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample26.js)]
 
@@ -220,13 +219,13 @@ ms.locfileid: "30897580"
 
 ### `Server.HtmlDecode(htmlText)`
 
-將解碼的 HTML 編碼字串。
+將已 HTML 編碼字串解碼。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample29.cs)]
 
 ### `Server.HtmlEncode(text)`
 
-編碼字串中的 HTML 標記的呈現。
+將轉譯的 HTML 標記的字串編碼。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample30.cs)]
 
@@ -250,7 +249,7 @@ ms.locfileid: "30897580"
 
 ### `Session[key]`
 
-取得或設定值，這個值存在於在使用者關閉瀏覽器。
+取得或設定值，這個值存在，直到使用者關閉瀏覽器。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample34.css)]
 
@@ -262,7 +261,7 @@ ms.locfileid: "30897580"
 
 ### `UrlData[index]`
 
-從 URL 取得額外的資料 (例如， */MyPage/ExtraData*)。
+從 URL 取得額外的資料 (例如*MyPage/ExtraData*)。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample36.cs)]
 
@@ -274,20 +273,20 @@ ms.locfileid: "30897580"
 
 ### `WebSecurity.ConfirmAccount(accountConfirmationToken)`
 
-確認使用的帳戶確認語彙基元的帳戶。
+確認使用帳戶確認語彙基元的帳戶。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample38.cs)]
 
 ### `WebSecurity.CreateAccount(userName, password`  
  `[, requireConfirmationToken = true|false])`
 
-使用指定的使用者名稱和密碼建立新的使用者帳戶。 如果需要確認語彙基元，請傳遞 true *requireConfirmationToken。*
+使用指定的使用者名稱和密碼建立新的使用者帳戶。 若要要求確認語彙基元，傳遞 true 值給*requireConfirmationToken。*
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample39.cs)]
 
 ### `WebSecurity.CurrentUserId`
 
-取得目前登入之使用者的整數識別碼。
+取得目前登入的使用者屬性的整數識別碼。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample40.cs)]
 
@@ -300,13 +299,13 @@ ms.locfileid: "30897580"
 ### `WebSecurity.GeneratePasswordResetToken(username`  
  `[, tokenExpirationInMinutesFromNow])`
 
-產生密碼重設語彙基元可以傳送電子郵件給使用者，讓使用者可以重設密碼。
+產生可以透過電子郵件傳送給使用者，讓使用者可以重設密碼的密碼重設語彙基元。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample42.cs)]
 
 ### `WebSecurity.GetUserId(userName)`
 
-傳回使用者名稱中的使用者識別碼。
+從 使用者名稱傳回使用者識別碼。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample43.cs)]
 
@@ -318,7 +317,7 @@ ms.locfileid: "30897580"
 
 ### `WebSecurity.IsConfirmed(userName)`
 
-如果已確認使用者 （例如，透過確認電子郵件），則傳回 true。
+如果使用者已確認 （例如，透過確認電子郵件），則傳回 true。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample45.cs)]
 
@@ -330,13 +329,13 @@ ms.locfileid: "30897580"
 
 ### `WebSecurity.Login(userName,password[, persistCookie])`
 
-記錄中的使用者藉由在 cookie 中設定驗證語彙基元。
+記錄中的使用者，藉由在 cookie 中設定驗證語彙基元。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample47.cs)]
 
 ### `WebSecurity.Logout()`
 
-藉由移除驗證語彙基元 cookie 逾時記錄的使用者。
+使用者縮小記錄移除驗證語彙基元 cookie。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample48.css)]
 
@@ -361,7 +360,7 @@ ms.locfileid: "30897580"
 
 ### `WebSecurity.ResetPassword(passwordResetToken,newPassword)`
 
-如果密碼重設語彙基元有效，請為新的密碼變更使用者的密碼。
+密碼重設語彙基元是否有效，請為新的密碼變更使用者的密碼。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample52.css)]
 
@@ -376,26 +375,26 @@ ms.locfileid: "30897580"
 
 ### `Database.GetLastInsertId()`
 
-傳回最近插入的資料列識別資料行。
+傳回最近插入的資料列的身分識別資料行。
 
 [!code-sql[Main](asp-net-web-pages-api-reference/samples/sample54.sql)]
 
 ### `Database.Open(filename)`  
 `Database.Open(connectionStringName)`
 
-開啟指定的資料庫檔案或資料庫使用的具名的連接字串指定*Web.config*檔案。
+開啟指定的資料庫檔案或使用中的具名的連接字串所指定的資料庫*Web.config*檔案。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample55.cs)]
 
 ### `Database.OpenConnectionString(connectionString)`
 
-開啟資料庫使用的連接字串。 (這與相反`Database.Open`，它會使用連接字串名稱。)
+開啟資料庫使用的連接字串。 (這樣可避免`Database.Open`，它會使用的連接字串名稱。)
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample56.cs)]
 
 ### `Database.Query(SQLstatement[,parameters])`
 
-查詢資料庫使用*SQLstatement* （可選擇傳遞參數），並傳回結果做為集合。
+查詢資料庫使用*SQLstatement* （並選擇性地傳遞參數），並傳回結果做為集合。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample57.html)]
 
@@ -416,13 +415,13 @@ ms.locfileid: "30897580"
 
 ### `Analytics.GetGoogleHtml(webPropertyId)`
 
-呈現 Google Analytics JavaScript 程式碼針對指定的識別碼。
+呈現 Google Analytics JavaScript 程式碼做為指定的識別碼。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample60.js)]
 
 ### `Analytics.GetStatCounterHtml(project,security)`
 
-呈現指定的專案 StatCounter 分析 JavaScript 程式碼。
+呈現指定的專案的 StatCounter 分析 JavaScript 程式碼。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample61.css)]
 
@@ -434,7 +433,7 @@ ms.locfileid: "30897580"
 
 ### `Bing.SearchBox([boxWidth])`
 
-傳遞到 Bing 的搜尋。 若要指定搜尋的搜尋方塊的標題的站台，您可以設定`Bing.SiteUrl`和`Bing.SiteTitle`屬性。 在設定這些屬性通常 *\_AppStart*頁面。
+傳遞至 Bing 的搜尋。 若要指定要搜尋和 [搜尋] 方塊的標題的站台，您可以設定`Bing.SiteUrl`和`Bing.SiteTitle`屬性。 在設定這些屬性通常 *\_AppStart*頁面。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample63.html)]
 
@@ -448,7 +447,7 @@ ms.locfileid: "30897580"
 
 ### `Chart.AddLegend([title] [, name])`
 
-將圖例加入至圖表。
+將圖例新增至圖表。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample66.cshtml)]
 
@@ -456,28 +455,28 @@ ms.locfileid: "30897580"
  `[, axisLabel] [, legend] [, markerStep] [, xValue]`  
  `[, xField] [, yValues] [, yFields] [, options])`
 
-將一系列的值加入至圖表。
+將圖表中的一系列的值。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample67.cshtml)]
 
 ### `Crypto.Hash(string [, algorithm])`  
 `Crypto.Hash(bytes [, algorithm])`
 
-傳回指定之資料的雜湊。 預設的演算法是`sha256`。
+傳回指定之資料的雜湊值。 預設的演算法是`sha256`。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample68.html)]
 
 ### `Facebook.LikeButton(href [, buttonLayout] [, showFaces] [, width] [, height]`   
  `[, action] [, font] [, colorScheme] [, refLabel])`
 
-可讓連線到網頁的 Facebook 使用者。
+可讓 Facebook 使用者對網頁進行連線。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample69.js)]
 
 ### `FileUpload.GetHtml([initialNumberOfFiles] [, allowMoreFilesToBeAdded]`  
  `[, includeFormTag] [, addText] [, uploadText])`
 
-上傳的檔案中呈現 UI。
+上傳檔案的呈現 UI。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample70.html)]
 
@@ -490,19 +489,19 @@ ms.locfileid: "30897580"
 ### `Gravatar.GetHtml(email [, imageSize] [, defaultImage] [, rating]`  
  `[, imageExtension] [, attributes])`
 
-呈現指定的電子郵件地址的 Gravatar 映像。
+呈現指定的電子郵件地址 Gravatar 影像。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample72.css)]
 
 ### `Json.Encode(object)`
 
-將資料物件轉換成 JavaScript Object Notation (JSON) 格式的字串。
+將資料物件轉換成 JavaScript Object Notation (JSON) 格式字串。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample73.cs)]
 
 ### `Json.Decode(string)`
 
-將 JSON 編碼的輸入的字串轉換成您可以反覆查看，或資料庫中插入的資料物件。
+將 JSON 編碼的輸入的字串轉換成的資料物件，您可以逐一查看，或將插入資料庫中。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample74.cs)]
 
@@ -515,25 +514,25 @@ ms.locfileid: "30897580"
 
 ### `ModelStateDictionary.AddError(key, errorMessage)`
 
-將錯誤訊息與表單欄位相關聯。 使用`ModelState`helper 來存取這個成員。
+關聯表單欄位中的錯誤訊息。 使用`ModelState`存取這個成員的協助程式。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample76.cs)]
 
 ### `ModelStateDictionary.AddFormError(errorMessage)`
 
-關聯表單中的錯誤訊息。 使用`ModelState`helper 來存取這個成員。
+關聯表單中的錯誤訊息。 使用`ModelState`存取這個成員的協助程式。
 
 [!code-powershell[Main](asp-net-web-pages-api-reference/samples/sample77.ps1)]
 
 ### `ModelStateDictionary.IsValid`
 
-如果沒有任何驗證錯誤，則傳回 true。 使用`ModelState`helper 來存取這個成員。
+如果不有任何驗證錯誤，則傳回 true。 使用`ModelState`存取這個成員的協助程式。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample78.cs)]
 
 ### `ObjectInfo.Print(value [, depth] [, enumerationLength])`
 
-呈現的屬性和值的物件和任何子物件。
+呈現的屬性和值的物件及任何子物件。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample79.css)]
 
@@ -546,7 +545,7 @@ ms.locfileid: "30897580"
 ### `ReCaptcha.PublicKey`  
  `ReCaptcha.PrivateKey`
 
-設定公用和私用的索引鍵 reCAPTCHA 服務。 在設定這些屬性通常 *\_AppStart*頁面。
+設定 reCAPTCHA 服務的公用和私用金鑰。 在設定這些屬性通常 *\_AppStart*頁面。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample81.css)]
 
@@ -564,7 +563,7 @@ ms.locfileid: "30897580"
 
 ### `Twitter.Profile(twitterUserName)`
 
-呈現 Twitter 資料流以供指定的使用者。
+呈現指定之使用者的 Twitter 資料流。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample84.js)]
 
@@ -576,19 +575,19 @@ ms.locfileid: "30897580"
 
 ### `Video.Flash(filename [, width, height])`
 
-會轉譯為選擇性的寬度和高度指定的檔案快閃影片播放器。
+呈現指定的檔案，以選擇性的寬度和高度的快閃視訊播放器。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample86.cshtml)]
 
 ### `Video.MediaPlayer(filename [, width, height])`
 
-呈現 Windows Media player 為選擇性的寬度和高度指定的檔案。
+呈現 Windows Media player 使用選擇性的寬度和高度指定的檔案。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample87.cshtml)]
 
 ### `Video.Silverlight(filename, width, height)`
 
-呈現指定 Silverlight 播放程式 *.xap*檔案所需的寬度和高度。
+呈現指定 Silverlight 播放機 *.xap*檔案所需的寬度和高度。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample88.cshtml)]
 
@@ -606,19 +605,19 @@ ms.locfileid: "30897580"
 
 ### `WebCache.Set(key, value [, minutesToCache] [, slidingExpiration])`
 
-將*值*到所指定的名稱下快取*金鑰*。
+將放*值*到所指定的名稱下快取*金鑰*。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample91.html)]
 
 ### `WebGrid(data)`
 
-建立新`WebGrid`物件使用中查詢的資料。
+建立新`WebGrid`物件使用來自查詢的資料。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample92.cs)]
 
 ### `WebGrid.GetHtml()`
 
-呈現標記，以 HTML 表格中顯示資料。
+呈現標記，以顯示 HTML 表格中的資料。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample93.html)]
 
@@ -630,32 +629,32 @@ ms.locfileid: "30897580"
 
 ### `WebImage(path)`
 
-從指定的路徑載入影像。
+從指定的路徑載入映像。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample95.cs)]
 
 ### `WebImage.AddImagesWatermark(image)`
 
-將指定的映像加入做為浮水印。
+將指定的影像，做為浮水印。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample96.cs)]
 
 ### `WebImage.AddTextWatermark(text)`
 
-將指定的文字加入至映像。
+將指定的文字新增至映像。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample97.cs)]
 
 ### `WebImage.FlipHorizontal()`  
 `WebImage.FlipVertical()`
 
-水平或垂直翻轉影像。
+翻轉影像，水平或垂直。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample98.css)]
 
 ### `WebImage.GetImageFromRequest()`
 
-映像檔案上傳期間張貼到網頁時，請載入影像。
+當映像時，會張貼至頁面上，在檔案上傳期間，請載入映像。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample99.cs)]
 
@@ -668,7 +667,7 @@ ms.locfileid: "30897580"
 ### `WebImage.RotateLeft()`  
 `WebImage.RotateRight()`
 
-旋轉影像到左邊或右邊。
+影像旋轉至左邊或右邊。
 
 [!code-css[Main](asp-net-web-pages-api-reference/samples/sample101.css)]
 
@@ -680,7 +679,7 @@ ms.locfileid: "30897580"
 
 ### `WebMail.Password`
 
-SMTP 伺服器設定的密碼。 在設定此屬性通常 *\_AppStart*頁面。
+設定 SMTP 伺服器的密碼。 在設定此屬性通常 *\_AppStart*頁面。
 
 [!code-csharp[Main](asp-net-web-pages-api-reference/samples/sample103.cs)]
 
@@ -699,7 +698,7 @@ SMTP 伺服器設定的密碼。 在設定此屬性通常 *\_AppStart*頁面。
 
 ### `WebMail.UserName`
 
-設定 SMTP 伺服器的使用者名稱。 您通常應該設定這個屬性 *\_AppStart*頁面。
+設定 SMTP 伺服器的使用者名稱。 通常您應該設定這個屬性 *\_AppStart*頁面。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample106.html)]
 
@@ -708,31 +707,31 @@ SMTP 伺服器設定的密碼。 在設定此屬性通常 *\_AppStart*頁面。
 
 ### `Html.ValidationMessage(field)`
 
-(v2)呈現指定欄位的驗證錯誤訊息。
+(v2)呈現指定之欄位的驗證錯誤訊息。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample107.cshtml)]
 
 ### `Html.ValidationSummary([message])`
 
-(v2)顯示所有驗證錯誤的清單。
+(v2)顯示所有的驗證錯誤的清單。
 
 [!code-cshtml[Main](asp-net-web-pages-api-reference/samples/sample108.cshtml)]
 
 ### `Validation.Add(field, validationType)`
 
-(v2)註冊指定類型的驗證使用者輸入項目。
+(v2)註冊指定的型別驗證的使用者輸入項目。
 
 [!code-javascript[Main](asp-net-web-pages-api-reference/samples/sample109.js)]
 
 ### `Validation.ClassFor(field)`
 
-(v2)動態呈現 CSS 類別屬性，用戶端驗證，如此您可以格式化驗證錯誤訊息。 （需要您參考適當的用戶端指令碼程式庫和您定義 CSS 類別）。
+(v2)動態呈現 CSS 類別屬性，用戶端驗證，如此您可以格式化驗證錯誤訊息。 （需要您參考適當的用戶端指令碼程式庫和您定義的 CSS 類別）。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample110.html)]
 
 ### `Validation.For(field)`
 
-(v2)可讓用戶端驗證的使用者輸入欄位。 （需要您參考適當的用戶端指令碼程式庫）。
+(v2)可讓使用者輸入欄位的用戶端驗證。 （需要您參考適當的用戶端指令碼程式庫）。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample111.html)]
 
@@ -750,7 +749,7 @@ SMTP 伺服器設定的密碼。 在設定此屬性通常 *\_AppStart*頁面。
 
 ### `Validation.RequireFields(field1[, field12, field3, ...])`
 
-(v2)指定使用者必須提供每個使用者輸入項目的值。 這個方法不會讓您指定的自訂錯誤訊息。
+(v2)指定使用者必須提供值，每個使用者輸入項目。 這個方法不會讓您指定自訂錯誤訊息。
 
 [!code-html[Main](asp-net-web-pages-api-reference/samples/sample114.html)]
 

@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control
-title: '[如何:]開始使用 ASP.NET AJAX 動畫擴充項控制項？ | Microsoft Docs'
+title: '[How Do i:]開始使用 ASP.NET AJAX 動畫擴充項控制項？ | Microsoft Docs'
 author: JoeStagner
-description: 這段影片從 ASP.NET AJAX Control Toolkit，適用於完整擴充性架構提供開發人員介紹動畫擴充項控制項...
+description: 這段影片中介紹從 ASP.NET AJAX Control Toolkit，開發人員提供完全可延伸的架構的動畫擴充項控制項...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2007
 ms.topic: article
 ms.assetid: 47f94a4c-9c95-4fc2-96e6-e7cc54b6784f
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control
 msc.type: video
-ms.openlocfilehash: aeb72c4df02575999e2e1e60bb8306c18e9543da
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 647bf970a364f8189e96272e5a4949fd94a34cd1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30880618"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37380567"
 ---
-<a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a>[如何:]開始使用 ASP.NET AJAX 動畫擴充項控制項？
+<a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a>[How Do i:]開始使用 ASP.NET AJAX 動畫擴充項控制項？
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
-這段影片將動畫加入至 ASP.NET Web 網頁開發人員提供完整擴充性架構與 ASP.NET AJAX Control Toolkit 從介紹動畫擴充項控制項。
+這段影片將介紹從 ASP.NET AJAX Control Toolkit，開發人員提供完全可延伸的架構，加入 ASP.NET 網頁中的動畫效果的動畫擴充項控制項。
 
 [&#9654;觀看影片 （20 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control)
 

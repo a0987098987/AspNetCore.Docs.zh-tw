@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/color-picker
-title: 色彩選擇器 |Microsoft 文件
+title: 色彩選擇器 |Microsoft Docs
 author: JoeStagner
 description: 這段影片將示範如何使用 Microsoft AJAX Control Toolkit 從新的色彩選擇器控制項。
 ms.author: aspnetcontent
@@ -9,25 +9,24 @@ ms.date: 05/13/2009
 ms.topic: article
 ms.assetid: 8f2cb811-d9d3-4a6a-a7d6-f2035cfe51e5
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/color-picker
 msc.type: video
-ms.openlocfilehash: d314fcd3053e8ab7eef8a21b8c17e6a30ce8c1a4
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 34e811d022f3e74e933ca3e9e47e35e8aac522ae
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30882721"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392645"
 ---
-<a name="color-picker"></a><span data-ttu-id="f4235-103">色彩選擇器</span><span class="sxs-lookup"><span data-stu-id="f4235-103">Color Picker</span></span>
+<a name="color-picker"></a><span data-ttu-id="caab4-103">色彩選擇器</span><span class="sxs-lookup"><span data-stu-id="caab4-103">Color Picker</span></span>
 ====================
-<span data-ttu-id="f4235-104">由[Joe stagner 以](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="f4235-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="caab4-104">藉由[Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="caab4-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="f4235-105">這段影片將示範如何使用 Microsoft AJAX Control Toolkit 從新的色彩選擇器控制項。</span><span class="sxs-lookup"><span data-stu-id="f4235-105">This video will demonstrate how to use the new Color Picker control from the Microsoft AJAX Control Toolkit.</span></span>
+<span data-ttu-id="caab4-105">這段影片將示範如何使用 Microsoft AJAX Control Toolkit 從新的色彩選擇器控制項。</span><span class="sxs-lookup"><span data-stu-id="caab4-105">This video will demonstrate how to use the new Color Picker control from the Microsoft AJAX Control Toolkit.</span></span>
 
-[<span data-ttu-id="f4235-106">&#9654;觀看影片 （9 分鐘）</span><span class="sxs-lookup"><span data-stu-id="f4235-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/color-picker)
+[<span data-ttu-id="caab4-106">&#9654;觀看影片 （9 分鐘）</span><span class="sxs-lookup"><span data-stu-id="caab4-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/color-picker)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="f4235-107">[上一頁](control-extenders.md)
-> [下一頁](combo-box.md)</span><span class="sxs-lookup"><span data-stu-id="f4235-107">[Previous](control-extenders.md)
+> <span data-ttu-id="caab4-107">[上一頁](control-extenders.md)
+> [下一頁](combo-box.md)</span><span class="sxs-lookup"><span data-stu-id="caab4-107">[Previous](control-extenders.md)
 [Next](combo-box.md)</span></span>

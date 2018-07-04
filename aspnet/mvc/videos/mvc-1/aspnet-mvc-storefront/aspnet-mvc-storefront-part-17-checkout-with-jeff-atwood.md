@@ -1,33 +1,32 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood
-title: ASP.NET MVC Storefront 一部分 17： 簽出與 Jeff Atwood |Microsoft 文件
+title: ASP.NET MVC 店面第 17： 與 Jeff atwood 一起檢查簽出 |Microsoft Docs
 author: robconery
-description: 在本集中我已準備註冊在結帳程序，並與自己，Jeff Atwood Mr.CodingHorror 交談。 我們會討論各種動作，但大部分討論 Ope...
+description: 在這一集我已準備註冊結帳程序，並洽詢 Mr.CodingHorror 自己，Jeff atwood 一起檢查。 我們會討論各種作業，但大部分討論 Ope...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
 ms.topic: article
 ms.assetid: a39182f9-a82c-41fa-9be0-92c2291a3a96
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood
 msc.type: video
-ms.openlocfilehash: ccb6b6bb76598c1aef2321e22eb0cfc2846f53a4
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3c5acf743757a088b22de63f5882e0b3f425c3c1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30867147"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365155"
 ---
-<a name="aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood"></a><span data-ttu-id="5a9a8-104">Jeff Atwood 與 ASP.NET MVC Storefront 一部分 17： 簽出</span><span class="sxs-lookup"><span data-stu-id="5a9a8-104">ASP.NET MVC Storefront Part 17: Checkout With Jeff Atwood</span></span>
+<a name="aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood"></a><span data-ttu-id="2b4a7-104">與 Jeff atwood 一起檢查 ASP.NET MVC 店面第 17： 簽出</span><span class="sxs-lookup"><span data-stu-id="2b4a7-104">ASP.NET MVC Storefront Part 17: Checkout With Jeff Atwood</span></span>
 ====================
-<span data-ttu-id="5a9a8-105">由[訛 Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="5a9a8-105">by [Rob Conery](https://github.com/robconery)</span></span>
+<span data-ttu-id="2b4a7-105">藉由[Rob Conery](https://github.com/robconery)</span><span class="sxs-lookup"><span data-stu-id="2b4a7-105">by [Rob Conery](https://github.com/robconery)</span></span>
 
-<span data-ttu-id="5a9a8-106">在本集中我已準備註冊在結帳程序，並與自己，Jeff Atwood Mr.CodingHorror 交談。</span><span class="sxs-lookup"><span data-stu-id="5a9a8-106">In this episode I ready up the checkout process and talk with Mr. CodingHorror himself, Jeff Atwood.</span></span> <span data-ttu-id="5a9a8-107">我們會討論各種動作，但大部分討論 Open ID、 CardSpace，及如何 Jeff 想要看到在結帳程序，在理想的世界中運作。</span><span class="sxs-lookup"><span data-stu-id="5a9a8-107">We talk about all kinds of things but mostly discuss Open ID, CardSpace, and how Jeff would like to see the checkout process work in an ideal world.</span></span> <span data-ttu-id="5a9a8-108">我然後逐步引導您設定 CardSpace 在您的本機電腦上。</span><span class="sxs-lookup"><span data-stu-id="5a9a8-108">I then walk you through setting up CardSpace on your local machine.</span></span>
+<span data-ttu-id="2b4a7-106">在這一集我已準備註冊結帳程序，並洽詢 Mr.CodingHorror 自己，Jeff atwood 一起檢查。</span><span class="sxs-lookup"><span data-stu-id="2b4a7-106">In this episode I ready up the checkout process and talk with Mr. CodingHorror himself, Jeff Atwood.</span></span> <span data-ttu-id="2b4a7-107">我們會討論各種作業，但主要討論 Open ID、 CardSpace 和 Jeff 希望如何查看簽出程序，在理想的世界中運作。</span><span class="sxs-lookup"><span data-stu-id="2b4a7-107">We talk about all kinds of things but mostly discuss Open ID, CardSpace, and how Jeff would like to see the checkout process work in an ideal world.</span></span> <span data-ttu-id="2b4a7-108">我再逐步引導您設定本機電腦上的 CardSpace。</span><span class="sxs-lookup"><span data-stu-id="2b4a7-108">I then walk you through setting up CardSpace on your local machine.</span></span>
 
-[<span data-ttu-id="5a9a8-109">&#9654;觀看影片 （34 分鐘內）</span><span class="sxs-lookup"><span data-stu-id="5a9a8-109">&#9654; Watch video (34 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood)
+[<span data-ttu-id="2b4a7-109">&#9654;觀看影片 （34 分鐘內）</span><span class="sxs-lookup"><span data-stu-id="2b4a7-109">&#9654; Watch video (34 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="5a9a8-110">[上一頁](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
-> [下一頁](aspnet-mvc-storefront-part-18-creating-an-experience.md)</span><span class="sxs-lookup"><span data-stu-id="5a9a8-110">[Previous](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
+> <span data-ttu-id="2b4a7-110">[上一頁](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
+> [下一頁](aspnet-mvc-storefront-part-18-creating-an-experience.md)</span><span class="sxs-lookup"><span data-stu-id="2b4a7-110">[Previous](aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
 [Next](aspnet-mvc-storefront-part-18-creating-an-experience.md)</span></span>

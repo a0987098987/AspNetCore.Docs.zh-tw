@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables193
-title: jQuery Datatable 1.9.3 放 |Microsoft 文件
+title: jQuery DataTables 1.9.3 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 90ba3e9a-ff80-4049-9ad4-08571cdf3880
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables193
 msc.type: content
-ms.openlocfilehash: 253ce2d0fd6bb417e256df86780945c720304a17
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 6e5d567fc1f76dbb93160b82244bbcbdc1b4a490
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "30074540"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365184"
 ---
-<a name="jquery-datatables-193"></a>jQuery Datatable 1.9.3 放
+<a name="jquery-datatables-193"></a>jQuery DataTables 1.9.3
 ====================
-JQuery Datatable 增益集的下列檔案被裝載於 CDN:
+下列適用於 jQuery DataTables 外掛程式檔案裝載在 CDN 上：
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.min.js

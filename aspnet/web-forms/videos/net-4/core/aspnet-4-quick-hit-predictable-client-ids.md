@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/net-4/core/aspnet-4-quick-hit-predictable-client-ids
-title: 可預測的用戶端 Id |Microsoft 文件
+title: 可預測的用戶端識別碼 |Microsoft Docs
 author: JoeStagner
 description: 在此影片中，您將了解 ClientIDMode 屬性，這可讓您指定更精確的用戶端識別碼產生方式的控制項。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 11/11/2009
 ms.topic: article
 ms.assetid: 1a5db019-2349-49fa-a750-53f8f26f94b3
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/core/aspnet-4-quick-hit-predictable-client-ids
 msc.type: video
-ms.openlocfilehash: ebcf97b03a11a4310016dbaed734aa007c016acf
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9b4fce981adb3a4db875d328d7670196a6a9ea22
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884752"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364513"
 ---
-<a name="aspnet-4-quick-hit---predictable-client-ids"></a>ASP.NET 4 」 快速 Hit"的可預測的用戶端識別碼
+<a name="aspnet-4-quick-hit---predictable-client-ids"></a>ASP.NET 4 」 快速 Hit"-可預測的用戶端識別碼
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
 在此影片中，您將了解 ClientIDMode 屬性，這可讓您指定更精確的用戶端識別碼產生方式的控制項。 
 

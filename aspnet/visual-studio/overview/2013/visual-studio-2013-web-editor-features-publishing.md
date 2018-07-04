@@ -1,6 +1,6 @@
 ---
 uid: visual-studio/overview/2013/visual-studio-2013-web-editor-features-publishing
-title: Visual Studio 2013 中 Web 編輯器功能-發佈 |Microsoft 文件
+title: Visual Studio 2013 Web 編輯器功能-發行 |Microsoft Docs
 author: shanselman
 description: Scott Hanselman 概觀 Visual Studio 2013 中的 web 發行功能。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: 27e27ef7-9c63-4e68-97e7-d943db68290f
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-editor-features-publishing
 msc.type: video
-ms.openlocfilehash: 8b26c3dd755f7dc2ef66003468b5d401ba035957
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ca4fefc1cc1f4e9e831b0cbb0a2fe74c9c1762c8
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506597"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378108"
 ---
-<a name="visual-studio-2013-web-editor-features---publishing"></a>Visual Studio 2013 中 Web 編輯器功能-發行
+<a name="visual-studio-2013-web-editor-features---publishing"></a>Visual Studio 2013 Web 編輯器功能-發佈
 ====================
-由[Scott Hanselman](https://github.com/shanselman)
+藉由[Scott Hanselman](https://github.com/shanselman)
 
 Scott Hanselman 概觀 Visual Studio 2013 中的 web 發行功能。
 

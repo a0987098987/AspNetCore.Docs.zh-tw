@@ -16,7 +16,7 @@ ms.locfileid: "36274423"
 
 ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使用者帳戶 」 選項。
 
-驗證範本可用於使用.NET 核心 CLI `-au Individual`:
+驗證範本可用於使用.NET Core CLI `-au Individual`:
 
 ::: moniker range=">= aspnetcore-2.1"
 

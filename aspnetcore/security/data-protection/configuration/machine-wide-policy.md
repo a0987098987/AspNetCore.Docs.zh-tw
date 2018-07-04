@@ -68,4 +68,4 @@ Windows 上執行時，資料保護系統具有有限的支援設定預設的全
 如果 EncryptionType null 以外的任何其他值或空的資料保護系統會擲回例外狀況在啟動時。
 
 > [!WARNING]
-> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用的應用程式。 這表示，如桌面 CLR 上執行的應用程式，包含這些類型的組件應會出現在全域組件快取 (GAC) 中。 針對.NET 核心上執行的 ASP.NET Core 應用程式，應安裝包含這些類型的封裝。
+> 時設定預設原則設定，包括 EncryptionAlgorithmType、 ValidationAlgorithmType （KeyEscrowSinks） 的型別名稱，類型必須是可用的應用程式。 這表示，如桌面 CLR 上執行的應用程式，包含這些類型的組件應會出現在全域組件快取 (GAC) 中。 針對.NET Core 上執行的 ASP.NET Core 應用程式，應安裝包含這些類型的封裝。

@@ -198,7 +198,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 ## <a name="routing-helpers"></a>路由的協助程式
 
-在大部分的 ASP.NET 核心 SPAs，您需要路由除了路由伺服器端的用戶端。 SPA 和 MVC 路由系統可以不受干擾的獨立工作。 不過，一個邊緣案例一起集思廣益面臨的挑戰，是： 識別 404 HTTP 回應。
+在大部分的 ASP.NET Core SPAs，您需要路由除了路由伺服器端的用戶端。 SPA 和 MVC 路由系統可以不受干擾的獨立工作。 不過，一個邊緣案例一起集思廣益面臨的挑戰，是： 識別 404 HTTP 回應。
 
 請考慮案例，其中無副檔名的路由`/some/page`用。 假設要求不會對伺服器端路由，但它的模式比對用戶端路由。 現在請思考一下的連入要求`/images/user-512.png`，這通常會預期找到映像檔在伺服器上的。 如果該要求的資源路徑不符合任何伺服器端路由或靜態檔案，也不太可能用戶端應用程式會處理它，您通常想要傳回 404 HTTP 狀態碼。
 

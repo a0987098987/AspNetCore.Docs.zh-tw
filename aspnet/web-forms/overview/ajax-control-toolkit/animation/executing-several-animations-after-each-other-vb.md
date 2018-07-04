@@ -1,65 +1,64 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
-title: 之後彼此 (VB) 中執行數個動畫 |Microsoft 文件
+title: 執行數個動畫之後彼此 (VB) |Microsoft Docs
 author: wenz
-description: 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa...
+description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行 severa...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 21ece509-79cc-4d9d-892d-7b6e9c4d3502
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 700946b9f32c5ed2dcb8586e7c0e84d2238ff103
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0d9e1ce0c156752ce0e97b91f253ced26360a721
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30873754"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364749"
 ---
-<a name="executing-several-animations-after-each-other-vb"></a>之後彼此 (VB) 中執行數個動畫
+<a name="executing-several-animations-after-each-other-vb"></a>執行數個動畫之後彼此 (VB)
 ====================
-由[Christian Wenz](https://github.com/wenz)
+藉由[Christian Wenz](https://github.com/wenz)
 
 [下載程式碼](http://download.microsoft.com/download/f/9/a/f9a26acd-8df4-4484-8a18-199e4598f411/Animation3.vb.zip)或[下載 PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/animation3VB.pdf)
 
-> 動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行數個動畫一個接著一個。
+> 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行數個動畫一個接著一個。
 
 
 ## <a name="overview"></a>總覽
 
-動畫控制項在 ASP.NET AJAX Control Toolkit 不是只控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行數個動畫一個接著一個。
+動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 它可讓執行數個動畫一個接著一個。
 
 ## <a name="steps"></a>步驟
 
-首先，包括`ScriptManager`在頁面; 然後，ASP.NET AJAX 程式庫載入，因此您能夠使用控制項的工具組：
+首先，包括`ScriptManager`單元頁面; 然後，ASP.NET AJAX 程式庫載入，因此能夠使用控制項工具組：
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample1.aspx)]
 
-動畫會套用到面板中的文字看起來像這樣：
+動畫將會套用至面板的文字看起來像這樣：
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample2.aspx)]
 
-在 [面板] 中相關聯的 CSS 類別，定義好的背景色彩，也將面板固定的寬度設定：
+在 [面板] 中相關聯的 CSS 類別，定義好用的背景色彩和也設定面板的固定的寬度：
 
 [!code-css[Main](executing-several-animations-after-each-other-vb/samples/sample3.css)]
 
-接著，新增`AnimationExtender`到頁面上，提供`ID`、`TargetControlID`屬性和必要 `runat="server":`
+然後，新增`AnimationExtender` 頁面上，以提供`ID`，則`TargetControlID`屬性和必要 `runat="server":`
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample4.aspx)]
 
-內`<Animations>`節點，請使用`<OnLoad>`頁面已完全載入後，執行動畫。 一般而言，`<OnLoad>`只接受一個動畫。 動畫架構可讓您加入到另一種使用數個動畫`<Sequence>`項目。 中的所有動畫`<Sequence>`會執行的一個接著一個。 以下是可能的標記為`AnimationExtender`控制項第一次進行更多面板，並再降低其高度：
+內`<Animations>`節點，請使用`<OnLoad>`頁面完全載入後，執行動畫。 一般而言，`<OnLoad>`只接受一個動畫。 動畫架構可讓您加入到另一種使用數個動畫`<Sequence>`項目。 中的所有動畫`<Sequence>`會執行的一個接著一個。 以下是可能的標記如`AnimationExtender`控制項，第一次進行更多面板，並再降低其高度：
 
 [!code-aspx[Main](executing-several-animations-after-each-other-vb/samples/sample5.aspx)]
 
-當您執行此指令碼，將 [面板] 中第一次取得較寬且然後較小。
+當您執行此指令碼，面板寬度，然後較小的第一次取得。
 
 
-[![寬度會增加第一次](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
+[![寬度增加的第一次](executing-several-animations-after-each-other-vb/_static/image2.png)](executing-several-animations-after-each-other-vb/_static/image1.png)
 
-寬度會增加第一次 ([按一下以檢視完整大小的影像](executing-several-animations-after-each-other-vb/_static/image3.png))
+寬度增加的第一次 ([按一下以檢視完整大小的影像](executing-several-animations-after-each-other-vb/_static/image3.png))
 
 
 [![然後就會減少高度](executing-several-animations-after-each-other-vb/_static/image5.png)](executing-several-animations-after-each-other-vb/_static/image4.png)

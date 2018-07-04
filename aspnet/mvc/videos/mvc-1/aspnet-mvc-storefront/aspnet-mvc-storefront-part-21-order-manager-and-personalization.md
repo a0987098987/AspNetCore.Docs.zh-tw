@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization
-title: ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化 |Microsoft 文件
+title: ASP.NET MVC 店面第 21 節： 訂單管理員及個人化 |Microsoft Docs
 author: robconery
-description: 在本集中我建立訂單管理員頁面，並討論 「 訂單履行 」 與相關的各種問題。 此外在介紹個人化功能...
+description: 在本節目中我會建立訂單管理員頁面，並討論與 「 訂單履行 」 相關的各種問題。 此外，我會介紹個人化功能...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
 ms.topic: article
 ms.assetid: f1490fdc-ee7d-4fee-a4e5-25d141d88478
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization
 msc.type: video
-ms.openlocfilehash: 31027dbede77e1b14509ac321a4e73a89486627f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: c0f135fc677345d22be719e96d8e3083faf55915
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30878473"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37391456"
 ---
-<a name="aspnet-mvc-storefront-part-21-order-manager-and-personalization"></a>ASP.NET MVC Storefront 一部分 21： 訂單管理員及個人化
+<a name="aspnet-mvc-storefront-part-21-order-manager-and-personalization"></a>ASP.NET MVC 店面第 21 節： 訂單管理員及個人化
 ====================
-由[訛 Conery](https://github.com/robconery)
+藉由[Rob Conery](https://github.com/robconery)
 
-在本集中我建立訂單管理員頁面，並討論 「 訂單履行 」 與相關的各種問題。 此外在介紹個人化功能，讓使用者更好記的體驗。
+在本節目中我會建立訂單管理員頁面，並討論與 「 訂單履行 」 相關的各種問題。 此外，我會介紹，讓使用者更易記的體驗個人化功能。
 
 [&#9654;觀看影片 （43 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-21-order-manager-and-personalization)
 

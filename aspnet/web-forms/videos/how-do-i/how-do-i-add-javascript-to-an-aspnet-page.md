@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
-title: '[如何:]將 JavaScript 新增至 ASP.NET 網頁 |Microsoft 文件'
+title: '[How Do i:]將 JavaScript 新增至 ASP.NET 網頁 |Microsoft Docs'
 author: rick-anderson
-description: 在這段影片 Chris Pels 會顯示如何在用戶端頁面以提供更豐富且更穩固的使用者體驗上使用 ASP.NET 頁面包含 JavaScript...
+description: 在這段影片 Chris Pels 將顯示如何將 JavaScript 加入至用於用戶端頁面中，以提供更豐富且更穩固的使用者經驗的 ASP.NET 頁面...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/13/2008
 ms.topic: article
 ms.assetid: 55439d0f-e555-4537-97f3-0a7bc0a4bf5b
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
 msc.type: video
-ms.openlocfilehash: b75fca1153c7e13532780ed56717d551b2a67453
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 54742dbac5663e704db3eecbae0bfbc7151c356b
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525547"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37364584"
 ---
-<a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[如何:]將 JavaScript 新增至 ASP.NET 網頁
+<a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[How Do i:]將 JavaScript 新增至 ASP.NET 網頁
 ====================
-由[Chris Pels](https://twitter.com/chrispels)
+藉由[Chris Pels](https://twitter.com/chrispels)
 
-在這段影片 Chris Pels 會顯示如何加入 JavaScript 用戶端頁面以提供更豐富且更穩固的使用者體驗上使用 ASP.NET 頁面。 首先，請參閱如何直接在 ASP.NET 網頁中包含 JavaScript，並參考從指令碼，在 HTML 頁面項目內。 接下來，請參閱如何抽象 JavaScript 的瀏覽器快取的優點，並可供多個頁面的外部 JavaScript 檔案。 最後，了解如何將 JavaScript 新增至網頁以動態方式在執行階段的優點是可以包括指令碼在特定情況下的，或不到執行階段才知道資訊，例如控制項 ID。 動態指令碼的一部分範例，請參閱如何將可以在載入頁面，以及 （按鈕、 LinkButton 和 ImageButton） 的按鈕控制項的 click 事件時自動執行的 JavaScript。
+在這段影片中 Chris Pels 將示範如何將 JavaScript 加入至用於用戶端頁面中，以提供更豐富且更穩固的使用者經驗的 ASP.NET 頁面。 首先，請參閱如何直接在 ASP.NET 網頁內包含 JavaScript，並參考 HTML 頁面項目中的指令碼。 接下來，請參閱如何抽象的 JavaScript 的瀏覽器快取的優點，並可供多個頁面的外部 JavaScript 檔案。 最後，了解如何將 JavaScript 新增至頁面以動態方式在執行階段，其具有的優點包括為特定狀況的指令碼，或不到執行階段才知道等的控制項識別碼的資訊。 動態指令碼範例，請參閱 < 如何新增可在按鈕控制項 （按鈕，LinkButton、 ImageButton） 的 click 事件以及載入頁面時自動執行的 JavaScript。
 
 [&#9654;觀看影片 （24 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-add-javascript-to-an-aspnet-page)

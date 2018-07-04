@@ -1,27 +1,26 @@
 ---
 uid: web-forms/videos/aspnet-web-forms-vnext/aspnet-45-web-forms-strong-typed-data-controls
-title: ASP.NET 4.5 Web Form 強式型別資料控制項 |Microsoft 文件
+title: ASP.NET 4.5 Web Form 強型別資料控制項 |Microsoft Docs
 author: shanselman
-description: Scott Hanselman 示範新 ASP.NET 4.5 Web Form 強式型別資料的控制項。
+description: Scott Hanselman 示範新 ASP.NET 4.5 Web Form 強型別資料控制項。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
 ms.topic: article
 ms.assetid: 9fe1858e-23a1-4cd8-aa69-6eadbb249612
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext/aspnet-45-web-forms-strong-typed-data-controls
 msc.type: video
-ms.openlocfilehash: 040bf8abbc23bb5af581e33353180960fa1f93f3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3a53d721fa9e5516229e1cf2832438a935fca480
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884050"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381178"
 ---
-<a name="aspnet-45-web-forms-strong-typed-data-controls"></a>ASP.NET 4.5 Web Form 強式型別資料控制項
+<a name="aspnet-45-web-forms-strong-typed-data-controls"></a>ASP.NET 4.5 Web Form 強型別資料控制項
 ====================
-由[Scott Hanselman](https://github.com/shanselman)
+藉由[Scott Hanselman](https://github.com/shanselman)
 
 [&#9654;觀看影片 （4 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-45-web-forms-strong-typed-data-controls)
 

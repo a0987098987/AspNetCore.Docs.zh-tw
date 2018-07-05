@@ -4,19 +4,16 @@ title: '[How Do i:]實作自訂的健康監視事件 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 將示範如何建立自訂的狀況監控會擴充標準的健康情況監視在 ASP.NET 中的事件的事件。 自訂 pro 中...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/17/2007
-ms.topic: article
 ms.assetid: 5fa365a1-d709-40e2-b7bf-489ff687f2ce
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
 msc.type: video
-ms.openlocfilehash: 2818a6781c753def18d489bd31806a6c02a5b708
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 161ed55459f5aaf93f6418bd4beeda98cbb464ff
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396158"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828776"
 ---
 <a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[How Do i:]實作自訂的健康監視事件
 ====================

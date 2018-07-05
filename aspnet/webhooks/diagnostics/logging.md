@@ -4,17 +4,14 @@ title: ASP.NET Webhook 記錄 |Microsoft Docs
 author: rick-anderson
 description: 如何登入 ASP.NET Webhook。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/17/2012
-ms.topic: article
 ms.assetid: f71bc442-5f80-481b-a32c-a0ec18dee9d6
-ms.technology: ''
-ms.openlocfilehash: 5501d250ea6dd86c0cfddec8d9941ec16b4f57ba
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 65e4d49474034406be835eb31378c81ba0706da3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364102"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828451"
 ---
 # <a name="aspnet-webhooks-logging"></a>ASP.NET Webhook 記錄
 

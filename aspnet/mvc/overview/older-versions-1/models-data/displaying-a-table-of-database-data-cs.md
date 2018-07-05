@@ -4,19 +4,16 @@ title: 顯示資料表的資料庫資料 (C#) |Microsoft Docs
 author: microsoft
 description: 在本教學課程中，我會示範兩種方法可以顯示一組資料庫記錄。 我會示範兩種格式的一組資料庫記錄，在 HTML ta...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: d6e758b6-6571-484d-a132-34ee6c47747a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06dc5c9398adb45d5a5ff8f57ff42816c983ee04
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8409df940e0b5276c4f108531423aadeb2545ca3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395976"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828175"
 ---
 <a name="displaying-a-table-of-database-data-c"></a>顯示資料表的資料庫資料 (C#)
 ====================

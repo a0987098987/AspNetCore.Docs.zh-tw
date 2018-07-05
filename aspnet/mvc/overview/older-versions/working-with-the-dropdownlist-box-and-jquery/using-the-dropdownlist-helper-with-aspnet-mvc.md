@@ -4,19 +4,16 @@ title: 使用 DropDownList 協助程式搭配 ASP.NET MVC |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2012
-ms.topic: article
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 6c55f37fc74c2aa1c9867abd8c281c88ee36fb92
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9f16c01515bde80d3994618d26818c2d93f69d87
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365746"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828373"
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>使用 DropDownList 協助程式搭配 ASP.NET MVC
 ====================

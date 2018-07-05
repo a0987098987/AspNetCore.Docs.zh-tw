@@ -13,7 +13,7 @@ msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-
 msc.type: authoredcontent
 ms.openlocfilehash: 56c1a5c414fdcece8d827d1187144b4948d8eb93
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37387039"

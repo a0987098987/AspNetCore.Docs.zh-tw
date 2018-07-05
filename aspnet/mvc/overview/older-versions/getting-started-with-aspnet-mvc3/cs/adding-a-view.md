@@ -13,7 +13,7 @@ msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/
 msc.type: authoredcontent
 ms.openlocfilehash: e9496f801024bd2d4a135eefbb79b162017197b7
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37366212"

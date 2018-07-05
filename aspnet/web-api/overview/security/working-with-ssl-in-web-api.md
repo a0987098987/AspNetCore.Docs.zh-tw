@@ -13,7 +13,7 @@ msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 4e14607f11fcd376b4ceca4bf7862259abe015e6
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37396626"

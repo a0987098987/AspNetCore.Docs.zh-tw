@@ -13,7 +13,7 @@ msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-serv
 msc.type: authoredcontent
 ms.openlocfilehash: bcaff2f371c757bc819bc44b9b3bd296b085a688
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37380029"

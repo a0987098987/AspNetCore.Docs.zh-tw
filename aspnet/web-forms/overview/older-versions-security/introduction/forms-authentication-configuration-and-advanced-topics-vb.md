@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-au
 msc.type: authoredcontent
 ms.openlocfilehash: 493cb81271ea1c0439f7b499c5b48e659d3589b5
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37390857"

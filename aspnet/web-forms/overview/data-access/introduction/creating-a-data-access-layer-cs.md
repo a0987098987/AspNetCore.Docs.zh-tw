@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-acce
 msc.type: authoredcontent
 ms.openlocfilehash: 3e124edc137db8444c687092f33db7e03aaeb179
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37398316"

@@ -13,7 +13,7 @@ msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service
 msc.type: authoredcontent
 ms.openlocfilehash: a9e5d59c1b9120a32fabe55b4864d861040bcd67
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37369146"

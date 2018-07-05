@@ -13,7 +13,7 @@ msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-
 msc.type: authoredcontent
 ms.openlocfilehash: c6fa7692527b7aa65e93cd57ed5bd56f42e54bd6
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37373483"

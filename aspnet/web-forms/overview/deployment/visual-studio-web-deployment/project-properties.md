@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/proje
 msc.type: authoredcontent
 ms.openlocfilehash: 48f2d5066986860b657d5608bd32fcfc9b6a1eda
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37365882"

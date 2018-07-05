@@ -13,7 +13,7 @@ msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-c
 msc.type: authoredcontent
 ms.openlocfilehash: 63a0e4f4f61580ea9da3bd491e7a45f20cd7aaae
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37370535"

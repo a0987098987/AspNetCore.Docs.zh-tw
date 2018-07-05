@@ -13,7 +13,7 @@ msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
 ms.openlocfilehash: 715990e2d7151ad1ce8288169ef4bdd5c4243369
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37367240"

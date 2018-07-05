@@ -13,7 +13,7 @@ msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports
 msc.type: authoredcontent
 ms.openlocfilehash: 1658e120225cd3c9425168238981133c96ff398a
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37402924"

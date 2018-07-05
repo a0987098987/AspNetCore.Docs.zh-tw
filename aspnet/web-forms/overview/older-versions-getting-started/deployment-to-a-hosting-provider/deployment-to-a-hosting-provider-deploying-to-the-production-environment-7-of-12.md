@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-
 msc.type: authoredcontent
 ms.openlocfilehash: 26a832fd336f886ba1ddfb1682930afa4df56c58
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37383632"

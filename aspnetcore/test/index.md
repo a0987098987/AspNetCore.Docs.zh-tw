@@ -4,14 +4,14 @@ author: guardrex
 description: 可連結至 ASP.NET Core 應用程式的測試和偵錯資源。
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/13/2018
+ms.date: 07/03/2018
 uid: test/index
-ms.openlocfilehash: c5925d55a1b7d50d44d6bea4013331416ce3cec8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 20f6804c1db588a88abb0d5686f894b7463ff6a9
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278797"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433957"
 ---
 # <a name="test-debug-and-troubleshoot-in-aspnet-core"></a>在 ASP.NET Core 中測試、偵錯和疑難排解
 
@@ -31,14 +31,20 @@ ms.locfileid: "36278797"
 
 ## <a name="debug"></a>偵錯
 
+[了解使用 Visual Studio 進行偵錯](/visualstudio/debugger/getting-started-with-the-debugger)  
+在逐步解說中探索 Visual Studio 偵錯工具的功能。
+
+[使用 Visual Studio Code 進行偵錯](https://code.visualstudio.com/docs/editor/debugging) \(英文\)  
+了解 Visual Studio Code 中內建的偵錯支援。
+
 [偵錯 ASP.NET Core 2.x 原始檔](https://github.com/aspnet/Docs/issues/4155)  
 了解如何偵錯 .NET Core 與 ASP.NET Core 來源。
 
 [遠端偵錯](/visualstudio/debugger/remote-debugging-azure)  
-了解如何安裝和設定 Visual Studio 2017 ASP.NET Core 應用程式，使用 Azure 將它部署到 IIS，並從 Visual Studio 附加遠端偵錯工具。
+探索如何安裝和設定 Visual Studio 2017 ASP.NET Core 應用程式、使用 Azure 將之部署到 IIS，以及從 Visual Studio 附加遠端偵錯工具。
 
 [快照集偵錯](/azure/application-insights/app-insights-snapshot-debugger)  
-了解如何在前幾個擲回的例外狀況上收集快照集，以便取得診斷生產環境中問題所需的資訊。
+了解如何在最常擲回的例外狀況上收集快照集，以便取得診斷生產環境中問題所需的資訊。
 
 ## <a name="troubleshoot"></a>疑難排解
 

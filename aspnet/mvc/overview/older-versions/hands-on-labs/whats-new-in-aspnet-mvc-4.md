@@ -13,7 +13,7 @@ msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mv
 msc.type: authoredcontent
 ms.openlocfilehash: 8862c4da0d881a6f1084317e08697354c0ae6d48
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37374100"

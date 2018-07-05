@@ -4,19 +4,16 @@ title: 批次更新 (C#) |Microsoft Docs
 author: rick-anderson
 description: 了解如何更新單一作業中的多個資料庫記錄。 在使用者介面層，我們會建置的 GridView，其中每個資料列都可以讓您編輯。 在資料...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 4e849bcc-c557-4bc3-937e-f7453ee87265
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bd8a8f4bc56867da1668fda32b42efcf3a629cdf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0cb55689ac3a6dc36ed18459ecece82ff0b073b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366802"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842188"
 ---
 <a name="batch-updating-c"></a>批次更新 (C#)
 ====================

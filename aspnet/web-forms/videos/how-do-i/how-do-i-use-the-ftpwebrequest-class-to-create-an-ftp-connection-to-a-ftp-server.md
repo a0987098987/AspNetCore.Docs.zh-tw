@@ -4,19 +4,16 @@ title: '[How Do i:]使用 FtpWebRequest 類別建立到 FTP 伺服器的 FTP 連
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何使用 FtpWebRequest 類別建立 FTP 連線，並將檔案傳輸。 首先，建立簡單的.aspx 表單，以選取...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/18/2008
-ms.topic: article
 ms.assetid: 99a0394d-96aa-445c-a338-43961cc717e8
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server
 msc.type: video
-ms.openlocfilehash: 67e43238708fbb08e20b7e45962fcc2f587c9d5d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ca465d54024bc26addb7451440c00e9c7ece14e4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393739"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37801879"
 ---
 <a name="how-do-i-use-the-ftpwebrequest-class-to-create-an-ftp-connection-to-a-ftp-server"></a>[How Do i:]使用 FtpWebRequest 類別建立到 FTP 伺服器的 FTP 連線
 ====================

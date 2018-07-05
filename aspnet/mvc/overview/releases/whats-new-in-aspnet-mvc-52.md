@@ -4,19 +4,16 @@ title: 什麼是 ASP.NET MVC 5.2 的新功能 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/25/2014
-ms.topic: article
 ms.assetid: 97972587-2720-48b4-b158-f35f2e855fbf
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/releases/whats-new-in-aspnet-mvc-52
 msc.type: authoredcontent
-ms.openlocfilehash: bcffaa9fddfb13db0b7bd203029e850903a13a54
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 76e1c13453c45a1b8ca71dd6435dcbfbd8bec66d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389946"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37801537"
 ---
 <a name="whats-new-in-aspnet-mvc-52"></a>什麼是 ASP.NET MVC 5.2 的新功能
 ====================

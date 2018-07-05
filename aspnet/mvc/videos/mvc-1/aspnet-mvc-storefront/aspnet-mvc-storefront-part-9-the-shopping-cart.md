@@ -4,19 +4,16 @@ title: ASP.NET MVC 店面第 9 節： 購物車 |Microsoft Docs
 author: robconery
 description: Rob Conery cooks 簡單購物車系統，讓他可以突然增加。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/27/2008
-ms.topic: article
 ms.assetid: 47d8a6e3-21de-4ac9-be5a-9f755c596529
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: 3f4dfdef2ba0b4b6eca4cb30fe2f645d96c8a0d7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a90885ba777c134f8b1da29d8f4cb18e405a8219
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389356"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814578"
 ---
 <a name="aspnet-mvc-storefront-part-9-the-shopping-cart"></a>ASP.NET MVC 店面第 9 節： 購物車
 ====================

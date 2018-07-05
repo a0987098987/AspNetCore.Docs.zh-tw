@@ -4,19 +4,16 @@ title: 設定使用應用程式服務 (VB) 的網站 |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 2.0 版引進了一系列的應用程式服務，這是.NET framework 的一部分，並且做為建置組塊一套服務 yo...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/23/2009
-ms.topic: article
 ms.assetid: 9c31a42f-d8bb-4c0f-9ccc-597d4f70ac42
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 69c8bb4061c2ed7fcc44038aa3bf0268ac86c9ab
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6d4852fe4a8589ddcb23c7afa4ed5c5e74ef0af1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387490"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841688"
 ---
 <a name="configuring-a-website-that-uses-application-services-vb"></a>設定網站使用應用程式服務 (VB)
 ====================

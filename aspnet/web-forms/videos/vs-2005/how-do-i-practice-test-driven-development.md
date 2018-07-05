@@ -4,19 +4,16 @@ title: '[How Do i:]測試導向開發實務嗎？ | Microsoft Docs'
 author: rick-anderson
 description: Visual Studio Team System 提供的練習測試導向開發，以及這段影片中我們了解如何 Team System 的測試功能所需的工具...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/21/2007
-ms.topic: article
 ms.assetid: 60b10049-ca02-4830-b3ce-83e9584511d0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-practice-test-driven-development
 msc.type: video
-ms.openlocfilehash: 725a9c6c6fa17a2b1a9848172fc63ea241886605
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c2e13eef647c4e491a08c506be7efe5582fa6bba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400391"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842126"
 ---
 <a name="how-do-i-practice-test-driven-development"></a>[How Do i:]測試導向開發實務嗎？
 ====================

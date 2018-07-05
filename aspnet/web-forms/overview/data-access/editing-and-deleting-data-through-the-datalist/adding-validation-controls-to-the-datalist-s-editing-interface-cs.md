@@ -4,19 +4,16 @@ title: 將驗證控制項新增至 DataList 的編輯介面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會看到以提供更萬無一失的編輯使用者 int 時，將驗證控制項新增至 DataList 的 EditItemTemplate 是多麼...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: 3ecc21c5-da0e-40ab-abb4-fac1e47398ad
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 23b7a0a4fd5786d5bbc2905022a76dfc048d44bf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8a9fe298b7b9cc9fadc4dfd131a7a61d6029da04
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389941"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842701"
 ---
 <a name="adding-validation-controls-to-the-datalists-editing-interface-c"></a>將驗證控制項新增至 DataList 的編輯介面 (C#)
 ====================

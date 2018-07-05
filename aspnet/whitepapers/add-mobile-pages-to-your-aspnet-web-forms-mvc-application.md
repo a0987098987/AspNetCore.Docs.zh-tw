@@ -13,7 +13,7 @@ msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-applic
 msc.type: content
 ms.openlocfilehash: 075329087cb5e07d85bba0c546538e7cc55ac463
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37366753"

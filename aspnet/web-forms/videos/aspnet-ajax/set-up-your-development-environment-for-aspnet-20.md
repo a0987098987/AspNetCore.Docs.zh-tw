@@ -4,19 +4,16 @@ title: Asp.net 2.0 設定開發環境 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解如何設定您的開發環境來開發 ASP.NET AJAX 應用程式，如果您的目標 ASP.NET 2.0。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/13/2009
-ms.topic: article
 ms.assetid: 9cf05d32-6c0e-487a-89da-7ef42666c0a3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/set-up-your-development-environment-for-aspnet-20
 msc.type: video
-ms.openlocfilehash: b2689ea8ad2ee1ec37ccd668b80016140049f8c7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: caa885f2be964f5b428e077aad59bef4acd734dc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379685"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37801603"
 ---
 <a name="set-up-your-development-environment-for-aspnet-20"></a>Asp.net 2.0 設定開發環境
 ====================

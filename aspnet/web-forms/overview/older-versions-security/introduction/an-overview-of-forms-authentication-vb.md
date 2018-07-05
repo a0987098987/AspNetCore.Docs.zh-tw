@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overv
 msc.type: authoredcontent
 ms.openlocfilehash: df8b0595cbc02a99a39c5b39be9ddb2e92bc34aa
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37385887"

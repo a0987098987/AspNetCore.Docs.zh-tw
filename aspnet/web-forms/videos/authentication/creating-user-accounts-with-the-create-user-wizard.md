@@ -4,19 +4,16 @@ title: 建立具有使用者帳戶建立使用者精靈 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，Joe Stagner 會示範如何使用隨附的登入控制項組，在 ASP.NET 和 Visual Studio 中建立使用者精靈 建立使用者。 F...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2008
-ms.topic: article
 ms.assetid: fe023ad0-a25e-48e6-a43a-304e113f1fca
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/creating-user-accounts-with-the-create-user-wizard
 msc.type: video
-ms.openlocfilehash: f78737238679075d049e40dc0222e80803689a22
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 992e5488e5586416a3f9079f98de14e825cefef7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397062"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842292"
 ---
 <a name="creating-user-accounts-with-the-create-user-wizard"></a>建立具有使用者帳戶建立使用者精靈
 ====================

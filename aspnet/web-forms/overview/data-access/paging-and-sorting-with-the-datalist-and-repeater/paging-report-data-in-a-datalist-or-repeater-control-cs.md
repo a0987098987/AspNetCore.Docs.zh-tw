@@ -4,19 +4,16 @@ title: 分頁報表資料 DataList 或 Repeater 控制項 (C#) |Microsoft Docs
 author: rick-anderson
 description: 當收錄 DataList 或 Repeater 的供應項目自動分頁或排序支援，本教學課程會示範如何將分頁支援新增至 DataList 或 Repeater...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/13/2006
-ms.topic: article
 ms.assetid: e8e0809b-25c4-4c3b-8d12-9a17048148ae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f77c4f781ee6001cea065d848f0a21a6cd4d7569
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 90df9c096b5411201da35b7076fdd3cd9b1f86d1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401931"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842315"
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-c"></a>DataList 或 Repeater 控制項 (C#) 中的分頁報表資料
 ====================

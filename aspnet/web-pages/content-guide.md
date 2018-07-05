@@ -4,19 +4,16 @@ title: WebMatrix 內容指南 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/13/2011
-ms.topic: article
 ms.assetid: b558e481-775a-4aa0-bd3b-ad61e530c2d2
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/content-guide
 msc.type: content
-ms.openlocfilehash: cb057d407d5a613ba45acc3e2835c6a9df0c7e09
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 212c100c17eab8f771b83f14164e9502037e866b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380424"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842820"
 ---
 <a name="webmatrix-content-guide"></a>WebMatrix 內容指南
 ====================

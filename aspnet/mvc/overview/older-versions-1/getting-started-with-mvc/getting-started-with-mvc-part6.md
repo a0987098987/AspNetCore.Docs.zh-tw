@@ -1,70 +1,69 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
-title: 加入建立方法，並建立檢視 |Microsoft 文件
+title: 新增 Create 方法和 Create 檢視 |Microsoft Docs
 author: shanselman
-description: 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 建立簡單的 web 應用程式可讀取和寫入資料庫中。
+description: 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
 ms.topic: article
 ms.assetid: a3a90963-0286-4fa0-9b3d-c230cc18b0a3
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 48e656a0c394b9db5baaec9c557ec38c4020d41b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 976df78ea22c30c094f70a57792d287f15d2c62d
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2018
-ms.locfileid: "30867979"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400904"
 ---
-<a name="adding-a-create-method-and-create-view"></a>加入建立方法，並建立檢視
+<a name="adding-a-create-method-and-create-view"></a>新增 Create 方法和 Create 檢視
 ====================
-由[Scott Hanselman](https://github.com/shanselman)
+藉由[Scott Hanselman](https://github.com/shanselman)
 
-> 這是初學者教學課程介紹基本概念的 ASP.NET MVC。 您將建立簡單的 web 應用程式可讀取和寫入資料庫中。 請瀏覽[ASP.NET MVC 學習中心](../../../index.md)教學課程和範例，請尋找其他 ASP.NET MVC。
+> 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 您將建立簡單 web 應用程式，從資料庫讀取與寫入。 請瀏覽[ASP.NET MVC 學習中心](../../../index.md)來尋找其他 ASP.NET MVC 教學課程和範例。
 
 
-本節中，我們即將實作需要讓使用者在資料庫中建立新的電影的支援。 藉由實作電影/建立 URL 動作，我們會執行這項操作。
+在這一節我們即將實作，讓使用者可以在資料庫中建立新的影片所需的支援。 我們會實作電影/建立 URL 動作。
 
-實作電影/建立 URL 是兩個步驟的程序。 當使用者第一次造訪電影/建立 URL 我們想要顯示它們可以填寫輸入新的電影的 HTML 表單。 然後，當使用者提交表單和文章回傳至伺服器的資料，我們想要擷取的已張貼的內容，並將它儲存到資料庫。
+實作電影/建立 URL 是兩個步驟的程序。 當使用者第一次造訪電影/建立 URL 我們想要顯示這些輸入新的影片可填寫 HTML 表單。 然後，當使用者提交表單和資料回傳至伺服器的文章，我們想要擷取的已張貼的內容，並將它儲存到資料庫。
 
-我們將我們 MoviesController 類別內實作這兩個 create （） 方法內的兩個步驟。 一種方法將會顯示&lt;表單&gt;使用者應該填寫建立新的電影。 第二種方法將處理處理張貼的資料，當使用者提交&lt;表單&gt;回傳至伺服器，並儲存新的電影中我們的資料庫。
+我們將我們 MoviesController 類別內實作這兩個 create （） 方法內的兩個步驟。 其中一種方法將會顯示&lt;表單&gt;使用者應該填寫以建立新的電影。 第二個方法將處理處理張貼的資料，當使用者提交&lt;表單&gt;回傳至伺服器，並儲存在資料庫裡面的新影片。
 
-以下是程式碼我們會加入可實作此 MoviesController 類別：
+以下是程式碼我們會將它新增至我們的 MoviesController 類別，以實作此：
 
 [!code-csharp[Main](getting-started-with-mvc-part6/samples/sample1.cs)]
 
 上述程式碼包含所有我們需要我們控制器內的程式碼。
 
-讓我們現在實作我們將使用它來向使用者顯示的表單建立檢視範本。 我們會在第一次的 Create 方法中以滑鼠右鍵按一下，然後選取 建立電影表單檢視範本的 「 加入檢視 」。
+讓我們現在實作建立檢視範本，我們將使用它來向使用者顯示的表單。 我們將第一個建立方法中以滑鼠右鍵按一下，然後選取 [新增檢視] 來建立我們的電影表單的檢視範本。
 
-我們將會選取我們會為其檢視資料類別中，移至傳遞檢視範本"影片"，表示我們想要 「 scaffold 」 的 「 建立 」 範本。
+我們將選取，我們會將檢視範本 「 電影 」 作為檢視的資料類別，表示我們想要 「 建立 」 的 「 建立 」 範本。
 
-[![加入檢視](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
+[![新增檢視](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
 
-按一下 [新增] 按鈕之後，就會為您建立 \Movies\Create.aspx 檢視範本。 因為我們從 檢視內容 的下拉式清單中選取 建立，加入檢視 對話方塊會自動"scaffold"某些預設內容為我們。 Scaffolding 建立 HTML&lt;表單&gt;、 移，訊息驗證錯誤的位置和 scaffolding 知道電影，因為其標籤和欄位用於建立每一個屬性的類別。
+按一下 [新增] 按鈕之後，就會為您建立 \Movies\Create.aspx 檢視範本。 因為我們從 [檢視內容] 下拉式清單中選取 [建立]，[新增檢視] 對話方塊自動 「 建構 」 某些預設內容為我們。 Scaffolding 建立 HTML&lt;表單&gt;、 位置，以讓驗證錯誤訊息前往的而且每個屬性的類別 scaffolding 知道電影相關，因為建立標籤和欄位。
 
 [!code-aspx[Main](getting-started-with-mvc-part6/samples/sample2.aspx)]
 
-因為我們的資料庫會自動提供給影片識別碼，讓我們來移除這些欄位，該參考模型。從我們建立檢視的識別碼。 移除 7 之後的行&lt;圖例&gt;欄位&lt;/legend&gt;它們會顯示 [識別碼] 欄位，所以我們不想為。
+因為我們的資料庫會自動提供影片的識別碼，讓我們移除這些欄位，參考模型。從我們建立的檢視識別碼。 移除之後 7 線條&lt;圖例&gt;欄位&lt;/legend&gt; ，它們會顯示 [識別碼] 欄位，我們不想。
 
-我們現在建立新的電影，並將它加入至資料庫。 我們會執行的應用程式來執行這項操作，請瀏覽 」 / 電影 」 URL，然後按一下 [建立] 連結以新增新的電影。
+讓我們現在建立新的電影，並將它新增至資料庫。 我們會執行一次的應用程式來執行這項操作，請瀏覽 「 / 電影 」 URL，然後按一下 [建立] 連結來新增新電影。
 
 [![建立-Windows Internet Explorer](getting-started-with-mvc-part6/_static/image4.png)](getting-started-with-mvc-part6/_static/image3.png)
 
-當我們按一下 [建立] 按鈕時，我們將會公佈回 （透過 HTTP POST) 此表單以剛才所建立的 /Movies/Create 方法上的資料。 如同時系統會自動採取"numTimes 」 和 「 名稱 」 參數從 URL 和它們對應至先前的方法上的參數，系統會自動採取從張貼的表單欄位，並將其對應的物件。 在此情況下，例如"ReleaseDate"和"Title"的 HTML 中欄位的值會自動放電影的新執行個體的正確屬性。
+當我們按一下 [建立] 按鈕時，我們會公佈回 （透過 HTTP POST) /Movies/Create 方法我們剛建立這個表單上的資料。 如同時系統會自動採取 「 numTimes"和"name"參數，在 url，和它們對應到稍早在方法上的參數，系統會自動從某篇文章中取得表單欄位，並將它們對應至物件。 在此情況下，例如"ReleaseDate"和"Title"的 HTML 中的欄位值會自動放入電影的新執行個體的正確的屬性。
 
-讓我們看看第二個建立方法從我們 MoviesController 一次。 請注意花費"影片"物件做為引數的方式：
+讓我們看看第二個 Create 方法從我們 MoviesController 一次。 請注意它如何採用 「 電影 」 物件做為引數：
 
 [!code-csharp[Main](getting-started-with-mvc-part6/samples/sample3.cs)]
 
-此影片物件接著傳遞給我們建立動作方法中，[HttpPost] 版本，我們儲存在資料庫中，然後使用者重新導向至 index 動作方法，這個方法會將電影清單中顯示已儲存的結果：
+此影片物件接著傳遞至我們建立的動作方法的 [HttpPost] 版本，我們並儲存在資料庫中再被使用者重新導向回到 index （） 動作方法，這個方法會將電影清單中顯示已儲存的結果：
 
 [![電影清單-Windows Internet Explorer](getting-started-with-mvc-part6/_static/image6.png)](getting-started-with-mvc-part6/_static/image5.png)
 
-我們不檢查是否我們電影是正確的不過，而且資料庫將不會讓我們將電影儲存沒有標題。 如果我們無法告訴使用者的資料庫之前擲回錯誤，它應該不錯。 我們將會執行這個下一步，方法是加入我們的應用程式的驗證支援。
+如果我們的影片都正確無誤，不過，而且資料庫不允許我們沒有標題儲存影片，我們不檢查。 如果我們還可以告訴使用者的資料庫之前擲回錯誤，那就天下太平了。 我們藉由將我們的應用程式的驗證支援就此下一步。
 
 > [!div class="step-by-step"]
 > [上一頁](getting-started-with-mvc-part5.md)

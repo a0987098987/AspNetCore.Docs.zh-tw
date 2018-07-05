@@ -1,23 +1,22 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-cs
-title: 使用檢視主版頁面 (C#) 建立頁面配置 |Microsoft 文件
+title: 使用檢視主版頁面 (C#) 建立頁面配置 |Microsoft Docs
 author: microsoft
-description: 在本教學課程中，您會學習如何建立一般的頁面配置多個網頁應用程式中，藉由運用檢視主版頁面。 您可以使用...
+description: 在本教學課程中，您已了解如何在您的應用程式中建立多個頁面的一般版面，利用檢視主版頁面。 您可以使用...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
 ms.topic: article
 ms.assetid: dff54fcb-68b1-4488-89a2-ca97532d6a4c
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 82500a311e1110713a60604027d018ba16539b65
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: c23f397ad9dd5c26278d654ef2aec66d201166a3
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871242"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387844"
 ---
 <a name="creating-page-layouts-with-view-master-pages-c"></a>使用檢視主版頁面 (C#) 建立頁面配置
 ====================
@@ -25,38 +24,38 @@ by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://download.microsoft.com/download/e/f/3/ef3f2ff6-7424-48f7-bdaa-180ef64c3490/ASPNET_MVC_Tutorial_12_CS.pdf)
 
-> 在本教學課程中，您會學習如何建立一般的頁面配置多個網頁應用程式中，藉由運用檢視主版頁面。 您可以定義兩個資料行頁面配置和所有 web 應用程式中的頁面，使用兩欄版面配置，例如使用檢視主版頁面。
+> 在本教學課程中，您已了解如何在您的應用程式中建立多個頁面的一般版面，利用檢視主版頁面。 您可以定義兩個資料行頁面配置，並使用兩欄版面配置的所有 web 應用程式頁面，比方說，使用檢視主版頁面。
 
 
 ## <a name="creating-page-layouts-with-view-master-pages"></a>使用檢視主版頁面建立頁面配置
 
-在本教學課程中，您會學習如何建立一般的頁面配置多個網頁應用程式中，藉由運用檢視主版頁面。 您可以定義兩個資料行頁面配置和所有 web 應用程式中的頁面，使用兩欄版面配置，例如使用檢視主版頁面。
+在本教學課程中，您已了解如何在您的應用程式中建立多個頁面的一般版面，利用檢視主版頁面。 您可以定義兩個資料行頁面配置，並使用兩欄版面配置的所有 web 應用程式頁面，比方說，使用檢視主版頁面。
 
-您也可以利用檢視主版頁面在應用程式中的多個頁面之間共用通用的內容。 例如，您可以在檢視主版頁面放置您的網站標誌、 瀏覽連結和橫幅廣告。 這樣一來，應用程式中的每一頁會顯示此內容會自動。
+您也可以利用檢視主版頁面可以跨應用程式中的多個網頁共用通用的內容。 比方說，您可以檢視主版頁面中放置您的網站標誌、 瀏覽連結和橫幅廣告。 如此一來，在您的應用程式中的每一頁會顯示此內容會自動。
 
-在本教學課程中，您會學習如何建立新的檢視主版頁面及建立新的檢視內容 頁面，並根據主版頁面。
+在本教學課程中，您將了解如何建立新的檢視主版頁面，並建立新的檢視內容 頁面，並根據主版頁面。
 
 ### <a name="creating-a-view-master-page"></a>建立檢視主版頁面
 
-讓我們開始建立定義兩欄版面配置檢視主版頁面。 您加入新的檢視主版頁面的 MVC 專案以滑鼠右鍵按一下 Views\Shared 資料夾中，選取功能表選項**新增]、 [新項目**，然後選取**MVC 檢視主版頁面**範本 （請參閱圖 1）。
+現在就開始建立會定義兩欄版面配置檢視主版頁面。 加入新的檢視主版頁面 MVC 專案中以滑鼠右鍵按一下 Views\Shared 資料夾中，選取功能表選項**新增]、 [新項目**，然後選取**MVC 檢視主版頁面**範本 （見 [圖 1]）。
 
 
-[![加入檢視主版頁面](creating-page-layouts-with-view-master-pages-cs/_static/image2.png)](creating-page-layouts-with-view-master-pages-cs/_static/image1.png)
+[![新增檢視主版頁面](creating-page-layouts-with-view-master-pages-cs/_static/image2.png)](creating-page-layouts-with-view-master-pages-cs/_static/image1.png)
 
-**圖 01**： 加入檢視主版頁面 ([按一下以檢視完整大小的影像](creating-page-layouts-with-view-master-pages-cs/_static/image3.png))
+**圖 01**： 新增檢視主版頁面 ([按一下以檢視完整大小的影像](creating-page-layouts-with-view-master-pages-cs/_static/image3.png))
 
 
-應用程式中，您可以建立多個檢視主版頁面。 每個檢視主版頁面可以定義不同的頁面配置。 例如，您可以有兩個資料行配置特定頁面及其他三欄版面配置的頁面。
+您可以建立多個檢視主版頁面的應用程式中。 每個檢視主版頁面可以定義不同的網頁版面配置。 比方說，您可能想要特定的網頁有兩欄版面配置和其他頁面有三欄版面配置。
 
-檢視主版頁面看起來很像標準的 ASP.NET MVC 檢視。 不過，不同於標準模式中，檢視主版頁面包含一或多個`<asp:ContentPlaceHolder>`標記。 `<contentplaceholder>`標記用於標示會覆寫個別的內容頁中的主版頁面的區域。
+檢視主版頁面看起來很像標準的 ASP.NET MVC 檢視。 不過，不同於標準模式中，檢視主版頁面包含一或多個`<asp:ContentPlaceHolder>`標記。 `<contentplaceholder>`標記用於標示可覆寫個別的內容頁面中的主版頁面的區域。
 
-例如，檢視主版頁面中列出的 1 會定義兩欄版面配置。 它包含兩個`<contentplaceholder>`標記。 一個`<ContentPlaceHolder>`每個資料行。
+例如，檢視主版頁面，在 列表 1 中的定義兩欄版面配置。 它包含兩個`<contentplaceholder>`標記。 一個`<ContentPlaceHolder>`每個資料行。
 
-**列出 1 – `Views\Shared\Site.master`**
+**列表 1 – `Views\Shared\Site.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample1.aspx)]
 
-在程式碼範例 1 中的主版頁面包含兩個檢視的主體`<div>`對應到兩個資料行的標記。 階層式樣式表的資料行類別會套用至兩者`<div>`標記。 這個類別被定義在主版頁面的最上層宣告的樣式表中。 您可以預覽檢視主版頁面以切換至 [設計] 檢視中的轉譯方式。 按一下左下方的原始碼程式碼編輯器的 [設計] 索引標籤 （請參閱圖 2）。
+在 列表 1 中的主版頁面包含兩個檢視的主體`<div>`對應到兩個資料行的標記。 階層式樣式表的資料行類別會套用至兩者`<div>`標記。 這個類別被定義在主版頁面的最上層宣告的樣式表中。 您可以在預覽檢視主版頁面藉由切換至 [設計] 檢視中的呈現方式。 按一下左下角的原始碼程式碼編輯器的 設計 索引標籤 （請參閱 圖 2）。
 
 
 [![預覽設計工具中的主版頁面](creating-page-layouts-with-view-master-pages-cs/_static/image5.png)](creating-page-layouts-with-view-master-pages-cs/_static/image4.png)
@@ -66,15 +65,15 @@ by [Microsoft](https://github.com/microsoft)
 
 ### <a name="creating-a-view-content-page"></a>建立檢視的內容頁面
 
-建立檢視主版頁面之後，您可以建立一或多個檢視的檢視主版頁面為基礎的內容頁面。 例如，您可以建立主控制器的索引檢視內容頁面，以滑鼠右鍵按一下 Views\Home 資料夾中選取**新增]、 [新項目**、 選取**MVC 檢視內容頁面**範本中，輸入名稱 Index.aspx，然後按一下**新增**按鈕 （請參閱圖 3）。
+建立檢視主版頁面之後，您可以建立一或多個檢視以檢視主版頁面的內容頁面。 比方說，您可以建立主控制器的索引檢視內容頁面，以滑鼠右鍵按一下 Views\Home 資料夾中，選取**新增]、 [新項目**，並選取**MVC 檢視內容頁面**範本中，輸入名稱 Index.aspx，然後按一下**新增**按鈕 （請參閱 [圖 3]）。
 
 
-[![加入檢視的內容頁](creating-page-layouts-with-view-master-pages-cs/_static/image8.png)](creating-page-layouts-with-view-master-pages-cs/_static/image7.png)
+[![新增檢視內容頁面](creating-page-layouts-with-view-master-pages-cs/_static/image8.png)](creating-page-layouts-with-view-master-pages-cs/_static/image7.png)
 
-**圖 03**： 加入檢視的內容頁 ([按一下以檢視完整大小的影像](creating-page-layouts-with-view-master-pages-cs/_static/image9.png))
+**圖 03**： 新增檢視內容頁面 ([按一下以檢視完整大小的影像](creating-page-layouts-with-view-master-pages-cs/_static/image9.png))
 
 
-按一下 [新增] 按鈕之後，新的對話方塊隨即出現，可讓您選取要與 [檢視內容] 頁面產生關聯的檢視主版頁面 （請參閱圖 4）。 您可以瀏覽至 Site.master 檢視主版頁面的上一節中建立。
+按一下 新增 按鈕之後，新的對話方塊隨即出現，可讓您選取 檢視 內容頁面相關聯的檢視主版頁面 （請參閱 圖 4）。 您可以瀏覽至 Site.master 檢視主版頁面，我們在上一節中建立。
 
 
 [![選取主版頁面](creating-page-layouts-with-view-master-pages-cs/_static/image11.png)](creating-page-layouts-with-view-master-pages-cs/_static/image10.png)
@@ -84,25 +83,25 @@ by [Microsoft](https://github.com/microsoft)
 
 建立新的檢視內容頁面上，並根據 Site.master 主版頁面之後，您會取得列表 2 中的檔案。
 
-**列出 2 – `Views\Home\Index.aspx`**
+**列表 2 – `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample2.aspx)]
 
-請注意，這個檢視包含`<asp:Content>`對應至每個標記`<asp:ContentPlaceHolder>`檢視主版頁面中的標記。 每個`<asp:Content>`標記包含指向特定的 ContentPlaceHolderID 屬性`<asp:ContentPlaceHolder>`，它會覆寫。
+請注意，這份檢視含有`<asp:Content>`對應至每個標記`<asp:ContentPlaceHolder>`檢視主版頁面中的標記。 每個`<asp:Content>`標記會包括指向特定 atribut ContentPlaceHolderID `<asp:ContentPlaceHolder>` ，它會覆寫。
 
-此外，請注意，內容檢視中的頁面清單 2 不包含任何正常的開頭和結尾 HTML 標記。 例如，它不包含在開頭和結尾`<html>`或`<head>`標記。 所有的一般的開頭和結尾標記都包含在檢視主版頁面。
+此外，請注意，在列表 2 中的 [內容檢視] 頁面不包含任何一般的開頭和結尾 HTML 標記。 比方說，它不包含的開頭和結尾`<html>`或`<head>`標記。 所有一般的開頭和結尾標記會包含在檢視主版頁面。
 
-任何您想要檢視內容頁面中顯示的內容必須置於`<asp:Content>`標記。 如果您將任何 HTML 或這些標記之外的其他內容，您會收到錯誤當您嘗試檢視的頁面。
+任何您想要檢視內容頁面中顯示的內容必須置於`<asp:Content>`標記。 如果您將任何 HTML 或其他內容，這些標記之外，您會收到錯誤當您嘗試檢視該頁面。
 
-您不需要覆寫每個`<asp:ContentPlaceHolder>`從內容檢視頁面中的主版頁面的標記。 您只需要覆寫`<asp:ContentPlaceHolder>`標記您想要以特定的內容取代標記時。
+您不需要覆寫每個`<asp:ContentPlaceHolder>`內容檢視頁面中的主版頁面的標記。 您只需要覆寫`<asp:ContentPlaceHolder>`標記時您想要以特定的內容取代標記。
 
-例如，修改的索引檢視表中列出的 3 只包含兩個`<asp:Content>`標記。 每個`<asp:Content>`標記包含一些文字。
+例如，在 列表 3 中修改過的 索引 檢視只包含兩個`<asp:Content>`標記。 每個`<asp:Content>`標記包含一些文字。
 
-**列出 3 – `Views\Home\Index.aspx (modified)`**
+**列表 3 – `Views\Home\Index.aspx (modified)`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample3.aspx)]
 
-要求中列出的 3 的檢視時，它會呈現在 「 圖 5 頁。 請注意檢視會呈現兩個資料行與網頁。 請注意，此外，從 [檢視內容] 頁面的內容會合併與檢視主版頁面內容
+要求列表 3 中的檢視時，它會呈現 [圖 5] 頁面。 請注意，檢視會呈現兩個資料行的頁面。 請注意，此外，從 [檢視內容] 頁面的內容會合併檢視主版頁面的內容
 
 
 [![索引檢視的 [內容] 頁面](creating-page-layouts-with-view-master-pages-cs/_static/image14.png)](creating-page-layouts-with-view-master-pages-cs/_static/image13.png)
@@ -112,37 +111,37 @@ by [Microsoft](https://github.com/microsoft)
 
 ### <a name="modifying-view-master-page-content"></a>修改檢視主版頁面內容
 
-幾乎會遇到的問題之一立即使用檢視主版頁面時，要求不同的檢視內容的頁面時，請修改檢視主版頁面內容的問題。 例如，您會想每一頁 web 應用程式具有唯一的標題中。 不過，標題會宣告檢視主版頁面中，而不是在 [檢視內容] 頁面。 因此，您該如何自訂每個檢視的內容頁面的頁面標題？
+一個問題，您會遇到幾乎立即使用檢視主版頁面時，要求不同的檢視內容頁面時，請修改檢視主版頁面內容的問題。 比方說，您會想每個頁面中您的 web 應用程式，將唯一的標題。 不過，標題會宣告檢視主版頁面中，而不是在 [檢視內容] 頁面。 因此，您該如何自訂每個檢視的內容頁面的頁面標題？
 
-有兩種方式，您可以修改檢視 內容頁所顯示的標題。 首先，您可以將頁面標題的標題屬性指派`<%@ page %>`指示詞在頁面上方的檢視內容中宣告。 例如，如果您想要指派至索引檢視的頁面標題 「 超級絕佳的網站 」，您可以包含下列指示詞，在索引檢視的頂端：
+有兩種方式，您可以修改的檢視內容頁面所顯示的標題。 首先，您可以將頁面標題的標題屬性指派`<%@ page %>`指示詞宣告頂端的 檢視內容頁面。 例如，如果您想要將 [索引] 檢視中的頁面標題 「 超級絕佳的網站 」，您可以包含下列指示詞，在 [索引] 檢視的頂端：
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample4.aspx)]
 
-當瀏覽器中呈現索引檢視時，所需的標題會出現在瀏覽器標題列中：
+當 [索引] 檢視呈現至瀏覽器時，所需的標題會出現在瀏覽器標題列中：
 
 
 [![瀏覽器標題列](creating-page-layouts-with-view-master-pages-cs/_static/image17.png)](creating-page-layouts-with-view-master-pages-cs/_static/image16.png)
 
 
-沒有主版檢視頁面必須符合 title 屬性，工作順序中的一個重要需求。 檢視主版頁面必須包含`<head runat="server">`標記，而不是一般`<head>`標頭標記。 如果`<head>`標記不包含 runat ="server"屬性，則不會顯示標題。 主版頁面包含所需的預設檢視`<head runat="server">`標記。
+沒有主版檢視頁面必須滿足才能 title 屬性的順序的一項重要需求。 檢視主版頁面必須包含`<head runat="server">`標記，而不是一般`<head>`標頭標記。 如果`<head>`標記不包含 runat ="server"屬性，則不會出現標題。 主版頁面包含所需的預設檢視`<head runat="server">`標記。
 
-從個別的檢視內容頁面上修改主版頁面內容的替代方法是將您想要修改的區域`<asp:ContentPlaceHolder>`標記。 例如，假設您想要變更標題，不僅 meta 標記，由主版檢視頁面呈現。 主版檢視頁面中列出的 4 包含`<asp:ContentPlaceHolder>`標記內其`<head>`標記。
+從個別的檢視內容 頁面中的公式修改主版頁面內容的替代方法是將包裝您想要修改的區域`<asp:ContentPlaceHolder>`標記。 例如，假設您想要變更標題，不僅 meta 標記，主版檢視頁面所呈現。 列表 4 中的主版檢視頁面包含`<asp:ContentPlaceHolder>`標記內其`<head>`標記。
 
-**列出 4 – `Views\Shared\Site2.master`**
+**列表 4 – `Views\Shared\Site2.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample5.aspx)]
 
-請注意，`<asp:ContentPlaceHolder>`中列出的 4 標記包含預設內容： 一個預設標題和預設 meta 標記。 如果您不要覆寫此`<asp:ContentPlaceHolder>`標記中個別的檢視內容 頁面上，則會顯示預設內容。
+請注意，`<asp:ContentPlaceHolder>`列表 4 中的標籤包含預設內容： 預設標題和預設的中繼標記。 如果您不覆寫此`<asp:ContentPlaceHolder>`標記在個別的檢視內容 頁面中，則會顯示預設內容。
 
-內容檢視中的頁面列出 5 會覆寫`<asp:ContentPlaceHolder>`才能顯示自訂標題和自訂 meta 標記的標記。
+表 5 中的 內容檢視 頁面會覆寫`<asp:ContentPlaceHolder>`才能顯示一個自訂的標題和自訂 meta 標記的標記。
 
-**列出 5 – `Views\Home\Index2.aspx`**
+**列表 5 – `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-cs/samples/sample6.aspx)]
 
 ### <a name="summary"></a>總結
 
-本教學課程為您提供的基本介紹，檢視主版頁面及內容頁面。 您已學習如何建立新的檢視主版頁面，並建立其為基礎的檢視內容頁面。 我們也會檢查您如何修改檢視主版頁面的特定檢視的內容頁面的內容。
+本教學課程會提供您使用檢視主版頁面和檢視內容頁面的基本簡介。 您已了解如何建立新的檢視主版頁面，並建立其為基礎的檢視內容頁面。 我們也會檢查您如何修改檢視主版頁面，從特定的檢視內容頁面的內容。
 
 > [!div class="step-by-step"]
 > [上一頁](using-the-tagbuilder-class-to-build-html-helpers-cs.md)

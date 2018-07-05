@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-5-debugging-and-tracing-your-website
-title: '[第 5 課:]偵錯及追蹤您的網站 |Microsoft 文件'
+title: '[第 5 課:]偵錯和追蹤您的網站 |Microsoft Docs'
 author: microsoft
-description: 在這一課，您將學習如何偵錯和監視您的 ASP.NET 2.0 Web 應用程式。
+description: 在這一課，您將學習如何偵錯及監視您的 ASP.NET 2.0 Web 應用程式。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/29/2005
 ms.topic: article
 ms.assetid: 923573b7-91aa-43d5-85d8-ea27a972d913
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-5-debugging-and-tracing-your-website
 msc.type: video
-ms.openlocfilehash: cc7f610bef71831a46f4b93dc21843c23a370a3c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 53525707f435bafa1b10874d29b869ddebaf2b1a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881918"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37401507"
 ---
-<a name="lesson-5-debugging-and-tracing-your-website"></a>[第 5 課:]偵錯及追蹤您的網站
+<a name="lesson-5-debugging-and-tracing-your-website"></a>[第 5 課:]偵錯和追蹤網站
 ====================
 by [Microsoft](https://github.com/microsoft)
 
-在這一課，您將學習如何偵錯和監視您的 ASP.NET 2.0 Web 應用程式。
+在這一課，您將學習如何偵錯及監視您的 ASP.NET 2.0 Web 應用程式。
 
 [&#9654;觀看影片 （29 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-5-debugging-and-tracing-your-website)
 

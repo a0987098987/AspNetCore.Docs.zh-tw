@@ -1,88 +1,87 @@
 ---
 uid: identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
-title: 變更主索引鍵中 ASP.NET 識別的使用者 |Microsoft 文件
+title: 變更 ASP.NET Identity 中的使用者的主索引鍵 |Microsoft Docs
 author: tfitzmac
-description: 在 Visual Studio 2013 中，預設 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 識別可讓您變更的類型...
+description: 在 Visual Studio 2013 中，預設的 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 身分識別可讓您變更的類型...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/30/2014
 ms.topic: article
 ms.assetid: 44925849-5762-4504-a8cd-8f0cd06f6dc3
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 79812efb4de2461fad3765d6005bbd20393e62b2
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: 20e6b86f50a6ea62f188ae592e0b302c7ef77177
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "26498227"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37373324"
 ---
-<a name="change-primary-key-for-users-in-aspnet-identity"></a>在 ASP.NET Identity 中的使用者變更主索引鍵
+<a name="change-primary-key-for-users-in-aspnet-identity"></a>變更 ASP.NET Identity 中的使用者的主索引鍵
 ====================
-由[Tom FitzMacken](https://github.com/tfitzmac)
+藉由[Tom FitzMacken](https://github.com/tfitzmac)
 
-> 在 Visual Studio 2013 中，預設 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 識別可讓您變更以符合資料需求索引鍵的類型。 例如，您可以從字串變更索引鍵的類型為整數。
+> 在 Visual Studio 2013 中，預設的 web 應用程式會使用使用者帳戶的金鑰字串值。 ASP.NET 身分識別可讓您變更以符合您資料需求的索引鍵的類型。 例如，您可以從字串變更索引鍵的類型為整數。
 > 
-> 本主題說明如何開始使用預設 web 應用程式，並將使用者帳戶金鑰變更為整數。 您可以使用相同的修改，在您的專案中實作任何類型的索引鍵。 它示範如何進行這些變更在預設 web 應用程式，但您無法套用類似的自訂應用程式的修改。 它會顯示使用 MVC 或 Web Form 時所需的變更。
+> 本主題說明如何開始使用預設 web 應用程式，並將使用者帳戶金鑰變更為整數。 您可以使用相同的修改來實作您的專案中的任何類型的金鑰。 它示範如何在預設 web 應用程式中進行這些變更，但您可以套用類似修改自訂的應用程式。 它會顯示使用 MVC 或 Web Form 時所需的變更。
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>在本教學課程中使用的軟體版本
 > 
 > 
 > - Visual Studio 2013 Update 2 （或更新版本）
-> - ASP.NET Identity 2.1 或更新版本
+> - 2.1 或更新版本的 ASP.NET 身分識別
 
 
-若要執行本教學課程步驟，您必須有 Visual Studio 2013 Update 2 （或更新版本） 和 ASP.NET Web 應用程式範本所建立的 web 應用程式。 在 Update 3 中變更範本。 本主題說明如何變更更新 2 和 Update 3 中的範本。
+若要執行本教學課程步驟，您必須有 Visual Studio 2013 Update 2 （或更新版本） 和 ASP.NET Web 應用程式範本所建立的 web 應用程式。 在 Update 3 中變更範本。 本主題說明如何變更 Update 2 和 Update 3 中的範本。
 
 此主題包括下列章節：
 
-- [變更中識別的使用者類別的索引鍵的類型](#userclass)
-- [新增自訂身分識別類別，可使用的金鑰類型](#customclass)
-- [變更要使用的金鑰類型的內容類別及使用者管理員](#context)
-- [變更啟動設定来使用的金鑰類型](#startup)
-- [MVC Update 2 中，變更將索引鍵的型別傳遞 AccountController](#mvcupdate2)
-- [MVC 中使用 Update 3，變更 AccountController 以及 ManageController 傳遞的索引鍵類型](#mvcupdate3)
-- [Web Form Update 2，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate2)
-- [Web Form 的 Update 3，將變更傳遞的索引鍵類型的帳戶頁面](#webformsupdate3)
+- [變更識別使用者類別中的索引鍵的類型](#userclass)
+- [新增使用索引鍵類型的自訂身分識別類別](#customclass)
+- [變更要使用的金鑰類型的內容類別和使用者管理員](#context)
+- [若要使用的金鑰類型的變更啟動設定](#startup)
+- [Update 2 的 mvc，變更將索引鍵的型別傳遞 AccountController](#mvcupdate2)
+- [Update 3 的 mvc，變更 AccountController 和 ManageController 傳遞的索引鍵類型](#mvcupdate3)
+- [對於 Update 2 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate2)
+- [對於含 Update 3 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate3)
 - [執行應用程式](#run)
 - [其他資源](#other)
 
 <a id="userclass"></a>
-## <a name="change-the-type-of-the-key-in-the-identity-user-class"></a>變更中識別的使用者類別的索引鍵的類型
+## <a name="change-the-type-of-the-key-in-the-identity-user-class"></a>變更識別使用者類別中的索引鍵的類型
 
-在 ASP.NET Web 應用程式範本所建立的專案中，指定 ApplicationUser 類別使用整數之金鑰的使用者帳戶。 在 IdentityModels.cs，變更 ApplicationUser 類別繼承自具有一種 IdentityUser **int** TKey 泛型參數。 您也會傳遞三個自訂類別尚未不實作它的名稱。
+在 ASP.NET Web 應用程式範本所建立的專案中，指定 ApplicationUser 類別，會針對使用者帳戶的索引鍵使用整數。 在 IdentityModels.cs，變更 ApplicationUser 類別繼承自具有一種 IdentityUser **int** TKey 泛型參數。 您也會傳遞您有尚未實作三個自訂類別的名稱。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample1.cs?highlight=1-2)]
 
-您已變更的金鑰類型，但根據預設，應用程式的其餘部分仍假設索引鍵是字串。 您必須明確指示會假設字串的程式碼中的索引鍵的類型。
+您已變更的索引鍵的類型，但根據預設，應用程式的其餘部分仍假設金鑰是字串。 您必須明確指示會假設字串的程式碼中的索引鍵的類型。
 
-在**ApplicationUser**類別中，變更**GenerateUserIdentityAsync**方法，將包含 int、 反白顯示的下列程式碼所示。 這項變更不需要的 Web Form Update 3 範本專案。
+在  **ApplicationUser**類別中變更**GenerateUserIdentityAsync**方法以包含整數，如下列醒目提示的程式碼所示。 這項變更不需要 Web Form 專案，使用 Update 3 範本。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample2.cs?highlight=2)]
 
 <a id="customclass"></a>
-## <a name="add-customized-identity-classes-that-use-the-key-type"></a>新增自訂身分識別類別，可使用的金鑰類型
+## <a name="add-customized-identity-classes-that-use-the-key-type"></a>新增使用索引鍵類型的自訂身分識別類別
 
-其他身分識別類別，例如 IdentityUserRole、 IdentityUserClaim、 IdentityUserLogin、 IdentityRole、 UserStore、 RoleStore，仍會使用字串索引鍵設定。 建立指定索引鍵的整數這些類別的新的版本。 您不需要提供太多的實作程式碼，這些類別中，您主要是只做為索引鍵設定 int。
+其他身分識別類別，例如 IdentityUserRole、 IdentityUserClaim、 IdentityUserLogin、 IdentityRole、 UserStore、 RoleStore，都仍會設定為使用字串索引鍵中。 建立新的版本，這些類別的指定索引鍵的整數。 您不需要提供太多的實作程式碼，這些類別中，您主要只要設定 int 當做索引鍵。
 
-將下列類別加入至 IdentityModels.cs 檔案。
+將下列類別加入 IdentityModels.cs 檔案。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample3.cs)]
 
 <a id="context"></a>
-## <a name="change-the-context-class-and-user-manager-to-use-the-key-type"></a>變更要使用的金鑰類型的內容類別及使用者管理員
+## <a name="change-the-context-class-and-user-manager-to-use-the-key-type"></a>變更要使用的金鑰類型的內容類別和使用者管理員
 
-在 IdentityModels.cs，變更的定義**ApplicationDbContext**類別，以使用您的新自訂類別和**int**的索引鍵，反白顯示的程式碼所示。
+在 IdentityModels.cs，變更其定義**ApplicationDbContext**類別，以使用您的新自訂類別和**int**針對索引鍵，反白顯示的程式碼所示。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample4.cs?highlight=1-2)]
 
-ThrowIfV1Schema 參數不再有效的建構函式中。 變更建構函式，讓它未通過 ThrowIfV1Schema 值。
+ThrowIfV1Schema 參數不再有效的建構函式。 變更建構函式，因此它未通過 ThrowIfV1Schema 值。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample5.cs)]
 
-開啟 IdentityConfig.cs，並將變更**ApplicationUserManger**類別，以使用新的使用者儲存的保存資料的類別和**int**索引鍵。
+開啟 IdentityConfig.cs，並將變更**ApplicationUserManger**類別，以使用新的使用者儲存保存資料的類別和**int**索引鍵。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample6.cs?highlight=1,3,12,14,32,37,48)]
 
@@ -91,25 +90,25 @@ ThrowIfV1Schema 參數不再有效的建構函式中。 變更建構函式，讓
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample7.cs?highlight=1)]
 
 <a id="startup"></a>
-## <a name="change-start-up-configuration-to-use-the-key-type"></a>變更啟動設定来使用的金鑰類型
+## <a name="change-start-up-configuration-to-use-the-key-type"></a>若要使用的金鑰類型的變更啟動設定
 
-在 Startup.Auth.cs，取代 OnValidateIdentity 程式碼，以反白顯示下面。 請注意 getUserIdCallback 定義中，將字串值剖析為整數。
+在 Startup.Auth.cs，取代 OnValidateIdentity 程式碼，以反白顯示如下。 請注意，getUserIdCallback 定義中，會將字串值剖析成整數。
 
 [!code-csharp[Main](change-primary-key-for-users-in-aspnet-identity/samples/sample8.cs?highlight=7-12)]
 
-如果您的專案無法辨識的泛型實作**GetUserId**方法，您可能需要更新到 2.1 版的 ASP.NET Identity NuGet 套件
+如果您的專案無法辨識的泛型實作**GetUserId**方法中，您可能需要的 ASP.NET 身分識別的 NuGet 套件更新為版本 2.1
 
-您對進行許多變更 ASP.NET Identity 所使用的基礎結構類別。 如果您嘗試編譯專案，您會發現許多錯誤。 幸運的是，其他錯誤都有相似。 識別類別必須要有整數索引鍵，但控制器 （或 Web Form） 傳遞的字串值。 在各案例中，您需要從字串和整數轉換，藉由呼叫**GetUserId&lt;int&gt;**。 您可以逐步完成從編譯錯誤清單，或請遵循以下的變更。
+您已進行許多變更以使用 ASP.NET Identity 的基礎結構類別。 如果您嘗試編譯專案，您會發現許多錯誤。 幸運的是，剩餘的錯誤都有相似。 身分識別類別需要整數索引鍵，但控制器 （或 Web Form） 傳遞的字串值。 在每個案例中，您需要將呼叫轉換字串與整數**GetUserId&lt;int&gt;**。 您可以逐步完成從編譯錯誤清單，或遵循下列變更。
 
-剩餘的變更取決於您所建立，而且您已安裝 Visual Studio 中的哪個更新專案的類型。 您可以直接前往下列連結相關的章節
+剩餘的變更取決於您所建立，而且您已安裝哪些更新 Visual Studio 中的專案類型。 您可以直接跳到相關的區段，透過下列連結
 
-- [MVC Update 2 中，變更將索引鍵的型別傳遞 AccountController](#mvcupdate2)
-- [MVC 中使用 Update 3，變更 AccountController 以及 ManageController 傳遞的索引鍵類型](#mvcupdate3)
-- [Web Form Update 2，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate2)
-- [Web Form 的 Update 3，將變更傳遞的索引鍵類型的帳戶頁面](#webformsupdate3)
+- [Update 2 的 mvc，變更將索引鍵的型別傳遞 AccountController](#mvcupdate2)
+- [Update 3 的 mvc，變更 AccountController 和 ManageController 傳遞的索引鍵類型](#mvcupdate3)
+- [對於 Update 2 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate2)
+- [對於含 Update 3 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面](#webformsupdate3)
 
 <a id="mvcupdate2"></a>
-## <a name="for-mvc-with-update-2-change-the-accountcontroller-to-pass-the-key-type"></a>MVC Update 2 中，變更將索引鍵的型別傳遞 AccountController
+## <a name="for-mvc-with-update-2-change-the-accountcontroller-to-pass-the-key-type"></a>Update 2 的 mvc，變更將索引鍵的型別傳遞 AccountController
 
 開啟 AccountController.cs 檔案。 您需要變更下列方法。
 
@@ -140,9 +139,9 @@ ThrowIfV1Schema 參數不再有效的建構函式中。 變更建構函式，讓
 您現在可以[執行應用程式](#run)並註冊新的使用者。
 
 <a id="mvcupdate3"></a>
-## <a name="for-mvc-with-update-3-change-the-accountcontroller-and-managecontroller-to-pass-the-key-type"></a>MVC 中使用 Update 3，變更 AccountController 以及 ManageController 傳遞的索引鍵類型
+## <a name="for-mvc-with-update-3-change-the-accountcontroller-and-managecontroller-to-pass-the-key-type"></a>Update 3 的 mvc，變更 AccountController 和 ManageController 傳遞的索引鍵類型
 
-開啟 AccountController.cs 檔案。 您需要變更以下的方法。
+開啟 AccountController.cs 檔案。 您需要將下列方法變更。
 
 **ConfirmEmail**方法
 
@@ -209,9 +208,9 @@ ThrowIfV1Schema 參數不再有效的建構函式中。 變更建構函式，讓
 您現在可以[執行應用程式](#run)並註冊新的使用者。
 
 <a id="webformsupdate2"></a>
-## <a name="for-web-forms-with-update-2-change-account-pages-to-pass-the-key-type"></a>Web Form Update 2，變更要傳遞的索引鍵類型的帳戶頁面
+## <a name="for-web-forms-with-update-2-change-account-pages-to-pass-the-key-type"></a>對於 Update 2 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面
 
-Web Form Update 2，您要變更之下列頁面。
+對於 Update 2 的 Web Form，您需要變更下列頁面。
 
 **Confirm.aspx.cx**
 
@@ -228,9 +227,9 @@ Web Form Update 2，您要變更之下列頁面。
 您現在可以[執行應用程式](#run)並註冊新的使用者。
 
 <a id="webformsupdate3"></a>
-## <a name="for-web-forms-with-update-3-change-account-pages-to-pass-the-key-type"></a>Web Form 的 Update 3，將變更傳遞的索引鍵類型的帳戶頁面
+## <a name="for-web-forms-with-update-3-change-account-pages-to-pass-the-key-type"></a>對於含 Update 3 的 Web Form，變更要傳遞的索引鍵類型的帳戶頁面
 
-Web Form 的 Update 3，您要變更之下列頁面。
+對於 Web Form Update 3，您需要變更下列頁面。
 
 **Confirm.aspx.cx**
 
@@ -267,16 +266,16 @@ Web Form 的 Update 3，您要變更之下列頁面。
 <a id="run"></a>
 ## <a name="run-application"></a>執行應用程式
 
-您已完成所有的預設 Web 應用程式範本所需的變更。 執行應用程式並註冊新的使用者。 註冊使用者之後, 您會發現 AspNetUsers 資料表有整數的識別碼資料行。
+您已完成所有必要變更預設的 Web 應用程式範本。 執行應用程式並註冊新的使用者。 註冊使用者之後, 您會發現 AspNetUsers 資料表已經是一個整數的識別碼資料行。
 
 ![新的主要金鑰](change-primary-key-for-users-in-aspnet-identity/_static/image1.png)
 
-如果您先前已經建立 ASP.NET 識別的資料表具有不同主索引鍵，您需要進行一些額外的變更。 可能的話，只要刪除現有的資料庫。 當您執行 web 應用程式，並加入新的使用者，會以正確的設計重新建立資料庫。 如果刪除，則不可能執行 code first 移轉，若要變更的資料表。 不過，新的整數的主索引鍵將不設定為資料庫中的 SQL 識別屬性。 您必須手動設定的識別碼資料行，做為識別。
+如果您先前建立 ASP.NET 身分識別的資料表以不同的主索引鍵，您需要進行一些額外的變更。 可能的話，只要刪除現有的資料庫。 當您執行 web 應用程式，並新增使用者時，會以正確的設計重新建立資料庫。 如果刪除是不可能的話，請執行 code first 移轉來變更資料表。 不過，新的整數主索引鍵將不會設定為在資料庫中的 SQL 識別屬性。 您必須手動設定的識別碼資料行，做為識別。
 
 <a id="other"></a>
 ## <a name="other-resources"></a>其他資源
 
 - [ASP.NET Identity 的自訂儲存體提供者概觀](overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [將現有的網站從 SQL 成員資格移轉至 ASP.NET Identity](../migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md)
-- [成員資格和 ASP.NET 識別的使用者設定檔通用的提供者資料移轉](../migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)
+- [成員資格和使用者設定檔，以 ASP.NET 身分識別的通用提供者資料移轉](../migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md)
 - [範例應用程式](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/ChangePK/readme.txt)已變更的主索引鍵

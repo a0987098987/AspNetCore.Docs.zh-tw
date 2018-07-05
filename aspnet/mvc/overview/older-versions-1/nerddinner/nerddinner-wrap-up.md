@@ -1,52 +1,51 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
-title: NerdDinner 換行，總 |Microsoft 文件
+title: NerdDinner 總結 |Microsoft Docs
 author: microsoft
-description: 這是 NerdDinner 教學課程結束時，並提供您如何進一步了解的相關資訊。
+description: 這是 NerdDinner 教學課程結束時，並提供您若要深入了解的資訊。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
 ms.topic: article
 ms.assetid: 5c6371c0-a944-4adf-a28e-5afbdd011ca8
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
-ms.openlocfilehash: 8d418f40f6d2911491c1a4f2498a4f711e9c271c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: bc4e4528ff62b92407d2149d825e6872c40e5126
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30867420"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387058"
 ---
-<a name="nerddinner-wrap-up"></a>向上 NerdDinner 換行
+<a name="nerddinner-wrap-up"></a>NerdDinner 總結
 ====================
 by [Microsoft](https://github.com/microsoft)
 
 [下載 PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> 這是 NerdDinner 教學課程結束時，並提供您如何進一步了解的相關資訊。
+> 這是 NerdDinner 教學課程結束時，並提供您若要深入了解的資訊。
 > 
-> 如果您使用 ASP.NET MVC 3，我們建議您遵循[取得啟動與 MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)或[MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)教學課程。
+> 如果您使用 ASP.NET MVC 3，我們建議您遵循[取得開始使用 MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md)或是[MVC Music 市集](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)教學課程。
 
 
-我們 NerdDinner 應用程式現在已完成且準備好在網路上部署。
+NerdDinner 應用程式現在已完成且準備好要部署在網站上。
 
 ![](nerddinner-wrap-up/_static/image1.png)
 
-我們會使用一組廣泛的 ASP.NET MVC 功能來建置 NerdDinner。 希望開發它的程序剖析一些核心 ASP.NET MVC 功能的運作，並提供有關如何使用這些功能的內容將整合的方式一起在應用程式。
+我們用來建置 NerdDinner 的一組廣泛的 ASP.NET MVC 功能。 希望的開發程序稍微 core ASP.NET MVC 功能的運作和如何提供有關如何使用這些功能的內容整合在一起的應用程式內。
 
 ### <a name="learning-more"></a>了解詳細資訊
 
-此 NerdDinner 教學課程是新的第一章[Professional ASP.NET MVC 1.0](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611) Wrox 按從活頁簿。
+本 NerdDinner 教學課程是新的第一個章節[Professional ASP.NET MVC 1.0](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611) Wrox press 書籍。
 
 [![](https://mscblogs.blob.core.windows.net/media/scottgu/Media/bookcover1_6CAECF94.png)](https://www.amazon.com/gp/product/0470384611?ie=UTF8&amp;tag=scoblo04-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470384611)
 
-您可以讀取的其餘部分通訊錄，若要了解更多關於 ASP.NET MVC。
+您可以閱讀的書籍，甚至進一步了解 ASP.NET MVC 的其餘部分。
 
-您也可以尋找絕佳的 ASP.NET MVC，教學課程和影片位於： [ https://www.asp.net/mvc ](../../../index.md)其他絕佳的 ASP.NET MVC 書籍會很快發行。 我將會更新此頁面來包含可供使用時的其他書籍的連結。
+您也可以找到絕佳的 ASP.NET MVC，教學課程和影片： [ https://www.asp.net/mvc ](../../../index.md)將短時間內發行其他很棒的 ASP.NET MVC 書籍。 我將會更新此頁面包含可供使用時的其他書籍的連結。
 
-這有助於，希望
+希望這能夠協助，
 
 Scott
 

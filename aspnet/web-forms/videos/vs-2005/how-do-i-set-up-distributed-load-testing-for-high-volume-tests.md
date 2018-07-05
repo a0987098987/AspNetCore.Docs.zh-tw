@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-set-up-distributed-load-testing-for-high-volume-tests
-title: '[如何:]設定分散式的負載測試大量測試中？ | Microsoft Docs'
+title: '[How Do i:]設定分散式的負載測試的大量測試？ | Microsoft Docs'
 author: rick-anderson
-description: Visual Studio Team System 可讓您設定資料組成的控制站上一個遠端電腦與 multipl 分散式彙負載測試建立測試 rig'...
+description: Visual Studio Team System 可讓您設定資料包含上一個遠端電腦與 multipl 控制器分散式負載測試建立測試 rig'...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/09/2007
 ms.topic: article
 ms.assetid: d5c42efc-1457-4e75-87e8-5b41c9ee8a80
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-set-up-distributed-load-testing-for-high-volume-tests
 msc.type: video
-ms.openlocfilehash: c92e48400b1b032f4d12646f2a40a10962c2de6b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fccd22161eb45abf49dfe194e86c7956a7d80a88
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894385"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372620"
 ---
-<a name="how-do-i-set-up-distributed-load-testing-for-high-volume-tests"></a>[如何:]設定分散式的負載測試大量測試中？
+<a name="how-do-i-set-up-distributed-load-testing-for-high-volume-tests"></a>[How Do i:]設定分散式的負載測試的大量測試？
 ====================
-由[Chris Menegay](https://twitter.com/CMenegay)
+藉由[Chris Menegay](https://twitter.com/CMenegay)
 
-Visual Studio Team System 可讓您設定分散式彙負載測試建立測試 」 rig"組成的控制站，在一部遠端電腦上相同或其他遠端電腦上的多個代理程式。 這段影片中引導您安裝控制器和代理程式，然後設定為使用遠端控制器執行測試案例。 如您所見，Visual Studio Team System 可讓您設定分散式負載測試進行大量的自動化測試非常簡單。
+Visual Studio Team System 可讓您設定資料包含一部遠端電腦上的控制站和在相同或其他遠端電腦上的多個代理程式分散式負載測試建立測試 「 rig"。 這段影片中引導您安裝在控制器和代理程式，然後設定為使用遠端控制器執行測試案例。 如您所見，Visual Studio Team System 可讓設定分散式負載測試進行大量的自動化測試非常簡單。
 
 [&#9654;觀看影片 （8 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-set-up-distributed-load-testing-for-high-volume-tests)
 

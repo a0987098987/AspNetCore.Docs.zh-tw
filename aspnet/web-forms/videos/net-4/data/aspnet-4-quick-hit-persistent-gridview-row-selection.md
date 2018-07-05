@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/net-4/data/aspnet-4-quick-hit-persistent-gridview-row-selection
-title: 持續性的 GridView 資料列選取 |Microsoft 文件
+title: 永續性 GridView 資料列選取範圍 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解 GridView 控制項的永續性的資料列選取範圍。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 11/16/2009
 ms.topic: article
 ms.assetid: 42591ed6-fb4a-462d-ad7d-3e95dc628af9
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/data/aspnet-4-quick-hit-persistent-gridview-row-selection
 msc.type: video
-ms.openlocfilehash: 66f2763d5edb1643acf4a197223e2e6eee56457f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: affa9ac33f8075564401d23fb06f4a6330ab85b5
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26522027"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37384355"
 ---
-<a name="aspnet-4-quick-hit--persistent-gridview-row-selection"></a>ASP.NET 4 」 快速 Hit"– 永續性的 GridView 資料列選取範圍
+<a name="aspnet-4-quick-hit--persistent-gridview-row-selection"></a>ASP.NET 4 」 快速 Hit"– 永續性 GridView 資料列選取範圍
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
 在這段影片中，您將了解 GridView 控制項的永續性的資料列選取範圍。 
 

@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
-title: ASP.NET MVC Storefront 第 2 部分： 儲存機制模式 |Microsoft 文件
+title: ASP.NET MVC 店面第 2 節： 存放庫模式 |Microsoft Docs
 author: robconery
-description: Rob Conery 逐步解說儲存機制實作，並寫出第一個主要組的單元測試。 他也將結構向上初始服務層 metho...
+description: Rob Conery 逐步解說 Repository 的實作，並寫出的單元測試的第一個主要組。 他也會增加初始服務層方法結構...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 94dd6eec-3685-4323-ac75-75a70a4f766a
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
 msc.type: video
-ms.openlocfilehash: 272a710d05e0d0dd2d358505f54d5fd595ffa41f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2daa77ffbed6a37f46bea6809f2cfd005e630ca5
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874482"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37399879"
 ---
-<a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>儲存機制模式的 ASP.NET MVC Storefront 第 2 部分：
+<a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>ASP.NET MVC 店面第 2 節： 存放庫模式
 ====================
-由[訛 Conery](https://github.com/robconery)
+藉由[Rob Conery](https://github.com/robconery)
 
-Rob Conery 逐步解說儲存機制實作，並寫出第一個主要組的單元測試。 他也將結構的初始服務層方法和介面。
+Rob Conery 逐步解說 Repository 的實作，並寫出的單元測試的第一個主要組。 他也將結構的初始服務層方法和介面。
 
 [&#9654;觀看影片 （10 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-2-the-repository-pattern)
 

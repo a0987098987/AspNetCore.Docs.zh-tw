@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-deploy-a-web-application-during-a-team-build
-title: '[如何:]部署期間 Team Build Web 應用程式嗎？ | Microsoft Docs'
+title: '[How Do i:]部署 Web 應用程式，在 Team Build 期間嗎？ | Microsoft Docs'
 author: pjhacker
-description: 這部影片示範如何建立新的 team build 及如何部署 Web 應用程式建置程序的一部分。 我們會了解包括 deploym...
+description: 這部影片示範如何建立新的 team build 及如何部署您的 Web 應用程式，建置程序的一部分。 我們看到包括來部署...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/01/2007
 ms.topic: article
 ms.assetid: 3c81ee94-4561-4267-864d-2656b33d95c9
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-deploy-a-web-application-during-a-team-build
 msc.type: video
-ms.openlocfilehash: a2e9c9495f2222db12eafacc70d37efa0254a5ec
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 04b2e5fb5d720ad41847e96700fb10ecc2002d57
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30895303"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37384325"
 ---
-<a name="how-do-i-deploy-a-web-application-during-a-team-build"></a>[如何:]部署期間 Team Build Web 應用程式嗎？
+<a name="how-do-i-deploy-a-web-application-during-a-team-build"></a>[How Do i:]部署 Web 應用程式，在 Team Build 期間嗎？
 ====================
-由[Paul 駭客](https://github.com/pjhacker)
+藉由[Paul 駭客](https://github.com/pjhacker)
 
-這部影片示範如何建立新的 team build 及如何部署 Web 應用程式建置程序的一部分。 我們會看到包括部署步驟很簡單，只將 X 複製命令加入至組建指令碼。
+這部影片示範如何建立新的 team build 及如何部署您的 Web 應用程式，建置程序的一部分。 我們看到，包括部署步驟很簡單，只要將 X 複製命令加入至建置指令碼。
 
 [&#9654;觀看影片 （5 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-deploy-a-web-application-during-a-team-build)
 

@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-togglebutton-extender
-title: '[如何:]使用 ASP.NET AJAX ToggleButton Extender？ | Microsoft Docs'
+title: '[How Do i:]使用 ASP.NET AJAX ToggleButton 擴充項？ | Microsoft Docs'
 author: JoeStagner
-description: 示範如何使用間的行為和外觀的標準 ASP.NET 核取方塊控制項，以增強使用者修改的 ToggleButton 擴充項控制項...
+description: 示範如何使用 ToggleButton 擴充項控制項來修改標準 ASP.NET 核取方塊控制項來增強使用者的外觀與行為間...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/01/2007
 ms.topic: article
 ms.assetid: 3116e9bc-681c-48f9-813e-1bcfcec145da
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-togglebutton-extender
 msc.type: video
-ms.openlocfilehash: 5d7ef16a9a4bde7f3dd4464d10078f307c1cc852
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 89f8d1783e60ccad823ad58d3ca0d7542fca2e6b
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885974"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37386390"
 ---
-<a name="how-do-i-use-the-aspnet-ajax-togglebutton-extender"></a>[如何:]使用 ASP.NET AJAX ToggleButton Extender？
+<a name="how-do-i-use-the-aspnet-ajax-togglebutton-extender"></a>[How Do i:]使用 ASP.NET AJAX ToggleButton 擴充項？
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
-示範如何使用 ToggleButton 擴充項控制項修改標準 ASP.NET 核取方塊控制項，以增強使用者介面的外觀和行為。
+示範如何使用 ToggleButton 擴充項控制項修改標準 ASP.NET 核取方塊控制項來增強使用者介面的外觀與行為。
 
 [&#9654;觀看影片 （7 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-togglebutton-extender)
 

@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/enable-in-line-editing-in-aspnet-dynamic-data-applications
-title: 啟用 ASP.NET 動態資料的應用程式中編輯內嵌 |Microsoft 文件
+title: 啟用 ASP.NET 動態資料應用程式中的內嵌編輯 |Microsoft Docs
 author: JoeStagner
-description: 這段影片會示範如何使用 啟用 ASP.NET 應用程式中動態資料編輯列在 URL 路由。
+description: 這段影片會示範如何使用 以啟用內嵌編輯您 ASP.NET 動態資料應用程式中的 URL 路由。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/23/2008
 ms.topic: article
 ms.assetid: a22201df-c031-4505-b3bf-9a0a9667d62b
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/enable-in-line-editing-in-aspnet-dynamic-data-applications
 msc.type: video
-ms.openlocfilehash: 1e248df1f78c360f0d92633b5c14c523983c2966
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 16fc853e652f0235b1e669748b93981c4617bb1a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30884564"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387146"
 ---
-<a name="enable-in-line-editing-in-aspnet-dynamic-data-applications"></a>啟用 ASP.NET 動態資料的應用程式中編輯內建
+<a name="enable-in-line-editing-in-aspnet-dynamic-data-applications"></a>啟用 ASP.NET 動態資料應用程式中的內嵌編輯
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
-這段影片會示範如何使用 啟用 ASP.NET 應用程式中動態資料編輯列在 URL 路由。
+這段影片會示範如何使用 以啟用內嵌編輯您 ASP.NET 動態資料應用程式中的 URL 路由。
 
 [&#9654;觀看影片 （13 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/enable-in-line-editing-in-aspnet-dynamic-data-applications)
 

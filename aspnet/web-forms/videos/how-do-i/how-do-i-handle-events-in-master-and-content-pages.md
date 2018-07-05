@@ -1,28 +1,27 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-handle-events-in-master-and-content-pages
-title: '[如何:]在 Master 和內容頁面中處理事件 |Microsoft 文件'
+title: '[How Do i:]在主版頁面和內容頁中處理事件 |Microsoft Docs'
 author: rick-anderson
-description: 在這段影片 Chris Pels 會顯示如何將事件處理主要和個別的內容頁面中。 即使主要和個別 conte 的最終結果...
+description: 在這段影片 Chris Pels 將會顯示如何處理事件的主要和個別的內容頁中。 即使主要和個別 conte 的最終結果...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
 ms.topic: article
 ms.assetid: 9b5f1ca6-b394-4b33-8b60-fd0587341482
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-handle-events-in-master-and-content-pages
 msc.type: video
-ms.openlocfilehash: 0e91d21600e033de722b5b45a473739011e1d584
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 210c19f94a0a004ace459f67a6dd81bf284eeb97
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525997"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372724"
 ---
-<a name="how-do-i-handle-events-in-master-and-content-pages"></a>[如何:]在 Master 和內容頁面中處理事件
+<a name="how-do-i-handle-events-in-master-and-content-pages"></a>[How Do i:]在主版頁面和內容頁中處理事件
 ====================
-由[Chris Pels](https://twitter.com/chrispels)
+藉由[Chris Pels](https://twitter.com/chrispels)
 
-在這段影片 Chris Pels 會顯示如何將事件處理主要和個別的內容頁面中。 即使主要和個別的內容頁面的最終結果是在使用者的瀏覽器中轉譯單一 ASP.NET 頁面的事件處理中每種類型的頁面是分開處理。 如果控制項位於對應的事件處理常式預設位於主版頁面中的主版頁面。 也適用於 [內容] 頁面中的控制項。 請參閱兩種方法，讓位於主版頁面中的 [內容] 頁面的程式碼後置處理控制項的事件。 這允許 「 通訊 」 之間的主版頁面和內容頁面。
+在這段影片 Chris Pels 將會顯示如何處理事件的主要和個別的內容頁中。 即使主要和個別的內容頁面的最終結果是單一的 ASP.NET 網頁使用者的瀏覽器中的事件處理每種頁面呈現是分開處理。 如果控制項位於對應的事件處理常式預設位於主版頁面中的主版頁面。 這也適用於 [內容] 頁面中的控制項。 兩種方法可讓位於主版頁面中的 [內容] 頁面的程式碼後置處理控制項的事件，請參閱。 如此 「 通訊 」 之間的主版頁面和內容頁面。
 
 [&#9654;觀看影片 （23 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-handle-events-in-master-and-content-pages)

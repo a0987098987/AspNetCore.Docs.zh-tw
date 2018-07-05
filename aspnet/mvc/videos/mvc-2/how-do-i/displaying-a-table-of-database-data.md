@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/displaying-a-table-of-database-data
-title: 顯示資料庫資料的資料表 |Microsoft 文件
+title: 顯示資料庫資料的資料表 |Microsoft Docs
 author: StephenWalther
-description: 需要在 ASP.NET MVC 檢視中顯示的一組資料庫記錄嗎？ 了解兩個方法的 HTML 表格中顯示的記錄。 您會學到如何執行所有 t...
+description: 需要在 ASP.NET MVC 檢視中顯示一組資料庫記錄嗎？ 了解兩種方法可以顯示 HTML 表格中的記錄。 您了解如何執行所有 t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/20/2008
 ms.topic: article
 ms.assetid: 00a12df9-1f89-4fc5-9d43-19a8d5b80392
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/displaying-a-table-of-database-data
 msc.type: video
-ms.openlocfilehash: a8c3bd87273323d570baeb662ec70083750914e8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1486ff9f87bffea27f42d2172454d61a84850ea1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30867732"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37401149"
 ---
 <a name="displaying-a-table-of-database-data"></a>顯示資料庫資料的資料表
 ====================
-由[Stephen Walther](https://github.com/StephenWalther)
+藉由[Stephen Walther](https://github.com/StephenWalther)
 
-需要在 ASP.NET MVC 檢視中顯示的一組資料庫記錄嗎？ 了解兩個方法的 HTML 表格中顯示的記錄。 您會學到如何執行所有內嵌的格式。 您也了解如何使用 ASP.NET MVC 使用者控制項建立範本。
+需要在 ASP.NET MVC 檢視中顯示一組資料庫記錄嗎？ 了解兩種方法可以顯示 HTML 表格中的記錄。 您了解如何執行所有格式化內嵌。 您也了解如何使用 ASP.NET MVC 使用者控制項建立範本。
 
 [&#9654;觀看影片 （15 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/displaying-a-table-of-database-data)
 

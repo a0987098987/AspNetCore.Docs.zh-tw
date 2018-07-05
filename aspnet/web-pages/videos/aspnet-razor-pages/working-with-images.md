@@ -1,31 +1,30 @@
 ---
 uid: web-pages/videos/aspnet-razor-pages/working-with-images
-title: 使用影像 |Microsoft 文件
+title: 使用映像 |Microsoft Docs
 author: JoeStagner
-description: 以映像教學課程使用的視訊伴侶
+description: 如何使用影像教學課程的影片伴侶
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2011
 ms.topic: article
 ms.assetid: 38e21ba3-9b08-4397-a8ab-45d0e45448af
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/working-with-images
 msc.type: video
-ms.openlocfilehash: 711d0c980e08ee134abe0c8ae0ce64240b5dce6b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: afa9bfa1303e15679a26a7fdf90d69191d84aab9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896179"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37401177"
 ---
 <a name="working-with-images"></a>使用影像
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
-以映像教學課程使用的視訊伴侶
+如何使用影像教學課程的影片伴侶
 
-[&#9654;觀看影片 （26 分）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-images)
+[&#9654;觀看影片 （26 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-images)
 
 > [!div class="step-by-step"]
 > [上一頁](working-with-files.md)

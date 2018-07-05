@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview
-title: ASP.NET MVC Storefront 第 1 部分： 架構的討論和概觀 |Microsoft 文件
+title: ASP.NET MVC 店面第 1 節： 架構的討論和概觀 |Microsoft Docs
 author: robconery
-description: Rob Conery 涵蓋的初始的架構，以在這裡，在第 1 部分，其中他 Ayende Rahien 和 Steve Harman 討論儲存機制模式。 他也會要求 Phil...
+description: Rob Conery 涵蓋初始的架構，以在這裡，第 1 部，他將儲存機制模式討論名 Rahien 與 Steve Harman。 他也會要求 Phil...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 194a163b-2aad-4cad-bf1f-e9ce3f80add0
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview
 msc.type: video
-ms.openlocfilehash: 20c4579e7541b5e05a0254b07925fce016b7cc84
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2ad286b9b0367e5c423cc4b88403bc0ee9a8dec1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871645"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381866"
 ---
-<a name="aspnet-mvc-storefront-part-1-architectural-discussion-and-overview"></a>ASP.NET MVC Storefront 第 1 部分： 架構的討論和概觀
+<a name="aspnet-mvc-storefront-part-1-architectural-discussion-and-overview"></a>ASP.NET MVC 店面第 1 節： 架構的討論和概觀
 ====================
-由[訛 Conery](https://github.com/robconery)
+藉由[Rob Conery](https://github.com/robconery)
 
-Rob Conery 涵蓋的初始的架構，以在這裡，在第 1 部分，其中他 Ayende Rahien 和 Steve Harman 討論儲存機制模式。 他也會要求 Phil Haack 什麼是第一次： 測試雞或模型蛋。
+Rob Conery 涵蓋初始的架構，以在這裡，第 1 部，他將儲存機制模式討論名 Rahien 與 Steve Harman。 他也會要求 Phil Haack 的第一個功能： 測試雞或模型蛋。
 
 [&#9654;觀看影片 （10 分鐘）](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview)
 

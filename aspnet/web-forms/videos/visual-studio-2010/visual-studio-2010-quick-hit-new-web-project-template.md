@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-new-web-project-template
-title: Visual Studio 2010 快速叫用-新的 Web 專案範本 |Microsoft 文件
+title: Visual Studio 2010 快速叫用-新的 Web 專案範本 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解 Visual Studio 的新 web 專案入門範本。
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 11/11/2009
 ms.topic: article
 ms.assetid: adb92a60-cdb7-4da5-a23d-267e2717953e
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-new-web-project-template
 msc.type: video
-ms.openlocfilehash: 2d3d0f41799382efba2059e0b8c3e3ef3346e835
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 63d1cb897d649d6e2c6562356c916052fa17f0c6
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30893764"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37373675"
 ---
-<a name="visual-studio-2010-quick-hit---new-web-project-template"></a>Visual Studio 2010"快速 Hit"-新的 Web 專案範本
+<a name="visual-studio-2010-quick-hit---new-web-project-template"></a>Visual Studio 2010 」 快速 Hit"-新的 Web 專案範本
 ====================
-由[Joe stagner 以](https://github.com/JoeStagner)
+藉由[Joe Stagner](https://github.com/JoeStagner)
 
 在這段影片中，您將了解 Visual Studio 的新 web 專案入門範本。
 

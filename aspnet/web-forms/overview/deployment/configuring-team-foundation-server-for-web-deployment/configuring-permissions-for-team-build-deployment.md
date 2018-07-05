@@ -13,7 +13,7 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server
 msc.type: authoredcontent
 ms.openlocfilehash: f84e72bd5991b0407008ccdaff5243979cbb986e
 ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2018
 ms.locfileid: "37384658"

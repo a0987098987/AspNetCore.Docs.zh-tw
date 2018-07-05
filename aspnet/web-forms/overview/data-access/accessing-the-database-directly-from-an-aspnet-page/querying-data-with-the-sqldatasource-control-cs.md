@@ -4,19 +4,16 @@ title: 使用 SqlDataSource 控制項 (C#) 來查詢資料 |Microsoft Docs
 author: rick-anderson
 description: 在先前的教學課程中，我們會使用 ObjectDataSource 控制項將完全分開的資料存取層中的展示層。 開始此的老師...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: 60512d6a-b572-4b7a-beb3-3e44b4d2020c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0bde7d76db2da71b3f12fc9ead2baa4b2028206d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6b9ca474b7a085302d287a223c08abe2fa5336b0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369805"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815287"
 ---
 <a name="querying-data-with-the-sqldatasource-control-c"></a>使用 SqlDataSource 控制項 (C#) 來查詢資料
 ====================

@@ -4,19 +4,16 @@ title: 編輯器控制項 |Microsoft Docs
 author: JoeStagner
 description: 這段影片將示範如何使用新的編輯器 WYSIWYG 編輯器控制項，從 Microsoft AJAX Control Toolkit。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/13/2009
-ms.topic: article
 ms.assetid: 8c766d28-60c0-423b-afaa-7cb2a93f8d7e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/editor-control
 msc.type: video
-ms.openlocfilehash: 6498deb68897a81647c3478de2d1ab8939adbfb3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5389e7d681d20f13e043778c557c8159221b4f91
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387347"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842467"
 ---
 <a name="editor-control"></a>編輯器控制項
 ====================

@@ -4,19 +4,16 @@ title: 新增控制器 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: cc764f3b-6921-486a-8f44-c6ccd1249acd
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: be8b21b4b8db60b1a67918d2df8779e729243fc8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 77389bfa4774857eb2a607b0a70e982826312e03
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374668"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802288"
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================

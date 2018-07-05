@@ -4,19 +4,16 @@ title: 了解 ASP.NET AJAX 當地語系化 |Microsoft Docs
 author: scottcate
 description: 當地語系化是設計及整合應用程式或應用程式元件的支援特定語言和文化特性的程序。 Mic...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/14/2008
-ms.topic: article
 ms.assetid: c1a35f18-bab9-41f7-8497-15530c37a09d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: 7f089e147ae9c4c42da0ca798149488043480a79
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ce6404ce4faa1018a4f8118f6167a4f93956abd3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382504"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815000"
 ---
 <a name="understanding-aspnet-ajax-localization"></a>了解 ASP.NET AJAX 當地語系化
 ====================

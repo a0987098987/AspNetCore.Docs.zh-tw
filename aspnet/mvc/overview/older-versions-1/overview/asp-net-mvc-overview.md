@@ -4,19 +4,16 @@ title: ASP.NET MVC 概觀 |Microsoft Docs
 author: microsoft
 description: 深入了解 ASP.NET MVC 應用程式和 ASP.NET Web Form 應用程式之間的差異。 了解如何決定何時要建置 ASP.NET MVC 應用程式。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/27/2009
-ms.topic: article
 ms.assetid: 2dcb44a4-5cbf-4d62-b363-718104082d86
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/overview/asp-net-mvc-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 2a83f77815c4e55ac2b9bac30dc5019b329baeac
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6f40bd19e19f05b91fbee59aefb2914e623d6f25
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399814"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802327"
 ---
 <a name="aspnet-mvc-overview"></a>ASP.NET MVC 概觀
 ====================

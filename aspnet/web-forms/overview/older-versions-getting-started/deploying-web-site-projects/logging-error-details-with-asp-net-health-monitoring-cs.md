@@ -4,19 +4,16 @@ title: 記錄錯誤的詳細資料，使用 ASP.NET 狀況監控 (C#) |Microsoft
 author: rick-anderson
 description: Microsoft 的健全狀況監視系統會提供簡單且可自訂的方式來記錄各種 web 事件，包括未處理的例外狀況。 本教學課程將逐步引導儲存...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: b1abb452-642a-4ff3-8504-37b85590ff79
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 73b78b99f68dc32f37bcd16865091deebdb1399a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bd6b89f63c6d0634e6d6b809d8285b9870485c43
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363477"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842639"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>記錄錯誤的詳細資料，使用 ASP.NET 狀況監控 (C#)
 ====================

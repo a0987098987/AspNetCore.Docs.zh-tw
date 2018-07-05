@@ -4,19 +4,16 @@ title: 建立自訂的排序使用者介面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 當顯示一長串的已排序的資料時，它可以是非常有幫助藉由引進分隔符號資料列群組相關的資料。 在本教學課程中我們將看到如何建立...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 6f81b633-9d01-4e52-ae4a-2ea6bc109475
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7671c86d105f7d8a4ef5ce65da500250dce47db0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 96f52b3caf812fcfe82012c2de091acb91b8e0ae
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369550"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842328"
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>建立自訂的排序使用者介面 (C#)
 ====================

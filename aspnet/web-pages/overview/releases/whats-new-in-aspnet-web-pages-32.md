@@ -4,19 +4,16 @@ title: 新功能 ASP.NET Web Pages 3.2 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/30/2014
-ms.topic: article
 ms.assetid: a652beff-8e6b-48ad-bfe4-3703f7ccf0a5
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
 msc.type: authoredcontent
-ms.openlocfilehash: eb5698b2928c1f2d1016ec74c18a63e2df5b3225
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a55c01c1430b983fbe34654cc2c00de05e941d71
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390429"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802247"
 ---
 <a name="whats-new-in-aspnet-web-pages-32"></a>什麼是 ASP.NET Web Pages 3.2 的新功能
 ====================

@@ -4,19 +4,16 @@ title: 顯示資料與 ObjectDataSource (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討使用這個控制項，您可以將擷取自 BLL havi 沒有先前的教學課程中建立資料繫結的 ObjectDataSource 控制項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: af882aef-56f5-4e9a-8f95-3977fde20e74
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7d4d292104703f9aebf131035920a058317011af
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f10745eee9f6ac04e670d710a4ac999c9ddda50b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395382"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814921"
 ---
 <a name="displaying-data-with-the-objectdatasource-c"></a>顯示資料與 ObjectDataSource (C#)
 ====================

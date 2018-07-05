@@ -4,19 +4,16 @@ title: 使用具有詳細資料 DataList (VB) 的主要記錄項目符號清單�
 author: rick-anderson
 description: 在本教學課程會壓縮上一個教學課程的兩頁主要/詳細資料的報表到單一頁面上，t 上顯示的類別目錄名稱的項目符號清單...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2006
-ms.topic: article
 ms.assetid: ee20742f-6fb7-49a0-a009-058fe363aacb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b7fdcb5ba38e89b073960d6bce473c3a5aadf8b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 90629046869460869d6c85e179980811b7bede51
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389634"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841988"
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb"></a>使用具有詳細資料 DataList (VB) 的主要記錄項目符號清單的主要/詳細資料
 ====================

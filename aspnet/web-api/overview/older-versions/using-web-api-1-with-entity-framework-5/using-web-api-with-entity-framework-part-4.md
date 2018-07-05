@@ -4,19 +4,16 @@ title: 第 4 部分： 新增管理員檢視 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/04/2012
-ms.topic: article
 ms.assetid: 792f4513-a508-4d14-a0dd-1a2fe282c7bb
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 599f684ba200821d7fcd33819937c5a5b5a29ce8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8d9d14e5228606a81482eb08086a114ad5145e44
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371047"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828808"
 ---
 <a name="part-4-adding-an-admin-view"></a>第 4 部分： 新增管理員檢視
 ====================

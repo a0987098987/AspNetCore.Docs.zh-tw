@@ -4,19 +4,16 @@ title: 其中包括的檔案上傳選項，當加入新的記錄 (C#) |Microsoft
 author: rick-anderson
 description: 本教學課程會示範如何建立的 Web 介面，可讓使用者輸入的文字資料，並將二進位檔案上傳。 為了說明選項可用 t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/27/2007
-ms.topic: article
 ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c109c493875c08dc1057fc6a244f58806b6bae46
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5cc1db20a724c8a060e978e2360b977fb16f1e0c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366102"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842377"
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>包含檔案上傳選項，當加入新的記錄 (C#)
 ====================

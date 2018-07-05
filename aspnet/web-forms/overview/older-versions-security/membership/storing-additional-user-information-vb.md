@@ -4,19 +4,16 @@ title: 儲存額外的使用者資訊 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們將建置非常基本的訪客留言板應用程式回答這個問題。 在此情況下，我們將探討 modeli 的不同選項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: ee4b924e-8002-4dc3-819f-695fca1ff867
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 06e28653b281461eff6548de6951f8463c827754
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2ea731012f8c053d1e1eac293fdbeaec66db23bf
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381861"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816034"
 ---
 <a name="storing-additional-user-information-vb"></a>儲存額外的使用者資訊 (VB)
 ====================

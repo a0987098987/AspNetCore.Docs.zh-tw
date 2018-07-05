@@ -4,19 +4,16 @@ title: 教學課程： 高頻率即時與 SignalR 2 |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何建立 web 應用程式，使用 ASP.NET SignalR 提供高頻率的傳訊功能。 高頻率訊息處理中...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 9f969dda-78ea-4329-b1e3-e51c02210a2b
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 8bcc80492804aff2e5a7d3c63004a84447600530
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 14ec1c8b4c034332afd8d3102a310fd3fb399d32
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393244"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829459"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>教學課程： 高頻率即時與 SignalR 2
 ====================

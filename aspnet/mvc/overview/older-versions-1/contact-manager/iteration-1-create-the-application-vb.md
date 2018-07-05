@@ -4,19 +4,16 @@ title: '反覆項目 #1 – 建立應用程式 (VB) |Microsoft Docs'
 author: microsoft
 description: 在第一次反覆運算中，我們建立連絡人管理員中的最簡單的方式可能。 我們加入基本資料庫作業的支援： 建立、 讀取、 更新和 D...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2009
-ms.topic: article
 ms.assetid: 5b033582-1646-42c2-b20d-7edc8814e970
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cf2fe15a0db8e3bd90a3bc8a7ef4f0367a047a33
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: aee177164293c178fa7d2d4acfb60f85dc98bb05
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367330"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803000"
 ---
 <a name="iteration-1--create-the-application-vb"></a>反覆項目 #1 – 建立應用程式 (VB)
 ====================

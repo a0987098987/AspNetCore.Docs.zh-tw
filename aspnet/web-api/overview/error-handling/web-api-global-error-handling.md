@@ -4,19 +4,16 @@ title: 全域錯誤處理中 ASP.NET Web API 2 |Microsoft Docs
 author: davidmatson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/03/2014
-ms.topic: article
 ms.assetid: bffd7863-f63b-4b23-a13c-372b5492e9fb
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 8703ea4c20003148c330bcd534ccacc1dc72c850
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d1d1a081713da0771981229db8e8bd67a5103bf9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377827"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815859"
 ---
 <a name="global-error-handling-in-aspnet-web-api-2"></a>全域錯誤處理 ASP.NET Web API 2 中
 ====================

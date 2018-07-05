@@ -4,19 +4,16 @@ title: '[第 7 課:]資料繫結至使用者介面控制項 |Microsoft Docs'
 author: microsoft
 description: 在這一課，您將了解如何在 ASP.NET 中顯示的資料&#160;2.0 web 應用程式可以透過一些新的資料繫結控制項。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/29/2005
-ms.topic: article
 ms.assetid: 49625de7-06c3-484c-bd76-d322b9ca41ea
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-7-databinding-to-user-interface-controls
 msc.type: video
-ms.openlocfilehash: aa7d2143e60d504041302f85322970aeffbc1011
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 868072c6a3ccc8d461cd86d2092b5b8c82ed7fc9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37361398"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802225"
 ---
 <a name="lesson-7-databinding-to-user-interface-controls"></a>[第 7 課:]資料繫結至使用者介面控制項
 ====================

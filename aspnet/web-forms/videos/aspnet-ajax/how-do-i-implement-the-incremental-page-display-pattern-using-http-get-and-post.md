@@ -4,19 +4,16 @@ title: '[How Do i:]實作使用 HTTP GET 和 POST 的累加頁面顯示模式？
 author: JoeStagner
 description: 這段影片中探討另一個 AJAX 累加頁面顯示模式中擷取並以累加方式顯示網頁。 在這段影片...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/13/2007
-ms.topic: article
 ms.assetid: 28d5bb59-9aad-4cdd-8088-1e9d3d230ac5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post
 msc.type: video
-ms.openlocfilehash: b5bcbf668aae1e4865625e488244d323e35aebed
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5b694836abd377259b72e8b48ce2a3b70196bfc1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386435"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842504"
 ---
 <a name="how-do-i-implement-the-incremental-page-display-pattern-using-http-get-and-post"></a>[How Do i:]實作使用 HTTP GET 和 POST 的累加頁面顯示模式？
 ====================

@@ -4,19 +4,16 @@ title: 使用基本 asp.net 表單驗證 |Microsoft Docs
 author: JoeStagner
 description: 利用基本形式的程序的 Joe Stagner 會逐步引導架構以程式設計方式使用 ASP.NET 的驗證。 建議，檢視器會讀取這個，才能...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2008
-ms.topic: article
 ms.assetid: 5356f9f4-63a5-4481-87a3-78bb1dfc6f0f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/using-basic-forms-authentication-in-aspnet
 msc.type: video
-ms.openlocfilehash: 08d849ee763bc89e635e74b5ca75aefc57b5a1f6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2f239adceb6c8c8d6f1eabcf6e5754b30435791f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364603"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815904"
 ---
 <a name="using-basic-forms-authentication-in-aspnet"></a>在 ASP.NET 中使用基本的表單驗證
 ====================

@@ -4,19 +4,16 @@ title: 批次刪除 (VB) |Microsoft Docs
 author: rick-anderson
 description: 了解如何刪除單一作業中的多個資料庫記錄。 在使用者介面層，我們建置時建立在先前的工作階段 tut 增強型 GridView...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 4fb72f75-32ab-4bf7-a764-be20367be726
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c99ec343d9197e5d2aa7b1a7e49278d13b4e16cf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c7a0db8708c95cc348619cadd21514f4bea2e553
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368242"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815985"
 ---
 <a name="batch-deleting-vb"></a>批次刪除 (VB)
 ====================

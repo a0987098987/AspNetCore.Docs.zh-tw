@@ -4,19 +4,16 @@ title: ASP.NET 行動控制項測試過的裝置 |Microsoft Docs
 author: rick-anderson
 description: 下列的裝置和瀏覽器已經過測試 Microsoft Mobile 網際網路工具組 1.0 和 ASP.NET mobile 控制項。 Microsoft Mobile 網際網路...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/28/2011
-ms.topic: article
 ms.assetid: 51b447d5-eaa1-4df1-917c-f4f2746ed62d
-ms.technology: ''
 msc.legacyurl: /mobile/tested-devices
 msc.type: content
-ms.openlocfilehash: 443414a02612136d35cf1db8dd1d7c0d2142187e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: dba860d74e2dbded832d4f6e9da6edfecbf4c303
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373587"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815870"
 ---
 <a name="aspnet-mobile-controls-tested-devices"></a>ASP.NET 行動控制項測試過的裝置
 ====================

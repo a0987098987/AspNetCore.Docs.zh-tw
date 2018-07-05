@@ -4,19 +4,16 @@ title: '[How Do i:]在 ASP.NET 中實作跨網頁回傳 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何在 ASP.NET 中，[來源] 頁面上的控制項位置引發回傳事件以不同的目標建立跨網頁回傳...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/10/2008
-ms.topic: article
 ms.assetid: cd88fa45-8f51-48f5-b642-5021acddec40
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-a-cross-page-postback-in-aspnet
 msc.type: video
-ms.openlocfilehash: 562fdafd25f4d8ac259a57989f2a42aa979591cc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 51097f9444721e2af86ac4c3d5d37f7aaba83e67
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378536"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815417"
 ---
 <a name="how-do-i-implement-a-cross-page-postback-in-aspnet"></a>[How Do i:]在 ASP.NET 中實作跨網頁回傳
 ====================

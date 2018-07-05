@@ -4,19 +4,16 @@ title: '[How Do i:]建置自訂的 ASP.NET AJAX 伺服器控制項嗎？ | Micro
 author: rick-anderson
 description: 了解如何使用 Microsoft AJAX Library 中的 AJAX extensions 的 ASP.NET AJAX 功能以建立自訂的 Web 伺服器控制項。 這段影片將逐步引導您...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/25/2007
-ms.topic: article
 ms.assetid: 1165e0b4-2240-4dc2-aa94-ef6664c71a8c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-build-a-custom-aspnet-ajax-server-control
 msc.type: video
-ms.openlocfilehash: c4b6d40ea9a3f38d66400a3c6458a84bc8f722fc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 06a95297fa3f9d8a581267e0604cbf2880429a85
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397419"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828497"
 ---
 <a name="how-do-i-build-a-custom-aspnet-ajax-server-control"></a>[How Do i:]建置自訂的 ASP.NET AJAX 伺服器控制項嗎？
 ====================

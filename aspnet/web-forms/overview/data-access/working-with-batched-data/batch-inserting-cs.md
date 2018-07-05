@@ -4,19 +4,16 @@ title: 批次插入 (C#) |Microsoft Docs
 author: rick-anderson
 description: 了解如何在單一作業中插入多個資料庫的記錄。 在使用者介面層，我們會擴充以允許使用者輸入多個 n GridView...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: cf025e08-48fc-4385-b176-8610aa7b5565
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 347cd862afc70fa9e3386246ae14d989c5de1ba6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9979a991935d97ef7c3b2ac62666da318b95d063
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370317"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829055"
 ---
 <a name="batch-inserting-c"></a>批次插入 (C#)
 ====================

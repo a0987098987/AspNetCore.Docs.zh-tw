@@ -4,19 +4,16 @@ title: 刪除 (VB) 時新增用戶端確認 |Microsoft Docs
 author: rick-anderson
 description: 在介面中，我們建立了到目前為止，使用者不小心刪除資料時在想要按一下 [編輯] 按鈕，按一下 [刪除] 按鈕。 在此 t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 6331e02e-c465-4cdf-bd3f-f07680c289d6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: acab34cb362bd3e3351156a41a6826d03e5a749f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2318018b20841038ebb7a6e4900cf9849057d941
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388263"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802485"
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a>刪除 (VB) 時新增用戶端確認
 ====================

@@ -4,19 +4,16 @@ title: 第 1 部分： 概觀與建立專案 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/03/2012
-ms.topic: article
 ms.assetid: 94421d86-68c4-4471-bf5f-82d654a17252
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: f0616383fce2e92f7d1a0b63bf840208f7327bf7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0540f3142d73fef616e30544bb1130b75c0bb436
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394057"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816301"
 ---
 <a name="part-1-overview-and-creating-the-project"></a>第 1 部分： 概觀與建立專案
 ====================

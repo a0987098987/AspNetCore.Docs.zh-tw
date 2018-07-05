@@ -4,19 +4,16 @@ title: 上的 jQuery UI 1.9.1 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/22/2014
-ms.topic: article
 ms.assetid: e63308f2-b467-40db-896e-95eba90b2a16
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui191
 msc.type: content
-ms.openlocfilehash: 7e6200cfab14f88d5a9a773ab705f4f02b4e9159
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cad9a07e0d6eb132fa781e4b1449cddc7a62ce83
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390102"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815761"
 ---
 <a name="jquery-ui-191-on-the-microsoft-ajax-cdn"></a>上的 jQuery UI 1.9.1 Microsoft Ajax CDN
 ====================

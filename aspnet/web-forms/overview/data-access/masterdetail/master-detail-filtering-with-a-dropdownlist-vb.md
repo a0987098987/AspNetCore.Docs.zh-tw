@@ -4,19 +4,16 @@ title: 主版/詳細篩選使用 dropdownlist 進行 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會看到如何顯示在 DropDownList 控制項和 GridView 中選取的清單項目的詳細資料的主要記錄。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: ea44717e-ab2e-46cd-a692-e4a9c0de194c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d15348812abf88fa35485c0d3415b2683225b6b5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a1bd1a20950376244c1d461d139f3eee6bc9a9cc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386691"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816252"
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>主版/詳細篩選使用 dropdownlist 進行 (VB)
 ====================

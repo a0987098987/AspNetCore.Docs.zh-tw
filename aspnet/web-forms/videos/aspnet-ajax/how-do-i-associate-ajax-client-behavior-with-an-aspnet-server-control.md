@@ -4,19 +4,16 @@ title: '[How Do i:]關聯的 ASP.NET 伺服器控制項中的 AJAX 用戶端行�
 author: rick-anderson
 description: 了解如何建立根據可以與.aspx 頁面上的 ASP.NET 伺服器控制項相關聯的 Microsoft AJAX 用戶端行為。 用戶端行為 e...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/18/2007
-ms.topic: article
 ms.assetid: 3a75ac02-225d-4e30-8669-0156c3ef06c7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control
 msc.type: video
-ms.openlocfilehash: 16d7ab6d7531ce5f775d8e966847a5a42902c965
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 00d45c3dcf9092dbb51b7e162c2b9fb190090c5d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392093"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815998"
 ---
 <a name="how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control"></a>[How Do i:]關聯的 ASP.NET 伺服器控制項中的 AJAX 用戶端行為？
 ====================

@@ -4,19 +4,16 @@ title: '[How Do i:]以程式設計方式將控制項加入 ASP.NET 網頁 |Micro
 author: rick-anderson
 description: 在此影片的 Chris Pels 將會示範如何在執行階段以程式設計方式建立的 ASP.NET 伺服器控制項，並將它新增至頁面。 首先，了解基本概念 o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/24/2008
-ms.topic: article
 ms.assetid: 1576e0a4-73ca-4816-bc09-20ae393a66f9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-controls-to-an-aspnet-web-page-programmatically
 msc.type: video
-ms.openlocfilehash: f0863e031ca52b6373f665ea68c718d28d962565
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0e55288d341833256cbc0d1c480a4712f836649f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367369"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802548"
 ---
 <a name="how-do-i-add-controls-to-an-aspnet-web-page-programmatically"></a>[How Do i:]以程式設計方式將控制項加入 ASP.NET 網頁
 ====================

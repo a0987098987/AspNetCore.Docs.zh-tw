@@ -4,19 +4,16 @@ title: 正在建立新的預存程序為具類型資料集的 Tableadapter (VB) 
 author: rick-anderson
 description: 在先前的教學課程中我們有我們的程式碼中建立 SQL 陳述式，並傳遞到資料庫來執行的陳述式。 另一個方法是使用 s...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/18/2007
-ms.topic: article
 ms.assetid: a5a4a9ba-d18d-489a-a6b0-a3c26d6b0274
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 38ce77460a00252850c7235a6affbeb8097ccea4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 601883ea0e0bbea08e564d77eea5ce7d19956cb7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366284"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829609"
 ---
 <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>正在建立新的預存程序為具類型資料集的 Tableadapter (VB)
 ====================

@@ -4,19 +4,16 @@ title: 使用 Visual Studio 的 ASP.NET Web 部署： 簡介 |Microsoft Docs
 author: tdykstra
 description: 本系列教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式到 Azure App Service Web Apps 或協力廠商裝載提供者，藉由使用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/15/2013
-ms.topic: article
 ms.assetid: 24ad086d-865e-433c-9ac9-05f1a553da16
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: ad06639db9c5de78fb9926c7ab00e348bcbb20cb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 11e6f6a695b4e98cf5d061ca3c3197922e971644
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382552"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828347"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>使用 Visual Studio 的 ASP.NET Web 部署： 簡介
 ====================

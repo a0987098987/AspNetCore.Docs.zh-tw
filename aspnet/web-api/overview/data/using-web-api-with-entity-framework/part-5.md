@@ -4,19 +4,16 @@ title: 建立資料傳輸物件 (Dto) |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/16/2014
-ms.topic: article
 ms.assetid: 0fd07176-b74b-48f0-9fac-0f02e3ffa213
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 6a066f1aca909afc2956e2026d9025cb87f10b1f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a1be1b72559aaffdf530402313f58d6c2e25b189
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399921"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828159"
 ---
 <a name="create-data-transfer-objects-dtos"></a>建立資料傳輸物件 (Dto)
 ====================

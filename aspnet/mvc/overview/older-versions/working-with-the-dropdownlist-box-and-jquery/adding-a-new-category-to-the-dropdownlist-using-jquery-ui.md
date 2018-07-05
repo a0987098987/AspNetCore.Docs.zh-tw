@@ -4,19 +4,16 @@ title: 將新類別新增至 DropDownList 使用 jQuery UI |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2012
-ms.topic: article
 ms.assetid: 44aa1ac4-6ea2-48a2-972d-52710c48eae5
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 5d23b1d41834d669bb8006ae0ac963fab60918dc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e2528b74b714a3f691b07ed2429b3fe9eb3c2074
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402989"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802522"
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>將新類別新增至 DropDownList 使用 jQuery UI
 ====================

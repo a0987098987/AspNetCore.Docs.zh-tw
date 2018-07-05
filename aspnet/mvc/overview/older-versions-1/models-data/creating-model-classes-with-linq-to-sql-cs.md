@@ -4,19 +4,16 @@ title: 建立模型類別使用 LINQ to SQL (C#) |Microsoft Docs
 author: microsoft
 description: 本教學課程的目標是說明建立 ASP.NET MVC 應用程式的模型類別的一種方法。 在本教學課程中，您會學習如何建置模型 c...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: f84b4a16-e8bb-49e8-87a0-1832879a3501
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 01a8443326807ff784999288761de85b6ea976b9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 35fa1e882268eaa1bfbd3589c8173e853ad5c5a7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395356"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815846"
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>使用 LINQ to SQL (C#) 建立模型類別
 ====================

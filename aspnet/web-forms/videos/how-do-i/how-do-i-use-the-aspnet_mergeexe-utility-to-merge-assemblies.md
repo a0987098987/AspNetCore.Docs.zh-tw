@@ -4,19 +4,16 @@ title: '[How Do i:]使用 aspnet_merge.exe 公用程式合併組件 |Microsoft D
 author: rick-anderson
 description: 在這段影片 Chris Pels 將示範如何使用 aspnet_merge.exe 公用程式，結合使用 aspnet_compiler.exe 公用已編譯的組件...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2008
-ms.topic: article
 ms.assetid: 2bfd5353-2a35-449e-aeff-0fb94cf10030
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies
 msc.type: video
-ms.openlocfilehash: f00c1b23ec907711fdaf0e24e4a4a20ff1d2f556
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2e5fc2e53518c0dcfe16842b7bd6eccec1d67e83
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378620"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829527"
 ---
 <a name="how-do-i-use-the-aspnetmergeexe-utility-to-merge-assemblies"></a>[How Do i:]使用 aspnet_merge.exe 公用程式合併組件
 ====================

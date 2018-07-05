@@ -1,29 +1,28 @@
 ---
 uid: signalr/overview/security/persistent-connection-authorization
-title: SignalR 持續連線的驗證和授權 |Microsoft 文件
+title: SignalR 持續連線的驗證和授權 |Microsoft Docs
 author: pfletcher
-description: 本主題描述如何強制執行授權持續連線。 如需安全性整合的 SignalR 應用程式，一般資訊...
+description: 本主題描述如何強制執行授權的持續連線。 如需將安全性整合至 SignalR 應用程式的一般資訊...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
 ms.topic: article
 ms.assetid: e264677b-9c01-47ec-94f9-3cd8f08f94af
 ms.technology: dotnet-signalr
-ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/persistent-connection-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: d559cfa21f6444b2361fd003b9ce3d2c9c6c57a4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d15ac6ec8b3bab041a13918a3577310c62e66b8f
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28042195"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372222"
 ---
 <a name="authentication-and-authorization-for-signalr-persistent-connections"></a>SignalR 持續連線的驗證和授權
 ====================
-由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
+藉由[Patrick Fletcher](https://github.com/pfletcher)， [Tom FitzMacken](https://github.com/tfitzmac)
 
-> 本主題描述如何強制執行授權持續連線。 如需安全性整合的 SignalR 應用程式的一般資訊，請參閱[安全性簡介](introduction-to-security.md)。 
+> 本主題描述如何強制執行授權的持續連線。 如需將安全性整合至 SignalR 應用程式的一般資訊，請參閱[安全性簡介](introduction-to-security.md)。 
 > 
 > ## <a name="software-versions-used-in-this-topic"></a>本主題中使用的軟體版本
 > 
@@ -34,21 +33,21 @@ ms.locfileid: "28042195"
 >   
 > 
 > 
-> ## <a name="previous-versions-of-this-topic"></a>本主題的先前版本
+> ## <a name="previous-versions-of-this-topic"></a>本主題的上一個版本
 > 
 > 如需舊版 SignalR 的資訊，請參閱[SignalR 舊版](../older-versions/index.md)。
 > 
-> ## <a name="questions-and-comments"></a>問題和註解
+> ## <a name="questions-and-comments"></a>提出問題或意見
 > 
-> 請留下上如何您所喜歡的本教學課程，我們可以改進中將註解放在頁面底部的意見反應。 如果您有與本教學課程不直接相關的問題，您可以將它們來公佈[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或[StackOverflow.com](http://stackoverflow.com/)。
+> 您喜歡本教學課程中的方式，和我們可以改善在頁面底部的註解中，歡迎留下意見反應。 如果您有不直接相關的教學課程中的問題，您可以張貼他們[ASP.NET SignalR 論壇](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR)或是[StackOverflow.com](http://stackoverflow.com/)。
 
 
 ## <a name="enforce-authorization"></a>強制執行授權
 
-若要強制執行時使用授權規則[PersistentConnection](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.persistentconnection(v=vs.111).aspx)必須覆寫`AuthorizeRequest`方法。 您無法使用`Authorize`持續連線的屬性。 `AuthorizeRequest`由 SignalR 架構，以確認使用者已獲授權執行要求的動作的每個要求之前呼叫方法。 `AuthorizeRequest`方法不會從用戶端呼叫; 相反地，透過您的應用程式的標準驗證機制來驗證使用者。
+若要強制執行時使用授權規則[PersistentConnection](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.persistentconnection(v=vs.111).aspx)您必須覆寫`AuthorizeRequest`方法。 您無法使用`Authorize`具有持續性連線屬性。 `AuthorizeRequest` SignalR 架構，以確認使用者已獲授權執行要求的動作每個要求之前所呼叫方法。 `AuthorizeRequest`方法不會從用戶端呼叫; 相反地，透過您的應用程式的標準驗證機制來驗證使用者。
 
-下列範例顯示如何限制已驗證的使用者要求。
+下列範例顯示如何限制已驗證的使用者的要求。
 
 [!code-csharp[Main](persistent-connection-authorization/samples/sample1.cs)]
 
-您可以將任何自訂的授權邏輯 AuthorizeRequest 方法;例如，檢查使用者是否屬於特定角色。
+您可以新增任何自訂的授權邏輯中的 AuthorizeRequest 方法;例如，檢查使用者是否屬於特定的角色。

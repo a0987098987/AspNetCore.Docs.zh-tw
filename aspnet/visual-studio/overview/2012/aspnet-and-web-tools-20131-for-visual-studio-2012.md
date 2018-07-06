@@ -4,19 +4,16 @@ title: 適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資�
 author: microsoft
 description: 本文件說明版本的 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/13/2013
-ms.topic: article
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
-ms.technology: ''
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 85cd45c25e0f2ad3c8d6d6de73a1a493533e7f7b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 33577dec7278694f932ac7eded84359baacf65bc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374256"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829097"
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>適用於 ASP.NET 和 Web 工具 2013.1 for Visual Studio 2012 版本資訊
 ====================

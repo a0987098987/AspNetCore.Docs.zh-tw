@@ -4,19 +4,16 @@ title: 自訂 DataList 的編輯介面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將建立更豐富的編輯介面的 DataList，當中包含 dropdownlist 進行並核取方塊。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: a5d13067-ddfb-4c36-8209-0f69fd40e45c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f1af8086fd65f09df3bdb8b5547f7aa779c1f984
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c76e3bc46c7d38140320834a27ec7710d289e7d3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388668"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826114"
 ---
 <a name="customizing-the-datalists-editing-interface-c"></a>自訂 DataList 的編輯介面 (C#)
 ====================

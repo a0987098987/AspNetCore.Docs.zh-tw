@@ -4,19 +4,16 @@ title: Katana 範例 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/17/2014
-ms.topic: article
 ms.assetid: bec04f5d-2638-4417-b288-97c58c8d6379
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/katana-samples
 msc.type: authoredcontent
-ms.openlocfilehash: e81da1e650d8dfd24a3e0fda6aa42b7f360ce12d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a26cdf144d02f0b429994df9d7863163807ac7b5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393315"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827268"
 ---
 <a name="katana-samples"></a>Katana 範例
 ====================

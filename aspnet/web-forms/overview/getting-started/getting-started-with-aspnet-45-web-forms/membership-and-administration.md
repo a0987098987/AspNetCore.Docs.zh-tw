@@ -4,19 +4,16 @@ title: 成員資格和管理 |Microsoft Docs
 author: Erikre
 description: 本系列教學課程將教導您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Forms 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 732a2316-e49f-4f72-becd-0cd72f14457e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: 58eda260ccf2d0f237aaade65017760ed87a8c4f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cdd67b946f58d5a6543bb2443dbf193e21751c48
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368294"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829790"
 ---
 <a name="membership-and-administration"></a>成員資格和管理
 ====================

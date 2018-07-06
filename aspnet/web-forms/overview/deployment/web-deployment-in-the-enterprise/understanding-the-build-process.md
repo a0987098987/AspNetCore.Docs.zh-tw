@@ -4,19 +4,16 @@ title: 了解建置程序 |Microsoft Docs
 author: jrjlee
 description: 本主題提供企業規模建置和部署程序的逐步解說。 本主題中所述的方法會使用自訂的 Microsoft 建置 Engin...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 5b982451-547b-4a2f-a5dc-79bc64d84d40
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
-ms.openlocfilehash: 6c9c901e23342c49a7bb8f1c9fe0e0dd09230cbd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 581b7e996bf5aa4c76a6bf3d55a758677c0bf897
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366820"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804312"
 ---
 <a name="understanding-the-build-process"></a>了解建置程序
 ====================

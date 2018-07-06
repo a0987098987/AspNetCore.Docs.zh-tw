@@ -4,19 +4,16 @@ title: '[How Do i:]將 JavaScript 事件處理常式新增至 ASP.NET 伺服器�
 author: rick-anderson
 description: 在這段影片 Chris Pels 將示範如何使用 ASP.NET 伺服器控制項，以提供用戶端的 JavaScript 方法的介面的 server contr.功能...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/20/2008
-ms.topic: article
 ms.assetid: 4e8d3220-3299-41ad-897b-bbf62e2e667f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-javascript-event-handlers-to-aspnet-server-controls
 msc.type: video
-ms.openlocfilehash: ba0ebf2529450597116c1d098c599c95e8149f1e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e0d77926f49e8517af9495420943dd96036cd49b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402635"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831783"
 ---
 <a name="how-do-i-add-javascript-event-handlers-to-aspnet-server-controls"></a>[How Do i:]將 JavaScript 事件處理常式新增至 ASP.NET 伺服器控制項
 ====================

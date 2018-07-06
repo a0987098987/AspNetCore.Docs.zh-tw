@@ -4,19 +4,16 @@ title: ASP.NET 裝載選項 (C#) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET web 應用程式通常設計、 建立，並在本機開發環境中測試和要部署到生產環境 o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 89a1d2bc-fdfd-4c5c-a3b0-49a08baaf63a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 843db9bd1216c14d31f6fd7c142951a17849d7c2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 12d4e0e4332cf611e304799155b45f5d668da8f6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399220"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804183"
 ---
 <a name="aspnet-hosting-options-c"></a>ASP.NET 裝載選項 (C#)
 ====================

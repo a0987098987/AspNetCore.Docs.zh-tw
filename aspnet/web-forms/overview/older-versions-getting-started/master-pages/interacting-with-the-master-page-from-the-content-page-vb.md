@@ -4,19 +4,16 @@ title: 從 [內容] 頁面 (VB) 的主版頁面與互動 |Microsoft Docs
 author: rick-anderson
 description: 檢驗如何呼叫方法，從 [內容] 頁面中的程式碼中設定屬性等的主版頁面。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/11/2008
-ms.topic: article
 ms.assetid: 081fe010-ba0f-4e7d-b4ba-774840b601c2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d605fea4b6417eec4ac8c89a71986213dbc18c38
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 451b76b2f6a706c7ca6908434b39492e5cba91b9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389211"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826490"
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-vb"></a>互動主版頁面，從 [內容] 頁面 (VB)
 ====================

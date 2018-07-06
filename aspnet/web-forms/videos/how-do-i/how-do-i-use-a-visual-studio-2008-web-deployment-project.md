@@ -4,19 +4,16 @@ title: '[How Do i:]使用 Visual Studio 2008 Web 部署專案 |Microsoft Docs'
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何使用 Visual Studio 2008 Web 部署的附加元件，以更精細的程度的控制能力如何建立部署專案...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/11/2008
-ms.topic: article
 ms.assetid: 9517a342-e414-4c93-b0a6-5b52b391c908
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
 msc.type: video
-ms.openlocfilehash: 651d27d94d6fae61b4d2468faab57a569c303f58
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 183ac4543fb294ca9815ec99f4c8c017fe637e8f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391822"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803479"
 ---
 <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a>[How Do i:]使用 Visual Studio 2008 Web 部署專案
 ====================

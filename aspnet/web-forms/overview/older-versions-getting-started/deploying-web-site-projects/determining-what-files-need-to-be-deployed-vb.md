@@ -4,19 +4,16 @@ title: 判斷檔案必須為部署 (VB) |Microsoft Docs
 author: rick-anderson
 description: 從開發環境部署至生產環境需要的檔案部分取決於 ASP.NET 應用程式建置時是否我們...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: ea918f62-c9d6-4a7f-9bc6-e054d3764b2c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 89b45bff705996b799242ad55f156083f310af97
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 52ba518ec1c911b2eb659c0b36a2a718fbdd0c36
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380385"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825696"
 ---
 <a name="determining-what-files-need-to-be-deployed-vb"></a>判斷檔案必須為部署 (VB)
 ====================

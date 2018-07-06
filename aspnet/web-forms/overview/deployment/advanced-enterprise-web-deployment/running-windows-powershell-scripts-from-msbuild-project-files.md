@@ -4,19 +4,16 @@ title: 從 MSBuild 專案檔中執行 Windows PowerShell 指令碼 |Microsoft Do
 author: jrjlee
 description: 本主題描述如何建置和部署程序的一部分執行的 Windows PowerShell 指令碼。 您可以在本機執行指令碼 (換句話說，在 b...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 55f1ae45-fcb5-43a9-8415-fa5b935fc9c9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: ddb658d8a8f224a7c417321df3e17ce0610d2473
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: faedcee480b6c50dc560055206fedbe7af4d5f67
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362891"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803145"
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>從 MSBuild 專案檔中執行 Windows PowerShell 指令碼
 ====================
@@ -59,7 +56,7 @@ ms.locfileid: "37362891"
 本主題中的工作會使用名為的 Windows PowerShell 指令碼範例**LogDeploy.ps1** ，說明如何從 MSBuild 執行指令碼。 **LogDeploy.ps1**指令碼包含單一列項目寫入記錄檔的簡單函式：
 
 
-[!code-javascript[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.js)]
+[!code-powershell[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.ps1)]
 
 
 **LogDeploy.ps1**指令碼接受兩個參數。 第一個參數表示您要新增項目時，記錄檔的完整路徑和第二個參數表示您想要記錄的記錄檔中的部署目的地。 當您執行指令碼時，它便會加入一條線，記錄檔，格式如下：

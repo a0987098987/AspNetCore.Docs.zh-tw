@@ -4,19 +4,16 @@ title: Katana 專案概觀 |Microsoft Docs
 author: howarddierking
 description: ASP.NET Framework 已存在超過十年，且平台已啟用了無數的網站和服務。 為 Web 應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/30/2013
-ms.topic: article
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 212594b503bfc17d3faa6df03e01402d2862522f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a4c7d6cb5dc40ad68280a87acd89f60106a260a8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390184"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803090"
 ---
 <a name="an-overview-of-project-katana"></a>Katana 專案概觀
 ====================

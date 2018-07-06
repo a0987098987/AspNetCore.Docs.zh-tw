@@ -4,19 +4,16 @@ title: MVC 建議教學課程和文章 |Microsoft Docs
 author: Rick-Anderson
 description: 此頁面包含 ASP.NET MVC 教學課程和建議的順序遵循這些連結。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2015
-ms.topic: article
 ms.assetid: 8513a57a-2d45-4d6b-881c-15a01c5cbb1c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/mvc-learning-sequence
 msc.type: authoredcontent
-ms.openlocfilehash: fd972549fd4c1f46f5bdeafbb466baab7a21e9df
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7b9431123ea670b87949ed756aaf8e6d80011bc5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363985"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827012"
 ---
 <a name="mvc-recommended-tutorials-and-articles"></a>MVC 建議教學課程和文章
 ====================

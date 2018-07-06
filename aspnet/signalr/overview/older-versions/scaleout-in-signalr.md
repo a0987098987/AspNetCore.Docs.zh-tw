@@ -4,19 +4,16 @@ title: SignalR 的向外延展簡介 1.x |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/29/2013
-ms.topic: article
 ms.assetid: 3fd9f11c-799b-4001-bd60-1e70cfc61c19
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/older-versions/scaleout-in-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a492eabfb5a74472b44095f24704028f6cd8a12a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 14104868b491b8c019ad766b04b8966552304cc5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375217"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829952"
 ---
 <a name="introduction-to-scaleout-in-signalr-1x"></a>SignalR 的向外延展簡介 1.x
 ====================

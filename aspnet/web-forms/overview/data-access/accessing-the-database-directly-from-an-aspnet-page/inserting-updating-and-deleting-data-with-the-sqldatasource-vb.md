@@ -4,19 +4,16 @@ title: 插入、 更新和刪除資料以 sqldatasource 進行 (VB) |Microsoft D
 author: rick-anderson
 description: 在先前的教學課程中我們了解如何將 ObjectDataSource 控制項允許插入、 更新和刪除的資料。 SqlDataSource 控制項支援 t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: 9673bef3-892c-45ba-a7d8-0da3d6f48ec5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2d4c98da314a5a774d9c82280fe9b1949ef4c337
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6914f0f30702f2943ed60ee6ec48bfac57fa90d5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363937"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835676"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-vb"></a>插入、 更新和刪除資料以 sqldatasource 進行 (VB)
 ====================

@@ -4,19 +4,16 @@ title: 使用 SMS 和電子郵件雙因素驗證的 ASP.NET MVC 5 應用程式 |
 author: Rick-Anderson
 description: 本教學課程會示範如何建置使用雙因素驗證的 ASP.NET MVC 5 web 應用程式。 您應該先完成建立安全的 ASP.NET MVC 5 web 應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/20/2015
-ms.topic: article
 ms.assetid: f50a5cdb-c06a-46ed-aa14-fc5b049dc8dc
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 7987953ae94105be8f4856069ce13b86aec7e7f9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4fd0091effcf2cc0517da91922981e49ef0eef5a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393953"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803203"
 ---
 <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a>使用 SMS 和電子郵件雙因素驗證的 ASP.NET MVC 5 應用程式
 ====================

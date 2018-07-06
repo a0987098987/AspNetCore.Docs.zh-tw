@@ -4,19 +4,16 @@ title: 將驗證加入至模型 (C#) |Microsoft Docs
 author: Rick-Anderson
 description: 建立控制器
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 9af927e2-1c3b-43d9-917d-1df75be3c482
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: bf0a0d96ed41d69f4baa693d35a1a08ef62866c8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fc5c3d2afcb6fa5b1983de1d09476a2a1e09d302
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388655"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804448"
 ---
 <a name="adding-validation-to-the-model-c"></a>將驗證加入至模型 (C#)
 ====================

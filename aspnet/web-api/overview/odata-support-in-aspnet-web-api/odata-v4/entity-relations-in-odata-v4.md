@@ -4,19 +4,16 @@ title: 使用 ASP.NET Web API 2.2 OData v4 中的實體關聯 |Microsoft Docs
 author: MikeWasson
 description: 大部分的資料集定義實體之間的關聯： 客戶具有訂單;活頁簿有作者;產品有供應商。 使用 OData 用戶端可以瀏覽透過...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2014
-ms.topic: article
 ms.assetid: 72657550-ec09-4779-9bfc-2fb15ecd51c7
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: 56cadbabaa7ca64ba39232495e25178849d5e3c2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 98f65b068d8f22e3eeef48ca7fa441434939db8b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377642"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827942"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a>使用 ASP.NET Web API 2.2 OData v4 中的實體關聯
 ====================

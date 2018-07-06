@@ -4,23 +4,20 @@ title: 上的 jQuery Mobile 1.1.1 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 1252d4fa-e900-45fe-bc32-87b0af33b51c
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile111
 msc.type: content
-ms.openlocfilehash: ad3388d4e8972cf896096cf08e621899891b7ef8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5f74d115e244d566720a695921e25f6dcdb6e382
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362229"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827459"
 ---
-<a name="jquery-mobile-111-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="219ad-102">上的 jQuery Mobile 1.1.1 Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="219ad-102">jQuery Mobile 1.1.1 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-111-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="8c73b-102">上的 jQuery Mobile 1.1.1 Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="8c73b-102">jQuery Mobile 1.1.1 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="219ad-103">JQuery Mobile 1.1.1 程式庫包含下列檔案：</span><span class="sxs-lookup"><span data-stu-id="219ad-103">The jQuery Mobile 1.1.1 library includes the following files:</span></span>
+<span data-ttu-id="8c73b-103">JQuery Mobile 1.1.1 程式庫包含下列檔案：</span><span class="sxs-lookup"><span data-stu-id="8c73b-103">The jQuery Mobile 1.1.1 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile.structure-1.1.1.css
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css

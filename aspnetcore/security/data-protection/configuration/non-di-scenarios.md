@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core中的資料保護的非 DI 注意案例
+title: ASP.NET Core 中的資料保護的非 DI 注意案例
 author: rick-anderson
 description: 了解如何支援資料的保護案例，您無法或不想要使用相依性插入所提供的服務。
 ms.author: riande
@@ -12,7 +12,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 06/20/2018
 ms.locfileid: "36276876"
 ---
-# <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>ASP.NET Core中的資料保護的非 DI 注意案例
+# <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>ASP.NET Core 中的資料保護的非 DI 注意案例
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

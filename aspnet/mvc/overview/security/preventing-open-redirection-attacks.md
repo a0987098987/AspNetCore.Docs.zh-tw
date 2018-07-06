@@ -4,19 +4,16 @@ title: 防止開啟重新導向攻擊 (C#) |Microsoft Docs
 author: jongalloway
 description: 本教學課程說明如何防止開啟重新導向攻擊，以及在您的 ASP.NET MVC 應用程式中。 本教學課程將告訴您所做的變更...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/27/2014
-ms.topic: article
 ms.assetid: 69fb02e0-f5b7-4c35-878c-fa87164fc785
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: 27921e23d38d34332b81fb85dcc795c8f9ff0352
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 33d2d050805d9b65741c121cdb2b65a59e1ea392
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375466"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813196"
 ---
 <a name="preventing-open-redirection-attacks-c"></a>防止開啟重新導向攻擊 (C#)
 ====================

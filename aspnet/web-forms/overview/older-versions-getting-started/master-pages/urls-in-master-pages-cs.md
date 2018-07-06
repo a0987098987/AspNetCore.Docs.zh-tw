@@ -4,19 +4,16 @@ title: Url 中主版頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 解決方式中的主版頁面的 Url 可能會中斷由於在不同於 [內容] 頁面相對目錄中的主版頁面檔案。 查看重定基底...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2008
-ms.topic: article
 ms.assetid: 48b58a18-5ea4-468c-b326-f35331b3e1e9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dcbd066a55fed3dd6c79e8a091e61449f85531b0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 827c471074fbfeb049613f5cc5ffb82937284f00
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398384"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821556"
 ---
 <a name="urls-in-master-pages-c"></a>主版頁面 (C#) 中的 Url
 ====================

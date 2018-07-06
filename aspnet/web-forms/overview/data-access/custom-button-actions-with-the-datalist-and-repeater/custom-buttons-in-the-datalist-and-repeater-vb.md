@@ -4,19 +4,16 @@ title: 在 DataList 與重複項 (VB) 中的自訂按鈕 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將建置的介面，用以在系統中，列出分類，且每個分類都提供按鈕，以顯示其 associ Repeater...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/13/2006
-ms.topic: article
 ms.assetid: 1afdb14d-6e49-4e1f-aead-2934730d472e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7dc738e22f7670aa3eeb07d69888a4df47c1fc82
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ab580a706b76325fc4c0eccfc130ffa7db22fbd3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371580"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812947"
 ---
 <a name="custom-buttons-in-the-datalist-and-repeater-vb"></a>在 DataList 與重複項 (VB) 中自訂按鈕
 ====================

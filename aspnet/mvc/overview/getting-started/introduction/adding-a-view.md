@@ -3,17 +3,14 @@ title: 將檢視新增至 MVC 應用程式
 author: Rick-Anderson
 description: 將檢視新增至 MVC 應用程式
 ms.author: riande
-manager: wpickett
 ms.date: 09/1721/2017
-ms.topic: article
-ms.technology: dotnet-mvc
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: a6046d467dbd36f4f3ca5721a3b7c7424e18e00a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 8b9ef79d630623019b22414ef730edffa5a83a09
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370274"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824573"
 ---
 <a name="adding-a-view"></a>新增檢視
 ====================

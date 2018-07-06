@@ -4,19 +4,16 @@ title: 以動態方式新增 Accordion 窗格 (VB) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit Accordion 控制項提供多個窗格，並可讓使用者一次顯示其中一個。 面板通常宣告 w...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: fae968c9-1902-487d-b053-86a46dd52c3f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3dd82fab03e06aa5dd3baba7dd24734fa964b350
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1fdb95ee1ee93bc011a257e4e21c876dbbc7d2a9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378958"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820022"
 ---
 <a name="dynamically-adding-an-accordion-pane-vb"></a>以動態方式新增 Accordion 窗格 (VB)
 ====================

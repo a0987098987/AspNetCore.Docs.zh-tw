@@ -4,19 +4,16 @@ title: EmberJS 範本 |Microsoft Docs
 author: xqiu
 description: EmberJS 範本
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/30/2013
-ms.topic: article
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
-ms.technology: ''
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 1f5b005180fed15c51b36417cdcd6acc98123c9a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2488e9c10550bd9b11c675572c70618f6ca4ac05
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374162"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823773"
 ---
 <a name="emberjs-template"></a>EmberJS 範本
 ====================

@@ -4,19 +4,16 @@ title: 防止 JavaScript 插入式攻擊 (C#) |Microsoft Docs
 author: StephenWalther
 description: 防止 JavaScript 插入式攻擊和跨網站指令攻擊發生給您。 在本教學課程中，Stephen Walther 會說明如何輕鬆地 de...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/19/2008
-ms.topic: article
 ms.assetid: d0136da6-81a4-4815-b002-baa84744c09e
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2d307e1034dca4893cd45baf7d54edb7544829e3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0b0257eaef29c8e538fde92044cbc8cf2abe77f0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381886"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808262"
 ---
 <a name="preventing-javascript-injection-attacks-c"></a>防止 JavaScript 插入式攻擊 (C#)
 ====================

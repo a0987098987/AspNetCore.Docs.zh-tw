@@ -4,19 +4,16 @@ title: 教學課程： SignalR 自我裝載 |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何建立自我裝載的 SignalR 2 伺服器，以及如何使用 JavaScript 用戶端連線到它。 教學課程 V 中使用的軟體版本...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 34e307499c7dabcd2afc73780649d79e68c10fdc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 71fb121377a49bb741ebff098ff20ec82e85c82a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378994"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821780"
 ---
 <a name="tutorial-signalr-self-host"></a>教學課程： SignalR 自我裝載
 ====================

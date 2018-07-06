@@ -4,19 +4,16 @@ title: ASP.NET Web API 2 中的路由慣例 Odata |Microsoft Docs
 author: MikeWasson
 description: 這篇文章描述 Web API OData 端點所使用的路由慣例。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/31/2013
-ms.topic: article
 ms.assetid: adbc175a-14eb-4ab2-a441-d056ffa8266f
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
-ms.openlocfilehash: 63a0e4f4f61580ea9da3bd491e7a45f20cd7aaae
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 645e820d3b03d1e3d2ac088973f6296efa5c2f40
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370535"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818261"
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>ASP.NET Web API 2 中的路由慣例 Odata
 ====================

@@ -4,19 +4,16 @@ title: 使用 Razor 語法 (C#) 的 ASP.NET Web 程式設計簡介 |Microsoft Do
 author: tfitzmac
 description: 本章概述您程式設計的 ASP.NET 網頁使用 Razor 語法。 ASP.NET 是 Microsoft 的技術，用於執行動態 web 的 pa...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 6e0af63ffab5ce1a4d582cbe1e9456da20df2b64
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 22985b71d39d93b8ad42ee923b872846f2fafa99
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363399"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814297"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>使用 Razor 語法 (C#) 的 ASP.NET Web 程式設計簡介
 ====================

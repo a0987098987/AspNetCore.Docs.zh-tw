@@ -4,19 +4,16 @@ title: 開始使用 ASP.NET 的下一個版本 |Microsoft Docs
 author: shanselman
 description: Scott Hanselman 介紹即將推出的功能下, 一版的 ASP.NET。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/18/2011
-ms.topic: article
 ms.assetid: ebe337ae-9646-49f4-bb38-e6d3138b39fd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext/getting-started-with-the-next-version-of-aspnet
 msc.type: video
-ms.openlocfilehash: 04ad10b250c3d4aea0d4af85f437c863bc6ade31
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b8b5b9e5e89d91536eba6ede03fed81f2c1fc4c2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396093"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814138"
 ---
 <a name="getting-started-with-the-next-version-of-aspnet"></a>開始使用 ASP.NET 的下一個版本
 ====================

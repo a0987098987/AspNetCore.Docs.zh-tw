@@ -4,19 +4,16 @@ title: ASP.NET 和 Web 工具 2013.2 for Visual Studio 2013 版本資訊 |Micros
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2014
-ms.topic: article
 ms.assetid: 7ef5f73c-ca60-43c1-bdb2-702800347e7e
-ms.technology: ''
 msc.legacyurl: /visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 59e33d9bb1cef79e6d0e83fb3560e964723ad5e0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb36d9f469265be60a7e40ed7e317d8da6560bf9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391440"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824493"
 ---
 <a name="aspnet-and-web-tools-20132--for-visual-studio-2013-release-notes"></a>ASP.NET 和 Web 工具 2013.2 for Visual Studio 2013 版本資訊
 ====================

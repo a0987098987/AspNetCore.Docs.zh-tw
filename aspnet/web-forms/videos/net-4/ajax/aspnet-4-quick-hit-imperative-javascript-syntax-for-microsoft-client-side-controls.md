@@ -4,19 +4,16 @@ title: Visual Studio 2010 快速叫用命令式 JavaScript 語法 Microsoft 用�
 author: JoeStagner
 description: 在這段影片中，您將了解 Microsoft 用戶端端控制項的命令式 JavaScript 語法。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/16/2009
-ms.topic: article
 ms.assetid: d4df6c61-9ca2-4e7c-8b65-749847f15d2c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/ajax/aspnet-4-quick-hit-imperative-javascript-syntax-for-microsoft-client-side-controls
 msc.type: video
-ms.openlocfilehash: 0f7cdd10ce8515aa6ed8aad22deefcf6fa60d995
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9c00958a9832a393492b67fef198d9cd9b8fe2c5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383486"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836677"
 ---
 <a name="aspnet-4-quick-hit---imperative-javascript-syntax-for-microsoft-client-side-controls"></a>ASP.NET 4 」 快速 Hit"-命令式 JavaScript 語法，Microsoft 用戶端的控制項
 ====================

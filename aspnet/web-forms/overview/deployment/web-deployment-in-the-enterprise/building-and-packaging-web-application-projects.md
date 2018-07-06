@@ -4,19 +4,16 @@ title: 建置和封裝 Web 應用程式專案 |Microsoft Docs
 author: jrjlee
 description: 當您想要將 web 應用程式專案部署到遠端伺服器的環境時，您的第一個工作是建置專案，並產生 web 部署 packa...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 94e92f80-a7e3-4d18-9375-ff8be5d666ac
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: ff8312d16dff2a9eec9ae909bca5e72d52f17094
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b5342443fefd712aa95ac08a8edf708d55253816
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382604"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810513"
 ---
 <a name="building-and-packaging-web-application-projects"></a>建置和封裝 Web 應用程式專案
 ====================

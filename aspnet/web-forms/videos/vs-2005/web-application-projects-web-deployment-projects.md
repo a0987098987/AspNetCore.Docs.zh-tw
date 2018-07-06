@@ -4,19 +4,16 @@ title: Web 應用程式專案與 Web 部署專案 |Microsoft Docs
 author: BradleyBartz
 description: Bradley Bartz 會示範如何在 Web 應用程式專案和 Web 部署專案，Visual Studio 2005 讓開發和部署 ASP.NET 專案 simila...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/20/2006
-ms.topic: article
 ms.assetid: 66d242f5-0306-4df2-8f05-c93e405f9847
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/web-application-projects-web-deployment-projects
 msc.type: video
-ms.openlocfilehash: 8c5eb9827158f626315c03d1d2ce91367ab695cb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6c8048937a0281e7b90965be9f823557a9f86d46
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390552"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836129"
 ---
 <a name="web-application-projects--web-deployment-projects"></a>Web 應用程式專案與 Web 部署專案
 ====================

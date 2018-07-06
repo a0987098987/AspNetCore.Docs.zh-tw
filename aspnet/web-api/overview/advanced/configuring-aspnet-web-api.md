@@ -4,19 +4,16 @@ title: 設定 ASP.NET Web API 2 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2014
-ms.topic: article
 ms.assetid: 9e10a700-8d91-4d2e-a31e-b8b569fe867c
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 8fd08098b5a425f2cbd7939f5f90550b98c34071
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 37df04487404a9eb0753b5f2ae48bffb51d1c363
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387073"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840361"
 ---
 <a name="configuring-aspnet-web-api-2"></a>設定 ASP.NET Web API 2
 ====================

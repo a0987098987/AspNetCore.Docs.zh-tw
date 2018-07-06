@@ -4,19 +4,16 @@ title: 在 GridView 的頁尾 (C#) 顯示摘要資訊 |Microsoft Docs
 author: rick-anderson
 description: 底部的 摘要的資料列中的報表通常顯示摘要資訊。 GridView 控制項可以包含頁尾資料列至其儲存格中，我們可以提取要求...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: d50edc31-9286-4c6a-8635-be09e72752a4
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 752a37f231f746573ad84d05677365216eaa48b7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 34d5dbf4a019f798714f80964789cd85a466b43e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368349"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818805"
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-c"></a>在 GridView 的頁尾 (C#) 顯示摘要資訊
 ====================

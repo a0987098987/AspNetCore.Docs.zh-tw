@@ -4,19 +4,16 @@ title: 讀取相關的資料，使用 Entity Framework 中的 ASP.NET MVC 應用
 author: tdykstra
 description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 5 Code First 和 Visual Studio 的 ASP.NET MVC 4 應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/30/2013
-ms.topic: article
 ms.assetid: 0d6fb83b-71f7-425d-8dec-981197d7ec42
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6fa85f561c85d1761ddcbc7167aa4b39a6c6eda3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 750c49572e99c6ab8c84d65e4c18f8da9b5d304c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374321"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835242"
 ---
 <a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-5-of-10"></a>讀取相關資料，使用 Entity Framework 中的 ASP.NET MVC 應用程式 (5 為 10)
 ====================

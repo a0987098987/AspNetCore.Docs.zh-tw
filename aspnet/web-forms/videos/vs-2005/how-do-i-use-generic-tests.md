@@ -4,19 +4,16 @@ title: '[How Do i:]使用一般測試嗎？ | Microsoft Docs'
 author: rick-anderson
 description: 一般測試是包裝且可做為測試在 Visual Studio Team System 的現有程式。 在這段影片中，我們看到方式的示範...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2007
-ms.topic: article
 ms.assetid: e129b2c2-8587-4ff1-b455-7f14cb28bcf9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-use-generic-tests
 msc.type: video
-ms.openlocfilehash: 45663851fad23ff74996e839904a2601c5937f57
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e50ab271328145a0fde80d857b1416f733bcf712
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37361845"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807131"
 ---
 <a name="how-do-i-use-generic-tests"></a>[How Do i:]使用一般測試嗎？
 ====================

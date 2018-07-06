@@ -4,19 +4,16 @@ title: 什麼是 ASP.NET Web API OData 5.3 的新功能 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/16/2014
-ms.topic: article
 ms.assetid: e39eaa25-83ff-41dc-869d-3818d59a88ae
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/releases/whats-new-in-aspnet-web-api-odata-53
 msc.type: authoredcontent
-ms.openlocfilehash: aedc4e0dc1bf144239f6921a51eaef459a0907a6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c185e7ef9bfe6e21601ab61c418c63c8a81b680a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386678"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827025"
 ---
 <a name="whats-new-in-aspnet-web-api-odata-53"></a>什麼是 ASP.NET Web API OData 5.3 的新功能
 ====================

@@ -4,19 +4,16 @@ title: jQuery DataTables 1.9.2 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 71a851e2-e939-4da5-9480-59cdef3d56b4
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables192
 msc.type: content
-ms.openlocfilehash: 62acfafd0f3023c8cbf37f6f06a90fa31edb0f54
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 62ff51c4097905127ebbd42633acd21424279d6b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365895"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824130"
 ---
 <a name="jquery-datatables-192"></a>jQuery DataTables 1.9.2
 ====================

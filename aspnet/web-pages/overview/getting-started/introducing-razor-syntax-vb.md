@@ -4,19 +4,16 @@ title: 使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介 |Mi
 author: tfitzmac
 description: 本附錄提供您的概觀與 ASP.NET Web pages 程式設計在 Visual Basic 中使用 Razor 語法。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d4be7e2ed1b847d8b4167872728815330dbfe432
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 72f995e62141df4e8f4cd082b4873d82067af8c1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378737"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816544"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介
 ====================

@@ -4,19 +4,16 @@ title: Pluralsight 提供的 WebMatrix 和網頁視訊訓練 |Microsoft Docs
 author: rick-anderson
 description: WebMatrix&amp;網頁訓練的 Pluralsight 這個深入的課程將協助您啟動並執行使用 WebMatrix 及 ASP.NET Web Pages。 它涵蓋了 everythi...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/18/2012
-ms.topic: article
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/pluralsight
 msc.type: content
-ms.openlocfilehash: 43155f278187c193683fb04148b87377f63a9265
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 07fe95b0b7779988fc80639777402930f5af5334
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385757"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819691"
 ---
 <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>Pluralsight 提供的 WebMatrix 和網頁影片訓練
 ====================

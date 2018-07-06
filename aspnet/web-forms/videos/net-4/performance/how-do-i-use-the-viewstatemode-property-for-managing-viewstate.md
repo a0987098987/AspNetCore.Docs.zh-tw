@@ -4,19 +4,16 @@ title: 如何： 使用 ViewStateMode 屬性管理 ViewState？ | Microsoft Docs
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何設計 ViewState 在 ASP.NET 中的網站時，使用 ViewStateMode 屬性。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/17/2010
-ms.topic: article
 ms.assetid: e5b1cc5e-fe11-4ede-9e28-af6477277b0c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/performance/how-do-i-use-the-viewstatemode-property-for-managing-viewstate
 msc.type: video
-ms.openlocfilehash: 9e31f7826be4905d250b12dc050e1ae2b2d24913
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 73ee00dedc37d6ca7be444e4e1f11b47a295148d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379202"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806515"
 ---
 <a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a>如何： 使用 ViewStateMode 屬性管理 ViewState？
 ====================

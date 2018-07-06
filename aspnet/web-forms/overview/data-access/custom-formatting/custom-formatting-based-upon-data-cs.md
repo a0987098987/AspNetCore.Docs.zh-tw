@@ -4,19 +4,16 @@ title: 根據自訂格式設定資料 (C#) |Microsoft Docs
 author: rick-anderson
 description: 以多種方式可以完成 GridView、 DetailsView 或 FormView 繫結至該資料為基礎的格式調整。 在本教學課程中，我們將 l...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 871a4574-f89c-4214-b786-79253ed3653b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 505081890ac0eb7a1f248569fda1b14351119275
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 05f83fc178cb3f79a86638d0159e692aef4410ca
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397980"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819262"
 ---
 <a name="custom-formatting-based-upon-data-c"></a>根據自訂格式設定資料 (C#)
 ====================

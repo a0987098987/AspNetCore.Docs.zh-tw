@@ -4,19 +4,16 @@ title: 建立資料庫 |Microsoft Docs
 author: microsoft
 description: 步驟 2 顯示建立資料庫的保留所有 dinner 和回覆我們 NerdDinner 應用程式資料的步驟。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 983f3ffa-08b8-4868-b8c9-aa34593fc683
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
-ms.openlocfilehash: 01c6d3c63780e492b97aa54a92f3982d4c18f9e5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2a2ed8c91aa3ec0da63cd8e8686ff601f6e66374
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371745"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818962"
 ---
 <a name="create-a-database"></a>建立資料庫
 ====================

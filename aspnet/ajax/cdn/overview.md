@@ -4,19 +4,16 @@ title: Microsoft Ajax 內容傳遞網路 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/14/2017
-ms.topic: article
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
-ms.technology: ''
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: bf770191e013487927d3f947dfb29f7ea5b11390
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f875d743cd43087cfa96f3c564335999982632b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37403059"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819652"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================

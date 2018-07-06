@@ -4,19 +4,16 @@ title: 如何： 將行動網頁新增至 ASP.NET Web Form / MVC 應用程式 |M
 author: rick-anderson
 description: 本 How To 說明會提供適用於行動裝置，從您的 ASP.NET Web Form 網頁的各種方法 / MVC 應用程式，並建議架構和...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/20/2011
-ms.topic: article
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
-ms.technology: ''
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: 075329087cb5e07d85bba0c546538e7cc55ac463
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 59b81184852a7fe0ad2dcad9718b572a8c756918
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366753"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823351"
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>如何： 將行動網頁新增至 ASP.NET Web Form / MVC 應用程式
 ====================

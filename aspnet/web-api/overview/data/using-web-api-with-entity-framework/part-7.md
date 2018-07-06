@@ -4,19 +4,16 @@ title: 建立檢視 (UI) |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/16/2014
-ms.topic: article
 ms.assetid: b2445062-a1fe-4133-8994-f510280f6d9a
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-7
 msc.type: authoredcontent
-ms.openlocfilehash: e9ebe60f88ecbf65a6f8d04de9a23d72a72fda83
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: eeaa36ede45b82afd112a270acf68105d1ae6dbc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364977"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820982"
 ---
 <a name="create-the-view-ui"></a>建立檢視 (UI)
 ====================

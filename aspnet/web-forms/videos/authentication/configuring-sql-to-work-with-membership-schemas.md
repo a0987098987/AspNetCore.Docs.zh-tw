@@ -4,19 +4,16 @@ title: 設定 SQL 成員資格結構描述 |Microsoft Docs
 author: JoeStagner
 description: 在此影片的 Joe Stagner 會示範如何設定 SQL 執行個體來處理特定的 ASP 服務的成員資格設定檔;以及設定應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/04/2008
-ms.topic: article
 ms.assetid: b3edd71d-b43e-4ccb-93e5-b89bb723312c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/configuring-sql-to-work-with-membership-schemas
 msc.type: video
-ms.openlocfilehash: 1298e205e682444eb9e4794e3553aae3bfdf7dbe
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ae5e335e05df010996c9cb84f4af01874ce6005f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379747"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810500"
 ---
 <a name="configuring-sql-to-work-with-membership-schemas"></a>設定 SQL 成員資格結構描述
 ====================

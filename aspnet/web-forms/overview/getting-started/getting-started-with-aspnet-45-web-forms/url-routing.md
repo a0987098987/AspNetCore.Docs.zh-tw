@@ -4,19 +4,16 @@ title: URL 路由 |Microsoft Docs
 author: Erikre
 description: 本系列教學課程將教導您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Forms 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 4f4bf092-c400-471f-a876-78fda0417890
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 556ef01304d0b5a3cca3606d71ef055ce4b2dc5c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 968517100275822071e2101a4cfb978320f222f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389146"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822712"
 ---
 <a name="url-routing"></a>URL 路由
 ====================

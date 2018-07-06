@@ -4,19 +4,16 @@ title: 將資料傳遞至檢視主版頁面 (C#) |Microsoft Docs
 author: microsoft
 description: 本教學課程的目標是要說明如何，您可以從控制器傳遞資料至檢視主版頁面。 我們將探討兩種策略，將資料傳遞至檢視 m...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: 5fee879b-8bde-42a9-a434-60ba6b1cf747
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 02586f145de9c6d654c5d815291a340fd037cc6f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bd2d3e85ac518a066d72541d40ab87543b1a70d1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397742"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818978"
 ---
 <a name="passing-data-to-view-master-pages-c"></a>將資料傳遞至檢視主版頁面 (C#)
 ====================

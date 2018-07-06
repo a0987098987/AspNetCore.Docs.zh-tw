@@ -4,19 +4,16 @@ title: 改善 Details 和 Delete 方法 (VB) |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: c5c14ef0-c128-4dc1-8c01-7f0fdb09e411
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 0741603b8a280e4ab74b03018b5395b185542343
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5b34c7d71e615215e933b607562a06f683c6c1ca
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399908"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819860"
 ---
 <a name="improving-the-details-and-delete-methods-vb"></a>改善 Details 和 Delete 方法 (VB)
 ====================

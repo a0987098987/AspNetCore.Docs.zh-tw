@@ -4,19 +4,16 @@ title: 開始使用動態資料 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中我們會建置整個 ASP.NET 應用程式使用 ASP.NET 動態資料使用動態資料的程式碼產生，scaffoldi 使用 Northwind 資料...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/23/2008
-ms.topic: article
 ms.assetid: 2011925a-789d-4160-af31-4667097727f1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/getting-started-with-dynamic-data
 msc.type: video
-ms.openlocfilehash: eca479a859813c01dfe854f729198ef84143b212
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d0a59996fbf7ec5f1c1888489144179d73deb238
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376079"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812895"
 ---
 <a name="getting-started-with-dynamic-data"></a>開始使用動態資料
 ====================

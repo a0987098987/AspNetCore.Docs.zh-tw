@@ -4,19 +4,16 @@ title: 建立 OData v4 用戶端應用程式 (C#) |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2014
-ms.topic: article
 ms.assetid: 47202362-3808-4add-9a69-c9d1f91d5e4e
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app
 msc.type: authoredcontent
-ms.openlocfilehash: 1ea6121db781c2d08bc8c76cd07be3c5a4f23f62
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1e621988b43b4f012f113d7a52250879da56bb1c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377388"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818672"
 ---
 <a name="create-an-odata-v4-client-app-c"></a>建立 OData v4 用戶端應用程式 (C#)
 ====================

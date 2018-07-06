@@ -4,19 +4,16 @@ title: ASP.NET 裝載選項 (VB) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET web 應用程式通常設計、 建立，並在本機開發環境中測試和要部署到生產環境 o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 492f5ae2-bad7-4107-89a9-f04a9525dee7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0977548ce56ad8dba2dc677ae4958fd4c040bb57
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 68f12de0b459c01ecf766e09144364a64e2d69d3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399113"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817706"
 ---
 <a name="aspnet-hosting-options-vb"></a>ASP.NET 裝載選項 (VB)
 ====================

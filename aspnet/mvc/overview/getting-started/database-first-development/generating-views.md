@@ -4,19 +4,16 @@ title: EF Database First 與 ASP.NET MVC： 產生檢視 |Microsoft Docs
 author: tfitzmac
 description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/29/2014
-ms.topic: article
 ms.assetid: 669367cf-8e30-4eb6-821d-10a7d9bb906c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: 58f8be181f80f5b27353e9ef5cafe48bcb370e29
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9c85b330ac415d8c73d58b31a5108197b754669f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399606"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835324"
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>EF Database First 與 ASP.NET MVC： 產生檢視
 ====================

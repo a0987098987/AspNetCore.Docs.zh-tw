@@ -4,19 +4,16 @@ title: 將使用者新增至您的成員資格系統 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，Joe Stagner 示範您如何將使用者新增至成員資格儲存機制。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/29/2010
-ms.topic: article
 ms.assetid: fc0f145a-ba00-495e-b8aa-a6e8ad4e80f5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/adding-users-to-your-membership-system
 msc.type: video
-ms.openlocfilehash: 2abcb565530c2f6d1b6990df5c50d9a0d1c07b1a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 756a7875cddeab6a8132e95a8219ae1617ee8398
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373938"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812322"
 ---
 <a name="adding-users-to-your-membership-system"></a>將使用者新增至您的成員資格系統
 ====================

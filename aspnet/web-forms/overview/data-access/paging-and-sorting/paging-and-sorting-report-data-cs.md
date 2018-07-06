@@ -4,19 +4,16 @@ title: 分頁和排序報告資料 (C#) |Microsoft Docs
 author: rick-anderson
 description: 分頁和排序是兩個常見的功能，在線上應用程式中顯示資料。 在本教學課程中我們將率先一睹加入排序和...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 811a6ef2-ec66-4c8e-a089-6f795056e288
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 75a2206bf3db3af8859fe4de58f67135d31bba0f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 741404bda11fd1d5776a7493b95ffe5d0c61fce2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401918"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819341"
 ---
 <a name="paging-and-sorting-report-data-c"></a>分頁和排序報告資料 (C#)
 ====================

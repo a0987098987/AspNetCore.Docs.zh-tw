@@ -4,19 +4,16 @@ title: 使用 DataList 與重複項控制項 (C#) 顯示資料 |Microsoft Docs
 author: rick-anderson
 description: 在先前的教學課程中，我們有使用 GridView 控制項來顯示資料。 開始本教學課程中，我們建置與常見報告模式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2006
-ms.topic: article
 ms.assetid: 0591cacc-b34b-4cf6-885e-2c9953bb0946
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ca585c51ae12be2395897044f6d0fd1857d3e357
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6368580d43e6216ea75d3013fb13aa59d9eeb6ba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382698"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805937"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a>使用 DataList 與重複項控制項 (C#) 顯示資料
 ====================

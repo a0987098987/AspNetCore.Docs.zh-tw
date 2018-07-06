@@ -4,19 +4,16 @@ title: 建立安全的 ASP.NET MVC 5 web 應用程式登入、 電子郵件確�
 author: Rick-Anderson
 description: 本教學課程會示範如何建置 ASP.NET MVC 5 web 應用程式使用電子郵件確認和密碼重設使用 ASP.NET 身分識別的成員資格系統。 您的 ca...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/26/2015
-ms.topic: article
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 56c1a5c414fdcece8d827d1187144b4948d8eb93
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 1387c3e9c03e011b610a070aa0c273ded23b463e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387039"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823543"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>建立安全的 ASP.NET MVC 5 web 應用程式登入、 電子郵件確認和密碼重設 (C#)
 ====================

@@ -4,19 +4,16 @@ title: 使用 SqlDataSource (VB) 中使用參數化的查詢 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會繼續我們看看 SqlDataSource 控制項，並了解如何定義參數化的查詢。 參數可以指定這兩個宣告...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: e322f34c-83b7-41ea-ab65-ab1e0bdcc609
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fd6361d7b8981b7caee996ff3af165416af860a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fd4964bbdfe7662513025086a6cc3a59a6d63782
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395482"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813811"
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>使用參數化的查詢以 sqldatasource 進行 (VB)
 ====================

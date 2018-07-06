@@ -4,19 +4,16 @@ title: '[How Do i:]建立網站的使用者可選取的佈景主題 |Microsoft D
 author: rick-anderson
 description: 在這段影片 Chris Pels 將示範如何建立多個網站的佈景主題，，然後允許使用者選取的佈景主題套用至網站。 請參閱如何...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/13/2008
-ms.topic: article
 ms.assetid: d19152e7-ba19-4729-9e30-d311630aaf95
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-user-selectable-themes-for-a-web-site
 msc.type: video
-ms.openlocfilehash: e6225431a5c104b3ee9932257eb5b77682b86471
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1c989941e854fd309d7fe6924c7a4ccdd50a3995
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393778"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823786"
 ---
 <a name="how-do-i-create-user-selectable-themes-for-a-web-site"></a>[How Do i:]建立網站的使用者可選取的佈景主題
 ====================

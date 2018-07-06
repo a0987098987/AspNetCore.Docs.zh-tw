@@ -4,19 +4,16 @@ title: 使用檢視主版頁面 (C#) 建立頁面配置 |Microsoft Docs
 author: microsoft
 description: 在本教學課程中，您已了解如何在您的應用程式中建立多個頁面的一般版面，利用檢視主版頁面。 您可以使用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: dff54fcb-68b1-4488-89a2-ca97532d6a4c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c23f397ad9dd5c26278d654ef2aec66d201166a3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3e82d6d6aeb57cd414287e3fa0f9371a2c9fbc89
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387844"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820213"
 ---
 <a name="creating-page-layouts-with-view-master-pages-c"></a>使用檢視主版頁面 (C#) 建立頁面配置
 ====================

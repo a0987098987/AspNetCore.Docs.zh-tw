@@ -4,19 +4,16 @@ title: 使用 TagBuilder 類別可建置 HTML 協助程式 (VB) |Microsoft Docs
 author: StephenWalther
 description: Stephen Walther 會向您介紹在 ASP.NET MVC framework 將 TagBuilder 類別命名為實用的公用程式類別。 您可以輕鬆地使用 TagBuilder 類別可...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/02/2009
-ms.topic: article
 ms.assetid: ec26f264-d0ea-4031-9943-825505a3ac4b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b95073a53e73ebe4035ef9b8dcdf84dc3c4febee
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 85673837c105ecab8595568b028c9caa83f041d8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370953"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821932"
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>使用 TagBuilder 類別可建置 HTML 協助程式 (VB)
 ====================

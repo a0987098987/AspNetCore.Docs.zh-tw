@@ -4,19 +4,16 @@ title: MVC 3-Razor 協助 |Microsoft Docs
 author: jongalloway
 description: 在這段影片中，您將了解如何使用這兩個擴充方法和宣告式@helperRazor 檢視中的語法。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/23/2011
-ms.topic: article
 ms.assetid: ec822852-3c69-41d4-80c0-91e8d08fc7f7
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-3/mvc-3-razor-helpers
 msc.type: video
-ms.openlocfilehash: 774123a66572ab6aefd5f37abbb76575cc5f0014
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cc2be4b0301ce352c5db14ba1541503cc30a87cd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366144"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822884"
 ---
 <a name="mvc-3---razor-helpers"></a>MVC 3-Razor 協助程式
 ====================

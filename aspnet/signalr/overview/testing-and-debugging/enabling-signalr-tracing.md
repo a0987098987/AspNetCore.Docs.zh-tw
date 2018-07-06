@@ -4,19 +4,16 @@ title: 啟用 SignalR 追蹤 |Microsoft Docs
 author: tfitzmac
 description: 本文件說明如何啟用和設定追蹤 SignalR 伺服器和用戶端。 追蹤可讓您檢視事件的診斷資訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/08/2014
-ms.topic: article
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 7f7401814e8ca9e61e62a3ebf993b03f92570984
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3bc8e4c81a6efa1b02d2b3e633ddb92c8ff6c2e3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373239"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809193"
 ---
 <a name="enabling-signalr-tracing"></a>啟用 SignalR 追蹤
 ====================

@@ -4,19 +4,16 @@ title: 使用 Razor 語法的 ASP.NET Web 程式設計簡介 |Microsoft Docs
 author: JoeStagner
 description: 將 ASP.NET Web 程式設計 Razor 語法的教學課程簡介的影片伴侶
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/25/2011
-ms.topic: article
 ms.assetid: 22947987-9b02-4595-9e83-3d54ae013796
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax
 msc.type: video
-ms.openlocfilehash: 133faaf0471ec75ec7ae07a4ea7cac7d73b0e38d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 239e9d208735216a77a07c609c55ee390d671072
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379990"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823193"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax"></a>使用 Razor 語法進行 ASP.NET 網頁程式設計簡介
 ====================

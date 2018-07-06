@@ -4,19 +4,16 @@ title: 使用滑桿控制項具有自動回傳 (VB) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit 中的滑桿控制項提供的圖形化的滑桿，可以使用滑鼠來控制。 您可將滑桿張貼...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 41d1abba-97a5-4a45-9b44-d05624c19777
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0ddc5b119a7f58b4d289f11e1789cf193870ae4e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4ad701763f5d391a793083a1d81db69e7f712069
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374035"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809851"
 ---
 <a name="using-the-slider-control-with-auto-postback-vb"></a>使用滑桿控制項具有自動回傳 (VB)
 ====================

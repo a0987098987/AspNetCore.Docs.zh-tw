@@ -4,19 +4,16 @@ title: 組態和檢測 |Microsoft Docs
 author: microsoft
 description: 有一些組態中的重大變更和 ASP.NET 2.0 中的檢測。 新的 ASP.NET 組態 API 可讓進行 pr 的組態變更...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2005
-ms.topic: article
 ms.assetid: 21ebbaee-7ed8-45ae-b6c1-c27c88342e48
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/configuration-and-instrumentation
 msc.type: authoredcontent
-ms.openlocfilehash: dc4e75e8c97228bf14935d6bf4242a036d513816
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8437b13cae83208983f26e0a5042a5f6c19e516e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399301"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822899"
 ---
 <a name="configuration-and-instrumentation"></a>組態和檢測
 ====================

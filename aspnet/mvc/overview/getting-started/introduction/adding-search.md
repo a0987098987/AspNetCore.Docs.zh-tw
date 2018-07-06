@@ -4,19 +4,16 @@ title: 搜尋 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2015
-ms.topic: article
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 797384fb04d3ec6fa618ac1848a7efd548b30dbf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: afa6a8280cab93ea75203228dd735971017492a0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362573"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823497"
 ---
 <a name="search"></a>搜尋
 ====================

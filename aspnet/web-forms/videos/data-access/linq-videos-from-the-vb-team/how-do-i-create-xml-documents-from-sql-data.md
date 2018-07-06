@@ -4,19 +4,16 @@ title: '[How Do i:]從 SQL 資料建立 XML 文件嗎？ | Microsoft Docs'
 author: bethmassi
 description: Visual Basic 開發人員將學習如何查詢其 SQL Server 資料庫，以便輕鬆地直接在 Visual Basic 編輯器 中建立 XML 和 HTML 文件...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: 32c8ddfd-1e12-4bd9-9420-44478dfb0ca1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-create-xml-documents-from-sql-data
 msc.type: video
-ms.openlocfilehash: 7938e0c6bfd9cc938569ccc7f3487fb6a586d064
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 025f0a29d9f1779d140695193357114d2d802679
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378633"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825550"
 ---
 <a name="how-do-i-create-xml-documents-from-sql-data"></a>[How Do i:]從 SQL 資料建立 XML 文件嗎？
 ====================

@@ -4,19 +4,16 @@ title: 非結構化的 Blob 儲存體 （使用 Azure 建置真實世界的雲�
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/30/2015
-ms.topic: article
 ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
-ms.openlocfilehash: 1840bea3b4183838ffdfe710e987b864a05d53fb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 55937854546fe02c36b15b7141d90b4c0785f32b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364180"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823458"
 ---
 <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>非結構化的 Blob 儲存體 （使用 Azure 建置真實世界的雲端應用程式）
 ====================

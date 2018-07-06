@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX RoundedCorners 擴充項？ | Microsoft D
 author: JoeStagner
 description: 在這段影片中，我們看到如何 RoundedCorner 擴充項控制項可以讓您的網頁柔和的外觀與風格吸引人的圓角加入內容區域...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/01/2007
-ms.topic: article
 ms.assetid: 2a23e599-2969-4d2a-92c2-4bdfea8f59bc
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-aspnet-ajax-roundedcorners-extender
 msc.type: video
-ms.openlocfilehash: a19842b5e3da73463e945b695ca12b91d535e5ee
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 80fb08b2a2a3235be28f159c9701c574deb8ef31
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401712"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818024"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-roundedcorners-extender"></a>[How Do i:]使用 ASP.NET AJAX RoundedCorners 擴充項？
 ====================

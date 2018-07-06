@@ -4,19 +4,16 @@ title: 實作註冊驗證模式 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，Joe Stagner 註冊程序，在 ASP.NET 應用程式中的加入擴充的電子郵件驗證步驟。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/29/2010
-ms.topic: article
 ms.assetid: 8e5cebbc-7e7b-4f1a-af6b-75a6ed398030
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/implement-the-registration-verification-pattern
 msc.type: video
-ms.openlocfilehash: 5dcf07c072105a4d6ccf01385ef08ddb603c12a6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 33da56a7e86cf66fc9d1fbb804a2e49e72f1f751
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382396"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822638"
 ---
 <a name="implement-the-registration-verification-pattern"></a>實作註冊驗證模式
 ====================

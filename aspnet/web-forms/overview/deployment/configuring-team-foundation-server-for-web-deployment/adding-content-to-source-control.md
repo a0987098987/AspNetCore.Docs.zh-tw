@@ -4,19 +4,16 @@ title: 將內容新增至原始檔控制 |Microsoft Docs
 author: jrjlee
 description: 本主題說明如何將內容新增至原始檔控制 Team Foundation Server (TFS) 2010年中。 它說明如何將方案和專案加入至 team 專案...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 86c14aab-c2dd-4f73-b40c-c6d52fa44950
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: b4cbe16915919bcdbabcc3f9769beb15720af5eb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9fdb2e37f2925273b457157b634865d93e865098
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362991"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838367"
 ---
 <a name="adding-content-to-source-control"></a>將內容新增至原始檔控制
 ====================

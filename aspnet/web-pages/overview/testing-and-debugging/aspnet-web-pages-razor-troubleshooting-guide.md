@@ -4,19 +4,16 @@ title: ASP.NET Web Pages (Razor) 疑難排解指南 |Microsoft Docs
 author: tfitzmac
 description: 本文說明使用 ASP.NET Web Pages (Razor) 和一些建議的解決方案時，您可能遇到的問題。 ASP.NET Web 頁面的軟體版本...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2014
-ms.topic: article
 ms.assetid: 2a2c1833-0bfe-4e2e-9cc0-341b52c7b121
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
 msc.type: authoredcontent
-ms.openlocfilehash: 48c0380af32038a1d916d1b99f7de0f918d1a74e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0d0e47ce1b52f0e9ac23a44bbd37ac1a38290dbd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373535"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825159"
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a>ASP.NET Web Pages (Razor) 疑難排解指南
 ====================

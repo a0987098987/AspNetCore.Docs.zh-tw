@@ -4,19 +4,16 @@ title: '[How Do i:]使用 MSBuild 自動化 ASP.NET 編譯器並合併公用程�
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何建立 MSBuild 專案，可協調的 aspnet_compiler 及 aspnet_merge 公用程式執行的 asp...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/07/2008
-ms.topic: article
 ms.assetid: 14f2b333-59f5-4ae4-88db-2a78f809cef3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities
 msc.type: video
-ms.openlocfilehash: b2803bbd9d63cb5e79ced227719e762eaf697aa6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8414489f495ae2b194a503bf3129467c3219ce8c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392106"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818187"
 ---
 <a name="how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities"></a>[How Do i:]使用 MSBuild 自動化 ASP.NET 編譯器並合併公用程式
 ====================

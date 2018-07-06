@@ -4,19 +4,16 @@ title: 上的 jQuery UI 1.8.12 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: f7cb2102-d826-4d70-ba9a-504e3c50ad89
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui1812
 msc.type: content
-ms.openlocfilehash: 441d4adfe8bf4503e07a4b63717d95cbbf4f29bf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 890078c6461bf2f30a701eb10c37c2a8e3930f7e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375386"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809335"
 ---
 <a name="jquery-ui-1812-on-the-microsoft-ajax-cdn"></a>上的 jQuery UI 1.8.12 Microsoft Ajax CDN
 ====================

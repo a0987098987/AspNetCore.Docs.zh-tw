@@ -4,19 +4,16 @@ title: '反覆項目 #5 – 建立單元測試 (C#) |Microsoft Docs'
 author: microsoft
 description: 在第五個反覆項目中，我們讓我們的應用程式容易維護及修改藉由新增單元測試。 我們模擬我們的資料模型類別，並建置 o 的單元測試...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2009
-ms.topic: article
 ms.assetid: 28ad8f80-b8a5-444e-b478-8b15a846060c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6466e7332e0e11420a0e99c77a87a7cddc0e34e2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0da88a67f788be211c4aa7b909106e9dab9960f3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372400"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805998"
 ---
 <a name="iteration-5--create-unit-tests-c"></a>反覆項目 #5 – 建立單元測試 (C#)
 ====================

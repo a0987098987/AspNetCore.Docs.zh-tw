@@ -4,19 +4,16 @@ title: Microsoft Ajax CDN 上的 jQuery Mobile 1.0 Beta 3 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: f71316df-b4f4-4cf5-8511-c0415391231c
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10b3
 msc.type: content
-ms.openlocfilehash: 8c63f6b65985d2d35e7a8f0e836733e3fe87ed8c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7f819202a889e59843e627de5d169a08c9ff9ed1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383074"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822414"
 ---
 <a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a>Microsoft Ajax CDN 上的 jQuery Mobile 1.0 Beta 3
 ====================

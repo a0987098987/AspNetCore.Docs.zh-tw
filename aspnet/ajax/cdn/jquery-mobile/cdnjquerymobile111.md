@@ -4,19 +4,16 @@ title: 上的 jQuery Mobile 1.1.1 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 1252d4fa-e900-45fe-bc32-87b0af33b51c
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile111
 msc.type: content
-ms.openlocfilehash: ad3388d4e8972cf896096cf08e621899891b7ef8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5f74d115e244d566720a695921e25f6dcdb6e382
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362229"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827459"
 ---
 <a name="jquery-mobile-111-on-the-microsoft-ajax-cdn"></a>上的 jQuery Mobile 1.1.1 Microsoft Ajax CDN
 ====================

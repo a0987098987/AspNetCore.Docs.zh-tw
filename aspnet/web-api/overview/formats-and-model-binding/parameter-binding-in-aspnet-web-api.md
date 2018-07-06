@@ -4,19 +4,16 @@ title: ASP.NET Web API 中繫結的參數 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/11/2013
-ms.topic: article
 ms.assetid: e42c8388-04ed-4341-9fdb-41b1b4c06320
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 7519ad92334690817ae64b994762fd68e76ebc9e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 97785db962691c25bac03f904924321af2f6b500
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377805"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810078"
 ---
 <a name="parameter-binding-in-aspnet-web-api"></a>ASP.NET Web API 中繫結的參數
 ====================

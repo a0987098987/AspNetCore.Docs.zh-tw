@@ -4,19 +4,16 @@ title: 啟用 ASP.NET Web API 1 中的 CRUD 作業 |Microsoft Docs
 author: MikeWasson
 description: 本教學課程會示範如何使用 ASP.NET Web API HTTP 服務中支援的 CRUD 作業。 教學課程 Visual Studio 2012 Web AP 中所使用的軟體版本...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/28/2012
-ms.topic: article
 ms.assetid: c125ca47-606a-4d6f-a1fc-1fc62928af93
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: 1658e120225cd3c9425168238981133c96ff398a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 4ea9d4ce9a14e77fa1a63ee82bc1447b6e41378c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402924"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814358"
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>啟用 ASP.NET Web API 1 中的 CRUD 作業
 ====================

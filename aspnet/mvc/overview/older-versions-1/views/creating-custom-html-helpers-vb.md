@@ -4,19 +4,16 @@ title: 建立自訂的 HTML 協助程式 (VB) |Microsoft Docs
 author: microsoft
 description: 本教學課程的目標在於示範如何建立自訂的 HTML 協助程式，您可以使用 MVC 檢視中。 利用 HTML 協助程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: f96f4800-19ef-44c0-b457-55e777eb5de8
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0b1f4a6afc62eb23d4591d515e973298da4630f9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ed3f86d3f316d3e1630c6008c20c72c31d7864da
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396594"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821521"
 ---
 <a name="creating-custom-html-helpers-vb"></a>建立自訂的 HTML 協助程式 (VB)
 ====================

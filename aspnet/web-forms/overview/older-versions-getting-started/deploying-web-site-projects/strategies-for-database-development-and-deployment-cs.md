@@ -4,19 +4,16 @@ title: 資料庫開發及部署策略 (C#) |Microsoft Docs
 author: rick-anderson
 description: 部署第一次的資料導向應用程式時可以盲目地將資料庫複製到生產環境的開發環境中。 B...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/23/2009
-ms.topic: article
 ms.assetid: 3e8b0627-3eb7-488e-807e-067cba7cec05
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 98ba771f6eafad84303279045e5b5c4a167c0678
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0cec51d7b0e87f3073e27eb9bbdb4187d61307f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371927"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823666"
 ---
 <a name="strategies-for-database-development-and-deployment-c"></a>資料庫開發及部署策略 (C#)
 ====================

@@ -4,19 +4,16 @@ title: 建立新的自訂擴充項 |Microsoft Docs
 author: JoeStagner
 description: 在此影片 Joe 示範如何使用 AJAX Control Toolkit 來建立新的自訂 AJAX 控制項擴充項。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2009
-ms.topic: article
 ms.assetid: dacc2d88-5768-4721-8624-c603e2088670
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/create-a-new-custom-extender
 msc.type: video
-ms.openlocfilehash: ed4a1a67c52119dc4e5421ba44c35c76a5a9706f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f5099f896af82ffbdb68a8db0f1fe631da290dc5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387630"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810104"
 ---
 <a name="create-a-new-custom-extender"></a>建立新的自訂擴充項
 ====================

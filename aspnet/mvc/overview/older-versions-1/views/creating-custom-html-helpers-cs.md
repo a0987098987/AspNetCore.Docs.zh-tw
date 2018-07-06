@@ -4,19 +4,16 @@ title: 建立自訂的 HTML 協助程式 (C#) |Microsoft Docs
 author: microsoft
 description: 本教學課程的目標在於示範如何建立自訂的 HTML 協助程式，您可以使用 MVC 檢視中。 利用 HTML 協助程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: e454c67d-a86e-4119-a858-eb04bbec2dff
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1e5bb247f52162aba02e0d5775bced73f76d2081
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0606ec3b5595fbe73918b82e32b393871e8533a1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365168"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839405"
 ---
 <a name="creating-custom-html-helpers-c"></a>建立自訂的 HTML 協助程式 (C#)
 ====================

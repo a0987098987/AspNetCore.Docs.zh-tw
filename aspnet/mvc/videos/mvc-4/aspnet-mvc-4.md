@@ -4,19 +4,16 @@ title: ASP.NET MVC 4 | Microsoft Docs
 author: shanselman
 description: Scott Hanselman 將示範在 ASP.NET MVC 4 的新功能。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2012
-ms.topic: article
 ms.assetid: 8a6417d5-801d-4fd7-8a06-164cd5441d3d
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-4/aspnet-mvc-4
 msc.type: video
-ms.openlocfilehash: 62a153ba182500a603be4406e210573122e4cf47
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 41971ded7826a3dedb9570d7122d0acd15d9a284
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394582"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838380"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================

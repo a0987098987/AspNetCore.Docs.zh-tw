@@ -4,19 +4,16 @@ title: 監視和遙測 （使用 Azure 建置真實世界的雲端應用程式�
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/09/2015
-ms.topic: article
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
-ms.openlocfilehash: b2c91b26fddc21986bf90957f7e4ef0a493d5837
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e71970e0ec3a10d464c56e0eed11ff97e9580a26
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396756"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822059"
 ---
 <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>監視和遙測 （使用 Azure 建置真實世界的雲端應用程式）
 ====================

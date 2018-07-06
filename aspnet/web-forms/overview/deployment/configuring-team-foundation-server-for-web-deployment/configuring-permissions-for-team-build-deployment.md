@@ -4,19 +4,16 @@ title: 設定權限的小組組建部署 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何設定以啟用您的組建伺服器，做為自動化的 b 的一部分時，將內容部署至 web 伺服器和資料庫伺服器的權限...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 2488a91e-b0a8-465a-b874-3233f724b56b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: f84e72bd5991b0407008ccdaff5243979cbb986e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: b577d887b4a4476b6796ae9f1df538d16eededa3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384658"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820356"
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>組建部署小組設定權限。
 ====================

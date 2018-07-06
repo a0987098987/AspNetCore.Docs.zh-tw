@@ -4,19 +4,16 @@ title: 將動畫加入至控制項 (C#) |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 本教學課程示範如何...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 0f1fc1f5-9dbd-44e7-931e-387d42f0342b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 80c982e041af2d0b9ee789665613ced0311dfcc9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 10e541bc7e8a9a72d27909d7b37cfaf1860fe369
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396568"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832946"
 ---
 <a name="adding-animation-to-a-control-c"></a>將動畫加入至控制項 (C#)
 ====================

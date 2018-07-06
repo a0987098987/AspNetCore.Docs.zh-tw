@@ -4,19 +4,16 @@ title: jQuery 驗證 1.15.1 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/26/2016
-ms.topic: article
 ms.assetid: ec4c0b4e-df0e-4e4d-afaa-8f3a0db438f9
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate1151
 msc.type: content
-ms.openlocfilehash: edcb4a4ba5fa7b4a31aa64591cab350fc82be405
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7e5d218de70540de6d035fda40908a0a48b699ff
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396025"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817865"
 ---
 <a name="jquery-validation-1151"></a>jQuery 驗證 1.15.1
 ====================

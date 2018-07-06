@@ -4,19 +4,16 @@ title: 案例： 設定 Web 部署的生產環境 |Microsoft Docs
 author: jrjlee
 description: 本主題描述在生產環境的典型的 web 部署案例，並說明您需要完成，才能設定類似的工作...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 2e861511-450e-4752-a61e-4a01933f9b6e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: ff9a1e7657852f37b3dc4fc1dbc4f6e78e6427cb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: dc16b2fadec8051f78d13ffeb97abf2d9e6930f5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370344"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806709"
 ---
 <a name="scenario-configuring-a-production-environment-for-web-deployment"></a>案例： 設定 Web 部署的生產環境
 ====================

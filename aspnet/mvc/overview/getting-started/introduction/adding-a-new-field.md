@@ -4,19 +4,16 @@ title: 加入新的欄位。 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 2eceaee81067cdefb998c95c6bbec257f637f1cb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a4eb759646fc77bbba687d8b4914465d58cd3aaa
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394083"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819847"
 ---
 <a name="adding-a-new-field"></a>新增欄位
 ====================

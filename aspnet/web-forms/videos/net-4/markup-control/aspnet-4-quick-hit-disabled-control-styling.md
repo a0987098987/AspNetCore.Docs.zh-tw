@@ -4,19 +4,16 @@ title: 停用控制項樣式設定 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解如何使用 controlRenderingCompatibility，設定讓停用非輸入控制項並不會呈現無效的樣式。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/16/2009
-ms.topic: article
 ms.assetid: edb30028-1fc4-4730-9d6f-1013b6fd5637
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/markup-control/aspnet-4-quick-hit-disabled-control-styling
 msc.type: video
-ms.openlocfilehash: e635831f49b62275fb4276c51bc366ebd38a4b7e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 759e9ea5790aa871851b04de573db0665fdf0982
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393843"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814167"
 ---
 <a name="aspnet-4-quick-hit---disabled-control-styling"></a>ASP.NET 4"快速 Hit"-停用控制項樣式
 ====================

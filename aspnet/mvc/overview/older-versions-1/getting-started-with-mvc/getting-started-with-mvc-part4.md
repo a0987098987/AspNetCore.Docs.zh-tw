@@ -4,19 +4,16 @@ title: 建立資料庫 |Microsoft Docs
 author: shanselman
 description: 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/14/2010
-ms.topic: article
 ms.assetid: 742df67f-484d-4ef3-af6b-8c791e556b43
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
 msc.type: authoredcontent
-ms.openlocfilehash: 0e72359095e4c40ef7e56f1290a45ded257143c9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fff974edfaffeb164879c10b8e70bd3482c47554
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362352"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813756"
 ---
 <a name="creating-a-database"></a>建立資料庫
 ====================

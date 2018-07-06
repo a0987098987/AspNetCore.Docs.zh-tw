@@ -4,19 +4,16 @@ title: SignalR 向外延展與 SQL Server (SignalR 1.x) |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/01/2013
-ms.topic: article
 ms.assetid: 1dca7967-8296-444a-9533-837eb284e78c
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 9b2c56b9556db806b895c802065706485f3ea0cf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: be4adf7a5e8af603d64bb26d97e0149f40fb92a3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399162"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810365"
 ---
 <a name="signalr-scaleout-with-sql-server-signalr-1x"></a>SignalR 向外延展與 SQL Server (SignalR 1.x)
 ====================

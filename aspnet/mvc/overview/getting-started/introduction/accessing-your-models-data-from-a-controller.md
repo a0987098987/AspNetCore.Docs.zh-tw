@@ -4,19 +4,16 @@ title: 從控制器存取模型的資料 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: caa1ba4a-f9f0-4181-ba21-042e3997861d
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 8d359de17bc35d0e14047ccd0589f080e0f949fc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a3f3f4a030650ff65b070528c5efa1605be764a0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396108"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817547"
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>從控制器存取模型資料
 ====================

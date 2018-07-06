@@ -4,19 +4,16 @@ title: 設定 TFS 組建伺服器，Web 部署 |Microsoft Docs
 author: jrjlee
 description: 本主題說明如何準備 Team Foundation Server (TFS) 組建伺服器，來建置及部署您的解決方案使用 Team Build 和網際網路資訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: f8400241-4f4b-4bbd-9994-54fb64909e6e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 12a18f601a75b607c97c46ecb7f68947ca3a342b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7f57ad0392a068964bb910fbbaafea105fdbb3d3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382529"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841337"
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>設定 Web 部署的 TFS 組建伺服器
 ====================

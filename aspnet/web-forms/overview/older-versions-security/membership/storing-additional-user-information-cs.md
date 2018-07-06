@@ -4,19 +4,16 @@ title: 儲存額外的使用者資訊 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們將建置非常基本的訪客留言板應用程式回答這個問題。 在此情況下，我們將探討 modeli 的不同選項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 1642132a-1ca5-4872-983f-ab59fc8865d3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 201215683253afc0c6521e1bef56685d8487d7c7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5b73a19758c420f09d178ebd395d5c89ad493505
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398847"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819824"
 ---
 <a name="storing-additional-user-information-c"></a>儲存的其他使用者資訊 (C#)
 ====================

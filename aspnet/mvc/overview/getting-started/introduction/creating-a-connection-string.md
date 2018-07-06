@@ -4,19 +4,16 @@ title: 建立連接字串和使用 SQL Server LocalDB |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: 6127804d-c1a9-414d-8429-7f3dd0f56e97
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/creating-a-connection-string
 msc.type: authoredcontent
-ms.openlocfilehash: d6e04de9b1d71a77b4b56b04417d6d4bc24cbd72
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8c8db3fc121b2ff263ab033404211e167e19cd71
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37361664"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820239"
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>建立連接字串和使用 SQL Server LocalDB
 ====================

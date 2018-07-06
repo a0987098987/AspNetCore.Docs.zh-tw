@@ -4,19 +4,16 @@ title: 處理 BLL 和 DAL 層級例外狀況 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會看到如何巧妙地向處理可編輯的 DataList 更新工作流程期間引發的例外狀況。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: ca665073-b379-4239-9404-f597663ca65e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0655f73b63f3eae72a866c912589779a8ccc7664
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1aee5c26bfbbbc46c2151a56fed60057930cba80
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400560"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814248"
 ---
 <a name="handling-bll--and-dal-level-exceptions-vb"></a>處理 BLL 和 DAL 層級例外狀況 (VB)
 ====================

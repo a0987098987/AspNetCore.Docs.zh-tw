@@ -4,19 +4,16 @@ title: ASP.NET Web Pages 2 開發人員預覽讀我檔案 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/14/2011
-ms.topic: article
 ms.assetid: 159a92e2-e011-4da7-b61d-2edde2a967da
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/releases/aspnet-web-pages-2-developer-preview-readme
 msc.type: authoredcontent
-ms.openlocfilehash: 914e99491908294cea1e04dd23ccdb66c1dc05a3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0a89216c0f65d49d00c96a27a5ab33e3872f9bc5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364426"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818342"
 ---
 <a name="aspnet-web-pages-2-developer-preview-readme"></a>ASP.NET Web Pages 2 開發人員預覽讀我檔案
 ====================

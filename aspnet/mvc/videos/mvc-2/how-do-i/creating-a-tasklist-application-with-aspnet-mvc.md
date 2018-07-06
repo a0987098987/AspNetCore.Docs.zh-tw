@@ -4,19 +4,16 @@ title: 使用 ASP.NET MVC 建立 Tasklist 應用程式 |Microsoft Docs
 author: StephenWalther
 description: Stephen Walther 建置整個 ASP.NET MVC 應用程式從開始到完成。 本教學課程是供不熟悉 ASP.NET MV 的人員了解...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/20/2008
-ms.topic: article
 ms.assetid: e2a72e8d-d8da-4505-aa0a-61c830c0954b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-a-tasklist-application-with-aspnet-mvc
 msc.type: video
-ms.openlocfilehash: e6f23918931fa6d5c4baf1de5f9878495638a0cd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fdf4213e7c6de8e5e628ec3dc04bc3bc007776b8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383009"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812180"
 ---
 <a name="creating-a-tasklist-application-with-aspnet-mvc"></a>使用 ASP.NET MVC 建立 Tasklist 應用程式
 ====================

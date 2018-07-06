@@ -4,19 +4,16 @@ title: 實習實驗室： 建置單一頁面應用程式 (SPA) 使用 ASP.NET We
 author: rick-anderson
 description: 在傳統的 web 應用程式，用戶端 （瀏覽器） 會起始與伺服器通訊，藉由要求的頁面。 伺服器接著會處理要求...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/30/2015
-ms.topic: article
 ms.assetid: 719727b7-bef3-45ad-bfe9-ba5bcdb2305f
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
-ms.openlocfilehash: 174084d6923cf1fa445485b7c0dc639a240720a5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 8e9cc082d982aec0a4385a3cefecd118c937e641
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370859"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811516"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>實習實驗室： 建置單一頁面應用程式 (SPA) 使用 ASP.NET Web API 和 Angular.js
 ====================

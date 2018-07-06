@@ -4,19 +4,16 @@ title: 插入新記錄從 GridView 的頁尾 (C#) |Microsoft Docs
 author: rick-anderson
 description: 雖然 GridView 控制項不會插入新記錄的資料提供內建支援，本教學課程會示範如何擴充以包含 GridView...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2007
-ms.topic: article
 ms.assetid: 49545652-98af-46ba-9dbc-9ab529805d9b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3f402d98a12c7da10d97744bbbd33e204275e93c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3ce1c1ea83d2fc50d7cf9ab6cb64d1e76307c74b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381847"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830499"
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-c"></a>從 GridView 的頁尾 (C#) 插入新記錄
 ====================

@@ -4,19 +4,16 @@ title: 使用 IIS7 委派管理員 |Microsoft Docs
 author: JoeStagner
 description: 這段影片中導入令人興奮新 IIS7 管理員建立的遠端管理功能。 它說明伺服器和用戶端設定為歡迎畫面...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/09/2009
-ms.topic: article
 ms.assetid: 7ece1ff3-febd-43c0-9c4f-b5c15c3309f7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/iis/working-with-iis7-deligated-admin
 msc.type: video
-ms.openlocfilehash: 8b3d847434bbaf0ff43a9655273780afb471fdef
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d9d22b4f6b4b5f2c24d1a2410163184618697ad6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376134"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822683"
 ---
 <a name="working-with-iis7-delegated-admin"></a>使用 IIS7 委派管理員
 ====================

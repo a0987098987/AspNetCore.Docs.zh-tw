@@ -4,19 +4,16 @@ title: 建置真實世界的雲端應用程式與 Azure |Microsoft Docs
 author: MikeWasson
 description: 本電子書會引導您透過模式為基礎的方法，用以建置真實世界的雲端解決方案。 這些模式可套用至開發程序也為...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 15e5c0a0411e3cd9433544e9a09b6373311daf6b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 11388b9c58d2d21c7a337a343c10d33c7257ccf1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396210"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840494"
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>使用 Azure 建置真實世界的雲端應用程式
 ====================

@@ -1,33 +1,32 @@
 ---
 uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-serialize-a-graph-with-the-entity-framework
-title: '[如何:]序列化圖形與 Entity Framework |Microsoft 文件'
+title: '[How Do i:]序列化 [Entity Framework 使用的圖形 |Microsoft Docs'
 author: rick-anderson
-description: 在此簡介視訊的 Brian 道生市將示範您如何開發 ASP.NET 應用程式與 ADO.NET Entity Framework 時，序列化圖形。
+description: 在此簡介的影片 Brian 道森會示範如何開發 ASP.NET 應用程式使用 ADO.NET Entity Framework 時，序列化圖形。
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2008
 ms.topic: article
 ms.assetid: e8b41eed-5423-43d1-a54b-62f04bff371e
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-serialize-a-graph-with-the-entity-framework
 msc.type: video
-ms.openlocfilehash: d60cf84cc9185d06f6b8690c338ab5b36b23f30e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
-ms.translationtype: MT
+ms.openlocfilehash: 5642000b673b0ce0d673e8b5a090d3fa9683450a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30880787"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381217"
 ---
-<a name="how-do-i-serialize-a-graph-with-the-entity-framework"></a><span data-ttu-id="1e7af-103">[如何:]序列化與 Entity Framework 圖形</span><span class="sxs-lookup"><span data-stu-id="1e7af-103">[How Do I:] Serialize a Graph with the Entity Framework</span></span>
+<a name="how-do-i-serialize-a-graph-with-the-entity-framework"></a><span data-ttu-id="fe16b-103">[How Do i:]序列化 [Entity Framework 使用的圖形</span><span class="sxs-lookup"><span data-stu-id="fe16b-103">[How Do I:] Serialize a Graph with the Entity Framework</span></span>
 ====================
-<span data-ttu-id="1e7af-104">由[Brian 道生市](https://twitter.com/briandawson)</span><span class="sxs-lookup"><span data-stu-id="1e7af-104">by [Brian Dawson](https://twitter.com/briandawson)</span></span>
+<span data-ttu-id="fe16b-104">藉由[Brian 道森](https://twitter.com/briandawson)</span><span class="sxs-lookup"><span data-stu-id="fe16b-104">by [Brian Dawson](https://twitter.com/briandawson)</span></span>
 
-<span data-ttu-id="1e7af-105">在此簡介視訊的 Brian 道生市將示範您如何開發 ASP.NET 應用程式與 ADO.NET Entity Framework 時，序列化圖形。</span><span class="sxs-lookup"><span data-stu-id="1e7af-105">In this introductory video Brian Dawson will show you how to serialize a Graph when developing an ASP.NET application with the ADO.NET Entity Framework.</span></span>
+<span data-ttu-id="fe16b-105">在此簡介的影片 Brian 道森會示範如何開發 ASP.NET 應用程式使用 ADO.NET Entity Framework 時，序列化圖形。</span><span class="sxs-lookup"><span data-stu-id="fe16b-105">In this introductory video Brian Dawson will show you how to serialize a Graph when developing an ASP.NET application with the ADO.NET Entity Framework.</span></span>
 
-[<span data-ttu-id="1e7af-106">&#9654;觀看影片 （4 分鐘）</span><span class="sxs-lookup"><span data-stu-id="1e7af-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-serialize-a-graph-with-the-entity-framework)
+[<span data-ttu-id="fe16b-106">&#9654;觀看影片 （4 分鐘）</span><span class="sxs-lookup"><span data-stu-id="fe16b-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-serialize-a-graph-with-the-entity-framework)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="1e7af-107">[上一頁](how-do-i-use-the-new-entity-data-source.md)
-> [下一頁](how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities.md)</span><span class="sxs-lookup"><span data-stu-id="1e7af-107">[Previous](how-do-i-use-the-new-entity-data-source.md)
+> <span data-ttu-id="fe16b-107">[上一頁](how-do-i-use-the-new-entity-data-source.md)
+> [下一頁](how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities.md)</span><span class="sxs-lookup"><span data-stu-id="fe16b-107">[Previous](how-do-i-use-the-new-entity-data-source.md)
 [Next](how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities.md)</span></span>

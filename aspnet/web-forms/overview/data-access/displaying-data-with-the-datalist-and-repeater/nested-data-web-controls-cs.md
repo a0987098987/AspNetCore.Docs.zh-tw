@@ -4,19 +4,16 @@ title: 巢狀的資料 Web 控制項 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們將探討如何使用 Repeater 會放在另一個重複項中。 範例將說明如何將內部的 Repeater 填入這兩個 d...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2006
-ms.topic: article
 ms.assetid: ad3cb0ec-26cf-42d7-b81b-184a34ec9f86
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fdac16f3f3460e75887aa0f4b4540da1d2227c88
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bed7d3772d86b897cafc38a424723da6adf08f97
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368375"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839379"
 ---
 <a name="nested-data-web-controls-c"></a>巢狀的資料 Web 控制項 (C#)
 ====================

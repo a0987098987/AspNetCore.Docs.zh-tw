@@ -4,19 +4,16 @@ title: 處理未處理的例外狀況 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在生產環境中的 web 應用程式就會發生執行階段錯誤時，重要通知開發人員，並記錄錯誤，因此，它可能會在當下診斷出的 la...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: 051296f0-9519-4e78-835c-d868da13b0a0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6c0f6883f2a19d060aff1573238cc1df1838e824
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f925a2e2a8cf2785aa2df89c82d2a29965a543d9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365980"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835226"
 ---
 <a name="processing-unhandled-exceptions-vb"></a>處理未處理的例外狀況 (VB)
 ====================

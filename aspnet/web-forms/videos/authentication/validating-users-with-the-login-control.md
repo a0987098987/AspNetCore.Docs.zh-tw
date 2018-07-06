@@ -4,19 +4,16 @@ title: 驗證使用者與登入控制項 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，Joe Stagner 將探索使用者驗證，而不是則建立自訂的表單，然後呼叫 API 驗證使用替代的方法...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2008
-ms.topic: article
 ms.assetid: 6c11816b-504a-4512-b67e-9bd15947a7f8
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/validating-users-with-the-login-control
 msc.type: video
-ms.openlocfilehash: 9e08d09821f3c16c847a1a2d494b943f778cb2e7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 35aa776fd87a7ebc411f5dde1d675660c459328d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390659"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835695"
 ---
 <a name="validating-users-with-the-login-control"></a>驗證使用者與登入控制項
 ====================

@@ -4,19 +4,16 @@ title: 使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分
 author: tdykstra
 description: 本教學課程系列由開始使用 Entity Framework 4.0 的教學課程系列的 Contoso 大學 web 應用程式為基礎。 我...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2011
-ms.topic: article
 ms.assetid: efb0e677-10b8-48dc-93d3-9ba3902dd807
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests
 msc.type: authoredcontent
-ms.openlocfilehash: 02f0b86203eb879ca618655b8956f22dc67858cd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6adeb0e49fa754c42bdff6e0bb058f7b73a3f68f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394238"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832554"
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests"></a>使用 Entity Framework 4.0 和 ObjectDataSource 控制項，第 2 部分： 新增商務邏輯層和單元測試
 ====================

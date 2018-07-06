@@ -4,19 +4,16 @@ title: 路由和 ASP.NET Web API 中的動作選項 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2012
-ms.topic: article
 ms.assetid: bcf2d223-cb7f-411e-be05-f43e96a14015
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: dc0edbdf62ceab1baf441301b47c0293de9a5c5d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2421d3dd134e9188faf6933b076fb9d22a119617
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388610"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832826"
 ---
 <a name="routing-and-action-selection-in-aspnet-web-api"></a>路由和 ASP.NET Web API 中的動作選取
 ====================

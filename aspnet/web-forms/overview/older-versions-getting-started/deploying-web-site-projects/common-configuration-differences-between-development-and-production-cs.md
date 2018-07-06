@@ -4,19 +4,16 @@ title: 常見組態差異開發和生產環境 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在先前的教學課程中，我們會部署我們的網站所複製的所有相關的檔案從開發環境到生產環境。 不過，我...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 721a5c37-7e21-48e0-832e-535c6351dcae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6c88a74d2135503f310c2822eefc60dd93607f34
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5b3476cdb25a0fc87ce233d7e26de094a0b7b17c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399077"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808904"
 ---
 <a name="common-configuration-differences-between-development-and-production-c"></a>開發和生產環境 (C#) 之間的常見組態差異
 ====================

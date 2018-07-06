@@ -4,19 +4,16 @@ title: 自訂的 MVC 範本 |Microsoft Docs
 author: joeloff
 description: 建立範本為 VSIX 擴充功能。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/10/2012
-ms.topic: article
 ms.assetid: b0a214c7-2f38-4dbc-b47f-bd7bd9df97bd
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
-ms.openlocfilehash: 715990e2d7151ad1ce8288169ef4bdd5c4243369
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 67cb01e0fae036f01b1851695ae5a4358136d28e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367240"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809773"
 ---
 <a name="custom-mvc-template"></a>自訂的 MVC 範本
 ====================

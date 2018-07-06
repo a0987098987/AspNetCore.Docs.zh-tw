@@ -4,19 +4,16 @@ title: 換行 (VB) 在交易內的資料庫修改 |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討更新、 刪除和插入的資料批次的四個中的第一個。 在本教學課程中我們了解如何讓資料庫交易...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 7d821db5-6cbb-4b38-af14-198f9155fc82
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cf87dd0e677a73dc81cc430157be22b01ff0f7a8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 877174bad08970eed0cab52d0f1d8a521f7d2cc0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390158"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840741"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-vb"></a>資料庫修改包裝在交易 (VB)
 ====================

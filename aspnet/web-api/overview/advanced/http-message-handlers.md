@@ -4,19 +4,16 @@ title: ASP.NET Web API 中的 HTTP 訊息處理常式 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/13/2012
-ms.topic: article
 ms.assetid: 9002018b-3aa3-4358-bb1c-fbb5bc751d01
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/advanced/http-message-handlers
 msc.type: authoredcontent
-ms.openlocfilehash: daf5bac8203beca3be0036b798188e373b02212a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5694845d6f7f9d868c7b3f83785fddda863756d9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394517"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821793"
 ---
 <a name="http-message-handlers-in-aspnet-web-api"></a>ASP.NET Web API 中的 HTTP 訊息處理常式
 ====================

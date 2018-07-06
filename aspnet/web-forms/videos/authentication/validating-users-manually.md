@@ -4,19 +4,16 @@ title: 手動驗證的使用者 |Microsoft Docs
 author: JoeStagner
 description: 在此影片的 Joe Stagner 示範您如何以手動方式建立您自己的 web 表單和程序驗證要求。 如需有關此 vi...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2008
-ms.topic: article
 ms.assetid: c11eec26-25a2-41fb-9330-ddc123c0423a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/validating-users-manually
 msc.type: video
-ms.openlocfilehash: c8bcdd44558d982ba6e7e60639c0e43f8cc3b883
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 421ba60b1fcb6672771c0a832b87f148d1b18291
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376118"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837052"
 ---
 <a name="validating-users-manually"></a>手動驗證使用者
 ====================

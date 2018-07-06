@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX TextBoxWatermark 控制擴充項？ | Mic
 author: JoeStagner
 description: 在這段影片中，您將學習如何使用 ASP.NET AJAX Control Toolkit，這會加入新的水位線屬性，以從 TextBoxWatermark 控制擴充項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2007
-ms.topic: article
 ms.assetid: a43d175e-7526-4dd9-b8ed-9348c3c3dd39
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender
 msc.type: video
-ms.openlocfilehash: c4e15ec5c0c1b8032aa20daf4e57292900e8c33d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7475da83fceb892550872d20a49e46a3051f5765
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401749"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808349"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender"></a>[How Do i:]使用 ASP.NET AJAX TextBoxWatermark 控制擴充項？
 ====================

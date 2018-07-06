@@ -4,19 +4,16 @@ title: 建置自訂資料庫驅動網站導覽提供者 (C#) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 2.0 預設網站導覽提供者會將其資料擷取是靜態的 XML 檔案。 雖然以 XML 為基礎的提供者是適合許多小型和中型 siz...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 04b7591d-106f-4f05-87e9-d416cb65a8a6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1160711911d53dcf889ced1a8422c2dfcf72b240
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fdc6ddeac800279a638911f1f64772c49fff5449
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368692"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807108"
 ---
 <a name="building-a-custom-database-driven-site-map-provider-c"></a>建置自訂資料庫驅動網站導覽提供者 (C#)
 ====================

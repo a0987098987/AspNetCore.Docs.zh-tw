@@ -4,19 +4,16 @@ title: SignalR 向外延展與 Redis |Microsoft Docs
 author: MikeWasson
 description: 軟體使用本主題的 Visual Studio 2013.NET 4.5 SignalR 本主題的第 2 版上一個版本的版本較早版本的相關資訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 6ecd08c1-e364-4cd7-ad4c-806521911585
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/performance/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: e08e0fdcd0df65bea6802838a8ed55d6b86ce1a3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8c125070aa2bc8f0070d9933b77e09a5c84b797a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381951"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831002"
 ---
 <a name="signalr-scaleout-with-redis"></a>使用 Redis 的 SignalR 向外延展
 ====================

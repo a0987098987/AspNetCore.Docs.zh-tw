@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX 索引標籤控制項嗎？ | Microsoft D
 author: JoeStagner
 description: 這段影片中示範索引標籤控制項基本的概念從 ASP.NET AJAX Control Toolkit 中，與中，您可以建立一組索引標籤來組織上的內容...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2007
-ms.topic: article
 ms.assetid: f85fcce9-a897-4f43-b12f-5c6f5f2733cd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-tabs-control
 msc.type: video
-ms.openlocfilehash: 049320f4981563a846b319fa1e7017be5098d2ac
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 23fa24c15f6aafaecb22aa7a44ea2b2659640f20
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398957"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807242"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-tabs-control"></a>[How Do i:]使用 ASP.NET AJAX 索引標籤控制項嗎？
 ====================

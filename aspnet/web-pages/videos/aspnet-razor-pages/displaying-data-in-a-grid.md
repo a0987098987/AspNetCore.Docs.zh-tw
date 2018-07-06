@@ -4,19 +4,16 @@ title: 在方格中顯示資料 |Microsoft Docs
 author: JoeStagner
 description: 在方格的教學課程的影片伴侶顯示資料
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/25/2011
-ms.topic: article
 ms.assetid: 76ac6b38-ca93-4d8f-8a72-9e46c82054ab
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/displaying-data-in-a-grid
 msc.type: video
-ms.openlocfilehash: 5071d0ca527743b62ebe211eb31e878c18395f91
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 092dbfbfe27a1751802904ad254f1e08d49e401a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396194"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838041"
 ---
 <a name="displaying-data-in-a-grid"></a>在方格中顯示資料
 ====================

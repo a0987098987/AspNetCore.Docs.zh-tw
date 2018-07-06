@@ -4,19 +4,16 @@ title: 開始使用 Entity Framework 4.0 Database 中第一次與 ASP.NET 4 Web 
 author: tdykstra
 description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 的 ASP.NET Web Forms 應用程式。 範例應用程式是...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/03/2010
-ms.topic: article
 ms.assetid: ceb9e60f-957c-4d25-9331-cc527de96a33
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 9783e30fdabe17958690d178ef95616cb72a8164
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5f8b1c15fbfd2d65b603013db3902b42faa40665
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380324"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836784"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>開始使用 Entity Framework 4.0 Database 中第一次和 ASP.NET 4 Web Form-第 4 部分
 ====================

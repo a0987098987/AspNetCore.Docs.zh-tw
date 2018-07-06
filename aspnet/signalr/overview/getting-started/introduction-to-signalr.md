@@ -4,19 +4,16 @@ title: SignalR 簡介 |Microsoft Docs
 author: pfletcher
 description: 此文章說明 SignalR 為何，以及一些應建立解決方案。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 0798f149b25ab34dfc9b4233e74dc575ef0e7b4d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4c34f99674a8213966c44aa434a0e00690b30f44
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364115"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820184"
 ---
 <a name="introduction-to-signalr"></a>SignalR 簡介
 ====================

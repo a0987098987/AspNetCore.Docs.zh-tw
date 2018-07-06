@@ -4,19 +4,16 @@ title: 在 ASP.NET MVC 中使用 Page Inspector |Microsoft Docs
 author: rick-anderson
 description: Visual Studio 2012 中的 Page Inspector 是整合式瀏覽器的 web 開發工具。 在 Page Inspector i 與整合式瀏覽器中，選取任何項目...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2012
-ms.topic: article
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 032be78e744bdf2c74337c72afb4efb7471ae4f9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: e3a6b79811cae15ec69ba3c5babe38b117b697a5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399139"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806082"
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>在 ASP.NET MVC 中使用 Page Inspector
 ====================

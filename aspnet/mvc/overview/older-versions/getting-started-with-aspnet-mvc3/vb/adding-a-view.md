@@ -4,19 +4,16 @@ title: 新增檢視 (VB) |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: d3633f64-5d3c-45c9-ae4b-cb1563e3739f
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 840f925aea40963c45787a8b5af20e99ff31f3d8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 140dc8a7302c52112c2d8873325b2567e3ba66a1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386782"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829974"
 ---
 <a name="adding-a-view-vb"></a>新增檢視 (VB)
 ====================

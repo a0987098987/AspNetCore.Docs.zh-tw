@@ -4,19 +4,16 @@ title: 在 TFS 中建立 Team 專案 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何建立新的 team 專案的 Team Foundation Server (TFS) 2010年中。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: b28d3e2d-0bb4-4e29-a780-af810b964722
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: 2c3b30cac408f47d7d15ae7456f0744219506c85
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 98725b9d2f669e6520f24c3a8122be086002e96a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397557"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810220"
 ---
 <a name="creating-a-team-project-in-tfs"></a>在 TFS 中建立 Team 專案
 ====================

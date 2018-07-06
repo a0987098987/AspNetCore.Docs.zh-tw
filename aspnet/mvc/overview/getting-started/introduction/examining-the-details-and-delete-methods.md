@@ -4,19 +4,16 @@ title: 檢查 Details 和 Delete 方法 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/26/2015
-ms.topic: article
 ms.assetid: f1d2a916-626c-4a54-8df4-77e6b9fff355
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: 30fafd228dd43624cb2e6886fe1c1dda5bbcb60e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ce4413f81e49c1467b574347f69f855ae4ba5bf8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399486"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839039"
 ---
 <a name="examining-the-details-and-delete-methods"></a>檢查 Details 和 Delete 方法
 ====================

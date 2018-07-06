@@ -4,19 +4,16 @@ title: 驗證與資料註解驗證器 (VB) |Microsoft Docs
 author: microsoft
 description: 善用資料註釋模型繫結，若要執行的 ASP.NET MVC 應用程式內的驗證。 了解如何使用不同類型的驗證程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/29/2009
-ms.topic: article
 ms.assetid: 0d23ff2b-f2ec-434a-be3b-1180beeccba3
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 94410d0e8ad132a4e7a31ac01163663b597c3225
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9d76596ede0763bde3c84dca4a545be250a3062c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391414"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837419"
 ---
 <a name="validation-with-the-data-annotation-validators-vb"></a>驗證與資料註解驗證器 (VB)
 ====================

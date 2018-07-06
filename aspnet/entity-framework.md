@@ -3,20 +3,18 @@ uid: entity-framework
 title: Entity Framework |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
-manager: wpickett
-ms.date: 03/12/2010
-ms.topic: article
 ms.assetid: faa761a9-86b3-4859-b9c0-60d5c5bc5e93
-ms.technology: ''
+ms.author: aspnetcontent
+ms.date: 03/12/2010
+ms.technology: aspnet
 msc.legacyurl: /entity-framework
 msc.type: content
-ms.openlocfilehash: 927025ea8088604b5ab80585b3143873145ddb8c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9c73f1cd893f2666f402f3ccedefb517ed4ebf22
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374343"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806390"
 ---
 <a name="entity-framework"></a>Entity Framework
 ====================

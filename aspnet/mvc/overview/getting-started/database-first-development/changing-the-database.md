@@ -4,19 +4,16 @@ title: EF Database First 與 ASP.NET MVC： 變更資料庫 |Microsoft Docs
 author: tfitzmac
 description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/01/2014
-ms.topic: article
 ms.assetid: cfd5c083-a319-482e-8f25-5b38caa93954
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/changing-the-database
 msc.type: authoredcontent
-ms.openlocfilehash: 7c9bca87c51bee35be2c5b533916255be80056b0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0176274694426a527ed0862b5138919d4cf5c319
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385430"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840936"
 ---
 <a name="ef-database-first-with-aspnet-mvc-changing-the-database"></a>EF Database First 與 ASP.NET MVC： 變更資料庫
 ====================

@@ -4,19 +4,16 @@ title: '[How Do i:]實作與 UpdatePanel 的持續性通訊模式？ | Microsoft
 author: JoeStagner
 description: 在傳統的網站上瀏覽器和伺服器不會維護進行中的通訊，但只在執行動作的使用者回應通訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/01/2007
-ms.topic: article
 ms.assetid: 49c7a74d-dce7-4d5c-8282-c7846f478e11
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel
 msc.type: video
-ms.openlocfilehash: 3812b41085f6ad0e08bd37599af845cfa4ff08e8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 89dea5c2c44e8bdd9c12a127864428f681a66fb2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380548"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833144"
 ---
 <a name="how-do-i-implement-the-persistent-communications-pattern-with-the-updatepanel"></a>[How Do i:]實作與 UpdatePanel 的持續性通訊模式？
 ====================

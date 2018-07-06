@@ -4,19 +4,16 @@ title: 建立新的 ASP.NET MVC 專案 |Microsoft Docs
 author: microsoft
 description: 步驟 1 會示範如何將基本 NerdDinner 應用程式的結構放在位置。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 7e0e9928-8fdc-4b74-9882-55fac0976628
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
-ms.openlocfilehash: 9f5e0b3f82d113fc72ab4002ec8d06ad8444dceb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 88ef850503725cc57c92a11952729b4bd2205a69
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374272"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835076"
 ---
 <a name="create-a-new-aspnet-mvc-project"></a>建立新的 ASP.NET MVC 專案
 ====================

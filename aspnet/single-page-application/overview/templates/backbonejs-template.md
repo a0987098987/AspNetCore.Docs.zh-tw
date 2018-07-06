@@ -4,19 +4,16 @@ title: Backbone 範本 |Microsoft Docs
 author: madskristensen
 description: Backbone.js SPA 範本
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/04/2013
-ms.topic: article
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
-ms.technology: ''
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 641e149155fbee2655024bec3b76dce5243e7d59
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f483a7ef840b7bce71187fd929e9667ee1eaf053
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362501"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811000"
 ---
 <a name="backbone-template"></a>Backbone 範本
 ====================

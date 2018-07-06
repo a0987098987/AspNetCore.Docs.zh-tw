@@ -4,19 +4,16 @@ title: 成員資格 |Microsoft Docs
 author: microsoft
 description: ASP.NET 成員資格的表單驗證模型的成功組建從 ASP.NET 1.x。 ASP.NET 表單驗證會提供便利的方式來 incorp...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2005
-ms.topic: article
 ms.assetid: f2339485-5d78-4c5e-8c0a-dc9b8a315345
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/membership
 msc.type: authoredcontent
-ms.openlocfilehash: ebba0c25fd3c7d6de7182c14559add7902cafe83
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f776ed628e206c06543589767ba364af3c76ae16
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388392"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818213"
 ---
 <a name="membership"></a>成員資格
 ====================

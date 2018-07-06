@@ -4,19 +4,16 @@ title: 設定 Web 伺服器的 Web Deploy 發行 （離線部署） |Microsoft D
 author: jrjlee
 description: 本主題描述如何設定 IIS web 伺服器以支援離線網頁發佈和部署。 當您使用 Internet Information Services (我...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: ba92788f-9f03-44b1-b6b2-af8413e6a35d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 555b4b3c79d8efc641b1c179482993371735dbe2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 048cd1855e3f03a6f348521c00acb03ddee8c630
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397573"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824670"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>設定 Web 伺服器，Web deploy 發行 （離線部署）
 ====================

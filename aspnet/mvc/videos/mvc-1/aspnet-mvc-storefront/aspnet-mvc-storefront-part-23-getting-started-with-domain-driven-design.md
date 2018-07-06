@@ -4,19 +4,16 @@ title: ASP.NET MVC 店面第 23 節： 開始使用網域導向設計 |Microsoft
 author: robconery
 description: 我不喜歡潛入我的應用程式的複雜度。 不確定如何為放-但是架構必須信心有點因此在這一集...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2009
-ms.topic: article
 ms.assetid: 690538bb-6f23-4b1a-94b7-188454bb734a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design
 msc.type: video
-ms.openlocfilehash: 3b90a8d44144c2afd25500cefa08602e3ce49236
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a28f5fca4572ba7fdc28140d5ba66ec503f68b65
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372297"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803724"
 ---
 <a name="aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design"></a>ASP.NET MVC 店面第 23 節： 開始使用網域導向設計
 ====================

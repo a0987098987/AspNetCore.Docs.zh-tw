@@ -4,19 +4,16 @@ title: 解除鎖定及核准使用者帳戶 (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程示範如何建置網頁，以供系統管理員管理使用者的鎖定，且已核准狀態。 我們也將了解如何核准新使用者 o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2008
-ms.topic: article
 ms.assetid: 5346aab1-9974-489f-a065-ae3883b8a350
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6bf76579898a8ff36b18380100ce4ab2e74fc8d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ab6fa1b460de671559dc16ca85f2a4df1e3d5922
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392707"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818300"
 ---
 <a name="unlocking-and-approving-user-accounts-c"></a>解除鎖定及核准使用者帳戶 (C#)
 ====================

@@ -4,19 +4,16 @@ title: 使用 ViewData 和實作 ViewModel 類別 |Microsoft Docs
 author: microsoft
 description: 步驟 6 顯示如何啟用更豐富的格式編輯案例中，支援，同時也討論可用來將資料從控制器傳遞至檢視的兩種方法:...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 5755ec4c-60f1-4057-9ec0-3a5de3a20e23
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-viewdata-and-implement-viewmodel-classes
 msc.type: authoredcontent
-ms.openlocfilehash: edc62246cdc5e5df51c369a70b47dab92c9ecc1c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 70b264def11b55fc08165dda307ff9e82fd4be7f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365119"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826954"
 ---
 <a name="use-viewdata-and-implement-viewmodel-classes"></a>使用 ViewData 和實作 ViewModel 類別
 ====================

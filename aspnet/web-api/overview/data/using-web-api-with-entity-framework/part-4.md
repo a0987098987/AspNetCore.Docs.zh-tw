@@ -4,19 +4,16 @@ title: 處理實體關聯性 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/16/2014
-ms.topic: article
 ms.assetid: d2f5710c-23c7-40a5-9cd9-5d0516570cba
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 7759b828068d99f9975d56671e427ccf6e94aef6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fcfddb3d56d0be641d2df9d92c334776975621be
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400949"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826153"
 ---
 <a name="handling-entity-relations"></a>處理實體關聯性
 ====================

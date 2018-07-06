@@ -4,19 +4,16 @@ title: 如何： 建立和使用中 JavaScript 類別？ | Microsoft Docs
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何建立類別以 JavaScript 具有功能類似於其他程式設計語言與物件導向 capabilitie...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/08/2010
-ms.topic: article
 ms.assetid: 348d1bda-69e0-4cb5-a59f-a104133c2f93
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
 msc.type: video
-ms.openlocfilehash: 763e715bb724c90a52ad7a23eaee90522fb8c95e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bc0ea2ab8aa61cc9855704b41031e602557fe8bd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386416"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812462"
 ---
 <a name="how-do-i-create-and-use-classes-in-javascript"></a>如何： 建立和使用中 JavaScript 類別？
 ====================

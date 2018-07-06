@@ -4,19 +4,16 @@ title: 使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解 |Microsoft Do
 author: tdykstra
 description: 本系列教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web Apps 或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/01/2015
-ms.topic: article
 ms.assetid: c0090595-ab3b-4b9b-9e16-7a1891e8cb2f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 0b57a91c29ba15463e6c534693b951aee8286ad2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b2be5d2f5aa0b7628f7b9338c860593660ef5893
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363998"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830888"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>使用 Visual Studio 的 ASP.NET Web 部署： 疑難排解
 ====================

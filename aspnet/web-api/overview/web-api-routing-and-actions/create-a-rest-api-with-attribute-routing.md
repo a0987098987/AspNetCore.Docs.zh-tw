@@ -4,19 +4,16 @@ title: 使用 ASP.NET Web API 2 中的屬性路由建立 REST API |Microsoft Doc
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2013
-ms.topic: article
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 20538348504427c30d5d75705271a5c3c3c2c171
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 892d353ded17136825fda05b671eab4195b44b07
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362216"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819055"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由建立 REST API
 ====================

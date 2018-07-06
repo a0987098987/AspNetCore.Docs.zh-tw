@@ -4,19 +4,16 @@ title: Visual Studio 2010 快速點擊-程式碼最佳化設定檔 |Microsoft Do
 author: JoeStagner
 description: 在這段影片中，您將學習如何使用&quot;（最佳化程式碼） 的 Web 開發&quot;設定檔設計工具索引標籤會隱藏的 Visual Studio 2010 中的選項和...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/05/2009
-ms.topic: article
 ms.assetid: 8c1d1c73-9c04-49c2-b15f-3c95b80dfbf1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-code-optimized-profile
 msc.type: video
-ms.openlocfilehash: 57a5244a91f2ad24a75a8e5ac464d0cf40d37444
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7820c4a46ba46fe083b2f7a1f47faaf2efa5da44
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362676"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833859"
 ---
 <a name="visual-studio-2010-quick-hit---code-optimized-profile"></a>Visual Studio 2010 」 快速 Hit"-程式碼最佳化設定檔
 ====================

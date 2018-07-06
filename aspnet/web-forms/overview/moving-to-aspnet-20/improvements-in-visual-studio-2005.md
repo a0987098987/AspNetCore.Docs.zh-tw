@@ -4,19 +4,16 @@ title: 在 Visual Studio 2005 中的改良 |Microsoft Docs
 author: microsoft
 description: Visual Studio 2005 提供一長串改進和增強功能，Web 專案的 Web 應用程式開發人員。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2005
-ms.topic: article
 ms.assetid: 72d90cd0-b3d9-454c-b2eb-ed0d9812f32c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
 msc.type: authoredcontent
-ms.openlocfilehash: 35ebb6e94c3da105b802c843e36f193f81a45782
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0a42699381fd326891898e01b4e98662e9ce22bf
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397635"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811366"
 ---
 <a name="improvements-in-visual-studio-2005"></a>在 Visual Studio 2005 的增強功能
 ====================

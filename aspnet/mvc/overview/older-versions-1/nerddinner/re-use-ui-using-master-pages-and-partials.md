@@ -4,19 +4,16 @@ title: 重複使用使用主版頁面及部分的 UI |Microsoft Docs
 author: microsoft
 description: 步驟 7 會探討在我們的檢視範本，以排除程式碼重複，使用部分檢視範本和主版頁面的方式，我們可以套用 ' DRY 準則 '。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: d4243a4a-e91c-4116-9ae0-5c08e5285677
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
 msc.type: authoredcontent
-ms.openlocfilehash: f96d3f3059a442f977d4422797c872b865a55695
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 961378d6d710c678a0cd223a5c31544f014ace7f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391427"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839590"
 ---
 <a name="re-use-ui-using-master-pages-and-partials"></a>重複使用使用主版頁面及部分的 UI
 ====================

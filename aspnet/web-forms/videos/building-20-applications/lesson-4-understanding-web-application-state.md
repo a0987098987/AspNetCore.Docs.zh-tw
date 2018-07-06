@@ -4,19 +4,16 @@ title: '[第 4 課:]了解 Web 應用程式狀態 |Microsoft Docs'
 author: microsoft
 description: 在這一課，您會看到如何維護在 ASP.NET 中，包括可用來儲存您的 ASP.NET 2.0 應用程式資訊的各種物件的狀態...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/28/2005
-ms.topic: article
 ms.assetid: 22ddc59d-cd84-4def-a58b-ec3ca57f0d85
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-4-understanding-web-application-state
 msc.type: video
-ms.openlocfilehash: ed804d37f94845bcc2043bf21e16a27b12f64f83
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ca9c6fc3d87fd961069b1777668f181f2fca1943
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400573"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834532"
 ---
 <a name="lesson-4-understanding-web-application-state"></a>[第 4 課:]了解 Web 應用程式狀態
 ====================

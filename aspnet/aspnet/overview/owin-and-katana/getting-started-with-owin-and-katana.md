@@ -4,19 +4,16 @@ title: 開始使用 OWIN 和 Katana |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/27/2013
-ms.topic: article
 ms.assetid: 6dae249f-5ac6-4f6e-bc49-13bcd5a54a70
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 msc.type: authoredcontent
-ms.openlocfilehash: fb3ff1d061fb89b3236a05326c1c08b0240d5a1e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 58a3d234867821d5e23cce2f01e105dfab88ac33
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377043"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826655"
 ---
 <a name="getting-started-with-owin-and-katana"></a>開始使用 OWIN 和 Katana
 ====================

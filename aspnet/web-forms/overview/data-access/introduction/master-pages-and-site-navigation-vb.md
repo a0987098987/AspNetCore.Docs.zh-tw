@@ -4,19 +4,16 @@ title: 主版頁面與網站導覽 (VB) |Microsoft Docs
 author: rick-anderson
 description: 方便使用的網站的一個共同的特點在於它們都擁有一致、 全站台的頁面配置和巡覽配置。 本教學課程會探討如何 y...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 022801d8-a327-4d0c-8780-6094c9cee00d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c823421a6b934951dd08656b48801c3d26247c5c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d00e535445551a7cfe2d4c46be36abccea31c770
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372040"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810811"
 ---
 <a name="master-pages-and-site-navigation-vb"></a>主版頁面與網站導覽 (VB)
 ====================

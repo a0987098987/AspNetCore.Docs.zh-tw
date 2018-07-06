@@ -4,19 +4,16 @@ title: ASP.NET Web Pages (Razor) API 快速參考 |Microsoft Docs
 author: tfitzmac
 description: 此頁面包含最常使用的物件、 屬性和方法的程式設計含有 Razor 語法的 ASP.NET Web Pages 的簡短範例的清單。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2014
-ms.topic: article
 ms.assetid: 4001cb9b-3bfd-4ace-8a89-1561d8421e2c
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/api-reference/asp-net-web-pages-api-reference
 msc.type: authoredcontent
-ms.openlocfilehash: 3bf706cefe5302cf1085e0f814dc6654e42ae917
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5fb5b8d29fce25fb36704a58b673f5f3bd582873
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378659"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836759"
 ---
 <a name="aspnet-web-pages-razor-api-quick-reference"></a>ASP.NET Web Pages (Razor) API 快速參考
 ====================

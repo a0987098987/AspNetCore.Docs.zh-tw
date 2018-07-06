@@ -4,19 +4,16 @@ title: 如何使用 ASP.NET 動態資料應用程式中的屬性驗證 |Microsof
 author: JoeStagner
 description: 這段影片將介紹修改動態資料應用程式的資料存取層中的部分類別，並讓我們開始著手使用屬性焦 o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/23/2008
-ms.topic: article
 ms.assetid: dcaaaa8d-7dbd-4f5f-be2a-226c2517872a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-use-attribute-validation-in-aspnet-dynamic-data-applications
 msc.type: video
-ms.openlocfilehash: ac668078772fbef243bfbcb3bdb96a4d55a30d08
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 601d8a2749e319ba6fe3a112ac82576f4f3d92f0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385185"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831770"
 ---
 <a name="how-to-use-attribute-validation-in-aspnet-dynamic-data-applications"></a>如何使用 ASP.NET 動態資料應用程式中的屬性驗證
 ====================

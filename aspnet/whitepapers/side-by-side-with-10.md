@@ -4,19 +4,16 @@ title: .NET framework 1.0 和 1.1 版的 ASP.NET 的並存執行 |Microsoft Docs
 author: rick-anderson
 description: 本白皮書會說明如何在您的電腦，讓畫面任一版本上執行的 ASP.NET Web 應用程式上安裝.NET 1.0 與.NET 1.1...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2010
-ms.topic: article
 ms.assetid: bdea2003-e964-4db5-9092-d56cc7560616
-ms.technology: ''
 msc.legacyurl: /whitepapers/side-by-side-with-10
 msc.type: content
-ms.openlocfilehash: 1b8bcebd59a900e54c759509fd4fc5ad1f4f8576
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1018845e3d2c6603732bfbbde78f4a9183e49d5d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391156"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808391"
 ---
 <a name="aspnet-side-by-side-execution-of-net-framework-10-and-11"></a>ASP.NET-並存執行.NET Framework 1.0 和 1.1 版
 ====================

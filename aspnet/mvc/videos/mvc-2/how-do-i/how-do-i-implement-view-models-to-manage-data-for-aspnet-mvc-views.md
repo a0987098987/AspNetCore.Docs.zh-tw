@@ -4,19 +4,16 @@ title: How Do i： 實作檢視模型來管理 ASP.NET MVC 檢視的資料嗎？
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何使用的概念&quot;檢視模型&quot;管理 ASP.NET MVC 檢視表的資料。 首先，範例 MVC 專案會建立...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/11/2009
-ms.topic: article
 ms.assetid: 22f55d63-78f7-44fd-9107-f74cbe16022b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views
 msc.type: video
-ms.openlocfilehash: f0713b87dc6455016de921998a994f8bca7dd8bc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 30a02f4e9f277f54891fdc86c7ba2820a0d77e0b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378082"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819068"
 ---
 <a name="how-do-i-implement-view--models-to-manage-data-for-aspnet-mvc-views"></a>How Do i： 實作檢視模型來管理 ASP.NET MVC 檢視的資料嗎？
 ====================

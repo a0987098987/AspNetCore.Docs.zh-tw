@@ -4,19 +4,16 @@ title: 上的 jQuery UI 1.8.7 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 2656109e-ba9e-4134-8368-58fbabd9afdb
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui187
 msc.type: content
-ms.openlocfilehash: 4dcae7fda63a9d620266ab9cf8a2b149d4149367
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d9eba00c9b228422446a8add2c1de04204899441
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385832"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833814"
 ---
 <a name="jquery-ui-187-on-the-microsoft-ajax-cdn"></a>上的 jQuery UI 1.8.7 Microsoft Ajax CDN
 ====================

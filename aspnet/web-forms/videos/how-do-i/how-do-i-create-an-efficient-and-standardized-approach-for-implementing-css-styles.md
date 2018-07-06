@@ -4,19 +4,16 @@ title: 如何： 建立有效率的標準化方法以實作 CSS 樣式？ | Micr
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何組織和實作提供標準化的外觀與風格的網站的 CSS 樣式。 此外，樣式是...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/15/2010
-ms.topic: article
 ms.assetid: 1d902492-c6a3-4ab8-8e3d-57384ac893d5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles
 msc.type: video
-ms.openlocfilehash: 1e2068bbf6e88182094c08b829ec00b0ff4c7749
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 04ff5486d6fd8db172ece96891e959691330c3dc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379604"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831381"
 ---
 <a name="how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles"></a>如何： 建立有效率的標準化方法以實作 CSS 樣式？
 ====================

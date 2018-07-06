@@ -4,19 +4,16 @@ title: 動作會導致 Web API 2 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/03/2014
-ms.topic: article
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 7726829ac9eba339ff3ac1c94c86132cb1090783
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 74a837cb9f606d78fb516968343d498d3c37c4ed
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395525"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808923"
 ---
 <a name="action-results-in-web-api-2"></a>Web API 2 中的動作結果
 ====================

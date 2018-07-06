@@ -4,19 +4,16 @@ title: '[How Do i:]使用 「 編譯器 」 公用程式中的 Fixednames 選項
 author: rick-anderson
 description: 在此影片的 Chris Pels 將顯示如何使用 aspnet_compiler.exe 公用程式中的 fixednames 選項，以產生編譯 ou 中一致的檔案名稱...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/24/2008
-ms.topic: article
 ms.assetid: e332a1e0-226d-40ad-be99-96f13ecaec24
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-the-fixednames-option-with-the-compiler-utility-for-maximum-flexibility
 msc.type: video
-ms.openlocfilehash: 6a81cd195dcd2a884b6710f270f063f2431876a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 456e495aba5d705a6d8c29eb4742e649a6b41679
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372656"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837622"
 ---
 <a name="how-do-i-use-the-fixednames-option-with-the-compiler-utility-for-maximum-flexibility"></a>[How Do i:]使用 「 編譯器 」 公用程式中的 Fixednames 選項，最大的彈性
 ====================

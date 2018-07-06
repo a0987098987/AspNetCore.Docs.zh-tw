@@ -4,19 +4,16 @@ title: 使用控制器和檢視來實作清單/詳細資料 UI |Microsoft Docs
 author: microsoft
 description: 步驟 4 說明如何將控制器新增至會充分利用我們的模型，為使用者提供的資料清單/詳細資料瀏覽體驗的應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 64116e56-1c9a-4f07-8097-bb36cbb6e57f
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 4fe065e29950a076de07d73205a97399f82f07d6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 7a0a057efb52a869a72722b24d7283cb883db858
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377872"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838581"
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>使用控制器和檢視來實作清單/詳細資料 UI
 ====================

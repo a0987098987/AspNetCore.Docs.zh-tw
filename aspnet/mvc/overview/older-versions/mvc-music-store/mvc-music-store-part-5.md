@@ -4,19 +4,16 @@ title: 第 5 部分： 編輯表單和範本 |Microsoft Docs
 author: jongalloway
 description: 本教學課程系列會詳細說明所有建置 ASP.NET MVC Music 市集範例應用程式所採取的步驟。 第 5 部分涵蓋編輯表單和範本。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/21/2011
-ms.topic: article
 ms.assetid: 6b09413a-6d6a-425a-87c9-629f91b91b28
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: f799c4d492e88f3edcf3800e66e0a1bae3845ba2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: acb4a4c427870e375ff19823f0bdfa208438e899
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395197"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835997"
 ---
 <a name="part-5-edit-forms-and-templating"></a>第 5 部分： 編輯表單和範本
 ====================

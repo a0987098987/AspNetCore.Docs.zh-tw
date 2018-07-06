@@ -4,19 +4,16 @@ title: 使用具有 DynamicPopulate 使用者控制和 JavaScript (C#) |Microsof
 author: wenz
 description: DynamicPopulate 控制項在 ASP.NET AJAX Control Toolkit 中呼叫 web 服務 （或頁面方法），並會產生的值填滿至 t 的目標控制項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 38ac8250-8854-444c-b9ab-8998faa41c5a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cba1647e69cbaebf0accb745278590e357d8c2c1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3a380f24a521153cba084de21014380df49efabd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370415"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835168"
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>使用具有 DynamicPopulate 使用者控制和 JavaScript (C#)
 ====================

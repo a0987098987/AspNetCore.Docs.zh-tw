@@ -4,19 +4,16 @@ title: 排序自訂的分頁資料 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在上一個教學課程中我們已了解如何實作自訂分頁時 presentating 網頁上的資料。 在本教學課程中，我們了解如何擴充先前的內容...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 778baa4e-4af8-4665-947e-7a01d1a4dff2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 36080799c94b359a7e5b7ba6ccb47e359fc2161d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8057b11f9d2d812b9b2bf8d9e016ed17cff4e2f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362793"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816742"
 ---
 <a name="sorting-custom-paged-data-c"></a>排序自訂的分頁資料 (C#)
 ====================

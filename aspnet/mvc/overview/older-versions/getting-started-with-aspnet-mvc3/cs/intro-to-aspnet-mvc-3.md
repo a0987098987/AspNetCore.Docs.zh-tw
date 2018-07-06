@@ -4,19 +4,16 @@ title: ASP.NET MVC 3 (C#) 簡介 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 86a80b35-88bd-4b7c-bd58-f6e7997197d4
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3
 msc.type: authoredcontent
-ms.openlocfilehash: d4cda748638a6396750fe2ef7713dd0b2a4555d6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b0ff8da1911b36e6e74e5c7057f27d891ad57f61
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379857"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832285"
 ---
 <a name="intro-to-aspnet-mvc-3-c"></a>ASP.NET MVC 3 (C#) 簡介
 ====================

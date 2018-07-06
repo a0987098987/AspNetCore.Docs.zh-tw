@@ -4,19 +4,16 @@ title: 指定標題、 中繼標籤及其他 HTML 標頭主版頁面 (C#) |Micro
 author: rick-anderson
 description: 查看定義各種不同的技術&lt;head&gt;主版頁面，從 [內容] 頁面中的項目。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/21/2008
-ms.topic: article
 ms.assetid: 0aa1c84f-c9e2-4699-b009-0e28643ecbc6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 220bc0af79ea6ac5b63f51f9803a40200714642e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 773d8aee55a3e685c9759f9a9e0b571564f8cd31
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398569"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841007"
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-c"></a>指定標題、 中繼標籤及其他 HTML 標頭主版頁面 (C#)
 ====================

@@ -4,19 +4,16 @@ title: 部署 Web 應用程式，在企業案例中使用 Visual Studio 2010 |Mi
 author: jrjlee
 description: 這套教學課程說明的工具和技術可用來部署 web 應用程式在各種不同的企業案例。 它說明如何充分利用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/03/2012
-ms.topic: article
 ms.assetid: 48cfe378-d62a-48c6-a4db-6be3cead6898
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: 8412000e150f59911bb38f0147b1a487bef60c18
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b55aeb863694ca3ac71f2a1a46d11981e178dcb4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376834"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816583"
 ---
 <a name="deploying-web-applications-in-enterprise-scenarios-using-visual-studio-2010"></a>使用 Visual Studio 2010 的企業案例中的 部署 Web 應用程式
 ====================

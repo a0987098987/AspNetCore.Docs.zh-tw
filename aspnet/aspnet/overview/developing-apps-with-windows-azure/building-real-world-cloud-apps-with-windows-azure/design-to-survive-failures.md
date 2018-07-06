@@ -4,19 +4,16 @@ title: 設計存留失敗 （使用 Azure 建置真實世界的雲端應用程�
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: db7398cfd9ed51d716cb595d977b482fd0da131e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 29a430a223fb62d9530ea00a60d458a6dbc5199a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372458"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820651"
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>設計存留失敗 （使用 Azure 建置真實世界的雲端應用程式）
 ====================

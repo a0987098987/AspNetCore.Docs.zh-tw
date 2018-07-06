@@ -4,19 +4,16 @@ title: 巢狀主版頁面 (VB) |Microsoft Docs
 author: rick-anderson
 description: 示範如何建立巢狀在另一個主版頁面。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/28/2008
-ms.topic: article
 ms.assetid: 14d9aa1b-4dca-43a0-aa9d-a6e891fee019
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5033ae20d37901a75b5d2380792d035021558d2f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e58eef87afce7d1b7e29445bdbf48baf5f65d3e2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371151"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836258"
 ---
 <a name="nested-master-pages-vb"></a>巢狀主版頁面 (VB)
 ====================

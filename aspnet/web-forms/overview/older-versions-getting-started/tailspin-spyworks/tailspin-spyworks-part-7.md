@@ -4,19 +4,16 @@ title: 第 7 節： 新增功能 |Microsoft Docs
 author: JoeStagner
 description: 本教學課程系列會詳細說明所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 7 節新增其他功能，例如帳戶 revie...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/21/2010
-ms.topic: article
 ms.assetid: 50223ee9-11b9-4cf3-bca2-e2f10bf471f3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 8cdde10981835877e5ac2f65860010920a68d0a2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 47402ccdfb702dc1bb1bdb4e634a7cd6f5ebc235
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389172"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831644"
 ---
 <a name="part-7-adding-features"></a>第 7 節： 新增功能
 ====================

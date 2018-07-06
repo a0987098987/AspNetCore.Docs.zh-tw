@@ -4,19 +4,16 @@ title: 驗證與服務層 (VB) |Microsoft Docs
 author: StephenWalther
 description: 了解如何移動您的驗證邏輯出您對控制器動作並進入個別的服務層。 在本教學課程中，Stephen walther 將說明如何您...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/02/2009
-ms.topic: article
 ms.assetid: 344bb38e-4965-4c47-bda1-f6d29ae5b83a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a914a7351e0faf6babf144d80512994d513ed12f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 673e9be46e37e9a805f1dae4944f69939b087dda
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393221"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836561"
 ---
 <a name="validating-with-a-service-layer-vb"></a>驗證與服務層 (VB)
 ====================

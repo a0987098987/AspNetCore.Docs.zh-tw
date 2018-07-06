@@ -4,19 +4,16 @@ title: '[How Do i:]設定 ASP.NET AJAX 行事曆控制項嗎？ | Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，我們看到示範的各種選項可用來設定外觀和行為的 t 月曆擴充項控制項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/30/2007
-ms.topic: article
 ms.assetid: bee087cc-7fed-4dce-8b52-19987f2d38a6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-configure-the-aspnet-ajax-calendar-control
 msc.type: video
-ms.openlocfilehash: e640cfefef69324458fd0549a938ea09ae2329b7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a60b60a25016f0779a821c3dbb50b061e0002530
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392613"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826876"
 ---
 <a name="how-do-i-configure-the-aspnet-ajax-calendar-control"></a>[How Do i:]設定 ASP.NET AJAX 行事曆控制項嗎？
 ====================

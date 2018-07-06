@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX ModalPopup 擴充項控制項嗎？ | Mic
 author: JoeStagner
 description: 了解如何使用 ASP.NET AJAX Control Toolkit 隨附的 ASP.NET AJAX ModalPopup 擴充項控制項。 在這段影片 ModalPopup 擴充項使用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2007
-ms.topic: article
 ms.assetid: 37c50e6c-e34d-4fd0-b272-01950ada7667
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-modalpopup-extender-control
 msc.type: video
-ms.openlocfilehash: ddd8a1c00343b75ebbf2112a5b1589bfe69fbc6d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f872c0f858d636acf92790dc9b1a5135633e1a7e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401762"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841499"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-modalpopup-extender-control"></a>[How Do i:]使用 ASP.NET AJAX ModalPopup 擴充項控制項嗎？
 ====================

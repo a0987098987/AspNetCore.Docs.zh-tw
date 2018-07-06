@@ -4,19 +4,16 @@ title: 建立全網站的版面配置使用主版頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程中會顯示主版頁面的基本概念。 也就是為何主版頁面是怎麼一建立主版頁面、 什麼是內容的預留位置，是怎麼一 cr...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/21/2008
-ms.topic: article
 ms.assetid: 78f8d194-03b9-44a5-8255-90e7cd1c2ee1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cea5894b269209326391de49003ec1d19c8e87f2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cf9264f6569fe1a5c0369b17a2358c5207cad6ad
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398546"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829268"
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-c"></a>建立全網站的版面配置使用主版頁面 (C#)
 ====================

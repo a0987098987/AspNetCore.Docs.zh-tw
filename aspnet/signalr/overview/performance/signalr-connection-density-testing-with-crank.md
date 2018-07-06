@@ -4,19 +4,16 @@ title: SignalR 連線密度測試與區軸 |Microsoft Docs
 author: tfitzmac
 description: SignalR 連線密度測試與區軸
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/22/2015
-ms.topic: article
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: c4ca8e368c8b722cc81ae7367140fd22f6fc7fd1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7a9b49cf1c52d5291cf8cf04e6c6bbb2c07805ae
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367822"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827611"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>SignalR 連線密度測試與區軸
 ====================

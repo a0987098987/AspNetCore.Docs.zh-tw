@@ -4,19 +4,16 @@ title: 使用 AJAX 傳送動態更新 |Microsoft Docs
 author: microsoft
 description: 步驟 10 實作支援登入的使用者 RSVP 興趣參加 dinner，使用 Ajax 為基礎的方法整合在 dinner 詳細資料...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 18700815-8e6c-4489-91af-7ea9dab6529e
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 789c9880dc43c5d15ee510d9856a4c4378019b71
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9f11c4c15c0ac9bab8d53b18a4e07be4b864b2c7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372326"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825197"
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>使用 AJAX 傳送動態更新
 ====================

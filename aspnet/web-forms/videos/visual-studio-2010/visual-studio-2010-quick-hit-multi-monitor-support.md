@@ -4,19 +4,16 @@ title: Visual Studio 2010 快速叫用的多監視器支援
 author: JoeStagner
 description: 在這段影片中，您將了解 Visual Studio 的支援來改善的螢幕大小，您使用多重監視器案例的並最佳化整體...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2009
-ms.topic: article
 ms.assetid: 26dfc502-d164-4261-8006-ffde9a3e3447
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-multi-monitor-support
 msc.type: video
-ms.openlocfilehash: 2c9768f0452f26caf4d51d6f7e551786ba5fa0b6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d5046579c7f1505fffdeabe199a03a4ef7bd70b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402690"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837347"
 ---
 <a name="visual-studio-2010-quick-hit---multi-monitor-support"></a>Visual Studio 2010 」 快速 Hit"-多監視器支援
 ====================

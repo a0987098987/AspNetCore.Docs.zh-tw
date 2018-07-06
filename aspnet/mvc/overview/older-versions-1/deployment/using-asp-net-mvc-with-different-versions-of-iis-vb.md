@@ -4,19 +4,16 @@ title: 使用 ASP.NET MVC 與不同版本的 IIS (VB) |Microsoft Docs
 author: microsoft
 description: 在本教學課程中，您將了解如何使用不同版本的 Internet Information Services 中的 ASP.NET MVC 和 URL 路由。 您了解不同的策略...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/19/2008
-ms.topic: article
 ms.assetid: 1c1283b2-6956-4937-b568-d30de432ce23
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8e997f3c7db124869a731b346a4fb3b04072fb0b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4c0dc1ac08cfe06ad7ea35a6e6552ab1174ff989
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370041"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818200"
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>使用 ASP.NET MVC 與不同版本的 IIS (VB)
 ====================

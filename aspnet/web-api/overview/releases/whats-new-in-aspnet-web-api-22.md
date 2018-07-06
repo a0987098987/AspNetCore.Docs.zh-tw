@@ -4,19 +4,16 @@ title: ASP.NET Web API 2.2 中最新消息 |Microsoft Docs
 author: microsoft
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/25/2014
-ms.topic: article
 ms.assetid: 99c59ae4-167e-4f66-a6cd-d3f1098c4e4a
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/releases/whats-new-in-aspnet-web-api-22
 msc.type: authoredcontent
-ms.openlocfilehash: 51b01c4b9ee8d12e4e3925193e308d3ca6c5f2b6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0f0794988da712897092ab808a08fca5eeebb6d9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377437"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813274"
 ---
 <a name="whats-new-in-aspnet-web-api-22"></a>ASP.NET Web API 2.2 中最新消息
 ====================

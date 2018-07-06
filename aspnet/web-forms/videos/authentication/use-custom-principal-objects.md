@@ -4,19 +4,16 @@ title: 使用自訂的主體物件 |Microsoft Docs
 author: JoeStagner
 description: Joe Stagner 會示範如何實作在主體物件的自訂身分識別，以儲存使用者的驗證資料。 如需此示範中，詳細資訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2008
-ms.topic: article
 ms.assetid: 368733eb-0822-4b97-8e5a-127be6c88a61
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/use-custom-principal-objects
 msc.type: video
-ms.openlocfilehash: 1e0aff916ebf189b290db65eb281546c60819875
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a5f7ba2cf2998b3c41fd28258081b6d638f0ede9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384320"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838483"
 ---
 <a name="use-custom-principal-objects"></a>使用自訂的主體物件
 ====================

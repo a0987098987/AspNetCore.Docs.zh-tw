@@ -4,19 +4,16 @@ title: 使用 Visual Studio 的 ASP.NET Web 部署： 專案屬性 |Microsoft Do
 author: tdykstra
 description: 本系列教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式至 Azure App Service Web Apps 或協力廠商裝載提供者，使用...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/15/2013
-ms.topic: article
 ms.assetid: ec1cec4c-a75f-47af-a2ba-b1e2f971d24b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/project-properties
 msc.type: authoredcontent
-ms.openlocfilehash: 48f2d5066986860b657d5608bd32fcfc9b6a1eda
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 86e4e3ef5f126a5bf8abc91c2d5ce3d14b1e1c6c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365882"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837661"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-project-properties"></a>使用 Visual Studio 的 ASP.NET Web 部署： 專案屬性
 ====================

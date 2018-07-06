@@ -4,19 +4,16 @@ title: 模擬熱門的行動裝置進行測試 |Microsoft Docs
 author: rick-anderson
 description: 您可以依照下列連結下載熱門的行動裝置和瀏覽器模擬器
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/28/2011
-ms.topic: article
 ms.assetid: bfb5612e-c3ec-4f28-b43b-63d781aa2272
-ms.technology: ''
 msc.legacyurl: /mobile/device-simulators
 msc.type: content
-ms.openlocfilehash: b3dbb4dc83b602cd1aa374d3aa05c1b09a5dfe64
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 092186a48a304c1b9e3e140e74f65dbe5a035e66
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396080"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833681"
 ---
 <a name="simulate-popular-mobile-devices-for-testing"></a>模擬熱門的行動裝置進行測試
 ====================

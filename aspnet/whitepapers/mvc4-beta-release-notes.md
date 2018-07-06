@@ -4,19 +4,16 @@ title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
 description: 本文件說明 ASP.NET MVC 4 Beta for Visual Studio 2010 的版本。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/09/2011
-ms.topic: article
 ms.assetid: 666407bb-81de-4319-89ba-0302c382a208
-ms.technology: ''
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 62bd641b1c5c926ec33ed3948854365aea99e979
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b9d50114a239b67b1adc263f6ea6d3a811bcc8f7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390604"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816687"
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================

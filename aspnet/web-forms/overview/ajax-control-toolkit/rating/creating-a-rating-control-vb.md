@@ -4,19 +4,16 @@ title: 建立評等控制項 (VB) |Microsoft Docs
 author: wenz
 description: 許多網站中，從電子商務社群網站，以提供使用者速率文件或項目。 這通常需要一些編碼工作，但我們確實有...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 6d0d70f4-725e-4258-8ae8-24a6ba1ddbf7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 501859b833eb18147e483b0d7a7359133d790d8b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cb8bd8ab400bf5633b8218e724ad86cf7271699d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368844"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811969"
 ---
 <a name="creating-a-rating-control-vb"></a>建立評等控制項 (VB)
 ====================

@@ -4,19 +4,16 @@ title: 觸發另一個控制項 (VB) 的動畫 |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 一般而言，啟動...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 25ebaf1f-5a9f-423d-98c7-1d694e93664f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b316b22bf355d7abb0909e43f0c2c38ea3e68f24
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d9ef7d35e34bd4f2b1433f7fb02d0c48834b2357
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367806"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804888"
 ---
 <a name="triggering-an-animation-in-another-control-vb"></a>觸發另一個控制項 (VB) 的動畫
 ====================

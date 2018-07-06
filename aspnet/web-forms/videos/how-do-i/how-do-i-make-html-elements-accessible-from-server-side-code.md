@@ -4,19 +4,16 @@ title: '[How Do i:]請從伺服器端程式碼存取 HTML 項目 |Microsoft Docs
 author: rick-anderson
 description: 在此影片的 Chris Pels 將示範如何建立建立標準的 HTML 項目.aspx 頁面中可從伺服器端程式碼存取讓它們可以用於頁面處理...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/29/2008
-ms.topic: article
 ms.assetid: 1e2bafaa-ae6a-4c4c-839b-ff2dfe836902
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
 msc.type: video
-ms.openlocfilehash: a10259c310091f133e4be5fed5e05b1424cddd36
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 06b1a0ecf226dce36a8a9d068d60fdb99defdeea
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396968"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834383"
 ---
 <a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a>[How Do i:]請從伺服器端程式碼存取 HTML 項目
 ====================

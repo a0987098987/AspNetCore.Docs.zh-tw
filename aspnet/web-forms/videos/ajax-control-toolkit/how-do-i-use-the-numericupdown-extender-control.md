@@ -4,19 +4,16 @@ title: '[How Do i:]使用 NumericUpDown 擴充項控制項嗎？ | Microsoft Doc
 author: JoeStagner
 description: 在這段影片將探討 ASP.NET AJAX Control Toolkit NumericUpDown 擴充項控制項。 我們看到 NumericUpDown 擴充項將 'up' 和 '下的加入...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2007
-ms.topic: article
 ms.assetid: 2aee17e4-06d1-4875-985e-8fb817dc8bcd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-numericupdown-extender-control
 msc.type: video
-ms.openlocfilehash: 0c01e6cf4aa65b52342c6376061d0735f8a282fb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a85f89f9c46fb2a6b17f20a97fee896e24374389
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401736"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840435"
 ---
 <a name="how-do-i-use-the-numericupdown-extender-control"></a>[How Do i:]使用 NumericUpDown 擴充項控制項嗎？
 ====================

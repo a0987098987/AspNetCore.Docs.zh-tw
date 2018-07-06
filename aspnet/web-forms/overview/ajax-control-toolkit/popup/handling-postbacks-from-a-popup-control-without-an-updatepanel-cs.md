@@ -4,19 +4,16 @@ title: 處理沒有 UpdatePanel (C#) 的快顯視窗控制項回傳 |Microsoft D
 author: wenz
 description: PopupControl 擴充項在 AJAX Control Toolkit 提供簡單的方式，來啟動任何其他控制項時，觸發快顯視窗。 當發生回傳時 su 中...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 25444121-5a72-4dac-8e50-ad2b7ac667af
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d74a44a277bdcb460dc20b78bad3e5ed68445b4a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 108595a37d6c15a4bd6ddee365ca718969ca9c8c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370979"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804031"
 ---
 <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>處理沒有 UpdatePanel (C#) 的快顯視窗控制項回傳
 ====================

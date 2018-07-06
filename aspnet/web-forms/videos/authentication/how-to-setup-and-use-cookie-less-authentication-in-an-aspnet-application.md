@@ -4,19 +4,16 @@ title: 如何安裝和使用無 Cookie 驗證中的 ASP.NET 應用程式 |Micros
 author: JoeStagner
 description: Joe Stagner 會利用上述的程式碼範例示範如何使用無 cookie 驗證。 如需有關這段示範影片的詳細資訊，教學課程，說明位於...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2008
-ms.topic: article
 ms.assetid: 10ba9106-514c-4776-8277-9c31312ceed2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/how-to-setup-and-use-cookie-less-authentication-in-an-aspnet-application
 msc.type: video
-ms.openlocfilehash: 7524055dc310c1ec845d8d838b785e255416d043
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e3966897996f52e086e8a8d6c3a0a1447cb18f04
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362287"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838811"
 ---
 <a name="how-to-setup-and-use-cookie-less-authentication-in-an-aspnet-application"></a>如何在 ASP.NET 應用程式的安裝和使用無 Cookie 驗證
 ====================

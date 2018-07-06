@@ -4,19 +4,16 @@ title: 使用 SMS 和電子郵件使用 ASP.NET Identity 的雙因素驗證 |Mic
 author: HaoK
 description: 本教學課程會示範如何設定雙因素驗證 (2FA) 使用 SMS 和電子郵件。 撰寫本文時已由 Rick Anderson ( @RickAndMSFT )、 Pr....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/15/2015
-ms.topic: article
 ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
-ms.technology: ''
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 0519ae69b3d2ef129d206a936b199f781fef5bf6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c1f4bd4a3f65d4b7fccd86214fd0ba45c891e390
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399675"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807618"
 ---
 <a name="two-factor-authentication-using-sms-and-email-with-aspnet-identity"></a>使用 SMS 和電子郵件使用 ASP.NET Identity 的雙因素驗證
 ====================

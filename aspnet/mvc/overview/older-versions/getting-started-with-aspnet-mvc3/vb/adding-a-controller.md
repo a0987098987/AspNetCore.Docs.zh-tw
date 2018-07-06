@@ -4,19 +4,16 @@ title: 新增控制器 (VB) |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 741259e1-54ac-4f71-b4e8-2bd5560bb950
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 75451be20bd39f37bb692a06389ed7f04bc75a2a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 00ffe14deef71c2b22ed4edbf3d03f0835d68cc9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367848"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831977"
 ---
 <a name="adding-a-controller-vb"></a>新增控制器 (VB)
 ====================

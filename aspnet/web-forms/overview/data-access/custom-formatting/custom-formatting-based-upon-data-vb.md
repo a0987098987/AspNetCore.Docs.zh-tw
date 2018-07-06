@@ -4,19 +4,16 @@ title: 根據自訂格式設定資料 (VB) |Microsoft Docs
 author: rick-anderson
 description: 以多種方式可以完成 GridView、 DetailsView 或 FormView 繫結至該資料為基礎的格式調整。 在本教學課程中，我們將 l...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: df5a1525-386f-4632-972c-57b199870bc3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2ed55c181534e18bbbb4447ce9a4e5c19ff3717b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d55a9ece22805d7f5d248e81a01d059dbde0ee18
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366196"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809585"
 ---
 <a name="custom-formatting-based-upon-data-vb"></a>根據自訂格式設定資料 (VB)
 ====================

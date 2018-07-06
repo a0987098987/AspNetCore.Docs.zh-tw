@@ -3,18 +3,16 @@ uid: aspnet/tutorials
 title: ASP.NET 教學課程 |Microsoft Docs
 author: tdykstra
 description: 開發 ASP.NET 應用程式的逐步指南清單。
-ms.author: aspnetcontent
-manager: wpickett
-ms.date: 01/17/2012
-ms.topic: article
 ms.assetid: fddf8e5e-c055-4f81-b691-78deef871112
-ms.technology: ''
-ms.openlocfilehash: 7929a06fd7857237c2529aca34d36564c2a89f82
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.author: aspnetcontent
+ms.date: 01/17/2012
+ms.technology: aspnet
+ms.openlocfilehash: 6b5dfcd77799c52bea2953f21d73d2dd08435a7d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389608"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835572"
 ---
 # <a name="aspnet-tutorials"></a>ASP.NET 教學課程
 

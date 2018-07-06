@@ -4,19 +4,16 @@ title: Mobile Apps 和 ASP.NET 的網站 |Microsoft Docs
 author: rick-anderson
 description: 了解 ASP.NET 如何讓您輕鬆地建置行動 Web 應用程式
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/28/2011
-ms.topic: article
 ms.assetid: 1febce65-cdd4-47da-bdb5-1e6022ccd20a
-ms.technology: ''
 msc.legacyurl: /mobile
 msc.type: content
-ms.openlocfilehash: 5b128220f49624a1a8e14658b8f619409107f46e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 613cb6ccd303b1dd2054210ad90bfd5dc1fbb8cc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378371"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834113"
 ---
 <a name="mobile-apps--sites-with-aspnet"></a>Mobile Apps 和 ASP.NET 網站
 ====================

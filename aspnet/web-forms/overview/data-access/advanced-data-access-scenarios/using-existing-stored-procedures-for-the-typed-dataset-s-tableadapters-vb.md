@@ -4,19 +4,16 @@ title: 使用現有的預存程序為具類型資料集的 Tableadapter (VB) |Mi
 author: rick-anderson
 description: 在上一個教學課程中，我們了解如何使用 TableAdapter 精靈 產生新的預存程序的內容。 在本教學課程中我們了解如何在相同 TableAdapter...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/18/2007
-ms.topic: article
 ms.assetid: 2da25f6a-757e-4e7b-a812-1575288d8f7a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a478b52387a6bbf726872978a0ad4a83c22c9911
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 586b46acf1df19cb1bdd56c4242e92d2019c7b8a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382892"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805622"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>使用現有的預存程序為具類型資料集的 Tableadapter (VB)
 ====================

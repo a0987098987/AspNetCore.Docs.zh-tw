@@ -4,19 +4,16 @@ title: 處理 BLL 和 DAL 層級 ASP.NET 頁面 (VB) 中的例外狀況 |Microso
 author: rick-anderson
 description: 在本教學課程中，我們將了解如何顯示易懂、 資訊性的錯誤訊息應該在插入、 更新或刪除作業期間發生例外狀況...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 129d4338-1315-4f40-89b5-2b84b807707d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 41a0ec0db4cb2093d7fadd2de7e65ee4874f0063
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: de181391a074ec837d2f9d98d55f912883d76be2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394679"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808988"
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-vb"></a>處理 BLL 和 DAL 層級例外狀況，在 ASP.NET 網頁 (VB)
 ====================

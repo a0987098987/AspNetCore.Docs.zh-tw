@@ -4,19 +4,16 @@ title: 測試密碼強度的 (C#) |Microsoft Docs
 author: wenz
 description: 因此，延遲使用者通常會選擇簡單的密碼，也就是輕而易舉地突破，則幾乎任何地方，需要密碼。 在此 ASP 中 PasswordStrength 控制項。N...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: cb4afbae-9b8f-483d-9729-476d4b9f85fc
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
 msc.type: authoredcontent
-ms.openlocfilehash: faee15f78f411333796c2b072983a7b7c3d2ff2c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2eec810a0e37347059d3e82a37b25d5663eab987
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373174"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839800"
 ---
 <a name="testing-the-strength-of-a-password-c"></a>測試密碼強度的 (C#)
 ====================

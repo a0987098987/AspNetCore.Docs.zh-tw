@@ -4,19 +4,16 @@ title: 自訂資料修改介面 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程將探討如何以自訂的可編輯的 GridView 介面取代標準的文字方塊和核取方塊控制項 alternati...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 4830d984-bd2c-4a08-bfe5-2385599f1f7d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5eea1f226cbcfa07c2fcca3d68fb5ee1cb88ab61
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 991f8d07c12c13b1477c2df072847b3730bc1051
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370373"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840764"
 ---
 <a name="customizing-the-data-modification-interface-vb"></a>自訂資料修改介面 (VB)
 ====================

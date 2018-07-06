@@ -4,19 +4,16 @@ title: 簡介 ASP.NET Web Pages-開始使用 |Microsoft Docs
 author: tfitzmac
 description: WebMatrix 不再建議使用整合式的開發環境適用於 ASP.NET 網頁。 使用 Visual Studio 或 Visual Studio 程式碼。 本指南...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 3717fe230f818f251ac5d0378701c28f6b427df8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b4f554d2bf8bf564fd69239fcc7cc605158c83c3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382068"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825033"
 ---
 <a name="introducing-aspnet-web-pages---getting-started"></a>ASP.NET Web Pages-快速入門簡介
 ====================

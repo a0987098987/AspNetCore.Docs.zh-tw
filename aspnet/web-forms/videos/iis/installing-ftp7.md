@@ -4,19 +4,16 @@ title: 安裝 FTP7 |Microsoft Docs
 author: JoeStagner
 description: FTP7 是新且功能強大。 這段影片會示範如何取得它啟動並執行 ！
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/09/2009
-ms.topic: article
 ms.assetid: 92348a5c-10a3-4cad-b3cf-5e8669f987ab
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/iis/installing-ftp7
 msc.type: video
-ms.openlocfilehash: 1e3672dd4fc324015001cea5eaaef36473b0a75c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0f5bc1a2018208060261098128ee8cb516a07120
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396844"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838219"
 ---
 <a name="installing-ftp7"></a>安裝 FTP7
 ====================

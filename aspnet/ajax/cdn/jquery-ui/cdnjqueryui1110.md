@@ -4,19 +4,16 @@ title: 上的 jQuery UI 1.11.0 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2014
-ms.topic: article
 ms.assetid: 2292c3f4-6967-4326-bbb9-e00ca1b91564
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui1110
 msc.type: content
-ms.openlocfilehash: e053a086db7fd9253a5fa0ac5829ccf3988fe2c0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: db8520594a46c9baebab92fd583414e951fa0105
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367301"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831734"
 ---
 <a name="jquery-ui-1110-on-the-microsoft-ajax-cdn"></a>上的 jQuery UI 1.11.0 Microsoft Ajax CDN
 ====================

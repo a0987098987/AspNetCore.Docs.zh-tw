@@ -4,19 +4,16 @@ title: 宣告式的參數 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將說明如何使用參數設定為硬式編碼值來選取要在 DetailsView 控制項中顯示的資料。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 603c9bd3-b895-4ec6-853b-0c81ff36d580
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/declarative-parameters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6c2798ed1ac768a5103bbdc50db73ba6c3eed07f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 06577628d2b502df2854a83af564a0c0d402e9bd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365366"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839421"
 ---
 <a name="declarative-parameters-c"></a>宣告式的參數 (C#)
 ====================

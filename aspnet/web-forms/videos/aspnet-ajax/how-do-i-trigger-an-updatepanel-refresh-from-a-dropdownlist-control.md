@@ -4,19 +4,16 @@ title: '[How Do i:]觸發 UpdatePanel 重新整理從 DropDownList 控制項嗎�
 author: JoeStagner
 description: 在我們的影片，在 ASP.NET AJAX UpdatePanel 上的大部分，我們已使用的按鈕控制項，讓 UpdatePanel 重新整理其內容。 我們可能使用任何事件...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2007
-ms.topic: article
 ms.assetid: e90defdb-b6b1-4f38-8f6a-7adccbb426ef
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-trigger-an-updatepanel-refresh-from-a-dropdownlist-control
 msc.type: video
-ms.openlocfilehash: a94ca5891b848578ba8c42db512f8960742c0ced
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 832af51b42312cde51f99fb81943103b525fcfab
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380580"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834831"
 ---
 <a name="how-do-i-trigger-an-updatepanel-refresh-from-a-dropdownlist-control"></a>[How Do i:]觸發 UpdatePanel 重新整理從 DropDownList 控制項嗎？
 ====================

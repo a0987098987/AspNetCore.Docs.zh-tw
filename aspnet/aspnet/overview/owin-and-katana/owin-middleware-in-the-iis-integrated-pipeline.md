@@ -4,19 +4,16 @@ title: 在 IIS 中的 OWIN 中介軟體整合式管線 |Microsoft Docs
 author: Praburaj
 description: 這篇文章會示範如何執行 OWIN 中介軟體元件 (OMCs) 在 IIS 整合式管線中，以及如何設定管線事件 OMC 上執行。 您應該...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/07/2013
-ms.topic: article
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 1c2f7a9b948331eae2f5b44f25219adb76a0c745
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e78ded1dcafd40097d6477a757406c7170dd1bb7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379056"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828094"
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>IIS 整合式管線中的 OWIN 中介軟體
 ====================

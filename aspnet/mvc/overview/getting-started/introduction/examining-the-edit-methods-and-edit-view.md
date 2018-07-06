@@ -4,19 +4,16 @@ title: 檢查編輯方法與編輯檢視 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2015
-ms.topic: article
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 563da09adac93a0f6db4637a5884763ffb36e4fd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a166f6c4450c72adc23f7d36113ceba7e04f1929
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396743"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820885"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================

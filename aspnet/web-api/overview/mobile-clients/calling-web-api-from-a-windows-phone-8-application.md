@@ -4,19 +4,16 @@ title: 呼叫 Web API，從 Windows Phone 8 應用程式 (C#) |Microsoft Docs
 author: rmcmurray
 description: 建立完整的端對端案例，其中包含提供給 Windows Phone 8 應用程式的書籍目錄的 ASP.NET Web API 應用程式。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/09/2013
-ms.topic: article
 ms.assetid: b9775f41-352a-4f82-baa6-23e95b342e20
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 40be2935c52e7dcab9e682d4d15e9e75c0260223
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 6b7a833818424cbf3a3bf9e1e14e5b2864742c38
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388418"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805038"
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>呼叫 Web API，從 Windows Phone 8 應用程式 (C#)
 ====================

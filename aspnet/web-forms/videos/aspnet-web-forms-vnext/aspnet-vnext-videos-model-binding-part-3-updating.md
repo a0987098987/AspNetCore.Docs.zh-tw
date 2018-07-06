@@ -4,19 +4,16 @@ title: ASP.NET vNext 影片： 模型繫結第 3 部分-更新 |Microsoft Docs
 author: DamianEdwards
 description: 在這段影片中，Damian Edwards 會完成模型繫結的檢閱，示範如何更新資料。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2011
-ms.topic: article
 ms.assetid: 63c42590-08ac-44da-91f8-bd79489b9ecc
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext/aspnet-vnext-videos-model-binding-part-3-updating
 msc.type: video
-ms.openlocfilehash: 881f09edc81d70a364d6c2800edb25180343d96b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 124405cdc01b3722eb07dac21a43da31d90c143a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392035"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827112"
 ---
 <a name="aspnet-vnext-videos-model-binding-part-3---updating"></a>ASP.NET vNext 影片： 模型繫結第 3 部分-更新
 ====================

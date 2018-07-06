@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX UpdatePanelAnimation 擴充項？ | Micro
 author: JoeStagner
 description: 藉由將動畫加入至網頁局部更新，我們可以通知使用者，當更新發生，而且它已完成。 UpdatePanelAnimation 擴充項...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2007
-ms.topic: article
 ms.assetid: 56f5ec0f-38f7-4ebc-90d9-9baf0c693bd4
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
 msc.type: video
-ms.openlocfilehash: 465480f5d548cd224a96800bd5b4b32407ae709f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7acb260f39cd78de67a79855fab256e76fd5df48
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392425"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822923"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[How Do i:]使用 ASP.NET AJAX UpdatePanelAnimation 擴充項？
 ====================

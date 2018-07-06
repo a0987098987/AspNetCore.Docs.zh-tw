@@ -4,19 +4,16 @@ title: 新增 GridView 資料行的核取方塊 (VB) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討如何將為使用者提供以直覺的方式，來選取多個資料列的 G.的 GridView 控制項中的核取方塊的資料行...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2007
-ms.topic: article
 ms.assetid: 39253d05-75c0-41c7-b9d4-a6c58ecf69ce
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 41e1ab660b6a0231eda59565ce99d153ebb9697c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 01515e0034d69c563cbc96dceb6ae2ee481cc1a0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370299"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819566"
 ---
 <a name="adding-a-gridview-column-of-checkboxes-vb"></a>新增 GridView 資料行的核取方塊 (VB)
 ====================

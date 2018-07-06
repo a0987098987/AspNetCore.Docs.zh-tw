@@ -4,19 +4,16 @@ title: 快取資料在應用程式啟動 (VB) |Microsoft Docs
 author: rick-anderson
 description: 任何 Web 應用程式中某些資料會經常使用，並將不常使用一些資料。 我們可以改進我們的 ASP.NET 應用程式 b 的效能...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: 84afe4ac-cc53-4f2e-a867-27eaf692c2df
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 04f3fde9954161fec9bc310d6c4306cbfe7c5ee6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cf63cafbd4fd3937d18afa0d72a48868d76d3888
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364043"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841373"
 ---
 <a name="caching-data-at-application-startup-vb"></a>快取資料在應用程式啟動 (VB)
 ====================

@@ -4,19 +4,16 @@ title: 傳送電子郵件從 ASP.NET Web Pages (Razor) 網站 |Microsoft Docs
 author: tfitzmac
 description: 本章說明如何從網站傳送自動化電子郵件訊息。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2014
-ms.topic: article
 ms.assetid: fc49bcb9-f1a9-4048-8c3f-b60951853200
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/11-adding-email-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: 8a65a152dc72725b1ff65eefd47890b42cb7ea90
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e94cba91da43101ef1c058b49be746821bb0fe16
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394044"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841467"
 ---
 <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>從 ASP.NET Web Pages (Razor) 網站傳送電子郵件
 ====================

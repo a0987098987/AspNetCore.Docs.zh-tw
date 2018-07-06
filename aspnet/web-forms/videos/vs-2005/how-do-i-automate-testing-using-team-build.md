@@ -4,19 +4,16 @@ title: '[How Do i:]自動化測試使用 Team Build？ | Microsoft Docs'
 author: rick-anderson
 description: 在這段影片中我們了解如何使用 Visual Studio Team System 來定義將在 team build，期間執行自動化的測試，以及如何我們可以向下鑽研至...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/01/2007
-ms.topic: article
 ms.assetid: 8e8fd5a9-0e98-415a-93f5-9ad7524ae9bb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
 msc.type: video
-ms.openlocfilehash: 7ef9f8543d2893d8731edb450cb173069c319cca
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8d1e75ed391a34771d247330a984c5de2e0fbc99
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385858"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829110"
 ---
 <a name="how-do-i-automate-testing-using-team-build"></a>[How Do i:]自動化測試使用 Team Build？
 ====================

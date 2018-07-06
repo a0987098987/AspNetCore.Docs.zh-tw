@@ -4,19 +4,16 @@ title: ASP.NET 錯誤處理 |Microsoft Docs
 author: Erikre
 description: 本系列教學課程將教導您建置使用 ASP.NET 4.5 和 Microsoft Visual Studio Express 2013 for 我們的 ASP.NET Web Forms 應用程式的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 4db91929b78e882b2a8a95fb36ba97db4d29d240
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 8d6c19be7c77079b870261d1c4cf0ea62e0e2fd6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392716"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807586"
 ---
 <a name="aspnet-error-handling"></a>ASP.NET 錯誤處理
 ====================

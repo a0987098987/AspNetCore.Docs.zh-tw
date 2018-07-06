@@ -4,19 +4,16 @@ title: 使用 SQL Server Compact 使用 Visual Studio 將 ASP.NET Web 應用程�
 author: tdykstra
 description: 這一系列的教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫，使用 Visual Stu...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/17/2011
-ms.topic: article
 ms.assetid: a2d7f33b-8c4a-4b48-9fb1-9139cf9b9878
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 4a790fa72568caafdb2fab5efd9f334919c23719
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7449f16367b1eddd7ed66544792129d2a3bc9627
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398267"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806066"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 將 ASP.NET Web 應用程式部署： 簡介-1，12 個
 ====================

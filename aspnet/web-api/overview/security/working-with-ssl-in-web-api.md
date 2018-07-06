@@ -4,19 +4,16 @@ title: 使用 Web API 中的 SSL |Microsoft Docs
 author: MikeWasson
 description: 示範如何使用 SSL 與 ASP.NET Web API，包括使用 SSL 用戶端憑證。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/12/2012
-ms.topic: article
 ms.assetid: 97f6164f-59cf-45c0-b820-e4aa29b45396
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 4e14607f11fcd376b4ceca4bf7862259abe015e6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 0e0ca75c6ff1af397fce91079bcd8e9304b025ef
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396626"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829806"
 ---
 <a name="working-with-ssl-in-web-api"></a>使用 Web API 中的 SSL
 ====================

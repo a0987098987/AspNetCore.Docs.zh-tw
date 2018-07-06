@@ -4,19 +4,16 @@ title: 排序、 分頁和篩選資料與模型繫結和 web form |Microsoft Doc
 author: tfitzmac
 description: 本系列教學課程示範使用 ASP.NET Web Form 專案中的模型繫結的基本層面。 模型繫結進行資料互動更多簡單-...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/27/2014
-ms.topic: article
 ms.assetid: 266e7866-e327-4687-b29d-627a0925e87d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 7529c811e6196327094f8f735de1bd65be76ee3a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ded398bcbbb8d7d9e5c882a598bf9d6faa6ea81e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398303"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833872"
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>排序、 分頁和篩選資料與模型繫結和 web form
 ====================

@@ -4,19 +4,16 @@ title: 編輯和刪除 DataList (VB) 中的資料的概觀 |Microsoft Docs
 author: rick-anderson
 description: 雖然 DataList 缺少內建的編輯和刪除功能，在本教學課程中我們將看到如何建立支援編輯和刪除 o DataList...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: 9410a23c-9697-4f07-bd71-e62b0ceac655
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5e2a0f672a9be074abd3ab92eb5b36c18d64d1b6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: aa1e07be5b634a0e66f7c6f03f80a1aa2c741189
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364011"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804494"
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>編輯和刪除 DataList (VB) 中的資料的概觀
 ====================

@@ -4,19 +4,16 @@ title: 新增 ASP.NET Identity 新增至空的或現有的 Web Form 專案 |Micr
 author: raquelsa
 description: 本教學課程會示範如何將 ASP.NET Identity （新成員資格系統針對 ASP.NET） 新增至 ASP.NET 應用程式。 當您建立新的 Web Form 或 MVC...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/23/2013
-ms.topic: article
 ms.assetid: 1cbc0ed2-5bd6-4b62-8d34-4c193dcd8b25
-ms.technology: ''
 msc.legacyurl: /identity/overview/getting-started/adding-aspnet-identity-to-an-empty-or-existing-web-forms-project
 msc.type: authoredcontent
-ms.openlocfilehash: eb2605043be49754b0641f0e919a5bd7c2f639b1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1e7508fc2431f4e1e3c4509fbe705daf42686e8d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393276"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832658"
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a>將 ASP.NET Identity 新增至空的或現有的 Web Form 專案
 ====================

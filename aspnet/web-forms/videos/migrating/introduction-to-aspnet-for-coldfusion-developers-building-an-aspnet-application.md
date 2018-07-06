@@ -4,19 +4,16 @@ title: ASP.NET for ColdFusion 開發人員簡介： 建置 ASP.NET 應用程式 
 author: microsoft
 description: 這段網路廣播示範如何建置 ASP.NET 應用程式從空白表單中，提供給有經驗的 ColdFusion 開發人員很清楚的到底是什麼...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/25/2006
-ms.topic: article
 ms.assetid: 47316dec-a4cd-4818-8ba7-87e29d963c38
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application
 msc.type: video
-ms.openlocfilehash: a898f510ed1632f2d5d8de35b365d550458005c6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cc2e6e95210be61347f595d38673b904111fdb94
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401259"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803862"
 ---
 <a name="introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application"></a>ASP.NET for ColdFusion 開發人員簡介： 建置 ASP.NET 應用程式
 ====================

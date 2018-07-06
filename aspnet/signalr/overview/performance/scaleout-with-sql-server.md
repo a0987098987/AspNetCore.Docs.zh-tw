@@ -4,19 +4,16 @@ title: SignalR 向外延展與 SQL Server |Microsoft Docs
 author: MikeWasson
 description: 軟體使用本主題的 Visual Studio 2013.NET 4.5 SignalR 本主題的第 2 版上一個版本的版本較早版本的相關資訊...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: a105d4f3e9fc366eeec2dc42dd0eb73946432fc3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb21bee1737c5783d47abd2642af2c613b5d087b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391469"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810207"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>SignalR 向外延展與 SQL Server
 ====================

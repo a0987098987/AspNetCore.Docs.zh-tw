@@ -4,19 +4,16 @@ title: 'How Do i: LINQ to SQL： 更新使用預存程序 |Microsoft Docs'
 author: scottstanfield
 description: 覆寫產生的 ORM update/delete/insert 邏輯，以您自己透過預存程序。 影片也會顯示在詳細資料中如何使用 SQL Profiler，以...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/13/2008
-ms.topic: article
 ms.assetid: b041ea07-a174-4a57-b2a8-4ce64232bdae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures
 msc.type: video
-ms.openlocfilehash: cc4a7ea1067ecb71cc9a6d862e37b4f5ab84080b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a8150937aff608c866b5fb8b0da1544f602594a3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384952"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825823"
 ---
 <a name="how-do-i-linq-to-sql-updating-with-stored-procedures"></a>How Do i: LINQ to SQL： 更新使用預存程序
 ====================

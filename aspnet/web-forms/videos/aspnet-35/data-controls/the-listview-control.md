@@ -4,19 +4,16 @@ title: ListView 控制項 |Microsoft Docs
 author: JoeStagner
 description: 藉由建立新的網站，我將示範新的 ListView 控制項。 因為 ListView 是資料磁碟機，所以我們需要的資料來源。 您可以使用任何資料...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: ab1bcde8-898b-487b-806a-4ced0f1284a2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/data-controls/the-listview-control
 msc.type: video
-ms.openlocfilehash: 9640a7ca0534fb28b51ac9846a7cefd029bbeec4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6c60d7cbc847bd4b74300948f9fd18efe9fc4d13
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398915"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817443"
 ---
 <a name="the-listview-control"></a>ListView 控制項
 ====================

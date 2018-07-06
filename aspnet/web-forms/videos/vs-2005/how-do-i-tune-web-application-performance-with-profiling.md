@@ -4,19 +4,16 @@ title: '[How Do i:]調整 Web 應用程式效能，使用程式碼剖析？ | Mi
 author: rick-anderson
 description: 在這段影片中我們了解 Visual Studio Team System 提供的 Web 應用程式程式碼剖析的兩個方法︰ 取樣和檢測。 檢測 inje...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2007
-ms.topic: article
 ms.assetid: ee916787-dbf2-45c5-a1e7-3b2b5862a94b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-tune-web-application-performance-with-profiling
 msc.type: video
-ms.openlocfilehash: 5b136529b10b409b1f21c3e358a655ef2dd536fd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 570131c7982c9775b6ca05b45c41024eafc9e26c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378523"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803806"
 ---
 <a name="how-do-i-tune-web-application-performance-with-profiling"></a>[How Do i:]調整 Web 應用程式效能，使用程式碼剖析？
 ====================

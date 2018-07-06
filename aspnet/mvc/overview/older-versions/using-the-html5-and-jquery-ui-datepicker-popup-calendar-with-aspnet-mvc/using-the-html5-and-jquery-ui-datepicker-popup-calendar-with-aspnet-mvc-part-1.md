@@ -4,19 +4,16 @@ title: 使用 HTML5 與 jQuery UI Datepicker 快顯行事曆搭配 ASP.NET MVC-�
 author: Rick-Anderson
 description: 本教學課程將教導您如何使用編輯器範本、 顯示範本與 jQuery UI datepicker 快顯行事曆，ASP.NET MV 中的基本概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/29/2011
-ms.topic: article
 ms.assetid: c23d27f7-b0cf-44f2-8445-fb69e045c674
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 16747bd74df14172ca5eeb5c2e54edb2e930e758
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: dccebd7fb53f947bf782a486f5643bf4c05542d1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388736"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841431"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>ASP.NET MVC： 第 1 部分中使用 HTML5 與 jQuery UI Datepicker 快顯行事曆
 ====================

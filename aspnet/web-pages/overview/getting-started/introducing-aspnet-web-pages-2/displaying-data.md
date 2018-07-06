@@ -4,19 +4,16 @@ title: 簡介 ASP.NET Web Pages-顯示資料 |Microsoft Docs
 author: tfitzmac
 description: 本教學課程會示範如何在 WebMatrix 中建立資料庫，以及如何在網頁中顯示資料庫的資料，當您使用 ASP.NET Web Pages (Razor)。 它會假設 y...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: b3a006a0-3ea2-4d45-b833-e20e3a3c0a1a
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: de4ed9df2c65a1aaa4548b035c619cfa9bae7a8e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: eeceb08e3aa281c45a2cfe35af4f23b76a5b1d25
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384965"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834293"
 ---
 <a name="introducing-aspnet-web-pages---displaying-data"></a>ASP.NET Web Pages 簡介-顯示資料
 ====================

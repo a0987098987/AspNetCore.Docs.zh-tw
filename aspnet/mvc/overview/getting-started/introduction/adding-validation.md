@@ -4,19 +4,16 @@ title: 新增驗證 |Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 7348b0b51f7db516f398b218d37c9163cb186d73
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 97526d908dd3b835040453b53eae76f733a01c04
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373405"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839086"
 ---
 <a name="adding-validation"></a>新增驗證
 ====================

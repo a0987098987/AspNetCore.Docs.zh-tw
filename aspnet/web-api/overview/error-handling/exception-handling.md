@@ -4,19 +4,16 @@ title: ASP.NET Web API 中處理的例外狀況 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/12/2012
-ms.topic: article
 ms.assetid: cbebeb37-2594-41f2-b71a-f4f26520d512
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/error-handling/exception-handling
 msc.type: authoredcontent
-ms.openlocfilehash: ac01a4f35cde99a1f8ec699e6d31bf597f1d334e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2db00c1ab241e0dad051c2a3bcd3b0e4bbf4d5c4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400816"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807657"
 ---
 <a name="exception-handling-in-aspnet-web-api"></a>ASP.NET Web API 中處理的例外狀況
 ====================

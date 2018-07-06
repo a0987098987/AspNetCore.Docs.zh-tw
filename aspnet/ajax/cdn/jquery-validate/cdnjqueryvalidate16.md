@@ -4,19 +4,16 @@ title: jQuery 驗證 1.6 |Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 5c890d81-a1a9-4b4f-9221-6947978ae336
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate16
 msc.type: content
-ms.openlocfilehash: c3040e9571f32f7d94eb452245f7459e9641513d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb2d6f117bbfa284f74c8cae0f415e40dfd83076
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402076"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836062"
 ---
 <a name="jquery-validate-16"></a>jQuery 驗證 1.6
 ====================

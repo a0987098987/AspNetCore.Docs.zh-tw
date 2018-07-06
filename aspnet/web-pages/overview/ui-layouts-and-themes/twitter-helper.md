@@ -4,19 +4,16 @@ title: Twitter 協助程式與 ASP.NET Web Pages |Microsoft Docs
 author: tfitzmac
 description: 此主題和應用程式會示範如何將 Twitter 的協助程式新增至您的 WebMatrix 3 專案。 它包含的 Twitter Helper 程式碼，並示範如何呼叫協助程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: c1a1244e-b9c8-42e6-a00b-8456a4ec027c
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
-ms.openlocfilehash: 2c84a986a39f6802a78df53510847cb70efbb0f2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1824b677a7ba96ea6fc5119610725a30d472764e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373019"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817651"
 ---
 <a name="twitter-helper-with-aspnet-web-pages"></a>Twitter 協助程式與 ASP.NET Web Pages
 ====================

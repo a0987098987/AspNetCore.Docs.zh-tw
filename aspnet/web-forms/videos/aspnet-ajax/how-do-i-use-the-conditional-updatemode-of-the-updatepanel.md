@@ -4,19 +4,16 @@ title: '[How Do i:]使用 UpdatePanel 的條件式 UpdateMode 嗎？ | Microsoft
 author: JoeStagner
 description: ASP.NET AJAX UpdatePanel 包含可能會設定為 永遠' 或 '條件' UpdateMode 屬性。 預設值一律是在此情況下 UpdatePan...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/01/2007
-ms.topic: article
 ms.assetid: 10b5bad3-4c18-464f-9454-0b3e60b7b8be
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-conditional-updatemode-of-the-updatepanel
 msc.type: video
-ms.openlocfilehash: a63c5687e52dd89e1a967bdd7d0dd0539e32ff37
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 04b37874bcbdd580edc9182b54eecc9a6f77cb61
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397379"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826801"
 ---
 <a name="how-do-i-use-the-conditional-updatemode-of-the-updatepanel"></a>[How Do i:]使用 UpdatePanel 的條件式 UpdateMode 嗎？
 ====================

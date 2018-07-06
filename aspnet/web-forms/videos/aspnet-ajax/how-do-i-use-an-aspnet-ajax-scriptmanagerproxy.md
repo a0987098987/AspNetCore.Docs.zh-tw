@@ -4,19 +4,16 @@ title: '[How Do i:]使用 ASP.NET AJAX ScriptManagerProxy 嗎？ | Microsoft Doc
 author: JoeStagner
 description: 了解如何 ScriptManagerProxy 啟用內容的頁面，即可傳遞 ScriptManager 置於其 ASP.NET 主版頁面，讓每個內容頁面 t 的參考...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/01/2007
-ms.topic: article
 ms.assetid: c11935d8-c3df-45d3-aab1-1d90f6599b6d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-an-aspnet-ajax-scriptmanagerproxy
 msc.type: video
-ms.openlocfilehash: b48f5ecaf031185f87385f86ca4f75fa2fc43313
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 774e87598c6e03d58c273954a023bd2e75ee0448
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386451"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837272"
 ---
 <a name="how-do-i-use-an-aspnet-ajax-scriptmanagerproxy"></a>[How Do i:]使用 ASP.NET AJAX ScriptManagerProxy 嗎？
 ====================

@@ -4,19 +4,16 @@ title: '[How Do i:]在 ASP.NET Web Pages 和控制項中的事件處理常式 |M
 author: rick-anderson
 description: 在此影片的 Chris Pels 將示範如何建立 ASP.NET web 網頁和 web 伺服器控制項的事件處理常式。 首先，了解如何建立頁面層級事件 f...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/17/2007
-ms.topic: article
 ms.assetid: c18095ae-fe16-4bf9-98cd-460631af021f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-event-handlers-in-aspnet-web-pages-and-controls
 msc.type: video
-ms.openlocfilehash: e63fab47beeca80982090f163c53ef9e52efed60
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fdb656ffeba6c91c6944f68f93ea0b293980c9d3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373902"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834112"
 ---
 <a name="how-do-i-event-handlers-in-aspnet-web-pages-and-controls"></a>[How Do i:]在 ASP.NET Web Pages 和控制項中的事件處理常式
 ====================

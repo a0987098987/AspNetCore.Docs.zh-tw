@@ -4,19 +4,16 @@ title: 如何： 建立 MVC 應用程式的自訂 HTML 協助？ | Microsoft Doc
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何建立自訂的 HtmlHelper，不適用於一組標準的 MVC 應用程式中。 第一個範例的 MVC 應用程式...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/11/2009
-ms.topic: article
 ms.assetid: 58b5eb15-4160-4ce2-ae70-6ba94262ea73
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application
 msc.type: video
-ms.openlocfilehash: 87e74ade0182589d22aeaf66a608165df7ea2ee6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d3acd32a951ecc9968c42932cdc0daac6e4c4d8a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380137"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807735"
 ---
 <a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a>如何： 建立 MVC 應用程式的自訂 HTML 協助？
 ====================

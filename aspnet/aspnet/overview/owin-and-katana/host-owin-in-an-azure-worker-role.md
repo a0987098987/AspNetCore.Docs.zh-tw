@@ -4,19 +4,16 @@ title: 裝載在 Azure 背景工作角色中的 OWIN |Microsoft Docs
 author: MikeWasson
 description: 本教學課程會示範如何在自我裝載於 Microsoft Azure 背景工作角色的 OWIN。 Open Web Interface for.NET (OWIN) 所定義的.NET web 伺服器之間的抽象概念...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/11/2014
-ms.topic: article
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 56019ef7bdf1c3e9a769ba43f624ef3c6a5e6d4f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f62b9299a4e369ae3a938c85e60dd6a79108548d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366701"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826477"
 ---
 <a name="host-owin-in-an-azure-worker-role"></a>將 OWIN 裝載在 Azure 背景工作角色
 ====================

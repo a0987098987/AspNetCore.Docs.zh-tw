@@ -4,19 +4,16 @@ title: '反覆項目 #4 – 讓應用程式鬆散耦合 (VB) |Microsoft Docs'
 author: microsoft
 description: 在此第三個反覆項目中，我們利用數種軟體設計模式，以讓它更容易維護及修改連絡人管理員應用程式。 如需...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2009
-ms.topic: article
 ms.assetid: 92c70297-4430-4e4e-919a-9c2333a8d09a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 37aef9b3bb1221902c1eb84bd4218a30c758b81a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 246069902e67d3d901bbd40e950198825a5ab01d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401233"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804668"
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-vb"></a>反覆項目 #4 – 讓應用程式鬆散耦合 (VB)
 ====================

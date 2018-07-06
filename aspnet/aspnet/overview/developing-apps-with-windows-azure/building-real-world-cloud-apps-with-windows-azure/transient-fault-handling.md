@@ -4,19 +4,16 @@ title: 暫時性錯誤處理 （建置使用 Azure 的真實世界的雲端應�
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/03/2015
-ms.topic: article
 ms.assetid: 7ead83bc-c08c-4b26-8617-00e07292e35c
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 13ed8c2373c22070d21519bc495161e956b0ac4d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e67f3106f060d52f90ba56d6684af64779009e39
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398410"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823374"
 ---
 <a name="transient-fault-handling-building-real-world-cloud-apps-with-azure"></a>暫時性錯誤處理 （建置使用 Azure 的真實世界的雲端應用程式）
 ====================

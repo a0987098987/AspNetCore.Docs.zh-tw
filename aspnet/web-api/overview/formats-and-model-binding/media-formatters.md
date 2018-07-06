@@ -4,19 +4,16 @@ title: ASP.NET Web API 2 中的媒體格式器 |Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/20/2014
-ms.topic: article
 ms.assetid: 4c56f64a-086a-44ce-99c2-4c69604cd7fd
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 824fea5a8837ff8b09af832b7d2a094c7d82907b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9776adee19a62be4be38a4fb963c4978da3ed912
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368912"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803281"
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的媒體格式器
 ====================

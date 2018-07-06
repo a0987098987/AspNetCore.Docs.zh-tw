@@ -4,19 +4,16 @@ title: SignalR 疑難排解 (SignalR 1.x) |Microsoft Docs
 author: pfletcher
 description: 本文說明開發 SignalR 應用程式的常見問題。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/05/2013
-ms.topic: article
 ms.assetid: 347210ba-c452-4feb-886f-b51d89f58971
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/older-versions/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 94b7ec44fbe54b114baef6240f303a1e3b706741
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a869c04a18be6d3917eb93ec98a8a568b7dc5dba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372422"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826753"
 ---
 <a name="signalr-troubleshooting-signalr-1x"></a>SignalR 疑難排解 (SignalR 1.x)
 ====================

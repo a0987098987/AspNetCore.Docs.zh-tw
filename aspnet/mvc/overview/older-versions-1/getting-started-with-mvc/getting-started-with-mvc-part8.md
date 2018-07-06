@@ -4,19 +4,16 @@ title: 加入至模型的資料行 |Microsoft Docs
 author: shanselman
 description: 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/14/2010
-ms.topic: article
 ms.assetid: 7ae696b9-348f-4993-8ebb-a838acbe0c28
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 241f9108394561fecb15db5b6efa2661fdb128d6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5dbda1280c073d5d4f2d71918ca31bc44475f64d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37361756"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817197"
 ---
 <a name="adding-a-column-to-the-model"></a>將資料行加入至模型
 ====================

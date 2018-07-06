@@ -4,19 +4,16 @@ title: 偵錯預存程序 (C#) |Microsoft Docs
 author: rick-anderson
 description: Visual Studio Professional 和 Team System 版本可讓您設定中斷點，或是 SQL Server 中的預存程序中的步驟使偵錯預存...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: c655c324-2ffa-4c21-8265-a254d79a693d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 988de3cfea16eb623351288ab103e77230625a17
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e1eb9f6ea7d1704061157cca6898ad8330780929
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380729"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824208"
 ---
 <a name="debugging-stored-procedures-c"></a>偵錯預存程序 (C#)
 ====================

@@ -4,19 +4,16 @@ title: ASP.NET MVC 店面第 19a 節： Windows 工作流程的後續追蹤 |Mic
 author: robconery
 description: 在這一集我後續追蹤的詳細資訊，關於使用 Windows 工作流程，以及我介紹一些新的一集 19 我收到的意見反應。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: 50ed58f9-f329-45a8-b8be-675040172072
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup
 msc.type: video
-ms.openlocfilehash: 7fad09f3361893017bc9f66e4eb2fcbd363db9ef
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 19fd03147a4626bf092811ea22b4cdf9125e565d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363872"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840374"
 ---
 <a name="aspnet-mvc-storefront-part-19a-windows-workflow-followup"></a>ASP.NET MVC 店面第 19a 節： Windows 工作流程的後續追蹤
 ====================

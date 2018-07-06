@@ -4,19 +4,16 @@ title: 使用 Entity Framework 6 的 Web API 2 |Microsoft Docs
 author: MikeWasson
 description: 本教學課程將教導您使用 ASP.NET Web API 建立 web 應用程式的基本概念後端。 本教學課程會使用 Entity Framework 6 的資料配置...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: e879487e-dbcd-4b33-b092-d67c37ae768c
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-1
 msc.type: authoredcontent
-ms.openlocfilehash: b4ab0ec8b9ccb652d9f28ab42d9333fcc90abb65
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bc853413e814e6ef1a44841d114853003d7328f9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362417"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827229"
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>使用 Web API 2 和 Entity Framework 6
 ====================

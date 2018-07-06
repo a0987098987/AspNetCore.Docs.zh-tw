@@ -4,19 +4,16 @@ title: 建立資料存取層 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將從頭開始，並建立資料存取層 (DAL)，使用具類型的資料集，來存取資料庫中的資訊。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/05/2010
-ms.topic: article
 ms.assetid: 6227233a-6254-4b6b-9a89-947efef22330
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 34a107eac32f9a6d022612d47aa319b02c190070
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bfd4a1d9e47101594140ad4357bb467128ce26ee
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402963"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833085"
 ---
 <a name="creating-a-data-access-layer-vb"></a>建立資料存取層 (VB)
 ====================

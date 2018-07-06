@@ -4,19 +4,16 @@ title: 使用 Web 伺服陣列架構建立伺服器陣列 |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何使用 Web 伺服陣列架構 (WFF) 2.0 來建立及設定 web 伺服器陣列，集合中的伺服器。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 656dd06d-806c-467c-863d-9fc45e5ba3ab
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
 msc.type: authoredcontent
-ms.openlocfilehash: ad557306cb4d3c62932c640b598f82d692bc74cf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5fdd1088f1f4e21f5e79b8c8379b7865f825ad53
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388289"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808936"
 ---
 <a name="creating-a-server-farm-with-the-web-farm-framework"></a>使用 Web 伺服陣列架構建立伺服器陣列
 ====================

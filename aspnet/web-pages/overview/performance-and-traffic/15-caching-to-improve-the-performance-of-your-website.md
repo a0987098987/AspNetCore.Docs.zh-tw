@@ -4,19 +4,16 @@ title: 快取資料在 ASP.NET Web Pages (Razor) 網站以提升效能 |Microsof
 author: tfitzmac
 description: 您可以加速您的網站透過儲存-也就是讓快取-通常會花相當長的時間，以擷取或處理資料的結果...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/14/2014
-ms.topic: article
 ms.assetid: 961e525b-7700-469e-8a68-d7010b6fb68c
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website
 msc.type: authoredcontent
-ms.openlocfilehash: 4134c80d7eed4752c90a06aab796a0fd8c2a9782
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 28be9194bbd95e896311700ddcf89379a82ee636
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383405"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805193"
 ---
 <a name="caching-data-in-an-aspnet-web-pages-razor-site-for-better-performance"></a>快取 ASP.NET Web Pages (Razor) 網站中的資料，以提升效能
 ====================

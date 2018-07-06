@@ -4,19 +4,16 @@ title: 插入、 更新和刪除資料以 sqldatasource 進行 (C#) |Microsoft D
 author: rick-anderson
 description: 在先前的教學課程中我們了解如何將 ObjectDataSource 控制項允許插入、 更新和刪除的資料。 SqlDataSource 控制項支援 t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: a526f0ec-779e-4a2b-a476-6604090d25ce
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b3037cfdc9a6b27b1f87e0b323b9ae59235cc27c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d2958cb9cb0dd5ed89988a969663022a920a3dca
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385806"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812843"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-c"></a>插入、 更新和刪除資料以 sqldatasource 進行 (C#)
 ====================

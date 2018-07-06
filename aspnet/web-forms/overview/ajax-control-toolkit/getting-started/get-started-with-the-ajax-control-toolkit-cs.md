@@ -4,19 +4,16 @@ title: 開始使用 AJAX Control Toolkit (C#) |Microsoft Docs
 author: microsoft
 description: 了解所有您需要知道若要開始使用 AJAX Control Toolkit。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/12/2009
-ms.topic: article
 ms.assetid: 16dc5c11-65be-4eae-a818-9fad7f8259c6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 120213ce27858e2f0650b71c82f689ae4493d8a8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3682af50eb2b9052ac0b15c2cec084deec10031d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399593"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37832155"
 ---
 <a name="get-started-with-the-ajax-control-toolkit-c"></a>開始使用 AJAX Control Toolkit (C#)
 ====================

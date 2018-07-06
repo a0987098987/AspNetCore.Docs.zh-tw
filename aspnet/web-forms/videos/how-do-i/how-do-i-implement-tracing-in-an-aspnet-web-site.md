@@ -4,19 +4,16 @@ title: '[How Do i:] 在 ASP.NET 網站中實作追蹤？ | Microsoft Docs'
 author: rick-anderson
 description: 在這段影片 Chris Pels 將示範如何實作 ASP.NET 網站中監視或測量效能，以及診斷錯誤的追蹤。 了解如何...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/05/2007
-ms.topic: article
 ms.assetid: b3abbbef-ddac-4c8e-a068-5bab31db5931
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-tracing-in-an-aspnet-web-site
 msc.type: video
-ms.openlocfilehash: 82a73a51a1f4d34ef237cb5dcd67c6a094191fe2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 308777a764fb175d45c24f893884dc8e6bda1393
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393817"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835770"
 ---
 <a name="how-do-i--implement-tracing-in-an-aspnet-web-site"></a>[How Do i:] 在 ASP.NET 網站中實作追蹤？
 ====================

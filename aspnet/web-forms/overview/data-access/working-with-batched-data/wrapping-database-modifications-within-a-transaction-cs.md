@@ -4,19 +4,16 @@ title: 包裝資料庫修改的交易 (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討更新、 刪除和插入的資料批次的四個中的第一個。 在本教學課程中我們了解如何讓資料庫交易...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: b45fede3-c53a-4ea1-824b-20200808dbae
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5bddf8aaee20b072e703ecc907aedfd5bb58450d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a87ba758abd6b3e89be4f5aa64d658b734f99d9e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363924"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810921"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-c"></a>資料庫修改包裝在交易中 (C#)
 ====================

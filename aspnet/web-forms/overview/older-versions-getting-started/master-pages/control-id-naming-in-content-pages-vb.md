@@ -4,19 +4,16 @@ title: 控制項識別碼命名內容頁面 (VB) |Microsoft Docs
 author: rick-anderson
 description: 說明如何 ContentPlaceHolder 控制項做為命名容器，因此做以程式設計方式使用控制項很困難 （透過 FindConrol)...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2008
-ms.topic: article
 ms.assetid: dbb024a6-f043-4fc5-ad66-56556711875b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1b922fb230169824659222da0b9504ec38c36d8a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 500f0e729ee73382ba05d38ed0a0bdba2c3c1e11
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387708"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808333"
 ---
 <a name="control-id-naming-in-content-pages-vb"></a>控制項中的識別碼命名內容頁面 (VB)
 ====================

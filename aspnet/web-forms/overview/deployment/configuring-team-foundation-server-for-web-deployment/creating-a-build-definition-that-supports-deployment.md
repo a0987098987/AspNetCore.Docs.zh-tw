@@ -4,19 +4,16 @@ title: 建立組建定義支援部署 |Microsoft Docs
 author: jrjlee
 description: 如果您想要執行任何一種建置 Team Foundation Server (TFS) 2010年中，您需要建立 team 專案內的組建定義。 此主題 des...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: fe47a018-f6d0-4979-80e7-5b1fa75a5865
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: d0220ee5c7c066d107311c1235949cec5049cc27
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 18f88cff032bd0694ef98f0b19849f0edf1681ee
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370279"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827384"
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>建立組建定義支援的部署
 ====================

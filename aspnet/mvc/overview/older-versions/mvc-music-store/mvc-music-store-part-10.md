@@ -4,19 +4,16 @@ title: 第 10 節： 導覽及網站設計，結論的最後更新 |Microsoft Do
 author: jongalloway
 description: 本教學課程系列會詳細說明所有建置 ASP.NET MVC Music 市集範例應用程式所採取的步驟。 部分 10 涵蓋最後更新瀏覽和 S...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/21/2011
-ms.topic: article
 ms.assetid: 0c6e4c2f-fcdb-4978-9656-1990c6f15727
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: a5b1d02d268530d6288ed2bc502679336d06d403
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 40ed7c337e097675199ab66229095bd3315d8c8d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366316"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836802"
 ---
 <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>第 10 節： 最後更新導覽及網站設計，結論
 ====================

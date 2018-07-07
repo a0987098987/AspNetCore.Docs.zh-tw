@@ -5,12 +5,12 @@ description: 了解如何設定 ASP.NET Core 身分識別的自訂儲存體提�
 ms.author: riande
 ms.date: 05/24/2017
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: d7baa8ed142a7d3337adceff2dc93274604bde4c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bdde9b93449c2f3f8d43cc4ff86472ed8a60ed1c
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831332"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889164"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -30,7 +30,7 @@ ASP.NET Core Identity 是可延伸的系統，可讓您建立自訂的儲存體�
 
 在這些情況下，您可以為您的儲存機制中撰寫自訂提供者，並插入您的應用程式中的該提供者。
 
-ASP.NET Core Identity 會包含在 Visual Studio 中的專案範本，使用 個別使用者帳戶 」 選項。
+ASP.NET Core 識別隨附於 Visual Studio 中的專案範本與 「 個別使用者帳戶 」 選項。
 
 當使用.NET Core CLI，新增`-au Individual`:
 
@@ -51,7 +51,7 @@ ASP.NET Core Identity 是由名為管理員和存放區的類別所組成。 *�
 
 建立的新執行個體時`UserManager`或`RoleManager`您提供使用者類別的型別，並傳遞做為引數的儲存區類別的執行個體。 這種方法可讓您插入 ASP.NET Core 中的自訂的類別。 
 
-[重新設定應用程式以使用新的儲存體提供者](#reconfigure-app-to-use-new-storage-provider)示範如何具現化`UserManager`和`RoleManager`與自訂存放區。
+[重新設定應用程式以使用新的儲存體提供者](#reconfigure-app-to-use-a-new-storage-provider)示範如何具現化`UserManager`和`RoleManager`與自訂存放區。
 
 ## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core 身分識別儲存的資料類型
 

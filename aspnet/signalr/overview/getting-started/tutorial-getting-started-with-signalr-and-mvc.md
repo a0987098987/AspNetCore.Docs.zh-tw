@@ -4,19 +4,16 @@ title: 教學課程： 開始使用 SignalR 2 和 MVC 5 |Microsoft Docs
 author: pfletcher
 description: 本教學課程會示範如何使用 ASP.NET SignalR 2 建立即時聊天應用程式。 您將加入 MVC 5 應用程式中的 SignalR 和建立交談檢視...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 903319040c9ac938cea5dce2e6579d88e0d80bb5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 4a4c013ff047f18f9d9b88595af7951577f3f200
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384047"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838646"
 ---
 <a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>教學課程： 開始使用 SignalR 2 和 MVC 5
 ====================

@@ -4,19 +4,16 @@ title: 實際操作實驗室： 可維護的 Azure 網站： 管理變更和規�
 author: rick-anderson
 description: 在此實驗室中，了解 Microsoft Azure 如何讓您輕鬆建置及部署網站至生產環境。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2014
-ms.topic: article
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: e7dcca855e55d10926de6d5e11e5a40e766128fd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 3a118cdd7e3f3878976e4f8480ce2236b8d3ba88
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385349"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824792"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>實際操作實驗室： 可維護的 Azure 網站： 管理變更和小數位數
 ====================
@@ -859,9 +856,9 @@ ms.locfileid: "37385349"
     ![選取 瀏覽器類型](maintainable-azure-websites-managing-change-and-scale/_static/image95.png "選取瀏覽器類型")
 
     *選取 瀏覽器類型*
-18. 在 [**計數器集合**頁面上，按一下**下一步]**。
+18. 在 **計數器集合**頁面上，按一下**下一步**。
 
-    ![在 [計數器集合] 頁面中按一下 [下一步](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "按一下 [下一步] 在 [計數器集合] 頁面")
+    ![在 計數器集合 頁面中按一下 下一步](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "按一下 下一步 在 計數器集合 頁面")
 
     *在 [計數器集合] 頁面中按一下 [下一步]*
 19. 在 **回合設定**頁面上，將**負載測試持續期間**來**5 分鐘**，按一下 **完成**。

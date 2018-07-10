@@ -8,5 +8,5 @@
 
 本範例說明建立 Web API 控制器的各種方式：
 
-- [來自 ControllerBase 的衍生類別](https://docs.microsoft.com/en-us/aspnet/core/web-api/define-controller#derive-class-from-controllerbase)
-- [以 ApiControllerAttribute 標註類別](https://docs.microsoft.com/en-us/aspnet/core/web-api/define-controller#annotate-class-with-apicontrollerattribute)
+- [來自 ControllerBase 的衍生類別](https://docs.microsoft.com/aspnet/core/web-api#derive-class-from-controllerbase)
+- [以 ApiControllerAttribute 標註類別](https://docs.microsoft.com/aspnet/core/web-api#annotate-class-with-apicontrollerattribute)

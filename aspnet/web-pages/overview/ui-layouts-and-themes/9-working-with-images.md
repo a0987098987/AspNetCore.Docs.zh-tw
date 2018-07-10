@@ -106,7 +106,7 @@ ms.locfileid: "37840981"
 
     *C:\Users\Joe\Pictures\SamplePhoto1.jpg*
 
-    您不想該路徑資訊，不過 & #8212;您只想實際的檔案名稱 (*SamplePhoto1.jpg*)。 您可以使用去除只從路徑檔案`Path.GetFileName`方法，就像這樣：
+    您不想該路徑資訊，不過 &#8212;您只想實際的檔案名稱 (*SamplePhoto1.jpg*)。 您可以使用去除只從路徑檔案`Path.GetFileName`方法，就像這樣：
 
     [!code-csharp[Main](9-working-with-images/samples/sample4.cs)]
 

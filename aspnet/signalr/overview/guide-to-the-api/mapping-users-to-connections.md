@@ -4,19 +4,16 @@ title: 將 SignalR 使用者對應至連線 |Microsoft Docs
 author: tfitzmac
 description: 本主題說明如何保留使用者和其連線的相關資訊。 Patrick Fletcher 協助撰寫本主題。 本主題中使用的軟體版本...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/30/2014
-ms.topic: article
 ms.assetid: f80c08b1-3f1f-432c-980c-c7b6edeb31b1
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: bd7c0cd9a645ab5b65c5c1446b51ea1646e43799
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: bee743c5b201f4eef04cb80aa860ec67c4afe773
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391528"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840430"
 ---
 <a name="mapping-signalr-users-to-connections"></a>將 SignalR 使用者對應至連線
 ====================

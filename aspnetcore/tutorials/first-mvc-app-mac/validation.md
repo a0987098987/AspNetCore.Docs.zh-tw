@@ -5,18 +5,18 @@ description: 如何將驗證新增至簡易的 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 06/13/2017
 uid: tutorials/first-mvc-app-mac/validation
-ms.openlocfilehash: 7057eb71f497d8129bf213dc17b82aa05e0196be
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8368e9f0994fbf907e7a4b6475acfbaa1eed1a46
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277705"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961080"
 ---
 [!INCLUDE [validation](../../includes/mvc-intro/validation.md)]
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="0e988-103">[上一步 - 新增欄位](new-field.md)
-> [下一步 - 檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)</span><span class="sxs-lookup"><span data-stu-id="0e988-103">[Previous - Add a field](new-field.md)
+> <span data-ttu-id="79c5d-103">[上一步 - 新增欄位](new-field.md)
+> [下一步 - 檢查 Details 和 Delete 方法](xref:tutorials/first-mvc-app/details)</span><span class="sxs-lookup"><span data-stu-id="79c5d-103">[Previous - Add a field](new-field.md)
 [Next - Examine the Details and Delete methods](xref:tutorials/first-mvc-app/details)</span></span>
 
 

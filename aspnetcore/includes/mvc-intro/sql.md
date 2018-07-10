@@ -1,4 +1,4 @@
-# <a name="working-with-sqlite-in-an-aspnet-core-mvc-project"></a>在 ASP.NET Core MVC 專案中使用 SQLit
+# <a name="work-with-sqlite-in-an-aspnet-core-mvc-app"></a>在 ASP.NET Core MVC 應用程式中使用 SQLit
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

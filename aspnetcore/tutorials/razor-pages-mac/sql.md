@@ -1,17 +1,17 @@
 ---
-title: 使用 SQLite 與 Razor 頁面
+title: 在 ASP.NET Core Razor Pages 應用程式中使用 SQLit
 author: rick-anderson
 description: 搭配使用 SQLite 與 Razor 頁面
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 1/27/2018
 uid: tutorials/razor-pages-mac/sql
-ms.openlocfilehash: 63cbcfe8a2bdabd69dd926b4c7eadb2515b79fe1
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f2e224b8670ba48dceae1d23757698ddb658ccf1
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274550"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961015"
 ---
 [!INCLUDE [SQLlite](../../includes/RP/sql.md)]
 

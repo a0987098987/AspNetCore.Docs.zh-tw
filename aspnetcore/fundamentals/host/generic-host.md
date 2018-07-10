@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 33e5829ce4a09e132743b4174a588cf232a44775
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 40d297257895a4defeb89cef9c5ec6deea64a985
+ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033351"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -394,7 +394,7 @@ public class MyClass
 | [ApplicationStopped](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopped) | 主機正在完成正常關機程序。 應該處理所有要求。 關機封鎖，直到完成此事件。 |
 | [ApplicationStopping](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopping) | 主機正在執行正常關機程序。 可能仍在處理要求。 關機封鎖，直到完成此事件。 |
 
-建構函式將 `IApplicationLifetime` 服務插入任何類別。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/)使用建構函式插入 `LifetimeEventsHostedService` 類別 (`IHostedService`實作) 來註冊事件。
+建構函式將 `IApplicationLifetime` 服務插入任何類別。 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/)使用建構函式插入 `LifetimeEventsHostedService` 類別 (`IHostedService` 實作) 來註冊事件。
 
 *LifetimeEventsHostedService.cs*：
 

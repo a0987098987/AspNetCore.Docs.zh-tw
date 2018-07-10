@@ -7,12 +7,12 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 8762a4be1032d58014dd32dfdd3707197e14c6f9
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 62cef2d6f032caa2f048cfdd49a225d975dad10d
+ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297197"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033338"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>SignalR on ASP.NET Core 使用者入門
 
@@ -29,9 +29,9 @@ ms.locfileid: "36297197"
 > * 建立 SignalR 中樞將內容推送至用戶端。
 > * 修改 `Startup` 類別，並設定應用程式。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/get-started/sample/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-# <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件
 
 安裝下列軟體：
 
@@ -100,7 +100,7 @@ Visual Studio 包含 `Microsoft.AspNetCore.SignalR` 套件，它的 **ASP.NET Co
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. 將類別新增至專案中，方法是選擇 [檔案] > [新增] > [檔案]，然後選取 [Visual C# 類別]。 將檔案命名為 *ChatHub*。
+1. 將類別新增至專案中，方法是選擇 [檔案] > [新增] > [檔案]，然後選取 [Visual C# 類別]。 將類別命名為 `ChatHub`，並將檔案命名為 *ChatHub.cs*。
 
 2. 繼承自 `Microsoft.AspNetCore.SignalR.Hub`。 `Hub` 類別包含屬性和事件以便管理連線和群組，以及傳送和接收資料。
 
@@ -112,13 +112,13 @@ Visual Studio 包含 `Microsoft.AspNetCore.SignalR` 套件，它的 **ASP.NET Co
 
 1. 在 Visual Studio Code 中開啟 *SignalRChat* 資料夾。
 
-2. 將類別新增至專案中，方法是從功能表選取 [檔案] > [新增檔案]。
+2. 將類別新增至專案中，方法是從功能表選取 [檔案] > [新增檔案]。 將類別命名為 `ChatHub`，並將檔案命名為 *ChatHub.cs*。
 
 3. 繼承自 `Microsoft.AspNetCore.SignalR.Hub`。 `Hub` 類別包含屬性和事件以便管理連線和群組，以及傳送和接收資料至用戶端。
 
 4. 將 `SendMessage` 方法加入類別中。 `SendMessage` 方法會傳送訊息給所有已連線的交談用戶端。 請注意，它會傳回 [Task](/dotnet/api/system.threading.tasks.task) (工作)，因為 SignalR 為非同步。 非同步程式碼較易調整大小。
 
-   [!code-csharp[Startup](signalr/sample/Hubs/ChatHub.cs?range=6-12)]
+   [!code-csharp[Startup](signalr/sample/Hubs/ChatHub.cs)]
 
 -----
 

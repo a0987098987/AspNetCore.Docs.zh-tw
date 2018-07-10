@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/31/2018
+ms.date: 06/29/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 7a1fdad874211134308ea3feac3110ea38095d49
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 70a1503a1ddbfe7f569d12b0034d967b220c9c44
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274452"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126244"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -126,19 +126,55 @@ XML 註解可以使用下列方式啟用：
 
 # <a name="visual-studiotabvisual-studio-xml"></a>[Visual Studio](#tab/visual-studio-xml/)
 
-* 以滑鼠右鍵按一下方案總管中的專案，然後選取 [屬性]
-* 核取 [組建] 索引標籤的 [輸出] 區段下方的 [XML 文件檔] 方塊
+::: moniker range=">= aspnetcore-2.0"
+
+* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [編輯 <專案名稱>.csproj]。
+* 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [屬性]。
+* 核取 [組建] 索引標籤之 [輸出] 區段下方的 [XML 文件檔] 方塊。
+
+::: moniker-end
 
 # <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[Visual Studio for Mac](#tab/visual-studio-mac-xml/)
 
-* 開啟 [專案選項] 對話方塊 > [組建] > [編譯器]
+::: moniker range=">= aspnetcore-2.0"
+
+* 從 [Solution Pad] 中，按下 [控制項]，然後按一下專案名稱。 巡覽至 [工具] > [編輯檔案]。
+* 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+* 開啟 [專案選項] 對話方塊 > [組建] >[編譯器]
 * 核取 [一般選項] 區段下方的 [產生 XML 文件] 方塊
+
+::: moniker-end
 
 # <a name="visual-studio-codetabvisual-studio-code-xml"></a>[Visual Studio Code](#tab/visual-studio-code-xml/)
 
-將下列程式碼片段手動新增至 *.csproj* 檔案：
+將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=2)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
+
+::: moniker-end
 
 ---
 
@@ -148,15 +184,25 @@ XML 註解可以使用下列方式啟用：
 warning CS1591: Missing XML comment for publicly visible type or member 'TodoController.GetAll()'
 ```
 
-在 *.csproj* 檔案中定義要忽略的警告碼清單 (以分號分隔)，即可隱藏警告：
+在 *.csproj* 檔案中定義要忽略的警告碼清單 (以分號分隔)，即可隱藏警告。 將警告碼附加至 `$(NoWarn);` 也會套用 C# 預設值。
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+::: moniker range=">= aspnetcore-2.0"
 
-設定 Swagger 來使用產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*TodoApi.XML* 檔案在 Windows 上有效，但在 CentOS 上則無效。
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+
+::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup1x.cs?name=snippet_ConfigureServices&highlight=30-32)]
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
+
+::: moniker-end
+
+設定 Swagger 來使用產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*TodoApi.XML* 檔案在 Windows 上有效，但在 CentOS 上則無效。
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=31-33)]
 
 ::: moniker-end
 
@@ -166,13 +212,13 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range="<= aspnetcore-1.1"
 
-[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/Startup.cs?name=snippet_ConfigureServices&highlight=31-33)]
+[!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup1x.cs?name=snippet_ConfigureServices&highlight=30-32)]
 
 ::: moniker-end
 
-在上述程式碼中，[Reflection](/dotnet/csharp/programming-guide/concepts/reflection) 用來建置與 Web API 專案名稱相符的 XML 檔案名稱。 這個方法可確保產生的 XML 檔案名稱符合專案名稱。 [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory#System_AppContext_BaseDirectory) 屬性用來建構 XML 檔案的路徑。
+在上述程式碼中，[Reflection](/dotnet/csharp/programming-guide/concepts/reflection) 用來建置與 Web API 專案名稱相符的 XML 檔案名稱。 [AppContext.BaseDirectory](/dotnet/api/system.appcontext.basedirectory#System_AppContext_BaseDirectory) 屬性用來建構 XML 檔案的路徑。
 
 將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 在 `Delete` 動作上方新增 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary) 項目：
 

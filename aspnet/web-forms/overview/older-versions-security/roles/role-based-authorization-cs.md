@@ -4,19 +4,16 @@ title: 以角色為基礎的授權 (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程開始了解如何角色 framework 建立的關聯使用者的角色與他的安全性內容。 然後，它會檢驗如何套用以角色為基礎的 URL...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/24/2008
-ms.topic: article
 ms.assetid: 4d9b63fa-c3d4-4e85-82b1-26ae3ba3ca1c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/role-based-authorization-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c8c22f140478deddc2e44f0933edfe0e499bb471
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 243a386bf682d63e3095a4e90ca0a0f08d24b503
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397159"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839943"
 ---
 <a name="role-based-authorization-c"></a>以角色為基礎的授權 (C#)
 ====================
@@ -82,27 +79,27 @@ ms.locfileid: "37397159"
 |    `cookieRequireSSL`     |                                                                                                                                                                                                                                                                                                   布林值，指出是否需要 SSL 連線來傳送驗證 cookie。 預設值是 `false`。                                                                                                                                                                                                                                                                                                   |
 | `cookieSlidingExpiration` |                                                                                                                                                                                                                                                  布林值，指出是否每次重設 cookie 逾時使用者造訪網站的單一工作階段期間。 預設值是 `false`。 此值時，才相關`createPersistentCookie`設為`true`。                                                                                                                                                                                                                                                  |
 |      `cookieTimeout`      |                                                                                                                                                                                                                                                                         指定以分鐘為單位，驗證票證 cookie 到期之前的時間。 預設值是 `30`。 此值時，才相關`createPersistentCookie`設為`true`。                                                                                                                                                                                                                                                                         |
-| `createPersistentCookie`  |                                                                                                                                                                   上述的標記中的項目指出，「 系統管理員 」 和 「 監督員角色允許; ; 元素會指示所所有使用者被拒絕。 我們將設定我們的應用程式，讓`false`， ，和頁面只會在系統管理員角色中，這些使用者可以存取而頁面仍可存取所有訪客。 若要達成此目的，先新增`true`檔案`cookieTimeout`資料夾。                                                                                                                                                                    |
-|         `domain`          |                                                                                                                                                 加入至角色目錄的 Web.config 檔案 預設值是空字串，這會導致瀏覽器使用從中它已發行 （例如 www.yourdomain.com) 的網域。 在此情況下，將會在 cookie<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。 圖 3： 新增的檔案目錄 (按一下以檢視完整大小的影像)                                                                                                                                                 |
-|    `maxCachedResults`     | 接下來，新增下列組態標記至: 預設值為 25。 `RoleManagerModule`中的項目`maxCachedResults`區段可讓您指出，只有系統管理員角色的使用者，才可以存取 ASP.NET 中資源目錄。 `RolePrincipal`項目定義的 URL 授權規則的另一組`IsInRole`頁面上，可讓所有使用者瀏覽的頁面。 儲存您的變更之後`maxCachedResults`不在系統管理員角色的使用者身分登入，然後再次嘗試瀏覽其中一個受保護的頁面。 會偵測到您沒有權限來瀏覽要求的資源; 因此，會將您重新導向至登入頁面。 登入頁面會再將您重新導向至`maxCachedResults`頁面 （請參閱 圖 4）。 |
+| `createPersistentCookie`  |                                                                                                                                                                   布林值，指定角色快取 cookie 工作階段 cookie 或永續性 cookie。 如果`false`（預設值），使用工作階段 cookie 時，這將瀏覽器關閉時刪除。 如果`true`，會使用永續性 cookie，到期`cookieTimeout`數字，幾分鐘後已建立，或之後的值而定的上一個造訪`cookieSlidingExpiration`。                                                                                                                                                                    |
+|         `domain`          |                                                                                                                                                 指定 cookie 的網域值。 預設值是空字串，這會導致瀏覽器使用從中它已發行 （例如 www.yourdomain.com) 的網域。 在此情況下，將會在 cookie<strong>不</strong>子網域，例如 admin.yourdomain.com 進行要求時傳送。 如果您想要傳遞至所有子網域的 cookie 需要自訂`domain`屬性，將它設定為"yourdomain.com 」。                                                                                                                                                 |
+|    `maxCachedResults`     | 在 cookie 中指定的快取的角色名稱的數目上限。 預設值為 25。 `RoleManagerModule`不會建立屬於使用者的 cookie 超過`maxCachedResults`角色。 因此，`RolePrincipal`物件的`IsInRole`方法會使用`Roles`類別，以判斷使用者的角色。 原因`maxCachedResults`存在是因為許多使用者代理程式不允許 cookie 大於 4,096 個位元組。 因此這個端點是用來降低超過此大小限制。 如果您有很長的角色名稱，您可能要考慮指定較小`maxCachedResults`值; contrariwise，如果您有非常短的角色名稱，您可以可能增加此值。 |
 
 **表 1:** 角色快取 Cookie 組態選項
 
-特別是，登入頁面將自動重新導向至任何已驗證的使用者如果查詢字串包含參數，作為此參數會指出，使用者在登入頁面之後進入嘗試檢視的網頁時，他不是檢視權限。 只有系統管理員角色的使用者，才可以檢視受保護的頁面
+我們將設定應用程式使用非持續性的角色快取 cookie。 若要這麼做，更新`<roleManager>`中的項目`Web.config`包含 cookie 相關的下列屬性：
 
 [!code-xml[Main](role-based-authorization-cs/samples/sample1.xml)]
 
-我已更新`<roleManager>`加上三個屬性的項目： `cacheRolesInCookie`， `createPersistentCookie`，和`cookieProtection`。 先登出，然後在系統管理員角色的使用者身分登入。 現在您應該能夠檢視三個受保護的頁面。 可以瀏覽 Tito UsersAndRoles.aspx 頁面因為他是在系統管理員角色
+我已更新`<roleManager>`加上三個屬性的項目： `cacheRolesInCookie`， `createPersistentCookie`，和`cookieProtection`。 藉由設定`cacheRolesInCookie`要`true`，則`RoleManagerModule`會立即自動快取使用者的角色在 cookie 中，而不需要查閱每個要求的使用者的角色資訊。 明確設定`createPersistentCookie`並`cookieProtection`屬性加入`false`和`All`分別。 技術上來說，我不需要指定值，這些屬性，因為我只是為其預設值，指派，但是我把它們放在此先明確清除我不使用持續性 cookie 和 cookie 會同時進行加密及驗證。
 
-這樣就完成了 ！ 圖 5： 可以瀏覽 Tito頁因為他是系統管理員角色中 (按一下以檢視完整大小的影像) 指定的 URL 授權規則 – 角色或使用者時務必記住，規則會分析一次一個，從頂端向下。
+這樣就完成了 ！ 不僅如此，角色架構會快取使用者的角色在 cookie 中。 如果使用者的瀏覽器不支援 cookie，或如果刪除或遺失其 cookie，不知怎麼的就沒什麼大不了 –`RolePrincipal`物件時便會使用`Roles`沒有 cookie （或不正確或已過期） 是可用的案例中的類別。
 
 > [!NOTE]
-> 因此，如果您想要限制存取一或多個使用者帳戶，務必您使用&amp;URL 授權組態中的最後一個元素的項目。 如果未包含您的 URL 授權規則項目中，所有使用者會都獲授與存取權。 URL 授權規則會分析方式的更完整討論，請參閱上一步 」 看會使用授權規則授與或拒絕存取 」 一節   使用者為基礎的授權教學課程。 步驟 2： 限制目前登入使用者的角色為基礎的功能
+> Microsoft 的 Patterns&amp;實務群組，而且使用持續性的角色快取 cookie。 如果駭客可以以某種方式取得存取權的有效使用者的 cookie，角色快取 cookie 的擁有權就足以證明角色成員資格，因為他可以模擬該使用者。 如果 cookie 保存在使用者的瀏覽器上，將會增加發生的可能性。 如需有關此安全性建議，以及其他安全性考量的詳細資訊，請參閱[ASP.NET 2.0 的安全性問題清單](https://msdn.microsoft.com/library/ms998375.aspx)。
 
 
-## <a name="step-1-defining-role-based-url-authorization-rules"></a>允許 URL 授權可讓您輕鬆地指定粗略的授權規則該狀態哪些身分識別，而哪些拒絕檢視特定頁面 （或資料夾及其子資料夾中的所有頁面）。
+## <a name="step-1-defining-role-based-url-authorization-rules"></a>步驟 1： 定義以角色為基礎的 URL 授權規則
 
-不過，在某些情況下，我們可能會想要允許所有使用者，請瀏覽] 頁面上，但限制造訪的使用者角色為基礎的網頁的功能。 URL 授權規則會在拼`Web.config`使用[`<authorization>`項目](https://msdn.microsoft.com/library/8d82143t.aspx)具有`<allow>`和`<deny>`子項目。 除了先前的教學課程所討論的使用者相關的授權規則每`<allow>`和`<deny>`也可以包含子項目：
+中所述<a id="_msoanchor_6"> </a> [*使用者為基礎的授權*](../membership/user-based-authorization-cs.md)教學課程中，URL 授權提供一個方法來限制存取一組使用者的使用者或角色的角色頁面基準。 URL 授權規則會在拼`Web.config`使用[`<authorization>`項目](https://msdn.microsoft.com/library/8d82143t.aspx)具有`<allow>`和`<deny>`子項目。 除了先前的教學課程所討論的使用者相關的授權規則每`<allow>`和`<deny>`也可以包含子項目：
 
 - 特定的角色
 - 以逗號分隔的角色清單
@@ -153,31 +150,31 @@ ms.locfileid: "37397159"
 
 允許 URL 授權可讓您輕鬆地指定粗略的授權規則該狀態哪些身分識別，而哪些拒絕檢視特定頁面 （或資料夾及其子資料夾中的所有頁面）。 不過，在某些情況下，我們可能會想要允許所有使用者，請瀏覽 頁面上，但限制造訪的使用者角色為基礎的網頁的功能。 這可能需要顯示或隱藏資料，根據使用者的角色，或屬於特定角色的使用者提供額外的功能。
 
-設定第一個的 RoleGroup屬性設為 「 系統管理員 」 並將第二個的 「 監督員 」。 管理 LoginView 的特定角色的範本透過 RoleGroup 集合編輯器 接下來，我們將探討程式設計技術。 圖 8： 管理 LoginView 的特定角色的範本透過 RoleGroup 集合編輯器 (按一下以檢視完整大小的影像)
+可以實作這類精細的幅度角色為基礎的授權規則，是以宣告方式或透過程式設計方式 （或兩者的某種組合）。 下一節中，我們將了解如何實作透過 LoginView 控制項宣告式的微調授權。 接下來，我們將探討程式設計技術。 我們來看看套用微調授權規則之前，不過，我們必須先建立的頁面，其功能取決於使用者瀏覽它的角色。
 
-按一下 確定 關閉 RoleGroup 集合編輯器 中;這會更新 LoginView 的宣告式標記，以包含具有每 RoleGroup 的子項目定義在 RoleGroup 集合編輯器 中。 此外，「 檢視 」 下拉式清單中 LoginView 的智慧標籤-先列出剛才和– 現在包含已新增 kolekci RoleGroups。 編輯 kolekci RoleGroups，讓 「 監督員 」 角色中的使用者會顯示的有關如何編輯使用者帳戶，而系統管理員角色中的使用者會顯示用於編輯和刪除的指示。 進行這些變更之後，您 LoginView 宣告式標記看起來應該如下所示。 進行這些變更之後，儲存頁面，然後瀏覽它透過瀏覽器。
+讓我們建立 GridView 中系統中列出的所有使用者帳戶的頁面。 GridView 會包含每個使用者的使用者名稱、 電子郵件地址、 上次登入的日期和使用者的相關註解。 除了顯示每個使用者的資訊，GridView 會包含編輯和刪除功能。 我們一開始會建立此頁面，以編輯和刪除功能可供所有使用者。 「 使用 LoginView 控制項 」 和 「 以程式設計的方式限制功能 」 區段中，我們會看到如何啟用或停用根據造訪的使用者角色的這些功能。
 
 > [!NOTE]
-> 第一次為匿名使用者造訪的頁面。 本教學課程中 > 系列聚焦於表單驗證、 授權、 使用者帳戶和角色，因為我不想花太多時間討論 GridView 控制項的內部運作方式。 雖然本教學課程提供特定的逐步指示，設定此頁面，它不會不探討為什麼做特定選擇，或轉譯的輸出上有的效果的特定屬性的詳細資料。 您應該會顯示訊息，「 您未登入系統。
+> 我們即將建置的 ASP.NET 網頁會使用 GridView 控制項來顯示使用者帳戶。 本教學課程中 > 系列聚焦於表單驗證、 授權、 使用者帳戶和角色，因為我不想花太多時間討論 GridView 控制項的內部運作方式。 雖然本教學課程提供特定的逐步指示，設定此頁面，它不會不探討為什麼做特定選擇，或轉譯的輸出上有的效果的特定屬性的詳細資料。 如 GridView 控制項徹底的檢查，請參閱我*[使用 ASP.NET 2.0 中的資料](../../data-access/index.md)* 教學課程系列。
 
 
-首先開啟`RoleBasedAuthorization.aspx`頁面中`Roles`資料夾。 因此您無法編輯或刪除任何使用者資訊。 」 稍後我們會撰寫程式碼會呼叫`Membership.GetAllUsers`方法，並繫結所產生的`MembershipUserCollection`物件至 GridView。 `MembershipUserCollection`包含`MembershipUser`系統; 中的每個使用者帳戶的物件`MembershipUser`物件具有屬性，例如`UserName`， `Email`， `LastLoginDate`，依此類推。
+首先開啟`RoleBasedAuthorization.aspx`頁面中`Roles`資料夾。 拖曳的 GridView 從拖曳至設計工具和設定頁面及其`ID`至`UserGrid`。 稍後我們會撰寫程式碼會呼叫`Membership.GetAllUsers`方法，並繫結所產生的`MembershipUserCollection`物件至 GridView。 `MembershipUserCollection`包含`MembershipUser`系統; 中的每個使用者帳戶的物件`MembershipUser`物件具有屬性，例如`UserName`， `Email`， `LastLoginDate`，依此類推。
 
-此時，您應該會看到各有特定角色的訊息 （請參閱 圖 9）。 如果您的使用者角色，您應該會看到系統管理員角色特定訊息 （請參閱 圖 10） 的系統管理員身分登入。 Bruce 顯示各有特定角色的訊息 圖 9`ShowDeleteButton`: Bruce 顯示各有特定角色的訊息 (按一下以檢視完整大小的影像) Tito 會顯示系統管理員角色特定訊息 圖 10`LastLoginDate`: Tito 會顯示系統管理員角色特定訊息 (`Email`按一下以檢視完整大小的影像`Comment`)
+我們撰寫的程式碼，將使用者帳戶方格繫結之前，讓我們先定義 GridView 的欄位。 從 GridView 的智慧標籤上，按一下 編輯欄位 連結以啟動 欄位 對話方塊 （請參閱 圖 6）。 從這裡開始，請取消核取 在左下角的 自動產生的欄位 核取方塊。 因為我們希望此 GridView，以編輯和刪除功能，包括新增 CommandField 並設定其`ShowEditButton`和`ShowDeleteButton`屬性設為 True。 接下來，新增四個欄位來顯示`UserName`， `Email`， `LastLoginDate`，和`Comment`屬性。 BoundField 用於兩個唯讀屬性 (`UserName`並`LastLoginDate`) 和兩個可編輯欄位的 TemplateFields (`Email`和`Comment`)。
 
-身為螢幕擷取畫面，在 圖 9 和 10 的節目，LoginView 只會呈現一個範本，即使套用多個範本。 Bruce 和 Tito 都會記錄在 [使用者]，但 LoginView 呈現只比對的 RoleGroup 而非`ReadOnly`。 此外，Tito 屬於系統管理員 」 和 「 監督員的角色，但 LoginView 控制項呈現系統管理員角色特定範本，而不是監督員內其中一個。 [圖 11] 說明 LoginView 控制項用來判斷哪些範本用來呈現工作流程。 請注意，是否有多個指定的其中一個 RoleGroup，LoginView 範本就會呈現`HtmlEncode`第一個`DataFormatString`RoleGroup 符合。 換句話說，如果我們有放置為第一個 RoleGroup 監督員 RoleGroup 和第二個為系統管理員，然後當 Tito 瀏覽此頁面他會看到監督員內訊息。
+第一個 BoundField 顯示`UserName`屬性，設定其`HeaderText`和`DataField`屬性為"UserName"。 此欄位無法編輯，因此，請將其`ReadOnly`屬性設為 True。 設定`LastLoginDate`BoundField 藉由設定其`HeaderText`至 [最後一個登入] 並將其`DataField`來 「 LastLoginDate"。 讓我們格式化此 BoundField 的輸出，以便只將日期顯示 （而不是日期和時間）。 若要達成此目的，將設定此 BoundField`HtmlEncode`屬性設定為 False 並將其`DataFormatString`屬性，以 「{0:d}"。 也設定`ReadOnly`屬性設為 True。
 
-LoginView 控制項的工作流程，來判斷要呈現的範本
-
-
-[![[圖 11![： 決定哪些範本要轉譯的 LoginView 控制項的工作流程 (](role-based-authorization-cs/_static/image17.png)](role-based-authorization-cs/_static/image16.png)按一下以檢視完整大小的影像)](role-based-authorization-cs/_static/image17.png)](role-based-authorization-cs/_static/image16.png)
-
-**LoginView 控制項則會顯示不同的瀏覽頁面的使用者角色為基礎的指示，[編輯] 和 [取消] 按鈕會保持所有可見的。
+設定`HeaderText`的兩個的 TemplateFields"Email"和"Comme"屬性。
 
 
-我們需要以程式設計方式隱藏匿名訪客和收錄監督員或系統管理員角色中使用者的 編輯和刪除按鈕。 將標籤 Web 控制項新增至每個`ItemTemplate`s 和繫結其`Text`屬性，以`Email`和`Comment`屬性，分別。
+[![可以透過 [欄位] 對話方塊中設定 GridView 的欄位](role-based-authorization-cs/_static/image17.png)](role-based-authorization-cs/_static/image16.png)
 
-為達成此目的，我們會撰寫的程式碼，以程式設計方式參考 CommandField 的編輯和刪除 Linkbutton 而設定其`Email`屬性，以`EditItemTemplate`，如有必要。 若要以程式設計方式參考 CommandField 中的控制項的最簡單方式是先將它轉換成範本。 若要這麼做，按一下 編輯欄位 連結，從 GridView 的智慧標籤，從目前的欄位清單中選取 CommandField 然後按一下 「 將這個欄位轉換為 TemplateField 」 連結。 這會變成使用 TemplateField CommandField`Columns`和`Rows`。
+**圖 6**: GridView 的欄位可以是設定透過欄位對話方塊 ([按一下以檢視完整大小的影像](role-based-authorization-cs/_static/image18.png))
+
+
+我們現在需要定義`ItemTemplate`和`EditItemTemplate`"Email"和"Comme"TemplateFields。 將標籤 Web 控制項新增至每個`ItemTemplate`s 和繫結其`Text`屬性，以`Email`和`Comment`屬性，分別。
+
+"Email"TemplateField 中，新增名為 TextBox`Email`至其`EditItemTemplate`繫結和其`Text`屬性設`Email`使用雙向資料繫結的屬性。 新增 RequiredFieldValidator 和以 RegularExpressionValidator`EditItemTemplate`確保編輯電子郵件屬性訪客已輸入有效的電子郵件地址。 「 註解 」 TemplateField 中，新增名為多行 TextBox`Comment`至其`EditItemTemplate`。 設定文字方塊的`Columns`及`Rows`屬性，以 40 和 4，分別，然後再繫結其`Text`屬性設`Comment`使用雙向資料繫結的屬性。
 
 在之後設定這些 TemplateFields，其宣告式標記看起來應該如下所示：
 

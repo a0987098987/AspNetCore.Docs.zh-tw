@@ -1,4 +1,4 @@
-# <a name="adding-validation"></a>新增驗證
+# <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 06d3f097cd93ceb2a23b9f6516a9b7a1f3ca3089
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8e2693397f826d0e9a36ff52aa1d1d623b31043d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273669"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960823"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -22,8 +22,8 @@ ms.locfileid: "36273669"
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (選擇性，除非必須用來接收 stdout 記錄檔)</li><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>*\.dll 檔案</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.dll</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
-| [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (選擇性，除非必須用來接收 stdout 記錄檔)</li><li>refs&dagger;</li><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.exe</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+| [架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (選擇性，除非必須用來接收 stdout 記錄檔)</li><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>*\.dll 檔案</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.dll</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+| [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (選擇性，除非必須用來接收 stdout 記錄檔)</li><li>refs&dagger;</li><li>Views&dagger; (MVC 應用程式；如果未預先編譯檢視)</li><li>Pages&dagger; (MVC 或 Razor 頁面應用程式；如果未預先編譯頁面)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.exe</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
 
 &dagger;表示是目錄
 
@@ -31,7 +31,7 @@ ms.locfileid: "36273669"
 
 *wwwroot* 目錄 (如果存在) 只包含靜態資產。
 
-使用下列兩種方法其中之一，即可為部署建立 stdout *logs* 目錄：
+使用下列兩種方法其中之一，即可為部署建立 stdout *Logs* 目錄：
 
 * 將下列 `<Target>` 元素新增至專案檔：
 

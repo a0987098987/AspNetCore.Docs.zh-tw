@@ -4,24 +4,29 @@ author: zuckerthoben
 description: 了解如何使用 NSwag 來產生 ASP.NET Core Web API 的文件和說明頁面。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 06/29/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: f4cc9ec1f32ef2bd0056ba8d0cbbbe9228834d85
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c0811593609b7d1e3529d5253e8b053f180281f3
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279193"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126270"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
 作者：[Christoph Nienaber](https://twitter.com/zuckerthoben) 和 [Rico Suter](https://rsuter.com)
 
-::: moniker range="<= aspnetcore-2.0"
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.1"
+
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+
 ::: moniker-end
 
 搭配使用 [NSwag](https://github.com/RSuter/NSwag) 與 ASP.NET Core 中介軟體需要有 [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/) NuGet 套件。 該套件包含 Swagger 產生器、Swagger UI (第 2 版和第 3 版)，以及 [ReDoc UI](https://github.com/Rebilly/ReDoc)。
@@ -194,19 +199,55 @@ XML 註解可使用下列方式啟用：
 
 # <a name="visual-studiotabvisual-studio-xml"></a>[Visual Studio](#tab/visual-studio-xml/)
 
+::: moniker range=">= aspnetcore-2.0"
+
+* 以滑鼠右鍵按一下 [方案總管] 中的專案，然後選取 [編輯 <專案名稱>.csproj]。
+* 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
 * 以滑鼠右鍵按一下方案總管中的專案，然後選取 [屬性]
 * 核取 [組建] 索引標籤的 [輸出] 區段下方的 [XML 文件檔] 方塊
 
+::: moniker-end
+
 # <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[Visual Studio for Mac](#tab/visual-studio-mac-xml/)
 
-* 開啟 [專案選項] 對話方塊 > [組建] > [編譯器]
+::: moniker range=">= aspnetcore-2.0"
+
+* 從 [Solution Pad] 中，按下 [控制項]，然後按一下專案名稱。 巡覽至 [工具] > [編輯檔案]。
+* 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+* 開啟 [專案選項] 對話方塊 > [組建] >[編譯器]
 * 核取 [一般選項] 區段下方的 [產生 XML 文件] 方塊
+
+::: moniker-end
 
 # <a name="visual-studio-codetabvisual-studio-code-xml"></a>[Visual Studio Code](#tab/visual-studio-code-xml/)
 
-將下列程式碼片段手動新增至 *.csproj* 檔案：
+將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
 
 ---
 

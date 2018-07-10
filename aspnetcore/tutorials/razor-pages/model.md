@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 508cca07fa96c20e228d2c55c9fb101f7fc3cb02
-ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
+ms.openlocfilehash: ed8faf8b3049adc7bcc7953d63ad805b0a836bd9
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327548"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961171"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -53,6 +53,36 @@ ms.locfileid: "36327548"
 * 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arp.png)
+
+Scaffold 處理序建立並變更下列檔案：
+
+### <a name="files-created"></a>建立的檔案
+
+* *Pages/Movies* 建立、刪除、詳細資料、編輯、索引。 下一個教學課程會詳述這些頁面。
+* *Data/RazorPagesMovieContext.cs*
+
+### <a name="files-updates"></a>檔案更新
+
+* *Startup.cs*：這個檔案的變更會於下一節中詳述。
+* *appsettings.json*：已新增用來連線到本機資料庫的連接字串。
+
+## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
+
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+
+Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
+
+檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
+
+為給定的資料模型協調 EF Core 功能的主要類別是資料庫內容類別。 資料內容衍生自 [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)。 資料內容會指定資料模型包含哪些實體。 在此專案中，類別命名為 `RazorPagesMovieContext`。
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs)]
+
+上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
+
+連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core 設定系統](xref:fundamentals/configuration/index)會從 *appsettings.json* 檔案讀取連接字串。
 
 <a name="pmc"></a>
 ## <a name="perform-initial-migration"></a>執行初始移轉
@@ -194,4 +224,4 @@ dotnet ef database update
 
 > [!div class="step-by-step"]
 > [上一步：開始使用](xref:tutorials/razor-pages/razor-pages-start)
-> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)    
+> [下一步：Scaffold Razor 頁面](xref:tutorials/razor-pages/page)

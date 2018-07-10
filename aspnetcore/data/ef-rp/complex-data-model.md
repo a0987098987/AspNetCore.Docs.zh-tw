@@ -3,20 +3,24 @@ title: ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 author: rick-anderson
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 ms.author: riande
-ms.date: 10/25/2017
+ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: a885809205f13e1090a957496710cc0d9c7257c0
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d96ce7a3f81c54d3c4c0fe26d3fb588d9ce2e0ce
+ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274537"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37089993"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
+[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
+
+::: moniker range=">= aspnetcore-2.1"
+
 作者：[Tom Dykstra](https://github.com/tdykstra) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
 先前的教學課程建立了基本的資料模型，該模型由三個實體組成。 在本教學課程中：
 
@@ -27,7 +31,8 @@ ms.locfileid: "36274537"
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-若您遭遇到無法解決的問題，請下載[此階段完整的應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part5-complex)。
+若您遭遇到無法解決的問題，請下載[完整應用程式](
+https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型
 
@@ -39,7 +44,7 @@ ms.locfileid: "36274537"
 
 使用下列醒目提示的程式碼更新 *Models/Student.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
 [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) 屬性會指定一個比資料庫內建類型更明確的資料類型。 在此情況下，該欄位應該只顯示日期，而不會同時顯示日期和時間。 [DataType 列舉](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1)提供了許多資料類型，例如　Date、Time、PhoneNumber、Currency、EmailAddress 等。`DataType` 屬性也可以讓應用程式自動提供限定於某些類型的功能。 例如: 
 
@@ -75,7 +80,7 @@ ms.locfileid: "36274537"
 
 使用下列程式碼更新 `Student` 模型：
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
 上述的程式碼會限制名稱不得超過 50 個字元。 `StringLength` 屬性不會防止使用者在名稱中輸入空白字元。 [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) 屬性可用於對輸入套用限制。 例如，下列程式碼會要求第一個字元必須是大寫，其餘字元則必須是英文字母：
 
@@ -107,7 +112,7 @@ ms.locfileid: "36274537"
 
 使用下列醒目提示程式碼更新 *Student.cs* 檔案：
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 經過上述變更之後，應用程式中的 `Student.FirstMidName` 會對應到 `Student` 資料表的 `FirstName` 資料行。
 
@@ -121,12 +126,23 @@ SqlException: Invalid column name 'FirstName'.
 * 建置專案。
 * 在專案資料夾中開啟命令視窗。 輸入下列命令來建立新的移轉並更新資料庫：
 
-    ```console
-    dotnet ef migrations add ColumnFirstName
-    dotnet ef database update
-    ```
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-`dotnet ef migrations add ColumnFirstName` 命令會產生下列警告訊息：
+```PMC
+Add-Migration ColumnFirstName
+Update-Database
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+```console
+dotnet ef migrations add ColumnFirstName
+dotnet ef database update
+```
+
+------
+
+`migrations add ColumnFirstName` 命令會產生下列警告訊息：
 
 ```text
 An operation was scaffolded that may result in the loss of data.
@@ -152,7 +168,7 @@ Please review the migration for accuracy.
 
 使用下列程式碼更新 *Models/Student.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Required 屬性
 
@@ -180,9 +196,7 @@ public string LastName { get; set; }
 
 使用下列程式碼建立 *Models/Instructor.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
-
-請注意，當中有幾個屬性跟 `Student` 和 `Instructor` 實體中的一樣。 在本系列稍後的＜實作繼承＞教學課程中，此程式碼會進行重構以消除冗餘。
+[!code-csharp[](intro/samples/cu21/Models/Instructor.cs)]
 
 在同一行上可以有多個屬性。 `HireDate` 屬性可以下列方式撰寫：
 
@@ -226,7 +240,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 使用下列程式碼建立 *Models/OfficeAssignment.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu21/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Key 屬性
 
@@ -275,7 +289,7 @@ public Instructor Instructor { get; set; }
 
 使用下列程式碼更新 *Models/Course.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 `Course` 實體具有外部索引鍵 (FK) 屬性`DepartmentID`。 `DepartmentID` 會指向相關的 `Department` 實體。 `Course` 實體具有一個 `Department` 導覽屬性。
 
@@ -333,7 +347,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 使用下列程式碼建立 *Models/Department.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu21/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Column 屬性
 
@@ -386,7 +400,7 @@ public ICollection<Course> Courses { get; set; }
 
 上述的程式碼會在部門-講師關聯性上停用串聯刪除。
 
-## <a name="update-the-enrollment-entity"></a>更新 Enrollment 實體
+## <a name="update-the-enrollment-entityupdate-the-enrollment-entity"></a>更新 Enrollment 實體
 
 註冊記錄是針對學生參加的一門課程。
 
@@ -394,7 +408,7 @@ public ICollection<Course> Courses { get; set; }
 
 使用下列程式碼更新 *Models/Enrollment.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>外部索引鍵及導覽屬性
 
@@ -436,7 +450,7 @@ public Student Student { get; set; }
 
 使用下列程式碼建立 *Models/CourseAssignment.cs*：
 
-[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu21/Models/CourseAssignment.cs)]
 
 ### <a name="instructor-to-courses"></a>講師-課程
 
@@ -470,7 +484,7 @@ FK 不可為 Null。 `CourseAssignment` (`InstructorID` 及 `CourseID`) 中的�
 
 將下列醒目提示的程式碼新增至 *Data/SchoolContext.cs*：
 
-[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 上述程式碼會新增一個新實體，並設定 `CourseAssignment` 實體的複合 PK。
 
@@ -520,7 +534,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 更新 *Data/DbInitializer.cs* 中的程式碼：
 
-[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
 上述程式碼為新的實體提供了種子資料。 此程式碼中的大部分主要用於建立新的實體物件並載入範例資料。 範例資料主要用於測試。 上述程式碼會建立下列多對多關聯性：
 
@@ -531,11 +545,21 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="add-a-migration"></a>新增移轉
 
-建置專案。 在專案資料夾中開啟命令視窗，輸入下列命令：
+建置專案。
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+```PMC
+Add-Migration ComplexDataModel
+```
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 ```console
 dotnet ef migrations add ComplexDataModel
 ```
+
+------
 
 上述命令會顯示關於可能發生資料遺失的警告。
 
@@ -554,42 +578,40 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 當使用現有的資料執行移轉作業時，某些 FK 條件約束可能會無法透過現有資料滿足。 針對此教學課程，由於您建立了新的資料庫，因此不會發生違反 FK 條件約束的情況。 請參閱[使用舊資料修正外部索引鍵條件約束](#fk)，以取得修正目前資料庫上發生之 FK 違規的說明。
 
-## <a name="change-the-connection-string-and-update-the-db"></a>變更連接字串並更新資料庫
+### <a name="drop-and-update-the-database"></a>卸除並更新資料庫
 
-更新的 `DbInitializer` 中的程式碼會為新的實體新增種子資料。 若要強制 EF Core 建立新的空白資料庫：
+更新的 `DbInitializer` 中的程式碼會為新的實體新增種子資料。 若要強制 EF Core 建立新的資料庫，請卸除並更新資料庫：
 
-* 將 *appsettings.json* 中的資料庫連接字串名稱變更為 ContosoUniversity3。 新的名稱必須為在電腦上尚未使用的名稱。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-    ```json
-    {
-      "ConnectionStrings": {
-        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ContosoUniversity3;Trusted_Connection=True;MultipleActiveResultSets=true"
-      },
-    ```
+在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
-* 或者，使用以下工具刪除資料庫：
-
-  * [SQL Server 物件總管] (SSOX)。
-  * `database drop` CLI 命令：
-
-    ```console
-    dotnet ef database drop
-    ```
-
-在命令視窗中執行 `database update`：
-
-```console
-dotnet ef database update
+```PMC
+Drop-Database
+Update-Database
 ```
 
-上述命令會執行所有移轉。
+從 PMC 執行 `Get-Help about_EntityFrameworkCore` 以取得說明資訊。
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+開啟命令視窗並巡覽至專案資料夾。 專案資料夾中包含 *Startup.cs* 檔案。
+
+在命令視窗中輸入下列命令：
+
+ ```console
+ dotnet ef database drop
+dotnet ef database update
+ ```
+
+------
 
 執行應用程式。 執行應用程式會執行 `DbInitializer.Initialize` 方法。 `DbInitializer.Initialize` 會填入新的資料庫。
 
 在 SSOX 中開啟資料庫：
 
-* 展開 [資料表] 節點。 建立的資料表便會顯示。
 * 若先前已開啟過 SSOX，按一下 [重新整理] 按鈕。
+* 展開 [資料表] 節點。 建立的資料表便會顯示。
 
 ![SSOX 中的資料表](complex-data-model/_static/ssox-tables.png)
 
@@ -638,6 +660,8 @@ dotnet ef database update
 * 不使用 "Temp" 部門或 `Course.DepartmentID` 的預設值。
 
 下一個教學課程會涵蓋相關資料。
+
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [上一頁](xref:data/ef-rp/migrations)

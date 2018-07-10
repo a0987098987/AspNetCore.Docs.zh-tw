@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: fundamentals/owin
-ms.openlocfilehash: 864580edd62032ad1409c1d3263cb5d464fa59fe
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 04042eedc52b4e6f57685e2d9ec1a75cd130fd8d
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273620"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144959"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -20,12 +20,14 @@ ms.locfileid: "36273620"
 ASP.NET Core 支援Open Web Interface for .NET (OWIN)。 OWIN 可讓 Web 應用程式獨立於網頁伺服器。 它會定義中介軟體要在管線中用來處理要求和相關聯回應的標準方式。 ASP.NET Core 應用程式和中介軟體可以與以 OWIN 為基礎的應用程式、伺服器及中介軟體進行交互操作。
 
 OWIN 提供分離層，可讓兩個利用不同物件模型的架構一起使用。 `Microsoft.AspNetCore.Owin` 套件提供兩個配接器實作：
-- ASP.NET Core 至 OWIN 
-- OWIN 至 ASP.NET Core
+
+* ASP.NET Core 至 OWIN 
+* OWIN 至 ASP.NET Core
 
 這可讓 ASP.NET Core 裝載在 OWIN 相容的伺服器/主機之上，或讓其他 OWIN 相容的元件在 ASP.NET Core 之上執行。
 
-注意：使用這些配接器將伴隨效能成本增加。 僅使用 ASP.NET Core 元件的應用程式不應使用 Owin 套件或配接器。
+> [!NOTE]
+> 使用這些配接器將伴隨效能成本增加。 僅使用 ASP.NET Core 元件的應用程式不應使用 `Microsoft.AspNetCore.Owin` 套件或配接器。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

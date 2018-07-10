@@ -1,4 +1,4 @@
-# <a name="working-with-sqlite-in-and-razor-pages"></a>使用 SQLite 與 Razor 頁面
+# <a name="work-with-sqlite-in-an-aspnet-core-razor-pages-app"></a>在 ASP.NET Core Razor Pages 應用程式中使用 SQLit
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

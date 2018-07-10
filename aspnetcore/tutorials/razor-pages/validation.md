@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 569c5b977d832aec3657321cad8d0f9520aae031
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: cabf3d955ef2eb17b3bcb40170a9de7b53ffd107
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277770"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077627"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -45,7 +45,7 @@ Razor 頁面和 Entity Framework 所提供的驗證支援就是 DRY 準則的絶
 驗證屬性 (attribute) 會指定對模型屬性 (property) 強制執行的行為：
 
 * `Required` 和 `MinimumLength` 屬性 (attribute) 指出屬性 (property) 必須具有值。 不過，使用者可以輸入空白字元以滿足可為 Null 之類型的驗證條件約束。 不可為 Null 的[實值類型](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) (如 `decimal`、`int`、`float` 和 `DateTime`) 原本就是必要項目，而且不需要 `Required` 屬性。
-* `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 和 `Rating` 只能使用字母 (不允許使用空白字元、數字及特殊字元)。
+* `RegularExpression` 屬性會限制使用者可以輸入的字元數目。 在上述程式碼中，`Genre` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、單引號或雙引號、空格字元或連字號。 `Rating` 必須以一個以上的大寫字母開頭，並在後面加上零個以上的字母、數字、單引號或雙引號、空格字元或連字號。
 * `Range` 屬性會將值限制在指定的範圍內。
 * `StringLength` 屬性可設定字串的最大長度，並選擇性地設定最小長度。 
 

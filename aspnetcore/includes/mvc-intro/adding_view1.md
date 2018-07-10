@@ -1,4 +1,4 @@
-# <a name="adding-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
+# <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 1fe05fbc5035ffa2d01bc6be55436146f1434d17
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 96d7d2956fa9bf72706cde0532ee7f4ff753b72c
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278540"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126257"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -53,6 +53,20 @@ ms.locfileid: "36278540"
 ```html
 option1 = value1_from_json, option2 = -1
 ```
+
+> [!NOTE]
+> 使用自訂 [ConfigurationBuilder](/dotnet/api/system.configuration.configurationbuilder) 從設定檔載入選項組態時，請確認已正確設定基底路徑：
+>
+> ```csharp
+> var configBuilder = new ConfigurationBuilder()
+>    .SetBasePath(Directory.GetCurrentDirectory())
+>    .AddJsonFile("appsettings.json", optional: true);
+> var config = configBuilder.Build();
+>
+> services.Configure<MyOptions>(config);
+> ```
+>
+> 透過 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 從設定檔載入選項組態時，不需要明確設定基底路徑。
 
 ## <a name="configure-simple-options-with-a-delegate"></a>使用委派設定簡單的選項
 

@@ -1,18 +1,18 @@
 ---
-title: 將欄位新增至 ASP.NET Core 應用程式
+title: 將欄位新增至 ASP.NET Core MVC 應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Code First 移轉，將欄位新增至模型，然後將該變更移轉至資料庫。
 ms.author: riande
 ms.date: 10/14/2016
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 0077205e0f10037c9b24eab80337cb76f027e688
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: eb98ebcde1086ad605127dddc055a18d4874c722
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278774"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961031"
 ---
-# <a name="add-a-new-field-to-an-aspnet-core-app"></a>將欄位新增至 ASP.NET Core 應用程式
+# <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>將欄位新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

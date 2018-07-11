@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 03/15/2017
 uid: data/ef-rp/index
-ms.openlocfilehash: 56d317e4334ee006c8b52163594e2850c11d23d7
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: 1e8d38ba3db014c68717f90b7216dc84a9c496a8
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960862"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938361"
 ---
 # <a name="aspnet-core-razor-pages-with-ef-core---tutorial-series"></a>ASP.NET Core Razor 頁面與 EF Core - 教學課程系列
 

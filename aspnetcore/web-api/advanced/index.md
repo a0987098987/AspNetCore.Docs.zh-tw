@@ -5,12 +5,12 @@ description: 探索 ASP.NET Core Web API 開發的進階主題。
 ms.author: scaddie
 ms.date: 04/25/2018
 uid: web-api/advanced/index
-ms.openlocfilehash: 5932ff8445b7924f526c65eca3bd2435e5ce8bf7
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: bf979d51fb0a50faf9dc8e28f471d228b7945a8d
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279138"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938442"
 ---
 # <a name="advanced-topics-for-aspnet-core-web-api"></a>ASP.NET Core Web API 的進階主題
 

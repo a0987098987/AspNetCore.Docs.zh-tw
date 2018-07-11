@@ -2,16 +2,17 @@
 title: ASP.NET Core 中的 WebSockets 支援
 author: rick-anderson
 description: 了解如何在 ASP.NET Core 中開始使用 WebSocket。
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/15/2018
+ms.date: 06/28/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: ee529f1aaadb6b6062bed56003c51f161eae7e72
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a9fe13ef7895ea3ab43257dbbaf4521f883c0804
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273793"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433983"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -46,16 +47,9 @@ ms.locfileid: "36273793"
 
 請使用 WebSocket 以直接使用通訊端連線。 例如，若要取得即時遊戲的可能最佳效能，請使用 WebSocket。
 
-[ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) 提供更豐富的應用程式模型來執行即時功能，但它只會在 ASP.NET 4.x 上執行，而不是在 ASP.NET Core 上執行。 SignalR 的 ASP.NET Core 版本已排定隨 ASP.NET Core 2.1 發行。 請參閱 [ASP.NET Core 2.1 high-level planning](https://github.com/aspnet/Announcements/issues/288) (ASP.NET Core 2.1 高階規劃)。
+[ASP.NET Core SignalR](xref:signalr/introduction) 是程式庫，可簡化將即時 Web 功能新增至應用程式的程序。 它會盡可能使用 WebSockets。
 
-在 SignalR Core 發行之前，可以使用 WebSocket。 不過，開發人員必須提供和支援 SignalR 所提供的功能。 例如: 
-
-* 透過使用替代傳輸方法的自動後援，支援廣泛的瀏覽器版本。
-* 連線中斷時自動重新連線。
-* 支援伺服器上的用戶端呼叫方法，反之亦然。
-* 支援擴展為多部伺服器。
-
-## <a name="how-to-use-it"></a>如何使用
+## <a name="how-to-use-websockets"></a>如何使用 WebSocket
 
 * 安裝 [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/) 套件。
 * 設定中介軟體。

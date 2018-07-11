@@ -6,12 +6,12 @@ ms.author: spboyer
 ms.custom: mvc
 ms.date: 03/13/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: c46c0aa578867ce306adc67a2e0d8b650b5fa5bd
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: d02fbd82be37e6d67214a9a0bf5851662b577cb9
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960888"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433970"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>在 Linux 上使用 Apache 裝載 ASP.NET Core
 
@@ -154,7 +154,7 @@ Apache 的組態檔是位於 `/etc/httpd/conf.d/` 目錄內。 除了 `/etc/http
 </VirtualHost>
 ```
 
-`VirtualHost` 區塊可以在伺服器上的一或多個檔案中出現多次。 在上述設定檔中，Apache 會在連接埠 80 接受公用流量。 所服務的網域是 `www.example.com`，而 `*.example.com` 別名則會解析成同一個網站。 如需詳細資訊，請參閱[名稱型虛擬主機支援](https://httpd.apache.org/docs/current/vhosts/name-based.html) \(英文\)。 要求會在根目錄透過 Proxy 傳送至位於 127.0.0.1 之伺服器的連接埠 5000。 如需進行雙向通訊，則必須要有 `ProxyPass` 和 `ProxyPassReverse`。
+`VirtualHost` 區塊可以在伺服器上的一或多個檔案中出現多次。 在上述設定檔中，Apache 會在連接埠 80 接受公用流量。 所服務的網域是 `www.example.com`，而 `*.example.com` 別名則會解析成同一個網站。 如需詳細資訊，請參閱[名稱型虛擬主機支援](https://httpd.apache.org/docs/current/vhosts/name-based.html) \(英文\)。 要求會在根目錄透過 Proxy 傳送至位於 127.0.0.1 之伺服器的連接埠 5000。 如需進行雙向通訊，則必須要有 `ProxyPass` 和 `ProxyPassReverse`。 若要變更 Kestrel 的 IP/連接埠，請參閱 [Kestrel：端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
 
 > [!WARNING]
 > 如果無法在 **VirtualHost** 區塊中指定適當的 [ServerName 指示詞](https://httpd.apache.org/docs/current/mod/core.html#servername)，就會讓應用程式暴露在安全性弱點的風險下。 若您擁有整個父網域 (相對於易受攻擊的 `*.com`) 的控制權，子網域萬用字元繫結 (例如 `*.example.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。

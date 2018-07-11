@@ -5,14 +5,14 @@ description: 了解 ASP.NET Core 部分標記協助程式和其每個屬性在�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/13/2018
+ms.date: 07/06/2018
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: fea84621f185c4113147cf0dfd173704bc7b6d81
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2272b2ecdd6f2b0a759356b1f03dd5c495ea1c91
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274397"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889099"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "36274397"
 部分標記協助程式用於在 Razor 頁面和 MVC 應用程式中呈現[部分檢視](xref:mvc/views/partial)。 請考慮它：
 
 * 需要 ASP.NET Core 2.1 或更新版本。
-* 是 [HTML 協助程式語法](xref:mvc/views/partial#referencing-a-partial-view)的替代方法。
+* 是 [HTML 協助程式語法](xref:mvc/views/partial#reference-a-partial-view)的替代方法。
 * 以非同步方式呈現部分檢視。
 
 呈現部分檢視的 HTML 協助程式選項包括：
@@ -81,7 +81,17 @@ ms.locfileid: "36274397"
 
 在此範例中，`ViewData["IsNumberReadOnly"]` 的值決定 *Number* 欄位是否會顯示為唯讀。
 
+## <a name="migrate-from-an-html-helper"></a>從 HTML 協助程式移轉
+
+請考慮下列非同步 HTML 協助程式範例。 逐一查看和顯示產品集合。 依據 `PartialAsync` 方法的第一個參數載入 *_ProductPartial.cshtml*部分檢視。 `Product` 模型的執行個體會傳遞到部分檢視以進行繫結。
+
+[!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_HtmlHelper&highlight=3)]
+
+下列 Partial 標籤協助程式可完成與 `PartialAsync` HTML 協助程式相同的非同步轉譯行為。 `model` 屬性會獲指派 `Product` 模型執行個體，以繫結至部分檢視。
+
+[!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_TagHelper&highlight=3)]
+
 ## <a name="additional-resources"></a>其他資源
 
-* [部分檢視](xref:mvc/views/partial)
-* [弱型別資料 (ViewData、ViewData 屬性和 ViewBag)](xref:mvc/views/overview#weakly-typed-data-viewdata-viewdata-attribute-and-viewbag)
+* <xref:mvc/views/partial>
+* <xref:mvc/views/overview#weakly-typed-data-viewdata-viewdata-attribute-and-viewbag>

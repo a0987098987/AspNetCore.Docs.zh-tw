@@ -9,11 +9,11 @@ ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: a166f6c4450c72adc23f7d36113ceba7e04f1929
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820885"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38170270"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>檢查編輯方法與編輯檢視
 ====================
@@ -97,7 +97,7 @@ Scaffold 程式碼使用一些*helper 方法*來簡化 HTML 標記。 [ `Html.La
 
 
 > [!NOTE]
-> 以 jQuery 驗證支援非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用的 JavaScript `Globalize.parseFloat`。 您可以從 NuGet 取得 jQuery non-alpha Non-english 驗證。 （不安裝 Globalize 如果您使用英文的地區設定）。
+> 若要 jQuery 驗證支援非英文的地區設定，請使用逗號 (&quot;，&quot;) 的小數點和非英文日期格式，您必須加入*globalize.js*和您的特定*cultures/globalize.cultures.js*檔案 (從[ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) 和使用的 JavaScript `Globalize.parseFloat`。 您可以從 NuGet 取得 jQuery non-alpha Non-english 驗證。 （不安裝 Globalize 如果您使用英文的地區設定）。
 
 
 1. 從**工具**功能表上，按一下**NuGetLibrary Package Manager**，然後按一下**管理方案的 NuGet 套件**。  

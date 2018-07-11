@@ -9,11 +9,11 @@ ms.assetid: cc764f3b-6921-486a-8f44-c6ccd1249acd
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
 ms.openlocfilehash: 77389bfa4774857eb2a607b0a70e982826312e03
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802288"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38119259"
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================

@@ -9,11 +9,11 @@ ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
 ms.openlocfilehash: afa6a8280cab93ea75203228dd735971017492a0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823497"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38211769"
 ---
 <a name="search"></a>搜尋
 ====================

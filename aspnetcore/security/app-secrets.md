@@ -1,51 +1,51 @@
 ---
-title: 安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
+title: 在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 author: rick-anderson
-description: 了解如何儲存和擷取應用程式密碼為 ASP.NET Core 應用程式開發期間的機密資訊。
+description: 了解如何儲存和擷取為應用程式祕密的 ASP.NET Core 應用程式開發期間的機密資訊。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2018
 uid: security/app-secrets
 ms.openlocfilehash: d3b2de1a17012986ef8dea7aaf8636dd35d10fa1
-ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36314171"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38126907"
 ---
-# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>安全存放裝置的開發工作中 ASP.NET Core 應用程式密碼
+# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 開發的應用程式祕密的安全儲存體
 
-由[Rick Anderson](https://twitter.com/RickAndMSFT)，[奧 Roth](https://github.com/danroth27)，和[Scott Addie](https://github.com/scottaddie)
+藉由[Rick Anderson](https://twitter.com/RickAndMSFT)， [Daniel Roth](https://github.com/danroth27)，和[Scott Addie](https://github.com/scottaddie)
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-本文件說明儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 您永遠不應該在原始程式碼中，儲存的密碼或其他機密資料，您不應該在開發中使用生產機密資料或測試模式。 您可以儲存並保護 Azure 測試與實際的機密資訊使用[Azure 金鑰保存庫的組態提供者](xref:security/key-vault-configuration)。
+本文件說明針對儲存和擷取機密資料的 ASP.NET Core 應用程式開發期間的技術。 您應該永遠不會將密碼或其他機密資料儲存在原始程式碼中，而且您不應該在開發中使用生產環境祕密，或測試模式。 您可以透過 [Azure Key Vault 設定提供者](xref:security/key-vault-configuration)儲存及保護 Azure 測試與生產祕密。
 
 ## <a name="environment-variables"></a>環境變數
 
-環境變數用來避免在程式碼，或在本機的組態檔中的應用程式密碼的儲存體。 環境變數覆寫所有先前指定的設定來源的組態值。
+環境變數用來避免儲存在程式碼，或在本機設定檔中的應用程式密碼。 環境變數覆寫所有先前指定的組態來源的組態值。
 
 ::: moniker range="<= aspnetcore-1.1"
-藉由呼叫設定環境變數值的讀取[AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables)中`Startup`建構函式：
+藉由呼叫設定環境變數值的讀取[AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables)在`Startup`建構函式：
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=10)]
 ::: moniker-end
 
-請考慮 ASP.NET Core web 應用程式在其中**個別使用者帳戶**已啟用安全性。 預設資料庫的連接字串包含在專案中的*appsettings.json*檔案具有索引鍵`DefaultConnection`。 預設的連接字串是 localdb，這會在使用者模式中執行，而不需要密碼。 應用程式部署期間`DefaultConnection`機碼值會覆寫與環境變數的值。 環境變數可能會儲存敏感認證的完整連接字串。
+中的 ASP.NET Core web 應用程式，請考慮**個別使用者帳戶**安全性已啟用。 包含在專案中預設的資料庫連接字串*appsettings.json*具有索引鍵的檔案`DefaultConnection`。 預設的連接字串是 localdb，這會在使用者模式中執行，而且不需要密碼。 應用程式在部署期間，`DefaultConnection`機碼值可以覆寫環境變數的值。 環境變數可能會儲存機密認證的完整連接字串。
 
 > [!WARNING]
-> 環境變數通常儲存在一般、 未加密的文字。 如果電腦或處理序遭到入侵，可以由不受信任的一方存取環境變數。 您可能需要其他措施以避免洩露使用者密碼。
+> 環境變數通常會儲存在一般、 未加密的文字。 如果電腦或處理序遭到入侵，就可以由不受信任的合作對象存取環境變數。 您可能需要其他措施以避免使用者密碼洩露。
 
 ## <a name="secret-manager"></a>密碼管理員
 
-密碼管理員工具的 ASP.NET Core 專案開發時儲存機密資料。 在此內容中的機密資料是應用程式密碼。 應用程式密碼會儲存在專案樹狀結構與不同的位置。 應用程式密碼與特定的專案相關聯或在數個專案之間共用。 應用程式密碼不被簽入原始檔控制。
+Secret Manager 工具會在 ASP.NET Core 專案的開發期間儲存機密資料。 在此情況下，某份機密資料會是應用程式祕密。 應用程式密碼會儲存在專案樹狀結構與不同的位置。 應用程式祕密與特定專案相關聯或在數個專案之間共用。 應用程式祕密未簽入原始檔控制中。
 
 > [!WARNING]
 > 密碼管理員工具不會加密預存機密資料，並不會被視為受信任存放區。 它是僅限開發用途。 索引鍵和值會儲存在使用者設定檔的目錄中的 JSON 組態檔。
 
-## <a name="how-the-secret-manager-tool-works"></a>密碼管理員工具的運作方式
+## <a name="how-the-secret-manager-tool-works"></a>Secret Manager 工具的運作方式
 
-密碼管理員工具會將實作的詳細資料加以抽象，包括各值儲存的位置和方式。 不需要知道這些實作細節也可以使用此工具。 值會儲存在本機電腦上系統保護的使用者設定檔資料夾的 JSON 組態檔：
+密碼管理員工具會將實作的詳細資料加以抽象，包括各值儲存的位置和方式。 不需要知道這些實作細節也可以使用此工具。 值會儲存在 JSON 組態檔中的保護系統的使用者設定檔資料夾在本機電腦上：
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -67,35 +67,35 @@ ms.locfileid: "36314171"
 
 ---
 
-在上述檔案路徑，取代`<user_secrets_id>`與`UserSecretsId`中指定的值 *.csproj*檔案。
+在上述檔案路徑中，取代`<user_secrets_id>`具有`UserSecretsId`中指定值 *.csproj*檔案。
 
-不要撰寫程式碼所依賴的位置或格式儲存密碼管理員工具的資料。 這些實作細節，可能會變更。 比方說，密碼的值未加密，但可能在未來。
+不要撰寫相依於使用 Secret Manager 工具所儲存的資料格式的位置的程式碼。 這些實作細節可能會變更。 比方說，祕密的值不會加密，但可能在未來。
 
 ::: moniker range="<= aspnetcore-2.0"
-## <a name="install-the-secret-manager-tool"></a>安裝密碼管理員工具
+## <a name="install-the-secret-manager-tool"></a>安裝 Secret Manager 工具
 
-密碼管理員工具是.NET Core CLI 為準，.NET Core SDK 2.1.300 套件組合。 2.1.300 以前的.NET Core SDK 版本，工具的安裝是必要的。
+Secret Manager 工具隨附於.NET Core sdk 2.1.300.NET Core CLI。 如需.NET Core SDK 2.1.300 之前的版本，工具的安裝是必要的。
 
 > [!TIP]
 > 執行`dotnet --version`從命令殼層，若要查看已安裝的.NET Core SDK 版本號碼。
 
-如果正在使用的.NET Core SDK 包含工具，會顯示警告：
+如果正在使用的.NET Core SDK 包含工具，就會顯示一則警告：
 
 ```console
 The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET Core SDK. Information on resolving this warning is available at (https://aka.ms/dotnetclitools-in-box).
 ```
 
-安裝[Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) ASP.NET Core 專案中的 NuGet 封裝。 例如: 
+安裝[包含 Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) ASP.NET Core 專案中的 NuGet 套件。 例如: 
 
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
 
-若要驗證工具的安裝命令殼層中執行下列命令：
+若要驗證工具安裝命令殼層中執行下列命令：
 
 ```console
 dotnet user-secrets -h
 ```
 
-密碼管理員工具會顯示範例使用方式、 選項和命令的說明：
+Secret Manager 工具會顯示範例使用方式、 選項和命令說明：
 
 ```console
 Usage: dotnet user-secrets [options] [command]
@@ -118,12 +118,12 @@ Use "dotnet user-secrets [command] --help" for more information about a command.
 ```
 
 > [!NOTE]
-> 您必須在相同的目錄 *.csproj*檔案來執行工具中定義 *.csproj*檔案的`DotNetCliToolReference`項目。
+> 您必須在相同的目錄 *.csproj*若要執行工具中定義的檔案 *.csproj*檔案的`DotNetCliToolReference`項目。
 ::: moniker-end
 
 ## <a name="set-a-secret"></a>設定密碼
 
-密碼管理員工具會依據儲存在您的使用者設定檔中的專案特定的組態設定。 若要使用使用者的機密資訊，請定義`UserSecretsId`內的項目`PropertyGroup`的 *.csproj*檔案。 值`UserSecretsId`任意的但是是唯一的專案。 開發人員通常會產生的 GUID `UserSecretsId`。
+Secret Manager 工具作儲存在您的使用者設定檔中的專案特定的組態設定。 若要使用使用者的機密資訊，請定義`UserSecretsId`項目內`PropertyGroup`的 *.csproj*檔案。 值`UserSecretsId`任意的但是是唯一的專案。 開發人員通常會產生 GUID `UserSecretsId`。
 
 ::: moniker range="<= aspnetcore-1.1"
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
@@ -133,17 +133,17 @@ Use "dotnet user-secrets [command] --help" for more information about a command.
 ::: moniker-end
 
 > [!TIP]
-> 在 Visual Studio 中，以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者密碼**從內容功能表。 新增此筆勢`UserSecretsId`項目，以填入 GUID *.csproj*檔案。 Visual Studio 隨即開啟*secrets.json*文字編輯器中的檔案。 取代內容*secrets.json*與儲存的索引鍵-值組。 例如：[!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file.md)]
+> 在 Visual Studio 中，以滑鼠右鍵按一下方案總管 中的專案，然後選取**管理使用者祕密**從內容功能表。 將這個筆勢`UserSecretsId`項目，為 GUID，以填入 *.csproj*檔案。 Visual Studio 會開啟*secrets.json*在文字編輯器中的檔案。 內容取代*secrets.json*與儲存的索引鍵 / 值組。 例如：[!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file.md)]
 
-定義索引鍵和其值所組成的應用程式密碼。 密碼會與專案相關聯`UserSecretsId`值。 例如，執行下列命令，從在其中的目錄 *.csproj*檔案是否存在：
+定義索引鍵和其值所組成的應用程式祕密。 密碼是該專案相關聯`UserSecretsId`值。 例如，執行下列命令，從在其中的目錄 *.csproj*檔案是否存在：
 
 ```console
 dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 ```
 
-在上述範例中，使用冒號表示`Movies`是物件常值與`ServiceApiKey`屬性。
+在上述範例中，在冒號表示`Movies`是一種物件常值與`ServiceApiKey`屬性。
 
-可以從其他目錄太使用密碼管理員工具。 使用`--project`選項提供的檔案系統路徑 *.csproj*檔案是否存在。 例如: 
+可以從其他目錄太使用 Secret Manager 工具。 使用`--project`選項來提供檔案系統路徑，處 *.csproj*檔案是否存在。 例如: 
 
 ```console
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -151,11 +151,11 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="set-multiple-secrets"></a>設定多個密碼
 
-批次，密碼可以設定經由管道 JSON`set`命令。 在下列範例中， *input.json*檔案的內容會經由管道輸出至`set`命令。
+來設定批次的祕密，請使用管線傳送至 JSON`set`命令。 在下列範例中， *input.json*檔案的內容會輸送到`set`命令。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-開啟命令殼層，然後執行下列命令：
+開啟命令殼層中，然後執行下列命令：
 
   ```console
   type .\input.json | dotnet user-secrets set
@@ -163,7 +163,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-開啟命令殼層，然後執行下列命令：
+開啟命令殼層中，然後執行下列命令：
 
   ```console
   cat ./input.json | dotnet user-secrets set
@@ -171,7 +171,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-開啟命令殼層，然後執行下列命令：
+開啟命令殼層中，然後執行下列命令：
 
   ```console
   cat ./input.json | dotnet user-secrets set
@@ -179,28 +179,28 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ---
 
-## <a name="access-a-secret"></a>存取密碼
+## <a name="access-a-secret"></a>存取祕密
 
 ::: moniker range="<= aspnetcore-1.1"
-[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供密碼管理員密碼的存取。 安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 封裝。
+[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供 Secret Manager 祕密的存取。 安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 套件。
 
-新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)中`Startup`建構函式：
+新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)在`Startup`建構函式：
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供密碼管理員密碼的存取。 如果您專案的目標.NET Framework，安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 封裝。
+[ASP.NET Core 組態 API](xref:fundamentals/configuration/index)提供 Secret Manager 祕密的存取。 如果您的專案以.NET Framework 為目標，安裝[Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 套件。
 
-在 ASP.NET Core 2.0 或更新版本中，使用者密碼設定來源會自動加入開發模式時的專案呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)初始化主應用程式使用預先設定的預設值的新執行個體。 `CreateDefaultBuilder` 呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)時[EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)是[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
+在 ASP.NET Core 2.0 或更新版本中，使用者密碼設定來源會自動加入開發模式時的專案呼叫[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder)初始化主應用程式使用預先設定的預設值的新執行個體。 `CreateDefaultBuilder` 呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)當[EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname)會[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development):
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
-當`CreateDefaultBuilder`不在主機建構期間呼叫，新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)中`Startup`建構函式：
+當`CreateDefaultBuilder`不是呼叫在主應用程式建構期間，新增使用者密碼設定來源，藉由呼叫[AddUserSecrets](/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions.addusersecrets)在`Startup`建構函式：
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=5-8)]
 ::: moniker-end
 
-可以透過擷取使用者密碼`Configuration`API:
+使用者的機密資訊可以透過擷取`Configuration`API:
 
 ::: moniker range="<= aspnetcore-1.1"
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=23)]
@@ -209,23 +209,23 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
 ::: moniker-end
 
-## <a name="string-replacement-with-secrets"></a>含有機密資料的字串取代
+## <a name="string-replacement-with-secrets"></a>有祕密的字串取代
 
-以純文字儲存密碼並不安全。 例如，資料庫連接字串儲存在*appsettings.json*可能包含指定之使用者的密碼：
+以純文字儲存密碼並不安全的。 例如，資料庫連接字串儲存在*appsettings.json*可能包含指定之使用者的密碼：
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-最安全的作法是將密碼儲存做為密碼。 例如: 
+更安全的方法是將密碼儲存作為祕密。 例如: 
 
 ```console
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-移除`Password`從連接字串中的索引鍵-值組*appsettings.json*。 例如: 
+移除`Password`連接字串中的索引鍵-值配對*appsettings.json*。 例如: 
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-密碼的值可以設定上[SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)物件的[密碼](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password)完成連接字串屬性：
+祕密的值可以設定在[SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)物件的[密碼](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password)完成連接字串屬性：
 
 ::: moniker range="<= aspnetcore-1.1"
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
@@ -234,7 +234,7 @@ dotnet user-secrets set "DbPassword" "pass123"
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 ::: moniker-end
 
-## <a name="list-the-secrets"></a>列出密碼
+## <a name="list-the-secrets"></a>列出祕密
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
@@ -251,9 +251,9 @@ Movies:ServiceApiKey = 12345
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true
 ```
 
-在上述範例中，索引鍵的名稱中的冒號代表物件階層架構內*secrets.json*。
+在上述範例中，索引鍵的名稱中的冒號表示物件的階層架構內*secrets.json*。
 
-## <a name="remove-a-single-secret"></a>移除單一密碼
+## <a name="remove-a-single-secret"></a>移除單一的祕密
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
@@ -279,7 +279,7 @@ dotnet user-secrets remove "Movies:ConnectionString"
 Movies:ServiceApiKey = 12345
 ```
 
-## <a name="remove-all-secrets"></a>移除所有的機密資料
+## <a name="remove-all-secrets"></a>移除所有的祕密
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
@@ -289,7 +289,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets clear
 ```
 
-已刪除的應用程式的所有使用者密碼從*secrets.json*檔案：
+從已刪除的應用程式的所有使用者祕密*secrets.json*檔案：
 
 ```json
 {}

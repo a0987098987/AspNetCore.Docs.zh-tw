@@ -9,11 +9,11 @@ ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
 ms.openlocfilehash: 97526d908dd3b835040453b53eae76f733a01c04
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839086"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38172189"
 ---
 <a name="adding-validation"></a>新增驗證
 ====================

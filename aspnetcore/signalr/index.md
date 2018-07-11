@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.date: 07/03/2018
 uid: signalr/index
-ms.openlocfilehash: 53b3c9824faf2acc17738b8bdcf403ee35b9a829
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: 7ed4f0bbd7ea21550d19eb0cf8db03e42e56becf
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434052"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938507"
 ---
 # <a name="aspnet-core-signalr"></a>ASP.NET Core SignalR
 

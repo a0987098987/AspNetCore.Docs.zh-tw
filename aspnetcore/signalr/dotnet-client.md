@@ -1,30 +1,30 @@
 ---
 title: ASP.NET Core SignalR.NET 用戶端
 author: rachelappel
-description: ASP.NET Core SignalR 的.NET 用戶端的相關資訊
+description: ASP.NET Core SignalR.NET 用戶端的相關資訊
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: faa4368988971a3e7fcdcd1b044971e16d70f19a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 35dc1d3abf0d35e17d1835ec462f8cc4feb728eb
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273291"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938250"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
 
 作者：[Rachel Appel](http://twitter.com/rachelappel)
 
-ASP.NET Core SignalR 的.NET 用戶端可以使用 Xamarin、 WPF、 Windows Form、 主控台與.NET Core 應用程式。 像[JavaScript 用戶端](xref:signalr/javascript-client)，.NET 用戶端可讓您接收和傳送和接收訊息至中樞即時。
+ASP.NET Core SignalR.NET 用戶端可以使用 Xamarin、 WPF、 Windows Form、 主控台和.NET Core 應用程式。 像是[JavaScript 用戶端](xref:signalr/javascript-client)，.NET 用戶端可讓您接收和傳送和接收訊息到中樞即時。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-本文章中的程式碼範例是使用 ASP.NET Core SignalR 的.NET 用戶端的 WPF 應用程式。
+這篇文章中的程式碼範例是使用 ASP.NET Core SignalR.NET 用戶端的 WPF 應用程式。
 
-## <a name="install-the-signalr-net-client-package"></a>SignalR 的.NET 用戶端封裝安裝
+## <a name="install-the-signalr-net-client-package"></a>安裝 SignalR.NET 用戶端套件
 
 `Microsoft.AspNetCore.SignalR.Client`封裝所需的.NET 用戶端連線到 SignalR 中樞。 若要安裝用戶端程式庫，請執行下列命令**Package Manager Console**視窗：
 
@@ -34,29 +34,29 @@ Install-Package Microsoft.AspNetCore.SignalR.Client
 
 ## <a name="connect-to-a-hub"></a>連線至中樞
 
-若要建立連接時，建立`HubConnectionBuilder`呼叫`Build`。 建立連接時可以設定中樞 URL、 通訊協定、 傳輸類型、 記錄層級、 標頭和其他選項。 設定任何必要的選項插入任何`HubConnectionBuilder`方法到`Build`。 啟動與連線`StartAsync`。
+若要建立連線，建立`HubConnectionBuilder`並呼叫`Build`。 中樞 URL、 通訊協定、 傳輸類型、 記錄層級、 標頭，以及其他選項可以在建立連接時設定。 設定任何所需的選項，插入的任何`HubConnectionBuilder`方法`Build`。 啟動與連線`StartAsync`。
 
 [!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?highlight=15-17,33)]
 
-## <a name="call-hub-methods-from-client"></a>從用戶端呼叫 hub 方法
+## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
-`InvokeAsync` 集線器上呼叫方法。 通過集線器方法名稱和中樞方法中定義任何引數`InvokeAsync`。 SignalR 是非同步，因此，使用`async`和`await`時進行呼叫。
+`InvokeAsync` 集線器上呼叫方法。 將中樞方法的名稱和任何定義於中樞方法的引數傳遞`InvokeAsync`。 SignalR 是非同步，因此請使用`async`和`await`時進行呼叫。
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=48-49)]
 
-## <a name="call-client-methods-from-hub"></a>從中樞呼叫用戶端方法
+## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
-定義的方法使用呼叫中樞`connection.On`之後建築物，但啟動連接之前。
+定義的方法使用呼叫中樞`connection.On`之後建置，但之前啟動連線。
 
 [!code-csharp[Define client methods](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=22-29)]
 
-在上述程式碼`connection.On`時伺服器端程式碼會呼叫它使用執行`SendAsync`方法。
+在上述程式碼`connection.On`會在伺服器端程式碼會呼叫使用時執行`SendAsync`方法。
 
 [!code-csharp[Call client method](dotnet-client/sample/signalrchat/hubs/chathub.cs?range=8-11)]
 
 ## <a name="error-handling-and-logging"></a>錯誤處理和記錄
 
-處理 try catch 陳述式的錯誤。 檢查`Exception`物件來判斷發生錯誤之後所採取的適當動作。
+處理錯誤的 try / catch 陳述式。 檢查`Exception`物件，以判斷發生錯誤之後所採取的適當動作。
 
 [!code-csharp[Logging](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=46-54)]
 

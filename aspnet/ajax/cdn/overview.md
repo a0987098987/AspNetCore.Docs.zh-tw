@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: f875d743cd43087cfa96f3c564335999982632b7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3ec70bb0746d18e453b6e5728b6ba90b2a3e87f3
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819652"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992931"
 ---
 <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax 內容傳遞網路
 ====================
@@ -794,6 +794,20 @@ jQuery 移轉 1.2.0 版
 ### <a name="bootstrap-releases-on-the-cdn"></a>在 CDN 上的啟動程序版本
 
 下列版本[getbootstrap.com](http://getbootstrap.com "getbootstrap.com")啟動程序會裝載在 CDN 上：
+
+#### <a name="bootstrap-version-411"></a>啟動程序版本 4.1.1
+
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-grid.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-grid.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-grid.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-reboot.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-reboot.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap-reboot.css.map
 
 #### <a name="bootstrap-version-400"></a>啟動程序 4.0.0 版
 

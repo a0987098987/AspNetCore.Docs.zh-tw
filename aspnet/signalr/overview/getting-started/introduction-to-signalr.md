@@ -8,15 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 4c34f99674a8213966c44aa434a0e00690b30f44
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2f4353e88287f0716967362e255d94df0c522475
+ms.sourcegitcommit: 260abb706ed17f07a53288d8a0c3e69fc13e7468
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820184"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38966740"
 ---
 <a name="introduction-to-signalr"></a>SignalR 簡介
 ====================
+
+本教學課程中的更新的版本可[此處](/aspnet/core/tutorials/signalr)使用最新版的 Visual Studio。 新的教學課程會使用[ASP.NET Core](/aspnet/core/)，透過本教學課程提供許多增強功能。
+
 藉由[Patrick Fletcher](https://github.com/pfletcher)
 
 > 此文章說明 SignalR 為何，以及一些應建立解決方案。 

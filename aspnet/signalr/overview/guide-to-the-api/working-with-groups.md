@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: c1df772c19bfa89c1d780d09d56c6bc4a79967c6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ea396764bfba0a20347dc231acf40cb36adc1e37
+ms.sourcegitcommit: 260abb706ed17f07a53288d8a0c3e69fc13e7468
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806189"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38966727"
 ---
 <a name="working-with-groups-in-signalr"></a>使用 signalr 的群組
 ====================
@@ -73,7 +73,7 @@ Signalr 的群組提供一種方法將訊息廣播至連線的用戶端的指定
 
 [!code-csharp[Main](working-with-groups/samples/sample2.cs?highlight=1,3)]
 
-一般情況下，您不應該包含`await`呼叫時`Groups.Remove`方法因為您嘗試移除的連線識別碼可能會無法再使用。 在此情況下，`TaskCanceledException`要求逾時之後，就會擲回。如果您的應用程式必須確定使用者已傳送訊息至群組之前移除群組中，您可以加入`await`Groups.Remove，然後 catch 前`TaskCanceledException`可能會擲回的例外狀況。
+一般情況下，您不應該包含`await`呼叫時`Groups.Remove`方法因為您嘗試移除的連線識別碼可能會無法再使用。 在此情況下，`TaskCanceledException`要求逾時之後，就會擲回。如果您的應用程式必須確定使用者已傳送訊息至群組之前移除群組中，您可以加入`await`之前`Groups.Remove`，並接著攔截`TaskCanceledException`可能會擲回的例外狀況。
 
 <a id="call"></a>
 

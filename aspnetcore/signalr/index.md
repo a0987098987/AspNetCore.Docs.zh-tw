@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.date: 07/03/2018
 uid: signalr/index
-ms.openlocfilehash: 7ed4f0bbd7ea21550d19eb0cf8db03e42e56becf
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 07846272ab7bd913648a093febb1c331533e2031
+ms.sourcegitcommit: 260abb706ed17f07a53288d8a0c3e69fc13e7468
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938507"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38966753"
 ---
 # <a name="aspnet-core-signalr"></a>ASP.NET Core SignalR
 
@@ -27,6 +27,8 @@ ms.locfileid: "37938507"
   * [JavaScript 用戶端](xref:signalr/javascript-client)
   * [.NET 用戶端](xref:signalr/dotnet-client)
   * [WebPack 和 TypeScript](xref:tutorials/signalr-typescript-webpack)
+  * [JavaScript API](/javascript/api/?view=signalr-js-latest)
+
 * [組態](xref:signalr/configuration)
 * [MessagePack 中樞通訊協定](xref:signalr/messagepackhubprotocol)
 * [資料流](xref:signalr/streaming)

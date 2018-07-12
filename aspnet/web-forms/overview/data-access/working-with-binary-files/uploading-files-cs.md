@@ -132,7 +132,7 @@ Categories 資料表目前有只有四個資料行： `CategoryID`， `CategoryN
 藉由加入這些兩個資料行，來啟動`CategoriesDataTable`。 以滑鼠右鍵按一下`CategoriesDataTable`s 標頭中，從內容功能表中選取 新增，然後選擇 資料行選項。 這會建立新`DataColumn`名為 DataTable 中`Column1`。 重新命名此資料行`Picture`。 從 [屬性] 視窗中，設定`DataColumn`s`DataType`屬性設`System.Byte[]`（這不是下拉式清單中的選項; 您需要在輸入時）。
 
 
-[![建立 DataColumn 名為圖片的資料類型是 System.Byte]](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
+[![建立 DataColumn 名為圖片的資料類型是 System.Byte](uploading-files-cs/_static/image6.gif)](uploading-files-cs/_static/image7.png)
 
 **圖 6**： 建立`DataColumn`具名`Picture`其`DataType`會`System.Byte[]`([按一下以檢視完整大小的影像](uploading-files-cs/_static/image8.png))
 

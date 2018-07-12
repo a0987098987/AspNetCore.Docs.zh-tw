@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 12/15/2017
 uid: fundamentals/logging/index
-ms.openlocfilehash: 969ad303c3fee06aa40d43140153ffbf58b735db
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: dde01129bb7ea29544c4c416dfe9b5522a738d01
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126283"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938481"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -29,6 +29,8 @@ ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供�
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ::: moniker-end
+
+如需使用 IIS 裝載時的 stdout 記錄資訊，請參閱<xref:host-and-deploy/iis/troubleshoot#aspnet-core-module-stdout-log>。 如需使用 Azure App Service 的 stdout 記錄資訊，請參閱 <xref:host-and-deploy/azure-apps/troubleshoot#aspnet-core-module-stdout-log>。
 
 ## <a name="how-to-create-logs"></a>如何建立記錄
 

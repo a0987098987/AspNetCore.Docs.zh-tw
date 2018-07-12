@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/06/2018
 uid: web-api/index
-ms.openlocfilehash: 84e4a51a8a8ab031752ef054cba834bd202a4927
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.openlocfilehash: 0ff0bbc629930666d46247d6c1257fac8bfaf7c2
+ms.sourcegitcommit: 260abb706ed17f07a53288d8a0c3e69fc13e7468
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894211"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38966805"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建置 Web API
 
@@ -87,7 +87,7 @@ ASP.NET Core 2.1 新增了 [[ApiController]](/dotnet/api/microsoft.aspnetcore.mv
 
 不含 `[ApiController]` 屬性時，即會明確定義繫結來源屬性。 在下列範例中，`[FromQuery]` 屬性表示 `discontinuedOnly` 參數值是在要求 URL 查詢字串中提供：
 
-[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/ProductsController.cs?name=snippet_BindingSourceAttributes&highlight=2)]
+[!code-csharp[](../web-api/define-controller/samples/WebApiSample.Api/Controllers/ProductsController.cs?name=snippet_BindingSourceAttributes&highlight=3)]
 
 系統會依據動作參數的預設資料來源，套用推斷規則。 然後，這些規則會設定繫結來源，否則就可能要由您手動將其套用至動作參數。 繫結來源屬性的行為如下所示：
 

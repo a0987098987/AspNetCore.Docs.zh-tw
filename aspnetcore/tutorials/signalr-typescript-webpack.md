@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: e4b00fa61ea0becba7d678a0b7c94d2d30f06740
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: 03cb0c8ca2f6e4b48ebcbb4af0ed9c42c55f419a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126446"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808317"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -39,7 +39,7 @@ ms.locfileid: "37126446"
 
 * [.NET Core SDK 2.1 或更新版本](https://www.microsoft.com/net/download/all)
 * 具有 [npm](https://www.npmjs.com/) 的 [Node.js](https://nodejs.org/)
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7 版或更新版本，包含 **ASP.NET 及網頁程式開發**工作負載
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 版或更新版本，包含 **ASP.NET 及網頁程式開發**工作負載
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -236,7 +236,7 @@ dotnet new web -o SignalRWebPack
 
 1. 開啟另一個瀏覽器執行個體 (任何瀏覽器)。 在網址列中貼上 URL。
 
-1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在這兩個頁面上。
+1. 選擇其中一個瀏覽器，在 [訊息] 文字方塊中鍵入某些內容，然後按一下 [傳送] 按鈕。 唯一使用者名稱和訊息會立即顯示在兩個頁面上。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 

@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 40d297257895a4defeb89cef9c5ec6deea64a985
-ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
+ms.openlocfilehash: 879f31a5916646a4d63f9f503173dc9ff4c53434
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033351"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894149"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-.NET 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 本主題包含 ASP.NET Core 泛型主機 ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder))，該主機適用於裝載未處理 HTTP 要求的應用程式。 如需 Web 主機 ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) 的說明，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
+.NET 應用程式會設定並啟動「主機」。 主機負責應用程式啟動和存留期管理。 本主題包含 ASP.NET Core 泛型主機 ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder))，該主機適用於裝載未處理 HTTP 要求的應用程式。 如需 Web 主機 ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)) 的說明，請參閱 <xref:fundamentals/host/web-host>。
 
 泛型主機的目標是將 HTTP 管線與 Web 主機 API 分離，以允許更廣泛的主機陣列案例。 傳訊、背景工作及其他以泛型主機為基礎的非 HTTP 工作負載都可利用跨領域功能，例如設定、相依性插入 (DI) 和記錄。
 
@@ -58,7 +58,7 @@ ms.locfileid: "37033351"
 
 預設不會新增環境變數組態。 請在主機建立器上呼叫 [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables)，以從環境變數設定主機。 `AddEnvironmentVariables` 可接受選擇性的使用者定義前置詞。 範例應用程式會使用前置詞 `PREFIX_`。 讀取環境變數時，就會移除前置詞。 在設定範例應用程式的主機時，`PREFIX_ENVIRONMENT` 的環境變數值會變成 `environment` 索引鍵的主機組態值。
 
-在開發期間使用 [Visual Studio](https://www.visualstudio.com/) 或以 `dotnet run` 執行應用程式時，可能會在 *Properties/launchSettings.json* 檔案中設定環境變數。 在 [Visual Studio Code](https://code.visualstudio.com/) 中，可以在開發期間於 *.vscode/launch.json* 檔案中設定環境變數。 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+在開發期間使用 [Visual Studio](https://www.visualstudio.com/) 或以 `dotnet run` 執行應用程式時，可能會在 *Properties/launchSettings.json* 檔案中設定環境變數。 在 [Visual Studio Code](https://code.visualstudio.com/) 中，可以在開發期間於 *.vscode/launch.json* 檔案中設定環境變數。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 `ConfigureHostConfiguration` 可以多次呼叫，其結果是累加的。 主機使用設定最後一個值的任何選項。
 
@@ -76,6 +76,21 @@ ms.locfileid: "37033351"
 ### <a name="extension-method-configuration"></a>擴充方法組態
 
 在 `IHostBuilder` 實作上呼叫擴充方法可設定內容根目錄和環境。
+
+#### <a name="application-key-name"></a>應用程式索引鍵 (名稱)
+
+[IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) 屬性是在主機建構期間從主機設定當中設定。 若要明確設定該值，請使用 [HostDefaults.ApplicationKey](/dotnet/api/microsoft.extensions.hosting.hostdefaults.applicationkey)：
+
+**索引鍵**：applicationName  
+**類型**：*string*  
+**預設**：包含應用程式進入點的組件名稱。  
+**設定使用**：`UseSetting`  
+**環境變數**：`<PREFIX_>APPLICATIONKEY` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.ApplicationKey, "CustomApplicationName")
+```
 
 #### <a name="content-root"></a>內容根目錄
 
@@ -128,11 +143,19 @@ ms.locfileid: "37033351"
 > [!NOTE]
 > [AddConfiguration](/dotnet/api/microsoft.extensions.configuration.chainedbuilderextensions.addconfiguration) 擴充方法目前無法剖析 [GetSection](/dotnet/api/microsoft.extensions.configuration.iconfiguration.getsection) 傳回的組態區段 (例如 `.AddConfiguration(Configuration.GetSection("section"))`)。 `GetSection` 方法會將組態索引鍵篩選到要求的區段，但保留索引鍵上的區段名稱 (例如 `section:Logging:LogLevel:Default`)。 `AddConfiguration` 方法預期完全符合組態索引鍵 (例如 `Logging:LogLevel:Default`)。 存在於索引鍵上的區段名稱可避免區段的值設定應用程式。 這個問題將在近期的版本中解決。 如需詳細資訊和因應措施，請參閱 [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839) (將設定區段傳遞到 WebHostBuilder.UseConfiguration 會使用完整索引鍵)。
 
+若要將設定檔移至輸出目錄，請在專案檔中將設定檔指定為 [MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items)。 範例應用程式使用下列的 **&lt;Content:&gt;** 項目，移動其 JSON 應用程式設定檔和 *hostsettings.json*：
+
+```xml
+<ItemGroup>
+  <Content Include="**\*.json" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+```
+
 ## <a name="configureservices"></a>ConfigureServices
 
 [ConfigureServices](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices) 會將服務新增至應用程式的[相依性插入](xref:fundamentals/dependency-injection)容器。 `ConfigureServices` 可以多次呼叫，其結果是累加的。
 
-託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。 如需詳細資訊，請參閱[搭配託管服務的背景工作](xref:fundamentals/host/hosted-services)主題。
+託管服務是具有背景工作邏輯的類別，能夠實作 [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice) 介面。 如需詳細資訊，請參閱<xref:fundamentals/host/hosted-services>。
 
 [範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/)使用 `AddHostedService` 擴充方法，將存留期事件 `LifetimeEventsHostedService` 和計時背景工作 `TimedHostedService` 等服務新增至應用程式：
 
@@ -382,7 +405,7 @@ public class MyClass
 }
 ```
 
-如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
+如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 ## <a name="iapplicationlifetime-interface"></a>IApplicationLifetime 介面
 
@@ -421,5 +444,5 @@ public class MyClass
 
 ## <a name="additional-resources"></a>其他資源
 
-* [使用託管服務的背景工作](xref:fundamentals/host/hosted-services)
+* <xref:fundamentals/host/hosted-services>
 * [GitHub 上的主控存放庫範例](https://github.com/aspnet/Hosting/tree/release/2.1/samples)

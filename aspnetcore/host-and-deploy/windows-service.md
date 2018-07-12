@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 718cc83bb29c0cff323853d22c107e00616b1dd1
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: bce09a500160f0bf13926786d277f8b1e88c1bf8
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126231"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894253"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -40,7 +40,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
    * 呼叫 [host.RunAsService](/dotnet/api/microsoft.aspnetcore.hosting.windowsservices.webhostwindowsserviceextensions.runasservice)，而非 `host.Run`。
 
-   * 如果程式碼呼叫 `UseContentRoot`，請使用應用程式發佈位置的路徑，不要使用 `Directory.GetCurrentDirectory()`。
+   * 呼叫 [UseContentRoot](xref:fundamentals/host/web-host#content-root) 並使用應用程式發佈位置的路徑，不要使用 `Directory.GetCurrentDirectory()`。
 
      ::: moniker range=">= aspnetcore-2.0"
 

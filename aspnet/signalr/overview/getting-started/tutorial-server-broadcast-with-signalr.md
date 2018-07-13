@@ -4,19 +4,16 @@ title: 教學課程： 伺服器廣播與 SignalR 2 |Microsoft Docs
 author: tdykstra
 description: 本教學課程會示範如何建立會使用 ASP.NET SignalR 2 提供伺服器廣播的功能的 web 應用程式。 伺服器廣播表示該 commun...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/13/2014
-ms.topic: article
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: ff1eeee407ac7628afd587ca8b9102d0191ea356
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 0e86fbea9c5668e20fce7a494c76c52f9c089c09
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367922"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820693"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>教學課程： 伺服器廣播與 SignalR 2
 ====================
@@ -121,48 +118,48 @@ ms.locfileid: "37367922"
 
 ### <a name="create-the-stockticker-and-stocktickerhub-classes"></a>建立 Stockservices.asmx 和 StockTickerHub 類別
 
-您將使用 SignalR 中樞 API 來處理伺服器到用戶端互動。 StockTickerHub 類別衍生自 SignalR Hub 類別會處理來自用戶端接收連線和方法呼叫。 您也需要維護的內建資料並執行的計時器物件，以定期觸發價格更新，不需依賴用戶端連接。 因為暫時性中樞執行個體，您無法暫停在中樞類別中，這些函式。 針對任何指定的連接，SignalR 會選擇最佳的伺服器和用戶端支援的傳輸方法。 開啟StockTicker.js並新增一行程式碼，若要啟用記錄之前初始化的連線，在檔案結尾處的程式碼：
+您將使用 SignalR 中樞 API 來處理伺服器到用戶端互動。 StockTickerHub 類別衍生自 SignalR Hub 類別會處理來自用戶端接收連線和方法呼叫。 您也需要維護的內建資料並執行的計時器物件，以定期觸發價格更新，不需依賴用戶端連接。 因為暫時性中樞執行個體，您無法暫停在中樞類別中，這些函式。 在中樞內，例如連線和伺服器從用戶端呼叫的每個作業建立中樞類別執行個體。 因此，必須執行在不同的類別，您將會命名為 Stockservices.asmx 的機制，可讓內建的資料、 更新價格，接著在廣播價格更新。
 
-![開啟瀏覽器的開發人員工具 視窗，然後選取主控台，以查看記錄檔。](tutorial-server-broadcast-with-signalr/_static/image5.png)
+![從 Stockservices.asmx 的廣播](tutorial-server-broadcast-with-signalr/_static/image5.png)
 
-您可能必須重新整理頁面，以查看 Signalr 交涉新連線的傳輸方法的記錄檔。 如果您在 Windows 8 (IIS 8) 上執行 Internet Explorer 10，傳輸方法是 WebSockets。 IE 10 IIS 8 主控台 如果您在 Windows 7 (IIS 7.5) 上執行 Internet Explorer 10，傳輸方法是 iframe。
+您只想 Stockservices.asmx 類別，因此您必須設定為參考從每個 StockTickerHub 執行個體的單一 Stockservices.asmx 執行個體的伺服器上，執行一個執行個體。 Stockservices.asmx 類別必須能夠向用戶端廣播，因為它具有內建的資料，以及觸發更新，但 Stockservices.asmx 不 Hub 類別。 因此，Stockservices.asmx 類別必須取得 SignalR 中樞的連接內容物件的參考。 它可以接著使用 SignalR 連線內容物件廣播給用戶端。
 
-1. IE 10 個主控台中，IIS 7.5
-2. 在 Firefox 中安裝 Firebug 增益集以取得主控台視窗。 如果您在 Windows 8 (IIS 8) 來執行 Firefox 19，傳輸方法是 WebSockets。
+1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後按一下**新增 |SignalR Hub 類別 (v2)**。
+2. 命名新的中樞*StockTickerHub.cs*，然後按一下**新增**。 SignalR NuGet 封裝會新增至您的專案。
 3. 下列程式碼取代範本程式碼：
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample2.cs)]
 
-    Firefox 19 IIS 8 Websockets 如果您在 Windows 7 (IIS 7.5) 上執行 Firefox 19，傳輸方法就會是伺服器傳送事件。 Firefox 19 IIS 7.5 主控台 Stockservices.asmx 應用程式會安裝`IEnumerable<Stock>`Microsoft.AspNet.SignalR.Sample NuGet 套件包含您剛從頭開始建立簡化版本較多的功能。 在本節的教學課程中，您要安裝 NuGet 套件，並檢閱新功能，以及實作它們的程式碼。 如果您不需要執行本教學課程的先前步驟中安裝套件，您必須新增 OWIN 啟動類別至您的專案。
+    [中樞](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.hub(v=vs.111).aspx)類別用來定義用戶端可以呼叫在伺服器的方法。 您要定義一種方法： `GetAllStocks()`。 用戶端一開始會連接到伺服器，它會呼叫這個方法，以取得所有與目前的價格股票的清單。 此方法可以同步執行，並傳回`IEnumerable<Stock>`因為它會從記憶體中傳回資料。 如果方法必須取得資料所做的事會牽涉到等待，例如資料庫尋查 」 或 「 web 服務呼叫，您會指定`Task<IEnumerable<Stock>>`當做傳回值，以啟用非同步處理。 如需詳細資訊，請參閱 < [ASP.NET SignalR 中樞 API 指南-Server-以非同步方式執行的時機](../guide-to-the-api/hubs-api-guide-server.md#asyncmethods)。
 
-    此步驟會說明適用於 NuGet 套件的 readme.txt 檔案中。 安裝 SignalR.Sample NuGet 套件
+    HubName 屬性會指定中樞上的用戶端的 JavaScript 程式碼的參考方式。 如果您未使用這個屬性在用戶端上的預設名稱是類別名稱，在此情況下會 stockTickerHub 的 camel 案例版本。
 
-    在 方案總管，以滑鼠右鍵按一下專案，然後按一下管理 NuGet 套件。 在 管理 NuGet 套件 對話方塊中，按一下線上，輸入SignalR.Sample中線上搜尋方塊，然後再按一下  安裝中SignalR.Sample封裝。
-4. 安裝 SignalR.Sample 套件
+    因為您稍後就會看到當您建立 Stockservices.asmx 類別，該類別的單一執行個體被建立在其靜態執行個體屬性中。 Stockservices.asmx 的單一執行個體保留多少個用戶端連線或中斷連線，無論記憶體中，而且該執行個體是 GetAllStocks 方法用來傳回目前的庫存資訊。
+4. 在專案資料夾中建立新的類別檔案，將其命名*StockTicker.cs*，並以下列程式碼取代範本程式碼：
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample3.cs)]
 
-    在 [方案總管] 中，展開SignalR.Sample安裝 SignalR.Sample 封裝所建立的資料夾。
+    因為多個執行緒會執行為 Stockservices.asmx 的程式碼的相同執行個體，Stockservices.asmx 類別必須是 threadsafe。
 
-    ### <a name="storing-the-singleton-instance-in-a-static-field"></a>在  SignalR.Sample資料夾中，以滑鼠右鍵按一下StockTicker.html，然後按一下 設定為起始頁。
+    ### <a name="storing-the-singleton-instance-in-a-static-field"></a>將單一執行個體儲存在靜態欄位
 
-    安裝 SignalR.Sample NuGet 套件可能會變更您在的 jQuery 版本您\_指令碼資料夾。 [新[StockTicker.html](https://msdn.microsoft.com/library/dd997286.aspx)套件會安裝中的檔案\_SignalR.Sample資料夾將會是套件會安裝，但如果您想要執行您的原始的jQuery版本同步StockTicker.html一次檔案中，您可能必須先更新指令碼標記中的 jQuery 參考。
+    程式碼會初始化靜態\_支援的類別和此執行個體的執行個體屬性的執行個體欄位是唯一的執行個體，可以建立的類別，因為建構函式已標示為私用。 [延遲初始設定](https://msdn.microsoft.com/library/dd997286.aspx)使用於\_執行個體欄位，不會基於效能的考量，但若要確定執行個體的建立是 threadsafe。
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample4.cs)]
 
-    方格中稍早所見，除了完整股票行情指示器應用程式會顯示可顯示相同的股票資料的水平捲動視窗。
+    用戶端連線到伺服器，每次在個別的執行緒中執行的 StockTickerHub 類別的新執行個體取得 Stockservices.asmx 的單一執行個體從 StockTicker.Instance 靜態屬性，如您稍早在 StockTickerHub 類別中所見。
 
-    ### <a name="storing-stock-data-in-a-concurrentdictionary"></a>當您執行第一次應用程式時，「 市場 」 的動作 「 關閉 」，您會看到靜態方格和不捲動的股票行情指示器視窗。
+    ### <a name="storing-stock-data-in-a-concurrentdictionary"></a>在 ConcurrentDictionary 中儲存內建的資料
 
-    Stockservices.asmx 畫面開始 當您按一下 開放性市場，則即時股票行情即時看板開始的水平捲動方塊，且伺服器會開始定期廣播隨機的方式上的股票價格變更。
+    建構函式初始化\_具備一些內建資料範例及 GetAllStocks 股票集合會傳回股票。 如稍早所見，StockTickerHub.GetAllStocks 也就是在用戶端可以呼叫 Hub 類別中的伺服器方法接著會傳回這個集合的股票。
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample5.cs)]
 
     [!code-csharp[Main](tutorial-server-broadcast-with-signalr/samples/sample6.cs)]
 
-    每次股票的價格變更，同時[即時股票表格](https://msdn.microsoft.com/library/dd287191.aspx)格線和即時股票行情即時看板方塊會更新。 具有綠色背景，正股票的價格變動時，會顯示股票和股票時變更為負數，會顯示具有紅色背景。
+    股票集合指[ConcurrentDictionary](https://msdn.microsoft.com/library/dd287191.aspx)執行緒安全的型別。 或者，您可以使用[字典](https://msdn.microsoft.com/library/xfhwa508.aspx)物件，並明確地鎖定字典，對它進行變更時。
 
-    開啟 Stockservices.asmx 的應用程式市集 在實際的應用程式中您會使用後端資料存放區，例如資料庫。
+    此範例應用程式，它是 [確定] 儲存在記憶體中的應用程式資料，並處置 Stockservices.asmx 的執行個體時，會遺失資料。 在實際的應用程式中您會使用後端資料存放區，例如資料庫。
 
     ### <a name="periodically-updating-stock-prices"></a>定期更新股票價格
 
@@ -196,7 +193,7 @@ ms.locfileid: "37367922"
 
 ### <a name="register-the-signalr-route"></a>註冊 SignalR 的路由
 
-伺服器必須知道要攔截，並將導向至 SignalR 的 URL。 若要這樣做，請將 OWIN 啟動類別。
+伺服器必須知道要攔截，並將導向至 SignalR 的 URL。 若要這樣做，請新增 OWIN 啟動類別：
 
 1. 在 **方案總管**，以滑鼠右鍵按一下專案，然後按一下 **新增 |OWIN 啟動類別**。 將類別命名為**Startup.cs**。
 2. 中的程式碼取代**Startup.cs**取代下列項目。
@@ -299,7 +296,7 @@ SignalR 有內建記錄功能，您可以讓用戶端上，以協助疑難排解
 
     如果您在 Windows 7 (IIS 7.5) 上執行 Internet Explorer 10，傳輸方法是 iframe。
 
-    ![IE 10 個主控台中，IIS 7.5](tutorial-server-broadcast-with-signalr/_static/image10.png)
+    ![IE 10 Console, IIS 7.5](tutorial-server-broadcast-with-signalr/_static/image10.png)
 
     在 Firefox 中安裝 Firebug 增益集以取得主控台視窗。 如果您在 Windows 8 (IIS 8) 來執行 Firefox 19，傳輸方法是 WebSockets。
 

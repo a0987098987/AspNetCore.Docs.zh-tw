@@ -258,6 +258,8 @@
 ### [JavaScript API](/javascript/api/?view=signalr-js-latest)
 
 ## [組態](xref:signalr/configuration)
+## [驗證與授權](xref:signalr/authn-and-authz)
+## [安全性考量](xref:signalr/security)
 ## [MessagePack 中樞通訊協定](xref:signalr/messagepackhubprotocol)
 ## [資料流](xref:signalr/streaming)
 ## [不同 SignalR 版本間的差異](xref:signalr/version-differences)

@@ -8,11 +8,11 @@ ms.date: 11/03/2017
 services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
 ms.openlocfilehash: 526ceef469d473706f39cdc3ee645280e99315b1
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279242"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38126956"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a>使用命令列工具將 ASP.NET Core 應用程式發行到 Azure
 

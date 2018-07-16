@@ -5,12 +5,12 @@ description: 在本教學課程中，您將開始使用 EF Core 移轉功能來�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 15e3bc57e98b249cbefc394bbe1a136a709a03a7
-ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
+ms.openlocfilehash: 2051f55bfa7a9582486df78ec91315f0b03cb1e8
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37089954"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938374"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
 
@@ -24,7 +24,7 @@ ms.locfileid: "37089954"
 
 在本教學課程中，會使用 EF Core 移轉功能來管理資料模型變更。
 
-若您遭遇到無法解決的問題，請下載[完整應用程式](
+若您遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 開發新的應用程式時，資料模型經常變更。 每次模型變更時，模型就與資料庫不同步。 本教學課程從設定 Entity Framework 來建立不存在的資料庫開始。 每次資料模型變更時：
@@ -43,7 +43,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)�
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在套件管理員主控台 (PMC) 中，執行下列命令：
+在 [套件管理員主控台] (PMC) 中，執行下列命令：
 
 ```PMC
 Drop-Database

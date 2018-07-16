@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages-mac/da1
 ms.openlocfilehash: 9da596fb1ea422845333dc8db10c4c13243378b9
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274573"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38184219"
 ---
 [!INCLUDE [model1](../../includes/RP/da1.md)]
 

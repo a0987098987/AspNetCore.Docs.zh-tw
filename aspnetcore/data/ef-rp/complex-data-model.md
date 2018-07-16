@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: d96ce7a3f81c54d3c4c0fe26d3fb588d9ce2e0ce
-ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37089993"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38127098"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -31,7 +31,7 @@ ms.locfileid: "37089993"
 
 ![實體圖表](complex-data-model/_static/diagram.png)
 
-若您遭遇到無法解決的問題，請下載[完整應用程式](
+若您遇到無法解決的問題，請下載[完整應用程式](
 https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)。
 
 ## <a name="customize-the-data-model-with-attributes"></a>使用屬性自訂資料模型

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app-mac/adding-view
 ms.openlocfilehash: 191056a928883fa89d7234f4c85979946a884000
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279188"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38216656"
 ---
 [!INCLUDE [adding-view](../../includes/mvc-intro/adding_view1.md)]
 

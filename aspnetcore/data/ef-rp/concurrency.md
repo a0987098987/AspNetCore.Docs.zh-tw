@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: c6ec07eb7bf484490bd7730edc44bf2d89e8fb2a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272746"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38150479"
 ---
 zh-tw/
 

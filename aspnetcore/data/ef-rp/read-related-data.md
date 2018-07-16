@@ -5,12 +5,12 @@ description: 在此教學課程中，您可以讀取並顯示相關資料-- 也�
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 4e0aa7151cc54f666202458ba60500a7c04f5ebb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fa3147cc4ad121784911eef802e04ca91f16448f
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276756"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063308"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -74,19 +74,11 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * 執行下列命令：
 
   ```console
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
 上述命令會 Scaffold `Course` 模型。 在 Visual Studio 中開啟專案。
-
-建置專案。 建置時會產生如下錯誤：
-
-`1>Pages/Courses/Index.cshtml.cs(26,37,26,43): error CS1061: 'SchoolContext' does not
- contain a definition for 'Course' and no extension method 'Course' accepting a first
- argument of type 'SchoolContext' could be found (are you missing a using directive or
- an assembly reference?)`
-
- 將 `_context.Course` 全域變更為 `_context.Courses` (亦即，在 `Course` 的名稱上新增一個 "s")。 找到並更新 7 個項目。
 
 開啟 *Pages/Courses/Index.cshtml.cs* 並檢查 `OnGetAsync` 方法。 Scaffolding 引擎已針對 `Department` 導覽屬性指定積極式載入。 `Include` 方法可指定積極式載入。
 

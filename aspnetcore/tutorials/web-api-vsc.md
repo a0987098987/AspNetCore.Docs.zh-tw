@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 05/08/2018
 uid: tutorials/web-api-vsc
 ms.openlocfilehash: 4c41c949a9b5ca8db8928a0a53aff928fd7c8a4e
-ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36297247"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38216233"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>使用 ASP.NET Core 和 Visual Studio Code 來建立 Web API
 

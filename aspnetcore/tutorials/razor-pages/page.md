@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 09/27/2017
 uid: tutorials/razor-pages/page
 ms.openlocfilehash: 65d3b045d831621ec4f8b385b2aba16722809f67
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278967"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38214911"
 ---
 [!INCLUDE [model1](../../includes/RP/page1.md)]
 

@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 08/27/2017
 uid: tutorials/razor-pages-vsc/model
 ms.openlocfilehash: 3552b541c43375aef43838800855ec63e7fed372
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894039"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38152967"
 ---
 # <a name="add-a-model-to-an-aspnet-core-razor-pages-app-with-visual-studio-code"></a>使用 Visual Studio Code 將模型新增至 ASP.NET Core Razor 頁面應用程式
 

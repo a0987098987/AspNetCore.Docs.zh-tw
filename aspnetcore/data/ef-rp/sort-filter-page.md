@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
 ms.openlocfilehash: fce524a5cb386fbf286907be42e920be13115ca6
-ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37089863"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38216274"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 

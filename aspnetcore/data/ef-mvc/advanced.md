@@ -6,11 +6,11 @@ ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
 ms.openlocfilehash: be44ef115ce72e1571bbdea2c609ea6c53792c59
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093071"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38194038"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC 與 EF Core - 進階 - 10/10
 

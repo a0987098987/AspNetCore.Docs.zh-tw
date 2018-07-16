@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內�
 ms.author: riande
 ms.date: 03/14/2017
 uid: mvc/controllers/routing
-ms.openlocfilehash: 795ca13674f85b6e8c1f84718c225613a7a7125a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 081332fd1007db5292a8812fc6ae934cb07dffb5
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278407"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952977"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 

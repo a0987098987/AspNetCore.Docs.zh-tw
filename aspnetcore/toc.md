@@ -18,7 +18,6 @@
 ### [新增搜尋](xref:tutorials/razor-pages/search)
 ### [新增欄位](xref:tutorials/razor-pages/new-field)
 ### [新增驗證](xref:tutorials/razor-pages/validation)
-### [上傳檔案](xref:tutorials/razor-pages/uploading-files)
 ## [建立即時的 SignalR Web 應用程式](xref:tutorials/signalr)
 ## [使用 TypeScript 建立 SignalR Web 應用程式](xref:tutorials/signalr-typescript-webpack)
 ## [建立 MVC web 應用程式](tutorials/first-mvc-app/index.md)
@@ -159,6 +158,7 @@
 ## [Razor 頁面的篩選條件方法](xref:razor-pages/filter)
 ## [建立 Razor 類別庫](xref:razor-pages/ui-class)
 ## [路由及應用程式慣例](xref:razor-pages/razor-pages-conventions)
+## [將檔案上傳至 Razor Page](xref:razor-pages/upload-files)
 ## [Razor SDK](xref:razor-pages/sdk)
 
 # [MVC](xref:mvc/overview)

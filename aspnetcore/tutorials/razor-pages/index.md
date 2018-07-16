@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: dea67cd16c9ad6bdf2b43ff13ae72645528b3e13
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9d32a7becb291697313dc28925ab94b452385fc7
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275628"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992837"
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>使用 ASP.NET Core 建立 Razor Pages Web 應用程式
 
@@ -25,4 +25,5 @@ ms.locfileid: "36275628"
 1. [新增搜尋](xref:tutorials/razor-pages/search)
 1. [新增欄位](xref:tutorials/razor-pages/new-field)
 1. [新增驗證](xref:tutorials/razor-pages/validation)
-1. [上傳檔案](xref:tutorials/razor-pages/uploading-files)
+
+完成教學課程之後，若要新增檔案上傳功能至範例應用程式，請參閱 <xref:razor-pages/upload-files>。

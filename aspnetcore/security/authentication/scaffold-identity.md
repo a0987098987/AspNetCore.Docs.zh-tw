@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 5/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: cf6544d8b671f026c8466fa8dff506027b64cf1f
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 07163941d0bd1fea6f9b3d9867536580d8a9e9d8
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38217678"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063269"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>ASP.NET Core 專案中的 scaffold 身分識別
 
@@ -64,6 +64,10 @@ dotnet ef database update
 ### <a name="migrations-useauthentication-and-layout"></a>移轉、 UseAuthentication 和版面配置
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
+
+<a name="useauthentication"></a>
+
+### <a name="enable-authentication"></a>啟用驗證
 
 在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:
 

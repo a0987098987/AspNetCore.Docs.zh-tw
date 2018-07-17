@@ -6,32 +6,32 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 5/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: cf6544d8b671f026c8466fa8dff506027b64cf1f
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 07163941d0bd1fea6f9b3d9867536580d8a9e9d8
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38217678"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063269"
 ---
-# <a name="scaffold-identity-in-aspnet-core-projects"></a><span data-ttu-id="1cfc1-103">ASP.NET Core 專案中的 scaffold 身分識別</span><span class="sxs-lookup"><span data-stu-id="1cfc1-103">Scaffold Identity in ASP.NET Core projects</span></span>
+# <a name="scaffold-identity-in-aspnet-core-projects"></a><span data-ttu-id="aed44-103">ASP.NET Core 專案中的 scaffold 身分識別</span><span class="sxs-lookup"><span data-stu-id="aed44-103">Scaffold Identity in ASP.NET Core projects</span></span>
 
-<span data-ttu-id="1cfc1-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="1cfc1-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="aed44-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="aed44-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="1cfc1-105">ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-105">ASP.NET Core 2.1 and later provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="1cfc1-106">包含身分識別應用程式，可以套用到建構者選擇性地加入 包含在識別 Razor 類別庫 (RCL) 的原始程式碼。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-106">Applications that include Identity can apply the scaffolder to selectively add the source code contained in the Identity Razor Class Library (RCL).</span></span> <span data-ttu-id="1cfc1-107">建議您產生原始程式碼，以便能夠修改程式碼並變更行為。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-107">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="1cfc1-108">例如，您可以指示 Scaffolder 產生註冊使用的程式碼。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-108">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="1cfc1-109">產生的程式碼優先於身分識別 RCL 中的相同程式碼。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-109">Generated code takes precedence over the same code in the Identity RCL.</span></span> <span data-ttu-id="1cfc1-110">若要完整掌控 UI，並使用預設 RCL，請參閱下節[建立完整的身分識別 UI 來源](#full)。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-110">To gain full control of the UI and not use the default RCL, see the section [Create full identity UI source](#full).</span></span>
+<span data-ttu-id="aed44-105">ASP.NET Core 2.1 和更新版本可[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。</span><span class="sxs-lookup"><span data-stu-id="aed44-105">ASP.NET Core 2.1 and later provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="aed44-106">包含身分識別應用程式，可以套用到建構者選擇性地加入 包含在識別 Razor 類別庫 (RCL) 的原始程式碼。</span><span class="sxs-lookup"><span data-stu-id="aed44-106">Applications that include Identity can apply the scaffolder to selectively add the source code contained in the Identity Razor Class Library (RCL).</span></span> <span data-ttu-id="aed44-107">建議您產生原始程式碼，以便能夠修改程式碼並變更行為。</span><span class="sxs-lookup"><span data-stu-id="aed44-107">You might want to generate source code so you can modify the code and change the behavior.</span></span> <span data-ttu-id="aed44-108">例如，您可以指示 Scaffolder 產生註冊使用的程式碼。</span><span class="sxs-lookup"><span data-stu-id="aed44-108">For example, you could instruct the scaffolder to generate the code used in registration.</span></span> <span data-ttu-id="aed44-109">產生的程式碼優先於身分識別 RCL 中的相同程式碼。</span><span class="sxs-lookup"><span data-stu-id="aed44-109">Generated code takes precedence over the same code in the Identity RCL.</span></span> <span data-ttu-id="aed44-110">若要完整掌控 UI，並使用預設 RCL，請參閱下節[建立完整的身分識別 UI 來源](#full)。</span><span class="sxs-lookup"><span data-stu-id="aed44-110">To gain full control of the UI and not use the default RCL, see the section [Create full identity UI source](#full).</span></span>
 
-<span data-ttu-id="1cfc1-111">執行的應用程式**不**包含驗證可以套用 scaffolder 新增 RCL 識別套件。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-111">Applications that do **not** include authentication can apply the scaffolder to add the RCL Identity package.</span></span> <span data-ttu-id="1cfc1-112">您可以選擇選取要產生的身分識別程式碼。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-112">You have the option of selecting Identity code to be generated.</span></span>
+<span data-ttu-id="aed44-111">執行的應用程式**不**包含驗證可以套用 scaffolder 新增 RCL 識別套件。</span><span class="sxs-lookup"><span data-stu-id="aed44-111">Applications that do **not** include authentication can apply the scaffolder to add the RCL Identity package.</span></span> <span data-ttu-id="aed44-112">您可以選擇選取要產生的身分識別程式碼。</span><span class="sxs-lookup"><span data-stu-id="aed44-112">You have the option of selecting Identity code to be generated.</span></span>
 
-<span data-ttu-id="1cfc1-113">雖然框架產生大部分的必要的程式碼，您必須更新專案，以完成程序。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-113">Although the scaffolder generates most of the necessary code, you'll have to update your project to complete the process.</span></span> <span data-ttu-id="1cfc1-114">本文件說明完成識別 scaffolding 更新所需的步驟。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-114">This document explains the steps needed to complete an Identity scaffolding update.</span></span>
+<span data-ttu-id="aed44-113">雖然框架產生大部分的必要的程式碼，您必須更新專案，以完成程序。</span><span class="sxs-lookup"><span data-stu-id="aed44-113">Although the scaffolder generates most of the necessary code, you'll have to update your project to complete the process.</span></span> <span data-ttu-id="aed44-114">本文件說明完成識別 scaffolding 更新所需的步驟。</span><span class="sxs-lookup"><span data-stu-id="aed44-114">This document explains the steps needed to complete an Identity scaffolding update.</span></span>
 
-<span data-ttu-id="1cfc1-115">執行身分識別框架時， *ScaffoldingReadme.txt*專案目錄中建立檔案。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-115">When the Identity scaffolder is run, a *ScaffoldingReadme.txt* file is created in the project directory.</span></span> <span data-ttu-id="1cfc1-116">*ScaffoldingReadme.txt*檔案包含需要的完成識別 scaffolding 更新內容的一般指示。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-116">The *ScaffoldingReadme.txt* file contains general instructions on what's needed to complete the Identity scaffolding update.</span></span> <span data-ttu-id="1cfc1-117">本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-117">This document contains more complete instructions than the *ScaffoldingReadme.txt* file.</span></span>
+<span data-ttu-id="aed44-115">執行身分識別框架時， *ScaffoldingReadme.txt*專案目錄中建立檔案。</span><span class="sxs-lookup"><span data-stu-id="aed44-115">When the Identity scaffolder is run, a *ScaffoldingReadme.txt* file is created in the project directory.</span></span> <span data-ttu-id="aed44-116">*ScaffoldingReadme.txt*檔案包含需要的完成識別 scaffolding 更新內容的一般指示。</span><span class="sxs-lookup"><span data-stu-id="aed44-116">The *ScaffoldingReadme.txt* file contains general instructions on what's needed to complete the Identity scaffolding update.</span></span> <span data-ttu-id="aed44-117">本文件包含更詳細的說明，比*ScaffoldingReadme.txt*檔案。</span><span class="sxs-lookup"><span data-stu-id="aed44-117">This document contains more complete instructions than the *ScaffoldingReadme.txt* file.</span></span>
 
-<span data-ttu-id="1cfc1-118">我們建議使用顯示檔案的差異，並可讓您將變更原始檔控制系統。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-118">We recommend using a source control system that shows file differences and allows you to back out of changes.</span></span> <span data-ttu-id="1cfc1-119">執行身分識別 scaffolder 之後檢查所做的變更。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-119">Inspect the changes after running the Identity scaffolder.</span></span>
+<span data-ttu-id="aed44-118">我們建議使用顯示檔案的差異，並可讓您將變更原始檔控制系統。</span><span class="sxs-lookup"><span data-stu-id="aed44-118">We recommend using a source control system that shows file differences and allows you to back out of changes.</span></span> <span data-ttu-id="aed44-119">執行身分識別 scaffolder 之後檢查所做的變更。</span><span class="sxs-lookup"><span data-stu-id="aed44-119">Inspect the changes after running the Identity scaffolder.</span></span>
 
-## <a name="scaffold-identity-into-an-empty-project"></a><span data-ttu-id="1cfc1-120">Scaffold 的身分識別至空專案</span><span class="sxs-lookup"><span data-stu-id="1cfc1-120">Scaffold identity into an empty project</span></span>
+## <a name="scaffold-identity-into-an-empty-project"></a><span data-ttu-id="aed44-120">Scaffold 的身分識別至空專案</span><span class="sxs-lookup"><span data-stu-id="aed44-120">Scaffold identity into an empty project</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="1cfc1-121">加入下列反白顯示的呼叫`Startup`類別：</span><span class="sxs-lookup"><span data-stu-id="1cfc1-121">Add the following highlighted calls to the `Startup` class:</span></span>
+<span data-ttu-id="aed44-121">加入下列反白顯示的呼叫`Startup`類別：</span><span class="sxs-lookup"><span data-stu-id="aed44-121">Add the following highlighted calls to the `Startup` class:</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupEmpty.cs?name=snippet1&highlight=5,20-23)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "38217678"
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a><span data-ttu-id="1cfc1-122">Scaffold 的身分識別至 Razor 專案沒有現有的授權</span><span class="sxs-lookup"><span data-stu-id="1cfc1-122">Scaffold identity into a Razor project without existing authorization</span></span>
+## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a><span data-ttu-id="aed44-122">Scaffold 的身分識別至 Razor 專案沒有現有的授權</span><span class="sxs-lookup"><span data-stu-id="aed44-122">Scaffold identity into a Razor project without existing authorization</span></span>
 
 <!--
 set projNam=RPnoAuth
@@ -57,27 +57,31 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="1cfc1-123">已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-123">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="1cfc1-124">如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-124">for more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
+<span data-ttu-id="aed44-123">已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="aed44-123">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="aed44-124">如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。</span><span class="sxs-lookup"><span data-stu-id="aed44-124">for more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
 
 <a name="efm"></a>
 
-### <a name="migrations-useauthentication-and-layout"></a><span data-ttu-id="1cfc1-125">移轉、 UseAuthentication 和版面配置</span><span class="sxs-lookup"><span data-stu-id="1cfc1-125">Migrations, UseAuthentication, and layout</span></span>
+### <a name="migrations-useauthentication-and-layout"></a><span data-ttu-id="aed44-125">移轉、 UseAuthentication 和版面配置</span><span class="sxs-lookup"><span data-stu-id="aed44-125">Migrations, UseAuthentication, and layout</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-<span data-ttu-id="1cfc1-126">在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="1cfc1-126">In the `Configure` method of the `Startup` class, call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
+<a name="useauthentication"></a>
+
+### <a name="enable-authentication"></a><span data-ttu-id="aed44-126">啟用驗證</span><span class="sxs-lookup"><span data-stu-id="aed44-126">Enable authentication</span></span>
+
+<span data-ttu-id="aed44-127">在 `Configure`方法`Startup`類別中，呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="aed44-127">In the `Configure` method of the `Startup` class, call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-### <a name="layout-changes"></a><span data-ttu-id="1cfc1-127">版面配置變更</span><span class="sxs-lookup"><span data-stu-id="1cfc1-127">Layout changes</span></span>
+### <a name="layout-changes"></a><span data-ttu-id="aed44-128">版面配置變更</span><span class="sxs-lookup"><span data-stu-id="aed44-128">Layout changes</span></span>
 
-<span data-ttu-id="1cfc1-128">選擇性： 新增部分登入 (`_LoginPartial`) 和配置檔案：</span><span class="sxs-lookup"><span data-stu-id="1cfc1-128">Optional: Add the login partial (`_LoginPartial`) to the layout file:</span></span>
+<span data-ttu-id="aed44-129">選擇性： 新增部分登入 (`_LoginPartial`) 和配置檔案：</span><span class="sxs-lookup"><span data-stu-id="aed44-129">Optional: Add the login partial (`_LoginPartial`) to the layout file:</span></span>
 
 [!code-html[Main](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a><span data-ttu-id="1cfc1-129">Scaffold Razor 專案具有授權的身分識別</span><span class="sxs-lookup"><span data-stu-id="1cfc1-129">Scaffold identity into a Razor project with authorization</span></span>
+## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a><span data-ttu-id="aed44-130">Scaffold Razor 專案具有授權的身分識別</span><span class="sxs-lookup"><span data-stu-id="aed44-130">Scaffold identity into a Razor project with authorization</span></span>
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -90,9 +94,9 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 -->
 
-[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]<span data-ttu-id="1cfc1-130"> 中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-130"> Some Identity options are configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="1cfc1-131">如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-131">For more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
+[!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]<span data-ttu-id="aed44-131"> 中所設定的一些身分識別選項*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="aed44-131"> Some Identity options are configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="aed44-132">如需詳細資訊，請參閱 < [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration)。</span><span class="sxs-lookup"><span data-stu-id="aed44-132">For more information, see [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).</span></span>
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a><span data-ttu-id="1cfc1-132">MVC 專案中現有的授權而成的 scaffold 身分識別</span><span class="sxs-lookup"><span data-stu-id="1cfc1-132">Scaffold identity into an MVC project without existing authorization</span></span>
+## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a><span data-ttu-id="aed44-133">MVC 專案中現有的授權而成的 scaffold 身分識別</span><span class="sxs-lookup"><span data-stu-id="aed44-133">Scaffold identity into an MVC project without existing authorization</span></span>
 
 <!--
 set projNam=MvcNoAuth
@@ -110,23 +114,23 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-<span data-ttu-id="1cfc1-133">選擇性： 新增部分登入 (`_LoginPartial`) 來*Views/Shared/_Layout.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="1cfc1-133">Optional: Add the login partial (`_LoginPartial`) to the *Views/Shared/_Layout.cshtml* file:</span></span>
+<span data-ttu-id="aed44-134">選擇性： 新增部分登入 (`_LoginPartial`) 來*Views/Shared/_Layout.cshtml*檔案：</span><span class="sxs-lookup"><span data-stu-id="aed44-134">Optional: Add the login partial (`_LoginPartial`) to the *Views/Shared/_Layout.cshtml* file:</span></span>
 
 [!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
-* <span data-ttu-id="1cfc1-134">移動*Pages/Shared/_LoginPartial.cshtml*檔案*Views/Shared/_LoginPartial.cshtml*</span><span class="sxs-lookup"><span data-stu-id="1cfc1-134">Move the *Pages/Shared/_LoginPartial.cshtml* file to *Views/Shared/_LoginPartial.cshtml*</span></span>
+* <span data-ttu-id="aed44-135">移動*Pages/Shared/_LoginPartial.cshtml*檔案*Views/Shared/_LoginPartial.cshtml*</span><span class="sxs-lookup"><span data-stu-id="aed44-135">Move the *Pages/Shared/_LoginPartial.cshtml* file to *Views/Shared/_LoginPartial.cshtml*</span></span>
 
-<span data-ttu-id="1cfc1-135">已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-135">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="1cfc1-136">如需詳細資訊，請參閱 IHostingStartup。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-136">For more information, see IHostingStartup.</span></span>
+<span data-ttu-id="aed44-136">已在中設定身分識別*Areas/Identity/IdentityHostingStartup.cs*。</span><span class="sxs-lookup"><span data-stu-id="aed44-136">Identity is configured in *Areas/Identity/IdentityHostingStartup.cs*.</span></span> <span data-ttu-id="aed44-137">如需詳細資訊，請參閱 IHostingStartup。</span><span class="sxs-lookup"><span data-stu-id="aed44-137">For more information, see IHostingStartup.</span></span>
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-<span data-ttu-id="1cfc1-137">呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="1cfc1-137">Call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
+<span data-ttu-id="aed44-138">呼叫[UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)之後`UseStaticFiles`:</span><span class="sxs-lookup"><span data-stu-id="aed44-138">Call [UseAuthentication](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) after `UseStaticFiles`:</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a><span data-ttu-id="1cfc1-138">Scaffold 的身分識別至具有授權的 MVC 專案</span><span class="sxs-lookup"><span data-stu-id="1cfc1-138">Scaffold identity into an MVC project with authorization</span></span>
+## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a><span data-ttu-id="aed44-139">Scaffold 的身分識別至具有授權的 MVC 專案</span><span class="sxs-lookup"><span data-stu-id="aed44-139">Scaffold identity into an MVC project with authorization</span></span>
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -138,26 +142,26 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext --fil
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-<span data-ttu-id="1cfc1-139">刪除*頁/Shared*資料夾，然後在該資料夾中的檔案。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-139">Delete the *Pages/Shared* folder and the files in that folder.</span></span>
+<span data-ttu-id="aed44-140">刪除*頁/Shared*資料夾，然後在該資料夾中的檔案。</span><span class="sxs-lookup"><span data-stu-id="aed44-140">Delete the *Pages/Shared* folder and the files in that folder.</span></span>
 
 <a name="full"></a>
 
-## <a name="create-full-identity-ui-source"></a><span data-ttu-id="1cfc1-140">建立完整的身分識別 UI 來源</span><span class="sxs-lookup"><span data-stu-id="1cfc1-140">Create full identity UI source</span></span>
+## <a name="create-full-identity-ui-source"></a><span data-ttu-id="aed44-141">建立完整的身分識別 UI 來源</span><span class="sxs-lookup"><span data-stu-id="aed44-141">Create full identity UI source</span></span>
 
-<span data-ttu-id="1cfc1-141">若要維護的身分識別使用者介面的完整控制權，執行身分識別的框架，然後選取**覆寫所有檔案**。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-141">To maintain full control of the Identity UI, run the Identity scaffolder and select **Override all files**.</span></span>
+<span data-ttu-id="aed44-142">若要維護的身分識別使用者介面的完整控制權，執行身分識別的框架，然後選取**覆寫所有檔案**。</span><span class="sxs-lookup"><span data-stu-id="aed44-142">To maintain full control of the Identity UI, run the Identity scaffolder and select **Override all files**.</span></span>
 
-<span data-ttu-id="1cfc1-142">下列醒目提示的程式碼會顯示預設識別 UI 取代 ASP.NET Core 2.1 web 應用程式中的身分識別的變更。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-142">The following highlighted code shows the changes to replace the default Identity UI with Identity in an ASP.NET Core 2.1 web app.</span></span> <span data-ttu-id="1cfc1-143">您可能想要這樣做能夠完整控制身分識別 UI。</span><span class="sxs-lookup"><span data-stu-id="1cfc1-143">You might want to do this to have full control of the Identity UI.</span></span>
+<span data-ttu-id="aed44-143">下列醒目提示的程式碼會顯示預設識別 UI 取代 ASP.NET Core 2.1 web 應用程式中的身分識別的變更。</span><span class="sxs-lookup"><span data-stu-id="aed44-143">The following highlighted code shows the changes to replace the default Identity UI with Identity in an ASP.NET Core 2.1 web app.</span></span> <span data-ttu-id="aed44-144">您可能想要這樣做能夠完整控制身分識別 UI。</span><span class="sxs-lookup"><span data-stu-id="aed44-144">You might want to do this to have full control of the Identity UI.</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet1&highlight=13-14,17-999)]
 
-<span data-ttu-id="1cfc1-144">預設身分識別會取代下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="1cfc1-144">The default Identity is replaced in the following code:</span></span>
+<span data-ttu-id="aed44-145">預設身分識別會取代下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="aed44-145">The default Identity is replaced in the following code:</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet2)]
 
-<span data-ttu-id="1cfc1-145">下列程式碼集[LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)， [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)，並[AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):</span><span class="sxs-lookup"><span data-stu-id="1cfc1-145">The following the code sets the [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath), [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath), and [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):</span></span>
+<span data-ttu-id="aed44-146">下列程式碼集[LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath)， [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath)，並[AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):</span><span class="sxs-lookup"><span data-stu-id="aed44-146">The following the code sets the [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath), [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath), and [AccessDeniedPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.accessdeniedpath):</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet3)]
 
-<span data-ttu-id="1cfc1-146">註冊`IEmailSender`實作，例如：</span><span class="sxs-lookup"><span data-stu-id="1cfc1-146">Register an `IEmailSender` implementation, for example:</span></span>
+<span data-ttu-id="aed44-147">註冊`IEmailSender`實作，例如：</span><span class="sxs-lookup"><span data-stu-id="aed44-147">Register an `IEmailSender` implementation, for example:</span></span>
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]

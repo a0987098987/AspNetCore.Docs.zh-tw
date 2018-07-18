@@ -4,19 +4,16 @@ title: 內容從與頁面互動主版頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 檢驗如何呼叫方法時，由主版頁面的程式碼中設定屬性的 [內容] 頁面等等。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/11/2008
-ms.topic: article
 ms.assetid: 3282df5e-516c-4972-8666-313828b90fb5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bb6785cd3fd462e651441d303c464064739723f9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 293e4dab6142393c9d57836a2f04244388e54cec
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382591"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808362"
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-c"></a>內容從與頁面互動主版頁面 (C#)
 ====================
@@ -87,7 +84,7 @@ ms.locfileid: "37382591"
 接下來，指定資料來源控制項的`SELECT`陳述式，從下拉式清單中選擇 產品 資料表，並傳回`ProductName`和`UnitPrice`（請參閱 圖 4） 的資料行。 按一下 下一步，然後完成 以完成設定資料來源精靈
 
 
-[![傳回從 Products 資料表的 [ProductName] 和 [UnitPrice 欄位](interacting-with-the-content-page-from-the-master-page-cs/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image10.png)
+[![傳回從 Products 資料表的 [ProductName] 和 UnitPrice 欄位](interacting-with-the-content-page-from-the-master-page-cs/_static/image11.png)](interacting-with-the-content-page-from-the-master-page-cs/_static/image10.png)
 
 **圖 04**： 傳回`ProductName`並`UnitPrice`欄位從`Products`資料表 ([按一下以檢視完整大小的影像](interacting-with-the-content-page-from-the-master-page-cs/_static/image12.png))
 

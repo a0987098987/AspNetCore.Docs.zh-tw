@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/13/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 96a4403653e474bb056374909b3ee66998bc99be
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: 607bdb7ee830c9a3bbb83ca2aec4661772a285b2
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992811"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095836"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -168,9 +168,8 @@ services.Configure<IISOptions>(options =>
 
 1. 在主控系統上安裝 .NET Core 裝載套件組合。 套件組合會安裝 .NET Core 執行階段、.NET Core 程式庫和 [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)。 此模組會在 IIS 和 Kestrel 伺服器之間建立反向 Proxy。 如果系統沒有網際網路連線，請先取得並安裝 [Microsoft Visual C++ 2015 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=53840)，再安裝 .NET Core 裝載套件組合。
 
-   1. 瀏覽至 [.NET 所有下載頁面](https://www.microsoft.com/net/download/all)。
-   1. 在資料表的 [執行階段] 資料行中，從清單選取最新的非預覽 .NET Core 執行階段 (**X.Y 執行階段 (vX.Y.Z) 下載**)。 最新版執行階段有**目前**標籤。 除非是用於預覽軟體，否則在執行階段的連結文字中請避免使用 "preview" (預覽) 或 "rc" (Release Candidate，候選版) 等文字。
-   1. 在 [Windows] 下的 .NET Core 執行階段下載頁面中，選取 [裝載套件組合安裝程式] 連結，以下載「.NET Core 裝載套件組合」安裝程式。
+   1. 瀏覽至 [.NET 下載頁面](https://www.microsoft.com/net/download/windows)。
+   1. 在 [.NET Core] 下，選取 [執行應用程式] 標籤旁的 [下載 .NET Core 執行階段] 按鈕。 安裝程式可執行檔的檔案名稱會包含 "hosting" 字樣 (例如 *dotnet-hosting-2.1.2-win.exe*)。
    1. 在伺服器上執行安裝程式。
 
    **重要！** 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -202,7 +201,7 @@ services.Configure<IISOptions>(options =>
    ![在新增網站步驟中提供站台名稱、實體路徑和主機名稱。](index/_static/add-website-ws2016.png)
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結可能暴露您的應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確主機名稱，而非萬用字元。 若您擁有整個父網域 (與具弱點的 `*.com` 相對) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
+   > 請 **勿** 使用最上層萬用字元繫結 ( `http://*:80/` 與 `http://+:80` )。 最上層萬用字元繫結可能暴露您的應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確主機名稱，而非萬用字元。 若您擁有整個父網域 (與具弱點的 `*.com` 相對) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 就沒有此安全性風險。 如需詳細資訊，請參閱 [rfc7230 5.4 節](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器的節點之下，選取 [應用程式集區]。
 

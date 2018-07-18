@@ -4,19 +4,16 @@ title: 格式化 DataList 和 Repeater 根據資料 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們要逐步執行範例的我們如何格式化 DataList 和 Repeater 控制項，藉由使用具有格式設定函式的外觀...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2006
-ms.topic: article
 ms.assetid: e2f401ae-37bb-4b19-aa97-d6b385d40f88
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 42a7861c4a9665d5c2596ba9bf3f5185bfaf043d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 428438b2bae062c09d13c002f4729c3c394975a1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397677"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807706"
 ---
 <a name="formatting-the-datalist-and-repeater-based-upon-data-vb"></a>格式化 DataList 和 Repeater 根據資料 (VB)
 ====================
@@ -182,7 +179,7 @@ DataList 控制項，格式為整個項目可以使用實作的變更`DataListIt
 
 [!code-aspx[Main](formatting-the-datalist-and-repeater-based-upon-data-vb/samples/sample7.aspx)]
 
-就地格式化函式呼叫，請花一點時間瀏覽器中檢視進度。 您的畫面看起來應該類似 [圖 5 已停止的產品，包含文字 [DISCONTINUED] 而且成本超過 $ 20.00 美元具有其價格的產品以取代文字請價格報價的呼叫。
+就地格式化函式呼叫，請花一點時間瀏覽器中檢視進度。 您的畫面看起來應該類似圖 5 已停止的產品，包含文字 [DISCONTINUED] 而且成本超過 $ 20.00 美元具有其價格的產品以取代文字請價格報價的呼叫。
 
 
 [![適用於昂貴的產品，價格會取代文字，請呼叫價格報價](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image14.png)](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image13.png)

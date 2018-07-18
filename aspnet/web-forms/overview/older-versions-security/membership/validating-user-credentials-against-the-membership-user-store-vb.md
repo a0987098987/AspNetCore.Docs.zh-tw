@@ -4,19 +4,16 @@ title: 針對成員資格使用者存放區 (VB) 驗證使用者認證 |Microsof
 author: rick-anderson
 description: 在本教學課程中，我們將檢查如何驗證使用者的認證，對使用程式設計的方式和 Login 控制項的成員資格使用者存放區...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 17772912-b47b-4557-9ce9-80f22df642f7
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ad9f76f6c7c64c29971aed10ba165b5f4807eb64
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: c5eeb67c8d175173f38ffcbc1b01fd5a5931866e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364827"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821400"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>針對成員資格使用者存放區 (VB) 驗證使用者認證
 ====================
@@ -29,7 +26,7 @@ ms.locfileid: "37364827"
 
 ## <a name="introduction"></a>簡介
 
-在  <a id="Tutorial05"> </a>[前述教學課程](creating-user-accounts-vb.md)我們探討了如何在 [成員資格架構中建立新的使用者帳戶。 我們先探討了以程式設計方式建立使用者帳戶，透過`Membership`類別的`CreateUser`方法，並檢查 使用 CreateUserWizard Web 控制項。 不過，目前登入頁面會驗證提供的認證，對使用者名稱和密碼組的硬式編碼清單。 我們需要更新登入頁面的邏輯，使它會針對成員資格架構的使用者存放區的認證來驗證。
+在 <a id="Tutorial05"></a>[前述教學課程](creating-user-accounts-vb.md)我們探討了如何在成員資格架構中建立新的使用者帳戶。 我們先探討了以程式設計方式建立使用者帳戶，透過`Membership`類別的`CreateUser`方法，並檢查使用 CreateUserWizard Web 控制項。 不過，目前登入頁面會驗證提供的認證，對使用者名稱和密碼組的硬式編碼清單。 我們需要更新登入頁面的邏輯，使它會針對成員資格架構的使用者存放區的認證來驗證。
 
 更像是建立使用者帳戶，可以驗證認證以程式設計方式或以宣告方式。 成員資格 API 包含用於以程式設計方式驗證使用者的認證，對使用者存放區的方法。 和 ASP.NET 隨附登入 Web 控制項，會呈現使用者介面使用的使用者名稱、 密碼及登入按鈕的文字方塊。
 

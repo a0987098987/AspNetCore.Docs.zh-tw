@@ -5,12 +5,12 @@ description: 了解如何使用 Entity Framework Core (EF Core)，新增用來�
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: ed8faf8b3049adc7bcc7953d63ad805b0a836bd9
-ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
+ms.openlocfilehash: 9e0fd0ee98c84bb2336749640b2a3c103e4639b6
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961171"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938322"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -54,7 +54,7 @@ ms.locfileid: "36961171"
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
-Scaffold 處理序建立並變更下列檔案：
+隨即建立 Scaffold 處理序並變更下列檔案：
 
 ### <a name="files-created"></a>建立的檔案
 
@@ -72,7 +72,7 @@ ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
-檢查 `Startup.ConfigureServices` 方法。 強調顯示的行由 Scaffolder 新增：
+檢查 `Startup.ConfigureServices` 方法。 Scaffolder 已新增醒目標示行：
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
 
@@ -209,7 +209,7 @@ dotnet ef database update
 
 ### <a name="test-the-app"></a>測試應用程式
 
-* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL (`http://localhost:port/movies`)。
+* 執行應用程式，並將 `/Movies` 附加至瀏覽器中的 URL ( `http://localhost:port/movies` )。
 * 測試 **Create** 連結。
 
   ![建立頁面](../../tutorials/razor-pages/model/_static/conan.png)

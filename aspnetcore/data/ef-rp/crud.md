@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: dfc79964cc4f15851b42822bb97d14800f54b878
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.openlocfilehash: 0a8d386104d9c62f37d0a94e66344d3f1e23bae9
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093006"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063347"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -68,7 +68,7 @@ Scaffold 程式碼會為 [建立]、[編輯]、[刪除] 頁面使用下列模式
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-執行應用程式並選取 [詳細資料] 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2`。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
+執行應用程式並選取 [詳細資料] 連結。 URL 的格式為 `http://localhost:5000/Students/Details?id=2` 。 使用 (`?id=2`) 查詢字串來傳遞 Student ID。
 
 更新 [編輯]、[詳細資料] 和 [刪除] Razor 頁面，以使用 `"{id:int}"` 路由範本。 將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。
 
@@ -236,9 +236,9 @@ Students [索引] 頁面的 Scaffold 程式碼不包含 `Enrollments` 屬性。 
 
 ## <a name="common-errors"></a>常見的錯誤
 
-Student/首頁或其他連結運作失常：
+Student/Index 或其他連結運作失常：
 
-確認 Razor 頁面包含正確的 `@page` 指示詞。 比方說，Student/Razor 首頁**不應**包含路由範本：
+確認 Razor 頁面包含正確的 `@page` 指示詞。 例如，Student/Index Razor 頁面**不應**包含路由範本：
 
 ```cshtml
 @page "{id:int}"

@@ -4,19 +4,16 @@ title: 新增與回應 GridView (VB) 的按鈕 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中我們將探討如何將自訂按鈕，新增至範本和 GridView 或 DetailsView 控制項的欄位。 特別是，我們將建置...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2006
-ms.topic: article
 ms.assetid: 06c6bbd2-4bdc-435b-87a3-df2c868f4baa
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 458f90bf70d6f10402583623ef62bf1572040ce4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 1e35c6655506b5ec79efe8a5000e136e865854f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365054"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831689"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>新增與回應 GridView (VB) 的按鈕
 ====================
@@ -101,7 +98,7 @@ Visual Studio 會產生之後設定 ObjectDataSource `InsertItemTemplate`， `Ed
 [圖 7] 顯示 CustomButtons.aspx 頁面上，當透過瀏覽器檢視。
 
 
-[![FormView 列出 [CompanyName] 和 [從目前選取的供應商的電話欄位](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image15.png)
+[![FormView 列出 [CompanyName] 和從目前選取的供應商的電話欄位](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image15.png)
 
 **圖 7**: FormView 列出`CompanyName`並`Phone`從目前選取的供應商的欄位 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image17.png))
 

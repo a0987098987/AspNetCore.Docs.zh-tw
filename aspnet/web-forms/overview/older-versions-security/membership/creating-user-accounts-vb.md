@@ -4,19 +4,16 @@ title: 建立使用者帳戶 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將探討使用 （透過 SqlMembershipProvider) 的成員資格架構來建立新的使用者帳戶。 我們將了解如何建立新我們...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 9ef3e893-bebe-4b13-9fe5-8b71720dd85e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 24261515af5213cdf58661cdfd6d1ba4653f8aa6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: fe5e55df3fa9f65a94199c2064a785255f231537
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380716"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815339"
 ---
 <a name="creating-user-accounts-vb"></a>建立使用者帳戶 (VB)
 ====================
@@ -39,7 +36,7 @@ ms.locfileid: "37380716"
 
 我們開始使用成員資格架構之前，讓我們花一點時間檢閱重要的步驟，我們已到達此點。 使用成員資格架構時`SqlMembershipProvider`在表單型驗證案例中，必須在 web 應用程式中實作成員資格功能之前要執行下列步驟：
 
-1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*，藉由編輯啟用表單驗證`Web.config`和 [設定`<authentication>`項目的`mode`屬性設定為`Forms`。 使用啟用表單驗證，每個傳入要求會檢查*表單驗證票證*，其中，如果有的話，識別要求者。
+1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-vb.md)*，藉由編輯啟用表單驗證`Web.config`和設定`<authentication>`項目的`mode`屬性設定為`Forms`。 使用啟用表單驗證，每個傳入要求會檢查*表單驗證票證*，其中，如果有的話，識別要求者。
 2. **將應用程式服務結構描述新增至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述的資料庫。 通常這個結構描述加入至相同保存應用程式的資料模型的資料庫。 *<a id="_msoanchor_5"> </a> [SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-vb.md)* 教學課程會探討使用`aspnet_regsql.exe`工具來完成這項作業。
 3. **自訂 Web 應用程式的設定，以從步驟 2 中參考的資料庫。** *在 SQL Server 中建立成員資格結構描述*教學課程示範了兩種方式可以設定 web 應用程式，以便`SqlMembershipProvider`會使用在步驟 2 中所選取的資料庫： 藉由修改`LocalSqlServer`連接字串名稱;或將新註冊的提供者新增至成員資格架構提供者的清單，並自訂該新的提供者，以使用資料庫。 請從步驟 2。
 
@@ -301,7 +298,7 @@ CreateUserWizard 控制項，正如其名，衍生自[Wizard 控制項](https://
 
 色彩、 框線、 字型和其他視覺項目皆可設定透過主控件的樣式屬性。 CreateUserWizard 控制項本身有常見的 Web 控制項樣式屬性- `BackColor`， `BorderStyle`， `CssClass`，`Font`等等-而且有定義的特定區段的外觀的樣式屬性的數目CreateUserWizard 的介面。 [ `TextBoxStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.textboxstyle.aspx)，比方說，定義中文字方塊的樣式`CreateUserWizardStep`，而[`TitleTextStyle`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.titletextstyle.aspx)定義 （登入您的新標題的樣式帳戶）。
 
-除了與外觀相關的屬性，還有一些會影響 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示 [（預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必 ssprop_param_table_default [ `CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，指定使用者按一下 [取消] 之後，會傳送至的頁面。 上一節中的 [繼續] 按鈕所述`CompleteWizardStep`的介面造成回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁的訪客，按一下 [繼續] 按鈕後，只要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
+除了與外觀相關的屬性，還有一些會影響 CreateUserWizard 控制項的行為的屬性。 [ `DisplayCancelButton`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.wizard.displaycancelbutton.aspx)，如果設為 True，會顯示（預設值為 False） 的 [建立使用者] 按鈕旁邊的 [取消] 按鈕。 如果顯示 [取消] 按鈕時，請務必 ssprop_param_table_default [ `CancelDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)，指定使用者按一下 [取消] 之後，會傳送至的頁面。 上一節中的 [繼續] 按鈕所述`CompleteWizardStep`的介面造成回傳，但在相同頁面上離開訪客。 若要傳送至其他網頁的訪客，按一下 [繼續] 按鈕後，只要指定中的 URL [ `ContinueDestinationPageUrl`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.createuserwizard.continuedestinationpageurl.aspx)。
 
 讓我們更新`RegisterUser`CreateUserWizard 控制項以顯示 [取消] 按鈕，並傳送訪客`Default.aspx`時按一下 [取消] 或 [繼續] 按鈕。 若要達成此目的，將`DisplayCancelButton`屬性設為 True，同時兩者皆`CancelDestinationPageUrl`和`ContinueDestinationPageUrl`屬性 ~ / Default.aspx。 [圖 14] 顯示更新的 CreateUserWizard 透過瀏覽器檢視時。
 

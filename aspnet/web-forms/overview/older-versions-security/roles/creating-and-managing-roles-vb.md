@@ -4,19 +4,16 @@ title: 建立及管理角色 (VB) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會檢查角色架構中設定所需的步驟。 接下來，我們將建置 web 頁面來建立和刪除角色。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/24/2008
-ms.topic: article
 ms.assetid: 83af9f5f-9a00-4f83-8afc-e98bdd49014e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fbcd8613327ada581289ce613b5d0e0a09df4e19
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: cbfa06ec50693f9640c813288e7c9175db670351
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386610"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819600"
 ---
 <a name="creating-and-managing-roles-vb"></a>建立及管理角色 (VB)
 ====================
@@ -97,7 +94,7 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 因此，如果我們只需但未指定任何提供者資訊，在我們的應用程式中啟用角色架構`Web.config`檔案中，應用程式會使用已註冊的預設角色提供者， `AspNetSqlRoleProvider`。 如果`~/App_Data/aspnet.mdf`資料庫不存在時，ASP.NET 執行階段會自動加以建立並新增應用程式服務結構描述。 不過，我們不想要使用`aspnet.mdf`資料庫; 相反地，我們想要使用`SecurityTutorials.mdf`我們已建立並新增至應用程式服務結構描述的資料庫。 在下列其中一種，可以完成這項修改：
 
 - <strong>指定的值</strong><strong>`LocalSqlServer`</strong><strong>中的連接字串名稱</strong><strong>`Web.config`</strong><strong>。</strong> 藉由覆寫`LocalSqlServer`中的連接字串名稱值`Web.config`，我們可以使用已註冊的預設角色提供者 (`AspNetSqlRoleProvider`)，並讓它正確使用`SecurityTutorials.mdf`資料庫。 如需有關這項技術的詳細資訊，請參閱 < [Scott Guthrie](https://weblogs.asp.net/scottgu/)的部落格文章[設定 ASP.NET 2.0 應用程式服務使用 SQL Server 2000 或 SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx)。
-- <strong>加入新的已註冊提供者的型別</strong><strong>`SqlRoleProvider`</strong><strong>並設定其</strong><strong>`connectionStringName`</strong><strong>指向設定</strong><strong>`SecurityTutorials.mdf`</strong><strong>資料庫。</strong> 這是我建議，並使用中的方法<a id="_msoanchor_7"> </a> [ *SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-vb.md)教學課程中，而且這是 [我將在本教學課程使用的方法。
+- <strong>加入新的已註冊提供者的型別</strong><strong>`SqlRoleProvider`</strong><strong>並設定其</strong><strong>`connectionStringName`</strong><strong>指向設定</strong><strong>`SecurityTutorials.mdf`</strong><strong>資料庫。</strong> 這是我建議，並使用中的方法<a id="_msoanchor_7"> </a> [ *SQL Server 中建立成員資格結構描述*](../membership/creating-the-membership-schema-in-sql-server-vb.md)教學課程中，而且這是我將在本教學課程使用的方法。
 
 下列角色的組態將標記新增至`Web.config`檔案。 此標記會註冊新的提供者，名為 `SecurityTutorialsSqlRoleProvider.`
 

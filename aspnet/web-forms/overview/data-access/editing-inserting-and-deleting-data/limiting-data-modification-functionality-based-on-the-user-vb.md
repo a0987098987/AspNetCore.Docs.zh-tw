@@ -4,19 +4,16 @@ title: 限制資料修改功能以使用者 (VB) |Microsoft Docs
 author: rick-anderson
 description: 允許使用者編輯資料的 web 應用程式，在不同的使用者帳戶可能有不同的資料編輯權限。 在本教學課程中我們將檢驗如何 t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 9dc264a6-feb8-474b-8b91-008c50708065
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8530dfd37570ed5fcc45ef4d6c30750c5d4d2152
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 23e23c288ccceab7f7e1c07aa9a902bef4045de0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377111"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836805"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-vb"></a>限制資料修改功能，以使用者 (VB)
 ====================
@@ -69,7 +66,7 @@ ms.locfileid: "37377111"
 完成 ObjectDataSource 精靈之後，完成設定步驟`Suppliers`DropDownList，它會顯示`CompanyName`資料欄位，以及使用`SupplierID`做為每個值的資料欄位`ListItem`。
 
 
-[![設定供應商 DropDownList 以使用 [CompanyName] 和 [SupplierID 資料欄位](limiting-data-modification-functionality-based-on-the-user-vb/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image10.png)
+[![設定供應商 DropDownList 以使用 [CompanyName] 和 SupplierID 資料欄位](limiting-data-modification-functionality-based-on-the-user-vb/_static/image11.png)](limiting-data-modification-functionality-based-on-the-user-vb/_static/image10.png)
 
 **圖 4**： 設定`Suppliers`使用 DropDownList`CompanyName`並`SupplierID`資料欄位 ([按一下以檢視完整大小的影像](limiting-data-modification-functionality-based-on-the-user-vb/_static/image12.png))
 

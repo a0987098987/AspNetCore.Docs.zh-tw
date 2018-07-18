@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 96d7d2956fa9bf72706cde0532ee7f4ff753b72c
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: c996ac6ab05b98bcca72d0993fe412f553b58106
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126257"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992960"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -154,13 +154,29 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ![選項值 Option1:：value1_from_json 和 Option2: -1 是從模型藉由插入至檢視來載入。](options/_static/view.png)
 
+::: moniker range=">= aspnetcore-1.1"
+
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
 使用 `IOptionsSnapshot` 重新載入組態資料是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;5 來示範。
 
-*需要 ASP.NET Core 1.1 或更新版本。*
+[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) 支援以最小的處理負擔來重新載入選項。
 
-[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) 支援以最小的處理負擔來重新載入選項。 在 ASP.NET Core 1.1 中，`IOptionsSnapshot` 是 [IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) 的快照集，每當監視器根據資料來源變更觸發變更時便會自動更新。 ASP.NET Core 2.0 版及更新版本中，選項會在要求的存留期內存取及快取時，針對每個要求計算一次。
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+在要求的存留期內存取及快取選項時，會針對每個要求計算一次選項。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+`IOptionsSnapshot` 是 [IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) 的快照集，每當監視器根據資料來源變更觸發變更時，會自動更新。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-1.1"
 
 下列範例示範在 *appsettings.json* 變更之後如何建立新的 `IOptionsSnapshot` (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
@@ -182,11 +198,13 @@ snapshot option1 = value1_from_json, snapshot option2 = -1
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>IConfigureNamedOptions 的具名選項支援
 
 [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) 的具名選項支援是以[範例應用程式](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample)中的範例 &num;6 來示範。
-
-*需要 ASP.NET Core 2.0 或更新版本。*
 
 「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，具名選項會使用 [OptionsServiceCollectionExtensions.Configure&lt;TOptions&gt;(IServiceCollection, String, Action&lt;TOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configure) 進行宣告，而後者又會呼叫擴充方法 [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure) 方法：
 
@@ -229,11 +247,9 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> 在 ASP.NET Core 2.0 版及更新版本中，所有選項都是具名執行個體。 現有的 `IConfigureOption` 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。 `IConfigureNamedOptions` 也會實作 `IConfigureOptions`。 [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 的預設實作 ([參考來源](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) 有邏輯可適當地使用每一個。 `null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 和 [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 使用此慣例)。
+> 所有選項都是具名執行個體。 現有的 `IConfigureOption` 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。 `IConfigureNamedOptions` 也會實作 `IConfigureOptions`。 [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 的預設實作 ([參考來源](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) 有邏輯可適當地使用每一個。 `null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 和 [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 使用此慣例)。
 
 ## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
-
-*需要 ASP.NET Core 2.0 或更新版本。*
 
 使用 [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1) 設定後置組態。 後置組態會在所有 [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) 組態都發生之後執行：
 
@@ -262,13 +278,19 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
+::: moniker-end
+
 ## <a name="options-factory-monitoring-and-cache"></a>選項 Factory、監視和快取
 
 [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) 用於 `TOptions` 執行個體變更時的通知。 `IOptionsMonitor` 支援可重新載入的選項、變更通知，以及 `IPostConfigureOptions`。
 
-[IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) (ASP.NET Core 2.0 或更新版本) 負責建立新的選項執行個體。 它有一個 [Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create) 方法。 預設實作會採用所有已註冊的 `IConfigureOptions` 和 `IPostConfigureOptions`，並先執行所有設定，接著執行後置設定。 它會區別 `IConfigureNamedOptions` 和 `IConfigureOptions`，且只會呼叫適當的介面。
+::: moniker range=">= aspnetcore-2.0"
 
-[IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ASP.NET Core 2.0 或更新版本) 由 `IOptionsMonitor` 用來快取 `TOptions` 執行個體。 `IOptionsMonitorCache` 會使監視器中的選項執行個體失效，以便重新計算值 ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove))。 值可以手動導入，也能使用 [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd)。 [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) 方法用於應該視需要重新建立所有具名執行個體時。
+[IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 負責建立新的選項執行個體。 它有一個 [Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create) 方法。 預設實作會採用所有已註冊的 `IConfigureOptions` 和 `IPostConfigureOptions`，並先執行所有設定，接著執行後置設定。 它會區別 `IConfigureNamedOptions` 和 `IConfigureOptions`，且只會呼叫適當的介面。
+
+[IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) 由 `IOptionsMonitor` 用來快取 `TOptions` 執行個體。 `IOptionsMonitorCache` 會使監視器中的選項執行個體失效，以便重新計算值 ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove))。 值可以手動導入，也能使用 [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd)。 [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) 方法用於應該視需要重新建立所有具名執行個體時。
+
+::: moniker-end
 
 ## <a name="accessing-options-during-startup"></a>在啟動期間存取選項
 

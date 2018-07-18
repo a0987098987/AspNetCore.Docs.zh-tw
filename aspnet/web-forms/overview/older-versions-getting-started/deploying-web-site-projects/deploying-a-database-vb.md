@@ -4,19 +4,16 @@ title: 部署資料庫 (VB) |Microsoft Docs
 author: rick-anderson
 description: 部署 ASP.NET web 應用程式需要取得必要的檔案和資源從開發環境到生產環境。 針對資料...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/23/2009
-ms.topic: article
 ms.assetid: 96ac3e69-04c7-4917-ad06-5f8968c3fbf1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3dc5e9b4e189929b2b898b997b7577a623bdc8a7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: c49b963cb5cfc40d8a0b03eb3ca722e3b789eab2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381318"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836271"
 ---
 <a name="deploying-a-database-vb"></a>部署資料庫 (VB)
 ====================
@@ -99,7 +96,7 @@ ms.locfileid: "37381318"
 開啟 Visual Studio，並瀏覽至`Reviews.mdf`資料庫。 如果您使用 Visual Web Developer 中，請移至 [資料庫總管] 中;如果您使用 Visual Studio，請使用 [伺服器總管] 中。 [圖 4] 顯示`Reviews.mdf`Visual Web Developer 中的 [資料庫總管] 中的資料庫。 如 [圖 4] 所示，`Reviews.mdf`資料庫由四個資料表、 三個預存程序，和使用者定義函式所組成。
 
 
-[![在 [資料庫總管] 或 [伺服器總管中找出資料庫](deploying-a-database-vb/_static/image11.jpg)](deploying-a-database-vb/_static/image10.jpg) 
+[![在 [資料庫總管] 或伺服器總管中找出資料庫](deploying-a-database-vb/_static/image11.jpg)](deploying-a-database-vb/_static/image10.jpg) 
 
 **[圖 4**： 在資料庫總管] 或 [伺服器總管] 找出資料庫 ([按一下以檢視完整大小的影像](deploying-a-database-vb/_static/image12.jpg))
 

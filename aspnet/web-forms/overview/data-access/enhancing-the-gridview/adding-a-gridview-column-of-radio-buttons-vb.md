@@ -4,19 +4,16 @@ title: 新增 GridView 資料行的選項按鈕 (VB) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討如何將為使用者提供更直覺的方式，選取單一資料列的 GridView 控制項中的選項按鈕的資料行...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2007
-ms.topic: article
 ms.assetid: 2e31b60b-8723-4f14-b7ee-37859454dc3b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6932892ae75d9a4cb6d84ff7e92d9f2f611f6013
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 56aa37392ab51306112f934f8dbff4151f232d35
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395418"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835608"
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-vb"></a>新增 GridView 資料行的選項按鈕 (VB)
 ====================
@@ -295,7 +292,7 @@ GridView 資料列已選取，並回傳時，我們有興趣`SupplierID`選取�
 
 我們有幾個這裡在指定的參數 s 的值來源的選項。 我們可以使用預設的參數物件，並以程式設計方式將指定的值`SuppliersSelectedIndex`屬性，以參數 s`DefaultValue`屬性中之 ObjectDataSource`Selecting`事件處理常式。 回頭[以程式設計方式設定 ObjectDataSource 的參數值](../basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb.md)複習一下以程式設計方式將值指派給 ObjectDataSource 的參數的教學課程。
 
-或者，我們可以使用 ControlParameter 和是指`Suppliers`GridView s [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue.aspx)（請參閱 [圖 19）。 GridView s`SelectedValue`屬性會傳回`DataKey`值，對應[`SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex.aspx)。 為了讓這個選項才會運作，我們需要以程式設計方式設定 GridView s`SelectedIndex`屬性，以所選資料列時`ListProducts`按一下按鈕時。 作為額外的權益，藉由設定`SelectedIndex`，選取的記錄將會擔任`SelectedRowStyle`中所定義`DataWebControls`佈景主題 （黃色背景）。
+或者，我們可以使用 ControlParameter 和是指`Suppliers`GridView s [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedvalue.aspx)（請參閱圖 19）。 GridView s`SelectedValue`屬性會傳回`DataKey`值，對應[`SelectedIndex`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridview.selectedindex.aspx)。 為了讓這個選項才會運作，我們需要以程式設計方式設定 GridView s`SelectedIndex`屬性，以所選資料列時`ListProducts`按一下按鈕時。 作為額外的權益，藉由設定`SelectedIndex`，選取的記錄將會擔任`SelectedRowStyle`中所定義`DataWebControls`佈景主題 （黃色背景）。
 
 
 [![若要指定為參數來源的 GridView 的 SelectedValue 使用 ControlParameter](adding-a-gridview-column-of-radio-buttons-vb/_static/image19.gif)](adding-a-gridview-column-of-radio-buttons-vb/_static/image33.png)

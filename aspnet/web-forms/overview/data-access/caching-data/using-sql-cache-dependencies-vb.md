@@ -4,19 +4,16 @@ title: 使用 SQL 快取相依性 (VB) |Microsoft Docs
 author: rick-anderson
 description: 最簡單的快取策略是允許為指定的一段時間之後到期的快取的資料。 但這個簡單的方法表示，快取的資料 maintai...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: bd347d93-4251-4532-801c-a36f2dfa7f96
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 74692fb7018cd75e29afc6d5852caddfdac1ed06
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 7929966d9eb82994b9d427d0c3fd7f08c41212fc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379841"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821641"
 ---
 <a name="using-sql-cache-dependencies-vb"></a>使用 SQL 快取相依性 (VB)
 ====================

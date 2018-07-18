@@ -4,19 +4,16 @@ title: 排序 DataList 或 Repeater 控制項 (VB) 中的資料 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將檢驗如何納入排序 DataList 和 Repeater 中, 支援，以及如何建構資料可以 DataList 或 Repeater...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/13/2006
-ms.topic: article
 ms.assetid: 97c13898-0741-45f9-b3fa-7540ab1679e6
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2dd76fb5835f9fadd0eee835d4b24484c9ae80bc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: fcbc1f83a00621ce0031cdcb775537992e3cb843
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389647"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828879"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a>DataList 或 Repeater 控制項 (VB) 中的排序資料
 ====================
@@ -316,7 +313,7 @@ DataList 範例會檢查在步驟 5 的頁面，透過使用效率不佳的預�
 新增這些之後`Click`事件處理常式和程式碼，以啟用或停用介面分頁的項目已根據目前的起始資料列索引，測試網頁瀏覽器中。 如 [圖 15 所示，當第一次瀏覽頁面的第一個和上一步] 按鈕將會停用。 按一下 [下一步] 顯示的資料，第二個頁面，而按一下最後一個會顯示最後一頁 （請參閱圖 16，17）。 檢視資料的最後一頁時就會停用 下一步 和 最後一個按鈕。
 
 
-[![[上一步] 和 [最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image41.png)
+[![[上一步] 和 最後一個按鈕就會停用檢視第一個頁面的產品](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image42.png)](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image41.png)
 
 **圖 15**： 檢視第一個頁面的產品時停用前一個和最後一個按鈕 ([按一下以檢視完整大小的影像](sorting-data-in-a-datalist-or-repeater-control-vb/_static/image43.png))
 

@@ -3,14 +3,14 @@ title: 帳戶確認和 ASP.NET Core 中的密碼復原
 author: rick-anderson
 description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。
 ms.author: riande
-ms.date: 2/11/2018
+ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 8e175cd19ca4a9de1e7cf6b330b3d82f309b6501
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
-ms.translationtype: HT
+ms.openlocfilehash: af3ba8b27148d94c4a905c688b8165f49b9f2927
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063334"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095742"
 ---
 ::: moniker range="<= aspnetcore-2.0"
 

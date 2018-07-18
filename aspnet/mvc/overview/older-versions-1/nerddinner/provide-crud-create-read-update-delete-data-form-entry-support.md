@@ -4,19 +4,16 @@ title: 提供 CRUD （建立、 讀取、 更新、 刪除） 資料表單項目
 author: microsoft
 description: 步驟 5 會示範如何使用我們 DinnersController 類別的進一步所啟用的編輯、 建立及刪除 Dinners 與其，也支援。
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: bbb976e5-6150-4283-a374-c22fbafe29f5
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: 821684c0753967fc1a693b061d5d539951cd7c23
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: bfb8446ec8b39ad6fc88a0d5b747f0cec33bbd25
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388804"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817632"
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>提供 CRUD （建立、 讀取、 更新、 刪除） 資料表單項目支援
 ====================
@@ -44,7 +41,7 @@ by [Microsoft](https://github.com/microsoft)
 | */Dinners/* | GET | 顯示即將推出的 dinners HTML 清單。 |
 | */Dinners/Details/[id]* | GET | 顯示有關特定 dinner 詳細資料。 |
 
-我們現在會將動作方法，實作三個額外的 Url: <em>/Dinners/編輯 / [id]、 Dinners/建立]</em>並<em>/Dinners/Delete / [id]</em>。 這些 Url 可讓您編輯現有的 Dinners，建立新的 Dinners 和刪除 Dinners。
+我們現在會將動作方法，實作三個額外的 Url: <em>/Dinners/編輯 / [id]、 Dinners/建立</em>並<em>/Dinners/Delete / [id]</em>。 這些 Url 可讓您編輯現有的 Dinners，建立新的 Dinners 和刪除 Dinners。
 
 我們即將支援使用這些新的 Url 的 HTTP GET 與 HTTP POST 動詞命令互動。 這些 url 的 HTTP GET 要求會顯示初始的 HTML 檢視的資料 （表單填入 Dinner 資料，在 編輯 的情況下，在 「 建立 」 的情況下的空白表單和刪除確認 畫面，在 「 刪除 」 的情況下）。 這些 url 的 HTTP POST 要求將會儲存/更新/刪除 Dinner 資料中我們 DinnerRepository （和至資料庫）。
 

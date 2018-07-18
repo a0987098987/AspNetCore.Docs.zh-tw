@@ -4,19 +4,16 @@ title: 在 ASP.NET MVC 和 Web Pages 中的 XSRF/CSRF 防護 |Microsoft Docs
 author: Rick-Anderson
 description: 跨網站偽造要求 （也稱為 XSRF 或 CSRF） 攻擊會將對 web 裝載的應用程式讓惡意網站可能會影響 interacti...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/14/2013
-ms.topic: article
 ms.assetid: aadc5fa4-8215-4fc7-afd5-bcd2ef879728
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 454b98cc1b6b20349cfb17789fa878d6fb2a8bd9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: be0e8ebe521e9952d7525b581f9b91af6edca1da
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371654"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820252"
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>在 ASP.NET MVC 和 Web Pages 中的 XSRF/CSRF 防護
 ====================
@@ -165,7 +162,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 
 | **Property** | **描述** |
 | --- | --- |
-| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)權杖產生期間提供的其他資料，在 [權杖驗證期間耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱 < [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)一節。 |
+| **AdditionalDataProvider** | [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)權杖產生期間提供的其他資料，在權杖驗證期間耗用額外的資料。 預設值是*null*。 如需詳細資訊，請參閱 < [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)一節。 |
 | **CookieName** | 提供用來儲存的防 XSRF 工作階段權杖的 HTTP cookie 名稱的字串。 如果未設定此值，產生的名稱會自動根據應用程式的已部署的虛擬路徑。 預設值是*null*。 |
 | **RequireSsl** | 布林值，指出 ANTI-XSRF 權杖是否需要透過 SSL 安全通道傳送。 如果這個值是 *，則為 true*、 任何自動產生的 cookie 會有 「 安全 」 的旗標設定，及防 XSRF Api 將會擲回，如果從呼叫中不會透過 SSL 提交的要求。 預設值為 *false*。 |
 | **SuppressIdentityHeuristicChecks** | 布林值，指出防 XSRF 系統是否應該停用宣告式身分識別支援。 如果這個值是 *，則為 true*，系統會假設*IIdentity.Name*很適合作為每個使用者的唯一識別碼，並不會嘗試將特殊大小寫*IClaimsIdentity*或是*ClClaimsIdentity*中所述[WIF / ACS / 宣告式驗證](#_WIF_ACS)一節。 預設值是 `false`。 |

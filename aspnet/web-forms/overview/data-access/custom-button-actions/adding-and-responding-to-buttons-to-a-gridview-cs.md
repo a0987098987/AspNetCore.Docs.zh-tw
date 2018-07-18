@@ -4,19 +4,16 @@ title: 新增與回應 GridView (C#) 的按鈕 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中我們將探討如何將自訂按鈕，新增至範本和 GridView 或 DetailsView 控制項的欄位。 特別是，我們將建置...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2006
-ms.topic: article
 ms.assetid: 128fdb5f-4c5e-42b5-b485-f3aee90a8e38
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 25e9574a861d23579ce1a18da895159d47881457
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 92743d252e6d8895ac1bff104456ec5874202ec9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368589"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804742"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-c"></a>新增與回應 GridView (C#) 的按鈕
 ====================
@@ -99,7 +96,7 @@ Visual Studio 會產生之後設定 ObjectDataSource `InsertItemTemplate`， `Ed
 [圖 7] 顯示 CustomButtons.aspx 頁面上，當透過瀏覽器檢視。
 
 
-[![FormView 列出 [CompanyName] 和 [從目前選取的供應商的電話欄位](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image15.png)
+[![FormView 列出 [CompanyName] 和從目前選取的供應商的電話欄位](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image16.png)](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image15.png)
 
 **圖 7**: FormView 列出`CompanyName`並`Phone`從目前選取的供應商的欄位 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-cs/_static/image17.png))
 
@@ -208,7 +205,7 @@ Visual Studio 會產生之後設定 ObjectDataSource `InsertItemTemplate`， `Ed
 
 [!code-csharp[Main](adding-and-responding-to-buttons-to-a-gridview-cs/samples/sample7.cs)]
 
-請注意， `SupplierID` FormView 中目前選取的供應商可以存取使用 FormView [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.selectedvalue.aspx)。 `SelectedValue`屬性會傳回第一個資料機碼顯示在 FormView 中之資料錄的值。 FormView [ `DataKeyNames`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.formview.datakeynames.aspx)，表示的資料欄位的資料索引鍵值取自，自動設定為`SupplierID`時繫結至 FormView 的 ObjectDataSource 的 Visual studio在 [步驟 2。
+請注意， `SupplierID` FormView 中目前選取的供應商可以存取使用 FormView [ `SelectedValue`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.formview.selectedvalue.aspx)。 `SelectedValue`屬性會傳回第一個資料機碼顯示在 FormView 中之資料錄的值。 FormView [ `DataKeyNames`屬性](https://msdn.microsoft.com/system.web.ui.webcontrols.formview.datakeynames.aspx)，表示的資料欄位的資料索引鍵值取自，自動設定為`SupplierID`時繫結至 FormView 的 ObjectDataSource 的 Visual studio在步驟 2。
 
 使用`ItemCommand`事件處理常式建立，請花一點時間測試頁面。 瀏覽至 Cooperativa de Quesos ' Las Cabras' 供應商 （它是在我 FormView 的第五個供應商）。 此供應商提供兩項產品，Queso Cabrales 和 Queso Manchego La Pastora，這兩者都是*不*停用。
 

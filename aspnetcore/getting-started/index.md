@@ -7,29 +7,29 @@ ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
 ms.openlocfilehash: 22e9c982921cc03d89506e18ff99bf481027dda6
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
+ms.lasthandoff: 07/18/2018
 ms.locfileid: "38216209"
 ---
-# <a name="get-started-with-aspnet-core"></a><span data-ttu-id="5accb-103">ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="5accb-103">Get started with ASP.NET Core</span></span>
+# <a name="get-started-with-aspnet-core"></a><span data-ttu-id="3204e-103">ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="3204e-103">Get started with ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
-1. <span data-ttu-id="5accb-104">安裝 [!INCLUDE [](~/includes/2.1-SDK.md)]。</span><span class="sxs-lookup"><span data-stu-id="5accb-104">Install the [!INCLUDE [](~/includes/2.1-SDK.md)].</span></span>
+1. <span data-ttu-id="3204e-104">安裝 [!INCLUDE [](~/includes/2.1-SDK.md)]。</span><span class="sxs-lookup"><span data-stu-id="3204e-104">Install the [!INCLUDE [](~/includes/2.1-SDK.md)].</span></span>
 
-2. <span data-ttu-id="5accb-105">建立 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="5accb-105">Create an ASP.NET Core project.</span></span> <span data-ttu-id="5accb-106">開啟命令殼層，並輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="5accb-106">Open a command shell and enter the following command:</span></span>
+2. <span data-ttu-id="3204e-105">建立 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="3204e-105">Create an ASP.NET Core project.</span></span> <span data-ttu-id="3204e-106">開啟命令殼層，並輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="3204e-106">Open a command shell and enter the following command:</span></span>
 
     ```console
     dotnet new webapp -o aspnetcoreapp
     ```
 
-    <span data-ttu-id="5accb-107">[!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]</span><span class="sxs-lookup"><span data-stu-id="5accb-107">[!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]</span></span>
+    <span data-ttu-id="3204e-107">[!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]</span><span class="sxs-lookup"><span data-stu-id="3204e-107">[!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]</span></span>
 
-3. <span data-ttu-id="5accb-108">信任 HTTPS 開發憑證：</span><span class="sxs-lookup"><span data-stu-id="5accb-108">Trust the HTTPS development certificate:</span></span>
+3. <span data-ttu-id="3204e-108">信任 HTTPS 開發憑證：</span><span class="sxs-lookup"><span data-stu-id="3204e-108">Trust the HTTPS development certificate:</span></span>
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="5accb-109">Windows</span><span class="sxs-lookup"><span data-stu-id="5accb-109">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="3204e-109">Windows</span><span class="sxs-lookup"><span data-stu-id="3204e-109">Windows</span></span>](#tab/windows)
 
     ```console
     dotnet dev-certs https --trust
@@ -41,7 +41,7 @@ ms.locfileid: "38216209"
 
     Select **Yes** if you agree to trust the development certificate.
 
-# <a name="macostabmacos"></a>[<span data-ttu-id="5accb-110">macOS</span><span class="sxs-lookup"><span data-stu-id="5accb-110">macOS</span></span>](#tab/macos)
+# <a name="macostabmacos"></a>[<span data-ttu-id="3204e-110">macOS</span><span class="sxs-lookup"><span data-stu-id="3204e-110">macOS</span></span>](#tab/macos)
 
     ```console
     dotnet dev-certs https --trust
@@ -56,25 +56,25 @@ ms.locfileid: "38216209"
 
     Enter your password if you agree to trust the development certificate.
 
-# <a name="linuxtablinux"></a>[<span data-ttu-id="5accb-111">Linux</span><span class="sxs-lookup"><span data-stu-id="5accb-111">Linux</span></span>](#tab/linux)
+# <a name="linuxtablinux"></a>[<span data-ttu-id="3204e-111">Linux</span><span class="sxs-lookup"><span data-stu-id="3204e-111">Linux</span></span>](#tab/linux)
 
     See the documentation for your Linux distribution on how to trust the HTTPS development certificate
 ---
 
-4. <span data-ttu-id="5accb-112">執行應用程式：</span><span class="sxs-lookup"><span data-stu-id="5accb-112">Run the app:</span></span>
+4. <span data-ttu-id="3204e-112">執行應用程式：</span><span class="sxs-lookup"><span data-stu-id="3204e-112">Run the app:</span></span>
 
     ```console
     cd aspnetcoreapp
     dotnet run
     ```
 
-5. <span data-ttu-id="5accb-113">瀏覽至 [http://localhost:5001](http://localhost:5001)。</span><span class="sxs-lookup"><span data-stu-id="5accb-113">Browse to [http://localhost:5001](http://localhost:5001).</span></span>  <span data-ttu-id="5accb-114">按一下 [接受] 以接受隱私權與 Cookie 原則。</span><span class="sxs-lookup"><span data-stu-id="5accb-114">Click **Accept** to accept the privacy and cookie policy.</span></span> <span data-ttu-id="5accb-115">此應用程式不會保留個人資訊。</span><span class="sxs-lookup"><span data-stu-id="5accb-115">This app doesn't keep personal information.</span></span>
+5. <span data-ttu-id="3204e-113">瀏覽至 [http://localhost:5001](http://localhost:5001)。</span><span class="sxs-lookup"><span data-stu-id="3204e-113">Browse to [http://localhost:5001](http://localhost:5001).</span></span>  <span data-ttu-id="3204e-114">按一下 [接受] 以接受隱私權與 Cookie 原則。</span><span class="sxs-lookup"><span data-stu-id="3204e-114">Click **Accept** to accept the privacy and cookie policy.</span></span> <span data-ttu-id="3204e-115">此應用程式不會保留個人資訊。</span><span class="sxs-lookup"><span data-stu-id="3204e-115">This app doesn't keep personal information.</span></span>
 
-6. <span data-ttu-id="5accb-116">開啟 *Pages/About.cshtml*，然後以下列醒目提示的標記修改頁面：</span><span class="sxs-lookup"><span data-stu-id="5accb-116">Open *Pages/About.cshtml* and modify the page with the following highlighted markup:</span></span>
+6. <span data-ttu-id="3204e-116">開啟 *Pages/About.cshtml*，然後以下列醒目提示的標記修改頁面：</span><span class="sxs-lookup"><span data-stu-id="3204e-116">Open *Pages/About.cshtml* and modify the page with the following highlighted markup:</span></span>
 
     [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9)]
 
-7. <span data-ttu-id="5accb-117">瀏覽到 [http://localhost:5001/About](http://localhost:5001/About) 並驗證已顯示變更。</span><span class="sxs-lookup"><span data-stu-id="5accb-117">Browse to [http://localhost:5001/About](http://localhost:5001/About) and verify the changes are displayed.</span></span>
+7. <span data-ttu-id="3204e-117">瀏覽到 [http://localhost:5001/About](http://localhost:5001/About) 並驗證已顯示變更。</span><span class="sxs-lookup"><span data-stu-id="3204e-117">Browse to [http://localhost:5001/About](http://localhost:5001/About) and verify the changes are displayed.</span></span>
 
 [!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
@@ -82,30 +82,30 @@ ms.locfileid: "38216209"
 
 ::: moniker range="= aspnetcore-2.0"
 
-1. <span data-ttu-id="5accb-118">安裝 [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]。</span><span class="sxs-lookup"><span data-stu-id="5accb-118">Install the [!INCLUDE [](~/includes/net-core-sdk-download-link.md)].</span></span>
+1. <span data-ttu-id="3204e-118">安裝 [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]。</span><span class="sxs-lookup"><span data-stu-id="3204e-118">Install the [!INCLUDE [](~/includes/net-core-sdk-download-link.md)].</span></span>
 
-2. <span data-ttu-id="5accb-119">建立新的 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="5accb-119">Create a new ASP.NET Core project.</span></span>
+2. <span data-ttu-id="3204e-119">建立新的 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="3204e-119">Create a new ASP.NET Core project.</span></span>
 
-   <span data-ttu-id="5accb-120">開啟命令殼層。</span><span class="sxs-lookup"><span data-stu-id="5accb-120">Open a command shell.</span></span> <span data-ttu-id="5accb-121">輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="5accb-121">Enter the following command:</span></span>
+   <span data-ttu-id="3204e-120">開啟命令殼層。</span><span class="sxs-lookup"><span data-stu-id="3204e-120">Open a command shell.</span></span> <span data-ttu-id="3204e-121">輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="3204e-121">Enter the following command:</span></span>
 
     ```console
     dotnet new razor -o aspnetcoreapp
     ```
 
-3. <span data-ttu-id="5accb-122">使用下列命令來執行應用程式：</span><span class="sxs-lookup"><span data-stu-id="5accb-122">Run the app with the following commands:</span></span>
+3. <span data-ttu-id="3204e-122">使用下列命令來執行應用程式：</span><span class="sxs-lookup"><span data-stu-id="3204e-122">Run the app with the following commands:</span></span>
 
     ```console
     cd aspnetcoreapp
     dotnet run
     ```
 
-4. <span data-ttu-id="5accb-123">瀏覽至 [http://localhost:5000](http://localhost:5000)。</span><span class="sxs-lookup"><span data-stu-id="5accb-123">Browse to [http://localhost:5000](http://localhost:5000).</span></span>
+4. <span data-ttu-id="3204e-123">瀏覽至 [http://localhost:5000](http://localhost:5000)。</span><span class="sxs-lookup"><span data-stu-id="3204e-123">Browse to [http://localhost:5000](http://localhost:5000).</span></span>
 
-5. <span data-ttu-id="5accb-124">開啟 *Pages/About.cshtml* 並將頁面顯示訊息修改為 "Hello, world!</span><span class="sxs-lookup"><span data-stu-id="5accb-124">Open *Pages/About.cshtml* and modify the page to display the message "Hello, world!</span></span> <span data-ttu-id="5accb-125">伺服器的時間為 @DateTime.Now“ ：</span><span class="sxs-lookup"><span data-stu-id="5accb-125">The time on the server is @DateTime.Now":</span></span>
+5. <span data-ttu-id="3204e-124">開啟 *Pages/About.cshtml* 並將頁面顯示訊息修改為 "Hello, world!</span><span class="sxs-lookup"><span data-stu-id="3204e-124">Open *Pages/About.cshtml* and modify the page to display the message "Hello, world!</span></span> <span data-ttu-id="3204e-125">伺服器的時間為 @DateTime.Now“ ：</span><span class="sxs-lookup"><span data-stu-id="3204e-125">The time on the server is @DateTime.Now":</span></span>
 
     [!code-cshtml[](sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
-6. <span data-ttu-id="5accb-126">瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並確認所做的變更。</span><span class="sxs-lookup"><span data-stu-id="5accb-126">Browse to [http://localhost:5000/About](http://localhost:5000/About) and verify the changes.</span></span>
+6. <span data-ttu-id="3204e-126">瀏覽至 [http://localhost:5000/About](http://localhost:5000/About) 並確認所做的變更。</span><span class="sxs-lookup"><span data-stu-id="3204e-126">Browse to [http://localhost:5000/About](http://localhost:5000/About) and verify the changes.</span></span>
 
 [!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 
@@ -113,18 +113,18 @@ ms.locfileid: "38216209"
 
 ::: moniker range="<= aspnetcore-1.1"
 
-1. <span data-ttu-id="5accb-127">從 [.NET Core All Downloads](https://www.microsoft.com/net/download/all) (.NET Core 所有下載) 頁面安裝適用於 SDK 1.0.4 的 .NET Core **SDK 安裝程式**。</span><span class="sxs-lookup"><span data-stu-id="5accb-127">Install the .NET Core **SDK Installer** for SDK 1.0.4 from the [.NET Core All Downloads page](https://www.microsoft.com/net/download/all).</span></span>
+1. <span data-ttu-id="3204e-127">從 [.NET Core All Downloads](https://www.microsoft.com/net/download/all) (.NET Core 所有下載) 頁面安裝適用於 SDK 1.0.4 的 .NET Core **SDK 安裝程式**。</span><span class="sxs-lookup"><span data-stu-id="3204e-127">Install the .NET Core **SDK Installer** for SDK 1.0.4 from the [.NET Core All Downloads page](https://www.microsoft.com/net/download/all).</span></span>
 
-2. <span data-ttu-id="5accb-128">為新的 ASP.NET Core 專案建立資料夾。</span><span class="sxs-lookup"><span data-stu-id="5accb-128">Create a folder for a new ASP.NET Core project.</span></span>
+2. <span data-ttu-id="3204e-128">為新的 ASP.NET Core 專案建立資料夾。</span><span class="sxs-lookup"><span data-stu-id="3204e-128">Create a folder for a new ASP.NET Core project.</span></span>
 
-   <span data-ttu-id="5accb-129">開啟命令殼層。</span><span class="sxs-lookup"><span data-stu-id="5accb-129">Open a command shell.</span></span> <span data-ttu-id="5accb-130">輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="5accb-130">Enter the following commands:</span></span>
+   <span data-ttu-id="3204e-129">開啟命令殼層。</span><span class="sxs-lookup"><span data-stu-id="3204e-129">Open a command shell.</span></span> <span data-ttu-id="3204e-130">輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="3204e-130">Enter the following commands:</span></span>
 
    ```console
    mkdir aspnetcoreapp
    cd aspnetcoreapp
    ```
 
-3. <span data-ttu-id="5accb-131">如果您已在電腦上安裝較新版的 SDK，請建立 *global.json* 檔案來選取 1.0.4 SDK。</span><span class="sxs-lookup"><span data-stu-id="5accb-131">If you have installed a later SDK version on your machine, create a *global.json* file to select the 1.0.4 SDK.</span></span>
+3. <span data-ttu-id="3204e-131">如果您已在電腦上安裝較新版的 SDK，請建立 *global.json* 檔案來選取 1.0.4 SDK。</span><span class="sxs-lookup"><span data-stu-id="3204e-131">If you have installed a later SDK version on your machine, create a *global.json* file to select the 1.0.4 SDK.</span></span>
 
    ```json
    {
@@ -132,27 +132,27 @@ ms.locfileid: "38216209"
    }
    ```
 
-4. <span data-ttu-id="5accb-132">建立新的 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="5accb-132">Create a new ASP.NET Core project.</span></span>
+4. <span data-ttu-id="3204e-132">建立新的 ASP.NET Core 專案。</span><span class="sxs-lookup"><span data-stu-id="3204e-132">Create a new ASP.NET Core project.</span></span>
 
    ```console
    dotnet new web
    ```
 
-5. <span data-ttu-id="5accb-133">還原套件。</span><span class="sxs-lookup"><span data-stu-id="5accb-133">Restore the packages.</span></span>
+5. <span data-ttu-id="3204e-133">還原套件。</span><span class="sxs-lookup"><span data-stu-id="3204e-133">Restore the packages.</span></span>
 
     ```console
     dotnet restore
     ```
 
-6. <span data-ttu-id="5accb-134">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="5accb-134">Run the app.</span></span>
+6. <span data-ttu-id="3204e-134">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="3204e-134">Run the app.</span></span>
 
    ```console
    dotnet run
    ```
 
-   <span data-ttu-id="5accb-135">[dotnet run](/dotnet/core/tools/dotnet-run) 命令會在必要時先建置應用程式。</span><span class="sxs-lookup"><span data-stu-id="5accb-135">The [dotnet run](/dotnet/core/tools/dotnet-run) command builds the app first, if needed.</span></span>
+   <span data-ttu-id="3204e-135">[dotnet run](/dotnet/core/tools/dotnet-run) 命令會在必要時先建置應用程式。</span><span class="sxs-lookup"><span data-stu-id="3204e-135">The [dotnet run](/dotnet/core/tools/dotnet-run) command builds the app first, if needed.</span></span>
 
-7. <span data-ttu-id="5accb-136">瀏覽至 `http://localhost:5000`。</span><span class="sxs-lookup"><span data-stu-id="5accb-136">Browse to `http://localhost:5000`.</span></span>
+7. <span data-ttu-id="3204e-136">瀏覽至 `http://localhost:5000`。</span><span class="sxs-lookup"><span data-stu-id="3204e-136">Browse to `http://localhost:5000`.</span></span>
 
 [!INCLUDE [next steps](~/includes/getting-started/next-steps.md)]
 ::: moniker-end

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 2890b2e6cdb536850b3764b5a78084cca335b489
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 83965e69249ca8196d0f226528735444936567ad
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275758"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095609"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>將 ASP.NET Core 裝載到 Azure App Service
 
@@ -151,11 +151,12 @@ Azure [Web Apps 文件](/azure/app-service/)是 Azure 應用程式文件、教�
 * [Azure App Service：裝載 .NET 應用程式的最佳平台 (55 分鐘的概觀影片)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Azure Friday：Azure App Service 診斷和疑難排解體驗 (12 分鐘的影片)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)
+* <xref:host-and-deploy/web-farm>
 
 Windows Server 上的 Azure App Service 使用 [Internet Information Services (IIS)](https://www.iis.net/)。 有關基礎 IIS 技術的主題如下：
 
-* [使用 IIS 在 Windows 上裝載 ASP.NET](xref:host-and-deploy/iis/index)
-* [ASP.NET Core 模組簡介](xref:fundamentals/servers/aspnet-core-module)
-* [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module)
-* [IIS 模組與 ASP.NET Core](xref:host-and-deploy/iis/modules)
+* <xref:host-and-deploy/iis/index>
+* <xref:fundamentals/servers/aspnet-core-module>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/iis/modules>
 * [Microsoft TechNet Library：Windows Server](/windows-server/windows-server-versions)

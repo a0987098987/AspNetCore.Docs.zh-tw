@@ -1,51 +1,52 @@
 ---
-title: 資料保護金鑰管理和 ASP.NET Core 存留期
+title: 資料保護的金鑰管理和 ASP.NET Core 中的存留期
 author: rick-anderson
-description: 了解資料保護的金鑰管理和 ASP.NET Core 存留期。
+description: 深入了解資料保護的金鑰管理和 ASP.NET Core 中的存留期。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 54259b1e2f37cdbbd551038e80f2b0fa1d77f196
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: beff17dd81143db02a0cbc79fa7cb3a6a4deeda6
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277800"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095095"
 ---
-# <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護金鑰管理和 ASP.NET Core 存留期
+# <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>資料保護的金鑰管理和 ASP.NET Core 中的存留期
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="key-management"></a>金鑰管理
 
-應用程式會嘗試偵測其操作環境和處理自己的金鑰組態而有所不同。
+應用程式會嘗試偵測其操作環境和處理上自己的金鑰設定。
 
-1. 如果應用程式裝載在[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到 *%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾使用網路儲存體進行保存，並會在裝載應用程式的所有電腦上同步。
+1. 如果應用程式裝載於[Azure 應用程式](https://azure.microsoft.com/services/app-service/)，金鑰會保存到 *%HOME%\ASP.NET\DataProtection-Keys*資料夾。 此資料夾使用網路儲存體進行保存，並會在裝載應用程式的所有電腦上同步。
    * 金鑰待用時不受保護。
-   * *DataProtection 金鑰*資料夾提供單一部署位置中的應用程式的所有執行個體索引鍵環形。
-   * 各部署位置，例如預備和生產位置，不會共用金鑰環。 當您交換兩個部署位置，例如交換到生產環境的臨時區域，或使用 A / B 測試，使用資料保護的任何應用程式將無法使用金鑰環形內的前一個插槽的預存的資料解密。 這會導致使用者記錄從應用程式會使用標準 ASP.NET Core cookie 驗證中，因為它使用資料保護來保護其 cookie。 如果您想要獨立位置的索引鍵環形，使用外部索引鍵環提供者，例如 Azure Blob 儲存體，Azure 金鑰保存庫中，SQL 存放區或 Redis 快取。
+   * *DataProtection 金鑰*資料夾提供金鑰環單一部署位置中的應用程式的所有執行個體。
+   * 各部署位置，例如預備和生產位置，不會共用金鑰環。 當您交換部署位置，例如交換預備環境或生產環境，或使用 A 之間 / B 測試、 使用資料保護的任何應用程式將無法解密儲存的資料使用前一個位置內的金鑰環。 這會導致正在登入的使用者複製應用程式使用標準的 ASP.NET Core cookie 驗證，因為它使用資料保護來保護其 cookie。 如果您想要的位置無關的金鑰環，請使用外部金鑰環提供者，例如 Azure Blob 儲存體、 Azure Key Vault，SQL 存放區中，或 Redis 快取。
 
-1. 如果使用者設定檔可用時，會保存金鑰 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統為 Windows，該金鑰會加密在靜止使用 DPAPI。
+1. 如果使用者設定檔可用時，會保存索引鍵 *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*資料夾。 如果作業系統是 Windows，在待用期間使用 DPAPI 加密金鑰。
 
-1. 如果應用程式裝載在 IIS 中，會保存 ACLed 只是為了背景工作處理序帳戶的特殊的登錄機碼 HKLM 登錄機碼。 在待用期間使用 DPAPI 加密金鑰。
+1. 如果應用程式裝載在 IIS 中，金鑰會保存到特殊的登錄機碼，只是背景工作處理序帳戶列入 Acl 中的 HKLM 登錄中。 在待用期間使用 DPAPI 加密金鑰。
 
-1. 如果上述條件均不相符時，索引鍵不被保存在目前的程序之外。 處理程序關閉時，產生所有索引鍵將會遺失。
+1. 如果上述條件均不相符時，金鑰不會保存在目前的程序之外。 處理程序關閉時，所有已產生的金鑰將會遺失。
 
-開發人員一定是完全控制，而且可以覆寫的方式，以及索引鍵儲存位置。 上面的前三個選項應該很好的預設值提供給大部分的應用程式，類似 ASP.NET  **\<machineKey >** 自動產生常式過去。 最後，後援選項是需要開發人員指定的唯一案例[組態](xref:security/data-protection/configuration/overview)前方如果他們想要的索引鍵的持續性，但此後援只會在極少數的情況下發生。
+開發人員一律可以完全控制，並儲存金鑰，以及可以覆寫。 上述的前三個選項應該提供不錯的預設值對於大多數的應用程式，類似 ASP.NET  **\<machineKey >** 自動產生常式過去。 最終，後援選項是需要開發人員指定的唯一案例[組態](xref:security/data-protection/configuration/overview)預付如果他們想要金鑰的持續性，但此後援才會發生在少數情況下。
 
-當主控在 Docker 容器中，金鑰應保留在 Docker 磁碟區 （共用磁碟區或主機掛接的磁碟區容器的存留期保存） 的資料夾或外部提供者，例如[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)。 外部提供者也是在 web 伺服陣列案例中很有用的應用程式無法存取網路共用磁碟區 (請參閱[PersistKeysToFileSystem](xref:security/data-protection/configuration/overview#persistkeystofilesystem)如需詳細資訊)。
+當裝載的 Docker 容器中，金鑰應保留在 Docker 磁碟區 （共用磁碟區或主應用程式掛接的磁碟區會保存超過容器的存留期） 的資料夾或外部提供者，例如[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)或是[Redis](https://redis.io/)。 如果應用程式無法存取的共用的網路磁碟區，還有在 web 伺服陣列案例中有用外部提供者 (請參閱[PersistKeysToFileSystem](xref:security/data-protection/configuration/overview#persistkeystofilesystem)如需詳細資訊)。
 
 > [!WARNING]
-> 如果開發人員覆寫以上所述的規則，並指向特定的金鑰儲存機制的資料保護系統，會停用自動加密在靜止的索引鍵。 在 rest 保護可以透過重新啟用[組態](xref:security/data-protection/configuration/overview)。
+> 如果開發人員會覆寫上面所述的規則，並指向特定的金鑰存放庫資料保護系統，會停用自動加密待用的金鑰。 待用保護可以透過重新啟用[組態](xref:security/data-protection/configuration/overview)。
 
 ## <a name="key-lifetime"></a>金鑰存留期
 
-索引鍵具有預設的 90 天的存留期。 金鑰過期時，應用程式會自動產生新的金鑰，然後將新的金鑰設定為作用中金鑰。 只要已停用的索引鍵會保留在系統上，您的應用程式可以解密與它們保護的任何資料。 請參閱[金鑰管理](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling)如需詳細資訊。
+根據預設，索引鍵具有 90 天的存留期。 索引鍵過期時，應用程式自動產生新的金鑰，並將新的金鑰設定為作用中金鑰。 只要已停用的索引鍵會保留在系統上，您的應用程式可以解密與其受保護的任何資料。 請參閱[金鑰管理](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling)如需詳細資訊。
 
 ## <a name="default-algorithms"></a>預設的演算法
 
-使用的預設裝載保護演算法為 256-AES-CBC 機密性和 HMACSHA256 的真實性。 512 位元主要金鑰，每 90 天變更，用來衍生這些每個裝載為基礎的演算法使用兩個子機碼。 請參閱[子機碼衍生](xref:security/data-protection/implementation/subkeyderivation#additional-authenticated-data-and-subkey-derivation)如需詳細資訊。
+使用預設承載的保護演算法會是 AES-256-CBC 機密性和 HMACSHA256 的真實性。 變更每隔 90 天，512 位元主要金鑰用來衍生兩個的子機碼，以使用這些演算法，每個裝載為基礎。 請參閱[子機碼衍生](xref:security/data-protection/implementation/subkeyderivation#additional-authenticated-data-and-subkey-derivation)如需詳細資訊。
 
-## <a name="see-also"></a>另請參閱
+## <a name="additional-resources"></a>其他資源
 
-* [金鑰管理擴充性](xref:security/data-protection/extensibility/key-management)
+* <xref:security/data-protection/extensibility/key-management>
+* <xref:host-and-deploy/web-farm>

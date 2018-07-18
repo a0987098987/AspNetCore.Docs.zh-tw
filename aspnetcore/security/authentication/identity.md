@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 包括設�
 ms.author: riande
 ms.date: 01/24/2018
 uid: security/authentication/identity
-ms.openlocfilehash: c231a7619a4433ce004342ce68564e4c3892e702
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 50ddb96000e6a3f9e1762e9bb3e1f215f20d4356
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829298"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095635"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -199,7 +199,8 @@ ASP.NET Core Identity 是可讓您將登入功能加入至您的應用程式的�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [移轉驗證和身分識別](xref:migration/identity)
-* [帳戶確認和密碼復原](xref:security/authentication/accconfirm)
-* [使用 SMS 的雙因素驗證](xref:security/authentication/2fa)
-* [Facebook、 Google 及外部提供者驗證](xref:security/authentication/social/index)
+* <xref:migration/identity>
+* <xref:security/authentication/accconfirm>
+* <xref:security/authentication/2fa>
+* <xref:security/authentication/social/index>
+* <xref:host-and-deploy/web-farm>

@@ -4,19 +4,16 @@ title: 建立使用者帳戶 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將探討使用 （透過 SqlMembershipProvider) 的成員資格架構來建立新的使用者帳戶。 我們將了解如何建立新我們...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: f175278c-6079-4d91-b9b4-2493ed43d9ec
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 161d7b71f169252699e0c33ad969bef9c2c62d5f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 7caa6b614bbe6545929a9b201de7f30fe95e6481
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386594"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842620"
 ---
 <a name="creating-user-accounts-c"></a>建立使用者帳戶 (C#)
 ====================
@@ -31,7 +28,7 @@ ms.locfileid: "37386594"
 
 在  <a id="_msoanchor_1"> </a>[前述教學課程](creating-the-membership-schema-in-sql-server-cs.md)我們在資料庫中，而且在加入資料表、 檢視、 預存程序所需的安裝應用程式服務結構描述`SqlMembershipProvider`和`SqlRoleProvider`。 這會建立我們需要在這一系列的教學課程的其餘部分的基礎結構。 在本教學課程中我們將探討使用成員資格架構 (透過`SqlMembershipProvider`) 來建立新的使用者帳戶。 我們將了解如何以程式設計方式及透過 ASP，建立新的使用者。NET 的內建的 CreateUserWizard 控制項。
 
-除了了解如何建立新的使用者帳戶，我們也必須更新我們第一次建立中的示範網站 *<a id="_msoanchor_2"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)* 教學課程，然後增強 *<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"> </a>表單驗證組態和進階主題*教學課程。 我們的示範 web 應用程式已驗證使用者的認證，對硬式編碼的使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含建立自訂的程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，對成員資格架構和移除主體和身分識別的自訂邏輯。
+除了了解如何建立新的使用者帳戶，我們也必須更新我們第一次建立中的示範網站*<a id="_msoanchor_2"></a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)* 教學課程，然後增強*<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"></a>表單驗證組態和進階主題*教學課程。 我們的示範 web 應用程式已驗證使用者的認證，對硬式編碼的使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含建立自訂的程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，對成員資格架構和移除主體和身分識別的自訂邏輯。
 
 讓我們開始吧 ！
 
@@ -39,7 +36,7 @@ ms.locfileid: "37386594"
 
 我們開始使用成員資格架構之前，讓我們花一點時間檢閱重要的步驟，我們已到達此點。 使用成員資格架構時`SqlMembershipProvider`在表單型驗證案例中，必須在 web 應用程式中實作成員資格功能之前要執行下列步驟：
 
-1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)*，藉由編輯啟用表單驗證`Web.config`和 [設定`<authentication>`項目的`mode`屬性設定為`Forms`。 使用啟用表單驗證，每個傳入要求會檢查*表單驗證票證*，其中，如果有的話，識別要求者。
+1. **啟用表單型驗證。** 如我們所述 *<a id="_msoanchor_4"> </a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)*，藉由編輯啟用表單驗證`Web.config`和設定`<authentication>`項目的`mode`屬性設定為`Forms`。 使用啟用表單驗證，每個傳入要求會檢查*表單驗證票證*，其中，如果有的話，識別要求者。
 2. **將應用程式服務結構描述新增至適當的資料庫。** 當使用`SqlMembershipProvider`我們需要安裝應用程式服務結構描述的資料庫。 通常這個結構描述加入至相同保存應用程式的資料模型的資料庫。 *<a id="_msoanchor_5"> </a> [SQL Server 中建立成員資格結構描述](creating-the-membership-schema-in-sql-server-cs.md)* 教學課程會探討使用`aspnet_regsql.exe`工具來完成這項作業。
 3. **自訂 Web 應用程式的設定，以從步驟 2 中參考的資料庫。** *在 SQL Server 中建立成員資格結構描述*教學課程示範了兩種方式可以設定 web 應用程式，以便`SqlMembershipProvider`會使用在步驟 2 中所選取的資料庫： 藉由修改`LocalSqlServer`連接字串名稱;或將新註冊的提供者新增至成員資格架構提供者的清單，並自訂該新的提供者，以使用資料庫。 請從步驟 2。
 

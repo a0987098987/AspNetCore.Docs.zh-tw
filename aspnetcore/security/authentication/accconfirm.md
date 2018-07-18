@@ -5,89 +5,82 @@ description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NE
 ms.author: riande
 ms.date: 2/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 12265903f60ff6d62befc445434db025c244c178
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.openlocfilehash: 8e175cd19ca4a9de1e7cf6b330b3d82f309b6501
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803268"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063334"
 ---
+::: moniker range="<= aspnetcore-2.0"
+
+請參閱[此 PDF 檔案](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf)ASP.NET Core 1.1 和 2.1 版。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>帳戶確認和 ASP.NET Core 中的密碼復原
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)
 
 本教學課程會示範如何建置使用電子郵件確認和密碼重設的 ASP.NET Core 應用程式。 本教學課程**不**開頭主題。 您應該先熟悉：
 
-* [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
+* [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
 * [驗證](xref:security/authentication/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-請參閱[此 PDF 檔案](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf)ASP.NET Core MVC 1.1 和 2.x 版。
+<!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/2.1-SDK.md) [](~/includes/2.1-SDK.md)]
 
-## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a>使用.NET Core CLI 建立新的 ASP.NET Core 專案
+## <a name="create-a-web--app-and-scaffold-identity"></a>建立 web 應用程式，並建立身分識別的結構
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-::: moniker range=">= aspnetcore-2.1"
-
-```console
-dotnet new webapp --auth Individual -o WebPWrecover
-cd WebPWrecover
-```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```console
-dotnet new razor --auth Individual -o WebPWrecover
-cd WebPWrecover
-```
-
-::: moniker-end
-
-* `--auth Individual` 指定的個別使用者帳戶的專案範本。
-* 在 Windows 中，新增`-uld`選項。 它會指定應該使用 LocalDB，而不是 SQLite。
-* 執行`new mvc --help`來取得此命令的說明。
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-如果您使用 CLI 或 SQLite，執行下列命令在命令視窗中：
-
-```console
-dotnet new mvc --auth Individual
-```
-
-* `--auth Individual` 指定的個別使用者帳戶的專案範本。
-* 在 Windows 中，新增`-uld`選項。 它會指定應該使用 LocalDB，而不是 SQLite。
-* 執行`new mvc --help`來取得此命令的說明。
-
----
-
-或者，您也可以使用 Visual Studio 中建立新的 ASP.NET Core 專案：
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * 在 Visual Studio 中，建立新**Web 應用程式**專案。
-* 選取  **ASP.NET Core 2.0**。 **.NET core**選取在下圖中，但您可以選取 **.NET Framework**。
-* 選取 **變更驗證**並將設定為**個別使用者帳戶**。
-* 保留預設值**存放區的使用者帳戶的應用程式內**。
+* 選取  **ASP.NET Core 2.1**。
+* 保留預設值**驗證**設為**不需要驗證**。 下一個步驟中加入驗證。
 
-![顯示 「 個別使用者帳戶選項 」 選取 [新增專案] 對話方塊](accconfirm/_static/2.png)
+在下一個步驟：
+
+* 將版面配置頁面設為 *~/Pages/Shared/_Layout.cshtml*
+* 選取*帳戶/註冊*
+* 建立新**資料內容類別**
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+```console
+dotnet new webapp -o WebPWrecover
+cd WebPWrecover
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet restore
+dotnet aspnet-codegenerator identity -fi Account.Register -dc WebPWrecover.Models.WebPWrecoverContext
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database drop -f
+dotnet ef database update
+dotnet build
+```
+
+執行`dotnet aspnet-codegenerator identity --help`scaffolding 工具取得說明。
+
+------
+
+請依照下列中的指示[啟用驗證](xref:security/authentication/scaffold-identity#useauthentication):
+
+* 新增`app.UseAuthentication();`至 `Startup.Configure`
+* 新增`<partial name="_LoginPartial" />`和配置檔案。
 
 ## <a name="test-new-user-registration"></a>測試新的使用者註冊
 
-執行應用程式，請選取**註冊**連結，並註冊的使用者。 請依照下列指示執行 Entity Framework Core 移轉。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊之後, 您登入應用程式。 稍後在教學課程中，因此新的使用者無法登入，直到已驗證電子郵件，被更新的程式碼。
+執行應用程式，請選取**註冊**連結，並註冊的使用者。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊之後, 您登入應用程式。 稍後在教學課程中，會將程式碼更新讓新的使用者無法登入，直到其電子郵件會進行驗證。
 
 ## <a name="view-the-identity-database"></a>檢視識別資料庫
 
-請參閱[ASP.NET Core MVC 專案中使用 SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)如需有關如何檢視 SQLite 資料庫。
-
-Visual studio:
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * 從**檢視**功能表上，選取**SQL Server 物件總管**(SSOX)。
 * 瀏覽至 **(localdb) (SQL Server 13) MSSQLLocalDB**。 以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:
@@ -98,11 +91,11 @@ Visual studio:
 
 您可能想要這封電子郵件一次的下一個步驟時使用的應用程式會傳送確認電子郵件。 以滑鼠右鍵按一下資料列，然後選取**刪除**。 刪除電子郵件別名更容易在下列步驟。
 
----
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-## <a name="require-https"></a>需要 HTTPS
+請參閱[ASP.NET Core MVC 專案中使用 SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)如需有關如何檢視 SQLite 資料庫。
 
-請參閱[需要 HTTPS](xref:security/enforcing-ssl)。
+------
 
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
@@ -111,26 +104,32 @@ Visual studio:
 
 您通常想要防止新使用者之前確認電子郵件張貼到您的網站的任何資料。
 
-更新`ConfigureServices`要求確認電子郵件：
+更新*Areas/Identity/IdentityHostingStartup.cs*要求確認電子郵件：
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/IdentityHostingStartup.cs?name=snippet1&highlight=10-13)]
 
 `config.SignIn.RequireConfirmedEmail = true;` 防止已註冊的使用者登入，直到確認其電子郵件。
 
 ### <a name="configure-email-provider"></a>設定電子郵件提供者
 
-在本教學課程中，用來傳送電子郵件的 SendGrid。 您需要的 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您可以使用 SendGrid 或另一個電子郵件服務傳送電子郵件。 SMTP 是難以保護，並正確設定。
+在本教學課程中， [SendGrid](https://sendgrid.com)用來傳送電子郵件。 您需要的 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您可以使用 SendGrid 或另一個電子郵件服務傳送電子郵件。 SMTP 是難以保護，並正確設定。
 
 [選項模式](xref:fundamentals/configuration/options)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱 <<c0> [ 組態](xref:fundamentals/configuration/index)。
 
-建立類別來擷取安全的電子郵件的金鑰。 此範例中，`AuthMessageSenderOptions`類別中建立*Services/AuthMessageSenderOptions.cs*檔案：
+建立類別來擷取安全的電子郵件的金鑰。 此範例中，建立*Services/AuthMessageSenderOptions.cs*:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+
+#### <a name="configure-sendgrid-user-secrets"></a>設定 SendGrid 使用者祕密
+
+新增的唯一`<UserSecretsId>`值`<PropertyGroup>`專案檔的項目：
+
+[!code-xml[](accconfirm/sample/WebPWrecover21/WebPWrecover.csproj?highlight=5)]
 
 設定`SendGridUser`並`SendGridKey`具有[secret manager 工具](xref:security/app-secrets)。 例如: 
 
 ```console
-C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
+C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
@@ -145,57 +144,49 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
   }
   ```
 
-### <a name="configure-startup-to-use-authmessagesenderoptions"></a>設定啟動，以使用 AuthMessageSenderOptions
-
-新增`AuthMessageSenderOptions`至服務容器的結尾`ConfigureServices`方法中的*Startup.cs*檔案：
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
-[!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet2&highlight=28)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-[!code-csharp[](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
-
----
-
-### <a name="configure-the-authmessagesender-class"></a>設定 AuthMessageSender 類別
+### <a name="install-sendgrid"></a>安裝 SendGrid
 
 本教學課程示範如何將透過電子郵件通知[SendGrid](https://sendgrid.com/)，但您可以傳送電子郵件使用 SMTP 和其他機制。
 
 安裝`SendGrid`NuGet 套件：
 
-* 從命令列：
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-    `dotnet add package SendGrid`
+從 [套件管理員] 主控台中，輸入下列命令：
 
-* 從 [套件管理員] 主控台中，輸入下列命令：
+``` PMC
+Install-Package SendGrid
+```
 
-  `Install-Package SendGrid`
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+在主控台中，輸入下列命令：
+
+```cli
+dotnet add package SendGrid
+```
+
+------
 
 請參閱[免費開始使用 SendGrid](https://sendgrid.com/free/)報名免費的 SendGrid 帳戶。
+### <a name="implement-iemailsender"></a>實作 IEmailSender
 
-#### <a name="configure-sendgrid"></a>設定 SendGrid
+實作`IEmailSender`，建立*Services/EmailSender.cs*與下列類似的程式碼：
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/EmailSender.cs)]
 
-若要設定 SendGrid，新增類似下列的程式碼*Services/EmailSender.cs*:
+### <a name="configure-startup-to-support-email"></a>設定啟動，以支援電子郵件
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
+將下列程式碼加入`ConfigureServices`方法中的*Startup.cs*檔案：
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+* 新增`EmailSender`作為單一服務。
+* 註冊`AuthMessageSenderOptions`組態執行個體。
 
-* 將程式碼中的加入*Services/MessageServices.cs*如下所示設定 SendGrid:
-
-[!code-csharp[](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
-
----
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>啟用帳戶確認和密碼復原
 
-範本會將程式碼進行帳戶確認和密碼復原。 尋找`OnPostAsync`方法中的*Pages/Account/Register.cshtml.cs*。
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+範本會將程式碼進行帳戶確認和密碼復原。 尋找`OnPostAsync`方法中的*Areas/Identity/Pages/Account/Register.cshtml.cs*。
 
 防止新註冊的使用者自動記錄的標記為註解下面這一行：
 
@@ -205,29 +196,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 使用已變更反白顯示的列，會顯示完整的方法：
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-若要啟用帳戶確認，取消註解下列程式碼：
-
-[!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
-
-**注意：** 程式碼，導致無法自動記錄的標記為註解下面這行的新註冊的使用者：
-
-```csharp
-//await _signInManager.SignInAsync(user, isPersistent: false);
-```
-
-取消註解中的程式碼中啟用密碼復原`ForgotPassword`動作*controllers/Accountcontroller.cs*:
-
-[!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=17-23&name=snippet_ForgotPassword)]
-
-取消註解中的表單項目*Views/Account/ForgotPassword.cshtml*。 您可能想要移除`<p> For more information on how to enable reset password ... </p>`元素，其中包含這篇文章的連結。
-
-[!code-cshtml[](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
-
----
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
 ## <a name="register-confirm-email-and-reset-password"></a>註冊、 確認電子郵件，以及重設密碼
 
@@ -250,18 +219,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 ![導覽列](accconfirm/_static/x.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
 [管理] 頁面會顯示**設定檔**選取的索引標籤。 **電子郵件**顯示核取方塊，指出電子郵件已確認。
-
-![管理頁面](accconfirm/_static/rick2.png)
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-稍後在本教學課程中，這是所述。
-![管理頁面](accconfirm/_static/rick2.png)
-
----
 
 ### <a name="test-password-reset"></a>測試密碼重設
 
@@ -276,7 +234,8 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 如果您無法收到電子郵件工作：
 
-* 建立[主控台應用程式以傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)。
+* 在 設定中斷點`EmailSender.Execute`若要確認`SendGridClient.SendEmailAsync`呼叫。
+* 建立[主控台應用程式以傳送電子郵件](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html)使用類似的程式碼以`EmailSender.Execute`。
 * 檢閱[電子郵件 」 活動](https://sendgrid.com/docs/User_Guide/email_activity.html)頁面。
 * 請檢查垃圾郵件資料夾。
 * 請嘗試不同的電子郵件提供者 （Microsoft、 Yahoo、 Gmail 等） 上的另一個電子郵件別名
@@ -308,3 +267,5 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 * 更新將標示為正在確認所有現有的使用者資料庫。
 * 請確認現有的使用者。 例如，批次傳送電子郵件以確認連結。
+
+::: moniker-end

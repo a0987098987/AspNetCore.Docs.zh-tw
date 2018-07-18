@@ -1,18 +1,18 @@
 ---
 title: ASP.NET Core SignalR 中的安全性考量
-author: rachelappel
+author: tdykstra
 description: 了解如何在 ASP.NET Core SignalR 使用驗證和授權。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/security
-ms.openlocfilehash: eff4542b88f24dd6c1c0675f56874e368d441fdd
-ms.sourcegitcommit: 32626efaa7316c9b283c96be6516e637d548c5e5
+ms.openlocfilehash: b66c7fbfbaee4c70a68f3132875fbc81018c3e20
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39028480"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095128"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的安全性考量
 
@@ -24,7 +24,7 @@ SignalR 預設提供安全性保護的數的字。 請務必了解如何設定�
 
 ### <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 
-[跨原始資源共用 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可用來允許跨原始來源 SignalR 連線的瀏覽器中。 如果您的 JavaScript 程式碼裝載在不同的網域名稱從 SignalR 應用程式，您必須啟用[ASP.NET Core CORS 中介軟體](xref:security/cors)才能允許連線。 一般情況下，允許跨原始來源要求，只能從您所控制的網域。 例如，如果您的網站裝載於`http://www.example.com`和您的 SignalR 應用程式裝載於`http://signalr.example.com`，您應該在您的 SignalR 應用程式，只允許來源中設定 CORS `www.example.com`。
+[跨原始資源共用 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可用來允許跨原始來源 SignalR 連線的瀏覽器中。 如果您的 JavaScript 程式碼裝載在不同的網域名稱從 SignalR 應用程式，您必須啟用[ASP.NET Core CORS 中介軟體](xref:security/cors)才能允許連線。 一般情況下，允許跨原始來源要求，只能從您所控制的網域。 例如，如果您的網站裝載於 `http://www.example.com` 和您的 SignalR 應用程式裝載於 `http://signalr.example.com`，您應該在您的 SignalR 應用程式，只允許來源中設定 CORS `www.example.com`。
 
 如需有關如何設定 CORS 的詳細資訊，請參閱 < [ASP.NET Core CORS 的相關文件](xref:security/cors)。 SignalR 需要下列的 CORS 原則，才能正確運作：
 
@@ -32,7 +32,7 @@ SignalR 預設提供安全性保護的數的字。 請務必了解如何設定�
 * HTTP 方法`GET`和`POST`必須允許。
 * 必須啟用認證，即使您未使用驗證。
 
-例如，下列的 CORS 原則允許 SignalR 瀏覽器的用戶端，裝載於`http://example.com`存取 SignalR 應用程式：
+例如，下列的 CORS 原則允許 SignalR 瀏覽器的用戶端，裝載於 `http://example.com` 存取 SignalR 應用程式：
 
 ```csharp
 public void Configure(IApplicationBuilder app)

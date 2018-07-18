@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
 uid: host-and-deploy/index
-ms.openlocfilehash: 31444475e39a12d526dd624bb508770429e414ca
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e62b68c4cfad29bb8bea3b9fbb2c231a4afeccea
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277146"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095664"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -71,6 +71,10 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 ## <a name="publishing-to-azure"></a>發行至 Azure
 
 如需使用 Visual Studio 將應用程式發行到 Azure 的指示，請參閱[使用 Visual Studio 將 ASP.NET Core Web 應用程式發行到 Azure App Service](xref:tutorials/publish-to-azure-webapp-using-vs)。 您也可以透過[命令列](xref:tutorials/publish-to-azure-webapp-using-cli)，將應用程式發行至 Azure。
+
+## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
+
+如需在 Web 伺服陣列環境中裝載 ASP.NET Core 應用程式的設定資訊 (例如部署應用程式的多個執行個體以獲得調整能力)，請參閱 <xref:host-and-deploy/web-farm>。
 
 ## <a name="additional-resources"></a>其他資源
 

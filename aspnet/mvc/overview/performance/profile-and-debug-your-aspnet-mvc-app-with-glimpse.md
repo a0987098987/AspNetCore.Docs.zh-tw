@@ -52,7 +52,7 @@ ms.locfileid: "37808537"
 <a id="eg"></a>
 ## <a name="enable-glimpse-for-localhost"></a>啟用 localhost 的初探
 
-瀏覽至http://localhost:&lt; 連接埠 #&gt;/glimpse.axd，然後按一下<strong>開啟 Glimpse</strong>  按鈕。
+瀏覽至 http://localhost:&lt; 連接埠 #&gt;/glimpse.axd，然後按一下<strong>開啟 Glimpse</strong>  按鈕。
 
 ![Glimpse axd-isapid-2.0-64 頁面](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
 

@@ -141,11 +141,11 @@ CodeFile 屬性會在 Visual Studio 2002/2003年 CodeBehind 屬性取代。
 
 ## <a name="apprelativetemplatesourcedirectory"></a>AppRelativeTemplateSourceDirectory
 
-回到頁面或控制項的應用程式相對路徑。 例如，針對位於頁面http://app/folder/page.aspx，此屬性傳回 ~ / 資料夾 /。
+回到頁面或控制項的應用程式相對路徑。 例如，針對位於頁面 http://app/folder/page.aspx，此屬性傳回 ~ / 資料夾 /。
 
 ## <a name="apprelativevirtualpath"></a>AppRelativeVirtualPath
 
-回到頁面或控制項的相對虛擬目錄路徑。 例如對於頁面位於http://app/folder/page.aspx，此屬性傳回 ~ / folder/page.aspx。
+回到頁面或控制項的相對虛擬目錄路徑。 例如對於頁面位於 http://app/folder/page.aspx，此屬性傳回 ~ / folder/page.aspx。
 
 ## <a name="asynctimeout"></a>AsyncTimeout
 

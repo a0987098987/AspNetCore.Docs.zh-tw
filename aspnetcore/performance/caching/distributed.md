@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2017
 uid: performance/caching/distributed
-ms.openlocfilehash: 861664fcad576c11abe052837b72367eb2b9479a
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 9c41a6e008045231bd2e1c1f53a9161e11daafa9
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095677"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123836"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>使用 ASP.NET Core 中的分散式快取
 
@@ -79,12 +79,13 @@ ms.locfileid: "39095677"
 
 [!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet1)]
 
-> [!NOTE]
-> 由於`IDistributedCache`中設定`ConfigureServices`方法，您就能夠`Configure`做為參數的方法。 將它加入做為參數，可讓透過 DI 提供設定的執行個體。
+由於`IDistributedCache`中設定`ConfigureServices`方法，您就能夠`Configure`做為參數的方法。 將它加入做為參數，可讓透過 DI 提供設定的執行個體。
 
 ## <a name="using-a-redis-distributed-cache"></a>使用分散式的 Redis 快取
 
 [Redis](https://redis.io/)是開放原始碼記憶體中的資料存放區，通常是做為分散式快取。 您可以使用在本機，而且您可以設定[Azure Redis 快取](https://azure.microsoft.com/services/cache/)Azure 託管的 ASP.NET Core 應用程式。 您的 ASP.NET Core 應用程式會設定快取實作使用`RedisDistributedCache`執行個體。
+
+Redis 快取需要[Microsoft.Extensions.Caching.Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Redis/)
 
 設定中的 Redis 實作`ConfigureServices`，而且應用程式程式碼存取所要求的執行個體`IDistributedCache`（請參閱上面的程式碼）。
 
@@ -92,8 +93,7 @@ ms.locfileid: "39095677"
 
 [!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet2)]
 
-> [!NOTE]
-> 若要在本機電腦上安裝 Redis，安裝 chocolatey 封裝[ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
+若要在本機電腦上安裝 Redis，安裝 chocolatey 封裝[ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/)並執行`redis-server`從命令提示字元。
 
 ## <a name="using-a-sql-server-distributed-cache"></a>使用 SQL Server 分散式快取
 

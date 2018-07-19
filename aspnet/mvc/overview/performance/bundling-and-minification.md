@@ -8,12 +8,12 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 090bb58f762302e0f58db7b8c005fe584e5ec419
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4e72804593c07318af8cc577f9d43ab96be4de05
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827371"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123784"
 ---
 <a name="bundling-and-minification"></a>統合和縮製
 ====================
@@ -69,7 +69,7 @@ ms.locfileid: "37827371"
 | **接收的 KB** | 388.51 | 530 | 36% |
 | **載入時間** | 510 MS | 780 MS | 53% |
 
-傳送的位元組必須大幅降低透過搭售，瀏覽器會使用其套用於要求的 HTTP 標頭相當詳細資訊。 接收的位元組減少不大因為最大的檔案 (*Scripts\jquery-ui-1.8.11.min.js*並*Scripts\jquery-1.7.1.min.js*) 已縮減。 附註： 在使用的範例程式時機[Fiddler](http://www.fiddler2.com/fiddler2/)來模擬慢速網路工具。 (從 Fiddler**規則**功能表上，選取**效能**然後**模擬數據機速度**。)
+傳送的位元組必須大幅降低透過搭售，瀏覽器會使用其套用於要求的 HTTP 標頭相當詳細資訊。 接收的位元組減少不是最大因為最大的檔案 (*指令碼\\jquery-ui-1.8.11.min.js*並*指令碼\\jquery 1.7.1.min.js*) 已縮減. 附註： 在使用的範例程式時機[Fiddler](http://www.fiddler2.com/fiddler2/)來模擬慢速網路工具。 (從 Fiddler**規則**功能表上，選取**效能**然後**模擬數據機速度**。)
 
 ## <a name="debugging-bundled-and-minified-javascript"></a>偵錯配套並縮短 JavaScript
 
@@ -79,7 +79,7 @@ ms.locfileid: "37827371"
 2. 選取包含您想要使用 [資產] 按鈕進行偵錯的 JavaScript 函式的組合。  
     ![](bundling-and-minification/_static/image4.png)
 3. 藉由選取格式化縮短的 JavaScript**組態 按鈕** ![](bundling-and-minification/_static/image5.png)，然後選取**格式 JavaScript**。
-4. 在 **搜尋指令碼**t 輸入的方塊中，選取您想要偵錯函式的名稱。 在下圖中， **AddAltToImg**中所輸入**搜尋指令碼**t 的輸入的方塊。  
+4. 在 **搜尋指令碼**輸入方塊中，選取您想要偵錯函式的名稱。 在下圖中， **AddAltToImg**中所輸入**搜尋指令碼**輸入的方塊。  
     ![](bundling-and-minification/_static/image6.png)
 
 如需有關使用 F12 開發人員工具進行偵錯的詳細資訊，請參閱 MSDN 文章[使用 F12 開發人員工具，偵錯 JavaScript 錯誤](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx)。
@@ -107,15 +107,15 @@ ms.locfileid: "37827371"
 
 在本節中，我們將建立 ASP.NET MVC 專案，以檢查統合和縮製。 首先，建立新的 ASP.NET MVC 網際網路專案，名為**MvcBM**而不需要變更任何預設值。
 
-開啟*應用程式\_Start\BundleConfig.cs*檔案，並檢查`RegisterBundles`方法用來建立、 註冊和設定套件組合。 下列程式碼顯示的某一部分`RegisterBundles`方法。
+開啟*應用程式\\\_開始\\BundleConfig.cs*檔案，並檢查`RegisterBundles`方法用來建立、 註冊和設定套件組合。 下列程式碼顯示的某一部分`RegisterBundles`方法。
 
 [!code-csharp[Main](bundling-and-minification/samples/sample5.cs)]
 
 上述程式碼會建立名為新的 JavaScript 配套 *~/bundles/jquery* ，其中包含所有適當 (是偵錯或縮減而非。*vsdoc*) 中的檔案*指令碼*符合萬用字元字串"~/Scripts/jquery-{version}.js"的資料夾。 ASP.NET MVC 4 中，這表示偵錯組態中，檔案*jquery 1.7.1.js*會新增至套件組合。 在 [發行] 組態中， *jquery 1.7.1.min.js*會加入。 統合 framework 例如遵循幾個常見的慣例：
 
-- 「 FileX.min.js"和"FileX.js 」 存在時，請選取 「.min"檔案版本。
+- 選取 「.min"檔案版本時*FileX.min.js*並*FileX.js*存在。
 - 選取 偵錯的非".min 」 版本。
-- 正在略過"-vsdoc 」 檔案 （例如 jquery-1.7.1-vsdoc.js)，這僅供 IntelliSense。
+- 略過"-vsdoc 」 檔案 (例如*jquery-1.7.1-vsdoc.js*)，這僅供 IntelliSense。
 
 `{version}`萬用字元比對上述用來自動建立適當版本的 jQuery 中的 jQuery 組合您*指令碼*資料夾。 在此範例中，使用萬用字元會提供下列優點：
 
@@ -134,7 +134,7 @@ ms.locfileid: "37827371"
 
 ## <a name="creating-a-bundle"></a>建立配套
 
-[配套](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx)類別`Include`方法會採用字串陣列，其中每個字串都是資源的虛擬路徑。 下列程式碼中的 RegisterBundles 方法*應用程式\_Start\BundleConfig.cs*檔案會顯示如何將多個檔案新增至套件組合：
+[配套](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx)類別`Include`方法會採用字串陣列，其中每個字串都是資源的虛擬路徑。 下列程式碼會從`RegisterBundles`方法中的*應用程式\\\_開始\\BundleConfig.cs*檔案會顯示如何將多個檔案新增至套件組合：
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
@@ -142,7 +142,7 @@ ms.locfileid: "37827371"
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
-使用轉譯方法，檢視中所參考的套件組合 ( `Styles.Render` css 和`Scripts.Render`適用於 JavaScript)。 從下列標記*Views\Shared\\_Layout.cshtml*檔案會顯示預設的 ASP.NET 網際網路專案檢視如何參考 CSS 和 JavaScript 的套件組合。
+使用轉譯方法，檢視中所參考的套件組合 (`Styles.Render` css 和`Scripts.Render`適用於 JavaScript)。 從下列標記*檢視\\Shared\\\_Layout.cshtml*檔案會顯示預設的 ASP.NET 網際網路專案檢視如何參考 CSS 和 JavaScript 的套件組合。
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample10.cshtml?highlight=5-6,11)]
 
@@ -156,10 +156,10 @@ ms.locfileid: "37827371"
 
 專案，請考慮下列 JavaScript 檔案：
 
-- *Scripts\Common\AddAltToImg.js*
-- *Scripts\Common\ToggleDiv.js*
-- *Scripts\Common\ToggleImg.js*
-- *Scripts\Common\Sub1\ToggleLinks.js*
+- *指令碼\\常見\\AddAltToImg.js*
+- *指令碼\\常見\\ToggleDiv.js*
+- *指令碼\\常見\\ToggleImg.js*
+- *指令碼\\常見\\Sub1\\ToggleLinks.js*
 
 ![dir imag](bundling-and-minification/_static/image7.png)
 
@@ -167,13 +167,13 @@ ms.locfileid: "37827371"
 
 | **Call** | **加入檔案或引發例外狀況** |
 | --- | --- |
-| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js，ToggleDiv.js，ToggleImg.js* |
+| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js*， *ToggleDiv.js*， *ToggleImg.js* |
 | Include("~/Scripts/Common/T\*.js") | 無效的模式的例外狀況。 只允許前置詞或後置字元的萬用字元。 |
 | Include("~/Scripts/Common/\*og.\*") | 無效的模式的例外狀況。 允許只有一個萬用字元。 |
-| "Include("~/Scripts/Common/T\*") | *ToggleDiv.js ToggleImg.js* |
-| "Include("~/Scripts/Common/\*") | 無效的模式的例外狀況。 純的萬用字元片段不是有效的。 |
-| IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js ToggleImg.js* |
-| IncludeDirectory("~/Scripts/Common", "T\*",true) | *ToggleDiv.js，ToggleImg.js，ToggleLinks.js* |
+| 包含 ("~/Scripts/Common/T\*") | *ToggleDiv.js*， *ToggleImg.js* |
+| 包含 ("~/Scripts/Common/\*") | 無效的模式的例外狀況。 純的萬用字元片段不是有效的。 |
+| IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js*， *ToggleImg.js* |
+| IncludeDirectory (「 ~/Scripts/Common"，"T\*"，則為 true) | *ToggleDiv.js*， *ToggleImg.js*， *ToggleLinks.js* |
 
 明確地將每個檔案新增至組合是一般偏好透過萬用字元檔案載入的原因如下：
 
@@ -183,7 +183,7 @@ ms.locfileid: "37827371"
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
-  萬用字元選取器"\*.css 」 會在資料夾中，每個 CSS 檔案中包括*Content\themes\base\jquery.ui.all.css*檔案。 *Jquery.ui.all.css*檔匯入其他 CSS 檔案。
+  萬用字元選取器"\*.css 」 會在資料夾中，每個 CSS 檔案中包括*內容\\佈景主題\\基底\\jquery.ui.all.css*檔案。 *Jquery.ui.all.css*檔匯入其他 CSS 檔案。
 
 ## <a name="bundle-caching"></a>快取項目組合
 
@@ -195,7 +195,7 @@ ms.locfileid: "37827371"
 
 要求   
 `http://localhost/MvcBM_time/bundles/AllMyScripts?v=r0sLDicvP58AIXN_mc3QdyVvVj5euZNzdsa2N1PKvb81`  
- 是套件組合**AllMyScripts**和包含查詢字串組**v = r0sLDicvP58AIXN\_mc3QdyVvVj5euZNzdsa2N1PKvb81**。 查詢字串**v** k 也就是用於快取的唯一識別碼的值。 ASP.NET 應用程式，只要組合不會變更，將會要求**AllMyScripts**組合使用這個語彙基元。 如果套件組合中的任何檔案有所變更，asp.net WEB 最佳化架構會產生新的權杖，並保證組合的瀏覽器要求會取得最新的套件組合。
+ 是套件組合**AllMyScripts**和包含查詢字串組**v = r0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**。 查詢字串**v** k 也就是用於快取的唯一識別碼的值。 ASP.NET 應用程式，只要組合不會變更，將會要求**AllMyScripts**組合使用這個語彙基元。 如果套件組合中的任何檔案有所變更，asp.net WEB 最佳化架構會產生新的權杖，並保證組合的瀏覽器要求會取得最新的套件組合。
 
 如果您執行 IE9 F12 開發人員工具，並瀏覽至先前載入的頁面，即不正確地顯示對每個組合和伺服器傳回 HTTP 304 的條件式 GET 要求。 您可以閱讀 IE9 包含判斷條件式要求的部落格文章中的問題的原因[使用 Cdn 和改善網站效能的 Expires](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx)。
 
@@ -203,13 +203,13 @@ ms.locfileid: "37827371"
 
 統合和縮製架構提供一個機制，例如處理中繼語言[SCSS](http://sass-lang.com/)， [Sass](http://sass-lang.com/)，[較少](http://www.dotlesscss.org/)或[Coffeescript](http://coffeescript.org/)，並將例如縮製的轉換套用至產生的套件組合。 例如，若要新增[.less](http://www.dotlesscss.org/)至 MVC 4 專案的檔案：
 
-1. 建立資料夾，以對您較少的內容。 下列範例會使用*Content\MyLess*資料夾。
+1. 建立資料夾，以對您較少的內容。 下列範例會使用*內容\\MyLess*資料夾。
 2. 新增[.less](http://www.dotlesscss.org/) NuGet 套件**無點**至您的專案。  
     ![NuGet 無點安裝](bundling-and-minification/_static/image9.png)
 3. 加入類別可實作[IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx)介面。 .Less 轉換，將下列程式碼新增至您的專案。
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. 建立具有較少檔案的套件組合`LessTransform`而[CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx)轉換。 將下列程式碼加入`RegisterBundles`方法中的*應用程式\_Start\BundleConfig.cs*檔案。
+4. 建立具有較少檔案的套件組合`LessTransform`而[CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx)轉換。 將下列程式碼加入`RegisterBundles`方法中的*應用程式\\（_s)\\BundleConfig.cs*檔案。
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
 5. 會參考較少的套件組合的任何檢視中加入下列程式碼。
@@ -228,7 +228,7 @@ ms.locfileid: "37827371"
 
 套件組合應分割所需要的頁面。 例如，預設的網際網路應用程式的 ASP.NET MVC 範本會建立 jQuery 驗證套件組合分開 jQuery。 建立的預設檢視會不有任何輸入，而且不會回傳值，因為它們不包含驗證套件組合。
 
-`System.Web.Optimization` System.Web.Optimization.DLL 中實作命名空間。 它會利用 WebGrease 程式庫 (WebGrease.dll) 進行縮製的功能，它會使用 Antlr3.Runtime.dll。
+`System.Web.Optimization`命名空間中實作*System.Web.Optimization.dll*。 它會運用 WebGrease 程式庫 (*WebGrease.dll*) 縮製的功能，其接著會採用*Antlr3.Runtime.dll*。
 
 *我可以使用 Twitter 進行快速的文章，並分享連結。我的 Twitter 控制代碼是*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 

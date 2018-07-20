@@ -124,7 +124,7 @@ ms.locfileid: "37817314"
       ![6-安全性-成員資格](16-adding-security-and-membership/_static/image5.png)
 
       > [!NOTE]
-      > 根據預設，ASP.NET 網頁的認證以傳送至伺服器以純文字 （人類看得懂的文字）。 生產網站應該使用安全 HTTP (https://，也稱為*安全通訊端層*或 SSL) 來加密伺服器與交換的機密資訊。 您可以需要電子郵件傳送訊息給設定使用 SSL`WebMail.EnableSsl=true`如同先前的範例。 如需有關 SSL 的詳細資訊，請參閱 <<c0> [ 保護的 Web 通訊： 憑證、 SSL 及 https://](https://go.microsoft.com/fwlink/?LinkId=208660)。
+      > 根據預設，ASP.NET 網頁的認證以傳送至伺服器以純文字 （人類看得懂的文字）。 生產網站應該使用安全 HTTP (https:// ，也稱為*安全通訊端層*或 SSL) 來加密伺服器與交換的機密資訊。 您可以需要電子郵件傳送訊息給設定使用 SSL`WebMail.EnableSsl=true`如同先前的範例。 如需有關 SSL 的詳細資訊，請參閱 <<c0> [ 保護的 Web 通訊： 憑證、 SSL 及 https://](https://go.microsoft.com/fwlink/?LinkId=208660)。
 
 ## <a name="additional-membership-functionality-in-the-site"></a>在站台的其他成員資格功能
 

@@ -24,4 +24,4 @@ ms.locfileid: "37836548"
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/additional-methods.js
 - https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/additional-methods.min.js
-- 在檔案的當地語系化https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/localization/messages\_##.js其中 # # 是當地語系化程式碼。
+- 在檔案的當地語系化 https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/localization/messages\_##.js其中 # # 是當地語系化程式碼。

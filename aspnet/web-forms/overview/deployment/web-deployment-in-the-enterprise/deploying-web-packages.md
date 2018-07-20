@@ -89,7 +89,7 @@ ms.locfileid: "37825261"
 在這個範例中：
 
 - **/Y**旗標會指出您想要實際部署封裝，而不是執行試用版執行。
-- **/M**旗標會指出您想要將封裝部署到名為 TESTWEB1 的伺服器。 此值，請從 MSDeploy.exe 會嘗試將封裝部署在與 Web 部署遠端代理程式服務http://TESTWEB1/MSDeployAgentService。
+- **/M**旗標會指出您想要將封裝部署到名為 TESTWEB1 的伺服器。 此值，請從 MSDeploy.exe 會嘗試將封裝部署在與 Web 部署遠端代理程式服務 http://TESTWEB1/MSDeployAgentService 。
 - **/A**旗標會指出您想要使用 NTLM 驗證。 因此，您不需要指定使用者名稱和密碼。
 
 為了說明如何使用 *。 deploy.cmd*檔案可簡化部署程序，看看取得產生及執行您執行 MSDeploy.exe 命令*ContactManager.Mvc.deploy.cmd*使用如上所示的選項。

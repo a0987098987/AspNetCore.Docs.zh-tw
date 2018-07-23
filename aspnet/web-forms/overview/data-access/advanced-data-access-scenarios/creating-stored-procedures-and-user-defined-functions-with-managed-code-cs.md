@@ -201,7 +201,7 @@ SQL Server 專案繫結至特定的資料庫。 因此，建立新的 SQL Server
 若要檢查的 Northwind 資料庫的組態資訊、 輸入並執行命令`exec sp_configure`在查詢視窗中。 這會顯示設定 clr 已啟用目前設定為 0。
 
 
-[![Clr 已啟用] 設定為 0 是 [目前設定](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image21.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image20.png)
+[![Clr 已啟用 設定為 0 是 目前設定](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image21.png)](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image20.png)
 
 **圖 12**: clr 已啟用] 設定為 0 是 [目前設定 ([按一下以檢視完整大小的影像](creating-stored-procedures-and-user-defined-functions-with-managed-code-cs/_static/image22.png))
 

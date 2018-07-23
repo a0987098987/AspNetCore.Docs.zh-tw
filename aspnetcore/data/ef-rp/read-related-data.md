@@ -5,12 +5,12 @@ description: 在此教學課程中，您可以讀取並顯示相關資料-- 也�
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: fa3147cc4ad121784911eef802e04ca91f16448f
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: bcea6aa6018a937979b8e0aaa2edcdd96da41559
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063308"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202675"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -168,7 +168,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 以下列程式碼取代 *Pages/Instructors/Index.cshtml.cs*：
 
-[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-99)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,18-99)]
 
 `OnGetAsync` 方法會針對所選取講師的識別碼接受選擇性的路由資料。
 
@@ -298,7 +298,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 `Single` 方法可以傳入 `Where` 條件，而不是個別呼叫 `Where` 方法：
 
-[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21-22,30-31)]
 
 比起使用 `Where`，上述 `Single` 方法並沒有任何優勢。 某些開發人員偏好使用 `Single` 方法樣式。
 

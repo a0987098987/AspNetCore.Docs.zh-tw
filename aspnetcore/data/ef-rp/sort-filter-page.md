@@ -5,12 +5,12 @@ description: 在本教學課程中，您將會使用 ASP.NET Core 和 Entity Fra
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 86321538f02ccf1a36ee9e50729e63e007f10327
-ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
+ms.openlocfilehash: ee5a0dae41ba0afba518f0bd6fbd379fdbbfb1c1
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146893"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202610"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core：排序、篩選、分頁 - 3/8
 
@@ -262,9 +262,7 @@ http://localhost:5000/Students?SearchString=an
 
 [!code-csharp[](intro/samples/cu21/Pages/About.cshtml.cs)]
 
-LINQ 陳述式會以註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件中的集合。
-
-注意：目前 EF Core 不支援 LINQ `group` 命令。 在上述程式碼中，所有學生記錄都會從 SQL Server 中傳回。 `group` 命令套用於 Razor 頁面應用程式，而不是套用於 SQL Server。 EF Core 2.1 將會支援這個 LINQ `group` 運算子，以及發生於 SQL Server 的群組。 請參閱 [Relational: Support translating GroupBy() to SQL](https://github.com/aspnet/EntityFrameworkCore/issues/2341) (關聯式：支援翻譯 SQL 的 GroupBy())。 [EF Core 2.1](https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap) 將會和 .NET Core 2.1 一起發行。 如需詳細資訊，請參閱 [.NET Core Roadmap](https://github.com/dotnet/core/blob/master/roadmap.md) (.NET Core 藍圖)。
+LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組中的實體數目、將結果儲存在 `EnrollmentDateGroup` 檢視模型物件的集合中。
 
 ### <a name="modify-the-about-razor-page"></a>修改 About Razor 頁面
 

@@ -49,7 +49,7 @@ AJAX Control Toolkit 包含一組控制項及控制項擴充項。 在這個簡�
 **圖 01**： 選取 HTML 編輯器控制項 ([按一下以檢視完整大小的影像](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image2.png))
 
 
-[![使用 ScriptManager] 和 [編輯控制項的 visual Studio 設計工具](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image2.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image3.png)
+[![使用 ScriptManager 和 編輯控制項的 visual Studio 設計工具](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image2.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image3.png)
 
 **圖 02**： 使用 ScriptManager] 和 [編輯控制項的 Visual Studio 設計工具 ([按一下以檢視完整大小的影像](using-ajax-control-toolkit-controls-and-control-extenders-cs/_static/image4.png))
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 6d52e915ab20aa69179585eceb497e8abd72c997
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 7f47192dbf39432334f6d7ae4829a45860dafcc5
+ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938180"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146841"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>搭配 TypeScript 和 Webpack 使用 ASP.NET Core SignalR
 
@@ -29,7 +29,7 @@ ms.locfileid: "37938180"
 > * 設定 SignalR 伺服器
 > * 啟用用戶端與伺服器之間的通訊
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/signalr-typescript-webpack/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>必要條件
 

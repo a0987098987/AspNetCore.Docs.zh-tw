@@ -2,7 +2,7 @@
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 title: 保護連接字串和其他組態資訊 (C#) |Microsoft Docs
 author: rick-anderson
-description: ASP.NET 應用程式通常會儲存在 Web.config 檔案中的組態資訊。 其中有些資訊是機密，保證保護。 由 def。...
+description: ASP.NET 應用程式通常會儲存在 Web.config 檔案中的組態資訊。 其中有些資訊是機密，保證保護。 由 def...
 ms.author: aspnetcontent
 ms.date: 08/03/2007
 ms.assetid: ad8dd396-30f7-4abe-ac02-a0b84422e5be
@@ -28,7 +28,7 @@ ms.locfileid: "37842217"
 
 ASP.NET 應用程式的組態資訊通常儲存在名為 XML 檔案`Web.config`。 這些教學課程期間，我們已更新`Web.config`少數的次數。 建立時`Northwind`型別中的資料集[第一個教學課程](../introduction/creating-a-data-access-layer-cs.md)，連接字串資訊，例如自動加入至`Web.config`在`<connectionStrings>`一節。 稍後，在[主版頁面與網站導覽](../introduction/master-pages-and-site-navigation-cs.md)教學課程中，我們以手動方式更新`Web.config`，來加入`<pages>`項目會指出應該使用我們的專案中的 ASP.NET 網頁的所有`DataWebControls`佈景主題。
 
-由於`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全且隱藏未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*[圖 1] 所示的訊息。 這表示訪客不能檢視您`Web.config`只要輸入檔案 s 內容 http://www.YourServer.com/Web.config其 s 的瀏覽器網址列。
+由於`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全且隱藏未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*[圖 1] 所示的訊息。 這表示訪客不能檢視您`Web.config`只要輸入檔案 s 內容 http://www.YourServer.com/Web.config 其 s 的瀏覽器網址列。
 
 
 [![瀏覽 Web.config 透過瀏覽器傳回這類頁面是不會處理訊息](protecting-connection-strings-and-other-configuration-information-cs/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-cs/_static/image1.png)

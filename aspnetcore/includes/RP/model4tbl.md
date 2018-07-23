@@ -1,14 +1,14 @@
-<a name="codegenerator"></a> <span data-ttu-id="c85ce-101">下表詳細列出 ASP.NET Core 程式碼產生器的參數：</span><span class="sxs-lookup"><span data-stu-id="c85ce-101">The following table details the ASP.NET Core code generators\` parameters:</span></span>
+<a name="codegenerator"></a> <span data-ttu-id="151af-101">下表詳細列出 ASP.NET Core 程式碼產生器的參數：</span><span class="sxs-lookup"><span data-stu-id="151af-101">The following table details the ASP.NET Core code generators\` parameters:</span></span>
 
-| <span data-ttu-id="c85ce-102">參數</span><span class="sxs-lookup"><span data-stu-id="c85ce-102">Parameter</span></span>               | <span data-ttu-id="c85ce-103">描述</span><span class="sxs-lookup"><span data-stu-id="c85ce-103">Description</span></span>|
+| <span data-ttu-id="151af-102">參數</span><span class="sxs-lookup"><span data-stu-id="151af-102">Parameter</span></span>               | <span data-ttu-id="151af-103">描述</span><span class="sxs-lookup"><span data-stu-id="151af-103">Description</span></span>|
 | ----------------- | ------------ |
-| <span data-ttu-id="c85ce-104">-m</span><span class="sxs-lookup"><span data-stu-id="c85ce-104">-m</span></span>  | <span data-ttu-id="c85ce-105">模型的名稱。</span><span class="sxs-lookup"><span data-stu-id="c85ce-105">The name of the model.</span></span> |
-| <span data-ttu-id="c85ce-106">-dc</span><span class="sxs-lookup"><span data-stu-id="c85ce-106">-dc</span></span>  | <span data-ttu-id="c85ce-107">資料內容。</span><span class="sxs-lookup"><span data-stu-id="c85ce-107">The data context.</span></span> |
-| <span data-ttu-id="c85ce-108">-udl</span><span class="sxs-lookup"><span data-stu-id="c85ce-108">-udl</span></span> | <span data-ttu-id="c85ce-109">使用預設的配置。</span><span class="sxs-lookup"><span data-stu-id="c85ce-109">Use the default layout.</span></span> |
-| <span data-ttu-id="c85ce-110">-outDir</span><span class="sxs-lookup"><span data-stu-id="c85ce-110">-outDir</span></span> | <span data-ttu-id="c85ce-111">要建立檢視的相對輸出資料夾路徑。</span><span class="sxs-lookup"><span data-stu-id="c85ce-111">The relative output folder path to create the views.</span></span> |
-| <span data-ttu-id="c85ce-112">--referenceScriptLibraries</span><span class="sxs-lookup"><span data-stu-id="c85ce-112">--referenceScriptLibraries</span></span> | <span data-ttu-id="c85ce-113">將 `_ValidationScriptsPartial` 新增至 Edit 和 Create 頁面</span><span class="sxs-lookup"><span data-stu-id="c85ce-113">Adds `_ValidationScriptsPartial` to Edit and Create pages</span></span> |
+| <span data-ttu-id="151af-104">-m</span><span class="sxs-lookup"><span data-stu-id="151af-104">-m</span></span>  | <span data-ttu-id="151af-105">模型的名稱。</span><span class="sxs-lookup"><span data-stu-id="151af-105">The name of the model.</span></span> |
+| <span data-ttu-id="151af-106">-dc</span><span class="sxs-lookup"><span data-stu-id="151af-106">-dc</span></span>  | <span data-ttu-id="151af-107">資料內容。</span><span class="sxs-lookup"><span data-stu-id="151af-107">The data context.</span></span> |
+| <span data-ttu-id="151af-108">-udl</span><span class="sxs-lookup"><span data-stu-id="151af-108">-udl</span></span> | <span data-ttu-id="151af-109">使用預設的配置。</span><span class="sxs-lookup"><span data-stu-id="151af-109">Use the default layout.</span></span> |
+| <span data-ttu-id="151af-110">-outDir</span><span class="sxs-lookup"><span data-stu-id="151af-110">-outDir</span></span> | <span data-ttu-id="151af-111">要建立檢視的相對輸出資料夾路徑。</span><span class="sxs-lookup"><span data-stu-id="151af-111">The relative output folder path to create the views.</span></span> |
+| <span data-ttu-id="151af-112">--referenceScriptLibraries</span><span class="sxs-lookup"><span data-stu-id="151af-112">--referenceScriptLibraries</span></span> | <span data-ttu-id="151af-113">將 `_ValidationScriptsPartial` 新增至 Edit 和 Create 頁面</span><span class="sxs-lookup"><span data-stu-id="151af-113">Adds `_ValidationScriptsPartial` to Edit and Create pages</span></span> |
 
-<span data-ttu-id="c85ce-114">使用 `h` 參數取得 `aspnet-codegenerator razorpage` 命令的說明：</span><span class="sxs-lookup"><span data-stu-id="c85ce-114">Use the `h` switch to get help on the `aspnet-codegenerator razorpage` command:</span></span>
+<span data-ttu-id="151af-114">使用 `h` 參數取得 `aspnet-codegenerator razorpage` 命令的說明：</span><span class="sxs-lookup"><span data-stu-id="151af-114">Use the `h` switch to get help on the `aspnet-codegenerator razorpage` command:</span></span>
 
 ```console
 dotnet aspnet-codegenerator razorpage -h

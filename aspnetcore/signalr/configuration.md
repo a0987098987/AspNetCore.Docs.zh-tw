@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/30/2018
 uid: signalr/configuration
-ms.openlocfilehash: fac0226c939f4cf446c876b1c0b359d6c5b9dfd3
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: f5a345795f17dafd482e359e77a151d5b0a15688
+ms.sourcegitcommit: 8b68e144aab75374af52605a71717c77345a28b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095398"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39182586"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -62,7 +62,7 @@ var connection = new HubConnectionBuilder()
 
 | 選項 | 描述 |
 | ------ | ----------- |
-| `HandshakeTimeout` | 如果用戶端不在此時間間隔內傳送初始信號交換訊息，就會關閉連線。 |
+| `HandshakeTimeout` | 如果用戶端不在此時間間隔內傳送初始信號交換訊息，就會關閉連線。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 | `KeepAliveInterval` | 如果伺服器尚未在此間隔內傳送一則訊息，是自動的 ping 訊息傳送至保持開啟的連接。 |
 | `SupportedProtocols` | 此中樞支援的通訊協定。 根據預設，在伺服器上註冊的所有通訊協定，但可以從這個清單，以停用個別的中樞的特定通訊協定中移除通訊協定。 |
 | `EnableDetailedErrors` | 如果`true`詳細例外狀況訊息傳回給用戶端中樞方法中擲回例外狀況時。 預設值是`false`，因為這些例外狀況訊息可以包含機密資訊。 |
@@ -216,10 +216,10 @@ let connection = new signalR.HubConnectionBuilder()
 
 | .NET 選項 | JavaScript 選項 | 描述 |
 | ----------- | ----------------- | ----------- |
-| `ServerTimeout` | `serverTimeoutInMilliseconds` | 伺服器活動的逾時。 如果伺服器尚未傳送任何訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 |
-| `HandshakeTimeout` | 無法設定 | 初始伺服器交握的逾時。 如果伺服器不會傳送交握回應此時間間隔中，用戶端便會取消的交握和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 |
+| `ServerTimeout` | `serverTimeoutInMilliseconds` | 伺服器活動的逾時。 如果伺服器未傳送訊息，此時間間隔中，用戶端會視為中斷連線的 server 和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 |
+| `HandshakeTimeout` | 無法設定 | 初始伺服器交握的逾時。 如果伺服器不會傳送交握回應此時間間隔中，用戶端便會取消交握和觸發程序`Closed`事件 (`onclose`在 JavaScript 中)。 這是應該只在交握逾時錯誤是因嚴重的網路延遲而未發生才修改進階的設定。 如需詳細的交握程序的詳細資訊，請參閱[SignalR 中樞的通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 
-在.NET 用戶端逾時的值會指定為`TimeSpan`值。 在 JavaScript 用戶端的逾時值指定為數字。 數字代表以毫秒為單位的時間值。
+在.NET 用戶端逾時的值會指定為`TimeSpan`值。 在 JavaScript 用戶端逾時的值會指定為數字，表示以毫秒為單位的持續時間。
 
 ### <a name="configure-additional-options"></a>設定其他選項
 

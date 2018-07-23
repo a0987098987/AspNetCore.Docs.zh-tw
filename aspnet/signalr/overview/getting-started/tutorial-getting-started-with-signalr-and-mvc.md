@@ -116,7 +116,7 @@ ms.locfileid: "37838646"
 11. 編輯`HomeController`類別中找到**controllers/Homecontroller.cs**並將下列方法新增至類別。 這個方法會傳回**聊天**您將在稍後的步驟建立的檢視。
 
     [!code-csharp[Main](tutorial-getting-started-with-signalr-and-mvc/samples/sample3.cs)]
-12. 以滑鼠右鍵按一下**Views/Home**資料夾，然後選取**新增。...|檢視**。
+12. 以滑鼠右鍵按一下**Views/Home**資料夾，然後選取**新增...|檢視**。
 13. 在 **加入檢視**對話方塊中，命名新的檢視**聊天**。
 
     ![新增檢視](tutorial-getting-started-with-signalr-and-mvc/_static/image7.png)

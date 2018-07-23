@@ -245,7 +245,7 @@ SqlServerCompact NuGet 套件提供 SQL Server Compact 資料庫引擎的 Contos
 
 在 **網站/應用程式**方塊中，輸入*Default Web Site/ContosoUniversity*。
 
-在 **目的地 URL**方塊中，輸入`http://localhost/ContosoUniversity/`。
+在 **目的地 URL**方塊中，輸入 `http://localhost/ContosoUniversity/` 。
 
 按 [ **下一步**]。
 
@@ -364,7 +364,7 @@ Visual Studio 部署應用程式和瀏覽器開啟至網站的 [首頁] 頁面�
 
 按一下 **匯入**，並選取您稍早下載的.publishsettings 檔案。
 
-在上**連接**索引標籤中變更**目的地 URL**暫存 URL 正確，在此範例是http://contosouniversity.com.vserver01.cytanium.com。
+在上**連接**索引標籤中變更**目的地 URL**暫存 URL 正確，在此範例是 http://contosouniversity.com.vserver01.cytanium.com 。
 
 將設定檔的重新命名為實際執行環境。 (選取**設定檔**索引標籤，然後按一下**管理設定檔**若要這麼做)。
 

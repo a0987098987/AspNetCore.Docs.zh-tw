@@ -156,7 +156,7 @@ ms.locfileid: "37803846"
 
 [![](host-aspnet-web-api-in-an-azure-worker-role/_static/image20.png)](host-aspnet-web-api-in-an-azure-worker-role/_static/image19.png)
 
-[Azure 活動記錄] 視窗會顯示部署進度。 部署應用程式時，瀏覽至http://appname.cloudapp.net/test/1。
+[Azure 活動記錄] 視窗會顯示部署進度。 部署應用程式時，瀏覽至 http://appname.cloudapp.net/test/1 。
 
 ![](host-aspnet-web-api-in-an-azure-worker-role/_static/image21.png)
 

@@ -8,12 +8,12 @@ ms.date: 03/09/2011
 ms.assetid: 87612fe1-258c-4f50-88d8-c3047dec3f14
 msc.legacyurl: /mvc/pluralsight
 msc.type: content
-ms.openlocfilehash: 95b1a38a6842f0ed46568757d0420a57ee2a3c63
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 41c83b9a348fec1ac73b005ffec466ecf37abb24
+ms.sourcegitcommit: 8b68e144aab75374af52605a71717c77345a28b2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817238"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39182612"
 ---
 <a name="mvc-video-training-from-pluralsight"></a>MVC 的 Pluralsight 訓練影片
 ====================
@@ -28,14 +28,13 @@ ms.locfileid: "37817238"
 - [SignalR](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m7-signalr&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Web 開發人員工具和 Visual Studio 2013](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m8-visualstudio&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 
-
-「 Pluralsight 記錄 K.Scott Allen 的 MVC 5 本課提供快速取得最新版的 ASP.NET MVC 中的 加速的絕佳方式。 Scott 的展示樣式可以輕鬆地遵循和技術上吸引人，而課程格式、 影片播放程式，以及整體的頻率是很棒。 Plus – 它是免費的因此沒有任何藉口可以不若要立即了解 MVC 5 ！ 」
-
-Scott Guthrie、 執行副總裁、 Microsoft 雲端和企業的群組 Microsoft
-
+> Pluralsight 記錄 K.Scott Allen 的 MVC 5 本課提供快速取得最新版的 ASP.NET MVC 中的 加速的絕佳方式。 Scott 的展示樣式可以輕鬆地遵循和技術上吸引人，而課程格式、 影片播放程式，以及整體的頻率是很棒。 再加上 – 它是免費的因此沒有任何藉口可以不若要立即了解 MVC 5 ！
+>
+> &mdash;Scott Guthrie、 執行副總裁、 Microsoft 雲端和企業的群組 Microsoft
 
 ![pluralsight-標誌-playbutton](pluralsight/_static/image1.png)
 
-解除鎖定存取 3000 + 開發人員，IT 和創意隨時隨地，您可以觀看的課程
+解除鎖定對 3000 + 開發人員，存取 IT，及創意，以隨時隨地，您可以觀看的課程。
 
-**起價為 29 美元/mo.**[開始免費試用](https://pluralsight.com/microsoft/OLT/subscribe/Subscribe1.aspx?freetrial=true&planHint=Monthly&utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course)[立即訂閱](https://pluralsight.com/microsoft/olt/subscriptions.aspx?utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course)
+* [ASP.NET MVC 5 基本概念](https://www.pluralsight.com/courses/aspdotnet-mvc5-fundamentals)
+* [Pluralsight 定價和方案](https://www.pluralsight.com/pricing)

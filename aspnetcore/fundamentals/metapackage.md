@@ -1,17 +1,17 @@
 ---
-title: ASP.NET Core 2.0 和更新版本的 Microsoft.AspNetCore.All 中繼套件
+title: ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 author: Rick-Anderson
 description: Microsoft.AspNetCore.All 中繼套件包含所有支援的 ASP.NET Core 和 Entity Framework Core 套件，以及它們的相依性。
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/20/2017
 uid: fundamentals/metapackage
-ms.openlocfilehash: 2fddc59d74dce4b114b5b4ed0646f773eb66ffb9
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fbc0f5465dc37a612b81c293f1a58b53ea4b2238
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277802"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123823"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>ASP.NET Core 2.0 的 Microsoft.AspNetCore.All 中繼套件
 
@@ -23,8 +23,8 @@ ms.locfileid: "36277802"
 ASP.NET Core 的 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 中繼套件包括：
 
 * 所有由 ASP.NET Core 小組支援的套件。
-* 所有由 Entity Framework Core 支援的套件。 
-* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。 
+* 所有由 Entity Framework Core 支援的套件。
+* ASP.NET Core 與 Entity Framework Core 所使用的內部與第三人相依性。
 
 `Microsoft.AspNetCore.All` 套件包含 ASP.NET Core 2.x 和 Entity Framework Core 2.x 的所有功能。 以 ASP.NET Core 2.0 為目標的預設專案範本會使用此套件。
 

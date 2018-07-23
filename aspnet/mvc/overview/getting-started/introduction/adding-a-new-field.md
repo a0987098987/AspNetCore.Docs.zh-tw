@@ -37,7 +37,7 @@ ms.locfileid: "38151453"
 
 ![新增組件 Man](adding-a-new-field/_static/image2.png)
 
-在  **Package Manager Console**視窗`PM>`提示字元中輸入
+在 **Package Manager Console**視窗`PM>`提示字元中輸入
 
 Enable-Migrations -ContextTypeName MvcMovie.Models.MovieDBContext
 
@@ -51,7 +51,7 @@ Visual Studio 會開啟*Configuration.cs*檔案。 取代`Seed`方法中的*Conf
 
 [!code-csharp[Main](adding-a-new-field/samples/sample1.cs)]
 
-將滑鼠停留在紅色的波浪線`Movie`，按一下  `Show Potential Fixes` ，然後按一下**使用** **MvcMovie.Models;**
+將滑鼠停留在紅色的波浪線`Movie`，按一下 `Show Potential Fixes` ，然後按一下**使用** **MvcMovie.Models;**
 
 ![](adding-a-new-field/_static/image5.png)
 
@@ -90,7 +90,7 @@ Visual Studio 會開啟*Configuration.cs*檔案。 取代`Seed`方法中的*Conf
 
 Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *{時間戳記}\_Initial.cs* )，而且這個類別包含程式碼會建立資料庫結構描述。 預先移轉檔案名稱被固定時間戳記的來協助進行排序。 檢查 *{時間戳記}\_Initial.cs*檔案，它包含的指示來建立`Movies`電影資料庫的資料表。 當您更新的資料庫中的指示，在此之下 *{時間戳記}\_Initial.cs*檔案將會執行並建立資料庫結構描述。 然後**種子**方法會執行以填入測試資料的資料庫。
 
-在  **Package Manager Console**，輸入命令`update-database`來建立資料庫和執行`Seed`方法。
+在 **Package Manager Console**，輸入命令`update-database`來建立資料庫和執行`Seed`方法。
 
 ![](adding-a-new-field/_static/image7.png)
 
@@ -118,7 +118,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 您也需要更新檢視範本，以便在瀏覽器檢視中顯示、建立和編輯新的 `Rating` 屬性。
 
-開啟*\Views\Movies\Index.cshtml*檔案，並新增`<th>Rating</th>`資料行標題後方**價格**資料行。 然後新增`<td>`要呈現的範本結尾附近的資料行`@item.Rating`值。 以下是 哪些更新*Index.cshtml*檢視範本看起來像：
+開啟 *\Views\Movies\Index.cshtml* 檔案，並新增`<th>Rating</th>`資料行標題後方**價格**資料行。 然後新增`<td>`要呈現的範本結尾附近的資料行`@item.Rating`值。 以下是 哪些更新 *Index.cshtml* 檢視範本看起來像：
 
 [!code-cshtml[Main](adding-a-new-field/samples/sample8.cshtml?highlight=31-33,52-54)]
 
@@ -164,7 +164,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 建置方案，然後再輸入`update-database`命令所**Package Manager Console**視窗。
 
-下圖顯示中的輸出**Package Manager Console**  視窗 (日期戳記前面加上*分級*會不同。)
+下圖顯示中的輸出 [ **Package Manager Console** ] 視窗 (日期戳記前面加上*分級*會不同。)
 
 ![](adding-a-new-field/_static/image11.png)
 
@@ -172,7 +172,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 ![](adding-a-new-field/_static/image12.png)
 
-按一下 **新建**連結，可新增一部新電影。 請注意，您可以新增評分。
+按一下 新建**連結，可新增一部新電影。 請注意，您可以新增評分。
 
 ![7_CreateRioII](adding-a-new-field/_static/image13.png)
 

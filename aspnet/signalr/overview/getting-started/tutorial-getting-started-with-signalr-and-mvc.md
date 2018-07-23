@@ -145,7 +145,7 @@ ms.locfileid: "37838646"
 6. 下列螢幕擷取畫面顯示在瀏覽器中執行的聊天應用程式。
 
     ![對談的瀏覽器](tutorial-getting-started-with-signalr-and-mvc/_static/image9.png)
-7. 在 **方案總管**，檢查**指令碼文件**節點執行的應用程式。 如果您使用 Internet Explorer 作為您的瀏覽器，此節點會顯示在 偵錯模式。 沒有名為的指令碼檔案**中樞**SignalR 程式庫以動態方式產生在執行階段。 此檔案會管理 jQuery 指令碼和伺服器端程式碼之間的通訊。 如果您使用非 Internet Explorer 的瀏覽器，您也可以存取動態**集線器**瀏覽至它直接，例如檔案http://mywebsite/signalr/hubs。
+7. 在 **方案總管**，檢查**指令碼文件**節點執行的應用程式。 如果您使用 Internet Explorer 作為您的瀏覽器，此節點會顯示在 偵錯模式。 沒有名為的指令碼檔案**中樞**SignalR 程式庫以動態方式產生在執行階段。 此檔案會管理 jQuery 指令碼和伺服器端程式碼之間的通訊。 如果您使用非 Internet Explorer 的瀏覽器，您也可以存取動態**集線器**瀏覽至它直接，例如檔案 http://mywebsite/signalr/hubs 。
 
 <a id="code"></a>
 

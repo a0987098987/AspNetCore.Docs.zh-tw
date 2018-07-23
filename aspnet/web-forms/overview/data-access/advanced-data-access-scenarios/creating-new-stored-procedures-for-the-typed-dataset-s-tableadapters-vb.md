@@ -176,7 +176,7 @@ TableAdapter 精靈會自動建立的預存程序時，它會顯示重新整理�
 命名預存程序之後, 按一下旁邊的 tableadapter 名稱對應的方法。 就像時使用特定 SQL 陳述式，我們可以建立會填入現有的資料表或傳回一個新的方法。 我們也可以指定 TableAdapter 是否應包含的 DB 直接模式，插入、 更新和刪除的記錄。 保留所有的三個核取方塊已核取，但重新命名傳回的 DataTable 方法`GetProducts`（如 [圖 10] 所示）。
 
 
-[![命名方法填滿] 與 [GetProducts](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)
+[![命名方法填滿 與 GetProducts](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image21.png)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image20.png)
 
 **圖 10**: Name 方法`Fill`並`GetProducts`([按一下以檢視完整大小的影像](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image22.png))
 

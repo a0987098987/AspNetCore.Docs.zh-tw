@@ -1056,7 +1056,7 @@ jQuery 移轉 1.2.0 版
 
 ### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>在 CDN 上的啟動程序 TouchCarousel 版本
 
-下列版本[ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") Bootstrap TouchCarousel 版本裝載在 CDN 上：
+下列版本[https://github.com/ixisio/bootstrap-touch-carousel](https://github.com/ixisio/bootstrap-touch-carousel "https://github.com/ixisio/bootstrap-touch-carousel") Bootstrap TouchCarousel 版本裝載在 CDN 上：
 
 #### <a name="bootstrap-touchcarousel-version-080"></a>啟動程序 TouchCarousel 0.8.0 版開始
 
@@ -1067,7 +1067,7 @@ jQuery 移轉 1.2.0 版
 
 ### <a name="hammerjs-releases-on-the-cdn"></a>在 CDN 上的 Hammer.js 版本
 
-下列版本[ http://hammerjs.github.io/ ] (http://hammerjs.github.io/ " http://hammerjs.github.io/ ") Hammer.js 版本裝載在 CDN 上：
+下列版本[http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") Hammer.js 版本裝載在 CDN 上：
 
 #### <a name="hammerjs-version-204"></a>Hammer.js 2.0.4 版
 

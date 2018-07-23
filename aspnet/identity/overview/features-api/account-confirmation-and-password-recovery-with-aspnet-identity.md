@@ -195,7 +195,7 @@ OWIN`AuthenticationManager.SignIn`方法會傳入`ClaimsIdentity`並登入使用
 [!code-csharp[Main](account-confirmation-and-password-recovery-with-aspnet-identity/samples/sample8.cs)]
 
 > [!WARNING]
-> 安全性-機密資料絕不儲存在原始程式碼中。 帳戶和認證會儲存在 appSetting 中。 在 Azure 上，您可以安全地儲存這些值在**[設定](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** 在 Azure 入口網站中的索引標籤。 請參閱[最佳做法將密碼和其他機密資料部署到 ASP.NET 和 Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)。
+> 安全性-機密資料絕不儲存在原始程式碼中。 帳戶和認證會儲存在 appSetting 中。 在 Azure 上，您可以安全地儲存這些值在 **[設定](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** 在 Azure 入口網站中的索引標籤。 請參閱[最佳做法將密碼和其他機密資料部署到 ASP.NET 和 Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)。
 
 
 輸入您的 SendGrid 認證、 執行應用程式，註冊的電子郵件別名可以按一下您的電子郵件中的 [確認] 連結。 若要查看如何執行這項作業您[Outlook.com](http://outlook.com)電子郵件帳戶，請參閱 John Atten [Outlook.Com SMTP 主機的 C# SMTP 組態](http://typecastexception.com/post/2013/12/20/C-SMTP-Configuration-for-OutlookCom-SMTP-Host.aspx)和他[ASP.NET 身分識別 2.0： 設定註冊帳戶驗證與雙因素授權](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx)文章。

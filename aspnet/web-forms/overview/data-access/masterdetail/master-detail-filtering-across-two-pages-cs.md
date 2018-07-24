@@ -4,19 +4,16 @@ title: 主版/詳細篩選跨兩個頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中我們將使用 GridView，若要列出的供應商的資料庫來實作此模式。 在 gridview 裡的每個供應商資料列會包含 Vie...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 552d2d50-fe73-4153-9a7f-2b379bec4625
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 48102f64b1ec832774d9b41258503937dae4f4d5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 13f5a13ac33ec9dfbff1952bc3bbb4dc951ab139
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373116"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823975"
 ---
 <a name="masterdetail-filtering-across-two-pages-c"></a>主版/詳細篩選跨兩個頁面 (C#)
 ====================

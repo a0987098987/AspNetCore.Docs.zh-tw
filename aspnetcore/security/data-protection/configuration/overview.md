@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/17/2017
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: f3cac3541ffe633886f82cec8180a219272c24d6
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: fd3e5dff114c81eae07186e735a15314d984dcc3
+ms.sourcegitcommit: 5338b1ed9e2ef225ab565d6cba072b474fd9324d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095596"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39243106"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>設定 ASP.NET Core 資料保護
 
@@ -84,7 +84,44 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+::: moniker range=">= aspnetcore-2.1"
+
+在 ASP.NET Core 2.1 或更新版本，您可以提供[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)要[ProtectKeysWithCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.protectkeyswithcertificate)，例如從檔案載入憑證：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDataProtection()
+        .PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"))
+        .ProtectKeysWithCertificate(
+            new X509Certificate2("certificate.pfx", "password"));
+}
+```
+
+::: moniker-end
+
 請參閱[加密的金鑰在 Rest](xref:security/data-protection/implementation/key-encryption-at-rest)的更多範例和討論內建的金鑰加密機制。
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="unprotectkeyswithanycertificate"></a>UnprotectKeysWithAnyCertificate
+
+在 ASP.NET Core 2.1 或更新版本，您可以旋轉憑證和解密金鑰在待用期間使用的陣列[X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)與憑證[UnprotectKeysWithAnyCertificate](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.unprotectkeyswithanycertificate):
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDataProtection()
+        .PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"))
+        .ProtectKeysWithCertificate(
+            new X509Certificate2("certificate.pfx", "password"));
+        .UnprotectKeysWithAnyCertificate(
+            new X509Certificate2("certificate_old_1.pfx", "password_1"),
+            new X509Certificate2("certificate_old_2.pfx", "password_2"));
+}
+```
+
+::: moniker-end
 
 ## <a name="setdefaultkeylifetime"></a>SetDefaultKeyLifetime
 

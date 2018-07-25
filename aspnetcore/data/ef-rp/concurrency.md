@@ -5,15 +5,13 @@ description: 本教學課程會顯示如何在多位使用者同時更新相同�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: c6ec07eb7bf484490bd7730edc44bf2d89e8fb2a
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: ff9e52df63f9c9f47ee659a68beb28b773a114a1
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38150479"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202688"
 ---
-zh-tw/
-
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 並行 - 8/8
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)、[Tom Dykstra](https://github.com/tdykstra)，以及 [Jon P Smith](https://twitter.com/thereformedprog)
@@ -54,17 +52,21 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以追蹤使用者修改的屬性，然後僅在資料庫中更新相對應的資料行。
 
-  在此案例中，您將不會遺失任何資料。 兩位使用者更新了不同的屬性。 下一次當有人瀏覽英文部門時，他們便會同時看到 Jane 和 John 所作出的變更。 這種更新方法可以減少可能會導致資料遺失的衝突數目。 這種方法：* 無法在使用者更新相同屬性時避免資料遺失。
-        * 表示通常在 Web 應用程式中不實用。 它必須維持大量的狀態來追蹤所有擷取的值和新的值。 維持大量的狀態可能會影響應用程式的效能。
-        * 與實體上的並行偵測相較之下，可能會增加應用程式的複雜度。
+  在此案例中，您將不會遺失任何資料。 兩位使用者更新了不同的屬性。 下一次當有人瀏覽英文部門時，他們便會同時看到 Jane 和 John 所作出的變更。 這種更新方法可以減少可能會導致資料遺失的衝突數目。 這種方法：
+ 
+  * 無法在使用者更新相同屬性時避免資料遺失。
+  * 表示通常在 Web 應用程式中不實用。 它必須維持大量的狀態來追蹤所有擷取的值和新的值。 維持大量的狀態可能會影響應用程式的效能。
+  * 與實體上的並行偵測相較之下，可能會增加應用程式的複雜度。
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
   下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」或「最後寫入為準 (Last in Wins)」案例。 (所有來自用戶端的值都會優先於資料存放區中的資料。)若您沒有針對並行處理撰寫任何程式碼，便會自動發生「用戶端獲勝 (Client Wins)」的情況。
 
-* 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：* 顯示一個錯誤訊息。
-        * 顯示資料的目前狀態。
-        * 允許使用者重新套用變更。
+* 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
+
+  * 顯示錯誤訊息。
+  * 顯示資料的目前狀態。
+  * 允許使用者重新套用變更。
 
   這稱之為「存放區獲勝 (Store Wins)」案例。 (資料存放區的值會優先於用戶端所提交的值。)您會在此教學課程中實作存放區獲勝案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
@@ -144,7 +146,7 @@ dotnet ef database update
 * 新增一個 *Migrations/{time stamp}_RowVersion.cs* 移轉檔案。
 * 更新 *Migrations/SchoolContextModelSnapshot.cs* 檔案。 更新會將下列醒目提示程式碼新增至 `BuildModel` 方法：
 
-[!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
+  [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
 
 * 執行移轉，以更新資料庫。
 

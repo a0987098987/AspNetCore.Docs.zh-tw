@@ -2,17 +2,17 @@
 title: 在 ASP.NET Core 中使用託管服務的背景工作
 author: guardrex
 description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工作。
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: e5455e553cba817dce811391d4a909e501a20d9a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 087ff4e1e169e1a1f76e93d4993441e47bafc945
+ms.sourcegitcommit: 7097dba14d5b858e82758ee031ac62dbe3611339
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273777"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39138593"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -26,14 +26,10 @@ ms.locfileid: "36273777"
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-::: moniker range=">= aspnetcore-2.1"
-
 範例應用程式有兩個版本：
 
 * Web 主機：Web 主機對於裝載 Web 應用程式非常有用。 本主題中顯示的範例程式碼是來自 Web 主機版本的範例。 如需詳細資訊，請參閱 [Web 主機](xref:fundamentals/host/web-host)主題。
 * 泛型主機：泛型主機是 ASP.NET Core 2.1 的新功能。 如需詳細資訊，請參閱[泛型主機](xref:fundamentals/host/generic-host)主題。
-
-::: moniker-end
 
 ## <a name="ihostedservice-interface"></a>IHostedService 介面
 
@@ -51,21 +47,9 @@ ms.locfileid: "36273777"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
 
-::: moniker range=">= aspnetcore-2.1"
-
 服務是在 `Startup.ConfigureServices` 中使用 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-服務會在 `Startup.ConfigureServices` 中註冊：
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
-
-::: moniker-end
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>在背景工作中使用範圍服務
 
@@ -79,21 +63,9 @@ ms.locfileid: "36273777"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
 
-::: moniker range=">= aspnetcore-2.1"
-
 這些服務會在 `Startup.ConfigureServices` 中註冊。 `IHostedService` 實作是以 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-這些服務會在 `Startup.ConfigureServices` 中註冊：
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
-
-::: moniker-end
 
 ## <a name="queued-background-tasks"></a>排入佇列背景工作
 
@@ -101,25 +73,13 @@ ms.locfileid: "36273777"
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
-在 `QueueHostedService` 中，佇列中的背景工作 (`workItem`) 會從佇列清除並執行：
+在 `QueueHostedService` 中，佇列中的背景工作會從佇列中清除，並作為 [BackgroundService](/dotnet/api/microsoft.extensions.hosting.backgroundservice) 執行，這是實作長時間執行 `IHostedService` 的基底類別：
 
-[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
-
-::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=16,20)]
 
 這些服務會在 `Startup.ConfigureServices` 中註冊。 `IHostedService` 實作是以 `AddHostedService` 擴充方法註冊：
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-這些服務會在 `Startup.ConfigureServices` 中註冊：
-
-[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
-
-::: moniker-end
 
 在索引頁面模型類別中，`IBackgroundTaskQueue` 已插入至建構函式，並指派給 `Queue`：
 

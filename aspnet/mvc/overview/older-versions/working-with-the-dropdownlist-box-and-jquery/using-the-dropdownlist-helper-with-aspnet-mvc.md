@@ -8,12 +8,12 @@ ms.date: 01/12/2012
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 9f16c01515bde80d3994618d26818c2d93f69d87
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6dbffe715990de5c0b3b834e354379e414925816
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828373"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219052"
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>使用 DropDownList 協助程式搭配 ASP.NET MVC
 ====================
@@ -190,7 +190,7 @@ Harvest[所選](http://harvesthq.github.com/chosen/)jQuery 外掛程式可以加
 
 [!code-cshtml[Main](using-the-dropdownlist-helper-with-aspnet-mvc/samples/sample12.cshtml)]
 
-在上述程式碼，我們新增的 HTML 屬性和屬性值`class = "chzn-select"`。 @ 字元前面類別毫無使用 Razor 檢視引擎。 `class` 已[C# 關鍵字](https://msdn.microsoft.com/library/x53a06bb.aspx)。 C# 關鍵字無法當做識別碼，除非加上 @ 做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
+在上述程式碼，我們新增的 HTML 屬性和屬性值`class = "chzn-select"`。 \@上述的類別具有與 Razor 檢視引擎無關的字元。 `class` 已[C# 關鍵字](https://msdn.microsoft.com/library/x53a06bb.aspx)。 不能當做識別項使用 C# 關鍵字，除非它們包含\@做為前置詞。 在上述範例`@class`有效的識別項，但**類別**不是因為**類別**是關鍵字。
 
 將參考加入至*Chosen/chosen.jquery.js*並*Chosen/chosen.css*檔案。 *Chosen/chosen.jquery.js*並實作所選外掛程式的功能。 *Chosen/chosen.css*檔案提供的樣式。 新增這些參考到底部*Views\Home\MultiSelectCountry.cshtml*檔案。 下列程式碼示範如何參考所選外掛程式。
 

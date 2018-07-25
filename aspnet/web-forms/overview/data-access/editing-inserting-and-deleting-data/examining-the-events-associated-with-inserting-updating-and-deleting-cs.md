@@ -4,19 +4,16 @@ title: 檢查事件相關聯插入、 更新和刪除 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程，我們將檢驗使用事件發生之前、 期間和之後插入、 更新或刪除作業在 ASP.NET 資料 Web 控制項。 中的...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: dab291a0-a8b5-46fa-9dd8-3d35b249201f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cec25809038cbe6a114b0e36ef7265d84bbe9b92
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 003d71bd05fcc3462b73c9c8c4bc5d63764b82ba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363296"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836168"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-c"></a>檢查與插入、 更新和刪除 (C#) 相關聯的事件
 ====================
@@ -232,14 +229,14 @@ GridView`RowUpdating`接受做為其第二個參數的型別物件的事件[Grid
 離開`Insert()`指向的方法`AddProduct`方法，但一次設定為 （無） 的 刪除 索引標籤的下拉式清單。
 
 
-[![將 [插入] 索引標籤的下拉式清單設定為 [AddProduct 方法](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image41.png)](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image40.png)
+[![將 [插入] 索引標籤的下拉式清單設定為 AddProduct 方法](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image41.png)](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image40.png)
 
 **圖 14**： 若要設定 [插入] 索引標籤下拉式清單`AddProduct`方法 ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image42.png))
 
 
 [![[刪除] 索引標籤的下拉式清單 （無）](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image44.png)](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image43.png)
 
-**圖 15**： 設定為 [（無） 的 [刪除] 索引標籤下拉式清單 ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image45.png))
+**圖 15**： 設定為（無） 的 [刪除] 索引標籤下拉式清單 ([按一下以檢視完整大小的影像](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image45.png))
 
 
 進行這些變更之後，ObjectDataSource 的宣告式語法會展開成包含`InsertParameters`集合，如下所示：

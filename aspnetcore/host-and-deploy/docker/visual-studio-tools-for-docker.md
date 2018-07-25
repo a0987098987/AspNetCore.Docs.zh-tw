@@ -4,14 +4,14 @@ author: spboyer
 description: 了解如何使用適用於 Windows 的 Visual Studio 2017 工具和 Docker 對 ASP.NET Core 應用程式進行容器化。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/12/2017
+ms.date: 07/18/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: fd485416ff0fab2508ab8ffd3f0ad309be338723
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: afa7b05820ba021c50d9c23804095f7edd8b71f1
+ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276850"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146880"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio Tools for Docker
 
@@ -41,9 +41,9 @@ Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-w
 
 ### <a name="new-app"></a>新增應用程式
 
-使用 **ASP.NET Core Web 應用程式**專案範本來建立新的應用程式時，請選取 [Enable Docker Support] ( (啟用 Docker 支援) 核取方塊：
+使用 **ASP.NET Core Web 應用程式**專案範本來建立新的應用程式時，請選取 [啟用 Docker 支援] 核取方塊：
 
-![啟用 Docker 支援核取方塊](visual-studio-tools-for-docker/_static/enable-docker-support-checkbox.png)
+![啟用 Docker 支援核取方塊](visual-studio-tools-for-docker/_static/enable-docker-support-check box.png)
 
 如果目標架構是 .NET Core，則 [OS] 下拉式清單會允許選取容器類型。
 
@@ -56,7 +56,7 @@ Visual Studio Tools for Docker 不支援將 Docker 新增至以 .NET Framework �
 
 ## <a name="docker-assets-overview"></a>Docker 資產概觀
 
-Visual Studio Tools for Docker 會將 *docker-compose* 專案新增至方案，包含下列項目：
+Visual Studio Tools for Docker 會將 *docker-compose* 專案新增至包含下列檔案的方案：
 
 * *.dockerignore*：包含要在產生組建內容時排除的檔案和目錄模式清單。
 * *docker-compose.yml*︰基礎 [Docker Compose](https://docs.docker.com/compose/overview/) 檔案，用於定義要分別使用 `docker-compose build` 和 `docker-compose run` 建置並執行的映像集合。
@@ -85,7 +85,7 @@ Visual Studio Tools for Docker 會將 *docker-compose* 專案新增至方案，�
 * 在容器內，*ASPNETCORE_ENVIRONMENT* 環境變數設定為 `Development`。
 * 連接埠 80 會公開並對應至本機主機的動態指派連接埠。 連接埠是由 Docker 主機所決定，並且可以使用 `docker ps` 命令進行查詢。
 * 應用程式會複製至容器。
-* 預設瀏覽器會在偵錯工具使用動態指派的連接埠附加至容器的情況下啟動。 
+* 預設瀏覽器會在偵錯工具使用動態指派的連接埠附加至容器的情況下啟動。
 
 產生的 Docker 映像是應用程式的 *dev* 映像，並以 *microsoft/aspnetcore* 映像作為基底映像。 在 [套件管理員主控台] (PMC) 視窗中，執行 `docker images` 命令。 這會顯示電腦上的映像：
 
@@ -109,9 +109,9 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   21 seconds 
 
 ## <a name="edit-and-continue"></a>編輯後繼續
 
-針對靜態檔案和 Razor 檢視所做的變更會自動更新，而不需要編譯步驟。 進行變更並儲存，然後重新整理瀏覽器來檢視更新。  
+針對靜態檔案和 Razor 檢視所做的變更會自動更新，而不需要編譯步驟。 進行變更並儲存，然後重新整理瀏覽器來檢視更新。
 
-程式碼檔案的修改需要編譯以及重新啟動容器內的 Kestrel。 完成變更之後，請使用 CTRL + F5 來執行程序，並啟動容器內的應用程式。 Docker 容器不會進行重建或停止。 在 PMC 中執行 `docker ps` 命令。 請注意，原始容器在 10 分鐘前仍在執行：
+程式碼檔案的修改需要編譯以及重新啟動容器內的 Kestrel。 完成變更之後，請使用 `CTRL+F5` 來執行程序，並啟動容器內的應用程式。 Docker 容器不會進行重建或停止。 在 PMC 中執行 `docker ps` 命令。 請注意，原始容器在 10 分鐘前仍在執行：
 
 ```console
 CONTAINER ID        IMAGE                  COMMAND                   CREATED             STATUS              PORTS                   NAMES
@@ -120,7 +120,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   10 minutes 
 
 ## <a name="publish-docker-images"></a>發行 Docker 映像
 
-當應用程式的開發和偵錯循環完畢之後，Visual Studio Tools for Docker 就會協助建立應用程式的實際執行映像。 將組態下拉式清單變更為 [發行] 並建置應用程式。 這項工具會產生附有「最新」標記的映像，此映像可被推送至私人登錄或 Docker Hub。 
+當應用程式的開發和偵錯循環完畢之後，Visual Studio Tools for Docker 就會協助建立應用程式的實際執行映像。 將組態下拉式清單變更為 [發行] 並建置應用程式。 這項工具會產生附有「最新」標記的映像，此映像可被推送至私人登錄或 Docker Hub。
 
 在 PMC 中執行 `docker images` 命令，以查看映像清單：
 
@@ -136,3 +136,8 @@ microsoft/aspnetcore         2.0-nanoserver-1709   8872347d7e5d        40 hours 
 > `docker images` 命令會傳回存放庫名稱和標記識別為 \<無> (上面未列出) 的中繼映像。 這些未命名映像是由[多階段建置](https://docs.docker.com/engine/userguide/eng-image/multistage-build/) *Dockerfile* 所產生。 它們可以改善最終映像的建置效率 &mdash; 發生變更時只會重建必要層。 當不再需要中繼映像時，請使用 [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) \(英文\) 命令予以刪除。
 
 相較於 *dev* 映像，生產或發行映像的大小可能需要更小。 基於磁碟區對應，偵錯工具和應用程式是從本機電腦執行，而不是在容器內執行。 「最新」映像已封裝在主機上執行應用程式所需的應用程式碼。 因此，差異是應用程式碼的大小。
+
+## <a name="additional-resources"></a>其他資源
+
+* [使用 Docker 針對 Visual Studio 2017 開發進行疑難排解](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
+* [Visual Studio Tools for Docker GitHub 存放庫](https://github.com/Microsoft/DockerTools)

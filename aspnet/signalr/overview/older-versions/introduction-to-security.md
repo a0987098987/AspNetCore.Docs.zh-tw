@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: 715a4059-d307-4631-abbb-c789c95d6eb4
 msc.legacyurl: /signalr/overview/older-versions/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: b8d12969344dee9ee933509d15b586e3616bb3bc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cb705ccb6052297d0214deeaaeb8181e283245f3
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833830"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228555"
 ---
 <a name="introduction-to-signalr-security-signalr-1x"></a>SignalR 安全性簡介 (SignalR 1.x)
 ====================
@@ -28,7 +28,7 @@ ms.locfileid: "37833830"
 
 - [SignalR 安全性概念](#concepts)
 
-    - [驗證和授權](#authentication)
+    - [驗證與授權](#authentication)
     - [連線語彙基元](#connectiontoken)
     - [重新連線時，重新加入群組](#rejoingroup)
 - [SignalR 如何防止跨網站偽造要求](#csrf)
@@ -89,7 +89,7 @@ SignalR 降低執行惡意的命令來驗證寄件者的身分識別的風險。
 
 CSRF 攻擊的範例如下：
 
-1. 使用者登入 www.example.com 中的，使用表單驗證。
+1. 使用者登入`www.example.com`，使用表單驗證。
 2. 伺服器會驗證使用者。 來自伺服器的回應包含驗證 cookie。
 3. 而不需要登出，使用者會造訪惡意的網站。 此惡意的網站包含 HTML 格式如下： 
 

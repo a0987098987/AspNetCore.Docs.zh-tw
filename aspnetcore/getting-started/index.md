@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: 22e9c982921cc03d89506e18ff99bf481027dda6
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 7ab9f303d74786c4ac76f002d0f2c66371e78cb8
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "38216209"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228578"
 ---
 # <a name="get-started-with-aspnet-core"></a>ASP.NET Core 使用者入門
 
@@ -25,7 +25,7 @@ ms.locfileid: "38216209"
     dotnet new webapp -o aspnetcoreapp
     ```
 
-    [!INCLUDE [](~/includes/webapp-alias-notice.md) [](~/includes/webapp-alias-notice.md)]
+    [!INCLUDE [](~/includes/webapp-alias-notice.md)]
 
 3. 信任 HTTPS 開發憑證：
 
@@ -35,11 +35,11 @@ ms.locfileid: "38216209"
     dotnet dev-certs https --trust
     ```
 
-    The preceding command displays the following dialog:
+   上述命令會顯示以下對話方塊：
 
-    ![Security warning dialog](_static/cert.png)
+   ![安全性警告對話方塊](_static/cert.png)
 
-    Select **Yes** if you agree to trust the development certificate.
+   若您同意信任開發憑證，請選取 [是]。
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
@@ -47,18 +47,15 @@ ms.locfileid: "38216209"
     dotnet dev-certs https --trust
     ```
 
-    The preceding command displays the following message:
+   上述命令會顯示以下訊息：
 
-    *Trusting the HTTPS development certificate was requested. If the certificate is not already trusted we will run the following command:*
-    `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
-    *This command might prompt you for your password to install the certificate on the system keychain.
-    Password:*
+   已要求信任 HTTPS 開發憑證。若憑證尚未受到信任，我們會執行以下命令：`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`。此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。  密碼：
 
-    Enter your password if you agree to trust the development certificate.
+   若您同意信任開發憑證，請輸入您的密碼。
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-    See the documentation for your Linux distribution on how to trust the HTTPS development certificate
+   <a name="see-the-documentation-for-your-linux-distribution-on-how-to-trust-the-https-development-certificate"></a>請參閱您 Linux 發行版的文件，來了解如何信任 HTTPS 開發憑證
 ---
 
 4. 執行應用程式：

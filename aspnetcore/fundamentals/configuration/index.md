@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/11/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 70e9e73eeb5d08baf9ef190ebfbda998ace60d77
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 59ab0cd0f6975d15bd01ce7e4128521938182c24
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278319"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228620"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -34,6 +34,40 @@ ms.locfileid: "36278319"
 選項模式使用選項類別來代表一組相關的設定。 如需使用選項模式的詳細資訊，請參閱[選項](xref:fundamentals/configuration/options)主題。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+
+::: moniker range=">= aspnetcore-2.1"
+
+本主題提供的範例需要：
+
+* 使用 [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) 設定應用程式的基底路徑。 參考 [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 即可讓應用程式使用 `SetBasePath`。
+* 使用 [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection) 解析組態檔的區段。 參考 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 即可讓應用程式使用 `GetSection`。
+* 使用 [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind)繫結組態。 參考 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 即可讓應用程式使用 `Bind`。
+
+這些套件均包含在 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)中。
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+本主題提供的範例需要：
+
+* 使用 [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) 設定應用程式的基底路徑。 參考 [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 即可讓應用程式使用 `SetBasePath`。
+* 使用 [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection) 解析組態檔的區段。 參考 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 即可讓應用程式使用 `GetSection`。
+* 使用 [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind)繫結組態。 參考 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 即可讓應用程式使用 `Bind`。
+
+這些套件均包含在 [Microsoft.AspNetCore.All 中繼套件](xref:fundamentals/metapackage)中。
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+本主題提供的範例需要：
+
+* 使用 [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) 設定應用程式的基底路徑。 參考 [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/) 即可讓應用程式使用 `SetBasePath`。
+* 使用 [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection) 解析組態檔的區段。 參考 [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/) 即可讓應用程式使用 `GetSection`。
+* 使用 [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind)繫結組態。 參考 [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/) 即可讓應用程式使用 `Bind`。
+
+::: moniker-end
 
 ## <a name="json-configuration"></a>JSON 組態
 

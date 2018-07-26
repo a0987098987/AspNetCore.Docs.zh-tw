@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 331c17de33b5c13221385ffb4282bc16bde32289
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: c3d92994c0331b1408e246953454910ca1f4dc43
+ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095713"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39254827"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -37,6 +37,11 @@ ms.locfileid: "39095713"
 下列程式碼會呼叫`UseHttpsRedirection`在`Startup`類別：
 
 [!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=13)]
+
+上述反白顯示的程式碼：
+
+* 使用預設[HttpsRedirectionOptions.RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) (`Status307TemporaryRedirect`)。 生產環境應用程式應該呼叫[UseHsts](#hsts)。
+* 使用預設[HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (443)。
 
 下列程式碼會呼叫[AddHttpsRedirection](/dotnet/api/microsoft.aspnetcore.builder.httpsredirectionservicesextensions.addhttpsredirection)設定中介軟體選項：
 

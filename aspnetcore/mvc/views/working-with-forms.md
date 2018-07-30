@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/14/2017
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 3e4e597fde829ae2e2ce4dbd19a4ec0b42d078df
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 34a553c7ff8a18c367bf5e8079e2ea71f968bf3b
+ms.sourcegitcommit: 75bf5fdbfdcb6a7cfe8fe207b9ff37655ccbacd4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274849"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39219416"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -169,7 +169,7 @@ Type expected
 
 ### <a name="expression-names"></a>運算式名稱
 
-`asp-for` 屬性值是 `ModelExpression` 和 Lambda 運算式的右邊。 因此，`asp-for="Property1"` 在產生的程式碼中變成 `m => m.Property1`，這也是為什麼您不需要加上前置詞 `Model` 的原因。 您可以使用 "@" 字元來開始內嵌運算式，並移至 `m.` 前：
+`asp-for` 屬性值是 `ModelExpression` 和 Lambda 運算式的右邊。 因此，`asp-for="Property1"` 在產生的程式碼中變成 `m => m.Property1`，這也是為什麼您不需要加上前置詞 `Model` 的原因。 您可以使用 "\@" 字元來起始內嵌運算式並將它移到 `m.` 前面：
 
 ```HTML
 @{

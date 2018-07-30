@@ -7,20 +7,18 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 04/25/2018
 uid: signalr/introduction
-ms.openlocfilehash: bc6f25c3f35e7fb0c2c68220697f2e0fdc6a9958
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 2fff24609caf7592bad763a077288990a29617aa
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095385"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342545"
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>ASP.NET Core SignalR 簡介
 
-作者：[Rachel Appel](https://twitter.com/rachelappel)
-
 ## <a name="what-is-signalr"></a>SignalR 是什麼？
 
-ASP.NET Core SignalR 是能簡化新增即時 web 功能的應用程式的程式庫。 即時 web 功能立即可讓用戶端推入內容的伺服器端程式碼。
+ASP.NET Core SignalR 是能簡化新增即時 web 功能的應用程式的開放原始碼程式庫。 即時 web 功能立即可讓用戶端推入內容的伺服器端程式碼。
 
 Signalr 的良好候選項目：
 
@@ -31,27 +29,32 @@ Signalr 的良好候選項目：
 
 SignalR 提供的 API 來建立伺服器到用戶端[遠端程序呼叫 (RPC)](https://wikipedia.org/wiki/Remote_procedure_call)。 從伺服器端.NET Core 程式碼，Rpc 會呼叫 JavaScript 函式在用戶端上。
 
-適用於 ASP.NET Core SignalR:
+以下是適用於 ASP.NET Core SignalR 的一些功能：
 
 * 會自動處理連接管理。
-* 啟用同時廣播到所有已連線的用戶端的訊息。 比方說，聊天室。
-* 能夠將訊息傳送至特定的用戶端或群組的用戶端。
-* 是開放原始碼，在[GitHub](https://github.com/aspnet/signalr)。
-* 可調整。
+* 同時將訊息傳送至所有連線的用戶端。 比方說，聊天室。
+* 將訊息傳送至特定的用戶端或群組的用戶端。
+* 可調整來處理增加的流量。
 
-用戶端與伺服器之間的連線是持續性的不同於 HTTP 連線。
+來源裝載於[SignalR GitHub 上的存放庫](https://github.com/aspnet/signalr)。
 
 ## <a name="transports"></a>傳輸
 
-SignalR 透過一些技巧來建置即時 web 應用程式的摘要。 [Websocket](https://tools.ietf.org/html/rfc7118)是最佳的傳輸，但這些無法使用時，就可以使用其他方法，像是 Server-Sent 事件和長輪詢。 SignalR 會自動偵測，並初始化適當的伺服器和用戶端上支援的功能為基礎的傳輸。
+SignalR 支援數種技術來處理即時通訊：
+
+* [WebSockets](https://tools.ietf.org/html/rfc7118)
+* 伺服器傳送事件
+* 長輪詢
+
+SignalR 會自動選擇最佳的傳輸方法內的伺服器和用戶端功能。
 
 ## <a name="hubs"></a>中樞
 
-SignalR 使用中樞用戶端和伺服器之間進行通訊。
+使用 SignalR*中樞*用戶端和伺服器之間進行通訊。
 
-中樞是可讓您的用戶端與伺服器彼此呼叫方法的高階管線。 SignalR 處理分派跨電腦界限會自動允許用戶端呼叫伺服器上的方法，以輕鬆地為本機方法，反之亦然。 中樞可讓強型別參數傳遞至方法，可使用模型繫結。 SignalR 提供兩個內建中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。  MessagePack 通常會建立較小的訊息，比使用 JSON。 必須支援舊版瀏覽器[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。
+中樞是可讓用戶端與伺服器彼此呼叫方法的高階管線。 SignalR 處理分派跨電腦界限會自動允許用戶端呼叫方法，在伺服器上，反之亦然。 您可以傳遞強型別參數至方法，可使用模型繫結。 SignalR 提供兩個內建中樞通訊協定： 文字通訊協定會根據 JSON 和二進位通訊協定為基礎[MessagePack](https://msgpack.org/)。  MessagePack 通常會建立較小的訊息，相較於 JSON。 必須支援舊版瀏覽器[XHR 層級 2](https://caniuse.com/#feat=xhr2)提供 MessagePack 通訊協定支援。
 
-中樞會呼叫用戶端程式碼，藉由使用作用中傳輸傳送訊息。 訊息包含的名稱和用戶端方法的參數。 做為方法參數傳送的物件會使用設定的通訊協定來還原序列化。 用戶端會嘗試比對用戶端程式碼中的方法名稱。 相符項目時，會執行用戶端方法，使用已還原序列化的參數資料。
+中樞會呼叫用戶端程式碼，藉由傳送訊息，它包含名稱和用戶端方法的參數。 做為方法參數傳送的物件會使用設定的通訊協定來還原序列化。 用戶端會嘗試比對用戶端程式碼中的方法名稱。 當用戶端找到相符項目時，它會呼叫方法，並已還原序列化的參數資料傳遞給它。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -5,12 +5,12 @@ description: 定義了 ASP.NET Core 環境標籤協助程式，包括所有屬�
 ms.author: riande
 ms.date: 07/14/2017
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 05c07b06a4fedac0b0ff39d168807f5e2e6996cf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 4a283a3a03aa6cac228ec6effd02e3f1095be260
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276912"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342220"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的環境標籤協助程式
 
@@ -61,4 +61,3 @@ ASP.NET Core 2.x 新增了 `include`  &  `exclude` 屬性。 這些屬性會依�
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/environments>
-* <xref:fundamentals/dependency-injection#service-lifetimes-and-registration-options>

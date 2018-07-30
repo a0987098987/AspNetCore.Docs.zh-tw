@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/16/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 879f31a5916646a4d63f9f503173dc9ff4c53434
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.openlocfilehash: 0f3b548c2065245f6ed8a6a6f981ece4eb78535e
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894149"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342051"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -84,12 +84,15 @@ ms.locfileid: "37894149"
 **索引鍵**：applicationName  
 **類型**：*string*  
 **預設**：包含應用程式進入點的組件名稱。  
-**設定使用**：`UseSetting`  
+**設定使用**：`HostBuilderContext.HostingEnvironment.ApplicationName`  
 **環境變數**：`<PREFIX_>APPLICATIONKEY` (`<PREFIX_>` 是[選擇性和使用者定義的](#configuration-builder))
 
 ```csharp
-WebHost.CreateDefaultBuilder(args)
-    .UseSetting(WebHostDefaults.ApplicationKey, "CustomApplicationName")
+var host = new HostBuilder()
+    .ConfigureAppConfiguration((hostContext, configApp) =>
+    {
+        hostContext.HostingEnvironment.ApplicationName = "CustomApplicationName";
+    })
 ```
 
 #### <a name="content-root"></a>內容根目錄

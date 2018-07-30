@@ -5,12 +5,12 @@ description: 示範如何使用快取標籤協助程式
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: d33c22802030eb9bc77baa64b83c9bbd7e902195
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a35a5795c086273e773c613c483fc6343c694bf2
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275171"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342168"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的分散式快取標籤協助程式
 
@@ -57,7 +57,7 @@ ASP.NET Core 內建兩項 `IDistributedCache` 實作。 其中一項是以 SQL S
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
-* <xref:fundamentals/dependency-injection#service-lifetimes-and-registration-options>
+* <xref:fundamentals/dependency-injection>
 * <xref:performance/caching/distributed>
 * <xref:performance/caching/memory>
 * <xref:security/authentication/identity>

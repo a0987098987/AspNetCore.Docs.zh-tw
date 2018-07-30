@@ -1,42 +1,42 @@
 ---
-title: 防止跨網站指令碼 (XSS) 中 ASP.NET Core
+title: 防止跨網站指令碼 (XSS) ASP.NET Core 中
 author: rick-anderson
-description: 了解跨網站指令碼 (XSS) 和技術來處理這個 ASP.NET Core 應用程式中的弱點。
+description: 了解跨網站指令碼 (XSS) 和解決此一漏洞的 ASP.NET Core 應用程式中的技術。
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/cross-site-scripting
-ms.openlocfilehash: ce6bb273034c56890e0cd98b890436602b5acc69
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 4784b1775d955f0ef00526e50b960fc873ea218d
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272444"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342207"
 ---
-# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) 中 ASP.NET Core
+# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>防止跨網站指令碼 (XSS) ASP.NET Core 中
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入受影響的頁面，攻擊者指令碼執行時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作的 web 網頁內容，或瀏覽器重新導向至另一個頁面。 應用程式會接受使用者輸入，並將它在網頁輸出而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
+跨網站指令碼 (XSS) 是可讓攻擊者將用戶端指令碼 (通常是 JavaScript) 放入網頁的安全性弱點。 當其他使用者載入攻擊者的指令碼會執行受影響的頁面時，讓攻擊者竊取 cookie 和工作階段權杖變更透過 DOM 操作之 web 網頁內容，或瀏覽器重新導向至其他頁面。 應用程式接受使用者輸入，並將其輸出在頁面中，而不需要驗證、 編碼或逸出它時，通常會發生 XSS 弱點。
 
-## <a name="protecting-your-application-against-xss"></a>保護您的應用程式對 XSS
+## <a name="protecting-your-application-against-xss"></a>保護您的應用程式免遭 XSS
 
-在基本層級 XSS 運作方式是欺騙您的應用程式到插入`<script>`標記成轉譯的頁面上，或是藉由插入`On*`事件的項目。 若要避免引進 XSS 到他們的應用程式，開發人員應該使用下列預防步驟。
+在基本層級 XSS 的運作方式是矇騙應用程式插入`<script>`標記為您呈現的頁面上，或藉由插入`On*`事件加入項目。 開發人員應該使用下列預防步驟，以避免產生 XSS 應用程式。
 
-1. 除非您是遵循下列步驟的其餘部分，永遠不會放入您的 HTML 輸入未受信任的資料。 不受信任的資料是任何資料可能受攻擊者、 HTML 表單的輸入、 查詢字串、 HTTP 標頭，即使資料源自攻擊者可能會違反您的資料庫，即使它們不能違反您的應用程式資料庫。
+1. 除非您是遵循下列步驟的其餘部分，永遠不會放入 HTML 輸入之用，不受信任的資料。 任何可能受到攻擊者、 HTML 表單的輸入、 查詢字串、 HTTP 標頭，甚至是資料來自攻擊者可能會破壞您的資料庫，即使它們不能違反您的應用程式資料庫的資料不受信任的資料。
 
-2. HTML 項目內有不受信任的資料之前，請先確定它是 HTML 編碼。 例如 HTML 編碼方式會採用字元&lt;變成安全的表單和&amp;lt;
+2. HTML 項目內的不信任的資料之前，請先確認其為 HTML 編碼。 這類 HTML 編碼會採用字元&lt;變成安全的表單和&amp;l t;
 
-3. 請先將不受信任的資料放入 HTML 屬性確認它已編碼的 HTML 屬性。 HTML 屬性編碼為 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
+3. 之前將不受信任的資料放入 HTML 屬性，請確定它是編碼的 HTML 屬性。 HTML 屬性編碼是 HTML 編碼的超集，例如將額外的字元編碼成"和 '。
 
-4. 之前將不受信任的資料放入 JavaScript 將資料放在 HTML 項目您在執行階段擷取其內容。 如果這不可能，請確定資料是 JavaScript 編碼。 JavaScript 編碼危險的字元所需的 JavaScript，並將它們取代為其十六進位，例如&lt;會編碼為`\u003C`。
+4. 之前將不受信任的資料放入 JavaScript 將您在執行階段擷取其內容的 HTML 項目中的資料。 如果這不可行，請確定資料是 JavaScript 編碼。 JavaScript 的編碼方式會適用於 JavaScript 的危險的字元，取代成其 hex，比方說&lt;會編碼為`\u003C`。
 
-5. 之前將不受信任的資料放入 URL 查詢字串，請確定它是 URL 編碼。
+5. 將不受信任的資料放入的 URL 查詢字串之前，請先確認其為 URL 編碼。
 
-## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼方式
+## <a name="html-encoding-using-razor"></a>使用 Razor 的 HTML 編碼
 
-自動使用 MVC Razor 引擎會將編碼所有輸出來自於變數，除非您真的硬碟以防止它執行這項作業。 它會使用 HTML 屬性編碼規則，每當您使用*@* 指示詞。 為 HTML 屬性編碼為 HTML 編碼這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標記協助程式也會編碼的輸入您在標記參數中使用。
+Razor 引擎會自動使用在 MVC 中編碼所有輸出源自變數，除非您真的很努力避免這種方式。 它會使用 HTML 編碼規則，每當您使用的屬性*@* 指示詞。 為 HTML 屬性編碼會是這表示您不必擔心自己是否應使用 HTML 編碼或 HTML 屬性編碼的 HTML 編碼的超集。 您必須確定您只使用在 HTML 內容中，不會在嘗試直接插入 JavaScript 不受信任的輸入。 標籤協助程式也會將編碼的輸入您在 tag 參數中使用。
 
-採取下列 Razor 檢視;
+採取下列 Razor 檢視中;
 
 ```none
 @{
@@ -53,11 +53,11 @@ ms.locfileid: "36272444"
    ```
 
 >[!WARNING]
-> ASP.NET Core MVC 提供`HtmlString`類別可在輸出時不會自動編碼。 這應該永遠不會用於搭配信任的輸入這將會公開 （expose） XSS 的安全性弱點。
+> ASP.NET Core MVC 提供`HtmlString`類別可在輸出時不會自動編碼。 這應該永遠不會用於具有不受信任的輸入組合，這將會公開 XSS 的安全性弱點。
 
 ## <a name="javascript-encoding-using-razor"></a>使用 Razor Javascript 編碼
 
-有時候可能想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值放在資料屬性中，並擷取在 JavaScript 中是標記的最安全的方式，將值插入。 例如: 
+有時候可能會想要將值插入您的檢視中要處理的 JavaScript。 執行這項作業的方法有兩種。 將值插入最安全的方法是將值放在標記的資料屬性，並擷取在 JavaScript 中。 例如: 
 
 ```none
 @{
@@ -107,7 +107,7 @@ ms.locfileid: "36272444"
    </script>
    ```
 
-其中，執行時，會轉譯下列工作;
+它執行時，會轉譯下列作業：
 
 ```none
 <"123">
@@ -129,7 +129,7 @@ ms.locfileid: "36272444"
    </script>
    ```
 
-這將瀏覽器中轉換，如下所示。
+這會如下所示; 呈現在瀏覽器
 
 ```html
 <script>
@@ -138,13 +138,13 @@ ms.locfileid: "36272444"
    ```
 
 >[!WARNING]
-> 不要串連在 JavaScript 中建立 DOM 項目，不受信任的輸入。 您應該使用`createElement()`適當例如指派屬性值和`node.TextContent=`，或使用`element.SetAttribute()` / `element[attribute]=`否則 exception-declaration DOM 式 XSS。
+> 不受信任的輸入，在 JavaScript 中建立 DOM 項目不串連。 您應該使用`createElement()`，並適當地例如指派屬性值`node.TextContent=`，或使用`element.SetAttribute()` / `element[attribute]=`否則您會面臨 DOM 式 XSS。
 
 ## <a name="accessing-encoders-in-code"></a>存取程式碼中的編碼器
 
-HTML、 JavaScript 和 URL 編碼器可以使用您的程式碼有兩種，您可以將它們透過插入[相依性插入](xref:fundamentals/dependency-injection#fundamentals-dependency-injection)或者您可以使用中所包含的預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，則要套用的任何字元視為為安全的範圍不會生效-預設編碼器使用最安全的編碼規則可能。
+HTML、 JavaScript 和 URL 編碼器可有兩種程式碼，您可以將之插入透過[相依性插入](xref:fundamentals/dependency-injection)或您可以使用包含在預設編碼器`System.Text.Encodings.Web`命名空間。 如果您使用的預設編碼器，則您套用至任何處理為安全的字元範圍才會生效-預設編碼器使用最安全的編碼規則可能。
 
-若要使用的可設定的編碼器，透過 DI 您建構函式應該採用*HtmlEncoder*， *JavaScriptEncoder*和*UrlEncoder*適當的參數。 例如，
+若要使用的可設定的編碼器，透過您的建構函式應該採用的 DI *HtmlEncoder*， *JavaScriptEncoder*並*UrlEncoder*適當的參數。 例如，
 
 ```csharp
 public class HomeController : Controller
@@ -166,41 +166,41 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>編碼的 URL 參數
 
-如果您想要建立具有不受信任的輸入，當作值使用的 URL 查詢字串`UrlEncoder`来編碼的值。 例如，套用至物件的
+如果您想要建置具有不受信任的輸入，當作值使用的 URL 查詢字串`UrlEncoder`編碼值。 例如，套用至物件的
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";
    var encodedValue = _urlEncoder.Encode(example);
    ```
 
-變數將包含編碼 encodedValue 之後`%22Quoted%20Value%20with%20spaces%20and%20%26%22`。 空格、 引號、 標點符號和其他 unsafe 字元將百分比編碼成其十六進位值，例如空格字元會變成 %20。
+變數會包含編碼 encodedValue 之後`%22Quoted%20Value%20with%20spaces%20and%20%26%22`。 空格、 引號、 標點符號和其他不安全字元就是百分比編碼成其十六進位值，例如空格字元會變成 %20。
 
 >[!WARNING]
-> 請勿使用不受信任的輸入的 URL 路徑的一部分。 一律為查詢字串值傳遞未受信任的輸入。
+> 請勿使用不受信任的輸入的 URL 路徑的一部分。 一律傳遞不受信任的輸入作為查詢字串值。
 
 <a name="security-cross-site-scripting-customization"></a>
 
 ## <a name="customizing-the-encoders"></a>自訂編碼器
 
-根據預設編碼器使用安全清單限制為基本的拉丁 Unicode 範圍，而且其字元程式碼的對等用法為超出該範圍的所有字元都編碼。 此行為也會影響 Razor TagHelper 和 HtmlHelper 轉譯，因為它會使用編碼器來輸出字串。
+預設編碼器會使用基本拉丁文 Unicode 範圍僅限安全清單，並為其對等的字元碼超出該範圍的所有字元都編碼。 此行為也會影響 Razor TagHelper 與 HtmlHelper 轉譯，因為它會使用編碼器，輸出字串。
 
-這背後的原因是防範未知或未來的瀏覽器 （上一個瀏覽器 bug 有向上處理非英文字元為基礎的剖析錯誤） 的 bug。 如果您的網站可讓大量使用非拉丁字元，例如，中文文 （斯拉夫） 或其他人這不可能是您想要的行為。
+背後的原因是要防止未知或未來的瀏覽器錯誤 （先前的瀏覽器錯誤有挫敗剖析以非英文字元的處理）。 如果您的網站會大量使用非拉丁字元，例如中文，斯拉夫文或其他人不可能您想要的行為。
 
-您可以自訂編碼器安全清單，以包含範圍中適合您的應用程式在啟動期間，Unicode `ConfigureServices()`。
+您可以自訂編碼器安全清單，以包含在您的應用程式在啟動期間，適合範圍的 Unicode `ConfigureServices()`。
 
-例如，使用預設組態，您可能會使用 Razor HtmlHelper 如下所示。
+例如，使用預設組態，您可以使用 Razor HtmlHelper 就像這樣;
 
 ```html
 <p>This link text is in Chinese: @Html.ActionLink("汉语/漢語", "Index")</p>
    ```
 
-當您檢視網頁的來源時您會看到它已呈現，如下所示，以中文文字編碼。
+當您檢視網頁的原始檔時您會看到轉譯，如下所示，與編碼; 的中文文字
 
 ```html
 <p>This link text is in Chinese: <a href="/">&#x6C49;&#x8BED;/&#x6F22;&#x8A9E;</a></p>
    ```
 
-若要擴大範圍的字元視為安全編碼器插入將下列行插入`ConfigureServices()`方法中的`startup.cs`;
+若要擴大字元視為安全的編碼器中您會插入下列行插入`ConfigureServices()`方法中的`startup.cs`;
 
 ```csharp
 services.AddSingleton<HtmlEncoder>(
@@ -208,21 +208,21 @@ services.AddSingleton<HtmlEncoder>(
                                                UnicodeRanges.CjkUnifiedIdeographs }));
    ```
 
-這個範例可擴展包含 Unicode 範圍 CjkUnifiedIdeographs 安全的清單。 現在就會變成轉譯的輸出
+此範例中，將擴展安全清單，以包含 Unicode 範圍 CjkUnifiedIdeographs。 現在就會變成轉譯的輸出
 
 ```html
 <p>This link text is in Chinese: <a href="/">汉语/漢語</a></p>
    ```
 
-安全清單的範圍已指定為 Unicode 字碼表不語言。 [Unicode 標準](http://unicode.org/)有一份[程式碼圖表](http://www.unicode.org/charts/index.html)可用來尋找圖表，其中包含您的字元。 每個編碼器 Html、 JavaScript 和 Url，必須個別設定。
+安全清單範圍指定為 Unicode 字碼圖表，不是語言。 [Unicode 標準](http://unicode.org/)有一份[程式碼圖表](http://www.unicode.org/charts/index.html)可用來尋找圖表，其中包含您的字元。 每個編碼器、 Html、 JavaScript 和 Url，必須個別設定。
 
 > [!NOTE]
-> 自訂安全清單只會影響來源 DI 透過編碼器。 如果您直接存取透過編碼器`System.Text.Encodings.Web.*Encoder.Default`然後預設值、 基本拉丁文只安全清單將會使用。
+> 自訂安全清單只會影響透過 DI 取得資料來源的編碼器。 如果您直接存取透過編碼器`System.Text.Encodings.Web.*Encoder.Default`然後預設值、 基本拉丁文將用於只安全清單。
 
-## <a name="where-should-encoding-take-place"></a>編碼的 take 應放置的位置？
+## <a name="where-should-encoding-take-place"></a>編碼的 take 應放置的地方？
 
-一般會接受作法是編碼發生在輸出，而編碼的值應該永遠不會儲存在資料庫中。 在輸出的編碼方式，可讓您變更使用的資料，例如，從查詢字串值的 HTML。 它也可讓您輕鬆地搜尋您的資料，而不需要將值編碼搜尋之前，並可讓您充分任何的利用變更或編碼器所作的 bug 修正。
+所接受的一般作法是，編碼會發生在輸出時，並編碼的值應該永遠不會儲存在資料庫中。 在輸出的編碼方式，可讓您變更的資料，例如，使用從查詢字串值的 HTML。 它也可讓您輕鬆地搜尋您的資料，而不需要編碼之前搜尋的值，並可讓您充分任何的利用變更或對編碼器的 bug 修正。
 
-## <a name="validation-as-an-xss-prevention-technique"></a>做為 XSS 防護技巧的驗證
+## <a name="validation-as-an-xss-prevention-technique"></a>XSS 防護技術以及驗證
 
-驗證是相當有用的工具，在限制 XSS 攻擊。 例如，包含只有字元 0-9 的數字字串就不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能。 MarkDown 和其他的文字格式將豐富的輸入更安全的選項。 您永遠不應該依賴單獨的驗證。 不受信任的輸入，輸出前先編碼，無論何種驗證您已經執行。
+驗證可以是一個有用的工具，在限制 XSS 攻擊。 例如，數字的字串，包含只有字元 0-9 不會觸發 XSS 攻擊。 驗證變得更複雜的是如果您想要接受使用者輸入層中的 HTML 剖析 HTML 輸入是很困難，不可能的。 MarkDown 和其他文字格式會是比較安全的選項為豐富的輸入。 您永遠不應該依賴單獨的驗證。 一律將編碼不受信任的輸入，輸出之前，無論何種驗證您已執行。

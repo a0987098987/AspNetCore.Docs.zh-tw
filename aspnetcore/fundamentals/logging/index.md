@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 0181566aeab1fa055435ac90887c019eef52878c
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: f629b062afb5c17cd05040a9ef0281aa7121aabc
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228633"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320748"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -56,7 +56,7 @@ ASP.NET Core 不會提供非同步記錄器方法，因為記錄應該相當快�
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_ExpandDefault&highlight=16,17)]
 
-預設專案範本可使用 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___) 方法來記錄：
+預設專案範本可讓主控台與偵錯記錄提供者呼叫 *Program.cs* 中的 [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) 擴充方法：
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
@@ -77,11 +77,21 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
 
 ::: moniker-end
 
-您會在本文稍後找到每個[內建記錄提供者](#built-in-logging-providers)的相關資訊，以及[協力廠商記錄提供者](#third-party-logging-providers)的連結。
+您會在本文深入了解[內建記錄提供者](#built-in-logging-providers)，並找到[協力廠商記錄提供者](#third-party-logging-providers)的連結。
 
-## <a name="settings-file-configuration"></a>設定檔組態
+## <a name="configuration"></a>組態
 
-[如何新增提供者](#how-to-add-providers)章節中的每個前述範例，都會從應用程式設定檔的 `Logging` 區段載入記錄提供者組態。 下列範例顯示一般 *appsettings.Development.json* 檔案的內容：
+記錄提供者設定是由一或多個記錄提供者提供：
+
+* 檔案格式 (INI、JSON 及 XML)。
+* 命令列引數。
+* 環境變數。
+* 記憶體內部 .NET 物件。
+* 未加密的[祕密管理員](xref:security/app-secrets)儲存體。
+* 類似 [Azure Key Vault](xref:security/key-vault-configuration)的加密使用者存放區。
+* 自訂提供者 (已安裝或已建立)。
+
+例如，記錄設定通常是由應用程式的 `Logging` 區段所提供的。 下列範例顯示一般 *appsettings.Development.json* 檔案的內容：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -122,6 +132,8 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
 `LogLevel` 索引鍵代表記錄名稱。 `Default` 索引鍵會套用到未明確列出的記錄。 此值代表套用到指定記錄的[記錄層級](#log-level)。
 
 ::: moniker-end
+
+如需有關如何實作設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
 
 ## <a name="sample-logging-output"></a>範例記錄輸出
 
@@ -436,7 +448,7 @@ System.Exception: Item not found exception.
 > [!NOTE]
 > 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。
 >
-> `IncludeScopes` 可以透過 *appsettings* 組態檔設定。 如需詳細資訊，請參閱[設定檔組態](#settings-file-configuration)一節。
+> 如需有關設定的詳細資訊，請參閱[設定](#Configuration)一節。
 
 ::: moniker-end
 

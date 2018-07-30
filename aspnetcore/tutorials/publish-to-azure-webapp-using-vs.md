@@ -5,12 +5,12 @@ description: 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發�
 ms.author: riande
 ms.date: 12/16/2017
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: b6ff7d4873e6863fe2c64f48952e59fe3593bd9e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 7211da268c1c52e7b859e6f98ce433fd19b218ff
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273893"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320722"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "36273893"
 
 ## <a name="set-up"></a>設定
 
-* 如果您沒有帳戶，請開啟[免費的 Azure 帳戶](https://aka.ms/K5y5yh)。 
+* 如果您沒有帳戶，請開啟[免費的 Azure 帳戶](https://azure.microsoft.com/free/dotnet/)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 

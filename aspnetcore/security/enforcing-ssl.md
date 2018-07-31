@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: c3d92994c0331b1408e246953454910ca1f4dc43
-ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
+ms.openlocfilehash: a4ab91ef23a798c919a23a44f5a050bd3c09d56a
+ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39254827"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39356684"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -64,11 +64,17 @@ ms.locfileid: "39254827"
 > [!NOTE]
 > 應用程式執行 （例如 IIS、 IIS Express），在反向 proxy 後方時`IServerAddressesFeature`無法使用。 您必須手動設定連接埠。 當未設定連接埠時，不是重新導向要求。
 
-可以藉由設定設定的連接埠:
+可以藉由設定設定的連接埠[https_port Web 主機組態設定](xref:fundamentals/host/web-host#https-port):
 
-* `ASPNETCORE_HTTPS_PORT` 環境變數。
-* `http_port` 主機組態機碼 (例如，透過*hostsettings.json*或命令列引數)。
-* [HttpsRedirectionOptions.HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport)。 請參閱上述範例，示範如何設定連接埠為 5001。
+**索引鍵**: https_port**型別**:*字串*
+**預設**： 未設定預設值。
+**使用設定**: `UseSetting` 
+**環境變數**: `<PREFIX_>HTTPS_PORT` (前置詞是`ASPNETCORE_`使用 Web 主機時。)
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting("https_port", "8080")
+```
 
 > [!NOTE]
 > 可以間接設定的連接埠，藉由設定 URL`ASPNETCORE_URLS`環境變數。 環境變數設定的伺服器，，，然後在中介軟體間接探索透過 HTTPS 連接埠`IServerAddressesFeature`。

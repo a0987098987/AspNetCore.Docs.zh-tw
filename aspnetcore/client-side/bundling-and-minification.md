@@ -1,47 +1,47 @@
 ---
-title: 在 ASP.NET Core 組合和 minifiy 靜態資產
+title: 配套並縮短在 ASP.NET Core 中的靜態資產
 author: scottaddie
-description: 了解如何最佳化 ASP.NET Core web 應用程式中的靜態資源套用統合及縮製的技術。
+description: 了解如何藉由套用統合和縮製技術最佳化的 ASP.NET Core web 應用程式中的靜態資源。
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2018
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: ae9836a6ad0ff0bc834bf2eb10ff5fd97c3c659a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: bab2f288f3c6956e44ff929bfd2e257301a5806a
+ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279567"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39356697"
 ---
-# <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>在 ASP.NET Core 組合和 minifiy 靜態資產
+# <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>配套並縮短在 ASP.NET Core 中的靜態資產
 
 作者：[Scott Addie](https://twitter.com/Scott_Addie)
 
-這篇文章會說明套用統合及縮製，包括如何使用這些功能，與 ASP.NET Core web 應用程式的優點。
+這篇文章會說明套用統合和縮製，包括如何使用這些功能，ASP.NET Core web 應用程式的優點。
 
-## <a name="what-is-bundling-and-minification"></a>統合及縮製為何？
+## <a name="what-is-bundling-and-minification"></a>統合和縮製是什麼
 
-組合和縮製都可套用 web 應用程式中的兩個不同的效能最佳化。 一起使用，統合及縮製改善效能降低伺服器的要求數目以及減少要求的靜態資產的大小。
+統合和縮製是您可以套用 web 應用程式中的兩種獨特的效能最佳化。 搭配使用，統合和縮製改善效能降低的伺服器要求數目以及減少要求的靜態資產的大小。
 
-統合及縮製主要改善第一個頁面要求載入時間。 一旦要求的網頁上，瀏覽器快取靜態資產 （JavaScript、 CSS 和映像）。 因此，統合及縮製不改善效能時要求相同的頁面或頁面，要求相同的資產在相同網站。 如果到期標頭未正確設定資產並不使用統合及縮製，如果瀏覽器的有效期限啟發學習法標示資產過時幾天之後。 此外，瀏覽器會需要為每個資產的驗證要求。 在此情況下，統合及縮製提供改進效能，即使第一個頁面要求。
+統合和縮製主要改善的第一個頁面要求載入時間。 一旦要求的網頁上，瀏覽器快取靜態資產 （JavaScript、 CSS 和映像）。 因此，統合和縮製不改善效能時要求相同的頁面上或要求相同的資產位於相同站台上的頁面。 如果過期標頭未正確設定資產並不使用統合和縮製，如果瀏覽器的有效期限啟發學習法標記資產過時幾天後。 此外，瀏覽器會針對每個資產需要將驗證要求。 在此情況下，統合和縮製提供效能改進，即使第一個網頁要求。
 
-### <a name="bundling"></a>結合在一起
+### <a name="bundling"></a>統合
 
-結合在一起將多個檔案合併成單一檔案。 結合在一起，減少所需呈現 web 資產，例如網頁伺服器要求的數目。 您可以建立任意數目的個別組合，專為 CSS、 JavaScript 等。較少的檔案表示更少的 HTTP 要求從瀏覽器至伺服器或提供您的應用程式的服務。 這會導致更佳的第一個頁面負載效能。
+統合將多個檔案結合成單一檔案。 統合可減少所呈現的 web 資產，例如網頁伺服器要求的數目。 您可以建立任意數目的個別的套件組合，專為 CSS、 JavaScript 等。較少的檔案表示更少的 HTTP 要求從瀏覽器到伺服器或服務，提供您的應用程式。 這會導致改善第一次頁面載入效能。
 
-### <a name="minification"></a>縮小
+### <a name="minification"></a>縮製
 
-縮製從程式碼移除不必要的字元，而不需變更功能。 結果會是重要的大小降低要求資產 （例如 CSS、 影像和 JavaScript 檔案）。 常見的縮製的副作用包括縮短成一個字元的變數名稱，以及移除註解和不必要的空白字元。
+縮製從程式碼移除不必要的字元，而不需要變更的功能。 結果會是重大的大小減少要求的資產 （例如 CSS、 影像和 JavaScript 檔案）。 常見的縮製的副作用包括縮短至某一字元的變數名稱，並移除註解和不必要的空白字元。
 
 請考慮下列的 JavaScript 函式：
 
 [!code-javascript[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/js/site.js)]
 
-縮製減少函式所示：
+縮製可減少函式，如下：
 
 [!code-javascript[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/js/site.min.js)]
 
-移除註解和不必要的空白字元，除了下列的參數和變數名稱已命名，如下所示：
+除了移除不必要的空白字元的註解，下列的參數和變數名稱已重新命名為，如下所示：
 
 原始 | 已重新命名
 --- | :---:
@@ -49,49 +49,49 @@ ms.locfileid: "36279567"
 `imageContext` | `a`
 `imageElement` | `r`
 
-## <a name="impact-of-bundling-and-minification"></a>統合及縮製的影響
+## <a name="impact-of-bundling-and-minification"></a>統合和縮製的影響
 
-下表摘要列出個別資產的載入和使用統合及縮製之間的差異：
+下表概述個別載入資產和使用統合和縮製之間的差異：
 
-動作 | 使用 B/M | 沒有 B/M | 變更
+動作 | B/m | 沒有 B/分鐘 | 變更
 --- | :---: | :---: | :---:
-檔案要求  | 7   | 18     | 157%
+提出要求  | 7   | 18     | 157%
 傳送的 KB | 156 | 264.68 | 70%
 載入時間 （毫秒） | 885 | 2360   | 167%
 
-瀏覽器會相當詳細資訊，關於 HTTP 要求標頭。 所傳送的總位元組度量所看到的大幅降低結合在一起。 載入時間顯示有明顯的改進，不過此範例會在本機執行。 統合及縮製使用資產透過網路傳輸時，會實現更高的效能提升。
+瀏覽器會相當詳細資訊，關於 HTTP 要求標頭。 所傳送的總位元組時將大幅降低所看到的計量。 載入時間會顯示有明顯的改進，不過此範例會在本機執行。 使用統合和縮製與資產透過網路傳輸時，會實現更高的效能提升。
 
-## <a name="choose-a-bundling-and-minification-strategy"></a>選擇統合及縮製的策略
+## <a name="choose-a-bundling-and-minification-strategy"></a>選擇統合和縮製的策略
 
-MVC 和 Razor 頁面的專案範本提供的方塊外方案統合及縮製的 JSON 組態檔所組成。 協力廠商工具，例如[Gulp](xref:client-side/using-gulp)和[Grunt](xref:client-side/using-grunt)工作的說明，完成更多的複雜性與相同的工作。 協力廠商工具的絕佳符合時是您的開發工作流程需要處理超出統合及縮製&mdash;例如 linting 和映像最佳化。 使用設計階段組合和縮製，應用程式的部署之前，先建立這些縮短的檔案。 統合及縮小部署之前提供的優點減少的伺服器負載。 不過，務必辨識該設計階段組合和縮製增加建置複雜，而且只適用於靜態檔案。
+MVC 和 Razor 頁面專案範本提供統合和縮製 JSON 組態檔所組成的立即可用的解決方案。 第三方工具，例如[Gulp](xref:client-side/using-gulp)並[Grunt](xref:client-side/using-grunt)工作執行器中，完成更多的複雜度與相同的工作。 第三方工具時，非常適合您的開發工作流程需要處理超過統合和縮製&mdash;linting 和映像最佳化等。 藉由使用的設計階段統合和縮製，縮短的檔案會在應用程式的部署之前建立。 統合及縮小部署之前提供的優點是減少的伺服器負載。 不過，務必要辨識該設計階段統合和縮製增組建的複雜度，並僅適用於靜態檔案。
 
-## <a name="configure-bundling-and-minification"></a>統合及縮製的設定
+## <a name="configure-bundling-and-minification"></a>設定統合和縮製
 
-MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每個組合的選項。 依預設，單一組合組態定義的自訂 javascript (*wwwroot/js/site.js*) 和樣式表 (*wwwroot/css/site.css*) 檔案：
+MVC 和 Razor 頁面的 「 專案 」 範本會提供*bundleconfig.json*組態檔會定義每一個套件組合的選項。 根據預設，適用於自訂 JavaScript 定義單一套組的組態 (*wwwroot/js/site.js*) 和樣式表 (*wwwroot/css/site.css*) 檔案：
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
 設定選項包括：
 
-* `outputFileName`: 要輸出的組合檔案的名稱。 可包含相對路徑*bundleconfig.json*檔案。 **所需**
-* `inputFiles`： 要配套起來的檔案陣列。 這些是在組態檔的相對路徑。 **選擇性**，* 空值會導致空的輸出檔案。 [通用慣例](http://www.tldp.org/LDP/abs/html/globbingref.html)支援的模式。
-* `minify`： 輸出型別縮製選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
+* `outputFileName`: 套件組合檔案名稱輸出。 可以包含相對路徑*bundleconfig.json*檔案。 **所需**
+* `inputFiles`： 陣列的項目組合在一起的檔案。 這些是在組態檔的相對路徑。 **選擇性**，* 空的輸出檔案中的值是空的結果。 [萬用字元](http://www.tldp.org/LDP/abs/html/globbingref.html)支援模式。
+* `minify`： 輸出類型支援縮製選項。 **選擇性**，*預設值- `minify: { enabled: true }`*
   * 每個輸出檔案類型有組態選項。
     * [CSS 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [JavaScript 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [HTML 縮短程式](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`： 旗標，指出是否要將產生的檔案加入至專案檔。 **選擇性**，*預設為 false*
-* `sourceMap`： 指出是否要產生將配套的檔案的來源對應的旗標。 **選擇性**，*預設為 false*
+* `includeInProject`： 旗標表示是否要將產生的檔案新增至專案檔。 **選擇性**，*預設為 false*
+* `sourceMap`： 指出是否要產生搭售檔案的來源對應的旗標。 **選擇性**，*預設為 false*
 * `sourceMapRootPath`： 用於儲存產生的來源對應檔的根路徑。
 
-## <a name="build-time-execution-of-bundling-and-minification"></a>建置時間執行的統合及縮製
+## <a name="build-time-execution-of-bundling-and-minification"></a>統合和縮製的建置時間執行
 
-[BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier/) NuGet 封裝啟用的結合在一起執行，以及在建置階段縮製。 封裝會插入[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)在建置和清除的時間執行的。 *Bundleconfig.json*建置程序來產生輸出檔案，根據定義的組態分析檔案。
+[BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier/)執行統合和縮製在建置階段，可讓 NuGet 套件。 封裝會插入[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)執行在建置和清除的時間。 *Bundleconfig.json*建置程序，以產生根據定義的組態輸出檔案的分析檔案。
 
 > [!NOTE]
-> BuildBundlerMinifier 所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
+> BuildBundlerMinifier 所屬的社群導向的 GitHub 上的專案，Microsoft 不提供支援。 問題應該提報[此處](https://github.com/madskristensen/BundlerMinifier/issues)。
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 新增*BuildBundlerMinifier*封裝至您的專案。
 
@@ -118,7 +118,7 @@ MVC 和 Razor 頁面 專案範本提供*bundleconfig.json*組態檔會定義每�
 ========== Clean: 1 succeeded, 0 failed, 0 skipped ==========
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli) 
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
 新增*BuildBundlerMinifier*封裝至您的專案：
 
@@ -169,31 +169,31 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 ---
 
-## <a name="ad-hoc-execution-of-bundling-and-minification"></a>統合及縮製的臨機操作執行
+## <a name="ad-hoc-execution-of-bundling-and-minification"></a>統合和縮製的臨機操作執行
 
-您可根據臨機操作，執行統合及縮製的工作，而不需建置專案。 新增[BundlerMinifier.Core](https://www.nuget.org/packages/BundlerMinifier.Core/) NuGet 封裝加入您的專案：
+可以執行統合和縮製工作臨機操作，而不需建置專案。 新增[BundlerMinifier.Core](https://www.nuget.org/packages/BundlerMinifier.Core/) NuGet 封裝加入您的專案：
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=10)]
 
 > [!NOTE]
-> BundlerMinifier.Core 所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
+> BundlerMinifier.Core 所屬的社群導向的 GitHub 上的專案，Microsoft 不提供支援。 問題應該提報[此處](https://github.com/madskristensen/BundlerMinifier/issues)。
 
-此套件會擴充以包含.NET Core CLI *dotnet 配套*工具。 在 封裝管理員主控台 (PMC) 視窗或在命令殼層中，可以執行下列命令：
+此套件會擴充以包含.NET Core CLI *dotnet 套件組合*工具。 在 套件管理員主控台 (PMC) 視窗中，或在命令殼層中，可以執行下列命令：
 
 ```console
 dotnet bundle
 ```
 
 > [!IMPORTANT]
-> NuGet 套件管理員將相依性加入至 *.csproj 檔案做為`<PackageReference />`節點。 `dotnet bundle`命令已向.NET Core CLI 時，才`<DotNetCliToolReference />` 節點可用。 適當地修改 *.csproj 檔案。
+> NuGet 套件管理員將相依性新增至 *.csproj 檔，做為`<PackageReference />`節點。 `dotnet bundle`命令會向.NET Core CLI 時，才`<DotNetCliToolReference />`節點可用。 據此修改 *.csproj 檔案。
 
-## <a name="add-files-to-workflow"></a>將檔案加入至工作流程
+## <a name="add-files-to-workflow"></a>將檔案新增至工作流程
 
-請考慮使用範例中的額外*custom.css*檔案會加入與下列類似下列：
+請考慮範例，其中額外*custom.css*檔案會加入類似於下列：
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-要縮短*custom.css*和組合使用*site.css*到*site.min.css*檔案中，加入相對路徑*bundleconfig.json*:
+要縮短*custom.css*及組合與其*site.css*成*site.min.css*檔案中，新增的相對路徑*bundleconfig.json*:
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -204,17 +204,17 @@ dotnet bundle
 > "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css)"]
 > ```
 >
-> 此通用慣例模式比對所有 CSS 檔案，但不包括縮短的檔案模式。
+> 這個萬用字元模式比對所有 CSS 檔案，並排除縮短的檔案模式。
 
-建置應用程式。 開啟*site.min.css*注意到的內容和*custom.css*附加至檔案結尾。
+建置應用程式。 開啟*site.min.css* ，並注意內容*custom.css*附加至檔案結尾。
 
-## <a name="environment-based-bundling-and-minification"></a>環境架構統合及縮製
+## <a name="environment-based-bundling-and-minification"></a>環境式統合和縮製
 
-最佳做法，您的應用程式的配套和縮短檔應該用於實際執行環境。 在開發期間，原始的檔案，請為方便偵錯應用程式。
+最佳做法，您的應用程式的統合和縮製檔案應在生產環境中。 在開發期間，原始的檔案，請以利偵錯應用程式。
 
-指定要包含在您的網頁中使用哪些檔案[環境標記協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)在檢視中。 環境標記協助程式只會呈現其內容，在特定中執行時[環境](xref:fundamentals/environments)。
+指定要使用包含在您的網頁中的檔案[環境標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)檢視中。 環境標籤協助程式只會呈現其內容，當執行在特定[環境](xref:fundamentals/environments)。
 
-下列`environment`標記會呈現未處理的 CSS 檔案中執行時`Development`環境：
+下列`environment`中執行時，標籤會呈現未處理的 CSS 檔案`Development`環境：
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -226,7 +226,7 @@ dotnet bundle
 
 ---
 
-下列`environment`以外的環境中執行時，標記會轉譯配套並縮短的 CSS 檔案`Development`。 例如，在執行`Production`或`Staging`呈現這些樣式表的觸發程序：
+下列`environment`以外的其他環境中執行時，標籤會呈現統合和縮製的 CSS 檔案`Development`。 例如，在執行`Production`或`Staging`觸發這些樣式表呈現：
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -238,24 +238,24 @@ dotnet bundle
 
 ---
 
-## <a name="consume-bundleconfigjson-from-gulp"></a>使用從 Gulp bundleconfig.json
+## <a name="consume-bundleconfigjson-from-gulp"></a>使用 Gulp 從 bundleconfig.json
 
-一些情況下，應用程式的統合及縮製的工作流程需要額外的處理。 範例包括映像最佳化、 快取 busting，及 CDN 資產處理。 為了滿足這些需求，您可以將轉換使用 Gulp 統合及縮製工作流程。
+有一些的情況中的應用程式統合和縮製工作流程需要額外的處理。 範例包括映像最佳化、 快取 busting，及 CDN 資產處理。 為了滿足這些需求，您可以將轉換使用 Gulp 的統合和縮製工作流程。
 
-### <a name="use-the-bundler--minifier-extension"></a>使用搭配程式 （& s） 縮短程式延伸模組
+### <a name="use-the-bundler--minifier-extension"></a>使用 Bundler & Minifier 擴充功能
 
-Visual Studio[搭配程式 （& s) 縮短程式](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.BundlerMinifier)延伸模組會處理 Gulp 的轉換。
+Visual Studio [Bundler & Minifier](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.BundlerMinifier)擴充功能會處理轉換成 Gulp。
 
 > [!NOTE]
-> 搭配程式 （& s） 縮短程式副檔名所屬的社群導向的專案，Microsoft 不提供任何支援的 GitHub 上。 問題應必填欄位[這裡](https://github.com/madskristensen/BundlerMinifier/issues)。
+> Microsoft 提供不支援的 GitHub 上的社群導向專案所屬 Bundler & Minifier 延伸模組。 問題應該提報[此處](https://github.com/madskristensen/BundlerMinifier/issues)。
 
-以滑鼠右鍵按一下*bundleconfig.json*檔案在 [方案總管]，然後選取**搭配程式 （& s) 縮短程式** > **轉換至 Gulp...**:
+以滑鼠右鍵按一下*bundleconfig.json*方案總管 中的檔案，然後選取**Bundler & Minifier** > **轉換至 Gulp...**:
 
 ![轉換至 Gulp 的操作功能表項目](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
 
-*Gulpfile.js*和*package.json*檔案會新增至專案。 支援[npm](https://www.npmjs.com/)封裝中所列*package.json*檔案的`devDependencies`安裝 > 一節。
+*Gulpfile.js*並*package.json*檔案會新增至專案。 支援[npm](https://www.npmjs.com/)中所列封裝*package.json*檔案的`devDependencies`安裝一節。
 
-若要安裝的 Gulp CLI 為全域的相依性 PMC 視窗執行下列命令：
+若要安裝 Gulp CLI 做為全域的相依性的 PMC 視窗中執行下列命令：
 
 ```console
 npm i -g gulp-cli
@@ -267,35 +267,35 @@ npm i -g gulp-cli
 
 ### <a name="convert-manually"></a>手動轉換
 
-如果 Visual Studio 和 （或） 搭配程式 （& s） 縮短程式擴充功能無法使用，手動轉換。
+如果 Visual Studio 和/或 Bundler & Minifier 擴充功能無法使用，以手動方式將轉換。
 
-新增*package.json*檔案，以下列`devDependencies`，專案根目錄：
+新增*package.json*檔案，以下列`devDependencies`，至專案根目錄：
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
-在相同的層級執行下列命令來安裝相依性*package.json*:
+位於相同層級中執行下列命令來安裝相依性*package.json*:
 
 ```console
 npm i
 ```
 
-做為全域的相依性安裝的 Gulp CLI:
+安裝 Gulp CLI 做為全域的相依性：
 
 ```console
 npm i -g gulp-cli
 ```
 
-複製*gulpfile.js*專案根目錄底下的檔案：
+複製*gulpfile.js*專案根目錄的檔案如下：
 
 [!code-javascript[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/gulpfile.js?range=1-11,14-)]
 
 ### <a name="run-gulp-tasks"></a>執行 Gulp 工作
 
-若要觸發 Gulp 縮製工作，在專案之前建置 Visual Studio 中，加入下列[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)*.csproj 檔案：
+若要觸發 Gulp 縮製工作，才能在 Visual Studio 中建置專案，新增下列[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)*.csproj 檔案：
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
-在此範例中，任何工作定義內`MyPreCompileTarget`執行之前的預先定義的目標`Build`目標。 Visual Studio 的 [輸出] 視窗中會出現類似下面的輸出：
+在此範例中，任何工作定義內`MyPreCompileTarget`目標之前預先定義執行`Build`目標。 如下所示的輸出會顯示在 Visual Studio 的 [輸出] 視窗中：
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
@@ -309,7 +309,7 @@ npm i -g gulp-cli
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
 
-或者，Visual Studio 工作執行器總管可能用來將 Gulp 工作繫結至特定的 Visual Studio 事件。 請參閱[執行預設工作](xref:client-side/using-gulp#running-default-tasks)如需這麼做可指示。
+或者，可能會使用 Visual Studio 的 Task Runner explorer，繫結至特定的 Visual Studio 事件的 Gulp 工作。 請參閱[執行預設工作](xref:client-side/using-gulp#running-default-tasks)如需有關這麼做。
 
 ## <a name="additional-resources"></a>其他資源
 

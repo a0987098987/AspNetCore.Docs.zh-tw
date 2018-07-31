@@ -1,16 +1,16 @@
 ---
 title: 從 ASP.NET 遷移至 ASP.NET Core 2.0
 author: isaac2004
-description: 可接受現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0。
+description: 收到現有 ASP.NET MVC 或 Web API 應用程式移轉至 ASP.NET Core 2.0 的指導的方針。
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/mvc2
-ms.openlocfilehash: 68b00ead1b0bf785211638692cdbeab226a2cb4e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d8a3f76bb5125a1ec76d0435ff3317f939a4ec67
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278631"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342253"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -20,12 +20,12 @@ ms.locfileid: "36278631"
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝**一個**從以下的[.NET 下載： Windows](https://www.microsoft.com/net/download/windows):
+安裝**一個**的 從下列[.NET 下載： Windows](https://www.microsoft.com/net/download/windows):
 
 * .NET Core SDK
 * Visual Studio for Windows
-  * **ASP.NET 及 web 開發**工作負載
-  * **.NET core 跨平台開發**工作負載
+  * **ASP.NET 與網頁程式開發**工作負載
+  * **.NET Core 跨平台開發**工作負載
 
 ## <a name="target-frameworks"></a>目標 Framework
 ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework 或兩者為目標。 請參閱[針對伺服器應用程式在 .NET Core 和 .NET Framework 之間進行選擇](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)，判斷哪些目標架構最適合。
@@ -110,11 +110,12 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 **注意：** 如需 ASP.NET Core 組態的更深入參考，請參閱 [ASP.NET Core 的組態](xref:fundamentals/configuration/index)。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
-建置可延展的大型應用程式時，鬆散的元件和服務結合程度就是重要的目標。 [相依性插入](xref:fundamentals/dependency-injection)是達到此目標的常用技巧，它也是 ASP.NET Core 的原生元件。
 
-在 ASP.NET 應用程式中，開發人員會依賴協力廠商程式庫實作相依性插入。 Microsoft 模式和實務提供的 [Unity](https://github.com/unitycontainer/unity) 就是這樣的程式庫。 
+建置可延展的大型應用程式時，鬆散的元件和服務結合程度就是重要的目標。 [相依性插入](xref:fundamentals/dependency-injection)是常用的技巧，為達到此目標，而且是 ASP.NET Core 的原生元件。
 
-使用 Unity 設定相依性插入的範例，是實作包裝 `UnityContainer` 的 `IDependencyResolver`：
+在 ASP.NET 應用程式，開發人員會依賴協力廠商程式庫實作相依性插入。 Microsoft 模式和實務提供的 [Unity](https://github.com/unitycontainer/unity) 就是這樣的程式庫。
+
+設定使用 Unity 的相依性插入的範例實作`IDependencyResolver`包裝`UnityContainer`:
 
 [!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
 
@@ -126,15 +127,16 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
 
-因為相依性插入是 ASP.NET Core 的一部分，所以您可以在 *Startup.cs* 的 `ConfigureServices` 方法中新增服務：
+因為相依性插入是 ASP.NET Core 的一部分，您可以新增您的服務中`Startup.ConfigureServices`:
 
 [!code-csharp[](samples/configure-services.cs)]
 
 存放庫可插入任何位置，就像以前的 Unity 一樣。
 
-**注意：** 如需 ASP.NET Core 中相依性插入的深入參考，請參閱 [ASP.NET Core 中的相依性插入](xref:fundamentals/dependency-injection#replacing-the-default-services-container)。
+如需有關在 ASP.NET Core 中的相依性插入的詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。
 
 ## <a name="serving-static-files"></a>提供靜態檔案
+
 網頁程式開發很重要的一部分是能夠提供靜態的用戶端資產。 最常見的靜態檔案範例包括 HTML、CSS、Javascript 和影像。 這些檔案需要儲存在應用程式 (或 CDN) 的發佈位置供參考，以便要求可以載入它們。 此程序在 ASP.NET Core 中已變更。
 
 在 ASP.NET 中，靜態檔案會儲存在不同目錄中，於檢視中提供參考。
@@ -147,7 +149,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
-**注意：** 提供靜態檔案中 ASP.NET Core 的更深入參考，請參閱[靜態檔案](xref:fundamentals/static-files)。
+**注意︰** 提供 ASP.NET Core 中的靜態檔案的更深入參考，請參閱 <<c2> [ 靜態檔案](xref:fundamentals/static-files)。
 
 ## <a name="additional-resources"></a>其他資源
 

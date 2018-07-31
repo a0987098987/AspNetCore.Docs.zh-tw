@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 62649351271deebcf1ed9d2f8b2258bed3478989
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 797fce6273eba29d19e640c301d2f4d2059370cc
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126939"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342194"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -413,7 +413,8 @@ WebHost.CreateDefaultBuilder()
                 var subExampleCert = CertificateLoader.LoadFromStoreCert(
                     "sub.example.com", "My", StoreLocation.CurrentUser, 
                     allowInvalid: true);
-                var certs = new Dictionary(StringComparer.OrdinalIgnoreCase);
+                var certs = new Dictionary<string, X509Certificate2>(
+                    StringComparer.OrdinalIgnoreCase);
                 certs["localhost"] = localhostCert;
                 certs["example.com"] = exampleCert;
                 certs["sub.example.com"] = subExampleCert;

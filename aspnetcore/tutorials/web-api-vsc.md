@@ -4,14 +4,14 @@ author: rick-anderson
 description: 在 macOS、Linux 或 Windows 上，使用 ASP.NET Core MVC 和 Visual Studio Code 建置 Web API
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/30/2018
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 4c41c949a9b5ca8db8928a0a53aff928fd7c8a4e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 4ce808ec4241ab2fc3c2fb81c3fdb15dd853cd90
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216233"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342272"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>使用 ASP.NET Core 和 Visual Studio Code 來建立 Web API
 
@@ -61,15 +61,20 @@ code TodoApi
 
 ## <a name="add-support-for-entity-framework-core"></a>新增 Entity Framework Core 的支援
 
+:::moniker range=">= aspnetcore-2.1"
+
+在 ASP.NET Core 2.1 或更新版本中建立新專案會在 *TodoApi.csproj* 檔案中新增 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App) 套件參考。 若未指定，請加入 `Version` 屬性。
+
+[!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
+
+:::moniker-end
+
 :::moniker range="<= aspnetcore-2.0"
+
 在 ASP.NET Core 2.0 中建立新專案會在 *TodoApi.csproj* 檔案中新增 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 套件參考：
 
 [!code-xml[](first-web-api/samples/2.0/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
-:::moniker-end
-:::moniker range=">= aspnetcore-2.1"
-在 ASP.NET Core 2.1 或更新版本中建立新專案會在 *TodoApi.csproj* 檔案中新增 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App) 套件參考：
 
-[!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 :::moniker-end
 
 無須另行安裝 [Entity Framework Core InMemory](/ef/core/providers/in-memory/) 資料庫提供者。 此資料庫提供者可讓 Entity Framework Core 搭配使用記憶體內部資料庫。

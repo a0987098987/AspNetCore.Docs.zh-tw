@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/crud
-ms.openlocfilehash: bc02ee6933634cc5987dbc3fcf57b0cce5a93bef
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 1c724da918640c514acbc24c390de4e735f8bf49
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216257"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342428"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC 和 EF Core - CRUD - 2/10
 
@@ -25,7 +25,7 @@ Contoso 大學範例 Web 應用程式將示範如何以 Entity Framework Core �
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
 > [!NOTE]
-> 實作儲存機制模式，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用儲存機制。 如需儲存機制的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
+> 實作[存放庫模式](xref:fundamentals/repository-pattern)，以在您的控制器及資料存取層之間建立抽象層是一種非常常見的做法。 為了使這些教學課程維持簡單，並聚焦於教導如何使用 Entity Framework，課程中將不會使用存放庫。 如需存放庫的詳細資訊，請參閱[本系列的最後一個教學課程](advanced.md)。
 
 在本教學課程中，您將使用下列網頁：
 
@@ -215,7 +215,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 在 Web 應用程式中，初始讀取實體並顯示其資料以供編輯之用的 `DbContext` 會在頁面轉譯之後遭到處置。 當呼叫 HttpPost `Edit` 動作方法時，會發出新的 Web 要求，並且您便會擁有一個新的 `DbContext` 執行個體。 當您在新的內容中重新讀取時，您便會模擬桌面處理流程。
 
-但若您不想要進行額外的讀取作業，則您必須使用由模型繫結器建立的實體物件。  完成這項作業最簡單的方式，便是將實體狀態設定為「已修改」(Modified)，作為先前顯示之 HttpPost Edit 程式碼的替代方案。 則當您呼叫 `SaveChanges` 時，Entity Framework 會更新資料庫資料列中所有的資料行，因為內容無法得知您變更的屬性為何。
+但若您不想要進行額外的讀取作業，則您必須使用由模型繫結器建立的實體物件。  完成此作業最簡單的方式，便是將實體狀態設定為「已修改」(Modified)，作為先前顯示之 HttpPost Edit 程式碼的替代方案。 則當您呼叫 `SaveChanges` 時，Entity Framework 會更新資料庫資料列中所有的資料行，因為內容無法得知您變更的屬性為何。
 
 若您想要避免讀取優先的方法，但又想要 SQL UPDATE 陳述式僅更新使用者實際變更的欄位，則程式碼會變得更為複雜。 您必須先以某種方式儲存原始的值 (例如使用隱藏欄位)，使得在呼叫 HttpPost `Edit` 方法時仍可以使用那些值。 然後您便可以使用原始的值建立 Student 實體，使用原始版本的實體呼叫 `Attach` 方法，將實體的值更新為新的值，然後呼叫 `SaveChanges`。
 
@@ -271,7 +271,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 ## <a name="closing-database-connections"></a>關閉資料庫連線
 
-若要釋放資料庫連線保留的資源，您必須在完成作業並不再需要內容執行個體時盡快處置它。 ASP.NET Core 內建的[相依性插入](../../fundamentals/dependency-injection.md)會為您完成這項工作。
+若要釋放資料庫連線保留的資源，您必須在完成作業並不再需要內容執行個體時盡快處置它。 ASP.NET Core 內建的[相依性插入](../../fundamentals/dependency-injection.md)會為您完成此工作。
 
 在 *Startup.cs* 中，您會呼叫 [AddDbContext 擴充方法](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) 來在 ASP.NET DI 容器中佈建 `DbContext` 類別。 根據預設，該方法會將服務存留期設定為 `Scoped`。 `Scoped` 表示內容物件的存留期會與 Web 要求的存留期保持一致，並且在 Web 要求結束時會自動呼叫 `Dispose` 方法。
 
@@ -283,7 +283,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 當資料庫內容擷取資料表資料列並建立代表他們的實體物件時，根據預設，它會追蹤在記憶體中的實體是否與資料庫中的內容保持同步。 記憶體中的資料所扮演的角色是一個快取，並會在您更新實體時使用。 這個快取通常在 Web 應用程式當中是不需要的，因為內容執行個體通常壽命都很短 (每次要求都會建立一個新的並進行處置)，並且通常讀取實體的內容都會在實體重新獲得利用前遭到處置。
 
-您可以藉由呼叫 `AsNoTracking` 方法來停用追蹤記憶體中的實體物件。 您會想要進行這項操作的常見案例包括下列情況：
+您可以藉由呼叫 `AsNoTracking` 方法來停用追蹤記憶體中的實體物件。 您會想要進行此操作的常見案例包括下列情況：
 
 * 在內容的存留期間，您不需要更新任何實體，並且您也不需要 EF [使用透過個別查詢擷取的實體自動載入導覽屬性](read-related-data.md)。 控制器中的 HttpGet 動作方法常常會符合這些條件。
 

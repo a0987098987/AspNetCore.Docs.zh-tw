@@ -141,6 +141,7 @@
 ### [Kestrel](xref:fundamentals/servers/kestrel)
 ### [ASP.NET Core 模組](xref:fundamentals/servers/aspnet-core-module)
 ### [HTTP.sys](xref:fundamentals/servers/httpsys)
+## [存放庫模式](xref:fundamentals/repository-pattern)
 ## [全球化和當地語系化](xref:fundamentals/localization)
 ### [使用 Orchard Core 設定可攜式物件當地語系化](xref:fundamentals/portable-object-localization)
 ## [初始化 HTTP 要求](xref:fundamentals/http-requests)

@@ -5,12 +5,12 @@ description: 示範如何以 EF Core 來建立、讀取、更新、刪除
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: 0a8d386104d9c62f37d0a94e66344d3f1e23bae9
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: e3a0ec2e21ae9e9eeaae1eb7c17f1604897fb6f9
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063347"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342454"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - CRUD - 2/8
 
@@ -24,7 +24,7 @@ ms.locfileid: "39063347"
 
 在本教學課程中，將會檢閱並自訂 Scaffold CRUD (建立、讀取、更新、刪除)。
 
-為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或儲存機制模式來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
+為降低複雜性並將教學課程聚焦於 EF Core，EF Core 程式碼會使用於頁面模型中。 有些開發人員會使用服務層或[存放庫模式](xref:fundamentals/repository-pattern)來建立介於 UI (Razor 頁面) 和資料存取層之間的抽象層。
 
 在本教學課程中，會檢查位於 *Student* 資料夾中的 [建立]、[編輯]、[刪除] 和 [詳細資料] Razor 頁面。
 

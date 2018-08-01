@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 840a9f98b3409f74b9a41ee24ff7bcb33a875470
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: aba9ed41ac3650d8c645d71fb772e2a8e4f32f02
+ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37433931"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39254853"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -285,6 +285,21 @@ sudo journalctl -fu kestrel-hellomvc.service
 sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
+## <a name="data-protection"></a>資料保護
+
+[ASP.NET Core 資料保護堆疊](xref:security/data-protection/index)由數個 ASP.NET Core[ 中介軟體](xref:fundamentals/middleware/index)使用，包括驗證中介軟體 (例如，cookie 中介軟體) 與跨網站偽造要求 (CSRF) 保護。 即使資料保護 API 並非由使用者程式碼呼叫，仍應設定資料保護，以建立持續密碼編譯[金鑰存放區](xref:security/data-protection/implementation/key-management)。 如不設定資料保護，金鑰會保留在記憶體中，並於應用程式重新啟動時捨棄。
+
+如果 Keyring 儲存在記憶體中，則當應用程式重新啟動時：
+
+* 所有以 Cookie 為基礎的驗證權杖都會失效。
+* 當使用者提出下一個要求時，需要再次登入。
+* 所有以 Keyring 保護的資料都無法再解密。 這可能會包含 [CSRF 權杖](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration)和 [ASP.NET Core MVC TempData cookie](xref:fundamentals/app-state#tempdata)。
+
+若要設定資料保護來保存及加密金鑰環，請參閱：
+
+* <xref:security/data-protection/implementation/key-storage-providers>
+* <xref:security/data-protection/implementation/key-encryption-at-rest>
+
 ## <a name="securing-the-app"></a>確保應用程式的安全性
 
 ### <a name="enable-apparmor"></a>啟用 AppArmor
@@ -293,14 +308,21 @@ Linux 安全性模組 (LSM) 是 Linux 2.6 之後 Linux 核心所包含的一個�
 
 ### <a name="configuring-the-firewall"></a>設定防火牆
 
-關閉所有不在使用中的外部連接埠。 簡單的防火牆 (ufw) 提供命令列介面供設定防火牆，為 `iptables` 提供前端。 確認已設定 `ufw` 來允許所需任何連接埠上的流量。
+關閉所有不在使用中的外部連接埠。 簡單的防火牆 (ufw) 提供命令列介面供設定防火牆，為 `iptables` 提供前端。
+
+> [!WARNING]
+> 如未正確設定，防火牆會禁止存取整個系統。 未指定正確的 SSH 連接埠，將會導致您無法存取系統 (若您使用 SSH 連線至該連接埠)。 預設連接埠為 22。 如需詳細資訊，請參閱 [ufw 簡介](https://help.ubuntu.com/community/UFW)與[手冊](http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html)。
+
+安裝 `ufw` 並將其設定為允許任何所需連接埠上的流量。
 
 ```bash
 sudo apt-get install ufw
-sudo ufw enable
 
+sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
+
+sudo ufw enable
 ```
 
 ### <a name="securing-nginx"></a>保護 Nginx

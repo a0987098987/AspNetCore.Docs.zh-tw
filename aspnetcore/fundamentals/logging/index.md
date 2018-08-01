@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: f629b062afb5c17cd05040a9ef0281aa7121aabc
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: 5d31c5609c0e98a81d76ce0581f1c63f349d14d0
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320748"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342467"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -34,7 +34,7 @@ ASP.NET Core 支援可搭配各種記錄提供者的記錄 API。 內建提供�
 
 ## <a name="how-to-create-logs"></a>如何建立記錄
 
-若要建立記錄，請從[相依性插入](xref:fundamentals/dependency-injection)容器中實作 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 物件：
+若要建立記錄，請從[相依性插入](xref:fundamentals/dependency-injection)容器實作 [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) 物件：
 
 [!code-csharp[](index/sample/Controllers/TodoController.cs?name=snippet_LoggerDI&highlight=7)]
 
@@ -263,7 +263,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 ## <a name="log-event-id"></a>記錄事件識別碼
 
-每次寫入記錄，您都會指定一個「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行這項作業：
+每次寫入記錄，您都會指定一個「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此作業：
 
 [!code-csharp[](index/sample//Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 

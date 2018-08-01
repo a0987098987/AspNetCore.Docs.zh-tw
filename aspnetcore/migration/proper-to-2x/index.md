@@ -5,12 +5,12 @@ description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 AS
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 285f252767e4eacbb6a9ccc50bd98d1916e26bd4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273504"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342181"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -54,7 +54,7 @@ ASP.NET Core 導入了啟動應用程式的新機制。 ASP.NET 應用程式的�
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 這項作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
+這個方法是以會影響到實作的方式，將應用程式和其部署所在的伺服器結合在一起。 為將它們分開，引進了 [OWIN](http://owin.org/) 以提供簡潔的方式，同時使用多個架構。 OWIN 提供的管線只新增所需的模組。 裝載環境採用 [Startup](xref:fundamentals/startup) 函式，設定服務和應用程式的要求管線。 `Startup` 向應用程式註冊一組中介軟體。 對於每項要求，應用程式會使用現有處理常式集合連結清單的標頭指標，呼叫每個中介軟體元件。 每個中介軟體元件都可以在要求處理管線新增一或多個處理常式。 此作業是透過將參考傳回處理常式所完成，而此處理常式為清單的新標頭。 每個處理常式都負責記住和叫用清單中的下一個處理常式。 使用 ASP.NET Core，應用程式的進入點是 `Startup`，對 *Global.asax* 不會再有相依性。 使用 OWIN 和 .NET Framework 時，請將類似下列的項目當成管線使用：
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -136,7 +136,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 存放庫可插入任何位置，就像以前的 Unity 一樣。
 
 > [!NOTE]
-> 如需 ASP.NET Core 中插入相依性更深入的參考，請參閱 [ASP.NET Core 中的插入相依性](xref:fundamentals/dependency-injection#replacing-the-default-services-container)
+> 如需有關相依性插入的詳細資訊，請參閱[相依性插入](xref:fundamentals/dependency-injection)。
 
 ## <a name="serve-static-files"></a>提供靜態檔案
 

@@ -4,14 +4,14 @@ author: zuckerthoben
 description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案，以整合 Swagger UI。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/29/2018
+ms.date: 07/27/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 70a1503a1ddbfe7f569d12b0034d967b220c9c44
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: 06f0ebae70fe43506d7edecbd0508968d1d00635
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126244"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342311"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -184,7 +184,7 @@ XML 註解可以使用下列方式啟用：
 warning CS1591: Missing XML comment for publicly visible type or member 'TodoController.GetAll()'
 ```
 
-在 *.csproj* 檔案中定義要忽略的警告碼清單 (以分號分隔)，即可隱藏警告。 將警告碼附加至 `$(NoWarn);` 也會套用 C# 預設值。
+在專案檔中定義要忽略的警告碼清單 (以分號分隔)，即可隱藏警告。 將警告碼附加至 `$(NoWarn);` 也會套用 C# 預設值。
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -197,6 +197,26 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=3)]
 
 ::: moniker-end
+
+若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 針對不應該透過 API 文件公開的程式碼，此方法非常有用。在下列範例中，會針對整個 `Program` 類別忽略警告碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
+
+```csharp
+namespace TodoApi
+{
+#pragma warning disable CS1591
+    public class Program
+    {
+        public static void Main(string[] args) =>
+            BuildWebHost(args).Run();
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .Build();
+    }
+#pragma warning restore CS1591
+}
+```
 
 設定 Swagger 來使用產生的 XML 檔案。 對於 Linux 或非 Windows 作業系統，檔案名稱和路徑可以區分大小寫。 例如，*TodoApi.XML* 檔案在 Windows 上有效，但在 CentOS 上則無效。
 
@@ -367,7 +387,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup.cs?name=snippet_Configure&highlight=3)]
 
-從 [Swagger UI GitHub 儲存機制](https://github.com/swagger-api/swagger-ui/tree/master/dist)中取得 *dist* 資料夾的內容。 此資料夾包含 Swagger UI 頁面所需的資產。
+從 [Swagger UI GitHub 存放庫](https://github.com/swagger-api/swagger-ui/tree/master/dist)取得 *dist* 資料夾的內容。 此資料夾包含 Swagger UI 頁面所需的資產。
 
 建立 *wwwroot/swagger/ui* 資料夾，並將 *dist* 資料夾的內容複製到其中。
 
@@ -383,4 +403,4 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ![含有自訂標頭標題的 Swagger UI](web-api-help-pages-using-swagger/_static/custom-header.png)
 
-您還可以透過此頁面進行更多功能。 請在 [Swagger UI GitHub 儲存機制](https://github.com/swagger-api/swagger-ui)中查看 UI 資源的完整功能。
+您還可以透過此頁面進行更多功能。 請在 [Swagger UI GitHub 存放庫](https://github.com/swagger-api/swagger-ui)中查看 UI 資源的完整功能。

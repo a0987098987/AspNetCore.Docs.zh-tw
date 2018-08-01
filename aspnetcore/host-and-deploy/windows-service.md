@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: e9e10b0bc99b2c54bf342121b1a454be5dac66c6
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 4fd0cc881eff3b1bbdfdf51e223d0fd42051c31d
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938193"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320735"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -221,8 +221,9 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
+服務如果會與來自網際網路或公司網路的要求進行互動，並且位於 Proxy 或負載平衡器後方，可能會需要額外的設定。 如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
-## <a name="kestrel-endpoint-configuration"></a>Kestrel 端點組態
+## <a name="additional-resources"></a>其他資源
 
-如需 Kestrel 端點組態，包括 HTTPS 組態和 SNI 支援的資訊，請參閱 [Kestrel 端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration)。
+* [Kestrel 端點組態](xref:fundamentals/servers/kestrel#endpoint-configuration) (包括 HTTPS 組態與 SNI 支援)
+* <xref:fundamentals/host/web-host>

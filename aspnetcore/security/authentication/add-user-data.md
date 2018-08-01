@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 uid: security/authentication/add-user-data
-ms.openlocfilehash: ecd0e6d1c71b24309fab70fbb06af7731463bb0e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 6f583d65460803c816bf1ccd314216952710cd55
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38215931"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378611"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>加入、 下載及刪除身分識別的 ASP.NET Core 專案的自訂使用者資料
 
@@ -61,8 +61,8 @@ dotnet new webapp -o WebApp1
   * 選取要覆寫下列檔案：
     * **帳戶/註冊**
     * **帳戶/管理/索引**
-  * 選取  **+** 來建立新的按鈕**資料內容類別**。 接受的型別 (**WebApp1.Models.WebApp1Context**如果您將專案命名**WebApp1**)。
-  * 選取  **+** 來建立新的按鈕**使用者類別**。 接受的型別 (**WebApp1User**如果您將專案命名**WebApp1**) >**新增**。
+  * 選取  **+** 來建立新的按鈕**資料內容類別**。 接受的型別 (**WebApp1.Models.WebApp1Context**如果專案名為**WebApp1**)。
+  * 選取  **+** 來建立新的按鈕**使用者類別**。 接受的型別 (**WebApp1User**如果專案名為**WebApp1**) >**新增**。
 * 選取 **新增**。
 
 # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
@@ -108,7 +108,7 @@ dotnet aspnet-codegenerator identity -u WebApp1User -fi Account.Register;Account
 
 ## <a name="add-custom-user-data-to-the-identity-db"></a>識別資料庫中加入自訂的使用者資料
 
-更新`IdentityUser`衍生的類別具有自訂屬性。 如果您名為您的專案 WebApp1 的檔案名*Areas/Identity/Data/WebApp1User.cs*。 使用下列程式碼中更新檔案：
+更新`IdentityUser`衍生的類別具有自訂屬性。 如果您名為 WebApp1 的專案，檔案會命名為*Areas/Identity/Data/WebApp1User.cs*。 使用下列程式碼中更新檔案：
 
 [!code-csharp[Main](add-user-data/sample/Areas/Identity/Data/WebApp1User.cs)]
 

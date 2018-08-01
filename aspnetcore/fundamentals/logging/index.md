@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 5d31c5609c0e98a81d76ce0581f1c63f349d14d0
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 60777d4f8664b7f02c806abb6ca40a29602d207f
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342467"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378647"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -263,7 +263,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
 
 ## <a name="log-event-id"></a>記錄事件識別碼
 
-每次寫入記錄，您都會指定一個「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行此作業：
+每次寫入記錄，您都會指定一個「事件識別碼」。 範例應用程式透過使用本機定義的 `LoggingEvents` 類別來執行這項作業：
 
 [!code-csharp[](index/sample//Controllers/TodoController.cs?name=snippet_CallLogMethods&highlight=3,7)]
 
@@ -448,7 +448,7 @@ System.Exception: Item not found exception.
 > [!NOTE]
 > 您必須設定 `IncludeScopes` 主控台記錄器選項才能啟用範圍記錄。
 >
-> 如需有關設定的詳細資訊，請參閱[設定](#Configuration)一節。
+> 如需有關設定的詳細資訊，請參閱[設定](#configuration)一節。
 
 ::: moniker-end
 

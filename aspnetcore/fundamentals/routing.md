@@ -3,14 +3,14 @@ title: ASP.NET Core 中的路由
 author: ardalis
 description: 探索 ASP.NET Core 路由功能如何負責將傳入要求對應至路由處理常式。
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 07/25/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 4482c865671eb4f5decbd5f1cd6e26f2e68e5c25
-ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
+ms.openlocfilehash: 19265ac4d19915462c50628061600b1fde04694b
+ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36314132"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39254879"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -73,7 +73,7 @@ URL 產生遵循類似的反覆執行處理序，但一開始是呼叫路由集�
 
 `GetVirtualPath` 的輸出是 `VirtualPathData`。 `VirtualPathData` 是 `RouteData` 的平行處理；它包含用於輸出 URL 的 `VirtualPath`，以及一些路由應該設定的其他屬性。
 
-`VirtualPathData.VirtualPath` 屬性包含路由所產生的「虛擬路徑」。 根據您的需求，您可能需要進一步處理路徑。 比方說，如果您想要以 HTML 呈現產生的 URL ，則需要在前面加上應用程式的基底路徑。
+`VirtualPathData.VirtualPath` 屬性包含路由所產生的「虛擬路徑」。 視您需求的不同，可能需要進一步處理路徑。 比方說，如果您想要以 HTML 呈現產生的 URL ，則需要在前面加上應用程式的基底路徑。
 
 `VirtualPathData.Router` 是成功產生 URL 的路由的參考。
 
@@ -109,7 +109,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{id:int}");
 ```
 
-此範本會符合 `/Products/Details/17` 等 URL 路徑，但不符合 `/Products/Details/Apples`。 路由參數定義 `{id:int}` 定義 `id` 路由參數的「路由條件約束」。 路由條件約束會實作 `IRouteConstraint`，並檢查路由值以進行驗證。 在此範例中，路由值 `id` 必須可轉換成整數。 如需架構所提供之路由條件約束的詳細說明，請參閱[路由條件約束參考](#route-constraint-reference)。
+此範本會符合 `/Products/Details/17` 等 URL 路徑，但不符合 `/Products/Details/Apples`。 路由參數定義 `{id:int}` 定義 `id` 路由參數的「路由條件約束」。 路由條件約束會實作 `IRouteConstraint`，並檢查路由值以進行驗證。 在此範例中，路由值 `id` 必須可以轉換為整數。 如需架構所提供之路由條件約束的詳細說明，請參閱[路由條件約束參考](#route-constraint-reference)。
 
 `MapRoute` 的其他多載接受 `constraints`、`dataTokens` 和 `defaults` 的值。 這些額外的 `MapRoute` 參數定義為 `object` 類型。 這些參數通常是用來傳遞匿名類型的物件，其中匿名類型的屬性名稱符合路由參數名稱。
 
@@ -322,26 +322,33 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 | `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合規則運算式 (請參閱有關定義規則運算式的提示) |
 | `required`  | `{name:required}` | `Rick` |  用來強制執行在 URL 產生期間呈現非參數值 |
 
+以冒號分隔的多個條件約束，可以套用至單一參數。 例如，下列條件約束會將參數限制在 1 或更大的整數值：
+
+```csharp
+[Route("users/{id:int:min(1)}")]
+public User GetUserById(int id) { }
+```
+
 >[!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 `DateTime`) 一律使用不因國別而異的文化特性 - 它們假設 URL 不可當地語系化。 架構提供的路由條件約束不會修改路由值中儲存的值。 所有從 URL 剖析而來的路由值將儲存為字串。 例如，[Float 路由條件約束](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60)會嘗試將路由值轉換成浮點數，但轉換的值只能用來確認它可以轉換成浮點數。
 
-## <a name="regular-expressions"></a>規則運算式 
+## <a name="regular-expressions"></a>規則運算式
 
 ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 新增至規則運算式建構函式。 如需這些成員的描述，請參閱 [RegexOptions 列舉](/dotnet/api/system.text.regularexpressions.regexoptions)。
 
-規則運算式使用的分隔符號和語彙基元，類似於路由和 C# 語言所使用的分隔符號和語彙基元。 規則運算式的語彙基元必須逸出。 例如，若要在路由中使用規則運算式 `^\d{3}-\d{2}-\d{4}$`，它必須在 C# 原始程式檔中將 `\` 字元輸入為 `\\`，以逸出 `\` 字串逸出字元 (除非使用[逐字字串常值](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string)。 `{`、`}`、'[' 和 ']' 字元必須加以逸出，方法是成對使用以逸出路由參數的分隔符號字元。  下表顯示規則運算式和逸出的版本。
+規則運算式使用的分隔符號和語彙基元，類似於路由和 C# 語言所使用的分隔符號和語彙基元。 規則運算式的語彙基元必須逸出。 例如，若要在路由中使用規則運算式 `^\d{3}-\d{2}-\d{4}$`，它必須在 C# 原始程式檔中將 `\` 字元輸入為 `\\`，以逸出 `\` 字串逸出字元 (除非使用[逐字字串常值](/dotnet/csharp/language-reference/keywords/string)。 `{`、`}`、'[' 和 ']' 字元必須加以逸出，方法是成對使用以逸出路由參數的分隔符號字元。  下表顯示規則運算式和逸出的版本。
 
 | 運算式               | 注意事項 |
-| ----------------- | ------------ | 
+| ----------------- | ------------ |
 | `^\d{3}-\d{2}-\d{4}$` | 規則運算式 |
 | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` | 已逸出  |
 | `^[a-z]{2}$` | 規則運算式 |
 | `^[[a-z]]{{2}}$` | 已逸出  |
 
-路由中所使用的規則運算式通常以 `^` 字元 (符合字串的起始位置) 開頭，並以 `$` 字元 (符合字串的結束位置) 結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 和 `$` 字元，規則運算式將符合字串內的任何子字串，這通常是不是您想要的結果。 下表顯示一些範例，並說明它們符合或無法符合的原因。
+路由中所使用的規則運算式通常以 `^` 字元 (符合字串的起始位置) 開頭，並以 `$` 字元 (符合字串的結束位置) 結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式將會比對字串內的所有部分字串，而通常並不會出現您要的結果。 下表顯示一些範例，並說明它們符合或無法符合的原因。
 
 | 運算式               | String | 比對 | 註解 |
-| ----------------- | ------------ |  ------------ |  ------------ | 
+| ----------------- | ------------ |  ------------ |  ------------ |
 | `[a-z]{2}` | hello | 是 | 子字串相符項目 |
 | `[a-z]{2}` | 123abc456 | 是 | 子字串相符項目 |
 | `[a-z]{2}` | mz | 是 | 符合運算式 |

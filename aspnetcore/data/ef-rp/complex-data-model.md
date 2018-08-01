@@ -5,12 +5,12 @@ description: 在本教學課程中，請新增更多實體和關聯性，並透�
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 6888df174e92ab2ddf8add7b8927250be320bff8
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 88d727b0545f1dacb56ea889e45b02f947867b19
+ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202649"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39220595"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 資料模型 - 5/8
 
@@ -400,9 +400,9 @@ public ICollection<Course> Courses { get; set; }
 
 上述的程式碼會在部門-講師關聯性上停用串聯刪除。
 
-## <a name="update-the-enrollment-entityupdate-the-enrollment-entity"></a>更新 Enrollment 實體
+## <a name="update-the-enrollment-entity"></a>更新 Enrollment 實體
 
-註冊記錄是針對學生參加的一門課程。
+註冊記錄是某位學生參加的一門課程。
 
 ![Enrollment 實體](complex-data-model/_static/enrollment-entity.png)
 

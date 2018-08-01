@@ -5,12 +5,12 @@ description: 了解檢視如何處理 ASP.NET Core MVC 中的應用程式資料�
 ms.author: riande
 ms.date: 12/12/2017
 uid: mvc/views/overview
-ms.openlocfilehash: 4d5cb6288711cdef145ebb0b52e4e645c535bdf2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 276540a5d77b1d65119d1b2104508d77f45d5588
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278345"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219364"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的檢視
 
@@ -39,7 +39,7 @@ ms.locfileid: "36278345"
 * 應用程式較容易維護，因為其組織性較佳。 檢視一般會依應用程式功能分組。 這可讓您在處理功能時更輕鬆地找到相關檢視。
 * 應用程式的組件是鬆散耦合的。 您可以分別從商務邏輯和資料存取元件來建置和更新應用程式的檢視。 您可以修改應用程式的檢視，而不一定需要更新應用程式的其他部分。
 * 因為檢視是個別單位，所以可以更輕鬆地測試應用程式的使用者介面部分。
-* 基於較佳的組織，您較不可能會意外地重複使用者介面的區段。
+* 為達到更佳的編排情況，較不希望使用者介面的區段意外地重複。
 
 ## <a name="creating-a-view"></a>建立檢視
 
@@ -124,16 +124,16 @@ return View("./About");
 
 * 強型別資料：viewmodel
 * 弱型別資料
-  - `ViewData` (`ViewDataAttribute`)
-  - `ViewBag`
+  * `ViewData` (`ViewDataAttribute`)
+  * `ViewBag`
 
 ### <a name="strongly-typed-data-viewmodel"></a>強型別資料 (viewmodel)
 
 最穩健的方法是在檢視中指定 [model](xref:mvc/models/model-binding) 類型。 此模型通常稱為 *viewmodel*。 您可以透過動作將 viewmodel 類型執行個體傳遞至檢視。
 
-使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」檢查。 「強式型別」 (或「強型別」) 表示每個變數和常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
+使用 viewmodel 將資料傳遞至檢視，讓檢視利用「強式」檢查。 *強式型別* (或*強型別*) 代表每個變數與常數都有明確定義的類型 (例如，`string`、`int` 或 `DateTime`)。 在編譯時期檢查檢視中所使用之類型的有效性。
 
-[Visual Studio](https://www.visualstudio.com/vs/) 和 [Visual Studio Code](https://code.visualstudio.com/) 會使用稱為 [IntelliSense](/visualstudio/ide/using-intellisense) 的功能來列出強型別類別成員。 當您想要查看 viewmodel 的屬性時，請鍵入 viewmodel 的變數名稱，後面接著句號 (`.`)。 這有助於更快速地撰寫程式碼，並且減少錯誤。
+[Visual Studio](https://www.visualstudio.com/vs/) 與 [Visual Studio Code](https://code.visualstudio.com/) 會使用稱為 [IntelliSense](/visualstudio/ide/using-intellisense) 的功能，列出強型別類別成員。 當您想要查看 viewmodel 的屬性時，請鍵入 viewmodel 的變數名稱，後面接著句號 (`.`)。 這有助於更快速地撰寫程式碼，並且減少錯誤。
 
 使用 `@model` 指示詞來指定模型。 搭配使用模型與 `@Model`：
 
@@ -188,11 +188,11 @@ namespace WebApplication1.ViewModels
 
 <a name="VD_VB"></a>
 
-### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>弱型別資料 (ViewData、ViewData 屬性和 ViewBag)
+### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>弱型別資料 (ViewData、ViewData 屬性與 ViewBag)
 
 Razor 頁面中沒有 `ViewBag`。
 
-除了強型別檢視之外，檢視還可以存取「弱型別」(也稱為「鬆散型別」) 資料集合。 與強式型別不同，「弱式型別」 (或「鬆散型別」) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，來傳遞進入和離開控制器和檢視的少量資料。
+除了強型別檢視之外，檢視還可以存取*弱型別* (也稱為*鬆散型別*) 資料集合。 與強式型別不同，「弱式型別」 (或「鬆散型別」) 表示您未明確宣告所使用資料的類型。 您可以使用弱型別資料的集合，對控制器與檢視傳遞將少量的資料進出。
 
 | 在 ... 之間傳遞資料                        | 範例                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -200,7 +200,7 @@ Razor 頁面中沒有 `ViewBag`。
 | 檢視和[配置檢視](xref:mvc/views/layout)   | 透過檢視檔案，在配置檢視中設定 **\<title>** 項目內容。  |
 | [部分檢視](xref:mvc/views/partial)和檢視 | 一種小工具，可根據使用者所要求的網頁來顯示資料。      |
 
-此集合可以透過控制器和檢視上的 `ViewData` 或 `ViewBag` 屬性進行參考。 `ViewData` 屬性是弱式型別物件的字典。 `ViewBag` 屬性是 `ViewData` 中提供基礎 `ViewData` 集合之動態屬性的包裝函式。
+此集合可以透過控制器和檢視上的 `ViewData` 或 `ViewBag` 屬性進行參考。 `ViewData` 屬性是弱型別物件的字典。 `ViewBag` 屬性是 `ViewData` 中提供基礎 `ViewData` 集合之動態屬性的包裝函式。
 
 `ViewData` 和 `ViewBag` 是在執行階段動態解析。 因為它們未提供編譯時間類型檢查，所以兩者通常會比使用 viewmodel 更容易發生錯誤。 因此，有些開發人員會盡量少使用或不使用 `ViewData` 和 `ViewBag`。
 
@@ -247,6 +247,7 @@ public IActionResult SomeAction()
 ```
 
 ::: moniker range=">= aspnetcore-2.1"
+
 **ViewData 屬性**
 
 使用 [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) 的另一種方法是 [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute)。 控制器或 Razor 頁面模型上裝飾以 `[ViewData]` 的屬性會將其值儲存在字典並從中載入。
@@ -284,6 +285,7 @@ public class HomeController : Controller
     <title>@ViewData["Title"] - WebApplication</title>
     ...
 ```
+
 ::: moniker-end
 
 **ViewBag**

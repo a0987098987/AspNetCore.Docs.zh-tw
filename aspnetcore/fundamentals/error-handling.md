@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: 6aded9525a0abd31dec8441c7fba60d8845c7d93
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: d7e60c0f615841461a17b093bffe5fb3f82f8616
+ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938237"
+ms.lasthandoff: 07/28/2018
+ms.locfileid: "39332271"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>處理 ASP.NET Core 中的錯誤
 
@@ -103,11 +103,11 @@ app.UseStatusCodePages();
 app.UseStatusCodePages("text/plain", "Status code page, status code: {0}");
 ```
 
-也有重新導向和重新執行的擴充方法。 重新導向方法會將「已找到 302」狀態碼傳送給用戶端：
+也有重新導向和重新執行的擴充方法。 重新導向方法會將 *302 已找到*狀態碼，傳送到用戶端，並將該用戶端重新導向至提供的位置 URL 範本。 範本可能包含該狀態碼的 `{0}` 預留位置。 開頭為 `~` 的 URL，已於前方加上基底路徑。 未以 `~` 開頭的 URL，會原狀使用。
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-重新執行方法則傳會將原始的狀態碼傳回給用戶端，同時也會針對重新導向 URL 執行處理常式：
+重新執行方法會將原始狀態碼傳回給用戶端，並會指定應由透過使用替代路徑來重新執行要求管線的方法，產生回應主體。 此路徑可包含以下狀態碼的 `{0}` 預留位置：
 
 ```csharp
 app.UseStatusCodePagesWithReExecute("/error/{0}");

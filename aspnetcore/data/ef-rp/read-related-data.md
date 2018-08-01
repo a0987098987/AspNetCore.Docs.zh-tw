@@ -5,12 +5,12 @@ description: 在此教學課程中，您可以讀取並顯示相關資料-- 也�
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bcea6aa6018a937979b8e0aaa2edcdd96da41559
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: bb1d087a5449c6e26c40e572d161dd9644ac2323
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202675"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219338"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
 
@@ -69,14 +69,19 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 <a name="scaffold"></a>
 ### <a name="scaffold-the-course-model"></a>Scaffold Course 模型
 
-* 結束 Visual Studio。
-* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 執行下列命令：
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+請遵循[建立學生結構模型](xref:data/ef-rp/intro#scaffold-the-student-model)中的指示，並為模型類別使用 `Course`。
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+ 執行下列命令：
 
   ```console
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
+
+------
 
 上述命令會 Scaffold `Course` 模型。 在 Visual Studio 中開啟專案。
 
@@ -150,21 +155,21 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 ### <a name="scaffold-the-instructor-model"></a>Scaffold Instructor 模型
 
-* 結束 Visual Studio。
-* 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
-* 執行下列命令：
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+請遵循[建立學生結構模型](xref:data/ef-rp/intro#scaffold-the-student-model)中的指示，並為模型類別使用 `Instructor`。
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+ 執行下列命令：
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-上述命令會 Scaffold `Instructor` 模型。 在 Visual Studio 中開啟專案。
+------
 
-建置專案。 建置時會產生錯誤。
-
-全域變更 `_context.Instructor` 至 `_context.Instructors` (亦即，在 `Instructor` 新增一個 "s")。 找到並更新 7 個項目。
-
-執行應用程式並巡覽至講師頁面。
+上述命令會 Scaffold `Instructor` 模型。 執行應用程式並巡覽至講師頁面。
 
 以下列程式碼取代 *Pages/Instructors/Index.cshtml.cs*：
 

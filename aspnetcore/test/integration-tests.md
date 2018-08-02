@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 2a5adafd30aeca163063ea76857378e97163d0b9
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 8d304397fb7f218b395374c2b8c696fef9d9f8ad
+ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342077"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39410178"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -209,6 +209,56 @@ clientOptions.HandleCookies = true;
 clientOptions.MaxAutomaticRedirections = 7;
 
 _client = _factory.CreateClient(clientOptions);
+```
+
+## <a name="inject-mock-services"></a>插入模擬 （mock） 的服務
+
+服務可以藉由呼叫測試中覆寫[ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices)主應用程式產生器。 **若要插入模擬 （mock） 的服務，必須有 SUT`Startup`類別搭配`Startup.ConfigureServices`方法。**
+
+此範例 SUT 包含範圍的服務會傳回報價。 要求 索引 頁面時索引 頁面上的隱藏欄位中內嵌引號。
+
+*Services/IQuoteService.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/IQuoteService.cs?name=snippet1)]
+
+*Services/QuoteService.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Services/QuoteService.cs?name=snippet1)]
+
+*Startup.cs*：
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet2)]
+
+*Pages/Index.cshtml.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml.cs?name=snippet1&highlight=4,9,20,26)]
+
+*Pages/Index.cs*:
+
+[!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
+
+SUT 應用程式執行時，會產生下列標記：
+
+```html
+<input id="quote" type="hidden" value="Come on, Sarah. We&#x27;ve an appointment in 
+    London, and we&#x27;re already 30,000 years late.">
+```
+
+若要測試服務和引號插入在整合測試，模擬 （mock） 的服務會插入 SUT 測試。 模擬 （mock） 的服務會取代應用程式的`QuoteService`測試應用程式所提供的服務，使用稱為`TestQuoteService`:
+
+*IntegrationTests.IndexPageTests.cs*:
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
+
+`ConfigureTestServices` 呼叫時，並已設定領域的服務註冊：
+
+[!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet5&highlight=7-10,17,20-21)]
+
+測試執行期間所產生的標記會反映所提供的報價文字`TestQuoteService`，因此判斷提示的階段：
+
+```html
+<input id="quote" type="hidden" value="Something&#x27;s interfering with time, 
+    Mr. Scarman, and time is my business.">
 ```
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>如何測試基礎結構會推斷的應用程式內容根路徑

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 07/02/2018
 uid: fundamentals/index
-ms.openlocfilehash: 30c456685ce26522faff9b58fbd2977ad2f2869a
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 8e0198e2975192e6522c4821741aacc7a844000b
+ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202623"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39410087"
 ---
 # <a name="aspnet-core-fundamentals"></a>ASP.NET Core 基本概念
 
@@ -116,7 +116,7 @@ ASP.NET Core 應用程式可使用以 [OWIN](http://owin.org) 為基礎的中介
 
 如需詳細資訊，請參閱[使用多重環境](xref:fundamentals/environments)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>Configuration
 
 ASP.NET Core 會使用以成對的名稱/值為基礎的組態模型。 而非以 `System.Configuration` 或 *web.config* 為基礎的組態模型。組態會從組態提供者經排序的集合中取得設定。 內建的組態提供者支援各種檔案格式 (XML、JSON、INI) 和環境變數，可啟用以環境為基礎的組態。 您也可以撰寫您自己的自訂組態提供者。
 

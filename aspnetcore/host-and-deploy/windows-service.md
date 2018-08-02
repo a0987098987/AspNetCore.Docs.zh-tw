@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4fd0cc881eff3b1bbdfdf51e223d0fd42051c31d
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: 4aded0b87ca14a5c09844cc378efb1ac0c12a289
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320735"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342152"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -82,7 +82,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
 
      ::: moniker-end
 
-1. 發行應用程式。 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) 或 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)。
+1. 發行應用程式。 使用 [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) 或 [Visual Studio 發行設定檔](xref:host-and-deploy/visual-studio-publish-profiles)。 使用 Visual Studio 時，請選取 [FolderProfile]。
 
    若要從命令列發佈範例應用程式，請在專案資料夾的主控台視窗中執行下列命令：
 
@@ -96,16 +96,19 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
    sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"
    ```
 
-   對於在專案資料夾中發行的服務，請使用 *publish* 資料夾的路徑來建立服務。 在下列範例中，此服務為：
+   對於在專案資料夾中發行的服務，請使用 *publish* 資料夾的路徑來建立服務。 在以下範例中：
 
-   * 具名 **MyService**。
-   * 已發行至 *c:\\my_services\\AspNetCoreService\\bin\\Release\\&lt;TARGET_FRAMEWORK&gt;\\publish* 資料夾。
-   * 以名為 *AspNetCoreService.exe* 的應用程式可執行檔表示。
+   * 專案位於 `c:\my_services\AspNetCoreService` 資料夾。
+   * 專案是以 `Release` 設定所發行。
+   * 目標 Framework Moniker (TFM) 是 `netcoreapp2.1`。
+   * 執行階段識別碼 (RID) 是 `win7-x64`。
+   * 應用程式可執行檔的名稱是 *AspNetCoreService.exe*。
+   * 服務的名稱是 **MyService**。
 
-   以系統管理權限開啟命令殼層，然後執行下列命令：
+   範例：
 
    ```console
-   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\<TARGET_FRAMEWORK>\publish\AspNetCoreService.exe"
+   sc create MyService binPath= "c:\my_services\AspNetCoreService\bin\Release\netcoreapp2.1\win7-x64\publish\AspNetCoreService.exe"
    ```
    
    > [!IMPORTANT]
@@ -113,7 +116,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上，不需要使用 IIS 作�
    
    若要從不同的資料夾發行並啟動服務：
    
-   1. 在 `dotnet publish` 命令上使用 [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) 選項。
+      1. 在 `dotnet publish` 命令上使用 [--output &lt;OUTPUT_DIRECTORY&gt;](/dotnet/core/tools/dotnet-publish#options) 選項。 若使用 Visual Studio，選取 [發行] 按鈕之前，請先選取 [FolderProfile] 發行屬性頁面中的 [目標位置]。
    1. 使用 `sc.exe` 命令搭配輸出資料夾路徑來建立服務。 在提供給 `binPath` 的路徑中包含服務的可執行檔名稱。
 
 1. 以 `sc start <SERVICE_NAME>` 命令啟動服務。

@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: a4ab91ef23a798c919a23a44f5a050bd3c09d56a
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: d8bf11d7d2df8d8b197f001570a8fab1f3262814
+ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356684"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514800"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -112,13 +112,15 @@ WebHost.CreateDefaultBuilder(args)
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>HTTP Strict Transport 安全性通訊協定 (HSTS)
 
-每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過使用特殊的回應標頭的 web 應用程式所指定的選擇加入的安全性增強功能。 支援的瀏覽器收到此標頭之後該瀏覽器會防止任何通訊透過 HTTP 傳送至指定的網域，並改為將會透過 HTTPS 傳送的所有通訊。 它也會防止 HTTPS 點選提示上的瀏覽器。
+每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過使用特殊的回應標頭的 web 應用程式所指定的選擇加入的安全性增強功能。 當支援 HSTS 的瀏覽器會收到此標頭時，它會儲存設定，可防止透過 HTTP 傳送的任何通訊，並改為強制透過 HTTPS 的 所有通訊的網域。 它也可以防止使用者使用不受信任或不正確的憑證，停用瀏覽器提示可讓使用者能夠暫時信任這類憑證。
 
 ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下列程式碼會呼叫`UseHsts`應用程式不在[開發模式](xref:fundamentals/environments):
 
 [!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=10)]
 
 `UseHsts` 不建議在開發過程中因為 HSTS 標頭是高可快取瀏覽器。 根據預設，`UseHsts`排除本機回送位址。
+
+針對生產環境中實作 HTTPS 第一次，初始 HSTS 將值設定為較小的值。 從設定值時數不超過一天的萬一您需要還原為 HTTP，HTTPS 基礎結構。 確定在 HTTPS 設定的持續性後，增加 HSTS 最大壽命值;常用的值為一年。 
 
 下列程式碼範例：
 

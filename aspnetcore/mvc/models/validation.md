@@ -3,14 +3,14 @@ title: ASP.NET Core MVC 中的模型驗證
 author: tdykstra
 description: 了解 ASP.NET Core MVC 中的模型驗證。
 ms.author: riande
-ms.date: 12/18/2016
+ms.date: 07/31/2018
 uid: mvc/models/validation
-ms.openlocfilehash: 9c2ba1c1fad3ac077a886b3465142acfd4d639af
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: f407903577e40b6501737ef5b78d90e1e3e60c06
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095823"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378663"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的模型驗證
 
@@ -118,7 +118,7 @@ MVC 會繼續驗證欄位，直到達到最大錯誤數目為止 (預設為 200)
 
 [!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
-[jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單項目中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析這些 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
+[jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (property) 上的伺服器端驗證屬性 (attribute)，另一次在用戶端指令碼 (jQuery 驗證的 [`validate()`](https://jqueryvalidation.org/validate/) 方法範例顯示這可能會變得多麼複雜)。 相反地，MVC 的[標籤協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)能夠使用模型屬性 (property) 中的驗證屬性 (attribute) 和類型中繼資料，來轉譯需要驗證之表單項目中的 HTML 5 [data- 屬性 (attribute)](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes)。 MVC 針對內建和自訂屬性都會產生 `data-` 屬性。 jQuery 低調驗證會接著剖析 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用相關的標籤協助程式，來顯示用戶端的驗證錯誤，如下所示：
 
 [!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
@@ -208,11 +208,11 @@ $.get({
     id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
-低調驗證使用 `data-` 屬性中的資料來顯示錯誤訊息。 不過，在您將規則或訊息新增至 jQuery 的 `validator` 物件之前，jQuery 並不清楚有哪些規則或訊息。 如下列範例所示，該範例會將名為 `classicmovie` 的方法新增至 jQuery `validator` 物件，其中包含自訂用戶端驗證程式碼。 您可以在[這裡](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)找到低調配接器新增方法的說明
+低調驗證使用 `data-` 屬性中的資料來顯示錯誤訊息。 不過，在您將規則或訊息新增至 jQuery 的 `validator` 物件之前，jQuery 並不清楚有哪些規則或訊息。 這顯示在下列範例中，該範例會將自訂 `classicmovie` 用戶端驗證方法新增到 jQuery `validator` 物件。 如需 `unobtrusive.adapters.add` 方法的說明，請參閱 [ASP.NET MVC 中的低調用戶端驗證](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html) \(英文\)。
 
-[!code-javascript[](validation/sample/Views/Movies/Create.cshtml?range=71-93)]
+[!code-javascript[](validation/sample/Views/Movies/Create.cshtml?name=snippet_UnobtrusiveValidation)]
 
-現在，jQuery 具有執行自訂 JavaScript 驗證的資訊，以及該驗證程式碼傳回 false 時所要顯示的錯誤訊息。
+使用上述程式碼時，`classicmovie` 方法會在電影發行日期執行用戶端驗證。 若方法傳回 `false`，會顯示錯誤訊息。
 
 ## <a name="remote-validation"></a>遠端驗證
 
@@ -222,11 +222,14 @@ $.get({
 
 [!code-csharp[](validation/sample/User.cs?range=7-8)]
 
-第二個步驟將驗證程式碼放在 `[Remote]` 屬性中所定義的對應動作方法中。 根據 jQuery 驗證的 [`remote()`](https://jqueryvalidation.org/remote-method/) 方法文件：
+第二個步驟將驗證程式碼放在 `[Remote]` 屬性中所定義的對應動作方法中。 根據 jQuery 驗證[遠端](https://jqueryvalidation.org/remote-method/)方法文件，伺服器回應必須是符合下列任一條件的 JSON 字串：
 
-> 伺服器端回應必須是使用預設錯誤訊息的 JSON 字串，若項目有效則必須是 `"true"`，若項目無效則可能是 `"false"`、`undefined` 或 `null`。 如果伺服器端回應是一個字串 (例如 `"That name is already taken, try peter123 instead"`)，則會顯示此字串以取代預設值作為自訂錯誤訊息。
+* 有效元素的 `"true"`。
+* 無效元素的 `"false"`、`undefined` 或 `null`，使用預設錯誤訊息。
 
-`VerifyEmail()` 方法的定義遵循這些規則，如下所示。 如果電子郵件已在使用中，則會傳回驗證錯誤訊息；如果電子郵件可用，則會傳回 `true`，並將結果包裝在 `JsonResult` 物件中。 用戶端可接著使用此傳回值繼續進行，或顯示錯誤訊息 (如有需要)。
+若伺服器回應是字串 (例如 `"That name is already taken, try peter123 instead"`)，該字串會取代預設字串而顯示為自訂錯誤訊息。
+
+`VerifyEmail` 方法的定義遵循這些規則，如下所示。 如果電子郵件已在使用中，則會傳回驗證錯誤訊息；如果電子郵件可用，則會傳回 `true`，並將結果包裝在 `JsonResult` 物件中。 用戶端可接著使用此傳回值繼續進行，或顯示錯誤訊息 (如有需要)。
 
 [!code-csharp[](validation/sample/UsersController.cs?range=19-28)]
 
@@ -243,7 +246,7 @@ $.get({
 現在，當使用者輸入名字和姓氏時，JavaScript 會：
 
 * 發出遠端呼叫以查看該組名稱是否已在使用中。
-* 如果已在使用中，則會顯示錯誤訊息。 
+* 如果已在使用中，則會顯示錯誤訊息。
 * 如果不在使用中，則使用者可以送出表單。
 
 如果您需要驗證具有 `[Remote]` 屬性的兩個或多個額外欄位，請以逗號分隔清單來提供這些欄位。 例如，若要將 `MiddleName` 屬性 (Property) 新增至模型，請設定 `[Remote]` 屬性 (attribute)，如下列程式碼所示：

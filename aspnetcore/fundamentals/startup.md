@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 285d74c0d12e3aca4d8c33d39467dfda02712993
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: a576f3840e66fc4ed877f7575aa3f3e36b37ae4d
+ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063256"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39356746"
 ---
 # <a name="application-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -34,10 +34,13 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
-`Startup` 類別建構函式接受主機所定義的相依性。 將[相依性插入](xref:fundamentals/dependency-injection)至 `Startup` 類別的常見用法是插入：
+Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用程式會透過 `ConfigureServices` 新增其他服務。 然後，主機和應用程式服務都可以在 `Configure` 和整個應用程式中使用。
+
+將[相依性插入](xref:fundamentals/dependency-injection)至 `Startup` 類別的常見用法是插入：
 
 * [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment)，用來依環境設定服務。
-* [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration)，用來在啟動期間設定應用程式。
+* [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) 以讀取設定。
+* [ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) 以在 `Startup.ConfigureServices` 中建立記錄器。
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
@@ -65,7 +68,7 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 <a name="setcompatibilityversion"></a>
 
-### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>適用於 ASP.NET Core MVC 的 SetCompatibilityVersion 
+### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>適用於 ASP.NET Core MVC 的 SetCompatibilityVersion
 
 `SetCompatibilityVersion` 方法可讓應用程式選擇加入或退出 ASP.NET MVC Core 2.1 以上版本所引入的可能重大行為變更。 這些可能的重大行為變更通常在於 MVC 子系統的運作方式，以及執行階段呼叫**您的程式碼**的方式。 透過選擇加入，您可以取得最新的行為和 ASP.NET Core 的長期行為。
 
@@ -73,9 +76,9 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 
 [!code-csharp[Main](startup/sampleCompatibility/Startup.cs?name=snippet1)]
 
-建議您使用最新版本 (`CompatibilityVersion.Version_2_1`) 測試應用程式。 預計大部分的應用程式都不會使用最新版本進行重大行為變更。 
+建議您使用最新版本 (`CompatibilityVersion.Version_2_1`) 測試應用程式。 預計大部分的應用程式都不會使用最新版本進行重大行為變更。
 
-呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` 的應用程式會受到保護，防止執行 ASP.NET Core 2.1 MVC 和更新版本的 2.x 版所引入的可能重大行為變更。 這項保護：
+呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` 的應用程式會受到保護，防止執行 ASP.NET Core 2.1 MVC 和更新版本的 2.x 版所引進的可能重大行為變更。 此保護：
 
 * 不適用於所有 2.1 和更新版本的變更，它的目標是 MVC 子系統中的可能重大 ASP.NET Core 執行階段行為變更。
 * 不會擴充到下一個主要版本。
@@ -99,10 +102,6 @@ Web 主機可能會在呼叫 `Startup` 方法之前設定一些服務。 詳細�
 在未來某個日期將會推出 [ASP.NET Core 3.0 版](https://github.com/aspnet/Home/wiki/Roadmap)。 3.0 版將移除相容性參數支援的舊行為。 我們覺得這些是有利於幾乎所有使用者的正向變更。 現在引進這些變更，大部分的應用程式皆可獲益，而其他人則有時間來更新其應用程式。
 
 ::: moniker-end
-
-## <a name="services-available-in-startup"></a>Startup 中可用的服務
-
-Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用程式會透過 `ConfigureServices` 新增其他服務。 然後，主機和應用程式服務都可以在 `Configure` 和整個應用程式中使用。
 
 ## <a name="the-configure-method"></a>Configure 方法
 
@@ -161,9 +160,9 @@ Web 主機提供一些可用於 `Startup` 類別建構函式的服務。 應用�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [裝載](xref:fundamentals/host/index)
-* [使用多重環境](xref:fundamentals/environments)
-* [中介軟體](xref:fundamentals/middleware/index)
-* [記錄](xref:fundamentals/logging/index)
-* [組態](xref:fundamentals/configuration/index)
+* <xref:fundamentals/host/index>
+* <xref:fundamentals/environments>
+* <xref:fundamentals/middleware/index>
+* <xref:fundamentals/logging/index>
+* <xref:fundamentals/configuration/index>
 * [StartupLoader 類別：FindStartupType 方法 (參考來源)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)

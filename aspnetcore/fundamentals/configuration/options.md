@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: aa9c490aff873d12c9417e7b611991617207c0d3
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: fd3e55ec821be336501f523550f547f6049c9937
+ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342441"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514748"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -294,10 +294,17 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 
 ## <a name="accessing-options-during-startup"></a>在啟動期間存取選項
 
-`IOptions` 可用於 `Configure`，因為服務是在 `Configure` 方法執行之前建置。 如果在 `ConfigureServices` 建置服務提供者以存取選項，它將不會包含建置服務提供者之後提供的任何選項組態。 因此，可能會因為服務註冊的順序而有不一致的選項狀態存在。
+`IOptions` 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。
 
-因為選項通常會從組態載入，所以組態可以在啟動時用於 `Configure` 和 `ConfigureServices`。 如需在啟動期間使用組態的範例，請參閱[應用程式啟動](xref:fundamentals/startup)主題。
+```csharp
+public void Configure(IApplicationBuilder app, IOptions<MyOptions> optionsAccessor)
+{
+    var option1 = optionsAccessor.Value.Option1;
+}
+```
 
-## <a name="see-also"></a>另請參閱
+`IOptions` 不應該在 `Startup.ConfigureServices` 中使用。 可能會因為服務註冊的順序而有不一致的選項狀態存在。
 
-* [組態](xref:fundamentals/configuration/index)
+## <a name="additional-resources"></a>其他資源
+
+* <xref:fundamentals/configuration/index>

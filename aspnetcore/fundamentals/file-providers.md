@@ -1,154 +1,268 @@
 ---
 title: ASP.NET Core 中的檔案提供者
-author: ardalis
+author: guardrex
 description: 了解 ASP.NET Core 如何透過使用檔案提供者，將檔案系統存取抽象化。
 ms.author: riande
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 0d356322ea9f4cc2caead81746bf9ede4a87923f
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 512229cfe7d7efdcd9050fa13dbdbf793be29a0b
+ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276234"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39410152"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
-作者：[Steve Smith](https://ardalis.com/)
+作者：[Steve Smith](https://ardalis.com/) 和 [Luke Latham](https://github.com/guardrex)
 
-ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。
+ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「檔案提供者」在整個 ASP.NET Core 架構中使用：
 
-[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/file-providers/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
+* [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment) 將應用程式的內容根目錄與 Web 根目錄公開為 `IFileProvider` 類型。
+* [靜態檔案中介軟體](xref:fundamentals/static-files)使用「檔案提供者」來尋找靜態檔案。
+* [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
+* .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
-## <a name="file-provider-abstractions"></a>檔案提供者抽象概念
+[檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 
-檔案提供者是對檔案系統的抽象。 主要介面是 `IFileProvider`。 `IFileProvider` 公開了一些方法，用來取得檔案資訊 (`IFileInfo`)、目錄資訊 (`IDirectoryContents`)，以及設定變更通知 (使用 `IChangeToken`)。
+## <a name="file-provider-interfaces"></a>檔案提供者介面
 
-`IFileInfo` 提供與個別檔案或目錄有關的方法和屬性。 它有兩個布林值屬性 (`Exists` 和 `IsDirectory`)，以及描述檔案的`Name`、`Length` (以位元組為單位) 和 `LastModified` 日期的屬性。 您可以使用其 `CreateReadStream` 方法從檔案讀取。
+主要介面是 [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider)。 `IFileProvider` 公開方法以：
+
+* 取得檔案資訊 ([IFileInfo](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo))。
+* 取得目錄資訊 ([IDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.idirectorycontents))。
+* 設定變更通知 (使用 [IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken))。
+
+`IFileInfo` 提供可用來使用檔案的方法與屬性：
+
+* [Exists](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.exists)
+* [IsDirectory](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.isdirectory)
+* [Name](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.name)
+* [Length](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.length) (以位元組為單位)
+* [LastModified](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.lastmodified) 日期
+
+您可以使用 [IFileInfo.CreateReadStream](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.createreadstream) 方法來讀取該檔案。
+
+範例應用程式示範如何在 `Startup.ConfigureServices` 中設定「檔案提供者」，以透過 [dependency injection](xref:fundamentals/dependency-injection) 在整個應用程式中使用。
 
 ## <a name="file-provider-implementations"></a>檔案提供者實作
 
-提供三種 `IFileProvider` 實作：實體、內嵌和複合。 實體提供者用來存取實際系統的檔案。 內嵌提供者用來存取內嵌於組件的檔案。 複合提供者則用來提供對一或多個其他提供者之檔案和目錄的合併存取。
+我們提供三個 `IFileProvider` 的實作。
+
+::: moniker range=">= aspnetcore-2.0"
+
+| 實作 | 描述 |
+| -------------- | ----------- |
+| [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
+| [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 資訊清單內嵌提供者用來存取內嵌於組件的檔案。 |
+| [CompositeFileProvider](#compositefileprovider) | 複合提供者則用來提供對一或多個其他提供者之檔案和目錄的合併存取。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+| 實作 | 描述 |
+| -------------- | ----------- |
+| [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
+| [EmbeddedFileProvider](#embeddedfileprovider) | 內嵌提供者用來存取內嵌於組件的檔案。 |
+| [CompositeFileProvider](#compositefileprovider) | 複合提供者則用來提供對一或多個其他提供者之檔案和目錄的合併存取。 |
+
+::: moniker-end
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
-`PhysicalFileProvider` 提供對實體檔案系統的存取。 它會包裝 `System.IO.File` 類型 (用於實體提供者)，並將所有路徑的範圍設為某個目錄及其子系。 此範圍會限制存取特定目錄及其子系，以防止存取這個界限以外的檔案系統。 具現化此提供者時，您必須為其提供一個目錄路徑，該路徑會作為對此提供者發出之所有要求的基礎路徑 (並限制此路徑之外的存取)。 在 ASP.NET Core 應用程式中，您可以直接具現化 `PhysicalFileProvider` 提供者，也可以透過[相依性插入](dependency-injection.md)在控制器或服務的建構函式中要求 `IFileProvider`。 第二種方法通常會產生更有彈性且可測試的解決方案。
+[PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) 提供對實體檔案系統的存取。 `PhysicalFileProvider` 會使用 [System.IO.File](/dotnet/api/system.io.file) 類型 (針對實體提供者) 並並將所有路徑的範圍限定為某個目錄與其子系。 此範圍限定動作可防止存取所指定目錄與其子系以外的檔案系統。 當具現化此提供者時，會需要一個目錄路徑，而且此目錄路徑會做為使用該提供者發出之所有要求的基底路徑。 您可以直接具現化 `PhysicalFileProvider` 提供者，也可以透過[相依性插入](xref:fundamentals/dependency-injection)在建構函式中要求 `IFileProvider`。
 
-下列範例示範如何建立 `PhysicalFileProvider`。
+**靜態型別**
 
+下列程式碼顯示如何建立 `PhysicalFileProvider` 並使用它來取得目錄內容與檔案資訊：
 
 ```csharp
-IFileProvider provider = new PhysicalFileProvider(applicationRoot);
-IDirectoryContents contents = provider.GetDirectoryContents(""); // the applicationRoot contents
-IFileInfo fileInfo = provider.GetFileInfo("wwwroot/js/site.js"); // a file under applicationRoot
+var provider = new PhysicalFileProvider(applicationRoot);
+var contents = provider.GetDirectoryContents(string.Empty);
+var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
 ```
 
-您可以逐一查看其目錄內容，或提供子路徑來取得特定檔案的資訊。
+上述範例中的型別：
 
-若要從控制器要求提供者，請在控制器的建構函式中指定它，並將其指派給本機欄位。 請使用動作方法中的本機執行個體：
+* `provider` 是 `IFileProvider`。
+* `contents` 是 `IDirectoryContents`。
+* `fileInfo` 是 `IFileInfo`。
 
-[!code-csharp[](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
+「檔案提供者」可用來逐一查看由 `applicationRoot` o所指定的目錄或呼叫 `GetFileInfo` 以取得檔案的資訊。 「檔案提供者」沒有 `applicationRoot` 外部之項目的存取權。
 
-接著，在應用程式的 `Startup` 類別中建立提供者：
+範例應用程式會使用 [IHostingEnvironment.ContentRootFileProvider](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.contentrootfileprovider)在應用程式的 `Startup.ConfigureServices` 類別中建立該提供者：
 
-[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
+```csharp
+var physicalProvider = _env.ContentRootFileProvider;
+```
 
-在 *Index.cshtml* 檢視中，逐一查看提供的 `IDirectoryContents`：
+**使用相依性插入取得檔案提供者型別**
 
-[!code-html[](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
+將提供者插入到任何類別建構函式，並將它指派給區域欄位。 在類別的方法中使用該欄位來存取檔案。
 
-結果：
+::: moniker range=">= aspnetcore-2.0"
 
-![列出實體檔案和資料夾的檔案提供者範例應用程式](file-providers/_static/physical-directory-listing.png)
+在範例應用程式中，`IndexModel` 類別會接收 `IFileProvider` 執行個體以取得應用程式基底路徑的目錄內容。
+
+*Pages/Index.cshtml.cs*：
+
+[!code-csharp[](file-providers/samples/2.x/FileProviderSample/Pages/Index.cshtml.cs?name=snippet1)]
+
+會在頁面中逐一查看 `IDirectoryContents`。
+
+*Pages/Index.cshtml*：
+
+[!code-cshtml[](file-providers/samples/2.x/FileProviderSample/Pages/Index.cshtml?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+在範例應用程式中，`HomeController` 類別會接收 `IFileProvider` 執行個體以取得應用程式基底路徑的目錄內容。
+
+*Controllers/HomeController.cs*：
+
+[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Controllers/HomeController.cs?name=snippet1)]
+
+會在檢視中逐一查看 `IDirectoryContents`。
+
+*Views/Home/Index.cshtml*：
+
+[!code-cshtml[](file-providers/samples/1.x/FileProviderSample/Views/Home/Index.cshtml?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+### <a name="manifestembeddedfileprovider"></a>ManifestEmbeddedFileProvider
+
+[ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) 是用來存取內嵌於組件的檔案。 `ManifestEmbeddedFileProvider` 使用已編譯到組件中的資訊清單來重新建構內嵌檔案的原始路徑。
+
+> [!NOTE]
+> ASP.NET Core 2.1 或更新版本中提供了 `ManifestEmbeddedFileProvider`。 若要在 ASP.NET Core 2.0 或更舊的版本中存取內嵌於組件中的檔案，請參閱[此主題的 ASP.NET Core 1.x 版本](xref:fundamentals/file-providers?view=aspnetcore-1.1)。
+
+若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 使用 [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) 來指定要內嵌的檔案：
+
+[!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=5,13)]
+
+使用 [Glob 模式](#glob-patterns)來指定一或多個要內嵌到組件中的檔案。
+
+範例應用程式會建立 `ManifestEmbeddedFileProvider` 並將目前執行中組件傳遞到其建構函式。
+
+*Startup.cs*：
+
+```csharp
+var manifestEmbeddedProvider = 
+    new ManifestEmbeddedFileProvider(Assembly.GetEntryAssembly());
+```
+
+額外的多載可讓您：
+
+* 指定相對檔案路徑。
+* 將檔案限定為上次修改日期。
+* 為包內嵌檔案資訊清單的內嵌資源命名。
+
+| 多載 | 描述 |
+| -------- | ----------- |
+| [ManifestEmbeddedFileProvider(Assembly, String)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_) | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 [GetDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.getdirectorycontents) 的呼叫限定為所提供路徑下的那些資源。 |
+| [ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_DateTimeOffset_) | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 ([DateTimeOffset](/dotnet/api/system.datetimeoffset)) 參數。 `lastModified` 日期會限定為 [IFileInfo](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo) 執行個體 (由 [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) 所傳回) 的上次修改日期。 |
+| [ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_String_System_DateTimeOffset_) | 接受選擇性的 `root` 相對路徑、`lastModified` 日期與 `manifestName` 參數。 `manifestName` 代表包含資訊清單之內嵌資源的名稱。 |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ### <a name="embeddedfileprovider"></a>EmbeddedFileProvider
 
-`EmbeddedFileProvider` 用來存取內嵌於組件的檔案。 在 .NET Core 中，您已在 *.csproj* 檔案內使用 `<EmbeddedResource>` 項目將檔案內嵌於組件：
+[EmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider) 是用來存取內嵌於組件的檔案。 在專案檔中使用 [&lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) 屬性來指定要內嵌的檔案：
 
-[!code-json[](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
+```xml
+<ItemGroup>
+  <EmbeddedResource Include="Resource.txt" />
+</ItemGroup>
+```
 
-指定要內嵌於組件的檔案時，您可以使用[萬用字元模式](#globbing-patterns)。 這些模式可用來比對一或多個檔案。
+使用 [Glob 模式](#glob-patterns)來指定一或多個要內嵌到組件中的檔案。
 
-> [!NOTE]
-> 您不太可能想要將專案中的每個 .js 檔案實際內嵌在其組件中；上述範例僅供示範之用。
+範例應用程式會建立 `EmbeddedFileProvider` 並將目前執行中組件傳遞到其建構函式。
 
-建立 `EmbeddedFileProvider` 時，請將它會讀取的組件傳遞至其建構函式。
+*Startup.cs*：
 
 ```csharp
 var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
 ```
 
-上述程式碼片段示範如何建立可存取目前執行組件的 `EmbeddedFileProvider`。
+內嵌的資源不會公開目錄。 而是使用 `.` 分隔符號，將資源的路徑 (透過其命名空間) 內嵌在其檔案名稱中。 在範例應用程式中，`baseNamespace` 是 `FileProviderSample.`。
 
-更新範例應用程式以使用 `EmbeddedFileProvider` 時，會產生下列輸出：
+[EmbeddedFileProvider(Assembly, String)](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_EmbeddedFileProvider__ctor_System_Reflection_Assembly_) 建構函式接受選擇性的 `baseNamespace` 參數。 指定基底命名空間以將對 [GetDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.getdirectorycontents) 的呼叫限定為所提供命名空間下的那些資源。
 
-![列出內嵌檔案的檔案提供者範例應用程式](file-providers/_static/embedded-directory-listing.png)
-
-> [!NOTE]
-> 內嵌的資源不會公開目錄。 而是使用 `.` 分隔符號，將資源的路徑 (透過其命名空間) 內嵌在其檔案名稱中。
-
-> [!TIP]
-> `EmbeddedFileProvider` 建構函式可接受選擇性的 `baseNamespace` 參數。 指定此參數會將 `GetDirectoryContents` 的範圍設為所提供命名空間底下的那些資源。
+::: moniker-end
 
 ### <a name="compositefileprovider"></a>CompositeFileProvider
 
-`CompositeFileProvider` 結合了 `IFileProvider` 執行個體，並公開單一介面來處理來自多個提供者的檔案。 建立 `CompositeFileProvider` 時，您可以將一或多個 `IFileProvider` 執行個體傳遞至其建構函式：
+[CompositeFileProvider](/dotnet/api/microsoft.extensions.fileproviders.compositefileprovider) 結合了 `IFileProvider` 執行個體，並公開單一介面來處理來自多個提供者的檔案。 建立 `CompositeFileProvider` 時，您可以將一或多個 `IFileProvider` 執行個體傳遞至其建構函式。
 
-[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
+::: moniker range=">= aspnetcore-2.0"
 
-更新範例應用程式使用 `CompositeFileProvider` (其同時包含先前設定的實體提供者和內嵌提供者) 時，會產生下列輸出：
+在範例應用程式中，`PhysicalFileProvider` 與 `ManifestEmbeddedFileProvider` 提供檔案給在應用程式的服務容器中註冊的 `CompositeFileProvider`：
 
-![同時列出實體檔案和資料夾與內嵌檔案的檔案提供者範例應用程式](file-providers/_static/composite-directory-listing.png)
+[!code-csharp[](file-providers/samples/2.x/FileProviderSample/Startup.cs?name=snippet1)]
 
-## <a name="watching-for-changes"></a>監看變更
+::: moniker-end
 
-`IFileProvider` `Watch` 方法提供一種方式，用來監看一或多個檔案或目錄是否有變更。 這個方法接受路徑字串 (它可以使用[萬用字元模式](#globbing-patterns)來指定多個檔案)，並傳回 `IChangeToken`。 這個權杖會將可以檢查的 `HasChanged` 屬性，以及偵測到變更時所呼叫的 `RegisterChangeCallback` 方法公開至指定的路徑字串。 請注意，每個變更權杖只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，您可以如下所示使用 `TaskCompletionSource`，或重新建立 `IChangeToken` 執行個體以回應變更。
+::: moniker range="< aspnetcore-2.0"
 
-在本文的範例中，主控台應用程式會設定為每次修改文字檔時，顯示一則訊息：
+在範例應用程式中，`PhysicalFileProvider` 與 `EmbeddedFileProvider` 提供檔案給在應用程式的服務容器中註冊的 `CompositeFileProvider`：
 
-[!code-csharp[](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
+[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Startup.cs?name=snippet1)]
 
-儲存檔案數次之後的結果：
+::: moniker-end
 
-![執行 dotnet run 之後的命令視窗顯示應用程式監視 quotes.txt 檔案是否有變更，並顯示檔案已變更五次。](file-providers/_static/watch-console.png)
+## <a name="watch-for-changes"></a>監視變更
 
-> [!NOTE]
-> 某些檔案系統 (例如 Docker 容器和網路共用) 可能無法可靠地傳送變更通知。 請將 `DOTNET_USE_POLLINGFILEWATCHER` 環境變數設定為 `1` 或 `true`，以便每 4 秒輪詢檔案系統是否有變更。
+[IFileProvider.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) 方法提供一種情節，用來監視一或多個檔案或目錄是否有變更。 `Watch` 接受路徑字串，該字串可以使用 [Glob 模式](#glob-patterns)來指定多個檔案。 `Watch` 會傳回 [IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken)。 變更權杖會公開：
 
-## <a name="globbing-patterns"></a>萬用字元模式
+* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged)：可以檢查以判斷是否發生變更的屬性。
+* [RegisterChangeCallback](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback)：當偵測到所指定的路徑字串發生變更時要呼叫的項目。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 [TaskCompletionSource](/dotnet/api/system.threading.tasks.taskcompletionsource-1) (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
 
-檔案系統路徑中使用稱為「萬用字元模式」(*globbing patterns*) 的模式。 這些簡單的模式可以用來指定檔案群組。 兩種萬用字元為 `*` 和 `**`。
+在範例應用程式中，*WatchConsole* 主控台應用程式是設定為在文字檔案被修改時顯示訊息：
 
-**`*`**
+::: moniker range=">= aspnetcore-2.0"
 
-   符合目前資料夾層級的任何項目，或者任何檔案名稱或任何副檔名。 相符項是以檔案路徑中的 `/` 和 `.` 字元終止。
+[!code-csharp[](file-providers/samples/2.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
 
-<strong><code>**</code></strong>
+::: moniker-end
 
-   符合多個目錄層級之間的任何項目。 可用來以遞迴方式符合目錄階層內的許多檔案。
+::: moniker range="< aspnetcore-2.0"
 
-### <a name="globbing-pattern-examples"></a>萬用字元模式範例
+[!code-csharp[](file-providers/samples/1.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
 
-**`directory/file.txt`**
+::: moniker-end
 
-   符合特定目錄中的特定檔案。
+某些檔案系統 (例如 Docker 容器和網路共用) 可能無法可靠地傳送變更通知。 將 `DOTNET_USE_POLLING_FILE_WATCHER` 環境變數設定為 `1` 或 `true`，以便每 4 秒 (無法設定) 輪詢檔案系統是否有變更。
 
-**<code>directory/*.txt</code>**
+## <a name="glob-patterns"></a>Glob 模式
 
-   符合特定目錄中具有 `.txt` 副檔名的所有檔案。
+檔案系統路徑使用稱為 *Glob (或 Glob 處理) 模式*的萬用字元模式。 使用這些模式指定檔案群組。 兩種萬用字元為 `*` 與 `**`：
 
-**`directory/*/bower.json`**
+**`*`**  
+符合目前資料夾層級、任何檔案名稱或任何副檔名的任何項目。 相符項是以檔案路徑中的 `/` 和 `.` 字元終止。
 
-   符合 `directory` 目錄下一層級的目錄中的所有 `bower.json` 檔案。
+**`**`**  
+符合多個目錄層級之間的任何項目。 可用來以遞迴方式符合目錄階層內的許多檔案。
 
-**<code>directory/&#42;&#42;/&#42;.txt</code>**
+**Glob 模式範例**
 
-   符合在 `directory` 目錄下的任何地方所找到之具有 `.txt` 副檔名的所有檔案。
+**`directory/file.txt`**  
+符合特定目錄中的特定檔案。
 
-## <a name="file-provider-usage-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者使用方式
+**`directory/*.txt`**  
+符合特定目錄中具有 *.txt* 副檔名的所有檔案。
 
-ASP.NET Core 的數個部分會利用檔案提供者。 `IHostingEnvironment` 將應用程式的內容根目錄與 Web 根目錄公開為 `IFileProvider` 類型。 靜態檔案中介軟體使用檔案提供者來尋找靜態檔案。 Razor 大量使用 `IFileProvider` 來尋找檢視。 Dotnet 的發行功能使用檔案提供者和萬用字元模式來指定應發行哪些檔案。
+**`directory/*/appsettings.json`**  
+符合「目錄」資料夾下一層級之目錄中的所有 `appsettings.json` 檔案。
 
-## <a name="recommendations-for-use-in-apps"></a>在應用程式中使用的建議
-
-如果 ASP.NET Core 應用程式需要檔案系統存取，您可以透過相依性插入要求 `IFileProvider` 的執行個體，然後使用其方法來執行存取，如此範例所示。 這可讓您在應用程式啟動時設定提供者一次，並減少應用程式具現化的實作類型的數目。
+**`directory/**/*.txt`**  
+符合在「目錄」資料夾下之任何地方所找到的具有 *.txt* 副檔名的所有檔案。

@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core MVC 何以是建置使用模型檢視控制器�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: aca34f91e8c7efaa34263ddf830b1662a2518969
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 7f8aab02c0ee37dad49ff224b182ec455e837a7a
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272588"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378634"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -165,8 +165,7 @@ ASP.NET Core 內建[相依性插入 (DI)](../fundamentals/dependency-injection.m
 
 ### <a name="filters"></a>篩選條件
 
-[篩選](controllers/filters.md)可協助開發人員封裝交叉關注，例如例外狀況處理或授權。 篩選可執行動作方法的自訂處理前後邏輯，並可設定為在指定要求之執行管線內的特定時間點執行。 篩選可當作屬性套用至控制器或動作 (也可全域執行)。 此架構隨附數個篩選 (例如`Authorize`)。
-
+[篩選](controllers/filters.md)可協助開發人員封裝交叉關注，例如例外狀況處理或授權。 篩選可執行動作方法的自訂處理前後邏輯，並可設定為在指定要求之執行管線內的特定時間點執行。 篩選可當作屬性套用至控制器或動作 (也可全域執行)。 此架構隨附數個篩選 (例如`Authorize`)。 `[Authorize]` 是用來建立 MVC 授權篩選的屬性。
 
 ```csharp
 [Authorize]

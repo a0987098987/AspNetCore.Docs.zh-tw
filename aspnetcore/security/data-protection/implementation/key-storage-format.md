@@ -63,7 +63,7 @@ ms.locfileid: "39219273"
 
 ## <a name="the-encryptedsecret-element"></a>\<EncryptedSecret > 項目
 
-**&lt;EncryptedSecret&gt;** 項目，其中包含加密的形式的祕密金鑰的內容可能會存在於如果[加密靜止的祕密已啟用](xref:security/data-protection/implementation/key-encryption-at-rest)。 屬性`decryptorType`是實作型別組件限定名稱[IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor)。 此類型是負責讀取內部**&lt;encryptedKey&gt;** 項目和解密來復原原始的純文字。
+**&lt;EncryptedSecret&gt;** 項目，其中包含加密的形式的祕密金鑰的內容可能會存在於如果[加密靜止的祕密已啟用](xref:security/data-protection/implementation/key-encryption-at-rest)。 屬性`decryptorType`是實作型別組件限定名稱[IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor)。 此類型是負責讀取內部 **&lt;encryptedKey&gt;** 項目和解密來復原原始的純文字。
 
 如同\<描述元 >，特定的格式<encryptedSecret>項目取決於使用中的待用加密機制。 在上述範例中，為每個註解中使用 Windows DPAPI 加密主要金鑰。
 

@@ -104,7 +104,7 @@ Html.BeginForm() helper 方法是什麼輸出 HTML&lt;表單&gt;我們標記中�
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample4.aspx)]
 
-不含任何參數呼叫 Html.BeginForm() 會讓它輸出到目前要求的 URL 執行 HTTP POST 表單項目。 也就是為什麼我們編輯檢視就會產生*&lt;形成動作 ="/ Dinners/編輯/1"的方法 ="post"&gt;* 項目。 我們可能具有或者傳遞明確參數至 Html.BeginForm() 如果我們想要張貼到不同的 URL。
+不含任何參數呼叫 Html.BeginForm() 會讓它輸出到目前要求的 URL 執行 HTTP POST 表單項目。 也就是為什麼我們編輯檢視就會產生 *&lt;形成動作 ="/ Dinners/編輯/1"的方法 ="post"&gt;* 項目。 我們可能具有或者傳遞明確參數至 Html.BeginForm() 如果我們想要張貼到不同的 URL。
 
 ##### <a name="htmltextbox-helper-method"></a>Html.TextBox() helper 方法
 
@@ -208,7 +208,7 @@ ASP.NET MVC 包含一些不錯的內建功能可簡化錯誤處理和表單重�
 
 [!code-html[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample15.html)]
 
-您可以自訂的 css 錯誤類別，以便看不過您想要的外觀。 預設 CSS 錯誤-「 輸入-驗證-錯誤 」 – 類別定義於*\content\site.css*樣式表，且看起來如下所示：
+您可以自訂的 css 錯誤類別，以便看不過您想要的外觀。 預設 CSS 錯誤-「 輸入-驗證-錯誤 」 – 類別定義於 *\content\site.css* 樣式表，且看起來如下所示：
 
 [!code-css[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample16.css)]
 
@@ -222,13 +222,13 @@ Html.ValidationMessage() helper 方法可以用於輸出的特定模型屬性相
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample17.aspx)]
 
-上述程式碼會輸出：  *&lt;/><span class ="欄位的驗證錯誤的 「&gt; 'BOGUS' 的值無效 &lt; /span>&gt;*
+上述程式碼會輸出： *&lt;/><span class ="欄位的驗證錯誤的 「&gt; 'BOGUS' 的值無效 &lt; /span>&gt;*
 
 Html.ValidationMessage() 協助程式方法也支援可讓開發人員覆寫會顯示錯誤文字訊息的第二個參數：
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample18.aspx)]
 
-上述程式碼會輸出：  <em>&lt;/><span class ="欄位的驗證錯誤的 「&gt;\*&lt;/span>&gt;</em>而不是針對有錯誤時，才會進行預設錯誤文字EventDate 屬性。
+上述程式碼會輸出： <em>&lt;/><span class ="欄位的驗證錯誤的 「&gt;\*&lt;/span>&gt;</em> 而不是針對有錯誤時，才會進行預設錯誤文字EventDate 屬性。
 
 ##### <a name="htmlvalidationsummary-helper-method"></a>Html.ValidationSummary() Helper 方法
 

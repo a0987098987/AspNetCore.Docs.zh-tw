@@ -84,7 +84,7 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 5**： 設定 HyperLinkField`Text`屬性，以檢視產品 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image13.png))
 
 
-若要設定的文字或 URL 是根據基礎資料繫結至 GridView 資料列的值，指定資料欄位的文字或 URL 值應從提取`DataTextField`或`DataNavigateUrlFields`屬性。 `DataTextField` 只可以設定為單一資料欄位;`DataNavigateUrlFields`，不過，可以設定以逗號分隔清單的資料欄位。 我們經常需要基底的文字或在目前資料列的資料欄位值和一些靜態標記的組合上的 URL。 在本教學課程中，比方說，我們想要成為 HyperLinkField 連結的 URL `ProductsForSupplierDetails.aspx?SupplierID=supplierID`，其中*`supplierID`* 是每個 GridView 資料列的`SupplierID`值。 請注意，我們需要這兩個靜態資料導向這裡值：`ProductsForSupplierDetails.aspx?SupplierID=`連結的 URL 部分是靜態的而*`supplierID`* 部分是資料驅動因為其值是每個資料列的自己`SupplierID`值。
+若要設定的文字或 URL 是根據基礎資料繫結至 GridView 資料列的值，指定資料欄位的文字或 URL 值應從提取`DataTextField`或`DataNavigateUrlFields`屬性。 `DataTextField` 只可以設定為單一資料欄位;`DataNavigateUrlFields`，不過，可以設定以逗號分隔清單的資料欄位。 我們經常需要基底的文字或在目前資料列的資料欄位值和一些靜態標記的組合上的 URL。 在本教學課程中，比方說，我們想要成為 HyperLinkField 連結的 URL `ProductsForSupplierDetails.aspx?SupplierID=supplierID`，其中 *`supplierID`* 是每個 GridView 資料列的`SupplierID`值。 請注意，我們需要這兩個靜態資料導向這裡值：`ProductsForSupplierDetails.aspx?SupplierID=`連結的 URL 部分是靜態的而 *`supplierID`* 部分是資料驅動因為其值是每個資料列的自己`SupplierID`值。
 
 若要表示的靜態和資料驅動的值組合，請使用`DataTextFormatString`和`DataNavigateUrlFormatString`屬性。 在這些屬性輸入所需的靜態標記，然後使用 標記`{0}`您想要在指定之欄位的值`DataTextField`或`DataNavigateUrlFields`出現的屬性。 如果`DataNavigateUrlFields`屬性有多個欄位的指定的用法`{0}`在您想要插入的第一個欄位值`{1}`的第二個欄位的值，依此類推。
 
@@ -129,12 +129,12 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 10**： 有 ObjectDataSource 叫用`GetProductsBySupplierID(supplierID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image28.png))
 
 
-設定資料來源精靈的最後一個步驟會要求我們提供的來源`GetProductsBySupplierID(supplierID)`方法的*`supplierID`* 參數。 若要使用的查詢字串值，設定參數來源至查詢字串，然後輸入在 QueryStringField 文字方塊中使用查詢字串值的名稱 (`SupplierID`)。
+設定資料來源精靈的最後一個步驟會要求我們提供的來源`GetProductsBySupplierID(supplierID)`方法的 *`supplierID`* 參數。 若要使用的查詢字串值，設定參數來源至查詢字串，然後輸入在 QueryStringField 文字方塊中使用查詢字串值的名稱 (`SupplierID`)。
 
 
 [![填入 supplierID SupplierID Querystring 值的參數值](master-detail-filtering-across-two-pages-cs/_static/image30.png)](master-detail-filtering-across-two-pages-cs/_static/image29.png)
 
-**圖 11**： 填入*`supplierID`* 參數值，從`SupplierID`查詢字串值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image31.png))
+**圖 11**： 填入 *`supplierID`* 參數值，從`SupplierID`查詢字串值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image31.png))
 
 
 這樣就完成了 ！ [圖 12] 顯示`ProductsForSupplierDetails.aspx`頁面上，當從東京 Traders 連結，即可瀏覽`SupplierListMaster.aspx`。
@@ -162,12 +162,12 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 **圖 14**： 有 ObjectDataSource 叫用`GetSupplierBySupplierID(supplierID)`方法 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image40.png))
 
 
-如同`ProductsBySupplierDataSource`，具有*`supplierID`* 參數的值指派給`SupplierID`查詢字串值。
+如同`ProductsBySupplierDataSource`，具有 *`supplierID`* 參數的值指派給`SupplierID`查詢字串值。
 
 
 [![填入 supplierID SupplierID Querystring 值的參數值](master-detail-filtering-across-two-pages-cs/_static/image42.png)](master-detail-filtering-across-two-pages-cs/_static/image41.png)
 
-**圖 15**： 填入*`supplierID`* 參數值，從`SupplierID`查詢字串值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image43.png))
+**圖 15**： 填入 *`supplierID`* 參數值，從`SupplierID`查詢字串值 ([按一下以檢視完整大小的影像](master-detail-filtering-across-two-pages-cs/_static/image43.png))
 
 
 當繫結 [設計] 檢視內的 ObjectDataSource FormView，Visual Studio 會自動建立 FormView `ItemTemplate`， `InsertItemTemplate`，和`EditItemTemplate`與每個傳回的資料欄位的標籤和文字方塊 Web 控制項ObjectDataSource。 因為我們只想要顯示供應商資訊自由移除`InsertItemTemplate`和`EditItemTemplate`。 接著，編輯 ItemTemplate，使其顯示中的供應商的公司名稱`<h3>`項目和地址、 縣 （市）、 國家/地區、 和公司名稱下方的電話號碼。 或者，您可以手動設定 FormView 的`DataSourceID`並建立`ItemTemplate`標記，如同我們在上一步 」[顯示的資料與 ObjectDataSource](../basic-reporting/displaying-data-with-the-objectdatasource-cs.md)」 教學課程。
@@ -217,7 +217,7 @@ HyperLinkField 可以設定為使用相同的文字或 URL 值中每個 GridView
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

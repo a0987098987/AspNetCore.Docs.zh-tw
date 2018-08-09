@@ -5,12 +5,12 @@ description: 示範如何要求 HTTPS/TLS 中的 ASP.NET Core web 應用程式�
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d8bf11d7d2df8d8b197f001570a8fab1f3262814
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: 3bea8661e17fec5128e822d98741d1f8ed7434e5
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514800"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655494"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>強制使用 ASP.NET Core 中的 HTTPS
 
@@ -66,8 +66,8 @@ ms.locfileid: "39514800"
 
 可以藉由設定設定的連接埠[https_port Web 主機組態設定](xref:fundamentals/host/web-host#https-port):
 
-**索引鍵**: https_port**型別**:*字串*
-**預設**： 未設定預設值。
+**機碼**：https_port **類型**：*字串*
+**預設值**：未設定預設值。
 **使用設定**: `UseSetting` 
 **環境變數**: `<PREFIX_>HTTPS_PORT` (前置詞是`ASPNETCORE_`使用 Web 主機時。)
 
@@ -112,7 +112,10 @@ WebHost.CreateDefaultBuilder(args)
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>HTTP Strict Transport 安全性通訊協定 (HSTS)
 
-每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過使用特殊的回應標頭的 web 應用程式所指定的選擇加入的安全性增強功能。 當支援 HSTS 的瀏覽器會收到此標頭時，它會儲存設定，可防止透過 HTTP 傳送的任何通訊，並改為強制透過 HTTPS 的 所有通訊的網域。 它也可以防止使用者使用不受信任或不正確的憑證，停用瀏覽器提示可讓使用者能夠暫時信任這類憑證。
+每個[OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project)， [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)是透過回應標頭使用的 web 應用程式所指定的選擇加入的安全性增強功能。 當支援 HSTS 的瀏覽器會收到此標頭：
+
+* 瀏覽器會儲存可防止傳送的任何通訊透過 HTTP 的定義域的組態。 瀏覽器會強制透過 HTTPS 的所有通訊。 
+* 瀏覽器會防止使用者使用不受信任或不正確的憑證。 瀏覽器會停用允許使用者暫時信任此種憑證的提示。
 
 ASP.NET Core 2.1 或更新版本會實作 HSTS 與`UseHsts`擴充方法。 下列程式碼會呼叫`UseHsts`應用程式不在[開發模式](xref:fundamentals/environments):
 

@@ -5,20 +5,23 @@ description: ASP.NET Core SignalR.NET 用戶端的相關資訊
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 08/07/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: ce5be911e67831cbf6c09e24744111e73ffdbe63
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 970888a410b2486a20f98ce77a8674f8ec357f50
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095030"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655248"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>ASP.NET Core SignalR.NET 用戶端
 
 作者：[Rachel Appel](http://twitter.com/rachelappel)
 
 ASP.NET Core SignalR.NET 用戶端可以使用 Xamarin、 WPF、 Windows Form、 主控台和.NET Core 應用程式。 像是[JavaScript 用戶端](xref:signalr/javascript-client)，.NET 用戶端可讓您接收和傳送和接收訊息到中樞即時。
+
+> [!NOTE]
+> Xamarin 已針對 Visual Studio 版本的特殊需求。 如需詳細資訊，請參閱 <<c0> [ 在 Xamarin 中的 SignalR 用戶端 2.1.1](https://github.com/aspnet/Announcements/issues/305)。
 
 [檢視或下載範例程式碼](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/dotnet-client/sample) \(英文\) ([如何下載](xref:tutorials/index#how-to-download-a-sample))
 

@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/31/2018
 uid: signalr/configuration
-ms.openlocfilehash: 32c0ad94fba09fa099c2ab4a6b1d6d79a5542d7f
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: eac1202828edbcd295d7e52aa424cd625ee70e34
+ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396058"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "39722460"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -234,7 +234,7 @@ let connection = new signalR.HubConnectionBuilder()
 | `Credentials` | 無法設定 * | Empty | 要與每個 HTTP 要求一起傳送的認證。 |
 | `CloseTimeout` | 無法設定 * | 5 秒 | 只有 WebSockets。 最大時間量，該用戶端會等待伺服器以確認在關閉要求的結尾後面。 如果伺服器不在此時間內認可關閉，則用戶端中斷連線。 |
 | `Headers` | 無法設定 * | Empty | 要與每個 HTTP 要求一起傳送的其他 HTTP 標頭的字典。 |
-| `HttpMessageHandlerFactory` | 無法設定 * | `null` | 委派，可用來設定或取代`HttpMessageHandler`用來傳送 HTTP 要求。 不使用 WebSocket 連線。 此委派必須傳回非 null 值，並且會收到做為參數的預設值。 修改設定，該預設值，並傳回它，或傳回全新`HttpMessageHandler`執行個體。 |
+| `HttpMessageHandlerFactory` | 無法設定 * | `null` | 委派，可用來設定或取代`HttpMessageHandler`用來傳送 HTTP 要求。 不使用 WebSocket 連線。 此委派必須傳回非 null 值，並且會收到做為參數的預設值。 修改設定，該預設值，並傳回它，或傳回新`HttpMessageHandler`執行個體。 **當複製您想要保留從提供的處理常式的設定，請務必取代處理常式，否則設定的選項 （例如 Cookie 和標頭） 不會套用至新的處理常式。** |
 | `Proxy` | 無法設定 * | `null` | 傳送 HTTP 要求時要使用 HTTP proxy。 |
 | `UseDefaultCredentials` | 無法設定 * | `false` | 設定這個傳送 HTTP 和 Websocket 要求的預設認證的布林值。 這可讓使用 Windows 驗證。 |
 | `WebSocketConfiguration` | 無法設定 * | `null` | 委派，可用來設定其他的 WebSocket 選項。 收到的執行個體[ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) ，可用來設定選項。 |

@@ -5,12 +5,12 @@ description: 了解如何建置使用電子郵件確認和密碼重設的 ASP.NE
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 84eb3580107572f66f0c3b565b8e76ba401c0ddb
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 3ca6d014245bb2a9bc4b1c90285f47eec7cefe84
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219403"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655468"
 ---
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -78,24 +78,11 @@ dotnet build
 
 執行應用程式，請選取**註冊**連結，並註冊的使用者。 此時，唯一的驗證電子郵件是使用[[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute)屬性。 提交註冊之後, 您登入應用程式。 稍後在教學課程中，會將程式碼更新讓新的使用者無法登入，直到其電子郵件會進行驗證。
 
-## <a name="view-the-identity-database"></a>檢視識別資料庫
-
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
-
-* 從**檢視**功能表上，選取**SQL Server 物件總管**(SSOX)。
-* 瀏覽至 **(localdb) (SQL Server 13) MSSQLLocalDB**。 以滑鼠右鍵按一下**dbo。AspNetUsers** > **檢視資料**:
-
-![SQL Server 物件總管] 中的 [AspNetUsers 資料表上的操作功能表](accconfirm/_static/ssox.png)
+[!INCLUDE[](~/includes/view-identity-db.md)]
 
 請注意，資料表的`EmailConfirmed`欄位是`False`。
 
 您可能想要這封電子郵件一次的下一個步驟時使用的應用程式會傳送確認電子郵件。 以滑鼠右鍵按一下資料列，然後選取**刪除**。 刪除電子郵件別名更容易在下列步驟。
-
-# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-
-請參閱[ASP.NET Core MVC 專案中使用 SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)如需有關如何檢視 SQLite 資料庫。
-
-------
 
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>需要電子郵件確認
@@ -113,8 +100,6 @@ dotnet build
 ### <a name="configure-email-provider"></a>設定電子郵件提供者
 
 在本教學課程中， [SendGrid](https://sendgrid.com)用來傳送電子郵件。 您需要的 SendGrid 帳戶和金鑰來傳送電子郵件。 您可以使用其他電子郵件提供者。 ASP.NET Core 2.x 包含`System.Net.Mail`，可讓您從您的應用程式傳送電子郵件。 我們建議您可以使用 SendGrid 或另一個電子郵件服務傳送電子郵件。 SMTP 是難以保護，並正確設定。
-
-[選項模式](xref:fundamentals/configuration/options)用來存取使用者帳戶和金鑰設定。 如需詳細資訊，請參閱 <<c0> [ 組態](xref:fundamentals/configuration/index)。
 
 建立類別來擷取安全的電子郵件的金鑰。 此範例中，建立*Services/AuthMessageSenderOptions.cs*:
 
@@ -143,6 +128,8 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
     "SendGridKey": "<key removed>"
   }
   ```
+ 
+如需詳細資訊，請參閱 <<c0> [ 選項模式](xref:fundamentals/configuration/options)並[組態](xref:fundamentals/configuration/index)。
 
 ### <a name="install-sendgrid"></a>安裝 SendGrid
 

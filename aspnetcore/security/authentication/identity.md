@@ -1,72 +1,88 @@
 ---
 title: ASP.NET core 身分識別簡介
 author: rick-anderson
-description: 使用 ASP.NET Core 應用程式中使用身分識別。 包括設定密碼的需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars 等等）。
+description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如何設定密碼的需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars，等等）。
 ms.author: riande
-ms.date: 01/24/2018
+ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 50ddb96000e6a3f9e1762e9bb3e1f215f20d4356
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 6a23dd4ad78c0695b5724a78204abf6752dfe67d
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095635"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655306"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
-藉由[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Tom Dykstra](https://github.com/tdykstra)，Jon Galloway [Erik Reitan](https://github.com/Erikre)，和[Steve Smith](https://ardalis.com/)
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core Identity 是可讓您將登入功能加入至您的應用程式的成員資格系統。 使用者可以建立帳戶和登入的使用者名稱和密碼，或它們可以使用外部登入提供者，例如 Facebook、 Google、 Microsoft 帳戶、 Twitter 或其他項目。
+ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的成員資格系統。 使用者可以建立的帳戶與儲存在身分識別的登入資訊，或者可以使用外部登入提供者。 支援的外部登入提供者包括[Facebook、 Google、 Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。
 
-您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET Core身分識別。 或者，您可以使用您自己的持續性存放區，例如，「 Azure 資料表儲存體。 本文件包含適用於 Visual Studio，並使用 CLI 的指示。
+可以使用 SQL Server 資料庫來儲存使用者名稱、 密碼和設定檔資料，設定身分識別。 或者，另一個持續性存放區可用，例如 Azure 資料表儲存體。
 
 [檢視或下載範例程式碼。](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [（如何下載）](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="overview-of-identity"></a>身分識別概觀
+本主題中，您將了解如何使用身分識別來註冊、 登入，並登出使用者。 如需有關建立使用身分識別的應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。
 
-本主題中，您將了解如何使用 ASP.NET Core Identity，若要將功能新增至註冊、 登入，並登出使用者。 如需有關使用 ASP.NET Core Identity 建立應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。
+## <a name="create-a-web-app-with-authentication"></a>建立驗證的 Web 應用程式
 
-1. 個別使用者帳戶中建立 ASP.NET Core Web 應用程式專案。
+個別使用者帳戶中建立 ASP.NET Core Web 應用程式專案。
 
-   # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   在 Visual Studio 中，選取**檔案** > **新增** > **專案**。 選取  **ASP.NET Core Web 應用程式**然後按一下**確定**。
+* 選取 [檔案]  >  [新增]  >  [專案]。 
+* 選取 [ASP.NET Core Web 應用程式]。 將專案命名為**WebApp1**將專案下載相同的命名空間。 按一下 [確定 **Deploying Office Solutions**]。
+* 選取 ASP.NET Core **Web 應用程式**ASP.NET Core 2.1 中，然後選取**變更驗證**。
+* 選取 **個別使用者帳戶**然後按一下**確定**。
 
-   ![[新增專案] 對話](identity/_static/01-new-project.png)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-   選取 ASP.NET Core **Web 應用程式 （模型-檢視-控制器）** asp.net Core 2.x，然後選取**變更驗證**。
+```cli
+dotnet new webapp --auth Individual -o WebApp1
+```
 
-   ![[新增專案] 對話](identity/_static/02-new-project.png)
+---
 
-   供應項目會出現對話方塊驗證選項。 選取 **個別使用者帳戶**，按一下 **確定**返回先前的對話方塊。
+產生的專案提供[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。
 
-   ![[新增專案] 對話](identity/_static/03-new-project-auth.png)
+### <a name="test-register-and-login"></a>測試註冊和登入
 
-   選取**個別使用者帳戶**會指示 Visual Studio 建立模型、 Viewmodel、 檢視、 控制器及其他專案範本的一部分驗證所需的資產。
+執行應用程式並註冊的使用者。 根據您的螢幕大小，您可能需要選取瀏覽切換按鈕，以查看**註冊**並**登入**連結。
 
-   # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+![切換瀏覽列按鈕](identity/_static/navToggle.png)
 
-   如果使用.NET Core CLI，請建立新的專案使用`dotnet new mvc --auth Individual`。 此命令會建立新的專案與 Visual Studio 會建立相同身分識別範本程式碼。
+[!INCLUDE[](~/includes/view-identity-db.md)]
 
-   建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，它會保存身分資料和使用 SQL Server 驗證的結構描述[Entity Framework Core](https://docs.microsoft.com/ef/)。
+<a name="pw"></a>
+### <a name="configure-identity-services"></a>設定身分識別服務
 
-   ---
+服務會加入`ConfigureServices`。
 
-2. 設定身分識別服務，並新增中的介軟體`Startup`。
+::: moniker range=">= aspnetcore-2.1"
 
-   中的應用程式中加入的身分識別服務`ConfigureServices`方法中的`Startup`類別：
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configureservices)]
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+上述程式碼會使用預設選項值設定身分識別。 服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。
+
+   藉由呼叫啟用身分識別[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。 `UseAuthentication` 新增驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configure&highlight=18)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   這些服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。
+   服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。
 
    藉由呼叫應用程式啟用身分識別`UseAuthentication`在`Configure`方法。 `UseAuthentication` 新增驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
@@ -76,122 +92,136 @@ ASP.NET Core Identity 是可讓您將登入功能加入至您的應用程式的�
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
-   ---
+::: moniker-end
 
-   如需處理程序的應用程式啟動的詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
+如需詳細資訊，請參閱 < [IdentityOptions 類別](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)並[應用程式啟動](xref:fundamentals/startup)。
 
-3. 建立的使用者。
+## <a name="scaffold-register-login-and-logout"></a>Scaffold 註冊、 登入和登出
 
-   啟動應用程式，然後按一下**註冊**連結。
+請遵循[Scaffold Razor 專案具有授權的身分識別](xref:security/authentication/scaffold-identity#)指示。
 
-   如果這是您要執行此動作的第一次，您可能必須執行移轉。 應用程式會提示您**套用移轉**。 如有需要請重新整理頁面。
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-   ![適用於移轉網頁](identity/_static/apply-migrations.png)
+新增註冊、 登入和登出的檔案。
 
-   或者，您可以測試使用您的應用程式，而不需要持續性資料庫中的 ASP.NET Core 身分識別，使用記憶體中資料庫。 若要使用的記憶體中資料庫，請新增`Microsoft.EntityFrameworkCore.InMemory`封裝到您的應用程式，並修改您的應用程式呼叫`AddDbContext`在`ConfigureServices`，如下所示：
 
-   ```csharp
-   services.AddDbContext<ApplicationDbContext>(options =>
-       options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-   ```
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+如果您建立的專案名稱**WebApp1**，執行下列命令。 否則，請使用正確的命名空間，如`ApplicationDbContext`:
+
+
+```cli
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+
+```
+
+PowerShell 會使用分號做為命令分隔符號。 使用 PowerShell 時，逸出分號，在檔案清單，或置於雙引號括住，如上述範例所示的檔案清單。
+
+---
+
+### <a name="examine-register"></a>檢查暫存器
+
+::: moniker range=">= aspnetcore-2.1"
+
+   當使用者按一下**註冊**連結，`RegisterModel.OnPostAsync`叫用動作。 使用者由[CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_)上`_userManager`物件。 `_userManager` 是由提供相依性插入）：
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 
    當使用者按一下**註冊**連結`Register`上叫用動作`AccountController`。 `Register`動作會建立使用者，藉由呼叫`CreateAsync`上`_userManager`物件 (提供給`AccountController`由相依性插入):
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
+::: moniker-end
+
    如果已成功建立使用者，使用者會登入的呼叫所`_signInManager.SignInAsync`。
 
    **注意︰** 請參閱 <<c2> [ 帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免在註冊的立即登入。
 
-4. 登入。
+### <a name="log-in"></a>登入
 
-   使用者可以登入，依序按一下**登入** 連結，在頂端的站台，或它們可能會瀏覽至登入頁面當他們嘗試存取需要授權的站台的一部分。 當使用者提交表單時的登入頁面上， `AccountController` `Login`呼叫動作。
+::: moniker range=">= aspnetcore-2.1"
 
-   `Login`動作會呼叫`PasswordSignInAsync`上`_signInManager`物件 (提供給`AccountController`由相依性插入)。
+登入表單顯示時：
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+* **登入**選取連結。
+* 當使用者存取的頁面時，它們未經過驗證**或**獲授權，就會重新導向至登入頁面。 
+
+登入頁面上的表單提交時，`OnPostAsync`呼叫動作。 `PasswordSignInAsync` 呼叫`_signInManager`（由相依性插入提供） 的物件。
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
    基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。 比方說，您可以列舉`User.Claims`並進行授權決策。 如需詳細資訊，請參閱 <<c0> [ 授權](xref:security/authorization/index)。
 
-5. 登出。
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 
+當使用者選取時，會顯示登入表單**登入**存取需要驗證的網頁時，會重新導向或連結。 當使用者提交表單時的登入頁面上， `AccountController` `Login`呼叫動作。
+
+`Login`動作會呼叫`PasswordSignInAsync`上`_signInManager`物件 (提供給`AccountController`由相依性插入)。
+
+[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+
+基底 (`Controller`或是`PageModel`) 類別會公開`User`屬性。 比方說，`User.Claims`可以列舉來製作授權決策。
+
+::: moniker-end
+
+### <a name="log-out"></a>登出
+
+::: moniker range=">= aspnetcore-2.1"
+
+**登出** 連結會叫用`LogoutModel.OnPost`動作。 
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Logout.cshtml.cs)]
+
+[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync)清除儲存在 cookie 中的使用者宣告。 不重新導向之後呼叫`SignOutAsync`或使用者將會**不**登出。
+
+中所指定的張貼*Pages/Shared/_LoginPartial.cshtml*:
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
    按一下 **登出**連結呼叫`LogOut`動作。
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
-   上述程式碼中的呼叫上述`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者宣告。
+   上述程式碼會呼叫`_signInManager.SignOutAsync`方法。 `SignOutAsync`方法會清除儲存在 cookie 中的使用者宣告。
+::: moniker-end
 
-<a name="pw"></a>
-6. 組態設定。
+## <a name="test-identity"></a>測試身分識別
 
-   身分識別具有可以在應用程式的啟動類別中覆寫一些預設行為。 `IdentityOptions` 不需要使用的預設行為時設定。 下列程式碼會設定數個密碼強度選項：
+預設的 web 專案範本允許匿名存取首頁。 若要測試識別，新增[ `[Authorize]` ](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute)至 About 頁面。
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/About.cshtml.cs)]
 
-   [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
+如果您登入，登出。執行應用程式，然後選取**關於**連結。 將您重新導向至登入頁面。
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-33)]
+### <a name="explore-identity"></a>瀏覽身分識別
 
-   ---
+若要更詳細地探索身分識別：
 
-   如需如何設定身分識別的詳細資訊，請參閱[設定的身分識別](xref:security/authentication/identity-configuration)。
+* [建立完整的身分識別 UI 來源](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
+* 檢查每個頁面和逐步執行偵錯工具的來源。
 
-   您也可以設定主要索引鍵資料類型，請參閱[設定識別主索引鍵的資料型別](xref:security/authentication/identity-primary-key-configuration)。
-
-7. 檢視的資料庫。
-
-   如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。 您可以使用**SQL Server Management Studio**。 或者，從 Visual Studio 中，選取**檢視** > **SQL Server 物件總管**。 連接到 **(localdb) \MSSQLLocalDB**。 資料庫名稱符合`aspnet-<name of your project>-<guid>`隨即出現。
-
-   ![在 AspNetUsers 資料庫資料表上的操作功能表](identity/_static/04-db.png)
-
-   展開的資料庫及其**資料表**，然後以滑鼠右鍵按一下**dbo。AspNetUsers**資料表，然後選取**檢視資料**。
-
-8. 確認身分識別可運作
-
-    預設值*ASP.NET Core Web 應用程式*專案範本可讓使用者存取應用程式中的任何動作，而不需要登入。 若要確認，適用於 ASP.NET 身分識別，請新增`[Authorize]`屬性設定為`About`動作`Home`控制站。
-
-    ```csharp
-    [Authorize]
-    public IActionResult About()
-    {
-        ViewData["Message"] = "Your application description page.";
-        return View();
-    }
-    ```
-
-    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-    執行專案使用**Ctrl** + **F5**並瀏覽至**有關**頁面。 只有已驗證的使用者可以存取**關於**現在頁面，所以 ASP.NET 會將您導向登入頁面，來登入或註冊。
-
-    # <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
-
-    開啟命令視窗並瀏覽至該專案的根目錄的目錄包含`.csproj`檔案。 執行[dotnet 執行](/dotnet/core/tools/dotnet-run)執行應用程式的命令：
-
-    ```csharp
-    dotnet run 
-    ```
-
-    瀏覽的輸出中指定的 URL [dotnet 執行](/dotnet/core/tools/dotnet-run)命令。 此 URL 應該指向`localhost`產生的連接埠號碼。 瀏覽至**關於**頁面。 只有已驗證的使用者可以存取**關於**現在頁面，所以 ASP.NET 會將您導向登入頁面，來登入或註冊。
-
-    ---
+::: moniker-end
 
 ## <a name="identity-components"></a>身分識別元件
 
-身分識別系統的主要參考組件是`Microsoft.AspNetCore.Identity`。 此封裝包含一組核心介面的 ASP.NET Core 身分識別，並包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。
+::: moniker range=">= aspnetcore-2.1"
 
-若要使用 ASP.NET Core 應用程式中的身分識別系統需要這些相依性：
+中包含所有身分識別相依的 NuGet 套件[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
+::: moniker-end
 
-* `Microsoft.AspNetCore.Identity.EntityFrameworkCore` -包含必要的型別，以搭配 Entity Framework Core 中的身分識別。
-
-* `Microsoft.EntityFrameworkCore.SqlServer` -Entity Framework Core 是 Microsoft 建議的資料存取技術，例如 SQL Server 關聯式資料庫。 進行測試，您可以使用`Microsoft.EntityFrameworkCore.InMemory`。
-
-* `Microsoft.AspNetCore.Authentication.Cookies` 中介軟體，可讓應用程式以使用以 cookie 為基礎的驗證。
+身分識別的主要套件[Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/)。 此封裝包含一組核心介面的 ASP.NET Core 身分識別，並包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。
 
 ## <a name="migrating-to-aspnet-core-identity"></a>移轉至 ASP.NET Core 身分識別
 
-如需詳細資訊和指引移轉您現有的身分識別存放區，請參閱[移轉驗證和身分識別](xref:migration/identity)。
+如需詳細資訊和移轉您現有的身分識別存放區的指引，請參閱[移轉驗證和身分識別](xref:migration/identity)。
 
 ## <a name="setting-password-strength"></a>設定密碼強度
 
@@ -199,8 +229,12 @@ ASP.NET Core Identity 是可讓您將登入功能加入至您的應用程式的�
 
 ## <a name="next-steps"></a>後續步驟
 
+* [設定身分識別](xref:security/authentication/identity-configuration)
+* <xref:security/authorization/secure-data>
+* <xref:security/authentication/add-user-data>
+* <xref:security/authentication/identity-enable-qrcodes>
+* [設定身分識別主索引鍵資料類型](xref:security/authentication/identity-primary-key-configuration)。
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>
-* <xref:security/authentication/social/index>
 * <xref:host-and-deploy/web-farm>

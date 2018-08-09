@@ -24,7 +24,6 @@ ms.locfileid: "36278248"
 * 編譯 LESS 或 SASS 檔案為 CSS 。
 * 編譯 CoffeeScript 或 TypeScript 檔案為 JavaScript。
 
-
  *工作執行器* 是一種自動執行常規開發工作等的工具。 Visual Studio 為兩個受歡迎、基於 JavaScript 工作執行器提供內建支援: [Gulp](https://gulpjs.com/)和[Grunt](using-grunt.md)。
 
 ## <a name="gulp"></a>gulp

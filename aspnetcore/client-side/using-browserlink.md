@@ -91,23 +91,23 @@ if (env.IsDevelopment())
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>一次重新整理在數個瀏覽器中的 web 應用程式
 
-若要選擇單一的 web 瀏覽器啟動啟動專案時，使用下拉式選單中的，在**偵錯目標**工具列控制項：
+若要啟動啟動專案時選擇單一網頁瀏覽器，請使用**偵錯目標**工具列控制項內的下拉式選單：
 
 ![F5 下拉式選單](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-若要一次開啟多個瀏覽器，請選擇**瀏覽...** 從相同的下拉式清單。 按住 CTRL 鍵以選取您想要瀏的覽器，然後按一下 **瀏覽**:
+若要一次開啟多個瀏覽器，請從相同的下拉式清單選擇 **瀏覽...** 。 按住 CTRL 鍵以選取您想要的瀏覽器，然後按一下 **瀏覽**:
 
 ![一次開啟許多瀏覽器](using-browserlink/_static/open-many-browsers-at-once.png)
 
-以下是顯示與索引檢視的 Visual Studio 開啟的螢幕擷取畫面和兩個開啟的瀏覽器：
+以下是顯示 Visual Studio 開啟 Index 檢視和兩個開啟瀏覽器的螢幕擷取畫面：
 
 ![同步處理兩個瀏覽器範例](using-browserlink/_static/sync-with-two-browsers-example.png)
 
-若要查看連接到專案的瀏覽器的瀏覽器連結 工具列控制項將滑鼠停留：
+將滑鼠停留在瀏覽器連接工具控制項以查看連接到專案的瀏覽器：
 
 ![暫留時的秘訣](using-browserlink/_static/hoover-tip.png)
 
-變更索引 檢視中，並按一下 瀏覽器連結 的 重新整理 按鈕時，系統會更新所有連線的瀏覽器：
+按一下瀏覽器連結重新整理按鈕時，將變更 Index 檢視並更新所有連線的瀏覽器：
 
 ![瀏覽器-同步處理-至-變更](using-browserlink/_static/browsers-sync-to-changes.png)
 
@@ -151,6 +151,6 @@ if (env.IsDevelopment())
 </body>
 ```
 
-不會修改原始程式檔。 中介軟體元件會以動態方式插入指令碼參考。
+您的原始程式檔不會被修改。 中介層元件會以動態方式插入指令碼參考。
 
-由於瀏覽器端的程式碼是所有 JavaScript，它適用於所有 SignalR 支援而不需要的瀏覽器外掛程式的瀏覽器。
+由於瀏覽器端的程式碼全部是 JavaScript，它適用於所有 SignalR 支援的瀏覽器，而不需要瀏覽器外掛程式。

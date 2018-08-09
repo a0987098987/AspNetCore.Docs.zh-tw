@@ -73,7 +73,7 @@ var hubConnection = new HubConnectionBuilder()
 npm install @aspnet/signalr-protocol-msgpack
 ```
 
-安裝 npm 套件之後，此模組可以直接透過 JavaScript 模組載入器或藉由參考匯入至瀏覽器*node_modules\\ @aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 檔案。 在瀏覽器`msgpack5`也必須參考程式庫。 使用`<script>`標記，以建立參考。 程式庫，請參閱*node_modules\msgpack5\dist\msgpack5.js*。
+安裝 npm 套件之後，此模組可以直接透過 JavaScript 模組載入器或藉由參考匯入至瀏覽器 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 檔案。 在瀏覽器`msgpack5`也必須參考程式庫。 使用`<script>`標記，以建立參考。 程式庫，請參閱*node_modules\msgpack5\dist\msgpack5.js*。
 
 > [!NOTE]
 > 當使用`<script>`元素的順序很重要。 如果*signalr-通訊協定-msgpack.js*參考之前*msgpack5.js*，嘗試使用 MessagePack 連線時，就會發生錯誤。 *signalr.js*之前，也需要*signalr-通訊協定-msgpack.js*。

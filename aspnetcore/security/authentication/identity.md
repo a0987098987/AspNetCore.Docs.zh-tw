@@ -1,206 +1,240 @@
 ---
 title: ASP.NET core 身分識別簡介
 author: rick-anderson
-description: 使用 ASP.NET Core 應用程式中使用身分識別。 包括設定密碼的需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars 等等）。
+description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如何設定密碼的需求 （RequireDigit、 RequiredLength、 RequiredUniqueChars，等等）。
 ms.author: riande
-ms.date: 01/24/2018
+ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 50ddb96000e6a3f9e1762e9bb3e1f215f20d4356
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 6a23dd4ad78c0695b5724a78204abf6752dfe67d
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095635"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655306"
 ---
-# <a name="introduction-to-identity-on-aspnet-core"></a><span data-ttu-id="ef679-104">ASP.NET core 身分識別簡介</span><span class="sxs-lookup"><span data-stu-id="ef679-104">Introduction to Identity on ASP.NET Core</span></span>
+# <a name="introduction-to-identity-on-aspnet-core"></a><span data-ttu-id="24354-104">ASP.NET core 身分識別簡介</span><span class="sxs-lookup"><span data-stu-id="24354-104">Introduction to Identity on ASP.NET Core</span></span>
 
-<span data-ttu-id="ef679-105">藉由[請參閱 Pranav Rastogi](https://github.com/rustd)， [Rick Anderson](https://twitter.com/RickAndMSFT)， [Tom Dykstra](https://github.com/tdykstra)，Jon Galloway [Erik Reitan](https://github.com/Erikre)，和[Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="ef679-105">By [Pranav Rastogi](https://github.com/rustd), [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), Jon Galloway, [Erik Reitan](https://github.com/Erikre), and [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="24354-105">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="24354-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="ef679-106">ASP.NET Core Identity 是可讓您將登入功能加入至您的應用程式的成員資格系統。</span><span class="sxs-lookup"><span data-stu-id="ef679-106">ASP.NET Core Identity is a membership system which allows you to add login functionality to your application.</span></span> <span data-ttu-id="ef679-107">使用者可以建立帳戶和登入的使用者名稱和密碼，或它們可以使用外部登入提供者，例如 Facebook、 Google、 Microsoft 帳戶、 Twitter 或其他項目。</span><span class="sxs-lookup"><span data-stu-id="ef679-107">Users can create an account and login with a user name and password or they can use an external login provider such as Facebook, Google, Microsoft Account, Twitter or others.</span></span>
+<span data-ttu-id="24354-106">ASP.NET Core Identity 是將登入功能加入至 ASP.NET Core 應用程式的成員資格系統。</span><span class="sxs-lookup"><span data-stu-id="24354-106">ASP.NET Core Identity is a membership system that adds login functionality to ASP.NET Core apps.</span></span> <span data-ttu-id="24354-107">使用者可以建立的帳戶與儲存在身分識別的登入資訊，或者可以使用外部登入提供者。</span><span class="sxs-lookup"><span data-stu-id="24354-107">Users can create an account with the login information stored in Identity or they can use an external login provider.</span></span> <span data-ttu-id="24354-108">支援的外部登入提供者包括[Facebook、 Google、 Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。</span><span class="sxs-lookup"><span data-stu-id="24354-108">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
 
-<span data-ttu-id="ef679-108">您可以設定要用來儲存使用者名稱、 密碼及分析資料的 SQL Server 資料庫的 ASP.NET Core身分識別。</span><span class="sxs-lookup"><span data-stu-id="ef679-108">You can configure ASP.NET Core Identity to use a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="ef679-109">或者，您可以使用您自己的持續性存放區，例如，「 Azure 資料表儲存體。</span><span class="sxs-lookup"><span data-stu-id="ef679-109">Alternatively, you can use your own persistent store, for example, an Azure Table Storage.</span></span> <span data-ttu-id="ef679-110">本文件包含適用於 Visual Studio，並使用 CLI 的指示。</span><span class="sxs-lookup"><span data-stu-id="ef679-110">This document contains instructions for Visual Studio and for using the CLI.</span></span>
+<span data-ttu-id="24354-109">可以使用 SQL Server 資料庫來儲存使用者名稱、 密碼和設定檔資料，設定身分識別。</span><span class="sxs-lookup"><span data-stu-id="24354-109">Identity can be configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="24354-110">或者，另一個持續性存放區可用，例如 Azure 資料表儲存體。</span><span class="sxs-lookup"><span data-stu-id="24354-110">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
 
-[<span data-ttu-id="ef679-111">檢視或下載範例程式碼。</span><span class="sxs-lookup"><span data-stu-id="ef679-111">View or download the sample code.</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [<span data-ttu-id="ef679-112">（如何下載）</span><span class="sxs-lookup"><span data-stu-id="ef679-112">(How to download)</span></span>](xref:tutorials/index#how-to-download-a-sample)
+[<span data-ttu-id="24354-111">檢視或下載範例程式碼。</span><span class="sxs-lookup"><span data-stu-id="24354-111">View or download the sample code.</span></span>](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [<span data-ttu-id="24354-112">（如何下載）</span><span class="sxs-lookup"><span data-stu-id="24354-112">(How to download)</span></span>](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="overview-of-identity"></a><span data-ttu-id="ef679-113">身分識別概觀</span><span class="sxs-lookup"><span data-stu-id="ef679-113">Overview of Identity</span></span>
+<span data-ttu-id="24354-113">本主題中，您將了解如何使用身分識別來註冊、 登入，並登出使用者。</span><span class="sxs-lookup"><span data-stu-id="24354-113">In this topic, you learn how to use Identity to register, log in, and log out a user.</span></span> <span data-ttu-id="24354-114">如需有關建立使用身分識別的應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。</span><span class="sxs-lookup"><span data-stu-id="24354-114">For more detailed instructions about creating apps that use Identity, see the Next Steps section at the end of this article.</span></span>
 
-<span data-ttu-id="ef679-114">本主題中，您將了解如何使用 ASP.NET Core Identity，若要將功能新增至註冊、 登入，並登出使用者。</span><span class="sxs-lookup"><span data-stu-id="ef679-114">In this topic, you'll learn how to use ASP.NET Core Identity to add functionality to register, log in, and log out a user.</span></span> <span data-ttu-id="ef679-115">如需有關使用 ASP.NET Core Identity 建立應用程式的詳細指示，請參閱本文結尾 「 後續步驟 」 一節。</span><span class="sxs-lookup"><span data-stu-id="ef679-115">For more detailed instructions about creating apps using ASP.NET Core Identity, see the Next Steps section at the end of this article.</span></span>
+## <a name="create-a-web-app-with-authentication"></a><span data-ttu-id="24354-115">建立驗證的 Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="24354-115">Create a Web app with authentication</span></span>
 
-1. <span data-ttu-id="ef679-116">個別使用者帳戶中建立 ASP.NET Core Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="ef679-116">Create an ASP.NET Core Web Application project with Individual User Accounts.</span></span>
+<span data-ttu-id="24354-116">個別使用者帳戶中建立 ASP.NET Core Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="24354-116">Create an ASP.NET Core Web Application project with Individual User Accounts.</span></span>
 
-   # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="ef679-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ef679-117">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="24354-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="24354-117">Visual Studio</span></span>](#tab/visual-studio)
 
-   <span data-ttu-id="ef679-118">在 Visual Studio 中，選取**檔案** > **新增** > **專案**。</span><span class="sxs-lookup"><span data-stu-id="ef679-118">In Visual Studio, select **File** > **New** > **Project**.</span></span> <span data-ttu-id="ef679-119">選取  **ASP.NET Core Web 應用程式**然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="ef679-119">Select **ASP.NET Core Web Application** and click **OK**.</span></span>
+* <span data-ttu-id="24354-118">選取 [檔案]  >  [新增]  >  [專案]。</span><span class="sxs-lookup"><span data-stu-id="24354-118">Select **File** > **New** > **Project**.</span></span> 
+* <span data-ttu-id="24354-119">選取 [ASP.NET Core Web 應用程式]。</span><span class="sxs-lookup"><span data-stu-id="24354-119">Select **ASP.NET Core Web Application**.</span></span> <span data-ttu-id="24354-120">將專案命名為**WebApp1**將專案下載相同的命名空間。</span><span class="sxs-lookup"><span data-stu-id="24354-120">Name the project **WebApp1** to have the same namespace as the project download.</span></span> <span data-ttu-id="24354-121">按一下 [確定 **Deploying Office Solutions**]。</span><span class="sxs-lookup"><span data-stu-id="24354-121">Click **OK**.</span></span>
+* <span data-ttu-id="24354-122">選取 ASP.NET Core **Web 應用程式**ASP.NET Core 2.1 中，然後選取**變更驗證**。</span><span class="sxs-lookup"><span data-stu-id="24354-122">Select an ASP.NET Core **Web Application** for ASP.NET Core 2.1, then select **Change Authentication**.</span></span>
+* <span data-ttu-id="24354-123">選取 **個別使用者帳戶**然後按一下**確定**。</span><span class="sxs-lookup"><span data-stu-id="24354-123">Select **Individual User Accounts** and click **OK**.</span></span>
 
-   ![[新增專案] 對話](identity/_static/01-new-project.png)
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="24354-124">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="24354-124">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-   <span data-ttu-id="ef679-121">選取 ASP.NET Core **Web 應用程式 （模型-檢視-控制器）** asp.net Core 2.x，然後選取**變更驗證**。</span><span class="sxs-lookup"><span data-stu-id="ef679-121">Select an ASP.NET Core **Web Application (Model-View-Controller)** for ASP.NET Core 2.x, then select **Change Authentication**.</span></span>
+```cli
+dotnet new webapp --auth Individual -o WebApp1
+```
 
-   ![[新增專案] 對話](identity/_static/02-new-project.png)
+---
 
-   <span data-ttu-id="ef679-123">供應項目會出現對話方塊驗證選項。</span><span class="sxs-lookup"><span data-stu-id="ef679-123">A dialog appears offering authentication choices.</span></span> <span data-ttu-id="ef679-124">選取 **個別使用者帳戶**，按一下 **確定**返回先前的對話方塊。</span><span class="sxs-lookup"><span data-stu-id="ef679-124">Select **Individual User Accounts** and click **OK** to return to the previous dialog.</span></span>
+<span data-ttu-id="24354-125">產生的專案提供[ASP.NET Core Identity](xref:security/authentication/identity)作為[Razor 類別庫](xref:razor-pages/ui-class)。</span><span class="sxs-lookup"><span data-stu-id="24354-125">The generated project provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span>
 
-   ![[新增專案] 對話](identity/_static/03-new-project-auth.png)
+### <a name="test-register-and-login"></a><span data-ttu-id="24354-126">測試註冊和登入</span><span class="sxs-lookup"><span data-stu-id="24354-126">Test Register and Login</span></span>
 
-   <span data-ttu-id="ef679-126">選取**個別使用者帳戶**會指示 Visual Studio 建立模型、 Viewmodel、 檢視、 控制器及其他專案範本的一部分驗證所需的資產。</span><span class="sxs-lookup"><span data-stu-id="ef679-126">Selecting **Individual User Accounts** directs Visual Studio to create Models, ViewModels, Views, Controllers, and other assets required for authentication as part of the project template.</span></span>
+<span data-ttu-id="24354-127">執行應用程式並註冊的使用者。</span><span class="sxs-lookup"><span data-stu-id="24354-127">Run the app and register a user.</span></span> <span data-ttu-id="24354-128">根據您的螢幕大小，您可能需要選取瀏覽切換按鈕，以查看**註冊**並**登入**連結。</span><span class="sxs-lookup"><span data-stu-id="24354-128">Depending on your screen size, you might need to select the navigation toggle button to see the **Register** and **Login** links.</span></span>
 
-   # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="ef679-127">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="ef679-127">.NET Core CLI</span></span>](#tab/netcore-cli)
+![切換瀏覽列按鈕](identity/_static/navToggle.png)
 
-   <span data-ttu-id="ef679-128">如果使用.NET Core CLI，請建立新的專案使用`dotnet new mvc --auth Individual`。</span><span class="sxs-lookup"><span data-stu-id="ef679-128">If using the .NET Core CLI, create the new project using `dotnet new mvc --auth Individual`.</span></span> <span data-ttu-id="ef679-129">此命令會建立新的專案與 Visual Studio 會建立相同身分識別範本程式碼。</span><span class="sxs-lookup"><span data-stu-id="ef679-129">This command creates a new project with the same Identity template code Visual Studio creates.</span></span>
+[!INCLUDE[](~/includes/view-identity-db.md)]
 
-   <span data-ttu-id="ef679-130">建立的專案包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`封裝，它會保存身分資料和使用 SQL Server 驗證的結構描述[Entity Framework Core](https://docs.microsoft.com/ef/)。</span><span class="sxs-lookup"><span data-stu-id="ef679-130">The created project contains the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` package, which persists the Identity data and schema to SQL Server using [Entity Framework Core](https://docs.microsoft.com/ef/).</span></span>
+<a name="pw"></a>
+### <a name="configure-identity-services"></a><span data-ttu-id="24354-130">設定身分識別服務</span><span class="sxs-lookup"><span data-stu-id="24354-130">Configure Identity services</span></span>
 
-   ---
+<span data-ttu-id="24354-131">服務會加入`ConfigureServices`。</span><span class="sxs-lookup"><span data-stu-id="24354-131">Services are added in `ConfigureServices`.</span></span>
 
-2. <span data-ttu-id="ef679-131">設定身分識別服務，並新增中的介軟體`Startup`。</span><span class="sxs-lookup"><span data-stu-id="ef679-131">Configure Identity services and add middleware in `Startup`.</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   <span data-ttu-id="ef679-132">中的應用程式中加入的身分識別服務`ConfigureServices`方法中的`Startup`類別：</span><span class="sxs-lookup"><span data-stu-id="ef679-132">The Identity services are added to the application in the `ConfigureServices` method in the `Startup` class:</span></span>
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configureservices)]
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ef679-133">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ef679-133">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
+<span data-ttu-id="24354-132">上述程式碼會使用預設選項值設定身分識別。</span><span class="sxs-lookup"><span data-stu-id="24354-132">The preceding code configures Identity with default option values.</span></span> <span data-ttu-id="24354-133">服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="24354-133">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+
+   <span data-ttu-id="24354-134">藉由呼叫啟用身分識別[UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。</span><span class="sxs-lookup"><span data-stu-id="24354-134">Identity is enabled by calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span></span> <span data-ttu-id="24354-135">`UseAuthentication` 新增驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。</span><span class="sxs-lookup"><span data-stu-id="24354-135">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configure&highlight=18)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   <span data-ttu-id="ef679-134">這些服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="ef679-134">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+   <span data-ttu-id="24354-136">服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="24354-136">Services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-   <span data-ttu-id="ef679-135">藉由呼叫應用程式啟用身分識別`UseAuthentication`在`Configure`方法。</span><span class="sxs-lookup"><span data-stu-id="ef679-135">Identity is enabled for the application by calling `UseAuthentication` in the `Configure` method.</span></span> <span data-ttu-id="ef679-136">`UseAuthentication` 新增驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。</span><span class="sxs-lookup"><span data-stu-id="ef679-136">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+   <span data-ttu-id="24354-137">藉由呼叫應用程式啟用身分識別`UseAuthentication`在`Configure`方法。</span><span class="sxs-lookup"><span data-stu-id="24354-137">Identity is enabled for the application by calling `UseAuthentication` in the `Configure` method.</span></span> <span data-ttu-id="24354-138">`UseAuthentication` 新增驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。</span><span class="sxs-lookup"><span data-stu-id="24354-138">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ef679-137">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ef679-137">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
-   <span data-ttu-id="ef679-138">這些服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="ef679-138">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+   <span data-ttu-id="24354-139">這些服務可透過應用程式[相依性插入](xref:fundamentals/dependency-injection)。</span><span class="sxs-lookup"><span data-stu-id="24354-139">These services are made available to the application through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-   <span data-ttu-id="ef679-139">藉由呼叫應用程式啟用身分識別`UseIdentity`在`Configure`方法。</span><span class="sxs-lookup"><span data-stu-id="ef679-139">Identity is enabled for the application by calling `UseIdentity` in the `Configure` method.</span></span> <span data-ttu-id="ef679-140">`UseIdentity` 新增 cookie 為基礎的驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。</span><span class="sxs-lookup"><span data-stu-id="ef679-140">`UseIdentity` adds cookie-based authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+   <span data-ttu-id="24354-140">藉由呼叫應用程式啟用身分識別`UseIdentity`在`Configure`方法。</span><span class="sxs-lookup"><span data-stu-id="24354-140">Identity is enabled for the application by calling `UseIdentity` in the `Configure` method.</span></span> <span data-ttu-id="24354-141">`UseIdentity` 新增 cookie 為基礎的驗證[中介軟體](xref:fundamentals/middleware/index)至要求管線。</span><span class="sxs-lookup"><span data-stu-id="24354-141">`UseIdentity` adds cookie-based authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
-   ---
+::: moniker-end
 
-   <span data-ttu-id="ef679-141">如需處理程序的應用程式啟動的詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="ef679-141">For more information about the application start up process, see [Application Startup](xref:fundamentals/startup).</span></span>
+<span data-ttu-id="24354-142">如需詳細資訊，請參閱 < [IdentityOptions 類別](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)並[應用程式啟動](xref:fundamentals/startup)。</span><span class="sxs-lookup"><span data-stu-id="24354-142">For more information, see the [IdentityOptions Class](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) and [Application Startup](xref:fundamentals/startup).</span></span>
 
-3. <span data-ttu-id="ef679-142">建立的使用者。</span><span class="sxs-lookup"><span data-stu-id="ef679-142">Create a user.</span></span>
+## <a name="scaffold-register-login-and-logout"></a><span data-ttu-id="24354-143">Scaffold 註冊、 登入和登出</span><span class="sxs-lookup"><span data-stu-id="24354-143">Scaffold Register, Login, and LogOut</span></span>
 
-   <span data-ttu-id="ef679-143">啟動應用程式，然後按一下**註冊**連結。</span><span class="sxs-lookup"><span data-stu-id="ef679-143">Launch the application and then click on the **Register** link.</span></span>
+<span data-ttu-id="24354-144">請遵循[Scaffold Razor 專案具有授權的身分識別](xref:security/authentication/scaffold-identity#)指示。</span><span class="sxs-lookup"><span data-stu-id="24354-144">Follow the [Scaffold identity into a Razor project with authorization](xref:security/authentication/scaffold-identity#) instructions.</span></span>
 
-   <span data-ttu-id="ef679-144">如果這是您要執行此動作的第一次，您可能必須執行移轉。</span><span class="sxs-lookup"><span data-stu-id="ef679-144">If this is the first time you're performing this action, you may be required to run migrations.</span></span> <span data-ttu-id="ef679-145">應用程式會提示您**套用移轉**。</span><span class="sxs-lookup"><span data-stu-id="ef679-145">The application prompts you to **Apply Migrations**.</span></span> <span data-ttu-id="ef679-146">如有需要請重新整理頁面。</span><span class="sxs-lookup"><span data-stu-id="ef679-146">Refresh the page if needed.</span></span>
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="24354-145">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="24354-145">Visual Studio</span></span>](#tab/visual-studio)
 
-   ![適用於移轉網頁](identity/_static/apply-migrations.png)
+<span data-ttu-id="24354-146">新增註冊、 登入和登出的檔案。</span><span class="sxs-lookup"><span data-stu-id="24354-146">Add the Register, Login, and LogOut files.</span></span>
 
-   <span data-ttu-id="ef679-148">或者，您可以測試使用您的應用程式，而不需要持續性資料庫中的 ASP.NET Core 身分識別，使用記憶體中資料庫。</span><span class="sxs-lookup"><span data-stu-id="ef679-148">Alternately, you can test using ASP.NET Core Identity with your app without a persistent database by using an in-memory database.</span></span> <span data-ttu-id="ef679-149">若要使用的記憶體中資料庫，請新增`Microsoft.EntityFrameworkCore.InMemory`封裝到您的應用程式，並修改您的應用程式呼叫`AddDbContext`在`ConfigureServices`，如下所示：</span><span class="sxs-lookup"><span data-stu-id="ef679-149">To use an in-memory database, add the `Microsoft.EntityFrameworkCore.InMemory` package to your app and modify your app's call to `AddDbContext` in `ConfigureServices` as follows:</span></span>
 
-   ```csharp
-   services.AddDbContext<ApplicationDbContext>(options =>
-       options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-   ```
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="24354-147">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="24354-147">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-   <span data-ttu-id="ef679-150">當使用者按一下**註冊**連結`Register`上叫用動作`AccountController`。</span><span class="sxs-lookup"><span data-stu-id="ef679-150">When the user clicks the **Register** link, the `Register` action is invoked on `AccountController`.</span></span> <span data-ttu-id="ef679-151">`Register`動作會建立使用者，藉由呼叫`CreateAsync`上`_userManager`物件 (提供給`AccountController`由相依性插入):</span><span class="sxs-lookup"><span data-stu-id="ef679-151">The `Register` action creates the user by calling `CreateAsync` on the `_userManager` object (provided to `AccountController` by dependency injection):</span></span>
+<span data-ttu-id="24354-148">如果您建立的專案名稱**WebApp1**，執行下列命令。</span><span class="sxs-lookup"><span data-stu-id="24354-148">If you created the project with name **WebApp1**, run the following commands.</span></span> <span data-ttu-id="24354-149">否則，請使用正確的命名空間，如`ApplicationDbContext`:</span><span class="sxs-lookup"><span data-stu-id="24354-149">Otherwise, use the correct namespace for the `ApplicationDbContext`:</span></span>
+
+
+```cli
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+
+```
+
+<span data-ttu-id="24354-150">PowerShell 會使用分號做為命令分隔符號。</span><span class="sxs-lookup"><span data-stu-id="24354-150">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="24354-151">使用 PowerShell 時，逸出分號，在檔案清單，或置於雙引號括住，如上述範例所示的檔案清單。</span><span class="sxs-lookup"><span data-stu-id="24354-151">When using PowerShell, escape the semicolons in the file list or put the file list in double quotes, as the preceding example shows.</span></span>
+
+---
+
+### <a name="examine-register"></a><span data-ttu-id="24354-152">檢查暫存器</span><span class="sxs-lookup"><span data-stu-id="24354-152">Examine Register</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+   <span data-ttu-id="24354-153">當使用者按一下**註冊**連結，`RegisterModel.OnPostAsync`叫用動作。</span><span class="sxs-lookup"><span data-stu-id="24354-153">When a user clicks the **Register** link, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="24354-154">使用者由[CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_)上`_userManager`物件。</span><span class="sxs-lookup"><span data-stu-id="24354-154">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object.</span></span> <span data-ttu-id="24354-155">`_userManager` 是由提供相依性插入）：</span><span class="sxs-lookup"><span data-stu-id="24354-155">`_userManager` is provided by dependency injection):</span></span>
+
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+
+   <span data-ttu-id="24354-156">當使用者按一下**註冊**連結`Register`上叫用動作`AccountController`。</span><span class="sxs-lookup"><span data-stu-id="24354-156">When a user clicks the **Register** link, the `Register` action is invoked on `AccountController`.</span></span> <span data-ttu-id="24354-157">`Register`動作會建立使用者，藉由呼叫`CreateAsync`上`_userManager`物件 (提供給`AccountController`由相依性插入):</span><span class="sxs-lookup"><span data-stu-id="24354-157">The `Register` action creates the user by calling `CreateAsync` on the `_userManager` object (provided to `AccountController` by dependency injection):</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_register&highlight=11)]
 
-   <span data-ttu-id="ef679-152">如果已成功建立使用者，使用者會登入的呼叫所`_signInManager.SignInAsync`。</span><span class="sxs-lookup"><span data-stu-id="ef679-152">If the user was created successfully, the user is logged in by the call to `_signInManager.SignInAsync`.</span></span>
+::: moniker-end
 
-   <span data-ttu-id="ef679-153">**注意︰** 請參閱 <<c2> [ 帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免在註冊的立即登入。</span><span class="sxs-lookup"><span data-stu-id="ef679-153">**Note:** See [account confirmation](xref:security/authentication/accconfirm#prevent-login-at-registration) for steps to prevent immediate login at registration.</span></span>
+   <span data-ttu-id="24354-158">如果已成功建立使用者，使用者會登入的呼叫所`_signInManager.SignInAsync`。</span><span class="sxs-lookup"><span data-stu-id="24354-158">If the user was created successfully, the user is logged in by the call to `_signInManager.SignInAsync`.</span></span>
 
-4. <span data-ttu-id="ef679-154">登入。</span><span class="sxs-lookup"><span data-stu-id="ef679-154">Log in.</span></span>
+   <span data-ttu-id="24354-159">**注意︰** 請參閱 <<c2> [ 帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)的步驟，以避免在註冊的立即登入。</span><span class="sxs-lookup"><span data-stu-id="24354-159">**Note:** See [account confirmation](xref:security/authentication/accconfirm#prevent-login-at-registration) for steps to prevent immediate login at registration.</span></span>
 
-   <span data-ttu-id="ef679-155">使用者可以登入，依序按一下**登入** 連結，在頂端的站台，或它們可能會瀏覽至登入頁面當他們嘗試存取需要授權的站台的一部分。</span><span class="sxs-lookup"><span data-stu-id="ef679-155">Users can sign in by clicking the **Log in** link at the top of the site, or they may be navigated to the Login page if they attempt to access a part of the site that requires authorization.</span></span> <span data-ttu-id="ef679-156">當使用者提交表單時的登入頁面上， `AccountController` `Login`呼叫動作。</span><span class="sxs-lookup"><span data-stu-id="ef679-156">When the user submits the form on the Login page, the `AccountController` `Login` action is called.</span></span>
+### <a name="log-in"></a><span data-ttu-id="24354-160">登入</span><span class="sxs-lookup"><span data-stu-id="24354-160">Log in</span></span>
 
-   <span data-ttu-id="ef679-157">`Login`動作會呼叫`PasswordSignInAsync`上`_signInManager`物件 (提供給`AccountController`由相依性插入)。</span><span class="sxs-lookup"><span data-stu-id="ef679-157">The `Login` action calls `PasswordSignInAsync` on the `_signInManager` object (provided to `AccountController` by dependency injection).</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+<span data-ttu-id="24354-161">登入表單顯示時：</span><span class="sxs-lookup"><span data-stu-id="24354-161">The Login form is displayed when:</span></span>
 
-   <span data-ttu-id="ef679-158">基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。</span><span class="sxs-lookup"><span data-stu-id="ef679-158">The base `Controller` class exposes a `User` property that you can access from controller methods.</span></span> <span data-ttu-id="ef679-159">比方說，您可以列舉`User.Claims`並進行授權決策。</span><span class="sxs-lookup"><span data-stu-id="ef679-159">For instance, you can enumerate `User.Claims` and make authorization decisions.</span></span> <span data-ttu-id="ef679-160">如需詳細資訊，請參閱 <<c0> [ 授權](xref:security/authorization/index)。</span><span class="sxs-lookup"><span data-stu-id="ef679-160">For more information, see [Authorization](xref:security/authorization/index).</span></span>
+* <span data-ttu-id="24354-162">**登入**選取連結。</span><span class="sxs-lookup"><span data-stu-id="24354-162">The **Log in** link  is selected.</span></span>
+* <span data-ttu-id="24354-163">當使用者存取的頁面時，它們未經過驗證**或**獲授權，就會重新導向至登入頁面。</span><span class="sxs-lookup"><span data-stu-id="24354-163">When a user accesses a page where they are not authenticated **or** authorized, they are redirected to the Login page.</span></span> 
 
-5. <span data-ttu-id="ef679-161">登出。</span><span class="sxs-lookup"><span data-stu-id="ef679-161">Log out.</span></span>
+<span data-ttu-id="24354-164">登入頁面上的表單提交時，`OnPostAsync`呼叫動作。</span><span class="sxs-lookup"><span data-stu-id="24354-164">When the form on the Login page is submitted, the `OnPostAsync` action is called.</span></span> <span data-ttu-id="24354-165">`PasswordSignInAsync` 呼叫`_signInManager`（由相依性插入提供） 的物件。</span><span class="sxs-lookup"><span data-stu-id="24354-165">`PasswordSignInAsync` is called on the `_signInManager` object (provided by dependency injection).</span></span>
 
-   <span data-ttu-id="ef679-162">按一下 **登出**連結呼叫`LogOut`動作。</span><span class="sxs-lookup"><span data-stu-id="ef679-162">Clicking the **Log out** link calls the `LogOut` action.</span></span>
+   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Login.cshtml.cs?name=snippet&highlight=10-11)]
+
+   <span data-ttu-id="24354-166">基底`Controller`類別會公開`User`屬性，您可以從控制器方法存取。</span><span class="sxs-lookup"><span data-stu-id="24354-166">The base `Controller` class exposes a `User` property that you can access from controller methods.</span></span> <span data-ttu-id="24354-167">比方說，您可以列舉`User.Claims`並進行授權決策。</span><span class="sxs-lookup"><span data-stu-id="24354-167">For instance, you can enumerate `User.Claims` and make authorization decisions.</span></span> <span data-ttu-id="24354-168">如需詳細資訊，請參閱 <<c0> [ 授權](xref:security/authorization/index)。</span><span class="sxs-lookup"><span data-stu-id="24354-168">For more information, see [Authorization](xref:security/authorization/index).</span></span>
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+
+<span data-ttu-id="24354-169">當使用者選取時，會顯示登入表單**登入**存取需要驗證的網頁時，會重新導向或連結。</span><span class="sxs-lookup"><span data-stu-id="24354-169">The Login form is displayed when users select the **Log in** link or are redirected when accessing a page that requires authentication.</span></span> <span data-ttu-id="24354-170">當使用者提交表單時的登入頁面上， `AccountController` `Login`呼叫動作。</span><span class="sxs-lookup"><span data-stu-id="24354-170">When the user submits the form on the Login page, the `AccountController` `Login` action is called.</span></span>
+
+<span data-ttu-id="24354-171">`Login`動作會呼叫`PasswordSignInAsync`上`_signInManager`物件 (提供給`AccountController`由相依性插入)。</span><span class="sxs-lookup"><span data-stu-id="24354-171">The `Login` action calls `PasswordSignInAsync` on the `_signInManager` object (provided to `AccountController` by dependency injection).</span></span>
+
+[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_login&highlight=13-14)]
+
+<span data-ttu-id="24354-172">基底 (`Controller`或是`PageModel`) 類別會公開`User`屬性。</span><span class="sxs-lookup"><span data-stu-id="24354-172">The base (`Controller` or `PageModel`) class exposes a `User` property.</span></span> <span data-ttu-id="24354-173">比方說，`User.Claims`可以列舉來製作授權決策。</span><span class="sxs-lookup"><span data-stu-id="24354-173">For example, `User.Claims` can be enumerated to make authorization decisions.</span></span>
+
+::: moniker-end
+
+### <a name="log-out"></a><span data-ttu-id="24354-174">登出</span><span class="sxs-lookup"><span data-stu-id="24354-174">Log out</span></span>
+
+::: moniker range=">= aspnetcore-2.1"
+
+<span data-ttu-id="24354-175">**登出** 連結會叫用`LogoutModel.OnPost`動作。</span><span class="sxs-lookup"><span data-stu-id="24354-175">The **Log out** link invokes the `LogoutModel.OnPost` action.</span></span> 
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Logout.cshtml.cs)]
+
+<span data-ttu-id="24354-176">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync)清除儲存在 cookie 中的使用者宣告。</span><span class="sxs-lookup"><span data-stu-id="24354-176">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) clears the user's claims stored in a cookie.</span></span> <span data-ttu-id="24354-177">不重新導向之後呼叫`SignOutAsync`或使用者將會**不**登出。</span><span class="sxs-lookup"><span data-stu-id="24354-177">Don't redirect after calling `SignOutAsync` or the user will **not** be signed out.</span></span>
+
+<span data-ttu-id="24354-178">中所指定的張貼*Pages/Shared/_LoginPartial.cshtml*:</span><span class="sxs-lookup"><span data-stu-id="24354-178">Post is specified in the *Pages/Shared/_LoginPartial.cshtml*:</span></span>
+
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
+   <span data-ttu-id="24354-179">按一下 **登出**連結呼叫`LogOut`動作。</span><span class="sxs-lookup"><span data-stu-id="24354-179">Clicking the **Log out** link calls the `LogOut` action.</span></span>
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
-   <span data-ttu-id="ef679-163">上述程式碼中的呼叫上述`_signInManager.SignOutAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="ef679-163">The preceding code above calls the `_signInManager.SignOutAsync` method.</span></span> <span data-ttu-id="ef679-164">`SignOutAsync`方法會清除儲存在 cookie 中的使用者宣告。</span><span class="sxs-lookup"><span data-stu-id="ef679-164">The `SignOutAsync` method clears the user's claims stored in a cookie.</span></span>
+   <span data-ttu-id="24354-180">上述程式碼會呼叫`_signInManager.SignOutAsync`方法。</span><span class="sxs-lookup"><span data-stu-id="24354-180">The preceding code calls the `_signInManager.SignOutAsync` method.</span></span> <span data-ttu-id="24354-181">`SignOutAsync`方法會清除儲存在 cookie 中的使用者宣告。</span><span class="sxs-lookup"><span data-stu-id="24354-181">The `SignOutAsync` method clears the user's claims stored in a cookie.</span></span>
+::: moniker-end
 
-<a name="pw"></a>
-6. <span data-ttu-id="ef679-165">組態設定。</span><span class="sxs-lookup"><span data-stu-id="ef679-165">Configuration.</span></span>
+## <a name="test-identity"></a><span data-ttu-id="24354-182">測試身分識別</span><span class="sxs-lookup"><span data-stu-id="24354-182">Test Identity</span></span>
 
-   <span data-ttu-id="ef679-166">身分識別具有可以在應用程式的啟動類別中覆寫一些預設行為。</span><span class="sxs-lookup"><span data-stu-id="ef679-166">Identity has some default behaviors that can be overridden in the app's startup class.</span></span> <span data-ttu-id="ef679-167">`IdentityOptions` 不需要使用的預設行為時設定。</span><span class="sxs-lookup"><span data-stu-id="ef679-167">`IdentityOptions` don't need to be configured when using the default behaviors.</span></span> <span data-ttu-id="ef679-168">下列程式碼會設定數個密碼強度選項：</span><span class="sxs-lookup"><span data-stu-id="ef679-168">The following code sets several password strength options:</span></span>
+<span data-ttu-id="24354-183">預設的 web 專案範本允許匿名存取首頁。</span><span class="sxs-lookup"><span data-stu-id="24354-183">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="24354-184">若要測試識別，新增[ `[Authorize]` ](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute)至 About 頁面。</span><span class="sxs-lookup"><span data-stu-id="24354-184">To test Identity, add [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) to the About page.</span></span>
 
-   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="ef679-169">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="ef679-169">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x/)
+[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/About.cshtml.cs)]
 
-   [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
+<span data-ttu-id="24354-185">如果您登入，登出。執行應用程式，然後選取**關於**連結。</span><span class="sxs-lookup"><span data-stu-id="24354-185">If you are signed in, sign out. Run the app and select the **About** link.</span></span> <span data-ttu-id="24354-186">將您重新導向至登入頁面。</span><span class="sxs-lookup"><span data-stu-id="24354-186">You are redirected to the login page.</span></span>
 
-   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="ef679-170">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="ef679-170">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x/)
+::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-33)]
+### <a name="explore-identity"></a><span data-ttu-id="24354-187">瀏覽身分識別</span><span class="sxs-lookup"><span data-stu-id="24354-187">Explore Identity</span></span>
 
-   ---
+<span data-ttu-id="24354-188">若要更詳細地探索身分識別：</span><span class="sxs-lookup"><span data-stu-id="24354-188">To explore Identity in more detail:</span></span>
 
-   <span data-ttu-id="ef679-171">如需如何設定身分識別的詳細資訊，請參閱[設定的身分識別](xref:security/authentication/identity-configuration)。</span><span class="sxs-lookup"><span data-stu-id="ef679-171">For more information about how to configure Identity, see [Configure Identity](xref:security/authentication/identity-configuration).</span></span>
+* [<span data-ttu-id="24354-189">建立完整的身分識別 UI 來源</span><span class="sxs-lookup"><span data-stu-id="24354-189">Create full identity UI source</span></span>](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
+* <span data-ttu-id="24354-190">檢查每個頁面和逐步執行偵錯工具的來源。</span><span class="sxs-lookup"><span data-stu-id="24354-190">Examine the source of each page and step through the debugger.</span></span>
 
-   <span data-ttu-id="ef679-172">您也可以設定主要索引鍵資料類型，請參閱[設定識別主索引鍵的資料型別](xref:security/authentication/identity-primary-key-configuration)。</span><span class="sxs-lookup"><span data-stu-id="ef679-172">You also can configure the data type of the primary key, see [Configure Identity primary keys data type](xref:security/authentication/identity-primary-key-configuration).</span></span>
+::: moniker-end
 
-7. <span data-ttu-id="ef679-173">檢視的資料庫。</span><span class="sxs-lookup"><span data-stu-id="ef679-173">View the database.</span></span>
+## <a name="identity-components"></a><span data-ttu-id="24354-191">身分識別元件</span><span class="sxs-lookup"><span data-stu-id="24354-191">Identity Components</span></span>
 
-   <span data-ttu-id="ef679-174">如果您的應用程式使用 SQL Server 資料庫 （預設值在 Windows 上，以及適用於 Visual Studio 使用者），您可以檢視資料庫建立的應用程式。</span><span class="sxs-lookup"><span data-stu-id="ef679-174">If your app is using a SQL Server database (the default on Windows and for Visual Studio users), you can view the database the app created.</span></span> <span data-ttu-id="ef679-175">您可以使用**SQL Server Management Studio**。</span><span class="sxs-lookup"><span data-stu-id="ef679-175">You can use **SQL Server Management Studio**.</span></span> <span data-ttu-id="ef679-176">或者，從 Visual Studio 中，選取**檢視** > **SQL Server 物件總管**。</span><span class="sxs-lookup"><span data-stu-id="ef679-176">Alternatively, from Visual Studio, select **View** > **SQL Server Object Explorer**.</span></span> <span data-ttu-id="ef679-177">連接到 **(localdb) \MSSQLLocalDB**。</span><span class="sxs-lookup"><span data-stu-id="ef679-177">Connect to **(localdb)\MSSQLLocalDB**.</span></span> <span data-ttu-id="ef679-178">資料庫名稱符合`aspnet-<name of your project>-<guid>`隨即出現。</span><span class="sxs-lookup"><span data-stu-id="ef679-178">The database with a name matching `aspnet-<name of your project>-<guid>` is displayed.</span></span>
+::: moniker range=">= aspnetcore-2.1"
 
-   ![在 AspNetUsers 資料庫資料表上的操作功能表](identity/_static/04-db.png)
+<span data-ttu-id="24354-192">中包含所有身分識別相依的 NuGet 套件[Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。</span><span class="sxs-lookup"><span data-stu-id="24354-192">All the Identity dependent NuGet packages are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
+::: moniker-end
 
-   <span data-ttu-id="ef679-180">展開的資料庫及其**資料表**，然後以滑鼠右鍵按一下**dbo。AspNetUsers**資料表，然後選取**檢視資料**。</span><span class="sxs-lookup"><span data-stu-id="ef679-180">Expand the database and its **Tables**, then right-click the **dbo.AspNetUsers** table and select **View Data**.</span></span>
+<span data-ttu-id="24354-193">身分識別的主要套件[Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/)。</span><span class="sxs-lookup"><span data-stu-id="24354-193">The primary package for Identity is [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span></span> <span data-ttu-id="24354-194">此封裝包含一組核心介面的 ASP.NET Core 身分識別，並包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。</span><span class="sxs-lookup"><span data-stu-id="24354-194">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
 
-8. <span data-ttu-id="ef679-181">確認身分識別可運作</span><span class="sxs-lookup"><span data-stu-id="ef679-181">Verify Identity works</span></span>
+## <a name="migrating-to-aspnet-core-identity"></a><span data-ttu-id="24354-195">移轉至 ASP.NET Core 身分識別</span><span class="sxs-lookup"><span data-stu-id="24354-195">Migrating to ASP.NET Core Identity</span></span>
 
-    <span data-ttu-id="ef679-182">預設值*ASP.NET Core Web 應用程式*專案範本可讓使用者存取應用程式中的任何動作，而不需要登入。</span><span class="sxs-lookup"><span data-stu-id="ef679-182">The default *ASP.NET Core Web Application* project template allows users to access any action in the application without having to login.</span></span> <span data-ttu-id="ef679-183">若要確認，適用於 ASP.NET 身分識別，請新增`[Authorize]`屬性設定為`About`動作`Home`控制站。</span><span class="sxs-lookup"><span data-stu-id="ef679-183">To verify that ASP.NET Identity works, add an`[Authorize]` attribute to the `About` action of the `Home` Controller.</span></span>
+<span data-ttu-id="24354-196">如需詳細資訊和移轉您現有的身分識別存放區的指引，請參閱[移轉驗證和身分識別](xref:migration/identity)。</span><span class="sxs-lookup"><span data-stu-id="24354-196">For more information and guidance on migrating your existing Identity store, see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
 
-    ```csharp
-    [Authorize]
-    public IActionResult About()
-    {
-        ViewData["Message"] = "Your application description page.";
-        return View();
-    }
-    ```
+## <a name="setting-password-strength"></a><span data-ttu-id="24354-197">設定密碼強度</span><span class="sxs-lookup"><span data-stu-id="24354-197">Setting password strength</span></span>
 
-    # <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="ef679-184">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ef679-184">Visual Studio</span></span>](#tab/visual-studio)
+<span data-ttu-id="24354-198">請參閱[組態](#pw)如需設定的最小的密碼需求的範例。</span><span class="sxs-lookup"><span data-stu-id="24354-198">See [Configuration](#pw) for a sample that sets the minimum password requirements.</span></span>
 
-    <span data-ttu-id="ef679-185">執行專案使用**Ctrl** + **F5**並瀏覽至**有關**頁面。</span><span class="sxs-lookup"><span data-stu-id="ef679-185">Run the project using **Ctrl** + **F5** and navigate to the **About** page.</span></span> <span data-ttu-id="ef679-186">只有已驗證的使用者可以存取**關於**現在頁面，所以 ASP.NET 會將您導向登入頁面，來登入或註冊。</span><span class="sxs-lookup"><span data-stu-id="ef679-186">Only authenticated users may access the **About** page now, so ASP.NET redirects you to the login page to login or register.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="24354-199">後續步驟</span><span class="sxs-lookup"><span data-stu-id="24354-199">Next Steps</span></span>
 
-    # <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="ef679-187">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="ef679-187">.NET Core CLI</span></span>](#tab/netcore-cli)
-
-    <span data-ttu-id="ef679-188">開啟命令視窗並瀏覽至該專案的根目錄的目錄包含`.csproj`檔案。</span><span class="sxs-lookup"><span data-stu-id="ef679-188">Open a command window and navigate to the project's root directory containing the `.csproj` file.</span></span> <span data-ttu-id="ef679-189">執行[dotnet 執行](/dotnet/core/tools/dotnet-run)執行應用程式的命令：</span><span class="sxs-lookup"><span data-stu-id="ef679-189">Run the [dotnet run](/dotnet/core/tools/dotnet-run) command to run the app:</span></span>
-
-    ```csharp
-    dotnet run 
-    ```
-
-    <span data-ttu-id="ef679-190">瀏覽的輸出中指定的 URL [dotnet 執行](/dotnet/core/tools/dotnet-run)命令。</span><span class="sxs-lookup"><span data-stu-id="ef679-190">Browse the URL specified in the output from the [dotnet run](/dotnet/core/tools/dotnet-run) command.</span></span> <span data-ttu-id="ef679-191">此 URL 應該指向`localhost`產生的連接埠號碼。</span><span class="sxs-lookup"><span data-stu-id="ef679-191">The URL should point to `localhost` with a generated port number.</span></span> <span data-ttu-id="ef679-192">瀏覽至**關於**頁面。</span><span class="sxs-lookup"><span data-stu-id="ef679-192">Navigate to the **About** page.</span></span> <span data-ttu-id="ef679-193">只有已驗證的使用者可以存取**關於**現在頁面，所以 ASP.NET 會將您導向登入頁面，來登入或註冊。</span><span class="sxs-lookup"><span data-stu-id="ef679-193">Only authenticated users may access the **About** page now, so ASP.NET redirects you to the login page to login or register.</span></span>
-
-    ---
-
-## <a name="identity-components"></a><span data-ttu-id="ef679-194">身分識別元件</span><span class="sxs-lookup"><span data-stu-id="ef679-194">Identity Components</span></span>
-
-<span data-ttu-id="ef679-195">身分識別系統的主要參考組件是`Microsoft.AspNetCore.Identity`。</span><span class="sxs-lookup"><span data-stu-id="ef679-195">The primary reference assembly for the Identity system is `Microsoft.AspNetCore.Identity`.</span></span> <span data-ttu-id="ef679-196">此封裝包含一組核心介面的 ASP.NET Core 身分識別，並包含`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。</span><span class="sxs-lookup"><span data-stu-id="ef679-196">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
-
-<span data-ttu-id="ef679-197">若要使用 ASP.NET Core 應用程式中的身分識別系統需要這些相依性：</span><span class="sxs-lookup"><span data-stu-id="ef679-197">These dependencies are needed to use the Identity system in ASP.NET Core applications:</span></span>
-
-* <span data-ttu-id="ef679-198">`Microsoft.AspNetCore.Identity.EntityFrameworkCore` -包含必要的型別，以搭配 Entity Framework Core 中的身分識別。</span><span class="sxs-lookup"><span data-stu-id="ef679-198">`Microsoft.AspNetCore.Identity.EntityFrameworkCore` - Contains the required types to use Identity with Entity Framework Core.</span></span>
-
-* <span data-ttu-id="ef679-199">`Microsoft.EntityFrameworkCore.SqlServer` -Entity Framework Core 是 Microsoft 建議的資料存取技術，例如 SQL Server 關聯式資料庫。</span><span class="sxs-lookup"><span data-stu-id="ef679-199">`Microsoft.EntityFrameworkCore.SqlServer` - Entity Framework Core is Microsoft's recommended data access technology for relational databases like SQL Server.</span></span> <span data-ttu-id="ef679-200">進行測試，您可以使用`Microsoft.EntityFrameworkCore.InMemory`。</span><span class="sxs-lookup"><span data-stu-id="ef679-200">For testing, you can use `Microsoft.EntityFrameworkCore.InMemory`.</span></span>
-
-* <span data-ttu-id="ef679-201">`Microsoft.AspNetCore.Authentication.Cookies` 中介軟體，可讓應用程式以使用以 cookie 為基礎的驗證。</span><span class="sxs-lookup"><span data-stu-id="ef679-201">`Microsoft.AspNetCore.Authentication.Cookies` - Middleware that enables an app to use cookie-based authentication.</span></span>
-
-## <a name="migrating-to-aspnet-core-identity"></a><span data-ttu-id="ef679-202">移轉至 ASP.NET Core 身分識別</span><span class="sxs-lookup"><span data-stu-id="ef679-202">Migrating to ASP.NET Core Identity</span></span>
-
-<span data-ttu-id="ef679-203">如需詳細資訊和指引移轉您現有的身分識別存放區，請參閱[移轉驗證和身分識別](xref:migration/identity)。</span><span class="sxs-lookup"><span data-stu-id="ef679-203">For additional information and guidance on migrating your existing Identity store see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
-
-## <a name="setting-password-strength"></a><span data-ttu-id="ef679-204">設定密碼強度</span><span class="sxs-lookup"><span data-stu-id="ef679-204">Setting password strength</span></span>
-
-<span data-ttu-id="ef679-205">請參閱[組態](#pw)如需設定的最小的密碼需求的範例。</span><span class="sxs-lookup"><span data-stu-id="ef679-205">See [Configuration](#pw) for a sample that sets the minimum password requirements.</span></span>
-
-## <a name="next-steps"></a><span data-ttu-id="ef679-206">後續步驟</span><span class="sxs-lookup"><span data-stu-id="ef679-206">Next Steps</span></span>
-
+* [<span data-ttu-id="24354-200">設定身分識別</span><span class="sxs-lookup"><span data-stu-id="24354-200">Configure Identity</span></span>](xref:security/authentication/identity-configuration)
+* <xref:security/authorization/secure-data>
+* <xref:security/authentication/add-user-data>
+* <xref:security/authentication/identity-enable-qrcodes>
+* <span data-ttu-id="24354-201">[設定身分識別主索引鍵資料類型](xref:security/authentication/identity-primary-key-configuration)。</span><span class="sxs-lookup"><span data-stu-id="24354-201">[Configure Identity primary keys data type](xref:security/authentication/identity-primary-key-configuration).</span></span>
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>
-* <xref:security/authentication/social/index>
 * <xref:host-and-deploy/web-farm>

@@ -251,7 +251,7 @@ ASP.NET 執行階段會追蹤目前`changeId`資料表快取資料使用時`SqlC
 **圖 12**： 選取 `GetProducts`方法，從下拉式清單選取索引標籤 s ([按一下以檢視完整大小的影像](using-sql-cache-dependencies-vb/_static/image18.png))
 
 
-[![從 [更新] 索引標籤 s] 下拉式清單選擇 UpdateProduct 方法](using-sql-cache-dependencies-vb/_static/image13.gif)](using-sql-cache-dependencies-vb/_static/image19.png)
+[![從 更新 索引標籤 s 下拉式清單選擇 UpdateProduct 方法](using-sql-cache-dependencies-vb/_static/image13.gif)](using-sql-cache-dependencies-vb/_static/image19.png)
 
 **圖 13**： 從 [更新] 索引標籤的下拉式清單中選擇 UpdateProduct 方法 ([按一下以檢視完整大小的影像](using-sql-cache-dependencies-vb/_static/image20.png))
 

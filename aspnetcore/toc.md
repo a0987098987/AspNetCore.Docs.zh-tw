@@ -35,7 +35,7 @@
 ## [建置 Web API](xref:web-api/index)
 ### [在 Visual Studio Code 中建立 Web API](xref:tutorials/web-api-vsc)
 ### [在 Visual Studio for Mac 中建立 Web API](xref:tutorials/first-web-api-mac)
-### [在 Visual Studio for Windows 中建立 Web API](xref:tutorials/first-web-api)
+### [在 Visual Studio 中建立 Web API](xref:tutorials/first-web-api)
 ### [建立原生行動應用程式的後端服務](xref:mobile/native-mobile-backend)
 ### [使用 Swagger 的說明頁面](xref:tutorials/web-api-help-pages-using-swagger)
 #### [開始使用 NSwag](xref:tutorials/get-started-with-nswag)
@@ -218,8 +218,8 @@
 ## [Visual Studio 中的快照集偵錯](/visualstudio/debugger/debug-live-azure-applications)
 ## [疑難排解](xref:test/troubleshoot)
 
-# [使用 EF Core 與 Azure 來進行資料存取](data/index.md)
-## [藉由 Visual Studio 開始使用 Razor 頁面與 EF Core](xref:data/ef-rp/intro)
+# [EF Core 的資料存取](xref:data/index)
+## [透過 Visual Studio 開始使用 Razor 頁面和 EF Core](xref:data/ef-rp/intro)
 ## [藉由 Visual Studio 開始使用 ASP.NET Core 與 EF Core](data/ef-mvc/index.md)
 ## [ASP.NET Core 與 EF Core - 新的資料庫](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
 ## [ASP.NET Core 與 EF Core - 現有的資料庫](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
@@ -229,6 +229,15 @@
 ### [開始使用 Blob 儲存體和 Visual Studio 已連接服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
 ### [開始使用佇列儲存體和 Visual Studio 已連接服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
 ### [開始使用表格儲存體和 Visual Studio 連線服務](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+
+# [Azure 指導](xref:azure/index)
+## ASP.NET Core 與 Azure 的 DevOps
+### [簡介](xref:azure/devops/index)
+### [工具及下載](xref:azure/devops/tools-and-downloads)
+### [部署到 App Service](xref:azure/devops/deploy-to-app-service)
+### [持續整合與部署](xref:azure/devops/cicd)
+### [監視及疑難排解](xref:azure/devops/monitor)
+### [後續步驟](xref:azure/devops/next-steps)
 
 # [用戶端開發](xref:client-side/index)
 ## [使用 Gulp](xref:client-side/using-gulp)

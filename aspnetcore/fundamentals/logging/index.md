@@ -5,12 +5,12 @@ description: 了解 ASP.NET Core 中的記錄架構。 探索內建記錄提供�
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 60777d4f8664b7f02c806abb6ca40a29602d207f
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 35bb7fa51db541f825a79151fb7fbe85d48e1998
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378647"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655355"
 ---
 # <a name="logging-in-aspnet-core"></a>ASP.NET Core 中的記錄
 
@@ -79,7 +79,7 @@ ASP.NET Core [相依性插入](xref:fundamentals/dependency-injection) (DI) 提�
 
 您會在本文深入了解[內建記錄提供者](#built-in-logging-providers)，並找到[協力廠商記錄提供者](#third-party-logging-providers)的連結。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>Configuration
 
 記錄提供者設定是由一或多個記錄提供者提供：
 
@@ -707,7 +707,7 @@ Azure 記錄資料流可讓您即時檢視來自下列位置的記錄活動：
 
 ## <a name="azure-application-insights-trace-logging"></a>Azure Application Insights 追蹤記錄
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) SDK 能夠從透過 ASP.NET Core 記錄基礎結構產生的記錄收集追蹤遙測。 如需詳細資訊，請參閱 [Microsoft/ApplicationInsights-aspnetcore Wiki：記錄](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging)。
+[Application Insights](https://azure.microsoft.com/services/application-insights/) SDK 能夠從透過 ASP.NET Core 記錄基礎結構產生的記錄收集追蹤遙測。 如需詳細資訊，請參閱 [Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core) 及 [Microsoft/ApplicationInsights-aspnetcore Wiki：記錄](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Logging)。
 
 ## <a name="additional-resources"></a>其他資源
 

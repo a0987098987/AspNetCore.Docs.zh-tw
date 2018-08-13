@@ -19,18 +19,18 @@ ms.locfileid: "36278248"
 
 在典型的現代 web 應用程式中，可能會在建置程序：
 
-* 配套並縮短 JavaScript 和 CSS 的檔案。
-* 執行工具，以呼叫統合及縮製的工作，再每個組建。
-* 較不編譯或 SASS CSS 檔案。
-* CoffeeScript 或 TypeScript 檔案編譯至 JavaScript。
+* 包裝並最小化 JavaScript 和 CSS 的檔案。
+* 每次建置前執行工具以呼叫包裝與最小化工作。
+* 編譯 LESS 或 SASS 檔案為 CSS 。
+* 編譯 CoffeeScript 或 TypeScript 檔案為 JavaScript。
 
-A*工作執行器*是會自動將這些常式的開發工作，以及更多的工具。 Visual Studio 提供內建支援的兩個常用的 JavaScript 型工作 5d: [Gulp](https://gulpjs.com/)和[Grunt](using-grunt.md)。
+ 「工作執行器」是一種自動執行例行性開發工作等的工具。 Visual Studio 為兩個熱門的 JavaScript 型工作執行器提供內建支援：[Gulp](https://gulpjs.com/)和[Grunt](using-grunt.md)。
 
 ## <a name="gulp"></a>gulp
 
-Gulp 是 JavaScript 型資料流的建置工具組用戶端程式碼。 它通常用來建置環境中觸發特定事件時，資料流執行一連串的處理程序的用戶端檔案。 比方說，Gulp 可用來自動化[統合及縮製](bundling-and-minification.md)或開發環境，新的組建之前的清理。
+Gulp 是以 JavaScript 為基礎的資料流建置工具組，用於用戶端程式碼。 當在建置環境中觸發特定事件時，通常會使用它透過一系列的程序串流用戶端檔案。例如，在新的建置之前，Gulp 可用於自動化[包裝及縮小](bundling-and-minification.md)或開發環境清理。
 
-中定義一組 Gulp 工作*gulpfile.js*。 下列 JavaScript 包含 Gulp 模組，並指定檔案路徑，以參考中推出的工作：
+在 *gulpfile.js* 中定義一組 Gulp 工作。下列 JavaScript 包含 Gulp 模組，並指定要在即將到來的工作中引用的文件路徑：
 
 ```javascript
 /// <binding Clean='clean' />

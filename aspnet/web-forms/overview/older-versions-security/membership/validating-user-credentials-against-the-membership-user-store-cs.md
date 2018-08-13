@@ -40,7 +40,7 @@ ms.locfileid: "37828951"
 
 `SqlMembershipProvider`取得指定的使用者密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回的密碼，以其原始格式。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`* 傳入值`ValidateUser`成其對等的方法來加密或雜湊狀態及再比較它與從所傳回的內容資料庫。 如果儲存在資料庫中的密碼符合格式化輸入使用者的密碼，是有效的認證。
 
-讓我們更新我們的登入頁面 (~ /`Login.aspx`)，因此它會針對成員資格架構的使用者存放區提供的認證來驗證。 我們建立此登入頁面年代<a id="Tutorial02"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊，使用者名稱和密碼，以建立介面記住我] 核取方塊，並登入按鈕 （請參閱 [圖 1）。 程式碼會驗證輸入的認證，對硬式編碼 （Scott/密碼、 Jisun/密碼和 Sam/密碼） 的使用者名稱和密碼組的清單。 在  <a id="Tutorial03"> </a> [*表單驗證組態和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)我們更新了表單中儲存其他資訊的登入網頁的程式碼的教學課程驗證票證`UserData`屬性。
+讓我們更新我們的登入頁面 (~ /`Login.aspx`)，因此它會針對成員資格架構的使用者存放區提供的認證來驗證。 我們建立此登入頁面年代<a id="Tutorial02"></a>[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊，使用者名稱和密碼，以建立介面記住我] 核取方塊，並登入按鈕 （請參閱 [圖 1）。 程式碼會驗證輸入的認證，對硬式編碼 （Scott/密碼、 Jisun/密碼和 Sam/密碼） 的使用者名稱和密碼組的清單。 在  <a id="Tutorial03"></a>[*表單驗證組態和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)我們更新了表單中儲存其他資訊的登入網頁的程式碼的教學課程驗證票證`UserData`屬性。
 
 
 [![登入頁面的介面包含兩個文字方塊、 CheckBoxList 和按鈕](validating-user-credentials-against-the-membership-user-store-cs/_static/image2.png)](validating-user-credentials-against-the-membership-user-store-cs/_static/image1.png)
@@ -52,7 +52,7 @@ ms.locfileid: "37828951"
 
 [!code-csharp[Main](validating-user-credentials-against-the-membership-user-store-cs/samples/sample1.cs)]
 
-此程式碼是非常簡單。 我們會先呼叫`Membership.ValidateUser`方法並傳入提供的使用者名稱和密碼。 如果該方法會傳回 true，則使用者登入透過網站`FormsAuthentication`類別的 RedirectFromLoginPage 方法。 (如我們所述<a id="Tutorial2"> </a> [*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，`FormsAuthentication.RedirectFromLoginPage`建立表單驗證票證，並將使用者重新導向以適當的頁面。）如果認證不正確的不過，`InvalidCredentialsMessage`標籤會顯示通知使用者他們的使用者名稱或密碼不正確。
+此程式碼是非常簡單。 我們會先呼叫`Membership.ValidateUser`方法並傳入提供的使用者名稱和密碼。 如果該方法會傳回 true，則使用者登入透過網站`FormsAuthentication`類別的 RedirectFromLoginPage 方法。 (如我們所述<a id="Tutorial2"></a>[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，`FormsAuthentication.RedirectFromLoginPage`建立表單驗證票證，並將使用者重新導向以適當的頁面。）如果認證不正確的不過，`InvalidCredentialsMessage`標籤會顯示通知使用者他們的使用者名稱或密碼不正確。
 
 這樣就完成了 ！
 

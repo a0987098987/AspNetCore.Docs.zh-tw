@@ -83,7 +83,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 若要產生的防 XSRF 權杖，呼叫[ @Html.AntiForgeryToken ](https://msdn.microsoft.com/library/dd470175.aspx) MVC 檢視的方法或@AntiForgery.GetHtml從 Razor 頁面 （)。 然後，執行階段會執行下列步驟：
 
 1. 如果目前的 HTTP 要求已包含的防 XSRF 工作階段權杖 (防 XSRF cookie \_ \_RequestVerificationToken)，從它擷取安全性權杖。 如果 HTTP 要求未包含的防 XSRF 工作階段權杖或安全性權杖的擷取失敗，就會產生新的隨機的 ANTI-XSRF 權杖。
-2. 使用從上個步驟 (1) 和目前的登入的使用者的身分識別的安全性權杖產生的防 XSRF 欄位語彙基元。 (如需有關如何判斷使用者的身分識別的詳細資訊，請參閱 < **[特殊支援的案例](#_Scenarios_with_special)** 下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位的語彙基元。 (請參閱**[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。)
+2. 使用從上個步驟 (1) 和目前的登入的使用者的身分識別的安全性權杖產生的防 XSRF 欄位語彙基元。 (如需有關如何判斷使用者的身分識別的詳細資訊，請參閱 < **[特殊支援的案例](#_Scenarios_with_special)** 下一節。)此外，如果[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx)是設定，執行階段會呼叫其[GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx)方法並將傳回的字串包含在欄位的語彙基元。 (請參閱 **[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。)
 3. 如果在步驟 (1) 中產生新的防 XSRF 權杖，新的工作階段權杖將會建立包含該，並會新增至輸出的 HTTP cookie 集合。 從步驟 (2) 欄位的語彙基元會包裝在`<input type="hidden" />`項目及這個 HTML 標記會傳回值`Html.AntiForgeryToken()`或`AntiForgery.GetHtml()`。
 
 ## <a name="validating-the-tokens"></a>驗證權杖
@@ -139,7 +139,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 - `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35` （適用於 WIF SDK。)
 - `System.Security.Claims.ClaimsIdentity` （適用於.NET 4.5)。
 
-如果這些型別存在，而且目前的使用者*IIIIdentity*實作或子類別其中一種都已型別、 防 XSRF 設備將會使用身分識別提供者 （名稱識別項） 來取代產生時的使用者名稱的元組和驗證的權杖。 如果沒有這類 tuple 存在，則要求會失敗並說明開發人員如何設定來了解使用中的特定宣告為基礎的驗證機制的防 XSRF 系統發生錯誤。 請參閱**[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。
+如果這些型別存在，而且目前的使用者*IIIIdentity*實作或子類別其中一種都已型別、 防 XSRF 設備將會使用身分識別提供者 （名稱識別項） 來取代產生時的使用者名稱的元組和驗證的權杖。 如果沒有這類 tuple 存在，則要求會失敗並說明開發人員如何設定來了解使用中的特定宣告為基礎的驗證機制的防 XSRF 系統發生錯誤。 請參閱 **[組態和擴充性](#_Configuration_and_extensibility)** 節的詳細資訊。
 
 ### <a name="oauth--openid-authentication"></a>OAuth / OpenID 驗證
 

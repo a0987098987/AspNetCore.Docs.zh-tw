@@ -91,11 +91,11 @@ if (env.IsDevelopment())
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>一次重新整理在數個瀏覽器中的 web 應用程式
 
-若要選擇啟動專案時要啟動的單一網頁瀏覽器，請使用 [偵錯目標] 工具列控制項中的下拉式選單：
+若要選擇單一的 web 瀏覽器啟動啟動專案時，使用下拉式選單中的，在**偵錯目標**工具列控制項：
 
 ![F5 下拉式選單](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-若要一次開啟多個瀏覽器，請從相同的下拉式清單選擇 [瀏覽] 。 按住 CTRL 鍵以選取您想要的瀏覽器，然後按一下 [瀏覽]：
+若要一次開啟多個瀏覽器，請選擇**瀏覽...** 從相同的下拉式清單。 按住 CTRL 鍵以選取您想要瀏的覽器，然後按一下 **瀏覽**:
 
 ![一次開啟許多瀏覽器](using-browserlink/_static/open-many-browsers-at-once.png)
 
@@ -103,11 +103,11 @@ if (env.IsDevelopment())
 
 ![同步處理兩個瀏覽器範例](using-browserlink/_static/sync-with-two-browsers-example.png)
 
-將滑鼠游標停留在 [瀏覽器連結] 工具列控制項上方以查看連結到專案的瀏覽器：
+若要查看連接到專案的瀏覽器的瀏覽器連結 工具列控制項將滑鼠停留：
 
 ![暫留時的秘訣](using-browserlink/_static/hoover-tip.png)
 
-變更 Index 檢視，當您按一下 [瀏覽器連結] 重新整理按鈕時，將更新所有連結的瀏覽器：
+變更索引 檢視中，並按一下 瀏覽器連結 的 重新整理 按鈕時，系統會更新所有連線的瀏覽器：
 
 ![瀏覽器-同步處理-至-變更](using-browserlink/_static/browsers-sync-to-changes.png)
 

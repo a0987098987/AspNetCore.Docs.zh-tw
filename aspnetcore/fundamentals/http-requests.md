@@ -5,14 +5,14 @@ description: 深入了解在 ASP.NET Core 中使用 IHttpClientFactory 介面來
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 08/07/2018
 uid: fundamentals/http-requests
-ms.openlocfilehash: 87424eaea499ba7ece1e5ef88649fcbb2e297635
-ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
+ms.openlocfilehash: dd217cfed230ea92c31eeed64ec19838032dd224
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39320651"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655228"
 ---
 # <a name="initiate-http-requests"></a>初始化 HTTP 要求
 
@@ -20,7 +20,7 @@ ms.locfileid: "39320651"
 
 [IHttpClientFactory](/dotnet/api/system.net.http.ihttpclientfactory) 可以註冊並用來在應用程式中設定和建立 [HttpClient](/dotnet/api/system.net.http.httpclient) 執行個體。 它提供下列優點：
 
-* 提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。 例如，"github" 用戶端可以註冊並設定成存取 GitHub。 預設用戶端可以註冊用於其他用途。
+* 提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。 例如，您可以註冊 *github* 並設定用戶端以存取 GitHub。 預設用戶端可以註冊用於其他用途。
 * 透過委派 `HttpClient` 中的處理常式來撰寫外寄中介軟體的概念，並提供延伸模組以便 Polly 架構中介軟體利用外寄中介軟體。
 * 管理基礎 `HttpClientMessageHandler` 執行個體的共用和存留期，以避免在手動管理 `HttpClient` 存留期時，發生的常見 DNS 問題。
 * 針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。
@@ -52,15 +52,15 @@ ms.locfileid: "39320651"
 
 [!code-csharp[](http-requests/samples/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,20)]
 
-以這種方式使用 `IHttpClientFactory` 是重構現有應用程式的好方法。 它對 `HttpClient` 的使用方式沒有任何影響。 在目前建立 `HttpClient` 執行個體的位置，將那些項目取代為呼叫 `CreateClient`。
+以這種方式使用 `IHttpClientFactory` 是重構現有應用程式的好方法。 它對 `HttpClient` 的使用方式沒有任何影響。 在目前建立 `HttpClient` 執行個體的位置，將那些項目取代為呼叫 [CreateClient](/dotnet/api/system.net.http.ihttpclientfactory.createclient)。
 
 ### <a name="named-clients"></a>具名用戶端
 
-如果應用程式需要使用多個不同的 `HttpClient`，且每個使用不同的組態，可以選擇使用**具名用戶端**。 具名 `HttpClient` 的組態可以在 `Startup.ConfigureServices` 中註冊時指定。
+如果應用程式需要使用多個不同的 `HttpClient`，且每個都有不同的設定，可以選擇使用**具名用戶端**。 具名 `HttpClient` 的組態可以在 `Startup.ConfigureServices` 中註冊時指定。
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet2)]
 
-在上述程式碼中，會呼叫 `AddHttpClient`，並提供名稱 "github"。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
+在上述程式碼中，會呼叫 `AddHttpClient` 並提供名稱 *github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
 
 每次呼叫 `CreateClient` 時，會建立 `HttpClient` 的新執行個體並呼叫組態動作。
 
@@ -161,13 +161,13 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[Main](http-requests/samples/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
 
-上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 X-API-KEY 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
+上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
-在註冊期間，可以新增一或多個處理常式至 `HttpClient` 的組態。 這項工作是透過 `IHttpClientBuilder` 上的擴充方法完成。
+在註冊期間，可以新增一或多個處理常式至 `HttpClient` 的組態。 此工作是透過 [IHttpClientBuilder](/dotnet/api/microsoft.extensions.dependencyinjection.ihttpclientbuilder) 上的擴充方法完成。
 
 [!code-csharp[](http-requests/samples/Startup.cs?name=snippet5)]
 
-在上述程式碼，`ValidateHeaderHandler` 已向 DI 註冊。 處理常式**必須**在 DI 中註冊為暫時性。 註冊之後，便可以呼叫 `AddHttpMessageHandler`，並傳入處理常式的類型。
+在上述程式碼，`ValidateHeaderHandler` 已向 DI 註冊。 處理常式**必須**在 DI 中註冊為暫時性。 註冊之後，便可以呼叫 [AddHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.addhttpmessagehandler)，並傳入處理常式的類型。
 
 可以遵循應該執行的順序來註冊多個處理常式。 每個處理常式會包裝下一個處理常式，直到最終 `HttpClientHandler` 執行要求：
 
@@ -185,7 +185,7 @@ public class ValuesController : ControllerBase
 
 ### <a name="handle-transient-faults"></a>處理暫時性錯誤
 
-進行外部 HTTP 呼叫時，您可能預期發生的常見錯誤將會是暫時性。 包含一個便利的擴充方法，稱為 `AddTransientHttpErrorPolicy`，它可允許定義原則來處理暫時性錯誤。 使用此延伸模組方法設定的原則，會處理 `HttpRequestException`、HTTP 5xx 回應和 HTTP 408 回應。
+大部分的錯誤發生在外部 HTTP 呼叫是暫時性的時候。 包含一個便利的擴充方法，稱為 `AddTransientHttpErrorPolicy`，它可允許定義原則來處理暫時性錯誤。 使用此延伸模組方法設定的原則，會處理 `HttpRequestException`、HTTP 5xx 回應和 HTTP 408 回應。
 
 `AddTransientHttpErrorPolicy` 延伸模組可用於 `Startup.ConfigureServices` 內。 延伸模組能提供 `PolicyBuilder` 物件的存取，該物件已設定來處理代表可能暫時性錯誤的錯誤：
 
@@ -215,27 +215,31 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet10)]
 
-在上述程式碼中，PolicyRegistry 已新增至 `ServiceCollection`，且兩個原則已向它註冊。 為了使用來自登錄的原則，使用了 `AddPolicyHandlerFromRegistry` 方法，並傳遞要套用的原則名稱。
+在上述程式碼中，當 `PolicyRegistry` 新增至 `ServiceCollection` 時，註冊了兩個原則。 為了使用來自登錄的原則，使用了 `AddPolicyHandlerFromRegistry` 方法，並傳遞要套用的原則名稱。
 
 關於 `IHttpClientFactory` Polly 整合的詳細資訊，可以在 [Polly Wiki](https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory) 上找到。
 
 ## <a name="httpclient-and-lifetime-management"></a>HttpClient 和存留期管理
 
-每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回 `HttpClient` 的新執行個體。 每個具名用戶端會有一個 `HttpMessageHandler`。 `IHttpClientFactory` 會集合處理站所建立的 `HttpMessageHandler` 執行個體以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。 
+每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 每個具名用戶端都會有一個 [HttpMessageHandler](/dotnet/api/system.net.http.httpmessagehandler)。 `IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。
 
-處理常式的集合是需要的做法，因為每個處理常式通常會管理自己的基礎 HTTP 連線；建立比所需數目更多的處理常式可能會導致連線延遲。 有些處理常式也會保持連線無限期地開啟，這可能導致處理常式無法對 DNS 變更回應。
+將處理常式放入集區非常實用，因為處理常式通常會管理自己專屬的底層 HTTP 連線。 建立比所需數目更多的處理常式，可能會導致連線延遲。 有些處理常式也會保持連線無限期地開啟，這可能導致處理常式無法對 DNS 變更回應。
 
-預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在建立用戶端時所傳回的 `IHttpClientBuilder` 上呼叫 `SetHandlerLifetime`：
+預設處理常式存留時間為兩分鐘。 可以針對每個具名用戶端覆寫預設值。 若要覆寫它，請在於建立用戶端時所傳回的 `IHttpClientBuilder` 上呼叫 [SetHandlerLifetime](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.sethandlerlifetime)：
 
 [!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet11)]
 
+不需要處置用戶端。 處置會取消傳出的要求，並保證指定的 `HttpClient` 執行個體在呼叫 [Dispose](/dotnet/api/system.idisposable.dispose#System_IDisposable_Dispose) 之後無法使用。 `IHttpClientFactory` 會追蹤並處置 `HttpClient` 執行個體使用的資源。 `HttpClient` 執行個體通常可視為 .NET 物件，不需要處置。
+
+在開始使用 `IHttpClientFactory` 之前，讓單一 `HttpClient` 執行個體維持一段較長的時間，是很常使用的模式。 在移轉到 `IHttpClientFactory` 之後，就不再需要此模式。
+
 ## <a name="logging"></a>記錄
 
-透過 `IHttpClientFactory` 建立的用戶端會記錄所有要求的記錄訊息。 您必須在記錄組態中啟用適當的資訊層級，以查看預設記錄檔訊息。 額外的記錄功能，例如要求標頭的記錄，只會包含在追蹤層級。
+透過 `IHttpClientFactory` 建立的用戶端會記錄所有要求的記錄訊息。 在記錄設定中啟用適當的資訊層級，以查看預設記錄檔訊息。 額外的記錄功能，例如要求標頭的記錄，只會包含在追蹤層級。
 
-用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為 "MyNamedClient" 的用戶端，會記錄分類為 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler` 的訊息。 具有後置詞 "LogicalHandler" 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
+用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為 *MyNamedClient* 的用戶端會記錄分類為 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler` 的訊息。 後面加上 *LogicalHandler* 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
 
-記錄也會發生在要求處理常式管線之內。 在 "MyNamedClient" 範例的案例中，那些訊息是針對記錄檔分類 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler` 而記錄。 對於要求，這是發生在所有其他處理常式都已執行之後，並且緊接在網路上傳送要求之前。 在回應中，此記錄會包含回應傳回通過處理常式管線之前的狀態。
+記錄也會發生在要求處理常式管線之內。 在 *MyNamedClient* 範例中，那些訊息是針對記錄檔分類 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler` 而記錄。 對於要求，這是發生在所有其他處理常式都已執行之後，並且緊接在網路上傳送要求之前。 在回應中，此記錄會包含回應傳回通過處理常式管線之前的狀態。
 
 在管線內外啟用記錄，可讓您檢查其他管線處理常式所做的變更。 例如，這可能包括要求標頭的變更，或是回應狀態碼的變更。
 
@@ -245,6 +249,6 @@ public class ValuesController : ControllerBase
 
 可能需要控制用戶端使用之內部 `HttpMessageHandler` 的組態。
 
-新增具名或具型別用戶端時，會傳回 `IHttpClientBuilder`。 `ConfigurePrimaryHttpMessageHandler` 擴充方法可以用來定義委派。 委派是用來建立及設定該用戶端所使用的主要 `HttpMessageHandler`：
+新增具名或具型別用戶端時，會傳回 `IHttpClientBuilder`。 [ConfigurePrimaryHttpMessageHandler](/dotnet/api/microsoft.extensions.dependencyinjection.httpclientbuilderextensions.configureprimaryhttpmessagehandler) 擴充方法可用來定義委派。 委派是用來建立及設定該用戶端所使用的主要 `HttpMessageHandler`：
 
 [!code-csharp[Main](http-requests/samples/Startup.cs?name=snippet12)]

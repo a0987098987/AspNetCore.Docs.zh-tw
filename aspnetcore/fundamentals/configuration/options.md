@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: fd3e55ec821be336501f523550f547f6049c9937
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: ef6b0117b88c4c79771f0280267bd99993028ac8
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514748"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655416"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -116,11 +116,11 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 [!code-json[](options/sample/appsettings.json?highlight=4-7)]
 
-`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存子選項值 (*Models/MySubOptions.cs*)：
+`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：
 
 [!code-csharp[](options/sample/Models/MySubOptions.cs?name=snippet1)]
 
-頁面模型的 `OnGet` 方法會傳回字串與子選項值 (*Pages/Index.cshtml.cs*)：
+頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：
 
 [!code-csharp[](options/sample/Pages/Index.cshtml.cs?range=11)]
 
@@ -249,6 +249,70 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 > [!NOTE]
 > 所有選項都是具名執行個體。 現有的 `IConfigureOption` 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。 `IConfigureNamedOptions` 也會實作 `IConfigureOptions`。 [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) 的預設實作 ([參考來源](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) 有邏輯可適當地使用每一個。 `null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) 和 [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 使用此慣例)。
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="options-validation"></a>選項驗證
+
+選項驗證可讓您在設定選項之後驗證選項。 搭配驗證方法呼叫 `Validate`，若選項有效會傳回 `true`，若為無效則傳回 `false`：
+
+```csharp
+// Registration
+services.AddOptions<MyOptions>("optionalOptionsName")
+    .Configure(o => { }) // Configure the options
+    .Validate(o => YourValidationShouldReturnTrueIfValid(o), 
+        "custom error");
+        
+// Consumption
+var monitor = services.BuildServiceProvider()
+    .GetService<IOptionsMonitor<MyOptions>>();
+  
+try
+{
+    var options = monitor.Get("optionalOptionsName");
+} 
+catch (OptionsValidationException e) 
+{
+   // e.OptionsName returns "optionalOptionsName"
+   // e.OptionsType returns typeof(MyOptions)
+   // e.Failures returns a list of errors, which would contain 
+   //     "custom error"
+}
+```
+
+上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。 預設選項執行個體為 `Options.DefaultName`。
+
+當選項執行個體建立之後，便會執行驗證。 您的選項執行個體保證會在第一次存取時傳遞驗證。
+
+> [!IMPORTANT]
+> 選項一開始設定並驗證之後，選項驗證不會防範選項的修改。
+
+`Validate` 方法可接受 `Func<TOptions, bool>`。 若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：
+
+* 多種選項類型的驗證：`class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`
+* 取決於另一個選項類型的驗證：`public DependsOnAnotherOptionValidator(IOptions<AnotherOption> options)`
+
+`IValidateOptions` 可驗證：
+
+* 特定的具名選項執行個體。
+* 所有選項 (當 `name` 為 `null` 時)。
+
+從以下的介面實作傳回 `ValidateOptionsResult`：
+
+```csharp
+public interface IValidateOptions<TOptions> where TOptions : class
+{
+    ValidateOptionsResult Validate(string name, TOptions options);
+}
+```
+
+積極式驗證 (在啟動時快速檢錯) 和資料註解驗證已排定將在未來發行。
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
 ## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
 
 使用 [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1) 設定後置組態。 後置組態會在所有 [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) 組態都發生之後執行：
@@ -272,7 +336,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 使用 [PostConfigureAll&lt;TOptions&gt; ](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) 後置設定所有具名組態執行個體：
 
 ```csharp
-services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
+services.PostConfigureAll<MyOptions>(myOptions =>
 {
     myOptions.Option1 = "post_configured_option1_value";
 });

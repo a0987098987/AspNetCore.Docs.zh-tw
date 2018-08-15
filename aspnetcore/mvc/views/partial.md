@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2018
 uid: mvc/views/partial
-ms.openlocfilehash: 7cb20fc30609adad83cb40e91316da115817f035
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: 2223f3c6e42927def4b91ff9da58c228e5904756
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378679"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655319"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
@@ -35,7 +35,7 @@ ASP.NET Core 支援部分檢視。 部分檢視是用來跨不同的檢視共用
 
 在多個邏輯項目組成的複雜頁面中，很適合以該頁面的部分檢視處理各項目。 該頁面的各項目可和頁面的其餘項目分開檢視。 頁面本身的檢視變得更加簡易，原因是只包含整體頁面結構以及轉譯部分檢視的呼叫。
 
-ASP.NET Core MVC 控制器有 [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView) 方法，可從動作方法呼叫此方法。 Razor Pages 沒有對應的 `PartialView` 方法。
+ASP.NET Core MVC 控制器有 [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView) 方法，可從動作方法呼叫此方法。 Razor Pages 在 [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 上沒有對應的 `PartialView` 方法。
 
 ## <a name="declare-partial-views"></a>宣告部分檢視
 

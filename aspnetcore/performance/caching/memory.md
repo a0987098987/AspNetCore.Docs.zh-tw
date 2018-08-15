@@ -127,11 +127,11 @@ A`MemoryCache`執行個體可能會選擇性地指定並強制執行大小限制
 
 下列程式碼會使用`MyMemoryCache`:
 
-[！ 的程式碼 csharp [] (memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet) [](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet)]
+[!code-csharp[](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet)]
 
 可以設定快取項目的大小[大小](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.size?view=aspnetcore-2.1#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_Size)或[SetSize](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.setsize?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryExtensions_SetSize_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_System_Int64_)擴充方法：
 
-[！ 的程式碼 csharp [] (memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2 & 反白顯示 = 9、 10、 14、 15) [](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
+[!code-csharp[](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
 
 ::: moniker-end
 

@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating
 msc.type: authoredcontent
 ms.openlocfilehash: e8c46d09a7ebab19204f7c439ec4333e0c36b73e
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37828951"
@@ -227,7 +227,7 @@ Login 控制項提供兩個屬性來調整其使用者介面控制項的版面�
 
 ### <a name="determining-and-validating-the-supplied-credentials"></a>判斷及驗證提供的認證
 
-使用登入控制項[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)並[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷輸入任何其他的 Web 控制項的值 (例如`Email`我們在上一個步驟中新增的文字方塊)，使用*`LoginControlID`* `.FindControl`(「*`controlID`*") 來取得以程式設計方式參考範本中的 Web 控制項其`ID`屬性等於*`controlID`*。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
+使用登入控制項[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)並[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷輸入任何其他的 Web 控制項的值 (例如`Email`我們在上一個步驟中新增的文字方塊)，使用 *`LoginControlID`* `.FindControl`(「*`controlID`*") 來取得以程式設計方式參考範本中的 Web 控制項其`ID`屬性等於*`controlID`*。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
 
 `TextBox EmailTextBox = myLogin.FindControl("Email") as TextBox;`
 

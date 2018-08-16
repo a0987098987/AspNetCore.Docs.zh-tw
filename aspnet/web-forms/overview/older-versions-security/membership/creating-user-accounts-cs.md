@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-u
 msc.type: authoredcontent
 ms.openlocfilehash: 7caa6b614bbe6545929a9b201de7f30fe95e6481
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37842620"
@@ -28,7 +28,7 @@ ms.locfileid: "37842620"
 
 在  <a id="_msoanchor_1"> </a>[前述教學課程](creating-the-membership-schema-in-sql-server-cs.md)我們在資料庫中，而且在加入資料表、 檢視、 預存程序所需的安裝應用程式服務結構描述`SqlMembershipProvider`和`SqlRoleProvider`。 這會建立我們需要在這一系列的教學課程的其餘部分的基礎結構。 在本教學課程中我們將探討使用成員資格架構 (透過`SqlMembershipProvider`) 來建立新的使用者帳戶。 我們將了解如何以程式設計方式及透過 ASP，建立新的使用者。NET 的內建的 CreateUserWizard 控制項。
 
-除了了解如何建立新的使用者帳戶，我們也必須更新我們第一次建立中的示範網站*<a id="_msoanchor_2"></a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)* 教學課程，然後增強*<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"></a>表單驗證組態和進階主題*教學課程。 我們的示範 web 應用程式已驗證使用者的認證，對硬式編碼的使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含建立自訂的程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，對成員資格架構和移除主體和身分識別的自訂邏輯。
+除了了解如何建立新的使用者帳戶，我們也必須更新我們第一次建立中的示範網站 *<a id="_msoanchor_2"></a>[的表單驗證概觀](../introduction/an-overview-of-forms-authentication-cs.md)* 教學課程，然後增強 *<a id="https://www.asp.net/learn/security/tutorial-03-cs.aspx"></a>表單驗證組態和進階主題* 教學課程。 我們的示範 web 應用程式已驗證使用者的認證，對硬式編碼的使用者名稱/密碼組的登入頁面。 此外，`Global.asax`包含建立自訂的程式碼`IPrincipal`和`IIdentity`已驗證使用者的物件。 我們將會更新登入頁面，來驗證使用者的認證，對成員資格架構和移除主體和身分識別的自訂邏輯。
 
 讓我們開始吧 ！
 

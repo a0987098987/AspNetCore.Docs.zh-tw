@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-
 msc.type: authoredcontent
 ms.openlocfilehash: 1e35c6655506b5ec79efe8a5000e136e865854f2
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37831689"
@@ -126,7 +126,7 @@ Visual Studio 會產生之後設定 ObjectDataSource `InsertItemTemplate`， `Ed
 
 [![表示讓 supplierID 參數應該都來自供應商 FormView 控制項](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image24.png)
 
-**圖 10**： 表示*`supplierID`* 參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
+**圖 10**： 表示 *`supplierID`* 參數應該來自於`Suppliers`FormView 控制項 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
 
 
 完成 ObjectDataSource 精靈之後，GridView 會包含 BoundField 或 CheckBoxField 每個產品的資料欄位。 可讓 s 精簡這顯示只`ProductName`並`UnitPrice`BoundFields 連同`Discontinued`CheckBoxField; 此外，可讓 s 格式`UnitPrice`BoundField 使其文字格式化為貨幣。 您的 GridView 和`SuppliersProductsDataSource`ObjectDataSource s 宣告式標記看起來應該類似下列標記：
@@ -154,7 +154,7 @@ Visual Studio 會產生之後設定 ObjectDataSource `InsertItemTemplate`， `Ed
 **圖 12**： 建立 DAL 方法使用特定 SQL 陳述式 ([按一下以檢視完整大小的影像](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image32.png))
 
 
-接下來，精靈會提示我們輸入有關何種查詢來建立。 由於`DiscontinueAllProductsForSupplier(supplierID)`方法將需要更新`Products`資料庫資料表中，設定`Discontinued`欄位設為 1，指定所提供的所有產品*`supplierID`*，我們需要建立可更新資料的查詢。
+接下來，精靈會提示我們輸入有關何種查詢來建立。 由於`DiscontinueAllProductsForSupplier(supplierID)`方法將需要更新`Products`資料庫資料表中，設定`Discontinued`欄位設為 1，指定所提供的所有產品 *`supplierID`* ，我們需要建立可更新資料的查詢。
 
 
 [![選擇更新查詢類型](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image34.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image33.png)

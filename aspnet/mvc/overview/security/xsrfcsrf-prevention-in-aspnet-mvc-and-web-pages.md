@@ -10,7 +10,7 @@ msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-
 msc.type: authoredcontent
 ms.openlocfilehash: be0e8ebe521e9952d7525b581f9b91af6edca1da
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37820252"
@@ -107,7 +107,7 @@ XSRF 要求驗證*工作階段權杖*會儲存為 HTTP cookie 和目前包含其
 - 欄位的語彙基元中內嵌使用者名稱不符合目前已登入使用者的使用者名稱。
 - *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* 方法會傳回*false*。
 
-防 XSRF 設施可能也會執行額外的檢查，權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS / 宣告式驗證](#_WIF_ACS)並**[組態和擴充性](#_Configuration_and_extensibility)** 區段，如需詳細資訊。
+防 XSRF 設施可能也會執行額外的檢查，權杖產生或驗證期間，這些檢查期間發生的失敗可能會導致擲回例外狀況。 請參閱[WIF / ACS / 宣告式驗證](#_WIF_ACS) 並 **[組態和擴充性](#_Configuration_and_extensibility)** 區段，如需詳細資訊。
 
 <a id="_Scenarios_with_special"></a>
 

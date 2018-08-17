@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-fo
 msc.type: authoredcontent
 ms.openlocfilehash: 348c618fe6ec726e8087b4f3acb66cddbef1d225
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37819639"
@@ -162,7 +162,7 @@ ms.locfileid: "37819639"
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image6.png)
 
     > [!NOTE]
-    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或`http://localhost:85`。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如http://testweb1:85)。
+    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或 `http://localhost:85` 。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如 http://testweb1:85) 。
 13. 在 [**站台繫結**] 對話方塊中，按一下**關閉**。
 14. 在 **連線**窗格中，按一下**應用程式集區**。
 15. 在 **應用程式集區**窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下**基本設定**。 根據預設，應用程式集區的名稱會符合您網站的名稱 (例如**DemoSite**)。

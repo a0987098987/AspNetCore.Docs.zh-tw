@@ -36,9 +36,9 @@ ms.locfileid: "37828951"
 
 使用表單驗證的網站，使用者登入網站瀏覽登入頁面，並輸入其認證。 這些認證，然後會比較針對使用者存放區。 如果它們是有效的使用者會授與表單驗證票證，也就是安全性語彙基元，表示身分識別和訪客的真確性。
 
-若要驗證的使用者成員資格架構，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數- *`username`* 並*`password`* -，並傳回布林值，指出是否已有效認證。 如同`CreateUser`方法，在上一個教學課程中，我們檢查`ValidateUser`方法會委派設定的成員資格提供者的實際驗證。
+若要驗證的使用者成員資格架構，請使用`Membership`類別的[`ValidateUser`方法](https://msdn.microsoft.com/library/system.web.security.membership.validateuser.aspx)。 `ValidateUser`方法會採用兩個輸入參數- *`username`* 並 *`password`* -，並傳回布林值，指出是否已有效認證。 如同`CreateUser`方法，在上一個教學課程中，我們檢查`ValidateUser`方法會委派設定的成員資格提供者的實際驗證。
 
-`SqlMembershipProvider`取得指定的使用者密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回的密碼，以其原始格式。 加密或雜湊密碼`SqlMembershipProvider`轉換*`password`* 傳入值`ValidateUser`成其對等的方法來加密或雜湊狀態及再比較它與從所傳回的內容資料庫。 如果儲存在資料庫中的密碼符合格式化輸入使用者的密碼，是有效的認證。
+`SqlMembershipProvider`取得指定的使用者密碼，透過驗證提供的認證`aspnet_Membership_GetPasswordWithFormat`預存程序。 請記得，`SqlMembershipProvider`儲存使用者的密碼使用三種格式之一： 清除、 加密或雜湊。 `aspnet_Membership_GetPasswordWithFormat`預存程序傳回的密碼，以其原始格式。 加密或雜湊密碼`SqlMembershipProvider`轉換 *`password`* 傳入值`ValidateUser`成其對等的方法來加密或雜湊狀態及再比較它與從所傳回的內容資料庫。 如果儲存在資料庫中的密碼符合格式化輸入使用者的密碼，是有效的認證。
 
 讓我們更新我們的登入頁面 (~ /`Login.aspx`)，因此它會針對成員資格架構的使用者存放區提供的認證來驗證。 我們建立此登入頁面年代<a id="Tutorial02"></a>[*的表單驗證概觀*](../introduction/an-overview-of-forms-authentication-cs.md)教學課程中，兩個文字方塊，使用者名稱和密碼，以建立介面記住我] 核取方塊，並登入按鈕 （請參閱 [圖 1）。 程式碼會驗證輸入的認證，對硬式編碼 （Scott/密碼、 Jisun/密碼和 Sam/密碼） 的使用者名稱和密碼組的清單。 在  <a id="Tutorial03"></a>[*表單驗證組態和進階主題*](../introduction/forms-authentication-configuration-and-advanced-topics-cs.md)我們更新了表單中儲存其他資訊的登入網頁的程式碼的教學課程驗證票證`UserData`屬性。
 
@@ -227,7 +227,7 @@ Login 控制項提供兩個屬性來調整其使用者介面控制項的版面�
 
 ### <a name="determining-and-validating-the-supplied-credentials"></a>判斷及驗證提供的認證
 
-使用登入控制項[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)並[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷輸入任何其他的 Web 控制項的值 (例如`Email`我們在上一個步驟中新增的文字方塊)，使用 *`LoginControlID`* `.FindControl`(「*`controlID`*") 來取得以程式設計方式參考範本中的 Web 控制項其`ID`屬性等於*`controlID`*。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
+使用登入控制項[ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx)並[`Password`屬性](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx)來判斷使用者所輸入的使用者名稱和密碼認證。 若要判斷輸入任何其他的 Web 控制項的值 (例如`Email`我們在上一個步驟中新增的文字方塊)，使用 *`LoginControlID`* `.FindControl`(「*`controlID`*") 來取得以程式設計方式參考範本中的 Web 控制項其`ID`屬性等於 *`controlID`* 。 例如，若要取得的參考`Email`文字方塊中，使用下列程式碼：
 
 `TextBox EmailTextBox = myLogin.FindControl("Email") as TextBox;`
 

@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/prepa
 msc.type: authoredcontent
 ms.openlocfilehash: a9ddeda3bfe4315c835cd447f6178669797dceb2
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37803187"
@@ -168,7 +168,7 @@ Contoso 大學應用程式會使用 ASP.NET 成員資格系統和表單驗證來
 您會將開發使用者部署到測試環境和生產使用者，來預備和生產環境。 若要這樣做，您將建立兩個 SQL 指令碼，在本教學課程中，一個用於開發，一個用於生產環境，並在稍後的教學課程中，您將設定發行程序，並執行。
 
 > [!NOTE]
-> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一個從一部電腦帳戶，您必須確定雜湊的常式不產生在目的地伺服器上的不同雜湊，比在來源電腦上。 它們會產生相同的雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性**[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)** Web.config 檔案中的項目。
+> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一個從一部電腦帳戶，您必須確定雜湊的常式不產生在目的地伺服器上的不同雜湊，比在來源電腦上。 它們會產生相同的雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)** Web.config 檔案中的項目。
 
 
 使用 SQL Server Management Studio (SSMS)，或使用協力廠商工具，您可以手動建立資料部署指令碼。 本教學課程的其餘部分將說明如何在 SSMS 中，但如果您不想安裝和使用 SSMS 您可以從專案的完整版取得的指令碼，並略過的區段，您將它們儲存在方案資料夾。

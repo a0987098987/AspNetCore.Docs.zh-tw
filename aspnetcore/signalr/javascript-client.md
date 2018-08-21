@@ -9,7 +9,7 @@ ms.date: 05/29/2018
 uid: signalr/javascript-client
 ms.openlocfilehash: c13c41b0344b0c880e842f2799d6ee97bd7fff7e
 ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/17/2018
 ms.locfileid: "39095420"
@@ -31,7 +31,7 @@ SignalR JavaScript 用戶端程式庫會以傳遞[npm](https://www.npmjs.com/)�
    npm install @aspnet/signalr
   ```
 
-Npm 安裝的套件內容*node_modules\\ @aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製*signalr.js*的檔案*wwwroot\lib\signalr*資料夾。
+Npm 安裝的套件內容*node_modules\\@aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製*signalr.js*的檔案 *wwwroot\lib\signalr* 資料夾。
 
 ## <a name="use-the-signalr-javascript-client"></a>使用 SignalR JavaScript 用戶端
 

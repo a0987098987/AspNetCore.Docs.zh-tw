@@ -3,21 +3,21 @@ uid: ajax/cdn/jquery-templates/cdnjquerytemplatesbeta1
 title: jQuery 範本 Beta 1 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: f54e7adf-237d-4098-931a-1b48164c9790
 msc.legacyurl: /ajax/cdn/jquery-templates/cdnjquerytemplatesbeta1
 msc.type: content
-ms.openlocfilehash: 4cc2ba3920013c62ff34c6d5bb99aa32b944623e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 87d4ed41f47ce6f7dfc8c57484f147f295b5efd6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830169"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835022"
 ---
-<a name="jquery-templates-beta-1"></a><span data-ttu-id="f3754-102">jQuery 範本 Beta 1</span><span class="sxs-lookup"><span data-stu-id="f3754-102">jQuery Templates Beta 1</span></span>
+<a name="jquery-templates-beta-1"></a><span data-ttu-id="bb8f0-102">jQuery 範本 Beta 1</span><span class="sxs-lookup"><span data-stu-id="bb8f0-102">jQuery Templates Beta 1</span></span>
 ====================
-<span data-ttu-id="f3754-103">JQuery 範本外掛程式包含下列檔案：</span><span class="sxs-lookup"><span data-stu-id="f3754-103">The jQuery Templates plugin includes the following files:</span></span>
+<span data-ttu-id="bb8f0-103">JQuery 範本外掛程式包含下列檔案：</span><span class="sxs-lookup"><span data-stu-id="bb8f0-103">The jQuery Templates plugin includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js
 - https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js

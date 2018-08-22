@@ -3,21 +3,21 @@ uid: ajax/cdn/jquery-datatables/cdnjquerydatatables104
 title: jQuery DataTables 1.10.4 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/15/2015
 ms.assetid: a313fb9c-93c8-40ef-9c81-e1651ecaffa3
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables104
 msc.type: content
-ms.openlocfilehash: 8c8566c24e114d3abfc3b86c8fb57df7dc759f80
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 03eace40b341eeb4139d8bc10473dc85d649976f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815671"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824553"
 ---
-<a name="jquery-datatables-1104"></a><span data-ttu-id="4ffc5-102">jQuery DataTables 1.10.4</span><span class="sxs-lookup"><span data-stu-id="4ffc5-102">jQuery DataTables 1.10.4</span></span>
+<a name="jquery-datatables-1104"></a><span data-ttu-id="99cfe-102">jQuery DataTables 1.10.4</span><span class="sxs-lookup"><span data-stu-id="99cfe-102">jQuery DataTables 1.10.4</span></span>
 ====================
-<span data-ttu-id="4ffc5-103">下列適用於 jQuery DataTables 外掛程式檔案裝載在 CDN 上：</span><span class="sxs-lookup"><span data-stu-id="4ffc5-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
+<span data-ttu-id="99cfe-103">下列適用於 jQuery DataTables 外掛程式檔案裝載在 CDN 上：</span><span class="sxs-lookup"><span data-stu-id="99cfe-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.4/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.10.4/jquery.dataTables.min.js

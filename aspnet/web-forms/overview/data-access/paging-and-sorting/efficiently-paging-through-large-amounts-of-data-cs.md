@@ -10,7 +10,7 @@ msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-pa
 msc.type: authoredcontent
 ms.openlocfilehash: bb10524e7973894ea60663da3813673742ae4ab4
 ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2018
 ms.locfileid: "37825836"
@@ -160,7 +160,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 [!code-html[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample6.html)]
 
 > [!NOTE]
-> 我們將在本教學課程中，於稍後看到*`StartRowIndex`* 所提供的 ObjectDataSource 會編製索引開頭為零，而`ROW_NUMBER()`SQL Server 2005 所傳回的值編製索引從 1 開始。 因此，`WHERE`子句會傳回的記錄位置`PriceRank`必定大於*`StartRowIndex`* 且小於或等於*`StartRowIndex`*  + *`MaximumRows`*.
+> 我們將在本教學課程中，於稍後看到 *`StartRowIndex`* 所提供的 ObjectDataSource 會編製索引開頭為零，而`ROW_NUMBER()`SQL Server 2005 所傳回的值編製索引從 1 開始。 因此，`WHERE`子句會傳回的記錄位置`PriceRank`必定大於 *`StartRowIndex`* 且小於或等於 *`StartRowIndex`*  + *`MaximumRows`*.
 
 
 現在我們已討論過如何`ROW_NUMBER()`可以是用來擷取特定分頁開始的資料列索引和資料列數上限值的資料，我們現在必須實作此邏輯為 BLL 和 DAL 中的方法。

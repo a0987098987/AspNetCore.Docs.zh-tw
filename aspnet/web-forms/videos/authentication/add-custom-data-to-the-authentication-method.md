@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/add-custom-data-to-the-authentication-metho
 title: 將自訂資料新增至驗證方法 |Microsoft Docs
 author: JoeStagner
 description: Joe Stagner 會藉由設定驗證方法，將自訂資料新增至驗證票證繼續探勘的 ASP.NET 驗證...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2008
 ms.assetid: 940bdecc-ae0f-448f-a189-405efa614049
 msc.legacyurl: /web-forms/videos/authentication/add-custom-data-to-the-authentication-method
 msc.type: video
-ms.openlocfilehash: d966c036a1862185ceb06fc0ae1010e1d8b6e7ae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3c79a25b9b57311c8c5b941f1c6ab23cb1ebee42
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817456"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830200"
 ---
 <a name="add-custom-data-to-the-authentication-method"></a>將自訂資料新增至驗證方法
 ====================

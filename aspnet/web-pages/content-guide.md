@@ -3,17 +3,17 @@ uid: web-pages/content-guide
 title: WebMatrix 內容指南 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/13/2011
 ms.assetid: b558e481-775a-4aa0-bd3b-ad61e530c2d2
 msc.legacyurl: /web-pages/content-guide
 msc.type: content
-ms.openlocfilehash: 212c100c17eab8f771b83f14164e9502037e866b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e5c2edcceeda977919c1212719786630e7bb8a4f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842820"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830169"
 ---
 <a name="webmatrix-content-guide"></a>WebMatrix 內容指南
 ====================

@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/adding-validation
 title: 新增驗證 |Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 97526d908dd3b835040453b53eae76f733a01c04
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: ff39caaa736cf1b67045612b1afe081c7cf9d823
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38172189"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826840"
 ---
 <a name="adding-validation"></a>新增驗證
 ====================
@@ -77,7 +77,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援就是執行
 
 執行應用程式，並瀏覽至 */Movies* URL。
 
-按一下 **新建**連結，可新增一部新電影。 使用無效值填寫表單。 jQuery 用戶端驗證一偵測到錯誤，就會顯示錯誤訊息。
+按一下 新建**連結，可新增一部新電影。 使用無效值填寫表單。 jQuery 用戶端驗證一偵測到錯誤，就會顯示錯誤訊息。
 
 ![8_validationErrors](adding-validation/_static/image3.png)
 

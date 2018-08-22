@@ -5,12 +5,12 @@ description: 了解如何使用 Azure 金鑰保存庫的組態提供者設定應
 ms.author: riande
 ms.date: 08/01/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 6474b9f5cb9e441854565a7891c4aac7f781c810
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: 829c6c7e2750879b51bf3ce8225c6e472900f2ad
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410126"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830224"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 azure Key Vault 組態提供者
 
@@ -155,7 +155,7 @@ Configuration.Reload();
 
 ## <a name="troubleshooting"></a>疑難排解
 
-當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET 記錄基礎結構](xref:fundamentals/logging/index)。 在下列情況會造成無法載入組態：
+當應用程式無法載入組態使用的提供者時，錯誤訊息會寫入[ASP.NET Core 記錄基礎結構](xref:fundamentals/logging/index)。 在下列情況會造成無法載入組態：
 
 * 應用程式未正確設定 Azure Active Directory 中。
 * 金鑰保存庫不存在於 Azure 金鑰保存庫。

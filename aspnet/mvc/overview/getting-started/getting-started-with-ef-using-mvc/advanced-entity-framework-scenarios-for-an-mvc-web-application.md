@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-ent
 title: MVC 5 Web 應用程式 (12 / 12) 進階 Entity Framework 6 案例 |Microsoft Docs
 author: tdykstra
 description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 6 Code First 和 Visual Studio 的 ASP.NET MVC 5 應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/08/2014
 ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 82fe650712d39558668ab02b7cc410ab0540d00f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 39a06f40e51b57c0ccdd0c701b58b83c6a6be9b5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836690"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825161"
 ---
 <a name="advanced-entity-framework-6-scenarios-for-an-mvc-5-web-application-12-of-12"></a>MVC 5 Web 應用程式 (12 / 12) 的進階的 Entity Framework 6 案例
 ====================

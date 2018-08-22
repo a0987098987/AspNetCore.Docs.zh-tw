@@ -3,17 +3,17 @@ uid: single-page-application/overview/templates/breezeangular-template
 title: Breeze/Angular 範本 |Microsoft Docs
 author: madskristensen
 description: Breeze/Angular 單一頁面應用程式範本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/08/2013
 ms.assetid: db31e909-563a-4516-aadd-62aa210ac7e4
 msc.legacyurl: /single-page-application/overview/templates/breezeangular-template
 msc.type: authoredcontent
-ms.openlocfilehash: 3799c891625b28312b54ed33628748dcc1b74925
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a3e8b42cdadf99df6971a278834b1429e129ce72
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811746"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825160"
 ---
 <a name="breezeangular-template"></a>Breeze/Angular 範本
 ====================

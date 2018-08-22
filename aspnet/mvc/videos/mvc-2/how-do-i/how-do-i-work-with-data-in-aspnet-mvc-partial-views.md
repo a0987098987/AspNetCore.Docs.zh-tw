@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-vie
 title: How Do i： 使用 ASP.NET MVC 部分檢視中的資料嗎？ | Microsoft Docs
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何組織，並將資料傳遞給部分檢視的 MVC 應用程式中。 MVC 應用程式範例會建立包含網域...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/11/2009
 ms.assetid: 2f0d41d2-2860-4113-8f5e-0efdd29abf7b
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views
 msc.type: video
-ms.openlocfilehash: 5048e04d21b76696cc7f9575d0484029a768897b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f9f12579e2e0d0eb9edcc9d310e8244675e03270
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815313"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823673"
 ---
 <a name="how-do-i-work-with-data-in-aspnet-mvc-partial-views"></a>How Do i： 使用 ASP.NET MVC 部分檢視中的資料嗎？
 ====================

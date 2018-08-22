@@ -3,17 +3,17 @@ uid: single-page-application/overview/templates/breezeknockout-template
 title: Breeze/Knockout 範本 |Microsoft Docs
 author: madskristensen
 description: Breeze/Knockout 單一頁面應用程式範本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/30/2013
 ms.assetid: 3bd94827-3c59-448f-abc3-36e6df4858db
 msc.legacyurl: /single-page-application/overview/templates/breezeknockout-template
 msc.type: authoredcontent
-ms.openlocfilehash: f816563b77aaeae0ef79b31ddb4e066c9764bb51
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 006d360748674a645ceddb82017f68b0f80f041b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813480"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827227"
 ---
 <a name="breezeknockout-template"></a>Breeze/Knockout 範本
 ====================

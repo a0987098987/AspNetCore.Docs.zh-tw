@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
 title: 第 1 部分： 概觀和 檔案-> 新增專案 |Microsoft Docs
 author: jongalloway
 description: 本教學課程系列會詳細說明所有建置 ASP.NET MVC Music 市集範例應用程式所採取的步驟。 第 1 部分涵蓋概觀和 檔案-> 新專案。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: bd356ca3-5bdb-4067-9dac-c9e9923a86e8
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 57856a4a78a650e4abe872004e5be5f8f3b2dbcd
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d84a525221e40b79853be55069367134d17fb5ec
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816335"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823697"
 ---
 <a name="part-1-overview-and-file-new-project"></a>第 1 部分： 概觀和 檔案-> 新增專案
 ====================

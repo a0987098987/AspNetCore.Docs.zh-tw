@@ -3,17 +3,17 @@ uid: identity/overview/migrations/migrating-an-existing-website-from-sql-members
 title: 從 SQL 成員資格的現有網站移轉至 ASP.NET Identity |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程中說明的步驟來移轉現有的 web 應用程式與使用者建立使用新的 ASP.NET Identity 的 SQL 成員資格的角色資料...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/19/2014
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 4acb8c82c9b05de9d587466170f8fac4ef9b6dde
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 51b97ee413ea0304177d5963b5fd9d7253778d4f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812247"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826401"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>從 SQL 成員資格的現有網站移轉至 ASP.NET Identity
 ====================

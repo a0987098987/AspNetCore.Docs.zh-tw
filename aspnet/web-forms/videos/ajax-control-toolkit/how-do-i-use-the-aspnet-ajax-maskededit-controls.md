@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-maskeded
 title: '[How Do i:]使用 ASP.NET AJAX MaskedEdit 控制項嗎？ | Microsoft Docs'
 author: JoeStagner
 description: ASP.NET AJAX Control Toolkit 提供 MaskedEdit 控制項和 MaskedEditValidator 控制項同心協力提示，樣式，並驗證 d...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/04/2007
 ms.assetid: 806a8bfe-54be-4c96-8ffd-66303cc2b2f9
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-maskededit-controls
 msc.type: video
-ms.openlocfilehash: 57a6d27512912d512c6fbf538a7208370843c85b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9cfc614376354e740ab1e4da8cee1f6de4996aaf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829832"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826418"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-maskededit-controls"></a>[How Do i:]使用 ASP.NET AJAX MaskedEdit 控制項嗎？
 ====================

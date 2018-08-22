@@ -3,17 +3,17 @@ uid: web-forms/videos/data-access/adonet-data-services/data-access-layers-in-asp
 title: 在 ASP.NET 應用程式中的資料存取層 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，3，第 1 部分 Joe Stagner 會建立簡單的 ASP.NET 應用程式中使用具類型的資料集的資料存取層。 如需詳細資訊...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/07/2008
 ms.assetid: 536aa7a6-84fb-487c-a14f-6ca3eb8a4a33
 msc.legacyurl: /web-forms/videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications
 msc.type: video
-ms.openlocfilehash: 7da39466777ba4aaec0c40d813fd31750f623bf2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f084f54c32cb31c5787b073751764efbe1643fbc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838025"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835069"
 ---
 <a name="data-access-layers-in-aspnet-applications"></a>在 ASP.NET 應用程式中的資料存取層
 ====================

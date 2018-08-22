@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-mobile/cdnjquerymobile130
 title: 上的 jQuery Mobile 1.3.0 Microsoft Ajax CDN |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: 99dd9ca6-27e6-48cb-8b8e-625022e0c5a0
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile130
 msc.type: content
-ms.openlocfilehash: 92ea0fdf024ccc1e80e8ac5a1f78358ed432de43
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6c4fc67310ed301db92a1bec03adad36c7286291
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825894"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826835"
 ---
 <a name="jquery-mobile-130-on-the-microsoft-ajax-cdn"></a>上的 jQuery Mobile 1.3.0 Microsoft Ajax CDN
 ====================

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-y
 title: 從控制器 (VB) 存取您的模型資料 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: cad00de1-3c68-4ff4-a436-54236d449459
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 6b5a3e15ab5cefeb816d6f1176ce9ee1090761db
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 526f3b532a0b5c1c5c6d0cf8a9e17899300ca237
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833251"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824761"
 ---
 <a name="accessing-your-models-data-from-a-controller-vb"></a>從控制器 (VB) 存取您的模型資料
 ====================

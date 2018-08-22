@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/13/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: 6b955c2064d7d6a045594e56326e2f7df282675f
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: a02588dc98283a375e9deb7c8561c59f6d886eb0
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095303"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823716"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>傳送來自外部中樞訊息
 
@@ -27,7 +27,7 @@ SignalR 中樞會將訊息傳送至用戶端連線到 SignalR 伺服器的核心
 在 ASP.NET Core SignalR 中，您可以存取的執行個體`IHubContext`透過相依性插入。 您可以插入的執行個體`IHubContext`至控制器、 中介軟體或其他的 DI 服務。 若要將訊息傳送至用戶端使用的執行個體。
 
 > [!NOTE]
-> 這不同於 ASP.NET SignalR 來提供存取權的 GlobalHost `IHubContext`。 ASP.NET Core 已不再需要這個全域的單一相依性插入架構。
+> 這不同於 ASP.NET 4.x SignalR 用來提供存取權的 GlobalHost `IHubContext`。 ASP.NET Core 已不再需要這個全域的單一相依性插入架構。
 
 ### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>插入的執行個體`IHubContext`控制器中
 

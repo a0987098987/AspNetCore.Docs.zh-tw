@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up
 title: 使用 (VB) 的 Web 服務後端建立數值向上/向下控制項 |Microsoft Docs
 author: wenz
 description: 而不是讓使用者核取方塊中輸入值，數值向上/向下控制項 （也就存在於 Windows 和其他作業系統） 可以證明越多 c...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: afa59dfa-fef1-43d3-8fdd-aea3be36ed3c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bebf70093dacb81331c009c6642c2f2d649b8567
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bf69b3e6932df528e8ccd2348ffa6f13132f99f8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805369"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835084"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a>使用 (VB) 的 Web 服務後端建立數值向上/向下控制項
 ====================

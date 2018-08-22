@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-mo
 title: 新增模型 (C#) |Microsoft Docs
 author: Rick-Anderson
 description: 注意： 本教學課程中的更新的版本就可以使用這裡使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 更容易遵循，並示範...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 42355b95-5f1f-413e-8d16-14cdfaaefcd8
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 61ba86e4bfbb0557b34d245555bc56a320335628
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b68f857777b1b69ca401c29261211f40df253e7a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820768"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826436"
 ---
 <a name="adding-a-model-c"></a>新增模型 (C#)
 ====================
@@ -38,7 +38,7 @@ ms.locfileid: "37820768"
 
 ## <a name="adding-model-classes"></a>新增模型類別
 
-在 [**方案總管] 中**，以滑鼠右鍵按一下*模型*資料夾中，選取**新增**，然後選取**類別**。
+在 [**方案總管] 中**，以滑鼠右鍵按一下 *模型* 資料夾中，選取**新增**，然後選取**類別**。
 
 ![](adding-a-model/_static/image1.png)
 

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-
 title: 處理使用 Entity Framework 的 ASP.NET MVC 應用程式 (7 的 10) 中的並行 |Microsoft Docs
 author: tdykstra
 description: Contoso 大學範例 web 應用程式會示範如何建立使用 Entity Framework 5 Code First 和 Visual Studio 的 ASP.NET MVC 4 應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: b83f47c4-8521-4d0a-8644-e8f77e39733e
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: eadadd1ac98191d0f802dc742294938eb48d86b3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 07d4d673b7bb6bad6e9d8cbacbc965a60608db2a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809001"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824749"
 ---
 <a name="handling-concurrency-with-the-entity-framework-in-an-aspnet-mvc-application-7-of-10"></a>處理並行使用 Entity Framework 中的 ASP.NET MVC 應用程式 (7 的 10)
 ====================

@@ -3,17 +3,17 @@ uid: signalr/overview/older-versions/introduction-to-security
 title: SignalR 安全性簡介 (SignalR 1.x) |Microsoft Docs
 author: pfletcher
 description: 描述開發 SignalR 應用程式時，您必須考慮的安全性問題。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 715a4059-d307-4631-abbb-c789c95d6eb4
 msc.legacyurl: /signalr/overview/older-versions/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: cb705ccb6052297d0214deeaaeb8181e283245f3
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: 4534cd2936d5e0276dc2b0a5fde553a17540b903
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228555"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834261"
 ---
 <a name="introduction-to-signalr-security-signalr-1x"></a>SignalR 安全性簡介 (SignalR 1.x)
 ====================

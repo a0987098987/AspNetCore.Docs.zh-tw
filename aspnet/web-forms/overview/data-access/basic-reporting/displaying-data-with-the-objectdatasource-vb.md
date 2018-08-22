@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-obj
 title: 顯示與 ObjectDataSource (VB) 的資料 |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討使用這個控制項，您可以將擷取自 BLL havi 沒有先前的教學課程中建立資料繫結的 ObjectDataSource 控制項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: d62c3a63-0940-4019-874e-4a4047df0c1c
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 759403bf175cfb2d44cc53ab497c55c354733f15
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f49cbf19b090917c170b025c269f825cf486c31a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832720"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824760"
 ---
 <a name="displaying-data-with-the-objectdatasource-vb"></a>顯示資料與 ObjectDataSource (VB)
 ====================
@@ -262,7 +262,7 @@ DetailsView，像 FormView 只會顯示從 ObjectDataSource 傳回第一筆記�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

@@ -3,17 +3,17 @@ uid: whitepapers/ms03-32-issue
 title: 套用 IE 的安全性更新之後修正 「 無法使用伺服器應用程式 」 錯誤 |Microsoft Docs
 author: rick-anderson
 description: 本文件說明 MS03 32 安全性更新與修正的問題會影響 Wi-fi 上執行的 ASP.NET 1.0 應用程式的 Internet explorer 的修補程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: 1365eebb-bdf7-4a05-8d18-7f200531be55
 msc.legacyurl: /whitepapers/ms03-32-issue
 msc.type: content
-ms.openlocfilehash: 1a289379229335a9841dec48e577c19173419891
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ce2d705a93577b0c6d28f86069873c6ecd891db6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836719"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823703"
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>套用 IE 的安全性更新之後修正 「 無法使用伺服器應用程式 」 錯誤
 ====================
@@ -58,7 +58,7 @@ Microsoft Internet Explorer 的安全性修補程式 MS03-32 的安全性更新�
 
 下面的矩陣圖詳細說明平台和版本，此問題所致。
 
-| .NET Framework | 平台 | 受影響 |
+| .NET Framework | Platform | 受影響 |
 | --- | --- | --- |
 | 1.0 版 | Windows 2000 Professional | 否 |
 | 1.0 版 | Windows 2000 Server | 否 |

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with
 title: 將驗證加入至模型 |Microsoft Docs
 author: shanselman
 description: 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/14/2010
 ms.assetid: aa7b3e8e-e23d-49f1-b160-f99a7f2982bd
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part7
 msc.type: authoredcontent
-ms.openlocfilehash: f8172b63fcaa7599f5dd733271d9ea7570e3bcb1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4c7867587ba0610f0f1c23d9a0b9fbdc4040de7c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802782"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827248"
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 第 5 節： 商務邏輯 |Microsoft Docs
 author: JoeStagner
 description: 本教學課程系列會詳細說明所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 5 部分加入一些商務邏輯。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: eaef475a-ca91-47ea-a4a7-d074005ed80c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: fdb73c01d7b6076bc292c640376aa35cc5f52ea6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e18acb66dbdb3bd3e0dfa21193f617dad82afc74
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827044"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826429"
 ---
 <a name="part-5-business-logic"></a>第 5 節： 商務邏輯
 ====================

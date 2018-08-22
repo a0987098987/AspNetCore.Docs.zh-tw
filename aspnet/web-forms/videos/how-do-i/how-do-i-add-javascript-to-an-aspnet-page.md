@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
 title: '[How Do i:]將 JavaScript 新增至 ASP.NET 網頁 |Microsoft Docs'
 author: rick-anderson
 description: 在這段影片 Chris Pels 將顯示如何將 JavaScript 加入至用於用戶端頁面中，以提供更豐富且更穩固的使用者經驗的 ASP.NET 頁面...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/13/2008
 ms.assetid: 55439d0f-e555-4537-97f3-0a7bc0a4bf5b
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
 msc.type: video
-ms.openlocfilehash: 8954c89a0fbfa6f6bdf4c14f0adeff075dd43dc1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b4a3ab073c410155e0fcdd7e118b6238895eeb48
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804221"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824965"
 ---
 <a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[How Do i:]將 JavaScript 新增至 ASP.NET 網頁
 ====================

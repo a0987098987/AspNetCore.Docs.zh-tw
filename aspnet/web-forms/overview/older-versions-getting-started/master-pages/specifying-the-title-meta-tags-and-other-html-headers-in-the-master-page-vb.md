@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-t
 title: 在主版頁面 (VB) 中指定的標題、 中繼標籤及其他 HTML 標頭 |Microsoft Docs
 author: rick-anderson
 description: 查看定義各種不同的技術&lt;head&gt;主版頁面，從 [內容] 頁面中的項目。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/21/2008
 ms.assetid: ea8196f5-039d-43ec-8447-8997ad4d3900
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a34b11f5ec8836cfdffc3a08c9cae847232dfcd8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1b28e6df0e0ab25e8292b6523c9ad7482301a511
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833426"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827052"
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb"></a>指定標題、 中繼標籤及其他 HTML 標頭主版頁面 (VB)
 ====================

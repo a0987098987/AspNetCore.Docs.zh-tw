@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-f
 title: 將新欄位新增至電影模型和資料表 |Microsoft Docs
 author: Rick-Anderson
 description: 注意： 本教學課程中的更新的版本就可以使用這裡使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 更容易遵循，並示範...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/28/2012
 ms.assetid: 9ef2c4f1-a305-4e0a-9fb8-bfbd9ef331d9
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: 2435bb50bb8124cce3150ba488ad76c012107b27
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 45e6de410266af9d7909cea6d03258d2db7cb240
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840171"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826409"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>將新欄位新增至電影模型和資料表
 ====================
@@ -125,7 +125,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 有幾個方法可以解決這個錯誤：
 
-1. 讓 Entity Framework 自動卸除資料庫，並重新依據新的模型類別結構描述來建立資料庫。 這個方法會很方便，當測試資料庫上進行開發它可讓您一併調整更加快速的模型和資料庫結構描述。 它的缺點是您在資料庫中現有的資料遺失，因此您*不*想要在生產資料庫上使用這種方法 ！ 使用初始設定式，將自動植入測試資料的資料庫，通常是開發應用程式的有效方式。 如需有關 Entity Framework 資料庫初始設定式的詳細資訊，請參閱 Tom Dykstra [ASP.NET MVC/Entity Framework 教學課程](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
+1. 讓 Entity Framework 自動卸除資料庫，並重新依據新的模型類別結構描述來建立資料庫。 這個方法會很方便，當測試資料庫上進行開發它可讓您一併調整更加快速的模型和資料庫結構描述。 它的缺點是您在資料庫中現有的資料遺失，因此您 *不* 想要在生產資料庫上使用這種方法 ！ 使用初始設定式，將自動植入測試資料的資料庫，通常是開發應用程式的有效方式。 如需有關 Entity Framework 資料庫初始設定式的詳細資訊，請參閱 Tom Dykstra [ASP.NET MVC/Entity Framework 教學課程](../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)。
 2. 您可明確修改現有資料庫的結構描述，使其符合模型類別。 這種方法的優點是可以保留您的資料。 您可以手動方式或藉由建立資料庫變更指令碼來進行這項變更。
 3. 使用 Code First 移轉來更新資料庫結構描述。
 
@@ -156,7 +156,7 @@ Code First 移轉會建立另一個類別檔案中的*移轉*資料夾 (同名 *
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image13.png)
 
-按一下 **新建**連結，可新增一部新電影。 請注意，您可以新增評分。
+按一下 新建**連結，可新增一部新電影。 請注意，您可以新增評分。
 
 ![7_CreateRioII](adding-a-new-field-to-the-movie-model-and-table/_static/image14.png)
 

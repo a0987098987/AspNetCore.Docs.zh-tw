@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 設定生產環境 Web 應用程式使用生產資料庫 (VB) |Microsoft Docs
 author: rick-anderson
 description: 先前的教學課程所述，並不常見的開發和生產環境之間不同的設定資訊。 這是 es...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/23/2009
 ms.assetid: a64a7aa0-6608-449e-83bf-1ef8cceee504
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 952bdafd06143ce24e9e8beb0d6e6343400ffdc6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3d6e25de44a7c84ef0919d1cfd8ab4c6b368e0ea
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840696"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827228"
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>設定生產環境 Web 應用程式使用生產資料庫 (VB)
 ====================

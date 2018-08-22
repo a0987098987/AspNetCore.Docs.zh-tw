@@ -3,17 +3,17 @@ uid: web-pages/videos/aspnet-razor-pages/working-with-forms-part-2
 title: 使用表單 （第 2 部分） |Microsoft Docs
 author: JoeStagner
 description: 如何使用 Form 教學課程 (第 2 部分) 的視訊伴侶
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/25/2011
 ms.assetid: 2ceb5926-8326-41ba-858e-e86924b2e99b
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/working-with-forms-part-2
 msc.type: video
-ms.openlocfilehash: 6ef1c5b2100ad33e5027a4c4d730b0158061d7eb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d888d8a65d80951e2855e3194af4bad6e6d7848c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807481"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827046"
 ---
 <a name="working-with-forms-part-2"></a>使用表單 （第 2 部分）
 ====================

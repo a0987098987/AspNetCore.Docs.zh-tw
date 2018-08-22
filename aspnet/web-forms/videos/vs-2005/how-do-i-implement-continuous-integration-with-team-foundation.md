@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-implement-continuous-integration-with-tea
 title: '[How Do i:]使用 Team Foundation 實作連續整合？ | Microsoft Docs'
 author: rick-anderson
 description: 有一些在 Team Foundation Server 上運作的持續整合工具，並在這段影片中我們探討免費 Norton TeamCI 工具 avail...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/01/2007
 ms.assetid: 525c3f23-586a-4594-a2cf-efb5a1ef6898
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-implement-continuous-integration-with-team-foundation
 msc.type: video
-ms.openlocfilehash: 1bb90b2d3c37558f7917eff1a4889a196fbe40bb
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 52b5cd9b2ed2145d1b4d38d3231c7c62a65ffea9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807477"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835077"
 ---
 <a name="how-do-i-implement-continuous-integration-with-team-foundation"></a>[How Do i:]使用 Team Foundation 實作連續整合？
 ====================

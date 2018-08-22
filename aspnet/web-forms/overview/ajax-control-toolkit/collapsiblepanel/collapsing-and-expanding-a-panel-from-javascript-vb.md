@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-exp
 title: 摺疊與展開面板從 JavaScript (VB) |Microsoft Docs
 author: wenz
 description: CollapsiblePanel 控制項在 ASP.NET AJAX Control Toolkit 擴充一個面板，並提供它摺疊其內容，並將其展開的能力...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 298789b4-2964-49f5-a0a8-d4dbeb9ff2c2
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb
 msc.type: authoredcontent
-ms.openlocfilehash: da1bc6958dba99ffc5ef54fbfbc003bb26050495
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1f80a6979966a887db0557b4f1b98570e10b1ab7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812501"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835080"
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-vb"></a>摺疊與展開面板從 JavaScript (VB)
 ====================

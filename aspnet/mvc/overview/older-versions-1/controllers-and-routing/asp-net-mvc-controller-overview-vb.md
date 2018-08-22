@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controlle
 title: ASP.NET MVC 控制器概觀 (VB) |Microsoft Docs
 author: StephenWalther
 description: 在本教學課程中，Stephen walther 將向您介紹 ASP.NET MVC 控制站。 您了解如何建立新的控制站，並傳回不同類型的動作資源...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/16/2008
 ms.assetid: 94c3e5d9-a904-445e-a34e-d92fd1ca108a
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ac5e9242f494b8472e582bc76a6f4805db2f770f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 604bf4af2a46e56d9445de141fae1a1651acf47f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809219"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823662"
 ---
 <a name="aspnet-mvc-controller-overview-vb"></a>ASP.NET MVC 控制器概觀 (VB)
 ====================

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/intro-to-as
 title: ASP.NET MVC 3 (VB) 簡介 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: a1b3d789-93b4-487f-b90d-80c9c9b4f8fa
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/intro-to-aspnet-mvc-3
 msc.type: authoredcontent
-ms.openlocfilehash: 66e267642adabac9a4b4c724b06dc2658ff0ea42
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 92439a6c75e8e106d0c8c99b672dcfb1effd513f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828013"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823675"
 ---
 <a name="intro-to-aspnet-mvc-3-vb"></a>ASP.NET MVC 3 (VB) 簡介
 ====================

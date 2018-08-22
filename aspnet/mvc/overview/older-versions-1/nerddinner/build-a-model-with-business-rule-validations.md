@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-v
 title: 使用商務規則驗證建置模型 |Microsoft Docs
 author: microsoft
 description: 步驟 3 說明如何建立模型，我們可以使用這兩個查詢，並更新資料庫中我們 NerdDinner 的應用程式。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 0bc191b2-4311-479a-a83a-7f1b1c32e6fe
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
 msc.type: authoredcontent
-ms.openlocfilehash: 4bed4dd794c7c34551cd3c7543e08ed12d83505a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b735c414c629b9ff6617dbf80782d57543306c00
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836764"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827254"
 ---
 <a name="build-a-model-with-business-rule-validations"></a>使用商務規則驗證建置模型
 ====================

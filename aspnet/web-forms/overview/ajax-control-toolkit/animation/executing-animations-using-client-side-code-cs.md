@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/executing-animations-usin
 title: 執行動畫使用用戶端程式碼 (C#) |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 動畫執行...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 0270e0df-6fde-4a8f-a2cb-2cacc55143f2
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ae8c4df3c5852e9ee95f6184a86059859c56b128
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5dc5c0b49a3530988bf42d6d632a061622f0a217
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824554"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825164"
 ---
 <a name="executing-animations-using-client-side-code-c"></a>執行動畫使用用戶端程式碼 (C#)
 ====================

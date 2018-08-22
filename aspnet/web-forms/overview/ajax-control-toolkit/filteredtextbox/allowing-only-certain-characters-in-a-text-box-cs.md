@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certa
 title: 只允許特定字元在文字方塊中 (C#) |Microsoft Docs
 author: wenz
 description: ASP.NET 驗證控制項可以確保只有特定字元允許在使用者輸入。 不過這仍無法防止使用者輸入不正確...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: fd2a1c52-d717-44af-8a61-67c8279bb26e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 836c6d684c87898975c6cd98b3209663c7413a08
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d8a1e792c9cd854591fc434f28afe98e4d91dfbe
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825709"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834664"
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-c"></a>只允許特定字元在文字方塊中 (C#)
 ====================

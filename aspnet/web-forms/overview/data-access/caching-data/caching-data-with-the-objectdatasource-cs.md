@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdat
 title: 快取資料與 ObjectDataSource (C#) |Microsoft Docs
 author: rick-anderson
 description: 快取，可能表示緩慢和快速的 Web 應用程式之間的差異。 本教學課程會詳細看看在 ASP.NET 中快取的四個中的第一個...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: bd87413c-8160-4520-a8a2-43b555c4183a
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6ca84dc11eb8ecd03aee91198e74b723cfdce7c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 770b1ae92db8384a0c0b7f038b1ea994ae4c1b4c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803041"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826608"
 ---
 <a name="caching-data-with-the-objectdatasource-c"></a>快取資料與 ObjectDataSource (C#)
 ====================
@@ -172,9 +172,9 @@ ObjectDataSource 的資料，架構會要求每次標籤會顯示文字選取事
 
 只要設定幾個屬性，則可以設定為自動快取的 ASP.NET 資料快取其擷取的資料的 ObjectDataSource。 下列清單摘要說明 ObjectDataSource 的快取相關屬性：
 
-- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx)必須設為`true`來啟用快取。 預設值為 `false`。
+- [EnableCaching](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.enablecaching.aspx)必須設為`true`來啟用快取。 預設為 `false`。
 - [CacheDuration](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheduration.aspx)的時間 （秒），快取的資料量。 預設值為 0。 ObjectDataSource 會只快取的資料如果`EnableCaching`已`true`和`CacheDuration`設值小於或等於零。
-- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx)可以設定為`Absolute`或`Sliding`。 如果`Absolute`，ObjectDataSource 快取其擷取的資料，以`CacheDuration`秒; 如果`Sliding`，資料過期時，只有在尚未針對存取之後，才`CacheDuration`秒。 預設值為 `Absolute`。
+- [CacheExpirationPolicy](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cacheexpirationpolicy.aspx)可以設定為`Absolute`或`Sliding`。 如果`Absolute`，ObjectDataSource 快取其擷取的資料，以`CacheDuration`秒; 如果`Sliding`，資料過期時，只有在尚未針對存取之後，才`CacheDuration`秒。 預設為 `Absolute`。
 - [CacheKeyDependency](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.cachekeydependency.aspx)使用這個屬性，與現有的快取相依性產生關聯的 ObjectDataSource s 快取項目。 ObjectDataSource 的資料收回的項目可以是過早從快取過期及其相關聯`CacheKeyDependency`。 這個屬性通常用於關聯的 ObjectDataSource s 快取中的 SQL 快取相依性，主題會探討未來[使用 SQL 快取相依性](using-sql-cache-dependencies-cs.md)教學課程。
 
 可讓設定 s `ProductsDataSource` ObjectDataSource 快取其資料，絕對比例上 30 秒。 設定 ObjectDataSource s`EnableCaching`屬性，以`true`及其`CacheDuration`到 30 之間的屬性。 離開`CacheExpirationPolicy`屬性設定為其預設`Absolute`。
@@ -233,7 +233,7 @@ ObjectDataSource 只會快取的資料快取其值，因為我們無法以程式
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

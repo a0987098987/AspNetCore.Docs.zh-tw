@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scen
 title: 應用程式生命週期管理： 從開發到生產環境 |Microsoft Docs
 author: jrjlee
 description: 本主題將說明一家虛構公司如何管理 ASP.NET web 應用程式部署透過測試、 預備及生產環境為 par...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f97a1145-6470-4bca-8f15-ccfb25fb903c
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: 47af9504bdef294b987cdd23ab1bcefbeadd4681
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7cb9c949936c3af73d4c904d401c36d4d83f3e18
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808975"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826410"
 ---
 <a name="application-lifecycle-management-from-development-to-production"></a>應用程式生命週期管理： 從開發到生產環境
 ====================

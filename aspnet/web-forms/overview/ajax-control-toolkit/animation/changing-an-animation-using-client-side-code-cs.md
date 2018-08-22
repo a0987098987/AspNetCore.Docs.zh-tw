@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-usi
 title: 變更動畫使用用戶端程式碼 (C#) |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 動畫也可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 2bfbc5cc-f942-44b7-a62d-a29520f1da9a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9711e93ee6f119ec1825e32bdad64535435970c9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 253377ef6019a672680c6e819349357627ef111b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808952"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826599"
 ---
 <a name="changing-an-animation-using-client-side-code-c"></a>變更動畫使用用戶端程式碼 (C#)
 ====================

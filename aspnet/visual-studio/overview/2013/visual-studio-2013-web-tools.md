@@ -3,17 +3,17 @@ uid: visual-studio/overview/2013/visual-studio-2013-web-tools
 title: 實習實驗室： Visual Studio 2013 Web 工具 |Microsoft Docs
 author: rick-anderson
 description: Visual Studio 是一個絕佳的開發環境來。以.NET 為基礎的 Windows 和 web 專案。 它包含一個功能強大的文字編輯器，輕鬆地用來...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2014
 ms.assetid: 09e82351-816b-402d-acd1-0f9ac6901d16
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-tools
 msc.type: authoredcontent
-ms.openlocfilehash: 9553d3129ff4c942eacbba628d1daaf6c4e33635
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 82248efd767c1110b9a4067b7d0c0e2ecafcbef9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807524"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824753"
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a>實習實驗室： Visual Studio 2013 Web 工具
 ====================

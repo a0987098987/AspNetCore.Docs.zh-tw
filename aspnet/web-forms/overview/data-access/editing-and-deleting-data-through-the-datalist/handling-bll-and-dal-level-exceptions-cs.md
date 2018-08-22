@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datali
 title: 處理 BLL 和 DAL 層級的例外狀況 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會看到如何巧妙地向處理可編輯的 DataList 更新工作流程期間引發的例外狀況。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: f8fd58e2-f932-4f08-ab3d-fbf8ff3295d2
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f83293f7b8482c2a24c3d825e271582edaadec59
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ebaca5ea34fabe3fcd4979eab2e3f684e8e221be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812076"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830203"
 ---
 <a name="handling-bll--and-dal-level-exceptions-c"></a>處理 BLL 和 DAL 層級的例外狀況 (C#)
 ====================
@@ -145,7 +145,7 @@ GridView 和 ObjectDataSource 提供後置的層級的事件處理常式，包�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

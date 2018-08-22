@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-re
 title: 使用具有 reorderlist 的回傳 (VB) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit reorderlist 的回傳控制項提供使用者透過拖放來重新排列的清單。 已重新排列清單，每當 po...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e5b6ed70-19ed-4024-ba4f-6d78e8acdc0f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 20214db1c038f417944bd374bdaa8ce55d6d44aa
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1e2124327a36c94db8bafbdf91f767068ac7e834
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838995"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830174"
 ---
 <a name="using-postbacks-with-reorderlist-vb"></a>使用具有 reorderlist 的回傳 (VB)
 ====================

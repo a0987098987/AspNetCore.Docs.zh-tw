@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-sto
 title: 偵錯預存程序 (C#) |Microsoft Docs
 author: rick-anderson
 description: Visual Studio Professional 和 Team System 版本可讓您設定中斷點，或是 SQL Server 中的預存程序中的步驟使偵錯預存...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/03/2007
 ms.assetid: c655c324-2ffa-4c21-8265-a254d79a693d
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e1eb9f6ea7d1704061157cca6898ad8330780929
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a377dde0c4ed25aed549ca1f3b8eeeecece79517
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824208"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824734"
 ---
 <a name="debugging-stored-procedures-c"></a>偵錯預存程序 (C#)
 ====================
@@ -187,7 +187,7 @@ Visual Studio 可讓您更輕鬆地直接偵錯資料庫物件。 讓 s 看看�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](protecting-connection-strings-and-other-configuration-information-cs.md)

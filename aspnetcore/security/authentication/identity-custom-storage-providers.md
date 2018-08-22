@@ -5,12 +5,12 @@ description: 了解如何設定 ASP.NET Core 身分識別的自訂儲存體提�
 ms.author: riande
 ms.date: 05/24/2017
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 7fb64f0b911c11750946697d782488c2107a3637
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 4b210a52ae9761bb838dd5611e86ce8f71345499
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342519"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826444"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 身分識別的自訂儲存體提供者
 
@@ -237,5 +237,5 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="references"></a>參考
 
-- [ASP.NET Identity 的自訂儲存體提供者](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
+- [ASP.NET 4.x 身分識別的自訂儲存體提供者](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
 - [ASP.NET Core Identity](https://github.com/aspnet/identity) -此儲存機制包含社群維護存放區提供者的連結。

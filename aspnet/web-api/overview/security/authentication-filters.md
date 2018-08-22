@@ -3,17 +3,17 @@ uid: web-api/overview/security/authentication-filters
 title: ASP.NET Web API 2 中的驗證篩選條件 |Microsoft Docs
 author: MikeWasson
 description: 驗證篩選條件是一種元件，會驗證 HTTP 要求。 Web API 2 和 MVC 5 都支援的驗證篩選條件，但他們稍有不同...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/25/2014
 ms.assetid: b9882e53-b3ca-4def-89b0-322846973ccb
 msc.legacyurl: /web-api/overview/security/authentication-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 6cad52e0454d685c6e96746524fbbad21e1c274d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a14facad4cbd0f9be1ff7bde2667f61ec8cc2a14
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839813"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830212"
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的驗證篩選條件
 ====================

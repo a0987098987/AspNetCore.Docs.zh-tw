@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/understanding-controllers-controller-actions-and-
 title: 了解控制器、 控制器動作和動作結果 |Microsoft Docs
 author: StephenWalther
 description: 在本教學課程中，Stephen walther 將向您介紹 ASP.NET MVC 控制站。 您了解如何建立新的控制站，並傳回不同類型的動作資源...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/20/2008
 ms.assetid: 2456a5da-d376-4d45-8275-9e0dc46bf7dd
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/understanding-controllers-controller-actions-and-action-results
 msc.type: video
-ms.openlocfilehash: 7a9172a09d9be23cd5b83121cbaebdfb03386fcf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a76900ea082c4f1df1a08fa79e995f4ac2cf4537
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837551"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826420"
 ---
 <a name="understanding-controllers-controller-actions-and-action-results"></a>了解控制器、 控制器動作和動作結果
 ====================

@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-appli
 title: How Do i： 使用 HttpVerbs 屬性在 MVC 應用程式嗎？ | Microsoft Docs
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何使用 HttpVerbs 屬性來控制存取 MVC 動作。 首先，範例應用程式會透過預設共同...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/30/2009
 ms.assetid: d2488a1d-0f3f-4994-8fbe-4f59b8c9503e
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application
 msc.type: video
-ms.openlocfilehash: 2932480ba7e573e3e093ccfd69ac88e8e95df623
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d55151dc12c35c172a854d0caafe30a4f70c8c52
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809943"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826839"
 ---
 <a name="how-do-i-use-httpverbs-attributes-in-an-mvc-application"></a>How Do i： 使用 HttpVerbs 屬性在 MVC 應用程式嗎？
 ====================

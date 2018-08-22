@@ -3,17 +3,17 @@ uid: signalr/overview/performance/signalr-performance
 title: SignalR 效能 |Microsoft Docs
 author: pfletcher
 description: SignalR 效能
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: bd44d77ae6166c58addbd5817977fdc26d44c024
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ae19493c46ae9670bd200529f73b74b0c3f4db00
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839511"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825373"
 ---
 <a name="signalr-performance"></a>SignalR 效能
 ====================

@@ -3,17 +3,17 @@ uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
 title: SignalR 連線密度測試與區軸 |Microsoft Docs
 author: tfitzmac
 description: SignalR 連線密度測試與區軸
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 7a9b49cf1c52d5291cf8cf04e6c6bbb2c07805ae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: feda4906995c6a5b25de4bc54ef96b2d6803eb59
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827611"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826405"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>SignalR 連線密度測試與區軸
 ====================
@@ -57,7 +57,7 @@ ms.locfileid: "37827611"
 - **SendTimeout**： 以毫秒為單位的訊息至伺服器的逾時。 預設值為 300。
 - **ControllerUrl**： 其中一部用戶端將裝載控制站中樞的 Url。 預設值是 null （無中樞控制站）。 即使工作階段啟動; 時，控制器中樞已啟動沒有進一步中樞控制站與區軸之間的連絡方式為。
 - **NumClients**： 模擬用戶端連線到應用程式的數目。 的預設值是 1。
-- **Logfile**： 測試回合記錄檔的檔名。 預設值為 `crank.csv`。
+- **Logfile**： 測試回合記錄檔的檔名。 預設為 `crank.csv`。
 - **SampleInterval**： 以毫秒為單位的效能計數器樣本之間的時間。 預設值為 1000。
 - **SignalRInstance**： 伺服器上的效能計數器的執行個體名稱。 預設值是使用用戶端連線狀態。
 

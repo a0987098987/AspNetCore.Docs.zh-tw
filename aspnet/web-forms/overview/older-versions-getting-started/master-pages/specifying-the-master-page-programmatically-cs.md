@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-t
 title: 以程式設計方式指定主版頁面 (C#) |Microsoft Docs
 author: rick-anderson
 description: 查看設定內容頁面的主版頁面，以程式設計方式透過 PreInit 事件處理常式。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/28/2008
 ms.assetid: 7c4a3445-2440-4aee-b9fd-779c05e6abb2
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fa5de936d3b515e5c60223002fe51dbc23fed66c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58ecd01a8a18cd7dcf9eba96313e40d881d90af5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809267"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827242"
 ---
 <a name="specifying-the-master-page-programmatically-c"></a>以程式設計方式指定主版頁面 (C#)
 ====================

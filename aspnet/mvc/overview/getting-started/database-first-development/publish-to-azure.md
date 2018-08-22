@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/database-first-development/publish-to-azure
 title: 將 MVC 資料庫第一個站台發佈至 Azure |Microsoft Docs
 author: tfitzmac
 description: 您可以使用 MVC、 Entity Framework 和 ASP.NET Scaffolding，來建立 web 應用程式，提供介面給現有的資料庫。 本教學課程的里...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/22/2014
 ms.assetid: 7131f1c1-cef3-4396-ab44-ed4519676546
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/publish-to-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 0aaa8e2a586a89f6ea5eaeb4f3d280993342b2f9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 45dd2c127e3ba0644e8168e293006fa9eadd776d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835744"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830194"
 ---
 <a name="publish-mvc-database-first-site-to-azure"></a>將 MVC 資料庫第一個站台發佈至 Azure
 ====================

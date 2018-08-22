@@ -3,17 +3,17 @@ uid: web-forms/overview/getting-started/code-editing-in-web-forms-pages
 title: 程式碼編輯 Visual Studio 2013 中的 ASP.NET Web Form |Microsoft Docs
 author: Erikre
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/03/2014
 ms.assetid: 5344b74e-b888-479a-92bc-601a33bd61a2
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: c8f0184ffcec0a988dc8bc814e16936c173659c7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5bf10a78b106475ffc01b732b21088bad67eb93d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815969"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827250"
 ---
 <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Visual Studio 2013 中的程式碼編輯 ASP.NET Web Form
 ====================

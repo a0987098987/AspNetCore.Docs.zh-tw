@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-u
 title: 以動態方式控制 UpdatePanel 動畫 (VB) |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 內容...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: bea66072-59b6-42b4-98fa-211812f5925f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b93ed1c7994c7561396298d876af213ae872f787
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2a4c01ffdee20f2c7970d999b34bf1374088d4c5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803651"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824739"
 ---
 <a name="dynamically-controlling-updatepanel-animations-vb"></a>以動態方式控制 UpdatePanel 動畫 (VB)
 ====================

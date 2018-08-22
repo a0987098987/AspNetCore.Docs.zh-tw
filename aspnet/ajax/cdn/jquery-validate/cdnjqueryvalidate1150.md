@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-validate/cdnjqueryvalidate1150
 title: jQuery 驗證 1.15.0 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2016
 ms.assetid: ef09ec95-9731-4f03-a078-17d2ee38ed88
 msc.legacyurl: /ajax/cdn/jquery-validate/cdnjqueryvalidate1150
 msc.type: content
-ms.openlocfilehash: 33330dcce1a73cc6bfb543e735850ce7b0dd5640
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ec2ba2dd931e408eeddf16a8e4428f47cf991a5a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817281"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827034"
 ---
 <a name="jquery-validation-1150"></a>jQuery 驗證 1.15.0
 ====================

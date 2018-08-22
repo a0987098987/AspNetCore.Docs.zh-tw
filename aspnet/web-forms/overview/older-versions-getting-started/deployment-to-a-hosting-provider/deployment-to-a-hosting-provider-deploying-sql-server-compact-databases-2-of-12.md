@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-p
 title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-12 個 2 |Microsoft Docs
 author: tdykstra
 description: 這一系列的教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫，使用 Visual Stu...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: dc094211df77e6d3ff5eacb878be901e3552fd13
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 378bcc038335ee852cd1a6c6e545eb72c6e0c78b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803054"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824756"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server Compact 資料庫-2 / 12
 ====================
@@ -187,7 +187,7 @@ Contoso 大學應用程式會使用 ASP.NET 成員資格系統和表單驗證來
 當您第一次部署站台時，常會排除大部分或所有您建立用於測試的使用者帳戶。 在此情況下，您會將部署的系統管理員帳戶並沒有使用者帳戶。 而不是以手動方式刪除測試帳戶，您將建立新的成員資格資料庫具有只有一位系統管理員使用者帳戶，您需要在生產環境中。
 
 > [!NOTE]
-> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一個從一部電腦帳戶，您必須確定雜湊的常式不產生在目的地伺服器上的不同雜湊，比在來源電腦上。 它們會產生相同的雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性**[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)** Web.config 檔案中的項目。
+> 成員資格資料庫會儲存帳戶密碼的雜湊。 若要部署到另一個從一部電腦帳戶，您必須確定雜湊的常式不產生在目的地伺服器上的不同雜湊，比在來源電腦上。 它們會產生相同的雜湊當您使用 ASP.NET Universal Providers，只要您不要變更預設的演算法。 預設的演算法為 HMACSHA256，而且在指定**驗證**屬性 **[machineKey](https://msdn.microsoft.com/library/w8h3skw9.aspx)** Web.config 檔案中的項目。
 
 
 成員資格資料庫不由 Code First 移轉，維護，而且沒有任何自動的初始設定式 （因為沒有 School 資料庫） 植入測試帳戶的資料庫。 因此，若要提供的測試資料之前建立一個新會建立一份測試資料庫。

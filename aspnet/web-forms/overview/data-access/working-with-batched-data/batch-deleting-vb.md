@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/batch-deleting-vb
 title: 批次刪除 (VB) |Microsoft Docs
 author: rick-anderson
 description: 了解如何刪除單一作業中的多個資料庫記錄。 在使用者介面層，我們建置時建立在先前的工作階段 tut 增強型 GridView...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 4fb72f75-32ab-4bf7-a764-be20367be726
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c7a0db8708c95cc348619cadd21514f4bea2e553
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ec3560f31f2def1801f9d09b3b583de6cdabc834
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815985"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824964"
 ---
 <a name="batch-deleting-vb"></a>批次刪除 (VB)
 ====================
@@ -106,7 +106,7 @@ ms.locfileid: "37815985"
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

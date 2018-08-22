@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-create-my-own-bug-work-item
 title: '[How Do i:]建立我自己的 Bug 工作項目嗎？ | Microsoft Docs'
 author: rick-anderson
 description: 這段影片示範如何在 Visual Studio Team System 中建立您自己的 Bug 工作項目定義以供使用。 我們看到工作項目定義的 XML 檔案的方式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2007
 ms.assetid: ab0805a3-76ff-4557-8750-a24d0f79a4c9
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-create-my-own-bug-work-item
 msc.type: video
-ms.openlocfilehash: 0f90d890d19d58875f0d01b794b4331dc4291d12
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fafe6a0f4e1c525252921805e33b68638729d8bf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811279"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824351"
 ---
 <a name="how-do-i-create-my-own-bug-work-item"></a>[How Do i:]建立我自己的 Bug 工作項目嗎？
 ====================

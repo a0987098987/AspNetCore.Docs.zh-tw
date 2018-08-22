@@ -3,17 +3,17 @@ uid: ajax/cdn/cdnajax4
 title: ASP.NET Web Form 和 Ajax 4 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/28/2014
 ms.assetid: cced3924-251c-4c77-bef0-7992acbac106
 msc.legacyurl: /ajax/cdn/cdnajax4
 msc.type: content
-ms.openlocfilehash: f8e9846d7093874b1f15be27341cf6620f5cb147
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cea20aebe73ba4d8bc5c40aaef4e0e9d60d70cb9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804956"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826414"
 ---
 <a name="aspnet-web-forms-and-ajax-4"></a>ASP.NET Web Form 和 Ajax 4
 ====================

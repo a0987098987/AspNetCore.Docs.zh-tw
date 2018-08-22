@@ -3,17 +3,17 @@ uid: mvc/overview/releases/mvc51-release-notes
 title: 什麼是 ASP.NET MVC 5.1 的新功能 |Microsoft Docs
 author: microsoft
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 9a83a058-9b01-48aa-acce-ec041e694567
 msc.legacyurl: /mvc/overview/releases/mvc51-release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: d2e67f64e725e73c3bf9021295da3fe870079a45
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6cdf5ae42457ab10e30693a1b77b4aee65570be5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825644"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830581"
 ---
 <a name="whats-new-in-aspnet-mvc-51"></a>什麼是 ASP.NET MVC 5.1 的新功能
 ====================

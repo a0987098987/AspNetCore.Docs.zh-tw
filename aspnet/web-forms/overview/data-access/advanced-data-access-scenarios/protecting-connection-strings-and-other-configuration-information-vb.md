@@ -2,18 +2,18 @@
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 title: 保護連接字串和其他組態資訊 (VB) |Microsoft Docs
 author: rick-anderson
-description: ASP.NET 應用程式通常會儲存在 Web.config 檔案中的組態資訊。 其中有些資訊是機密，保證保護。 由 def。...
-ms.author: aspnetcontent
+description: ASP.NET 應用程式通常會儲存在 Web.config 檔案中的組態資訊。 其中有些資訊是機密，保證保護。 由 def...
+ms.author: riande
 ms.date: 08/03/2007
 ms.assetid: cd17dbe1-c5e1-4be8-ad3d-57233d52cef1
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7007496ad3aa137d8a6a9d4ba8e486d6b32ec295
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9713bbd983c4e922273a23356cbbb3848a8b7c50
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810900"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827023"
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>保護連接字串和其他組態資訊 (VB)
 ====================
@@ -28,7 +28,7 @@ ms.locfileid: "37810900"
 
 ASP.NET 應用程式的組態資訊通常儲存在名為 XML 檔案`Web.config`。 這些教學課程期間，我們已更新`Web.config`少數的次數。 建立時`Northwind`型別中的資料集[第一個教學課程](../introduction/creating-a-data-access-layer-vb.md)，連接字串資訊，例如自動加入至`Web.config`在`<connectionStrings>`一節。 稍後，在[主版頁面與網站導覽](../introduction/master-pages-and-site-navigation-vb.md)教學課程中，我們以手動方式更新`Web.config`，來加入`<pages>`項目會指出應該使用我們的專案中的 ASP.NET 網頁的所有`DataWebControls`佈景主題。
 
-由於`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全且隱藏未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*[圖 1] 所示的訊息。 這表示訪客不能檢視您`Web.config`只要輸入檔案 s 內容 http://www.YourServer.com/Web.config其 s 的瀏覽器網址列。
+由於`Web.config`可能包含機密資料，例如連接字串，很重要的內容`Web.config`保持安全且隱藏未經授權的檢視器。 根據預設，任何 HTTP 要求與檔案`.config`延伸模組由 ASP.NET 引擎，它會傳回*不提供這種類型的頁面*[圖 1] 所示的訊息。 這表示訪客不能檢視您`Web.config`只要輸入檔案 s 內容 http://www.YourServer.com/Web.config 其 s 的瀏覽器網址列。
 
 
 [![瀏覽 Web.config 透過瀏覽器傳回這類頁面是不會處理訊息](protecting-connection-strings-and-other-configuration-information-vb/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image1.png)
@@ -225,7 +225,7 @@ Integrated Security = True 且缺乏使用者名稱和密碼會指出，正在�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

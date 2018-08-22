@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-te
 title: 使用 Team System 的介紹管理和執行測試 |Microsoft Docs
 author: rick-anderson
 description: 在這段影片中，我們看到如何可以管理所有或各種測試情況下，使用 Visual Studio Team System 的測試管理功能。 我們也會看到...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/09/2007
 ms.assetid: e262ca69-55e5-4ec2-b278-78ee129b4649
 msc.legacyurl: /web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-team-system
 msc.type: video
-ms.openlocfilehash: 9a3a4a2248ef9c350980c7cb4541749474b1299a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1b9ea5277253395ba16b3a4480b61fb522327d75
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805942"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827050"
 ---
 <a name="introduction-to-managing-and-running-tests-with-team-system"></a>管理和執行測試使用 Team System 簡介
 ====================

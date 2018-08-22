@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-
 title: 建置自訂資料庫驅動網站導覽提供者 (C#) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 2.0 預設網站導覽提供者會將其資料擷取是靜態的 XML 檔案。 雖然以 XML 為基礎的提供者是適合許多小型和中型 siz...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 04b7591d-106f-4f05-87e9-d416cb65a8a6
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fdc6ddeac800279a638911f1f64772c49fff5449
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4db59ed13aef81e94feba61299e710bfddd78a76
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807108"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827240"
 ---
 <a name="building-a-custom-database-driven-site-map-provider-c"></a>建置自訂資料庫驅動網站導覽提供者 (C#)
 ====================
@@ -359,7 +359,7 @@ ASP.NET 2.0 s 站台對應功能包括`SiteMap`類別，幾個內建的瀏覽網
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

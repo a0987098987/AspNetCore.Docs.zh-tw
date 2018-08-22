@@ -3,17 +3,17 @@ uid: signalr/overview/security/introduction-to-security
 title: SignalR 安全性簡介 |Microsoft Docs
 author: pfletcher
 description: 描述開發 SignalR 應用程式時，您必須考慮的安全性問題。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: ed562717-8591-4936-8e10-c7e63dcb570a
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: d701d76f446d63558d7af631e10ac4479492d539
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 62f835349697d02ebe7363b00a032a5353d3dfc2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805129"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830183"
 ---
 <a name="introduction-to-signalr-security"></a>SignalR 安全性簡介
 ====================
@@ -45,7 +45,7 @@ ms.locfileid: "37805129"
 
 - [SignalR 安全性概念](#concepts)
 
-    - [驗證和授權](#authentication)
+    - [驗證與授權](#authentication)
     - [連線語彙基元](#connectiontoken)
     - [重新連線時，重新加入群組](#rejoingroup)
 - [SignalR 如何防止跨網站偽造要求](#csrf)

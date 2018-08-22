@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectabl
 title: 使用具有 (VB) 的詳細資料 detailview 之可選取主要 GridView 的主要/詳細資料 |Microsoft Docs
 author: rick-anderson
 description: 本教學課程中會有的 GridView，其資料列包含名稱和每個產品價格以及 [選取] 按鈕。 按一下 [選取] 按鈕的 particu...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 1d1a7c93-971d-4690-9c5e-dac0e5014a09
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 17885b2f4892011629e04596b24ca677de2fa8b7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0bf724741ffbc01aa7611d8b075d89827bf83777
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820920"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826431"
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>使用具有 (VB) 的詳細資料 detailview 之可選取主要 GridView 的主要/詳細資料
 ====================
@@ -159,7 +159,7 @@ GridView 的最後一個標記是：
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

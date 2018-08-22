@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-uno
 title: 建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript |Microsoft Docs
 author: microsoft
 description: 使用者清單的範例 web 應用程式示範如何建立使用 Razor 檢視引擎的 ASP.NET MVC 3 應用程式是簡單。 範例應用程式 s...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/01/2010
 ms.assetid: 658b149b-d770-46bf-8b4b-4e47cca242f3
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 136c87cba70525da53c1f74576c50c12f8759539
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f60ca3e76fda8a18da1ad83e955e5e4759f5e3af
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840459"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833848"
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>建立 MVC 3 應用程式使用 Razor 和不顯眼的 JavaScript
 ====================

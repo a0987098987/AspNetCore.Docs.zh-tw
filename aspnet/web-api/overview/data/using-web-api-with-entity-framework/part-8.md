@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-8
 title: 顯示項目詳細資料 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 75ef94b1-bbec-4681-9210-452dba816144
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 29402e70e5fcaac04972788499695ddde4b96531
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 83f291326307a4964afdd5e8b50f2c375348ed0e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832142"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825319"
 ---
 <a name="display-item-details"></a>顯示項目詳細資料
 ====================

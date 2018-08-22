@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
 title: 如何： 建立和使用中 JavaScript 類別？ | Microsoft Docs
 author: rick-anderson
 description: 在這段影片 Chris Pels 會示範如何建立類別以 JavaScript 具有功能類似於其他程式設計語言與物件導向 capabilitie...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/08/2010
 ms.assetid: 348d1bda-69e0-4cb5-a59f-a104133c2f93
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-and-use-classes-in-javascript
 msc.type: video
-ms.openlocfilehash: bc0ea2ab8aa61cc9855704b41031e602557fe8bd
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cbb0159ab181946c25c14e7ba0f3cb4e63f2252a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812462"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830125"
 ---
 <a name="how-do-i-create-and-use-classes-in-javascript"></a>如何： 建立和使用中 JavaScript 類別？
 ====================

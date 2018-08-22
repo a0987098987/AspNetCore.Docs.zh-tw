@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from
 title: 從伺服器端 (VB) 修改動畫 |Microsoft Docs
 author: wenz
 description: 動畫控制項在 ASP.NET AJAX Control Toolkit 中不只是控制項，但若要將動畫加入至控制項的整個架構。 動畫也可能...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: addcf4aa-340a-460b-9c64-506424a1f725
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5ff8685b44e7d0c2261ea7b9f1ca6397ae05ce53
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ef32c8f4846b18f11d816a64a3e4292b67b232e9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811162"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824941"
 ---
 <a name="modifying-animations-from-the-server-side-vb"></a>修改動畫從伺服器端 (VB)
 ====================

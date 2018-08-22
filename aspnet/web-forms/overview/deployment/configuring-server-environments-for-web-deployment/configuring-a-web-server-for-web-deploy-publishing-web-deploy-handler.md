@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-server-environments-for-web-deplo
 title: 設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式) |Microsoft Docs
 author: jrjlee
 description: 本主題描述如何設定 Internet Information Services (IIS) web 伺服器以支援網頁發佈和部署使用 IIS Web 部署 Han...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 90ebf911-1c46-4470-b876-1335bd0f590f
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
-ms.openlocfilehash: 3296bb9b6460bbe80782746c9d398aa67815dcee
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 13e4fdf77daf26abe837a90db9c11ecbe1957823
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833326"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833776"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>設定 Web 伺服器的 Web Deploy 發行 (Web Deploy 處理常式)
 ====================
@@ -218,7 +218,7 @@ ms.locfileid: "37833326"
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image13.png)
 
     > [!NOTE]
-    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或`http://localhost:85`。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如http://stageweb1:85)。
+    > 第一個站台繫結可讓您存取使用的 IP 位址和連接埠，在本機站台或 `http://localhost:85` 。 第二個網站繫結可讓您從使用電腦名稱在網域上其他電腦存取站台 (例如 http://stageweb1:85) 。
 13. 在 [**站台繫結**] 對話方塊中，按一下**關閉**。
 14. 在 **連線**窗格中，按一下**應用程式集區**。
 15. 在 **應用程式集區**窗格中，以滑鼠右鍵按一下您的應用程式集區的名稱，然後按一下**基本設定**。 根據預設，應用程式集區的名稱會符合您網站的名稱 (例如**DemoSite**)。

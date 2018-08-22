@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-server-environments-for-web-deplo
 title: 選擇 Web 部署的正確方法 |Microsoft Docs
 author: jrjlee
 description: 當您使用 Internet Information Services (IIS) Web Deployment Tool (Web Deploy) 2.0 或更新版本時，有三種主要的方法，可用來取得...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 787a53fd-9901-4a11-9d58-61e0509cda45
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: eb1b7d50e5d7461d760ad7a963cc70369b7a4513
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0b21852a1db2862a8452e332021b55ce7f1db423
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807047"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830970"
 ---
 <a name="choosing-the-right-approach-to-web-deployment"></a>選擇 Web 部署的正確方法
 ====================

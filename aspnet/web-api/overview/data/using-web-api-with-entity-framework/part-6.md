@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-6
 title: 建立 JavaScript 用戶端 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 20360326-b123-4b1e-abae-1d350edf4ce4
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: acadd8100b2698b4b17a750a02f875d4fd51c414
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4967e21190c34f698e9c28fd9b921f07bef2ffaf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826509"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825540"
 ---
 <a name="create-the-javascript-client"></a>建立 JavaScript 用戶端
 ====================

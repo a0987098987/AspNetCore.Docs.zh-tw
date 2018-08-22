@@ -3,17 +3,17 @@ uid: web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-a
 title: ASP.NET Web API 中的模型驗證 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/20/2012
 ms.assetid: 7d061207-22b8-4883-bafa-e89b1e7749ca
 msc.legacyurl: /web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: be681a97a65a95a6bb83196d29c60ae750a523a1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 611a6466e160387592df678b3b8556625ff8e234
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820009"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824501"
 ---
 <a name="model-validation-in-aspnet-web-api"></a>ASP.NET Web API 中的模型驗證
 ====================

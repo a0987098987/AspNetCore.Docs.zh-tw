@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton
 title: 使用 ConfirmButton 中 (C#) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit ConfirmButton 擴充項會建立 是/當使用者按一下按鈕上的任何快顯 （包含 LinkButton 控制項）。 只有當是...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: a973ed3e-400c-4925-ace2-0b086b479301
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fd0cdde5db44d1437000008f1fb5e7b13f0ca77a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 614b5b1edaa164cca30b2142d1e0c02771153403
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805232"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830154"
 ---
 <a name="using-a-confirmbutton-in-a-repeater-c"></a>使用 ConfirmButton 中 (C#)
 ====================

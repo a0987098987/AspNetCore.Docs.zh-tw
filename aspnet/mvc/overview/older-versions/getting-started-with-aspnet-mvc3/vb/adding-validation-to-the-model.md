@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-vali
 title: 將驗證加入至模型 (VB) |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置使用 Microsoft Visual Web Developer 2010 Express Service Pack 1，也就是 ASP.NET MVC Web 應用程式的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2011
 ms.assetid: 878f6c31-972d-45f4-8849-5c633b511409
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 671200c3f87e2c2c24de38b9ebadd286798b2fd7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d2b4fb9d8f673f223c923ba0705b1ea27d430f43
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811402"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825152"
 ---
 <a name="adding-validation-to-the-model-vb"></a>將驗證加入至模型 (VB)
 ====================

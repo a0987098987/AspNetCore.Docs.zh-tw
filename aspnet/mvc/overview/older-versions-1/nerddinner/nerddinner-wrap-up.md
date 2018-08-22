@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 title: NerdDinner 總結 |Microsoft Docs
 author: microsoft
 description: 這是 NerdDinner 教學課程結束時，並提供您若要深入了解的資訊。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 5c6371c0-a944-4adf-a28e-5afbdd011ca8
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
-ms.openlocfilehash: e58b187d3f25e76195be7690c865fc11d284da78
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 97381ad6fb50c94df48a1950115cfc61ee1a53d3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818229"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824712"
 ---
 <a name="nerddinner-wrap-up"></a>NerdDinner 總結
 ====================

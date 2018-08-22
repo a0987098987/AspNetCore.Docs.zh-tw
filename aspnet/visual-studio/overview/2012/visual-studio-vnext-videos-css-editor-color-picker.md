@@ -3,17 +3,17 @@ uid: visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-color-pic
 title: Visual Studio vNext 影片： CSS 編輯器色彩選擇器 |Microsoft Docs
 author: madskristensen
 description: 在這段影片中，Mads Kristensen 示範中會顯示目前的試算表中的色彩，並提供在 Visual Studio vNext CSS 編輯器色彩選擇器...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/30/2011
 ms.assetid: c0c084d3-1b12-4de1-b904-30fbbda59a30
 msc.legacyurl: /visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-color-picker
 msc.type: video
-ms.openlocfilehash: d0a2404945c05d27d5a87db3748c4a80101d4112
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0b926fd683c8b3e63ab10f54c9ffff82254529d2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805142"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824720"
 ---
 <a name="visual-studio-vnext-videos-css-editor-color-picker"></a>Visual Studio vNext 影片： CSS 編輯器色彩選擇器
 ====================

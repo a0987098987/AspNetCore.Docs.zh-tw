@@ -3,17 +3,17 @@ uid: ajax/cdn/cdnajax452
 title: ASP.NET Web Form 和 Ajax 4.5.2 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/26/2014
 ms.assetid: 0b25ecc9-b1b0-4738-ad80-09f1e33faf09
 msc.legacyurl: /ajax/cdn/cdnajax452
 msc.type: content
-ms.openlocfilehash: 7a18b5b8c333b30113bd198629c2158024b51d73
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ca37ef24772c0a37f871cb07793cf272aa4dc151
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803466"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830777"
 ---
 <a name="aspnet-web-forms-and-ajax-452"></a>ASP.NET Web Form 和 Ajax 4.5.2
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-binary-files/displaying-binary-
 title: 二進位資料顯示在資料 Web 控制項 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們看看要呈現在網頁上，包括影像檔的顯示和 [下載] 連結 f 的佈建的二進位資料的選項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/27/2007
 ms.assetid: 5cbeb9f8-5f92-4ba8-87ae-0b4d460ae6d4
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 62cc931b670931677b4e9632dccd6634715b3c71
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 50d7f8eceb4772c628f7f6ef71f110de03dd9348
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814850"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834184"
 ---
 <a name="displaying-binary-data-in-the-data-web-controls-c"></a>顯示的二進位資料，以資料 Web 控制項 (C#)
 ====================
@@ -223,7 +223,7 @@ ms.locfileid: "37814850"
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

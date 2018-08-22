@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scen
 title: 使用 AJAX 實作對應實例 |Microsoft Docs
 author: microsoft
 description: 步驟 11 顯示如何將對應的 AJAX 支援整合到我們 NerdDinner 的應用程式，讓使用者建立、 編輯或檢視以查看 l dinners...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: f731990a-0a81-4d62-81df-87d676cdedd6
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-implement-mapping-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: f8b9704e966c0211a690156555f4a272a823023a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f7de23ca46e6dc00fe8075e28068a8b3f95d02cd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825975"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834234"
 ---
 <a name="use-ajax-to-implement-mapping-scenarios"></a>使用 AJAX 實作對應實例
 ====================

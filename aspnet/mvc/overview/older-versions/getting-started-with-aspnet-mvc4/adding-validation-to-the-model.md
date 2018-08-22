@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validat
 title: 將驗證加入至模型 |Microsoft Docs
 author: Rick-Anderson
 description: 注意： 本教學課程中的更新的版本就可以使用這裡使用 ASP.NET MVC 5 和 Visual Studio 2013。 這是更安全、 更容易遵循，並示範...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/28/2012
 ms.assetid: 5d9a2999-fcc4-4c45-a018-271fddf74a3b
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 50911920ed80f09033cfc53a137a6bbba3fc62f3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 01190b7bffc0258649373f3be0c75c41af80921d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834487"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833785"
 ---
 <a name="adding-validation-to-the-model"></a>將驗證加入至模型
 ====================
@@ -73,7 +73,7 @@ ASP.NET MVC 和 Entity Framework Code First 所提供的驗證支援就是執行
 
 重新執行應用程式，並瀏覽至 */Movies* URL。
 
-按一下 **新建**連結，可新增一部新電影。 填妥表單中使用某些無效的值，然後按一下 [**建立**] 按鈕。
+按一下 新建**連結，可新增一部新電影。 填妥表單中使用某些無效的值，然後按一下 [**建立**] 按鈕。
 
 ![8_validationErrors](adding-validation-to-the-model/_static/image1.png)
 

@@ -3,17 +3,17 @@ uid: aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 title: 開始使用 OWIN 和 Katana |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/27/2013
 ms.assetid: 6dae249f-5ac6-4f6e-bc49-13bcd5a54a70
 msc.legacyurl: /aspnet/overview/owin-and-katana/getting-started-with-owin-and-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 58a3d234867821d5e23cce2f01e105dfab88ac33
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f400ec887bdee123084f582d18016fb5ed3f2165
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826655"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830924"
 ---
 <a name="getting-started-with-owin-and-katana"></a>開始使用 OWIN 和 Katana
 ====================

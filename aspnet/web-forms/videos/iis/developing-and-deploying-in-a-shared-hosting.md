@@ -3,17 +3,17 @@ uid: web-forms/videos/iis/developing-and-deploying-in-a-shared-hosting
 title: 在共用主機中開發和部署 |Microsoft Docs
 author: JoeStagner
 description: 這段影片將介紹在共用主控環境中開發 ASP.NET 應用程式來示範&quot;即時編輯&quot;和&quot;遠端的發行集 （& s)...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/09/2009
 ms.assetid: fb6b54c6-5459-4528-98a0-1fb16144836a
 msc.legacyurl: /web-forms/videos/iis/developing-and-deploying-in-a-shared-hosting
 msc.type: video
-ms.openlocfilehash: 102b18fa7c6b0d04d49389cb8a59c4eb390681e8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5930979c8e6aeb88505edb55b76b6cd72c70309a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820995"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825119"
 ---
 <a name="developing-and-deploying-in-a-shared-hosting"></a>在共用主機中開發和部署
 ====================

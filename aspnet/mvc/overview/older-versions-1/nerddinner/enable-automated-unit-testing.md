@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 title: 啟用自動化單元測試 |Microsoft Docs
 author: microsoft
 description: 步驟 12 示範如何開發自動化的單元測試，以便驗證我們 NerdDinner 的功能，並可將讓我們能夠放心進行變更的套件...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: a19ff2ce-3f7e-4358-9a51-a1403da9c63e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 2247dc2e6d22cc0d5ddba97dfe6c7d2d1b0e49be
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 74abf391bb4aab3ff0d5079e0a24ba20287e18fb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819403"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824338"
 ---
 <a name="enable-automated-unit-testing"></a>啟用自動化的單元測試
 ====================

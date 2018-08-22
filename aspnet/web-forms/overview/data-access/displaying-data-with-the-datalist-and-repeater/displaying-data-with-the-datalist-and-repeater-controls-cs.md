@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeat
 title: 使用 DataList 與重複項控制項 (C#) 顯示資料 |Microsoft Docs
 author: rick-anderson
 description: 在先前的教學課程中，我們有使用 GridView 控制項來顯示資料。 開始本教學課程中，我們建置與常見報告模式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: 0591cacc-b34b-4cf6-885e-2c9953bb0946
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6368580d43e6216ea75d3013fb13aa59d9eeb6ba
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a58a9501a546a437b44e078c628d7db010700b5c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805937"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830571"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-c"></a>使用 DataList 與重複項控制項 (C#) 顯示資料
 ====================
@@ -309,7 +309,7 @@ DataList 呈現為 HTML `<table>` ，根據預設，會顯示每個資料來源�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

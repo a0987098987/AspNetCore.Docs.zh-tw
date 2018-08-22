@@ -3,17 +3,17 @@ uid: mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to
 title: 如何升級 ASP.NET MVC 4 和 Web API 專案，以 ASP.NET MVC 5 和 Web API 2 |Microsoft Docs
 author: Rick-Anderson
 description: ASP.NET MVC 5 和 Web API 2 讓新的功能，包括屬性路由、 驗證篩選條件，以及其他更多的主機。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: db0d02d9-58e8-4a0b-8d7d-b8df8ea97b88
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 8a50c188a2283af46789739e710be69159799695
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e313fc2229026f1b11d2f6a046a8b550c08ba96b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826740"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825349"
 ---
 <a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>如何將 ASP.NET MVC 4 和 Web API 專案升級至 ASP.NET MVC 5 和 Web API 2
 ====================

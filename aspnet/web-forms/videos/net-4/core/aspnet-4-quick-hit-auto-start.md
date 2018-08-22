@@ -3,17 +3,17 @@ uid: web-forms/videos/net-4/core/aspnet-4-quick-hit-auto-start
 title: 自動啟動 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片中，您將了解新的自動啟動延展性功能可提供受控制的方法啟動應用程式集區，initializ...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/11/2009
 ms.assetid: ff2bba8e-4dbb-4b73-95fe-0bba17152ef5
 msc.legacyurl: /web-forms/videos/net-4/core/aspnet-4-quick-hit-auto-start
 msc.type: video
-ms.openlocfilehash: de8ddc85510b5ae2699cd91eb51fa80ad2db4533
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1afc9adfae0060b3c598c731d73d917c9e3f5673
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823812"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830560"
 ---
 <a name="aspnet-4-quick-hit---auto-start"></a>ASP.NET 4"快速 Hit"-自動啟動
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 title: 批次更新 (C#) |Microsoft Docs
 author: rick-anderson
 description: 了解如何更新單一作業中的多個資料庫記錄。 在使用者介面層，我們會建置的 GridView，其中每個資料列都可以讓您編輯。 在資料...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 4e849bcc-c557-4bc3-937e-f7453ee87265
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0cb55689ac3a6dc36ed18459ecece82ff0b073b7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c878056273ea821e4dd4481fa1b6f7690f22b285
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842188"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833777"
 ---
 <a name="batch-updating-c"></a>批次更新 (C#)
 ====================
@@ -286,7 +286,7 @@ GridView 會提供內建的每列的編輯功能，但不支援建立完整的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

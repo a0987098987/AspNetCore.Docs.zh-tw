@@ -3,17 +3,17 @@ uid: web-forms/videos/migrating/intro-to-aspnet-for-coldfusion-developers-adding
 title: ASP.NET for ColdFusion 開發人員簡介： 將 ASP.NET 新增至您的所有產品 |Microsoft Docs
 author: microsoft
 description: 此工作階段顯示 ColdFusion 與 ASP.NET 之間的簡單但真實世界程式碼比較。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/25/2006
 ms.assetid: 835a2484-e9e5-468e-9e43-5ae4e61531b6
 msc.legacyurl: /web-forms/videos/migrating/intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire
 msc.type: video
-ms.openlocfilehash: d880967ddb26261b6f6b38908f60b6fd54b21ada
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9e32afa1a939ecc7d50ff32d3ace8125b80bd6f8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831631"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825364"
 ---
 <a name="intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire"></a>ASP.NET for ColdFusion 開發人員簡介： 將 ASP.NET 新增至您的所有產品
 ====================

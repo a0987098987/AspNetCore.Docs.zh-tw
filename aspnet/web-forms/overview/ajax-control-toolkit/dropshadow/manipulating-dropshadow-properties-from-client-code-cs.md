@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-
 title: 操作 DropShadow 屬性，從用戶端程式碼 (C#) |Microsoft Docs
 author: wenz
 description: 自訂 DataList 的編輯介面
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: c83ca3e6-c0bf-4158-a166-40c1ab0f33da
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7255e8b2b4c3c5f1c5ebf5a05851c13c07e49c5e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f751e2378621a6ab74f9f15fe51fd18bdd8b4070
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820307"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824717"
 ---
 <a name="manipulating-dropshadow-properties-from-client-code-c"></a>操作 DropShadow 屬性，從用戶端程式碼 (C#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of
 title: 調整 DropShadow (VB) 的 Z 軸索引 |Microsoft Docs
 author: wenz
 description: DropShadow 控制項在 AJAX Control Toolkit 擴充具有延伸陰影的面板。 不過此陰影有時會與其他控制項，如安裝衝突...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: ecb004b5-82c0-44fb-bcaf-233fffac6195
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 78697f51a09dfaad315255efa23120d4c456bfea
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a900a074e1507965e7d60e8de4202de57dc6180e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829540"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825345"
 ---
 <a name="adjusting-the-z-index-of-a-dropshadow-vb"></a>調整 DropShadow (VB) 的 Z 軸索引
 ====================

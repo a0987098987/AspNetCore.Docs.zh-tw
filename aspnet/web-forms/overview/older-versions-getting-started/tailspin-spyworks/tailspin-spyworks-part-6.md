@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspi
 title: 第 6 節： ASP.NET 成員資格 |Microsoft Docs
 author: JoeStagner
 description: 本教學課程系列會詳細說明所有建置 Tailspin Spyworks 範例應用程式所採取的步驟。 第 6 部分加入 ASP.NET 成員資格。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: f70a310c-9557-4743-82cb-655265676d39
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 303c1edf548db1da9ef61d94bdd8157d6afbb2e4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c847db058bc03115210f12eeb0c3c76fecc8a31e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804416"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823596"
 ---
 <a name="part-6-aspnet-membership"></a>第 6 節： ASP.NET 成員資格
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/sql-2005/what-is-a-database
 title: 資料庫是什麼？ | Microsoft Docs
 author: microsoft
 description: 本簡介說明問題和術語的 SQL Server 初學者，就需要建立和管理資料庫，例如： SQL Server 資料庫是什麼？ 如何...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/29/2006
 ms.assetid: 560d2455-ce08-4b2a-900d-7e9ccf82e048
 msc.legacyurl: /web-forms/videos/sql-2005/what-is-a-database
 msc.type: video
-ms.openlocfilehash: ab349d6157b8db70569b2f28063c21009027b656
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 23038d2fa13e888ecdd3edc3fb0ea7f8072e1bce
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822725"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825536"
 ---
 <a name="what-is-a-database"></a>資料庫是什麼？
 ====================

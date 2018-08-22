@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-fo
 title: 如何建立 ASP.NET 動態資料應用程式中的資料表特定的自訂表單 |Microsoft Docs
 author: JoeStagner
 description: 有時候我們要不要使用預設 ASP.NET 動態資料應用程式中的 UI。 在這段影片中，我們會看到如何，以及如何我們可以關閉...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/11/2008
 ms.assetid: 14d3a727-8a1a-4950-8e8f-ce97f5b2ec1f
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application
 msc.type: video
-ms.openlocfilehash: 0f23131754cdf2bbb874cec6fffcce554b4e5bda
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cc6fa8e4305bec7a31c61b2191b158f16667a7a1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840994"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834639"
 ---
 <a name="how-to-create-table-specific-custom-forms-in-an-aspnet-dynamic-data-application"></a>如何建立 ASP.NET 動態資料應用程式中的資料表特定的自訂表單
 ====================

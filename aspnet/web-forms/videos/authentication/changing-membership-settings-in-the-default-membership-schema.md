@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/changing-membership-settings-in-the-default
 title: 變更預設成員資格結構描述中的成員資格設定 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片 Joe Stagner 會探討如何變更以符合特定需求自訂應用程式的成員資格結構描述的預設設定。 如需...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/04/2008
 ms.assetid: 7770f4b8-48fe-4c82-a7c6-02aeef4b85b5
 msc.legacyurl: /web-forms/videos/authentication/changing-membership-settings-in-the-default-membership-schema
 msc.type: video
-ms.openlocfilehash: 38c73f2a7660eacb93f0dbbf291e95fd582d9317
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e4c779307e498570ff1fb050da9128933a0a33e4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824834"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830101"
 ---
 <a name="changing-membership-settings-in-the-default-membership-schema"></a>變更預設成員資格結構描述中的成員資格設定
 ====================

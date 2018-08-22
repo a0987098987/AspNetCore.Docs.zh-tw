@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: 以佇列為主的工作模式 （使用 Azure 建置真實世界的雲端應用程式） |Microsoft Docs
 author: MikeWasson
 description: 建置真實世界雲端應用程式與 Azure 的電子書是以 Scott Guthrie 所開發的簡報為依據。 它說明 13 模式與做法，他可以...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: cc1ad51b-40c3-4c68-8620-9aaa0fd1f6cf
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
-ms.openlocfilehash: f9916e4ecbe6234ee12bcb56519e7e2c0e490972
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c454023c26d73df174a43b3a8ad6745ef8654fd2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840184"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834641"
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>以佇列為主的工作模式 （使用 Azure 建置真實世界的雲端應用程式）
 ====================

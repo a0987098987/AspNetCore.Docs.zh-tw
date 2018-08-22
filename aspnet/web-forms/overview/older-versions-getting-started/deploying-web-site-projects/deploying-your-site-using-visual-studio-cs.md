@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: 部署您的網站使用 Visual Studio (C#) |Microsoft Docs
 author: rick-anderson
 description: Visual Studio 包含部署網站的工具。 深入了解這些工具在本教學課程。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2009
 ms.assetid: cde4ee53-a5d0-4937-a54b-67877e8266c3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 38fb133a30f8b4516078b14cd67b2a0d53c7d482
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 94f4f3e0d81f3cfae141c8306731cc8eef6f0efb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810127"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823644"
 ---
 <a name="deploying-your-site-using-visual-studio-c"></a>部署您的網站使用 Visual Studio (C#)
 ====================
@@ -105,10 +105,10 @@ Visual Studio 複製網站工具是獨立的 FTP 用戶端類似的功能。 簡
 將所有必要的檔案複製到指定的遠端站台，除了 [發佈] 選項，明確地編譯應用程式。 假設 Web 應用程式專案必須明確地編譯應包括一點也不為 [發佈] 選項，僅適用於 Web 應用程式專案。 可能有點令人意外，為 [發佈] 選項也很適用於網站專案。 如中所述[*判斷哪些檔案需要部署*](determining-what-files-need-to-be-deployed-cs.md)教學課程中，網站專案可以透過稱為程序明確編譯*預先編譯*。 本教學課程著重於使用 Web Application Projects; 中的 [發佈] 選項未來的教學課程將探索預先編譯，此時我們會返回查看使用網站專案中的 [發佈] 選項。
 
 > [!NOTE]
-> I： 如何部署網站，使用複製網站工具（影片）
+> 在網站專案和 Web 應用程式專案的 Visual Studio 中，您可以使用 [發佈] 選項時，Visual Web Developer 只會提供 Web 應用程式專案的 [發佈] 選項。
 
 
-如何： 發行 Web 應用程式專案 如何： 發行網站 安裝和部署專案在 Visual Studio 中 這會顯示對話方塊提示輸入目標位置等等 （請參閱 圖 6） 的其他組態選項。 更像是複製網站工具與您可以輸入指向本機資料夾、 在 IIS 上的本機網站、 支援 FrontPage Server Extensions 或 FTP 伺服器位址的遠端網站的位置。 您可以選擇是否要部署的檔案中取代遠端 web 伺服器上的檔案或將刪除所有發行前的遠端站台上的內容。 您也可以指定是否要複製：
+讓我們看看部署使用 [發佈] 選項的書籍評論應用程式。 開始在 Visual Studio 中開啟 BookReviewsWAP （Web 應用程式專案）。 從 [發佈] 功能表選擇 [建置 BookReviewsWAP 專案]。 這會顯示對話方塊提示輸入目標位置等等 （請參閱 圖 6） 的其他組態選項。 更像是複製網站工具與您可以輸入指向本機資料夾、 在 IIS 上的本機網站、 支援 FrontPage Server Extensions 或 FTP 伺服器位址的遠端網站的位置。 您可以選擇是否要部署的檔案中取代遠端 web 伺服器上的檔案或將刪除所有發行前的遠端站台上的內容。 您也可以指定是否要複製：
 
 - 只有在專案中執行應用程式，會省略不必要的原始程式碼和專案相關的檔案所需檔案。
 - 所有的專案檔，其中包含的原始程式碼檔和 Visual Studio 專案檔，例如方案檔。

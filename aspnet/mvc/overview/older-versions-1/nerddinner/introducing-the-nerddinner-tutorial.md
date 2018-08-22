@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutoria
 title: 簡介 NerdDinner 教學課程 |Microsoft Docs
 author: shanselman
 description: 若要了解新架構的最佳方式是建置與它的一些項目。 本教學課程逐步解說如何建置使用 ASP.NET 的小，但完整的應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 397522d5-0402-4b94-b810-a2fb564f869d
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
 msc.type: authoredcontent
-ms.openlocfilehash: 9188df1eca7f488502640bc17d5034f93f4ac82c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d5efab525841b5c526aa3b656f27b1c42cc74648
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805106"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830553"
 ---
 <a name="introducing-the-nerddinner-tutorial"></a>簡介 NerdDinner 教學課程
 ====================

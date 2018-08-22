@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datali
 title: 將驗證控制項新增至 DataList 的編輯介面 (VB) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們會看到以提供更萬無一失的編輯使用者 int 時，將驗證控制項新增至 DataList 的 EditItemTemplate 是多麼...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: 6b073fc6-524d-453d-be7c-0c30986de391
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6f7df844462b016ed74430db782005931562fda5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6fe5fcba322f3d3a37b862f0a85810d8b4dda5f4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833568"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824708"
 ---
 <a name="adding-validation-controls-to-the-datalists-editing-interface-vb"></a>將驗證控制項新增至 DataList 的編輯介面 (VB)
 ====================
@@ -186,7 +186,7 @@ DataList 編輯教學課程的所有我們 ve 檢查到目前為止已經非常�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

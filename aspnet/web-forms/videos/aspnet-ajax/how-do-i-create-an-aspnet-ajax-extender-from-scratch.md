@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-create-an-aspnet-ajax-extender-from-s
 title: '[How Do i:]從頭開始建立 ASP.NET AJAX 擴充項？ | Microsoft Docs'
 author: rick-anderson
 description: 了解如何建立標準的 ASP.NET 伺服器控制項的 ASP.NET AJAX 擴充項。 我們會示範如何新增伺服器端屬性與用戶端 JavaScript...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/01/2007
 ms.assetid: 526b4ec1-4a80-4fae-bf0d-af5cb78f5d02
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-create-an-aspnet-ajax-extender-from-scratch
 msc.type: video
-ms.openlocfilehash: 4e82ac4351e7af361140d38f79fb3a1bfde5834a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c9e2b3e29c7fd907679c97277c243bd12b4bdff9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810065"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824512"
 ---
 <a name="how-do-i-create-an-aspnet-ajax-extender-from-scratch"></a>[How Do i:]從頭開始建立 ASP.NET AJAX 擴充項？
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-p
 title: 使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server 資料庫更新-11 小時，共 12 |Microsoft Docs
 author: tdykstra
 description: 這一系列的教學課程會示範如何部署 （發行） 的 ASP.NET web 應用程式專案，其中包含 SQL Server Compact 資料庫，使用 Visual Stu...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: 5e2bb092-cb22-4511-ad0a-22ae12dd99b3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: c744bc54c8ce12820d1e1388ac7ab2db814ff031
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2018b58207365a0a3829f1f359d46d765aad0a77
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816623"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824549"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-a-sql-server-database-update---11-of-12"></a>使用 SQL Server Compact 使用 Visual Studio 或 Visual Web Developer 將 ASP.NET Web 應用程式部署： 部署 SQL Server 資料庫更新-11 小時，共 12
 ====================

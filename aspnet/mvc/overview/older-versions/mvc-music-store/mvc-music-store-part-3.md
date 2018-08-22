@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 title: 第 3 部分： 檢視和 ViewModels |Microsoft Docs
 author: jongalloway
 description: 本教學課程系列會詳細說明所有建置 ASP.NET MVC Music 市集範例應用程式所採取的步驟。 第 3 部分涵蓋檢視和 ViewModels。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 94297aa0-1f2d-4d72-bbcb-63f64653e0c0
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 8fd89c2a448877bf13a7828f545ffcd400f63bb1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 828ff18abcc5932f82be71a45ebde589eeb051fa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837406"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824895"
 ---
 <a name="part-3-views-and-viewmodels"></a>第 3 部分： 檢視和 ViewModels
 ====================
@@ -214,7 +214,7 @@ MvcMusicStore Assets.zip 可在內容目錄中包含更新過的 CSS 檔案和�
 
 ![](mvc-music-store-part-3/_static/image18.png)
 
-在"foreach"迴圈，Visual Web Developer 知道的每個項目型別的內容類型，所以，我們看到 IntelliSence 每個內容類型的類型。
+在"foreach"迴圈，Visual Web Developer 知道的每個項目型別的內容類型，因此我們會看到 IntelliSense 為每個內容類型的類型。
 
 ![](mvc-music-store-part-3/_static/image19.png)
 

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/admin/recovering-and-changing-pa
 title: 復原及變更密碼 (VB) |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 包含兩個 Web 控制項，可協助復原及變更密碼。 Provider 控制項可讓造訪者得以復原他遺失的 pa...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2008
 ms.assetid: f9adcb5d-6d70-4885-a3bf-ed95efb4da1a
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bb52204b58bcdbb3d03390868e52b8a6f74df5e4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c60433f800ccb2dbaaae49421c6cde1431fef528
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822903"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834594"
 ---
 <a name="recovering-and-changing-passwords-vb"></a>復原及變更密碼 (VB)
 ====================

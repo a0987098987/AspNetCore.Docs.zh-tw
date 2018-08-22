@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-work-with-nested-master-pages-to-create-
 title: '[How Do i:]使用巢狀主版頁面建立標準的內容版面配置 |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 將顯示如何使用巢狀主版頁面建立個別的主版頁面代表不同標準內容版面配置 w...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/19/2008
 ms.assetid: c9af2298-7b95-4a5d-af1c-4f3589a2a8da
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts
 msc.type: video
-ms.openlocfilehash: ed99a390d076298761a2982c44ff14253eeb6a32
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9c86ec545e0b70007768a45c7bf61bd46bacbb8d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816901"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835020"
 ---
 <a name="how-do-i-work-with-nested-master-pages-to-create-standard-content-layouts"></a>[How Do i:]使用巢狀主版頁面建立標準的內容版面配置
 ====================

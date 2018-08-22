@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-
 title: '[How Do i:]使用階層式樣式表的頁面配置嗎？ | Microsoft Docs'
 author: rick-anderson
 description: 在這段影片中我們了解如何使用&amp;l t; div&amp;gt; 中階層式樣式表 (CSS) 來建立 web p 的強固且更高的效能結合項目...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/05/2007
 ms.assetid: c812231d-e811-4048-9922-b34df1d0f300
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
 msc.type: video
-ms.openlocfilehash: 5b741f57837e3747078df8210c471589164324b9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4ec1f66065d27fcf1b10ffca0b3c899a417ecc53
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820781"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830126"
 ---
 <a name="how-do-i-use-cascading-style-sheets-for-web-page-layout"></a>[How Do i:]使用階層式樣式表的頁面配置嗎？
 ====================

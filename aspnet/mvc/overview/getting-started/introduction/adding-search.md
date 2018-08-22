@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/adding-search
 title: 搜尋 |Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2015
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: afa6a8280cab93ea75203228dd735971017492a0
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 70a9b08a76a07350bac696f1c74e6397d2aa6ee0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38211769"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834591"
 ---
 <a name="search"></a>搜尋
 ====================

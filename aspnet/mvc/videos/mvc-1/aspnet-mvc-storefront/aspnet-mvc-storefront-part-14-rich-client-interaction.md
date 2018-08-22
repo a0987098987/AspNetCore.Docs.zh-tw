@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-c
 title: ASP.NET MVC 店面第 14 節： 豐富型用戶端互動 |Microsoft Docs
 author: robconery
 description: 豐富型用戶端互動特別著重於 AJAX。 Rob Conery 具有詳實記載在開發過程中每個步驟，在他的部落格上。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/10/2008
 ms.assetid: 28e3602f-34f8-4123-bf6d-235857202b5e
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-client-interaction
 msc.type: video
-ms.openlocfilehash: 664bbc9002a97ddcc19b93a23d4a41dcefda0876
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 29997160133a20e99cbfa924839c52f91f18ddb5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818530"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830973"
 ---
 <a name="aspnet-mvc-storefront-part-14-rich-client-interaction"></a>ASP.NET MVC 店面第 14 節： 豐富型用戶端互動
 ====================

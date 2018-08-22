@@ -3,17 +3,17 @@ uid: visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and
 title: 實習實驗室： 一個 ASP.NET： 整合 ASP.NET Web Form、 MVC 和 Web API |Microsoft Docs
 author: rick-anderson
 description: ASP.NET 是用於建置網站、 應用程式和服務使用特製化的技術，例如 MVC、 Web API 等的架構。 與延伸 ASP.NET h...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2014
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 276207a6e7d2388ce53778928665c35de9327318
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b6ac0dca92ab3d75eb871099882dcea549264354
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837301"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835030"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>實習實驗室： 一個 ASP.NET： 整合 ASP.NET Web Form、 MVC 和 Web API
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-web-forms-vnext/aspnet-and-web-tools-20122
 title: ASP.NET 和 Web 工具 2012.2 |Microsoft Docs
 author: jongalloway
 description: 符合新的 ASP.NET 和 Web 工具 2012.2 版本 ！ 此版本包含了一堆最棒的新功能，包括專案範本、 web 工具等等。 Jo...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: ca7458bd-b238-4633-a8b4-468a4c300acc
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext/aspnet-and-web-tools-20122
 msc.type: video
-ms.openlocfilehash: db51918b6924a2247ccfb00cee29167bc8ccf0a8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0753a4708f4290eee525208b86e302d7b232bedc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808764"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824924"
 ---
 <a name="aspnet-and-web-tools-20122"></a>ASP.NET 和 Web 工具 2012.2
 ====================

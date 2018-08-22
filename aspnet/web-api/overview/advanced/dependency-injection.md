@@ -3,17 +3,17 @@ uid: web-api/overview/advanced/dependency-injection
 title: ASP.NET Web API 2 中的相依性插入 |Microsoft Docs
 author: MikeWasson
 description: 本教學課程會示範如何插入您的 ASP.NET Web API 控制器中的相依性。 在教學課程 Web API 2 Unity 應用程式區塊中使用的軟體版本...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/20/2014
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: a470c778fd5998006a0bf8edb08b62a75d72c48c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 41db1af79ed63ff4dd12be37e9cc76e16f1bf5e4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802671"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830530"
 ---
 <a name="dependency-injection-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的相依性插入
 ====================
@@ -33,7 +33,7 @@ ms.locfileid: "37802671"
 
 ## <a name="what-is-dependency-injection"></a>相依性插入是什麼？
 
-A*相依性*是另一個物件所需要的任何物件。 比方說，是很常見來定義[存放庫](http://martinfowler.com/eaaCatalog/repository.html)可處理的資料存取。 讓我們舉例說明。 首先，我們會定義領域模型：
+「相依性」是另一個物件所需的任何物件。 比方說，是很常見來定義[存放庫](http://martinfowler.com/eaaCatalog/repository.html)可處理的資料存取。 讓我們舉例說明。 首先，我們會定義領域模型：
 
 [!code-csharp[Main](dependency-injection/samples/sample1.cs)]
 

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with
 title: 新增控制器 |Microsoft Docs
 author: shanselman
 description: 如果本教學課程，可在此處使用 Visual Studio 2013 更新的版本。 新的教學課程會使用 ASP.NET MVC 5，可提供許多增強功能，透過 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/14/2010
 ms.assetid: ff03dcc0-da97-458d-838f-0823e7482642
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
 msc.type: authoredcontent
-ms.openlocfilehash: afe1182bca0fe58e1df162c5027df35992eeef38
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 856b7d98ac8bd30982d81b0609bb9c1288e07e49
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809906"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830149"
 ---
 <a name="adding-a-controller"></a>新增控制器
 ====================

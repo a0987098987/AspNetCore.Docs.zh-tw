@@ -3,17 +3,17 @@ uid: web-forms/overview/performance-and-caching/using-asynchronous-methods-in-as
 title: 使用 ASP.NET 4.5 中的非同步方法 |Microsoft Docs
 author: Rick-Anderson
 description: 本教學課程將教導您建置非同步 ASP.NET Web Forms 應用程式使用 Visual Studio Express 2012 for Web，也就是一個免費的基本概念...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/06/2012
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 94adc03eeba61310d60ca88a0495c5a2e5dc4cf6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5e5fe83e802980a5783c3d77454d5fb0ee7d5a91
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819298"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830104"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>使用 ASP.NET 4.5 中的非同步方法
 ====================

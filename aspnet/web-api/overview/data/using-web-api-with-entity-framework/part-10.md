@@ -3,17 +3,17 @@ uid: web-api/overview/data/using-web-api-with-entity-framework/part-10
 title: 將應用程式發佈至 Azure 的 Azure App Service |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/16/2014
 ms.assetid: 10fd812b-94d6-4967-be97-a31ce9c45e2c
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-10
 msc.type: authoredcontent
-ms.openlocfilehash: 66dde7b54ce084eed873afae56fd686d0dc8795f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5c1a70ceded85681046065881f62c5c95c5d8740
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808223"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825106"
 ---
 <a name="publish-the-app-to-azure-azure-app-service"></a>將應用程式發佈至 Azure 的 Azure App Service
 ====================

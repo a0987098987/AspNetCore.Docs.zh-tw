@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/wrapping-database-
 title: 包裝資料庫修改的交易 (C#) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討更新、 刪除和插入的資料批次的四個中的第一個。 在本教學課程中我們了解如何讓資料庫交易...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: b45fede3-c53a-4ea1-824b-20200808dbae
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a87ba758abd6b3e89be4f5aa64d658b734f99d9e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ab1ffa147545ab0d4fa0a3cce6f7dca91dfe3ffb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810921"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824951"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-c"></a>資料庫修改包裝在交易中 (C#)
 ====================
@@ -250,7 +250,7 @@ SQL 陳述式，用來建立、 認可及回復時撰寫 SQL 指令碼或建立�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

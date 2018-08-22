@@ -4,17 +4,17 @@ title: ASP.NET API 參考 |Microsoft Docs
 author: rick-anderson
 description: 適用於 ASP.NET API 參考文件。
 ms.assetid: b2203f7b-b732-42f0-8e78-b0635fcdd1de
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/30/2017
 ms.technology: aspnet
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 6ff56e6cf6a95fc78bc863c062b1ec23789b6f09
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eafcb9a9e77493c0724d026c83557ba6f97c281e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837791"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824341"
 ---
 # <a name="aspnet-api-reference"></a>ASP.NET API 參考
 

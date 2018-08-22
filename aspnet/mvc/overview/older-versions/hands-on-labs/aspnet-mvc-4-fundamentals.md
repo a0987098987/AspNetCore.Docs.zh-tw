@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 title: ASP.NET MVC 4 基本概念 |Microsoft Docs
 author: rick-anderson
 description: 這個實際操作實驗室根據 MVC （模型檢視控制器） 音樂市集，介紹，並逐步說明如何使用 ASP.NET MV 的教學課程應用程式...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: b7dba543-73c3-4534-a9a0-ba70fa2c6a8a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-fundamentals
 msc.type: authoredcontent
-ms.openlocfilehash: 2b3f8916bdca1df0dd2855f02ae46f5e5d13311a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d8e837a5d56871d271590859c2e82336111cc87a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819967"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835032"
 ---
 # <a name="aspnet-mvc-4-fundamentals"></a>ASP.NET MVC 4 基本概念
 

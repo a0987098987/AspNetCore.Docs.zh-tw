@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeat
 title: 顯示每個資料列與 DataList 控制項 (VB) 的多筆記錄 |Microsoft Docs
 author: rick-anderson
 description: 在這個簡短的教學課程中，我們將探討如何以自訂其 RepeatColumns 和 Flow 屬性透過 DataList 的版面配置。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: f555c531-bf33-4699-9987-42dbfef23c1f
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 55e07159fd9d0f4c750a2522feb0538a1cfb4bea
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7a23e8897e4fbdf84c4d6916c22bad9687fa5ee6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831883"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830918"
 ---
 <a name="showing-multiple-records-per-row-with-the-datalist-control-vb"></a>顯示多筆記錄，每個資料列與 DataList 控制項 (VB)
 ====================
@@ -110,7 +110,7 @@ DataList，根據預設，列出其在單一資料行、 多列資料表，可�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

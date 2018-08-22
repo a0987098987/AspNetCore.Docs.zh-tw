@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-con
 title: '[How Do i:]AJAX Toolkit 重新排序控制項 |Microsoft Docs'
 author: JoeStagner
 description: 在這段影片中，我將示範使用附隨了 AJAX toolkit 重新排序控制項。 重新排序控制項可讓您呈現給您的使用者清單 o...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/21/2008
 ms.assetid: 1bc7e41a-633c-4ade-ba7a-486c9484a0ba
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-control
 msc.type: video
-ms.openlocfilehash: 09e435b0c34bd889f0d7d320a6f6ca3a0e219c7a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d16ecfca0783622e4616863e680b3de78c445762
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839447"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825516"
 ---
 <a name="how-do-i-the-ajax-toolkit-reorder-control"></a>[How Do i:]AJAX Toolkit 重新排序控制項
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-use-the-new-entity-data-source
 title: '[How Do i:]使用新的實體資料來源 |Microsoft Docs'
 author: divega
 description: 在此簡介的影片 Diego Vega 會示範如何使用 ASP.NET 應用程式中的實體資料來源。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2008
 ms.assetid: ce4a5e6c-8aec-4955-a145-337f1e48af05
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-use-the-new-entity-data-source
 msc.type: video
-ms.openlocfilehash: c20e35f177d3732f6737cba8b69b7f32852418ca
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 37f8dfb9b035f46d1a06c513b749fda64e9093d8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831238"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824505"
 ---
 <a name="how-do-i-use-the-new-entity-data-source"></a>[How Do i:]使用新的實體資料來源
 ====================

@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-rep
 title: ASP.NET MVC 店面第 2 節： 存放庫模式 |Microsoft Docs
 author: robconery
 description: Rob Conery 逐步解說 Repository 的實作，並寫出的單元測試的第一個主要組。 他也會增加初始服務層方法結構...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/27/2008
 ms.assetid: 94dd6eec-3685-4323-ac75-75a70a4f766a
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern
 msc.type: video
-ms.openlocfilehash: 6af2afe89c08124311efac3423299aa22a0c9729
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 210f26a86a387ae4f639a8e45d04116fa3c3e750
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829405"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823638"
 ---
 <a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a>ASP.NET MVC 店面第 2 節： 存放庫模式
 ====================

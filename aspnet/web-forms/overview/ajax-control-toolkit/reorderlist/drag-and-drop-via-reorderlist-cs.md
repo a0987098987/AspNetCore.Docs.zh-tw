@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reord
 title: 將拖放透過 reorderlist 的回傳 (C#) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit reorderlist 的回傳控制項提供使用者透過拖放來重新排列的清單。 目前的清單順序應...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 6350ee8e-11d6-4aff-b51c-942878014835
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6c31e1e9b88d07fb4fe2881ac24b7c9c10126c96
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 15ae6ae60381f3f656f667a97dac72dbb283c80e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803713"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824325"
 ---
 <a name="drag-and-drop-via-reorderlist-c"></a>將拖放透過 reorderlist 的回傳 (C#)
 ====================

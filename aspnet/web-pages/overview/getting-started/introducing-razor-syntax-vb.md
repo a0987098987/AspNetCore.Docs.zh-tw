@@ -3,17 +3,17 @@ uid: web-pages/overview/getting-started/introducing-razor-syntax-vb
 title: 使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介 |Microsoft Docs
 author: tfitzmac
 description: 本附錄提供您的概觀與 ASP.NET Web pages 程式設計在 Visual Basic 中使用 Razor 語法。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 72f995e62141df4e8f4cd082b4873d82067af8c1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cbec035533c37723afcd5bf4aa0c6e1c83dbae23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816544"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830950"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>使用 Razor 語法 (Visual Basic) 的 ASP.NET Web 程式設計簡介
 ====================
@@ -273,30 +273,88 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
 下表列出一些常見的轉換和測試方法的變數。
 
 
-::: 資料列:::::: 資料行:::<strong>方法</strong>::: 資料行後端:::::: 資料行:::<strong>描述</strong>::: 資料行後端:::::: 資料行:::<strong>範例</strong>::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        <strong>方法</strong>
+    :::column-end:::
+    :::column:::
+        <strong>描述</strong>
+    :::column-end:::
+    :::column:::
+        <strong>範例</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsInt(), IsInt()` ::: 資料行後端:::::: 資料行::: 轉換字串，表示整數值 (例如&quot;593&quot;) 成整數。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsInt(), IsInt()`
+    :::column-end:::
+    :::column:::
+        將代表整數的字串轉換 (例如&quot;593&quot;) 成整數。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsBool(), IsBool()` ::: 資料行後端:::::: 資料行::: 轉換字串 like &quot;，則為 true&quot;或&quot;false&quot;布林型別。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsBool(), IsBool()`
+    :::column-end:::
+    :::column:::
+        將轉換的字串，例如&quot;，則為 true&quot;或是&quot;false&quot;布林型別。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsFloat(), IsFloat()` ::: 資料行後端:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsFloat(), IsFloat()`
+    :::column-end:::
+    :::column:::
+        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;浮點數。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsDecimal(), IsDecimal()` ::: 資料行後端:::::: 資料行::: 將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsDecimal(), IsDecimal()`
+    :::column-end:::
+    :::column:::
+        將具有類似的十進位值的字串轉換&quot;1.3&quot;或是&quot;7.439&quot;十進位數字。 （在 ASP.NET 中，十進位數字是更精確比浮點數）。 :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AsDateTime(), IsDateTime()` ::: 資料行後端:::::: 資料行::: 將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AsDateTime(), IsDateTime()`
+    :::column-end:::
+    :::column:::
+        將 asp.net 代表的日期和時間值的字串轉換`DateTime`型別。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `ToString()` ::: 資料行後端:::::: 資料行::: 將其他任何資料類型轉換為字串。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `ToString()`
+    :::column-end:::
+    :::column:::
+        將任何其他資料類型轉換為字串。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
+    :::column-end:::
+:::row-end:::
 
 
 ## <a name="operators"></a>運算子
@@ -304,47 +362,137 @@ Visual Basic 語言不區分大小寫。 程式設計關鍵字 (例如`Dim`， `
 運算子是關鍵字或字元，會告訴 ASP.NET 在運算式中執行命令的類型。 Visual Basic 支援許多運算子，但您只需要識別一些開始使用開發 ASP.NET 網頁。 下表摘要說明最常見的運算子。
 
 
-::: 資料列:::::: 資料行:::<strong>運算子</strong>::: 資料行後端:::::: 資料行:::<strong>描述</strong>::: 資料行後端:::::: 資料行:::<strong>範例</strong>::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        <strong>Operator</strong>
+    :::column-end:::
+    :::column:::
+        <strong>描述</strong>
+    :::column-end:::
+    :::column:::
+        <strong>範例</strong>
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `+ - * /` ::: 資料行後端:::::: 資料行::: 用在數值運算式的數學運算子。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `+ - * /`
+    :::column-end:::
+    :::column:::
+        用在數值運算式的數學運算子。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `=` ::: 資料行後端:::::: 資料行::: 指派和相等。 根據內容，將陳述式的右邊的值指派給物件，在左側，或檢查值相等。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `=`
+    :::column-end:::
+    :::column:::
+        指派和相等。 根據內容，將陳述式的右邊的值指派給物件，在左側，或檢查值相等。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `<>` ::: 資料行後端:::::: 資料行::: 不等比較。 傳回`True`值是否不相等。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `<>`
+    :::column-end:::
+    :::column:::
+        不等。 傳回`True`值是否不相等。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `< > <= >=` ::: 資料行後端:::::: 資料行::: 小於、 大於、 小於或等於、 與大於或等於。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `< > <= >=`
+    :::column-end:::
+    :::column:::
+        小於、 大於、 小於或等於、 與大於或等於。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `&` ::: 資料行後端:::::: 資料行::: 用來將字串的串連。
-::: 資料行後端:::::: 資料行::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `&`
+    :::column-end:::
+    :::column:::
+        串連，用來聯結字串。
+    :::column-end:::
+    :::column:::
+        [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `+= -=` ::: 資料行後端:::::: 資料行::: 遞增和遞減運算子，以新增和從變數 （分別） 減 1。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `+= -=`
+    :::column-end:::
+    :::column:::
+        遞增和遞減運算子，以新增和從變數 （分別） 減 1。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `.` ::: 資料行後端:::::: 資料行::: 點。 用來區別物件及其屬性和方法。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `.`
+    :::column-end:::
+    :::column:::
+        點。 用來區別物件及其屬性和方法。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `()` ::: 資料行後端:::::: 資料行::: 括號。 群組運算式，用來將參數傳遞至方法，以及存取陣列和集合的成員。
-::: 資料行後端:::::: 資料行::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `()`
+    :::column-end:::
+    :::column:::
+        括號。 群組運算式，用來將參數傳遞至方法，以及存取陣列和集合的成員。
+    :::column-end:::
+    :::column:::
+        [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `Not` ::: 資料行後端:::::: 資料行::: 沒有。 反轉，則為 true 的值為 false，反之亦然。 常用縮寫來測試`False`(也就是針對不`True`)。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `Not`
+    :::column-end:::
+    :::column:::
+        不。 反轉，則為 true 的值為 false，反之亦然。 常用縮寫來測試`False`(也就是針對不`True`)。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
+    :::column-end:::
+:::row-end:::
 * * *
-::: 資料列:::::: 資料行::: `AndAlso OrElse` ::: 資料行後端:::::: 資料行::: 邏輯 AND 和 OR，這用來連結條件一起。
-::: 資料行後端:::::: 資料行::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
-    ::: 資料行後端:::::: 資料列結尾:::
+:::row:::
+    :::column:::
+        `AndAlso OrElse`
+    :::column-end:::
+    :::column:::
+        邏輯 AND 和 OR，這用來連結條件一起。
+    :::column-end:::
+    :::column:::
+        [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="working-with-file-and-folder-paths-in-code"></a>使用檔案和程式碼中的資料夾路徑
 

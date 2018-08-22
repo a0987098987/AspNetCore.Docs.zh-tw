@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/admin/building-an-interface-to-s
 title: 建置介面從許多 (C#) 中選取一個使用者帳戶 |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將建置具有分頁、 可篩選方格的使用者介面。 特別是，我們的使用者介面將包含一系列的 Linkbutton 的...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2008
 ms.assetid: 9e4e687c-b4ec-434f-a4ef-edb0b8f365e4
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a4d5b4c332cd256007db2f857c89fe3133205315
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 863ac36ae6a94ece841088db925c04deb3bf36c9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832839"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825544"
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-c"></a>建置介面從許多 (C#) 中選取一個使用者帳戶
 ====================

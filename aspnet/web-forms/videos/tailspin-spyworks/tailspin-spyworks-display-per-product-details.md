@@ -3,17 +3,17 @@ uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-per-product-de
 title: Tailspin Spyworks-顯示每個產品詳細資料 |Microsoft Docs
 author: JoeStagner
 description: Joe Stagner Tailspin Spyworks 範例 Web Form 應用程式中顯示產品詳細資料。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2010
 ms.assetid: cc1ae79f-69ff-445a-a789-b5da2b255cb6
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-display-per-product-details
 msc.type: video
-ms.openlocfilehash: 98c7829d8c25dd2646a6359f9e55df33cbda9285
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6973091e97614f17c9ca96ed7587ad438f90df9d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820969"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824339"
 ---
 <a name="tailspin-spyworks---display-per-product-details"></a>Tailspin Spyworks-顯示每個產品詳細資料
 ====================

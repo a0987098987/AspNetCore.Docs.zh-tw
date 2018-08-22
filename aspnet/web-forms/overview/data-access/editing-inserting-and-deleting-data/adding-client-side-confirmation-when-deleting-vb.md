@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-c
 title: 刪除 (VB) 時新增用戶端確認 |Microsoft Docs
 author: rick-anderson
 description: 在介面中，我們建立了到目前為止，使用者不小心刪除資料時在想要按一下 [編輯] 按鈕，按一下 [刪除] 按鈕。 在此 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 6331e02e-c465-4cdf-bd3f-f07680c289d6
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2318018b20841038ebb7a6e4900cf9849057d941
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: deae088d1daa63e2936aedf80eded18588b1ec60
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802485"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830117"
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a>刪除 (VB) 時新增用戶端確認
 ====================
@@ -153,7 +153,7 @@ JavaScript`confirm(string)`函式是控制表單提交工作流程的常用的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](implementing-optimistic-concurrency-vb.md)

@@ -3,17 +3,17 @@ uid: web-pages/overview/data/7-displaying-data-in-a-chart
 title: 資料顯示在圖表中的 ASP.NET Web Pages (Razor) |Microsoft Docs
 author: microsoft
 description: 本章說明如何在圖表中顯示資料。 在先前章節中，您已了解如何以手動方式和在方格中顯示資料。 本章說明...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2012
 ms.assetid: f889fd46-4dac-4ecb-83d8-60e64c22036e
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 161dfa1b2c0676c79baebb00e303e8cb9df1d4e8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 00529355476e88c47ab790121ae77202aa5e7b76
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812577"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823598"
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>在與 ASP.NET Web Pages (Razor) 圖表中顯示資料
 ====================

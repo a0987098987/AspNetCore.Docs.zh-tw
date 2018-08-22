@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/data-controls/the-datapager-control
 title: DataPager 控制項 |Microsoft Docs
 author: JoeStagner
 description: DataPager 控制項通常搭配 ListView 控制項。 ListView 控制項為資料導向。 第一次建立 ListView 控制項，並提供一些 d...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/15/2007
 ms.assetid: 561fc945-2506-4549-af92-af92556df266
 msc.legacyurl: /web-forms/videos/aspnet-35/data-controls/the-datapager-control
 msc.type: video
-ms.openlocfilehash: 19ee75d766823cd26b5d60ac8372eb6e0683c4f9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d4df212d36e778547a3996e5d125dc69e810afa8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842552"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830550"
 ---
 <a name="the-datapager-control"></a>DataPager 控制項
 ====================

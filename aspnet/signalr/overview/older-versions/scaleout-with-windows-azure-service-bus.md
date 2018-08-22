@@ -3,17 +3,17 @@ uid: signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 title: SignalR 向外延展與 Azure 服務匯流排 (SignalR 1.x) |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/01/2013
 ms.assetid: 501db899-e68c-49ff-81b2-1dc561bfe908
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 751de591ec62942c2c9d8b26af40101eb2e922d5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d3c5af75c87f4ba51bb5627ddf237a70e5181678
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820936"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834606"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>SignalR 向外延展與 Azure 服務匯流排 (SignalR 1.x)
 ====================

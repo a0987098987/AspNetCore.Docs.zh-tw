@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
 title: ASP.NET MVC 店面第 24 節： 結束 |Microsoft Docs
 author: robconery
 description: 這是 MVC 店面序列中的最後一集，這看起來似乎有點奇怪。 它絕對不是我對於 ASP.NET 的最後一個螢幕錄製影片...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/28/2009
 ms.assetid: 160d6dde-1a19-4822-963b-cd936fb8afa0
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis
 msc.type: video
-ms.openlocfilehash: c731ac3e8706806924900da1e431ac76f5fd7dec
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 37509c68d129162fd497032ade3d47edf982b12f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833694"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824334"
 ---
 <a name="aspnet-mvc-storefront-part-24-finis"></a>ASP.NET MVC 店面第 24： 結束
 ====================

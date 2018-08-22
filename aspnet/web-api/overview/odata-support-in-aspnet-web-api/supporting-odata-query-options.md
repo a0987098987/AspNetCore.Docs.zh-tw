@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-opt
 title: 支援 OData 查詢選項中 ASP.NET Web API 2 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/04/2013
 ms.assetid: 50e6e62b-e72e-4a29-8293-4b67377bd21f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
 msc.type: authoredcontent
-ms.openlocfilehash: 029a791074a5ab88f1c6d83311e88fc9f726fe6f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8745183125c9dd1dcc7cb0e146367a893bdb0170
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814937"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824722"
 ---
 <a name="supporting-odata-query-options-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中支援 OData 查詢選項
 ====================

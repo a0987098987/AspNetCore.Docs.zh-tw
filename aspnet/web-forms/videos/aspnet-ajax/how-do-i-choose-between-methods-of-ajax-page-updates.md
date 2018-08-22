@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-choose-between-methods-of-ajax-page-u
 title: '[How Do i:]選擇方法的 AJAX 頁面更新嗎？ | Microsoft Docs'
 author: JoeStagner
 description: 在這段影片 Joe Stagner 會比較執行 ASP.NET 應用程式中的 ajax 頁面更新的兩個主要方法。 第一種方法是使用 Upd...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/09/2007
 ms.assetid: a5e33a7d-ccb2-483f-a955-3d39f72ba4ec
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-choose-between-methods-of-ajax-page-updates
 msc.type: video
-ms.openlocfilehash: 226fb0423ea05ad9034c909037358331918f2892
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9f146c36ab2225e732a2a35d84bc4e6a616b22d5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838435"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825099"
 ---
 <a name="how-do-i-choose-between-methods-of-ajax-page-updates"></a>[How Do i:]選擇方法的 AJAX 頁面更新嗎？
 ====================

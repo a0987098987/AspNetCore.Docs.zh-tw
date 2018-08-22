@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/complex-type-inhe
 title: 使用 ASP.NET Web API OData v4 中的複雜類型繼承 |Microsoft Docs
 author: microsoft
 description: 根據 OData v4 規格中，複雜型別可以繼承自另一個複雜類型。 （複雜型別是結構化的型別沒有索引鍵）。Web API...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/16/2014
 ms.assetid: a00d3600-9c2a-41bc-9460-06cc527904e2
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/complex-type-inheritance-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: d295a6ae20f5771ae1f4f28166f7e651b6ec5c58
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8dbf7dc4cfc70e1ea1ed6f72ffc0751a56809c09
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824026"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825548"
 ---
 <a name="complex-type-inheritance-in-odata-v4-with-aspnet-web-api"></a>使用 ASP.NET Web API OData v4 中的複雜類型繼承
 ====================

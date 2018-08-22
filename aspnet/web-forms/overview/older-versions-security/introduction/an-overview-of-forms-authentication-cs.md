@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/introduction/an-overview-of-form
 title: 表單驗證概觀 (C#) |Microsoft Docs
 author: rick-anderson
 description: 建立自訂路由
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/14/2008
 ms.assetid: de2d65b9-aadc-42ba-abe1-4e87e66521a0
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a523e3c6ff79e7445813e2ef50eabc5b55d00144
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 64c8ccbc82a5c80a6f1e3199bfceb62add6cde51
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814442"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833781"
 ---
 <a name="an-overview-of-forms-authentication-c"></a>表單驗證概觀 (C#)
 ====================
@@ -464,7 +464,7 @@ LoginStatus 超出 LoginView 控制項，因為它會顯示匿名和已驗證的
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝...
 

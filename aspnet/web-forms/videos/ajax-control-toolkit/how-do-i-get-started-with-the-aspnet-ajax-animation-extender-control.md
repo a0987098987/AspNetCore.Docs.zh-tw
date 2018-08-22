@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-
 title: '[How Do i:]開始使用 ASP.NET AJAX 動畫擴充項控制項？ | Microsoft Docs'
 author: JoeStagner
 description: 這段影片中介紹從 ASP.NET AJAX Control Toolkit，開發人員提供完全可延伸的架構的動畫擴充項控制項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2007
 ms.assetid: 47f94a4c-9c95-4fc2-96e6-e7cc54b6784f
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control
 msc.type: video
-ms.openlocfilehash: b0f8a85e1cbbe0521068bf5067124a62f49bbfd7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b68487676e85b45bfac6f19d34b041cd39a0803a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37801482"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825550"
 ---
 <a name="how-do-i-get-started-with-the-aspnet-ajax-animation-extender-control"></a>[How Do i:]開始使用 ASP.NET AJAX 動畫擴充項控制項？
 ====================

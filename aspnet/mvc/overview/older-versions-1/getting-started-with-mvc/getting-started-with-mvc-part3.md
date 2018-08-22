@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with
 title: 新增檢視 |Microsoft Docs
 author: shanselman
 description: 這是初學者教學課程中，將會介紹 ASP.NET MVC 的基本概念。 建立簡單的 web 應用程式，從資料庫讀取與寫入。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/14/2010
 ms.assetid: e8f1515c-c277-47ff-a23e-224118f13f02
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: e3b923aa5572781261c5a75546700faf223703d4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f55e558dd056e86bdd2310894959aef02a9d8de2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37834500"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825337"
 ---
 <a name="adding-a-view"></a>新增檢視
 ====================

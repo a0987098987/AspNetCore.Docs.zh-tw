@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-use-the-reponsefilter-property-to-replac
 title: '[How Do i:]使用 Reponse.Filter 屬性取代 ASP.NET 網頁中的 HTML |Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何使用 Reponse.Filter 屬性來攔截及變更傳送至網頁的 HTML。 首先，範例頁面建立 w...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/29/2009
 ms.assetid: 3e5ae74a-9798-47d8-a2b3-0d8ad42dd4bc
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page
 msc.type: video
-ms.openlocfilehash: bf1936e5710b67185977f71bea03240e6c6abf41
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0e8ae8b62bbb4ac1fc7e942cf3dd0438383cb510
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808099"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825138"
 ---
 <a name="how-do-i-use-the-reponsefilter-property-to-replace-html-in-an-aspnet-page"></a>[How Do i:]使用 Reponse.Filter 屬性取代 ASP.NET 網頁中的 HTML
 ====================

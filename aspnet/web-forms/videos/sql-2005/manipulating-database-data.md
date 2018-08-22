@@ -3,17 +3,17 @@ uid: web-forms/videos/sql-2005/manipulating-database-data
 title: 操作資料庫資料 |Microsoft Docs
 author: microsoft
 description: SQL Server 新手將了解 ADO.NET 物件以及從 ADO.NET 的 SQL 陳述式執行。 探索 SQL，並了解 insert、 update 和 delete sta...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/29/2006
 ms.assetid: 03a4cdda-480f-43fa-891c-a976633d90ae
 msc.legacyurl: /web-forms/videos/sql-2005/manipulating-database-data
 msc.type: video
-ms.openlocfilehash: 8dbbbb4febc84dbafbc71e99a0b635bbf61af997
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 57f4d9d2469170391896370040aca58fc63532a6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802016"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835057"
 ---
 <a name="manipulating-database-data"></a>操作資料庫資料
 ====================

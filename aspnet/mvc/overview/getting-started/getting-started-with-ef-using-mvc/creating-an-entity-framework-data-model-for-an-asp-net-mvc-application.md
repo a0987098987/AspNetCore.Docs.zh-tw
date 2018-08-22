@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-
 title: 開始使用 Entity Framework 6 Code First 使用 MVC 5 |Microsoft Docs
 author: tdykstra
 description: 本教學課程系列的較新版本位於： 開始使用 ASP.NET Core 和 Entity Framework Core 使用 Visual Studio 2015。 Contoso Universi 中...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/22/2015
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: f03ddcf7dcc8b5d20c5459a7fb0015ab20f340c5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 29004ec2271dbf77395f07e030533e23662b67c1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837165"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834656"
 ---
 <a name="getting-started-with-entity-framework-6-code-first-using-mvc-5"></a>透過 MVC 5 開始使用 Entity Framework 6 Code First
 ====================

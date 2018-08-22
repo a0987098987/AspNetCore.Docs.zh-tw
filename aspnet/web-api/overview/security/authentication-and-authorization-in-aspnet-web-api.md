@@ -3,17 +3,17 @@ uid: web-api/overview/security/authentication-and-authorization-in-aspnet-web-ap
 title: ASP.NET Web API 中驗證和授權 |Microsoft Docs
 author: MikeWasson
 description: ASP.NET Web API 中提供驗證和授權的一般概觀。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/27/2012
 ms.assetid: 6dfb51ea-9f4d-4e70-916c-8ef8344a88d6
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f882a9bb2922d0eb28eee7cdba0896bdc5318c2a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a78606a74b2149e68e3b01f4fe204f4a13edf4b5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812830"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834200"
 ---
 <a name="authentication-and-authorization-in-aspnet-web-api"></a>ASP.NET Web API 中驗證和授權
 ====================
@@ -117,6 +117,6 @@ Web API 提供的內建的授權篩選條件， [AuthorizeAttribute](https://msd
 
 ### <a name="authorization-inside-a-controller-action"></a>在控制器動作授權
 
-在某些情況下，您可能會允許繼續進行，但變更行為的主體為基礎的要求。 比方說，您所傳回的資訊可能會變更，視使用者的角色而定。 在控制器方法中，您可以取得目前的原則，從**ApiController.User**屬性。
+在某些情況下，您可能會允許繼續進行，但變更行為的主體為基礎的要求。 比方說，您所傳回的資訊可能會變更，視使用者的角色而定。 在控制器方法中，您可以取得從目前的主體**ApiController.User**屬性。
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample7.cs)]

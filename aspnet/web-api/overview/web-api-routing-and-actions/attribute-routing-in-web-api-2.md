@@ -3,17 +3,17 @@ uid: web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 title: 屬性 ASP.NET Web API 2 中的路由 |Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 52164fde1a2277bb9ef07f2a5476ca78b71a8e52
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f13720c5e9de99fb4ae5b27a757c257cac881f89
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802753"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834245"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 中的屬性路由
 ====================

@@ -5,14 +5,14 @@ description: ASP.NET Core SignalR JavaScript 用戶端的概觀。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 08/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: c13c41b0344b0c880e842f2799d6ee97bd7fff7e
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
-ms.translationtype: HT
+ms.openlocfilehash: 639c30f1d145a3da5e4f5857f32c1b573c1bfce2
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095420"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41824277"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -27,11 +27,11 @@ ASP.NET Core SignalR JavaScript 用戶端程式庫可讓開發人員呼叫伺服
 SignalR JavaScript 用戶端程式庫會以傳遞[npm](https://www.npmjs.com/)封裝。 如果您使用 Visual Studio，執行`npm install`從**Package Manager Console**在根資料夾中。 適用於 Visual Studio Code，請從執行命令**整合式終端機**。
 
   ```console
-   npm init -y
-   npm install @aspnet/signalr
+  npm init -y
+  npm install @aspnet/signalr
   ```
 
-Npm 安裝的套件內容*node_modules\\@aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製*signalr.js*的檔案 *wwwroot\lib\signalr* 資料夾。
+npm 安裝的套件內容*node_modules\\ @aspnet\signalr\dist\browser* 資料夾。 建立新的資料夾，名為*signalr*下方*wwwroot\\lib*資料夾。 複製*signalr.js*的檔案*wwwroot\lib\signalr* 資料夾。
 
 ## <a name="use-the-signalr-javascript-client"></a>使用 SignalR JavaScript 用戶端
 
@@ -57,50 +57,51 @@ Npm 安裝的套件內容*node_modules\\@aspnet\signalr\dist\browser* 資料夾�
 
 ## <a name="call-hub-methods-from-client"></a>從用戶端呼叫中樞方法
 
-JavaScript 用戶端呼叫的公用方法上的中樞使用`connection.invoke`。 `invoke`方法接受兩個引數：
+JavaScript 用戶端呼叫的公用方法上透過集線器[叫用](/javascript/api/%40aspnet/signalr/hubconnection#invoke)方法[HubConnection](/javascript/api/%40aspnet/signalr/hubconnection)。 `invoke`方法接受兩個引數：
 
-* 中樞方法的名稱。 下列範例中，在中樞名稱是`SendMessage`。
+* 中樞方法的名稱。 在下列範例中，在中樞的方法名稱是`SendMessage`。
 * 中樞的方法中定義的任何引數。 在下列範例中，引數名稱是`message`。
 
-[!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
+  [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 ## <a name="call-client-methods-from-hub"></a>用戶端方法呼叫來自中樞
 
-若要從中樞接收訊息，定義方法，使用`connection.on`方法。
+若要從中樞接收訊息，定義方法，使用[上](/javascript/api/%40aspnet/signalr/hubconnection#on)方法`HubConnection`。
 
 * JavaScript 用戶端方法的名稱。 下列範例中，在方法名稱是`ReceiveMessage`。
 * 中樞會將傳遞給方法的引數。 在下列範例中，引數值是`message`。
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
-在上述程式碼`connection.on`會在伺服器端程式碼會呼叫使用時執行`SendAsync`方法。
+在上述程式碼`connection.on`執行伺服器端程式碼呼叫使用它時[SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync)方法。
 
 [!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
 SignalR 判斷用戶端来呼叫的方法比對方法的名稱，並定義中的引數`SendAsync`和`connection.on`。
 
 > [!NOTE]
-> 最佳做法，呼叫`connection.start`之後`connection.on`因此會收到任何訊息之前，會註冊您的處理常式。
+> 最佳做法，呼叫[開始](/javascript/api/%40aspnet/signalr/hubconnection#start)方法`HubConnection`之後`on`。 這麼做可確保您的處理常式會註冊，才會收到任何訊息。
 
 ## <a name="error-handling-and-logging"></a>錯誤處理和記錄
 
-鏈結`catch`方法的結尾`connection.start`方法來處理用戶端的錯誤。 使用`console.error`瀏覽器的主控台輸出錯誤。
+鏈結`catch`方法的結尾`start`方法來處理用戶端的錯誤。 使用`console.error`瀏覽器的主控台輸出錯誤。
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 
 藉由傳遞要在進行連接時，記錄的記錄器和事件類型的安裝程式用戶端記錄追蹤。 使用指定的記錄層級和更新版本，則會記錄訊息。 可用的記錄層級如下所示：
 
-* `signalR.LogLevel.Error` ： 錯誤訊息。 記錄檔`Error`只有訊息。
-* `signalR.LogLevel.Warning` ： 可能的錯誤警告訊息。 記錄檔`Warning`，和`Error`訊息。
-* `signalR.LogLevel.Information` ： 不會出現錯誤狀態訊息。 記錄檔`Information`， `Warning`，和`Error`訊息。
-* `signalR.LogLevel.Trace` ： 追蹤訊息。 記錄所有事件，包括中樞和用戶端之間傳輸的資料。
+* `signalR.LogLevel.Error` &ndash; 錯誤訊息。 記錄檔`Error`只有訊息。
+* `signalR.LogLevel.Warning` &ndash; 可能的錯誤相關的警告訊息。 記錄檔`Warning`，和`Error`訊息。
+* `signalR.LogLevel.Information` &ndash; 沒有錯誤的狀態訊息。 記錄檔`Information`， `Warning`，和`Error`訊息。
+* `signalR.LogLevel.Trace` &ndash; 追蹤訊息。 記錄所有事件，包括中樞和用戶端之間傳輸的資料。
 
-使用`configureLogging`方法`HubConnectionBuilder`設定記錄層級。 訊息會記錄到瀏覽器主控台。
+使用[configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging)方法[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)設定記錄層級。 訊息會記錄到瀏覽器主控台。
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="related-resources"></a>相關資源
 
+* [JavaScript API 參考](/javascript/api/)
 * [中樞](xref:signalr/hubs)
 * [.NET 用戶端](xref:signalr/dotnet-client)
 * [發佈至 Azure](xref:signalr/publish-to-azure-web-app)

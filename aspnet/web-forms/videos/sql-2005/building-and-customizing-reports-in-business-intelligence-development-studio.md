@@ -3,17 +3,17 @@ uid: web-forms/videos/sql-2005/building-and-customizing-reports-in-business-inte
 title: 建置和自訂 Business Intelligence Development Studio 中的報表 |Microsoft Docs
 author: microsoft
 description: 我們在上一課中建置，探討建置全新的報告和修改使用精靈和設計工具所建立的報表。 我們...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/22/2006
 ms.assetid: f38a1055-d387-49c2-aa1b-693688417c15
 msc.legacyurl: /web-forms/videos/sql-2005/building-and-customizing-reports-in-business-intelligence-development-studio
 msc.type: video
-ms.openlocfilehash: ffd6e0d5e7dfd86d9d1ca1f5ab124ee71765b516
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d2526809d8d6cf6a26af5c9ed2ff3910625f6b4d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830794"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824482"
 ---
 <a name="building-and-customizing-reports-in-business-intelligence-development-studio"></a>建置和自訂 Business Intelligence Development Studio 中的報表
 ====================

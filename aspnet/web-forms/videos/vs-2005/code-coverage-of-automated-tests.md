@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/code-coverage-of-automated-tests
 title: 程式碼的自動化測試的涵蓋範圍 |Microsoft Docs
 author: rick-anderson
 description: 這段影片示範如何使用程式碼涵蓋範圍作為計量，判斷有效性測試 ASP.NET Web 應用程式。 測試後 com...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/23/2007
 ms.assetid: b1a7fbfc-523f-473e-a454-8e6b90099b1e
 msc.legacyurl: /web-forms/videos/vs-2005/code-coverage-of-automated-tests
 msc.type: video
-ms.openlocfilehash: 78ebddc2535384657d03ba6f79cf6dbb22457507
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 557cfa59aa64839aa9339a3c5ccc82ac3f3c12bf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822204"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825365"
 ---
 <a name="code-coverage-of-automated-tests"></a>自動化測試的程式碼涵蓋範圍
 ====================

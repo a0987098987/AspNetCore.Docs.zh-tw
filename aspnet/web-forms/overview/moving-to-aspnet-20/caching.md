@@ -3,17 +3,17 @@ uid: web-forms/overview/moving-to-aspnet-20/caching
 title: 快取 |Microsoft Docs
 author: microsoft
 description: 了解快取是很重要的一個良好的 ASP.NET 應用程式。 ASP.NET 1.x 提供三種不同的選項，進行快取輸出快取...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 0c38092c47060e6d02791f9672df6703852f4b5a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5c97464ee50291338a80120a86b1b86b07bc672d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829482"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830105"
 ---
 <a name="caching"></a>快取
 ====================

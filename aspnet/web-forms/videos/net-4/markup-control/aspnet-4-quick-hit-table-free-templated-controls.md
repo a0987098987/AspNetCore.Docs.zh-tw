@@ -3,17 +3,17 @@ uid: web-forms/videos/net-4/markup-control/aspnet-4-quick-hit-table-free-templat
 title: 資料表可用的樣板化控制項 |Microsoft Docs
 author: JoeStagner
 description: 在這段影片，您將了解 RenderOuterTable 屬性對於樣板化控制項，可讓您控制外部資料表是不是轉譯...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/16/2009
 ms.assetid: 3d8c871d-7e00-4f13-937c-aa1f9b5a7dba
 msc.legacyurl: /web-forms/videos/net-4/markup-control/aspnet-4-quick-hit-table-free-templated-controls
 msc.type: video
-ms.openlocfilehash: f3afb933bc3b576b3c15ef17185b6f4c4faffff9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e00cf8d29fc46e55c8f886ca23b33ea18a6bd489
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835691"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825332"
 ---
 <a name="aspnet-4-quick-hit--table-free-templated-controls"></a>ASP.NET 4"快速 Hit"– 資料表可用的樣板化控制項
 ====================

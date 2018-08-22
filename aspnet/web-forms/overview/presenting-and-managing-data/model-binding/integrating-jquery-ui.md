@@ -3,17 +3,17 @@ uid: web-forms/overview/presenting-and-managing-data/model-binding/integrating-j
 title: 與模型繫結和 web form 整合 JQuery UI Datepicker |Microsoft Docs
 author: tfitzmac
 description: 本系列教學課程示範使用 ASP.NET Web Form 專案中的模型繫結的基本層面。 模型繫結進行資料互動更多簡單-...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 3cbab37b-fb0f-4751-9ec4-74e068c3f380
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: fc278575615e63af2fc7284e51814cf318165110
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 81cc5f010f2c6c7707223679717e34108a5a7aa3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807573"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824695"
 ---
 <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>與模型繫結和 web form 整合 JQuery UI Datepicker
 ====================

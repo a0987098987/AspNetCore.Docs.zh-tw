@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-col
 title: 新增 GridView 資料行的核取方塊 (VB) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會探討如何將為使用者提供以直覺的方式，來選取多個資料列的 G.的 GridView 控制項中的核取方塊的資料行...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/06/2007
 ms.assetid: 39253d05-75c0-41c7-b9d4-a6c58ecf69ce
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 01515e0034d69c563cbc96dceb6ae2ee481cc1a0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: be7fc4fe93d15e7550f873adffa15e82384d25be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819566"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830778"
 ---
 <a name="adding-a-gridview-column-of-checkboxes-vb"></a>新增 GridView 資料行的核取方塊 (VB)
 ====================
@@ -155,7 +155,7 @@ GridView s [ `Rows`屬性](https://msdn.microsoft.com/library/system.web.ui.webc
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](adding-a-gridview-column-of-radio-buttons-vb.md)

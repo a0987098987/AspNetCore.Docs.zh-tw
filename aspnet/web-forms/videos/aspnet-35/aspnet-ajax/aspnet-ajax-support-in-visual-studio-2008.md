@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-support-in-visual-studio
 title: Visual Studio 2008 中的 ASP.NET AJAX 支援 |Microsoft Docs
 author: JoeStagner
 description: Visual Studio 2008 (Orcas) 和.NET 3.5，您會收到包含 ASP.NET AJAX 的快速概觀。 這會示範使用 Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/15/2007
 ms.assetid: e18480cd-432c-47e5-bcfe-4cb86ebf73ab
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-support-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: 3aa4db8353e45558379618abbdda4df39247d448
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 76983e1328a3cfbdf44890054854b5c413e02842
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841104"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824928"
 ---
 <a name="aspnet-ajax-support-in-visual-studio-2008"></a>Visual Studio 2008 中的 ASP.NET AJAX 支援
 ====================

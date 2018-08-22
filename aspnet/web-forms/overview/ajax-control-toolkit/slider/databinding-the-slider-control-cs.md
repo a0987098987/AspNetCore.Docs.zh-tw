@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-contr
 title: 資料繫結滑桿控制項 (C#) |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit 中的滑桿控制項提供的圖形化的滑桿，可以使用滑鼠來控制。 它也可以繫結目前 positio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: b7f77869-aa1d-4025-924f-622c57112db6
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b7aebb8dd180113b011ac038e8da4a3baa701485
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 951a7484f0dbb14ee7f1e1d62c9666e5cc49e7c1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818659"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823633"
 ---
 <a name="databinding-the-slider-control-c"></a>資料繫結滑桿控制項 (C#)
 ====================

@@ -5,12 +5,12 @@ description: 使用 ASP.NET Core 應用程式中使用身分識別。 了解如�
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 6a23dd4ad78c0695b5724a78204abf6752dfe67d
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: fd5fa2fd1e069bf10f3baea38b1fe9f951dc4a7d
+ms.sourcegitcommit: fd461c60b5e36c7019f81da0138cc859d0fddaa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655306"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41824685"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET core 身分識別簡介
 
@@ -98,7 +98,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ## <a name="scaffold-register-login-and-logout"></a>Scaffold 註冊、 登入和登出
 
-請遵循[Scaffold Razor 專案具有授權的身分識別](xref:security/authentication/scaffold-identity#)指示。
+請遵循[Scaffold Razor 專案具有授權的身分識別](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization)指示。
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling
 title: 處理 BLL 和 DAL 層級例外狀況，在 ASP.NET 網頁 (C#) |Microsoft Docs
 author: rick-anderson
 description: 在本教學課程中，我們將了解如何顯示易懂、 資訊性的錯誤訊息應該在插入、 更新或刪除作業期間發生例外狀況...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 13d33251a8552409a17b5ff9a1dcc07d78506b12
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0d4fa3e3e7bbe335af31423ec4fdd60e9791c2b0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819493"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824729"
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>處理 BLL 和 DAL 層級例外狀況，在 ASP.NET 網頁 (C#)
 ====================
@@ -221,7 +221,7 @@ ms.locfileid: "37819493"
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 ## <a name="special-thanks-to"></a>特別感謝
 

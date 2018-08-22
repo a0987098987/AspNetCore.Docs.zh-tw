@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls
 title: 使用多個快顯視窗控制項 (C#) |Microsoft Docs
 author: wenz
 description: PopupControl 擴充項在 AJAX Control Toolkit 提供簡單的方式，來啟動任何其他控制項時，觸發快顯視窗。 此外，也可以使用 m...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 91511b0b-311d-481f-9e7c-73f07b813b79
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 681ee1433130ef1cf6d1521497001215a1bfbb66
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8cf7f929b696240e6805a74fb576ad56738491fa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814736"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824721"
 ---
 <a name="using-multiple-popup-controls-c"></a>使用多個快顯視窗控制項 (C#)
 ====================

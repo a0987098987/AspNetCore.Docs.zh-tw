@@ -3,17 +3,17 @@ uid: single-page-application/overview/templates/emberjs-template
 title: EmberJS 範本 |Microsoft Docs
 author: xqiu
 description: EmberJS 範本
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/30/2013
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 2488e9c10550bd9b11c675572c70618f6ca4ac05
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fbc3b1d299ace27d38d895e42b8e3bb3b51b36f8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823773"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825341"
 ---
 <a name="emberjs-template"></a>EmberJS 範本
 ====================

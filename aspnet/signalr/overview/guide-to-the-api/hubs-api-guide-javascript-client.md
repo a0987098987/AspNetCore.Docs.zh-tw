@@ -3,17 +3,17 @@ uid: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 title: ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端 |Microsoft Docs
 author: pfletcher
 description: 本文件提供使用 signalr 第 2 版中 JavaScript 用戶端，例如瀏覽器和 Windows 市集 (WinJS) applicat 的中樞 API 的簡介...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/28/2015
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: ed25843f5eb6145d29ef90f6205715bdd341d1a4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: de47593e7f54757d4f91a6e92485567e74b829ed
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839722"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825348"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR 中樞 API 指南-JavaScript 用戶端
 ====================

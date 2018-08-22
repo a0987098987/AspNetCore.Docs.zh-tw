@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwater
 title: 在 FormView 中 (C#) 中使用 TextBoxWatermark |Microsoft Docs
 author: wenz
 description: 在 AJAX Control Toolkit TextBoxWatermark 控制延伸的文字方塊，讓文字會顯示在方塊內。 當使用者在方塊中，按一下它我...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: e6ee90bf-32a5-4987-a384-15cc7dd30c8a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1e646b685680071501d45f7454920def2b15a7db
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 272befe4182a459c0e1f3b6668d252d9ba4715d0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37817034"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830934"
 ---
 <a name="using-textboxwatermark-in-a-formview-c"></a>在 FormView 中 (C#) 中使用 TextBoxWatermark
 ====================

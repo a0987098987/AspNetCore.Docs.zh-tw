@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/combo-box
 title: 下拉式方塊 |Microsoft Docs
 author: JoeStagner
 description: 這段影片將示範如何使用新的下拉式方塊控制項，從 Microsoft AJAX Control Toolkit。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/13/2009
 ms.assetid: 73822cfa-2052-41fa-98e6-434928574afb
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/combo-box
 msc.type: video
-ms.openlocfilehash: 7069e14ad17f69a11bb3bed292a53cec82d008e6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 504d64576508bfc52e911f85b0dfdb19dfb4ca51
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835071"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825329"
 ---
 <a name="combo-box"></a>下拉式方塊
 ====================

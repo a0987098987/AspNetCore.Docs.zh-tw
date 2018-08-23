@@ -3,21 +3,21 @@ uid: ajax/cdn/cdnajax451
 title: ASP.NET Web Form 和 Ajax 4.5.1 |Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/18/2015
 ms.assetid: d7ec655d-49b0-4968-af5e-3064616aff9a
 msc.legacyurl: /ajax/cdn/cdnajax451
 msc.type: content
-ms.openlocfilehash: b8b1e799d7fb0bbe4360d1b5307deda6c94e4921
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bbcd6425b66ecd760272bab37c758e47d0c18811
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802166"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831437"
 ---
-<a name="aspnet-web-forms-and-ajax-451"></a><span data-ttu-id="c3389-102">ASP.NET Web Form 和 Ajax 4.5.1</span><span class="sxs-lookup"><span data-stu-id="c3389-102">ASP.NET Web Forms and Ajax 4.5.1</span></span>
+<a name="aspnet-web-forms-and-ajax-451"></a><span data-ttu-id="ff68b-102">ASP.NET Web Form 和 Ajax 4.5.1</span><span class="sxs-lookup"><span data-stu-id="ff68b-102">ASP.NET Web Forms and Ajax 4.5.1</span></span>
 ====================
-<span data-ttu-id="c3389-103">下列檔案裝載在 CDN 上：</span><span class="sxs-lookup"><span data-stu-id="c3389-103">The following files are hosted on the CDN:</span></span>
+<span data-ttu-id="ff68b-103">下列檔案裝載在 CDN 上：</span><span class="sxs-lookup"><span data-stu-id="ff68b-103">The following files are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.debug.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/Date.HijriCalendar.js
@@ -56,6 +56,6 @@ ms.locfileid: "37802166"
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebParts.js
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/WebUIValidation.js
 
-<span data-ttu-id="c3389-104">注意： 全球化指令碼，例如 fr FR.js，可在下列資料夾：</span><span class="sxs-lookup"><span data-stu-id="c3389-104">Note: The globalization scripts, such as fr-FR.js, can be found in the following folder:</span></span>
+<span data-ttu-id="ff68b-104">注意： 全球化指令碼，例如 fr FR.js，可在下列資料夾：</span><span class="sxs-lookup"><span data-stu-id="ff68b-104">Note: The globalization scripts, such as fr-FR.js, can be found in the following folder:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/4.5.1/1/globalization/

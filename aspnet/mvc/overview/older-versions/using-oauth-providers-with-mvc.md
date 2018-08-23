@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
 title: 使用 OAuth 提供者與 MVC 4 |Microsoft Docs
 author: tfitzmac
 description: 本教學課程會示範如何建置 ASP.NET MVC 4 web 應用程式，可讓使用者從外部提供者，例如 Facebo 的認證來登入...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 15f6b45706c0711d68b0780a7474d4c939a85fba
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b0db2775db5c74762bdc55328ad44ef7ebe75ce
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823322"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833008"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>使用 OAuth 提供者與 MVC 4
 ====================
@@ -184,7 +184,7 @@ Facebook 站台會自動建立測試帳戶，您要求的數目。
 其他使用者資料會傳回到**ExtraData**屬性**AuthenticationResult**從傳回的物件**VerifyAuthentication**方法。 Facebook 用戶端包含下列值**ExtraData**屬性：
 
 - id
-- name
+- 名稱
 - 連結
 - 性別
 - accesstoken

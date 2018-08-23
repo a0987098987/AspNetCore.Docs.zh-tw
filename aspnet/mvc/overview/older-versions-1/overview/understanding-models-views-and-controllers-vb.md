@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-contr
 title: 了解模型、 檢視和控制器 (VB) |Microsoft Docs
 author: StephenWalther
 description: 不清楚模型、 檢視和控制器嗎？ 在本教學課程中，Stephen walther 將向您介紹 ASP.NET MVC 應用程式的不同部分。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: a106374a-5e74-4fd0-9ac0-1a32280e5d0d
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1c751972b0f59a3988e15eed0c6cff3bc566de0e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 15d4e7d7b6a2662296b8e3647cd60187de580789
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838724"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825168"
 ---
 <a name="understanding-models-views-and-controllers-vb"></a>了解模型、 檢視和控制器 (VB)
 ====================

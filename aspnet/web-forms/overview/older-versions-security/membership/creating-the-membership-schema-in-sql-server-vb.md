@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/creating-the-membersh
 title: 在 SQL Server (VB) 中建立成員資格結構描述 |Microsoft Docs
 author: rick-anderson
 description: 本教學課程一開始會檢查加入資料庫中的必要的結構描述，才能使用 SqlMembershipProvider 的技術。 接下來，我們 wi-fi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 112a674d-716f-41a6-99b8-4074d65a54c0
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1fa1e3f57c1218af6fec8bddeed6cdcbdffe1965
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 62a6113c9ddad1722160c7092308939cf7883588
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831841"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832664"
 ---
 <a name="creating-the-membership-schema-in-sql-server-vb"></a>在 SQL Server (VB) 中建立成員資格結構描述
 ====================
@@ -279,7 +279,7 @@ ASP.NET 應用程式的資料通常儲存在資料庫中的資料表數目。 �
 | `minRequiredPasswordLength` | 密碼所需的字元數目下限。 此值必須介於 0 到 128;預設值為 7。 |
 | `name` | 已註冊的提供者的名稱。 這是必要值。 |
 | `passwordAttemptWindow` | 期間的分鐘數會將追蹤嘗試登入失敗。 如果使用者提供了無效的登入認證`maxInvalidPasswordAttempts`在這個時間所指定視窗、 被鎖定。預設值為 10。 |
-| `PasswordFormat` | 密碼儲存格式： `Clear`， `Hashed`，或`Encrypted`。 預設值為 `Hashed`。 |
+| `PasswordFormat` | 密碼儲存格式： `Clear`， `Hashed`，或`Encrypted`。 預設為 `Hashed`。 |
 | `passwordStrengthRegularExpression` | 如果提供，這個規則運算式用來評估強度的所選使用者的密碼時建立新的帳戶，或變更其密碼時。 預設值為空字串。 |
 | `requiresQuestionAndAnswer` | 指定使用者是否必須回答其安全性問題，在擷取或重設其密碼。 預設值是 `true`。 |
 | `requiresUniqueEmail` | 指出是否在指定的應用程式磁碟分割中的所有使用者帳戶必須都具有唯一的電子郵件地址。 預設值是 `true`。 |

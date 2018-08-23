@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 title: ASP.NET MVC 檢視概觀 (C#) |Microsoft Docs
 author: StephenWalther
 description: 什麼是 ASP.NET MVC 檢視，它有何不同的 HTML 網頁？ 在本教學課程中，Stephen Walther 會為您介紹檢視，並向您示範如何 t...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/16/2008
 ms.assetid: 152ab1e5-aec2-4ea7-b8cc-27a24dd9acb8
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d2fc96f7e991dd7c4e0b3e9ff5c589c1075010ac
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ac47caa46d93c6157926f1c9b5112555fae4f8f5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833655"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825765"
 ---
 <a name="aspnet-mvc-views-overview-c"></a>ASP.NET MVC 檢視概觀 (C#)
 ====================

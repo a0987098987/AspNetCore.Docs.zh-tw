@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/roles/creating-and-managing-role
 title: 建立及管理角色 (VB) |Microsoft Docs
 author: rick-anderson
 description: 本教學課程會檢查角色架構中設定所需的步驟。 接下來，我們將建置 web 頁面來建立和刪除角色。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/24/2008
 ms.assetid: 83af9f5f-9a00-4f83-8afc-e98bdd49014e
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cbfa06ec50693f9640c813288e7c9175db670351
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e51fa6de3d2fe7b5c9cd84900d154070eb1960b9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819600"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823642"
 ---
 <a name="creating-and-managing-roles-vb"></a>建立及管理角色 (VB)
 ====================
@@ -26,13 +26,13 @@ ms.locfileid: "37819600"
 
 ## <a name="introduction"></a>簡介
 
-在  <a id="_msoanchor_1"> </a> [*使用者為基礎的授權*](../membership/user-based-authorization-vb.md)教學課程中我們示範了使用 URL 授權來限制某些使用者一組頁面，然後瀏覽的宣告式和適用於調整造訪的使用者為基礎的 ASP.NET 頁面的功能程式設計技術。 授與權限存取頁面或使用者的使用者為基礎的功能，不過，可能會維護工作的夢魘案例中有許多使用者帳戶或經常變更使用者的權限。 每當使用者獲得或失去授權來執行特定工作中，系統管理員必須更新適當的 URL 授權規則、 宣告式標記和程式碼。
+在 <a id="_msoanchor_1"> </a> [*使用者為基礎的授權*](../membership/user-based-authorization-vb.md)教學課程中我們示範了使用 URL 授權來限制某些使用者一組頁面，然後瀏覽的宣告式和適用於調整造訪的使用者為基礎的 ASP.NET 頁面的功能程式設計技術。 授與權限存取頁面或使用者的使用者為基礎的功能，不過，可能會維護工作的夢魘案例中有許多使用者帳戶或經常變更使用者的權限。 每當使用者獲得或失去授權來執行特定工作中，系統管理員必須更新適當的 URL 授權規則、 宣告式標記和程式碼。
 
 它通常有助於將使用者分類成群組或*角色*然後套用權限角色的角色為基礎。 例如，大部分的 web 應用程式有一組特定的頁面或保留只適用於系統管理使用者的工作。 在中使用的技術所學*使用者為基礎的授權*教學課程中，我們會新增適當的 URL 授權規則、 宣告式標記和程式碼，以允許指定的使用者帳戶，以執行系統管理工作。 但如果已加入新的系統管理員，或現有的系統管理員需要能夠撤銷她的系統管理權限，我們必須傳回並更新組態檔和網頁。 使用角色，不過，我們無法建立名為系統管理員角色並將這些信任的使用者指派給系統管理員角色。 接下來，我們會新增適當的 URL 授權規則、 宣告式標記和程式碼，以允許系統管理員角色，才能執行各種系統管理工作。 使用此基礎結構，將新的系統管理員新增至站台，或移除現有的是簡單，只要加入或移除系統管理員角色的使用者。 任何設定、 宣告式標記或變更程式碼是必要的。
 
 ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角色架構。 使用角色架構我們可以建立和刪除角色，將使用者新增或移除角色中的使用者，請判斷一組屬於特定的角色，並告知使用者是否屬於特定角色的使用者。 設定角色架構之後, 我們可以限制網頁 URL 授權規則透過以角色的角色為基礎的存取權及顯示或隱藏其他資訊或根據目前登入使用者的角色頁面上的功能。
 
-本教學課程會檢查角色架構中設定所需的步驟。 接下來，我們將建置 web 頁面來建立和刪除角色。 在  <a id="_msoanchor_2"> </a> [*將角色指派給使用者*](assigning-roles-to-users-vb.md)教學課程會探討如何新增和移除角色的使用者。 然後在<a id="_msoanchor_3"> </a> [ *Role-based Authorization* ](role-based-authorization-vb.md)教學課程中我們將了解如何限制存取權的角色的角色為基礎，以及如何調整頁面的功能而定的頁面造訪的使用者角色。 讓我們開始吧 ！
+本教學課程會檢查角色架構中設定所需的步驟。 接下來，我們將建置 web 頁面來建立和刪除角色。 在 <a id="_msoanchor_2"> </a> [*將角色指派給使用者*](assigning-roles-to-users-vb.md)教學課程會探討如何新增和移除角色的使用者。 然後在<a id="_msoanchor_3"> </a> [ *Role-based Authorization* ](role-based-authorization-vb.md)教學課程中我們將了解如何限制存取權的角色的角色為基礎，以及如何調整頁面的功能而定的頁面造訪的使用者角色。 讓我們開始吧 ！
 
 ## <a name="step-1-adding-new-aspnet-pages"></a>步驟 1： 加入新的 ASP.NET 網頁
 
@@ -45,12 +45,12 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 - `CreateUserWizardWithRoles.aspx`
 - `RoleBasedAuthorization.aspx`
 
-此時您專案的方案總管] 看起來應該類似螢幕擷取畫面的 [圖 1 所示。
+此時您專案的方案總管 看起來應該類似螢幕擷取畫面的圖 1 所示。
 
 
 [![[角色] 資料夾已新增四個新的頁面](creating-and-managing-roles-vb/_static/image2.png)](creating-and-managing-roles-vb/_static/image1.png)
 
-**圖 1**： 四個新頁面已加入至`Roles`資料夾 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image3.png))
+**[圖 1]**： 四個新頁面已加入至`Roles`資料夾 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image3.png))
 
 
 每個頁面，到目前為止，有兩個內容控制項，一個用於每個主版頁面的 ContentPlaceHolders:`MainContent`和`LoginContent`。
@@ -70,7 +70,7 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 
 [![[角色] 資料夾已新增四個新的頁面](creating-and-managing-roles-vb/_static/image5.png)](creating-and-managing-roles-vb/_static/image4.png)
 
-**圖 2**： 四個新頁面已加入至`Roles`資料夾 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image6.png))
+**[圖 2]**： 四個新頁面已加入至`Roles`資料夾 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image6.png))
 
 
 ## <a name="step-2-specifying-and-configuring-the-roles-framework-provider"></a>步驟 2： 指定及設定角色 Framework 提供者
@@ -116,7 +116,7 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 
 在下一個教學課程中，我們將檢查如何將使用者與角色產生關聯。 `Roles`類別的[ `AddUserToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertorole.aspx)， [ `AddUserToRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.addusertoroles.aspx)， [ `AddUsersToRole` ](https://msdn.microsoft.com/library/system.web.security.roles.adduserstorole.aspx)，與[ `AddUsersToRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.adduserstoroles.aspx)方法會將一個或多個使用者新增至一或多個角色。 若要從角色移除使用者，請使用[ `RemoveUserFromRole` ](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromrole.aspx)， [ `RemoveUserFromRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.removeuserfromroles.aspx)， [ `RemoveUsersFromRole` ](https://msdn.microsoft.com/library/system.web.security.roles.removeusersfromrole.aspx)，或[ `RemoveUsersFromRoles` ](https://msdn.microsoft.com/library/system.web.security.roles.removeusersfromroles.aspx)方法。
 
-在  <a id="_msoanchor_9"> </a> [ *Role-based Authorization* ](role-based-authorization-vb.md)教學課程中我們將探討如何以程式設計的方式顯示或隱藏目前登入使用者的角色為基礎的功能。 若要這麼做，我們可以使用角色類別的[ `FindUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.findusersinrole.aspx)， [ `GetRolesForUser` ](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx)， [ `GetUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx)，或[ `IsUserInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx)方法。
+在 <a id="_msoanchor_9"> </a> [ *Role-based Authorization* ](role-based-authorization-vb.md)教學課程中我們將探討如何以程式設計的方式顯示或隱藏目前登入使用者的角色為基礎的功能。 若要這麼做，我們可以使用角色類別的[ `FindUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.findusersinrole.aspx)， [ `GetRolesForUser` ](https://msdn.microsoft.com/library/system.web.security.roles.getrolesforuser.aspx)， [ `GetUsersInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.getusersinrole.aspx)，或[ `IsUserInRole` ](https://msdn.microsoft.com/library/system.web.security.roles.isuserinrole.aspx)方法。
 
 > [!NOTE]
 > 請記住，每當其中一種方法會叫用，`Roles`類別會委派呼叫設定的提供者。 在本例中，這表示呼叫正在傳送給`SqlRoleProvider`。 `SqlRoleProvider`然後執行適當的資料庫作業叫用的方法為基礎。 比方說，程式碼`Roles.CreateRole("Administrators")`會導致`SqlRoleProvider`執行`aspnet_Roles_CreateRole`預存程序，會將新記錄到`aspnet_Roles`名為 Administrators 的資料表。
@@ -146,12 +146,12 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 > 您可能會發生什麼事會好奇如果使用者未輸入任何值，轉換`RoleName`文字方塊中。 如果值傳入`CreateRole`方法是`Nothing`或空字串，發生例外狀況，就會引發。 同樣地，如果角色名稱包含逗號就會引發例外狀況。 因此，頁面應該包含驗證控制項，以確保使用者輸入的角色，而且它不包含任何逗號。 我保留作為練習的讀取器。
 
 
-讓我們建立名為 Administrators 的角色。 請瀏覽`ManageRoles.aspx`透過瀏覽器頁面上，在文字方塊中輸入 以系統管理員 （請參閱 圖 3），然後按一下 建立角色 按鈕。
+讓我們建立名為 Administrators 的角色。 請瀏覽`ManageRoles.aspx`透過瀏覽器頁面上，在文字方塊中輸入以系統管理員 （請參閱 [圖 3]），然後按一下 [建立角色] 按鈕。
 
 
 [![建立系統管理員角色](creating-and-managing-roles-vb/_static/image8.png)](creating-and-managing-roles-vb/_static/image7.png)
 
-**圖 3**： 建立系統管理員角色 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image9.png))
+**[圖 3]**： 建立系統管理員角色 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image9.png))
 
 
 會發生什麼事？ 回傳，但沒有任何角色存在已有的視覺提示新增至系統。 我們將會更新以包含視覺化回饋的步驟 5 中的此頁面。 現在，不過，您可以確認角色已建立前往`SecurityTutorials.mdf`資料庫，並顯示從資料`aspnet_Roles`資料表。 如 [圖 4] 所示，`aspnet_Roles`資料表包含剛加入系統管理員角色的記錄。
@@ -159,7 +159,7 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 
 [![Aspnet_Roles 資料表有一個資料列，系統管理員](creating-and-managing-roles-vb/_static/image11.png)](creating-and-managing-roles-vb/_static/image10.png)
 
-**圖 4**:`aspnet_Roles`資料表有一個資料列，系統管理員 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image12.png))
+**[圖 4]**:`aspnet_Roles`資料表有一個資料列，系統管理員 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image12.png))
 
 
 ## <a name="step-5-displaying-the-roles-in-the-system"></a>步驟 5： 顯示在系統中的角色
@@ -177,7 +177,7 @@ ASP.NET 提供了定義角色，並將它們與使用者帳戶建立關聯的角
 
 [![GridView 會顯示單一資料行中的角色](creating-and-managing-roles-vb/_static/image14.png)](creating-and-managing-roles-vb/_static/image13.png)
 
-**圖 5**: GridView 會顯示單一資料行中的角色 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image15.png))
+**[圖 5]**: GridView 會顯示單一資料行中的角色 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image15.png))
 
 
 GridView 會顯示單一資料行標示為項目，因為 GridView`AutoGenerateColumns`屬性設定為 True （預設值），這會導致 GridView，以自動建立資料行中每一個屬性及其`DataSource`。 陣列具有單一屬性，表示項目，因此陣列中的的 GridView 內的單一資料行。
@@ -186,7 +186,7 @@ GridView 會顯示單一資料行標示為項目，因為 GridView`AutoGenerateC
 
 先是設定 GridView 的`AutoGenerateColumns`屬性設定為 False。 接下來，為 TemplateField 加入方格中，設定其`HeaderText`角色的屬性，並設定其`ItemTemplate`，讓它顯示陣列的內容。 若要達成此目的，新增名為 Label Web 控制項`RoleNameLabel`要`ItemTemplate`，並繫結其`Text`屬性 `Container.DataItem.`
 
-這些屬性和`ItemTemplate`的內容可以宣告方式或透過設定 GridView 的 [欄位] 對話方塊和編輯樣板介面。 若要連線到 [欄位] 對話方塊中，按一下 GridView 的智慧標籤中的 [編輯資料行] 連結。 接下來，取消核取 自動產生欄位核取方塊來設定`AutoGenerateColumns`屬性設定為 False，並新增為 TemplateField 至 GridView，設定其`HeaderText`角色的屬性。 若要定義`ItemTemplate`的內容，從 GridView 的智慧標籤中選擇 [編輯範本] 選項。 將標籤 Web 控制項拖曳至`ItemTemplate`，將其`ID`屬性設`RoleNameLabel`，並設定其資料繫結設定，讓其`Text`屬性的繫結至`Container.DataItem`。
+這些屬性和`ItemTemplate`的內容可以宣告方式或透過設定 GridView 的 [欄位] 對話方塊和編輯樣板介面。 若要連線到 [欄位] 對話方塊中，按一下 GridView 的智慧標籤中的 [編輯資料行] 連結。 接下來，取消核取自動產生欄位核取方塊來設定`AutoGenerateColumns`屬性設定為 False，並新增為 TemplateField 至 GridView，設定其`HeaderText`角色的屬性。 若要定義`ItemTemplate`的內容，從 GridView 的智慧標籤中選擇 [編輯範本] 選項。 將標籤 Web 控制項拖曳至`ItemTemplate`，將其`ID`屬性設`RoleNameLabel`，並設定其資料繫結設定，讓其`Text`屬性的繫結至`Container.DataItem`。
 
 無論您使用哪種方法，GridView 的產生的宣告式標記看起來應該類似下面的完成時。
 
@@ -205,7 +205,7 @@ GridView 會顯示單一資料行標示為項目，因為 GridView`AutoGenerateC
 
 [![監督員角色可讓您擁有已加入](creating-and-managing-roles-vb/_static/image17.png)](creating-and-managing-roles-vb/_static/image16.png)
 
-**圖 6**： 監督員角色可讓您有已加入 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image18.png))
+**[圖 6]**： 監督員角色可讓您有已加入 ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image18.png))
 
 
 ## <a name="step-6-deleting-roles"></a>步驟 6： 刪除角色
@@ -222,7 +222,7 @@ GridView 會顯示單一資料行標示為項目，因為 GridView`AutoGenerateC
 
 [![將 [刪除] 按鈕新增至 RoleList GridView](creating-and-managing-roles-vb/_static/image20.png)](creating-and-managing-roles-vb/_static/image19.png)
 
-**圖 7**： 新增至 [刪除] 按鈕`RoleList`GridView ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image21.png))
+**[圖 7]**： 新增至 [刪除] 按鈕`RoleList`GridView ([按一下以檢視完整大小的影像](creating-and-managing-roles-vb/_static/image21.png))
 
 
 新增 [刪除] 按鈕之後, 您 GridView 的宣告式標記看起來應該如下所示：

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-throug
 title: 有效率地分頁大量資料 (C#) |Microsoft Docs
 author: rick-anderson
 description: 使用大量的資料，作為其基礎資料來源控制項 retriev 時，不適合資料簡報控制項的預設分頁選項...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/15/2006
 ms.assetid: 59c01998-9326-4ecb-9392-cb9615962140
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bb10524e7973894ea60663da3813673742ae4ab4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: HT
+ms.openlocfilehash: feebee845a19a7cb462127a893a30ac7e0761965
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825836"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827257"
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-c"></a>有效率地分頁大量資料 (C#)
 ====================
@@ -160,7 +160,7 @@ DAL s`TotalNumberOfProducts`方法會傳回可為 null 的整數; 不過，我�
 [!code-html[Main](efficiently-paging-through-large-amounts-of-data-cs/samples/sample6.html)]
 
 > [!NOTE]
-> 我們將在本教學課程中，於稍後看到 *`StartRowIndex`* 所提供的 ObjectDataSource 會編製索引開頭為零，而`ROW_NUMBER()`SQL Server 2005 所傳回的值編製索引從 1 開始。 因此，`WHERE`子句會傳回的記錄位置`PriceRank`必定大於 *`StartRowIndex`* 且小於或等於 *`StartRowIndex`*  + *`MaximumRows`*.
+> 我們將在本教學課程中，於稍後看到*`StartRowIndex`* 所提供的 ObjectDataSource 會編製索引開頭為零，而`ROW_NUMBER()`SQL Server 2005 所傳回的值編製索引從 1 開始。 因此，`WHERE`子句會傳回的記錄位置`PriceRank`必定大於*`StartRowIndex`* 且小於或等於*`StartRowIndex`*  + *`MaximumRows`*.
 
 
 現在我們已討論過如何`ROW_NUMBER()`可以是用來擷取特定分頁開始的資料列索引和資料列數上限值的資料，我們現在必須實作此邏輯為 BLL 和 DAL 中的方法。
@@ -374,7 +374,7 @@ GridView 遺漏，因為 ObjectDataSource 是目前正在使用 0 做為值的�
 
 ## <a name="about-the-author"></a>關於作者
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於[ http://ScottOnWriting.NET ](http://ScottOnWriting.NET)。
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml)，作者的七個 ASP 書籍和的創辦人[4GuysFromRolla.com](http://www.4guysfromrolla.com)，自 1998 年從事 Microsoft Web 技術工作。 Scott 會擔任獨立的顧問、 培訓講師和作家。 他最新的著作是[ *Sams 教導您自己 ASP.NET 2.0 在 24 小時內*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)。 他可以在觸達[ mitchell@4GuysFromRolla.com。](mailto:mitchell@4GuysFromRolla.com) 或透過他的部落格，這位於 [http://ScottOnWriting.NET](http://ScottOnWriting.NET)。
 
 > [!div class="step-by-step"]
 > [上一頁](paging-and-sorting-report-data-cs.md)

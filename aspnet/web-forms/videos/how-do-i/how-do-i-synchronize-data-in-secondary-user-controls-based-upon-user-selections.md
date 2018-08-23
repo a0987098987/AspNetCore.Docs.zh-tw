@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-synchronize-data-in-secondary-user-contr
 title: '[How Do I]: Synchronize Data in Secondary User Control(s) Based Upon User Selections | Microsoft Docs'
 author: rick-anderson
 description: 在此影片的 Chris Pels 示範如何建立兩個 DropDownList 控制項所在的第一個清單中選取項目會填入第二個清單中的項目。 Firs...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/06/2009
 ms.assetid: 55eadf85-3a2b-4993-8444-494cd2c92d65
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-synchronize-data-in-secondary-user-controls-based-upon-user-selections
 msc.type: video
-ms.openlocfilehash: 1b8bd8c32de0174b6c40185904e2a675c621652a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0a49d363c0fec689d172f27f41fe84617300fcf5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818427"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830201"
 ---
 <a name="how-do-i-synchronize-data-in-secondary-user-controls-based-upon-user-selections"></a>[How Do I]: 同步處理次要使用者控制項，根據使用者選取項目中的資料
 ====================

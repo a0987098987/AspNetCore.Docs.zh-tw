@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-a
 title: 建立自訂的 AJAX 控制項 Toolkit 控制項擴充項 (VB) |Microsoft Docs
 author: microsoft
 description: 自訂擴充項可讓您自訂和擴充 ASP.NET 控制項的功能，而不需要建立新的類別。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 18b29834-c991-4e0c-b533-44d358fbfc9c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b44918cff161088e98f7baaca7714348b0b6a8de
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 7f0cbee47b541e31f3e9f01e42afeabcd7b9769f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814614"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834699"
 ---
 <a name="creating-a-custom-ajax-control-toolkit-control-extender-vb"></a>建立自訂的 AJAX Control Toolkit 控制項擴充項 (VB)
 ====================

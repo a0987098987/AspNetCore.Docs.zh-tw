@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-
 title: 如何使用下拉式方塊控制項？ (VB) | Microsoft Docs
 author: microsoft
 description: 下拉式方塊會是結合使用者可以從中選擇的選項清單中的文字方塊中的彈性以 ASP.NET AJAX 控制項。
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: e887e7b2-a6e7-4a28-a134-ba334494badb
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 745871b7e8cca14b3458d9004d581dfacf55ea24
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ec00a58581f36f87ecdca2fbd96fcea645f75f48
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837720"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831218"
 ---
 <a name="how-do-i-use-the-combobox-control-vb"></a>如何使用下拉式方塊控制項？ (VB)
 ====================
